@@ -148,7 +148,7 @@ rules, not soft preferences.
 - Pasted bill, EOB, and clinical input is processed in memory and
   discarded when the page is closed.
 - There is no `localStorage`, no `sessionStorage`, no cookies, and no
-  IndexedDB. All three are verified empty by the integration test suite.
+  IndexedDB. All four are verified empty by the integration test suite.
 - `innerHTML`, `outerHTML`, `insertAdjacentHTML`, `eval`, and the
   `Function` constructor are banned by the ESLint config and a grep
   check; the `el()` DOM helper throws on any attempt to set raw HTML.
