@@ -1320,6 +1320,7 @@ async function main() {
   for (const ds of datasets) {
     if (ONLY && ds.id !== ONLY) continue;
     try {
+      await ensureDir(join(DATA, ds.id));
       const result = await ds.build();
       summary.push({ id: ds.id, ok: true, ...result });
       console.log(`  ${ds.id}: wrote ${result.recordCount} records across ${result.shardCount} file(s).`);

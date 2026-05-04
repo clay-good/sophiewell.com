@@ -6,6 +6,15 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Fixed (v4.15 CI hardening)
+
+- `scripts/build-data.mjs`: dataset folders are now ensured to exist at
+  the orchestrator level before each builder runs. 16 of the 22 builders
+  wrote files without a preceding `mkdir`, which worked locally because
+  the folders were committed to the tree but failed on a fresh CI runner
+  (`coverage` builder hit `ENOENT: data/coverage/lcd.json`). One-line
+  `await ensureDir(join(DATA, ds.id))` in the loop covers every builder.
+
 ### Removed (v4.14 repo cleanup)
 
 - Deleted `dist/` from the source tree (always rebuilt by `npm run build`,
