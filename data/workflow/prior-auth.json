@@ -1,0 +1,63 @@
+{
+  "fetchDate": "2026-05-03",
+  "notes": "Templated checklist by procedure type. Payer-specific requirements vary and must be verified against the payer's policy.",
+  "procedures": [
+    {
+      "id": "imaging-mri-msk",
+      "name": "MRI, musculoskeletal",
+      "items": [
+        "ICD-10 diagnosis with documented duration of symptoms",
+        "Documentation of failed conservative therapy (typically 4-6 weeks of NSAIDs and physical therapy)",
+        "Recent X-ray report (if applicable)",
+        "Specialty referral note (if payer requires)",
+        "CPT/HCPCS code for the requested study and contrast indication if any",
+        "Site of service (in-network facility)"
+      ]
+    },
+    {
+      "id": "advanced-imaging-ct",
+      "name": "Advanced imaging, CT",
+      "items": [
+        "ICD-10 diagnosis with red-flag features documented",
+        "Prior imaging or labs supporting medical necessity",
+        "Indication for contrast vs non-contrast",
+        "CPT code and bilateral/laterality where applicable"
+      ]
+    },
+    {
+      "id": "surgery-elective",
+      "name": "Surgery, elective",
+      "items": [
+        "ICD-10 diagnosis and indication",
+        "History and physical within payer's required window",
+        "Documentation of failed non-surgical management",
+        "Pre-operative testing (EKG, labs, imaging) per facility policy",
+        "CPT code(s) for planned procedure",
+        "Anesthesia plan and ASA Physical Status",
+        "Place of service and facility NPI"
+      ]
+    },
+    {
+      "id": "specialty-drug",
+      "name": "Specialty drug",
+      "items": [
+        "Diagnosis and supporting labs (e.g., HbA1c, biopsy report) per criteria",
+        "Documentation of step therapy failures or contraindications",
+        "Dose, route, frequency, and duration of therapy",
+        "Site of administration (home, infusion center, clinic)",
+        "Prescriber NPI and patient demographics"
+      ]
+    },
+    {
+      "id": "dme",
+      "name": "Durable medical equipment",
+      "items": [
+        "Detailed written order signed by prescriber",
+        "Face-to-face evaluation note (within payer window)",
+        "ICD-10 diagnosis and clinical justification",
+        "HCPCS code for the device and any modifiers",
+        "Length of need and supplier NPI"
+      ]
+    }
+  ]
+}

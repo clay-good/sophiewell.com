@@ -1,0 +1,35 @@
+{
+  "fetchDate": "2026-05-04",
+  "scenarios": [
+    {
+      "id": "er-out-of-network",
+      "description": "Out-of-network emergency care at any facility.",
+      "statute": "Public Health Service Act Section 2799A-1",
+      "covered": true
+    },
+    {
+      "id": "oon-at-in-network-facility",
+      "description": "Out-of-network ancillary care at an in-network facility.",
+      "statute": "Public Health Service Act Section 2799A-1",
+      "covered": true
+    },
+    {
+      "id": "air-ambulance",
+      "description": "Out-of-network air ambulance services.",
+      "statute": "Public Health Service Act Section 2799A-2",
+      "covered": true
+    },
+    {
+      "id": "ground-ambulance",
+      "description": "Ground ambulance services.",
+      "statute": "Not covered by the federal No Surprises Act.",
+      "covered": false
+    }
+  ],
+  "gfeDisputeThresholdUsd": 400,
+  "disputeResolution": {
+    "patientProvider": "Patient-Provider Dispute Resolution (uninsured/self-pay) within 120 days of bill.",
+    "payerProvider": "Independent Dispute Resolution (insured) initiated by either party after open negotiation."
+  },
+  "portalUrl": "https://nsa-idr.cms.gov"
+}

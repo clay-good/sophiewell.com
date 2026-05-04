@@ -1,0 +1,14 @@
+{
+  "dataset": "state-rights",
+  "sourceUrl": "state attorney general publications and NCLC summaries (curated)",
+  "agency": "various; project author summaries",
+  "status": "mit-original-summaries",
+  "cadence": "as-needed",
+  "fetchDate": "2026-05-04",
+  "offlineSeed": false,
+  "recordCount": 3,
+  "files": [
+    "states.json"
+  ],
+  "notes": "Original summaries written by the project author with cited sources. Not a substitute for legal counsel."
+}

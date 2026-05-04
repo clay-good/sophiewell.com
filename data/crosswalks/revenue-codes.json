@@ -1,0 +1,34 @@
+[
+  {
+    "code": "0250",
+    "name": "Pharmacy - General Class"
+  },
+  {
+    "code": "0270",
+    "name": "Medical/Surgical Supplies and Devices - General"
+  },
+  {
+    "code": "0300",
+    "name": "Laboratory - General Class"
+  },
+  {
+    "code": "0320",
+    "name": "Radiology - Diagnostic - General"
+  },
+  {
+    "code": "0360",
+    "name": "Operating Room Services - General"
+  },
+  {
+    "code": "0450",
+    "name": "Emergency Room - General"
+  },
+  {
+    "code": "0636",
+    "name": "Pharmacy - Drugs requiring detailed coding"
+  },
+  {
+    "code": "0710",
+    "name": "Recovery Room - General"
+  }
+]

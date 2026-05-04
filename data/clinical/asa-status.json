@@ -1,0 +1,34 @@
+{
+  "fetchDate": "2026-05-04",
+  "attribution": "Categories are short factual labels. Original short summaries by the project author. See ASA: https://www.asahq.org/",
+  "classes": [
+    {
+      "class": "I",
+      "summary": "A normally healthy patient."
+    },
+    {
+      "class": "II",
+      "summary": "A patient with mild systemic disease that is well controlled."
+    },
+    {
+      "class": "III",
+      "summary": "A patient with severe systemic disease that limits activity but is not incapacitating."
+    },
+    {
+      "class": "IV",
+      "summary": "A patient with severe systemic disease that is a constant threat to life."
+    },
+    {
+      "class": "V",
+      "summary": "A moribund patient who is not expected to survive without the operation."
+    },
+    {
+      "class": "VI",
+      "summary": "A declared brain-dead patient whose organs are being procured."
+    },
+    {
+      "class": "E",
+      "summary": "Suffix for emergency procedures."
+    }
+  ]
+}

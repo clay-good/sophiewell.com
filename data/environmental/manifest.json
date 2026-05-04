@@ -1,0 +1,13 @@
+{
+  "dataset": "environmental",
+  "sourceUrl": "Wilderness Medical Society practice guidelines; standard medical literature",
+  "agency": "Wilderness Medical Society / standard medical literature",
+  "status": "public-formulas-and-original-notes",
+  "cadence": "as-needed",
+  "fetchDate": "2026-05-04",
+  "offlineSeed": false,
+  "recordCount": 5,
+  "files": [
+    "environmental.json"
+  ]
+}

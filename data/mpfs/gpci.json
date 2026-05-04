@@ -1,0 +1,30 @@
+[
+  {
+    "localityCode": "0000000",
+    "name": "National Average",
+    "workGpci": 1,
+    "peGpci": 1,
+    "mpGpci": 1
+  },
+  {
+    "localityCode": "0500001",
+    "name": "Manhattan, NY",
+    "workGpci": 1.058,
+    "peGpci": 1.225,
+    "mpGpci": 1.483
+  },
+  {
+    "localityCode": "5400001",
+    "name": "Rest of California",
+    "workGpci": 1.027,
+    "peGpci": 1.137,
+    "mpGpci": 0.575
+  },
+  {
+    "localityCode": "0000099",
+    "name": "Rest of US",
+    "workGpci": 1,
+    "peGpci": 0.89,
+    "mpGpci": 0.58
+  }
+]

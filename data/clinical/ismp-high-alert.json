@@ -1,0 +1,26 @@
+{
+  "fetchDate": "2026-05-04",
+  "attribution": "Medication identities are factual. Original brief notes by the project author. ISMP maintains the authoritative list and formatting: https://www.ismp.org/",
+  "meds": [
+    {
+      "name": "Insulin (all formulations)",
+      "note": "Narrow therapeutic window. Errors in dose, formulation, or timing cause hypoglycemia or hyperglycemia."
+    },
+    {
+      "name": "Heparin (all formulations)",
+      "note": "Anticoagulation errors cause severe bleeding or clotting. Use standard concentrations and double-check."
+    },
+    {
+      "name": "Opioids",
+      "note": "Respiratory depression risk. PCA programming errors and look-alike concentrations are common error sources."
+    },
+    {
+      "name": "Concentrated electrolytes (KCl, hypertonic saline)",
+      "note": "Bolus or rapid infusion can be fatal. Restrict access and require dilution."
+    },
+    {
+      "name": "Chemotherapy",
+      "note": "Narrow margin between therapeutic and toxic doses. Standardized order sets and double-check protocols required."
+    }
+  ]
+}

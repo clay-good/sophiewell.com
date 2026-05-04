@@ -1,0 +1,13 @@
+{
+  "dataset": "no-surprises",
+  "sourceUrl": "https://www.cms.gov/nosurprises",
+  "agency": "CMS / HHS / Treasury / Labor",
+  "status": "public-domain",
+  "cadence": "as-published",
+  "fetchDate": "2026-05-04",
+  "offlineSeed": false,
+  "recordCount": 4,
+  "files": [
+    "rules.json"
+  ]
+}

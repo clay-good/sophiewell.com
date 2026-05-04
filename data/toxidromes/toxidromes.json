@@ -1,0 +1,42 @@
+{
+  "fetchDate": "2026-05-04",
+  "attribution": "Original brief notes by the project author with citation to ATSDR profiles and standard medical toxicology literature.",
+  "toxidromes": [
+    {
+      "name": "Cholinergic",
+      "signs": "SLUDGE/BBB: salivation, lacrimation, urination, defecation, GI upset, emesis, bronchorrhea, bronchospasm, bradycardia. Miosis common.",
+      "causes": "Organophosphates, carbamates, nerve agents, some mushrooms.",
+      "antidote": "Atropine + pralidoxime"
+    },
+    {
+      "name": "Anticholinergic",
+      "signs": "Hot, dry, red, blind, mad: hyperthermia, dry skin, flushing, mydriasis, delirium, urinary retention, decreased bowel sounds.",
+      "causes": "Antihistamines, TCAs, jimsonweed, atropine.",
+      "antidote": "Supportive; physostigmine in select cases (caution)."
+    },
+    {
+      "name": "Sympathomimetic",
+      "signs": "Tachycardia, hypertension, hyperthermia, mydriasis, agitation, diaphoresis (vs anticholinergic dry skin).",
+      "causes": "Cocaine, amphetamines, methamphetamine, ephedrine.",
+      "antidote": "Benzodiazepines, cooling, supportive."
+    },
+    {
+      "name": "Opioid",
+      "signs": "CNS depression, respiratory depression, miosis, hypotension, decreased bowel sounds.",
+      "causes": "Heroin, fentanyl, oxycodone, morphine, hydrocodone.",
+      "antidote": "Naloxone"
+    },
+    {
+      "name": "Sedative-hypnotic",
+      "signs": "CNS depression, normal pupils, normal vitals (overdose may show respiratory depression).",
+      "causes": "Benzodiazepines, barbiturates, alcohol.",
+      "antidote": "Supportive; flumazenil for benzodiazepine in select cases."
+    },
+    {
+      "name": "Serotonergic",
+      "signs": "Mental status changes, autonomic instability, neuromuscular hyperactivity (clonus, hyperreflexia), hyperthermia.",
+      "causes": "SSRIs + MAOIs, linezolid, tramadol, dextromethorphan combinations.",
+      "antidote": "Supportive; cyproheptadine in select cases."
+    }
+  ]
+}

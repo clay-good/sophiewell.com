@@ -1,0 +1,114 @@
+{
+  "fetchDate": "2026-05-04",
+  "edition": "CDC Field Triage Guidelines for Injured Patients (current edition)",
+  "steps": [
+    {
+      "step": 1,
+      "name": "Vitals and consciousness",
+      "criteria": [
+        {
+          "id": "gcs-le-13",
+          "label": "GCS <= 13"
+        },
+        {
+          "id": "sbp-lt-110-adult-or-shock-pediatric",
+          "label": "SBP < 110 mmHg adult, or pediatric shock index abnormal"
+        },
+        {
+          "id": "rr-lt-10-or-gt-29-or-respiratory-distress",
+          "label": "RR < 10 or > 29, or respiratory distress / need for ventilatory support"
+        }
+      ],
+      "action": "If any criterion: transport to highest-level trauma center."
+    },
+    {
+      "step": 2,
+      "name": "Anatomy of injury",
+      "criteria": [
+        {
+          "id": "penetrating-head-neck-torso",
+          "label": "Penetrating injuries to head, neck, torso, or proximal extremities"
+        },
+        {
+          "id": "amputation-proximal-wrist-ankle",
+          "label": "Amputation proximal to wrist or ankle"
+        },
+        {
+          "id": "pelvic-fracture-suspected",
+          "label": "Suspected pelvic fracture"
+        },
+        {
+          "id": "long-bone-fractures-multi",
+          "label": "Two or more proximal long-bone fractures"
+        },
+        {
+          "id": "crushed-degloved",
+          "label": "Crushed, degloved, mangled, or pulseless extremity"
+        },
+        {
+          "id": "chest-wall-instability",
+          "label": "Chest wall instability or deformity (flail chest)"
+        },
+        {
+          "id": "open-or-depressed-skull",
+          "label": "Open or depressed skull fracture"
+        },
+        {
+          "id": "paralysis",
+          "label": "Paralysis or suspected spinal cord injury"
+        }
+      ],
+      "action": "If any criterion: transport to highest-level trauma center."
+    },
+    {
+      "step": 3,
+      "name": "Mechanism of injury",
+      "criteria": [
+        {
+          "id": "fall-adult-gt-20-or-pediatric-gt-10",
+          "label": "Falls: adult > 20 ft, pediatric > 10 ft or 2-3x height"
+        },
+        {
+          "id": "mvc-high-risk",
+          "label": "High-risk auto crash: intrusion > 12 in occupant site / > 18 in any site, ejection, death same compartment, telemetry consistent with high risk"
+        },
+        {
+          "id": "auto-vs-ped-bicyclist-thrown-impact-gt-20",
+          "label": "Auto vs pedestrian/bicyclist thrown, run over, or impact > 20 mph"
+        },
+        {
+          "id": "motorcycle-crash-gt-20mph",
+          "label": "Motorcycle crash > 20 mph"
+        }
+      ],
+      "action": "Consider transport to a trauma center; agency-protocol decision."
+    },
+    {
+      "step": 4,
+      "name": "Special considerations",
+      "criteria": [
+        {
+          "id": "older-adult",
+          "label": "Older adult: SBP < 110 may indicate shock; low-impact mechanisms still high risk"
+        },
+        {
+          "id": "pediatric",
+          "label": "Children should be triaged preferentially to pediatric-capable centers"
+        },
+        {
+          "id": "anticoagulant-use",
+          "label": "On anticoagulant or with bleeding disorder"
+        },
+        {
+          "id": "pregnancy-gt-20wk",
+          "label": "Pregnancy > 20 weeks"
+        },
+        {
+          "id": "burns",
+          "label": "Burns: with or without trauma; trauma centers for combined"
+        }
+      ],
+      "action": "Use clinical judgment; consult medical control."
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "dataset": "hcpcs",
+  "sourceUrl": "https://www.cms.gov/medicare/coding-billing/healthcare-common-procedure-system",
+  "agency": "CMS",
+  "status": "public-domain",
+  "cadence": "quarterly",
+  "fetchDate": "2026-05-04",
+  "offlineSeed": true,
+  "recordCount": 10,
+  "shards": [
+    {
+      "name": "hcpcs.json",
+      "sha256": "8b11f8095d5efc24abafef6b7f0ee079cc2c54cb74951451f9d22de12ac5c321",
+      "records": 10,
+      "bytes": 1100
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "fetchDate": "2026-05-04",
+  "attribution": "Original brief notes by the project author with citations to Wilderness Medical Society guidelines and standard medical literature.",
+  "hypothermia": [
+    {
+      "stage": "Mild",
+      "coreTemp": "32-35 C (90-95 F)",
+      "findings": "Shivering present, tachycardia, vasoconstriction, alert mental status."
+    },
+    {
+      "stage": "Moderate",
+      "coreTemp": "28-32 C (82-90 F)",
+      "findings": "Shivering may be lost, decreased mentation, bradycardia, atrial dysrhythmias."
+    },
+    {
+      "stage": "Severe",
+      "coreTemp": "Below 28 C (82 F)",
+      "findings": "Coma, fixed pupils, ventricular dysrhythmias, asystole. Treat as potentially viable until rewarmed."
+    }
+  ],
+  "heatIllness": [
+    {
+      "stage": "Heat exhaustion",
+      "criteria": "Core temp typically below 40 C; profuse sweating; mental status preserved; nausea, headache, weakness."
+    },
+    {
+      "stage": "Heat stroke",
+      "criteria": "Core temp typically 40 C or higher; CNS dysfunction (confusion, seizures, coma); sweating may be absent or present."
+    }
+  ]
+}

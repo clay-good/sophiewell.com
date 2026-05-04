@@ -1,0 +1,36 @@
+{
+  "dataset": "ndc",
+  "sourceUrl": "https://www.fda.gov/drugs/drug-approvals-and-databases/national-drug-code-directory",
+  "agency": "FDA",
+  "status": "public-domain",
+  "cadence": "daily",
+  "fetchDate": "2026-05-04",
+  "offlineSeed": true,
+  "recordCount": 5,
+  "shards": [
+    {
+      "name": "L.json",
+      "sha256": "3d6a1e9b60b25e6042200491a55690404e675ff9e9d7258bf1ee4f9337f9db0e",
+      "records": 1,
+      "bytes": 178
+    },
+    {
+      "name": "M.json",
+      "sha256": "4e6a3d57c00c7ff19e0e964625297f30b6f817092fd34958d804b58641e4ea28",
+      "records": 1,
+      "bytes": 191
+    },
+    {
+      "name": "A.json",
+      "sha256": "7ca6b51ce9954ec53acc8030540b948e039358babf9d2abd5b937fc2f445ddaf",
+      "records": 2,
+      "bytes": 367
+    },
+    {
+      "name": "H.json",
+      "sha256": "1c140bd15fcf1df9756cdcfc94ed9fae9be6e22d40d9dce2c84a1ac0cefecef0",
+      "records": 1,
+      "bytes": 173
+    }
+  ]
+}

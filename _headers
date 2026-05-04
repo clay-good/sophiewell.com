@@ -1,0 +1,37 @@
+# Cloudflare Pages headers per spec section 7.
+
+/*
+  Content-Security-Policy: default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'self'; form-action 'self'; base-uri 'self'; frame-ancestors 'none'; object-src 'none'
+  Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: DENY
+  Referrer-Policy: no-referrer
+  Cross-Origin-Opener-Policy: same-origin
+  Cross-Origin-Embedder-Policy: require-corp
+  Cross-Origin-Resource-Policy: same-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=(), usb=(), accelerometer=()
+
+# HTML: never cache.
+/index.html
+  Cache-Control: no-cache
+
+/
+  Cache-Control: no-cache
+
+# Service worker: revalidate every visit.
+/sw.js
+  Cache-Control: no-cache
+
+# Hashed assets in /assets/* would be immutable for one year. The current
+# build inlines styles.css and app.js at the root with versioned cache via
+# the service worker, so apply a moderate cache here and rely on the SW
+# for revalidation.
+/styles.css
+  Cache-Control: public, max-age=3600
+
+/app.js
+  Cache-Control: public, max-age=3600
+
+# Data shards: cache for one day; the service worker keys them to BUILD_HASH.
+/data/*
+  Cache-Control: public, max-age=86400

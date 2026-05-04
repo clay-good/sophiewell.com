@@ -1,0 +1,14 @@
+{
+  "dataset": "aha-reference",
+  "sourceUrl": "AHA ECC 2020 guidelines (numeric reference facts only; no flowchart text)",
+  "agency": "American Heart Association (numeric reference)",
+  "status": "numeric-facts-with-attribution",
+  "cadence": "as-published",
+  "fetchDate": "2026-05-04",
+  "offlineSeed": false,
+  "recordCount": 15,
+  "files": [
+    "aha-reference.json"
+  ],
+  "notes": "Numeric reference values (doses, intervals, joules) only. AHA flowcharts not reproduced."
+}

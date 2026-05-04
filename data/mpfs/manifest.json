@@ -1,0 +1,35 @@
+{
+  "dataset": "mpfs",
+  "sourceUrl": "https://www.cms.gov/medicare/payment/fee-schedules/physician",
+  "agency": "CMS",
+  "status": "public-domain",
+  "cadence": "annual",
+  "fetchDate": "2026-05-04",
+  "offlineSeed": true,
+  "recordCount": 5,
+  "shards": [
+    {
+      "name": "99.json",
+      "sha256": "4bdb7f5b4cbbd7290aae6acbf78f81ca4a0a355fb77bea315aef7258824a998c",
+      "records": 3,
+      "bytes": 378
+    },
+    {
+      "name": "93.json",
+      "sha256": "2b3fad42c0ce5817f27465f465b6e431076ba56811b6648d5ef2388be619577e",
+      "records": 1,
+      "bytes": 128
+    },
+    {
+      "name": "36.json",
+      "sha256": "4ac3713d520bf76efeb9ac358a62344c636a23447290df257de34dc7a3432ab6",
+      "records": 1,
+      "bytes": 122
+    }
+  ],
+  "ancillary": [
+    "gpci.json",
+    "conversion-factor.json"
+  ],
+  "notes": "Structural Medicare RVU data only. NO AMA CPT descriptors are included. The Medicare structural data (status code, global period, RVU components) is public domain. See docs/legal.md."
+}

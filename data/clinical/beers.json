@@ -1,0 +1,26 @@
+{
+  "fetchDate": "2026-05-04",
+  "attribution": "Underlying drug-condition pairs are clinical facts. Original brief notes by the project author. See AGS publication for the authoritative list and rationale: https://americangeriatrics.org/",
+  "pairs": [
+    {
+      "drug": "Diphenhydramine",
+      "condition": "Older adults (general)",
+      "note": "Strongly anticholinergic. Risk of confusion, urinary retention, falls. Avoid for sleep and for cold/cough in older adults when possible."
+    },
+    {
+      "drug": "Diazepam",
+      "condition": "Older adults (general)",
+      "note": "Long-acting benzodiazepine. Increased risk of cognitive impairment, falls, fractures. Avoid as first line."
+    },
+    {
+      "drug": "NSAIDs (chronic)",
+      "condition": "CKD or heart failure",
+      "note": "Risk of acute kidney injury and fluid retention. Avoid chronic use."
+    },
+    {
+      "drug": "Glyburide",
+      "condition": "Older adults (general)",
+      "note": "Long-acting sulfonylurea. Higher risk of prolonged hypoglycemia. Prefer shorter-acting alternatives."
+    }
+  ]
+}

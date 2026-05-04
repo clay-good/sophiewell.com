@@ -1,0 +1,73 @@
+name: ci
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main, develop]
+
+jobs:
+  unit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+      - run: npm ci || npm install --no-audit --no-fund
+      - name: Build seed data
+        run: SOPHIEWELL_OFFLINE=1 node scripts/build-data.mjs
+      - name: Verify data integrity
+        run: node scripts/verify-integrity.mjs
+      - name: Lint
+        run: npm run lint
+      - name: Unit tests
+        run: npm run test:unit
+      - name: Static accessibility check
+        run: npm run test:a11y
+      - name: Static build
+        run: npm run build
+
+  e2e:
+    runs-on: ubuntu-latest
+    needs: unit
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+      - run: npm ci || npm install --no-audit --no-fund
+      - name: Install Playwright browsers
+        run: npx playwright install --with-deps
+      - name: Build seed data
+        run: SOPHIEWELL_OFFLINE=1 node scripts/build-data.mjs
+      - name: End-to-end tests
+        run: npm run test:e2e
+      - name: Upload Playwright report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-report
+          path: playwright-report/
+          retention-days: 7
+
+  lighthouse:
+    runs-on: ubuntu-latest
+    needs: unit
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+      - run: npm ci || npm install --no-audit --no-fund
+      - name: Build seed data
+        run: SOPHIEWELL_OFFLINE=1 node scripts/build-data.mjs
+      - name: Static build
+        run: npm run build
+      - name: Lighthouse CI
+        run: npx --yes @lhci/cli@0.13.x autorun
+        env:
+          LHCI_GITHUB_APP_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}

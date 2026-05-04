@@ -1,0 +1,13 @@
+{
+  "dataset": "toxidromes",
+  "sourceUrl": "CDC Agency for Toxic Substances and Disease Registry (ATSDR)",
+  "agency": "ATSDR / CDC",
+  "status": "public-domain",
+  "cadence": "as-needed",
+  "fetchDate": "2026-05-04",
+  "offlineSeed": false,
+  "recordCount": 6,
+  "files": [
+    "toxidromes.json"
+  ]
+}

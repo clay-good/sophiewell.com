@@ -1,0 +1,66 @@
+{
+  "dataset": "icd10cm",
+  "sourceUrl": "https://www.cms.gov/medicare/coding-billing/icd-10-codes",
+  "agency": "CMS / NCHS",
+  "status": "public-domain",
+  "cadence": "annual",
+  "fetchDate": "2026-05-04",
+  "offlineSeed": true,
+  "recordCount": 20,
+  "shards": [
+    {
+      "name": "A.json",
+      "sha256": "21293b83d93f3b76e6c03fe2f18fe1600efe27bea943410ea0e9e007bf672209",
+      "records": 4,
+      "bytes": 231
+    },
+    {
+      "name": "E.json",
+      "sha256": "e6bf6157a524fbf24511a094f2e2124043b18e4ee9e9e5002a8c5d747b548a43",
+      "records": 3,
+      "bytes": 194
+    },
+    {
+      "name": "I.json",
+      "sha256": "9b25e3e95a2f5e7b5ec976c62ce81cabc72275279806242fbb7bf2f7bc69b473",
+      "records": 3,
+      "bytes": 185
+    },
+    {
+      "name": "J.json",
+      "sha256": "0b672b6a11616754618a3b45d49b1edba030cd15fa4e7b60c40bb14b741a9d61",
+      "records": 3,
+      "bytes": 208
+    },
+    {
+      "name": "K.json",
+      "sha256": "2bec0916e1813605d6eafebe9721a187ad4896ba90f53cdb8a1f6248bfc60280",
+      "records": 1,
+      "bytes": 80
+    },
+    {
+      "name": "M.json",
+      "sha256": "96c3bf0f15013ff6e7d91078ffd0235f074a0d30457f49d04fa5d6e0ede39818",
+      "records": 1,
+      "bytes": 41
+    },
+    {
+      "name": "N.json",
+      "sha256": "9e02edb4bb27733f9f70f10118e759872bc36246bd779af2c89c10dff0741726",
+      "records": 1,
+      "bytes": 71
+    },
+    {
+      "name": "R.json",
+      "sha256": "06ec844f2a103d5b702cf881fe0b5944f4e38faea6a2f3fde2eaf9058d8519ca",
+      "records": 3,
+      "bytes": 137
+    },
+    {
+      "name": "Z.json",
+      "sha256": "286ff7763b5d657d1a3d5e60357a74732af1fafc535ca5b2a64c69e981cf7cef",
+      "records": 1,
+      "bytes": 102
+    }
+  ]
+}

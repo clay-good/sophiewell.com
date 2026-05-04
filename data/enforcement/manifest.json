@@ -1,0 +1,14 @@
+{
+  "dataset": "enforcement",
+  "sourceUrl": "https://oig.hhs.gov/exclusions/exclusions_list.asp",
+  "agency": "HHS OIG; CMS",
+  "status": "public-domain",
+  "cadence": "monthly",
+  "fetchDate": "2026-05-04",
+  "offlineSeed": true,
+  "recordCount": 2,
+  "files": [
+    "oig-exclusions.json",
+    "medicare-opt-out.json"
+  ]
+}

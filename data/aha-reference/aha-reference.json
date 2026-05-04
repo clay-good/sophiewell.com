@@ -1,0 +1,94 @@
+{
+  "fetchDate": "2026-05-04",
+  "edition": "AHA ECC 2020 guidelines (current as of fetch date)",
+  "attribution": "Numeric facts only (drug doses, intervals, energy levels). The AHA holds copyright on the published flowcharts; consult the AHA publication for the authoritative algorithm.",
+  "adultArrest": [
+    {
+      "drug": "Epinephrine",
+      "dose": "1 mg IV/IO",
+      "interval": "every 3-5 minutes",
+      "indication": "Cardiac arrest (any rhythm)"
+    },
+    {
+      "drug": "Amiodarone",
+      "dose": "300 mg IV/IO bolus, then 150 mg",
+      "interval": "after second shock for VF/pVT",
+      "indication": "Refractory VF/pVT"
+    },
+    {
+      "drug": "Lidocaine",
+      "dose": "1-1.5 mg/kg IV/IO, then 0.5-0.75 mg/kg",
+      "interval": "every 5-10 minutes (max 3 mg/kg)",
+      "indication": "Refractory VF/pVT (alternative)"
+    },
+    {
+      "drug": "Magnesium sulfate",
+      "dose": "1-2 g IV/IO over 15 minutes",
+      "interval": "single dose",
+      "indication": "Torsades de pointes"
+    },
+    {
+      "drug": "Sodium bicarbonate",
+      "dose": "1 mEq/kg IV/IO",
+      "interval": "as indicated",
+      "indication": "TCA toxicity, hyperkalemia, prolonged arrest"
+    }
+  ],
+  "pediatricArrest": [
+    {
+      "drug": "Epinephrine",
+      "dose": "0.01 mg/kg IV/IO (max 1 mg)",
+      "interval": "every 3-5 minutes",
+      "indication": "Pediatric cardiac arrest"
+    },
+    {
+      "drug": "Amiodarone",
+      "dose": "5 mg/kg IV/IO (max 300 mg)",
+      "interval": "may repeat up to 15 mg/kg/day",
+      "indication": "Refractory VF/pVT"
+    },
+    {
+      "drug": "Lidocaine",
+      "dose": "1 mg/kg IV/IO",
+      "interval": "as alternative",
+      "indication": "Refractory VF/pVT (alternative)"
+    }
+  ],
+  "defibrillationEnergy": [
+    {
+      "population": "Adult VF/pVT",
+      "waveform": "Biphasic",
+      "energy": "120-200 J (manufacturer specific); 200 J if unknown"
+    },
+    {
+      "population": "Adult VF/pVT",
+      "waveform": "Monophasic",
+      "energy": "360 J"
+    },
+    {
+      "population": "Pediatric VF/pVT",
+      "waveform": "Any",
+      "energy": "2 J/kg first shock; 4 J/kg subsequent (max 10 J/kg or adult dose)"
+    },
+    {
+      "population": "Adult cardioversion: unstable narrow regular SVT",
+      "waveform": "Biphasic synchronized",
+      "energy": "50-100 J"
+    },
+    {
+      "population": "Adult cardioversion: unstable atrial fibrillation",
+      "waveform": "Biphasic synchronized",
+      "energy": "120-200 J"
+    },
+    {
+      "population": "Adult cardioversion: unstable monomorphic VT",
+      "waveform": "Biphasic synchronized",
+      "energy": "100 J"
+    },
+    {
+      "population": "Pediatric cardioversion",
+      "waveform": "Synchronized",
+      "energy": "0.5-1 J/kg first; 2 J/kg subsequent"
+    }
+  ]
+}

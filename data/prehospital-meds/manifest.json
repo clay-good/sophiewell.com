@@ -1,0 +1,14 @@
+{
+  "dataset": "prehospital-meds",
+  "sourceUrl": "FDA DailyMed labeling",
+  "agency": "FDA",
+  "status": "public-domain",
+  "cadence": "as-needed",
+  "fetchDate": "2026-05-04",
+  "offlineSeed": false,
+  "recordCount": 22,
+  "files": [
+    "meds.json"
+  ],
+  "notes": "Standard prehospital medication identities and reference doses derived from FDA labeling. Reference only; local protocols and AHA guidelines govern."
+}

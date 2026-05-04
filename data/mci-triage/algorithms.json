@@ -1,0 +1,79 @@
+{
+  "fetchDate": "2026-05-04",
+  "start": {
+    "name": "START (Simple Triage and Rapid Treatment) - adult",
+    "algorithm": [
+      {
+        "step": "walk",
+        "q": "Can the patient walk?",
+        "yes": "Minor (green)",
+        "no": "next"
+      },
+      {
+        "step": "breathing",
+        "q": "Is the patient breathing after airway repositioning?",
+        "no": "Expectant (black)",
+        "yes": "rate"
+      },
+      {
+        "step": "rate",
+        "q": "Respiratory rate?",
+        "le30": "next",
+        "gt30": "Immediate (red)"
+      },
+      {
+        "step": "perfusion",
+        "q": "Radial pulse present and capillary refill < 2s?",
+        "no": "Immediate (red)",
+        "yes": "mental"
+      },
+      {
+        "step": "mental",
+        "q": "Can the patient follow simple commands?",
+        "no": "Immediate (red)",
+        "yes": "Delayed (yellow)"
+      }
+    ]
+  },
+  "jumpstart": {
+    "name": "JumpSTART - pediatric ages 1-8",
+    "algorithm": [
+      {
+        "step": "walk",
+        "q": "Can the child walk?",
+        "yes": "Minor (green)",
+        "no": "next"
+      },
+      {
+        "step": "breathing",
+        "q": "Is the child breathing?",
+        "no": "rescue",
+        "yes": "rate"
+      },
+      {
+        "step": "rescue",
+        "q": "Position airway and give 5 rescue breaths. Breathing now?",
+        "no": "Expectant (black)",
+        "yes": "Immediate (red)"
+      },
+      {
+        "step": "rate",
+        "q": "Respiratory rate?",
+        "between15and45": "perfusion",
+        "outside15and45": "Immediate (red)"
+      },
+      {
+        "step": "perfusion",
+        "q": "Palpable peripheral pulse?",
+        "no": "Immediate (red)",
+        "yes": "mental"
+      },
+      {
+        "step": "mental",
+        "q": "AVPU: Alert, Voice, Pain (appropriate)?",
+        "yes": "Delayed (yellow)",
+        "no": "Immediate (red)"
+      }
+    ]
+  }
+}

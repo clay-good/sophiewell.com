@@ -1,0 +1,24 @@
+{
+  "dataset": "crosswalks",
+  "sourceUrl": "CMS publications and X12 external code lists",
+  "agency": "CMS, X12",
+  "status": "public-domain",
+  "cadence": "as-published",
+  "fetchDate": "2026-05-04",
+  "offlineSeed": true,
+  "recordCount": 38,
+  "files": [
+    "pos-codes.json",
+    "modifier-codes.json",
+    "revenue-codes.json",
+    "carc.json",
+    "rarc.json"
+  ],
+  "counts": {
+    "pos": 9,
+    "modifiers": 8,
+    "revenue": 8,
+    "carc": 8,
+    "rarc": 5
+  }
+}

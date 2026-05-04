@@ -1,0 +1,38 @@
+{
+  "name": "sophiewell.com",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Sophie Well - 79 deterministic healthcare utilities. Free, client-side, no servers, no telemetry, no AI.",
+  "homepage": "https://sophiewell.com",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/clay-good/sophiewell.com.git"
+  },
+  "bugs": {
+    "url": "https://github.com/clay-good/sophiewell.com/issues"
+  },
+  "license": "MIT",
+  "type": "module",
+  "engines": {
+    "node": ">=20.18.1 <21",
+    "npm": ">=10.0.0"
+  },
+  "scripts": {
+    "dev": "node scripts/serve.mjs",
+    "build": "node scripts/build.mjs",
+    "test": "npm run test:unit && npm run test:a11y && node scripts/grep-check.mjs && npm run data:verify",
+    "test:unit": "node --test 'test/unit/*.test.js'",
+    "test:e2e": "playwright test",
+    "test:a11y": "node scripts/a11y-check.mjs",
+    "lint": "eslint . && node scripts/grep-check.mjs",
+    "data:refresh": "node scripts/build-data.mjs",
+    "data:verify": "node scripts/verify-integrity.mjs",
+    "sbom": "node scripts/build-sbom.mjs",
+    "release:check": "npm run lint && npm run test && npm run sbom && npm run build",
+    "clean": "node -e \"import('node:fs').then(({rmSync})=>{try{rmSync('dist',{recursive:true,force:true})}catch{}})\""
+  },
+  "devDependencies": {
+    "@playwright/test": "1.59.1",
+    "eslint": "9.39.4"
+  }
+}

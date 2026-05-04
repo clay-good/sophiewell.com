@@ -1,0 +1,42 @@
+{
+  "fetchDate": "2026-05-04",
+  "ageBands": [
+    {
+      "band": "Newborn (0-1 mo)",
+      "hr": "100-205",
+      "rr": "30-60",
+      "sbp": "67-84"
+    },
+    {
+      "band": "Infant (1-12 mo)",
+      "hr": "100-180",
+      "rr": "30-53",
+      "sbp": "72-104"
+    },
+    {
+      "band": "Toddler (1-3 yr)",
+      "hr": "98-140",
+      "rr": "22-37",
+      "sbp": "86-106"
+    },
+    {
+      "band": "Preschool (3-5 yr)",
+      "hr": "80-120",
+      "rr": "20-28",
+      "sbp": "89-112"
+    },
+    {
+      "band": "School age (6-12 yr)",
+      "hr": "75-118",
+      "rr": "18-25",
+      "sbp": "97-120"
+    },
+    {
+      "band": "Adolescent (13-18 yr)",
+      "hr": "60-100",
+      "rr": "12-20",
+      "sbp": "110-131"
+    }
+  ],
+  "citation": "PALS reference values; American Heart Association."
+}

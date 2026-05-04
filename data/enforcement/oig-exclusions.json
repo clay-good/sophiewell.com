@@ -1,0 +1,9 @@
+[
+  {
+    "lastName": "EXAMPLE",
+    "firstName": "PROVIDER",
+    "npi": "0000000000",
+    "exclusionType": "1128(a)(1)",
+    "exclusionDate": "2020-01-15"
+  }
+]

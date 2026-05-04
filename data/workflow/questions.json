@@ -1,0 +1,49 @@
+{
+  "fetchDate": "2026-05-03",
+  "notes": "Hand-curated question bank by the project author. Plain English. Reference only.",
+  "visitTypes": [
+    "annual physical",
+    "new symptom",
+    "follow-up",
+    "specialist consult",
+    "pre-operative",
+    "post-operative",
+    "pediatric well-child",
+    "prenatal",
+    "mental health",
+    "medication review"
+  ],
+  "sections": ["Before", "During", "Medications", "Tests", "Cost", "After"],
+  "questions": [
+    { "section": "Before", "text": "What records should I bring (prior labs, imaging, hospital discharge summaries)?", "tags": ["all"] },
+    { "section": "Before", "text": "Should I fast or hold any medication before this visit?", "tags": ["all", "lab", "fasting"] },
+    { "section": "Before", "text": "Will I need a ride home (sedation, dilating drops)?", "tags": ["procedure", "specialist consult", "pre-operative"] },
+
+    { "section": "During", "text": "What is the working diagnosis or differential?", "tags": ["new symptom", "follow-up", "specialist consult"] },
+    { "section": "During", "text": "What is the goal of today’s visit?", "tags": ["all"] },
+    { "section": "During", "text": "What are the warning signs that should prompt me to call or go to the ER?", "tags": ["new symptom", "post-operative", "pediatric well-child", "prenatal"] },
+    { "section": "During", "text": "Are there lifestyle changes you would prioritize first?", "tags": ["chronic", "annual physical", "medication review"] },
+
+    { "section": "Medications", "text": "What is each medication for and how long should I take it?", "tags": ["medication review", "follow-up", "all"] },
+    { "section": "Medications", "text": "What side effects should I watch for and which require a call?", "tags": ["medication review", "new symptom"] },
+    { "section": "Medications", "text": "Are any of my current medications duplicated or interacting?", "tags": ["medication review"] },
+    { "section": "Medications", "text": "Is there a generic that costs less?", "tags": ["medication review", "cost"] },
+
+    { "section": "Tests", "text": "What test is being ordered and what would the result change about my care?", "tags": ["all", "lab", "imaging"] },
+    { "section": "Tests", "text": "Is this test urgent? When should I expect results and how will I be notified?", "tags": ["lab", "imaging"] },
+    { "section": "Tests", "text": "Are there safer or less expensive alternatives to this test?", "tags": ["lab", "imaging", "cost"] },
+
+    { "section": "Cost", "text": "Is this provider in-network for my insurance today?", "tags": ["all", "specialist consult", "pre-operative"] },
+    { "section": "Cost", "text": "Can I have a Good Faith Estimate in writing if I am uninsured or self-pay?", "tags": ["pre-operative", "procedure", "cost"] },
+    { "section": "Cost", "text": "Will labs or imaging be billed by a separate facility?", "tags": ["specialist consult", "pre-operative", "imaging", "lab"] },
+
+    { "section": "After", "text": "When and how should I follow up with you?", "tags": ["all"] },
+    { "section": "After", "text": "What instructions should I share with caregivers or family?", "tags": ["post-operative", "pediatric well-child", "mental health"] },
+    { "section": "After", "text": "Where can I get reliable information to read more on this?", "tags": ["all", "new symptom"] },
+
+    { "section": "During", "text": "What pregnancy milestones or screenings are next?", "tags": ["prenatal"] },
+    { "section": "During", "text": "How is my child’s growth and development tracking against expected milestones?", "tags": ["pediatric well-child"] },
+    { "section": "During", "text": "What coping strategies or therapy options should I consider alongside medication?", "tags": ["mental health"] },
+    { "section": "Before", "text": "What is the recovery timeline and when can I return to work, exercise, driving?", "tags": ["pre-operative", "post-operative"] }
+  ]
+}

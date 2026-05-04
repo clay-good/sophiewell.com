@@ -1,0 +1,19 @@
+{
+  "dataset": "cpt-summaries",
+  "sourceUrl": "project-author-original-content",
+  "agency": "sophiewell.com (Clay Good)",
+  "status": "mit-original",
+  "cadence": "as-needed",
+  "fetchDate": "2026-05-04",
+  "offlineSeed": false,
+  "notes": "Original plain-English category summaries written by the project author. Not derived from AMA CPT descriptors. MIT-licensed. See docs/legal.md.",
+  "recordCount": 9,
+  "shards": [
+    {
+      "name": "summaries.json",
+      "sha256": "8981bba18a2efee1a517b0bd2373391cd5afcac84083475cda3647cbff52915d",
+      "records": 9,
+      "bytes": 2113
+    }
+  ]
+}

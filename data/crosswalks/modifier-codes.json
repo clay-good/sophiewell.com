@@ -1,0 +1,34 @@
+[
+  {
+    "code": "25",
+    "name": "Significant, separately identifiable E/M service"
+  },
+  {
+    "code": "26",
+    "name": "Professional component"
+  },
+  {
+    "code": "50",
+    "name": "Bilateral procedure"
+  },
+  {
+    "code": "51",
+    "name": "Multiple procedures"
+  },
+  {
+    "code": "59",
+    "name": "Distinct procedural service"
+  },
+  {
+    "code": "GA",
+    "name": "Waiver of liability statement on file"
+  },
+  {
+    "code": "KX",
+    "name": "Requirements specified in the medical policy have been met"
+  },
+  {
+    "code": "TC",
+    "name": "Technical component"
+  }
+]

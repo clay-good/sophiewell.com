@@ -1,0 +1,178 @@
+[
+  {
+    "name": "Epinephrine",
+    "adultDose": "1 mg IV/IO every 3-5 min",
+    "pedsDose": "0.01 mg/kg IV/IO (max 1 mg)",
+    "route": "IV/IO/IM",
+    "notes": "Anaphylaxis IM 0.3-0.5 mg adult; 0.01 mg/kg pediatric (max 0.3 mg).",
+    "source": "FDA labeling"
+  },
+  {
+    "name": "Atropine",
+    "adultDose": "0.5-1 mg IV every 3-5 min (max 3 mg) for bradycardia; 2-5 mg IV for organophosphate",
+    "pedsDose": "0.02 mg/kg IV/IO (min 0.1 mg, max 0.5 mg)",
+    "route": "IV/IO/IM",
+    "notes": "Routine pre-arrest atropine no longer recommended in PEA.",
+    "source": "FDA labeling"
+  },
+  {
+    "name": "Amiodarone",
+    "adultDose": "300 mg IV/IO bolus, then 150 mg",
+    "pedsDose": "5 mg/kg IV/IO (max 300 mg)",
+    "route": "IV/IO",
+    "notes": "For VF/pVT after defibrillation.",
+    "source": "FDA labeling"
+  },
+  {
+    "name": "Lidocaine",
+    "adultDose": "1-1.5 mg/kg IV/IO bolus, then 0.5-0.75 mg/kg",
+    "pedsDose": "1 mg/kg IV/IO",
+    "route": "IV/IO/ET",
+    "notes": "Alternative to amiodarone.",
+    "source": "FDA labeling"
+  },
+  {
+    "name": "Naloxone",
+    "adultDose": "0.4-2 mg IV/IM/IN; repeat q2-3 min",
+    "pedsDose": "0.1 mg/kg IV/IM/IN (max adult dose)",
+    "route": "IV/IM/IN/IO",
+    "notes": "For opioid overdose.",
+    "source": "FDA labeling"
+  },
+  {
+    "name": "Dextrose",
+    "adultDose": "12.5-25 g IV (D50W 25-50 mL)",
+    "pedsDose": "0.5-1 g/kg IV (D10W 5-10 mL/kg)",
+    "route": "IV/IO",
+    "notes": "For documented hypoglycemia.",
+    "source": "FDA labeling"
+  },
+  {
+    "name": "Glucagon",
+    "adultDose": "1 mg IM/SC/IV",
+    "pedsDose": "0.5 mg < 25 kg; 1 mg if >= 25 kg",
+    "route": "IM/SC/IV",
+    "notes": "When IV access not available for hypoglycemia.",
+    "source": "FDA labeling"
+  },
+  {
+    "name": "Sodium bicarbonate",
+    "adultDose": "1 mEq/kg IV bolus",
+    "pedsDose": "1 mEq/kg IV/IO",
+    "route": "IV/IO",
+    "notes": "TCA toxicity, hyperkalemia, prolonged arrest.",
+    "source": "FDA labeling"
+  },
+  {
+    "name": "Magnesium sulfate",
+    "adultDose": "1-2 g IV over 15 min (torsades / severe asthma)",
+    "pedsDose": "25-50 mg/kg IV (max 2 g)",
+    "route": "IV/IO",
+    "notes": "Torsades de pointes, severe asthma exacerbation.",
+    "source": "FDA labeling"
+  },
+  {
+    "name": "Adenosine",
+    "adultDose": "6 mg IV rapid push, then 12 mg",
+    "pedsDose": "0.1 mg/kg (max 6 mg), then 0.2 mg/kg (max 12 mg)",
+    "route": "IV (close to central)",
+    "notes": "Stable narrow-complex SVT.",
+    "source": "FDA labeling"
+  },
+  {
+    "name": "Calcium gluconate",
+    "adultDose": "1-3 g IV over 5-10 min",
+    "pedsDose": "60-100 mg/kg IV",
+    "route": "IV",
+    "notes": "Hyperkalemia with EKG changes; CCB toxicity.",
+    "source": "FDA labeling"
+  },
+  {
+    "name": "Calcium chloride",
+    "adultDose": "500-1000 mg IV slow",
+    "pedsDose": "20 mg/kg IV",
+    "route": "IV (central preferred)",
+    "notes": "Higher elemental calcium than gluconate.",
+    "source": "FDA labeling"
+  },
+  {
+    "name": "Midazolam",
+    "adultDose": "2-5 mg IV/IM/IN",
+    "pedsDose": "0.1-0.2 mg/kg IV/IM/IN (max 5 mg)",
+    "route": "IV/IM/IN",
+    "notes": "Status epilepticus, sedation.",
+    "source": "FDA labeling"
+  },
+  {
+    "name": "Ketamine",
+    "adultDose": "1-2 mg/kg IV / 4-5 mg/kg IM (analgesia 0.1-0.3 mg/kg IV)",
+    "pedsDose": "1-2 mg/kg IV / 4-5 mg/kg IM",
+    "route": "IV/IM/IN",
+    "notes": "Per local protocol.",
+    "source": "FDA labeling"
+  },
+  {
+    "name": "Fentanyl",
+    "adultDose": "50-100 mcg IV/IM/IN",
+    "pedsDose": "1-2 mcg/kg IV/IM/IN",
+    "route": "IV/IM/IN",
+    "notes": "Per local protocol.",
+    "source": "FDA labeling"
+  },
+  {
+    "name": "Morphine",
+    "adultDose": "2-10 mg IV/IM",
+    "pedsDose": "0.1-0.2 mg/kg IV/IM (max 5 mg)",
+    "route": "IV/IM",
+    "notes": "Per local protocol.",
+    "source": "FDA labeling"
+  },
+  {
+    "name": "Ondansetron",
+    "adultDose": "4-8 mg IV/IM/PO",
+    "pedsDose": "0.1-0.15 mg/kg IV (max 4 mg)",
+    "route": "IV/IM/PO",
+    "notes": "Nausea/vomiting.",
+    "source": "FDA labeling"
+  },
+  {
+    "name": "Diphenhydramine",
+    "adultDose": "25-50 mg IV/IM/PO",
+    "pedsDose": "1 mg/kg IV/IM/PO (max 50 mg)",
+    "route": "IV/IM/PO",
+    "notes": "Allergic reaction adjunct.",
+    "source": "FDA labeling"
+  },
+  {
+    "name": "Methylprednisolone",
+    "adultDose": "125 mg IV",
+    "pedsDose": "1-2 mg/kg IV (max 125 mg)",
+    "route": "IV/IM",
+    "notes": "Severe asthma, anaphylaxis adjunct.",
+    "source": "FDA labeling"
+  },
+  {
+    "name": "Albuterol",
+    "adultDose": "2.5-5 mg nebulized",
+    "pedsDose": "0.15 mg/kg nebulized (min 2.5 mg, max 5 mg)",
+    "route": "nebulized / MDI",
+    "notes": "Bronchodilation.",
+    "source": "FDA labeling"
+  },
+  {
+    "name": "Nitroglycerin",
+    "adultDose": "0.4 mg SL every 5 min x 3",
+    "pedsDose": "not routinely used",
+    "route": "SL/IV",
+    "notes": "Hold if SBP < 90, recent PDE-5 inhibitor.",
+    "source": "FDA labeling"
+  },
+  {
+    "name": "Aspirin",
+    "adultDose": "162-325 mg PO chewed",
+    "pedsDose": "not used acutely",
+    "route": "PO",
+    "notes": "Suspected ACS.",
+    "source": "FDA labeling"
+  }
+]

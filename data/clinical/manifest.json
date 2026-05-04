@@ -1,0 +1,19 @@
+{
+  "dataset": "clinical",
+  "sourceUrl": "published clinical literature (citations only; computations live in app.js)",
+  "agency": "various; see docs/clinical-citations.md",
+  "status": "public-formulas-and-original-notes",
+  "cadence": "as-needed",
+  "fetchDate": "2026-05-04",
+  "offlineSeed": false,
+  "recordCount": 63,
+  "files": [
+    "formulas.json",
+    "pediatric-vitals.json",
+    "lab-ranges.json",
+    "beers.json",
+    "ismp-high-alert.json",
+    "asa-status.json",
+    "mallampati.json"
+  ]
+}

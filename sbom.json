@@ -1,0 +1,89 @@
+{
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.5",
+  "serialNumber": "urn:uuid:sophiewell-8703e43b8b21cf75",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2026-05-04T18:37:41.301Z",
+    "tools": [
+      {
+        "name": "scripts/build-sbom.mjs",
+        "version": "1.0.0"
+      }
+    ],
+    "component": {
+      "bom-ref": "pkg:application/sophiewell",
+      "type": "application",
+      "name": "sophiewell.com",
+      "version": "1.0.0",
+      "description": "Sophie Well - 79 deterministic healthcare utilities. Free, client-side, no servers, no telemetry, no AI.",
+      "licenses": [
+        {
+          "license": {
+            "id": "MIT"
+          }
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "website",
+          "url": "https://sophiewell.com"
+        },
+        {
+          "type": "vcs",
+          "url": "https://github.com/clay-good/sophiewell.com.git"
+        },
+        {
+          "type": "issue-tracker",
+          "url": "https://github.com/clay-good/sophiewell.com/issues"
+        }
+      ],
+      "properties": [
+        {
+          "name": "engines.node",
+          "value": ">=20.18.1 <21"
+        },
+        {
+          "name": "engines.npm",
+          "value": ">=10.0.0"
+        },
+        {
+          "name": "thirdPartyRuntimeDependencies",
+          "value": "0"
+        }
+      ]
+    }
+  },
+  "components": [
+    {
+      "bom-ref": "pkg:npm/@playwright/test@1.59.1",
+      "type": "library",
+      "name": "@playwright/test",
+      "version": "1.59.1",
+      "scope": "optional",
+      "purl": "pkg:npm/@playwright/test@1.59.1"
+    },
+    {
+      "bom-ref": "pkg:npm/eslint@9.39.4",
+      "type": "library",
+      "name": "eslint",
+      "version": "9.39.4",
+      "scope": "optional",
+      "purl": "pkg:npm/eslint@9.39.4"
+    }
+  ],
+  "properties": [
+    {
+      "name": "sophiewell:buildId",
+      "value": "8703e43b8b21cf75"
+    },
+    {
+      "name": "sophiewell:runtimeAssetCount",
+      "value": "13"
+    },
+    {
+      "name": "sophiewell:sourceFileCount",
+      "value": "24"
+    }
+  ]
+}

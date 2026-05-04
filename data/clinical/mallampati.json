@@ -1,0 +1,22 @@
+{
+  "fetchDate": "2026-05-04",
+  "citation": "Mallampati SR et al. Can Anaesth Soc J. 1985;32(4):429-434",
+  "classes": [
+    {
+      "class": "I",
+      "summary": "Soft palate, uvula, fauces, and pillars are visible."
+    },
+    {
+      "class": "II",
+      "summary": "Soft palate, uvula, and fauces are visible."
+    },
+    {
+      "class": "III",
+      "summary": "Soft palate and base of uvula are visible."
+    },
+    {
+      "class": "IV",
+      "summary": "Soft palate is not visible."
+    }
+  ]
+}

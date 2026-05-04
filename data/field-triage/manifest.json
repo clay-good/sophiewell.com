@@ -1,0 +1,14 @@
+{
+  "dataset": "field-triage",
+  "sourceUrl": "https://www.cdc.gov/mmwr/volumes/71/rr/rr7102a1.htm",
+  "agency": "CDC",
+  "status": "public-domain",
+  "cadence": "as-published",
+  "fetchDate": "2026-05-04",
+  "offlineSeed": false,
+  "recordCount": 4,
+  "files": [
+    "guidelines.json"
+  ],
+  "notes": "CDC public-domain Field Triage Guidelines, summarized in original prose by the project author."
+}

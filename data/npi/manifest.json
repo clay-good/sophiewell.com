@@ -1,0 +1,31 @@
+{
+  "dataset": "npi",
+  "sourceUrl": "https://download.cms.gov/nppes/NPI_Files.html",
+  "agency": "CMS",
+  "status": "public-domain",
+  "cadence": "monthly",
+  "fetchDate": "2026-05-04",
+  "offlineSeed": true,
+  "recordCount": 3,
+  "shards": [
+    {
+      "name": "CA.json",
+      "sha256": "8c2c8385e38124b46f1a8b37f6113c0825c3aeaa8d1e3fbb7bfb234ac9957041",
+      "records": 1,
+      "bytes": 103
+    },
+    {
+      "name": "NY.json",
+      "sha256": "8c69962ddd8b310ee163bdaf7f762b0f4d6cd1815120b47de45eaa5157e8e733",
+      "records": 1,
+      "bytes": 105
+    },
+    {
+      "name": "TX.json",
+      "sha256": "5776e900c536e9d507d97cd6c8f429f8a7a68d5e7576327854b78c4db088b220",
+      "records": 1,
+      "bytes": 105
+    }
+  ],
+  "notes": "Compact subset: NPI, name, primary taxonomy, state, status only."
+}

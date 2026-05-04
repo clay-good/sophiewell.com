@@ -1,0 +1,96 @@
+{
+  "fetchDate": "2026-05-04",
+  "ranges": [
+    {
+      "test": "Sodium",
+      "units": "mEq/L",
+      "low": 135,
+      "high": 145
+    },
+    {
+      "test": "Potassium",
+      "units": "mEq/L",
+      "low": 3.5,
+      "high": 5
+    },
+    {
+      "test": "Chloride",
+      "units": "mEq/L",
+      "low": 96,
+      "high": 106
+    },
+    {
+      "test": "Bicarbonate (HCO3)",
+      "units": "mEq/L",
+      "low": 22,
+      "high": 28
+    },
+    {
+      "test": "BUN",
+      "units": "mg/dL",
+      "low": 7,
+      "high": 20
+    },
+    {
+      "test": "Creatinine",
+      "units": "mg/dL",
+      "low": 0.6,
+      "high": 1.2
+    },
+    {
+      "test": "Glucose (fasting)",
+      "units": "mg/dL",
+      "low": 70,
+      "high": 99
+    },
+    {
+      "test": "Calcium",
+      "units": "mg/dL",
+      "low": 8.5,
+      "high": 10.5
+    },
+    {
+      "test": "Magnesium",
+      "units": "mg/dL",
+      "low": 1.7,
+      "high": 2.2
+    },
+    {
+      "test": "Albumin",
+      "units": "g/dL",
+      "low": 3.5,
+      "high": 5
+    },
+    {
+      "test": "Hemoglobin (M)",
+      "units": "g/dL",
+      "low": 13.5,
+      "high": 17.5
+    },
+    {
+      "test": "Hemoglobin (F)",
+      "units": "g/dL",
+      "low": 12,
+      "high": 15.5
+    },
+    {
+      "test": "Platelets",
+      "units": "x10^3/uL",
+      "low": 150,
+      "high": 400
+    },
+    {
+      "test": "WBC",
+      "units": "x10^3/uL",
+      "low": 4.5,
+      "high": 11
+    },
+    {
+      "test": "INR (off warfarin)",
+      "units": "",
+      "low": 0.8,
+      "high": 1.2
+    }
+  ],
+  "citation": "Common adult reference ranges; lab-specific ranges supersede."
+}

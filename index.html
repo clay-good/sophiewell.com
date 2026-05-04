@@ -1,0 +1,689 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Favicons declared first so browsers see them before any meta block. -->
+    <link rel="icon" type="image/x-icon" href="favicon.ico" />
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
+    <link rel="manifest" href="site.webmanifest" />
+
+    <!-- Security headers (meta equivalents). Note: frame-ancestors and
+         X-Frame-Options are intentionally NOT in <meta>; browsers ignore
+         them via meta and emit console warnings. They are still set as
+         HTTP response headers via `_headers` (Cloudflare Pages) and
+         `scripts/serve.mjs`. -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'self'; form-action 'self'; base-uri 'self'; object-src 'none'" />
+    <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+    <meta name="referrer" content="no-referrer" />
+    <meta name="color-scheme" content="dark" />
+
+    <!-- SEO -->
+    <title>Sophie Well</title>
+    <meta name="description" content="sophiewell  -  free, client-side healthcare toolbox. 79 deterministic utilities for patients, billers, coders, nurses, clinicians, EMS, and educators: ICD-10-CM and HCPCS code lookup, CPT reference, NDC drug codes, place-of-service / modifier / revenue / CARC / RARC code lookups, NCCI and MUE edits, LCD / NCD coverage, Medicare Physician Fee Schedule, NADAC drug pricing, charge-to-Medicare ratio, hospital price transparency, out-of-pocket estimator, medical bill decoder, EOB and insurance card decoders, No Surprises Act eligibility, Good Faith Estimate dispute checker, state patient rights, NPI lookup, OIG exclusions, Medicare opt-out list, BMI / BSA / MAP / anion gap / corrected calcium and sodium / A-a gradient / eGFR (CKD-EPI 2021) / Cockcroft-Gault / pack-years / pregnancy due date / QTc / P:F ratio, drip rate / weight-based dose / concentration-to-rate / pediatric dose bounds / insulin drip / anticoagulation reversal / high-alert medication reference, GCS / APGAR / pediatric vitals / lab ranges / ABG walkthrough / Wells PE and DVT / CHA2DS2-VASc / HAS-BLED / NIHSS / ASA / Mallampati / Beers criteria, appointment prep and prior-auth checklist generators, pediatric weight-to-dose, adult and pediatric arrest drug references, defibrillation energy, Cincinnati and FAST / BE-FAST stroke scales, CDC trauma triage, START and JumpSTART MCI triage, burn surface area and Parkland / Modified Brooke fluid resuscitation, hypothermia / heat-illness staging, pediatric ETT sizing, toxidrome reference, naloxone dosing, EMS PCR documentation. No accounts, no telemetry, no AI. Open source." />
+    <meta name="keywords" content="ICD-10-CM lookup, HCPCS Level II lookup, CPT code reference, NDC drug code lookup, place of service codes, modifier codes, revenue codes, CARC, RARC, NCCI edits, MUE edits, LCD coverage, NCD coverage, Medicare Physician Fee Schedule, MPFS calculator, NADAC drug pricing, charge to Medicare ratio, hospital price transparency, out-of-pocket estimator, medical bill decoder, insurance card decoder, EOB decoder, No Surprises Act, Good Faith Estimate, state patient rights, NPI lookup, OIG exclusions, Medicare opt-out, unit converter, BMI calculator, body surface area, mean arterial pressure, anion gap, corrected calcium, corrected sodium, A-a gradient, eGFR CKD-EPI 2021, Cockcroft-Gault creatinine clearance, pack years, Naegele due date, QTc, P/F ratio, drip rate calculator, weight-based dose, concentration to rate, pediatric dose bounds, insulin drip, anticoagulation reversal, high alert medications, Glasgow Coma Scale, APGAR, pediatric vital signs, lab reference ranges, ABG interpretation, Wells score PE, Wells score DVT, CHA2DS2-VASc, HAS-BLED, NIHSS, ASA physical status, Mallampati, Beers criteria, appointment prep, prior authorization checklist, pediatric weight to dose, adult cardiac arrest drugs, pediatric cardiac arrest drugs, defibrillation energy, Cincinnati prehospital stroke scale, FAST stroke, BE-FAST, CDC field trauma triage, START triage, JumpSTART triage, burn surface area, Parkland formula, Modified Brooke, hypothermia staging, heat illness, pediatric ETT, toxidromes, naloxone dosing, EMS documentation, healthcare tools, deterministic, no AI, free, open source, client side, browser, no telemetry, no tracking" />
+    <meta name="author" content="Clay Good" />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />
+    <meta name="googlebot" content="index, follow" />
+    <meta name="application-name" content="Sophie Well" />
+    <meta name="apple-mobile-web-app-title" content="Sophie Well" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="theme-color" content="#0a0a0a" />
+    <link rel="canonical" href="https://sophiewell.com/" />
+    <link rel="author" href="https://claygood.com" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Sophie Well" />
+    <meta property="og:url" content="https://sophiewell.com/" />
+    <meta property="og:title" content="Sophie Well" />
+    <meta property="og:description" content="Free, client-side healthcare toolbox: 79 deterministic utilities for patients, billers, coders, nurses, clinicians, EMS, and educators. Code lookups (ICD-10-CM, HCPCS, CPT, NDC), Medicare and NADAC pricing, bill / EOB / insurance decoders, No Surprises Act, NPI, clinical math (BMI, BSA, eGFR, QTc, anion gap, A-a), drip-rate and weight-based dose math, GCS / APGAR / Wells / NIHSS / Beers, MCI triage (START, JumpSTART), burn fluid resuscitation, toxidrome and naloxone dosing, EMS PCR. No accounts, no telemetry, no AI. Open source." />
+    <meta property="og:image" content="https://sophiewell.com/logo.png" />
+    <meta property="og:image:alt" content="sophiewell logo" />
+    <meta property="og:locale" content="en_US" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://sophiewell.com/" />
+    <meta property="twitter:title" content="Sophie Well" />
+    <meta property="twitter:description" content="79 deterministic healthcare tools that run entirely in your browser: ICD-10-CM / HCPCS / CPT / NDC lookups, Medicare and NADAC pricing, bill / EOB decoders, NPI, BMI / eGFR / QTc / drip-rate math, GCS / Wells / NIHSS / Beers, MCI triage, burn fluids, toxidromes, naloxone, EMS PCR. No accounts, no telemetry, open source." />
+    <meta property="twitter:image" content="https://sophiewell.com/logo.png" />
+    <meta property="twitter:image:alt" content="sophiewell logo" />
+
+    <!-- LD-JSON:START -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "WebApplication",
+          "@id": "https://sophiewell.com/#webapp",
+          "name": "sophiewell",
+          "url": "https://sophiewell.com/",
+          "description": "Free, client-side healthcare toolbox with 79 deterministic utilities for patients, billers, coders, nurses, clinicians, EMS, and educators.",
+          "applicationCategory": [
+            "HealthApplication",
+            "MedicalApplication",
+            "UtilitiesApplication"
+          ],
+          "operatingSystem": "Any",
+          "browserRequirements": "Requires JavaScript. Modern browser.",
+          "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+          },
+          "isAccessibleForFree": true,
+          "inLanguage": [
+            "en"
+          ],
+          "creator": {
+            "@type": "Person",
+            "name": "Clay Good",
+            "url": "https://claygood.com"
+          },
+          "image": "https://sophiewell.com/logo.png",
+          "featureList": [
+            "ICD-10-CM Code Lookup",
+            "HCPCS Level II Code Lookup",
+            "CPT Code Reference",
+            "NDC Drug Code Lookup",
+            "Place of Service Code Lookup",
+            "Modifier Code Lookup",
+            "Revenue Code Lookup",
+            "Claim Adjustment Reason Code Lookup",
+            "Remittance Advice Remark Code Lookup",
+            "NCCI Procedure-to-Procedure Edit Lookup",
+            "Medically Unlikely Edits Lookup",
+            "LCD and NCD Coverage Lookup",
+            "Medicare Physician Fee Schedule Lookup",
+            "NADAC Drug Pricing Lookup",
+            "Charge-to-Medicare Ratio Calculator",
+            "Hospital Price Transparency Lookup",
+            "Out-of-Pocket Cost Estimator",
+            "Medical Bill Decoder",
+            "Insurance Card Decoder",
+            "Explanation of Benefits Decoder",
+            "No Surprises Act Eligibility Checker",
+            "Good Faith Estimate Dispute Threshold Checker",
+            "State Patient Rights Reference",
+            "NPI Provider Lookup",
+            "OIG Exclusions Lookup",
+            "Medicare Opt-Out List Lookup",
+            "Unit Converter",
+            "BMI Calculator",
+            "Body Surface Area",
+            "Mean Arterial Pressure",
+            "Anion Gap",
+            "Corrected Calcium for Albumin",
+            "Corrected Sodium for Hyperglycemia",
+            "A-a Gradient",
+            "Estimated GFR (CKD-EPI 2021)",
+            "Cockcroft-Gault Creatinine Clearance",
+            "Pack-Years",
+            "Naegele Pregnancy Due Date",
+            "QTc Correction",
+            "P/F Ratio",
+            "Drip Rate Calculator",
+            "Weight-Based Dose",
+            "Concentration-to-Rate",
+            "Pediatric Dose Safety Bounds",
+            "Insulin Drip Math",
+            "Anticoagulation Reversal Reference",
+            "High-Alert Medication Reference",
+            "Glasgow Coma Scale",
+            "APGAR",
+            "Pediatric Vital Signs by Age",
+            "Common Lab Reference Ranges",
+            "ABG Interpretation Walkthrough",
+            "Wells Score for PE",
+            "Wells Score for DVT",
+            "CHA2DS2-VASc",
+            "HAS-BLED",
+            "NIH Stroke Scale",
+            "ASA Physical Status Reference",
+            "Mallampati Class Reference",
+            "Beers Criteria Drug-Condition Lookup",
+            "Appointment Prep Question Generator",
+            "Prior Authorization Checklist Generator",
+            "Pediatric Weight-to-Dose Calculator",
+            "Adult Cardiac Arrest Drug Reference",
+            "Pediatric Cardiac Arrest Drug Reference",
+            "Defibrillation Energy Calculator",
+            "Cincinnati Prehospital Stroke Scale",
+            "FAST and BE-FAST Stroke Assessment",
+            "Trauma Triage Decision Tool (CDC)",
+            "START Adult MCI Triage",
+            "JumpSTART Pediatric MCI Triage",
+            "Burn Surface Area Calculator",
+            "Burn Fluid Resuscitation Calculator",
+            "Hypothermia Staging Reference",
+            "Heat Illness Staging Reference",
+            "Pediatric ETT Size Calculator",
+            "Toxidrome Reference",
+            "Naloxone Dosing Calculator",
+            "EMS Documentation Helper"
+          ],
+          "softwareHelp": {
+            "@type": "CreativeWork",
+            "url": "https://github.com/clay-good/sophiewell.com"
+          },
+          "license": "https://github.com/clay-good/sophiewell.com/blob/main/LICENSE"
+        },
+        {
+          "@type": "FAQPage",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "Is sophiewell really free?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Yes. sophiewell is free, open source under MIT, and ad-free. The full source is on GitHub."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Are my inputs sent to any server?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "No. Every calculation runs locally in your browser. The site enforces a strict Content Security Policy and ships no analytics, telemetry, or third-party CDN."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Is this medical advice?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "No. sophiewell is a deterministic math and reference aid sourced from public datasets. It does not replace clinician judgment, institutional protocols, professional billing review, or legal counsel."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Where does the data come from?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Public datasets (CMS, FDA, OIG, AHA, CDC, ATSDR, NIOSH, DOT). Each tool surfaces a Source label with a fetched-on date. See docs/data-sources.md for the full source catalog."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Does it work offline?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Yes, after first load. A service worker caches the static bundle so every tool keeps working without an internet connection."
+              }
+            }
+          ]
+        }
+      ]
+    }
+    </script>
+    <!-- LD-JSON:END -->
+
+    <link rel="stylesheet" href="styles.css" />
+    <script type="module" src="app.js" defer></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <!-- file:// guard. ES module loading and fetch() are blocked by every
+         modern browser for the file:// origin (CORS, opaque origin), which
+         means none of the tool renderers can mount and clicks appear to
+         do nothing. Detect that and surface a clear message before the
+         user wastes time. Has zero effect under http(s)://. -->
+    <script>
+      (function () {
+        if (location.protocol !== 'file:') return;
+        document.documentElement.setAttribute('data-file-origin', '1');
+        document.addEventListener('DOMContentLoaded', function () {
+          var b = document.createElement('div');
+          b.id = 'file-origin-banner';
+          b.setAttribute('role', 'alert');
+          b.style.cssText = 'position:fixed;top:0;left:0;right:0;z-index:9999;padding:14px 18px;background:#5a1d1d;color:#fff;font:600 14px/1.45 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;border-bottom:2px solid #ff5d6c;box-shadow:0 4px 12px rgba(0,0,0,.5);text-align:center;';
+          var codeStyle = 'background:#000;padding:2px 6px;border-radius:4px;';
+          b.appendChild(document.createTextNode(
+            'Sophie Well needs to run on a local web server. Browsers block ES modules and data fetches when the page is opened directly from disk (file://), so tool clicks will appear to do nothing.'
+          ));
+          b.appendChild(document.createElement('br'));
+          b.appendChild(document.createElement('br'));
+          b.appendChild(document.createTextNode('From the project folder run '));
+          var c1 = document.createElement('code');
+          c1.style.cssText = codeStyle;
+          c1.textContent = 'npm run dev';
+          b.appendChild(c1);
+          b.appendChild(document.createTextNode(' and open '));
+          var c2 = document.createElement('code');
+          c2.style.cssText = codeStyle;
+          c2.textContent = 'http://localhost:4173';
+          b.appendChild(c2);
+          document.body.insertBefore(b, document.body.firstChild);
+          document.body.style.paddingTop = '128px';
+        });
+      })();
+    </script>
+
+    <header class="topbar" role="banner">
+      <a href="#/" class="topbar-brand" aria-label="Sophie Well, home">
+        <img src="logo.png" alt="Sophie Well logo" width="32" height="32" />
+        <span>Sophie Well</span>
+      </a>
+    </header>
+
+    <div class="container">
+      <main id="main">
+        <h1 id="intro-heading" class="visually-hidden">Sophie Well, deterministic healthcare utilities</h1>
+
+        <section id="home-view" class="home-view view active" aria-labelledby="tools-heading">
+          <h2 id="tools-heading" class="visually-hidden">Tools</h2>
+
+          <div id="tile-grid">
+
+            <section class="home-section">
+              <h3>A · Code Lookup</h3>
+              <div class="home-grid">
+                <button class="tool-card" type="button" data-tool="icd10" data-group="A" data-audiences="billers educators">
+                  <span class="tc-title">ICD-10-CM Code Lookup</span>
+                  <span class="tc-desc">Search the current fiscal year ICD-10-CM tabular list and alphabetic index.</span>
+                </button>
+                <button class="tool-card" type="button" data-tool="hcpcs" data-group="A" data-audiences="billers educators">
+                  <span class="tc-title">HCPCS Level II Code Lookup</span>
+                  <span class="tc-desc">Find HCPCS Level II codes by code or description.</span>
+                </button>
+                <button class="tool-card" type="button" data-tool="cpt" data-group="A" data-audiences="billers educators">
+                  <span class="tc-title">CPT Code Reference</span>
+                  <span class="tc-desc">Structural Medicare data and plain-English category summaries. AMA descriptors via link-out.</span>
+                </button>
+                <button class="tool-card" type="button" data-tool="ndc" data-group="A" data-audiences="patients billers clinicians educators">
+                  <span class="tc-title">NDC Drug Code Lookup</span>
+                  <span class="tc-desc">Look up National Drug Codes by code or drug name with format normalization.</span>
+                </button>
+                <button class="tool-card" type="button" data-tool="pos-codes" data-group="A" data-audiences="billers educators">
+                  <span class="tc-title">Place of Service Code Lookup</span>
+                  <span class="tc-desc">Direct lookup table of CMS Place of Service codes.</span>
+                </button>
+                <button class="tool-card" type="button" data-tool="modifier-codes" data-group="A" data-audiences="billers educators">
+                  <span class="tc-title">Modifier Code Lookup</span>
+                  <span class="tc-desc">Direct lookup of HCPCS and CPT modifier codes.</span>
+                </button>
+                <button class="tool-card" type="button" data-tool="revenue-codes" data-group="A" data-audiences="billers educators">
+                  <span class="tc-title">Revenue Code Lookup</span>
+                  <span class="tc-desc">Direct lookup of UB-04 revenue codes.</span>
+                </button>
+                <button class="tool-card" type="button" data-tool="carc" data-group="A" data-audiences="patients billers educators">
+                  <span class="tc-title">Claim Adjustment Reason Code Lookup</span>
+                  <span class="tc-desc">Look up CARC codes that appear on EOBs and remittance advice.</span>
+                </button>
+                <button class="tool-card" type="button" data-tool="rarc" data-group="A" data-audiences="patients billers educators">
+                  <span class="tc-title">Remittance Advice Remark Code Lookup</span>
+                  <span class="tc-desc">Look up RARC codes that appear on EOBs and remittance advice.</span>
+                </button>
+                <button class="tool-card" type="button" data-tool="ncci" data-group="A" data-audiences="billers educators">
+                  <span class="tc-title">NCCI Procedure-to-Procedure Edit Lookup</span>
+                  <span class="tc-desc">Given two codes, show bundled status, modifier indicator, and rationale.</span>
+                </button>
+                <button class="tool-card" type="button" data-tool="mue" data-group="A" data-audiences="billers educators">
+                  <span class="tc-title">Medically Unlikely Edits Lookup</span>
+                  <span class="tc-desc">Find the per-claim unit limit and rationale for a code.</span>
+                </button>
+                <button class="tool-card" type="button" data-tool="lcd" data-group="A" data-audiences="billers educators">
+                  <span class="tc-title">LCD and NCD Coverage Lookup</span>
+                  <span class="tc-desc">Find Medicare local and national coverage determinations for a code.</span>
+                </button>
+              </div>
+            </section>
+
+            <section class="home-section">
+              <h3>B · Pricing &amp; Cost Reference</h3>
+              <div class="home-grid">
+                <button class="tool-card" type="button" data-tool="mpfs" data-group="B" data-audiences="patients billers educators">
+                  <span class="tc-title">Medicare Physician Fee Schedule Lookup</span>
+                  <span class="tc-desc">Compute Medicare allowable for a code in a chosen locality.</span>
+                </button>
+                <button class="tool-card" type="button" data-tool="nadac" data-group="B" data-audiences="patients clinicians educators">
+                  <span class="tc-title">NADAC Drug Pricing Lookup</span>
+                  <span class="tc-desc">Look up the National Average Drug Acquisition Cost by NDC or drug name.</span>
+                </button>
+                <button class="tool-card" type="button" data-tool="ratio" data-group="B" data-audiences="patients billers">
+                  <span class="tc-title">Charge-to-Medicare Ratio Calculator</span>
+                  <span class="tc-desc">Compute how a charged amount compares to the Medicare allowable.</span>
+                </button>
+                <button class="tool-card" type="button" data-tool="hospital-prices" data-group="B" data-audiences="patients billers">
+                  <span class="tc-title">Hospital Price Transparency Lookup</span>
+                  <span class="tc-desc">Search a curated subset of hospital machine-readable price files.</span>
+                </button>
+                <button class="tool-card" type="button" data-tool="oop" data-group="B" data-audiences="patients">
+                  <span class="tc-title">Out-of-Pocket Cost Estimator</span>
+                  <span class="tc-desc">Estimate patient responsibility under standard commercial insurance math.</span>
+                </button>
+              </div>
+            </section>
+
+            <section class="home-section">
+              <h3>C · Patient Bill &amp; Insurance</h3>
+              <div class="home-grid">
+                <button class="tool-card" type="button" data-tool="decoder" data-group="C" data-audiences="patients billers">
+                  <span class="tc-title">Medical Bill Decoder</span>
+                  <span class="tc-desc">Paste a bill. Extract codes and dollar amounts and decode them inline.</span>
+                </button>
+                <button class="tool-card" type="button" data-tool="insurance" data-group="C" data-audiences="patients">
+                  <span class="tc-title">Insurance Card Decoder</span>
+                  <span class="tc-desc">Structured glossary that explains every region of a typical insurance card.</span>
+                </button>
+                <button class="tool-card" type="button" data-tool="eob-decoder" data-group="C" data-audiences="patients billers">
+                  <span class="tc-title">Explanation of Benefits Decoder</span>
+                  <span class="tc-desc">Paste an EOB. Extract CARC and RARC codes with allowed and patient amounts.</span>
+                </button>
+                <button class="tool-card" type="button" data-tool="no-surprises" data-group="C" data-audiences="patients">
+                  <span class="tc-title">No Surprises Act Eligibility Checker</span>
+                  <span class="tc-desc">Walk through No Surprises Act criteria with statutory citations.</span>
+                </button>
+                <button class="tool-card" type="button" data-tool="gfe" data-group="C" data-audiences="patients">
+                  <span class="tc-title">Good Faith Estimate Dispute Threshold Checker</span>
+                  <span class="tc-desc">Check whether your bill exceeds the federal GFE dispute threshold.</span>
+                </button>
+                <button class="tool-card" type="button" data-tool="state-rights" data-group="C" data-audiences="patients educators">
+                  <span class="tc-title">State Patient Rights Reference</span>
+                  <span class="tc-desc">Pick a state, see a curated, cited summary of medical debt and billing rules.</span>
+                </button>
+              </div>
+            </section>
+
+            <section class="home-section">
+              <h3>D · Provider &amp; Plan Lookup</h3>
+              <div class="home-grid">
+                <button class="tool-card" type="button" data-tool="npi" data-group="D" data-audiences="patients billers">
+                  <span class="tc-title">NPI Provider Lookup</span>
+                  <span class="tc-desc">Search the NPI registry by NPI or name. Cross-references enforcement lists.</span>
+                </button>
+                <button class="tool-card" type="button" data-tool="oig" data-group="D" data-audiences="billers">
+                  <span class="tc-title">OIG Exclusions Lookup</span>
+                  <span class="tc-desc">Search the OIG List of Excluded Individuals and Entities.</span>
+                </button>
+                <button class="tool-card" type="button" data-tool="opt-out" data-group="D" data-audiences="patients billers">
+                  <span class="tc-title">Medicare Opt-Out List Lookup</span>
+                  <span class="tc-desc">Search the Medicare opt-out provider list.</span>
+                </button>
+              </div>
+            </section>
+
+            <section class="home-section">
+              <h3>E · Clinical Math &amp; Conversions</h3>
+              <div class="home-grid">
+                <button class="tool-card" type="button" data-tool="unit-converter" data-group="E" data-audiences="clinicians educators">
+                  <span class="tc-title">Unit Converter</span>
+                  <span class="tc-desc">Bidirectional conversions for weight, temperature, volume, and mass.</span>
+                </button>
+                <button class="tool-card" type="button" data-tool="bmi" data-group="E" data-audiences="patients clinicians educators">
+                  <span class="tc-title">BMI Calculator</span>
+                  <span class="tc-desc">Body Mass Index in metric or imperial units with category bands.</span>
+                </button>
+                <button class="tool-card" type="button" data-tool="bsa" data-group="E" data-audiences="clinicians educators">
+                  <span class="tc-title">Body Surface Area</span>
+                  <span class="tc-desc">Du Bois and Mosteller formulas, both shown side by side.</span>
+                </button>
+                <button class="tool-card" type="button" data-tool="map" data-group="E" data-audiences="clinicians educators field">
+                  <span class="tc-title">Mean Arterial Pressure</span>
+                  <span class="tc-desc">MAP from systolic and diastolic blood pressure.</span>
+                </button>
+                <button class="tool-card" type="button" data-tool="anion-gap" data-group="E" data-audiences="clinicians educators field">
+                  <span class="tc-title">Anion Gap</span>
+                  <span class="tc-desc">Anion gap with optional albumin correction.</span>
+                </button>
+                <button class="tool-card" type="button" data-tool="corrected-calcium" data-group="E" data-audiences="clinicians educators">
+                  <span class="tc-title">Corrected Calcium for Albumin</span>
+                  <span class="tc-desc">Albumin-adjusted serum calcium.</span>
+                </button>
+                <button class="tool-card" type="button" data-tool="corrected-sodium" data-group="E" data-audiences="clinicians educators field">
+                  <span class="tc-title">Corrected Sodium for Hyperglycemia</span>
+                  <span class="tc-desc">Glucose-adjusted serum sodium with both common correction factors.</span>
+                </button>
+                <button class="tool-card" type="button" data-tool="aa-gradient" data-group="E" data-audiences="clinicians educators">
+                  <span class="tc-title">A-a Gradient</span>
+                  <span class="tc-desc">Alveolar-arterial oxygen gradient at sea level.</span>
+                </button>
+                <button class="tool-card" type="button" data-tool="egfr" data-group="E" data-audiences="clinicians educators">
+                  <span class="tc-title">Estimated GFR (CKD-EPI 2021)</span>
+                  <span class="tc-desc">Race-free CKD-EPI 2021 equation.</span>
+                </button>
+                <button class="tool-card" type="button" data-tool="cockcroft-gault" data-group="E" data-audiences="clinicians educators">
+                  <span class="tc-title">Cockcroft-Gault Creatinine Clearance</span>
+                  <span class="tc-desc">Classic Cockcroft-Gault creatinine clearance estimate.</span>
+                </button>
+                <button class="tool-card" type="button" data-tool="pack-years" data-group="E" data-audiences="patients clinicians educators">
+                  <span class="tc-title">Pack-Years</span>
+                  <span class="tc-desc">Tobacco pack-years from packs per day and years smoked.</span>
+                </button>
+                <button class="tool-card" type="button" data-tool="due-date" data-group="E" data-audiences="patients clinicians educators">
+                  <span class="tc-title">Naegele Pregnancy Due Date</span>
+                  <span class="tc-desc">Estimated due date and current gestational age from LMP.</span>
+                </button>
+                <button class="tool-card" type="button" data-tool="qtc" data-group="E" data-audiences="clinicians educators">
+                  <span class="tc-title">QTc Correction</span>
+                  <span class="tc-desc">Bazett, Fridericia, Framingham, and Hodges, all four shown side by side.</span>
+                </button>
+                <button class="tool-card" type="button" data-tool="pf-ratio" data-group="E" data-audiences="clinicians educators field">
+                  <span class="tc-title">P/F Ratio</span>
+                  <span class="tc-desc">PaO2 to FiO2 ratio with ARDS Berlin classification bands.</span>
+                </button>
+              </div>
+            </section>
+
+            <section class="home-section">
+              <h3>F · Medication &amp; Infusion</h3>
+              <div class="home-grid">
+                <button class="tool-card" type="button" data-tool="drip-rate" data-group="F" data-audiences="clinicians educators field">
+                  <span class="tc-title">Drip Rate Calculator</span>
+                  <span class="tc-desc">Compute mL per hour and gtts per minute from volume, time, and drop factor.</span>
+                </button>
+                <button class="tool-card" type="button" data-tool="weight-dose" data-group="F" data-audiences="clinicians educators field">
+                  <span class="tc-title">Weight-Based Dose</span>
+                  <span class="tc-desc">Total dose from weight and per-kg dose with sanity-check warnings.</span>
+                </button>
+                <button class="tool-card" type="button" data-tool="conc-rate" data-group="F" data-audiences="clinicians educators field">
+                  <span class="tc-title">Concentration-to-Rate</span>
+                  <span class="tc-desc">Convert dose rate to infusion rate using bag concentration.</span>
+                </button>
+                <button class="tool-card" type="button" data-tool="peds-dose" data-group="F" data-audiences="clinicians educators field">
+                  <span class="tc-title">Pediatric Dose Safety Bounds</span>
+                  <span class="tc-desc">Reference table of common pediatric per-kg doses with citations.</span>
+                </button>
+                <button class="tool-card" type="button" data-tool="insulin-drip" data-group="F" data-audiences="clinicians educators">
+                  <span class="tc-title">Insulin Drip Math</span>
+                  <span class="tc-desc">Math verifier for example insulin drip protocols. Use your institution's protocol.</span>
+                </button>
+                <button class="tool-card" type="button" data-tool="anticoag-reversal" data-group="F" data-audiences="clinicians educators field">
+                  <span class="tc-title">Anticoagulation Reversal Reference</span>
+                  <span class="tc-desc">Table of anticoagulant agents and standard reversal approaches with citations.</span>
+                </button>
+                <button class="tool-card" type="button" data-tool="high-alert" data-group="F" data-audiences="clinicians educators field">
+                  <span class="tc-title">High-Alert Medication Reference</span>
+                  <span class="tc-desc">Bundled high-alert medication identities with original brief notes and ISMP attribution.</span>
+                </button>
+              </div>
+            </section>
+
+            <section class="home-section">
+              <h3>G · Clinical Scoring &amp; Reference</h3>
+              <div class="home-grid">
+                <button class="tool-card" type="button" data-tool="gcs" data-group="G" data-audiences="clinicians educators field">
+                  <span class="tc-title">Glasgow Coma Scale</span>
+                  <span class="tc-desc">Eye, verbal, and motor scoring summed to total.</span>
+                </button>
+                <button class="tool-card" type="button" data-tool="apgar" data-group="G" data-audiences="clinicians educators field">
+                  <span class="tc-title">APGAR</span>
+                  <span class="tc-desc">Five-component newborn APGAR score.</span>
+                </button>
+                <button class="tool-card" type="button" data-tool="peds-vitals" data-group="G" data-audiences="clinicians educators field">
+                  <span class="tc-title">Pediatric Vital Signs by Age</span>
+                  <span class="tc-desc">Reference ranges for HR, RR, and BP by age band with citations.</span>
+                </button>
+                <button class="tool-card" type="button" data-tool="lab-ranges" data-group="G" data-audiences="clinicians educators field">
+                  <span class="tc-title">Common Lab Reference Ranges</span>
+                  <span class="tc-desc">Searchable list of common adult lab reference ranges.</span>
+                </button>
+                <button class="tool-card" type="button" data-tool="abg" data-group="G" data-audiences="clinicians educators field">
+                  <span class="tc-title">ABG Interpretation Walkthrough</span>
+                  <span class="tc-desc">Deterministic decision tree for acid-base, A-a gradient, and P/F ratio.</span>
+                </button>
+                <button class="tool-card" type="button" data-tool="wells-pe" data-group="G" data-audiences="clinicians educators field">
+                  <span class="tc-title">Wells Score for PE</span>
+                  <span class="tc-desc">Standard Wells scoring for pulmonary embolism with citation.</span>
+                </button>
+                <button class="tool-card" type="button" data-tool="wells-dvt" data-group="G" data-audiences="clinicians educators">
+                  <span class="tc-title">Wells Score for DVT</span>
+                  <span class="tc-desc">Standard Wells scoring for deep vein thrombosis with citation.</span>
+                </button>
+                <button class="tool-card" type="button" data-tool="chads" data-group="G" data-audiences="clinicians educators">
+                  <span class="tc-title">CHA2DS2-VASc</span>
+                  <span class="tc-desc">Stroke risk score in atrial fibrillation.</span>
+                </button>
+                <button class="tool-card" type="button" data-tool="hasbled" data-group="G" data-audiences="clinicians educators">
+                  <span class="tc-title">HAS-BLED</span>
+                  <span class="tc-desc">Bleeding risk score for anticoagulation in atrial fibrillation.</span>
+                </button>
+                <button class="tool-card" type="button" data-tool="nihss" data-group="G" data-audiences="clinicians educators field">
+                  <span class="tc-title">NIH Stroke Scale</span>
+                  <span class="tc-desc">The eleven-item public NIHSS.</span>
+                </button>
+                <button class="tool-card" type="button" data-tool="asa" data-group="G" data-audiences="clinicians educators">
+                  <span class="tc-title">ASA Physical Status Reference</span>
+                  <span class="tc-desc">Category numbers with original short summaries and ASA link.</span>
+                </button>
+                <button class="tool-card" type="button" data-tool="mallampati" data-group="G" data-audiences="clinicians educators field">
+                  <span class="tc-title">Mallampati Class Reference</span>
+                  <span class="tc-desc">Four classes with original short summaries and link to source.</span>
+                </button>
+                <button class="tool-card" type="button" data-tool="beers" data-group="G" data-audiences="clinicians educators">
+                  <span class="tc-title">Beers Criteria Drug-Condition Lookup</span>
+                  <span class="tc-desc">Drug-condition pairs with original brief notes and AGS attribution.</span>
+                </button>
+              </div>
+            </section>
+
+            <section class="home-section">
+              <h3>H · Preparation &amp; Workflow</h3>
+              <div class="home-grid">
+                <button class="tool-card" type="button" data-tool="prep" data-group="H" data-audiences="patients">
+                  <span class="tc-title">Appointment Prep Question Generator</span>
+                  <span class="tc-desc">Templated question list for an upcoming visit.</span>
+                </button>
+                <button class="tool-card" type="button" data-tool="prior-auth" data-group="H" data-audiences="billers">
+                  <span class="tc-title">Prior Authorization Checklist Generator</span>
+                  <span class="tc-desc">Templated checklist of common documentation requirements by procedure type.</span>
+                </button>
+              </div>
+            </section>
+
+            <section class="home-section">
+              <h3>I · Field Medicine</h3>
+              <div class="home-grid">
+                <button class="tool-card" type="button" data-tool="peds-weight-dose" data-group="I" data-audiences="clinicians educators field">
+                  <span class="tc-title">Pediatric Weight-to-Dose Calculator</span>
+                  <span class="tc-desc">Standard prehospital pediatric drug doses by per-kg formula.</span>
+                </button>
+                <button class="tool-card" type="button" data-tool="adult-arrest-ref" data-group="I" data-audiences="clinicians educators field">
+                  <span class="tc-title">Adult Cardiac Arrest Drug Reference</span>
+                  <span class="tc-desc">Standard adult cardiac arrest drugs, doses, intervals (numeric only).</span>
+                </button>
+                <button class="tool-card" type="button" data-tool="peds-arrest-ref" data-group="I" data-audiences="clinicians educators field">
+                  <span class="tc-title">Pediatric Cardiac Arrest Drug Reference</span>
+                  <span class="tc-desc">Standard pediatric cardiac arrest doses by per-kg formula.</span>
+                </button>
+                <button class="tool-card" type="button" data-tool="defib" data-group="I" data-audiences="clinicians educators field">
+                  <span class="tc-title">Defibrillation Energy Calculator</span>
+                  <span class="tc-desc">Recommended joules for VF/pVT and synchronized cardioversion (adult and pediatric).</span>
+                </button>
+                <button class="tool-card" type="button" data-tool="cincinnati" data-group="I" data-audiences="clinicians educators field">
+                  <span class="tc-title">Cincinnati Prehospital Stroke Scale</span>
+                  <span class="tc-desc">Three-sign field stroke screen (facial droop, arm drift, abnormal speech).</span>
+                </button>
+                <button class="tool-card" type="button" data-tool="fast" data-group="I" data-audiences="clinicians educators field">
+                  <span class="tc-title">FAST and BE-FAST Stroke Assessment</span>
+                  <span class="tc-desc">Face, arms, speech, time, plus balance and eyes for the BE-FAST extension.</span>
+                </button>
+                <button class="tool-card" type="button" data-tool="field-triage" data-group="I" data-audiences="clinicians educators field">
+                  <span class="tc-title">Trauma Triage Decision Tool (CDC)</span>
+                  <span class="tc-desc">Step-by-step CDC Field Triage Guidelines with destination recommendation.</span>
+                </button>
+                <button class="tool-card" type="button" data-tool="start-triage" data-group="I" data-audiences="clinicians educators field">
+                  <span class="tc-title">START Adult MCI Triage</span>
+                  <span class="tc-desc">Adult mass-casualty triage by the START algorithm. Output is the triage category.</span>
+                </button>
+                <button class="tool-card" type="button" data-tool="jumpstart-triage" data-group="I" data-audiences="clinicians educators field">
+                  <span class="tc-title">JumpSTART Pediatric MCI Triage</span>
+                  <span class="tc-desc">Pediatric mass-casualty triage (ages 1-8) by the JumpSTART algorithm.</span>
+                </button>
+                <button class="tool-card" type="button" data-tool="bsa_burn" data-group="I" data-audiences="clinicians educators field">
+                  <span class="tc-title">Burn Surface Area Calculator</span>
+                  <span class="tc-desc">Rule of Nines or Lund-Browder. Total burn surface area as a percent.</span>
+                </button>
+                <button class="tool-card" type="button" data-tool="burn-fluid" data-group="I" data-audiences="clinicians educators field">
+                  <span class="tc-title">Burn Fluid Resuscitation Calculator</span>
+                  <span class="tc-desc">Parkland and Modified Brooke 24-hour totals with the half-in-first-8h split.</span>
+                </button>
+                <button class="tool-card" type="button" data-tool="hypothermia" data-group="I" data-audiences="clinicians educators field">
+                  <span class="tc-title">Hypothermia Staging Reference</span>
+                  <span class="tc-desc">Mild, moderate, severe stages with core temperature and assessment criteria.</span>
+                </button>
+                <button class="tool-card" type="button" data-tool="heat-illness" data-group="I" data-audiences="clinicians educators field">
+                  <span class="tc-title">Heat Illness Staging Reference</span>
+                  <span class="tc-desc">Heat exhaustion vs heat stroke quick reference.</span>
+                </button>
+                <button class="tool-card" type="button" data-tool="peds-ett" data-group="I" data-audiences="clinicians educators field">
+                  <span class="tc-title">Pediatric ETT Size Calculator</span>
+                  <span class="tc-desc">Cuffed (age/4 + 3.5) and uncuffed (age/4 + 4) tube size with depth.</span>
+                </button>
+                <button class="tool-card" type="button" data-tool="toxidromes" data-group="I" data-audiences="clinicians educators field">
+                  <span class="tc-title">Toxidrome Reference</span>
+                  <span class="tc-desc">Six common toxidromes with signs, common causes, and antidotes.</span>
+                </button>
+                <button class="tool-card" type="button" data-tool="naloxone" data-group="I" data-audiences="clinicians educators field patients">
+                  <span class="tc-title">Naloxone Dosing Calculator</span>
+                  <span class="tc-desc">Adult and pediatric naloxone initial doses, redosing, and route options.</span>
+                </button>
+                <button class="tool-card" type="button" data-tool="ems-doc" data-group="I" data-audiences="clinicians field">
+                  <span class="tc-title">EMS Documentation Helper</span>
+                  <span class="tc-desc">Templated PCR documentation checklists by run type. Printable.</span>
+                </button>
+              </div>
+            </section>
+
+          </div>
+
+        </section>
+      </main>
+    </div>
+
+    <footer class="site-footer" role="contentinfo">
+      <p class="footer-disclaimer">
+        Sophie Well is a deterministic public utility for patients, billers,
+        coders, nurses, clinicians, EMS, and educators. Everything runs in
+        the browser. No accounts, no telemetry, no AI. Sophie Well provides
+        reference information and computed math from public data. Not
+        medical, legal, or financial advice. It does not replace clinician
+        judgment, institutional protocols, professional billing review, or
+        legal counsel. It acts as a reference "cheat sheet" for healthcare
+        workers.
+      </p>
+      <div class="footer-badges">
+        <a class="credit-badge" href="https://claygood.com" target="_blank" rel="noopener noreferrer" aria-label="Made with love by Clay Good">
+          <span>Made with</span>
+          <svg class="credit-heart" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true" focusable="false">
+            <path fill="currentColor" d="M12 21s-7-4.35-9.5-9.05C.86 8.7 2.7 5 6.5 5c2.05 0 3.6 1.05 4.5 2.5h2c.9-1.45 2.45-2.5 4.5-2.5 3.8 0 5.64 3.7 4 6.95C19 16.65 12 21 12 21z" />
+          </svg>
+          <span>by Clay Good</span>
+        </a>
+        <a class="gh-badge" href="https://github.com/clay-good/sophiewell.com" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+          <svg class="gh-badge-mark" viewBox="0 0 16 16" width="18" height="18" aria-hidden="true" focusable="false">
+            <path fill="currentColor" fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z" />
+          </svg>
+          <span class="gh-badge-text">GitHub</span>
+        </a>
+      </div>
+    </footer>
+  </body>
+</html>

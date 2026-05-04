@@ -1,0 +1,61 @@
+name: data-refresh
+
+on:
+  schedule:
+    # Weekly, Sunday 06:00 UTC.
+    - cron: '0 6 * * 0'
+  workflow_dispatch: {}
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+      - run: npm ci || npm install --no-audit --no-fund
+
+      - name: Snapshot previous data
+        run: |
+          mkdir -p /tmp/prev-data
+          if [ -d data ]; then cp -R data /tmp/prev-data/; fi
+
+      - name: Run data pipeline (with network)
+        run: node scripts/build-data.mjs
+
+      - name: Verify integrity
+        run: node scripts/verify-integrity.mjs
+
+      - name: Generate data change summary
+        id: changes
+        run: |
+          node scripts/analyze-data-changes.mjs --previous /tmp/prev-data/data --current data > /tmp/changes.md
+          echo "summary<<EOF" >> $GITHUB_OUTPUT
+          cat /tmp/changes.md >> $GITHUB_OUTPUT
+          echo "EOF" >> $GITHUB_OUTPUT
+
+      - name: Run full test suite on refreshed data
+        run: |
+          npm run lint
+          npm run test:unit
+          npm run test:a11y
+
+      - name: Open pull request if data changed
+        uses: peter-evans/create-pull-request@v6
+        with:
+          branch: data/weekly-refresh
+          title: 'data: weekly refresh'
+          commit-message: 'data: weekly refresh of bundled datasets'
+          body: |
+            Automated weekly refresh of bundled public datasets.
+            See scripts/sources.md for the canonical source URL of each dataset.
+
+            ${{ steps.changes.outputs.summary }}
+          add-paths: |
+            data/**
+            scripts/expected-hashes.json

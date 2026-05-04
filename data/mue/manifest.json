@@ -1,0 +1,18 @@
+{
+  "dataset": "mue",
+  "sourceUrl": "https://www.cms.gov/medicare/coding-billing/national-correct-coding-initiative-ncci-edits/medicare-ncci-medically-unlikely-edits",
+  "agency": "CMS",
+  "status": "public-domain",
+  "cadence": "quarterly",
+  "fetchDate": "2026-05-04",
+  "offlineSeed": true,
+  "recordCount": 2,
+  "shards": [
+    {
+      "name": "mue.json",
+      "sha256": "d3d8216b3a86610629be2abe32a37ff1da7decf81a611e8d3688481cd9ccf9bb",
+      "records": 2,
+      "bytes": 197
+    }
+  ]
+}

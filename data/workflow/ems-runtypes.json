@@ -1,0 +1,140 @@
+{
+  "fetchDate": "2026-05-04",
+  "notes": "Templated EMS PCR documentation checklists by run type. Specific agency documentation requirements govern.",
+  "runTypes": [
+    {
+      "id": "cardiac-arrest",
+      "name": "Cardiac arrest",
+      "items": [
+        "Time of arrest (witnessed vs unwitnessed)",
+        "Bystander CPR (yes/no, duration)",
+        "Initial rhythm at first analysis",
+        "All shocks delivered with energy and time",
+        "All medications given with dose, route, time",
+        "Airway interventions (BVM, supraglottic, intubation) with time",
+        "ETCO2 trend (initial, ongoing, ROSC)",
+        "ROSC time and post-ROSC vitals",
+        "Hospital notification time and receiving facility",
+        "Family / scene witnesses contact info"
+      ]
+    },
+    {
+      "id": "mva",
+      "name": "Motor vehicle accident",
+      "items": [
+        "Mechanism (speed, direction of impact, restraints, airbag deployment, ejection, intrusion)",
+        "Vehicle damage and patient compartment intrusion",
+        "Initial GCS and changes en route",
+        "Vital signs on scene and at intervals",
+        "Spinal motion restriction decision and rationale",
+        "Visible injuries with location and characteristics",
+        "Splinting / tourniquet / hemorrhage control interventions",
+        "Pain assessment with scale and any analgesics given",
+        "Trauma triage step met (per CDC field triage if applicable)",
+        "Receiving facility and notification time"
+      ]
+    },
+    {
+      "id": "stroke",
+      "name": "Stroke",
+      "items": [
+        "Time of last known well",
+        "Cincinnati Prehospital Stroke Scale findings",
+        "FAST or BE-FAST findings",
+        "Blood glucose",
+        "Anticoagulant or antiplatelet history",
+        "Vital signs and serial GCS",
+        "Stroke center notification time and ETA",
+        "Family contact information for consent and history"
+      ]
+    },
+    {
+      "id": "overdose",
+      "name": "Overdose",
+      "items": [
+        "Substance(s) suspected and route",
+        "Time of exposure (best estimate)",
+        "Initial mental status and respiratory effort",
+        "Naloxone doses given with dose, route, time",
+        "Response to naloxone (return of respirations, mental status)",
+        "Vital signs on scene and en route",
+        "Airway management interventions",
+        "Co-ingestants and medical history",
+        "Disposition (transport vs refusal) and capacity assessment if refusal"
+      ]
+    },
+    {
+      "id": "fall",
+      "name": "Fall",
+      "items": [
+        "Mechanism (height, surface, witnessed)",
+        "Loss of consciousness (yes/no, duration)",
+        "Anticoagulant use",
+        "Visible injuries and pain locations",
+        "GCS and serial assessments",
+        "Spinal motion restriction decision",
+        "Mobility before and after the event",
+        "Home environment and risk factors",
+        "Contact information for caregivers"
+      ]
+    },
+    {
+      "id": "syncope",
+      "name": "Syncope",
+      "items": [
+        "Triggering events and prodrome",
+        "Witnessed vs unwitnessed",
+        "Duration of unconsciousness",
+        "Postictal features or seizure activity",
+        "Medications (anti-hypertensives, anti-arrhythmics, recent changes)",
+        "Vital signs supine and standing if safe",
+        "12-lead EKG",
+        "Blood glucose",
+        "Family history of sudden cardiac death"
+      ]
+    },
+    {
+      "id": "seizure",
+      "name": "Seizure",
+      "items": [
+        "First-time vs recurrent",
+        "Description (focal vs generalized, duration)",
+        "Medication compliance (anti-epileptics)",
+        "Postictal mental status and duration",
+        "Trauma sustained during event",
+        "Blood glucose",
+        "Vital signs on scene and en route",
+        "Benzodiazepine doses given with route and time"
+      ]
+    },
+    {
+      "id": "respiratory-distress",
+      "name": "Respiratory distress",
+      "items": [
+        "Onset and duration",
+        "Triggers (allergen, exertion, infection)",
+        "History (asthma, COPD, CHF, pneumonia)",
+        "Initial SpO2 on room air and on supplemental O2",
+        "ETCO2 if available",
+        "Lung sounds at each interval",
+        "Treatments given (albuterol, ipratropium, nebulizer, NIPPV) with response",
+        "Position of comfort and need for advanced airway"
+      ]
+    },
+    {
+      "id": "ob-ldm",
+      "name": "OB / labor and delivery",
+      "items": [
+        "Gravida / para / abortion history",
+        "Estimated gestational age and EDD",
+        "Frequency and duration of contractions",
+        "Membrane status (intact vs ruptured) and time of rupture",
+        "Vaginal bleeding (estimated volume)",
+        "Visible crowning and any deliveries en route",
+        "APGAR at 1 and 5 minutes if delivered",
+        "Transport position and receiving facility",
+        "Maternal vital signs and fetal heart tones if available"
+      ]
+    }
+  ]
+}
