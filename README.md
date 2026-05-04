@@ -120,12 +120,6 @@ rules, not soft preferences.
   account system, because there are no accounts.
 - **Versioned releases.** Every release is tagged with a semantic version
   and described in [CHANGELOG.md](CHANGELOG.md), linked from the footer.
-- **90-day deprecation notice.** If a utility ever has to be removed, its
-  view shows a clear notice for at least 90 days explaining what changed
-  and pointing to the closest replacement before the route stops
-  responding. Calculator formula changes are announced in the changelog,
-  the inline citation is updated, and the "Test with example" button is
-  refreshed against the new expected output.
 
 ## CLI reference
 
@@ -232,7 +226,3 @@ build, integrity-verified data shards) are documented in
 - [CHANGELOG.md](CHANGELOG.md) — every release with date, version, and
   user-visible changes
 - [SECURITY.md](SECURITY.md) — vulnerability disclosure policy
-
-## License
-
-MIT. See [LICENSE](LICENSE).
