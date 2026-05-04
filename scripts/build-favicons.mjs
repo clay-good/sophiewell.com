@@ -158,6 +158,12 @@ async function main() {
     console.log(`build-favicons: using sips fallback, source=${src.path}`);
     await generateWithSips(src);
   } else {
+    const outputs = ['favicon.ico', 'favicon-16x16.png', 'favicon-32x32.png', 'apple-touch-icon.png', 'logo.png'];
+    const allPresent = outputs.every((f) => existsSync(join(ROOT, f)));
+    if (allPresent) {
+      console.log('build-favicons: no backend available (sharp/sips); existing favicon assets present, skipping regeneration.');
+      return;
+    }
     console.error('build-favicons: install `sharp` (npm i -D sharp) or run on macOS for sips fallback.');
     process.exit(1);
   }
