@@ -21,7 +21,7 @@
     "dev": "node scripts/serve.mjs",
     "build": "node scripts/build.mjs",
     "test": "npm run test:unit && npm run test:a11y && node scripts/grep-check.mjs && npm run data:verify",
-    "test:unit": "node --test 'test/unit/*.test.js'",
+    "test:unit": "node --test test/unit/*.test.js",
     "test:e2e": "playwright test",
     "test:a11y": "node scripts/a11y-check.mjs",
     "lint": "eslint . && node scripts/grep-check.mjs",

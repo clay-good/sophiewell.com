@@ -1,0 +1,12 @@
+[
+  {
+    "policyId": "L33773",
+    "title": "Frequency of Hemodialysis",
+    "codes": [
+      "90935",
+      "90937"
+    ],
+    "effectiveDate": "2024-01-01",
+    "mac": "Noridian"
+  }
+]
