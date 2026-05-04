@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `8703e43b8b21cf75`
-Generated: 2026-05-04T18:57:54.216Z
+Build ID: `a8b2ba81c2f5e46c`
+Generated: 2026-05-04T19:26:36.168Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=20.18.1 <21, npm >=10.0.0
@@ -25,7 +25,7 @@ downloads is committed in this repository and is hashed below.
 |---|---:|---|
 | `index.html` | 47828 | `5e0b625741ac56fda25af14b683eb60f27c9c6484a2be29cfbdbfabe8b8860f6` |
 | `styles.css` | 19540 | `8168a5bea1d36f334e1c5a3399c3b8c45b3edbedf68985cd740c6bcad24ff236` |
-| `app.js` | 30997 | `eb7ec922f06716f0a4642696c22f5d406555d1a7d6a133551b7afb10bb1369d1` |
+| `app.js` | 31196 | `54f23c8cb2f293da5dee8ce9cf9a712bb0ab5db24e3e38d48d526b347497c2b7` |
 | `sw.js` | 4062 | `60f524b1b69eb5170c59af42631e11cc05db2a44e8e530977db0327888b0ff6d` |
 | `site.webmanifest` | 709 | `0e0de4da60590a12e8b27a0ae2a2f5ffdb6500b7d2b78f93631ec2f64ed3d5ce` |
 | `robots.txt` | 67 | `297014916e0fe5e4b0a9356b12884f815003c873ad25f299bf441f7895b77d89` |

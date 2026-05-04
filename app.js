@@ -487,6 +487,11 @@ function renderToolView(util) {
   const body = el('div', { id: 'tool-body', class: 'tool-body' });
   content.appendChild(body);
 
+  // Attach to the live DOM before invoking the renderer. Several renderers
+  // call document.getElementById on inputs they just appended, which only
+  // works once `body` is part of the document.
+  main.appendChild(content);
+
   const renderer = RENDERERS[util.id];
   if (renderer) {
     try {
@@ -512,8 +517,6 @@ function renderToolView(util) {
       el('p', { class: 'muted', text: 'See docs/data-sources.md and docs/clinical-citations.md for the full source catalog and citations.' }),
     ])
   );
-
-  main.appendChild(content);
   document.title = util.name + ' | Sophie Well';
 
   // Always reset scroll so the new view is visible.

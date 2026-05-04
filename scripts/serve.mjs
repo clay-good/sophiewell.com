@@ -6,9 +6,21 @@ import { createServer } from 'node:http';
 import { readFile, stat } from 'node:fs/promises';
 import { extname, join, normalize, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { withInlineHashes } from './csp.mjs';
 
 const ROOT = resolve(fileURLToPath(import.meta.url), '..', '..');
 const PORT = Number(process.env.PORT || 4173);
+
+const CSP_BASE = "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'self'; form-action 'self'; base-uri 'self'; frame-ancestors 'none'; object-src 'none'";
+
+async function buildCsp() {
+  try {
+    const html = await readFile(join(ROOT, 'index.html'), 'utf8');
+    return withInlineHashes(CSP_BASE, html);
+  } catch {
+    return CSP_BASE;
+  }
+}
 
 const MIME = {
   '.html': 'text/html; charset=utf-8',
@@ -25,7 +37,7 @@ const MIME = {
 };
 
 const HEADERS = {
-  'Content-Security-Policy': "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'self'; form-action 'self'; base-uri 'self'; frame-ancestors 'none'; object-src 'none'",
+  'Content-Security-Policy': CSP_BASE,
   'X-Content-Type-Options': 'nosniff',
   'X-Frame-Options': 'DENY',
   'Referrer-Policy': 'no-referrer',
@@ -55,4 +67,7 @@ const server = createServer(async (req, res) => {
   }
 });
 
-server.listen(PORT, () => console.log(`sophiewell dev server: http://localhost:${PORT}`));
+buildCsp().then((csp) => {
+  HEADERS['Content-Security-Policy'] = csp;
+  server.listen(PORT, () => console.log(`sophiewell dev server: http://localhost:${PORT}`));
+});

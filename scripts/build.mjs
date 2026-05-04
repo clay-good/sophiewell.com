@@ -7,6 +7,7 @@ import { existsSync } from 'node:fs';
 import { dirname, join, relative, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { createHash } from 'node:crypto';
+import { withInlineHashes } from './csp.mjs';
 
 const ROOT = resolve(fileURLToPath(import.meta.url), '..', '..');
 const DIST = join(ROOT, 'dist');
@@ -73,6 +74,18 @@ async function main() {
     const src = join(ROOT, f);
     if (existsSync(src)) await copyFile(src, join(DIST, f));
   }
+
+  // Inject sha256 hashes for the inline <script> blocks in the built
+  // index.html into dist/_headers so the strict CSP (script-src 'self')
+  // still permits them without falling back to 'unsafe-inline'.
+  const distIndex = await readFile(join(DIST, 'index.html'), 'utf8');
+  const headersPath = join(DIST, '_headers');
+  const headersText = await readFile(headersPath, 'utf8');
+  const patchedHeaders = headersText.replace(
+    /^(\s*Content-Security-Policy:\s*)(.+)$/m,
+    (_, prefix, csp) => prefix + withInlineHashes(csp, distIndex),
+  );
+  await writeFile(headersPath, patchedHeaders, 'utf8');
 
   const hash = await buildHash();
   // Stamp BUILD_HASH in dist/sw.js.
