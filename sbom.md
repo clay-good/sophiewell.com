@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `a8b2ba81c2f5e46c`
-Generated: 2026-05-04T19:26:36.168Z
+Build ID: `339a75f7c9c3a58c`
+Generated: 2026-05-04T19:37:06.026Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=20.18.1 <21, npm >=10.0.0
@@ -44,7 +44,7 @@ downloads is committed in this repository and is hashed below.
 | `lib/clinical.js` | 14958 | `207f70d80e7f714af4f7f1ec2871aab528ba0b0cc76a65c1fc590f917304a8ff` |
 | `lib/clipboard.js` | 2144 | `2558654588bad53e537e8ac128f335ce21df4e2916f52896e3bd1ef54834e096` |
 | `lib/codes.js` | 4893 | `03e6f25fd5931ec04a30f647d9646d281b15701e4799cbf2d41e4a26bd927924` |
-| `lib/data.js` | 1129 | `f689065c645b5a44dd31db9a34ebea28ab796a549bdcccd7ad3509f0211cec9d` |
+| `lib/data.js` | 1896 | `db1b3843dbe593a25f04e29c519bee29fde77e5cb7b6d14e4892d3abe0846582` |
 | `lib/decoder.js` | 4726 | `5abf9b0a2b9fcbc19fac35de370cf5a9df1852a9744d48371903096c673404c0` |
 | `lib/dom.js` | 984 | `b4b4ac74decb848bde516bfc1773e6c45a8d80031ed8f9d14226393d18fcde54` |
 | `lib/field.js` | 13816 | `d589f10d720281e79804cce186276b176d9cd83e9e2dafe217f3e3c9850655fe` |
