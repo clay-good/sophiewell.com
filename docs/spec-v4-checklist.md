@@ -18,7 +18,7 @@ landing.
 | grep-check clean (no emojis, em-dashes, banned APIs) | `node scripts/grep-check.mjs` -> "grep-check: clean." | PASS |
 | Lint clean | `npm run lint` exits 0. | PASS |
 | All unit tests pass | `npm run test:unit` -> 563 tests, 0 fail. (Was 191 at start of v4; +372 v4 tests.) | PASS |
-| All Playwright tests pass | `npm run test:e2e` not run in this checkout (Playwright unavailable in the dev environment). | PENDING (CI) |
+| All Playwright tests pass | `npm run test:e2e` not run in this checkout (Playwright unavailable in the dev environment). Smoke spec extended in `test/integration/smoke.spec.js` to cover one tile per new group J-O (tetanus, lab-adult, eob-glossary, medicaid-state, peds-weight-conv, high-alert-card) and the home tile-count assertion is updated from 79 to 195. | PENDING (CI) |
 | SBOM regenerates without error | `npm run sbom` -> wrote `sbom.json` and `sbom.md` with current buildId. | PASS |
 | Lighthouse floor (0.95) holds for the home view and a representative tile per group | Requires CI Lighthouse runner. Locally-tested with the dev server but not asserted programmatically in this checkout. | PENDING (CI runner) |
 | README, JSON-LD, sitemap counts all match (195) | README: "fifteen groups containing 195 utilities". `index.html` JSON-LD `featureList`: 195 entries. `sitemap.xml`: 196 URLs (root + 195). All cross-checked. | PASS |
@@ -48,9 +48,11 @@ the v4.18 commit. Build artifacts:
 
 ## Items deferred to follow-on work
 
-- Playwright smoke for one tile per new group (spec-v4 §7 step v4.18
-  references Playwright assertions; the local dev environment does not
-  ship a Playwright browser).
+- Playwright smoke for one tile per new group: smoke specs are now
+  authored in `test/integration/smoke.spec.js` covering tetanus (J),
+  lab-adult (K), eob-glossary (L), medicaid-state (M),
+  peds-weight-conv (N), and high-alert-card (O). They run on CI; the
+  local dev environment still does not ship a Playwright browser.
 - LOINC tile (deferred per spec-v4 §3 pending license review in v4.5+).
 - ACIP / Yellow Book / Medicaid-by-state / drug-recalls live-fetch
   builders (offline-seed shards ship today; CI runs `data-refresh.yml`

@@ -11,7 +11,7 @@ import { test, expect } from '@playwright/test';
 test('home: renders centered topbar and full tool-card grid', async ({ page }) => {
   await page.goto('/');
   await expect(page.locator('.topbar .topbar-brand')).toContainText('Sophie Well');
-  await expect(page.locator('.tool-card')).toHaveCount(79);
+  await expect(page.locator('.tool-card')).toHaveCount(195);
   // Filters and search are removed in v4.10; the home is just the tile grid.
   await expect(page.locator('.filters:not(.visually-hidden)')).toHaveCount(0);
   await expect(page.locator('#search')).toHaveCount(0);
@@ -205,4 +205,48 @@ test('spec-v3: pediatric ETT calculator computes 5 mm uncuffed at age 4', async 
   await page.goto('/#peds-ett');
   await page.fill('#pet-age', '4');
   await expect(page.getByText('Tube size: 5 mm internal diameter (uncuffed)')).toBeVisible();
+});
+
+// ---- spec-v4 layer: one smoke per new group (J-O) ----
+
+test('spec-v4 group J: tetanus decision tree renders the first question', async ({ page }) => {
+  await page.goto('/#tetanus');
+  await expect(page.locator('.content h1')).toHaveText('Tetanus Prophylaxis Decision Tree');
+  await expect(page.getByRole('heading', { name: 'Wound type?' })).toBeVisible();
+  await expect(page.getByRole('button', { name: 'Clean and minor' })).toBeVisible();
+});
+
+test('spec-v4 group K: adult lab reference table renders rows', async ({ page }) => {
+  await page.goto('/#lab-adult');
+  await expect(page.locator('.content h1')).toHaveText('Adult Lab Reference Ranges (NIH)');
+  await expect(page.locator('table tbody tr').first()).toBeVisible();
+});
+
+test('spec-v4 group L: EOB glossary table includes a known term', async ({ page }) => {
+  await page.goto('/#eob-glossary');
+  await expect(page.locator('.content h1')).toHaveText('EOB Jargon Glossary');
+  await expect(page.getByText('Allowed amount')).toBeVisible();
+  await expect(page.getByText('Coordination of benefits', { exact: false })).toBeVisible();
+});
+
+test('spec-v4 group M: Medicaid by State quick-card lists known states', async ({ page }) => {
+  await page.goto('/#medicaid-state');
+  await expect(page.locator('.content h1')).toHaveText('Medicaid by State Quick-Card');
+  await expect(page.getByRole('cell', { name: 'CA', exact: true })).toBeVisible();
+  await expect(page.getByRole('cell', { name: 'TX', exact: true })).toBeVisible();
+});
+
+test('spec-v4 group N: pediatric weight converter computes lb/oz to kg', async ({ page }) => {
+  await page.goto('/#peds-weight-conv');
+  await expect(page.locator('.content h1')).toHaveText('Pediatric Weight Converter (lb/oz <-> kg)');
+  // Default values 7 lb 5 oz are pre-filled and the converter live-renders on load.
+  await expect(page.getByText('7 lb 5 oz =', { exact: false })).toBeVisible();
+  await expect(page.getByText('Term newborn:', { exact: false })).toBeVisible();
+});
+
+test('spec-v4 group O: high-alert wallet card renders printable title', async ({ page }) => {
+  await page.goto('/#high-alert-card');
+  await expect(page.locator('.content h1')).toHaveText('High-Alert Medication Wallet Card (ISMP)');
+  await expect(page.getByRole('heading', { name: 'High-Alert Medications - Patient Wallet Card' })).toBeVisible();
+  await expect(page.getByRole('button', { name: /Print/i })).toBeVisible();
 });

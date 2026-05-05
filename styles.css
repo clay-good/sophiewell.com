@@ -30,6 +30,37 @@
 
   --font-body: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
   --font-mono: ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+
+  --logo-glow: rgba(255, 255, 255, 0.18);
+  --logo-glow-hover: rgba(255, 255, 255, 0.32);
+  --shadow-strong: rgba(0, 0, 0, 0.5);
+  --shadow-soft: rgba(0, 0, 0, 0.3);
+  --tint-soft: rgba(255, 255, 255, 0.06);
+  --tint-faint: rgba(255, 255, 255, 0.02);
+  --tint-border: rgba(255, 255, 255, 0.22);
+  --tint-inset: rgba(255, 255, 255, 0.04);
+}
+
+[data-theme="light"] {
+  --bg-primary: #ffffff;
+  --bg-secondary: #f4f4f5;
+  --bg-tertiary: #e6e6e8;
+  --text-primary: #0a0a0a;
+  --text-secondary: #2a2a2a;
+  --text-muted: #5a5a5a;
+  --border: #d6d6d9;
+  --border-light: #b8b8bc;
+  --accent: #0a0a0a;
+  --accent-hover: #2a2a2a;
+
+  --logo-glow: rgba(0, 0, 0, 0.18);
+  --logo-glow-hover: rgba(0, 0, 0, 0.32);
+  --shadow-strong: rgba(0, 0, 0, 0.18);
+  --shadow-soft: rgba(0, 0, 0, 0.10);
+  --tint-soft: rgba(0, 0, 0, 0.04);
+  --tint-faint: rgba(0, 0, 0, 0.02);
+  --tint-border: rgba(0, 0, 0, 0.18);
+  --tint-inset: rgba(0, 0, 0, 0.04);
 }
 
 *,
@@ -121,14 +152,42 @@ body {
   width: 32px;
   height: 32px;
   object-fit: contain;
-  filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.18));
+  filter: drop-shadow(0 0 8px var(--logo-glow));
   animation: float 4s ease-in-out infinite;
 }
 .topbar .topbar-brand:hover img {
-  filter: drop-shadow(0 0 14px rgba(255, 255, 255, 0.32));
+  filter: drop-shadow(0 0 14px var(--logo-glow-hover));
 }
 .topbar-brand { flex: 0 0 auto; }
 .topbar-spacer { flex: 0 0 auto; width: 56px; }
+
+/* Theme toggle */
+.topbar-theme-toggle {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-pill);
+  cursor: pointer;
+  transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+}
+.topbar-theme-toggle:hover {
+  background: var(--bg-tertiary);
+  border-color: var(--border-light);
+}
+.topbar-theme-toggle:focus-visible {
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 2px;
+}
+.topbar-theme-toggle .theme-icon { display: none; }
+[data-theme="dark"] .topbar-theme-toggle .theme-icon-sun { display: block; }
+[data-theme="light"] .topbar-theme-toggle .theme-icon-moon { display: block; }
 
 /* Header search */
 .topbar-search {
@@ -166,7 +225,7 @@ body {
   background: var(--bg-secondary);
   border: 1px solid var(--border);
   border-radius: var(--radius-card);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 10px 30px var(--shadow-strong);
   max-height: min(60vh, 480px);
   overflow-y: auto;
   z-index: 60;
@@ -269,7 +328,7 @@ body {
   inset: -1px;
   background: radial-gradient(
     600px circle at var(--mx, 50%) var(--my, -10%),
-    rgba(255, 255, 255, 0.06),
+    var(--tint-soft),
     transparent 40%
   );
   opacity: 0;
@@ -291,12 +350,12 @@ body {
   transition: opacity 0.18s ease, transform 0.18s ease, color 0.18s ease;
 }
 .tool-card:hover {
-  border-color: rgba(255, 255, 255, 0.22);
+  border-color: var(--tint-border);
   background: var(--bg-tertiary);
   transform: translateY(-3px);
   box-shadow:
-    0 10px 28px rgba(0, 0, 0, 0.45),
-    0 0 0 1px rgba(255, 255, 255, 0.04) inset;
+    0 10px 28px var(--shadow-strong),
+    0 0 0 1px var(--tint-inset) inset;
 }
 .tool-card:hover::after {
   opacity: 1;
@@ -334,7 +393,7 @@ body {
   border-radius: var(--radius-pill);
   border: 1px solid var(--border);
   color: var(--text-muted);
-  background: rgba(255, 255, 255, 0.02);
+  background: var(--tint-faint);
   letter-spacing: 0.02em;
 }
 
@@ -523,7 +582,7 @@ main h1 {
   background: var(--bg-tertiary);
   border-color: var(--border-light);
   transform: translateY(-1px);
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 6px 18px var(--shadow-soft);
 }
 .credit-badge:focus-visible,
 .gh-badge:focus-visible { outline: 2px solid var(--focus-ring); outline-offset: 3px; }
