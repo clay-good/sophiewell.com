@@ -3,6 +3,12 @@
 import { el, clear } from '../lib/dom.js';
 import { loadFile } from '../lib/data.js';
 import * as C from '../lib/clinical.js';
+import { renderTable } from '../lib/table.js';
+import {
+  mmeTotal, steroidEquivalent, benzoEquivalent,
+  abxRenalDose, vasopressorRateMlHr, vasopressorDose,
+  tpnMacro, ivToPo,
+} from '../lib/medication-v4.js';
 
 function field(label, id, opts = {}) {
   const wrap = el('p');
@@ -158,6 +164,225 @@ export const renderers = {
       const tbody = el('tbody');
       for (const m of data.meds) tbody.appendChild(el('tr', {}, [el('td', { text: m.name }), el('td', { text: m.note })]));
       tbl.appendChild(tbody); o.appendChild(tbl);
+    });
+  },
+
+  // --- spec-v4 §5: Group F extensions (utilities 129-135) -------------
+
+  'opioid-mme'(root) {
+    root.appendChild(el('p', { class: 'notice', text:
+      'CDC 2022 conversion factors. Reference only. Total MME breakpoints (50, 90) per CDC framing; this tool does not prescribe action.' }));
+    const rowsContainer = el('div');
+    const addBtn = el('button', { type: 'button', text: 'Add medication' });
+    const out = el('div', { id: 'q-results', 'aria-live': 'polite' });
+    root.appendChild(rowsContainer);
+    root.appendChild(el('p', {}, [addBtn]));
+    root.appendChild(out);
+
+    let factors = [];
+    let counter = 0;
+    loadFile('mme-factors', 'mme.json').then((rows) => { factors = rows; addRow(); run(); });
+
+    function addRow() {
+      counter += 1;
+      const id = `mme-row-${counter}`;
+      const drugSel = el('select', { id: `${id}-drug` });
+      for (const f of factors) drugSel.appendChild(el('option', { value: f.drug, text: f.drug }));
+      const mg = el('input', { id: `${id}-mg`, type: 'number', step: 'any', placeholder: 'mg/dose' });
+      const n = el('input', { id: `${id}-n`, type: 'number', step: 'any', placeholder: 'doses/day' });
+      const rm = el('button', { type: 'button', text: 'Remove' });
+      const row = el('p', { class: 'mme-row', id }, [drugSel, ' ', mg, ' ', n, ' ', rm]);
+      rm.addEventListener('click', () => { row.remove(); run(); });
+      [drugSel, mg, n].forEach((node) => node.addEventListener('input', run));
+      drugSel.addEventListener('change', run);
+      rowsContainer.appendChild(row);
+    }
+
+    addBtn.addEventListener('click', () => { addRow(); run(); });
+
+    function run() {
+      clear(out);
+      if (!factors.length) return;
+      const rows = [];
+      for (const r of rowsContainer.querySelectorAll('.mme-row')) {
+        const id = r.id;
+        rows.push({
+          drug: document.getElementById(`${id}-drug`).value,
+          mgPerDose: Number(document.getElementById(`${id}-mg`).value),
+          dosesPerDay: Number(document.getElementById(`${id}-n`).value),
+        });
+      }
+      const valid = rows.filter((x) => x.mgPerDose > 0 && x.dosesPerDay > 0);
+      if (!valid.length) return;
+      const r = mmeTotal({ rows: valid, factors });
+      out.appendChild(el('h2', { text: `Total daily MME: ${r.totalMme.toFixed(1)}` }));
+      const flags = [];
+      if (r.totalMme >= 50) flags.push('At/above 50 MME (CDC: reassess)');
+      if (r.totalMme >= 90) flags.push('At/above 90 MME (CDC: justify with documentation)');
+      if (flags.length) out.appendChild(el('p', { text: flags.join(' - ') }));
+      out.appendChild(el('h3', { text: 'Per-medication breakdown' }));
+      out.appendChild(el('ul', {}, r.breakdown.map((b) =>
+        el('li', { text: `${b.drug}: ${b.mgPerDose} mg x ${b.dosesPerDay}/day x factor ${b.factor || '?'} = ${b.mme == null ? '(unknown drug)' : b.mme.toFixed(1) + ' MME'}` }))));
+    }
+  },
+
+  'steroid-equiv'(root) {
+    root.appendChild(field('Dose (mg)', 'st-dose', { placeholder: '40' }));
+    const fromSel = el('select', { id: 'st-from' });
+    const toSel = el('select', { id: 'st-to' });
+    root.appendChild(el('p', {}, [el('label', { for: 'st-from', text: 'From drug' }), el('br'), fromSel]));
+    root.appendChild(el('p', {}, [el('label', { for: 'st-to', text: 'To drug' }), el('br'), toSel]));
+    const out = el('div', { id: 'q-results', 'aria-live': 'polite' });
+    root.appendChild(out);
+    loadFile('steroid-equiv', 'steroid.json').then((table) => {
+      for (const r of table) {
+        if (typeof r.equivDoseMg !== 'number') continue;
+        fromSel.appendChild(el('option', { value: r.drug, text: r.drug }));
+        toSel.appendChild(el('option', { value: r.drug, text: r.drug }));
+      }
+      const run = () => {
+        clear(out);
+        const dose = Number(document.getElementById('st-dose').value);
+        if (!(dose > 0)) return;
+        const eq = steroidEquivalent({ drug: fromSel.value, doseMg: dose, target: toSel.value, table });
+        if (eq == null) { out.appendChild(el('p', { text: 'No equivalence available.' })); return; }
+        const fromRow = table.find((r) => r.drug === fromSel.value);
+        const toRow = table.find((r) => r.drug === toSel.value);
+        out.appendChild(el('h2', { text: `${dose} mg ${fromSel.value} ≈ ${eq.toFixed(2)} mg ${toSel.value}` }));
+        out.appendChild(el('p', { class: 'muted', text: `Mineralocorticoid activity - from: ${fromRow.mineralocorticoid}; to: ${toRow.mineralocorticoid}` }));
+      };
+      ['st-dose', 'st-from', 'st-to'].forEach((id) => document.getElementById(id).addEventListener(id === 'st-dose' ? 'input' : 'change', run));
+    });
+  },
+
+  'benzo-equiv'(root) {
+    root.appendChild(field('Dose (mg)', 'bz-dose'));
+    const fromSel = el('select', { id: 'bz-from' });
+    const toSel = el('select', { id: 'bz-to' });
+    root.appendChild(el('p', {}, [el('label', { for: 'bz-from', text: 'From drug' }), el('br'), fromSel]));
+    root.appendChild(el('p', {}, [el('label', { for: 'bz-to', text: 'To drug' }), el('br'), toSel]));
+    const out = el('div', { id: 'q-results', 'aria-live': 'polite' });
+    root.appendChild(out);
+    loadFile('benzo-equiv', 'benzo.json').then((table) => {
+      for (const r of table) {
+        fromSel.appendChild(el('option', { value: r.drug, text: r.drug }));
+        toSel.appendChild(el('option', { value: r.drug, text: r.drug }));
+      }
+      const run = () => {
+        clear(out);
+        const dose = Number(document.getElementById('bz-dose').value);
+        if (!(dose > 0)) return;
+        const eq = benzoEquivalent({ drug: fromSel.value, doseMg: dose, target: toSel.value, table });
+        if (eq == null) { out.appendChild(el('p', { text: 'No equivalence available.' })); return; }
+        out.appendChild(el('h2', { text: `${dose} mg ${fromSel.value} ≈ ${eq.toFixed(2)} mg ${toSel.value}` }));
+        out.appendChild(el('p', { class: 'muted', text: 'Source: Ashton manual (public).' }));
+      };
+      ['bz-dose', 'bz-from', 'bz-to'].forEach((id) => document.getElementById(id).addEventListener(id === 'bz-dose' ? 'input' : 'change', run));
+    });
+  },
+
+  'abx-renal'(root) {
+    const drugSel = el('select', { id: 'abx-drug' });
+    root.appendChild(el('p', {}, [el('label', { for: 'abx-drug', text: 'Antibiotic' }), el('br'), drugSel]));
+    root.appendChild(field('CrCl (mL/min)', 'abx-crcl'));
+    const out = el('div', { id: 'q-results', 'aria-live': 'polite' });
+    root.appendChild(out);
+    loadFile('abx-renal', 'abx.json').then((table) => {
+      for (const r of table) drugSel.appendChild(el('option', { value: r.drug, text: r.drug }));
+      const run = () => {
+        clear(out);
+        const crCl = Number(document.getElementById('abx-crcl').value);
+        if (!(crCl > 0)) return;
+        const band = abxRenalDose({ drug: drugSel.value, crCl, table });
+        if (!band) { out.appendChild(el('p', { text: 'No dose band found.' })); return; }
+        out.appendChild(el('h2', { text: `${drugSel.value} - CrCl ${crCl} mL/min` }));
+        out.appendChild(el('p', { text: `Dose: ${band.dose}; Interval: ${band.interval}` }));
+        out.appendChild(el('p', { class: 'muted', text: 'Source: FDA labels via DailyMed. Verify against your institution\'s antimicrobial stewardship guidance.' }));
+      };
+      ['abx-drug', 'abx-crcl'].forEach((id) => document.getElementById(id).addEventListener(id === 'abx-crcl' ? 'input' : 'change', run));
+    });
+  },
+
+  'vasopressor'(root) {
+    const drugSel = el('select', { id: 'vp-drug' });
+    root.appendChild(el('p', {}, [el('label', { for: 'vp-drug', text: 'Drug' }), el('br'), drugSel]));
+    root.appendChild(field('Patient weight (kg)', 'vp-w'));
+    root.appendChild(field('Bag concentration (mcg/mL)', 'vp-conc'));
+    root.appendChild(field('Desired dose (units below)', 'vp-dose'));
+    root.appendChild(field('OR pump rate (mL/hr) for reverse calc', 'vp-rate'));
+    const out = el('div', { id: 'q-results', 'aria-live': 'polite' });
+    root.appendChild(out);
+    loadFile('vasopressor-doses', 'vasopressors.json').then((table) => {
+      for (const r of table) drugSel.appendChild(el('option', { value: r.drug, text: `${r.drug} (${r.units})` }));
+      const run = () => {
+        clear(out);
+        const row = table.find((r) => r.drug === drugSel.value);
+        if (!row) return;
+        const units = row.units === 'units/min' ? 'mcg/min' : row.units; // vasopressin treated as mcg/min for the math wrapper
+        const w = Number(document.getElementById('vp-w').value);
+        const conc = Number(document.getElementById('vp-conc').value);
+        const dose = Number(document.getElementById('vp-dose').value);
+        const rate = Number(document.getElementById('vp-rate').value);
+        if (!(conc > 0)) return;
+        out.appendChild(el('h2', { text: `${row.drug} - typical range ${row.typicalRange}` }));
+        try {
+          if (dose > 0) {
+            const r = vasopressorRateMlHr({ dose, units, weightKg: w || undefined, concUgPerMl: conc });
+            out.appendChild(el('p', { text: `${dose} ${row.units} → ${r.toFixed(2)} mL/hr` }));
+          }
+          if (rate > 0) {
+            const d = vasopressorDose({ rateMlHr: rate, units, weightKg: w || undefined, concUgPerMl: conc });
+            out.appendChild(el('p', { text: `${rate} mL/hr → ${d.toFixed(3)} ${row.units}` }));
+          }
+        } catch (err) {
+          out.appendChild(el('p', { class: 'muted', text: err.message }));
+        }
+      };
+      ['vp-drug', 'vp-w', 'vp-conc', 'vp-dose', 'vp-rate'].forEach((id) => document.getElementById(id).addEventListener(id === 'vp-drug' ? 'change' : 'input', run));
+    });
+  },
+
+  'tpn-macro'(root) {
+    root.appendChild(field('Final volume (mL)', 'tpn-vol', { placeholder: '1500' }));
+    root.appendChild(field('Dextrose (% final)', 'tpn-d', { placeholder: '20' }));
+    root.appendChild(field('Amino acid (% final)', 'tpn-aa', { placeholder: '5' }));
+    root.appendChild(field('Lipid 20% (mL as % of final volume)', 'tpn-lipid', { placeholder: '10' }));
+    const out = el('div', { id: 'q-results', 'aria-live': 'polite' });
+    root.appendChild(out);
+    const run = () => {
+      clear(out);
+      try {
+        const r = tpnMacro({
+          volumeMl: Number(document.getElementById('tpn-vol').value),
+          dextrosePct: Number(document.getElementById('tpn-d').value) || 0,
+          aminoAcidPct: Number(document.getElementById('tpn-aa').value) || 0,
+          lipidPctOfVolume: Number(document.getElementById('tpn-lipid').value) || 0,
+        });
+        out.appendChild(el('h2', { text: `Total: ${r.totalKcal.toFixed(0)} kcal in ${r.volumeMl} mL` }));
+        out.appendChild(el('ul', {}, [
+          el('li', { text: `Dextrose: ${r.dextroseG.toFixed(1)} g (${r.kcalDextrose.toFixed(0)} kcal)` }),
+          el('li', { text: `Protein: ${r.proteinG.toFixed(1)} g (${r.kcalProtein.toFixed(0)} kcal)` }),
+          el('li', { text: `Lipid: ${r.lipidG.toFixed(1)} g (${r.kcalLipid.toFixed(0)} kcal)` }),
+        ]));
+      } catch (err) {
+        out.appendChild(el('p', { class: 'muted', text: err.message }));
+      }
+    };
+    ['tpn-vol', 'tpn-d', 'tpn-aa', 'tpn-lipid'].forEach((id) => document.getElementById(id).addEventListener('input', run));
+  },
+
+  'iv-to-po'(root) {
+    const region = el('div', { id: 'q-results', role: 'region', 'aria-live': 'polite' });
+    root.appendChild(region);
+    loadFile('iv-to-po', 'iv-po.json').then((rows) => {
+      renderTable(region, {
+        columns: [
+          { key: 'drug', label: 'Drug' },
+          { key: 'bioavailability', label: 'Oral bioavailability (F)' },
+          { key: 'ratio', label: 'IV:PO ratio' },
+        ],
+        rows,
+      });
     });
   },
 };

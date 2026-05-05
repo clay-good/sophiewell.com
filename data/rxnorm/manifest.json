@@ -1,0 +1,19 @@
+{
+  "dataset": "rxnorm",
+  "label": "NLM RxNorm subset",
+  "sourceUrl": "https://www.nlm.nih.gov/research/umls/rxnorm/",
+  "agency": "NLM",
+  "status": "public-domain",
+  "cadence": "monthly",
+  "fetchDate": "2026-05-05",
+  "offlineSeed": true,
+  "recordCount": 6,
+  "shards": [
+    {
+      "name": "rxnorm.json",
+      "sha256": "27526c39517741131927074dea1dd579a2d67b4bac4a968e67b408eb5dbcf742",
+      "records": 6,
+      "bytes": 655
+    }
+  ]
+}

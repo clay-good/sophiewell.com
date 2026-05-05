@@ -1,0 +1,19 @@
+{
+  "dataset": "vasopressor-doses",
+  "label": "Vasopressor dose / concentration reference",
+  "sourceUrl": "FDA labels (subset)",
+  "agency": "FDA",
+  "status": "public-domain",
+  "cadence": "annual",
+  "fetchDate": "2026-05-05",
+  "offlineSeed": true,
+  "recordCount": 6,
+  "shards": [
+    {
+      "name": "vasopressors.json",
+      "sha256": "cf5587887102bd55d42031f2ef6626d445d22a4fbd462de5f3fdac4e097868b9",
+      "records": 6,
+      "bytes": 646
+    }
+  ]
+}

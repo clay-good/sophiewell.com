@@ -1,0 +1,19 @@
+{
+  "dataset": "hcpcs-modifiers",
+  "label": "HCPCS Modifier Lookup",
+  "sourceUrl": "https://www.cms.gov/medicare/coding-billing/healthcare-common-procedure-system",
+  "agency": "CMS",
+  "status": "public-domain",
+  "cadence": "annual",
+  "fetchDate": "2026-05-05",
+  "offlineSeed": true,
+  "recordCount": 10,
+  "shards": [
+    {
+      "name": "modifiers.json",
+      "sha256": "cd68200338b44f1e3a850065be42af344e7bb4943ffd5490cd0788d4d7471c21",
+      "records": 10,
+      "bytes": 1725
+    }
+  ]
+}

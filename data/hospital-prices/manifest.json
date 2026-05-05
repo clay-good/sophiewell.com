@@ -4,7 +4,7 @@
   "agency": "individual hospitals (federal compliance disclosures)",
   "status": "federal-compliance-disclosure",
   "cadence": "quarterly",
-  "fetchDate": "2026-05-04",
+  "fetchDate": "2026-05-05",
   "offlineSeed": true,
   "coverageNote": "Coverage is intentionally partial. The full federal hospital price transparency dataset is too large to bundle in a static page. The utility surfaces this fact prominently.",
   "hospitals": [
@@ -13,7 +13,7 @@
       "name": "Example Memorial Hospital",
       "file": "hospitals/example-memorial.json",
       "sourceUrl": "https://example.org/price-transparency.json",
-      "fetchDate": "2026-05-04"
+      "fetchDate": "2026-05-05"
     }
   ],
   "recordCount": 3

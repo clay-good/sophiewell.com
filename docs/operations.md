@@ -131,3 +131,36 @@ year) and zero compute on the Cloudflare Pages free tier.
   content offline immediately by reverting the relevant data file
   (or the entire `data/cpt-summaries/`, `data/aha-reference/`, etc.)
   and deploying. Then read the request carefully and respond.
+
+## v4 dataset cadence (added in spec-v4)
+
+The v4 expansion adds 50+ datasets in `data/`. Cadence-specific refresh
+notes for the CI `data-refresh.yml` weekly job:
+
+- **Weekly**: `nadac`, `drug-recalls`. NADAC is the existing v1 cadence;
+  drug-recalls snapshots `api.fda.gov/drug/enforcement.json` filtered to
+  drugs.
+- **Monthly**: `npi`, `enforcement`, `rxnorm`. RxNorm follows the NLM
+  monthly release cadence.
+- **Quarterly**: `hcpcs`, `ncci`, `mue`, `apc`, `dmepos`, `clfs`, `asp`,
+  `asc`, `therapeutic-drug-levels`, `abx-renal`. CMS quarterly fee
+  schedules and FDA-label refreshes.
+- **Annual**: `icd10cm`, `mpfs`, `gpci`, `wage-index`, `drg`, `icd10-pcs`,
+  `cms-deductibles`, `irmaa`, `aca-thresholds`, `hsa-fsa-limits`, `fpl`,
+  `irs-mileage`, `acip-routine-adult`, `acip-routine-child`,
+  `acip-catchup`, `yellow-book`, `tetanus`, `rabies-pep`, `bbp-exposure`,
+  `tb-tst-igra`, `sti-screening`, `lab-ranges-adult`, `lab-ranges-peds`,
+  `tox-levels`, `cms-1500-fields`, `ub04-fields`, `va-eligibility`,
+  `tricare-plans`, `ihs-eligibility`, `tccc`, `vasopressor-doses`,
+  `tpn-rules`, `iv-to-po`.
+- **Semi-annual**: `nucc-taxonomy`, `medicaid-state`.
+- **Per-edition**: `dot-erg`, `niosh-pg`, `cpr-aha-numeric`.
+- **As-needed / static**: `pos-codes`, `tob-codes`, `revenue-codes`,
+  `nubc-special-codes`, `dea-rules`, `eob-glossary`, `steroid-equiv`,
+  `benzo-equiv`, `mme-factors`.
+
+In the development checkout `SOPHIEWELL_OFFLINE=1` is set by default and
+each dataset ships with a small hand-curated seed shard. CI runs
+`scripts/build-data.mjs` with full network access, refreshes the data
+folder, and re-runs `scripts/verify-integrity.mjs` against the resulting
+manifests. Total manifest count after v4 lands: 78 (22 v3 + 56 v4).

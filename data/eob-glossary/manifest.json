@@ -1,0 +1,19 @@
+{
+  "dataset": "eob-glossary",
+  "label": "EOB jargon glossary",
+  "sourceUrl": "project-author-original-content",
+  "agency": "sophiewell.com",
+  "status": "mit-original",
+  "cadence": "static",
+  "fetchDate": "2026-05-05",
+  "offlineSeed": true,
+  "recordCount": 12,
+  "shards": [
+    {
+      "name": "glossary.json",
+      "sha256": "128f187f827351558378f2c75b87e0443c6caefaa8d163c05b960d3dda09ebb1",
+      "records": 12,
+      "bytes": 1338
+    }
+  ]
+}

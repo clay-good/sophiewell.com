@@ -1,0 +1,19 @@
+{
+  "dataset": "tpn-rules",
+  "label": "TPN macronutrient reference",
+  "sourceUrl": "standard nutrition references",
+  "agency": "sophiewell.com (numeric)",
+  "status": "mit-original",
+  "cadence": "annual",
+  "fetchDate": "2026-05-05",
+  "offlineSeed": true,
+  "recordCount": 3,
+  "shards": [
+    {
+      "name": "tpn.json",
+      "sha256": "172f421a1724bbb6c499c1fd3fcf2787edc8d05cad39ce2997b2bb5aefd1ca7b",
+      "records": null,
+      "bytes": 192
+    }
+  ]
+}

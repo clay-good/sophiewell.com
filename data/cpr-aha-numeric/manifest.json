@@ -1,0 +1,20 @@
+{
+  "dataset": "cpr-aha-numeric",
+  "label": "AHA CPR numeric reference",
+  "sourceUrl": "https://cpr.heart.org/en/resuscitation-science/cpr-and-ecc-guidelines",
+  "agency": "AHA (numeric facts only)",
+  "status": "numeric-facts-with-attribution",
+  "cadence": "per-edition",
+  "fetchDate": "2026-05-05",
+  "offlineSeed": true,
+  "recordCount": 3,
+  "shards": [
+    {
+      "name": "cpr.json",
+      "sha256": "f76bdba09dacb600da1d9dd08f7c2967837b133cf4c67d2324a9034875120740",
+      "records": null,
+      "bytes": 498
+    }
+  ],
+  "notes": "Numeric AHA values only. AHA flowchart imagery and prose are not reproduced. See docs/legal.md and aha-no-flowchart test."
+}

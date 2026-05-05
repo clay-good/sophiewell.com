@@ -223,3 +223,65 @@ Formula: payment = ((work RVU * work GPCI) + (PE RVU * PE GPCI) + (MP RVU
 Worked example: facility, code 99213, locality with all GPCI = 1.0,
 conversion factor 32.7442. Components: work 0.97, PE facility 0.40, MP
 0.07. Payment = (0.97 + 0.40 + 0.07) * 32.7442 = 1.44 * 32.7442 = 47.15.
+
+## v4 calculator and screener citations
+
+Every v4 calculator carries an inline citation in `lib/meta.js`. Primary
+references for the v4-added formulas:
+
+### Group E (v4 clinical math additions)
+- **Anion gap & delta-delta**: Wrenn KD. Ann Emerg Med. 1990;19(11):1310-1313.
+- **Corrected calcium**: Payne RB. BMJ. 1973;4(5893):643-646.
+- **Corrected sodium**: Katz NEJM 1973; Hillier Am J Med 1999.
+- **Osmolal gap**: standard chemistry; calculated osm = 2*Na + glucose/18 + BUN/2.8 (+EtOH/4.6).
+- **A-a gradient & P/F**: West JB Respiratory Physiology; ARDS Berlin Definition (JAMA 2012;307(23):2526).
+- **Winter's formula**: Winter RM, et al. Arch Intern Med. 1967;120(2):151-156.
+- **MAP / pulse pressure / shock index**: Allgower & Burri 1967 (shock index).
+- **IBW / AdjBW / BSA**: Devine 1974; 0.4 AdjBW rule; Mosteller NEJM 1987;317(17):1098; Du Bois Arch Intern Med 1916;17:863.
+- **eGFR suite**: Inker LA, et al. NEJM. 2021;385(19):1737-1749 (CKD-EPI 2021 race-free); Levey AS, et al. Ann Intern Med. 1999;130(6):461-470 (MDRD); Cockcroft-Gault Nephron 1976;16(1):31-41.
+- **FENa / FEUrea**: Espinel CH JAMA 1976; Carvounis CP Kidney Int 2002.
+- **Maintenance fluids 4-2-1**: Holliday MA, Segar WE. Pediatrics. 1957;19(5):823-832.
+- **QTc suite**: Bazett 1920; Fridericia 1920; Sagie / Framingham 1992; Hodges 1983.
+- **Pregnancy dating**: Naegele rule; Robinson-Fleming CRL formula; ACOG Practice Bulletin redating thresholds.
+
+### Group F (v4 medication math additions)
+- **Opioid MME**: CDC Clinical Practice Guideline for Prescribing Opioids - United States, 2022. MMWR Recomm Rep. 2022;71(3):1-95.
+- **Steroid equivalence**: standard pharmacology references (project-author table).
+- **Benzodiazepine equivalence**: Ashton CH. Benzodiazepines: How They Work and How to Withdraw.
+- **Antibiotic renal-dose adjustment**: FDA labels via DailyMed.
+- **Vasopressor dose-rate**: standard infusion math; FDA labels for typical concentrations.
+- **TPN macronutrient**: 3.4 / 4 / 2 kcal-per-source rule (dextrose / aa / 20% lipid emulsion).
+- **IV-to-PO**: bioavailability values per FDA labeling.
+
+### Group G (v4 scoring additions, all 25 instruments)
+- **TIMI**: Antman EM, et al. JAMA. 2000;284(7):835-842.
+- **GRACE**: Granger CB, et al. Arch Intern Med. 2003;163(19):2345-2353.
+- **HEART**: Six AJ, Backus BE, Kelder JC. Neth Heart J. 2008;16(6):191-196.
+- **PERC**: Kline JA, et al. J Thromb Haemost. 2004;2(8):1247-1255.
+- **Wells PE / revised Geneva**: Wells PS, et al. Thromb Haemost. 2000;83(3):416-420; Le Gal G, et al. Ann Intern Med. 2006;144(3):165-171.
+- **CURB-65**: Lim WS, et al. Thorax. 2003;58(5):377-382.
+- **PSI / PORT**: Fine MJ, et al. NEJM. 1997;336(4):243-250.
+- **qSOFA / SOFA**: Singer M, et al. JAMA. 2016;315(8):801-810; Vincent JL, et al. Intensive Care Med. 1996;22(7):707-710.
+- **MELD-3.0 / Child-Pugh**: Kim WR, et al. Gastroenterology. 2021;161(6):1887-1895; Pugh RN, et al. Br J Surg. 1973;60(8):646-649.
+- **Ranson / BISAP**: Ranson JH, et al. Surg Gynecol Obstet. 1974;139(1):69-81; Wu BU, et al. Gut. 2008;57(12):1698-1703.
+- **Centor / McIsaac**: Centor RM, et al. Med Decis Making. 1981;1(3):239-246; McIsaac WJ, et al. CMAJ. 1998;158(1):75-83.
+- **Wells DVT / Caprini**: Wells PS, et al. Lancet. 1997;350(9094):1795-1798; Caprini JA. Dis Mon. 2005;51(2-3):70-78.
+- **Bishop**: Bishop EH. Obstet Gynecol. 1964;24:266-268.
+- **Alvarado / PAS**: Alvarado A. Ann Emerg Med. 1986;15(5):557-564; Samuel M. J Pediatr Surg. 2002;37(6):877-881.
+- **Modified Rankin Scale**: UK-TIA Study Group 1988.
+- **PHQ-9**: Kroenke K, Spitzer RL, Williams JBW. J Gen Intern Med. 2001;16(9):606-613.
+- **GAD-7**: Spitzer RL, et al. Arch Intern Med. 2006;166(10):1092-1097.
+- **AUDIT-C**: Bush K, et al. Arch Intern Med. 1998;158(16):1789-1795.
+- **CAGE**: Ewing JA. JAMA. 1984;252(14):1905-1907.
+- **EPDS**: Cox JL, Holden JM, Sagovsky R. Br J Psychiatry. 1987;150:782-786.
+- **Mini-Cog**: Borson S, et al. Int J Geriatr Psychiatry. 2000;15(11):1021-1027.
+- **CIWA-Ar**: Sullivan JT, et al. Br J Addict. 1989;84(11):1353-1357.
+- **COWS**: Wesson DR, Ling W. J Psychoactive Drugs. 2003;35(2):253-259.
+- **ASCVD PCE**: Goff DC Jr, et al. Circulation. 2014;129(25 Suppl 2):S49-73. **Race-stratified** by design (white vs African-American).
+- **PREVENT 2023**: Khan SS, et al. Circulation. 2024;149(6):430-449. **Race-FREE** by design.
+
+### Group I (v4 field-medicine additions)
+- **NEXUS**: Hoffman JR, et al. NEJM. 2000;343(2):94-99.
+- **Canadian C-Spine**: Stiell IG, et al. JAMA. 2001;286(15):1841-1848.
+- **Cyanide antidotes**: FDA labeling for Cyanokit (hydroxocobalamin) and Nithiodote (sodium nitrite + sodium thiosulfate).
+- **CO HBO**: UHMS guidance.

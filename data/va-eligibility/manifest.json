@@ -1,0 +1,19 @@
+{
+  "dataset": "va-eligibility",
+  "label": "VA eligibility quick categories",
+  "sourceUrl": "https://www.va.gov/health-care/eligibility/",
+  "agency": "VA",
+  "status": "public-domain",
+  "cadence": "annual",
+  "fetchDate": "2026-05-05",
+  "offlineSeed": true,
+  "recordCount": 5,
+  "shards": [
+    {
+      "name": "va.json",
+      "sha256": "3f267990586c80a2033ec12646a6f80221de156f12dc22f7770c1db312609190",
+      "records": 5,
+      "bytes": 542
+    }
+  ]
+}

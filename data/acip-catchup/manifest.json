@@ -1,0 +1,19 @@
+{
+  "dataset": "acip-catchup",
+  "label": "ACIP Catch-up Immunization Schedule",
+  "sourceUrl": "https://www.cdc.gov/vaccines/hcp/imz-schedules/child-catchup.html",
+  "agency": "CDC ACIP",
+  "status": "public-domain",
+  "cadence": "annual",
+  "fetchDate": "2026-05-05",
+  "offlineSeed": true,
+  "recordCount": 4,
+  "shards": [
+    {
+      "name": "catchup.json",
+      "sha256": "0a4e904ef864ae0dbec309e8b8c5e93fd629e1101669181906d1f7e2779e7e4d",
+      "records": 4,
+      "bytes": 387
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "dataset": "fpl",
+  "label": "HHS Federal Poverty Guidelines",
+  "sourceUrl": "https://aspe.hhs.gov/topics/poverty-economic-mobility/poverty-guidelines",
+  "agency": "HHS / ASPE",
+  "status": "public-domain",
+  "cadence": "annual",
+  "fetchDate": "2026-05-05",
+  "offlineSeed": true,
+  "recordCount": 4,
+  "shards": [
+    {
+      "name": "fpl.json",
+      "sha256": "3954c51bdf4c2d15290dadb522cba320729e63a3a3e1a3590b77a488215db870",
+      "records": null,
+      "bytes": 154
+    }
+  ]
+}

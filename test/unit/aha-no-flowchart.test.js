@@ -58,3 +58,16 @@ test('AHA reference: defibrillation table covers adult biphasic, pediatric, and 
   assert.match(populations, /pediatric vf/i);
   assert.match(populations, /cardioversion/i);
 });
+
+// spec-v4 §7 step 4.1 hard rule: cpr-aha-numeric must carry only numeric AHA
+// values, with attribution and the same flowchart-prose ban.
+test('cpr-aha-numeric: declares numeric-facts status and does not contain AHA flowchart language', async () => {
+  const m = JSON.parse(await readFile(join(ROOT, 'data', 'cpr-aha-numeric', 'manifest.json'), 'utf8'));
+  assert.equal(m.status, 'numeric-facts-with-attribution');
+  assert.match(m.notes || '', /flowchart/i);
+  const data = JSON.parse(await readFile(join(ROOT, 'data', 'cpr-aha-numeric', 'cpr.json'), 'utf8'));
+  const blob = JSON.stringify(data);
+  for (const pat of FORBIDDEN_PATTERNS) {
+    assert.equal(pat.test(blob), false, `forbidden AHA flowchart pattern matched in cpr-aha-numeric: ${pat}`);
+  }
+});

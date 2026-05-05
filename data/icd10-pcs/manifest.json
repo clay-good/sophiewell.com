@@ -1,0 +1,19 @@
+{
+  "dataset": "icd10-pcs",
+  "label": "ICD-10-PCS subset",
+  "sourceUrl": "https://www.cms.gov/medicare/coding/icd10/2024-icd-10-pcs",
+  "agency": "CMS",
+  "status": "public-domain",
+  "cadence": "annual",
+  "fetchDate": "2026-05-05",
+  "offlineSeed": true,
+  "recordCount": 5,
+  "shards": [
+    {
+      "name": "pcs.json",
+      "sha256": "51bf8769074a09ab21eb262834d59dd4b25c3e6a9231aae0220c9021e410fd3e",
+      "records": 5,
+      "bytes": 945
+    }
+  ]
+}

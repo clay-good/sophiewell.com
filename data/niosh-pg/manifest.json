@@ -1,0 +1,19 @@
+{
+  "dataset": "niosh-pg",
+  "label": "NIOSH Pocket Guide subset",
+  "sourceUrl": "https://www.cdc.gov/niosh/npg/",
+  "agency": "CDC NIOSH",
+  "status": "public-domain",
+  "cadence": "per-edition",
+  "fetchDate": "2026-05-05",
+  "offlineSeed": true,
+  "recordCount": 5,
+  "shards": [
+    {
+      "name": "npg.json",
+      "sha256": "2dcc7427228e37b14129a9caaebc6ee03da7a1b1493dfccf3866f1b0b55eeac5",
+      "records": 5,
+      "bytes": 831
+    }
+  ]
+}

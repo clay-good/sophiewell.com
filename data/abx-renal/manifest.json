@@ -1,0 +1,19 @@
+{
+  "dataset": "abx-renal",
+  "label": "Antibiotic renal dose adjustment subset",
+  "sourceUrl": "FDA labels via DailyMed",
+  "agency": "FDA / NLM DailyMed",
+  "status": "public-domain",
+  "cadence": "quarterly",
+  "fetchDate": "2026-05-05",
+  "offlineSeed": true,
+  "recordCount": 4,
+  "shards": [
+    {
+      "name": "abx.json",
+      "sha256": "4f7cf1e949fcb27d7794bda81b83df75fe47a774a9868a3a1d81215156265f21",
+      "records": 4,
+      "bytes": 966
+    }
+  ]
+}

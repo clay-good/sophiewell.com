@@ -182,3 +182,26 @@ runtime itself, attacks on Cloudflare Pages infrastructure, and AMA
 litigation are out of scope for this threat model. The CPT posture in
 `legal.md` addresses the AMA content question as a legal matter rather than
 as a technical control.
+
+## v4 review (no new threat surface)
+
+The spec-v4 expansion (utilities 82-197 across groups A-O) introduces no
+new threat surface. Verification:
+
+- **No new outbound network calls at runtime.** Every v4 tile loads its
+  data via the existing same-origin `lib/data.js` against bundled JSON
+  shards. CSP `connect-src 'self'` is unchanged.
+- **No new storage.** The v4 tiles do not introduce localStorage,
+  sessionStorage, cookies, or IndexedDB. The integration test suite
+  asserts these remain empty.
+- **No new banned APIs.** The v4 modules use `el()` from `lib/dom.js`.
+  `innerHTML` / `outerHTML` / `insertAdjacentHTML` / `eval` /
+  `Function` constructor remain banned by ESLint and the grep check.
+- **No new licensed content bundled.** The CPT non-AMA test
+  (`test/unit/cpt-no-ama.test.js`) and AHA non-flowchart test
+  (`test/unit/aha-no-flowchart.test.js`) cover the existing constraints;
+  the AHA test was extended in v4.1 to also scan
+  `data/cpr-aha-numeric/cpr.json`.
+- **SBOM regenerates.** `sbom.json` and `sbom.md` are regenerated on
+  every build, hashing every runtime asset and source module with
+  SHA-256 plus a per-build buildId.

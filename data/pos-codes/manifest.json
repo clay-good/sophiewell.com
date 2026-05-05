@@ -1,0 +1,19 @@
+{
+  "dataset": "pos-codes",
+  "label": "CMS Place of Service Codes",
+  "sourceUrl": "https://www.cms.gov/medicare/coding-billing/place-of-service-codes",
+  "agency": "CMS",
+  "status": "public-domain",
+  "cadence": "as-needed",
+  "fetchDate": "2026-05-05",
+  "offlineSeed": true,
+  "recordCount": 13,
+  "shards": [
+    {
+      "name": "pos.json",
+      "sha256": "1946405ea0cf9832add0dc7d65071654c9d9fd03f6ca7c455382ec57826e4c38",
+      "records": 13,
+      "bytes": 1212
+    }
+  ]
+}

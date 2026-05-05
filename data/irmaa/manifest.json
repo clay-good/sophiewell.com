@@ -1,0 +1,19 @@
+{
+  "dataset": "irmaa",
+  "label": "Medicare IRMAA brackets",
+  "sourceUrl": "https://www.ssa.gov/medicare/lis/income-limits",
+  "agency": "CMS / SSA",
+  "status": "public-domain",
+  "cadence": "annual",
+  "fetchDate": "2026-05-05",
+  "offlineSeed": true,
+  "recordCount": 2,
+  "shards": [
+    {
+      "name": "irmaa.json",
+      "sha256": "92c00b02067efb5f1b16336dee950af7137cb90ca18beec8295d06aa658440c3",
+      "records": null,
+      "bytes": 885
+    }
+  ]
+}

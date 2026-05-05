@@ -6,6 +6,68 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v4: utility expansion 79 -> 195)
+
+- **v4.0 shared renderers**: `lib/tree.js` (decision tree), `lib/screener.js`
+  (screening instrument), `lib/table.js` (searchable / sortable / row-copy),
+  `lib/print.js` (printable template). Each ships with a unit-test suite
+  via the new `test/fixtures/dom-stub.js`.
+- **v4.1 datasets**: 56 new `data/` datasets with hand-curated offline-seed
+  shards and per-dataset manifests. `verify-integrity.mjs` now walks 78
+  manifests (22 v3 + 56 v4).
+- **v4.2 Group A code lookups (82-93)**: HCPCS modifier, NCCI PTP checker,
+  MUE cap, POS, TOB decoder, NUBC revenue / condition / occurrence / value,
+  MS-DRG, APC, ICD-10-PCS, RxNorm, NDC<->RxNorm.
+- **v4.3 Group B pricing (94-104)**: DMEPOS, CLFS, ASP, ASC, wage index,
+  GPCI, Medicare deductibles & IRMAA, ACA marketplace, HSA / FSA / HDHP,
+  FPL calculator, IRS medical mileage.
+- **v4.4 Group C patient tools (105-114)**: insurance card decoder, ABN
+  explainer, MSN decoder, IDR eligibility tree, appeal letter generator,
+  HIPAA right-of-access generator, birthday rule resolver, COBRA timeline,
+  Medicare enrollment period checker, ACA SEP eligibility checker.
+- **v4.5 Group D provider lookup (115-116)**: DEA registration validator,
+  NUCC provider taxonomy.
+- **v4.6 Group E clinical math (117-128)**: anion gap & delta-delta,
+  corrected Ca / Na, osmolal gap, A-a / P/F suite, Winter's formula,
+  shock index, BW / BSA suite, eGFR suite (CKD-EPI 2021 / MDRD / CG),
+  FENa / FEUrea, maintenance fluids 4-2-1, QTc suite, pregnancy dating.
+- **v4.7 Group F medication (129-135)**: opioid MME (CDC 2022), steroid
+  equivalence, benzodiazepine equivalence (Ashton), antibiotic renal-dose
+  adjustment, vasopressor dose<->rate, TPN macronutrient, IV-to-PO.
+- **v4.8 Group G scoring (136-160)**: TIMI, GRACE, HEART, PERC, Wells PE
+  / Geneva, CURB-65, PSI, qSOFA / SOFA, MELD-3.0 / Child-Pugh, Ranson /
+  BISAP, Centor / McIsaac, Wells DVT / Caprini, Bishop, Alvarado / PAS,
+  mRS reference, PHQ-9, GAD-7, AUDIT-C, CAGE, EPDS, Mini-Cog, CIWA-Ar,
+  COWS, ASCVD PCE (race-stratified), PREVENT 2023 (race-free).
+- **v4.9 Group H workflow (161-165)**: HIPAA authorization, ROI request,
+  discharge instructions, specialty-visit questions, medication wallet
+  card.
+- **v4.10 Group I field-medicine extensions (166-171)**: NEXUS / Canadian
+  C-Spine, DOT ERG hazmat, NIOSH Pocket Guide, AHA CPR numeric reference,
+  TCCC tourniquet & wound packing, CO / cyanide / smoke-inhalation
+  antidotes.
+- **v4.11 Group J Public Health & Travel (172-180, NEW group)**: ACIP
+  routine adult / child / catch-up schedules, CDC Yellow Book by country,
+  tetanus prophylaxis tree, rabies PEP tree, bloodborne pathogen exposure
+  tree, TB testing interpretation, STI screening intervals.
+- **v4.12 Group K Lab Reference (181-184, NEW)**: adult / pediatric
+  reference ranges, therapeutic drug levels, toxicology levels.
+- **v4.13 Group L Forms & Numbers Literacy (185-187, NEW)**: CMS-1500 and
+  UB-04 field-by-field decoders, EOB jargon glossary.
+- **v4.14 Group M Eligibility & Benefits (188-191, NEW)**: Medicaid by
+  state, VA priority groups, TRICARE plan picker, IHS eligibility.
+- **v4.15 Group N Literacy Helpers (192-194, NEW)**: universal unit
+  converter, time-to-dose helper, pediatric weight converter.
+- **v4.16 Group O Patient Safety (195-197, NEW)**: high-alert wallet card
+  (ISMP-attributed), FDA drug recalls weekly snapshot, vaccine lot recall
+  lookup.
+- **v4.17 site-wide updates**: README count 79 -> 195, new group
+  descriptions, refreshed `docs/architecture.md`, `docs/data-sources.md`,
+  `docs/legal.md`, `docs/clinical-citations.md`, `docs/operations.md`,
+  `docs/threat-model.md`. JSON-LD `featureList` and `sitemap.xml`
+  regenerate to 195 entries / 196 URLs.
+- **v4.18 verification checklist**: see `docs/spec-v4-checklist.md`.
+
 ### Fixed (v4.15 CI hardening)
 
 - `scripts/build-data.mjs`: dataset folders are now ensured to exist at

@@ -1,0 +1,19 @@
+{
+  "dataset": "rabies-pep",
+  "label": "CDC Rabies post-exposure prophylaxis decision aid",
+  "sourceUrl": "https://www.cdc.gov/rabies/medical_care/index.html",
+  "agency": "CDC",
+  "status": "public-domain",
+  "cadence": "annual",
+  "fetchDate": "2026-05-05",
+  "offlineSeed": true,
+  "recordCount": 2,
+  "shards": [
+    {
+      "name": "rabies.json",
+      "sha256": "fddda5f66d8198e37d44f63f6e1420974f2b74a90daf6dae00fe1bbf9a2c533e",
+      "records": null,
+      "bytes": 655
+    }
+  ]
+}

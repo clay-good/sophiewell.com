@@ -1,0 +1,20 @@
+{
+  "dataset": "tob-codes",
+  "label": "NUBC Type of Bill structure",
+  "sourceUrl": "https://www.nubc.org/",
+  "agency": "NUBC (numeric/structural only)",
+  "status": "numeric-facts-with-attribution",
+  "cadence": "as-needed",
+  "fetchDate": "2026-05-05",
+  "offlineSeed": true,
+  "recordCount": 3,
+  "shards": [
+    {
+      "name": "tob.json",
+      "sha256": "591252fcccf985101daa818c105fefbed9ac7f2cfaea648584b288455e6a5d46",
+      "records": null,
+      "bytes": 909
+    }
+  ],
+  "notes": "Numeric TOB structural digits only. NUBC manual prose is not bundled."
+}

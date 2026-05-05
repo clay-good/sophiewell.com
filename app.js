@@ -10,13 +10,15 @@ import { renderers as RF } from './views/group-f.js';
 import { renderers as RG } from './views/group-g.js';
 import { renderers as RH } from './views/group-h.js';
 import { renderers as RI } from './views/group-i.js';
+import { renderers as RJ } from './views/group-j.js';
+import { renderers as RKLMNO } from './views/group-klmno.js';
 import { META } from './lib/meta.js';
 import { fetchJson } from './lib/data.js';
 import { copyButton } from './lib/clipboard.js';
 import { installKeyboard } from './lib/keyboard.js';
 import { parseHash, buildHash, patchHash } from './lib/hash.js';
 
-const RENDERERS = { ...RA, ...RB, ...RC, ...RD, ...RE, ...RF, ...RG, ...RH, ...RI };
+const RENDERERS = { ...RA, ...RB, ...RC, ...RD, ...RE, ...RF, ...RG, ...RH, ...RI, ...RJ, ...RKLMNO };
 
 // ----- Utility registry ----------------------------------------------------
 // Source of truth for routes, names, group, audiences, and clinical flag.
@@ -37,12 +39,37 @@ const UTILITIES = [
   { id: 'ncci', name: 'NCCI Procedure-to-Procedure Edit Lookup', group: 'A', audiences: ['billers'], clinical: false },
   { id: 'mue', name: 'Medically Unlikely Edits Lookup', group: 'A', audiences: ['billers'], clinical: false },
   { id: 'lcd', name: 'LCD and NCD Coverage Lookup', group: 'A', audiences: ['billers'], clinical: false },
+  // Group A: v4 extensions (utilities 82-93)
+  { id: 'hcpcs-mod', name: 'HCPCS Modifier Lookup', group: 'A', audiences: ['billers', 'educators'], clinical: false },
+  { id: 'ncci-ptp', name: 'NCCI PTP Edit Checker', group: 'A', audiences: ['billers'], clinical: false },
+  { id: 'mue-cap', name: 'MUE Unit Cap Lookup', group: 'A', audiences: ['billers'], clinical: false },
+  { id: 'pos-lookup', name: 'Place of Service Code Lookup (CMS)', group: 'A', audiences: ['billers', 'educators'], clinical: false },
+  { id: 'tob-decode', name: 'Type of Bill Decoder', group: 'A', audiences: ['billers', 'educators'], clinical: false },
+  { id: 'rev-table', name: 'Revenue Code Table (NUBC summary)', group: 'A', audiences: ['billers', 'educators'], clinical: false },
+  { id: 'nubc-codes', name: 'Condition / Occurrence / Value Code Reference', group: 'A', audiences: ['billers', 'educators'], clinical: false },
+  { id: 'drg-lookup', name: 'MS-DRG Lookup', group: 'A', audiences: ['billers', 'educators'], clinical: false },
+  { id: 'apc-lookup', name: 'APC / HOPPS Lookup', group: 'A', audiences: ['billers', 'educators'], clinical: false },
+  { id: 'pcs-lookup', name: 'ICD-10-PCS Lookup', group: 'A', audiences: ['billers', 'clinicians', 'educators'], clinical: false },
+  { id: 'rxnorm-lookup', name: 'RxNorm Lookup', group: 'A', audiences: ['clinicians', 'billers', 'educators'], clinical: false },
+  { id: 'ndc-rxnorm', name: 'NDC to RxNorm Crosswalk', group: 'A', audiences: ['clinicians', 'billers', 'educators'], clinical: false },
   // Group B: Pricing and Cost Reference
   { id: 'mpfs', name: 'Medicare Physician Fee Schedule Lookup', group: 'B', audiences: ['patients', 'billers'], clinical: false },
   { id: 'nadac', name: 'NADAC Drug Pricing Lookup', group: 'B', audiences: ['patients', 'clinicians'], clinical: false },
   { id: 'ratio', name: 'Charge-to-Medicare Ratio Calculator', group: 'B', audiences: ['patients', 'billers'], clinical: false },
   { id: 'hospital-prices', name: 'Hospital Price Transparency Lookup', group: 'B', audiences: ['patients', 'billers'], clinical: false },
   { id: 'oop', name: 'Out-of-Pocket Cost Estimator', group: 'B', audiences: ['patients'], clinical: false },
+  // Group B: v4 extensions (utilities 94-104)
+  { id: 'dmepos', name: 'DMEPOS Fee Schedule', group: 'B', audiences: ['patients', 'billers'], clinical: false },
+  { id: 'clfs', name: 'CLFS Lab Fee Lookup', group: 'B', audiences: ['billers'], clinical: false },
+  { id: 'asp', name: 'ASP Drug Pricing', group: 'B', audiences: ['billers', 'clinicians'], clinical: false },
+  { id: 'asc', name: 'ASC Payment Lookup', group: 'B', audiences: ['billers'], clinical: false },
+  { id: 'wage-index', name: 'CMS Wage Index Lookup', group: 'B', audiences: ['billers', 'educators'], clinical: false },
+  { id: 'gpci', name: 'GPCI Lookup', group: 'B', audiences: ['billers', 'educators'], clinical: false },
+  { id: 'medicare-deductibles', name: 'Medicare Deductibles & IRMAA', group: 'B', audiences: ['patients', 'billers'], clinical: false },
+  { id: 'aca-thresholds', name: 'ACA Marketplace Thresholds', group: 'B', audiences: ['patients', 'billers'], clinical: false },
+  { id: 'hsa-fsa', name: 'HSA / FSA / HDHP Limits', group: 'B', audiences: ['patients'], clinical: false },
+  { id: 'fpl', name: 'Federal Poverty Level Calculator', group: 'B', audiences: ['patients', 'educators'], clinical: false },
+  { id: 'irs-mileage', name: 'IRS Medical Mileage Rate', group: 'B', audiences: ['patients'], clinical: false },
   // Group C: Patient Bill and Insurance Tools
   { id: 'decoder', name: 'Medical Bill Decoder', group: 'C', audiences: ['patients', 'billers'], clinical: false },
   { id: 'insurance', name: 'Insurance Card Decoder', group: 'C', audiences: ['patients'], clinical: false },
@@ -50,10 +77,24 @@ const UTILITIES = [
   { id: 'no-surprises', name: 'No Surprises Act Eligibility Checker', group: 'C', audiences: ['patients'], clinical: false },
   { id: 'gfe', name: 'Good Faith Estimate Dispute Threshold Checker', group: 'C', audiences: ['patients'], clinical: false },
   { id: 'state-rights', name: 'State Patient Rights Reference', group: 'C', audiences: ['patients', 'educators'], clinical: false },
+  // Group C: v4 extensions (utilities 105-114)
+  { id: 'insurance-card', name: 'Insurance Card Decoder (printable)', group: 'C', audiences: ['patients'], clinical: false },
+  { id: 'abn-explainer', name: 'ABN (CMS-R-131) Explainer', group: 'C', audiences: ['patients', 'educators'], clinical: false },
+  { id: 'msn-decoder', name: 'Medicare Summary Notice Decoder', group: 'C', audiences: ['patients'], clinical: false },
+  { id: 'idr-eligibility', name: 'IDR Eligibility Checker (NSA)', group: 'C', audiences: ['patients', 'billers'], clinical: false },
+  { id: 'appeal-letter', name: 'Appeal Letter Generator', group: 'C', audiences: ['patients'], clinical: false },
+  { id: 'hipaa-roa', name: 'HIPAA Right of Access Request Generator', group: 'C', audiences: ['patients'], clinical: false },
+  { id: 'birthday-rule', name: 'Birthday Rule Resolver', group: 'C', audiences: ['patients'], clinical: false },
+  { id: 'cobra-timeline', name: 'COBRA Timeline', group: 'C', audiences: ['patients'], clinical: false },
+  { id: 'medicare-enrollment', name: 'Medicare Enrollment Period Checker', group: 'C', audiences: ['patients'], clinical: false },
+  { id: 'aca-sep', name: 'ACA SEP Eligibility Checker', group: 'C', audiences: ['patients'], clinical: false },
   // Group D: Provider and Plan Lookup
   { id: 'npi', name: 'NPI Provider Lookup', group: 'D', audiences: ['patients', 'billers'], clinical: false },
   { id: 'oig', name: 'OIG Exclusions Lookup', group: 'D', audiences: ['billers'], clinical: false },
   { id: 'opt-out', name: 'Medicare Opt-Out List Lookup', group: 'D', audiences: ['patients', 'billers'], clinical: false },
+  // Group D: v4 extensions (utilities 115-116)
+  { id: 'dea-validator', name: 'DEA Registration Number Validator', group: 'D', audiences: ['billers', 'clinicians', 'educators'], clinical: false },
+  { id: 'nucc-taxonomy', name: 'NUCC Provider Taxonomy Lookup', group: 'D', audiences: ['billers', 'educators'], clinical: false },
   // Group E: Clinical Math and Conversions
   { id: 'unit-converter', name: 'Unit Converter', group: 'E', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'bmi', name: 'BMI Calculator', group: 'E', audiences: ['patients', 'clinicians', 'educators'], clinical: true },
@@ -69,6 +110,19 @@ const UTILITIES = [
   { id: 'due-date', name: 'Naegele Pregnancy Due Date', group: 'E', audiences: ['patients', 'clinicians', 'educators'], clinical: true },
   { id: 'qtc', name: 'QTc Correction', group: 'E', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'pf-ratio', name: 'P/F Ratio', group: 'E', audiences: ['clinicians', 'educators', 'field'], clinical: true },
+  // Group E: v4 extensions (utilities 117-128)
+  { id: 'anion-gap-dd', name: 'Anion Gap & Delta-Delta', group: 'E', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'corrected-ca-na', name: 'Corrected Calcium / Sodium Suite', group: 'E', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'osmolal-gap', name: 'Osmolal Gap', group: 'E', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'aa-pf-suite', name: 'A-a Gradient & P/F Suite', group: 'E', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'winters', name: 'Winters Formula (expected PaCO2)', group: 'E', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'shock-index', name: 'MAP / Pulse Pressure / Shock Index', group: 'E', audiences: ['clinicians', 'educators', 'field'], clinical: true },
+  { id: 'bw-bsa-suite', name: 'Body Weight & BSA Suite (IBW / AdjBW / BSA)', group: 'E', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'egfr-suite', name: 'eGFR Suite (CKD-EPI 2021 / MDRD / CG)', group: 'E', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'fena-feurea', name: 'FENa / FEUrea', group: 'E', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'maint-fluids', name: 'Maintenance Fluids (4-2-1)', group: 'E', audiences: ['clinicians', 'educators', 'field'], clinical: true },
+  { id: 'qtc-suite', name: 'QTc Suite (Bazett / Fridericia / Framingham / Hodges)', group: 'E', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'preg-dating', name: 'Pregnancy Dating (LMP / CRL / EDD)', group: 'E', audiences: ['patients', 'clinicians', 'educators'], clinical: true },
   // Group F: Medication and Infusion
   { id: 'drip-rate', name: 'Drip Rate Calculator', group: 'F', audiences: ['clinicians', 'educators', 'field'], clinical: true },
   { id: 'weight-dose', name: 'Weight-Based Dose', group: 'F', audiences: ['clinicians', 'educators', 'field'], clinical: true },
@@ -77,6 +131,14 @@ const UTILITIES = [
   { id: 'insulin-drip', name: 'Insulin Drip Math', group: 'F', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'anticoag-reversal', name: 'Anticoagulation Reversal Reference', group: 'F', audiences: ['clinicians', 'educators', 'field'], clinical: true },
   { id: 'high-alert', name: 'High-Alert Medication Reference', group: 'F', audiences: ['clinicians', 'educators', 'field'], clinical: true },
+  // Group F: v4 extensions (utilities 129-135)
+  { id: 'opioid-mme', name: 'Opioid MME Calculator (CDC 2022)', group: 'F', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'steroid-equiv', name: 'Steroid Equivalence Converter', group: 'F', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'benzo-equiv', name: 'Benzodiazepine Equivalence (Ashton)', group: 'F', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'abx-renal', name: 'Antibiotic Renal Dose Adjustment', group: 'F', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'vasopressor', name: 'Vasopressor Dose to Rate Calculator', group: 'F', audiences: ['clinicians', 'educators', 'field'], clinical: true },
+  { id: 'tpn-macro', name: 'TPN Macronutrient Calculator', group: 'F', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'iv-to-po', name: 'IV-to-PO Conversion Reference', group: 'F', audiences: ['clinicians', 'educators'], clinical: true },
   // Group G: Clinical Scoring and Reference
   { id: 'gcs', name: 'Glasgow Coma Scale', group: 'G', audiences: ['clinicians', 'educators', 'field'], clinical: true },
   { id: 'apgar', name: 'APGAR', group: 'G', audiences: ['clinicians', 'educators', 'field'], clinical: true },
@@ -91,9 +153,43 @@ const UTILITIES = [
   { id: 'asa', name: 'ASA Physical Status Reference', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'mallampati', name: 'Mallampati Class Reference', group: 'G', audiences: ['clinicians', 'educators', 'field'], clinical: true },
   { id: 'beers', name: 'Beers Criteria Drug-Condition Lookup', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  // Group G: v4 extensions waves 1-2 (utilities 136-145)
+  { id: 'timi', name: 'TIMI Risk Score (UA / NSTEMI)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'grace', name: 'GRACE Score (in-hospital mortality)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'heart', name: 'HEART Score (chest pain)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'perc', name: 'PERC Rule (PE rule-out)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'wells-pe-geneva', name: 'Wells PE & Revised Geneva (PE)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'curb-65', name: 'CURB-65', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'psi', name: 'PSI / PORT (pneumonia severity)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'qsofa-sofa', name: 'qSOFA / SOFA', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'meld-childpugh', name: 'MELD-3.0 / Child-Pugh', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'ranson-bisap', name: 'Ranson / BISAP (acute pancreatitis)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  // Group G: v4 extensions waves 3-4 (utilities 146-156)
+  { id: 'centor', name: 'Centor / McIsaac (strep pharyngitis)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'wells-dvt-caprini', name: 'Wells DVT and Caprini VTE Risk', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'bishop', name: 'Bishop Score (cervical favorability)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'alvarado-pas', name: 'Alvarado / Pediatric Appendicitis Score', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'mrs', name: 'Modified Rankin Scale Reference', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'phq9', name: 'PHQ-9 Depression Screener', group: 'G', audiences: ['clinicians', 'patients', 'educators'], clinical: true },
+  { id: 'gad7', name: 'GAD-7 Anxiety Screener', group: 'G', audiences: ['clinicians', 'patients', 'educators'], clinical: true },
+  { id: 'auditc', name: 'AUDIT-C Alcohol Screener', group: 'G', audiences: ['clinicians', 'patients', 'educators'], clinical: true },
+  { id: 'cage', name: 'CAGE Alcohol Screener', group: 'G', audiences: ['clinicians', 'patients', 'educators'], clinical: true },
+  { id: 'epds', name: 'Edinburgh Postnatal Depression Scale', group: 'G', audiences: ['clinicians', 'patients', 'educators'], clinical: true },
+  { id: 'mini-cog', name: 'Mini-Cog Cognitive Screener', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  // Group G: v4 extensions waves 5-6 (utilities 157-160)
+  { id: 'ciwa', name: 'CIWA-Ar (alcohol withdrawal)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'cows', name: 'COWS (opioid withdrawal)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'ascvd', name: 'ASCVD 10-year Risk (PCE)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'prevent', name: 'PREVENT 2023 10-year CVD Risk (race-free)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   // Group H: Preparation and Workflow
   { id: 'prep', name: 'Appointment Prep Question Generator', group: 'H', audiences: ['patients'], clinical: false },
   { id: 'prior-auth', name: 'Prior Authorization Checklist Generator', group: 'H', audiences: ['billers'], clinical: false },
+  // Group H: v4 extensions (utilities 161-165)
+  { id: 'hipaa-auth', name: 'HIPAA Authorization Form Generator', group: 'H', audiences: ['patients'], clinical: false },
+  { id: 'roi', name: 'ROI Request Generator', group: 'H', audiences: ['patients'], clinical: false },
+  { id: 'discharge-instr', name: 'Discharge Instruction Template', group: 'H', audiences: ['clinicians', 'patients'], clinical: false },
+  { id: 'specialty-visit', name: 'Specialty-Visit Question Generator', group: 'H', audiences: ['patients'], clinical: false },
+  { id: 'wallet-card', name: 'Medication Wallet Card Generator', group: 'H', audiences: ['patients'], clinical: false },
   // Group I: Field Medicine
   { id: 'peds-weight-dose', name: 'Pediatric Weight-to-Dose Calculator', group: 'I', audiences: ['clinicians', 'educators', 'field'], clinical: true },
   { id: 'adult-arrest-ref', name: 'Adult Cardiac Arrest Drug Reference', group: 'I', audiences: ['clinicians', 'educators', 'field'], clinical: true },
@@ -112,6 +208,45 @@ const UTILITIES = [
   { id: 'toxidromes',       name: 'Toxidrome Reference', group: 'I', audiences: ['clinicians', 'educators', 'field'], clinical: true },
   { id: 'naloxone',         name: 'Naloxone Dosing Calculator', group: 'I', audiences: ['clinicians', 'educators', 'field', 'patients'], clinical: true },
   { id: 'ems-doc',          name: 'EMS Documentation Helper', group: 'I', audiences: ['clinicians', 'field'], clinical: false },
+  // Group I: v4 extensions (utilities 166-171)
+  { id: 'nexus-cspine',     name: 'NEXUS + Canadian C-Spine', group: 'I', audiences: ['clinicians', 'educators', 'field'], clinical: true },
+  { id: 'dot-erg',          name: 'DOT ERG Hazmat Lookup', group: 'I', audiences: ['clinicians', 'educators', 'field'], clinical: true },
+  { id: 'niosh-pg',         name: 'NIOSH Pocket Guide Lookup', group: 'I', audiences: ['clinicians', 'educators', 'field'], clinical: true },
+  { id: 'cpr-numeric',      name: 'CPR Numeric Reference (AHA)', group: 'I', audiences: ['clinicians', 'educators', 'field'], clinical: true },
+  { id: 'tccc',             name: 'TCCC Tourniquet & Wound-Packing', group: 'I', audiences: ['clinicians', 'educators', 'field'], clinical: true },
+  { id: 'co-cn-antidote',   name: 'CO / Cyanide / Smoke-Inhalation Antidotes', group: 'I', audiences: ['clinicians', 'educators', 'field'], clinical: true },
+  // Group J (NEW): Public Health & Travel (utilities 172-180)
+  { id: 'acip-adult',   name: 'ACIP Routine Adult Immunization Schedule', group: 'J', audiences: ['clinicians', 'patients', 'educators'], clinical: true },
+  { id: 'acip-child',   name: 'ACIP Routine Child Immunization Schedule', group: 'J', audiences: ['clinicians', 'patients', 'educators'], clinical: true },
+  { id: 'acip-catchup', name: 'ACIP Catch-Up Immunization Schedule', group: 'J', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'yellow-book',  name: 'CDC Yellow Book Country Lookup', group: 'J', audiences: ['clinicians', 'patients', 'educators'], clinical: true },
+  { id: 'tetanus',      name: 'Tetanus Prophylaxis Decision Tree', group: 'J', audiences: ['clinicians', 'educators', 'field'], clinical: true },
+  { id: 'rabies-pep',   name: 'Rabies PEP Decision Tree', group: 'J', audiences: ['clinicians', 'educators', 'field'], clinical: true },
+  { id: 'bbp-exposure', name: 'Bloodborne Pathogen Exposure Decision Tree', group: 'J', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'tb-testing',   name: 'TB Testing Interpretation (TST + IGRA)', group: 'J', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'sti-screening',name: 'STI Screening Interval Reference (CDC)', group: 'J', audiences: ['clinicians', 'patients', 'educators'], clinical: true },
+  // Group K (NEW): Lab Reference (utilities 181-184)
+  { id: 'lab-adult',   name: 'Adult Lab Reference Ranges (NIH)', group: 'K', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'lab-peds',    name: 'Pediatric Lab Reference Ranges by Age Band', group: 'K', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'tdm-levels',  name: 'Therapeutic Drug Levels Reference', group: 'K', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'tox-levels',  name: 'Toxicology Level Reference', group: 'K', audiences: ['clinicians', 'educators'], clinical: true },
+  // Group L (NEW): Forms & Numbers Literacy (utilities 185-187)
+  { id: 'cms1500',       name: 'CMS-1500 Field-by-Field Decoder', group: 'L', audiences: ['patients', 'billers', 'educators'], clinical: false },
+  { id: 'ub04',          name: 'UB-04 Form-Locator Decoder', group: 'L', audiences: ['patients', 'billers', 'educators'], clinical: false },
+  { id: 'eob-glossary',  name: 'EOB Jargon Glossary', group: 'L', audiences: ['patients', 'billers', 'educators'], clinical: false },
+  // Group M (NEW): Eligibility & Benefits (utilities 188-191)
+  { id: 'medicaid-state', name: 'Medicaid by State Quick-Card', group: 'M', audiences: ['patients', 'educators'], clinical: false },
+  { id: 'va-eligibility', name: 'VA Eligibility 1-2-3', group: 'M', audiences: ['patients', 'educators'], clinical: false },
+  { id: 'tricare-picker', name: 'TRICARE Plan Picker', group: 'M', audiences: ['patients', 'educators'], clinical: false },
+  { id: 'ihs-eligibility',name: 'IHS Eligibility Quick-Reference', group: 'M', audiences: ['patients', 'educators'], clinical: false },
+  // Group N (NEW): Literacy Helpers (utilities 192-194)
+  { id: 'unit-converter-v4', name: 'Universal Unit Converter (lab + vitals + basics)', group: 'N', audiences: ['patients', 'clinicians', 'educators'], clinical: false },
+  { id: 'time-to-dose',      name: 'Time-to-Dose Helper', group: 'N', audiences: ['patients'], clinical: false },
+  { id: 'peds-weight-conv',  name: 'Pediatric Weight Converter (lb/oz <-> kg)', group: 'N', audiences: ['patients', 'clinicians', 'educators'], clinical: false },
+  // Group O (NEW): Patient Safety (utilities 195-197)
+  { id: 'high-alert-card', name: 'High-Alert Medication Wallet Card (ISMP)', group: 'O', audiences: ['patients', 'clinicians', 'educators'], clinical: false },
+  { id: 'drug-recalls',    name: 'Drug Recall Lookup (FDA weekly)', group: 'O', audiences: ['patients', 'clinicians', 'educators'], clinical: false },
+  { id: 'vaccine-recalls', name: 'Vaccine Lot Recall Lookup', group: 'O', audiences: ['patients', 'clinicians', 'educators'], clinical: false },
 ];
 
 const UTIL_BY_ID = new Map(UTILITIES.map((u) => [u.id, u]));
@@ -229,6 +364,12 @@ const GROUP_LABELS = {
   G: 'G · Clinical Scoring & Reference',
   H: 'H · Preparation & Workflow',
   I: 'I · Field Medicine',
+  J: 'J · Public Health & Travel',
+  K: 'K · Lab Reference',
+  L: 'L · Forms & Numbers Literacy',
+  M: 'M · Eligibility & Benefits',
+  N: 'N · Literacy Helpers',
+  O: 'O · Patient Safety',
 };
 
 function wireFilters() {
@@ -607,6 +748,166 @@ function renderDocView(id) {
   });
 }
 
+// ----- Topbar search (typeahead → direct navigation) ---------------------
+
+function scoreUtility(util, tokens) {
+  const name = util.name.toLowerCase();
+  const id = util.id.toLowerCase();
+  let score = 0;
+  for (const t of tokens) {
+    if (!t) continue;
+    const inName = name.indexOf(t);
+    const inId = id.indexOf(t);
+    if (inName === -1 && inId === -1) return -1;
+    if (name === t || id === t) score += 1000;
+    if (inName === 0) score += 200;
+    else if (inName > 0) score += Math.max(40 - inName, 5);
+    if (inId === 0) score += 120;
+    else if (inId > 0) score += 30;
+    if (new RegExp('\\b' + t.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'i').test(util.name)) score += 60;
+  }
+  return score;
+}
+
+function searchUtilities(query, limit) {
+  const q = query.trim().toLowerCase();
+  if (!q) return [];
+  const tokens = q.split(/\s+/).filter(Boolean);
+  const ranked = [];
+  for (const util of UTILITIES) {
+    const s = scoreUtility(util, tokens);
+    if (s >= 0) ranked.push({ util, score: s });
+  }
+  ranked.sort((a, b) => b.score - a.score || a.util.name.localeCompare(b.util.name));
+  return ranked.slice(0, limit).map((r) => r.util);
+}
+
+function installTopbarSearch() {
+  const input = document.getElementById('topbar-search');
+  const list = document.getElementById('topbar-search-results');
+  if (!input || !list) return;
+
+  let activeIndex = -1;
+  let currentMatches = [];
+
+  function setExpanded(open) {
+    input.setAttribute('aria-expanded', open ? 'true' : 'false');
+    list.hidden = !open;
+  }
+
+  function setActive(idx) {
+    const items = list.querySelectorAll('.topbar-search-result');
+    items.forEach((node, i) => {
+      const on = i === idx;
+      node.classList.toggle('is-active', on);
+      node.setAttribute('aria-selected', on ? 'true' : 'false');
+      if (on) {
+        input.setAttribute('aria-activedescendant', node.id);
+        node.scrollIntoView({ block: 'nearest' });
+      }
+    });
+    if (idx === -1) input.removeAttribute('aria-activedescendant');
+    activeIndex = idx;
+  }
+
+  function navigateTo(util) {
+    if (!util) return;
+    input.value = '';
+    currentMatches = [];
+    clear(list);
+    setExpanded(false);
+    input.blur();
+    if (location.hash === '#' + util.id) {
+      currentRouteId = null;
+      route();
+    } else {
+      location.hash = '#' + util.id;
+    }
+  }
+
+  function render(matches, query) {
+    clear(list);
+    currentMatches = matches;
+    if (!query) { setExpanded(false); setActive(-1); return; }
+    if (matches.length === 0) {
+      const empty = el('li', { class: 'topbar-search-empty', role: 'presentation', text: 'No tools match.' });
+      list.appendChild(empty);
+      setExpanded(true);
+      setActive(-1);
+      return;
+    }
+    matches.forEach((util, i) => {
+      const item = el('li', {
+        class: 'topbar-search-result',
+        role: 'option',
+        id: `topbar-search-result-${i}`,
+        'data-tool': util.id,
+        'aria-selected': 'false',
+      }, [
+        el('span', { class: 'tsr-name', text: util.name }),
+        el('span', { class: 'tsr-group', text: GROUP_LABELS[util.group] || util.group }),
+      ]);
+      item.addEventListener('mousedown', (e) => {
+        // mousedown so it fires before the input blur clears state.
+        e.preventDefault();
+        navigateTo(util);
+      });
+      item.addEventListener('mouseenter', () => setActive(i));
+      list.appendChild(item);
+    });
+    setExpanded(true);
+    setActive(0);
+  }
+
+  input.addEventListener('input', () => {
+    const matches = searchUtilities(input.value, 8);
+    render(matches, input.value.trim());
+  });
+
+  input.addEventListener('focus', () => {
+    if (input.value.trim()) {
+      const matches = searchUtilities(input.value, 8);
+      render(matches, input.value.trim());
+    }
+  });
+
+  input.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowDown') {
+      if (!currentMatches.length) return;
+      setActive((activeIndex + 1) % currentMatches.length);
+      e.preventDefault();
+    } else if (e.key === 'ArrowUp') {
+      if (!currentMatches.length) return;
+      setActive((activeIndex - 1 + currentMatches.length) % currentMatches.length);
+      e.preventDefault();
+    } else if (e.key === 'Enter') {
+      if (activeIndex >= 0 && currentMatches[activeIndex]) {
+        e.preventDefault();
+        navigateTo(currentMatches[activeIndex]);
+      } else if (currentMatches[0]) {
+        e.preventDefault();
+        navigateTo(currentMatches[0]);
+      }
+    } else if (e.key === 'Escape') {
+      if (input.value || !list.hidden) {
+        input.value = '';
+        clear(list);
+        currentMatches = [];
+        setExpanded(false);
+        setActive(-1);
+        e.preventDefault();
+      }
+    }
+  });
+
+  document.addEventListener('click', (e) => {
+    if (e.target === input) return;
+    if (list.contains(e.target)) return;
+    setExpanded(false);
+    setActive(-1);
+  });
+}
+
 // ----- Service worker registration ----------------------------------------
 
 function registerServiceWorker() {
@@ -628,6 +929,7 @@ function boot() {
   applyFilters();
   renderPinnedSection();
   installKeyboard();
+  installTopbarSearch();
   window.addEventListener('hashchange', route);
   route();
   registerServiceWorker();

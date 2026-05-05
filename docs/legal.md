@@ -204,3 +204,39 @@ clinician judgment, institutional protocols, professional billing review, or
 legal counsel. Verify all values against authoritative sources before
 relying on them for any decision. The MIT License limitations of liability
 apply to the software and to all bundled content authored by the project.
+
+## v4 posture additions
+
+spec-v4 adds 50+ datasets. Every dataset's `manifest.json` declares its
+licensing posture with one of these explicit values:
+
+- **`public-domain`** -- US government work (CMS, FDA, CDC, NLM, NIH,
+  HHS, DEA, NUCC, PHMSA / DOT, NIOSH, VA, DHA, IHS, SSA). Bundled in
+  full subject to size constraints. No attribution needed for legal
+  reasons but every utility shows the source label per spec-v2.
+- **`government-work`** -- IRS-published rates and notices. Same
+  treatment as public-domain.
+- **`numeric-facts-with-attribution`** -- numeric values from sources
+  whose published prose is restricted (NUBC manuals, AHA flowcharts,
+  Ashton manual, CoTCCC). The `cpr-aha-numeric` and `aha-reference`
+  datasets specifically carry only the numeric AHA values; the
+  flowchart imagery and prose are NOT reproduced. The
+  `aha-no-flowchart` test enforces this on every commit.
+- **`mit-original`** -- original plain-English summaries authored by
+  the project (cpt-summaries, cms-1500-fields, ub04-fields,
+  eob-glossary, steroid-equiv, tpn-rules, iv-to-po). MIT-licensed
+  along with the rest of the source.
+
+**Forbidden bundling** (linked rather than bundled, per spec-v4 §3):
+- AMA CPT descriptors. Only structural Medicare data + project-original
+  category summaries; the AMA's free public CPT lookup is linked.
+- SNOMED CT in full.
+- AHA algorithm flowcharts.
+- LOINC at scale (deferred to v4.5+ pending license review).
+- Broselow color bands.
+- MoCA full instrument.
+
+The spec-v3 AHA non-derivation posture extends to spec-v4: the
+`cpr-aha-numeric` dataset is numeric-facts-only, attributed to the AHA
+ECC guideline edition, and tested for forbidden flowchart prose by
+`test/unit/aha-no-flowchart.test.js`.

@@ -1,0 +1,19 @@
+{
+  "dataset": "cms-1500-fields",
+  "label": "CMS-1500 field-by-field decoder",
+  "sourceUrl": "https://www.cms.gov/medicare/billing/electronicbillingeditrans/15claimform",
+  "agency": "CMS (project author summaries)",
+  "status": "mit-original",
+  "cadence": "annual",
+  "fetchDate": "2026-05-05",
+  "offlineSeed": true,
+  "recordCount": 10,
+  "shards": [
+    {
+      "name": "fields.json",
+      "sha256": "746a8e6928158b2c8a4625804eadd301b9302008103ca2c9af8559600b9027f7",
+      "records": 10,
+      "bytes": 1088
+    }
+  ]
+}

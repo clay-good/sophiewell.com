@@ -8,6 +8,8 @@ import { el, clear } from '../lib/dom.js';
 import { loadAllShards, loadFile, loadManifest } from '../lib/data.js';
 import { buildIndex } from '../lib/search.js';
 import { normalizeNDC } from '../lib/codes.js';
+import { renderTable } from '../lib/table.js';
+import { decodeTob } from '../lib/tob.js';
 
 function inputBlock(labelText, id, type = 'search', placeholder = '') {
   return el('p', {}, [
@@ -342,3 +344,289 @@ function pickSummary(summaries, code) {
   }
   return null;
 }
+
+// --- spec-v4 §5: Group A extensions (utilities 82-93) -------------------
+
+function tableShell(root) {
+  const region = el('div', { id: 'q-results', role: 'region', 'aria-live': 'polite' });
+  root.appendChild(region);
+  return region;
+}
+
+function failMessage(region, msg) {
+  clear(region);
+  region.appendChild(el('p', { class: 'muted', text: msg }));
+}
+
+renderers['hcpcs-mod'] = function (root) {
+  const region = tableShell(root);
+  loadFile('hcpcs-modifiers', 'modifiers.json').then((rows) => {
+    renderTable(region, {
+      columns: [
+        { key: 'modifier', label: 'Modifier' },
+        { key: 'description', label: 'Description' },
+        { key: 'commonUse', label: 'Common Use' },
+        { key: 'pairingCaution', label: 'Pairing Caution' },
+      ],
+      rows,
+    });
+  }).catch((err) => failMessage(region, `Failed to load HCPCS modifiers: ${err.message}`));
+};
+
+renderers['ncci-ptp'] = function (root) {
+  // spec-v4 §5 utility 83: paired NCCI PTP edit checker over the bundled
+  // ncci dataset. Live-render; both inputs trigger lookup.
+  const a = inputBlock('Column 1 code', 'codeA');
+  const b = inputBlock('Column 2 code', 'codeB');
+  const out = el('div', { id: 'q-results', role: 'region', 'aria-live': 'polite' });
+  root.appendChild(a); root.appendChild(b); root.appendChild(out);
+  loadAllShards('ncci').then((edits) => {
+    const idx = new Map();
+    for (const e of edits) idx.set(`${e.col1}|${e.col2}`, e);
+    const run = () => {
+      const ca = document.getElementById('codeA').value.trim().toUpperCase();
+      const cb = document.getElementById('codeB').value.trim().toUpperCase();
+      clear(out);
+      if (!ca || !cb) return;
+      const e = idx.get(`${ca}|${cb}`) || idx.get(`${cb}|${ca}`);
+      if (!e) {
+        out.appendChild(el('p', { text: `No NCCI PTP edit between ${ca} and ${cb} in the bundled subset.` }));
+        return;
+      }
+      const cat = e.modifierIndicator === '1' ? 'Modifier may unbundle (with documentation).'
+        : e.modifierIndicator === '0' ? 'Cannot be unbundled by any modifier.'
+        : 'Indicator not specified for unbundling.';
+      out.appendChild(el('h2', { text: `${e.col1} vs ${e.col2}` }));
+      out.appendChild(el('ul', {}, [
+        el('li', { text: `Modifier indicator: ${e.modifierIndicator} - ${cat}` }),
+        el('li', { text: `Effective date: ${e.effectiveDate}` }),
+        el('li', { text: `Rationale: ${e.rationale}` }),
+      ]));
+    };
+    document.getElementById('codeA').addEventListener('input', run);
+    document.getElementById('codeB').addEventListener('input', run);
+  }).catch((err) => failMessage(out, `Failed to load NCCI edits: ${err.message}`));
+};
+
+renderers['mue-cap'] = function (root) {
+  // spec-v4 §5 utility 84: type/paste a code, return the MUE unit cap and
+  // adjudication indicator. Same data as the v1 'mue' tile, surfaced via
+  // the v4 conventions (live-render and a clearer cap label).
+  const input = inputBlock('Code', 'q');
+  const out = el('div', { id: 'q-results', role: 'region', 'aria-live': 'polite' });
+  root.appendChild(input); root.appendChild(out);
+  loadAllShards('mue').then((rows) => {
+    const idx = new Map(rows.map((r) => [r.code, r]));
+    document.getElementById('q').addEventListener('input', (e) => {
+      const c = e.target.value.trim().toUpperCase();
+      clear(out);
+      if (!c) return;
+      const r = idx.get(c);
+      if (!r) { out.appendChild(el('p', { text: `No MUE cap found for ${c} in the bundled subset.` })); return; }
+      out.appendChild(el('h2', { text: c }));
+      out.appendChild(el('ul', {}, [
+        el('li', { text: `Maximum units per claim: ${r.maxUnits}` }),
+        el('li', { text: `Adjudication indicator: ${r.rationaleCode || 'n/a'}` }),
+        el('li', { text: `Rationale: ${r.rationale}` }),
+      ]));
+    });
+  }).catch((err) => failMessage(out, `Failed to load MUE: ${err.message}`));
+};
+
+renderers['pos-lookup'] = function (root) {
+  const region = tableShell(root);
+  loadFile('pos-codes', 'pos.json').then((rows) => {
+    renderTable(region, {
+      columns: [
+        { key: 'code', label: 'Code' },
+        { key: 'name', label: 'Name' },
+        { key: 'setting', label: 'Setting' },
+        { key: 'facility', label: 'Facility / Non-facility' },
+      ],
+      rows,
+    });
+  }).catch((err) => failMessage(region, `Failed to load POS codes: ${err.message}`));
+};
+
+renderers['tob-decode'] = function (root) {
+  const input = inputBlock('Type of Bill (3 or 4 digits)', 'q', 'search', 'e.g. 0111');
+  const out = el('div', { id: 'q-results', role: 'region', 'aria-live': 'polite' });
+  root.appendChild(input); root.appendChild(out);
+  loadFile('tob-codes', 'tob.json').then((table) => {
+    document.getElementById('q').addEventListener('input', (e) => {
+      clear(out);
+      const r = decodeTob(e.target.value, table);
+      if (!r.ok) { out.appendChild(el('p', { class: 'muted', text: r.error })); return; }
+      const fmt = (row, fallback) => row ? `${row.digit} - ${row.label}` : fallback;
+      out.appendChild(el('h2', { text: `TOB ${r.input}` }));
+      out.appendChild(el('ul', {}, [
+        el('li', { text: `Type of Facility: ${fmt(r.facility, 'Unknown digit')}` }),
+        el('li', { text: `Bill Classification: ${fmt(r.classification, 'Unknown digit')}` }),
+        el('li', { text: `Frequency: ${fmt(r.frequency, 'Unknown digit')}` }),
+      ]));
+    });
+  }).catch((err) => failMessage(out, `Failed to load TOB table: ${err.message}`));
+};
+
+renderers['rev-table'] = function (root) {
+  const region = tableShell(root);
+  loadFile('revenue-codes', 'revenue.json').then((rows) => {
+    renderTable(region, {
+      columns: [
+        { key: 'code', label: 'Revenue Code' },
+        { key: 'category', label: 'Category' },
+        { key: 'typicalPairing', label: 'Typical Pairing' },
+      ],
+      rows,
+    });
+  }).catch((err) => failMessage(region, `Failed to load revenue codes: ${err.message}`));
+};
+
+renderers['nubc-codes'] = function (root) {
+  // Three sub-tables in one tile: condition / occurrence / value codes.
+  const region = tableShell(root);
+  loadFile('nubc-special-codes', 'special.json').then((data) => {
+    const sections = [
+      { title: 'Condition Codes', rows: data.condition },
+      { title: 'Occurrence Codes', rows: data.occurrence },
+      { title: 'Value Codes', rows: data.value },
+    ];
+    for (const sec of sections) {
+      region.appendChild(el('h2', { text: sec.title }));
+      const sub = el('div');
+      region.appendChild(sub);
+      renderTable(sub, {
+        columns: [{ key: 'code', label: 'Code' }, { key: 'desc', label: 'Description' }],
+        rows: sec.rows || [],
+        searchable: true,
+        sortable: true,
+        copyableRows: true,
+      });
+    }
+  }).catch((err) => failMessage(region, `Failed to load NUBC special codes: ${err.message}`));
+};
+
+renderers['drg-lookup'] = function (root) {
+  const region = tableShell(root);
+  loadFile('drg', 'drg.json').then((rows) => {
+    renderTable(region, {
+      columns: [
+        { key: 'drg', label: 'DRG' },
+        { key: 'title', label: 'Title' },
+        { key: 'mdc', label: 'MDC' },
+        { key: 'relativeWeight', label: 'Rel. Weight' },
+        { key: 'gmlos', label: 'GMLOS' },
+        { key: 'amlos', label: 'AMLOS' },
+      ],
+      rows,
+    });
+  }).catch((err) => failMessage(region, `Failed to load DRG: ${err.message}`));
+};
+
+renderers['apc-lookup'] = function (root) {
+  const region = tableShell(root);
+  loadFile('apc', 'apc.json').then((rows) => {
+    renderTable(region, {
+      columns: [
+        { key: 'apc', label: 'APC' },
+        { key: 'title', label: 'Group Title' },
+        { key: 'statusIndicator', label: 'Status Indicator' },
+        { key: 'relativeWeight', label: 'Rel. Weight' },
+        { key: 'paymentRate', label: 'Payment Rate' },
+      ],
+      rows,
+    });
+  }).catch((err) => failMessage(region, `Failed to load APC: ${err.message}`));
+};
+
+renderers['pcs-lookup'] = function (root) {
+  const input = inputBlock('Search ICD-10-PCS by code or description', 'q');
+  const region = el('div', { id: 'q-results', role: 'region', 'aria-live': 'polite' });
+  root.appendChild(input); root.appendChild(region);
+  loadFile('icd10-pcs', 'pcs.json').then((rows) => {
+    const idx = buildIndex(rows, { codeKey: 'code', textKeys: ['description', 'section', 'bodySystem', 'operation'] });
+    const update = (q) => {
+      clear(region);
+      const found = idx.search(q, 50);
+      if (!found.length) { region.appendChild(el('p', { class: 'muted', text: 'No results.' })); return; }
+      for (const r of found) {
+        region.appendChild(el('article', { class: 'result-card' }, [
+          el('h3', { text: r.code }),
+          el('p', { text: r.description }),
+          el('p', { class: 'muted', text: `${r.section} - ${r.bodySystem} - ${r.operation}` }),
+        ]));
+      }
+    };
+    update('');
+    document.getElementById('q').addEventListener('input', (e) => update(e.target.value));
+  }).catch((err) => failMessage(region, `Failed to load ICD-10-PCS: ${err.message}`));
+};
+
+renderers['rxnorm-lookup'] = function (root) {
+  const input = inputBlock('Search by RxCUI or drug name', 'q');
+  const region = el('div', { id: 'q-results', role: 'region', 'aria-live': 'polite' });
+  root.appendChild(input); root.appendChild(region);
+  loadFile('rxnorm', 'rxnorm.json').then((rows) => {
+    const idx = buildIndex(rows, { codeKey: 'rxcui', textKeys: ['name', 'ingredient', 'doseForm'] });
+    const update = (q) => {
+      clear(region);
+      const found = idx.search(q, 50);
+      if (!found.length) { region.appendChild(el('p', { class: 'muted', text: 'No results.' })); return; }
+      for (const r of found) {
+        region.appendChild(el('article', { class: 'result-card' }, [
+          el('h3', { text: `${r.name}` }),
+          el('p', { class: 'muted', text: `RxCUI ${r.rxcui} - ${r.tty}${r.ingredient ? ' - ingredient ' + r.ingredient : ''}` }),
+          r.strength || r.doseForm ? el('p', { text: [r.strength, r.doseForm].filter(Boolean).join(' - ') }) : null,
+        ].filter(Boolean)));
+      }
+    };
+    update('');
+    document.getElementById('q').addEventListener('input', (e) => update(e.target.value));
+  }).catch((err) => failMessage(region, `Failed to load RxNorm subset: ${err.message}`));
+};
+
+renderers['ndc-rxnorm'] = function (root) {
+  const input = inputBlock('Enter NDC (any standard format)', 'q');
+  const status = el('p', { class: 'muted', id: 'nx-status' });
+  const region = el('div', { id: 'q-results', role: 'region', 'aria-live': 'polite' });
+  root.appendChild(input); root.appendChild(status); root.appendChild(region);
+  Promise.all([
+    loadAllShards('ndc'),
+    loadFile('rxnorm', 'rxnorm.json'),
+  ]).then(([ndc, rxnorm]) => {
+    // Build a name-keyed index into RxNorm so we can crosswalk by ingredient
+    // when a direct rxcui field isn't present on the NDC record.
+    const byIngredient = new Map();
+    for (const r of rxnorm) {
+      const key = String(r.ingredient || r.name || '').toLowerCase();
+      if (!key) continue;
+      if (!byIngredient.has(key)) byIngredient.set(key, []);
+      byIngredient.get(key).push(r);
+    }
+    const ndcIdx = new Map(ndc.map((r) => [String(r.ndc), r]));
+    document.getElementById('q').addEventListener('input', (e) => {
+      const raw = e.target.value.trim();
+      clear(region); clear(status);
+      if (!raw) return;
+      const norm = normalizeNDC(raw);
+      if (norm) status.textContent = `Normalized: ${norm.formatted} (canonical 11-digit ${norm.canonical}).`;
+      const product = ndcIdx.get(norm ? norm.formatted : raw)
+        || ndc.find((r) => String(r.ndc).replace(/[^0-9]/g, '') === (norm ? norm.canonical : raw.replace(/[^0-9]/g, '')));
+      if (!product) { region.appendChild(el('p', { class: 'muted', text: 'No NDC product found in the bundled subset.' })); return; }
+      const ingredient = String(product.nonproprietary || product.proprietary || '').toLowerCase();
+      const matches = (byIngredient.get(ingredient) || []).slice(0, 10);
+      region.appendChild(el('article', { class: 'result-card' }, [
+        el('h3', { text: product.proprietary || product.nonproprietary || product.ndc }),
+        el('p', { class: 'muted', text: `NDC ${product.ndc} - ${product.form || ''} - ${product.route || ''}` }),
+      ]));
+      if (matches.length === 0) {
+        region.appendChild(el('p', { class: 'muted', text: 'No RxNorm crosswalk match in the bundled subset.' }));
+        return;
+      }
+      region.appendChild(el('h3', { text: 'RxNorm matches' }));
+      for (const r of matches) {
+        region.appendChild(el('p', { text: `RxCUI ${r.rxcui} - ${r.name} (${r.tty})` }));
+      }
+    });
+  }).catch((err) => failMessage(region, `Failed to load crosswalk data: ${err.message}`));
+};

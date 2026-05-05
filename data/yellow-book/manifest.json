@@ -1,0 +1,19 @@
+{
+  "dataset": "yellow-book",
+  "label": "CDC Yellow Book country reference subset",
+  "sourceUrl": "https://wwwnc.cdc.gov/travel/yellowbook",
+  "agency": "CDC",
+  "status": "public-domain",
+  "cadence": "annual",
+  "fetchDate": "2026-05-05",
+  "offlineSeed": true,
+  "recordCount": 4,
+  "shards": [
+    {
+      "name": "yellow-book.json",
+      "sha256": "f194077a831bc16bfbca86fbf0ec3160cec9070acc454df629df403b13c69374",
+      "records": 4,
+      "bytes": 867
+    }
+  ]
+}

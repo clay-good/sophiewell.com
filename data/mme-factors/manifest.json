@@ -1,0 +1,19 @@
+{
+  "dataset": "mme-factors",
+  "label": "CDC 2022 Opioid MME conversion factors",
+  "sourceUrl": "https://www.cdc.gov/opioids/healthcare-professionals/prescribing/guideline.html",
+  "agency": "CDC",
+  "status": "public-domain",
+  "cadence": "per-revision",
+  "fetchDate": "2026-05-05",
+  "offlineSeed": true,
+  "recordCount": 10,
+  "shards": [
+    {
+      "name": "mme.json",
+      "sha256": "d620f6cf05f145cfd7498f465d886444d4d5ce1126bcf318e3cff51699d4e27c",
+      "records": 10,
+      "bytes": 504
+    }
+  ]
+}

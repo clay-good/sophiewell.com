@@ -1,0 +1,19 @@
+{
+  "dataset": "dot-erg",
+  "label": "PHMSA Emergency Response Guidebook subset",
+  "sourceUrl": "https://www.phmsa.dot.gov/hazmat/erg/emergency-response-guidebook-erg",
+  "agency": "PHMSA / DOT",
+  "status": "public-domain",
+  "cadence": "per-edition",
+  "fetchDate": "2026-05-05",
+  "offlineSeed": true,
+  "recordCount": 5,
+  "shards": [
+    {
+      "name": "erg.json",
+      "sha256": "b9fc61506479bcd7fc29f0c03735eb0c2630026515bb4086a4eb506cb1a608ee",
+      "records": 5,
+      "bytes": 971
+    }
+  ]
+}

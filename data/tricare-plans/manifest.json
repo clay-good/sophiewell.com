@@ -1,0 +1,19 @@
+{
+  "dataset": "tricare-plans",
+  "label": "TRICARE plan rules",
+  "sourceUrl": "https://www.tricare.mil/Plans",
+  "agency": "DHA TRICARE",
+  "status": "public-domain",
+  "cadence": "annual",
+  "fetchDate": "2026-05-05",
+  "offlineSeed": true,
+  "recordCount": 5,
+  "shards": [
+    {
+      "name": "tricare.json",
+      "sha256": "62603248973d52e5a8a71e4e8433e2bdee494ddf3f52b3245c441da85a7e4065",
+      "records": 5,
+      "bytes": 635
+    }
+  ]
+}

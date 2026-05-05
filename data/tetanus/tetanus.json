@@ -1,0 +1,1 @@
+{"cleanMinor":{"unknownOrLessThan3Doses":{"tdap":"Yes","tig":"No"},"threeOrMoreDosesLastMoreThan10y":{"tdap":"Yes","tig":"No"},"threeOrMoreDosesLastWithin10y":{"tdap":"No","tig":"No"}},"dirtyOrSerious":{"unknownOrLessThan3Doses":{"tdap":"Yes","tig":"Yes"},"threeOrMoreDosesLastMoreThan5y":{"tdap":"Yes","tig":"No"},"threeOrMoreDosesLastWithin5y":{"tdap":"No","tig":"No"}}}

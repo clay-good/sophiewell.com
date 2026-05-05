@@ -1,0 +1,19 @@
+{
+  "dataset": "tox-levels",
+  "label": "Toxicology level reference",
+  "sourceUrl": "https://wiser.nlm.nih.gov/",
+  "agency": "NLM WISER (HHS)",
+  "status": "public-domain",
+  "cadence": "annual",
+  "fetchDate": "2026-05-05",
+  "offlineSeed": true,
+  "recordCount": 8,
+  "shards": [
+    {
+      "name": "tox.json",
+      "sha256": "81143d8a77c5a404b0980f19a9ba23182f2234d220cf71459fc6af1b32ec6624",
+      "records": 8,
+      "bytes": 667
+    }
+  ]
+}

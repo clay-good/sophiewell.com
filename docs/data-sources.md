@@ -257,3 +257,36 @@ section 5.1).
 Each dataset folder contains a `manifest.json` with at minimum: source URL,
 fetch date, source SHA-256, record count, and per-shard SHA-256 hashes. The
 runtime verifies the manifest hash on first read of any shard.
+
+## v4 datasets (added by spec-v4)
+
+The full source catalog for the v4 datasets lives in
+[scripts/sources.md](../scripts/sources.md). A per-dataset summary:
+
+- **CMS public files**: hcpcs-modifiers, pos-codes, drg, apc, icd10-pcs,
+  dmepos, clfs, asp, asc, wage-index, gpci, cms-deductibles, irmaa,
+  aca-thresholds, cms-1500-fields, ub04-fields.
+- **HHS / IRS / SSA**: hsa-fsa-limits (IRS), fpl (HHS / ASPE),
+  irs-mileage (IRS).
+- **NUBC structural facts (numeric only)**: tob-codes, revenue-codes,
+  nubc-special-codes.
+- **NLM**: rxnorm, lab-ranges-adult / -peds (MedlinePlus), tox-levels
+  (WISER), therapeutic-drug-levels (DailyMed).
+- **FDA labels**: abx-renal (DailyMed subset), vasopressor-doses,
+  iv-to-po, drug-recalls, vaccine-lot-recalls.
+- **CDC**: acip-routine-adult, acip-routine-child, acip-catchup,
+  yellow-book, tetanus, rabies-pep, bbp-exposure, tb-tst-igra,
+  sti-screening, mme-factors.
+- **DOJ / DEA / NUCC / DOT / NIOSH / VA / DHA / IHS**: dea-rules,
+  nucc-taxonomy, dot-erg, niosh-pg, va-eligibility, tricare-plans,
+  ihs-eligibility.
+- **AHA / Ashton / CoTCCC (numeric facts with attribution)**:
+  cpr-aha-numeric, benzo-equiv, tccc.
+- **State Medicaid agencies (numeric thresholds only)**: medicaid-state.
+- **Project-author original (MIT)**: cpt-summaries (existing),
+  steroid-equiv, tpn-rules, eob-glossary.
+
+Every v4 dataset's manifest declares its `status` (`public-domain`,
+`government-work`, `numeric-facts-with-attribution`, or `mit-original`)
+along with `agency`, `sourceUrl`, `cadence`, `fetchDate`, `recordCount`,
+and per-shard SHA-256.

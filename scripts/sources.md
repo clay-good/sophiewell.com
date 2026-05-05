@@ -32,6 +32,71 @@ script with full network access to refresh the data folder.
 | aha-reference     | AHA ECC 2020 guidelines (numeric facts only; flowcharts not reproduced)                                                                 | AHA (numeric)      | numeric facts with attribution    | as published  |
 | toxidromes        | CDC ATSDR toxicological profiles                                                                                                        | ATSDR / CDC        | public domain                     | as needed     |
 
+### v4 datasets (spec-v4 §4)
+
+Live-fetch builders are deferred to CI. In the dev checkout these datasets
+ship with hand-curated, deterministic offline seeds. Fetch URLs below are
+the canonical sources.
+
+| Dataset                  | Source URL                                                                                                  | Agency                | Status                            | Cadence       |
+|--------------------------|-------------------------------------------------------------------------------------------------------------|-----------------------|-----------------------------------|---------------|
+| hcpcs-modifiers          | https://www.cms.gov/medicare/coding-billing/healthcare-common-procedure-system                              | CMS                   | public domain                     | annual        |
+| pos-codes                | https://www.cms.gov/medicare/coding-billing/place-of-service-codes                                          | CMS                   | public domain                     | as-needed     |
+| tob-codes                | https://www.nubc.org/                                                                                       | NUBC (numeric)        | numeric facts with attribution    | as-needed     |
+| revenue-codes            | https://www.nubc.org/                                                                                       | NUBC (numeric)        | numeric facts with attribution    | as-needed     |
+| nubc-special-codes       | https://www.nubc.org/                                                                                       | NUBC (numeric)        | numeric facts with attribution    | as-needed     |
+| drg                      | https://www.cms.gov/medicare/payment/prospective-payment-systems/acute-inpatient-pps                        | CMS                   | public domain                     | annual        |
+| apc                      | https://www.cms.gov/medicare/medicare-fee-for-service-payment/hospitaloutpatientpps                         | CMS                   | public domain                     | quarterly     |
+| icd10-pcs                | https://www.cms.gov/medicare/coding/icd10                                                                   | CMS                   | public domain                     | annual        |
+| rxnorm                   | https://www.nlm.nih.gov/research/umls/rxnorm/                                                               | NLM                   | public domain                     | monthly       |
+| dmepos                   | https://www.cms.gov/medicare/medicare-fee-for-service-payment/dmeposfeesched                                | CMS                   | public domain                     | quarterly     |
+| clfs                     | https://www.cms.gov/medicare/medicare-fee-for-service-payment/clinicallabfeesched                           | CMS                   | public domain                     | quarterly     |
+| asp                      | https://www.cms.gov/medicare/medicare-part-b-drug-average-sales-price/asp-pricing-files                     | CMS                   | public domain                     | quarterly     |
+| asc                      | https://www.cms.gov/medicare/medicare-fee-for-service-payment/ascpayment                                    | CMS                   | public domain                     | quarterly     |
+| wage-index               | https://www.cms.gov/medicare/payment/prospective-payment-systems/acute-inpatient-pps/wage-index             | CMS                   | public domain                     | annual        |
+| gpci                     | https://www.cms.gov/medicare/payment/fee-schedules/physician/pfs-relative-value-files                       | CMS                   | public domain                     | annual        |
+| cms-deductibles          | https://www.cms.gov/newsroom/fact-sheets                                                                    | CMS                   | public domain                     | annual        |
+| irmaa                    | https://www.ssa.gov/medicare/lis/income-limits                                                              | CMS / SSA             | public domain                     | annual        |
+| aca-thresholds           | https://www.cms.gov/cciio/resources/regulations-and-guidance                                                | CMS / HHS             | public domain                     | annual        |
+| hsa-fsa-limits           | https://www.irs.gov/                                                                                        | IRS                   | government work                   | annual        |
+| fpl                      | https://aspe.hhs.gov/topics/poverty-economic-mobility/poverty-guidelines                                    | HHS / ASPE            | public domain                     | annual        |
+| irs-mileage              | https://www.irs.gov/tax-professionals/standard-mileage-rates                                                | IRS                   | government work                   | annual        |
+| dea-rules                | https://www.deadiversion.usdoj.gov/                                                                         | DEA                   | public domain                     | static        |
+| nucc-taxonomy            | https://nucc.org/index.php/code-sets-mainmenu-41/provider-taxonomy-mainmenu-40                              | NUCC                  | public domain                     | semi-annual   |
+| acip-routine-adult       | https://www.cdc.gov/vaccines/hcp/imz-schedules/adult-age.html                                               | CDC ACIP              | public domain                     | annual        |
+| acip-routine-child       | https://www.cdc.gov/vaccines/hcp/imz-schedules/child-adolescent-age.html                                    | CDC ACIP              | public domain                     | annual        |
+| acip-catchup             | https://www.cdc.gov/vaccines/hcp/imz-schedules/child-catchup.html                                           | CDC ACIP              | public domain                     | annual        |
+| yellow-book              | https://wwwnc.cdc.gov/travel/yellowbook                                                                     | CDC                   | public domain                     | annual        |
+| tetanus                  | https://www.cdc.gov/tetanus/clinicians.html                                                                 | CDC                   | public domain                     | annual        |
+| rabies-pep               | https://www.cdc.gov/rabies/medical_care/index.html                                                          | CDC                   | public domain                     | annual        |
+| bbp-exposure             | https://www.cdc.gov/niosh/topics/bbp/emergnedl.html                                                         | CDC                   | public domain                     | annual        |
+| tb-tst-igra              | https://www.cdc.gov/tb/topic/testing/diagnosingltbi.htm                                                     | CDC                   | public domain                     | annual        |
+| sti-screening            | https://www.cdc.gov/std/treatment-guidelines/screening-recommendations.htm                                  | CDC                   | public domain                     | annual        |
+| lab-ranges-adult         | https://medlineplus.gov/lab-tests/                                                                          | NIH / NLM             | public domain                     | annual        |
+| lab-ranges-peds          | https://medlineplus.gov/lab-tests/                                                                          | NIH / NLM             | public domain                     | annual        |
+| therapeutic-drug-levels  | https://dailymed.nlm.nih.gov/                                                                               | NLM DailyMed / FDA    | public domain                     | quarterly     |
+| tox-levels               | https://wiser.nlm.nih.gov/                                                                                  | NLM WISER (HHS)       | public domain                     | annual        |
+| cms-1500-fields          | https://www.cms.gov/medicare/billing/electronicbillingeditrans/15claimform                                  | CMS (project orig.)   | MIT, original                     | annual        |
+| ub04-fields              | https://www.cms.gov/medicare/billing/electronicbillingeditrans/ub04form                                     | CMS (project orig.)   | MIT, original                     | annual        |
+| eob-glossary             | project author original content                                                                             | sophiewell.com        | MIT, original                     | static        |
+| medicaid-state           | state Medicaid agency files (numeric thresholds only)                                                       | state agencies        | numeric facts with attribution    | semi-annual   |
+| va-eligibility           | https://www.va.gov/health-care/eligibility/                                                                 | VA                    | public domain                     | annual        |
+| tricare-plans            | https://www.tricare.mil/Plans                                                                               | DHA TRICARE           | public domain                     | annual        |
+| ihs-eligibility          | https://www.ihs.gov/forpatients/faq/                                                                        | IHS                   | public domain                     | annual        |
+| dot-erg                  | https://www.phmsa.dot.gov/hazmat/erg/emergency-response-guidebook-erg                                       | PHMSA / DOT           | public domain                     | per-edition   |
+| niosh-pg                 | https://www.cdc.gov/niosh/npg/                                                                              | CDC NIOSH             | public domain                     | per-edition   |
+| tccc                     | https://www.deployedmedicine.com/                                                                           | CoTCCC (public)       | numeric facts with attribution    | annual        |
+| cpr-aha-numeric          | https://cpr.heart.org/                                                                                      | AHA (numeric only)    | numeric facts with attribution    | per-edition   |
+| mme-factors              | https://www.cdc.gov/opioids/healthcare-professionals/prescribing/guideline.html                             | CDC                   | public domain                     | per-revision  |
+| steroid-equiv            | standard pharmacology references                                                                            | sophiewell.com        | MIT, original                     | static        |
+| benzo-equiv              | https://www.benzo.org.uk/manual/                                                                            | Ashton (public)       | numeric facts with attribution    | static        |
+| abx-renal                | FDA labels via DailyMed                                                                                     | FDA / NLM DailyMed    | public domain                     | quarterly     |
+| vasopressor-doses        | FDA labels                                                                                                  | FDA                   | public domain                     | annual        |
+| tpn-rules                | standard nutrition references                                                                               | sophiewell.com        | MIT, original                     | annual        |
+| iv-to-po                 | FDA labels                                                                                                  | sophiewell.com        | MIT, original                     | annual        |
+| drug-recalls             | https://api.fda.gov/drug/enforcement.json                                                                   | FDA                   | public domain                     | weekly        |
+| vaccine-lot-recalls      | https://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts                                         | FDA / CDC             | public domain                     | as-issued     |
+
 ## Hashes and confirmation
 
 `scripts/expected-hashes.json` records the SHA-256 the project trusts for

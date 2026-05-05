@@ -1,0 +1,19 @@
+{
+  "dataset": "sti-screening",
+  "label": "CDC STI Screening Intervals",
+  "sourceUrl": "https://www.cdc.gov/std/treatment-guidelines/screening-recommendations.htm",
+  "agency": "CDC",
+  "status": "public-domain",
+  "cadence": "annual",
+  "fetchDate": "2026-05-05",
+  "offlineSeed": true,
+  "recordCount": 4,
+  "shards": [
+    {
+      "name": "sti.json",
+      "sha256": "74075e96c9d71c828c0bab20907514b27d5d118d15eafad2db62e99cd23e5d95",
+      "records": 4,
+      "bytes": 454
+    }
+  ]
+}

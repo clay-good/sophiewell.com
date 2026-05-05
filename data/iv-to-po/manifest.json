@@ -1,0 +1,19 @@
+{
+  "dataset": "iv-to-po",
+  "label": "IV-to-PO conversion reference",
+  "sourceUrl": "FDA labels",
+  "agency": "sophiewell.com (numeric)",
+  "status": "mit-original",
+  "cadence": "annual",
+  "fetchDate": "2026-05-05",
+  "offlineSeed": true,
+  "recordCount": 7,
+  "shards": [
+    {
+      "name": "iv-po.json",
+      "sha256": "828da30ec0da1a6217fb1c5de326ab4afcdea8b35f38197e3785ec8a7badd677",
+      "records": 7,
+      "bytes": 470
+    }
+  ]
+}

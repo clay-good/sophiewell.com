@@ -1,0 +1,19 @@
+{
+  "dataset": "asc",
+  "label": "ASC Payment subset",
+  "sourceUrl": "https://www.cms.gov/medicare/medicare-fee-for-service-payment/ascpayment",
+  "agency": "CMS",
+  "status": "public-domain",
+  "cadence": "quarterly",
+  "fetchDate": "2026-05-05",
+  "offlineSeed": true,
+  "recordCount": 4,
+  "shards": [
+    {
+      "name": "asc.json",
+      "sha256": "e9fc5aeaad05e346983685c743cc34c34e3037fedeaadd277495f4250e39b3e9",
+      "records": 4,
+      "bytes": 388
+    }
+  ]
+}

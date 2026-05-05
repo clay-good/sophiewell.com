@@ -1,0 +1,19 @@
+{
+  "dataset": "drug-recalls",
+  "label": "FDA drug recalls (weekly snapshot)",
+  "sourceUrl": "https://api.fda.gov/drug/enforcement.json",
+  "agency": "FDA",
+  "status": "public-domain",
+  "cadence": "weekly",
+  "fetchDate": "2026-05-05",
+  "offlineSeed": true,
+  "recordCount": 3,
+  "shards": [
+    {
+      "name": "recalls.json",
+      "sha256": "5a26894fedd6135fa4a7dc3775682c2db67adf60b21794bfcb9902e85311823b",
+      "records": 3,
+      "bytes": 550
+    }
+  ]
+}

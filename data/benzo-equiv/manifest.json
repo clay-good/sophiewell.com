@@ -1,0 +1,19 @@
+{
+  "dataset": "benzo-equiv",
+  "label": "Benzodiazepine equivalence (Ashton)",
+  "sourceUrl": "https://www.benzo.org.uk/manual/",
+  "agency": "Ashton (public)",
+  "status": "numeric-facts-with-attribution",
+  "cadence": "static",
+  "fetchDate": "2026-05-05",
+  "offlineSeed": true,
+  "recordCount": 8,
+  "shards": [
+    {
+      "name": "benzo.json",
+      "sha256": "b595057f4a017413adbfce759b361230d55764c55a2ec9eccd26c95ad03cd3c6",
+      "records": 8,
+      "bytes": 314
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "dataset": "tb-tst-igra",
+  "label": "CDC TB testing interpretation",
+  "sourceUrl": "https://www.cdc.gov/tb/topic/testing/diagnosingltbi.htm",
+  "agency": "CDC",
+  "status": "public-domain",
+  "cadence": "annual",
+  "fetchDate": "2026-05-05",
+  "offlineSeed": true,
+  "recordCount": 2,
+  "shards": [
+    {
+      "name": "tb.json",
+      "sha256": "c8df50afe9569c257b8f433c7e9a3a8c32cd901b752d5516b46efc834bcb1763",
+      "records": null,
+      "bytes": 530
+    }
+  ]
+}

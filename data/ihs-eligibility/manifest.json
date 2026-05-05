@@ -1,0 +1,19 @@
+{
+  "dataset": "ihs-eligibility",
+  "label": "IHS eligibility quick reference",
+  "sourceUrl": "https://www.ihs.gov/forpatients/faq/",
+  "agency": "IHS",
+  "status": "public-domain",
+  "cadence": "annual",
+  "fetchDate": "2026-05-05",
+  "offlineSeed": true,
+  "recordCount": 2,
+  "shards": [
+    {
+      "name": "ihs.json",
+      "sha256": "7b555d8b7788d20ab851f1ad5038da2d2d36e9c27920168454596a216dddf5c0",
+      "records": null,
+      "bytes": 552
+    }
+  ]
+}

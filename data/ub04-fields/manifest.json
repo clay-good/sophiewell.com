@@ -1,0 +1,19 @@
+{
+  "dataset": "ub04-fields",
+  "label": "UB-04 form-locator decoder",
+  "sourceUrl": "https://www.cms.gov/medicare/billing/electronicbillingeditrans/ub04form",
+  "agency": "CMS (project author summaries)",
+  "status": "mit-original",
+  "cadence": "annual",
+  "fetchDate": "2026-05-05",
+  "offlineSeed": true,
+  "recordCount": 10,
+  "shards": [
+    {
+      "name": "fields.json",
+      "sha256": "b2b0756f2a7395ebb757f8776c980440b40ce2a813c68bfe0affa91014b21418",
+      "records": 10,
+      "bytes": 1009
+    }
+  ]
+}

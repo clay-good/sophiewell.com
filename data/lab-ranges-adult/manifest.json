@@ -1,0 +1,19 @@
+{
+  "dataset": "lab-ranges-adult",
+  "label": "NIH MedlinePlus adult lab reference ranges",
+  "sourceUrl": "https://medlineplus.gov/lab-tests/",
+  "agency": "NIH / NLM",
+  "status": "public-domain",
+  "cadence": "annual",
+  "fetchDate": "2026-05-05",
+  "offlineSeed": true,
+  "recordCount": 9,
+  "shards": [
+    {
+      "name": "adult.json",
+      "sha256": "c4e51caf98f3482189eeab188c9e4d1827e57dd88c087895bef8209a3cde4f3e",
+      "records": 9,
+      "bytes": 1004
+    }
+  ]
+}

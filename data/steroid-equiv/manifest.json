@@ -1,0 +1,19 @@
+{
+  "dataset": "steroid-equiv",
+  "label": "Glucocorticoid equivalence (numeric)",
+  "sourceUrl": "standard pharmacology references; original by project author",
+  "agency": "sophiewell.com",
+  "status": "mit-original",
+  "cadence": "static",
+  "fetchDate": "2026-05-05",
+  "offlineSeed": true,
+  "recordCount": 8,
+  "shards": [
+    {
+      "name": "steroid.json",
+      "sha256": "02906edcf43d345c6a5372effe6d155845117a7b319260ebb80d1e4a14e1ddff",
+      "records": 8,
+      "bytes": 574
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "dataset": "tetanus",
+  "label": "CDC Tetanus prophylaxis decision aid",
+  "sourceUrl": "https://www.cdc.gov/tetanus/clinicians.html",
+  "agency": "CDC",
+  "status": "public-domain",
+  "cadence": "annual",
+  "fetchDate": "2026-05-05",
+  "offlineSeed": true,
+  "recordCount": 2,
+  "shards": [
+    {
+      "name": "tetanus.json",
+      "sha256": "aefdfb45883241d67b737624b33677005bbe321d1f09c97e3ef98539a850eb0f",
+      "records": null,
+      "bytes": 372
+    }
+  ]
+}

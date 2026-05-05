@@ -4,6 +4,7 @@ import { el, clear } from '../lib/dom.js';
 import { loadAllShards, loadFile } from '../lib/data.js';
 import { buildIndex } from '../lib/search.js';
 import { isValidNPI } from '../lib/codes.js';
+import { validateDEA } from '../lib/dea.js';
 
 function input(label, id) {
   const w = el('p', {}, [el('label', { for: id, text: label }), el('br'),
@@ -106,6 +107,61 @@ export const renderers = {
         tbl.appendChild(tbody);
         out.appendChild(tbl);
       });
+    });
+  },
+
+  // --- spec-v4 §5: Group D extensions (utilities 115-116) ---------------
+
+  'dea-validator'(root) {
+    root.appendChild(el('p', { class: 'notice', text:
+      'Validator only. A passing checksum does not confirm the registrant is licensed or authorized for any controlled substance. ' +
+      'DEA validation is not license verification.' }));
+    root.appendChild(input('DEA registration number (2 letters + 7 digits)', 'dea-q'));
+    const out = el('div', { id: 'q-results', 'aria-live': 'polite' });
+    root.appendChild(out);
+    document.getElementById('dea-q').addEventListener('input', (e) => {
+      clear(out);
+      const raw = String(e.target.value || '').trim();
+      if (!raw) return;
+      const r = validateDEA(raw);
+      out.appendChild(el('h2', { text: r.ok ? `${r.input}: VALID checksum` : `${raw.toUpperCase()}: INVALID` }));
+      if (r.error) out.appendChild(el('p', { text: r.error }));
+      if (r.digits) {
+        out.appendChild(el('h3', { text: 'Checksum trace' }));
+        out.appendChild(el('ul', {}, [
+          el('li', { text: `Registrant letter: ${r.registrant}` }),
+          el('li', { text: `Last-name initial: ${r.nameInitial}` }),
+          el('li', { text: `Digits: ${r.digits.slice(0, 6).join(' ')} | check ${r.digits[6]}` }),
+          el('li', { text: `sum1 = d1+d3+d5 = ${r.digits[0]}+${r.digits[2]}+${r.digits[4]} = ${r.sum1}` }),
+          el('li', { text: `sum2 = d2+d4+d6 = ${r.digits[1]}+${r.digits[3]}+${r.digits[5]} = ${r.sum2}` }),
+          el('li', { text: `total = sum1 + 2*sum2 = ${r.total}` }),
+          el('li', { text: `expected check digit = total mod 10 = ${r.expectedCheckDigit}` }),
+          el('li', { text: `got check digit = ${r.gotCheckDigit}` }),
+        ]));
+      }
+    });
+  },
+
+  'nucc-taxonomy'(root) {
+    root.appendChild(input('NUCC taxonomy code (10 characters) or text', 'tx-q'));
+    const out = el('div', { id: 'q-results', 'aria-live': 'polite' });
+    root.appendChild(out);
+    loadFile('nucc-taxonomy', 'taxonomy.json').then((rows) => {
+      const idx = buildIndex(rows, { codeKey: 'code', textKeys: ['type', 'classification', 'specialization'] });
+      const update = (q) => {
+        clear(out);
+        const found = idx.search(q, 50);
+        if (!found.length) { out.appendChild(el('p', { class: 'muted', text: 'No results.' })); return; }
+        for (const r of found) {
+          out.appendChild(el('article', { class: 'result-card' }, [
+            el('h3', { text: r.code }),
+            el('p', { text: r.type }),
+            el('p', { class: 'muted', text: `${r.classification}${r.specialization ? ' - ' + r.specialization : ''}` }),
+          ]));
+        }
+      };
+      update('');
+      document.getElementById('tx-q').addEventListener('input', (e) => update(e.target.value));
     });
   },
 };

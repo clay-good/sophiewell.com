@@ -1,0 +1,19 @@
+{
+  "dataset": "lab-ranges-peds",
+  "label": "Pediatric lab reference ranges by age band",
+  "sourceUrl": "https://medlineplus.gov/lab-tests/",
+  "agency": "NIH / NLM",
+  "status": "public-domain",
+  "cadence": "annual",
+  "fetchDate": "2026-05-05",
+  "offlineSeed": true,
+  "recordCount": 8,
+  "shards": [
+    {
+      "name": "peds.json",
+      "sha256": "8c9edca7a139d7c56b14610aa50c0db6ab2d8ac0b33832a1ff161e48d8029f5c",
+      "records": 8,
+      "bytes": 690
+    }
+  ]
+}

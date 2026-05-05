@@ -1,0 +1,19 @@
+{
+  "dataset": "nubc-special-codes",
+  "label": "NUBC Condition / Occurrence / Value codes",
+  "sourceUrl": "https://www.nubc.org/",
+  "agency": "NUBC (numeric only)",
+  "status": "numeric-facts-with-attribution",
+  "cadence": "as-needed",
+  "fetchDate": "2026-05-05",
+  "offlineSeed": true,
+  "recordCount": 3,
+  "shards": [
+    {
+      "name": "special.json",
+      "sha256": "546033c4a2ee234ebf8ff85198969b8074adcf67a5ebec64f82894131fc41529",
+      "records": null,
+      "bytes": 635
+    }
+  ]
+}

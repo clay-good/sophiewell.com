@@ -6,6 +6,8 @@ import { el, clear } from '../lib/dom.js';
 import { loadFile } from '../lib/data.js';
 import { pedsDose, defibEnergy, cincinnatiStroke, fast, fieldTriage, startTriage, jumpStartTriage, ruleOfNines, lundBrowder, burnFluid, pediatricEtt, naloxoneDose, selectEmsChecklist, RULE_OF_NINES_ADULT, PEDS_DOSE_RECIPES } from '../lib/field.js';
 import { fetchJson } from '../lib/data.js';
+import { renderTable } from '../lib/table.js';
+import { buildIndex } from '../lib/search.js';
 
 function field(label, id, opts = {}) {
   const wrap = el('p');
@@ -540,5 +542,122 @@ export const renderers = {
       ]));
       tbl.appendChild(tbody); o.appendChild(tbl);
     });
+  },
+
+  // --- spec-v4 §5: Group I extensions (utilities 166-171) -------------
+
+  'nexus-cspine'(root) {
+    root.appendChild(el('p', { class: 'notice', text:
+      'NEXUS: cervical spine imaging is NOT required if ALL five low-risk criteria are met.' }));
+    const items = [
+      ['No posterior midline cervical-spine tenderness', 'nx-tender'],
+      ['No evidence of intoxication', 'nx-intox'],
+      ['Normal level of alertness', 'nx-alert'],
+      ['No focal neurologic deficit', 'nx-focal'],
+      ['No painful distracting injury', 'nx-distract'],
+    ];
+    for (const [l, id] of items) {
+      const wrap = el('p');
+      const cb = el('input', { id, type: 'checkbox' });
+      wrap.appendChild(cb);
+      wrap.appendChild(document.createTextNode(' '));
+      wrap.appendChild(el('label', { for: id, text: l }));
+      root.appendChild(wrap);
+    }
+    const o = el('div', { id: 'q-results', 'aria-live': 'polite' });
+    root.appendChild(o);
+    const run = () => {
+      clear(o);
+      const all = items.every(([, id]) => document.getElementById(id).checked);
+      o.appendChild(el('h2', { text: all ? 'NEXUS: cervical spine imaging NOT required' : 'NEXUS: imaging IS required (one or more criteria not met)' }));
+      o.appendChild(el('p', { class: 'muted', text:
+        'Canadian C-Spine Rule: if any high-risk factor (age >=65, dangerous mechanism, paresthesias in extremities) -> imaging. ' +
+        'Otherwise check low-risk factors that allow safe range-of-motion testing (simple rear-end MVC, sitting in ED, ambulatory at any time, delayed onset of neck pain, absence of midline tenderness). ' +
+        'If a low-risk factor is present and the patient can actively rotate the neck 45 degrees left and right, imaging is not needed.' }));
+    };
+    items.forEach(([, id]) => document.getElementById(id).addEventListener('change', run));
+    run();
+  },
+
+  'dot-erg'(root) {
+    const region = el('div', { id: 'q-results', role: 'region', 'aria-live': 'polite' });
+    root.appendChild(region);
+    loadFile('dot-erg', 'erg.json').then((rows) => {
+      renderTable(region, {
+        columns: [
+          { key: 'unNumber', label: 'UN/NA' },
+          { key: 'name', label: 'Name' },
+          { key: 'guide', label: 'ERG Guide' },
+          { key: 'initialIsolationFt', label: 'Isolation (ft)' },
+          { key: 'protectiveActionMi', label: 'Protective action (mi)' },
+          { key: 'immediateActions', label: 'Immediate actions' },
+        ],
+        rows,
+      });
+    });
+  },
+
+  'niosh-pg'(root) {
+    const region = el('div', { id: 'q-results', role: 'region', 'aria-live': 'polite' });
+    root.appendChild(region);
+    loadFile('niosh-pg', 'npg.json').then((rows) => {
+      renderTable(region, {
+        columns: [
+          { key: 'name', label: 'Chemical' },
+          { key: 'cas', label: 'CAS' },
+          { key: 'twa', label: 'TWA' },
+          { key: 'stel', label: 'STEL' },
+          { key: 'idlh', label: 'IDLH' },
+          { key: 'ppe', label: 'PPE' },
+          { key: 'targetOrgans', label: 'Target organs' },
+        ],
+        rows,
+      });
+    });
+  },
+
+  'cpr-numeric'(root) {
+    const o = el('div', { id: 'q-results', role: 'region', 'aria-live': 'polite' });
+    root.appendChild(o);
+    loadFile('cpr-aha-numeric', 'cpr.json').then((d) => {
+      o.appendChild(el('h2', { text: 'AHA CPR numeric reference (numeric facts only)' }));
+      for (const [pop, vals] of Object.entries(d)) {
+        o.appendChild(el('h3', { text: pop[0].toUpperCase() + pop.slice(1) }));
+        const ul = el('ul');
+        for (const [k, v] of Object.entries(vals)) ul.appendChild(el('li', { text: `${k}: ${v}` }));
+        o.appendChild(ul);
+      }
+    });
+  },
+
+  tccc(root) {
+    const o = el('div', { id: 'q-results', role: 'region', 'aria-live': 'polite' });
+    root.appendChild(o);
+    loadFile('tccc', 'tccc.json').then((d) => {
+      o.appendChild(el('h2', { text: 'TCCC Tourniquet & Wound-Packing Reference' }));
+      o.appendChild(el('h3', { text: 'Tourniquet' }));
+      const ul1 = el('ul');
+      for (const [k, v] of Object.entries(d.tourniquet)) ul1.appendChild(el('li', { text: `${k}: ${v}` }));
+      o.appendChild(ul1);
+      o.appendChild(el('h3', { text: 'Wound packing' }));
+      const ul2 = el('ul');
+      for (const [k, v] of Object.entries(d.woundPacking)) ul2.appendChild(el('li', { text: `${k}: ${v}` }));
+      o.appendChild(ul2);
+    });
+  },
+
+  'co-cn-antidote'(root) {
+    const o = el('div', { id: 'q-results', role: 'region', 'aria-live': 'polite' });
+    root.appendChild(o);
+    o.appendChild(el('h2', { text: 'CO / Cyanide / Smoke-Inhalation Antidote Reference' }));
+    o.appendChild(el('h3', { text: 'Cyanide - hydroxocobalamin' }));
+    o.appendChild(el('p', { text: 'Adult: 5 g IV over 15 min; may repeat once for total 10 g (FDA label, Cyanokit).' }));
+    o.appendChild(el('p', { text: 'Pediatric: 70 mg/kg IV (max 5 g) over 15 min.' }));
+    o.appendChild(el('h3', { text: 'Cyanide - sodium thiosulfate' }));
+    o.appendChild(el('p', { text: 'Adult: 12.5 g IV (50 mL of 25% solution) over 10-30 min after sodium nitrite or with hydroxocobalamin in some protocols.' }));
+    o.appendChild(el('p', { text: 'Pediatric: 400 mg/kg (max 12.5 g).' }));
+    o.appendChild(el('h3', { text: 'Carbon monoxide - hyperbaric oxygen indication' }));
+    o.appendChild(el('p', { text: 'Consider HBO if COHb >25% (>15% in pregnancy), syncope or LOC at any point, neurologic deficit, or persistent symptoms after normobaric O2.' }));
+    o.appendChild(el('p', { class: 'muted', text: 'Sources: FDA labeling for Cyanokit (hydroxocobalamin) and Nithiodote (sodium nitrite + sodium thiosulfate). UHMS guidance for HBO indications.' }));
   },
 };

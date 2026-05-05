@@ -5,6 +5,11 @@
 import { el, clear } from '../lib/dom.js';
 import { fetchJson } from '../lib/data.js';
 import { selectQuestions, selectChecklist } from '../lib/keywords.js';
+import { renderPrintable } from '../lib/print.js';
+import {
+  buildHipaaAuthorization, buildROIRequest, buildDischargeInstructions,
+  buildSpecialtyVisit, buildWalletCard,
+} from '../lib/workflow-v4.js';
 
 function out() { return el('div', { id: 'q-results', 'aria-live': 'polite' }); }
 
@@ -96,6 +101,147 @@ export const renderers = {
     }).catch((err) => {
       o.appendChild(el('p', { class: 'muted', text: `Failed to load procedure bank: ${err.message}` }));
       root.appendChild(o);
+    });
+  },
+
+  // --- spec-v4 §5: Group H extensions (utilities 161-165) -------------
+
+  'hipaa-auth'(root) {
+    const fields = [
+      ['Patient name', 'ha-pt'], ['Plan / covered entity', 'ha-plan'],
+      ['Information to be released', 'ha-info'], ['Recipient', 'ha-rcpt'],
+      ['Purpose of disclosure', 'ha-purpose'], ['Expiration', 'ha-exp'],
+    ];
+    for (const [l, id] of fields) {
+      root.appendChild(el('p', {}, [
+        el('label', { for: id, text: l }), el('br'),
+        el('input', { id, type: 'text', autocomplete: 'off' }),
+      ]));
+    }
+    const region = el('div', { id: 'q-results', role: 'region', 'aria-live': 'polite' });
+    const btn = el('button', { type: 'button', class: 'render-btn', text: 'Build printable authorization' });
+    root.appendChild(el('p', {}, [btn]));
+    root.appendChild(region);
+    btn.addEventListener('click', () => {
+      const v = (id) => document.getElementById(id).value || '';
+      renderPrintable(region, buildHipaaAuthorization({
+        patient: v('ha-pt'), plan: v('ha-plan'), info: v('ha-info'),
+        recipient: v('ha-rcpt'), purpose: v('ha-purpose'), expiration: v('ha-exp'),
+      }));
+    });
+  },
+
+  roi(root) {
+    const fields = [
+      ['Patient name', 'roi-pt'], ['DOB', 'roi-dob'],
+      ['From provider', 'roi-from'], ['To recipient', 'roi-to'],
+      ['Date range', 'roi-dr'], ['Records requested', 'roi-rec'],
+      ['Delivery method', 'roi-del'],
+    ];
+    for (const [l, id] of fields) {
+      root.appendChild(el('p', {}, [
+        el('label', { for: id, text: l }), el('br'),
+        el('input', { id, type: 'text', autocomplete: 'off' }),
+      ]));
+    }
+    const region = el('div', { id: 'q-results', role: 'region', 'aria-live': 'polite' });
+    const btn = el('button', { type: 'button', class: 'render-btn', text: 'Build printable ROI request' });
+    root.appendChild(el('p', {}, [btn]));
+    root.appendChild(region);
+    btn.addEventListener('click', () => {
+      const v = (id) => document.getElementById(id).value || '';
+      renderPrintable(region, buildROIRequest({
+        patient: v('roi-pt'), dob: v('roi-dob'),
+        fromProvider: v('roi-from'), toRecipient: v('roi-to'),
+        dateRange: v('roi-dr'), recordsRequested: v('roi-rec'),
+        deliveryMethod: v('roi-del'),
+      }));
+    });
+  },
+
+  'discharge-instr'(root) {
+    root.appendChild(el('p', {}, [el('label', { for: 'di-dx', text: 'Diagnosis' }), el('br'),
+      el('input', { id: 'di-dx', type: 'text', autocomplete: 'off' })]));
+    root.appendChild(el('p', {}, [el('label', { for: 'di-fu', text: 'Follow-up date / clinic' }), el('br'),
+      el('input', { id: 'di-fu', type: 'text', autocomplete: 'off' })]));
+    root.appendChild(el('p', {}, [el('label', { for: 'di-rp', text: 'Return precautions (one per line)' }), el('br'),
+      el('textarea', { id: 'di-rp', rows: '4', cols: '40' })]));
+    root.appendChild(el('p', {}, [el('label', { for: 'di-meds', text: 'Medications (one per line)' }), el('br'),
+      el('textarea', { id: 'di-meds', rows: '4', cols: '40' })]));
+    root.appendChild(el('p', {}, [el('label', { for: 'di-notes', text: 'Other notes' }), el('br'),
+      el('textarea', { id: 'di-notes', rows: '3', cols: '40' })]));
+    const region = el('div', { id: 'q-results', role: 'region', 'aria-live': 'polite' });
+    const btn = el('button', { type: 'button', class: 'render-btn', text: 'Build printable discharge instructions' });
+    root.appendChild(el('p', {}, [btn]));
+    root.appendChild(region);
+    btn.addEventListener('click', () => {
+      const lines = (id) => String(document.getElementById(id).value || '').split('\n').map((s) => s.trim()).filter(Boolean);
+      renderPrintable(region, buildDischargeInstructions({
+        diagnosis: document.getElementById('di-dx').value,
+        followUpDate: document.getElementById('di-fu').value,
+        returnPrecautions: lines('di-rp'),
+        medications: lines('di-meds'),
+        notes: document.getElementById('di-notes').value,
+      }));
+    });
+  },
+
+  'specialty-visit'(root) {
+    root.appendChild(el('p', {}, [el('label', { for: 'sv-spec', text: 'Specialty' }), el('br'),
+      el('select', { id: 'sv-spec' }, [
+        ['cardiology', 'Cardiology'], ['oncology', 'Oncology'], ['ortho', 'Orthopedics'],
+        ['gi', 'Gastroenterology'], ['derm', 'Dermatology'], ['neuro', 'Neurology'],
+        ['obgyn', 'OB/GYN'], ['peds', 'Pediatrics'],
+      ].map(([v, l]) => el('option', { value: v, text: l })))]));
+    root.appendChild(el('p', {}, [el('label', { for: 'sv-ctx', text: 'Visit context (optional)' }), el('br'),
+      el('input', { id: 'sv-ctx', type: 'text', autocomplete: 'off' })]));
+    const region = el('div', { id: 'q-results', role: 'region', 'aria-live': 'polite' });
+    const btn = el('button', { type: 'button', class: 'render-btn', text: 'Build printable question list' });
+    root.appendChild(el('p', {}, [btn]));
+    root.appendChild(region);
+    btn.addEventListener('click', () => {
+      const cfg = buildSpecialtyVisit({
+        specialty: document.getElementById('sv-spec').value,
+        visitContext: document.getElementById('sv-ctx').value,
+      });
+      if (!cfg) { clear(region); region.appendChild(el('p', { text: 'Unknown specialty.' })); return; }
+      renderPrintable(region, cfg);
+    });
+  },
+
+  'wallet-card'(root) {
+    const fields = [
+      ['Patient name', 'wc-name'], ['Emergency contact', 'wc-ec'],
+      ['Primary provider', 'wc-pp'], ['Pharmacy', 'wc-rx'],
+    ];
+    for (const [l, id] of fields) {
+      root.appendChild(el('p', {}, [
+        el('label', { for: id, text: l }), el('br'),
+        el('input', { id, type: 'text', autocomplete: 'off' }),
+      ]));
+    }
+    root.appendChild(el('p', {}, [el('label', { for: 'wc-allergies', text: 'Allergies (one per line; blank = NKDA)' }), el('br'),
+      el('textarea', { id: 'wc-allergies', rows: '3', cols: '40' })]));
+    root.appendChild(el('p', {}, [el('label', { for: 'wc-conditions', text: 'Conditions (one per line)' }), el('br'),
+      el('textarea', { id: 'wc-conditions', rows: '3', cols: '40' })]));
+    root.appendChild(el('p', {}, [el('label', { for: 'wc-meds', text: 'Medications (one per line)' }), el('br'),
+      el('textarea', { id: 'wc-meds', rows: '5', cols: '40' })]));
+    const region = el('div', { id: 'q-results', role: 'region', 'aria-live': 'polite' });
+    const btn = el('button', { type: 'button', class: 'render-btn', text: 'Build printable wallet card' });
+    root.appendChild(el('p', {}, [btn]));
+    root.appendChild(region);
+    btn.addEventListener('click', () => {
+      const lines = (id) => String(document.getElementById(id).value || '').split('\n').map((s) => s.trim()).filter(Boolean);
+      const v = (id) => document.getElementById(id).value || '';
+      renderPrintable(region, buildWalletCard({
+        patientName: v('wc-name'),
+        allergies: lines('wc-allergies'),
+        conditions: lines('wc-conditions'),
+        medications: lines('wc-meds'),
+        emergencyContact: v('wc-ec'),
+        primaryProvider: v('wc-pp'),
+        pharmacy: v('wc-rx'),
+      }));
     });
   },
 };

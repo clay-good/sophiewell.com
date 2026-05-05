@@ -1,0 +1,19 @@
+{
+  "dataset": "tccc",
+  "label": "TCCC tourniquet & wound-packing reference",
+  "sourceUrl": "https://www.deployedmedicine.com/",
+  "agency": "CoTCCC (public)",
+  "status": "numeric-facts-with-attribution",
+  "cadence": "annual",
+  "fetchDate": "2026-05-05",
+  "offlineSeed": true,
+  "recordCount": 2,
+  "shards": [
+    {
+      "name": "tccc.json",
+      "sha256": "e3520152cc2ef43e013d80a2bc27df3f4a7bc717b77decc206cac868e368f703",
+      "records": null,
+      "bytes": 486
+    }
+  ]
+}

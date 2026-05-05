@@ -2,7 +2,7 @@
   "hospitalId": "example-memorial",
   "hospitalName": "Example Memorial Hospital",
   "sourceUrl": "https://example.org/price-transparency.json",
-  "fetchDate": "2026-05-04",
+  "fetchDate": "2026-05-05",
   "rates": [
     {
       "code": "99213",

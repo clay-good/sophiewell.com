@@ -1,0 +1,19 @@
+{
+  "dataset": "therapeutic-drug-levels",
+  "label": "Therapeutic drug level reference (FDA labels)",
+  "sourceUrl": "https://dailymed.nlm.nih.gov/",
+  "agency": "NLM DailyMed / FDA",
+  "status": "public-domain",
+  "cadence": "quarterly",
+  "fetchDate": "2026-05-05",
+  "offlineSeed": true,
+  "recordCount": 10,
+  "shards": [
+    {
+      "name": "levels.json",
+      "sha256": "f00db1941b276a8b3cb70c137fe61d85dd4f1be17251115ea8e74b58e193a5fe",
+      "records": 10,
+      "bytes": 752
+    }
+  ]
+}

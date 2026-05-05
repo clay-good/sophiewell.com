@@ -1,0 +1,19 @@
+{
+  "dataset": "apc",
+  "label": "OPPS APC subset",
+  "sourceUrl": "https://www.cms.gov/medicare/medicare-fee-for-service-payment/hospitaloutpatientpps",
+  "agency": "CMS",
+  "status": "public-domain",
+  "cadence": "quarterly",
+  "fetchDate": "2026-05-05",
+  "offlineSeed": true,
+  "recordCount": 5,
+  "shards": [
+    {
+      "name": "apc.json",
+      "sha256": "2880656ce54407f0db996ee7a965d600e9f2fba93644a027115fc99994e0862a",
+      "records": 5,
+      "bytes": 624
+    }
+  ]
+}

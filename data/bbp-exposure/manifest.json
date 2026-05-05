@@ -1,0 +1,19 @@
+{
+  "dataset": "bbp-exposure",
+  "label": "CDC bloodborne pathogen exposure decision aid (HIV/HBV/HCV)",
+  "sourceUrl": "https://www.cdc.gov/niosh/topics/bbp/emergnedl.html",
+  "agency": "CDC",
+  "status": "public-domain",
+  "cadence": "annual",
+  "fetchDate": "2026-05-05",
+  "offlineSeed": true,
+  "recordCount": 3,
+  "shards": [
+    {
+      "name": "bbp.json",
+      "sha256": "457b3771dc784f7e7d47f5d4d4cbbc7241d57a1b8f21051990f1ac3f2499a676",
+      "records": null,
+      "bytes": 394
+    }
+  ]
+}

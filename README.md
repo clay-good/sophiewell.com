@@ -47,24 +47,58 @@ production security headers. Any static file server will also work.
 
 ## How it works and how to use it
 
-The site is organized into nine groups containing 79 utilities. **Code
-lookups** cover ICD-10-CM, HCPCS, NDC, CPT structural data, and the related
-billing code sets. **Pricing** covers the Medicare Physician Fee Schedule,
-NADAC, hospital price transparency, and an out-of-pocket cost estimator.
-**Patient tools** include a bill decoder, an EOB decoder, and a No Surprises
-Act eligibility checker. **Provider lookup** covers the NPI registry, OIG
-exclusions, and Medicare opt-out lists. **Clinical math** covers the common
-conversions and bedside calculators. **Medication and infusion** covers
-drip rate, weight-based dose, and concentration-to-rate calculators.
-**Scoring** covers GCS, APGAR, NIHSS, Wells, CHA2DS2-VASc, HAS-BLED, and
-related instruments. **Workflow** covers an appointment prep question
-generator and a prior authorization checklist generator. **Field Medicine
-(Group I)** covers pediatric weight-to-dose, adult and pediatric cardiac
-arrest references, defibrillation energy, Cincinnati and FAST/BE-FAST
-stroke scales, the CDC Field Triage decision tree, START and JumpSTART
-mass-casualty triage, burn surface area and fluid resuscitation, pediatric
-ETT sizing, hypothermia and heat-illness staging, toxidromes, naloxone
-dosing, and an EMS documentation helper.
+The site is organized into fifteen groups containing 195 utilities. **Code
+lookups** cover ICD-10-CM, HCPCS, NDC, CPT structural data, ICD-10-PCS,
+RxNorm, MS-DRG, APC, NUBC TOB / revenue / condition / occurrence / value
+codes, HCPCS modifiers, NCCI PTP, MUE, POS, and the related billing code
+sets. **Pricing** covers the Medicare Physician Fee Schedule, NADAC, ASP,
+CLFS, ASC, DMEPOS, wage index, GPCI, hospital price transparency, the
+out-of-pocket cost estimator, FPL, ACA marketplace thresholds, HSA / FSA /
+HDHP limits, IRMAA, Medicare deductibles, and IRS medical mileage.
+**Patient tools** include a bill decoder, an EOB decoder, an MSN decoder,
+an insurance card decoder, a No Surprises Act / IDR eligibility checker,
+ABN explainer, appeal-letter and HIPAA right-of-access generators, the
+birthday rule, COBRA timeline, Medicare enrollment period checker, and ACA
+SEP eligibility. **Provider lookup** covers the NPI registry, OIG
+exclusions, Medicare opt-out lists, the DEA registration validator, and
+the NUCC provider taxonomy. **Clinical math** covers BMI, BSA suite, MAP
+/ pulse pressure / shock index, anion gap and delta-delta, corrected Ca /
+Na, osmolal gap, A-a gradient and P/F suite, Winter's formula, eGFR suite
+(CKD-EPI 2021 / MDRD / Cockcroft-Gault), FENa / FEUrea, maintenance fluids
+4-2-1, QTc suite, pregnancy dating, pack-years, and unit conversions.
+**Medication and infusion** covers drip rate, weight-based dose,
+concentration-to-rate, pediatric dose bounds, insulin drip, anticoagulant
+reversal, high-alert reference, opioid MME, steroid / benzodiazepine
+equivalence, antibiotic renal dose adjustment, vasopressor dose↔rate, TPN
+macronutrient, and IV-to-PO conversion. **Scoring** covers GCS, APGAR,
+NIHSS, Wells PE / DVT, CHA2DS2-VASc, HAS-BLED, ASA, Mallampati, Beers,
+TIMI, GRACE, HEART, PERC, Geneva, CURB-65, PSI, qSOFA / SOFA, MELD-3.0 /
+Child-Pugh, Ranson / BISAP, Centor / McIsaac, Caprini, Bishop, Alvarado /
+PAS, mRS reference, PHQ-9, GAD-7, AUDIT-C, CAGE, EPDS, Mini-Cog, CIWA-Ar,
+COWS, ASCVD PCE, and PREVENT 2023. **Workflow** adds the existing
+appointment prep and prior-auth generators plus HIPAA authorization, ROI,
+discharge instructions, specialty-visit questions, and a medication
+wallet card. **Field Medicine (Group I)** adds NEXUS / Canadian C-Spine,
+DOT ERG hazmat lookup, NIOSH Pocket Guide, AHA CPR numeric reference,
+TCCC tourniquet / wound packing, and CO / cyanide antidote dosing
+alongside the existing pediatric weight-to-dose, cardiac arrest references,
+defibrillation energy, stroke scales, CDC Field Triage, START / JumpSTART,
+burn surface area and fluid resuscitation, pediatric ETT sizing,
+hypothermia / heat-illness staging, toxidromes, naloxone dosing, and the
+EMS documentation helper. **Public Health & Travel (Group J, new)** covers
+ACIP routine adult / child / catch-up schedules, the CDC Yellow Book by
+country, and decision trees for tetanus prophylaxis, rabies PEP,
+bloodborne pathogen exposure, TB testing interpretation, and STI screening
+intervals. **Lab Reference (Group K, new)** bundles adult and pediatric
+reference ranges, therapeutic drug levels, and toxicology levels. **Forms
+& Numbers Literacy (Group L, new)** decodes CMS-1500 and UB-04 field-by-
+field plus an EOB jargon glossary. **Eligibility & Benefits (Group M, new)**
+covers Medicaid by state, VA priority groups, a TRICARE plan picker, and
+IHS eligibility. **Literacy Helpers (Group N, new)** offers a universal
+unit converter (lab + vitals + basics), a time-to-dose helper, and a
+pediatric weight converter. **Patient Safety (Group O, new)** ships the
+ISMP-attributed high-alert wallet card, the FDA drug recalls weekly
+snapshot, and a vaccine lot recall lookup.
 
 The user flow is simple: pick a tile from the home grid, enter input, read
 output. Every utility shows the data sources or formula citations at the

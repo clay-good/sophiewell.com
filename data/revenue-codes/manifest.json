@@ -1,0 +1,19 @@
+{
+  "dataset": "revenue-codes",
+  "label": "NUBC Revenue Code summary",
+  "sourceUrl": "https://www.nubc.org/",
+  "agency": "NUBC (numeric only)",
+  "status": "numeric-facts-with-attribution",
+  "cadence": "as-needed",
+  "fetchDate": "2026-05-05",
+  "offlineSeed": true,
+  "recordCount": 10,
+  "shards": [
+    {
+      "name": "revenue.json",
+      "sha256": "9a6f45505a122f88cf68dd578d6fc6e63cfc7d983939737ccb45562e6ec73eeb",
+      "records": 10,
+      "bytes": 792
+    }
+  ]
+}

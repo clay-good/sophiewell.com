@@ -1,0 +1,19 @@
+{
+  "dataset": "irs-mileage",
+  "label": "IRS medical mileage rate",
+  "sourceUrl": "https://www.irs.gov/tax-professionals/standard-mileage-rates",
+  "agency": "IRS",
+  "status": "government-work",
+  "cadence": "annual",
+  "fetchDate": "2026-05-05",
+  "offlineSeed": true,
+  "recordCount": 3,
+  "shards": [
+    {
+      "name": "mileage.json",
+      "sha256": "1b3914296f2d637524356b78cd4d290513063b499754cfd560b7ca84a4eeb749",
+      "records": 3,
+      "bytes": 231
+    }
+  ]
+}

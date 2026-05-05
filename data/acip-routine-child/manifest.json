@@ -1,0 +1,19 @@
+{
+  "dataset": "acip-routine-child",
+  "label": "ACIP Routine Child Immunization Schedule",
+  "sourceUrl": "https://www.cdc.gov/vaccines/hcp/imz-schedules/child-adolescent-age.html",
+  "agency": "CDC ACIP",
+  "status": "public-domain",
+  "cadence": "annual",
+  "fetchDate": "2026-05-05",
+  "offlineSeed": true,
+  "recordCount": 8,
+  "shards": [
+    {
+      "name": "child.json",
+      "sha256": "36a5f9d262d4c25c554f92e1a72ad81a02ab4344b60c0a4fdc7fb981bd187558",
+      "records": 8,
+      "bytes": 368
+    }
+  ]
+}

@@ -1,0 +1,1 @@
+{"validRegistrantLetters":["A","B","F","G","M","P","R","X"],"checksumRule":"sum1 = digits[1]+digits[3]+digits[5]; sum2 = 2*(digits[2]+digits[4]+digits[6]); checkDigit = lastDigitOf(sum1+sum2)"}
