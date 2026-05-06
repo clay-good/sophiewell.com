@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `fcc6dc46930d784e`
-Generated: 2026-05-05T21:04:20.613Z
+Build ID: `f36efa1597f6de9b`
+Generated: 2026-05-06T01:39:35.604Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=20.18.1 <21, npm >=10.0.0
@@ -23,13 +23,13 @@ downloads is committed in this repository and is hashed below.
 
 | Path | Bytes | SHA-256 |
 |---|---:|---|
-| `index.html` | 94449 | `4e254c0502a8835e1bf1893b4e7c4ae9c6a5c00400cea9c372e6f4cf6d14604c` |
-| `styles.css` | 20129 | `55068a7270f2dc1bcac4d247b2328a7248db1625e1de7a73a3f3fc83b3ee5602` |
-| `app.js` | 47664 | `7c3e516390687a1b42d67a1cc4a170b642fca49565dbd5ba8b5e76684d246b59` |
+| `index.html` | 94796 | `7e8e5408b77b931acafda5d88ec5ea0b573f99926e9614956cb0953646c6a357` |
+| `styles.css` | 23785 | `28357ae662df834be6392c132e6180ddfc22d8958b8d2a0d1d5c982d0cd841cb` |
+| `app.js` | 52588 | `ff6be4b56f2bce35cbf3dba9669e4f9d8c0225134055c87416f707fb0c10b9cb` |
 | `sw.js` | 4062 | `60f524b1b69eb5170c59af42631e11cc05db2a44e8e530977db0327888b0ff6d` |
 | `site.webmanifest` | 709 | `0e0de4da60590a12e8b27a0ae2a2f5ffdb6500b7d2b78f93631ec2f64ed3d5ce` |
 | `robots.txt` | 67 | `297014916e0fe5e4b0a9356b12884f815003c873ad25f299bf441f7895b77d89` |
-| `sitemap.xml` | 28160 | `f6f2bc011aae6a6122052de0334f10458d56528dab7a60bb9fa3ee03fa256564` |
+| `sitemap.xml` | 28160 | `93f373eec8b43a7643fd1b7ec4a91d9e0834f723a5926545be54a41c8c13537c` |
 | `_headers` | 1297 | `8a0d2228d73c6b105d5d8fbd173974461cc6b6482ee72f06546a3a27248a9003` |
 | `logo.png` | 63440 | `11afaf1b0d3ca68393d202e4810bf766b5b6d591b4e3ec52f41d3cacaa4616ec` |
 | `favicon.ico` | 7411 | `407fde0ca2788409e87e11f596fa02e6a0b121817fcea7fd995beec1801e287b` |
@@ -55,7 +55,7 @@ downloads is committed in this repository and is hashed below.
 | `lib/field.js` | 13816 | `d589f10d720281e79804cce186276b176d9cd83e9e2dafe217f3e3c9850655fe` |
 | `lib/fpl.js` | 1111 | `2ce6e3da14ca047f9dd3e55a313fbaf668807988571df8b5f347a2aae9997593` |
 | `lib/hash.js` | 2269 | `9b5b0f14dba7c12b0344fd514017f4a578ac44af5493df8080adc262b194da1d` |
-| `lib/keyboard.js` | 6705 | `fc209940cbc5befd920742fa5a866f1ebcc8abc5f1543c6de297057635c927e4` |
+| `lib/keyboard.js` | 6712 | `2d2fa7618fede6da1dca9aa40a5b6253bbcae2e406b45e3fed1dde6aa1c09342` |
 | `lib/keywords.js` | 2715 | `8ba3e40698eaf14947556b0d2078f168a99e8589644808057fa1b453d903a742` |
 | `lib/live.js` | 1138 | `304978d3c170b6eb06cade7702e5f99d868e9b3e1f5651aa9a28da15e62a6a9c` |
 | `lib/medicare-enrollment.js` | 2884 | `6a4c11321477e712efc44d4de84336463ea6800bc64f654b5e9d0b16c440877d` |

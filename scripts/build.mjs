@@ -13,7 +13,7 @@ const ROOT = resolve(fileURLToPath(import.meta.url), '..', '..');
 const DIST = join(ROOT, 'dist');
 
 const COPY_FILES = [
-  'index.html', 'styles.css', 'app.js', 'sw.js',
+  'index.html', 'styles.css', 'app.js', 'sw.js', 'theme.js', 'file-origin-guard.js',
   '_headers', 'robots.txt', 'sitemap.xml', 'site.webmanifest',
   'CHANGELOG.md', 'sbom.json', 'sbom.md',
 ];
