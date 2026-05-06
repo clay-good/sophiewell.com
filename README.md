@@ -47,7 +47,7 @@ production security headers. Any static file server will also work.
 
 ## How it works and how to use it
 
-The site is organized into fifteen groups containing 195 utilities. **Code
+The site is organized into fifteen categories containing 195 utilities. **Code
 lookups** cover ICD-10-CM, HCPCS, NDC, CPT structural data, ICD-10-PCS,
 RxNorm, MS-DRG, APC, NUBC TOB / revenue / condition / occurrence / value
 codes, HCPCS modifiers, NCCI PTP, MUE, POS, and the related billing code
@@ -78,27 +78,26 @@ PAS, mRS reference, PHQ-9, GAD-7, AUDIT-C, CAGE, EPDS, Mini-Cog, CIWA-Ar,
 COWS, ASCVD PCE, and PREVENT 2023. **Workflow** adds the existing
 appointment prep and prior-auth generators plus HIPAA authorization, ROI,
 discharge instructions, specialty-visit questions, and a medication
-wallet card. **Field Medicine (Group I)** adds NEXUS / Canadian C-Spine,
+wallet card. **Field Medicine** adds NEXUS / Canadian C-Spine,
 DOT ERG hazmat lookup, NIOSH Pocket Guide, AHA CPR numeric reference,
 TCCC tourniquet / wound packing, and CO / cyanide antidote dosing
-alongside the existing pediatric weight-to-dose, cardiac arrest references,
+alongside pediatric weight-to-dose, cardiac arrest references,
 defibrillation energy, stroke scales, CDC Field Triage, START / JumpSTART,
 burn surface area and fluid resuscitation, pediatric ETT sizing,
 hypothermia / heat-illness staging, toxidromes, naloxone dosing, and the
-EMS documentation helper. **Public Health & Travel (Group J, new)** covers
+EMS documentation helper. **Public Health & Travel** covers
 ACIP routine adult / child / catch-up schedules, the CDC Yellow Book by
 country, and decision trees for tetanus prophylaxis, rabies PEP,
 bloodborne pathogen exposure, TB testing interpretation, and STI screening
-intervals. **Lab Reference (Group K, new)** bundles adult and pediatric
+intervals. **Lab Reference** bundles adult and pediatric
 reference ranges, therapeutic drug levels, and toxicology levels. **Forms
-& Numbers Literacy (Group L, new)** decodes CMS-1500 and UB-04 field-by-
-field plus an EOB jargon glossary. **Eligibility & Benefits (Group M, new)**
-covers Medicaid by state, VA priority groups, a TRICARE plan picker, and
-IHS eligibility. **Literacy Helpers (Group N, new)** offers a universal
-unit converter (lab + vitals + basics), a time-to-dose helper, and a
-pediatric weight converter. **Patient Safety (Group O, new)** ships the
-ISMP-attributed high-alert wallet card, the FDA drug recalls weekly
-snapshot, and a vaccine lot recall lookup.
+& Numbers Literacy** decodes CMS-1500 and UB-04 field-by-field plus an
+EOB jargon glossary. **Eligibility & Benefits** covers Medicaid by state,
+VA priority groups, a TRICARE plan picker, and IHS eligibility.
+**Literacy Helpers** offers a universal unit converter (lab + vitals +
+basics), a time-to-dose helper, and a pediatric weight converter.
+**Patient Safety** ships the ISMP-attributed high-alert wallet card, the
+FDA drug recalls weekly snapshot, and a vaccine lot recall lookup.
 
 The user flow is simple: pick a tile from the home grid, enter input, read
 output. Every utility shows the data sources or formula citations at the
