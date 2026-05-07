@@ -50,9 +50,12 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 - `GROUP_LABELS` in `app.js` rewritten to drop the letter prefix from
   breadcrumbs and search-result group tags. Keys for removed groups (B,
   D, M) are dropped.
-- `scripts/build-data.mjs` retains the dead-dataset definitions for now
-  (dead code only; not invoked at runtime). Pruning is staged as a
-  follow-up cleanup.
+- `scripts/build-data.mjs` pruned of dead dataset definitions (78 -> 46).
+  All 32 builders for killed tiles deleted. The remaining offline-seed
+  pipeline runs clean against the 46 kept datasets.
+- Orphan `data/` folders deleted: `cms-deductibles`, `dea-rules`,
+  `enforcement`, `fpl`, `hsa-fsa-limits`, `irmaa`, `state-rights`.
+  Manifest count 53 -> 46.
 
 ### Added (spec-v5: pragmatic pivot + 17 new deterministic tools)
 

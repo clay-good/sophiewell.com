@@ -5,7 +5,7 @@
   "agency": "NUBC (numeric/structural only)",
   "status": "numeric-facts-with-attribution",
   "cadence": "as-needed",
-  "fetchDate": "2026-05-05",
+  "fetchDate": "2026-05-07",
   "offlineSeed": true,
   "recordCount": 3,
   "shards": [
