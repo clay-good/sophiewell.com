@@ -47,7 +47,7 @@ production security headers. Any static file server will also work.
 
 ## How it works and how to use it
 
-The site is organized into fifteen categories containing 195 utilities. **Code
+The site is organized into fifteen categories containing 212 utilities. **Code
 lookups** cover ICD-10-CM, HCPCS, NDC, CPT structural data, ICD-10-PCS,
 RxNorm, MS-DRG, APC, NUBC TOB / revenue / condition / occurrence / value
 codes, HCPCS modifiers, NCCI PTP, MUE, POS, and the related billing code
@@ -98,6 +98,16 @@ VA priority groups, a TRICARE plan picker, and IHS eligibility.
 basics), a time-to-dose helper, and a pediatric weight converter.
 **Patient Safety** ships the ISMP-attributed high-alert wallet card, the
 FDA drug recalls weekly snapshot, and a vaccine lot recall lookup.
+
+The **spec-v5 additions** (see [docs/spec-v5.md](docs/spec-v5.md)) add
+seventeen deterministic frontline tools across the existing categories:
+sodium-correction planner (Adrogue-Madias), free water deficit, iron
+deficit (Ganzoni), predicted body weight + ARDSnet tidal volume, RSBI,
+Light's criteria, Mentzer index, SAAG, R-factor for liver injury, KDIGO
+AKI staging, Modified Sgarbossa criteria, Revised Cardiac Risk Index,
+PEWS, time-based E/M code selector (2021), NDC 10/11 digit converter,
+AVPU/GCS quick reference, and an SBAR handoff template generator. None
+require a refresh pipeline.
 
 The user flow is simple: pick a tile from the home grid, enter input, read
 output. Every utility shows the data sources or formula citations at the

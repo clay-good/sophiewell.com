@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `f36efa1597f6de9b`
-Generated: 2026-05-06T20:39:45.603Z
+Build ID: `65b8059d4cf87100`
+Generated: 2026-05-07T00:04:56.510Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=20.18.1 <21, npm >=10.0.0
@@ -23,13 +23,13 @@ downloads is committed in this repository and is hashed below.
 
 | Path | Bytes | SHA-256 |
 |---|---:|---|
-| `index.html` | 94796 | `7e8e5408b77b931acafda5d88ec5ea0b573f99926e9614956cb0953646c6a357` |
-| `styles.css` | 23785 | `28357ae662df834be6392c132e6180ddfc22d8958b8d2a0d1d5c982d0cd841cb` |
-| `app.js` | 52588 | `ff6be4b56f2bce35cbf3dba9669e4f9d8c0225134055c87416f707fb0c10b9cb` |
+| `index.html` | 101624 | `74692b7beb305fafbddfc8edb701ec21bd175c20b1fcd4ea7775470a175b3a4a` |
+| `styles.css` | 23649 | `53314838654a1ada8ca7b2708bc08dcc5107cdfdd81d651b44ebf95950a32dba` |
+| `app.js` | 55472 | `a18a6643d6f47e52e82ed38d28a73951b8fbf2d0e3e71900543a01a972b65e51` |
 | `sw.js` | 4062 | `60f524b1b69eb5170c59af42631e11cc05db2a44e8e530977db0327888b0ff6d` |
 | `site.webmanifest` | 709 | `0e0de4da60590a12e8b27a0ae2a2f5ffdb6500b7d2b78f93631ec2f64ed3d5ce` |
 | `robots.txt` | 67 | `297014916e0fe5e4b0a9356b12884f815003c873ad25f299bf441f7895b77d89` |
-| `sitemap.xml` | 28160 | `93f373eec8b43a7643fd1b7ec4a91d9e0834f723a5926545be54a41c8c13537c` |
+| `sitemap.xml` | 30590 | `f9a3412df651d3297cefbac90c9167ded5b57cf64a0b9dc8bfe50c07e260a07e` |
 | `_headers` | 1297 | `8a0d2228d73c6b105d5d8fbd173974461cc6b6482ee72f06546a3a27248a9003` |
 | `logo.png` | 63440 | `11afaf1b0d3ca68393d202e4810bf766b5b6d591b4e3ec52f41d3cacaa4616ec` |
 | `favicon.ico` | 7411 | `407fde0ca2788409e87e11f596fa02e6a0b121817fcea7fd995beec1801e287b` |
@@ -44,10 +44,12 @@ downloads is committed in this repository and is hashed below.
 | `lib/aca-sep.js` | 2961 | `8ebb4335a70bd61c447ae179338d59f4f5cdead7562f67c626749eaf81d6bae2` |
 | `lib/birthday-rule.js` | 2243 | `2f109eb119aef3f369e6b9618b7dd0580ef76936b4211ae12d7561bd0d52462b` |
 | `lib/clinical-v4.js` | 7486 | `f23d565651f5a2dce08304b36464f52d53d3bfd1a59f5ea880bb59e9b180b721` |
+| `lib/clinical-v5.js` | 14967 | `1db6846962318aaa4c9fb49cf210fe17667f4e61776b47a8a38f46e5547125ba` |
 | `lib/clinical.js` | 14958 | `207f70d80e7f714af4f7f1ec2871aab528ba0b0cc76a65c1fc590f917304a8ff` |
 | `lib/clipboard.js` | 2144 | `2558654588bad53e537e8ac128f335ce21df4e2916f52896e3bd1ef54834e096` |
 | `lib/cobra.js` | 2759 | `bdc92559ddbcb51cb7baa7a49c5fd21471c53011c04ecfad97d196d930e50b7f` |
 | `lib/codes.js` | 4893 | `03e6f25fd5931ec04a30f647d9646d281b15701e4799cbf2d41e4a26bd927924` |
+| `lib/coding-v5.js` | 4789 | `6d0243da72aa7b2c54d4255683ee377aa62ea1b7921b491909bcdd1e24694774` |
 | `lib/data.js` | 1896 | `db1b3843dbe593a25f04e29c519bee29fde77e5cb7b6d14e4892d3abe0846582` |
 | `lib/dea.js` | 2299 | `341df7951cf62cce4757cc8521da54a35d9b3ad5954ff854a679698c498711f0` |
 | `lib/decoder.js` | 4726 | `5abf9b0a2b9fcbc19fac35de370cf5a9df1852a9744d48371903096c673404c0` |
@@ -60,7 +62,7 @@ downloads is committed in this repository and is hashed below.
 | `lib/live.js` | 1138 | `304978d3c170b6eb06cade7702e5f99d868e9b3e1f5651aa9a28da15e62a6a9c` |
 | `lib/medicare-enrollment.js` | 2884 | `6a4c11321477e712efc44d4de84336463ea6800bc64f654b5e9d0b16c440877d` |
 | `lib/medication-v4.js` | 5501 | `a75b60584a9264ee1500e14642c5e4784fb0a0994bf4c8cb4eaa0d294f571f37` |
-| `lib/meta.js` | 36689 | `167c003cbadb0fb4a67053bc7331f5da2d69f40c8c4a12289f48d26729669be7` |
+| `lib/meta.js` | 41216 | `219867a9dc54ceba81f259f15a30ca2af17684d29becd8befcf15894e8aa1fbf` |
 | `lib/mpfs.js` | 1430 | `f817017aebc4c490bd1aa43077133b87d837a0f8df29b39f099efb838a8a36b3` |
 | `lib/oop.js` | 2027 | `18c0f29273fb30221c302ee3a4f37c8ba61ee1fe4081257718b501960e7ed1e7` |
 | `lib/print.js` | 2355 | `3bca792c1dec6ad487da80c6c200f045a2eaef48d6cccc8231c1006cc4da83e3` |
@@ -83,6 +85,7 @@ downloads is committed in this repository and is hashed below.
 | `views/group-i.js` | 33090 | `ed740d9f24572c55ffd9d34b06fc890291f28ea87485a86112dee9d8761dba35` |
 | `views/group-j.js` | 10376 | `7a253653d549a1579d9281de0e3916be1e8c61f302730d702c366016c6c66573` |
 | `views/group-klmno.js` | 17373 | `d480f408e90df9cdb7d5fd1c4e3d8f735c8f8f356f655c92fb8708dbfbeacb9d` |
+| `views/group-v5.js` | 20388 | `d089ab3573de813b9590666960db5aef0c084d99bbc5f83f16edb5654c7202a5` |
 
 ## Verifying this SBOM
 

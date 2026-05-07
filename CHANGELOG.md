@@ -6,6 +6,41 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v5: pragmatic pivot + 17 new deterministic tools)
+
+- **spec-v5 doctrine** ([docs/spec-v5.md](docs/spec-v5.md)): no live data,
+  no ETL, no AI, no accounts, no telemetry. Future tiles must be pure
+  deterministic math or a small static reference. Pricing tools, live
+  registries, recalls, and annually-shifting public-health datasets are
+  out of scope going forward; their removal is staged for a follow-up
+  commit per the spec's wave plan.
+- **17 new tiles** wired into the existing categories (UTILITIES count
+  195 -> 212). Each ships with a pure function, a worked-example META
+  entry tied to a citation, a renderer, a home-grid tile, and unit
+  tests:
+  - Sodium Correction Rate Planner (Adrogue-Madias) `sodium-correction`
+  - Free Water Deficit Calculator `free-water-deficit`
+  - Iron Deficit (Ganzoni) `iron-ganzoni`
+  - Predicted Body Weight + ARDSnet Tidal Volume `pbw-ardsnet`
+  - Rapid Shallow Breathing Index `rsbi`
+  - Light's Criteria for Pleural Effusion `lights`
+  - Mentzer Index `mentzer`
+  - SAAG (Serum-Ascites Albumin Gradient) `saag`
+  - R-Factor (drug-induced liver injury pattern) `r-factor`
+  - KDIGO AKI Staging `kdigo-aki`
+  - Modified Sgarbossa Criteria (Smith) `sgarbossa`
+  - Revised Cardiac Risk Index (Lee) `rcri`
+  - Pediatric Early Warning Score `pews`
+  - Time-Based E/M Code Selector (AMA 2021) `em-time`
+  - NDC 10 to 11 Digit Converter `ndc-convert`
+  - AVPU to GCS Quick Reference `avpu-gcs`
+  - SBAR Handoff Template Generator `sbar-template`
+- 50 new unit tests in `test/unit/clinical-v5.test.js` (563 -> 613
+  total). Two new pure-function modules: `lib/clinical-v5.js`,
+  `lib/coding-v5.js`. One new renderer module: `views/group-v5.js`.
+- JSON-LD `featureList`, sitemap, and README counts regenerated from the
+  live UTILITIES array.
+
 ### Added (spec-v4: utility expansion 79 -> 195)
 
 - **v4.0 shared renderers**: `lib/tree.js` (decision tree), `lib/screener.js`

@@ -12,13 +12,14 @@ import { renderers as RH } from './views/group-h.js';
 import { renderers as RI } from './views/group-i.js';
 import { renderers as RJ } from './views/group-j.js';
 import { renderers as RKLMNO } from './views/group-klmno.js';
+import { renderers as RV5 } from './views/group-v5.js';
 import { META } from './lib/meta.js';
 import { fetchJson } from './lib/data.js';
 import { copyButton } from './lib/clipboard.js';
 import { installKeyboard } from './lib/keyboard.js';
 import { parseHash, buildHash, patchHash } from './lib/hash.js';
 
-const RENDERERS = { ...RA, ...RB, ...RC, ...RD, ...RE, ...RF, ...RG, ...RH, ...RI, ...RJ, ...RKLMNO };
+const RENDERERS = { ...RA, ...RB, ...RC, ...RD, ...RE, ...RF, ...RG, ...RH, ...RI, ...RJ, ...RKLMNO, ...RV5 };
 
 // ----- Utility registry ----------------------------------------------------
 // Source of truth for routes, names, group, audiences, and clinical flag.
@@ -247,6 +248,25 @@ const UTILITIES = [
   { id: 'high-alert-card', name: 'High-Alert Medication Wallet Card (ISMP)', group: 'O', audiences: ['patients', 'clinicians', 'educators'], clinical: false },
   { id: 'drug-recalls',    name: 'Drug Recall Lookup (FDA weekly)', group: 'O', audiences: ['patients', 'clinicians', 'educators'], clinical: false },
   { id: 'vaccine-recalls', name: 'Vaccine Lot Recall Lookup', group: 'O', audiences: ['patients', 'clinicians', 'educators'], clinical: false },
+
+  // spec-v5 §4: deterministic additions for the floor (T1-T17). No live data.
+  { id: 'sodium-correction',  name: 'Sodium Correction Rate Planner (Adrogue-Madias)', group: 'E', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'free-water-deficit', name: 'Free Water Deficit Calculator',                    group: 'E', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'iron-ganzoni',       name: 'Iron Deficit Calculator (Ganzoni)',                group: 'F', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'pbw-ardsnet',        name: 'Predicted Body Weight + ARDSnet Tidal Volume',     group: 'E', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'rsbi',               name: 'Rapid Shallow Breathing Index (RSBI)',             group: 'E', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'lights',             name: 'Light’s Criteria (Pleural Effusion)',          group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'mentzer',            name: 'Mentzer Index (Microcytic Anemia Screen)',         group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'saag',               name: 'SAAG (Serum-Ascites Albumin Gradient)',            group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'r-factor',           name: 'R-Factor (Drug-Induced Liver Injury Pattern)',     group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'kdigo-aki',          name: 'KDIGO AKI Staging',                                group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'sgarbossa',          name: 'Modified Sgarbossa Criteria (Smith)',              group: 'G', audiences: ['clinicians', 'educators', 'field'], clinical: true },
+  { id: 'rcri',               name: 'Revised Cardiac Risk Index (Lee)',                 group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'pews',               name: 'Pediatric Early Warning Score (PEWS)',             group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'em-time',            name: 'Time-Based E/M Code Selector (2021)',              group: 'A', audiences: ['billers', 'clinicians', 'educators'], clinical: false },
+  { id: 'ndc-convert',        name: 'NDC 10 ↔ 11 Digit Converter',                      group: 'A', audiences: ['billers', 'clinicians', 'educators'], clinical: false },
+  { id: 'avpu-gcs',           name: 'AVPU ↔ GCS Quick Reference',                       group: 'I', audiences: ['clinicians', 'educators', 'field'], clinical: true },
+  { id: 'sbar-template',      name: 'SBAR Handoff Template Generator',                  group: 'H', audiences: ['clinicians', 'field', 'educators'], clinical: false },
 ];
 
 const UTIL_BY_ID = new Map(UTILITIES.map((u) => [u.id, u]));
