@@ -64,7 +64,7 @@
           "@id": "https://sophiewell.com/#webapp",
           "name": "sophiewell",
           "url": "https://sophiewell.com/",
-          "description": "Free, client-side healthcare toolbox with 212 deterministic utilities for patients, billers, coders, nurses, clinicians, EMS, and educators.",
+          "description": "Free, client-side healthcare toolbox with 174 deterministic utilities for patients, billers, coders, nurses, clinicians, EMS, and educators.",
           "applicationCategory": [
             "HealthApplication",
             "MedicalApplication",
@@ -97,12 +97,7 @@
             "Revenue Code Lookup",
             "Claim Adjustment Reason Code Lookup",
             "Remittance Advice Remark Code Lookup",
-            "NCCI Procedure-to-Procedure Edit Lookup",
-            "Medically Unlikely Edits Lookup",
-            "LCD and NCD Coverage Lookup",
             "HCPCS Modifier Lookup",
-            "NCCI PTP Edit Checker",
-            "MUE Unit Cap Lookup",
             "Place of Service Code Lookup (CMS)",
             "Type of Bill Decoder",
             "Revenue Code Table (NUBC summary)",
@@ -112,28 +107,10 @@
             "ICD-10-PCS Lookup",
             "RxNorm Lookup",
             "NDC to RxNorm Crosswalk",
-            "Medicare Physician Fee Schedule Lookup",
-            "NADAC Drug Pricing Lookup",
-            "Charge-to-Medicare Ratio Calculator",
-            "Hospital Price Transparency Lookup",
-            "Out-of-Pocket Cost Estimator",
-            "DMEPOS Fee Schedule",
-            "CLFS Lab Fee Lookup",
-            "ASP Drug Pricing",
-            "ASC Payment Lookup",
-            "CMS Wage Index Lookup",
-            "GPCI Lookup",
-            "Medicare Deductibles & IRMAA",
-            "ACA Marketplace Thresholds",
-            "HSA / FSA / HDHP Limits",
-            "Federal Poverty Level Calculator",
-            "IRS Medical Mileage Rate",
             "Medical Bill Decoder",
             "Insurance Card Decoder",
             "Explanation of Benefits Decoder",
             "No Surprises Act Eligibility Checker",
-            "Good Faith Estimate Dispute Threshold Checker",
-            "State Patient Rights Reference",
             "Insurance Card Decoder (printable)",
             "ABN (CMS-R-131) Explainer",
             "Medicare Summary Notice Decoder",
@@ -144,11 +121,6 @@
             "COBRA Timeline",
             "Medicare Enrollment Period Checker",
             "ACA SEP Eligibility Checker",
-            "NPI Provider Lookup",
-            "OIG Exclusions Lookup",
-            "Medicare Opt-Out List Lookup",
-            "DEA Registration Number Validator",
-            "NUCC Provider Taxonomy Lookup",
             "Unit Converter",
             "BMI Calculator",
             "Body Surface Area",
@@ -257,10 +229,6 @@
             "CPR Numeric Reference (AHA)",
             "TCCC Tourniquet & Wound-Packing",
             "CO / Cyanide / Smoke-Inhalation Antidotes",
-            "ACIP Routine Adult Immunization Schedule",
-            "ACIP Routine Child Immunization Schedule",
-            "ACIP Catch-Up Immunization Schedule",
-            "CDC Yellow Book Country Lookup",
             "Tetanus Prophylaxis Decision Tree",
             "Rabies PEP Decision Tree",
             "Bloodborne Pathogen Exposure Decision Tree",
@@ -273,16 +241,10 @@
             "CMS-1500 Field-by-Field Decoder",
             "UB-04 Form-Locator Decoder",
             "EOB Jargon Glossary",
-            "Medicaid by State Quick-Card",
-            "VA Eligibility 1-2-3",
-            "TRICARE Plan Picker",
-            "IHS Eligibility Quick-Reference",
             "Universal Unit Converter (lab + vitals + basics)",
             "Time-to-Dose Helper",
             "Pediatric Weight Converter (lb/oz <-> kg)",
             "High-Alert Medication Wallet Card (ISMP)",
-            "Drug Recall Lookup (FDA weekly)",
-            "Vaccine Lot Recall Lookup",
             "Sodium Correction Rate Planner (Adrogue-Madias)",
             "Free Water Deficit Calculator",
             "Iron Deficit Calculator (Ganzoni)",
@@ -431,7 +393,7 @@
           <div id="tile-grid">
 
             <section class="home-section">
-              <h3>Code Lookup</h3>
+              <h3>Code Reference</h3>
               <div class="home-grid">
                 <button class="tool-card" type="button" data-tool="icd10" data-group="A" data-audiences="billers educators">
                   <span class="tc-title">ICD-10-CM Code Lookup</span>
@@ -469,29 +431,9 @@
                   <span class="tc-title">Remittance Advice Remark Code Lookup</span>
                   <span class="tc-desc">Look up RARC codes that appear on EOBs and remittance advice.</span>
                 </button>
-                <button class="tool-card" type="button" data-tool="ncci" data-group="A" data-audiences="billers educators">
-                  <span class="tc-title">NCCI Procedure-to-Procedure Edit Lookup</span>
-                  <span class="tc-desc">Given two codes, show bundled status, modifier indicator, and rationale.</span>
-                </button>
-                <button class="tool-card" type="button" data-tool="mue" data-group="A" data-audiences="billers educators">
-                  <span class="tc-title">Medically Unlikely Edits Lookup</span>
-                  <span class="tc-desc">Find the per-claim unit limit and rationale for a code.</span>
-                </button>
-                <button class="tool-card" type="button" data-tool="lcd" data-group="A" data-audiences="billers educators">
-                  <span class="tc-title">LCD and NCD Coverage Lookup</span>
-                  <span class="tc-desc">Find Medicare local and national coverage determinations for a code.</span>
-                </button>
                 <button class="tool-card" type="button" data-tool="hcpcs-mod" data-group="A" data-audiences="billers educators">
                   <span class="tc-title">HCPCS Modifier Lookup</span>
                   <span class="tc-desc">Searchable HCPCS modifier table with common-use and pairing-caution notes.</span>
-                </button>
-                <button class="tool-card" type="button" data-tool="ncci-ptp" data-group="A" data-audiences="billers">
-                  <span class="tc-title">NCCI PTP Edit Checker</span>
-                  <span class="tc-desc">Paste two HCPCS codes; see PTP edit, modifier indicator, and rationale.</span>
-                </button>
-                <button class="tool-card" type="button" data-tool="mue-cap" data-group="A" data-audiences="billers">
-                  <span class="tc-title">MUE Unit Cap Lookup</span>
-                  <span class="tc-desc">Per-claim MUE unit cap and adjudication indicator for a code.</span>
                 </button>
                 <button class="tool-card" type="button" data-tool="pos-lookup" data-group="A" data-audiences="billers educators">
                   <span class="tc-title">Place of Service Code Lookup (CMS)</span>
@@ -541,77 +483,7 @@
             </section>
 
             <section class="home-section">
-              <h3>Pricing &amp; Cost Reference</h3>
-              <div class="home-grid">
-                <button class="tool-card" type="button" data-tool="mpfs" data-group="B" data-audiences="patients billers educators">
-                  <span class="tc-title">Medicare Physician Fee Schedule Lookup</span>
-                  <span class="tc-desc">Compute Medicare allowable for a code in a chosen locality.</span>
-                </button>
-                <button class="tool-card" type="button" data-tool="nadac" data-group="B" data-audiences="patients clinicians educators">
-                  <span class="tc-title">NADAC Drug Pricing Lookup</span>
-                  <span class="tc-desc">Look up the National Average Drug Acquisition Cost by NDC or drug name.</span>
-                </button>
-                <button class="tool-card" type="button" data-tool="ratio" data-group="B" data-audiences="patients billers">
-                  <span class="tc-title">Charge-to-Medicare Ratio Calculator</span>
-                  <span class="tc-desc">Compute how a charged amount compares to the Medicare allowable.</span>
-                </button>
-                <button class="tool-card" type="button" data-tool="hospital-prices" data-group="B" data-audiences="patients billers">
-                  <span class="tc-title">Hospital Price Transparency Lookup</span>
-                  <span class="tc-desc">Search a curated subset of hospital machine-readable price files.</span>
-                </button>
-                <button class="tool-card" type="button" data-tool="oop" data-group="B" data-audiences="patients">
-                  <span class="tc-title">Out-of-Pocket Cost Estimator</span>
-                  <span class="tc-desc">Estimate patient responsibility under standard commercial insurance math.</span>
-                </button>
-                <button class="tool-card" type="button" data-tool="dmepos" data-group="B" data-audiences="patients billers">
-                  <span class="tc-title">DMEPOS Fee Schedule</span>
-                  <span class="tc-desc">HCPCS + state - Medicare DMEPOS competitive-bidding and non-CB rates.</span>
-                </button>
-                <button class="tool-card" type="button" data-tool="clfs" data-group="B" data-audiences="billers">
-                  <span class="tc-title">CLFS Lab Fee Lookup</span>
-                  <span class="tc-desc">National limitation amount for a clinical laboratory HCPCS code.</span>
-                </button>
-                <button class="tool-card" type="button" data-tool="asp" data-group="B" data-audiences="billers clinicians">
-                  <span class="tc-title">ASP Drug Pricing</span>
-                  <span class="tc-desc">Medicare Part B Average Sales Price per unit for a J-code.</span>
-                </button>
-                <button class="tool-card" type="button" data-tool="asc" data-group="B" data-audiences="billers">
-                  <span class="tc-title">ASC Payment Lookup</span>
-                  <span class="tc-desc">Ambulatory Surgical Center payment indicator and rate for a HCPCS code.</span>
-                </button>
-                <button class="tool-card" type="button" data-tool="wage-index" data-group="B" data-audiences="billers educators">
-                  <span class="tc-title">CMS Wage Index Lookup</span>
-                  <span class="tc-desc">Searchable CBSA-keyed wage-index table.</span>
-                </button>
-                <button class="tool-card" type="button" data-tool="gpci" data-group="B" data-audiences="billers educators">
-                  <span class="tc-title">GPCI Lookup</span>
-                  <span class="tc-desc">Searchable Medicare locality work / PE / MP GPCI table.</span>
-                </button>
-                <button class="tool-card" type="button" data-tool="medicare-deductibles" data-group="B" data-audiences="patients billers">
-                  <span class="tc-title">Medicare Deductibles &amp; IRMAA</span>
-                  <span class="tc-desc">Current-year Part A / Part B deductibles plus IRMAA brackets by filing status.</span>
-                </button>
-                <button class="tool-card" type="button" data-tool="aca-thresholds" data-group="B" data-audiences="patients billers">
-                  <span class="tc-title">ACA Marketplace Thresholds</span>
-                  <span class="tc-desc">Current-year out-of-pocket maximum and metal-tier actuarial-value bands.</span>
-                </button>
-                <button class="tool-card" type="button" data-tool="hsa-fsa" data-group="B" data-audiences="patients">
-                  <span class="tc-title">HSA / FSA / HDHP Limits</span>
-                  <span class="tc-desc">Current-year IRS contribution and HDHP deductible / OOP limits.</span>
-                </button>
-                <button class="tool-card" type="button" data-tool="fpl" data-group="B" data-audiences="patients educators">
-                  <span class="tc-title">Federal Poverty Level Calculator</span>
-                  <span class="tc-desc">Household size and region - 100/138/200/250/400/600% FPL thresholds.</span>
-                </button>
-                <button class="tool-card" type="button" data-tool="irs-mileage" data-group="B" data-audiences="patients">
-                  <span class="tc-title">IRS Medical Mileage Rate</span>
-                  <span class="tc-desc">Current-year and prior-year IRS standard mileage rates.</span>
-                </button>
-              </div>
-            </section>
-
-            <section class="home-section">
-              <h3>Patient Bill &amp; Insurance</h3>
+              <h3>Patient Bill &amp; Insurance Literacy</h3>
               <div class="home-grid">
                 <button class="tool-card" type="button" data-tool="decoder" data-group="C" data-audiences="patients billers">
                   <span class="tc-title">Medical Bill Decoder</span>
@@ -628,14 +500,6 @@
                 <button class="tool-card" type="button" data-tool="no-surprises" data-group="C" data-audiences="patients">
                   <span class="tc-title">No Surprises Act Eligibility Checker</span>
                   <span class="tc-desc">Walk through No Surprises Act criteria with statutory citations.</span>
-                </button>
-                <button class="tool-card" type="button" data-tool="gfe" data-group="C" data-audiences="patients">
-                  <span class="tc-title">Good Faith Estimate Dispute Threshold Checker</span>
-                  <span class="tc-desc">Check whether your bill exceeds the federal GFE dispute threshold.</span>
-                </button>
-                <button class="tool-card" type="button" data-tool="state-rights" data-group="C" data-audiences="patients educators">
-                  <span class="tc-title">State Patient Rights Reference</span>
-                  <span class="tc-desc">Pick a state, see a curated, cited summary of medical debt and billing rules.</span>
                 </button>
                 <button class="tool-card" type="button" data-tool="insurance-card" data-group="C" data-audiences="patients">
                   <span class="tc-title">Insurance Card Decoder (printable)</span>
@@ -676,32 +540,6 @@
                 <button class="tool-card" type="button" data-tool="aca-sep" data-group="C" data-audiences="patients">
                   <span class="tc-title">ACA SEP Eligibility Checker</span>
                   <span class="tc-desc">Pick a qualifying life event; see the SEP window and required documentation.</span>
-                </button>
-              </div>
-            </section>
-
-            <section class="home-section">
-              <h3>Provider &amp; Plan Lookup</h3>
-              <div class="home-grid">
-                <button class="tool-card" type="button" data-tool="npi" data-group="D" data-audiences="patients billers">
-                  <span class="tc-title">NPI Provider Lookup</span>
-                  <span class="tc-desc">Search the NPI registry by NPI or name. Cross-references enforcement lists.</span>
-                </button>
-                <button class="tool-card" type="button" data-tool="oig" data-group="D" data-audiences="billers">
-                  <span class="tc-title">OIG Exclusions Lookup</span>
-                  <span class="tc-desc">Search the OIG List of Excluded Individuals and Entities.</span>
-                </button>
-                <button class="tool-card" type="button" data-tool="opt-out" data-group="D" data-audiences="patients billers">
-                  <span class="tc-title">Medicare Opt-Out List Lookup</span>
-                  <span class="tc-desc">Search the Medicare opt-out provider list.</span>
-                </button>
-                <button class="tool-card" type="button" data-tool="dea-validator" data-group="D" data-audiences="billers clinicians educators">
-                  <span class="tc-title">DEA Registration Number Validator</span>
-                  <span class="tc-desc">Checksum-only DEA validator with a digit-by-digit trace. Not license verification.</span>
-                </button>
-                <button class="tool-card" type="button" data-tool="nucc-taxonomy" data-group="D" data-audiences="billers educators">
-                  <span class="tc-title">NUCC Provider Taxonomy Lookup</span>
-                  <span class="tc-desc">Look up NUCC taxonomy codes by code or text - type / classification / specialization.</span>
                 </button>
               </div>
             </section>
@@ -1089,7 +927,7 @@
             </section>
 
             <section class="home-section">
-              <h3>Preparation &amp; Workflow</h3>
+              <h3>Workflow &amp; Templates</h3>
               <div class="home-grid">
                 <button class="tool-card" type="button" data-tool="prep" data-group="H" data-audiences="patients">
                   <span class="tc-title">Appointment Prep Question Generator</span>
@@ -1229,24 +1067,8 @@
             </section>
 
             <section class="home-section">
-              <h3>Public Health &amp; Travel</h3>
+              <h3>Public Health Decision Trees</h3>
               <div class="home-grid">
-                <button class="tool-card" type="button" data-tool="acip-adult" data-group="J" data-audiences="clinicians patients educators">
-                  <span class="tc-title">ACIP Routine Adult Immunization Schedule</span>
-                  <span class="tc-desc">Current-year CDC ACIP adult schedule with audiences and conditions.</span>
-                </button>
-                <button class="tool-card" type="button" data-tool="acip-child" data-group="J" data-audiences="clinicians patients educators">
-                  <span class="tc-title">ACIP Routine Child Immunization Schedule</span>
-                  <span class="tc-desc">Current-year ACIP routine child schedule by vaccine and age.</span>
-                </button>
-                <button class="tool-card" type="button" data-tool="acip-catchup" data-group="J" data-audiences="clinicians educators">
-                  <span class="tc-title">ACIP Catch-Up Immunization Schedule</span>
-                  <span class="tc-desc">Minimum intervals between doses for late or missed vaccinations.</span>
-                </button>
-                <button class="tool-card" type="button" data-tool="yellow-book" data-group="J" data-audiences="clinicians patients educators">
-                  <span class="tc-title">CDC Yellow Book Country Lookup</span>
-                  <span class="tc-desc">Country - vaccines, malaria prophylaxis, food/water, altitude considerations.</span>
-                </button>
                 <button class="tool-card" type="button" data-tool="tetanus" data-group="J" data-audiences="clinicians educators field">
                   <span class="tc-title">Tetanus Prophylaxis Decision Tree</span>
                   <span class="tc-desc">Clean vs dirty wound x immunization status - Td/Tdap and TIG decision per CDC.</span>
@@ -1311,28 +1133,6 @@
             </section>
 
             <section class="home-section">
-              <h3>Eligibility &amp; Benefits</h3>
-              <div class="home-grid">
-                <button class="tool-card" type="button" data-tool="medicaid-state" data-group="M" data-audiences="patients educators">
-                  <span class="tc-title">Medicaid by State Quick-Card</span>
-                  <span class="tc-desc">State - adult / pregnant / CHIP FPL thresholds, expansion status, application URL.</span>
-                </button>
-                <button class="tool-card" type="button" data-tool="va-eligibility" data-group="M" data-audiences="patients educators">
-                  <span class="tc-title">VA Eligibility 1-2-3</span>
-                  <span class="tc-desc">VA priority groups summary card with copay framing.</span>
-                </button>
-                <button class="tool-card" type="button" data-tool="tricare-picker" data-group="M" data-audiences="patients educators">
-                  <span class="tc-title">TRICARE Plan Picker</span>
-                  <span class="tc-desc">Decision tree across Prime / Select / TFL / TRS / TYA based on duty status.</span>
-                </button>
-                <button class="tool-card" type="button" data-tool="ihs-eligibility" data-group="M" data-audiences="patients educators">
-                  <span class="tc-title">IHS Eligibility Quick-Reference</span>
-                  <span class="tc-desc">Generic IHS direct-care eligibility rules and accepted documentation.</span>
-                </button>
-              </div>
-            </section>
-
-            <section class="home-section">
               <h3>Literacy Helpers</h3>
               <div class="home-grid">
                 <button class="tool-card" type="button" data-tool="unit-converter-v4" data-group="N" data-audiences="patients clinicians educators">
@@ -1356,14 +1156,6 @@
                 <button class="tool-card" type="button" data-tool="high-alert-card" data-group="O" data-audiences="patients clinicians educators">
                   <span class="tc-title">High-Alert Medication Wallet Card (ISMP)</span>
                   <span class="tc-desc">Print-ready ISMP-attributed list of high-alert meds with safety notes.</span>
-                </button>
-                <button class="tool-card" type="button" data-tool="drug-recalls" data-group="O" data-audiences="patients clinicians educators">
-                  <span class="tc-title">Drug Recall Lookup (FDA weekly)</span>
-                  <span class="tc-desc">Searchable bundled snapshot of FDA drug recalls.</span>
-                </button>
-                <button class="tool-card" type="button" data-tool="vaccine-recalls" data-group="O" data-audiences="patients clinicians educators">
-                  <span class="tc-title">Vaccine Lot Recall Lookup</span>
-                  <span class="tc-desc">Searchable bundled snapshot of FDA / CDC vaccine lot recalls.</span>
                 </button>
               </div>
             </section>

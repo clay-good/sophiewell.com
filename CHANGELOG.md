@@ -6,6 +6,54 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Removed (spec-v5 §3.1 catalog cut, waves 1-2)
+
+- **38 live-data tiles removed** along with their renderers, META
+  entries, home-grid tiles, dataset folders, manifests, citation rows,
+  and unit / integration tests. Tile count goes 212 -> 174. Test count
+  613 -> 563. Manifest count 78 -> 53.
+  - Pricing & cost reference (16): MPFS, NADAC, charge-to-Medicare
+    ratio, hospital price transparency, OOP estimator, DMEPOS, CLFS,
+    ASP, ASC, wage index, GPCI, Medicare deductibles & IRMAA, ACA
+    marketplace thresholds, HSA/FSA/HDHP limits, FPL, IRS medical
+    mileage.
+  - Live registries (7): NPI lookup, OIG exclusions, Medicare opt-out,
+    DEA validator, NUCC taxonomy, FDA drug recalls, vaccine lot
+    recalls.
+  - Coverage & edits (5): NCCI PTP, NCCI checker, MUE, MUE cap, LCD/
+    NCD coverage.
+  - Annually-shifting public-health (8): ACIP routine adult/child/
+    catch-up schedules, CDC Yellow Book, Medicaid by state, state
+    patient rights, GFE dispute threshold, plus the four eligibility &
+    benefits tiles (VA priority groups, TRICARE plan picker, IHS
+    eligibility).
+- Empty home-grid sections deleted: Pricing & Cost Reference, Provider &
+  Plan Lookup, Eligibility & Benefits.
+- Dead library modules removed: `lib/mpfs.js`, `lib/oop.js`, `lib/dea.js`,
+  `lib/fpl.js`. Empty view modules removed: `views/group-b.js`,
+  `views/group-d.js`. Test orphans removed: `mpfs.test.js`,
+  `nucc-taxonomy.test.js`, `fpl.test.js`, `dea.test.js`, `oop.test.js`.
+- `data/mpfs/` retained because the kept CPT structural tile reads its
+  rows; the MPFS lookup tile itself is gone.
+- `scripts/a11y-check.mjs` updated to scan the current view file set
+  (group-b / group-d removed; group-i / group-j / group-klmno / group-v5
+  added). `test/integration/smoke.spec.js` trimmed of MPFS and Medicaid
+  smoke cases. `test/unit/meta.test.js` `SOURCE_REQUIRED` list trimmed
+  to the kept code-reference tiles.
+
+### Changed (spec-v5 §5.2 wave 2 — plain category names)
+
+- Home-grid headings renamed: Code Lookup -> Code Reference; Patient
+  Bill & Insurance -> Patient Bill & Insurance Literacy; Preparation &
+  Workflow -> Workflow & Templates; Public Health & Travel -> Public
+  Health Decision Trees.
+- `GROUP_LABELS` in `app.js` rewritten to drop the letter prefix from
+  breadcrumbs and search-result group tags. Keys for removed groups (B,
+  D, M) are dropped.
+- `scripts/build-data.mjs` retains the dead-dataset definitions for now
+  (dead code only; not invoked at runtime). Pruning is staged as a
+  follow-up cleanup.
+
 ### Added (spec-v5: pragmatic pivot + 17 new deterministic tools)
 
 - **spec-v5 doctrine** ([docs/spec-v5.md](docs/spec-v5.md)): no live data,

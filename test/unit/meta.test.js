@@ -17,10 +17,8 @@ const CLINICAL_CALC_IDS = [
 
 const SOURCE_REQUIRED = [
   'icd10', 'hcpcs', 'cpt', 'ndc', 'pos-codes', 'modifier-codes',
-  'revenue-codes', 'carc', 'rarc', 'ncci', 'mue', 'lcd',
-  'mpfs', 'nadac', 'hospital-prices',
-  'eob-decoder', 'no-surprises', 'state-rights',
-  'npi', 'oig', 'opt-out',
+  'revenue-codes', 'carc', 'rarc',
+  'eob-decoder', 'no-surprises',
 ];
 
 test('META: every clinical calculator has a citation', () => {

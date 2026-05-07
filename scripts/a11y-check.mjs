@@ -78,9 +78,11 @@ async function checkRendererSources() {
   // followed within ~4 lines by a previous `el('label', { for: id, ...})`).
   const files = [
     'app.js',
-    'views/group-a.js', 'views/group-b.js', 'views/group-c.js',
-    'views/group-d.js', 'views/group-e.js', 'views/group-f.js',
+    'views/group-a.js', 'views/group-c.js',
+    'views/group-e.js', 'views/group-f.js',
     'views/group-g.js', 'views/group-h.js',
+    'views/group-i.js', 'views/group-j.js',
+    'views/group-klmno.js', 'views/group-v5.js',
   ];
   for (const f of files) {
     const src = await readFile(join(ROOT, f), 'utf8');

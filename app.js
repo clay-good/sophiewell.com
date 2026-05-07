@@ -2,9 +2,7 @@
 // All DOM updates use textContent or createElement. Raw HTML insertion is forbidden.
 
 import { renderers as RA } from './views/group-a.js';
-import { renderers as RB } from './views/group-b.js';
 import { renderers as RC } from './views/group-c.js';
-import { renderers as RD } from './views/group-d.js';
 import { renderers as RE } from './views/group-e.js';
 import { renderers as RF } from './views/group-f.js';
 import { renderers as RG } from './views/group-g.js';
@@ -19,7 +17,7 @@ import { copyButton } from './lib/clipboard.js';
 import { installKeyboard } from './lib/keyboard.js';
 import { parseHash, buildHash, patchHash } from './lib/hash.js';
 
-const RENDERERS = { ...RA, ...RB, ...RC, ...RD, ...RE, ...RF, ...RG, ...RH, ...RI, ...RJ, ...RKLMNO, ...RV5 };
+const RENDERERS = { ...RA, ...RC, ...RE, ...RF, ...RG, ...RH, ...RI, ...RJ, ...RKLMNO, ...RV5 };
 
 // ----- Utility registry ----------------------------------------------------
 // Source of truth for routes, names, group, audiences, and clinical flag.
@@ -37,13 +35,8 @@ const UTILITIES = [
   { id: 'revenue-codes', name: 'Revenue Code Lookup', group: 'A', audiences: ['billers'], clinical: false },
   { id: 'carc', name: 'Claim Adjustment Reason Code Lookup', group: 'A', audiences: ['patients', 'billers'], clinical: false },
   { id: 'rarc', name: 'Remittance Advice Remark Code Lookup', group: 'A', audiences: ['patients', 'billers'], clinical: false },
-  { id: 'ncci', name: 'NCCI Procedure-to-Procedure Edit Lookup', group: 'A', audiences: ['billers'], clinical: false },
-  { id: 'mue', name: 'Medically Unlikely Edits Lookup', group: 'A', audiences: ['billers'], clinical: false },
-  { id: 'lcd', name: 'LCD and NCD Coverage Lookup', group: 'A', audiences: ['billers'], clinical: false },
   // Group A: v4 extensions (utilities 82-93)
   { id: 'hcpcs-mod', name: 'HCPCS Modifier Lookup', group: 'A', audiences: ['billers', 'educators'], clinical: false },
-  { id: 'ncci-ptp', name: 'NCCI PTP Edit Checker', group: 'A', audiences: ['billers'], clinical: false },
-  { id: 'mue-cap', name: 'MUE Unit Cap Lookup', group: 'A', audiences: ['billers'], clinical: false },
   { id: 'pos-lookup', name: 'Place of Service Code Lookup (CMS)', group: 'A', audiences: ['billers', 'educators'], clinical: false },
   { id: 'tob-decode', name: 'Type of Bill Decoder', group: 'A', audiences: ['billers', 'educators'], clinical: false },
   { id: 'rev-table', name: 'Revenue Code Table (NUBC summary)', group: 'A', audiences: ['billers', 'educators'], clinical: false },
@@ -54,30 +47,12 @@ const UTILITIES = [
   { id: 'rxnorm-lookup', name: 'RxNorm Lookup', group: 'A', audiences: ['clinicians', 'billers', 'educators'], clinical: false },
   { id: 'ndc-rxnorm', name: 'NDC to RxNorm Crosswalk', group: 'A', audiences: ['clinicians', 'billers', 'educators'], clinical: false },
   // Group B: Pricing and Cost Reference
-  { id: 'mpfs', name: 'Medicare Physician Fee Schedule Lookup', group: 'B', audiences: ['patients', 'billers'], clinical: false },
-  { id: 'nadac', name: 'NADAC Drug Pricing Lookup', group: 'B', audiences: ['patients', 'clinicians'], clinical: false },
-  { id: 'ratio', name: 'Charge-to-Medicare Ratio Calculator', group: 'B', audiences: ['patients', 'billers'], clinical: false },
-  { id: 'hospital-prices', name: 'Hospital Price Transparency Lookup', group: 'B', audiences: ['patients', 'billers'], clinical: false },
-  { id: 'oop', name: 'Out-of-Pocket Cost Estimator', group: 'B', audiences: ['patients'], clinical: false },
   // Group B: v4 extensions (utilities 94-104)
-  { id: 'dmepos', name: 'DMEPOS Fee Schedule', group: 'B', audiences: ['patients', 'billers'], clinical: false },
-  { id: 'clfs', name: 'CLFS Lab Fee Lookup', group: 'B', audiences: ['billers'], clinical: false },
-  { id: 'asp', name: 'ASP Drug Pricing', group: 'B', audiences: ['billers', 'clinicians'], clinical: false },
-  { id: 'asc', name: 'ASC Payment Lookup', group: 'B', audiences: ['billers'], clinical: false },
-  { id: 'wage-index', name: 'CMS Wage Index Lookup', group: 'B', audiences: ['billers', 'educators'], clinical: false },
-  { id: 'gpci', name: 'GPCI Lookup', group: 'B', audiences: ['billers', 'educators'], clinical: false },
-  { id: 'medicare-deductibles', name: 'Medicare Deductibles & IRMAA', group: 'B', audiences: ['patients', 'billers'], clinical: false },
-  { id: 'aca-thresholds', name: 'ACA Marketplace Thresholds', group: 'B', audiences: ['patients', 'billers'], clinical: false },
-  { id: 'hsa-fsa', name: 'HSA / FSA / HDHP Limits', group: 'B', audiences: ['patients'], clinical: false },
-  { id: 'fpl', name: 'Federal Poverty Level Calculator', group: 'B', audiences: ['patients', 'educators'], clinical: false },
-  { id: 'irs-mileage', name: 'IRS Medical Mileage Rate', group: 'B', audiences: ['patients'], clinical: false },
   // Group C: Patient Bill and Insurance Tools
   { id: 'decoder', name: 'Medical Bill Decoder', group: 'C', audiences: ['patients', 'billers'], clinical: false },
   { id: 'insurance', name: 'Insurance Card Decoder', group: 'C', audiences: ['patients'], clinical: false },
   { id: 'eob-decoder', name: 'Explanation of Benefits Decoder', group: 'C', audiences: ['patients', 'billers'], clinical: false },
   { id: 'no-surprises', name: 'No Surprises Act Eligibility Checker', group: 'C', audiences: ['patients'], clinical: false },
-  { id: 'gfe', name: 'Good Faith Estimate Dispute Threshold Checker', group: 'C', audiences: ['patients'], clinical: false },
-  { id: 'state-rights', name: 'State Patient Rights Reference', group: 'C', audiences: ['patients', 'educators'], clinical: false },
   // Group C: v4 extensions (utilities 105-114)
   { id: 'insurance-card', name: 'Insurance Card Decoder (printable)', group: 'C', audiences: ['patients'], clinical: false },
   { id: 'abn-explainer', name: 'ABN (CMS-R-131) Explainer', group: 'C', audiences: ['patients', 'educators'], clinical: false },
@@ -90,12 +65,7 @@ const UTILITIES = [
   { id: 'medicare-enrollment', name: 'Medicare Enrollment Period Checker', group: 'C', audiences: ['patients'], clinical: false },
   { id: 'aca-sep', name: 'ACA SEP Eligibility Checker', group: 'C', audiences: ['patients'], clinical: false },
   // Group D: Provider and Plan Lookup
-  { id: 'npi', name: 'NPI Provider Lookup', group: 'D', audiences: ['patients', 'billers'], clinical: false },
-  { id: 'oig', name: 'OIG Exclusions Lookup', group: 'D', audiences: ['billers'], clinical: false },
-  { id: 'opt-out', name: 'Medicare Opt-Out List Lookup', group: 'D', audiences: ['patients', 'billers'], clinical: false },
   // Group D: v4 extensions (utilities 115-116)
-  { id: 'dea-validator', name: 'DEA Registration Number Validator', group: 'D', audiences: ['billers', 'clinicians', 'educators'], clinical: false },
-  { id: 'nucc-taxonomy', name: 'NUCC Provider Taxonomy Lookup', group: 'D', audiences: ['billers', 'educators'], clinical: false },
   // Group E: Clinical Math and Conversions
   { id: 'unit-converter', name: 'Unit Converter', group: 'E', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'bmi', name: 'BMI Calculator', group: 'E', audiences: ['patients', 'clinicians', 'educators'], clinical: true },
@@ -217,10 +187,6 @@ const UTILITIES = [
   { id: 'tccc',             name: 'TCCC Tourniquet & Wound-Packing', group: 'I', audiences: ['clinicians', 'educators', 'field'], clinical: true },
   { id: 'co-cn-antidote',   name: 'CO / Cyanide / Smoke-Inhalation Antidotes', group: 'I', audiences: ['clinicians', 'educators', 'field'], clinical: true },
   // Group J (NEW): Public Health & Travel (utilities 172-180)
-  { id: 'acip-adult',   name: 'ACIP Routine Adult Immunization Schedule', group: 'J', audiences: ['clinicians', 'patients', 'educators'], clinical: true },
-  { id: 'acip-child',   name: 'ACIP Routine Child Immunization Schedule', group: 'J', audiences: ['clinicians', 'patients', 'educators'], clinical: true },
-  { id: 'acip-catchup', name: 'ACIP Catch-Up Immunization Schedule', group: 'J', audiences: ['clinicians', 'educators'], clinical: true },
-  { id: 'yellow-book',  name: 'CDC Yellow Book Country Lookup', group: 'J', audiences: ['clinicians', 'patients', 'educators'], clinical: true },
   { id: 'tetanus',      name: 'Tetanus Prophylaxis Decision Tree', group: 'J', audiences: ['clinicians', 'educators', 'field'], clinical: true },
   { id: 'rabies-pep',   name: 'Rabies PEP Decision Tree', group: 'J', audiences: ['clinicians', 'educators', 'field'], clinical: true },
   { id: 'bbp-exposure', name: 'Bloodborne Pathogen Exposure Decision Tree', group: 'J', audiences: ['clinicians', 'educators'], clinical: true },
@@ -236,18 +202,12 @@ const UTILITIES = [
   { id: 'ub04',          name: 'UB-04 Form-Locator Decoder', group: 'L', audiences: ['patients', 'billers', 'educators'], clinical: false },
   { id: 'eob-glossary',  name: 'EOB Jargon Glossary', group: 'L', audiences: ['patients', 'billers', 'educators'], clinical: false },
   // Group M (NEW): Eligibility & Benefits (utilities 188-191)
-  { id: 'medicaid-state', name: 'Medicaid by State Quick-Card', group: 'M', audiences: ['patients', 'educators'], clinical: false },
-  { id: 'va-eligibility', name: 'VA Eligibility 1-2-3', group: 'M', audiences: ['patients', 'educators'], clinical: false },
-  { id: 'tricare-picker', name: 'TRICARE Plan Picker', group: 'M', audiences: ['patients', 'educators'], clinical: false },
-  { id: 'ihs-eligibility',name: 'IHS Eligibility Quick-Reference', group: 'M', audiences: ['patients', 'educators'], clinical: false },
   // Group N (NEW): Literacy Helpers (utilities 192-194)
   { id: 'unit-converter-v4', name: 'Universal Unit Converter (lab + vitals + basics)', group: 'N', audiences: ['patients', 'clinicians', 'educators'], clinical: false },
   { id: 'time-to-dose',      name: 'Time-to-Dose Helper', group: 'N', audiences: ['patients'], clinical: false },
   { id: 'peds-weight-conv',  name: 'Pediatric Weight Converter (lb/oz <-> kg)', group: 'N', audiences: ['patients', 'clinicians', 'educators'], clinical: false },
   // Group O (NEW): Patient Safety (utilities 195-197)
   { id: 'high-alert-card', name: 'High-Alert Medication Wallet Card (ISMP)', group: 'O', audiences: ['patients', 'clinicians', 'educators'], clinical: false },
-  { id: 'drug-recalls',    name: 'Drug Recall Lookup (FDA weekly)', group: 'O', audiences: ['patients', 'clinicians', 'educators'], clinical: false },
-  { id: 'vaccine-recalls', name: 'Vaccine Lot Recall Lookup', group: 'O', audiences: ['patients', 'clinicians', 'educators'], clinical: false },
 
   // spec-v5 §4: deterministic additions for the floor (T1-T17). No live data.
   { id: 'sodium-correction',  name: 'Sodium Correction Rate Planner (Adrogue-Madias)', group: 'E', audiences: ['clinicians', 'educators'], clinical: true },
@@ -375,21 +335,18 @@ if (typeof document !== 'undefined') {
 
 // Group letter → breadcrumb label.
 const GROUP_LABELS = {
-  A: 'A · Code Lookup',
-  B: 'B · Pricing & Cost Reference',
-  C: 'C · Patient Bill & Insurance',
-  D: 'D · Provider & Plan Lookup',
-  E: 'E · Clinical Math & Conversions',
-  F: 'F · Medication & Infusion',
-  G: 'G · Clinical Scoring & Reference',
-  H: 'H · Preparation & Workflow',
-  I: 'I · Field Medicine',
-  J: 'J · Public Health & Travel',
-  K: 'K · Lab Reference',
-  L: 'L · Forms & Numbers Literacy',
-  M: 'M · Eligibility & Benefits',
-  N: 'N · Literacy Helpers',
-  O: 'O · Patient Safety',
+  A: 'Code Reference',
+  C: 'Patient Bill & Insurance Literacy',
+  E: 'Clinical Math & Conversions',
+  F: 'Medication & Infusion',
+  G: 'Clinical Scoring & Reference',
+  H: 'Workflow & Templates',
+  I: 'Field Medicine',
+  J: 'Public Health Decision Trees',
+  K: 'Lab Reference',
+  L: 'Forms & Numbers Literacy',
+  N: 'Literacy Helpers',
+  O: 'Patient Safety',
 };
 
 function wireFilters() {

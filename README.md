@@ -47,67 +47,65 @@ production security headers. Any static file server will also work.
 
 ## How it works and how to use it
 
-The site is organized into fifteen categories containing 212 utilities. **Code
-lookups** cover ICD-10-CM, HCPCS, NDC, CPT structural data, ICD-10-PCS,
-RxNorm, MS-DRG, APC, NUBC TOB / revenue / condition / occurrence / value
-codes, HCPCS modifiers, NCCI PTP, MUE, POS, and the related billing code
-sets. **Pricing** covers the Medicare Physician Fee Schedule, NADAC, ASP,
-CLFS, ASC, DMEPOS, wage index, GPCI, hospital price transparency, the
-out-of-pocket cost estimator, FPL, ACA marketplace thresholds, HSA / FSA /
-HDHP limits, IRMAA, Medicare deductibles, and IRS medical mileage.
-**Patient tools** include a bill decoder, an EOB decoder, an MSN decoder,
-an insurance card decoder, a No Surprises Act / IDR eligibility checker,
-ABN explainer, appeal-letter and HIPAA right-of-access generators, the
-birthday rule, COBRA timeline, Medicare enrollment period checker, and ACA
-SEP eligibility. **Provider lookup** covers the NPI registry, OIG
-exclusions, Medicare opt-out lists, the DEA registration validator, and
-the NUCC provider taxonomy. **Clinical math** covers BMI, BSA suite, MAP
-/ pulse pressure / shock index, anion gap and delta-delta, corrected Ca /
-Na, osmolal gap, A-a gradient and P/F suite, Winter's formula, eGFR suite
-(CKD-EPI 2021 / MDRD / Cockcroft-Gault), FENa / FEUrea, maintenance fluids
-4-2-1, QTc suite, pregnancy dating, pack-years, and unit conversions.
-**Medication and infusion** covers drip rate, weight-based dose,
-concentration-to-rate, pediatric dose bounds, insulin drip, anticoagulant
-reversal, high-alert reference, opioid MME, steroid / benzodiazepine
-equivalence, antibiotic renal dose adjustment, vasopressor dose↔rate, TPN
-macronutrient, and IV-to-PO conversion. **Scoring** covers GCS, APGAR,
+The site is organized into twelve categories containing 174 utilities, all
+deterministic and built to run on a single static page with no live data
+or refresh pipeline (see [docs/spec-v5.md](docs/spec-v5.md) for the
+maintenance contract). **Code Reference** covers ICD-10-CM, HCPCS Level
+II, CPT (structural Medicare data only), NDC, ICD-10-PCS, RxNorm, MS-DRG,
+APC, NUBC TOB / revenue / condition / occurrence / value codes, HCPCS
+modifiers, place-of-service codes, CARC, RARC, plus the time-based E/M
+code selector and NDC 10/11 digit converter. **Patient Bill & Insurance
+Literacy** is the bill decoder, EOB decoder, MSN decoder, insurance card
+decoder (text + printable), No Surprises Act / IDR eligibility tree, ABN
+explainer, appeal-letter and HIPAA right-of-access / authorization
+generators, ROI request generator, the birthday rule, COBRA timeline,
+Medicare enrollment period checker, ACA SEP eligibility, plus the
+CMS-1500 and UB-04 form-locator decoders and an EOB jargon glossary.
+**Clinical Math & Conversions** covers BMI, BSA suite, MAP / pulse
+pressure / shock index, anion gap with delta-delta, corrected Ca / Na,
+osmolal gap, A-a gradient and P/F suite, Winter's formula, eGFR suite
+(CKD-EPI 2021 / MDRD / Cockcroft-Gault), FENa / FEUrea, maintenance
+fluids 4-2-1, QTc suite, pregnancy dating, pack-years, the universal
+unit converter, plus the v5 sodium-correction planner (Adrogue-Madias),
+free water deficit, predicted body weight + ARDSnet tidal volume, and
+RSBI. **Medication & Infusion** covers drip rate, weight-based dose,
+concentration-to-rate, pediatric dose bounds, insulin drip,
+anticoagulant reversal, high-alert reference, opioid MME, steroid /
+benzodiazepine equivalence, antibiotic renal-dose adjustment,
+vasopressor dose to rate, TPN macronutrient, IV-to-PO, plus the v5 iron
+deficit (Ganzoni). **Clinical Scoring & Reference** covers GCS, APGAR,
 NIHSS, Wells PE / DVT, CHA2DS2-VASc, HAS-BLED, ASA, Mallampati, Beers,
 TIMI, GRACE, HEART, PERC, Geneva, CURB-65, PSI, qSOFA / SOFA, MELD-3.0 /
-Child-Pugh, Ranson / BISAP, Centor / McIsaac, Caprini, Bishop, Alvarado /
-PAS, mRS reference, PHQ-9, GAD-7, AUDIT-C, CAGE, EPDS, Mini-Cog, CIWA-Ar,
-COWS, ASCVD PCE, and PREVENT 2023. **Workflow** adds the existing
-appointment prep and prior-auth generators plus HIPAA authorization, ROI,
-discharge instructions, specialty-visit questions, and a medication
-wallet card. **Field Medicine** adds NEXUS / Canadian C-Spine,
-DOT ERG hazmat lookup, NIOSH Pocket Guide, AHA CPR numeric reference,
-TCCC tourniquet / wound packing, and CO / cyanide antidote dosing
-alongside pediatric weight-to-dose, cardiac arrest references,
-defibrillation energy, stroke scales, CDC Field Triage, START / JumpSTART,
-burn surface area and fluid resuscitation, pediatric ETT sizing,
-hypothermia / heat-illness staging, toxidromes, naloxone dosing, and the
-EMS documentation helper. **Public Health & Travel** covers
-ACIP routine adult / child / catch-up schedules, the CDC Yellow Book by
-country, and decision trees for tetanus prophylaxis, rabies PEP,
-bloodborne pathogen exposure, TB testing interpretation, and STI screening
-intervals. **Lab Reference** bundles adult and pediatric
-reference ranges, therapeutic drug levels, and toxicology levels. **Forms
-& Numbers Literacy** decodes CMS-1500 and UB-04 field-by-field plus an
-EOB jargon glossary. **Eligibility & Benefits** covers Medicaid by state,
-VA priority groups, a TRICARE plan picker, and IHS eligibility.
-**Literacy Helpers** offers a universal unit converter (lab + vitals +
-basics), a time-to-dose helper, and a pediatric weight converter.
-**Patient Safety** ships the ISMP-attributed high-alert wallet card, the
-FDA drug recalls weekly snapshot, and a vaccine lot recall lookup.
+Child-Pugh, Ranson / BISAP, Centor / McIsaac, Caprini, Bishop, Alvarado
+/ PAS, mRS, PHQ-9, GAD-7, AUDIT-C, CAGE, EPDS, Mini-Cog, CIWA-Ar, COWS,
+ASCVD PCE, PREVENT 2023, plus the v5 Light's criteria, Mentzer index,
+SAAG, R-factor liver injury, KDIGO AKI staging, modified Sgarbossa,
+revised cardiac risk index, and PEWS. **Workflow & Templates** adds the
+appointment prep and prior-auth generators, HIPAA authorization, ROI,
+discharge instructions, specialty-visit questions, medication wallet
+card, and the v5 SBAR handoff template generator. **Field Medicine**
+adds NEXUS / Canadian C-Spine, DOT ERG hazmat lookup, NIOSH Pocket
+Guide, AHA CPR numeric reference, TCCC tourniquet / wound packing, CO /
+cyanide / smoke-inhalation antidote dosing, plus pediatric weight-to-
+dose, cardiac arrest references, defibrillation energy, stroke scales,
+CDC Field Triage, START / JumpSTART, burn surface area and fluid
+resuscitation, pediatric ETT sizing, hypothermia / heat-illness staging,
+toxidromes, naloxone dosing, the EMS documentation helper, and the v5
+AVPU / GCS quick reference. **Public Health Decision Trees** covers
+tetanus prophylaxis, rabies PEP, bloodborne pathogen exposure, TB
+testing interpretation, and STI screening intervals. **Lab Reference**
+bundles adult and pediatric reference ranges, therapeutic drug levels,
+and toxicology levels. **Forms & Numbers Literacy**, **Literacy Helpers**,
+and **Patient Safety** add the smaller-volume reference tables (lab
+glossary, universal converter, time-to-dose, pediatric weight
+converter, ISMP high-alert wallet card).
 
-The **spec-v5 additions** (see [docs/spec-v5.md](docs/spec-v5.md)) add
-seventeen deterministic frontline tools across the existing categories:
-sodium-correction planner (Adrogue-Madias), free water deficit, iron
-deficit (Ganzoni), predicted body weight + ARDSnet tidal volume, RSBI,
-Light's criteria, Mentzer index, SAAG, R-factor for liver injury, KDIGO
-AKI staging, Modified Sgarbossa criteria, Revised Cardiac Risk Index,
-PEWS, time-based E/M code selector (2021), NDC 10/11 digit converter,
-AVPU/GCS quick reference, and an SBAR handoff template generator. None
-require a refresh pipeline.
+This catalog is the spec-v5 pragmatic shape: the previous live-data
+pricing, registry, recall, and annually-shifting public-health tiles
+were removed in spec-v5 §3.1 because their correctness depends on a
+refresh pipeline that one person cannot reliably maintain. The remaining
+174 tiles either compute from user input or read a small static
+reference table whose annual drift is tolerable.
 
 The user flow is simple: pick a tile from the home grid, enter input, read
 output. Every utility shows the data sources or formula citations at the

@@ -4,6 +4,13 @@
 > narrowing scope to deterministic, no-ETL tools. spec-v4 catalog text
 > remains historically accurate; v5 is the operational source of truth
 > for what ships and what gets removed.
+>
+> **Implementation status (waves 1-3 landed):** Wave 3 (17 new tools)
+> shipped first in commit `8eb54ac`. Waves 1 (catalog cut, 38 tiles
+> removed) and 2 (plain category names) landed together in the
+> follow-up. Tile count moved 195 → 212 → 174. Test count 563 → 613
+> → 563. Manifest count 78 → 53. The home grid now shows twelve plainly
+> named categories instead of fifteen lettered ones.
 
 ## 1. Why this spec exists
 

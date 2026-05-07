@@ -216,58 +216,6 @@ export const renderers = {
       run();
     });
   },
-
-  gfe(root) {
-    root.appendChild(field('Good Faith Estimate total ($)', 'gfe-est', 'number', '1200'));
-    root.appendChild(field('Actual bill total ($)', 'gfe-bill', 'number', '1900'));
-    const statusRow = el('p');
-    statusRow.appendChild(el('label', { for: 'gfe-status', text: 'Patient status' }));
-    statusRow.appendChild(el('br'));
-    const sel = el('select', { id: 'gfe-status' }, []);
-    for (const v of ['uninsured', 'self-pay', 'insured']) sel.appendChild(el('option', { value: v, text: v }));
-    statusRow.appendChild(sel);
-    root.appendChild(statusRow);
-    const out = el('div', { id: 'q-results', 'aria-live': 'polite' });
-    root.appendChild(out);
-    const run = () => {
-      const r = gfeDisputeCheck({
-        gfeTotal: Number(document.getElementById('gfe-est').value),
-        actualBillTotal: Number(document.getElementById('gfe-bill').value),
-        status: sel.value,
-      });
-      clear(out);
-      out.appendChild(el('h2', { text: r.eligible ? 'Likely eligible for the federal Patient-Provider Dispute' : 'Not eligible by the federal threshold' }));
-      out.appendChild(el('p', { text: `Bill exceeds GFE by $${r.overage.toFixed(2)}. Federal threshold is $${r.threshold}.` }));
-      out.appendChild(el('p', { text: r.note }));
-      out.appendChild(el('p', { class: 'muted', text: 'Reference only. The federal dispute resolution process applies to uninsured / self-pay patients within 120 days of the bill.' }));
-    };
-    ['gfe-est', 'gfe-bill'].forEach((id) => document.getElementById(id).addEventListener('input', run));
-    sel.addEventListener('change', run);
-  },
-
-  'state-rights'(root) {
-    const out = el('div', { id: 'q-results', 'aria-live': 'polite' });
-    loadFile('state-rights', 'states.json').then((data) => {
-      const sel = el('select', { id: 'sr-sel' });
-      for (const s of data.states) sel.appendChild(el('option', { value: s.code, text: s.name }));
-      root.appendChild(el('p', {}, [el('label', { for: 'sr-sel', text: 'State' }), el('br'), sel]));
-      root.appendChild(out);
-      const run = () => {
-        const s = data.states.find((x) => x.code === sel.value);
-        clear(out);
-        out.appendChild(el('h2', { text: s.name }));
-        out.appendChild(el('h3', { text: 'Medical debt collection' }));
-        out.appendChild(el('p', { text: s.medicalDebtCollection }));
-        out.appendChild(el('h3', { text: 'Balance billing' }));
-        out.appendChild(el('p', { text: s.balanceBilling }));
-        out.appendChild(el('p', { class: 'muted', text: `Citations: ${(s.citations || []).join(', ') || 'see linked sources'}` }));
-        out.appendChild(el('p', { class: 'muted', text: 'Reference only. Not legal advice.' }));
-      };
-      sel.addEventListener('change', run);
-      run();
-    });
-  },
-
   // --- spec-v4 §5: Group C extensions (utilities 105-114) ---------------
 
   'insurance-card'(root) {

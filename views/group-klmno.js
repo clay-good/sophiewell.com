@@ -146,90 +146,6 @@ export const renderers = {
   },
 
   // --- Group M: Eligibility & Benefits (188-191) -------------------------
-
-  'medicaid-state'(root) {
-    const region = el('div', { id: 'q-results', role: 'region' });
-    root.appendChild(region);
-    loadFile('medicaid-state', 'states.json').then((rows) => {
-      renderTable(region, {
-        columns: [
-          { key: 'state', label: 'State' },
-          { key: 'expansion', label: 'Expansion?' },
-          { key: 'adultFplPct', label: 'Adult FPL %' },
-          { key: 'pregnantFplPct', label: 'Pregnant FPL %' },
-          { key: 'chipFplPct', label: 'CHIP FPL %' },
-          { key: 'applicationUrl', label: 'Apply' },
-        ],
-        rows,
-      });
-    });
-  },
-
-  'va-eligibility'(root) {
-    const region = el('div', { id: 'q-results', role: 'region' });
-    root.appendChild(region);
-    loadFile('va-eligibility', 'va.json').then((rows) => {
-      renderTable(region, {
-        columns: [
-          { key: 'priorityGroup', label: 'Priority' },
-          { key: 'summary', label: 'Summary' },
-          { key: 'copay', label: 'Copay' },
-        ],
-        rows,
-      });
-    });
-  },
-
-  'tricare-picker'(root) {
-    const region = el('div', { id: 'q-results', role: 'region' });
-    root.appendChild(region);
-    loadFile('tricare-plans', 'tricare.json').then((plans) => {
-      // Simple decision tree: duty status -> plan list filtered by qualifier match.
-      const tree = {
-        question: 'Duty status / population?',
-        options: [
-          { label: 'Active duty (or family in a Prime Service Area)',
-            result: 'TRICARE Prime is mandatory for active duty; family members may select Prime in Prime Service Areas, otherwise TRICARE Select.',
-            rationale: 'Active duty: Prime mandatory. Prime requires PCM and referrals.' },
-          { label: 'Reserve / National Guard, not on active orders',
-            result: 'TRICARE Reserve Select.', rationale: 'Premium-based plan for Selected Reserve not on active duty.' },
-          { label: 'Adult dependent age 21-26',
-            result: 'TRICARE Young Adult.', rationale: 'Premium-based; for adult dependents not eligible elsewhere.' },
-          { label: 'Medicare-eligible (typically age 65+)',
-            result: 'TRICARE For Life - wraparound to Medicare.', rationale: 'TFL is secondary to Medicare; no enrollment required if you have Medicare A and B.' },
-          { label: 'Other beneficiary (most non-active-duty)',
-            result: 'TRICARE Select.', rationale: 'No referral requirement; provider-of-choice within network.' },
-        ],
-      };
-      renderDecisionTree(region, tree, { stateKey: 'tri' });
-      // Always show the bundled plans table below.
-      const tbl = el('div');
-      region.appendChild(el('h3', { text: 'All TRICARE plans (reference)' }));
-      region.appendChild(tbl);
-      renderTable(tbl, {
-        columns: [
-          { key: 'plan', label: 'Plan' },
-          { key: 'whoQualifies', label: 'Who qualifies' },
-          { key: 'referralRequired', label: 'Referral required' },
-          { key: 'note', label: 'Note' },
-        ],
-        rows: plans,
-      });
-    });
-  },
-
-  'ihs-eligibility'(root) {
-    const o = out(); root.appendChild(o);
-    loadFile('ihs-eligibility', 'ihs.json').then((d) => {
-      o.appendChild(el('p', { class: 'notice', text:
-        'Reference only. Tribal-specific rules at tribally operated facilities vary; this card describes generic IHS direct-care eligibility.' }));
-      o.appendChild(el('h3', { text: 'General rules' }));
-      o.appendChild(el('ul', {}, d.generalRules.map((r) => el('li', { text: r }))));
-      o.appendChild(el('h3', { text: 'Accepted documentation' }));
-      o.appendChild(el('ul', {}, d.acceptedDocumentation.map((r) => el('li', { text: r }))));
-    });
-  },
-
   // --- Group N: Literacy Helpers (192-194) -------------------------------
 
   'unit-converter-v4'(root) {
@@ -369,46 +285,6 @@ export const renderers = {
         ],
       });
     });
-  },
-
-  'drug-recalls'(root) {
-    const region = el('div', { id: 'q-results', role: 'region' });
-    root.appendChild(region);
-    root.appendChild(el('p', { class: 'notice', text:
-      'Bundled snapshot is up to one week behind upstream. The canonical authority is the FDA Recalls page.' }));
-    loadFile('drug-recalls', 'recalls.json').then((rows) => {
-      renderTable(region, {
-        columns: [
-          { key: 'product', label: 'Product' },
-          { key: 'ndc', label: 'NDC' },
-          { key: 'recallClass', label: 'Class' },
-          { key: 'reason', label: 'Reason' },
-          { key: 'recallDate', label: 'Recall date' },
-          { key: 'firm', label: 'Firm' },
-        ],
-        rows,
-      });
-    });
-  },
-
-  'vaccine-recalls'(root) {
-    const region = el('div', { id: 'q-results', role: 'region' });
-    root.appendChild(region);
-    root.appendChild(el('p', { class: 'notice', text:
-      'Bundled snapshot. The canonical authority is the FDA / CDC vaccine safety pages.' }));
-    loadFile('vaccine-lot-recalls', 'recalls.json').then((rows) => {
-      renderTable(region, {
-        columns: [
-          { key: 'vaccine', label: 'Vaccine' },
-          { key: 'lot', label: 'Lot' },
-          { key: 'reason', label: 'Reason' },
-          { key: 'recallDate', label: 'Recall date' },
-          { key: 'firm', label: 'Firm' },
-        ],
-        rows,
-      });
-    });
-  },
-};
+  },};
 
 const LAB_KEYS = ['glucose', 'cholesterol', 'creatinine', 'bun', 'calcium', 'uricAcid'];

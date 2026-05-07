@@ -51,13 +51,6 @@ test('group A: CPT tool shows AMA notice and never displays AMA descriptors', as
   await expect(page.getByRole('link', { name: /AMA's free public CPT lookup/ })).toBeVisible();
 });
 
-test('group B: MPFS computes facility and non-facility allowables', async ({ page }) => {
-  await page.goto('/#mpfs');
-  await page.fill('#mpfs-code', '99213');
-  await expect(page.getByText('Facility allowable:')).toBeVisible();
-  await expect(page.getByText('Non-facility allowable:')).toBeVisible();
-});
-
 test('group C: Bill Decoder extracts codes from pasted text', async ({ page }) => {
   await page.goto('/#decoder');
   const sample = 'Dx I10 E11.65\n99213 Office visit $250.00\nNPI 1234567893';
@@ -227,13 +220,6 @@ test('spec-v4 group L: EOB glossary table includes a known term', async ({ page 
   await expect(page.locator('.content h1')).toHaveText('EOB Jargon Glossary');
   await expect(page.getByText('Allowed amount')).toBeVisible();
   await expect(page.getByText('Coordination of benefits', { exact: false })).toBeVisible();
-});
-
-test('spec-v4 group M: Medicaid by State quick-card lists known states', async ({ page }) => {
-  await page.goto('/#medicaid-state');
-  await expect(page.locator('.content h1')).toHaveText('Medicaid by State Quick-Card');
-  await expect(page.getByRole('cell', { name: 'CA', exact: true })).toBeVisible();
-  await expect(page.getByRole('cell', { name: 'TX', exact: true })).toBeVisible();
 });
 
 test('spec-v4 group N: pediatric weight converter computes lb/oz to kg', async ({ page }) => {
