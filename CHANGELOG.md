@@ -6,6 +6,41 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v5 §5.3 step 7 follow-up — citations)
+
+- `docs/clinical-citations.md` gains a "spec-v5 §4 deterministic additions
+  (T1-T17)" section, with formula, original-source citation, and worked-
+  example numerics for each of the seventeen v5 tools, mirroring the
+  numerics asserted by `test/unit/clinical-v5.test.js`.
+
+### Changed (spec-v5 polish — clinical-v5 / coding-v5 correctness pass)
+
+- `sodiumCorrection` (T1) takes an `acuity` input ('chronic' default vs
+  'acute') driving the safety ceiling (8 vs 10 mEq/L/24h), and now reports
+  `totalSodiumDeficitMeq` and a `directionMismatch` flag when the chosen
+  infusate would push Na the wrong way (e.g. D5W in hyponatremia).
+  Volume / rate are returned as `null` in that case rather than a
+  physiologically-meaningless negative number.
+- `freeWaterDeficit` (T2) rejects `currentNa <= targetNa` (the formula is
+  only defined for hypernatremia) and reports `impliedNaDropPer24h` plus
+  a safety note when the implied drop exceeds the 10 mEq/L/24h ceiling.
+- `emTimeSelector` (T14) corrected to the AMA 2021 office/outpatient
+  bands: new patient 99202 (15-29) / 99203 (30-44) / 99204 (45-59) /
+  99205 (60-74); established 99212 (10-19) / 99213 (20-29) / 99214 (30-
+  39) / 99215 (40-54). 99211 is excluded (nurse-only, no time threshold).
+  Returns `prolongedUnits` and `prolongedCode: '99417'` when total time
+  reaches the +15-min trigger past the top base band.
+- `ndcConvert` (T15) enumerates `fda10Candidates` for 5-4-2 inputs whose
+  original 10-digit shape is ambiguous (multiple segments with leading
+  zero); returns a single `fda10` only when one candidate is unambiguous.
+- `rcri` (T12) risk percentages aligned to Lee 1999 derivation cohort
+  (0.4 / 0.9 / 6.6 / >=11) with an explicit `riskBand` (Class I-IV).
+- Renderers in `views/group-v5.js` updated to surface the new fields
+  (acuity selector, total Na deficit/excess line, direction-mismatch
+  warning, implied Na drop, prolonged-service units, ambiguous fda10
+  candidate list). `lib/meta.js` worked-example expectations refreshed
+  for `em-time` and `rcri`. Test count 563 -> 570.
+
 ### Removed (spec-v5 §3.1 catalog cut, waves 1-2)
 
 - **38 live-data tiles removed** along with their renderers, META

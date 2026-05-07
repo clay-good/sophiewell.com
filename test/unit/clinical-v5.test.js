@@ -33,6 +33,33 @@ test('sodiumCorrection: hyponatremia overcap flag at 12 mEq/L/24h', () => {
   assert.equal(r.overCap, true);
   assert.equal(r.safetyCap, 8);
 });
+test('sodiumCorrection: acute acuity raises ceiling to 10 mEq/L/24h', () => {
+  const r = V5.sodiumCorrection({
+    weightKg: 70, sex: 'M', currentNa: 110,
+    infusate: '3pct-saline', targetChangePer24h: 9, acuity: 'acute',
+  });
+  assert.equal(r.acuity, 'acute');
+  assert.equal(r.safetyCap, 10);
+  assert.equal(r.overCap, false);
+});
+test('sodiumCorrection: flags directionMismatch when D5W chosen for hyponatremia', () => {
+  const r = V5.sodiumCorrection({
+    weightKg: 70, sex: 'M', currentNa: 110,
+    infusate: 'd5w', targetChangePer24h: 8,
+  });
+  assert.equal(r.directionMismatch, true);
+  assert.equal(r.volumeLiters, null);
+  assert.match(r.directionNote, /will not move Na/);
+});
+test('sodiumCorrection: hypernatremia + D5W lowers Na (no mismatch)', () => {
+  const r = V5.sodiumCorrection({
+    weightKg: 70, sex: 'M', currentNa: 160,
+    infusate: 'd5w', targetChangePer24h: 8,
+  });
+  assert.equal(r.direction, 'hypernatremia');
+  assert.equal(r.directionMismatch, false);
+  assert.ok(r.volumeLiters > 0);
+});
 test('sodiumCorrection: rejects unknown infusate', () => {
   assert.throws(() => V5.sodiumCorrection({
     weightKg: 70, sex: 'M', currentNa: 110, infusate: 'unknown', targetChangePer24h: 8,
@@ -46,9 +73,15 @@ test('freeWaterDeficit: 70 kg male, Na 160 -> ~3.0 L deficit', () => {
   assert.ok(close(r.deficitLiters, 4.34, 0.1));
   assert.equal(r.tbwLiters, 42);
 });
-test('freeWaterDeficit: zero deficit when at target', () => {
-  const r = V5.freeWaterDeficit({ weightKg: 70, sex: 'M', currentNa: 145 });
-  assert.equal(r.deficitLiters, 0);
+test('freeWaterDeficit: rejects currentNa <= targetNa (non-hypernatremic)', () => {
+  assert.throws(() => V5.freeWaterDeficit({ weightKg: 70, sex: 'M', currentNa: 145 }));
+  assert.throws(() => V5.freeWaterDeficit({ weightKg: 70, sex: 'M', currentNa: 140 }));
+});
+test('freeWaterDeficit: flags implied Na drop > 10 mEq/L/24h', () => {
+  // Na 165 -> 145 over 24 h implies 20 mEq/L/24h drop.
+  const r = V5.freeWaterDeficit({ weightKg: 70, sex: 'M', currentNa: 165, replaceOverHours: 24 });
+  assert.ok(r.impliedNaDropPer24h > 10);
+  assert.match(r.safetyNote, /exceeds/);
 });
 
 // --- T3: Iron deficit (Ganzoni) ------------------------------------------
@@ -182,18 +215,19 @@ test('modifiedSgarbossa: all negative -> negative', () => {
 test('rcri: 0 factors -> 0.4%', () => {
   assert.equal(V5.rcri({}).majorCardiacEventRiskPct, 0.4);
 });
-test('rcri: 2 factors -> 2.4%', () => {
+test('rcri: 2 factors -> 6.6% (Lee 1999 Class III)', () => {
   const r = V5.rcri({ ischemicHeartDisease: true, congestiveHeartFailure: true });
   assert.equal(r.count, 2);
-  assert.equal(r.majorCardiacEventRiskPct, 2.4);
+  assert.equal(r.majorCardiacEventRiskPct, 6.6);
 });
-test('rcri: 3+ factors -> 5.4%', () => {
+test('rcri: 3+ factors -> >=11% (Lee 1999 Class IV)', () => {
   const r = V5.rcri({
     highRiskSurgery: true, ischemicHeartDisease: true,
     congestiveHeartFailure: true, insulinDependentDm: true,
   });
   assert.equal(r.count, 4);
-  assert.equal(r.majorCardiacEventRiskPct, 5.4);
+  assert.equal(r.majorCardiacEventRiskPct, 11.0);
+  assert.match(r.riskBand, /Class IV/);
 });
 
 // --- T13: PEWS -----------------------------------------------------------
@@ -217,20 +251,34 @@ test('pews: rejects non-integer', () => {
 });
 
 // --- T14: E/M time selector ----------------------------------------------
-test('emTimeSelector: new 30 min -> 99202', () => {
-  assert.equal(Code.emTimeSelector({ totalMinutes: 30, encounterType: 'new' }).code, '99202');
+test('emTimeSelector: AMA 2021 new-patient bands (15/30/45/60)', () => {
+  assert.equal(Code.emTimeSelector({ totalMinutes: 15, encounterType: 'new' }).code, '99202');
+  assert.equal(Code.emTimeSelector({ totalMinutes: 29, encounterType: 'new' }).code, '99202');
+  assert.equal(Code.emTimeSelector({ totalMinutes: 30, encounterType: 'new' }).code, '99203');
+  assert.equal(Code.emTimeSelector({ totalMinutes: 45, encounterType: 'new' }).code, '99204');
+  assert.equal(Code.emTimeSelector({ totalMinutes: 60, encounterType: 'new' }).code, '99205');
 });
-test('emTimeSelector: new 75 min -> 99205', () => {
-  assert.equal(Code.emTimeSelector({ totalMinutes: 75, encounterType: 'new' }).code, '99205');
+test('emTimeSelector: new <15 min -> null (under floor)', () => {
+  const r = Code.emTimeSelector({ totalMinutes: 10, encounterType: 'new' });
+  assert.equal(r.code, null);
+  assert.equal(r.prolongedUnits, 0);
 });
-test('emTimeSelector: new 25 min -> null (under floor)', () => {
-  assert.equal(Code.emTimeSelector({ totalMinutes: 25, encounterType: 'new' }).code, null);
+test('emTimeSelector: AMA 2021 established-patient bands (10/20/30/40)', () => {
+  assert.equal(Code.emTimeSelector({ totalMinutes: 10, encounterType: 'established' }).code, '99212');
+  assert.equal(Code.emTimeSelector({ totalMinutes: 20, encounterType: 'established' }).code, '99213');
+  assert.equal(Code.emTimeSelector({ totalMinutes: 30, encounterType: 'established' }).code, '99214');
+  assert.equal(Code.emTimeSelector({ totalMinutes: 40, encounterType: 'established' }).code, '99215');
 });
-test('emTimeSelector: established 40 -> 99214', () => {
-  assert.equal(Code.emTimeSelector({ totalMinutes: 40, encounterType: 'established' }).code, '99214');
+test('emTimeSelector: established 55 -> 99215 + 1 prolonged unit (99417)', () => {
+  const r = Code.emTimeSelector({ totalMinutes: 55, encounterType: 'established' });
+  assert.equal(r.code, '99215');
+  assert.equal(r.prolongedUnits, 1);
+  assert.equal(r.prolongedCode, '99417');
 });
-test('emTimeSelector: established 55 -> 99215', () => {
-  assert.equal(Code.emTimeSelector({ totalMinutes: 55, encounterType: 'established' }).code, '99215');
+test('emTimeSelector: new 75 min -> 99205 + 1 prolonged unit', () => {
+  const r = Code.emTimeSelector({ totalMinutes: 75, encounterType: 'new' });
+  assert.equal(r.code, '99205');
+  assert.equal(r.prolongedUnits, 1);
 });
 test('emTimeSelector: rejects invalid type', () => {
   assert.throws(() => Code.emTimeSelector({ totalMinutes: 30, encounterType: 'consult' }));
@@ -256,6 +304,27 @@ test('ndcConvert: 5-4-1 -> billing 11 with leading 0 in package', () => {
 test('ndcConvert: 11-digit bare passes through', () => {
   const r = Code.ndcConvert('12345678901');
   assert.equal(r.billing11, '12345-6789-01');
+});
+test('ndcConvert: 5-4-2 with leading 0 in labeler enumerates candidate(s)', () => {
+  // 01234-5678-90 could have originated from 4-4-2 (1234-5678-90); that
+  // is the only segment with a leading zero, so a unique fda10 is returned.
+  const r = Code.ndcConvert('01234-5678-90');
+  assert.equal(r.source, '5-4-2');
+  assert.equal(r.fda10, '1234-5678-90');
+  assert.equal(r.fda10Candidates.length, 1);
+});
+test('ndcConvert: 5-4-2 with no leading zeros returns no fda10 candidates', () => {
+  const r = Code.ndcConvert('12345-6789-12');
+  assert.equal(r.source, '5-4-2');
+  assert.equal(r.fda10, null);
+  assert.equal(r.fda10Candidates.length, 0);
+});
+test('ndcConvert: 5-4-2 with multiple leading zeros enumerates all candidates', () => {
+  // 01234-0567-89 has leading 0 in labeler AND product -> 2 candidates.
+  const r = Code.ndcConvert('01234-0567-89');
+  assert.equal(r.source, '5-4-2');
+  assert.equal(r.fda10Candidates.length, 2);
+  assert.equal(r.fda10, null); // ambiguous; do not pick one
 });
 test('ndcConvert: rejects bare 10-digit (ambiguous)', () => {
   assert.throws(() => Code.ndcConvert('1234567890'));

@@ -285,3 +285,167 @@ references for the v4-added formulas:
 - **Canadian C-Spine**: Stiell IG, et al. JAMA. 2001;286(15):1841-1848.
 - **Cyanide antidotes**: FDA labeling for Cyanokit (hydroxocobalamin) and Nithiodote (sodium nitrite + sodium thiosulfate).
 - **CO HBO**: UHMS guidance.
+
+## spec-v5 §4 deterministic additions (T1-T17)
+
+Each tool below is pure deterministic math or a small static reference
+(no live data, no ETL, no AI). Every entry pairs the published source
+with a worked-example numeric used by `test/unit/clinical-v5.test.js`.
+Logic lives in `lib/clinical-v5.js` (T1-T13, T16) and `lib/coding-v5.js`
+(T14-T15); T17 is a pure-template helper in `views/group-v5.js`.
+
+### T1. Sodium Correction Rate (Adrogue-Madias)
+Citation: Adrogue HJ, Madias NE. Hyponatremia. NEJM. 2000;342(21):1493-1499;
+Hypernatremia. NEJM. 2000;342(20):1581-1589.
+Formula: TBW = weight_kg × factor (M 0.6 / F 0.5; elderly drop 0.05).
+ΔNa per liter infusate = (infusate_Na − serum_Na) / (TBW + 1).
+Volume to reach target = target_ΔNa / ΔNa_per_L; rate = volume × 1000 / 24 mL/h.
+Safety ceiling: 8 mEq/L/24h chronic, 10 mEq/L/24h acute (osmotic-demyelination
+risk in hyponatremia, cerebral-edema risk in hypernatremia).
+Worked example: 70 kg male, Na 110, 3% saline (513 mEq/L), target +8 mEq/L/24h.
+TBW = 42 L. ΔNa/L = (513 − 110) / 43 = 9.37 mEq/L. Volume = 8 / 9.37 = 0.85 L
+over 24 h ≈ 35.6 mL/h. Within the chronic 8 mEq/L/24h ceiling.
+
+### T2. Free Water Deficit
+Citation: Adrogue-Madias hypernatremia paper (above).
+Formula: deficit_L = TBW × (Na_current / Na_target − 1). Replacement rate
+= deficit × 1000 / replaceOverHours mL/h. Implied Na drop = (Na_current −
+Na_target) × 24 / replaceOverHours; flag if > 10 mEq/L/24h.
+Worked example: 70 kg male, Na 160, target 145, replace over 48 h.
+TBW = 42 L. Deficit = 42 × (160/145 − 1) = 4.34 L. Rate ≈ 90.5 mL/h.
+Implied Na drop = 15 × 24 / 48 = 7.5 mEq/L/24h (within ceiling).
+
+### T3. Iron Deficit (Ganzoni)
+Citation: Ganzoni AM. Eisen-Dextran intravenoes: ein neues therapeutisches
+Prinzip. Schweiz Med Wochenschr. 1970;100(7):301-303.
+Formula: total_mg = weight_kg × (target_Hb − current_Hb) × 2.4 + iron_stores.
+Stores: 500 mg if weight ≥ 35 kg, else 15 × weight_kg.
+Worked example: 70 kg, Hb 9, target 15. 70 × 6 × 2.4 + 500 = 1008 + 500
+= 1508 mg.
+
+### T4. Predicted Body Weight + ARDSnet Tidal Volume
+Citations: Devine BJ. Drug Intell Clin Pharm. 1974;8:650-655. ARDS Network.
+NEJM. 2000;342(18):1301-1308.
+Formula: PBW (M) = 50 + 2.3 × (height_in − 60); PBW (F) = 45.5 + 2.3 ×
+(height_in − 60). Vt target band 4-8 mL/kg PBW; default 6.
+Worked example: 175 cm male. height_in = 68.90. PBW = 50 + 2.3 × 8.90 =
+70.46 kg. Vt at 6 mL/kg = 423 mL; range 282-564 mL.
+
+### T5. Rapid Shallow Breathing Index (RSBI)
+Citation: Yang KL, Tobin MJ. A prospective study of indexes predicting the
+outcome of trials of weaning from mechanical ventilation. NEJM. 1991;324
+(21):1445-1450.
+Formula: RSBI = RR / Vt(L). Threshold < 105 predicts weaning success.
+Worked example: RR 24, Vt 350 mL. RSBI = 24 / 0.35 = 68.6. Likely to
+tolerate weaning.
+
+### T6. Lights Criteria for Pleural Effusion
+Citation: Light RW, Macgregor MI, Luchsinger PC, Ball WC. Pleural effusions:
+the diagnostic separation of transudates and exudates. Ann Intern Med.
+1972;77(4):507-513.
+Formula: exudate if any one of: pleural_protein/serum_protein > 0.5,
+pleural_LDH/serum_LDH > 0.6, pleural_LDH > 2/3 × serum_LDH_ULN.
+Worked example: pleural protein 4.0, serum 6.0; pleural LDH 250, serum 200,
+ULN 222. Protein ratio 0.67 > 0.5 -> exudate.
+
+### T7. Mentzer Index
+Citation: Mentzer WC. Differentiation of iron deficiency from thalassaemia
+trait. Lancet. 1973;1(7808):882.
+Formula: index = MCV (fL) / RBC (×10^12/L). < 13 favors thalassemia, > 13
+favors iron deficiency.
+Worked example: MCV 65, RBC 6.0. Index = 10.83 -> favors beta-thalassemia
+trait.
+
+### T8. Serum-Ascites Albumin Gradient (SAAG)
+Citation: Runyon BA, Montano AA, Akriviadis EA, Antillon MR, Irving MA,
+McHutchison JG. The serum-ascites albumin gradient is superior to the
+exudate-transudate concept in the differential diagnosis of ascites. Ann
+Intern Med. 1992;117(3):215-220 (continuation series Hepatology 1992;16:240-245).
+Formula: SAAG = serum_albumin − ascites_albumin (g/dL). >= 1.1 portal
+hypertension; < 1.1 non-portal etiology.
+Worked example: serum 3.5, ascites 1.5. SAAG = 2.0 g/dL -> portal HTN.
+
+### T9. R-Factor (drug-induced liver injury pattern)
+Citation: Benichou C. Criteria of drug-induced liver disorders. Report of
+an international consensus meeting. J Hepatol. 1990;11(2):272-276.
+Formula: R = (ALT/ALT_ULN) / (ALP/ALP_ULN). > 5 hepatocellular; < 2
+cholestatic; 2-5 mixed.
+Worked example: ALT 500 (ULN 40), ALP 100 (ULN 120). R = 12.5 / 0.833 =
+15.0 -> hepatocellular.
+
+### T10. KDIGO AKI Staging
+Citation: KDIGO Acute Kidney Injury Work Group. KDIGO clinical practice
+guideline for acute kidney injury. Kidney Int Suppl. 2012;2:1-138.
+Logic: stage = max(creatinine_stage, urine_output_stage). Creatinine-based
+staging requires acute context (rise >= 0.3 mg/dL in 48 h or ratio >= 1.5×
+in 7 d). Stage 1: 1.5-1.9× baseline OR rise >= 0.3 in 48 h; UO < 0.5
+mL/kg/h × 6-12 h. Stage 2: 2.0-2.9× baseline; UO < 0.5 × 12+ h. Stage 3:
+>= 3× OR SCr >= 4.0 with acute rise OR RRT initiation; UO < 0.3 × 24 h or
+anuria >= 12 h.
+Worked example: baseline 1.0, current 3.5 -> 3.5× -> Stage 3.
+
+### T11. Modified Sgarbossa (Smith) Criteria
+Citation: Smith SW, Dodd KW, Henry TD, Dvorak DM, Pearce LA. Diagnosis of
+ST-elevation myocardial infarction in the presence of left bundle branch
+block with the ST-elevation to S-wave ratio in a modified Sgarbossa rule.
+Ann Emerg Med. 2012;60(6):766-776.
+Logic: positive if any one of: concordant ST elevation >= 1 mm in any lead;
+concordant ST depression >= 1 mm in V1, V2, or V3; ST/S ratio <= -0.25 in
+any lead with discordant ST elevation >= 1 mm.
+Worked example: any single criterion checked -> positive.
+
+### T12. Revised Cardiac Risk Index (Lee)
+Citation: Lee TH, Marcantonio ER, Mangione CM, et al. Derivation and
+prospective validation of a simple index for prediction of cardiac risk of
+major noncardiac surgery. Circulation. 1999;100(10):1043-1049.
+Factors (each = 1 point): high-risk surgery, ischemic heart disease, CHF,
+cerebrovascular disease, insulin-dependent DM, creatinine > 2.0 mg/dL.
+Major cardiac event risk by count (Lee derivation cohort): 0 -> 0.4%
+(Class I), 1 -> 0.9% (II), 2 -> 6.6% (III), >= 3 -> >= 11% (IV).
+Worked example: 4 factors -> Class IV, >= 11%.
+
+### T13. Pediatric Early Warning Score (PEWS, Monaghan)
+Citation: Monaghan A. Detecting and managing deterioration in children.
+Paediatr Nurs. 2005;17(1):32-35.
+Formula: total = behavior + cardiovascular + respiratory (each 0-3); 0-9.
+Thresholds vary by institution; >= 4 commonly triggers escalation, >= 7
+triggers code-team / PICU consult.
+Worked example: 2 + 2 + 1 = 5 -> escalate.
+
+### T14. Time-Based E/M Code Selector (AMA 2021)
+Citation: AMA CPT Evaluation and Management code structure, 2021 office/
+outpatient revision (effective 2021-01-01). Code descriptors are AMA-
+owned and not bundled.
+Bands: new patient -- 99202 (15-29 min), 99203 (30-44), 99204 (45-59),
+99205 (60-74); established patient -- 99212 (10-19), 99213 (20-29), 99214
+(30-39), 99215 (40-54). 99211 is nurse-only and not time-selectable.
+Prolonged service 99417 = 15-min units past the 75-min (new) / 55-min
+(established) trigger.
+Worked example: new patient, 45 min -> 99204. New patient, 75 min -> 99205
++ 1 × 99417.
+
+### T15. NDC 10 <-> 11 Digit Converter
+Citation: CMS NDC billing guidance (5-4-2 billing format) and FDA Structured
+Product Labeling.
+Logic: parse 4-4-2 / 5-3-2 / 5-4-1 / 5-4-2 (with or without dashes), pad to
+5-4-2 by inserting a leading zero in the segment that is short. The 10-
+digit derivation is unique only when the source format is known (or only
+one segment of an 11-digit input has a leading zero); when ambiguous,
+return every plausible candidate.
+Worked example: 1234-5678-90 (4-4-2) -> billing 11 = 01234-5678-90 / FDA 10
+= 1234-5678-90.
+
+### T16. AVPU <-> GCS Quick Reference
+Citation: McNarry AF, Goldhill DR. Simple bedside assessment of level of
+consciousness: comparison of two simple assessment scales with the Glasgow
+Coma Scale. Anaesthesia. 2004;59(1):34-37.
+Mapping (typical band): A -> 15 (range 14-15), V -> 13 (12-14), P -> 8
+(7-9), U -> 3 (3-6). AVPU does not finely map to GCS; ranges are
+approximations.
+Worked example: P -> typical GCS 8 (range 7-9).
+
+### T17. SBAR Handoff Template
+Citation: Institute for Healthcare Improvement (IHI) SBAR communication
+toolkit. Originally developed by Kaiser Permanente (Doug Bonacum).
+Logic: pure template -- four free-text fields (S/B/A/R) rendered as a
+printable, copyable card. No formula, no thresholds.

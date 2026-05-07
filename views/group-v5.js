@@ -70,6 +70,10 @@ export const renderers = {
       { value: 'd5w',          text: 'D5W (0 mEq/L)' },
     ]));
     root.appendChild(field('Target change in 24 h (mEq/L)', 'tgt', { value: 8 }));
+    root.appendChild(selectField('Acuity', 'acuity', [
+      { value: 'chronic', text: 'Chronic / unknown onset (ceiling 8 mEq/L/24h)' },
+      { value: 'acute',   text: 'Acute (onset < 48 h documented; ceiling 10 mEq/L/24h)' },
+    ]));
     const o = out(); root.appendChild(o);
     const run = () => safe(o, () => {
       const ageRaw = str('age');
@@ -78,17 +82,20 @@ export const renderers = {
         age: ageRaw === '' ? null : Number(ageRaw),
         currentNa: num('na'), infusate: str('infusate'),
         targetChangePer24h: num('tgt'),
+        acuity: str('acuity'),
       });
       o.appendChild(el('ul', {}, [
         el('li', { text: `Total body water: ${r.tbwLiters} L` }),
         el('li', { text: `Direction: ${r.direction}` }),
+        r.totalSodiumDeficitMeq != null ? el('li', { text: `Total Na ${r.totalSodiumDeficitMeq >= 0 ? 'deficit' : 'excess'} vs 140: ${Math.abs(r.totalSodiumDeficitMeq)} mEq` }) : null,
         el('li', { text: `ΔNa per liter infusate: ${r.changePerLiterInfusate} mEq/L` }),
         r.volumeLiters != null ? el('li', { text: `Volume to reach target: ${r.volumeLiters} L over 24 h` }) : null,
         r.rateMlPerHour != null ? el('li', { text: `Infusion rate: ${r.rateMlPerHour} mL/h` }) : null,
+        r.directionNote ? el('li', { class: 'warn', text: r.directionNote }) : null,
         el('li', { text: r.safetyNote }),
       ]));
     });
-    ['w', 'sex', 'age', 'na', 'infusate', 'tgt'].forEach((id) => document.getElementById(id).addEventListener('input', run));
+    ['w', 'sex', 'age', 'na', 'infusate', 'tgt', 'acuity'].forEach((id) => document.getElementById(id).addEventListener('input', run));
   },
 
   // ----- T2: Free water deficit -------------------------------------------
@@ -112,6 +119,8 @@ export const renderers = {
         el('li', { text: `TBW: ${r.tbwLiters} L` }),
         el('li', { text: `Free water deficit: ${r.deficitLiters} L` }),
         el('li', { text: `Replacement rate: ${r.replacementRateMlPerHour} mL/h` }),
+        el('li', { text: `Implied Na drop: ${r.impliedNaDropPer24h} mEq/L/24h` }),
+        el('li', { text: r.safetyNote }),
       ]));
     });
     ['w', 'sex', 'age', 'na', 'tgt', 'hrs'].forEach((id) => document.getElementById(id).addEventListener('input', run));
@@ -348,6 +357,9 @@ export const renderers = {
       const r = Code.emTimeSelector({ totalMinutes: num('t'), encounterType: str('enc') });
       if (r.code) {
         o.appendChild(el('p', { text: `Code: ${r.code} (${r.minutes} min, ${r.encounterType} patient)` }));
+        if (r.prolongedUnits > 0) {
+          o.appendChild(el('p', { text: `+ ${r.prolongedUnits} × 99417 (prolonged service, 15-min units)` }));
+        }
       } else {
         o.appendChild(el('p', { text: r.note || 'No code matches.' }));
       }
@@ -364,11 +376,21 @@ export const renderers = {
       const v = str('n').trim();
       if (!v) return;
       const r = Code.ndcConvert(v);
-      o.appendChild(el('ul', {}, [
+      const items = [
         el('li', { text: `Source format: ${r.source}` }),
         el('li', { text: `Billing 11-digit (5-4-2): ${r.billing11}` }),
-        r.fda10 ? el('li', { text: `FDA 10-digit: ${r.fda10}` }) : null,
-      ]));
+      ];
+      if (r.fda10) {
+        items.push(el('li', { text: `FDA 10-digit: ${r.fda10}` }));
+      } else if (r.fda10Candidates && r.fda10Candidates.length > 1) {
+        items.push(el('li', { text: `FDA 10-digit candidates (ambiguous; verify against the labeler's drug-listing record):` }));
+        const sub = el('ul');
+        for (const c of r.fda10Candidates) sub.appendChild(el('li', { text: `${c.value} (${c.form})` }));
+        items.push(sub);
+      } else if (r.fda10Candidates && r.fda10Candidates.length === 0) {
+        items.push(el('li', { class: 'muted', text: 'No 10-digit form derivable: no segment carries a leading zero.' }));
+      }
+      o.appendChild(el('ul', {}, items));
     });
     document.getElementById('n').addEventListener('input', run);
   },
