@@ -5,8 +5,8 @@
   "agency": "NLM",
   "status": "public-domain",
   "cadence": "monthly",
-  "fetchDate": "2026-05-07",
-  "offlineSeed": true,
+  "fetchDate": "2026-05-10",
+  "offlineSeed": false,
   "recordCount": 6,
   "shards": [
     {

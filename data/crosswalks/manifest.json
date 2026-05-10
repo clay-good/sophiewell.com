@@ -4,8 +4,8 @@
   "agency": "CMS, X12",
   "status": "public-domain",
   "cadence": "as-published",
-  "fetchDate": "2026-05-07",
-  "offlineSeed": true,
+  "fetchDate": "2026-05-10",
+  "offlineSeed": false,
   "recordCount": 38,
   "files": [
     "pos-codes.json",

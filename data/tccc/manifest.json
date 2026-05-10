@@ -5,8 +5,8 @@
   "agency": "CoTCCC (public)",
   "status": "numeric-facts-with-attribution",
   "cadence": "annual",
-  "fetchDate": "2026-05-07",
-  "offlineSeed": true,
+  "fetchDate": "2026-05-10",
+  "offlineSeed": false,
   "recordCount": 2,
   "shards": [
     {
