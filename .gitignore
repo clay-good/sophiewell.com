@@ -1,9 +1,48 @@
-node_modules
-dist
-.DS_Store
-*.tmp
+# Dependencies + build artifacts
+node_modules/
+dist/
+.cache/
+.parcel-cache/
+.wrangler/
+
+# Test + coverage outputs (Playwright, node:test, c8/nyc)
+test-results/
+playwright-report/
+playwright/.cache/
+coverage/
+.nyc_output/
+
+# Secrets — never commit credentials, env files, or private keys
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.crt
+.npmrc
+.netrc
+
+# Logs + scratch
 *.log
-.cache
-.wrangler
-test-results
-playwright-report
+*.tmp
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# OS metadata
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Editor / IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.history/
+
+# Runtime/local-only
+.local/
+.cloudflare/
+
