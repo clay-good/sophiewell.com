@@ -227,6 +227,11 @@ const UTILITIES = [
   { id: 'ndc-convert',        name: 'NDC 10 ↔ 11 Digit Converter',                      group: 'A', audiences: ['billers', 'clinicians', 'educators'], clinical: false },
   { id: 'avpu-gcs',           name: 'AVPU ↔ GCS Quick Reference',                       group: 'I', audiences: ['clinicians', 'educators', 'field'], clinical: true },
   { id: 'sbar-template',      name: 'SBAR Handoff Template Generator',                  group: 'H', audiences: ['clinicians', 'field', 'educators'], clinical: false },
+
+  // spec-v6 §1: deterministic additions, citing 45 CFR (HIPAA) and Figge.
+  { id: 'corrected-anion-gap', name: 'Albumin-Corrected Anion Gap (Figge)',             group: 'E', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'breach-clock',        name: 'HIPAA Breach 60-Day Notification Clock',          group: 'H', audiences: ['billers', 'educators'], clinical: false },
+  { id: 'abcd2',               name: 'ABCD2 Score (TIA stroke risk)',                    group: 'G', audiences: ['clinicians', 'educators', 'field'], clinical: true },
 ];
 
 const UTIL_BY_ID = new Map(UTILITIES.map((u) => [u.id, u]));
@@ -543,8 +548,13 @@ function renderMetaBlock(util) {
         const elInput = document.getElementById(id);
         if (!elInput) continue;
         if (elInput.tagName === 'SELECT') elInput.value = value;
+        else if (elInput.type === 'checkbox') elInput.checked = value === '1' || value === true || value === 'true';
         else elInput.value = value;
-        elInput.dispatchEvent(new Event(elInput.tagName === 'SELECT' ? 'change' : 'input', { bubbles: true }));
+        // Dispatch both 'input' and 'change' so renderers wired to either
+        // event re-run. Several v1 renderers listen only to one or the
+        // other; firing both is benign and keeps example-fill consistent.
+        elInput.dispatchEvent(new Event('input', { bubbles: true }));
+        elInput.dispatchEvent(new Event('change', { bubbles: true }));
       }
       note.textContent = ` Expected: ${meta.example.expected}`;
     });

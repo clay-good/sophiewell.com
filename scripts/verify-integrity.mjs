@@ -41,19 +41,17 @@ async function main() {
     manifests += 1;
     const manifest = JSON.parse(await readFile(candidate, 'utf8'));
     const shards = manifest.shards || [];
+    const layout = manifest.shardLayout === 'shards' ? 'shards' : 'root';
     for (const s of shards) {
-      const shardPath = s.name.includes('/') ? join(d, s.name) : join(d, 'shards', s.name);
-      // Some manifests place shards directly in the dataset folder.
+      const shardPath = s.name.includes('/')
+        ? join(d, s.name)
+        : (layout === 'shards' ? join(d, 'shards', s.name) : join(d, s.name));
       let actualPath = shardPath;
       try { await stat(actualPath); }
       catch {
-        actualPath = join(d, s.name);
-        try { await stat(actualPath); }
-        catch {
-          console.error(`MISSING shard: ${relative(ROOT, shardPath)} for manifest ${relative(ROOT, candidate)}`);
-          problems += 1;
-          continue;
-        }
+        console.error(`MISSING shard: ${relative(ROOT, shardPath)} for manifest ${relative(ROOT, candidate)}`);
+        problems += 1;
+        continue;
       }
       const bytes = await readFile(actualPath);
       const got = sha256(bytes);

@@ -64,7 +64,7 @@
           "@id": "https://sophiewell.com/#webapp",
           "name": "sophiewell",
           "url": "https://sophiewell.com/",
-          "description": "Free, client-side healthcare toolbox with 174 deterministic utilities for patients, billers, coders, nurses, clinicians, EMS, and educators.",
+          "description": "Free, client-side healthcare toolbox with 177 deterministic utilities for patients, billers, coders, nurses, clinicians, EMS, and educators.",
           "applicationCategory": [
             "HealthApplication",
             "MedicalApplication",
@@ -261,7 +261,10 @@
             "Time-Based E/M Code Selector (2021)",
             "NDC 10 ↔ 11 Digit Converter",
             "AVPU ↔ GCS Quick Reference",
-            "SBAR Handoff Template Generator"
+            "SBAR Handoff Template Generator",
+            "Albumin-Corrected Anion Gap (Figge)",
+            "HIPAA Breach 60-Day Notification Clock",
+            "ABCD2 Score (TIA stroke risk)"
           ],
           "softwareHelp": {
             "@type": "CreativeWork",
@@ -667,6 +670,10 @@
                   <span class="tc-title">Rapid Shallow Breathing Index</span>
                   <span class="tc-desc">RR / Vt(L); Yang-Tobin weaning prediction at the 105 threshold.</span>
                 </button>
+                <button class="tool-card" type="button" data-tool="corrected-anion-gap" data-group="E" data-audiences="clinicians educators">
+                  <span class="tc-title">Albumin-Corrected Anion Gap</span>
+                  <span class="tc-desc">Figge correction (+2.5 mEq/L per 1 g/dL albumin drop). Unmasks HAGMA when albumin is low.</span>
+                </button>
               </div>
             </section>
 
@@ -778,6 +785,10 @@
                 <button class="tool-card" type="button" data-tool="nihss" data-group="G" data-audiences="clinicians educators field">
                   <span class="tc-title">NIH Stroke Scale</span>
                   <span class="tc-desc">The eleven-item public NIHSS.</span>
+                </button>
+                <button class="tool-card" type="button" data-tool="abcd2" data-group="G" data-audiences="clinicians educators field">
+                  <span class="tc-title">ABCD2 (TIA stroke risk)</span>
+                  <span class="tc-desc">Johnston Lancet 2007 5-feature score; 0-7 with 2-day stroke-risk band.</span>
                 </button>
                 <button class="tool-card" type="button" data-tool="asa" data-group="G" data-audiences="clinicians educators">
                   <span class="tc-title">ASA Physical Status Reference</span>
@@ -960,6 +971,10 @@
                 <button class="tool-card" type="button" data-tool="sbar-template" data-group="H" data-audiences="clinicians field educators">
                   <span class="tc-title">SBAR Handoff Template</span>
                   <span class="tc-desc">Type Situation/Background/Assessment/Recommendation; copy a clean SBAR card.</span>
+                </button>
+                <button class="tool-card" type="button" data-tool="breach-clock" data-group="H" data-audiences="billers educators">
+                  <span class="tc-title">HIPAA Breach 60-Day Notification Clock</span>
+                  <span class="tc-desc">Surface individual / media / HHS deadlines per 45 CFR 164.404, .406, .408 from a discovery date.</span>
                 </button>
               </div>
             </section>

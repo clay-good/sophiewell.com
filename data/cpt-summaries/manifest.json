@@ -8,6 +8,7 @@
   "offlineSeed": false,
   "notes": "Original plain-English category summaries written by the project author. Not derived from AMA CPT descriptors. MIT-licensed. See docs/legal.md.",
   "recordCount": 9,
+  "shardLayout": "root",
   "shards": [
     {
       "name": "summaries.json",

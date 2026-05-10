@@ -353,3 +353,57 @@ test('avpuToGcs: lowercase normalized', () => {
 test('avpuToGcs: rejects invalid', () => {
   assert.throws(() => V5.avpuToGcs('X'));
 });
+
+// --- T17: Albumin-corrected anion gap (Figge) ----------------------------
+test('correctedAnionGap: normal albumin -> measured == corrected', () => {
+  const r = V5.correctedAnionGap({ na: 140, cl: 104, hco3: 24, albuminGdl: 4.0 });
+  assert.equal(r.measuredAg, 12);
+  assert.equal(r.correctedAg, 12);
+  assert.match(r.band, /Within reference/);
+});
+test('correctedAnionGap: hypoalbuminemia unmasks high AG', () => {
+  // Measured AG 10 looks normal, but with albumin 2.0 the corrected AG = 15.
+  const r = V5.correctedAnionGap({ na: 140, cl: 106, hco3: 24, albuminGdl: 2.0 });
+  assert.equal(r.measuredAg, 10);
+  assert.equal(r.correctedAg, 15);
+  assert.match(r.band, /Elevated/);
+});
+test('correctedAnionGap: K-included variant uses 12-16 reference', () => {
+  const r = V5.correctedAnionGap({ na: 140, k: 4, cl: 104, hco3: 24, albuminGdl: 4.0, includePotassium: true });
+  assert.equal(r.measuredAg, 16);
+  assert.equal(r.referenceLow, 12);
+  assert.equal(r.referenceHigh, 16);
+});
+test('correctedAnionGap: rejects out-of-range inputs', () => {
+  assert.throws(() => V5.correctedAnionGap({ na: 140, cl: 104, hco3: 24, albuminGdl: 0 }));
+  assert.throws(() => V5.correctedAnionGap({ na: 140, cl: 104, hco3: 24, albuminGdl: 4.0, k: 4, includePotassium: true, na: 'high' }));
+});
+test('correctedAnionGap: requires K when includePotassium=true', () => {
+  assert.throws(() => V5.correctedAnionGap({ na: 140, cl: 104, hco3: 24, albuminGdl: 4.0, includePotassium: true }), /k required/);
+});
+
+// --- T20: ABCD-squared TIA risk score ------------------------------------
+test('abcd2: 70yo with weakness, BP 150/90, 90 min, diabetic -> 7 (High)', () => {
+  const r = V5.abcd2({ age: 70, sbp: 150, dbp: 90, clinicalFeatures: 'weakness', durationMinutes: 90, diabetes: true });
+  assert.equal(r.total, 7);
+  assert.equal(r.band, 'High risk');
+  assert.match(r.interpretation, /High risk/);
+});
+test('abcd2: 50yo with speech, BP 120/80, 5 min, no diabetes -> 1 (Low)', () => {
+  const r = V5.abcd2({ age: 50, sbp: 120, dbp: 80, clinicalFeatures: 'speech', durationMinutes: 5, diabetes: false });
+  assert.equal(r.total, 1);
+  assert.equal(r.band, 'Low risk');
+});
+test('abcd2: borderline 4 -> Moderate', () => {
+  const r = V5.abcd2({ age: 65, sbp: 140, dbp: 80, clinicalFeatures: 'speech', durationMinutes: 30, diabetes: false });
+  // age >= 60 (1) + sbp >= 140 (1) + speech (1) + 10-59 min (1) = 4
+  assert.equal(r.total, 4);
+  assert.equal(r.band, 'Moderate risk');
+});
+test('abcd2: rejects bad clinicalFeatures', () => {
+  assert.throws(() => V5.abcd2({ age: 60, sbp: 120, dbp: 80, clinicalFeatures: 'foo', durationMinutes: 30, diabetes: false }));
+});
+test('abcd2: cites Johnston 2007', () => {
+  const r = V5.abcd2({ age: 60, sbp: 120, dbp: 80, clinicalFeatures: 'other', durationMinutes: 5, diabetes: false });
+  assert.match(r.citation, /Johnston/);
+});

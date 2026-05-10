@@ -44,3 +44,25 @@ test('META: every code lookup, pricing, and reference utility has a source', () 
       `${id}: source missing or incomplete`);
   }
 });
+
+// Regression: every tool registered on the home grid (data-tool="...") MUST
+// have a META entry that exposes either a citation or a non-null source.
+// Without one, the inline "tool-meta" block renders empty and the user has
+// no way to verify what authority the calculation/lookup is anchored to.
+// See spec-v2 §5.1 and §5.2.
+test('META: every tool surfaces either a citation or a source stamp', async () => {
+  const { readFileSync } = await import('node:fs');
+  const html = readFileSync(new URL('../../index.html', import.meta.url), 'utf8');
+  const ids = [...html.matchAll(/data-tool="([^"]+)"/g)].map((m) => m[1]);
+  assert.ok(ids.length >= 150, `home grid is suspiciously small (${ids.length})`);
+  const naked = [];
+  for (const id of ids) {
+    const m = META[id];
+    if (!m) { naked.push(`${id} (no META entry)`); continue; }
+    const hasCite = typeof m.citation === 'string' && m.citation.length > 0;
+    const hasSrc = m.source && m.source.dataset && m.source.label;
+    if (!hasCite && !hasSrc) naked.push(id);
+  }
+  assert.deepEqual(naked, [],
+    `Tools with neither citation nor source stamp: ${naked.join(', ')}`);
+});

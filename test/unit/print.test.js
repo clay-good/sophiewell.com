@@ -33,9 +33,14 @@ test('renderPrintable: renders title, section headings, paragraphs, items', () =
     ],
     warnings: ['Not legal advice.'],
   });
-  assert.ok(root.querySelector('h1').textContent.includes('HIPAA'));
+  // Print template uses h2 for the document title (page-level h1 belongs to
+  // the route name) and h3 for section headings; see lib/print.js note.
   const h2s = root.querySelectorAll('h2').map((n) => n.textContent);
-  assert.deepEqual(h2s, ['Patient', 'Authorized Disclosures']);
+  assert.equal(h2s.length, 1);
+  assert.ok(h2s[0].includes('HIPAA'));
+  const h3s = root.querySelectorAll('h3').map((n) => n.textContent);
+  assert.deepEqual(h3s, ['Patient', 'Authorized Disclosures']);
+  assert.equal(root.querySelectorAll('h1').length, 0);
   assert.ok(root.textContent.includes('Name: Jane Doe'));
   assert.ok(root.textContent.includes('Records'));
   assert.ok(root.textContent.includes('Not legal advice.'));

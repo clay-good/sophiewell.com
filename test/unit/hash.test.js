@@ -18,6 +18,20 @@ test('parseHash: pinned list', () => {
   assert.deepEqual(r.pinned, ['icd10', 'bmi', 'egfr']);
 });
 
+test('parseHash: pinned-only without leading & (regression)', () => {
+  // buildHash drops an empty route, so togglePin from the home view emits
+  // "#p=bmi" (no leading "&"). The parser must still recognize the p= key.
+  const r = parseHash('#p=bmi');
+  assert.equal(r.route, '');
+  assert.deepEqual(r.pinned, ['bmi']);
+});
+
+test('parseHash: state-only without route', () => {
+  const r = parseHash('#q=' + encodeURIComponent('w=70'));
+  assert.equal(r.route, '');
+  assert.deepEqual(r.state, { w: '70' });
+});
+
 test('parseHash: calculator state', () => {
   const r = parseHash('#bmi&q=' + encodeURIComponent('w=70;h=1.75'));
   assert.equal(r.route, 'bmi');

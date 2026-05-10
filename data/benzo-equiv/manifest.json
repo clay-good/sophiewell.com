@@ -8,6 +8,7 @@
   "fetchDate": "2026-05-07",
   "offlineSeed": true,
   "recordCount": 8,
+  "shardLayout": "root",
   "shards": [
     {
       "name": "benzo.json",

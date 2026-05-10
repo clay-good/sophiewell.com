@@ -8,6 +8,7 @@
   "fetchDate": "2026-05-07",
   "offlineSeed": true,
   "recordCount": 4,
+  "shardLayout": "root",
   "shards": [
     {
       "name": "abx.json",

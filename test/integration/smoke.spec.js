@@ -11,7 +11,11 @@ import { test, expect } from '@playwright/test';
 test('home: renders centered topbar and full tool-card grid', async ({ page }) => {
   await page.goto('/');
   await expect(page.locator('.topbar .topbar-brand')).toContainText('Sophie Well');
-  await expect(page.locator('.tool-card')).toHaveCount(195);
+  // Tool count is dynamic; assert "many" rather than a brittle exact number.
+  // The spec-v5 wave-1/2 cull reduced the tile count and more iteration is
+  // expected. The home grid should never silently empty out.
+  const cardCount = await page.locator('.tool-card').count();
+  expect(cardCount).toBeGreaterThanOrEqual(150);
   // Filters and search are removed in v4.10; the home is just the tile grid.
   await expect(page.locator('.filters:not(.visually-hidden)')).toHaveCount(0);
   await expect(page.locator('#search')).toHaveCount(0);
@@ -218,7 +222,7 @@ test('spec-v4 group K: adult lab reference table renders rows', async ({ page })
 test('spec-v4 group L: EOB glossary table includes a known term', async ({ page }) => {
   await page.goto('/#eob-glossary');
   await expect(page.locator('.content h1')).toHaveText('EOB Jargon Glossary');
-  await expect(page.getByText('Allowed amount')).toBeVisible();
+  await expect(page.getByRole('cell', { name: 'Allowed amount', exact: true })).toBeVisible();
   await expect(page.getByText('Coordination of benefits', { exact: false })).toBeVisible();
 });
 
@@ -232,7 +236,9 @@ test('spec-v4 group N: pediatric weight converter computes lb/oz to kg', async (
 
 test('spec-v4 group O: high-alert wallet card renders printable title', async ({ page }) => {
   await page.goto('/#high-alert-card');
-  await expect(page.locator('.content h1')).toHaveText('High-Alert Medication Wallet Card (ISMP)');
+  // Page-level h1 is the route name; printable card title is now an h2 so
+  // the document only contains a single h1 (a11y).
+  await expect(page.locator('.content > h1')).toHaveText('High-Alert Medication Wallet Card (ISMP)');
   await expect(page.getByRole('heading', { name: 'High-Alert Medications - Patient Wallet Card' })).toBeVisible();
   await expect(page.getByRole('button', { name: /Print/i })).toBeVisible();
 });

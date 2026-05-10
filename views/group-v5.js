@@ -6,6 +6,7 @@
 import { el, clear } from '../lib/dom.js';
 import * as V5 from '../lib/clinical-v5.js';
 import * as Code from '../lib/coding-v5.js';
+import { breachNotificationDeadlines } from '../lib/regulatory.js';
 
 function field(label, id, opts = {}) {
   const wrap = el('p');
@@ -453,5 +454,96 @@ export const renderers = {
     });
     ['s', 'b', 'a', 'r'].forEach((id) => document.getElementById(id).addEventListener('input', run));
     run();
+  },
+
+  // ----- T18: Albumin-corrected anion gap (Figge) -------------------------
+  'corrected-anion-gap'(root) {
+    root.appendChild(field('Sodium (mEq/L)', 'na', { value: 140 }));
+    root.appendChild(field('Chloride (mEq/L)', 'cl', { value: 104 }));
+    root.appendChild(field('Bicarbonate / HCO3 (mEq/L)', 'hco3', { value: 24 }));
+    root.appendChild(field('Albumin (g/dL)', 'alb', { value: 4.0 }));
+    root.appendChild(checkField('Include potassium in AG (some labs do)', 'usek'));
+    root.appendChild(field('Potassium (mEq/L, only if box checked)', 'k'));
+    const o = out(); root.appendChild(o);
+    const run = () => safe(o, () => {
+      const usek = bool('usek');
+      const kRaw = str('k');
+      const r = V5.correctedAnionGap({
+        na: num('na'), cl: num('cl'), hco3: num('hco3'), albuminGdl: num('alb'),
+        includePotassium: usek,
+        k: usek ? (kRaw === '' ? null : Number(kRaw)) : null,
+      });
+      o.appendChild(el('ul', {}, [
+        el('li', { text: `Measured AG: ${r.measuredAg} mEq/L` }),
+        el('li', { text: `Corrected AG: ${r.correctedAg} mEq/L` }),
+        el('li', { text: `Reference: ${r.referenceLow}-${r.referenceHigh} mEq/L` }),
+        el('li', { text: r.band }),
+        el('li', { class: 'muted', text: r.formulaNote }),
+      ]));
+    });
+    ['na', 'cl', 'hco3', 'alb', 'usek', 'k'].forEach((id) => {
+      const node = document.getElementById(id);
+      node.addEventListener('input', run);
+      node.addEventListener('change', run);
+    });
+    run();
+  },
+
+  // ----- T20: ABCD2 TIA stroke risk score (Johnston Lancet 2007) ----------
+  'abcd2'(root) {
+    root.appendChild(field('Age (years)', 'age'));
+    root.appendChild(field('Systolic BP (mmHg)', 'sbp'));
+    root.appendChild(field('Diastolic BP (mmHg)', 'dbp'));
+    root.appendChild(selectField('Clinical features', 'clin', [
+      { value: 'weakness', text: 'Unilateral weakness (+2)' },
+      { value: 'speech',   text: 'Speech disturbance without weakness (+1)' },
+      { value: 'other',    text: 'Other (0)' },
+    ]));
+    root.appendChild(field('Symptom duration (minutes)', 'dur'));
+    root.appendChild(checkField('Diabetes (+1)', 'diab'));
+    const o = out(); root.appendChild(o);
+    const run = () => safe(o, () => {
+      const r = V5.abcd2({
+        age: num('age'), sbp: num('sbp'), dbp: num('dbp'),
+        clinicalFeatures: str('clin'),
+        durationMinutes: num('dur'),
+        diabetes: bool('diab'),
+      });
+      o.appendChild(el('ul', {}, [
+        el('li', { text: r.interpretation }),
+        el('li', { text: `Components: A=${r.components.age} B=${r.components.bp} C=${r.components.clinical} D(time)=${r.components.duration} D(diabetes)=${r.components.diabetes}` }),
+        el('li', { class: 'muted', text: `Score bands: 0-3 Low (~1.0%) | 4-5 Moderate (~4.1%) | 6-7 High (~8.1%). ${r.citation}` }),
+      ]));
+    });
+    ['age', 'sbp', 'dbp', 'clin', 'dur', 'diab'].forEach((id) => {
+      const node = document.getElementById(id);
+      node.addEventListener('input', run);
+      node.addEventListener('change', run);
+    });
+  },
+
+  // ----- T19: HIPAA breach 60-day clock (45 CFR 164.404) ------------------
+  'breach-clock'(root) {
+    root.appendChild(field('Discovery date (YYYY-MM-DD)', 'd', { type: 'text', placeholder: '2026-03-15' }));
+    root.appendChild(field('Affected individuals', 'n', { value: 1 }));
+    const o = out(); root.appendChild(o);
+    const run = () => safe(o, () => {
+      const r = breachNotificationDeadlines({
+        discoveryDate: str('d'),
+        affectedIndividuals: Math.floor(Number(str('n'))),
+      });
+      o.appendChild(el('ul', {}, [
+        el('li', { text: `Discovery: ${r.discoveryDate}` }),
+        el('li', { text: `Affected: ${r.affectedIndividuals} (${r.threshold})` }),
+        el('li', { text: `Individual notice deadline: ${r.individualNoticeDeadline}` }),
+        r.mediaNoticeDeadline ? el('li', { text: `Media notice deadline: ${r.mediaNoticeDeadline}` }) : null,
+        el('li', { text: `HHS notice deadline: ${r.hhsNoticeDeadline}` }),
+      ]));
+      const recipients = el('ul', {}, r.recipients.map((s) => el('li', { text: s })));
+      o.appendChild(el('h3', { text: 'Recipients' }));
+      o.appendChild(recipients);
+      o.appendChild(el('p', { class: 'muted', text: r.note }));
+    });
+    ['d', 'n'].forEach((id) => document.getElementById(id).addEventListener('input', run));
   },
 };
