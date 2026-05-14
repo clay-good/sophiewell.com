@@ -6,6 +6,35 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v6 §3.3 — Lab Result Interpreter)
+
+- **Lab Result Interpreter** tile lands under Patient Bill & Insurance
+  Literacy, available to patients, clinicians, and educators. Users
+  enter values from a standard outpatient panel (CBC, CMP, lipid panel,
+  A1C, TSH) with optional sex / pregnancy context; the tool returns the
+  reference range used, a four-band flag (within-range / borderline /
+  flagged-mild / flagged-significant), one plain-language narrative per
+  value, and a single *"ask your clinician"* prompt per flagged value.
+- `lib/lab-interpret.js` is a pure-function module bundling 25 analytes
+  with reference ranges and critical thresholds (NIH/MedlinePlus,
+  ARUP, Harrison's 21e, ADA 2024, 2018 ACC/AHA Cholesterol Guideline,
+  ATA 2014). Sex- and pregnancy-specific reference bounds for creatinine,
+  hemoglobin, hematocrit, and HDL are encoded as analyte variants.
+  Critical thresholds drive the `flagged-significant` band; everything
+  else falls out of a 5% buffer around the reference bounds. Narratives
+  follow the spec-v6 §3.3 *"would a primary care physician hand this to
+  a patient at 11pm"* calibration: no diagnosis, no probability, no
+  disease links, one bounded sentence per value.
+- New renderer file `views/group-v6.js` registers the tile against
+  `app.js`. The view ships the standard Sophie disclaimer band at the
+  top and a footer reminder that patient portals frequently release lab
+  values before clinician review.
+- 15 new unit tests in `test/unit/lab-interpret.test.js` cover the
+  four-band taxonomy, sex / pregnancy variants, critical thresholds,
+  the worked-example contract for the META entry, and input validation
+  (unknown analyte and non-finite value both throw). Tile count
+  177 -> 178; test count 592 -> 607.
+
 ### Added (spec-v6 §4 home-page UI evolution — first two waves)
 
 - **Task hero (spec-v6 §4.2.1).** A promoted search input appears at the

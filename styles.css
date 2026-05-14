@@ -497,6 +497,49 @@ body {
   margin: 16px 4px 24px;
   font-size: 0.95rem;
 }
+
+/* spec-v6 §3.3: lab result interpreter. */
+.lab-ctx, .lab-panel {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 14px 16px 6px;
+  margin: 14px 0;
+}
+.lab-ctx legend, .lab-panel legend {
+  font-weight: 700;
+  padding: 0 6px;
+  color: var(--text-secondary);
+}
+.lab-result {
+  border: 1px solid var(--border);
+  border-left-width: 4px;
+  border-radius: var(--radius);
+  padding: 12px 14px;
+  margin: 10px 0;
+  background: var(--bg-secondary);
+}
+.lab-result[data-flag="within-range"]        { border-left-color: #4caf50; }
+.lab-result[data-flag="borderline"]          { border-left-color: #ffb74d; }
+.lab-result[data-flag="flagged-mild"]        { border-left-color: #ff9800; }
+.lab-result[data-flag="flagged-significant"] { border-left-color: #e53935; }
+.lab-result-head { font-size: 1.0rem; margin-bottom: 4px; }
+.lab-result-band {
+  display: inline-block;
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 2px 8px;
+  border-radius: var(--radius-pill);
+  background: var(--bg-tertiary);
+  color: var(--text-secondary);
+  margin-left: 6px;
+}
+.lab-result-range { font-size: 0.85rem; margin: 4px 0; }
+.lab-result-narrative { margin: 6px 0; }
+.lab-result-ask { margin: 6px 0; font-style: italic; color: var(--text-secondary); }
+.lab-result-source { font-size: 0.78rem; margin-top: 4px; }
+.lab-result-footer { margin-top: 14px; font-size: 0.88rem; }
 .toggle {
   font: inherit;
   font-size: 0.85rem;

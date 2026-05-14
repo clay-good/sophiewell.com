@@ -11,13 +11,14 @@ import { renderers as RI } from './views/group-i.js';
 import { renderers as RJ } from './views/group-j.js';
 import { renderers as RKLMNO } from './views/group-klmno.js';
 import { renderers as RV5 } from './views/group-v5.js';
+import { renderers as RV6 } from './views/group-v6.js';
 import { META } from './lib/meta.js';
 import { fetchJson } from './lib/data.js';
 import { copyButton } from './lib/clipboard.js';
 import { installKeyboard } from './lib/keyboard.js';
 import { parseHash, buildHash, patchHash } from './lib/hash.js';
 
-const RENDERERS = { ...RA, ...RC, ...RE, ...RF, ...RG, ...RH, ...RI, ...RJ, ...RKLMNO, ...RV5 };
+const RENDERERS = { ...RA, ...RC, ...RE, ...RF, ...RG, ...RH, ...RI, ...RJ, ...RKLMNO, ...RV5, ...RV6 };
 
 // ----- Utility registry ----------------------------------------------------
 // Source of truth for routes, names, group, audiences, and clinical flag.
@@ -232,6 +233,9 @@ const UTILITIES = [
   { id: 'corrected-anion-gap', name: 'Albumin-Corrected Anion Gap (Figge)',             group: 'E', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'breach-clock',        name: 'HIPAA Breach 60-Day Notification Clock',          group: 'H', audiences: ['billers', 'educators'], clinical: false },
   { id: 'abcd2',               name: 'ABCD2 Score (TIA stroke risk)',                    group: 'G', audiences: ['clinicians', 'educators', 'field'], clinical: true },
+
+  // spec-v6 §3.3: lab result interpreter. Patient-decoder category.
+  { id: 'lab-interpret',       name: 'Lab Result Interpreter',                           group: 'C', audiences: ['patients', 'clinicians', 'educators'], clinical: true },
 ];
 
 const UTIL_BY_ID = new Map(UTILITIES.map((u) => [u.id, u]));

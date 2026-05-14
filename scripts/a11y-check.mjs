@@ -83,6 +83,7 @@ async function checkRendererSources() {
     'views/group-g.js', 'views/group-h.js',
     'views/group-i.js', 'views/group-j.js',
     'views/group-klmno.js', 'views/group-v5.js',
+    'views/group-v6.js',
   ];
   for (const f of files) {
     const src = await readFile(join(ROOT, f), 'utf8');
