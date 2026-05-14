@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `3fecfba06ec23567`
-Generated: 2026-05-14T23:04:14.836Z
+Build ID: `73528cb166f6de73`
+Generated: 2026-05-14T23:46:51.817Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=20.18.1 <21, npm >=10.0.0
@@ -23,9 +23,9 @@ downloads is committed in this repository and is hashed below.
 
 | Path | Bytes | SHA-256 |
 |---|---:|---|
-| `index.html` | 90059 | `8aac34a37a9241f5299384f13d6939aff140d4206deb1d860ddbef1476bf7f8e` |
-| `styles.css` | 26517 | `cadbc316dbd7edf1e012134a8bcabb739beb43587cb5ae52f5164b1a31865b72` |
-| `app.js` | 53419 | `5f7a736d67923f82aa28c704bcb12bd164cfbbe17894f998a13e2293cb5754a4` |
+| `index.html` | 90870 | `30cf24be4fbc47633a9f2b76b81b10922b4514d9a5e1d9587aaf09473b530dea` |
+| `styles.css` | 28070 | `efd92e422d59e8a96283884b2efaefaca66c02d65bd8965450ad38fadff0a3d4` |
+| `app.js` | 57473 | `4f30b07d3cdbf4022c3853d9917fe06e7edcafad31f63e75055b019519044ee1` |
 | `sw.js` | 4062 | `60f524b1b69eb5170c59af42631e11cc05db2a44e8e530977db0327888b0ff6d` |
 | `site.webmanifest` | 709 | `0e0de4da60590a12e8b27a0ae2a2f5ffdb6500b7d2b78f93631ec2f64ed3d5ce` |
 | `robots.txt` | 67 | `297014916e0fe5e4b0a9356b12884f815003c873ad25f299bf441f7895b77d89` |
@@ -54,7 +54,7 @@ downloads is committed in this repository and is hashed below.
 | `lib/decoder.js` | 4726 | `5abf9b0a2b9fcbc19fac35de370cf5a9df1852a9744d48371903096c673404c0` |
 | `lib/dom.js` | 984 | `b4b4ac74decb848bde516bfc1773e6c45a8d80031ed8f9d14226393d18fcde54` |
 | `lib/field.js` | 13816 | `d589f10d720281e79804cce186276b176d9cd83e9e2dafe217f3e3c9850655fe` |
-| `lib/hash.js` | 2878 | `69e2b97f2b4710c3a168a3e275329c70e79426e09d8ff087a7b5721459abbafc` |
+| `lib/hash.js` | 3649 | `ded0e7d985c022e228df2c5af53cffbba8dabab01ad7557bd51f31d2dbcda131` |
 | `lib/keyboard.js` | 6712 | `2d2fa7618fede6da1dca9aa40a5b6253bbcae2e406b45e3fed1dde6aa1c09342` |
 | `lib/keywords.js` | 2715 | `8ba3e40698eaf14947556b0d2078f168a99e8589644808057fa1b453d903a742` |
 | `lib/lab-interpret.js` | 29158 | `5b8211cf78060ef91fb1b54d03be40bd3b0fffc526de0944581fd5f285daf572` |
@@ -67,6 +67,7 @@ downloads is committed in this repository and is hashed below.
 | `lib/scoring-v4.js` | 30295 | `3b7c1c1228f87e8c885a5c2108a30ec9699a958545148eef3ef165c34761fda3` |
 | `lib/screener.js` | 5688 | `2472fff105c4ddd9f0ba8141dbd6de7b922ea4da93db0480f4246a6c1f952699` |
 | `lib/search.js` | 1726 | `eb447d039ac1ea7b459743b6aeeffea114f90f07d45a6bd53dbe60eb1c8fdd9b` |
+| `lib/synonyms.js` | 3339 | `f28e834e5b603c1564099976489ad33f05109a0b74f130f9153aa2a90518bc16` |
 | `lib/table.js` | 4816 | `58b7eb635eed6fb9042b0383af1d3456585be97825da5cb77825fc9fa5b789f1` |
 | `lib/tob.js` | 970 | `a4b73357224a32a526456aba3d02fb2c1356db8292052896cd3fb61377711ece` |
 | `lib/tree.js` | 5187 | `947cd24aa948c81432844601adc03446917bcb5e32ac187f66491bcd3420df08` |

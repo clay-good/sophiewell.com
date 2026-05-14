@@ -17,6 +17,7 @@ import { fetchJson } from './lib/data.js';
 import { copyButton } from './lib/clipboard.js';
 import { installKeyboard } from './lib/keyboard.js';
 import { parseHash, buildHash, patchHash } from './lib/hash.js';
+import { matchSynonym, loadSynonyms } from './lib/synonyms.js';
 
 const RENDERERS = { ...RA, ...RC, ...RE, ...RF, ...RG, ...RH, ...RI, ...RJ, ...RKLMNO, ...RV5, ...RV6 };
 
@@ -392,37 +393,91 @@ function wireFilters() {
     });
   }
 
-  // spec-v6 §4.2.1: task hero search. Same matching as the topbar typeahead,
-  // but applied to the grid filter so the result is a filtered tile list
-  // rather than a dropdown. Empty input restores the default grid.
+  // spec-v6 §4.2.1 + spec-v7 §3.2: task hero search with synonym routing.
+  // Synonym table match is checked first (deterministic phrase lookup against
+  // data/synonyms.json); if it hits, a breadcrumb explains why and Enter
+  // routes to that tile. Falls through to the existing fuzzy ranker otherwise.
+  // Typing in the hero opens the disclosure so users can see filtered tiles.
   const hero = document.getElementById('hero-search');
   if (hero) {
     hero.addEventListener('input', () => {
       filterState.query = hero.value.trim();
+      if (filterState.query) openDisclosure();
       applyFilters();
+      updateSynonymHint(hero.value);
     });
     hero.addEventListener('keydown', (e) => {
       if (e.key === 'Enter') {
         const q = hero.value.trim();
         if (!q) return;
-        const matches = searchUtilities(q, 1);
-        if (matches[0]) {
+        const target = resolveQueryToTileId(q);
+        if (target) {
           e.preventDefault();
           hero.value = '';
           filterState.query = '';
           applyFilters();
-          location.hash = '#' + matches[0].id;
+          updateSynonymHint('');
+          location.hash = '#' + target;
         }
       } else if (e.key === 'Escape') {
         if (hero.value) {
           hero.value = '';
           filterState.query = '';
           applyFilters();
+          updateSynonymHint('');
           e.preventDefault();
         }
       }
     });
   }
+
+  // spec-v7 §3.4: disclosure toggle persists in the URL hash (b=open / absent).
+  const disclosure = document.getElementById('browse-disclosure');
+  if (disclosure) {
+    disclosure.addEventListener('toggle', () => {
+      // Default markup is open, so we only emit a hash key when the user
+      // diverges from it: b=closed when collapsed; absent otherwise.
+      const next = disclosure.open ? '' : 'closed';
+      window.history.replaceState(null, '', patchHash({ browse: next }));
+    });
+  }
+}
+
+// spec-v7 §3.2: in-memory cache of the loaded synonym table. Empty until
+// loadSynonyms() resolves at boot; matchSynonym() against an empty list
+// returns null so the hero falls back to fuzzy search safely.
+let SYNONYM_ENTRIES = [];
+
+function resolveQueryToTileId(query) {
+  const m = matchSynonym(query, SYNONYM_ENTRIES, filterState.audience);
+  if (m && UTIL_BY_ID && UTIL_BY_ID.get && UTIL_BY_ID.get(m.tile)) return m.tile;
+  const fuzzy = searchUtilities(query, 1);
+  return fuzzy[0] ? fuzzy[0].id : null;
+}
+
+function updateSynonymHint(rawQuery) {
+  const hint = document.getElementById('hero-synonym-hint');
+  if (!hint) return;
+  const q = String(rawQuery || '').trim();
+  if (!q) { hint.hidden = true; clear(hint); return; }
+  const m = matchSynonym(q, SYNONYM_ENTRIES, filterState.audience);
+  if (!m || !UTIL_BY_ID || !UTIL_BY_ID.get(m.tile)) {
+    hint.hidden = true;
+    clear(hint);
+    return;
+  }
+  const util = UTIL_BY_ID.get(m.tile);
+  clear(hint);
+  hint.appendChild(document.createTextNode('Matched "' + m.phrase + '" to '));
+  const link = el('a', { href: '#' + util.id, class: 'synonym-link', text: util.name });
+  hint.appendChild(link);
+  hint.appendChild(document.createTextNode('. Press Enter to open.'));
+  hint.hidden = false;
+}
+
+function openDisclosure() {
+  const d = document.getElementById('browse-disclosure');
+  if (d && !d.open) d.open = true;
 }
 
 // ----- Routing -------------------------------------------------------------
@@ -459,7 +514,14 @@ function restoreHome() {
   if (search) search.value = filterState.query;
   const hero = document.getElementById('hero-search');
   if (hero) hero.value = filterState.query;
+  // spec-v7 §3.4: restore disclosure state from the current hash on home return.
+  const disclosure = document.getElementById('browse-disclosure');
+  if (disclosure) disclosure.open = parseHash(window.location.hash).browse === 'open';
+  // spec-v7 §3.4: keep the visible tile count in sync after a clone restore.
+  const countNode = document.getElementById('browse-tile-count');
+  if (countNode) countNode.textContent = String(UTILITIES.length);
   applyFilters();
+  updateSynonymHint(hero ? hero.value : '');
   document.title = 'Sophie Well';
 }
 
@@ -490,9 +552,13 @@ function renderPinnedSection() {
     section = el('section', { id: 'pinned-section', 'aria-labelledby': 'pinned-heading' });
     section.appendChild(el('h2', { id: 'pinned-heading', text: 'Pinned' }));
     section.appendChild(el('div', { id: 'pinned-grid', class: 'home-grid' }));
-    // spec-v6 §4: insert above the tile grid but below the task hero and
-    // audience chips so the hero stays the visible entry point.
-    const anchor = document.getElementById('tile-grid') || homeView.firstChild;
+    // spec-v6 §4 + spec-v7 §3.4: insert above the disclosure (which now
+    // wraps the tile grid) but below the task hero and audience chips so
+    // the hero stays the visible entry point and pinned tiles stay above
+    // the collapsed grid.
+    const anchor = document.getElementById('browse-disclosure')
+      || document.getElementById('tile-grid')
+      || homeView.firstChild;
     homeView.insertBefore(section, anchor);
   }
   if (!section) return;
@@ -962,11 +1028,29 @@ function boot() {
     const group = document.querySelector('.toggle-group[data-filter="audience"]');
     if (group) syncToggleGroupState(group, initial.audience);
   }
+  // spec-v7 §3.4: initial disclosure state from URL hash. The static markup
+  // ships open so clinician deep-links and existing keyboard/click flows
+  // keep working; an explicit b=closed in the hash collapses the catalog
+  // for patient-shareable links. Spec calls for default-closed once the
+  // dropzone front door (v7 §4) lands; deferred until then.
+  const disclosure = document.getElementById('browse-disclosure');
+  if (disclosure) {
+    if (initial.browse === 'closed') disclosure.open = false;
+    else if (initial.browse === 'open') disclosure.open = true;
+  }
+  // spec-v7 §3.4: visible tile count next to "Browse all". Pulled from the
+  // utility registry so it stays correct as tiles land.
+  const countNode = document.getElementById('browse-tile-count');
+  if (countNode) countNode.textContent = String(UTILITIES.length);
   wireFilters();
   applyFilters();
   renderPinnedSection();
   installKeyboard();
   installTopbarSearch();
+  // spec-v7 §3.2: load the synonym table once at boot. Hero search degrades
+  // to fuzzy-only if the fetch fails (e.g., file:// load); synonyms are an
+  // optional accelerator, not a hard dependency.
+  loadSynonyms().then((entries) => { SYNONYM_ENTRIES = entries; }).catch(() => {});
   window.addEventListener('hashchange', route);
   route();
   registerServiceWorker();

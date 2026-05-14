@@ -4,7 +4,24 @@ import { parseHash, buildHash } from '../../lib/hash.js';
 
 test('parseHash: empty hash', () => {
   const r = parseHash('');
-  assert.deepEqual(r, { route: '', sub: '', pinned: [], state: {}, audience: 'all' });
+  assert.deepEqual(r, { route: '', sub: '', pinned: [], state: {}, audience: 'all', browse: '' });
+});
+
+test('parseHash: browse-disclosure state (spec-v7 section 3.4)', () => {
+  assert.equal(parseHash('#b=open').browse, 'open');
+  assert.equal(parseHash('#b=closed').browse, 'closed');
+  // Unknown values fall back to the empty default (collapsed on first visit).
+  assert.equal(parseHash('#b=garbage').browse, '');
+  assert.equal(parseHash('#bmi&b=open').browse, 'open');
+});
+
+test('buildHash: browse open/closed round-trip, empty omits the key', () => {
+  assert.equal(buildHash({ route: '', browse: 'open' }), '#b=open');
+  assert.equal(buildHash({ route: 'bmi', browse: 'open' }), '#bmi&b=open');
+  assert.equal(buildHash({ route: 'bmi', browse: 'closed' }), '#bmi&b=closed');
+  assert.equal(buildHash({ route: 'bmi', browse: '' }), '#bmi');
+  assert.equal(parseHash(buildHash({ route: '', browse: 'open' })).browse, 'open');
+  assert.equal(parseHash(buildHash({ route: '', browse: 'closed' })).browse, 'closed');
 });
 
 test('parseHash: audience chip (spec-v6 §4.2.2)', () => {

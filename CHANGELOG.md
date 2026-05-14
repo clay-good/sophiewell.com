@@ -6,6 +6,46 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v7 sections 3.2 and 3.4 - synonym-routed prompt and collapsible tile-grid)
+
+- **Synonym-routed hero search (spec-v7 section 3.2).** A new hand-curated
+  table at `data/synonyms.json` maps patient-mental-model phrases ("my
+  bill", "my labs are weird", "denied", "ICD-10", ...) to the existing
+  tile id that answers them. The hero search now consults the synonym
+  table before the fuzzy ranker; on a hit it surfaces a one-line
+  breadcrumb under the input ("Matched 'my labs are weird' to Lab Result
+  Interpreter. Press Enter to open.") so the user sees why that tile is
+  recommended. Enter routes to the matched tile; otherwise the fuzzy
+  ranker still runs as a fallback. The matcher in `lib/synonyms.js` is
+  pure-function, deterministic, audience-aware (chip selection boosts
+  same-audience entries without hiding others), and case- /
+  punctuation- / whitespace-insensitive. The initial table seeds 26
+  entries covering the patient billing artifacts, the most common code
+  references, and the highest-traffic clinical math tiles. Adding a
+  phrase is a one-line edit to `data/synonyms.json`.
+- **Collapsible tile-grid disclosure (spec-v7 section 3.4).** The 178
+  tiles now sit inside a real `<details>` / `<summary>` element with
+  the visible label *"Browse all 178 tools"* (count is bound to the
+  utility registry length so it stays correct as tiles ship). The
+  disclosure is open by default for now to preserve existing clinician
+  flows and the e2e selectors that click straight into a tile; spec
+  v7's default-collapsed posture is deferred until the v7 section 4
+  dropzone front door lands. Disclosure state persists in the URL
+  hash via a new `b=` segment (`b=open` or `b=closed`); typing in the
+  hero auto-opens the disclosure so filtered tiles are visible. Pinned
+  tiles continue to render above the disclosure so they remain
+  visible regardless of the collapse state. No localStorage; the
+  `<details>` semantics give screen readers and keyboard users the
+  standard expand/collapse affordance.
+- `lib/hash.js` gains the `browse` field with full round-trip parse /
+  build coverage. `parseHash` now returns `browse: ''` for the default
+  state, `'open'` or `'closed'` when explicitly set; `buildHash`
+  emits `b=open` / `b=closed` and omits the key for the default. Hash
+  test count grows by 2; new `test/unit/synonyms.test.js` adds 12
+  unit tests including a guard that every tile id in `data/synonyms.json`
+  resolves against the live UTILITIES registry in `app.js`. Test
+  count 607 -> 621.
+
 ### Added (spec-v6 §3.3 — Lab Result Interpreter)
 
 - **Lab Result Interpreter** tile lands under Patient Bill & Insurance

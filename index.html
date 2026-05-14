@@ -423,8 +423,20 @@
             <button type="button" class="toggle" data-value="educators" aria-pressed="false">Educator</button>
           </div>
 
+          <!-- spec-v7 section 3.2: synonym-routed prompt match breadcrumb.
+               Populated by app.js when a typed phrase resolves to a tile. -->
+          <p id="hero-synonym-hint" class="hero-synonym-hint" hidden></p>
+
           <p id="empty-state" class="empty-state muted" hidden>No tools match the current filter.</p>
 
+          <!-- spec-v7 section 3.4: collapsed tile-grid disclosure. The 178
+               tiles are hidden behind a single open/close affordance so the
+               patient front door is not buried. Disclosure state persists
+               in the URL hash via b=open or b=closed (no localStorage). -->
+          <details id="browse-disclosure" class="browse-disclosure" open>
+            <summary class="browse-summary">
+              <span class="browse-summary-label">Browse all <span id="browse-tile-count">178</span> tools</span>
+            </summary>
           <div id="tile-grid">
 
             <section class="home-section">
@@ -1212,6 +1224,7 @@
             </section>
 
           </div>
+          </details>
 
         </section>
       </main>

@@ -107,8 +107,12 @@ refresh pipeline that one person cannot reliably maintain. The remaining
 178 tiles either compute from user input or read a small static
 reference table whose annual drift is tolerable.
 
-The user flow is simple: pick a tile from the home grid, enter input, read
-output. Every utility shows the data sources or formula citations at the
+The user flow is simple: type what you need into the hero search ("my
+bill", "my labs", "denied", "ICD-10"), or pick a tile from the
+disclosure-collapsible home grid, enter input, read output. The hero
+consults a hand-curated synonym table (`data/synonyms.json`,
+spec-v7 section 3.2) before falling back to fuzzy matching, and shows
+a one-line breadcrumb explaining why a tile is recommended. Every utility shows the data sources or formula citations at the
 bottom of its view, with a "Test with example" button that reproduces the
 worked example from the citation. Calculator state is encoded in the URL
 hash so any view can be bookmarked or shared as a permalink.

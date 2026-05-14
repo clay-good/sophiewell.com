@@ -498,6 +498,60 @@ body {
   font-size: 0.95rem;
 }
 
+/* spec-v7 section 3.2: synonym-routed prompt breadcrumb. Surfaces the
+   matched phrase under the hero so the user understands why a tile is
+   pinned at the top. */
+.hero-synonym-hint {
+  margin: -4px 4px 12px;
+  padding: 8px 12px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--bg-secondary);
+  font-size: 0.92rem;
+  color: var(--text-secondary);
+}
+.hero-synonym-hint .synonym-link {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+/* spec-v7 section 3.4: collapsed tile-grid disclosure. The summary is the
+   single click target patients can use to reveal the catalog; clinicians
+   land here once and use the keyboard shortcut afterward. */
+.browse-disclosure {
+  margin: 8px 0 0;
+}
+.browse-disclosure > .browse-summary {
+  cursor: pointer;
+  list-style: none;
+  padding: 10px 14px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--bg-secondary);
+  font-weight: 600;
+  font-size: 0.95rem;
+  user-select: none;
+}
+.browse-disclosure > .browse-summary::-webkit-details-marker { display: none; }
+.browse-disclosure > .browse-summary::before {
+  content: "\25B8";
+  display: inline-block;
+  width: 1em;
+  margin-right: 4px;
+  transition: transform 120ms ease-out;
+}
+.browse-disclosure[open] > .browse-summary::before {
+  transform: rotate(90deg);
+}
+.browse-disclosure > .browse-summary:hover,
+.browse-disclosure > .browse-summary:focus-visible {
+  background: var(--bg-tertiary);
+  outline: none;
+}
+.browse-disclosure[open] > .browse-summary {
+  margin-bottom: 12px;
+}
+
 /* spec-v6 §3.3: lab result interpreter. */
 .lab-ctx, .lab-panel {
   border: 1px solid var(--border);
