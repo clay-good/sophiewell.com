@@ -1,12 +1,14 @@
 # spec-v7.md — sophiewell.com: artifact-first front door (dropzone + synonym-routed prompt)
 
-> Status: proposed; sections 3.2 (synonym-routed prompt) and 3.4
-> (collapsible tile-grid disclosure) shipped 2026-05-14. The disclosure
-> currently defaults to open to preserve existing clinician flows and
-> the e2e selectors that click directly into a tile; the spec's
-> default-collapsed posture is deferred until the section 4 dropzone
-> front door lands. The remaining sections (3.3 artifact-detect
-> classifier and section 4.1-4.6 decoder pages) are unimplemented.
+> Status: proposed; sections 3.2 (synonym-routed prompt), 3.3
+> (artifact-detect classifier — pure-function module + fixture tests,
+> not yet wired into a dropzone UI), and 3.4 (collapsible tile-grid
+> disclosure) shipped 2026-05-14. The disclosure currently defaults to
+> open to preserve existing clinician flows and the e2e selectors that
+> click directly into a tile; the spec's default-collapsed posture is
+> deferred until the section 4 dropzone front door lands. The
+> remaining sections (4.1-4.6 decoder pages and the section 3.1
+> dropzone wiring that consumes the classifier) are unimplemented.
 > Extends spec-v5 and spec-v6 without amending their hard rules.
 > Reshapes Sophie's front door around the patient who arrives holding
 > an artifact they cannot read, while preserving the tile catalog

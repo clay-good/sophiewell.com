@@ -6,6 +6,29 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v7 section 3.3 — artifact-detect classifier)
+
+- **Deterministic artifact classifier (spec-v7 section 3.3).** New
+  `lib/artifact-detect.js` exposes `detectArtifact(text)` and
+  `detectArtifactKind(text)` over plain text extracted from a dropped
+  PDF/DOCX. Returns one of `bill`, `eob`, `msn`, `lab-result`,
+  `denial-letter`, `pharmacy-list`, `discharge-summary`,
+  `insurance-card`, or `unknown`. The classifier is pure-function, no
+  network, no AI: each artifact kind has a hand-written fingerprint
+  (regex + keyword sets) that emits a small integer score and the
+  matched fragments. Ties break by an explicit kind-priority table so
+  EOBs are never misrouted to `bill` and MSNs always beat both. A
+  `MIN_CONFIDENT_SCORE` floor returns `unknown` rather than guessing,
+  which is what the v7 dropzone UI's chooser pane will key on once it
+  lands. The module is engine-only; UI wiring is deferred to the
+  section 4 dropzone pages.
+- 21 new unit tests in `test/unit/artifact-detect.test.js`: one
+  positive fixture per artifact kind, anti-misroute cases (EOB
+  mentioning "balance", bill mentioning "CBC", pharmacy list mixed
+  with discharge tokens), an `unknown`-on-low-signal case, a
+  determinism check, and a structural test of the `scores` return
+  shape. Test count 621 -> 641.
+
 ### Added (spec-v7 sections 3.2 and 3.4 - synonym-routed prompt and collapsible tile-grid)
 
 - **Synonym-routed hero search (spec-v7 section 3.2).** A new hand-curated

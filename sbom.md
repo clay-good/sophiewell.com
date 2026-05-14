@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `73528cb166f6de73`
-Generated: 2026-05-14T23:46:51.817Z
+Build ID: `278c1b92789da78a`
+Generated: 2026-05-14T23:51:49.069Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=20.18.1 <21, npm >=10.0.0
@@ -42,6 +42,7 @@ downloads is committed in this repository and is hashed below.
 | Path | Bytes | SHA-256 |
 |---|---:|---|
 | `lib/aca-sep.js` | 2961 | `8ebb4335a70bd61c447ae179338d59f4f5cdead7562f67c626749eaf81d6bae2` |
+| `lib/artifact-detect.js` | 11593 | `35b59ad29ea2cea64de809c58f4353d0ffd924217c9db6ac0bd98a1a640487f4` |
 | `lib/birthday-rule.js` | 2243 | `2f109eb119aef3f369e6b9618b7dd0580ef76936b4211ae12d7561bd0d52462b` |
 | `lib/clinical-v4.js` | 7486 | `f23d565651f5a2dce08304b36464f52d53d3bfd1a59f5ea880bb59e9b180b721` |
 | `lib/clinical-v5.js` | 23488 | `220591774914b1d8bccb97e5dd323d06f542fda96673743f4d7e6a54152f4030` |
