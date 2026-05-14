@@ -434,6 +434,69 @@ body {
   flex-wrap: wrap;
   gap: 6px;
 }
+
+/* spec-v6 §4.2.1: task hero. A promoted search input above the tile grid. */
+.task-hero {
+  margin: 8px 0 20px;
+  padding: 20px 22px 18px;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-card);
+}
+.task-hero .hero-label {
+  display: block;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 10px;
+}
+.task-hero input[type="search"] {
+  display: block;
+  width: 100%;
+  font: inherit;
+  font-size: 1rem;
+  padding: 12px 14px;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  border: 1px solid var(--border-light);
+  border-radius: 8px;
+}
+.task-hero input[type="search"]:focus-visible {
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 2px;
+}
+.task-hero .hero-examples {
+  margin: 10px 2px 0;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+/* spec-v6 §4.2.2: audience filter chips. */
+.audience-chips {
+  margin: 4px 0 16px;
+  gap: 8px;
+}
+.audience-chips .toggle {
+  font-size: 0.88rem;
+  padding: 7px 14px;
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-pill);
+  background: var(--bg-secondary);
+}
+.audience-chips .toggle:hover {
+  background: var(--bg-tertiary);
+}
+.audience-chips .toggle.is-active {
+  background: var(--text-primary);
+  color: var(--bg-primary);
+  border-color: var(--text-primary);
+}
+
+.empty-state {
+  margin: 16px 4px 24px;
+  font-size: 0.95rem;
+}
 .toggle {
   font: inherit;
   font-size: 0.85rem;

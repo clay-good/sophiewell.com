@@ -393,6 +393,37 @@
         <section id="home-view" class="home-view view active" aria-labelledby="tools-heading">
           <h2 id="tools-heading" class="visually-hidden">Tools</h2>
 
+          <!-- spec-v6 §4.2.1: task hero. A promoted search input that
+               filters the tile grid below it. Same matching logic as the
+               topbar search, but visually the entry point on the home view. -->
+          <div class="task-hero" role="search">
+            <label for="hero-search" class="hero-label">What do you need to decode?</label>
+            <input
+              id="hero-search"
+              type="search"
+              autocomplete="off"
+              spellcheck="false"
+              placeholder="my medical bill, my lab results, my medication list..."
+              aria-describedby="hero-examples"
+            />
+            <p id="hero-examples" class="hero-examples">
+              Try: my medical bill, my lab results, my insurance card, my medication list, my denial letter, my EOB.
+            </p>
+          </div>
+
+          <!-- spec-v6 §4.2.2: audience filter chips. Default All preserves
+               the current grid. URL hash persists the selection. -->
+          <div class="audience-chips toggle-group" data-filter="audience" role="group" aria-label="Filter by audience">
+            <button type="button" class="toggle is-active" data-value="all" aria-pressed="true">All</button>
+            <button type="button" class="toggle" data-value="patients" aria-pressed="false">Patient</button>
+            <button type="button" class="toggle" data-value="billers" aria-pressed="false">Biller and Coder</button>
+            <button type="button" class="toggle" data-value="clinicians" aria-pressed="false">Nurse and Clinician</button>
+            <button type="button" class="toggle" data-value="field" aria-pressed="false">EMS and Field</button>
+            <button type="button" class="toggle" data-value="educators" aria-pressed="false">Educator</button>
+          </div>
+
+          <p id="empty-state" class="empty-state muted" hidden>No tools match the current filter.</p>
+
           <div id="tile-grid">
 
             <section class="home-section">

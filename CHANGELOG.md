@@ -6,6 +6,25 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v6 §4 home-page UI evolution — first two waves)
+
+- **Task hero (spec-v6 §4.2.1).** A promoted search input appears at the
+  top of the home view, labeled *"What do you need to decode?"* with
+  example patient-mental-model phrases. Typing filters the tile grid
+  below; pressing Enter on a non-empty query navigates directly to the
+  top match. The existing topbar typeahead is unchanged.
+- **Audience filter chips (spec-v6 §4.2.2).** A row of six chips
+  (All / Patient / Biller and Coder / Nurse and Clinician / EMS and
+  Field / Educator) sits above the tile grid. Selection filters the grid
+  to tiles tagged with that audience and persists in the URL hash via a
+  new `a=` segment (e.g. `#a=patients`). Default `all` omits the key
+  and preserves current behavior. `lib/hash.js` gains the new field
+  with full round-trip tests; the `Pinned` section is now inserted
+  above the tile grid (below the hero and chips) rather than at the
+  very top of the home view.
+- `index.html` gains an `#empty-state` line that surfaces when no tile
+  matches the current audience + query combination.
+
 ### Added (spec-v5 §5.3 step 7 follow-up — citations)
 
 - `docs/clinical-citations.md` gains a "spec-v5 §4 deterministic additions

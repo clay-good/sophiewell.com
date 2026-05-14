@@ -4,7 +4,29 @@ import { parseHash, buildHash } from '../../lib/hash.js';
 
 test('parseHash: empty hash', () => {
   const r = parseHash('');
-  assert.deepEqual(r, { route: '', sub: '', pinned: [], state: {} });
+  assert.deepEqual(r, { route: '', sub: '', pinned: [], state: {}, audience: 'all' });
+});
+
+test('parseHash: audience chip (spec-v6 §4.2.2)', () => {
+  const r = parseHash('#a=patients');
+  assert.equal(r.route, '');
+  assert.equal(r.audience, 'patients');
+});
+
+test('parseHash: audience alongside route + state', () => {
+  const r = parseHash('#bmi&q=' + encodeURIComponent('w=70') + '&a=clinicians');
+  assert.equal(r.route, 'bmi');
+  assert.equal(r.audience, 'clinicians');
+  assert.deepEqual(r.state, { w: '70' });
+});
+
+test('buildHash: audience round-trip', () => {
+  const h = buildHash({ route: '', audience: 'field' });
+  assert.equal(parseHash(h).audience, 'field');
+});
+
+test('buildHash: audience=all omits the key', () => {
+  assert.equal(buildHash({ route: 'bmi', audience: 'all' }), '#bmi');
 });
 
 test('parseHash: route + sub', () => {

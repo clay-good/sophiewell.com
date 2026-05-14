@@ -354,21 +354,28 @@ const GROUP_LABELS = {
   O: 'Patient Safety',
 };
 
+function syncToggleGroupState(group, value) {
+  group.querySelectorAll('.toggle').forEach((b) => {
+    const active = b.getAttribute('data-value') === value;
+    b.classList.toggle('is-active', active);
+    b.setAttribute('aria-pressed', active ? 'true' : 'false');
+  });
+}
+
 function wireFilters() {
   const groups = document.querySelectorAll('.toggle-group');
   groups.forEach((group) => {
     const filterName = group.getAttribute('data-filter');
-    const buttons = group.querySelectorAll('.toggle');
     group.addEventListener('click', (event) => {
       const btn = event.target.closest('.toggle');
       if (!btn) return;
       const value = btn.getAttribute('data-value');
-      buttons.forEach((b) => {
-        const active = b === btn;
-        b.classList.toggle('is-active', active);
-        b.setAttribute('aria-pressed', active ? 'true' : 'false');
-      });
+      syncToggleGroupState(group, value);
       filterState[filterName] = value;
+      // spec-v6 §4.2.2: audience selection persists in URL hash.
+      if (filterName === 'audience') {
+        window.history.replaceState(null, '', patchHash({ audience: value }));
+      }
       applyFilters();
     });
   });
@@ -378,6 +385,38 @@ function wireFilters() {
     search.addEventListener('input', () => {
       filterState.query = search.value.trim();
       applyFilters();
+    });
+  }
+
+  // spec-v6 §4.2.1: task hero search. Same matching as the topbar typeahead,
+  // but applied to the grid filter so the result is a filtered tile list
+  // rather than a dropdown. Empty input restores the default grid.
+  const hero = document.getElementById('hero-search');
+  if (hero) {
+    hero.addEventListener('input', () => {
+      filterState.query = hero.value.trim();
+      applyFilters();
+    });
+    hero.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') {
+        const q = hero.value.trim();
+        if (!q) return;
+        const matches = searchUtilities(q, 1);
+        if (matches[0]) {
+          e.preventDefault();
+          hero.value = '';
+          filterState.query = '';
+          applyFilters();
+          location.hash = '#' + matches[0].id;
+        }
+      } else if (e.key === 'Escape') {
+        if (hero.value) {
+          hero.value = '';
+          filterState.query = '';
+          applyFilters();
+          e.preventDefault();
+        }
+      }
     });
   }
 }
@@ -410,15 +449,12 @@ function restoreHome() {
   // Restore filter UI state.
   document.querySelectorAll('.toggle-group').forEach((group) => {
     const filterName = group.getAttribute('data-filter');
-    const value = filterState[filterName];
-    group.querySelectorAll('.toggle').forEach((b) => {
-      const active = b.getAttribute('data-value') === value;
-      b.classList.toggle('is-active', active);
-      b.setAttribute('aria-pressed', active ? 'true' : 'false');
-    });
+    syncToggleGroupState(group, filterState[filterName]);
   });
   const search = document.getElementById('search');
   if (search) search.value = filterState.query;
+  const hero = document.getElementById('hero-search');
+  if (hero) hero.value = filterState.query;
   applyFilters();
   document.title = 'Sophie Well';
 }
@@ -450,7 +486,10 @@ function renderPinnedSection() {
     section = el('section', { id: 'pinned-section', 'aria-labelledby': 'pinned-heading' });
     section.appendChild(el('h2', { id: 'pinned-heading', text: 'Pinned' }));
     section.appendChild(el('div', { id: 'pinned-grid', class: 'home-grid' }));
-    homeView.insertBefore(section, homeView.firstChild);
+    // spec-v6 §4: insert above the tile grid but below the task hero and
+    // audience chips so the hero stays the visible entry point.
+    const anchor = document.getElementById('tile-grid') || homeView.firstChild;
+    homeView.insertBefore(section, anchor);
   }
   if (!section) return;
   const pinnedGrid = section.querySelector('#pinned-grid');
@@ -912,6 +951,13 @@ function registerServiceWorker() {
 
 function boot() {
   captureHomeSnapshot();
+  // spec-v6 §4.2.2: initial audience chip from URL hash.
+  const initial = parseHash(window.location.hash);
+  if (initial.audience && initial.audience !== 'all') {
+    filterState.audience = initial.audience;
+    const group = document.querySelector('.toggle-group[data-filter="audience"]');
+    if (group) syncToggleGroupState(group, initial.audience);
+  }
   wireFilters();
   applyFilters();
   renderPinnedSection();
