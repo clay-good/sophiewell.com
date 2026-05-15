@@ -1,15 +1,18 @@
 # spec-v9.md — sophiewell.com: inline-citation completion and example-first inputs
 
-> Status: wave 1 landed (2026-05-15). Execution spec for spec-v8 §3.3
-> (example-value contract) and §3.4 (citation contract). Does not
-> change the four-region tile contract; it finishes wiring it. No new
-> tiles, no new tools, no design changes — only data coverage and four
-> small render touch-ups.
+> Status: waves 1 and 2 landed (2026-05-15). Execution spec for
+> spec-v8 §3.3 (example-value contract) and §3.4 (citation contract).
+> Does not change the four-region tile contract; it finishes wiring
+> it. No new tiles, no new tools, no design changes — only data
+> coverage and four small render touch-ups.
 >
-> Wave 1 status: render touch-ups (§3.1, §3.2, §3.3, §3.4) and
-> soft-mode coverage assertions (§4.4) shipped. Citation coverage
-> 144/178 (baseline 131); example coverage 59/178 (baseline 51).
-> Wave 2 (citation backfill) and wave 3 (example backfill) outstanding.
+> Wave 1: render touch-ups (§3.1, §3.2, §3.3, §3.4) and soft-mode
+> coverage assertions (§4.4) shipped.
+>
+> Wave 2: citation backfill complete. **178/178 tiles** carry
+> `META[id].citation`; the citation-coverage assertion is now in
+> **hard** mode. Example coverage holds at 59/178 (baseline 51).
+> Wave 3 (example backfill, group-by-group) outstanding.
 
 ## 1. Why this spec exists
 

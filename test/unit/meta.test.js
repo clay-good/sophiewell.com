@@ -80,22 +80,23 @@ const NO_INPUTS_TILES = new Set([
   // wave 1 so the soft-mode log surfaces the full backlog.
 ]);
 
-test('META v9 coverage (soft): citation backfill progress', async () => {
+test('META v9 coverage (hard): every tile has META[id].citation', async () => {
+  // spec-v9 §4.4: wave 2 lands citation backfill for the remaining 34
+  // tiles; the assertion flips from soft (log + floor) to hard (every
+  // home-grid tile must carry a citation). Source stamps may also be
+  // present; this test only checks the citation contract.
   const { readFileSync } = await import('node:fs');
   const html = readFileSync(new URL('../../index.html', import.meta.url), 'utf8');
   const ids = [...html.matchAll(/data-tool="([^"]+)"/g)].map((m) => m[1]);
   const missing = [];
   for (const id of ids) {
     const m = META[id];
-    if (!m) continue;
+    if (!m) { missing.push(`${id} (no META entry)`); continue; }
     const hasCite = typeof m.citation === 'string' && m.citation.length > 0;
     if (!hasCite) missing.push(id);
   }
-  const have = ids.length - missing.length;
-  console.log(`[meta v9 soft] citation coverage: ${have}/${ids.length} tiles have META[id].citation; missing ${missing.length}.`);
-  // Soft assertion: pin the floor at the audit number from spec-v9 §1
-  // (131/178). If coverage regresses below today's baseline, fail.
-  assert.ok(have >= 131, `citation coverage regressed: ${have}/${ids.length} (baseline 131).`);
+  assert.deepEqual(missing, [],
+    `Tiles missing META[id].citation: ${missing.join(', ')}`);
 });
 
 test('META v9 coverage (soft): example backfill progress', async () => {
