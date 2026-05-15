@@ -628,12 +628,14 @@ function trackHashState(body) {
   body.addEventListener('change', writeState);
 }
 
-// spec-v2 sections 5.1, 5.2, 5.3: inline citation, source stamp, and
-// "Test with example" button rendered uniformly above every utility body.
+// spec-v9 §3.2: the meta block now renders as the per-tile References
+// region below the tool body. It carries the citation, the dataset stamp
+// (when present), a "Reset to example" link (when an example is defined),
+// and the universal "Copy all" affordance.
 function renderMetaBlock(util) {
   const meta = META[util.id];
   if (!meta) return null;
-  const block = el('div', { class: 'tool-meta' });
+  const block = el('section', { class: 'tool-meta', 'aria-label': 'References' });
 
   if (meta.citation) {
     block.appendChild(el('p', { class: 'citation', text: `Citation: ${meta.citation}` }));
@@ -650,24 +652,19 @@ function renderMetaBlock(util) {
   }
 
   if (meta.example) {
-    const btn = el('button', { type: 'button', class: 'example-btn', text: 'Test with example' });
+    const link = el('a', {
+      href: '#',
+      class: 'example-reset',
+      text: 'Reset to example',
+      'aria-label': 'Reset inputs to the example values',
+    });
     const note = el('span', { class: 'example-expected muted' });
-    btn.addEventListener('click', () => {
-      for (const [id, value] of Object.entries(meta.example.fields)) {
-        const elInput = document.getElementById(id);
-        if (!elInput) continue;
-        if (elInput.tagName === 'SELECT') elInput.value = value;
-        else if (elInput.type === 'checkbox') elInput.checked = value === '1' || value === true || value === 'true';
-        else elInput.value = value;
-        // Dispatch both 'input' and 'change' so renderers wired to either
-        // event re-run. Several v1 renderers listen only to one or the
-        // other; firing both is benign and keeps example-fill consistent.
-        elInput.dispatchEvent(new Event('input', { bubbles: true }));
-        elInput.dispatchEvent(new Event('change', { bubbles: true }));
-      }
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      applyExample(util);
       note.textContent = ` Expected: ${meta.example.expected}`;
     });
-    block.appendChild(el('p', { class: 'example-row' }, [btn, note]));
+    block.appendChild(el('p', { class: 'example-row' }, [link, note]));
   }
 
   // spec-v2 section 3.2: a single "Copy all" button that grabs whatever the
@@ -681,6 +678,42 @@ function renderMetaBlock(util) {
   block.appendChild(el('p', { class: 'copy-row' }, [copyAllBtn, copyLive]));
 
   return block.children.length ? block : null;
+}
+
+// spec-v9 §3.3: fill a tile's inputs from META[id].example. Returns the set
+// of input IDs that were filled so callers can avoid clobbering values that
+// hash-state already set.
+function applyExample(util, { skip } = {}) {
+  const meta = META[util.id];
+  if (!meta || !meta.example || !meta.example.fields) return new Set();
+  const filled = new Set();
+  for (const [id, value] of Object.entries(meta.example.fields)) {
+    if (skip && skip.has(id)) continue;
+    const node = document.getElementById(id);
+    if (!node) continue;
+    if (node.tagName === 'SELECT') node.value = value;
+    else if (node.type === 'checkbox') node.checked = value === '1' || value === true || value === 'true';
+    else node.value = value;
+    // Dispatch both 'input' and 'change' so renderers wired to either
+    // event re-run. Several renderers listen only to one or the other.
+    node.dispatchEvent(new Event('input', { bubbles: true }));
+    node.dispatchEvent(new Event('change', { bubbles: true }));
+    filled.add(id);
+  }
+  return filled;
+}
+
+// spec-v9 §3.3: append a muted "(example: <value>)" annotation next to the
+// label of an input that was pre-filled from META[id].example. Renderers
+// that pair each input with a <label for="id"> get the annotation
+// automatically; ad-hoc renderers can call this helper from view code.
+export function annotateExample(id, value) {
+  const label = document.querySelector(`label[for="${CSS.escape(id)}"]`);
+  if (!label) return;
+  if (label.querySelector('.example-hint')) return;
+  label.appendChild(
+    el('span', { class: 'example-hint muted', text: ` (example: ${value})` })
+  );
 }
 
 function renderToolView(util) {
@@ -718,9 +751,9 @@ function renderToolView(util) {
     );
   }
 
-  const metaBlock = renderMetaBlock(util);
-  if (metaBlock) content.appendChild(metaBlock);
-
+  // spec-v9 §3.2: tile regions render in the order title → description →
+  // inputs → references. The meta block (References) is appended *after*
+  // the tool body, not above it.
   const body = el('div', { id: 'tool-body', class: 'tool-body' });
   content.appendChild(body);
 
@@ -733,7 +766,20 @@ function renderToolView(util) {
   if (renderer) {
     try {
       renderer(body);
-      Promise.resolve().then(() => { applyHashState(body); trackHashState(body); });
+      // spec-v9 §3.3: pre-fill META[id].example after the renderer mounts,
+      // but let URL-hash state win (deep links keep their values).
+      Promise.resolve().then(() => {
+        applyHashState(body);
+        trackHashState(body);
+        const hashKeys = new Set(Object.keys(parseHash(window.location.hash).state || {}));
+        const filled = applyExample(util, { skip: hashKeys });
+        const meta = META[util.id];
+        if (meta && meta.example && meta.example.fields) {
+          for (const [id, value] of Object.entries(meta.example.fields)) {
+            if (filled.has(id)) annotateExample(id, value);
+          }
+        }
+      });
     } catch (err) {
       console.error(`[sophiewell] renderer threw for tool "${util.id}":`, err);
       body.appendChild(el('p', { class: 'muted', text: `Error rendering tool: ${err.message}` }));
@@ -748,12 +794,8 @@ function renderToolView(util) {
     );
   }
 
-  content.appendChild(
-    el('section', { class: 'tool-sources', 'aria-labelledby': 'sources-heading' }, [
-      el('h2', { id: 'sources-heading', text: 'Data sources' }),
-      el('p', { class: 'muted', text: 'See docs/data-sources.md and docs/clinical-citations.md for the full source catalog and citations.' }),
-    ])
-  );
+  const metaBlock = renderMetaBlock(util);
+  if (metaBlock) content.appendChild(metaBlock);
   document.title = util.name + ' | Sophie Well';
 
   // Always reset scroll so the new view is visible.

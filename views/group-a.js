@@ -124,7 +124,6 @@ export const renderers = {
       renderDetail: (r) => el('section', {}, [
         el('h2', { text: r.code }),
         el('p', { text: r.desc }),
-        el('p', { class: 'muted', text: 'Source: CMS / NCHS public-domain ICD-10-CM tabular list.' }),
       ]),
     });
   },
@@ -136,7 +135,6 @@ export const renderers = {
         el('h2', { text: r.code }),
         el('p', {}, [el('strong', { text: 'Short: ' }), document.createTextNode(r.short || '')]),
         el('p', {}, [el('strong', { text: 'Long: ' }), document.createTextNode(r.long || '')]),
-        el('p', { class: 'muted', text: 'Source: CMS public-domain HCPCS Level II.' }),
       ]),
     });
   },

@@ -798,6 +798,9 @@ main h1 {
 .tool-meta .example-row { margin-bottom: 0; }
 .tool-meta .example-expected { margin-left: var(--space-2); font-size: 0.85rem; }
 .tool-meta .example-btn { font-size: 0.85rem; }
+.tool-meta .example-reset { font-size: 0.85rem; }
+/* spec-v9 §3.3: muted "(example: <value>)" annotation next to input labels. */
+.example-hint { font-size: 0.8rem; margin-left: var(--space-1); font-weight: normal; }
 
 /* Copy buttons */
 .copy-row { margin-bottom: 0; }

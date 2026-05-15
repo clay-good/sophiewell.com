@@ -59,7 +59,6 @@ export const renderers = {
       const r = pedsDose({ weightKg: nv('pwd-w'), recipe: document.getElementById('pwd-r').value });
       o.appendChild(el('p', { text: `Dose: ${r.dose} ${r.units}` }));
       if (r.capped) o.appendChild(el('p', { class: 'notice', text: 'Calculated dose exceeds the per-dose cap; cap value reported.' }));
-      o.appendChild(el('p', { class: 'muted', text: 'Source: FDA labeling and standard prehospital pediatric resuscitation literature. Reference only.' }));
     });
     ['pwd-w', 'pwd-r'].forEach((id) => document.getElementById(id).addEventListener('input', run));
     document.getElementById('pwd-r').addEventListener('change', run);

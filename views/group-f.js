@@ -275,7 +275,6 @@ export const renderers = {
         const eq = benzoEquivalent({ drug: fromSel.value, doseMg: dose, target: toSel.value, table });
         if (eq == null) { out.appendChild(el('p', { text: 'No equivalence available.' })); return; }
         out.appendChild(el('h2', { text: `${dose} mg ${fromSel.value} ≈ ${eq.toFixed(2)} mg ${toSel.value}` }));
-        out.appendChild(el('p', { class: 'muted', text: 'Source: Ashton manual (public).' }));
       };
       ['bz-dose', 'bz-from', 'bz-to'].forEach((id) => document.getElementById(id).addEventListener(id === 'bz-dose' ? 'input' : 'change', run));
     });
@@ -297,7 +296,6 @@ export const renderers = {
         if (!band) { out.appendChild(el('p', { text: 'No dose band found.' })); return; }
         out.appendChild(el('h2', { text: `${drugSel.value} - CrCl ${crCl} mL/min` }));
         out.appendChild(el('p', { text: `Dose: ${band.dose}; Interval: ${band.interval}` }));
-        out.appendChild(el('p', { class: 'muted', text: 'Source: FDA labels via DailyMed. Verify against your institution\'s antimicrobial stewardship guidance.' }));
       };
       ['abx-drug', 'abx-crcl'].forEach((id) => document.getElementById(id).addEventListener(id === 'abx-crcl' ? 'input' : 'change', run));
     });

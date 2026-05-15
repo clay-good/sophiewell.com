@@ -2,9 +2,10 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { _testing } from '../../lib/keyboard.js';
 
-test('shortcuts: includes home, search, and the named utilities', () => {
+test('shortcuts: includes home and the named utilities', () => {
+  // The "s" leader (focus search) was retired with the topbar search input.
   const keys = new Set(_testing.SHORTCUTS.map(([k]) => k));
-  for (const k of ['h', 's', 'p', 'u', 'b', 'e', 'd', 'w', 'm', 'g', 'i', 'c', 'n', 'f', 'o']) {
+  for (const k of ['h', 'p', 'u', 'b', 'e', 'd', 'w', 'm', 'g', 'i', 'c', 'n', 'f', 'o']) {
     assert.ok(keys.has(k), `missing shortcut letter: ${k}`);
   }
 });

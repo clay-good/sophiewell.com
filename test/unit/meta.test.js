@@ -66,3 +66,54 @@ test('META: every tool surfaces either a citation or a source stamp', async () =
   assert.deepEqual(naked, [],
     `Tools with neither citation nor source stamp: ${naked.join(', ')}`);
 });
+
+// spec-v9 §4.4 wave-1 (soft mode): track citation- and example-coverage
+// across the full home-grid so the audit numbers in spec-v9 §1 become
+// CI-visible. These assertions log the gap rather than fail; wave 2 flips
+// the citation assertion to hard, wave 3d flips the example assertion.
+//
+// NO_INPUTS_TILES is the contributor-curated allowlist of tiles that have
+// no inputs (pure tables, reference cards). Adding to this set is a
+// code-review event.
+const NO_INPUTS_TILES = new Set([
+  // Filled in during wave 3 as input-less tiles are identified. Empty in
+  // wave 1 so the soft-mode log surfaces the full backlog.
+]);
+
+test('META v9 coverage (soft): citation backfill progress', async () => {
+  const { readFileSync } = await import('node:fs');
+  const html = readFileSync(new URL('../../index.html', import.meta.url), 'utf8');
+  const ids = [...html.matchAll(/data-tool="([^"]+)"/g)].map((m) => m[1]);
+  const missing = [];
+  for (const id of ids) {
+    const m = META[id];
+    if (!m) continue;
+    const hasCite = typeof m.citation === 'string' && m.citation.length > 0;
+    if (!hasCite) missing.push(id);
+  }
+  const have = ids.length - missing.length;
+  console.log(`[meta v9 soft] citation coverage: ${have}/${ids.length} tiles have META[id].citation; missing ${missing.length}.`);
+  // Soft assertion: pin the floor at the audit number from spec-v9 §1
+  // (131/178). If coverage regresses below today's baseline, fail.
+  assert.ok(have >= 131, `citation coverage regressed: ${have}/${ids.length} (baseline 131).`);
+});
+
+test('META v9 coverage (soft): example backfill progress', async () => {
+  const { readFileSync } = await import('node:fs');
+  const html = readFileSync(new URL('../../index.html', import.meta.url), 'utf8');
+  const ids = [...html.matchAll(/data-tool="([^"]+)"/g)].map((m) => m[1]);
+  const missing = [];
+  for (const id of ids) {
+    if (NO_INPUTS_TILES.has(id)) continue;
+    const m = META[id];
+    if (!m) continue;
+    const hasExample = m.example && m.example.fields && Object.keys(m.example.fields).length > 0;
+    if (!hasExample) missing.push(id);
+  }
+  const candidate = ids.filter((id) => !NO_INPUTS_TILES.has(id)).length;
+  const have = candidate - missing.length;
+  console.log(`[meta v9 soft] example coverage: ${have}/${candidate} input-bearing tiles have META[id].example; missing ${missing.length}.`);
+  // Soft assertion: pin the floor at the audit number from spec-v9 §1
+  // (51 examples). Regressing below the baseline fails the suite.
+  assert.ok(have >= 51, `example coverage regressed: ${have}/${candidate} (baseline 51).`);
+});
