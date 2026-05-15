@@ -90,6 +90,42 @@ const NO_INPUTS_TILES = new Set([
   'high-alert',        // Group F: ISMP high-alert medication list.
   'iv-to-po',          // Group F: IV-to-PO bioavailability reference table.
   'opioid-mme',        // Group F: dynamic per-row opioid MME calculator.
+  // Wave 3c: pure-reference tiles in Group G and Group I that show a
+  // static table or scale and take no fillable form. The five PHQ-9-style
+  // screeners (phq9, gad7, auditc, cage, epds) auto-fill via the
+  // screener's own exampleAnswers (lib/scoring-v4.js + lib/screener.js)
+  // rather than via META.example, so they are allowlisted here too.
+  'asa',              // Group G: ASA Physical Status reference table.
+  'mallampati',       // Group G: Mallampati class reference.
+  'mrs',              // Group G: Modified Rankin Scale reference.
+  'phq9',             // Group G: screener; pre-fills via PHQ9_CONFIG.exampleAnswers.
+  'gad7',             // Group G: screener; pre-fills via GAD7_CONFIG.exampleAnswers.
+  'auditc',           // Group G: screener; pre-fills via AUDITC_CONFIG.exampleAnswers.
+  'cage',             // Group G: screener; pre-fills via CAGE_CONFIG.exampleAnswers.
+  'epds',             // Group G: screener; pre-fills via EPDS_CONFIG.exampleAnswers.
+  'adult-arrest-ref', // Group I: AHA adult cardiac-arrest drug table.
+  'peds-arrest-ref',  // Group I: AHA pediatric cardiac-arrest drug table.
+  'hypothermia',      // Group I: WMS hypothermia staging table.
+  'heat-illness',     // Group I: WMS heat-illness staging table.
+  'toxidromes',       // Group I: ATSDR/CDC toxidrome reference table.
+  'dot-erg',          // Group I: PHMSA Emergency Response Guidebook table.
+  'niosh-pg',         // Group I: CDC NIOSH Pocket Guide table.
+  'cpr-numeric',      // Group I: AHA CPR/ECC numeric reference.
+  'tccc',             // Group I: CoTCCC tourniquet/wound-packing reference.
+  'co-cn-antidote',   // Group I: CO/CN antidote reference card.
+  // Wave 3d: Group J/K/L/O reference + decision-tree tiles.
+  'tetanus',          // Group J: tetanus prophylaxis decision tree.
+  'rabies-pep',       // Group J: rabies PEP decision tree.
+  'bbp-exposure',     // Group J: bloodborne pathogen exposure decision tree.
+  'sti-screening',    // Group J: CDC STI screening reference table.
+  'lab-adult',        // Group K: adult lab-range reference table.
+  'lab-peds',         // Group K: pediatric lab-range reference table.
+  'tdm-levels',       // Group K: therapeutic drug-level reference table.
+  'tox-levels',       // Group K: toxicity threshold reference table.
+  'cms1500',          // Group L: CMS-1500 field-by-field reference.
+  'ub04',             // Group L: UB-04 field-by-field reference.
+  'eob-glossary',     // Group L: EOB jargon glossary table.
+  'high-alert-card',  // Group O: ISMP high-alert wallet card reference.
 ]);
 
 test('META v9 coverage (hard): every tile has META[id].citation', async () => {
@@ -111,7 +147,11 @@ test('META v9 coverage (hard): every tile has META[id].citation', async () => {
     `Tiles missing META[id].citation: ${missing.join(', ')}`);
 });
 
-test('META v9 coverage (soft): example backfill progress', async () => {
+test('META v9 coverage (hard): every input-bearing tile has META[id].example', async () => {
+  // spec-v9 §4.4: wave 3d completes the example backlog. The assertion
+  // flips from soft (log + floor at 51) to hard: every home-grid tile
+  // not in NO_INPUTS_TILES must carry META[id].example with non-empty
+  // fields. Adding to NO_INPUTS_TILES is a code-review event.
   const { readFileSync } = await import('node:fs');
   const html = readFileSync(new URL('../../index.html', import.meta.url), 'utf8');
   const ids = [...html.matchAll(/data-tool="([^"]+)"/g)].map((m) => m[1]);
@@ -119,14 +159,10 @@ test('META v9 coverage (soft): example backfill progress', async () => {
   for (const id of ids) {
     if (NO_INPUTS_TILES.has(id)) continue;
     const m = META[id];
-    if (!m) continue;
+    if (!m) { missing.push(`${id} (no META entry)`); continue; }
     const hasExample = m.example && m.example.fields && Object.keys(m.example.fields).length > 0;
     if (!hasExample) missing.push(id);
   }
-  const candidate = ids.filter((id) => !NO_INPUTS_TILES.has(id)).length;
-  const have = candidate - missing.length;
-  console.log(`[meta v9 soft] example coverage: ${have}/${candidate} input-bearing tiles have META[id].example; missing ${missing.length}.`);
-  // Soft assertion: pin the floor at the audit number from spec-v9 §1
-  // (51 examples). Regressing below the baseline fails the suite.
-  assert.ok(have >= 51, `example coverage regressed: ${have}/${candidate} (baseline 51).`);
+  assert.deepEqual(missing, [],
+    `Tiles missing META[id].example (or add to NO_INPUTS_TILES with rationale): ${missing.join(', ')}`);
 });

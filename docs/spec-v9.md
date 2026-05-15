@@ -1,28 +1,31 @@
 # spec-v9.md — sophiewell.com: inline-citation completion and example-first inputs
 
-> Status: waves 1, 2, 3a, 3b landed (2026-05-15). Execution spec for
-> spec-v8 §3.3 (example-value contract) and §3.4 (citation contract).
-> Does not change the four-region tile contract; it finishes wiring
-> it. No new tiles, no new tools, no design changes — only data
-> coverage and four small render touch-ups.
+> Status: spec-v9 complete (2026-05-15). All four waves landed; both
+> coverage assertions are in **hard** mode. spec-v8 §3.3
+> (example-value contract) and §3.4 (citation contract) are now
+> CI-enforced for every home-grid tile.
 >
 > Wave 1: render touch-ups (§3.1, §3.2, §3.3, §3.4) and soft-mode
 > coverage assertions (§4.4) shipped.
 >
-> Wave 2: citation backfill complete. **178/178 tiles** carry
-> `META[id].citation`; the citation-coverage assertion is in **hard**
-> mode.
+> Wave 2: citation backfill complete — **178/178 tiles** carry
+> `META[id].citation`; assertion in **hard** mode.
 >
-> Wave 3a (Groups A, C): code-lookup search examples + patient-tool
-> form examples landed; `abn-explainer` and `idr-eligibility` added
-> to `NO_INPUTS_TILES`.
+> Waves 3a-3d: example backfill complete. Every input-bearing tile
+> carries `META[id].example` with non-empty `fields` and an
+> `expected` line; the example-coverage assertion is in **hard**
+> mode. Pure-reference and decision-tree tiles live in
+> `NO_INPUTS_TILES` with per-entry rationale; the screener tiles
+> (`phq9`, `gad7`, `auditc`, `cage`, `epds`) pre-fill via their own
+> `exampleAnswers` in [lib/scoring-v4.js](../lib/scoring-v4.js) +
+> [lib/screener.js](../lib/screener.js), which were updated to the
+> v9 contract (auto-fill on first paint, "Reset to example" link
+> instead of the old "Test with example" button).
 >
-> Wave 3b (Groups E, F): clinical-math + medication-math examples
-> landed. Pure-table tiles (`peds-dose`, `anticoag-reversal`,
-> `high-alert`, `iv-to-po`) and the dynamic-row `opioid-mme` added
-> to `NO_INPUTS_TILES`. Example coverage now **99/171 input-bearing
-> tiles** (baseline 51/178). Waves 3c (G/H/I) and 3d (J/K-O/v5/v6)
-> outstanding before the example assertion flips to hard mode.
+> Wave 4 (cleanup) — audit any remaining `Source:` / `Citation:`
+> strings in renderers and any user-facing copy that still points
+> at `docs/data-sources.md` or `docs/clinical-citations.md`.
+> Outstanding.
 
 ## 1. Why this spec exists
 

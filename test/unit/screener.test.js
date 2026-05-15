@@ -72,15 +72,16 @@ test('renderScreener: live-renders score and band when all items answered', () =
   assert.ok(root.textContent.includes('Consider PHQ-9 follow-up.'));
 });
 
-test('renderScreener: example button hydrates answers', () => {
+test('renderScreener: exampleAnswers auto-fill on first paint (spec-v9 §3.3)', () => {
   const root = makeDiv();
   globalThis.window.location.hash = '';
   renderScreener(root, { id: 'phq2', items: phq2Items, severityBands: bands, citation: 'x', exampleAnswers: [1, 1] });
-  const btn = root.querySelectorAll('.example-btn')[0];
-  assert.ok(btn);
-  btn.click();
+  // The example fills before any user interaction; the score is live.
   assert.ok(root.textContent.includes('Score: 2'));
   assert.ok(root.textContent.includes('Severity: Negative'));
+  // The "Reset to example" link replaces the prior "Test with example" button.
+  const link = root.querySelector('.example-reset');
+  assert.ok(link, 'Reset-to-example link is rendered');
 });
 
 test('renderScreener: empty severityBands and zero score still works', () => {

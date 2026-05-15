@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `215c7bad34924202`
-Generated: 2026-05-15T12:37:28.351Z
+Build ID: `7446c16bc4526706`
+Generated: 2026-05-15T12:56:15.498Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=20.18.1 <21, npm >=10.0.0
@@ -62,11 +62,11 @@ downloads is committed in this repository and is hashed below.
 | `lib/live.js` | 1138 | `304978d3c170b6eb06cade7702e5f99d868e9b3e1f5651aa9a28da15e62a6a9c` |
 | `lib/medicare-enrollment.js` | 2884 | `6a4c11321477e712efc44d4de84336463ea6800bc64f654b5e9d0b16c440877d` |
 | `lib/medication-v4.js` | 5501 | `a75b60584a9264ee1500e14642c5e4784fb0a0994bf4c8cb4eaa0d294f571f37` |
-| `lib/meta.js` | 52023 | `af6d2dcf93d2d00b79f2d8df06c4dd8353e328920bc4637e1ee1e9c504f7c4e9` |
+| `lib/meta.js` | 61678 | `fc94978d6f569d44baf6f30aaa7153178ea77836e3f10704053c88113289e2e7` |
 | `lib/print.js` | 2588 | `74579a71f82b75993dea9f7d9b3c21e67744bd4dbe6f50e20c8eef9aa1be7546` |
 | `lib/regulatory.js` | 4040 | `9e1ef6751facc0172c492010ccd35982061f06b000db2e857a98ec2013e7087c` |
-| `lib/scoring-v4.js` | 30295 | `3b7c1c1228f87e8c885a5c2108a30ec9699a958545148eef3ef165c34761fda3` |
-| `lib/screener.js` | 5688 | `2472fff105c4ddd9f0ba8141dbd6de7b922ea4da93db0480f4246a6c1f952699` |
+| `lib/scoring-v4.js` | 30573 | `8cf1449c89082c392bbbef8f837fe75271bf6ea26584b5e33328f5186ee53678` |
+| `lib/screener.js` | 6183 | `44d4eb19e04ed575d847bc6dbdd843b1a8afc387b01298891e0c9d218e30ced2` |
 | `lib/search.js` | 1726 | `eb447d039ac1ea7b459743b6aeeffea114f90f07d45a6bd53dbe60eb1c8fdd9b` |
 | `lib/synonyms.js` | 3339 | `f28e834e5b603c1564099976489ad33f05109a0b74f130f9153aa2a90518bc16` |
 | `lib/table.js` | 4816 | `58b7eb635eed6fb9042b0383af1d3456585be97825da5cb77825fc9fa5b789f1` |
