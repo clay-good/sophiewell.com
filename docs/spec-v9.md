@@ -1,6 +1,6 @@
 # spec-v9.md — sophiewell.com: inline-citation completion and example-first inputs
 
-> Status: waves 1 and 2 landed (2026-05-15). Execution spec for
+> Status: waves 1, 2, 3a, 3b landed (2026-05-15). Execution spec for
 > spec-v8 §3.3 (example-value contract) and §3.4 (citation contract).
 > Does not change the four-region tile contract; it finishes wiring
 > it. No new tiles, no new tools, no design changes — only data
@@ -10,9 +10,19 @@
 > coverage assertions (§4.4) shipped.
 >
 > Wave 2: citation backfill complete. **178/178 tiles** carry
-> `META[id].citation`; the citation-coverage assertion is now in
-> **hard** mode. Example coverage holds at 59/178 (baseline 51).
-> Wave 3 (example backfill, group-by-group) outstanding.
+> `META[id].citation`; the citation-coverage assertion is in **hard**
+> mode.
+>
+> Wave 3a (Groups A, C): code-lookup search examples + patient-tool
+> form examples landed; `abn-explainer` and `idr-eligibility` added
+> to `NO_INPUTS_TILES`.
+>
+> Wave 3b (Groups E, F): clinical-math + medication-math examples
+> landed. Pure-table tiles (`peds-dose`, `anticoag-reversal`,
+> `high-alert`, `iv-to-po`) and the dynamic-row `opioid-mme` added
+> to `NO_INPUTS_TILES`. Example coverage now **99/171 input-bearing
+> tiles** (baseline 51/178). Waves 3c (G/H/I) and 3d (J/K-O/v5/v6)
+> outstanding before the example assertion flips to hard mode.
 
 ## 1. Why this spec exists
 

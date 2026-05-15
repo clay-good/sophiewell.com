@@ -76,8 +76,20 @@ test('META: every tool surfaces either a citation or a source stamp', async () =
 // no inputs (pure tables, reference cards). Adding to this set is a
 // code-review event.
 const NO_INPUTS_TILES = new Set([
-  // Filled in during wave 3 as input-less tiles are identified. Empty in
-  // wave 1 so the soft-mode log surfaces the full backlog.
+  // Wave 3a: pure reference tiles with no fillable form. The decision-tree
+  // tile is click-driven (not text-input) and is treated as input-less for
+  // the example-coverage contract.
+  'abn-explainer',   // Group C: static box-by-box CMS-R-131 reference.
+  'idr-eligibility', // Group C: click-through decision tree, no form fields.
+  // Wave 3b: pure-table reference tiles in Group F (no inputs the user
+  // fills before getting an answer; the tile *is* the table). opioid-mme
+  // builds inputs dynamically per row, so there is no static field set
+  // to pre-fill from META.
+  'peds-dose',         // Group F: pediatric dose reference table.
+  'anticoag-reversal', // Group F: anticoagulant reversal reference table.
+  'high-alert',        // Group F: ISMP high-alert medication list.
+  'iv-to-po',          // Group F: IV-to-PO bioavailability reference table.
+  'opioid-mme',        // Group F: dynamic per-row opioid MME calculator.
 ]);
 
 test('META v9 coverage (hard): every tile has META[id].citation', async () => {
