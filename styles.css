@@ -153,7 +153,6 @@ body {
   height: 32px;
   object-fit: contain;
   filter: drop-shadow(0 0 8px var(--logo-glow));
-  animation: float 4s ease-in-out infinite;
 }
 .topbar .topbar-brand:hover img {
   filter: drop-shadow(0 0 14px var(--logo-glow-hover));
