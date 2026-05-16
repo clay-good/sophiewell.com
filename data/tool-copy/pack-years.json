@@ -1,0 +1,4 @@
+{
+  "whatThisIs": "Compute cigarette pack-years from the standard tobacco-history measure: packs per day multiplied by years smoked. Sophie Well accepts fractional packs (e.g., half a pack = 0.5) and returns the integer pack-year total used in lung-cancer screening eligibility, COPD risk stratification, and surgical pre-op assessment.",
+  "whenToUse": "Use this when documenting a smoking history in a primary-care visit, when screening eligibility for low-dose chest CT (USPSTF 2021: age 50-80 with >=20 pack-years and current or recent smoking), or when explaining cumulative exposure to a patient. Pack-years measure cigarettes only; cigar, pipe, vape, and cannabis exposure are documented separately."
+}

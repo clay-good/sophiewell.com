@@ -1,0 +1,4 @@
+{
+  "whatThisIs": "Compute mean arterial pressure from a cuff systolic and diastolic using the standard physiology approximation MAP = (2*DBP + SBP) / 3. Sophie Well returns the MAP in mmHg, the pulse pressure (SBP - DBP), and the rounded ratio so the bedside math matches the monitor display.",
+  "whenToUse": "Reach for this when the chart shows only the SBP/DBP cuff value and you need a perfusion proxy - sepsis bundle targets (MAP >=65), neuro-ICU thresholds, or post-cardiac-arrest goals. The formula assumes a normal heart rate and a roughly sinusoidal pressure waveform; on an arterial line or in shock, the monitored MAP is more accurate than this estimate."
+}

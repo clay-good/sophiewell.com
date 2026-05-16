@@ -80,14 +80,16 @@
 > - [x] `data/tool-copy/<id>.json` override mechanism landed
 >       (2026-05-16). `build-tool-pages.mjs` reads the optional
 >       file at build time and substitutes the `whatThisIs` and
->       `whenToUse` fields into the prose body. Third wave of
->       hand-authored files shipped (2026-05-16): 30 total -
+>       `whenToUse` fields into the prose body. Fourth wave of
+>       hand-authored files shipped (2026-05-16): 40 total -
 >       icd10, qtc, egfr, wells-pe, decoder, eob-decoder,
 >       no-surprises, bmi, naloxone, opioid-mme, anion-gap,
 >       drip-rate, gcs, apgar, chads, ascvd, corrected-calcium,
 >       nihss, heart, curb-65, meld-childpugh, phq9, hcpcs, cpt,
->       ndc, carc, hasbled, gad7, auditc, cows. The remaining
->       ~20 of the spec's top-50 land as one-line PRs.
+>       ndc, carc, hasbled, gad7, auditc, cows, map, bsa,
+>       pack-years, due-date, cockcroft-gault, abg, wells-dvt,
+>       perc, timi, ciwa. The remaining ~10 of the spec's top-50
+>       land as one-line PRs.
 > - [ ] Per-tile 1200x630 OG image generated at build time per
 >       §6.3. Outstanding - currently every per-tool page reuses
 >       `/logo.png`, which letterboxes on wide-card consumers.

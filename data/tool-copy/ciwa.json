@@ -1,0 +1,4 @@
+{
+  "whatThisIs": "Score the revised Clinical Institute Withdrawal Assessment for Alcohol (CIWA-Ar, Sullivan 1989) across its ten items - nausea, tremor, sweating, anxiety, agitation, tactile/auditory/visual disturbances, headache, and orientation. Sophie Well sums to a 0-67 total and returns the conventional severity band so the bedside nurse and prescriber can drive a symptom-triggered protocol.",
+  "whenToUse": "Use this at scheduled intervals (typically q1-2h) for an inpatient at risk of alcohol withdrawal so benzodiazepine dosing can be triggered by score thresholds rather than fixed schedules. CIWA assumes the patient can communicate; for intubated, sedated, or non-verbal patients, an observation-only scale such as the Minnesota Detoxification Scale (MINDS) or RASS-driven protocol is more appropriate."
+}

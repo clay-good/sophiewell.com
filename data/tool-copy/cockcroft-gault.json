@@ -1,0 +1,4 @@
+{
+  "whatThisIs": "Estimate creatinine clearance using the original Cockcroft-Gault formula (Nephron 1976): CrCl = ((140 - age) * weight in kg) / (72 * serum creatinine in mg/dL), with a 0.85 multiplier for female sex. Sophie Well returns the value in mL/min, the unit most drug labels still print.",
+  "whenToUse": "Use Cockcroft-Gault when a drug label or renal-dose adjustment table specifies CrCl rather than eGFR - this is still the FDA-default unit for most package inserts (vancomycin, DOACs, gabapentin, many antibiotics). For staging chronic kidney disease, use the race-free CKD-EPI 2021 eGFR instead; Cockcroft-Gault systematically over-estimates GFR in heavy patients and under-estimates in cachectic patients."
+}

@@ -1,0 +1,4 @@
+{
+  "whatThisIs": "Score the Wells criteria for deep-vein thrombosis (Lancet 1997) - active cancer, paralysis or recent immobilization, recent bed rest >3 days or major surgery, localized tenderness along the deep venous system, entire-leg swelling, calf swelling >3 cm vs the asymptomatic side, pitting edema confined to the symptomatic leg, collateral superficial veins, prior DVT, and the -2 modifier for an alternative diagnosis at least as likely. Sophie Well returns the total and the published pretest-probability band.",
+  "whenToUse": "Use this in the workup of a swollen, painful lower limb to decide whether to go straight to compression ultrasound or to start with a D-dimer. The two-tier (likely / unlikely) interpretation is the version validated for the D-dimer rule-out path; it does not by itself diagnose DVT and does not apply to upper-extremity, post-thrombotic, or pregnancy-related presentations."
+}

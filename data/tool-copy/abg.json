@@ -1,0 +1,4 @@
+{
+  "whatThisIs": "Walk a blood-gas tuple (pH, PaCO2, HCO3, and optionally PaO2 / FiO2) through the standard acid-base interpretation: primary disorder, expected respiratory or metabolic compensation, anion gap and delta-delta where labs allow, and ARDS Berlin P/F band when oxygenation values are supplied. Sophie Well returns each step explicitly so the reader can audit the logic.",
+  "whenToUse": "Use this at the bedside when a gas comes back and you need a structured walk-through before the team rounds, or as a teaching aid when training residents and students on acid-base. The output is interpretive math, not a treatment plan; mixed disorders, contributing drugs, and the clinical picture still drive the actual response."
+}

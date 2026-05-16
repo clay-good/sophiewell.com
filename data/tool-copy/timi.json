@@ -1,0 +1,4 @@
+{
+  "whatThisIs": "Compute the TIMI Risk Score for unstable angina and non-ST elevation MI (Antman 2000) from its seven binary inputs: age >=65, three or more CAD risk factors, known coronary stenosis >=50%, ST deviation on the presenting ECG, two or more anginal events in 24 hours, aspirin use in the prior seven days, and elevated cardiac markers. Sophie Well returns the 0-7 total and the published 14-day rate of all-cause mortality, new or recurrent MI, or urgent revascularization.",
+  "whenToUse": "Use this at first contact for a patient with suspected NSTE-ACS to triage disposition and stratify intensity of antiplatelet, anticoagulant, and invasive strategy. TIMI is one of several risk tools (HEART, GRACE) used in this space; in the ED, HEART is often preferred for undifferentiated chest pain because it incorporates clinician gestalt, while TIMI is most informative once ACS is the working diagnosis."
+}

@@ -1,0 +1,4 @@
+{
+  "whatThisIs": "Compute the estimated date of delivery from the first day of the last menstrual period using Naegele's rule: LMP + 280 days (40 weeks). Sophie Well returns the EDD plus the current gestational age in weeks and days, assuming a regular 28-day cycle and ovulation on day 14.",
+  "whenToUse": "Use this for an initial pregnancy-dating estimate when only the LMP is known. First-trimester crown-rump-length ultrasound is more accurate and should override Naegele if the dates differ by more than 5-7 days (ACOG/SMFM Committee Opinion 700); for IVF pregnancies, transfer-date dating supersedes both."
+}

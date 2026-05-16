@@ -1,0 +1,4 @@
+{
+  "whatThisIs": "Compute body surface area from height and weight using both the Du Bois (1916) and Mosteller (1987) formulas, side by side. Sophie Well accepts metric or US units, returns BSA in m^2 rounded to two decimals, and shows both formulas so you can match whichever the order set or institutional protocol cites.",
+  "whenToUse": "Use this whenever a dose is BSA-indexed - chemotherapy regimens, pediatric drug dosing, cardiac index calculations - or when a fluid or steroid plan calls for mg/m^2. Mosteller is the typical bedside default because the math is simpler; Du Bois is the historical reference standard. Both diverge from measured BSA at the extremes of body habitus."
+}
