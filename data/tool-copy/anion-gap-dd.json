@@ -1,0 +1,4 @@
+{
+  "whatThisIs": "Compute the serum anion gap (Na - (Cl + HCO3)), albumin-correct it when albumin is below 4 g/dL, and run the delta-delta ratio to decide whether a high-gap metabolic acidosis is pure or mixed with a concurrent non-gap process or a metabolic alkalosis. Sophie Well returns the raw gap, the corrected gap, the delta gap, and the delta ratio with the standard interpretation bands (<0.4 concurrent non-gap acidosis; 0.4-1.0 mixed; 1.0-2.0 pure HAGMA; >2.0 concurrent metabolic alkalosis).",
+  "whenToUse": "Use this when reading a basic metabolic panel that shows an elevated gap and you want to know whether one acid-base process explains the picture or whether two or three are running at once. The delta-delta is the cheapest way to detect a mixed disorder that the gap alone hides. The numbers do not name the acid - MUDPILES still requires a clinical workup - but they tell you whether to look for a single culprit or to keep widening the differential."
+}
