@@ -98,8 +98,10 @@
 >       steroid-equiv, benzo-equiv. Added in wave ten:
 >       vasopressor, anticoag-reversal, high-alert, abx-renal,
 >       peds-vitals, lab-ranges, prior-auth, hipaa-auth,
->       discharge-instr, wells-pe-geneva.
->       Hand-authored total is now 101 files; the remaining ~76
+>       discharge-instr, wells-pe-geneva. Added in wave eleven:
+>       cms1500, ub04, eob-glossary, nexus-cspine, burn-fluid,
+>       peds-ett, defib, cincinnati, fast, wells-dvt-caprini.
+>       Hand-authored total is now 111 files; the remaining ~66
 >       tiles continue to render from the templated `META`-driven
 >       copy in `build-tool-pages.mjs`.
 > - [ ] Per-tile 1200x630 OG image generated at build time per
