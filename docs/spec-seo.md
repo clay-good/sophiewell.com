@@ -95,8 +95,11 @@
 >       unit-converter, maint-fluids. Added in wave nine:
 >       insurance-card, cobra-timeline, anion-gap-dd, osmolal-gap,
 >       aa-pf-suite, egfr-suite, qtc-suite, peds-dose,
->       steroid-equiv, benzo-equiv.
->       Hand-authored total is now 91 files; the remaining ~86
+>       steroid-equiv, benzo-equiv. Added in wave ten:
+>       vasopressor, anticoag-reversal, high-alert, abx-renal,
+>       peds-vitals, lab-ranges, prior-auth, hipaa-auth,
+>       discharge-instr, wells-pe-geneva.
+>       Hand-authored total is now 101 files; the remaining ~76
 >       tiles continue to render from the templated `META`-driven
 >       copy in `build-tool-pages.mjs`.
 > - [ ] Per-tile 1200x630 OG image generated at build time per
