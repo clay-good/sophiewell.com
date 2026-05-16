@@ -103,8 +103,11 @@
 >       peds-ett, defib, cincinnati, fast, wells-dvt-caprini.
 >       Added in wave twelve: sgarbossa, rcri, pews, ranson-bisap,
 >       alvarado-pas, prevent, rabies-pep, bbp-exposure, tb-testing,
->       saag.
->       Hand-authored total is now 121 files; the remaining ~57
+>       saag. Added in wave thirteen: sodium-correction,
+>       free-water-deficit, fena-feurea, corrected-anion-gap,
+>       corrected-ca-na, pbw-ardsnet, rsbi, mentzer, insulin-drip,
+>       iv-to-po.
+>       Hand-authored total is now 131 files; the remaining ~47
 >       tiles continue to render from the templated `META`-driven
 >       copy in `build-tool-pages.mjs`.
 > - [ ] Per-tile 1200x630 OG image generated at build time per
