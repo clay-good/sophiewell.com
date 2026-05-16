@@ -29,11 +29,20 @@
 > - [x] robots.txt expanded per §8.3 to disallow `/dist/`, `/test/`,
 >       `/node_modules/` and keep the absolute sitemap URL.
 >
-> Phase 1 deferrals (still on the §14.1 list, sized as separate PRs):
-> - Trust strip (§9.2) - requires new HTML + inline SVG icons.
-> - "Why Sophie" homepage section (§9.3) - prose authoring task.
-> - Mirror the FAQ JSON-LD answers in visible HTML below the tile
->   grid as `<details>` elements (§9.4 last sentence).
+> Phase 1 deferrals - all landed (2026-05-16):
+> - [x] Trust strip (§9.2): three-badge `<ul class="trust-strip">`
+>       below the lede with inline SVG icons. Each badge links to
+>       its canonical proof (GitHub, threat model, clinical
+>       citations). 3-column on desktop, stacks at 700px.
+> - [x] "Why Sophie" homepage section (§9.3): three short prose
+>       cards under `<section class="why-sophie">` after the tile
+>       grid disclosure. Owns the long-tail "is sophiewell ...?"
+>       queries.
+> - [x] Visible HTML FAQ mirror (§9.4 last sentence): the same 12
+>       Q/A pairs from `scripts/build-ld.mjs` rendered as collapsed
+>       `<details>` elements under `<section class="visible-faq">`.
+>       Source-of-truth is still the JSON-LD; the visible block is
+>       hand-maintained in lock-step.
 >
 > Phase 2 (pre-rendered tool pages, §5 / §14.2) outstanding. That
 > wave grows the sitemap back to ~178 URLs, one per tool, each at

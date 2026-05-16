@@ -282,6 +282,126 @@ body {
   text-align: center;
 }
 
+/* spec-seo §9.2: trust strip. Three skimmable badges below the lede.
+   Three-column flex on desktop, stacks on mobile. */
+.trust-strip {
+  list-style: none;
+  margin: 0 auto var(--space-5);
+  padding: 0 var(--space-3);
+  max-width: 1100px;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--space-3);
+}
+.trust-strip a {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-3) var(--space-4);
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-primary);
+  border-radius: 8px;
+  color: var(--text-primary);
+  text-decoration: none;
+  transition: border-color 0.15s ease, background 0.15s ease;
+}
+.trust-strip a:hover,
+.trust-strip a:focus-visible {
+  background: var(--bg-tertiary);
+  border-color: var(--text-secondary);
+}
+.trust-strip .trust-icon {
+  flex: 0 0 auto;
+  color: var(--text-secondary);
+}
+.trust-strip .trust-label {
+  font-weight: 600;
+  display: block;
+}
+.trust-strip .trust-sub {
+  display: block;
+  color: var(--text-muted);
+  font-size: 0.85rem;
+}
+@media (max-width: 700px) {
+  .trust-strip { grid-template-columns: 1fr; }
+}
+
+/* spec-seo §9.3: "Why Sophie" prose section. Three short paragraphs. */
+.why-sophie {
+  max-width: 1100px;
+  margin: var(--space-6) auto var(--space-5);
+  padding: 0 var(--space-3);
+}
+.why-sophie h2 {
+  font-size: 1.4rem;
+  margin: 0 0 var(--space-4);
+  text-align: center;
+}
+.why-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--space-4);
+}
+.why-grid article {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-primary);
+  border-radius: 8px;
+  padding: var(--space-4);
+}
+.why-grid h3 {
+  font-size: 1rem;
+  margin: 0 0 var(--space-2);
+}
+.why-grid p {
+  margin: 0;
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  line-height: 1.55;
+}
+@media (max-width: 800px) {
+  .why-grid { grid-template-columns: 1fr; }
+}
+
+/* spec-seo §9.4: visible mirror of the FAQ JSON-LD. Collapsed <details>. */
+.visible-faq {
+  max-width: 900px;
+  margin: var(--space-6) auto var(--space-6);
+  padding: 0 var(--space-3);
+}
+.visible-faq h2 {
+  font-size: 1.4rem;
+  margin: 0 0 var(--space-3);
+  text-align: center;
+}
+.visible-faq details {
+  border-top: 1px solid var(--border-primary);
+  padding: var(--space-3) 0;
+}
+.visible-faq details:last-child {
+  border-bottom: 1px solid var(--border-primary);
+}
+.visible-faq summary {
+  cursor: pointer;
+  font-weight: 600;
+  color: var(--text-primary);
+  list-style: none;
+}
+.visible-faq summary::-webkit-details-marker { display: none; }
+.visible-faq summary::after {
+  content: '+';
+  float: right;
+  color: var(--text-muted);
+  font-weight: 400;
+  margin-left: var(--space-2);
+}
+.visible-faq details[open] summary::after { content: '−'; }
+.visible-faq p {
+  margin: var(--space-2) 0 0;
+  color: var(--text-secondary);
+  line-height: 1.55;
+}
+
 /* ==========================================================
    HOME GRID
    ========================================================== */

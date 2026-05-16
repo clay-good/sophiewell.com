@@ -444,6 +444,41 @@
           your device. No signup, no tracking, no AI.
         </p>
 
+        <!-- spec-seo §9.2: trust strip. Three skimmable value-prop badges
+             rendered as plain anchors with inline SVG icons. Each links to
+             the canonical proof: source on GitHub, threat model for the
+             "runs in your browser" claim, the inline References region
+             for "cited from public sources." -->
+        <ul class="trust-strip" aria-label="What makes Sophie Well different">
+          <li>
+            <a href="https://github.com/clay-good/sophiewell.com" rel="noopener" target="_blank">
+              <svg class="trust-icon" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false">
+                <path fill="currentColor" d="M12 .5A11.5 11.5 0 0 0 .5 12c0 5.08 3.29 9.39 7.86 10.91.57.1.78-.25.78-.55v-1.94c-3.2.69-3.87-1.54-3.87-1.54-.53-1.35-1.29-1.71-1.29-1.71-1.05-.72.08-.7.08-.7 1.16.08 1.78 1.19 1.78 1.19 1.04 1.78 2.72 1.27 3.38.97.1-.76.41-1.27.74-1.56-2.55-.29-5.24-1.28-5.24-5.7 0-1.26.45-2.29 1.18-3.1-.12-.29-.51-1.46.11-3.05 0 0 .97-.31 3.18 1.18.92-.26 1.91-.39 2.89-.39.98 0 1.97.13 2.89.39 2.21-1.49 3.18-1.18 3.18-1.18.62 1.59.23 2.76.11 3.05.73.81 1.18 1.84 1.18 3.1 0 4.43-2.69 5.4-5.25 5.69.42.36.79 1.07.79 2.16v3.2c0 .31.21.66.79.55A11.5 11.5 0 0 0 23.5 12 11.5 11.5 0 0 0 12 .5Z"/>
+              </svg>
+              <span class="trust-label">Free and open source</span>
+              <span class="trust-sub">MIT license, on GitHub</span>
+            </a>
+          </li>
+          <li>
+            <a href="https://github.com/clay-good/sophiewell.com/blob/main/docs/threat-model.md" rel="noopener" target="_blank">
+              <svg class="trust-icon" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false">
+                <path fill="currentColor" d="M12 2 4 5v6c0 5 3.5 9.5 8 11 4.5-1.5 8-6 8-11V5l-8-3Zm0 4.7L17.7 9v2c0 3.7-2.4 7-5.7 8.4-3.3-1.4-5.7-4.7-5.7-8.4V9L12 6.7Z"/>
+              </svg>
+              <span class="trust-label">Runs in your browser</span>
+              <span class="trust-sub">No server, no telemetry</span>
+            </a>
+          </li>
+          <li>
+            <a href="https://github.com/clay-good/sophiewell.com/blob/main/docs/clinical-citations.md" rel="noopener" target="_blank">
+              <svg class="trust-icon" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false">
+                <path fill="currentColor" d="M5 3h11l3 3v15a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1Zm10 1.5V7h2.5L15 4.5ZM7 11h10v1.5H7V11Zm0 3.5h10V16H7v-1.5Zm0 3.5h7v1.5H7V18Z"/>
+              </svg>
+              <span class="trust-label">Cited from public sources</span>
+              <span class="trust-sub">Primary citation per tool</span>
+            </a>
+          </li>
+        </ul>
+
         <section id="home-view" class="home-view view active" aria-labelledby="tools-heading">
           <h2 id="tools-heading" class="visually-hidden">Tools</h2>
 
@@ -1278,6 +1313,105 @@
 
           </div>
           </details>
+
+          <!-- spec-seo §9.3: "Why Sophie" prose section. Three short
+               indexable paragraphs that own zero-competition long-tail
+               queries ("is sophiewell free", "is sophiewell legit",
+               "is sophiewell HIPAA compliant"). -->
+          <section class="why-sophie" aria-labelledby="why-sophie-heading">
+            <h2 id="why-sophie-heading">Why Sophie Well</h2>
+            <div class="why-grid">
+              <article>
+                <h3>Why your data never leaves the browser</h3>
+                <p>
+                  Sophie Well is a static website. Every calculation,
+                  decoder, and lookup runs in JavaScript on your device.
+                  A strict Content Security Policy blocks third-party
+                  scripts, analytics, and outbound network calls at the
+                  browser level. Nothing you type is uploaded - because
+                  there is no server to upload it to.
+                </p>
+              </article>
+              <article>
+                <h3>Why these numbers are trustworthy</h3>
+                <p>
+                  Every formula is implemented from its primary citation
+                  and covered by unit tests against the published worked
+                  example. Every code lookup is sourced from a public
+                  dataset (CMS, FDA, NLM, NUBC, X12) and stamped with
+                  the fetched-on date. The full source is on GitHub:
+                  you can read, fork, and verify it line by line.
+                </p>
+              </article>
+              <article>
+                <h3>Why this is free</h3>
+                <p>
+                  Sophie Well is a personal project shipped as a public
+                  utility under the MIT license. There is no paywall, no
+                  account, no upsell, and no ad inventory. The cost of
+                  running it is the cost of static hosting, which the
+                  author covers because that is the right shape for a
+                  reference tool that anyone might need at 11 p.m.
+                </p>
+              </article>
+            </div>
+          </section>
+
+          <!-- spec-seo §9.4 last sentence: mirror the FAQ JSON-LD answers
+               in visible HTML as <details> elements so both crawlers and
+               humans see them. Source-of-truth is scripts/build-ld.mjs;
+               this block is hand-maintained in lock-step. -->
+          <section class="visible-faq" aria-labelledby="faq-heading">
+            <h2 id="faq-heading">Frequently asked</h2>
+            <details>
+              <summary>Is Sophie Well free?</summary>
+              <p>Yes. Sophie Well is free, open source under the MIT license, and ad-free. The full source is on GitHub.</p>
+            </details>
+            <details>
+              <summary>Is Sophie Well safe to use with patient data?</summary>
+              <p>Every calculation runs locally in your browser. Nothing you type is sent to any server. The site enforces a strict Content Security Policy and ships no analytics, telemetry, or third-party CDN. You alone control whether information stays on your device.</p>
+            </details>
+            <details>
+              <summary>Does Sophie Well work offline?</summary>
+              <p>Yes, after first load. A service worker caches the static bundle so every tool keeps working without an internet connection.</p>
+            </details>
+            <details>
+              <summary>Does Sophie Well replace my EHR calculator?</summary>
+              <p>No. Sophie Well is a deterministic reference aid. Your EHR remains the system of record for documentation, orders, and billing. Use Sophie Well as a check, not a replacement.</p>
+            </details>
+            <details>
+              <summary>Where does Sophie Well's data come from?</summary>
+              <p>Public datasets (CMS, FDA, OIG, AHA, CDC, ATSDR, NIOSH, DOT) plus published clinical literature. Each tool shows its primary citation and, where applicable, a dataset Source label with the fetched-on date in the References region under the result.</p>
+            </details>
+            <details>
+              <summary>Can I use Sophie Well for billing decisions?</summary>
+              <p>Sophie Well is a reference and educational tool. Use it to look up codes, decode statements, and learn the workflow; payer-specific rules, contracted rates, and certified billing review govern actual claims.</p>
+            </details>
+            <details>
+              <summary>Is Sophie Well HIPAA compliant?</summary>
+              <p>HIPAA applies to covered entities and their business associates. Sophie Well is neither: it is a static website that stores no data and transmits nothing you type. Whether you may use it with PHI depends on your organization's policies, not on a vendor BAA.</p>
+            </details>
+            <details>
+              <summary>Does Sophie Well use AI?</summary>
+              <p>No. Every tool is a pure deterministic function or a lookup against a bundled public dataset. No models, no inference, no LLM calls, in the browser or anywhere else.</p>
+            </details>
+            <details>
+              <summary>How current are the codes (ICD-10, HCPCS, CPT)?</summary>
+              <p>ICD-10-CM follows the annual fiscal-year update (October). HCPCS is refreshed quarterly. CPT descriptors are AMA-owned and are not bundled; structural CPT rows come from the CMS Medicare Physician Fee Schedule. Each tool surfaces its dataset fetched-on date.</p>
+            </details>
+            <details>
+              <summary>Can I trust Sophie Well's clinical scores?</summary>
+              <p>Every clinical formula is implemented from the primary citation shown in its References region, and is covered by unit tests against the published example values. Sophie Well is a check on the math, not a substitute for clinical judgment.</p>
+            </details>
+            <details>
+              <summary>How do I report a bug or wrong answer?</summary>
+              <p>Open an issue at <a href="https://github.com/clay-good/sophiewell.com/issues" rel="noopener" target="_blank">github.com/clay-good/sophiewell.com/issues</a>. Include the tile, the inputs, the expected output, and the citation you compared against. Bug fixes ship as small PRs against main.</p>
+            </details>
+            <details>
+              <summary>Who built Sophie Well?</summary>
+              <p><a href="https://claygood.com" rel="noopener" target="_blank">Clay Good</a> builds and maintains Sophie Well. It is a personal project shipped as a public utility under the MIT license.</p>
+            </details>
+          </section>
 
         </section>
       </main>
