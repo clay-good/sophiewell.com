@@ -109,7 +109,10 @@
 >       iv-to-po. Added in wave fourteen: start-triage,
 >       jumpstart-triage, field-triage, heat-illness, hypothermia,
 >       preg-dating, prep, sti-screening, ndc-convert, ndc-rxnorm.
->       Hand-authored total is now 141 files; the remaining ~37
+>       Added in wave fifteen: avpu-gcs, sbar-template, roi,
+>       wallet-card, specialty-visit, peds-weight-dose,
+>       peds-weight-conv, lab-interpret, tdm-levels, tpn-macro.
+>       Hand-authored total is now 151 files; the remaining ~27
 >       tiles continue to render from the templated `META`-driven
 >       copy in `build-tool-pages.mjs`.
 > - [ ] Per-tile 1200x630 OG image generated at build time per
