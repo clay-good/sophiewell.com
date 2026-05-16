@@ -1,0 +1,4 @@
+{
+  "whatThisIs": "Score CHA2DS2-VASc for stroke risk in non-valvular atrial fibrillation. Sophie Well sums the weighted points (congestive heart failure, hypertension, age >=75 [2], diabetes, prior stroke/TIA [2], vascular disease, age 65-74, female sex category) and reports the total (0-9) with the conventional annualized stroke-risk band. Source: Lip GYH et al, Chest 2010.",
+  "whenToUse": "Use CHA2DS2-VASc to inform shared-decision conversations about oral anticoagulation in non-valvular atrial fibrillation. Pair the result with HAS-BLED for bleeding risk; neither score replaces guideline-directed therapy decisions or the patient's stated preferences, and CHA2DS2-VASc does not apply to valvular AF, prosthetic valves, or moderate-to-severe mitral stenosis."
+}

@@ -1,0 +1,4 @@
+{
+  "whatThisIs": "Score the HEART score for undifferentiated chest pain in the emergency department. Sophie Well sums the five items (History, ECG, Age, Risk factors, Troponin) on their 0-2 scales and returns the total (0-10) plus the conventional risk band - low (0-3), moderate (4-6), high (7-10) - that pairs with serial troponin to guide disposition. Source: Six AJ, Backus BE, Kelder JC. Neth Heart J 2008.",
+  "whenToUse": "Use HEART at the bedside in adult ED chest pain to triage between early discharge with outpatient follow-up, observation with serial troponin, and admission for early invasive workup. HEART is one input into MACE risk; institutional pathways (HEART Pathway, ADAPT) layer on serial high-sensitivity troponin and shared decision-making."
+}

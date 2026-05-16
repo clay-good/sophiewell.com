@@ -1,0 +1,4 @@
+{
+  "whatThisIs": "Score the Glasgow Coma Scale on its three components - eye opening (1-4), verbal response (1-5), and motor response (1-6) - and return the total (3-15) plus the conventional severity band (severe <=8, moderate 9-12, mild 13-15). Sophie Well reports each component separately because most modern trauma documentation expects the broken-out E/V/M, not just the sum. Source: Teasdale & Jennett, Lancet 1974.",
+  "whenToUse": "Use GCS for serial neuro checks after head injury, stroke, intoxication, or any altered mental status, and as one input into trauma triage and ICU prognostic scores. The GCS is a screening instrument, not a substitute for a focused neuro exam or imaging; a normal GCS does not rule out intracranial pathology, and a depressed GCS does not specify its cause."
+}

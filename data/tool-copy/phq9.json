@@ -1,0 +1,4 @@
+{
+  "whatThisIs": "Score the PHQ-9 depression screener. Sophie Well sums the nine 0-3 item responses and returns the total (0-27) plus the conventional severity band (none/minimal 0-4, mild 5-9, moderate 10-14, moderately severe 15-19, severe 20-27). Item 9 (self-harm thoughts) is flagged separately as a safety prompt. Source: Kroenke K, Spitzer RL, Williams JBW. J Gen Intern Med 2001.",
+  "whenToUse": "Use PHQ-9 for adult depression screening in primary care, OB, and inpatient settings, and for serial monitoring of response to treatment. A positive PHQ-9 is the beginning of a clinical interview, not a diagnosis; item 9 always warrants a direct safety conversation regardless of the total."
+}

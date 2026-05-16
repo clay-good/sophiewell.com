@@ -1,0 +1,4 @@
+{
+  "whatThisIs": "Score CURB-65 for community-acquired pneumonia severity. Sophie Well sums one point each for Confusion, Urea >7 mmol/L (BUN >19 mg/dL), Respiratory rate >=30, Blood pressure (systolic <90 or diastolic <=60), and Age >=65, returning the total (0-5) plus the conventional 30-day mortality band that maps to outpatient, short-stay, or ICU consideration. Source: Lim WS et al, Thorax 2003.",
+  "whenToUse": "Use CURB-65 to inform the admit-vs-discharge conversation for adult CAP in primary care or the ED. PSI (Fine score) is a more granular alternative when the inputs are available. Neither score replaces clinical judgment in immunocompromise, hemodynamic instability, hypoxia, or social factors that preclude safe outpatient management."
+}

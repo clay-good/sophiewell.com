@@ -38,11 +38,25 @@ if (ids.length === 0) {
 // run first.
 const HUB_SLUGS = ['patients', 'billers', 'clinicians', 'ems', 'educators'];
 
+// spec-seo §10: topic clusters at /topics/<slug>/. Mirrors the keys of
+// the TOPICS map in scripts/build-topic-pages.mjs. Listed here (rather
+// than re-parsed) so the sitemap does not depend on the topic script
+// having run first.
+const TOPIC_SLUGS = [
+  'cardiology', 'medication-safety', 'triage', 'nephrology',
+  'obstetrics-pediatrics', 'behavioral-health', 'billing-and-coding',
+  'patient-literacy',
+];
+
 const today = new Date().toISOString().slice(0, 10);
 const urls = [
   `  <url><loc>${SITE}/</loc><lastmod>${today}</lastmod><changefreq>weekly</changefreq><priority>1.0</priority></url>`,
+  `  <url><loc>${SITE}/topics/</loc><lastmod>${today}</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>`,
   ...HUB_SLUGS.map((slug) =>
     `  <url><loc>${SITE}/for/${slug}/</loc><lastmod>${today}</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>`
+  ),
+  ...TOPIC_SLUGS.map((slug) =>
+    `  <url><loc>${SITE}/topics/${slug}/</loc><lastmod>${today}</lastmod><changefreq>weekly</changefreq><priority>0.85</priority></url>`
   ),
   ...ids.map((id) =>
     `  <url><loc>${SITE}/tools/${id}/</loc><lastmod>${today}</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>`

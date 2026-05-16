@@ -1,0 +1,4 @@
+{
+  "whatThisIs": "Score the National Institutes of Health Stroke Scale on its 15 items and return the total (0-42) plus the conventional severity band (minor 1-4, moderate 5-15, moderate-to-severe 16-20, severe >=21). Sophie Well presents the items in the standard administration order so the score can be entered as the exam progresses. NIHSS is a public-domain instrument maintained by NIH/NINDS.",
+  "whenToUse": "Use NIHSS for acute ischemic stroke assessment, eligibility decisions for IV thrombolysis and endovascular therapy, and serial monitoring. NIHSS under-detects posterior-circulation strokes and is operator-dependent; certification is the standard. A normal NIHSS does not rule out stroke, and the score is one input into reperfusion decisions, not a substitute for the imaging and time-of-onset workup."
+}

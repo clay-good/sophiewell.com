@@ -93,8 +93,10 @@ async function main() {
   // here rather than in regenerate() because it writes into dist/.
   // spec-seo §10: build-hub-pages.mjs writes five audience hubs at
   // dist/for/<slug>/, each pointing into the per-tool pages above.
+  // build-topic-pages.mjs writes topical landing pages at
+  // dist/topics/<slug>/ that cut across the home view's groups.
   const { spawnSync } = await import('node:child_process');
-  for (const script of ['build-tool-pages.mjs', 'build-hub-pages.mjs']) {
+  for (const script of ['build-tool-pages.mjs', 'build-hub-pages.mjs', 'build-topic-pages.mjs']) {
     const r = spawnSync(process.execPath, [join(ROOT, 'scripts', script)], { stdio: 'inherit' });
     if (r.status !== 0) throw new Error(`${script} exited with status ${r.status}`);
   }

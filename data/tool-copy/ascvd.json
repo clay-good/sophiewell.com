@@ -1,0 +1,4 @@
+{
+  "whatThisIs": "Estimate 10-year atherosclerotic cardiovascular disease risk using the 2013 ACC/AHA Pooled Cohort Equations. Sophie Well takes age, sex, race, total and HDL cholesterol, systolic blood pressure (treated or untreated), diabetes, and smoking, and returns the 10-year ASCVD risk percentage along with the conventional risk band (low/borderline/intermediate/high). PCE retains race-stratified equations. Source: Goff DC Jr et al, Circulation 2014.",
+  "whenToUse": "Use ASCVD for primary-prevention risk stratification in adults 40-79 without existing cardiovascular disease. The result anchors statin and aspirin conversations under current ACC/AHA guidelines. PCE is known to over-estimate in some contemporary cohorts; the newer PREVENT equations (separate tile) drop race and add kidney function and SDoH and may be preferred when validated."
+}

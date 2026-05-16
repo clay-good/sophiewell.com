@@ -1,0 +1,4 @@
+{
+  "whatThisIs": "Estimate albumin-corrected serum calcium with Payne's formula: corrected Ca = measured Ca + 0.8 x (4.0 - albumin g/dL). Sophie Well returns the corrected value and flags hypo- or hypercalcemia against the conventional reference range. Source: Payne RB et al, BMJ 1973.",
+  "whenToUse": "Use this when albumin is abnormal (hypoalbuminemia under-reports total calcium even when the ionized fraction is normal) and an ionized calcium is not immediately available. Albumin correction is a screening estimate, not a substitute for ionized calcium in critical illness, acid-base derangement, or paraproteinemia - in those settings, draw the ionized value."
+}

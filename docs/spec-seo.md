@@ -1,6 +1,6 @@
 # spec-seo.md — Sophie Well: organic discovery & magnetic SEO
 
-> Status: Phases 1, 2, and partial 3 landed (2026-05-16). Adds an SEO and discoverability
+> Status: Phases 1, 2, and 3 landed (2026-05-16). Adds an SEO and discoverability
 > layer to the existing v6 site without touching the deterministic-math
 > contract or the no-AI, no-telemetry, no-server posture. Everything
 > below is static HTML, static JSON-LD, or build-time generated
@@ -80,11 +80,13 @@
 > - [x] `data/tool-copy/<id>.json` override mechanism landed
 >       (2026-05-16). `build-tool-pages.mjs` reads the optional
 >       file at build time and substitutes the `whatThisIs` and
->       `whenToUse` fields into the prose body. First wave of
->       12 hand-authored files shipped (icd10, qtc, egfr,
->       wells-pe, decoder, eob-decoder, no-surprises, bmi,
->       naloxone, opioid-mme, anion-gap, drip-rate). The
->       remaining ~38 of the spec's top-50 land as one-line PRs.
+>       `whenToUse` fields into the prose body. Second wave of
+>       hand-authored files shipped (2026-05-16): 22 total -
+>       icd10, qtc, egfr, wells-pe, decoder, eob-decoder,
+>       no-surprises, bmi, naloxone, opioid-mme, anion-gap,
+>       drip-rate, gcs, apgar, chads, ascvd, corrected-calcium,
+>       nihss, heart, curb-65, meld-childpugh, phq9. The
+>       remaining ~28 of the spec's top-50 land as one-line PRs.
 > - [ ] Per-tile 1200x630 OG image generated at build time per
 >       §6.3. Outstanding - currently every per-tool page reuses
 >       `/logo.png`, which letterboxes on wide-card consumers.
@@ -101,13 +103,23 @@
 >       SEO-shaped title and meta description, a CollectionPage
 >       JSON-LD with an ItemList of all tools, a BreadcrumbList,
 >       and a footer link strip to the other four hubs.
-> - [x] Sitemap regrown to 184 URLs (root + 5 hubs + 178 tools).
+> - [x] Sitemap regrown to 193 URLs (root + /topics/ index + 5
+>       hubs + 8 topic clusters + 178 tools).
 > - [x] Home view gains a `.hub-strip` between the trust strip and
 >       the task hero pointing at all five hubs.
-> - [ ] Topic clusters (`/topics/<topic>/`) per §10 still
->       outstanding. Requires a topic -> tile-id mapping that does
->       not exist in the codebase yet; lands as a small follow-on
->       once the mapping is authored.
+> - [x] Topic clusters (`/topics/<topic>/`) per §10 landed
+>       (2026-05-16). New `scripts/build-topic-pages.mjs` writes
+>       `dist/topics/<slug>/index.html` for eight curated clinical
+>       and workflow topics: cardiology, medication-safety, triage,
+>       nephrology, obstetrics-pediatrics, behavioral-health,
+>       billing-and-coding, patient-literacy. The topic -> tile-id
+>       mapping is curated in TOPICS in the script (tiles can
+>       appear in multiple topics; topics cut across the home
+>       view's organizational groups). Each topic page carries a
+>       SEO-shaped title and meta description, a CollectionPage
+>       JSON-LD with an ItemList of all tools, a BreadcrumbList,
+>       and a footer link strip to the other topics. A
+>       `/topics/index.html` browse page is also emitted.
 
 ## 1. The problem in one sentence
 

@@ -1,0 +1,4 @@
+{
+  "whatThisIs": "Compute MELD-3.0 and Child-Pugh side-by-side. MELD-3.0 takes creatinine, bilirubin, INR, sodium, albumin, and sex and returns the integer score now used for U.S. liver-transplant allocation; Child-Pugh sums points for bilirubin, albumin, INR, ascites, and encephalopathy and returns the A/B/C class. Sources: Kim WR et al, Gastroenterology 2021 (MELD-3.0); Pugh RN et al, Br J Surg 1973 (Child-Pugh).",
+  "whenToUse": "Use MELD-3.0 for transplant-listing severity and short-term mortality prediction in chronic liver disease; use Child-Pugh for surgical risk stratification (especially non-transplant abdominal surgery) and for legacy contexts that still expect the A/B/C class. Neither score replaces hepatology evaluation; both are diagnostic anchors, not treatment decisions."
+}
