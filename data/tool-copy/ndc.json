@@ -1,0 +1,4 @@
+{
+  "whatThisIs": "Search the FDA National Drug Code Directory by NDC (10- or 11-digit), proprietary name, non-proprietary name, or active ingredient. The result row carries the labeler, product, package, dosage form, route, marketing category, and FDA application number, drawn directly from the FDA's public NDC release.",
+  "whenToUse": "Use this when an EOB, pharmacy claim, prior-auth form, or pill bottle references an NDC and you need to know what drug, strength, and package size was actually dispensed or billed. Sophie Well returns the FDA-listed product metadata; it does not check formulary status, pharmacy benefit coverage, or current market availability."
+}

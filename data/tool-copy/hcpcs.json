@@ -1,0 +1,4 @@
+{
+  "whatThisIs": "Search the CMS HCPCS Level II code set - the alphanumeric codes (A0000-V9999) Medicare uses for durable medical equipment, prosthetics, ambulance services, drugs administered other than orally, and supplies that the AMA's CPT set does not cover. Type a code or descriptor and Sophie Well returns the matching CMS row, refreshed from the public-domain quarterly release.",
+  "whenToUse": "Use this when reviewing a DME claim, an ambulance run sheet, an EOB line, or an order form that references an A-, E-, J-, K-, L-, or Q-code and you need to know what was actually billed. The result is the structural CMS descriptor; it does not encode coverage, prior-authorization status, or payer-specific reimbursement."
+}

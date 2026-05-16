@@ -1,0 +1,4 @@
+{
+  "whatThisIs": "Look up X12 Claim Adjustment Reason Codes - the numeric codes (1, 16, 45, 197, etc.) that payers attach to denied or adjusted claim lines on a 835 remittance, an EOB, or a paper denial letter. Sophie Well ships the maintained X12 list with each code's official short description, so a patient or biller can decode \"CARC 45\" without a payer login.",
+  "whenToUse": "Reach for this whenever a remittance line carries a CARC and the patient or biller needs to know why the line was reduced or denied (contractual write-off, non-covered service, duplicate, bundling, timely filing, etc.). The result is the X12 definition; the next step - appeal, rebill, or write-off - still depends on the specific payer policy and the paired Remittance Advice Remark Code (RARC)."
+}

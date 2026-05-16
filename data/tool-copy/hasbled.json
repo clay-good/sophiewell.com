@@ -1,0 +1,4 @@
+{
+  "whatThisIs": "Compute the HAS-BLED bleeding-risk score for a patient on (or being considered for) oral anticoagulation for atrial fibrillation. Inputs are the eight original Pisters 2010 variables - hypertension, abnormal renal or liver function, stroke history, prior bleeding, labile INR, age >65, and concurrent drugs or alcohol - and the score returns a 0-9 total with the published one-year major-bleed risk band.",
+  "whenToUse": "Pair this with CHA2DS2-VASc when deciding whether to start, continue, or modify anticoagulation for non-valvular AF, or when documenting shared decision-making in the chart. A high HAS-BLED does not by itself contraindicate anticoagulation; it flags modifiable risk factors (uncontrolled BP, NSAID use, labile INR) the team can address before changing therapy."
+}

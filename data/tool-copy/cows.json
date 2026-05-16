@@ -1,0 +1,4 @@
+{
+  "whatThisIs": "Score the Clinical Opiate Withdrawal Scale (Wesson 2003) across its 11 observed and reported items - resting pulse, sweating, restlessness, pupil size, bone or joint aches, runny nose, GI upset, tremor, yawning, anxiety, and gooseflesh skin. Sophie Well sums the items to a 0-48 total and returns the published severity band: mild (5-12), moderate (13-24), moderately severe (25-36), or severe (>=37).",
+  "whenToUse": "Use this at induction onto buprenorphine to confirm objective withdrawal before the first dose (typically COWS >=8-12 per the SAMHSA TIP 63 induction protocol), or to track withdrawal severity during inpatient opioid taper. The score is an aid to clinical judgment, not a substitute for it; precipitated withdrawal can still occur even when COWS is in the expected range."
+}

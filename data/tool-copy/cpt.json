@@ -1,0 +1,4 @@
+{
+  "whatThisIs": "Look up CPT code structure - the five-digit numeric codes that physicians, hospitals, and labs use to bill for procedures, evaluations, and tests. Sophie Well ships the structural rows from the CMS Medicare Physician Fee Schedule (no AMA descriptive text, which is copyrighted), so you can confirm a code exists, what section it lives in, and what status indicator and global period CMS assigns.",
+  "whenToUse": "Use this when a claim line or estimate references a CPT code and you want to confirm the section (E/M, surgery, radiology, pathology, medicine), the Medicare status indicator, or the global period. For the full AMA descriptor, you still need the licensed CPT book or an authorized vendor; Sophie Well covers the public-domain CMS metadata only."
+}
