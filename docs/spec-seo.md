@@ -101,7 +101,10 @@
 >       discharge-instr, wells-pe-geneva. Added in wave eleven:
 >       cms1500, ub04, eob-glossary, nexus-cspine, burn-fluid,
 >       peds-ett, defib, cincinnati, fast, wells-dvt-caprini.
->       Hand-authored total is now 111 files; the remaining ~66
+>       Added in wave twelve: sgarbossa, rcri, pews, ranson-bisap,
+>       alvarado-pas, prevent, rabies-pep, bbp-exposure, tb-testing,
+>       saag.
+>       Hand-authored total is now 121 files; the remaining ~57
 >       tiles continue to render from the templated `META`-driven
 >       copy in `build-tool-pages.mjs`.
 > - [ ] Per-tile 1200x630 OG image generated at build time per
