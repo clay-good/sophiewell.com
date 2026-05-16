@@ -32,9 +32,18 @@ if (ids.length === 0) {
   process.exit(1);
 }
 
+// spec-seo §10: five audience hubs at /for/<slug>/. Kept in sync with
+// the HUBS map in scripts/build-hub-pages.mjs. Listed here (rather than
+// re-parsed) so the sitemap does not depend on the hub script having
+// run first.
+const HUB_SLUGS = ['patients', 'billers', 'clinicians', 'ems', 'educators'];
+
 const today = new Date().toISOString().slice(0, 10);
 const urls = [
   `  <url><loc>${SITE}/</loc><lastmod>${today}</lastmod><changefreq>weekly</changefreq><priority>1.0</priority></url>`,
+  ...HUB_SLUGS.map((slug) =>
+    `  <url><loc>${SITE}/for/${slug}/</loc><lastmod>${today}</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>`
+  ),
   ...ids.map((id) =>
     `  <url><loc>${SITE}/tools/${id}/</loc><lastmod>${today}</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>`
   ),

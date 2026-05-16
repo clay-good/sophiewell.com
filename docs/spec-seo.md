@@ -1,6 +1,6 @@
 # spec-seo.md — Sophie Well: organic discovery & magnetic SEO
 
-> Status: Phase 1 landed (2026-05-16). Adds an SEO and discoverability
+> Status: Phases 1, 2, and partial 3 landed (2026-05-16). Adds an SEO and discoverability
 > layer to the existing v6 site without touching the deterministic-math
 > contract or the no-AI, no-telemetry, no-server posture. Everything
 > below is static HTML, static JSON-LD, or build-time generated
@@ -88,6 +88,26 @@
 > - [ ] Per-tile 1200x630 OG image generated at build time per
 >       §6.3. Outstanding - currently every per-tool page reuses
 >       `/logo.png`, which letterboxes on wide-card consumers.
+>
+> Phase 3 (audience hubs + topic clusters, §10):
+> - [x] Five audience hub pages landed (2026-05-16). New
+>       `scripts/build-hub-pages.mjs` writes
+>       `dist/for/<slug>/index.html` for patients, billers,
+>       clinicians, ems, and educators. Each hub lists every tile
+>       whose UTILITIES audience tag matches, grouped by the same
+>       group labels the home view uses. Tile links resolve to the
+>       Phase 2 pre-rendered `/tools/<id>/` pages so internal-link
+>       equity flows to canonical URLs. Each hub carries a
+>       SEO-shaped title and meta description, a CollectionPage
+>       JSON-LD with an ItemList of all tools, a BreadcrumbList,
+>       and a footer link strip to the other four hubs.
+> - [x] Sitemap regrown to 184 URLs (root + 5 hubs + 178 tools).
+> - [x] Home view gains a `.hub-strip` between the trust strip and
+>       the task hero pointing at all five hubs.
+> - [ ] Topic clusters (`/topics/<topic>/`) per §10 still
+>       outstanding. Requires a topic -> tile-id mapping that does
+>       not exist in the codebase yet; lands as a small follow-on
+>       once the mapping is authored.
 
 ## 1. The problem in one sentence
 

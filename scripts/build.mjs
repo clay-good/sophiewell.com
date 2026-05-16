@@ -91,9 +91,13 @@ async function main() {
   // after the static assets are copied so /tools/<id>/index.html can
   // reference /styles.css and /theme.js at the deployed root. Runs
   // here rather than in regenerate() because it writes into dist/.
+  // spec-seo §10: build-hub-pages.mjs writes five audience hubs at
+  // dist/for/<slug>/, each pointing into the per-tool pages above.
   const { spawnSync } = await import('node:child_process');
-  const r = spawnSync(process.execPath, [join(ROOT, 'scripts', 'build-tool-pages.mjs')], { stdio: 'inherit' });
-  if (r.status !== 0) throw new Error(`build-tool-pages.mjs exited with status ${r.status}`);
+  for (const script of ['build-tool-pages.mjs', 'build-hub-pages.mjs']) {
+    const r = spawnSync(process.execPath, [join(ROOT, 'scripts', script)], { stdio: 'inherit' });
+    if (r.status !== 0) throw new Error(`${script} exited with status ${r.status}`);
+  }
 
   const hash = await buildHash();
   // Stamp BUILD_HASH in dist/sw.js.

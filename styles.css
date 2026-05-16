@@ -369,6 +369,106 @@ body {
   .tool-page .tp-related ul { grid-template-columns: 1fr; }
 }
 
+/* spec-seo §10: home-page audience-hub link strip. Sits between the
+   trust strip and the task hero; distributes internal link equity. */
+.hub-strip {
+  max-width: 1100px;
+  margin: 0 auto var(--space-5);
+  padding: 0 var(--space-3);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-2) var(--space-3);
+  font-size: 0.95rem;
+}
+.hub-strip .hub-strip-label {
+  color: var(--text-muted);
+  font-weight: 600;
+  margin-right: var(--space-1);
+}
+.hub-strip a {
+  color: var(--text-secondary);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-color: var(--border-primary);
+}
+.hub-strip a:hover,
+.hub-strip a:focus-visible {
+  color: var(--text-primary);
+  text-decoration-color: var(--text-secondary);
+}
+
+/* spec-seo §10: audience hub pages at /for/<slug>/. Reuses .tool-page
+   chrome from above; adds list-of-tools and "other hubs" affordances. */
+.hub-page {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: var(--space-4) var(--space-3) var(--space-6);
+}
+.hub-page .hub-count {
+  margin: 0 0 var(--space-5);
+  font-size: 0.95rem;
+}
+.hub-page .hub-group { margin-bottom: var(--space-6); }
+.hub-page .hub-group h2 {
+  font-size: 1.1rem;
+  margin: 0 0 var(--space-3);
+  padding-bottom: var(--space-2);
+  border-bottom: 1px solid var(--border-primary);
+}
+.hub-page .hub-tile-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-2);
+}
+.hub-page .hub-tile-list li a {
+  display: block;
+  padding: var(--space-3);
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-primary);
+  border-radius: 8px;
+  color: var(--text-primary);
+  text-decoration: none;
+}
+.hub-page .hub-tile-list li a:hover,
+.hub-page .hub-tile-list li a:focus-visible {
+  border-color: var(--text-secondary);
+}
+.hub-page .hub-tile-name {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 2px;
+}
+.hub-page .hub-tile-desc {
+  display: block;
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+.hub-page .hub-other {
+  margin-top: var(--space-6);
+  padding: var(--space-4);
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-primary);
+  border-radius: 8px;
+}
+.hub-page .hub-other h2 { font-size: 1rem; margin: 0 0 var(--space-2); }
+.hub-page .hub-other ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+}
+.hub-page .hub-other li a { color: var(--text-secondary); }
+@media (max-width: 600px) {
+  .hub-page .hub-tile-list { grid-template-columns: 1fr; }
+}
+
 /* spec-seo §9.2: trust strip. Three skimmable badges below the lede.
    Three-column flex on desktop, stacks on mobile. */
 .trust-strip {

@@ -479,6 +479,20 @@
           </li>
         </ul>
 
+        <!-- spec-seo §10: audience-hub link strip. Five indexable
+             landing pages, one per audience, live at /for/<slug>/.
+             Linking them from the home view distributes internal
+             link equity to the hub pages and gives crawlers a clean
+             entry path to each audience's tool subset. -->
+        <nav class="hub-strip" aria-label="Audience hubs">
+          <span class="hub-strip-label">For</span>
+          <a href="/for/patients/">patients</a>
+          <a href="/for/billers/">billers and coders</a>
+          <a href="/for/clinicians/">nurses and clinicians</a>
+          <a href="/for/ems/">EMS and field</a>
+          <a href="/for/educators/">educators</a>
+        </nav>
+
         <section id="home-view" class="home-view view active" aria-labelledby="tools-heading">
           <h2 id="tools-heading" class="visually-hidden">Tools</h2>
 
