@@ -1,6 +1,6 @@
 # spec-v9.md — sophiewell.com: inline-citation completion and example-first inputs
 
-> Status: spec-v9 complete (2026-05-15). All four waves landed; both
+> Status: spec-v9 complete (2026-05-16). All four waves landed; both
 > coverage assertions are in **hard** mode. spec-v8 §3.3
 > (example-value contract) and §3.4 (citation contract) are now
 > CI-enforced for every home-grid tile.
@@ -22,10 +22,16 @@
 > v9 contract (auto-fill on first paint, "Reset to example" link
 > instead of the old "Test with example" button).
 >
-> Wave 4 (cleanup) — audit any remaining `Source:` / `Citation:`
-> strings in renderers and any user-facing copy that still points
-> at `docs/data-sources.md` or `docs/clinical-citations.md`.
-> Outstanding.
+> Wave 4 (cleanup) complete: removed the duplicate `Citation:` line
+> the screener emitted under each PHQ-9-family tile (now lives only
+> in the meta block via `META[id].citation`); removed three stray
+> `Citation:` lines under cincinnati, fast, and burn-fluid in
+> [views/group-i.js](../views/group-i.js); rewrote the FAQ JSON-LD
+> "Where does the data come from?" answer in
+> [index.html](../index.html) so search-result snippets describe
+> the inline References region instead of pointing at the GitHub
+> `docs/data-sources.md` path. The per-result lab-result attribution
+> in [views/group-v6.js](../views/group-v6.js) is retained per §3.4.1.
 
 ## 1. Why this spec exists
 

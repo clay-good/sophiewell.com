@@ -173,7 +173,6 @@ export const renderers = {
       o.appendChild(el('p', { text: `Cincinnati Prehospital Stroke Scale: ${r.positive ? 'POSITIVE' : 'negative'} (${r.total} of 3 abnormal)` }));
       const t = document.getElementById('cps-time').value.trim();
       if (t) o.appendChild(el('p', { text: `Time of last known well: ${t}` }));
-      o.appendChild(el('p', { class: 'muted', text: 'Citation: Kothari RU, et al. Cincinnati Prehospital Stroke Scale. Acad Emerg Med. 1997.' }));
     });
     ['cps-face', 'cps-arm', 'cps-speech', 'cps-time'].forEach((id) => document.getElementById(id).addEventListener('input', run));
     run();
@@ -201,7 +200,6 @@ export const renderers = {
       o.appendChild(el('p', { text: `${beFast ? 'BE-FAST' : 'FAST'}: ${r.positive ? 'POSITIVE' : 'negative'}` }));
       const t = document.getElementById('fast-time').value.trim();
       if (t) o.appendChild(el('p', { text: `Time of last known well: ${t}` }));
-      o.appendChild(el('p', { class: 'muted', text: 'Citation: Kleindorfer DO, et al. Designing a message for public stroke education (FAST). Stroke 2007. BE-FAST extension: Aroor S, et al. Stroke 2017.' }));
     });
     ['fast-balance', 'fast-eyes', 'fast-face', 'fast-arms', 'fast-speech'].forEach((id) => document.getElementById(id).addEventListener('change', run));
     document.getElementById('fast-time').addEventListener('input', run);
@@ -387,7 +385,6 @@ export const renderers = {
         el('li', { text: `Subsequent 16h: ${r.brooke.remaining16h} mL` }),
         ...(r.brooke.remainingInFirst8h != null ? [el('li', { text: `Remaining for first 8h window: ${r.brooke.remainingInFirst8h} mL (${r.brooke.ratePerHourRemainingFirst8h} mL/hr)` })] : []),
       ]));
-      o.appendChild(el('p', { class: 'muted', text: 'Citation: Parkland (Baxter & Shires 1968); Modified Brooke. Reference only; titrate to urine output and clinical response.' }));
     });
     ['bf-w', 'bf-bsa', 'bf-h'].forEach((id) => document.getElementById(id).addEventListener('input', run));
   },

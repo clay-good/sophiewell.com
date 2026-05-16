@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `7446c16bc4526706`
-Generated: 2026-05-15T12:56:15.498Z
+Build ID: `37ca94e214283437`
+Generated: 2026-05-16T13:35:06.672Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=20.18.1 <21, npm >=10.0.0
@@ -29,7 +29,7 @@ downloads is committed in this repository and is hashed below.
 | `sw.js` | 4062 | `60f524b1b69eb5170c59af42631e11cc05db2a44e8e530977db0327888b0ff6d` |
 | `site.webmanifest` | 709 | `0e0de4da60590a12e8b27a0ae2a2f5ffdb6500b7d2b78f93631ec2f64ed3d5ce` |
 | `robots.txt` | 67 | `297014916e0fe5e4b0a9356b12884f815003c873ad25f299bf441f7895b77d89` |
-| `sitemap.xml` | 25760 | `605b5442869572cd0a7213cd32366329ea73fffc734ee6061d778ef0fedf7624` |
+| `sitemap.xml` | 25760 | `4239a3a9b5112869266323a297a3ba9fe2ecef9a4675108baaf11385a9b67b03` |
 | `_headers` | 1297 | `8a0d2228d73c6b105d5d8fbd173974461cc6b6482ee72f06546a3a27248a9003` |
 | `logo.png` | 63440 | `11afaf1b0d3ca68393d202e4810bf766b5b6d591b4e3ec52f41d3cacaa4616ec` |
 | `favicon.ico` | 7411 | `407fde0ca2788409e87e11f596fa02e6a0b121817fcea7fd995beec1801e287b` |
@@ -66,7 +66,7 @@ downloads is committed in this repository and is hashed below.
 | `lib/print.js` | 2588 | `74579a71f82b75993dea9f7d9b3c21e67744bd4dbe6f50e20c8eef9aa1be7546` |
 | `lib/regulatory.js` | 4040 | `9e1ef6751facc0172c492010ccd35982061f06b000db2e857a98ec2013e7087c` |
 | `lib/scoring-v4.js` | 30573 | `8cf1449c89082c392bbbef8f837fe75271bf6ea26584b5e33328f5186ee53678` |
-| `lib/screener.js` | 6183 | `44d4eb19e04ed575d847bc6dbdd843b1a8afc387b01298891e0c9d218e30ced2` |
+| `lib/screener.js` | 6465 | `34e4473386cfbdca959f0bd7c715da44f5d4b29a4467fb74616a31224b40bb22` |
 | `lib/search.js` | 1726 | `eb447d039ac1ea7b459743b6aeeffea114f90f07d45a6bd53dbe60eb1c8fdd9b` |
 | `lib/synonyms.js` | 3339 | `f28e834e5b603c1564099976489ad33f05109a0b74f130f9153aa2a90518bc16` |
 | `lib/table.js` | 4816 | `58b7eb635eed6fb9042b0383af1d3456585be97825da5cb77825fc9fa5b789f1` |
@@ -80,7 +80,7 @@ downloads is committed in this repository and is hashed below.
 | `views/group-f.js` | 20817 | `8e08bcb2e713a68a7c77fe3e02ee5bf220c227457ac8f6ce0d882f3f000896d2` |
 | `views/group-g.js` | 44341 | `f90fed151698e61016e843353a9ded051ba5ee3444a6b29331f973f98acd9b39` |
 | `views/group-h.js` | 11690 | `b0d1c0305f9acbf59ffd62faea8d07230bc6fb4e348dfb2ff97aa3f1876033a9` |
-| `views/group-i.js` | 32933 | `7d2ca7a194a156fcd8c4bc635fb066bea91e5980e6b21ba1ad874c0ddebfdb2c` |
+| `views/group-i.js` | 32395 | `15a2342e718a7b7d426b979cd93204ce2dd7993408d6c5be3d230b30fbc2f2f6` |
 | `views/group-j.js` | 8098 | `9cfb708b1c2fa10ae9ade85779ef8f5b0948213e8b6d15840ac28f30060a67c2` |
 | `views/group-klmno.js` | 12279 | `66a9571617e6c26eed56c937a83880c12c71d11be5fc3c76d33b4fd497a16857` |
 | `views/group-v5.js` | 26303 | `c12611f8c5220108abe32aa747e429f92e92b265e91a9f8b00f8f6f81939bdb4` |
