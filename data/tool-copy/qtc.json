@@ -1,0 +1,4 @@
+{
+  "whatThisIs": "Compute corrected QT interval using four published formulas - Bazett, Fridericia, Framingham, and Hodges - side by side. Bazett is the historical default; Fridericia is preferred at heart rates outside 60-100 bpm; Framingham and Hodges are linear alternatives that avoid Bazett's overcorrection at high rates. Enter a QT in milliseconds and a heart rate, and Sophie Well returns all four QTc values rounded to the nearest millisecond.",
+  "whenToUse": "Use this when reading an ECG and the machine-printed QTc looks suspect, when reviewing a patient on QT-prolonging medications, or when you want to compare formulas before documenting a single value. The result is reference math only; sustained QTc above 500 ms or any clinically driven QTc concern warrants direct ECG review and pharmacy or cardiology consult."
+}

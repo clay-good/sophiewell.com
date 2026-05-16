@@ -65,16 +65,29 @@
 >       179 - root plus one `/tools/<id>/` per tile - so Google
 >       Search Console has real per-tool canonicals to index.
 >
-> Phase 2 follow-ons (smaller PRs, not blocking the rollout):
-> - Hand-author prose for the top 50 highest-traffic tiles under
->   `data/tool-copy/<id>.json` and read from it in
->   `build-tool-pages.mjs` (replaces the templated `What this is`
->   / `When to use` blocks per-tile).
-> - Per-tile 1200x630 OG image generated at build time per §6.3
->   (currently every per-tool page reuses `/logo.png`).
-> - Tighter per-tool schema mapping per §7.2: `MedicalCalculator`
->   for math tiles, `HowTo` for decoders, `Dataset` for the bundled
->   lookup tables.
+> Phase 2 follow-ons:
+> - [x] Tighter per-tool schema mapping per §7.2 landed
+>       (2026-05-16). `scripts/build-tool-pages.mjs` now classifies
+>       every tile via explicit allowlists rather than a group-only
+>       heuristic. `MedicalCalculator` (via `additionalType`) for
+>       math + scoring tiles in groups E/F/G/I; `HowTo` for 19
+>       decoder / template tiles with an explicit Open -> Enter ->
+>       Read step list so Google's HowTo rich-result pipeline has
+>       what it needs; `Dataset` (separate JSON-LD node) for the 30
+>       bundled lookup tables so Google Dataset Search picks them
+>       up; `MedicalWebPage` for clinical reference tiles; plain
+>       `WebPage` for regulatory + literacy.
+> - [x] `data/tool-copy/<id>.json` override mechanism landed
+>       (2026-05-16). `build-tool-pages.mjs` reads the optional
+>       file at build time and substitutes the `whatThisIs` and
+>       `whenToUse` fields into the prose body. First wave of
+>       12 hand-authored files shipped (icd10, qtc, egfr,
+>       wells-pe, decoder, eob-decoder, no-surprises, bmi,
+>       naloxone, opioid-mme, anion-gap, drip-rate). The
+>       remaining ~38 of the spec's top-50 land as one-line PRs.
+> - [ ] Per-tile 1200x630 OG image generated at build time per
+>       §6.3. Outstanding - currently every per-tool page reuses
+>       `/logo.png`, which letterboxes on wide-card consumers.
 
 ## 1. The problem in one sentence
 

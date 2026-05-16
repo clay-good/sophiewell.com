@@ -1,0 +1,4 @@
+{
+  "whatThisIs": "Select adult or pediatric, pick a route (IV, IM, intranasal, or subcutaneous), and enter the pediatric weight if needed. Sophie Well returns the initial dose, the re-dose interval, and the typical maximum or escalation per FDA labeling and CDC opioid-overdose guidance. Reference values are stated in mg; intranasal is given as the standard pre-filled-device dose.",
+  "whenToUse": "Use this when you have to dose naloxone right now and want to verify the math before you push, or when teaching the dose to a community-response training. Bystander naloxone (the 4 mg intranasal device) does not require a calculation; this tile exists for the clinical scenarios where it does."
+}

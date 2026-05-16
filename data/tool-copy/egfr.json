@@ -1,0 +1,4 @@
+{
+  "whatThisIs": "Estimate glomerular filtration rate using the 2021 CKD-EPI creatinine-only equation, which the National Kidney Foundation and ASN jointly recommend as the race-free standard. Enter serum creatinine, age, and sex; Sophie Well returns the eGFR in mL/min/1.73 m^2. The 2021 equation drops the race coefficient that the prior 2009 CKD-EPI equation used.",
+  "whenToUse": "Use this anywhere you would have run CKD-EPI: medication dose adjustment, contrast risk assessment, CKD staging, or transplant eligibility math. For comparison with legacy values or Cockcroft-Gault-based dosing, the eGFR Suite tile shows MDRD (race-free) and Cockcroft-Gault on the same screen."
+}

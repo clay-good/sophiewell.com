@@ -83,6 +83,90 @@ async function loadMeta() {
   return mod.META;
 }
 
+// --- Per-tile prose overrides (spec-seo §5.4 + §14.2). Hand-authored
+// copy lives at `data/tool-copy/<id>.json`. Recognized fields:
+//   { whatThisIs?: string, whenToUse?: string }
+// Either may be omitted; missing fields fall back to the templated
+// defaults. Phase 2 follow-on PRs author one of these per top-50 tile.
+async function loadToolCopy(id) {
+  const path = new URL(`../data/tool-copy/${id}.json`, import.meta.url);
+  if (!existsSync(path)) return null;
+  try {
+    return JSON.parse(await readFile(path, 'utf8'));
+  } catch (err) {
+    console.warn(`build-tool-pages: skipping malformed data/tool-copy/${id}.json (${err.message})`);
+    return null;
+  }
+}
+
+// --- spec-seo §7.2 classifier. Maps each tile to a schema.org
+// additionalType. The page @type stays at MedicalWebPage (clinical
+// surface) or WebPage so the base node is always validator-clean;
+// additionalType layers on the more specific intent (MedicalCalculator,
+// HowTo, Dataset, SoftwareApplication) Google's rich-result pipelines
+// look for. Sets are explicit (not heuristic) so a contributor adding
+// a new tile makes a deliberate choice about its discovery surface.
+const HOW_TO_TILES = new Set([
+  // Group C decoders + template generators
+  'decoder', 'eob-decoder', 'msn-decoder', 'insurance-card',
+  'abn-explainer', 'appeal-letter', 'hipaa-roa',
+  // Group H workflow templates
+  'prep', 'prior-auth', 'hipaa-auth', 'roi', 'discharge-instr',
+  'specialty-visit', 'wallet-card', 'sbar-template',
+  // Group I documentation helper
+  'ems-doc',
+  // Group L printable forms
+  'cms1500', 'ub04',
+]);
+const DATASET_TILES = new Set([
+  // Group A code lookups
+  'icd10', 'hcpcs', 'cpt', 'ndc', 'pos-codes', 'modifier-codes',
+  'revenue-codes', 'carc', 'rarc', 'hcpcs-mod', 'pos-lookup',
+  'tob-decode', 'rev-table', 'nubc-codes', 'drg-lookup', 'apc-lookup',
+  'pcs-lookup', 'rxnorm-lookup', 'ndc-rxnorm',
+  // Group G drug-condition lookup
+  'beers',
+  // Group J reference table
+  'sti-screening',
+  // Group K lab references
+  'lab-adult', 'lab-peds', 'tdm-levels', 'tox-levels',
+  // Group L glossary
+  'eob-glossary',
+  // Group I hazmat / pocket guide tables
+  'dot-erg', 'niosh-pg',
+]);
+const REFERENCE_TILES = new Set([
+  // Group G pure-table clinical references
+  'asa', 'mallampati', 'mrs', 'peds-vitals', 'lab-ranges',
+  // Group F reference tables
+  'high-alert', 'peds-dose', 'anticoag-reversal', 'iv-to-po',
+  // Group I reference tables
+  'adult-arrest-ref', 'peds-arrest-ref', 'hypothermia', 'heat-illness',
+  'toxidromes', 'cpr-numeric', 'tccc', 'co-cn-antidote',
+  // Group O patient-safety card
+  'high-alert-card',
+]);
+
+function classify(tile) {
+  // Math / scoring / clinical-decision tiles are MedicalCalculator.
+  // The HowTo / Dataset / Reference allowlists override that default
+  // for tiles that semantically aren't a calculator.
+  if (HOW_TO_TILES.has(tile.id)) {
+    return { ldType: 'WebPage', additionalType: 'https://schema.org/HowTo', kind: 'howto' };
+  }
+  if (DATASET_TILES.has(tile.id)) {
+    return { ldType: 'WebPage', additionalType: 'https://schema.org/Dataset', kind: 'dataset' };
+  }
+  if (REFERENCE_TILES.has(tile.id)) {
+    return { ldType: 'MedicalWebPage', additionalType: null, kind: 'reference' };
+  }
+  if (['E', 'F', 'G', 'I'].includes(tile.group)) {
+    return { ldType: 'MedicalWebPage', additionalType: 'https://schema.org/MedicalCalculator', kind: 'calculator' };
+  }
+  // Group C regulatory + Group N literacy + everything else.
+  return { ldType: 'WebPage', additionalType: null, kind: 'webpage' };
+}
+
 // --- Minimal HTML escaper for templated text. Outputs are written to
 // disk, never executed; the escape exists so a description that mentions
 // `< 90 mmHg` does not break the surrounding markup.
@@ -117,7 +201,7 @@ function pickRelated(tiles, current, max = 4) {
 // already says when META has it, otherwise fall back to the tile
 // description. Hand-authored copy can replace any of these in a
 // later PR by reading from `data/tool-copy/<id>.json` (not wired here).
-function buildPageHtml({ tile, desc, meta, related }) {
+function buildPageHtml({ tile, desc, meta, related, copy }) {
   const groupLabel = GROUP_LABELS[tile.group] || tile.group;
   const seoTitle = clampTitle(`${tile.name} - Free, in your browser · Sophie Well`);
   const seoDesc = clampDescription(
@@ -145,15 +229,12 @@ ${related.map((r) => `          <li><a href="${SITE}/tools/${r.id}/">${esc(r.nam
       </nav>`
     : '';
 
-  // spec-seo §7.2: per-tool JSON-LD. MedicalCalculator for math tiles,
-  // MedicalWebPage for reference tiles, SoftwareApplication for code
-  // lookups. The first-cut heuristic is by group; refine later.
-  const isCalculator = ['E', 'F', 'G', 'I'].includes(tile.group);
-  const isLookup = ['A', 'K', 'L'].includes(tile.group);
-  const ldType = isCalculator ? 'MedicalWebPage' : (isLookup ? 'WebPage' : 'WebPage');
-  const additionalType = isCalculator
-    ? 'https://schema.org/MedicalWebPage'
-    : (isLookup ? 'https://schema.org/SoftwareApplication' : null);
+  // spec-seo §7.2: per-tool JSON-LD type via classify(). Dataset
+  // tiles also emit a sibling Dataset node so Google Dataset Search
+  // picks them up; HowTo tiles emit a minimal three-step Open ->
+  // Enter -> Read recipe so the additionalType isn't load-bearing
+  // alone.
+  const { ldType, additionalType, kind } = classify(tile);
 
   const breadcrumb = {
     '@context': 'https://schema.org',
@@ -178,6 +259,47 @@ ${related.map((r) => `          <li><a href="${SITE}/tools/${r.id}/">${esc(r.nam
   };
   if (additionalType) pageLd.additionalType = additionalType;
   if (meta?.citation) pageLd.citation = meta.citation;
+
+  // Dataset sibling node (separate <script>) for Group A / K / L
+  // lookups that ship a real bundled table. Google Dataset Search is
+  // a low-competition vertical for this kind of content.
+  const datasetLd = (kind === 'dataset')
+    ? {
+        '@context': 'https://schema.org',
+        '@type': 'Dataset',
+        name: tile.name,
+        description: desc,
+        url: canonical,
+        keywords: [tile.name, groupLabel],
+        isAccessibleForFree: true,
+        license: 'https://github.com/clay-good/sophiewell.com/blob/main/LICENSE',
+        creator: { '@type': 'Person', name: 'Clay Good', url: 'https://claygood.com' },
+        ...(meta?.source?.label ? { sourceOrganization: { '@type': 'Organization', name: meta.source.label } } : {}),
+      }
+    : null;
+
+  // Minimal HowTo recipe for decoders + template generators. Google's
+  // HowTo rich result needs an explicit step list; without it the
+  // additionalType is just a hint.
+  const howToLd = (kind === 'howto')
+    ? {
+        '@context': 'https://schema.org',
+        '@type': 'HowTo',
+        name: tile.name,
+        description: desc,
+        totalTime: 'PT2M',
+        step: [
+          { '@type': 'HowToStep', position: 1, name: 'Open the tool', text: `Open ${tile.name} in your browser at ${hashUrl}. No signup, no install.` },
+          { '@type': 'HowToStep', position: 2, name: 'Enter your inputs', text: 'Each field is pre-filled with a worked example so you can see the expected format. Overwrite the values with your own.' },
+          { '@type': 'HowToStep', position: 3, name: 'Read the result', text: 'The output is computed deterministically. The References region under the result links to the primary source.' },
+        ],
+      }
+    : null;
+
+  const whatThisIsText = copy?.whatThisIs
+    || `${tile.name} is one of 178 deterministic tools in Sophie Well's ${groupLabel} group. ${desc}`;
+  const whenToUseText = copy?.whenToUse
+    || `Use this tool when you need a quick, citable reference. Every calculation runs entirely in your browser - no inputs leave your device, no account is required, no AI is involved. The site enforces a strict Content Security Policy and ships no analytics or third-party CDN.`;
 
   return `<!doctype html>
 <html lang="en">
@@ -219,7 +341,7 @@ ${JSON.stringify(pageLd, null, 2)}
     <script type="application/ld+json">
 ${JSON.stringify(breadcrumb, null, 2)}
     </script>
-
+${datasetLd ? `    <script type="application/ld+json">\n${JSON.stringify(datasetLd, null, 2)}\n    </script>\n` : ''}${howToLd ? `    <script type="application/ld+json">\n${JSON.stringify(howToLd, null, 2)}\n    </script>\n` : ''}
     <link rel="stylesheet" href="/styles.css" />
     <script src="/theme.js"></script>
   </head>
@@ -252,12 +374,12 @@ ${JSON.stringify(breadcrumb, null, 2)}
 
         <section class="tp-what" aria-labelledby="tp-what-h">
           <h2 id="tp-what-h">What this is</h2>
-          <p>${esc(tile.name)} is one of 178 deterministic tools in Sophie Well's <em>${esc(groupLabel)}</em> group. ${esc(desc)}</p>
+          <p>${esc(whatThisIsText)}</p>
         </section>
 
         <section class="tp-when" aria-labelledby="tp-when-h">
           <h2 id="tp-when-h">When to use it</h2>
-          <p>Use this tool when you need a quick, citable reference. Every calculation runs entirely in your browser - no inputs leave your device, no account is required, no AI is involved. The site enforces a strict Content Security Policy and ships no analytics or third-party CDN.</p>
+          <p>${esc(whenToUseText)}</p>
         </section>
 
         <section class="tp-refs" aria-labelledby="tp-refs-h">
@@ -295,20 +417,24 @@ async function main() {
   ]);
 
   let written = 0;
+  let withCopy = 0;
   for (const tile of tiles) {
     const desc = descriptions.get(tile.id) || `${tile.name} - a deterministic tool in Sophie Well's ${GROUP_LABELS[tile.group] || tile.group} group.`;
+    const copy = await loadToolCopy(tile.id);
+    if (copy) withCopy += 1;
     const html = buildPageHtml({
       tile,
       desc,
       meta: meta[tile.id],
       related: pickRelated(tiles, tile),
+      copy,
     });
     const out = join(toolsDir, tile.id);
     await ensureDir(out);
     await writeFile(join(out, 'index.html'), html, 'utf8');
     written += 1;
   }
-  console.log(`build-tool-pages: wrote ${written} pre-rendered tool pages under dist/tools/`);
+  console.log(`build-tool-pages: wrote ${written} pre-rendered tool pages under dist/tools/ (${withCopy} with hand-authored copy).`);
 }
 
 main().catch((err) => { console.error('build-tool-pages: failed', err); process.exit(1); });

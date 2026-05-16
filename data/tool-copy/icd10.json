@@ -1,0 +1,4 @@
+{
+  "whatThisIs": "Search the current fiscal-year ICD-10-CM tabular list and alphabetic index. Type any portion of a code (\"I10\") or a clinical phrase (\"essential hypertension\") and the matching codes appear in the result list. The dataset is the CMS / NCHS public-domain release, refreshed annually each October.",
+  "whenToUse": "Reach for this when a chart, encounter form, or claim references an ICD-10 code you don't recognize, or when you need to convert a problem-list phrase into a billable code. Sophie Well shows the code and its short description; it does not replace certified coding judgment for ambiguous or unspecified diagnoses."
+}

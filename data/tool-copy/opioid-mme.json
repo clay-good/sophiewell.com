@@ -1,0 +1,4 @@
+{
+  "whatThisIs": "Build up a row per prescribed opioid - drug, mg per dose, doses per day - and Sophie Well totals the daily morphine milligram equivalent using the CDC 2022 conversion factors (MMWR Recomm Rep. 2022;71(3):1-95). Per-drug breakdown is shown so the math is auditable; the CDC 50 / 90 MME thresholds are flagged when crossed.",
+  "whenToUse": "Use this when reviewing a chronic-pain regimen, a hospital discharge prescription, or a referral for tapering. The 50 / 90 MME thresholds are framing values, not hard cutoffs; the 2022 CDC update explicitly warns against using them as absolute prescribing limits."
+}

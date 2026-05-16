@@ -1,0 +1,4 @@
+{
+  "whatThisIs": "Compute the anion gap (Na - (Cl + HCO3)) and the albumin-corrected anion gap (+2.5 mEq/L per 1 g/dL drop below 4.0). Sophie Well returns both values so a low albumin doesn't mask a real high-anion-gap metabolic acidosis. Source: Emmett & Narins, Medicine 1977; Figge et al., Crit Care Med 1998.",
+  "whenToUse": "Use this on any chemistry panel that shows acidosis, when MUDPILES is on the differential, or when albumin is significantly low and the uncorrected gap looks deceptively normal. The Anion Gap & Delta-Delta tile extends this with the delta-gap / delta-bicarb ratio for mixed disorders."
+}

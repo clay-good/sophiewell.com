@@ -1,0 +1,4 @@
+{
+  "whatThisIs": "Score the Wells criteria for pulmonary embolism. Check the seven boxes that apply to your patient; Sophie Well totals the points and reports the dichotomized band - PE likely (>4) or PE unlikely (<=4) - that pairs with D-dimer to support a PERC- or imaging-based workup. Source: Wells PS, et al. Thromb Haemost. 2000.",
+  "whenToUse": "Use this at the bedside when you are deciding between a low-probability rule-out (D-dimer +/- PERC) and proceeding straight to CT pulmonary angiography. Wells is one input to PE workup, not a substitute for clinical judgment, vital-sign trends, or the patient's hemodynamic stability."
+}

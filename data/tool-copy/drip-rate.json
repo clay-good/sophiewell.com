@@ -1,0 +1,4 @@
+{
+  "whatThisIs": "Convert a volume (mL) and duration (min) into both a pump rate (mL/hr) and a gravity-drop rate (gtts/min) for a given tubing drop factor. Sophie Well shows both values so the same calculation works whether you have a pump or a gravity set. Drop factors of 10, 15, 20, and 60 (microdrip) cover the common tubing.",
+  "whenToUse": "Use this at any bedside infusion that does not have its own protocol-defined pump program: maintenance fluids, intermittent antibiotics, blood-product timing, gravity-set field infusions. For weight-based or concentration-based infusions, see the Weight-Based Dose and Concentration-to-Rate tiles."
+}

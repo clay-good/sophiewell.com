@@ -1,0 +1,4 @@
+{
+  "whatThisIs": "Paste the text of an Explanation of Benefits and Sophie Well pulls out the allowed amount, plan paid, adjustment, and patient responsibility lines, then expands every CARC and RARC code into its X12-published meaning. The CARC and RARC lookups are the same X12 code lists CMS requires under HIPAA 45 CFR 162.",
+  "whenToUse": "Reach for this when the EOB and the matching bill don't add up, when a payer denies a claim with a code you don't recognize, or before you call the payer's customer service line so you can quote the CARC / RARC text back at them. For the bill side of the same conversation, see the Medical Bill Decoder."
+}

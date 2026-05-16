@@ -1,0 +1,4 @@
+{
+  "whatThisIs": "Compute body mass index from weight (kg) and height (m). Sophie Well returns the numeric BMI and the WHO category (Underweight, Normal, Overweight, Class I-III obesity). BMI is a population-level screening number, not a body-composition measurement; muscle mass, frame size, and ethnicity all shift its clinical interpretation.",
+  "whenToUse": "Use this whenever a clinical formula or guideline asks for BMI - bariatric eligibility, anesthesia risk stratification, pediatric percentile lookup (use the age-and-sex-specific CDC curves for that, not this), or simple charting. Body Surface Area (Du Bois or Mosteller) is a separate tile and is usually what chemotherapy and pediatric dosing want."
+}

@@ -1,0 +1,4 @@
+{
+  "whatThisIs": "Paste the text of a medical bill (or screenshot OCR output) and Sophie Well extracts every ICD-10 diagnosis, CPT or HCPCS service code, POS code, NPI number, and dollar amount it can recognize. Each code is decoded against the bundled CMS / NUBC / X12 lookup tables; NPIs are Luhn-checksum validated; dollar amounts are summed. CPT descriptors are AMA-owned and not bundled - the decoder shows the codes themselves and links to the AMA's free public CPT lookup.",
+  "whenToUse": "Use this the first time a hospital or ER bill arrives and the line items are opaque, or before disputing a charge so you can name each code your insurer paid (or didn't). Nothing you paste leaves your browser. For the explanation-of-benefits side of the same workflow, see the EOB Decoder."
+}
