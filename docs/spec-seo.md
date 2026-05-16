@@ -106,8 +106,10 @@
 >       saag. Added in wave thirteen: sodium-correction,
 >       free-water-deficit, fena-feurea, corrected-anion-gap,
 >       corrected-ca-na, pbw-ardsnet, rsbi, mentzer, insulin-drip,
->       iv-to-po.
->       Hand-authored total is now 131 files; the remaining ~47
+>       iv-to-po. Added in wave fourteen: start-triage,
+>       jumpstart-triage, field-triage, heat-illness, hypothermia,
+>       preg-dating, prep, sti-screening, ndc-convert, ndc-rxnorm.
+>       Hand-authored total is now 141 files; the remaining ~37
 >       tiles continue to render from the templated `META`-driven
 >       copy in `build-tool-pages.mjs`.
 > - [ ] Per-tile 1200x630 OG image generated at build time per
