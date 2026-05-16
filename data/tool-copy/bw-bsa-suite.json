@@ -1,0 +1,4 @@
+{
+  "whatThisIs": "Compute the three body-size estimates clinicians actually dose against: ideal body weight (Devine formula - 50 / 45.5 kg for the first 60 inches plus 2.3 kg per inch over), adjusted body weight (IBW + 0.4 * (ABW - IBW)) for obese dosing of hydrophilic drugs, and body surface area (Mosteller: sqrt(height_cm * weight_kg / 3600)). Sophie Well returns all three from a single height / weight / sex input set with the formulas labeled inline.",
+  "whenToUse": "Use this when dosing weight-banded drugs that traditionally use IBW (aminoglycosides, theophylline, propofol induction) or adjusted body weight (vancomycin in obese patients, some chemotherapy), or when a BSA-based dose (chemotherapy, some pediatric oncology, cardiac index) is needed. The Devine formula is sex-specific and undefined below 60 inches; for short adults, use actual body weight or one of the variants noted in the citation block. BSA is independent of the IBW pathway."
+}

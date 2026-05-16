@@ -1,0 +1,4 @@
+{
+  "whatThisIs": "Estimate total body surface area burned using the Rule of Nines (adult and pediatric variants) or the Lund-Browder chart, which adjusts head and lower-limb percentages by age. Sophie Well lets the user tag each anatomic region as partial- or full-thickness, sums the affected percentage, and shows the adult-vs-pediatric difference so a clinician does not silently apply adult head proportions to an infant.",
+  "whenToUse": "Use this when triaging a burn patient to determine transfer to a burn center (ABA criteria reference a TBSA percentage), when initiating fluid resuscitation calculations (the Parkland and modified-Brooke formulas both start with TBSA - pair this with the burn-fluid tool), or when teaching the age-dependent body proportions that make Lund-Browder more accurate than the Rule of Nines for children under five. Superficial (first-degree, erythema only) burns are conventionally excluded from the TBSA used in fluid math."
+}

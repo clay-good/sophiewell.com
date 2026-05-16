@@ -1,0 +1,4 @@
+{
+  "whatThisIs": "Browse the NUBC revenue-code table - the 4-digit department codes (010X-099X) that institutional UB-04 claims use to roll every charge into a billable category. Sophie Well shows the code, its short label, and a one-line description of what kind of charges belong in that bucket, so a reader can decode a hospital itemization without flipping through the NUBC manual.",
+  "whenToUse": "Use this when a hospital bill or a 837I claim shows a revenue code the patient or biller does not recognize, when reconciling charges against a chargemaster, or when teaching the institutional-vs-professional split between UB-04 revenue codes and CPT line items. The table is a reference, not a coverage tool - whether a revenue code is payable depends on the payer contract and the diagnosis attached on the claim."
+}

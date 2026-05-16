@@ -112,7 +112,10 @@
 >       Added in wave fifteen: avpu-gcs, sbar-template, roi,
 >       wallet-card, specialty-visit, peds-weight-dose,
 >       peds-weight-conv, lab-interpret, tdm-levels, tpn-macro.
->       Hand-authored total is now 151 files; the remaining ~27
+>       Added in wave sixteen: rev-table, nubc-codes, apc-lookup,
+>       idr-eligibility, birthday-rule, bw-bsa-suite, conc-rate,
+>       adult-arrest-ref, peds-arrest-ref, bsa_burn.
+>       Hand-authored total is now 161 files; the remaining ~17
 >       tiles continue to render from the templated `META`-driven
 >       copy in `build-tool-pages.mjs`.
 > - [ ] Per-tile 1200x630 OG image generated at build time per
