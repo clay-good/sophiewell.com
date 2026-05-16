@@ -44,9 +44,37 @@
 >       Source-of-truth is still the JSON-LD; the visible block is
 >       hand-maintained in lock-step.
 >
-> Phase 2 (pre-rendered tool pages, §5 / §14.2) outstanding. That
-> wave grows the sitemap back to ~178 URLs, one per tool, each at
-> `/tools/<id>/` with prose, schema, citations, and OG cards.
+> Phase 2 (pre-rendered tool pages, §5 / §14.2): first cut landed
+> (2026-05-16).
+> - [x] `scripts/build-tool-pages.mjs` writes one `dist/tools/<id>/`
+>       per tile, wired into `scripts/build.mjs` after the static
+>       copy step. 178 pages emitted per build.
+> - [x] Each page carries a SEO-shaped `<title>` and `<meta
+>       description>` (clamped to 65 / 158 chars), a canonical
+>       `https://sophiewell.com/tools/<id>/`, Open Graph + Twitter
+>       card mirroring the same copy, a visible `<h1>`, a templated
+>       prose body (What this is / When to use / References), a
+>       "Open the calculator" CTA back into the SPA at `/#<id>`,
+>       and a "Related tools" list of up to four sibling tiles from
+>       the same group.
+> - [x] Per-tool JSON-LD: `MedicalWebPage` (or `WebPage`)
+>       referencing the home `@id` via `isPartOf`, plus a separate
+>       `BreadcrumbList` document. `citation` is emitted when
+>       `META[id].citation` exists.
+> - [x] `scripts/build-sitemap.mjs` regrows from 1 URL back to
+>       179 - root plus one `/tools/<id>/` per tile - so Google
+>       Search Console has real per-tool canonicals to index.
+>
+> Phase 2 follow-ons (smaller PRs, not blocking the rollout):
+> - Hand-author prose for the top 50 highest-traffic tiles under
+>   `data/tool-copy/<id>.json` and read from it in
+>   `build-tool-pages.mjs` (replaces the templated `What this is`
+>   / `When to use` blocks per-tile).
+> - Per-tile 1200x630 OG image generated at build time per §6.3
+>   (currently every per-tool page reuses `/logo.png`).
+> - Tighter per-tool schema mapping per §7.2: `MedicalCalculator`
+>   for math tiles, `HowTo` for decoders, `Dataset` for the bundled
+>   lookup tables.
 
 ## 1. The problem in one sentence
 

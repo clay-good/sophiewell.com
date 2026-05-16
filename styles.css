@@ -282,6 +282,93 @@ body {
   text-align: center;
 }
 
+/* spec-seo §5: pre-rendered per-tool landing pages at /tools/<id>/.
+   The page reuses the topbar + container chrome and adds a handful
+   of layout classes for the indexable prose body. */
+.tool-page {
+  max-width: 820px;
+  margin: 0 auto;
+  padding: var(--space-4) var(--space-3) var(--space-6);
+}
+.tool-page .tp-breadcrumb {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin-bottom: var(--space-2);
+}
+.tool-page .tp-breadcrumb a { color: var(--text-secondary); }
+.tool-page .tp-h1 {
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  margin: 0 0 var(--space-2);
+  letter-spacing: -0.01em;
+}
+.tool-page .tp-lede {
+  color: var(--text-secondary);
+  font-size: 1.05rem;
+  line-height: 1.5;
+  margin: 0 0 var(--space-4);
+}
+.tool-page .tp-cta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-3);
+  margin: 0 0 var(--space-5);
+}
+.tool-page .tp-open {
+  display: inline-block;
+  padding: 10px 16px;
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border-primary);
+  border-radius: 8px;
+  color: var(--text-primary);
+  text-decoration: none;
+  font-weight: 600;
+}
+.tool-page .tp-open:hover,
+.tool-page .tp-open:focus-visible {
+  border-color: var(--text-secondary);
+}
+.tool-page section { margin-bottom: var(--space-5); }
+.tool-page section h2 {
+  font-size: 1.1rem;
+  margin: 0 0 var(--space-2);
+}
+.tool-page section p {
+  color: var(--text-secondary);
+  line-height: 1.55;
+  margin: 0 0 var(--space-2);
+}
+.tool-page .src-stamp {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+.tool-page .tp-related ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-2);
+}
+.tool-page .tp-related li a {
+  display: block;
+  padding: var(--space-2) var(--space-3);
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-primary);
+  border-radius: 6px;
+  color: var(--text-primary);
+  text-decoration: none;
+}
+.tool-page .tp-related li a:hover,
+.tool-page .tp-related li a:focus-visible {
+  border-color: var(--text-secondary);
+}
+.tool-page .tp-author { margin-top: var(--space-5); }
+@media (max-width: 600px) {
+  .tool-page .tp-related ul { grid-template-columns: 1fr; }
+}
+
 /* spec-seo §9.2: trust strip. Three skimmable badges below the lede.
    Three-column flex on desktop, stacks on mobile. */
 .trust-strip {

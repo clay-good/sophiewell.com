@@ -87,6 +87,14 @@ async function main() {
   );
   await writeFile(headersPath, patchedHeaders, 'utf8');
 
+  // spec-seo §5: pre-render one HTML page per tile at dist/tools/<id>/
+  // after the static assets are copied so /tools/<id>/index.html can
+  // reference /styles.css and /theme.js at the deployed root. Runs
+  // here rather than in regenerate() because it writes into dist/.
+  const { spawnSync } = await import('node:child_process');
+  const r = spawnSync(process.execPath, [join(ROOT, 'scripts', 'build-tool-pages.mjs')], { stdio: 'inherit' });
+  if (r.status !== 0) throw new Error(`build-tool-pages.mjs exited with status ${r.status}`);
+
   const hash = await buildHash();
   // Stamp BUILD_HASH in dist/sw.js.
   const swPath = join(DIST, 'sw.js');
