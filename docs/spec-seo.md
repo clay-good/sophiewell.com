@@ -80,14 +80,17 @@
 > - [x] `data/tool-copy/<id>.json` override mechanism landed
 >       (2026-05-16). `build-tool-pages.mjs` reads the optional
 >       file at build time and substitutes the `whatThisIs` and
->       `whenToUse` fields into the prose body. Sixth wave landed
->       (2026-05-16); the spec's top-50 hand-authored target was
->       met at 51 files and a sixth wave extended coverage into
->       the billing-codes and clinical-reference tiles that drive
->       a disproportionate share of long-tail queries. Added in
->       wave six: pos-codes, modifier-codes, revenue-codes, rarc,
->       drg-lookup, shock-index, centor, beers, asa, mallampati.
->       Hand-authored total is now 61 files; the remaining ~117
+>       `whenToUse` fields into the prose body. Seventh wave
+>       landed (2026-05-16); the spec's top-50 hand-authored
+>       target was met at 51 files and successive waves extended
+>       coverage into the billing-codes, clinical-reference, and
+>       screening / acute-care tiles that drive a disproportionate
+>       share of long-tail queries. Added in wave six: pos-codes,
+>       modifier-codes, revenue-codes, rarc, drg-lookup,
+>       shock-index, centor, beers, asa, mallampati. Added in
+>       wave seven: mrs, mini-cog, tetanus, winters, cage, epds,
+>       bishop, grace, toxidromes, corrected-sodium.
+>       Hand-authored total is now 71 files; the remaining ~107
 >       tiles continue to render from the templated `META`-driven
 >       copy in `build-tool-pages.mjs`.
 > - [ ] Per-tile 1200x630 OG image generated at build time per
