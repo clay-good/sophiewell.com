@@ -89,8 +89,11 @@
 >       modifier-codes, revenue-codes, rarc, drg-lookup,
 >       shock-index, centor, beers, asa, mallampati. Added in
 >       wave seven: mrs, mini-cog, tetanus, winters, cage, epds,
->       bishop, grace, toxidromes, corrected-sodium.
->       Hand-authored total is now 71 files; the remaining ~107
+>       bishop, grace, toxidromes, corrected-sodium. Added in
+>       wave eight: hcpcs-mod, pos-lookup, tob-decode, pcs-lookup,
+>       rxnorm-lookup, hipaa-roa, medicare-enrollment, aca-sep,
+>       unit-converter, maint-fluids.
+>       Hand-authored total is now 81 files; the remaining ~96
 >       tiles continue to render from the templated `META`-driven
 >       copy in `build-tool-pages.mjs`.
 > - [ ] Per-tile 1200x630 OG image generated at build time per

@@ -1,0 +1,4 @@
+{
+  "whatThisIs": "Look up any active CMS Place of Service code by number or by description. POS codes are the two-digit values on the CMS-1500 professional claim that tell the payer where the service was rendered - 11 for office, 21 for inpatient hospital, 22 for on-campus outpatient, 23 for emergency room, 02 and 10 for the two telehealth variants, 31 for skilled nursing facility, and so on. Sophie Well shows the full active set with both the CMS short label and the full definition.",
+  "whenToUse": "Use this when a claim denies for a place-of-service mismatch, when a payer questions a telehealth visit billed POS 02 versus POS 10, or when a coder is verifying the facility versus non-facility designation before submission. The POS code drives the site-of-service payment differential for many CPT codes, so the wrong POS is a common cause of underpayment that is much cheaper to catch before the claim goes out than to chase through an appeal."
+}
