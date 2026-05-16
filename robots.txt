@@ -1,3 +1,7 @@
 User-agent: *
 Allow: /
+Disallow: /dist/
+Disallow: /test/
+Disallow: /node_modules/
+
 Sitemap: https://sophiewell.com/sitemap.xml

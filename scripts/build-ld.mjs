@@ -58,13 +58,24 @@ const ld = {
       license: 'https://github.com/clay-good/sophiewell.com/blob/main/LICENSE',
     },
     {
+      // spec-seo §9.4: expand to 12 questions, each phrased as the
+      // literal search query, answers <=50 words, primary citation
+      // / source surfaced inline so the snippet reads as a complete
+      // answer in the SERP.
       '@type': 'FAQPage',
       mainEntity: [
-        { '@type': 'Question', name: 'Is sophiewell really free?', acceptedAnswer: { '@type': 'Answer', text: 'Yes. sophiewell is free, open source under MIT, and ad-free. The full source is on GitHub.' } },
-        { '@type': 'Question', name: 'Are my inputs sent to any server?', acceptedAnswer: { '@type': 'Answer', text: 'No. Every calculation runs locally in your browser. The site enforces a strict Content Security Policy and ships no analytics, telemetry, or third-party CDN.' } },
-        { '@type': 'Question', name: 'Is this medical advice?', acceptedAnswer: { '@type': 'Answer', text: 'No. sophiewell is a deterministic math and reference aid sourced from public datasets. It does not replace clinician judgment, institutional protocols, professional billing review, or legal counsel.' } },
-        { '@type': 'Question', name: 'Where does the data come from?', acceptedAnswer: { '@type': 'Answer', text: 'Public datasets (CMS, FDA, OIG, AHA, CDC, ATSDR, NIOSH, DOT). Each tool surfaces a Source label with a fetched-on date. See docs/data-sources.md for the full source catalog.' } },
-        { '@type': 'Question', name: 'Does it work offline?', acceptedAnswer: { '@type': 'Answer', text: 'Yes, after first load. A service worker caches the static bundle so every tool keeps working without an internet connection.' } },
+        { '@type': 'Question', name: 'Is Sophie Well free?', acceptedAnswer: { '@type': 'Answer', text: 'Yes. Sophie Well is free, open source under the MIT license, and ad-free. The full source is on GitHub.' } },
+        { '@type': 'Question', name: 'Is Sophie Well safe to use with patient data?', acceptedAnswer: { '@type': 'Answer', text: 'Every calculation runs locally in your browser. Nothing you type is sent to any server. The site enforces a strict Content Security Policy and ships no analytics, telemetry, or third-party CDN. You alone control whether information stays on your device.' } },
+        { '@type': 'Question', name: 'Does Sophie Well work offline?', acceptedAnswer: { '@type': 'Answer', text: 'Yes, after first load. A service worker caches the static bundle so every tool keeps working without an internet connection.' } },
+        { '@type': 'Question', name: 'Does Sophie Well replace my EHR calculator?', acceptedAnswer: { '@type': 'Answer', text: 'No. Sophie Well is a deterministic reference aid. Your EHR remains the system of record for documentation, orders, and billing. Use Sophie Well as a check, not a replacement.' } },
+        { '@type': 'Question', name: "Where does Sophie Well's data come from?", acceptedAnswer: { '@type': 'Answer', text: 'Public datasets (CMS, FDA, OIG, AHA, CDC, ATSDR, NIOSH, DOT) plus published clinical literature. Each tool shows its primary citation and, where applicable, a dataset Source label with the fetched-on date in the References region under the result.' } },
+        { '@type': 'Question', name: 'Can I use Sophie Well for billing decisions?', acceptedAnswer: { '@type': 'Answer', text: 'Sophie Well is a reference and educational tool. Use it to look up codes, decode statements, and learn the workflow; payer-specific rules, contracted rates, and certified billing review govern actual claims.' } },
+        { '@type': 'Question', name: 'Is Sophie Well HIPAA compliant?', acceptedAnswer: { '@type': 'Answer', text: "HIPAA applies to covered entities and their business associates. Sophie Well is neither: it is a static website that stores no data and transmits nothing you type. Whether you may use it with PHI depends on your organization's policies, not on a vendor BAA." } },
+        { '@type': 'Question', name: 'Does Sophie Well use AI?', acceptedAnswer: { '@type': 'Answer', text: 'No. Every tool is a pure deterministic function or a lookup against a bundled public dataset. No models, no inference, no LLM calls, in the browser or anywhere else.' } },
+        { '@type': 'Question', name: 'How current are the codes (ICD-10, HCPCS, CPT)?', acceptedAnswer: { '@type': 'Answer', text: 'ICD-10-CM follows the annual fiscal-year update (October). HCPCS is refreshed quarterly. CPT descriptors are AMA-owned and are not bundled; structural CPT rows come from the CMS Medicare Physician Fee Schedule. Each tool surfaces its dataset fetched-on date.' } },
+        { '@type': 'Question', name: "Can I trust Sophie Well's clinical scores?", acceptedAnswer: { '@type': 'Answer', text: 'Every clinical formula is implemented from the primary citation shown in its References region, and is covered by unit tests against the published example values. Sophie Well is a check on the math, not a substitute for clinical judgment.' } },
+        { '@type': 'Question', name: 'How do I report a bug or wrong answer?', acceptedAnswer: { '@type': 'Answer', text: 'Open an issue at github.com/clay-good/sophiewell.com/issues. Include the tile, the inputs, the expected output, and the citation you compared against. Bug fixes ship as small PRs against main.' } },
+        { '@type': 'Question', name: 'Who built Sophie Well?', acceptedAnswer: { '@type': 'Answer', text: 'Clay Good (claygood.com) builds and maintains Sophie Well. It is a personal project shipped as a public utility under the MIT license.' } },
       ],
     },
   ],

@@ -1,10 +1,43 @@
 # spec-seo.md — Sophie Well: organic discovery & magnetic SEO
 
-> Status: proposed. Adds an SEO and discoverability layer to the existing
-> v6 site without touching the deterministic-math contract or the no-AI,
-> no-telemetry, no-server posture. Everything below is static HTML, static
-> JSON-LD, or build-time generated pre-rendered pages. No runtime change
-> to tool behavior.
+> Status: Phase 1 landed (2026-05-16). Adds an SEO and discoverability
+> layer to the existing v6 site without touching the deterministic-math
+> contract or the no-AI, no-telemetry, no-server posture. Everything
+> below is static HTML, static JSON-LD, or build-time generated
+> pre-rendered pages. No runtime change to tool behavior.
+>
+> Phase 1 status (§14.1 quick wins):
+> - [x] Home `<title>` and `<meta description>` rewritten per §6;
+>       brand moved to the end; description fits inside the 140-158
+>       char SERP-snippet window. Open Graph and Twitter card mirror
+>       the same copy.
+> - [x] `<meta name="keywords">` removed (Google has ignored it since
+>       ~2009; spec §3 audit point 3).
+> - [x] Visible `<h1>` "Free healthcare tools, all in your browser"
+>       plus lede paragraph rendered above the task hero. The prior
+>       `visually-hidden` h1 is gone (§9.1).
+> - [x] Tile-count drift fixed in the meta description and JSON-LD;
+>       both pin to 178, the current home-grid count. JSON-LD also
+>       carries the count via build-ld.mjs reading UTILITIES.length.
+> - [x] FAQ JSON-LD expanded from 5 to 12 questions per §9.4;
+>       answers <=50 words and phrased as the literal search query.
+>       Source-of-truth in scripts/build-ld.mjs.
+> - [x] Sitemap stripped of every `#hash` URL. Until Phase 2 lands
+>       the pre-rendered `/tools/<id>/` pages, the sitemap is just
+>       the root URL (with a build-time sanity check that UTILITIES
+>       still parses to >=1 tile).
+> - [x] robots.txt expanded per §8.3 to disallow `/dist/`, `/test/`,
+>       `/node_modules/` and keep the absolute sitemap URL.
+>
+> Phase 1 deferrals (still on the §14.1 list, sized as separate PRs):
+> - Trust strip (§9.2) - requires new HTML + inline SVG icons.
+> - "Why Sophie" homepage section (§9.3) - prose authoring task.
+> - Mirror the FAQ JSON-LD answers in visible HTML below the tile
+>   grid as `<details>` elements (§9.4 last sentence).
+>
+> Phase 2 (pre-rendered tool pages, §5 / §14.2) outstanding. That
+> wave grows the sitemap back to ~178 URLs, one per tool, each at
+> `/tools/<id>/` with prose, schema, citations, and OG cards.
 
 ## 1. The problem in one sentence
 
