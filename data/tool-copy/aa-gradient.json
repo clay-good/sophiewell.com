@@ -1,0 +1,4 @@
+{
+  "whatThisIs": "Compute the alveolar-arterial oxygen gradient using the standard alveolar gas equation: PAO2 = FiO2 * (760 - 47) - (PaCO2 / 0.8), then A-a = PAO2 - PaO2. Sophie Well returns the gradient in mmHg along with the age-adjusted upper limit (roughly age/4 + 4) so a normal-vs-elevated read is one glance away.",
+  "whenToUse": "Use this when a patient is hypoxemic and you need to differentiate the five physiologic causes: a normal A-a gradient points to hypoventilation or low inspired oxygen; a widened gradient points to V/Q mismatch, shunt, or diffusion limitation. The standard formula assumes sea-level barometric pressure and water-vapor partial pressure; at altitude or on supplemental O2, interpret the absolute value with care."
+}

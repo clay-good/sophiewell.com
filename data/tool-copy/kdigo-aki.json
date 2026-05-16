@@ -1,0 +1,4 @@
+{
+  "whatThisIs": "Stage acute kidney injury per the KDIGO 2012 clinical practice guideline using the serum-creatinine criteria: Stage 1 (>=0.3 mg/dL rise in 48 h or 1.5-1.9x baseline), Stage 2 (2.0-2.9x baseline), or Stage 3 (>=3.0x baseline, creatinine >=4.0 mg/dL, or initiation of RRT). Sophie Well returns the stage along with the ratio and the absolute change so the chart note has the underlying numbers.",
+  "whenToUse": "Use this whenever a creatinine trends up in the inpatient or outpatient setting and you need to assign a KDIGO stage for documentation, billing, or trial enrollment. The creatinine-only path is implemented here; the parallel urine-output criterion (<0.5 mL/kg/h x 6+ h for Stage 1) requires an indwelling measurement and is typically scored separately at the bedside."
+}

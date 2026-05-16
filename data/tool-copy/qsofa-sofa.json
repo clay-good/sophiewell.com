@@ -1,0 +1,4 @@
+{
+  "whatThisIs": "Score quickSOFA and the full Sequential Organ Failure Assessment side by side per Sepsis-3 (Singer JAMA 2016; Vincent ICM 1996). qSOFA uses three bedside variables - altered mentation, respiratory rate >=22, and SBP <=100. Full SOFA scores six organ systems (respiratory, coagulation, liver, cardiovascular, CNS, renal) 0-4 each. Sophie Well returns both totals so a ward and ICU clinician can speak the same language about the same patient.",
+  "whenToUse": "Use qSOFA at the front door (ED triage, ward rapid-response) to flag a patient with suspected infection who is at high risk of a poor outcome (qSOFA >=2). Use the full SOFA in the ICU as the operational definition of sepsis-related organ dysfunction (an acute increase of >=2 points from baseline). Neither score is a sepsis-screening tool by itself; both presuppose a clinical suspicion of infection."
+}

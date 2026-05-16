@@ -80,16 +80,20 @@
 > - [x] `data/tool-copy/<id>.json` override mechanism landed
 >       (2026-05-16). `build-tool-pages.mjs` reads the optional
 >       file at build time and substitutes the `whatThisIs` and
->       `whenToUse` fields into the prose body. Fourth wave of
->       hand-authored files shipped (2026-05-16): 40 total -
->       icd10, qtc, egfr, wells-pe, decoder, eob-decoder,
->       no-surprises, bmi, naloxone, opioid-mme, anion-gap,
->       drip-rate, gcs, apgar, chads, ascvd, corrected-calcium,
->       nihss, heart, curb-65, meld-childpugh, phq9, hcpcs, cpt,
->       ndc, carc, hasbled, gad7, auditc, cows, map, bsa,
->       pack-years, due-date, cockcroft-gault, abg, wells-dvt,
->       perc, timi, ciwa. The remaining ~10 of the spec's top-50
->       land as one-line PRs.
+>       `whenToUse` fields into the prose body. Fifth wave landed
+>       (2026-05-16); the spec's top-50 hand-authored target is
+>       met at 50 files: icd10, qtc, egfr, wells-pe, decoder,
+>       eob-decoder, no-surprises, bmi, naloxone, opioid-mme,
+>       anion-gap, drip-rate, gcs, apgar, chads, ascvd,
+>       corrected-calcium, nihss, heart, curb-65, meld-childpugh,
+>       phq9, hcpcs, cpt, ndc, carc, hasbled, gad7, auditc, cows,
+>       map, bsa, pack-years, due-date, cockcroft-gault, abg,
+>       wells-dvt, perc, timi, ciwa, psi, qsofa-sofa, abcd2,
+>       kdigo-aki, weight-dose, pf-ratio, aa-gradient, insurance,
+>       appeal-letter, abn-explainer, msn-decoder. (51 files; one
+>       extra slot.) The remaining ~128 tiles continue to render
+>       from the templated `META`-driven copy in
+>       `build-tool-pages.mjs`.
 > - [ ] Per-tile 1200x630 OG image generated at build time per
 >       §6.3. Outstanding - currently every per-tool page reuses
 >       `/logo.png`, which letterboxes on wide-card consumers.

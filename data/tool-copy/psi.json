@@ -1,0 +1,4 @@
+{
+  "whatThisIs": "Compute the Pneumonia Severity Index / PORT score (Fine NEJM 1997) from age, sex, nursing-home residence, eleven comorbidities, five exam findings, and six lab or imaging variables. Sophie Well returns the points-only total, the Class I-V band, and the published 30-day mortality estimate for that class.",
+  "whenToUse": "Use this at first contact for a patient with community-acquired pneumonia to inform site-of-care: most Class I-II patients are managed as outpatients, Class III is the short-observation band, and Class IV-V usually warrants inpatient or ICU care. PSI is one of two validated CAP severity tools; CURB-65 is the simpler bedside alternative used when full lab values are not yet available."
+}

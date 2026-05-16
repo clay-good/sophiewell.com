@@ -1,0 +1,4 @@
+{
+  "whatThisIs": "Generate a printable health-insurance appeal letter from the basics of a denied claim: patient name and member ID, date of service, provider, the service or drug denied, the diagnosis code, the plan, the denial date, and the denial reason. Sophie Well renders a complete letter that quotes the denial back at the plan, requests a written internal review per the plan's own procedure, and reserves the right to escalate to external review.",
+  "whenToUse": "Use this when a claim or prior authorization has been denied and the patient or biller is filing a first-level internal appeal. The output is an educational template; plan-specific deadlines (typically 180 days from denial for ACA plans), required supporting documents (medical records, letter of medical necessity), and the precise appeal address are governed by the plan's own EOB and Summary of Benefits, which still need to be consulted. Not legal advice."
+}

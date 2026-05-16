@@ -1,0 +1,4 @@
+{
+  "whatThisIs": "Compute the PaO2 / FiO2 ratio - the oxygenation index from the ARDS Berlin Definition (JAMA 2012). Enter the arterial PaO2 in mmHg and the FiO2 as a decimal (0.21 - 1.0) and Sophie Well returns the P/F value plus the Berlin band: mild (200-300), moderate (100-200), or severe (<=100), with PEEP/CPAP >=5 cmH2O assumed for the ARDS definition.",
+  "whenToUse": "Use this on any intubated or high-FiO2 patient to classify oxygenation severity, track response to PEEP/proning/paralytics, or screen for ARDS enrollment criteria. P/F is sensitive to FiO2 changes and to altitude; in non-intubated patients on nasal cannula or HFNC the SpO2/FiO2 ratio or the ROX index are more appropriate substitutes."
+}

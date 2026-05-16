@@ -1,0 +1,4 @@
+{
+  "whatThisIs": "Paste a Medicare Summary Notice (MSN) - the quarterly statement original Medicare mails Part A and Part B beneficiaries - and Sophie Well parses the key money lines: Medicare-approved amount, what Medicare paid, the provider adjustment (write-off), and the maximum the patient may be billed. The decoder reads the standard CMS MSN format and surfaces those numbers in plain English without leaving the browser.",
+  "whenToUse": "Use this when an MSN arrives and the patient cannot tell whether the bill that just showed up matches what Medicare says they owe, or when comparing the MSN to the provider's billing statement to flag balance-billing errors. The decoder is reference parsing only; it does not change Medicare's payment decision and does not apply to Medicare Advantage Explanation of Benefits, which use a different format."
+}

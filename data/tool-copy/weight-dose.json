@@ -1,0 +1,4 @@
+{
+  "whatThisIs": "Compute a total dose from a per-kilogram dose and a patient weight using the standard formula total = weight (kg) * dose per kg. Sophie Well accepts mg/kg, mcg/kg, units/kg, and mL/kg, returns the rounded total, and surfaces the underlying math so the bedside calculation is auditable.",
+  "whenToUse": "Use this for any weight-based medication order - pediatric antibiotics, heparin bolus, anesthesia induction agents, naloxone, dexamethasone, vasopressors, and so on. The output is arithmetic only; you still have to verify against the institution's formulary and any per-dose maximum (a pediatric weight-based calculation that exceeds the adult ceiling should be capped, not delivered)."
+}

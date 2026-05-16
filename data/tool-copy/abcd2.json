@@ -1,0 +1,4 @@
+{
+  "whatThisIs": "Compute the ABCD2 score for early stroke risk after transient ischemic attack (Johnston Lancet 2007): Age >=60, Blood pressure >=140/90, Clinical features (unilateral weakness, speech disturbance), Duration (>=60 min, 10-59 min, <10 min), and Diabetes. Sophie Well returns the 0-7 total and the published 2-day, 7-day, and 90-day stroke-risk bands.",
+  "whenToUse": "Use this at first contact for a patient with a probable TIA to inform urgency of workup and admission. ABCD2 is a triage aid, not a substitute for imaging - current AHA/ASA guidance recommends rapid carotid imaging, ECG, and brain MRI for most TIA patients regardless of score; the score helps prioritize how quickly that workup happens."
+}

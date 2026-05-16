@@ -1,0 +1,4 @@
+{
+  "whatThisIs": "Decode the printed fields on a health-insurance ID card - member ID, group number, plan name and type (HMO / PPO / POS / EPO / HDHP), pharmacy BIN / PCN / RxGroup, member services and provider phone, and the NPI / Payer ID when present. Sophie Well returns a plain-English explanation of every field and what each one is used for at the front desk, the pharmacy counter, and on a claim.",
+  "whenToUse": "Use this when a patient hands over a card before a visit, when a pharmacy claim rejects with a BIN/PCN mismatch, or when a biller is reconciling the card to an electronic eligibility response. The decoder is reference-only; it does not verify coverage in real time and does not replace the payer eligibility check that should still run before the service is rendered."
+}
