@@ -67,6 +67,10 @@
 >   be read, instead of silently consuming the first and discarding
 >   the rest. User-facing rejection copy for PDF/DOCX/image drops
 >   was rewritten to drop the "v7 decoder pages" jargon.
+> - Escape inside the dropzone region now dismisses the result line
+>   and chooser pane without wiping the textarea (a non-destructive
+>   way to retract a misfired detection); the Clear button still
+>   wipes the textarea for a full reset.
 >
 > The remaining sections (4.1-4.6 decoder pages) are unimplemented.
 > Extends spec-v5 and spec-v6 without amending their hard rules.

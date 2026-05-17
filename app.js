@@ -723,6 +723,19 @@ function wireDropzone() {
       if (paste) paste.focus();
     });
   }
+  // Escape inside the dropzone region dismisses the result line and
+  // chooser pane without wiping the textarea; a non-destructive
+  // way to retract a misfired detection. The Clear button still
+  // wipes the textarea for users who want a full reset.
+  root.addEventListener('keydown', (e) => {
+    if (e.key !== 'Escape') return;
+    const hasResult = result && !result.hidden;
+    const hasChooser = chooser && !chooser.hidden;
+    if (!hasResult && !hasChooser) return;
+    e.preventDefault();
+    setResult('', false);
+    hideChooser();
+  });
 }
 
 // ----- Routing -------------------------------------------------------------
