@@ -6,6 +6,33 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v11 waves 3b + 3c — critical-care + stroke / neuro audits)
+
+- **Wave 3b — critical-care scoring (3 tiles).** `qsofa-sofa`,
+  `meld-childpugh`, `ranson-bisap` each audited end-to-end per
+  spec-v11 §3.1: citation re-verification (Singer 2016, Vincent 1996,
+  Ferreira 2001, Kim 2021, Pugh 1973, Ranson 1974, Wu 2008), three
+  boundary worked examples, a cross-implementation differential
+  (MELD-3.0 hand-traced against Kim 2021 Table 4: bili=3.2, INR=1.5,
+  Cr=1.6, Na=132, alb=2.8, female -> Sophie 25, Kim 2021 25, delta 0%),
+  edge-input handling notes (per-organ-system clamp on SOFA; per-lab
+  clamp + dialysis-forces-Cr-to-3.0 on MELD-3.0), and an a11y / keyboard
+  pass. All three PASS.
+- **Wave 3c — stroke and neuro (3 tiles).** `gcs`, `nihss`, `mrs`
+  each audited end-to-end per spec-v11 §3.1: citation re-verification
+  (Teasdale 1974, Teasdale 2014 Lancet Neurol retrospective, Brott 1989,
+  NINDS public-domain NIHSS, van Swieten 1988, UK-TIA 1988, Banks 2007),
+  three boundary worked examples (GCS 3 / 12 / 15; NIHSS 0 / 5 / 42;
+  mRS all seven canonical levels), cross-implementation differentials
+  against the NINDS pocket card and Banks 2007 mRS Table 1
+  (text-verbatim match), edge-input handling notes (per-component
+  caps via the shared `num` validator on GCS and NIHSS), and an a11y
+  pass. All three PASS.
+- **`scripts/audit-coverage.mjs` now reports 21 / 178 (12%) overall**,
+  with `F  Medication & Infusion  15/15 (100%)` and
+  `G  Clinical Scoring & Risk  6/47 (13%)`. Wave 3d (cardiology) is
+  next per spec-v11 §3.3.
+
 ### Added (spec-v11 wave 3a — Medication & Infusion audit, 15/15 tiles)
 
 - **Group F audited end-to-end.** Wave 3a closes the highest-stakes
