@@ -38,8 +38,11 @@ push, web push, or any other notification surface.
 
 No `localStorage`, no `sessionStorage`, no `IndexedDB`, no cookies.
 The service worker cache stores only the application's own static
-files, never user input. Pinned-tile state and calculator inputs (when
-encoded) live only in the URL hash, which never leaves the browser.
+files, never user input. Calculator inputs (when encoded) and the
+audience-chip / disclosure-state filters live only in the URL hash,
+which never leaves the browser. The Pin/Unpin home section was
+removed in spec-v8 §3.2; the URL hash no longer carries a `p=`
+segment.
 
 ## 90-day deprecation notice
 
