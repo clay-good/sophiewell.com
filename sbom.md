@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `c3cb09b2a2506d46`
-Generated: 2026-05-17T02:12:56.347Z
+Build ID: `bdb70e86bb546d3f`
+Generated: 2026-05-17T12:40:29.485Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=20.18.1 <21, npm >=10.0.0
@@ -23,9 +23,9 @@ downloads is committed in this repository and is hashed below.
 
 | Path | Bytes | SHA-256 |
 |---|---:|---|
-| `index.html` | 100562 | `7db0891b88445f14585bb4fbb9bfe3192de386482b3aea996282d49c96850027` |
-| `styles.css` | 35791 | `a346e46d2c5327e2414e9ec02f476b0a495acf709c155cd4928e90c8b84c272b` |
-| `app.js` | 57371 | `d9f352b343d0b7af00202ba873207b0bbfbe66e1b81394e5d164340d9b17a5f3` |
+| `index.html` | 103438 | `8573ef4a54c27f580214374c4e7914b598c268ac7e295ba768286a4ca878be4c` |
+| `styles.css` | 38376 | `c8221fc857029c04007c5ef81dc7ff2668cca8544d99ea6fd709e6afa955d06c` |
+| `app.js` | 63046 | `aba4f38f0f4d5b4fa73a110acc436f389909b3ff9358d3d6986c5751b6507127` |
 | `sw.js` | 4062 | `60f524b1b69eb5170c59af42631e11cc05db2a44e8e530977db0327888b0ff6d` |
 | `site.webmanifest` | 709 | `0e0de4da60590a12e8b27a0ae2a2f5ffdb6500b7d2b78f93631ec2f64ed3d5ce` |
 | `robots.txt` | 127 | `38fbf9c1854e72abb20e01e81dd5a31d4ea96f154c12d5db1ec3af05524dd1a1` |
@@ -43,6 +43,7 @@ downloads is committed in this repository and is hashed below.
 |---|---:|---|
 | `lib/aca-sep.js` | 2961 | `8ebb4335a70bd61c447ae179338d59f4f5cdead7562f67c626749eaf81d6bae2` |
 | `lib/artifact-detect.js` | 11593 | `35b59ad29ea2cea64de809c58f4353d0ffd924217c9db6ac0bd98a1a640487f4` |
+| `lib/artifact-route.js` | 2347 | `b6d4654ea0563f36c9973fb1baa34455854d921aed5e2b5aa43a1a570bfadb0a` |
 | `lib/birthday-rule.js` | 2243 | `2f109eb119aef3f369e6b9618b7dd0580ef76936b4211ae12d7561bd0d52462b` |
 | `lib/clinical-v4.js` | 7486 | `f23d565651f5a2dce08304b36464f52d53d3bfd1a59f5ea880bb59e9b180b721` |
 | `lib/clinical-v5.js` | 23488 | `220591774914b1d8bccb97e5dd323d06f542fda96673743f4d7e6a54152f4030` |

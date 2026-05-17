@@ -19,6 +19,8 @@ import { installKeyboard } from './lib/keyboard.js';
 import { parseHash, buildHash, patchHash } from './lib/hash.js';
 import { matchSynonym, loadSynonyms } from './lib/synonyms.js';
 import { resolvePrompt } from './lib/prompt.js';
+import { detectArtifact } from './lib/artifact-detect.js';
+import { routeArtifact, ARTIFACT_LABELS, DEFAULT_ARTIFACT_ROUTES } from './lib/artifact-route.js';
 
 const RENDERERS = { ...RA, ...RC, ...RE, ...RF, ...RG, ...RH, ...RI, ...RJ, ...RKLMNO, ...RV5, ...RV6 };
 
@@ -508,6 +510,165 @@ function updateSynonymHint(rawQuery) {
 function openDisclosure() {
   const d = document.getElementById('browse-disclosure');
   if (d && !d.open) d.open = true;
+}
+
+// spec-v7 section 3.1: artifact-detecting dropzone wiring (shell).
+// Accepts a plain-text file drop (.txt) or pasted text, runs the
+// deterministic classifier in lib/artifact-detect.js, then routes to the
+// decoder tile via lib/artifact-route.js. PDF/DOCX file parsing in a
+// Web Worker is part of v7 section 4 and not implemented here; non-text
+// drops surface an inline message asking the user to paste the content.
+// No upload, no fetch, no storage. The file stays on the device.
+function wireDropzone() {
+  const root = document.getElementById('artifact-dropzone');
+  if (!root) return;
+  const target = document.getElementById('artifact-drop-target');
+  const pickBtn = document.getElementById('artifact-pick-btn');
+  const fileInput = document.getElementById('artifact-file-input');
+  const paste = document.getElementById('artifact-paste');
+  const detectBtn = document.getElementById('artifact-detect-btn');
+  const clearBtn = document.getElementById('artifact-clear-btn');
+  const result = document.getElementById('artifact-result');
+  const chooser = document.getElementById('artifact-chooser');
+  const chooserButtons = document.getElementById('artifact-chooser-buttons');
+
+  function setResult(message, isError) {
+    if (!result) return;
+    result.textContent = message || '';
+    if (isError) result.classList.add('is-error');
+    else result.classList.remove('is-error');
+    result.hidden = !message;
+  }
+
+  function hideChooser() {
+    if (!chooser) return;
+    if (chooserButtons) clear(chooserButtons);
+    chooser.hidden = true;
+  }
+
+  function showChooser() {
+    if (!chooser || !chooserButtons) return;
+    clear(chooserButtons);
+    Object.keys(DEFAULT_ARTIFACT_ROUTES).forEach((kind) => {
+      const tileId = routeArtifact(kind, new Map(UTILITIES.map((u) => [u.id, u])));
+      if (!tileId) return;
+      const label = ARTIFACT_LABELS[kind] || kind;
+      const btn = el('button', { type: 'button', 'data-tool-route': tileId, text: label });
+      btn.addEventListener('click', () => { location.hash = '#' + tileId; });
+      chooserButtons.appendChild(btn);
+    });
+    chooser.hidden = false;
+  }
+
+  function routeOrChoose(text) {
+    const trimmed = String(text || '').trim();
+    if (!trimmed) {
+      setResult('Paste the document text first, then click Detect.', true);
+      hideChooser();
+      return;
+    }
+    const det = detectArtifact(trimmed);
+    if (det.kind === 'unknown') {
+      setResult('Could not auto-detect this document. Pick a decoder below.', false);
+      showChooser();
+      return;
+    }
+    const known = new Set(UTILITIES.map((u) => u.id));
+    const tileId = routeArtifact(det.kind, known);
+    if (!tileId) {
+      setResult(
+        'Detected ' + (ARTIFACT_LABELS[det.kind] || det.kind) +
+        '. No decoder is wired for that yet; pick another below.',
+        false,
+      );
+      showChooser();
+      return;
+    }
+    const label = ARTIFACT_LABELS[det.kind] || det.kind;
+    setResult('Detected ' + label + '. Opening the matching decoder.', false);
+    hideChooser();
+    location.hash = '#' + tileId;
+  }
+
+  function readTextFile(file) {
+    if (!file) return;
+    const name = (file.name || '').toLowerCase();
+    const type = (file.type || '').toLowerCase();
+    const isText = type === 'text/plain' || name.endsWith('.txt');
+    if (!isText) {
+      setResult(
+        'PDF and DOCX are not parsed in the browser yet (coming with the v7 decoder pages). ' +
+        'Open the file, copy its text, and paste it below.',
+        true,
+      );
+      hideChooser();
+      return;
+    }
+    if (typeof FileReader === 'undefined') {
+      setResult('Your browser does not support file reading. Paste the text below instead.', true);
+      return;
+    }
+    const reader = new FileReader();
+    reader.onload = () => {
+      const text = String(reader.result || '');
+      if (paste) paste.value = text;
+      routeOrChoose(text);
+    };
+    reader.onerror = () => {
+      setResult('Could not read that file. Paste the text below instead.', true);
+    };
+    reader.readAsText(file);
+  }
+
+  if (pickBtn && fileInput) {
+    pickBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      fileInput.click();
+    });
+  }
+  if (fileInput) {
+    fileInput.addEventListener('change', () => {
+      const f = fileInput.files && fileInput.files[0];
+      if (f) readTextFile(f);
+      fileInput.value = '';
+    });
+  }
+  if (target) {
+    target.addEventListener('click', () => { if (fileInput) fileInput.click(); });
+    target.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        if (fileInput) fileInput.click();
+      }
+    });
+    target.addEventListener('dragover', (e) => {
+      e.preventDefault();
+      target.classList.add('is-dragover');
+    });
+    target.addEventListener('dragleave', () => {
+      target.classList.remove('is-dragover');
+    });
+    target.addEventListener('drop', (e) => {
+      e.preventDefault();
+      target.classList.remove('is-dragover');
+      const f = e.dataTransfer && e.dataTransfer.files && e.dataTransfer.files[0];
+      if (f) readTextFile(f);
+    });
+  }
+  if (detectBtn) {
+    detectBtn.addEventListener('click', () => {
+      routeOrChoose(paste ? paste.value : '');
+    });
+  }
+  if (clearBtn) {
+    clearBtn.addEventListener('click', () => {
+      if (paste) paste.value = '';
+      setResult('', false);
+      hideChooser();
+      if (paste) paste.focus();
+    });
+  }
 }
 
 // ----- Routing -------------------------------------------------------------
@@ -1047,6 +1208,7 @@ function boot() {
   const countNode = document.getElementById('browse-tile-count');
   if (countNode) countNode.textContent = String(UTILITIES.length);
   wireFilters();
+  wireDropzone();
   applyFilters();
   installKeyboard();
   installTopbarSearch();

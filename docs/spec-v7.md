@@ -1,14 +1,28 @@
 # spec-v7.md — sophiewell.com: artifact-first front door (dropzone + synonym-routed prompt)
 
 > Status: proposed; sections 3.2 (synonym-routed prompt), 3.3
-> (artifact-detect classifier — pure-function module + fixture tests,
-> not yet wired into a dropzone UI), and 3.4 (collapsible tile-grid
-> disclosure) shipped 2026-05-14. The disclosure currently defaults to
-> open to preserve existing clinician flows and the e2e selectors that
-> click directly into a tile; the spec's default-collapsed posture is
-> deferred until the section 4 dropzone front door lands. The
-> remaining sections (4.1-4.6 decoder pages and the section 3.1
-> dropzone wiring that consumes the classifier) are unimplemented.
+> (artifact-detect classifier — pure-function module + fixture tests),
+> and 3.4 (collapsible tile-grid disclosure) shipped 2026-05-14.
+> Section 3.4's default-collapsed posture was committed by spec-v8
+> §4.6 (2026-05-16).
+>
+> Section 3.1 dropzone shell landed 2026-05-17. The home view now
+> renders an artifact dropzone under the task hero
+> ([index.html](../index.html)) backed by a small kind→tile routing
+> table ([lib/artifact-route.js](../lib/artifact-route.js)) and the
+> existing classifier. The shell accepts a plain-text file drop
+> (`.txt`) or pasted document text, runs `detectArtifact()` over the
+> input, and either routes to the matching decoder tile
+> (`bill`→decoder, `eob`→eob-decoder, `msn`→msn-decoder,
+> `lab-result`→lab-interpret, `denial-letter`→appeal-letter,
+> `discharge-summary`→discharge-instr, `insurance-card`→insurance) or
+> surfaces a chooser pane when detection returns `unknown`. The file
+> never leaves the tab — no upload, no fetch, no storage. PDF/DOCX
+> file parsing in a Web Worker, the annotated-DOCX export, and the
+> section 4 decoder pages remain unimplemented; the shell tells the
+> user to paste the document's text content in the meantime.
+>
+> The remaining sections (4.1-4.6 decoder pages) are unimplemented.
 > Extends spec-v5 and spec-v6 without amending their hard rules.
 > Reshapes Sophie's front door around the patient who arrives holding
 > an artifact they cannot read, while preserving the tile catalog
