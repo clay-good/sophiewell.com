@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `2a92c6444a21cc97`
-Generated: 2026-05-17T12:44:43.980Z
+Build ID: `6ccfdb6606dc8ec3`
+Generated: 2026-05-17T12:54:00.115Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=20.18.1 <21, npm >=10.0.0
@@ -23,9 +23,9 @@ downloads is committed in this repository and is hashed below.
 
 | Path | Bytes | SHA-256 |
 |---|---:|---|
-| `index.html` | 103438 | `8573ef4a54c27f580214374c4e7914b598c268ac7e295ba768286a4ca878be4c` |
+| `index.html` | 103542 | `186a8503e779152bfd27be32a7a1d4e2077922e74b4a6a0441221be85543858c` |
 | `styles.css` | 38621 | `aae166662d02108ddc88e23ff390b69dc9ce1e7a77b5df6936c92f22f71ff319` |
-| `app.js` | 63610 | `ea80cbc86ef585270a2ca5b9b7ac647a2a1aeca5a2582ef11cabf14f2e9769bf` |
+| `app.js` | 63630 | `7f2c4679f740bcc15e432cab973312f96f16448f1f2f46fb179e25743d56b5d4` |
 | `sw.js` | 4062 | `60f524b1b69eb5170c59af42631e11cc05db2a44e8e530977db0327888b0ff6d` |
 | `site.webmanifest` | 709 | `0e0de4da60590a12e8b27a0ae2a2f5ffdb6500b7d2b78f93631ec2f64ed3d5ce` |
 | `robots.txt` | 127 | `38fbf9c1854e72abb20e01e81dd5a31d4ea96f154c12d5db1ec3af05524dd1a1` |
@@ -44,7 +44,7 @@ downloads is committed in this repository and is hashed below.
 | `lib/aca-sep.js` | 2961 | `8ebb4335a70bd61c447ae179338d59f4f5cdead7562f67c626749eaf81d6bae2` |
 | `lib/artifact-detect.js` | 11593 | `35b59ad29ea2cea64de809c58f4353d0ffd924217c9db6ac0bd98a1a640487f4` |
 | `lib/artifact-handoff.js` | 3763 | `d87421f9d17959beac7658dd67ee9a62eeb1992c36ac855238952276bbfebbc2` |
-| `lib/artifact-route.js` | 2347 | `b6d4654ea0563f36c9973fb1baa34455854d921aed5e2b5aa43a1a570bfadb0a` |
+| `lib/artifact-route.js` | 4337 | `25009822a089ebeabf27b3b500105c36ff0830c049d9d736ffd84d2ba98e27a1` |
 | `lib/birthday-rule.js` | 2243 | `2f109eb119aef3f369e6b9618b7dd0580ef76936b4211ae12d7561bd0d52462b` |
 | `lib/clinical-v4.js` | 7486 | `f23d565651f5a2dce08304b36464f52d53d3bfd1a59f5ea880bb59e9b180b721` |
 | `lib/clinical-v5.js` | 23488 | `220591774914b1d8bccb97e5dd323d06f542fda96673743f4d7e6a54152f4030` |

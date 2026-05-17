@@ -7,7 +7,10 @@ import { ARTIFACT_KINDS } from '../../lib/artifact-detect.js';
 import {
   DEFAULT_ARTIFACT_ROUTES,
   ARTIFACT_LABELS,
+  TEXT_EXTENSIONS,
   routeArtifact,
+  isLikelyTextFile,
+  formatDetectionHits,
 } from '../../lib/artifact-route.js';
 
 test('every ARTIFACT_KINDS entry has a routing slot (value or explicit null)', () => {
@@ -54,4 +57,39 @@ test('routeArtifact gates the result on the knownIds set when provided', () => {
   // The mapped tile is not in the registry: result must be null, not the id.
   assert.equal(routeArtifact('lab-result', known), null);
   assert.equal(routeArtifact('discharge-summary', known), null);
+});
+
+test('isLikelyTextFile accepts common text MIME types and extensions', () => {
+  assert.equal(isLikelyTextFile({ name: 'bill.txt', type: 'text/plain' }), true);
+  assert.equal(isLikelyTextFile({ name: 'labs.csv', type: 'text/csv' }), true);
+  assert.equal(isLikelyTextFile({ name: 'export.json', type: 'application/json' }), true);
+  assert.equal(isLikelyTextFile({ name: 'notes.md', type: '' }), true);
+  assert.equal(isLikelyTextFile({ name: 'tabs.tsv', type: '' }), true);
+  assert.equal(isLikelyTextFile({ name: 'mystery', type: 'text/markdown' }), true);
+});
+
+test('isLikelyTextFile rejects PDFs, DOCX, images, and bogus input', () => {
+  assert.equal(isLikelyTextFile({ name: 'bill.pdf', type: 'application/pdf' }), false);
+  assert.equal(isLikelyTextFile({ name: 'denial.docx', type: 'application/vnd.openxmlformats-officedocument.wordprocessingml.document' }), false);
+  assert.equal(isLikelyTextFile({ name: 'card.png', type: 'image/png' }), false);
+  assert.equal(isLikelyTextFile(null), false);
+  assert.equal(isLikelyTextFile(undefined), false);
+  assert.equal(isLikelyTextFile({}), false);
+});
+
+test('TEXT_EXTENSIONS lists the dropzone-input accept set', () => {
+  for (const ext of TEXT_EXTENSIONS) {
+    assert.equal(ext.startsWith('.'), true, ext + ' must start with a dot');
+  }
+  assert.ok(TEXT_EXTENSIONS.includes('.txt'));
+  assert.ok(TEXT_EXTENSIONS.includes('.csv'));
+  assert.ok(TEXT_EXTENSIONS.includes('.json'));
+});
+
+test('formatDetectionHits joins up to three hits with a label', () => {
+  assert.equal(formatDetectionHits([]), '');
+  assert.equal(formatDetectionHits(null), '');
+  assert.equal(formatDetectionHits(['a']), 'matched: a');
+  assert.equal(formatDetectionHits(['a', 'b', 'c', 'd']), 'matched: a, b, c');
+  assert.equal(formatDetectionHits(['a', 'b'], 1), 'matched: a');
 });

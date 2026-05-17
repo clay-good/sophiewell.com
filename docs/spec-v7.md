@@ -36,6 +36,19 @@
 > navigation but no handoff; their structured forms will pick up the
 > payload once the per-tile parsers in section 4 land.
 >
+> Additional same-day follow-ons (2026-05-17):
+> - Dropzone now accepts any plain-text file FileReader can read
+>   (text/* MIME, application/json, plus .txt/.text/.log/.csv/.tsv/
+>   .md/.markdown/.json extensions). The accept predicate lives in
+>   [lib/artifact-route.js](../lib/artifact-route.js) as the pure
+>   `isLikelyTextFile` helper so the file-input `accept=` attribute
+>   and the runtime predicate stay in lockstep.
+> - Result line now surfaces the classifier hits that fired
+>   ("Detected EOB (matched: this is not a bill, allowed amount).
+>   Opening the decoder..."). `formatDetectionHits` is a pure helper
+>   in the same module; capped at three hits so the line stays
+>   readable.
+>
 > The remaining sections (4.1-4.6 decoder pages) are unimplemented.
 > Extends spec-v5 and spec-v6 without amending their hard rules.
 > Reshapes Sophie's front door around the patient who arrives holding

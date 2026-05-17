@@ -20,7 +20,13 @@ import { parseHash, buildHash, patchHash } from './lib/hash.js';
 import { matchSynonym, loadSynonyms } from './lib/synonyms.js';
 import { resolvePrompt } from './lib/prompt.js';
 import { detectArtifact } from './lib/artifact-detect.js';
-import { routeArtifact, ARTIFACT_LABELS, DEFAULT_ARTIFACT_ROUTES } from './lib/artifact-route.js';
+import {
+  routeArtifact,
+  ARTIFACT_LABELS,
+  DEFAULT_ARTIFACT_ROUTES,
+  isLikelyTextFile,
+  formatDetectionHits,
+} from './lib/artifact-route.js';
 import { setPendingDrop, applyPendingDrop, hasPasteInputForTile } from './lib/artifact-handoff.js';
 
 const RENDERERS = { ...RA, ...RC, ...RE, ...RF, ...RG, ...RH, ...RI, ...RJ, ...RKLMNO, ...RV5, ...RV6 };
@@ -586,11 +592,13 @@ function wireDropzone() {
       return;
     }
     const label = ARTIFACT_LABELS[det.kind] || det.kind;
+    const hits = formatDetectionHits(det.hits);
+    const why = hits ? ' (' + hits + ')' : '';
     if (hasPasteInputForTile(tileId)) {
       setPendingDrop(tileId, trimmed);
-      setResult('Detected ' + label + '. Opening the decoder with your text pre-filled.', false);
+      setResult('Detected ' + label + why + '. Opening the decoder with your text pre-filled.', false);
     } else {
-      setResult('Detected ' + label + '. Opening the matching decoder.', false);
+      setResult('Detected ' + label + why + '. Opening the matching decoder.', false);
     }
     hideChooser();
     location.hash = '#' + tileId;
@@ -598,12 +606,9 @@ function wireDropzone() {
 
   function readTextFile(file) {
     if (!file) return;
-    const name = (file.name || '').toLowerCase();
-    const type = (file.type || '').toLowerCase();
-    const isText = type === 'text/plain' || name.endsWith('.txt');
-    if (!isText) {
+    if (!isLikelyTextFile(file)) {
       setResult(
-        'PDF and DOCX are not parsed in the browser yet (coming with the v7 decoder pages). ' +
+        'PDF, DOCX, and image files are not parsed in the browser yet (coming with the v7 decoder pages). ' +
         'Open the file, copy its text, and paste it below.',
         true,
       );

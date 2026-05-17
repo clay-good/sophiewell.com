@@ -540,18 +540,18 @@
               aria-label="Drop a plain-text file or click to choose one"
             >
               <p class="artifact-drop-target-text">
-                Drop a .txt file here, or
+                Drop a text file (.txt, .csv, .md, .json, .log) here, or
                 <button type="button" class="link-btn" id="artifact-pick-btn">choose a file</button>.
               </p>
               <p class="artifact-drop-target-hint muted">
-                PDF and DOCX support arrives with the v7 decoder pages. For now, paste below.
+                PDF, DOCX, and image support arrives with the v7 decoder pages. For now, paste their text below.
               </p>
               <label for="artifact-file-input" class="visually-hidden">Choose a plain-text file to analyze</label>
               <input
                 type="file"
                 id="artifact-file-input"
                 class="visually-hidden"
-                accept=".txt,text/plain"
+                accept=".txt,.text,.log,.csv,.tsv,.md,.markdown,.json,text/*,application/json"
               />
             </div>
             <label for="artifact-paste" class="artifact-paste-label">Or paste text:</label>
