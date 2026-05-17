@@ -6,6 +6,52 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v7 section 3.1 — artifact-detecting dropzone shell)
+
+- **Artifact dropzone on the home page (spec-v7 §3.1).** The home view
+  now renders a dropzone under the task hero that accepts a plain-text
+  file drop (`.txt`, `.csv`, `.md`, `.json`, `.log`, `.tsv`,
+  `.markdown`, `.text`, plus `text/*` and `application/json`) or
+  pasted document text, runs the v7 §3.3 classifier over the content,
+  and routes to the matching decoder tile via a small kind→tile table
+  in `lib/artifact-route.js`. Unknown kinds and unwired kinds surface
+  a chooser pane listing every shipped decoder. Per v7 §1, the file
+  never leaves the tab: no upload, no fetch, no storage, no new
+  `connect-src` entry.
+- **Text-payload handoff (spec-v7 §3.1).** A new
+  `lib/artifact-handoff.js` holds a single in-memory pending payload;
+  the dropzone stashes the detected text before navigating, and the
+  route() post-render microtask in `app.js` calls `applyPendingDrop()`
+  which fills the destination decoder's textarea (`#bill`, `#eob`, or
+  `#msn`) and appends a one-line "Pre-filled from the document you
+  dropped above" banner. The chooser-fallback path uses the same
+  handoff, so picking a decoder manually after a failed detection no
+  longer forces a second paste. Tiles whose renderers do not expose a
+  single paste input (`lab-interpret`, `appeal-letter`,
+  `discharge-instr`, `insurance`) still receive the navigation but no
+  handoff; the per-tile parsers in §4 will fill them.
+- **Result-line UX polish (spec-v7 §3.1 follow-ons).** Detection now
+  fires automatically on a clipboard paste into the textarea (one-tick
+  delay so the pasted value is in place), matching the file-drop
+  ergonomics. Editing the textarea after a detection clears the stale
+  result line and chooser pane. Escape inside the dropzone is a
+  non-destructive dismiss for the result line and chooser without
+  wiping the textarea. Multi-file drops surface a one-line notice
+  naming the first file rather than silently consuming it. The
+  result line surfaces the classifier hits ("Detected EOB (matched:
+  this is not a bill, allowed amount). Opening the decoder..."), with
+  a three-hit cap so the line stays readable.
+- **Lockstep-pinning unit assertion.** A new test in
+  `test/unit/artifact-route.test.js` reads `index.html` and fails if
+  the file picker's `accept=` list ever drifts from `TEXT_EXTENSIONS`,
+  `application/json`, or `text/*`. The picker and the runtime
+  `isLikelyTextFile` predicate are now CI-pinned to the same source
+  of truth. Unit count 679 → 680.
+- Section 4 decoder pages (annotated DOCX export, PDF/DOCX parsing in
+  a Web Worker, image OCR for the insurance-card flow) remain
+  unimplemented. The shell tells the user to paste the document's
+  text content in the meantime.
+
 ### Added (spec-v7 section 3.3 — artifact-detect classifier)
 
 - **Deterministic artifact classifier (spec-v7 section 3.3).** New
