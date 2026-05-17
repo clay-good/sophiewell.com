@@ -556,12 +556,23 @@ function wireDropzone() {
   function showChooser() {
     if (!chooser || !chooserButtons) return;
     clear(chooserButtons);
+    const known = new Set(UTILITIES.map((u) => u.id));
     Object.keys(DEFAULT_ARTIFACT_ROUTES).forEach((kind) => {
-      const tileId = routeArtifact(kind, new Map(UTILITIES.map((u) => [u.id, u])));
+      const tileId = routeArtifact(kind, known);
       if (!tileId) return;
       const label = ARTIFACT_LABELS[kind] || kind;
       const btn = el('button', { type: 'button', 'data-tool-route': tileId, text: label });
-      btn.addEventListener('click', () => { location.hash = '#' + tileId; });
+      btn.addEventListener('click', () => {
+        // Carry the pasted text through to the destination decoder
+        // when that tile has a paste input wired. Without this the
+        // chooser-fallback flow would silently drop the user's text
+        // and force them to paste again on the decoder page.
+        const pasted = paste ? String(paste.value || '').trim() : '';
+        if (pasted && hasPasteInputForTile(tileId)) {
+          setPendingDrop(tileId, pasted);
+        }
+        location.hash = '#' + tileId;
+      });
       chooserButtons.appendChild(btn);
     });
     chooser.hidden = false;

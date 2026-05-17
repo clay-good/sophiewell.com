@@ -53,6 +53,12 @@
 >   a click on Detect; subsequently editing the textarea clears the
 >   stale result line and chooser pane. The Detect button stays for
 >   keyboard users and for re-running detection after manual edits.
+> - Chooser-pane fallback (shown when the classifier returns
+>   `unknown` or maps to a tile not in the registry) now carries the
+>   pasted text through to the picked decoder via `setPendingDrop`,
+>   so the user does not have to paste a second time on the decoder
+>   page. Tiles without a paste input still navigate but receive no
+>   handoff, matching the auto-route behavior.
 >
 > The remaining sections (4.1-4.6 decoder pages) are unimplemented.
 > Extends spec-v5 and spec-v6 without amending their hard rules.
