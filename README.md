@@ -260,6 +260,13 @@ build, integrity-verified data shards) are documented in
 - [docs/spec-v10.md](docs/spec-v10.md) — current positioning spec:
   clinical-first audience, runtime-dependency budget, permanent
   out-of-scope list
+- [docs/spec-v11.md](docs/spec-v11.md) — correctness-floor spec:
+  per-tile audit protocol, specialty-named groups, optional
+  source-quoted `interpretation` field
+- [docs/scope-mdcalc-parity.md](docs/scope-mdcalc-parity.md) —
+  long-horizon scope: every actionable clinical calculator a
+  healthcare worker would otherwise reach for MDCalc to find,
+  shipped slowly at the v11 quality bar
 - [docs/architecture.md](docs/architecture.md) — runtime architecture,
   data flow, no-backend rationale
 - [docs/data-sources.md](docs/data-sources.md) — every bundled dataset

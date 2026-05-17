@@ -273,6 +273,20 @@ No code changes are required for v10. The first code change that
 follows v10 is the next clinical tile or the next CI guard, whichever
 comes first.
 
+## 6a. Companion specs and scope document
+
+- [spec-v11](spec-v11.md) is the correctness floor v10 implies but
+  does not specify: a per-tile audit protocol, the rename of the
+  internal group letters to specialty-named labels, and an
+  optional source-quoted `interpretation` field.
+- [docs/scope-mdcalc-parity.md](scope-mdcalc-parity.md) is the
+  long-horizon scope statement: Sophie intends to eventually
+  carry every actionable clinical calculator a healthcare worker
+  would otherwise reach for MDCalc to find, shipped slowly at the
+  v11 quality bar. v10 sets *what* Sophie is; the scope document
+  sets *where Sophie is going*; v11 sets *how good Sophie must be*
+  along the way.
+
 ## 7. Open questions
 
 1. **Donate / "support the domain renewal" link.** v10 does not add

@@ -6,6 +6,71 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v11 — correctness floor + specialty-named groups + optional `interpretation` field)
+
+- **`docs/spec-v11.md` (new).** Implementation spec. No new tiles
+  ship under v11; the entire scope is making the 178 tiles already
+  shipped provably correct via a five-step per-tile audit
+  (citation re-verification, ≥3 boundary worked examples, cross-
+  implementation differential within 0.5% / one category for
+  ordinal scores, edge-input handling review, a11y + keyboard
+  pass). Each audit lands as `docs/audits/v11/<tile-id>.md`;
+  two new scripts (`scripts/audit-coverage.mjs`,
+  `scripts/audit-skeleton.mjs`) make the audit mechanical;
+  three new CI guards (`test/unit/audit-format.test.js`,
+  `test/unit/meta-citation-verify.test.js`,
+  `test/unit/meta-interpretation.test.js`) pin the format. Audit
+  order is highest-stakes first: medication and dosing, then
+  critical-care scoring, then stroke / neuro, then cardiology,
+  then pulmonary, then renal / electrolyte, then OB / peds, then
+  psych screeners, then conversions, then code lookups, then
+  regulatory, then workflow / EMS, then patient-education
+  generators.
+- **Specialty-named groups (spec-v11 §4).** The internal group
+  letters (`A`, `C`, `E`, `F`, `G`, `H`, `I`, `J`, `K`, `L`, `M`,
+  `N`, `O`) gain visible specialty / category labels: Billing &
+  Coding, Insurance & Patient Literacy, Clinical Math &
+  Conversions, Medication & Infusion, Clinical Scoring & Risk,
+  Workflow & Documentation, EMS & Field Medicine, Immunization &
+  Infectious Disease, Reference Ranges, Insurance Glossary, State
+  & Coverage Reference, Pediatrics & Neonatal, High-Alert &
+  Safety. The letter remains the legacy id inside `UTILITIES`
+  entries so deep links keep working; a new `GROUP_LABELS`
+  constant maps letter → visible name. A new optional
+  `META[id].specialties` array (closed vocabulary of 27 specialty
+  tags) is consumed by the prompt ranker as additional tokens.
+- **Optional `META[id].interpretation` field (spec-v11 §5).**
+  Tightly scoped: only allowed when the per-band interpretation
+  text is a direct quote or close paraphrase of the same primary
+  citation that gave Sophie the formula. Renders inside the
+  References region under a mandatory "Per source:" header
+  (every word below is the source's, not Sophie's). CI guard
+  rejects Sophie-authored phrasing ("we recommend", "you should",
+  "consider ordering"). Absent by default; not load-bearing; tiles
+  without a published per-band interpretation do not invent one.
+- **`docs/scope-mdcalc-parity.md` (new).** Long-horizon scope
+  statement. Sophie commits to eventually carrying every
+  actionable, cited, deterministic clinical calculator a
+  healthcare worker would otherwise reach for MDCalc to find,
+  plus the billing / coding / regulatory surface MDCalc does not
+  cover. Target is roughly 400–600 tiles over 3–5 years at the
+  spec-v11 quality bar, **eventually complete, never rushed**.
+  Permanently excludes AI-generated calculators, single-center
+  unreplicated validations, sponsored / pharma-affiliated
+  calculators, Sophie-authored treatment recommendations, live-
+  data calculators, and patient-artifact NLP. Hierarchy made
+  explicit: v10 (what Sophie is) → v11 (how good Sophie must be)
+  → scope-mdcalc-parity (where Sophie is going).
+
+### Changed (spec-v10 — companion-specs cross-link)
+
+- **`docs/spec-v10.md` §6a.** New "Companion specs and scope
+  document" section linking spec-v11 and scope-mdcalc-parity so
+  the positioning spec, the quality floor, and the long-horizon
+  direction are discoverable from one another.
+- **`README.md` documentation index.** Adds links to spec-v11 and
+  scope-mdcalc-parity directly under spec-v10.
+
 ### Added (spec-v10 — clinical-first positioning, bounded dependency budget, v7 §4 wind-down)
 
 - **`docs/spec-v10.md` (new).** Positioning spec, not a feature spec.
