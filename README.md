@@ -2,19 +2,22 @@
 
 Deterministic healthcare utilities, free forever, no servers, no accounts.
 
-sophiewell.com is a single-page static website that helps people read their
-medical bills and helps clinical, billing, and field-medicine staff get fast
-deterministic answers to the everyday calculations and lookups their work
-requires. Everything runs in the browser. There is no AI of any kind. The
+sophiewell.com is a single-page static website built for **clinical and
+allied healthcare staff** — the nurse, resident, pharmacist, biller, coder,
+or EMS provider who needs a fast, citable, deterministic answer in the
+middle of a shift. It is, in posture, MDCalc with no ads, no login, no
+upsell, no cookie banner, no email capture, and no network call after first
+paint. Everything runs in the browser. There is no AI of any kind. The
 data sources are public, bundled with the page, and refreshed on a schedule.
 The site costs nothing to operate beyond the domain renewal, so it can be
-free forever. It serves five overlapping audiences: patients trying to
-understand a bill, an EOB, or an insurance card; billers and coders looking
-up codes, modifiers, and edits; nurses and clinicians who need quick unit
-conversions, dose math, and clinical scoring; healthcare educators who need
-fast reference for licensing or board exams; and field-medicine workers
-(EMS, prehospital, disaster response) who need offline-capable triage,
-weight-based dosing, and protocol-aligned reference at the point of care.
+free forever. Audiences served, in priority order: bedside clinicians
+(unit conversions, dose math, clinical scoring); billers and coders (codes,
+modifiers, edits, form locators); EMS and field-medicine workers
+(offline-capable triage and weight-based pediatric dosing); healthcare
+educators and trainees (board / licensing reference); and patients with
+the simple bill / EOB / insurance-card / regulatory decoders that already
+ship. See [docs/spec-v10.md](docs/spec-v10.md) for the audience and
+dependency-budget commitments.
 
 ## The problem
 
@@ -254,6 +257,9 @@ build, integrity-verified data shards) are documented in
 
 ## Documentation
 
+- [docs/spec-v10.md](docs/spec-v10.md) — current positioning spec:
+  clinical-first audience, runtime-dependency budget, permanent
+  out-of-scope list
 - [docs/architecture.md](docs/architecture.md) — runtime architecture,
   data flow, no-backend rationale
 - [docs/data-sources.md](docs/data-sources.md) — every bundled dataset

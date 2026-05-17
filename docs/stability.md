@@ -44,6 +44,29 @@ which never leaves the browser. The Pin/Unpin home section was
 removed in spec-v8 §3.2; the URL hash no longer carries a `p=`
 segment.
 
+## Client-side processing of clinical and billing data
+
+Every calculation, lookup, and decode runs in the browser. Inputs the
+user types into a tile — clinical values, billing codes, pasted
+artifact text — never cross the network. The CSP `connect-src 'self'`
+directive enforces this; the absence of any backend or edge function
+that sees user input enforces it architecturally. There is no
+server-side processing surface on sophiewell.com that *could* see
+clinical data, by construction.
+
+## Bounded runtime-dependency budget
+
+sophiewell.com ships zero runtime dependencies today. The project
+commits to a maximum of **two pinned, exact-version runtime
+dependencies** going forward, each justified against a clinical use
+case that cannot be hand-rolled at small cost (see
+[spec-v10 §2.2](spec-v10.md)). Every runtime dependency must appear
+in [sbom.json](../sbom.json) with a content hash, must be reviewed
+against [docs/threat-model.md](threat-model.md) before merge, must
+ship under an MIT-compatible license, and must not introduce a new
+CSP `connect-src` entry. devDependencies (eslint, playwright) are
+not budgeted; they do not run in the user's browser.
+
 ## 90-day deprecation notice
 
 If a utility has to be removed, the utility view shows a clear notice

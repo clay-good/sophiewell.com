@@ -6,6 +6,57 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v10 — clinical-first positioning, bounded dependency budget, v7 §4 wind-down)
+
+- **`docs/spec-v10.md` (new).** Positioning spec, not a feature spec.
+  Fixes in writing what sophiewell.com is *for* (the calculator a
+  nurse pulls up at 2 a.m.: MDCalc without ads, login, upsell,
+  cookie banner, email capture, or network calls after first paint),
+  what it is *not* (an explicit permanent-out-of-scope list covering
+  AI, PDF / DOCX / OCR parsing, server-side processing of clinical
+  data, accounts, telemetry, ads, subscriptions, native apps,
+  persistent client storage, recommendation strips, and new patient-
+  artifact decoders past the existing simple tiles), the **runtime-
+  dependency budget** (max two pinned exact-version deps, each
+  justified against a clinical use case that cannot be hand-rolled,
+  reviewed against the threat model, SBOM-tracked, MIT-compatible,
+  and CSP-respecting), and tile-add criteria. Every prior spec (v4
+  through v9) remains in force; v10 narrows scope, it does not amend
+  their hard rules.
+- **`docs/stability.md` — two new commitments.**
+  *Client-side processing of clinical and billing data*: every
+  calculation, lookup, and decode runs in the browser; inputs never
+  cross the network; there is no server-side surface that *could*
+  see user input, by construction. *Bounded runtime-dependency
+  budget*: ≤2 pinned, exact-version runtime deps, each SBOM-tracked
+  and threat-model-reviewed; devDependencies are unbudgeted.
+
+### Removed (spec-v10 §3 — v7 §4 artifact-decoder pages dropped)
+
+- **spec-v7 §4.1–§4.6 (bill/EOB/MSN → DOCX, lab PDF → DOCX, denial
+  letter → appeal packet, pharmacy printout → interactions,
+  discharge paperwork → summary, insurance card → benefits cheat
+  sheet) are formally dropped.** All six required PDF / DOCX / OCR
+  dependencies (pdf.js, mammoth, docx, Tesseract.js) that exceed
+  the §2.2 dependency budget, and their target audience (patients
+  holding artifacts) sits outside spec-v10's clinical-first wedge.
+  No code is removed; the v7 dropzone shell already operates in the
+  text-only mode v10 commits to. `docs/spec-v7.md` carries a status
+  note pointing at spec-v10 §3; §4.1–§4.6 in v7 are retained
+  verbatim for historical context but are not the roadmap.
+
+### Changed (README — clinical-first positioning)
+
+- **`README.md` opening rewritten.** Leads with clinical and allied
+  healthcare staff (nurse, resident, pharmacist, biller, coder,
+  EMS provider) as the primary audience and frames the site as MDCalc
+  without ads / login / upsell / cookie banner / email capture /
+  network calls after first paint. Audience list reordered to put
+  bedside clinicians first; patients moved to last with an explicit
+  note that the patient surface is the simple existing decoders, not
+  patient-artifact decoding. Documentation index now links
+  `docs/spec-v10.md` as the current positioning spec.
+
 ### Changed (spec-v8 — minimal-tile contract + prompt-first front door)
 
 - **Four-region tile contract (spec-v8 §3.1).** Every tile detail view

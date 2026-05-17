@@ -72,7 +72,17 @@
 >   way to retract a misfired detection); the Clear button still
 >   wipes the textarea for a full reset.
 >
-> The remaining sections (4.1-4.6 decoder pages) are unimplemented.
+> §4.1–§4.6 are **dropped** per [spec-v10](spec-v10.md) §3 (2026-05-17).
+> All six artifact-decoder pages required PDF / DOCX / OCR
+> dependencies that exceed spec-v10's runtime-dependency budget, and
+> their target audience (patients holding artifacts) sits outside
+> spec-v10's clinical-first wedge. The dropzone shell, synonym-routed
+> prompt, artifact-detect classifier, and collapsed tile grid
+> (§3.1–§3.4) all remain in force; the text-paste handoff in
+> [lib/artifact-handoff.js](../lib/artifact-handoff.js) is the final
+> artifact-ingestion surface. Sections §4.1–§4.6 below are retained
+> verbatim for historical context but are not the roadmap.
+>
 > Extends spec-v5 and spec-v6 without amending their hard rules.
 > Reshapes Sophie's front door around the patient who arrives holding
 > an artifact they cannot read, while preserving the tile catalog
