@@ -59,8 +59,9 @@ is linked from the footer and viewable in-site at
 
 When a clinical formula changes (because the published formula
 itself changes), the inline citation reflects the new version, the
-"Test with example" expected output is updated, and the change is
-called out in the changelog.
+pre-filled example values and their expected output (reachable via
+the "Reset to example" link) are updated, and the change is called
+out in the changelog.
 
 ## Why this matters
 

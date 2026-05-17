@@ -4,7 +4,8 @@ Per spec-v3 section 6.8. This file is the dedicated catalog of every
 Group I (Field Medicine) clinical reference and calculator with the
 original publication citation, the public dataset where applicable,
 and the worked-example test case that drives both the unit test and
-the "Test with example" button on each utility view.
+the example values that pre-fill each utility view (spec-v9; see the
+"Reset to example" link in the References region).
 
 This file is parallel to `docs/clinical-citations.md`. The inline
 citations on each utility view (rendered by `renderMetaBlock` from
@@ -269,6 +270,7 @@ When a Group I utility's formula or reference value changes:
 2. Update the worked example in this file.
 3. Update the matching unit test in `test/unit/field.test.js`.
 4. Update the `example` payload in `lib/meta.js` so the in-site
-   "Test with example" button shows the new expected output.
+   pre-filled example values and the "Reset to example" link show
+   the new expected output.
 5. Note the change in `CHANGELOG.md` per the spec-v2 stability
    commitments.

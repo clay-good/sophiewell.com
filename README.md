@@ -108,14 +108,20 @@ refresh pipeline that one person cannot reliably maintain. The remaining
 reference table whose annual drift is tolerable.
 
 The user flow is simple: type what you need into the hero search ("my
-bill", "my labs", "denied", "ICD-10"), or pick a tile from the
-disclosure-collapsible home grid, enter input, read output. The hero
-consults a hand-curated synonym table (`data/synonyms.json`,
-spec-v7 section 3.2) before falling back to fuzzy matching, and shows
-a one-line breadcrumb explaining why a tile is recommended. Every utility shows the data sources or formula citations at the
-bottom of its view, with a "Test with example" button that reproduces the
-worked example from the citation. Calculator state is encoded in the URL
-hash so any view can be bookmarked or shared as a permalink.
+bill", "my labs", "denied", "ICD-10"), drop a plain-text artifact
+into the dropzone underneath (bill, EOB, MSN, lab printout, denial
+letter, discharge packet — spec-v7 section 3.1, in-browser only;
+no upload, no fetch), or pick a tile from the disclosure-collapsible
+home grid, enter input, read output. The hero consults a hand-curated
+synonym table (`data/synonyms.json`, spec-v7 section 3.2) before
+falling back to fuzzy matching, and shows a one-line breadcrumb
+explaining why a tile is recommended. Every utility opens with its
+inputs pre-filled from a worked example so the empty state is never
+empty (a "Reset to example" link restores them after editing), and
+the References region at the bottom shows the formula citation or
+dataset stamp the result came from (spec-v9). Calculator state is
+encoded in the URL hash so any view can be bookmarked or shared as
+a permalink.
 
 All computation happens in the browser. For the full picture, see
 [docs/architecture.md](docs/architecture.md).
