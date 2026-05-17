@@ -1,6 +1,6 @@
 # spec-v8.md — sophiewell.com: minimal-tile contract + prompt-first front door
 
-> Status: in flight. Extends spec-v5, spec-v6, and spec-v7 without
+> Status: complete (2026-05-16). Extends spec-v5, spec-v6, and spec-v7 without
 > amending their hard rules. Collapses the per-tile surface to four
 > regions (title / description / inputs with example values /
 > references with citations) and removes every affordance that implies
@@ -28,11 +28,34 @@
 > - §3.3 example-value contract + §3.4 citation contract — both
 >   in **hard** CI mode per spec-v9 wave 4.
 >
-> Outstanding:
-> - §4.3 three-pass prompt matcher in `lib/prompt.js` (currently
->   inline in `app.js`).
-> - §3.2 `META[id].tags` optional field (additive, no migration).
-> - §4.6 default-closed tile-grid disclosure (currently defaults open).
+> Landed (2026-05-16, second wave):
+> - §4.3 three-pass prompt matcher extracted to `lib/prompt.js`
+>   (2026-05-16). Pure-function `resolvePrompt(query, tiles,
+>   synonyms, audience)` runs pass 1 (synonym table via
+>   `lib/synonyms.js`), pass 2 (token ranker over
+>   `name + desc + audiences + group + tags` with the spec's
+>   scoring rubric and a hard threshold), and pass 3 (single-edit
+>   Levenshtein retry against the synonym corpus). 17 unit tests
+>   cover synonym hit, name- and desc-token rank, tag discovery,
+>   audience modulation, one-edit recovery, and the multi-typo
+>   no-match floor. `app.js` now calls `resolvePrompt` from
+>   `resolveQueryToTileId` against a `tileCorpus()` snapshot
+>   assembled from `UTILITIES`, the home grid's `.tc-desc` spans,
+>   and any `META[id].tags`.
+> - §3.2 `META[id].tags` optional field (2026-05-16). Additive,
+>   defaults to `[]` when missing; consumed only by the prompt
+>   ranker. No existing tile needed to change.
+> - §4.6 default-closed tile-grid disclosure committed (2026-05-16).
+>   `index.html`'s `<details id="browse-disclosure">` no longer
+>   carries `open`. The hash-state mirror in `app.js` flipped so
+>   `b=open` is the divergent value the user can deep-link with;
+>   collapsed is the static default. E2E tests that previously
+>   relied on the catalog being visible (`smoke.spec.js` BMI/ICD
+>   click flows, `all-tools.spec.js` back-to-home assertion) now
+>   either expand the disclosure programmatically before clicking
+>   or assert on the always-visible `#hero-search` element.
+>
+> All v8 acceptance criteria in §7 are now satisfied.
 
 ## 1. Purpose
 

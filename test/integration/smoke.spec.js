@@ -23,6 +23,8 @@ test('home: renders centered topbar and full tool-card grid', async ({ page }) =
 
 test('home: clicking a tool card opens its renderer (BMI smoke)', async ({ page }) => {
   await page.goto('/');
+  // spec-v8 §4.6: tile grid defaults closed; expand it before clicking.
+  await page.evaluate(() => { document.getElementById('browse-disclosure').open = true; });
   await page.click('.tool-card[data-tool="bmi"]');
   await expect(page).toHaveURL(/#bmi/);
   await expect(page.locator('.content h1')).toHaveText('BMI Calculator');
@@ -35,6 +37,8 @@ test('home: clicking a tool card opens its renderer (BMI smoke)', async ({ page 
 
 test('home: clicking ICD-10 card opens its renderer with breadcrumb', async ({ page }) => {
   await page.goto('/');
+  // spec-v8 §4.6: tile grid defaults closed; expand it before clicking.
+  await page.evaluate(() => { document.getElementById('browse-disclosure').open = true; });
   await page.click('.tool-card[data-tool="icd10"]');
   await expect(page).toHaveURL(/#icd10/);
   await expect(page.locator('.content h1')).toHaveText('ICD-10-CM Code Lookup');
@@ -168,7 +172,9 @@ test('spec-v8 §3.2 / §5.2: no Pin button and no #pinned-section render on the 
 test('spec-v8 §5.3: legacy #p=<id> bookmarks silently resolve to the home view', async ({ page }) => {
   await page.goto('/#p=bmi,egfr,icd10');
   // No tile route fires; we land on the home view with the prompt hero visible.
-  await expect(page.locator('#tile-grid')).toBeVisible();
+  // The browse disclosure defaults closed per spec-v8 §4.6, so assert on the
+  // hero rather than the tile grid.
+  await expect(page.locator('#hero-search')).toBeVisible();
   await expect(page.locator('#pinned-section')).toHaveCount(0);
 });
 

@@ -18,6 +18,7 @@ import { copyButton } from './lib/clipboard.js';
 import { installKeyboard } from './lib/keyboard.js';
 import { parseHash, buildHash, patchHash } from './lib/hash.js';
 import { matchSynonym, loadSynonyms } from './lib/synonyms.js';
+import { resolvePrompt } from './lib/prompt.js';
 
 const RENDERERS = { ...RA, ...RC, ...RE, ...RF, ...RG, ...RH, ...RI, ...RJ, ...RKLMNO, ...RV5, ...RV6 };
 
@@ -430,13 +431,13 @@ function wireFilters() {
     });
   }
 
-  // spec-v7 §3.4: disclosure toggle persists in the URL hash (b=open / absent).
+  // spec-v7 §3.4 + spec-v8 §4.6: disclosure defaults closed in static
+  // markup. Toggle persists in the URL hash as b=open when diverged;
+  // collapsed is the default and emits no key.
   const disclosure = document.getElementById('browse-disclosure');
   if (disclosure) {
     disclosure.addEventListener('toggle', () => {
-      // Default markup is open, so we only emit a hash key when the user
-      // diverges from it: b=closed when collapsed; absent otherwise.
-      const next = disclosure.open ? '' : 'closed';
+      const next = disclosure.open ? 'open' : '';
       window.history.replaceState(null, '', patchHash({ browse: next }));
     });
   }
@@ -447,9 +448,39 @@ function wireFilters() {
 // returns null so the hero falls back to fuzzy search safely.
 let SYNONYM_ENTRIES = [];
 
+// spec-v8 §4.3: assemble the tile corpus the prompt matcher reads.
+// Description text lives in the home tile-grid markup (`.tc-desc` spans);
+// audiences and group come from UTILITIES; tags from META[id].tags
+// (optional, defaults to empty per spec-v8 §3.2 META extension).
+let TILE_CORPUS_CACHE = null;
+function tileCorpus() {
+  if (TILE_CORPUS_CACHE) return TILE_CORPUS_CACHE;
+  const grid = typeof document !== 'undefined' ? document.getElementById('tile-grid') : null;
+  const descById = new Map();
+  if (grid) {
+    grid.querySelectorAll('.tool-card').forEach((card) => {
+      const id = card.getAttribute('data-tool');
+      const desc = card.querySelector('.tc-desc');
+      if (id && desc) descById.set(id, desc.textContent || '');
+    });
+  }
+  TILE_CORPUS_CACHE = UTILITIES.map((u) => ({
+    id: u.id,
+    name: u.name,
+    group: u.group,
+    audiences: u.audiences || [],
+    desc: descById.get(u.id) || '',
+    tags: (META[u.id] && Array.isArray(META[u.id].tags)) ? META[u.id].tags : [],
+  }));
+  return TILE_CORPUS_CACHE;
+}
+
 function resolveQueryToTileId(query) {
-  const m = matchSynonym(query, SYNONYM_ENTRIES, filterState.audience);
-  if (m && UTIL_BY_ID && UTIL_BY_ID.get && UTIL_BY_ID.get(m.tile)) return m.tile;
+  const r = resolvePrompt(query, tileCorpus(), SYNONYM_ENTRIES, filterState.audience);
+  if (r && UTIL_BY_ID && UTIL_BY_ID.get(r.tileId)) return r.tileId;
+  // Defensive fallback: the legacy fuzzy ranker covers cases the v8
+  // resolver intentionally rejects (e.g., score below threshold but
+  // the user still hit Enter).
   const fuzzy = searchUtilities(query, 1);
   return fuzzy[0] ? fuzzy[0].id : null;
 }
@@ -1001,15 +1032,15 @@ function boot() {
     const group = document.querySelector('.toggle-group[data-filter="audience"]');
     if (group) syncToggleGroupState(group, initial.audience);
   }
-  // spec-v7 §3.4: initial disclosure state from URL hash. The static markup
-  // ships open so clinician deep-links and existing keyboard/click flows
-  // keep working; an explicit b=closed in the hash collapses the catalog
-  // for patient-shareable links. Spec calls for default-closed once the
-  // dropzone front door (v7 §4) lands; deferred until then.
+  // spec-v7 §3.4 + spec-v8 §4.6: initial disclosure state from URL
+  // hash. The static markup ships **closed** (committed in spec-v8);
+  // an explicit b=open in the hash expands the catalog so deep links
+  // and clinician bookmarks that previously relied on the open
+  // default continue to land on the grid.
   const disclosure = document.getElementById('browse-disclosure');
   if (disclosure) {
-    if (initial.browse === 'closed') disclosure.open = false;
-    else if (initial.browse === 'open') disclosure.open = true;
+    if (initial.browse === 'open') disclosure.open = true;
+    else if (initial.browse === 'closed') disclosure.open = false;
   }
   // spec-v7 §3.4: visible tile count next to "Browse all". Pulled from the
   // utility registry so it stays correct as tiles land.
