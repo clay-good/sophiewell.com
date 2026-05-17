@@ -6,6 +6,109 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Changed (spec-v8 — minimal-tile contract + prompt-first front door)
+
+- **Four-region tile contract (spec-v8 §3.1).** Every tile detail view
+  now renders exactly four regions in order: title, description,
+  inputs (pre-filled from `META[id].example` with inline
+  `(example: …)` annotations), and references (driven by
+  `META[id].citation`). Delivered by spec-v9; v8 §3.1 is the contract
+  spec-v9 enforces in **hard** CI mode.
+- **Example-value contract pinned in CI (spec-v8 §3.3).** Every
+  input-bearing tile must ship a working `META[id].example` filling
+  every input it reads. Tiles with no inputs live in an explicit
+  `NO_INPUTS_TILES` allowlist. Enforced in **hard** mode by
+  `test/unit/meta.test.js`.
+- **Citation contract pinned in CI (spec-v8 §3.4).** Every tile must
+  carry `META[id].citation` or `META[id].source` (or both). References
+  hold the primary citation only; "further reading" / "related tools"
+  / "about this calculator" blocks are forbidden. Enforced in **hard**
+  mode.
+
+### Removed (spec-v8 §3.2 — affordances incompatible with a stateless utility)
+
+- **Pin / Unpin and the entire `Pinned` home section.** Removed
+  `renderPinnedSection`, `togglePin`, the `#pinned-section` DOM mount,
+  the `.pin-btn` and `#pinned-section` CSS, and the `p` leader-key
+  shortcut. `lib/hash.js` no longer emits `p=` and silently ignores it
+  on parse so legacy `#p=icd10,bmi` bookmarks resolve to the home
+  view. `test/unit/hash.test.js` now asserts `p=` is dropped on write
+  and tolerated on read; the keyboard fixture asserts the `p` leader
+  is retired; the e2e smoke spec swapped the pin-toggle test for the
+  §5.2 negative regression (no `.pin-btn`, no `#pinned-section`, no
+  `#pinned-grid`).
+- **Six stray hardcoded `Source:` lines in per-tile renderers**
+  (`views/group-a.js`, `views/group-f.js`, `views/group-i.js`) that
+  duplicated content the v8 References region now renders from
+  `META[id].citation`. The per-result lab-result attribution in
+  `views/group-v6.js` is retained because it is per-result, not
+  per-tile.
+- **Copy-share-link, copy-bundle-URL, download-bundle, load-bundle,
+  print-this-calculator, scratchpad, and "after this you might
+  want" recommendation strips.** All audited and confirmed removed
+  per v8 §3.2.
+
+### Added (spec-v8 §4.3 / §4.6 / §3.2 — three-pass prompt + default-closed grid + tags)
+
+- **Three-pass prompt matcher extracted (spec-v8 §4.3).** Pure-function
+  `resolvePrompt(query, tiles, synonyms, audience)` in
+  `lib/prompt.js` runs pass 1 (synonym table via `lib/synonyms.js`),
+  pass 2 (token ranker over `name + desc + audiences + group + tags`
+  with the spec's scoring rubric and a hard threshold), and pass 3
+  (single-edit Levenshtein retry against the synonym corpus). 17 new
+  unit tests cover synonym hit, name- and desc-token rank, tag
+  discovery, audience modulation, one-edit recovery, and the
+  multi-typo no-match floor. `app.js` calls `resolvePrompt` from
+  `resolveQueryToTileId` against a `tileCorpus()` snapshot assembled
+  from `UTILITIES`, the home grid's `.tc-desc` spans, and any
+  `META[id].tags`.
+- **Optional `META[id].tags` field (spec-v8 §3.2).** Additive,
+  defaults to `[]` when missing; consumed only by the prompt ranker
+  so no existing tile needed to change.
+- **Default-closed tile-grid disclosure (spec-v8 §4.6).**
+  `index.html`'s `<details id="browse-disclosure">` no longer carries
+  `open`. The hash-state mirror flipped so `b=open` is the divergent
+  value users deep-link with; collapsed is the static default. E2E
+  tests that previously relied on the catalog being visible now
+  expand the disclosure programmatically before clicking or assert
+  on the always-visible `#hero-search` element.
+
+### Added (spec-v9 — inline-citation completion and example-first inputs)
+
+- **Citation coverage at 100% in hard mode (spec-v9 wave 2).** All
+  178 tiles now carry `META[id].citation`; the CI assertion in
+  `test/unit/meta.test.js` is in **hard** mode.
+- **Example coverage at 100% in hard mode (spec-v9 waves 3a-3d).**
+  Every input-bearing tile carries `META[id].example` with non-empty
+  `fields` and an `expected` line. Pure-reference and decision-tree
+  tiles live in `NO_INPUTS_TILES` with per-entry rationale. The
+  PHQ-9-family screeners pre-fill via their own `exampleAnswers` in
+  `lib/scoring-v4.js` + `lib/screener.js`, updated to the v9
+  contract (auto-fill on first paint, "Reset to example" link in
+  place of the old "Test with example" button).
+- **References region renders below the tool body (spec-v9 §3.2).**
+  The meta block moved from above the inputs to after the result so
+  the on-screen order matches the spec's `title → description →
+  inputs → references`. The dataset stamp and citation now appear on
+  adjacent lines inside the same References block, replacing the
+  previous split between a top "Source: …" stamp and a bottom doc
+  pointer.
+- **Inline `(example: …)` annotations (spec-v9 §3.3).** Examples
+  pre-fill inputs on first paint via an immediate `applyExample(util)`
+  microtask. Deep-link hash state still wins; the example only fills
+  inputs the hash did not touch. Renderers built through
+  `lib/form.js` get the annotation for free; ad-hoc renderers call
+  a one-line `annotateExample(id, value)` helper in `lib/meta.js`.
+- **Wave 4 cleanup (spec-v9).** Removed the duplicate `Citation:`
+  line the screener emitted under each PHQ-9-family tile (now lives
+  only in the meta block); removed three stray `Citation:` lines
+  under `cincinnati`, `fast`, and `burn-fluid` in `views/group-i.js`;
+  rewrote the FAQ JSON-LD "Where does the data come from?" answer in
+  `index.html` so search-result snippets describe the inline
+  References region instead of pointing at the GitHub
+  `docs/data-sources.md` path. The per-result lab-result attribution
+  in `views/group-v6.js` is retained per v9 §3.4.1.
+
 ### Added (spec-v7 section 3.1 — artifact-detecting dropzone shell)
 
 - **Artifact dropzone on the home page (spec-v7 §3.1).** The home view
