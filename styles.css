@@ -918,6 +918,15 @@ body {
   font-size: 0.85rem;
   padding: 6px 10px;
 }
+.artifact-handoff-banner {
+  margin: 6px 0 10px;
+  padding: 8px 12px;
+  background: var(--bg-tertiary);
+  border-left: 3px solid var(--focus-ring, var(--text-primary));
+  border-radius: 4px;
+  font-size: 0.88rem;
+  color: var(--text-primary);
+}
 
 /* spec-v6 §4.2.2: audience filter chips. */
 .audience-chips {

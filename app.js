@@ -21,6 +21,7 @@ import { matchSynonym, loadSynonyms } from './lib/synonyms.js';
 import { resolvePrompt } from './lib/prompt.js';
 import { detectArtifact } from './lib/artifact-detect.js';
 import { routeArtifact, ARTIFACT_LABELS, DEFAULT_ARTIFACT_ROUTES } from './lib/artifact-route.js';
+import { setPendingDrop, applyPendingDrop, hasPasteInputForTile } from './lib/artifact-handoff.js';
 
 const RENDERERS = { ...RA, ...RC, ...RE, ...RF, ...RG, ...RH, ...RI, ...RJ, ...RKLMNO, ...RV5, ...RV6 };
 
@@ -585,7 +586,12 @@ function wireDropzone() {
       return;
     }
     const label = ARTIFACT_LABELS[det.kind] || det.kind;
-    setResult('Detected ' + label + '. Opening the matching decoder.', false);
+    if (hasPasteInputForTile(tileId)) {
+      setPendingDrop(tileId, trimmed);
+      setResult('Detected ' + label + '. Opening the decoder with your text pre-filled.', false);
+    } else {
+      setResult('Detected ' + label + '. Opening the matching decoder.', false);
+    }
     hideChooser();
     location.hash = '#' + tileId;
   }
@@ -903,6 +909,10 @@ function renderToolView(util) {
             if (filled.has(id)) annotateExample(id, value);
           }
         }
+        // spec-v7 section 3.1: if the dropzone stashed a payload for this
+        // tile, fill its primary textarea and append a one-line banner.
+        // No-op for tiles without a paste input or when nothing is pending.
+        applyPendingDrop(util.id, body);
       });
     } catch (err) {
       console.error(`[sophiewell] renderer threw for tool "${util.id}":`, err);

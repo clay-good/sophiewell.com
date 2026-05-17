@@ -22,6 +22,20 @@
 > section 4 decoder pages remain unimplemented; the shell tells the
 > user to paste the document's text content in the meantime.
 >
+> Same-day follow-on (2026-05-17): text payload now hands off into
+> the destination decoder's primary textarea. A new
+> [lib/artifact-handoff.js](../lib/artifact-handoff.js) holds a
+> single in-memory pending payload (no storage); the dropzone stashes
+> the detected text before navigating; the route() post-render
+> microtask in [app.js](../app.js) calls `applyPendingDrop()` which
+> fills the textarea (`#bill`, `#eob`, or `#msn` for the three
+> textarea-driven decoders today) and appends a short banner so the
+> user knows the form was populated from the dropped document. Tiles
+> whose renderers do not expose a single paste input (lab-interpret,
+> appeal-letter, discharge-instr, insurance) still receive the
+> navigation but no handoff; their structured forms will pick up the
+> payload once the per-tile parsers in section 4 land.
+>
 > The remaining sections (4.1-4.6 decoder pages) are unimplemented.
 > Extends spec-v5 and spec-v6 without amending their hard rules.
 > Reshapes Sophie's front door around the patient who arrives holding
