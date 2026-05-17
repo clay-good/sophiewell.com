@@ -115,7 +115,10 @@
 >       Added in wave sixteen: rev-table, nubc-codes, apc-lookup,
 >       idr-eligibility, birthday-rule, bw-bsa-suite, conc-rate,
 >       adult-arrest-ref, peds-arrest-ref, bsa_burn.
->       Hand-authored total is now 161 files; the remaining ~17
+>       Added in wave seventeen: ems-doc, dot-erg, niosh-pg,
+>       cpr-numeric, tccc, co-cn-antidote, lab-adult, lab-peds,
+>       tox-levels, unit-converter-v4.
+>       Hand-authored total is now 171 files; the remaining 7
 >       tiles continue to render from the templated `META`-driven
 >       copy in `build-tool-pages.mjs`.
 > - [ ] Per-tile 1200x630 OG image generated at build time per

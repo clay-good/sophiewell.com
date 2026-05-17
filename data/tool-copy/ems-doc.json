@@ -1,0 +1,4 @@
+{
+  "whatThisIs": "Build a complete EMS narrative in the standard CHART (Chief complaint, History, Assessment, Rx/treatment, Transport) or SOAP format from a structured prompt. Sophie Well walks the medic through each section - dispatch information, scene findings, patient presentation, exam by system, interventions with times, response to therapy, and handoff - and emits a clean narrative paragraph plus a vitals timeline a receiving hospital can read at a glance.",
+  "whenToUse": "Use this at the station after a call when the medic needs to convert field notes into the run sheet narrative, when teaching a new provider how a well-structured EMS chart is built, or when reviewing documentation for quality-assurance feedback. The output is a template, not the chart of record - every agency's ePCR has its own required fields and the medic still owns the final accuracy of the narrative they sign."
+}

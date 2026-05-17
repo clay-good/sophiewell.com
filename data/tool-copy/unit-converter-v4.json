@@ -1,0 +1,4 @@
+{
+  "whatThisIs": "Convert between the units that show up in medicine: temperature (F / C), length (in / cm / m), weight (lb / oz / kg / g), volume (oz / mL / L / tsp / tbsp / cup), pressure (mmHg / cmH2O / kPa), the common lab-value SI conversions (mg/dL <-> mmol/L for glucose, creatinine, calcium, urea, cholesterol; mEq/L <-> mmol/L for electrolytes), and the time conversions that matter for infusion math (mcg/kg/min <-> mg/kg/hr, mL/hr <-> drops/min at common drip-set sizes).",
+  "whenToUse": "Use this when a chart from one institution reports glucose in mmol/L and another in mg/dL, when converting a European drug dose into US conventional units, when reconciling a home blood-pressure log in kPa against a US-format goal, or when a learner needs to see why a 'simple' unit conversion has two factors (molecular weight and concentration). The conversions are exact; clinically meaningful precision (significant digits) is the user's choice."
+}
