@@ -48,6 +48,11 @@
 >   Opening the decoder..."). `formatDetectionHits` is a pure helper
 >   in the same module; capped at three hits so the line stays
 >   readable.
+> - Pasting text into the `#artifact-paste` textarea now auto-runs
+>   the classifier (same flow as a file drop) instead of requiring
+>   a click on Detect; subsequently editing the textarea clears the
+>   stale result line and chooser pane. The Detect button stays for
+>   keyboard users and for re-running detection after manual edits.
 >
 > The remaining sections (4.1-4.6 decoder pages) are unimplemented.
 > Extends spec-v5 and spec-v6 without amending their hard rules.

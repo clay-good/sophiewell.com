@@ -672,6 +672,27 @@ function wireDropzone() {
       routeOrChoose(paste ? paste.value : '');
     });
   }
+  if (paste) {
+    // spec-v7 §3.1 follow-on: a clipboard paste into the textarea is
+    // the same deliberate "I just dropped this in" signal a file drop
+    // is, so auto-classify after the paste settles. Typing/editing
+    // does not trigger this; only the native paste event does.
+    paste.addEventListener('paste', () => {
+      // The pasted text is not in `value` yet during the paste event;
+      // wait one tick so the browser has applied it.
+      setTimeout(() => { routeOrChoose(paste.value); }, 0);
+    });
+    // Editing the textarea after a detection invalidates the result
+    // line; clear it (and any chooser pane) so stale feedback does
+    // not linger. Cleared explicitly via the Clear button below.
+    paste.addEventListener('input', (e) => {
+      if (e && e.inputType === 'insertFromPaste') return;
+      if (result && !result.hidden) {
+        setResult('', false);
+        hideChooser();
+      }
+    });
+  }
   if (clearBtn) {
     clearBtn.addEventListener('click', () => {
       if (paste) paste.value = '';
