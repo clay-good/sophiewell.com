@@ -96,7 +96,10 @@ async function main() {
   // build-topic-pages.mjs writes topical landing pages at
   // dist/topics/<slug>/ that cut across the home view's groups.
   const { spawnSync } = await import('node:child_process');
-  for (const script of ['build-tool-pages.mjs', 'build-hub-pages.mjs', 'build-topic-pages.mjs']) {
+  // spec-seo §6.3: build-og-images.mjs writes 1200x630 PNG OG cards
+  // into dist/og/ so per-tool / hub / topic link previews stop
+  // letterboxing the square logo.png on wide-card consumers.
+  for (const script of ['build-tool-pages.mjs', 'build-hub-pages.mjs', 'build-topic-pages.mjs', 'build-og-images.mjs']) {
     const r = spawnSync(process.execPath, [join(ROOT, 'scripts', script)], { stdio: 'inherit' });
     if (r.status !== 0) throw new Error(`${script} exited with status ${r.status}`);
   }

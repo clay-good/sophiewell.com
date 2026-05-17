@@ -327,13 +327,17 @@ ${related.map((r) => `          <li><a href="${SITE}/tools/${r.id}/">${esc(r.nam
     <meta property="og:url" content="${canonical}" />
     <meta property="og:title" content="${esc(seoTitle)}" />
     <meta property="og:description" content="${esc(seoDesc)}" />
-    <meta property="og:image" content="${SITE}/logo.png" />
+    <meta property="og:image" content="${SITE}/og/tools/${tile.id}.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="${esc(tile.name)} - Sophie Well" />
     <meta property="og:locale" content="en_US" />
     <meta property="twitter:card" content="summary_large_image" />
     <meta property="twitter:url" content="${canonical}" />
     <meta property="twitter:title" content="${esc(seoTitle)}" />
     <meta property="twitter:description" content="${esc(seoDesc)}" />
-    <meta property="twitter:image" content="${SITE}/logo.png" />
+    <meta property="twitter:image" content="${SITE}/og/tools/${tile.id}.png" />
+    <meta property="twitter:image:alt" content="${esc(tile.name)} - Sophie Well" />
 
     <script type="application/ld+json">
 ${JSON.stringify(pageLd, null, 2)}

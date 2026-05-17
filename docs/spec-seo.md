@@ -1,6 +1,6 @@
 # spec-seo.md — Sophie Well: organic discovery & magnetic SEO
 
-> Status: Phases 1, 2, and 3 landed (2026-05-16). Adds an SEO and discoverability
+> Status: Phases 1, 2 (incl. all follow-ons), and 3 landed (2026-05-16). Adds an SEO and discoverability
 > layer to the existing v6 site without touching the deterministic-math
 > contract or the no-AI, no-telemetry, no-server posture. Everything
 > below is static HTML, static JSON-LD, or build-time generated
@@ -126,9 +126,33 @@
 >       in `build-tool-pages.mjs` is now dead code retained only
 >       as a safety net for any future tile added before its
 >       copy lands.
-> - [ ] Per-tile 1200x630 OG image generated at build time per
->       §6.3. Outstanding - currently every per-tool page reuses
->       `/logo.png`, which letterboxes on wide-card consumers.
+> - [x] Per-tile 1200x630 OG image generated at build time per
+>       §6.3 landed (2026-05-16). New `scripts/build-og-images.mjs`
+>       writes 192 PNG cards under `dist/og/`: one per tile
+>       (`/og/tools/<id>.png`), one per audience hub
+>       (`/og/for/<slug>.png`), one per topic
+>       (`/og/topics/<slug>.png`), plus a `/og/home.png` for the
+>       site root. Each card is a 1200x630 dark-palette
+>       composition: cyan accent rail down the left edge, "SOPHIE
+>       WELL" eyebrow top-left, the tool/hub/topic name set in a
+>       chunky 5x7 bitmap font scaled to the largest size that
+>       fits within three lines, "FREE - NO SIGNUP - NO TRACKING"
+>       tagline bottom-left, and "SOPHIEWELL.COM" footer
+>       bottom-right. No native deps - the pipeline ships with a
+>       hand-written pure-Node PNG encoder
+>       (`scripts/lib/png-writer.mjs`, ~80 lines, zlib for
+>       deflate + manual CRC32) and an inline public-domain 5x7
+>       ASCII bitmap font (`scripts/lib/bitmap-font.mjs`), so the
+>       Ubuntu CI runner has no font system or `sharp` dependency
+>       to satisfy. All per-tool / hub / topic / home meta tags
+>       (`og:image`, `og:image:width`, `og:image:height`,
+>       `og:image:alt`, and the `twitter:image` mirrors) now
+>       point at the new PNGs instead of `/logo.png`. The
+>       deliberate tradeoff is a retro pixel-font aesthetic
+>       rather than a TrueType-rendered card; legibility holds
+>       at 1200x630 and the visual signal ("Sophie Well, free,
+>       wide card") is what wide-card consumers actually
+>       letterbox-test against. Phase 2 follow-ons are complete.
 >
 > Phase 3 (audience hubs + topic clusters, §10):
 > - [x] Five audience hub pages landed (2026-05-16). New

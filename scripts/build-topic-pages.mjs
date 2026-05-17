@@ -249,13 +249,17 @@ function buildTopicHtml({ topic, tiles }) {
     <meta property="og:url" content="${canonical}" />
     <meta property="og:title" content="${esc(topic.title)}" />
     <meta property="og:description" content="${esc(topic.description)}" />
-    <meta property="og:image" content="${SITE}/logo.png" />
+    <meta property="og:image" content="${SITE}/og/topics/${topic.slug}.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="${esc(topic.title)}" />
     <meta property="og:locale" content="en_US" />
     <meta property="twitter:card" content="summary_large_image" />
     <meta property="twitter:url" content="${canonical}" />
     <meta property="twitter:title" content="${esc(topic.title)}" />
     <meta property="twitter:description" content="${esc(topic.description)}" />
-    <meta property="twitter:image" content="${SITE}/logo.png" />
+    <meta property="twitter:image" content="${SITE}/og/topics/${topic.slug}.png" />
+    <meta property="twitter:image:alt" content="${esc(topic.title)}" />
 
     <script type="application/ld+json">
 ${JSON.stringify(collectionLd, null, 2)}
