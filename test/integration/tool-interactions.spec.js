@@ -47,10 +47,10 @@ test('every tool tolerates indiscriminate interaction without crashing', async (
     }
 
     // Click every visible button in the tool body except print, navigation,
-    // pin, and the example-button (the example button is exercised separately
+    // and the example-button (the example button is exercised separately
     // and reloading the body mid-loop confuses Playwright's locator caching).
     const btns = await page.locator(
-      'main button:not(.breadcrumb-back):not(.print-btn):not(.pin-btn):not(.example-btn)',
+      'main button:not(.breadcrumb-back):not(.print-btn):not(.example-btn)',
     ).all();
     for (const b of btns) {
       try {

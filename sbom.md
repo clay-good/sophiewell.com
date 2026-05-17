@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `981f53783101492b`
-Generated: 2026-05-17T01:12:08.599Z
+Build ID: `44453df9d7634593`
+Generated: 2026-05-17T01:49:03.428Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=20.18.1 <21, npm >=10.0.0
@@ -24,8 +24,8 @@ downloads is committed in this repository and is hashed below.
 | Path | Bytes | SHA-256 |
 |---|---:|---|
 | `index.html` | 100567 | `0655c11ba4fe689c5894a7b415fd4217c31b57b94adba3bcb84b132705002f88` |
-| `styles.css` | 36396 | `6023a5766a9a1166dd25c96216a6632632ac7fc51fea25198407ffab7f1a3e19` |
-| `app.js` | 59072 | `84c6b950ff3a2e3c3e11a6b44399d74280ce6d24464b6548b6e4c1ded432339b` |
+| `styles.css` | 35791 | `a346e46d2c5327e2414e9ec02f476b0a495acf709c155cd4928e90c8b84c272b` |
+| `app.js` | 56187 | `77d4e95da45a7f2c6c358299853c3011a1735a48cf9a0f61b50247c7d3c96eda` |
 | `sw.js` | 4062 | `60f524b1b69eb5170c59af42631e11cc05db2a44e8e530977db0327888b0ff6d` |
 | `site.webmanifest` | 709 | `0e0de4da60590a12e8b27a0ae2a2f5ffdb6500b7d2b78f93631ec2f64ed3d5ce` |
 | `robots.txt` | 127 | `38fbf9c1854e72abb20e01e81dd5a31d4ea96f154c12d5db1ec3af05524dd1a1` |
@@ -55,8 +55,8 @@ downloads is committed in this repository and is hashed below.
 | `lib/decoder.js` | 4726 | `5abf9b0a2b9fcbc19fac35de370cf5a9df1852a9744d48371903096c673404c0` |
 | `lib/dom.js` | 984 | `b4b4ac74decb848bde516bfc1773e6c45a8d80031ed8f9d14226393d18fcde54` |
 | `lib/field.js` | 13816 | `d589f10d720281e79804cce186276b176d9cd83e9e2dafe217f3e3c9850655fe` |
-| `lib/hash.js` | 3649 | `ded0e7d985c022e228df2c5af53cffbba8dabab01ad7557bd51f31d2dbcda131` |
-| `lib/keyboard.js` | 6639 | `5659aa3470f16dd768af4441238fbfe3ebd8cd6cbb77bbb47a8247230afcc24a` |
+| `lib/hash.js` | 3668 | `049363d36ea1b6cad67e5ccb45725a1093f11733b9a593d20ffce3ec524316c6` |
+| `lib/keyboard.js` | 6403 | `cc656a177cbe95a616dfbb18ffaf1765aed50eac21df224d5eaa8c41079d8040` |
 | `lib/keywords.js` | 2715 | `8ba3e40698eaf14947556b0d2078f168a99e8589644808057fa1b453d903a742` |
 | `lib/lab-interpret.js` | 29158 | `5b8211cf78060ef91fb1b54d03be40bd3b0fffc526de0944581fd5f285daf572` |
 | `lib/live.js` | 1138 | `304978d3c170b6eb06cade7702e5f99d868e9b3e1f5651aa9a28da15e62a6a9c` |

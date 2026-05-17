@@ -158,13 +158,18 @@ test('spec-v2: hash-based calculator state persists across reload', async ({ pag
   expect(hash).toContain('w%3D60');
 });
 
-test('spec-v2: hash-based pinning toggles a tool card into the Pinned section', async ({ page }) => {
+test('spec-v8 §3.2 / §5.2: no Pin button and no #pinned-section render on the home view', async ({ page }) => {
   await page.goto('/');
-  const bmiCard = page.locator('.tool-card[data-tool="bmi"]');
-  await bmiCard.locator('.pin-btn').click();
-  await expect(page).toHaveURL(/#?.*p=bmi/);
-  await expect(page.locator('#pinned-section')).toBeVisible();
-  await expect(page.locator('#pinned-grid .tool-card')).toHaveCount(1);
+  await expect(page.locator('.pin-btn')).toHaveCount(0);
+  await expect(page.locator('#pinned-section')).toHaveCount(0);
+  await expect(page.locator('#pinned-grid')).toHaveCount(0);
+});
+
+test('spec-v8 §5.3: legacy #p=<id> bookmarks silently resolve to the home view', async ({ page }) => {
+  await page.goto('/#p=bmi,egfr,icd10');
+  // No tile route fires; we land on the home view with the prompt hero visible.
+  await expect(page.locator('#tile-grid')).toBeVisible();
+  await expect(page.locator('#pinned-section')).toHaveCount(0);
 });
 
 test('spec-v2: ? help overlay appears and dismisses on Escape', async ({ page }) => {

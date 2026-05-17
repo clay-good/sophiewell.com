@@ -322,9 +322,8 @@ function applyFilters() {
 if (typeof document !== 'undefined') {
   document.addEventListener('click', (event) => {
     if (!event.target || typeof event.target.closest !== 'function') return;
-    // Don't swallow clicks on nested action buttons (e.g., the Pin button
-    // inside a tool-card). Their own handlers call stopPropagation, but if
-    // any child carries data-no-route, skip.
+    // Don't swallow clicks on nested action buttons. Their own handlers
+    // call stopPropagation, but if any child carries data-no-route, skip.
     const ignore = event.target.closest('[data-no-route]');
     if (ignore) return;
     const card = event.target.closest('.tool-card');
@@ -333,7 +332,7 @@ if (typeof document !== 'undefined') {
     if (!id) return;
     event.preventDefault();
     // Force a route refresh even if the user clicks the card matching the
-    // currently-active route (e.g., from the Pinned section).
+    // currently-active route.
     if (location.hash === '#' + id) {
       currentRouteId = null;
       route();
@@ -523,73 +522,6 @@ function restoreHome() {
   applyFilters();
   updateSynonymHint(hero ? hero.value : '');
   document.title = 'Sophie Well';
-}
-
-// spec-v2 section 4.1: hash-based pinning. Render the Pinned section above
-// the tile grid on the home view, with Unpin affordances. Tiles in the main
-// grid get a Pin affordance.
-function renderPinnedSection() {
-  const grid = document.getElementById('tile-grid');
-  if (!grid) return;
-  // Wire Pin button on every tool-card (idempotent).
-  grid.querySelectorAll('.tool-card').forEach((tile) => {
-    if (tile.querySelector('.pin-btn')) return;
-    const id = tile.getAttribute('data-tool');
-    if (!id) return;
-    const btn = el('button', { type: 'button', class: 'pin-btn', text: 'Pin', 'aria-label': `Pin ${id}` });
-    btn.addEventListener('click', (e) => {
-      e.preventDefault();
-      e.stopPropagation();
-      togglePin(id);
-    });
-    tile.appendChild(btn);
-  });
-
-  const { pinned } = parseHash(window.location.hash);
-  let section = document.getElementById('pinned-section');
-  const homeView = document.getElementById('home-view');
-  if (!section && homeView) {
-    section = el('section', { id: 'pinned-section', 'aria-labelledby': 'pinned-heading' });
-    section.appendChild(el('h2', { id: 'pinned-heading', text: 'Pinned' }));
-    section.appendChild(el('div', { id: 'pinned-grid', class: 'home-grid' }));
-    // spec-v6 §4 + spec-v7 §3.4: insert above the disclosure (which now
-    // wraps the tile grid) but below the task hero and audience chips so
-    // the hero stays the visible entry point and pinned tiles stay above
-    // the collapsed grid.
-    const anchor = document.getElementById('browse-disclosure')
-      || document.getElementById('tile-grid')
-      || homeView.firstChild;
-    homeView.insertBefore(section, anchor);
-  }
-  if (!section) return;
-  const pinnedGrid = section.querySelector('#pinned-grid');
-  clear(pinnedGrid);
-  if (!pinned.length) { section.hidden = true; return; }
-  section.hidden = false;
-  for (const id of pinned) {
-    const original = grid.querySelector(`.tool-card[data-tool="${id}"]`);
-    if (!original) continue;
-    const tile = original.cloneNode(true);
-    const oldPin = tile.querySelector('.pin-btn');
-    if (oldPin) oldPin.remove();
-    const unpin = el('button', { type: 'button', class: 'pin-btn', text: 'Unpin', 'aria-label': `Unpin ${id}` });
-    unpin.addEventListener('click', (e) => {
-      e.preventDefault();
-      e.stopPropagation();
-      togglePin(id);
-    });
-    tile.appendChild(unpin);
-    pinnedGrid.appendChild(tile);
-  }
-}
-
-function togglePin(id) {
-  const cur = parseHash(window.location.hash);
-  const has = cur.pinned.includes(id);
-  const next = has ? cur.pinned.filter((x) => x !== id) : [...cur.pinned, id];
-  const newHash = buildHash({ ...cur, pinned: next });
-  window.history.replaceState(null, '', newHash);
-  renderPinnedSection();
 }
 
 // spec-v2 section 4.3: hash-based calculator input state. After a tool body
@@ -817,7 +749,6 @@ function route() {
   if (!id) {
     currentRouteId = null;
     restoreHome();
-    renderPinnedSection();
     return;
   }
   if (id === 'changelog' || id === 'stability') {
@@ -1086,7 +1017,6 @@ function boot() {
   if (countNode) countNode.textContent = String(UTILITIES.length);
   wireFilters();
   applyFilters();
-  renderPinnedSection();
   installKeyboard();
   installTopbarSearch();
   // spec-v7 §3.2: load the synonym table once at boot. Hero search degrades

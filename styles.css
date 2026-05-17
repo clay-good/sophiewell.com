@@ -826,7 +826,7 @@ body {
 
 /* spec-v7 section 3.2: synonym-routed prompt breadcrumb. Surfaces the
    matched phrase under the hero so the user understands why a tile is
-   pinned at the top. */
+   routed to. */
 .hero-synonym-hint {
   margin: -4px 4px 12px;
   padding: 8px 12px;
@@ -1133,30 +1133,6 @@ main h1 {
 .copy-row { margin-bottom: 0; }
 .copy-btn { font-size: 0.85rem; padding: 4px 10px; }
 .copy-btn[data-copied='1'] { background: var(--bg-tertiary); }
-
-/* Pin buttons (kept, muted) */
-.pin-btn {
-  font-size: 0.72rem;
-  padding: 2px 10px;
-  margin-top: var(--space-1);
-  align-self: flex-start;
-  background: transparent;
-  color: var(--text-muted);
-  border: 1px solid var(--border);
-}
-.pin-btn:hover { color: var(--text-primary); border-color: var(--border-light); }
-
-/* Pinned section */
-#pinned-section { max-width: 1100px; margin: 0 auto var(--space-5); }
-#pinned-section h2 {
-  font-size: 0.7rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.18em;
-  color: var(--text-muted);
-  margin: 0 0 20px;
-  padding-left: 4px;
-}
 
 /* Keyboard shortcut overlay (spec-v2 3.3) */
 #shortcut-overlay {

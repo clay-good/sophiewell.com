@@ -1,12 +1,38 @@
 # spec-v8.md — sophiewell.com: minimal-tile contract + prompt-first front door
 
-> Status: proposed. Extends spec-v5, spec-v6, and spec-v7 without
+> Status: in flight. Extends spec-v5, spec-v6, and spec-v7 without
 > amending their hard rules. Collapses the per-tile surface to four
 > regions (title / description / inputs with example values /
 > references with citations) and removes every affordance that implies
 > persistence, social sharing, or bundle-style portability. Sharpens
 > the front-door prompt bar into the single dominant entry point.
 > Mirrors a parallel simplification on roughlogic.com (see §9).
+>
+> Landed (2026-05-16):
+> - §3.1 four-region tile layout (title / description / inputs /
+>   references) — already delivered by spec-v9.
+> - §3.2 Pin / Unpin removed (2026-05-16). Wiped
+>   `renderPinnedSection`, `togglePin`, the `#pinned-section` DOM
+>   mount, the `.pin-btn` and `#pinned-section` CSS, and the "p"
+>   leader-key shortcut. `lib/hash.js` no longer emits `p=` and
+>   silently ignores it on parse so legacy `#p=icd10,bmi` bookmarks
+>   resolve to the home view (§5.3). Removed-controls inventory
+>   for share-link / bundle / print / scratchpad / "after this you
+>   might want" was already clean; this PR closes the only
+>   outstanding §3.2 item. Tests updated: `test/unit/hash.test.js`
+>   asserts `p=` is dropped on write and tolerated on read; the
+>   keyboard fixture asserts the "p" leader is retired; the e2e
+>   smoke spec swapped its pin-toggle test for the §5.2 negative
+>   regression (no `.pin-btn`, no `#pinned-section`, no
+>   `#pinned-grid`).
+> - §3.3 example-value contract + §3.4 citation contract — both
+>   in **hard** CI mode per spec-v9 wave 4.
+>
+> Outstanding:
+> - §4.3 three-pass prompt matcher in `lib/prompt.js` (currently
+>   inline in `app.js`).
+> - §3.2 `META[id].tags` optional field (additive, no migration).
+> - §4.6 default-closed tile-grid disclosure (currently defaults open).
 
 ## 1. Purpose
 

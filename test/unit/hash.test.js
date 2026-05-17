@@ -4,7 +4,7 @@ import { parseHash, buildHash } from '../../lib/hash.js';
 
 test('parseHash: empty hash', () => {
   const r = parseHash('');
-  assert.deepEqual(r, { route: '', sub: '', pinned: [], state: {}, audience: 'all', browse: '' });
+  assert.deepEqual(r, { route: '', sub: '', state: {}, audience: 'all', browse: '' });
 });
 
 test('parseHash: browse-disclosure state (spec-v7 section 3.4)', () => {
@@ -52,17 +52,18 @@ test('parseHash: route + sub', () => {
   assert.equal(r.sub, 'I10');
 });
 
-test('parseHash: pinned list', () => {
+test('parseHash: legacy p= pinned list is silently ignored (spec-v8 §3.2 / §5.3)', () => {
+  // Old `#p=icd10,bmi,egfr` bookmarks must resolve to the home view,
+  // not 404. The parser tolerates the key but no field is returned.
   const r = parseHash('#&p=icd10,bmi,egfr');
-  assert.deepEqual(r.pinned, ['icd10', 'bmi', 'egfr']);
+  assert.equal(r.route, '');
+  assert.equal(r.pinned, undefined);
 });
 
-test('parseHash: pinned-only without leading & (regression)', () => {
-  // buildHash drops an empty route, so togglePin from the home view emits
-  // "#p=bmi" (no leading "&"). The parser must still recognize the p= key.
+test('parseHash: legacy p= without leading & still resolves to home (regression)', () => {
   const r = parseHash('#p=bmi');
   assert.equal(r.route, '');
-  assert.deepEqual(r.pinned, ['bmi']);
+  assert.equal(r.pinned, undefined);
 });
 
 test('parseHash: state-only without route', () => {
@@ -77,22 +78,25 @@ test('parseHash: calculator state', () => {
   assert.deepEqual(r.state, { w: '70', h: '1.75' });
 });
 
-test('parseHash: state + pinned + sub together', () => {
+test('parseHash: state + sub together (legacy p= ignored)', () => {
   const r = parseHash('#cockcroft-gault&p=bmi,egfr&q=' + encodeURIComponent('age=60;w=80;scr=1.0;sex=M'));
   assert.equal(r.route, 'cockcroft-gault');
-  assert.deepEqual(r.pinned, ['bmi', 'egfr']);
   assert.deepEqual(r.state, { age: '60', w: '80', scr: '1.0', sex: 'M' });
 });
 
 test('buildHash: round-trip', () => {
-  const input = { route: 'bmi', sub: '', pinned: ['icd10', 'bmi'], state: { w: '70', h: '1.75' } };
+  const input = { route: 'bmi', sub: '', state: { w: '70', h: '1.75' } };
   const h = buildHash(input);
   const out = parseHash(h);
   assert.equal(out.route, input.route);
-  assert.deepEqual(out.pinned, input.pinned);
   assert.deepEqual(out.state, input.state);
 });
 
-test('buildHash: empty state and pinned omits the keys', () => {
+test('buildHash: empty state omits the key', () => {
   assert.equal(buildHash({ route: 'bmi' }), '#bmi');
+});
+
+test('buildHash: pinned field is dropped (spec-v8 §3.2)', () => {
+  // Passing pinned (legacy callers) does not emit a p= segment.
+  assert.equal(buildHash({ route: 'bmi', pinned: ['icd10'] }), '#bmi');
 });
