@@ -42,7 +42,10 @@
 >   .md/.markdown/.json extensions). The accept predicate lives in
 >   [lib/artifact-route.js](../lib/artifact-route.js) as the pure
 >   `isLikelyTextFile` helper so the file-input `accept=` attribute
->   and the runtime predicate stay in lockstep.
+>   and the runtime predicate stay in lockstep. A CI assertion in
+>   [test/unit/artifact-route.test.js](../test/unit/artifact-route.test.js)
+>   reads `index.html` and fails if the picker's `accept=` list ever
+>   drifts from `TEXT_EXTENSIONS` / `application/json` / `text/*`.
 > - Result line now surfaces the classifier hits that fired
 >   ("Detected EOB (matched: this is not a bill, allowed amount).
 >   Opening the decoder..."). `formatDetectionHits` is a pure helper

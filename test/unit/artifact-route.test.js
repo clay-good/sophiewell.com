@@ -3,15 +3,23 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 
+import { readFileSync } from 'node:fs';
+import { fileURLToPath } from 'node:url';
+import { dirname, resolve } from 'node:path';
+
 import { ARTIFACT_KINDS } from '../../lib/artifact-detect.js';
 import {
   DEFAULT_ARTIFACT_ROUTES,
   ARTIFACT_LABELS,
   TEXT_EXTENSIONS,
+  TEXT_MIME_EXACT,
   routeArtifact,
   isLikelyTextFile,
   formatDetectionHits,
 } from '../../lib/artifact-route.js';
+
+const __dirname = dirname(fileURLToPath(import.meta.url));
+const REPO_ROOT = resolve(__dirname, '..', '..');
 
 test('every ARTIFACT_KINDS entry has a routing slot (value or explicit null)', () => {
   for (const kind of ARTIFACT_KINDS) {
@@ -84,6 +92,29 @@ test('TEXT_EXTENSIONS lists the dropzone-input accept set', () => {
   assert.ok(TEXT_EXTENSIONS.includes('.txt'));
   assert.ok(TEXT_EXTENSIONS.includes('.csv'));
   assert.ok(TEXT_EXTENSIONS.includes('.json'));
+});
+
+test('index.html artifact-file-input accept= stays in lockstep with TEXT_EXTENSIONS', () => {
+  // spec-v7 §3.1 calls out that the file-input accept attribute and
+  // the runtime isLikelyTextFile predicate must stay in lockstep so
+  // the picker and the drop handler agree on what is readable. This
+  // test makes drift a CI failure.
+  const html = readFileSync(resolve(REPO_ROOT, 'index.html'), 'utf8');
+  const match = html.match(/id="artifact-file-input"[^>]*accept="([^"]+)"/);
+  assert.ok(match, 'artifact-file-input must have an accept= attribute');
+  const tokens = match[1].split(',').map((s) => s.trim()).filter(Boolean);
+  for (const ext of TEXT_EXTENSIONS) {
+    assert.ok(tokens.includes(ext), 'accept= missing extension ' + ext);
+  }
+  for (const mime of TEXT_MIME_EXACT) {
+    // The accept= list is allowed to be a strict subset of the runtime
+    // predicate's MIME set, but the JSON pivot must be present since
+    // the file picker on most platforms relies on MIME for .json.
+    if (mime === 'application/json') {
+      assert.ok(tokens.includes(mime), 'accept= must include application/json');
+    }
+  }
+  assert.ok(tokens.includes('text/*'), 'accept= must include text/* wildcard');
 });
 
 test('formatDetectionHits joins up to three hits with a label', () => {
