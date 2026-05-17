@@ -6,6 +6,27 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v11 wave 3a — Medication & Infusion audit, 15/15 tiles)
+
+- **Group F audited end-to-end.** Wave 3a closes the highest-stakes
+  group first per spec-v11 §3.3: wrong drug math is the worst failure
+  mode this site has. Fifteen audit logs landed under
+  `docs/audits/v11/`, one per tile, each carrying citation
+  re-verification, three boundary worked examples, a cross-
+  implementation differential against the cited primary source or a
+  standard reference (Marino *ICU Book*, Goodman & Gilman, Maudsley,
+  Ferinject SmPC, ACC 2020 Expert Consensus, DailyMed labels, CDC 2022
+  MMWR opioid guideline, Sanford Guide, Harriet Lane Handbook, ASPEN
+  parenteral nutrition guidelines), edge-input handling notes, and an
+  a11y / keyboard pass. Tiles covered: `drip-rate`, `weight-dose`,
+  `conc-rate`, `peds-dose`, `insulin-drip`, `anticoag-reversal`,
+  `high-alert`, `opioid-mme`, `steroid-equiv`, `benzo-equiv`,
+  `abx-renal`, `vasopressor`, `tpn-macro`, `iv-to-po`, `iron-ganzoni`.
+  All 15 logs are PASS or PASS-WITH-FIXES; no defects opened.
+- **`scripts/audit-coverage.mjs` reports 15/15 (100%) for group F**,
+  15/178 (8%) overall. Subsequent waves (3b critical-care scoring,
+  3c stroke/neuro, ...) will follow the spec-v11 §3.3 order.
+
 ### Added (spec-v11 waves 0–2 — audit tooling, specialty rename, `interpretation` field)
 
 - **Wave 0 — audit tooling + CI guards + empty `docs/audits/v11/`.**
