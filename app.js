@@ -352,20 +352,23 @@ if (typeof document !== 'undefined') {
   });
 }
 
-// Group letter → breadcrumb label.
+// spec-v11 §4.1: visible specialty / category labels. The letter is the
+// legacy id retained inside UTILITIES entries so deep links keep working;
+// the label is the visible name everywhere a user sees it.
 const GROUP_LABELS = {
-  A: 'Code Reference',
-  C: 'Patient Bill & Insurance Literacy',
+  A: 'Billing & Coding',
+  C: 'Insurance & Patient Literacy',
   E: 'Clinical Math & Conversions',
   F: 'Medication & Infusion',
-  G: 'Clinical Scoring & Reference',
-  H: 'Workflow & Templates',
-  I: 'Field Medicine',
-  J: 'Public Health Decision Trees',
-  K: 'Lab Reference',
-  L: 'Forms & Numbers Literacy',
-  N: 'Literacy Helpers',
-  O: 'Patient Safety',
+  G: 'Clinical Scoring & Risk',
+  H: 'Workflow & Documentation',
+  I: 'EMS & Field Medicine',
+  J: 'Immunization & Infectious Disease',
+  K: 'Reference Ranges',
+  L: 'Insurance Glossary',
+  M: 'State & Coverage Reference',
+  N: 'Pediatrics & Neonatal',
+  O: 'High-Alert & Safety',
 };
 
 function syncToggleGroupState(group, value) {
@@ -480,6 +483,8 @@ function tileCorpus() {
     audiences: u.audiences || [],
     desc: descById.get(u.id) || '',
     tags: (META[u.id] && Array.isArray(META[u.id].tags)) ? META[u.id].tags : [],
+    // spec-v11 §4.3: optional specialty tags, additive search tokens.
+    specialties: (META[u.id] && Array.isArray(META[u.id].specialties)) ? META[u.id].specialties : [],
   }));
   return TILE_CORPUS_CACHE;
 }
@@ -830,6 +835,25 @@ function renderMetaBlock(util) {
 
   if (meta.citation) {
     block.appendChild(el('p', { class: 'citation', text: `Citation: ${meta.citation}` }));
+  }
+
+  // spec-v11 §5: optional per-band `interpretation` block. Renders below
+  // the citation under a mandatory "Per source:" header so every word
+  // shown is the source's, not Sophie's.
+  if (meta.interpretation && Array.isArray(meta.interpretation.bands) && meta.interpretation.bands.length) {
+    const interp = el('div', { class: 'interpretation', 'aria-label': 'Interpretation per source' });
+    interp.appendChild(el('p', { class: 'interpretation-header', text: 'Per source:' }));
+    const list = el('ul', { class: 'interpretation-bands' });
+    for (const band of meta.interpretation.bands) {
+      if (!band || !band.range || !band.text) continue;
+      const item = el('li', { class: 'interpretation-band' });
+      item.appendChild(el('span', { class: 'interpretation-range', text: String(band.range) }));
+      item.appendChild(document.createTextNode(' - '));
+      item.appendChild(el('span', { class: 'interpretation-text', text: String(band.text) }));
+      list.appendChild(item);
+    }
+    interp.appendChild(list);
+    block.appendChild(interp);
   }
 
   if (meta.source) {

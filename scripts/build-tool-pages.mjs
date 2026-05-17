@@ -28,19 +28,21 @@ const ROOT = resolve(__dirname, '..');
 const DIST = join(ROOT, 'dist');
 const SITE = 'https://sophiewell.com';
 
+// spec-v11 §4.1: visible specialty / category labels.
 const GROUP_LABELS = {
-  A: 'Code Reference',
-  C: 'Patient Bill & Insurance Literacy',
+  A: 'Billing & Coding',
+  C: 'Insurance & Patient Literacy',
   E: 'Clinical Math & Conversions',
   F: 'Medication & Infusion',
-  G: 'Clinical Scoring & Reference',
-  H: 'Workflow & Templates',
-  I: 'Field Medicine',
-  J: 'Public Health Decision Trees',
-  K: 'Lab Reference',
-  L: 'Forms & Numbers Literacy',
-  N: 'Literacy Helpers',
-  O: 'Patient Safety',
+  G: 'Clinical Scoring & Risk',
+  H: 'Workflow & Documentation',
+  I: 'EMS & Field Medicine',
+  J: 'Immunization & Infectious Disease',
+  K: 'Reference Ranges',
+  L: 'Insurance Glossary',
+  M: 'State & Coverage Reference',
+  N: 'Pediatrics & Neonatal',
+  O: 'High-Alert & Safety',
 };
 
 // --- Parse UTILITIES from app.js. We can't import app.js under Node

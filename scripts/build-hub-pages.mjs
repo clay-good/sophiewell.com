@@ -20,21 +20,23 @@ const ROOT = resolve(__dirname, '..');
 const DIST = join(ROOT, 'dist');
 const SITE = 'https://sophiewell.com';
 
+// spec-v11 §4.1: visible specialty / category labels.
 const GROUP_LABELS = {
-  A: 'Code Reference',
-  C: 'Patient Bill & Insurance Literacy',
+  A: 'Billing & Coding',
+  C: 'Insurance & Patient Literacy',
   E: 'Clinical Math & Conversions',
   F: 'Medication & Infusion',
-  G: 'Clinical Scoring & Reference',
-  H: 'Workflow & Templates',
-  I: 'Field Medicine',
-  J: 'Public Health Decision Trees',
-  K: 'Lab Reference',
-  L: 'Forms & Numbers Literacy',
-  N: 'Literacy Helpers',
-  O: 'Patient Safety',
+  G: 'Clinical Scoring & Risk',
+  H: 'Workflow & Documentation',
+  I: 'EMS & Field Medicine',
+  J: 'Immunization & Infectious Disease',
+  K: 'Reference Ranges',
+  L: 'Insurance Glossary',
+  M: 'State & Coverage Reference',
+  N: 'Pediatrics & Neonatal',
+  O: 'High-Alert & Safety',
 };
-const GROUP_ORDER = ['A', 'C', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'N', 'O'];
+const GROUP_ORDER = ['A', 'C', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O'];
 
 // Per-audience SEO copy + workflow framing. These are the indexable
 // paragraphs that earn the long-tail "healthcare tools for X" queries.

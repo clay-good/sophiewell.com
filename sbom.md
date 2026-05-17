@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `e6cb5f5aa348c2db`
-Generated: 2026-05-17T23:27:08.775Z
+Build ID: `c03c745842c96179`
+Generated: 2026-05-17T23:35:31.426Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=20.18.1 <21, npm >=10.0.0
@@ -23,9 +23,9 @@ downloads is committed in this repository and is hashed below.
 
 | Path | Bytes | SHA-256 |
 |---|---:|---|
-| `index.html` | 103560 | `0ea4a071e08d0acb85ede39a57abfbe116bea6572e4afebb74d72f698cffc1f9` |
+| `index.html` | 103590 | `3173c75ee3c96786a9a24495a14637dd1ba8cd8902aeddab1b5bf8578ad57e9b` |
 | `styles.css` | 38621 | `aae166662d02108ddc88e23ff390b69dc9ce1e7a77b5df6936c92f22f71ff319` |
-| `app.js` | 65846 | `224c79d2ce0d39d4c481064544b30a19930fbaa3a7e0b322312c44845b6f466b` |
+| `app.js` | 67312 | `71adbd21779556f647392d7c7b629af1d91f91bdfe0badbc1f81c6fb7125738a` |
 | `sw.js` | 4062 | `60f524b1b69eb5170c59af42631e11cc05db2a44e8e530977db0327888b0ff6d` |
 | `site.webmanifest` | 709 | `0e0de4da60590a12e8b27a0ae2a2f5ffdb6500b7d2b78f93631ec2f64ed3d5ce` |
 | `robots.txt` | 127 | `38fbf9c1854e72abb20e01e81dd5a31d4ea96f154c12d5db1ec3af05524dd1a1` |
@@ -64,9 +64,9 @@ downloads is committed in this repository and is hashed below.
 | `lib/live.js` | 1138 | `304978d3c170b6eb06cade7702e5f99d868e9b3e1f5651aa9a28da15e62a6a9c` |
 | `lib/medicare-enrollment.js` | 2884 | `6a4c11321477e712efc44d4de84336463ea6800bc64f654b5e9d0b16c440877d` |
 | `lib/medication-v4.js` | 5501 | `a75b60584a9264ee1500e14642c5e4784fb0a0994bf4c8cb4eaa0d294f571f37` |
-| `lib/meta.js` | 61678 | `fc94978d6f569d44baf6f30aaa7153178ea77836e3f10704053c88113289e2e7` |
+| `lib/meta.js` | 61550 | `ba8297850099ad16d7987cb96c2696a55a34785e15033689a6fe816fb982f4f2` |
 | `lib/print.js` | 2588 | `74579a71f82b75993dea9f7d9b3c21e67744bd4dbe6f50e20c8eef9aa1be7546` |
-| `lib/prompt.js` | 6568 | `01540a40d4c1415b5bf0bf908613e67345e4a7b90a1299a564dc89de460c5a96` |
+| `lib/prompt.js` | 6872 | `95ee9b9de5adbafd1497f378993e27d29c9f437bfc9ddc304886fd75e80fffd4` |
 | `lib/regulatory.js` | 4040 | `9e1ef6751facc0172c492010ccd35982061f06b000db2e857a98ec2013e7087c` |
 | `lib/scoring-v4.js` | 30573 | `8cf1449c89082c392bbbef8f837fe75271bf6ea26584b5e33328f5186ee53678` |
 | `lib/screener.js` | 6465 | `34e4473386cfbdca959f0bd7c715da44f5d4b29a4467fb74616a31224b40bb22` |

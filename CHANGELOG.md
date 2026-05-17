@@ -6,6 +6,49 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v11 waves 0–2 — audit tooling, specialty rename, `interpretation` field)
+
+- **Wave 0 — audit tooling + CI guards + empty `docs/audits/v11/`.**
+  Two new pure-Node scripts ship: `scripts/audit-skeleton.mjs <tile-id>`
+  generates a pre-filled `docs/audits/v11/<tile-id>.md` skeleton in the
+  spec-v11 §3.2 schema (refuses to overwrite existing logs);
+  `scripts/audit-coverage.mjs` reads the audit dir and reports per-group
+  audit completion (informational CI signal, not a gate). Three new CI
+  guards under `test/unit/`: `audit-format.test.js` enforces the
+  spec-v11 §3.2 schema on every audit log; `meta-citation-verify.test.js`
+  enforces non-empty, ≤300-character, URL-free citation strings;
+  `meta-interpretation.test.js` enforces the §5.4 contract on the new
+  optional field. Four citation strings were trimmed to clear the
+  URL-free / ≤300 contract (`high-alert`, `high-alert-card`,
+  `benzo-equiv`, `lab-interpret`).
+- **Wave 1 — specialty rename + `META[id].specialties` field.**
+  `GROUP_LABELS` in `app.js`, `scripts/build-hub-pages.mjs`, and
+  `scripts/build-tool-pages.mjs` switches from the v8-era labels
+  (`Code Reference`, `Patient Bill & Insurance Literacy`, `Clinical
+  Scoring & Reference`, `Workflow & Templates`, `Field Medicine`,
+  `Public Health Decision Trees`, `Lab Reference`, `Forms & Numbers
+  Literacy`, `Literacy Helpers`, `Patient Safety`) to the spec-v11 §4.1
+  specialty names (`Billing & Coding`, `Insurance & Patient Literacy`,
+  `Clinical Scoring & Risk`, `Workflow & Documentation`, `EMS & Field
+  Medicine`, `Immunization & Infectious Disease`, `Reference Ranges`,
+  `Insurance Glossary`, `Pediatrics & Neonatal`, `High-Alert & Safety`),
+  plus the new `M: State & Coverage Reference` row. The matching `<h3>`
+  section headers in `index.html` are updated. The optional
+  `META[id].specialties` array (closed vocabulary in spec-v11 §4.3) is
+  wired through `app.js` `tileCorpus()` into `lib/prompt.js`
+  `buildSearchDoc()` as additional `+1 per token` search tokens
+  alongside `audiences` and `tags`. No tile populates the field yet;
+  defaults to `[]`.
+- **Wave 2 — `META[id].interpretation` rendering + CI guard.**
+  `renderMetaBlock` in `app.js` learns to render an optional
+  per-band `interpretation` block under a mandatory `Per source:`
+  header, immediately below the citation line, so every word shown
+  is the source's. The `meta-interpretation.test.js` guard rejects
+  Sophie-authored phrasing (`Sophie`, `we recommend`, `you should`,
+  `consider ordering`), missing `sourceQuoted: true`, missing
+  `sourceCitation`, oversize band text, and empty `bands` arrays.
+  No tile populates the field yet; absence is the default.
+
 ### Added (spec-v11 — correctness floor + specialty-named groups + optional `interpretation` field)
 
 - **`docs/spec-v11.md` (new).** Implementation spec. No new tiles
