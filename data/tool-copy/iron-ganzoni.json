@@ -1,0 +1,4 @@
+{
+  "whatThisIs": "Apply the Ganzoni equation (Ganzoni 1970) to estimate total body iron deficit in milligrams from body weight, current hemoglobin, and target hemoglobin: deficit = weight(kg) * (target Hb - current Hb) * 2.4 + iron stores (typically 500 mg in adults). Sophie Well returns the total deficit so the prescriber can compare it to a single-dose IV iron formulation's maximum dose and plan one or two infusions instead of guessing.",
+  "whenToUse": "Use this when ordering IV iron for iron-deficiency anemia where the patient cannot tolerate, has failed, or has malabsorption issues with oral iron. The Ganzoni number tells you whether the patient needs a single 1000 mg ferric carboxymaltose infusion, a split course, or a higher cumulative dose. It is not a substitute for confirming iron deficiency by ferritin and transferrin saturation before treating."
+}

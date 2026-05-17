@@ -118,9 +118,14 @@
 >       Added in wave seventeen: ems-doc, dot-erg, niosh-pg,
 >       cpr-numeric, tccc, co-cn-antidote, lab-adult, lab-peds,
 >       tox-levels, unit-converter-v4.
->       Hand-authored total is now 171 files; the remaining 7
->       tiles continue to render from the templated `META`-driven
->       copy in `build-tool-pages.mjs`.
+>       Added in wave eighteen (2026-05-16): time-to-dose,
+>       high-alert-card, iron-ganzoni, lights, r-factor, em-time,
+>       breach-clock. Hand-authored coverage is now 178/178 -
+>       every home-grid tile has a curated `whatThisIs` and
+>       `whenToUse` block; the templated `META`-driven fallback
+>       in `build-tool-pages.mjs` is now dead code retained only
+>       as a safety net for any future tile added before its
+>       copy lands.
 > - [ ] Per-tile 1200x630 OG image generated at build time per
 >       §6.3. Outstanding - currently every per-tool page reuses
 >       `/logo.png`, which letterboxes on wide-card consumers.

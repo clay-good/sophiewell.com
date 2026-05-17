@@ -1,0 +1,4 @@
+{
+  "whatThisIs": "Apply Light's criteria (Light 1972) to classify a pleural effusion as exudate or transudate from paired pleural and serum protein and LDH values plus the lab's upper limit of normal for serum LDH. Sophie Well computes the protein ratio, the LDH ratio, and the absolute pleural LDH versus two-thirds of the serum upper limit, and flags an exudate when any single criterion is met.",
+  "whenToUse": "Use this at the bedside after a diagnostic thoracentesis to direct the workup: transudates point at heart failure, cirrhosis, or nephrotic syndrome; exudates open the differential to infection, malignancy, pulmonary embolism, and connective-tissue disease. Light's criteria are highly sensitive for exudate but only moderately specific - heart-failure patients on diuretics can be misclassified, so pair an unexpected exudate with serum-to-pleural albumin gradient or NT-proBNP before committing to a workup."
+}

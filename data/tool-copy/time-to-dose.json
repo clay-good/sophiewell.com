@@ -1,0 +1,4 @@
+{
+  "whatThisIs": "Take the time of a patient's last dose plus a frequency abbreviation (q4h, q6h, q8h, q12h, BID, TID, QID, daily) and project the next four dose times. Sophie Well does the modular-arithmetic so neither the patient nor the caregiver has to add hours in their head at 3am.",
+  "whenToUse": "Use this at home for any standing oral medication where missing or doubling a dose matters - antibiotics, anticonvulsants, immunosuppressants, opioid analgesics on a schedule, pediatric antipyretics. It is a literacy helper, not a clinical decision tool: it assumes the prescribed interval is correct and just lays the next four clock times out so the family can write them on the bottle or set phone alarms."
+}

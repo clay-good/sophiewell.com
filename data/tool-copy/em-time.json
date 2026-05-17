@@ -1,0 +1,4 @@
+{
+  "whatThisIs": "Map total provider time on the date of an office or outpatient encounter to the corresponding 2021 AMA CPT time-based E/M code (99202-99205 for new patients, 99212-99215 for established patients). Sophie Well returns the bracket the time falls into; the AMA-owned CPT descriptor text is not bundled per licensing.",
+  "whenToUse": "Use this after a visit when you intend to bill by time (counseling-dominant, complex coordination of care, prolonged documentation, or any encounter where the time bracket lands higher than the MDM-based code would). The 2021 revision counts all qualifying time spent on the date of service - chart review, documentation, ordering, counseling - not just face-to-face. Document the total minutes and the activities; the code is a function of those minutes and Sophie just bins them."
+}

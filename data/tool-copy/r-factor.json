@@ -1,0 +1,4 @@
+{
+  "whatThisIs": "Compute the R-factor (Benichou / CIOMS 1990) for suspected drug-induced liver injury: R = (ALT / ALT upper limit) divided by (alkaline phosphatase / ALP upper limit). Sophie Well classifies the result as hepatocellular (R > 5), cholestatic (R < 2), or mixed (R between 2 and 5), which determines the differential and the urgency of stopping the suspect agent.",
+  "whenToUse": "Use this as soon as new liver enzyme elevations show up in a patient on any drug, supplement, or herbal product. The pattern guides workup - hepatocellular injury raises the spectre of acetaminophen, isoniazid, or autoimmune hepatitis; cholestatic injury points at amoxicillin-clavulanate, anabolic steroids, or biliary obstruction. R should be calculated at the time of recognition and re-checked if the pattern shifts; CIOMS is a classification tool, not a causality score (RUCAM does that)."
+}
