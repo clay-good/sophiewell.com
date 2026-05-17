@@ -619,8 +619,8 @@ function wireDropzone() {
     if (!file) return;
     if (!isLikelyTextFile(file)) {
       setResult(
-        'PDF, DOCX, and image files are not parsed in the browser yet (coming with the v7 decoder pages). ' +
-        'Open the file, copy its text, and paste it below.',
+        'PDF, DOCX, and image files cannot be parsed in your browser yet. ' +
+        'Open the file, copy the text, and paste it below.',
         true,
       );
       hideChooser();
@@ -674,8 +674,19 @@ function wireDropzone() {
     target.addEventListener('drop', (e) => {
       e.preventDefault();
       target.classList.remove('is-dragover');
-      const f = e.dataTransfer && e.dataTransfer.files && e.dataTransfer.files[0];
-      if (f) readTextFile(f);
+      const files = e.dataTransfer && e.dataTransfer.files;
+      const f = files && files[0];
+      if (!f) return;
+      if (files.length > 1) {
+        setResult(
+          'Multiple files dropped; only the first ("' + f.name + '") will be read. ' +
+          'Drop one file at a time.',
+          true,
+        );
+        hideChooser();
+        return;
+      }
+      readTextFile(f);
     });
   }
   if (detectBtn) {

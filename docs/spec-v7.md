@@ -62,6 +62,11 @@
 >   so the user does not have to paste a second time on the decoder
 >   page. Tiles without a paste input still navigate but receive no
 >   handoff, matching the auto-route behavior.
+> - Dropping more than one file at a time now surfaces a one-line
+>   notice naming the first file and explaining only that file will
+>   be read, instead of silently consuming the first and discarding
+>   the rest. User-facing rejection copy for PDF/DOCX/image drops
+>   was rewritten to drop the "v7 decoder pages" jargon.
 >
 > The remaining sections (4.1-4.6 decoder pages) are unimplemented.
 > Extends spec-v5 and spec-v6 without amending their hard rules.
