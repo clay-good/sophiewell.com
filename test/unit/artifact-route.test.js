@@ -94,27 +94,22 @@ test('TEXT_EXTENSIONS lists the dropzone-input accept set', () => {
   assert.ok(TEXT_EXTENSIONS.includes('.json'));
 });
 
-test('index.html artifact-file-input accept= stays in lockstep with TEXT_EXTENSIONS', () => {
-  // spec-v7 §3.1 calls out that the file-input accept attribute and
-  // the runtime isLikelyTextFile predicate must stay in lockstep so
-  // the picker and the drop handler agree on what is readable. This
-  // test makes drift a CI failure.
+test('index.html no longer carries the artifact dropzone after the clinical pivot', () => {
+  // The patient-artifact dropzone (spec-v7 §3.1) was removed when Sophie
+  // pivoted to the clinical-staff-first wedge. The lib/artifact-* modules
+  // remain in the tree (still tested above for the eventual re-introduction
+  // behind a clinician-driven input surface), but the home view no longer
+  // renders the dropzone, so the prior "accept= stays in lockstep" check
+  // is reframed: the dropzone elements must NOT be present.
   const html = readFileSync(resolve(REPO_ROOT, 'index.html'), 'utf8');
-  const match = html.match(/id="artifact-file-input"[^>]*accept="([^"]+)"/);
-  assert.ok(match, 'artifact-file-input must have an accept= attribute');
-  const tokens = match[1].split(',').map((s) => s.trim()).filter(Boolean);
-  for (const ext of TEXT_EXTENSIONS) {
-    assert.ok(tokens.includes(ext), 'accept= missing extension ' + ext);
-  }
-  for (const mime of TEXT_MIME_EXACT) {
-    // The accept= list is allowed to be a strict subset of the runtime
-    // predicate's MIME set, but the JSON pivot must be present since
-    // the file picker on most platforms relies on MIME for .json.
-    if (mime === 'application/json') {
-      assert.ok(tokens.includes(mime), 'accept= must include application/json');
-    }
-  }
-  assert.ok(tokens.includes('text/*'), 'accept= must include text/* wildcard');
+  assert.equal(html.includes('id="artifact-dropzone"'), false, 'artifact-dropzone must not be in index.html');
+  assert.equal(html.includes('id="artifact-file-input"'), false, 'artifact-file-input must not be in index.html');
+  assert.equal(html.includes('id="artifact-paste"'), false, 'artifact-paste must not be in index.html');
+  // TEXT_EXTENSIONS and TEXT_MIME_EXACT still drive isLikelyTextFile() in
+  // lib/artifact-route.js; keep them touched so the imports above are
+  // exercised even though the HTML accept= attribute is gone.
+  assert.ok(TEXT_EXTENSIONS.length > 0);
+  assert.ok(TEXT_MIME_EXACT.length > 0);
 });
 
 test('formatDetectionHits joins up to three hits with a label', () => {

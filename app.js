@@ -19,15 +19,11 @@ import { installKeyboard } from './lib/keyboard.js';
 import { parseHash, buildHash, patchHash } from './lib/hash.js';
 import { matchSynonym, loadSynonyms } from './lib/synonyms.js';
 import { resolvePrompt } from './lib/prompt.js';
-import { detectArtifact } from './lib/artifact-detect.js';
-import {
-  routeArtifact,
-  ARTIFACT_LABELS,
-  DEFAULT_ARTIFACT_ROUTES,
-  isLikelyTextFile,
-  formatDetectionHits,
-} from './lib/artifact-route.js';
-import { setPendingDrop, applyPendingDrop, hasPasteInputForTile } from './lib/artifact-handoff.js';
+// The patient-artifact dropzone UI (spec-v7 §3.1) was removed when Sophie
+// pivoted to a clinical-staff-first wedge. lib/artifact-detect.js,
+// lib/artifact-route.js, and lib/artifact-handoff.js remain in the tree
+// (still tested) in case the dropzone is reintroduced behind a future
+// clinical-input surface; app.js no longer wires them.
 
 const RENDERERS = { ...RA, ...RC, ...RE, ...RF, ...RG, ...RH, ...RI, ...RJ, ...RKLMNO, ...RV5, ...RV6 };
 
@@ -524,225 +520,6 @@ function openDisclosure() {
   if (d && !d.open) d.open = true;
 }
 
-// spec-v7 section 3.1: artifact-detecting dropzone wiring (shell).
-// Accepts a plain-text file drop (.txt) or pasted text, runs the
-// deterministic classifier in lib/artifact-detect.js, then routes to the
-// decoder tile via lib/artifact-route.js. PDF/DOCX file parsing in a
-// Web Worker is part of v7 section 4 and not implemented here; non-text
-// drops surface an inline message asking the user to paste the content.
-// No upload, no fetch, no storage. The file stays on the device.
-function wireDropzone() {
-  const root = document.getElementById('artifact-dropzone');
-  if (!root) return;
-  const target = document.getElementById('artifact-drop-target');
-  const pickBtn = document.getElementById('artifact-pick-btn');
-  const fileInput = document.getElementById('artifact-file-input');
-  const paste = document.getElementById('artifact-paste');
-  const detectBtn = document.getElementById('artifact-detect-btn');
-  const clearBtn = document.getElementById('artifact-clear-btn');
-  const result = document.getElementById('artifact-result');
-  const chooser = document.getElementById('artifact-chooser');
-  const chooserButtons = document.getElementById('artifact-chooser-buttons');
-
-  function setResult(message, isError) {
-    if (!result) return;
-    result.textContent = message || '';
-    if (isError) result.classList.add('is-error');
-    else result.classList.remove('is-error');
-    result.hidden = !message;
-  }
-
-  function hideChooser() {
-    if (!chooser) return;
-    if (chooserButtons) clear(chooserButtons);
-    chooser.hidden = true;
-  }
-
-  function showChooser() {
-    if (!chooser || !chooserButtons) return;
-    clear(chooserButtons);
-    const known = new Set(UTILITIES.map((u) => u.id));
-    Object.keys(DEFAULT_ARTIFACT_ROUTES).forEach((kind) => {
-      const tileId = routeArtifact(kind, known);
-      if (!tileId) return;
-      const label = ARTIFACT_LABELS[kind] || kind;
-      const btn = el('button', { type: 'button', 'data-tool-route': tileId, text: label });
-      btn.addEventListener('click', () => {
-        // Carry the pasted text through to the destination decoder
-        // when that tile has a paste input wired. Without this the
-        // chooser-fallback flow would silently drop the user's text
-        // and force them to paste again on the decoder page.
-        const pasted = paste ? String(paste.value || '').trim() : '';
-        if (pasted && hasPasteInputForTile(tileId)) {
-          setPendingDrop(tileId, pasted);
-        }
-        location.hash = '#' + tileId;
-      });
-      chooserButtons.appendChild(btn);
-    });
-    chooser.hidden = false;
-  }
-
-  function routeOrChoose(text) {
-    const trimmed = String(text || '').trim();
-    if (!trimmed) {
-      setResult('Paste the document text first, then click Detect.', true);
-      hideChooser();
-      return;
-    }
-    const det = detectArtifact(trimmed);
-    if (det.kind === 'unknown') {
-      setResult('Could not auto-detect this document. Pick a decoder below.', false);
-      showChooser();
-      return;
-    }
-    const known = new Set(UTILITIES.map((u) => u.id));
-    const tileId = routeArtifact(det.kind, known);
-    if (!tileId) {
-      setResult(
-        'Detected ' + (ARTIFACT_LABELS[det.kind] || det.kind) +
-        '. No decoder is wired for that yet; pick another below.',
-        false,
-      );
-      showChooser();
-      return;
-    }
-    const label = ARTIFACT_LABELS[det.kind] || det.kind;
-    const hits = formatDetectionHits(det.hits);
-    const why = hits ? ' (' + hits + ')' : '';
-    if (hasPasteInputForTile(tileId)) {
-      setPendingDrop(tileId, trimmed);
-      setResult('Detected ' + label + why + '. Opening the decoder with your text pre-filled.', false);
-    } else {
-      setResult('Detected ' + label + why + '. Opening the matching decoder.', false);
-    }
-    hideChooser();
-    location.hash = '#' + tileId;
-  }
-
-  function readTextFile(file) {
-    if (!file) return;
-    if (!isLikelyTextFile(file)) {
-      setResult(
-        'PDF, DOCX, and image files cannot be parsed in your browser yet. ' +
-        'Open the file, copy the text, and paste it below.',
-        true,
-      );
-      hideChooser();
-      return;
-    }
-    if (typeof FileReader === 'undefined') {
-      setResult('Your browser does not support file reading. Paste the text below instead.', true);
-      return;
-    }
-    const reader = new FileReader();
-    reader.onload = () => {
-      const text = String(reader.result || '');
-      if (paste) paste.value = text;
-      routeOrChoose(text);
-    };
-    reader.onerror = () => {
-      setResult('Could not read that file. Paste the text below instead.', true);
-    };
-    reader.readAsText(file);
-  }
-
-  if (pickBtn && fileInput) {
-    pickBtn.addEventListener('click', (e) => {
-      e.preventDefault();
-      e.stopPropagation();
-      fileInput.click();
-    });
-  }
-  if (fileInput) {
-    fileInput.addEventListener('change', () => {
-      const f = fileInput.files && fileInput.files[0];
-      if (f) readTextFile(f);
-      fileInput.value = '';
-    });
-  }
-  if (target) {
-    target.addEventListener('click', () => { if (fileInput) fileInput.click(); });
-    target.addEventListener('keydown', (e) => {
-      if (e.key === 'Enter' || e.key === ' ') {
-        e.preventDefault();
-        if (fileInput) fileInput.click();
-      }
-    });
-    target.addEventListener('dragover', (e) => {
-      e.preventDefault();
-      target.classList.add('is-dragover');
-    });
-    target.addEventListener('dragleave', () => {
-      target.classList.remove('is-dragover');
-    });
-    target.addEventListener('drop', (e) => {
-      e.preventDefault();
-      target.classList.remove('is-dragover');
-      const files = e.dataTransfer && e.dataTransfer.files;
-      const f = files && files[0];
-      if (!f) return;
-      if (files.length > 1) {
-        setResult(
-          'Multiple files dropped; only the first ("' + f.name + '") will be read. ' +
-          'Drop one file at a time.',
-          true,
-        );
-        hideChooser();
-        return;
-      }
-      readTextFile(f);
-    });
-  }
-  if (detectBtn) {
-    detectBtn.addEventListener('click', () => {
-      routeOrChoose(paste ? paste.value : '');
-    });
-  }
-  if (paste) {
-    // spec-v7 §3.1 follow-on: a clipboard paste into the textarea is
-    // the same deliberate "I just dropped this in" signal a file drop
-    // is, so auto-classify after the paste settles. Typing/editing
-    // does not trigger this; only the native paste event does.
-    paste.addEventListener('paste', () => {
-      // The pasted text is not in `value` yet during the paste event;
-      // wait one tick so the browser has applied it.
-      setTimeout(() => { routeOrChoose(paste.value); }, 0);
-    });
-    // Editing the textarea after a detection invalidates the result
-    // line; clear it (and any chooser pane) so stale feedback does
-    // not linger. Cleared explicitly via the Clear button below.
-    paste.addEventListener('input', (e) => {
-      if (e && e.inputType === 'insertFromPaste') return;
-      if (result && !result.hidden) {
-        setResult('', false);
-        hideChooser();
-      }
-    });
-  }
-  if (clearBtn) {
-    clearBtn.addEventListener('click', () => {
-      if (paste) paste.value = '';
-      setResult('', false);
-      hideChooser();
-      if (paste) paste.focus();
-    });
-  }
-  // Escape inside the dropzone region dismisses the result line and
-  // chooser pane without wiping the textarea; a non-destructive
-  // way to retract a misfired detection. The Clear button still
-  // wipes the textarea for users who want a full reset.
-  root.addEventListener('keydown', (e) => {
-    if (e.key !== 'Escape') return;
-    const hasResult = result && !result.hidden;
-    const hasChooser = chooser && !chooser.hidden;
-    if (!hasResult && !hasChooser) return;
-    e.preventDefault();
-    setResult('', false);
-    hideChooser();
-  });
-}
-
 // ----- Routing -------------------------------------------------------------
 
 const HOME_VIEW_HTML_ID = 'home-view-marker';
@@ -994,10 +771,6 @@ function renderToolView(util) {
             if (filled.has(id)) annotateExample(id, value);
           }
         }
-        // spec-v7 section 3.1: if the dropzone stashed a payload for this
-        // tile, fill its primary textarea and append a one-line banner.
-        // No-op for tiles without a paste input or when nothing is pending.
-        applyPendingDrop(util.id, body);
       });
     } catch (err) {
       console.error(`[sophiewell] renderer threw for tool "${util.id}":`, err);
@@ -1303,7 +1076,6 @@ function boot() {
   const countNode = document.getElementById('browse-tile-count');
   if (countNode) countNode.textContent = String(UTILITIES.length);
   wireFilters();
-  wireDropzone();
   applyFilters();
   installKeyboard();
   installTopbarSearch();

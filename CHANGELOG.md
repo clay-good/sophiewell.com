@@ -6,6 +6,40 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Removed (clinical-staff-first pivot — patient-artifact dropzone UI retired)
+
+- **The home-view artifact dropzone UI is gone.** spec-v7 §3.1's
+  "What do you need to decode?" hero label, "Or drop the document
+  you cannot read" dropzone, and "Or paste text:" textarea are all
+  removed from `index.html`. The hero search remains but is reframed
+  to clinical-first phrasing ("Find a calculator, lookup, or
+  reference" with placeholders like *wells PE*, *CHA2DS2-VASc*,
+  *ICD-10*, *magnesium replacement*).
+- **`wireDropzone()` and the dropzone-only imports are removed from
+  `app.js`.** The dropzone wiring, file-picker handlers, drag/drop
+  listeners, paste auto-classify, and Escape/Clear chooser flow are
+  all gone. `applyPendingDrop()` is no longer called from the tile
+  renderer (no dropzone means nothing is ever pending).
+- **`lib/artifact-detect.js`, `lib/artifact-route.js`, and
+  `lib/artifact-handoff.js` remain in the tree.** Their unit tests
+  still run; they continue to encode the deterministic classifier
+  and routing table. The choice was deliberate: if a clinical-input
+  surface ever reuses them (e.g., a clinician pasting an EHR lab
+  panel per spec-v10 §3.3), the libraries are ready. The home view
+  simply no longer wears them.
+- **`styles.css` `.artifact-*` selectors and the patient-artifact
+  meta description copy are pruned.** Meta descriptions now read
+  "178 calculators, scoring tools, code lookups, and references"
+  in place of "...bill decoders." The patient-decoder tiles
+  themselves (`decoder`, `eob-decoder`, `msn-decoder`,
+  `appeal-letter`, `roi`, `hipaa-roa`, ...) are not removed; they
+  remain valid tiles in the catalog, just no longer promoted via
+  an artifact-ingestion hero.
+- **`test/unit/artifact-route.test.js`** reframes the prior
+  "accept= stays in lockstep" assertion as a negative assertion
+  that the dropzone elements are NOT present in `index.html`, so
+  any accidental reintroduction is a CI failure.
+
 ### Added (spec-v11 §5 — eight more canonical-band tiles get `META.interpretation`)
 
 - **Eight more tiles** now expose per-band `interpretation` blocks

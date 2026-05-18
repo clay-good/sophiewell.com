@@ -28,7 +28,7 @@
          (ignored by Google since ~2009; signals amateur SEO) is removed
          per spec-seo §3. -->
     <title>Free Healthcare Toolbox - 178 Tools, No Signup · Sophie Well</title>
-    <meta name="description" content="Free deterministic healthcare tools that run entirely in your browser. 178 calculators, code lookups, and bill decoders. No signup, no tracking, no AI." />
+    <meta name="description" content="Free deterministic healthcare tools that run entirely in your browser. 178 calculators, scoring tools, code lookups, and references. No signup, no tracking, no AI." />
     <meta name="author" content="Clay Good" />
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />
     <meta name="googlebot" content="index, follow" />
@@ -44,7 +44,7 @@
     <meta property="og:site_name" content="Sophie Well" />
     <meta property="og:url" content="https://sophiewell.com/" />
     <meta property="og:title" content="Free Healthcare Toolbox - 178 Tools, No Signup · Sophie Well" />
-    <meta property="og:description" content="Free deterministic healthcare tools that run entirely in your browser. 178 calculators, code lookups, and bill decoders. No signup, no tracking, no AI." />
+    <meta property="og:description" content="Free deterministic healthcare tools that run entirely in your browser. 178 calculators, scoring tools, code lookups, and references. No signup, no tracking, no AI." />
     <meta property="og:image" content="https://sophiewell.com/og/home.png" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
@@ -55,7 +55,7 @@
     <meta property="twitter:card" content="summary_large_image" />
     <meta property="twitter:url" content="https://sophiewell.com/" />
     <meta property="twitter:title" content="Free Healthcare Toolbox - 178 Tools, No Signup · Sophie Well" />
-    <meta property="twitter:description" content="Free deterministic healthcare tools that run entirely in your browser. 178 calculators, code lookups, and bill decoders. No signup, no tracking, no AI." />
+    <meta property="twitter:description" content="Free deterministic healthcare tools that run entirely in your browser. 178 calculators, scoring tools, code lookups, and references. No signup, no tracking, no AI." />
     <meta property="twitter:image" content="https://sophiewell.com/og/home.png" />
     <meta property="twitter:image:alt" content="Sophie Well - 178 free healthcare tools" />
 
@@ -436,14 +436,15 @@
     <div class="container">
       <main id="main">
         <!-- spec-seo §9.1: a visible h1 leads the home view. The prior
-             visually-hidden h1 fed Google a topic signal but left human
-             visitors with "What do you need to decode?" as the first
+             visually-hidden h1 fed Google a topic signal but left
+             human visitors with the hero search label as the first
              visible heading. -->
+
         <h1 id="intro-heading" class="home-h1">Free healthcare tools, all in your browser</h1>
         <p class="home-lede">
-          178 deterministic calculators, code lookups, and bill decoders for
-          patients, clinicians, billers, and EMS - every input stays on
-          your device. No signup, no tracking, no AI.
+          178 deterministic calculators, scoring tools, code lookups, and
+          references for clinicians, nurses, billers, and EMS - every input
+          stays on your device. No signup, no tracking, no AI.
         </p>
 
         <!-- spec-seo §9.2: trust strip. Three skimmable value-prop badges
@@ -499,77 +500,22 @@
           <h2 id="tools-heading" class="visually-hidden">Tools</h2>
 
           <!-- spec-v6 §4.2.1: task hero. A promoted search input that
-               filters the tile grid below it. Same matching logic as the
-               topbar search, but visually the entry point on the home view. -->
+               filters the tile grid below it. Reframed away from the
+               patient-artifact "what do you need to decode?" prompt to
+               match Sophie's clinical-staff-first wedge per spec-v10. -->
           <div class="task-hero" role="search">
-            <label for="hero-search" class="hero-label">What do you need to decode?</label>
+            <label for="hero-search" class="hero-label">Find a calculator, lookup, or reference</label>
             <input
               id="hero-search"
               type="search"
               autocomplete="off"
               spellcheck="false"
-              placeholder="my medical bill, my lab results, my medication list..."
+              placeholder="wells PE, CHA2DS2-VASc, ICD-10, magnesium replacement..."
               aria-describedby="hero-examples"
             />
             <p id="hero-examples" class="hero-examples">
-              Try: my medical bill, my lab results, my insurance card, my medication list, my denial letter, my EOB.
+              Try: wells DVT, CHA2DS2-VASc, HEART score, MELD, NIHSS, ICD-10, NDC, magnesium replacement, IV-to-PO.
             </p>
-          </div>
-
-          <!-- spec-v7 section 3.1: artifact-detecting dropzone (shell).
-               Accepts a plain-text file drop or pasted text and routes to
-               the matching decoder tile via lib/artifact-detect.js +
-               lib/artifact-route.js. PDF/DOCX parsing in a Web Worker and
-               the full annotated-DOCX decoder pages (section 4) are still
-               unimplemented; the shell asks the user to paste the text
-               content of those documents in the meantime. The file itself
-               never leaves the tab; no upload, no fetch. -->
-          <div id="artifact-dropzone" class="artifact-dropzone">
-            <div class="artifact-dropzone-head">
-              <p class="artifact-dropzone-title">Or drop the document you cannot read</p>
-              <p class="artifact-dropzone-sub">
-                Bill, EOB, lab result, denial letter, discharge packet, or insurance card.
-                Plain text only for now (paste the contents below). Nothing leaves your browser.
-              </p>
-            </div>
-            <div
-              id="artifact-drop-target"
-              class="artifact-drop-target"
-              tabindex="0"
-              role="button"
-              aria-label="Drop a plain-text file or click to choose one"
-            >
-              <p class="artifact-drop-target-text">
-                Drop a text file (.txt, .csv, .md, .json, .log) here, or
-                <button type="button" class="link-btn" id="artifact-pick-btn">choose a file</button>.
-              </p>
-              <p class="artifact-drop-target-hint muted">
-                PDF, DOCX, and image files are not parsed in the browser yet. For now, paste their text below.
-              </p>
-              <label for="artifact-file-input" class="visually-hidden">Choose a plain-text file to analyze</label>
-              <input
-                type="file"
-                id="artifact-file-input"
-                class="visually-hidden"
-                accept=".txt,.text,.log,.csv,.tsv,.md,.markdown,.json,text/*,application/json"
-              />
-            </div>
-            <label for="artifact-paste" class="artifact-paste-label">Or paste text:</label>
-            <textarea
-              id="artifact-paste"
-              class="artifact-paste"
-              rows="4"
-              placeholder="Paste the document text here. Detection runs automatically on paste."
-            ></textarea>
-            <div class="artifact-actions">
-              <button type="button" id="artifact-detect-btn">Detect and open</button>
-              <button type="button" id="artifact-clear-btn">Clear</button>
-            </div>
-            <p id="artifact-result" class="artifact-result" hidden></p>
-            <div id="artifact-chooser" class="artifact-chooser" hidden>
-              <p class="artifact-chooser-label">Pick a decoder:</p>
-              <div id="artifact-chooser-buttons" class="artifact-chooser-buttons"></div>
-            </div>
           </div>
 
           <!-- spec-v6 §4.2.2: audience filter chips. Default All preserves
