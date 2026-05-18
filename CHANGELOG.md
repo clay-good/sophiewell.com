@@ -6,6 +6,44 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v11 wave 3f — renal / electrolyte audits)
+
+- **Wave 3f — renal / electrolyte math (13 tiles).** `anion-gap`,
+  `anion-gap-dd`, `corrected-anion-gap`, `corrected-calcium`,
+  `corrected-sodium`, `corrected-ca-na`, `egfr`, `egfr-suite`,
+  `fena-feurea`, `osmolal-gap`, `winters`, `sodium-correction`,
+  `free-water-deficit` each audited end-to-end per spec-v11 §3.1:
+  citation re-verification (Emmett 1977 + Figge 1998 for AG; Wrenn
+  1990 for delta-delta; Payne 1973 for corrected Ca; Katz 1973 +
+  Hillier 1999 for corrected Na; Inker 2021 for CKD-EPI 2021; Levey
+  1999 for MDRD; Cockcroft-Gault 1976; Espinel 1976 FENa + Carvounis
+  2002 FEUrea; Glasser 1973 + Hoffman 1993 for osmolal gap; Albert-
+  Dell-Winters 1967 for Winters; Adrogue-Madias 2000 NEJM for Na
+  correction and free-water deficit; Sterns 2015 NEJM for the
+  8 / 10-12 mEq/L/24h safety ceilings), three boundary worked examples
+  per tile, cross-implementation differentials all <0.5% (CKD-EPI 2021
+  hand-trace against Inker 2021 Table 2 published worked example;
+  Adrogue-Madias hand-trace against the 2000 NEJM Equation 1),
+  edge-input handling notes (direction-mismatch guards on
+  `sodium-correction`; zero-divisor guards on `anion-gap-dd` and
+  `fena-feurea`; range guards on `free-water-deficit`; sex/age TBW
+  factor crossover at age 65), and an a11y pass.
+- **Two META defects fixed in the same PR per spec-v11 §3.6 #3.**
+  (a) `META.egfr.example.expected` previously read "eGFR ~60
+  mL/min/1.73m^2" for inputs Scr 1.0 / age 60 / sex F; the actual
+  computed value is ~91 (the live tile rendering was always correct;
+  only the META narrative drifted). Corrected to "~91". (b)
+  `META.winters.citation` previously listed "Winter et al. Arch
+  Intern Med 1967;120(2):151-156"; the actual primary publication is
+  Albert MS, Dell RB, Winters RW. Ann Intern Med 1967;66(2):312-322
+  (a common textbook attribution error). Corrected. Live numerical
+  output was unaffected in both cases.
+- **`scripts/audit-coverage.mjs` now reports 46 / 178 (26%) overall**,
+  with `E  Clinical Math & Conversions  13/31 (42%)`,
+  `F  Medication & Infusion  15/15 (100%)`, and
+  `G  Clinical Scoring & Risk  18/47 (38%)`. Wave 3g (OB and
+  pediatrics) is next per spec-v11 §3.3.
+
 ### Added (spec-v11 waves 3d + 3e — cardiology + pulmonary audits)
 
 - **Wave 3d — cardiology scoring (10 tiles).** `chads`, `hasbled`,
