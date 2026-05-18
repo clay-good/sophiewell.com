@@ -6,6 +6,37 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v11 wave 3i — conversions and physical math; Group E to 100%)
+
+- **Wave 3i — conversions and physical math (16 tiles).** `bmi`, `bsa`,
+  `bw-bsa-suite`, `map`, `shock-index`, `aa-gradient`, `pf-ratio`,
+  `aa-pf-suite`, `qtc`, `qtc-suite`, `pack-years`, `unit-converter`,
+  `cockcroft-gault`, `maint-fluids`, `pbw-ardsnet`, `rsbi` each audited
+  end-to-end per spec-v11 §3.1: citation re-verification (Quetelet 1835
+  + WHO BMI bands; Du Bois 1916 + Mosteller 1987 BSA; physiology MAP /
+  PP / Allgower 1967 SI / Liu 2012 mSI; West alveolar gas equation;
+  ARDS Berlin Definition JAMA 2012; Bazett / Fridericia / Sagie /
+  Hodges QTc formulas; USPSTF pack-year convention; NIST SP 811 +
+  Handbook 44 exact unit factors; Cockcroft-Gault Nephron 1976;
+  Holliday-Segar Pediatrics 1957; ARDSnet NEJM 2000 PBW + 6 mL/kg
+  protocol; Yang-Tobin NEJM 1991 RSBI), boundary worked examples per
+  tile (low / mid / high physiologic range; banding-cutoff hits for
+  P/F Berlin bins and RSBI threshold), cross-implementation
+  differentials all 0% delta (hand-computed against the source papers
+  and MDCalc), edge-input handling notes (FiO2 0.01-1.0 validation;
+  divide-by-zero guards on shock-index and Cockcroft-Gault; Holliday-
+  Segar weight-band branching; ARDSnet metric-height convention; QTc
+  formula choice rationale), and an a11y pass on each.
+- **No new META defects in this wave.** Two minor "~" approximations
+  in `bw-bsa-suite` META expected text (~70.5 vs computed 70.7 IBW;
+  ~76.3 vs 76.4 AdjBW) fall within the 0.5% differential budget and
+  the 0.1-kg display precision — recorded in the audit log without
+  filing as defects.
+- **Group E (Clinical Math & Conversions) is now 100% audited.**
+  `scripts/audit-coverage.mjs` reports 75 / 178 (42%) overall, with
+  `E 31/31 (100%)`, `F 15/15 (100%)`, `G 28/47 (60%)`, and
+  `N 1/3 (33%)`. Wave 3j (code lookups) is next per spec-v11 §3.3.
+
 ### Added (spec-v11 wave 3h — psychiatry screener audits)
 
 - **Wave 3h — psychiatry screeners (8 tiles).** `phq9`, `gad7`,
