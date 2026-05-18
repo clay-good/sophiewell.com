@@ -1273,4 +1273,58 @@ export const renderers = {
     document.querySelectorAll('input, select').forEach((n) => n.addEventListener(n.type === 'checkbox' || n.tagName === 'SELECT' ? 'change' : 'input', run));
     run();
   },
+
+  // spec-v12 §3.4.3 wave 12-4: Maddrey DF + Lille Model (alcoholic hepatitis).
+  'maddrey-lille'(root) {
+    root.appendChild(el('h3', { text: 'Maddrey Discriminant Function (Maddrey 1978)' }));
+    const dfFields = [
+      ['Patient PT (sec)', 'ml-pt', '20'],
+      ['Control PT (sec)', 'ml-ctrl', '12'],
+      ['Bilirubin (mg/dL)', 'ml-bili', '10'],
+    ];
+    for (const [l, id, v] of dfFields) {
+      root.appendChild(el('p', {}, [
+        el('label', { for: id, text: l }), el('br'),
+        el('input', { id, type: 'number', step: 'any', value: String(v) }),
+      ]));
+    }
+    root.appendChild(el('h3', { text: 'Lille Model (Louvet 2007; interpret only after >= 7 days of steroids in a DF >= 32 patient)' }));
+    const lilleFields = [
+      ['Age (years)', 'ml-age', '50'],
+      ['Albumin (g/dL)', 'ml-alb', '3.0'],
+      ['Creatinine (mg/dL)', 'ml-cr', '0.9'],
+      ['Bilirubin day 0 (mg/dL)', 'ml-b0', '10'],
+      ['Bilirubin day 7 (mg/dL)', 'ml-b7', '6'],
+      ['Prothrombin time (sec)', 'ml-ptl', '20'],
+    ];
+    for (const [l, id, v] of lilleFields) {
+      root.appendChild(el('p', {}, [
+        el('label', { for: id, text: l }), el('br'),
+        el('input', { id, type: 'number', step: 'any', value: String(v) }),
+      ]));
+    }
+    const o = out(); root.appendChild(o);
+    const run = () => safe(o, () => {
+      const df = S4.maddreyDf({
+        patientPtSec: nv('ml-pt'),
+        controlPtSec: nv('ml-ctrl'),
+        bilirubinMgDl: nv('ml-bili'),
+      });
+      o.appendChild(el('h2', { text: `Maddrey DF: ${df.df.toFixed(1)}` }));
+      o.appendChild(el('p', { text: df.band }));
+      const li = S4.lille({
+        ageYears: nv('ml-age'),
+        albuminGDl: nv('ml-alb'),
+        creatinineMgDl: nv('ml-cr'),
+        bilirubinDay0MgDl: nv('ml-b0'),
+        bilirubinDay7MgDl: nv('ml-b7'),
+        ptSec: nv('ml-ptl'),
+      });
+      o.appendChild(el('h2', { text: `Lille Model: ${li.score.toFixed(3)}` }));
+      o.appendChild(el('p', { text: li.band }));
+      o.appendChild(el('p', { class: 'muted', text: 'Lille is only interpretable in the context of corticosteroid therapy initiated for severe alcoholic hepatitis (Maddrey DF >= 32) per Louvet 2007.' }));
+    });
+    document.querySelectorAll('input').forEach((n) => n.addEventListener('input', run));
+    run();
+  },
 };

@@ -458,4 +458,44 @@ export const renderers = {
     });
     ['pd-lmp', 'pd-crl', 'pd-us'].forEach((id) => document.getElementById(id).addEventListener('input', run));
   },
+
+  // spec-v12 §3.4.1 wave 12-4: FIB-4 Index (Sterling 2006).
+  fib4(root) {
+    root.appendChild(field('Age (years)', 'fib4-age', { value: 55 }));
+    root.appendChild(field('AST (U/L)', 'fib4-ast', { value: 60 }));
+    root.appendChild(field('ALT (U/L)', 'fib4-alt', { value: 40 }));
+    root.appendChild(field('Platelets (x10^9/L)', 'fib4-plt', { value: 150 }));
+    const o = out(); root.appendChild(o);
+    const run = () => safe(o, () => {
+      const r = V4.fib4({
+        ageYears: num('fib4-age'),
+        ast: num('fib4-ast'),
+        alt: num('fib4-alt'),
+        plateletsK: num('fib4-plt'),
+      });
+      o.appendChild(el('p', { text: `FIB-4: ${r.score.toFixed(2)}` }));
+      o.appendChild(el('p', { text: r.band }));
+    });
+    ['fib4-age', 'fib4-ast', 'fib4-alt', 'fib4-plt'].forEach((id) => document.getElementById(id).addEventListener('input', run));
+    run();
+  },
+
+  // spec-v12 §3.4.2 wave 12-4: APRI (Wai 2003).
+  apri(root) {
+    root.appendChild(field('AST (U/L)', 'apri-ast', { value: 60 }));
+    root.appendChild(field('AST upper limit of normal (U/L)', 'apri-uln', { value: 40 }));
+    root.appendChild(field('Platelets (x10^9/L)', 'apri-plt', { value: 150 }));
+    const o = out(); root.appendChild(o);
+    const run = () => safe(o, () => {
+      const r = V4.apri({
+        ast: num('apri-ast'),
+        astUln: num('apri-uln'),
+        plateletsK: num('apri-plt'),
+      });
+      o.appendChild(el('p', { text: `APRI: ${r.score.toFixed(2)}` }));
+      o.appendChild(el('p', { text: r.band }));
+    });
+    ['apri-ast', 'apri-uln', 'apri-plt'].forEach((id) => document.getElementById(id).addEventListener('input', run));
+    run();
+  },
 };

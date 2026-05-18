@@ -6,6 +6,42 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v12 wave 12-4 — hepatology & liver-fibrosis bundle: FIB-4, APRI, Maddrey-Lille)
+
+- **`fib4` — FIB-4 Index for Liver Fibrosis** (Sterling RK, et al.
+  *Development of a simple noninvasive index to predict significant
+  fibrosis in patients with HIV/HCV coinfection.* Hepatology. 2006;
+  43(6):1317-1325). Four inputs (age, AST, ALT, platelets); formula
+  FIB-4 = (age * AST) / (platelets * sqrt(ALT)). Sterling 2006
+  cutoffs: <1.45 rules out advanced fibrosis (NPV 90%); >3.25 rules
+  in advanced fibrosis (PPV 65%); 1.45-3.25 indeterminate. Audit
+  log: [docs/audits/v11/fib4.md](docs/audits/v11/fib4.md). Worked
+  examples in [test/unit/fib4.test.js](test/unit/fib4.test.js).
+- **`apri` — AST to Platelet Ratio Index** (Wai CT, et al. *A
+  simple noninvasive index can predict both significant fibrosis
+  and cirrhosis in patients with chronic hepatitis C.* Hepatology.
+  2003;38(2):518-526). Three inputs (AST, AST upper limit of
+  normal, platelets); formula APRI = ((AST / AST_ULN) * 100) /
+  platelets. Wai 2003 cutoffs: >0.7 predicts significant fibrosis;
+  >1.0 predicts cirrhosis (WHO 2014 HCV guideline endorses these
+  cutoffs for resource-limited settings). Audit log:
+  [docs/audits/v11/apri.md](docs/audits/v11/apri.md). Worked
+  examples in [test/unit/apri.test.js](test/unit/apri.test.js).
+- **`maddrey-lille` — Maddrey DF + Lille Model (alcoholic
+  hepatitis)** (Maddrey WC, et al. *Corticosteroid therapy of
+  alcoholic hepatitis.* Gastroenterology. 1978;75(2):193-199;
+  Louvet A, et al. *The Lille model: a new tool for therapeutic
+  strategy in patients with severe alcoholic hepatitis treated
+  with steroids.* Hepatology. 2007;45(6):1348-1354). Combined
+  card: Maddrey DF = 4.6 * (patient PT - control PT) + bilirubin
+  with the Maddrey 1978 DF >= 32 severe-disease cutoff; Lille
+  computed in SI units internally per the Louvet 2007 equation
+  with the 0.45 non-response cutoff (6-month survival ~25% vs
+  ~85%). Audit log:
+  [docs/audits/v11/maddrey-lille.md](docs/audits/v11/maddrey-lille.md).
+  Worked examples in
+  [test/unit/maddrey-lille.test.js](test/unit/maddrey-lille.test.js).
+
 ### Added (spec-v12 wave 12-3 — upper & lower GI-bleeding bundle: GBS, Rockall, AIMS65, Oakland)
 
 - **`gbs` — Glasgow-Blatchford Bleeding Score** (Blatchford O, et
