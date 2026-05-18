@@ -69,7 +69,7 @@
           "@id": "https://sophiewell.com/#webapp",
           "name": "sophiewell",
           "url": "https://sophiewell.com/",
-          "description": "Free, client-side healthcare toolbox with 183 deterministic utilities for patients, billers, coders, nurses, clinicians, EMS, and educators.",
+          "description": "Free, client-side healthcare toolbox with 187 deterministic utilities for patients, billers, coders, nurses, clinicians, EMS, and educators.",
           "applicationCategory": [
             "HealthApplication",
             "MedicalApplication",
@@ -275,6 +275,10 @@
             "PESI (Pulmonary Embolism Severity Index)",
             "sPESI (Simplified PESI)",
             "Padua Prediction Score (VTE risk in medical inpatients)",
+            "Glasgow-Blatchford Bleeding Score",
+            "Rockall Score (upper GI bleeding)",
+            "AIMS65 Score (upper GI bleeding mortality)",
+            "Oakland Score (lower GI bleeding safe discharge)",
             "Lab Result Interpreter"
           ],
           "softwareHelp": {
@@ -968,6 +972,22 @@
                 <button class="tool-card" type="button" data-tool="padua" data-group="G" data-audiences="clinicians educators">
                   <span class="tc-title">Padua Prediction Score</span>
                   <span class="tc-desc">Barbar 2010 weighted 11-item model; &gt;=4 is high risk for VTE in medical inpatients.</span>
+                </button>
+                <button class="tool-card" type="button" data-tool="gbs" data-group="G" data-audiences="clinicians educators">
+                  <span class="tc-title">Glasgow-Blatchford Bleeding Score</span>
+                  <span class="tc-desc">Blatchford 2000 score for upper GI bleeding; 0 = outpatient-eligible (NICE CG141 endorsement).</span>
+                </button>
+                <button class="tool-card" type="button" data-tool="rockall" data-group="G" data-audiences="clinicians educators">
+                  <span class="tc-title">Rockall Score (upper GI bleeding)</span>
+                  <span class="tc-desc">Rockall 1996 complete (post-endoscopy) score with optional pre-endoscopy variant.</span>
+                </button>
+                <button class="tool-card" type="button" data-tool="aims65" data-group="G" data-audiences="clinicians educators">
+                  <span class="tc-title">AIMS65 Score</span>
+                  <span class="tc-desc">Saltzman 2011 five-criterion score for in-hospital mortality in upper GI bleeding.</span>
+                </button>
+                <button class="tool-card" type="button" data-tool="oakland" data-group="G" data-audiences="clinicians educators">
+                  <span class="tc-title">Oakland Score (lower GI bleeding)</span>
+                  <span class="tc-desc">Oakland 2017 safe-discharge model; &lt;=8 = outpatient-eligible (BSG 2019 endorsement).</span>
                 </button>
                 <button class="tool-card" type="button" data-tool="asa" data-group="G" data-audiences="clinicians educators">
                   <span class="tc-title">ASA Physical Status Reference</span>

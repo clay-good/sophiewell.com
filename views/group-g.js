@@ -1119,4 +1119,158 @@ export const renderers = {
     document.querySelectorAll('input, select').forEach((n) => n.addEventListener(n.type === 'checkbox' || n.tagName === 'SELECT' ? 'change' : 'input', run));
     run();
   },
+
+  // spec-v12 §3.3.1: Glasgow-Blatchford (Blatchford 2000).
+  gbs(root) {
+    const numFields = [
+      ['BUN (mg/dL)', 'gb-bun', '14'],
+      ['Hemoglobin (g/dL)', 'gb-hgb', '15'],
+      ['Systolic BP (mmHg)', 'gb-sbp', '120'],
+    ];
+    for (const [l, id, v] of numFields) {
+      root.appendChild(el('p', {}, [
+        el('label', { for: id, text: l }), el('br'),
+        el('input', { id, type: 'number', step: 'any', value: String(v) }),
+      ]));
+    }
+    root.appendChild(el('p', {}, [
+      el('label', { for: 'gb-sex', text: 'Sex (Blatchford 2000 Table 1 weights hemoglobin separately)' }), el('br'),
+      el('select', { id: 'gb-sex' }, [
+        el('option', { value: 'M', text: 'M' }),
+        el('option', { value: 'F', text: 'F' }),
+      ]),
+    ]));
+    const items = [
+      ['Pulse >= 100', 'gb-pulse'],
+      ['Melena', 'gb-mel'],
+      ['Recent syncope', 'gb-syn'],
+      ['Hepatic disease', 'gb-hep'],
+      ['Cardiac failure', 'gb-cf'],
+    ];
+    for (const [l, id] of items) root.appendChild(checkbox(l, id));
+    const o = out(); root.appendChild(o);
+    const run = () => safe(o, () => {
+      const r = S4.gbs({
+        bunMgDl: nv('gb-bun'),
+        hgbGdl: nv('gb-hgb'),
+        sex: document.getElementById('gb-sex').value,
+        sbp: nv('gb-sbp'),
+        pulse100: checked('gb-pulse'),
+        melena: checked('gb-mel'),
+        syncope: checked('gb-syn'),
+        hepaticDisease: checked('gb-hep'),
+        cardiacFailure: checked('gb-cf'),
+      });
+      o.appendChild(el('h2', { text: `GBS ${r.score}` }));
+      o.appendChild(el('p', { text: r.band }));
+      const p = r.parts;
+      o.appendChild(el('p', { class: 'muted',
+        text: `Per-parameter: BUN ${p.bun}, hemoglobin ${p.hgb}, SBP ${p.sbp}, pulse ${p.pulse}, melena ${p.melena}, syncope ${p.syncope}, hepatic disease ${p.hepaticDisease}, cardiac failure ${p.cardiacFailure}.` }));
+    });
+    document.querySelectorAll('input, select').forEach((n) => n.addEventListener(n.type === 'checkbox' || n.tagName === 'SELECT' ? 'change' : 'input', run));
+    run();
+  },
+
+  // spec-v12 §3.3.2: Rockall (Rockall 1996).
+  rockall(root) {
+    const selects = [
+      ['Age band', 'rk-age', [['0', '<60'], ['1', '60-79'], ['2', '>=80']]],
+      ['Shock', 'rk-shock', [['0', 'None'], ['1', 'Tachycardia (HR>=100, SBP>=100)'], ['2', 'Hypotension (SBP<100)']]],
+      ['Comorbidity', 'rk-co', [['0', 'None'], ['2', 'CHF / IHD / major morbidity'], ['3', 'Renal or hepatic failure, or metastatic CA']]],
+      ['Endoscopic diagnosis (post-endoscopy only)', 'rk-dx', [['0', 'Mallory-Weiss or no lesion'], ['1', 'All other diagnoses'], ['2', 'Upper GI malignancy']]],
+      ['Stigmata of recent hemorrhage (post-endoscopy only)', 'rk-stig', [['0', 'Clean base or dark spot'], ['2', 'Blood, adherent clot, or visible/spurting vessel']]],
+    ];
+    for (const [l, id, opts] of selects) {
+      root.appendChild(el('p', {}, [
+        el('label', { for: id, text: l }), el('br'),
+        el('select', { id }, opts.map(([v, t]) => el('option', { value: v, text: t }))),
+      ]));
+    }
+    root.appendChild(checkbox('Use pre-endoscopy variant (Vreeburg 1999 / NICE CG141; omits endoscopic dx and stigmata)', 'rk-pre'));
+    const o = out(); root.appendChild(o);
+    const run = () => safe(o, () => {
+      const r = S4.rockall({
+        ageBand: nv('rk-age'),
+        shock: nv('rk-shock'),
+        comorbidity: nv('rk-co'),
+        endoscopicDx: nv('rk-dx'),
+        stigmata: nv('rk-stig'),
+        preEndoscopy: checked('rk-pre'),
+      });
+      o.appendChild(el('h2', { text: `${r.preEndoscopy ? 'Pre-endoscopy' : 'Complete'} Rockall: ${r.score}` }));
+      o.appendChild(el('p', { text: r.band }));
+    });
+    document.querySelectorAll('input, select').forEach((n) => n.addEventListener(n.type === 'checkbox' || n.tagName === 'SELECT' ? 'change' : 'input', run));
+    run();
+  },
+
+  // spec-v12 §3.3.3: AIMS65 (Saltzman 2011).
+  aims65(root) {
+    const items = [
+      ['Albumin < 3.0 g/dL (A)', 'am-alb'],
+      ['INR > 1.5 (I)', 'am-inr'],
+      ['Altered mental status (M)', 'am-am'],
+      ['SBP <= 90 mmHg (S)', 'am-sbp'],
+      ['Age > 65 (65)', 'am-age'],
+    ];
+    for (const [l, id] of items) root.appendChild(checkbox(l, id));
+    const o = out(); root.appendChild(o);
+    const run = () => safe(o, () => {
+      const r = S4.aims65({
+        albuminLt3: checked('am-alb'),
+        inrGt15: checked('am-inr'),
+        alteredMental: checked('am-am'),
+        sbpLe90: checked('am-sbp'),
+        ageGt65: checked('am-age'),
+      });
+      o.appendChild(el('h2', { text: `AIMS65 ${r.score}` }));
+      o.appendChild(el('p', { text: r.band }));
+    });
+    items.forEach(([, id]) => document.getElementById(id).addEventListener('change', run));
+    run();
+  },
+
+  // spec-v12 §3.3.4: Oakland Score (Oakland 2017).
+  oakland(root) {
+    const numFields = [
+      ['Age (years)', 'ok-age', '50'],
+      ['Pulse (beats/min)', 'ok-hr', '78'],
+      ['Systolic BP (mmHg)', 'ok-sbp', '130'],
+      ['Hemoglobin (g/dL)', 'ok-hgb', '14'],
+    ];
+    for (const [l, id, v] of numFields) {
+      root.appendChild(el('p', {}, [
+        el('label', { for: id, text: l }), el('br'),
+        el('input', { id, type: 'number', step: 'any', value: String(v) }),
+      ]));
+    }
+    root.appendChild(el('p', {}, [
+      el('label', { for: 'ok-sex', text: 'Sex' }), el('br'),
+      el('select', { id: 'ok-sex' }, [
+        el('option', { value: 'F', text: 'F' }),
+        el('option', { value: 'M', text: 'M' }),
+      ]),
+    ]));
+    root.appendChild(checkbox('Previous LGIB admission', 'ok-prior'));
+    root.appendChild(checkbox('Blood on digital rectal examination', 'ok-dre'));
+    const o = out(); root.appendChild(o);
+    const run = () => safe(o, () => {
+      const r = S4.oakland({
+        age: nv('ok-age'),
+        sex: document.getElementById('ok-sex').value,
+        priorLgibAdmission: checked('ok-prior'),
+        dreBlood: checked('ok-dre'),
+        hr: nv('ok-hr'),
+        sbp: nv('ok-sbp'),
+        hgbGdl: nv('ok-hgb'),
+      });
+      o.appendChild(el('h2', { text: `Oakland ${r.score}` }));
+      o.appendChild(el('p', { text: r.band }));
+      const p = r.parts;
+      o.appendChild(el('p', { class: 'muted',
+        text: `Per-parameter: age ${p.age}, sex ${p.sex}, prior LGIB ${p.priorLgibAdmission}, DRE blood ${p.dreBlood}, HR ${p.hr}, SBP ${p.sbp}, hemoglobin ${p.hgb}.` }));
+    });
+    document.querySelectorAll('input, select').forEach((n) => n.addEventListener(n.type === 'checkbox' || n.tagName === 'SELECT' ? 'change' : 'input', run));
+    run();
+  },
 };

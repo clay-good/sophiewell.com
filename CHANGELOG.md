@@ -6,6 +6,46 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v12 wave 12-3 — upper & lower GI-bleeding bundle: GBS, Rockall, AIMS65, Oakland)
+
+- **`gbs` — Glasgow-Blatchford Bleeding Score** (Blatchford O, et
+  al. *A risk score to predict need for treatment for upper-
+  gastrointestinal haemorrhage.* Lancet. 2000;356(9238):1318-1321).
+  Eight inputs (BUN in mg/dL, hemoglobin in g/dL with sex-specific
+  Blatchford 2000 Table 1 bands, SBP, pulse >= 100, melena, recent
+  syncope, hepatic disease, cardiac failure). GBS = 0 is the
+  outpatient-management cutoff per Blatchford 2000 §Results,
+  endorsed by NICE CG141 (2012). Audit log:
+  [docs/audits/v11/gbs.md](docs/audits/v11/gbs.md). Worked
+  examples in [test/unit/gbs.test.js](test/unit/gbs.test.js).
+- **`rockall` — Rockall Score** (Rockall TA, et al. *Risk
+  assessment after acute upper gastrointestinal haemorrhage.* Gut.
+  1996;38(3):316-321). Complete (post-endoscopy) five-parameter
+  score (range 0-11) with mortality bands quoted from Rockall 1996
+  Figure 2; a `preEndoscopy` toggle exposes the Vreeburg 1999 /
+  NICE CG141 variant (omits endoscopic diagnosis and stigmata;
+  range 0-7). Audit log:
+  [docs/audits/v11/rockall.md](docs/audits/v11/rockall.md). Worked
+  examples in [test/unit/rockall.test.js](test/unit/rockall.test.js).
+- **`aims65` — AIMS65 Score** (Saltzman JR, et al. *A simple risk
+  score accurately predicts in-hospital mortality, length of stay,
+  and cost in acute upper GI bleeding.* Gastrointest Endosc. 2011;
+  74(6):1215-1224). Five binary criteria with the Saltzman 2011
+  Table 4 six-band in-hospital mortality split (0.3% / 1.2% / 5.3%
+  / 10.3% / 16.5% / 24.5%). Audit log:
+  [docs/audits/v11/aims65.md](docs/audits/v11/aims65.md). Worked
+  examples in [test/unit/aims65.test.js](test/unit/aims65.test.js).
+- **`oakland` — Oakland Score** (Oakland K, et al. *Derivation
+  and validation of a novel risk score for safe discharge after
+  acute lower gastrointestinal bleeding: a modelling study.* Lancet
+  Gastroenterol Hepatol. 2017;2(9):635-643). Seven-parameter
+  weighted model (range 0-35); <= 8 is the safe-discharge cutoff
+  (95% probability of safe discharge per Oakland 2017; endorsed by
+  BSG 2019). Hemoglobin is entered in g/dL and converted to g/L
+  internally to apply the Oakland 2017 Table 2 bands. Audit log:
+  [docs/audits/v11/oakland.md](docs/audits/v11/oakland.md). Worked
+  examples in [test/unit/oakland.test.js](test/unit/oakland.test.js).
+
 ### Added (spec-v12 wave 12-2 — VTE risk & severity bundle: PESI, sPESI, Padua)
 
 - **`pesi` — Pulmonary Embolism Severity Index** (Aujesky D, et al.
