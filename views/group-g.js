@@ -920,4 +920,90 @@ export const renderers = {
     document.querySelectorAll('input, select').forEach((n) => n.addEventListener(n.type === 'checkbox' || n.tagName === 'SELECT' ? 'change' : 'input', run));
     run();
   },
+
+  // spec-v12 §3.1.1: NEWS2 (Royal College of Physicians, 2017).
+  news2(root) {
+    const numFields = [
+      ['Respiratory rate (breaths/min)', 'n2-rr', '14'],
+      ['SpO2 (%)', 'n2-spo2', '98'],
+      ['Systolic BP (mmHg)', 'n2-sbp', '124'],
+      ['Pulse (beats/min)', 'n2-pulse', '78'],
+      ['Temperature (°C)', 'n2-temp', '37.0'],
+    ];
+    for (const [l, id, v] of numFields) {
+      root.appendChild(el('p', {}, [
+        el('label', { for: id, text: l }), el('br'),
+        el('input', { id, type: 'number', step: 'any', value: String(v) }),
+      ]));
+    }
+    root.appendChild(checkbox('Use Scale 2 (hypercapnic / chronic Type II respiratory failure) per RCP 2017 §3.4', 'n2-scale2'));
+    root.appendChild(checkbox('On supplemental oxygen', 'n2-o2'));
+    root.appendChild(el('p', {}, [
+      el('label', { for: 'n2-acvpu', text: 'Consciousness (ACVPU)' }), el('br'),
+      el('select', { id: 'n2-acvpu' }, [
+        el('option', { value: 'A', text: 'A - Alert' }),
+        el('option', { value: 'C', text: 'C - new Confusion' }),
+        el('option', { value: 'V', text: 'V - responds to Voice' }),
+        el('option', { value: 'P', text: 'P - responds to Pain' }),
+        el('option', { value: 'U', text: 'U - Unresponsive' }),
+      ]),
+    ]));
+    const o = out(); root.appendChild(o);
+    const run = () => safe(o, () => {
+      const r = S4.news2({
+        rr: nv('n2-rr'), spo2: nv('n2-spo2'),
+        scale2: checked('n2-scale2'), onO2: checked('n2-o2'),
+        sbp: nv('n2-sbp'), pulse: nv('n2-pulse'),
+        acvpu: document.getElementById('n2-acvpu').value,
+        temp: nv('n2-temp'),
+      });
+      o.appendChild(el('h2', { text: `NEWS2 ${r.score}` }));
+      o.appendChild(el('p', { text: r.band }));
+      const p = r.parts;
+      o.appendChild(el('p', { class: 'muted',
+        text: `Per-parameter: RR ${p.rr}, SpO2 ${p.spo2}, supplemental O2 ${p.supplementalO2}, SBP ${p.sbp}, pulse ${p.pulse}, consciousness ${p.consciousness}, temperature ${p.temp}.` }));
+    });
+    document.querySelectorAll('input, select').forEach((n) => n.addEventListener(n.type === 'checkbox' || n.tagName === 'SELECT' ? 'change' : 'input', run));
+    run();
+  },
+
+  // spec-v12 §3.1.2: MEWS (Subbe et al. QJM 2001).
+  mews(root) {
+    const numFields = [
+      ['Systolic BP (mmHg)', 'me-sbp', '120'],
+      ['Pulse (beats/min)', 'me-pulse', '78'],
+      ['Respiratory rate (breaths/min)', 'me-rr', '14'],
+      ['Temperature (°C)', 'me-temp', '37.0'],
+    ];
+    for (const [l, id, v] of numFields) {
+      root.appendChild(el('p', {}, [
+        el('label', { for: id, text: l }), el('br'),
+        el('input', { id, type: 'number', step: 'any', value: String(v) }),
+      ]));
+    }
+    root.appendChild(el('p', {}, [
+      el('label', { for: 'me-avpu', text: 'Consciousness (AVPU)' }), el('br'),
+      el('select', { id: 'me-avpu' }, [
+        el('option', { value: 'A', text: 'A - Alert' }),
+        el('option', { value: 'V', text: 'V - responds to Voice' }),
+        el('option', { value: 'P', text: 'P - responds to Pain' }),
+        el('option', { value: 'U', text: 'U - Unresponsive' }),
+      ]),
+    ]));
+    const o = out(); root.appendChild(o);
+    const run = () => safe(o, () => {
+      const r = S4.mews({
+        sbp: nv('me-sbp'), pulse: nv('me-pulse'),
+        rr: nv('me-rr'), temp: nv('me-temp'),
+        avpu: document.getElementById('me-avpu').value,
+      });
+      o.appendChild(el('h2', { text: `MEWS ${r.score}` }));
+      o.appendChild(el('p', { text: r.band }));
+      const p = r.parts;
+      o.appendChild(el('p', { class: 'muted',
+        text: `Per-parameter: SBP ${p.sbp}, pulse ${p.pulse}, RR ${p.rr}, temperature ${p.temp}, AVPU ${p.avpu}.` }));
+    });
+    document.querySelectorAll('input, select').forEach((n) => n.addEventListener(n.type === 'checkbox' || n.tagName === 'SELECT' ? 'change' : 'input', run));
+    run();
+  },
 };

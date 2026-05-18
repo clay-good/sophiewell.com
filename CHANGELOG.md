@@ -6,6 +6,31 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v12 wave 12-1 — early-warning bundle: NEWS2 + MEWS)
+
+- **`news2` — National Early Warning Score 2** (Royal College of
+  Physicians. *NEWS 2: Standardising the assessment of acute-illness
+  severity in the NHS.* London: RCP, 2017). Eight inputs (respiratory
+  rate, SpO2 with Scale 1 vs Scale 2 toggle per RCP 2017 §3.4,
+  supplemental-oxygen flag, systolic BP, pulse, ACVPU consciousness,
+  temperature). Per-parameter trace plus the RCP 2017 Table 2
+  clinical-response trigger band (Low / Low-medium / Medium / High);
+  a single parameter scoring 3 flips Low-medium aggregates to Medium
+  per the source. Audit log:
+  [docs/audits/v11/news2.md](docs/audits/v11/news2.md). Worked
+  example (low edge of input + spec-v12 §3.1.1 mid + high edge)
+  asserted in [test/unit/news2.test.js](test/unit/news2.test.js).
+- **`mews` — Modified Early Warning Score** (Subbe CP, et al.
+  *Validation of a modified Early Warning Score in medical
+  admissions.* QJM. 2001;94(10):521-526). Five inputs (SBP, pulse,
+  RR, temperature, AVPU). Per-parameter trace plus the Subbe 2001
+  Table 2 four-band outcome split (0-2 / 3 / 4 / >=5). MEWS predates
+  NEWS2 and omits SpO2 / supplemental-oxygen scoring; both tiles
+  ship side by side so sites that have not converted from MEWS to
+  NEWS2 still see their instrument. Audit log:
+  [docs/audits/v11/mews.md](docs/audits/v11/mews.md). Worked
+  examples in [test/unit/mews.test.js](test/unit/mews.test.js).
+
 ### Removed (clinical-staff-first pivot — patient-artifact dropzone UI retired)
 
 - **The home-view artifact dropzone UI is gone.** spec-v7 §3.1's
