@@ -6,6 +6,37 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v11 wave 3h — psychiatry screener audits)
+
+- **Wave 3h — psychiatry screeners (8 tiles).** `phq9`, `gad7`,
+  `auditc`, `cage`, `epds`, `mini-cog`, `ciwa`, `cows` each audited
+  end-to-end per spec-v11 §3.1: citation re-verification (Kroenke 2001
+  PHQ-9; Spitzer 2006 GAD-7; Bush 1998 AUDIT-C with VA/DoD 2015 CPG
+  sex-specific cutoffs; Ewing 1984 CAGE; Cox 1987 EPDS; Borson 2000
+  Mini-Cog; Sullivan 1989 CIWA-Ar; Wesson 2003 COWS with SAMHSA TIP 63
+  scoring sheet), boundary worked examples per tile (zero / mid / each
+  banding cutoff / max), cross-implementation differentials against
+  the source tables (all 0 delta), edge-input handling notes (PHQ-9
+  item 9 and EPDS item 10 self-harm flag commentary; CAGE >=2 cutoff
+  faithfulness to Ewing 1984; AUDIT-C sex-specific cutoff conveyed
+  in band-label copy rather than via a sex input; CIWA-Ar bedside
+  clamping rather than throwing; COWS per-item caller-pre-grading
+  workflow), and an a11y pass on each.
+- **One META defect fixed in the same PR per spec-v11 §3.6 #3.**
+  `META.ciwa.example.expected` previously read "CIWA-Ar 10 (mild
+  withdrawal; ...)"; the example inputs sum to 10 which lands in the
+  Moderate (8-15) band per Sullivan 1989 — Mild is <8 per the source
+  and per Sophie's banding. Corrected to "CIWA-Ar 10 (moderate
+  withdrawal, 8-15 band; symptom-triggered protocol typically considers
+  active treatment)." Live tile rendering was always correct; only the
+  documented narrative drifted.
+- **`scripts/audit-coverage.mjs` now reports 59 / 178 (33%) overall**,
+  with `E  Clinical Math & Conversions  15/31 (48%)`,
+  `F  Medication & Infusion  15/15 (100%)`,
+  `G  Clinical Scoring & Risk  28/47 (60%)`, and
+  `N  Pediatrics & Neonatal  1/3 (33%)`. Wave 3i (conversions and
+  physical math) is next per spec-v11 §3.3.
+
 ### Added (spec-v11 wave 3g — OB and pediatrics audits)
 
 - **Wave 3g — OB and pediatrics (5 tiles).** `bishop`, `apgar`,
