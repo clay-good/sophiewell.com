@@ -6,6 +6,55 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v12 wave 12-5 — imaging-decision bundle: Canadian CT Head, Canadian C-Spine, PECARN Pediatric Head, Ottawa Ankle, Ottawa SAH)
+
+- **`cthr` — Canadian CT Head Rule** (Stiell IG, et al. *The
+  Canadian CT Head Rule for patients with minor head injury.*
+  Lancet. 2001;357(9266):1391-1396). Five high-risk and two
+  medium-risk criteria per Stiell 2001 Figure 2; rule applies to
+  GCS 13-15 blunt head injury with witnessed LOC, definite amnesia,
+  or witnessed disorientation. Audit log:
+  [docs/audits/v11/cthr.md](docs/audits/v11/cthr.md). Worked
+  examples in [test/unit/cthr.test.js](test/unit/cthr.test.js).
+- **`ccsr` — Canadian C-Spine Rule** (Stiell IG, et al. *The
+  Canadian C-Spine Rule for radiography in alert and stable
+  trauma patients.* JAMA. 2001;286(15):1841-1848). Three-step
+  algorithm per Stiell 2001 Figure 1; ships side by side with the
+  existing `nexus-cspine` tile so both rules' recommendations are
+  visible on the same screen. Audit log:
+  [docs/audits/v11/ccsr.md](docs/audits/v11/ccsr.md). Worked
+  examples in [test/unit/ccsr.test.js](test/unit/ccsr.test.js).
+- **`pecarn-head` — PECARN Pediatric Head Injury Rule**
+  (Kuppermann N, et al. *Identification of children at very low
+  risk of clinically-important brain injuries after head trauma:
+  a prospective cohort study.* Lancet. 2009;374(9696):1160-1170).
+  Two age-banded algorithms (Kuppermann 2009 Figures 2 and 3)
+  returning one of three ciTBI risk tiers (very-low / intermediate
+  / high). Audit log:
+  [docs/audits/v11/pecarn-head.md](docs/audits/v11/pecarn-head.md).
+  Worked examples in
+  [test/unit/pecarn-head.test.js](test/unit/pecarn-head.test.js).
+- **`ottawa-ankle` — Ottawa Ankle Rules** (Stiell IG, et al. *A
+  study to develop clinical decision rules for the use of
+  radiography in acute ankle injuries.* Ann Emerg Med. 1992;
+  21(4):384-390). Stiell 1992 Figure 1 algorithm; separate
+  malleolar-zone (ankle x-ray) and midfoot-zone (foot x-ray)
+  decisions. Rule for patients >= 18; pediatric variant
+  (Plint 1999) deferred to a future spec. Audit log:
+  [docs/audits/v11/ottawa-ankle.md](docs/audits/v11/ottawa-ankle.md).
+  Worked examples in
+  [test/unit/ottawa-ankle.test.js](test/unit/ottawa-ankle.test.js).
+- **`ottawa-sah` — Ottawa Subarachnoid Hemorrhage Rule** (Perry
+  JJ, et al. *Clinical decision rules to rule out subarachnoid
+  hemorrhage for acute headache.* JAMA. 2013;310(12):1248-1255).
+  Six-criterion decision rule per Perry 2013 Figure 2 with the
+  §Methods exclusion-criteria pre-screen (new neurologic deficit,
+  prior aneurysm / SAH / brain tumor, recurrent identical-pattern
+  headaches, age <15). Audit log:
+  [docs/audits/v11/ottawa-sah.md](docs/audits/v11/ottawa-sah.md).
+  Worked examples in
+  [test/unit/ottawa-sah.test.js](test/unit/ottawa-sah.test.js).
+
 ### Added (spec-v12 wave 12-4 — hepatology & liver-fibrosis bundle: FIB-4, APRI, Maddrey-Lille)
 
 - **`fib4` — FIB-4 Index for Liver Fibrosis** (Sterling RK, et al.

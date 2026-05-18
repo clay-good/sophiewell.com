@@ -1327,4 +1327,194 @@ export const renderers = {
     document.querySelectorAll('input').forEach((n) => n.addEventListener('input', run));
     run();
   },
+
+  // spec-v12 §3.5.1 wave 12-5: Canadian CT Head Rule (Stiell 2001).
+  cthr(root) {
+    root.appendChild(el('p', { class: 'muted', text: 'Apply only to GCS 13-15 blunt head injury with witnessed LOC, definite amnesia, or witnessed disorientation (Stiell 2001 §Methods).' }));
+    root.appendChild(el('h3', { text: 'High-risk criteria (neurosurgical-intervention concern)' }));
+    const high = [
+      ['GCS < 15 at 2 hours post-injury', 'ct-h1'],
+      ['Suspected open or depressed skull fracture', 'ct-h2'],
+      ['Any sign of basal skull fracture', 'ct-h3'],
+      ['Vomiting >= 2 episodes', 'ct-h4'],
+      ['Age >= 65', 'ct-h5'],
+    ];
+    for (const [l, id] of high) root.appendChild(checkbox(l, id));
+    root.appendChild(el('h3', { text: 'Medium-risk criteria (clinically important brain injury concern)' }));
+    const medium = [
+      ['Retrograde amnesia >= 30 minutes', 'ct-m1'],
+      ['Dangerous mechanism (pedestrian struck, ejection, fall > 3 feet / 5 stairs)', 'ct-m2'],
+    ];
+    for (const [l, id] of medium) root.appendChild(checkbox(l, id));
+    const o = out(); root.appendChild(o);
+    const run = () => safe(o, () => {
+      const anyHigh = high.some(([, id]) => checked(id));
+      const anyMedium = medium.some(([, id]) => checked(id));
+      const r = S4.cthr({ highRisk: anyHigh, mediumRisk: anyMedium });
+      o.appendChild(el('h2', { text: r.ctRecommended ? 'CT recommended' : 'CT not required' }));
+      o.appendChild(el('p', { text: r.band }));
+    });
+    [...high, ...medium].forEach(([, id]) => document.getElementById(id).addEventListener('change', run));
+    run();
+  },
+
+  // spec-v12 §3.5.2 wave 12-5: Canadian C-Spine Rule (Stiell 2001).
+  ccsr(root) {
+    root.appendChild(el('p', { class: 'muted', text: 'Apply only to alert (GCS 15) stable trauma patients with neck pain or visible injury above the clavicles, non-ambulatory, or with dangerous mechanism (Stiell 2001 §Methods). Ships side by side with the existing NEXUS + Canadian C-Spine tile.' }));
+    root.appendChild(el('h3', { text: 'Step 1: any high-risk factor? (yes -> image)' }));
+    const high = [
+      ['Age >= 65', 'cs-h1'],
+      ['Dangerous mechanism (fall >= 1 m / 5 stairs, axial load, MVC >100 kph or rollover/ejection, motorized recreational vehicle, bicycle collision)', 'cs-h2'],
+      ['Paresthesias in extremities', 'cs-h3'],
+    ];
+    for (const [l, id] of high) root.appendChild(checkbox(l, id));
+    root.appendChild(el('h3', { text: 'Step 2: any low-risk factor that allows safe range-of-motion assessment?' }));
+    const low = [
+      ['Simple rear-end MVC', 'cs-l1'],
+      ['Sitting position in ED', 'cs-l2'],
+      ['Ambulatory at any time', 'cs-l3'],
+      ['Delayed onset of neck pain', 'cs-l4'],
+      ['Absence of midline c-spine tenderness', 'cs-l5'],
+    ];
+    for (const [l, id] of low) root.appendChild(checkbox(l, id));
+    root.appendChild(el('h3', { text: 'Step 3: range of motion' }));
+    root.appendChild(checkbox('Able to actively rotate neck 45 degrees left and right', 'cs-rot'));
+    const o = out(); root.appendChild(o);
+    const run = () => safe(o, () => {
+      const anyHigh = high.some(([, id]) => checked(id));
+      const anyLow = low.some(([, id]) => checked(id));
+      const canRotate = checked('cs-rot');
+      const r = S4.ccsr({ highRisk: anyHigh, lowRisk: anyLow, canRotate45: canRotate });
+      o.appendChild(el('h2', { text: r.imagingRecommended ? 'Imaging recommended' : 'Imaging not required' }));
+      o.appendChild(el('p', { text: r.band }));
+    });
+    [...high, ...low, ['', 'cs-rot']].forEach(([, id]) => document.getElementById(id).addEventListener('change', run));
+    run();
+  },
+
+  // spec-v12 §3.5.3 wave 12-5: PECARN Pediatric Head Injury Rule (Kuppermann 2009).
+  'pecarn-head'(root) {
+    root.appendChild(el('p', { class: 'muted', text: 'Two branches by age. Apply to children <18 with GCS 14-15 within 24 hours of blunt head trauma (Kuppermann 2009 §Methods).' }));
+    root.appendChild(el('p', {}, [
+      el('label', { for: 'ph-age', text: 'Age (years)' }), el('br'),
+      el('input', { id: 'ph-age', type: 'number', step: 'any', value: '5' }),
+    ]));
+    root.appendChild(el('h3', { text: 'High-risk predictors (any present -> high risk; CT recommended)' }));
+    const high = [
+      ['GCS = 15 (uncheck if GCS 14 or other AMS)', 'ph-gcs15'],
+      ['Palpable skull fracture (age <2 only)', 'ph-skfx'],
+      ['Signs of basal skull fracture (age >=2)', 'ph-basal'],
+      ['Other signs of altered mental status (agitation, somnolence, repetitive questioning, slow response)', 'ph-ams'],
+    ];
+    for (const [l, id] of high) {
+      const cb = checkbox(l, id);
+      if (id === 'ph-gcs15') cb.querySelector('input').checked = true;
+      root.appendChild(cb);
+    }
+    root.appendChild(el('h3', { text: 'Intermediate-risk predictors' }));
+    const med = [
+      ['LOC >= 5 seconds (age <2) / any LOC (age >=2)', 'ph-loc'],
+      ['Vomiting (age >=2 only)', 'ph-vom'],
+      ['Severe mechanism (MVC with ejection / death / rollover; pedestrian/bicycle w/o helmet vs motorized vehicle; fall >0.9 m (<2) / >1.5 m (>=2); head struck by high-impact object)', 'ph-mech'],
+      ['Occipital, parietal, or temporal scalp hematoma (age <2 only; non-frontal)', 'ph-opt'],
+      ['Not acting normally per parent (age <2 only)', 'ph-acting'],
+      ['Severe headache (age >=2 only)', 'ph-hd'],
+    ];
+    for (const [l, id] of med) {
+      const cb = checkbox(l, id);
+      if (id === 'ph-acting') cb.querySelector('input').checked = true;
+      root.appendChild(cb);
+    }
+    const o = out(); root.appendChild(o);
+    const run = () => safe(o, () => {
+      const r = S4.pecarnHead({
+        ageYears: nv('ph-age'),
+        gcs15: checked('ph-gcs15'),
+        palpableSkullFx: checked('ph-skfx'),
+        basalSkullFxSigns: checked('ph-basal'),
+        ams: checked('ph-ams'),
+        locSec: checked('ph-loc') ? 5 : 0,
+        vomiting: checked('ph-vom'),
+        severeMechanism: checked('ph-mech'),
+        occipitalParietalTemporalHematoma: checked('ph-opt'),
+        notActingNormally: !checked('ph-acting'),
+        severeHeadache: checked('ph-hd'),
+      });
+      o.appendChild(el('h2', { text: `PECARN risk tier: ${r.tier}` }));
+      o.appendChild(el('p', { text: r.band }));
+    });
+    document.querySelectorAll('input').forEach((n) => n.addEventListener(n.type === 'checkbox' ? 'change' : 'input', run));
+    run();
+  },
+
+  // spec-v12 §3.5.4 wave 12-5: Ottawa Ankle Rules (Stiell 1992).
+  'ottawa-ankle'(root) {
+    root.appendChild(el('p', { class: 'muted', text: 'Rule for patients >= 18 with ankle or midfoot injury within 10 days. Pediatric Plint 1999 variant deferred to a future spec.' }));
+    root.appendChild(el('h3', { text: 'Malleolar zone' }));
+    root.appendChild(checkbox('Pain in malleolar zone', 'oa-mp'));
+    const ankle = [
+      ['Tenderness at posterior edge or tip of lateral malleolus (distal 6 cm)', 'oa-lat'],
+      ['Tenderness at posterior edge or tip of medial malleolus (distal 6 cm)', 'oa-med'],
+      ['Inability to bear weight 4 steps immediately and in the ED', 'oa-abw'],
+    ];
+    for (const [l, id] of ankle) root.appendChild(checkbox(l, id));
+    root.appendChild(el('h3', { text: 'Midfoot zone' }));
+    root.appendChild(checkbox('Pain in midfoot zone', 'oa-fp'));
+    const foot = [
+      ['Tenderness at base of 5th metatarsal', 'oa-fmt'],
+      ['Tenderness at navicular', 'oa-nav'],
+      ['Inability to bear weight 4 steps immediately and in the ED', 'oa-fbw'],
+    ];
+    for (const [l, id] of foot) root.appendChild(checkbox(l, id));
+    const o = out(); root.appendChild(o);
+    const run = () => safe(o, () => {
+      const r = S4.ottawaAnkle({
+        malleolarPain: checked('oa-mp'),
+        lateralMalleolusTender: checked('oa-lat'),
+        medialMalleolusTender: checked('oa-med'),
+        ankleCannotBearWeight: checked('oa-abw'),
+        midfootPain: checked('oa-fp'),
+        fifthMetatarsalTender: checked('oa-fmt'),
+        navicularTender: checked('oa-nav'),
+        footCannotBearWeight: checked('oa-fbw'),
+      });
+      o.appendChild(el('h2', { text: r.ankleXray || r.footXray ? 'Imaging indicated' : 'No imaging indicated' }));
+      o.appendChild(el('p', { text: r.band }));
+    });
+    document.querySelectorAll('input').forEach((n) => n.addEventListener('change', run));
+    run();
+  },
+
+  // spec-v12 §3.5.5 wave 12-5: Ottawa SAH Rule (Perry 2013).
+  'ottawa-sah'(root) {
+    root.appendChild(el('p', { class: 'muted', text: 'Apply only to alert patients >= 15 with new severe non-traumatic headache peaking within 1 hour. Exclusions per Perry 2013 §Methods are surfaced first.' }));
+    root.appendChild(el('h3', { text: 'Exclusion check' }));
+    root.appendChild(checkbox('Any exclusion present (new neurologic deficit, prior aneurysm / SAH / brain tumor, recurrent identical-pattern headaches, or age <15)', 'os-excl'));
+    root.appendChild(el('h3', { text: 'Six clinical criteria (any positive -> cannot rule out SAH)' }));
+    const items = [
+      ['Age >= 40', 'os-age'],
+      ['Neck pain or stiffness', 'os-neck'],
+      ['Witnessed loss of consciousness', 'os-loc'],
+      ['Onset during exertion', 'os-ex'],
+      ['Thunderclap headache (peak intensity within 1 second)', 'os-tc'],
+      ['Limited neck flexion on exam', 'os-flex'],
+    ];
+    for (const [l, id] of items) root.appendChild(checkbox(l, id));
+    const o = out(); root.appendChild(o);
+    const run = () => safe(o, () => {
+      const r = S4.ottawaSah({
+        exclusionCriteriaPresent: checked('os-excl'),
+        ageGe40: checked('os-age'),
+        neckPainOrStiffness: checked('os-neck'),
+        witnessedLoc: checked('os-loc'),
+        onsetDuringExertion: checked('os-ex'),
+        thunderclapHeadache: checked('os-tc'),
+        limitedNeckFlexion: checked('os-flex'),
+      });
+      o.appendChild(el('h2', { text: r.applicable === false ? 'Rule does not apply' : r.cannotRuleOut ? 'Cannot rule out SAH' : 'Rule out SAH' }));
+      o.appendChild(el('p', { text: r.band }));
+    });
+    document.querySelectorAll('input').forEach((n) => n.addEventListener('change', run));
+    run();
+  },
 };

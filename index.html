@@ -69,7 +69,7 @@
           "@id": "https://sophiewell.com/#webapp",
           "name": "sophiewell",
           "url": "https://sophiewell.com/",
-          "description": "Free, client-side healthcare toolbox with 190 deterministic utilities for patients, billers, coders, nurses, clinicians, EMS, and educators.",
+          "description": "Free, client-side healthcare toolbox with 195 deterministic utilities for patients, billers, coders, nurses, clinicians, EMS, and educators.",
           "applicationCategory": [
             "HealthApplication",
             "MedicalApplication",
@@ -282,6 +282,11 @@
             "FIB-4 Index for Liver Fibrosis",
             "APRI (AST to Platelet Ratio Index)",
             "Maddrey DF and Lille Model (alcoholic hepatitis)",
+            "Canadian CT Head Rule",
+            "Canadian C-Spine Rule",
+            "PECARN Pediatric Head Injury Rule",
+            "Ottawa Ankle Rules",
+            "Ottawa Subarachnoid Hemorrhage Rule",
             "Lab Result Interpreter"
           ],
           "softwareHelp": {
@@ -1003,6 +1008,26 @@
                 <button class="tool-card" type="button" data-tool="maddrey-lille" data-group="G" data-audiences="clinicians educators">
                   <span class="tc-title">Maddrey DF + Lille Model</span>
                   <span class="tc-desc">Maddrey 1978 DF &gt;=32 = severe alcoholic hepatitis; Louvet 2007 Lille &gt;=0.45 predicts steroid non-response.</span>
+                </button>
+                <button class="tool-card" type="button" data-tool="cthr" data-group="G" data-audiences="clinicians educators field">
+                  <span class="tc-title">Canadian CT Head Rule</span>
+                  <span class="tc-desc">Stiell 2001 high- and medium-risk criteria for minor head injury (GCS 13-15).</span>
+                </button>
+                <button class="tool-card" type="button" data-tool="ccsr" data-group="G" data-audiences="clinicians educators field">
+                  <span class="tc-title">Canadian C-Spine Rule</span>
+                  <span class="tc-desc">Stiell 2001 three-step algorithm; ships alongside the NEXUS + Canadian C-Spine tile.</span>
+                </button>
+                <button class="tool-card" type="button" data-tool="pecarn-head" data-group="N" data-audiences="clinicians educators">
+                  <span class="tc-title">PECARN Pediatric Head Injury Rule</span>
+                  <span class="tc-desc">Kuppermann 2009 age-banded rule (&lt;2 vs &gt;=2) with ciTBI risk tiers.</span>
+                </button>
+                <button class="tool-card" type="button" data-tool="ottawa-ankle" data-group="G" data-audiences="clinicians educators field">
+                  <span class="tc-title">Ottawa Ankle Rules</span>
+                  <span class="tc-desc">Stiell 1992 ankle and midfoot zones with tenderness and weight-bearing checks.</span>
+                </button>
+                <button class="tool-card" type="button" data-tool="ottawa-sah" data-group="G" data-audiences="clinicians educators">
+                  <span class="tc-title">Ottawa Subarachnoid Hemorrhage Rule</span>
+                  <span class="tc-desc">Perry 2013 six-criterion rule with the exclusion-criteria pre-screen.</span>
                 </button>
                 <button class="tool-card" type="button" data-tool="asa" data-group="G" data-audiences="clinicians educators">
                   <span class="tc-title">ASA Physical Status Reference</span>
