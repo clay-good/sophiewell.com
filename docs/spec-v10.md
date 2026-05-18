@@ -6,6 +6,18 @@
 > what it will and will not depend on, and which previously-proposed
 > work is formally dropped. Every prior spec (v4 through v9) remains in
 > force; v10 narrows scope, it does not amend their hard rules.
+>
+> Update 2026-05-18: the §3.1 statement that "no code is removed by
+> this spec" and the §3.1 / §5 lines retaining the spec-v7 §3.1
+> dropzone shell were overtaken by the 2026-05-18 clinical-staff-first
+> pivot (commit `286819b`), which retired the home-view dropzone, the
+> "What do you need to decode?" hero label, and `wireDropzone()` in
+> `app.js`. The retirement is fully consistent with v10's clinical-first
+> wedge (§2.1, §3): patient-artifact ingestion is not the product. The
+> deterministic classifier and routing table (`lib/artifact-detect.js`,
+> `lib/artifact-route.js`, `lib/artifact-handoff.js`) remain in the
+> tree as reusable pure-function modules for any future clinical-input
+> surface per §3.3.
 
 ## 1. The thesis
 

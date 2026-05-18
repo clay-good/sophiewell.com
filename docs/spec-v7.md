@@ -72,6 +72,19 @@
 >   way to retract a misfired detection); the Clear button still
 >   wipes the textarea for a full reset.
 >
+> §3.1 dropzone retired 2026-05-18. The clinical-staff-first pivot
+> (commit `286819b`) removed the home-view artifact dropzone, the
+> "What do you need to decode?" hero label, and the `wireDropzone()`
+> wiring in `app.js`. The synonym-routed prompt (§3.2), the
+> classifier (§3.3, `lib/artifact-detect.js`), the kind→tile routing
+> table (`lib/artifact-route.js`), and the text-paste handoff
+> (`lib/artifact-handoff.js`) all remain unit-tested and in the tree
+> in case a future clinical-input surface reuses them; only the
+> home-view ingestion shell is gone. `test/unit/artifact-route.test.js`
+> now negatively asserts the dropzone DOM nodes are absent from
+> `index.html`. The §3.1 narrative below is retained for historical
+> context but is not the current home view.
+>
 > §4.1–§4.6 are **dropped** per [spec-v10](spec-v10.md) §3 (2026-05-17).
 > All six artifact-decoder pages required PDF / DOCX / OCR
 > dependencies that exceed spec-v10's runtime-dependency budget, and

@@ -110,15 +110,17 @@ refresh pipeline that one person cannot reliably maintain. The remaining
 178 tiles either compute from user input or read a small static
 reference table whose annual drift is tolerable.
 
-The user flow is simple: type what you need into the hero search ("my
-bill", "my labs", "denied", "ICD-10"), drop a plain-text artifact
-into the dropzone underneath (bill, EOB, MSN, lab printout, denial
-letter, discharge packet — spec-v7 section 3.1, in-browser only;
-no upload, no fetch), or pick a tile from the disclosure-collapsible
-home grid, enter input, read output. The hero consults a hand-curated
-synonym table (`data/synonyms.json`, spec-v7 section 3.2) before
-falling back to fuzzy matching, and shows a one-line breadcrumb
-explaining why a tile is recommended. Every utility opens with its
+The user flow is simple: type what you need into the hero search
+("wells PE", "CHA2DS2-VASc", "ICD-10", "magnesium replacement") or
+pick a tile from the disclosure-collapsible home grid, enter input,
+read output. The hero consults a hand-curated synonym table
+(`data/synonyms.json`, spec-v7 section 3.2) before falling back to
+fuzzy matching, and shows a one-line breadcrumb explaining why a
+tile is recommended. (The spec-v7 §3.1 patient-artifact dropzone was
+retired in the 2026-05-18 clinical-staff-first pivot; the
+deterministic classifier under `lib/artifact-*.js` is retained for
+possible future reuse on a clinical-input surface, but the home view
+no longer wears it.) Every utility opens with its
 inputs pre-filled from a worked example so the empty state is never
 empty (a "Reset to example" link restores them after editing), and
 the References region at the bottom shows the formula citation or

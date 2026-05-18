@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `d3665408fcad9b47`
-Generated: 2026-05-18T12:52:23.633Z
+Build ID: `0c8eda433fc2ed67`
+Generated: 2026-05-18T16:47:19.539Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=20.18.1 <21, npm >=10.0.0
@@ -23,9 +23,9 @@ downloads is committed in this repository and is hashed below.
 
 | Path | Bytes | SHA-256 |
 |---|---:|---|
-| `index.html` | 103590 | `3173c75ee3c96786a9a24495a14637dd1ba8cd8902aeddab1b5bf8578ad57e9b` |
-| `styles.css` | 38621 | `aae166662d02108ddc88e23ff390b69dc9ce1e7a77b5df6936c92f22f71ff319` |
-| `app.js` | 67312 | `71adbd21779556f647392d7c7b629af1d91f91bdfe0badbc1f81c6fb7125738a` |
+| `index.html` | 100706 | `a24e2fb3078400e6a2ca442d5e94e759d7dceead086c45b54d79ef2435fd3b06` |
+| `styles.css` | 36123 | `3de26bad95060b31feb8a4bc8acc20a249e02063cf06001159ae96d9a78839a1` |
+| `app.js` | 59181 | `60893772faba928b0721459ed42ae7416bbc8dba742b99128ee29af6841ff963` |
 | `sw.js` | 4062 | `60f524b1b69eb5170c59af42631e11cc05db2a44e8e530977db0327888b0ff6d` |
 | `site.webmanifest` | 709 | `0e0de4da60590a12e8b27a0ae2a2f5ffdb6500b7d2b78f93631ec2f64ed3d5ce` |
 | `robots.txt` | 127 | `38fbf9c1854e72abb20e01e81dd5a31d4ea96f154c12d5db1ec3af05524dd1a1` |
@@ -64,7 +64,7 @@ downloads is committed in this repository and is hashed below.
 | `lib/live.js` | 1138 | `304978d3c170b6eb06cade7702e5f99d868e9b3e1f5651aa9a28da15e62a6a9c` |
 | `lib/medicare-enrollment.js` | 2884 | `6a4c11321477e712efc44d4de84336463ea6800bc64f654b5e9d0b16c440877d` |
 | `lib/medication-v4.js` | 5501 | `a75b60584a9264ee1500e14642c5e4784fb0a0994bf4c8cb4eaa0d294f571f37` |
-| `lib/meta.js` | 61688 | `36034c81a0300de11dfc0d914b0ca3a021d295850907e725adb22a1273784c7f` |
+| `lib/meta.js` | 72351 | `168fe9b4870214756233141d54d0a51a8aa1d74a44ce90ee39d8988fb923ae70` |
 | `lib/print.js` | 2588 | `74579a71f82b75993dea9f7d9b3c21e67744bd4dbe6f50e20c8eef9aa1be7546` |
 | `lib/prompt.js` | 6872 | `95ee9b9de5adbafd1497f378993e27d29c9f437bfc9ddc304886fd75e80fffd4` |
 | `lib/regulatory.js` | 4040 | `9e1ef6751facc0172c492010ccd35982061f06b000db2e857a98ec2013e7087c` |
