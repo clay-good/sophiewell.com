@@ -6,6 +6,33 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v11 §5 — populate `META.interpretation` for eight canonical-band tiles)
+
+- **Eight canonical tiles now expose per-band `interpretation` blocks**
+  whose every band text is a direct paraphrase of the primary source,
+  rendered below the citation under the mandatory "Per source:" header
+  per spec-v11 §5.2:
+  - `chads` (CHA2DS2-VASc) — Lip 2010 / ESC bands 0 / 1 / >=2 with
+    antithrombotic guidance.
+  - `hasbled` — Pisters 2010 Table 5 bleeds-per-100-patient-years for
+    bands 0-1 / 2 / >=3.
+  - `curb-65` — Lim 2003 Table 4 30-day mortality bands 0-1 / 2 / 3-5
+    with disposition guidance.
+  - `heart` — Six 2008 / Backus 2013 prospective-validation 6-week MACE
+    bands 0-3 / 4-6 / 7-10.
+  - `perc` — Kline 2004 rule-out vs rule-does-not-apply pair.
+  - `phq9` — Kroenke 2001 Table 4 severity bands 0-4 / 5-9 / 10-14 /
+    15-19 / 20-27.
+  - `gad7` — Spitzer 2006 severity bands 0-4 / 5-9 / 10-14 / 15-21.
+  - `abcd2` — Johnston 2007 Table 3 2-day stroke-risk bands 0-3
+    (1.0%) / 4-5 (4.1%) / 6-7 (8.1%).
+- All eight pass the `test/unit/meta-interpretation.test.js` CI guard
+  (§5.4): `sourceQuoted: true`, non-empty `sourceCitation`, band text
+  <=200 chars, no forbidden Sophie-authored phrasing.
+- The renderer in `renderMetaBlock(util)` ([app.js](app.js)) was
+  already in place from spec-v11 wave 2; this is a pure metadata
+  addition with no UI work required.
+
 ### Changed (spec-v11 wave 4 — final pass; spec-v11 marked complete)
 
 - **spec-v11 marked complete (2026-05-18).** All four phases landed:
