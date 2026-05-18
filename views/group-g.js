@@ -967,6 +967,119 @@ export const renderers = {
     run();
   },
 
+  // spec-v12 §3.2.1: PESI (Aujesky et al. AJRCCM 2005).
+  pesi(root) {
+    root.appendChild(el('p', {}, [
+      el('label', { for: 'pe-age', text: 'Age (years)' }), el('br'),
+      el('input', { id: 'pe-age', type: 'number', step: '1', min: '0', value: '50' }),
+    ]));
+    root.appendChild(el('p', {}, [
+      el('label', { for: 'pe-sex', text: 'Sex' }), el('br'),
+      el('select', { id: 'pe-sex' }, [
+        el('option', { value: 'F', text: 'F' }),
+        el('option', { value: 'M', text: 'M' }),
+      ]),
+    ]));
+    const items = [
+      ['History of cancer', 'pe-ca'],
+      ['History of heart failure', 'pe-hf'],
+      ['History of chronic lung disease', 'pe-cld'],
+      ['Pulse >= 110', 'pe-hr'],
+      ['SBP < 100', 'pe-sbp'],
+      ['Respiratory rate >= 30', 'pe-rr'],
+      ['Temperature < 36 °C', 'pe-tmp'],
+      ['Altered mental status', 'pe-ams'],
+      ['SaO2 < 90% on room air', 'pe-sao2'],
+    ];
+    for (const [l, id] of items) root.appendChild(checkbox(l, id));
+    const o = out(); root.appendChild(o);
+    const run = () => safe(o, () => {
+      const r = S4.pesi({
+        age: nv('pe-age'),
+        sex: document.getElementById('pe-sex').value,
+        cancer: checked('pe-ca'),
+        heartFailure: checked('pe-hf'),
+        chronicLungDisease: checked('pe-cld'),
+        hr110: checked('pe-hr'),
+        sbp100: checked('pe-sbp'),
+        rr30: checked('pe-rr'),
+        tempLt36: checked('pe-tmp'),
+        alteredMental: checked('pe-ams'),
+        sao2Lt90: checked('pe-sao2'),
+      });
+      o.appendChild(el('h2', { text: `PESI ${r.score} - Class ${r.class}` }));
+      o.appendChild(el('p', { text: r.band }));
+    });
+    document.querySelectorAll('input, select').forEach((n) => n.addEventListener(n.type === 'checkbox' || n.tagName === 'SELECT' ? 'change' : 'input', run));
+    run();
+  },
+
+  // spec-v12 §3.2.2: sPESI (Jimenez et al. Arch Intern Med 2010).
+  spesi(root) {
+    const items = [
+      ['Age > 80', 'sp-age80'],
+      ['History of cancer', 'sp-ca'],
+      ['Chronic cardiopulmonary disease', 'sp-ccp'],
+      ['Pulse >= 110', 'sp-hr'],
+      ['SBP < 100', 'sp-sbp'],
+      ['SaO2 < 90%', 'sp-sao2'],
+    ];
+    for (const [l, id] of items) root.appendChild(checkbox(l, id));
+    const o = out(); root.appendChild(o);
+    const run = () => safe(o, () => {
+      const r = S4.spesi({
+        ageOver80: checked('sp-age80'),
+        cancer: checked('sp-ca'),
+        chronicCardiopulmonary: checked('sp-ccp'),
+        hr110: checked('sp-hr'),
+        sbp100: checked('sp-sbp'),
+        sao2Lt90: checked('sp-sao2'),
+      });
+      o.appendChild(el('h2', { text: `sPESI ${r.score}` }));
+      o.appendChild(el('p', { text: r.band }));
+    });
+    items.forEach(([, id]) => document.getElementById(id).addEventListener('change', run));
+    run();
+  },
+
+  // spec-v12 §3.2.3: Padua Prediction Score (Barbar et al. JTH 2010).
+  padua(root) {
+    const items = [
+      ['Active cancer (3 pts)', 'pa-ca'],
+      ['Prior VTE (3 pts)', 'pa-vte'],
+      ['Reduced mobility (3 pts)', 'pa-mob'],
+      ['Known thrombophilia (3 pts)', 'pa-thr'],
+      ['Recent (<=1 month) trauma or surgery (2 pts)', 'pa-trauma'],
+      ['Age >= 70 (1 pt)', 'pa-age'],
+      ['Heart and/or respiratory failure (1 pt)', 'pa-hf'],
+      ['Acute MI or ischemic stroke (1 pt)', 'pa-mi'],
+      ['Acute infection / rheumatologic disorder (1 pt)', 'pa-inf'],
+      ['BMI >= 30 (1 pt)', 'pa-bmi'],
+      ['Ongoing hormonal treatment (1 pt)', 'pa-horm'],
+    ];
+    for (const [l, id] of items) root.appendChild(checkbox(l, id));
+    const o = out(); root.appendChild(o);
+    const run = () => safe(o, () => {
+      const r = S4.padua({
+        activeCancer: checked('pa-ca'),
+        priorVte: checked('pa-vte'),
+        reducedMobility: checked('pa-mob'),
+        thrombophilia: checked('pa-thr'),
+        recentTrauma: checked('pa-trauma'),
+        ageOver70: checked('pa-age'),
+        heartOrRespFailure: checked('pa-hf'),
+        miOrStroke: checked('pa-mi'),
+        acuteInfectionOrRheum: checked('pa-inf'),
+        bmi30: checked('pa-bmi'),
+        hormonalTreatment: checked('pa-horm'),
+      });
+      o.appendChild(el('h2', { text: `Padua ${r.score}` }));
+      o.appendChild(el('p', { text: r.band }));
+    });
+    items.forEach(([, id]) => document.getElementById(id).addEventListener('change', run));
+    run();
+  },
+
   // spec-v12 §3.1.2: MEWS (Subbe et al. QJM 2001).
   mews(root) {
     const numFields = [

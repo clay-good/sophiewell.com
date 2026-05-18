@@ -6,6 +6,36 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v12 wave 12-2 — VTE risk & severity bundle: PESI, sPESI, Padua)
+
+- **`pesi` — Pulmonary Embolism Severity Index** (Aujesky D, et al.
+  *Derivation and validation of a prognostic model for pulmonary
+  embolism.* Am J Respir Crit Care Med. 2005;172(8):1041-1046). 11
+  inputs (age in years, male sex, cancer, heart failure, chronic
+  lung disease, HR >= 110, SBP < 100, RR >= 30, temperature < 36 °C,
+  altered mental status, SaO2 < 90% on room air). Five risk classes
+  (I <= 65, II 66-85, III 86-105, IV 106-125, V > 125) with the
+  Aujesky 2005 Table 4 30-day mortality range per class. Audit log:
+  [docs/audits/v11/pesi.md](docs/audits/v11/pesi.md). Worked
+  examples in [test/unit/pesi.test.js](test/unit/pesi.test.js).
+- **`spesi` — Simplified PESI** (Jimenez D, et al. *Simplification
+  of the pulmonary embolism severity index for prognostication in
+  patients with acute symptomatic pulmonary embolism.* Arch Intern
+  Med. 2010;170(15):1383-1389). Six binary criteria; sPESI 0 -> low
+  risk (1.0% 30-day mortality), >= 1 -> not-low risk (10.9%) per
+  Jimenez 2010 Table 3. Audit log:
+  [docs/audits/v11/spesi.md](docs/audits/v11/spesi.md). Worked
+  examples in [test/unit/spesi.test.js](test/unit/spesi.test.js).
+- **`padua` — Padua Prediction Score** (Barbar S, et al. *A risk
+  assessment model for the identification of hospitalized medical
+  patients at risk for venous thromboembolism: the Padua Prediction
+  Score.* J Thromb Haemost. 2010;8(11):2450-2457). Weighted 11-item
+  model; >= 4 is high risk for VTE per Barbar 2010 §Results, with
+  the Barbar 2010 Table 4 90-day VTE rates (0.3% low, 11.0% high if
+  untreated) surfaced in the interpretation block. Audit log:
+  [docs/audits/v11/padua.md](docs/audits/v11/padua.md). Worked
+  examples in [test/unit/padua.test.js](test/unit/padua.test.js).
+
 ### Added (spec-v12 wave 12-1 — early-warning bundle: NEWS2 + MEWS)
 
 - **`news2` — National Early Warning Score 2** (Royal College of
