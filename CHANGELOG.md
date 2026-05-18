@@ -6,6 +6,35 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v11 wave 3m — clinical scoring tail; Group G to 100%)
+
+- **Wave 3m — Group G clinical-scoring tail (19 tiles).** `peds-vitals`,
+  `lab-ranges`, `abg`, `asa`, `mallampati`, `beers`, `centor`,
+  `alvarado-pas`, `ascvd`, `prevent`, `lights`, `mentzer`, `saag`,
+  `r-factor`, `kdigo-aki`, `sgarbossa`, `rcri`, `pews`, and `abcd2` each
+  audited per spec-v11 §3.3. Formula tiles (Light's, Mentzer, SAAG,
+  R-factor, KDIGO, RCRI, ABCD2, ABG Winter compensation, PEWS,
+  Modified Sgarbossa, ASCVD PCE, PREVENT 2024) cross-checked by
+  hand-computation against the primary source (Light 1972; Mentzer
+  1973; Runyon 1992; Benichou 1990; KDIGO 2012; Lee 1999; Johnston
+  2007; Albert/Dell/Winters 1967; Monaghan 2005; Smith 2012; Goff
+  2014; Khan 2024) and against MDCalc / ACC-tool reference
+  implementations within the spec-v11 §3.1.3 0.5% tolerance. Lookup
+  tiles (`peds-vitals`, `lab-ranges`, `asa`, `mallampati`, `beers`)
+  audited per step 10 (shard integrity + sampled authoritative
+  lookups). Centor / McIsaac age-modifier thresholds (3-14 → +1, 45+
+  → -1) re-verified against McIsaac 1998 Table 2; Alvarado / PAS
+  point allocations re-verified against Alvarado 1986 Table 1 and
+  Samuel 2002 Table 2 (RLQ tenderness and leukocytosis are the only
+  2-point items). ABCD2 band thresholds (0-3 / 4-5 / 6-7 with 2-day
+  stroke risks 1.0% / 4.1% / 8.1%) pinned to Johnston 2007 Table 3.
+- **Group G (Clinical Scoring & Risk) is now 100% audited.**
+  `scripts/audit-coverage.mjs` reports 154 / 178 (87%) overall, with
+  `A 21/21`, `C 15/15`, `E 31/31`, `F 15/15`, `G 47/47`, `H 9/9`,
+  `I 0/24 (0%)`, `J 5/5`, `K 4/4`, `L 3/3`, `N 3/3`, `O 1/1`. The
+  remaining wave is Group I EMS & field medicine (24 tiles) per
+  spec-v11 §3.3.
+
 ### Added (spec-v11 wave 3l — workflow, high-alert, peds, reference ranges, immunization; Groups H, J, K, N, O to 100%)
 
 - **Wave 3l — workflow + high-alert + remaining pediatrics + reference
