@@ -6,6 +6,29 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v11 §5 — eight more canonical-band tiles get `META.interpretation`)
+
+- **Eight more tiles** now expose per-band `interpretation` blocks
+  whose every band text is a direct paraphrase of the primary
+  source. The renderer was already in place; this is pure metadata.
+  - `gcs` — Teasdale & Jennett 1974 mild (13-15) / moderate (9-12) /
+    severe (3-8) bands with the conventional GCS<=8 airway threshold.
+  - `wells-pe` — Wells 2000 / Wells 2001 two-tier <=4 vs >4 cutoff.
+  - `wells-dvt` — Wells 1997 Table 3 low (<=0) / moderate (1-2) /
+    high (>=3) probability bands.
+  - `nihss` — NIH/NINDS interpretation bands 0 / 1-4 / 5-15 / 16-20 /
+    21-42 per Adams 1999.
+  - `timi` — Antman 2000 Table 3 14-day composite-event rates by
+    score (0-1 → 4.7% up to 6-7 → 40.9%).
+  - `centor` — McIsaac 1998 Table 4 management bands by McIsaac
+    age-adjusted score.
+  - `ciwa` — CIWA-Ar minimal / moderate / severe bands per Sullivan
+    1989 + Mayo-Smith 1997 consensus thresholds.
+  - `cows` — COWS mild / moderate / moderately severe / severe per
+    Wesson & Ling 2003 scoring key.
+- All eight pass the `test/unit/meta-interpretation.test.js` CI
+  guard. 16 of the 178 tiles now carry an interpretation block.
+
 ### Added (spec-v11 §5 — populate `META.interpretation` for eight canonical-band tiles)
 
 - **Eight canonical tiles now expose per-band `interpretation` blocks**
