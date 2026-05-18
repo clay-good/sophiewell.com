@@ -1,12 +1,19 @@
 # spec-v11.md — sophiewell.com: correctness-first audit, specialty-named groups, optional interpretation field
 
-> Status: proposed (2026-05-17). Implementation spec. No new tiles
-> ship under v11; the entire scope is **make the 178 tiles already
-> shipped provably correct**, rename the internal group letters to
-> specialty names so the navigation matches the audience's mental
-> model, and introduce a tightly-scoped optional `interpretation`
-> field for tiles whose primary citation already says what the score
-> means. Long-horizon scope (full MDCalc-equivalent coverage) is
+> Status: spec-v11 complete (2026-05-18). All waves landed:
+> Wave 0 (spec + audit tooling + CI guards), Wave 1 (specialty
+> rename + `META[id].specialties` field + `GROUP_LABELS`),
+> Wave 2 (`interpretation` field + CI guard), Waves 3a–3n
+> (per-group audit, all 12 groups to 100%; 178/178 tiles audited
+> and PASS), and Wave 4 (this closeout). `npm run lint`, the unit
+> + a11y suite, `data:verify`, and `npm run build` are green;
+> `scripts/audit-coverage.mjs` reports 178/178 (100%) and every
+> §6 acceptance criterion is met. The entire scope was to **make
+> the 178 tiles already shipped provably correct**, rename the
+> internal group letters to specialty names so the navigation
+> matches the audience's mental model, and introduce a
+> tightly-scoped optional `interpretation` field for tiles whose
+> primary citation already says what the score means. Long-horizon scope (full MDCalc-equivalent coverage) is
 > committed separately in
 > [docs/scope-mdcalc-parity.md](scope-mdcalc-parity.md); v11 is the
 > quality bar that scope is held to.

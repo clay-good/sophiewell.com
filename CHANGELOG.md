@@ -6,6 +6,41 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Changed (spec-v11 wave 4 — final pass; spec-v11 marked complete)
+
+- **spec-v11 marked complete (2026-05-18).** All four phases landed:
+  Wave 0 shipped the spec, the per-tile audit-log skeleton tooling
+  (`scripts/audit-skeleton.mjs`), the coverage rollup
+  (`scripts/audit-coverage.mjs`), and the §3.5 CI guards
+  (`test/unit/audit-format.test.js`,
+  `test/unit/meta-citation-verify.test.js`,
+  `test/unit/meta-example-result.test.js`). Wave 1 renamed the
+  visible group labels per §4.1 (`app.js GROUP_LABELS`), added the
+  additive `META[id].specialties` array consumed by
+  `lib/prompt.js`, and pushed the visible name through every header
+  / ARIA label / hub / topic page. Wave 2 added the
+  `interpretation` field and `test/unit/meta-interpretation.test.js`
+  CI guard. Waves 3a–3n carried the per-tile audit work in the
+  §3.3 order; every shipped tile now has a corresponding
+  `docs/audits/v11/<tile-id>.md` in PASS or PASS-WITH-FIXES state.
+- **§6 acceptance criteria met.** `scripts/audit-coverage.mjs`
+  reports 178/178 (100%) — `A 21/21`, `C 15/15`, `E 31/31`,
+  `F 15/15`, `G 47/47`, `H 9/9`, `I 24/24`, `J 5/5`, `K 4/4`,
+  `L 3/3`, `N 3/3`, `O 1/1`. No defect (§3.6) reached a state
+  that required a CHANGELOG `### Fixed` regression entry; the
+  audit waves caught only precision observations (notably the
+  `niosh-pg` CO TWA labelling note in wave 3n) that do not change
+  hazard ranking or downstream safety. `npm run lint`, the unit +
+  a11y suite, `npm run data:verify`, and `npm run build` are
+  green. spec-v11 §6 final criteria — every audit log present and
+  PASS, coverage 100%, `GROUP_LABELS` visible, `META[id].specialties`
+  consumed by the prompt ranker, CI guard for `interpretation`
+  passing — are all satisfied.
+- **Update [docs/spec-v11.md](docs/spec-v11.md) status header**
+  from "proposed (2026-05-17)" to "spec-v11 complete (2026-05-18)"
+  with a summary of which waves landed and which acceptance
+  criteria the release meets.
+
 ### Added (spec-v11 wave 3n — EMS & field medicine; Group I to 100%; v11 audit 178/178)
 
 - **Wave 3n — Group I EMS & field medicine (24 tiles).**
