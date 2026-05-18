@@ -6,6 +6,44 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v11 wave 3n — EMS & field medicine; Group I to 100%; v11 audit 178/178)
+
+- **Wave 3n — Group I EMS & field medicine (24 tiles).**
+  `peds-weight-dose`, `adult-arrest-ref`, `peds-arrest-ref`, `defib`,
+  `cincinnati`, `fast`, `field-triage`, `start-triage`,
+  `jumpstart-triage`, `bsa_burn`, `burn-fluid`, `hypothermia`,
+  `heat-illness`, `peds-ett`, `toxidromes`, `naloxone`, `ems-doc`,
+  `nexus-cspine`, `dot-erg`, `niosh-pg`, `cpr-numeric`, `tccc`,
+  `co-cn-antidote`, and `avpu-gcs` each audited per spec-v11 §3.3.
+  Drug-math tiles (`peds-weight-dose`, `naloxone`, `defib`,
+  `burn-fluid`) hand-computed against PALS 2020 / AHA ECC 2020 / FDA
+  labels / Baxter & Shires 1968 with cap and floor coverage rows
+  (epinephrine 200 kg cap-hit; atropine 2 kg floor-hit; pediatric
+  cardioversion at 1 kg low edge; Parkland 70 kg / 20% TBSA mid-case
+  matching the META example; pediatric naloxone cap at 2 mg adult
+  dose). Stroke / triage screens (`cincinnati`, `fast`, `start-triage`,
+  `jumpstart-triage`, `field-triage`, `nexus-cspine`) re-verified
+  against Kothari 1997 / Kleindorfer 2007 + Aroor 2017 / Super 1983 /
+  Romig (CHOC) / CDC field-triage current edition / Hoffman 2000 +
+  Stiell 2001. Lookup tiles (`adult-arrest-ref`, `peds-arrest-ref`,
+  `cpr-numeric`, `hypothermia`, `heat-illness`, `toxidromes`,
+  `dot-erg`, `niosh-pg`, `tccc`, `peds-ett`, `co-cn-antidote`,
+  `avpu-gcs`, `ems-doc`) audited per step 10: shard integrity plus
+  sampled authoritative lookups against AHA ECC 2020, WMS hypothermia
+  / heat-illness guidelines, Goldfrank toxidrome table, PHMSA ERG
+  (current edition), NIOSH Pocket Guide, CoTCCC public TCCC
+  guidelines, Cole / modified Cole airway formulas, Cyanokit and
+  Nithiodote FDA labels, UHMS HBO indications, McNarry 2004
+  AVPU/GCS mapping, and the NEMSIS v3 documentation prompts behind
+  `data/workflow/ems-runtypes.json`.
+- **Group I (EMS & Field Medicine) is now 100% audited; spec-v11
+  audit coverage reaches 178 / 178 (100%).**
+  `scripts/audit-coverage.mjs` reports `A 21/21`, `C 15/15`,
+  `E 31/31`, `F 15/15`, `G 47/47`, `H 9/9`, `I 24/24`, `J 5/5`,
+  `K 4/4`, `L 3/3`, `N 3/3`, `O 1/1`. With all per-tile audit logs
+  in PASS state, the spec-v11 §6 acceptance criterion for audit
+  coverage is met; wave 4 (final summary) follows.
+
 ### Added (spec-v11 wave 3m — clinical scoring tail; Group G to 100%)
 
 - **Wave 3m — Group G clinical-scoring tail (19 tiles).** `peds-vitals`,
