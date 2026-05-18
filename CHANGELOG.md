@@ -6,6 +6,44 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v11 wave 3g — OB and pediatrics audits)
+
+- **Wave 3g — OB and pediatrics (5 tiles).** `bishop`, `apgar`,
+  `due-date`, `preg-dating`, `peds-weight-conv` each audited end-to-end
+  per spec-v11 §3.1: citation re-verification (Bishop 1964 Obstet
+  Gynecol original cervical scorecard; Apgar 1953 Curr Res Anesth Analg
+  five-component newborn scorecard; Naegele rule LMP+280 per ACOG
+  Committee Opinion 700; Robinson-Fleming 1975 BJOG CRL regression with
+  ACOG Practice Bulletin 175 redating thresholds 7/14/21 days for
+  T1/T2/T3; NIST 0.45359237 kg/lb with AAP Bright Futures weight bands),
+  three or more boundary worked examples per tile (zero / mid / max
+  bands; leap-year EDD cross-check on `due-date`; discordant-vs-within-
+  limit boundary on `preg-dating`), cross-implementation differentials
+  all 0 delta (hand-computation against the source paper tables, plus
+  ACOG / MDCalc cross-checks where applicable), edge-input handling
+  notes (Naegele UTC millisecond arithmetic sidestepping DST drift;
+  preg-dating optional-input UX skipping `crlMm <= 0`; peds-weight-conv
+  oz < 16 guard; Bishop saturation at the top/bottom rows for out-of-
+  physiological inputs), and an a11y / keyboard pass.
+- **Two META example defects fixed in the same PR per spec-v11 §3.6 #3.**
+  (a) `META.bishop.example` listed consistency = "soft" (worth 2 pts),
+  producing a Bishop score of 10 while the expected text claimed
+  "Bishop 9"; corrected to consistency = "medium" (1 pt) so the example
+  computes to 9 as documented. (b) `META['preg-dating'].example` listed
+  LMP = 2026-01-08 with CRL 50 mm at US 2026-03-12, producing a 19-day
+  T1 discordance that exceeded the 7-day redating threshold while the
+  expected text claimed "within accepted limit"; corrected LMP to
+  2025-12-23 so the example produces a real 3-day within-limit
+  discordance matching the narrative. Live tile rendering was correct
+  in both cases — only the documented example was inconsistent with
+  its own narrative.
+- **`scripts/audit-coverage.mjs` now reports 51 / 178 (29%) overall**,
+  with `E  Clinical Math & Conversions  15/31 (48%)`,
+  `F  Medication & Infusion  15/15 (100%)`,
+  `G  Clinical Scoring & Risk  20/47 (43%)`, and
+  `N  Pediatrics & Neonatal  1/3 (33%)`. Wave 3h (psychiatry screeners)
+  is next per spec-v11 §3.3.
+
 ### Added (spec-v11 wave 3f — renal / electrolyte audits)
 
 - **Wave 3f — renal / electrolyte math (13 tiles).** `anion-gap`,
