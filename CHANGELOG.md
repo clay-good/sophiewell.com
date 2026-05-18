@@ -6,6 +6,40 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v11 wave 3j — code lookups; Group A to 100%)
+
+- **Wave 3j — code lookups (21 tiles).** `icd10`, `hcpcs`, `cpt`,
+  `ndc`, `pos-codes`, `modifier-codes`, `revenue-codes`, `carc`,
+  `rarc`, `hcpcs-mod`, `pos-lookup`, `tob-decode`, `rev-table`,
+  `nubc-codes`, `drg-lookup`, `apc-lookup`, `pcs-lookup`,
+  `rxnorm-lookup`, `ndc-rxnorm`, `em-time`, `ndc-convert` each audited
+  per spec-v11 §3.3 step 10: (a) bundled shard sha256 confirmed
+  against the dataset manifest by `scripts/verify-integrity.mjs`
+  (46 manifests pass clean as of audit date), and (b) at least one
+  sample lookup per shard verified against the authoritative source
+  (CMS / NCHS ICD-10-CM; CMS HCPCS Level II; CMS MPFS + author-
+  written CPT family summaries with the AMA-no-descriptors guard via
+  `test/unit/cpt-no-ama.test.js`; FDA NDC Directory; CMS Place of
+  Service; CMS / X12 modifiers; NUBC UB-04 revenue codes; X12 CARC /
+  RARC; CMS HCPCS Modifier file; NUBC UB-04 TOB structure; NUBC
+  Condition / Occurrence / Value codes; CMS IPPS MS-DRG Final Rule;
+  CMS OPPS APC Addendum; CMS ICD-10-PCS; NLM RxNorm; FDA NDC + NLM
+  RxNorm crosswalk; AMA CPT 2021 E/M time bands; CMS NDC 5-4-2
+  billing format + FDA SPL 10-digit source formats). The two
+  computational tiles in the group (`em-time`, `ndc-convert`) also
+  carry boundary worked examples (low/mid/high time bands; each of
+  the three 10-digit NDC source formats and the ambiguous 5-4-2
+  already-padded case).
+- **No defects opened in this wave.** All META examples computed to
+  the same value the renderer produces (em-time 99204 / 45-min new
+  patient; ndc-convert 1234-5678-90 -> 01234-5678-90 billing / 1234-
+  5678-90 FDA 10-digit / 4-4-2 source).
+- **Group A (Billing & Coding) is now 100% audited.**
+  `scripts/audit-coverage.mjs` reports 96 / 178 (54%) overall, with
+  `A 21/21 (100%)`, `E 31/31 (100%)`, `F 15/15 (100%)`,
+  `G 28/47 (60%)`, and `N 1/3 (33%)`. Wave 3k (regulatory and
+  patient-literacy) is next per spec-v11 §3.3.
+
 ### Added (spec-v11 wave 3i — conversions and physical math; Group E to 100%)
 
 - **Wave 3i — conversions and physical math (16 tiles).** `bmi`, `bsa`,
