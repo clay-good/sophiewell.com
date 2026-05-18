@@ -6,6 +6,41 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v11 wave 3k — regulatory + patient-literacy; Groups C and L to 100%)
+
+- **Wave 3k — regulatory and patient-literacy (20 tiles).** `decoder`,
+  `insurance`, `eob-decoder`, `no-surprises`, `insurance-card`,
+  `abn-explainer`, `msn-decoder`, `idr-eligibility`, `appeal-letter`,
+  `hipaa-roa`, `birthday-rule`, `cobra-timeline`, `medicare-enrollment`,
+  `aca-sep`, `lab-interpret`, `cms1500`, `ub04`, `eob-glossary`,
+  `hipaa-auth`, `roi` each audited per spec-v11 §3.3 step 11: cited
+  CFR / USC / form-version sections re-read against the current text
+  (45 CFR 162.406 NPI Luhn; 45 CFR 164.524 HIPAA Right of Access
+  30-day clock + cost-based fee cap; 45 CFR 164.508 HIPAA Authorization
+  9 required elements; 45 CFR 147.136 internal appeal; 45 CFR 149 +
+  PHSA 2799A-1/-2/-7 No Surprises Act; 29 USC 1162 COBRA 18/29/36
+  windows; 42 CFR 407.14/15/21 Medicare IEP/GEP/SEP; 45 CFR 155.420
+  ACA SEP; NUBC UB-04 Data Specifications; ADA 2024 + 2018 ACC/AHA +
+  ATA 2014 reference bands) and existing pinned unit tests for the
+  template-generators (HIPAA Authorization 9-element coverage; ROI
+  required-field coverage; specialty-visit and wallet-card builders)
+  re-confirmed.
+- **One META citation defect fixed in the same PR per spec-v11 §3.6 #3.**
+  `META.cms1500.citation` previously read "CMS-1500 (08/05)
+  Health Insurance Claim Form ..."; the (08/05) form revision was
+  superseded by the (02/12) revision in April 2014 and the (02/12)
+  form is the current paper professional claim form. Corrected to
+  "CMS-1500 (02/12) ... in use since April 1, 2014". Live tile
+  content was already aligned to the 02/12 form layout; only the
+  citation string referenced the obsolete revision.
+- **Groups C (Insurance & Patient Literacy) and L (Insurance
+  Glossary) are now 100% audited.** `scripts/audit-coverage.mjs`
+  reports 116 / 178 (65%) overall, with `A 21/21 (100%)`,
+  `C 15/15 (100%)`, `E 31/31 (100%)`, `F 15/15 (100%)`,
+  `G 28/47 (60%)`, `H 2/9 (22%)`, `L 3/3 (100%)`, and
+  `N 1/3 (33%)`. Wave 3l (remaining Group G + workflow + EMS / field)
+  is next per spec-v11 §3.3.
+
 ### Added (spec-v11 wave 3j — code lookups; Group A to 100%)
 
 - **Wave 3j — code lookups (21 tiles).** `icd10`, `hcpcs`, `cpt`,
