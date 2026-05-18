@@ -6,6 +6,41 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v11 wave 3l — workflow, high-alert, peds, reference ranges, immunization; Groups H, J, K, N, O to 100%)
+
+- **Wave 3l — workflow + high-alert + remaining pediatrics + reference
+  ranges + immunization & ID (19 tiles).** `prep`, `prior-auth`,
+  `discharge-instr`, `specialty-visit`, `wallet-card`, `sbar-template`,
+  `breach-clock`, `high-alert-card`, `unit-converter-v4`,
+  `time-to-dose`, `lab-adult`, `lab-peds`, `tdm-levels`, `tox-levels`,
+  `tetanus`, `rabies-pep`, `bbp-exposure`, `tb-testing`,
+  `sti-screening` each audited per spec-v11 §3.3. Reference-range and
+  STI-screening tiles audited per step 10 (shard integrity + sampled
+  authoritative lookups). Workflow / patient-education generators
+  (`prep`, `prior-auth`, `discharge-instr`, `specialty-visit`,
+  `wallet-card`, `sbar-template`) audited per step 13 (required-field
+  coverage backed by pinned unit tests in `lib/workflow-v4.js` and
+  `lib/keywords.js`). `breach-clock` boundary-example pass:
+  hand-computed 60-day arithmetic for individual / media / HHS notices
+  and the `>=500` threshold across discovery-date and year-boundary
+  edges; 45 CFR §§164.404 / 164.406 / 164.408 text re-read against
+  the current eCFR. `unit-converter-v4` cross-checked against IFCC
+  HbA1c master equation, NIH/NLM SI conversion table, and exact NIST
+  in / lb factors. `tetanus`, `rabies-pep`, and `bbp-exposure`
+  decision trees cross-checked row-by-row against the bundled JSON
+  vs. CDC ACIP / USPHS source tables; the `tb-testing` 5 / 10 / 15 mm
+  TST cutoffs confirmed against the current ATS / CDC / IDSA
+  guidance.
+- **Groups H (Workflow & Documentation), J (Immunization & Infectious
+  Disease), K (Reference Ranges), N (Pediatrics & Neonatal), and O
+  (High-Alert & Safety) are now 100% audited.**
+  `scripts/audit-coverage.mjs` reports 135 / 178 (76%) overall, with
+  `A 21/21`, `C 15/15`, `E 31/31`, `F 15/15`, `G 28/47 (60%)`,
+  `H 9/9`, `I 0/24 (0%)`, `J 5/5`, `K 4/4`, `L 3/3`, `N 3/3`,
+  `O 1/1`. The two remaining waves are Group G clinical-scoring tail
+  (19 tiles) and Group I EMS & field medicine (24 tiles) per
+  spec-v11 §3.3.
+
 ### Added (spec-v11 wave 3k — regulatory + patient-literacy; Groups C and L to 100%)
 
 - **Wave 3k — regulatory and patient-literacy (20 tiles).** `decoder`,
