@@ -6,6 +6,42 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v11 waves 3d + 3e — cardiology + pulmonary audits)
+
+- **Wave 3d — cardiology scoring (10 tiles).** `chads`, `hasbled`,
+  `heart`, `timi`, `grace`, `wells-pe`, `wells-dvt`, `perc`,
+  `wells-pe-geneva`, `wells-dvt-caprini` each audited end-to-end per
+  spec-v11 §3.1: citation re-verification (Lip 2010 Chest CHA2DS2-VASc,
+  Pisters 2010 HAS-BLED, Six 2008 + Backus 2013 HEART, Antman 2000
+  TIMI, Granger 2003 GRACE, Wells 2000 PE / Wells 1997 DVT, Kline 2004
+  + Kline 2008 PERC, Le Gal 2006 revised Geneva, Caprini 2005 + Bahl
+  2010 Caprini RAM), three boundary worked examples per tile (zero /
+  mid / max-score), a cross-implementation differential against the
+  source tables (Lip 2010 Table 6/7, Pisters 2010 Table 3/5, Backus
+  2013 Table 3, Antman 2000 Table 3, Granger 2003 Table 1, Wells 2000
+  Table 2/4, Wells 1997 Table 1/2, Le Gal 2006 Table 2/3, Bahl 2010
+  thresholds), edge-input handling notes (Wells DVT carry-through on
+  the -2 "alternative dx" subtraction; Geneva HR-tier `else if`
+  cascade; CHA2DS2-VASc independent age tiers; HEART troponin tier
+  not tied to a single assay), and an a11y / keyboard pass. All 10
+  PASS; one example-narrative refinement opportunity noted on
+  `wells-pe-geneva` (META example narrative says "Geneva ~3" but
+  HR 105 alone scores 5 (Intermediate) — live rendering is correct;
+  example narrative is approximate, not user-visible incorrect output).
+- **Wave 3e — pulmonary scoring (2 tiles).** `curb-65`, `psi` each
+  audited end-to-end per spec-v11 §3.1: citation re-verification (Lim
+  2003 Thorax CURB-65; Fine 1997 NEJM PSI), three boundary worked
+  examples per tile (zero / mid / max-class), cross-implementation
+  differentials against Lim 2003 Table 4 + Table 5 and Fine 1997
+  Table 4 + Table 5 (both 0% delta), edge-input handling notes (CURB-65
+  BUN > 20 mg/dL US rounding of source 7 mmol/L; PSI Class I age
+  short-circuit uses raw age not female-adjusted age), and an a11y
+  pass. Both PASS.
+- **`scripts/audit-coverage.mjs` now reports 33 / 178 (19%) overall**,
+  with `F  Medication & Infusion  15/15 (100%)` and
+  `G  Clinical Scoring & Risk  18/47 (38%)`. Wave 3f (renal /
+  electrolyte math) is next per spec-v11 §3.3.
+
 ### Added (spec-v11 waves 3b + 3c — critical-care + stroke / neuro audits)
 
 - **Wave 3b — critical-care scoring (3 tiles).** `qsofa-sofa`,
