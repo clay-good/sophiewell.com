@@ -2888,6 +2888,114 @@ export const renderers = {
     run();
   },
 
+  // spec-v14 §3.2.2 wave 14-2 backfill: Berlin Questionnaire (Netzer 1999).
+  'berlin-osa'(root) {
+    root.appendChild(el('h3', { text: 'Category 1: snoring (positive if >=2 answers below)' }));
+    const cat1 = [
+      ['Do you snore?', 'bo-q1'],
+      ['Is your snoring louder than talking?', 'bo-q2'],
+      ['Do you snore >=3-4 times per week?', 'bo-q3'],
+      ['Has your snoring bothered other people?', 'bo-q4'],
+      ['Has anyone noticed you stop breathing during sleep >=3-4 times/week?', 'bo-q5'],
+    ];
+    for (const [l, id] of cat1) root.appendChild(checkbox(l, id));
+    root.appendChild(el('h3', { text: 'Category 2: daytime sleepiness (positive if >=2)' }));
+    const cat2 = [
+      ['Tired or fatigued after sleep >=3-4 times/week?', 'bo-q6'],
+      ['Tired/fatigued during waking hours >=3-4 times/week?', 'bo-q7'],
+      ['Have you nodded off or fallen asleep while driving?', 'bo-q8'],
+    ];
+    for (const [l, id] of cat2) root.appendChild(checkbox(l, id));
+    root.appendChild(el('h3', { text: 'Category 3: hypertension or obesity (positive if either)' }));
+    const cat3 = [
+      ['Hypertension (history of high blood pressure)', 'bo-htn'],
+      ['BMI > 30 kg/m^2', 'bo-bmi'],
+    ];
+    for (const [l, id] of cat3) root.appendChild(checkbox(l, id));
+    const o = out(); root.appendChild(o);
+    const run = () => safe(o, () => {
+      const r = S4.berlinOsa({
+        q1Snore: checked('bo-q1'),
+        q2LouderThanTalking: checked('bo-q2'),
+        q3FreqAtLeast3to4PerWeek: checked('bo-q3'),
+        q4BotheredOthers: checked('bo-q4'),
+        q5ObservedApneaAtLeast3to4PerWeek: checked('bo-q5'),
+        q6TiredAfterSleepAtLeast3to4PerWeek: checked('bo-q6'),
+        q7TiredDuringDayAtLeast3to4PerWeek: checked('bo-q7'),
+        q8NoddedOffWhileDriving: checked('bo-q8'),
+        hasHypertension: checked('bo-htn'),
+        bmiGt30: checked('bo-bmi'),
+      });
+      o.appendChild(el('h2', { text: r.highRisk ? 'Berlin: HIGH risk for OSA' : 'Berlin: LOW risk for OSA' }));
+      o.appendChild(el('p', { text: r.band }));
+      o.appendChild(el('p', { class: 'muted', text: `Categories positive: 1=${r.cat1Positive ? 'yes' : 'no'} (${r.cat1Yes}/5 answers); 2=${r.cat2Positive ? 'yes' : 'no'} (${r.cat2Yes}/3); 3=${r.cat3Positive ? 'yes' : 'no'}.` }));
+    });
+    [...cat1, ...cat2, ...cat3].forEach(([, id]) =>
+      document.getElementById(id).addEventListener('change', run));
+    run();
+  },
+
+  // spec-v14 §3.3.1 wave 14-3 backfill: LEMON Difficult Airway (Reed 2005).
+  lemon(root) {
+    const items = [
+      ['Look externally: bearded, edentulous, facial trauma, large incisors, large tongue, etc. (+1)', 'le-look'],
+      ['Evaluate 3-3-2: incisor opening <3 fingerbreadths (+1)', 'le-incisor'],
+      ['Evaluate 3-3-2: hyoid-to-mental distance <3 fingerbreadths (+1)', 'le-hyoid'],
+      ['Evaluate 3-3-2: thyroid-to-floor-of-mouth <2 fingerbreadths (+1)', 'le-thyroid'],
+      ['Mallampati class >=III (+1)', 'le-mp'],
+      ['Obstruction or Obesity (+1)', 'le-obs'],
+      ['Neck mobility limited (+1)', 'le-neck'],
+    ];
+    for (const [l, id] of items) root.appendChild(checkbox(l, id));
+    const o = out(); root.appendChild(o);
+    const run = () => safe(o, () => {
+      const r = S4.lemon({
+        lookExternal: checked('le-look'),
+        incisorLt3fb: checked('le-incisor'),
+        hyoidMentalLt3fb: checked('le-hyoid'),
+        thyroidFloorLt2fb: checked('le-thyroid'),
+        mallampatiGte3: checked('le-mp'),
+        obstruction: checked('le-obs'),
+        neckMobilityLimited: checked('le-neck'),
+      });
+      o.appendChild(el('h2', { text: `LEMON ${r.score} of 8` }));
+      o.appendChild(el('p', { text: r.band }));
+      o.appendChild(el('p', { class: 'muted', text: `3-3-2 subtotal: ${r.threeThreeTwo} of 3.` }));
+    });
+    items.forEach(([, id]) => document.getElementById(id).addEventListener('change', run));
+    run();
+  },
+
+  // spec-v14 §3.3.4 wave 14-3 backfill: White-Song Fast-Track (White 1999).
+  'white-song'(root) {
+    const items = [
+      ['LOC (awake & oriented = 2, arousable = 1, responsive only to tactile = 0)', 'ws-loc'],
+      ['Physical activity (move all extremities on command = 2, some weakness = 1, unable = 0)', 'ws-act'],
+      ['Hemodynamic stability (BP <15% baseline = 2, 15-30% = 1, >30% = 0)', 'ws-hd'],
+      ['Respiratory stability (deep breath = 2, tachypnea + good cough = 1, dyspnea + weak cough = 0)', 'ws-resp'],
+      ['Oxygen saturation (>90% on room air = 2, supplemental O2 needed = 1, <90% with O2 = 0)', 'ws-o2'],
+      ['Postoperative pain (none/mild = 2, moderate-severe controlled with IV analgesics = 1, persistent severe pain = 0)', 'ws-pain'],
+      ['Postoperative emetic symptoms (none/mild nausea + no active vomiting = 2, transient vomiting/retching = 1, persistent moderate-severe N/V = 0)', 'ws-eme'],
+    ];
+    for (const [l, id] of items) root.appendChild(rangeField(l, id, 0, 2, 2));
+    const o = out(); root.appendChild(o);
+    const run = () => safe(o, () => {
+      const r = S4.whiteSong({
+        loc: nv('ws-loc'),
+        physicalActivity: nv('ws-act'),
+        hemodynamicStability: nv('ws-hd'),
+        respiratoryStability: nv('ws-resp'),
+        oxygenSaturation: nv('ws-o2'),
+        postoperativePain: nv('ws-pain'),
+        postoperativeEmesis: nv('ws-eme'),
+      });
+      o.appendChild(el('h2', { text: `White-Song ${r.score} of 14` }));
+      o.appendChild(el('p', { text: r.band }));
+    });
+    items.forEach(([, id]) => document.getElementById(id).addEventListener('input', run));
+    run();
+  },
+
   // spec-v14 §3.3.3 wave 14-3: modified Aldrete (Aldrete 1995).
   aldrete(root) {
     const items = [

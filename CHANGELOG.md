@@ -6,6 +6,56 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v14 backfills — Berlin Questionnaire, LEMON, White-Song)
+
+These three tiles close the wave 14-2 and wave 14-3 partials with
+focused audits against the primary sources, as flagged when those
+waves originally shipped.
+
+- **`berlin-osa` — Berlin Questionnaire for OSA** (Netzer NC,
+  Stoohs RA, Netzer CM, Clark K, Strohl KP. *Using the Berlin
+  Questionnaire to identify patients at risk for the sleep apnea
+  syndrome.* Ann Intern Med. 1999;131(7):485-491). Three
+  categories with criteria-specific high-risk rules: Category 1
+  (snoring) positive if >=2 of five answers (snore, louder than
+  talking, >=3-4/wk, bothered others, observed apnea >=3-4/wk);
+  Category 2 (daytime sleepiness) positive if >=2 of three (tired
+  after sleep, tired during day, nodded off while driving);
+  Category 3 positive if hypertension OR BMI >30. Overall HIGH
+  risk for OSA iff >=2 categories are positive per Netzer 1999.
+  Audit log:
+  [docs/audits/v11/berlin-osa.md](docs/audits/v11/berlin-osa.md).
+  Worked examples in
+  [test/unit/berlin-osa.test.js](test/unit/berlin-osa.test.js).
+- **`lemon` — LEMON Difficult Airway Predictor** (Reed MJ, Dunn
+  MJG, McKeown DW. *Can an airway assessment score predict
+  difficulty at intubation in the emergency department?* Emerg
+  Med J. 2005;22(2):99-102). Six factors with the 3-3-2 rule
+  sub-grouped (Look externally +1; Evaluate 3-3-2 +1 per failed
+  sub-measurement, max 3; Mallampati >=III +1; Obstruction/
+  Obesity +1; Neck mobility limited +1); sum 0-7 (the spec-v14
+  §3.3.1 prose says 0-8 but the mathematics produces 0-7;
+  flagged in audit). Higher = greater
+  predicted difficulty per Reed 2005. The 3-3-2 subtotal is
+  surfaced alongside the total. Audit log:
+  [docs/audits/v11/lemon.md](docs/audits/v11/lemon.md). Worked
+  examples in [test/unit/lemon.test.js](test/unit/lemon.test.js).
+- **`white-song` — White-Song Fast-Track Score** (White PF, Song
+  D. *New criteria for fast-tracking after outpatient anesthesia:
+  a comparison with the modified Aldrete's scoring system.*
+  Anesth Analg. 1999;88(5):1069-1072). Seven domains each scored
+  0-2 (LOC, physical activity, hemodynamic stability, respiratory
+  stability, oxygen saturation, postoperative pain, postoperative
+  emetic symptoms); sum 0-14; fast-track-eligible iff sum >=12
+  AND no individual domain <1 per White 1999. The dual-condition
+  band differentiates the two failure modes (sum cutoff vs.
+  per-domain floor) so a clinician sees why borderline cases
+  fail. Per-item input clamped to [0, 2]. Audit log:
+  [docs/audits/v11/white-song.md](docs/audits/v11/white-song.md)
+  (PASS-WITH-FIXES; spec-v14 §3.3.4 prose says "six domains" but
+  enumerates seven; published score has seven). Worked examples
+  in [test/unit/white-song.test.js](test/unit/white-song.test.js).
+
 ### Added (spec-v14 wave 14-8 — DAPT duration (partial): DAPT Score)
 
 - **`dapt-score` — DAPT Score (continuation)** (Yeh RW, Secemsky
