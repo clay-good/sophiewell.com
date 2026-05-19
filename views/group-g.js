@@ -1713,4 +1713,51 @@ export const renderers = {
     document.getElementById('ek-kps').addEventListener('change', run);
     run();
   },
+
+  // spec-v12 §3.8.1 wave 12-8: Killip Classification (Killip 1967).
+  killip(root) {
+    const opts = [
+      ['1', 'I - No signs of heart failure'],
+      ['2', 'II - Rales / S3 gallop / elevated JVP'],
+      ['3', 'III - Acute pulmonary edema'],
+      ['4', 'IV - Cardiogenic shock (hypotension, oliguria, cold extremities)'],
+    ];
+    root.appendChild(el('p', {}, [
+      el('label', { for: 'kp-class', text: 'Killip class (Killip & Kimball 1967)' }), el('br'),
+      el('select', { id: 'kp-class' }, opts.map(([v, t]) => el('option', { value: v, text: t }))),
+    ]));
+    const o = out(); root.appendChild(o);
+    const run = () => safe(o, () => {
+      const r = S4.killip({ klass: nv('kp-class') });
+      o.appendChild(el('h2', { text: r.descriptor }));
+      o.appendChild(el('p', { text: r.band }));
+      o.appendChild(el('p', { class: 'muted', text: 'Contemporary reperfusion-era mortality (GUSTO-I; Lee 1995): Killip I ~5%, II ~14%, III ~32%, IV ~58%. Killip class is also a GRACE input.' }));
+    });
+    document.getElementById('kp-class').addEventListener('change', run);
+    run();
+  },
+
+  // spec-v12 §3.9.1 wave 12-8: SIRS Criteria (Bone 1992).
+  sirs(root) {
+    const items = [
+      ['Temperature >38 deg C or <36 deg C', 'sr-temp'],
+      ['Heart rate >90 bpm', 'sr-hr'],
+      ['Respiratory rate >20 / min OR PaCO2 <32 mmHg', 'sr-resp'],
+      ['WBC >12 or <4 (x10^9/L) OR >10% bands', 'sr-wbc'],
+    ];
+    for (const [l, id] of items) root.appendChild(checkbox(l, id));
+    const o = out(); root.appendChild(o);
+    const run = () => safe(o, () => {
+      const r = S4.sirs({
+        tempAbnormal: checked('sr-temp'),
+        hrGt90: checked('sr-hr'),
+        rrOrPaco2: checked('sr-resp'),
+        wbcOrBands: checked('sr-wbc'),
+      });
+      o.appendChild(el('h2', { text: `SIRS criteria met: ${r.count} of 4` }));
+      o.appendChild(el('p', { text: r.band }));
+    });
+    items.forEach(([, id]) => document.getElementById(id).addEventListener('change', run));
+    run();
+  },
 };

@@ -6,6 +6,53 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v12 wave 12-9 — closeout)
+
+- **spec-v12 marked complete.** All 24 tiles enumerated in
+  [docs/spec-v12.md §10](docs/spec-v12.md) (the `maddrey-lille`
+  combined card ships as one tile per spec-v12 §3.4.3) shipped
+  under the v11 audit floor and the v12 §5 13-point shipping
+  contract. Catalog 178 -> 202 at v12 close.
+- **Home grid copy refreshed**:
+  [index.html](index.html) `<title>`, `<meta description>`, the
+  OG / Twitter cards, and the home-lede paragraph updated from
+  "178" to "202 calculators..."; the JSON-LD `featureList` is
+  auto-derived from `UTILITIES.length` via
+  [scripts/build-ld.mjs](scripts/build-ld.mjs) and now reports
+  202. README catalog snapshots in
+  [README.md](README.md) updated 178 -> 202 in both the "twelve
+  categories" sentence and the post-spec-v5-trimming paragraph.
+- **Audit coverage rerun**: `scripts/audit-coverage.mjs` reports
+  202 / 202 (100%) with the new tiles slotted into Groups G, E,
+  H, and N per [docs/spec-v12.md §4](docs/spec-v12.md).
+- **Five audience hubs and eight topic pages re-render** with the
+  new tiles slotted in via `META[id].specialties` intersected with
+  the audience and topic mappings in
+  [scripts/build-hub-pages.mjs](scripts/build-hub-pages.mjs) and
+  [scripts/build-topic-pages.mjs](scripts/build-topic-pages.mjs).
+  No manual hub or topic edits were needed.
+
+### Added (spec-v12 wave 12-8 — cardiology + critical-care bundle: Killip, SIRS)
+
+- **`killip` — Killip Classification** (Killip T, Kimball JT.
+  *Treatment of myocardial infarction in a coronary care unit. A
+  two-year experience with 250 patients.* Am J Cardiol. 1967;
+  20(4):457-464). Four-row class picker (I-IV) with the Killip
+  1967 original-cohort in-hospital mortality (6% / 17% / 38% /
+  81%); the contemporary GUSTO-I reperfusion-era cohort
+  (Lee 1995) is surfaced as a secondary reference. Audit log:
+  [docs/audits/v11/killip.md](docs/audits/v11/killip.md). Worked
+  examples in [test/unit/killip.test.js](test/unit/killip.test.js).
+- **`sirs` — SIRS Criteria (with Sepsis-3 context)** (Bone RC,
+  et al. *Definitions for sepsis and organ failure and guidelines
+  for the use of innovative therapies in sepsis.* Chest. 1992;
+  101(6):1644-1655). Four-criterion count with the >=2 SIRS-
+  positive threshold per Bone 1992. Sepsis-3 (Singer M, et al.
+  JAMA. 2016;315(8):801-810) deprecation is surfaced inline so a
+  clinician auditing a CDS trigger sees both definitions. Audit
+  log: [docs/audits/v11/sirs.md](docs/audits/v11/sirs.md). Worked
+  examples in [test/unit/sirs.test.js](test/unit/sirs.test.js).
+
 ### Added (spec-v12 wave 12-7 — comorbidity, frailty & performance bundle: Charlson, Clinical Frailty Scale, ECOG + Karnofsky)
 
 - **`charlson` — Charlson Comorbidity Index (age-adjusted)**
