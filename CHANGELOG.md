@@ -6,6 +6,45 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v13 wave 13-8 — closeout)
+
+- **spec-v13 partial close (21 of 25 tiles).** Waves 13-2 through
+  13-7 shipped under the v11 audit floor and the v12 §5 13-point
+  shipping contract: sedation & delirium (RASS, SAS-Riker,
+  CAM-ICU, ICDSC, 4AT), ICU pain (CPOT, BPS), nutrition (NUTRIC,
+  mNUTRIC, NRS-2002, MUST), ventilation & lung injury (ROX,
+  HACOR, Berlin ARDS, Murray LIS, LIPS), vasoactive load (VIS),
+  and severe CAP triage (SMART-COP, CRB-65, ATS/IDSA-CAP, DRIP).
+  Catalog 202 -> 223 at v13 partial close.
+- **Wave 13-1 (ICU mortality scoring — APACHE II, SAPS II, MODS,
+  LODS) deferred.** Each of the four mortality scores ships with
+  per-variable weighting tables and (for APACHE II / SAPS II /
+  LODS) a published logit producing predicted mortality; they
+  require deeper audit-log work than the rest of the v13 tranche
+  and are queued for a dedicated wave-13-1 PR rather than rushed
+  into the closeout. v13 acceptance per
+  [docs/spec-v13.md §7](docs/spec-v13.md) reopens to 25/25 once
+  that wave lands; the §6 sequencing is unchanged.
+- **Home grid copy refreshed**: [index.html](index.html)
+  `<title>`, `<meta description>`, the OG / Twitter cards, the
+  home-lede paragraph, and the WebApplication description in
+  the JSON-LD `featureList` (auto-derived from
+  `UTILITIES.length` via
+  [scripts/build-ld.mjs](scripts/build-ld.mjs)) all read 223.
+  README catalog snapshots in [README.md](README.md) updated
+  202 -> 223 in both the "twelve categories" sentence and the
+  post-spec-v5-trimming paragraph.
+- **Audit coverage rerun**: `scripts/audit-coverage.mjs` reports
+  223 / 223 (100%) with the v13 tiles slotted into Groups G
+  (Clinical Scoring & Risk) and E (Clinical Math & Conversions)
+  per [docs/spec-v13.md §4](docs/spec-v13.md).
+- **Audience hubs and topic pages re-render** with the v13 tiles
+  slotted in via `META[id].specialties` intersected with the
+  audience and topic mappings in
+  [scripts/build-hub-pages.mjs](scripts/build-hub-pages.mjs) and
+  [scripts/build-topic-pages.mjs](scripts/build-topic-pages.mjs).
+  No manual hub or topic edits were needed.
+
 ### Added (spec-v13 wave 13-7 — severe CAP triage bundle: SMART-COP, CRB-65, ATS/IDSA-CAP, DRIP)
 
 - **`smart-cop` — SMART-COP** (Charles PGP, et al. *SMART-COP: a
