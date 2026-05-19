@@ -3425,6 +3425,68 @@ export const renderers = {
     run();
   },
 
+  // spec-v15 §3.4.1 wave 15-4: PECARN IAI (Holmes 2013).
+  'pecarn-iai'(root) {
+    const items = [
+      ['Evidence of abdominal wall trauma or seat-belt sign', 'pi-wall'],
+      ['GCS <14', 'pi-gcs'],
+      ['Abdominal tenderness on exam', 'pi-tender'],
+      ['Vomiting', 'pi-vom'],
+      ['Thoracic wall trauma', 'pi-thor'],
+      ['Complaint of abdominal pain', 'pi-pain'],
+      ['Decreased breath sounds', 'pi-breath'],
+    ];
+    for (const [l, id] of items) root.appendChild(checkbox(l, id));
+    const o = out(); root.appendChild(o);
+    const run = () => safe(o, () => {
+      const r = S4.pecarnIai({
+        abdominalWallTraumaOrSeatBeltSign: checked('pi-wall'),
+        gcsLt14: checked('pi-gcs'),
+        abdominalTenderness: checked('pi-tender'),
+        vomiting: checked('pi-vom'),
+        thoracicWallTrauma: checked('pi-thor'),
+        abdominalPain: checked('pi-pain'),
+        decreasedBreathSounds: checked('pi-breath'),
+      });
+      o.appendChild(el('h2', { text: r.veryLowRisk ? 'PECARN IAI: very low risk' : `PECARN IAI: ${r.presentCount}/7 risk findings` }));
+      o.appendChild(el('p', { text: r.band }));
+    });
+    items.forEach(([, id]) => document.getElementById(id).addEventListener('change', run));
+    run();
+  },
+
+  // spec-v15 §3.4.2 wave 15-4: PECARN C-Spine (Leonard 2019).
+  'pecarn-cspine'(root) {
+    const items = [
+      ['Altered mental status', 'pc-ams'],
+      ['Abnormal airway/breathing/circulation', 'pc-abc'],
+      ['Focal neurologic deficit', 'pc-neuro'],
+      ['Neck pain', 'pc-neck'],
+      ['Torticollis', 'pc-tort'],
+      ['Substantial torso injury', 'pc-torso'],
+      ['Predisposing condition (e.g., Down syndrome, juvenile arthritis)', 'pc-pred'],
+      ['High-risk motor vehicle collision', 'pc-mvc'],
+    ];
+    for (const [l, id] of items) root.appendChild(checkbox(l, id));
+    const o = out(); root.appendChild(o);
+    const run = () => safe(o, () => {
+      const r = S4.pecarnCspine({
+        alteredMentalStatus: checked('pc-ams'),
+        abnormalAirwayBreathingCirculation: checked('pc-abc'),
+        focalNeurologicDeficit: checked('pc-neuro'),
+        neckPain: checked('pc-neck'),
+        torticollis: checked('pc-tort'),
+        substantialTorsoInjury: checked('pc-torso'),
+        predisposingCondition: checked('pc-pred'),
+        highRiskMvc: checked('pc-mvc'),
+      });
+      o.appendChild(el('h2', { text: r.lowRisk ? 'PECARN C-Spine: LOW risk' : `PECARN C-Spine: ${r.presentCount}/8 risk factors` }));
+      o.appendChild(el('p', { text: r.band }));
+    });
+    items.forEach(([, id]) => document.getElementById(id).addEventListener('change', run));
+    run();
+  },
+
   // spec-v14 §3.3.3 wave 14-3: modified Aldrete (Aldrete 1995).
   aldrete(root) {
     const items = [

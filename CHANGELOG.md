@@ -6,6 +6,39 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v15 wave 15-4 — pediatric imaging-decision companions: PECARN IAI, PECARN C-Spine)
+
+Full v15 wave 15-4. Both tiles ship under Group N (Pediatrics &
+Neonatal) per spec-v15 §3.4 and under the spec-v11 audit floor +
+spec-v12 §5 13-point per-tile shipping contract.
+
+- **`pecarn-iai` — PECARN Intra-Abdominal Injury Rule** (Holmes
+  JF, Lillis K, Monroe D, et al. *Identifying children at very
+  low risk of clinically important blunt abdominal injuries.*
+  Ann Emerg Med. 2013;62(2):107-116.e2). Seven negative findings
+  (abdominal wall trauma/seat-belt sign; GCS <14; abdominal
+  tenderness; vomiting; thoracic wall trauma; abdominal pain;
+  decreased breath sounds). All seven must be absent for
+  very-low-risk classification (NPV 99.9% per Holmes 2013). The
+  `findingsPresent` list surfaces which findings disqualified
+  the patient. Audit log:
+  [docs/audits/v11/pecarn-iai.md](docs/audits/v11/pecarn-iai.md).
+  Worked examples in
+  [test/unit/pecarn-iai.test.js](test/unit/pecarn-iai.test.js).
+- **`pecarn-cspine` — PECARN Pediatric C-Spine Rule** (Leonard
+  JC, Browne LR, Ahmad FA, et al. *Cervical spine injury risk
+  factors in children with blunt trauma.* Pediatrics. 2019;
+  144(1):e20183221; derivation: Leonard JC, Kuppermann N, Olsen
+  C, et al. Ann Emerg Med. 2011;58(2):145-155). Eight risk
+  factors (altered mental status; abnormal ABC; focal
+  neurologic deficit; neck pain; torticollis; substantial
+  torso injury; predisposing condition; high-risk MVC). NONE
+  present -> low-risk; imaging not indicated. ANY present ->
+  imaging warranted. Audit log:
+  [docs/audits/v11/pecarn-cspine.md](docs/audits/v11/pecarn-cspine.md).
+  Worked examples in
+  [test/unit/pecarn-cspine.test.js](test/unit/pecarn-cspine.test.js).
+
 ### Added (spec-v15 wave 15-3 — pediatric respiratory & neurologic: Westley, PRAM, PASS, peds-GCS, Nigrovic)
 
 Full v15 wave 15-3 closes the pediatric respiratory + neurologic
