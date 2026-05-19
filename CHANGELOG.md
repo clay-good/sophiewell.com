@@ -6,6 +6,73 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v13 wave 13-3 — ICU pain bundle: CPOT, BPS)
+
+- **`cpot` — Critical-Care Pain Observation Tool** (Gelinas C,
+  et al. *Validation of the Critical-Care Pain Observation Tool
+  in adult patients.* Am J Crit Care. 2006;15(4):420-427).
+  Four behaviors (facial expression, body movements, muscle
+  tension, ventilator compliance or vocalization) each 0-2;
+  range 0-8 with the Gelinas 2006 unacceptable-pain cutoff >=3.
+  Audit log: [docs/audits/v11/cpot.md](docs/audits/v11/cpot.md).
+  Worked examples in
+  [test/unit/cpot.test.js](test/unit/cpot.test.js).
+- **`bps` — Behavioral Pain Scale** (Payen JF, et al. *Assessing
+  pain in critically ill sedated patients by using a behavioral
+  pain scale.* Crit Care Med. 2001;29(12):2258-2263). Three
+  behaviors (facial expression, upper limb movements, ventilator
+  compliance) each 1-4; range 3-12 with the Payen 2001
+  unacceptable-pain cutoff >5. Audit log:
+  [docs/audits/v11/bps.md](docs/audits/v11/bps.md). Worked
+  examples in [test/unit/bps.test.js](test/unit/bps.test.js).
+
+### Added (spec-v13 wave 13-2 — sedation & delirium bundle: RASS, SAS-Riker, CAM-ICU, ICDSC, 4AT)
+
+- **`rass` — Richmond Agitation-Sedation Scale** (Sessler CN,
+  et al. *The Richmond Agitation-Sedation Scale: validity and
+  reliability in adult intensive care unit patients.* Am J
+  Respir Crit Care Med. 2002;166(10):1338-1344). 10-row picker
+  (-5 unarousable through +4 combative) with the SCCM PADIS 2018
+  (Devlin 2018) light-sedation target band (-2 to 0). Audit log:
+  [docs/audits/v11/rass.md](docs/audits/v11/rass.md). Worked
+  examples in [test/unit/rass.test.js](test/unit/rass.test.js).
+- **`sas-riker` — Riker Sedation-Agitation Scale** (Riker RR,
+  et al. *Prospective evaluation of the Sedation-Agitation Scale
+  for adult critically ill patients.* Crit Care Med. 1999;27(7):
+  1325-1329). Seven-row picker (1 unarousable through 7 dangerous
+  agitation) with the SCCM PADIS 2018 goal band SAS 3-4. Audit
+  log: [docs/audits/v11/sas-riker.md](docs/audits/v11/sas-riker.md).
+  Worked examples in
+  [test/unit/sas-riker.test.js](test/unit/sas-riker.test.js).
+- **`cam-icu` — Confusion Assessment Method for the ICU** (Ely
+  EW, et al. *Delirium in mechanically ventilated patients:
+  validity and reliability of the Confusion Assessment Method
+  for the ICU (CAM-ICU).* JAMA. 2001;286(21):2703-2710). Four-
+  feature algorithm: feature 1 (acute onset or fluctuating
+  course) AND feature 2 (inattention) AND (feature 3 (altered
+  level of consciousness) OR feature 4 (disorganized thinking)).
+  Audit log:
+  [docs/audits/v11/cam-icu.md](docs/audits/v11/cam-icu.md).
+  Worked examples in
+  [test/unit/cam-icu.test.js](test/unit/cam-icu.test.js).
+- **`icdsc` — Intensive Care Delirium Screening Checklist**
+  (Bergeron N, et al. *Intensive Care Delirium Screening
+  Checklist: evaluation of a new screening tool.* Intensive Care
+  Med. 2001;27(5):859-864). Eight binary items each 0/1; range
+  0-8 with the Bergeron 2001 delirium cutoff >=4. Audit log:
+  [docs/audits/v11/icdsc.md](docs/audits/v11/icdsc.md). Worked
+  examples in [test/unit/icdsc.test.js](test/unit/icdsc.test.js).
+- **`4at` — 4AT Delirium Screen** (MacLullich AMJ, et al. *The
+  4 "A"s Test for detecting delirium in acute medical patients
+  (4AT): a diagnostic accuracy study.* Health Technol Assess.
+  2019;23(40):1-194). Four domains (Alertness 0 or 4; AMT4 0/1/2;
+  Attention months-of-year-backwards 0/1/2; Acute change or
+  fluctuating course 0 or 4) summing 0-12; three-band
+  interpretation (0 unlikely; 1-3 possible cognitive impairment;
+  >=4 possible delirium). Audit log:
+  [docs/audits/v11/4at.md](docs/audits/v11/4at.md). Worked
+  examples in [test/unit/4at.test.js](test/unit/4at.test.js).
+
 ### Added (spec-v12 wave 12-9 — closeout)
 
 - **spec-v12 marked complete.** All 24 tiles enumerated in

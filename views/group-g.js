@@ -1760,4 +1760,231 @@ export const renderers = {
     items.forEach(([, id]) => document.getElementById(id).addEventListener('change', run));
     run();
   },
+
+  // spec-v13 §3.2.1 wave 13-2: RASS (Sessler 2002).
+  rass(root) {
+    const opts = [
+      ['4', '+4 - Combative'],
+      ['3', '+3 - Very agitated'],
+      ['2', '+2 - Agitated'],
+      ['1', '+1 - Restless'],
+      ['0', '0 - Alert and calm'],
+      ['-1', '-1 - Drowsy'],
+      ['-2', '-2 - Light sedation'],
+      ['-3', '-3 - Moderate sedation'],
+      ['-4', '-4 - Deep sedation'],
+      ['-5', '-5 - Unarousable'],
+    ];
+    root.appendChild(el('p', {}, [
+      el('label', { for: 'rs-level', text: 'RASS level (Sessler 2002)' }), el('br'),
+      el('select', { id: 'rs-level' }, opts.map(([v, t]) => el('option', { value: v, text: t }))),
+    ]));
+    const o = out(); root.appendChild(o);
+    const run = () => safe(o, () => {
+      const r = S4.rass({ level: nv('rs-level') });
+      o.appendChild(el('h2', { text: `RASS ${r.level >= 0 ? '+' + r.level : r.level}` }));
+      o.appendChild(el('p', { text: r.descriptor }));
+      o.appendChild(el('p', { text: r.band }));
+    });
+    document.getElementById('rs-level').addEventListener('change', run);
+    run();
+  },
+
+  // spec-v13 §3.2.2 wave 13-2: SAS / Riker (Riker 1999).
+  'sas-riker'(root) {
+    const opts = [
+      ['1', '1 - Unarousable'],
+      ['2', '2 - Very sedated'],
+      ['3', '3 - Sedated'],
+      ['4', '4 - Calm and cooperative'],
+      ['5', '5 - Agitated'],
+      ['6', '6 - Very agitated'],
+      ['7', '7 - Dangerous agitation'],
+    ];
+    root.appendChild(el('p', {}, [
+      el('label', { for: 'sk-level', text: 'SAS level (Riker 1999)' }), el('br'),
+      el('select', { id: 'sk-level' }, opts.map(([v, t]) => el('option', { value: v, text: t }))),
+    ]));
+    const sel = root.querySelector('#sk-level'); if (sel) sel.value = '4';
+    const o = out(); root.appendChild(o);
+    const run = () => safe(o, () => {
+      const r = S4.sasRiker({ level: nv('sk-level') });
+      o.appendChild(el('h2', { text: `SAS ${r.level}` }));
+      o.appendChild(el('p', { text: r.descriptor }));
+      o.appendChild(el('p', { text: r.band }));
+    });
+    document.getElementById('sk-level').addEventListener('change', run);
+    run();
+  },
+
+  // spec-v13 §3.2.3 wave 13-2: CAM-ICU (Ely 2001).
+  'cam-icu'(root) {
+    root.appendChild(checkbox('Feature 1: Acute onset of mental status change OR fluctuating course', 'ci-f1'));
+    root.appendChild(checkbox('Feature 2: Inattention (Attention Screening Examination >=2 errors)', 'ci-f2'));
+    root.appendChild(checkbox('Feature 3: Altered level of consciousness (current RASS != 0)', 'ci-f3'));
+    root.appendChild(checkbox('Feature 4: Disorganized thinking (4-item question set + command)', 'ci-f4'));
+    const o = out(); root.appendChild(o);
+    const run = () => safe(o, () => {
+      const r = S4.camIcu({
+        acuteOnsetOrFluctuating: checked('ci-f1'),
+        inattention: checked('ci-f2'),
+        alteredLoc: checked('ci-f3'),
+        disorganizedThinking: checked('ci-f4'),
+      });
+      o.appendChild(el('h2', { text: r.positive ? 'CAM-ICU positive' : 'CAM-ICU negative' }));
+      o.appendChild(el('p', { text: r.band }));
+    });
+    ['ci-f1', 'ci-f2', 'ci-f3', 'ci-f4'].forEach((id) => document.getElementById(id).addEventListener('change', run));
+    run();
+  },
+
+  // spec-v13 §3.2.4 wave 13-2: ICDSC (Bergeron 2001).
+  icdsc(root) {
+    const items = [
+      ['Altered level of consciousness', 'id-a'],
+      ['Inattention', 'id-b'],
+      ['Disorientation', 'id-c'],
+      ['Hallucination, delusion, or psychosis', 'id-d'],
+      ['Psychomotor agitation or retardation', 'id-e'],
+      ['Inappropriate speech or mood', 'id-f'],
+      ['Sleep / wake cycle disturbance', 'id-g'],
+      ['Symptom fluctuation', 'id-h'],
+    ];
+    for (const [l, id] of items) root.appendChild(checkbox(l, id));
+    const o = out(); root.appendChild(o);
+    const run = () => safe(o, () => {
+      const r = S4.icdsc({
+        alteredLoc: checked('id-a'),
+        inattention: checked('id-b'),
+        disorientation: checked('id-c'),
+        hallucination: checked('id-d'),
+        psychomotor: checked('id-e'),
+        inappropriateSpeechOrMood: checked('id-f'),
+        sleepWakeDisturbance: checked('id-g'),
+        symptomFluctuation: checked('id-h'),
+      });
+      o.appendChild(el('h2', { text: `ICDSC ${r.score} of 8` }));
+      o.appendChild(el('p', { text: r.band }));
+    });
+    items.forEach(([, id]) => document.getElementById(id).addEventListener('change', run));
+    run();
+  },
+
+  // spec-v13 §3.2.5 wave 13-2: 4AT (MacLullich 2019).
+  '4at'(root) {
+    root.appendChild(checkbox('Alertness abnormal (clearly drowsy or agitated; otherwise leave unchecked) (0 or 4)', 'fa-alert'));
+    root.appendChild(el('p', {}, [
+      el('label', { for: 'fa-amt', text: 'AMT4 (age, DOB, place, current year) - number of errors (0=normal; 1=one mistake; 2=>=2 mistakes / untestable)' }), el('br'),
+      el('select', { id: 'fa-amt' }, [
+        el('option', { value: '0', text: '0 errors (0)' }),
+        el('option', { value: '1', text: '1 error (1)' }),
+        el('option', { value: '2', text: '>=2 errors / untestable (2)' }),
+      ]),
+    ]));
+    root.appendChild(el('p', {}, [
+      el('label', { for: 'fa-att', text: 'Attention (months of year backwards): 0 = reaches July; 1 = starts but fewer than 7; 2 = untestable' }), el('br'),
+      el('select', { id: 'fa-att' }, [
+        el('option', { value: '0', text: 'Reaches >=7 months (0)' }),
+        el('option', { value: '1', text: 'Starts but <7 (1)' }),
+        el('option', { value: '2', text: 'Untestable (2)' }),
+      ]),
+    ]));
+    root.appendChild(checkbox('Acute change or fluctuating course in cognition / mental status (0 or 4)', 'fa-acute'));
+    const o = out(); root.appendChild(o);
+    const run = () => safe(o, () => {
+      const r = S4.fourAt({
+        alertnessAbnormal: checked('fa-alert'),
+        amt4Errors: nv('fa-amt'),
+        attentionScore: nv('fa-att'),
+        acuteChange: checked('fa-acute'),
+      });
+      o.appendChild(el('h2', { text: `4AT ${r.score} of 12` }));
+      o.appendChild(el('p', { text: r.band }));
+    });
+    document.querySelectorAll('input, select').forEach((n) => n.addEventListener(n.type === 'checkbox' || n.tagName === 'SELECT' ? 'change' : 'input', run));
+    run();
+  },
+
+  // spec-v13 §3.3.1 wave 13-3: CPOT (Gelinas 2006).
+  cpot(root) {
+    const opts = (id, label, options) => {
+      root.appendChild(el('p', {}, [
+        el('label', { for: id, text: label }), el('br'),
+        el('select', { id }, options.map(([v, t]) => el('option', { value: v, text: t }))),
+      ]));
+    };
+    opts('cp-f', 'Facial expression', [
+      ['0', '0 - Relaxed, neutral'],
+      ['1', '1 - Tense (frowning, brow lowering)'],
+      ['2', '2 - Grimacing'],
+    ]);
+    opts('cp-b', 'Body movements', [
+      ['0', '0 - Absence of movements'],
+      ['1', '1 - Protection (slow / cautious movements; touching pain site)'],
+      ['2', '2 - Restlessness / agitation'],
+    ]);
+    opts('cp-m', 'Muscle tension (evaluate by passive flexion / extension)', [
+      ['0', '0 - Relaxed'],
+      ['1', '1 - Tense, rigid'],
+      ['2', '2 - Very tense or rigid'],
+    ]);
+    opts('cp-c', 'Compliance with ventilator (intubated) OR vocalization (extubated)', [
+      ['0', '0 - Tolerating / talking in normal tone'],
+      ['1', '1 - Coughing but tolerating / sighing, moaning'],
+      ['2', '2 - Fighting ventilator / crying out'],
+    ]);
+    const o = out(); root.appendChild(o);
+    const run = () => safe(o, () => {
+      const r = S4.cpot({
+        facial: nv('cp-f'),
+        body: nv('cp-b'),
+        muscleTension: nv('cp-m'),
+        complianceOrVocalization: nv('cp-c'),
+      });
+      o.appendChild(el('h2', { text: `CPOT ${r.score} of 8` }));
+      o.appendChild(el('p', { text: r.band }));
+    });
+    ['cp-f', 'cp-b', 'cp-m', 'cp-c'].forEach((id) => document.getElementById(id).addEventListener('change', run));
+    run();
+  },
+
+  // spec-v13 §3.3.2 wave 13-3: BPS (Payen 2001).
+  bps(root) {
+    const opts = (id, label, options) => {
+      root.appendChild(el('p', {}, [
+        el('label', { for: id, text: label }), el('br'),
+        el('select', { id }, options.map(([v, t]) => el('option', { value: v, text: t }))),
+      ]));
+    };
+    opts('bp-f', 'Facial expression', [
+      ['1', '1 - Relaxed'],
+      ['2', '2 - Partially tightened (e.g., brow lowering)'],
+      ['3', '3 - Fully tightened (e.g., eyelid closing)'],
+      ['4', '4 - Grimacing'],
+    ]);
+    opts('bp-u', 'Upper limb movements', [
+      ['1', '1 - No movement'],
+      ['2', '2 - Partially bent'],
+      ['3', '3 - Fully bent with finger flexion'],
+      ['4', '4 - Permanently retracted'],
+    ]);
+    opts('bp-v', 'Compliance with mechanical ventilation', [
+      ['1', '1 - Tolerating movement'],
+      ['2', '2 - Coughing but tolerating ventilation most of the time'],
+      ['3', '3 - Fighting ventilator'],
+      ['4', '4 - Unable to control ventilation'],
+    ]);
+    const o = out(); root.appendChild(o);
+    const run = () => safe(o, () => {
+      const r = S4.bps({
+        facial: nv('bp-f'),
+        upperLimb: nv('bp-u'),
+        ventilatorCompliance: nv('bp-v'),
+      });
+      o.appendChild(el('h2', { text: `BPS ${r.score} of 12` }));
+      o.appendChild(el('p', { text: r.band }));
+    });
+    ['bp-f', 'bp-u', 'bp-v'].forEach((id) => document.getElementById(id).addEventListener('change', run));
+    run();
+  },
 };
