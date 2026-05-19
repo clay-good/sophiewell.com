@@ -6,6 +6,63 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v15 wave 15-2 — pediatric febrile-infant evaluation: Rochester, Philadelphia, Boston, Step-by-Step, YOS)
+
+Full v15 wave 15-2 closes the febrile-infant bundle. Each tile
+ships under the spec-v11 audit floor and the spec-v12 §5 13-point
+per-tile shipping contract.
+
+- **`rochester` — Rochester Criteria** (Jaskiewicz JA, McCarthy
+  CA, Richardson AC, et al. *Febrile infants at low risk for
+  serious bacterial infection -- an appraisal of the Rochester
+  criteria and implications for management.* Pediatrics.
+  1994;94(3):390-396). Seven criteria; ALL must be met for
+  low-risk classification (age <=60 d; term and previously
+  healthy; no focal infection; WBC 5-15; bands <=1.5; urine WBC
+  <=10/HPF; stool WBC <=5/HPF). Failing criteria are surfaced
+  alongside the boolean so a clinician sees which item
+  disqualified the patient. Audit log:
+  [docs/audits/v11/rochester.md](docs/audits/v11/rochester.md).
+  Worked examples in
+  [test/unit/rochester.test.js](test/unit/rochester.test.js).
+- **`philadelphia` — Philadelphia Criteria** (Baker MD, Bell LM,
+  Avner JR. *Outpatient management without antibiotics of fever
+  in selected infants.* N Engl J Med. 1993;329(20):1437-1441).
+  Eight criteria; ALL must be met for safe outpatient management
+  without empiric antibiotic. Audit log:
+  [docs/audits/v11/philadelphia.md](docs/audits/v11/philadelphia.md).
+  Worked examples in
+  [test/unit/philadelphia.test.js](test/unit/philadelphia.test.js).
+- **`boston-febrile` — Boston Criteria** (Baskin MN, O'Rourke
+  EJ, Fleisher GR. *Outpatient treatment of febrile infants 28
+  to 89 days of age with intramuscular administration of
+  ceftriaxone.* J Pediatr. 1992;120(1):22-27). Seven criteria;
+  ALL must be met for outpatient ceftriaxone-management
+  eligibility. Audit log:
+  [docs/audits/v11/boston-febrile.md](docs/audits/v11/boston-febrile.md).
+  Worked examples in
+  [test/unit/boston-febrile.test.js](test/unit/boston-febrile.test.js).
+- **`step-by-step` — Step-by-Step Approach** (Gomez B, Mintegi S,
+  Bressan S, Da Dalt L, Gervaix A, Lacroix L, European Group for
+  Validation of the Step-by-Step Approach. *Validation of the
+  "Step-by-Step" approach in the management of young febrile
+  infants.* Pediatrics. 2016;138(2):e20154381). Sequential
+  decision tree (short-circuits on first positive) producing
+  low / intermediate / high risk per Gomez 2016 Figure 1; the
+  `reason` line names which step triggered. Audit log:
+  [docs/audits/v11/step-by-step.md](docs/audits/v11/step-by-step.md).
+  Worked examples in
+  [test/unit/step-by-step.test.js](test/unit/step-by-step.test.js).
+- **`yos` — Yale Observation Scale** (McCarthy PL, Sharpe MR,
+  Spiesel SZ, et al. *Observation scales to identify serious
+  illness in febrile children.* Pediatrics. 1982;70(5):802-809).
+  Six observation items each scored 1 / 3 / 5; sum 6-30; bands
+  per McCarthy 1982: <=10 low, 11-15 increased, >=16 high
+  probability of SBI. Per-item input clamped to the {1, 3, 5}
+  set. Audit log:
+  [docs/audits/v11/yos.md](docs/audits/v11/yos.md). Worked
+  examples in [test/unit/yos.test.js](test/unit/yos.test.js).
+
 ### Added (spec-v15 wave 15-1 (partial) — obstetrics: BPP, ACOG severe-feature preeclampsia, HELLP, Carpenter-Coustan, IADPSG)
 
 First v15 wave. Each tile ships under the spec-v11 audit floor

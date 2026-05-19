@@ -3141,6 +3141,157 @@ export const renderers = {
     run();
   },
 
+  // spec-v15 §3.2.1 wave 15-2: Rochester (Jaskiewicz 1994).
+  rochester(root) {
+    const items = [
+      ['Age <=60 days', 'rc-age'],
+      ['Term gestation and previously healthy', 'rc-term'],
+      ['No focal infection on physical exam', 'rc-focal'],
+      ['WBC count 5-15 x10^9/L', 'rc-wbc'],
+      ['Bands <=1.5 x10^9/L', 'rc-bands'],
+      ['Urine WBC <=10/HPF', 'rc-urine'],
+      ['Stool WBC <=5/HPF (if diarrhea)', 'rc-stool'],
+    ];
+    for (const [l, id] of items) root.appendChild(checkbox(l, id));
+    const o = out(); root.appendChild(o);
+    const run = () => safe(o, () => {
+      const r = S4.rochester({
+        ageLte60Days: checked('rc-age'),
+        termAndPreviouslyHealthy: checked('rc-term'),
+        noFocalInfection: checked('rc-focal'),
+        wbc5to15: checked('rc-wbc'),
+        bandsLte1Point5: checked('rc-bands'),
+        urineWbcLte10PerHpf: checked('rc-urine'),
+        stoolWbcLte5PerHpf: checked('rc-stool'),
+      });
+      o.appendChild(el('h2', { text: r.lowRisk ? 'Rochester: LOW risk' : `Rochester: not low risk (${r.metCount}/${r.totalCount})` }));
+      o.appendChild(el('p', { text: r.band }));
+    });
+    items.forEach(([, id]) => document.getElementById(id).addEventListener('change', run));
+    run();
+  },
+
+  // spec-v15 §3.2.2 wave 15-2: Philadelphia (Baker 1993).
+  philadelphia(root) {
+    const items = [
+      ['Age 29-60 days', 'ph-age'],
+      ['Well-appearing', 'ph-well'],
+      ['WBC <15 x10^9/L', 'ph-wbc'],
+      ['Band:neutrophil ratio <0.2', 'ph-bnr'],
+      ['UA <10 WBC/HPF and few bacteria', 'ph-ua'],
+      ['CSF <8 WBC/mm^3 and Gram stain negative', 'ph-csf'],
+      ['Chest x-ray clear (or not obtained)', 'ph-cxr'],
+      ['Stool studies normal (or no diarrhea)', 'ph-stool'],
+    ];
+    for (const [l, id] of items) root.appendChild(checkbox(l, id));
+    const o = out(); root.appendChild(o);
+    const run = () => safe(o, () => {
+      const r = S4.philadelphia({
+        age29To60Days: checked('ph-age'),
+        wellAppearing: checked('ph-well'),
+        wbcLt15: checked('ph-wbc'),
+        bandToNeutrophilRatioLt0Point2: checked('ph-bnr'),
+        uaLt10WbcAndFewBacteria: checked('ph-ua'),
+        csfLt8WbcAndGramStainNeg: checked('ph-csf'),
+        cxrClearOrNotObtained: checked('ph-cxr'),
+        stoolNormalOrNoDiarrhea: checked('ph-stool'),
+      });
+      o.appendChild(el('h2', { text: r.lowRisk ? 'Philadelphia: LOW risk' : `Philadelphia: not low risk (${r.metCount}/${r.totalCount})` }));
+      o.appendChild(el('p', { text: r.band }));
+    });
+    items.forEach(([, id]) => document.getElementById(id).addEventListener('change', run));
+    run();
+  },
+
+  // spec-v15 §3.2.3 wave 15-2: Boston (Baskin 1992).
+  'boston-febrile'(root) {
+    const items = [
+      ['Age 28-89 days', 'bf-age'],
+      ['Well-appearing', 'bf-well'],
+      ['No focal source on physical exam', 'bf-focal'],
+      ['WBC <20 x10^9/L', 'bf-wbc'],
+      ['UA <10 WBC/HPF', 'bf-ua'],
+      ['CSF <10 WBC/mm^3', 'bf-csf'],
+      ['Chest x-ray clear (or not obtained)', 'bf-cxr'],
+    ];
+    for (const [l, id] of items) root.appendChild(checkbox(l, id));
+    const o = out(); root.appendChild(o);
+    const run = () => safe(o, () => {
+      const r = S4.bostonFebrile({
+        age28To89Days: checked('bf-age'),
+        wellAppearing: checked('bf-well'),
+        noFocalSourceOnExam: checked('bf-focal'),
+        wbcLt20: checked('bf-wbc'),
+        uaLt10WbcPerHpf: checked('bf-ua'),
+        csfLt10WbcPerMm3: checked('bf-csf'),
+        cxrClearOrNotObtained: checked('bf-cxr'),
+      });
+      o.appendChild(el('h2', { text: r.lowRisk ? 'Boston: outpatient ceftriaxone eligible' : `Boston: not eligible (${r.metCount}/${r.totalCount})` }));
+      o.appendChild(el('p', { text: r.band }));
+    });
+    items.forEach(([, id]) => document.getElementById(id).addEventListener('change', run));
+    run();
+  },
+
+  // spec-v15 §3.2.4 wave 15-2: Step-by-Step (Gomez 2016).
+  'step-by-step'(root) {
+    const items = [
+      ['Unwell-appearing (step 1 - if YES, HIGH risk)', 'ss-unwell'],
+      ['Age <=21 days (step 2 - if YES, HIGH risk)', 'ss-age'],
+      ['Urinalysis abnormal / leukocyturia (step 3 - if YES, HIGH risk)', 'ss-ua'],
+      ['Procalcitonin >=0.5 ng/mL (step 4 - if YES, HIGH risk)', 'ss-pct'],
+      ['CRP >20 mg/L OR ANC >10 x10^9/L (step 5 - if YES, INTERMEDIATE risk)', 'ss-crp'],
+    ];
+    for (const [l, id] of items) root.appendChild(checkbox(l, id));
+    const o = out(); root.appendChild(o);
+    const run = () => safe(o, () => {
+      const r = S4.stepByStep({
+        unwellAppearance: checked('ss-unwell'),
+        ageLte21Days: checked('ss-age'),
+        urinalysisAbnormal: checked('ss-ua'),
+        procalcitoninGte0Point5: checked('ss-pct'),
+        crpGt20OrAncGt10: checked('ss-crp'),
+      });
+      o.appendChild(el('h2', { text: `Step-by-Step: ${r.risk.toUpperCase()} risk` }));
+      o.appendChild(el('p', { text: r.band }));
+    });
+    items.forEach(([, id]) => document.getElementById(id).addEventListener('change', run));
+    run();
+  },
+
+  // spec-v15 §3.2.5 wave 15-2: Yale Observation Scale (McCarthy 1982).
+  yos(root) {
+    const items = [
+      ['Quality of cry (1 strong/normal / 3 whimpering or sobbing / 5 weak/moaning/high-pitched)', 'yo-cry'],
+      ['Reaction to parent stimulation (1 cries briefly then stops or content / 3 cries on and off / 5 persistent or hardly responds)', 'yo-react'],
+      ['State variation (1 if awake stays awake or asleep wakes quickly / 3 eyes close briefly when awake or wakes with prolonged stimulation / 5 falls to sleep or will not arouse)', 'yo-state'],
+      ['Color (1 pink / 3 pale extremities or acrocyanosis / 5 pale or cyanotic or mottled or ashen)', 'yo-color'],
+      ['Hydration (1 skin normal eyes normal mucous moist / 3 skin/eyes normal mouth slightly dry / 5 skin doughy or tented eyes sunken mucous dry)', 'yo-hydr'],
+      ['Response to social overtures (1 smiles or alert / 3 brief smile or alert briefly / 5 no smile face anxious dull expressionless or not alert)', 'yo-social'],
+    ];
+    for (const [l, id] of items) {
+      root.appendChild(el('p', {}, [
+        el('label', { for: id, text: l }), el('br'),
+        el('select', { id }, [1, 3, 5].map((n) => el('option', { value: String(n), text: String(n) }))),
+      ]));
+    }
+    const o = out(); root.appendChild(o);
+    const run = () => safe(o, () => {
+      const r = S4.yos({
+        qualityOfCry: nv('yo-cry'),
+        reactionToParents: nv('yo-react'),
+        stateVariation: nv('yo-state'),
+        color: nv('yo-color'),
+        hydration: nv('yo-hydr'),
+        responseToSocialOvertures: nv('yo-social'),
+      });
+      o.appendChild(el('h2', { text: `YOS ${r.score} of 30` }));
+      o.appendChild(el('p', { text: r.band }));
+    });
+    items.forEach(([, id]) => document.getElementById(id).addEventListener('change', run));
+    run();
+  },
+
   // spec-v14 §3.3.3 wave 14-3: modified Aldrete (Aldrete 1995).
   aldrete(root) {
     const items = [
