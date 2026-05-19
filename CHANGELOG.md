@@ -6,6 +6,26 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v13 wave 13-1 — ICU mortality scoring: MODS)
+
+- **`mods` — Multiple Organ Dysfunction Score** (Marshall JC,
+  Cook DJ, Christou NV, et al. *Multiple Organ Dysfunction
+  Score: a reliable descriptor of a complex clinical outcome.*
+  Crit Care Med. 1995;23(10):1638-1652). Six organ-system
+  variables each scored 0-4 per Marshall 1995 Table 1
+  (respiratory PaO2/FiO2, renal serum creatinine, hepatic total
+  bilirubin, cardiovascular pressure-adjusted heart rate
+  PAR = HR x CVP / MAP, hematologic platelet count, neurologic
+  GCS). Sum 0-24; ICU mortality bands per Marshall 1995 Table 4
+  (0: 0%; 1-4: 1-2%; 5-8: 3-5%; 9-12: ~25%; 13-16: ~50%;
+  17-20: ~75%; 21-24: ~100%). Per-organ subscores surfaced
+  alongside the total so a bedside clinician can see which
+  system is dragging the score. Audit log:
+  [docs/audits/v11/mods.md](docs/audits/v11/mods.md). Worked
+  examples in [test/unit/mods.test.js](test/unit/mods.test.js).
+  First tile of the wave 13-1 ICU mortality scoring bundle;
+  APACHE II, SAPS II, and LODS remain queued.
+
 ### Added (spec-v13 wave 13-8 — closeout)
 
 - **spec-v13 partial close (21 of 25 tiles).** Waves 13-2 through

@@ -1761,6 +1761,40 @@ export const renderers = {
     run();
   },
 
+  // spec-v13 §3.1.3 wave 13-1: MODS (Marshall 1995).
+  mods(root) {
+    const numFields = [
+      ['PaO2 / FiO2 (mmHg / decimal)', 'mods-pf', 350],
+      ['Serum creatinine (mg/dL)', 'mods-cr', 1.0],
+      ['Total bilirubin (mg/dL)', 'mods-bili', 1.0],
+      ['Pressure-adjusted heart rate, PAR = HR x CVP / MAP', 'mods-par', 8],
+      ['Platelets (x10^9 / L)', 'mods-plt', 200],
+      ['GCS', 'mods-gcs', 15],
+    ];
+    for (const [l, id, v] of numFields) {
+      root.appendChild(el('p', {}, [
+        el('label', { for: id, text: l }), el('br'),
+        el('input', { id, type: 'number', step: 'any', value: String(v) }),
+      ]));
+    }
+    const o = out(); root.appendChild(o);
+    const run = () => safe(o, () => {
+      const r = S4.mods({
+        pfRatio: nv('mods-pf'),
+        creatinineMgDl: nv('mods-cr'),
+        bilirubinMgDl: nv('mods-bili'),
+        par: nv('mods-par'),
+        plateletsK: nv('mods-plt'),
+        gcs: nv('mods-gcs'),
+      });
+      o.appendChild(el('h2', { text: `MODS ${r.score} of 24` }));
+      o.appendChild(el('p', { text: r.band }));
+      o.appendChild(el('p', { text: `Per-organ subscores: respiratory ${r.parts.respiratory}, renal ${r.parts.renal}, hepatic ${r.parts.hepatic}, cardiovascular ${r.parts.cardiovascular}, hematologic ${r.parts.hematologic}, neurologic ${r.parts.neurologic}.` }));
+    });
+    numFields.forEach(([, id]) => document.getElementById(id).addEventListener('input', run));
+    run();
+  },
+
   // spec-v13 §3.2.1 wave 13-2: RASS (Sessler 2002).
   rass(root) {
     const opts = [

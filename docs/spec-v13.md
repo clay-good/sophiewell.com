@@ -1,8 +1,8 @@
 # spec-v13.md — ICU & critical-care scoring (25 tiles)
 
-> Status: partially shipped (2026-05-19) — 21 of 25 tiles closed
-> (waves 13-2 through 13-7); wave 13-1 (APACHE II, SAPS II, MODS,
-> LODS) deferred. v13 is the second catalog-growth
+> Status: partially shipped (2026-05-19) — 22 of 25 tiles closed
+> (waves 13-2 through 13-7 plus MODS from wave 13-1); APACHE II,
+> SAPS II, and LODS remain queued. v13 is the second catalog-growth
 > spec after [spec-v12](spec-v12.md). It adds 25 critical-care
 > tiles: ICU mortality scoring, sedation and delirium screening,
 > ICU pain assessment, nutritional risk, ventilation / lung-injury
