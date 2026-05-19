@@ -6,6 +6,49 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v13 wave 13-7 — severe CAP triage bundle: SMART-COP, CRB-65, ATS/IDSA-CAP, DRIP)
+
+- **`smart-cop` — SMART-COP** (Charles PGP, et al. *SMART-COP: a
+  tool for predicting the need for intensive respiratory or
+  vasopressor support in community-acquired pneumonia.* Clin
+  Infect Dis. 2008;47(3):375-384). Eight-criterion weighted score
+  (range 0-11) with age-adjusted RR (>=25 if age <=50; >=30 if
+  >50) and age-adjusted oxygenation thresholds per Charles 2008.
+  Cutoffs: 0-2 low; 3-4 moderate; >=5 high. Audit log:
+  [docs/audits/v11/smart-cop.md](docs/audits/v11/smart-cop.md).
+  Worked examples in
+  [test/unit/smart-cop.test.js](test/unit/smart-cop.test.js).
+- **`crb65` — CRB-65** (Lim WS, et al. *Defining community
+  acquired pneumonia severity on presentation to hospital: an
+  international derivation and validation study.* Thorax. 2003;
+  58(5):377-382). Four binary criteria (confusion, RR >=30,
+  SBP <90 or DBP <=60, age >=65); 30-day mortality bands 0: 1.2%,
+  1-2: 8.2%, 3-4: 31.4% per Lim 2003. Ships alongside the
+  existing `curb-65` tile for sites without BUN at presentation.
+  Audit log: [docs/audits/v11/crb65.md](docs/audits/v11/crb65.md).
+  Worked examples in
+  [test/unit/crb65.test.js](test/unit/crb65.test.js).
+- **`ats-idsa-cap` — ATS/IDSA Severe CAP Criteria (2019)**
+  (Metlay JP, et al. *Diagnosis and Treatment of Adults with
+  Community-acquired Pneumonia. An Official Clinical Practice
+  Guideline of the American Thoracic Society and Infectious
+  Diseases Society of America.* Am J Respir Crit Care Med. 2019;
+  200(7):e45-e67). Two major criteria + nine minor; severe CAP /
+  ICU admission if >=1 major OR >=3 minor per Metlay 2019 Table 1.
+  Audit log:
+  [docs/audits/v11/ats-idsa-cap.md](docs/audits/v11/ats-idsa-cap.md).
+  Worked examples in
+  [test/unit/ats-idsa-cap.test.js](test/unit/ats-idsa-cap.test.js).
+- **`drip` — DRIP Score** (Webb BJ, et al. *Derivation and
+  Multicenter Validation of the Drug Resistance in Pneumonia
+  Clinical Prediction Score.* Antimicrob Agents Chemother. 2016;
+  60(5):2652-2663). Four major risk factors (2 each) + six minor
+  (1 each); cutoff >=4 = high risk for drug-resistant pneumonia
+  (2019 ATS/IDSA endorsement for risk-adjusted empiric coverage).
+  Audit log: [docs/audits/v11/drip.md](docs/audits/v11/drip.md).
+  Worked examples in
+  [test/unit/drip.test.js](test/unit/drip.test.js).
+
 ### Added (spec-v13 wave 13-6 — vasoactive load: VIS)
 
 - **`vis` — Vasoactive-Inotropic Score** (Gaies MG, et al.

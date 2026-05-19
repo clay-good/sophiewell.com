@@ -2236,4 +2236,160 @@ export const renderers = {
     items.forEach(([, id]) => document.getElementById(id).addEventListener('change', run));
     run();
   },
+
+  // spec-v13 §3.7.1 wave 13-7: SMART-COP (Charles 2008).
+  'smart-cop'(root) {
+    root.appendChild(el('p', {}, [
+      el('label', { for: 'sc-age', text: 'Age (years; used for age-adjusted RR / oxygenation thresholds)' }), el('br'),
+      el('input', { id: 'sc-age', type: 'number', step: '1', value: '55' }),
+    ]));
+    root.appendChild(checkbox('SBP < 90 mmHg (2)', 'sc-sbp'));
+    root.appendChild(checkbox('Multilobar infiltrates on CXR (1)', 'sc-multi'));
+    root.appendChild(checkbox('Albumin < 3.5 g/dL (1)', 'sc-alb'));
+    root.appendChild(el('p', {}, [
+      el('label', { for: 'sc-rr', text: 'Respiratory rate (breaths/min; age-adjusted threshold: >=25 if age <=50; >=30 if age >50)' }), el('br'),
+      el('input', { id: 'sc-rr', type: 'number', step: '1', value: '20' }),
+    ]));
+    root.appendChild(checkbox('Heart rate >= 125 bpm (1)', 'sc-hr'));
+    root.appendChild(checkbox('Confusion / new-onset (1)', 'sc-conf'));
+    root.appendChild(el('h3', { text: 'Oxygenation (any positive triggers 2 points; age-adjusted)' }));
+    root.appendChild(el('p', { class: 'muted', text: 'Age <=50: PaO2 <70 OR SpO2 <94% OR P/F <333. Age >50: PaO2 <60 OR SpO2 <90% OR P/F <250.' }));
+    root.appendChild(el('p', {}, [
+      el('label', { for: 'sc-pao2', text: 'PaO2 (mmHg; blank if unknown)' }), el('br'),
+      el('input', { id: 'sc-pao2', type: 'number', step: 'any', value: '90' }),
+    ]));
+    root.appendChild(el('p', {}, [
+      el('label', { for: 'sc-spo2', text: 'SpO2 (%; blank if unknown)' }), el('br'),
+      el('input', { id: 'sc-spo2', type: 'number', step: 'any', value: '96' }),
+    ]));
+    root.appendChild(el('p', {}, [
+      el('label', { for: 'sc-pf', text: 'PaO2/FiO2 (blank if unknown)' }), el('br'),
+      el('input', { id: 'sc-pf', type: 'number', step: 'any', value: '400' }),
+    ]));
+    root.appendChild(checkbox('Arterial pH < 7.35 (2)', 'sc-ph'));
+    const o = out(); root.appendChild(o);
+    const run = () => safe(o, () => {
+      const r = S4.smartCop({
+        ageYears: nv('sc-age'),
+        sbpLt90: checked('sc-sbp'),
+        multilobar: checked('sc-multi'),
+        albuminLt35: checked('sc-alb'),
+        rr: nv('sc-rr'),
+        pao2: nv('sc-pao2'),
+        spo2: nv('sc-spo2'),
+        pfRatio: nv('sc-pf'),
+        hrGe125: checked('sc-hr'),
+        confusion: checked('sc-conf'),
+        phLt735: checked('sc-ph'),
+      });
+      o.appendChild(el('h2', { text: `SMART-COP ${r.score}` }));
+      o.appendChild(el('p', { text: r.band }));
+      const p = r.parts;
+      o.appendChild(el('p', { class: 'muted', text: `Per-parameter: SBP ${p.sbp}, multilobar ${p.multilobar}, albumin ${p.albumin}, RR ${p.rr}, HR ${p.tachycardia}, confusion ${p.confusion}, oxygenation ${p.oxygenation}, pH ${p.acidosis}.` }));
+    });
+    document.querySelectorAll('input').forEach((n) => n.addEventListener(n.type === 'checkbox' ? 'change' : 'input', run));
+    run();
+  },
+
+  // spec-v13 §3.7.2 wave 13-7: CRB-65 (Lim 2003).
+  crb65(root) {
+    root.appendChild(checkbox('Confusion (new-onset disorientation to person, place, or time) (1)', 'cr-conf'));
+    root.appendChild(checkbox('Respiratory rate >= 30 / min (1)', 'cr-rr'));
+    root.appendChild(checkbox('SBP < 90 mmHg OR DBP <= 60 mmHg (1)', 'cr-bp'));
+    root.appendChild(checkbox('Age >= 65 (1)', 'cr-age'));
+    const o = out(); root.appendChild(o);
+    const run = () => safe(o, () => {
+      const r = S4.crb65({
+        confusion: checked('cr-conf'),
+        rrGe30: checked('cr-rr'),
+        sbpLt90OrDbpLe60: checked('cr-bp'),
+        ageGe65: checked('cr-age'),
+      });
+      o.appendChild(el('h2', { text: `CRB-65 ${r.score}` }));
+      o.appendChild(el('p', { text: r.band }));
+    });
+    ['cr-conf', 'cr-rr', 'cr-bp', 'cr-age'].forEach((id) => document.getElementById(id).addEventListener('change', run));
+    run();
+  },
+
+  // spec-v13 §3.7.3 wave 13-7: ATS/IDSA Severe CAP (Metlay 2019).
+  'ats-idsa-cap'(root) {
+    root.appendChild(el('h3', { text: 'Major criteria (any one -> severe)' }));
+    root.appendChild(checkbox('Septic shock requiring vasopressors', 'ai-major-vp'));
+    root.appendChild(checkbox('Respiratory failure requiring mechanical ventilation', 'ai-major-mv'));
+    root.appendChild(el('h3', { text: 'Minor criteria (>=3 -> severe)' }));
+    const minors = [
+      ['Respiratory rate >= 30 / min', 'ai-rr'],
+      ['PaO2/FiO2 <= 250', 'ai-pf'],
+      ['Multilobar infiltrates', 'ai-multi'],
+      ['Confusion / disorientation', 'ai-conf'],
+      ['Uremia (BUN >= 20 mg/dL)', 'ai-bun'],
+      ['Leukopenia (WBC < 4 x10^9/L) due to infection only', 'ai-leuk'],
+      ['Thrombocytopenia (platelets < 100 x10^9/L)', 'ai-plt'],
+      ['Hypothermia (core temperature < 36 deg C)', 'ai-hypo'],
+      ['Hypotension requiring aggressive fluid resuscitation', 'ai-fluid'],
+    ];
+    for (const [l, id] of minors) root.appendChild(checkbox(l, id));
+    const o = out(); root.appendChild(o);
+    const run = () => safe(o, () => {
+      const r = S4.atsIdsaCap({
+        majorVasopressors: checked('ai-major-vp'),
+        majorMechanicalVentilation: checked('ai-major-mv'),
+        minorRrGe30: checked('ai-rr'),
+        minorPfLe250: checked('ai-pf'),
+        minorMultilobar: checked('ai-multi'),
+        minorConfusion: checked('ai-conf'),
+        minorUremiaBunGe20: checked('ai-bun'),
+        minorLeukopeniaWbcLt4: checked('ai-leuk'),
+        minorThrombocytopeniaPltLt100: checked('ai-plt'),
+        minorHypothermiaLt36: checked('ai-hypo'),
+        minorHypotensionAggressiveFluids: checked('ai-fluid'),
+      });
+      o.appendChild(el('h2', { text: r.severe ? 'Severe CAP' : 'Not severe' }));
+      o.appendChild(el('p', { text: r.band }));
+    });
+    document.querySelectorAll('input').forEach((n) => n.addEventListener('change', run));
+    run();
+  },
+
+  // spec-v13 §3.7.4 wave 13-7: DRIP Score (Webb 2016).
+  drip(root) {
+    root.appendChild(el('h3', { text: 'Major risk factors (each +2)' }));
+    const majors = [
+      ['Antibiotic use in past 60 days', 'dr-abx'],
+      ['Long-term care facility residence', 'dr-ltc'],
+      ['Tube feeding', 'dr-tube'],
+      ['Prior multidrug-resistant isolate', 'dr-mdr'],
+    ];
+    for (const [l, id] of majors) root.appendChild(checkbox(l, id));
+    root.appendChild(el('h3', { text: 'Minor risk factors (each +1)' }));
+    const minors = [
+      ['Hospitalization in past 60 days', 'dr-hosp'],
+      ['Chronic pulmonary disease', 'dr-cpd'],
+      ['Poor functional status', 'dr-func'],
+      ['Gastric acid suppression', 'dr-ppi'],
+      ['Wound care', 'dr-wound'],
+      ['MRSA colonization', 'dr-mrsa'],
+    ];
+    for (const [l, id] of minors) root.appendChild(checkbox(l, id));
+    const o = out(); root.appendChild(o);
+    const run = () => safe(o, () => {
+      const r = S4.drip({
+        antibioticsLast60d: checked('dr-abx'),
+        longTermCareResidence: checked('dr-ltc'),
+        tubeFeeding: checked('dr-tube'),
+        priorMdrIsolate: checked('dr-mdr'),
+        hospitalizationLast60d: checked('dr-hosp'),
+        chronicPulmonary: checked('dr-cpd'),
+        poorFunctionalStatus: checked('dr-func'),
+        gastricAcidSuppression: checked('dr-ppi'),
+        woundCare: checked('dr-wound'),
+        mrsaColonization: checked('dr-mrsa'),
+      });
+      o.appendChild(el('h2', { text: `DRIP ${r.score}` }));
+      o.appendChild(el('p', { text: r.band }));
+    });
+    document.querySelectorAll('input').forEach((n) => n.addEventListener('change', run));
+    run();
+  },
 };
