@@ -3292,6 +3292,139 @@ export const renderers = {
     run();
   },
 
+  // spec-v15 §3.3.1 wave 15-3: Westley Croup (Westley 1978).
+  westley(root) {
+    const selects = [
+      ['Level of consciousness', 'wc-loc', [[0, 'Normal (0)'], [5, 'Disoriented (+5)']]],
+      ['Cyanosis', 'wc-cyan', [[0, 'None (0)'], [4, 'With agitation (+4)'], [5, 'At rest (+5)']]],
+      ['Stridor', 'wc-stri', [[0, 'None (0)'], [1, 'With agitation (+1)'], [2, 'At rest (+2)']]],
+      ['Air entry', 'wc-air', [[0, 'Normal (0)'], [1, 'Decreased (+1)'], [2, 'Markedly decreased (+2)']]],
+      ['Retractions', 'wc-retr', [[0, 'None (0)'], [1, 'Mild (+1)'], [2, 'Moderate (+2)'], [3, 'Severe (+3)']]],
+    ];
+    for (const [label, id, opts] of selects) {
+      root.appendChild(el('p', {}, [
+        el('label', { for: id, text: label }), el('br'),
+        el('select', { id }, opts.map(([v, t]) => el('option', { value: String(v), text: t }))),
+      ]));
+    }
+    const o = out(); root.appendChild(o);
+    const run = () => safe(o, () => {
+      const r = S4.westley({
+        loc: nv('wc-loc'), cyanosis: nv('wc-cyan'), stridor: nv('wc-stri'),
+        airEntry: nv('wc-air'), retractions: nv('wc-retr'),
+      });
+      o.appendChild(el('h2', { text: `Westley ${r.score} of 17` }));
+      o.appendChild(el('p', { text: r.band }));
+    });
+    selects.forEach(([, id]) => document.getElementById(id).addEventListener('change', run));
+    run();
+  },
+
+  // spec-v15 §3.3.2 wave 15-3: PRAM (Chalut 2000).
+  'pram-asthma'(root) {
+    const selects = [
+      ['Suprasternal retractions', 'pr-supra', [[0, 'Absent (0)'], [2, 'Present (+2)']]],
+      ['Scalene muscle use', 'pr-scal', [[0, 'Absent (0)'], [2, 'Present (+2)']]],
+      ['Air entry', 'pr-air', [[0, 'Normal (0)'], [1, 'Decreased at base (+1)'], [2, 'Widespread decrease (+2)'], [3, 'Absent/minimal (+3)']]],
+      ['Wheezing', 'pr-wheez', [[0, 'Absent (0)'], [1, 'Expiratory only (+1)'], [2, 'Inspiratory and expiratory (+2)'], [3, 'Audible without stethoscope / silent chest (+3)']]],
+      ['SpO2 on room air', 'pr-spo2', [[0, '>=95% (0)'], [1, '92-94% (+1)'], [2, '<92% (+2)']]],
+    ];
+    for (const [label, id, opts] of selects) {
+      root.appendChild(el('p', {}, [
+        el('label', { for: id, text: label }), el('br'),
+        el('select', { id }, opts.map(([v, t]) => el('option', { value: String(v), text: t }))),
+      ]));
+    }
+    const o = out(); root.appendChild(o);
+    const run = () => safe(o, () => {
+      const r = S4.pramAsthma({
+        suprasternal: nv('pr-supra'), scalene: nv('pr-scal'),
+        airEntry: nv('pr-air'), wheezing: nv('pr-wheez'), spo2: nv('pr-spo2'),
+      });
+      o.appendChild(el('h2', { text: `PRAM ${r.score} of 12` }));
+      o.appendChild(el('p', { text: r.band }));
+    });
+    selects.forEach(([, id]) => document.getElementById(id).addEventListener('change', run));
+    run();
+  },
+
+  // spec-v15 §3.3.3 wave 15-3: PASS (Gorelick 2004).
+  'pass-asthma'(root) {
+    const items = [
+      ['Wheezing (0 absent / 1 end-expiratory only / 2 inspiratory + expiratory)', 'pa-wh'],
+      ['Work of breathing (0 normal / 1 intercostal/subcostal retractions / 2 marked w/ accessory muscles)', 'pa-wob'],
+      ['Prolonged expiration (0 normal I:E / 1 mild prolongation / 2 marked prolongation)', 'pa-exp'],
+    ];
+    for (const [l, id] of items) root.appendChild(rangeField(l, id, 0, 2, 0));
+    const o = out(); root.appendChild(o);
+    const run = () => safe(o, () => {
+      const r = S4.passAsthma({
+        wheezing: nv('pa-wh'),
+        workOfBreathing: nv('pa-wob'),
+        prolongedExpiration: nv('pa-exp'),
+      });
+      o.appendChild(el('h2', { text: `PASS ${r.score} of 6` }));
+      o.appendChild(el('p', { text: r.band }));
+    });
+    items.forEach(([, id]) => document.getElementById(id).addEventListener('input', run));
+    run();
+  },
+
+  // spec-v15 §3.3.4 wave 15-3: Pediatric GCS (Reilly 1988).
+  'peds-gcs'(root) {
+    root.appendChild(el('p', {}, [
+      el('label', { for: 'pg-age', text: 'Age band (for verbal scale)' }), el('br'),
+      el('select', { id: 'pg-age' }, [
+        el('option', { value: 'under-2', text: '<2 years' }),
+        el('option', { value: '2-5', text: '2-5 years' }),
+        el('option', { value: 'older', text: 'Older child (adult scale)' }),
+      ]),
+    ]));
+    root.appendChild(rangeField('Eye opening (1 none, 4 spontaneous)', 'pg-eye', 1, 4, 4));
+    root.appendChild(rangeField('Best verbal response (1-5; age-adjusted: see audit log)', 'pg-verb', 1, 5, 5));
+    root.appendChild(rangeField('Best motor response (1 none, 6 obeys/spontaneous)', 'pg-mot', 1, 6, 6));
+    const o = out(); root.appendChild(o);
+    const run = () => safe(o, () => {
+      const r = S4.pedsGcs({
+        eye: nv('pg-eye'),
+        verbal: nv('pg-verb'),
+        motor: nv('pg-mot'),
+        ageBand: document.getElementById('pg-age').value,
+      });
+      o.appendChild(el('h2', { text: `Pediatric GCS ${r.score} of 15` }));
+      o.appendChild(el('p', { text: r.band }));
+    });
+    ['pg-age', 'pg-eye', 'pg-verb', 'pg-mot'].forEach((id) =>
+      document.getElementById(id).addEventListener(id === 'pg-age' ? 'change' : 'input', run));
+    run();
+  },
+
+  // spec-v15 §3.3.5 wave 15-3: Bacterial Meningitis Score (Nigrovic 2007).
+  nigrovic(root) {
+    const items = [
+      ['Positive CSF Gram stain (+2)', 'ni-gram'],
+      ['CSF ANC >=1000 cells/mm^3 (+1)', 'ni-csf-anc'],
+      ['CSF protein >=80 mg/dL (+1)', 'ni-prot'],
+      ['Peripheral ANC >=10,000 cells/mm^3 (+1)', 'ni-anc'],
+      ['Seizure at or before presentation (+1)', 'ni-sz'],
+    ];
+    for (const [l, id] of items) root.appendChild(checkbox(l, id));
+    const o = out(); root.appendChild(o);
+    const run = () => safe(o, () => {
+      const r = S4.nigrovic({
+        csfGramStainPositive: checked('ni-gram'),
+        csfAncGte1000: checked('ni-csf-anc'),
+        csfProteinGte80: checked('ni-prot'),
+        peripheralAncGte10000: checked('ni-anc'),
+        seizureAtOrBeforePresentation: checked('ni-sz'),
+      });
+      o.appendChild(el('h2', { text: r.veryLowRisk ? 'Nigrovic: very low risk' : `Nigrovic ${r.score}: not low risk` }));
+      o.appendChild(el('p', { text: r.band }));
+    });
+    items.forEach(([, id]) => document.getElementById(id).addEventListener('change', run));
+    run();
+  },
+
   // spec-v14 §3.3.3 wave 14-3: modified Aldrete (Aldrete 1995).
   aldrete(root) {
     const items = [

@@ -6,6 +6,65 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v15 wave 15-3 — pediatric respiratory & neurologic: Westley, PRAM, PASS, peds-GCS, Nigrovic)
+
+Full v15 wave 15-3 closes the pediatric respiratory + neurologic
+bundle. Five tiles each shipped under the spec-v11 audit floor and
+the spec-v12 §5 13-point per-tile shipping contract.
+
+- **`westley` — Westley Croup Score** (Westley CR, Cotton EK,
+  Brooks JG. *Nebulized racemic epinephrine by IPPB for the
+  treatment of croup: a double-blind study.* Am J Dis Child.
+  1978;132(5):484-487). Five items with non-uniform per-item
+  maxima (LOC 0/5; cyanosis 0/4/5; stridor 0/1/2; air entry
+  0/1/2; retractions 0/1/2/3); sum 0-17; bands <3 mild / 3-7
+  moderate / 8-11 severe / >=12 impending respiratory failure.
+  Per-item values snap to the published allowed-token set. Audit
+  log: [docs/audits/v11/westley.md](docs/audits/v11/westley.md).
+  Worked examples in
+  [test/unit/westley.test.js](test/unit/westley.test.js).
+- **`pram-asthma` — PRAM** (Chalut DS, Ducharme FM, Davis GM.
+  *The Preschool Respiratory Assessment Measure (PRAM): a
+  responsive index of acute asthma severity.* J Pediatr.
+  2000;137(6):762-768). Five items with non-uniform per-item
+  maxima; sum 0-12; bands 0-3 mild / 4-7 moderate / 8-12 severe.
+  Audit log:
+  [docs/audits/v11/pram-asthma.md](docs/audits/v11/pram-asthma.md).
+  Worked examples in
+  [test/unit/pram-asthma.test.js](test/unit/pram-asthma.test.js).
+- **`pass-asthma` — PASS** (Gorelick MH, Stevens MW, Schultz TR,
+  Scribano PV. *Performance of a novel clinical score, the
+  pediatric asthma severity score (PASS), in the evaluation of
+  acute asthma.* Acad Emerg Med. 2004;11(1):10-18). Three items
+  each 0-2; sum 0-6; bands 0-1 mild / 2-3 moderate / 4-6 severe.
+  Audit log:
+  [docs/audits/v11/pass-asthma.md](docs/audits/v11/pass-asthma.md).
+  Worked examples in
+  [test/unit/pass-asthma.test.js](test/unit/pass-asthma.test.js).
+- **`peds-gcs` — Pediatric Glasgow Coma Scale** (Reilly PL,
+  Simpson DA, Sprod R, Thomas L. *Assessing the conscious level
+  in infants and young children: a paediatric version of the
+  Glasgow Coma Scale.* Childs Nerv Syst. 1988;4(1):30-33; verbal
+  age-adjustment: James HE. Pediatr Ann. 1986;15(1):16-22). Eye
+  opening 1-4, age-adjusted verbal 1-5 (under 2 / 2-5 / older),
+  motor 1-6; sum 3-15; bands match adult GCS (<=8 severe / 9-12
+  moderate / 13-15 mild). Audit log:
+  [docs/audits/v11/peds-gcs.md](docs/audits/v11/peds-gcs.md).
+  Worked examples in
+  [test/unit/peds-gcs.test.js](test/unit/peds-gcs.test.js).
+- **`nigrovic` — Bacterial Meningitis Score** (Nigrovic LE,
+  Kuppermann N, Macias CG, et al. *Clinical prediction rule for
+  identifying children with cerebrospinal fluid pleocytosis at
+  very low risk of bacterial meningitis.* JAMA. 2007;297(1):52-
+  60). Five weighted criteria (positive CSF Gram stain +2; CSF
+  ANC >=1000 +1; CSF protein >=80 +1; peripheral ANC >=10,000 +1;
+  seizure at or before presentation +1); cutoff: 0 = very low
+  risk for bacterial meningitis (NPV ~99.9%); >=1 = not low risk
+  / do not discharge. Audit log:
+  [docs/audits/v11/nigrovic.md](docs/audits/v11/nigrovic.md).
+  Worked examples in
+  [test/unit/nigrovic.test.js](test/unit/nigrovic.test.js).
+
 ### Added (spec-v15 wave 15-2 — pediatric febrile-infant evaluation: Rochester, Philadelphia, Boston, Step-by-Step, YOS)
 
 Full v15 wave 15-2 closes the febrile-infant bundle. Each tile
