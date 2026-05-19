@@ -1517,4 +1517,200 @@ export const renderers = {
     document.querySelectorAll('input').forEach((n) => n.addEventListener('change', run));
     run();
   },
+
+  // spec-v12 §3.6.1 wave 12-6: HOSPITAL Score (Donze 2013).
+  'hospital-score'(root) {
+    const items = [
+      ['Hemoglobin < 12 g/dL at discharge (1)', 'hs-hgb'],
+      ['Discharge from oncology service (2)', 'hs-onc'],
+      ['Sodium < 135 mEq/L at discharge (1)', 'hs-na'],
+      ['Any procedure during the hospitalization (1)', 'hs-proc'],
+      ['Index admission was urgent / emergent (1)', 'hs-urg'],
+      ['Length of stay >= 5 days (2)', 'hs-los'],
+    ];
+    for (const [l, id] of items) root.appendChild(checkbox(l, id));
+    root.appendChild(el('p', {}, [
+      el('label', { for: 'hs-prior', text: 'Number of admissions in the past 12 months (0=0; 1-2=0; 3-4=2; >=5=5)' }), el('br'),
+      el('input', { id: 'hs-prior', type: 'number', step: '1', min: '0', value: '0' }),
+    ]));
+    const o = out(); root.appendChild(o);
+    const run = () => safe(o, () => {
+      const r = S4.hospitalScore({
+        hgbLt12: checked('hs-hgb'),
+        oncologyDischarge: checked('hs-onc'),
+        sodiumLt135: checked('hs-na'),
+        anyProcedure: checked('hs-proc'),
+        urgentAdmission: checked('hs-urg'),
+        priorAdmissions12mo: nv('hs-prior'),
+        losGe5: checked('hs-los'),
+      });
+      o.appendChild(el('h2', { text: `HOSPITAL ${r.score}` }));
+      o.appendChild(el('p', { text: r.band }));
+      const p = r.parts;
+      o.appendChild(el('p', { class: 'muted',
+        text: `Per-parameter: hgb ${p.hgbLt12}, onc ${p.oncologyDischarge}, Na ${p.sodiumLt135}, procedure ${p.anyProcedure}, urgent ${p.urgentAdmission}, prior admissions ${p.priorAdmissions}, LOS ${p.losGe5}.` }));
+    });
+    document.querySelectorAll('input').forEach((n) => n.addEventListener(n.type === 'checkbox' ? 'change' : 'input', run));
+    run();
+  },
+
+  // spec-v12 §3.6.2 wave 12-6: LACE Index (van Walraven 2010).
+  lace(root) {
+    root.appendChild(el('p', {}, [
+      el('label', { for: 'lc-los', text: 'Length of stay (days; bands per van Walraven 2010 Table 3)' }), el('br'),
+      el('input', { id: 'lc-los', type: 'number', step: '1', min: '0', value: '3' }),
+    ]));
+    root.appendChild(checkbox('Acute (emergent) admission (3 points)', 'lc-acute'));
+    root.appendChild(el('p', {}, [
+      el('label', { for: 'lc-charlson', text: 'Charlson Comorbidity Index (auto-bands 0=0, 1=1, 2=2, 3=3, >=4=5)' }), el('br'),
+      el('input', { id: 'lc-charlson', type: 'number', step: '1', min: '0', value: '0' }),
+    ]));
+    root.appendChild(el('p', {}, [
+      el('label', { for: 'lc-ed', text: 'ED visits in the prior 6 months (capped at 4 points)' }), el('br'),
+      el('input', { id: 'lc-ed', type: 'number', step: '1', min: '0', value: '0' }),
+    ]));
+    const o = out(); root.appendChild(o);
+    const run = () => safe(o, () => {
+      const r = S4.lace({
+        losDays: nv('lc-los'),
+        acuteAdmission: checked('lc-acute'),
+        charlsonScore: nv('lc-charlson'),
+        edVisits6mo: nv('lc-ed'),
+      });
+      o.appendChild(el('h2', { text: `LACE ${r.score}` }));
+      o.appendChild(el('p', { text: r.band }));
+      const p = r.parts;
+      o.appendChild(el('p', { class: 'muted',
+        text: `Per-parameter: LOS ${p.los}, acute ${p.acute}, Charlson ${p.charlson}, ED ${p.ed}.` }));
+    });
+    document.querySelectorAll('input').forEach((n) => n.addEventListener(n.type === 'checkbox' ? 'change' : 'input', run));
+    run();
+  },
+
+  // spec-v12 §3.7.1 wave 12-7: Charlson Comorbidity Index.
+  charlson(root) {
+    root.appendChild(el('p', {}, [
+      el('label', { for: 'ch-age', text: 'Age (years; 1 point per decade >=50, capped at 4)' }), el('br'),
+      el('input', { id: 'ch-age', type: 'number', step: '1', min: '0', value: '55' }),
+    ]));
+    root.appendChild(el('h3', { text: '1-point comorbidities (Charlson 1987 Table 3)' }));
+    const w1 = [
+      ['Myocardial infarction', 'ch-mi'],
+      ['Congestive heart failure', 'ch-chf'],
+      ['Peripheral vascular disease', 'ch-pvd'],
+      ['Cerebrovascular disease', 'ch-cvd'],
+      ['Dementia', 'ch-dementia'],
+      ['Chronic pulmonary disease (COPD)', 'ch-copd'],
+      ['Connective tissue disease', 'ch-ct'],
+      ['Peptic ulcer disease', 'ch-pud'],
+      ['Mild liver disease', 'ch-mild-liver'],
+      ['Diabetes (uncomplicated)', 'ch-dm'],
+    ];
+    for (const [l, id] of w1) root.appendChild(checkbox(l, id));
+    root.appendChild(el('h3', { text: '2-point comorbidities' }));
+    const w2 = [
+      ['Hemiplegia', 'ch-hemi'],
+      ['Moderate or severe renal disease', 'ch-renal'],
+      ['Diabetes with end-organ damage', 'ch-dm-end'],
+      ['Any tumor (within 5 years)', 'ch-tumor'],
+      ['Leukemia', 'ch-leuk'],
+      ['Lymphoma', 'ch-lymph'],
+    ];
+    for (const [l, id] of w2) root.appendChild(checkbox(l, id));
+    root.appendChild(el('h3', { text: '3-point comorbidities' }));
+    root.appendChild(checkbox('Moderate or severe liver disease', 'ch-mod-liver'));
+    root.appendChild(el('h3', { text: '6-point comorbidities' }));
+    root.appendChild(checkbox('Metastatic solid tumor', 'ch-mets'));
+    root.appendChild(checkbox('AIDS', 'ch-aids'));
+    const o = out(); root.appendChild(o);
+    const map = {
+      mi: 'ch-mi', chf: 'ch-chf', pvd: 'ch-pvd', cvd: 'ch-cvd',
+      dementia: 'ch-dementia', copd: 'ch-copd', connectiveTissue: 'ch-ct',
+      pud: 'ch-pud', mildLiver: 'ch-mild-liver', diabetesUncomplicated: 'ch-dm',
+      hemiplegia: 'ch-hemi', modSevereRenal: 'ch-renal',
+      diabetesEndOrgan: 'ch-dm-end', anyTumor: 'ch-tumor',
+      leukemia: 'ch-leuk', lymphoma: 'ch-lymph',
+      modSevereLiver: 'ch-mod-liver',
+      metastaticSolidTumor: 'ch-mets', aids: 'ch-aids',
+    };
+    const run = () => safe(o, () => {
+      const items = {};
+      for (const [k, id] of Object.entries(map)) items[k] = checked(id);
+      const r = S4.charlson({ items, ageYears: nv('ch-age') });
+      o.appendChild(el('h2', { text: `Charlson (age-adjusted) ${r.score}` }));
+      o.appendChild(el('p', { text: r.band }));
+      o.appendChild(el('p', { class: 'muted',
+        text: `Comorbidity component: ${r.comorbidity}; age adjustment: ${r.ageAdj}.` }));
+    });
+    document.querySelectorAll('input').forEach((n) => n.addEventListener(n.type === 'checkbox' ? 'change' : 'input', run));
+    run();
+  },
+
+  // spec-v12 §3.7.2 wave 12-7: Clinical Frailty Scale (Rockwood 2005).
+  cfs(root) {
+    const descriptors = [
+      ['1', '1 - Very fit'],
+      ['2', '2 - Well'],
+      ['3', '3 - Managing well'],
+      ['4', '4 - Living with very mild frailty'],
+      ['5', '5 - Living with mild frailty'],
+      ['6', '6 - Living with moderate frailty'],
+      ['7', '7 - Living with severe frailty'],
+      ['8', '8 - Living with very severe frailty'],
+      ['9', '9 - Terminally ill'],
+    ];
+    root.appendChild(el('p', {}, [
+      el('label', { for: 'cf-level', text: 'CFS level (Rockwood 2005 / Dalhousie 2020 v2 wording)' }), el('br'),
+      el('select', { id: 'cf-level' }, descriptors.map(([v, t]) => el('option', { value: v, text: t }))),
+    ]));
+    const o = out(); root.appendChild(o);
+    const run = () => safe(o, () => {
+      const r = S4.cfs({ level: nv('cf-level') });
+      o.appendChild(el('h2', { text: `CFS ${r.level}` }));
+      o.appendChild(el('p', { text: r.band }));
+    });
+    document.getElementById('cf-level').addEventListener('change', run);
+    run();
+  },
+
+  // spec-v12 §3.7.3 wave 12-7: ECOG + Karnofsky (Oken 1982 / Karnofsky 1949).
+  'ecog-karnofsky'(root) {
+    const ecogOpts = [
+      ['0', '0 - Fully active'],
+      ['1', '1 - Restricted in strenuous activity'],
+      ['2', '2 - Ambulatory; unable to work; up >50% of day'],
+      ['3', '3 - Limited self-care; bed or chair >50% of day'],
+      ['4', '4 - Completely disabled'],
+      ['5', '5 - Dead'],
+    ];
+    const kpsOpts = [];
+    for (let v = 100; v >= 0; v -= 10) kpsOpts.push([String(v), `${v} - KPS ${v}`]);
+    root.appendChild(el('p', {}, [
+      el('label', { for: 'ek-ecog', text: 'ECOG performance status (Oken 1982)' }), el('br'),
+      el('select', { id: 'ek-ecog' }, ecogOpts.map(([v, t]) => el('option', { value: v, text: t }))),
+    ]));
+    root.appendChild(el('p', {}, [
+      el('label', { for: 'ek-kps', text: 'Karnofsky Performance Status (Karnofsky 1949; auto-suggested via Buccheri 1996 crosswalk; user may override)' }), el('br'),
+      el('select', { id: 'ek-kps' }, kpsOpts.map(([v, t]) => el('option', { value: v, text: t }))),
+    ]));
+    const o = out(); root.appendChild(o);
+    let lastEcog = null;
+    const run = () => safe(o, () => {
+      const ecogSel = document.getElementById('ek-ecog');
+      const kpsSel = document.getElementById('ek-kps');
+      const ecogVal = ecogSel.value;
+      if (ecogVal !== lastEcog) {
+        const suggested = S4.ecogKarnofsky({ ecog: ecogVal, kps: 100 }).suggestedKps;
+        if (suggested != null) kpsSel.value = String(suggested);
+        lastEcog = ecogVal;
+      }
+      const r = S4.ecogKarnofsky({ ecog: ecogVal, kps: kpsSel.value });
+      o.appendChild(el('h2', { text: `ECOG ${r.ecog} / KPS ${r.kps}` }));
+      o.appendChild(el('p', { text: `ECOG: ${r.ecogDescriptor}` }));
+      o.appendChild(el('p', { text: `KPS: ${r.kpsDescriptor}` }));
+    });
+    document.getElementById('ek-ecog').addEventListener('change', run);
+    document.getElementById('ek-kps').addEventListener('change', run);
+    run();
+  },
 };

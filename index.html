@@ -69,7 +69,7 @@
           "@id": "https://sophiewell.com/#webapp",
           "name": "sophiewell",
           "url": "https://sophiewell.com/",
-          "description": "Free, client-side healthcare toolbox with 195 deterministic utilities for patients, billers, coders, nurses, clinicians, EMS, and educators.",
+          "description": "Free, client-side healthcare toolbox with 200 deterministic utilities for patients, billers, coders, nurses, clinicians, EMS, and educators.",
           "applicationCategory": [
             "HealthApplication",
             "MedicalApplication",
@@ -287,6 +287,11 @@
             "PECARN Pediatric Head Injury Rule",
             "Ottawa Ankle Rules",
             "Ottawa Subarachnoid Hemorrhage Rule",
+            "HOSPITAL Score for 30-Day Readmission",
+            "LACE Index for 30-Day Readmission / Death",
+            "Charlson Comorbidity Index (age-adjusted)",
+            "Clinical Frailty Scale (Rockwood)",
+            "ECOG and Karnofsky Performance Status",
             "Lab Result Interpreter"
           ],
           "softwareHelp": {
@@ -1029,6 +1034,18 @@
                   <span class="tc-title">Ottawa Subarachnoid Hemorrhage Rule</span>
                   <span class="tc-desc">Perry 2013 six-criterion rule with the exclusion-criteria pre-screen.</span>
                 </button>
+                <button class="tool-card" type="button" data-tool="charlson" data-group="G" data-audiences="clinicians educators">
+                  <span class="tc-title">Charlson Comorbidity Index (age-adjusted)</span>
+                  <span class="tc-desc">Charlson 1987 weighted 19-comorbidity index plus the Charlson 1994 age adjustment.</span>
+                </button>
+                <button class="tool-card" type="button" data-tool="cfs" data-group="G" data-audiences="clinicians educators">
+                  <span class="tc-title">Clinical Frailty Scale</span>
+                  <span class="tc-desc">Rockwood 2005 nine-level picker with the Dalhousie 2020 v2 wording.</span>
+                </button>
+                <button class="tool-card" type="button" data-tool="ecog-karnofsky" data-group="G" data-audiences="clinicians educators">
+                  <span class="tc-title">ECOG + Karnofsky Performance Status</span>
+                  <span class="tc-desc">Coupled ECOG (Oken 1982) and Karnofsky (1949) pickers with the Buccheri 1996 crosswalk.</span>
+                </button>
                 <button class="tool-card" type="button" data-tool="asa" data-group="G" data-audiences="clinicians educators">
                   <span class="tc-title">ASA Physical Status Reference</span>
                   <span class="tc-desc">Category numbers with original short summaries and ASA link.</span>
@@ -1214,6 +1231,14 @@
                 <button class="tool-card" type="button" data-tool="breach-clock" data-group="H" data-audiences="billers educators">
                   <span class="tc-title">HIPAA Breach 60-Day Notification Clock</span>
                   <span class="tc-desc">Surface individual / media / HHS deadlines per 45 CFR 164.404, .406, .408 from a discovery date.</span>
+                </button>
+                <button class="tool-card" type="button" data-tool="hospital-score" data-group="H" data-audiences="clinicians educators">
+                  <span class="tc-title">HOSPITAL Score (30-day readmission)</span>
+                  <span class="tc-desc">Donze 2013 seven-input model for potentially-avoidable 30-day readmission in medical patients.</span>
+                </button>
+                <button class="tool-card" type="button" data-tool="lace" data-group="H" data-audiences="clinicians educators">
+                  <span class="tc-title">LACE Index (30-day readmission / death)</span>
+                  <span class="tc-desc">van Walraven 2010 four-input index (LOS, Acute, Charlson, ED visits) for 30-day death or unplanned readmission.</span>
                 </button>
               </div>
             </section>

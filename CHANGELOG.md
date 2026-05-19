@@ -6,6 +6,64 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v12 wave 12-7 — comorbidity, frailty & performance bundle: Charlson, Clinical Frailty Scale, ECOG + Karnofsky)
+
+- **`charlson` — Charlson Comorbidity Index (age-adjusted)**
+  (Charlson ME, et al. *A new method of classifying prognostic
+  comorbidity in longitudinal studies: development and validation.*
+  J Chronic Dis. 1987;40(5):373-383; age adjustment: Charlson 1994
+  J Clin Epidemiol. 47(11):1245-1251). 19 comorbidity flags
+  weighted 1 / 2 / 3 / 6 per Charlson 1987 Table 3 with severity
+  dominance (the more-severe class suppresses the milder one),
+  plus the Charlson 1994 age adjustment (1 point per decade >=50,
+  capped at 4 at age >=80). 10-year mortality bands per Charlson
+  1987 Table 4. Audit log:
+  [docs/audits/v11/charlson.md](docs/audits/v11/charlson.md).
+  Worked examples in
+  [test/unit/charlson.test.js](test/unit/charlson.test.js).
+- **`cfs` — Clinical Frailty Scale** (Rockwood K, et al. *A global
+  clinical measure of fitness and frailty in elderly people.*
+  CMAJ. 2005;173(5):489-495; Dalhousie 2020 v2 wording). Nine-level
+  picker with the canonical Rockwood 2005 / Dalhousie 2020 v2
+  descriptors and a Sophie-quoted outcome-association band. Audit
+  log: [docs/audits/v11/cfs.md](docs/audits/v11/cfs.md). Worked
+  examples in [test/unit/cfs.test.js](test/unit/cfs.test.js).
+- **`ecog-karnofsky` — ECOG + Karnofsky Performance Status**
+  (Oken MM, et al. Am J Clin Oncol. 1982;5(6):649-655 (ECOG);
+  Karnofsky DA, Burchenal JH. 1949 (KPS); Buccheri G, et al.
+  Eur J Cancer. 1996;32A(7):1135-1141 (crosswalk)). Two coupled
+  pickers (ECOG 0-5 and KPS 100-0 in steps of 10) with the source
+  descriptors verbatim; selecting an ECOG value auto-suggests the
+  corresponding KPS via the Buccheri 1996 crosswalk, and the user
+  may override. Audit log:
+  [docs/audits/v11/ecog-karnofsky.md](docs/audits/v11/ecog-karnofsky.md).
+  Worked examples in
+  [test/unit/ecog-karnofsky.test.js](test/unit/ecog-karnofsky.test.js).
+
+### Added (spec-v12 wave 12-6 — readmission & care-transition risk bundle: HOSPITAL, LACE)
+
+- **`hospital-score` — HOSPITAL Score for Potentially Avoidable
+  30-Day Readmissions** (Donze J, Aujesky D, Williams D, Schnipper
+  JL. *Potentially avoidable 30-day hospital readmissions in
+  medical patients: derivation and validation of a prediction
+  model.* JAMA Intern Med. 2013;173(8):632-638). Seven-predictor
+  weighted sum (range 0-13) per Donze 2013 Table 2 with the
+  Table 4 risk bands (low 0-4 ~5.8%, intermediate 5-6 ~11.9%,
+  high >=7 ~22.8%). Audit log:
+  [docs/audits/v11/hospital-score.md](docs/audits/v11/hospital-score.md).
+  Worked examples in
+  [test/unit/hospital-score.test.js](test/unit/hospital-score.test.js).
+- **`lace` — LACE Index for 30-Day Readmission / Death**
+  (van Walraven C, et al. *Derivation and validation of an index
+  to predict early death or unplanned readmission after discharge
+  from hospital to the community.* CMAJ. 2010;182(6):551-557).
+  Four-component sum (Length of stay, Acute admission, Charlson,
+  Emergency visits in 6 months; range 0-19) per van Walraven 2010
+  Table 3 with Figure 2 risk bands (low 0-4, moderate 5-9, high
+  >=10). Audit log:
+  [docs/audits/v11/lace.md](docs/audits/v11/lace.md). Worked
+  examples in [test/unit/lace.test.js](test/unit/lace.test.js).
+
 ### Added (spec-v12 wave 12-5 — imaging-decision bundle: Canadian CT Head, Canadian C-Spine, PECARN Pediatric Head, Ottawa Ankle, Ottawa SAH)
 
 - **`cthr` — Canadian CT Head Rule** (Stiell IG, et al. *The
