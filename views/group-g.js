@@ -2515,6 +2515,96 @@ export const renderers = {
     run();
   },
 
+  // spec-v14 §3.4.1 wave 14-4: ATRIA Bleeding (Fang 2011).
+  'atria-bleeding'(root) {
+    const items = [
+      ['Anemia (Hb <13 g/dL men, <12 g/dL women) (+3)', 'at-an'],
+      ['Severe renal disease (eGFR <30 mL/min or dialysis) (+3)', 'at-rn'],
+      ['Age >=75 years (+2)', 'at-ag'],
+      ['Prior hemorrhage diagnosis (+1)', 'at-bl'],
+      ['Hypertension (+1)', 'at-ht'],
+    ];
+    for (const [l, id] of items) root.appendChild(checkbox(l, id));
+    const o = out(); root.appendChild(o);
+    const run = () => safe(o, () => {
+      const r = S4.atriaBleeding({
+        anemia: checked('at-an'),
+        severeRenalDisease: checked('at-rn'),
+        ageGte75: checked('at-ag'),
+        priorBleeding: checked('at-bl'),
+        hypertension: checked('at-ht'),
+      });
+      o.appendChild(el('h2', { text: `ATRIA ${r.score} of 10` }));
+      o.appendChild(el('p', { text: r.band }));
+    });
+    items.forEach(([, id]) => document.getElementById(id).addEventListener('change', run));
+    run();
+  },
+
+  // spec-v14 §3.4.2 wave 14-4: ORBIT Bleeding (O'Brien 2015).
+  'orbit-bleeding'(root) {
+    const items = [
+      ['Hb <13 g/dL men, <12 g/dL women, or Hct <40%/<36% (+2)', 'ob-hb'],
+      ['Age >74 years (+1)', 'ob-age'],
+      ['Bleeding history (GI, intracranial, or hemorrhagic stroke) (+2)', 'ob-bh'],
+      ['Renal insufficiency (eGFR <60 mL/min/1.73 m^2) (+1)', 'ob-ri'],
+      ['Treatment with antiplatelet (+1)', 'ob-ap'],
+    ];
+    for (const [l, id] of items) root.appendChild(checkbox(l, id));
+    const o = out(); root.appendChild(o);
+    const run = () => safe(o, () => {
+      const r = S4.orbitBleeding({
+        lowHbOrHct: checked('ob-hb'),
+        ageGt74: checked('ob-age'),
+        bleedingHistory: checked('ob-bh'),
+        renalInsufficiency: checked('ob-ri'),
+        antiplatelet: checked('ob-ap'),
+      });
+      o.appendChild(el('h2', { text: `ORBIT ${r.score} of 7` }));
+      o.appendChild(el('p', { text: r.band }));
+    });
+    items.forEach(([, id]) => document.getElementById(id).addEventListener('change', run));
+    run();
+  },
+
+  // spec-v14 §3.4.3 wave 14-4: HEMORR2HAGES (Gage 2006).
+  hemorr2hages(root) {
+    const items = [
+      ['Hepatic or Renal disease (+1)', 'hh-hr'],
+      ['Ethanol abuse (+1)', 'hh-et'],
+      ['Malignancy (+1)', 'hh-mal'],
+      ['Older (age >75 years) (+1)', 'hh-old'],
+      ['Reduced platelet count or function (+1)', 'hh-plt'],
+      ['Rebleeding (prior bleed) (+2)', 'hh-reb'],
+      ['Hypertension (uncontrolled) (+1)', 'hh-htn'],
+      ['Anemia (+1)', 'hh-an'],
+      ['Genetic factors (CYP2C9 variants) (+1)', 'hh-gen'],
+      ['Excessive fall risk (+1)', 'hh-fall'],
+      ['Stroke (+1)', 'hh-stk'],
+    ];
+    for (const [l, id] of items) root.appendChild(checkbox(l, id));
+    const o = out(); root.appendChild(o);
+    const run = () => safe(o, () => {
+      const r = S4.hemorr2hages({
+        hepaticOrRenal: checked('hh-hr'),
+        ethanolAbuse: checked('hh-et'),
+        malignancy: checked('hh-mal'),
+        olderGt75: checked('hh-old'),
+        reducedPlatelets: checked('hh-plt'),
+        rebleeding: checked('hh-reb'),
+        uncontrolledHtn: checked('hh-htn'),
+        anemia: checked('hh-an'),
+        geneticFactors: checked('hh-gen'),
+        fallRisk: checked('hh-fall'),
+        stroke: checked('hh-stk'),
+      });
+      o.appendChild(el('h2', { text: `HEMORR2HAGES ${r.score} of 12` }));
+      o.appendChild(el('p', { text: r.band }));
+    });
+    items.forEach(([, id]) => document.getElementById(id).addEventListener('change', run));
+    run();
+  },
+
   // spec-v14 §3.3.3 wave 14-3: modified Aldrete (Aldrete 1995).
   aldrete(root) {
     const items = [

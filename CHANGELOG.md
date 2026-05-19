@@ -6,6 +6,47 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v14 wave 14-4 — atrial-fibrillation bleeding alternatives: ATRIA, ORBIT, HEMORR2HAGES)
+
+- **`atria-bleeding` — ATRIA Bleeding Score** (Fang MC, Go AS,
+  Chang Y, et al. *A new risk scheme to predict warfarin-
+  associated hemorrhage. The ATRIA (Anticoagulation and Risk
+  Factors in Atrial Fibrillation) Study.* J Am Coll Cardiol.
+  2011;58(4):395-401). Five weighted criteria (anemia +3, severe
+  renal disease eGFR <30 +3, age >=75 +2, prior bleeding +1,
+  hypertension +1); sum 0-10; bands 0-3 low (0.8%/yr), 4
+  intermediate (2.6%/yr), 5-10 high (5.8%/yr) annual major bleed
+  per Fang 2011 Table 3. Audit log:
+  [docs/audits/v11/atria-bleeding.md](docs/audits/v11/atria-bleeding.md).
+  Worked examples in
+  [test/unit/atria-bleeding.test.js](test/unit/atria-bleeding.test.js).
+- **`orbit-bleeding` — ORBIT Bleeding Score** (O'Brien EC, Simon
+  DN, Thomas LE, et al. *The ORBIT bleeding score: a simple
+  bedside score to assess bleeding risk in atrial fibrillation.*
+  Eur Heart J. 2015;36(46):3258-3264). Five weighted criteria
+  (low Hb/Hct +2, age >74 +1, bleeding history +2, renal
+  insufficiency eGFR <60 +1, antiplatelet treatment +1); sum 0-7;
+  bands 0-2 low (2.4%/yr), 3 intermediate (4.7%/yr), 4-7 high
+  (8.1%/yr) annual major bleed per O'Brien 2015 Table 3. Audit
+  log:
+  [docs/audits/v11/orbit-bleeding.md](docs/audits/v11/orbit-bleeding.md).
+  Worked examples in
+  [test/unit/orbit-bleeding.test.js](test/unit/orbit-bleeding.test.js).
+- **`hemorr2hages` — HEMORR2HAGES Bleeding Score** (Gage BF, Yan
+  Y, Milligan PE, et al. *Clinical classification schemes for
+  predicting hemorrhage: results from the National Registry of
+  Atrial Fibrillation (NRAF).* Am Heart J. 2006;151(3):713-719).
+  Eleven criteria with prior rebleeding weighted +2 and all
+  others +1 (Hepatic/Renal, Ethanol abuse, Malignancy, Older
+  age >75, Reduced platelet count/function, Rebleeding,
+  uncontrolled Hypertension, Anemia, Genetic factors CYP2C9,
+  excessive fall risk, Stroke); sum 0-12; bleeds per 100
+  patient-years per Gage 2006 Table 3 (0 -> 1.9, 1 -> 2.5,
+  2 -> 5.3, 3 -> 8.4, 4 -> 10.4, >=5 -> 12.3). Audit log:
+  [docs/audits/v11/hemorr2hages.md](docs/audits/v11/hemorr2hages.md).
+  Worked examples in
+  [test/unit/hemorr2hages.test.js](test/unit/hemorr2hages.test.js).
+
 ### Added (spec-v14 wave 14-3 — airway, PONV, recovery (partial): Apfel, modified Aldrete)
 
 - **`apfel` — Apfel Simplified PONV Score** (Apfel CC, Laara E,
