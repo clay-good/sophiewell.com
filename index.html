@@ -27,8 +27,8 @@
          140-158 char SERP-snippet window. The retired <meta keywords> tag
          (ignored by Google since ~2009; signals amateur SEO) is removed
          per spec-seo §3. -->
-    <title>Free Healthcare Toolbox - 209 Tools, No Signup · Sophie Well</title>
-    <meta name="description" content="Free deterministic healthcare tools that run entirely in your browser. 209 calculators, scoring tools, code lookups, and references. No signup, no tracking, no AI." />
+    <title>Free Healthcare Toolbox - 219 Tools, No Signup · Sophie Well</title>
+    <meta name="description" content="Free deterministic healthcare tools that run entirely in your browser. 219 calculators, scoring tools, code lookups, and references. No signup, no tracking, no AI." />
     <meta name="author" content="Clay Good" />
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />
     <meta name="googlebot" content="index, follow" />
@@ -43,21 +43,21 @@
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Sophie Well" />
     <meta property="og:url" content="https://sophiewell.com/" />
-    <meta property="og:title" content="Free Healthcare Toolbox - 209 Tools, No Signup · Sophie Well" />
-    <meta property="og:description" content="Free deterministic healthcare tools that run entirely in your browser. 209 calculators, scoring tools, code lookups, and references. No signup, no tracking, no AI." />
+    <meta property="og:title" content="Free Healthcare Toolbox - 219 Tools, No Signup · Sophie Well" />
+    <meta property="og:description" content="Free deterministic healthcare tools that run entirely in your browser. 219 calculators, scoring tools, code lookups, and references. No signup, no tracking, no AI." />
     <meta property="og:image" content="https://sophiewell.com/og/home.png" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
-    <meta property="og:image:alt" content="Sophie Well - 209 free healthcare tools" />
+    <meta property="og:image:alt" content="Sophie Well - 219 free healthcare tools" />
     <meta property="og:locale" content="en_US" />
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image" />
     <meta property="twitter:url" content="https://sophiewell.com/" />
-    <meta property="twitter:title" content="Free Healthcare Toolbox - 209 Tools, No Signup · Sophie Well" />
-    <meta property="twitter:description" content="Free deterministic healthcare tools that run entirely in your browser. 209 calculators, scoring tools, code lookups, and references. No signup, no tracking, no AI." />
+    <meta property="twitter:title" content="Free Healthcare Toolbox - 219 Tools, No Signup · Sophie Well" />
+    <meta property="twitter:description" content="Free deterministic healthcare tools that run entirely in your browser. 219 calculators, scoring tools, code lookups, and references. No signup, no tracking, no AI." />
     <meta property="twitter:image" content="https://sophiewell.com/og/home.png" />
-    <meta property="twitter:image:alt" content="Sophie Well - 209 free healthcare tools" />
+    <meta property="twitter:image:alt" content="Sophie Well - 219 free healthcare tools" />
 
     <!-- LD-JSON:START -->
     <script type="application/ld+json">
@@ -69,7 +69,7 @@
           "@id": "https://sophiewell.com/#webapp",
           "name": "sophiewell",
           "url": "https://sophiewell.com/",
-          "description": "Free, client-side healthcare toolbox with 209 deterministic utilities for patients, billers, coders, nurses, clinicians, EMS, and educators.",
+          "description": "Free, client-side healthcare toolbox with 219 deterministic utilities for patients, billers, coders, nurses, clinicians, EMS, and educators.",
           "applicationCategory": [
             "HealthApplication",
             "MedicalApplication",
@@ -301,6 +301,16 @@
             "4AT Delirium Screen",
             "CPOT (Critical-Care Pain Observation Tool)",
             "BPS (Behavioral Pain Scale)",
+            "NUTRIC Score (nutritional risk in critically ill)",
+            "modified NUTRIC (IL-6 omitted)",
+            "NRS-2002 (Nutrition Risk Screening 2002)",
+            "MUST (Malnutrition Universal Screening Tool)",
+            "ROX Index (HFNC failure prediction)",
+            "HACOR Score (NIV failure)",
+            "Berlin ARDS Criteria",
+            "Murray Lung Injury Score",
+            "Lung Injury Prediction Score (LIPS)",
+            "Vasoactive-Inotropic Score (VIS)",
             "Lab Result Interpreter"
           ],
           "softwareHelp": {
@@ -473,7 +483,7 @@
 
         <h1 id="intro-heading" class="home-h1">Free healthcare tools, all in your browser</h1>
         <p class="home-lede">
-          209 deterministic calculators, scoring tools, code lookups, and
+          219 deterministic calculators, scoring tools, code lookups, and
           references for clinicians, nurses, billers, and EMS - every input
           stays on your device. No signup, no tracking, no AI.
         </p>
@@ -867,6 +877,14 @@
                   <span class="tc-title">APRI (AST to Platelet Ratio Index)</span>
                   <span class="tc-desc">Wai 2003 noninvasive index; &gt;0.7 significant fibrosis, &gt;1.0 cirrhosis (WHO 2014 endorsement).</span>
                 </button>
+                <button class="tool-card" type="button" data-tool="rox" data-group="E" data-audiences="clinicians educators field">
+                  <span class="tc-title">ROX Index</span>
+                  <span class="tc-desc">Roca 2019 (SpO2/FiO2)/RR; cutoff &gt;=4.88 predicts HFNC success.</span>
+                </button>
+                <button class="tool-card" type="button" data-tool="vis" data-group="E" data-audiences="clinicians educators">
+                  <span class="tc-title">Vasoactive-Inotropic Score (VIS)</span>
+                  <span class="tc-desc">Gaies 2010 vasopressor / inotrope load; surfaces VIS and the simpler Wernovsky 1995 Inotrope Score.</span>
+                </button>
               </div>
             </section>
 
@@ -1090,6 +1108,38 @@
                 <button class="tool-card" type="button" data-tool="bps" data-group="G" data-audiences="clinicians educators">
                   <span class="tc-title">BPS (Behavioral Pain Scale)</span>
                   <span class="tc-desc">Payen 2001 three-behavior pain scale for ventilated patients; cutoff &gt;5 of 12.</span>
+                </button>
+                <button class="tool-card" type="button" data-tool="nutric" data-group="G" data-audiences="clinicians educators">
+                  <span class="tc-title">NUTRIC Score</span>
+                  <span class="tc-desc">Heyland 2011 six-component ICU nutritional risk score; cutoff &gt;=6 of 10.</span>
+                </button>
+                <button class="tool-card" type="button" data-tool="mnutric" data-group="G" data-audiences="clinicians educators">
+                  <span class="tc-title">modified NUTRIC</span>
+                  <span class="tc-desc">Rahman 2016 NUTRIC without IL-6; cutoff &gt;=5 of 9.</span>
+                </button>
+                <button class="tool-card" type="button" data-tool="nrs2002" data-group="G" data-audiences="clinicians educators">
+                  <span class="tc-title">NRS-2002</span>
+                  <span class="tc-desc">Kondrup 2003 ESPEN-endorsed nutritional risk screen; cutoff &gt;=3.</span>
+                </button>
+                <button class="tool-card" type="button" data-tool="must-nutrition" data-group="G" data-audiences="clinicians educators">
+                  <span class="tc-title">MUST (Malnutrition Universal Screening Tool)</span>
+                  <span class="tc-desc">BAPEN 2003 three-component screen (BMI, weight loss, acute disease).</span>
+                </button>
+                <button class="tool-card" type="button" data-tool="hacor" data-group="G" data-audiences="clinicians educators">
+                  <span class="tc-title">HACOR (NIV failure)</span>
+                  <span class="tc-desc">Duan 2017 5-input score at 1 hour of NIV; cutoff &gt;5 with ~90% specificity.</span>
+                </button>
+                <button class="tool-card" type="button" data-tool="berlin-ards" data-group="G" data-audiences="clinicians educators">
+                  <span class="tc-title">Berlin ARDS Criteria</span>
+                  <span class="tc-desc">Ranieri 2012 four-criterion ARDS definition with PaO2/FiO2 severity bands.</span>
+                </button>
+                <button class="tool-card" type="button" data-tool="lis-murray" data-group="G" data-audiences="clinicians educators">
+                  <span class="tc-title">Murray Lung Injury Score</span>
+                  <span class="tc-desc">Murray 1988 four-component LIS (CXR, PaO2/FiO2, PEEP, compliance); &gt;2.5 severe (ECMO consideration).</span>
+                </button>
+                <button class="tool-card" type="button" data-tool="lips" data-group="G" data-audiences="clinicians educators">
+                  <span class="tc-title">Lung Injury Prediction Score (LIPS)</span>
+                  <span class="tc-desc">Gajic 2011 weighted predictors of ALI/ARDS; cutoff &gt;=4.</span>
                 </button>
                 <button class="tool-card" type="button" data-tool="asa" data-group="G" data-audiences="clinicians educators">
                   <span class="tc-title">ASA Physical Status Reference</span>

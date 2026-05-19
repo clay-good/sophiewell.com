@@ -6,6 +6,99 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v13 wave 13-6 — vasoactive load: VIS)
+
+- **`vis` — Vasoactive-Inotropic Score** (Gaies MG, et al.
+  *Vasoactive-inotropic score as a predictor of morbidity and
+  mortality in infants after cardiopulmonary bypass.* Pediatr
+  Crit Care Med. 2010;11(2):234-238). VIS = dopamine +
+  dobutamine + 100*epinephrine + 100*norepinephrine +
+  10*milrinone + 10000*vasopressin (mcg/kg/min, vasopressin in
+  units/kg/min); also surfaces the simpler Wernovsky 1995
+  Inotrope Score. Audit log:
+  [docs/audits/v11/vis.md](docs/audits/v11/vis.md). Worked
+  examples in [test/unit/vis.test.js](test/unit/vis.test.js).
+
+### Added (spec-v13 wave 13-5 — ventilation & lung-injury bundle: ROX, HACOR, Berlin ARDS, Murray LIS, LIPS)
+
+- **`rox` — ROX Index** (Roca O, et al. *An index combining
+  respiratory rate and oxygenation to predict outcome of nasal
+  high-flow therapy.* Am J Respir Crit Care Med. 2019;199(11):
+  1368-1376). ROX = (SpO2/FiO2) / RR; cutoffs at 2 / 6 / 12 h
+  per Roca 2019 Figure 2. Audit log:
+  [docs/audits/v11/rox.md](docs/audits/v11/rox.md). Worked
+  examples in [test/unit/rox.test.js](test/unit/rox.test.js).
+- **`hacor` — HACOR (NIV failure)** (Duan J, et al. *Assessment
+  of heart rate, acidosis, consciousness, oxygenation, and
+  respiratory rate to predict noninvasive ventilation failure in
+  hypoxemic patients.* Intensive Care Med. 2017;43(2):192-199).
+  Five-parameter weighted score (range 0-25) at 1 hour of NIV
+  per Duan 2017 Table 1; cutoff >5 with ~90% specificity for
+  failure. Audit log:
+  [docs/audits/v11/hacor.md](docs/audits/v11/hacor.md). Worked
+  examples in [test/unit/hacor.test.js](test/unit/hacor.test.js).
+- **`berlin-ards` — Berlin ARDS Criteria** (ARDS Definition Task
+  Force, Ranieri VM, et al. *Acute Respiratory Distress
+  Syndrome: The Berlin Definition.* JAMA. 2012;307(23):2526-
+  2533). Four required criteria (timing <=1 wk, bilateral
+  opacities, not cardiac/overload, PEEP >=5) plus PaO2/FiO2
+  severity bands (mild 200-300, moderate 100-200, severe <=100).
+  Audit log:
+  [docs/audits/v11/berlin-ards.md](docs/audits/v11/berlin-ards.md).
+  Worked examples in
+  [test/unit/berlin-ards.test.js](test/unit/berlin-ards.test.js).
+- **`lis-murray` — Murray Lung Injury Score** (Murray JF, et al.
+  *An expanded definition of the adult respiratory distress
+  syndrome.* Am Rev Respir Dis. 1988;138(3):720-723). Average of
+  four 0-4 components (CXR quadrants, PaO2/FiO2, PEEP,
+  compliance); >2.5 = severe (ECMO referral context per ELSO
+  2017). Audit log:
+  [docs/audits/v11/lis-murray.md](docs/audits/v11/lis-murray.md).
+  Worked examples in
+  [test/unit/lis-murray.test.js](test/unit/lis-murray.test.js).
+- **`lips` — Lung Injury Prediction Score** (Gajic O, et al.
+  *Early identification of patients at risk of acute lung
+  injury: evaluation of lung injury prediction score in a
+  multicenter cohort study.* Am J Respir Crit Care Med. 2011;
+  183(4):462-470). 15 weighted predictors (predisposing
+  conditions and modifiers; diabetes contributes -1); cutoff
+  >=4 = high risk for ALI/ARDS. Audit log:
+  [docs/audits/v11/lips.md](docs/audits/v11/lips.md). Worked
+  examples in [test/unit/lips.test.js](test/unit/lips.test.js).
+
+### Added (spec-v13 wave 13-4 — nutrition risk bundle: NUTRIC, mNUTRIC, NRS-2002, MUST)
+
+- **`nutric` — NUTRIC Score** (Heyland DK, et al. *Identifying
+  critically ill patients who benefit the most from nutrition
+  therapy.* Crit Care. 2011;15(6):R268). Six-component sum (age,
+  APACHE II, SOFA, comorbidities, days hospital to ICU, IL-6);
+  range 0-10; cutoff >=6 = high nutritional risk. Audit log:
+  [docs/audits/v11/nutric.md](docs/audits/v11/nutric.md). Worked
+  examples in [test/unit/nutric.test.js](test/unit/nutric.test.js).
+- **`mnutric` — modified NUTRIC** (Rahman A, et al. *Identifying
+  critically-ill patients who will benefit most from nutritional
+  therapy: further validation of the "modified NUTRIC".* Clin
+  Nutr. 2016;35(1):158-162). Same as NUTRIC but IL-6 omitted;
+  range 0-9; cutoff >=5. Audit log:
+  [docs/audits/v11/mnutric.md](docs/audits/v11/mnutric.md). Worked
+  examples in [test/unit/mnutric.test.js](test/unit/mnutric.test.js).
+- **`nrs2002` — NRS-2002** (Kondrup J, et al. *Nutritional risk
+  screening (NRS 2002): a new method based on an analysis of
+  controlled clinical trials.* Clin Nutr. 2003;22(3):321-336).
+  Severity of disease 0-3 + nutritional status 0-3 + age >=70
+  +1; cutoff >=3 (ESPEN-endorsed). Audit log:
+  [docs/audits/v11/nrs2002.md](docs/audits/v11/nrs2002.md). Worked
+  examples in [test/unit/nrs2002.test.js](test/unit/nrs2002.test.js).
+- **`must-nutrition` — MUST (Malnutrition Universal Screening
+  Tool)** (BAPEN. *The "MUST" Explanatory Booklet.* British
+  Association for Parenteral and Enteral Nutrition; 2003). Three
+  components (BMI 0-2 + unplanned weight loss 0-2 + acute disease
+  no intake for >5 days = 2 else 0); 0 low / 1 medium / >=2 high
+  risk. Audit log:
+  [docs/audits/v11/must-nutrition.md](docs/audits/v11/must-nutrition.md).
+  Worked examples in
+  [test/unit/must-nutrition.test.js](test/unit/must-nutrition.test.js).
+
 ### Added (spec-v13 wave 13-3 — ICU pain bundle: CPOT, BPS)
 
 - **`cpot` — Critical-Care Pain Observation Tool** (Gelinas C,

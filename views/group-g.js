@@ -1987,4 +1987,253 @@ export const renderers = {
     ['bp-f', 'bp-u', 'bp-v'].forEach((id) => document.getElementById(id).addEventListener('change', run));
     run();
   },
+
+  // spec-v13 §3.4.1 wave 13-4: NUTRIC (Heyland 2011).
+  nutric(root) {
+    const fields = [
+      ['Age (years)', 'nt-age', '55'],
+      ['APACHE II', 'nt-apache', '18'],
+      ['SOFA', 'nt-sofa', '6'],
+      ['Number of comorbidities', 'nt-comorb', '1'],
+      ['Days hospital to ICU', 'nt-days', '0'],
+      ['IL-6 (pg/mL)', 'nt-il6', '0'],
+    ];
+    for (const [l, id, v] of fields) {
+      root.appendChild(el('p', {}, [
+        el('label', { for: id, text: l }), el('br'),
+        el('input', { id, type: 'number', step: 'any', value: String(v) }),
+      ]));
+    }
+    const o = out(); root.appendChild(o);
+    const run = () => safe(o, () => {
+      const r = S4.nutric({
+        ageYears: nv('nt-age'), apache2: nv('nt-apache'), sofa: nv('nt-sofa'),
+        comorbidities: nv('nt-comorb'), daysHospitalToIcu: nv('nt-days'),
+        il6Pg: nv('nt-il6'),
+      });
+      o.appendChild(el('h2', { text: `NUTRIC ${r.score} of 10` }));
+      o.appendChild(el('p', { text: r.band }));
+    });
+    fields.forEach(([, id]) => document.getElementById(id).addEventListener('input', run));
+    run();
+  },
+
+  // spec-v13 §3.4.2 wave 13-4: mNUTRIC (Rahman 2016).
+  mnutric(root) {
+    const fields = [
+      ['Age (years)', 'mn-age', '55'],
+      ['APACHE II', 'mn-apache', '18'],
+      ['SOFA', 'mn-sofa', '6'],
+      ['Number of comorbidities', 'mn-comorb', '1'],
+      ['Days hospital to ICU', 'mn-days', '0'],
+    ];
+    for (const [l, id, v] of fields) {
+      root.appendChild(el('p', {}, [
+        el('label', { for: id, text: l }), el('br'),
+        el('input', { id, type: 'number', step: 'any', value: String(v) }),
+      ]));
+    }
+    const o = out(); root.appendChild(o);
+    const run = () => safe(o, () => {
+      const r = S4.mnutric({
+        ageYears: nv('mn-age'), apache2: nv('mn-apache'), sofa: nv('mn-sofa'),
+        comorbidities: nv('mn-comorb'), daysHospitalToIcu: nv('mn-days'),
+      });
+      o.appendChild(el('h2', { text: `mNUTRIC ${r.score} of 9` }));
+      o.appendChild(el('p', { text: r.band }));
+    });
+    fields.forEach(([, id]) => document.getElementById(id).addEventListener('input', run));
+    run();
+  },
+
+  // spec-v13 §3.4.3 wave 13-4: NRS-2002 (Kondrup 2003).
+  nrs2002(root) {
+    const sel = (id, label, options) => root.appendChild(el('p', {}, [
+      el('label', { for: id, text: label }), el('br'),
+      el('select', { id }, options.map(([v, t]) => el('option', { value: v, text: t }))),
+    ]));
+    sel('nr-sev', 'Severity of disease', [
+      ['0', '0 - Normal nutritional requirements'],
+      ['1', '1 - Mild (e.g., chronic disease with complications)'],
+      ['2', '2 - Moderate (e.g., major abdominal surgery, stroke, hematologic malignancy)'],
+      ['3', '3 - Severe (e.g., head injury, ICU APACHE >10)'],
+    ]);
+    sel('nr-nut', 'Nutritional status', [
+      ['0', '0 - Normal'],
+      ['1', '1 - Wt loss >5% in 3 mo OR intake 50-75% in prior week'],
+      ['2', '2 - Wt loss >5% in 2 mo OR BMI 18.5-20.5 with impaired GC OR intake 25-50%'],
+      ['3', '3 - Wt loss >5% in 1 mo (>15% in 3 mo) OR BMI <18.5 OR intake <25%'],
+    ]);
+    root.appendChild(checkbox('Age >= 70 years (+1)', 'nr-age'));
+    const o = out(); root.appendChild(o);
+    const run = () => safe(o, () => {
+      const r = S4.nrs2002({
+        severityOfDisease: nv('nr-sev'),
+        nutritionalStatus: nv('nr-nut'),
+        ageGe70: checked('nr-age'),
+      });
+      o.appendChild(el('h2', { text: `NRS-2002 ${r.score}` }));
+      o.appendChild(el('p', { text: r.band }));
+    });
+    ['nr-sev', 'nr-nut', 'nr-age'].forEach((id) => document.getElementById(id).addEventListener('change', run));
+    run();
+  },
+
+  // spec-v13 §3.4.4 wave 13-4: MUST (BAPEN 2003).
+  'must-nutrition'(root) {
+    root.appendChild(el('p', {}, [
+      el('label', { for: 'mu-bmi', text: 'BMI (kg/m^2)' }), el('br'),
+      el('input', { id: 'mu-bmi', type: 'number', step: 'any', value: '22' }),
+    ]));
+    root.appendChild(el('p', {}, [
+      el('label', { for: 'mu-wl', text: 'Unplanned weight loss in past 3-6 months (%)' }), el('br'),
+      el('input', { id: 'mu-wl', type: 'number', step: 'any', value: '0' }),
+    ]));
+    root.appendChild(checkbox('Acutely ill AND no nutritional intake for >5 days (+2)', 'mu-acute'));
+    const o = out(); root.appendChild(o);
+    const run = () => safe(o, () => {
+      const r = S4.mustNutrition({
+        bmi: nv('mu-bmi'),
+        weightLossPct: nv('mu-wl'),
+        acuteDiseaseNoIntakeGt5d: checked('mu-acute'),
+      });
+      o.appendChild(el('h2', { text: `MUST ${r.score}` }));
+      o.appendChild(el('p', { text: r.band }));
+    });
+    ['mu-bmi', 'mu-wl', 'mu-acute'].forEach((id) => document.getElementById(id).addEventListener(id === 'mu-acute' ? 'change' : 'input', run));
+    run();
+  },
+
+  // spec-v13 §3.5.2 wave 13-5: HACOR (Duan 2017).
+  hacor(root) {
+    const fields = [
+      ['Heart rate (bpm)', 'hc-hr', '110'],
+      ['Arterial pH', 'hc-ph', '7.40'],
+      ['GCS', 'hc-gcs', '15'],
+      ['PaO2 (mmHg)', 'hc-pao2', '120'],
+      ['FiO2 (decimal, e.g., 0.5)', 'hc-fio2', '0.5'],
+      ['Respiratory rate (breaths/min)', 'hc-rr', '25'],
+    ];
+    for (const [l, id, v] of fields) {
+      root.appendChild(el('p', {}, [
+        el('label', { for: id, text: l }), el('br'),
+        el('input', { id, type: 'number', step: 'any', value: String(v) }),
+      ]));
+    }
+    const o = out(); root.appendChild(o);
+    const run = () => safe(o, () => {
+      const r = S4.hacor({
+        hr: nv('hc-hr'), ph: nv('hc-ph'), gcs: nv('hc-gcs'),
+        pao2: nv('hc-pao2'), fio2: nv('hc-fio2'), rr: nv('hc-rr'),
+      });
+      o.appendChild(el('h2', { text: `HACOR ${r.score}` }));
+      o.appendChild(el('p', { text: r.band }));
+      o.appendChild(el('p', { class: 'muted', text: `Per-parameter: HR ${r.parts.hr}, pH ${r.parts.ph}, GCS ${r.parts.gcs}, PaO2/FiO2 ${r.pfRatio.toFixed(0)} -> ${r.parts.pf}, RR ${r.parts.rr}.` }));
+    });
+    fields.forEach(([, id]) => document.getElementById(id).addEventListener('input', run));
+    run();
+  },
+
+  // spec-v13 §3.5.3 wave 13-5: Berlin ARDS criteria (Ranieri 2012).
+  'berlin-ards'(root) {
+    root.appendChild(checkbox('Timing: respiratory symptoms onset <=1 week of insult or worsening', 'ba-timing'));
+    root.appendChild(checkbox('Chest imaging: bilateral opacities not fully explained by effusions, lobar/lung collapse, or nodules', 'ba-bilat'));
+    root.appendChild(checkbox('Origin: not fully explained by cardiac failure or fluid overload (requires objective assessment if no risk factor)', 'ba-not'));
+    root.appendChild(checkbox('PEEP / CPAP >= 5 cmH2O', 'ba-peep'));
+    root.appendChild(el('p', {}, [
+      el('label', { for: 'ba-pao2', text: 'PaO2 (mmHg)' }), el('br'),
+      el('input', { id: 'ba-pao2', type: 'number', step: 'any', value: '120' }),
+    ]));
+    root.appendChild(el('p', {}, [
+      el('label', { for: 'ba-fio2', text: 'FiO2 (decimal)' }), el('br'),
+      el('input', { id: 'ba-fio2', type: 'number', step: 'any', value: '0.5' }),
+    ]));
+    const o = out(); root.appendChild(o);
+    const run = () => safe(o, () => {
+      const r = S4.berlinArds({
+        timingLe1wk: checked('ba-timing'),
+        bilateralOpacities: checked('ba-bilat'),
+        notExplainedByCardiacOrOverload: checked('ba-not'),
+        peepGe5cmH2O: checked('ba-peep'),
+        pao2: nv('ba-pao2'),
+        fio2: nv('ba-fio2'),
+      });
+      o.appendChild(el('h2', { text: r.ards ? `ARDS, ${r.severity || '(severity pending)'}` : 'ARDS criteria not met' }));
+      o.appendChild(el('p', { text: r.band }));
+      if (r.pfRatio != null) o.appendChild(el('p', { class: 'muted', text: `PaO2/FiO2 = ${r.pfRatio.toFixed(0)}` }));
+    });
+    document.querySelectorAll('input').forEach((n) => n.addEventListener(n.type === 'checkbox' ? 'change' : 'input', run));
+    run();
+  },
+
+  // spec-v13 §3.5.4 wave 13-5: Murray LIS (Murray 1988).
+  'lis-murray'(root) {
+    root.appendChild(el('p', {}, [
+      el('label', { for: 'lm-quad', text: 'CXR quadrants with consolidation (0-4)' }), el('br'),
+      el('input', { id: 'lm-quad', type: 'number', step: '1', min: '0', max: '4', value: '0' }),
+    ]));
+    root.appendChild(el('p', {}, [
+      el('label', { for: 'lm-pao2', text: 'PaO2 (mmHg)' }), el('br'),
+      el('input', { id: 'lm-pao2', type: 'number', step: 'any', value: '300' }),
+    ]));
+    root.appendChild(el('p', {}, [
+      el('label', { for: 'lm-fio2', text: 'FiO2 (decimal)' }), el('br'),
+      el('input', { id: 'lm-fio2', type: 'number', step: 'any', value: '0.4' }),
+    ]));
+    root.appendChild(el('p', {}, [
+      el('label', { for: 'lm-peep', text: 'PEEP (cmH2O)' }), el('br'),
+      el('input', { id: 'lm-peep', type: 'number', step: 'any', value: '5' }),
+    ]));
+    root.appendChild(el('p', {}, [
+      el('label', { for: 'lm-comp', text: 'Compliance (mL/cmH2O)' }), el('br'),
+      el('input', { id: 'lm-comp', type: 'number', step: 'any', value: '80' }),
+    ]));
+    const o = out(); root.appendChild(o);
+    const run = () => safe(o, () => {
+      const r = S4.lisMurray({
+        quadrants: nv('lm-quad'),
+        pao2: nv('lm-pao2'),
+        fio2: nv('lm-fio2'),
+        peep: nv('lm-peep'),
+        complianceMlPerCmH2O: nv('lm-comp'),
+      });
+      o.appendChild(el('h2', { text: `Murray LIS ${r.score.toFixed(2)}` }));
+      o.appendChild(el('p', { text: r.band }));
+      o.appendChild(el('p', { class: 'muted', text: `Per-component: quadrants ${r.parts.quadrants}, PaO2/FiO2 ${r.pfRatio.toFixed(0)} -> ${r.parts.pf}, PEEP ${r.parts.peep}, compliance ${r.parts.compliance}.` }));
+    });
+    document.querySelectorAll('input').forEach((n) => n.addEventListener('input', run));
+    run();
+  },
+
+  // spec-v13 §3.5.5 wave 13-5: LIPS (Gajic 2011).
+  lips(root) {
+    const items = [
+      ['Shock (+2)', 'lp-shock', 'shock'],
+      ['Aspiration (+2)', 'lp-asp', 'aspiration'],
+      ['Sepsis (+1)', 'lp-sep', 'sepsis'],
+      ['Pneumonia (+1.5)', 'lp-pna', 'pneumonia'],
+      ['High-risk surgery (+1.5)', 'lp-surg', 'highRiskSurgery'],
+      ['High-risk trauma (+2)', 'lp-trauma', 'highRiskTrauma'],
+      ['Alcohol abuse (+1)', 'lp-etoh', 'alcoholAbuse'],
+      ['Obesity BMI > 30 (+1)', 'lp-obese', 'obesityBmiGt30'],
+      ['Hypoalbuminemia (+1)', 'lp-alb', 'hypoalbuminemia'],
+      ['Chemotherapy (+1)', 'lp-chemo', 'chemotherapy'],
+      ['FiO2 > 0.35 or > 4 L/min (+2)', 'lp-fio2', 'fio2Gt035or4L'],
+      ['Tachypnea RR > 30 (+1.5)', 'lp-tach', 'tachypneaRrGt30'],
+      ['SpO2 < 95% (+1)', 'lp-spo2', 'spo2Lt95'],
+      ['Acidosis pH < 7.35 (+1.5)', 'lp-acid', 'acidosisPhLt735'],
+      ['Diabetes mellitus (-1)', 'lp-dm', 'diabetes'],
+    ];
+    for (const [l, id] of items) root.appendChild(checkbox(l, id));
+    const o = out(); root.appendChild(o);
+    const run = () => safe(o, () => {
+      const args = {};
+      for (const [, id, key] of items) args[key] = checked(id);
+      const r = S4.lips(args);
+      o.appendChild(el('h2', { text: `LIPS ${r.score}` }));
+      o.appendChild(el('p', { text: r.band }));
+    });
+    items.forEach(([, id]) => document.getElementById(id).addEventListener('change', run));
+    run();
+  },
 };

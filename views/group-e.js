@@ -480,6 +480,53 @@ export const renderers = {
     run();
   },
 
+  // spec-v13 §3.5.1 wave 13-5: ROX Index (Roca 2019).
+  rox(root) {
+    root.appendChild(field('SpO2 (%)', 'rx-spo2', { value: 94 }));
+    root.appendChild(field('FiO2 (decimal, e.g., 0.5)', 'rx-fio2', { value: 0.5 }));
+    root.appendChild(field('Respiratory rate (breaths/min)', 'rx-rr', { value: 24 }));
+    root.appendChild(field('Hours after HFNC start (2 / 6 / 12)', 'rx-hr', { value: 12 }));
+    const o = out(); root.appendChild(o);
+    const run = () => safe(o, () => {
+      const r = V4.rox({
+        spo2: num('rx-spo2'),
+        fio2: num('rx-fio2'),
+        rr: num('rx-rr'),
+        hoursAfterStart: num('rx-hr'),
+      });
+      o.appendChild(el('p', { text: `ROX: ${r.score.toFixed(2)}` }));
+      o.appendChild(el('p', { text: r.band }));
+    });
+    ['rx-spo2', 'rx-fio2', 'rx-rr', 'rx-hr'].forEach((id) => document.getElementById(id).addEventListener('input', run));
+    run();
+  },
+
+  // spec-v13 §3.6.1 wave 13-6: VIS (Gaies 2010).
+  vis(root) {
+    root.appendChild(field('Dopamine (mcg/kg/min)', 'vs-dop', { value: 0 }));
+    root.appendChild(field('Dobutamine (mcg/kg/min)', 'vs-dob', { value: 0 }));
+    root.appendChild(field('Epinephrine (mcg/kg/min)', 'vs-epi', { value: 0 }));
+    root.appendChild(field('Norepinephrine (mcg/kg/min)', 'vs-ne', { value: 0 }));
+    root.appendChild(field('Milrinone (mcg/kg/min)', 'vs-mil', { value: 0 }));
+    root.appendChild(field('Vasopressin (units/kg/min)', 'vs-vaso', { value: 0 }));
+    const o = out(); root.appendChild(o);
+    const run = () => safe(o, () => {
+      const r = V4.vis({
+        dopamine: num('vs-dop'),
+        dobutamine: num('vs-dob'),
+        epinephrine: num('vs-epi'),
+        norepinephrine: num('vs-ne'),
+        milrinone: num('vs-mil'),
+        vasopressin: num('vs-vaso'),
+      });
+      o.appendChild(el('p', { text: `VIS: ${r.vis.toFixed(1)}` }));
+      o.appendChild(el('p', { text: `Inotrope Score (IS, Wernovsky 1995): ${r.is.toFixed(1)}` }));
+      o.appendChild(el('p', { text: r.band }));
+    });
+    ['vs-dop', 'vs-dob', 'vs-epi', 'vs-ne', 'vs-mil', 'vs-vaso'].forEach((id) => document.getElementById(id).addEventListener('input', run));
+    run();
+  },
+
   // spec-v12 §3.4.2 wave 12-4: APRI (Wai 2003).
   apri(root) {
     root.appendChild(field('AST (U/L)', 'apri-ast', { value: 60 }));
