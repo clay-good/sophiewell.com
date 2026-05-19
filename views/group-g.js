@@ -2846,6 +2846,48 @@ export const renderers = {
     run();
   },
 
+  // spec-v14 §3.8.1 wave 14-8: DAPT Score (Yeh 2016).
+  'dapt-score'(root) {
+    root.appendChild(el('p', {}, [
+      el('label', { for: 'dp-age', text: 'Age band' }), el('br'),
+      el('select', { id: 'dp-age' }, [
+        el('option', { value: '<65', text: '<65 (0)' }),
+        el('option', { value: '65-74', text: '65-74 (-1)' }),
+        el('option', { value: '>=75', text: '>=75 (-2)' }),
+      ]),
+    ]));
+    const cb = [
+      ['Congestive heart failure or LVEF <30% (+2)', 'dp-chf'],
+      ['Vein graft PCI (+2)', 'dp-vgp'],
+      ['MI at presentation (+1)', 'dp-mi'],
+      ['Prior MI or prior PCI (+1)', 'dp-prior'],
+      ['Diabetes (+1)', 'dp-dm'],
+      ['Stent diameter <3 mm (+1)', 'dp-stent'],
+      ['Paclitaxel-eluting stent (+1)', 'dp-pac'],
+      ['Current smoker (+1)', 'dp-smoke'],
+    ];
+    for (const [l, id] of cb) root.appendChild(checkbox(l, id));
+    const o = out(); root.appendChild(o);
+    const run = () => safe(o, () => {
+      const r = S4.daptScore({
+        ageBand: document.getElementById('dp-age').value,
+        chfOrLvefLt30: checked('dp-chf'),
+        veinGraftPci: checked('dp-vgp'),
+        miAtPresentation: checked('dp-mi'),
+        priorMiOrPci: checked('dp-prior'),
+        diabetes: checked('dp-dm'),
+        stentDiameterLt3mm: checked('dp-stent'),
+        paclitaxelStent: checked('dp-pac'),
+        currentSmoker: checked('dp-smoke'),
+      });
+      o.appendChild(el('h2', { text: `DAPT Score ${r.score}` }));
+      o.appendChild(el('p', { text: r.band }));
+    });
+    document.getElementById('dp-age').addEventListener('change', run);
+    cb.forEach(([, id]) => document.getElementById(id).addEventListener('change', run));
+    run();
+  },
+
   // spec-v14 §3.3.3 wave 14-3: modified Aldrete (Aldrete 1995).
   aldrete(root) {
     const items = [

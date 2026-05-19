@@ -6,6 +6,30 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v14 wave 14-8 — DAPT duration (partial): DAPT Score)
+
+- **`dapt-score` — DAPT Score (continuation)** (Yeh RW, Secemsky
+  EA, Kereiakes DJ, et al. *Development and validation of a
+  prediction rule for benefit and harm of dual antiplatelet
+  therapy beyond 1 year after percutaneous coronary
+  intervention.* JAMA. 2016;315(16):1735-1749). Nine criteria:
+  Age (<65 = 0; 65-74 = -1; >=75 = -2); CHF or LVEF <30% (+2);
+  vein graft PCI (+2); MI at presentation (+1); prior MI or PCI
+  (+1); diabetes (+1); stent diameter <3 mm (+1); paclitaxel-
+  eluting stent (+1); current smoker (+1); sum -2 to +10. Cutoff
+  >=2 favors continuing DAPT beyond 12 months after PCI per
+  Yeh 2016. Age band modeled as a mutually-exclusive select so a
+  single patient cannot double-count. Audit log:
+  [docs/audits/v11/dapt-score.md](docs/audits/v11/dapt-score.md).
+  Worked examples in
+  [test/unit/dapt-score.test.js](test/unit/dapt-score.test.js).
+- **Wave 14-8 partial.** PRECISE-DAPT Bleeding Score (Costa 2017)
+  deferred — Group E nomogram producing PRECISE-DAPT 0-100 from
+  Hb, WBC, age, CrCl, and prior bleeding via the published
+  nomogram formula; warrants a focused cross-implementation
+  differential against the Costa 2017 source rather than a
+  rushed batch.
+
 ### Added (spec-v14 wave 14-7 — HIT / DIC (partial): 4Ts, ISTH DIC)
 
 - **`four-ts` — 4Ts Score for HIT** (Lo GK, Juhl D, Warkentin
