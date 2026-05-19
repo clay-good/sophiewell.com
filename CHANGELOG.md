@@ -6,6 +6,34 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v14 wave 14-3 — airway, PONV, recovery (partial): Apfel, modified Aldrete)
+
+- **`apfel` — Apfel Simplified PONV Score** (Apfel CC, Laara E,
+  Koivuranta M, Greim CA, Roewer N. *A simplified risk score for
+  predicting postoperative nausea and vomiting: conclusions from
+  cross-validations between two centers.* Anesthesiology. 1999;
+  91(3):693-700). Four binary risk factors (female sex,
+  nonsmoker, history of PONV or motion sickness, postoperative
+  opioids); sum 0-4; predicted PONV risk per Apfel 1999 Table 4
+  -> 10% / 20% / 40% / 60% / 80%. Audit log:
+  [docs/audits/v11/apfel.md](docs/audits/v11/apfel.md). Worked
+  examples in [test/unit/apfel.test.js](test/unit/apfel.test.js).
+- **`aldrete` — modified Aldrete Recovery Score** (Aldrete JA.
+  *The post-anesthesia recovery score revisited.* J Clin Anesth.
+  1995;7(1):89-91). Five domains (activity, respiration,
+  circulation, consciousness, oxygen saturation) each scored 0-2;
+  sum 0-10; cutoff >=9 for PACU discharge per Aldrete 1995. The
+  1995 revision replaces the original 1970 skin-color domain with
+  oxygen saturation. Per-item input clamped to [0, 2]. Audit log:
+  [docs/audits/v11/aldrete.md](docs/audits/v11/aldrete.md). Worked
+  examples in
+  [test/unit/aldrete.test.js](test/unit/aldrete.test.js).
+- **Wave 14-3 partial.** LEMON Difficult Airway Predictor (Reed
+  2005) and White-Song Fast-Track Score deferred -- each has
+  per-component cutoffs (LEMON 3-3-2 rule sub-thresholds,
+  White-Song's per-item floor for bypass eligibility) that warrant
+  a focused audit against the primary source.
+
 ### Added (spec-v14 wave 14-2 — sleep-disordered breathing (partial): STOP-BANG, Epworth)
 
 - **`stop-bang` — STOP-BANG OSA Screen** (Chung F, et al.

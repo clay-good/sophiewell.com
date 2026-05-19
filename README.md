@@ -50,7 +50,7 @@ production security headers. Any static file server will also work.
 
 ## How it works and how to use it
 
-The site is organized into twelve categories containing 226 utilities, all
+The site is organized into twelve categories containing 228 utilities, all
 deterministic and built to run on a single static page with no live data
 or refresh pipeline (see [docs/spec-v5.md](docs/spec-v5.md) for the
 maintenance contract). **Code Reference** covers ICD-10-CM, HCPCS Level
@@ -107,7 +107,7 @@ This catalog is the spec-v5 pragmatic shape: the previous live-data
 pricing, registry, recall, and annually-shifting public-health tiles
 were removed in spec-v5 §3.1 because their correctness depends on a
 refresh pipeline that one person cannot reliably maintain. The remaining
-226 tiles either compute from user input or read a small static
+228 tiles either compute from user input or read a small static
 reference table whose annual drift is tolerable.
 
 The user flow is simple: type what you need into the hero search

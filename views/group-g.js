@@ -2490,4 +2490,54 @@ export const renderers = {
     items.forEach(([, id]) => document.getElementById(id).addEventListener('input', run));
     run();
   },
+
+  // spec-v14 §3.3.2 wave 14-3: Apfel PONV (Apfel 1999).
+  apfel(root) {
+    const items = [
+      ['Female sex', 'ap-female'],
+      ['Nonsmoker', 'ap-nonsmoker'],
+      ['History of PONV or motion sickness', 'ap-hx'],
+      ['Use of postoperative opioids', 'ap-opioid'],
+    ];
+    for (const [l, id] of items) root.appendChild(checkbox(l, id));
+    const o = out(); root.appendChild(o);
+    const run = () => safe(o, () => {
+      const r = S4.apfel({
+        female: checked('ap-female'),
+        nonsmoker: checked('ap-nonsmoker'),
+        historyPonvOrMotionSickness: checked('ap-hx'),
+        postopOpioids: checked('ap-opioid'),
+      });
+      o.appendChild(el('h2', { text: `Apfel ${r.score} of 4` }));
+      o.appendChild(el('p', { text: r.band }));
+    });
+    items.forEach(([, id]) => document.getElementById(id).addEventListener('change', run));
+    run();
+  },
+
+  // spec-v14 §3.3.3 wave 14-3: modified Aldrete (Aldrete 1995).
+  aldrete(root) {
+    const items = [
+      ['Activity (move 4 extremities = 2, 2 = 1, 0 = 0)', 'al-act'],
+      ['Respiration (deep breathe + cough = 2, dyspneic/shallow = 1, apneic = 0)', 'al-resp'],
+      ['Circulation (BP +/- 20% preop = 2, +/- 20-50% = 1, +/- 50% = 0)', 'al-circ'],
+      ['Consciousness (fully awake = 2, arousable on calling = 1, not responding = 0)', 'al-cons'],
+      ['O2 saturation (>92% on room air = 2, supplemental O2 needed = 1, <90% with O2 = 0)', 'al-o2'],
+    ];
+    for (const [l, id] of items) root.appendChild(rangeField(l, id, 0, 2, 2));
+    const o = out(); root.appendChild(o);
+    const run = () => safe(o, () => {
+      const r = S4.aldrete({
+        activity: nv('al-act'),
+        respiration: nv('al-resp'),
+        circulation: nv('al-circ'),
+        consciousness: nv('al-cons'),
+        oxygenSaturation: nv('al-o2'),
+      });
+      o.appendChild(el('h2', { text: `modified Aldrete ${r.score} of 10` }));
+      o.appendChild(el('p', { text: r.band }));
+    });
+    items.forEach(([, id]) => document.getElementById(id).addEventListener('input', run));
+    run();
+  },
 };
