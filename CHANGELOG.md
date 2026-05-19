@@ -6,6 +6,51 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v14 wave 14-6 — cancer-VTE & VTE recurrence (partial): Khorana, DASH, HERDOO2)
+
+- **`khorana` — Khorana Cancer-VTE Score** (Khorana AA, Kuderer
+  NM, Culakova E, Lyman GH, Francis CW. *Development and
+  validation of a predictive model for chemotherapy-associated
+  thrombosis.* Blood. 2008;111(10):4902-4907). Five criteria:
+  site of cancer (very-high stomach/pancreas +2; high lung/
+  lymphoma/gynecologic/bladder/testicular +1; other 0), platelet
+  count >=350 (+1), Hb <10 or ESA use (+1), WBC >11 (+1), BMI >=35
+  (+1); sum 0-6; 2.5-month VTE rates per Khorana 2008 Table 3:
+  0 -> 0.3% (low), 1-2 -> 2.0% (intermediate), >=3 -> 6.7% (high).
+  Cancer site modeled as a mutually-exclusive select so a single
+  patient cannot double-count. Audit log:
+  [docs/audits/v11/khorana.md](docs/audits/v11/khorana.md). Worked
+  examples in [test/unit/khorana.test.js](test/unit/khorana.test.js).
+- **`dash-vte` — DASH VTE-Recurrence Score** (Tosetto A, Iorio A,
+  Marcucci M, et al. *Predicting disease recurrence in patients
+  with previous unprovoked venous thromboembolism: a proposed
+  prediction score (DASH).* J Thromb Haemost. 2012;10(6):1019-
+  1025). Four criteria: D-dimer abnormal post-anticoagulation
+  (+2), Age <50 (+1), Male sex (+1), Hormone use at time of
+  initial VTE in women (-2); sum -2 to +4; annual recurrence
+  bands per Tosetto 2012 Table 4: <=1 -> 3.1% (low), 2 -> 6.4%
+  (intermediate), >=3 -> 12.3% (high). Audit log:
+  [docs/audits/v11/dash-vte.md](docs/audits/v11/dash-vte.md).
+  Worked examples in
+  [test/unit/dash-vte.test.js](test/unit/dash-vte.test.js).
+- **`herdoo2` — HERDOO2 (women with unprovoked VTE)** (Rodger MA,
+  Le Gal G, Anderson DR, et al. *Validating the HERDOO2 rule to
+  guide treatment duration for women with unprovoked venous
+  thrombosis: multinational prospective cohort management study.*
+  BMJ. 2017;356:j1065). Women only; four criteria each +1
+  (hyperpigmentation/edema/redness in either leg, D-dimer >=250
+  ug/L on anticoag, BMI >=30, age >=65); sum 0-4; 0-1 -> safe to
+  discontinue anticoagulation, >=2 -> continue per Rodger 2017.
+  Audit log:
+  [docs/audits/v11/herdoo2.md](docs/audits/v11/herdoo2.md). Worked
+  examples in
+  [test/unit/herdoo2.test.js](test/unit/herdoo2.test.js).
+- **Wave 14-6 partial.** Vienna Prediction Model (Eichinger 2010)
+  deferred — Group E nomogram with published 12- and 60-month
+  recurrence-probability formulas that warrant a focused
+  cross-implementation differential against the Eichinger 2010
+  source rather than a rushed batch.
+
 ### Added (spec-v14 wave 14-5 — medical-inpatient bleeding & VTE prophylaxis: IMPROVE-Bleeding, IMPROVE-VTE)
 
 - **`improve-bleeding` — IMPROVE Bleeding Risk Score** (Decousus

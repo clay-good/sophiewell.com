@@ -2689,6 +2689,88 @@ export const renderers = {
     run();
   },
 
+  // spec-v14 §3.6.1 wave 14-6: Khorana Cancer-VTE (Khorana 2008).
+  khorana(root) {
+    root.appendChild(el('p', {}, [
+      el('label', { for: 'kh-site', text: 'Site of cancer (Khorana 2008 risk category)' }), el('br'),
+      el('select', { id: 'kh-site' }, [
+        el('option', { value: 'other', text: 'Other (0)' }),
+        el('option', { value: 'high', text: 'High risk: lung, lymphoma, gynecologic, bladder, testicular (+1)' }),
+        el('option', { value: 'very-high', text: 'Very high risk: stomach, pancreas (+2)' }),
+      ]),
+    ]));
+    const cb = [
+      ['Pre-chemotherapy platelet count >=350 x10^9/L (+1)', 'kh-plt'],
+      ['Hemoglobin <10 g/dL or use of erythropoiesis-stimulating agent (+1)', 'kh-hb'],
+      ['Pre-chemotherapy WBC count >11 x10^9/L (+1)', 'kh-wbc'],
+      ['BMI >=35 kg/m^2 (+1)', 'kh-bmi'],
+    ];
+    for (const [l, id] of cb) root.appendChild(checkbox(l, id));
+    const o = out(); root.appendChild(o);
+    const run = () => safe(o, () => {
+      const r = S4.khorana({
+        cancerSiteRisk: document.getElementById('kh-site').value,
+        plateletGte350: checked('kh-plt'),
+        hbLt10OrEsa: checked('kh-hb'),
+        wbcGt11: checked('kh-wbc'),
+        bmiGte35: checked('kh-bmi'),
+      });
+      o.appendChild(el('h2', { text: `Khorana ${r.score} of 6` }));
+      o.appendChild(el('p', { text: r.band }));
+    });
+    document.getElementById('kh-site').addEventListener('change', run);
+    cb.forEach(([, id]) => document.getElementById(id).addEventListener('change', run));
+    run();
+  },
+
+  // spec-v14 §3.6.2 wave 14-6: DASH (Tosetto 2012).
+  'dash-vte'(root) {
+    const items = [
+      ['Abnormal post-anticoagulation D-dimer (+2)', 'da-dd'],
+      ['Age <50 years at index VTE (+1)', 'da-age'],
+      ['Male sex (+1)', 'da-male'],
+      ['Hormone use at time of initial VTE (women only) (-2)', 'da-horm'],
+    ];
+    for (const [l, id] of items) root.appendChild(checkbox(l, id));
+    const o = out(); root.appendChild(o);
+    const run = () => safe(o, () => {
+      const r = S4.dashVte({
+        dDimerAbnormal: checked('da-dd'),
+        ageLt50: checked('da-age'),
+        male: checked('da-male'),
+        hormoneUseAtInitialVteInWoman: checked('da-horm'),
+      });
+      o.appendChild(el('h2', { text: `DASH ${r.score}` }));
+      o.appendChild(el('p', { text: r.band }));
+    });
+    items.forEach(([, id]) => document.getElementById(id).addEventListener('change', run));
+    run();
+  },
+
+  // spec-v14 §3.6.3 wave 14-6: HERDOO2 (Rodger 2017).
+  herdoo2(root) {
+    const items = [
+      ['Hyperpigmentation, edema, or redness in either leg (+1)', 'hd-legs'],
+      ['D-dimer >=250 ug/L while on anticoagulation (+1)', 'hd-dd'],
+      ['BMI >=30 kg/m^2 (+1)', 'hd-bmi'],
+      ['Age >=65 years (+1)', 'hd-age'],
+    ];
+    for (const [l, id] of items) root.appendChild(checkbox(l, id));
+    const o = out(); root.appendChild(o);
+    const run = () => safe(o, () => {
+      const r = S4.herdoo2({
+        legSignsPostThrombotic: checked('hd-legs'),
+        dDimerGte250OnAnticoag: checked('hd-dd'),
+        bmiGte30: checked('hd-bmi'),
+        ageGte65: checked('hd-age'),
+      });
+      o.appendChild(el('h2', { text: `HERDOO2 ${r.score} of 4` }));
+      o.appendChild(el('p', { text: r.band }));
+    });
+    items.forEach(([, id]) => document.getElementById(id).addEventListener('change', run));
+    run();
+  },
+
   // spec-v14 §3.3.3 wave 14-3: modified Aldrete (Aldrete 1995).
   aldrete(root) {
     const items = [
