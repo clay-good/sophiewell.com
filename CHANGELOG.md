@@ -6,6 +6,40 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v14 wave 14-7 — HIT / DIC (partial): 4Ts, ISTH DIC)
+
+- **`four-ts` — 4Ts Score for HIT** (Lo GK, Juhl D, Warkentin
+  TE, Sigouin CS, Eichler P, Greinacher A. *Evaluation of pretest
+  clinical score (4 T's) for the diagnosis of heparin-induced
+  thrombocytopenia in two clinical settings.* J Thromb Haemost.
+  2006;4(4):759-765). Four domains each scored 0-2:
+  Thrombocytopenia, Timing of platelet fall, Thrombosis or other
+  sequelae, oTher causes; sum 0-8; bands per Lo 2006 Table 2:
+  0-3 low, 4-5 intermediate, 6-8 high pretest probability of HIT.
+  Per-item input clamped to [0, 2]. Audit log:
+  [docs/audits/v11/four-ts.md](docs/audits/v11/four-ts.md). Worked
+  examples in [test/unit/four-ts.test.js](test/unit/four-ts.test.js).
+- **`isth-dic` — ISTH Overt DIC Score** (Taylor FB Jr, Toh CH,
+  Hoots WK, Wada H, Levi M. *Towards definition, clinical and
+  laboratory criteria, and a scoring system for disseminated
+  intravascular coagulation.* Thromb Haemost. 2001;86(5):1327-
+  1330). Four laboratory components: platelet count (>100 = 0;
+  50-100 = +1; <50 = +2), fibrin marker D-dimer/FDP (none 0;
+  moderate +2; strong +3), prolonged PT (<3 s = 0; 3-6 s = +1;
+  >6 s = +2), fibrinogen (>1 g/L = 0; <=1 g/L = +1); sum 0-8;
+  cutoff >=5 = compatible with overt DIC per Taylor 2001. A
+  required underlying-disorder gate is enforced before band
+  emission per the Taylor 2001 published rubric. Audit log:
+  [docs/audits/v11/isth-dic.md](docs/audits/v11/isth-dic.md).
+  Worked examples in
+  [test/unit/isth-dic.test.js](test/unit/isth-dic.test.js).
+- **Wave 14-7 partial.** HEP Score for HIT (Cuker 2010) deferred
+  — eight weighted clinical features per Cuker 2010 Table 1 with
+  multiple mutually-exclusive option groups (timing-of-fall has
+  six bands; thrombosis category overrides on several rules)
+  that warrant a focused audit against the primary source rather
+  than a rushed batch.
+
 ### Added (spec-v14 wave 14-6 — cancer-VTE & VTE recurrence (partial): Khorana, DASH, HERDOO2)
 
 - **`khorana` — Khorana Cancer-VTE Score** (Khorana AA, Kuderer

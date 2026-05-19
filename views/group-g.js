@@ -2771,6 +2771,81 @@ export const renderers = {
     run();
   },
 
+  // spec-v14 §3.7.1 wave 14-7: 4Ts Score for HIT (Lo 2006).
+  'four-ts'(root) {
+    const items = [
+      ['Thrombocytopenia: >50% fall + nadir >=20 (2); 30-50% fall or nadir 10-19 (1); <30% fall or nadir <10 (0)', '4t-thr'],
+      ['Timing of platelet fall: clear onset 5-10 d or <=1 d (with prior heparin in last 30 d) (2); consistent 5-10 d but unclear or >10 d (1); <4 d without recent heparin (0)', '4t-time'],
+      ['Thrombosis or other sequelae: new thrombosis, skin necrosis, or acute systemic reaction after IV heparin bolus (2); progressive/recurrent thrombosis or erythematous skin lesion (1); none (0)', '4t-throm'],
+      ['oTher causes of thrombocytopenia: none apparent (2); possible (1); definite (0)', '4t-oth'],
+    ];
+    for (const [l, id] of items) root.appendChild(rangeField(l, id, 0, 2, 0));
+    const o = out(); root.appendChild(o);
+    const run = () => safe(o, () => {
+      const r = S4.fourTs({
+        thrombocytopenia: nv('4t-thr'),
+        timingOfFall: nv('4t-time'),
+        thrombosis: nv('4t-throm'),
+        otherCauses: nv('4t-oth'),
+      });
+      o.appendChild(el('h2', { text: `4Ts ${r.score} of 8` }));
+      o.appendChild(el('p', { text: r.band }));
+    });
+    items.forEach(([, id]) => document.getElementById(id).addEventListener('input', run));
+    run();
+  },
+
+  // spec-v14 §3.7.3 wave 14-7: ISTH Overt DIC (Taylor 2001).
+  'isth-dic'(root) {
+    root.appendChild(checkbox('Underlying disorder known to be associated with DIC is present (required gate per Taylor 2001)', 'id-gate'));
+    root.appendChild(el('p', {}, [
+      el('label', { for: 'id-plt', text: 'Platelet count (x10^9/L)' }), el('br'),
+      el('select', { id: 'id-plt' }, [
+        el('option', { value: '>100', text: '>100 (0)' }),
+        el('option', { value: '50-100', text: '50-100 (+1)' }),
+        el('option', { value: '<50', text: '<50 (+2)' }),
+      ]),
+    ]));
+    root.appendChild(el('p', {}, [
+      el('label', { for: 'id-fdp', text: 'Fibrin marker (D-dimer / FDP)' }), el('br'),
+      el('select', { id: 'id-fdp' }, [
+        el('option', { value: 'none', text: 'No increase (0)' }),
+        el('option', { value: 'moderate', text: 'Moderate increase (+2)' }),
+        el('option', { value: 'strong', text: 'Strong increase (+3)' }),
+      ]),
+    ]));
+    root.appendChild(el('p', {}, [
+      el('label', { for: 'id-pt', text: 'Prolonged PT (seconds above ULN)' }), el('br'),
+      el('select', { id: 'id-pt' }, [
+        el('option', { value: '<3s', text: '<3 s (0)' }),
+        el('option', { value: '3-6s', text: '3-6 s (+1)' }),
+        el('option', { value: '>6s', text: '>6 s (+2)' }),
+      ]),
+    ]));
+    root.appendChild(el('p', {}, [
+      el('label', { for: 'id-fib', text: 'Fibrinogen (g/L)' }), el('br'),
+      el('select', { id: 'id-fib' }, [
+        el('option', { value: '>1', text: '>1 g/L (0)' }),
+        el('option', { value: '<=1', text: '<=1 g/L (+1)' }),
+      ]),
+    ]));
+    const o = out(); root.appendChild(o);
+    const run = () => safe(o, () => {
+      const r = S4.isthDic({
+        underlyingDisorderPresent: checked('id-gate'),
+        platelet: document.getElementById('id-plt').value,
+        fibrinMarker: document.getElementById('id-fdp').value,
+        ptProlonged: document.getElementById('id-pt').value,
+        fibrinogen: document.getElementById('id-fib').value,
+      });
+      o.appendChild(el('h2', { text: r.gateNotMet ? 'ISTH DIC (gate not met)' : `ISTH DIC ${r.score} of 8` }));
+      o.appendChild(el('p', { text: r.band }));
+    });
+    ['id-gate', 'id-plt', 'id-fdp', 'id-pt', 'id-fib']
+      .forEach((id) => document.getElementById(id).addEventListener('change', run));
+    run();
+  },
+
   // spec-v14 §3.3.3 wave 14-3: modified Aldrete (Aldrete 1995).
   aldrete(root) {
     const items = [
