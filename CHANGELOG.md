@@ -6,6 +6,71 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v15 wave 15-1 (partial) — obstetrics: BPP, ACOG severe-feature preeclampsia, HELLP, Carpenter-Coustan, IADPSG)
+
+First v15 wave. Each tile ships under the spec-v11 audit floor
+and the spec-v12 §5 13-point per-tile shipping contract.
+
+- **`bpp` — Biophysical Profile** (Manning FA, Platt LD, Sipos L.
+  *Antepartum fetal evaluation: development of a fetal
+  biophysical profile.* Am J Obstet Gynecol. 1980;136(6):787-795).
+  Five components each 0 or 2 per Manning 1980 rubric (fetal
+  breathing movements, fetal body movements, fetal tone,
+  amniotic fluid volume, reactive NST); sum 0-10; bands per
+  Manning 1980 + ACOG Practice Bulletin 145 (2014): 8-10 normal,
+  6 equivocal, <=4 abnormal. Audit log:
+  [docs/audits/v11/bpp.md](docs/audits/v11/bpp.md). Worked
+  examples in [test/unit/bpp.test.js](test/unit/bpp.test.js).
+- **`acog-severe-pre` — ACOG Severe-feature Preeclampsia
+  Checklist** (ACOG Task Force on Hypertension in Pregnancy.
+  *Hypertension in pregnancy.* Obstet Gynecol. 2013;122(5):1122-
+  1131; re-affirmed ACOG Practice Bulletin 222, 2020). Six severe
+  features (BP >=160/110 on two occasions >=4 h apart;
+  thrombocytopenia <100; impaired hepatic function; creatinine
+  >1.1 or doubled baseline; pulmonary edema; new cerebral or
+  visual disturbances); ANY single feature qualifies as severe
+  preeclampsia per ACOG 2013. Audit log:
+  [docs/audits/v11/acog-severe-pre.md](docs/audits/v11/acog-severe-pre.md).
+  Worked examples in
+  [test/unit/acog-severe-pre.test.js](test/unit/acog-severe-pre.test.js).
+- **`hellp` — HELLP Syndrome Criteria** (Sibai BM. *The HELLP
+  syndrome (hemolysis, elevated liver enzymes, and low
+  platelets): much ado about nothing?* Am J Obstet Gynecol.
+  1990;162(2):311-316). Three criteria: hemolysis (abnormal
+  smear AND/OR total bili >=1.2 AND/OR LDH >=600); AST >=70;
+  platelets <100 x10^9/L. Complete (3/3) or partial HELLP.
+  Mississippi class per Martin 1999 by platelet nadir
+  (<=50 / 50-100 / 100-150). Audit log:
+  [docs/audits/v11/hellp.md](docs/audits/v11/hellp.md). Worked
+  examples in [test/unit/hellp.test.js](test/unit/hellp.test.js).
+- **`carpenter-coustan` — Carpenter-Coustan GDM Criteria**
+  (Carpenter MW, Coustan DR. *Criteria for screening tests for
+  gestational diabetes.* Am J Obstet Gynecol. 1982;144(7):768-
+  773). 100-g 3-h OGTT cutoffs (mg/dL): fasting 95, 1-h 180,
+  2-h 155, 3-h 140; GDM if >=2 values exceed; single abnormal =
+  impaired glucose tolerance. Audit log:
+  [docs/audits/v11/carpenter-coustan.md](docs/audits/v11/carpenter-coustan.md).
+  Worked examples in
+  [test/unit/carpenter-coustan.test.js](test/unit/carpenter-coustan.test.js).
+- **`iadpsg` — IADPSG GDM Criteria** (International Association
+  of Diabetes and Pregnancy Study Groups Consensus Panel.
+  *International association of diabetes and pregnancy study
+  groups recommendations on the diagnosis and classification of
+  hyperglycemia in pregnancy.* Diabetes Care. 2010;33(3):676-
+  682). 75-g 2-h OGTT cutoffs (mg/dL): fasting 92, 1-h 180,
+  2-h 153; GDM if >=1 value exceeds. Ships side by side with
+  `carpenter-coustan` per spec-v15 §3.1.6 so the clinician can
+  pick by local protocol. Note: spec-v15 §6 sequencing lists
+  five tiles for wave 15-1 (omits IADPSG); §3.1 enumerates six.
+  IADPSG ships here with the rest of the OB bundle. Audit log:
+  [docs/audits/v11/iadpsg.md](docs/audits/v11/iadpsg.md). Worked
+  examples in [test/unit/iadpsg.test.js](test/unit/iadpsg.test.js).
+- **Wave 15-1 partial.** New Ballard Score (Ballard 1991)
+  deferred — 12 neuromuscular + physical criteria each scored -1
+  to +5 with a sum-to-gestational-age conversion table that
+  warrants a focused audit against Ballard 1991 Table 1 rather
+  than a rushed batch.
+
 ### Added (spec-v14 backfills — Berlin Questionnaire, LEMON, White-Song)
 
 These three tiles close the wave 14-2 and wave 14-3 partials with

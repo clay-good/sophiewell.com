@@ -2996,6 +2996,151 @@ export const renderers = {
     run();
   },
 
+  // spec-v15 §3.1.1 wave 15-1: Biophysical Profile (Manning 1980).
+  bpp(root) {
+    const items = [
+      ['Fetal breathing movements (>=1 episode >=30 s in 30 min) (+2)', 'bp-fb'],
+      ['Fetal movements (>=3 discrete body/limb movements in 30 min) (+2)', 'bp-fm'],
+      ['Fetal tone (>=1 episode of active extension w/ return to flexion) (+2)', 'bp-ft'],
+      ['Amniotic fluid volume (>=1 pocket >=2 cm in two perpendicular planes) (+2)', 'bp-af'],
+      ['Reactive non-stress test (NST) (+2)', 'bp-nst'],
+    ];
+    for (const [l, id] of items) root.appendChild(checkbox(l, id));
+    const o = out(); root.appendChild(o);
+    const run = () => safe(o, () => {
+      const r = S4.bpp({
+        fetalBreathing: checked('bp-fb'),
+        fetalMovements: checked('bp-fm'),
+        fetalTone: checked('bp-ft'),
+        amnioticFluid: checked('bp-af'),
+        reactiveNst: checked('bp-nst'),
+      });
+      o.appendChild(el('h2', { text: `BPP ${r.score} of 10` }));
+      o.appendChild(el('p', { text: r.band }));
+    });
+    items.forEach(([, id]) => document.getElementById(id).addEventListener('change', run));
+    run();
+  },
+
+  // spec-v15 §3.1.3 wave 15-1: ACOG Severe-feature Preeclampsia.
+  'acog-severe-pre'(root) {
+    const items = [
+      ['SBP >=160 or DBP >=110 on two occasions >=4 h apart', 'sp-bp'],
+      ['Thrombocytopenia (platelets <100 x10^9/L)', 'sp-plt'],
+      ['Impaired hepatic function (transaminases >=2x ULN, or persistent severe RUQ/epigastric pain)', 'sp-hep'],
+      ['Creatinine >1.1 mg/dL or doubled baseline', 'sp-cr'],
+      ['Pulmonary edema', 'sp-pulm'],
+      ['New cerebral or visual disturbances', 'sp-neuro'],
+    ];
+    for (const [l, id] of items) root.appendChild(checkbox(l, id));
+    const o = out(); root.appendChild(o);
+    const run = () => safe(o, () => {
+      const r = S4.acogSeverePre({
+        sbpGte160OrDbpGte110: checked('sp-bp'),
+        thrombocytopeniaLt100: checked('sp-plt'),
+        impairedHepaticFunction: checked('sp-hep'),
+        creatinineGt11OrDoubled: checked('sp-cr'),
+        pulmonaryEdema: checked('sp-pulm'),
+        cerebralOrVisualDisturbances: checked('sp-neuro'),
+      });
+      o.appendChild(el('h2', { text: r.severe ? 'ACOG: severe preeclampsia' : 'ACOG: no severe features' }));
+      o.appendChild(el('p', { text: r.band }));
+    });
+    items.forEach(([, id]) => document.getElementById(id).addEventListener('change', run));
+    run();
+  },
+
+  // spec-v15 §3.1.4 wave 15-1: HELLP Criteria (Sibai 1990).
+  hellp(root) {
+    const items = [
+      ['Hemolysis (abnormal peripheral smear AND/OR total bili >=1.2 AND/OR LDH >=600)', 'hl-hem'],
+      ['Elevated liver enzymes (AST >=70 U/L)', 'hl-ast'],
+      ['Low platelets (<100 x10^9/L)', 'hl-plt'],
+    ];
+    for (const [l, id] of items) root.appendChild(checkbox(l, id));
+    root.appendChild(el('p', {}, [
+      el('label', { for: 'hl-nadir', text: 'Platelet nadir for Mississippi class (x10^9/L, optional)' }), el('br'),
+      el('input', { id: 'hl-nadir', type: 'number', step: 'any' }),
+    ]));
+    const o = out(); root.appendChild(o);
+    const run = () => safe(o, () => {
+      const nadir = document.getElementById('hl-nadir').value;
+      const r = S4.hellp({
+        hemolysis: checked('hl-hem'),
+        astGte70: checked('hl-ast'),
+        plateletsLt100: checked('hl-plt'),
+        plateletNadirThousands: nadir,
+      });
+      let label;
+      if (r.complete) label = 'HELLP: complete';
+      else if (r.partial) label = `HELLP: partial (${r.criteriaMet} of 3)`;
+      else label = 'HELLP: no criteria met';
+      o.appendChild(el('h2', { text: label }));
+      o.appendChild(el('p', { text: r.band }));
+    });
+    items.forEach(([, id]) => document.getElementById(id).addEventListener('change', run));
+    document.getElementById('hl-nadir').addEventListener('input', run);
+    run();
+  },
+
+  // spec-v15 §3.1.5 wave 15-1: Carpenter-Coustan (Carpenter 1982).
+  'carpenter-coustan'(root) {
+    const fields = [
+      ['Fasting glucose (mg/dL)', 'cc-f', 85],
+      ['1-hour glucose (mg/dL)', 'cc-1h', 160],
+      ['2-hour glucose (mg/dL)', 'cc-2h', 140],
+      ['3-hour glucose (mg/dL)', 'cc-3h', 120],
+    ];
+    for (const [l, id, v] of fields) {
+      root.appendChild(el('p', {}, [
+        el('label', { for: id, text: l }), el('br'),
+        el('input', { id, type: 'number', step: 'any', value: String(v) }),
+      ]));
+    }
+    root.appendChild(el('p', { class: 'muted', text: 'Cutoffs (mg/dL): fasting 95, 1-h 180, 2-h 155, 3-h 140. GDM if >=2 values exceed.' }));
+    const o = out(); root.appendChild(o);
+    const run = () => safe(o, () => {
+      const r = S4.carpenterCoustan({
+        fasting: nv('cc-f'),
+        oneHour: nv('cc-1h'),
+        twoHour: nv('cc-2h'),
+        threeHour: nv('cc-3h'),
+      });
+      o.appendChild(el('h2', { text: `Carpenter-Coustan: ${r.exceeded} of 4 abnormal` }));
+      o.appendChild(el('p', { text: r.band }));
+    });
+    fields.forEach(([, id]) => document.getElementById(id).addEventListener('input', run));
+    run();
+  },
+
+  // spec-v15 §3.1.6 wave 15-1: IADPSG GDM (IADPSG 2010).
+  iadpsg(root) {
+    const fields = [
+      ['Fasting glucose (mg/dL)', 'ia-f', 85],
+      ['1-hour glucose (mg/dL)', 'ia-1h', 160],
+      ['2-hour glucose (mg/dL)', 'ia-2h', 140],
+    ];
+    for (const [l, id, v] of fields) {
+      root.appendChild(el('p', {}, [
+        el('label', { for: id, text: l }), el('br'),
+        el('input', { id, type: 'number', step: 'any', value: String(v) }),
+      ]));
+    }
+    root.appendChild(el('p', { class: 'muted', text: 'Cutoffs (mg/dL): fasting 92, 1-h 180, 2-h 153. GDM if >=1 value exceeds.' }));
+    const o = out(); root.appendChild(o);
+    const run = () => safe(o, () => {
+      const r = S4.iadpsg({
+        fasting: nv('ia-f'),
+        oneHour: nv('ia-1h'),
+        twoHour: nv('ia-2h'),
+      });
+      o.appendChild(el('h2', { text: `IADPSG: ${r.exceeded} of 3 abnormal` }));
+      o.appendChild(el('p', { text: r.band }));
+    });
+    fields.forEach(([, id]) => document.getElementById(id).addEventListener('input', run));
+    run();
+  },
+
   // spec-v14 §3.3.3 wave 14-3: modified Aldrete (Aldrete 1995).
   aldrete(root) {
     const items = [
