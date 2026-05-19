@@ -2426,4 +2426,68 @@ export const renderers = {
     document.querySelectorAll('input').forEach((n) => n.addEventListener('change', run));
     run();
   },
+
+  // spec-v14 §3.2.1 wave 14-2: STOP-BANG (Chung 2008, 2012).
+  'stop-bang'(root) {
+    const items = [
+      ['Snore loudly (louder than talking, or loud enough to hear through closed doors)', 'sb-s'],
+      ['Tired, fatigued, or sleepy during the daytime', 'sb-t'],
+      ['Observed apnea (someone has seen you stop breathing during sleep)', 'sb-o'],
+      ['High blood pressure (treated or untreated)', 'sb-p'],
+      ['BMI > 35 kg/m^2', 'sb-b'],
+      ['Age > 50 years', 'sb-a'],
+      ['Neck circumference > 40 cm', 'sb-n'],
+      ['Male sex', 'sb-g'],
+    ];
+    for (const [l, id] of items) root.appendChild(checkbox(l, id));
+    const o = out(); root.appendChild(o);
+    const run = () => safe(o, () => {
+      const r = S4.stopBang({
+        snore: checked('sb-s'),
+        tired: checked('sb-t'),
+        observedApnea: checked('sb-o'),
+        highBp: checked('sb-p'),
+        bmiGt35: checked('sb-b'),
+        ageGt50: checked('sb-a'),
+        neckGt40cm: checked('sb-n'),
+        male: checked('sb-g'),
+      });
+      o.appendChild(el('h2', { text: `STOP-BANG ${r.score} of 8` }));
+      o.appendChild(el('p', { text: r.band }));
+    });
+    items.forEach(([, id]) => document.getElementById(id).addEventListener('change', run));
+    run();
+  },
+
+  // spec-v14 §3.2.3 wave 14-2: Epworth Sleepiness Scale (Johns 1991).
+  epworth(root) {
+    const items = [
+      ['Sitting and reading', 'ep-read'],
+      ['Watching TV', 'ep-tv'],
+      ['Sitting inactive in a public place (e.g., a theater or a meeting)', 'ep-pub'],
+      ['As a passenger in a car for an hour without a break', 'ep-car'],
+      ['Lying down to rest in the afternoon when circumstances permit', 'ep-lying'],
+      ['Sitting and talking to someone', 'ep-talk'],
+      ['Sitting quietly after a lunch without alcohol', 'ep-lunch'],
+      ['In a car, while stopped for a few minutes in traffic', 'ep-traffic'],
+    ];
+    for (const [l, id] of items) root.appendChild(rangeField(l, id, 0, 3, 0));
+    const o = out(); root.appendChild(o);
+    const run = () => safe(o, () => {
+      const r = S4.epworth({
+        reading: nv('ep-read'),
+        tv: nv('ep-tv'),
+        publicPlace: nv('ep-pub'),
+        carPassenger: nv('ep-car'),
+        lyingDown: nv('ep-lying'),
+        sittingTalking: nv('ep-talk'),
+        afterLunch: nv('ep-lunch'),
+        carTraffic: nv('ep-traffic'),
+      });
+      o.appendChild(el('h2', { text: `Epworth ${r.score} of 24` }));
+      o.appendChild(el('p', { text: r.band }));
+    });
+    items.forEach(([, id]) => document.getElementById(id).addEventListener('input', run));
+    run();
+  },
 };

@@ -6,6 +6,35 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v14 wave 14-2 — sleep-disordered breathing (partial): STOP-BANG, Epworth)
+
+- **`stop-bang` — STOP-BANG OSA Screen** (Chung F, et al.
+  *STOP questionnaire: a tool to screen patients for obstructive
+  sleep apnea.* Anesthesiology. 2008;108(5):812-821; BANG
+  extension: Chung F, et al. *High STOP-Bang score indicates a
+  high probability of obstructive sleep apnoea.* Br J Anaesth.
+  2012;108(5):768-775). Eight binary criteria (Snore, Tired,
+  Observed apnea, blood Pressure, BMI>35, Age>50, Neck>40cm,
+  Gender male); sum 0-8; cutoffs 0-2 low, 3-4 intermediate, 5-8
+  high risk for moderate-to-severe OSA per Chung 2012 Table 3.
+  Audit log:
+  [docs/audits/v11/stop-bang.md](docs/audits/v11/stop-bang.md).
+  Worked examples in
+  [test/unit/stop-bang.test.js](test/unit/stop-bang.test.js).
+- **`epworth` — Epworth Sleepiness Scale** (Johns MW. *A new
+  method for measuring daytime sleepiness: the Epworth sleepiness
+  scale.* Sleep. 1991;14(6):540-545). Eight scenarios each scored
+  0 (would never doze) to 3 (high chance of dozing); sum 0-24;
+  bands per Johns 1991: 0-10 normal, 11-14 mild, 15-17 moderate,
+  18-24 severe excessive daytime sleepiness. Per-item input
+  clamped to [0, 3]. Audit log:
+  [docs/audits/v11/epworth.md](docs/audits/v11/epworth.md). Worked
+  examples in [test/unit/epworth.test.js](test/unit/epworth.test.js).
+- **Wave 14-2 partial.** Berlin Questionnaire for OSA deferred —
+  Netzer 1999 specifies three categories with criteria-specific
+  high-risk rules that warrant a focused audit against the primary
+  source rather than a rushed batch.
+
 ### Added (spec-v13 wave 13-1 — ICU mortality scoring: MODS)
 
 - **`mods` — Multiple Organ Dysfunction Score** (Marshall JC,
