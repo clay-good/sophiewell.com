@@ -2605,6 +2605,90 @@ export const renderers = {
     run();
   },
 
+  // spec-v14 §3.5.1 wave 14-5: IMPROVE Bleeding (Decousus 2011).
+  'improve-bleeding'(root) {
+    const cb = [
+      ['Active gastroduodenal ulcer (+4.5)', 'ib-ulcer'],
+      ['Bleeding in 3 months prior to admission (+4)', 'ib-bleed3'],
+      ['Platelet count <50 x10^9/L (+4)', 'ib-plt'],
+      ['Hepatic failure (INR >1.5) (+2.5)', 'ib-hep'],
+      ['ICU/CCU admission (+2.5)', 'ib-icu'],
+      ['Central venous catheter (+2)', 'ib-cvc'],
+      ['Rheumatic disease (+2)', 'ib-rheum'],
+      ['Active cancer (+2)', 'ib-cancer'],
+      ['Male sex (+1)', 'ib-male'],
+    ];
+    root.appendChild(el('p', {}, [
+      el('label', { for: 'ib-age', text: 'Age category' }), el('br'),
+      el('select', { id: 'ib-age' }, [
+        el('option', { value: '<40', text: '<40 (0)' }),
+        el('option', { value: '40-84', text: '40-84 (+1.5)' }),
+        el('option', { value: '>=85', text: '>=85 (+3.5)' }),
+      ]),
+    ]));
+    root.appendChild(el('p', {}, [
+      el('label', { for: 'ib-renal', text: 'Renal failure (eGFR)' }), el('br'),
+      el('select', { id: 'ib-renal' }, [
+        el('option', { value: 'none', text: 'None / eGFR >=60 (0)' }),
+        el('option', { value: 'moderate', text: 'Moderate eGFR 30-59 (+1)' }),
+        el('option', { value: 'severe', text: 'Severe eGFR <30 (+2.5)' }),
+      ]),
+    ]));
+    for (const [l, id] of cb) root.appendChild(checkbox(l, id));
+    const o = out(); root.appendChild(o);
+    const run = () => safe(o, () => {
+      const r = S4.improveBleeding({
+        activeUlcer: checked('ib-ulcer'),
+        bleeding3moPrior: checked('ib-bleed3'),
+        plateletLt50: checked('ib-plt'),
+        age: document.getElementById('ib-age').value,
+        hepaticFailure: checked('ib-hep'),
+        renalFailure: document.getElementById('ib-renal').value,
+        icuAdmission: checked('ib-icu'),
+        centralVenousCatheter: checked('ib-cvc'),
+        rheumaticDisease: checked('ib-rheum'),
+        currentCancer: checked('ib-cancer'),
+        male: checked('ib-male'),
+      });
+      const scoreText = Number.isInteger(r.score) ? String(r.score) : r.score.toFixed(1);
+      o.appendChild(el('h2', { text: `IMPROVE-Bleeding ${scoreText}` }));
+      o.appendChild(el('p', { text: r.band }));
+    });
+    ['ib-age', 'ib-renal'].forEach((id) => document.getElementById(id).addEventListener('change', run));
+    cb.forEach(([, id]) => document.getElementById(id).addEventListener('change', run));
+    run();
+  },
+
+  // spec-v14 §3.5.2 wave 14-5: IMPROVE VTE (Spyropoulos 2011).
+  'improve-vte'(root) {
+    const items = [
+      ['Prior VTE (+3)', 'iv-prior'],
+      ['Known thrombophilia (+2)', 'iv-thr'],
+      ['Lower-limb paralysis (+2)', 'iv-para'],
+      ['Active cancer (+2)', 'iv-cancer'],
+      ['Immobilized >=7 days (+1)', 'iv-immob'],
+      ['ICU/CCU stay (+1)', 'iv-icu'],
+      ['Age >60 years (+1)', 'iv-age60'],
+    ];
+    for (const [l, id] of items) root.appendChild(checkbox(l, id));
+    const o = out(); root.appendChild(o);
+    const run = () => safe(o, () => {
+      const r = S4.improveVte({
+        priorVte: checked('iv-prior'),
+        thrombophilia: checked('iv-thr'),
+        lowerLimbParalysis: checked('iv-para'),
+        currentCancer: checked('iv-cancer'),
+        immobilized7d: checked('iv-immob'),
+        icuCcuStay: checked('iv-icu'),
+        ageGt60: checked('iv-age60'),
+      });
+      o.appendChild(el('h2', { text: `IMPROVE-VTE ${r.score} of 12` }));
+      o.appendChild(el('p', { text: r.band }));
+    });
+    items.forEach(([, id]) => document.getElementById(id).addEventListener('change', run));
+    run();
+  },
+
   // spec-v14 §3.3.3 wave 14-3: modified Aldrete (Aldrete 1995).
   aldrete(root) {
     const items = [

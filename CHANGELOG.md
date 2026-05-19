@@ -6,6 +6,37 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v14 wave 14-5 — medical-inpatient bleeding & VTE prophylaxis: IMPROVE-Bleeding, IMPROVE-VTE)
+
+- **`improve-bleeding` — IMPROVE Bleeding Risk Score** (Decousus
+  H, Tapson VF, Bergmann JF, et al. *Factors at admission
+  associated with bleeding risk in medical patients: findings
+  from the IMPROVE investigators.* Chest. 2011;139(1):69-79).
+  Thirteen weighted criteria (active gastroduodenal ulcer +4.5;
+  bleeding in 3 months prior +4; platelet <50 +4; age >=85 +3.5;
+  hepatic failure +2.5; severe renal failure +2.5; ICU/CCU +2.5;
+  central venous catheter +2; rheumatic disease +2; active cancer
+  +2; age 40-84 +1.5; moderate renal failure +1; male +1). Age
+  and renal-failure categories modeled as mutually-exclusive
+  selects so a single patient cannot double-count. Cutoff >=7 =
+  high bleeding risk -> favor mechanical over pharmacologic
+  prophylaxis per Decousus 2011. Audit log:
+  [docs/audits/v11/improve-bleeding.md](docs/audits/v11/improve-bleeding.md).
+  Worked examples in
+  [test/unit/improve-bleeding.test.js](test/unit/improve-bleeding.test.js).
+- **`improve-vte` — IMPROVE VTE Risk Score** (Spyropoulos AC,
+  Anderson FA Jr, FitzGerald G, et al. *Predictive and
+  associative models to identify hospitalized medical patients
+  at risk for VTE.* Chest. 2011;140(3):706-714). Seven weighted
+  criteria (prior VTE +3; thrombophilia +2; lower-limb paralysis
+  +2; active cancer +2; immobilized >=7 days +1; ICU/CCU stay +1;
+  age >60 +1); sum 0-12; cutoffs >=2 -> inpatient prophylaxis,
+  >=4 -> extended-duration post-discharge prophylaxis per
+  Spyropoulos 2011. Audit log:
+  [docs/audits/v11/improve-vte.md](docs/audits/v11/improve-vte.md).
+  Worked examples in
+  [test/unit/improve-vte.test.js](test/unit/improve-vte.test.js).
+
 ### Added (spec-v14 wave 14-4 — atrial-fibrillation bleeding alternatives: ATRIA, ORBIT, HEMORR2HAGES)
 
 - **`atria-bleeding` — ATRIA Bleeding Score** (Fang MC, Go AS,
