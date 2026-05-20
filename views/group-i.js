@@ -4,10 +4,8 @@
 
 import { el, clear } from '../lib/dom.js';
 import { loadFile } from '../lib/data.js';
-import { pedsDose, defibEnergy, cincinnatiStroke, fast, fieldTriage, startTriage, jumpStartTriage, ruleOfNines, lundBrowder, burnFluid, pediatricEtt, naloxoneDose, selectEmsChecklist, RULE_OF_NINES_ADULT, PEDS_DOSE_RECIPES } from '../lib/field.js';
+import { pedsDose, cincinnatiStroke, fast, fieldTriage, startTriage, jumpStartTriage, ruleOfNines, lundBrowder, burnFluid, pediatricEtt, naloxoneDose, selectEmsChecklist, RULE_OF_NINES_ADULT, PEDS_DOSE_RECIPES } from '../lib/field.js';
 import { fetchJson } from '../lib/data.js';
-import { renderTable } from '../lib/table.js';
-import { buildIndex } from '../lib/search.js';
 
 function field(label, id, opts = {}) {
   const wrap = el('p');
@@ -65,88 +63,8 @@ export const renderers = {
   },
 
   // ---- Utility 65: Adult cardiac arrest reference ----------------------
-  'adult-arrest-ref'(root) {
-    noticeBlock(root);
-    const o = out(); root.appendChild(o);
-    loadFile('aha-reference', 'aha-reference.json').then((data) => {
-      o.appendChild(el('p', { class: 'muted', text: data.attribution }));
-      o.appendChild(el('h3', { text: 'Adult cardiac arrest drugs' }));
-      const tbl = el('table', { class: 'lookup-table' });
-      tbl.appendChild(el('thead', {}, [el('tr', {}, [
-        el('th', { scope: 'col', text: 'Drug' }), el('th', { scope: 'col', text: 'Dose' }),
-        el('th', { scope: 'col', text: 'Interval' }), el('th', { scope: 'col', text: 'Indication' }),
-      ])]));
-      const tbody = el('tbody');
-      for (const r of data.adultArrest) tbody.appendChild(el('tr', {}, [
-        el('td', { text: r.drug }), el('td', { text: r.dose }),
-        el('td', { text: r.interval }), el('td', { text: r.indication }),
-      ]));
-      tbl.appendChild(tbody); o.appendChild(tbl);
-      o.appendChild(el('p', { class: 'muted', text: `Edition: ${data.edition}.` }));
-    });
-  },
-
-  // ---- Utility 66: Pediatric cardiac arrest reference ------------------
-  'peds-arrest-ref'(root) {
-    noticeBlock(root);
-    const o = out(); root.appendChild(o);
-    loadFile('aha-reference', 'aha-reference.json').then((data) => {
-      o.appendChild(el('p', { class: 'muted', text: data.attribution }));
-      o.appendChild(el('h3', { text: 'Pediatric cardiac arrest drugs' }));
-      const tbl = el('table', { class: 'lookup-table' });
-      tbl.appendChild(el('thead', {}, [el('tr', {}, [
-        el('th', { scope: 'col', text: 'Drug' }), el('th', { scope: 'col', text: 'Dose' }),
-        el('th', { scope: 'col', text: 'Interval' }), el('th', { scope: 'col', text: 'Indication' }),
-      ])]));
-      const tbody = el('tbody');
-      for (const r of data.pediatricArrest) tbody.appendChild(el('tr', {}, [
-        el('td', { text: r.drug }), el('td', { text: r.dose }),
-        el('td', { text: r.interval }), el('td', { text: r.indication }),
-      ]));
-      tbl.appendChild(tbody); o.appendChild(tbl);
-      o.appendChild(el('p', { class: 'muted', text: `Edition: ${data.edition}.` }));
-    });
-  },
-
-  // ---- Utility 67: Defibrillation energy --------------------------------
-  defib(root) {
-    noticeBlock(root);
-    root.appendChild(selectField('Population', 'df-pop', [
-      { value: 'adult',     text: 'Adult' },
-      { value: 'pediatric', text: 'Pediatric' },
-    ]));
-    root.appendChild(selectField('Scenario', 'df-scn', [
-      { value: 'vf-pvt',                          text: 'VF / pulseless VT' },
-      { value: 'cardioversion-svt-narrow-regular',text: 'Adult: cardioversion - unstable narrow regular SVT' },
-      { value: 'cardioversion-afib',              text: 'Adult: cardioversion - unstable atrial fibrillation' },
-      { value: 'cardioversion-vt-monomorphic',    text: 'Adult: cardioversion - unstable monomorphic VT' },
-      { value: 'cardioversion',                   text: 'Pediatric: cardioversion' },
-    ]));
-    root.appendChild(selectField('Waveform (adult VF/pVT only)', 'df-wave', [
-      { value: 'biphasic',   text: 'Biphasic (current standard)' },
-      { value: 'monophasic', text: 'Monophasic (legacy)' },
-    ]));
-    root.appendChild(field('Patient weight (kg, pediatric only)', 'df-w', { placeholder: '20' }));
-    root.appendChild(field('Shock number (1 = first; >=2 = subsequent)', 'df-n', { placeholder: '1' }));
-    const o = out(); root.appendChild(o);
-    const run = () => safe(o, () => {
-      const r = defibEnergy({
-        population: document.getElementById('df-pop').value,
-        scenario:   document.getElementById('df-scn').value,
-        weightKg:   nv('df-w') || undefined,
-        shockNumber: nv('df-n') || 1,
-        waveform:   document.getElementById('df-wave').value,
-      });
-      o.appendChild(el('p', { text: `Recommended energy: ${r.joules}` }));
-      o.appendChild(el('p', { class: 'muted', text: r.notes }));
-    });
-    ['df-pop', 'df-scn', 'df-wave', 'df-w', 'df-n'].forEach((id) => {
-      document.getElementById(id).addEventListener('input', run);
-      document.getElementById(id).addEventListener('change', run);
-    });
-  },
-
-  // ---- Utility 68: Cincinnati Prehospital Stroke Scale -----------------
+  // adult-arrest-ref / peds-arrest-ref / defib removed in spec-v29
+  // wave 29-2 (Group I): pure AHA ECC numeric reference cards.
   cincinnati(root) {
     noticeBlock(root);
     root.appendChild(field('Time of last known well (text or HH:MM)', 'cps-time', { type: 'text', placeholder: '09:30' }));
@@ -389,44 +307,7 @@ export const renderers = {
     ['bf-w', 'bf-bsa', 'bf-h'].forEach((id) => document.getElementById(id).addEventListener('input', run));
   },
 
-  // ---- Utility 75: Hypothermia staging ---------------------------------
-  hypothermia(root) {
-    noticeBlock(root);
-    const o = out(); root.appendChild(o);
-    loadFile('environmental', 'environmental.json').then((data) => {
-      o.appendChild(el('p', { class: 'muted', text: data.attribution }));
-      const tbl = el('table', { class: 'lookup-table' });
-      tbl.appendChild(el('thead', {}, [el('tr', {}, [
-        el('th', { scope: 'col', text: 'Stage' }),
-        el('th', { scope: 'col', text: 'Core temperature' }),
-        el('th', { scope: 'col', text: 'Findings' }),
-      ])]));
-      const tbody = el('tbody');
-      for (const r of data.hypothermia) tbody.appendChild(el('tr', {}, [
-        el('td', { text: r.stage }), el('td', { text: r.coreTemp }), el('td', { text: r.findings }),
-      ]));
-      tbl.appendChild(tbody); o.appendChild(tbl);
-    });
-  },
-
-  // ---- Utility 76: Heat illness staging --------------------------------
-  'heat-illness'(root) {
-    noticeBlock(root);
-    const o = out(); root.appendChild(o);
-    loadFile('environmental', 'environmental.json').then((data) => {
-      o.appendChild(el('p', { class: 'muted', text: data.attribution }));
-      const tbl = el('table', { class: 'lookup-table' });
-      tbl.appendChild(el('thead', {}, [el('tr', {}, [
-        el('th', { scope: 'col', text: 'Stage' }),
-        el('th', { scope: 'col', text: 'Criteria' }),
-      ])]));
-      const tbody = el('tbody');
-      for (const r of data.heatIllness) tbody.appendChild(el('tr', {}, [
-        el('td', { text: r.stage }), el('td', { text: r.criteria }),
-      ]));
-      tbl.appendChild(tbody); o.appendChild(tbl);
-    });
-  },
+  // hypothermia / heat-illness removed in spec-v29 wave 29-2 (Group I).
 
   // ---- Utility 77: Pediatric ETT size ----------------------------------
   'peds-ett'(root) {
@@ -518,27 +399,7 @@ export const renderers = {
     });
   },
 
-  // ---- Utility 79: Toxidrome reference ---------------------------------
-  toxidromes(root) {
-    noticeBlock(root);
-    const o = out(); root.appendChild(o);
-    loadFile('toxidromes', 'toxidromes.json').then((data) => {
-      o.appendChild(el('p', { class: 'muted', text: data.attribution }));
-      const tbl = el('table', { class: 'lookup-table' });
-      tbl.appendChild(el('thead', {}, [el('tr', {}, [
-        el('th', { scope: 'col', text: 'Syndrome' }),
-        el('th', { scope: 'col', text: 'Signs' }),
-        el('th', { scope: 'col', text: 'Common causes' }),
-        el('th', { scope: 'col', text: 'Antidote / management' }),
-      ])]));
-      const tbody = el('tbody');
-      for (const t of data.toxidromes) tbody.appendChild(el('tr', {}, [
-        el('td', { text: t.name }), el('td', { text: t.signs }),
-        el('td', { text: t.causes }), el('td', { text: t.antidote }),
-      ]));
-      tbl.appendChild(tbody); o.appendChild(tbl);
-    });
-  },
+  // toxidromes removed in spec-v29 wave 29-2 (Group I).
 
   // --- spec-v4 §5: Group I extensions (utilities 166-171) -------------
 
@@ -575,72 +436,9 @@ export const renderers = {
     run();
   },
 
-  'dot-erg'(root) {
-    const region = el('div', { id: 'q-results', role: 'region', 'aria-live': 'polite' });
-    root.appendChild(region);
-    loadFile('dot-erg', 'erg.json').then((rows) => {
-      renderTable(region, {
-        columns: [
-          { key: 'unNumber', label: 'UN/NA' },
-          { key: 'name', label: 'Name' },
-          { key: 'guide', label: 'ERG Guide' },
-          { key: 'initialIsolationFt', label: 'Isolation (ft)' },
-          { key: 'protectiveActionMi', label: 'Protective action (mi)' },
-          { key: 'immediateActions', label: 'Immediate actions' },
-        ],
-        rows,
-      });
-    });
-  },
-
-  'niosh-pg'(root) {
-    const region = el('div', { id: 'q-results', role: 'region', 'aria-live': 'polite' });
-    root.appendChild(region);
-    loadFile('niosh-pg', 'npg.json').then((rows) => {
-      renderTable(region, {
-        columns: [
-          { key: 'name', label: 'Chemical' },
-          { key: 'cas', label: 'CAS' },
-          { key: 'twa', label: 'TWA' },
-          { key: 'stel', label: 'STEL' },
-          { key: 'idlh', label: 'IDLH' },
-          { key: 'ppe', label: 'PPE' },
-          { key: 'targetOrgans', label: 'Target organs' },
-        ],
-        rows,
-      });
-    });
-  },
-
-  'cpr-numeric'(root) {
-    const o = el('div', { id: 'q-results', role: 'region', 'aria-live': 'polite' });
-    root.appendChild(o);
-    loadFile('cpr-aha-numeric', 'cpr.json').then((d) => {
-      o.appendChild(el('h2', { text: 'AHA CPR numeric reference (numeric facts only)' }));
-      for (const [pop, vals] of Object.entries(d)) {
-        o.appendChild(el('h3', { text: pop[0].toUpperCase() + pop.slice(1) }));
-        const ul = el('ul');
-        for (const [k, v] of Object.entries(vals)) ul.appendChild(el('li', { text: `${k}: ${v}` }));
-        o.appendChild(ul);
-      }
-    });
-  },
-
-  tccc(root) {
-    const o = el('div', { id: 'q-results', role: 'region', 'aria-live': 'polite' });
-    root.appendChild(o);
-    loadFile('tccc', 'tccc.json').then((d) => {
-      o.appendChild(el('h2', { text: 'TCCC Tourniquet & Wound-Packing Reference' }));
-      o.appendChild(el('h3', { text: 'Tourniquet' }));
-      const ul1 = el('ul');
-      for (const [k, v] of Object.entries(d.tourniquet)) ul1.appendChild(el('li', { text: `${k}: ${v}` }));
-      o.appendChild(ul1);
-      o.appendChild(el('h3', { text: 'Wound packing' }));
-      const ul2 = el('ul');
-      for (const [k, v] of Object.entries(d.woundPacking)) ul2.appendChild(el('li', { text: `${k}: ${v}` }));
-      o.appendChild(ul2);
-    });
-  },
+  // dot-erg / niosh-pg / cpr-numeric / tccc removed in spec-v29 wave
+  // 29-2 (Group I): pure hazmat / chemical-hazard / numeric-wallet
+  // reference cards.
 
   'co-cn-antidote'(root) {
     const o = el('div', { id: 'q-results', role: 'region', 'aria-live': 'polite' });

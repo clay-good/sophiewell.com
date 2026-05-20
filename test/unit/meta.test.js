@@ -102,15 +102,10 @@ const NO_INPUTS_TILES = new Set([
   'auditc',           // Group G: screener; pre-fills via AUDITC_CONFIG.exampleAnswers.
   'cage',             // Group G: screener; pre-fills via CAGE_CONFIG.exampleAnswers.
   'epds',             // Group G: screener; pre-fills via EPDS_CONFIG.exampleAnswers.
-  'adult-arrest-ref', // Group I: AHA adult cardiac-arrest drug table.
-  'peds-arrest-ref',  // Group I: AHA pediatric cardiac-arrest drug table.
-  'hypothermia',      // Group I: WMS hypothermia staging table.
-  'heat-illness',     // Group I: WMS heat-illness staging table.
-  'toxidromes',       // Group I: ATSDR/CDC toxidrome reference table.
-  'dot-erg',          // Group I: PHMSA Emergency Response Guidebook table.
-  'niosh-pg',         // Group I: CDC NIOSH Pocket Guide table.
-  'cpr-numeric',      // Group I: AHA CPR/ECC numeric reference.
-  'tccc',             // Group I: CoTCCC tourniquet/wound-packing reference.
+  // spec-v29 wave 29-2 (Group I): the 10 field-medicine reference
+  // cards (adult-arrest-ref, peds-arrest-ref, hypothermia,
+  // heat-illness, toxidromes, dot-erg, niosh-pg, cpr-numeric, tccc,
+  // defib) were removed and no longer appear in the home grid.
   'co-cn-antidote',   // Group I: CO/CN antidote reference card.
   // Wave 3d: Group J/K/L/O reference + decision-tree tiles.
   'tetanus',          // Group J: tetanus prophylaxis decision tree.

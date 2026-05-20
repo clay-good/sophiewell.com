@@ -69,7 +69,7 @@
           "@id": "https://sophiewell.com/#webapp",
           "name": "sophiewell",
           "url": "https://sophiewell.com/",
-          "description": "Free, client-side healthcare toolbox with 253 deterministic utilities for patients, billers, coders, nurses, clinicians, EMS, and educators.",
+          "description": "Free, client-side healthcare toolbox with 243 deterministic utilities for patients, billers, coders, nurses, clinicians, EMS, and educators.",
           "applicationCategory": [
             "HealthApplication",
             "MedicalApplication",
@@ -181,9 +181,6 @@
             "Specialty-Visit Question Generator",
             "Medication Wallet Card Generator",
             "Pediatric Weight-to-Dose Calculator",
-            "Adult Cardiac Arrest Drug Reference",
-            "Pediatric Cardiac Arrest Drug Reference",
-            "Defibrillation Energy Calculator",
             "Cincinnati Prehospital Stroke Scale",
             "FAST and BE-FAST Stroke Assessment",
             "Trauma Triage Decision Tool (CDC)",
@@ -191,17 +188,10 @@
             "JumpSTART Pediatric MCI Triage",
             "Burn Surface Area Calculator",
             "Burn Fluid Resuscitation Calculator",
-            "Hypothermia Staging Reference",
-            "Heat Illness Staging Reference",
             "Pediatric ETT Size Calculator",
-            "Toxidrome Reference",
             "Naloxone Dosing Calculator",
             "EMS Documentation Helper",
             "NEXUS + Canadian C-Spine",
-            "DOT ERG Hazmat Lookup",
-            "NIOSH Pocket Guide Lookup",
-            "CPR Numeric Reference (AHA)",
-            "TCCC Tourniquet & Wound-Packing",
             "CO / Cyanide / Smoke-Inhalation Antidotes",
             "Tetanus Prophylaxis Decision Tree",
             "Rabies PEP Decision Tree",
@@ -1271,18 +1261,6 @@
                   <span class="tc-title">Pediatric Weight-to-Dose Calculator</span>
                   <span class="tc-desc">Standard prehospital pediatric drug doses by per-kg formula.</span>
                 </button>
-                <button class="tool-card" type="button" data-tool="adult-arrest-ref" data-group="I" data-audiences="clinicians educators field">
-                  <span class="tc-title">Adult Cardiac Arrest Drug Reference</span>
-                  <span class="tc-desc">Standard adult cardiac arrest drugs, doses, intervals (numeric only).</span>
-                </button>
-                <button class="tool-card" type="button" data-tool="peds-arrest-ref" data-group="I" data-audiences="clinicians educators field">
-                  <span class="tc-title">Pediatric Cardiac Arrest Drug Reference</span>
-                  <span class="tc-desc">Standard pediatric cardiac arrest doses by per-kg formula.</span>
-                </button>
-                <button class="tool-card" type="button" data-tool="defib" data-group="I" data-audiences="clinicians educators field">
-                  <span class="tc-title">Defibrillation Energy Calculator</span>
-                  <span class="tc-desc">Recommended joules for VF/pVT and synchronized cardioversion (adult and pediatric).</span>
-                </button>
                 <button class="tool-card" type="button" data-tool="cincinnati" data-group="I" data-audiences="clinicians educators field">
                   <span class="tc-title">Cincinnati Prehospital Stroke Scale</span>
                   <span class="tc-desc">Three-sign field stroke screen (facial droop, arm drift, abnormal speech).</span>
@@ -1311,21 +1289,9 @@
                   <span class="tc-title">Burn Fluid Resuscitation Calculator</span>
                   <span class="tc-desc">Parkland and Modified Brooke 24-hour totals with the half-in-first-8h split.</span>
                 </button>
-                <button class="tool-card" type="button" data-tool="hypothermia" data-group="I" data-audiences="clinicians educators field">
-                  <span class="tc-title">Hypothermia Staging Reference</span>
-                  <span class="tc-desc">Mild, moderate, severe stages with core temperature and assessment criteria.</span>
-                </button>
-                <button class="tool-card" type="button" data-tool="heat-illness" data-group="I" data-audiences="clinicians educators field">
-                  <span class="tc-title">Heat Illness Staging Reference</span>
-                  <span class="tc-desc">Heat exhaustion vs heat stroke quick reference.</span>
-                </button>
                 <button class="tool-card" type="button" data-tool="peds-ett" data-group="I" data-audiences="clinicians educators field">
                   <span class="tc-title">Pediatric ETT Size Calculator</span>
                   <span class="tc-desc">Cuffed (age/4 + 3.5) and uncuffed (age/4 + 4) tube size with depth.</span>
-                </button>
-                <button class="tool-card" type="button" data-tool="toxidromes" data-group="I" data-audiences="clinicians educators field">
-                  <span class="tc-title">Toxidrome Reference</span>
-                  <span class="tc-desc">Six common toxidromes with signs, common causes, and antidotes.</span>
                 </button>
                 <button class="tool-card" type="button" data-tool="naloxone" data-group="I" data-audiences="clinicians educators field patients">
                   <span class="tc-title">Naloxone Dosing Calculator</span>
@@ -1338,22 +1304,6 @@
                 <button class="tool-card" type="button" data-tool="nexus-cspine" data-group="I" data-audiences="clinicians educators field">
                   <span class="tc-title">NEXUS + Canadian C-Spine</span>
                   <span class="tc-desc">NEXUS five low-risk criteria with the Canadian C-Spine high/low/ROM walkthrough.</span>
-                </button>
-                <button class="tool-card" type="button" data-tool="dot-erg" data-group="I" data-audiences="clinicians educators field">
-                  <span class="tc-title">DOT ERG Hazmat Lookup</span>
-                  <span class="tc-desc">UN/NA number - ERG guide page, isolation, protective action, immediate response.</span>
-                </button>
-                <button class="tool-card" type="button" data-tool="niosh-pg" data-group="I" data-audiences="clinicians educators field">
-                  <span class="tc-title">NIOSH Pocket Guide Lookup</span>
-                  <span class="tc-desc">Chemical name / CAS - exposure limits (TWA / STEL / IDLH), PPE class, target organs.</span>
-                </button>
-                <button class="tool-card" type="button" data-tool="cpr-numeric" data-group="I" data-audiences="clinicians educators field">
-                  <span class="tc-title">CPR Numeric Reference (AHA)</span>
-                  <span class="tc-desc">AHA-attributed compression rate / depth / ratio / ventilation - numeric only.</span>
-                </button>
-                <button class="tool-card" type="button" data-tool="tccc" data-group="I" data-audiences="clinicians educators field">
-                  <span class="tc-title">TCCC Tourniquet &amp; Wound-Packing</span>
-                  <span class="tc-desc">Time-to-application, conversion criteria, hemostatic gauze pressure time.</span>
                 </button>
                 <button class="tool-card" type="button" data-tool="co-cn-antidote" data-group="I" data-audiences="clinicians educators field">
                   <span class="tc-title">CO / Cyanide / Smoke-Inhalation Antidotes</span>

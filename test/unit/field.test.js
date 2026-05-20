@@ -2,7 +2,7 @@
 
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { pedsDose, defibEnergy, cincinnatiStroke, fast, fieldTriage, startTriage, jumpStartTriage, ruleOfNines, lundBrowder, burnFluid, pediatricEtt, naloxoneDose, selectEmsChecklist, RULE_OF_NINES_ADULT, PEDS_DOSE_RECIPES } from '../../lib/field.js';
+import { pedsDose, cincinnatiStroke, fast, fieldTriage, startTriage, jumpStartTriage, ruleOfNines, lundBrowder, burnFluid, pediatricEtt, naloxoneDose, selectEmsChecklist, RULE_OF_NINES_ADULT, PEDS_DOSE_RECIPES } from '../../lib/field.js';
 import { readFile } from 'node:fs/promises';
 import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
@@ -47,34 +47,8 @@ test('pedsDose: every recipe in registry is callable at 10 kg', () => {
   }
 });
 
-// ---- Defibrillation ----
-test('defib: adult biphasic VF/pVT', () => {
-  const r = defibEnergy({ population: 'adult', scenario: 'vf-pvt', waveform: 'biphasic' });
-  assert.match(r.joules, /120-200 J/);
-});
-test('defib: adult monophasic VF/pVT', () => {
-  const r = defibEnergy({ population: 'adult', scenario: 'vf-pvt', waveform: 'monophasic' });
-  assert.equal(r.joules, '360 J');
-});
-test('defib: pediatric VF/pVT first shock 2 J/kg', () => {
-  const r = defibEnergy({ population: 'pediatric', scenario: 'vf-pvt', weightKg: 20, shockNumber: 1 });
-  assert.equal(r.joules, '40 J');
-});
-test('defib: pediatric VF/pVT subsequent shock 4 J/kg', () => {
-  const r = defibEnergy({ population: 'pediatric', scenario: 'vf-pvt', weightKg: 20, shockNumber: 2 });
-  assert.equal(r.joules, '80 J');
-});
-test('defib: adult cardioversion narrow regular SVT', () => {
-  const r = defibEnergy({ population: 'adult', scenario: 'cardioversion-svt-narrow-regular' });
-  assert.match(r.joules, /50-100 J/);
-});
-test('defib: pediatric cardioversion first shock 0.5 J/kg', () => {
-  const r = defibEnergy({ population: 'pediatric', scenario: 'cardioversion', weightKg: 20, shockNumber: 1 });
-  assert.equal(r.joules, '10 J synchronized');
-});
-test('defib: rejects unknown population', () => {
-  assert.throws(() => defibEnergy({ population: 'rhino', scenario: 'vf-pvt' }));
-});
+// Defibrillation tests removed with the defib tile (spec-v29 wave 29-2
+// Group I).
 
 // ---- Cincinnati ----
 test('cincinnati: all normal = negative', () => {

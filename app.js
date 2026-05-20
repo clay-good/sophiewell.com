@@ -150,10 +150,13 @@ const UTILITIES = [
   { id: 'specialty-visit', name: 'Specialty-Visit Question Generator', group: 'H', audiences: ['patients'], clinical: false },
   { id: 'wallet-card', name: 'Medication Wallet Card Generator', group: 'H', audiences: ['patients'], clinical: false },
   // Group I: Field Medicine
+  // spec-v29 wave 29-2: 10 Group I field-medicine reference cards
+  // removed (adult-arrest-ref, peds-arrest-ref, defib, toxidromes,
+  // dot-erg, niosh-pg, cpr-numeric, tccc, hypothermia, heat-illness).
+  // Their URL hashes route to the home view with a removed-note via
+  // REMOVED_V29_IDS below. Surviving Group I calculators / decision
+  // rules remain.
   { id: 'peds-weight-dose', name: 'Pediatric Weight-to-Dose Calculator', group: 'I', audiences: ['clinicians', 'educators', 'field'], clinical: true },
-  { id: 'adult-arrest-ref', name: 'Adult Cardiac Arrest Drug Reference', group: 'I', audiences: ['clinicians', 'educators', 'field'], clinical: true },
-  { id: 'peds-arrest-ref',  name: 'Pediatric Cardiac Arrest Drug Reference', group: 'I', audiences: ['clinicians', 'educators', 'field'], clinical: true },
-  { id: 'defib',            name: 'Defibrillation Energy Calculator', group: 'I', audiences: ['clinicians', 'educators', 'field'], clinical: true },
   { id: 'cincinnati',       name: 'Cincinnati Prehospital Stroke Scale', group: 'I', audiences: ['clinicians', 'educators', 'field'], clinical: true },
   { id: 'fast',             name: 'FAST and BE-FAST Stroke Assessment', group: 'I', audiences: ['clinicians', 'educators', 'field'], clinical: true },
   { id: 'field-triage',     name: 'Trauma Triage Decision Tool (CDC)', group: 'I', audiences: ['clinicians', 'educators', 'field'], clinical: true },
@@ -161,18 +164,11 @@ const UTILITIES = [
   { id: 'jumpstart-triage', name: 'JumpSTART Pediatric MCI Triage', group: 'I', audiences: ['clinicians', 'educators', 'field'], clinical: true },
   { id: 'bsa_burn',         name: 'Burn Surface Area Calculator', group: 'I', audiences: ['clinicians', 'educators', 'field'], clinical: true },
   { id: 'burn-fluid',       name: 'Burn Fluid Resuscitation Calculator', group: 'I', audiences: ['clinicians', 'educators', 'field'], clinical: true },
-  { id: 'hypothermia',      name: 'Hypothermia Staging Reference', group: 'I', audiences: ['clinicians', 'educators', 'field'], clinical: true },
-  { id: 'heat-illness',     name: 'Heat Illness Staging Reference', group: 'I', audiences: ['clinicians', 'educators', 'field'], clinical: true },
   { id: 'peds-ett',         name: 'Pediatric ETT Size Calculator', group: 'I', audiences: ['clinicians', 'educators', 'field'], clinical: true },
-  { id: 'toxidromes',       name: 'Toxidrome Reference', group: 'I', audiences: ['clinicians', 'educators', 'field'], clinical: true },
   { id: 'naloxone',         name: 'Naloxone Dosing Calculator', group: 'I', audiences: ['clinicians', 'educators', 'field', 'patients'], clinical: true },
   { id: 'ems-doc',          name: 'EMS Documentation Helper', group: 'I', audiences: ['clinicians', 'field'], clinical: false },
   // Group I: v4 extensions (utilities 166-171)
   { id: 'nexus-cspine',     name: 'NEXUS + Canadian C-Spine', group: 'I', audiences: ['clinicians', 'educators', 'field'], clinical: true },
-  { id: 'dot-erg',          name: 'DOT ERG Hazmat Lookup', group: 'I', audiences: ['clinicians', 'educators', 'field'], clinical: true },
-  { id: 'niosh-pg',         name: 'NIOSH Pocket Guide Lookup', group: 'I', audiences: ['clinicians', 'educators', 'field'], clinical: true },
-  { id: 'cpr-numeric',      name: 'CPR Numeric Reference (AHA)', group: 'I', audiences: ['clinicians', 'educators', 'field'], clinical: true },
-  { id: 'tccc',             name: 'TCCC Tourniquet & Wound-Packing', group: 'I', audiences: ['clinicians', 'educators', 'field'], clinical: true },
   { id: 'co-cn-antidote',   name: 'CO / Cyanide / Smoke-Inhalation Antidotes', group: 'I', audiences: ['clinicians', 'educators', 'field'], clinical: true },
   // Group J (NEW): Public Health & Travel (utilities 172-180)
   { id: 'tetanus',      name: 'Tetanus Prophylaxis Decision Tree', group: 'J', audiences: ['clinicians', 'educators', 'field'], clinical: true },
@@ -417,6 +413,12 @@ const REMOVED_V29_IDS = new Map([
     'birthday-rule', 'cobra-timeline', 'medicare-enrollment', 'aca-sep',
     'cms1500', 'ub04', 'eob-glossary',
   ].map((id) => [id, 'Removed in spec-v29 wave 29-2 (patient-literacy / form-locator reference): this tile is no longer hosted by Sophie. The workflow generators (appeal letter, HIPAA Right of Access) remain; the static decoders and eligibility infographics are out. See docs/spec-v29.md for the rationale.']),
+  // Group I (wave 29-2 Group I PR): 10 field-medicine reference cards.
+  ...[
+    'adult-arrest-ref', 'peds-arrest-ref', 'defib', 'toxidromes',
+    'dot-erg', 'niosh-pg', 'cpr-numeric', 'tccc', 'hypothermia',
+    'heat-illness',
+  ].map((id) => [id, 'Removed in spec-v29 wave 29-2 (field-medicine reference card): this tile is no longer hosted by Sophie. Use the AHA wallet card, PHMSA ERG, NIOSH Pocket Guide, or your protocol app. The field-medicine calculators (peds-weight-dose, burn-fluid, naloxone, NEXUS, START triage, etc.) remain. See docs/spec-v29.md for the rationale.']),
 ]);
 
 // ----- DOM helpers ---------------------------------------------------------

@@ -37,9 +37,8 @@ export const TOPICS = {
     tiles: [
       'qtc', 'qtc-suite', 'wells-pe', 'wells-pe-geneva', 'wells-dvt',
       'wells-dvt-caprini', 'perc', 'chads', 'hasbled', 'heart', 'timi',
-      'grace', 'ascvd', 'prevent', 'sgarbossa', 'rcri', 'defib',
-      'cincinnati', 'fast', 'cpr-numeric', 'adult-arrest-ref',
-      'peds-arrest-ref',
+      'grace', 'ascvd', 'prevent', 'sgarbossa', 'rcri',
+      'cincinnati', 'fast',
     ],
   },
   'medication-safety': {
@@ -95,8 +94,7 @@ export const TOPICS = {
     tiles: [
       'due-date', 'preg-dating', 'bishop', 'apgar', 'peds-vitals',
       'peds-dose', 'peds-weight-dose', 'peds-weight-conv', 'peds-ett',
-      'peds-arrest-ref', 'jumpstart-triage', 'lab-peds', 'pews',
-      'mentzer', 'epds',
+      'jumpstart-triage', 'lab-peds', 'pews', 'mentzer', 'epds',
     ],
   },
   'behavioral-health': {

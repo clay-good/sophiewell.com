@@ -6,6 +6,51 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Removed (spec-v29 wave 29-2 Group I — 10 field-medicine reference cards)
+
+Third of the five wave 29-2 deletion PRs (one per group letter
+per spec-v29 sec 7.2). Removes the Group I reference cards,
+leaving the field-medicine calculators and decision rules
+(peds-weight-dose, cincinnati, fast, field-triage, start /
+jumpstart triage, bsa_burn, burn-fluid, peds-ett, naloxone,
+ems-doc, nexus-cspine, co-cn-antidote, avpu-gcs) in place.
+
+Tiles removed (10):
+- adult-arrest-ref, peds-arrest-ref (AHA ECC drug tables).
+- defib (1-J/kg lookup, not a calculation per spec-v29 sec 2.3).
+- toxidromes (static syndrome reference).
+- dot-erg, niosh-pg (hazmat / chemical-hazard lookups).
+- cpr-numeric (AHA wallet-card numeric reference).
+- tccc (CoTCCC tourniquet reference).
+- hypothermia, heat-illness (WMS staging reference tables).
+
+Surfaces touched:
+- `app.js` UTILITIES: 10 entries deleted; the Group I block in
+  `REMOVED_V29_IDS` adds the per-group note.
+- `lib/meta.js`: 10 META entries deleted.
+- `lib/field.js`: `defibEnergy()` removed.
+- `views/group-i.js`: 10 renderers + the `renderTable` /
+  `buildIndex` imports removed.
+- `index.html`: 10 Field Medicine home-grid cards removed.
+- `scripts/build-topic-pages.mjs`: cardiology + obstetrics-
+  pediatrics topic pages drop the removed-tile references.
+- `test/unit/field.test.js`: `defibEnergy` import + six tests
+  removed.
+
+Data shards deleted: `data/aha-reference/`,
+`data/cpr-aha-numeric/`, `data/dot-erg/`, `data/environmental/`,
+`data/niosh-pg/`, `data/tccc/`, `data/toxidromes/`.
+
+Tests deleted: `test/unit/aha-no-flowchart.test.js` (its only
+job was to police the now-deleted AHA / CPR shards).
+
+URL hashes for the 10 removed ids resolve to the home view with
+the Group I note (spec-v29 sec 2.7).
+
+Catalog 253 -> 243. Remaining v29 deletion PRs: Group K/O (8
+reference-range / wallet-card tiles), Group G non-scores (5
+single-class clinical references).
+
 ### Removed (spec-v29 wave 29-2 Group C/L — 15 patient-literacy and form-locator tiles)
 
 Second of the five wave 29-2 deletion PRs (one per group letter,
