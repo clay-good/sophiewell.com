@@ -15,13 +15,10 @@ const CLINICAL_CALC_IDS = [
   'gcs', 'apgar', 'abg',
 ];
 
-// spec-v29 wave 29-2 (Group A) removed the 19 code-reference lookup
-// tiles; only the still-shipping source-stamp tiles remain in the
-// SOURCE_REQUIRED list. eob-decoder / no-surprises are wave 29-2 Group
-// C deletion targets and stay in this list until that PR.
-const SOURCE_REQUIRED = [
-  'eob-decoder', 'no-surprises',
-];
+// spec-v29 wave 29-2 (Group A + Group C/L) removed all code-reference
+// lookup, patient-literacy, and form-locator tiles; no remaining tile
+// is required to carry a source stamp.
+const SOURCE_REQUIRED = [];
 
 test('META: every clinical calculator has a citation', () => {
   for (const id of CLINICAL_CALC_IDS) {

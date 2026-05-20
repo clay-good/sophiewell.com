@@ -6,6 +6,69 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Removed (spec-v29 wave 29-2 Group C/L — 15 patient-literacy and form-locator tiles)
+
+Second of the five wave 29-2 deletion PRs (one per group letter,
+per spec-v29 sec 7.2). Removes the patient-literacy and
+form-locator surface, leaving only the generators (appeal-letter,
+hipaa-roa) per spec-v29 sec 10 open question 1.
+
+Tiles removed (15):
+- Group C (12): decoder, insurance, eob-decoder, no-surprises,
+  insurance-card, abn-explainer, msn-decoder, idr-eligibility,
+  birthday-rule, cobra-timeline, medicare-enrollment, aca-sep.
+- Group L (3): cms1500, ub04, eob-glossary.
+
+Surfaces touched:
+- `app.js` UTILITIES: 15 entries deleted; `REMOVED_V29_IDS`
+  promoted from Set to Map so the redirect note text matches the
+  group bucket (per spec-v29 sec 2.7).
+- `lib/meta.js` META: 15 entries deleted.
+- `views/group-c.js`: rewritten as the survivor-only file
+  (appeal-letter + hipaa-roa). 580+ lines deleted.
+- `views/group-klmno.js`: cms1500 / ub04 / eob-glossary
+  renderers removed.
+- `index.html`: 15 Insurance & Patient Literacy + Insurance
+  Glossary home-grid tool cards deleted.
+- `data/synonyms.json`: 14 synonym entries deleted.
+- `scripts/build-topic-pages.mjs`: billing-and-coding and
+  patient-literacy topic pages rewritten around the survivor
+  generators (appeal-letter, hipaa-roa, lab-interpret,
+  wallet-card).
+
+Library modules deleted (the Group A holdover):
+`lib/codes.js`, `lib/decoder.js`, `lib/cobra.js`,
+`lib/medicare-enrollment.js`, `lib/aca-sep.js`,
+`lib/birthday-rule.js`, `lib/tob.js`, plus the long-orphan
+`lib/artifact-detect.js`, `lib/artifact-route.js`,
+`lib/artifact-handoff.js` (spec-v10 sec 3.1 dropzone retire).
+
+Data shard directories deleted: `data/icd10cm/`, `data/hcpcs/`,
+`data/cpt-summaries/`, `data/ndc/`, `data/crosswalks/`,
+`data/hcpcs-modifiers/`, `data/pos-codes/`, `data/revenue-codes/`,
+`data/tob-codes/`, `data/nubc-special-codes/`, `data/drg/`,
+`data/apc/`, `data/icd10-pcs/`, `data/rxnorm/`,
+`data/cms-1500-fields/`, `data/ub04-fields/`,
+`data/eob-glossary/`, `data/no-surprises/`. The bytes-on-disk
+reduction is substantial; the service-worker pre-cache and
+cold-cache install shrink proportionally per spec-v29 sec 2.7.
+
+Tests deleted: `test/unit/decoder.test.js`,
+`test/unit/cobra.test.js`, `test/unit/aca-sep.test.js`,
+`test/unit/birthday-rule.test.js`, `test/unit/codes.test.js`,
+`test/unit/tob.test.js`, `test/unit/medicare-enrollment.test.js`,
+`test/unit/cpt-no-ama.test.js`, the three `test/unit/artifact-*`
+tests. SOURCE_REQUIRED list in `test/unit/meta.test.js` is now
+empty (no surviving tile relies on a source stamp).
+
+URL hashes for the 15 removed ids resolve to the home view with
+the one-line removed-note for Group C/L (spec-v29 sec 2.7).
+
+Catalog 268 -> 253 at v29 wave 29-2 Group C/L close. Remaining
+v29 deletion PRs: Group I (10 field-medicine reference cards),
+Group K/O (8 reference-range / wallet-card tiles), Group G
+non-scores (5 single-class clinical references).
+
 ### Removed (spec-v29 wave 29-2 Group A — 19 code-reference lookup tiles)
 
 First of the five wave 29-2 deletion PRs (one per group letter, per

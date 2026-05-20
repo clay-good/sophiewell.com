@@ -19,11 +19,10 @@ import { installKeyboard } from './lib/keyboard.js';
 import { parseHash, buildHash, patchHash } from './lib/hash.js';
 import { matchSynonym, loadSynonyms } from './lib/synonyms.js';
 import { resolvePrompt } from './lib/prompt.js';
-// The patient-artifact dropzone UI (spec-v7 §3.1) was removed when Sophie
-// pivoted to a clinical-staff-first wedge. lib/artifact-detect.js,
-// lib/artifact-route.js, and lib/artifact-handoff.js remain in the tree
-// (still tested) in case the dropzone is reintroduced behind a future
-// clinical-input surface; app.js no longer wires them.
+// The patient-artifact dropzone UI (spec-v7 sec 3.1) was removed when
+// Sophie pivoted to a clinical-staff-first wedge. The orphaned
+// artifact-detect / artifact-route / artifact-handoff helpers were
+// deleted in spec-v29 wave 29-2 (Group C/L).
 
 const RENDERERS = { ...RA, ...RC, ...RE, ...RF, ...RG, ...RH, ...RI, ...RJ, ...RKLMNO, ...RV5, ...RV6 };
 
@@ -44,21 +43,15 @@ const UTILITIES = [
   // Group B: Pricing and Cost Reference
   // Group B: v4 extensions (utilities 94-104)
   // Group C: Patient Bill and Insurance Tools
-  { id: 'decoder', name: 'Medical Bill Decoder', group: 'C', audiences: ['patients', 'billers'], clinical: false },
-  { id: 'insurance', name: 'Insurance Card Decoder', group: 'C', audiences: ['patients'], clinical: false },
-  { id: 'eob-decoder', name: 'Explanation of Benefits Decoder', group: 'C', audiences: ['patients', 'billers'], clinical: false },
-  { id: 'no-surprises', name: 'No Surprises Act Eligibility Checker', group: 'C', audiences: ['patients'], clinical: false },
-  // Group C: v4 extensions (utilities 105-114)
-  { id: 'insurance-card', name: 'Insurance Card Decoder (printable)', group: 'C', audiences: ['patients'], clinical: false },
-  { id: 'abn-explainer', name: 'ABN (CMS-R-131) Explainer', group: 'C', audiences: ['patients', 'educators'], clinical: false },
-  { id: 'msn-decoder', name: 'Medicare Summary Notice Decoder', group: 'C', audiences: ['patients'], clinical: false },
-  { id: 'idr-eligibility', name: 'IDR Eligibility Checker (NSA)', group: 'C', audiences: ['patients', 'billers'], clinical: false },
+  // spec-v29 wave 29-2: 12 Group C patient-literacy / eligibility tiles
+  // removed (decoder, insurance, eob-decoder, no-surprises,
+  // insurance-card, abn-explainer, msn-decoder, idr-eligibility,
+  // birthday-rule, cobra-timeline, medicare-enrollment, aca-sep). Their
+  // URL hashes route to the home view with a removed-note via
+  // REMOVED_V29_IDS below. Survivors: appeal-letter, hipaa-roa
+  // (workflow generators per spec-v29 sec 10 open question 1).
   { id: 'appeal-letter', name: 'Appeal Letter Generator', group: 'C', audiences: ['patients'], clinical: false },
   { id: 'hipaa-roa', name: 'HIPAA Right of Access Request Generator', group: 'C', audiences: ['patients'], clinical: false },
-  { id: 'birthday-rule', name: 'Birthday Rule Resolver', group: 'C', audiences: ['patients'], clinical: false },
-  { id: 'cobra-timeline', name: 'COBRA Timeline', group: 'C', audiences: ['patients'], clinical: false },
-  { id: 'medicare-enrollment', name: 'Medicare Enrollment Period Checker', group: 'C', audiences: ['patients'], clinical: false },
-  { id: 'aca-sep', name: 'ACA SEP Eligibility Checker', group: 'C', audiences: ['patients'], clinical: false },
   // Group D: Provider and Plan Lookup
   // Group D: v4 extensions (utilities 115-116)
   // Group E: Clinical Math and Conversions
@@ -192,10 +185,8 @@ const UTILITIES = [
   { id: 'lab-peds',    name: 'Pediatric Lab Reference Ranges by Age Band', group: 'K', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'tdm-levels',  name: 'Therapeutic Drug Levels Reference', group: 'K', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'tox-levels',  name: 'Toxicology Level Reference', group: 'K', audiences: ['clinicians', 'educators'], clinical: true },
-  // Group L (NEW): Forms & Numbers Literacy (utilities 185-187)
-  { id: 'cms1500',       name: 'CMS-1500 Field-by-Field Decoder', group: 'L', audiences: ['patients', 'billers', 'educators'], clinical: false },
-  { id: 'ub04',          name: 'UB-04 Form-Locator Decoder', group: 'L', audiences: ['patients', 'billers', 'educators'], clinical: false },
-  { id: 'eob-glossary',  name: 'EOB Jargon Glossary', group: 'L', audiences: ['patients', 'billers', 'educators'], clinical: false },
+  // Group L: Forms & Numbers Literacy (removed in spec-v29 wave 29-2:
+  // cms1500, ub04, eob-glossary are pure form / glossary references).
   // Group M (NEW): Eligibility & Benefits (utilities 188-191)
   // Group N (NEW): Literacy Helpers (utilities 192-194)
   { id: 'unit-converter-v4', name: 'Universal Unit Converter (lab + vitals + basics)', group: 'N', audiences: ['patients', 'clinicians', 'educators'], clinical: false },
@@ -389,11 +380,9 @@ const CLINICAL_NOTICE_TEXT =
 const DEPRECATED_V29_TILES = new Set([
   // 2.1 Code-reference lookups: removed in wave 29-2 (Group A); now in
   // REMOVED_V29_IDS below.
-  // 2.2 Patient-literacy and eligibility infographics
-  'decoder', 'insurance', 'eob-decoder', 'no-surprises',
-  'insurance-card', 'abn-explainer', 'msn-decoder', 'idr-eligibility',
-  'birthday-rule', 'cobra-timeline', 'medicare-enrollment', 'aca-sep',
-  'cms1500', 'ub04', 'eob-glossary',
+  // 2.2 Patient-literacy and eligibility infographics + 2.4 form-locator
+  // / glossary tiles: removed in wave 29-2 (Group C/L); now in
+  // REMOVED_V29_IDS below.
   // 2.3 Field-medicine reference cards
   'adult-arrest-ref', 'peds-arrest-ref', 'defib', 'toxidromes',
   'dot-erg', 'niosh-pg', 'cpr-numeric', 'tccc', 'hypothermia',
@@ -408,18 +397,27 @@ const DEPRECATED_V29_TILES = new Set([
 const DEPRECATION_V29_BANNER_TEXT =
   'Removed in spec-v29 - this reference tile will be deleted in wave 29-2. Use the upstream source or an equivalent calculator. See docs/spec-v29.md for the rationale and the v29 catalog ledger.';
 
-// spec-v29 wave 29-2 (Group A): the 19 code-reference lookup tiles that
-// were deleted from UTILITIES. Their permalink hashes still resolve, but
-// the router now sends them to the home view with a one-line removed-
-// note (spec-v29 sec 2.7).
-const REMOVED_V29_IDS = new Set([
-  'icd10', 'hcpcs', 'cpt', 'ndc', 'pos-codes', 'modifier-codes',
-  'revenue-codes', 'carc', 'rarc', 'hcpcs-mod', 'pos-lookup',
-  'tob-decode', 'rev-table', 'nubc-codes', 'drg-lookup', 'apc-lookup',
-  'pcs-lookup', 'rxnorm-lookup', 'ndc-rxnorm',
+// spec-v29 wave 29-2: tiles deleted from UTILITIES whose permalink
+// hashes still resolve. The router sends them to the home view with a
+// one-line removed-note (spec-v29 sec 2.7). The map carries the
+// per-group note text so the explanation matches the deletion bucket.
+const REMOVED_V29_IDS = new Map([
+  // Group A (wave 29-2 Group A PR): 19 code-reference lookups.
+  ...[
+    'icd10', 'hcpcs', 'cpt', 'ndc', 'pos-codes', 'modifier-codes',
+    'revenue-codes', 'carc', 'rarc', 'hcpcs-mod', 'pos-lookup',
+    'tob-decode', 'rev-table', 'nubc-codes', 'drg-lookup', 'apc-lookup',
+    'pcs-lookup', 'rxnorm-lookup', 'ndc-rxnorm',
+  ].map((id) => [id, 'Removed in spec-v29 wave 29-2 (code-reference lookup): this tile is no longer hosted by Sophie. Use the upstream code source (CMS, FDA, NUBC, AMA, X12) or your EHR\'s lookup. See docs/spec-v29.md for the rationale.']),
+  // Group C / L (wave 29-2 Group C/L PR): 15 patient-literacy and
+  // form-locator / glossary tiles.
+  ...[
+    'decoder', 'insurance', 'eob-decoder', 'no-surprises',
+    'insurance-card', 'abn-explainer', 'msn-decoder', 'idr-eligibility',
+    'birthday-rule', 'cobra-timeline', 'medicare-enrollment', 'aca-sep',
+    'cms1500', 'ub04', 'eob-glossary',
+  ].map((id) => [id, 'Removed in spec-v29 wave 29-2 (patient-literacy / form-locator reference): this tile is no longer hosted by Sophie. The workflow generators (appeal letter, HIPAA Right of Access) remain; the static decoders and eligibility infographics are out. See docs/spec-v29.md for the rationale.']),
 ]);
-const REMOVED_V29_NOTE =
-  'Removed in spec-v29 wave 29-2 (code-reference lookup): this tile is no longer hosted by Sophie. Use the upstream code source (CMS, FDA, NUBC, AMA, X12) or your EHR\'s lookup. See docs/spec-v29.md for the rationale.';
 
 // ----- DOM helpers ---------------------------------------------------------
 
@@ -1022,7 +1020,7 @@ function route() {
           class: 'deprecation-notice',
           role: 'note',
           'aria-label': 'Removed tile',
-          text: REMOVED_V29_NOTE,
+          text: REMOVED_V29_IDS.get(id),
         });
         main.insertBefore(note, main.firstChild);
       }

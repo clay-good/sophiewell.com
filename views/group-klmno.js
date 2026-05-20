@@ -99,51 +99,7 @@ export const renderers = {
     });
   },
 
-  // --- Group L: Forms & Numbers Literacy (185-187) -----------------------
-
-  'cms1500'(root) {
-    const region = el('div', { id: 'q-results', role: 'region' });
-    root.appendChild(region);
-    loadFile('cms-1500-fields', 'fields.json').then((rows) => {
-      renderPrintable(region, {
-        title: 'CMS-1500 Field-by-Field Decoder',
-        warnings: ['Plain-English summaries by the project author. CMS publishes the authoritative form instructions.'],
-        sections: rows.map((f) => ({
-          heading: `Field ${f.field} - ${f.label}`,
-          paragraphs: [f.plain],
-        })),
-      });
-    });
-  },
-
-  'ub04'(root) {
-    const region = el('div', { id: 'q-results', role: 'region' });
-    root.appendChild(region);
-    loadFile('ub04-fields', 'fields.json').then((rows) => {
-      renderPrintable(region, {
-        title: 'UB-04 Form-Locator Decoder',
-        warnings: ['Plain-English summaries by the project author. NUBC publishes the authoritative form instructions.'],
-        sections: rows.map((f) => ({
-          heading: `FL ${f.fl} - ${f.label}`,
-          paragraphs: [f.plain],
-        })),
-      });
-    });
-  },
-
-  'eob-glossary'(root) {
-    const region = el('div', { id: 'q-results', role: 'region' });
-    root.appendChild(region);
-    loadFile('eob-glossary', 'glossary.json').then((rows) => {
-      renderTable(region, {
-        columns: [
-          { key: 'term', label: 'Term' },
-          { key: 'plain', label: 'Plain-English explanation' },
-        ],
-        rows,
-      });
-    });
-  },
+  // --- Group L: Forms & Numbers Literacy (removed in wave 29-2) ----------
 
   // --- Group M: Eligibility & Benefits (188-191) -------------------------
   // --- Group N: Literacy Helpers (192-194) -------------------------------

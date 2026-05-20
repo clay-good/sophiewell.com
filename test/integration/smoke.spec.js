@@ -46,15 +46,10 @@ test('group A removed-tile hash shows the v29 removed-note', async ({ page }) =>
   await expect(page.locator('.deprecation-notice')).toContainText('Removed in spec-v29');
 });
 
-test('group C: Bill Decoder extracts codes from pasted text', async ({ page }) => {
-  await page.goto('/#decoder');
-  const sample = 'Dx I10 E11.65\n99213 Office visit $250.00\nNPI 1234567893';
-  await page.fill('#bill', sample);
-  await page.click('#decode-btn');
-  await expect(page.getByText('Total dollar amounts found')).toBeVisible();
-  await expect(page.getByText('I10')).toBeVisible();
-  await expect(page.getByText('1234567893')).toBeVisible();
-});
+// spec-v29 wave 29-2 (Group C/L): the Bill Decoder / EOB Decoder / NSA
+// eligibility / form-locator tiles were removed. Their hashes now
+// redirect to the home view with a removed-note (covered by the Group
+// A removed-tile-hash regression above).
 
 test('group E: BMI calculator returns category', async ({ page }) => {
   await page.goto('/#bmi');

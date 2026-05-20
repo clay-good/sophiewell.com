@@ -69,7 +69,7 @@
           "@id": "https://sophiewell.com/#webapp",
           "name": "sophiewell",
           "url": "https://sophiewell.com/",
-          "description": "Free, client-side healthcare toolbox with 268 deterministic utilities for patients, billers, coders, nurses, clinicians, EMS, and educators.",
+          "description": "Free, client-side healthcare toolbox with 253 deterministic utilities for patients, billers, coders, nurses, clinicians, EMS, and educators.",
           "applicationCategory": [
             "HealthApplication",
             "MedicalApplication",
@@ -93,20 +93,8 @@
           },
           "image": "https://sophiewell.com/logo.png",
           "featureList": [
-            "Medical Bill Decoder",
-            "Insurance Card Decoder",
-            "Explanation of Benefits Decoder",
-            "No Surprises Act Eligibility Checker",
-            "Insurance Card Decoder (printable)",
-            "ABN (CMS-R-131) Explainer",
-            "Medicare Summary Notice Decoder",
-            "IDR Eligibility Checker (NSA)",
             "Appeal Letter Generator",
             "HIPAA Right of Access Request Generator",
-            "Birthday Rule Resolver",
-            "COBRA Timeline",
-            "Medicare Enrollment Period Checker",
-            "ACA SEP Eligibility Checker",
             "Unit Converter",
             "BMI Calculator",
             "Body Surface Area",
@@ -224,9 +212,6 @@
             "Pediatric Lab Reference Ranges by Age Band",
             "Therapeutic Drug Levels Reference",
             "Toxicology Level Reference",
-            "CMS-1500 Field-by-Field Decoder",
-            "UB-04 Form-Locator Decoder",
-            "EOB Jargon Glossary",
             "Universal Unit Converter (lab + vitals + basics)",
             "Time-to-Dose Helper",
             "Pediatric Weight Converter (lb/oz <-> kg)",
@@ -652,38 +637,6 @@
             <section class="home-section">
               <h3>Insurance &amp; Patient Literacy</h3>
               <div class="home-grid">
-                <button class="tool-card" type="button" data-tool="decoder" data-group="C" data-audiences="patients billers">
-                  <span class="tc-title">Medical Bill Decoder</span>
-                  <span class="tc-desc">Paste a bill. Extract codes and dollar amounts and decode them inline.</span>
-                </button>
-                <button class="tool-card" type="button" data-tool="insurance" data-group="C" data-audiences="patients">
-                  <span class="tc-title">Insurance Card Decoder</span>
-                  <span class="tc-desc">Structured glossary that explains every region of a typical insurance card.</span>
-                </button>
-                <button class="tool-card" type="button" data-tool="eob-decoder" data-group="C" data-audiences="patients billers">
-                  <span class="tc-title">Explanation of Benefits Decoder</span>
-                  <span class="tc-desc">Paste an EOB. Extract CARC and RARC codes with allowed and patient amounts.</span>
-                </button>
-                <button class="tool-card" type="button" data-tool="no-surprises" data-group="C" data-audiences="patients">
-                  <span class="tc-title">No Surprises Act Eligibility Checker</span>
-                  <span class="tc-desc">Walk through No Surprises Act criteria with statutory citations.</span>
-                </button>
-                <button class="tool-card" type="button" data-tool="insurance-card" data-group="C" data-audiences="patients">
-                  <span class="tc-title">Insurance Card Decoder (printable)</span>
-                  <span class="tc-desc">Enter card fields - get a print-ready plain-English reference card.</span>
-                </button>
-                <button class="tool-card" type="button" data-tool="abn-explainer" data-group="C" data-audiences="patients educators">
-                  <span class="tc-title">ABN (CMS-R-131) Explainer</span>
-                  <span class="tc-desc">Plain-English box-by-box walkthrough of the Advance Beneficiary Notice.</span>
-                </button>
-                <button class="tool-card" type="button" data-tool="msn-decoder" data-group="C" data-audiences="patients">
-                  <span class="tc-title">Medicare Summary Notice Decoder</span>
-                  <span class="tc-desc">Paste an MSN; surface approved amount, what Medicare paid, and your max owed.</span>
-                </button>
-                <button class="tool-card" type="button" data-tool="idr-eligibility" data-group="C" data-audiences="patients billers">
-                  <span class="tc-title">IDR Eligibility Checker (NSA)</span>
-                  <span class="tc-desc">Step-wise decision tree for federal No Surprises Act IDR eligibility.</span>
-                </button>
                 <button class="tool-card" type="button" data-tool="appeal-letter" data-group="C" data-audiences="patients">
                   <span class="tc-title">Appeal Letter Generator</span>
                   <span class="tc-desc">Fill in case facts; get a print-ready appeal letter template.</span>
@@ -691,22 +644,6 @@
                 <button class="tool-card" type="button" data-tool="hipaa-roa" data-group="C" data-audiences="patients">
                   <span class="tc-title">HIPAA Right of Access Request Generator</span>
                   <span class="tc-desc">Generate a 45 CFR 164.524 records-access request with the fee-cap reminder.</span>
-                </button>
-                <button class="tool-card" type="button" data-tool="birthday-rule" data-group="C" data-audiences="patients">
-                  <span class="tc-title">Birthday Rule Resolver</span>
-                  <span class="tc-desc">Two-parent dependent coverage: who is primary by birthday, custody, court order.</span>
-                </button>
-                <button class="tool-card" type="button" data-tool="cobra-timeline" data-group="C" data-audiences="patients">
-                  <span class="tc-title">COBRA Timeline</span>
-                  <span class="tc-desc">Qualifying event date - election, first-payment, and coverage-end dates.</span>
-                </button>
-                <button class="tool-card" type="button" data-tool="medicare-enrollment" data-group="C" data-audiences="patients">
-                  <span class="tc-title">Medicare Enrollment Period Checker</span>
-                  <span class="tc-desc">DOB plus first-eligibility scenario - IEP, GEP, applicable SEP windows.</span>
-                </button>
-                <button class="tool-card" type="button" data-tool="aca-sep" data-group="C" data-audiences="patients">
-                  <span class="tc-title">ACA SEP Eligibility Checker</span>
-                  <span class="tc-desc">Pick a qualifying life event; see the SEP window and required documentation.</span>
                 </button>
                 <button class="tool-card" type="button" data-tool="lab-interpret" data-group="C" data-audiences="patients clinicians educators">
                   <span class="tc-title">Lab Result Interpreter</span>
@@ -1473,24 +1410,6 @@
                 <button class="tool-card" type="button" data-tool="tox-levels" data-group="K" data-audiences="clinicians educators">
                   <span class="tc-title">Toxicology Level Reference</span>
                   <span class="tc-desc">Levels associated with toxicity for common ingestions.</span>
-                </button>
-              </div>
-            </section>
-
-            <section class="home-section">
-              <h3>Insurance Glossary</h3>
-              <div class="home-grid">
-                <button class="tool-card" type="button" data-tool="cms1500" data-group="L" data-audiences="patients billers educators">
-                  <span class="tc-title">CMS-1500 Field-by-Field Decoder</span>
-                  <span class="tc-desc">Print-ready plain-English explanation of each CMS-1500 field.</span>
-                </button>
-                <button class="tool-card" type="button" data-tool="ub04" data-group="L" data-audiences="patients billers educators">
-                  <span class="tc-title">UB-04 Form-Locator Decoder</span>
-                  <span class="tc-desc">Print-ready plain-English explanation of each UB-04 form locator.</span>
-                </button>
-                <button class="tool-card" type="button" data-tool="eob-glossary" data-group="L" data-audiences="patients billers educators">
-                  <span class="tc-title">EOB Jargon Glossary</span>
-                  <span class="tc-desc">Searchable glossary of common EOB and benefits terminology.</span>
                 </button>
               </div>
             </section>

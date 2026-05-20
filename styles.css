@@ -799,10 +799,9 @@ body {
 }
 
 /* Patient-artifact dropzone CSS removed when the dropzone UI shipped
-   in spec-v7 §3.1 was retired during the clinical-staff-first pivot.
-   The lib/artifact-*.js modules remain (still tested) in case a
-   clinical-input surface reuses them; the .artifact-* selectors below
-   are gone because no element wears them anymore. */
+   in spec-v7 sec 3.1 was retired during the clinical-staff-first
+   pivot; the lib/artifact-*.js helpers were deleted in spec-v29 wave
+   29-2 (Group C/L). */
 
 /* spec-v6 §4.2.2: audience filter chips. */
 .audience-chips {
