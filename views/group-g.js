@@ -1,7 +1,6 @@
 // Group G: Clinical Scoring and Reference (48-60).
 
 import { el, clear } from '../lib/dom.js';
-import { loadFile } from '../lib/data.js';
 import * as C from '../lib/clinical.js';
 import * as S4 from '../lib/scoring-v4.js';
 import { renderScreener } from '../lib/screener.js';
@@ -61,26 +60,7 @@ export const renderers = {
     run();
   },
 
-  'peds-vitals'(root) {
-    const o = out(); root.appendChild(o);
-    loadFile('clinical', 'pediatric-vitals.json').then((data) => {
-      const sel = el('select', { id: 'pv' });
-      for (const b of data.ageBands) sel.appendChild(el('option', { value: b.band, text: b.band }));
-      root.insertBefore(el('p', {}, [el('label', { for: 'pv', text: 'Age band' }), el('br'), sel]), o);
-      const run = () => {
-        clear(o);
-        const b = data.ageBands.find((x) => x.band === sel.value);
-        o.appendChild(el('ul', {}, [
-          el('li', { text: `Heart rate (bpm): ${b.hr}` }),
-          el('li', { text: `Respiratory rate (breaths/min): ${b.rr}` }),
-          el('li', { text: `Systolic BP (mmHg): ${b.sbp}` }),
-        ]));
-        o.appendChild(el('p', { class: 'muted', text: data.citation }));
-      };
-      sel.addEventListener('change', run); run();
-    });
-  },
-
+  // peds-vitals removed in spec-v29 wave 29-2 (Group G non-scores): static reference table.
   // lab-ranges removed in spec-v29 wave 29-2 (Group K/O): static table.
 
   abg(root) {
@@ -208,48 +188,7 @@ export const renderers = {
     run();
   },
 
-  asa(root) {
-    const o = out(); root.appendChild(o);
-    loadFile('clinical', 'asa-status.json').then((data) => {
-      o.appendChild(el('p', { class: 'muted', text: data.attribution }));
-      const ul = el('ul');
-      for (const c of data.classes) ul.appendChild(el('li', {}, [el('strong', { text: `Class ${c.class}: ` }), document.createTextNode(c.summary)]));
-      o.appendChild(ul);
-    });
-  },
-
-  mallampati(root) {
-    const o = out(); root.appendChild(o);
-    loadFile('clinical', 'mallampati.json').then((data) => {
-      o.appendChild(el('p', { class: 'muted', text: data.citation }));
-      const ul = el('ul');
-      for (const c of data.classes) ul.appendChild(el('li', {}, [el('strong', { text: `Class ${c.class}: ` }), document.createTextNode(c.summary)]));
-      o.appendChild(ul);
-    });
-  },
-
-  beers(root) {
-    const o = out(); root.appendChild(o);
-    loadFile('clinical', 'beers.json').then((data) => {
-      const inp = el('input', { id: 'q', type: 'search', placeholder: 'filter by drug or condition' });
-      root.insertBefore(el('p', {}, [el('label', { for: 'q', text: 'Filter' }), el('br'), inp]), o);
-      const run = () => {
-        clear(o);
-        o.appendChild(el('p', { class: 'muted', text: data.attribution }));
-        const q = (inp.value || '').toLowerCase();
-        const tbl = el('table', { class: 'lookup-table' });
-        tbl.appendChild(el('thead', {}, [el('tr', {}, [el('th', { scope: 'col', text: 'Drug' }), el('th', { scope: 'col', text: 'Condition / population' }), el('th', { scope: 'col', text: 'Note (project author)' })])]));
-        const tbody = el('tbody');
-        for (const p of data.pairs) {
-          if (!q || p.drug.toLowerCase().includes(q) || p.condition.toLowerCase().includes(q)) {
-            tbody.appendChild(el('tr', {}, [el('td', { text: p.drug }), el('td', { text: p.condition }), el('td', { text: p.note })]));
-          }
-        }
-        tbl.appendChild(tbody); o.appendChild(tbl);
-      };
-      inp.addEventListener('input', run); run();
-    });
-  },
+  // asa, mallampati, beers removed in spec-v29 wave 29-2 (Group G non-scores): static reference tables.
 
   // --- spec-v4 §5: Group G extensions waves 1-2 (utilities 136-145) ----
 
@@ -725,18 +664,7 @@ export const renderers = {
     run();
   },
 
-  mrs(root) {
-    const list = el('ol', { class: 'mrs-list', start: '0' });
-    for (const r of S4.MRS_DESCRIPTIONS) {
-      list.appendChild(el('li', {}, [
-        el('strong', { text: `${r.score}: ` }),
-        document.createTextNode(r.label),
-      ]));
-    }
-    root.appendChild(el('h2', { text: 'Modified Rankin Scale (mRS) - reference' }));
-    root.appendChild(list);
-    root.appendChild(el('p', { class: 'muted', text: 'Reference instrument; calculation is investigator-rated, not auto-computed.' }));
-  },
+  // mrs removed in spec-v29 wave 29-2 (Group G non-scores): static reference table.
 
   phq9(root) { renderScreener(root, S4.PHQ9_CONFIG); },
   gad7(root) { renderScreener(root, S4.GAD7_CONFIG); },

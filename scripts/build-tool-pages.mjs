@@ -121,32 +121,14 @@ const HOW_TO_TILES = new Set([
   'cms1500', 'ub04',
 ]);
 const DATASET_TILES = new Set([
-  // Group A code lookups
-  'icd10', 'hcpcs', 'cpt', 'ndc', 'pos-codes', 'modifier-codes',
-  'revenue-codes', 'carc', 'rarc', 'hcpcs-mod', 'pos-lookup',
-  'tob-decode', 'rev-table', 'nubc-codes', 'drg-lookup', 'apc-lookup',
-  'pcs-lookup', 'rxnorm-lookup', 'ndc-rxnorm',
-  // Group G drug-condition lookup
-  'beers',
   // Group J reference table
   'sti-screening',
-  // Group K lab references
-  'lab-adult', 'lab-peds', 'tdm-levels', 'tox-levels',
-  // Group L glossary
-  'eob-glossary',
-  // Group I hazmat / pocket guide tables
-  'dot-erg', 'niosh-pg',
 ]);
 const REFERENCE_TILES = new Set([
-  // Group G pure-table clinical references
-  'asa', 'mallampati', 'mrs', 'peds-vitals', 'lab-ranges',
   // Group F reference tables
-  'high-alert', 'peds-dose', 'anticoag-reversal', 'iv-to-po',
+  'peds-dose', 'anticoag-reversal',
   // Group I reference tables
-  'adult-arrest-ref', 'peds-arrest-ref', 'hypothermia', 'heat-illness',
-  'toxidromes', 'cpr-numeric', 'tccc', 'co-cn-antidote',
-  // Group O patient-safety card
-  'high-alert-card',
+  'co-cn-antidote',
 ]);
 
 function classify(tile) {

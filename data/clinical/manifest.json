@@ -4,14 +4,10 @@
   "agency": "various; see docs/clinical-citations.md",
   "status": "public-formulas-and-original-notes",
   "cadence": "as-needed",
-  "fetchDate": "2026-05-07",
+  "fetchDate": "2026-05-20",
   "offlineSeed": false,
-  "recordCount": 63,
+  "recordCount": 22,
   "files": [
-    "formulas.json",
-    "pediatric-vitals.json",
-    "beers.json",
-    "asa-status.json",
-    "mallampati.json"
+    "formulas.json"
   ]
 }

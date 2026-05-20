@@ -102,7 +102,7 @@ const UTILITIES = [
   // Group G: Clinical Scoring and Reference
   { id: 'gcs', name: 'Glasgow Coma Scale', group: 'G', audiences: ['clinicians', 'educators', 'field'], clinical: true },
   { id: 'apgar', name: 'APGAR', group: 'G', audiences: ['clinicians', 'educators', 'field'], clinical: true },
-  { id: 'peds-vitals', name: 'Pediatric Vital Signs by Age', group: 'G', audiences: ['clinicians', 'educators', 'field'], clinical: true },
+  // peds-vitals removed in spec-v29 wave 29-2 (Group G non-scores): static reference table.
   // lab-ranges removed in spec-v29 wave 29-2 (Group K/O): static table.
   { id: 'abg', name: 'ABG Interpretation Walkthrough', group: 'G', audiences: ['clinicians', 'educators', 'field'], clinical: true },
   { id: 'wells-pe', name: 'Wells Score for PE', group: 'G', audiences: ['clinicians', 'educators', 'field'], clinical: true },
@@ -110,9 +110,7 @@ const UTILITIES = [
   { id: 'chads', name: 'CHA2DS2-VASc', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'hasbled', name: 'HAS-BLED', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'nihss', name: 'NIH Stroke Scale', group: 'G', audiences: ['clinicians', 'educators', 'field'], clinical: true },
-  { id: 'asa', name: 'ASA Physical Status Reference', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
-  { id: 'mallampati', name: 'Mallampati Class Reference', group: 'G', audiences: ['clinicians', 'educators', 'field'], clinical: true },
-  { id: 'beers', name: 'Beers Criteria Drug-Condition Lookup', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  // asa, mallampati, beers removed in spec-v29 wave 29-2 (Group G non-scores): static reference tables.
   // Group G: v4 extensions waves 1-2 (utilities 136-145)
   { id: 'timi', name: 'TIMI Risk Score (UA / NSTEMI)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'grace', name: 'GRACE Score (in-hospital mortality)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
@@ -129,7 +127,7 @@ const UTILITIES = [
   { id: 'wells-dvt-caprini', name: 'Wells DVT and Caprini VTE Risk', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'bishop', name: 'Bishop Score (cervical favorability)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'alvarado-pas', name: 'Alvarado / Pediatric Appendicitis Score', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
-  { id: 'mrs', name: 'Modified Rankin Scale Reference', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  // mrs removed in spec-v29 wave 29-2 (Group G non-scores): static reference table.
   { id: 'phq9', name: 'PHQ-9 Depression Screener', group: 'G', audiences: ['clinicians', 'patients', 'educators'], clinical: true },
   { id: 'gad7', name: 'GAD-7 Anxiety Screener', group: 'G', audiences: ['clinicians', 'patients', 'educators'], clinical: true },
   { id: 'auditc', name: 'AUDIT-C Alcohol Screener', group: 'G', audiences: ['clinicians', 'patients', 'educators'], clinical: true },
@@ -364,23 +362,6 @@ const UTIL_BY_ID = new Map(UTILITIES.map((u) => [u.id, u]));
 const CLINICAL_NOTICE_TEXT =
   'This is a math aid for verification. Institutional protocols and clinician judgment govern any clinical decision.';
 
-// spec-v29 wave 29-1: deprecation banner for tiles slated for removal in
-// wave 29-2. The tile body still renders below the banner so existing
-// permalinks keep working through the deprecation window; wave 29-2 will
-// remove these ids from UTILITIES and delete the renderers / data shards.
-// The id list is the union of spec-v29 sections 2.1-2.5 (the 47 cuts
-// plus the v0/v4 duplicate ids; iv-to-po is intentionally omitted per
-// spec-v29 section 2.4 deferral).
-const DEPRECATED_V29_TILES = new Set([
-  // 2.1, 2.2, 2.3, 2.4 already removed via wave 29-2 (Groups A, C/L, I,
-  // K/O). 2.5 (Group G non-scores) is the final wave 29-2 sub-PR.
-  // 2.5 Misc reference (Group G slots that are not scores)
-  'beers', 'peds-vitals', 'asa', 'mallampati', 'mrs',
-]);
-
-const DEPRECATION_V29_BANNER_TEXT =
-  'Removed in spec-v29 - this reference tile will be deleted in wave 29-2. Use the upstream source or an equivalent calculator. See docs/spec-v29.md for the rationale and the v29 catalog ledger.';
-
 // spec-v29 wave 29-2: tiles deleted from UTILITIES whose permalink
 // hashes still resolve. The router sends them to the home view with a
 // one-line removed-note (spec-v29 sec 2.7). The map carries the
@@ -413,6 +394,12 @@ const REMOVED_V29_IDS = new Map([
     'lab-ranges', 'lab-adult', 'lab-peds', 'tdm-levels', 'tox-levels',
     'high-alert', 'high-alert-card', 'iv-to-po',
   ].map((id) => [id, 'Removed in spec-v29 wave 29-2 (reference-range / wallet-card table): this tile is no longer hosted by Sophie. Use your institution\'s lab reference ranges, the ISMP high-alert list, or your formulary. The calculators that consume these thresholds inside their math (e.g. lab-interpret, NEWS2, abx-renal) remain. See docs/spec-v29.md for the rationale.']),
+  // Group G non-scores (wave 29-2 Group G PR): 5 single-class clinical
+  // reference tiles (Beers, peds-vitals, ASA, Mallampati, mRS). The
+  // scoring tiles in Group G (NIHSS, CHA2DS2-VASc, Wells, etc.) remain.
+  ...[
+    'beers', 'peds-vitals', 'asa', 'mallampati', 'mrs',
+  ].map((id) => [id, 'Removed in spec-v29 wave 29-2 (Group G single-class clinical reference): this tile is no longer hosted by Sophie. Use the upstream source (AGS Beers Criteria, PALS reference table, ASA Physical Status statement, the original Mallampati or Modified Rankin Scale publication) or your protocol. The Group G scoring calculators (NIHSS, CHA2DS2-VASc, Wells, GRACE, HEART, etc.) remain. See docs/spec-v29.md for the rationale.']),
 ]);
 
 // ----- DOM helpers ---------------------------------------------------------
@@ -901,20 +888,6 @@ function renderToolView(util) {
   // confused). The .content class still gets the encryptalotta panel chrome.
   const content = el('section', { class: 'content', 'aria-label': util.name });
   content.appendChild(el('h1', { text: util.name }));
-
-  // spec-v29 wave 29-1: one-line deprecation banner above the tool body.
-  // Wave 29-2 removes the tile entirely; until then the banner warns users
-  // away from the surface.
-  if (DEPRECATED_V29_TILES.has(util.id)) {
-    content.appendChild(
-      el('p', {
-        class: 'deprecation-notice',
-        role: 'note',
-        'aria-label': 'Deprecation notice',
-        text: DEPRECATION_V29_BANNER_TEXT,
-      })
-    );
-  }
 
   if (util.clinical && util.group !== 'I') {
     content.appendChild(

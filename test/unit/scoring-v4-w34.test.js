@@ -4,7 +4,7 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import {
   centor, mcisaac, caprini, bishop, alvarado, pediatricAppendicitis,
-  MRS_DESCRIPTIONS, miniCog,
+  miniCog,
   PHQ9_CONFIG, GAD7_CONFIG, AUDITC_CONFIG, CAGE_CONFIG, EPDS_CONFIG,
 } from '../../lib/scoring-v4.js';
 import { scoreScreener, bandFor } from '../../lib/screener.js';
@@ -95,15 +95,7 @@ test('pediatricAppendicitis: max -> High', () => {
   assert.equal(r.score, 10); assert.match(r.band, /High/);
 });
 
-// --- 150 mRS reference ------------------------------------------------
-test('mRS: covers 0 through 6 inclusive', () => {
-  assert.equal(MRS_DESCRIPTIONS.length, 7);
-  for (let i = 0; i <= 6; i++) assert.equal(MRS_DESCRIPTIONS[i].score, i);
-});
-test('mRS: 0 = no symptoms; 6 = dead', () => {
-  assert.match(MRS_DESCRIPTIONS[0].label, /No symptoms/i);
-  assert.match(MRS_DESCRIPTIONS[6].label, /Dead/i);
-});
+// 150 mRS reference removed in spec-v29 wave 29-2 (Group G non-scores).
 
 // --- 151 PHQ-9 --------------------------------------------------------
 test('PHQ-9: all 0 -> Minimal', () => {

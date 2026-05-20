@@ -6,6 +6,63 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Removed (spec-v29 wave 29-2 Group G — 5 single-class clinical reference tiles)
+
+Fifth and final wave 29-2 deletion PR (one per group letter per
+spec-v29 sec 7.2). Removes the Group G slots that are not
+calculators — single-class clinical references whose "output" is
+just the label of the class the user picked, or a filtered
+view of a static table. The Group G scoring calculators (NIHSS,
+CHA2DS2-VASc, HAS-BLED, Wells, GRACE, HEART, PERC, CURB-65, PSI,
+qSOFA/SOFA, MELD/Child-Pugh, Ranson/BISAP, Centor, Caprini,
+Bishop, Alvarado, mini-Cog, PHQ-9/GAD-7/AUDIT-C/CAGE/EPDS,
+CIWA-Ar, plus every v17-v28 score tile) remain.
+
+Tiles removed (5):
+- `beers` (AGS Beers Criteria drug-condition lookup; static list).
+- `peds-vitals` (PALS age-banded reference ranges; static table).
+- `asa` (ASA Physical Status 6-class reference; static index).
+- `mallampati` (Mallampati 4-class reference; static index).
+- `mrs` (Modified Rankin Scale 0-6 reference; investigator-rated,
+  not auto-computed).
+
+Surfaces touched:
+- `app.js` UTILITIES: 5 entries deleted; the Group G block in
+  `REMOVED_V29_IDS` carries the per-group note. The
+  `DEPRECATED_V29_TILES` set and `DEPRECATION_V29_BANNER_TEXT`
+  string + their renderer branch are removed (wave 29-2 is now
+  complete; no tiles remain in the deprecation window).
+- `lib/meta.js`: 5 META entries deleted.
+- `lib/scoring-v4.js`: `MRS_DESCRIPTIONS` export removed
+  (it was a static 0-6 label table, not a scoring function).
+- `views/group-g.js`: `peds-vitals`, `asa`, `mallampati`,
+  `beers`, and `mrs` renderers removed; the unused `loadFile`
+  import is dropped.
+- `index.html`: 5 home-grid tool cards removed.
+- `scripts/build-tool-pages.mjs`: `DATASET_TILES` and
+  `REFERENCE_TILES` collapsed (the removed-tile bookkeeping no
+  longer iterates; live tiles route through `classify()` directly).
+- `scripts/build-topic-pages.mjs`: obstetrics-pediatrics topic
+  drops `peds-vitals` from its tile list, description, and lede.
+- `sitemap.xml`: 5 `/tools/<id>/` entries removed (build step
+  regenerates this from `UTILITIES`).
+- `test/unit/meta.test.js`: NO_INPUTS_TILES allowlist drops the
+  3 Group G non-score ids.
+- `test/unit/scoring-v4-w34.test.js`: 2 MRS reference tests and
+  the `MRS_DESCRIPTIONS` import dropped.
+
+Data shards deleted: `data/clinical/pediatric-vitals.json`,
+`data/clinical/beers.json`, `data/clinical/asa-status.json`,
+`data/clinical/mallampati.json`. `data/clinical/manifest.json`
+shrinks to a single file (`formulas.json`) with `recordCount: 22`.
+
+URL hashes for the 5 removed ids resolve to the home view with
+the Group G note (spec-v29 sec 2.7).
+
+Catalog 235 -> 230. Wave 29-2 is now complete: all 47 tile ids
+in spec-v29 sec 2.1-2.5 have been removed (Groups A, C/L, I,
+K/O, G).
+
 ### Removed (spec-v29 wave 29-2 Group K/O — 8 reference-range and wallet-card tiles)
 
 Fourth of the five wave 29-2 deletion PRs (one per group letter

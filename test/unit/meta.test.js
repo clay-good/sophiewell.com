@@ -93,9 +93,7 @@ const NO_INPUTS_TILES = new Set([
   // screeners (phq9, gad7, auditc, cage, epds) auto-fill via the
   // screener's own exampleAnswers (lib/scoring-v4.js + lib/screener.js)
   // rather than via META.example, so they are allowlisted here too.
-  'asa',              // Group G: ASA Physical Status reference table.
-  'mallampati',       // Group G: Mallampati class reference.
-  'mrs',              // Group G: Modified Rankin Scale reference.
+  // asa, mallampati, mrs removed in spec-v29 wave 29-2 (Group G non-scores).
   'phq9',             // Group G: screener; pre-fills via PHQ9_CONFIG.exampleAnswers.
   'gad7',             // Group G: screener; pre-fills via GAD7_CONFIG.exampleAnswers.
   'auditc',           // Group G: screener; pre-fills via AUDITC_CONFIG.exampleAnswers.
