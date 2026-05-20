@@ -6,6 +6,33 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v29 wave 29-3a (partial) — stroke completers: ICH Score + Hunt-Hess/WFNS; nursing-icu specialty backfill)
+
+Second wave 29-3a sub-batch. Two new neuro tiles plus a metadata
+upgrade on the existing ICU sedation / delirium / pain bundle.
+
+- `ich-score` (Hemphill 2001 ICH grading): five inputs (GCS band,
+  age >=80, ICH volume >=30 mL, infratentorial origin,
+  intraventricular extension); total 0-6; 30-day mortality per
+  Hemphill 2001 Table 4 (0% / 13% / 26% / 72% / 97% / 100% /
+  100%). Tagged `nursing-icu`, `nursing-er`, `nursing-general`,
+  `neurology`, `neurosurgery`, `critical-care`,
+  `emergency-medicine`.
+- `hunt-hess-wfns` (Hunt 1968 + Drake 1988 aneurysmal SAH
+  grading): Hunt-Hess I-V picker plus WFNS computed from GCS
+  band + focal motor deficit (per Drake 1988 Table I). Tagged
+  `nursing-icu`, `nursing-er`, `nursing-general`, `neurology`,
+  `neurosurgery`, `critical-care`.
+
+Plus: `rass`, `cam-icu`, `icdsc`, `cpot`, `bps` META.specialties
+now include `nursing-icu` per spec-v29 §4.3, so the home-view
+nurse-by-shift sort can place them in the ICU lane.
+
+Remaining wave 29-3a tiles (mnihss new; aldrete-padss new)
+deferred to follow-on commits.
+
+Catalog 267 -> 269 at v29 wave 29-3a (further partial) close.
+
 ### Added (spec-v29 wave 29-3a (partial) — nurse-bedside scoring: Braden, Morse, Hendrich II, CAM)
 
 First wave 29-3a sub-batch (4 of 13 tiles). Each tile ships under

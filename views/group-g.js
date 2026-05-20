@@ -3652,6 +3652,62 @@ export const renderers = {
     run();
   },
 
+  // spec-v29 §4.7.2 wave 29-3a: ICH Score (Hemphill 2001).
+  'ich-score'(root) {
+    root.appendChild(rangeField('GCS', 'ich-gcs', 3, 15, 15));
+    root.appendChild(rangeField('Age (years)', 'ich-age', 0, 110, 70));
+    root.appendChild(rangeField('ICH volume (mL)', 'ich-vol', 0, 200, 10));
+    root.appendChild(checkbox('Infratentorial origin', 'ich-infra'));
+    root.appendChild(checkbox('Intraventricular hemorrhage', 'ich-ivh'));
+    const o = out(); root.appendChild(o);
+    const run = () => safe(o, () => {
+      const r = S4.ichScore({
+        gcs: nv('ich-gcs'),
+        age: nv('ich-age'),
+        ichVolumeMl: nv('ich-vol'),
+        infratentorial: checked('ich-infra'),
+        ivh: checked('ich-ivh'),
+      });
+      o.appendChild(el('h2', { text: `ICH Score ${r.score}: 30-day mortality ${r.mortality30d}` }));
+      o.appendChild(el('p', { text: r.band }));
+    });
+    ['ich-gcs', 'ich-age', 'ich-vol'].forEach((id) => document.getElementById(id).addEventListener('input', run));
+    ['ich-infra', 'ich-ivh'].forEach((id) => document.getElementById(id).addEventListener('change', run));
+    run();
+  },
+
+  // spec-v29 §4.7.3 wave 29-3a: Hunt-Hess + WFNS (Hunt 1968; Drake 1988).
+  'hunt-hess-wfns'(root) {
+    const hhWrap = el('p', {}, [
+      el('label', { for: 'hh-grade', text: 'Hunt-Hess grade' }), el('br'),
+      el('select', { id: 'hh-grade' }, [
+        el('option', { value: '1', text: 'I: asymptomatic or minimal headache' }),
+        el('option', { value: '2', text: 'II: moderate-to-severe headache, nuchal rigidity' }),
+        el('option', { value: '3', text: 'III: drowsy, mild focal deficit' }),
+        el('option', { value: '4', text: 'IV: stupor, moderate-to-severe hemiparesis' }),
+        el('option', { value: '5', text: 'V: deep coma, decerebrate, moribund' }),
+      ]),
+    ]);
+    root.appendChild(hhWrap);
+    root.appendChild(rangeField('GCS (for WFNS)', 'hh-gcs', 3, 15, 15));
+    root.appendChild(checkbox('Focal motor deficit (for WFNS)', 'hh-focal'));
+    const o = out(); root.appendChild(o);
+    const run = () => safe(o, () => {
+      const r = S4.huntHessWfns({
+        huntHess: nv('hh-grade'),
+        gcs: nv('hh-gcs'),
+        focalMotorDeficit: checked('hh-focal'),
+      });
+      o.appendChild(el('h2', { text: `Hunt-Hess ${r.huntHess} / WFNS ${r.wfns}` }));
+      o.appendChild(el('p', { text: r.huntHessLabel }));
+      o.appendChild(el('p', { text: r.text }));
+    });
+    ['hh-grade', 'hh-gcs', 'hh-focal'].forEach((id) => document.getElementById(id).addEventListener('input', run));
+    document.getElementById('hh-grade').addEventListener('change', run);
+    document.getElementById('hh-focal').addEventListener('change', run);
+    run();
+  },
+
   // spec-v29 §4.4.1 wave 29-3a: CAM (non-ICU) (Inouye 1990).
   cam(root) {
     const items = [
