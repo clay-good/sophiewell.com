@@ -6,6 +6,54 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Removed (spec-v29 wave 29-2 Group A — 19 code-reference lookup tiles)
+
+First of the five wave 29-2 deletion PRs (one per group letter, per
+spec-v29 sec 7.2). Removes the entire Group A code-reference
+surface, leaving only the survivor calculators (em-time,
+ndc-convert) that compute deterministic outputs.
+
+Tiles removed:
+- icd10, hcpcs, cpt, ndc, pos-codes, modifier-codes,
+  revenue-codes, carc, rarc (the original Group A spec-v2 set).
+- hcpcs-mod, pos-lookup, tob-decode, rev-table, nubc-codes,
+  drg-lookup, apc-lookup, pcs-lookup, rxnorm-lookup, ndc-rxnorm
+  (the spec-v4 Group A extensions; v0/v4 duplicates resolved per
+  spec-v29 sec 2.6).
+
+Surfaces touched:
+- `app.js` UTILITIES: 19 entries deleted; new REMOVED_V29_IDS Set
+  drives the home-view redirect note (spec-v29 sec 2.7).
+- `lib/meta.js` META: 19 entries deleted.
+- `views/group-a.js`: emptied; surviving Group A renderers
+  (em-time, ndc-convert) live in `views/group-v5.js`.
+- `index.html`: 19 Billing &amp; Coding home-grid tool cards
+  deleted.
+- `data/synonyms.json`: 6 synonym entries deleted.
+- `scripts/build-topic-pages.mjs`: the `billing-and-coding` topic
+  page is rewritten around the calculator survivors (the static
+  reference lookups belong in the EHR or upstream CMS / FDA /
+  NUBC / X12 release).
+- Smoke spec: per-tile Group A tests replaced with a
+  removed-tile-hash regression covering the v29 redirect note.
+
+Data shards (`data/icd10cm/`, `data/hcpcs/`, `data/cpt-summaries/`,
+`data/ndc/`, `data/crosswalks/`, `data/hcpcs-modifiers/`,
+`data/pos-codes/`, `data/revenue-codes/`, `data/tob-codes/`,
+`data/nubc-special-codes/`, `data/drg/`, `data/apc/`,
+`data/icd10-pcs/`, `data/rxnorm/`) and `lib/codes.js` remain on
+disk because `views/group-c.js` (decoder / EOB decoder / etc.)
+and `lib/decoder.js` still import them. They go in the wave 29-2
+Group C deletion PR.
+
+URL hashes for the 19 removed ids resolve to the home view with
+the one-line note `Removed in spec-v29 wave 29-2 (code-reference
+lookup): this tile is no longer hosted by Sophie. Use the
+upstream code source (CMS, FDA, NUBC, AMA, X12) or your EHR's
+lookup.` (spec-v29 sec 2.7).
+
+Catalog 287 -> 268 at v29 wave 29-2 Group A close.
+
 ### Added (spec-v29 wave 29-3e close — vent bundle: SBT readiness + ARDSnet PEEP/FiO2; wave 29-3 complete)
 
 Final wave 29-3 sub-batch. Closes wave 29-3 with the vent

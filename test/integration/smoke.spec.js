@@ -35,28 +35,15 @@ test('home: clicking a tool card opens its renderer (BMI smoke)', async ({ page 
   await expect(page.getByText('BMI: 22.9 kg/m^2 (Normal)')).toBeVisible();
 });
 
-test('home: clicking ICD-10 card opens its renderer with breadcrumb', async ({ page }) => {
-  await page.goto('/');
-  // spec-v8 §4.6: tile grid defaults closed; expand it before clicking.
-  await page.evaluate(() => { document.getElementById('browse-disclosure').open = true; });
-  await page.click('.tool-card[data-tool="icd10"]');
-  await expect(page).toHaveURL(/#icd10/);
-  await expect(page.locator('.content h1')).toHaveText('ICD-10-CM Code Lookup');
-  await expect(page.locator('.breadcrumb .bc-current')).toContainText('ICD-10-CM');
-});
+// spec-v29 wave 29-2 (Group A): the icd10 / cpt / hcpcs reference tiles
+// were removed. Their hashes now redirect to the home view with a
+// removed-note. The "home: clicking a card opens its renderer with
+// breadcrumb" check is exercised by the BMI test above; the per-tile
+// Group A smoke checks below are deleted with the tiles.
 
-test('group A: ICD-10 lookup returns results', async ({ page }) => {
+test('group A removed-tile hash shows the v29 removed-note', async ({ page }) => {
   await page.goto('/#icd10');
-  await page.fill('#q', 'I10');
-  await expect(page.getByText('Essential (primary) hypertension')).toBeVisible();
-});
-
-test('group A: CPT tool shows AMA notice and never displays AMA descriptors', async ({ page }) => {
-  await page.goto('/#cpt');
-  await expect(page.getByText('CPT code descriptors are owned by the American Medical Association')).toBeVisible();
-  await page.fill('#q', '99213');
-  await expect(page.getByText('Work RVU:')).toBeVisible();
-  await expect(page.getByRole('link', { name: /AMA's free public CPT lookup/ })).toBeVisible();
+  await expect(page.locator('.deprecation-notice')).toContainText('Removed in spec-v29');
 });
 
 test('group C: Bill Decoder extracts codes from pasted text', async ({ page }) => {

@@ -34,26 +34,13 @@ const RENDERERS = { ...RA, ...RC, ...RE, ...RF, ...RG, ...RH, ...RI, ...RJ, ...R
 
 const UTILITIES = [
   // Group A: Code Lookup
-  { id: 'icd10', name: 'ICD-10-CM Code Lookup', group: 'A', audiences: ['billers', 'educators'], clinical: false },
-  { id: 'hcpcs', name: 'HCPCS Level II Code Lookup', group: 'A', audiences: ['billers', 'educators'], clinical: false },
-  { id: 'cpt', name: 'CPT Code Reference', group: 'A', audiences: ['billers', 'educators'], clinical: false },
-  { id: 'ndc', name: 'NDC Drug Code Lookup', group: 'A', audiences: ['patients', 'billers', 'clinicians', 'educators'], clinical: false },
-  { id: 'pos-codes', name: 'Place of Service Code Lookup', group: 'A', audiences: ['billers'], clinical: false },
-  { id: 'modifier-codes', name: 'Modifier Code Lookup', group: 'A', audiences: ['billers'], clinical: false },
-  { id: 'revenue-codes', name: 'Revenue Code Lookup', group: 'A', audiences: ['billers'], clinical: false },
-  { id: 'carc', name: 'Claim Adjustment Reason Code Lookup', group: 'A', audiences: ['patients', 'billers'], clinical: false },
-  { id: 'rarc', name: 'Remittance Advice Remark Code Lookup', group: 'A', audiences: ['patients', 'billers'], clinical: false },
-  // Group A: v4 extensions (utilities 82-93)
-  { id: 'hcpcs-mod', name: 'HCPCS Modifier Lookup', group: 'A', audiences: ['billers', 'educators'], clinical: false },
-  { id: 'pos-lookup', name: 'Place of Service Code Lookup (CMS)', group: 'A', audiences: ['billers', 'educators'], clinical: false },
-  { id: 'tob-decode', name: 'Type of Bill Decoder', group: 'A', audiences: ['billers', 'educators'], clinical: false },
-  { id: 'rev-table', name: 'Revenue Code Table (NUBC summary)', group: 'A', audiences: ['billers', 'educators'], clinical: false },
-  { id: 'nubc-codes', name: 'Condition / Occurrence / Value Code Reference', group: 'A', audiences: ['billers', 'educators'], clinical: false },
-  { id: 'drg-lookup', name: 'MS-DRG Lookup', group: 'A', audiences: ['billers', 'educators'], clinical: false },
-  { id: 'apc-lookup', name: 'APC / HOPPS Lookup', group: 'A', audiences: ['billers', 'educators'], clinical: false },
-  { id: 'pcs-lookup', name: 'ICD-10-PCS Lookup', group: 'A', audiences: ['billers', 'clinicians', 'educators'], clinical: false },
-  { id: 'rxnorm-lookup', name: 'RxNorm Lookup', group: 'A', audiences: ['clinicians', 'billers', 'educators'], clinical: false },
-  { id: 'ndc-rxnorm', name: 'NDC to RxNorm Crosswalk', group: 'A', audiences: ['clinicians', 'billers', 'educators'], clinical: false },
+  // spec-v29 wave 29-2: 19 Group A code-reference lookups removed
+  // (icd10, hcpcs, cpt, ndc, pos-codes, modifier-codes, revenue-codes,
+  // carc, rarc, hcpcs-mod, pos-lookup, tob-decode, rev-table, nubc-codes,
+  // drg-lookup, apc-lookup, pcs-lookup, rxnorm-lookup, ndc-rxnorm).
+  // Their URL hashes route to the home view with a removed-note via
+  // REMOVED_V29_IDS below. Surviving Group A calculators (em-time,
+  // ndc-convert) live below in the v5 block.
   // Group B: Pricing and Cost Reference
   // Group B: v4 extensions (utilities 94-104)
   // Group C: Patient Bill and Insurance Tools
@@ -400,11 +387,8 @@ const CLINICAL_NOTICE_TEXT =
 // plus the v0/v4 duplicate ids; iv-to-po is intentionally omitted per
 // spec-v29 section 2.4 deferral).
 const DEPRECATED_V29_TILES = new Set([
-  // 2.1 Code-reference lookups
-  'icd10', 'hcpcs', 'cpt', 'ndc', 'pos-codes', 'modifier-codes',
-  'revenue-codes', 'carc', 'rarc', 'hcpcs-mod', 'pos-lookup',
-  'tob-decode', 'rev-table', 'nubc-codes', 'drg-lookup', 'apc-lookup',
-  'pcs-lookup', 'rxnorm-lookup', 'ndc-rxnorm',
+  // 2.1 Code-reference lookups: removed in wave 29-2 (Group A); now in
+  // REMOVED_V29_IDS below.
   // 2.2 Patient-literacy and eligibility infographics
   'decoder', 'insurance', 'eob-decoder', 'no-surprises',
   'insurance-card', 'abn-explainer', 'msn-decoder', 'idr-eligibility',
@@ -423,6 +407,19 @@ const DEPRECATED_V29_TILES = new Set([
 
 const DEPRECATION_V29_BANNER_TEXT =
   'Removed in spec-v29 - this reference tile will be deleted in wave 29-2. Use the upstream source or an equivalent calculator. See docs/spec-v29.md for the rationale and the v29 catalog ledger.';
+
+// spec-v29 wave 29-2 (Group A): the 19 code-reference lookup tiles that
+// were deleted from UTILITIES. Their permalink hashes still resolve, but
+// the router now sends them to the home view with a one-line removed-
+// note (spec-v29 sec 2.7).
+const REMOVED_V29_IDS = new Set([
+  'icd10', 'hcpcs', 'cpt', 'ndc', 'pos-codes', 'modifier-codes',
+  'revenue-codes', 'carc', 'rarc', 'hcpcs-mod', 'pos-lookup',
+  'tob-decode', 'rev-table', 'nubc-codes', 'drg-lookup', 'apc-lookup',
+  'pcs-lookup', 'rxnorm-lookup', 'ndc-rxnorm',
+]);
+const REMOVED_V29_NOTE =
+  'Removed in spec-v29 wave 29-2 (code-reference lookup): this tile is no longer hosted by Sophie. Use the upstream code source (CMS, FDA, NUBC, AMA, X12) or your EHR\'s lookup. See docs/spec-v29.md for the rationale.';
 
 // ----- DOM helpers ---------------------------------------------------------
 
@@ -1015,6 +1012,21 @@ function route() {
   } else {
     currentRouteId = null;
     restoreHome();
+    // spec-v29 wave 29-2: removed-tile hashes show a one-line note above
+    // the home grid. The note is inserted on every navigation so that
+    // following a removed-tile permalink always surfaces the explanation.
+    if (REMOVED_V29_IDS.has(id)) {
+      const main = getMain();
+      if (main) {
+        const note = el('p', {
+          class: 'deprecation-notice',
+          role: 'note',
+          'aria-label': 'Removed tile',
+          text: REMOVED_V29_NOTE,
+        });
+        main.insertBefore(note, main.firstChild);
+      }
+    }
   }
 }
 

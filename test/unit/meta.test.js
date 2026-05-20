@@ -15,9 +15,11 @@ const CLINICAL_CALC_IDS = [
   'gcs', 'apgar', 'abg',
 ];
 
+// spec-v29 wave 29-2 (Group A) removed the 19 code-reference lookup
+// tiles; only the still-shipping source-stamp tiles remain in the
+// SOURCE_REQUIRED list. eob-decoder / no-surprises are wave 29-2 Group
+// C deletion targets and stay in this list until that PR.
 const SOURCE_REQUIRED = [
-  'icd10', 'hcpcs', 'cpt', 'ndc', 'pos-codes', 'modifier-codes',
-  'revenue-codes', 'carc', 'rarc',
   'eob-decoder', 'no-surprises',
 ];
 

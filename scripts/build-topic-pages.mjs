@@ -111,16 +111,13 @@ export const TOPICS = {
   'billing-and-coding': {
     slug: 'billing-and-coding',
     label: 'Billing and coding',
-    h1: 'Medical billing and coding lookups',
-    title: 'Medical Billing & Coding Lookups - ICD-10, HCPCS, CARC, DRG · Sophie Well',
-    description: 'Free billing and coding lookups: ICD-10-CM and PCS, HCPCS, CPT, NDC, POS, modifiers, CARC/RARC, MS-DRG, APC, NUBC revenue/TOB, CMS-1500 and UB-04 fields.',
-    lede: 'Every code lookup, form-locator reference, and denial-decoder Sophie ships, in one place. ICD-10-CM (FY2026) and ICD-10-PCS, HCPCS Level II, CPT structural reference, NDC and RxNorm, place-of-service, billing modifiers, CARC and RARC denial reasons, MS-DRG and APC tables, NUBC revenue and type-of-bill codes, and field-by-field references for the CMS-1500 and UB-04.',
+    h1: 'Medical billing and coding calculators',
+    title: 'Medical Billing & Coding Calculators - E/M time, NSA, NDC · Sophie Well',
+    description: 'Sophie\'s billing and coding calculators: time-based E/M code selector, NDC 10/11 converter, HIPAA breach-notification clock, CMS-1500 / UB-04 references, and No Surprises Act eligibility tools.',
+    lede: 'spec-v29 removed the static code-reference lookups (ICD-10, HCPCS, CPT, NDC, POS, modifiers, CARC/RARC, MS-DRG, APC, RxNorm, NUBC) - those belong in your EHR or the upstream CMS / FDA / NUBC / X12 release. What remains are the calculators: the time-based E/M selector, the NDC 10/11 converter, and the HIPAA breach-notification clock. The CMS-1500 / UB-04 references and the No Surprises Act tools stay in scope until wave 29-2 finishes (see docs/spec-v29.md).',
     tiles: [
-      'icd10', 'pcs-lookup', 'hcpcs', 'hcpcs-mod', 'cpt', 'ndc',
-      'rxnorm-lookup', 'ndc-rxnorm', 'pos-codes', 'pos-lookup',
-      'modifier-codes', 'revenue-codes', 'rev-table', 'carc', 'rarc',
-      'drg-lookup', 'apc-lookup', 'tob-decode', 'nubc-codes', 'cms1500',
-      'ub04', 'eob-glossary',
+      'em-time', 'ndc-convert', 'breach-clock', 'cms1500', 'ub04',
+      'eob-glossary',
     ],
   },
   'patient-literacy': {
