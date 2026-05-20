@@ -25,19 +25,16 @@ save the page and use it offline forever.
 |  | styles.css          |  |  origin |  app.js                           |
 |  | app.js (router,     |  |  only   |  sw.js                            |
 |  |   utilities, math)  |  |         |  data/                            |
-|  +---------------------+  |         |    icd10cm/   shards + manifest   |
-|           |               |         |    hcpcs/                         |
-|           v               |         |    cpt-summaries/                 |
-|  +---------------------+  |         |    mpfs/      shards + GPCI + CF  |
-|  | Service worker      |  |         |    nadac/                         |
-|  |  (sw.js)            |  |         |    ndc/       shards              |
-|  |  - precaches shell  |  |         |    npi/       shards              |
-|  |  - caches shards    |  |         |    crosswalks/ pos, mod, rev,     |
-|  |    on first use     |  |         |                carc, rarc         |
-|  +---------------------+  |         |    ncci/    mue/    coverage/     |
-|           |               |         |    enforcement/  hospital-prices/ |
-|           v               |         |    no-surprises/  state-rights/   |
-|  +---------------------+  |         |    clinical/                      |
+|  +---------------------+  |         |    clinical/  formulas + citations|
+|           |               |         |    synonyms.json                  |
+|           v               |         |    (other small per-tile shards   |
+|  +---------------------+  |         |     for the calculators that      |
+|  | Service worker      |  |         |     consume a bundled table       |
+|  |  (sw.js)            |  |         |     inside their math)            |
+|  |  - precaches shell  |  |         |                                   |
+|  |  - caches shards    |  |         |                                   |
+|  |    on first use     |  |         |                                   |
+|  +---------------------+  |         |                                   |
 |  | Cache storage       |  |         |  _headers                         |
 |  |  (offline copy of   |  |         |                                   |
 |  |   shell + shards)   |  |         |  No application server.           |
@@ -56,14 +53,17 @@ file host; it serves files and nothing else.
 The user navigates to sophiewell.com. The browser receives `index.html`,
 `styles.css`, and `app.js`. The application boots, registers a service worker
 for offline use, and renders the home view with a tile grid. A filter bar at
-the top of the grid lets the user filter by audience tag (Patients, Billers
-and Coders, Nurses and Clinicians, Educators) and by group (A through H).
-Selecting a tile loads only the data shards relevant to that utility. No data
-is loaded eagerly. The largest shard is kept under one megabyte after gzip.
+the top of the grid lets the user filter by the spec-v29 §5.3 chip set
+(All / Nurse / Doctor / Pharmacist / RT / EMS / Biller-Coder / Educator;
+Nurse is the on-first-visit default) and by group. Selecting a tile loads
+only the data shards relevant to that utility (when a tile needs one).
+No data is loaded eagerly. Most tiles ship no shard at all — the formula
+is in `app.js` / `lib/*.js` and the citation is in `lib/meta.js`.
 
-Most computation runs in the main thread. Two utilities, the Medical Bill
-Decoder and the Hospital Price Transparency Lookup, run inside a Web Worker so
-the UI remains responsive on large inputs.
+All computation runs in the main thread. The two Web-Worker tiles from
+earlier specs (Medical Bill Decoder, Hospital Price Transparency Lookup)
+were retired in the spec-v10 clinical pivot and the spec-v29 wave 29-2
+prune; no Web Workers remain at runtime.
 
 The service worker caches the application shell on first load. Data shards are
 cached on first access. The cache version is keyed to the build hash, so a new
@@ -97,17 +97,17 @@ None of them introduce runtime dependencies; all use `el()` from
   `parseAnswers`) plus `renderScreener(rootEl, config)`. Always renders
   the "Screening, not diagnosis" notice. Hash-encodes the answer vector
   under key `a`.
-- **`lib/table.js`** -- searchable / sortable / row-copyable lookup table
-  for small bundled datasets (POS, TOB, revenue codes, condition codes,
-  DRG, APC, lab ranges, etc.). Pure helpers (`filterRows`, `sortRows`,
-  `formatRowAsTSV`) plus `renderTable(rootEl, opts)`. Wires the
-  data-source stamp from each dataset's `manifest.json` when
-  `manifestId` is supplied.
+- **`lib/table.js`** -- searchable / sortable / row-copyable lookup table.
+  Pure helpers (`filterRows`, `sortRows`, `formatRowAsTSV`) plus
+  `renderTable(rootEl, opts)`. After the spec-v29 wave 29-2 prune the
+  only surviving consumer is the small handful of tiles whose math
+  reads a bundled table inline; the static code-index and reference-
+  range tiles that originally drove this module are gone.
 - **`lib/print.js`** -- printable-template renderer for HIPAA
   Authorization, ROI, Wallet Card, Discharge Instructions, Appeal
-  Letter, ABN Explainer, Insurance Card Decoder, MSN Decoder. Pure
-  helper (`validateSections`) plus `renderPrintable(rootEl, config)`.
-  Renders into an `<article>` with a Print button that triggers
+  Letter, and the SBAR handoff template. Pure helper
+  (`validateSections`) plus `renderPrintable(rootEl, config)`. Renders
+  into an `<article>` with a Print button that triggers
   `window.print()` against the `@media print` block in `styles.css`.
 
 Each module has a unit-test suite in `test/unit/{tree,screener,table,print}.test.js`
@@ -123,27 +123,37 @@ lookup is a search over a bundled dataset; every calculator is a published
 formula. Holding the line against a backend is the single most important
 durability decision in the project.
 
-## v4 group expansion (J-O)
+## v4 group expansion (post-v29 surface)
 
-spec-v4 adds six new tile groups alongside the existing A-I:
+spec-v4 originally added six new tile groups (J-O) alongside the existing
+A-I. After the spec-v29 wave 29-2 nurse-first prune, the surviving group
+shape is:
 
-- **J Public Health & Travel** (utilities 172-180): ACIP routine adult /
-  child / catch-up schedules, CDC Yellow Book by country, and decision
-  trees for tetanus prophylaxis, rabies PEP, bloodborne-pathogen
-  exposure, TB testing interpretation, and STI screening intervals.
-- **K Lab Reference** (181-184): adult / pediatric reference ranges,
-  therapeutic drug levels, toxicology levels.
-- **L Forms & Numbers Literacy** (185-187): CMS-1500 and UB-04 field-by-
-  field decoders plus an EOB jargon glossary.
-- **M Eligibility & Benefits** (188-191): Medicaid by state, VA priority
-  groups, TRICARE plan picker (decision tree), IHS eligibility.
-- **N Literacy Helpers** (192-194): universal unit converter,
-  time-to-dose helper, pediatric weight converter.
-- **O Patient Safety** (195-197): high-alert wallet card (ISMP),
-  FDA drug recalls weekly snapshot, vaccine lot recall lookup.
+- **J Public Health & Infectious Disease**: decision trees for
+  tetanus prophylaxis, rabies PEP, bloodborne-pathogen exposure, TB
+  testing interpretation, and STI screening intervals. (The ACIP /
+  Yellow Book traveller schedules were never v29-relevant and remain
+  on the v30 deferred list.)
+- **K Lab Reference** — *retired in spec-v29 wave 29-2 §2.4.* The
+  static adult / pediatric reference-range tables, TDM table, and
+  tox-level table were removed. Calculators that consume these
+  thresholds inside their math (e.g. `lab-interpret`, NEWS2,
+  `abx-renal`) remain and embed the thresholds inline.
+- **L Forms & Numbers Literacy** — *retired in spec-v29 wave 29-2
+  §2.2.* The CMS-1500 and UB-04 field-locator decoders and the EOB
+  jargon glossary were removed. The workflow generators that
+  *assemble* a tailored document (appeal letter, HIPAA Right of
+  Access, HIPAA authorization, ROI, discharge instructions,
+  specialty-visit questions, wallet card, SBAR handoff) stay.
+- **N Literacy Helpers**: universal unit converter, time-to-dose
+  helper, pediatric weight converter — the calculator-shaped tiles
+  in this group stay.
+- **O Patient Safety** — *retired in spec-v29 wave 29-2 §2.4.* The
+  ISMP high-alert wallet card was removed; the safety thresholds it
+  carried are now embedded in the calculators that need them.
 
-Each new tile reuses the four shared renderers added in v4.0
-(`lib/tree.js`, `lib/screener.js`, `lib/table.js`, `lib/print.js`) plus
-the bundled offline-seed datasets added in v4.1. No new architecture, no
-new runtime dependencies, and no change to the CSP / storage / no-AI
+Each surviving tile reuses the four shared renderers added in v4.0
+(`lib/tree.js`, `lib/screener.js`, `lib/table.js`, `lib/print.js`)
+plus the bundled offline-seed datasets. No new architecture, no new
+runtime dependencies, and no change to the CSP / storage / no-AI
 postures established in v1-v3.

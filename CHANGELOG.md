@@ -6,6 +6,39 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Changed (spec-v29 post-close: docs/architecture.md sync to v29-close runtime)
+
+Brings `docs/architecture.md` into agreement with the v29-close
+runtime. No code change; no catalog change.
+
+- Diagram (right-hand "Static origin" column): drops the retired
+  data shard directories (`icd10cm/`, `hcpcs/`, `cpt-summaries/`,
+  `mpfs/`, `nadac/`, `ndc/`, `npi/`, `crosswalks/`, `ncci/`,
+  `mue/`, `coverage/`, `enforcement/`, `hospital-prices/`,
+  `no-surprises/`, `state-rights/`) that were retired in
+  spec-v10 and spec-v29 wave 29-2; what remains is `clinical/`,
+  `synonyms.json`, and the small per-tile shards consumed by
+  the calculators that embed a bundled table inline.
+- Runtime architecture: audience-tag bullet replaced by the
+  spec-v29 §5.3 chip set (All / Nurse / Doctor / Pharmacist /
+  RT / EMS / Biller-Coder / Educator; Nurse on-first-visit
+  default). Web-Worker bullet rewritten to record that the
+  Bill Decoder and Hospital Price Transparency Web Workers
+  were retired and no Web Workers remain at runtime.
+- "Shared renderers (v4)" section: `lib/table.js` and
+  `lib/print.js` consumer lists updated for the post-v29
+  surface (no more code-index / reference-range tables;
+  printables collapse to appeal letter / HIPAA / ROI /
+  discharge / wallet / SBAR).
+- "v4 group expansion (J-O)" section rewritten as
+  "v4 group expansion (post-v29 surface)": K (Lab Reference),
+  L (Forms & Numbers Literacy), and O (Patient Safety)
+  marked as retired with the spec-v29 wave 29-2 cross-
+  references; J (Public Health) and N (Literacy Helpers)
+  trimmed to their v29 survivors.
+
+Lint + 1159 unit tests + sbom + build clean.
+
 ### Changed (spec-v29 post-close: README + package.json sync to v29-close catalog)
 
 Brings the user-facing prose into agreement with the v29-close
