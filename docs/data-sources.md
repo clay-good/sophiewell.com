@@ -1,292 +1,188 @@
 # Data Sources
 
-Every dataset bundled in sophiewell.com is listed here with its canonical
-source URL, publishing agency, license or public-domain status, update
-cadence, and shard layout. The build script `scripts/build-data.mjs` downloads
-each source, verifies a SHA-256 hash, and emits the shards described below.
+After the spec-v10 patient-artifact retirement and the spec-v29 nurse-
+first prune, sophiewell.com bundles only the data a *calculator*
+needs to do its math. The site is no longer a host of code books,
+fee schedules, or static reference tables; the catalog that drove
+the v1-v8 build-data pipeline was retired in spec-v29 wave 29-2
+(see [docs/spec-v29.md §2](spec-v29.md)). This document lists the
+data that still ships with the page.
 
-## ICD-10-CM
-
-Source URL: https://www.cms.gov/medicare/coding-billing/icd-10-codes
-Publishing agency: National Center for Health Statistics and Centers for
-Medicare and Medicaid Services
-Status: Public domain
-Update cadence: Annual (fiscal year, October)
-Shard layout: `data/icd10cm/shards/` alphabetic shards by first character.
-`data/icd10cm/manifest.json` lists shards, record count, and per-shard
-SHA-256 hashes.
-
-## HCPCS Level II
-
-Source URL: https://www.cms.gov/medicare/coding-billing/healthcare-common-procedure-system
-Publishing agency: CMS
-Status: Public domain
-Update cadence: Quarterly
-Shard layout: `data/hcpcs/hcpcs.json` (single file, fits under shard cap) plus
-`data/hcpcs/manifest.json`.
-
-## CPT (structural Medicare data only)
-
-Source URL: derived from MPFS public files; see MPFS row.
-Publishing agency: CMS for the structural data. The descriptors themselves
-are owned by the American Medical Association and are NOT bundled. See
-`legal.md`.
-Status: CMS structural data is public domain. AMA descriptors are
-copyrighted; not bundled.
-Update cadence: Annual
-Shard layout: `data/cpt-summaries/summaries.json` holds the project author's
-original plain-English category summaries by code range. No AMA descriptors
-appear anywhere in the repository.
-
-## Medicare Physician Fee Schedule (MPFS)
-
-Source URL: https://www.cms.gov/medicare/payment/fee-schedules/physician
-Publishing agency: CMS
-Status: Public domain
-Update cadence: Annual with mid-year corrections
-Shard layout: `data/mpfs/shards/` numeric shards by code range, plus
-`data/mpfs/gpci.json` for locality-adjusted geographic practice cost indices
-and `data/mpfs/conversion-factor.json` for the annual conversion factor.
-
-## NADAC
-
-Source URL: https://data.medicaid.gov/dataset/nadac-national-average-drug-acquisition-cost
-Publishing agency: CMS
-Status: Public domain
-Update cadence: Weekly
-Shard layout: `data/nadac/nadac.json` plus `data/nadac/manifest.json`.
-
-## NDC Directory
-
-Source URL: https://www.fda.gov/drugs/drug-approvals-and-databases/national-drug-code-directory
-Publishing agency: FDA
-Status: Public domain
-Update cadence: Daily
-Shard layout: `data/ndc/shards/` alphabetic shards by proprietary name.
-
-## NPI Registry (compact subset)
-
-Source URL: https://download.cms.gov/nppes/NPI_Files.html
-Publishing agency: CMS
-Status: Public domain
-Update cadence: Monthly (full file); weekly deltas
-Shard layout: `data/npi/shards/` state shards. Bundled subset is compact:
-NPI, name, primary taxonomy, state, status. The full dataset is not
-practical to bundle in a static page.
-
-## Crosswalk codes
-
-Place of Service codes, Modifier codes, Revenue codes, Claim Adjustment
-Reason Codes (CARC), Remittance Advice Remark Codes (RARC).
-Source URL: CMS publications and X12 external code lists.
-Publishing agency: CMS, with X12 maintaining CARC and RARC.
-Status: Public domain reproductions of code lists.
-Update cadence: As published.
-Shard layout: `data/crosswalks/pos-codes.json`,
-`data/crosswalks/modifier-codes.json`, `data/crosswalks/revenue-codes.json`,
-`data/crosswalks/carc.json`, `data/crosswalks/rarc.json`.
-
-## NCCI Procedure-to-Procedure Edits
-
-Source URL: https://www.cms.gov/medicare/coding-billing/national-correct-coding-initiative-ncci-edits
-Publishing agency: CMS
-Status: Public domain
-Update cadence: Quarterly
-Shard layout: `data/ncci/ptp-edits.json` plus `data/ncci/manifest.json`.
-
-## Medically Unlikely Edits (MUE)
-
-Source URL: https://www.cms.gov/medicare/coding-billing/national-correct-coding-initiative-ncci-edits/medicare-ncci-medically-unlikely-edits
-Publishing agency: CMS
-Status: Public domain
-Update cadence: Quarterly
-Shard layout: `data/mue/mue.json` plus `data/mue/manifest.json`.
-
-## LCD and NCD coverage
-
-Source URL: https://www.cms.gov/medicare-coverage-database/
-Publishing agency: CMS
-Status: Public domain
-Update cadence: As published.
-Shard layout: `data/coverage/lcd.json` and `data/coverage/ncd.json`.
-
-## OIG Exclusions List
-
-Source URL: https://oig.hhs.gov/exclusions/exclusions_list.asp
-Publishing agency: HHS Office of the Inspector General
-Status: Public domain
-Update cadence: Monthly
-Shard layout: `data/enforcement/oig-exclusions.json`.
-
-## Medicare Opt-Out List
-
-Source URL: https://data.cms.gov/provider-characteristics/medicare-provider-supplier-enrollment/opt-out-affidavits
-Publishing agency: CMS
-Status: Public domain
-Update cadence: Monthly
-Shard layout: `data/enforcement/medicare-opt-out.json`.
-
-## Hospital Price Transparency
-
-Source URL: each hospital's own machine-readable file under federal
-regulation. Curated subset; URLs and dates are recorded per hospital in the
-manifest.
-Publishing agency: individual hospitals, under federal hospital price
-transparency rule.
-Status: Federal compliance disclosures. Bundling a curated subset is
-permitted; coverage is intentionally partial.
-Update cadence: Per hospital. We refresh quarterly.
-Shard layout: `data/hospital-prices/hospitals/` one file per included
-hospital. `data/hospital-prices/manifest.json` lists hospital identifier,
-source URL, and fetch date.
-
-## No Surprises Act rules
-
-Source URL: https://www.cms.gov/nosurprises
-Publishing agency: CMS, HHS, Treasury, Labor (joint)
-Status: Public domain regulatory text and summaries.
-Shard layout: `data/no-surprises/rules.json` (summaries with citations).
-
-## State Patient Rights
-
-Source URL: state attorney general publications and the National Consumer
-Law Center where licensed for redistribution; otherwise summarized with
-links.
-Publishing agency: various state agencies and NCLC.
-Status: Mixed; original summaries authored for items not licensed for
-redistribution.
-Shard layout: `data/state-rights/states.json`.
+Each surviving dataset folder under `data/` contains a
+`manifest.json` with at minimum: `dataset`, `sourceUrl`, `agency`,
+`status`, `cadence`, `fetchDate`, `recordCount`, and (where the
+dataset is sharded) per-shard SHA-256 hashes. The runtime verifier
+(`scripts/verify-integrity.mjs`) reads every manifest on
+`npm run test` and `npm run release:check`.
 
 ## Clinical reference data
 
-`data/clinical/formulas.json` (citations only; computations live in `app.js`),
-`data/clinical/pediatric-vitals.json`, `data/clinical/lab-ranges.json`,
-`data/clinical/beers.json`, `data/clinical/ismp-high-alert.json`,
-`data/clinical/asa-status.json`, `data/clinical/mallampati.json`.
+`data/clinical/formulas.json` carries the citation register for the
+formulas in `lib/clinical.js`, `lib/scoring-v4.js`,
+`lib/medication-v4.js`, and the v17-v29 wave additions. The
+computations themselves are code, not data; the JSON exists so the
+Source / Reference region of each tile can show the citation inline.
 
-Beers Criteria, ISMP High-Alert Medications, and ASA Physical Status are
-handled per `legal.md`: the underlying facts are bundled with original notes
-written by the project author; the authoritative formatted publications are
-linked rather than reproduced.
+`data/clinical/manifest.json` declares `status:
+public-formulas-and-original-notes` and lists `formulas.json` as
+the only bundled file. The four single-class reference tables
+that used to live in this folder (`pediatric-vitals.json`,
+`beers.json`, `asa-status.json`, `mallampati.json`) were retired
+with their tiles in spec-v29 wave 29-2 §2.5.
 
-Pediatric vital signs and lab reference ranges cite the source publication
-inline. Lab-specific reference ranges supersede published ranges; the utility
-states this on every view.
+## Field Medicine datasets
 
-## Field Medicine datasets (spec-v3)
-
-The following datasets serve the Group I (Field Medicine) utilities
-introduced in spec-v3.
+The Group I (Field Medicine) datasets introduced in spec-v3 survive
+where the bundled data drives a calculation rather than a static
+card. The static cards (adult / pediatric arrest references, defib
+energy lookup, AHA CPR wallet, NIOSH Pocket Guide, DOT ERG, TCCC
+wound-packing card, hypothermia / heat-illness staging tables,
+toxidromes table) were retired in spec-v29 wave 29-2 §2.3.
 
 ### CDC Field Triage Guidelines
 
-Source URL: https://www.cdc.gov/mmwr/volumes/71/rr/rr7102a1.htm
-Publishing agency: Centers for Disease Control and Prevention
-Status: Public domain
-Update cadence: As published
-Shard layout: `data/field-triage/guidelines.json` plus
-`data/field-triage/manifest.json`. The 4-step decision tree is
-encoded as plain JSON; original prose summaries by the project author.
+- Source URL: https://www.cdc.gov/mmwr/volumes/71/rr/rr7102a1.htm
+- Publishing agency: Centers for Disease Control and Prevention
+- Status: Public domain
+- Cadence: As published
+- Shard layout: `data/field-triage/guidelines.json` plus
+  `data/field-triage/manifest.json`. The 4-step decision tree is
+  encoded as plain JSON; original prose summaries by the project
+  author.
 
 ### START / JumpSTART MCI Triage Algorithms
 
-Source URL: https://www.start-triage.com/ ; CHOC Children's Hospital
-JumpSTART materials.
-Publishing agency: Newport Beach Fire Department / Hoag Hospital
-(START); CHOC Children's Hospital (JumpSTART).
-Status: Public-domain MCI triage algorithms.
-Shard layout: `data/mci-triage/algorithms.json` plus
-`data/mci-triage/manifest.json`.
+- Source URL: https://www.start-triage.com/ ; CHOC Children's Hospital
+  JumpSTART materials.
+- Publishing agency: Newport Beach Fire Department / Hoag Hospital
+  (START); CHOC Children's Hospital (JumpSTART).
+- Status: Public-domain MCI triage algorithms.
+- Shard layout: `data/mci-triage/algorithms.json` plus
+  `data/mci-triage/manifest.json`.
 
 ### FDA Prehospital Drug Labeling subset
 
-Source URL: https://dailymed.nlm.nih.gov/
-Publishing agency: FDA (DailyMed)
-Status: Public domain
-Update cadence: As needed (manual review)
-Shard layout: `data/prehospital-meds/meds.json` plus
-`data/prehospital-meds/manifest.json`. Twenty-two standard
-prehospital medications with adult dose, pediatric dose, route,
-and notes.
-
-### AHA ECC Numeric Reference
-
-Source URL: AHA ECC 2020 guidelines (numeric reference values only).
-Publishing agency: American Heart Association.
-Status: Numeric facts (drug doses, intervals, energy levels) with
-attribution. AHA flowcharts are NOT reproduced.
-Update cadence: Per AHA guideline edition.
-Shard layout: `data/aha-reference/aha-reference.json` plus
-`data/aha-reference/manifest.json`. The manifest declares
-`status: numeric-facts-with-attribution`. A CI test
-(`test/unit/aha-no-flowchart.test.js`) guards the payload against
-AHA flowchart language patterns.
-
-### CDC ATSDR Toxidrome Reference
-
-Source URL: https://www.atsdr.cdc.gov/toxprofiledocs/index.html
-Publishing agency: CDC Agency for Toxic Substances and Disease
-Registry.
-Status: Public domain (project-author original brief notes per
-toxidrome).
-Shard layout: `data/toxidromes/toxidromes.json` plus
-`data/toxidromes/manifest.json`.
-
-### Environmental staging reference
-
-Source: Wilderness Medical Society practice guidelines and standard
-medical literature.
-Publishing agency: WMS / standard literature.
-Status: Public formulas and original brief notes by the project
-author.
-Shard layout: `data/environmental/environmental.json` plus
-`data/environmental/manifest.json`. Hypothermia and heat-illness
-staging tables.
+- Source URL: https://dailymed.nlm.nih.gov/
+- Publishing agency: FDA (DailyMed)
+- Status: Public domain
+- Cadence: As needed (manual review)
+- Shard layout: `data/prehospital-meds/meds.json` plus
+  `data/prehospital-meds/manifest.json`. Twenty-two standard
+  prehospital medications with adult dose, pediatric dose, route,
+  and notes.
 
 ### EMS PCR run-type checklists
 
-Source: project-author original templated checklists.
-Publishing agency: sophiewell.com (Clay Good).
-Status: MIT-licensed original content.
-Shard layout: `data/workflow/ems-runtypes.json` (no manifest;
-loaded directly by the EMS Documentation Helper view per spec-v3
-section 5.1).
+- Source: project-author original templated checklists.
+- Publishing agency: sophiewell.com (Clay Good).
+- Status: MIT-licensed original content.
+- Shard layout: `data/workflow/ems-runtypes.json` (no manifest;
+  loaded directly by the EMS Documentation Helper view per
+  spec-v3 §5.1).
+
+## Public-health decision trees
+
+These datasets back the surviving Group J public-health calculators
+(tetanus prophylaxis, rabies PEP, bloodborne pathogen exposure, TB
+test interpretation, STI screening intervals).
+
+| Dataset | Source | Agency | Status |
+|---|---|---|---|
+| `data/tetanus/` | ACIP & CDC tetanus guidance | CDC | Public domain |
+| `data/rabies-pep/` | ACIP rabies PEP guidance | CDC | Public domain |
+| `data/bbp-exposure/` | CDC bloodborne-pathogen exposure guidance | CDC | Public domain |
+| `data/tb-tst-igra/` | CDC TB testing interpretation | CDC | Public domain |
+| `data/sti-screening/` | CDC STI screening intervals | CDC | Public domain |
+
+Each folder ships a single JSON shard plus its `manifest.json`.
+
+## Medication & infusion datasets
+
+The Group F medication calculators that consume a bundled table do
+so through small per-tile shards. None of these are static lookups;
+each one is read by a calculator that computes a dose, rate, or
+ratio from user input.
+
+| Dataset | Drives | Source / status |
+|---|---|---|
+| `data/abx-renal/abx.json` | Antibiotic Renal Dose Adjustment | FDA labels (DailyMed) summarized into renal bands |
+| `data/benzo-equiv/benzo.json` | Benzodiazepine Equivalence (Ashton) | Ashton manual; numeric facts with attribution |
+| `data/steroid-equiv/steroid.json` | Steroid Equivalence Converter | Standard pharmacology references (MIT-licensed original numeric tables) |
+| `data/mme-factors/mme.json` | Opioid MME (CDC 2022) | CDC public-domain conversion factors |
+| `data/tpn-rules/tpn.json` | TPN Macronutrient Calculator | Standard nutrition references; project-author original numeric tables |
+| `data/vasopressor-doses/vasopressors.json` | Vasopressor Dose-to-Rate + VIS | Standard ICU references; numeric facts with attribution |
+
+## Workflow templates
+
+`data/workflow/` carries the templated-question banks for the
+workflow generators (appointment prep, prior-auth, specialty-visit
+questions, EMS run-type checklists). Files are project-author
+original content, MIT-licensed.
+
+## Pre-rendered per-tile copy
+
+`data/tool-copy/` carries the hand-authored lede + intro markdown
+for the 121 tiles that have bespoke pre-rendered copy on their
+`/tools/<id>/` page (see `scripts/build-tool-pages.mjs`). Each
+file is project-author original content.
+
+## MPFS (vestigial; not consumed at runtime)
+
+`data/mpfs/` is a vestige of the v1-v8 pricing-tile era. The MPFS
+shards and GPCI / conversion-factor files still ship from disk so
+the build-data pipeline does not need a special-case for empty
+input, but no tile consumes them at runtime. They will be removed
+in a future cleanup pass.
+
+## Synonyms
+
+`data/synonyms.json` carries the hand-curated phrase → tile map
+that drives the hero search (spec-v7 §3.2). It is consumed by
+`lib/synonyms.js` at boot. Project-author original, MIT-licensed.
+
+## Retired datasets
+
+The following data folders were bundled in v1-v8 and have been
+retired:
+
+- **Code lookups (spec-v29 wave 29-2 §2.1):** `icd10cm/`, `hcpcs/`,
+  `cpt-summaries/`, `ndc/`, `crosswalks/` (POS, modifier, revenue,
+  CARC, RARC), `tob-codes/`, `nubc-special-codes/`, `drg/`, `apc/`,
+  `icd10-pcs/`, `rxnorm/`, `npi/`.
+- **Patient-administrative infographics (spec-v29 wave 29-2 §2.2):**
+  `cms-1500-fields/`, `ub04-fields/`, `eob-glossary/`, plus the
+  `lib/decoder.js` regex pipeline.
+- **Field-medicine reference cards (spec-v29 wave 29-2 §2.3):**
+  `aha-reference/`, `cpr-aha-numeric/`, `tccc/`, `toxidromes/`,
+  `dot-erg/`, `niosh-pg/`, `environmental/` (hypothermia / heat-
+  illness staging tables).
+- **Lab and pharmacy reference tables (spec-v29 wave 29-2 §2.4):**
+  `lab-ranges-adult/`, `lab-ranges-peds/`,
+  `therapeutic-drug-levels/`, `tox-levels/`, `iv-to-po/`,
+  plus the `data/clinical/lab-ranges.json` and
+  `data/clinical/ismp-high-alert.json` files inside the clinical
+  folder.
+- **Pricing / coverage / enforcement (spec-v10 + spec-v29):**
+  `mpfs/`-driven Medicare Fee Lookup, `nadac/`, `ncci/`, `mue/`,
+  `coverage/` (LCD / NCD), `enforcement/` (OIG exclusions,
+  Medicare opt-out), `hospital-prices/`, `no-surprises/`,
+  `state-rights/`. Some folders linger on disk but no tile
+  reads them.
+- **Eligibility & benefits (spec-v29 wave 29-2 §2.2):**
+  `medicaid-state/`, `va-eligibility/`, `tricare-plans/`,
+  `ihs-eligibility/`.
+- **Other (spec-v29 wave 29-2):** Beers Criteria
+  (`data/clinical/beers.json`), pediatric vitals
+  (`data/clinical/pediatric-vitals.json`), ASA status
+  (`data/clinical/asa-status.json`), Mallampati class
+  (`data/clinical/mallampati.json`).
+
+Every retirement is recorded in `CHANGELOG.md` under the
+appropriate spec-v29 wave 29-2 entry.
 
 ## Manifests
 
-Each dataset folder contains a `manifest.json` with at minimum: source URL,
-fetch date, source SHA-256, record count, and per-shard SHA-256 hashes. The
-runtime verifies the manifest hash on first read of any shard.
-
-## v4 datasets (added by spec-v4)
-
-The full source catalog for the v4 datasets lives in
-[scripts/sources.md](../scripts/sources.md). A per-dataset summary:
-
-- **CMS public files**: hcpcs-modifiers, pos-codes, drg, apc, icd10-pcs,
-  dmepos, clfs, asp, asc, wage-index, gpci, cms-deductibles, irmaa,
-  aca-thresholds, cms-1500-fields, ub04-fields.
-- **HHS / IRS / SSA**: hsa-fsa-limits (IRS), fpl (HHS / ASPE),
-  irs-mileage (IRS).
-- **NUBC structural facts (numeric only)**: tob-codes, revenue-codes,
-  nubc-special-codes.
-- **NLM**: rxnorm, lab-ranges-adult / -peds (MedlinePlus), tox-levels
-  (WISER), therapeutic-drug-levels (DailyMed).
-- **FDA labels**: abx-renal (DailyMed subset), vasopressor-doses,
-  iv-to-po, drug-recalls, vaccine-lot-recalls.
-- **CDC**: acip-routine-adult, acip-routine-child, acip-catchup,
-  yellow-book, tetanus, rabies-pep, bbp-exposure, tb-tst-igra,
-  sti-screening, mme-factors.
-- **DOJ / DEA / NUCC / DOT / NIOSH / VA / DHA / IHS**: dea-rules,
-  nucc-taxonomy, dot-erg, niosh-pg, va-eligibility, tricare-plans,
-  ihs-eligibility.
-- **AHA / Ashton / CoTCCC (numeric facts with attribution)**:
-  cpr-aha-numeric, benzo-equiv, tccc.
-- **State Medicaid agencies (numeric thresholds only)**: medicaid-state.
-- **Project-author original (MIT)**: cpt-summaries (existing),
-  steroid-equiv, tpn-rules, eob-glossary.
-
-Every v4 dataset's manifest declares its `status` (`public-domain`,
-`government-work`, `numeric-facts-with-attribution`, or `mit-original`)
-along with `agency`, `sourceUrl`, `cadence`, `fetchDate`, `recordCount`,
-and per-shard SHA-256.
+Each bundled dataset folder contains a `manifest.json` with the
+fields listed in the header above. The runtime verifier
+(`scripts/verify-integrity.mjs`) walks `data/` and re-hashes every
+shard against its manifest entry on every `npm run test`.

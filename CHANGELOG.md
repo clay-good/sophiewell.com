@@ -6,6 +6,40 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Changed (spec-v29 post-close: docs/data-sources.md rewritten around the v29-close bundled data)
+
+No code change; no catalog change. Rewrites `docs/data-sources.md`
+so the doc describes the data that actually ships with the page
+at v29 close rather than the v1-v8 build-data catalog.
+
+- Surviving datasets documented one section at a time: clinical
+  reference data (formulas only), field-medicine datasets
+  (CDC Field Triage, START / JumpSTART, FDA prehospital meds,
+  EMS run-type checklists), public-health decision trees
+  (tetanus, rabies PEP, BBP, TB, STI), medication / infusion
+  datasets (abx-renal, benzo-equiv, steroid-equiv, MME factors,
+  TPN rules, vasopressor doses), workflow templates, and the
+  pre-rendered per-tile copy under `data/tool-copy/`.
+- `data/synonyms.json` documented as the spec-v7 §3.2
+  synonym map consumed by `lib/synonyms.js`.
+- `data/mpfs/` flagged as vestigial: the shards still ship from
+  disk but no tile reads them; pencilled in for a future
+  cleanup pass.
+- Explicit "Retired datasets" section enumerates every folder
+  that was bundled in v1-v8 and was removed in the spec-v10
+  patient-artifact retirement or the spec-v29 wave 29-2 prune
+  (code lookups, patient-administrative infographics, field-
+  medicine reference cards, lab and pharmacy reference tables,
+  pricing / coverage / enforcement, eligibility / benefits,
+  and the four single-class Group G clinical references).
+  Every entry cross-references the spec-v29 §2 sub-section
+  that retired it.
+- Manifests section retained: every surviving folder still ships
+  a manifest with the fields listed at the top, verified on
+  every `npm run test` by `scripts/verify-integrity.mjs`.
+
+Lint + 1159 unit tests + sbom + build clean.
+
 ### Changed (spec-v29 post-close: docs/architecture.md sync to v29-close runtime)
 
 Brings `docs/architecture.md` into agreement with the v29-close
