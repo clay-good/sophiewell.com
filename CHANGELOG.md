@@ -6,6 +6,57 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v29 wave 29-3d — timers / workflow: NEWS2-escalation, restraint, sepsis bundle, code blue, MTP, device-day, Bristol+girth)
+
+Wave 29-3d ships all seven timer / workflow bedside tiles in one
+batch. Each tile ships under the spec-v11 audit floor + spec-v12
+sec 5 13-point per-tile shipping contract and is tagged with the
+spec-v29 sec 5 nursing-subspecialty specialties.
+
+- `ews-escalation` (RCP NEWS2 2017): aggregate-score -> next
+  observations cadence (12 h / 4-6 h / 1 h / continuous) with
+  single-parameter 3 trigger and computed nextDueIso from input
+  vitals timestamp. Tagged `nursing-floor`, `nursing-icu`,
+  `nursing-general`, `internal-medicine`.
+- `restraint-timer` (CMS 42 CFR sec 482.13(e), Tag A-0178+):
+  violent / self-destructive renewal cadence q4 / q2 / q1 h by
+  age band, q15 min nursing reassessment, 1 h physician / LIP
+  face-to-face; non-violent medical-surgical calendar-day
+  renewal. Tagged `nursing-floor`, `nursing-icu`,
+  `nursing-general`, `psychiatry`, `quality-safety`.
+- `sepsis-bundle-clock` (SSC 2021 / CMS SEP-1 2024 + Nguyen
+  2004): hour-1 elements (lactate, cultures, antibiotics, 30
+  mL/kg crystalloid) on-time vs late; repeat lactate 6 h band;
+  computed lactate clearance %. Tagged `nursing-er`,
+  `nursing-icu`, `nursing-floor`, `nursing-general`,
+  `critical-care`, `emergency-medicine`, `infectious-disease`.
+- `code-blue-clock` (AHA 2020 ACLS): minutes-from-start, next
+  2-min rhythm check, next 4-min epi (q3-5 midpoint), last
+  shock J, cycle count, ETCO2 ROSC target banner. Tagged
+  `nursing-icu`, `nursing-er`, `nursing-floor`,
+  `nursing-general`, `critical-care`, `emergency-medicine`.
+- `mtp-tracker` (Holcomb 2015 PROPPR + ATLS 2018): PRBC:FFP:Plt
+  ratio vs 1:1:1; next-product suggestion; cumulative units;
+  cryoprecipitate cadence (1 pooled dose / 6 PRBC). Tagged
+  `nursing-er`, `nursing-icu`, `nursing-or`, `nursing-general`,
+  `trauma-surgery`, `critical-care`, `anesthesiology`.
+- `device-day-counter` (CDC NHSN 2024 + SHEA Lo 2014): Foley /
+  central-line device-days from insertion timestamp; remove-
+  today banner when no daily-removal indication is checked.
+  Tagged `nursing-floor`, `nursing-icu`, `nursing-general`,
+  `infectious-disease`, `quality-safety`.
+- `bristol-girth` (Lewis 1997 + ANA 2013 + SCCM 2013): Bristol
+  type 1-7 -> constipation / normal / soft / diarrhoea category;
+  optional girth-trend cm/h with the SCCM 2013 abdominal-
+  compartment-syndrome escalation banner at >=2 cm/h or >20 cm
+  over <=24 h. Tagged `nursing-floor`, `nursing-icu`,
+  `nursing-general`, `gastroenterology`.
+
+Wave 29-3e (vent-sbt-peep) is the final sub-wave per spec-v29
+sec 7.3.
+
+Catalog 279 -> 286 at v29 wave 29-3d close.
+
 ### Added (spec-v29 wave 29-3c — bedside math: insulin correction, electrolyte ladder, CRRT dose, ECMO titration)
 
 Wave 29-3c ships all four bedside-math tiles in one batch. Each
