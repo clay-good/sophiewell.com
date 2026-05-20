@@ -6,6 +6,39 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v29 wave 29-3a (partial) — nurse-bedside scoring: Braden, Morse, Hendrich II, CAM)
+
+First wave 29-3a sub-batch (4 of 13 tiles). Each tile ships under
+the spec-v11 audit floor + spec-v12 §5 13-point per-tile shipping
+contract and is tagged with the spec-v29 §5 nursing-subspecialty
+specialties (nursing-floor, nursing-icu, nursing-general,
+geriatrics, wound-care as applicable). The remaining wave 29-3a
+tiles (rass, bps, cpot, icdsc, cam-icu — already present, audit
+upgrades pending; mnihss, ich-score, hunt-hess-wfns, aldrete-padss
+— new) are deferred to follow-on commits.
+
+- `braden` (Bergstrom 1987 pressure-injury risk): six ordinal
+  items; total 6-23; bands >=19 not at risk, 15-18 mild, 13-14
+  moderate, 10-12 high, <=9 very high. Tagged `nursing-floor`,
+  `nursing-icu`, `nursing-general`, `geriatrics`, `wound-care`.
+- `morse-falls` (Morse 1989): six weighted items (history 25,
+  secondary diagnosis 15, ambulatory aid 0/15/30, IV or
+  heparin lock 20, gait 0/10/20, mental status 0/15); bands
+  0-24 low, 25-50 moderate, >=51 high. Tagged `nursing-floor`,
+  `nursing-general`, `geriatrics`.
+- `hendrich-ii` (Hendrich 2003): seven binary risk factors
+  (confusion 4, depression 2, altered elimination 1, dizziness
+  1, male 1, antiepileptic 2, benzodiazepine 1) plus
+  get-up-and-go test (0/1/3/4); validated cutoff >=5 -> high
+  fall risk. Tagged `nursing-floor`, `nursing-general`,
+  `geriatrics`.
+- `cam` (Inouye 1990, non-ICU): four features; positive when
+  features 1 + 2 AND (3 OR 4). Tagged `nursing-floor`,
+  `nursing-general`, `geriatrics`, `internal-medicine`,
+  `emergency-medicine`.
+
+Catalog 263 -> 267 at v29 wave 29-3a (partial) close.
+
 ### Added (spec-v29 wave 29-1 — nurse-first pivot: spec-doc landing + deprecation banners)
 
 First v29 wave. The spec lands the **nurse-first pivot**: the

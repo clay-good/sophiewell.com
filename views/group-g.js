@@ -3536,4 +3536,143 @@ export const renderers = {
     items.forEach(([, id]) => document.getElementById(id).addEventListener('input', run));
     run();
   },
+
+  // spec-v29 §4.1.2 wave 29-3a: Braden Scale (Bergstrom 1987).
+  braden(root) {
+    const items = [
+      ['Sensory perception (1 completely limited - 4 no impairment)', 'br-sens', 4],
+      ['Moisture (1 constantly moist - 4 rarely moist)', 'br-moist', 4],
+      ['Activity (1 bedfast - 4 walks frequently)', 'br-act', 4],
+      ['Mobility (1 completely immobile - 4 no limitation)', 'br-mob', 4],
+      ['Nutrition (1 very poor - 4 excellent)', 'br-nutr', 4],
+      ['Friction and shear (1 problem - 3 no apparent problem)', 'br-fric', 3],
+    ];
+    for (const [l, id, max] of items) root.appendChild(rangeField(l, id, 1, max, max));
+    const o = out(); root.appendChild(o);
+    const run = () => safe(o, () => {
+      const r = S4.braden({
+        sensory: nv('br-sens'), moisture: nv('br-moist'), activity: nv('br-act'),
+        mobility: nv('br-mob'), nutrition: nv('br-nutr'), friction: nv('br-fric'),
+      });
+      o.appendChild(el('h2', { text: `Braden ${r.score} (${r.band})` }));
+      o.appendChild(el('p', { text: r.text }));
+    });
+    items.forEach(([, id]) => document.getElementById(id).addEventListener('input', run));
+    run();
+  },
+
+  // spec-v29 §4.2.1 wave 29-3a: Morse Fall Scale (Morse 1989).
+  'morse-falls'(root) {
+    root.appendChild(checkbox('History of falling (within 3 months) +25', 'mf-hist'));
+    root.appendChild(checkbox('Secondary diagnosis +15', 'mf-sec'));
+    const aidWrap = el('p', {}, [
+      el('label', { for: 'mf-aid', text: 'Ambulatory aid' }), el('br'),
+      el('select', { id: 'mf-aid' }, [
+        el('option', { value: 'none', text: 'None / bed rest / nurse assist (0)' }),
+        el('option', { value: 'crutches-cane-walker', text: 'Crutches / cane / walker (+15)' }),
+        el('option', { value: 'furniture', text: 'Furniture (+30)' }),
+      ]),
+    ]);
+    root.appendChild(aidWrap);
+    root.appendChild(checkbox('IV / heparin lock +20', 'mf-iv'));
+    const gaitWrap = el('p', {}, [
+      el('label', { for: 'mf-gait', text: 'Gait' }), el('br'),
+      el('select', { id: 'mf-gait' }, [
+        el('option', { value: 'normal', text: 'Normal / bed rest / wheelchair (0)' }),
+        el('option', { value: 'weak', text: 'Weak (+10)' }),
+        el('option', { value: 'impaired', text: 'Impaired (+20)' }),
+      ]),
+    ]);
+    root.appendChild(gaitWrap);
+    const msWrap = el('p', {}, [
+      el('label', { for: 'mf-ms', text: 'Mental status' }), el('br'),
+      el('select', { id: 'mf-ms' }, [
+        el('option', { value: 'oriented', text: 'Oriented to own ability (0)' }),
+        el('option', { value: 'forgets-limitations', text: 'Forgets limitations (+15)' }),
+      ]),
+    ]);
+    root.appendChild(msWrap);
+    const o = out(); root.appendChild(o);
+    const run = () => safe(o, () => {
+      const r = S4.morseFalls({
+        history: checked('mf-hist'),
+        secondaryDx: checked('mf-sec'),
+        ambulatoryAid: document.getElementById('mf-aid').value,
+        ivOrLock: checked('mf-iv'),
+        gait: document.getElementById('mf-gait').value,
+        mentalStatus: document.getElementById('mf-ms').value,
+      });
+      o.appendChild(el('h2', { text: `Morse ${r.score} (${r.band})` }));
+      o.appendChild(el('p', { text: r.text }));
+    });
+    const watchIds = ['mf-hist', 'mf-sec', 'mf-aid', 'mf-iv', 'mf-gait', 'mf-ms'];
+    watchIds.forEach((id) => document.getElementById(id).addEventListener('change', run));
+    run();
+  },
+
+  // spec-v29 §4.2.2 wave 29-3a: Hendrich II Fall Risk (Hendrich 2003).
+  'hendrich-ii'(root) {
+    const flags = [
+      ['Confusion / disorientation / impulsivity +4', 'hii-conf'],
+      ['Symptomatic depression +2', 'hii-dep'],
+      ['Altered elimination +1', 'hii-elim'],
+      ['Dizziness / vertigo +1', 'hii-dizz'],
+      ['Male +1', 'hii-male'],
+      ['Prescribed antiepileptic +2', 'hii-aed'],
+      ['Prescribed benzodiazepine +1', 'hii-bz'],
+    ];
+    for (const [l, id] of flags) root.appendChild(checkbox(l, id));
+    const gugWrap = el('p', {}, [
+      el('label', { for: 'hii-gug', text: 'Get-up-and-go test' }), el('br'),
+      el('select', { id: 'hii-gug' }, [
+        el('option', { value: 'able', text: 'Able to rise in single movement (0)' }),
+        el('option', { value: 'pushes-up', text: 'Pushes up successfully in one attempt (+1)' }),
+        el('option', { value: 'needs-help', text: 'Multiple attempts but successful (+3)' }),
+        el('option', { value: 'unable', text: 'Unable to rise without assistance (+4)' }),
+      ]),
+    ]);
+    root.appendChild(gugWrap);
+    const o = out(); root.appendChild(o);
+    const run = () => safe(o, () => {
+      const r = S4.hendrichII({
+        confusion: checked('hii-conf'),
+        depression: checked('hii-dep'),
+        alteredElim: checked('hii-elim'),
+        dizziness: checked('hii-dizz'),
+        male: checked('hii-male'),
+        antiepileptic: checked('hii-aed'),
+        benzodiazepine: checked('hii-bz'),
+        getUpAndGo: document.getElementById('hii-gug').value,
+      });
+      o.appendChild(el('h2', { text: `Hendrich II ${r.score} (${r.band})` }));
+      o.appendChild(el('p', { text: r.text }));
+    });
+    flags.forEach(([, id]) => document.getElementById(id).addEventListener('change', run));
+    document.getElementById('hii-gug').addEventListener('change', run);
+    run();
+  },
+
+  // spec-v29 §4.4.1 wave 29-3a: CAM (non-ICU) (Inouye 1990).
+  cam(root) {
+    const items = [
+      ['Feature 1: acute onset and / or fluctuating course', 'cam-f1'],
+      ['Feature 2: inattention', 'cam-f2'],
+      ['Feature 3: disorganized thinking', 'cam-f3'],
+      ['Feature 4: altered level of consciousness', 'cam-f4'],
+    ];
+    for (const [l, id] of items) root.appendChild(checkbox(l, id));
+    const o = out(); root.appendChild(o);
+    const run = () => safe(o, () => {
+      const r = S4.cam({
+        acuteFluctuating: checked('cam-f1'),
+        inattention: checked('cam-f2'),
+        disorganizedThinking: checked('cam-f3'),
+        alteredLoc: checked('cam-f4'),
+      });
+      o.appendChild(el('h2', { text: r.band }));
+      o.appendChild(el('p', { text: r.text }));
+    });
+    items.forEach(([, id]) => document.getElementById(id).addEventListener('change', run));
+    run();
+  },
 };
