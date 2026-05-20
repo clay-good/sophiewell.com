@@ -154,8 +154,8 @@ test('spec-v8 §3.2 / §5.2: no Pin button and no #pinned-section render on the 
 test('spec-v8 §5.3: legacy #p=<id> bookmarks silently resolve to the home view', async ({ page }) => {
   await page.goto('/#p=bmi,egfr,icd10');
   // No tile route fires; we land on the home view with the prompt hero visible.
-  // The browse disclosure defaults closed per spec-v8 §4.6, so assert on the
-  // hero rather than the tile grid.
+  // Asserting on the hero (always present on home) keeps this test agnostic
+  // to the browse-disclosure default.
   await expect(page.locator('#hero-search')).toBeVisible();
   await expect(page.locator('#pinned-section')).toHaveCount(0);
 });

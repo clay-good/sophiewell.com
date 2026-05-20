@@ -629,13 +629,14 @@ function wireFilters() {
     });
   }
 
-  // spec-v7 §3.4 + spec-v8 §4.6: disclosure defaults closed in static
-  // markup. Toggle persists in the URL hash as b=open when diverged;
-  // collapsed is the default and emits no key.
+  // spec-v7 §3.4: disclosure defaults **open** in static markup so the
+  // catalog is visible on first paint. Toggle persists in the URL hash
+  // as b=closed when the user diverges from the open default; the open
+  // state is the default and emits no key.
   const disclosure = document.getElementById('browse-disclosure');
   if (disclosure) {
     disclosure.addEventListener('toggle', () => {
-      const next = disclosure.open ? 'open' : '';
+      const next = disclosure.open ? '' : 'closed';
       window.history.replaceState(null, '', patchHash({ browse: next }));
     });
   }
@@ -749,8 +750,9 @@ function restoreHome() {
   const hero = document.getElementById('hero-search');
   if (hero) hero.value = filterState.query;
   // spec-v7 §3.4: restore disclosure state from the current hash on home return.
+  // Default is **open** (matches static markup); only b=closed collapses.
   const disclosure = document.getElementById('browse-disclosure');
-  if (disclosure) disclosure.open = parseHash(window.location.hash).browse === 'open';
+  if (disclosure) disclosure.open = parseHash(window.location.hash).browse !== 'closed';
   // spec-v7 §3.4: keep the visible tile count in sync after a clone restore.
   const countNode = document.getElementById('browse-tile-count');
   if (countNode) countNode.textContent = String(UTILITIES.length);
@@ -1272,11 +1274,10 @@ function boot() {
     const group = document.querySelector('.toggle-group[data-filter="audience"]');
     if (group) syncToggleGroupState(group, initial.audience);
   }
-  // spec-v7 §3.4 + spec-v8 §4.6: initial disclosure state from URL
-  // hash. The static markup ships **closed** (committed in spec-v8);
-  // an explicit b=open in the hash expands the catalog so deep links
-  // and clinician bookmarks that previously relied on the open
-  // default continue to land on the grid.
+  // spec-v7 §3.4: initial disclosure state from URL hash. The static
+  // markup ships **open** so the catalog is visible on first paint;
+  // an explicit b=closed in the hash collapses it for deep links that
+  // want to narrow focus, and b=open is the redundant deep-link form.
   const disclosure = document.getElementById('browse-disclosure');
   if (disclosure) {
     if (initial.browse === 'open') disclosure.open = true;

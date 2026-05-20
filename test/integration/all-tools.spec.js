@@ -64,8 +64,8 @@ test('every tool route exposes a working back button to home', async ({ page }) 
     const back = page.locator('.breadcrumb-back');
     await expect(back, `back missing on #${id}`).toBeVisible();
     await back.click();
-    // spec-v8 §4.6: tile grid defaults closed; assert on the hero
-    // (always visible on home) instead of the disclosure content.
+    // Assert on the hero (always visible on home) to stay agnostic
+    // to the browse-disclosure default.
     await expect(page.locator('#hero-search')).toBeVisible();
   }
 });

@@ -590,13 +590,14 @@
 
           <p id="empty-state" class="empty-state muted" hidden>No tools match the current filter.</p>
 
-          <!-- spec-v7 section 3.4: collapsed tile-grid disclosure. The 178
-               tiles are hidden behind a single open/close affordance so the
-               patient front door is not buried. Disclosure state persists
-               in the URL hash via b=open or b=closed (no localStorage). -->
-          <details id="browse-disclosure" class="browse-disclosure">
+          <!-- spec-v7 section 3.4: tile-grid disclosure. Ships **open** so
+               first-visit visitors see the catalog without a click; the
+               affordance still collapses on demand for users who want to
+               narrow focus to the patient front door. Disclosure state
+               persists in the URL hash via b=open or b=closed (no localStorage). -->
+          <details id="browse-disclosure" class="browse-disclosure" open>
             <summary class="browse-summary">
-              <span class="browse-summary-label">Browse all <span id="browse-tile-count">178</span> tools</span>
+              <span class="browse-summary-label">Browse all <span id="browse-tile-count">230</span> tools</span>
             </summary>
           <div id="tile-grid">
 

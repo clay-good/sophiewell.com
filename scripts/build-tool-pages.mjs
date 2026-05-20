@@ -281,7 +281,7 @@ ${related.map((r) => `          <li><a href="${SITE}/tools/${r.id}/">${esc(r.nam
     : null;
 
   const whatThisIsText = copy?.whatThisIs
-    || `${tile.name} is one of 178 deterministic tools in Sophie Well's ${groupLabel} group. ${desc}`;
+    || `${tile.name} is one of 230 deterministic tools in Sophie Well's ${groupLabel} group. ${desc}`;
   const whenToUseText = copy?.whenToUse
     || `Use this tool when you need a quick, citable reference. Every calculation runs entirely in your browser - no inputs leave your device, no account is required, no AI is involved. The site enforces a strict Content Security Policy and ships no analytics or third-party CDN.`;
 

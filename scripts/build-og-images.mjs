@@ -155,7 +155,7 @@ async function main() {
   // Home card.
   const homePng = composeCard({
     eyebrow: 'SOPHIE WELL',
-    title:   '178 FREE HEALTHCARE TOOLS',
+    title:   '230 FREE HEALTHCARE TOOLS',
     tagline: TAGLINE,
     footer:  FOOTER,
   });
