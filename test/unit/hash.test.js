@@ -2,9 +2,9 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { parseHash, buildHash } from '../../lib/hash.js';
 
-test('parseHash: empty hash', () => {
+test('parseHash: empty hash defaults audience to "nurse" (spec-v29 §5.3)', () => {
   const r = parseHash('');
-  assert.deepEqual(r, { route: '', sub: '', state: {}, audience: 'all', browse: '' });
+  assert.deepEqual(r, { route: '', sub: '', state: {}, audience: 'nurse', browse: '' });
 });
 
 test('parseHash: browse-disclosure state (spec-v7 section 3.4)', () => {
@@ -42,8 +42,12 @@ test('buildHash: audience round-trip', () => {
   assert.equal(parseHash(h).audience, 'field');
 });
 
-test('buildHash: audience=all omits the key', () => {
-  assert.equal(buildHash({ route: 'bmi', audience: 'all' }), '#bmi');
+test('buildHash: audience=nurse (the default) omits the key (spec-v29 §5.3)', () => {
+  assert.equal(buildHash({ route: 'bmi', audience: 'nurse' }), '#bmi');
+});
+
+test('buildHash: audience=all is non-default and emits a=all (spec-v29 §5.3)', () => {
+  assert.equal(buildHash({ route: 'bmi', audience: 'all' }), '#bmi&a=all');
 });
 
 test('parseHash: route + sub', () => {

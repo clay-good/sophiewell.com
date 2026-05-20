@@ -570,15 +570,18 @@
             </p>
           </div>
 
-          <!-- spec-v6 §4.2.2: audience filter chips. Default All preserves
-               the current grid. URL hash persists the selection. -->
+          <!-- spec-v6 §4.2.2 + spec-v29 §5.3: audience filter chips. Nurse
+               is the default-selected chip on first visit (nurse-first pivot);
+               URL hash persists divergence from that default. -->
           <div class="audience-chips toggle-group" data-filter="audience" role="group" aria-label="Filter by audience">
-            <button type="button" class="toggle is-active" data-value="all" aria-pressed="true">All</button>
-            <button type="button" class="toggle" data-value="patients" aria-pressed="false">Patient</button>
-            <button type="button" class="toggle" data-value="billers" aria-pressed="false">Biller and Coder</button>
-            <button type="button" class="toggle" data-value="clinicians" aria-pressed="false">Nurse and Clinician</button>
-            <button type="button" class="toggle" data-value="field" aria-pressed="false">EMS and Field</button>
-            <button type="button" class="toggle" data-value="educators" aria-pressed="false">Educator</button>
+            <button type="button" class="toggle" data-value="all" aria-pressed="false">All</button>
+            <button type="button" class="toggle is-active" data-value="nurse" aria-pressed="true">Nurse</button>
+            <button type="button" class="toggle" data-value="doctor" aria-pressed="false">Doctor</button>
+            <button type="button" class="toggle" data-value="pharmacist" aria-pressed="false">Pharmacist</button>
+            <button type="button" class="toggle" data-value="rt" aria-pressed="false">RT</button>
+            <button type="button" class="toggle" data-value="ems" aria-pressed="false">EMS</button>
+            <button type="button" class="toggle" data-value="biller-coder" aria-pressed="false">Biller-Coder</button>
+            <button type="button" class="toggle" data-value="educator" aria-pressed="false">Educator</button>
           </div>
 
           <!-- spec-v7 section 3.2: synonym-routed prompt match breadcrumb.

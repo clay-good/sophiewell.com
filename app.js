@@ -433,17 +433,55 @@ function clear(node) {
 
 // ----- Filter state --------------------------------------------------------
 
+// spec-v29 §5.3: Nurse is the default-selected audience chip on first visit
+// (nurse-first pivot). URL-hash persists divergence from this default.
 const filterState = {
-  audience: 'all',
+  audience: 'nurse',
   group: 'all',
   query: '',
+};
+
+// spec-v29 §5.3: each chip filters the grid by the union of tile `audiences`
+// and `specialties` (the closed vocabulary from spec-v11 §4.3 + spec-v29 §5.1).
+// Tile audiences ('clinicians', 'patients', 'billers', 'field', 'educators')
+// remain the back-end taxonomy used by data/synonyms.json and the prompt
+// ranker; the chip values are a separate UI taxonomy that resolves to a
+// predicate over (audiences, specialties).
+const CHIP_MATCHERS = {
+  all: () => true,
+  nurse: (aud, spec) => aud.includes('clinicians') || spec.some((s) => s.startsWith('nursing-')),
+  doctor: (aud) => aud.includes('clinicians'),
+  pharmacist: (aud, spec) => spec.includes('pharmacy'),
+  rt: (aud, spec) => spec.includes('respiratory-therapy') || spec.includes('pulmonology'),
+  ems: (aud, spec) => aud.includes('field') || spec.includes('emergency-medicine'),
+  'biller-coder': (aud) => aud.includes('billers'),
+  educator: (aud) => aud.includes('educators'),
+};
+
+// spec-v29 §5.3: chips and back-end audience tokens are decoupled, but the
+// prompt-ranker and synonym matcher still want a single audience hint per
+// query. Map the active chip to its closest back-end audience tag.
+const CHIP_TO_AUDIENCE_HINT = {
+  all: 'all',
+  nurse: 'clinicians',
+  doctor: 'clinicians',
+  pharmacist: 'clinicians',
+  rt: 'clinicians',
+  ems: 'field',
+  'biller-coder': 'billers',
+  educator: 'educators',
 };
 
 function tileMatches(tile) {
   const group = tile.getAttribute('data-group') || '';
   const audiences = (tile.getAttribute('data-audiences') || '').split(/\s+/).filter(Boolean);
   if (filterState.group !== 'all' && group !== filterState.group) return false;
-  if (filterState.audience !== 'all' && !audiences.includes(filterState.audience)) return false;
+  const matcher = CHIP_MATCHERS[filterState.audience] || CHIP_MATCHERS.all;
+  if (matcher !== CHIP_MATCHERS.all) {
+    const id = tile.getAttribute('data-tool') || '';
+    const specialties = (META[id] && META[id].specialties) || [];
+    if (!matcher(audiences, specialties)) return false;
+  }
   if (filterState.query) {
     const q = filterState.query.toLowerCase();
     const text = (tile.textContent || '').toLowerCase();
@@ -637,8 +675,12 @@ function tileCorpus() {
   return TILE_CORPUS_CACHE;
 }
 
+function audienceHint() {
+  return CHIP_TO_AUDIENCE_HINT[filterState.audience] || 'all';
+}
+
 function resolveQueryToTileId(query) {
-  const r = resolvePrompt(query, tileCorpus(), SYNONYM_ENTRIES, filterState.audience);
+  const r = resolvePrompt(query, tileCorpus(), SYNONYM_ENTRIES, audienceHint());
   if (r && UTIL_BY_ID && UTIL_BY_ID.get(r.tileId)) return r.tileId;
   // Defensive fallback: the legacy fuzzy ranker covers cases the v8
   // resolver intentionally rejects (e.g., score below threshold but
@@ -652,7 +694,7 @@ function updateSynonymHint(rawQuery) {
   if (!hint) return;
   const q = String(rawQuery || '').trim();
   if (!q) { hint.hidden = true; clear(hint); return; }
-  const m = matchSynonym(q, SYNONYM_ENTRIES, filterState.audience);
+  const m = matchSynonym(q, SYNONYM_ENTRIES, audienceHint());
   if (!m || !UTIL_BY_ID || !UTIL_BY_ID.get(m.tile)) {
     hint.hidden = true;
     clear(hint);
@@ -1221,9 +1263,11 @@ function registerServiceWorker() {
 
 function boot() {
   captureHomeSnapshot();
-  // spec-v6 §4.2.2: initial audience chip from URL hash.
+  // spec-v6 §4.2.2 + spec-v29 §5.3: initial audience chip from URL hash;
+  // 'nurse' is the on-first-visit default. The static markup ships Nurse
+  // as is-active, so only sync when the hash diverges from the default.
   const initial = parseHash(window.location.hash);
-  if (initial.audience && initial.audience !== 'all') {
+  if (initial.audience && initial.audience !== filterState.audience) {
     filterState.audience = initial.audience;
     const group = document.querySelector('.toggle-group[data-filter="audience"]');
     if (group) syncToggleGroupState(group, initial.audience);

@@ -6,6 +6,67 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Changed (spec-v29 §5.3 — audience-chip taxonomy revised; Nurse is the on-first-visit default)
+
+Closes the final spec-v29 acceptance-criteria item. The audience
+chip set on the home view is revised from the v6/v28 taxonomy
+(`All / Patient / Biller and Coder / Nurse and Clinician / EMS
+and Field / Educator`) to the v29 nurse-first taxonomy:
+
+```
+All  /  Nurse  /  Doctor  /  Pharmacist  /  RT  /  EMS  /  Biller-Coder  /  Educator
+```
+
+Nurse is the *default-selected* chip on first visit, preserved
+across visits via URL hash only (no localStorage; per spec-v29
+§5.3 this is the only user-preference signal on the site).
+
+Surfaces touched:
+- `index.html`: chip set replaced; Nurse carries `is-active` +
+  `aria-pressed="true"` and the rest start inert.
+- `app.js`: `filterState.audience` initial value is `'nurse'`.
+  New `CHIP_MATCHERS` table maps each chip value to a predicate
+  over `(tile.audiences, tile.specialties)` (spec-v29 §5.3:
+  "Each chip filters the grid by the union of tile `audiences`
+  and `specialties`."). The Nurse chip matches tiles with a
+  `nursing-*` specialty tag (spec-v29 §5.1) *or* the legacy
+  `clinicians` audience; RT matches `respiratory-therapy` or
+  `pulmonology` specialty; Pharmacist matches `pharmacy`
+  specialty; EMS matches the `field` audience or
+  `emergency-medicine` specialty; Doctor / Biller-Coder /
+  Educator map to the existing `clinicians` / `billers` /
+  `educators` audience tokens. `tileMatches` looks up
+  specialties from `META[id].specialties` via the tile's
+  `data-tool` attribute.
+- `app.js`: new `CHIP_TO_AUDIENCE_HINT` table maps the active
+  chip to its closest legacy audience tag for the synonym
+  matcher and the prompt ranker; this keeps
+  `data/synonyms.json` audience-hint matching unchanged while
+  the UI taxonomy is decoupled.
+- `lib/hash.js`: the default audience returned by `parseHash`
+  is `'nurse'`; `buildHash` omits the `a=` segment when the
+  audience equals the default. The literal `'all'` is now a
+  non-default value (`buildHash({ audience: 'all' })` emits
+  `a=all`).
+- `test/unit/hash.test.js`: empty-hash and round-trip tests
+  updated for the new default. New test asserts
+  `audience=all` now emits `a=all` (it is no longer the
+  default).
+
+Old bookmarks of the form `#a=patients` / `#a=clinicians` /
+`#a=field` / `#a=billers` / `#a=educators` continue to round-
+trip through the parser and the toggle-group sync logic; they
+just do not match any of the new chip predicates, so the grid
+falls back to the equivalent of `all` for those legacy tokens.
+Per spec-v29 there is no backwards-compatibility shim for the
+chip tokens themselves.
+
+This closes the v29 acceptance criteria: spec-v29 is fully
+shipped. Wave 29-1 (spec landing + deprecation banners),
+wave 29-2 (47 tile deletions across Groups A, C/L, I, K/O, G),
+wave 29-3 (20 new nursing-shift tiles), and the §5.3 audience-
+chip update are all on `main`.
+
 ### Removed (spec-v29 wave 29-2 Group G — 5 single-class clinical reference tiles)
 
 Fifth and final wave 29-2 deletion PR (one per group letter per
