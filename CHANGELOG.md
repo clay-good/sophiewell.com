@@ -6,6 +6,54 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v29 wave 29-3c — bedside math: insulin correction, electrolyte ladder, CRRT dose, ECMO titration)
+
+Wave 29-3c ships all four bedside-math tiles in one batch. Each
+tile ships under the spec-v11 audit floor + spec-v12 sec 5
+13-point per-tile shipping contract and is tagged with the
+spec-v29 sec 5 nursing-subspecialty specialties.
+
+- `insulin-correction` (ADA 2024 Standards of Care ch. 16): ISF
+  provided directly or derived from total daily dose using the
+  1800-rule (rapid-acting analogues) or 1500-rule (regular
+  insulin); correction units = max(0, (currentBG - targetBG) /
+  ISF); meal coverage = carbs / ICR; output rounded to 0.1 U.
+  Banner pins the ADA 2024 hospital glycemic targets (140-180
+  mg/dL non-critical; 110-180 mg/dL ICU). Tagged
+  `nursing-floor`, `nursing-icu`, `nursing-general`,
+  `endocrinology`.
+- `electrolyte-replacement` (ASHP / Hammond 2019 + Hebert 2008 +
+  Brown 2006): K, Mg, and Phos ladders with route (IV / PO) and
+  renal-impairment flag. K 3.0-3.4 -> 40 mEq; 2.5-2.9 -> 60 mEq;
+  <2.5 -> 80 mEq with the ASHP rate caps. Mg 1.0-1.7 -> 2 g
+  MgSO4 over 1 h; <1.0 -> 4 g. Phos 1.6-2.2 -> 0.16 mmol/kg;
+  1.0-1.5 -> 0.32 mmol/kg; <1.0 -> 0.64 mmol/kg per Brown 2006
+  graduated protocol. Tagged `nursing-icu`, `nursing-floor`,
+  `nursing-general`, `critical-care`, `pharmacy`.
+- `crrt-dose` (KDIGO 2012 + Davenport 2009): delivered effluent
+  dose mL/kg/h from prescribed effluent rate and weight; banners
+  at <20 / 20-25 / >25 mL/kg/h per KDIGO sec 5.8. Optional
+  citrate-anticoagulation inputs flag post-filter iCa outside
+  0.25-0.35 mmol/L, systemic iCa outside 1.1-1.2 mmol/L, and
+  total/ionised Ca ratio >= 2.5 (citrate-accumulation flag per
+  Davenport 2009). Tagged `nursing-icu`, `critical-care`,
+  `nephrology`.
+- `ecmo-titration` (ELSO 2022 v1.5): VV / VA modality; sweep
+  titration via the linear PaCO2 heuristic (suggested sweep =
+  current sweep x current PaCO2 / target PaCO2); DO2 = pumpFlow
+  x 10 x 1.34 x Hb x SaO2; DO2i target >= 6 mL/kg/min. Banner
+  pins the VV SatO2 >= 80% acceptable rule and the "not a
+  closed-loop controller; verify with attending and
+  perfusionist" disclaimer per spec-v29 sec 4.18.1. Tagged
+  `nursing-icu`, `critical-care`, `perfusion`, `cardiac-surgery`.
+
+Wave 29-3d (timers / workflow: ews-escalation, restraint-timer,
+sepsis-bundle-clock, code-blue-clock, mtp-tracker,
+device-day-counter, bristol-girth) and wave 29-3e (vent-sbt-peep)
+remain per spec-v29 sec 7.3.
+
+Catalog 275 -> 279 at v29 wave 29-3c close.
+
 ### Added (spec-v29 wave 29-3b — criteria bundles: NPIAP, Norton + PUSH, VIP + INS, ABO/Rh compatibility)
 
 Wave 29-3b ships all four criteria-bundle tiles in one batch. Each

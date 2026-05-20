@@ -9,6 +9,9 @@ import {
   abxRenalDose, vasopressorRateMlHr, vasopressorDose,
   tpnMacro, ivToPo,
 } from '../lib/medication-v4.js';
+import {
+  insulinCorrection, electrolyteReplacement, crrtDose, ecmoTitration,
+} from '../lib/scoring-v4.js';
 
 function field(label, id, opts = {}) {
   const wrap = el('p');
@@ -382,5 +385,143 @@ export const renderers = {
         rows,
       });
     });
+  },
+
+  // spec-v29 sec 4.8.1 wave 29-3c: insulin correction (ADA 2024).
+  'insulin-correction'(root) {
+    root.appendChild(field('Current BG (mg/dL)', 'ic-bg'));
+    root.appendChild(field('Target BG (mg/dL)', 'ic-target'));
+    root.appendChild(field('ISF (mg/dL per unit; leave blank to derive from TDD)', 'ic-isf'));
+    root.appendChild(field('Total daily insulin dose (units; used only if ISF blank)', 'ic-tdd'));
+    root.appendChild(selectField('ISF rule (when derived from TDD)', 'ic-rule', [
+      { value: 'rapid',   text: '1800-rule (rapid-acting analogues)' },
+      { value: 'regular', text: '1500-rule (regular insulin)' },
+    ]));
+    root.appendChild(field('Carbs to be eaten (g; leave blank for correction only)', 'ic-carbs'));
+    root.appendChild(field('Insulin-to-carb ratio (g per unit)', 'ic-icr'));
+    const o = out(); root.appendChild(o);
+    const run = () => safe(o, () => {
+      const r = insulinCorrection({
+        currentBG: nv('ic-bg'),
+        targetBG:  nv('ic-target'),
+        isf:       nv('ic-isf'),
+        totalDailyDose: nv('ic-tdd'),
+        isfRule:   document.getElementById('ic-rule').value,
+        carbs:     nv('ic-carbs'),
+        icr:       nv('ic-icr'),
+      });
+      o.appendChild(el('h2', { text: `${r.totalUnits} U total` }));
+      o.appendChild(el('p', { text: `ISF ${r.isf}${r.isfDerivedFromTdd ? ' (derived from TDD)' : ''}` }));
+      o.appendChild(el('ul', {}, [
+        el('li', { text: `Correction: ${r.correctionUnits} U` }),
+        el('li', { text: `Meal coverage: ${r.mealUnits} U` }),
+      ]));
+      o.appendChild(el('p', { class: 'clinical-notice', text: 'ADA 2024 hospital glycemic target: 140-180 mg/dL non-critical; 110-180 mg/dL ICU.' }));
+    });
+    ['ic-bg', 'ic-target', 'ic-isf', 'ic-tdd', 'ic-rule', 'ic-carbs', 'ic-icr'].forEach((id) => document.getElementById(id).addEventListener('input', run));
+    document.getElementById('ic-rule').addEventListener('change', run);
+  },
+
+  // spec-v29 sec 4.9.1 wave 29-3c: electrolyte replacement ladder.
+  'electrolyte-replacement'(root) {
+    root.appendChild(selectField('Electrolyte', 'er-e', [
+      { value: 'k',    text: 'Potassium (mEq/L)' },
+      { value: 'mg',   text: 'Magnesium (mg/dL)' },
+      { value: 'phos', text: 'Phosphate (mg/dL)' },
+    ]));
+    root.appendChild(field('Serum level', 'er-l'));
+    root.appendChild(selectField('Route', 'er-r', [
+      { value: 'iv', text: 'IV' },
+      { value: 'po', text: 'PO' },
+    ]));
+    const renalWrap = el('p', {}, [
+      el('label', { for: 'er-renal' }, [
+        el('input', { id: 'er-renal', type: 'checkbox' }),
+        ' Renal impairment (eGFR < 30 or AKI)',
+      ]),
+    ]);
+    root.appendChild(renalWrap);
+    const o = out(); root.appendChild(o);
+    const run = () => safe(o, () => {
+      const r = electrolyteReplacement({
+        electrolyte:   document.getElementById('er-e').value,
+        level:         nv('er-l'),
+        route:         document.getElementById('er-r').value,
+        renalImpaired: document.getElementById('er-renal').checked,
+      });
+      o.appendChild(el('h2', { text: `${r.electrolyte}: ${r.dose}` }));
+      if (r.rate) o.appendChild(el('p', { text: r.rate }));
+      for (const b of r.banners) o.appendChild(el('p', { class: 'clinical-notice', text: b }));
+    });
+    ['er-e', 'er-l', 'er-r'].forEach((id) => document.getElementById(id).addEventListener('input', run));
+    document.getElementById('er-e').addEventListener('change', run);
+    document.getElementById('er-r').addEventListener('change', run);
+    document.getElementById('er-renal').addEventListener('change', run);
+  },
+
+  // spec-v29 sec 4.17.1 wave 29-3c: CRRT effluent dose + citrate ratio.
+  'crrt-dose'(root) {
+    root.appendChild(field('Patient weight (kg)', 'cr-w'));
+    root.appendChild(field('Prescribed effluent rate (mL/h)', 'cr-r'));
+    root.appendChild(selectField('Modality', 'cr-mod', [
+      { value: 'CVVH',   text: 'CVVH' },
+      { value: 'CVVHD',  text: 'CVVHD' },
+      { value: 'CVVHDF', text: 'CVVHDF' },
+    ]));
+    root.appendChild(field('Ultrafiltration (mL/h, optional)', 'cr-uf'));
+    root.appendChild(field('Systemic ionised Ca (mmol/L, optional)', 'cr-sca'));
+    root.appendChild(field('Post-filter ionised Ca (mmol/L, optional)', 'cr-pca'));
+    root.appendChild(field('Total Ca (mmol/L, optional)', 'cr-tca'));
+    const o = out(); root.appendChild(o);
+    const run = () => safe(o, () => {
+      const r = crrtDose({
+        weightKg:              nv('cr-w'),
+        effluentRateMlPerHr:   nv('cr-r'),
+        modality:              document.getElementById('cr-mod').value,
+        ultrafiltrationMlPerHr: nv('cr-uf'),
+        systemicIonisedCa:     nv('cr-sca'),
+        postFilterIonisedCa:   nv('cr-pca'),
+        totalCa:               nv('cr-tca'),
+      });
+      o.appendChild(el('h2', { text: `${r.effluentDoseMlPerKgPerHr} mL/kg/h` }));
+      o.appendChild(el('p', { text: r.text }));
+      if (r.totalIonisedRatio !== null) o.appendChild(el('p', { text: `Total/ionised Ca ratio: ${r.totalIonisedRatio}` }));
+      for (const b of r.banners) o.appendChild(el('p', { class: 'clinical-notice', text: b }));
+    });
+    ['cr-w', 'cr-r', 'cr-uf', 'cr-sca', 'cr-pca', 'cr-tca'].forEach((id) => document.getElementById(id).addEventListener('input', run));
+    document.getElementById('cr-mod').addEventListener('change', run);
+  },
+
+  // spec-v29 sec 4.18.1 wave 29-3c: ECMO sweep / flow titration.
+  'ecmo-titration'(root) {
+    root.appendChild(selectField('Modality', 'ec-mod', [
+      { value: 'VV', text: 'VV (respiratory)' },
+      { value: 'VA', text: 'VA (cardiopulmonary)' },
+    ]));
+    root.appendChild(field('Patient weight (kg)', 'ec-w'));
+    root.appendChild(field('Current sweep (L/min)', 'ec-sw'));
+    root.appendChild(field('Current pump flow (L/min)', 'ec-fl'));
+    root.appendChild(field('Current PaCO2 (mmHg)', 'ec-pco'));
+    root.appendChild(field('Target PaCO2 (mmHg; default 40)', 'ec-tgt'));
+    root.appendChild(field('Hemoglobin (g/dL)', 'ec-hb'));
+    root.appendChild(field('SaO2 or post-oxygenator SatO2 (% or fraction)', 'ec-sat'));
+    const o = out(); root.appendChild(o);
+    const run = () => safe(o, () => {
+      const r = ecmoTitration({
+        modality:        document.getElementById('ec-mod').value,
+        weightKg:        nv('ec-w'),
+        currentSweepLpm: nv('ec-sw'),
+        currentFlowLpm:  nv('ec-fl'),
+        currentPaCO2:    nv('ec-pco'),
+        targetPaCO2:     nv('ec-tgt'),
+        hb:              nv('ec-hb'),
+        sao2:            nv('ec-sat'),
+      });
+      o.appendChild(el('h2', { text: `Sweep ${r.suggestedSweepLpm} L/min / Flow ${r.suggestedFlowLpm} L/min` }));
+      if (r.do2iMlPerKgPerMin !== null) o.appendChild(el('p', { text: `DO2i ${r.do2iMlPerKgPerMin} mL/kg/min (ELSO 2022 target >= 6)` }));
+      for (const b of r.banners) o.appendChild(el('p', { class: 'clinical-notice', text: b }));
+    });
+    ['ec-w', 'ec-sw', 'ec-fl', 'ec-pco', 'ec-tgt', 'ec-hb', 'ec-sat'].forEach((id) => document.getElementById(id).addEventListener('input', run));
+    document.getElementById('ec-mod').addEventListener('change', run);
   },
 };
