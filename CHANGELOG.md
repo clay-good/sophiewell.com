@@ -6,6 +6,55 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v15 wave 15-5 (partial) — trauma scoring: ABC-MTP, MGAP, GAP, BIG)
+
+Partial v15 wave 15-5 (4 of 8 tiles). Each tile ships under the
+spec-v11 audit floor + spec-v12 §5 13-point per-tile shipping
+contract. The four remaining wave 15-5 tiles (ISS, RTS, TRISS,
+peds-trauma) are deferred to a follow-on wave 15-5 partial commit.
+
+- **`abc-mtp` — ABC Score for Massive Transfusion** (Nunez TC,
+  Voskresensky IV, Dossett LA, Shinall R, Dutton WD, Cotton BA.
+  *Early prediction of massive transfusion in trauma: simple as
+  ABC (assessment of blood consumption)?* J Trauma. 2009;66(2):
+  346-352). Four binary criteria (penetrating mechanism; SBP
+  <=90; HR >=120; positive FAST). >=2 of 4 -> activate massive
+  transfusion protocol (sensitivity 75%, specificity 86% per
+  Nunez 2009). Group G. Audit log:
+  [docs/audits/v11/abc-mtp.md](docs/audits/v11/abc-mtp.md).
+  Worked examples in
+  [test/unit/abc-mtp.test.js](test/unit/abc-mtp.test.js).
+- **`mgap` — MGAP Trauma Score** (Sartorius D, Le Manach Y,
+  David JS, et al. *Mechanism, glasgow coma scale, age, and
+  arterial pressure (MGAP): a new simple prehospital triage
+  score to predict mortality in trauma patients.* Crit Care Med.
+  2010;38(3):831-837). Mechanism (blunt 4 / penetrating 0) +
+  GCS (3-15) + age <60 (5) + SBP bands (>120 = 5; 60-120 = 3;
+  <60 = 0). Bands per Sartorius 2010 Table 3 (<18 high, 18-22
+  moderate, 23-29 low). Group E. Audit log:
+  [docs/audits/v11/mgap.md](docs/audits/v11/mgap.md). Worked
+  examples in [test/unit/mgap.test.js](test/unit/mgap.test.js).
+- **`gap` — GAP Trauma Score** (Kondo Y, Abe T, Kohshi K,
+  Tokuda Y, Cook EF, Kukita I. *Revised trauma scoring system
+  to predict in-hospital mortality in the emergency department:
+  Glasgow Coma Scale, Age, and Systolic Blood Pressure score.*
+  Crit Care. 2011;15(4):R191). GCS (3-15) + age <60 (3) + SBP
+  bands (>120 = 6; 60-120 = 4; <60 = 0). Bands per Kondo 2011
+  (<=10 high, 11-18 moderate, 19-24 low). Group E. Audit log:
+  [docs/audits/v11/gap.md](docs/audits/v11/gap.md). Worked
+  examples in [test/unit/gap.test.js](test/unit/gap.test.js).
+- **`big` — BIG Score (pediatric trauma)** (Borgman MA, Maegele
+  M, Wade CE, Blackbourne LH, Spinella PC. *Pediatric trauma
+  BIG score: predicting mortality in children after military
+  and civilian trauma.* Pediatrics. 2011;127(4):e892-e897). BIG
+  = base deficit + 2.5 * INR + (15 - GCS). BIG >=16 predicts
+  mortality with high sensitivity per Borgman 2011. Group E.
+  Audit log: [docs/audits/v11/big.md](docs/audits/v11/big.md).
+  Worked examples in
+  [test/unit/big.test.js](test/unit/big.test.js).
+
+Catalog 259 -> 263 at v15 wave 15-5 (partial) close.
+
 ### Added (spec-v15 wave 15-4 — pediatric imaging-decision companions: PECARN IAI, PECARN C-Spine)
 
 Full v15 wave 15-4. Both tiles ship under Group N (Pediatrics &

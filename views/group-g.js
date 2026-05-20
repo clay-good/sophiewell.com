@@ -3487,6 +3487,30 @@ export const renderers = {
     run();
   },
 
+  // spec-v15 §3.5.8 wave 15-5: ABC Score for Massive Transfusion (Nunez 2009).
+  'abc-mtp'(root) {
+    const items = [
+      ['Penetrating mechanism', 'abc-pen'],
+      ['SBP <=90 mmHg', 'abc-sbp'],
+      ['Heart rate >=120 bpm', 'abc-hr'],
+      ['Positive FAST exam', 'abc-fast'],
+    ];
+    for (const [l, id] of items) root.appendChild(checkbox(l, id));
+    const o = out(); root.appendChild(o);
+    const run = () => safe(o, () => {
+      const r = S4.abcMtp({
+        penetratingMechanism: checked('abc-pen'),
+        sbpLe90: checked('abc-sbp'),
+        hrGe120: checked('abc-hr'),
+        positiveFast: checked('abc-fast'),
+      });
+      o.appendChild(el('h2', { text: r.activateMtp ? `ABC ${r.score}/4: activate MTP` : `ABC ${r.score}/4` }));
+      o.appendChild(el('p', { text: r.band }));
+    });
+    items.forEach(([, id]) => document.getElementById(id).addEventListener('change', run));
+    run();
+  },
+
   // spec-v14 §3.3.3 wave 14-3: modified Aldrete (Aldrete 1995).
   aldrete(root) {
     const items = [

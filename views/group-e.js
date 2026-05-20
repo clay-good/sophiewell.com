@@ -6,6 +6,7 @@
 import { el, clear } from '../lib/dom.js';
 import * as C from '../lib/clinical.js';
 import * as V4 from '../lib/clinical-v4.js';
+import * as S4 from '../lib/scoring-v4.js';
 
 function field(label, id, opts = {}) {
   const wrap = el('p');
@@ -543,6 +544,74 @@ export const renderers = {
       o.appendChild(el('p', { text: r.band }));
     });
     ['apri-ast', 'apri-uln', 'apri-plt'].forEach((id) => document.getElementById(id).addEventListener('input', run));
+    run();
+  },
+
+  // spec-v15 §3.5.6 wave 15-5: MGAP Trauma Score (Sartorius 2010).
+  mgap(root) {
+    root.appendChild(selectField('Mechanism', 'mgap-mech', [
+      { value: 'blunt', text: 'Blunt (+4)' },
+      { value: 'pen', text: 'Penetrating (0)' },
+    ]));
+    root.appendChild(field('GCS (3-15)', 'mgap-gcs', { value: 15 }));
+    root.appendChild(selectField('Age', 'mgap-age', [
+      { value: 'lt60', text: 'Age <60 (+5)' },
+      { value: 'ge60', text: 'Age >=60 (0)' },
+    ]));
+    root.appendChild(field('SBP (mmHg)', 'mgap-sbp', { value: 130 }));
+    const o = out(); root.appendChild(o);
+    const run = () => safe(o, () => {
+      const r = S4.mgap({
+        mechanismBlunt: document.getElementById('mgap-mech').value === 'blunt',
+        gcs: num('mgap-gcs'),
+        ageLt60: document.getElementById('mgap-age').value === 'lt60',
+        sbp: num('mgap-sbp'),
+      });
+      o.appendChild(el('h2', { text: `MGAP ${r.score}` }));
+      o.appendChild(el('p', { text: r.band }));
+    });
+    ['mgap-mech', 'mgap-gcs', 'mgap-age', 'mgap-sbp'].forEach((id) => document.getElementById(id).addEventListener('input', run));
+    run();
+  },
+
+  // spec-v15 §3.5.7 wave 15-5: GAP Trauma Score (Kondo 2011).
+  gap(root) {
+    root.appendChild(field('GCS (3-15)', 'gap-gcs', { value: 15 }));
+    root.appendChild(selectField('Age', 'gap-age', [
+      { value: 'lt60', text: 'Age <60 (+3)' },
+      { value: 'ge60', text: 'Age >=60 (0)' },
+    ]));
+    root.appendChild(field('SBP (mmHg)', 'gap-sbp', { value: 130 }));
+    const o = out(); root.appendChild(o);
+    const run = () => safe(o, () => {
+      const r = S4.gap({
+        gcs: num('gap-gcs'),
+        ageLt60: document.getElementById('gap-age').value === 'lt60',
+        sbp: num('gap-sbp'),
+      });
+      o.appendChild(el('h2', { text: `GAP ${r.score}` }));
+      o.appendChild(el('p', { text: r.band }));
+    });
+    ['gap-gcs', 'gap-age', 'gap-sbp'].forEach((id) => document.getElementById(id).addEventListener('input', run));
+    run();
+  },
+
+  // spec-v15 §3.5.5 wave 15-5: BIG Score (Borgman 2011).
+  big(root) {
+    root.appendChild(field('Base deficit (mEq/L)', 'big-bd', { value: 0 }));
+    root.appendChild(field('INR', 'big-inr', { value: 1 }));
+    root.appendChild(field('GCS (3-15)', 'big-gcs', { value: 15 }));
+    const o = out(); root.appendChild(o);
+    const run = () => safe(o, () => {
+      const r = S4.big({
+        baseDeficit: num('big-bd'),
+        inr: num('big-inr'),
+        gcs: num('big-gcs'),
+      });
+      o.appendChild(el('h2', { text: `BIG ${r.score.toFixed(1)}` }));
+      o.appendChild(el('p', { text: r.band }));
+    });
+    ['big-bd', 'big-inr', 'big-gcs'].forEach((id) => document.getElementById(id).addEventListener('input', run));
     run();
   },
 };

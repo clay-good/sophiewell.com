@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `d6026fec2f39da3d`
-Generated: 2026-05-19T21:03:18.298Z
+Build ID: `4e7f0aae2db5395c`
+Generated: 2026-05-20T00:14:27.130Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=20.18.1 <21, npm >=10.0.0
@@ -23,13 +23,13 @@ downloads is committed in this repository and is hashed below.
 
 | Path | Bytes | SHA-256 |
 |---|---:|---|
-| `index.html` | 120734 | `6f95fffe5dae0702fbcc9ba7d7b008c2f5951267f328f352998fd95bb01f9dda` |
+| `index.html` | 120892 | `e8dde29c8cb12399188273aed7e9080cf52f978d29d5853afc2894de09bdb61f` |
 | `styles.css` | 36123 | `3de26bad95060b31feb8a4bc8acc20a249e02063cf06001159ae96d9a78839a1` |
-| `app.js` | 73781 | `64f85e6fec605a435682ba303b5c69a05b9924fb92cfc79616b388033b354b9f` |
+| `app.js` | 74474 | `f4eb6860047b40112db66e4ed70e81654d28e072fb54027e8c313800d28d11ea` |
 | `sw.js` | 4062 | `60f524b1b69eb5170c59af42631e11cc05db2a44e8e530977db0327888b0ff6d` |
 | `site.webmanifest` | 709 | `0e0de4da60590a12e8b27a0ae2a2f5ffdb6500b7d2b78f93631ec2f64ed3d5ce` |
 | `robots.txt` | 127 | `38fbf9c1854e72abb20e01e81dd5a31d4ea96f154c12d5db1ec3af05524dd1a1` |
-| `sitemap.xml` | 40903 | `3a65cd0e0b27f217b387ff2c4c49951ea7e6bf18050f847e4333763e685fc201` |
+| `sitemap.xml` | 41480 | `e47b2b3b9cab2a3903e625be79791a536fd15e538ca4cf8fd695c9dc57a14c30` |
 | `_headers` | 1297 | `8a0d2228d73c6b105d5d8fbd173974461cc6b6482ee72f06546a3a27248a9003` |
 | `logo.png` | 63440 | `11afaf1b0d3ca68393d202e4810bf766b5b6d591b4e3ec52f41d3cacaa4616ec` |
 | `favicon.ico` | 7411 | `407fde0ca2788409e87e11f596fa02e6a0b121817fcea7fd995beec1801e287b` |
@@ -64,11 +64,11 @@ downloads is committed in this repository and is hashed below.
 | `lib/live.js` | 1138 | `304978d3c170b6eb06cade7702e5f99d868e9b3e1f5651aa9a28da15e62a6a9c` |
 | `lib/medicare-enrollment.js` | 2884 | `6a4c11321477e712efc44d4de84336463ea6800bc64f654b5e9d0b16c440877d` |
 | `lib/medication-v4.js` | 5501 | `a75b60584a9264ee1500e14642c5e4784fb0a0994bf4c8cb4eaa0d294f571f37` |
-| `lib/meta.js` | 158129 | `5aa554c46141d65cea6db0b85da70fa1f80362a50360d9246d1e336546458a76` |
+| `lib/meta.js` | 161735 | `890f298c94c901f733884068bf3d160013973bb2d5c68a2de29daed7e15f1267` |
 | `lib/print.js` | 2588 | `74579a71f82b75993dea9f7d9b3c21e67744bd4dbe6f50e20c8eef9aa1be7546` |
 | `lib/prompt.js` | 6872 | `95ee9b9de5adbafd1497f378993e27d29c9f437bfc9ddc304886fd75e80fffd4` |
 | `lib/regulatory.js` | 4040 | `9e1ef6751facc0172c492010ccd35982061f06b000db2e857a98ec2013e7087c` |
-| `lib/scoring-v4.js` | 136208 | `a74f3181869f1592e49ce0d121beabf37a61c1c1e3fa7ca553f7b8a60d28c53a` |
+| `lib/scoring-v4.js` | 140259 | `a2d9139a9b28130dd19f17ceb74c33f8064b18c573fa88b261f1ebbd95834370` |
 | `lib/screener.js` | 6465 | `34e4473386cfbdca959f0bd7c715da44f5d4b29a4467fb74616a31224b40bb22` |
 | `lib/search.js` | 1726 | `eb447d039ac1ea7b459743b6aeeffea114f90f07d45a6bd53dbe60eb1c8fdd9b` |
 | `lib/synonyms.js` | 3339 | `f28e834e5b603c1564099976489ad33f05109a0b74f130f9153aa2a90518bc16` |
@@ -79,9 +79,9 @@ downloads is committed in this repository and is hashed below.
 | `lib/workflow-v4.js` | 7484 | `56a33e76e4b47f52dd30d0bb855564ab5fee9ef01c45148ed1a98d84b661e5de` |
 | `views/group-a.js` | 21666 | `32211364900380ebebf98a5e47201ffe250dcce87068e2f0fa7ca0a1e4796a75` |
 | `views/group-c.js` | 31225 | `6f8b8f7fa8fd974e2a91f296ed03ee40f4270a97d29a9a4f763055d22a358781` |
-| `views/group-e.js` | 26880 | `f45361ccd2d9fa5b1949c93336f9b0fb4300e83806a9333dd8db44b9bf2035a0` |
+| `views/group-e.js` | 29671 | `a4e15d9239235d9e5c18e8499c1596937558ac411a962d1fc613408bee72ef3b` |
 | `views/group-f.js` | 20817 | `8e08bcb2e713a68a7c77fe3e02ee5bf220c227457ac8f6ce0d882f3f000896d2` |
-| `views/group-g.js` | 160437 | `712d219b10a56f216771ab102a58357b9e4f6ae86fb5e5fd690c3681713b26ce` |
+| `views/group-g.js` | 161358 | `e61e2a1c8c3abc75b051a649a9cd5f2f119eebff4a9629a1b216c3edc486fc39` |
 | `views/group-h.js` | 11690 | `b0d1c0305f9acbf59ffd62faea8d07230bc6fb4e348dfb2ff97aa3f1876033a9` |
 | `views/group-i.js` | 32395 | `15a2342e718a7b7d426b979cd93204ce2dd7993408d6c5be3d230b30fbc2f2f6` |
 | `views/group-j.js` | 8098 | `9cfb708b1c2fa10ae9ade85779ef8f5b0948213e8b6d15840ac28f30060a67c2` |
