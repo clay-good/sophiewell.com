@@ -3652,6 +3652,140 @@ export const renderers = {
     run();
   },
 
+  // spec-v29 §4.1.1 wave 29-3b: NPIAP staging (Edsberg 2016 / NPIAP 2019).
+  'npiap-staging'(root) {
+    root.appendChild(checkbox('Mucosal membrane location', 'np-muc'));
+    root.appendChild(checkbox('Skin intact', 'np-intact'));
+    const blanchWrap = el('p', {}, [
+      el('label', { for: 'np-blanch', text: 'If skin intact, erythema behavior' }), el('br'),
+      el('select', { id: 'np-blanch' }, [
+        el('option', { value: 'blanchable',                          text: 'Blanchable erythema (no PI)' }),
+        el('option', { value: 'non-blanchable-erythema',             text: 'Non-blanchable erythema (Stage 1)' }),
+        el('option', { value: 'non-blanchable-deep-discoloration',   text: 'Non-blanchable deep red/maroon/purple (DTPI)' }),
+      ]),
+    ]);
+    root.appendChild(blanchWrap);
+    root.appendChild(checkbox('If skin NOT intact: slough or eschar obscures the wound base', 'np-obs'));
+    const depthWrap = el('p', {}, [
+      el('label', { for: 'np-depth', text: 'If skin NOT intact and not obscured, depth' }), el('br'),
+      el('select', { id: 'np-depth' }, [
+        el('option', { value: 'partial-thickness',     text: 'Partial-thickness; exposed dermis (Stage 2)' }),
+        el('option', { value: 'subq-visible',          text: 'Full-thickness; subcutaneous fat visible (Stage 3)' }),
+        el('option', { value: 'bone-tendon-muscle',    text: 'Full-thickness; bone, tendon, or muscle visible (Stage 4)' }),
+      ]),
+    ]);
+    root.appendChild(depthWrap);
+    const o = out(); root.appendChild(o);
+    const run = () => safe(o, () => {
+      const r = S4.npiapStaging({
+        mucosal: checked('np-muc'),
+        skinIntact: checked('np-intact'),
+        blanching: document.getElementById('np-blanch').value,
+        obscured: checked('np-obs'),
+        depth: document.getElementById('np-depth').value,
+      });
+      o.appendChild(el('h2', { text: r.stage }));
+      o.appendChild(el('p', { text: r.text }));
+    });
+    ['np-muc', 'np-intact', 'np-blanch', 'np-obs', 'np-depth'].forEach((id) => document.getElementById(id).addEventListener('change', run));
+    run();
+  },
+
+  // spec-v29 §4.1.3 wave 29-3b: Norton + PUSH (Norton 1962; NPIAP 2005).
+  'norton-push'(root) {
+    const nortonItems = [
+      ['Norton: physical condition (1 very bad - 4 good)', 'nr-pc'],
+      ['Norton: mental condition (1 stuporous - 4 alert)', 'nr-mc'],
+      ['Norton: activity (1 bedfast - 4 ambulant)',         'nr-act'],
+      ['Norton: mobility (1 immobile - 4 full)',            'nr-mob'],
+      ['Norton: incontinence (1 doubly - 4 not)',           'nr-inc'],
+    ];
+    for (const [l, id] of nortonItems) root.appendChild(rangeField(l, id, 1, 4, 4));
+    root.appendChild(rangeField('PUSH: length x width band (0 closed - 10 >24 cm^2)', 'pu-lw', 0, 10, 0));
+    root.appendChild(rangeField('PUSH: exudate amount (0 none - 3 heavy)', 'pu-ex', 0, 3, 0));
+    root.appendChild(rangeField('PUSH: tissue type (0 closed - 4 necrotic)', 'pu-tt', 0, 4, 0));
+    const o = out(); root.appendChild(o);
+    const run = () => safe(o, () => {
+      const r = S4.nortonPush({
+        physicalCondition: nv('nr-pc'),
+        mentalCondition:   nv('nr-mc'),
+        activity:          nv('nr-act'),
+        mobility:          nv('nr-mob'),
+        incontinence:      nv('nr-inc'),
+        lengthWidthBand:   nv('pu-lw'),
+        exudate:           nv('pu-ex'),
+        tissueType:        nv('pu-tt'),
+      });
+      o.appendChild(el('h2', { text: `Norton ${r.nortonTotal} of 20 / PUSH ${r.pushTotal} of 17` }));
+      o.appendChild(el('p', { text: r.text }));
+    });
+    ['nr-pc', 'nr-mc', 'nr-act', 'nr-mob', 'nr-inc', 'pu-lw', 'pu-ex', 'pu-tt'].forEach((id) => document.getElementById(id).addEventListener('input', run));
+    run();
+  },
+
+  // spec-v29 §4.6.1 wave 29-3b: VIP + INS infiltration (Jackson 1998; INS 2021).
+  'vip-extravasation'(root) {
+    root.appendChild(rangeField('Visual Infusion Phlebitis (VIP) 0-5', 've-vip', 0, 5, 0));
+    root.appendChild(rangeField('INS infiltration / extravasation grade 0-4', 've-ins', 0, 4, 0));
+    root.appendChild(checkbox('Infusate is a known vesicant (chemotherapy, vasopressor, contrast, hypertonic)', 've-ves'));
+    const o = out(); root.appendChild(o);
+    const run = () => safe(o, () => {
+      const r = S4.vipExtravasation({
+        vip: nv('ve-vip'),
+        insGrade: nv('ve-ins'),
+        vesicant: checked('ve-ves'),
+      });
+      o.appendChild(el('h2', { text: r.text }));
+      o.appendChild(el('p', { text: `VIP ${r.vip}: ${r.vipLabel}` }));
+      o.appendChild(el('p', { text: `INS ${r.insGrade}: ${r.insLabel}` }));
+      for (const b of r.banners) o.appendChild(el('p', { class: 'clinical-notice', text: b }));
+    });
+    ['ve-vip', 've-ins'].forEach((id) => document.getElementById(id).addEventListener('input', run));
+    document.getElementById('ve-ves').addEventListener('change', run);
+    run();
+  },
+
+  // spec-v29 §4.20.1 wave 29-3b: ABO/Rh compatibility (AABB 33rd ed).
+  'blood-compat'(root) {
+    const rWrap = el('p', {}, [
+      el('label', { for: 'bc-recip', text: 'Recipient ABO / Rh' }), el('br'),
+      el('select', { id: 'bc-recip' }, [
+        el('option', { value: 'O-',  text: 'O negative' }),
+        el('option', { value: 'O+',  text: 'O positive' }),
+        el('option', { value: 'A-',  text: 'A negative' }),
+        el('option', { value: 'A+',  text: 'A positive' }),
+        el('option', { value: 'B-',  text: 'B negative' }),
+        el('option', { value: 'B+',  text: 'B positive' }),
+        el('option', { value: 'AB-', text: 'AB negative' }),
+        el('option', { value: 'AB+', text: 'AB positive' }),
+      ]),
+    ]);
+    root.appendChild(rWrap);
+    const pWrap = el('p', {}, [
+      el('label', { for: 'bc-prod', text: 'Product type' }), el('br'),
+      el('select', { id: 'bc-prod' }, [
+        el('option', { value: 'prbc',      text: 'PRBC (packed red blood cells)' }),
+        el('option', { value: 'ffp',       text: 'FFP / plasma' }),
+        el('option', { value: 'platelets', text: 'Platelets (apheresis or pooled)' }),
+        el('option', { value: 'cryo',      text: 'Cryoprecipitate' }),
+      ]),
+    ]);
+    root.appendChild(pWrap);
+    const o = out(); root.appendChild(o);
+    const run = () => safe(o, () => {
+      const r = S4.bloodCompat({
+        recipient: document.getElementById('bc-recip').value,
+        product:   document.getElementById('bc-prod').value,
+      });
+      o.appendChild(el('h2', { text: `${r.product} for ${r.recipient}` }));
+      o.appendChild(el('p', { text: `Compatible donor types: ${r.compatibleDonors.join(', ')}` }));
+      o.appendChild(el('p', { text: `Emergency release: ${r.emergencyRelease}` }));
+      o.appendChild(el('p', { text: r.text }));
+    });
+    ['bc-recip', 'bc-prod'].forEach((id) => document.getElementById(id).addEventListener('change', run));
+    run();
+  },
+
   // spec-v29 §4.7.1 wave 29-3a: modified NIHSS (Meyer 2002).
   mnihss(root) {
     const items = [

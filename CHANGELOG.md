@@ -6,6 +6,42 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v29 wave 29-3b — criteria bundles: NPIAP, Norton + PUSH, VIP + INS, ABO/Rh compatibility)
+
+Wave 29-3b ships all four criteria-bundle tiles in one batch. Each
+tile ships under the spec-v11 audit floor + spec-v12 sec 5
+13-point per-tile shipping contract and is tagged with the
+spec-v29 sec 5 nursing-subspecialty specialties.
+
+- `npiap-staging` (Edsberg 2016 / NPIAP 2019): decision tree over
+  six structured pickers (mucosal location, skin intact, blanching
+  behavior, obscured base, depth). Outputs one of seven stages:
+  Stage 1 / 2 / 3 / 4 / Unstageable / DTPI / Mucosal Membrane PI.
+  Tagged `nursing-floor`, `nursing-icu`, `nursing-general`,
+  `wound-care`.
+- `norton-push` (Norton 1962 + NPIAP 2005 PUSH 3.0): Norton scale
+  (five 1-4 items; total 5-20; <=14 at risk) plus PUSH Tool 3.0
+  (length-by-width band 0-10, exudate 0-3, tissue type 0-4; total
+  0-17; declining total = healing). Tagged `nursing-floor`,
+  `nursing-general`, `wound-care`.
+- `vip-extravasation` (Jackson 1998 + INS 2021 Standards sec 38):
+  VIP picker (0-5) plus INS infiltration / extravasation grade
+  (0-4) with banners at VIP >=3, INS >=3, and INS 4 + vesicant
+  (antidote decision per INS Table 38-3). Tagged `nursing-floor`,
+  `nursing-icu`, `nursing-general`, `nursing-or`.
+- `blood-compat` (AABB 33rd ed., 2024): recipient ABO / Rh picker
+  plus product picker (PRBC / FFP / platelets / cryo); outputs
+  compatible donor types per the AABB compatibility tables, plus
+  the universal emergency-release note for each product. Tagged
+  `nursing-icu`, `nursing-er`, `nursing-or`, `nursing-floor`,
+  `nursing-general`, `pathology`, `hematology`.
+
+Wave 29-3c (bedside math: insulin-correction,
+electrolyte-replacement, crrt-dose, ecmo-titration) is the next
+sub-wave per spec-v29 sec 7.3.
+
+Catalog 271 -> 275 at v29 wave 29-3b close.
+
 ### Added (spec-v29 wave 29-3a close — mNIHSS + Aldrete/PADSS; wave 29-3a complete)
 
 Third (final) wave 29-3a sub-batch. Closes wave 29-3a with two
