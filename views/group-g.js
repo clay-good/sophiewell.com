@@ -81,25 +81,7 @@ export const renderers = {
     });
   },
 
-  'lab-ranges'(root) {
-    const o = out(); root.appendChild(o);
-    loadFile('clinical', 'lab-ranges.json').then((data) => {
-      const inp = el('input', { id: 'q', type: 'search', placeholder: 'filter, e.g. sodium' });
-      root.insertBefore(el('p', {}, [el('label', { for: 'q', text: 'Filter' }), el('br'), inp]), o);
-      const run = () => {
-        clear(o);
-        const q = (inp.value || '').toLowerCase();
-        const matches = data.ranges.filter((r) => !q || r.test.toLowerCase().includes(q));
-        const tbl = el('table', { class: 'lookup-table' });
-        tbl.appendChild(el('thead', {}, [el('tr', {}, [el('th', { scope: 'col', text: 'Test' }), el('th', { scope: 'col', text: 'Units' }), el('th', { scope: 'col', text: 'Low' }), el('th', { scope: 'col', text: 'High' })])]));
-        const tbody = el('tbody');
-        for (const r of matches) tbody.appendChild(el('tr', {}, [el('td', { text: r.test }), el('td', { text: r.units }), el('td', { text: String(r.low) }), el('td', { text: String(r.high) })]));
-        tbl.appendChild(tbody); o.appendChild(tbl);
-        o.appendChild(el('p', { class: 'muted', text: data.citation }));
-      };
-      inp.addEventListener('input', run); run();
-    });
-  },
+  // lab-ranges removed in spec-v29 wave 29-2 (Group K/O): static table.
 
   abg(root) {
     const f = (label, id, ph) => {

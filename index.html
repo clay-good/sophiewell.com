@@ -69,7 +69,7 @@
           "@id": "https://sophiewell.com/#webapp",
           "name": "sophiewell",
           "url": "https://sophiewell.com/",
-          "description": "Free, client-side healthcare toolbox with 243 deterministic utilities for patients, billers, coders, nurses, clinicians, EMS, and educators.",
+          "description": "Free, client-side healthcare toolbox with 235 deterministic utilities for patients, billers, coders, nurses, clinicians, EMS, and educators.",
           "applicationCategory": [
             "HealthApplication",
             "MedicalApplication",
@@ -127,18 +127,15 @@
             "Pediatric Dose Safety Bounds",
             "Insulin Drip Math",
             "Anticoagulation Reversal Reference",
-            "High-Alert Medication Reference",
             "Opioid MME Calculator (CDC 2022)",
             "Steroid Equivalence Converter",
             "Benzodiazepine Equivalence (Ashton)",
             "Antibiotic Renal Dose Adjustment",
             "Vasopressor Dose to Rate Calculator",
             "TPN Macronutrient Calculator",
-            "IV-to-PO Conversion Reference",
             "Glasgow Coma Scale",
             "APGAR",
             "Pediatric Vital Signs by Age",
-            "Common Lab Reference Ranges",
             "ABG Interpretation Walkthrough",
             "Wells Score for PE",
             "Wells Score for DVT",
@@ -198,14 +195,9 @@
             "Bloodborne Pathogen Exposure Decision Tree",
             "TB Testing Interpretation (TST + IGRA)",
             "STI Screening Interval Reference (CDC)",
-            "Adult Lab Reference Ranges (NIH)",
-            "Pediatric Lab Reference Ranges by Age Band",
-            "Therapeutic Drug Levels Reference",
-            "Toxicology Level Reference",
             "Universal Unit Converter (lab + vitals + basics)",
             "Time-to-Dose Helper",
             "Pediatric Weight Converter (lb/oz <-> kg)",
-            "High-Alert Medication Wallet Card (ISMP)",
             "Sodium Correction Rate Planner (Adrogue-Madias)",
             "Free Water Deficit Calculator",
             "Iron Deficit Calculator (Ganzoni)",
@@ -815,10 +807,6 @@
                   <span class="tc-title">Anticoagulation Reversal Reference</span>
                   <span class="tc-desc">Table of anticoagulant agents and standard reversal approaches with citations.</span>
                 </button>
-                <button class="tool-card" type="button" data-tool="high-alert" data-group="F" data-audiences="clinicians educators field">
-                  <span class="tc-title">High-Alert Medication Reference</span>
-                  <span class="tc-desc">Bundled high-alert medication identities with original brief notes and ISMP attribution.</span>
-                </button>
                 <button class="tool-card" type="button" data-tool="opioid-mme" data-group="F" data-audiences="clinicians educators">
                   <span class="tc-title">Opioid MME Calculator (CDC 2022)</span>
                   <span class="tc-desc">Multi-row total daily MME with 50 / 90 MME flags per CDC framing.</span>
@@ -843,10 +831,6 @@
                   <span class="tc-title">TPN Macronutrient Calculator</span>
                   <span class="tc-desc">Total kcal plus carb / protein / fat g and kcal-from-source breakdown.</span>
                 </button>
-                <button class="tool-card" type="button" data-tool="iv-to-po" data-group="F" data-audiences="clinicians educators">
-                  <span class="tc-title">IV-to-PO Conversion Reference</span>
-                  <span class="tc-desc">Antibiotic bioavailability and IV/PO ratio reference table.</span>
-                </button>
                 <button class="tool-card" type="button" data-tool="iron-ganzoni" data-group="F" data-audiences="clinicians educators">
                   <span class="tc-title">Iron Deficit (Ganzoni)</span>
                   <span class="tc-desc">Total iron deficit for IV iron repletion; pediatric-aware stores.</span>
@@ -868,10 +852,6 @@
                 <button class="tool-card" type="button" data-tool="peds-vitals" data-group="G" data-audiences="clinicians educators field">
                   <span class="tc-title">Pediatric Vital Signs by Age</span>
                   <span class="tc-desc">Reference ranges for HR, RR, and BP by age band with citations.</span>
-                </button>
-                <button class="tool-card" type="button" data-tool="lab-ranges" data-group="G" data-audiences="clinicians educators field">
-                  <span class="tc-title">Common Lab Reference Ranges</span>
-                  <span class="tc-desc">Searchable list of common adult lab reference ranges.</span>
                 </button>
                 <button class="tool-card" type="button" data-tool="abg" data-group="G" data-audiences="clinicians educators field">
                   <span class="tc-title">ABG Interpretation Walkthrough</span>
@@ -1343,28 +1323,6 @@
             </section>
 
             <section class="home-section">
-              <h3>Reference Ranges</h3>
-              <div class="home-grid">
-                <button class="tool-card" type="button" data-tool="lab-adult" data-group="K" data-audiences="clinicians educators">
-                  <span class="tc-title">Adult Lab Reference Ranges (NIH)</span>
-                  <span class="tc-desc">Conventional and SI reference ranges for common adult labs.</span>
-                </button>
-                <button class="tool-card" type="button" data-tool="lab-peds" data-group="K" data-audiences="clinicians educators">
-                  <span class="tc-title">Pediatric Lab Reference Ranges by Age Band</span>
-                  <span class="tc-desc">Newborn / infant / child ranges for common labs.</span>
-                </button>
-                <button class="tool-card" type="button" data-tool="tdm-levels" data-group="K" data-audiences="clinicians educators">
-                  <span class="tc-title">Therapeutic Drug Levels Reference</span>
-                  <span class="tc-desc">Vanc, dig, lithium, phenytoin, valproate, tacro, gentamicin, theophylline.</span>
-                </button>
-                <button class="tool-card" type="button" data-tool="tox-levels" data-group="K" data-audiences="clinicians educators">
-                  <span class="tc-title">Toxicology Level Reference</span>
-                  <span class="tc-desc">Levels associated with toxicity for common ingestions.</span>
-                </button>
-              </div>
-            </section>
-
-            <section class="home-section">
               <h3>Pediatrics &amp; Neonatal</h3>
               <div class="home-grid">
                 <button class="tool-card" type="button" data-tool="unit-converter-v4" data-group="N" data-audiences="patients clinicians educators">
@@ -1378,16 +1336,6 @@
                 <button class="tool-card" type="button" data-tool="peds-weight-conv" data-group="N" data-audiences="patients clinicians educators">
                   <span class="tc-title">Pediatric Weight Converter</span>
                   <span class="tc-desc">lb / oz / lb-and-oz <-> kg with neonatal weight band reference.</span>
-                </button>
-              </div>
-            </section>
-
-            <section class="home-section">
-              <h3>High-Alert &amp; Safety</h3>
-              <div class="home-grid">
-                <button class="tool-card" type="button" data-tool="high-alert-card" data-group="O" data-audiences="patients clinicians educators">
-                  <span class="tc-title">High-Alert Medication Wallet Card (ISMP)</span>
-                  <span class="tc-desc">Print-ready ISMP-attributed list of high-alert meds with safety notes.</span>
                 </button>
               </div>
             </section>

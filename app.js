@@ -89,7 +89,9 @@ const UTILITIES = [
   { id: 'peds-dose', name: 'Pediatric Dose Safety Bounds', group: 'F', audiences: ['clinicians', 'educators', 'field'], clinical: true },
   { id: 'insulin-drip', name: 'Insulin Drip Math', group: 'F', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'anticoag-reversal', name: 'Anticoagulation Reversal Reference', group: 'F', audiences: ['clinicians', 'educators', 'field'], clinical: true },
-  { id: 'high-alert', name: 'High-Alert Medication Reference', group: 'F', audiences: ['clinicians', 'educators', 'field'], clinical: true },
+  // spec-v29 wave 29-2 (Group K/O): high-alert removed (ISMP wallet
+  // reference); iv-to-po removed (static equivalence table, audit
+  // confirmed no numeric output per spec-v29 sec 7.2 deferral).
   // Group F: v4 extensions (utilities 129-135)
   { id: 'opioid-mme', name: 'Opioid MME Calculator (CDC 2022)', group: 'F', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'steroid-equiv', name: 'Steroid Equivalence Converter', group: 'F', audiences: ['clinicians', 'educators'], clinical: true },
@@ -97,12 +99,11 @@ const UTILITIES = [
   { id: 'abx-renal', name: 'Antibiotic Renal Dose Adjustment', group: 'F', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'vasopressor', name: 'Vasopressor Dose to Rate Calculator', group: 'F', audiences: ['clinicians', 'educators', 'field'], clinical: true },
   { id: 'tpn-macro', name: 'TPN Macronutrient Calculator', group: 'F', audiences: ['clinicians', 'educators'], clinical: true },
-  { id: 'iv-to-po', name: 'IV-to-PO Conversion Reference', group: 'F', audiences: ['clinicians', 'educators'], clinical: true },
   // Group G: Clinical Scoring and Reference
   { id: 'gcs', name: 'Glasgow Coma Scale', group: 'G', audiences: ['clinicians', 'educators', 'field'], clinical: true },
   { id: 'apgar', name: 'APGAR', group: 'G', audiences: ['clinicians', 'educators', 'field'], clinical: true },
   { id: 'peds-vitals', name: 'Pediatric Vital Signs by Age', group: 'G', audiences: ['clinicians', 'educators', 'field'], clinical: true },
-  { id: 'lab-ranges', name: 'Common Lab Reference Ranges', group: 'G', audiences: ['clinicians', 'educators', 'field'], clinical: true },
+  // lab-ranges removed in spec-v29 wave 29-2 (Group K/O): static table.
   { id: 'abg', name: 'ABG Interpretation Walkthrough', group: 'G', audiences: ['clinicians', 'educators', 'field'], clinical: true },
   { id: 'wells-pe', name: 'Wells Score for PE', group: 'G', audiences: ['clinicians', 'educators', 'field'], clinical: true },
   { id: 'wells-dvt', name: 'Wells Score for DVT', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
@@ -176,11 +177,8 @@ const UTILITIES = [
   { id: 'bbp-exposure', name: 'Bloodborne Pathogen Exposure Decision Tree', group: 'J', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'tb-testing',   name: 'TB Testing Interpretation (TST + IGRA)', group: 'J', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'sti-screening',name: 'STI Screening Interval Reference (CDC)', group: 'J', audiences: ['clinicians', 'patients', 'educators'], clinical: true },
-  // Group K (NEW): Lab Reference (utilities 181-184)
-  { id: 'lab-adult',   name: 'Adult Lab Reference Ranges (NIH)', group: 'K', audiences: ['clinicians', 'educators'], clinical: true },
-  { id: 'lab-peds',    name: 'Pediatric Lab Reference Ranges by Age Band', group: 'K', audiences: ['clinicians', 'educators'], clinical: true },
-  { id: 'tdm-levels',  name: 'Therapeutic Drug Levels Reference', group: 'K', audiences: ['clinicians', 'educators'], clinical: true },
-  { id: 'tox-levels',  name: 'Toxicology Level Reference', group: 'K', audiences: ['clinicians', 'educators'], clinical: true },
+  // Group K (Lab Reference): removed in spec-v29 wave 29-2 (lab-adult,
+  // lab-peds, tdm-levels, tox-levels are pure reference-range tables).
   // Group L: Forms & Numbers Literacy (removed in spec-v29 wave 29-2:
   // cms1500, ub04, eob-glossary are pure form / glossary references).
   // Group M (NEW): Eligibility & Benefits (utilities 188-191)
@@ -188,8 +186,8 @@ const UTILITIES = [
   { id: 'unit-converter-v4', name: 'Universal Unit Converter (lab + vitals + basics)', group: 'N', audiences: ['patients', 'clinicians', 'educators'], clinical: false },
   { id: 'time-to-dose',      name: 'Time-to-Dose Helper', group: 'N', audiences: ['patients'], clinical: false },
   { id: 'peds-weight-conv',  name: 'Pediatric Weight Converter (lb/oz <-> kg)', group: 'N', audiences: ['patients', 'clinicians', 'educators'], clinical: false },
-  // Group O (NEW): Patient Safety (utilities 195-197)
-  { id: 'high-alert-card', name: 'High-Alert Medication Wallet Card (ISMP)', group: 'O', audiences: ['patients', 'clinicians', 'educators'], clinical: false },
+  // Group O (Patient Safety): high-alert-card removed in spec-v29 wave
+  // 29-2 (pure ISMP infographic).
 
   // spec-v5 §4: deterministic additions for the floor (T1-T17). No live data.
   { id: 'sodium-correction',  name: 'Sodium Correction Rate Planner (Adrogue-Madias)', group: 'E', audiences: ['clinicians', 'educators'], clinical: true },
@@ -374,18 +372,8 @@ const CLINICAL_NOTICE_TEXT =
 // plus the v0/v4 duplicate ids; iv-to-po is intentionally omitted per
 // spec-v29 section 2.4 deferral).
 const DEPRECATED_V29_TILES = new Set([
-  // 2.1 Code-reference lookups: removed in wave 29-2 (Group A); now in
-  // REMOVED_V29_IDS below.
-  // 2.2 Patient-literacy and eligibility infographics + 2.4 form-locator
-  // / glossary tiles: removed in wave 29-2 (Group C/L); now in
-  // REMOVED_V29_IDS below.
-  // 2.3 Field-medicine reference cards
-  'adult-arrest-ref', 'peds-arrest-ref', 'defib', 'toxidromes',
-  'dot-erg', 'niosh-pg', 'cpr-numeric', 'tccc', 'hypothermia',
-  'heat-illness',
-  // 2.4 Reference-range tables (iv-to-po deferred per spec-v29 section 2.4)
-  'lab-ranges', 'lab-adult', 'lab-peds', 'tdm-levels', 'tox-levels',
-  'high-alert-card', 'high-alert',
+  // 2.1, 2.2, 2.3, 2.4 already removed via wave 29-2 (Groups A, C/L, I,
+  // K/O). 2.5 (Group G non-scores) is the final wave 29-2 sub-PR.
   // 2.5 Misc reference (Group G slots that are not scores)
   'beers', 'peds-vitals', 'asa', 'mallampati', 'mrs',
 ]);
@@ -419,6 +407,12 @@ const REMOVED_V29_IDS = new Map([
     'dot-erg', 'niosh-pg', 'cpr-numeric', 'tccc', 'hypothermia',
     'heat-illness',
   ].map((id) => [id, 'Removed in spec-v29 wave 29-2 (field-medicine reference card): this tile is no longer hosted by Sophie. Use the AHA wallet card, PHMSA ERG, NIOSH Pocket Guide, or your protocol app. The field-medicine calculators (peds-weight-dose, burn-fluid, naloxone, NEXUS, START triage, etc.) remain. See docs/spec-v29.md for the rationale.']),
+  // Group K / O (wave 29-2 Group K/O PR): 8 reference-range and
+  // wallet-card tiles.
+  ...[
+    'lab-ranges', 'lab-adult', 'lab-peds', 'tdm-levels', 'tox-levels',
+    'high-alert', 'high-alert-card', 'iv-to-po',
+  ].map((id) => [id, 'Removed in spec-v29 wave 29-2 (reference-range / wallet-card table): this tile is no longer hosted by Sophie. Use your institution\'s lab reference ranges, the ISMP high-alert list, or your formulary. The calculators that consume these thresholds inside their math (e.g. lab-interpret, NEWS2, abx-renal) remain. See docs/spec-v29.md for the rationale.']),
 ]);
 
 // ----- DOM helpers ---------------------------------------------------------

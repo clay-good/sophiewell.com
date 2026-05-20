@@ -6,6 +6,63 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Removed (spec-v29 wave 29-2 Group K/O — 8 reference-range and wallet-card tiles)
+
+Fourth of the five wave 29-2 deletion PRs (one per group letter
+per spec-v29 sec 7.2). Removes the Group K (lab-reference) and
+Group O (high-alert wallet) tiles, plus the deferred Group K/O
+tiles surfaced in Groups F and G. The `iv-to-po` deferral from
+spec-v29 sec 7.2 is resolved per the wave-29-2 audit decision:
+the implementation is a static equivalence table with no numeric
+output, so it is removed with the rest.
+
+Tiles removed (8):
+- lab-ranges (Group G slot; common adult ranges).
+- lab-adult, lab-peds (Group K; NIH / pediatric reference tables).
+- tdm-levels (Group K; therapeutic drug-level table).
+- tox-levels (Group K; toxicology threshold table).
+- high-alert (Group F slot; ISMP high-alert list).
+- high-alert-card (Group O; ISMP wallet card).
+- iv-to-po (Group F slot; static IV/PO equivalence table per
+  spec-v29 sec 7.2 audit).
+
+Surfaces touched:
+- `app.js` UTILITIES: 8 entries deleted; the Group K/O block in
+  `REMOVED_V29_IDS` adds the per-group note. `DEPRECATED_V29_TILES`
+  now lists only the wave 29-2 Group G non-score deletion targets.
+- `lib/meta.js`: 8 META entries deleted.
+- `lib/medication-v4.js`: `ivToPo()` helper removed.
+- `views/group-f.js`: high-alert + iv-to-po renderers + `renderTable`
+  + `ivToPo` imports removed.
+- `views/group-g.js`: lab-ranges renderer removed.
+- `views/group-klmno.js`: lab-adult / lab-peds / tdm-levels /
+  tox-levels / high-alert-card renderers removed + all four
+  rendering library imports collapsed (file is now el-only).
+- `index.html`: 8 home-grid tool cards + the Reference Ranges
+  and High-Alert & Safety home sections removed.
+- `scripts/build-topic-pages.mjs`: medication-safety topic
+  rewritten around the calculator survivors;
+  obstetrics-pediatrics drops `lab-peds`.
+
+Data shards deleted: `data/lab-ranges-adult/`,
+`data/lab-ranges-peds/`, `data/therapeutic-drug-levels/`,
+`data/tox-levels/`, `data/iv-to-po/`. `data/clinical/manifest.json`
+shrunk to drop `lab-ranges.json` and `ismp-high-alert.json`
+(also removed); the remaining `data/clinical/` files
+(formulas / pediatric-vitals / beers / asa-status / mallampati)
+go in the wave 29-2 Group G non-scores PR.
+
+Tests updated: `test/unit/medication-v4.test.js` drops `ivToPo`
+import + four tests + the IVPO fixture; `test/unit/meta.test.js`
+NO_INPUTS_TILES allowlist drops the 8 removed ids.
+
+URL hashes for the 8 removed ids resolve to the home view with
+the Group K/O note (spec-v29 sec 2.7).
+
+Catalog 243 -> 235. Remaining v29 deletion PR: Group G non-scores
+(5 single-class clinical references: beers, peds-vitals, asa,
+mallampati, mrs).
+
 ### Removed (spec-v29 wave 29-2 Group I — 10 field-medicine reference cards)
 
 Third of the five wave 29-2 deletion PRs (one per group letter

@@ -6,10 +6,6 @@
 //   O Patient Safety (195-197)
 
 import { el, clear } from '../lib/dom.js';
-import { loadFile } from '../lib/data.js';
-import { renderTable } from '../lib/table.js';
-import { renderDecisionTree } from '../lib/tree.js';
-import { renderPrintable } from '../lib/print.js';
 import {
   labConvert, a1cPctToIfcc, mmHgToKpa, kpaToMmHg, fToC, cToF,
   inchesToCm, cmToInches, lbToKg, kgToLb, lbOzToKg, kgToLbOz, feetInToCm,
@@ -31,73 +27,7 @@ function nv(id) { return Number(document.getElementById(id).value); }
 function safe(o, fn) { clear(o); try { fn(); } catch (err) { o.appendChild(el('p', { class: 'muted', text: err.message })); } }
 
 export const renderers = {
-  // --- Group K: Lab Reference (181-184) ----------------------------------
-
-  'lab-adult'(root) {
-    const region = el('div', { id: 'q-results', role: 'region' });
-    root.appendChild(region);
-    loadFile('lab-ranges-adult', 'adult.json').then((rows) => {
-      renderTable(region, {
-        columns: [
-          { key: 'test', label: 'Test' },
-          { key: 'lowConv', label: 'Low' },
-          { key: 'highConv', label: 'High' },
-          { key: 'unitsConv', label: 'Conv units' },
-          { key: 'lowSi', label: 'Low (SI)' },
-          { key: 'highSi', label: 'High (SI)' },
-          { key: 'unitsSi', label: 'SI units' },
-        ],
-        rows,
-      });
-    });
-  },
-
-  'lab-peds'(root) {
-    const region = el('div', { id: 'q-results', role: 'region' });
-    root.appendChild(region);
-    loadFile('lab-ranges-peds', 'peds.json').then((rows) => {
-      renderTable(region, {
-        columns: [
-          { key: 'test', label: 'Test' },
-          { key: 'ageBand', label: 'Age band' },
-          { key: 'lowConv', label: 'Low' },
-          { key: 'highConv', label: 'High' },
-          { key: 'unitsConv', label: 'Units' },
-        ],
-        rows,
-      });
-    });
-  },
-
-  'tdm-levels'(root) {
-    const region = el('div', { id: 'q-results', role: 'region' });
-    root.appendChild(region);
-    loadFile('therapeutic-drug-levels', 'levels.json').then((rows) => {
-      renderTable(region, {
-        columns: [
-          { key: 'drug', label: 'Drug' },
-          { key: 'lowConv', label: 'Low' },
-          { key: 'highConv', label: 'High' },
-          { key: 'unitsConv', label: 'Units' },
-        ],
-        rows,
-      });
-    });
-  },
-
-  'tox-levels'(root) {
-    const region = el('div', { id: 'q-results', role: 'region' });
-    root.appendChild(region);
-    loadFile('tox-levels', 'tox.json').then((rows) => {
-      renderTable(region, {
-        columns: [
-          { key: 'agent', label: 'Agent' },
-          { key: 'toxicAtConv', label: 'Level associated with toxicity' },
-        ],
-        rows,
-      });
-    });
-  },
+  // --- Group K: Lab Reference (removed in spec-v29 wave 29-2) -----------
 
   // --- Group L: Forms & Numbers Literacy (removed in wave 29-2) ----------
 
@@ -222,25 +152,7 @@ export const renderers = {
     run();
   },
 
-  // --- Group O: Patient Safety (195-197) ---------------------------------
-
-  'high-alert-card'(root) {
-    const region = el('div', { id: 'q-results', role: 'region' });
-    root.appendChild(region);
-    loadFile('clinical', 'ismp-high-alert.json').then((d) => {
-      renderPrintable(region, {
-        title: 'High-Alert Medications - Patient Wallet Card',
-        warnings: [
-          'Reference only - identities only. ISMP maintains the authoritative formatted list at https://www.ismp.org/.',
-          'Patients: do not stop any medication on this list without speaking to your prescriber.',
-        ],
-        sections: [
-          { heading: 'High-alert medications', items: d.meds.map((m) => `${m.name} - ${m.note}`) },
-          { heading: 'My medications (write below)',
-            items: ['', '', '', '', ''] },
-        ],
-      });
-    });
-  },};
+  // --- Group O: Patient Safety (removed in spec-v29 wave 29-2) -----------
+};
 
 const LAB_KEYS = ['glucose', 'cholesterol', 'creatinine', 'bun', 'calcium', 'uricAcid'];

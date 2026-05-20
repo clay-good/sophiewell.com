@@ -7,7 +7,7 @@ import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
 import {
   mmeTotal, steroidEquivalent, benzoEquivalent, abxRenalDose,
-  vasopressorRateMlHr, vasopressorDose, tpnMacro, ivToPo,
+  vasopressorRateMlHr, vasopressorDose, tpnMacro,
 } from '../../lib/medication-v4.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
@@ -16,7 +16,6 @@ const MME = JSON.parse(await readFile(join(ROOT, 'data', 'mme-factors', 'mme.jso
 const STEROIDS = JSON.parse(await readFile(join(ROOT, 'data', 'steroid-equiv', 'steroid.json'), 'utf8'));
 const BENZOS = JSON.parse(await readFile(join(ROOT, 'data', 'benzo-equiv', 'benzo.json'), 'utf8'));
 const ABX = JSON.parse(await readFile(join(ROOT, 'data', 'abx-renal', 'abx.json'), 'utf8'));
-const IVPO = JSON.parse(await readFile(join(ROOT, 'data', 'iv-to-po', 'iv-po.json'), 'utf8'));
 const close = (a, b, eps = 0.5) => assert.ok(Math.abs(a - b) <= eps, `expected ~${b}, got ${a}`);
 
 // --- MME ---------------------------------------------------------------
@@ -131,20 +130,5 @@ test('tpn: rejects zero volume', () => {
   assert.throws(() => tpnMacro({ volumeMl: 0, dextrosePct: 20, aminoAcidPct: 5 }));
 });
 
-// --- IV-to-PO ----------------------------------------------------------
-test('ivToPo: levofloxacin 1:1', () => {
-  const r = ivToPo({ drug: 'levofloxacin', ivDoseMg: 750, table: IVPO });
-  close(r.poDoseMg, 757.5, 1); // 750/0.99
-  close(r.bioavailability, 0.99);
-});
-test('ivToPo: metronidazole F=1', () => {
-  const r = ivToPo({ drug: 'metronidazole', ivDoseMg: 500, table: IVPO });
-  close(r.poDoseMg, 500);
-});
-test('ivToPo: ciprofloxacin F=0.7 -> larger PO dose', () => {
-  const r = ivToPo({ drug: 'ciprofloxacin', ivDoseMg: 400, table: IVPO });
-  close(r.poDoseMg, 571.4, 0.5);
-});
-test('ivToPo: unknown drug returns null', () => {
-  assert.equal(ivToPo({ drug: 'foo', ivDoseMg: 100, table: IVPO }), null);
-});
+// ivToPo tests removed with the iv-to-po tile (spec-v29 wave 29-2
+// Group K/O).

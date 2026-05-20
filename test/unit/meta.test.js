@@ -86,8 +86,7 @@ const NO_INPUTS_TILES = new Set([
   // to pre-fill from META.
   'peds-dose',         // Group F: pediatric dose reference table.
   'anticoag-reversal', // Group F: anticoagulant reversal reference table.
-  'high-alert',        // Group F: ISMP high-alert medication list.
-  'iv-to-po',          // Group F: IV-to-PO bioavailability reference table.
+  // high-alert + iv-to-po removed in spec-v29 wave 29-2 (Group K/O).
   'opioid-mme',        // Group F: dynamic per-row opioid MME calculator.
   // Wave 3c: pure-reference tiles in Group G and Group I that show a
   // static table or scale and take no fillable form. The five PHQ-9-style
@@ -112,14 +111,12 @@ const NO_INPUTS_TILES = new Set([
   'rabies-pep',       // Group J: rabies PEP decision tree.
   'bbp-exposure',     // Group J: bloodborne pathogen exposure decision tree.
   'sti-screening',    // Group J: CDC STI screening reference table.
-  'lab-adult',        // Group K: adult lab-range reference table.
-  'lab-peds',         // Group K: pediatric lab-range reference table.
-  'tdm-levels',       // Group K: therapeutic drug-level reference table.
-  'tox-levels',       // Group K: toxicity threshold reference table.
+  // Group K (lab-adult, lab-peds, tdm-levels, tox-levels) removed in
+  // spec-v29 wave 29-2.
   'cms1500',          // Group L: CMS-1500 field-by-field reference.
   'ub04',             // Group L: UB-04 field-by-field reference.
   'eob-glossary',     // Group L: EOB jargon glossary table.
-  'high-alert-card',  // Group O: ISMP high-alert wallet card reference.
+  // high-alert-card removed in spec-v29 wave 29-2 (Group K/O).
 ]);
 
 test('META v9 coverage (hard): every tile has META[id].citation', async () => {

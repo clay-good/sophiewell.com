@@ -10,9 +10,7 @@
   "files": [
     "formulas.json",
     "pediatric-vitals.json",
-    "lab-ranges.json",
     "beers.json",
-    "ismp-high-alert.json",
     "asa-status.json",
     "mallampati.json"
   ]

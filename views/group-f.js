@@ -3,11 +3,10 @@
 import { el, clear } from '../lib/dom.js';
 import { loadFile } from '../lib/data.js';
 import * as C from '../lib/clinical.js';
-import { renderTable } from '../lib/table.js';
 import {
   mmeTotal, steroidEquivalent, benzoEquivalent,
   abxRenalDose, vasopressorRateMlHr, vasopressorDose,
-  tpnMacro, ivToPo,
+  tpnMacro,
 } from '../lib/medication-v4.js';
 import {
   insulinCorrection, electrolyteReplacement, crrtDose, ecmoTitration,
@@ -158,17 +157,7 @@ export const renderers = {
     tbl.appendChild(tbody); o.appendChild(tbl);
   },
 
-  'high-alert'(root) {
-    const o = out(); root.appendChild(o);
-    loadFile('clinical', 'ismp-high-alert.json').then((data) => {
-      o.appendChild(el('p', { class: 'muted', text: data.attribution }));
-      const tbl = el('table', { class: 'lookup-table' });
-      tbl.appendChild(el('thead', {}, [el('tr', {}, [el('th', { scope: 'col', text: 'Medication' }), el('th', { scope: 'col', text: 'Why high-alert (project author note)' })])]));
-      const tbody = el('tbody');
-      for (const m of data.meds) tbody.appendChild(el('tr', {}, [el('td', { text: m.name }), el('td', { text: m.note })]));
-      tbl.appendChild(tbody); o.appendChild(tbl);
-    });
-  },
+  // high-alert removed in spec-v29 wave 29-2 (Group K/O).
 
   // --- spec-v4 §5: Group F extensions (utilities 129-135) -------------
 
@@ -372,20 +361,8 @@ export const renderers = {
     ['tpn-vol', 'tpn-d', 'tpn-aa', 'tpn-lipid'].forEach((id) => document.getElementById(id).addEventListener('input', run));
   },
 
-  'iv-to-po'(root) {
-    const region = el('div', { id: 'q-results', role: 'region', 'aria-live': 'polite' });
-    root.appendChild(region);
-    loadFile('iv-to-po', 'iv-po.json').then((rows) => {
-      renderTable(region, {
-        columns: [
-          { key: 'drug', label: 'Drug' },
-          { key: 'bioavailability', label: 'Oral bioavailability (F)' },
-          { key: 'ratio', label: 'IV:PO ratio' },
-        ],
-        rows,
-      });
-    });
-  },
+  // iv-to-po removed in spec-v29 wave 29-2 (Group K/O): static
+  // equivalence table per sec 7.2 audit decision.
 
   // spec-v29 sec 4.8.1 wave 29-3c: insulin correction (ADA 2024).
   'insulin-correction'(root) {

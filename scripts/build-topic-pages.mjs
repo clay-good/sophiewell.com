@@ -46,14 +46,14 @@ export const TOPICS = {
     label: 'Medication safety',
     h1: 'Medication safety calculators and references',
     title: 'Medication Safety Tools - MME, Naloxone, Beers, High-Alert · Sophie Well',
-    description: 'Free medication-safety tools: opioid MME (CDC 2022), naloxone dosing, Beers criteria, high-alert list, renal antibiotic dosing, anticoag reversal. No signup.',
-    lede: 'Tools sized for the moments where a wrong dose hurts somebody: opioid morphine milligram equivalents under the CDC 2022 update, naloxone dosing by weight, Beers criteria for older adults, the ISMP high-alert list, anticoagulation reversal cheats, IV-to-PO conversions, steroid and benzodiazepine equivalencies, renal antibiotic dose adjustments, vasopressor reference, and insulin infusion math.',
+    description: 'Free medication-safety tools: opioid MME (CDC 2022), naloxone dosing, renal antibiotic dosing, vasopressor math, steroid + benzo equivalencies.',
+    lede: 'Tools sized for the moments where a wrong dose hurts somebody: opioid morphine milligram equivalents under the CDC 2022 update, naloxone dosing by weight, anticoagulation reversal cheats, steroid and benzodiazepine equivalencies, renal antibiotic dose adjustments, vasopressor reference, and insulin infusion math. spec-v29 removed the static reference lists (Beers, ISMP high-alert, IV-to-PO, therapeutic drug levels) - those belong in your formulary.',
     tiles: [
-      'opioid-mme', 'naloxone', 'beers', 'high-alert', 'high-alert-card',
-      'anticoag-reversal', 'iv-to-po', 'steroid-equiv', 'benzo-equiv',
+      'opioid-mme', 'naloxone',
+      'anticoag-reversal', 'steroid-equiv', 'benzo-equiv',
       'abx-renal', 'vasopressor', 'insulin-drip', 'drip-rate',
       'weight-dose', 'peds-dose', 'peds-weight-dose', 'conc-rate',
-      'tpn-macro', 'time-to-dose', 'tdm-levels',
+      'tpn-macro', 'time-to-dose',
     ],
   },
   triage: {
@@ -94,7 +94,7 @@ export const TOPICS = {
     tiles: [
       'due-date', 'preg-dating', 'bishop', 'apgar', 'peds-vitals',
       'peds-dose', 'peds-weight-dose', 'peds-weight-conv', 'peds-ett',
-      'jumpstart-triage', 'lab-peds', 'pews', 'mentzer', 'epds',
+      'jumpstart-triage', 'pews', 'mentzer', 'epds',
     ],
   },
   'behavioral-health': {
