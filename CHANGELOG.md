@@ -6,6 +6,32 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Removed (spec-v29 post-close: 6 orphaned `G`-leader keyboard shortcuts whose target tiles were retired)
+
+The `G`-prefix keyboard shortcuts in `lib/keyboard.js` carried six
+entries that targeted tiles retired by spec-v10 or spec-v29 wave
+29-2:
+
+- `G I` → `icd10` (retired wave 29-2 §2.1)
+- `G C` → `cpt` (retired wave 29-2 §2.1)
+- `G N` → `ndc` (retired wave 29-2 §2.1)
+- `G F` → `mpfs` Medicare Fee Lookup (retired in spec-v10)
+- `G O` → `oop` Out-of-Pocket Estimator (retired in spec-v10)
+- The HCPCS branch of `G H` ("Home or HCPCS from home", retired
+  wave 29-2 §2.1)
+
+Each leader pointed at a hash that no longer resolves to a tile.
+Removed; `G H` is now an unconditional "Home" jump. Surviving
+shortcuts: `G H` (Home), `G U` (Unit Converter), `G B` (BMI),
+`G E` (eGFR), `G D` (Drip Rate), `G W` (Weight-Based Dose),
+`G M` (MAP), `G G` (GCS). The help overlay (`?`) lists the
+surviving set.
+
+`test/unit/keyboard.test.js` updated: the surviving-keys
+assertion drops the six retired letters; a new assertion
+explicitly forbids them so a future regression cannot re-add
+a leader that targets a missing tile.
+
 ### Changed (spec-v29 post-close: docs/data-sources.md rewritten around the v29-close bundled data)
 
 No code change; no catalog change. Rewrites `docs/data-sources.md`

@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `d66684e9eb2378e0`
-Generated: 2026-05-20T20:12:23.989Z
+Build ID: `4bcf33fdcf27818a`
+Generated: 2026-05-20T20:26:24.349Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=20.18.1 <21, npm >=10.0.0
@@ -50,7 +50,7 @@ downloads is committed in this repository and is hashed below.
 | `lib/dom.js` | 984 | `b4b4ac74decb848bde516bfc1773e6c45a8d80031ed8f9d14226393d18fcde54` |
 | `lib/field.js` | 12177 | `7b679240901a74513295bedb206dd845495561b97ac3a067c3f72cf1235074cf` |
 | `lib/hash.js` | 3985 | `ba49aa8fce1db3444491fbc5804508e9dd1839adac68bcb0e3c71f6943d6a873` |
-| `lib/keyboard.js` | 6403 | `cc656a177cbe95a616dfbb18ffaf1765aed50eac21df224d5eaa8c41079d8040` |
+| `lib/keyboard.js` | 6212 | `c36b2aadd7a92062c45f07be84af28d6521e636707c5feac1044a4dd783b7ac3` |
 | `lib/keywords.js` | 2715 | `8ba3e40698eaf14947556b0d2078f168a99e8589644808057fa1b453d903a742` |
 | `lib/lab-interpret.js` | 29158 | `5b8211cf78060ef91fb1b54d03be40bd3b0fffc526de0944581fd5f285daf572` |
 | `lib/live.js` | 1138 | `304978d3c170b6eb06cade7702e5f99d868e9b3e1f5651aa9a28da15e62a6a9c` |
