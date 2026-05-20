@@ -12,7 +12,7 @@ import {
 } from '../lib/workflow-v4.js';
 import {
   ewsEscalation, restraintTimer, sepsisBundleClock, codeBlueClock,
-  mtpTracker, deviceDayCounter, bristolGirth,
+  mtpTracker, deviceDayCounter, bristolGirth, ventSbtPeep,
 } from '../lib/scoring-v4.js';
 
 function out() { return el('div', { id: 'q-results', 'aria-live': 'polite' }); }
@@ -468,5 +468,52 @@ export const renderers = {
     });
     ['bg-g0', 'bg-t0', 'bg-g1', 'bg-t1'].forEach((id) => document.getElementById(id).addEventListener('input', run));
     document.getElementById('bg-b').addEventListener('change', run);
+  },
+
+  // spec-v29 sec 4.16.1 wave 29-3e: SBT readiness + ARDSnet PEEP/FiO2.
+  'vent-sbt-peep'(root) {
+    const sbtFieldset = el('fieldset', {}, [el('legend', { text: 'Boles 2007 SBT readiness criteria' })]);
+    sbtFieldset.appendChild(f29d('PaO2 / FiO2 ratio', 'vs-pf'));
+    sbtFieldset.appendChild(f29d('Current PEEP (cm H2O)', 'vs-peep'));
+    sbtFieldset.appendChild(f29d('Current FiO2 (fraction, 0-1)', 'vs-fio2'));
+    sbtFieldset.appendChild(el('p', {}, [el('label', { for: 'vs-vaso' }, [
+      el('input', { id: 'vs-vaso', type: 'checkbox' }),
+      ' Vasopressors at more than minimal dose',
+    ])]));
+    sbtFieldset.appendChild(el('p', {}, [el('label', { for: 'vs-awake' }, [
+      el('input', { id: 'vs-awake', type: 'checkbox' }),
+      ' Patient is awake / cooperative',
+    ])]));
+    root.appendChild(sbtFieldset);
+    const peepFieldset = el('fieldset', {}, [el('legend', { text: 'ARDSnet PEEP / FiO2 look-up' })]);
+    peepFieldset.appendChild(s29d('ARDSnet arm', 'vs-arm', [
+      { value: 'low',  text: 'Low-PEEP arm (Brower 2000)' },
+      { value: 'high', text: 'High-PEEP arm (ALVEOLI 2004)' },
+    ]));
+    peepFieldset.appendChild(f29d('Target FiO2 to look up (fraction)', 'vs-lf'));
+    root.appendChild(peepFieldset);
+    root.appendChild(el('p', { class: 'muted', text: 'Cross-link: pair with the RSBI tile for f/Vt assessment during the SBT.' }));
+    const o = out(); root.appendChild(o);
+    const run = () => safe29d(o, () => {
+      const r = ventSbtPeep({
+        pao2FiO2:         nv29d('vs-pf'),
+        peep:             nv29d('vs-peep'),
+        fio2:             nv29d('vs-fio2'),
+        vasopressors:     document.getElementById('vs-vaso').checked,
+        awakeCooperative: document.getElementById('vs-awake').checked,
+        ardsArm:          v29d('vs-arm'),
+        lookupFiO2:       v29d('vs-lf'),
+      });
+      o.appendChild(el('h2', { text: r.sbtReady ? 'SBT ready (Boles 2007)' : 'SBT not ready' }));
+      const ul = el('ul');
+      for (const [label, ok] of Object.entries(r.sbtChecks)) ul.appendChild(el('li', { text: `${label}: ${ok ? 'ok' : 'no'}` }));
+      o.appendChild(ul);
+      if (r.suggestedPeep !== null) o.appendChild(el('p', { text: `ARDSnet ${r.ardsArm}-PEEP arm at FiO2 ${r.lookupFiO2}: PEEP ${r.suggestedPeep} cm H2O.` }));
+      for (const b of r.banners) o.appendChild(el('p', { class: 'clinical-notice', text: b }));
+    });
+    ['vs-pf', 'vs-peep', 'vs-fio2', 'vs-lf'].forEach((id) => document.getElementById(id).addEventListener('input', run));
+    document.getElementById('vs-vaso').addEventListener('change', run);
+    document.getElementById('vs-awake').addEventListener('change', run);
+    document.getElementById('vs-arm').addEventListener('change', run);
   },
 };

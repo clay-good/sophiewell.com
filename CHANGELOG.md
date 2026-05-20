@@ -6,6 +6,43 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v29 wave 29-3e close — vent bundle: SBT readiness + ARDSnet PEEP/FiO2; wave 29-3 complete)
+
+Final wave 29-3 sub-batch. Closes wave 29-3 with the vent
+bundle.
+
+- `vent-sbt-peep` (Boles 2007 + ARDS Network 2000 / ALVEOLI
+  2004): five SBT readiness criteria (PaO2/FiO2 >=150, PEEP <=8,
+  FiO2 <=0.5, minimal or no vasopressors, awake / cooperative)
+  with per-criterion ok/no breakdown; optional ARDSnet PEEP/FiO2
+  look-up against the low-PEEP arm (Brower 2000) or high-PEEP
+  arm (ALVEOLI 2004). Cross-link banner pairs with the existing
+  `rsbi` tile for f/Vt assessment during the SBT. Tagged
+  `nursing-icu`, `critical-care`, `pulmonology`,
+  `respiratory-therapy`.
+
+Wave 29-3 tile inventory at close:
+- 29-3a (8 tiles): braden, morse-falls, hendrich-ii, cam,
+  ich-score, hunt-hess-wfns, mnihss, aldrete-padss; plus 5
+  nursing-icu specialty backfills (rass, cam-icu, icdsc, cpot,
+  bps).
+- 29-3b (4 tiles): npiap-staging, norton-push, vip-extravasation,
+  blood-compat.
+- 29-3c (4 tiles): insulin-correction, electrolyte-replacement,
+  crrt-dose, ecmo-titration.
+- 29-3d (7 tiles): ews-escalation, restraint-timer,
+  sepsis-bundle-clock, code-blue-clock, mtp-tracker,
+  device-day-counter, bristol-girth.
+- 29-3e (1 tile): vent-sbt-peep.
+
+Total wave 29-3 new tiles: 24 (the spec-v29 sec 4 inventory plus
+one composite renaming). Remaining v29 work is wave 29-2 (the
+47-tile code/data deletion pass), which follows once the
+deprecation banners have run for the spec-v29 sec 7.4 courtesy
+window.
+
+Catalog 286 -> 287 at v29 wave 29-3e close.
+
 ### Added (spec-v29 wave 29-3d — timers / workflow: NEWS2-escalation, restraint, sepsis bundle, code blue, MTP, device-day, Bristol+girth)
 
 Wave 29-3d ships all seven timer / workflow bedside tiles in one
