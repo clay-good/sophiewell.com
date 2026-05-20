@@ -3652,6 +3652,86 @@ export const renderers = {
     run();
   },
 
+  // spec-v29 §4.7.1 wave 29-3a: modified NIHSS (Meyer 2002).
+  mnihss(root) {
+    const items = [
+      ['LOC questions (0-2)',         'mn-loc-q',  2],
+      ['LOC commands (0-2)',          'mn-loc-c',  2],
+      ['Best gaze (0-2)',             'mn-gaze',   2],
+      ['Visual fields (0-3)',         'mn-vf',     3],
+      ['Motor arm left (0-4)',        'mn-arm-l',  4],
+      ['Motor arm right (0-4)',       'mn-arm-r',  4],
+      ['Motor leg left (0-4)',        'mn-leg-l',  4],
+      ['Motor leg right (0-4)',       'mn-leg-r',  4],
+      ['Sensory (0 normal / 1 abnormal)', 'mn-sens',   1],
+      ['Best language (0-3)',         'mn-lang',   3],
+      ['Extinction / neglect (0-2)',  'mn-ext',    2],
+    ];
+    for (const [l, id, max] of items) root.appendChild(rangeField(l, id, 0, max, 0));
+    const o = out(); root.appendChild(o);
+    const run = () => safe(o, () => {
+      const r = S4.mnihss({
+        locQuestions: nv('mn-loc-q'),
+        locCommands:  nv('mn-loc-c'),
+        gaze:         nv('mn-gaze'),
+        visualFields: nv('mn-vf'),
+        motorArmL:    nv('mn-arm-l'),
+        motorArmR:    nv('mn-arm-r'),
+        motorLegL:    nv('mn-leg-l'),
+        motorLegR:    nv('mn-leg-r'),
+        sensory:      nv('mn-sens'),
+        language:     nv('mn-lang'),
+        extinction:   nv('mn-ext'),
+      });
+      o.appendChild(el('h2', { text: `mNIHSS ${r.total} of 31` }));
+      o.appendChild(el('p', { text: r.band }));
+    });
+    items.forEach(([, id]) => document.getElementById(id).addEventListener('input', run));
+    run();
+  },
+
+  // spec-v29 §4.10.1 wave 29-3a: modified Aldrete + PADSS (Aldrete 1995; Chung 1995).
+  'aldrete-padss'(root) {
+    const aldreteItems = [
+      ['Aldrete: activity (0-2)',       'ap-al-act'],
+      ['Aldrete: respiration (0-2)',    'ap-al-resp'],
+      ['Aldrete: circulation (0-2)',    'ap-al-circ'],
+      ['Aldrete: consciousness (0-2)',  'ap-al-cons'],
+      ['Aldrete: O2 saturation (0-2)',  'ap-al-o2'],
+    ];
+    const padssItems = [
+      ['PADSS: vital signs (0-2)',      'ap-pd-vs'],
+      ['PADSS: ambulation (0-2)',       'ap-pd-amb'],
+      ['PADSS: nausea / vomiting (0-2)', 'ap-pd-nv'],
+      ['PADSS: pain (0-2)',             'ap-pd-pain'],
+      ['PADSS: surgical bleeding (0-2)', 'ap-pd-bld'],
+    ];
+    for (const [l, id] of aldreteItems) root.appendChild(rangeField(l, id, 0, 2, 2));
+    for (const [l, id] of padssItems) root.appendChild(rangeField(l, id, 0, 2, 2));
+    const o = out(); root.appendChild(o);
+    const run = () => safe(o, () => {
+      const a = S4.aldrete({
+        activity:        nv('ap-al-act'),
+        respiration:     nv('ap-al-resp'),
+        circulation:     nv('ap-al-circ'),
+        consciousness:   nv('ap-al-cons'),
+        oxygenSaturation: nv('ap-al-o2'),
+      });
+      const p = S4.padss({
+        vitalSigns:       nv('ap-pd-vs'),
+        ambulation:       nv('ap-pd-amb'),
+        nauseaVomiting:   nv('ap-pd-nv'),
+        pain:             nv('ap-pd-pain'),
+        surgicalBleeding: nv('ap-pd-bld'),
+      });
+      o.appendChild(el('h2', { text: `Aldrete ${a.score} of 10 / PADSS ${p.score} of 10` }));
+      o.appendChild(el('p', { text: a.band }));
+      o.appendChild(el('p', { text: p.band }));
+    });
+    [...aldreteItems, ...padssItems].forEach(([, id]) => document.getElementById(id).addEventListener('input', run));
+    run();
+  },
+
   // spec-v29 §4.7.2 wave 29-3a: ICH Score (Hemphill 2001).
   'ich-score'(root) {
     root.appendChild(rangeField('GCS', 'ich-gcs', 3, 15, 15));

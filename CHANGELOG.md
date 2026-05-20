@@ -6,6 +6,37 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v29 wave 29-3a close — mNIHSS + Aldrete/PADSS; wave 29-3a complete)
+
+Third (final) wave 29-3a sub-batch. Closes wave 29-3a with two
+last new tiles.
+
+- `mnihss` (Meyer 2002 modified NIHSS): 11 items (LOC questions,
+  LOC commands, gaze, visual fields, motor arm L and R, motor
+  leg L and R, sensory dichotomized 0-1, language, extinction);
+  total 0-31; severity bands per NIHSS convention (mNIHSS
+  validates against the same bands per Meyer 2002 Results).
+  Tagged `nursing-icu`, `nursing-er`, `nursing-general`,
+  `neurology`, `emergency-medicine`.
+- `aldrete-padss` (Aldrete 1995 + Chung 1995 PADSS, side-by-
+  side): Aldrete (5 domains, 0-10, >=9 PACU-to-floor) plus
+  PADSS (5 domains, 0-10, >=9 home discharge). The existing
+  `aldrete` tile remains; the new tile composes both scores on
+  one page for PACU workflows. Tagged `nursing-or`,
+  `nursing-floor`, `nursing-general`, `anesthesiology`.
+
+Wave 29-3a tile inventory at close:
+- New tiles (8): braden, morse-falls, hendrich-ii, cam,
+  ich-score, hunt-hess-wfns, mnihss, aldrete-padss.
+- Audit upgrades (5, nursing-icu specialty backfill): rass,
+  cam-icu, icdsc, cpot, bps.
+
+Wave 29-3b (criteria bundles: npiap-staging, norton-push,
+vip-extravasation, blood-compat) is the next sub-wave per
+spec-v29 sec 7.3.
+
+Catalog 269 -> 271 at v29 wave 29-3a close.
+
 ### Added (spec-v29 wave 29-3a (partial) — stroke completers: ICH Score + Hunt-Hess/WFNS; nursing-icu specialty backfill)
 
 Second wave 29-3a sub-batch. Two new neuro tiles plus a metadata
