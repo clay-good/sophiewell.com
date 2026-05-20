@@ -150,6 +150,26 @@ list requires v10 to be amended first.
   pharmacy printout OCR, no discharge-packet extraction, no
   insurance-card image OCR. See §3 for the formal v7 §4 wind-down.
 
+> **Amended by [spec-v29](spec-v29.md):** The "patient artifact
+> decoders past what already ships" line is now stricter. v29
+> removes the *residual* patient-administrative infographics
+> that survived v10 (Medical Bill Decoder, Insurance Card Decoder,
+> EOB Decoder, ABN explainer, MSN decoder, NSA / IDR eligibility,
+> birthday rule, COBRA timeline, Medicare enrollment, ACA SEP,
+> CMS-1500 / UB-04 form decoders, EOB jargon glossary). v29 also
+> adds new permanent-out-of-scope categories: code-reference
+> indexes (ICD-10-CM / HCPCS / CPT / NDC / POS / modifier /
+> revenue / CARC / RARC / NUBC / DRG / APC / PCS / RxNorm /
+> NDC-RxNorm crosswalk), reference tables of normal values
+> (adult and pediatric lab ranges, TDM, tox levels, pediatric
+> vitals, AHA CPR numeric, ISMP high-alert), hazmat / occupational
+> reference indexes (DOT ERG, NIOSH Pocket Guide, toxidromes,
+> TCCC), and single-class clinical reference cards (ASA-PS,
+> Mallampati, Beers as a list, Modified Rankin Scale as a band
+> reference). See [spec-v29 §2 and §3](spec-v29.md) for the full
+> deletion ledger and the one-line "computes vs reference" test
+> that governs future tile-add proposals.
+
 ### 2.4 Tile-add criteria
 
 A new tile is in scope when **all** of these hold:

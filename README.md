@@ -2,22 +2,25 @@
 
 Deterministic healthcare utilities, free forever, no servers, no accounts.
 
-sophiewell.com is a single-page static website built for **clinical and
-allied healthcare staff** — the nurse, resident, pharmacist, biller, coder,
-or EMS provider who needs a fast, citable, deterministic answer in the
-middle of a shift. It is, in posture, MDCalc with no ads, no login, no
-upsell, no cookie banner, no email capture, and no network call after first
-paint. Everything runs in the browser. There is no AI of any kind. The
-data sources are public, bundled with the page, and refreshed on a schedule.
-The site costs nothing to operate beyond the domain renewal, so it can be
-free forever. Audiences served, in priority order: bedside clinicians
-(unit conversions, dose math, clinical scoring); billers and coders (codes,
-modifiers, edits, form locators); EMS and field-medicine workers
-(offline-capable triage and weight-based pediatric dosing); healthcare
-educators and trainees (board / licensing reference); and patients with
-the simple bill / EOB / insurance-card / regulatory decoders that already
-ship. See [docs/spec-v10.md](docs/spec-v10.md) for the audience and
-dependency-budget commitments.
+sophiewell.com is a single-page static website built for the **nurse on
+shift** — primarily ICU and acute-care RN (CCRN / PCCN), then ED RN
+(CEN), then floor / med-surg RN, then OR / PACU RN, then L&D / NICU RN —
+with every relevant tile still served to doctors, pharmacists, RTs,
+billers, coders, and EMS providers. It is, in posture, MDCalc with no
+ads, no login, no upsell, no cookie banner, no email capture, and no
+network call after first paint. Everything runs in the browser. There
+is no AI of any kind. The data sources are public, bundled with the
+page, and refreshed on a schedule. The site costs nothing to operate
+beyond the domain renewal, so it can be free forever. The product
+thesis, in one sentence: **MDCalc, but free, login-less, ad-less,
+offline-capable, with a catalog tuned to the nurse on shift**
+(see [docs/spec-v29.md](docs/spec-v29.md)). The one-line scope test:
+a tile must consume at least one user input and produce a computed
+output; "searchable lookup of static facts" does not qualify. See
+[docs/spec-v10.md](docs/spec-v10.md) for the audience and
+dependency-budget commitments and
+[docs/spec-v29.md](docs/spec-v29.md) for the nurse-first pivot and
+the v29 catalog ledger (603 -> 576 tiles after the v29 prune-and-add).
 
 ## The problem
 

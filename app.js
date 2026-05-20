@@ -363,6 +363,38 @@ const UTIL_BY_ID = new Map(UTILITIES.map((u) => [u.id, u]));
 const CLINICAL_NOTICE_TEXT =
   'This is a math aid for verification. Institutional protocols and clinician judgment govern any clinical decision.';
 
+// spec-v29 wave 29-1: deprecation banner for tiles slated for removal in
+// wave 29-2. The tile body still renders below the banner so existing
+// permalinks keep working through the deprecation window; wave 29-2 will
+// remove these ids from UTILITIES and delete the renderers / data shards.
+// The id list is the union of spec-v29 sections 2.1-2.5 (the 47 cuts
+// plus the v0/v4 duplicate ids; iv-to-po is intentionally omitted per
+// spec-v29 section 2.4 deferral).
+const DEPRECATED_V29_TILES = new Set([
+  // 2.1 Code-reference lookups
+  'icd10', 'hcpcs', 'cpt', 'ndc', 'pos-codes', 'modifier-codes',
+  'revenue-codes', 'carc', 'rarc', 'hcpcs-mod', 'pos-lookup',
+  'tob-decode', 'rev-table', 'nubc-codes', 'drg-lookup', 'apc-lookup',
+  'pcs-lookup', 'rxnorm-lookup', 'ndc-rxnorm',
+  // 2.2 Patient-literacy and eligibility infographics
+  'decoder', 'insurance', 'eob-decoder', 'no-surprises',
+  'insurance-card', 'abn-explainer', 'msn-decoder', 'idr-eligibility',
+  'birthday-rule', 'cobra-timeline', 'medicare-enrollment', 'aca-sep',
+  'cms1500', 'ub04', 'eob-glossary',
+  // 2.3 Field-medicine reference cards
+  'adult-arrest-ref', 'peds-arrest-ref', 'defib', 'toxidromes',
+  'dot-erg', 'niosh-pg', 'cpr-numeric', 'tccc', 'hypothermia',
+  'heat-illness',
+  // 2.4 Reference-range tables (iv-to-po deferred per spec-v29 section 2.4)
+  'lab-ranges', 'lab-adult', 'lab-peds', 'tdm-levels', 'tox-levels',
+  'high-alert-card', 'high-alert',
+  // 2.5 Misc reference (Group G slots that are not scores)
+  'beers', 'peds-vitals', 'asa', 'mallampati', 'mrs',
+]);
+
+const DEPRECATION_V29_BANNER_TEXT =
+  'Removed in spec-v29 - this reference tile will be deleted in wave 29-2. Use the upstream source or an equivalent calculator. See docs/spec-v29.md for the rationale and the v29 catalog ledger.';
+
 // ----- DOM helpers ---------------------------------------------------------
 
 function el(tag, attrs, children) {
@@ -849,6 +881,20 @@ function renderToolView(util) {
   // confused). The .content class still gets the encryptalotta panel chrome.
   const content = el('section', { class: 'content', 'aria-label': util.name });
   content.appendChild(el('h1', { text: util.name }));
+
+  // spec-v29 wave 29-1: one-line deprecation banner above the tool body.
+  // Wave 29-2 removes the tile entirely; until then the banner warns users
+  // away from the surface.
+  if (DEPRECATED_V29_TILES.has(util.id)) {
+    content.appendChild(
+      el('p', {
+        class: 'deprecation-notice',
+        role: 'note',
+        'aria-label': 'Deprecation notice',
+        text: DEPRECATION_V29_BANNER_TEXT,
+      })
+    );
+  }
 
   if (util.clinical && util.group !== 'I') {
     content.appendChild(

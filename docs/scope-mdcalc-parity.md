@@ -43,6 +43,22 @@ codes, claims-adjustment reasons, NSA eligibility, ABN, COBRA
 timeline, ACA SEP, CMS-1500, UB-04, HIPAA RoA, the patient-
 literacy decoders, the field-medicine and EMS workflow tiles).
 
+> **Amended by [spec-v29](spec-v29.md):** The "everything MDCalc
+> does not cover" clause is **narrowed**. The surviving billing /
+> coding / regulatory surface is now only the *calculator-shaped*
+> rows (time-based E/M selector, NDC 10/11 converter, HIPAA
+> 60-day breach clock, and the patient-facing workflow
+> *generators* in Group H). Code-reference indexes, patient-
+> administrative infographics, reference tables of normal values,
+> hazmat / occupational reference cards, and single-class clinical
+> reference cards are now permanently out of scope per
+> [spec-v29 §3](spec-v29.md). The one-line test is now: **a tile
+> that does not consume at least one user input and produce a
+> computed output is not in scope for Sophie.** v29 deletes 47
+> reference-only tiles and adds 20 nurse-bedside calculators;
+> the catalog shrinks for the first time in the project's
+> history (603 -> 576).
+
 A reasonable steady-state estimate is **400–600 tiles over 3–5
 years**, depending on how aggressive the audit pace is and how
 much time the maintainer chooses to spend. The exact number is

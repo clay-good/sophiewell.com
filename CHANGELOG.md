@@ -6,6 +6,46 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v29 wave 29-1 — nurse-first pivot: spec-doc landing + deprecation banners)
+
+First v29 wave. The spec lands the **nurse-first pivot**: the
+catalog is narrowed to tiles that compute a result the user acts
+on, with the home-view default audience reordered to nurses by
+shift type (ICU, ED, floor, OR / PACU, L&D / NICU). The wave is
+spec-doc only (no code or data deletions, no new tiles); waves
+29-2 and 29-3 land the 47 deletions and the 20 additions
+respectively.
+
+- Land [docs/spec-v29.md](docs/spec-v29.md). The spec amends
+  [spec-v10 §2.3](docs/spec-v10.md) (permanent out-of-scope
+  ledger) and [scope-mdcalc-parity §1](docs/scope-mdcalc-parity.md)
+  (the "everything MDCalc does not cover" clause).
+- Update [docs/spec-v10.md §2.3](docs/spec-v10.md) with the v29
+  cross-reference: code-reference indexes, patient-administrative
+  infographics, reference tables of normal values, hazmat /
+  occupational reference cards, and single-class clinical
+  reference cards are now permanently out of scope.
+- Update [docs/scope-mdcalc-parity.md §1](docs/scope-mdcalc-parity.md)
+  with the v29 cross-reference: the "everything MDCalc does not
+  cover" clause is narrowed to the calculator-shaped rows
+  (time-based E/M, NDC 10/11 converter, HIPAA 60-day breach
+  clock, and the patient-facing workflow generators).
+- Update [README.md](README.md) leading paragraph to reflect
+  the post-v29 audience and the one-line scope test.
+- Add the v29 one-line deprecation banner to each of the 47
+  tile ids in [spec-v29 §2.1-§2.5](docs/spec-v29.md). The banner
+  renders above the tool body as "Removed in spec-v29 — use the
+  upstream source." Tile bodies still render under the banner
+  through wave 29-2 (the actual delete). v29 acceptance criterion
+  §8 (47 ids removed from UTILITIES / views / data / lib) is not
+  met yet; wave 29-2 lands that.
+- New v29 catalog ledger row: 603 (at v28 close) -> 556 (v29 cut)
+  -> 576 (v29 cut + add). First reduction in catalog count in
+  the project's history. The post-v29 catalog sits comfortably
+  inside the 400-600 parity-window upper bound from
+  [scope-mdcalc-parity §1](docs/scope-mdcalc-parity.md) on
+  quality-audited tiles.
+
 ### Added (spec-v15 wave 15-5 (partial) — trauma scoring: ABC-MTP, MGAP, GAP, BIG)
 
 Partial v15 wave 15-5 (4 of 8 tiles). Each tile ships under the
