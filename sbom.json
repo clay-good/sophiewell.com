@@ -4,7 +4,7 @@
   "serialNumber": "urn:uuid:sophiewell-d66684e9eb2378e0",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-05-20T20:01:21.872Z",
+    "timestamp": "2026-05-20T20:06:54.611Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -16,7 +16,7 @@
       "type": "application",
       "name": "sophiewell.com",
       "version": "1.0.0",
-      "description": "Sophie Well - 79 deterministic healthcare utilities. Free, client-side, no servers, no telemetry, no AI.",
+      "description": "Sophie Well - 230 deterministic healthcare calculators tuned to the nurse on shift. Free, client-side, no servers, no telemetry, no AI.",
       "licenses": [
         {
           "license": {

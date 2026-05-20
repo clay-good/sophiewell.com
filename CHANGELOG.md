@@ -6,6 +6,50 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Changed (spec-v29 post-close: README + package.json sync to v29-close catalog)
+
+Brings the user-facing prose into agreement with the v29-close
+catalog (230 tiles, all deterministic, nurse-first audience
+priority).
+
+- `package.json` description: "79 deterministic healthcare
+  utilities" → "230 deterministic healthcare calculators tuned
+  to the nurse on shift."
+- `README.md` lead paragraph: drops the stale "603 -> 576"
+  projection (the v29 spec projection was based on an over-
+  counted base; actual at v29 close is 230 tiles).
+- `README.md` "The problem" section: rewritten around the
+  bedside-math use case rather than the patient-bill use case
+  (the patient-facing bill / EOB / insurance decoders were
+  retired in spec-v29 wave 29-2 §2.2).
+- `README.md` "How it works" catalog narrative: rewritten to
+  describe the v29-close grouping (Clinical math &
+  conversions, Medication & infusion, Clinical scoring &
+  risk, Clinical criteria & diagnostic bundles, Workflow &
+  templates, Field medicine, Public health & infectious
+  disease, Billing & coding). The static-index references
+  (ICD-10 / HCPCS / CPT / NDC / EOB decoder / bill decoder /
+  ASA / Mallampati / Beers / mRS / lab-ranges / TDM / tox
+  levels / NIOSH / DOT-ERG / AHA wallet card) are dropped;
+  the new v29 nursing-shift tiles (Braden, Morse, Hendrich II,
+  RASS, BPS, CPOT, ICDSC, CAM, CAM-ICU, NPIAP, VIP/INS, ABO
+  compat, insulin correction, electrolyte ladder, CRRT dose,
+  ECMO titration, MTP tracker, restraint timer, sepsis-bundle
+  clock, code-blue clock, device-day counter, Bristol / girth,
+  vent SBT / PEEP-FiO2) are reflected.
+- `README.md` "System design": drops the obsolete Web-Worker
+  reference (Medical Bill Decoder and Hospital Price
+  Transparency were removed in spec-v10 and spec-v29).
+- `README.md` CLI reference: test count updated 191 → 1159.
+- `README.md` "Limitations": drops the CPT / ICD-10-CM / NDC /
+  Bill Decoder / Hospital Price Transparency / Medicare-fee
+  limitations (these tiles no longer exist); adds one bullet
+  pointing users at upstream sources for the retired static
+  indexes.
+
+No catalog change. No code change. Lint + 1159 unit tests +
+sbom + build clean.
+
 ### Changed (spec-v29 §5.3 — audience-chip taxonomy revised; Nurse is the on-first-visit default)
 
 Closes the final spec-v29 acceptance-criteria item. The audience

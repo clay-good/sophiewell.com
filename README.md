@@ -19,23 +19,26 @@ a tile must consume at least one user input and produce a computed
 output; "searchable lookup of static facts" does not qualify. See
 [docs/spec-v10.md](docs/spec-v10.md) for the audience and
 dependency-budget commitments and
-[docs/spec-v29.md](docs/spec-v29.md) for the nurse-first pivot and
-the v29 catalog ledger (603 -> 576 tiles after the v29 prune-and-add).
+[docs/spec-v29.md](docs/spec-v29.md) for the nurse-first pivot
+and the v29 catalog ledger. At v29 close the catalog is 230
+deterministic tiles — every one of them computes from at least
+one user input.
 
 ## The problem
 
-Medical bills, insurance cards, billing codes, and clinical math live in a
-private vocabulary scattered across CMS spreadsheets, FDA databases, and
-clinical literature. Ordinary access to that vocabulary is poor for patients
-trying to read their own bills and inefficient for the clinicians, nurses,
-billers, coders, and field-medicine workers who depend on it daily. The
-information already exists in public files, but no one has put it in front
-of the people who need it, in plain language, in one place.
+Bedside math — drug dose, drip rate, anion gap, eGFR adjustment,
+sepsis-bundle clock, restraint re-check, Braden re-score —
+lives in published clinical literature and institutional protocols.
+The nurse on shift, the resident at 3 a.m., the medic in the
+ambulance, and the pharmacist verifying a renal dose all reach
+for the same calculators and arrive at the same number from the
+same inputs. Existing options are paywalled, ad-laden, login-
+gated, account-tied, or quietly telemetered — every one of which
+adds friction to a 30-second decision at the bedside.
 
-The meta-problem is that existing consumer healthcare tools and clinical
-reference apps either cost money, harvest data, or both. The workers and
-patients who would benefit most from fast, free reference are the ones
-least likely to have a paid app handy at the moment they need it.
+The meta-problem is that the workers who would benefit most from
+fast, free, deterministic math are the ones least likely to have
+a paid app handy at the moment they need it.
 
 ## The solution
 
@@ -53,65 +56,70 @@ production security headers. Any static file server will also work.
 
 ## How it works and how to use it
 
-The site is organized into twelve categories containing 228 utilities, all
-deterministic and built to run on a single static page with no live data
-or refresh pipeline (see [docs/spec-v5.md](docs/spec-v5.md) for the
-maintenance contract). **Code Reference** covers ICD-10-CM, HCPCS Level
-II, CPT (structural Medicare data only), NDC, ICD-10-PCS, RxNorm, MS-DRG,
-APC, NUBC TOB / revenue / condition / occurrence / value codes, HCPCS
-modifiers, place-of-service codes, CARC, RARC, plus the time-based E/M
-code selector and NDC 10/11 digit converter. **Patient Bill & Insurance
-Literacy** is the bill decoder, EOB decoder, MSN decoder, insurance card
-decoder (text + printable), No Surprises Act / IDR eligibility tree, ABN
-explainer, appeal-letter and HIPAA right-of-access / authorization
-generators, ROI request generator, the birthday rule, COBRA timeline,
-Medicare enrollment period checker, ACA SEP eligibility, plus the
-CMS-1500 and UB-04 form-locator decoders and an EOB jargon glossary.
-**Clinical Math & Conversions** covers BMI, BSA suite, MAP / pulse
-pressure / shock index, anion gap with delta-delta, corrected Ca / Na,
-osmolal gap, A-a gradient and P/F suite, Winter's formula, eGFR suite
-(CKD-EPI 2021 / MDRD / Cockcroft-Gault), FENa / FEUrea, maintenance
-fluids 4-2-1, QTc suite, pregnancy dating, pack-years, the universal
-unit converter, plus the v5 sodium-correction planner (Adrogue-Madias),
-free water deficit, predicted body weight + ARDSnet tidal volume, and
-RSBI. **Medication & Infusion** covers drip rate, weight-based dose,
-concentration-to-rate, pediatric dose bounds, insulin drip,
-anticoagulant reversal, high-alert reference, opioid MME, steroid /
-benzodiazepine equivalence, antibiotic renal-dose adjustment,
-vasopressor dose to rate, TPN macronutrient, IV-to-PO, plus the v5 iron
-deficit (Ganzoni). **Clinical Scoring & Reference** covers GCS, APGAR,
-NIHSS, Wells PE / DVT, CHA2DS2-VASc, HAS-BLED, ASA, Mallampati, Beers,
-TIMI, GRACE, HEART, PERC, Geneva, CURB-65, PSI, qSOFA / SOFA, MELD-3.0 /
-Child-Pugh, Ranson / BISAP, Centor / McIsaac, Caprini, Bishop, Alvarado
-/ PAS, mRS, PHQ-9, GAD-7, AUDIT-C, CAGE, EPDS, Mini-Cog, CIWA-Ar, COWS,
-ASCVD PCE, PREVENT 2023, plus the v5 Light's criteria, Mentzer index,
-SAAG, R-factor liver injury, KDIGO AKI staging, modified Sgarbossa,
-revised cardiac risk index, and PEWS. **Workflow & Templates** adds the
-appointment prep and prior-auth generators, HIPAA authorization, ROI,
-discharge instructions, specialty-visit questions, medication wallet
-card, and the v5 SBAR handoff template generator. **Field Medicine**
-adds NEXUS / Canadian C-Spine, DOT ERG hazmat lookup, NIOSH Pocket
-Guide, AHA CPR numeric reference, TCCC tourniquet / wound packing, CO /
-cyanide / smoke-inhalation antidote dosing, plus pediatric weight-to-
-dose, cardiac arrest references, defibrillation energy, stroke scales,
-CDC Field Triage, START / JumpSTART, burn surface area and fluid
-resuscitation, pediatric ETT sizing, hypothermia / heat-illness staging,
-toxidromes, naloxone dosing, the EMS documentation helper, and the v5
-AVPU / GCS quick reference. **Public Health Decision Trees** covers
-tetanus prophylaxis, rabies PEP, bloodborne pathogen exposure, TB
-testing interpretation, and STI screening intervals. **Lab Reference**
-bundles adult and pediatric reference ranges, therapeutic drug levels,
-and toxicology levels. **Forms & Numbers Literacy**, **Literacy Helpers**,
-and **Patient Safety** add the smaller-volume reference tables (lab
-glossary, universal converter, time-to-dose, pediatric weight
-converter, ISMP high-alert wallet card).
+After the spec-v29 nurse-first prune, the site organizes 230
+deterministic calculators across the bedside-shift surfaces a
+nurse, doctor, pharmacist, RT, EMS provider, biller-coder, or
+educator actually reaches for. Every tile takes at least one
+user input and produces a computed output; searchable indexes
+of static facts are explicitly out of scope (see
+[docs/spec-v29.md §3](docs/spec-v29.md) and
+[docs/spec-v10.md §2.3](docs/spec-v10.md)).
 
-This catalog is the spec-v5 pragmatic shape: the previous live-data
-pricing, registry, recall, and annually-shifting public-health tiles
-were removed in spec-v5 §3.1 because their correctness depends on a
-refresh pipeline that one person cannot reliably maintain. The remaining
-228 tiles either compute from user input or read a small static
-reference table whose annual drift is tolerable.
+**Clinical math & conversions** covers BMI, BSA suite, MAP /
+pulse pressure / shock index, anion gap with delta-delta,
+corrected Ca / Na, osmolal gap, A-a gradient and P/F suite,
+Winter's formula, eGFR suite (CKD-EPI 2021 / MDRD / Cockcroft-
+Gault), FENa / FEUrea, maintenance fluids (4-2-1), QTc suite,
+pregnancy dating, pack-years, the universal unit converter,
+sodium-correction planner (Adrogue-Madias), free water deficit,
+predicted body weight + ARDSnet tidal volume, and RSBI.
+**Medication & infusion** covers drip rate, weight-based dose,
+concentration-to-rate, pediatric dose bounds, insulin drip,
+anticoagulant reversal, opioid MME (CDC 2022), steroid and
+benzodiazepine equivalence, antibiotic renal-dose adjustment,
+vasopressor dose-to-rate (with VIS / Wernovsky IS), TPN
+macronutrient, iron deficit (Ganzoni), and the v29 nursing-
+shift additions for insulin correction, electrolyte
+replacement ladders, CRRT dose, ECMO titration, and the MTP
+ratio tracker.
+**Clinical scoring & risk** covers GCS, APGAR, NIHSS / mNIHSS,
+Wells PE / DVT, CHA2DS2-VASc, HAS-BLED, TIMI, GRACE, HEART,
+PERC, Geneva, CURB-65, PSI, qSOFA / SOFA, MELD-3.0 / Child-
+Pugh, Ranson / BISAP, Centor / McIsaac, Caprini, Bishop,
+Alvarado / PAS, PHQ-9, GAD-7, AUDIT-C, CAGE, EPDS, Mini-Cog,
+CIWA-Ar, COWS, ASCVD PCE, PREVENT 2023, Light's criteria,
+Mentzer index, SAAG, R-factor liver injury, KDIGO AKI, ICH
+Score, Hunt-Hess / WFNS, plus modified Sgarbossa, revised
+cardiac risk index, PEWS / NEWS2 / NEWS2-escalation, every
+v17-v28 risk-score tile, and the v29 bedside nursing screens
+(Braden, Morse, Hendrich II, RASS, BPS, CPOT, ICDSC, CAM,
+CAM-ICU, Aldrete / PADSS).
+**Clinical criteria & diagnostic bundles** packages NPIAP
+pressure-injury staging, Norton / PUSH wound assessment, the
+VIP / INS extravasation criteria, ABO / Rh blood-product
+compatibility, and the v17-v28 diagnostic bundles.
+**Workflow & templates** carries the patient-visit generators
+that survive v29 (appeal letter, HIPAA Right of Access, HIPAA
+authorization, ROI request, discharge instructions, specialty-
+visit questions, the wallet-card generator, and the SBAR
+handoff template), plus the v29 nursing-shift workflow timers:
+restraint timer, sepsis-bundle clock, code-blue clock, device-
+day counter, Bristol / abdominal-girth tracker, and the vent
+SBT readiness / ARDSnet PEEP-FiO2 ladder.
+**Field medicine** covers NEXUS / Canadian C-Spine, CDC Field
+Triage, START / JumpSTART, peds-weight-dose, burn surface area
+and fluid resuscitation (Parkland / modified Brooke),
+pediatric ETT sizing, naloxone dosing, the EMS documentation
+helper, and the AVPU / GCS quick reference.
+**Public health & infectious disease** covers tetanus
+prophylaxis, rabies PEP, bloodborne pathogen exposure, TB
+testing interpretation, and STI screening intervals. **Billing
+& coding** is now sparse — the time-based E/M code selector,
+the NDC 10 ↔ 11 digit converter, and the HIPAA 60-day breach
+clock. Every static index (ICD-10-CM, HCPCS, CPT, NDC, POS,
+modifier, revenue, CARC / RARC, NUBC, DRG, APC, ICD-10-PCS,
+RxNorm, NDC↔RxNorm) was retired in spec-v29 wave 29-2 §2.1;
+use your EHR, CMS, FDA, or NUBC source instead.
 
 The user flow is simple: type what you need into the hero search
 ("wells PE", "CHA2DS2-VASc", "ICD-10", "magnesium replacement") or
@@ -140,11 +148,9 @@ The application is one HTML file, one CSS file, one JavaScript module set,
 a service worker, and a data folder of sharded JSON. There is no backend.
 The browser receives static files from the same origin and runs everything
 locally. Data shards are loaded only when a utility that needs them is
-opened. Utilities that operate over large datasets (Medical Bill Decoder,
-Hospital Price Transparency Lookup) run inside a Web Worker to keep the
-main thread responsive. The service worker pre-caches the application
-shell on first load and caches data shards on first access, keyed to the
-build hash so new deployments invalidate old caches cleanly. The
+opened. The service worker pre-caches the application shell on first load and
+caches data shards on first access, keyed to the build hash so new
+deployments invalidate old caches cleanly. The
 application has zero runtime dependencies. A weekly CI job runs the data
 refresh pipeline and opens a pull request with any updated data. For the
 long version, see [docs/architecture.md](docs/architecture.md).
@@ -187,7 +193,7 @@ rules, not soft preferences.
 | `npm run dev`            | Serve the directory locally on http://localhost:4173              |
 | `npm run build`          | Copy static files into `dist/` for deployment                     |
 | `npm test`               | Run the full test suite (unit, a11y, grep, data integrity)        |
-| `npm run test:unit`      | Run Node's built-in unit tests (191 tests)                        |
+| `npm run test:unit`      | Run Node's built-in unit tests (1159 tests)                       |
 | `npm run test:e2e`       | Run Playwright integration tests against a real browser           |
 | `npm run test:a11y`      | Run accessibility checks on every utility view                    |
 | `npm run lint`           | Run ESLint with the project rules (bans innerHTML, eval, others)  |
@@ -204,8 +210,8 @@ rules, not soft preferences.
 - The application is read-only with respect to all bundled data.
 - The application does not write to any storage location other than the
   service worker's own cache of its own static files.
-- Pasted bill, EOB, and clinical input is processed in memory and
-  discarded when the page is closed.
+- Clinical input is processed in memory and discarded when the page
+  is closed.
 - There is no `localStorage`, no `sessionStorage`, no cookies, and no
   IndexedDB. All four are verified empty by the integration test suite.
 - `innerHTML`, `outerHTML`, `insertAdjacentHTML`, `eval`, and the
@@ -217,14 +223,6 @@ rules, not soft preferences.
 
 ## Limitations
 
-- CPT descriptors are owned by the American Medical Association and are
-  not bundled. The CPT Code Reference utility shows the structural
-  Medicare data plus an original plain-English category summary, with a
-  link to the AMA's free public CPT lookup tool. See
-  [docs/legal.md](docs/legal.md).
-- The original plain-English category summaries are written by the
-  project author without reference to AMA copyrighted material. They are
-  reviewed periodically for non-derivation.
 - The Field Medicine layer reproduces only the *numeric facts* (drug
   doses, intervals, energy levels, weight ranges) from AHA ACLS/PALS/BLS
   guidelines, with attribution to the AHA guideline edition. AHA
@@ -232,26 +230,22 @@ rules, not soft preferences.
   color-band system is *not* bundled (licensed by Vital Signs); the
   pediatric dose calculator works in straight kilograms instead. See
   [docs/field-medicine-citations.md](docs/field-medicine-citations.md).
-- Data freshness lags behind upstream releases by up to one week.
-  ICD-10-CM is updated annually, MPFS annually, NCCI and MUE quarterly,
-  NADAC weekly, NDC daily, NPI monthly, OIG and opt-out monthly. The
-  footer shows the bundled version date for each dataset.
-- The Bill Decoder relies on regex extraction and cannot read scanned
-  image bills. Paste the bill text.
+- Static code indexes (ICD-10-CM, HCPCS, CPT, NDC, POS, modifier,
+  revenue, CARC / RARC, NUBC, DRG, APC, ICD-10-PCS, RxNorm,
+  NDC↔RxNorm) and reference tables (adult / pediatric lab ranges,
+  TDM, tox levels, ISMP high-alert wallet, AHA CPR wallet card,
+  NIOSH Pocket Guide, DOT ERG, AGS Beers Criteria, ASA Physical
+  Status, Mallampati, Modified Rankin) were retired in spec-v29
+  wave 29-2 — Sophie's edge is computation, not indexing. Use your
+  EHR, the upstream source, or your institutional protocol.
 - The Appointment Prep Question Generator uses deterministic keyword
   matching against a hand-curated bank, not language understanding.
-- The Hospital Price Transparency utility's coverage is intentionally
-  partial. The full federal dataset is too large to bundle. The included
-  hospitals are listed in `data/hospital-prices/manifest.json`.
 - The site is not medical, legal, or financial advice. It does not
   replace clinician judgment, institutional protocols, professional
   billing review, or legal counsel.
 - Clinical calculators are math aids only. Institutional protocols
   govern any clinical decision. Field-medicine utilities additionally
   defer to local protocols and online medical direction.
-- Medicare fee comparisons are reference points, not predictions of what
-  any specific commercial insurance plan will pay.
-
 ## Security
 
 Vulnerability reports: see [SECURITY.md](SECURITY.md) for the private
