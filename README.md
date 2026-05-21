@@ -20,7 +20,7 @@ output; "searchable lookup of static facts" does not qualify. See
 [docs/spec-v10.md](docs/spec-v10.md) for the audience and
 dependency-budget commitments and
 [docs/spec-v29.md](docs/spec-v29.md) for the nurse-first pivot
-and the v29 catalog ledger. At v31 close the catalog is 233
+and the v29 catalog ledger. At v32 close the catalog is 236
 deterministic tiles — every one of them computes from at least
 one user input.
 
@@ -57,9 +57,10 @@ production security headers. Any static file server will also work.
 ## How it works and how to use it
 
 After the spec-v29 nurse-first prune (plus the spec-v30
-thermal-emergency decision tiles and the spec-v31 Beers
-deprescribing checker added on top), the site organizes 233
-deterministic calculators across the bedside-shift surfaces a
+thermal-emergency decision tiles, the spec-v31 Beers
+deprescribing checker, and the spec-v32 non-verbal pain scales
+added on top), the site organizes 236 deterministic calculators
+across the bedside-shift surfaces a
 nurse, doctor, pharmacist, RT, EMS provider, biller-coder, or
 educator actually reaches for. Every tile takes at least one
 user input and produces a computed output; searchable indexes

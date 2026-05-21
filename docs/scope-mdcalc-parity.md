@@ -62,7 +62,9 @@ literacy decoders, the field-medicine and EMS workflow tiles).
 > close — [spec-v30](spec-v30.md), which re-admits two
 > thermal-emergency staging tiles as decision tools — is 232;
 > v31 close — [spec-v31](spec-v31.md), which adds the Beers
-> deprescribing checker — is 233.)
+> deprescribing checker — is 233; v32 close —
+> [spec-v32](spec-v32.md), which adds three non-verbal pain
+> scales (FLACC, PAINAD, NIPS) — is 236.)
 
 A reasonable steady-state estimate is **400–600 tiles over 3–5
 years**, depending on how aggressive the audit pace is and how
@@ -100,7 +102,7 @@ Sophie ships **slowly on purpose**. Three forces set the cadence:
 2. **Solo-developer reality.** The maintainer is one person with
    a day job. Sustainable cadence is ~5–20 audited tiles per
    month, depending on complexity. Faster is unsustainable; slow
-   is fine because the existing 233 tiles already cover the
+   is fine because the existing 236 tiles already cover the
    highest-frequency clinical workflows.
 3. **Source stability.** Clinical formulas are mostly stable on
    decade timescales (Wells PE from 2000 is still the same Wells

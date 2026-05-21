@@ -6,6 +6,47 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v32 wave 32-1 — non-verbal pain scales: `flacc`, `painad`, `nips`)
+
+Extends the v29 nursing-shift catalog with three validated
+non-verbal pain scales nurses reach for at the bedside when the
+patient cannot self-report on a numeric rating scale. Each is a
+small ordinal sum with a banded interpretation and passes the
+v29 §3 one-line test (structured input → computed result).
+Complements the v29-shipped CPOT (any ICU) and BPS (intubated)
+by covering the non-ICU non-verbal surface: pediatrics,
+advanced dementia, and neonatal.
+
+- `lib/scoring-v4.js`: new `flacc()`, `painad()`, `nips()`. Each
+  validates per-item ordinal range, sums to the total, and
+  returns `{score, parts, band, text}`. Shared `painBand()`
+  helper for the FLACC / PAINAD 0-10 banding (0 no pain; 1-3
+  mild; 4-6 moderate; 7-10 severe). NIPS uses its own three-
+  band cutoff per Lawrence 1993 (0-2 no/mild; 3-4 mild-to-
+  moderate; >4 severe).
+- `app.js`: +3 UTILITIES rows in Group G.
+- `views/group-g.js`: +3 renderers, each five or six labeled
+  range inputs and an aria-live result region.
+- `lib/meta.js`: META entries for all three, each with inline
+  citation, specialty tags, prefilled worked example, and
+  spec-v11 §5.3 interpretation bands.
+- `test/unit/flacc.test.js`, `test/unit/painad.test.js`,
+  `test/unit/nips.test.js`: 20 new unit tests total covering the
+  band-boundary scores (FLACC 0/3/4/6/7/10; PAINAD 0/3/4/7/10;
+  NIPS 0/2/3/4/5/7) and rejection of out-of-range inputs.
+- `docs/audits/v11/flacc.md`, `painad.md`, `nips.md`: v11 audit
+  logs with PASS status, primary citation re-verified against
+  Merkel 1997, Warden 2003, and Lawrence 1993 respectively.
+  Cross-implementation differential drawn from each paper's
+  worked example.
+- `docs/spec-v32.md`: the v32 spec doc itself, narrow and
+  three-tile (no other rule amended).
+- `docs/scope-mdcalc-parity.md`, `README.md`, `package.json`:
+  catalog count 233 → 236.
+
+`UTILITIES.length` is 236. Lint + 1211 unit tests + a11y + sbom +
+build all clean.
+
 ### Added (spec-v31 wave 31-1 — Beers Criteria deprescribing checker: `beers-check`)
 
 Resolves [spec-v29 §10.4](docs/spec-v29.md#10-open-questions). The

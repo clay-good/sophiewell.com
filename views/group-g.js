@@ -3855,4 +3855,75 @@ export const renderers = {
     items.forEach(([, id]) => document.getElementById(id).addEventListener('change', run));
     run();
   },
+
+  // spec-v32 §2.1: FLACC (Merkel 1997).
+  flacc(root) {
+    const items = [
+      ['Face (0 no expression - 2 frown/clenched jaw)',     'fl-face'],
+      ['Legs (0 relaxed - 2 kicking/legs drawn up)',        'fl-legs'],
+      ['Activity (0 quiet - 2 jerking/rigid)',              'fl-act'],
+      ['Cry (0 none - 2 steady crying/screams)',            'fl-cry'],
+      ['Consolability (0 content - 2 difficult to console)', 'fl-cons'],
+    ];
+    for (const [l, id] of items) root.appendChild(rangeField(l, id, 0, 2, 0));
+    const o = out(); root.appendChild(o);
+    const run = () => safe(o, () => {
+      const r = S4.flacc({
+        face: nv('fl-face'), legs: nv('fl-legs'), activity: nv('fl-act'),
+        cry: nv('fl-cry'), consolability: nv('fl-cons'),
+      });
+      o.appendChild(el('h2', { text: `FLACC ${r.score} (${r.band})` }));
+      o.appendChild(el('p', { text: r.text }));
+    });
+    items.forEach(([, id]) => document.getElementById(id).addEventListener('input', run));
+    run();
+  },
+
+  // spec-v32 §2.2: PAINAD (Warden 2003).
+  painad(root) {
+    const items = [
+      ['Breathing independent of vocalization (0-2)', 'pa-br'],
+      ['Negative vocalization (0-2)',                  'pa-vo'],
+      ['Facial expression (0-2)',                      'pa-fa'],
+      ['Body language (0-2)',                          'pa-bl'],
+      ['Consolability (0-2)',                          'pa-cons'],
+    ];
+    for (const [l, id] of items) root.appendChild(rangeField(l, id, 0, 2, 0));
+    const o = out(); root.appendChild(o);
+    const run = () => safe(o, () => {
+      const r = S4.painad({
+        breathing: nv('pa-br'), vocalization: nv('pa-vo'),
+        facial: nv('pa-fa'), bodyLanguage: nv('pa-bl'), consolability: nv('pa-cons'),
+      });
+      o.appendChild(el('h2', { text: `PAINAD ${r.score} (${r.band})` }));
+      o.appendChild(el('p', { text: r.text }));
+    });
+    items.forEach(([, id]) => document.getElementById(id).addEventListener('input', run));
+    run();
+  },
+
+  // spec-v32 §2.3: NIPS (Lawrence 1993).
+  nips(root) {
+    const items = [
+      ['Facial expression (0 relaxed - 1 grimace)',         'ni-face', 1],
+      ['Cry (0 no cry - 1 whimper - 2 vigorous)',           'ni-cry',  2],
+      ['Breathing patterns (0 relaxed - 1 changed)',        'ni-br',   1],
+      ['Arms (0 relaxed - 1 flexed/extended)',              'ni-arms', 1],
+      ['Legs (0 relaxed - 1 flexed/extended)',              'ni-legs', 1],
+      ['State of arousal (0 sleeping/calm - 1 fussy)',      'ni-sta',  1],
+    ];
+    for (const [l, id, max] of items) root.appendChild(rangeField(l, id, 0, max, 0));
+    const o = out(); root.appendChild(o);
+    const run = () => safe(o, () => {
+      const r = S4.nips({
+        facialExpression: nv('ni-face'), cry: nv('ni-cry'),
+        breathingPatterns: nv('ni-br'), arms: nv('ni-arms'),
+        legs: nv('ni-legs'), stateOfArousal: nv('ni-sta'),
+      });
+      o.appendChild(el('h2', { text: `NIPS ${r.score} of 7 (${r.band})` }));
+      o.appendChild(el('p', { text: r.text }));
+    });
+    items.forEach(([, id]) => document.getElementById(id).addEventListener('input', run));
+    run();
+  },
 };
