@@ -121,7 +121,8 @@ v34 is fully shipped when:
   clinically by COMFORT-B for most PICU contexts; not shipped.
 - SOS (Sophia Observation withdrawal Symptoms; Ista 2009) —
   alternative to WAT-1; candidate for a future spec if both
-  prove useful in side-by-side practice.
+  prove useful in side-by-side practice. **Resolved by
+  [spec-v35](spec-v35.md):** SOS ships in v35 wave 35-1.
 - RASS and SAS adult sedation scales — already shipped (v13).
 - Self-report pain scales (NRS, VAS, Wong-Baker FACES). Carried
   forward from v32 §5 and v33 §5: not calculators.

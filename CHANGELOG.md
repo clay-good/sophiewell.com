@@ -6,6 +6,49 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v35 wave 35-1 — pediatric ICU iatrogenic-withdrawal companion: `sos`)
+
+Closes out the pediatric ICU iatrogenic-withdrawal surface by
+shipping the Sophia Observation withdrawal Symptoms scale
+(SOS; Ista 2009) as the validated companion to WAT-1 shipped
+in [spec-v34](docs/spec-v34.md). SOS was explicitly named as a
+candidate in [spec-v34 §5](docs/spec-v34.md). PICU practice
+documents both side-by-side at every shift — WAT-1 is leaner
+and stimulus-driven, SOS is longer and observation-window
+driven over a 4-hour shift — and a bedside nurse should be
+able to pick whichever scale her unit's protocol calls for
+without leaving Sophie.
+
+- `lib/scoring-v4.js`: new `sos()`. Validates each of 15
+  binary items as integer 0 or 1, sums to 0-15, and bands as
+  no significant withdrawal / iatrogenic withdrawal present at
+  the >=4 cutoff per Ista 2009 (Youden-optimal derivation
+  threshold). Returns `{score, parts, withdrawal, band, text}`
+  matching the shape of `wat1()` for parity.
+- `app.js`: +1 UTILITIES row in Group G.
+- `views/group-g.js`: +1 renderer with 15 labeled 0-1 range
+  fields and an aria-live result region.
+- `lib/meta.js`: META entry with inline Ista 2009 citation,
+  specialty tags (nursing-picu / nursing-nicu / nursing-peds /
+  nursing-general / pediatrics / anesthesiology / pain-medicine),
+  a prefilled all-zero worked example, and the spec-v11 §5.3
+  interpretation bands.
+- `test/unit/sos.test.js`: 7 new unit tests covering band-
+  boundary scores (0, 3, 4, 15), part-mirroring, text content,
+  and rejection of out-of-range and non-integer inputs.
+- `docs/audits/v11/sos.md`: v11 audit log with PASS status,
+  primary citation re-verified against Ista 2009, and the
+  derivation Youden cutoff cross-check.
+- `docs/spec-v35.md`: the v35 spec doc itself, narrow and
+  one-tile (no other rule amended).
+- `docs/spec-v34.md §5`: cross-reference back-link noting SOS
+  "Resolved by spec-v35".
+- `docs/scope-mdcalc-parity.md`, `README.md`, `package.json`:
+  catalog count 242 → 243.
+
+`UTILITIES.length` is 243. Lint + unit tests + a11y + sbom +
+build all clean.
+
 ### Added (spec-v34 wave 34-1 — pediatric ICU bedside extensions: `comfort-b`, `wat-1`, `sbs`)
 
 Completes the pediatric-ICU nurse-bedside sedation and

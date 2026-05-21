@@ -67,7 +67,9 @@ literacy decoders, the field-medicine and EMS workflow tiles).
 > scales (FLACC, PAINAD, NIPS) — is 236; v33 close —
 > [spec-v33](spec-v33.md), which adds N-PASS, CRIES, and POSS —
 > is 239; v34 close — [spec-v34](spec-v34.md), which adds
-> COMFORT-B, WAT-1, and SBS — is 242.)
+> COMFORT-B, WAT-1, and SBS — is 242; v35 close —
+> [spec-v35](spec-v35.md), which adds SOS as the WAT-1 companion
+> — is 243.)
 
 A reasonable steady-state estimate is **400–600 tiles over 3–5
 years**, depending on how aggressive the audit pace is and how
@@ -105,7 +107,7 @@ Sophie ships **slowly on purpose**. Three forces set the cadence:
 2. **Solo-developer reality.** The maintainer is one person with
    a day job. Sustainable cadence is ~5–20 audited tiles per
    month, depending on complexity. Faster is unsustainable; slow
-   is fine because the existing 242 tiles already cover the
+   is fine because the existing 243 tiles already cover the
    highest-frequency clinical workflows.
 3. **Source stability.** Clinical formulas are mostly stable on
    decade timescales (Wells PE from 2000 is still the same Wells

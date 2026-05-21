@@ -4107,4 +4107,36 @@ export const renderers = {
     inp.addEventListener('input', run);
     run();
   },
+
+  // spec-v35 §2.1: SOS (Ista 2009). Fifteen binary items aggregate to 0-15.
+  sos(root) {
+    const items = [
+      ['Tachycardia (>2 SD above age-norm)',                       'so-tac', 'tachycardia'],
+      ['Tachypnea (>2 SD above age-norm)',                         'so-tap', 'tachypnea'],
+      ['Fever (>38.4 C)',                                          'so-fev', 'fever'],
+      ['Sweating',                                                 'so-swe', 'sweating'],
+      ['Agitation',                                                'so-agi', 'agitation'],
+      ['Anxiety',                                                  'so-anx', 'anxiety'],
+      ['Grimacing',                                                'so-gri', 'grimacing'],
+      ['Sleeplessness',                                            'so-sle', 'sleeplessness'],
+      ['Hallucinations',                                           'so-hal', 'hallucinations'],
+      ['Motor disturbance / movement disorder',                    'so-mot', 'motorDisturbance'],
+      ['Hypertonia / increased muscle tone',                       'so-hyp', 'hypertonia'],
+      ['Tremor',                                                   'so-tre', 'tremor'],
+      ['Vomiting',                                                 'so-vom', 'vomiting'],
+      ['Diarrhea',                                                 'so-dia', 'diarrhea'],
+      ['Inconsolable crying',                                      'so-cry', 'inconsolableCrying'],
+    ];
+    for (const [l, id] of items) root.appendChild(rangeField(`${l} (0 absent - 1 present)`, id, 0, 1, 0));
+    const o = out(); root.appendChild(o);
+    const run = () => safe(o, () => {
+      const input = {};
+      for (const [, id, key] of items) input[key] = nv(id);
+      const r = S4.sos(input);
+      o.appendChild(el('h2', { text: `SOS ${r.score} of 15 (${r.band})` }));
+      o.appendChild(el('p', { text: r.text }));
+    });
+    items.forEach(([, id]) => document.getElementById(id).addEventListener('input', run));
+    run();
+  },
 };
