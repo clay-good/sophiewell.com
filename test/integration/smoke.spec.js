@@ -35,21 +35,28 @@ test('home: clicking a tool card opens its renderer (BMI smoke)', async ({ page 
   await expect(page.getByText('BMI: 22.9 kg/m^2 (Normal)')).toBeVisible();
 });
 
-// spec-v29 wave 29-2 (Group A): the icd10 / cpt / hcpcs reference tiles
-// were removed. Their hashes now redirect to the home view with a
-// removed-note. The "home: clicking a card opens its renderer with
-// breadcrumb" check is exercised by the BMI test above; the per-tile
-// Group A smoke checks below are deleted with the tiles.
+// spec-v29 wave 29-2: tiles in Groups A (code-reference lookups), C/L
+// (patient-literacy / form-locator), I (field-medicine reference cards),
+// K/O (lab-range / wallet-card reference), and the single-class clinical
+// reference cards in Group G were removed. Their hashes now redirect to
+// the home view with a `.deprecation-notice` carrying the "Removed in
+// spec-v29" banner. The per-tile smokes below are deleted; a single
+// parameterized check covers one representative hash from each retired
+// surface.
 
-test('group A removed-tile hash shows the v29 removed-note', async ({ page }) => {
-  await page.goto('/#icd10');
-  await expect(page.locator('.deprecation-notice')).toContainText('Removed in spec-v29');
-});
-
-// spec-v29 wave 29-2 (Group C/L): the Bill Decoder / EOB Decoder / NSA
-// eligibility / form-locator tiles were removed. Their hashes now
-// redirect to the home view with a removed-note (covered by the Group
-// A removed-tile-hash regression above).
+const RETIRED_TILE_HASHES = [
+  'icd10',          // Group A
+  'eob-glossary',   // Group L
+  'defib',          // Group I
+  'lab-adult',      // Group K
+  'high-alert-card', // Group O
+];
+for (const id of RETIRED_TILE_HASHES) {
+  test(`retired tile #${id} shows the v29 removed-note`, async ({ page }) => {
+    await page.goto('/#' + id);
+    await expect(page.locator('.deprecation-notice')).toContainText('Removed in spec-v29');
+  });
+}
 
 test('group E: BMI calculator returns category', async ({ page }) => {
   await page.goto('/#bmi');
@@ -72,9 +79,11 @@ test('group F: drip rate computes', async ({ page }) => {
   await expect(page.getByText('Drops: 31 gtts/min')).toBeVisible();
 });
 
-test('group G: GCS sums to 15', async ({ page }) => {
+test('group G: GCS renders prefilled example total', async ({ page }) => {
+  // spec-v9 §3.3: tiles boot with their META.example fields applied,
+  // so the GCS view loads at eye=3/verbal=4/motor=5 = 12 (Moderate).
   await page.goto('/#gcs');
-  await expect(page.getByText('GCS total: 15 (Mild)')).toBeVisible();
+  await expect(page.getByText('GCS total: 12 (Moderate)')).toBeVisible();
 });
 
 test('group H: appointment prep generates questions', async ({ page }) => {
@@ -127,9 +136,16 @@ test('spec-v2: every utility renders inline citation or source stamp', async ({ 
   await expect(page.locator('.tool-meta .citation')).toContainText('Quetelet');
 });
 
-test('spec-v2: Test-with-example button populates inputs and renders result', async ({ page }) => {
+test('spec-v2 / spec-v9: example values prefill the tile and reset link restores them', async ({ page }) => {
+  // spec-v9 §3.3 replaced the "Test with example" button with on-load
+  // prefill plus a "Reset to example" link. The link applies the example
+  // values and reveals the documented Expected text.
   await page.goto('/#bmi');
-  await page.click('.example-btn');
+  await expect(page.getByText('BMI: 22.9 kg/m^2 (Normal)')).toBeVisible();
+  // The user can edit inputs and reset back to the example.
+  await page.fill('#w', '90');
+  await page.fill('#h', '1.80');
+  await page.click('.example-reset');
   await expect(page.getByText('BMI: 22.9 kg/m^2 (Normal)')).toBeVisible();
   await expect(page.locator('.example-expected')).toContainText('Expected:');
 });
@@ -187,7 +203,9 @@ test('spec-v2: changelog and stability docs render via in-site routes', async ({
 // ---- spec-v3 layer ----
 
 test('spec-v3: Group I tools render the local-protocol notice', async ({ page }) => {
-  await page.goto('/#defib');
+  // `defib` was retired in spec-v29 wave 29-2 (Group I reference cards); the
+  // local-protocol notice is now exercised against a Group I survivor.
+  await page.goto('/#cincinnati');
   await expect(page.getByText('Local protocols, medical direction, and clinician judgment')).toBeVisible();
 });
 
@@ -206,18 +224,12 @@ test('spec-v4 group J: tetanus decision tree renders the first question', async 
   await expect(page.getByRole('button', { name: 'Clean and minor' })).toBeVisible();
 });
 
-test('spec-v4 group K: adult lab reference table renders rows', async ({ page }) => {
-  await page.goto('/#lab-adult');
-  await expect(page.locator('.content h1')).toHaveText('Adult Lab Reference Ranges (NIH)');
-  await expect(page.locator('table tbody tr').first()).toBeVisible();
-});
-
-test('spec-v4 group L: EOB glossary table includes a known term', async ({ page }) => {
-  await page.goto('/#eob-glossary');
-  await expect(page.locator('.content h1')).toHaveText('EOB Jargon Glossary');
-  await expect(page.getByRole('cell', { name: 'Allowed amount', exact: true })).toBeVisible();
-  await expect(page.getByText('Coordination of benefits', { exact: false })).toBeVisible();
-});
+// spec-v4 groups K (lab reference), L (forms & numbers literacy), and O
+// (patient-safety wallet cards) were entirely retired in spec-v29 wave
+// 29-2 (§2.2, §2.4); their per-tile smokes are dropped. The redirect
+// behavior for representative hashes (`lab-adult`, `eob-glossary`,
+// `high-alert-card`) is covered by the parameterized retired-tile check
+// near the top of this file.
 
 test('spec-v4 group N: pediatric weight converter computes lb/oz to kg', async ({ page }) => {
   await page.goto('/#peds-weight-conv');
@@ -227,11 +239,3 @@ test('spec-v4 group N: pediatric weight converter computes lb/oz to kg', async (
   await expect(page.getByText('Term newborn:', { exact: false })).toBeVisible();
 });
 
-test('spec-v4 group O: high-alert wallet card renders printable title', async ({ page }) => {
-  await page.goto('/#high-alert-card');
-  // Page-level h1 is the route name; printable card title is now an h2 so
-  // the document only contains a single h1 (a11y).
-  await expect(page.locator('.content > h1')).toHaveText('High-Alert Medication Wallet Card (ISMP)');
-  await expect(page.getByRole('heading', { name: 'High-Alert Medications - Patient Wallet Card' })).toBeVisible();
-  await expect(page.getByRole('button', { name: /Print/i })).toBeVisible();
-});

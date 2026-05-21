@@ -6,6 +6,58 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Fixed (spec-v29 post-close: prune stale e2e smokes for retired tiles; fix two stale META examples)
+
+The Playwright e2e job carried smokes and a parameterized correctness
+sweep that still targeted tiles retired in spec-v29 wave 29-2, plus
+two `META[id].example` blocks whose `expected` text no longer
+matched the renderer output. Net effect: 20-ish pre-existing
+chromium failures on `main`. After this change the e2e suite is
+clean of retired-tile drift and the meta-example mismatches.
+
+- `test/integration/smoke.spec.js`: the per-tile Group I (`defib`),
+  K (`lab-adult`), L (`eob-glossary`), and O (`high-alert-card`)
+  smokes referenced retired tiles. They are replaced with a single
+  parameterized check that asserts each hash now redirects to the
+  home view with the `.deprecation-notice` "Removed in spec-v29"
+  banner (mirroring the pattern already used for Group A `icd10`).
+  The "Group I tools render the local-protocol notice" smoke is
+  retargeted at a surviving Group I tile (`cincinnati`); `defib`'s
+  notice is gone with the tile.
+- `test/integration/smoke.spec.js`: the GCS smoke asserted "GCS
+  total: 15 (Mild)" — the v6-era default-input result. Per
+  spec-v9 §3.3 every tile boots with its `META.example` applied,
+  so the GCS view loads at 3/4/5 = 12 (Moderate). Assertion
+  updated.
+- `test/integration/smoke.spec.js`: the "Test-with-example
+  button" smoke clicked `.example-btn` (a selector retired in
+  spec-v9 when the button was replaced by an on-load prefill +
+  `.example-reset` link). Test now exercises the prefill +
+  reset-link round trip on BMI.
+- `test/integration/example-correctness.spec.js`: same
+  `.example-btn` → `.example-reset` rename. `ews-escalation`
+  added to the `SCENARIO_ONLY` skiplist — its expected hour-band
+  is local-timezone-dependent (datetime-local input + ISO output),
+  not a tile bug; the unit test in `test/unit/` asserts the math
+  directly.
+- `lib/meta.js`: `egfr` example expected text "eGFR ~91 mL/min"
+  did not match the CKD-EPI 2021 race-free output for the
+  example's `sex: 'F'` field (correct value ~60, as the
+  matching unit test in `test/unit/clinical.test.js` confirms).
+  Expected text bumped to "eGFR ~60 mL/min/1.73m^2".
+- `lib/meta.js`: `hacor` example expected "HACOR 3: not in the
+  high-risk band" but for the documented example inputs
+  (HR 110 / pH 7.40 / GCS 15 / P/F 240 / RR 25) every Duan
+  2017 Table 1 sub-score is 0; the unit test in
+  `test/unit/hacor.test.js` asserts exactly this. Expected
+  text bumped to "HACOR 0: ...".
+
+`npm run release:check` clean. The remaining e2e failures on the
+chromium project are two slow specs hitting the 360s per-test
+timeout when run sequentially in the same workers (cosmetic CI
+slowness, not assertion failures); the suites pass when run
+individually.
+
 ### Changed (spec-v29 post-close: docs/scope-mdcalc-parity.md sync to v29-close catalog count)
 
 No code change; no catalog change. Brings the long-horizon scope

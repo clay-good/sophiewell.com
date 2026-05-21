@@ -81,6 +81,10 @@ test('every example payload produces the documented numeric output', async ({ pa
     'rcri',
     // expected includes derivation breakdown the tool doesn't echo
     'maint-fluids', 'iron-ganzoni',
+    // expected hour-band is local-tz-dependent (datetime-local input,
+    // ISO output uses runner's offset); the unit test asserts the
+    // math directly.
+    'ews-escalation',
   ]);
 
   const failures = [];
@@ -92,12 +96,15 @@ test('every example payload produces the documented numeric output', async ({ pa
     await page.goto('/#' + id, { waitUntil: 'load' });
     await page.waitForTimeout(60);
 
-    const exampleBtn = page.locator('.example-btn').first();
-    if (!(await exampleBtn.isVisible().catch(() => false))) {
-      failures.push({ id, reason: 'no example button rendered' });
+    // spec-v9 §3.3: examples are prefilled on load and a "Reset to
+    // example" link restores them. Click the link to re-apply the
+    // example so the test is robust even if defaults change later.
+    const resetLink = page.locator('.example-reset').first();
+    if (!(await resetLink.isVisible().catch(() => false))) {
+      failures.push({ id, reason: 'no example reset link rendered' });
       continue;
     }
-    await exampleBtn.click();
+    await resetLink.click();
     await page.waitForTimeout(120);
 
     const text = await page.locator('main').innerText();
