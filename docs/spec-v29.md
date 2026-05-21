@@ -791,7 +791,10 @@ v29 is fully shipped when:
    is a **Beers-driven deprescribing checker** that takes a
    medication list + age + comorbidity and outputs the
    problematic-prescription flags — that would compute, and
-   would be in scope.
+   would be in scope. **Resolved by [spec-v31](spec-v31.md):**
+   `beers-check` ships with a closed-vocabulary intake (15 PIM
+   categories, 8 comorbidities) cross-referenced against AGS 2023
+   Tables 2, 3, and 6.
 5. **Audience chip default.** §5.3 makes `Nurse` the default.
    This is mildly opinionated. If a future audit shows the
    default frustrates non-nurse users more than it helps

@@ -7,6 +7,7 @@ import {
   mmeTotal, steroidEquivalent, benzoEquivalent,
   abxRenalDose, vasopressorRateMlHr, vasopressorDose,
   tpnMacro,
+  beersCheck, BEERS_PIM, BEERS_DISEASE,
 } from '../lib/medication-v4.js';
 import {
   insulinCorrection, electrolyteReplacement, crrtDose, ecmoTitration,
@@ -500,5 +501,69 @@ export const renderers = {
     });
     ['ec-w', 'ec-sw', 'ec-fl', 'ec-pco', 'ec-tgt', 'ec-hb', 'ec-sat'].forEach((id) => document.getElementById(id).addEventListener('input', run));
     document.getElementById('ec-mod').addEventListener('change', run);
+  },
+
+  // spec-v31 §2.1: Beers Criteria (AGS 2023) deprescribing checker.
+  'beers-check'(root) {
+    root.appendChild(field('Patient age (years)', 'bc-age', { placeholder: '75' }));
+    root.appendChild(el('p', { class: 'muted', text: 'Select all medication categories the patient is currently taking:' }));
+    const medList = el('div', { id: 'bc-med-list' });
+    for (const [key, def] of Object.entries(BEERS_PIM)) {
+      const wrap = el('p');
+      const cb = el('input', { id: `bc-m-${key}`, type: 'checkbox', 'data-bc-med': key });
+      wrap.appendChild(cb);
+      wrap.appendChild(document.createTextNode(' '));
+      wrap.appendChild(el('label', { for: `bc-m-${key}`, text: def.label }));
+      medList.appendChild(wrap);
+    }
+    root.appendChild(medList);
+    root.appendChild(el('p', { class: 'muted', text: 'Select all relevant comorbidities (Beers Table 3 drug-disease list):' }));
+    const cmbList = el('div', { id: 'bc-cmb-list' });
+    for (const [key, label] of Object.entries(BEERS_DISEASE)) {
+      const wrap = el('p');
+      const cb = el('input', { id: `bc-c-${key}`, type: 'checkbox', 'data-bc-cmb': key });
+      wrap.appendChild(cb);
+      wrap.appendChild(document.createTextNode(' '));
+      wrap.appendChild(el('label', { for: `bc-c-${key}`, text: label }));
+      cmbList.appendChild(wrap);
+    }
+    root.appendChild(cmbList);
+    const o = out(); root.appendChild(o);
+    const collect = (attr) =>
+      Array.from(document.querySelectorAll(`[${attr}]`))
+        .filter((n) => n.checked)
+        .map((n) => n.getAttribute(attr));
+    const run = () => safe(o, () => {
+      const r = beersCheck({
+        ageYears: nv('bc-age'),
+        medications: collect('data-bc-med'),
+        comorbidities: collect('data-bc-cmb'),
+      });
+      o.appendChild(el('h2', { text: r.summary }));
+      for (const b of r.banners) o.appendChild(el('p', { class: 'muted', text: b }));
+      if (r.pimFlags.length) {
+        o.appendChild(el('h3', { text: 'PIM flags (AGS 2023 Table 2)' }));
+        for (const f of r.pimFlags) {
+          o.appendChild(el('p', {}, [
+            el('strong', { text: `${f.label}. ` }),
+            document.createTextNode(`${f.rationale} ${f.recommendation}`),
+          ]));
+        }
+      }
+      if (r.diseaseFlags.length) {
+        o.appendChild(el('h3', { text: 'Drug-disease interactions (AGS 2023 Table 3)' }));
+        for (const f of r.diseaseFlags) o.appendChild(el('p', { text: f.text }));
+      }
+      if (r.drugDrugFlags.length) {
+        o.appendChild(el('h3', { text: 'Drug-drug interactions (AGS 2023 Table 6)' }));
+        for (const f of r.drugDrugFlags) o.appendChild(el('p', { class: 'clinical-notice', text: f.text }));
+      }
+      o.appendChild(el('p', { class: 'muted', text: 'Source: AGS 2023 Beers Criteria, J Am Geriatr Soc. 2023;71(7):2052-2081.' }));
+    });
+    document.getElementById('bc-age').addEventListener('input', run);
+    for (const n of document.querySelectorAll('[data-bc-med], [data-bc-cmb]')) {
+      n.addEventListener('change', run);
+    }
+    run();
   },
 };

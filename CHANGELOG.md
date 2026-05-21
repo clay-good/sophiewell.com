@@ -6,6 +6,55 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v31 wave 31-1 — Beers Criteria deprescribing checker: `beers-check`)
+
+Resolves [spec-v29 §10.4](docs/spec-v29.md#10-open-questions). The
+v29 prune cut the standalone `beers` reference card (a searchable
+list of drugs-to-avoid). v31 ships the computed form: a closed-
+vocabulary intake (patient age + 15 PIM medication categories +
+8 comorbidities) cross-referenced against AGS 2023 Tables 2, 3,
+and 6 to emit specific PIM, drug-disease, and high-severity
+drug-drug flags with deprescribing recommendations.
+
+- `lib/medication-v4.js`: new `beersCheck()` plus exported
+  `BEERS_PIM` (15 categories) and `BEERS_DISEASE` (8) closed
+  vocabularies. Inputs: `ageYears` (18-120), `medications` (array
+  of PIM keys), `comorbidities` (array of disease keys). Outputs:
+  per-medication PIM flag (rationale + recommendation), drug-
+  disease flag for each PIM × comorbidity row in AGS 2023
+  Table 3, drug-drug flag for opioid + benzodiazepine,
+  opioid + gabapentinoid, and opioid + Z-drug (AGS 2023 Table 6).
+  Age-band banner (< 65 vs in-band per AGS 2023 §2).
+- `app.js`: +1 UTILITIES row in Group F.
+- `views/group-f.js`: renderer slotted at end of group-F; one
+  number input (age), two grouped checkbox lists driven by the
+  exported vocabularies (so the UI and the data-table stay in
+  sync automatically).
+- `lib/meta.js`: META entry with inline citation, specialty tags,
+  prefilled worked example (age 78 + benzodiazepine + opioid +
+  history-of-falls produces 5 flags), and the spec-v11 §5.3
+  interpretation bands.
+- `test/unit/beers-check.test.js`: 15 new unit tests covering the
+  five worked examples from spec-v31 §2.1, the < 65 / 65-boundary
+  banner switch, the NSAID three-way comorbidity expansion (HF +
+  GI-bleed + CKD), the three drug-drug Table 6 rows, duplicate-
+  input collapse, and rejection of out-of-range / non-array /
+  unknown-token inputs.
+- `docs/audits/v11/beers-check.md`: v11 audit log with PASS
+  status, primary citation re-verified against AGS 2023 Tables
+  2, 3, and 6. Boundary examples, cross-implementation
+  differential (three rows pulled from AGS 2023 verified
+  verbatim), edge-input handling, a11y, defects opened (none).
+- `docs/spec-v31.md`: the v31 spec doc itself, narrow and
+  one-tile (no other rule amended).
+- `docs/spec-v29.md §10.4`: cross-reference back-link noting
+  "Resolved by spec-v31".
+- `docs/scope-mdcalc-parity.md`, `README.md`, `package.json`:
+  catalog count 232 → 233.
+
+`UTILITIES.length` is 233. Lint + 1191 unit tests + a11y + sbom +
+build all clean.
+
 ### Added (spec-v30 wave 30-1 — thermal-emergency decision tiles: hypothermia-rewarm + heatstroke-decision)
 
 Resolves [spec-v29 §10.3](docs/spec-v29.md#10-open-questions). The
