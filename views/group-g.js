@@ -3926,4 +3926,93 @@ export const renderers = {
     items.forEach(([, id]) => document.getElementById(id).addEventListener('input', run));
     run();
   },
+
+  // spec-v33 §2.1: N-PASS (Hummel 2008). Signed -2..+2 per item.
+  npass(root) {
+    function signedRange(label, id) {
+      const wrap = el('p');
+      wrap.appendChild(el('label', { for: id, text: `${label} (-2..+2)` }));
+      wrap.appendChild(el('br'));
+      const inp = el('input', { id, type: 'range', min: '-2', max: '2', value: '0' });
+      const o = el('output', { id: `${id}-v`, text: '0' });
+      inp.addEventListener('input', () => { o.textContent = inp.value; });
+      wrap.appendChild(inp);
+      wrap.appendChild(document.createTextNode(' '));
+      wrap.appendChild(o);
+      return wrap;
+    }
+    const items = [
+      ['Crying / Irritability',                     'np-cry'],
+      ['Behavior / State',                          'np-beh'],
+      ['Facial expression',                         'np-fac'],
+      ['Extremities / Tone',                        'np-ext'],
+      ['Vital signs (HR / RR / BP / SaO2)',         'np-vit'],
+    ];
+    for (const [l, id] of items) root.appendChild(signedRange(l, id));
+    // Gestational age (weeks): preterm <30 wk adds +1/week to pain side.
+    const ga = el('p');
+    ga.appendChild(el('label', { for: 'np-ga', text: 'Gestational age (weeks, 20-44)' }));
+    ga.appendChild(el('br'));
+    ga.appendChild(el('input', { id: 'np-ga', type: 'number', min: '20', max: '44', step: '1', value: '38' }));
+    root.appendChild(ga);
+    const o = out(); root.appendChild(o);
+    const run = () => safe(o, () => {
+      const r = S4.npass({
+        crying: nv('np-cry'), behavior: nv('np-beh'), facial: nv('np-fac'),
+        extremities: nv('np-ext'), vitals: nv('np-vit'),
+        gestationalAgeWeeks: nv('np-ga'),
+      });
+      o.appendChild(el('h2', { text: `Pain ${r.painScore} (${r.painBand}); sedation ${r.sedationScore} (${r.sedationBand})` }));
+      o.appendChild(el('p', { text: r.text }));
+    });
+    items.forEach(([, id]) => document.getElementById(id).addEventListener('input', run));
+    document.getElementById('np-ga').addEventListener('input', run);
+    run();
+  },
+
+  // spec-v33 §2.2: CRIES (Krechel 1995).
+  cries(root) {
+    const items = [
+      ['Crying (0 none - 1 high-pitched, consolable - 2 inconsolable)', 'cr-cry'],
+      ['Requires O2 for SaO2 <95% (0 none - 1 <30% FiO2 - 2 >=30%)',     'cr-o2'],
+      ['Increased vital signs (0 baseline - 1 <20% above - 2 >=20%)',    'cr-vit'],
+      ['Expression (0 none - 1 grimace - 2 grimace/grunt)',              'cr-exp'],
+      ['Sleeplessness (0 none - 1 wakes frequently - 2 constantly awake)', 'cr-slp'],
+    ];
+    for (const [l, id] of items) root.appendChild(rangeField(l, id, 0, 2, 0));
+    const o = out(); root.appendChild(o);
+    const run = () => safe(o, () => {
+      const r = S4.cries({
+        crying: nv('cr-cry'), requiresO2: nv('cr-o2'), vitals: nv('cr-vit'),
+        expression: nv('cr-exp'), sleeplessness: nv('cr-slp'),
+      });
+      o.appendChild(el('h2', { text: `CRIES ${r.score} of 10 (${r.band})` }));
+      o.appendChild(el('p', { text: r.text }));
+    });
+    items.forEach(([, id]) => document.getElementById(id).addEventListener('input', run));
+    run();
+  },
+
+  // spec-v33 §2.3: POSS (Pasero 2009). Single 5-level ordinal.
+  poss(root) {
+    const labels = ['S - sleep, easy to arouse', '1 - awake and alert', '2 - slightly drowsy, easily aroused', '3 - frequently drowsy, drifts off mid-conversation', '4 - somnolent, minimal or no response to physical stimulation'];
+    const wrap = el('p');
+    wrap.appendChild(el('label', { for: 'po-lvl', text: 'Sedation level (0=S, 1, 2, 3, 4)' }));
+    wrap.appendChild(el('br'));
+    const inp = el('input', { id: 'po-lvl', type: 'range', min: '0', max: '4', value: '1' });
+    const tag = el('output', { id: 'po-lvl-v', text: labels[1] });
+    inp.addEventListener('input', () => { tag.textContent = labels[Number(inp.value)]; });
+    wrap.appendChild(inp);
+    wrap.appendChild(document.createTextNode(' '));
+    wrap.appendChild(tag);
+    root.appendChild(wrap);
+    const o = out(); root.appendChild(o);
+    const run = () => safe(o, () => {
+      const r = S4.poss({ level: nv('po-lvl') });
+      o.appendChild(el('h2', { text: `POSS ${r.label} - ${r.acceptable ? 'acceptable' : 'unacceptable'}` }));
+      o.appendChild(el('p', { text: r.text }));
+    });
+    inp.addEventListener('input', run);
+    run();
+  },
 };

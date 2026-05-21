@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:sophiewell-5bd1f45f14b98604",
+  "serialNumber": "urn:uuid:sophiewell-b331e86223e201d4",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-05-21T13:06:49.482Z",
+    "timestamp": "2026-05-21T13:31:09.311Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -16,7 +16,7 @@
       "type": "application",
       "name": "sophiewell.com",
       "version": "1.0.0",
-      "description": "Sophie Well - 236 deterministic healthcare calculators tuned to the nurse on shift. Free, client-side, no servers, no telemetry, no AI.",
+      "description": "Sophie Well - 239 deterministic healthcare calculators tuned to the nurse on shift. Free, client-side, no servers, no telemetry, no AI.",
       "licenses": [
         {
           "license": {
@@ -75,7 +75,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "5bd1f45f14b98604"
+      "value": "b331e86223e201d4"
     },
     {
       "name": "sophiewell:runtimeAssetCount",

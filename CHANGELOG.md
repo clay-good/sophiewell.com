@@ -6,6 +6,55 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v33 wave 33-1 — opioid-sedation + neonatal-pain extensions: `npass`, `cries`, `poss`)
+
+Extends the v32 non-verbal pain catalog with the three bedside-
+necessary pain / sedation scales explicitly listed as out-of-
+scope in [spec-v32 §5](docs/spec-v32.md): N-PASS (neonatal pain,
+agitation, and sedation; Hummel 2008), CRIES (neonatal post-op
+pain; Krechel 1995), and POSS (Pasero opioid-induced sedation;
+Pasero 2009). After v33 the nurse-bedside pain / sedation
+surface is complete for the non-self-report population: ICU
+(CPOT, BPS), peds / dementia / neonatal non-verbal (FLACC,
+PAINAD, NIPS), neonatal extended (N-PASS, CRIES), and opioid-
+sedation monitoring (POSS).
+
+- `lib/scoring-v4.js`: new `npass()`, `cries()`, `poss()`.
+  N-PASS validates each of five items as a signed integer
+  -2..+2 plus a gestational-age number in [20, 44], sums the
+  positive items as the pain score, sums the negative items as
+  the sedation score, and applies the Hummel 2008 preterm +1/
+  week<30 wk adjustment to the pain side. CRIES is a five-item
+  0-10 ordinal sum with bands 0-3 / 4-6 / 7-10 (>=4 indicates
+  analgesia per Krechel 1995). POSS is a single 5-level
+  ordinal (S, 1, 2, 3, 4) that emits the canonical Pasero 2009
+  bedside action for each level.
+- `app.js`: +3 UTILITIES rows in Group G.
+- `views/group-g.js`: +3 renderers - a signed -2..+2 range
+  field with a GA number input for N-PASS, five 0-2 range
+  fields for CRIES, one 0-4 range field with live S/1/2/3/4
+  label for POSS. Each has an aria-live result region.
+- `lib/meta.js`: META entries for all three, each with inline
+  citation, specialty tags, prefilled worked example, and the
+  spec-v11 §5.3 interpretation bands.
+- `test/unit/npass.test.js`, `test/unit/cries.test.js`,
+  `test/unit/poss.test.js`: 24 new unit tests total covering
+  the band-boundary scores (N-PASS pain 0/3/4/10 + sedation
+  -1/-3/-5 + preterm 26-wk adjustment; CRIES 0/3/4/6/7/10;
+  POSS S/1/2/3/4) and rejection of out-of-range inputs.
+- `docs/audits/v11/npass.md`, `cries.md`, `poss.md`: v11 audit
+  logs with PASS status, primary citation re-verified against
+  Hummel 2008, Krechel 1995, and Pasero 2009 respectively.
+  Cross-implementation differential drawn from each paper's
+  worked example.
+- `docs/spec-v33.md`: the v33 spec doc itself, narrow and
+  three-tile (no other rule amended).
+- `docs/scope-mdcalc-parity.md`, `README.md`, `package.json`:
+  catalog count 236 → 239.
+
+`UTILITIES.length` is 239. Lint + unit tests + a11y + sbom +
+build all clean.
+
 ### Added (spec-v32 wave 32-1 — non-verbal pain scales: `flacc`, `painad`, `nips`)
 
 Extends the v29 nursing-shift catalog with three validated

@@ -90,10 +90,12 @@ v32 is fully shipped when:
 
 - N-PASS (Hummel 2008), CRIES (Krechel 1995), and other
   neonatal/pediatric non-verbal pain scales — candidates for a
-  future spec.
+  future spec. **Resolved by [spec-v33](spec-v33.md):** N-PASS
+  and CRIES ship in v33 wave 33-1.
 - Self-report pain scales (NRS, VAS, Wong-Baker FACES). The
   numeric / verbal / faces self-report tools are not calculators
   — they are direct patient input and require no math. Sophie
   declines to ship them per the v29 §3 one-line test.
 - POSS (Pasero Opioid-induced Sedation Scale) — opioid-sedation
-  monitoring; candidate for a future spec.
+  monitoring; candidate for a future spec. **Resolved by
+  [spec-v33](spec-v33.md):** POSS ships in v33 wave 33-1.
