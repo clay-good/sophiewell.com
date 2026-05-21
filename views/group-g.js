@@ -4015,4 +4015,96 @@ export const renderers = {
     inp.addEventListener('input', run);
     run();
   },
+
+  // spec-v34 §2.1: COMFORT-B (van Dijk 2005). Six items each 1-5.
+  'comfort-b'(root) {
+    const items = [
+      ['Alertness (1 deep sleep - 5 hyper-alert)',             'cb-alt'],
+      ['Calmness / Agitation (1 calm - 5 panicky)',            'cb-cal'],
+      ['Respiratory response or Crying (1 - 5)',               'cb-res'],
+      ['Physical movement (1 none - 5 vigorous)',              'cb-mov'],
+      ['Muscle tone (1 fully relaxed - 5 rigid/flexed)',       'cb-mus'],
+      ['Facial tension (1 fully relaxed - 5 grimacing)',       'cb-fac'],
+    ];
+    for (const [l, id] of items) root.appendChild(rangeField(l, id, 1, 5, 3));
+    const o = out(); root.appendChild(o);
+    const run = () => safe(o, () => {
+      const r = S4.comfortB({
+        alertness: nv('cb-alt'), calmness: nv('cb-cal'),
+        respiratoryOrCry: nv('cb-res'), movement: nv('cb-mov'),
+        muscleTone: nv('cb-mus'), facialTension: nv('cb-fac'),
+      });
+      o.appendChild(el('h2', { text: `COMFORT-B ${r.score} of 30 (${r.band})` }));
+      o.appendChild(el('p', { text: r.text }));
+    });
+    items.forEach(([, id]) => document.getElementById(id).addEventListener('input', run));
+    run();
+  },
+
+  // spec-v34 §2.2: WAT-1 (Franck 2008). Eleven items aggregate to 0-12.
+  'wat-1'(root) {
+    const items = [
+      ['Loose / watery stools in last 12h (0 no - 1 yes)',        'w1-ls'],
+      ['Vomiting / retching / gagging in last 12h (0 no - 1 yes)', 'w1-vo'],
+      ['Temperature >37.8 C in last 12h (0 no - 1 yes)',           'w1-fe'],
+      ['SBS state >0 during 2-min observation (0 no - 1 yes)',     'w1-sb'],
+      ['Tremor (0 none - 1 present)',                              'w1-tr'],
+      ['Any sweating (0 no - 1 yes)',                              'w1-sw'],
+      ['Uncoordinated / repetitive movement (0 no - 1 yes)',       'w1-um'],
+      ['Yawning or sneezing (0 none/1 - 1 >=2)',                   'w1-ys'],
+      ['Startle to touch (0 none/mild - 1 moderate/severe)',       'w1-st'],
+      ['Increased muscle tone (0 normal - 1 increased)',           'w1-mt'],
+    ];
+    for (const [l, id] of items) root.appendChild(rangeField(l, id, 0, 1, 0));
+    const rm = el('p');
+    rm.appendChild(el('label', { for: 'w1-rm', text: 'Minutes to regain calm state after stimulus (<2 = 0, 2-5 = 1, >5 = 2)' }));
+    rm.appendChild(el('br'));
+    rm.appendChild(el('input', { id: 'w1-rm', type: 'number', min: '0', max: '60', step: '1', value: '0' }));
+    root.appendChild(rm);
+    const o = out(); root.appendChild(o);
+    const run = () => safe(o, () => {
+      const r = S4.wat1({
+        looseStools: nv('w1-ls'), vomiting: nv('w1-vo'), fever: nv('w1-fe'),
+        sbsStatePositive: nv('w1-sb'), tremor: nv('w1-tr'), sweating: nv('w1-sw'),
+        uncoordinatedMovement: nv('w1-um'), yawnSneeze: nv('w1-ys'),
+        startleToTouch: nv('w1-st'), increasedMuscleTone: nv('w1-mt'),
+        recoveryMinutes: nv('w1-rm'),
+      });
+      o.appendChild(el('h2', { text: `WAT-1 ${r.score} of 12 (${r.band})` }));
+      o.appendChild(el('p', { text: r.text }));
+    });
+    items.forEach(([, id]) => document.getElementById(id).addEventListener('input', run));
+    document.getElementById('w1-rm').addEventListener('input', run);
+    run();
+  },
+
+  // spec-v34 §2.3: SBS (Curley 2006). Single ordinal -3..+2.
+  sbs(root) {
+    const labels = {
+      '-3': '-3 unresponsive',
+      '-2': '-2 responsive only to noxious stimuli',
+      '-1': '-1 responsive to gentle touch / voice',
+      0: '0 awake and able to calm',
+      1: '+1 restless and difficult to calm',
+      2: '+2 agitated',
+    };
+    const wrap = el('p');
+    wrap.appendChild(el('label', { for: 'sb-lvl', text: 'SBS level (-3 to +2)' }));
+    wrap.appendChild(el('br'));
+    const inp = el('input', { id: 'sb-lvl', type: 'range', min: '-3', max: '2', value: '0' });
+    const tag = el('output', { id: 'sb-lvl-v', text: labels[0] });
+    inp.addEventListener('input', () => { tag.textContent = labels[inp.value] || labels[Number(inp.value)]; });
+    wrap.appendChild(inp);
+    wrap.appendChild(document.createTextNode(' '));
+    wrap.appendChild(tag);
+    root.appendChild(wrap);
+    const o = out(); root.appendChild(o);
+    const run = () => safe(o, () => {
+      const r = S4.sbs({ level: nv('sb-lvl') });
+      o.appendChild(el('h2', { text: `SBS ${r.label} - ${r.band}` }));
+      o.appendChild(el('p', { text: r.text }));
+    });
+    inp.addEventListener('input', run);
+    run();
+  },
 };

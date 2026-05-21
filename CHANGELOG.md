@@ -6,6 +6,54 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v34 wave 34-1 — pediatric ICU bedside extensions: `comfort-b`, `wat-1`, `sbs`)
+
+Completes the pediatric-ICU nurse-bedside sedation and
+iatrogenic-withdrawal surface. COMFORT-B (van Dijk 2005) was
+explicitly deferred in [spec-v33 §5](docs/spec-v33.md); WAT-1
+(Franck 2008) and SBS (Curley 2006) are its natural companions
+- WAT-1 because it is the most-cited pediatric iatrogenic-
+withdrawal scale and uses SBS state as one of its 11 input
+items, and SBS because it is the anchor scale that both
+COMFORT-B and WAT-1 lean on in their validation studies.
+
+- `lib/scoring-v4.js`: new `comfortB()`, `wat1()`, `sbs()`.
+  COMFORT-B validates each of six items as integer 1-5, sums
+  to 6-30, and bands as <11 over-sedation / 11-22 adequate /
+  >22 distress per van Dijk 2005. WAT-1 validates ten binary
+  items (0-1) plus a recoveryMinutes number that maps to 0/1/2
+  recovery points (<2/2-5/>5 minutes), aggregates to 0-12, and
+  flags withdrawal at the >=3 cutoff per Franck 2008. SBS is a
+  single 6-level ordinal -3..+2 banded as deeper than target /
+  target / inadequate per Curley 2006.
+- `app.js`: +3 UTILITIES rows in Group G.
+- `views/group-g.js`: +3 renderers - six 1-5 range fields for
+  COMFORT-B, ten 0-1 range fields plus one number input for
+  WAT-1, one signed -3..+2 range field with live descriptor
+  label for SBS. Each has an aria-live result region.
+- `lib/meta.js`: META entries for all three, each with inline
+  citation, specialty tags, prefilled worked example, and the
+  spec-v11 §5.3 interpretation bands.
+- `test/unit/comfort-b.test.js`, `test/unit/wat-1.test.js`,
+  `test/unit/sbs.test.js`: 23 new unit tests total covering
+  band-boundary scores (COMFORT-B 6/10/11/18/22/23/30; WAT-1
+  0/2/3/12 with recovery 0/1/2 minute boundaries; SBS -3/-2/-1/
+  0/+1/+2) and rejection of out-of-range inputs.
+- `docs/audits/v11/comfort-b.md`, `wat-1.md`, `sbs.md`: v11
+  audit logs with PASS status, primary citation re-verified
+  against van Dijk 2005, Franck 2008, and Curley 2006
+  respectively. Cross-implementation differential drawn from
+  each paper's worked example.
+- `docs/spec-v34.md`: the v34 spec doc itself, narrow and
+  three-tile (no other rule amended).
+- `docs/spec-v33.md §5`: cross-reference back-link noting
+  COMFORT-B "Resolved by spec-v34".
+- `docs/scope-mdcalc-parity.md`, `README.md`, `package.json`:
+  catalog count 239 → 242.
+
+`UTILITIES.length` is 242. Lint + unit tests + a11y + sbom +
+build all clean.
+
 ### Added (spec-v33 wave 33-1 — opioid-sedation + neonatal-pain extensions: `npass`, `cries`, `poss`)
 
 Extends the v32 non-verbal pain catalog with the three bedside-

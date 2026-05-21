@@ -113,7 +113,8 @@ v33 is fully shipped when:
 
 - COMFORT and COMFORT-B (Ambuel 1992 / van Dijk 2005) — pediatric
   ICU sedation; multi-item with vital-sign sub-scoring complex
-  enough to merit its own spec.
+  enough to merit its own spec. **Resolved by
+  [spec-v34](spec-v34.md):** COMFORT-B ships in v34 wave 34-1.
 - RASS and SAS adult sedation scales — already deferred under
   v29 nursing-floor scope; the adult equivalents to POSS are
   best handled in a future ICU-focused spec.
