@@ -782,7 +782,11 @@ v29 is fully shipped when:
    the current implementation is pure reference. A v30 candidate
    is a **rewarming-decision** version (Swiss staging → active
    rewarming yes/no, ECMO indication yes/no) that would be a
-   decision tree and qualify under §3.
+   decision tree and qualify under §3. **Resolved by
+   [spec-v30](spec-v30.md):** `hypothermia-rewarm` (Swiss staging
+   → rewarming pathway, ERC 2021 ECPR cut-offs) and
+   `heatstroke-decision` (Bouchama 2002 framework → CWI / cooling
+   algorithm) ship in v30 wave 30-1.
 4. **Beers Criteria.** Cut as a standalone list. A v30 candidate
    is a **Beers-driven deprescribing checker** that takes a
    medication list + age + comorbidity and outputs the

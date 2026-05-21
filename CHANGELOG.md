@@ -6,6 +6,71 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v30 wave 30-1 — thermal-emergency decision tiles: hypothermia-rewarm + heatstroke-decision)
+
+Resolves [spec-v29 §10.3](docs/spec-v29.md#10-open-questions). The
+v29 prune cut the static `hypothermia` and `heat-illness` staging
+reference cards (correctly — a labelled grid is not computation).
+What was missing was the *algorithm pinned to the staging*: given
+the staging inputs, which rewarming or cooling action is indicated,
+and what is the EMS / ECPR referral threshold. v30 ships those two
+calculators, each passing the v29 §3 one-line test (structured
+input → computed bedside action).
+
+- `lib/scoring-v4.js`: new `hypothermiaRewarm()`. Inputs: core
+  temp (C), Swiss-state picker (alert+shivering / impaired /
+  unconscious / arrest), ECPR-exclusion flag (lethal injury,
+  chest non-compressible, known asystole pre-cooling), optional
+  serum K+. Outputs: Swiss stage HT I-IV per Durrer 2003;
+  rewarming pathway (passive external / active external +
+  minimally invasive / active internal / ECPR); ERC 2021 §4.7
+  ECPR cut-off (K+ > 12 mmol/L); the "do not declare death until
+  rewarmed to >=32 C" banner; the Gilbert 2000 < 13.7 C
+  lowest-reported-survival banner.
+- `lib/scoring-v4.js`: new `heatstrokeDecision()`. Inputs: core
+  (rectal) temp (C), CNS picker (none / mild confusion /
+  altered), sweating present, setting (field / hospital). Outputs:
+  stage per Bouchama 2002 (heat exhaustion vs heat stroke =
+  core >40 C **or** CNS dysfunction); subtype (classic anhidrotic
+  vs exertional sweating); cooling algorithm (rest + rehydrate
+  for exhaustion; CWI to 38.9 C cool-first-transport-second for
+  field heat stroke per WMS 2019; CWI preferred / evaporative
+  acceptable for in-hospital); rhabdo / DIC / AKI surveillance
+  banner; Casa 2007 30-minute-window survival banner.
+- `app.js`: +2 UTILITIES rows in Group I.
+- `views/group-i.js`: +2 renderers slotted next to the surviving
+  field-medicine calculators (cincinnati, fast, field-triage,
+  burn-fluid, peds-ett, naloxone, co-cn-antidote).
+- `lib/meta.js`: META entries for both tiles, each with inline
+  citation, specialty tags, prefilled worked example, and the
+  spec-v11 §5.3 interpretation bands.
+- `test/unit/hypothermia-rewarm.test.js` and
+  `test/unit/heatstroke-decision.test.js`: 17 new unit tests
+  total (10 + 7), covering the five Durrer 2003 staging boundaries
+  (including the K+ 12 / K+ 14 ECPR cut-off boundary and the
+  Gilbert 2000 < 13.7 C survival banner), the five Bouchama 2002
+  worked examples (heat-exhaustion at 39.5 C, the 40.0 C boundary,
+  exertional 41.2 C with CWI, classic 41.0 C anhidrotic, and CNS
+  dysfunction at 39.0 C independent of temperature), and
+  rejection of out-of-range and unknown-token inputs.
+- `docs/audits/v11/hypothermia-rewarm.md` and
+  `docs/audits/v11/heatstroke-decision.md`: v11 audit logs with
+  PASS status, primary citation re-verified against Durrer 2003,
+  Brown 2012, Lott 2021, Bouchama 2002, Lipman 2019, and
+  Casa 2007. Boundary examples, cross-implementation differential
+  (Brown 2012 Figure 1 / Lott 2021 §4.7 / Bouchama 2002 Table 1 /
+  WMS 2019 field algorithm), edge-input handling, a11y, defects
+  opened (none) all populated.
+- `docs/spec-v30.md`: the v30 spec doc itself, narrow and
+  two-tile (no other v29 rule amended).
+- `docs/spec-v29.md §10.3`: cross-reference back-link noting
+  "Resolved by spec-v30".
+- `docs/scope-mdcalc-parity.md` and `README.md` and
+  `package.json`: catalog count 230 → 232.
+
+`UTILITIES.length` is 232. Lint + 1176 unit tests + a11y + sbom +
+build all clean.
+
 ### Fixed (spec-v29 post-close: prune stale e2e smokes for retired tiles; fix two stale META examples)
 
 The Playwright e2e job carried smokes and a parameterized correctness

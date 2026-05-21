@@ -6,6 +6,7 @@ import { el, clear } from '../lib/dom.js';
 import { loadFile } from '../lib/data.js';
 import { pedsDose, cincinnatiStroke, fast, fieldTriage, startTriage, jumpStartTriage, ruleOfNines, lundBrowder, burnFluid, pediatricEtt, naloxoneDose, selectEmsChecklist, RULE_OF_NINES_ADULT, PEDS_DOSE_RECIPES } from '../lib/field.js';
 import { fetchJson } from '../lib/data.js';
+import { hypothermiaRewarm, heatstrokeDecision } from '../lib/scoring-v4.js';
 
 function field(label, id, opts = {}) {
   const wrap = el('p');
@@ -453,5 +454,74 @@ export const renderers = {
     o.appendChild(el('h3', { text: 'Carbon monoxide - hyperbaric oxygen indication' }));
     o.appendChild(el('p', { text: 'Consider HBO if COHb >25% (>15% in pregnancy), syncope or LOC at any point, neurologic deficit, or persistent symptoms after normobaric O2.' }));
     o.appendChild(el('p', { class: 'muted', text: 'Sources: FDA labeling for Cyanokit (hydroxocobalamin) and Nithiodote (sodium nitrite + sodium thiosulfate). UHMS guidance for HBO indications.' }));
+  },
+
+  // spec-v30 §2.1: Swiss hypothermia staging -> rewarming algorithm.
+  'hypothermia-rewarm'(root) {
+    noticeBlock(root);
+    root.appendChild(field('Core (rectal / esophageal) temperature, C', 'hyp-t', { placeholder: '30' }));
+    root.appendChild(selectField('Patient state', 'hyp-s', [
+      { value: 'alert-shivering', text: 'Alert and shivering (HT I)' },
+      { value: 'impaired',        text: 'Impaired consciousness, breathing (HT II)' },
+      { value: 'unconscious',     text: 'Unconscious, vital signs present (HT III)' },
+      { value: 'arrest',          text: 'Cardiac arrest / apparent death (HT IV)' },
+    ]));
+    root.appendChild(checkbox('Lethal injury / chest non-compressible / known asystole before cooling (ECPR exclusion)', 'hyp-excl'));
+    root.appendChild(field('Serum potassium (mmol/L, optional)', 'hyp-k', { placeholder: '4.0' }));
+    const o = out(); root.appendChild(o);
+    const run = () => safe(o, () => {
+      const kRaw = document.getElementById('hyp-k').value;
+      const r = hypothermiaRewarm({
+        coreTempC: nv('hyp-t'),
+        state: document.getElementById('hyp-s').value,
+        ecprExclusion: checked('hyp-excl'),
+        potassium: kRaw === '' ? undefined : Number(kRaw),
+      });
+      o.appendChild(el('h2', { text: `${r.stage} at ${r.coreTempC} C` }));
+      o.appendChild(el('p', { text: r.pathway }));
+      for (const b of r.banners) o.appendChild(el('p', { class: 'muted', text: b }));
+      o.appendChild(el('p', { class: 'muted', text: 'Source: Durrer 2003 (ICAR-MEDCOM); ERC 2021 (Lott) §4; Brown NEJM 2012.' }));
+    });
+    ['hyp-t', 'hyp-s', 'hyp-excl', 'hyp-k'].forEach((id) => {
+      const node = document.getElementById(id);
+      node.addEventListener('input', run);
+      node.addEventListener('change', run);
+    });
+    run();
+  },
+
+  // spec-v30 §2.2: heat-illness -> cooling algorithm.
+  'heatstroke-decision'(root) {
+    noticeBlock(root);
+    root.appendChild(field('Core (rectal) temperature, C', 'hs-t', { placeholder: '40' }));
+    root.appendChild(selectField('CNS status', 'hs-cns', [
+      { value: 'none',            text: 'No CNS dysfunction' },
+      { value: 'mild-confusion',  text: 'Mild confusion' },
+      { value: 'altered',         text: 'Altered LOC / seizure / coma' },
+    ]));
+    root.appendChild(checkbox('Sweating present (clears for exertional; unchecked = anhidrotic / classic)', 'hs-sw'));
+    root.appendChild(selectField('Setting', 'hs-set', [
+      { value: 'field',     text: 'Field / pre-hospital' },
+      { value: 'hospital',  text: 'In-hospital' },
+    ]));
+    const o = out(); root.appendChild(o);
+    const run = () => safe(o, () => {
+      const r = heatstrokeDecision({
+        coreTempC: nv('hs-t'),
+        cns: document.getElementById('hs-cns').value,
+        sweating: checked('hs-sw'),
+        setting: document.getElementById('hs-set').value,
+      });
+      o.appendChild(el('h2', { text: `${r.stage}${r.subtype ? ' (' + r.subtype + ')' : ''} at ${r.coreTempC} C` }));
+      o.appendChild(el('p', { text: r.action }));
+      for (const b of r.banners) o.appendChild(el('p', { class: 'muted', text: b }));
+      o.appendChild(el('p', { class: 'muted', text: 'Source: Bouchama 2002 NEJM; WMS 2019 (Lipman) heat-illness practice guideline; Casa 2007.' }));
+    });
+    ['hs-t', 'hs-cns', 'hs-sw', 'hs-set'].forEach((id) => {
+      const node = document.getElementById(id);
+      node.addEventListener('input', run);
+      node.addEventListener('change', run);
+    });
+    run();
   },
 };
