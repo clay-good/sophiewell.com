@@ -6,6 +6,25 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Changed (spec-v29 post-close: docs/scope-mdcalc-parity.md sync to v29-close catalog count)
+
+No code change; no catalog change. Brings the long-horizon scope
+doc into agreement with the v29-close catalog.
+
+- §3 cadence rationale: "the existing 178 tiles already cover
+  the highest-frequency clinical workflows" → "the existing
+  230 tiles already cover...". The 178 figure was the v6-era
+  count; the v29-close catalog is 230 tiles
+  (`UTILITIES.length` in `app.js`).
+- §1 v29-amendment block: the "(603 -> 576)" projection is
+  retained for spec-fidelity but now annotated as projected-
+  from-over-counted-base, with the actual v29-close count
+  (230 tiles) called out alongside. Matches the README +
+  package.json sync already landed in this `[Unreleased]`
+  block.
+
+Lint + 1159 unit tests + sbom + build clean.
+
 ### Removed (spec-v29 post-close: 6 orphaned `G`-leader keyboard shortcuts whose target tiles were retired)
 
 The `G`-prefix keyboard shortcuts in `lib/keyboard.js` carried six

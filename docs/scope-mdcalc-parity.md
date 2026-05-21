@@ -57,7 +57,8 @@ literacy decoders, the field-medicine and EMS workflow tiles).
 > computed output is not in scope for Sophie.** v29 deletes 47
 > reference-only tiles and adds 20 nurse-bedside calculators;
 > the catalog shrinks for the first time in the project's
-> history (603 -> 576).
+> history. (The spec-v29 ledger projected 603 -> 576 from an
+> over-counted base; actual at v29 close is 230 tiles.)
 
 A reasonable steady-state estimate is **400–600 tiles over 3–5
 years**, depending on how aggressive the audit pace is and how
@@ -95,7 +96,7 @@ Sophie ships **slowly on purpose**. Three forces set the cadence:
 2. **Solo-developer reality.** The maintainer is one person with
    a day job. Sustainable cadence is ~5–20 audited tiles per
    month, depending on complexity. Faster is unsustainable; slow
-   is fine because the existing 178 tiles already cover the
+   is fine because the existing 230 tiles already cover the
    highest-frequency clinical workflows.
 3. **Source stability.** Clinical formulas are mostly stable on
    decade timescales (Wells PE from 2000 is still the same Wells
