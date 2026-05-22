@@ -70,7 +70,9 @@ literacy decoders, the field-medicine and EMS workflow tiles).
 > COMFORT-B, WAT-1, and SBS — is 242; v35 close —
 > [spec-v35](spec-v35.md), which adds SOS as the WAT-1 companion
 > — is 243; v36 close — [spec-v36](spec-v36.md), which adds
-> MEOWS as the maternal track-and-trigger — is 244.)
+> MEOWS as the maternal track-and-trigger — is 244; v37 close —
+> [spec-v37](spec-v37.md), which adds CPSS and LAMS as the
+> prehospital / ED stroke triage scales — is 246.)
 
 A reasonable steady-state estimate is **400–600 tiles over 3–5
 years**, depending on how aggressive the audit pace is and how

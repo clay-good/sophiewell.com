@@ -6,6 +6,50 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v37 wave 37-1 — prehospital / ED stroke triage scales: `cpss` + `lams`)
+
+Closes the prehospital and ED triage gap in the stroke surface.
+Sophie already ships the bedside-severity NIHSS and the
+telemedicine-collapsed mNIHSS (spec-v29 wave 29-3a), but carried
+no triage-grade screen and no LVO-prediction scale. v37 adds the
+Cincinnati Prehospital Stroke Scale (CPSS; Kothari 1999) — the
+three-item bedside screen an ED triage RN performs at the door —
+and the Los Angeles Motor Scale (LAMS; Llanes 2004, LVO
+threshold Nazliel 2008) — the three-item motor scale ED RNs and
+EMS use to decide whether to route a stroke alert to a
+comprehensive / thrombectomy-capable center.
+
+- `lib/scoring-v4.js`: new `cpss()` (three binary items: facial
+  droop, arm drift, abnormal speech; positive if any one is
+  abnormal per Kothari 1999) and new `lams()` (facial droop
+  0-1, arm drift 0-2, grip strength 0-2; total 0-5; `lvoLikely`
+  fires at total >=4 per Nazliel 2008 sensitivity 81% /
+  specificity 89%).
+- `app.js`: +2 UTILITIES rows in Group G.
+- `views/group-g.js`: +2 renderers, each with three labeled
+  range inputs and an aria-live result region.
+- `lib/meta.js`: two META entries with inline Kothari 1999 and
+  Llanes 2004 / Nazliel 2008 citations, specialty tags covering
+  nursing-ed / nursing-icu / nursing-general / emergency-medicine
+  / neurology / paramedicine, prefilled all-normal worked
+  examples, and the spec-v11 §5.3 interpretation bands.
+- `test/unit/cpss-lams.test.js`: 11 new unit tests covering the
+  all-normal tile examples, the CPSS one-abnormal trigger and
+  three-abnormal cases, the LAMS 3 / 4 / 5 boundaries around the
+  Nazliel 2008 LVO threshold, text-content citations, and
+  rejection of out-of-range, non-binary, and non-integer inputs.
+- `docs/audits/v11/cpss.md` and `docs/audits/v11/lams.md`: v11
+  audit logs with PASS status, primary citations re-verified
+  against Kothari 1999 and Nazliel 2008, and the trigger-rule
+  and LVO-threshold cross-checks.
+- `docs/spec-v37.md`: the v37 spec doc itself, narrow and
+  two-tile (no other rule amended).
+- `docs/scope-mdcalc-parity.md`, `README.md`, `package.json`:
+  catalog count 244 → 246.
+
+`UTILITIES.length` is 246. Lint + unit tests + a11y + sbom +
+build all clean.
+
 ### Added (spec-v36 wave 36-1 — maternal track-and-trigger: `meows`)
 
 Closes the maternal-warning gap left by the NEWS2/MEWS surface

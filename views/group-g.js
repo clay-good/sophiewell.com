@@ -4185,4 +4185,48 @@ export const renderers = {
     document.getElementById('mw-neuro').addEventListener('change', run);
     run();
   },
+
+  // spec-v37 §2.1: CPSS (Kothari 1999). Three binary bedside items.
+  cpss(root) {
+    const items = [
+      ['Facial droop (smile / show teeth)',        'cp-face',   'facialDroop'],
+      ['Arm drift (close eyes, arms extended 10s)','cp-arm',    'armDrift'],
+      ['Abnormal speech (slurred / wrong / mute)', 'cp-speech', 'abnormalSpeech'],
+    ];
+    for (const [label, id] of items) {
+      root.appendChild(rangeField(`${label} (0 normal - 1 abnormal)`, id, 0, 1, 0));
+    }
+    const o = out(); root.appendChild(o);
+    const run = () => safe(o, () => {
+      const input = {};
+      for (const [, id, key] of items) input[key] = Math.trunc(nv(id));
+      const r = S4.cpss(input);
+      o.appendChild(el('h2', { text: `CPSS: ${r.band} (${r.abnormalCount} of 3 abnormal)` }));
+      o.appendChild(el('p', { text: r.text }));
+    });
+    items.forEach(([, id]) => document.getElementById(id).addEventListener('input', run));
+    run();
+  },
+
+  // spec-v37 §2.2: LAMS (Llanes 2004; Nazliel 2008). LVO prediction.
+  lams(root) {
+    const items = [
+      ['Facial droop',  'lm-face', 'facialDroop',  1],
+      ['Arm drift',     'lm-arm',  'armDrift',     2],
+      ['Grip strength', 'lm-grip', 'gripStrength', 2],
+    ];
+    for (const [label, id, , max] of items) {
+      root.appendChild(rangeField(label, id, 0, max, 0));
+    }
+    const o = out(); root.appendChild(o);
+    const run = () => safe(o, () => {
+      const input = {};
+      for (const [, id, key] of items) input[key] = Math.trunc(nv(id));
+      const r = S4.lams(input);
+      o.appendChild(el('h2', { text: `LAMS ${r.score} of 5 (${r.band})` }));
+      o.appendChild(el('p', { text: r.text }));
+    });
+    items.forEach(([, id]) => document.getElementById(id).addEventListener('input', run));
+    run();
+  },
 };
