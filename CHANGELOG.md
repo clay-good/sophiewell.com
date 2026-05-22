@@ -6,6 +6,46 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v38 wave 38-1 — prehospital LVO predictor: `race`)
+
+Closes the EU/Catalan-protocol gap left by v37's LAMS-only LVO
+predictor. LAMS (Llanes 2004) ships in v37 wave 37-1 as the
+three-item motor scale; v38 adds the five-item NIHSS-derived
+Rapid Arterial oCclusion Evaluation (RACE; Pérez de la Ossa
+2014) which is the LVO predictor in Catalan stroke protocols and
+an increasing number of US systems. Both scales are validated
+prehospital LVO predictors with comparable literature; the choice
+is protocol-driven and Sophie should not force the maintainer's
+local EMS / stroke system into one of them.
+
+- `lib/scoring-v4.js`: new `race()`. Five integer items (facial
+  palsy 0-2, arm motor 0-2, leg motor 0-2, gaze 0-1, aphasia /
+  agnosia 0-2) summing to 0-9; `lvoLikely` fires at total >=5
+  per Pérez de la Ossa 2014 (sensitivity 85% / specificity 68%
+  in the derivation cohort).
+- `app.js`: +1 UTILITIES row in Group G.
+- `views/group-g.js`: +1 renderer with five labeled range fields
+  and an aria-live result region.
+- `lib/meta.js`: META entry with inline Pérez de la Ossa 2014
+  citation, specialty tags (nursing-ed / nursing-icu /
+  nursing-general / emergency-medicine / neurology /
+  paramedicine), a prefilled all-normal worked example, and the
+  spec-v11 §5.3 interpretation bands.
+- `test/unit/race.test.js`: 7 new unit tests covering the tile
+  example (score 0), the 4 / 5 / 9 boundaries around the LVO
+  threshold, part-mirroring, text-content citation, and
+  rejection of out-of-range, non-integer, and non-finite inputs.
+- `docs/audits/v11/race.md`: v11 audit log with PASS status,
+  primary citation re-verified against Pérez de la Ossa 2014,
+  and the LVO-threshold cross-check.
+- `docs/spec-v38.md`: the v38 spec doc itself, narrow and
+  one-tile (no other rule amended).
+- `docs/scope-mdcalc-parity.md`, `README.md`, `package.json`:
+  catalog count 246 → 247.
+
+`UTILITIES.length` is 247. Lint + unit tests + a11y + sbom +
+build all clean.
+
 ### Added (spec-v37 wave 37-1 — prehospital / ED stroke triage scales: `cpss` + `lams`)
 
 Closes the prehospital and ED triage gap in the stroke surface.

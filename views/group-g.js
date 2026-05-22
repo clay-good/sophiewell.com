@@ -4186,6 +4186,30 @@ export const renderers = {
     run();
   },
 
+  // spec-v38 §2.1: RACE (Pérez de la Ossa 2014). LVO prediction (5 items).
+  race(root) {
+    const items = [
+      ['Facial palsy (0 absent - 1 mild - 2 moderate/severe)',                'ra-face', 'facialPalsy',     2],
+      ['Arm motor function (0 normal/mild - 1 moderate - 2 severe)',          'ra-arm',  'armMotor',        2],
+      ['Leg motor function (0 normal/mild - 1 moderate - 2 severe)',          'ra-leg',  'legMotor',        2],
+      ['Head / gaze deviation (0 absent - 1 present)',                        'ra-gaze', 'gaze',            1],
+      ['Aphasia (R hemiparesis) or agnosia (L hemiparesis): 0 normal - 2 severe', 'ra-lang', 'languageAgnosia', 2],
+    ];
+    for (const [label, id, , max] of items) {
+      root.appendChild(rangeField(label, id, 0, max, 0));
+    }
+    const o = out(); root.appendChild(o);
+    const run = () => safe(o, () => {
+      const input = {};
+      for (const [, id, key] of items) input[key] = Math.trunc(nv(id));
+      const r = S4.race(input);
+      o.appendChild(el('h2', { text: `RACE ${r.score} of 9 (${r.band})` }));
+      o.appendChild(el('p', { text: r.text }));
+    });
+    items.forEach(([, id]) => document.getElementById(id).addEventListener('input', run));
+    run();
+  },
+
   // spec-v37 §2.1: CPSS (Kothari 1999). Three binary bedside items.
   cpss(root) {
     const items = [
