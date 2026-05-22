@@ -4139,4 +4139,50 @@ export const renderers = {
     items.forEach(([, id]) => document.getElementById(id).addEventListener('input', run));
     run();
   },
+
+  // spec-v36 §2.1: MEOWS (Singh 2012). Track-and-trigger on 8 maternal obs.
+  meows(root) {
+    const nums = [
+      ['Respiratory rate (breaths/min)', 'mw-rr', '16'],
+      ['SpO2 (%)',                       'mw-spo2', '98'],
+      ['Temperature (°C)',               'mw-temp', '37.0'],
+      ['Systolic BP (mmHg)',             'mw-sbp', '118'],
+      ['Diastolic BP (mmHg)',            'mw-dbp', '72'],
+      ['Heart rate (beats/min)',         'mw-hr', '82'],
+    ];
+    for (const [l, id, v] of nums) {
+      root.appendChild(el('p', {}, [
+        el('label', { for: id, text: l }), el('br'),
+        el('input', { id, type: 'number', step: 'any', value: String(v) }),
+      ]));
+    }
+    root.appendChild(el('p', {}, [
+      el('label', { for: 'mw-neuro', text: 'Neurological response (AVPU)' }), el('br'),
+      el('select', { id: 'mw-neuro' }, [
+        el('option', { value: 'A', text: 'A - Alert' }),
+        el('option', { value: 'V', text: 'V - responds to Voice' }),
+        el('option', { value: 'P', text: 'P - responds to Pain' }),
+        el('option', { value: 'U', text: 'U - Unresponsive' }),
+      ]),
+    ]));
+    root.appendChild(rangeField('Pain score', 'mw-pain', 0, 3, 0));
+    const o = out(); root.appendChild(o);
+    const run = () => safe(o, () => {
+      const r = S4.meows({
+        rr: nv('mw-rr'), spo2: nv('mw-spo2'), temp: nv('mw-temp'),
+        sbp: nv('mw-sbp'), dbp: nv('mw-dbp'), hr: nv('mw-hr'),
+        neuro: document.getElementById('mw-neuro').value,
+        pain: nv('mw-pain'),
+      });
+      o.appendChild(el('h2', { text: `MEOWS: ${r.band} (${r.redCount} red, ${r.yellowCount} yellow)` }));
+      o.appendChild(el('p', { text: r.text }));
+      const f = r.flags;
+      o.appendChild(el('p', { class: 'muted',
+        text: `Per-parameter: RR ${f.rr}, SpO2 ${f.spo2}, temp ${f.temp}, SBP ${f.sbp}, DBP ${f.dbp}, HR ${f.hr}, neuro ${f.neuro}, pain ${f.pain}.` }));
+    });
+    ['mw-rr', 'mw-spo2', 'mw-temp', 'mw-sbp', 'mw-dbp', 'mw-hr', 'mw-pain']
+      .forEach((id) => document.getElementById(id).addEventListener('input', run));
+    document.getElementById('mw-neuro').addEventListener('change', run);
+    run();
+  },
 };

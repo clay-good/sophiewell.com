@@ -6,6 +6,58 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v36 wave 36-1 — maternal track-and-trigger: `meows`)
+
+Closes the maternal-warning gap left by the NEWS2/MEWS surface
+([spec-v13](docs/spec-v13.md)) by shipping the Modified Early
+Obstetric Warning System (MEOWS; Singh 2012) as the routine
+maternal vitals chart for OB and OB-anaesthesia nurses. NEWS2
+is built for the general adult ward and the physiology of late
+pregnancy and the peripartum period shifts the thresholds for
+tachycardia, hypotension, and tachypnea enough that the
+non-obstetric chart will miss early maternal deterioration. The
+Singh 2012 validation study at Northwick Park established the
+track-and-trigger thresholds now in routine use across NHS
+maternity units; ACOG's 2019 committee opinion on severe
+maternal morbidity endorses the same idea. Sophie's existing OB
+surface (APGAR, Bishop, ACOG severe-feature preeclampsia,
+HELLP) does not cover routine maternal vitals — v36 plugs that.
+
+- `lib/scoring-v4.js`: new `meows()`. Classifies eight maternal
+  observations (RR, SpO2, temp, SBP, DBP, HR, AVPU neuro, pain
+  0-3) as normal / yellow / red per Singh 2012 Table 1, counts
+  reds and yellows, and triggers when any one red or two or
+  more yellows are present. Returns `{flags, redCount,
+  yellowCount, trigger, band, text}`. Rejects non-finite
+  numbers, implausible vitals (negative HR, SpO2 outside
+  0-100), invalid AVPU letters, and pain outside integer 0-3.
+- `app.js`: +1 UTILITIES row in Group G.
+- `views/group-g.js`: +1 renderer with six numeric vital-sign
+  inputs, an AVPU select, a 0-3 pain range, and an aria-live
+  result region that shows the band, red/yellow counts, the
+  trigger sentence, and per-parameter classification.
+- `lib/meta.js`: META entry with inline Singh 2012 citation,
+  specialty tags (nursing-ob / nursing-general / obstetrics /
+  anesthesiology / emergency-medicine / family-medicine), a
+  prefilled all-normal worked example, and the spec-v11 §5.3
+  interpretation bands.
+- `test/unit/meows.test.js`: 11 new unit tests covering the
+  tile example, single-yellow and two-yellow boundaries, a
+  single-red trigger, the SpO2 <95 cutoff, the temp 35.0 and
+  38.0 edges, AVPU mapping, pain-2 yellow, text content, and
+  rejection of invalid neuro / pain / non-finite / out-of-range
+  vitals.
+- `docs/audits/v11/meows.md`: v11 audit log with PASS status,
+  primary citation re-verified against Singh 2012, and the
+  trigger-rule cross-check against the CEMACH chart.
+- `docs/spec-v36.md`: the v36 spec doc itself, narrow and
+  one-tile (no other rule amended).
+- `docs/scope-mdcalc-parity.md`, `README.md`, `package.json`:
+  catalog count 243 → 244.
+
+`UTILITIES.length` is 244. Lint + unit tests + a11y + sbom +
+build all clean.
+
 ### Added (spec-v35 wave 35-1 — pediatric ICU iatrogenic-withdrawal companion: `sos`)
 
 Closes out the pediatric ICU iatrogenic-withdrawal surface by

@@ -20,7 +20,7 @@ output; "searchable lookup of static facts" does not qualify. See
 [docs/spec-v10.md](docs/spec-v10.md) for the audience and
 dependency-budget commitments and
 [docs/spec-v29.md](docs/spec-v29.md) for the nurse-first pivot
-and the v29 catalog ledger. At v35 close the catalog is 243
+and the v29 catalog ledger. At v36 close the catalog is 244
 deterministic tiles — every one of them computes from at least
 one user input.
 
@@ -60,9 +60,10 @@ After the spec-v29 nurse-first prune (plus the spec-v30
 thermal-emergency decision tiles, the spec-v31 Beers
 deprescribing checker, the spec-v32 non-verbal pain scales, the
 spec-v33 opioid-sedation + neonatal-pain extensions, the
-spec-v34 pediatric-ICU bedside extensions, and the spec-v35
-SOS withdrawal companion added on top), the
-site organizes 243 deterministic calculators
+spec-v34 pediatric-ICU bedside extensions, the spec-v35
+SOS withdrawal companion, and the spec-v36 MEOWS maternal
+track-and-trigger added on top), the
+site organizes 244 deterministic calculators
 across the bedside-shift surfaces a
 nurse, doctor, pharmacist, RT, EMS provider, biller-coder, or
 educator actually reaches for. Every tile takes at least one
