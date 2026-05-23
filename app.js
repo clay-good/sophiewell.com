@@ -736,18 +736,39 @@ function updateSynonymHint(rawQuery) {
   if (!hint) return;
   const q = String(rawQuery || '').trim();
   if (!q) { hint.hidden = true; clear(hint); return; }
-  const m = matchSynonym(q, SYNONYM_ENTRIES, audienceHint());
-  if (!m || !UTIL_BY_ID || !UTIL_BY_ID.get(m.tile)) {
-    hint.hidden = true;
+  // spec-v7 §3.2 + spec-v51 §2: the hero hint is the only live feedback
+  // the search input shows. Prior code asked matchSynonym() directly, so
+  // queries like "wells pe" or "cha2ds2-vasc" (no synonym row) silently
+  // showed nothing even though Enter would have resolved them via the
+  // token ranker. Drive the hint from resolvePrompt() instead so any
+  // query the Enter handler would route to a tile produces a visible
+  // confirmation first.
+  const r = resolvePrompt(q, tileCorpus(), SYNONYM_ENTRIES, audienceHint());
+  const tileId = r && r.tileId;
+  const util = tileId && UTIL_BY_ID ? UTIL_BY_ID.get(tileId) : null;
+  if (!util) {
+    // Last-chance fallback to the legacy fuzzy ranker so the hint stays
+    // in sync with the Enter handler's own fallback (resolveQueryToTileId).
+    const fuzzy = searchUtilities(q, 1);
+    const fb = fuzzy[0] && UTIL_BY_ID.get(fuzzy[0].id);
+    if (!fb) { hint.hidden = true; clear(hint); return; }
     clear(hint);
+    hint.appendChild(document.createTextNode('Press Enter to open '));
+    hint.appendChild(el('a', { href: '#' + fb.id, class: 'synonym-link', text: fb.name }));
+    hint.appendChild(document.createTextNode('.'));
+    hint.hidden = false;
     return;
   }
-  const util = UTIL_BY_ID.get(m.tile);
   clear(hint);
-  hint.appendChild(document.createTextNode('Matched "' + m.phrase + '" to '));
-  const link = el('a', { href: '#' + util.id, class: 'synonym-link', text: util.name });
-  hint.appendChild(link);
-  hint.appendChild(document.createTextNode('. Press Enter to open.'));
+  if (r.phrase) {
+    hint.appendChild(document.createTextNode('Matched "' + r.phrase + '" to '));
+    hint.appendChild(el('a', { href: '#' + util.id, class: 'synonym-link', text: util.name }));
+    hint.appendChild(document.createTextNode('. Press Enter to open.'));
+  } else {
+    hint.appendChild(document.createTextNode('Press Enter to open '));
+    hint.appendChild(el('a', { href: '#' + util.id, class: 'synonym-link', text: util.name }));
+    hint.appendChild(document.createTextNode('.'));
+  }
   hint.hidden = false;
 }
 
