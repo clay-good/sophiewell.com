@@ -4186,6 +4186,34 @@ export const renderers = {
     run();
   },
 
+  // spec-v43 §2.1: Lawton IADL (Lawton & Brody 1969). Eight-item instrumental ADL.
+  'lawton-iadl'(root) {
+    const items = [
+      ['Ability to use telephone (1 independent / 0 needs help)',         'lw-tel',   'telephone'],
+      ['Shopping (1 independent / 0 needs help)',                         'lw-shop',  'shopping'],
+      ['Food preparation (1 independent / 0 needs help)',                 'lw-food',  'foodPrep'],
+      ['Housekeeping (1 independent / 0 needs help)',                     'lw-house', 'housekeeping'],
+      ['Laundry (1 independent / 0 needs help)',                          'lw-laund', 'laundry'],
+      ['Mode of transportation (1 independent / 0 needs help)',           'lw-trans', 'transportation'],
+      ['Responsibility for own medications (1 independent / 0 needs help)', 'lw-med', 'medications'],
+      ['Ability to handle finances (1 independent / 0 needs help)',       'lw-fin',   'finances'],
+    ];
+    for (const [label, id] of items) root.appendChild(rangeField(label, id, 0, 1, 1));
+    const o = out(); root.appendChild(o);
+    const run = () => safe(o, () => {
+      const input = {};
+      for (const [, id, key] of items) input[key] = Math.trunc(nv(id));
+      const r = S4.lawtonIadl(input);
+      o.appendChild(el('h2', { text: `Lawton IADL ${r.score} of 8 (${r.band})` }));
+      o.appendChild(el('p', { text: r.text }));
+      const dep = items.filter(([, , key]) => r.parts[key] === 0).map(([label]) => label.split(' (')[0].toLowerCase());
+      const muted = dep.length > 0 ? `Needs help with: ${dep.join(', ')}.` : 'No reported IADL dependence.';
+      o.appendChild(el('p', { class: 'muted', text: muted }));
+    });
+    items.forEach(([, id]) => document.getElementById(id).addEventListener('input', run));
+    run();
+  },
+
   // spec-v42 §2.1: Katz ADL (Katz 1963). Six-item functional status.
   'katz-adl'(root) {
     const items = [

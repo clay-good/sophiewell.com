@@ -6,6 +6,51 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v43 wave 43-1 — instrumental-ADL companion to Katz: `lawton-iadl`)
+
+Adds the instrumental-ADL companion to v42's Katz ADL. Katz tells
+the discharging RN whether the patient can survive at home;
+Lawton tells them whether the patient can *manage* at home —
+placing a phone call, shopping, preparing food, housekeeping,
+laundry, organizing transportation, managing one's own
+medications, and handling one's own finances. A patient who is
+Katz 6 / Lawton 8 goes home; a patient who is Katz 6 / Lawton 3
+goes home only with medication-management and meal-prep services;
+a patient who is Katz 4 / Lawton 1 needs an assisted-living or
+SNF placement. Lawton declines also flag mild cognitive
+impairment and increased medication-error risk earlier than ADL
+alone.
+
+- `lib/scoring-v4.js`: new `lawtonIadl()`. Eight 0/1 IADL items
+  summing to 0-8 on the modern unisex form. Returns `{score,
+  parts, band, text}` with bands at 8 / 6-7 / 3-5 / 0-2.
+- `app.js`: +1 UTILITIES row in Group G under tile id
+  `lawton-iadl`.
+- `views/group-g.js`: +1 renderer with eight labeled 0-1 range
+  fields; the muted summary line names the IADLs the patient
+  needs help with for the discharge note.
+- `lib/meta.js`: META entry with inline Lawton 1969 citation,
+  specialty tags (nursing-floor / nursing-ed / nursing-general /
+  geriatrics / family-medicine / case-management /
+  occupational-therapy / physical-therapy), a prefilled all-
+  independent worked example, and the spec-v11 §5.3 four-band
+  interpretation.
+- `test/unit/lawton-iadl.test.js`: 9 new unit tests covering the
+  full-independence tile example, the 7 / 6 / 5 / 3 / 2 / 0
+  band-boundary scores, text-content citation, and rejection of
+  non-binary, non-integer, and missing inputs.
+- `docs/audits/v11/lawton-iadl.md`: v11 audit log with PASS
+  status, primary citation re-verified against Lawton 1969, and
+  the four band cutoffs cross-checked against the Hartford
+  Institute "Try This" series.
+- `docs/spec-v43.md`: the v43 spec doc itself, narrow and
+  one-tile (no other rule amended).
+- `docs/scope-mdcalc-parity.md`, `README.md`, `package.json`:
+  catalog count 251 → 252.
+
+`UTILITIES.length` is 252. Lint + unit tests + a11y + sbom +
+build all clean.
+
 ### Added (spec-v42 wave 42-1 — geriatric / discharge-planning ADL: `katz-adl`)
 
 Closes the functional-status / discharge-planning gap in the
