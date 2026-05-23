@@ -4186,6 +4186,33 @@ export const renderers = {
     run();
   },
 
+  // spec-v42 §2.1: Katz ADL (Katz 1963). Six-item functional status.
+  'katz-adl'(root) {
+    const items = [
+      ['Bathing (1 independent / 0 dependent)',       'kz-bath',  'bathing'],
+      ['Dressing (1 independent / 0 dependent)',      'kz-dress', 'dressing'],
+      ['Toileting (1 independent / 0 dependent)',     'kz-toil',  'toileting'],
+      ['Transferring (1 independent / 0 dependent)',  'kz-trans', 'transferring'],
+      ['Continence (1 independent / 0 dependent)',    'kz-cont',  'continence'],
+      ['Feeding (1 independent / 0 dependent)',       'kz-feed',  'feeding'],
+    ];
+    for (const [label, id] of items) root.appendChild(rangeField(label, id, 0, 1, 1));
+    const o = out(); root.appendChild(o);
+    const run = () => safe(o, () => {
+      const input = {};
+      for (const [, id, key] of items) input[key] = Math.trunc(nv(id));
+      const r = S4.katzAdl(input);
+      o.appendChild(el('h2', { text: `Katz ADL ${r.score} of 6 (${r.band})` }));
+      o.appendChild(el('p', { text: r.text }));
+      const indep = items.filter(([, id, key]) => r.parts[key] === 1).map(([label]) => label.split(' (')[0].toLowerCase());
+      const dep = items.filter(([, id, key]) => r.parts[key] === 0).map(([label]) => label.split(' (')[0].toLowerCase());
+      const muted = `Independent in: ${indep.length > 0 ? indep.join(', ') : '(none)'}. Dependent in: ${dep.length > 0 ? dep.join(', ') : '(none)'}.`;
+      o.appendChild(el('p', { class: 'muted', text: muted }));
+    });
+    items.forEach(([, id]) => document.getElementById(id).addEventListener('input', run));
+    run();
+  },
+
   // spec-v41 §2.1: FOUR Score (Wijdicks 2005). ICU coma scale.
   'four-score'(root) {
     const items = [

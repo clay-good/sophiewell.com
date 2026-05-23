@@ -6,6 +6,51 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v42 wave 42-1 — geriatric / discharge-planning ADL: `katz-adl`)
+
+Closes the functional-status / discharge-planning gap in the
+nursing surface. Sophie ships fall-risk (Hendrich II, Morse),
+pressure-injury (Braden, Norton+PUSH), frailty (CFS), and
+cognitive screening (mini-Cog) — but had nothing for functional
+status / ADL independence, the core nurse / case-management
+question at every discharge huddle. Katz ADL (Katz 1963) is the
+foundational instrument: six binary ADL items (bathing,
+dressing, toileting, transferring, continence, feeding); each
+0 dependent / 1 independent; total 0-6 with bands 6 = full
+independence, 5 = mild, 3-4 = moderate, 0-2 = severe. Katz is
+RN-administered, in routine use in geriatric assessment, home-
+health initial assessment (OASIS items M1830-M1870 are largely
+Katz-aligned), and discharge planning.
+
+- `lib/scoring-v4.js`: new `katzAdl()`. Six 0/1 items summed to
+  0-6 with Katz 1963 bands. Returns `{score, parts, band, text}`.
+- `app.js`: +1 UTILITIES row in Group G under tile id
+  `katz-adl`.
+- `views/group-g.js`: +1 renderer with six labeled 0-1 range
+  fields and an aria-live result region; the muted summary
+  line lists the per-item independent / dependent breakdown for
+  the discharge note.
+- `lib/meta.js`: META entry with inline Katz 1963 citation,
+  specialty tags (nursing-floor / nursing-ed / nursing-general /
+  geriatrics / family-medicine / physical-therapy /
+  occupational-therapy / case-management), a prefilled all-
+  independent worked example, and the spec-v11 §5.3 four-band
+  interpretation.
+- `test/unit/katz-adl.test.js`: 8 new unit tests covering the
+  full-independence tile example, the 5 / 4 / 3 / 2 / 0
+  band-boundary scores, text-content citation, and rejection of
+  non-binary, non-integer, and missing inputs.
+- `docs/audits/v11/katz-adl.md`: v11 audit log with PASS status,
+  primary citation re-verified against Katz 1963, and the four
+  band cutoffs cross-checked.
+- `docs/spec-v42.md`: the v42 spec doc itself, narrow and
+  one-tile (no other rule amended).
+- `docs/scope-mdcalc-parity.md`, `README.md`, `package.json`:
+  catalog count 250 → 251.
+
+`UTILITIES.length` is 251. Lint + unit tests + a11y + sbom +
+build all clean.
+
 ### Added (spec-v41 wave 41-1 — ICU coma scale for intubated patients: `four-score`)
 
 Adds the FOUR Score (Wijdicks 2005) — the validated ICU coma

@@ -80,7 +80,9 @@ literacy decoders, the field-medicine and EMS workflow tiles).
 > v40 close — [spec-v40](spec-v40.md), which adds GUSS as the
 > post-stroke bedside dysphagia screen — is 249; v41 close —
 > [spec-v41](spec-v41.md), which adds FOUR Score as the ICU
-> coma scale for intubated patients — is 250.)
+> coma scale for intubated patients — is 250; v42 close —
+> [spec-v42](spec-v42.md), which adds Katz ADL as the geriatric
+> / discharge-planning functional-status index — is 251.)
 
 A reasonable steady-state estimate is **400–600 tiles over 3–5
 years**, depending on how aggressive the audit pace is and how
