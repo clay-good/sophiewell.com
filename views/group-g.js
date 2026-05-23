@@ -4186,6 +4186,30 @@ export const renderers = {
     run();
   },
 
+  // spec-v39 §2.1: ROSIER (Nor 2005). ED stroke recognition with mimic discrimination.
+  rosier(root) {
+    const items = [
+      ['Loss of consciousness / syncope (-1)',            'ro-loc',    'locSyncope'],
+      ['Seizure activity (-1)',                           'ro-sez',    'seizure'],
+      ['New asymmetric facial weakness (+1)',             'ro-face',   'facialWeakness'],
+      ['New asymmetric arm weakness (+1)',                'ro-arm',    'armWeakness'],
+      ['New asymmetric leg weakness (+1)',                'ro-leg',    'legWeakness'],
+      ['Speech disturbance (+1)',                         'ro-speech', 'speechDisturbance'],
+      ['Visual field defect (+1)',                        'ro-vis',    'visualFieldDefect'],
+    ];
+    for (const [label, id] of items) root.appendChild(checkbox(label, id));
+    const o = out(); root.appendChild(o);
+    const run = () => safe(o, () => {
+      const input = {};
+      for (const [, id, key] of items) input[key] = checked(id);
+      const r = S4.rosier(input);
+      o.appendChild(el('h2', { text: `ROSIER ${r.score} (${r.band})` }));
+      o.appendChild(el('p', { text: r.text }));
+    });
+    items.forEach(([, id]) => document.getElementById(id).addEventListener('change', run));
+    run();
+  },
+
   // spec-v38 §2.1: RACE (Pérez de la Ossa 2014). LVO prediction (5 items).
   race(root) {
     const items = [

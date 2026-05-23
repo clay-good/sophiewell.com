@@ -6,6 +6,49 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v39 wave 39-1 — ED stroke recognition with mimic discrimination: `rosier`)
+
+Closes the recognition-stage gap in the cerebrovascular surface.
+CPSS (spec-v37) is sensitive but non-specific — post-ictal Todd's
+paresis, syncope, and migraine-with-aura all flip it positive —
+and the ED RN performing recognition needs an instrument that
+subtracts points for the two most common stroke mimics (seizure
+and a syncope-pattern LOC) and adds points for focal-deficit
+items. ROSIER (Nor 2005) is that instrument: seven binary items,
+total -2 to +5, stroke likely at >0 with sensitivity 93% and
+specificity 83%. It is in routine ED use at UK stroke centers
+and an increasing number of US ED triage protocols.
+
+- `lib/scoring-v4.js`: new `rosier()`. Seven boolean items — two
+  mimic items each weighted -1 (LOC/syncope, seizure) and five
+  focal-deficit items each weighted +1 (facial/arm/leg weakness,
+  speech disturbance, visual-field defect) — summing to a total
+  in -2..+5. `strokeLikely` fires at score > 0 per Nor 2005.
+- `app.js`: +1 UTILITIES row in Group G.
+- `views/group-g.js`: +1 renderer with seven labeled checkboxes
+  and an aria-live result region; per-item labels include the
+  explicit ±1 weight.
+- `lib/meta.js`: META entry with inline Nor 2005 citation,
+  specialty tags (nursing-ed / nursing-general /
+  emergency-medicine / neurology / family-medicine), a prefilled
+  all-false worked example, and the spec-v11 §5.3 interpretation
+  bands.
+- `test/unit/rosier.test.js`: 9 new unit tests covering the
+  all-false tile example (0), the +1 / -1 / -2 / +5 boundaries,
+  the focal-plus-mimic-cancels-to-0 case, part-sign mirroring,
+  text-content citation, and rejection of non-boolean and
+  missing inputs.
+- `docs/audits/v11/rosier.md`: v11 audit log with PASS status,
+  primary citation re-verified against Nor 2005, and the
+  >0-threshold and per-item-sign cross-checks.
+- `docs/spec-v39.md`: the v39 spec doc itself, narrow and
+  one-tile (no other rule amended).
+- `docs/scope-mdcalc-parity.md`, `README.md`, `package.json`:
+  catalog count 247 → 248.
+
+`UTILITIES.length` is 248. Lint + unit tests + a11y + sbom +
+build all clean.
+
 ### Added (spec-v38 wave 38-1 — prehospital LVO predictor: `race`)
 
 Closes the EU/Catalan-protocol gap left by v37's LAMS-only LVO

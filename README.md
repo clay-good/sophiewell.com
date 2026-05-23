@@ -20,7 +20,7 @@ output; "searchable lookup of static facts" does not qualify. See
 [docs/spec-v10.md](docs/spec-v10.md) for the audience and
 dependency-budget commitments and
 [docs/spec-v29.md](docs/spec-v29.md) for the nurse-first pivot
-and the v29 catalog ledger. At v38 close the catalog is 247
+and the v29 catalog ledger. At v39 close the catalog is 248
 deterministic tiles — every one of them computes from at least
 one user input.
 
@@ -63,9 +63,9 @@ spec-v33 opioid-sedation + neonatal-pain extensions, the
 spec-v34 pediatric-ICU bedside extensions, the spec-v35
 SOS withdrawal companion, the spec-v36 MEOWS maternal
 track-and-trigger, the spec-v37 CPSS + LAMS prehospital stroke
-triage scales, and the spec-v38 RACE prehospital LVO predictor
-added on top), the
-site organizes 247 deterministic calculators
+triage scales, the spec-v38 RACE prehospital LVO predictor, and
+the spec-v39 ROSIER ED stroke-recognition scale added on top), the
+site organizes 248 deterministic calculators
 across the bedside-shift surfaces a
 nurse, doctor, pharmacist, RT, EMS provider, biller-coder, or
 educator actually reaches for. Every tile takes at least one
