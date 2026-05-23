@@ -1,0 +1,10 @@
+{
+  "_comment": "spec-v50 §3.4: the only persistent-storage keys Sophie is permitted to write. Any localStorage.setItem(...) / sessionStorage.setItem(...) in the codebase must pass a string literal whose value is in `keys` below. The service worker's Cache Storage namespaces are listed in `cacheNamespacePrefixes`: actual cache names like `sophiewell-shell-${BUILD_HASH}` are matched by prefix.",
+  "keys": [
+    "sw-theme"
+  ],
+  "cacheNamespacePrefixes": [
+    "sophiewell-shell-",
+    "sophiewell-data-"
+  ]
+}

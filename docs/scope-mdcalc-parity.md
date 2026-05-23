@@ -90,7 +90,11 @@ literacy decoders, the field-medicine and EMS workflow tiles).
 > [spec-v45](spec-v45.md), which adds the C-SSRS Screener as the
 > bedside suicide-risk screening tile — is 254; v46 close —
 > [spec-v46](spec-v46.md), a CI / source-of-truth pass that adds
-> the catalog-truth invariants but **zero new tiles** — is 254.)
+> the catalog-truth invariants but **zero new tiles** — is 254;
+> v50 close — [spec-v50](spec-v50.md), a governance pass that
+> codifies the eight posture commitments as automated checks and
+> ships the public `/commitments/` page but adds **zero new
+> tiles** — is 254.)
 
 A reasonable steady-state estimate is **400–600 tiles over 3–5
 years**, depending on how aggressive the audit pace is and how

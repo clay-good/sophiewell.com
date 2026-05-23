@@ -19,8 +19,10 @@ const SCAN_EXTENSIONS = new Set(['.html', '.css', '.js', '.mjs']);
 
 const SKIP_DIRS = new Set(['node_modules', 'dist', '.git', 'data', 'docs']);
 
-// File whose job is to scan for these patterns is allowed to mention them.
+// Files whose job is to scan for these patterns are allowed to mention them.
 const SELF = 'scripts/grep-check.mjs';
+// The commitments check legitimately lists vendor needles as enforcement data.
+const COMMITMENTS_CHECK = 'scripts/check-commitments.mjs';
 // The eslint config legitimately mentions innerHTML in its rule strings.
 const ESLINT_CONFIG = '.eslintrc.json';
 
@@ -33,6 +35,13 @@ const FORBIDDEN = [
   // Emoji blocks: misc symbols and pictographs, supplemental, dingbats, etc.
   // Conservative match; ASCII text is unaffected.
   { name: 'emoji codepoint',     regex: /[\u{1F300}-\u{1FAFF}\u{2600}-\u{27BF}\u{1F000}-\u{1F2FF}]/u },
+  // spec-v50 §3.3: no cookies. document.cookie = ... and Set-Cookie are forbidden in source.
+  { name: 'cookie write (spec-v50 §3.3)', regex: /document\.cookie\s*=|Set-Cookie/ },
+  // spec-v50 §3.5: no analytics / telemetry / beaconing vendors. Word- or
+  // url-bounded to avoid colliding with English prose like "implausible".
+  { name: 'analytics vendor (spec-v50 §3.5)', regex: /\b(?:googletagmanager|google-analytics|analytics\.google|segment\.com|segment\.io|mixpanel\.com|@mixpanel|posthog\.com|@posthog|amplitude\.com|@amplitude|plausible\.io|fathom\.com|simpleanalytics\.com|heap\.io|hotjar\.com|fullstory\.com|sentry\.io|bugsnag\.com|datadog-rum|newrelic\.com|logrocket\.com|rollbar\.com|sendBeacon)\b/i },
+  // spec-v50 §3.7: no login / paywall vendor identifiers in source.
+  { name: 'auth/paywall vendor (spec-v50 §3.7)', regex: /\b(?:auth0\.com|@auth0|clerk\.dev|@clerk\/|supabase-auth|@firebase\/auth|okta\.com|@okta\/|stripe\.com|@stripe\/|lemonsqueezy\.com|paddle\.com|@paddle\/)/i },
 ];
 
 async function* walk(dir) {
@@ -74,6 +83,7 @@ async function main() {
     const rel = relPath(file);
     if (!shouldScan(rel)) continue;
     if (rel === SELF) continue;
+    if (rel === COMMITMENTS_CHECK) continue;
     const text = await readFile(file, 'utf8');
     const lines = text.split(/\r?\n/);
     for (let i = 0; i < lines.length; i += 1) {

@@ -6,6 +6,59 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v50 wave 50-1 — public-infrastructure commitments: codified non-degradation guarantees)
+
+Codifies the eight posture commitments that distinguish Sophie
+from a typical web product (no ads, no login, no telemetry, no
+third-party fetch, no AI, no cookies, no paid tier, MIT-licensed
+forever) as automated invariants enforced on every commit, and
+ships a public `/commitments/` page listing each guarantee
+alongside the check that enforces it.
+
+- `scripts/check-commitments.mjs`: new. Enforces §3.4 (every
+  `localStorage.setItem` / `sessionStorage.setItem` / `caches.open`
+  uses a key on the allowlist), §3.6 (no AI-vendor SDK substrings
+  in source `import` / `require` / string-literal contexts and no
+  AI-vendor package in `package.json` dependencies), §3.7 (no
+  auth / paywall vendor package in dependencies), §3.8
+  (`package.json` `license === "MIT"` and `LICENSE` first line
+  begins with "MIT License"), and the `_headers` CSP-shape
+  assertion for §3.1 / §3.2 (`connect-src 'self'`, `script-src 'self'`).
+- `scripts/storage-allowlist.json`: new. Lists the one permitted
+  `localStorage` key (`sw-theme`) and the service worker's two
+  cache-namespace prefixes (`sophiewell-shell-`, `sophiewell-data-`).
+- `scripts/grep-check.mjs`: +3 rules for §3.3 (no `document.cookie =`
+  / `Set-Cookie` in source), §3.5 (no analytics / RUM / error-
+  reporting vendor identifiers), and §3.7 (no auth / paywall
+  vendor identifiers). Word- and URL-bounded to avoid colliding
+  with prose like "implausible".
+- `scripts/build-commitments-page.mjs`: new. Emits
+  `dist/commitments/index.html`, a pure-HTML page with the eight
+  commitments and a link to each enforcement script.
+  Wired into `scripts/build.mjs`.
+- `index.html`: footer carries a new `/commitments/` link.
+- `CONTRIBUTING.md`: new file documenting the tile-add workflow,
+  the commitment-add / -change process, and the defect-against-
+  a-commitment reporting protocol.
+- `package.json`: `npm run lint` now runs `eslint` →
+  `grep-check.mjs` → `check-catalog-truth.mjs` →
+  `check-commitments.mjs` as four sequential gates.
+- `docs/spec-v50.md`: the v50 spec doc itself.
+- No tiles added, removed, or renamed. **Catalog count 254,
+  unchanged.**
+
+Sanity-tested: a deliberate `localStorage.setItem('unauthorized-key', 'x')`
+on a source file fails `check-commitments` locally with a
+per-line diff. A deliberate addition of an analytics-vendor
+identifier fails grep-check. The Playwright runtime no-network
+test (spec-v50 §3.1 step 2) is deferred to a follow-up wave;
+the CSP shape assertion already enforces the network half at
+build time.
+
+`UTILITIES.length` is 254. Lint + unit tests + a11y + sbom +
+build all clean. `/commitments/` is reachable from the footer
+of every page after `npm run build`.
+
 ### Added (spec-v46 wave 46-1 — catalog-truth invariants: anti-drift guards)
 
 Closes a class of defect discovered on 2026-05-22: the home page
