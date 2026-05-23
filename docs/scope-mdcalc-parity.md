@@ -76,7 +76,9 @@ literacy decoders, the field-medicine and EMS workflow tiles).
 > [spec-v38](spec-v38.md), which adds RACE as the prehospital
 > LVO predictor companion to LAMS — is 247; v39 close —
 > [spec-v39](spec-v39.md), which adds ROSIER as the ED
-> stroke-recognition scale with mimic discrimination — is 248.)
+> stroke-recognition scale with mimic discrimination — is 248;
+> v40 close — [spec-v40](spec-v40.md), which adds GUSS as the
+> post-stroke bedside dysphagia screen — is 249.)
 
 A reasonable steady-state estimate is **400–600 tiles over 3–5
 years**, depending on how aggressive the audit pace is and how

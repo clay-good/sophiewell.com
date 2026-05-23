@@ -4186,6 +4186,66 @@ export const renderers = {
     run();
   },
 
+  // spec-v40 §2.1: GUSS (Trapl 2007). Two-stage post-stroke dysphagia screen.
+  guss(root) {
+    root.appendChild(el('h3', { text: 'Stage 1: preliminary investigation (must score 5 to proceed)' }));
+    const stage1 = [
+      ['Vigilance: patient awake / alert (1) vs none (0)',   'gu-vig', 'vigilance'],
+      ['Voluntary cough or throat clearing (1) vs no (0)',   'gu-cgh', 'coughClear'],
+      ['Saliva swallow successful (1) vs no (0)',            'gu-sw',  'salivaSwallow'],
+      ['No drooling (1) vs drooling (0)',                    'gu-dr',  'salivaNoDrool'],
+      ['No voice change (1) vs voice change (0)',            'gu-vc',  'salivaNoVoiceChange'],
+    ];
+    for (const [label, id] of stage1) root.appendChild(rangeField(label, id, 0, 1, 1));
+    const consistencies = [
+      ['Semisolid', 'ss', 'semisolid'],
+      ['Liquid',    'li', 'liquid'],
+      ['Solid',     'so', 'solid'],
+    ];
+    for (const [label, prefix] of consistencies) {
+      root.appendChild(el('h3', { text: `Stage 2: ${label} (must score 5 to advance to next consistency)` }));
+      root.appendChild(rangeField('Deglutition (0 not possible - 1 delayed - 2 successful)', `gu-${prefix}Sw`, 0, 2, 2));
+      root.appendChild(rangeField('No involuntary cough (1) vs cough (0)',                    `gu-${prefix}Cg`, 0, 1, 1));
+      root.appendChild(rangeField('No drooling (1) vs drooling (0)',                          `gu-${prefix}Dr`, 0, 1, 1));
+      root.appendChild(rangeField('No voice change (1) vs voice change (0)',                  `gu-${prefix}Vc`, 0, 1, 1));
+    }
+    const allIds = [
+      ...stage1.map(([, id]) => id),
+      ...consistencies.flatMap(([, p]) => [`gu-${p}Sw`, `gu-${p}Cg`, `gu-${p}Dr`, `gu-${p}Vc`]),
+    ];
+    const o = out(); root.appendChild(o);
+    const run = () => safe(o, () => {
+      const r = S4.guss({
+        vigilance: nv('gu-vig'),
+        coughClear: nv('gu-cgh'),
+        salivaSwallow: nv('gu-sw'),
+        salivaNoDrool: nv('gu-dr'),
+        salivaNoVoiceChange: nv('gu-vc'),
+        semisolidSwallow: nv('gu-ssSw'),
+        semisolidNoCough: nv('gu-ssCg'),
+        semisolidNoDrool: nv('gu-ssDr'),
+        semisolidNoVoiceChange: nv('gu-ssVc'),
+        liquidSwallow: nv('gu-liSw'),
+        liquidNoCough: nv('gu-liCg'),
+        liquidNoDrool: nv('gu-liDr'),
+        liquidNoVoiceChange: nv('gu-liVc'),
+        solidSwallow: nv('gu-soSw'),
+        solidNoCough: nv('gu-soCg'),
+        solidNoDrool: nv('gu-soDr'),
+        solidNoVoiceChange: nv('gu-soVc'),
+      });
+      o.appendChild(el('h2', { text: `GUSS ${r.score} of 20 (${r.band})` }));
+      o.appendChild(el('p', { text: r.text }));
+      o.appendChild(el('p', { class: 'muted',
+        text: `Per-stage: preliminary ${r.stage1}/5, semisolid ${r.semisolid}/5, liquid ${r.liquid}/5, solid ${r.solid}/5.` }));
+      if (r.gated.length > 0) {
+        o.appendChild(el('p', { class: 'muted', text: `Not performed (gated per Trapl 2007): ${r.gated.join(', ')}.` }));
+      }
+    });
+    allIds.forEach((id) => document.getElementById(id).addEventListener('input', run));
+    run();
+  },
+
   // spec-v39 §2.1: ROSIER (Nor 2005). ED stroke recognition with mimic discrimination.
   rosier(root) {
     const items = [

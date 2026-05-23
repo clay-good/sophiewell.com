@@ -6,6 +6,53 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v40 wave 40-1 — post-stroke bedside dysphagia screen: `guss`)
+
+Adds the bedside RN's "can this acute-stroke patient eat?" tile.
+Every acute-stroke patient should have a bedside dysphagia
+screen before any oral intake (AHA/ASA 2018 §6.3); GUSS (Trapl
+2007) is the most-validated nurse-administered bedside screen at
+acute stroke onset. The screen prevents the stroke-associated
+aspiration pneumonia that drives a sizable share of stroke-unit
+length-of-stay and 90-day mortality. Sophie's cerebrovascular
+surface now covers recognition (CPSS, ROSIER), severity (NIHSS,
+mNIHSS), LVO prediction (LAMS, RACE), and aspiration risk (this
+tile).
+
+- `lib/scoring-v4.js`: new `guss()`. Two-stage screen with the
+  full Trapl 2007 gating rules in code: stage 1 (5 binary items)
+  gates stage 2; within stage 2, each consistency (semisolid ->
+  liquid -> solid) must score 5 to advance. Returns `{score,
+  stage1, semisolid, liquid, solid, gated, band, text}` with
+  band per Trapl 2007 Table 3 (20 slight/no, 15-19 slight, 10-14
+  moderate, 0-9 severe).
+- `app.js`: +1 UTILITIES row in Group G.
+- `views/group-g.js`: +1 renderer with four section headings
+  (preliminary + three consistencies) and 17 labeled range
+  inputs, plus a per-stage breakdown and a "gated subtests"
+  muted line in the result region.
+- `lib/meta.js`: META entry with inline Trapl 2007 citation,
+  specialty tags (nursing-icu / nursing-ed / nursing-general /
+  neurology / emergency-medicine / speech-language-pathology /
+  family-medicine), a prefilled all-pass worked example, and the
+  spec-v11 §5.3 four-band interpretation.
+- `test/unit/guss.test.js`: 10 new unit tests covering the
+  perfect tile example (20), the stage-1 gate (=4 ends the
+  screen at 4), the semisolid / liquid / solid gates, all four
+  band lower/upper edges (0/4, 9/10, 14/15, 19/20), per-band
+  text content, and rejection of out-of-range / non-integer
+  inputs.
+- `docs/audits/v11/guss.md`: v11 audit log with PASS status,
+  primary citation re-verified against Trapl 2007, and the
+  three gating rules plus the four band cutoffs cross-checked.
+- `docs/spec-v40.md`: the v40 spec doc itself, narrow and
+  one-tile (no other rule amended).
+- `docs/scope-mdcalc-parity.md`, `README.md`, `package.json`:
+  catalog count 248 → 249.
+
+`UTILITIES.length` is 249. Lint + unit tests + a11y + sbom +
+build all clean.
+
 ### Added (spec-v39 wave 39-1 — ED stroke recognition with mimic discrimination: `rosier`)
 
 Closes the recognition-stage gap in the cerebrovascular surface.
