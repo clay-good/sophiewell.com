@@ -3,6 +3,7 @@
 //  - innerHTML / outerHTML / insertAdjacentHTML occurrences in source
 //  - emoji codepoints in source
 //  - em-dashes or en-dashes in source
+//  - catalog-count drift on user-facing marketing surfaces (spec-v46 §6)
 //
 // Scans index.html, styles.css, sw.js, all .js / .mjs files outside node_modules,
 // dist, data, and docs.
@@ -88,6 +89,11 @@ async function main() {
       }
     }
   }
+  // spec-v46 §6: catalog-count drift rule.
+  const truth = await readUtilitiesLength();
+  const catalogViolations = await scanCatalogCountDrift(truth);
+  for (const v of catalogViolations) violations.push(v);
+
   if (violations.length === 0) {
     console.log('grep-check: clean.');
     process.exit(0);
@@ -97,6 +103,133 @@ async function main() {
     console.error(`  ${v.file}:${v.line}  ${v.name}  >>  ${v.text}`);
   }
   process.exit(1);
+}
+
+// spec-v46 §6 ---------------------------------------------------------------
+//
+// A 3-digit decimal literal [100, 999] adjacent to one of the catalog-count
+// words is a "putative tile count" and must equal `UTILITIES.length`. The
+// rule applies to user-facing surfaces only; historical spec docs, the per-
+// tile audit logs under docs/audits/**, and any line carrying the explicit
+// `<!-- catalog-truth:historical -->` escape are exempt.
+
+const CATALOG_WORDS = /(tiles?|tools?|calculators?|utilit|deterministic)/i;
+const CATALOG_ESCAPE = /catalog-truth:historical/;
+
+async function readUtilitiesLength() {
+  const appJs = await readFile(join(ROOT, 'app.js'), 'utf8');
+  const start = appJs.indexOf('const UTILITIES = [');
+  if (start === -1) throw new Error('grep-check: cannot locate UTILITIES in app.js');
+  let depth = 0;
+  let i = appJs.indexOf('[', start);
+  let end = -1;
+  for (; i < appJs.length; i += 1) {
+    const ch = appJs[i];
+    if (ch === '[') depth += 1;
+    else if (ch === ']') {
+      depth -= 1;
+      if (depth === 0) { end = i; break; }
+    }
+  }
+  const body = appJs.slice(start, end);
+  return (body.match(/^\s{2}\{ id: '[^']+',/gm) || []).length;
+}
+
+function catalogScanRanges(rel, text) {
+  // Returns an array of [startLine, endLineInclusive] 1-indexed line ranges
+  // to scan. Empty array means skip the file.
+  const lines = text.split(/\r?\n/);
+  if (rel === 'index.html' || rel === 'README.md' || rel === 'package.json' || rel === 'site.webmanifest') {
+    return [[1, lines.length]];
+  }
+  if (rel === 'CHANGELOG.md') {
+    // Per spec-v46 §6: scan only above the most recent [Unreleased] header.
+    // Past spec-wave narrative inside [Unreleased] subsections is treated as
+    // historical (each `### Added (spec-vN ...)` block is a snapshot of that
+    // wave's catalog count and must not be rewritten).
+    for (let i = 0; i < lines.length; i += 1) {
+      if (/^##\s*\[Unreleased\]/i.test(lines[i])) return i === 0 ? [] : [[1, i]];
+    }
+    return [];
+  }
+  if (rel.startsWith('docs/') && rel.endsWith('.md')) {
+    if (/^docs\/spec-v\d+(?:-checklist)?\.md$/.test(rel)) return [];
+    if (rel.startsWith('docs/audits/')) return [];
+    return [[1, lines.length]];
+  }
+  return [];
+}
+
+async function* walkAll(dir) {
+  const entries = await readdir(dir, { withFileTypes: true });
+  for (const entry of entries) {
+    if (SKIP_DIRS.has(entry.name)) continue;
+    if (entry.name.startsWith('.')) continue;
+    const full = join(dir, entry.name);
+    if (entry.isDirectory()) {
+      // For catalog-truth scan we *do* descend into docs/, unlike the
+      // forbidden-pattern scan which skips it.
+      if (entry.name === 'docs') {
+        yield* walkAll(full);
+      } else {
+        yield* walkAll(full);
+      }
+    } else if (entry.isFile()) {
+      yield full;
+    }
+  }
+}
+
+async function scanCatalogCountDrift(truth) {
+  const violations = [];
+  const TARGETS = new Set(['index.html', 'README.md', 'CHANGELOG.md', 'package.json', 'site.webmanifest']);
+  // Walk includes docs/*.md per catalogScanRanges.
+  for await (const file of walkAll(ROOT)) {
+    const rel = relPath(file);
+    const isTopTarget = TARGETS.has(rel);
+    const isDocsMd = rel.startsWith('docs/') && rel.endsWith('.md');
+    if (!isTopTarget && !isDocsMd) continue;
+    const text = await readFile(file, 'utf8');
+    const ranges = catalogScanRanges(rel, text);
+    if (ranges.length === 0) continue;
+    const lines = text.split(/\r?\n/);
+    // Two-pass: build a Set of 1-indexed line numbers that carry an escape
+    // either inline or on the immediately-preceding line.
+    const escaped = new Set();
+    for (let i = 0; i < lines.length; i += 1) {
+      if (CATALOG_ESCAPE.test(lines[i])) {
+        escaped.add(i + 1);
+        escaped.add(i + 2); // escape applies to the line immediately below
+      }
+    }
+    for (const [from, to] of ranges) {
+      for (let lineNo = from; lineNo <= to; lineNo += 1) {
+        const line = lines[lineNo - 1] || '';
+        if (escaped.has(lineNo)) continue;
+        // Find every 3-digit literal on the line.
+        const numRe = /(?<![\d.])(\d{3})(?![\d.])/g;
+        let m;
+        while ((m = numRe.exec(line)) !== null) {
+          const num = Number(m[1]);
+          if (num < 100 || num > 999) continue;
+          // Adjacency window: within 40 chars on either side of the number,
+          // on the same line, look for one of the catalog words.
+          const lo = Math.max(0, m.index - 40);
+          const hi = Math.min(line.length, m.index + m[1].length + 40);
+          const window = line.slice(lo, hi);
+          if (!CATALOG_WORDS.test(window)) continue;
+          if (num === truth) continue;
+          violations.push({
+            file: rel,
+            line: lineNo,
+            name: `catalog-count drift (expected ${truth}, found ${num})`,
+            text: line.trim().slice(0, 140),
+          });
+        }
+      }
+    }
+  }
+  return violations;
 }
 
 main().catch((err) => {

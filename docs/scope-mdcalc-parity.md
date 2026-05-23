@@ -88,7 +88,9 @@ literacy decoders, the field-medicine and EMS workflow tiles).
 > [spec-v44](spec-v44.md), which adds the Barthel Index as the
 > rehab-nursing weighted ADL — is 253; v45 close —
 > [spec-v45](spec-v45.md), which adds the C-SSRS Screener as the
-> bedside suicide-risk screening tile — is 254.)
+> bedside suicide-risk screening tile — is 254; v46 close —
+> [spec-v46](spec-v46.md), a CI / source-of-truth pass that adds
+> the catalog-truth invariants but **zero new tiles** — is 254.)
 
 A reasonable steady-state estimate is **400–600 tiles over 3–5
 years**, depending on how aggressive the audit pace is and how

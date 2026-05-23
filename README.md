@@ -20,9 +20,11 @@ output; "searchable lookup of static facts" does not qualify. See
 [docs/spec-v10.md](docs/spec-v10.md) for the audience and
 dependency-budget commitments and
 [docs/spec-v29.md](docs/spec-v29.md) for the nurse-first pivot
-and the v29 catalog ledger. At v45 close the catalog is 254
+and the v29 catalog ledger. At v46 close the catalog is 254
 deterministic tiles — every one of them computes from at least
-one user input.
+one user input. Catalog-truth invariants
+([docs/spec-v46.md](docs/spec-v46.md)) fail CI on any drift
+between `UTILITIES.length` and the public marketing copy.
 
 ## The problem
 

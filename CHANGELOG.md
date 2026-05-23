@@ -6,6 +6,46 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v46 wave 46-1 — catalog-truth invariants: anti-drift guards)
+
+Closes a class of defect discovered on 2026-05-22: the home page
+`<title>`, OG / Twitter cards, meta description, home lede, JSON-LD
+description, and the `#browse-tile-count` no-JS fallback had all
+drifted by 24-31 tiles behind the catalog. Per spec-v46,
+`UTILITIES.length` is now the single canonical source of truth for
+the catalog count, and CI fails the build on any drift across the
+14 in-scope user-facing surfaces.
+
+- `scripts/check-catalog-truth.mjs`: new. Parses `app.js` to count
+  `UTILITIES`, then extracts the named count from each in-scope
+  surface (title, meta description, OG title / description /
+  image alt, Twitter title / description / image alt, home lede,
+  `#browse-tile-count` no-JS fallback, JSON-LD description, README
+  first-section blurb, `package.json` description, and the
+  most-recent close-line in `docs/scope-mdcalc-parity.md`). Exits
+  1 with a per-surface diff on any mismatch.
+- `scripts/grep-check.mjs`: +1 rule. A 3-digit decimal literal in
+  the range [100, 999] adjacent to one of `tile`, `tiles`, `tool`,
+  `tools`, `calculator`, `calculators`, `utilit`, `deterministic`
+  on a scanned surface is treated as a putative tile count and
+  must equal `UTILITIES.length`. Scanned surfaces are
+  `index.html`, `README.md`, `package.json`, `site.webmanifest`,
+  the prelude of `CHANGELOG.md` above the most recent `[Unreleased]`
+  header, and `docs/*.md` excluding `docs/spec-v*.md` and
+  `docs/audits/**`. Legitimate historical counts are escaped with
+  `<!-- catalog-truth:historical -->` on the same or preceding line.
+- `package.json`: `npm run lint` now runs `eslint` →
+  `grep-check.mjs` → `check-catalog-truth.mjs` as three sequential
+  gates. Any drift fails CI.
+- `docs/spec-v46.md`: the v46 spec doc itself (catalog count 254,
+  unchanged).
+- No tiles added, removed, or renamed. **Catalog count 254,
+  unchanged.**
+
+`UTILITIES.length` is 254. Lint + unit tests + a11y + sbom +
+build all clean. A deliberate ±1 drift on any in-scope surface
+fails `npm run lint` locally with a per-surface diff.
+
 ### Added (spec-v45 wave 45-1 — bedside suicide-risk screen: `cssrs`)
 
 Closes the suicide-risk screening gap in Sophie's psychiatric /
