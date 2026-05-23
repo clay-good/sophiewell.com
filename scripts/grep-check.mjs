@@ -23,6 +23,9 @@ const SKIP_DIRS = new Set(['node_modules', 'dist', '.git', 'data', 'docs']);
 const SELF = 'scripts/grep-check.mjs';
 // The commitments check legitimately lists vendor needles as enforcement data.
 const COMMITMENTS_CHECK = 'scripts/check-commitments.mjs';
+// The runtime no-network integration test (spec-v50 §3.1 / §3.5) verifies
+// the absence of these APIs and must mention them by name.
+const COMMITMENTS_RUNTIME_TEST = 'test/integration/no-network.spec.js';
 // The eslint config legitimately mentions innerHTML in its rule strings.
 const ESLINT_CONFIG = '.eslintrc.json';
 
@@ -84,6 +87,7 @@ async function main() {
     if (!shouldScan(rel)) continue;
     if (rel === SELF) continue;
     if (rel === COMMITMENTS_CHECK) continue;
+    if (rel === COMMITMENTS_RUNTIME_TEST) continue;
     const text = await readFile(file, 'utf8');
     const lines = text.split(/\r?\n/);
     for (let i = 0; i < lines.length; i += 1) {

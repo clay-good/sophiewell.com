@@ -6,6 +6,39 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v50 wave 50-2 — runtime no-network / no-cookie / storage-allowlist integration test)
+
+Closes the deferred runtime half of the v50 §3.1 / §3.3 / §3.4 /
+§3.5 enforcement. Wave 50-1 codified the static checks (CSP
+shape, source-scan denies, package-deps deny). Wave 50-2 adds
+the browser-runtime trace that proves the rules hold under
+actual page execution, not just at the call site.
+
+- `test/integration/no-network.spec.js`: new. Boots a real
+  browser, exercises the home view + three representative tiles
+  (`bmi`, `icd10cm-lookup`, `wells-pe` — covering pure compute,
+  data-shard fetch, and additive-scoring code paths), then
+  asserts: zero off-origin requests of any kind; zero
+  `navigator.sendBeacon` calls and zero `Image` pixel-style
+  fires (caught via a tripwire installed before any tile JS
+  runs); `document.cookie === ''`; every key in `localStorage`
+  / `sessionStorage` matches `scripts/storage-allowlist.json`.
+  Runs across all three Playwright browser projects (chromium,
+  firefox, webkit) in the existing `npm run test:e2e` job.
+- `scripts/grep-check.mjs`: +1 file exception so the test may
+  name `sendBeacon`, `analytics`, etc. by-name in its assertions
+  without colliding with the §3.5 deny rule.
+- Sanity-tested: a deliberate `document.cookie = "test=1"` in a
+  view file causes the test to fail with the §3.3 violation
+  message. Restored after the local check.
+
+No tiles added, removed, or renamed. **Catalog count 254,
+unchanged.**
+
+`UTILITIES.length` is 254. Lint + unit tests + a11y + sbom +
+build all clean. The new Playwright spec passes on chromium,
+firefox, and webkit locally.
+
 ### Added (spec-v50 wave 50-1 — public-infrastructure commitments: codified non-degradation guarantees)
 
 Codifies the eight posture commitments that distinguish Sophie
