@@ -86,7 +86,9 @@ literacy decoders, the field-medicine and EMS workflow tiles).
 > close — [spec-v43](spec-v43.md), which adds Lawton IADL as the
 > instrumental-ADL companion to Katz — is 252; v44 close —
 > [spec-v44](spec-v44.md), which adds the Barthel Index as the
-> rehab-nursing weighted ADL — is 253.)
+> rehab-nursing weighted ADL — is 253; v45 close —
+> [spec-v45](spec-v45.md), which adds the C-SSRS Screener as the
+> bedside suicide-risk screening tile — is 254.)
 
 A reasonable steady-state estimate is **400–600 tiles over 3–5
 years**, depending on how aggressive the audit pace is and how

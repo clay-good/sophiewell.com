@@ -6,6 +6,54 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v45 wave 45-1 — bedside suicide-risk screen: `cssrs`)
+
+Closes the suicide-risk screening gap in Sophie's psychiatric /
+behavioral-health nursing surface. PHQ-9 and GAD-7 already ship
+as severity screens, but Sophie had no validated suicide-risk
+triage tool. The C-SSRS Screener (Posner 2011) is Joint-
+Commission and SAMHSA recommended for inpatient and ED
+suicide-risk screening; PHQ-9 item 9 captures passive ideation
+but is not a triage instrument. C-SSRS is publicly distributable
+for clinical use (Columbia Lighthouse Project license).
+
+- `lib/scoring-v4.js`: new `cssrs()`. Seven boolean items: five
+  ideation questions (Q1-Q5 past-month: wish-dead, thoughts-
+  killing, thoughts-methods, some-intent, plan-intent), one
+  lifetime behavior question (Q6), and a past-3-months follow-
+  up (Q6a). Risk band per the Columbia Lighthouse Project ED
+  Triage Screener: no risk reported / low (Q1 or Q2 only) /
+  moderate (Q3, or lifetime Q6 not in past 3 months) / high
+  (Q4 or Q5, or Q6 in past 3 months). Enforces Q6 / Q6a
+  consistency (cannot be in past 3 months without lifetime).
+- `app.js`: +1 UTILITIES row in Group G.
+- `views/group-g.js`: +1 renderer with seven labeled checkboxes
+  carrying the verbatim Posner 2011 question text and an aria-
+  live result region with the band, the band-appropriate
+  decision-support action line, and the banding source.
+- `lib/meta.js`: META entry with inline Posner 2011 citation,
+  specialty tags (nursing-ed / nursing-floor / nursing-general
+  / psychiatry / emergency-medicine / family-medicine /
+  social-work), a prefilled all-no worked example, and the
+  spec-v11 §5.3 four-band interpretation.
+- `test/unit/cssrs.test.js`: 13 new unit tests covering the
+  all-no tile example, each band-boundary item (Q1, Q2 low; Q3
+  moderate; Q4, Q5 high; Q6 lifetime moderate; Q6+Q6a high),
+  the escalation behavior across multiple positives, text-
+  content citations, the Q6 / Q6a consistency guard, and
+  rejection of non-boolean inputs.
+- `docs/audits/v11/cssrs.md`: v11 audit log with PASS status,
+  primary citation re-verified against Posner 2011, and the
+  Columbia Lighthouse Project ED Triage Screener banding rule
+  cross-checked.
+- `docs/spec-v45.md`: the v45 spec doc itself, narrow and
+  one-tile (no other rule amended).
+- `docs/scope-mdcalc-parity.md`, `README.md`, `package.json`:
+  catalog count 253 → 254.
+
+`UTILITIES.length` is 254. Lint + unit tests + a11y + sbom +
+build all clean.
+
 ### Added (spec-v44 wave 44-1 — rehab-nursing weighted ADL: `barthel`)
 
 Adds the Barthel Index (Mahoney & Barthel 1965), the rehab-

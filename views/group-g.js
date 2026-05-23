@@ -4186,6 +4186,30 @@ export const renderers = {
     run();
   },
 
+  // spec-v45 §2.1: C-SSRS Screener (Posner 2011). Bedside suicide-risk screen.
+  cssrs(root) {
+    const items = [
+      ['Q1. Past month: wish you were dead or could go to sleep and not wake up?', 'cs-q1', 'wishDead'],
+      ['Q2. Past month: any thoughts of killing yourself?',                         'cs-q2', 'thoughtsKilling'],
+      ['Q3. Past month: thoughts about HOW you might do this (methods, no plan)?', 'cs-q3', 'thoughtsMethods'],
+      ['Q4. Past month: thoughts with SOME INTENTION of acting on them?',           'cs-q4', 'someIntent'],
+      ['Q5. Past month: PLAN and INTENT to kill yourself?',                          'cs-q5', 'planIntent'],
+      ['Q6. Lifetime: ever done, started, or prepared to do anything to end your life?', 'cs-q6', 'behaviorLifetime'],
+      ['Q6a. If yes to Q6: within the past 3 months?',                                'cs-q6a', 'behaviorPast3Months'],
+    ];
+    for (const [label, id] of items) root.appendChild(checkbox(label, id));
+    const o = out(); root.appendChild(o);
+    const run = () => safe(o, () => {
+      const input = {};
+      for (const [, id, key] of items) input[key] = checked(id);
+      const r = S4.cssrs(input);
+      o.appendChild(el('h2', { text: `C-SSRS Screener: ${r.band}` }));
+      o.appendChild(el('p', { text: r.text }));
+    });
+    items.forEach(([, id]) => document.getElementById(id).addEventListener('change', run));
+    run();
+  },
+
   // spec-v44 §2.1: Barthel Index (Mahoney 1965). Ten weighted ADL items.
   barthel(root) {
     const items = [
