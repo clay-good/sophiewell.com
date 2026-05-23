@@ -24,9 +24,13 @@ test('every tool tolerates indiscriminate interaction without crashing', async (
   page.on('console', (m) => { if (m.type() === 'error') errors.push(`console: ${m.text()}`); });
   page.on('response', (r) => { if (r.status() >= 400) errors.push(`http ${r.status()} ${r.url()}`); });
 
-  await page.goto('/');
-  const ids = await page.$$eval('.tool-card', (cs) =>
-    cs.map((c) => c.getAttribute('data-tool')).filter(Boolean));
+  // spec-v51: source tile ids from sitemap.xml (the home grid was
+  // reduced to 10 curated quick-picks; the sitemap remains the
+  // canonical list of `/tools/<id>/` routes).
+  const sitemap = await page.request.get('/sitemap.xml');
+  expect(sitemap.ok(), 'sitemap.xml must be reachable').toBe(true);
+  const xml = await sitemap.text();
+  const ids = [...xml.matchAll(/<loc>[^<]*\/tools\/([^/<]+)\/<\/loc>/g)].map((m) => m[1]);
 
   const failures = [];
   for (const id of ids) {

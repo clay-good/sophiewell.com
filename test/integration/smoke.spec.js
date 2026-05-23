@@ -8,24 +8,24 @@
 
 import { test, expect } from '@playwright/test';
 
-test('home: renders centered topbar and full tool-card grid', async ({ page }) => {
+test('home: renders centered topbar, hero search, and quick picks', async ({ page }) => {
   await page.goto('/');
   await expect(page.locator('.topbar .topbar-brand')).toContainText('Sophie Well');
-  // Tool count is dynamic; assert "many" rather than a brittle exact number.
-  // The spec-v5 wave-1/2 cull reduced the tile count and more iteration is
-  // expected. The home grid should never silently empty out.
-  const cardCount = await page.locator('.tool-card').count();
-  expect(cardCount).toBeGreaterThanOrEqual(150);
-  // Filters and search are removed in v4.10; the home is just the tile grid.
+  // spec-v51: the homepage is just header + hero search + 10 quick
+  // picks + footer. The full browse-grid was removed; tools are now
+  // discoverable via search, /tools/<id>/ pages, and /for/<slug>/ hubs.
+  await expect(page.locator('#hero-search')).toBeVisible();
+  const pickCount = await page.locator('.quick-pick').count();
+  expect(pickCount).toBe(10);
   await expect(page.locator('.filters:not(.visually-hidden)')).toHaveCount(0);
   await expect(page.locator('#search')).toHaveCount(0);
 });
 
-test('home: clicking a tool card opens its renderer (BMI smoke)', async ({ page }) => {
+test('home: hero-search routes to a tile on Enter (BMI smoke)', async ({ page }) => {
   await page.goto('/');
-  // spec-v8 §4.6: tile grid defaults closed; expand it before clicking.
-  await page.evaluate(() => { document.getElementById('browse-disclosure').open = true; });
-  await page.click('.tool-card[data-tool="bmi"]');
+  // spec-v51: navigate to BMI via deep link (the home no longer renders
+  // the BMI tile directly; only 10 curated quick-picks are visible).
+  await page.goto('/#bmi');
   await expect(page).toHaveURL(/#bmi/);
   await expect(page.locator('.content h1')).toHaveText('BMI Calculator');
   await expect(page.locator('.breadcrumb-back')).toBeVisible();
@@ -170,8 +170,7 @@ test('spec-v8 §3.2 / §5.2: no Pin button and no #pinned-section render on the 
 test('spec-v8 §5.3: legacy #p=<id> bookmarks silently resolve to the home view', async ({ page }) => {
   await page.goto('/#p=bmi,egfr,icd10');
   // No tile route fires; we land on the home view with the prompt hero visible.
-  // Asserting on the hero (always present on home) keeps this test agnostic
-  // to the browse-disclosure default.
+  // Asserting on the hero (always present on home) per spec-v51.
   await expect(page.locator('#hero-search')).toBeVisible();
   await expect(page.locator('#pinned-section')).toHaveCount(0);
 });

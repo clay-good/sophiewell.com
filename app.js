@@ -563,7 +563,7 @@ if (typeof document !== 'undefined') {
     // call stopPropagation, but if any child carries data-no-route, skip.
     const ignore = event.target.closest('[data-no-route]');
     if (ignore) return;
-    const card = event.target.closest('.tool-card');
+    const card = event.target.closest('.tool-card, .quick-pick');
     if (!card) return;
     const id = card.getAttribute('data-tool');
     if (!id) return;

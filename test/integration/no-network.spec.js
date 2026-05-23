@@ -86,8 +86,8 @@ test('runtime: no off-origin network calls, no cookies, allowlisted storage only
 
   await page.goto('/', { waitUntil: 'networkidle' });
 
-  // Exercise the home view (search, browse-disclosure toggle).
-  await page.evaluate(() => { document.getElementById('browse-disclosure').open = true; });
+  // Exercise the home view search input. spec-v51: the tile-grid /
+  // browse-disclosure was removed; only the hero search remains.
   await page.fill('#hero-search', 'bmi').catch(() => {});
 
   // Exercise each sample tile: route + minimum input.

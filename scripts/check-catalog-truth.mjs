@@ -86,10 +86,14 @@ function makeSurfaces() {
       file: 'index.html',
       extract: (t) => firstCapture(t, /<p class="home-lede">\s*(\d{2,4})\s+deterministic\s+calculators/i),
     },
+    // spec-v51: #browse-tile-count surface retired with the homepage
+    // tile-grid; the count now lives in the search-input label
+    // ("Search NNN tools") and the existing surfaces (lede, JSON-LD,
+    // <title>, OG/Twitter, README, package.json, parity ledger).
     {
-      name: '#browse-tile-count no-JS fallback',
+      name: 'hero search label',
       file: 'index.html',
-      extract: (t) => firstCapture(t, /<span id="browse-tile-count">\s*(\d{2,4})\s*<\/span>/i),
+      extract: (t) => firstCapture(t, /<label[^>]*for="hero-search"[^>]*>Search\s+(\d{2,4})\s+tools<\/label>/i),
     },
     {
       name: 'JSON-LD description',

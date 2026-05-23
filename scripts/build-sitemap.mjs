@@ -51,6 +51,10 @@ const TOPIC_SLUGS = [
 const today = new Date().toISOString().slice(0, 10);
 const urls = [
   `  <url><loc>${SITE}/</loc><lastmod>${today}</lastmod><changefreq>weekly</changefreq><priority>1.0</priority></url>`,
+  // spec-v51: /commitments/ is unlinked from the minimal homepage but
+  // remains a real route. It must stay in the sitemap so crawlers find
+  // the eight public-infrastructure commitments codified in spec-v50.
+  `  <url><loc>${SITE}/commitments/</loc><lastmod>${today}</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>`,
   `  <url><loc>${SITE}/topics/</loc><lastmod>${today}</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>`,
   ...HUB_SLUGS.map((slug) =>
     `  <url><loc>${SITE}/for/${slug}/</loc><lastmod>${today}</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>`

@@ -6,24 +6,22 @@ import { test, expect } from '@playwright/test';
 
 test.describe.configure({ mode: 'parallel' });
 
-test('discover tool ids from home grid', async ({ page }) => {
-  await page.goto('/');
-  const ids = await page.$$eval('.tool-card', (cards) =>
-    cards.map((c) => c.getAttribute('data-tool')).filter(Boolean),
-  );
+// spec-v51: the homepage no longer renders the full tile grid (only 10
+// curated quick-picks). Discover tile IDs from sitemap.xml instead --
+// it is the catalog source for `/tools/<id>/` URLs and is built from
+// the same UTILITIES array `app.js` exposes at runtime.
+async function discoverIds(page) {
+  const resp = await page.request.get('/sitemap.xml');
+  expect(resp.ok(), 'sitemap.xml must be reachable').toBe(true);
+  const xml = await resp.text();
+  return [...xml.matchAll(/<loc>[^<]*\/tools\/([^/<]+)\/<\/loc>/g)].map((m) => m[1]);
+}
+
+test('discover tool ids from sitemap', async ({ page }) => {
+  const ids = await discoverIds(page);
   expect(ids.length).toBeGreaterThan(150);
-  // Stash discovered ids on the test info for the suite below.
   test.info().annotations.push({ type: 'tool-count', description: String(ids.length) });
 });
-
-// We can't easily share state across tests; instead, fetch the home page once
-// per worker, extract tool ids, and run a single parameterized assertion.
-async function discoverIds(page) {
-  await page.goto('/');
-  return page.$$eval('.tool-card', (cards) =>
-    cards.map((c) => c.getAttribute('data-tool')).filter(Boolean),
-  );
-}
 
 test('every tool route renders without console errors and shows an h1', async ({ page }) => {
   test.setTimeout(180_000);
@@ -64,8 +62,7 @@ test('every tool route exposes a working back button to home', async ({ page }) 
     const back = page.locator('.breadcrumb-back');
     await expect(back, `back missing on #${id}`).toBeVisible();
     await back.click();
-    // Assert on the hero (always visible on home) to stay agnostic
-    // to the browse-disclosure default.
+    // Assert on the hero (always visible on home) per spec-v51.
     await expect(page.locator('#hero-search')).toBeVisible();
   }
 });

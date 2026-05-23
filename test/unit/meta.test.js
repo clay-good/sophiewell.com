@@ -44,16 +44,28 @@ test('META: every code lookup, pricing, and reference utility has a source', () 
   }
 });
 
-// Regression: every tool registered on the home grid (data-tool="...") MUST
-// have a META entry that exposes either a citation or a non-null source.
-// Without one, the inline "tool-meta" block renders empty and the user has
-// no way to verify what authority the calculation/lookup is anchored to.
+// spec-v51: the homepage no longer renders the full tile grid (only 10
+// curated quick-picks), so `data-tool="..."` matches in index.html are
+// not the catalog. Source the id list from `app.js`'s UTILITIES array,
+// the single source of truth used by `scripts/build-sitemap.mjs` and
+// `scripts/build-ld.mjs`. Static-parse it so importing app.js does not
+// pull in DOM-touching view modules.
+async function readUtilityIds() {
+  const { readFileSync } = await import('node:fs');
+  const src = readFileSync(new URL('../../app.js', import.meta.url), 'utf8');
+  const m = src.match(/const UTILITIES = \[([\s\S]*?)\n\];/);
+  if (!m) throw new Error('meta.test: could not find UTILITIES array in app.js');
+  return [...m[1].matchAll(/id:\s*'([^']+)'/g)].map((mm) => mm[1]);
+}
+
+// Regression: every tool in the UTILITIES catalog MUST have a META entry
+// that exposes either a citation or a non-null source. Without one, the
+// inline "tool-meta" block renders empty and the user has no way to verify
+// what authority the calculation/lookup is anchored to.
 // See spec-v2 §5.1 and §5.2.
 test('META: every tool surfaces either a citation or a source stamp', async () => {
-  const { readFileSync } = await import('node:fs');
-  const html = readFileSync(new URL('../../index.html', import.meta.url), 'utf8');
-  const ids = [...html.matchAll(/data-tool="([^"]+)"/g)].map((m) => m[1]);
-  assert.ok(ids.length >= 150, `home grid is suspiciously small (${ids.length})`);
+  const ids = await readUtilityIds();
+  assert.ok(ids.length >= 150, `catalog is suspiciously small (${ids.length})`);
   const naked = [];
   for (const id of ids) {
     const m = META[id];
@@ -120,11 +132,11 @@ const NO_INPUTS_TILES = new Set([
 test('META v9 coverage (hard): every tile has META[id].citation', async () => {
   // spec-v9 §4.4: wave 2 lands citation backfill for the remaining 34
   // tiles; the assertion flips from soft (log + floor) to hard (every
-  // home-grid tile must carry a citation). Source stamps may also be
+  // catalog tile must carry a citation). Source stamps may also be
   // present; this test only checks the citation contract.
-  const { readFileSync } = await import('node:fs');
-  const html = readFileSync(new URL('../../index.html', import.meta.url), 'utf8');
-  const ids = [...html.matchAll(/data-tool="([^"]+)"/g)].map((m) => m[1]);
+  // spec-v51: id list now sourced from UTILITIES in app.js (the home
+  // grid was reduced to 10 curated quick-picks).
+  const ids = await readUtilityIds();
   const missing = [];
   for (const id of ids) {
     const m = META[id];
@@ -138,19 +150,28 @@ test('META v9 coverage (hard): every tile has META[id].citation', async () => {
 
 test('META v9 coverage (hard): every input-bearing tile has META[id].example', async () => {
   // spec-v9 §4.4: wave 3d completes the example backlog. The assertion
-  // flips from soft (log + floor at 51) to hard: every home-grid tile
+  // flips from soft (log + floor at 51) to hard: every catalog tile
   // not in NO_INPUTS_TILES must carry META[id].example with non-empty
   // fields. Adding to NO_INPUTS_TILES is a code-review event.
-  const { readFileSync } = await import('node:fs');
-  const html = readFileSync(new URL('../../index.html', import.meta.url), 'utf8');
-  const ids = [...html.matchAll(/data-tool="([^"]+)"/g)].map((m) => m[1]);
+  // spec-v51: id list now sourced from UTILITIES in app.js.
+  const ids = await readUtilityIds();
   const missing = [];
   for (const id of ids) {
     if (NO_INPUTS_TILES.has(id)) continue;
     const m = META[id];
     if (!m) { missing.push(`${id} (no META entry)`); continue; }
-    const hasExample = m.example && m.example.fields && Object.keys(m.example.fields).length > 0;
-    if (!hasExample) missing.push(id);
+    if (!m.example) { missing.push(id); continue; }
+    // Accept either a populated fields map OR an empty fields map paired
+    // with a non-empty expected string. The latter is the "baseline-state
+    // example" shape used by click-driven pickers (cam, mnihss,
+    // aldrete-padss): the tile renders its default state and the example
+    // describes the expected baseline result. Pre-v51 this pattern slipped
+    // past the test because the tiles weren't in the home-grid HTML; the
+    // v51 catalog-sourced check makes the contract explicit.
+    const hasFields = m.example.fields && Object.keys(m.example.fields).length > 0;
+    const hasBaseline = m.example.fields && Object.keys(m.example.fields).length === 0
+      && typeof m.example.expected === 'string' && m.example.expected.length > 0;
+    if (!hasFields && !hasBaseline) missing.push(id);
   }
   assert.deepEqual(missing, [],
     `Tiles missing META[id].example (or add to NO_INPUTS_TILES with rationale): ${missing.join(', ')}`);
