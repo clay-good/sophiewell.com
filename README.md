@@ -20,7 +20,7 @@ output; "searchable lookup of static facts" does not qualify. See
 [docs/spec-v10.md](docs/spec-v10.md) for the audience and
 dependency-budget commitments and
 [docs/spec-v29.md](docs/spec-v29.md) for the nurse-first pivot
-and the v29 catalog ledger. At v43 close the catalog is 252
+and the v29 catalog ledger. At v44 close the catalog is 253
 deterministic tiles — every one of them computes from at least
 one user input.
 
@@ -68,8 +68,9 @@ the spec-v39 ROSIER ED stroke-recognition scale, and the
 spec-v40 GUSS post-stroke bedside dysphagia screen, and the
 spec-v41 FOUR Score ICU coma scale, and the spec-v42 Katz ADL
 discharge-planning functional-status index, and the spec-v43
-Lawton IADL instrumental-ADL companion added on top), the
-site organizes 252 deterministic calculators
+Lawton IADL instrumental-ADL companion, and the spec-v44 Barthel
+Index rehab-nursing weighted ADL added on top), the
+site organizes 253 deterministic calculators
 across the bedside-shift surfaces a
 nurse, doctor, pharmacist, RT, EMS provider, biller-coder, or
 educator actually reaches for. Every tile takes at least one

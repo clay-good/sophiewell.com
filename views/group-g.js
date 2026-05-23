@@ -4186,6 +4186,40 @@ export const renderers = {
     run();
   },
 
+  // spec-v44 §2.1: Barthel Index (Mahoney 1965). Ten weighted ADL items.
+  barthel(root) {
+    const items = [
+      ['Feeding',          'bt-feed',    'feeding',   [['0','0 unable'], ['5','5 needs help'], ['10','10 independent']], '10'],
+      ['Bathing',          'bt-bath',    'bathing',   [['0','0 dependent'], ['5','5 independent']], '5'],
+      ['Grooming',         'bt-groom',   'grooming',  [['0','0 needs help'], ['5','5 independent']], '5'],
+      ['Dressing',         'bt-dress',   'dressing',  [['0','0 dependent'], ['5','5 needs help'], ['10','10 independent']], '10'],
+      ['Bowel control',    'bt-bowel',   'bowel',     [['0','0 incontinent'], ['5','5 occasional accident'], ['10','10 continent']], '10'],
+      ['Bladder control',  'bt-bladder', 'bladder',   [['0','0 incontinent'], ['5','5 occasional accident'], ['10','10 continent']], '10'],
+      ['Toilet use',       'bt-toil',    'toilet',    [['0','0 dependent'], ['5','5 needs help'], ['10','10 independent']], '10'],
+      ['Transfers (bed-to-chair)', 'bt-trans', 'transfers', [['0','0 unable'], ['5','5 major help'], ['10','10 minor help'], ['15','15 independent']], '15'],
+      ['Mobility (level surfaces)', 'bt-mob', 'mobility', [['0','0 immobile'], ['5','5 wheelchair indep'], ['10','10 walks with help'], ['15','15 walks indep']], '15'],
+      ['Stairs',           'bt-stair',   'stairs',    [['0','0 unable'], ['5','5 needs help'], ['10','10 independent']], '10'],
+    ];
+    for (const [label, id, , opts, def] of items) {
+      root.appendChild(el('p', {}, [
+        el('label', { for: id, text: label }), el('br'),
+        el('select', { id }, opts.map(([v, t]) => el('option', { value: v, text: t, selected: v === def ? 'selected' : null }))),
+      ]));
+    }
+    const o = out(); root.appendChild(o);
+    const run = () => safe(o, () => {
+      const input = {};
+      for (const [, id, key] of items) input[key] = Number(document.getElementById(id).value);
+      const r = S4.barthel(input);
+      o.appendChild(el('h2', { text: `Barthel Index ${r.score} of 100 (${r.band})` }));
+      o.appendChild(el('p', { text: r.text }));
+      const lines = items.map(([label, , key]) => `${label}: ${r.parts[key]}`).join('; ');
+      o.appendChild(el('p', { class: 'muted', text: `Per-item: ${lines}.` }));
+    });
+    items.forEach(([, id]) => document.getElementById(id).addEventListener('change', run));
+    run();
+  },
+
   // spec-v43 §2.1: Lawton IADL (Lawton & Brody 1969). Eight-item instrumental ADL.
   'lawton-iadl'(root) {
     const items = [

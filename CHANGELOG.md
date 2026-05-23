@@ -6,6 +6,50 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v44 wave 44-1 — rehab-nursing weighted ADL: `barthel`)
+
+Adds the Barthel Index (Mahoney & Barthel 1965), the rehab-
+nursing standard ADL with weighted scoring. Sophie's discharge-
+planning surface now ships Katz ADL (v42, six binary basic-ADL
+items) and Lawton IADL (v43, eight binary instrumental-ADL
+items); Barthel is the granular weighted ADL used in inpatient
+stroke rehab and post-acute SNF nursing. Ten items with weighted
+0/5/10/15-point increments, total 0-100 (always a multiple of 5).
+Severity banding per Shah 1989 — five bands: 100 independent,
+91-99 slight, 61-90 moderate, 21-60 severe, 0-20 total dependency.
+
+- `lib/scoring-v4.js`: new `barthel()`. Enforces the published
+  per-item allowed-value sets (off-grid values reject), sums to
+  a 0-100 total, and bands per Shah 1989. Returns `{score,
+  parts, band, text}`.
+- `app.js`: +1 UTILITIES row in Group G.
+- `views/group-g.js`: +1 renderer with ten labeled selects, each
+  option explicitly naming the score (e.g., "10 independent",
+  "5 needs help"); per-item muted breakdown for the bedside
+  hand-off.
+- `lib/meta.js`: META entry with inline Mahoney 1965 + Shah 1989
+  citations, specialty tags (nursing-floor / nursing-rehab /
+  nursing-general / physical-therapy / occupational-therapy /
+  physical-medicine-rehabilitation / geriatrics /
+  case-management), a prefilled all-maximal worked example, and
+  the spec-v11 §5.3 five-band interpretation.
+- `test/unit/barthel.test.js`: 12 new unit tests covering the
+  maximal (100) and minimal (0) tile examples, the band-boundary
+  scores at 95 / 90 / 65 / 60 / 25 / 20 (the 91 / 21 / 61
+  cutoffs are not reachable on a 5-point grid), text-content
+  citations, and rejection of off-grid values, non-integer, and
+  missing items.
+- `docs/audits/v11/barthel.md`: v11 audit log with PASS status,
+  primary citation re-verified against Mahoney 1965, and the
+  Shah 1989 five-band cutoffs cross-checked.
+- `docs/spec-v44.md`: the v44 spec doc itself, narrow and
+  one-tile (no other rule amended).
+- `docs/scope-mdcalc-parity.md`, `README.md`, `package.json`:
+  catalog count 252 → 253.
+
+`UTILITIES.length` is 253. Lint + unit tests + a11y + sbom +
+build all clean.
+
 ### Added (spec-v43 wave 43-1 — instrumental-ADL companion to Katz: `lawton-iadl`)
 
 Adds the instrumental-ADL companion to v42's Katz ADL. Katz tells
