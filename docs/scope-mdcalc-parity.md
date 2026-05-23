@@ -78,7 +78,9 @@ literacy decoders, the field-medicine and EMS workflow tiles).
 > [spec-v39](spec-v39.md), which adds ROSIER as the ED
 > stroke-recognition scale with mimic discrimination — is 248;
 > v40 close — [spec-v40](spec-v40.md), which adds GUSS as the
-> post-stroke bedside dysphagia screen — is 249.)
+> post-stroke bedside dysphagia screen — is 249; v41 close —
+> [spec-v41](spec-v41.md), which adds FOUR Score as the ICU
+> coma scale for intubated patients — is 250.)
 
 A reasonable steady-state estimate is **400–600 tiles over 3–5
 years**, depending on how aggressive the audit pace is and how

@@ -4186,6 +4186,29 @@ export const renderers = {
     run();
   },
 
+  // spec-v41 §2.1: FOUR Score (Wijdicks 2005). ICU coma scale.
+  'four-score'(root) {
+    const items = [
+      ['Eye response (4 tracking - 3 open - 2 to voice - 1 to pain - 0 closed)',     'fs-eye',   'eye'],
+      ['Motor response (4 to command - 3 localize - 2 flexion - 1 extension - 0 none)', 'fs-motor', 'motor'],
+      ['Brainstem reflexes (4 pupil+corneal - 3 one fixed - 2 one absent - 1 both absent - 0 +cough)', 'fs-brain', 'brainstem'],
+      ['Respiration (4 regular - 3 Cheyne-Stokes - 2 irregular - 1 over vent - 0 at/apnea)', 'fs-resp', 'respiration'],
+    ];
+    for (const [label, id] of items) root.appendChild(rangeField(label, id, 0, 4, 4));
+    const o = out(); root.appendChild(o);
+    const run = () => safe(o, () => {
+      const input = {};
+      for (const [, id, key] of items) input[key] = Math.trunc(nv(id));
+      const r = S4.fourScore(input);
+      o.appendChild(el('h2', { text: `FOUR Score ${r.score} of 16` }));
+      o.appendChild(el('p', { text: r.text }));
+      o.appendChild(el('p', { class: 'muted',
+        text: `Per-component: E${r.parts.eye} M${r.parts.motor} B${r.parts.brainstem} R${r.parts.respiration}.` }));
+    });
+    items.forEach(([, id]) => document.getElementById(id).addEventListener('input', run));
+    run();
+  },
+
   // spec-v40 §2.1: GUSS (Trapl 2007). Two-stage post-stroke dysphagia screen.
   guss(root) {
     root.appendChild(el('h3', { text: 'Stage 1: preliminary investigation (must score 5 to proceed)' }));

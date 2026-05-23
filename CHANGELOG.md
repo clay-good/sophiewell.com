@@ -6,6 +6,55 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v41 wave 41-1 — ICU coma scale for intubated patients: `four-score`)
+
+Adds the FOUR Score (Wijdicks 2005) — the validated ICU coma
+scale designed for intubated and severely obtunded patients
+where the GCS verbal component is unavailable. GCS ships in the
+v3 vitals tile but has two well-known ICU weak spots: (1) the
+verbal component is unscoreable in intubated patients (the "Vt"
+workaround preserves the score but loses the airway-protection
+signal), and (2) it does not assess brainstem reflexes. FOUR
+replaces verbal with a respiration component (capturing both
+intubation and over-breathing of the ventilator) and adds a
+dedicated brainstem-reflex component. A CCRN, neuro-ICU RN, or
+trauma-ICU RN at the bedside uses FOUR multiple times per shift
+today; it is also one of the metrics in the AAN 2010 brain-death
+determination guidance for screening confounders.
+
+- `lib/scoring-v4.js`: new `fourScore()`. Four ordinal items
+  each integer 0-4 (eye, motor, brainstem, respiration) summing
+  to 0-16. Returns `{score, parts, text}` with a clinically-
+  anchored note at score 16 ("all four maximal") and score 0
+  ("all four absent - AAN 2010 brain-death-workup pattern"), and
+  an "intermediate pattern" message reporting per-component
+  E/M/B/R values for the bedside hand-off.
+- `app.js`: +1 UTILITIES row in Group G under tile id
+  `four-score`.
+- `views/group-g.js`: +1 renderer with four labeled range fields
+  (each with the published Wijdicks 2005 anchor descriptions
+  visible in the label) and an aria-live result region.
+- `lib/meta.js`: META entry with inline Wijdicks 2005 citation,
+  specialty tags (nursing-icu / nursing-general / neurology /
+  critical-care / emergency-medicine / family-medicine), a
+  prefilled all-maximal worked example, and the spec-v11 §5.3
+  three-band interpretation (16 / 1-15 intermediate / 0).
+- `test/unit/four-score.test.js`: 7 new unit tests covering the
+  maximal (16) and minimal (0) tile examples, an intermediate
+  pattern (E2 M3 B4 R1 = 10), part-mirroring, the
+  minimum-non-zero (1) case, and rejection of out-of-range,
+  non-integer, and missing components.
+- `docs/audits/v11/four-score.md`: v11 audit log with PASS
+  status, primary citation re-verified against Wijdicks 2005,
+  and the AAN 2010 brain-death-workup cross-reference.
+- `docs/spec-v41.md`: the v41 spec doc itself, narrow and
+  one-tile (no other rule amended).
+- `docs/scope-mdcalc-parity.md`, `README.md`, `package.json`:
+  catalog count 249 → 250.
+
+`UTILITIES.length` is 250. Lint + unit tests + a11y + sbom +
+build all clean.
+
 ### Added (spec-v40 wave 40-1 — post-stroke bedside dysphagia screen: `guss`)
 
 Adds the bedside RN's "can this acute-stroke patient eat?" tile.
