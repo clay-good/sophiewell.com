@@ -229,6 +229,43 @@ deletes the now-dead CSS for `.trust-strip`, `.hub-strip`,
 four checks listed in §7. The dead CSS may be removed in a
 follow-up wave (v51-2) since unused rules are inert.
 
+## 9. Wave 51-2 — dead CSS cleanup (2026-05-24)
+
+Wave 51-1 left the now-orphaned CSS rules in `styles.css`
+because unused rules are inert at runtime. Wave 51-2 deletes
+the rules outright so the stylesheet is no longer carrying
+selectors that match no DOM the site ships.
+
+Removed selectors and their companion rules:
+
+- `.hub-strip` (and `.hub-strip-label`, `.hub-strip a`, hover/focus)
+- `.trust-strip` (and `.trust-icon`, `.trust-label`, `.trust-sub`,
+  the responsive grid breakpoint)
+- `.why-sophie`, `.why-grid` (and the article/h3/p descendants
+  and responsive breakpoint)
+- `.visible-faq` (and `details`, `summary`, `summary::after`,
+  open-state, `p`)
+- `.audience-chips` (and `.audience-chips .toggle`, hover, active)
+- `.browse-disclosure` and `.browse-summary` (and the marker,
+  open-state caret, hover/focus, open-state margin)
+- `.task-hero .hero-examples` (the inline-example breadcrumb
+  removed by v51 §3 prohibitions)
+
+Selectors deliberately retained because non-homepage views
+or shared chrome still use them: `.hub-page` (audience hubs at
+`/for/<slug>/`), `.tool-card` (used by the hub-page renderer's
+fallback styling and referenced by app.js' card-click delegation
+which is harmless on pages without cards), `.toggle-group` /
+`.empty-state` / `.home-grid` / `.home-section` (referenced by
+defensive null-guard code paths in `app.js` that gracefully
+no-op when the elements are absent — removing the CSS would
+not save bytes worth the audit cost), `.toggle` (used by lab
+interpreter unit-toggle controls).
+
+No markup changed; no checks changed; no tests changed.
+`UTILITIES.length` is unchanged at 254. Lint, unit tests,
+a11y, and build are all green.
+
 Rolling back: revert the v51 PR. No data migration is
 required; no URLs change shape; no `localStorage` keys are
 added or removed (none of the removed elements wrote to

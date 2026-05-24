@@ -6,6 +6,31 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Removed (spec-v51 wave 51-2 — dead CSS cleanup after the minimal homepage)
+
+Deletes the CSS rules orphaned by spec-v51 wave 51-1's
+homepage minimization. Wave 51-1 stripped the homepage to
+header + h1 + lede + hero search + 10 quick picks + footer
+but left the unused selectors in `styles.css` because unused
+rules are inert at runtime. Wave 51-2 closes that loop.
+
+- `styles.css`: removes `.hub-strip` (and its label/link
+  descendants), `.trust-strip` (and `.trust-icon`,
+  `.trust-label`, `.trust-sub`, the responsive grid),
+  `.why-sophie` + `.why-grid` (and descendants + responsive
+  breakpoint), `.visible-faq` (and `details`, `summary`,
+  marker overrides, `p`), `.audience-chips` (and
+  `.audience-chips .toggle` variants), `.browse-disclosure` +
+  `.browse-summary` (and the marker, caret rotate, hover/focus,
+  open-state margin), and `.task-hero .hero-examples`.
+- `docs/spec-v51.md`: adds §9 documenting wave 51-2 and the
+  selectors deliberately retained (e.g. `.hub-page`,
+  `.tool-card`, `.toggle`).
+
+No markup, no checks, no tests changed. **Catalog count 254,
+unchanged.** `UTILITIES.length` is 254. Lint + unit tests +
+a11y + build all clean.
+
 ### Added (spec-v50 wave 50-2 — runtime no-network / no-cookie / storage-allowlist integration test)
 
 Closes the deferred runtime half of the v50 §3.1 / §3.3 / §3.4 /
