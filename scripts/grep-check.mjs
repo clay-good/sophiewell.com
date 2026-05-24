@@ -169,25 +169,36 @@ function catalogScanRanges(rel, text) {
   if (rel.startsWith('docs/') && rel.endsWith('.md')) {
     if (/^docs\/spec-v\d+(?:-checklist)?\.md$/.test(rel)) return [];
     if (rel.startsWith('docs/audits/')) return [];
+    // spec-v46 wave 46-2: two additional spec-equivalent docs are excluded.
+    // - docs/spec-seo.md is a spec doc by intent (just named for its topic
+    //   rather than a version number); its historical SEO audit narrative
+    //   carries snapshot counts that must not be rewritten.
+    // - docs/scope-mdcalc-parity.md is the long-horizon scope statement
+    //   whose ledger paragraph records the per-wave catalog close-count
+    //   history. The *current* close-count is already validated by
+    //   check-catalog-truth.mjs surface #14 (lastCapture of "is N.)"), so
+    //   the file is not unguarded — the historical snapshots are excluded
+    //   here exactly because the current value is checked separately.
+    if (rel === 'docs/spec-seo.md') return [];
+    if (rel === 'docs/scope-mdcalc-parity.md') return [];
     return [[1, lines.length]];
   }
   return [];
 }
 
 async function* walkAll(dir) {
+  // Catalog-truth scan: same skip set as the forbidden-pattern scan *except*
+  // we descend into docs/ (the spec-v46 §6 catalog-count rule explicitly
+  // applies to docs/*.md). Previously this function copy-pasted SKIP_DIRS
+  // including 'docs', so the docs subtree was silently skipped and no
+  // docs-resident historical count ever fired a violation.
   const entries = await readdir(dir, { withFileTypes: true });
   for (const entry of entries) {
-    if (SKIP_DIRS.has(entry.name)) continue;
+    if (entry.name === 'node_modules' || entry.name === 'dist' || entry.name === '.git' || entry.name === 'data') continue;
     if (entry.name.startsWith('.')) continue;
     const full = join(dir, entry.name);
     if (entry.isDirectory()) {
-      // For catalog-truth scan we *do* descend into docs/, unlike the
-      // forbidden-pattern scan which skips it.
-      if (entry.name === 'docs') {
-        yield* walkAll(full);
-      } else {
-        yield* walkAll(full);
-      }
+      yield* walkAll(full);
     } else if (entry.isFile()) {
       yield full;
     }

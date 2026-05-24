@@ -185,6 +185,7 @@ as a technical control.
 
 ## v4 review (no new threat surface)
 
+<!-- catalog-truth:historical -->
 The spec-v4 expansion (utilities 82-197 across groups A-O) introduces no
 new threat surface. Verification:
 

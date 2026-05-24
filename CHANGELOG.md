@@ -6,6 +6,41 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Fixed (spec-v46 wave 46-2 — docs/ backfill + activate catalog-count grep rule on docs)
+
+Closes wave 46-1's silent gap. The §6 catalog-count drift rule
+was wired into `npm run lint` but `scripts/grep-check.mjs`'s
+`walkAll` traversal re-used the forbidden-pattern scan's
+`SKIP_DIRS` (which includes `docs`), so the dead
+`if (entry.name === 'docs')` descend branch never fired and the
+rule was dormant for every doc surface. Wave 46-2 makes the rule
+actually scan `docs/*.md`, then backfills the legitimate
+historical / non-catalog counts that the activated rule would
+otherwise flag.
+
+- `scripts/grep-check.mjs`: `walkAll` now genuinely descends
+  into `docs/` (skipping only `node_modules`, `dist`, `.git`,
+  `data`, and dotfiles); the dead branch removed.
+  `catalogScanRanges` gains two file-level exclusions —
+  `docs/spec-seo.md` (spec doc by intent, topic-named) and
+  `docs/scope-mdcalc-parity.md` (its current close-count is
+  already validated by `check-catalog-truth.mjs` surface #14,
+  so the ledger's historical snapshots are excluded here).
+- `docs/data-sources.md`: inline
+  `<!-- catalog-truth:historical -->` escape above "121 tiles"
+  (count of hand-authored copy files, not catalog total).
+- `docs/threat-model.md`: inline escape above the v4-era
+  "utilities 82-197" group-numbering line.
+- `docs/performance.md`: inline escape above the "< 250 KB"
+  utility-view transfer-size budget row.
+- `docs/spec-v46.md`: §6 marks wave 46-2 shipped; new §10
+  records the fix and the exclusions/escapes.
+
+Sanity-tested: removing any single new escape or exclusion
+surfaces the expected drift violation; restoring it goes green.
+**Catalog count 254, unchanged.** Lint + unit tests + a11y +
+sbom + build all clean.
+
 ### Removed (spec-v51 wave 51-2 — dead CSS cleanup after the minimal homepage)
 
 Deletes the CSS rules orphaned by spec-v51 wave 51-1's

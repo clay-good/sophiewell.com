@@ -122,9 +122,12 @@ original content, MIT-licensed.
 ## Pre-rendered per-tile copy
 
 `data/tool-copy/` carries the hand-authored lede + intro markdown
+<!-- catalog-truth:historical -->
 for the 121 tiles that have bespoke pre-rendered copy on their
 `/tools/<id>/` page (see `scripts/build-tool-pages.mjs`). Each
-file is project-author original content.
+file is project-author original content. The "121" here is the
+count of *hand-authored copy files*, not the catalog total — it
+grows independently as more per-tile prose is written.
 
 ## MPFS (vestigial; not consumed at runtime)
 

@@ -150,7 +150,7 @@ README.md                                 (one-line note: catalog truth check)
 Optional wave 46-2 (after 46-1 lands clean): backfill the
 `<!-- catalog-truth:historical -->` escapes anywhere a legitimate
 historical count appears in `docs/`. This is mechanical and can be
-a single PR.
+a single PR. **Shipped 2026-05-24** — see §10.
 
 ## 8. Acceptance criteria
 
@@ -183,3 +183,44 @@ v46 is fully shipped when:
   carries the build timestamp; the catalog truth is about *count*,
   not *time*.
 - A network-fetch check. That is the scope of [spec-v50](spec-v50.md).
+
+## 10. Wave 46-2 — docs/ backfill (2026-05-24)
+
+Wave 46-1 shipped the catalog-truth check and grep rule but
+silently skipped `docs/*.md` due to a defect in
+`scripts/grep-check.mjs`'s `walkAll` traversal: the function
+re-used the forbidden-pattern scan's `SKIP_DIRS` set (which
+includes `docs`) so the dead `if (entry.name === 'docs')`
+descend branch never fired. The §6 rule was therefore dormant
+for the doc surface.
+
+Wave 46-2 closes the loop:
+
+1. **`walkAll` traversal fix.** The catalog scan now genuinely
+   descends into `docs/` (skipping only `node_modules`, `dist`,
+   `.git`, `data`, and dotfiles). The dead `if` branch is gone.
+2. **Two additional file-level exclusions.** `catalogScanRanges`
+   now also returns `[]` for:
+   - `docs/spec-seo.md` — a spec doc by intent, just named for
+     its topic rather than a version number. Its historical SEO
+     audit narrative carries snapshot counts that must not be
+     rewritten.
+   - `docs/scope-mdcalc-parity.md` — its ledger paragraph records
+     the per-wave catalog close-count history. The *current*
+     close-count is already validated by surface #14
+     (`check-catalog-truth.mjs` `lastCapture` of `is N.)`); the
+     historical snapshots in the ledger are excluded here because
+     the current value is checked separately.
+3. **Inline escapes** added to three non-spec docs whose 3-digit
+   numbers near a catalog word are legitimate non-catalog values:
+   - `docs/data-sources.md` — "121 tiles" (count of hand-authored
+     copy files, not catalog total).
+   - `docs/threat-model.md` — "utilities 82-197" (v4-era group
+     numbering, intentionally historical).
+   - `docs/performance.md` — "< 250 KB" (transfer-size budget,
+     near the word "utility").
+
+Sanity-tested: with the `walkAll` fix in place, removing any one
+of the new escapes or exclusions surfaces a violation; restoring
+it goes green. `npm run lint`, `npm run test`, `npm run sbom`,
+and `npm run build` are all green. Catalog count 254, unchanged.

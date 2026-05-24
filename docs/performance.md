@@ -18,6 +18,7 @@ verified in CI on every build, not aspirational targets.
 | Surface                                   | Budget (gzip) |
 |-------------------------------------------|---------------|
 | Home view (HTML + CSS + app.js)           | < 100 KB      |
+<!-- catalog-truth:historical -->
 | Single utility view incl. primary shard   | < 250 KB      |
 
 ## Lighthouse CI Score Floors
