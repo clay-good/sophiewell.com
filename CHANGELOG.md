@@ -6,6 +6,29 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Fixed (data-refresh workflow — `shardLayout: "shards"` missing from regenerated manifests)
+
+The weekly `data-refresh` GitHub Action was failing at the
+`verify-integrity` step because `scripts/build-data.mjs` wrote
+manifests for the three sharded-subdir datasets (`icd10cm`,
+`mpfs`, `ndc`) without a `shardLayout` field. The verify script
+defaults to the "root" layout when the field is absent, so it
+looked for `data/icd10cm/A.json` instead of
+`data/icd10cm/shards/A.json` — 16 false-positive MISSING errors.
+The repo-committed seed manifests had `"shardLayout": "shards"`
+hand-set, which is why local `data:verify` was green and the
+drift only surfaced when the workflow re-ran the pipeline.
+
+- `scripts/build-data.mjs`: add `shardLayout: 'shards'` to the
+  manifest object written for the `icd10cm`, `mpfs`, and `ndc`
+  datasets (the three that call
+  `writeShard(join(folder, 'shards'), …)`).
+
+Verified by `SOPHIEWELL_OFFLINE=1 node scripts/build-data.mjs &&
+node scripts/verify-integrity.mjs` — now reports
+`ok. 46 manifests verified`. Lint + unit tests + a11y + build
+unchanged and green.
+
 ### Fixed (spec-v46 wave 46-2 — docs/ backfill + activate catalog-count grep rule on docs)
 
 Closes wave 46-1's silent gap. The §6 catalog-count drift rule

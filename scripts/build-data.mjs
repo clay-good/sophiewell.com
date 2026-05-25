@@ -208,6 +208,7 @@ const datasets = [
         fetchDate: FETCH_DATE,
         offlineSeed: OFFLINE,
         recordCount: seed.length,
+        shardLayout: 'shards',
         shards: shardManifests,
       };
       await writeManifest(folder, manifest);
@@ -382,6 +383,7 @@ const datasets = [
         fetchDate: FETCH_DATE,
         offlineSeed: OFFLINE,
         recordCount: seed.length,
+        shardLayout: 'shards',
         shards: shardManifests,
         ancillary: ['gpci.json', 'conversion-factor.json'],
         notes:
@@ -427,6 +429,7 @@ const datasets = [
         fetchDate: FETCH_DATE,
         offlineSeed: OFFLINE,
         recordCount: seed.length,
+        shardLayout: 'shards',
         shards: shardManifests,
       };
       await writeManifest(folder, manifest);
