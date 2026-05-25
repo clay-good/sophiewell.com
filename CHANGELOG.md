@@ -6,6 +6,35 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v48 wave 48-2a — CURB-65, Centor/McIsaac, CIWA-Ar, FOUR Score)
+
+Opens spec-v48 wave 48-2 (acute-care / ICU bedside extension)
+with four widely-used additive scores. No infrastructure
+changes — every block uses the existing
+`derivation` + optional sibling-block pattern shipped in waves
+48-1a through 48-1c.
+
+- `lib/meta.js`: derivation blocks for `curb-65`, `centor`
+  (with `derivationMcisaac` second block for the McIsaac age
+  modifier), `ciwa` (CIWA-Ar; clamped 0-7 / 0-4 callbacks),
+  and `four-score` (clamped 0-4 callbacks).
+- `views/group-g.js`: renderer wired into all four tile views.
+  The `centor` view appends two `<details>` blocks (Centor +
+  McIsaac).
+- `docs/audits/v48/curb-65.md`, `centor.md`, `ciwa.md`,
+  `four-score.md`: per-tile provenance logs mapping every
+  component / band to the source paper.
+- `test/unit/derivation.test.js`: +16 cases covering three
+  boundary points per tile plus the McIsaac age-modifier path
+  (age 12 +1, age 30 +0, age 50 −1).
+- `docs/spec-v48.md`: §5.2 wave 48-2 gains a 48-2a subsection
+  recording the four shipped tiles.
+
+Verified: `npm run lint`, `npm run test`, `npm run sbom`, and
+`npm run build` are all green. Test count 1447 (was 1426; +21
+— 16 new derivation tests plus 5 additional schema-loop tests
+exercising the 4 new tiles). **Catalog count 254, unchanged.**
+
 ### Added (spec-v48 wave 48-1c — NEWS2, SOFA, MELD-3.0; closes wave 48-1)
 
 Closes the §5 wave-48-1 list. Three small infrastructure

@@ -380,13 +380,17 @@ export const renderers = {
     ];
     for (const [l, id] of items) root.appendChild(checkbox(l, id));
     const o = out(); root.appendChild(o);
+    const deriv = renderDerivation(META['curb-65']);
+    if (deriv) root.appendChild(deriv);
     const run = () => safe(o, () => {
-      const r = S4.curb65({
+      const inputs = {
         confusion: checked('cu-conf'), bun20: checked('cu-bun'),
         rr30: checked('cu-rr'), sbp90OrDbp60: checked('cu-bp'), age65: checked('cu-age'),
-      });
+      };
+      const r = S4.curb65(inputs);
       o.appendChild(el('h2', { text: `CURB-65: ${r.score}` }));
       o.appendChild(el('p', { text: r.band }));
+      if (deriv) updateDerivationSteps(deriv, META['curb-65'], inputs);
     });
     items.forEach(([, id]) => document.getElementById(id).addEventListener('change', run));
     run();
@@ -583,6 +587,10 @@ export const renderers = {
       el('input', { id: 'ce-age', type: 'number', step: '1', value: '30' }),
     ]));
     const o = out(); root.appendChild(o);
+    const deriv = renderDerivation(META.centor);
+    if (deriv) root.appendChild(deriv);
+    const derivMcisaac = renderDerivation({ derivation: META.centor.derivationMcisaac });
+    if (derivMcisaac) root.appendChild(derivMcisaac);
     const run = () => safe(o, () => {
       const args = {
         tonsillarExudate: checked('ce-exud'), tenderAnteriorAdenopathy: checked('ce-aden'),
@@ -592,6 +600,8 @@ export const renderers = {
       const m = S4.mcisaac({ ...args, ageYears: nv('ce-age') });
       o.appendChild(el('h2', { text: `Centor: ${c.score} - ${c.band}` }));
       o.appendChild(el('p', { text: `McIsaac (age ${nv('ce-age')}): ${m.score} (modifier ${m.ageModifier >= 0 ? '+' : ''}${m.ageModifier}) - ${m.band}` }));
+      if (deriv) updateDerivationSteps(deriv, META.centor, args);
+      if (derivMcisaac) updateDerivationSteps(derivMcisaac, { derivation: META.centor.derivationMcisaac }, { ...args, ageYears: nv('ce-age') });
     });
     items.forEach(([, id]) => document.getElementById(id).addEventListener('change', run));
     document.getElementById('ce-age').addEventListener('input', run);
@@ -749,16 +759,20 @@ export const renderers = {
       el('input', { id: 'cw-ori', type: 'number', min: '0', max: '4', step: '1', value: '0' }),
     ]));
     const o = out(); root.appendChild(o);
+    const deriv = renderDerivation(META.ciwa);
+    if (deriv) root.appendChild(deriv);
     const run = () => safe(o, () => {
-      const r = S4.ciwaAr({
+      const inputs = {
         nausea: nv('cw-nau'), tremor: nv('cw-tre'), sweats: nv('cw-swt'),
         anxiety: nv('cw-anx'), agitation: nv('cw-agi'), tactile: nv('cw-tac'),
         auditory: nv('cw-aud'), visual: nv('cw-vis'), headache: nv('cw-hea'),
         orientation: nv('cw-ori'),
-      });
+      };
+      const r = S4.ciwaAr(inputs);
       o.appendChild(el('h2', { text: `CIWA-Ar: ${r.score}` }));
       o.appendChild(el('p', { text: r.band }));
       o.appendChild(el('p', { class: 'muted', text: 'Screening / monitoring tool. Local protocols govern symptom-triggered medication.' }));
+      if (deriv) updateDerivationSteps(deriv, META.ciwa, inputs);
     });
     [...items7.map(([, id]) => id), 'cw-ori'].forEach((id) => document.getElementById(id).addEventListener('input', run));
     run();
@@ -4353,6 +4367,8 @@ export const renderers = {
     ];
     for (const [label, id] of items) root.appendChild(rangeField(label, id, 0, 4, 4));
     const o = out(); root.appendChild(o);
+    const deriv = renderDerivation(META['four-score']);
+    if (deriv) root.appendChild(deriv);
     const run = () => safe(o, () => {
       const input = {};
       for (const [, id, key] of items) input[key] = Math.trunc(nv(id));
@@ -4361,6 +4377,7 @@ export const renderers = {
       o.appendChild(el('p', { text: r.text }));
       o.appendChild(el('p', { class: 'muted',
         text: `Per-component: E${r.parts.eye} M${r.parts.motor} B${r.parts.brainstem} R${r.parts.respiration}.` }));
+      if (deriv) updateDerivationSteps(deriv, META['four-score'], input);
     });
     items.forEach(([, id]) => document.getElementById(id).addEventListener('input', run));
     run();

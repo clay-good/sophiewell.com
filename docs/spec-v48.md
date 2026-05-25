@@ -261,6 +261,19 @@ Backfill another ~30 tiles in the ICU / ED / acute-care surface:
 APACHE-II (where applicable), CIWA-Ar, RASS, CAM-ICU, PADIS-pain
 proxies, FOUR Score, Centor / McIsaac, PSI/PORT, CURB-65, etc.
 
+#### Wave 48-2a (shipped 2026-05-25) — CURB-65, Centor/McIsaac, CIWA-Ar, FOUR Score
+
+Opens wave 48-2 with four widely-used acute-care tiles. All
+land as derivation blocks with components matching the
+published point tables, including the second-block pattern
+for the Centor tile (Centor 1981 + McIsaac 1998 age modifier
+via `derivationMcisaac`). 16 new unit tests at three boundary
+points each, plus the age-modifier path on McIsaac.
+
+Subsequent wave 48-2 waves (48-2b, 48-2c…) will continue the
+acute-care backfill: RASS, CAM-ICU, PADIS-pain proxies, APACHE-II
+(where additive), Ranson / BISAP, GUSS, COWS, etc.
+
 ### Wave 48-3 — Nursing-floor / rehab / behavioral extension
 
 Backfill the Braden, Morse Falls, Barthel, Katz, Lawton, MEOWS,

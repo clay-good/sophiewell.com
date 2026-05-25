@@ -4,7 +4,7 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { META } from '../../lib/meta.js';
 import { wellsPe, gcs, wellsDvt, chadsVasc, hasBled } from '../../lib/clinical.js';
-import { qsofa, timi, heart, perc, sofa, news2, meld30 } from '../../lib/scoring-v4.js';
+import { qsofa, timi, heart, perc, sofa, news2, meld30, curb65, centor, mcisaac, ciwaAr, fourScore } from '../../lib/scoring-v4.js';
 
 // --- 1. Schema completeness ---------------------------------------------
 
@@ -12,7 +12,8 @@ const REQUIRED_FIELDS = ['formula', 'population', 'units', 'validity', 'source']
 const WAVE_48_1A_TILES = ['wells-pe', 'gcs', 'qsofa-sofa'];
 const WAVE_48_1B_TILES = ['wells-dvt', 'chads', 'hasbled', 'perc', 'timi', 'heart'];
 const WAVE_48_1C_TILES = ['news2', 'meld-childpugh'];
-const ALL_DERIVATION_TILES = [...WAVE_48_1A_TILES, ...WAVE_48_1B_TILES, ...WAVE_48_1C_TILES];
+const WAVE_48_2A_TILES = ['curb-65', 'centor', 'ciwa', 'four-score'];
+const ALL_DERIVATION_TILES = [...WAVE_48_1A_TILES, ...WAVE_48_1B_TILES, ...WAVE_48_1C_TILES, ...WAVE_48_2A_TILES];
 
 for (const id of ALL_DERIVATION_TILES) {
   test(`derivation schema: ${id} has all required fields`, () => {
@@ -415,6 +416,99 @@ test('meld30() worked example produces a finite score consistent with the formul
   const r = meld30({ bilirubin: 2.0, inr: 1.5, creatinine: 1.3, sodium: 135, albumin: 3.0, sex: 'M', hadDialysisTwiceLastWeek: false });
   // 17 ± 1 per META example
   assert.ok(Math.abs(r.score - 17) <= 1, `MELD-3.0 score = ${r.score}`);
+});
+
+// --- Wave 48-2a: CURB-65, Centor, McIsaac, CIWA-Ar, FOUR Score ---------
+
+test('curb-65 components sum equals curb65() (worked example 2)', () => {
+  const inputs = { confusion: true, bun20: false, rr30: false, sbp90OrDbp60: false, age65: true };
+  const r = curb65(inputs);
+  assert.equal(sumComponents(META['curb-65'], inputs), r.score);
+  assert.equal(r.score, 2);
+});
+
+test('curb-65 components sum equals curb65() (max 5)', () => {
+  const inputs = { confusion: true, bun20: true, rr30: true, sbp90OrDbp60: true, age65: true };
+  const r = curb65(inputs);
+  assert.equal(sumComponents(META['curb-65'], inputs), r.score);
+  assert.equal(r.score, 5);
+});
+
+test('curb-65 components sum equals curb65() (zero)', () => {
+  const inputs = { confusion: false, bun20: false, rr30: false, sbp90OrDbp60: false, age65: false };
+  assert.equal(sumComponents(META['curb-65'], inputs), curb65(inputs).score);
+});
+
+test('centor components sum equals centor() (worked example 4)', () => {
+  const inputs = { tonsillarExudate: true, tenderAnteriorAdenopathy: true, feverHistory: true, absenceOfCough: true };
+  const r = centor(inputs);
+  assert.equal(sumComponents(META.centor, inputs), r.score);
+  assert.equal(r.score, 4);
+});
+
+test('mcisaac (second block via derivationMcisaac) sum equals mcisaac() (age 12, all 4 positive -> 5)', () => {
+  const inputs = { tonsillarExudate: true, tenderAnteriorAdenopathy: true, feverHistory: true, absenceOfCough: true, ageYears: 12 };
+  const meta = { derivation: META.centor.derivationMcisaac };
+  const sum = sumComponents(meta, inputs);
+  assert.equal(sum, mcisaac(inputs).score);
+  assert.equal(sum, 5);
+});
+
+test('mcisaac age modifier: age 50 subtracts 1', () => {
+  const inputs = { tonsillarExudate: true, tenderAnteriorAdenopathy: true, feverHistory: true, absenceOfCough: true, ageYears: 50 };
+  const meta = { derivation: META.centor.derivationMcisaac };
+  // 4 centor points - 1 age modifier = 3
+  assert.equal(sumComponents(meta, inputs), mcisaac(inputs).score);
+  assert.equal(mcisaac(inputs).score, 3);
+});
+
+test('mcisaac age modifier: age 30 adds 0', () => {
+  const inputs = { tonsillarExudate: true, tenderAnteriorAdenopathy: false, feverHistory: true, absenceOfCough: false, ageYears: 30 };
+  const meta = { derivation: META.centor.derivationMcisaac };
+  // 2 centor + 0 = 2
+  assert.equal(sumComponents(meta, inputs), mcisaac(inputs).score);
+});
+
+test('ciwa components sum equals ciwaAr() (worked example 10)', () => {
+  const inputs = { nausea: 2, tremor: 2, sweats: 2, anxiety: 2, agitation: 1, tactile: 0, auditory: 0, visual: 0, headache: 1, orientation: 0 };
+  const r = ciwaAr(inputs);
+  assert.equal(sumComponents(META.ciwa, inputs), r.score);
+  assert.equal(r.score, 10);
+});
+
+test('ciwa components sum equals ciwaAr() (max 67)', () => {
+  const inputs = { nausea: 7, tremor: 7, sweats: 7, anxiety: 7, agitation: 7, tactile: 7, auditory: 7, visual: 7, headache: 7, orientation: 4 };
+  const r = ciwaAr(inputs);
+  assert.equal(sumComponents(META.ciwa, inputs), r.score);
+  assert.equal(r.score, 67);
+});
+
+test('ciwa components clamp out-of-range values (10 in a 0-7 field -> 7)', () => {
+  const inputs = { nausea: 10, tremor: 0, sweats: 0, anxiety: 0, agitation: 0, tactile: 0, auditory: 0, visual: 0, headache: 0, orientation: 0 };
+  // clamp 10 -> 7
+  assert.equal(sumComponents(META.ciwa, inputs), 7);
+  assert.equal(ciwaAr(inputs).score, 7);
+});
+
+test('four-score components sum equals fourScore() (max 16)', () => {
+  const inputs = { eye: 4, motor: 4, brainstem: 4, respiration: 4 };
+  const r = fourScore(inputs);
+  assert.equal(sumComponents(META['four-score'], inputs), r.score);
+  assert.equal(r.score, 16);
+});
+
+test('four-score components sum equals fourScore() (intermediate)', () => {
+  const inputs = { eye: 2, motor: 3, brainstem: 4, respiration: 1 };
+  const r = fourScore(inputs);
+  assert.equal(sumComponents(META['four-score'], inputs), r.score);
+  assert.equal(r.score, 10);
+});
+
+test('four-score components sum equals fourScore() (zero, AAN brain-death workup pattern)', () => {
+  const inputs = { eye: 0, motor: 0, brainstem: 0, respiration: 0 };
+  const r = fourScore(inputs);
+  assert.equal(sumComponents(META['four-score'], inputs), r.score);
+  assert.equal(r.score, 0);
 });
 
 // --- 4. Renderer behavior (jsdom-free smoke via stub) -------------------
