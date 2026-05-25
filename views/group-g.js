@@ -421,9 +421,11 @@ export const renderers = {
     ];
     for (const [l, id] of flagItems) root.appendChild(checkbox(l, id));
     const o = out(); root.appendChild(o);
+    const deriv = renderDerivation(META.psi);
+    if (deriv) root.appendChild(deriv);
     const numOpt = (id) => { const v = document.getElementById(id).value; return v === '' ? null : Number(v); };
     const run = () => safe(o, () => {
-      const r = S4.psi({
+      const inputs = {
         age: nv('ps-age'), sex: document.getElementById('ps-sex').value,
         nursingHome: checked('ps-nh'), neoplasm: checked('ps-neo'),
         liverDisease: checked('ps-liv'), chf: checked('ps-chf'),
@@ -434,8 +436,10 @@ export const renderers = {
         sodium: numOpt('ps-na'), glucose: numOpt('ps-g'),
         hct: numOpt('ps-hct'), pao2: numOpt('ps-pao2'),
         pleuralEffusion: checked('ps-pl'),
-      });
+      };
+      const r = S4.psi(inputs);
       o.appendChild(el('h2', { text: `PSI ${r.score} - ${r.band}` }));
+      if (deriv) updateDerivationSteps(deriv, META.psi, inputs);
     });
     document.querySelectorAll('input, select').forEach((n) => n.addEventListener(n.type === 'checkbox' || n.tagName === 'SELECT' ? 'change' : 'input', run));
     run();
@@ -1952,15 +1956,19 @@ export const renderers = {
       ['2', '2 - Fighting ventilator / crying out'],
     ]);
     const o = out(); root.appendChild(o);
+    const deriv = renderDerivation(META.cpot);
+    if (deriv) root.appendChild(deriv);
     const run = () => safe(o, () => {
-      const r = S4.cpot({
+      const inputs = {
         facial: nv('cp-f'),
         body: nv('cp-b'),
         muscleTension: nv('cp-m'),
         complianceOrVocalization: nv('cp-c'),
-      });
+      };
+      const r = S4.cpot(inputs);
       o.appendChild(el('h2', { text: `CPOT ${r.score} of 8` }));
       o.appendChild(el('p', { text: r.band }));
+      if (deriv) updateDerivationSteps(deriv, META.cpot, inputs);
     });
     ['cp-f', 'cp-b', 'cp-m', 'cp-c'].forEach((id) => document.getElementById(id).addEventListener('change', run));
     run();
@@ -1993,14 +2001,18 @@ export const renderers = {
       ['4', '4 - Unable to control ventilation'],
     ]);
     const o = out(); root.appendChild(o);
+    const deriv = renderDerivation(META.bps);
+    if (deriv) root.appendChild(deriv);
     const run = () => safe(o, () => {
-      const r = S4.bps({
+      const inputs = {
         facial: nv('bp-f'),
         upperLimb: nv('bp-u'),
         ventilatorCompliance: nv('bp-v'),
-      });
+      };
+      const r = S4.bps(inputs);
       o.appendChild(el('h2', { text: `BPS ${r.score} of 12` }));
       o.appendChild(el('p', { text: r.band }));
+      if (deriv) updateDerivationSteps(deriv, META.bps, inputs);
     });
     ['bp-f', 'bp-u', 'bp-v'].forEach((id) => document.getElementById(id).addEventListener('change', run));
     run();
@@ -4427,6 +4439,8 @@ export const renderers = {
       ...consistencies.flatMap(([, p]) => [`gu-${p}Sw`, `gu-${p}Cg`, `gu-${p}Dr`, `gu-${p}Vc`]),
     ];
     const o = out(); root.appendChild(o);
+    const deriv = renderDerivation(META.guss);
+    if (deriv) root.appendChild(deriv);
     const run = () => safe(o, () => {
       const r = S4.guss({
         vigilance: nv('gu-vig'),

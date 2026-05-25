@@ -6,6 +6,36 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v48 wave 48-2c — PSI, CPOT, BPS, GUSS)
+
+Four more acute-care derivation blocks. Mix of additive,
+additive-with-callbacks, and formula-only:
+
+- **PSI / PORT** (`psi`): 19 components per Fine 1997 Table 2,
+  including a sex-aware age callback (M=age, F=age−10) using
+  the wave-48-1c second-argument-to-callbacks pattern, and 7
+  optional-lab callbacks that early-return 0 when the input
+  is null/empty/undefined (matching `lib/scoring-v4.js psi()`).
+- **CPOT** (`cpot`): 4 nurse-observed behaviors 0-2 per
+  Gelinas 2006.
+- **BPS** (`bps`): 3 nurse-observed behaviors 1-4 per Payen
+  2001. Minimum aggregate is 3 (not 0) because every
+  component starts at 1.
+- **GUSS** (`guss`): formula-only block (no `components`)
+  following the MELD-3.0 precedent. GUSS's staged gating —
+  fail Stage 1 → stop; fail a Stage 2 consistency → don't
+  advance to the next — is the safety mechanism; an additive
+  components array would misrepresent the stop conditions.
+
+4 new provenance logs under `docs/audits/v48/`. 14 new unit
+tests including the sex-aware age callback and the
+optional-lab null-handling on PSI.
+
+Verified: `npm run lint`, `npm run test`, `npm run sbom`, and
+`npm run build` are all green. Test count 1486 (was 1466;
++20 — 14 new derivation tests + 6 additional schema-loop tests
+for the 4 new tiles). **Catalog count 254, unchanged.**
+
 ### Added (spec-v48 wave 48-2b — BISAP, COWS, ICDSC, 4AT)
 
 Four more acute-care derivation blocks. All purely additive,

@@ -4,7 +4,7 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { META } from '../../lib/meta.js';
 import { wellsPe, gcs, wellsDvt, chadsVasc, hasBled } from '../../lib/clinical.js';
-import { qsofa, timi, heart, perc, sofa, news2, meld30, curb65, centor, mcisaac, ciwaAr, fourScore, bisap, cows, icdsc, fourAt } from '../../lib/scoring-v4.js';
+import { qsofa, timi, heart, perc, sofa, news2, meld30, curb65, centor, mcisaac, ciwaAr, fourScore, bisap, cows, icdsc, fourAt, psi, cpot, bps } from '../../lib/scoring-v4.js';
 
 // --- 1. Schema completeness ---------------------------------------------
 
@@ -14,7 +14,8 @@ const WAVE_48_1B_TILES = ['wells-dvt', 'chads', 'hasbled', 'perc', 'timi', 'hear
 const WAVE_48_1C_TILES = ['news2', 'meld-childpugh'];
 const WAVE_48_2A_TILES = ['curb-65', 'centor', 'ciwa', 'four-score'];
 const WAVE_48_2B_TILES = ['ranson-bisap', 'cows', 'icdsc', '4at'];
-const ALL_DERIVATION_TILES = [...WAVE_48_1A_TILES, ...WAVE_48_1B_TILES, ...WAVE_48_1C_TILES, ...WAVE_48_2A_TILES, ...WAVE_48_2B_TILES];
+const WAVE_48_2C_TILES = ['psi', 'cpot', 'bps', 'guss'];
+const ALL_DERIVATION_TILES = [...WAVE_48_1A_TILES, ...WAVE_48_1B_TILES, ...WAVE_48_1C_TILES, ...WAVE_48_2A_TILES, ...WAVE_48_2B_TILES, ...WAVE_48_2C_TILES];
 
 for (const id of ALL_DERIVATION_TILES) {
   test(`derivation schema: ${id} has all required fields`, () => {
@@ -599,6 +600,121 @@ test('4at amt4 callback clamps out-of-range values to 0-2', () => {
   const r = fourAt(inputs);
   assert.equal(sumComponents(META['4at'], inputs), r.score);
   assert.equal(r.score, 2);
+});
+
+// --- Wave 48-2c: PSI, CPOT, BPS, GUSS -----------------------------------
+
+test('psi components sum equals psi() (worked example, male age 70, RR>=30)', () => {
+  // males contribute age; RR>=30 adds 20; total = 70 + 20 = 90 -> Class III
+  const inputs = {
+    age: 70, sex: 'M',
+    nursingHome: false, neoplasm: false, liverDisease: false,
+    chf: false, cerebrovascular: false, renalDisease: false,
+    alteredMental: false, rr30: true, sbp90: false,
+    hr125: false, pleuralEffusion: false,
+  };
+  const r = psi(inputs);
+  assert.equal(sumComponents(META.psi, inputs), r.score);
+  assert.equal(r.score, 90);
+});
+
+test('psi age callback subtracts 10 for females', () => {
+  const inputs = {
+    age: 70, sex: 'F',
+    nursingHome: false, neoplasm: false, liverDisease: false,
+    chf: false, cerebrovascular: false, renalDisease: false,
+    alteredMental: false, rr30: false, sbp90: false,
+    hr125: false, pleuralEffusion: false,
+  };
+  const r = psi(inputs);
+  assert.equal(sumComponents(META.psi, inputs), r.score);
+  assert.equal(r.score, 60);
+});
+
+test('psi lab callbacks fire when threshold met (BUN 35 adds 20)', () => {
+  const inputs = {
+    age: 50, sex: 'M',
+    nursingHome: false, neoplasm: false, liverDisease: false,
+    chf: false, cerebrovascular: false, renalDisease: false,
+    alteredMental: false, rr30: false, sbp90: false,
+    hr125: false, pleuralEffusion: false,
+    bun: 35,
+  };
+  const r = psi(inputs);
+  assert.equal(sumComponents(META.psi, inputs), r.score);
+  assert.equal(r.score, 70);
+});
+
+test('psi lab callbacks do NOT fire when input is null/undefined (optional labs)', () => {
+  const inputs = {
+    age: 50, sex: 'M',
+    nursingHome: false, neoplasm: false, liverDisease: false,
+    chf: false, cerebrovascular: false, renalDisease: false,
+    alteredMental: false, rr30: false, sbp90: false,
+    hr125: false, pleuralEffusion: false,
+    bun: null, sodium: null, glucose: null, hct: null, pao2: null, ph: null, temp: null,
+  };
+  const r = psi(inputs);
+  assert.equal(sumComponents(META.psi, inputs), r.score);
+  assert.equal(r.score, 50);
+});
+
+test('cpot components sum equals cpot() (worked example zero)', () => {
+  const inputs = { facial: 0, body: 0, muscleTension: 0, complianceOrVocalization: 0 };
+  const r = cpot(inputs);
+  assert.equal(sumComponents(META.cpot, inputs), r.score);
+  assert.equal(r.score, 0);
+});
+
+test('cpot components sum equals cpot() (cutoff 3 case)', () => {
+  const inputs = { facial: 1, body: 1, muscleTension: 1, complianceOrVocalization: 0 };
+  const r = cpot(inputs);
+  assert.equal(sumComponents(META.cpot, inputs), r.score);
+  assert.equal(r.score, 3);
+  assert.equal(r.unacceptablePain, true);
+});
+
+test('cpot components sum equals cpot() (max 8)', () => {
+  const inputs = { facial: 2, body: 2, muscleTension: 2, complianceOrVocalization: 2 };
+  const r = cpot(inputs);
+  assert.equal(sumComponents(META.cpot, inputs), r.score);
+  assert.equal(r.score, 8);
+});
+
+test('bps components sum equals bps() (worked example 3, minimum)', () => {
+  const inputs = { facial: 1, upperLimb: 1, ventilatorCompliance: 1 };
+  const r = bps(inputs);
+  assert.equal(sumComponents(META.bps, inputs), r.score);
+  assert.equal(r.score, 3);
+});
+
+test('bps components sum equals bps() (above cutoff 6)', () => {
+  const inputs = { facial: 2, upperLimb: 2, ventilatorCompliance: 2 };
+  const r = bps(inputs);
+  assert.equal(sumComponents(META.bps, inputs), r.score);
+  assert.equal(r.score, 6);
+  assert.equal(r.unacceptablePain, true);
+});
+
+test('bps components sum equals bps() (max 12)', () => {
+  const inputs = { facial: 4, upperLimb: 4, ventilatorCompliance: 4 };
+  const r = bps(inputs);
+  assert.equal(sumComponents(META.bps, inputs), r.score);
+  assert.equal(r.score, 12);
+});
+
+test('guss derivation is formula-only (no components; staged gating)', () => {
+  const d = META.guss.derivation;
+  assert.ok(d);
+  assert.equal(d.components, undefined);
+  for (const k of REQUIRED_FIELDS) assert.ok(d[k] !== undefined, `derivation.${k}`);
+});
+
+test('guss derivation bands cover the 4-tier dysphagia stratification', () => {
+  const bands = META.guss.derivation.bands;
+  assert.equal(bands.length, 4);
+  assert.deepEqual(bands[0].range, [0, 9]);
+  assert.deepEqual(bands[3].range, [20, 20]);
 });
 
 // --- 4. Renderer behavior (jsdom-free smoke via stub) -------------------

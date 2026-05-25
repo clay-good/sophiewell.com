@@ -290,9 +290,29 @@ attention.
 infrastructure changes.
 
 Wave 48-2 remains open. Subsequent waves continue the
-acute-care backfill (CAM-ICU as algorithm-only, GUSS, CPOT/BPS
-pain bundle, APACHE-II where additive, PSI/PORT as formula-only,
-etc.).
+acute-care backfill (CAM-ICU as algorithm-only, APACHE-II where
+additive, etc.).
+
+#### Wave 48-2c (shipped 2026-05-25) — PSI, CPOT, BPS, GUSS
+
+Four more acute-care tiles. Mix of additive (CPOT 0-2 × 4
+behaviors, BPS 1-4 × 3 behaviors), additive-with-callbacks
+(PSI: 19 components including sex-aware age and 7 optional-lab
+callbacks), and formula-only (GUSS, staged dysphagia screen).
+
+- `lib/meta.js`: derivation blocks for `psi` (PSI/PORT — adds
+  the sex-aware age callback via the second-argument-to-
+  callbacks pattern from wave 48-1c, plus 7 optional-lab
+  callbacks that early-return 0 when input is null), `cpot`,
+  `bps`, and `guss` (formula-only following the MELD-3.0
+  precedent because GUSS's staged gating is not faithfully
+  representable in an additive components array).
+- `views/group-g.js`: renderer wired into all four tile views.
+- `docs/audits/v48/psi.md`, `cpot.md`, `bps.md`, `guss.md`:
+  per-tile provenance logs.
+- `test/unit/derivation.test.js`: +14 cases including the
+  sex-aware age callback (M=age, F=age−10) and the
+  optional-lab null-handling on PSI.
 
 ### Wave 48-3 — Nursing-floor / rehab / behavioral extension
 
