@@ -4,14 +4,15 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { META } from '../../lib/meta.js';
 import { wellsPe, gcs, wellsDvt, chadsVasc, hasBled } from '../../lib/clinical.js';
-import { qsofa, timi, heart, perc } from '../../lib/scoring-v4.js';
+import { qsofa, timi, heart, perc, sofa, news2, meld30 } from '../../lib/scoring-v4.js';
 
 // --- 1. Schema completeness ---------------------------------------------
 
 const REQUIRED_FIELDS = ['formula', 'population', 'units', 'validity', 'source'];
 const WAVE_48_1A_TILES = ['wells-pe', 'gcs', 'qsofa-sofa'];
 const WAVE_48_1B_TILES = ['wells-dvt', 'chads', 'hasbled', 'perc', 'timi', 'heart'];
-const ALL_DERIVATION_TILES = [...WAVE_48_1A_TILES, ...WAVE_48_1B_TILES];
+const WAVE_48_1C_TILES = ['news2', 'meld-childpugh'];
+const ALL_DERIVATION_TILES = [...WAVE_48_1A_TILES, ...WAVE_48_1B_TILES, ...WAVE_48_1C_TILES];
 
 for (const id of ALL_DERIVATION_TILES) {
   test(`derivation schema: ${id} has all required fields`, () => {
@@ -155,7 +156,7 @@ test('qsofa-sofa bands cover the 0-1 vs 2-3 split', () => {
 function sumComponents(meta, inputs) {
   return meta.derivation.components.reduce((acc, c) => {
     const v = inputs[c.inputKey];
-    if (typeof c.points === 'function') return acc + (Number(c.points(v)) || 0);
+    if (typeof c.points === 'function') return acc + (Number(c.points(v, inputs)) || 0);
     if (v) return acc + c.points;
     return acc;
   }, 0);
@@ -304,6 +305,116 @@ test('heart components clamp out-of-range values to 0-2', () => {
   const r = heart(inputs);
   assert.equal(sumComponents(META.heart, inputs), r.score);
   assert.equal(r.score, 7);
+});
+
+// --- Wave 48-1c: NEWS2 (context-aware callback) -------------------------
+
+test('news2 components sum equals news2() (worked example, baseline 0)', () => {
+  const inputs = { rr: 14, spo2: 98, scale2: false, onO2: false, sbp: 124, pulse: 78, acvpu: 'A', temp: 37.0 };
+  const r = news2(inputs);
+  assert.equal(sumComponents(META.news2, inputs), r.score);
+  assert.equal(r.score, 0);
+});
+
+test('news2 components sum equals news2() (single param triggers 3)', () => {
+  // RR 7/min -> resp scores 3; everything else baseline
+  const inputs = { rr: 7, spo2: 98, scale2: false, onO2: false, sbp: 124, pulse: 78, acvpu: 'A', temp: 37.0 };
+  const r = news2(inputs);
+  assert.equal(sumComponents(META.news2, inputs), r.score);
+  assert.equal(r.score, 3);
+});
+
+test('news2 components sum equals news2() (on supplemental O2 adds 2)', () => {
+  const inputs = { rr: 14, spo2: 98, scale2: false, onO2: true, sbp: 124, pulse: 78, acvpu: 'A', temp: 37.0 };
+  const r = news2(inputs);
+  assert.equal(sumComponents(META.news2, inputs), r.score);
+  assert.equal(r.score, 2);
+});
+
+test('news2 components sum equals news2() (Scale 2 + on O2 + SpO2 96 -> 2 pts)', () => {
+  // Scale 2, on O2, SpO2 96 -> spo2 scores 2; onO2 scores 2; rest baseline
+  const inputs = { rr: 14, spo2: 96, scale2: true, onO2: true, sbp: 124, pulse: 78, acvpu: 'A', temp: 37.0 };
+  const r = news2(inputs);
+  assert.equal(sumComponents(META.news2, inputs), r.score);
+  assert.equal(r.score, 4);
+});
+
+test('news2 components sum equals news2() (multi-system high)', () => {
+  // RR 30 -> 3; SpO2 90 scale 1 -> 3; on O2 -> 2; SBP 85 -> 3; pulse 135 -> 3;
+  // acvpu V -> 3; temp 40 -> 2. Total = 19.
+  const inputs = { rr: 30, spo2: 90, scale2: false, onO2: true, sbp: 85, pulse: 135, acvpu: 'V', temp: 40 };
+  const r = news2(inputs);
+  assert.equal(sumComponents(META.news2, inputs), r.score);
+  assert.equal(r.score, 19);
+});
+
+// --- Wave 48-1c: SOFA (second-block via derivationSofa) -----------------
+
+test('qsofa-sofa has a derivationSofa block with 6 components', () => {
+  const d = META['qsofa-sofa'].derivationSofa;
+  assert.ok(d);
+  assert.equal(d.components.length, 6);
+  for (const k of REQUIRED_FIELDS) assert.ok(d[k] !== undefined, `derivationSofa.${k}`);
+});
+
+test('SOFA components sum equals sofa() (zero case)', () => {
+  const inputs = { respiration: 0, coagulation: 0, liver: 0, cardiovascular: 0, cns: 0, renal: 0 };
+  const sd = META['qsofa-sofa'].derivationSofa;
+  const meta = { derivation: sd };
+  const sum = sumComponents(meta, inputs);
+  assert.equal(sum, sofa(inputs).score);
+});
+
+test('SOFA components sum equals sofa() (worked example 2)', () => {
+  const inputs = { respiration: 1, coagulation: 0, liver: 0, cardiovascular: 1, cns: 0, renal: 0 };
+  const sd = META['qsofa-sofa'].derivationSofa;
+  const meta = { derivation: sd };
+  const sum = sumComponents(meta, inputs);
+  assert.equal(sum, sofa(inputs).score);
+  assert.equal(sum, 2);
+});
+
+test('SOFA components clamp to 0-4 (max sum = 24)', () => {
+  const inputs = { respiration: 4, coagulation: 4, liver: 4, cardiovascular: 4, cns: 4, renal: 4 };
+  const sd = META['qsofa-sofa'].derivationSofa;
+  const meta = { derivation: sd };
+  const sum = sumComponents(meta, inputs);
+  assert.equal(sum, 24);
+  assert.equal(sum, sofa(inputs).score);
+});
+
+test('SOFA components clamp out-of-range values (e.g., 99 → 4)', () => {
+  const inputs = { respiration: 99, coagulation: -1, liver: 2, cardiovascular: 3, cns: 4, renal: 1 };
+  const sd = META['qsofa-sofa'].derivationSofa;
+  const meta = { derivation: sd };
+  // 4 + 0 + 2 + 3 + 4 + 1 = 14
+  assert.equal(sumComponents(meta, inputs), 14);
+  assert.equal(sofa(inputs).score, 14);
+});
+
+// --- Wave 48-1c: MELD-3.0 (formula-only block) --------------------------
+
+test('meld-childpugh derivation is formula-only (no components)', () => {
+  const d = META['meld-childpugh'].derivation;
+  assert.ok(d);
+  assert.equal(d.components, undefined);
+  for (const k of REQUIRED_FIELDS) assert.ok(d[k] !== undefined, `derivation.${k}`);
+});
+
+test('meld-childpugh derivation bands cover the 4-band MELD stratification', () => {
+  const bands = META['meld-childpugh'].derivation.bands;
+  assert.equal(bands.length, 4);
+  // <10, 10-19, 20-29, >=30
+  assert.deepEqual(bands[0].range, { op: '<', value: 10 });
+  assert.deepEqual(bands[3].range, { op: '>=', value: 30 });
+});
+
+test('meld30() worked example produces a finite score consistent with the formula text', () => {
+  // Sanity check that the formula text matches the implementation:
+  // worked example fields: bili 2.0, INR 1.5, cr 1.3, Na 135, alb 3.0, sex M
+  const r = meld30({ bilirubin: 2.0, inr: 1.5, creatinine: 1.3, sodium: 135, albumin: 3.0, sex: 'M', hadDialysisTwiceLastWeek: false });
+  // 17 ± 1 per META example
+  assert.ok(Math.abs(r.score - 17) <= 1, `MELD-3.0 score = ${r.score}`);
 });
 
 // --- 4. Renderer behavior (jsdom-free smoke via stub) -------------------

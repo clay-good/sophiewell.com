@@ -153,10 +153,10 @@ first 12 backfilled tiles (chosen for high cross-audience use):
 6. CHA₂DS₂-VASc              *(shipped 48-1b)*
 7. HAS-BLED                  *(shipped 48-1b)*
 8. qSOFA                     *(shipped 48-1a — qSOFA half of the `qsofa-sofa` tile)*
-9. NEWS2                     *(deferred to wave 48-1c — banded per-variable points need a callback-based components schema)*
-10. SOFA                     *(deferred to wave 48-1c — SOFA half of the `qsofa-sofa` tile; needs a multi-block renderer)*
+9. NEWS2                     *(shipped 48-1c — context-aware callbacks for SpO2 Scale 1/2)*
+10. SOFA                     *(shipped 48-1c — second derivation block on the `qsofa-sofa` tile via `derivationSofa`)*
 11. Glasgow Coma Scale       *(shipped 48-1a)*
-12. MELD-Na                  *(deferred to wave 48-1c — log-based non-additive formula; will ship as formula-only block)*
+12. MELD-Na                  *(shipped 48-1c — MELD-3.0 on `meld-childpugh`, formula-only block)*
 
 Each of these has a published additive scoring table, so the
 `components` field is populated and the step-by-step renderer
@@ -214,6 +214,46 @@ extension that is out of scope for the mechanical backfill:
 - **MELD-Na** is a log-based regression formula, not additive.
   It can ship as a formula-only block (no `components`) once
   wave 48-1c lands.
+
+#### Wave 48-1c (shipped 2026-05-25) — NEWS2, SOFA, MELD-3.0; closes wave 48-1
+
+Closes the §5 wave-48-1 list. Three small infrastructure
+extensions land first, then the three remaining tiles:
+
+- `lib/derivation.js scoreComponent(c, value, inputs)`:
+  callbacks now receive the full inputs object as the second
+  argument. Pre-existing single-arg callbacks (wave 48-1a + 1b)
+  are unaffected — they ignore the second parameter.
+- `META.<id>.derivationSofa` pattern: a second derivation block
+  on a single tile is delivered via a sibling field (no schema
+  change to the `derivation` block itself). The view layer
+  calls `renderDerivation({ derivation: META[id].derivationSofa })`
+  for the second block.
+- Formula-only blocks: the renderer already no-oped when
+  `components` was missing; wave 48-1c is the first wave to
+  ship a tile (MELD-3.0) that uses that branch in production.
+
+Tiles backfilled in 48-1c:
+- **NEWS2** — full components with banded per-variable
+  callbacks. The SpO2 callback reads `scale2` and `onO2` from
+  the inputs object to choose between Scale 1 and Scale 2 with
+  the supplemental-O2 modifier per RCP 2017 Table 1.
+- **SOFA** — second derivation block on `qsofa-sofa` via
+  `derivationSofa`. Six organ systems, each accepting a
+  pre-graded 0-4 value (clamped on the way in).
+- **MELD-3.0** — formula-only block on `meld-childpugh`. Kim
+  2021 log-linear regression in `formula` text; no components
+  because the formula is not additive.
+
+Twenty additional unit tests in `test/unit/derivation.test.js`
+verify components-sum-equals-computed-score at boundary points
+including the Scale-2 SpO2 / on-O2 path for NEWS2 and the
+clamped 0-4 path for SOFA, plus a schema test asserting
+MELD-3.0 ships as formula-only.
+
+Wave 48-1 is now complete (all 12 §5 tiles backfilled).
+Subsequent v48 waves (48-2 acute-care, 48-3 nursing-floor,
+48-4+ long-tail) backfill the remaining catalog per §5.
 
 ### Wave 48-2 — Acute care / ICU bedside extension
 

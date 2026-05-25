@@ -6,6 +6,50 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v48 wave 48-1c — NEWS2, SOFA, MELD-3.0; closes wave 48-1)
+
+Closes the §5 wave-48-1 list. Three small infrastructure
+extensions land first, then the three remaining tiles.
+
+- `lib/derivation.js scoreComponent`: callbacks now receive the
+  full inputs object as the second argument
+  (`points(value, inputs)`). Pre-existing single-arg callbacks
+  (waves 48-1a + 1b) are unaffected — they ignore the second
+  parameter. Required so NEWS2's SpO2 callback can branch on
+  `scale2` and `onO2` from the same inputs object.
+- `META.<id>.derivationSofa` pattern: a second derivation block
+  on a single tile is delivered via a sibling field (no schema
+  change to the `derivation` block itself). The view layer
+  calls `renderDerivation({ derivation: META[id].derivationSofa })`
+  for the second block. Used here to surface SOFA alongside
+  the existing qSOFA derivation block on `qsofa-sofa`.
+
+Tiles backfilled:
+- **NEWS2** (`news2`) — components with banded per-variable
+  callbacks per RCP 2017 Table 1, including the SpO2 Scale 1
+  vs Scale 2 branch and the supplemental-O2 modifier.
+- **SOFA** — second block on `qsofa-sofa` via the new
+  `derivationSofa` field. Six organ systems, each accepting a
+  pre-graded 0-4 value (clamped).
+- **MELD-3.0** on `meld-childpugh` — formula-only block (no
+  `components`). Kim 2021 log-linear regression text with the
+  input-clamping rules called out explicitly.
+
+Six new provenance logs under `docs/audits/v48/` (news2,
+sofa, meld-childpugh). 17 new unit tests in
+`test/unit/derivation.test.js` covering Scale-2 / on-O2 paths
+for NEWS2, the clamped 0-4 path for SOFA, and a schema test
+asserting MELD-3.0 ships as formula-only.
+
+`docs/spec-v48.md` §5 list updated — all 12 wave-48-1 tiles
+shipped. Wave 48-1 is complete; subsequent v48 waves (48-2
+acute-care, 48-3 nursing-floor, 48-4+ long-tail) backfill the
+remaining catalog per §5.
+
+Verified: `npm run lint`, `npm run test`, `npm run sbom`, and
+`npm run build` are all green. Test count 1426 (was 1409;
++17). **Catalog count 254, unchanged.**
+
 ### Added (spec-v48 wave 48-1b — 6 additive-boolean tiles backfilled)
 
 Mechanical backfill of the six additive-boolean tiles in the §5

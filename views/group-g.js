@@ -457,17 +457,21 @@ export const renderers = {
     const o = out(); root.appendChild(o);
     const deriv = renderDerivation(META['qsofa-sofa']);
     if (deriv) root.appendChild(deriv);
+    const derivSofa = renderDerivation({ derivation: META['qsofa-sofa'].derivationSofa });
+    if (derivSofa) root.appendChild(derivSofa);
     const run = () => safe(o, () => {
       const qInputs = { rr22: checked('q-rr'), alteredMental: checked('q-am'), sbp100: checked('q-sbp') };
       const a = S4.qsofa(qInputs);
-      const b = S4.sofa(Object.fromEntries(sf.map(([, id]) => [
+      const sofaInputs = Object.fromEntries(sf.map(([, id]) => [
         id === 's-resp' ? 'respiration' : id === 's-coag' ? 'coagulation' : id === 's-liv' ? 'liver' :
         id === 's-cv' ? 'cardiovascular' : id === 's-cns' ? 'cns' : 'renal',
         nv(id),
-      ])));
+      ]));
+      const b = S4.sofa(sofaInputs);
       o.appendChild(el('h2', { text: `qSOFA ${a.score} - ${a.band}` }));
       o.appendChild(el('p', { text: `SOFA ${b.score} - ${b.band}` }));
       if (deriv) updateDerivationSteps(deriv, META['qsofa-sofa'], qInputs);
+      if (derivSofa) updateDerivationSteps(derivSofa, { derivation: META['qsofa-sofa'].derivationSofa }, sofaInputs);
     });
     [...q, ...sf].forEach(([, id]) => document.getElementById(id).addEventListener(id.startsWith('q-') ? 'change' : 'change', run));
     run();
@@ -509,6 +513,8 @@ export const renderers = {
       ]),
     ]));
     const o = out(); root.appendChild(o);
+    const deriv = renderDerivation(META['meld-childpugh']);
+    if (deriv) root.appendChild(deriv);
     const run = () => safe(o, () => {
       const m = S4.meld30({
         bilirubin: nv('m-bili'), inr: nv('m-inr'), creatinine: nv('m-cr'),
@@ -893,16 +899,20 @@ export const renderers = {
       ]),
     ]));
     const o = out(); root.appendChild(o);
+    const deriv = renderDerivation(META.news2);
+    if (deriv) root.appendChild(deriv);
     const run = () => safe(o, () => {
-      const r = S4.news2({
+      const inputs = {
         rr: nv('n2-rr'), spo2: nv('n2-spo2'),
         scale2: checked('n2-scale2'), onO2: checked('n2-o2'),
         sbp: nv('n2-sbp'), pulse: nv('n2-pulse'),
         acvpu: document.getElementById('n2-acvpu').value,
         temp: nv('n2-temp'),
-      });
+      };
+      const r = S4.news2(inputs);
       o.appendChild(el('h2', { text: `NEWS2 ${r.score}` }));
       o.appendChild(el('p', { text: r.band }));
+      if (deriv) updateDerivationSteps(deriv, META.news2, inputs);
       const p = r.parts;
       o.appendChild(el('p', { class: 'muted',
         text: `Per-parameter: RR ${p.rr}, SpO2 ${p.spo2}, supplemental O2 ${p.supplementalO2}, SBP ${p.sbp}, pulse ${p.pulse}, consciousness ${p.consciousness}, temperature ${p.temp}.` }));
