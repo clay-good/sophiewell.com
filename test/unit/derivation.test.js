@@ -4,7 +4,7 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { META } from '../../lib/meta.js';
 import { wellsPe, gcs, wellsDvt, chadsVasc, hasBled } from '../../lib/clinical.js';
-import { qsofa, timi, heart, perc, sofa, news2, meld30, curb65, centor, mcisaac, ciwaAr, fourScore } from '../../lib/scoring-v4.js';
+import { qsofa, timi, heart, perc, sofa, news2, meld30, curb65, centor, mcisaac, ciwaAr, fourScore, bisap, cows, icdsc, fourAt } from '../../lib/scoring-v4.js';
 
 // --- 1. Schema completeness ---------------------------------------------
 
@@ -13,7 +13,8 @@ const WAVE_48_1A_TILES = ['wells-pe', 'gcs', 'qsofa-sofa'];
 const WAVE_48_1B_TILES = ['wells-dvt', 'chads', 'hasbled', 'perc', 'timi', 'heart'];
 const WAVE_48_1C_TILES = ['news2', 'meld-childpugh'];
 const WAVE_48_2A_TILES = ['curb-65', 'centor', 'ciwa', 'four-score'];
-const ALL_DERIVATION_TILES = [...WAVE_48_1A_TILES, ...WAVE_48_1B_TILES, ...WAVE_48_1C_TILES, ...WAVE_48_2A_TILES];
+const WAVE_48_2B_TILES = ['ranson-bisap', 'cows', 'icdsc', '4at'];
+const ALL_DERIVATION_TILES = [...WAVE_48_1A_TILES, ...WAVE_48_1B_TILES, ...WAVE_48_1C_TILES, ...WAVE_48_2A_TILES, ...WAVE_48_2B_TILES];
 
 for (const id of ALL_DERIVATION_TILES) {
   test(`derivation schema: ${id} has all required fields`, () => {
@@ -509,6 +510,95 @@ test('four-score components sum equals fourScore() (zero, AAN brain-death workup
   const r = fourScore(inputs);
   assert.equal(sumComponents(META['four-score'], inputs), r.score);
   assert.equal(r.score, 0);
+});
+
+// --- Wave 48-2b: BISAP, COWS, ICDSC, 4AT --------------------------------
+
+test('ranson-bisap derivation covers BISAP (5 binary criteria)', () => {
+  const d = META['ranson-bisap'].derivation;
+  assert.equal(d.components.length, 5);
+});
+
+test('bisap components sum equals bisap() (worked example 2)', () => {
+  const inputs = { bun25: false, alteredMental: false, sirs: false, age60: true, pleuralEffusion: false };
+  // Only age60 -> 1. Wait worked example says 2: b-bun + b-age both checked
+  const inputs2 = { bun25: true, alteredMental: false, sirs: false, age60: true, pleuralEffusion: false };
+  const r = bisap(inputs2);
+  assert.equal(sumComponents(META['ranson-bisap'], inputs2), r.score);
+  assert.equal(r.score, 2);
+});
+
+test('bisap components sum equals bisap() (max 5)', () => {
+  const inputs = { bun25: true, alteredMental: true, sirs: true, age60: true, pleuralEffusion: true };
+  const r = bisap(inputs);
+  assert.equal(sumComponents(META['ranson-bisap'], inputs), r.score);
+  assert.equal(r.score, 5);
+});
+
+test('cows components sum equals cows() (worked example 15)', () => {
+  const inputs = { pulse: 1, sweating: 2, restlessness: 1, pupil: 1, jointAches: 2, runnyNose: 2, gi: 2, tremor: 1, yawning: 1, anxiety: 2, gooseflesh: 0 };
+  const r = cows(inputs);
+  assert.equal(sumComponents(META.cows, inputs), r.score);
+  assert.equal(r.score, 15);
+});
+
+test('cows components sum equals cows() (zero)', () => {
+  const inputs = { pulse: 0, sweating: 0, restlessness: 0, pupil: 0, jointAches: 0, runnyNose: 0, gi: 0, tremor: 0, yawning: 0, anxiety: 0, gooseflesh: 0 };
+  const r = cows(inputs);
+  assert.equal(sumComponents(META.cows, inputs), r.score);
+  assert.equal(r.score, 0);
+});
+
+test('icdsc components sum equals icdsc() (worked example 4 -> delirium cutoff)', () => {
+  const inputs = {
+    alteredLoc: true, inattention: true, disorientation: true, hallucination: true,
+    psychomotor: false, inappropriateSpeechOrMood: false,
+    sleepWakeDisturbance: false, symptomFluctuation: false,
+  };
+  const r = icdsc(inputs);
+  assert.equal(sumComponents(META.icdsc, inputs), r.score);
+  assert.equal(r.score, 4);
+  assert.equal(r.delirium, true);
+});
+
+test('icdsc components sum equals icdsc() (max 8)', () => {
+  const inputs = {
+    alteredLoc: true, inattention: true, disorientation: true, hallucination: true,
+    psychomotor: true, inappropriateSpeechOrMood: true,
+    sleepWakeDisturbance: true, symptomFluctuation: true,
+  };
+  const r = icdsc(inputs);
+  assert.equal(sumComponents(META.icdsc, inputs), r.score);
+  assert.equal(r.score, 8);
+});
+
+test('4at components sum equals fourAt() (zero)', () => {
+  const inputs = { alertnessAbnormal: false, amt4Errors: 0, attentionScore: 0, acuteChange: false };
+  const r = fourAt(inputs);
+  assert.equal(sumComponents(META['4at'], inputs), r.score);
+  assert.equal(r.score, 0);
+});
+
+test('4at components sum equals fourAt() (alert+acute both abnormal -> 8, possible delirium)', () => {
+  const inputs = { alertnessAbnormal: true, amt4Errors: 0, attentionScore: 0, acuteChange: true };
+  const r = fourAt(inputs);
+  assert.equal(sumComponents(META['4at'], inputs), r.score);
+  assert.equal(r.score, 8);
+});
+
+test('4at components sum equals fourAt() (max 12)', () => {
+  const inputs = { alertnessAbnormal: true, amt4Errors: 2, attentionScore: 2, acuteChange: true };
+  const r = fourAt(inputs);
+  assert.equal(sumComponents(META['4at'], inputs), r.score);
+  assert.equal(r.score, 12);
+});
+
+test('4at amt4 callback clamps out-of-range values to 0-2', () => {
+  const inputs = { alertnessAbnormal: false, amt4Errors: 5, attentionScore: -1, acuteChange: false };
+  // clamps: 0 + 2 + 0 + 0 = 2
+  const r = fourAt(inputs);
+  assert.equal(sumComponents(META['4at'], inputs), r.score);
+  assert.equal(r.score, 2);
 });
 
 // --- 4. Renderer behavior (jsdom-free smoke via stub) -------------------

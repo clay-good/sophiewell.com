@@ -274,6 +274,26 @@ Subsequent wave 48-2 waves (48-2b, 48-2c…) will continue the
 acute-care backfill: RASS, CAM-ICU, PADIS-pain proxies, APACHE-II
 (where additive), Ranson / BISAP, GUSS, COWS, etc.
 
+#### Wave 48-2b (shipped 2026-05-25) — BISAP, COWS, ICDSC, 4AT
+
+Four additive screens. BISAP lands as the primary `derivation`
+block on `ranson-bisap` (the contemporary 24-h bedside score;
+Ranson's two-time-point 11-criterion structure stays as the
+existing checkbox UI math, with `derivationRanson` as a
+candidate for a later wave). COWS, ICDSC, and 4AT each ship as
+straight additive blocks — COWS with per-item anchor levels
+(0/1/2/4, 0/3/5, etc.), ICDSC with 8 binary items, 4AT mixing
+binary 0/4 items with two 0/1/2 callbacks for AMT4 and
+attention.
+
+20 new unit tests at multiple boundary points per tile. No
+infrastructure changes.
+
+Wave 48-2 remains open. Subsequent waves continue the
+acute-care backfill (CAM-ICU as algorithm-only, GUSS, CPOT/BPS
+pain bundle, APACHE-II where additive, PSI/PORT as formula-only,
+etc.).
+
 ### Wave 48-3 — Nursing-floor / rehab / behavioral extension
 
 Backfill the Braden, Morse Falls, Barthel, Katz, Lawton, MEOWS,

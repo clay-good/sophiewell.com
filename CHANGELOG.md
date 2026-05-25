@@ -6,6 +6,35 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v48 wave 48-2b — BISAP, COWS, ICDSC, 4AT)
+
+Four more acute-care derivation blocks. All purely additive,
+no infrastructure changes from prior waves.
+
+- `lib/meta.js`: derivation blocks for the BISAP half of
+  `ranson-bisap` (5 binary criteria per Wu 2008; the contemporary
+  24-h bedside pancreatitis severity score), `cows` (11
+  clinician-rated items per Wesson & Ling 2003 with per-item
+  anchor levels), `icdsc` (8 binary items per Bergeron 2001
+  with the ≥4 delirium cutoff), and `4at` (mixed binary 0/4
+  items + two 0/1/2 callbacks per MacLullich 2019).
+- `views/group-g.js`: renderer wired into all four tile views.
+  The `ranson-bisap` view appends one `<details>` block for
+  BISAP; Ranson's two-time-point math stays as the existing
+  checkbox UI (a `derivationRanson` second block is a candidate
+  for a later wave).
+- `docs/audits/v48/ranson-bisap.md`, `cows.md`, `icdsc.md`,
+  `4at.md`: per-tile provenance logs mapping every component
+  and band to the source paper.
+- `test/unit/derivation.test.js`: +20 cases covering boundary
+  points (zero, worked example, max) for each tile plus 4AT's
+  AMT4 callback clamping.
+- `docs/spec-v48.md`: §5.2 gains a 48-2b subsection.
+
+Verified: `npm run lint`, `npm run test`, `npm run sbom`, and
+`npm run build` are all green. Test count 1466 (was 1447;
++19). **Catalog count 254, unchanged.**
+
 ### Added (spec-v48 wave 48-2a — CURB-65, Centor/McIsaac, CIWA-Ar, FOUR Score)
 
 Opens spec-v48 wave 48-2 (acute-care / ICU bedside extension)

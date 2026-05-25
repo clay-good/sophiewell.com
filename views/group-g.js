@@ -558,17 +558,21 @@ export const renderers = {
     ];
     for (const [l, id] of b) root.appendChild(checkbox(l, id));
     const o = out(); root.appendChild(o);
+    const deriv = renderDerivation(META['ranson-bisap']);
+    if (deriv) root.appendChild(deriv);
     const run = () => safe(o, () => {
       const r = S4.ranson({
         admission: Object.fromEntries(ad.map(([, id]) => [id, checked(id)])),
         fortyEightHour: Object.fromEntries(fh.map(([, id]) => [id, checked(id)])),
       });
-      const bs = S4.bisap({
+      const bisapInputs = {
         bun25: checked('b-bun'), alteredMental: checked('b-am'),
         sirs: checked('b-sirs'), age60: checked('b-age'), pleuralEffusion: checked('b-pl'),
-      });
+      };
+      const bs = S4.bisap(bisapInputs);
       o.appendChild(el('h2', { text: `Ranson ${r.score} - ${r.band}` }));
       o.appendChild(el('p', { text: `BISAP ${bs.score} - ${bs.band}` }));
+      if (deriv) updateDerivationSteps(deriv, META['ranson-bisap'], bisapInputs);
     });
     [...ad, ...fh, ...b].forEach(([, id]) => document.getElementById(id).addEventListener('change', run));
     run();
@@ -794,15 +798,19 @@ export const renderers = {
       ]));
     }
     const o = out(); root.appendChild(o);
+    const deriv = renderDerivation(META.cows);
+    if (deriv) root.appendChild(deriv);
     const run = () => safe(o, () => {
-      const r = S4.cows({
+      const inputs = {
         pulse: nv('co-pul'), sweating: nv('co-swt'), restlessness: nv('co-rest'),
         pupil: nv('co-pup'), jointAches: nv('co-jt'), runnyNose: nv('co-rn'),
         gi: nv('co-gi'), tremor: nv('co-tre'), yawning: nv('co-yaw'),
         anxiety: nv('co-anx'), gooseflesh: nv('co-goose'),
-      });
+      };
+      const r = S4.cows(inputs);
       o.appendChild(el('h2', { text: `COWS: ${r.score}` }));
       o.appendChild(el('p', { text: r.band }));
+      if (deriv) updateDerivationSteps(deriv, META.cows, inputs);
     });
     items.forEach(([, id]) => document.getElementById(id).addEventListener('input', run));
     run();
@@ -1854,8 +1862,10 @@ export const renderers = {
     ];
     for (const [l, id] of items) root.appendChild(checkbox(l, id));
     const o = out(); root.appendChild(o);
+    const deriv = renderDerivation(META.icdsc);
+    if (deriv) root.appendChild(deriv);
     const run = () => safe(o, () => {
-      const r = S4.icdsc({
+      const inputs = {
         alteredLoc: checked('id-a'),
         inattention: checked('id-b'),
         disorientation: checked('id-c'),
@@ -1864,9 +1874,11 @@ export const renderers = {
         inappropriateSpeechOrMood: checked('id-f'),
         sleepWakeDisturbance: checked('id-g'),
         symptomFluctuation: checked('id-h'),
-      });
+      };
+      const r = S4.icdsc(inputs);
       o.appendChild(el('h2', { text: `ICDSC ${r.score} of 8` }));
       o.appendChild(el('p', { text: r.band }));
+      if (deriv) updateDerivationSteps(deriv, META.icdsc, inputs);
     });
     items.forEach(([, id]) => document.getElementById(id).addEventListener('change', run));
     run();
@@ -1893,15 +1905,19 @@ export const renderers = {
     ]));
     root.appendChild(checkbox('Acute change or fluctuating course in cognition / mental status (0 or 4)', 'fa-acute'));
     const o = out(); root.appendChild(o);
+    const deriv = renderDerivation(META['4at']);
+    if (deriv) root.appendChild(deriv);
     const run = () => safe(o, () => {
-      const r = S4.fourAt({
+      const inputs = {
         alertnessAbnormal: checked('fa-alert'),
         amt4Errors: nv('fa-amt'),
         attentionScore: nv('fa-att'),
         acuteChange: checked('fa-acute'),
-      });
+      };
+      const r = S4.fourAt(inputs);
       o.appendChild(el('h2', { text: `4AT ${r.score} of 12` }));
       o.appendChild(el('p', { text: r.band }));
+      if (deriv) updateDerivationSteps(deriv, META['4at'], inputs);
     });
     document.querySelectorAll('input, select').forEach((n) => n.addEventListener(n.type === 'checkbox' || n.tagName === 'SELECT' ? 'change' : 'input', run));
     run();
