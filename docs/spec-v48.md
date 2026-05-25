@@ -146,21 +146,40 @@ Land the schema, the renderer, the test infrastructure, and the
 first 12 backfilled tiles (chosen for high cross-audience use):
 
 1. Wells DVT
-2. Wells PE
+2. Wells PE                  *(shipped 48-1a)*
 3. PERC
 4. HEART
 5. TIMI (UA/NSTEMI)
 6. CHA₂DS₂-VASc
 7. HAS-BLED
-8. qSOFA
+8. qSOFA                     *(shipped 48-1a — qSOFA half of the `qsofa-sofa` tile)*
 9. NEWS2
 10. SOFA
-11. Glasgow Coma Scale
+11. Glasgow Coma Scale       *(shipped 48-1a)*
 12. MELD-Na
 
 Each of these has a published additive scoring table, so the
 `components` field is populated and the step-by-step renderer
 is exercised end-to-end.
+
+#### Wave 48-1a (shipped 2026-05-25) — Infrastructure + 3 pilot tiles
+
+Landed the schema, the renderer (`lib/derivation.js`), the
+in-process test harness (`test/unit/derivation.test.js`), and
+populated `META.derivation` + a per-tile provenance log
+(`docs/audits/v48/<id>.md`) for **3** tiles drawn from the §5
+list: `wells-pe`, `gcs`, and the qSOFA half of `qsofa-sofa`.
+Each pilot has components that sum to the existing computed
+score at three boundary points, bands that match the published
+cutoffs, and a verbatim source quote. The renderer is wired
+into `views/group-g.js` for these three tiles only; the
+remaining nine tiles in the §5 list retain their existing
+META/views and are backfilled in wave 48-1b.
+
+Wave 48-1b will backfill: Wells DVT, PERC, HEART, TIMI,
+CHA₂DS₂-VASc, HAS-BLED, NEWS2, the SOFA half of `qsofa-sofa`,
+and MELD-Na. The infrastructure is unchanged between 1a and 1b;
+1b is a mechanical extension.
 
 ### Wave 48-2 — Acute care / ICU bedside extension
 

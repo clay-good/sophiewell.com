@@ -1191,3 +1191,39 @@ button:hover {
   *::before,
   *::after { animation: none !important; transition: none !important; }
 }
+
+/* spec-v48: derivation block ("where does this come from?") */
+.tile-derivation {
+  margin-top: 1rem;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid var(--border, #ccc);
+  border-radius: 4px;
+  background: var(--surface-alt, transparent);
+}
+.tile-derivation > summary {
+  cursor: pointer;
+  font-weight: 600;
+}
+.tile-derivation h4 {
+  margin: 0.75rem 0 0.25rem;
+  font-size: 0.95rem;
+}
+.tile-derivation pre.tile-derivation-formula {
+  white-space: pre-wrap;
+  font-family: var(--mono, ui-monospace, monospace);
+  font-size: 0.85rem;
+  margin: 0;
+}
+.tile-derivation blockquote {
+  margin: 0;
+  padding-left: 0.75rem;
+  border-left: 3px solid var(--border, #ccc);
+  font-style: italic;
+}
+.tile-derivation-steps ol {
+  margin: 0.25rem 0 0 1.25rem;
+  padding: 0;
+}
+.tile-derivation-steps li {
+  margin: 0.15rem 0;
+}

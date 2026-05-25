@@ -4,6 +4,8 @@ import { el, clear } from '../lib/dom.js';
 import * as C from '../lib/clinical.js';
 import * as S4 from '../lib/scoring-v4.js';
 import { renderScreener } from '../lib/screener.js';
+import { META } from '../lib/meta.js';
+import { renderDerivation, updateDerivationSteps } from '../lib/derivation.js';
 
 function rangeField(label, id, min, max, value) {
   const wrap = el('p');
@@ -36,9 +38,13 @@ export const renderers = {
     root.appendChild(rangeField('Best verbal response', 'verbal', 1, 5, 5));
     root.appendChild(rangeField('Best motor response', 'motor', 1, 6, 6));
     const o = out(); root.appendChild(o);
+    const deriv = renderDerivation(META.gcs);
+    if (deriv) root.appendChild(deriv);
     const run = () => safe(o, () => {
-      const r = C.gcs({ eye: nv('eye'), verbal: nv('verbal'), motor: nv('motor') });
+      const inputs = { eye: nv('eye'), verbal: nv('verbal'), motor: nv('motor') };
+      const r = C.gcs(inputs);
       o.appendChild(el('p', { text: `GCS total: ${r.total} (${r.severity})` }));
+      if (deriv) updateDerivationSteps(deriv, META.gcs, inputs);
     });
     ['eye', 'verbal', 'motor'].forEach((id) => document.getElementById(id).addEventListener('input', run));
     run();
@@ -101,10 +107,13 @@ export const renderers = {
     ];
     for (const [id, label] of items) root.appendChild(checkbox(label, id));
     const o = out(); root.appendChild(o);
+    const deriv = renderDerivation(META['wells-pe']);
+    if (deriv) root.appendChild(deriv);
     const run = () => safe(o, () => {
       const ans = {}; for (const [id] of items) ans[id] = checked(id);
       const r = C.wellsPe(ans);
       o.appendChild(el('p', { text: `Wells PE total: ${r.total} (${r.category})` }));
+      if (deriv) updateDerivationSteps(deriv, META['wells-pe'], ans);
     });
     items.forEach(([id]) => document.getElementById(id).addEventListener('change', run));
     run();
@@ -425,8 +434,11 @@ export const renderers = {
       ]));
     }
     const o = out(); root.appendChild(o);
+    const deriv = renderDerivation(META['qsofa-sofa']);
+    if (deriv) root.appendChild(deriv);
     const run = () => safe(o, () => {
-      const a = S4.qsofa({ rr22: checked('q-rr'), alteredMental: checked('q-am'), sbp100: checked('q-sbp') });
+      const qInputs = { rr22: checked('q-rr'), alteredMental: checked('q-am'), sbp100: checked('q-sbp') };
+      const a = S4.qsofa(qInputs);
       const b = S4.sofa(Object.fromEntries(sf.map(([, id]) => [
         id === 's-resp' ? 'respiration' : id === 's-coag' ? 'coagulation' : id === 's-liv' ? 'liver' :
         id === 's-cv' ? 'cardiovascular' : id === 's-cns' ? 'cns' : 'renal',
@@ -434,6 +446,7 @@ export const renderers = {
       ])));
       o.appendChild(el('h2', { text: `qSOFA ${a.score} - ${a.band}` }));
       o.appendChild(el('p', { text: `SOFA ${b.score} - ${b.band}` }));
+      if (deriv) updateDerivationSteps(deriv, META['qsofa-sofa'], qInputs);
     });
     [...q, ...sf].forEach(([, id]) => document.getElementById(id).addEventListener(id.startsWith('q-') ? 'change' : 'change', run));
     run();

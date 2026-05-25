@@ -6,6 +6,52 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v48 wave 48-1a — derivation layer infrastructure + 3 pilot tiles)
+
+Lands the v48 derivation layer end-to-end on three pilot tiles
+so the schema, renderer, test harness, and per-tile provenance
+log are all exercised in production before the §5 list is
+mechanically backfilled. The remaining nine wave-48-1 tiles
+slip to wave 48-1b (same infrastructure, same tests, just more
+META entries + audit logs).
+
+- `lib/derivation.js`: new. Exports `renderDerivation(meta)` and
+  `updateDerivationSteps(detailsEl, meta, inputs)`. The renderer
+  emits a closed-by-default `<details>` block with the formula,
+  population, validity, and source quote; the updater fills the
+  live step-by-step list of per-input contributions on every
+  input change via the same `aria-live="polite"` plumbing the
+  result block already uses. Schema is validated on render and
+  throws on missing required fields (`formula`, `population`,
+  `units`, `validity`, `source`).
+- `lib/meta.js`: adds `derivation` blocks for `wells-pe`, `gcs`,
+  and the qSOFA half of `qsofa-sofa`. Each block carries the
+  verbatim source quote, the named cohort and dates, the
+  validity caveats, and (where additive) the `components` array
+  matching the source's published point table.
+- `views/group-g.js`: wires `renderDerivation` +
+  `updateDerivationSteps` into the three pilot tiles. The block
+  is appended after the result `<div>` so the bedside-shift
+  surface is unchanged unless the user expands the details.
+- `test/unit/derivation.test.js`: new. 18 cases covering schema
+  completeness, components-sum-equals-computed-score at three
+  boundary points per tile, band-coverage of the achievable
+  range, and renderer validation throws on malformed input.
+- `docs/audits/v48/wells-pe.md`, `gcs.md`, `qsofa-sofa.md`: new
+  per-tile provenance logs (mirroring the v11 audit format) that
+  re-quote the source paper and map every component / band to
+  the published phrasing. The `qsofa-sofa` log documents why
+  the SOFA half is intentionally not in the derivation block at
+  this wave (per-organ non-additive scoring is not faithfully
+  representable in the additive-components schema).
+- `docs/spec-v48.md`: §5 wave 48-1 is restructured into 48-1a
+  (this wave, shipped) and 48-1b (the remaining nine §5 tiles).
+- `README.md`: one sentence in the feature paragraph noting the
+  collapsed "where does this come from?" block.
+
+Verified: `npm run lint`, `npm run test`, `npm run sbom`, and
+`npm run build` are all green. **Catalog count 254, unchanged.**
+
 ### Fixed (data-refresh workflow — `shardLayout: "shards"` missing from regenerated manifests)
 
 The weekly `data-refresh` GitHub Action was failing at the

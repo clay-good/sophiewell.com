@@ -30,7 +30,10 @@ Sophie's eight posture commitments
 telemetry, no third-party fetch, no AI, no cookies, no paid
 tier, MIT-licensed forever — are listed at
 [/commitments/](https://sophiewell.com/commitments/) and
-enforced by automated checks on every commit.
+enforced by automated checks on every commit. Select tiles
+expose a collapsed "where does this come from?" derivation
+block ([docs/spec-v48.md](docs/spec-v48.md)) with the verbatim
+source formula, study cohort, and limits of validity.
 
 ## The problem
 
