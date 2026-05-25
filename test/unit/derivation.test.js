@@ -3,15 +3,17 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { META } from '../../lib/meta.js';
-import { wellsPe, gcs } from '../../lib/clinical.js';
-import { qsofa } from '../../lib/scoring-v4.js';
+import { wellsPe, gcs, wellsDvt, chadsVasc, hasBled } from '../../lib/clinical.js';
+import { qsofa, timi, heart, perc } from '../../lib/scoring-v4.js';
 
 // --- 1. Schema completeness ---------------------------------------------
 
 const REQUIRED_FIELDS = ['formula', 'population', 'units', 'validity', 'source'];
 const WAVE_48_1A_TILES = ['wells-pe', 'gcs', 'qsofa-sofa'];
+const WAVE_48_1B_TILES = ['wells-dvt', 'chads', 'hasbled', 'perc', 'timi', 'heart'];
+const ALL_DERIVATION_TILES = [...WAVE_48_1A_TILES, ...WAVE_48_1B_TILES];
 
-for (const id of WAVE_48_1A_TILES) {
+for (const id of ALL_DERIVATION_TILES) {
   test(`derivation schema: ${id} has all required fields`, () => {
     const d = META[id].derivation;
     assert.ok(d, `${id} must have derivation`);
@@ -26,7 +28,7 @@ for (const id of WAVE_48_1A_TILES) {
   });
 }
 
-for (const id of WAVE_48_1A_TILES) {
+for (const id of ALL_DERIVATION_TILES) {
   test(`derivation schema: ${id} units key set covers every component input`, () => {
     const d = META[id].derivation;
     if (!Array.isArray(d.components)) return;
@@ -146,6 +148,162 @@ test('qsofa-sofa bands cover the 0-1 vs 2-3 split', () => {
   assert.equal(bands.length, 2);
   assert.deepEqual(bands[0].range, [0, 1]);
   assert.deepEqual(bands[1].range, [2, 3]);
+});
+
+// --- Wave 48-1b: components-sum-equals-score for the 6 additive tiles ---
+
+function sumComponents(meta, inputs) {
+  return meta.derivation.components.reduce((acc, c) => {
+    const v = inputs[c.inputKey];
+    if (typeof c.points === 'function') return acc + (Number(c.points(v)) || 0);
+    if (v) return acc + c.points;
+    return acc;
+  }, 0);
+}
+
+test('wells-dvt components sum equals wellsDvt() (zero case)', () => {
+  const inputs = {
+    activeCancer: false, paralysis: false, recentBedrest: false,
+    tendernessAlongVeins: false, entireLegSwollen: false,
+    calfSwellingGt3cm: false, pittingEdema: false,
+    collateralVeins: false, priorDvt: false, alternativeDxAsLikely: false,
+  };
+  assert.equal(sumComponents(META['wells-dvt'], inputs), wellsDvt(inputs).total);
+});
+
+test('wells-dvt components sum equals wellsDvt() (high case, 3 positive)', () => {
+  const inputs = {
+    activeCancer: false, paralysis: false, recentBedrest: false,
+    tendernessAlongVeins: true, entireLegSwollen: true,
+    calfSwellingGt3cm: true, pittingEdema: false,
+    collateralVeins: false, priorDvt: false, alternativeDxAsLikely: false,
+  };
+  const r = wellsDvt(inputs);
+  assert.equal(sumComponents(META['wells-dvt'], inputs), r.total);
+  assert.equal(r.total, 3);
+});
+
+test('wells-dvt components sum honors the -2 subtractive criterion', () => {
+  const inputs = {
+    activeCancer: true, paralysis: true, recentBedrest: false,
+    tendernessAlongVeins: false, entireLegSwollen: false,
+    calfSwellingGt3cm: false, pittingEdema: false,
+    collateralVeins: false, priorDvt: false, alternativeDxAsLikely: true,
+  };
+  // 1 + 1 + (-2) = 0
+  assert.equal(sumComponents(META['wells-dvt'], inputs), wellsDvt(inputs).total);
+  assert.equal(wellsDvt(inputs).total, 0);
+});
+
+test('chads (CHA2DS2-VASc) components sum equals chadsVasc() (zero)', () => {
+  const inputs = {
+    chf: false, hypertension: false, ageGte75: false, diabetes: false,
+    strokeOrTia: false, vascularDisease: false, ageGte65: false, female: false,
+  };
+  assert.equal(sumComponents(META.chads, inputs), chadsVasc(inputs).total);
+});
+
+test('chads components sum equals chadsVasc() (worked example 3)', () => {
+  const inputs = {
+    chf: false, hypertension: true, ageGte75: false, diabetes: true,
+    strokeOrTia: false, vascularDisease: false, ageGte65: true, female: false,
+  };
+  // 1 + 1 + 1 = 3
+  assert.equal(sumComponents(META.chads, inputs), chadsVasc(inputs).total);
+  assert.equal(chadsVasc(inputs).total, 3);
+});
+
+test('chads components sum equals chadsVasc() (max with both 2-point items)', () => {
+  const inputs = {
+    chf: true, hypertension: true, ageGte75: true, diabetes: true,
+    strokeOrTia: true, vascularDisease: true, ageGte65: true, female: true,
+  };
+  // 1 + 1 + 2 + 1 + 2 + 1 + 1 + 1 = 10
+  assert.equal(sumComponents(META.chads, inputs), chadsVasc(inputs).total);
+  assert.equal(chadsVasc(inputs).total, 10);
+});
+
+test('hasbled components sum equals hasBled() (worked example 2)', () => {
+  const inputs = {
+    hypertension: true, abnormalRenal: false, abnormalLiver: false,
+    stroke: false, bleedingHistory: false, labileInr: false,
+    ageGt65: true, drugs: false, alcohol: false,
+  };
+  const r = hasBled(inputs);
+  assert.equal(sumComponents(META.hasbled, inputs), r.total);
+  assert.equal(r.total, 2);
+});
+
+test('hasbled components sum equals hasBled() (high, 4)', () => {
+  const inputs = {
+    hypertension: true, abnormalRenal: false, abnormalLiver: false,
+    stroke: true, bleedingHistory: true, labileInr: false,
+    ageGt65: true, drugs: false, alcohol: false,
+  };
+  const r = hasBled(inputs);
+  assert.equal(sumComponents(META.hasbled, inputs), r.total);
+  assert.equal(r.total, 4);
+});
+
+test('perc components sum equals perc().score (negative 0)', () => {
+  const inputs = {
+    age50: false, hr100: false, sao2lt95: false, hemoptysis: false,
+    estrogen: false, priorVte: false, recentSurgery: false, unilateralLegSwelling: false,
+  };
+  assert.equal(sumComponents(META.perc, inputs), perc(inputs).score);
+});
+
+test('perc components sum equals perc().score (1 positive feature)', () => {
+  const inputs = {
+    age50: true, hr100: false, sao2lt95: false, hemoptysis: false,
+    estrogen: false, priorVte: false, recentSurgery: false, unilateralLegSwelling: false,
+  };
+  const r = perc(inputs);
+  assert.equal(sumComponents(META.perc, inputs), r.score);
+  assert.equal(r.score, 1);
+});
+
+test('timi components sum equals timi().score (3, intermediate)', () => {
+  const inputs = {
+    age65: true, threeRiskFactors: true, knownCad50pct: false, asaPast7Days: true,
+    severeAngina: false, stDeviation: false, elevatedMarkers: false,
+  };
+  const r = timi(inputs);
+  assert.equal(sumComponents(META.timi, inputs), r.score);
+  assert.equal(r.score, 3);
+});
+
+test('timi components sum equals timi().score (max 7)', () => {
+  const inputs = {
+    age65: true, threeRiskFactors: true, knownCad50pct: true, asaPast7Days: true,
+    severeAngina: true, stDeviation: true, elevatedMarkers: true,
+  };
+  const r = timi(inputs);
+  assert.equal(sumComponents(META.timi, inputs), r.score);
+  assert.equal(r.score, 7);
+});
+
+test('heart components sum equals heart().score (worked 0+1+0+1+0=2... wait, low 3)', () => {
+  // Recreate the META example: h-hist=1, h-ekg=0, h-age=1, h-rf=1, h-trop=0 -> 3 (low)
+  const inputs = { history: 1, ekg: 0, age: 1, riskFactors: 1, troponin: 0 };
+  const r = heart(inputs);
+  assert.equal(sumComponents(META.heart, inputs), r.score);
+  assert.equal(r.score, 3);
+});
+
+test('heart components sum equals heart().score (high 10)', () => {
+  const inputs = { history: 2, ekg: 2, age: 2, riskFactors: 2, troponin: 2 };
+  const r = heart(inputs);
+  assert.equal(sumComponents(META.heart, inputs), r.score);
+  assert.equal(r.score, 10);
+});
+
+test('heart components clamp out-of-range values to 0-2', () => {
+  const inputs = { history: 5, ekg: -1, age: 1, riskFactors: 99, troponin: 2 };
+  // clamps: 2 + 0 + 1 + 2 + 2 = 7
+  const r = heart(inputs);
+  assert.equal(sumComponents(META.heart, inputs), r.score);
+  assert.equal(r.score, 7);
 });
 
 // --- 4. Renderer behavior (jsdom-free smoke via stub) -------------------

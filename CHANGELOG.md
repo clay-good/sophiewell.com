@@ -6,6 +6,39 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v48 wave 48-1b — 6 additive-boolean tiles backfilled)
+
+Mechanical backfill of the six additive-boolean tiles in the §5
+list: Wells DVT, CHA₂DS₂-VASc (`chads`), HAS-BLED, PERC, TIMI,
+and HEART. Infrastructure is unchanged from wave 48-1a; this
+wave only adds META.derivation entries, view-side renderer
+calls, audit logs, and unit tests.
+
+- `lib/meta.js`: derivation blocks for `wells-dvt`, `chads`,
+  `hasbled`, `perc`, `timi`, `heart`. Each has components
+  matching the published point table (including Wells DVT's −2
+  subtractive criterion, the two 2-point CHA₂DS₂-VASc items,
+  and HEART's per-component banded integers via clamped point
+  callbacks), bands matching the published cutoffs, and the
+  verbatim source quote.
+- `views/group-g.js`: appends `renderDerivation` +
+  `updateDerivationSteps` calls in the six tile renderers.
+- `docs/audits/v48/wells-dvt.md`, `chads.md`, `hasbled.md`,
+  `perc.md`, `timi.md`, `heart.md`: new per-tile provenance
+  logs (mirroring the v11 audit format).
+- `test/unit/derivation.test.js`: +27 new cases. The schema
+  test loop now covers all 9 derivation tiles (wave 48-1a + 1b).
+  Per-tile components-sum tests cover boundary points including
+  the Wells DVT −2 criterion and HEART's input clamping.
+- `docs/spec-v48.md`: §5 list updated — six tiles shipped, three
+  (NEWS2, SOFA, MELD-Na) explicitly deferred to wave 48-1c with
+  the reason documented (each needs a renderer extension that
+  is out of scope for the mechanical backfill).
+
+Verified: `npm run lint`, `npm run test`, `npm run sbom`, and
+`npm run build` are all green. Test count 1409 (was 1382;
++27). **Catalog count 254, unchanged.**
+
 ### Added (spec-v48 wave 48-1a — derivation layer infrastructure + 3 pilot tiles)
 
 Lands the v48 derivation layer end-to-end on three pilot tiles

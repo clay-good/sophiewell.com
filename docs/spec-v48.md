@@ -145,18 +145,18 @@ v48 ships in waves; backfill is mechanical and parallelizable.
 Land the schema, the renderer, the test infrastructure, and the
 first 12 backfilled tiles (chosen for high cross-audience use):
 
-1. Wells DVT
+1. Wells DVT                 *(shipped 48-1b)*
 2. Wells PE                  *(shipped 48-1a)*
-3. PERC
-4. HEART
-5. TIMI (UA/NSTEMI)
-6. CHA₂DS₂-VASc
-7. HAS-BLED
+3. PERC                      *(shipped 48-1b)*
+4. HEART                     *(shipped 48-1b)*
+5. TIMI (UA/NSTEMI)          *(shipped 48-1b)*
+6. CHA₂DS₂-VASc              *(shipped 48-1b)*
+7. HAS-BLED                  *(shipped 48-1b)*
 8. qSOFA                     *(shipped 48-1a — qSOFA half of the `qsofa-sofa` tile)*
-9. NEWS2
-10. SOFA
+9. NEWS2                     *(deferred to wave 48-1c — banded per-variable points need a callback-based components schema)*
+10. SOFA                     *(deferred to wave 48-1c — SOFA half of the `qsofa-sofa` tile; needs a multi-block renderer)*
 11. Glasgow Coma Scale       *(shipped 48-1a)*
-12. MELD-Na
+12. MELD-Na                  *(deferred to wave 48-1c — log-based non-additive formula; will ship as formula-only block)*
 
 Each of these has a published additive scoring table, so the
 `components` field is populated and the step-by-step renderer
@@ -180,6 +180,40 @@ Wave 48-1b will backfill: Wells DVT, PERC, HEART, TIMI,
 CHA₂DS₂-VASc, HAS-BLED, NEWS2, the SOFA half of `qsofa-sofa`,
 and MELD-Na. The infrastructure is unchanged between 1a and 1b;
 1b is a mechanical extension.
+
+#### Wave 48-1b (shipped 2026-05-25) — 6 additive-boolean tiles
+
+Backfilled six tiles from the §5 list whose scoring is purely
+additive-boolean (or additive with per-component banded
+integers, in the HEART case): `wells-dvt`, `chads`
+(CHA₂DS₂-VASc), `hasbled`, `perc`, `timi`, and `heart`. Each
+landed META.derivation entry has components matching the
+published point table, bands matching the published cutoffs,
+verbatim source quote, and a corresponding audit log under
+`docs/audits/v48/<id>.md`. Renderer is wired into
+`views/group-g.js` for all six. Twenty-seven additional unit
+tests in `test/unit/derivation.test.js` assert
+components-sum-equals-computed-score at two or three boundary
+points per tile (including the −2 subtractive criterion in
+Wells DVT and the per-component clamping in HEART).
+
+NEWS2, SOFA (the second half of `qsofa-sofa`), and MELD-Na are
+deferred to wave 48-1c because each needs an infrastructure
+extension that is out of scope for the mechanical backfill:
+- **NEWS2** uses per-variable banded points (RR < 8 → 3 pts,
+  9-11 → 1 pt, 12-20 → 0 pts, …) — the current
+  `lib/derivation.js scoreComponent` passes only the value to
+  the `points` callback, so the scale-2 SpO₂ branch (which
+  depends on `onO2`) cannot be expressed without a renderer
+  change to pass the full inputs object as a second argument.
+- **SOFA** is additive (each of 6 organs contributes 0-4
+  points), but the existing `qsofa-sofa` derivation block only
+  describes qSOFA; surfacing a second block on the same tile
+  needs a `derivations: [...]` array in META and a small
+  renderer change to walk it.
+- **MELD-Na** is a log-based regression formula, not additive.
+  It can ship as a formula-only block (no `components`) once
+  wave 48-1c lands.
 
 ### Wave 48-2 — Acute care / ICU bedside extension
 

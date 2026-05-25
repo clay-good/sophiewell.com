@@ -133,10 +133,13 @@ export const renderers = {
     ];
     for (const [id, label] of items) root.appendChild(checkbox(label, id));
     const o = out(); root.appendChild(o);
+    const deriv = renderDerivation(META['wells-dvt']);
+    if (deriv) root.appendChild(deriv);
     const run = () => safe(o, () => {
       const ans = {}; for (const [id] of items) ans[id] = checked(id);
       const r = C.wellsDvt(ans);
       o.appendChild(el('p', { text: `Wells DVT total: ${r.total} (${r.category})` }));
+      if (deriv) updateDerivationSteps(deriv, META['wells-dvt'], ans);
     });
     items.forEach(([id]) => document.getElementById(id).addEventListener('change', run));
     run();
@@ -152,10 +155,13 @@ export const renderers = {
     ];
     for (const [id, label] of items) root.appendChild(checkbox(label, id));
     const o = out(); root.appendChild(o);
+    const deriv = renderDerivation(META.chads);
+    if (deriv) root.appendChild(deriv);
     const run = () => safe(o, () => {
       const ans = {}; for (const [id] of items) ans[id] = checked(id);
       const r = C.chadsVasc(ans);
       o.appendChild(el('p', { text: `CHA2DS2-VASc total: ${r.total}` }));
+      if (deriv) updateDerivationSteps(deriv, META.chads, ans);
     });
     items.forEach(([id]) => document.getElementById(id).addEventListener('change', run));
     run();
@@ -175,10 +181,13 @@ export const renderers = {
     ];
     for (const [id, label] of items) root.appendChild(checkbox(label, id));
     const o = out(); root.appendChild(o);
+    const deriv = renderDerivation(META.hasbled);
+    if (deriv) root.appendChild(deriv);
     const run = () => safe(o, () => {
       const ans = {}; for (const [id] of items) ans[id] = checked(id);
       const r = C.hasBled(ans);
       o.appendChild(el('p', { text: `HAS-BLED total: ${r.total} (${r.risk} risk)` }));
+      if (deriv) updateDerivationSteps(deriv, META.hasbled, ans);
     });
     items.forEach(([id]) => document.getElementById(id).addEventListener('change', run));
     run();
@@ -210,15 +219,19 @@ export const renderers = {
     ];
     for (const [l, id] of items) root.appendChild(checkbox(l, id));
     const o = out(); root.appendChild(o);
+    const deriv = renderDerivation(META.timi);
+    if (deriv) root.appendChild(deriv);
     const run = () => safe(o, () => {
-      const r = S4.timi({
+      const inputs = {
         age65: checked('tm-age'), threeRiskFactors: checked('tm-rf'),
         knownCad50pct: checked('tm-cad'), asaPast7Days: checked('tm-asa'),
         severeAngina: checked('tm-ang'), stDeviation: checked('tm-st'),
         elevatedMarkers: checked('tm-mark'),
-      });
+      };
+      const r = S4.timi(inputs);
       o.appendChild(el('h2', { text: `TIMI ${r.score}` }));
       o.appendChild(el('p', { text: r.band }));
+      if (deriv) updateDerivationSteps(deriv, META.timi, inputs);
     });
     items.forEach(([, id]) => document.getElementById(id).addEventListener('change', run));
     run();
@@ -274,12 +287,16 @@ export const renderers = {
       ]));
     }
     const o = out(); root.appendChild(o);
+    const deriv = renderDerivation(META.heart);
+    if (deriv) root.appendChild(deriv);
     const run = () => safe(o, () => {
-      const r = S4.heart({
+      const inputs = {
         history: nv('h-hist'), ekg: nv('h-ekg'), age: nv('h-age'),
         riskFactors: nv('h-rf'), troponin: nv('h-trop'),
-      });
+      };
+      const r = S4.heart(inputs);
       o.appendChild(el('h2', { text: `HEART ${r.score}` })); o.appendChild(el('p', { text: r.band }));
+      if (deriv) updateDerivationSteps(deriv, META.heart, inputs);
     });
     components.forEach(([, id]) => document.getElementById(id).addEventListener('change', run));
     run();
@@ -294,15 +311,19 @@ export const renderers = {
     ];
     for (const [l, id] of items) root.appendChild(checkbox(l, id));
     const o = out(); root.appendChild(o);
+    const deriv = renderDerivation(META.perc);
+    if (deriv) root.appendChild(deriv);
     const run = () => safe(o, () => {
-      const r = S4.perc({
+      const inputs = {
         age50: checked('pc-age'), hr100: checked('pc-hr'), sao2lt95: checked('pc-sao2'),
         hemoptysis: checked('pc-hemo'), estrogen: checked('pc-estrogen'),
         priorVte: checked('pc-vte'), recentSurgery: checked('pc-surg'),
         unilateralLegSwelling: checked('pc-leg'),
-      });
+      };
+      const r = S4.perc(inputs);
       o.appendChild(el('h2', { text: r.score === 0 ? 'PERC negative (0 features)' : `PERC ${r.score} positive features` }));
       o.appendChild(el('p', { text: r.band }));
+      if (deriv) updateDerivationSteps(deriv, META.perc, inputs);
     });
     items.forEach(([, id]) => document.getElementById(id).addEventListener('change', run));
     run();
