@@ -4,7 +4,7 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { META } from '../../lib/meta.js';
 import { wellsPe, gcs, wellsDvt, chadsVasc, hasBled } from '../../lib/clinical.js';
-import { qsofa, timi, heart, perc, sofa, news2, meld30, curb65, centor, mcisaac, ciwaAr, fourScore, bisap, cows, icdsc, fourAt, psi, cpot, bps, braden, morseFalls, lawtonIadl, katzAdl, barthel, rosier, cpss, lams, race, sos } from '../../lib/scoring-v4.js';
+import { qsofa, timi, heart, perc, sofa, news2, meld30, curb65, centor, mcisaac, ciwaAr, fourScore, bisap, cows, icdsc, fourAt, psi, cpot, bps, braden, morseFalls, lawtonIadl, katzAdl, barthel, rosier, cpss, lams, race, sos, flacc, hendrichII, atriaBleeding } from '../../lib/scoring-v4.js';
 import { nihss } from '../../lib/clinical.js';
 
 // --- 1. Schema completeness ---------------------------------------------
@@ -20,7 +20,8 @@ const WAVE_48_3A_TILES = ['braden', 'morse-falls', 'lawton-iadl', 'katz-adl'];
 const WAVE_48_3B_TILES = ['barthel', 'rosier', 'cpss', 'lams'];
 const WAVE_48_3C_TILES = ['nihss', 'race', 'meows', 'sos'];
 const WAVE_48_3D_TILES = ['phq9', 'gad7', 'cam', 'cssrs'];
-const ALL_DERIVATION_TILES = [...WAVE_48_1A_TILES, ...WAVE_48_1B_TILES, ...WAVE_48_1C_TILES, ...WAVE_48_2A_TILES, ...WAVE_48_2B_TILES, ...WAVE_48_2C_TILES, ...WAVE_48_3A_TILES, ...WAVE_48_3B_TILES, ...WAVE_48_3C_TILES, ...WAVE_48_3D_TILES];
+const WAVE_48_4A_TILES = ['atria-bleeding', 'hendrich-ii', 'flacc', 'auditc'];
+const ALL_DERIVATION_TILES = [...WAVE_48_1A_TILES, ...WAVE_48_1B_TILES, ...WAVE_48_1C_TILES, ...WAVE_48_2A_TILES, ...WAVE_48_2B_TILES, ...WAVE_48_2C_TILES, ...WAVE_48_3A_TILES, ...WAVE_48_3B_TILES, ...WAVE_48_3C_TILES, ...WAVE_48_3D_TILES, ...WAVE_48_4A_TILES];
 
 for (const id of ALL_DERIVATION_TILES) {
   test(`derivation schema: ${id} has all required fields`, () => {
@@ -1054,6 +1055,98 @@ test('cssrs derivation is formula-only (no components; logic-based band)', () =>
   assert.ok(d);
   assert.equal(d.components, undefined);
   for (const k of REQUIRED_FIELDS) assert.ok(d[k] !== undefined, `derivation.${k}`);
+});
+
+// --- Wave 48-4a: ATRIA Bleeding, Hendrich II, FLACC, AUDIT-C ------------
+
+test('atria-bleeding components sum equals atriaBleeding() (zero)', () => {
+  const inputs = { anemia: false, severeRenalDisease: false, ageGte75: false, priorBleeding: false, hypertension: false };
+  const r = atriaBleeding(inputs);
+  assert.equal(sumComponents(META['atria-bleeding'], inputs), r.score);
+  assert.equal(r.score, 0);
+});
+
+test('atria-bleeding components sum equals atriaBleeding() (high 10, max)', () => {
+  const inputs = { anemia: true, severeRenalDisease: true, ageGte75: true, priorBleeding: true, hypertension: true };
+  const r = atriaBleeding(inputs);
+  assert.equal(sumComponents(META['atria-bleeding'], inputs), r.score);
+  assert.equal(r.score, 10);
+});
+
+test('atria-bleeding components sum equals atriaBleeding() (intermediate 4)', () => {
+  // anemia +3, priorBleeding +1 = 4
+  const inputs = { anemia: true, severeRenalDisease: false, ageGte75: false, priorBleeding: true, hypertension: false };
+  const r = atriaBleeding(inputs);
+  assert.equal(sumComponents(META['atria-bleeding'], inputs), r.score);
+  assert.equal(r.score, 4);
+});
+
+test('hendrich-ii components sum equals hendrichII() (zero)', () => {
+  const inputs = { confusion: false, depression: false, alteredElim: false, dizziness: false, male: false, antiepileptic: false, benzodiazepine: false, getUpAndGo: 'able' };
+  const r = hendrichII(inputs);
+  assert.equal(sumComponents(META['hendrich-ii'], inputs), r.score);
+  assert.equal(r.score, 0);
+});
+
+test('hendrich-ii components sum equals hendrichII() (high 5, cutoff)', () => {
+  // confusion +4, male +1 = 5
+  const inputs = { confusion: true, depression: false, alteredElim: false, dizziness: false, male: true, antiepileptic: false, benzodiazepine: false, getUpAndGo: 'able' };
+  const r = hendrichII(inputs);
+  assert.equal(sumComponents(META['hendrich-ii'], inputs), r.score);
+  assert.equal(r.score, 5);
+  assert.equal(r.highRisk, true);
+});
+
+test('hendrich-ii get-up-and-go callback maps each value correctly', () => {
+  // unable +4
+  const inputs = { confusion: false, depression: false, alteredElim: false, dizziness: false, male: false, antiepileptic: false, benzodiazepine: false, getUpAndGo: 'unable' };
+  const r = hendrichII(inputs);
+  assert.equal(sumComponents(META['hendrich-ii'], inputs), r.score);
+  assert.equal(r.score, 4);
+});
+
+test('hendrich-ii get-up-and-go callback maps "needs-help" to 3', () => {
+  const inputs = { confusion: false, depression: false, alteredElim: false, dizziness: false, male: false, antiepileptic: false, benzodiazepine: false, getUpAndGo: 'needs-help' };
+  assert.equal(sumComponents(META['hendrich-ii'], inputs), 3);
+});
+
+test('flacc components sum equals flacc() (zero, relaxed)', () => {
+  const inputs = { face: 0, legs: 0, activity: 0, cry: 0, consolability: 0 };
+  const r = flacc(inputs);
+  assert.equal(sumComponents(META.flacc, inputs), r.score);
+  assert.equal(r.score, 0);
+});
+
+test('flacc components sum equals flacc() (moderate 5)', () => {
+  const inputs = { face: 1, legs: 1, activity: 1, cry: 1, consolability: 1 };
+  const r = flacc(inputs);
+  assert.equal(sumComponents(META.flacc, inputs), r.score);
+  assert.equal(r.score, 5);
+});
+
+test('flacc components sum equals flacc() (max 10)', () => {
+  const inputs = { face: 2, legs: 2, activity: 2, cry: 2, consolability: 2 };
+  const r = flacc(inputs);
+  assert.equal(sumComponents(META.flacc, inputs), r.score);
+  assert.equal(r.score, 10);
+});
+
+test('auditc components sum (max 12)', () => {
+  const inputs = { '0': 4, '1': 4, '2': 4 };
+  assert.equal(sumComponents(META.auditc, inputs), 12);
+});
+
+test('auditc components sum (worked example 4)', () => {
+  // exampleAnswers [2, 1, 1] -> 4
+  const inputs = { '0': 2, '1': 1, '2': 1 };
+  assert.equal(sumComponents(META.auditc, inputs), 4);
+});
+
+test('auditc bands cover 0-12 contiguously', () => {
+  const bands = META.auditc.derivation.bands;
+  assert.equal(bands.length, 3);
+  assert.deepEqual(bands[0].range, [0, 2]);
+  assert.deepEqual(bands[2].range, [8, 12]);
 });
 
 // --- 4. Renderer behavior (jsdom-free smoke via stub) -------------------

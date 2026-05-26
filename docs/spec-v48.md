@@ -423,6 +423,28 @@ tile without `derivation` is *legal* (the renderer no-ops) but
 the maintainer dashboard surfaces an "% derivation-backfilled"
 metric so the long tail does not get lost.
 
+#### Wave 48-4a (shipped 2026-05-26) — ATRIA Bleeding, Hendrich II, FLACC, AUDIT-C
+
+Opens wave 48-4 (long-tail backfill) with four additive tiles
+that round out the major bedside-decision surfaces (alongside
+the AF / fall / pediatric-pain / addiction-screen instruments
+already shipped in earlier waves):
+
+- **ATRIA Bleeding** (Fang 2011): 5 weighted criteria, range
+  0-10, companion to HAS-BLED and ORBIT (other Sophie tiles).
+- **Hendrich II Fall Risk** (Hendrich 2003): 8 weighted items
+  including a string-valued get-up-and-go callback (able / 
+  pushes-up / needs-help / unable → 0 / 1 / 3 / 4). Companion
+  to Morse Falls (wave 48-3a).
+- **FLACC** (Merkel 1997): 5 behaviors × 0-2; pediatric pain
+  for nonverbal kids. Companion to PAINAD (adult dementia).
+- **AUDIT-C** (Bush 1998): screener-based, 3 items × 0-4,
+  range 0-12. Sex-specific cutoff documented in bands.
+
+15 new unit tests covering boundary points per tile, including
+the Hendrich II tri-level get-up-and-go callback and the
+AUDIT-C screener-indexed sums.
+
 ## 6. Testing requirements
 
 For every tile with a `derivation` block, the test suite asserts:

@@ -764,7 +764,24 @@ export const renderers = {
       updateDerivationSteps(deriv, META.gad7, inputs);
     }
   },
-  auditc(root) { renderScreener(root, S4.AUDITC_CONFIG); },
+  auditc(root) {
+    let deriv = null;
+    renderScreener(root, S4.AUDITC_CONFIG, {
+      onUpdate: (answers) => {
+        if (!deriv) return;
+        const inputs = {};
+        answers.forEach((a, i) => { inputs[String(i)] = a; });
+        updateDerivationSteps(deriv, META.auditc, inputs);
+      },
+    });
+    deriv = renderDerivation(META.auditc);
+    if (deriv) {
+      root.appendChild(deriv);
+      const inputs = {};
+      (S4.AUDITC_CONFIG.exampleAnswers || []).forEach((a, i) => { inputs[String(i)] = a; });
+      updateDerivationSteps(deriv, META.auditc, inputs);
+    }
+  },
   cage(root) { renderScreener(root, S4.CAGE_CONFIG); },
   epds(root) { renderScreener(root, S4.EPDS_CONFIG); },
   'mini-cog'(root) {
@@ -2560,16 +2577,20 @@ export const renderers = {
     ];
     for (const [l, id] of items) root.appendChild(checkbox(l, id));
     const o = out(); root.appendChild(o);
+    const deriv = renderDerivation(META['atria-bleeding']);
+    if (deriv) root.appendChild(deriv);
     const run = () => safe(o, () => {
-      const r = S4.atriaBleeding({
+      const inputs = {
         anemia: checked('at-an'),
         severeRenalDisease: checked('at-rn'),
         ageGte75: checked('at-ag'),
         priorBleeding: checked('at-bl'),
         hypertension: checked('at-ht'),
-      });
+      };
+      const r = S4.atriaBleeding(inputs);
       o.appendChild(el('h2', { text: `ATRIA ${r.score} of 10` }));
       o.appendChild(el('p', { text: r.band }));
+      if (deriv) updateDerivationSteps(deriv, META['atria-bleeding'], inputs);
     });
     items.forEach(([, id]) => document.getElementById(id).addEventListener('change', run));
     run();
@@ -3675,8 +3696,10 @@ export const renderers = {
     ]);
     root.appendChild(gugWrap);
     const o = out(); root.appendChild(o);
+    const deriv = renderDerivation(META['hendrich-ii']);
+    if (deriv) root.appendChild(deriv);
     const run = () => safe(o, () => {
-      const r = S4.hendrichII({
+      const inputs = {
         confusion: checked('hii-conf'),
         depression: checked('hii-dep'),
         alteredElim: checked('hii-elim'),
@@ -3685,9 +3708,11 @@ export const renderers = {
         antiepileptic: checked('hii-aed'),
         benzodiazepine: checked('hii-bz'),
         getUpAndGo: document.getElementById('hii-gug').value,
-      });
+      };
+      const r = S4.hendrichII(inputs);
       o.appendChild(el('h2', { text: `Hendrich II ${r.score} (${r.band})` }));
       o.appendChild(el('p', { text: r.text }));
+      if (deriv) updateDerivationSteps(deriv, META['hendrich-ii'], inputs);
     });
     flags.forEach(([, id]) => document.getElementById(id).addEventListener('change', run));
     document.getElementById('hii-gug').addEventListener('change', run);
@@ -4001,13 +4026,17 @@ export const renderers = {
     ];
     for (const [l, id] of items) root.appendChild(rangeField(l, id, 0, 2, 0));
     const o = out(); root.appendChild(o);
+    const deriv = renderDerivation(META.flacc);
+    if (deriv) root.appendChild(deriv);
     const run = () => safe(o, () => {
-      const r = S4.flacc({
+      const inputs = {
         face: nv('fl-face'), legs: nv('fl-legs'), activity: nv('fl-act'),
         cry: nv('fl-cry'), consolability: nv('fl-cons'),
-      });
+      };
+      const r = S4.flacc(inputs);
       o.appendChild(el('h2', { text: `FLACC ${r.score} (${r.band})` }));
       o.appendChild(el('p', { text: r.text }));
+      if (deriv) updateDerivationSteps(deriv, META.flacc, inputs);
     });
     items.forEach(([, id]) => document.getElementById(id).addEventListener('input', run));
     run();

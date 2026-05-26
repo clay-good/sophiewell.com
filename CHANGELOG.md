@@ -6,6 +6,33 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v48 wave 48-4a — ATRIA Bleeding, Hendrich II, FLACC, AUDIT-C)
+
+Opens spec-v48 wave 48-4 (long-tail backfill) with four
+additive tiles. No infrastructure changes.
+
+- **ATRIA Bleeding** (`atria-bleeding`, Fang 2011): 5 weighted
+  criteria, range 0-10. Companion bleeding-risk score
+  alongside HAS-BLED and ORBIT.
+- **Hendrich II Fall Risk** (`hendrich-ii`, Hendrich 2003): 8
+  weighted items including a string-valued get-up-and-go
+  callback (able / pushes-up / needs-help / unable →
+  0 / 1 / 3 / 4). Companion to Morse Falls.
+- **FLACC** (`flacc`, Merkel 1997): 5 behaviors × 0-2 = range
+  0-10. Pediatric pain for nonverbal children.
+- **AUDIT-C** (`auditc`, Bush 1998): screener-based, 3 items ×
+  0-4 = range 0-12. Sex-specific cutoff (≥3 women / ≥4 men)
+  documented in bands.
+
+4 new provenance logs under `docs/audits/v48/`. 15 new unit
+tests covering boundary points per tile, including the
+Hendrich II tri-level get-up-and-go callback and the AUDIT-C
+screener-indexed sums.
+
+Verified: `npm run lint`, `npm run test`, `npm run sbom`, and
+`npm run build` are all green. Test count 1580 (was 1559;
++21). **Catalog count 254, unchanged.**
+
 ### Added (spec-v48 wave 48-3d — PHQ-9, GAD-7, CAM, C-SSRS)
 
 Four more behavioral / cognitive screens. Includes one
