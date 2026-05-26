@@ -7,6 +7,8 @@ import { el, clear } from '../lib/dom.js';
 import * as V5 from '../lib/clinical-v5.js';
 import * as Code from '../lib/coding-v5.js';
 import { breachNotificationDeadlines } from '../lib/regulatory.js';
+import { META } from '../lib/meta.js';
+import { renderDerivation, updateDerivationSteps } from '../lib/derivation.js';
 
 function field(label, id, opts = {}) {
   const wrap = el('p');
@@ -313,6 +315,8 @@ export const renderers = {
     ];
     for (const [id, label] of factors) root.appendChild(checkField(label, id));
     const o = out(); root.appendChild(o);
+    const deriv = renderDerivation(META.rcri);
+    if (deriv) root.appendChild(deriv);
     const run = () => safe(o, () => {
       const input = {};
       for (const [id] of factors) input[id] = bool(id);
@@ -321,6 +325,7 @@ export const renderers = {
         el('li', { text: `Factors present: ${r.count}` }),
         el('li', { text: `Major adverse cardiac event risk: ${r.majorCardiacEventRiskPct}%` }),
       ]));
+      if (deriv) updateDerivationSteps(deriv, META.rcri, input);
     });
     factors.forEach(([id]) => document.getElementById(id).addEventListener('change', run));
   },
@@ -502,18 +507,22 @@ export const renderers = {
     root.appendChild(field('Symptom duration (minutes)', 'dur'));
     root.appendChild(checkField('Diabetes (+1)', 'diab'));
     const o = out(); root.appendChild(o);
+    const deriv = renderDerivation(META.abcd2);
+    if (deriv) root.appendChild(deriv);
     const run = () => safe(o, () => {
-      const r = V5.abcd2({
+      const inputs = {
         age: num('age'), sbp: num('sbp'), dbp: num('dbp'),
         clinicalFeatures: str('clin'),
         durationMinutes: num('dur'),
         diabetes: bool('diab'),
-      });
+      };
+      const r = V5.abcd2(inputs);
       o.appendChild(el('ul', {}, [
         el('li', { text: r.interpretation }),
         el('li', { text: `Components: A=${r.components.age} B=${r.components.bp} C=${r.components.clinical} D(time)=${r.components.duration} D(diabetes)=${r.components.diabetes}` }),
         el('li', { class: 'muted', text: `Score bands: 0-3 Low (~1.0%) | 4-5 Moderate (~4.1%) | 6-7 High (~8.1%). ${r.citation}` }),
       ]));
+      if (deriv) updateDerivationSteps(deriv, META.abcd2, inputs);
     });
     ['age', 'sbp', 'dbp', 'clin', 'dur', 'diab'].forEach((id) => {
       const node = document.getElementById(id);

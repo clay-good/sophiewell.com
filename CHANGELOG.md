@@ -6,6 +6,34 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v48 wave 48-4d — STOP-BANG, 4Ts, ABCD2, RCRI)
+
+Four more long-tail derivation blocks across preoperative
+screening and acute-care risk stratification. No infrastructure
+changes.
+
+- **STOP-BANG** (`stop-bang`, Chung 2008 / 2012): 8 binary
+  items, range 0-8. Preoperative OSA screen; high-risk cutoff
+  ≥ 5 per Chung 2012 Table 3.
+- **4Ts** (`four-ts`, Lo 2006): 4 domains × 0-2 = range 0-8.
+  Heparin-induced thrombocytopenia pretest probability;
+  callback-clamped to mirror existing `fourTsClamp`.
+- **ABCD2** (`abcd2`, Johnston 2007): 5 features, range 0-7.
+  TIA stroke-risk score; B (blood-pressure) component reads
+  `inputs.dbp` via the second-arg-to-callback pattern so the
+  SBP≥140 OR DBP≥90 rule fires on either limb.
+- **RCRI** (`rcri`, Lee 1999): 6 binary risk factors, range
+  0-6. Preoperative cardiac risk for major noncardiac surgery;
+  Class I-IV bands map to the published major-cardiac-event
+  rates (0.4%, 0.9%, 6.6%, ≥ 11%).
+
+4 new provenance logs under `docs/audits/v48/`. 14 new unit
+tests including the ABCD2 DBP-alone-meets-threshold path and
+the 4Ts 0-2 clamp.
+
+Verified: `npm run lint`, `npm run test`, `npm run sbom`, and
+`npm run build` are all green. **Catalog count 254, unchanged.**
+
 ### Added (spec-v48 wave 48-4c — EPDS, MEWS, COMFORT-B, WAT-1)
 
 Four more long-tail derivation blocks spanning perinatal mental

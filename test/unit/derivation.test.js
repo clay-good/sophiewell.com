@@ -4,8 +4,9 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { META } from '../../lib/meta.js';
 import { wellsPe, gcs, wellsDvt, chadsVasc, hasBled } from '../../lib/clinical.js';
-import { qsofa, timi, heart, perc, sofa, news2, meld30, curb65, centor, mcisaac, ciwaAr, fourScore, bisap, cows, icdsc, fourAt, psi, cpot, bps, braden, morseFalls, lawtonIadl, katzAdl, barthel, rosier, cpss, lams, race, sos, flacc, hendrichII, atriaBleeding, orbitBleeding, painad, miniCog, mews, comfortB, wat1 } from '../../lib/scoring-v4.js';
+import { qsofa, timi, heart, perc, sofa, news2, meld30, curb65, centor, mcisaac, ciwaAr, fourScore, bisap, cows, icdsc, fourAt, psi, cpot, bps, braden, morseFalls, lawtonIadl, katzAdl, barthel, rosier, cpss, lams, race, sos, flacc, hendrichII, atriaBleeding, orbitBleeding, painad, miniCog, mews, comfortB, wat1, stopBang, fourTs } from '../../lib/scoring-v4.js';
 import { nihss } from '../../lib/clinical.js';
+import { rcri, abcd2 } from '../../lib/clinical-v5.js';
 
 // --- 1. Schema completeness ---------------------------------------------
 
@@ -23,7 +24,8 @@ const WAVE_48_3D_TILES = ['phq9', 'gad7', 'cam', 'cssrs'];
 const WAVE_48_4A_TILES = ['atria-bleeding', 'hendrich-ii', 'flacc', 'auditc'];
 const WAVE_48_4B_TILES = ['orbit-bleeding', 'painad', 'cage', 'mini-cog'];
 const WAVE_48_4C_TILES = ['epds', 'mews', 'comfort-b', 'wat-1'];
-const ALL_DERIVATION_TILES = [...WAVE_48_1A_TILES, ...WAVE_48_1B_TILES, ...WAVE_48_1C_TILES, ...WAVE_48_2A_TILES, ...WAVE_48_2B_TILES, ...WAVE_48_2C_TILES, ...WAVE_48_3A_TILES, ...WAVE_48_3B_TILES, ...WAVE_48_3C_TILES, ...WAVE_48_3D_TILES, ...WAVE_48_4A_TILES, ...WAVE_48_4B_TILES, ...WAVE_48_4C_TILES];
+const WAVE_48_4D_TILES = ['stop-bang', 'four-ts', 'abcd2', 'rcri'];
+const ALL_DERIVATION_TILES = [...WAVE_48_1A_TILES, ...WAVE_48_1B_TILES, ...WAVE_48_1C_TILES, ...WAVE_48_2A_TILES, ...WAVE_48_2B_TILES, ...WAVE_48_2C_TILES, ...WAVE_48_3A_TILES, ...WAVE_48_3B_TILES, ...WAVE_48_3C_TILES, ...WAVE_48_3D_TILES, ...WAVE_48_4A_TILES, ...WAVE_48_4B_TILES, ...WAVE_48_4C_TILES, ...WAVE_48_4D_TILES];
 
 for (const id of ALL_DERIVATION_TILES) {
   test(`derivation schema: ${id} has all required fields`, () => {
@@ -1330,6 +1332,117 @@ test('wat-1 components sum equals wat1() (max 12)', () => {
   const r = wat1(inputs);
   assert.equal(sumComponents(META['wat-1'], inputs), r.score);
   assert.equal(r.score, 12);
+});
+
+// --- Wave 48-4d: STOP-BANG, 4Ts, ABCD2, RCRI ----------------------------
+
+test('stop-bang components sum equals stopBang() (zero)', () => {
+  const inputs = { snore: false, tired: false, observedApnea: false, highBp: false, bmiGt35: false, ageGt50: false, neckGt40cm: false, male: false };
+  const r = stopBang(inputs);
+  assert.equal(sumComponents(META['stop-bang'], inputs), r.score);
+  assert.equal(r.score, 0);
+});
+
+test('stop-bang components sum equals stopBang() (intermediate band, 3)', () => {
+  const inputs = { snore: true, tired: true, observedApnea: false, highBp: true, bmiGt35: false, ageGt50: false, neckGt40cm: false, male: false };
+  const r = stopBang(inputs);
+  assert.equal(sumComponents(META['stop-bang'], inputs), r.score);
+  assert.equal(r.score, 3);
+});
+
+test('stop-bang components sum equals stopBang() (high band, 5)', () => {
+  const inputs = { snore: true, tired: true, observedApnea: true, highBp: true, bmiGt35: true, ageGt50: false, neckGt40cm: false, male: false };
+  const r = stopBang(inputs);
+  assert.equal(sumComponents(META['stop-bang'], inputs), r.score);
+  assert.equal(r.score, 5);
+});
+
+test('stop-bang components sum equals stopBang() (max 8)', () => {
+  const inputs = { snore: true, tired: true, observedApnea: true, highBp: true, bmiGt35: true, ageGt50: true, neckGt40cm: true, male: true };
+  const r = stopBang(inputs);
+  assert.equal(sumComponents(META['stop-bang'], inputs), r.score);
+  assert.equal(r.score, 8);
+});
+
+test('four-ts components sum equals fourTs() (zero)', () => {
+  const inputs = { thrombocytopenia: 0, timingOfFall: 0, thrombosis: 0, otherCauses: 0 };
+  const r = fourTs(inputs);
+  assert.equal(sumComponents(META['four-ts'], inputs), r.score);
+  assert.equal(r.score, 0);
+});
+
+test('four-ts components sum equals fourTs() (intermediate band, 4)', () => {
+  const inputs = { thrombocytopenia: 2, timingOfFall: 1, thrombosis: 1, otherCauses: 0 };
+  const r = fourTs(inputs);
+  assert.equal(sumComponents(META['four-ts'], inputs), r.score);
+  assert.equal(r.score, 4);
+});
+
+test('four-ts components sum equals fourTs() (high band, 7)', () => {
+  const inputs = { thrombocytopenia: 2, timingOfFall: 2, thrombosis: 2, otherCauses: 1 };
+  const r = fourTs(inputs);
+  assert.equal(sumComponents(META['four-ts'], inputs), r.score);
+  assert.equal(r.score, 7);
+});
+
+test('four-ts components clamp out-of-range input values to 0-2', () => {
+  // The scoring fn clamps via fourTsClamp; the derivation callback mirrors that.
+  for (const v of [-1, 0, 1, 2, 3, 5]) {
+    const inputs = { thrombocytopenia: v, timingOfFall: 0, thrombosis: 0, otherCauses: 0 };
+    const r = fourTs(inputs);
+    assert.equal(sumComponents(META['four-ts'], inputs), r.score, `thrombocytopenia=${v}`);
+  }
+});
+
+test('abcd2 components sum equals abcd2() (zero, low band)', () => {
+  const inputs = { age: 40, sbp: 120, dbp: 80, clinicalFeatures: 'other', durationMinutes: 5, diabetes: false };
+  const r = abcd2(inputs);
+  assert.equal(sumComponents(META.abcd2, inputs), r.total);
+  assert.equal(r.total, 0);
+});
+
+test('abcd2 components sum equals abcd2() (moderate band, 4)', () => {
+  // age>=60 (1) + bp via DBP>=90 (1) + speech (1) + duration 10-59 (1) + no diabetes = 4
+  const inputs = { age: 65, sbp: 130, dbp: 92, clinicalFeatures: 'speech', durationMinutes: 30, diabetes: false };
+  const r = abcd2(inputs);
+  assert.equal(sumComponents(META.abcd2, inputs), r.total);
+  assert.equal(r.total, 4);
+});
+
+test('abcd2 components sum equals abcd2() (high band, 7)', () => {
+  const inputs = { age: 70, sbp: 150, dbp: 90, clinicalFeatures: 'weakness', durationMinutes: 90, diabetes: true };
+  const r = abcd2(inputs);
+  assert.equal(sumComponents(META.abcd2, inputs), r.total);
+  assert.equal(r.total, 7);
+});
+
+test('abcd2 BP component fires when DBP alone meets the threshold', () => {
+  // SBP below 140 but DBP at 90 should still give the +1 BP point.
+  const inputs = { age: 40, sbp: 120, dbp: 90, clinicalFeatures: 'other', durationMinutes: 5, diabetes: false };
+  const r = abcd2(inputs);
+  assert.equal(sumComponents(META.abcd2, inputs), r.total);
+  assert.equal(r.total, 1);
+});
+
+test('rcri components sum equals rcri() (zero, Class I)', () => {
+  const inputs = { highRiskSurgery: false, ischemicHeartDisease: false, congestiveHeartFailure: false, cerebrovascularDisease: false, insulinDependentDm: false, creatinineOver2: false };
+  const r = rcri(inputs);
+  assert.equal(sumComponents(META.rcri, inputs), r.count);
+  assert.equal(r.count, 0);
+});
+
+test('rcri components sum equals rcri() (Class III, 2 factors)', () => {
+  const inputs = { highRiskSurgery: true, ischemicHeartDisease: true, congestiveHeartFailure: false, cerebrovascularDisease: false, insulinDependentDm: false, creatinineOver2: false };
+  const r = rcri(inputs);
+  assert.equal(sumComponents(META.rcri, inputs), r.count);
+  assert.equal(r.count, 2);
+});
+
+test('rcri components sum equals rcri() (Class IV, all 6)', () => {
+  const inputs = { highRiskSurgery: true, ischemicHeartDisease: true, congestiveHeartFailure: true, cerebrovascularDisease: true, insulinDependentDm: true, creatinineOver2: true };
+  const r = rcri(inputs);
+  assert.equal(sumComponents(META.rcri, inputs), r.count);
+  assert.equal(r.count, 6);
 });
 
 // --- 4. Renderer behavior (jsdom-free smoke via stub) -------------------

@@ -2534,8 +2534,10 @@ export const renderers = {
     ];
     for (const [l, id] of items) root.appendChild(checkbox(l, id));
     const o = out(); root.appendChild(o);
+    const deriv = renderDerivation(META['stop-bang']);
+    if (deriv) root.appendChild(deriv);
     const run = () => safe(o, () => {
-      const r = S4.stopBang({
+      const inputs = {
         snore: checked('sb-s'),
         tired: checked('sb-t'),
         observedApnea: checked('sb-o'),
@@ -2544,9 +2546,11 @@ export const renderers = {
         ageGt50: checked('sb-a'),
         neckGt40cm: checked('sb-n'),
         male: checked('sb-g'),
-      });
+      };
+      const r = S4.stopBang(inputs);
       o.appendChild(el('h2', { text: `STOP-BANG ${r.score} of 8` }));
       o.appendChild(el('p', { text: r.band }));
+      if (deriv) updateDerivationSteps(deriv, META['stop-bang'], inputs);
     });
     items.forEach(([, id]) => document.getElementById(id).addEventListener('change', run));
     run();
@@ -2882,15 +2886,19 @@ export const renderers = {
     ];
     for (const [l, id] of items) root.appendChild(rangeField(l, id, 0, 2, 0));
     const o = out(); root.appendChild(o);
+    const deriv = renderDerivation(META['four-ts']);
+    if (deriv) root.appendChild(deriv);
     const run = () => safe(o, () => {
-      const r = S4.fourTs({
+      const inputs = {
         thrombocytopenia: nv('4t-thr'),
         timingOfFall: nv('4t-time'),
         thrombosis: nv('4t-throm'),
         otherCauses: nv('4t-oth'),
-      });
+      };
+      const r = S4.fourTs(inputs);
       o.appendChild(el('h2', { text: `4Ts ${r.score} of 8` }));
       o.appendChild(el('p', { text: r.band }));
+      if (deriv) updateDerivationSteps(deriv, META['four-ts'], inputs);
     });
     items.forEach(([, id]) => document.getElementById(id).addEventListener('input', run));
     run();

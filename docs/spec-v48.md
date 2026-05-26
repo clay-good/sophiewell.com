@@ -481,6 +481,29 @@ early-warning vitals, and pediatric ICU sedation / withdrawal.
 20 new unit tests including parameterized loops over the MEWS
 AVPU callback and the WAT-1 recovery-minutes callback.
 
+#### Wave 48-4d (shipped 2026-05-26) — STOP-BANG, 4Ts, ABCD2, RCRI
+
+Four more long-tail tiles spanning preoperative / acute-care
+risk stratification. No infrastructure changes.
+
+- **STOP-BANG** (Chung 2008 / 2012): 8 binary items, range 0-8.
+  Preoperative OSA screen widely used by perioperative nursing
+  and anesthesia teams.
+- **4Ts** (Lo 2006): 4 domains × 0-2, range 0-8. Pretest
+  probability score for heparin-induced thrombocytopenia;
+  callback-clamped to mirror `fourTsClamp` in `lib/scoring-v4.js`.
+- **ABCD2** (Johnston 2007): 5 features, range 0-7. TIA stroke
+  risk. The B (blood-pressure) component reads `inputs.dbp` via
+  the second-arg-to-callback pattern (wave 48-1c) so the
+  SBP≥140 OR DBP≥90 rule fires on either limb.
+- **RCRI** (Lee 1999): 6 binary risk factors, range 0-6.
+  Preoperative cardiac risk index for major noncardiac surgery;
+  Class I-IV bands map to the published major-cardiac-event
+  rates (0.4%, 0.9%, 6.6%, ≥11%).
+
+14 new unit tests covering boundary points per tile, including
+the ABCD2 DBP-alone-meets-threshold path and the 4Ts 0-2 clamp.
+
 ## 6. Testing requirements
 
 For every tile with a `derivation` block, the test suite asserts:
