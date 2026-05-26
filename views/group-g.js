@@ -4325,6 +4325,8 @@ export const renderers = {
       ]));
     }
     const o = out(); root.appendChild(o);
+    const deriv = renderDerivation(META.barthel);
+    if (deriv) root.appendChild(deriv);
     const run = () => safe(o, () => {
       const input = {};
       for (const [, id, key] of items) input[key] = Number(document.getElementById(id).value);
@@ -4333,6 +4335,7 @@ export const renderers = {
       o.appendChild(el('p', { text: r.text }));
       const lines = items.map(([label, , key]) => `${label}: ${r.parts[key]}`).join('; ');
       o.appendChild(el('p', { class: 'muted', text: `Per-item: ${lines}.` }));
+      if (deriv) updateDerivationSteps(deriv, META.barthel, input);
     });
     items.forEach(([, id]) => document.getElementById(id).addEventListener('change', run));
     run();
@@ -4500,12 +4503,15 @@ export const renderers = {
     ];
     for (const [label, id] of items) root.appendChild(checkbox(label, id));
     const o = out(); root.appendChild(o);
+    const deriv = renderDerivation(META.rosier);
+    if (deriv) root.appendChild(deriv);
     const run = () => safe(o, () => {
       const input = {};
       for (const [, id, key] of items) input[key] = checked(id);
       const r = S4.rosier(input);
       o.appendChild(el('h2', { text: `ROSIER ${r.score} (${r.band})` }));
       o.appendChild(el('p', { text: r.text }));
+      if (deriv) updateDerivationSteps(deriv, META.rosier, input);
     });
     items.forEach(([, id]) => document.getElementById(id).addEventListener('change', run));
     run();
@@ -4546,12 +4552,15 @@ export const renderers = {
       root.appendChild(rangeField(`${label} (0 normal - 1 abnormal)`, id, 0, 1, 0));
     }
     const o = out(); root.appendChild(o);
+    const deriv = renderDerivation(META.cpss);
+    if (deriv) root.appendChild(deriv);
     const run = () => safe(o, () => {
       const input = {};
       for (const [, id, key] of items) input[key] = Math.trunc(nv(id));
       const r = S4.cpss(input);
       o.appendChild(el('h2', { text: `CPSS: ${r.band} (${r.abnormalCount} of 3 abnormal)` }));
       o.appendChild(el('p', { text: r.text }));
+      if (deriv) updateDerivationSteps(deriv, META.cpss, input);
     });
     items.forEach(([, id]) => document.getElementById(id).addEventListener('input', run));
     run();
@@ -4568,12 +4577,15 @@ export const renderers = {
       root.appendChild(rangeField(label, id, 0, max, 0));
     }
     const o = out(); root.appendChild(o);
+    const deriv = renderDerivation(META.lams);
+    if (deriv) root.appendChild(deriv);
     const run = () => safe(o, () => {
       const input = {};
       for (const [, id, key] of items) input[key] = Math.trunc(nv(id));
       const r = S4.lams(input);
       o.appendChild(el('h2', { text: `LAMS ${r.score} of 5 (${r.band})` }));
       o.appendChild(el('p', { text: r.text }));
+      if (deriv) updateDerivationSteps(deriv, META.lams, input);
     });
     items.forEach(([, id]) => document.getElementById(id).addEventListener('input', run));
     run();

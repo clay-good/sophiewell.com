@@ -6,6 +6,34 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v48 wave 48-3b — Barthel, ROSIER, CPSS, LAMS)
+
+Four more rehab / stroke-recognition derivation blocks. No
+infrastructure changes.
+
+- **Barthel Index** (`barthel`, Mahoney 1965 + Shah 1989 bands):
+  10 weighted ADL items with published closed-value sets per
+  item (0/5/10 or 0/5/10/15); total 0-100.
+- **ROSIER** (`rosier`, Nor 2005): 7 binary items with mixed
+  +1 / −1 weights — two stroke-mimic items subtract, five
+  focal-deficit items add. Range −2 to +5.
+- **CPSS** (`cpss`, Kothari 1999): 3 binary items. The CPSS
+  "score" is the count of abnormal items (positive screen at
+  ≥1); the derivation block's components sum equals
+  `cpss().abnormalCount` (the function returns `abnormalCount`
+  rather than `score`).
+- **LAMS** (`lams`, Llanes 2004 + Nazliel 2008 LVO threshold):
+  3 motor items (range 0-5), LVO threshold ≥4.
+
+4 new provenance logs under `docs/audits/v48/`. 13 new unit
+tests covering boundary points per tile, including the ROSIER
+mimic-subtraction path that exercises the negative-points
+component branch in `lib/derivation.js`.
+
+Verified: `npm run lint`, `npm run test`, `npm run sbom`, and
+`npm run build` are all green. Test count 1523 (was 1504;
++19). **Catalog count 254, unchanged.**
+
 ### Added (spec-v48 wave 48-3a — Braden, Morse Falls, Lawton IADL, Katz ADL)
 
 Opens spec-v48 wave 48-3 (nursing-floor / rehab / behavioral

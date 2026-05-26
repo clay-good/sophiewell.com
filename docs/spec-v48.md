@@ -348,6 +348,28 @@ Wave 48-3 remains open. PHQ-9 / GAD-7 (which use the
 pattern) are candidates for a later wave that touches
 `lib/screener.js`.
 
+#### Wave 48-3b (shipped 2026-05-25) — Barthel, ROSIER, CPSS, LAMS
+
+Four more rehab / stroke-recognition tiles. All ship as
+additive blocks; no infrastructure changes.
+
+- **Barthel Index** (Mahoney 1965 + Shah 1989 bands): 10
+  weighted ADL items with published closed-value sets per
+  item (0/5/10 or 0/5/10/15); total 0-100.
+- **ROSIER** (Nor 2005): 7 binary items with mixed +1 / −1
+  weights (2 stroke-mimic items subtract; 5 focal-deficit
+  items add). Range −2 to +5.
+- **CPSS** (Kothari 1999): 3 binary items; "score" is the
+  count of abnormal items (positive screen at ≥1). The
+  derivation block's components sum equals
+  `cpss().abnormalCount` (the function returns
+  `abnormalCount`, not `score`).
+- **LAMS** (Llanes 2004 + Nazliel 2008 threshold): 3 motor
+  items (range 0-5), LVO threshold ≥4.
+
+13 new unit tests covering boundary points per tile,
+including the ROSIER mimic-subtraction path.
+
 ### Wave 48-4+ — Long-tail
 
 Backfill the remaining tiles in subsequent maintenance waves. A

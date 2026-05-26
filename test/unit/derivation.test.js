@@ -4,7 +4,7 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { META } from '../../lib/meta.js';
 import { wellsPe, gcs, wellsDvt, chadsVasc, hasBled } from '../../lib/clinical.js';
-import { qsofa, timi, heart, perc, sofa, news2, meld30, curb65, centor, mcisaac, ciwaAr, fourScore, bisap, cows, icdsc, fourAt, psi, cpot, bps, braden, morseFalls, lawtonIadl, katzAdl } from '../../lib/scoring-v4.js';
+import { qsofa, timi, heart, perc, sofa, news2, meld30, curb65, centor, mcisaac, ciwaAr, fourScore, bisap, cows, icdsc, fourAt, psi, cpot, bps, braden, morseFalls, lawtonIadl, katzAdl, barthel, rosier, cpss, lams } from '../../lib/scoring-v4.js';
 
 // --- 1. Schema completeness ---------------------------------------------
 
@@ -16,7 +16,8 @@ const WAVE_48_2A_TILES = ['curb-65', 'centor', 'ciwa', 'four-score'];
 const WAVE_48_2B_TILES = ['ranson-bisap', 'cows', 'icdsc', '4at'];
 const WAVE_48_2C_TILES = ['psi', 'cpot', 'bps', 'guss'];
 const WAVE_48_3A_TILES = ['braden', 'morse-falls', 'lawton-iadl', 'katz-adl'];
-const ALL_DERIVATION_TILES = [...WAVE_48_1A_TILES, ...WAVE_48_1B_TILES, ...WAVE_48_1C_TILES, ...WAVE_48_2A_TILES, ...WAVE_48_2B_TILES, ...WAVE_48_2C_TILES, ...WAVE_48_3A_TILES];
+const WAVE_48_3B_TILES = ['barthel', 'rosier', 'cpss', 'lams'];
+const ALL_DERIVATION_TILES = [...WAVE_48_1A_TILES, ...WAVE_48_1B_TILES, ...WAVE_48_1C_TILES, ...WAVE_48_2A_TILES, ...WAVE_48_2B_TILES, ...WAVE_48_2C_TILES, ...WAVE_48_3A_TILES, ...WAVE_48_3B_TILES];
 
 for (const id of ALL_DERIVATION_TILES) {
   test(`derivation schema: ${id} has all required fields`, () => {
@@ -791,6 +792,114 @@ test('katz-adl components sum equals katzAdl() (severe 2)', () => {
   const r = katzAdl(inputs);
   assert.equal(sumComponents(META['katz-adl'], inputs), r.score);
   assert.equal(r.score, 2);
+});
+
+// --- Wave 48-3b: Barthel, ROSIER, CPSS, LAMS ----------------------------
+
+test('barthel components sum equals barthel() (full independence 100)', () => {
+  const inputs = {
+    feeding: 10, bathing: 5, grooming: 5, dressing: 10,
+    bowel: 10, bladder: 10, toilet: 10,
+    transfers: 15, mobility: 15, stairs: 10,
+  };
+  const r = barthel(inputs);
+  assert.equal(sumComponents(META.barthel, inputs), r.score);
+  assert.equal(r.score, 100);
+});
+
+test('barthel components sum equals barthel() (total dependency 0)', () => {
+  const inputs = {
+    feeding: 0, bathing: 0, grooming: 0, dressing: 0,
+    bowel: 0, bladder: 0, toilet: 0,
+    transfers: 0, mobility: 0, stairs: 0,
+  };
+  const r = barthel(inputs);
+  assert.equal(sumComponents(META.barthel, inputs), r.score);
+  assert.equal(r.score, 0);
+});
+
+test('barthel components sum equals barthel() (moderate dependency 70)', () => {
+  // 10+5+5+5+5+5+10+10+15+0 = 70
+  const inputs = {
+    feeding: 10, bathing: 5, grooming: 5, dressing: 5,
+    bowel: 5, bladder: 5, toilet: 10,
+    transfers: 10, mobility: 15, stairs: 0,
+  };
+  const r = barthel(inputs);
+  assert.equal(sumComponents(META.barthel, inputs), r.score);
+  assert.equal(r.score, 70);
+});
+
+test('rosier components sum equals rosier() (zero baseline)', () => {
+  const inputs = {
+    locSyncope: false, seizure: false,
+    facialWeakness: false, armWeakness: false, legWeakness: false,
+    speechDisturbance: false, visualFieldDefect: false,
+  };
+  const r = rosier(inputs);
+  assert.equal(sumComponents(META.rosier, inputs), r.score);
+  assert.equal(r.score, 0);
+});
+
+test('rosier components sum equals rosier() (max 5, all focal-deficit items)', () => {
+  const inputs = {
+    locSyncope: false, seizure: false,
+    facialWeakness: true, armWeakness: true, legWeakness: true,
+    speechDisturbance: true, visualFieldDefect: true,
+  };
+  const r = rosier(inputs);
+  assert.equal(sumComponents(META.rosier, inputs), r.score);
+  assert.equal(r.score, 5);
+});
+
+test('rosier components sum equals rosier() (mimic items subtract)', () => {
+  // Both mimic items (-2) plus 1 focal (+1) = -1
+  const inputs = {
+    locSyncope: true, seizure: true,
+    facialWeakness: true, armWeakness: false, legWeakness: false,
+    speechDisturbance: false, visualFieldDefect: false,
+  };
+  const r = rosier(inputs);
+  assert.equal(sumComponents(META.rosier, inputs), r.score);
+  assert.equal(r.score, -1);
+});
+
+test('cpss components sum equals cpss() abnormalCount (zero)', () => {
+  const inputs = { facialDroop: 0, armDrift: 0, abnormalSpeech: 0 };
+  const r = cpss(inputs);
+  // cpss returns abnormalCount, not score
+  assert.equal(sumComponents(META.cpss, inputs), r.abnormalCount);
+  assert.equal(r.abnormalCount, 0);
+});
+
+test('cpss components sum equals cpss() abnormalCount (3 of 3)', () => {
+  const inputs = { facialDroop: 1, armDrift: 1, abnormalSpeech: 1 };
+  const r = cpss(inputs);
+  assert.equal(sumComponents(META.cpss, inputs), r.abnormalCount);
+  assert.equal(r.abnormalCount, 3);
+});
+
+test('lams components sum equals lams() (zero)', () => {
+  const inputs = { facialDroop: 0, armDrift: 0, gripStrength: 0 };
+  const r = lams(inputs);
+  assert.equal(sumComponents(META.lams, inputs), r.score);
+  assert.equal(r.score, 0);
+});
+
+test('lams components sum equals lams() (LVO cutoff 4)', () => {
+  // facialDroop 1 + armDrift 1 + gripStrength 2 = 4
+  const inputs = { facialDroop: 1, armDrift: 1, gripStrength: 2 };
+  const r = lams(inputs);
+  assert.equal(sumComponents(META.lams, inputs), r.score);
+  assert.equal(r.score, 4);
+  assert.equal(r.lvoLikely, true);
+});
+
+test('lams components sum equals lams() (max 5)', () => {
+  const inputs = { facialDroop: 1, armDrift: 2, gripStrength: 2 };
+  const r = lams(inputs);
+  assert.equal(sumComponents(META.lams, inputs), r.score);
+  assert.equal(r.score, 5);
 });
 
 // --- 4. Renderer behavior (jsdom-free smoke via stub) -------------------
