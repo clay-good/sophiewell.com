@@ -1611,8 +1611,10 @@ export const renderers = {
       el('input', { id: 'hs-prior', type: 'number', step: '1', min: '0', value: '0' }),
     ]));
     const o = out(); root.appendChild(o);
+    const deriv = renderDerivation(META['hospital-score']);
+    if (deriv) root.appendChild(deriv);
     const run = () => safe(o, () => {
-      const r = S4.hospitalScore({
+      const inputs = {
         hgbLt12: checked('hs-hgb'),
         oncologyDischarge: checked('hs-onc'),
         sodiumLt135: checked('hs-na'),
@@ -1620,12 +1622,14 @@ export const renderers = {
         urgentAdmission: checked('hs-urg'),
         priorAdmissions12mo: nv('hs-prior'),
         losGe5: checked('hs-los'),
-      });
+      };
+      const r = S4.hospitalScore(inputs);
       o.appendChild(el('h2', { text: `HOSPITAL ${r.score}` }));
       o.appendChild(el('p', { text: r.band }));
       const p = r.parts;
       o.appendChild(el('p', { class: 'muted',
         text: `Per-parameter: hgb ${p.hgbLt12}, onc ${p.oncologyDischarge}, Na ${p.sodiumLt135}, procedure ${p.anyProcedure}, urgent ${p.urgentAdmission}, prior admissions ${p.priorAdmissions}, LOS ${p.losGe5}.` }));
+      if (deriv) updateDerivationSteps(deriv, META['hospital-score'], inputs);
     });
     document.querySelectorAll('input').forEach((n) => n.addEventListener(n.type === 'checkbox' ? 'change' : 'input', run));
     run();
@@ -2741,8 +2745,10 @@ export const renderers = {
     ]));
     for (const [l, id] of cb) root.appendChild(checkbox(l, id));
     const o = out(); root.appendChild(o);
+    const deriv = renderDerivation(META['improve-bleeding']);
+    if (deriv) root.appendChild(deriv);
     const run = () => safe(o, () => {
-      const r = S4.improveBleeding({
+      const inputs = {
         activeUlcer: checked('ib-ulcer'),
         bleeding3moPrior: checked('ib-bleed3'),
         plateletLt50: checked('ib-plt'),
@@ -2754,10 +2760,12 @@ export const renderers = {
         rheumaticDisease: checked('ib-rheum'),
         currentCancer: checked('ib-cancer'),
         male: checked('ib-male'),
-      });
+      };
+      const r = S4.improveBleeding(inputs);
       const scoreText = Number.isInteger(r.score) ? String(r.score) : r.score.toFixed(1);
       o.appendChild(el('h2', { text: `IMPROVE-Bleeding ${scoreText}` }));
       o.appendChild(el('p', { text: r.band }));
+      if (deriv) updateDerivationSteps(deriv, META['improve-bleeding'], inputs);
     });
     ['ib-age', 'ib-renal'].forEach((id) => document.getElementById(id).addEventListener('change', run));
     cb.forEach(([, id]) => document.getElementById(id).addEventListener('change', run));
@@ -2874,15 +2882,19 @@ export const renderers = {
     ];
     for (const [l, id] of items) root.appendChild(checkbox(l, id));
     const o = out(); root.appendChild(o);
+    const deriv = renderDerivation(META.herdoo2);
+    if (deriv) root.appendChild(deriv);
     const run = () => safe(o, () => {
-      const r = S4.herdoo2({
+      const inputs = {
         legSignsPostThrombotic: checked('hd-legs'),
         dDimerGte250OnAnticoag: checked('hd-dd'),
         bmiGte30: checked('hd-bmi'),
         ageGte65: checked('hd-age'),
-      });
+      };
+      const r = S4.herdoo2(inputs);
       o.appendChild(el('h2', { text: `HERDOO2 ${r.score} of 4` }));
       o.appendChild(el('p', { text: r.band }));
+      if (deriv) updateDerivationSteps(deriv, META.herdoo2, inputs);
     });
     items.forEach(([, id]) => document.getElementById(id).addEventListener('change', run));
     run();
@@ -3976,24 +3988,32 @@ export const renderers = {
     for (const [l, id] of aldreteItems) root.appendChild(rangeField(l, id, 0, 2, 2));
     for (const [l, id] of padssItems) root.appendChild(rangeField(l, id, 0, 2, 2));
     const o = out(); root.appendChild(o);
+    const deriv = renderDerivation(META['aldrete-padss']);
+    if (deriv) root.appendChild(deriv);
+    const derivPadss = renderDerivation({ derivation: META['aldrete-padss'].derivationPadss });
+    if (derivPadss) root.appendChild(derivPadss);
     const run = () => safe(o, () => {
-      const a = S4.aldrete({
+      const aInputs = {
         activity:        nv('ap-al-act'),
         respiration:     nv('ap-al-resp'),
         circulation:     nv('ap-al-circ'),
         consciousness:   nv('ap-al-cons'),
         oxygenSaturation: nv('ap-al-o2'),
-      });
-      const p = S4.padss({
+      };
+      const a = S4.aldrete(aInputs);
+      const pInputs = {
         vitalSigns:       nv('ap-pd-vs'),
         ambulation:       nv('ap-pd-amb'),
         nauseaVomiting:   nv('ap-pd-nv'),
         pain:             nv('ap-pd-pain'),
         surgicalBleeding: nv('ap-pd-bld'),
-      });
+      };
+      const p = S4.padss(pInputs);
       o.appendChild(el('h2', { text: `Aldrete ${a.score} of 10 / PADSS ${p.score} of 10` }));
       o.appendChild(el('p', { text: a.band }));
       o.appendChild(el('p', { text: p.band }));
+      if (deriv) updateDerivationSteps(deriv, META['aldrete-padss'], aInputs);
+      if (derivPadss) updateDerivationSteps(derivPadss, { derivation: META['aldrete-padss'].derivationPadss }, pInputs);
     });
     [...aldreteItems, ...padssItems].forEach(([, id]) => document.getElementById(id).addEventListener('input', run));
     run();

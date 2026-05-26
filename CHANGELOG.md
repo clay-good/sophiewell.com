@@ -6,6 +6,39 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v48 wave 48-4f — HERDOO2, HOSPITAL, IMPROVE-Bleeding, Aldrete/PADSS)
+
+Four more long-tail derivation blocks across women-only
+VTE-recurrence stratification, hospital-readmission risk,
+medical-inpatient bleeding risk, and the operational
+PACU/ambulatory-surgery discharge pair.
+
+- **HERDOO2** (`herdoo2`, Rodger 2017): women only, 4 binary
+  criteria, range 0-4. Bands: 0-1 safe to discontinue
+  anticoagulation; >=2 continue.
+- **HOSPITAL Score** (`hospital-score`, Donze 2013): 7 items
+  including a prior-admissions banded callback (0-2: 0 / 3-4: +2
+  / >=5: +5). Bands: 0-4 low ~5.8%, 5-6 intermediate ~11.9%,
+  >=7 high ~22.8% 30-day potentially-avoidable readmission.
+- **IMPROVE-Bleeding** (`improve-bleeding`, Decousus 2011): 11
+  criteria with mixed boolean and banded weights (age and renal
+  string-enum callbacks), range 0-30.5. Cutoff >=7 = high
+  bleeding risk.
+- **Aldrete / PADSS** (`aldrete-padss`, Aldrete 1995 + Chung
+  1995): dual-block tile following the qsofa-sofa / centor
+  precedent — primary `derivation` for modified Aldrete and
+  sibling `derivationPadss` for PADSS, each 5 items × 0-2,
+  range 0-10, cutoff >=9.
+
+4 new provenance logs under `docs/audits/v48/`. 17 new unit
+tests covering boundary points per tile, including the HOSPITAL
+prior-admissions banded callback (0 / 3 / 5), the
+IMPROVE-Bleeding age and renal three-level string callbacks,
+and the Aldrete 0-2 clamp on out-of-range inputs.
+
+Verified: `npm run lint`, `npm run test`, `npm run sbom`, and
+`npm run build` are all green. **Catalog count 254, unchanged.**
+
 ### Added (spec-v48 wave 48-4e — ICH Score, IMPROVE-VTE, Khorana, DASH)
 
 Four more long-tail derivation blocks spanning intracerebral

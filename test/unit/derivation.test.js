@@ -4,7 +4,7 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { META } from '../../lib/meta.js';
 import { wellsPe, gcs, wellsDvt, chadsVasc, hasBled } from '../../lib/clinical.js';
-import { qsofa, timi, heart, perc, sofa, news2, meld30, curb65, centor, mcisaac, ciwaAr, fourScore, bisap, cows, icdsc, fourAt, psi, cpot, bps, braden, morseFalls, lawtonIadl, katzAdl, barthel, rosier, cpss, lams, race, sos, flacc, hendrichII, atriaBleeding, orbitBleeding, painad, miniCog, mews, comfortB, wat1, stopBang, fourTs, ichScore, improveVte, khorana, dashVte } from '../../lib/scoring-v4.js';
+import { qsofa, timi, heart, perc, sofa, news2, meld30, curb65, centor, mcisaac, ciwaAr, fourScore, bisap, cows, icdsc, fourAt, psi, cpot, bps, braden, morseFalls, lawtonIadl, katzAdl, barthel, rosier, cpss, lams, race, sos, flacc, hendrichII, atriaBleeding, orbitBleeding, painad, miniCog, mews, comfortB, wat1, stopBang, fourTs, ichScore, improveVte, khorana, dashVte, herdoo2, hospitalScore, improveBleeding, aldrete, padss } from '../../lib/scoring-v4.js';
 import { nihss } from '../../lib/clinical.js';
 import { rcri, abcd2 } from '../../lib/clinical-v5.js';
 
@@ -26,7 +26,8 @@ const WAVE_48_4B_TILES = ['orbit-bleeding', 'painad', 'cage', 'mini-cog'];
 const WAVE_48_4C_TILES = ['epds', 'mews', 'comfort-b', 'wat-1'];
 const WAVE_48_4D_TILES = ['stop-bang', 'four-ts', 'abcd2', 'rcri'];
 const WAVE_48_4E_TILES = ['ich-score', 'improve-vte', 'khorana', 'dash-vte'];
-const ALL_DERIVATION_TILES = [...WAVE_48_1A_TILES, ...WAVE_48_1B_TILES, ...WAVE_48_1C_TILES, ...WAVE_48_2A_TILES, ...WAVE_48_2B_TILES, ...WAVE_48_2C_TILES, ...WAVE_48_3A_TILES, ...WAVE_48_3B_TILES, ...WAVE_48_3C_TILES, ...WAVE_48_3D_TILES, ...WAVE_48_4A_TILES, ...WAVE_48_4B_TILES, ...WAVE_48_4C_TILES, ...WAVE_48_4D_TILES, ...WAVE_48_4E_TILES];
+const WAVE_48_4F_TILES = ['herdoo2', 'hospital-score', 'improve-bleeding', 'aldrete-padss'];
+const ALL_DERIVATION_TILES = [...WAVE_48_1A_TILES, ...WAVE_48_1B_TILES, ...WAVE_48_1C_TILES, ...WAVE_48_2A_TILES, ...WAVE_48_2B_TILES, ...WAVE_48_2C_TILES, ...WAVE_48_3A_TILES, ...WAVE_48_3B_TILES, ...WAVE_48_3C_TILES, ...WAVE_48_3D_TILES, ...WAVE_48_4A_TILES, ...WAVE_48_4B_TILES, ...WAVE_48_4C_TILES, ...WAVE_48_4D_TILES, ...WAVE_48_4E_TILES, ...WAVE_48_4F_TILES];
 
 for (const id of ALL_DERIVATION_TILES) {
   test(`derivation schema: ${id} has all required fields`, () => {
@@ -1559,6 +1560,136 @@ test('dash-vte hormone alone yields negative -2', () => {
   const r = dashVte(inputs);
   assert.equal(sumComponents(META['dash-vte'], inputs), r.score);
   assert.equal(r.score, -2);
+});
+
+// --- Wave 48-4f: HERDOO2, HOSPITAL, IMPROVE-Bleeding, Aldrete/PADSS -----
+
+test('herdoo2 components sum equals herdoo2() (zero)', () => {
+  const inputs = { legSignsPostThrombotic: false, dDimerGte250OnAnticoag: false, bmiGte30: false, ageGte65: false };
+  const r = herdoo2(inputs);
+  assert.equal(sumComponents(META.herdoo2, inputs), r.score);
+  assert.equal(r.score, 0);
+});
+
+test('herdoo2 components sum equals herdoo2() (1 = still low band)', () => {
+  const inputs = { legSignsPostThrombotic: false, dDimerGte250OnAnticoag: true, bmiGte30: false, ageGte65: false };
+  const r = herdoo2(inputs);
+  assert.equal(sumComponents(META.herdoo2, inputs), r.score);
+  assert.equal(r.score, 1);
+});
+
+test('herdoo2 components sum equals herdoo2() (2 = continue band)', () => {
+  const inputs = { legSignsPostThrombotic: false, dDimerGte250OnAnticoag: true, bmiGte30: true, ageGte65: false };
+  const r = herdoo2(inputs);
+  assert.equal(sumComponents(META.herdoo2, inputs), r.score);
+  assert.equal(r.score, 2);
+});
+
+test('herdoo2 components sum equals herdoo2() (max 4)', () => {
+  const inputs = { legSignsPostThrombotic: true, dDimerGte250OnAnticoag: true, bmiGte30: true, ageGte65: true };
+  const r = herdoo2(inputs);
+  assert.equal(sumComponents(META.herdoo2, inputs), r.score);
+  assert.equal(r.score, 4);
+});
+
+test('hospital-score components sum equals hospitalScore() (zero, low band)', () => {
+  const inputs = { hgbLt12: false, oncologyDischarge: false, sodiumLt135: false, anyProcedure: false, urgentAdmission: false, priorAdmissions12mo: 0, losGe5: false };
+  const r = hospitalScore(inputs);
+  assert.equal(sumComponents(META['hospital-score'], inputs), r.score);
+  assert.equal(r.score, 0);
+});
+
+test('hospital-score components sum equals hospitalScore() (intermediate, 5)', () => {
+  // onc (2) + LOS (2) + Na (1) = 5
+  const inputs = { hgbLt12: false, oncologyDischarge: true, sodiumLt135: true, anyProcedure: false, urgentAdmission: false, priorAdmissions12mo: 0, losGe5: true };
+  const r = hospitalScore(inputs);
+  assert.equal(sumComponents(META['hospital-score'], inputs), r.score);
+  assert.equal(r.score, 5);
+});
+
+test('hospital-score prior-admissions callback bands (0 / 3 / 5)', () => {
+  for (const [prior, expected] of [[0, 0], [2, 0], [3, 2], [4, 2], [5, 5], [10, 5]]) {
+    const inputs = { hgbLt12: false, oncologyDischarge: false, sodiumLt135: false, anyProcedure: false, urgentAdmission: false, priorAdmissions12mo: prior, losGe5: false };
+    assert.equal(sumComponents(META['hospital-score'], inputs), expected, `prior=${prior}`);
+    assert.equal(hospitalScore(inputs).score, expected, `prior=${prior}`);
+  }
+});
+
+test('improve-bleeding components sum equals improveBleeding() (zero)', () => {
+  const inputs = { activeUlcer: false, bleeding3moPrior: false, plateletLt50: false, age: '<40', hepaticFailure: false, renalFailure: 'none', icuAdmission: false, centralVenousCatheter: false, rheumaticDisease: false, currentCancer: false, male: false };
+  const r = improveBleeding(inputs);
+  assert.equal(sumComponents(META['improve-bleeding'], inputs), r.score);
+  assert.equal(r.score, 0);
+});
+
+test('improve-bleeding components sum equals improveBleeding() (high band, ulcer + bleed3mo -> 8.5)', () => {
+  const inputs = { activeUlcer: true, bleeding3moPrior: true, plateletLt50: false, age: '<40', hepaticFailure: false, renalFailure: 'none', icuAdmission: false, centralVenousCatheter: false, rheumaticDisease: false, currentCancer: false, male: false };
+  const r = improveBleeding(inputs);
+  assert.equal(sumComponents(META['improve-bleeding'], inputs), r.score);
+  assert.equal(r.score, 8.5);
+});
+
+test('improve-bleeding age banded callback (<40 / 40-84 / >=85)', () => {
+  for (const [age, expected] of [['<40', 0], ['40-84', 1.5], ['>=85', 3.5]]) {
+    const inputs = { activeUlcer: false, bleeding3moPrior: false, plateletLt50: false, age, hepaticFailure: false, renalFailure: 'none', icuAdmission: false, centralVenousCatheter: false, rheumaticDisease: false, currentCancer: false, male: false };
+    assert.equal(sumComponents(META['improve-bleeding'], inputs), expected, `age=${age}`);
+    assert.equal(improveBleeding(inputs).score, expected, `age=${age}`);
+  }
+});
+
+test('improve-bleeding renal banded callback (none / moderate / severe)', () => {
+  for (const [renal, expected] of [['none', 0], ['moderate', 1], ['severe', 2.5]]) {
+    const inputs = { activeUlcer: false, bleeding3moPrior: false, plateletLt50: false, age: '<40', hepaticFailure: false, renalFailure: renal, icuAdmission: false, centralVenousCatheter: false, rheumaticDisease: false, currentCancer: false, male: false };
+    assert.equal(sumComponents(META['improve-bleeding'], inputs), expected, `renal=${renal}`);
+    assert.equal(improveBleeding(inputs).score, expected, `renal=${renal}`);
+  }
+});
+
+test('aldrete-padss Aldrete components sum equals aldrete() (zero)', () => {
+  const inputs = { activity: 0, respiration: 0, circulation: 0, consciousness: 0, oxygenSaturation: 0 };
+  const r = aldrete(inputs);
+  assert.equal(sumComponents(META['aldrete-padss'], inputs), r.score);
+  assert.equal(r.score, 0);
+});
+
+test('aldrete-padss Aldrete components sum equals aldrete() (max 10)', () => {
+  const inputs = { activity: 2, respiration: 2, circulation: 2, consciousness: 2, oxygenSaturation: 2 };
+  const r = aldrete(inputs);
+  assert.equal(sumComponents(META['aldrete-padss'], inputs), r.score);
+  assert.equal(r.score, 10);
+});
+
+test('aldrete-padss Aldrete clamps out-of-range values to 0-2', () => {
+  // Out-of-range inputs should clamp into [0, 2].
+  const inputs = { activity: -1, respiration: 5, circulation: 2, consciousness: 1, oxygenSaturation: 2 };
+  const r = aldrete(inputs);
+  assert.equal(sumComponents(META['aldrete-padss'], inputs), r.score);
+  // -1 -> 0; 5 -> 2; 2; 1; 2 = 7
+  assert.equal(r.score, 7);
+});
+
+const PADSS_META = { derivation: META['aldrete-padss'].derivationPadss };
+
+test('aldrete-padss PADSS components sum equals padss() (zero)', () => {
+  const inputs = { vitalSigns: 0, ambulation: 0, nauseaVomiting: 0, pain: 0, surgicalBleeding: 0 };
+  const r = padss(inputs);
+  assert.equal(sumComponents(PADSS_META, inputs), r.score);
+  assert.equal(r.score, 0);
+});
+
+test('aldrete-padss PADSS components sum equals padss() (max 10)', () => {
+  const inputs = { vitalSigns: 2, ambulation: 2, nauseaVomiting: 2, pain: 2, surgicalBleeding: 2 };
+  const r = padss(inputs);
+  assert.equal(sumComponents(PADSS_META, inputs), r.score);
+  assert.equal(r.score, 10);
+});
+
+test('aldrete-padss PADSS components sum equals padss() (discharge cutoff at 9)', () => {
+  const inputs = { vitalSigns: 2, ambulation: 2, nauseaVomiting: 2, pain: 2, surgicalBleeding: 1 };
+  const r = padss(inputs);
+  assert.equal(sumComponents(PADSS_META, inputs), r.score);
+  assert.equal(r.score, 9);
+  assert.equal(r.readyForDischarge, true);
 });
 
 // --- 4. Renderer behavior (jsdom-free smoke via stub) -------------------
