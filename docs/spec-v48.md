@@ -585,6 +585,34 @@ and Charlson banded callbacks, the HEMORR2HAGES +2 Rebleeding
 weight, the DAPT subtractive age band, and the MUST BMI /
 weight-loss three-level callbacks.
 
+#### Wave 48-4h (shipped 2026-05-26) — CRB-65, ISTH DIC, PEWS, Alvarado/PAS
+
+Four more long-tail tiles spanning outpatient pneumonia
+severity, DIC coagulation scoring, pediatric early-warning
+deterioration, and the adult / pediatric appendicitis screen
+pair.
+
+- **CRB-65** (`crb65`, Lim 2003): 4 binary criteria, range 0-4.
+  Bands: 0 outpatient; 1-2 consider hospital; 3-4 urgent
+  hospital. Lab-free variant of CURB-65.
+- **ISTH overt DIC** (`isth-dic`, Taylor 2001): 4 lab components
+  with three-level banded callbacks (platelet, fibrin marker,
+  PT prolongation, fibrinogen); range 0-8. Gate (underlying
+  disorder present) surfaced but does not modify the sum.
+- **PEWS** (`pews`, Monaghan 2005): Brighton 3-subscale
+  pediatric early-warning score, each 0-3 (clamped); range 0-9.
+- **Alvarado / PAS** (`alvarado-pas`, Alvarado 1986 + Samuel
+  2002): dual-block tile following the `aldrete-padss`
+  precedent — primary `derivation` for Alvarado MANTRELS (8
+  items, range 0-10, two +2 weights) and sibling
+  `derivationPas` for the Pediatric Appendicitis Score (8
+  items, range 0-10, two +2 weights).
+
+4 new provenance logs under `docs/audits/v48/`. 19 new unit
+tests covering boundary points per tile, including the ISTH DIC
+platelet three-level banded callback, the PEWS 0-3 subscale
+clamp, and the Alvarado / PAS +2 weights firing correctly.
+
 ## 6. Testing requirements
 
 For every tile with a `derivation` block, the test suite asserts:

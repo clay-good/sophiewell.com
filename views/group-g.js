@@ -706,20 +706,28 @@ export const renderers = {
     ];
     for (const [l, id] of ps) root.appendChild(checkbox(l, id));
     const o = out(); root.appendChild(o);
+    const deriv = renderDerivation(META['alvarado-pas']);
+    if (deriv) root.appendChild(deriv);
+    const derivPas = renderDerivation({ derivation: META['alvarado-pas'].derivationPas });
+    if (derivPas) root.appendChild(derivPas);
     const run = () => safe(o, () => {
-      const a = S4.alvarado({
+      const aInputs = {
         migration: checked('a-mig'), anorexia: checked('a-anx'), nausea: checked('a-nau'),
         rlqTenderness: checked('a-rlq'), reboundTenderness: checked('a-reb'),
         elevatedTemp: checked('a-temp'), leukocytosis: checked('a-wbc'), leftShift: checked('a-shift'),
-      });
-      const p = S4.pediatricAppendicitis({
+      };
+      const a = S4.alvarado(aInputs);
+      const pInputs = {
         coughHopTenderness: checked('p-cough'), rlqTenderness: checked('p-rlq'),
         migration: checked('p-mig'), anorexia: checked('p-anx'),
         fever: checked('p-fev'), nausea: checked('p-nau'),
         leukocytosis: checked('p-wbc'), leftShift: checked('p-shift'),
-      });
+      };
+      const p = S4.pediatricAppendicitis(pInputs);
       o.appendChild(el('h2', { text: `Alvarado: ${a.score} - ${a.band}` }));
       o.appendChild(el('p', { text: `PAS: ${p.score} - ${p.band}` }));
+      if (deriv) updateDerivationSteps(deriv, META['alvarado-pas'], aInputs);
+      if (derivPas) updateDerivationSteps(derivPas, { derivation: META['alvarado-pas'].derivationPas }, pInputs);
     });
     [...av, ...ps].forEach(([, id]) => document.getElementById(id).addEventListener('change', run));
     run();
@@ -2437,15 +2445,19 @@ export const renderers = {
     root.appendChild(checkbox('SBP < 90 mmHg OR DBP <= 60 mmHg (1)', 'cr-bp'));
     root.appendChild(checkbox('Age >= 65 (1)', 'cr-age'));
     const o = out(); root.appendChild(o);
+    const deriv = renderDerivation(META.crb65);
+    if (deriv) root.appendChild(deriv);
     const run = () => safe(o, () => {
-      const r = S4.crb65({
+      const inputs = {
         confusion: checked('cr-conf'),
         rrGe30: checked('cr-rr'),
         sbpLt90OrDbpLe60: checked('cr-bp'),
         ageGe65: checked('cr-age'),
-      });
+      };
+      const r = S4.crb65(inputs);
       o.appendChild(el('h2', { text: `CRB-65 ${r.score}` }));
       o.appendChild(el('p', { text: r.band }));
+      if (deriv) updateDerivationSteps(deriv, META.crb65, inputs);
     });
     ['cr-conf', 'cr-rr', 'cr-bp', 'cr-age'].forEach((id) => document.getElementById(id).addEventListener('change', run));
     run();
@@ -2975,16 +2987,20 @@ export const renderers = {
       ]),
     ]));
     const o = out(); root.appendChild(o);
+    const deriv = renderDerivation(META['isth-dic']);
+    if (deriv) root.appendChild(deriv);
     const run = () => safe(o, () => {
-      const r = S4.isthDic({
+      const inputs = {
         underlyingDisorderPresent: checked('id-gate'),
         platelet: document.getElementById('id-plt').value,
         fibrinMarker: document.getElementById('id-fdp').value,
         ptProlonged: document.getElementById('id-pt').value,
         fibrinogen: document.getElementById('id-fib').value,
-      });
+      };
+      const r = S4.isthDic(inputs);
       o.appendChild(el('h2', { text: r.gateNotMet ? 'ISTH DIC (gate not met)' : `ISTH DIC ${r.score} of 8` }));
       o.appendChild(el('p', { text: r.band }));
+      if (deriv) updateDerivationSteps(deriv, META['isth-dic'], inputs);
     });
     ['id-gate', 'id-plt', 'id-fdp', 'id-pt', 'id-fib']
       .forEach((id) => document.getElementById(id).addEventListener('change', run));

@@ -337,16 +337,20 @@ export const renderers = {
     root.appendChild(subOpts('Cardiovascular'));
     root.appendChild(subOpts('Respiratory'));
     const o = out(); root.appendChild(o);
+    const deriv = renderDerivation(META.pews);
+    if (deriv) root.appendChild(deriv);
     const run = () => safe(o, () => {
-      const r = V5.pews({
+      const inputs = {
         behaviorScore: Number(str('Behavior')),
         cardiovascularScore: Number(str('Cardiovascular')),
         respiratoryScore: Number(str('Respiratory')),
-      });
+      };
+      const r = V5.pews(inputs);
       o.appendChild(el('ul', {}, [
         el('li', { text: `Total: ${r.total}` }),
         el('li', { text: r.band }),
       ]));
+      if (deriv) updateDerivationSteps(deriv, META.pews, inputs);
     });
     ['Behavior', 'Cardiovascular', 'Respiratory'].forEach((id) => document.getElementById(id).addEventListener('change', run));
   },

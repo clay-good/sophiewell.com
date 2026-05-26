@@ -6,6 +6,34 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v48 wave 48-4h — CRB-65, ISTH DIC, PEWS, Alvarado/PAS)
+
+Four more long-tail derivation blocks spanning outpatient
+pneumonia severity, DIC coagulation scoring, pediatric
+early-warning deterioration, and the adult / pediatric
+appendicitis screen pair.
+
+- **CRB-65** (`crb65`, Lim 2003): 4 binary criteria, range 0-4.
+  Lab-free outpatient-friendly variant of CURB-65.
+- **ISTH overt DIC** (`isth-dic`, Taylor 2001): 4 lab components
+  with three-level banded callbacks; range 0-8. Underlying-
+  disorder gate is surfaced in the tile but does not modify the
+  lab sum.
+- **PEWS** (`pews`, Monaghan 2005): Brighton 3-subscale
+  pediatric early-warning score, each 0-3 (clamped); range 0-9.
+- **Alvarado / PAS** (`alvarado-pas`, Alvarado 1986 + Samuel
+  2002): dual-block tile following the aldrete-padss precedent
+  — primary `derivation` (Alvarado MANTRELS) and sibling
+  `derivationPas` (Pediatric Appendicitis Score), each 8 items
+  with two +2 weights, range 0-10.
+
+4 new provenance logs under `docs/audits/v48/`. 19 new unit
+tests including the ISTH DIC platelet three-level callback, the
+PEWS 0-3 subscale clamp, and the Alvarado / PAS +2 weights.
+
+Verified: `npm run lint`, `npm run test`, `npm run sbom`, and
+`npm run build` are all green. **Catalog count 254, unchanged.**
+
 ### Added (spec-v48 wave 48-4g — LACE, HEMORR2HAGES, DAPT, MUST)
 
 Four more long-tail derivation blocks across hospital

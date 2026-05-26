@@ -4,7 +4,8 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { META } from '../../lib/meta.js';
 import { wellsPe, gcs, wellsDvt, chadsVasc, hasBled } from '../../lib/clinical.js';
-import { qsofa, timi, heart, perc, sofa, news2, meld30, curb65, centor, mcisaac, ciwaAr, fourScore, bisap, cows, icdsc, fourAt, psi, cpot, bps, braden, morseFalls, lawtonIadl, katzAdl, barthel, rosier, cpss, lams, race, sos, flacc, hendrichII, atriaBleeding, orbitBleeding, painad, miniCog, mews, comfortB, wat1, stopBang, fourTs, ichScore, improveVte, khorana, dashVte, herdoo2, hospitalScore, improveBleeding, aldrete, padss, lace, hemorr2hages, daptScore, mustNutrition } from '../../lib/scoring-v4.js';
+import { qsofa, timi, heart, perc, sofa, news2, meld30, curb65, centor, mcisaac, ciwaAr, fourScore, bisap, cows, icdsc, fourAt, psi, cpot, bps, braden, morseFalls, lawtonIadl, katzAdl, barthel, rosier, cpss, lams, race, sos, flacc, hendrichII, atriaBleeding, orbitBleeding, painad, miniCog, mews, comfortB, wat1, stopBang, fourTs, ichScore, improveVte, khorana, dashVte, herdoo2, hospitalScore, improveBleeding, aldrete, padss, lace, hemorr2hages, daptScore, mustNutrition, crb65, isthDic, alvarado, pediatricAppendicitis } from '../../lib/scoring-v4.js';
+import { pews as pewsV5 } from '../../lib/clinical-v5.js';
 import { nihss } from '../../lib/clinical.js';
 import { rcri, abcd2 } from '../../lib/clinical-v5.js';
 
@@ -28,7 +29,8 @@ const WAVE_48_4D_TILES = ['stop-bang', 'four-ts', 'abcd2', 'rcri'];
 const WAVE_48_4E_TILES = ['ich-score', 'improve-vte', 'khorana', 'dash-vte'];
 const WAVE_48_4F_TILES = ['herdoo2', 'hospital-score', 'improve-bleeding', 'aldrete-padss'];
 const WAVE_48_4G_TILES = ['lace', 'hemorr2hages', 'dapt-score', 'must-nutrition'];
-const ALL_DERIVATION_TILES = [...WAVE_48_1A_TILES, ...WAVE_48_1B_TILES, ...WAVE_48_1C_TILES, ...WAVE_48_2A_TILES, ...WAVE_48_2B_TILES, ...WAVE_48_2C_TILES, ...WAVE_48_3A_TILES, ...WAVE_48_3B_TILES, ...WAVE_48_3C_TILES, ...WAVE_48_3D_TILES, ...WAVE_48_4A_TILES, ...WAVE_48_4B_TILES, ...WAVE_48_4C_TILES, ...WAVE_48_4D_TILES, ...WAVE_48_4E_TILES, ...WAVE_48_4F_TILES, ...WAVE_48_4G_TILES];
+const WAVE_48_4H_TILES = ['crb65', 'isth-dic', 'pews', 'alvarado-pas'];
+const ALL_DERIVATION_TILES = [...WAVE_48_1A_TILES, ...WAVE_48_1B_TILES, ...WAVE_48_1C_TILES, ...WAVE_48_2A_TILES, ...WAVE_48_2B_TILES, ...WAVE_48_2C_TILES, ...WAVE_48_3A_TILES, ...WAVE_48_3B_TILES, ...WAVE_48_3C_TILES, ...WAVE_48_3D_TILES, ...WAVE_48_4A_TILES, ...WAVE_48_4B_TILES, ...WAVE_48_4C_TILES, ...WAVE_48_4D_TILES, ...WAVE_48_4E_TILES, ...WAVE_48_4F_TILES, ...WAVE_48_4G_TILES, ...WAVE_48_4H_TILES];
 
 for (const id of ALL_DERIVATION_TILES) {
   test(`derivation schema: ${id} has all required fields`, () => {
@@ -1802,6 +1804,123 @@ test('must-nutrition components sum equals mustNutrition() (high band, all max)'
   const r = mustNutrition(inputs);
   assert.equal(sumComponents(META['must-nutrition'], inputs), r.score);
   assert.equal(r.score, 6);
+});
+
+// --- Wave 48-4h: CRB-65, ISTH DIC, PEWS, Alvarado/PAS -------------------
+
+test('crb65 components sum equals crb65() (zero)', () => {
+  const inputs = { confusion: false, rrGe30: false, sbpLt90OrDbpLe60: false, ageGe65: false };
+  const r = crb65(inputs);
+  assert.equal(sumComponents(META.crb65, inputs), r.score);
+  assert.equal(r.score, 0);
+});
+
+test('crb65 components sum equals crb65() (intermediate, 2)', () => {
+  const inputs = { confusion: true, rrGe30: false, sbpLt90OrDbpLe60: false, ageGe65: true };
+  const r = crb65(inputs);
+  assert.equal(sumComponents(META.crb65, inputs), r.score);
+  assert.equal(r.score, 2);
+});
+
+test('crb65 components sum equals crb65() (max 4)', () => {
+  const inputs = { confusion: true, rrGe30: true, sbpLt90OrDbpLe60: true, ageGe65: true };
+  const r = crb65(inputs);
+  assert.equal(sumComponents(META.crb65, inputs), r.score);
+  assert.equal(r.score, 4);
+});
+
+test('isth-dic components sum equals isthDic() (zero, gate met)', () => {
+  const inputs = { underlyingDisorderPresent: true, platelet: '>100', fibrinMarker: 'none', ptProlonged: '<3s', fibrinogen: '>1' };
+  const r = isthDic(inputs);
+  assert.equal(sumComponents(META['isth-dic'], inputs), r.score);
+  assert.equal(r.score, 0);
+});
+
+test('isth-dic components sum equals isthDic() (overt-DIC band, 5)', () => {
+  // platelet <50 (2) + strong fibrin marker (3) = 5
+  const inputs = { underlyingDisorderPresent: true, platelet: '<50', fibrinMarker: 'strong', ptProlonged: '<3s', fibrinogen: '>1' };
+  const r = isthDic(inputs);
+  assert.equal(sumComponents(META['isth-dic'], inputs), r.score);
+  assert.equal(r.score, 5);
+  assert.equal(r.overtDic, true);
+});
+
+test('isth-dic components sum equals isthDic() (max 8)', () => {
+  const inputs = { underlyingDisorderPresent: true, platelet: '<50', fibrinMarker: 'strong', ptProlonged: '>6s', fibrinogen: '<=1' };
+  const r = isthDic(inputs);
+  assert.equal(sumComponents(META['isth-dic'], inputs), r.score);
+  assert.equal(r.score, 8);
+});
+
+test('isth-dic platelet banded callback (>100 / 50-100 / <50 -> 0 / 1 / 2)', () => {
+  for (const [plt, expected] of [['>100', 0], ['50-100', 1], ['<50', 2]]) {
+    const inputs = { underlyingDisorderPresent: true, platelet: plt, fibrinMarker: 'none', ptProlonged: '<3s', fibrinogen: '>1' };
+    assert.equal(sumComponents(META['isth-dic'], inputs), expected, `platelet=${plt}`);
+  }
+});
+
+test('pews components sum equals pews() (zero)', () => {
+  const inputs = { behaviorScore: 0, cardiovascularScore: 0, respiratoryScore: 0 };
+  const r = pewsV5(inputs);
+  assert.equal(sumComponents(META.pews, inputs), r.total);
+  assert.equal(r.total, 0);
+});
+
+test('pews components sum equals pews() (max 9)', () => {
+  const inputs = { behaviorScore: 3, cardiovascularScore: 3, respiratoryScore: 3 };
+  const r = pewsV5(inputs);
+  assert.equal(sumComponents(META.pews, inputs), r.total);
+  assert.equal(r.total, 9);
+});
+
+test('pews components clamp out-of-range values to 0-3', () => {
+  const inputs = { behaviorScore: -1, cardiovascularScore: 5, respiratoryScore: 2 };
+  // -1 -> 0; 5 -> 3; 2 -> 2 = 5
+  assert.equal(sumComponents(META.pews, inputs), 5);
+});
+
+test('alvarado-pas Alvarado components sum equals alvarado() (zero)', () => {
+  const inputs = { migration: false, anorexia: false, nausea: false, rlqTenderness: false, reboundTenderness: false, elevatedTemp: false, leukocytosis: false, leftShift: false };
+  const r = alvarado(inputs);
+  assert.equal(sumComponents(META['alvarado-pas'], inputs), r.score);
+  assert.equal(r.score, 0);
+});
+
+test('alvarado-pas Alvarado components sum equals alvarado() (max 10)', () => {
+  const inputs = { migration: true, anorexia: true, nausea: true, rlqTenderness: true, reboundTenderness: true, elevatedTemp: true, leukocytosis: true, leftShift: true };
+  const r = alvarado(inputs);
+  assert.equal(sumComponents(META['alvarado-pas'], inputs), r.score);
+  assert.equal(r.score, 10);
+});
+
+test('alvarado-pas Alvarado +2 weights fire correctly (RLQ + leuko -> 4)', () => {
+  const inputs = { migration: false, anorexia: false, nausea: false, rlqTenderness: true, reboundTenderness: false, elevatedTemp: false, leukocytosis: true, leftShift: false };
+  const r = alvarado(inputs);
+  assert.equal(sumComponents(META['alvarado-pas'], inputs), r.score);
+  assert.equal(r.score, 4);
+});
+
+const ALV_PAS_META = { derivation: META['alvarado-pas'].derivationPas };
+
+test('alvarado-pas PAS components sum equals pediatricAppendicitis() (zero)', () => {
+  const inputs = { coughHopTenderness: false, rlqTenderness: false, migration: false, anorexia: false, fever: false, nausea: false, leukocytosis: false, leftShift: false };
+  const r = pediatricAppendicitis(inputs);
+  assert.equal(sumComponents(ALV_PAS_META, inputs), r.score);
+  assert.equal(r.score, 0);
+});
+
+test('alvarado-pas PAS components sum equals pediatricAppendicitis() (max 10)', () => {
+  const inputs = { coughHopTenderness: true, rlqTenderness: true, migration: true, anorexia: true, fever: true, nausea: true, leukocytosis: true, leftShift: true };
+  const r = pediatricAppendicitis(inputs);
+  assert.equal(sumComponents(ALV_PAS_META, inputs), r.score);
+  assert.equal(r.score, 10);
+});
+
+test('alvarado-pas PAS +2 weights fire correctly (cough/hop + RLQ -> 4)', () => {
+  const inputs = { coughHopTenderness: true, rlqTenderness: true, migration: false, anorexia: false, fever: false, nausea: false, leukocytosis: false, leftShift: false };
+  const r = pediatricAppendicitis(inputs);
+  assert.equal(sumComponents(ALV_PAS_META, inputs), r.score);
+  assert.equal(r.score, 4);
 });
 
 // --- 4. Renderer behavior (jsdom-free smoke via stub) -------------------
