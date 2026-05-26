@@ -6,6 +6,34 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v48 wave 48-3a — Braden, Morse Falls, Lawton IADL, Katz ADL)
+
+Opens spec-v48 wave 48-3 (nursing-floor / rehab / behavioral
+extension) with four widely-used additive screens.
+
+- **Braden** (`braden`, Bergstrom 1987): 6 ordinal items 1-4
+  (friction caps at 3); range 6-23. Pressure-injury risk
+  stratification.
+- **Morse Falls** (`morse-falls`, Morse 1989): 6 weighted
+  items including three string-valued callbacks for the
+  tri-level select inputs (ambulatory aid, gait, mental
+  status). Range 0-125.
+- **Lawton IADL** (`lawton-iadl`, Lawton & Brody 1969): 8
+  binary items, range 0-8. Modern unisex form; the 1969
+  sex-stratified variant is NOT implemented by design.
+- **Katz ADL** (`katz-adl`, Katz 1963): 6 binary items, range
+  0-6. Sophie collapses the original A-G letter grading into
+  the contemporary discharge-planning band stratification.
+
+4 new provenance logs under `docs/audits/v48/`. 11 new unit
+tests covering multiple boundary points per tile, including
+the Braden friction clamp (1-3 not 1-4) and the Morse Falls
+tri-level string callbacks.
+
+Verified: `npm run lint`, `npm run test`, `npm run sbom`, and
+`npm run build` are all green. Test count 1504 (was 1486;
++18). **Catalog count 254, unchanged.**
+
 ### Added (spec-v48 wave 48-2c — PSI, CPOT, BPS, GUSS)
 
 Four more acute-care derivation blocks. Mix of additive,

@@ -3545,13 +3545,17 @@ export const renderers = {
     ];
     for (const [l, id, max] of items) root.appendChild(rangeField(l, id, 1, max, max));
     const o = out(); root.appendChild(o);
+    const deriv = renderDerivation(META.braden);
+    if (deriv) root.appendChild(deriv);
     const run = () => safe(o, () => {
-      const r = S4.braden({
+      const inputs = {
         sensory: nv('br-sens'), moisture: nv('br-moist'), activity: nv('br-act'),
         mobility: nv('br-mob'), nutrition: nv('br-nutr'), friction: nv('br-fric'),
-      });
+      };
+      const r = S4.braden(inputs);
       o.appendChild(el('h2', { text: `Braden ${r.score} (${r.band})` }));
       o.appendChild(el('p', { text: r.text }));
+      if (deriv) updateDerivationSteps(deriv, META.braden, inputs);
     });
     items.forEach(([, id]) => document.getElementById(id).addEventListener('input', run));
     run();
@@ -3589,17 +3593,21 @@ export const renderers = {
     ]);
     root.appendChild(msWrap);
     const o = out(); root.appendChild(o);
+    const deriv = renderDerivation(META['morse-falls']);
+    if (deriv) root.appendChild(deriv);
     const run = () => safe(o, () => {
-      const r = S4.morseFalls({
+      const inputs = {
         history: checked('mf-hist'),
         secondaryDx: checked('mf-sec'),
         ambulatoryAid: document.getElementById('mf-aid').value,
         ivOrLock: checked('mf-iv'),
         gait: document.getElementById('mf-gait').value,
         mentalStatus: document.getElementById('mf-ms').value,
-      });
+      };
+      const r = S4.morseFalls(inputs);
       o.appendChild(el('h2', { text: `Morse ${r.score} (${r.band})` }));
       o.appendChild(el('p', { text: r.text }));
+      if (deriv) updateDerivationSteps(deriv, META['morse-falls'], inputs);
     });
     const watchIds = ['mf-hist', 'mf-sec', 'mf-aid', 'mf-iv', 'mf-gait', 'mf-ms'];
     watchIds.forEach((id) => document.getElementById(id).addEventListener('change', run));
@@ -4344,6 +4352,8 @@ export const renderers = {
     ];
     for (const [label, id] of items) root.appendChild(rangeField(label, id, 0, 1, 1));
     const o = out(); root.appendChild(o);
+    const deriv = renderDerivation(META['lawton-iadl']);
+    if (deriv) root.appendChild(deriv);
     const run = () => safe(o, () => {
       const input = {};
       for (const [, id, key] of items) input[key] = Math.trunc(nv(id));
@@ -4353,6 +4363,7 @@ export const renderers = {
       const dep = items.filter(([, , key]) => r.parts[key] === 0).map(([label]) => label.split(' (')[0].toLowerCase());
       const muted = dep.length > 0 ? `Needs help with: ${dep.join(', ')}.` : 'No reported IADL dependence.';
       o.appendChild(el('p', { class: 'muted', text: muted }));
+      if (deriv) updateDerivationSteps(deriv, META['lawton-iadl'], input);
     });
     items.forEach(([, id]) => document.getElementById(id).addEventListener('input', run));
     run();
@@ -4370,6 +4381,8 @@ export const renderers = {
     ];
     for (const [label, id] of items) root.appendChild(rangeField(label, id, 0, 1, 1));
     const o = out(); root.appendChild(o);
+    const deriv = renderDerivation(META['katz-adl']);
+    if (deriv) root.appendChild(deriv);
     const run = () => safe(o, () => {
       const input = {};
       for (const [, id, key] of items) input[key] = Math.trunc(nv(id));
@@ -4380,6 +4393,7 @@ export const renderers = {
       const dep = items.filter(([, id, key]) => r.parts[key] === 0).map(([label]) => label.split(' (')[0].toLowerCase());
       const muted = `Independent in: ${indep.length > 0 ? indep.join(', ') : '(none)'}. Dependent in: ${dep.length > 0 ? dep.join(', ') : '(none)'}.`;
       o.appendChild(el('p', { class: 'muted', text: muted }));
+      if (deriv) updateDerivationSteps(deriv, META['katz-adl'], input);
     });
     items.forEach(([, id]) => document.getElementById(id).addEventListener('input', run));
     run();

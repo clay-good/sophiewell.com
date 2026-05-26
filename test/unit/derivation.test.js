@@ -4,7 +4,7 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { META } from '../../lib/meta.js';
 import { wellsPe, gcs, wellsDvt, chadsVasc, hasBled } from '../../lib/clinical.js';
-import { qsofa, timi, heart, perc, sofa, news2, meld30, curb65, centor, mcisaac, ciwaAr, fourScore, bisap, cows, icdsc, fourAt, psi, cpot, bps } from '../../lib/scoring-v4.js';
+import { qsofa, timi, heart, perc, sofa, news2, meld30, curb65, centor, mcisaac, ciwaAr, fourScore, bisap, cows, icdsc, fourAt, psi, cpot, bps, braden, morseFalls, lawtonIadl, katzAdl } from '../../lib/scoring-v4.js';
 
 // --- 1. Schema completeness ---------------------------------------------
 
@@ -15,7 +15,8 @@ const WAVE_48_1C_TILES = ['news2', 'meld-childpugh'];
 const WAVE_48_2A_TILES = ['curb-65', 'centor', 'ciwa', 'four-score'];
 const WAVE_48_2B_TILES = ['ranson-bisap', 'cows', 'icdsc', '4at'];
 const WAVE_48_2C_TILES = ['psi', 'cpot', 'bps', 'guss'];
-const ALL_DERIVATION_TILES = [...WAVE_48_1A_TILES, ...WAVE_48_1B_TILES, ...WAVE_48_1C_TILES, ...WAVE_48_2A_TILES, ...WAVE_48_2B_TILES, ...WAVE_48_2C_TILES];
+const WAVE_48_3A_TILES = ['braden', 'morse-falls', 'lawton-iadl', 'katz-adl'];
+const ALL_DERIVATION_TILES = [...WAVE_48_1A_TILES, ...WAVE_48_1B_TILES, ...WAVE_48_1C_TILES, ...WAVE_48_2A_TILES, ...WAVE_48_2B_TILES, ...WAVE_48_2C_TILES, ...WAVE_48_3A_TILES];
 
 for (const id of ALL_DERIVATION_TILES) {
   test(`derivation schema: ${id} has all required fields`, () => {
@@ -715,6 +716,81 @@ test('guss derivation bands cover the 4-tier dysphagia stratification', () => {
   assert.equal(bands.length, 4);
   assert.deepEqual(bands[0].range, [0, 9]);
   assert.deepEqual(bands[3].range, [20, 20]);
+});
+
+// --- Wave 48-3a: Braden, Morse Falls, Lawton IADL, Katz ADL -------------
+
+test('braden components sum equals braden() (max 23: 4+4+4+4+4+3)', () => {
+  const inputs = { sensory: 4, moisture: 4, activity: 4, mobility: 4, nutrition: 4, friction: 3 };
+  const r = braden(inputs);
+  assert.equal(sumComponents(META.braden, inputs), r.score);
+  assert.equal(r.score, 23);
+});
+
+test('braden components sum equals braden() (high-risk 10)', () => {
+  // sensory 1, moisture 2, activity 2, mobility 2, nutrition 2, friction 1 = 10
+  const inputs = { sensory: 1, moisture: 2, activity: 2, mobility: 2, nutrition: 2, friction: 1 };
+  const r = braden(inputs);
+  assert.equal(sumComponents(META.braden, inputs), r.score);
+  assert.equal(r.score, 10);
+});
+
+test('braden friction clamps at 3 (not 4)', () => {
+  // If user accidentally enters 4 for friction, the callback clamps to 3.
+  const inputs = { sensory: 4, moisture: 4, activity: 4, mobility: 4, nutrition: 4, friction: 4 };
+  // sumComponents will clamp friction to 3, total 23
+  assert.equal(sumComponents(META.braden, inputs), 23);
+});
+
+test('morse-falls components sum equals morseFalls() (low 0)', () => {
+  const inputs = { history: false, secondaryDx: false, ambulatoryAid: 'none', ivOrLock: false, gait: 'normal', mentalStatus: 'oriented' };
+  const r = morseFalls(inputs);
+  assert.equal(sumComponents(META['morse-falls'], inputs), r.score);
+  assert.equal(r.score, 0);
+});
+
+test('morse-falls components sum equals morseFalls() (moderate 50)', () => {
+  // 25 history + 15 secondaryDx + 0 aid + 0 IV + 10 weak gait + 0 mental = 50
+  const inputs = { history: true, secondaryDx: true, ambulatoryAid: 'none', ivOrLock: false, gait: 'weak', mentalStatus: 'oriented' };
+  const r = morseFalls(inputs);
+  assert.equal(sumComponents(META['morse-falls'], inputs), r.score);
+  assert.equal(r.score, 50);
+});
+
+test('morse-falls components sum equals morseFalls() (high 125, max)', () => {
+  // 25 + 15 + 30 furniture + 20 IV + 20 impaired + 15 forgets = 125
+  const inputs = { history: true, secondaryDx: true, ambulatoryAid: 'furniture', ivOrLock: true, gait: 'impaired', mentalStatus: 'forgets-limitations' };
+  const r = morseFalls(inputs);
+  assert.equal(sumComponents(META['morse-falls'], inputs), r.score);
+  assert.equal(r.score, 125);
+});
+
+test('lawton-iadl components sum equals lawtonIadl() (full independence 8)', () => {
+  const inputs = { telephone: 1, shopping: 1, foodPrep: 1, housekeeping: 1, laundry: 1, transportation: 1, medications: 1, finances: 1 };
+  const r = lawtonIadl(inputs);
+  assert.equal(sumComponents(META['lawton-iadl'], inputs), r.score);
+  assert.equal(r.score, 8);
+});
+
+test('lawton-iadl components sum equals lawtonIadl() (severe 2)', () => {
+  const inputs = { telephone: 1, shopping: 0, foodPrep: 0, housekeeping: 0, laundry: 0, transportation: 0, medications: 1, finances: 0 };
+  const r = lawtonIadl(inputs);
+  assert.equal(sumComponents(META['lawton-iadl'], inputs), r.score);
+  assert.equal(r.score, 2);
+});
+
+test('katz-adl components sum equals katzAdl() (full independence 6)', () => {
+  const inputs = { bathing: 1, dressing: 1, toileting: 1, transferring: 1, continence: 1, feeding: 1 };
+  const r = katzAdl(inputs);
+  assert.equal(sumComponents(META['katz-adl'], inputs), r.score);
+  assert.equal(r.score, 6);
+});
+
+test('katz-adl components sum equals katzAdl() (severe 2)', () => {
+  const inputs = { bathing: 0, dressing: 0, toileting: 0, transferring: 0, continence: 1, feeding: 1 };
+  const r = katzAdl(inputs);
+  assert.equal(sumComponents(META['katz-adl'], inputs), r.score);
+  assert.equal(r.score, 2);
 });
 
 // --- 4. Renderer behavior (jsdom-free smoke via stub) -------------------

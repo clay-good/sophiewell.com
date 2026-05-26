@@ -320,6 +320,34 @@ Backfill the Braden, Morse Falls, Barthel, Katz, Lawton, MEOWS,
 PHQ-9, GAD-7, C-SSRS, CAM, NIHSS, ROSIER, CPSS, LAMS, RACE, GUSS
 surfaces.
 
+#### Wave 48-3a (shipped 2026-05-25) — Braden, Morse Falls, Lawton IADL, Katz ADL
+
+Four nursing / geriatric assessment tiles opening wave 48-3.
+All ship as additive derivation blocks; no infrastructure
+changes.
+
+- **Braden** (Bergstrom 1987): 6 ordinal items, range 6-23.
+  The friction component uniquely clamps to 1-3 (not 1-4);
+  the Sophie callback enforces this.
+- **Morse Falls** (Morse 1989): 6 weighted items including
+  three string-valued callbacks for tri-level select inputs
+  (ambulatory aid, gait, mental status).
+- **Lawton IADL** (Lawton & Brody 1969): 8 binary items
+  (modern unisex form; the original 1969 sex-stratified
+  variant is NOT implemented by design).
+- **Katz ADL** (Katz 1963): 6 binary items. Sophie collapses
+  the original A-G letter grading into the contemporary
+  discharge-planning stratification.
+
+11 new unit tests covering multiple boundary points per tile,
+including the Braden friction clamp and Morse Falls'
+tri-level string callbacks.
+
+Wave 48-3 remains open. PHQ-9 / GAD-7 (which use the
+`renderScreener` helper rather than the per-tile-renderer
+pattern) are candidates for a later wave that touches
+`lib/screener.js`.
+
 ### Wave 48-4+ — Long-tail
 
 Backfill the remaining tiles in subsequent maintenance waves. A
