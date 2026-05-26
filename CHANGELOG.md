@@ -6,6 +6,34 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v48 wave 48-4e — ICH Score, IMPROVE-VTE, Khorana, DASH)
+
+Four more long-tail derivation blocks spanning intracerebral
+hemorrhage prognostication and the VTE-risk family. No
+infrastructure changes.
+
+- **ICH Score** (`ich-score`, Hemphill 2001): 5 features, range
+  0-6, with banded GCS / age / volume callbacks per Hemphill
+  2001 Table 2. 30-day mortality bands per Table 4
+  (0/13/26/72/97/100%).
+- **IMPROVE-VTE** (`improve-vte`, Spyropoulos 2011): 7 weighted
+  yes/no criteria, range 0-12. Bands: <2 low, 2-3 inpatient
+  prophylaxis candidate, >=4 extended-duration candidate.
+- **Khorana** (`khorana`, Khorana 2008): 5 criteria, range 0-6,
+  with a string-valued cancer-site callback (very-high +2 /
+  high +1 / other 0). 2.5-month VTE rates per Table 3
+  (0.3% / 2.0% / 6.7%).
+- **DASH** (`dash-vte`, Tosetto 2012): 4 criteria including the
+  -2 hormone-use modifier; range -2 to +4. Annual recurrence
+  bands per Table 4 (3.1% / 6.4% / 12.3% per year).
+
+4 new provenance logs under `docs/audits/v48/`. 16 new unit
+tests including the DASH hormone subtractive path and the
+Khorana cancer-site three-level callback.
+
+Verified: `npm run lint`, `npm run test`, `npm run sbom`, and
+`npm run build` are all green. **Catalog count 254, unchanged.**
+
 ### Added (spec-v48 wave 48-4d — STOP-BANG, 4Ts, ABCD2, RCRI)
 
 Four more long-tail derivation blocks across preoperative

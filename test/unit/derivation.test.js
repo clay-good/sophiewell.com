@@ -4,7 +4,7 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { META } from '../../lib/meta.js';
 import { wellsPe, gcs, wellsDvt, chadsVasc, hasBled } from '../../lib/clinical.js';
-import { qsofa, timi, heart, perc, sofa, news2, meld30, curb65, centor, mcisaac, ciwaAr, fourScore, bisap, cows, icdsc, fourAt, psi, cpot, bps, braden, morseFalls, lawtonIadl, katzAdl, barthel, rosier, cpss, lams, race, sos, flacc, hendrichII, atriaBleeding, orbitBleeding, painad, miniCog, mews, comfortB, wat1, stopBang, fourTs } from '../../lib/scoring-v4.js';
+import { qsofa, timi, heart, perc, sofa, news2, meld30, curb65, centor, mcisaac, ciwaAr, fourScore, bisap, cows, icdsc, fourAt, psi, cpot, bps, braden, morseFalls, lawtonIadl, katzAdl, barthel, rosier, cpss, lams, race, sos, flacc, hendrichII, atriaBleeding, orbitBleeding, painad, miniCog, mews, comfortB, wat1, stopBang, fourTs, ichScore, improveVte, khorana, dashVte } from '../../lib/scoring-v4.js';
 import { nihss } from '../../lib/clinical.js';
 import { rcri, abcd2 } from '../../lib/clinical-v5.js';
 
@@ -25,7 +25,8 @@ const WAVE_48_4A_TILES = ['atria-bleeding', 'hendrich-ii', 'flacc', 'auditc'];
 const WAVE_48_4B_TILES = ['orbit-bleeding', 'painad', 'cage', 'mini-cog'];
 const WAVE_48_4C_TILES = ['epds', 'mews', 'comfort-b', 'wat-1'];
 const WAVE_48_4D_TILES = ['stop-bang', 'four-ts', 'abcd2', 'rcri'];
-const ALL_DERIVATION_TILES = [...WAVE_48_1A_TILES, ...WAVE_48_1B_TILES, ...WAVE_48_1C_TILES, ...WAVE_48_2A_TILES, ...WAVE_48_2B_TILES, ...WAVE_48_2C_TILES, ...WAVE_48_3A_TILES, ...WAVE_48_3B_TILES, ...WAVE_48_3C_TILES, ...WAVE_48_3D_TILES, ...WAVE_48_4A_TILES, ...WAVE_48_4B_TILES, ...WAVE_48_4C_TILES, ...WAVE_48_4D_TILES];
+const WAVE_48_4E_TILES = ['ich-score', 'improve-vte', 'khorana', 'dash-vte'];
+const ALL_DERIVATION_TILES = [...WAVE_48_1A_TILES, ...WAVE_48_1B_TILES, ...WAVE_48_1C_TILES, ...WAVE_48_2A_TILES, ...WAVE_48_2B_TILES, ...WAVE_48_2C_TILES, ...WAVE_48_3A_TILES, ...WAVE_48_3B_TILES, ...WAVE_48_3C_TILES, ...WAVE_48_3D_TILES, ...WAVE_48_4A_TILES, ...WAVE_48_4B_TILES, ...WAVE_48_4C_TILES, ...WAVE_48_4D_TILES, ...WAVE_48_4E_TILES];
 
 for (const id of ALL_DERIVATION_TILES) {
   test(`derivation schema: ${id} has all required fields`, () => {
@@ -1443,6 +1444,121 @@ test('rcri components sum equals rcri() (Class IV, all 6)', () => {
   const r = rcri(inputs);
   assert.equal(sumComponents(META.rcri, inputs), r.count);
   assert.equal(r.count, 6);
+});
+
+// --- Wave 48-4e: ICH Score, IMPROVE-VTE, Khorana, DASH ------------------
+
+test('ich-score components sum equals ichScore() (zero, GCS 15 no factors)', () => {
+  const inputs = { gcs: 15, age: 70, ichVolumeMl: 10, infratentorial: false, ivh: false };
+  const r = ichScore(inputs);
+  assert.equal(sumComponents(META['ich-score'], inputs), r.score);
+  assert.equal(r.score, 0);
+});
+
+test('ich-score components sum equals ichScore() (mid band, GCS 10 + age 85 -> 2)', () => {
+  const inputs = { gcs: 10, age: 85, ichVolumeMl: 10, infratentorial: false, ivh: false };
+  const r = ichScore(inputs);
+  assert.equal(sumComponents(META['ich-score'], inputs), r.score);
+  assert.equal(r.score, 2);
+});
+
+test('ich-score components sum equals ichScore() (max 6, GCS 3 + age 85 + all)', () => {
+  const inputs = { gcs: 3, age: 85, ichVolumeMl: 60, infratentorial: true, ivh: true };
+  const r = ichScore(inputs);
+  assert.equal(sumComponents(META['ich-score'], inputs), r.score);
+  assert.equal(r.score, 6);
+});
+
+test('ich-score GCS callback band boundaries: 4 -> +2, 5 -> +1, 13 -> 0', () => {
+  for (const [g, expected] of [[3, 2], [4, 2], [5, 1], [12, 1], [13, 0], [15, 0]]) {
+    const inputs = { gcs: g, age: 70, ichVolumeMl: 10, infratentorial: false, ivh: false };
+    assert.equal(sumComponents(META['ich-score'], inputs), ichScore(inputs).score, `gcs=${g}`);
+    assert.equal(sumComponents(META['ich-score'], inputs), expected, `gcs=${g} component`);
+  }
+});
+
+test('improve-vte components sum equals improveVte() (zero)', () => {
+  const inputs = { priorVte: false, thrombophilia: false, lowerLimbParalysis: false, currentCancer: false, immobilized7d: false, icuCcuStay: false, ageGt60: false };
+  const r = improveVte(inputs);
+  assert.equal(sumComponents(META['improve-vte'], inputs), r.score);
+  assert.equal(r.score, 0);
+});
+
+test('improve-vte components sum equals improveVte() (inpatient band, 2)', () => {
+  const inputs = { priorVte: false, thrombophilia: false, lowerLimbParalysis: false, currentCancer: false, immobilized7d: true, icuCcuStay: false, ageGt60: true };
+  const r = improveVte(inputs);
+  assert.equal(sumComponents(META['improve-vte'], inputs), r.score);
+  assert.equal(r.score, 2);
+});
+
+test('improve-vte components sum equals improveVte() (max 12)', () => {
+  const inputs = { priorVte: true, thrombophilia: true, lowerLimbParalysis: true, currentCancer: true, immobilized7d: true, icuCcuStay: true, ageGt60: true };
+  const r = improveVte(inputs);
+  assert.equal(sumComponents(META['improve-vte'], inputs), r.score);
+  assert.equal(r.score, 12);
+});
+
+test('khorana components sum equals khorana() (zero)', () => {
+  const inputs = { cancerSiteRisk: 'other', plateletGte350: false, hbLt10OrEsa: false, wbcGt11: false, bmiGte35: false };
+  const r = khorana(inputs);
+  assert.equal(sumComponents(META.khorana, inputs), r.score);
+  assert.equal(r.score, 0);
+});
+
+test('khorana components sum equals khorana() (intermediate, 2)', () => {
+  const inputs = { cancerSiteRisk: 'high', plateletGte350: true, hbLt10OrEsa: false, wbcGt11: false, bmiGte35: false };
+  const r = khorana(inputs);
+  assert.equal(sumComponents(META.khorana, inputs), r.score);
+  assert.equal(r.score, 2);
+});
+
+test('khorana components sum equals khorana() (max 6)', () => {
+  const inputs = { cancerSiteRisk: 'very-high', plateletGte350: true, hbLt10OrEsa: true, wbcGt11: true, bmiGte35: true };
+  const r = khorana(inputs);
+  assert.equal(sumComponents(META.khorana, inputs), r.score);
+  assert.equal(r.score, 6);
+});
+
+test('khorana cancer-site callback returns 2 / 1 / 0 by category', () => {
+  for (const [site, expected] of [['very-high', 2], ['high', 1], ['other', 0], ['unknown', 0]]) {
+    const inputs = { cancerSiteRisk: site, plateletGte350: false, hbLt10OrEsa: false, wbcGt11: false, bmiGte35: false };
+    assert.equal(sumComponents(META.khorana, inputs), expected, `site=${site}`);
+  }
+});
+
+test('dash-vte components sum equals dashVte() (zero)', () => {
+  const inputs = { dDimerAbnormal: false, ageLt50: false, male: false, hormoneUseAtInitialVteInWoman: false };
+  const r = dashVte(inputs);
+  assert.equal(sumComponents(META['dash-vte'], inputs), r.score);
+  assert.equal(r.score, 0);
+});
+
+test('dash-vte components sum equals dashVte() (intermediate, 2)', () => {
+  const inputs = { dDimerAbnormal: true, ageLt50: false, male: false, hormoneUseAtInitialVteInWoman: false };
+  const r = dashVte(inputs);
+  assert.equal(sumComponents(META['dash-vte'], inputs), r.score);
+  assert.equal(r.score, 2);
+});
+
+test('dash-vte components sum equals dashVte() (high, 4 = all positive)', () => {
+  const inputs = { dDimerAbnormal: true, ageLt50: true, male: true, hormoneUseAtInitialVteInWoman: false };
+  const r = dashVte(inputs);
+  assert.equal(sumComponents(META['dash-vte'], inputs), r.score);
+  assert.equal(r.score, 4);
+});
+
+test('dash-vte hormone -2 modifier subtracts correctly (D-dimer + age + hormone -> 1)', () => {
+  const inputs = { dDimerAbnormal: true, ageLt50: true, male: false, hormoneUseAtInitialVteInWoman: true };
+  const r = dashVte(inputs);
+  assert.equal(sumComponents(META['dash-vte'], inputs), r.score);
+  assert.equal(r.score, 1);
+});
+
+test('dash-vte hormone alone yields negative -2', () => {
+  const inputs = { dDimerAbnormal: false, ageLt50: false, male: false, hormoneUseAtInitialVteInWoman: true };
+  const r = dashVte(inputs);
+  assert.equal(sumComponents(META['dash-vte'], inputs), r.score);
+  assert.equal(r.score, -2);
 });
 
 // --- 4. Renderer behavior (jsdom-free smoke via stub) -------------------

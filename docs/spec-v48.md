@@ -504,6 +504,31 @@ risk stratification. No infrastructure changes.
 14 new unit tests covering boundary points per tile, including
 the ABCD2 DBP-alone-meets-threshold path and the 4Ts 0-2 clamp.
 
+#### Wave 48-4e (shipped 2026-05-26) — ICH Score, IMPROVE-VTE, Khorana, DASH
+
+Four more long-tail tiles spanning ICH prognostication and the
+VTE-risk family. No infrastructure changes.
+
+- **ICH Score** (`ich-score`, Hemphill 2001): 5 features, range
+  0-6, with banded GCS / age / volume callbacks per Hemphill
+  2001 Table 2. 30-day mortality bands per Table 4
+  (0/13/26/72/97/100%).
+- **IMPROVE-VTE** (`improve-vte`, Spyropoulos 2011): 7 weighted
+  yes/no criteria, range 0-12. Bands: <2 low, 2-3 inpatient
+  prophylaxis candidate, >=4 extended-duration candidate.
+- **Khorana** (`khorana`, Khorana 2008): 5 criteria, range 0-6
+  with a string-valued cancer-site callback (very-high +2 /
+  high +1 / other 0). 2.5-month VTE rates per Table 3
+  (0.3% / 2.0% / 6.7%).
+- **DASH** (`dash-vte`, Tosetto 2012): 4 criteria including the
+  -2 hormone-use modifier; range -2 to +4. Bands per Table 4
+  (3.1% / 6.4% / 12.3% per year).
+
+4 new provenance logs under `docs/audits/v48/`. 16 new unit
+tests covering boundary points per tile, including the DASH
+hormone subtractive path (D-dimer + age + hormone -> 1; hormone
+alone -> -2) and the Khorana cancer-site three-level callback.
+
 ## 6. Testing requirements
 
 For every tile with a `derivation` block, the test suite asserts:

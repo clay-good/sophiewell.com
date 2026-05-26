@@ -2777,8 +2777,10 @@ export const renderers = {
     ];
     for (const [l, id] of items) root.appendChild(checkbox(l, id));
     const o = out(); root.appendChild(o);
+    const deriv = renderDerivation(META['improve-vte']);
+    if (deriv) root.appendChild(deriv);
     const run = () => safe(o, () => {
-      const r = S4.improveVte({
+      const inputs = {
         priorVte: checked('iv-prior'),
         thrombophilia: checked('iv-thr'),
         lowerLimbParalysis: checked('iv-para'),
@@ -2786,9 +2788,11 @@ export const renderers = {
         immobilized7d: checked('iv-immob'),
         icuCcuStay: checked('iv-icu'),
         ageGt60: checked('iv-age60'),
-      });
+      };
+      const r = S4.improveVte(inputs);
       o.appendChild(el('h2', { text: `IMPROVE-VTE ${r.score} of 12` }));
       o.appendChild(el('p', { text: r.band }));
+      if (deriv) updateDerivationSteps(deriv, META['improve-vte'], inputs);
     });
     items.forEach(([, id]) => document.getElementById(id).addEventListener('change', run));
     run();
@@ -2812,16 +2816,20 @@ export const renderers = {
     ];
     for (const [l, id] of cb) root.appendChild(checkbox(l, id));
     const o = out(); root.appendChild(o);
+    const deriv = renderDerivation(META.khorana);
+    if (deriv) root.appendChild(deriv);
     const run = () => safe(o, () => {
-      const r = S4.khorana({
+      const inputs = {
         cancerSiteRisk: document.getElementById('kh-site').value,
         plateletGte350: checked('kh-plt'),
         hbLt10OrEsa: checked('kh-hb'),
         wbcGt11: checked('kh-wbc'),
         bmiGte35: checked('kh-bmi'),
-      });
+      };
+      const r = S4.khorana(inputs);
       o.appendChild(el('h2', { text: `Khorana ${r.score} of 6` }));
       o.appendChild(el('p', { text: r.band }));
+      if (deriv) updateDerivationSteps(deriv, META.khorana, inputs);
     });
     document.getElementById('kh-site').addEventListener('change', run);
     cb.forEach(([, id]) => document.getElementById(id).addEventListener('change', run));
@@ -2838,15 +2846,19 @@ export const renderers = {
     ];
     for (const [l, id] of items) root.appendChild(checkbox(l, id));
     const o = out(); root.appendChild(o);
+    const deriv = renderDerivation(META['dash-vte']);
+    if (deriv) root.appendChild(deriv);
     const run = () => safe(o, () => {
-      const r = S4.dashVte({
+      const inputs = {
         dDimerAbnormal: checked('da-dd'),
         ageLt50: checked('da-age'),
         male: checked('da-male'),
         hormoneUseAtInitialVteInWoman: checked('da-horm'),
-      });
+      };
+      const r = S4.dashVte(inputs);
       o.appendChild(el('h2', { text: `DASH ${r.score}` }));
       o.appendChild(el('p', { text: r.band }));
+      if (deriv) updateDerivationSteps(deriv, META['dash-vte'], inputs);
     });
     items.forEach(([, id]) => document.getElementById(id).addEventListener('change', run));
     run();
@@ -3995,16 +4007,20 @@ export const renderers = {
     root.appendChild(checkbox('Infratentorial origin', 'ich-infra'));
     root.appendChild(checkbox('Intraventricular hemorrhage', 'ich-ivh'));
     const o = out(); root.appendChild(o);
+    const deriv = renderDerivation(META['ich-score']);
+    if (deriv) root.appendChild(deriv);
     const run = () => safe(o, () => {
-      const r = S4.ichScore({
+      const inputs = {
         gcs: nv('ich-gcs'),
         age: nv('ich-age'),
         ichVolumeMl: nv('ich-vol'),
         infratentorial: checked('ich-infra'),
         ivh: checked('ich-ivh'),
-      });
+      };
+      const r = S4.ichScore(inputs);
       o.appendChild(el('h2', { text: `ICH Score ${r.score}: 30-day mortality ${r.mortality30d}` }));
       o.appendChild(el('p', { text: r.band }));
+      if (deriv) updateDerivationSteps(deriv, META['ich-score'], inputs);
     });
     ['ich-gcs', 'ich-age', 'ich-vol'].forEach((id) => document.getElementById(id).addEventListener('input', run));
     ['ich-infra', 'ich-ivh'].forEach((id) => document.getElementById(id).addEventListener('change', run));
