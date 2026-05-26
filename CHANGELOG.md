@@ -6,6 +6,34 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v48 wave 48-4g — LACE, HEMORR2HAGES, DAPT, MUST)
+
+Four more long-tail derivation blocks across hospital
+readmission risk, AF bleeding stratification, post-PCI
+antiplatelet-duration decision support, and malnutrition
+screening.
+
+- **LACE Index** (`lace`, van Walraven 2010): 4 components with
+  three banded callbacks (LOS 7-tier, Charlson 5-tier, ED 5-tier).
+  Bands: 0-4 low, 5-9 moderate, >=10 high.
+- **HEMORR2HAGES** (`hemorr2hages`, Gage 2006): 11 binary
+  criteria including a +2 Rebleeding weight (the "R^2" in the
+  mnemonic). Range 0-12.
+- **DAPT Score** (`dapt-score`, Yeh 2016): 9 criteria including
+  a subtractive age band (0 / -1 / -2). Range -2 to +10. Cutoff
+  >=2 favors extended DAPT beyond 12 months after PCI.
+- **MUST nutrition** (`must-nutrition`, BAPEN 2003): 3
+  components — BMI band, weight-loss band, acute-disease
+  modifier. Range 0-6.
+
+4 new provenance logs under `docs/audits/v48/`. 17 new unit
+tests including the LACE LOS / Charlson banded callbacks, the
+HEMORR2HAGES +2 Rebleeding weight, the DAPT subtractive age
+band, and the MUST BMI / weight-loss three-level callbacks.
+
+Verified: `npm run lint`, `npm run test`, `npm run sbom`, and
+`npm run build` are all green. **Catalog count 254, unchanged.**
+
 ### Added (spec-v48 wave 48-4f — HERDOO2, HOSPITAL, IMPROVE-Bleeding, Aldrete/PADSS)
 
 Four more long-tail derivation blocks across women-only

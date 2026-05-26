@@ -1651,18 +1651,22 @@ export const renderers = {
       el('input', { id: 'lc-ed', type: 'number', step: '1', min: '0', value: '0' }),
     ]));
     const o = out(); root.appendChild(o);
+    const deriv = renderDerivation(META.lace);
+    if (deriv) root.appendChild(deriv);
     const run = () => safe(o, () => {
-      const r = S4.lace({
+      const inputs = {
         losDays: nv('lc-los'),
         acuteAdmission: checked('lc-acute'),
         charlsonScore: nv('lc-charlson'),
         edVisits6mo: nv('lc-ed'),
-      });
+      };
+      const r = S4.lace(inputs);
       o.appendChild(el('h2', { text: `LACE ${r.score}` }));
       o.appendChild(el('p', { text: r.band }));
       const p = r.parts;
       o.appendChild(el('p', { class: 'muted',
         text: `Per-parameter: LOS ${p.los}, acute ${p.acute}, Charlson ${p.charlson}, ED ${p.ed}.` }));
+      if (deriv) updateDerivationSteps(deriv, META.lace, inputs);
     });
     document.querySelectorAll('input').forEach((n) => n.addEventListener(n.type === 'checkbox' ? 'change' : 'input', run));
     run();
@@ -2222,14 +2226,18 @@ export const renderers = {
     ]));
     root.appendChild(checkbox('Acutely ill AND no nutritional intake for >5 days (+2)', 'mu-acute'));
     const o = out(); root.appendChild(o);
+    const deriv = renderDerivation(META['must-nutrition']);
+    if (deriv) root.appendChild(deriv);
     const run = () => safe(o, () => {
-      const r = S4.mustNutrition({
+      const inputs = {
         bmi: nv('mu-bmi'),
         weightLossPct: nv('mu-wl'),
         acuteDiseaseNoIntakeGt5d: checked('mu-acute'),
-      });
+      };
+      const r = S4.mustNutrition(inputs);
       o.appendChild(el('h2', { text: `MUST ${r.score}` }));
       o.appendChild(el('p', { text: r.band }));
+      if (deriv) updateDerivationSteps(deriv, META['must-nutrition'], inputs);
     });
     ['mu-bmi', 'mu-wl', 'mu-acute'].forEach((id) => document.getElementById(id).addEventListener(id === 'mu-acute' ? 'change' : 'input', run));
     run();
@@ -2693,8 +2701,10 @@ export const renderers = {
     ];
     for (const [l, id] of items) root.appendChild(checkbox(l, id));
     const o = out(); root.appendChild(o);
+    const deriv = renderDerivation(META.hemorr2hages);
+    if (deriv) root.appendChild(deriv);
     const run = () => safe(o, () => {
-      const r = S4.hemorr2hages({
+      const inputs = {
         hepaticOrRenal: checked('hh-hr'),
         ethanolAbuse: checked('hh-et'),
         malignancy: checked('hh-mal'),
@@ -2706,9 +2716,11 @@ export const renderers = {
         geneticFactors: checked('hh-gen'),
         fallRisk: checked('hh-fall'),
         stroke: checked('hh-stk'),
-      });
+      };
+      const r = S4.hemorr2hages(inputs);
       o.appendChild(el('h2', { text: `HEMORR2HAGES ${r.score} of 12` }));
       o.appendChild(el('p', { text: r.band }));
+      if (deriv) updateDerivationSteps(deriv, META.hemorr2hages, inputs);
     });
     items.forEach(([, id]) => document.getElementById(id).addEventListener('change', run));
     run();
@@ -3001,8 +3013,10 @@ export const renderers = {
     ];
     for (const [l, id] of cb) root.appendChild(checkbox(l, id));
     const o = out(); root.appendChild(o);
+    const deriv = renderDerivation(META['dapt-score']);
+    if (deriv) root.appendChild(deriv);
     const run = () => safe(o, () => {
-      const r = S4.daptScore({
+      const inputs = {
         ageBand: document.getElementById('dp-age').value,
         chfOrLvefLt30: checked('dp-chf'),
         veinGraftPci: checked('dp-vgp'),
@@ -3012,9 +3026,11 @@ export const renderers = {
         stentDiameterLt3mm: checked('dp-stent'),
         paclitaxelStent: checked('dp-pac'),
         currentSmoker: checked('dp-smoke'),
-      });
+      };
+      const r = S4.daptScore(inputs);
       o.appendChild(el('h2', { text: `DAPT Score ${r.score}` }));
       o.appendChild(el('p', { text: r.band }));
+      if (deriv) updateDerivationSteps(deriv, META['dapt-score'], inputs);
     });
     document.getElementById('dp-age').addEventListener('change', run);
     cb.forEach(([, id]) => document.getElementById(id).addEventListener('change', run));

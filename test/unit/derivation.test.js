@@ -4,7 +4,7 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { META } from '../../lib/meta.js';
 import { wellsPe, gcs, wellsDvt, chadsVasc, hasBled } from '../../lib/clinical.js';
-import { qsofa, timi, heart, perc, sofa, news2, meld30, curb65, centor, mcisaac, ciwaAr, fourScore, bisap, cows, icdsc, fourAt, psi, cpot, bps, braden, morseFalls, lawtonIadl, katzAdl, barthel, rosier, cpss, lams, race, sos, flacc, hendrichII, atriaBleeding, orbitBleeding, painad, miniCog, mews, comfortB, wat1, stopBang, fourTs, ichScore, improveVte, khorana, dashVte, herdoo2, hospitalScore, improveBleeding, aldrete, padss } from '../../lib/scoring-v4.js';
+import { qsofa, timi, heart, perc, sofa, news2, meld30, curb65, centor, mcisaac, ciwaAr, fourScore, bisap, cows, icdsc, fourAt, psi, cpot, bps, braden, morseFalls, lawtonIadl, katzAdl, barthel, rosier, cpss, lams, race, sos, flacc, hendrichII, atriaBleeding, orbitBleeding, painad, miniCog, mews, comfortB, wat1, stopBang, fourTs, ichScore, improveVte, khorana, dashVte, herdoo2, hospitalScore, improveBleeding, aldrete, padss, lace, hemorr2hages, daptScore, mustNutrition } from '../../lib/scoring-v4.js';
 import { nihss } from '../../lib/clinical.js';
 import { rcri, abcd2 } from '../../lib/clinical-v5.js';
 
@@ -27,7 +27,8 @@ const WAVE_48_4C_TILES = ['epds', 'mews', 'comfort-b', 'wat-1'];
 const WAVE_48_4D_TILES = ['stop-bang', 'four-ts', 'abcd2', 'rcri'];
 const WAVE_48_4E_TILES = ['ich-score', 'improve-vte', 'khorana', 'dash-vte'];
 const WAVE_48_4F_TILES = ['herdoo2', 'hospital-score', 'improve-bleeding', 'aldrete-padss'];
-const ALL_DERIVATION_TILES = [...WAVE_48_1A_TILES, ...WAVE_48_1B_TILES, ...WAVE_48_1C_TILES, ...WAVE_48_2A_TILES, ...WAVE_48_2B_TILES, ...WAVE_48_2C_TILES, ...WAVE_48_3A_TILES, ...WAVE_48_3B_TILES, ...WAVE_48_3C_TILES, ...WAVE_48_3D_TILES, ...WAVE_48_4A_TILES, ...WAVE_48_4B_TILES, ...WAVE_48_4C_TILES, ...WAVE_48_4D_TILES, ...WAVE_48_4E_TILES, ...WAVE_48_4F_TILES];
+const WAVE_48_4G_TILES = ['lace', 'hemorr2hages', 'dapt-score', 'must-nutrition'];
+const ALL_DERIVATION_TILES = [...WAVE_48_1A_TILES, ...WAVE_48_1B_TILES, ...WAVE_48_1C_TILES, ...WAVE_48_2A_TILES, ...WAVE_48_2B_TILES, ...WAVE_48_2C_TILES, ...WAVE_48_3A_TILES, ...WAVE_48_3B_TILES, ...WAVE_48_3C_TILES, ...WAVE_48_3D_TILES, ...WAVE_48_4A_TILES, ...WAVE_48_4B_TILES, ...WAVE_48_4C_TILES, ...WAVE_48_4D_TILES, ...WAVE_48_4E_TILES, ...WAVE_48_4F_TILES, ...WAVE_48_4G_TILES];
 
 for (const id of ALL_DERIVATION_TILES) {
   test(`derivation schema: ${id} has all required fields`, () => {
@@ -1690,6 +1691,117 @@ test('aldrete-padss PADSS components sum equals padss() (discharge cutoff at 9)'
   assert.equal(sumComponents(PADSS_META, inputs), r.score);
   assert.equal(r.score, 9);
   assert.equal(r.readyForDischarge, true);
+});
+
+// --- Wave 48-4g: LACE, HEMORR2HAGES, DAPT, MUST ------------------------
+
+test('lace components sum equals lace() (zero)', () => {
+  const inputs = { losDays: 0, acuteAdmission: false, charlsonScore: 0, edVisits6mo: 0 };
+  const r = lace(inputs);
+  assert.equal(sumComponents(META.lace, inputs), r.score);
+  assert.equal(r.score, 0);
+});
+
+test('lace LOS banded callback (1 / 4 / 14 -> 1 / 4 / 7)', () => {
+  for (const [los, expected] of [[0, 0], [1, 1], [2, 2], [3, 3], [4, 4], [6, 4], [7, 5], [13, 5], [14, 7], [30, 7]]) {
+    const inputs = { losDays: los, acuteAdmission: false, charlsonScore: 0, edVisits6mo: 0 };
+    assert.equal(sumComponents(META.lace, inputs), lace(inputs).score, `los=${los}`);
+    assert.equal(sumComponents(META.lace, inputs), expected, `los=${los}`);
+  }
+});
+
+test('lace components sum equals lace() (moderate band: 5 + 3 + 2 = 10 high band)', () => {
+  // los 7-13 -> 5, acute -> 3, charlson 2 -> 2, ed 0 -> 0 = 10
+  const inputs = { losDays: 10, acuteAdmission: true, charlsonScore: 2, edVisits6mo: 0 };
+  const r = lace(inputs);
+  assert.equal(sumComponents(META.lace, inputs), r.score);
+  assert.equal(r.score, 10);
+});
+
+test('lace Charlson banded callback (>=4 -> 5; ED cap -> 4)', () => {
+  const inputs = { losDays: 0, acuteAdmission: false, charlsonScore: 5, edVisits6mo: 10 };
+  const r = lace(inputs);
+  assert.equal(sumComponents(META.lace, inputs), r.score);
+  assert.equal(r.score, 9); // charlson 5 -> 5, ed 10 -> 4 = 9
+});
+
+test('hemorr2hages components sum equals hemorr2hages() (zero)', () => {
+  const inputs = { hepaticOrRenal: false, ethanolAbuse: false, malignancy: false, olderGt75: false, reducedPlatelets: false, rebleeding: false, uncontrolledHtn: false, anemia: false, geneticFactors: false, fallRisk: false, stroke: false };
+  const r = hemorr2hages(inputs);
+  assert.equal(sumComponents(META.hemorr2hages, inputs), r.score);
+  assert.equal(r.score, 0);
+});
+
+test('hemorr2hages rebleeding alone yields +2 (the R^2 weight)', () => {
+  const inputs = { hepaticOrRenal: false, ethanolAbuse: false, malignancy: false, olderGt75: false, reducedPlatelets: false, rebleeding: true, uncontrolledHtn: false, anemia: false, geneticFactors: false, fallRisk: false, stroke: false };
+  const r = hemorr2hages(inputs);
+  assert.equal(sumComponents(META.hemorr2hages, inputs), r.score);
+  assert.equal(r.score, 2);
+});
+
+test('hemorr2hages components sum equals hemorr2hages() (max 12, all true)', () => {
+  const inputs = { hepaticOrRenal: true, ethanolAbuse: true, malignancy: true, olderGt75: true, reducedPlatelets: true, rebleeding: true, uncontrolledHtn: true, anemia: true, geneticFactors: true, fallRisk: true, stroke: true };
+  const r = hemorr2hages(inputs);
+  assert.equal(sumComponents(META.hemorr2hages, inputs), r.score);
+  assert.equal(r.score, 12);
+});
+
+test('dapt-score components sum equals daptScore() (zero, age <65)', () => {
+  const inputs = { ageBand: '<65', chfOrLvefLt30: false, veinGraftPci: false, miAtPresentation: false, priorMiOrPci: false, diabetes: false, stentDiameterLt3mm: false, paclitaxelStent: false, currentSmoker: false };
+  const r = daptScore(inputs);
+  assert.equal(sumComponents(META['dapt-score'], inputs), r.score);
+  assert.equal(r.score, 0);
+});
+
+test('dapt-score age subtractive callback (>=75 alone -> -2)', () => {
+  const inputs = { ageBand: '>=75', chfOrLvefLt30: false, veinGraftPci: false, miAtPresentation: false, priorMiOrPci: false, diabetes: false, stentDiameterLt3mm: false, paclitaxelStent: false, currentSmoker: false };
+  const r = daptScore(inputs);
+  assert.equal(sumComponents(META['dapt-score'], inputs), r.score);
+  assert.equal(r.score, -2);
+});
+
+test('dapt-score age 65-74 alone -> -1', () => {
+  const inputs = { ageBand: '65-74', chfOrLvefLt30: false, veinGraftPci: false, miAtPresentation: false, priorMiOrPci: false, diabetes: false, stentDiameterLt3mm: false, paclitaxelStent: false, currentSmoker: false };
+  const r = daptScore(inputs);
+  assert.equal(sumComponents(META['dapt-score'], inputs), r.score);
+  assert.equal(r.score, -1);
+});
+
+test('dapt-score max 10 (age <65, all true)', () => {
+  const inputs = { ageBand: '<65', chfOrLvefLt30: true, veinGraftPci: true, miAtPresentation: true, priorMiOrPci: true, diabetes: true, stentDiameterLt3mm: true, paclitaxelStent: true, currentSmoker: true };
+  const r = daptScore(inputs);
+  assert.equal(sumComponents(META['dapt-score'], inputs), r.score);
+  assert.equal(r.score, 10);
+});
+
+test('must-nutrition components sum equals mustNutrition() (zero)', () => {
+  const inputs = { bmi: 25, weightLossPct: 0, acuteDiseaseNoIntakeGt5d: false };
+  const r = mustNutrition(inputs);
+  assert.equal(sumComponents(META['must-nutrition'], inputs), r.score);
+  assert.equal(r.score, 0);
+});
+
+test('must-nutrition BMI banded callback (17 -> 2; 19 -> 1; 25 -> 0)', () => {
+  for (const [bmi, expected] of [[15, 2], [18.4, 2], [18.5, 1], [19, 1], [20, 1], [21, 0], [30, 0]]) {
+    const inputs = { bmi, weightLossPct: 0, acuteDiseaseNoIntakeGt5d: false };
+    assert.equal(sumComponents(META['must-nutrition'], inputs), mustNutrition(inputs).score, `bmi=${bmi}`);
+    assert.equal(sumComponents(META['must-nutrition'], inputs), expected, `bmi=${bmi}`);
+  }
+});
+
+test('must-nutrition weight-loss banded callback (3% -> 0; 7% -> 1; 15% -> 2)', () => {
+  for (const [wl, expected] of [[0, 0], [3, 0], [4.9, 0], [5, 1], [7, 1], [10, 1], [10.1, 2], [15, 2]]) {
+    const inputs = { bmi: 25, weightLossPct: wl, acuteDiseaseNoIntakeGt5d: false };
+    assert.equal(sumComponents(META['must-nutrition'], inputs), mustNutrition(inputs).score, `wl=${wl}`);
+    assert.equal(sumComponents(META['must-nutrition'], inputs), expected, `wl=${wl}`);
+  }
+});
+
+test('must-nutrition components sum equals mustNutrition() (high band, all max)', () => {
+  const inputs = { bmi: 16, weightLossPct: 15, acuteDiseaseNoIntakeGt5d: true };
+  const r = mustNutrition(inputs);
+  assert.equal(sumComponents(META['must-nutrition'], inputs), r.score);
+  assert.equal(r.score, 6);
 });
 
 // --- 4. Renderer behavior (jsdom-free smoke via stub) -------------------
