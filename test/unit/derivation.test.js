@@ -4,7 +4,7 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { META } from '../../lib/meta.js';
 import { wellsPe, gcs, wellsDvt, chadsVasc, hasBled } from '../../lib/clinical.js';
-import { qsofa, timi, heart, perc, sofa, news2, meld30, curb65, centor, mcisaac, ciwaAr, fourScore, bisap, cows, icdsc, fourAt, psi, cpot, bps, braden, morseFalls, lawtonIadl, katzAdl, barthel, rosier, cpss, lams, race, sos, flacc, hendrichII, atriaBleeding, orbitBleeding, painad, miniCog, mews, comfortB, wat1, stopBang, fourTs, ichScore, improveVte, khorana, dashVte, herdoo2, hospitalScore, improveBleeding, aldrete, padss, lace, hemorr2hages, daptScore, mustNutrition, crb65, isthDic, alvarado, pediatricAppendicitis } from '../../lib/scoring-v4.js';
+import { qsofa, timi, heart, perc, sofa, news2, meld30, curb65, centor, mcisaac, ciwaAr, fourScore, bisap, cows, icdsc, fourAt, psi, cpot, bps, braden, morseFalls, lawtonIadl, katzAdl, barthel, rosier, cpss, lams, race, sos, flacc, hendrichII, atriaBleeding, orbitBleeding, painad, miniCog, mews, comfortB, wat1, stopBang, fourTs, ichScore, improveVte, khorana, dashVte, herdoo2, hospitalScore, improveBleeding, aldrete, padss, lace, hemorr2hages, daptScore, mustNutrition, crb65, isthDic, alvarado, pediatricAppendicitis, lips, westley, pramAsthma, passAsthma } from '../../lib/scoring-v4.js';
 import { pews as pewsV5 } from '../../lib/clinical-v5.js';
 import { nihss } from '../../lib/clinical.js';
 import { rcri, abcd2 } from '../../lib/clinical-v5.js';
@@ -30,7 +30,8 @@ const WAVE_48_4E_TILES = ['ich-score', 'improve-vte', 'khorana', 'dash-vte'];
 const WAVE_48_4F_TILES = ['herdoo2', 'hospital-score', 'improve-bleeding', 'aldrete-padss'];
 const WAVE_48_4G_TILES = ['lace', 'hemorr2hages', 'dapt-score', 'must-nutrition'];
 const WAVE_48_4H_TILES = ['crb65', 'isth-dic', 'pews', 'alvarado-pas'];
-const ALL_DERIVATION_TILES = [...WAVE_48_1A_TILES, ...WAVE_48_1B_TILES, ...WAVE_48_1C_TILES, ...WAVE_48_2A_TILES, ...WAVE_48_2B_TILES, ...WAVE_48_2C_TILES, ...WAVE_48_3A_TILES, ...WAVE_48_3B_TILES, ...WAVE_48_3C_TILES, ...WAVE_48_3D_TILES, ...WAVE_48_4A_TILES, ...WAVE_48_4B_TILES, ...WAVE_48_4C_TILES, ...WAVE_48_4D_TILES, ...WAVE_48_4E_TILES, ...WAVE_48_4F_TILES, ...WAVE_48_4G_TILES, ...WAVE_48_4H_TILES];
+const WAVE_48_4I_TILES = ['lips', 'westley', 'pram-asthma', 'pass-asthma'];
+const ALL_DERIVATION_TILES = [...WAVE_48_1A_TILES, ...WAVE_48_1B_TILES, ...WAVE_48_1C_TILES, ...WAVE_48_2A_TILES, ...WAVE_48_2B_TILES, ...WAVE_48_2C_TILES, ...WAVE_48_3A_TILES, ...WAVE_48_3B_TILES, ...WAVE_48_3C_TILES, ...WAVE_48_3D_TILES, ...WAVE_48_4A_TILES, ...WAVE_48_4B_TILES, ...WAVE_48_4C_TILES, ...WAVE_48_4D_TILES, ...WAVE_48_4E_TILES, ...WAVE_48_4F_TILES, ...WAVE_48_4G_TILES, ...WAVE_48_4H_TILES, ...WAVE_48_4I_TILES];
 
 for (const id of ALL_DERIVATION_TILES) {
   test(`derivation schema: ${id} has all required fields`, () => {
@@ -1921,6 +1922,101 @@ test('alvarado-pas PAS +2 weights fire correctly (cough/hop + RLQ -> 4)', () => 
   const r = pediatricAppendicitis(inputs);
   assert.equal(sumComponents(ALV_PAS_META, inputs), r.score);
   assert.equal(r.score, 4);
+});
+
+// --- Wave 48-4i: LIPS, Westley, PRAM, PASS ------------------------------
+
+const LIPS_ZERO = { shock: false, aspiration: false, sepsis: false, pneumonia: false, highRiskSurgery: false, highRiskTrauma: false, alcoholAbuse: false, obesityBmiGt30: false, hypoalbuminemia: false, chemotherapy: false, fio2Gt035or4L: false, tachypneaRrGt30: false, spo2Lt95: false, acidosisPhLt735: false, diabetes: false };
+
+test('lips components sum equals lips() (zero)', () => {
+  const r = lips(LIPS_ZERO);
+  assert.equal(sumComponents(META.lips, LIPS_ZERO), r.score);
+  assert.equal(r.score, 0);
+});
+
+test('lips diabetes alone yields -1 (protective)', () => {
+  const inputs = { ...LIPS_ZERO, diabetes: true };
+  const r = lips(inputs);
+  assert.equal(sumComponents(META.lips, inputs), r.score);
+  assert.equal(r.score, -1);
+});
+
+test('lips components sum equals lips() (high-risk band; shock + sepsis -> 3 not enough, + pneumonia -> 4.5)', () => {
+  const inputs = { ...LIPS_ZERO, shock: true, sepsis: true, pneumonia: true };
+  const r = lips(inputs);
+  assert.equal(sumComponents(META.lips, inputs), r.score);
+  assert.equal(r.score, 4.5);
+});
+
+test('lips all positive + diabetes (max -1 from protective) -> 19', () => {
+  const inputs = { shock: true, aspiration: true, sepsis: true, pneumonia: true, highRiskSurgery: true, highRiskTrauma: true, alcoholAbuse: true, obesityBmiGt30: true, hypoalbuminemia: true, chemotherapy: true, fio2Gt035or4L: true, tachypneaRrGt30: true, spo2Lt95: true, acidosisPhLt735: true, diabetes: true };
+  const r = lips(inputs);
+  assert.equal(sumComponents(META.lips, inputs), r.score);
+  assert.equal(r.score, 19);
+});
+
+test('westley components sum equals westley() (zero)', () => {
+  const inputs = { loc: 0, cyanosis: 0, stridor: 0, airEntry: 0, retractions: 0 };
+  const r = westley(inputs);
+  assert.equal(sumComponents(META.westley, inputs), r.score);
+  assert.equal(r.score, 0);
+});
+
+test('westley components sum equals westley() (max 17, all worst)', () => {
+  const inputs = { loc: 5, cyanosis: 5, stridor: 2, airEntry: 2, retractions: 3 };
+  const r = westley(inputs);
+  assert.equal(sumComponents(META.westley, inputs), r.score);
+  assert.equal(r.score, 17);
+});
+
+test('westley cyanosis with-agitation -> 4 (mid level)', () => {
+  const inputs = { loc: 0, cyanosis: 4, stridor: 0, airEntry: 0, retractions: 0 };
+  const r = westley(inputs);
+  assert.equal(sumComponents(META.westley, inputs), r.score);
+  assert.equal(r.score, 4);
+});
+
+test('pram-asthma components sum equals pramAsthma() (zero)', () => {
+  const inputs = { suprasternal: 0, scalene: 0, airEntry: 0, wheezing: 0, spo2: 0 };
+  const r = pramAsthma(inputs);
+  assert.equal(sumComponents(META['pram-asthma'], inputs), r.score);
+  assert.equal(r.score, 0);
+});
+
+test('pram-asthma components sum equals pramAsthma() (max 12)', () => {
+  const inputs = { suprasternal: 2, scalene: 2, airEntry: 3, wheezing: 3, spo2: 2 };
+  const r = pramAsthma(inputs);
+  assert.equal(sumComponents(META['pram-asthma'], inputs), r.score);
+  assert.equal(r.score, 12);
+});
+
+test('pram-asthma binary-style items (suprasternal: present -> 2, scalene: absent -> 0)', () => {
+  const inputs = { suprasternal: 2, scalene: 0, airEntry: 0, wheezing: 0, spo2: 0 };
+  const r = pramAsthma(inputs);
+  assert.equal(sumComponents(META['pram-asthma'], inputs), r.score);
+  assert.equal(r.score, 2);
+});
+
+test('pass-asthma components sum equals passAsthma() (zero)', () => {
+  const inputs = { wheezing: 0, workOfBreathing: 0, prolongedExpiration: 0 };
+  const r = passAsthma(inputs);
+  assert.equal(sumComponents(META['pass-asthma'], inputs), r.score);
+  assert.equal(r.score, 0);
+});
+
+test('pass-asthma components sum equals passAsthma() (max 6)', () => {
+  const inputs = { wheezing: 2, workOfBreathing: 2, prolongedExpiration: 2 };
+  const r = passAsthma(inputs);
+  assert.equal(sumComponents(META['pass-asthma'], inputs), r.score);
+  assert.equal(r.score, 6);
+});
+
+test('pass-asthma clamps out-of-range values to 0-2', () => {
+  const inputs = { wheezing: -1, workOfBreathing: 5, prolongedExpiration: 1 };
+  const r = passAsthma(inputs);
+  assert.equal(sumComponents(META['pass-asthma'], inputs), r.score);
+  // -1 -> 0; 5 -> 2; 1 = 3
+  assert.equal(r.score, 3);
 });
 
 // --- 4. Renderer behavior (jsdom-free smoke via stub) -------------------

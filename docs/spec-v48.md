@@ -613,6 +613,28 @@ tests covering boundary points per tile, including the ISTH DIC
 platelet three-level banded callback, the PEWS 0-3 subscale
 clamp, and the Alvarado / PAS +2 weights firing correctly.
 
+#### Wave 48-4i (shipped 2026-05-26) — LIPS, Westley, PRAM, PASS
+
+Four more long-tail tiles spanning ALI/ARDS prediction and
+pediatric respiratory severity scoring.
+
+- **LIPS** (`lips`, Gajic 2011): 15 weighted yes/no factors
+  including a protective diabetes -1 modifier; range -1 to +20.
+  Cutoff >= 4 = high risk for ALI / ARDS development.
+- **Westley croup score** (`westley`, Westley 1978): 5 items
+  with non-uniform allowed values (LOC 0/5, cyanosis 0/4/5,
+  stridor 0-2, air entry 0-2, retractions 0-3); range 0-17.
+- **PRAM** (`pram-asthma`, Chalut 2000): 5 items with
+  per-item allowed value sets (suprasternal / scalene 0 or 2;
+  air entry / wheezing 0-3; SpO2 0-2); range 0-12.
+- **PASS** (`pass-asthma`, Gorelick 2004): 3 items each 0-2
+  (clamped); range 0-6.
+
+4 new provenance logs under `docs/audits/v48/`. 18 new unit
+tests including the LIPS diabetes -1 protective weight, the
+Westley cyanosis three-level callback, the PRAM binary-style
+items at the +2 weight, and the PASS 0-2 clamp.
+
 ## 6. Testing requirements
 
 For every tile with a `derivation` block, the test suite asserts:

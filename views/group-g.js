@@ -2373,12 +2373,15 @@ export const renderers = {
     ];
     for (const [l, id] of items) root.appendChild(checkbox(l, id));
     const o = out(); root.appendChild(o);
+    const deriv = renderDerivation(META.lips);
+    if (deriv) root.appendChild(deriv);
     const run = () => safe(o, () => {
       const args = {};
       for (const [, id, key] of items) args[key] = checked(id);
       const r = S4.lips(args);
       o.appendChild(el('h2', { text: `LIPS ${r.score}` }));
       o.appendChild(el('p', { text: r.band }));
+      if (deriv) updateDerivationSteps(deriv, META.lips, args);
     });
     items.forEach(([, id]) => document.getElementById(id).addEventListener('change', run));
     run();
@@ -3473,13 +3476,17 @@ export const renderers = {
       ]));
     }
     const o = out(); root.appendChild(o);
+    const deriv = renderDerivation(META.westley);
+    if (deriv) root.appendChild(deriv);
     const run = () => safe(o, () => {
-      const r = S4.westley({
+      const inputs = {
         loc: nv('wc-loc'), cyanosis: nv('wc-cyan'), stridor: nv('wc-stri'),
         airEntry: nv('wc-air'), retractions: nv('wc-retr'),
-      });
+      };
+      const r = S4.westley(inputs);
       o.appendChild(el('h2', { text: `Westley ${r.score} of 17` }));
       o.appendChild(el('p', { text: r.band }));
+      if (deriv) updateDerivationSteps(deriv, META.westley, inputs);
     });
     selects.forEach(([, id]) => document.getElementById(id).addEventListener('change', run));
     run();
@@ -3501,13 +3508,17 @@ export const renderers = {
       ]));
     }
     const o = out(); root.appendChild(o);
+    const deriv = renderDerivation(META['pram-asthma']);
+    if (deriv) root.appendChild(deriv);
     const run = () => safe(o, () => {
-      const r = S4.pramAsthma({
+      const inputs = {
         suprasternal: nv('pr-supra'), scalene: nv('pr-scal'),
         airEntry: nv('pr-air'), wheezing: nv('pr-wheez'), spo2: nv('pr-spo2'),
-      });
+      };
+      const r = S4.pramAsthma(inputs);
       o.appendChild(el('h2', { text: `PRAM ${r.score} of 12` }));
       o.appendChild(el('p', { text: r.band }));
+      if (deriv) updateDerivationSteps(deriv, META['pram-asthma'], inputs);
     });
     selects.forEach(([, id]) => document.getElementById(id).addEventListener('change', run));
     run();
@@ -3522,14 +3533,18 @@ export const renderers = {
     ];
     for (const [l, id] of items) root.appendChild(rangeField(l, id, 0, 2, 0));
     const o = out(); root.appendChild(o);
+    const deriv = renderDerivation(META['pass-asthma']);
+    if (deriv) root.appendChild(deriv);
     const run = () => safe(o, () => {
-      const r = S4.passAsthma({
+      const inputs = {
         wheezing: nv('pa-wh'),
         workOfBreathing: nv('pa-wob'),
         prolongedExpiration: nv('pa-exp'),
-      });
+      };
+      const r = S4.passAsthma(inputs);
       o.appendChild(el('h2', { text: `PASS ${r.score} of 6` }));
       o.appendChild(el('p', { text: r.band }));
+      if (deriv) updateDerivationSteps(deriv, META['pass-asthma'], inputs);
     });
     items.forEach(([, id]) => document.getElementById(id).addEventListener('input', run));
     run();

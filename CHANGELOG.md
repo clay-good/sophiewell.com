@@ -6,6 +6,29 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v48 wave 48-4i — LIPS, Westley, PRAM, PASS)
+
+Four more long-tail derivation blocks spanning ALI/ARDS
+prediction and pediatric respiratory severity scoring.
+
+- **LIPS** (`lips`, Gajic 2011): 15 weighted yes/no factors
+  including a protective diabetes -1 modifier; range -1 to +20.
+- **Westley croup score** (`westley`, Westley 1978): 5 items
+  with non-uniform allowed values (LOC 0/5, cyanosis 0/4/5,
+  stridor 0-2, air entry 0-2, retractions 0-3); range 0-17.
+- **PRAM** (`pram-asthma`, Chalut 2000): 5 items with per-item
+  allowed value sets; range 0-12.
+- **PASS** (`pass-asthma`, Gorelick 2004): 3 items each 0-2
+  (clamped); range 0-6.
+
+4 new provenance logs under `docs/audits/v48/`. 18 new unit
+tests including the LIPS diabetes -1 protective weight, the
+Westley cyanosis three-level callback, the PRAM binary-style
+items, and the PASS 0-2 clamp.
+
+Verified: `npm run lint`, `npm run test`, `npm run sbom`, and
+`npm run build` are all green. **Catalog count 254, unchanged.**
+
 ### Added (spec-v48 wave 48-4h — CRB-65, ISTH DIC, PEWS, Alvarado/PAS)
 
 Four more long-tail derivation blocks spanning outpatient
