@@ -6,6 +6,34 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v48 wave 48-3c — NIHSS, RACE, MEOWS, SOS)
+
+Four more derivation blocks; mix of additive and formula-only.
+
+- **NIHSS** (`nihss`, Brott 1989): 13 components in the Sophie
+  tile (motor arm L+R and motor leg L+R are entered as
+  per-side sums covering the published 8-row sub-items).
+  Range 0-42 with 5-band severity stratification.
+- **RACE** (`race`, Pérez de la Ossa 2014): 5 NIHSS-derived
+  items, range 0-9, LVO threshold ≥5.
+- **MEOWS** (`meows`, Singh 2012): formula-only —
+  track-and-trigger chart with per-parameter yellow/red flags
+  and OR/AND trigger logic. NOT representable as an additive
+  sum; ships in the formula-only shape following the MELD-3.0
+  and GUSS precedents.
+- **SOS** (`sos`, Ista 2009): 15 binary symptom items observed
+  over the prior 4-hour window. Range 0-15; withdrawal cutoff
+  ≥4 per the Youden-optimal threshold from the derivation
+  cohort.
+
+4 new provenance logs under `docs/audits/v48/`. 18 new unit
+tests covering boundary points per tile (including the NIHSS
+max-42 maximum and the SOS withdrawal cutoff of 4).
+
+Verified: `npm run lint`, `npm run test`, `npm run sbom`, and
+`npm run build` are all green. Test count 1542 (was 1523;
++19). **Catalog count 254, unchanged.**
+
 ### Added (spec-v48 wave 48-3b — Barthel, ROSIER, CPSS, LAMS)
 
 Four more rehab / stroke-recognition derivation blocks. No

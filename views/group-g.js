@@ -196,11 +196,14 @@ export const renderers = {
   nihss(root) {
     for (const item of C.NIHSS_ITEMS) root.appendChild(rangeField(`${item.id}: ${item.name}`, item.id, 0, item.max, 0));
     const o = out(); root.appendChild(o);
+    const deriv = renderDerivation(META.nihss);
+    if (deriv) root.appendChild(deriv);
     const run = () => safe(o, () => {
       const ans = {};
       for (const item of C.NIHSS_ITEMS) ans[item.id] = nv(item.id);
       const r = C.nihss(ans);
       o.appendChild(el('p', { text: `NIHSS total: ${r.total} (${r.severity})` }));
+      if (deriv) updateDerivationSteps(deriv, META.nihss, ans);
     });
     C.NIHSS_ITEMS.forEach((item) => document.getElementById(item.id).addEventListener('input', run));
     run();
@@ -4223,12 +4226,15 @@ export const renderers = {
     ];
     for (const [l, id] of items) root.appendChild(rangeField(`${l} (0 absent - 1 present)`, id, 0, 1, 0));
     const o = out(); root.appendChild(o);
+    const deriv = renderDerivation(META.sos);
+    if (deriv) root.appendChild(deriv);
     const run = () => safe(o, () => {
       const input = {};
       for (const [, id, key] of items) input[key] = nv(id);
       const r = S4.sos(input);
       o.appendChild(el('h2', { text: `SOS ${r.score} of 15 (${r.band})` }));
       o.appendChild(el('p', { text: r.text }));
+      if (deriv) updateDerivationSteps(deriv, META.sos, input);
     });
     items.forEach(([, id]) => document.getElementById(id).addEventListener('input', run));
     run();
@@ -4261,6 +4267,8 @@ export const renderers = {
     ]));
     root.appendChild(rangeField('Pain score', 'mw-pain', 0, 3, 0));
     const o = out(); root.appendChild(o);
+    const deriv = renderDerivation(META.meows);
+    if (deriv) root.appendChild(deriv);
     const run = () => safe(o, () => {
       const r = S4.meows({
         rr: nv('mw-rr'), spo2: nv('mw-spo2'), temp: nv('mw-temp'),
@@ -4530,12 +4538,15 @@ export const renderers = {
       root.appendChild(rangeField(label, id, 0, max, 0));
     }
     const o = out(); root.appendChild(o);
+    const deriv = renderDerivation(META.race);
+    if (deriv) root.appendChild(deriv);
     const run = () => safe(o, () => {
       const input = {};
       for (const [, id, key] of items) input[key] = Math.trunc(nv(id));
       const r = S4.race(input);
       o.appendChild(el('h2', { text: `RACE ${r.score} of 9 (${r.band})` }));
       o.appendChild(el('p', { text: r.text }));
+      if (deriv) updateDerivationSteps(deriv, META.race, input);
     });
     items.forEach(([, id]) => document.getElementById(id).addEventListener('input', run));
     run();

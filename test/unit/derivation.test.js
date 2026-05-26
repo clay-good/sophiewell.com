@@ -4,7 +4,8 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { META } from '../../lib/meta.js';
 import { wellsPe, gcs, wellsDvt, chadsVasc, hasBled } from '../../lib/clinical.js';
-import { qsofa, timi, heart, perc, sofa, news2, meld30, curb65, centor, mcisaac, ciwaAr, fourScore, bisap, cows, icdsc, fourAt, psi, cpot, bps, braden, morseFalls, lawtonIadl, katzAdl, barthel, rosier, cpss, lams } from '../../lib/scoring-v4.js';
+import { qsofa, timi, heart, perc, sofa, news2, meld30, curb65, centor, mcisaac, ciwaAr, fourScore, bisap, cows, icdsc, fourAt, psi, cpot, bps, braden, morseFalls, lawtonIadl, katzAdl, barthel, rosier, cpss, lams, race, sos } from '../../lib/scoring-v4.js';
+import { nihss } from '../../lib/clinical.js';
 
 // --- 1. Schema completeness ---------------------------------------------
 
@@ -17,7 +18,8 @@ const WAVE_48_2B_TILES = ['ranson-bisap', 'cows', 'icdsc', '4at'];
 const WAVE_48_2C_TILES = ['psi', 'cpot', 'bps', 'guss'];
 const WAVE_48_3A_TILES = ['braden', 'morse-falls', 'lawton-iadl', 'katz-adl'];
 const WAVE_48_3B_TILES = ['barthel', 'rosier', 'cpss', 'lams'];
-const ALL_DERIVATION_TILES = [...WAVE_48_1A_TILES, ...WAVE_48_1B_TILES, ...WAVE_48_1C_TILES, ...WAVE_48_2A_TILES, ...WAVE_48_2B_TILES, ...WAVE_48_2C_TILES, ...WAVE_48_3A_TILES, ...WAVE_48_3B_TILES];
+const WAVE_48_3C_TILES = ['nihss', 'race', 'meows', 'sos'];
+const ALL_DERIVATION_TILES = [...WAVE_48_1A_TILES, ...WAVE_48_1B_TILES, ...WAVE_48_1C_TILES, ...WAVE_48_2A_TILES, ...WAVE_48_2B_TILES, ...WAVE_48_2C_TILES, ...WAVE_48_3A_TILES, ...WAVE_48_3B_TILES, ...WAVE_48_3C_TILES];
 
 for (const id of ALL_DERIVATION_TILES) {
   test(`derivation schema: ${id} has all required fields`, () => {
@@ -900,6 +902,100 @@ test('lams components sum equals lams() (max 5)', () => {
   const r = lams(inputs);
   assert.equal(sumComponents(META.lams, inputs), r.score);
   assert.equal(r.score, 5);
+});
+
+// --- Wave 48-3c: NIHSS, RACE, MEOWS, SOS --------------------------------
+
+test('nihss components sum equals nihss() (worked example 5, moderate)', () => {
+  const inputs = { '1a': 1, '1b': 0, '1c': 0, '2': 0, '3': 0, '4': 1, '5': 2, '6': 0, '7': 0, '8': 0, '9': 1, '10': 0, '11': 0 };
+  const r = nihss(inputs);
+  assert.equal(sumComponents(META.nihss, inputs), r.total);
+  assert.equal(r.total, 5);
+});
+
+test('nihss components sum equals nihss() (zero)', () => {
+  const inputs = { '1a': 0, '1b': 0, '1c': 0, '2': 0, '3': 0, '4': 0, '5': 0, '6': 0, '7': 0, '8': 0, '9': 0, '10': 0, '11': 0 };
+  const r = nihss(inputs);
+  assert.equal(sumComponents(META.nihss, inputs), r.total);
+});
+
+test('nihss components sum equals nihss() (max 42)', () => {
+  const inputs = { '1a': 3, '1b': 2, '1c': 2, '2': 2, '3': 3, '4': 3, '5': 8, '6': 8, '7': 2, '8': 2, '9': 3, '10': 2, '11': 2 };
+  const r = nihss(inputs);
+  assert.equal(sumComponents(META.nihss, inputs), r.total);
+  assert.equal(r.total, 42);
+});
+
+test('race components sum equals race() (zero, LVO less likely)', () => {
+  const inputs = { facialPalsy: 0, armMotor: 0, legMotor: 0, gaze: 0, languageAgnosia: 0 };
+  const r = race(inputs);
+  assert.equal(sumComponents(META.race, inputs), r.score);
+  assert.equal(r.score, 0);
+});
+
+test('race components sum equals race() (cutoff 5, LVO likely)', () => {
+  // 1+1+1+1+1 = 5
+  const inputs = { facialPalsy: 1, armMotor: 1, legMotor: 1, gaze: 1, languageAgnosia: 1 };
+  const r = race(inputs);
+  assert.equal(sumComponents(META.race, inputs), r.score);
+  assert.equal(r.score, 5);
+  assert.equal(r.lvoLikely, true);
+});
+
+test('race components sum equals race() (max 9)', () => {
+  const inputs = { facialPalsy: 2, armMotor: 2, legMotor: 2, gaze: 1, languageAgnosia: 2 };
+  const r = race(inputs);
+  assert.equal(sumComponents(META.race, inputs), r.score);
+  assert.equal(r.score, 9);
+});
+
+test('meows derivation is formula-only (no components; track-and-trigger)', () => {
+  const d = META.meows.derivation;
+  assert.ok(d);
+  assert.equal(d.components, undefined);
+  for (const k of REQUIRED_FIELDS) assert.ok(d[k] !== undefined, `derivation.${k}`);
+});
+
+test('meows derivation bands are no-trigger / trigger', () => {
+  const bands = META.meows.derivation.bands;
+  assert.equal(bands.length, 2);
+});
+
+test('sos components sum equals sos() (zero)', () => {
+  const inputs = {
+    tachycardia: 0, tachypnea: 0, fever: 0, sweating: 0, agitation: 0,
+    anxiety: 0, grimacing: 0, sleeplessness: 0, hallucinations: 0,
+    motorDisturbance: 0, hypertonia: 0, tremor: 0, vomiting: 0, diarrhea: 0,
+    inconsolableCrying: 0,
+  };
+  const r = sos(inputs);
+  assert.equal(sumComponents(META.sos, inputs), r.score);
+  assert.equal(r.score, 0);
+});
+
+test('sos components sum equals sos() (cutoff 4, withdrawal present)', () => {
+  const inputs = {
+    tachycardia: 1, tachypnea: 1, fever: 0, sweating: 1, agitation: 1,
+    anxiety: 0, grimacing: 0, sleeplessness: 0, hallucinations: 0,
+    motorDisturbance: 0, hypertonia: 0, tremor: 0, vomiting: 0, diarrhea: 0,
+    inconsolableCrying: 0,
+  };
+  const r = sos(inputs);
+  assert.equal(sumComponents(META.sos, inputs), r.score);
+  assert.equal(r.score, 4);
+  assert.equal(r.withdrawal, true);
+});
+
+test('sos components sum equals sos() (max 15)', () => {
+  const inputs = {
+    tachycardia: 1, tachypnea: 1, fever: 1, sweating: 1, agitation: 1,
+    anxiety: 1, grimacing: 1, sleeplessness: 1, hallucinations: 1,
+    motorDisturbance: 1, hypertonia: 1, tremor: 1, vomiting: 1, diarrhea: 1,
+    inconsolableCrying: 1,
+  };
+  const r = sos(inputs);
+  assert.equal(sumComponents(META.sos, inputs), r.score);
+  assert.equal(r.score, 15);
 });
 
 // --- 4. Renderer behavior (jsdom-free smoke via stub) -------------------

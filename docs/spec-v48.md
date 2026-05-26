@@ -370,6 +370,23 @@ additive blocks; no infrastructure changes.
 13 new unit tests covering boundary points per tile,
 including the ROSIER mimic-subtraction path.
 
+#### Wave 48-3c (shipped 2026-05-26) — NIHSS, RACE, MEOWS, SOS
+
+Four more tiles. Mix of additive and formula-only.
+
+- **NIHSS** (Brott 1989): 13 components in the Sophie tile
+  (motor arm L+R and motor leg L+R are entered as per-side
+  sums). Range 0-42.
+- **RACE** (Pérez de la Ossa 2014): 5 NIHSS-derived items,
+  range 0-9, LVO threshold ≥5.
+- **MEOWS** (Singh 2012): formula-only — track-and-trigger
+  with per-parameter yellow/red flags and OR/AND trigger
+  logic (not faithfully representable as additive sum).
+- **SOS** (Ista 2009): 15 binary symptom items over the prior
+  4-hour window, range 0-15, withdrawal cutoff ≥4.
+
+18 new unit tests covering boundary points per tile.
+
 ### Wave 48-4+ — Long-tail
 
 Backfill the remaining tiles in subsequent maintenance waves. A
