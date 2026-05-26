@@ -6,6 +6,31 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v48 wave 48-4b — ORBIT Bleeding, PAINAD, CAGE, Mini-Cog)
+
+Four more long-tail derivation blocks across bleeding, pain,
+addiction, and cognition. No infrastructure changes.
+
+- **ORBIT Bleeding** (`orbit-bleeding`, O'Brien 2015): 5
+  weighted criteria, range 0-7. AF bleeding-risk companion to
+  ATRIA and HAS-BLED.
+- **PAINAD** (`painad`, Warden 2003): 5 nurse-observed
+  behaviors × 0-2 = range 0-10. Adult-dementia analog of
+  FLACC; same 0 / 1-3 / 4-6 / 7-10 band structure.
+- **CAGE** (`cage`, Ewing 1984): screener-based, 4 binary
+  items, range 0-4. Mnemonic CAGE; cutoff ≥2 = positive screen
+  for alcohol use disorder.
+- **Mini-Cog** (`mini-cog`, Borson 2000): 2 components — 3-word
+  recall (0-3) + clock-draw (0 or 2). Total 0-5; cutoff <3 =
+  positive screen for cognitive impairment.
+
+4 new provenance logs under `docs/audits/v48/`. 13 new unit
+tests covering boundary points per tile.
+
+Verified: `npm run lint`, `npm run test`, `npm run sbom`, and
+`npm run build` are all green. Test count 1600 (was 1580;
++20). **Catalog count 254, unchanged.**
+
 ### Added (spec-v48 wave 48-4a — ATRIA Bleeding, Hendrich II, FLACC, AUDIT-C)
 
 Opens spec-v48 wave 48-4 (long-tail backfill) with four

@@ -445,6 +445,22 @@ already shipped in earlier waves):
 the Hendrich II tri-level get-up-and-go callback and the
 AUDIT-C screener-indexed sums.
 
+#### Wave 48-4b (shipped 2026-05-26) — ORBIT Bleeding, PAINAD, CAGE, Mini-Cog
+
+Four more long-tail tiles spanning bleeding / pain / addiction /
+cognition. No infrastructure changes.
+
+- **ORBIT Bleeding** (O'Brien 2015): 5 weighted criteria,
+  range 0-7. Bleeding-risk companion to ATRIA / HAS-BLED.
+- **PAINAD** (Warden 2003): 5 behaviors × 0-2 = range 0-10.
+  Adult-dementia analog of FLACC; same 0/1-3/4-6/7-10 bands.
+- **CAGE** (Ewing 1984): screener-based, 4 binary items,
+  range 0-4. Mnemonic CAGE; cutoff ≥2.
+- **Mini-Cog** (Borson 2000): 2 components — 3-word recall
+  (0-3) + clock-draw (0 or 2); total 0-5; cutoff <3 positive.
+
+13 new unit tests covering boundary points per tile.
+
 ## 6. Testing requirements
 
 For every tile with a `derivation` block, the test suite asserts:

@@ -782,7 +782,24 @@ export const renderers = {
       updateDerivationSteps(deriv, META.auditc, inputs);
     }
   },
-  cage(root) { renderScreener(root, S4.CAGE_CONFIG); },
+  cage(root) {
+    let deriv = null;
+    renderScreener(root, S4.CAGE_CONFIG, {
+      onUpdate: (answers) => {
+        if (!deriv) return;
+        const inputs = {};
+        answers.forEach((a, i) => { inputs[String(i)] = a; });
+        updateDerivationSteps(deriv, META.cage, inputs);
+      },
+    });
+    deriv = renderDerivation(META.cage);
+    if (deriv) {
+      root.appendChild(deriv);
+      const inputs = {};
+      (S4.CAGE_CONFIG.exampleAnswers || []).forEach((a, i) => { inputs[String(i)] = a; });
+      updateDerivationSteps(deriv, META.cage, inputs);
+    }
+  },
   epds(root) { renderScreener(root, S4.EPDS_CONFIG); },
   'mini-cog'(root) {
     root.appendChild(el('p', {}, [
@@ -791,10 +808,14 @@ export const renderers = {
     ]));
     root.appendChild(checkbox('Clock draw is normal', 'mc-clock'));
     const o = out(); root.appendChild(o);
+    const deriv = renderDerivation(META['mini-cog']);
+    if (deriv) root.appendChild(deriv);
     const run = () => safe(o, () => {
-      const r = S4.miniCog({ wordsRecalled: nv('mc-w'), clockNormal: checked('mc-clock') });
+      const inputs = { wordsRecalled: nv('mc-w'), clockNormal: checked('mc-clock') };
+      const r = S4.miniCog(inputs);
       o.appendChild(el('h2', { text: `Mini-Cog: ${r.score}/5` }));
       o.appendChild(el('p', { text: r.band }));
+      if (deriv) updateDerivationSteps(deriv, META['mini-cog'], inputs);
     });
     document.getElementById('mc-w').addEventListener('input', run);
     document.getElementById('mc-clock').addEventListener('change', run);
@@ -2607,16 +2628,20 @@ export const renderers = {
     ];
     for (const [l, id] of items) root.appendChild(checkbox(l, id));
     const o = out(); root.appendChild(o);
+    const deriv = renderDerivation(META['orbit-bleeding']);
+    if (deriv) root.appendChild(deriv);
     const run = () => safe(o, () => {
-      const r = S4.orbitBleeding({
+      const inputs = {
         lowHbOrHct: checked('ob-hb'),
         ageGt74: checked('ob-age'),
         bleedingHistory: checked('ob-bh'),
         renalInsufficiency: checked('ob-ri'),
         antiplatelet: checked('ob-ap'),
-      });
+      };
+      const r = S4.orbitBleeding(inputs);
       o.appendChild(el('h2', { text: `ORBIT ${r.score} of 7` }));
       o.appendChild(el('p', { text: r.band }));
+      if (deriv) updateDerivationSteps(deriv, META['orbit-bleeding'], inputs);
     });
     items.forEach(([, id]) => document.getElementById(id).addEventListener('change', run));
     run();
@@ -4053,13 +4078,17 @@ export const renderers = {
     ];
     for (const [l, id] of items) root.appendChild(rangeField(l, id, 0, 2, 0));
     const o = out(); root.appendChild(o);
+    const deriv = renderDerivation(META.painad);
+    if (deriv) root.appendChild(deriv);
     const run = () => safe(o, () => {
-      const r = S4.painad({
+      const inputs = {
         breathing: nv('pa-br'), vocalization: nv('pa-vo'),
         facial: nv('pa-fa'), bodyLanguage: nv('pa-bl'), consolability: nv('pa-cons'),
-      });
+      };
+      const r = S4.painad(inputs);
       o.appendChild(el('h2', { text: `PAINAD ${r.score} (${r.band})` }));
       o.appendChild(el('p', { text: r.text }));
+      if (deriv) updateDerivationSteps(deriv, META.painad, inputs);
     });
     items.forEach(([, id]) => document.getElementById(id).addEventListener('input', run));
     run();

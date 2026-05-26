@@ -4,7 +4,7 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { META } from '../../lib/meta.js';
 import { wellsPe, gcs, wellsDvt, chadsVasc, hasBled } from '../../lib/clinical.js';
-import { qsofa, timi, heart, perc, sofa, news2, meld30, curb65, centor, mcisaac, ciwaAr, fourScore, bisap, cows, icdsc, fourAt, psi, cpot, bps, braden, morseFalls, lawtonIadl, katzAdl, barthel, rosier, cpss, lams, race, sos, flacc, hendrichII, atriaBleeding } from '../../lib/scoring-v4.js';
+import { qsofa, timi, heart, perc, sofa, news2, meld30, curb65, centor, mcisaac, ciwaAr, fourScore, bisap, cows, icdsc, fourAt, psi, cpot, bps, braden, morseFalls, lawtonIadl, katzAdl, barthel, rosier, cpss, lams, race, sos, flacc, hendrichII, atriaBleeding, orbitBleeding, painad, miniCog } from '../../lib/scoring-v4.js';
 import { nihss } from '../../lib/clinical.js';
 
 // --- 1. Schema completeness ---------------------------------------------
@@ -21,7 +21,8 @@ const WAVE_48_3B_TILES = ['barthel', 'rosier', 'cpss', 'lams'];
 const WAVE_48_3C_TILES = ['nihss', 'race', 'meows', 'sos'];
 const WAVE_48_3D_TILES = ['phq9', 'gad7', 'cam', 'cssrs'];
 const WAVE_48_4A_TILES = ['atria-bleeding', 'hendrich-ii', 'flacc', 'auditc'];
-const ALL_DERIVATION_TILES = [...WAVE_48_1A_TILES, ...WAVE_48_1B_TILES, ...WAVE_48_1C_TILES, ...WAVE_48_2A_TILES, ...WAVE_48_2B_TILES, ...WAVE_48_2C_TILES, ...WAVE_48_3A_TILES, ...WAVE_48_3B_TILES, ...WAVE_48_3C_TILES, ...WAVE_48_3D_TILES, ...WAVE_48_4A_TILES];
+const WAVE_48_4B_TILES = ['orbit-bleeding', 'painad', 'cage', 'mini-cog'];
+const ALL_DERIVATION_TILES = [...WAVE_48_1A_TILES, ...WAVE_48_1B_TILES, ...WAVE_48_1C_TILES, ...WAVE_48_2A_TILES, ...WAVE_48_2B_TILES, ...WAVE_48_2C_TILES, ...WAVE_48_3A_TILES, ...WAVE_48_3B_TILES, ...WAVE_48_3C_TILES, ...WAVE_48_3D_TILES, ...WAVE_48_4A_TILES, ...WAVE_48_4B_TILES];
 
 for (const id of ALL_DERIVATION_TILES) {
   test(`derivation schema: ${id} has all required fields`, () => {
@@ -1147,6 +1148,89 @@ test('auditc bands cover 0-12 contiguously', () => {
   assert.equal(bands.length, 3);
   assert.deepEqual(bands[0].range, [0, 2]);
   assert.deepEqual(bands[2].range, [8, 12]);
+});
+
+// --- Wave 48-4b: ORBIT Bleeding, PAINAD, CAGE, Mini-Cog -----------------
+
+test('orbit-bleeding components sum equals orbitBleeding() (zero)', () => {
+  const inputs = { lowHbOrHct: false, ageGt74: false, bleedingHistory: false, renalInsufficiency: false, antiplatelet: false };
+  const r = orbitBleeding(inputs);
+  assert.equal(sumComponents(META['orbit-bleeding'], inputs), r.score);
+  assert.equal(r.score, 0);
+});
+
+test('orbit-bleeding components sum equals orbitBleeding() (intermediate 3)', () => {
+  // lowHbOrHct +2, antiplatelet +1 = 3
+  const inputs = { lowHbOrHct: true, ageGt74: false, bleedingHistory: false, renalInsufficiency: false, antiplatelet: true };
+  const r = orbitBleeding(inputs);
+  assert.equal(sumComponents(META['orbit-bleeding'], inputs), r.score);
+  assert.equal(r.score, 3);
+});
+
+test('orbit-bleeding components sum equals orbitBleeding() (max 7)', () => {
+  const inputs = { lowHbOrHct: true, ageGt74: true, bleedingHistory: true, renalInsufficiency: true, antiplatelet: true };
+  const r = orbitBleeding(inputs);
+  assert.equal(sumComponents(META['orbit-bleeding'], inputs), r.score);
+  assert.equal(r.score, 7);
+});
+
+test('painad components sum equals painad() (zero, no pain)', () => {
+  const inputs = { breathing: 0, vocalization: 0, facial: 0, bodyLanguage: 0, consolability: 0 };
+  const r = painad(inputs);
+  assert.equal(sumComponents(META.painad, inputs), r.score);
+  assert.equal(r.score, 0);
+});
+
+test('painad components sum equals painad() (moderate 5)', () => {
+  const inputs = { breathing: 1, vocalization: 1, facial: 1, bodyLanguage: 1, consolability: 1 };
+  const r = painad(inputs);
+  assert.equal(sumComponents(META.painad, inputs), r.score);
+  assert.equal(r.score, 5);
+});
+
+test('painad components sum equals painad() (max 10)', () => {
+  const inputs = { breathing: 2, vocalization: 2, facial: 2, bodyLanguage: 2, consolability: 2 };
+  const r = painad(inputs);
+  assert.equal(sumComponents(META.painad, inputs), r.score);
+  assert.equal(r.score, 10);
+});
+
+test('cage components sum (zero)', () => {
+  const inputs = { '0': 0, '1': 0, '2': 0, '3': 0 };
+  assert.equal(sumComponents(META.cage, inputs), 0);
+});
+
+test('cage components sum (positive 2)', () => {
+  const inputs = { '0': 1, '1': 0, '2': 1, '3': 0 };
+  assert.equal(sumComponents(META.cage, inputs), 2);
+});
+
+test('cage components sum (max 4)', () => {
+  const inputs = { '0': 1, '1': 1, '2': 1, '3': 1 };
+  assert.equal(sumComponents(META.cage, inputs), 4);
+});
+
+test('mini-cog components sum equals miniCog() (negative 5, max)', () => {
+  const inputs = { wordsRecalled: 3, clockNormal: true };
+  const r = miniCog(inputs);
+  assert.equal(sumComponents(META['mini-cog'], inputs), r.score);
+  assert.equal(r.score, 5);
+});
+
+test('mini-cog components sum equals miniCog() (positive 2, cutoff just below)', () => {
+  // wordsRecalled 2, clockNormal false -> 2 (positive screen)
+  const inputs = { wordsRecalled: 2, clockNormal: false };
+  const r = miniCog(inputs);
+  assert.equal(sumComponents(META['mini-cog'], inputs), r.score);
+  assert.equal(r.score, 2);
+});
+
+test('mini-cog components sum equals miniCog() (negative 3, cutoff just at)', () => {
+  // wordsRecalled 3, clockNormal false -> 3 (negative screen)
+  const inputs = { wordsRecalled: 3, clockNormal: false };
+  const r = miniCog(inputs);
+  assert.equal(sumComponents(META['mini-cog'], inputs), r.score);
+  assert.equal(r.score, 3);
 });
 
 // --- 4. Renderer behavior (jsdom-free smoke via stub) -------------------
