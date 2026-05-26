@@ -387,6 +387,35 @@ Four more tiles. Mix of additive and formula-only.
 
 18 new unit tests covering boundary points per tile.
 
+#### Wave 48-3d (shipped 2026-05-26) — PHQ-9, GAD-7, CAM, C-SSRS
+
+Four more behavioral / cognitive screens with infrastructure
+work on the screener side. Closes the additive-screen portion
+of wave 48-3; remaining work is mostly long-tail catalog tiles
+under wave 48-4+.
+
+- **lib/screener.js**: `renderScreener` now accepts an optional
+  `opts.onUpdate(answers, score, band)` callback. The
+  PHQ-9 / GAD-7 tile views use it to update the derivation
+  steps every time a radio toggles, without re-rendering the
+  whole `<details>` block (preserving the user's open/closed
+  state).
+- **PHQ-9** (Kroenke 2001): 9 items × 0-3 = range 0-27, 5
+  severity bands. Component `inputKey`s are the item *index*
+  as a string (`'0'`-`'8'`) — the tile converts the screener's
+  numeric-indexed answers array into a keyed input object for
+  the derivation renderer.
+- **GAD-7** (Spitzer 2006): 7 items × 0-3 = range 0-21, 4
+  severity bands.
+- **CAM** (Inouye 1990): formula-only — algorithmic
+  `(F1 AND F2) AND (F3 OR F4)`, not additive.
+- **C-SSRS Screener** (Posner 2011): formula-only — logic-based
+  band stratification (HIGH/MODERATE/LOW/NONE), not additive.
+
+4 new provenance logs under `docs/audits/v48/`. 12 new unit
+tests including the screener-indexed component sums for PHQ-9
+and GAD-7 and formula-only schema asserts for CAM and C-SSRS.
+
 ### Wave 48-4+ — Long-tail
 
 Backfill the remaining tiles in subsequent maintenance waves. A

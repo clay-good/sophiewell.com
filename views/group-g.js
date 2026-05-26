@@ -727,8 +727,43 @@ export const renderers = {
 
   // mrs removed in spec-v29 wave 29-2 (Group G non-scores): static reference table.
 
-  phq9(root) { renderScreener(root, S4.PHQ9_CONFIG); },
-  gad7(root) { renderScreener(root, S4.GAD7_CONFIG); },
+  phq9(root) {
+    let deriv = null;
+    renderScreener(root, S4.PHQ9_CONFIG, {
+      onUpdate: (answers) => {
+        if (!deriv) return;
+        const inputs = {};
+        answers.forEach((a, i) => { inputs[String(i)] = a; });
+        updateDerivationSteps(deriv, META.phq9, inputs);
+      },
+    });
+    deriv = renderDerivation(META.phq9);
+    if (deriv) {
+      root.appendChild(deriv);
+      // Trigger initial steps render with the current screener answers (example pre-fill).
+      const inputs = {};
+      (S4.PHQ9_CONFIG.exampleAnswers || []).forEach((a, i) => { inputs[String(i)] = a; });
+      updateDerivationSteps(deriv, META.phq9, inputs);
+    }
+  },
+  gad7(root) {
+    let deriv = null;
+    renderScreener(root, S4.GAD7_CONFIG, {
+      onUpdate: (answers) => {
+        if (!deriv) return;
+        const inputs = {};
+        answers.forEach((a, i) => { inputs[String(i)] = a; });
+        updateDerivationSteps(deriv, META.gad7, inputs);
+      },
+    });
+    deriv = renderDerivation(META.gad7);
+    if (deriv) {
+      root.appendChild(deriv);
+      const inputs = {};
+      (S4.GAD7_CONFIG.exampleAnswers || []).forEach((a, i) => { inputs[String(i)] = a; });
+      updateDerivationSteps(deriv, META.gad7, inputs);
+    }
+  },
   auditc(root) { renderScreener(root, S4.AUDITC_CONFIG); },
   cage(root) { renderScreener(root, S4.CAGE_CONFIG); },
   epds(root) { renderScreener(root, S4.EPDS_CONFIG); },
@@ -3939,6 +3974,8 @@ export const renderers = {
     ];
     for (const [l, id] of items) root.appendChild(checkbox(l, id));
     const o = out(); root.appendChild(o);
+    const deriv = renderDerivation(META.cam);
+    if (deriv) root.appendChild(deriv);
     const run = () => safe(o, () => {
       const r = S4.cam({
         acuteFluctuating: checked('cam-f1'),
@@ -4301,6 +4338,8 @@ export const renderers = {
     ];
     for (const [label, id] of items) root.appendChild(checkbox(label, id));
     const o = out(); root.appendChild(o);
+    const deriv = renderDerivation(META.cssrs);
+    if (deriv) root.appendChild(deriv);
     const run = () => safe(o, () => {
       const input = {};
       for (const [, id, key] of items) input[key] = checked(id);

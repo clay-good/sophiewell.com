@@ -6,6 +6,39 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v48 wave 48-3d — PHQ-9, GAD-7, CAM, C-SSRS)
+
+Four more behavioral / cognitive screens. Includes one
+infrastructure extension to make screener-based tiles
+drive derivation steps.
+
+- `lib/screener.js renderScreener` now accepts an optional
+  `opts.onUpdate(answers, score, band)` callback fired every
+  time `renderResult` runs. PHQ-9 / GAD-7 tile views use it to
+  update the derivation steps in-place without re-rendering
+  the whole `<details>` block (so the user's open/closed state
+  is preserved).
+- **PHQ-9** (`phq9`, Kroenke 2001): 9 items × 0-3, range 0-27,
+  5 severity bands. Component `inputKey`s are the item index
+  as a string (`'0'`-`'8'`); the tile converts the screener's
+  numeric-indexed `answers` array into a keyed input object
+  for the derivation renderer.
+- **GAD-7** (`gad7`, Spitzer 2006): 7 items × 0-3, range 0-21,
+  4 severity bands.
+- **CAM** (`cam`, Inouye 1990): formula-only — algorithm is the
+  boolean `(F1 AND F2) AND (F3 OR F4)`, not an additive sum.
+- **C-SSRS Screener** (`cssrs`, Posner 2011): formula-only —
+  logic-based banding (HIGH / MODERATE / LOW / NONE), not
+  additive.
+
+4 new provenance logs under `docs/audits/v48/`. 12 new unit
+tests including screener-indexed component sums for PHQ-9 and
+GAD-7 and formula-only schema asserts for CAM and C-SSRS.
+
+Verified: `npm run lint`, `npm run test`, `npm run sbom`, and
+`npm run build` are all green. Test count 1559 (was 1542;
++17). **Catalog count 254, unchanged.**
+
 ### Added (spec-v48 wave 48-3c — NIHSS, RACE, MEOWS, SOS)
 
 Four more derivation blocks; mix of additive and formula-only.

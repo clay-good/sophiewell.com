@@ -19,7 +19,8 @@ const WAVE_48_2C_TILES = ['psi', 'cpot', 'bps', 'guss'];
 const WAVE_48_3A_TILES = ['braden', 'morse-falls', 'lawton-iadl', 'katz-adl'];
 const WAVE_48_3B_TILES = ['barthel', 'rosier', 'cpss', 'lams'];
 const WAVE_48_3C_TILES = ['nihss', 'race', 'meows', 'sos'];
-const ALL_DERIVATION_TILES = [...WAVE_48_1A_TILES, ...WAVE_48_1B_TILES, ...WAVE_48_1C_TILES, ...WAVE_48_2A_TILES, ...WAVE_48_2B_TILES, ...WAVE_48_2C_TILES, ...WAVE_48_3A_TILES, ...WAVE_48_3B_TILES, ...WAVE_48_3C_TILES];
+const WAVE_48_3D_TILES = ['phq9', 'gad7', 'cam', 'cssrs'];
+const ALL_DERIVATION_TILES = [...WAVE_48_1A_TILES, ...WAVE_48_1B_TILES, ...WAVE_48_1C_TILES, ...WAVE_48_2A_TILES, ...WAVE_48_2B_TILES, ...WAVE_48_2C_TILES, ...WAVE_48_3A_TILES, ...WAVE_48_3B_TILES, ...WAVE_48_3C_TILES, ...WAVE_48_3D_TILES];
 
 for (const id of ALL_DERIVATION_TILES) {
   test(`derivation schema: ${id} has all required fields`, () => {
@@ -996,6 +997,63 @@ test('sos components sum equals sos() (max 15)', () => {
   const r = sos(inputs);
   assert.equal(sumComponents(META.sos, inputs), r.score);
   assert.equal(r.score, 15);
+});
+
+// --- Wave 48-3d: PHQ-9, GAD-7, CAM (formula-only), C-SSRS (formula-only) ---
+
+test('phq9 components sum equals scoreScreener() (max 27)', () => {
+  const inputs = { '0': 3, '1': 3, '2': 3, '3': 3, '4': 3, '5': 3, '6': 3, '7': 3, '8': 3 };
+  assert.equal(sumComponents(META.phq9, inputs), 27);
+});
+
+test('phq9 components sum equals scoreScreener() (worked example 8)', () => {
+  // Per PHQ9_CONFIG.exampleAnswers [1, 1, 1, 2, 1, 0, 1, 0, 0] -> 7? Let me sum: 1+1+1+2+1+0+1+0+0 = 7
+  const inputs = { '0': 1, '1': 1, '2': 1, '3': 2, '4': 1, '5': 0, '6': 1, '7': 0, '8': 0 };
+  assert.equal(sumComponents(META.phq9, inputs), 7);
+});
+
+test('phq9 components sum equals scoreScreener() (zero)', () => {
+  const inputs = { '0': 0, '1': 0, '2': 0, '3': 0, '4': 0, '5': 0, '6': 0, '7': 0, '8': 0 };
+  assert.equal(sumComponents(META.phq9, inputs), 0);
+});
+
+test('phq9 bands cover 0-27', () => {
+  const bands = META.phq9.derivation.bands;
+  assert.equal(bands.length, 5);
+  assert.deepEqual(bands[0].range, [0, 4]);
+  assert.deepEqual(bands[4].range, [20, 27]);
+});
+
+test('gad7 components sum equals scoreScreener() (max 21)', () => {
+  const inputs = { '0': 3, '1': 3, '2': 3, '3': 3, '4': 3, '5': 3, '6': 3 };
+  assert.equal(sumComponents(META.gad7, inputs), 21);
+});
+
+test('gad7 components sum equals scoreScreener() (worked example 7)', () => {
+  // GAD7_CONFIG.exampleAnswers [1, 1, 1, 2, 0, 1, 1] -> 7
+  const inputs = { '0': 1, '1': 1, '2': 1, '3': 2, '4': 0, '5': 1, '6': 1 };
+  assert.equal(sumComponents(META.gad7, inputs), 7);
+});
+
+test('gad7 bands cover 0-21', () => {
+  const bands = META.gad7.derivation.bands;
+  assert.equal(bands.length, 4);
+  assert.deepEqual(bands[0].range, [0, 4]);
+  assert.deepEqual(bands[3].range, [15, 21]);
+});
+
+test('cam derivation is formula-only (no components; boolean algorithm)', () => {
+  const d = META.cam.derivation;
+  assert.ok(d);
+  assert.equal(d.components, undefined);
+  for (const k of REQUIRED_FIELDS) assert.ok(d[k] !== undefined, `derivation.${k}`);
+});
+
+test('cssrs derivation is formula-only (no components; logic-based band)', () => {
+  const d = META.cssrs.derivation;
+  assert.ok(d);
+  assert.equal(d.components, undefined);
+  for (const k of REQUIRED_FIELDS) assert.ok(d[k] !== undefined, `derivation.${k}`);
 });
 
 // --- 4. Renderer behavior (jsdom-free smoke via stub) -------------------
