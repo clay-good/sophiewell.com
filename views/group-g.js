@@ -800,7 +800,24 @@ export const renderers = {
       updateDerivationSteps(deriv, META.cage, inputs);
     }
   },
-  epds(root) { renderScreener(root, S4.EPDS_CONFIG); },
+  epds(root) {
+    let deriv = null;
+    renderScreener(root, S4.EPDS_CONFIG, {
+      onUpdate: (answers) => {
+        if (!deriv) return;
+        const inputs = {};
+        answers.forEach((a, i) => { inputs[String(i)] = a; });
+        updateDerivationSteps(deriv, META.epds, inputs);
+      },
+    });
+    deriv = renderDerivation(META.epds);
+    if (deriv) {
+      root.appendChild(deriv);
+      const inputs = {};
+      (S4.EPDS_CONFIG.exampleAnswers || []).forEach((a, i) => { inputs[String(i)] = a; });
+      updateDerivationSteps(deriv, META.epds, inputs);
+    }
+  },
   'mini-cog'(root) {
     root.appendChild(el('p', {}, [
       el('label', { for: 'mc-w', text: 'Words recalled (0-3)' }), el('br'),
@@ -1160,17 +1177,21 @@ export const renderers = {
       ]),
     ]));
     const o = out(); root.appendChild(o);
+    const deriv = renderDerivation(META.mews);
+    if (deriv) root.appendChild(deriv);
     const run = () => safe(o, () => {
-      const r = S4.mews({
+      const inputs = {
         sbp: nv('me-sbp'), pulse: nv('me-pulse'),
         rr: nv('me-rr'), temp: nv('me-temp'),
         avpu: document.getElementById('me-avpu').value,
-      });
+      };
+      const r = S4.mews(inputs);
       o.appendChild(el('h2', { text: `MEWS ${r.score}` }));
       o.appendChild(el('p', { text: r.band }));
       const p = r.parts;
       o.appendChild(el('p', { class: 'muted',
         text: `Per-parameter: SBP ${p.sbp}, pulse ${p.pulse}, RR ${p.rr}, temperature ${p.temp}, AVPU ${p.avpu}.` }));
+      if (deriv) updateDerivationSteps(deriv, META.mews, inputs);
     });
     document.querySelectorAll('input, select').forEach((n) => n.addEventListener(n.type === 'checkbox' || n.tagName === 'SELECT' ? 'change' : 'input', run));
     run();
@@ -4220,14 +4241,18 @@ export const renderers = {
     ];
     for (const [l, id] of items) root.appendChild(rangeField(l, id, 1, 5, 3));
     const o = out(); root.appendChild(o);
+    const deriv = renderDerivation(META['comfort-b']);
+    if (deriv) root.appendChild(deriv);
     const run = () => safe(o, () => {
-      const r = S4.comfortB({
+      const inputs = {
         alertness: nv('cb-alt'), calmness: nv('cb-cal'),
         respiratoryOrCry: nv('cb-res'), movement: nv('cb-mov'),
         muscleTone: nv('cb-mus'), facialTension: nv('cb-fac'),
-      });
+      };
+      const r = S4.comfortB(inputs);
       o.appendChild(el('h2', { text: `COMFORT-B ${r.score} of 30 (${r.band})` }));
       o.appendChild(el('p', { text: r.text }));
+      if (deriv) updateDerivationSteps(deriv, META['comfort-b'], inputs);
     });
     items.forEach(([, id]) => document.getElementById(id).addEventListener('input', run));
     run();
@@ -4254,16 +4279,20 @@ export const renderers = {
     rm.appendChild(el('input', { id: 'w1-rm', type: 'number', min: '0', max: '60', step: '1', value: '0' }));
     root.appendChild(rm);
     const o = out(); root.appendChild(o);
+    const deriv = renderDerivation(META['wat-1']);
+    if (deriv) root.appendChild(deriv);
     const run = () => safe(o, () => {
-      const r = S4.wat1({
+      const inputs = {
         looseStools: nv('w1-ls'), vomiting: nv('w1-vo'), fever: nv('w1-fe'),
         sbsStatePositive: nv('w1-sb'), tremor: nv('w1-tr'), sweating: nv('w1-sw'),
         uncoordinatedMovement: nv('w1-um'), yawnSneeze: nv('w1-ys'),
         startleToTouch: nv('w1-st'), increasedMuscleTone: nv('w1-mt'),
         recoveryMinutes: nv('w1-rm'),
-      });
+      };
+      const r = S4.wat1(inputs);
       o.appendChild(el('h2', { text: `WAT-1 ${r.score} of 12 (${r.band})` }));
       o.appendChild(el('p', { text: r.text }));
+      if (deriv) updateDerivationSteps(deriv, META['wat-1'], inputs);
     });
     items.forEach(([, id]) => document.getElementById(id).addEventListener('input', run));
     document.getElementById('w1-rm').addEventListener('input', run);

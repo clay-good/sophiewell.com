@@ -6,6 +6,33 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v48 wave 48-4c — EPDS, MEWS, COMFORT-B, WAT-1)
+
+Four more long-tail derivation blocks spanning perinatal mental
+health, ward early-warning vitals, and pediatric ICU
+sedation / withdrawal.
+
+- **EPDS** (`epds`, Cox 1987): screener-based 10 items × 0-3,
+  range 0-30. Edinburgh Postnatal Depression Scale; item 10
+  (self-harm) is a critical-action flag.
+- **MEWS** (`mews`, Subbe 2001): 5 banded per-parameter
+  callbacks (SBP / pulse / RR / temp / AVPU). Predecessor to
+  NEWS2 (also a Sophie tile).
+- **COMFORT-B** (`comfort-b`, van Dijk 2005): 6 items × 1-5,
+  range 6-30. Target band 11-22. Minimum aggregate 6 (not 0)
+  because every item starts at 1.
+- **WAT-1** (`wat-1`, Franck 2008): 10 binary items + 1
+  banded-recovery-minutes callback. Range 0-12; cutoff ≥3 =
+  iatrogenic withdrawal.
+
+4 new provenance logs under `docs/audits/v48/`. 20 new unit
+tests including parameterized loops over the MEWS AVPU callback
+and the WAT-1 recovery-minutes callback.
+
+Verified: `npm run lint`, `npm run test`, `npm run sbom`, and
+`npm run build` are all green. Test count 1621 (was 1600;
++21). **Catalog count 254, unchanged.**
+
 ### Added (spec-v48 wave 48-4b — ORBIT Bleeding, PAINAD, CAGE, Mini-Cog)
 
 Four more long-tail derivation blocks across bleeding, pain,

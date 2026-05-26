@@ -461,6 +461,26 @@ cognition. No infrastructure changes.
 
 13 new unit tests covering boundary points per tile.
 
+#### Wave 48-4c (shipped 2026-05-26) — EPDS, MEWS, COMFORT-B, WAT-1
+
+Four more long-tail tiles spanning perinatal mental health,
+early-warning vitals, and pediatric ICU sedation / withdrawal.
+
+- **EPDS** (Cox 1987): screener-based, 10 items × 0-3, range
+  0-30. Perinatal depression screen; Q10 self-harm is a
+  critical-action flag.
+- **MEWS** (Subbe 2001): 5 banded per-parameter callbacks
+  (SBP / pulse / RR / temp / AVPU). Predecessor to NEWS2.
+- **COMFORT-B** (van Dijk 2005): 6 items × 1-5 = range 6-30.
+  PICU sedation; minimum aggregate 6 because every item starts
+  at 1.
+- **WAT-1** (Franck 2008): 10 binary items + 1 banded-recovery-
+  minutes callback (<2 → 0, 2-5 → 1, >5 → 2). Range 0-12;
+  cutoff ≥3.
+
+20 new unit tests including parameterized loops over the MEWS
+AVPU callback and the WAT-1 recovery-minutes callback.
+
 ## 6. Testing requirements
 
 For every tile with a `derivation` block, the test suite asserts:

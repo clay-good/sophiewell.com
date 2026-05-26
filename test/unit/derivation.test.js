@@ -4,7 +4,7 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { META } from '../../lib/meta.js';
 import { wellsPe, gcs, wellsDvt, chadsVasc, hasBled } from '../../lib/clinical.js';
-import { qsofa, timi, heart, perc, sofa, news2, meld30, curb65, centor, mcisaac, ciwaAr, fourScore, bisap, cows, icdsc, fourAt, psi, cpot, bps, braden, morseFalls, lawtonIadl, katzAdl, barthel, rosier, cpss, lams, race, sos, flacc, hendrichII, atriaBleeding, orbitBleeding, painad, miniCog } from '../../lib/scoring-v4.js';
+import { qsofa, timi, heart, perc, sofa, news2, meld30, curb65, centor, mcisaac, ciwaAr, fourScore, bisap, cows, icdsc, fourAt, psi, cpot, bps, braden, morseFalls, lawtonIadl, katzAdl, barthel, rosier, cpss, lams, race, sos, flacc, hendrichII, atriaBleeding, orbitBleeding, painad, miniCog, mews, comfortB, wat1 } from '../../lib/scoring-v4.js';
 import { nihss } from '../../lib/clinical.js';
 
 // --- 1. Schema completeness ---------------------------------------------
@@ -22,7 +22,8 @@ const WAVE_48_3C_TILES = ['nihss', 'race', 'meows', 'sos'];
 const WAVE_48_3D_TILES = ['phq9', 'gad7', 'cam', 'cssrs'];
 const WAVE_48_4A_TILES = ['atria-bleeding', 'hendrich-ii', 'flacc', 'auditc'];
 const WAVE_48_4B_TILES = ['orbit-bleeding', 'painad', 'cage', 'mini-cog'];
-const ALL_DERIVATION_TILES = [...WAVE_48_1A_TILES, ...WAVE_48_1B_TILES, ...WAVE_48_1C_TILES, ...WAVE_48_2A_TILES, ...WAVE_48_2B_TILES, ...WAVE_48_2C_TILES, ...WAVE_48_3A_TILES, ...WAVE_48_3B_TILES, ...WAVE_48_3C_TILES, ...WAVE_48_3D_TILES, ...WAVE_48_4A_TILES, ...WAVE_48_4B_TILES];
+const WAVE_48_4C_TILES = ['epds', 'mews', 'comfort-b', 'wat-1'];
+const ALL_DERIVATION_TILES = [...WAVE_48_1A_TILES, ...WAVE_48_1B_TILES, ...WAVE_48_1C_TILES, ...WAVE_48_2A_TILES, ...WAVE_48_2B_TILES, ...WAVE_48_2C_TILES, ...WAVE_48_3A_TILES, ...WAVE_48_3B_TILES, ...WAVE_48_3C_TILES, ...WAVE_48_3D_TILES, ...WAVE_48_4A_TILES, ...WAVE_48_4B_TILES, ...WAVE_48_4C_TILES];
 
 for (const id of ALL_DERIVATION_TILES) {
   test(`derivation schema: ${id} has all required fields`, () => {
@@ -1231,6 +1232,104 @@ test('mini-cog components sum equals miniCog() (negative 3, cutoff just at)', ()
   const r = miniCog(inputs);
   assert.equal(sumComponents(META['mini-cog'], inputs), r.score);
   assert.equal(r.score, 3);
+});
+
+// --- Wave 48-4c: EPDS, MEWS, COMFORT-B, WAT-1 --------------------------
+
+test('epds components sum (max 30)', () => {
+  const inputs = { '0': 3, '1': 3, '2': 3, '3': 3, '4': 3, '5': 3, '6': 3, '7': 3, '8': 3, '9': 3 };
+  assert.equal(sumComponents(META.epds, inputs), 30);
+});
+
+test('epds components sum (worked example 7)', () => {
+  // EPDS_CONFIG.exampleAnswers [1, 1, 1, 1, 0, 1, 1, 1, 0, 0] -> 7
+  const inputs = { '0': 1, '1': 1, '2': 1, '3': 1, '4': 0, '5': 1, '6': 1, '7': 1, '8': 0, '9': 0 };
+  assert.equal(sumComponents(META.epds, inputs), 7);
+});
+
+test('epds bands cover 0-30 contiguously', () => {
+  const bands = META.epds.derivation.bands;
+  assert.equal(bands.length, 3);
+  assert.deepEqual(bands[0].range, [0, 9]);
+  assert.deepEqual(bands[2].range, [13, 30]);
+});
+
+test('mews components sum equals mews() (baseline 0)', () => {
+  const inputs = { sbp: 120, pulse: 78, rr: 14, temp: 37.0, avpu: 'A' };
+  const r = mews(inputs);
+  assert.equal(sumComponents(META.mews, inputs), r.score);
+  assert.equal(r.score, 0);
+});
+
+test('mews components sum equals mews() (high multi-parameter)', () => {
+  // SBP 60 → 3, pulse 140 → 3, RR 32 → 3, temp 39 → 2, avpu V → 1. Total 12.
+  const inputs = { sbp: 60, pulse: 140, rr: 32, temp: 39, avpu: 'V' };
+  const r = mews(inputs);
+  assert.equal(sumComponents(META.mews, inputs), r.score);
+  assert.equal(r.score, 12);
+});
+
+test('mews avpu callback maps each value correctly', () => {
+  for (const [letter, expected] of [['A', 0], ['V', 1], ['P', 2], ['U', 3]]) {
+    const inputs = { sbp: 120, pulse: 78, rr: 14, temp: 37.0, avpu: letter };
+    const r = mews(inputs);
+    assert.equal(sumComponents(META.mews, inputs), r.score, `avpu=${letter}`);
+    assert.equal(r.score, expected);
+  }
+});
+
+test('comfort-b components sum equals comfortB() (target sedation 18)', () => {
+  const inputs = { alertness: 3, calmness: 3, respiratoryOrCry: 3, movement: 3, muscleTone: 3, facialTension: 3 };
+  const r = comfortB(inputs);
+  assert.equal(sumComponents(META['comfort-b'], inputs), r.score);
+  assert.equal(r.score, 18);
+});
+
+test('comfort-b components sum equals comfortB() (min 6)', () => {
+  const inputs = { alertness: 1, calmness: 1, respiratoryOrCry: 1, movement: 1, muscleTone: 1, facialTension: 1 };
+  const r = comfortB(inputs);
+  assert.equal(sumComponents(META['comfort-b'], inputs), r.score);
+  assert.equal(r.score, 6);
+});
+
+test('comfort-b components sum equals comfortB() (max 30)', () => {
+  const inputs = { alertness: 5, calmness: 5, respiratoryOrCry: 5, movement: 5, muscleTone: 5, facialTension: 5 };
+  const r = comfortB(inputs);
+  assert.equal(sumComponents(META['comfort-b'], inputs), r.score);
+  assert.equal(r.score, 30);
+});
+
+test('wat-1 components sum equals wat1() (zero)', () => {
+  const inputs = { looseStools: 0, vomiting: 0, fever: 0, sbsStatePositive: 0, tremor: 0, sweating: 0, uncoordinatedMovement: 0, yawnSneeze: 0, startleToTouch: 0, increasedMuscleTone: 0, recoveryMinutes: 0 };
+  const r = wat1(inputs);
+  assert.equal(sumComponents(META['wat-1'], inputs), r.score);
+  assert.equal(r.score, 0);
+});
+
+test('wat-1 components sum equals wat1() (cutoff 3, withdrawal)', () => {
+  // tremor + sweating + recovery 3 min (1 pt) = 3
+  const inputs = { looseStools: 0, vomiting: 0, fever: 0, sbsStatePositive: 0, tremor: 1, sweating: 1, uncoordinatedMovement: 0, yawnSneeze: 0, startleToTouch: 0, increasedMuscleTone: 0, recoveryMinutes: 3 };
+  const r = wat1(inputs);
+  assert.equal(sumComponents(META['wat-1'], inputs), r.score);
+  assert.equal(r.score, 3);
+  assert.equal(r.withdrawal, true);
+});
+
+test('wat-1 recovery callback maps minutes correctly', () => {
+  // recovery <2 = 0, 2-5 = 1, >5 = 2
+  for (const [mins, expected] of [[0, 0], [1, 0], [2, 1], [5, 1], [6, 2], [60, 2]]) {
+    const inputs = { looseStools: 0, vomiting: 0, fever: 0, sbsStatePositive: 0, tremor: 0, sweating: 0, uncoordinatedMovement: 0, yawnSneeze: 0, startleToTouch: 0, increasedMuscleTone: 0, recoveryMinutes: mins };
+    const r = wat1(inputs);
+    assert.equal(sumComponents(META['wat-1'], inputs), r.score, `recovery=${mins}`);
+    assert.equal(r.score, expected, `recovery=${mins}`);
+  }
+});
+
+test('wat-1 components sum equals wat1() (max 12)', () => {
+  const inputs = { looseStools: 1, vomiting: 1, fever: 1, sbsStatePositive: 1, tremor: 1, sweating: 1, uncoordinatedMovement: 1, yawnSneeze: 1, startleToTouch: 1, increasedMuscleTone: 1, recoveryMinutes: 10 };
+  const r = wat1(inputs);
+  assert.equal(sumComponents(META['wat-1'], inputs), r.score);
+  assert.equal(r.score, 12);
 });
 
 // --- 4. Renderer behavior (jsdom-free smoke via stub) -------------------
