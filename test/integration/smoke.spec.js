@@ -8,15 +8,17 @@
 
 import { test, expect } from '@playwright/test';
 
-test('home: renders centered topbar, hero search, and quick picks', async ({ page }) => {
+test('home: renders centered topbar, hero search, and full-catalog tool picker', async ({ page }) => {
   await page.goto('/');
   await expect(page.locator('.topbar .topbar-brand')).toContainText('Sophie Well');
-  // spec-v51: the homepage is just header + hero search + 10 quick
-  // picks + footer. The full browse-grid was removed; tools are now
-  // discoverable via search, /tools/<id>/ pages, and /for/<slug>/ hubs.
+  // spec-v52 §6: the v51 ten quick-picks were replaced by a single
+  // native <select> that lists every tile in the catalog alphabetically.
+  // The placeholder option + one <option> per tile = catalog count + 1.
   await expect(page.locator('#hero-search')).toBeVisible();
-  const pickCount = await page.locator('.quick-pick').count();
-  expect(pickCount).toBe(10);
+  await expect(page.locator('#tool-picker-select')).toBeVisible();
+  const optCount = await page.locator('#tool-picker-select option').count();
+  expect(optCount).toBeGreaterThan(200);
+  await expect(page.locator('.quick-pick')).toHaveCount(0);
   await expect(page.locator('.filters:not(.visually-hidden)')).toHaveCount(0);
   await expect(page.locator('#search')).toHaveCount(0);
 });

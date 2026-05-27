@@ -642,56 +642,36 @@ body {
   outline: 2px solid var(--focus-ring);
   outline-offset: 2px;
 }
-/* spec-v51: quick-picks. Curated 10 most-used tiles, rendered below the
-   hero search on the minimal homepage. Lighter than .tool-card by design
-   (the page has no other content competing for attention). */
-.quick-picks {
+/* spec-v52 §6: tool-picker. Native <select> listing every tile in the
+   catalog, alphabetically by visible title. Replaces the v51 ten-tile
+   quick-picks grid. The native control gives free a11y, mobile-native
+   pickers, and OS-level type-ahead with zero JS to render. */
+.tool-picker {
   margin: 28px 0 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
-.quick-picks-heading {
-  margin: 0 0 14px;
+.tool-picker-label {
   font-size: 0.78rem;
   font-weight: 600;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--text-muted);
 }
-.quick-picks-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-  gap: 12px;
-}
-.quick-pick {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  text-align: left;
-  padding: 14px 16px;
+.tool-picker-select {
+  padding: 10px 12px;
   background: var(--bg-secondary);
   border: 1px solid var(--border);
   border-radius: var(--radius-card);
   color: var(--text-primary);
-  cursor: pointer;
   font: inherit;
-  transition: background 120ms ease, border-color 120ms ease, transform 120ms ease;
+  font-size: 0.95rem;
+  cursor: pointer;
 }
-.quick-pick:hover {
-  background: var(--bg-tertiary);
-  border-color: var(--border-light);
-  transform: translateY(-1px);
-}
-.quick-pick:focus-visible {
+.tool-picker-select:focus-visible {
   outline: 2px solid var(--focus-ring);
   outline-offset: 2px;
-}
-.quick-pick .qp-title {
-  font-size: 0.98rem;
-  font-weight: 600;
-}
-.quick-pick .qp-desc {
-  font-size: 0.85rem;
-  color: var(--text-muted);
-  line-height: 1.4;
 }
 
 /* Patient-artifact dropzone CSS removed when the dropzone UI shipped

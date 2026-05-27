@@ -563,7 +563,7 @@ if (typeof document !== 'undefined') {
     // call stopPropagation, but if any child carries data-no-route, skip.
     const ignore = event.target.closest('[data-no-route]');
     if (ignore) return;
-    const card = event.target.closest('.tool-card, .quick-pick');
+    const card = event.target.closest('.tool-card');
     if (!card) return;
     const id = card.getAttribute('data-tool');
     if (!id) return;
@@ -576,6 +576,25 @@ if (typeof document !== 'undefined') {
     } else {
       location.hash = '#' + id;
     }
+  });
+
+  // spec-v52 §6: the homepage tool-picker <select> routes on the
+  // `change` event. Same hash-routing as the hero search and the
+  // delegated tile-card click above.
+  document.addEventListener('change', (event) => {
+    const sel = event.target;
+    if (!sel || sel.id !== 'tool-picker-select') return;
+    const id = sel.value;
+    if (!id) return;
+    if (location.hash === '#' + id) {
+      currentRouteId = null;
+      route();
+    } else {
+      location.hash = '#' + id;
+    }
+    // Reset to the placeholder so re-selecting the same tile later still
+    // fires a change event.
+    sel.selectedIndex = 0;
   });
 }
 

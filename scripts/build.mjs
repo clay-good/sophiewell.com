@@ -55,7 +55,7 @@ async function regenerate() {
   // Regenerate JSON-LD and sitemap from the live UTILITIES list before
   // copying static assets into dist/. Both scripts are idempotent.
   const { spawnSync } = await import('node:child_process');
-  for (const script of ['build-favicons.mjs', 'build-ld.mjs', 'build-sitemap.mjs', 'build-sbom.mjs']) {
+  for (const script of ['build-favicons.mjs', 'build-tool-picker.mjs', 'build-ld.mjs', 'build-sitemap.mjs', 'build-sbom.mjs']) {
     const r = spawnSync(process.execPath, [join(ROOT, 'scripts', script)], { stdio: 'inherit' });
     if (r.status !== 0) throw new Error(`${script} exited with status ${r.status}`);
   }

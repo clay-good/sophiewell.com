@@ -1,0 +1,1364 @@
+# spec-v52.md — Healthcare pre-authorization packet linter ("Sophie PA")
+
+> Status: proposed (2026-05-27). v52 is a feature + UI + dataset
+> spec. It adds a single new tile — a **deterministic
+> prior-authorization (PA) packet linter** — to sophiewell.com,
+> reusing the file-ingest / rule-engine / DOCX-report pattern
+> pioneered by [Vaulytica](https://github.com/clay-good/vaulytica)
+> but reframed for healthcare prior authorization. Documents stay
+> on the user's device. No server, no upload, no AI, no telemetry.
+>
+> v52 also makes one homepage change: **the ten curated quick
+> picks are removed and replaced by a single all-tools dropdown
+> (`<select>`) that lists every tile in the catalog.** The hero
+> search bar is unchanged.
+>
+> v52 adds **one tile** (`pa-lint`, the PA packet linter) and
+> extends the scope test ([spec-v29](spec-v29.md) §3) to admit
+> "document linter" as a valid second tile shape alongside the
+> existing "numeric calculator" shape. Both shapes consume user
+> input (numbers for one, files for the other) and compute a
+> deterministic output (a numeric/categorical result for one, a
+> findings report for the other). The catalog count moves from
+> 254 → 255.
+>
+> Every prior spec (v4 through v51) remains in force. v52 does
+> not touch existing tiles, does not change any URL, does not add
+> any runtime network call, and does not introduce AI of any
+> kind. Sophie's eight commitments ([spec-v50](spec-v50.md) §3)
+> are preserved without modification or exception.
+
+---
+
+## 1. Why v52 exists
+
+### 1.1 The problem
+
+Prior authorization is the single largest mechanical paperwork
+burden in U.S. clinical practice. The MGMA's annual surveys, the
+AMA's PA physician-burden surveys, and CMS's own reporting on
+Medicare Advantage PA volumes consistently put the average
+practice's PA workload at tens of hours per clinician per week.
+The dominant failure mode is **not** clinical disagreement
+between provider and payer; it is **packet defects** —
+missing fields, missing supporting evidence, expired labs,
+mismatched diagnosis-procedure code pairs, absent attestations,
+wrong place-of-service, missing modifier, missing step-therapy
+documentation, missing prior-denial reference on a resubmission.
+
+Each defect is **mechanically detectable**. A human reviewer at
+the payer flags it in seconds; a denial is issued; the practice
+spends 1–3 weeks resubmitting. The cost compounds across patient
+delay, staff time, and downstream revenue cycle. None of it is
+clinical judgement. All of it is checklist failure.
+
+Today the people doing PA work — utilization-management nurses,
+case managers, prior-auth coordinators, billers, and the
+occasional moonlighting provider — have three options:
+
+1. **Memorize each payer's checklist** (impossible at scale; a
+   single mid-sized practice routinely touches 15+ payers).
+2. **Pay for a PA-automation SaaS** (Cohere, Olive AI, Myndshft,
+   etc. — six-figure annual contracts, vendor lock-in, and most
+   of them are now layering probabilistic LLMs on top of the
+   rule engine, which reintroduces the "wrong 1–5% of the time"
+   failure mode at exactly the wrong stage).
+3. **Submit blind and resubmit on denial** (the status quo).
+
+Sophie's posture — free forever, runs in the browser, no
+account, no telemetry, deterministic — is a natural fit for
+option 4: **a checklist that runs locally against the packet
+the user is about to fax / portal / e-submit, flags the
+mechanical defects, and produces a citable findings report**
+that the user can save, hand off, or use as the basis for a
+clean resubmission.
+
+### 1.2 Why this belongs on sophiewell.com and not its own domain
+
+The maintainer's framing on 2026-05-27 was explicit: **one
+domain per problem domain**. sophiewell.com is healthcare;
+[Vaulytica](https://github.com/clay-good/vaulytica) is law;
+[Roughlogic](https://roughlogic.com) is the trades;
+[Encryptalotta](https://github.com/clay-good/encryptalotta) is
+developer / privacy / security. Prior authorization is
+unambiguously healthcare. It does not belong on Vaulytica
+(which would dilute the legal-document positioning) and it does
+not deserve a third domain (which would fragment the healthcare
+brand and double the dataset-maintenance burden). It belongs
+here.
+
+The audience overlap is real. Sophie's existing audience strip
+([spec-v10](spec-v10.md), [spec-v29](spec-v29.md)) already lists
+**billers and coders** as served audiences. The PA tile extends
+that surface; it does not invent it. The README already commits
+to "served to doctors, pharmacists, RTs, billers, coders, and
+EMS providers." A PA tile is the first tile that is _primarily_
+for the biller / UM nurse audience rather than the bedside RN.
+
+### 1.3 Why this is not a Vaulytica clone
+
+The two products share an _interface pattern_ (drop a file, get
+a deterministic report) and a _posture_ (no server, no AI, no
+telemetry). They do not share a corpus, a ruleset, a citation
+graph, a dataset-refresh cadence, or an audience.
+
+| Axis              | Vaulytica                                | Sophie PA                            |
+|-------------------|------------------------------------------|--------------------------------------|
+| Domain            | Contracts / legal docs                   | Prior-authorization packets          |
+| Audience          | Lawyers, contracts ops, procurement      | UM nurses, PA coordinators, billers  |
+| Document corpus   | MSA, NDA, SaaS, DPA, BAA, lease, etc.    | Clinical note + PA form + evidence   |
+| Rule sources      | Statutory law, regulator guidance        | CMS NCD/LCD, payer medical policies  |
+| Refresh cadence   | Quarterly statute/regulator pulls        | Monthly payer-policy pulls           |
+| Output            | DOCX findings + obligations ledger       | DOCX findings + evidence ledger      |
+| Sub-tiles needed  | One ingest, many doc types               | One ingest, many payers              |
+
+The shared shape — `ingest → classify → rule-engine → DOCX
+report` — is exactly the abstraction that one day becomes the
+shared `kernels-core` package ([brainstorm 2026-05-27](#)). v52
+does not attempt that extraction; it copies the pattern by hand
+and leaves the extraction for a future cross-repo wave.
+
+### 1.4 The "AI can already do this" critique, answered in the spec
+
+This spec lives on a healthcare site. The argument that "an LLM
+can read the packet and tell you what's missing" must be
+addressed in writing because users will ask. The answer:
+
+1. **A 1–5% wrong rate at the PA stage produces wrongful
+   denials, patient delays, and unbilled revenue.** Those costs
+   are concrete. A deterministic checklist is wrong 0% of the
+   time on the rules it covers and silent on the rules it does
+   not — a posture that is both honest and defensible.
+2. **A probabilistic answer is not citable in an appeal.** When
+   a payer denies and the practice appeals, the appeal letter
+   cites the medical policy paragraph, the patient's labs, and
+   the date of service. "An LLM said the packet was complete"
+   is not an appellate argument. "Sophie ruleset
+   `pa-lint/v1.0.3` rule `R-PA-014` (`Aetna MP 0123` §3.2,
+   accessed 2026-05-15, hash `sha256:…`) confirmed the packet
+   met Aetna's documentation requirements" is.
+3. **LLMs are genuinely bad at the operations PA review
+   requires** — table parsing, date arithmetic, code-pair
+   validation against a lookup table, applying payer-specific
+   rule hierarchies in a known order. These are the things a
+   rule engine is good at.
+4. **The patient's chart is PHI.** Sending it to a third-party
+   LLM endpoint creates a BAA obligation Sophie refuses to
+   accept. The whole packet stays in the browser tab; closing
+   the tab destroys all in-memory state. Open DevTools and
+   watch the network panel if you want to confirm.
+
+The right framing — repeated in the tile copy, the README, and
+the /commitments page — is **AI as interface, deterministic
+kernels as substrate**. Sophie PA is the substrate. Users who
+want an AI front door can use one; Sophie's job is to be the
+thing the AI calls.
+
+---
+
+## 2. Non-goals
+
+- **Not a submission tool.** Sophie PA does not transmit the
+  packet to a payer, does not integrate with any payer portal,
+  does not call any clearinghouse, does not call any EHR API.
+  It reads what the user drops on the page, runs the ruleset,
+  and produces a DOCX report. Submission is the user's job.
+- **Not a coding tool.** Sophie PA does not assign CPT, HCPCS,
+  or ICD-10 codes. It checks the codes the user already chose
+  for **mechanical validity** (codes exist, code pair is
+  permissible, code is current for the date of service,
+  required modifiers are present). Code assignment remains a
+  human / EHR / encoder responsibility.
+- **Not a medical-necessity adjudicator.** Sophie PA does not
+  decide whether the documented clinical picture meets a
+  payer's medical-necessity criteria. It checks that the
+  **documentation required by the payer's policy is present and
+  on the page**. The clinical adequacy of that documentation is
+  the reviewer's call.
+- **Not OCR (in v52).** Scanned PDFs without an embedded text
+  layer return an explicit "this PDF appears to be a scan;
+  please OCR before uploading" notice. A later wave (v52-3 or
+  v53) MAY add a bundled in-browser OCR path (tesseract.js
+  ≈ 11 MB gzipped), but only after the no-OCR experience is
+  proven. v52 ships without OCR to keep the dependency budget
+  honest ([spec-v10](spec-v10.md) §6).
+- **Not telemetry.** No "which payer is most-used" counters, no
+  "which rule fires most often" instrumentation, no error
+  reporting. [spec-v50](spec-v50.md) §3.5 prohibits it without
+  exception.
+- **Not an account.** No login, no save-to-cloud, no shared
+  workspace. The packet exists in the tab; if the user wants
+  it persisted, they download the report and save it locally.
+- **Not a "PA generator."** Sophie PA does not draft the medical
+  necessity letter, does not write the appeal, does not produce
+  template language. Those are AI-shaped tasks; Sophie is the
+  checklist.
+- **Not a billing engine.** No CMS-1500, no UB-04 generation,
+  no claim scrubbing beyond what the PA-specific rules cover.
+- **No new audience hub.** Billers and coders are already
+  listed in the existing `/for/billers/` and `/for/coders/`
+  audience hubs. The PA tile is added to those hubs; no new
+  audience slug is introduced.
+
+---
+
+## 3. Scope-test extension: admitting "document linter" as a tile shape
+
+[spec-v29](spec-v29.md) §3 defines a tile as something that
+"consumes at least one user input and produces a computed
+output; searchable lookup of static facts does not qualify."
+v52 extends that definition to admit two valid tile shapes:
+
+### 3.1 Shape A — numeric calculator (existing, 254 tiles)
+
+- **Input:** one or more numeric / categorical form fields
+  filled in by the user (e.g., MAP requires SBP and DBP; Wells
+  PE requires seven yes/no boxes).
+- **Compute:** deterministic JavaScript that runs on input
+  change, in the main thread or a worker.
+- **Output:** a single visible numeric / categorical result
+  with a derivation block ([spec-v48](spec-v48.md)) and a
+  citation.
+
+### 3.2 Shape B — document linter (NEW with v52, 1 tile)
+
+- **Input:** one or more files dropped on the tile or selected
+  via a file picker. Accepted MIME types: `application/pdf`,
+  `application/vnd.openxmlformats-officedocument.wordprocessingml.document`
+  (DOCX), `text/plain` (TXT), `image/jpeg`, `image/png` (for
+  reference; v52 does not OCR them, see §2).
+- **Compute:** deterministic JavaScript that ingests, parses,
+  classifies, and runs a versioned ruleset against the
+  packet. Heavy parsing (PDF, DOCX) runs in a Web Worker so
+  the main thread stays responsive.
+- **Output:** a structured findings list rendered in the page,
+  a downloadable DOCX report mirroring the Vaulytica report
+  shape (findings + evidence ledger + extracted-data appendix
+  + audit trail), and a JSON export for users who want to
+  process the report programmatically.
+
+Both shapes are equally _deterministic_ (identical inputs
+produce identical outputs; the dataset version is pinned and
+hashed). Both are equally _citable_ (every finding traces to a
+named rule and a dated source). Both run entirely in the
+browser. The only difference is the input modality.
+
+### 3.3 Why this is not a "lookup tool"
+
+[spec-v29](spec-v29.md) §3 disqualifies "searchable lookup of
+static facts." The PA linter is not a lookup. It consumes
+user-supplied documents, runs a rule engine over them, and
+produces a derived result (the findings list) that did not
+exist before the user uploaded the documents. The output is
+**computed**, not retrieved. This is the same logical status as
+Wells PE (the score is computed from the boxes), only the
+input shape is different.
+
+### 3.4 CI enforcement
+
+`scripts/check-catalog-truth.mjs` is updated so that
+`UTILITIES.length === 255` is the new catalog truth. The
+`pa-lint` tile is registered in `UTILITIES` with a new field
+`shape: "document-linter"` so future tooling can distinguish
+the two shapes without string-matching the id. The default
+value of `shape` for unspecified tiles is `"numeric"` so the
+existing 254 tiles need no per-entry edit.
+
+---
+
+## 4. The PA linter tile (`pa-lint`)
+
+### 4.1 Tile identity
+
+| Field            | Value                                                                |
+|------------------|----------------------------------------------------------------------|
+| `data-tool` id   | `pa-lint`                                                            |
+| Visible title    | Prior-Auth Packet Linter                                             |
+| Short subtitle   | Drop a PA packet. Get a deterministic defect report. No AI, no fax.  |
+| Route            | `/tools/pa-lint/`                                                    |
+| Shape            | `document-linter`                                                    |
+| Audiences        | `billers`, `coders`, `case-managers` (new audience, see §10.2)       |
+| Catalog group    | New top-level group `Revenue cycle & utilization` (see §10.1)        |
+
+### 4.2 The tile view (route `/tools/pa-lint/`)
+
+The route uses the same per-tool page template the existing
+254 tiles use. The body has five blocks, in order:
+
+1. **Title + subtitle** — as above.
+2. **Trust strip** — three short lines:
+   - "Your packet stays in this tab. We never see your patients."
+   - "No AI. Every finding cites a rule ID and a payer-policy URL."
+   - "Free forever. MIT. Run offline after first load."
+3. **Drop zone** — a `<div class="pa-dropzone">` with a visible
+   border, an instructional line ("Drop PDF / DOCX files or a
+   folder here, or click to select"), and a hidden
+   `<input type="file" multiple webkitdirectory accept=".pdf,.docx,.txt,.jpg,.jpeg,.png">`
+   wired to the same handler. Drag-and-drop uses the standard
+   `dragover` / `drop` events with `preventDefault()` and reads
+   `dataTransfer.items` so directory drops (Chrome / Edge) are
+   walked via `webkitGetAsEntry()`. Firefox / Safari fall back
+   to file-list drops without recursion (the user can re-drop
+   the contents of subfolders).
+4. **Payer selector** — a `<select>` listing the payers Sophie
+   has overlays for, plus `Auto-detect (default)` and
+   `Generic / no payer overlay`. Auto-detect inspects the
+   packet for the payer letterhead, member-ID pattern, and
+   plan-name string and picks an overlay; the user can
+   override. v52 ships with overlays for **CMS Medicare FFS
+   (NCD/LCD)**, **CMS Medicare Advantage (general)**, and
+   **Medicaid (state-agnostic core only)**. Commercial payer
+   overlays are added in later waves (§9).
+5. **Results panel** — initially hidden. Renders after the
+   first packet is processed. Contains: a header row
+   (packet name, dataset version, total findings split by
+   severity), a filterable findings list, an evidence ledger,
+   and three download buttons (DOCX report, JSON export,
+   redacted DOCX report with PHI masked).
+
+A single page state machine governs the view:
+
+```
+IDLE → ACCEPTING (file picked / drop)
+     → PARSING   (workers extract text)
+     → ANALYZING (rule engine runs)
+     → REPORTING (results rendered)
+     ↺ IDLE      (user clicks "Start over")
+```
+
+`PARSING` and `ANALYZING` display a progress bar with the same
+visual treatment as Vaulytica's `src/ui/progress.ts`. The bar
+is purely cosmetic (no network call); it tracks worker
+postMessage events.
+
+### 4.3 The pipeline (deterministic, in-browser, end-to-end)
+
+```
+Files (PDF/DOCX/TXT/image)
+   │
+   ▼
+[Ingest]                lib/pa/ingest.js
+   │  - per-file: mime sniff, size cap (50 MB per file, 200 MB total)
+   │  - PDF via pdf.js (vendored, see §5.2)
+   │  - DOCX via mammoth (vendored)
+   │  - TXT passes through
+   │  - image: marked as "non-textual, OCR not performed"
+   │  - SHA-256 each file (for audit trail)
+   ▼
+[Normalize]             lib/pa/normalize.js
+   │  - strip control chars except \n \t
+   │  - collapse runs of whitespace
+   │  - extract page breaks (PDF) / paragraph breaks (DOCX)
+   │  - preserve table structure as a JSON sidecar
+   ▼
+[Classify]              lib/pa/classify.js
+   │  - per-document: which packet role is this?
+   │      * clinical-note
+   │      * pa-form (payer's PA request form)
+   │      * medical-necessity-letter
+   │      * lab-result | imaging-report | path-report
+   │      * prior-auth-denial (for resubmissions)
+   │      * other
+   │  - classification is deterministic: keyword anchors +
+   │    structural fingerprints (header text, section names,
+   │    LOINC patterns, ICD-10 dense blocks). Not ML.
+   ▼
+[Extract]               lib/pa/extract.js
+   │  - patient identifiers: redacted by default in extract;
+   │    the raw values stay in memory but never enter the
+   │    findings array unless the user opts in via the
+   │    "include PHI in report" toggle (default OFF).
+   │  - CPT / HCPCS / ICD-10 codes (regex + lookup tables)
+   │  - dates: service, signature, lab collection, study read
+   │  - NPI (10 digits + Luhn-mod-10 check digit)
+   │  - TIN (9 digits)
+   │  - place of service code (2 digits, valid POS list)
+   │  - modifiers (1–2 alphanumerics)
+   │  - quantities, units of measure
+   │  - signatures (presence/absence; not handwriting analysis)
+   ▼
+[Detect payer]          lib/pa/payer.js
+   │  - letterhead anchors, member-ID format, plan-name string
+   │  - falls through to user's manual selection
+   ▼
+[Rule engine]           lib/pa/engine.js
+   │  - load core ruleset (always runs)
+   │  - load payer overlay (if any)
+   │  - load specialty overlay (if classifier flagged one)
+   │  - run each rule against the extracted bundle
+   │  - each rule returns: pass | flag | block | n/a
+   │  - findings carry: rule id, severity, evidence pointer,
+   │    citation, dataset version, computed at
+   ▼
+[Report]                lib/pa/report.js
+   │  - DOCX via docx.js (vendored)
+   │  - JSON via JSON.stringify
+   │  - redacted DOCX: PHI strings replaced with `[REDACTED]`
+   ▼
+Findings panel (in-page) + downloads
+```
+
+Every step runs client-side. The only network access during a
+session is the **initial page load** plus the service-worker
+shell warm-up. After first paint there are zero outbound
+requests. This is verified by the existing
+`test/integration/no-network.spec.js`
+([spec-v50](spec-v50.md) §3.1), which v52 extends to fire the
+PA pipeline against a fixture packet and assert zero network
+calls.
+
+### 4.4 Severity model
+
+Each finding has one of four severities:
+
+| Severity | Meaning                                                                | UI color  |
+|----------|------------------------------------------------------------------------|-----------|
+| `block`  | The packet will be rejected on intake. Fix before submission.          | red       |
+| `flag`   | The packet will be queued for review with high denial likelihood.      | amber     |
+| `info`   | A condition worth knowing about but not denial-causing.                | blue      |
+| `pass`   | An expected condition was confirmed present.                           | green     |
+
+Findings render in severity order (`block`, `flag`, `info`,
+`pass`) and within each severity in rule-id order. The report
+header shows totals per severity.
+
+### 4.5 The deterministic ruleset (v1.0.0)
+
+v52 ships with the following rule families. Each rule has a
+stable id (`R-PA-NNN`), a one-line description, a severity, a
+citation, and a deterministic implementation. The complete
+text of each rule lives in `data/pa-lint/rules/v1/` as
+versioned JSON; this section is the table of contents.
+
+#### 4.5.1 Core (payer-agnostic) — 60 rules
+
+| Id        | Rule                                                                 | Severity |
+|-----------|----------------------------------------------------------------------|----------|
+| `R-PA-001`| Patient name present and consistent across all documents             | block    |
+| `R-PA-002`| Date of birth present and consistent across all documents            | block    |
+| `R-PA-003`| Member ID present and matches payer format                           | block    |
+| `R-PA-004`| Service date present                                                 | block    |
+| `R-PA-005`| Service date is not in the past beyond payer's retro-auth window     | flag     |
+| `R-PA-006`| Service date is not more than 365 days in the future                 | block    |
+| `R-PA-007`| At least one CPT or HCPCS code present                               | block    |
+| `R-PA-008`| Each CPT code is valid for the service date (HCPCS table current)    | block    |
+| `R-PA-009`| Each HCPCS code is valid for the service date                        | block    |
+| `R-PA-010`| At least one ICD-10-CM code present                                  | block    |
+| `R-PA-011`| Each ICD-10 code is valid for the service date                       | block    |
+| `R-PA-012`| At least one ICD-10 code is permissible with each CPT (CCI pair)     | flag     |
+| `R-PA-013`| Place of service code present and valid                              | block    |
+| `R-PA-014`| Modifier set is valid for each CPT                                   | flag     |
+| `R-PA-015`| Quantity / units present and ≥ 1                                     | block    |
+| `R-PA-016`| Ordering provider NPI present and Luhn-valid                         | block    |
+| `R-PA-017`| Ordering provider signature present                                  | block    |
+| `R-PA-018`| Ordering provider signature is dated                                 | block    |
+| `R-PA-019`| Servicing provider / facility NPI present and Luhn-valid             | block    |
+| `R-PA-020`| Servicing facility TIN present (9 digits)                            | flag     |
+| `R-PA-021`| Clinical-note document present in packet                             | block    |
+| `R-PA-022`| Clinical note is dated within payer's clinical-look-back window      | flag     |
+| `R-PA-023`| Clinical note references the procedure being requested               | flag     |
+| `R-PA-024`| Medical-necessity statement present (free-text or structured)        | flag     |
+| `R-PA-025`| Supporting labs referenced in the request are attached               | flag     |
+| `R-PA-026`| Supporting imaging referenced in the request is attached             | flag     |
+| `R-PA-027`| Each attached lab is dated within payer's evidence-freshness window  | flag     |
+| `R-PA-028`| Each attached imaging report is dated within freshness window        | flag     |
+| `R-PA-029`| Step-therapy documentation present when payer requires it            | flag     |
+| `R-PA-030`| Prior-treatment list present when step therapy applies               | flag     |
+| `R-PA-031`| Allergies / intolerances list present                                | info     |
+| `R-PA-032`| Active medication list present                                       | info     |
+| `R-PA-033`| Height / weight / BSA present when dose is weight-based              | flag     |
+| `R-PA-034`| Renal function (eGFR or SCr + age) present for renally-dosed agents  | flag     |
+| `R-PA-035`| Hepatic function (LFTs) present for hepatically-dosed agents         | info     |
+| `R-PA-036`| Frequency / interval present and within payer's allowed range        | flag     |
+| `R-PA-037`| Duration / length of approval requested is present                   | flag     |
+| `R-PA-038`| Submission is a resubmission iff prior denial document is attached   | flag     |
+| `R-PA-039`| Resubmission references the original PA reference number             | flag     |
+| `R-PA-040`| Resubmission addresses each reason cited in the prior denial         | info     |
+| `R-PA-041`| At-risk PHI (SSN) is not present in the packet                       | flag     |
+| `R-PA-042`| Each page of multi-page PDF is text-extractable (not a scan)         | flag     |
+| `R-PA-043`| Each document is not password-protected                              | block    |
+| `R-PA-044`| Each document opened without parse error                             | block    |
+| `R-PA-045`| Total packet size ≤ payer's maximum (default 50 MB)                  | flag     |
+| `R-PA-046`| No document has corrupted character encoding (mojibake)              | flag     |
+| `R-PA-047`| Patient address present if payer requires for benefit verification   | info     |
+| `R-PA-048`| Subscriber relationship to patient indicated                         | info     |
+| `R-PA-049`| Other insurance / COB information indicated                          | info     |
+| `R-PA-050`| Diagnosis-procedure linkage shown (which dx supports which CPT)      | flag     |
+| `R-PA-051`| Procedure description matches the CPT short descriptor (within 70%)  | info     |
+| `R-PA-052`| Date of injury present if procedure is injury-related (HCPCS 'V' dx) | flag     |
+| `R-PA-053`| Authorization not requested for a code in payer's no-PA-needed list  | info     |
+| `R-PA-054`| Each modifier '25' / '59' is accompanied by supporting documentation | flag     |
+| `R-PA-055`| Bilateral procedure flag matches modifier '50' presence              | flag     |
+| `R-PA-056`| Anesthesia time is documented when an anesthesia CPT is present      | flag     |
+| `R-PA-057`| Assistant surgeon modifier matches second NPI on packet              | flag     |
+| `R-PA-058`| Each CPT in unlisted-code range has a narrative justification        | flag     |
+| `R-PA-059`| Date of consent (when consent doc present) is before date of service | flag     |
+| `R-PA-060`| Packet completeness summary present (cover sheet / checklist)        | info     |
+
+#### 4.5.2 CMS Medicare FFS overlay — 25 rules (`R-PA-CMS-NNN`)
+
+Anchored to CMS Internet-Only Manual (IOM), NCDs, LCDs, and
+the Local Coverage Article (LCA) library. Each rule cites a
+specific NCD/LCD number and its CMS URL. Highlights:
+
+- DME face-to-face encounter present within 6 months
+  (`R-PA-CMS-001`, NCD-280.x).
+- Detailed written order present and dated
+  (`R-PA-CMS-002`, IOM Pub 100-08 ch.5).
+- Standard Written Order elements complete
+  (`R-PA-CMS-003`).
+- Proof of delivery requirements (`R-PA-CMS-004`).
+- Documentation of patient functional status for mobility
+  devices (`R-PA-CMS-005`, LCD L33788).
+- Sleep study results within 12 months for PAP devices
+  (`R-PA-CMS-006`, LCD L33718).
+- 90-day compliance documentation for PAP continuation
+  (`R-PA-CMS-007`).
+- And 18 more, enumerated in `data/pa-lint/rules/v1/cms-ffs.json`.
+
+#### 4.5.3 CMS Medicare Advantage overlay — 15 rules
+
+Covers the additional documentation MA plans request beyond
+FFS (PCP referral when plan is HMO, network-status check
+indicator, specialist NPI when plan is gatekeepered, etc.).
+Enumerated in `data/pa-lint/rules/v1/cms-ma.json`.
+
+#### 4.5.4 Medicaid state-agnostic core — 10 rules
+
+The intersection of all 50 state Medicaid programs (member-ID
+format, EPSDT documentation when patient is < 21, eligibility
+date alignment with service date, etc.). State-specific
+overlays are deferred to v52-4+. Enumerated in
+`data/pa-lint/rules/v1/medicaid-core.json`.
+
+#### 4.5.5 Specialty overlays — 25 rules
+
+Triggered by the classifier when the requested procedure falls
+in a high-PA specialty:
+
+- **Imaging / advanced imaging** (`R-PA-RAD-NNN`) — ACR
+  Appropriateness Criteria reference present, prior conservative
+  management documented for non-emergent MRI, contrast allergy
+  documented when contrast is requested.
+- **Infusion / specialty drug** (`R-PA-INF-NNN`) — J-code
+  matches drug NDC, dose matches FDA labeling for indication,
+  weight-based dose calculation shown, infusion site of care
+  appropriate.
+- **Surgery** (`R-PA-SURG-NNN`) — conservative management
+  trial documented, imaging supporting surgical indication
+  attached, anesthesia clearance documented for ASA ≥ 3.
+- **Behavioral health** (`R-PA-BH-NNN`) — DSM-5-TR diagnosis
+  present, treatment plan with measurable goals, prior level
+  of care documented if stepping up.
+- **Genetic testing** (`R-PA-GEN-NNN`) — family history
+  documented, genetic counseling documented, test specificity
+  matches indication.
+
+#### 4.5.6 Versioning, hashing, and stale-source disabling
+
+Every rule JSON file carries:
+
+```json
+{
+  "rulesetVersion": "1.0.0",
+  "ruleSourceUrl": "https://www.cms.gov/medicare-coverage-database/...",
+  "ruleSourceAccessedDate": "2026-05-15",
+  "ruleSourceHash": "sha256:..."
+}
+```
+
+A nightly `scripts/refresh-pa-rules.mjs` (run by the
+maintainer, not in browser) re-fetches each source URL,
+re-hashes it, and emits a diff. If the hash changes, the rule
+is marked **`needs-review`** in the next ruleset patch
+release. If the source URL 404s, the rule is set to
+`disabled: true` and the engine skips it; the report's audit
+trail explicitly says *"R-PA-CMS-007 disabled at dataset
+v1.0.4 because LCD URL returned 404 on 2026-06-01; rule will
+be re-enabled once a human re-points it."* This mirrors
+Vaulytica's citation-pinned source-of-truth pattern
+([Vaulytica README](https://github.com/clay-good/vaulytica)).
+
+The browser never fetches these URLs at runtime. The refresh
+script runs on the maintainer's laptop or in CI. The user's
+session loads a single bundled `pa-rules.json` (one file per
+ruleset, ~200–400 KB gzipped at v1) and runs entirely against
+that bundle.
+
+### 4.6 The DOCX report
+
+Structure (mirrors Vaulytica v3 with healthcare-specific
+sections):
+
+1. **Cover page** — packet name, packet hash, generated date,
+   dataset version, Sophie ruleset id, the disclaimer ("Sophie
+   PA is a deterministic checklist. It is not medical or legal
+   advice. It does not see your data. It does not submit
+   anything.").
+2. **Executive summary** — counts per severity, list of
+   `block` findings.
+3. **Findings** — one section per finding with: rule id,
+   severity, plain-English text, the evidence excerpt (with
+   document name and page/paragraph pointer), the citation
+   (rule's source URL, accessed date, hash), and the
+   suggested remediation in plain English.
+4. **Evidence ledger** — every value the extract step pulled
+   from the packet: codes, dates, NPIs, signatures, with a
+   "found in" pointer.
+5. **Extracted-data appendix** — the full structured JSON the
+   extractor produced, for users who want to feed it
+   downstream (e.g., into a coding QA workflow).
+6. **Audit trail** — the complete list of rules that ran
+   (passed / failed / n/a / disabled-for-staleness), the
+   dataset version, the file hashes, and the deterministic
+   computation timestamp.
+
+The report is generated entirely client-side with `docx.js`
+(vendored, ~600 KB minified, MIT). No server. The user clicks
+**Download report (.docx)** and the browser writes the file
+via `URL.createObjectURL()`.
+
+### 4.7 PHI handling
+
+- All extraction is client-side. PHI never leaves the tab.
+- The default report has PHI **masked** (`[REDACTED]`) in
+  every visible field. A "Show PHI in report" checkbox enables
+  unredacted output for the user's own workflow.
+- The page sets `Cache-Control: no-store` via the existing
+  `_headers` file on the response, so the parsed packet is not
+  cached on disk by the browser.
+- The page has no Service-Worker side cache of user data; the
+  SW caches the application shell only.
+- The page sets `Clear-Site-Data` is **not** used (it would
+  break the offline shell). Instead, "Start over" resets the
+  in-memory state explicitly and instructs the user to close
+  the tab if they want guaranteed memory release.
+
+### 4.8 Accessibility
+
+- The dropzone is keyboard-accessible: `tabindex="0"`, accepts
+  `Enter` / `Space` to trigger the file picker.
+- The dropzone has `role="button"` and an `aria-label`
+  describing the action.
+- All findings are rendered as a real `<ul>` with one
+  `<li role="article">` per finding, severity carried in
+  `data-severity` and in a leading visually-hidden text label
+  for screen readers ("Block: …", "Flag: …").
+- The download buttons are real `<button>` elements with
+  descriptive labels.
+- Color is not the only severity signal (the leading text
+  label and an icon SVG both carry the severity).
+- The page has a complete heading outline (`h1` page title,
+  `h2` per section, `h3` per finding).
+
+### 4.9 Performance budget
+
+- First-time PA-tile-page load: ≤ 250 KB JS gzipped over the
+  current Sophie baseline (the PA tile's own code + the
+  vendored pdf.js / mammoth / docx.js loaded lazily on first
+  drop).
+- Heavy parsers (pdf.js, mammoth, docx.js) are **lazy-loaded**
+  on first drop, not on page load. The page idle weight is
+  the existing Sophie idle weight + ≤ 25 KB for the dropzone
+  shell.
+- Worst-case packet (200 MB total, 12 documents, all text-PDF):
+  ingest + analyze + report in ≤ 15 seconds on a mid-tier
+  laptop (Intel i5 8th-gen baseline). The progress bar
+  reflects the worker pipeline; the main thread stays
+  responsive.
+
+### 4.10 Determinism guarantees
+
+- Same input bytes → same output bytes (byte-for-byte for the
+  JSON export; structurally identical for the DOCX, modulo
+  the embedded generation timestamp which is intentionally
+  zeroed in a future "reproducible build" toggle).
+- Same ruleset version → same rule firing decisions.
+- Same dataset version → same citations and same source-URL
+  hashes.
+- No randomness, no `Date.now()` in compute paths (timestamp
+  appears in the audit trail only and is captured once at the
+  start of analysis).
+- No floating-point comparisons against thresholds without an
+  explicit epsilon; all date math goes through a single
+  `lib/pa/date.js` module that uses UTC-midnight arithmetic.
+- Existing [spec-v11](spec-v11.md) audit harness and
+  [spec-v12](spec-v12.md) integrity-manifest discipline are
+  extended to the PA bundle: `scripts/audit-pa.mjs` runs the
+  PA pipeline against `data/pa-lint/fixtures/*.json` and
+  compares the produced JSON report to the committed expected
+  output. CI fails on any drift.
+
+---
+
+## 5. Implementation surfaces
+
+### 5.1 New files
+
+```
+data/pa-lint/
+  rules/
+    v1/
+      core.json
+      cms-ffs.json
+      cms-ma.json
+      medicaid-core.json
+      specialty-rad.json
+      specialty-inf.json
+      specialty-surg.json
+      specialty-bh.json
+      specialty-gen.json
+      _ruleset-manifest.json    # ids, versions, hashes
+  references/
+    cpt-hcpcs-current.json      # codes valid for current year
+    icd10-cm-current.json
+    pos-codes.json              # CMS POS code list
+    modifiers.json              # modifier descriptors
+    cci-pairs.json              # NCCI edit pairs (subset, see §5.3)
+    npi-luhn.js                 # checksum helper, not data
+  fixtures/
+    happy-path.json             # synthetic packet, all rules pass
+    missing-npi.json            # synthetic packet, R-PA-016 fires
+    expired-labs.json
+    bad-pos.json
+    resubmission.json
+    edge-case-large.json
+  expected/
+    happy-path.report.json
+    missing-npi.report.json
+    ... (one per fixture)
+
+lib/pa/
+  ingest.js
+  ingest.worker.js              # PDF/DOCX parsing in a worker
+  normalize.js
+  classify.js
+  extract.js
+  payer.js
+  engine.js
+  rules.js                      # rule registration + dispatch
+  date.js
+  redact.js
+  report.js
+  report.worker.js              # DOCX generation in a worker
+  index.js                      # public entry imported by the tile
+
+views/
+  pa-lint.js                    # the tile's view module
+
+vendored/
+  pdfjs/                        # pdf.js dist subset, MIT
+  mammoth/                      # mammoth.js, MIT
+  docxjs/                       # docx.js, MIT
+
+scripts/
+  refresh-pa-rules.mjs          # maintainer-only, re-fetches sources
+  audit-pa.mjs                  # CI: fixtures → expected outputs
+  build-pa-bundle.mjs           # concatenates rules into the shipped JSON
+
+tools/pa-lint/
+  index.html                    # the /tools/pa-lint/ route page
+
+test/
+  unit/pa-ingest.test.js
+  unit/pa-classify.test.js
+  unit/pa-extract.test.js
+  unit/pa-engine.test.js
+  unit/pa-date.test.js
+  unit/pa-redact.test.js
+  unit/pa-report.test.js
+  integration/pa-end-to-end.spec.js
+  integration/pa-no-network.spec.js
+  integration/pa-a11y.spec.js
+  integration/pa-perf.spec.js
+```
+
+### 5.2 Vendored dependencies (additive, all MIT)
+
+| Package          | Purpose                | Size (gzipped) | License | Source URL pinned in `lib/pa/_vendored.md` |
+|------------------|------------------------|----------------|---------|--------------------------------------------|
+| `pdf.js` (subset)| PDF text extraction    | ~310 KB        | Apache  | mozilla/pdf.js                             |
+| `mammoth.js`     | DOCX → text            | ~75 KB         | BSD-2   | mwilliamson/mammoth.js                     |
+| `docx.js`        | DOCX generation        | ~140 KB        | MIT     | dolanmiu/docx                              |
+
+All three are vendored under `vendored/` with a pinned
+upstream commit hash and a `_vendored.md` file recording the
+provenance, license text, and upgrade procedure. **No npm
+install at build time, no runtime fetch.** This mirrors
+Sophie's existing dependency-budget posture
+([spec-v10](spec-v10.md) §6).
+
+Note: `pdf.js` is Apache-2.0, not MIT. The site is MIT
+overall; Apache-2.0 vendored components are compatible.
+`vendored/pdfjs/LICENSE` and `vendored/pdfjs/NOTICE` are
+checked in alongside the code. The /commitments page is
+updated to read "MIT, with Apache-2.0 and BSD-2 vendored
+components for PDF and DOCX parsing — see
+[/vendored/](https://sophiewell.com/vendored/) for the full
+provenance ledger."
+
+### 5.3 Code reference tables — what ships in v52 vs. later
+
+- **CPT / HCPCS:** v52 ships the **current calendar year's**
+  AMA-published code list as a bundled JSON. AMA's CPT
+  descriptive long codes are copyrighted; Sophie ships only
+  the **code → short-descriptor** mapping required for
+  mechanical validity (the CPT existence + the descriptor
+  match rule `R-PA-051`). Long descriptors are NOT shipped.
+  The rule cites the AMA publication and the user's local CPT
+  license. If AMA enforcement makes even short-descriptor
+  shipping infeasible, the descriptor-match rule degrades to
+  `info: descriptor check skipped (CPT license required)`.
+- **ICD-10-CM:** public domain. Full code set ships, sourced
+  from CMS / CDC ICD-10-CM annual files.
+- **POS codes:** public, from CMS POS list. Shipped in full.
+- **Modifiers:** the standard modifier list is public; the
+  descriptors are AMA-copyrighted for CPT modifiers. Same
+  posture as CPT: codes ship, descriptors are summarized in
+  Sophie's own plain-English language.
+- **NCCI edit pairs:** CMS publishes quarterly. v52 ships a
+  subset focused on the highest-volume pairs (~5,000 of the
+  full ~1.5M PTP edits) to keep the bundle under 2 MB
+  gzipped. Out-of-bundle pairs return an `info: NCCI pair
+  not in Sophie's loaded subset` finding rather than a
+  silent pass. v52-2+ expands the bundle if user feedback
+  warrants the size increase.
+- **NPI registry:** Sophie does **not** ship the full NPPES
+  registry (~10 GB). NPI validation is **Luhn-mod-10 check
+  digit only**, not registry membership. A finding
+  `R-PA-016` says "NPI passes checksum; registry membership
+  not verified (Sophie does not load the NPPES dump)."
+
+### 5.4 Web Worker boundary
+
+`ingest.worker.js` does:
+- File reading via `FileReader.readAsArrayBuffer`
+- PDF parse via pdf.js
+- DOCX parse via mammoth
+- Returns a typed `{path, mime, sha256, text, pages, tables}`
+  bundle to the main thread.
+
+`report.worker.js` does:
+- DOCX assembly via docx.js
+- Returns a Blob to the main thread for download.
+
+The main thread runs the rule engine itself (it's CPU-light;
+the heavy work is parsing). This keeps the worker contract
+small and the rule engine debuggable in DevTools without
+worker postMessage indirection.
+
+### 5.5 Existing modules touched
+
+- `app.js` — register the new tile, register the new shape
+  branch, route `/tools/pa-lint/`.
+- `lib/search.js` — add the PA tile to the search index with
+  appropriate synonyms ("PA", "prior auth", "prior
+  authorization", "preauth", "preauthorization", "packet
+  check", "PA checklist").
+- `lib/data.js` — register the new catalog group
+  `Revenue cycle & utilization` and the new audience
+  `case-managers`.
+- `data/synonyms.json` — add the PA synonyms above.
+- `data/tool-copy/pa-lint.json` — the per-tile copy (title,
+  subtitle, body, citation, disclaimer, About the rules
+  block).
+- `scripts/build-ld.mjs` — include `pa-lint` in the
+  `WebApplication.featureList` (count moves to 255).
+- `scripts/build-sitemap.mjs` — add `/tools/pa-lint/` to the
+  sitemap (priority 0.7, monthly).
+- `scripts/check-catalog-truth.mjs` — bump expected count
+  254 → 255; add a new shape-aware assertion that exactly one
+  tile has `shape: "document-linter"` at v52 close.
+- `index.html` — homepage change in §6.
+- `styles.css` — minimal new rules for the dropzone, payer
+  selector, findings list, and severity badges. Reuses
+  existing color tokens and spacing scale.
+
+---
+
+## 6. Homepage change: dropdown replaces quick picks
+
+### 6.1 What changes
+
+The ten `<button class="quick-pick">` tiles introduced in
+[spec-v51](spec-v51.md) §4 are **removed**. They are replaced
+by a single labeled `<select>` element that lists **every
+tile in the catalog** in alphabetical order by visible title.
+Selecting an option routes immediately to that tile (no
+"Go" button; the `change` event fires the navigation, same
+pattern the hero search uses on Enter).
+
+The hero search bar (`#hero-search`) and its synonym-hint
+breadcrumb (`#hero-synonym-hint`) are **unchanged**.
+
+### 6.2 New homepage markup (inside `#home-view`)
+
+```html
+<div class="task-hero" role="search">
+  <label for="hero-search" class="hero-label">Search 255 tools</label>
+  <input
+    id="hero-search"
+    type="search"
+    autocomplete="off"
+    spellcheck="false"
+    placeholder="wells PE, CHA2DS2-VASc, ICD-10, prior auth packet…"
+    aria-describedby="hero-synonym-hint"
+  />
+</div>
+
+<p id="hero-synonym-hint" class="hero-synonym-hint" hidden></p>
+
+<section class="tool-picker" aria-labelledby="tool-picker-heading">
+  <h2 id="tool-picker-heading" class="visually-hidden">Browse all tools</h2>
+  <label for="tool-picker-select" class="tool-picker-label">
+    Or pick from the full list:
+  </label>
+  <select id="tool-picker-select" class="tool-picker-select">
+    <option value="" selected disabled>Choose a tool…</option>
+    <!-- Populated at build time by scripts/build-tool-picker.mjs
+         from UTILITIES, in alphabetical title order. One <option>
+         per tile, value=data-tool id, label=visible title. -->
+  </select>
+</section>
+```
+
+### 6.3 Why a native `<select>` and not a custom combobox
+
+- **Zero JS to render** — the `<option>` list is server-built
+  at deploy time; no client-side template.
+- **Free accessibility** — native `<select>` works with every
+  screen reader, every assistive tech, every operating
+  system, every keyboard shortcut convention. A custom
+  combobox is a multi-week ARIA tar pit.
+- **Mobile-friendly by default** — iOS and Android render
+  `<select>` as a native picker wheel / list, which is the
+  right interaction on a phone at the bedside.
+- **No autocomplete duplication** — the search bar already
+  has autocomplete via the synonym table. The dropdown is for
+  users who want to **browse**, not search.
+- **Consistent with Sophie's anti-dependency posture** — the
+  alternative (a combobox lib) would add 10–40 KB for no
+  user-visible benefit.
+
+### 6.4 What is NOT added
+
+- No autocomplete on the `<select>` (it's the browser's
+  default behavior; typing the first few characters of an
+  option title jumps to it — that's the OS providing it for
+  free).
+- No grouping by audience / category in the dropdown. The
+  list is flat alphabetical because the alternative
+  (`<optgroup>` per audience) creates duplication (tiles
+  belong to multiple audiences) and noise. The audience
+  hubs at `/for/<slug>/` already provide the grouped view.
+- No "recently used" memory. Sophie has no client storage of
+  use history ([spec-v50](spec-v50.md) §3.4 — no cookies, no
+  persistent state).
+- No analytics on selection. Same posture.
+
+### 6.5 Removed surfaces
+
+- `<section class="quick-picks">` and all ten
+  `<button class="quick-pick">` children.
+- `<h2 id="quick-picks-heading">`.
+- The corresponding CSS rules (`.quick-picks`,
+  `.quick-picks-grid`, `.quick-pick`, `.qp-title`,
+  `.qp-desc`) are deleted in wave 52-2 (a dead-CSS sweep
+  analogous to [spec-v51](spec-v51.md) §9).
+- `app.js` click handler for `.quick-pick` is removed.
+
+### 6.6 Updated homepage contract
+
+[spec-v51](spec-v51.md) §3 enumerated the permitted homepage
+blocks. v52 supersedes that list. The new permitted blocks,
+in order, are:
+
+1. `<h1 class="home-h1">`
+2. `<p class="home-lede">`
+3. `<section id="home-view">` containing:
+   a. `<h2 id="tools-heading" class="visually-hidden">`
+   b. `<div class="task-hero">` (search input + label)
+   c. `<p id="hero-synonym-hint" hidden>`
+   d. `<section class="tool-picker">` (label + select)
+
+The prohibitions from [spec-v51](spec-v51.md) §3 carry
+forward unchanged. The `.quick-picks` selector is added to
+the prohibition list.
+
+### 6.7 SEO impact
+
+- The `<select>` is server-rendered HTML with every tile
+  title as visible text inside an `<option>`. Crawlers see
+  all 255 titles on the homepage — **more** SEO surface than
+  v51's ten quick-pick titles. The `WebApplication`
+  `featureList` JSON-LD remains the canonical structured
+  signal.
+- The `home-lede` count moves from `254` to `255`.
+- The hero label moves from `Search 254 tools` to
+  `Search 255 tools`.
+- `check-catalog-truth.mjs` is updated to verify all four
+  surfaces (lede, hero label, JSON-LD, sitemap) agree on
+  255.
+
+### 6.8 Alternative considered: put the dropzone on the homepage
+
+The maintainer's framing was "if we add the same drag and
+drop or select file/folder button/interface as vaulytica,
+that would suit sophiewell.com wouldn't it?" — a question,
+not an assertion that the dropzone goes on the homepage.
+This spec puts the dropzone on the **PA tile's own page**
+(`/tools/pa-lint/`) for three reasons:
+
+1. **One tile per page** is the existing pattern for all 254
+   tiles. Putting the PA dropzone on `/` would break that
+   pattern for one feature and make every future
+   document-shape tile (if any) need its own place-on-home
+   decision.
+2. **The homepage is meant to be near-empty** ([spec-v51](spec-v51.md)
+   §1). Adding a multi-MB lazy-loaded dropzone subsystem to
+   `/` contradicts that posture.
+3. **Discoverability is fine** — the PA tile is reachable
+   from the hero search ("prior auth", "PA", "preauth", etc.
+   all match it via `data/synonyms.json`), from the new
+   dropdown, and from `/for/billers/` and `/for/coders/`
+   audience hubs.
+
+If user feedback shows the PA tile is being missed, a single
+homepage card linking to `/tools/pa-lint/` MAY be added in
+v53. The default is the tile-on-its-own-page pattern.
+
+---
+
+## 7. Posture invariants (all eight commitments preserved)
+
+[spec-v50](spec-v50.md) §3 enumerates Sophie's eight machine-
+enforced commitments. v52 satisfies each:
+
+| #   | Commitment                          | v52 status                                                                                                              |
+|-----|-------------------------------------|-------------------------------------------------------------------------------------------------------------------------|
+| 3.1 | No outbound network calls           | The PA pipeline issues zero `fetch` / `XHR` / `WebSocket`. `pa-no-network.spec.js` asserts this against a real packet.  |
+| 3.2 | No login / no account               | The PA tile has no auth, no session, no identifier. Same as every other tile.                                           |
+| 3.3 | No third-party fetch                | All parsers vendored under `/vendored/`. CSP `script-src 'self'` unchanged. `connect-src 'self'` unchanged.             |
+| 3.4 | No cookies / no client storage      | The PA tile writes nothing to cookies, localStorage, sessionStorage, IndexedDB, or the Cache API beyond the SW shell.   |
+| 3.5 | No telemetry                        | No counters, no error reporting, no usage pings. Findings live only in the tab.                                         |
+| 3.6 | No AI of any kind                   | The classifier and extractor are deterministic (regex + lookup + structural). No model weights, no remote inference.   |
+| 3.7 | No paid tier                        | The full ruleset ships in the public bundle. There is no "Pro" overlay, no payer pack behind a paywall.                 |
+| 3.8 | MIT-licensed forever                | New code is MIT. Vendored parsers carry their own licenses (Apache-2.0, BSD-2, MIT) under `/vendored/` per §5.2.        |
+
+The /commitments page is regenerated by
+`scripts/build-commitments-page.mjs` with the vendored-license
+addendum from §5.2.
+
+---
+
+## 8. Tests, checks, and CI
+
+### 8.1 New tests
+
+- `test/unit/pa-date.test.js` — UTC-midnight arithmetic, no
+  TZ drift, leap-year handling.
+- `test/unit/pa-redact.test.js` — PHI redaction is exhaustive
+  (names, DOB, MRN, SSN, address, phone, email).
+- `test/unit/pa-classify.test.js` — fixture packets classify
+  to the expected document roles.
+- `test/unit/pa-extract.test.js` — extracted bundle matches
+  expected JSON for each fixture.
+- `test/unit/pa-engine.test.js` — each rule fires (and only
+  fires) on the fixture designed to trip it.
+- `test/unit/pa-report.test.js` — report JSON matches
+  expected; DOCX assembles without throwing.
+- `test/unit/pa-ingest.test.js` — pdf.js / mammoth parsers
+  produce the expected text for the fixture PDFs and DOCXs.
+- `test/integration/pa-end-to-end.spec.js` — Playwright:
+  navigate to `/tools/pa-lint/`, drop the happy-path fixture
+  via `setInputFiles`, assert the findings panel renders with
+  the expected counts, click each download button and verify
+  the file is produced.
+- `test/integration/pa-no-network.spec.js` — extends the
+  existing no-network harness to fire the PA pipeline
+  against a fixture and assert zero non-origin requests.
+- `test/integration/pa-a11y.spec.js` — axe-core run against
+  `/tools/pa-lint/` in IDLE, ACCEPTING, ANALYZING, and
+  REPORTING states; zero serious / critical issues.
+- `test/integration/pa-perf.spec.js` — large-packet fixture
+  completes within the §4.9 budget.
+
+### 8.2 Updated checks
+
+- `scripts/check-catalog-truth.mjs` — expected catalog count
+  254 → 255. New invariant: exactly one tile has
+  `shape: "document-linter"` at v52 close. The hero-label
+  surface, the home-lede surface, the JSON-LD featureList
+  count, and the sitemap URL count all agree on 255.
+- `scripts/build-ld.mjs` — featureList includes `pa-lint`.
+- `scripts/build-sitemap.mjs` — `/tools/pa-lint/` added.
+- `scripts/build-commitments-page.mjs` — adds the vendored-
+  license addendum.
+- `scripts/audit-pa.mjs` — new; runs the pipeline against
+  every fixture and diffs the output against the committed
+  expected file. CI fails on any drift.
+- `scripts/refresh-pa-rules.mjs` — new; not in CI's required
+  path (it requires outbound network access to source URLs);
+  documented in `docs/pa-maintenance.md` and run by the
+  maintainer monthly.
+
+### 8.3 Dataset-staleness CI
+
+`dkb-staleness-ack.yml` (the existing staleness ledger from
+Vaulytica-style discipline; if not yet present in Sophie,
+v52 introduces it analogous to Vaulytica's file) lists each
+PA-rule source URL and the date last verified. CI fails (or
+warns, depending on the configured grace window) when a
+source has gone > 90 days unverified. This forces the
+maintainer to either re-verify or explicitly acknowledge
+staleness; users see the staleness state in the report's
+audit trail.
+
+### 8.4 Property tests
+
+A small property-test suite (no new framework — uses the
+existing test runner with hand-rolled generators) verifies:
+
+- Reordering the input file list does not change the report
+  JSON.
+- Adding an irrelevant extra file (e.g., a coupon PDF) does
+  not change which rules fire on the relevant documents.
+- The same packet processed twice produces byte-identical
+  JSON.
+- The redact path is idempotent: redacting an already-
+  redacted bundle changes nothing.
+
+---
+
+## 9. Wave plan
+
+v52 is large enough to ship in waves. Each wave is a
+self-contained PR; the catalog count rises only at wave 52-1.
+
+### Wave 52-1 — Tile shell, homepage change, core ruleset (2026-06)
+
+- The homepage change (§6) — dropdown replaces quick picks.
+- The `pa-lint` tile registered with `shape: "document-linter"`.
+- The `/tools/pa-lint/` route with the dropzone UI, the
+  ingest worker, the classifier, the extractor, and the
+  core 60-rule ruleset (§4.5.1).
+- The DOCX report (§4.6) with the cover page, executive
+  summary, findings, evidence ledger, extracted-data
+  appendix, and audit trail.
+- Vendored pdf.js / mammoth / docx.js.
+- All §8 tests passing.
+- /commitments page updated for the vendored licenses.
+
+### Wave 52-2 — CMS FFS + CMS MA + Medicaid core overlays (2026-07)
+
+- The 25 CMS FFS rules (§4.5.2).
+- The 15 CMS MA rules (§4.5.3).
+- The 10 Medicaid state-agnostic rules (§4.5.4).
+- Payer detection for "Medicare", "Medicare Advantage", and
+  Medicaid plans by letterhead and member-ID pattern.
+- Dead-CSS sweep for the removed `.quick-picks` rules.
+
+### Wave 52-3 — Specialty overlays (2026-08)
+
+- The 25 specialty rules (§4.5.5) split across
+  imaging / infusion / surgery / behavioral / genetic.
+- Classifier extension to flag specialty triggers from
+  CPT ranges and ICD-10 chapters.
+
+### Wave 52-4 — First commercial payer overlays (2026-09)
+
+- Aetna, United Healthcare, Anthem (lead with the three
+  largest commercial plans by national PA volume).
+- Each overlay sourced from the payer's public medical
+  policy bulletin library. Source URLs pinned and hashed.
+- ~20–40 rules per payer.
+
+### Wave 52-5+ — State Medicaid overlays, additional commercial payers, OCR
+
+- Per-state Medicaid overlays as user-volume data warrants.
+- Cigna, Humana, Blues plans by state.
+- Optional in-browser OCR via tesseract.js (lazy-loaded,
+  user-toggled, ≈ 11 MB gzipped). Only if §2's no-OCR
+  experience proves insufficient.
+
+Each wave updates this spec's changelog (below) with the
+ship date, the rule-count delta, and the dataset version.
+
+---
+
+## 10. Catalog and audience changes
+
+### 10.1 New catalog group
+
+A new top-level group `Revenue cycle & utilization` is added
+to `lib/data.js`. v52 ships exactly one tile in this group
+(`pa-lint`). The group's audience hub link is to
+`/for/billers/`; if a dedicated `/for/revenue-cycle/` hub is
+desired in a later wave, it is a one-line addition.
+
+### 10.2 New audience: case-managers
+
+`case-managers` is added as a new audience slug with its hub
+at `/for/case-managers/`. The hub is built by the existing
+`scripts/build-audience-hubs.mjs` and lists every tile
+whose `audiences` array includes `case-managers`. At v52
+close, exactly one tile (`pa-lint`) is in this hub. The
+existing `billers` and `coders` hubs also gain the `pa-lint`
+tile.
+
+### 10.3 Synonym additions
+
+`data/synonyms.json` adds:
+
+```json
+{
+  "prior auth": "pa-lint",
+  "prior authorization": "pa-lint",
+  "preauth": "pa-lint",
+  "preauthorization": "pa-lint",
+  "PA packet": "pa-lint",
+  "PA linter": "pa-lint",
+  "PA checker": "pa-lint",
+  "packet check": "pa-lint",
+  "PA checklist": "pa-lint",
+  "utilization management": "pa-lint",
+  "UM packet": "pa-lint",
+  "denial prevention": "pa-lint"
+}
+```
+
+The full list is reviewed for collisions with existing
+synonyms before merge.
+
+---
+
+## 11. Disclaimer copy (shipped on the tile and in the report)
+
+The exact wording, locked by this spec and re-readable as a
+single block in `data/tool-copy/pa-lint.json`:
+
+> **Sophie Prior-Auth Packet Linter is a deterministic
+> checklist. It is not medical advice. It is not legal
+> advice. It is not coding advice. It does not transmit
+> anything to any payer. Your packet stays in this browser
+> tab; we never see your data. Findings reflect what
+> Sophie's ruleset checks; they are not a guarantee of
+> payer approval. A passing report does not mean the packet
+> will be approved; a failing report does not mean the
+> packet will be denied. The clinical adequacy of every
+> document is the reviewer's responsibility. Sophie's
+> ruleset is versioned and cites every source; verify
+> citations against current payer policy before relying on
+> any finding for a clinical or revenue decision.**
+
+This disclaimer appears on the tile page (collapsed under
+"About the rules") and at the top of the DOCX report (under
+the cover-page title).
+
+---
+
+## 12. Migration & rollback
+
+### 12.1 Forward
+
+Wave 52-1 ships in a single PR that:
+
+1. Updates `index.html` per §6 (removes the quick-picks
+   block, adds the tool-picker block, updates the lede +
+   hero label to "255").
+2. Adds the `pa-lint` tile registration in `lib/data.js`,
+   the synonyms in `data/synonyms.json`, the tile copy in
+   `data/tool-copy/pa-lint.json`.
+3. Adds all files listed in §5.1.
+4. Updates the four scripts in §5.5.
+5. Adds the tests in §8.1.
+6. Updates the checks in §8.2.
+
+The PR's commit message references this spec by id. The
+CHANGELOG.md gets a new section for v52.
+
+### 12.2 Rollback
+
+Revert the v52 PR. No data migration required. No URL
+changes that other sites or pages depend on (the
+`/tools/pa-lint/` route is new; revert simply 404s it). The
+homepage reverts to the v51 quick-picks layout. The catalog
+count reverts to 254. No `localStorage` keys are added or
+removed (the PA tile writes none).
+
+### 12.3 Partial rollback
+
+If a specific overlay (e.g., a payer pack added in v52-4)
+needs to be retracted without rolling back the whole tile,
+the overlay's JSON file is renamed to `.disabled` and the
+manifest is rebuilt. The engine skips disabled overlays
+silently; the audit trail records the disablement.
+
+---
+
+## 13. Open questions deferred to future waves
+
+- **Should the PA tile expose a "compare to last submission"
+  diff mode?** Useful for resubmissions but adds UX
+  complexity. Defer to v53 pending user feedback.
+- **Should specialty overlays be auto-enabled by classifier
+  or always-on with a noisier report?** v52 auto-enables.
+  Revisit if the noise complaint volume warrants.
+- **Should Sophie ship a fixture generator (synthetic PHI
+  packets for testing)?** Useful for users building
+  test pipelines around Sophie. Defer; ship the maintainer's
+  fixtures publicly under `data/pa-lint/fixtures/` and let
+  users contribute their own.
+- **MCP-server export.** The `lib/pa/` modules are written
+  to be pure functions over typed inputs. A future
+  cross-repo wave (`kernels-core`) MAY wrap them as an MCP
+  server so that AI agents can call Sophie PA as a tool.
+  This is out of scope for v52 and remains a maintainer-
+  level architectural decision.
+
+---
+
+## 14. Cross-references
+
+- [spec-v10](spec-v10.md) — audiences and dependency budget.
+- [spec-v11](spec-v11.md) — citation audit harness.
+- [spec-v12](spec-v12.md) — integrity manifests.
+- [spec-v29](spec-v29.md) — nurse-first pivot and scope test
+  (extended in §3 above).
+- [spec-v46](spec-v46.md) — catalog-truth invariants
+  (extended in §8.2 above).
+- [spec-v48](spec-v48.md) — derivation-block pattern (the
+  PA report's per-finding "why" block follows the same
+  shape).
+- [spec-v50](spec-v50.md) — eight commitments (verified
+  intact in §7 above).
+- [spec-v51](spec-v51.md) — minimal homepage (superseded
+  for the quick-picks block by §6 above; all other
+  provisions intact).
+- [Vaulytica](https://github.com/clay-good/vaulytica) — the
+  reference implementation for the file-ingest /
+  rule-engine / DOCX-report pattern adopted here.
+
+---
+
+## 15. Changelog
+
+- 2026-05-27 — v52 proposed. Five waves outlined (52-1 through
+  52-5+). Catalog count target at v52-1 close: 255.
+- 2026-05-27 — wave 52-1a (homepage-only slice) shipped. §6 is
+  closed: the ten `.quick-pick` buttons are removed and replaced
+  by a native `<select id="tool-picker-select">` whose `<option>`
+  list is server-rendered by the new
+  `scripts/build-tool-picker.mjs` from `UTILITIES` in `app.js`
+  (alphabetical by visible title). The change `event` routes via
+  `location.hash`, matching the existing hero-search and tile-
+  card hash-routing pattern. The `.quick-picks*` CSS rules are
+  deleted in the same commit (no v51 dead-CSS sweep needed). The
+  catalog count remains **254** because the `pa-lint` tile is
+  not yet registered; the hero label, lede, JSON-LD, and OG/
+  Twitter copy are unchanged. The remainder of wave 52-1
+  (the PA tile shell, the dropzone, the rule engine, the
+  vendored pdf.js / mammoth / docx.js, the 60-rule core
+  ruleset, the DOCX report, the dataset-staleness CI) is
+  deferred to a follow-up commit and will bump the catalog
+  count from 254 to 255 in the same change.

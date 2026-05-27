@@ -549,56 +549,278 @@
           <!-- Populated by app.js when a typed phrase resolves to a tile. -->
           <p id="hero-synonym-hint" class="hero-synonym-hint" hidden></p>
 
-          <!-- spec-v51: curated quick picks. Ten of the most-used
-               bedside tools, hand-picked rather than ranked by
-               telemetry (Sophie ships no analytics; spec-v50 §3.5).
-               The full catalog lives at /tools/<id>/ and the audience
-               hubs at /for/<slug>/, both indexable from sitemap.xml
-               and the JSON-LD in <head>. -->
-          <section class="quick-picks" aria-labelledby="quick-picks-heading">
-            <h2 id="quick-picks-heading" class="quick-picks-heading">Quick picks</h2>
-            <div class="quick-picks-grid">
-              <button class="quick-pick" type="button" data-tool="nihss">
-                <span class="qp-title">NIH Stroke Scale</span>
-                <span class="qp-desc">11-item NIHSS for acute stroke severity.</span>
-              </button>
-              <button class="quick-pick" type="button" data-tool="chads">
-                <span class="qp-title">CHA2DS2-VASc</span>
-                <span class="qp-desc">Stroke risk in atrial fibrillation.</span>
-              </button>
-              <button class="quick-pick" type="button" data-tool="wells-pe">
-                <span class="qp-title">Wells Score for PE</span>
-                <span class="qp-desc">Pulmonary-embolism pretest probability.</span>
-              </button>
-              <button class="quick-pick" type="button" data-tool="heart">
-                <span class="qp-title">HEART Score</span>
-                <span class="qp-desc">Chest-pain 6-week MACE risk.</span>
-              </button>
-              <button class="quick-pick" type="button" data-tool="qsofa-sofa">
-                <span class="qp-title">qSOFA / SOFA</span>
-                <span class="qp-desc">Bedside sepsis screen and organ-failure score.</span>
-              </button>
-              <button class="quick-pick" type="button" data-tool="ciwa">
-                <span class="qp-title">CIWA-Ar</span>
-                <span class="qp-desc">Alcohol-withdrawal severity assessment.</span>
-              </button>
-              <button class="quick-pick" type="button" data-tool="gcs">
-                <span class="qp-title">Glasgow Coma Scale</span>
-                <span class="qp-desc">Eye, verbal, motor score.</span>
-              </button>
-              <button class="quick-pick" type="button" data-tool="shock-index">
-                <span class="qp-title">MAP / Shock Index</span>
-                <span class="qp-desc">MAP, pulse pressure, shock index in one tile.</span>
-              </button>
-              <button class="quick-pick" type="button" data-tool="anion-gap-dd">
-                <span class="qp-title">Anion Gap &amp; Delta-Delta</span>
-                <span class="qp-desc">AG, albumin-corrected AG, delta/delta.</span>
-              </button>
-              <button class="quick-pick" type="button" data-tool="cssrs">
-                <span class="qp-title">C-SSRS Screener</span>
-                <span class="qp-desc">Columbia suicide-severity bedside screen.</span>
-              </button>
-            </div>
+          <!-- spec-v52 §6: the ten curated quick picks shipped in v51 are
+               replaced by a single native <select> listing every tile in
+               the catalog alphabetically by visible title. The <option>
+               list is regenerated at build time by
+               scripts/build-tool-picker.mjs from the UTILITIES array in
+               app.js between the TOOL-PICKER markers below. Selecting an
+               option routes to the tile on the `change` event, matching
+               the hero search's on-Enter routing pattern. -->
+          <section class="tool-picker" aria-labelledby="tool-picker-heading">
+            <h2 id="tool-picker-heading" class="visually-hidden">Browse all tools</h2>
+            <label for="tool-picker-select" class="tool-picker-label">
+              Or pick from the full list:
+            </label>
+            <select id="tool-picker-select" class="tool-picker-select">
+              <option value="" selected disabled>Choose a tool&hellip;</option>
+          <!-- TOOL-PICKER:START -->
+            <option value="4at">4AT Delirium Screen</option>
+            <option value="four-ts">4Ts Score for HIT</option>
+            <option value="aa-gradient">A-a Gradient</option>
+            <option value="aa-pf-suite">A-a Gradient &amp; P/F Suite</option>
+            <option value="abc-mtp">ABC Score for Massive Transfusion</option>
+            <option value="abcd2">ABCD2 Score (TIA stroke risk)</option>
+            <option value="abg">ABG Interpretation Walkthrough</option>
+            <option value="blood-compat">ABO/Rh blood-product compatibility quick-check</option>
+            <option value="acog-severe-pre">ACOG Severe-feature Preeclampsia</option>
+            <option value="aims65">AIMS65 Score (upper GI bleeding mortality)</option>
+            <option value="corrected-anion-gap">Albumin-Corrected Anion Gap (Figge)</option>
+            <option value="alvarado-pas">Alvarado / Pediatric Appendicitis Score</option>
+            <option value="anion-gap">Anion Gap</option>
+            <option value="anion-gap-dd">Anion Gap &amp; Delta-Delta</option>
+            <option value="abx-renal">Antibiotic Renal Dose Adjustment</option>
+            <option value="anticoag-reversal">Anticoagulation Reversal Reference</option>
+            <option value="apfel">Apfel Simplified PONV Score</option>
+            <option value="apgar">APGAR</option>
+            <option value="appeal-letter">Appeal Letter Generator</option>
+            <option value="prep">Appointment Prep Question Generator</option>
+            <option value="apri">APRI (AST to Platelet Ratio Index)</option>
+            <option value="ascvd">ASCVD 10-year Risk (PCE)</option>
+            <option value="atria-bleeding">ATRIA Bleeding Score</option>
+            <option value="ats-idsa-cap">ATS/IDSA Severe CAP Criteria (2019)</option>
+            <option value="auditc">AUDIT-C Alcohol Screener</option>
+            <option value="avpu-gcs">AVPU ↔ GCS Quick Reference</option>
+            <option value="nigrovic">Bacterial Meningitis Score (Nigrovic)</option>
+            <option value="barthel">Barthel Index (weighted ADL for rehab nursing)</option>
+            <option value="beers-check">Beers Criteria deprescribing checker (AGS 2023)</option>
+            <option value="benzo-equiv">Benzodiazepine Equivalence (Ashton)</option>
+            <option value="berlin-ards">Berlin ARDS Criteria</option>
+            <option value="berlin-osa">Berlin Questionnaire (OSA)</option>
+            <option value="big">BIG Score (pediatric trauma)</option>
+            <option value="bpp">Biophysical Profile (BPP)</option>
+            <option value="bishop">Bishop Score (cervical favorability)</option>
+            <option value="bbp-exposure">Bloodborne Pathogen Exposure Decision Tree</option>
+            <option value="bmi">BMI Calculator</option>
+            <option value="bsa">Body Surface Area</option>
+            <option value="bw-bsa-suite">Body Weight &amp; BSA Suite (IBW / AdjBW / BSA)</option>
+            <option value="boston-febrile">Boston Criteria (febrile infant)</option>
+            <option value="bps">BPS (Behavioral Pain Scale)</option>
+            <option value="braden">Braden Scale (pressure injury risk)</option>
+            <option value="bristol-girth">Bristol stool type + abdominal-girth trend</option>
+            <option value="burn-fluid">Burn Fluid Resuscitation Calculator</option>
+            <option value="bsa_burn">Burn Surface Area Calculator</option>
+            <option value="cssrs">C-SSRS Screener (Columbia Suicide Severity Rating Scale)</option>
+            <option value="cage">CAGE Alcohol Screener</option>
+            <option value="cam-icu">CAM-ICU (Confusion Assessment Method, ICU)</option>
+            <option value="ccsr">Canadian C-Spine Rule</option>
+            <option value="cthr">Canadian CT Head Rule</option>
+            <option value="carpenter-coustan">Carpenter-Coustan GDM Criteria</option>
+            <option value="centor">Centor / McIsaac (strep pharyngitis)</option>
+            <option value="chads">CHA2DS2-VASc</option>
+            <option value="charlson">Charlson Comorbidity Index (age-adjusted)</option>
+            <option value="cincinnati">Cincinnati Prehospital Stroke Scale</option>
+            <option value="ciwa">CIWA-Ar (alcohol withdrawal)</option>
+            <option value="cfs">Clinical Frailty Scale (Rockwood)</option>
+            <option value="co-cn-antidote">CO / Cyanide / Smoke-Inhalation Antidotes</option>
+            <option value="cockcroft-gault">Cockcroft-Gault Creatinine Clearance</option>
+            <option value="code-blue-clock">Code-blue documentation timer (AHA 2020)</option>
+            <option value="comfort-b">COMFORT-B Behavioral Scale (pediatric sedation)</option>
+            <option value="conc-rate">Concentration-to-Rate</option>
+            <option value="cam">Confusion Assessment Method (CAM, non-ICU)</option>
+            <option value="corrected-ca-na">Corrected Calcium / Sodium Suite</option>
+            <option value="corrected-calcium">Corrected Calcium for Albumin</option>
+            <option value="corrected-sodium">Corrected Sodium for Hyperglycemia</option>
+            <option value="cows">COWS (opioid withdrawal)</option>
+            <option value="cpot">CPOT (Critical-Care Pain Observation Tool)</option>
+            <option value="cpss">CPSS (Cincinnati Prehospital Stroke Scale)</option>
+            <option value="crb65">CRB-65 (CAP severity, no BUN)</option>
+            <option value="cries">CRIES neonatal postoperative pain scale</option>
+            <option value="crrt-dose">CRRT effluent dose + citrate-Ca ratio</option>
+            <option value="curb-65">CURB-65</option>
+            <option value="dapt-score">DAPT Score (continuation)</option>
+            <option value="dash-vte">DASH VTE-Recurrence Score</option>
+            <option value="discharge-instr">Discharge Instruction Template</option>
+            <option value="drip-rate">Drip Rate Calculator</option>
+            <option value="drip">DRIP Score (drug-resistant pneumonia)</option>
+            <option value="ecmo-titration">ECMO sweep / flow titration helper</option>
+            <option value="ecog-karnofsky">ECOG and Karnofsky Performance Status</option>
+            <option value="epds">Edinburgh Postnatal Depression Scale</option>
+            <option value="egfr-suite">eGFR Suite (CKD-EPI 2021 / MDRD / CG)</option>
+            <option value="electrolyte-replacement">Electrolyte replacement ladder (K / Mg / Phos)</option>
+            <option value="ems-doc">EMS Documentation Helper</option>
+            <option value="epworth">Epworth Sleepiness Scale</option>
+            <option value="egfr">Estimated GFR (CKD-EPI 2021)</option>
+            <option value="fast">FAST and BE-FAST Stroke Assessment</option>
+            <option value="fena-feurea">FENa / FEUrea</option>
+            <option value="fib4">FIB-4 Index for Liver Fibrosis</option>
+            <option value="flacc">FLACC scale (pediatric non-verbal pain)</option>
+            <option value="device-day-counter">Foley / central-line device-day counter (CDC)</option>
+            <option value="four-score">FOUR Score (ICU coma scale for intubated patients)</option>
+            <option value="free-water-deficit">Free Water Deficit Calculator</option>
+            <option value="gad7">GAD-7 Anxiety Screener</option>
+            <option value="gap">GAP Trauma Score</option>
+            <option value="gcs">Glasgow Coma Scale</option>
+            <option value="gbs">Glasgow-Blatchford Bleeding Score</option>
+            <option value="grace">GRACE Score (in-hospital mortality)</option>
+            <option value="guss">GUSS (Gugging Swallowing Screen, post-stroke dysphagia)</option>
+            <option value="hacor">HACOR Score (NIV failure)</option>
+            <option value="hasbled">HAS-BLED</option>
+            <option value="heart">HEART Score (chest pain)</option>
+            <option value="heatstroke-decision">Heat exhaustion vs heat stroke + cooling algorithm</option>
+            <option value="hellp">HELLP Syndrome Criteria</option>
+            <option value="hemorr2hages">HEMORR2HAGES Bleeding Score</option>
+            <option value="hendrich-ii">Hendrich II Fall Risk Model</option>
+            <option value="herdoo2">HERDOO2 (women with unprovoked VTE)</option>
+            <option value="hipaa-auth">HIPAA Authorization Form Generator</option>
+            <option value="breach-clock">HIPAA Breach 60-Day Notification Clock</option>
+            <option value="hipaa-roa">HIPAA Right of Access Request Generator</option>
+            <option value="hospital-score">HOSPITAL Score for 30-Day Readmission</option>
+            <option value="hunt-hess-wfns">Hunt-Hess + WFNS aneurysmal SAH grading</option>
+            <option value="iadpsg">IADPSG GDM Criteria</option>
+            <option value="icdsc">ICDSC (Intensive Care Delirium Screening Checklist)</option>
+            <option value="ich-score">ICH Score (Hemphill 2001)</option>
+            <option value="improve-bleeding">IMPROVE Bleeding Risk Score</option>
+            <option value="improve-vte">IMPROVE VTE Risk Score</option>
+            <option value="insulin-correction">Insulin correction (ADA 2024 ISF / ICR)</option>
+            <option value="insulin-drip">Insulin Drip Math</option>
+            <option value="iron-ganzoni">Iron Deficit Calculator (Ganzoni)</option>
+            <option value="isth-dic">ISTH Overt DIC Score</option>
+            <option value="jumpstart-triage">JumpSTART Pediatric MCI Triage</option>
+            <option value="katz-adl">Katz ADL (Activities of Daily Living index)</option>
+            <option value="kdigo-aki">KDIGO AKI Staging</option>
+            <option value="khorana">Khorana Cancer-VTE Score</option>
+            <option value="killip">Killip Classification (acute MI)</option>
+            <option value="lab-interpret">Lab Result Interpreter</option>
+            <option value="lace">LACE Index for 30-Day Readmission / Death</option>
+            <option value="lams">LAMS (Los Angeles Motor Scale, LVO prediction)</option>
+            <option value="lawton-iadl">Lawton IADL (Instrumental Activities of Daily Living)</option>
+            <option value="lemon">LEMON Difficult Airway Predictor</option>
+            <option value="lights">Light’s Criteria (Pleural Effusion)</option>
+            <option value="lips">Lung Injury Prediction Score (LIPS)</option>
+            <option value="maddrey-lille">Maddrey DF and Lille Model (alcoholic hepatitis)</option>
+            <option value="maint-fluids">Maintenance Fluids (4-2-1)</option>
+            <option value="shock-index">MAP / Pulse Pressure / Shock Index</option>
+            <option value="mtp-tracker">Massive Transfusion 1:1:1 ratio tracker (PROPPR)</option>
+            <option value="map">Mean Arterial Pressure</option>
+            <option value="wallet-card">Medication Wallet Card Generator</option>
+            <option value="meld-childpugh">MELD-3.0 / Child-Pugh</option>
+            <option value="mentzer">Mentzer Index (Microcytic Anemia Screen)</option>
+            <option value="meows">MEOWS (Modified Early Obstetric Warning System)</option>
+            <option value="mews">MEWS (Modified Early Warning Score)</option>
+            <option value="mgap">MGAP Trauma Score</option>
+            <option value="mini-cog">Mini-Cog Cognitive Screener</option>
+            <option value="aldrete-padss">modified Aldrete + PADSS (PACU discharge)</option>
+            <option value="aldrete">modified Aldrete Recovery Score</option>
+            <option value="mnihss">modified NIHSS (mNIHSS, 11-item)</option>
+            <option value="mnutric">modified NUTRIC (IL-6 omitted)</option>
+            <option value="sgarbossa">Modified Sgarbossa Criteria (Smith)</option>
+            <option value="morse-falls">Morse Fall Scale</option>
+            <option value="mods">Multiple Organ Dysfunction Score (MODS)</option>
+            <option value="lis-murray">Murray Lung Injury Score</option>
+            <option value="must-nutrition">MUST (Malnutrition Universal Screening Tool)</option>
+            <option value="npass">N-PASS (Neonatal Pain, Agitation, Sedation Scale)</option>
+            <option value="due-date">Naegele Pregnancy Due Date</option>
+            <option value="naloxone">Naloxone Dosing Calculator</option>
+            <option value="ndc-convert">NDC 10 ↔ 11 Digit Converter</option>
+            <option value="news2">NEWS2 (National Early Warning Score 2)</option>
+            <option value="ews-escalation">NEWS2 / MEWS escalation + re-assessment timer</option>
+            <option value="nexus-cspine">NEXUS + Canadian C-Spine</option>
+            <option value="nihss">NIH Stroke Scale</option>
+            <option value="nips">NIPS (Neonatal Infant Pain Scale)</option>
+            <option value="norton-push">Norton Scale + PUSH Tool</option>
+            <option value="npiap-staging">NPIAP pressure injury stage selector</option>
+            <option value="nrs2002">NRS-2002 (Nutrition Risk Screening 2002)</option>
+            <option value="nutric">NUTRIC Score (nutritional risk in critically ill)</option>
+            <option value="oakland">Oakland Score (lower GI bleeding safe discharge)</option>
+            <option value="opioid-mme">Opioid MME Calculator (CDC 2022)</option>
+            <option value="orbit-bleeding">ORBIT Bleeding Score</option>
+            <option value="osmolal-gap">Osmolal Gap</option>
+            <option value="ottawa-ankle">Ottawa Ankle Rules</option>
+            <option value="ottawa-sah">Ottawa Subarachnoid Hemorrhage Rule</option>
+            <option value="pf-ratio">P/F Ratio</option>
+            <option value="pack-years">Pack-Years</option>
+            <option value="padua">Padua Prediction Score (VTE risk in medical inpatients)</option>
+            <option value="painad">PAINAD (Pain Assessment in Advanced Dementia)</option>
+            <option value="pass-asthma">PASS (pediatric asthma severity)</option>
+            <option value="pecarn-iai">PECARN Intra-Abdominal Injury Rule</option>
+            <option value="pecarn-cspine">PECARN Pediatric C-Spine Rule</option>
+            <option value="pecarn-head">PECARN Pediatric Head Injury Rule</option>
+            <option value="peds-dose">Pediatric Dose Safety Bounds</option>
+            <option value="pews">Pediatric Early Warning Score (PEWS)</option>
+            <option value="peds-ett">Pediatric ETT Size Calculator</option>
+            <option value="peds-gcs">Pediatric Glasgow Coma Scale</option>
+            <option value="peds-weight-conv">Pediatric Weight Converter (lb/oz &lt;-&gt; kg)</option>
+            <option value="peds-weight-dose">Pediatric Weight-to-Dose Calculator</option>
+            <option value="perc">PERC Rule (PE rule-out)</option>
+            <option value="pesi">PESI (Pulmonary Embolism Severity Index)</option>
+            <option value="philadelphia">Philadelphia Criteria (febrile infant)</option>
+            <option value="phq9">PHQ-9 Depression Screener</option>
+            <option value="poss">POSS (Pasero Opioid-induced Sedation Scale)</option>
+            <option value="pram-asthma">PRAM (pediatric asthma severity)</option>
+            <option value="pbw-ardsnet">Predicted Body Weight + ARDSnet Tidal Volume</option>
+            <option value="preg-dating">Pregnancy Dating (LMP / CRL / EDD)</option>
+            <option value="prevent">PREVENT 2023 10-year CVD Risk (race-free)</option>
+            <option value="prior-auth">Prior Authorization Checklist Generator</option>
+            <option value="psi">PSI / PORT (pneumonia severity)</option>
+            <option value="qsofa-sofa">qSOFA / SOFA</option>
+            <option value="qtc">QTc Correction</option>
+            <option value="qtc-suite">QTc Suite (Bazett / Fridericia / Framingham / Hodges)</option>
+            <option value="r-factor">R-Factor (Drug-Induced Liver Injury Pattern)</option>
+            <option value="rabies-pep">Rabies PEP Decision Tree</option>
+            <option value="race">RACE (Rapid Arterial oCclusion Evaluation)</option>
+            <option value="ranson-bisap">Ranson / BISAP (acute pancreatitis)</option>
+            <option value="rsbi">Rapid Shallow Breathing Index (RSBI)</option>
+            <option value="restraint-timer">Restraint reassessment timer (CMS 42 CFR 482.13)</option>
+            <option value="rcri">Revised Cardiac Risk Index (Lee)</option>
+            <option value="rass">Richmond Agitation-Sedation Scale (RASS)</option>
+            <option value="sas-riker">Riker Sedation-Agitation Scale (SAS)</option>
+            <option value="rochester">Rochester Criteria (febrile infant)</option>
+            <option value="rockall">Rockall Score (upper GI bleeding)</option>
+            <option value="roi">ROI Request Generator</option>
+            <option value="rosier">ROSIER (Recognition of Stroke in the Emergency Room)</option>
+            <option value="rox">ROX Index (HFNC failure prediction)</option>
+            <option value="saag">SAAG (Serum-Ascites Albumin Gradient)</option>
+            <option value="sbar-template">SBAR Handoff Template Generator</option>
+            <option value="sbs">SBS (State Behavioral Scale, pediatric ICU)</option>
+            <option value="vent-sbt-peep">SBT readiness + ARDSnet PEEP/FiO2 table</option>
+            <option value="sirs">SIRS Criteria (with Sepsis-3 context)</option>
+            <option value="smart-cop">SMART-COP (CAP severity)</option>
+            <option value="sodium-correction">Sodium Correction Rate Planner (Adrogue-Madias)</option>
+            <option value="sos">SOS (Sophia Observation withdrawal Symptoms)</option>
+            <option value="specialty-visit">Specialty-Visit Question Generator</option>
+            <option value="spesi">sPESI (Simplified PESI)</option>
+            <option value="start-triage">START Adult MCI Triage</option>
+            <option value="step-by-step">Step-by-Step Approach (febrile infant)</option>
+            <option value="steroid-equiv">Steroid Equivalence Converter</option>
+            <option value="sti-screening">STI Screening Interval Reference (CDC)</option>
+            <option value="stop-bang">STOP-BANG OSA Screen</option>
+            <option value="sepsis-bundle-clock">Surviving Sepsis bundle timer + lactate clearance</option>
+            <option value="hypothermia-rewarm">Swiss hypothermia staging + rewarming algorithm</option>
+            <option value="tb-testing">TB Testing Interpretation (TST + IGRA)</option>
+            <option value="tetanus">Tetanus Prophylaxis Decision Tree</option>
+            <option value="em-time">Time-Based E/M Code Selector (2021)</option>
+            <option value="time-to-dose">Time-to-Dose Helper</option>
+            <option value="timi">TIMI Risk Score (UA / NSTEMI)</option>
+            <option value="tpn-macro">TPN Macronutrient Calculator</option>
+            <option value="field-triage">Trauma Triage Decision Tool (CDC)</option>
+            <option value="unit-converter">Unit Converter</option>
+            <option value="unit-converter-v4">Universal Unit Converter (lab + vitals + basics)</option>
+            <option value="vis">Vasoactive-Inotropic Score (VIS)</option>
+            <option value="vasopressor">Vasopressor Dose to Rate Calculator</option>
+            <option value="vip-extravasation">VIP + INS infiltration / extravasation grading</option>
+            <option value="wat-1">WAT-1 (pediatric iatrogenic withdrawal)</option>
+            <option value="weight-dose">Weight-Based Dose</option>
+            <option value="wells-dvt-caprini">Wells DVT and Caprini VTE Risk</option>
+            <option value="wells-pe-geneva">Wells PE &amp; Revised Geneva (PE)</option>
+            <option value="wells-dvt">Wells Score for DVT</option>
+            <option value="wells-pe">Wells Score for PE</option>
+            <option value="westley">Westley Croup Score</option>
+            <option value="white-song">White-Song Fast-Track Recovery</option>
+            <option value="winters">Winters Formula (expected PaCO2)</option>
+            <option value="yos">Yale Observation Scale</option>
+          <!-- TOOL-PICKER:END -->
+            </select>
           </section>
         </section>
       </main>
