@@ -731,6 +731,56 @@ body {
   font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
   font-size: 0.78rem;
 }
+.pa-findings-panel {
+  margin-top: 18px;
+}
+.pa-findings-headline {
+  margin: 0 0 8px;
+  font-size: 1rem;
+}
+.pa-findings-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.pa-rule {
+  padding: 10px 12px;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-left-width: 4px;
+  border-radius: var(--radius-card);
+}
+.pa-rule[data-status="block"] { border-left-color: #d44d4d; }
+.pa-rule[data-status="flag"]  { border-left-color: #c9a227; }
+.pa-rule[data-status="pass"]  { border-left-color: #3fa56b; }
+.pa-rule[data-status="error"] { border-left-color: #7a4fa0; }
+.pa-rule-head { margin: 0; font-weight: 600; }
+.pa-rule-id {
+  display: inline-block;
+  padding: 1px 6px;
+  background: var(--bg-tertiary);
+  border-radius: 4px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.78rem;
+}
+.pa-rule-status {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+}
+.pa-rule-note,
+.pa-rule-evidence,
+.pa-rule-citation {
+  margin: 4px 0 0;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+.pa-rule-citation {
+  font-size: 0.78rem;
+  opacity: 0.85;
+}
 
 /* spec-v52 §6: tool-picker. Native <select> listing every tile in the
    catalog, alphabetically by visible title. Replaces the v51 ten-tile

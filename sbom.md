@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `d8691ddc62cf26ab`
-Generated: 2026-05-27T22:34:30.423Z
+Build ID: `820163c794ba6361`
+Generated: 2026-05-27T22:54:09.216Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=20.18.1 <21, npm >=10.0.0
@@ -24,7 +24,7 @@ downloads is committed in this repository and is hashed below.
 | Path | Bytes | SHA-256 |
 |---|---:|---|
 | `index.html` | 50441 | `7e29e82519053fb0006a5ed753395a0467a6f694dd01305d3784e52163085efa` |
-| `styles.css` | 34728 | `e0a9a9bddcb26dd1f857e61bdbb06250a7977a62866219478e6d4e5cf1946af1` |
+| `styles.css` | 35880 | `693dc940bb6adb8bb86db1db6a1d53db6817a410428ad33a5945be55beff343b` |
 | `app.js` | 88087 | `12aff12bf4f1bb86257dd2fc43119e66ec63a659a621f63efba2580542f21882` |
 | `sw.js` | 4062 | `60f524b1b69eb5170c59af42631e11cc05db2a44e8e530977db0327888b0ff6d` |
 | `site.webmanifest` | 709 | `0e0de4da60590a12e8b27a0ae2a2f5ffdb6500b7d2b78f93631ec2f64ed3d5ce` |
@@ -57,6 +57,10 @@ downloads is committed in this repository and is hashed below.
 | `lib/live.js` | 1138 | `304978d3c170b6eb06cade7702e5f99d868e9b3e1f5651aa9a28da15e62a6a9c` |
 | `lib/medication-v4.js` | 18167 | `01083485c63ad46008f3ddc823b5c31395efdc74a8920eeb62f51b1965e04013` |
 | `lib/meta.js` | 453400 | `1b3b91e7ee71bb54ad037378c8b16a150e5290c5e88e89323ea0e7e7d929bbae` |
+| `lib/pa/date.js` | 2482 | `91a44d0383958089ad0d749ba556227b3d8432443f1431c2871b15854111c645` |
+| `lib/pa/engine.js` | 2996 | `6413ae2dde18e6a1660d3dfe0cfb312a9741921bab0f61aaab64c8a6596867ee` |
+| `lib/pa/extract.js` | 4960 | `6a1c48e8485e0a25f44027e675e1a79fdfe2eca06e46224e17beb15f86e58077` |
+| `lib/pa/rules.js` | 5335 | `e2ce2b5dd409a86ea5f6053a8223f61090d862a60739929e7d05011b3ba96081` |
 | `lib/print.js` | 2588 | `74579a71f82b75993dea9f7d9b3c21e67744bd4dbe6f50e20c8eef9aa1be7546` |
 | `lib/prompt.js` | 6872 | `95ee9b9de5adbafd1497f378993e27d29c9f437bfc9ddc304886fd75e80fffd4` |
 | `lib/regulatory.js` | 4040 | `9e1ef6751facc0172c492010ccd35982061f06b000db2e857a98ec2013e7087c` |
@@ -79,7 +83,7 @@ downloads is committed in this repository and is hashed below.
 | `views/group-klmno.js` | 7870 | `bf6d3ced1a08fcb627284b649d07b8e5ace6857b29e46992d4e425925c63eaa9` |
 | `views/group-v5.js` | 26940 | `daba643b4b8c800ca5706cc9f7d80d64fb373cbfc1362b77e2fc22d6495c241a` |
 | `views/group-v6.js` | 5707 | `425918decb48cd9efac9fc5590ac8970a54c03c3b0df056fb99c9a22ff8dd1b2` |
-| `views/pa-lint.js` | 12009 | `5091676a757a09faefaab3c1d5e0875d2727151cf546c113c13a67ecba4c6b55` |
+| `views/pa-lint.js` | 15374 | `081114278f1329b622b6906d6464a7071c113efafe22b49f666cb8c9c6e7864f` |
 
 ## Verifying this SBOM
 

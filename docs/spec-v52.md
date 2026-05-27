@@ -1345,6 +1345,34 @@ silently; the audit trail records the disablement.
 
 - 2026-05-27 — v52 proposed. Five waves outlined (52-1 through
   52-5+). Catalog count target at v52-1 close: 255.
+- 2026-05-27 — wave 52-1e (rule engine + 7 starter rules) shipped.
+  Adds `lib/pa/{date,extract,rules,engine}.js`. The engine consumes a
+  document bundle (`{name, sha256, kind, text}[]`) and runs a list of
+  declarative rules over the aggregated extracted text, returning a
+  findings array sorted by spec-v52 §4.4 severity then rule id. Wave
+  52-1e ships 7 of the 60 §4.5.1 core rules: R-PA-001 (patient name),
+  R-PA-004 (service date), R-PA-007 (CPT/HCPCS present), R-PA-010
+  (ICD-10 present), R-PA-013 (POS code present + on bundled CMS list),
+  R-PA-016 (NPI Luhn-mod-10 with CMS 80840 prefix), R-PA-041 (SSN-
+  absent / PHI minimization). The remaining 53 core rules + payer
+  overlays + specialty overlays follow in subsequent waves. Each rule
+  is a plain object with id, description, severity, citation, and a
+  `check(bundle)` predicate; adding a rule is a one-entry append with
+  no engine change. The pa-lint view now (a) extracts text from PDF /
+  DOCX / TXT (TXT path added this wave), (b) renders the per-file
+  audit trail, (c) builds a bundle, (d) runs the engine, and (e)
+  renders a findings panel with severity-coded left borders and
+  per-finding rule id / status / description / evidence / citation.
+  31 new unit tests (`test/unit/pa-{date,extract,engine}.test.js`)
+  cover the date math (incl. leap-year and timezone-invariance), the
+  extractors (incl. CMS NPI Luhn example 1234567893), and the engine
+  end-to-end against synthetic bundles. A new Playwright spec
+  `test/integration/pa-lint-engine.spec.js` drops a happy-path TXT
+  and a missing-NPI TXT and asserts the findings panel renders the
+  expected statuses end-to-end. The engine is timestamp-free,
+  fetch-free, and randomness-free per spec-v52 §4.10. Property
+  test (order-independence across input documents) is included in
+  the engine unit suite.
 - 2026-05-27 — wave 52-1d (vendored mammoth.js + DOCX text extraction)
   shipped. `mwilliamson/mammoth.js` 1.2.5 (BSD-2-Clause) is vendored at
   `vendored/mammoth/mammoth.browser.min.js` per spec-v52 §5.2. Upstream

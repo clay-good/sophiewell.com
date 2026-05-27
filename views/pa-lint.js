@@ -1,4 +1,4 @@
-// Group P (Revenue cycle & utilization) — spec-v52 wave 52-1b.
+// Group P (Revenue cycle & utilization) -- spec-v52 wave 52-1b.
 //
 // Prior-Auth Packet Linter (`pa-lint`). v52 introduces a new tile shape:
 // "document-linter" (§3.2). The user drops one or more documents on the
@@ -25,6 +25,7 @@
 // - No AI. SHA-256 is deterministic.
 
 import { el, clear } from '../lib/dom.js';
+import { buildBundle, runEngine, summarizeFindings } from '../lib/pa/engine.js';
 
 const MAX_FILE_BYTES = 50 * 1024 * 1024; // 50 MB per file, per spec-v52 §4.3
 const MAX_TOTAL_BYTES = 200 * 1024 * 1024; // 200 MB packet ceiling
@@ -51,7 +52,7 @@ function loadPdfjs() {
 // spec-v52 §5.2: mammoth.js vendored under /vendored/mammoth/ for
 // DOCX text extraction. Upstream ships as a UMD bundle so we inject a
 // same-origin classic <script> on first DOCX drop and resolve on load
-// to `window.mammoth`. Memoized — only one network/disk hit per session.
+// to `window.mammoth`. Memoized -- only one network/disk hit per session.
 let mammothPromise = null;
 function loadMammoth() {
   if (!mammothPromise) {
@@ -160,7 +161,39 @@ function isDocx(file) {
     || /\.docx$/i.test(file.name || '');
 }
 
-async function processFiles(fileList, resultsList, statusNode) {
+function isTxt(file) {
+  return (file.type === 'text/plain') || /\.txt$/i.test(file.name || '');
+}
+
+function renderFindingsPanel(panel, findings, counts) {
+  clear(panel);
+  if (!findings.length) return;
+  const headline = el('h3', { class: 'pa-findings-headline',
+    text: 'Findings (' + findings.length + ' rules, ' + counts.block + ' block / '
+      + counts.flag + ' flag / ' + counts.pass + ' pass'
+      + (counts.error ? ' / ' + counts.error + ' error' : '') + ')' });
+  panel.appendChild(headline);
+  const list = el('ul', { class: 'pa-findings-list', 'aria-label': 'Rule findings' });
+  for (const f of findings) {
+    const li = el('li', { class: 'pa-rule', 'data-status': f.status });
+    li.appendChild(el('span', { class: 'pa-rule-label visually-hidden',
+      text: f.status.toUpperCase() + ': ' + f.description }));
+    const head = el('p', { class: 'pa-rule-head' });
+    head.appendChild(el('span', { class: 'pa-rule-id', text: f.ruleId }));
+    head.appendChild(document.createTextNode(' '));
+    head.appendChild(el('span', { class: 'pa-rule-status', text: f.status.toUpperCase() }));
+    head.appendChild(document.createTextNode(' -- '));
+    head.appendChild(document.createTextNode(f.description));
+    li.appendChild(head);
+    if (f.note) li.appendChild(el('p', { class: 'pa-rule-note', text: f.note }));
+    if (f.evidence) li.appendChild(el('p', { class: 'pa-rule-evidence', text: f.evidence }));
+    li.appendChild(el('p', { class: 'pa-rule-citation', text: f.citation }));
+    list.appendChild(li);
+  }
+  panel.appendChild(list);
+}
+
+async function processFiles(fileList, resultsList, statusNode, findingsPanel) {
   clear(resultsList);
   const files = Array.from(fileList);
   if (files.length === 0) {
@@ -173,6 +206,7 @@ async function processFiles(fileList, resultsList, statusNode) {
     return;
   }
   statusNode.textContent = 'Hashing ' + files.length + ' file' + (files.length === 1 ? '' : 's') + '...';
+  const documents = [];
   let i = 0;
   for (const file of files) {
     i += 1;
@@ -206,6 +240,10 @@ async function processFiles(fileList, resultsList, statusNode) {
         parseLabel = 'DOCX';
         const out = await extractDocxText(buf);
         extract = { kind: 'DOCX', text: out.text };
+      } else if (isTxt(file)) {
+        parseLabel = 'TXT';
+        const text = new TextDecoder('utf-8').decode(buf);
+        extract = { kind: 'TXT', text };
       }
     } catch (err) {
       // Render hash + a parse-failed note rather than dropping the
@@ -220,20 +258,46 @@ async function processFiles(fileList, resultsList, statusNode) {
       continue;
     }
     resultsList.appendChild(renderFinding(file, { hash, extract }));
+    if (extract && extract.text) {
+      documents.push({ name: file.name, sha256: hash, kind: extract.kind, text: extract.text });
+    }
   }
-  statusNode.textContent = 'Done. ' + files.length + ' file' + (files.length === 1 ? '' : 's')
-    + ' processed. The deterministic rule engine ships in the next wave (spec-v52 §4.5).';
+  // spec-v52 §4.5: run the starter ruleset over the aggregated text
+  // bundle and render the findings panel. Empty bundle (e.g. user
+  // dropped only images) skips the engine pass and shows just the
+  // per-file audit-trail.
+  if (findingsPanel) {
+    if (documents.length) {
+      statusNode.textContent = 'Running rule engine over ' + documents.length
+        + ' parsed document' + (documents.length === 1 ? '' : 's') + '...';
+      const bundle = buildBundle(documents);
+      const findings = runEngine(bundle);
+      const counts = summarizeFindings(findings);
+      renderFindingsPanel(findingsPanel, findings, counts);
+      statusNode.textContent = 'Done. ' + files.length + ' file'
+        + (files.length === 1 ? '' : 's') + ' processed; '
+        + findings.length + ' rule' + (findings.length === 1 ? '' : 's')
+        + ' evaluated (' + counts.block + ' block, ' + counts.flag + ' flag, '
+        + counts.pass + ' pass'
+        + (counts.error ? ', ' + counts.error + ' error' : '') + ').';
+    } else {
+      clear(findingsPanel);
+      statusNode.textContent = 'Done. ' + files.length + ' file'
+        + (files.length === 1 ? '' : 's')
+        + ' processed; no extractable text -- engine pass skipped.';
+    }
+  }
 }
 
 export const renderers = {
   'pa-lint'(root) {
     root.appendChild(el('p', { class: 'notice', text:
-      'Wave 52-1d: drop PDF, DOCX, or TXT files and Sophie reports the '
-      + 'extractable-text length per file (Mozilla pdf.js + mammoth.js, '
-      + 'both vendored, both run entirely in the browser). The 60-rule '
-      + 'core ruleset and the DOCX report ship in subsequent waves '
-      + '(spec-v52 §4.5, §4.6). Your packet stays in this tab; no '
-      + 'network, no storage, no AI.' }));
+      'Wave 52-1e: drop PDF, DOCX, or TXT files. Sophie hashes each file, '
+      + 'extracts text (pdf.js / mammoth.js, both vendored), and runs the '
+      + 'spec-v52 §4.5.1 core-rule starter set (7 rules of the planned 60) '
+      + 'against the aggregated text. The DOCX report and the remaining '
+      + 'rules ship in subsequent waves. Your packet stays in this tab; '
+      + 'no network, no storage, no AI.' }));
 
     const trust = el('ul', { class: 'pa-trust-strip' });
     for (const line of [
@@ -272,6 +336,12 @@ export const renderers = {
     const results = el('ul', { class: 'pa-results', 'aria-label': 'Per-file audit results' });
     root.appendChild(results);
 
+    // spec-v52 §4.2 step 5: findings panel. Hidden when empty; populated
+    // by processFiles() after the starter ruleset has run.
+    const findingsPanel = el('section', { class: 'pa-findings-panel',
+      'aria-label': 'Rule findings' });
+    root.appendChild(findingsPanel);
+
     function openPicker() { picker.click(); }
     dropzone.addEventListener('click', (ev) => {
       if (ev.target !== picker) openPicker();
@@ -293,10 +363,10 @@ export const renderers = {
       ev.preventDefault();
       dropzone.classList.remove('pa-dropzone-hot');
       const files = ev.dataTransfer && ev.dataTransfer.files;
-      if (files && files.length) processFiles(files, results, status);
+      if (files && files.length) processFiles(files, results, status, findingsPanel);
     });
     picker.addEventListener('change', () => {
-      if (picker.files && picker.files.length) processFiles(picker.files, results, status);
+      if (picker.files && picker.files.length) processFiles(picker.files, results, status, findingsPanel);
     });
   },
 };
