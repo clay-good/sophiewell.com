@@ -1345,6 +1345,36 @@ silently; the audit trail records the disablement.
 
 - 2026-05-27 — v52 proposed. Five waves outlined (52-1 through
   52-5+). Catalog count target at v52-1 close: 255.
+- 2026-05-27 — wave 52-1f (core ruleset backfill 7 -> 25) shipped.
+  Adds 18 more of the 60 §4.5.1 core rules: R-PA-002 (DOB), R-PA-003
+  (member ID), R-PA-005 (retro-auth window, default 90 days),
+  R-PA-006 (future ceiling 365 days), R-PA-015 (quantity >= 1),
+  R-PA-017 / R-PA-018 (signature presence + datedness), R-PA-020
+  (TIN), R-PA-021 (clinical-note anchor), R-PA-024 (medical-necessity
+  statement), R-PA-029 (step-therapy documentation), R-PA-031 / R-PA-
+  032 (allergies / medication list), R-PA-037 (duration), R-PA-045
+  (packet byte ceiling, default 50 MB), R-PA-046 (mojibake / U+FFFD),
+  R-PA-053 (no-PA-needed list — empty at v52-1f close, placeholder for
+  payer overlays), R-PA-060 (cover sheet / checklist).
+  
+  New extractors land in `lib/pa/extract.js`: `extractDob`,
+  `extractMemberId`, `extractTin`, `extractQuantity`,
+  `extractSignature` (presence + datedness), `keywordPresent`
+  helper for the info-level "did the packet mention X?" rules, and
+  `countReplacementChars` for the mojibake check. `buildBundle` gains
+  an optional `opts.totalBytes` so R-PA-045 can compare against the
+  packet's on-disk byte total (passed in from the view's
+  `files.reduce((s, f) => s + f.size, 0)` sum).
+  
+  R-PA-005's date filter excludes anything beyond 5 years in the past
+  so the rule does not catch DOB strings as "service dates" -- a clean
+  fix until the wave-52-1g classifier tags dates by role.
+  
+  Coverage: +9 new unit assertions (one fires-when-it-should per new
+  rule that needs a non-trivial extractor), +7 new extractor tests.
+  Total PA suite is now ~50 unit assertions plus the engine-level
+  property tests. The e2e happy-path spec now asserts 25 rules render
+  in the findings panel.
 - 2026-05-27 — wave 52-1e (rule engine + 7 starter rules) shipped.
   Adds `lib/pa/{date,extract,rules,engine}.js`. The engine consumes a
   document bundle (`{name, sha256, kind, text}[]`) and runs a list of

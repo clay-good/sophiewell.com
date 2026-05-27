@@ -270,7 +270,7 @@ async function processFiles(fileList, resultsList, statusNode, findingsPanel) {
     if (documents.length) {
       statusNode.textContent = 'Running rule engine over ' + documents.length
         + ' parsed document' + (documents.length === 1 ? '' : 's') + '...';
-      const bundle = buildBundle(documents);
+      const bundle = buildBundle(documents, { totalBytes });
       const findings = runEngine(bundle);
       const counts = summarizeFindings(findings);
       renderFindingsPanel(findingsPanel, findings, counts);
@@ -292,9 +292,9 @@ async function processFiles(fileList, resultsList, statusNode, findingsPanel) {
 export const renderers = {
   'pa-lint'(root) {
     root.appendChild(el('p', { class: 'notice', text:
-      'Wave 52-1e: drop PDF, DOCX, or TXT files. Sophie hashes each file, '
+      'Wave 52-1f: drop PDF, DOCX, or TXT files. Sophie hashes each file, '
       + 'extracts text (pdf.js / mammoth.js, both vendored), and runs the '
-      + 'spec-v52 §4.5.1 core-rule starter set (7 rules of the planned 60) '
+      + 'spec-v52 §4.5.1 core-rule starter set (25 rules of the planned 60) '
       + 'against the aggregated text. The DOCX report and the remaining '
       + 'rules ship in subsequent waves. Your packet stays in this tab; '
       + 'no network, no storage, no AI.' }));

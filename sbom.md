@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `820163c794ba6361`
-Generated: 2026-05-27T22:54:09.216Z
+Build ID: `e1fee939402d9af8`
+Generated: 2026-05-27T23:31:00.375Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=20.18.1 <21, npm >=10.0.0
@@ -58,9 +58,9 @@ downloads is committed in this repository and is hashed below.
 | `lib/medication-v4.js` | 18167 | `01083485c63ad46008f3ddc823b5c31395efdc74a8920eeb62f51b1965e04013` |
 | `lib/meta.js` | 453400 | `1b3b91e7ee71bb54ad037378c8b16a150e5290c5e88e89323ea0e7e7d929bbae` |
 | `lib/pa/date.js` | 2482 | `91a44d0383958089ad0d749ba556227b3d8432443f1431c2871b15854111c645` |
-| `lib/pa/engine.js` | 2996 | `6413ae2dde18e6a1660d3dfe0cfb312a9741921bab0f61aaab64c8a6596867ee` |
-| `lib/pa/extract.js` | 4960 | `6a1c48e8485e0a25f44027e675e1a79fdfe2eca06e46224e17beb15f86e58077` |
-| `lib/pa/rules.js` | 5335 | `e2ce2b5dd409a86ea5f6053a8223f61090d862a60739929e7d05011b3ba96081` |
+| `lib/pa/engine.js` | 3383 | `dfa07a0910d04a85df5b7a77d9f0150c5c4f64dea46a15f452c1aeb29856cf2e` |
+| `lib/pa/extract.js` | 8368 | `3659279109ff4272e25db2fa066e7b5eca0dae830870d977741c327b5db5097a` |
+| `lib/pa/rules.js` | 18371 | `ad8b660f576e215201e2c08e69d4848f175bc632e15a38f2d96f23625c8c5ec0` |
 | `lib/print.js` | 2588 | `74579a71f82b75993dea9f7d9b3c21e67744bd4dbe6f50e20c8eef9aa1be7546` |
 | `lib/prompt.js` | 6872 | `95ee9b9de5adbafd1497f378993e27d29c9f437bfc9ddc304886fd75e80fffd4` |
 | `lib/regulatory.js` | 4040 | `9e1ef6751facc0172c492010ccd35982061f06b000db2e857a98ec2013e7087c` |
@@ -83,7 +83,7 @@ downloads is committed in this repository and is hashed below.
 | `views/group-klmno.js` | 7870 | `bf6d3ced1a08fcb627284b649d07b8e5ace6857b29e46992d4e425925c63eaa9` |
 | `views/group-v5.js` | 26940 | `daba643b4b8c800ca5706cc9f7d80d64fb373cbfc1362b77e2fc22d6495c241a` |
 | `views/group-v6.js` | 5707 | `425918decb48cd9efac9fc5590ac8970a54c03c3b0df056fb99c9a22ff8dd1b2` |
-| `views/pa-lint.js` | 15374 | `081114278f1329b622b6906d6464a7071c113efafe22b49f666cb8c9c6e7864f` |
+| `views/pa-lint.js` | 15391 | `01442077aa558907b0a5eb5c8e0073429757650c24a3cc22ed1bbb2a17505dc9` |
 
 ## Verifying this SBOM
 

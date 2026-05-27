@@ -14,14 +14,29 @@ import { test, expect } from '@playwright/test';
 
 test.skip(({ browserName }) => browserName !== 'chromium', 'engine sweep is chromium-only');
 
-const HAPPY_TEXT =
-  'Patient: Jane Q Doe\n'
-  + 'DOB: 1985-03-12\n'
-  + 'Date of service: 2026-04-12\n'
-  + 'Procedure 99213 office visit\n'
-  + 'Dx: I10 essential hypertension\n'
-  + 'Place of service: 11\n'
-  + 'Ordering provider NPI: 1234567893\n';
+// Synced to the 25-rule starter set at wave 52-1f close. Adding rules
+// generally means adding anchors to this fixture too; the engine
+// unit suite uses the canonical version, this is the e2e mirror.
+const HAPPY_TEXT = [
+  'Cover sheet',
+  'Patient: Jane Q Doe',
+  'DOB: 1985-03-12',
+  'Member ID: W123456789',
+  'Date of service: 2026-04-12',
+  'Procedure 99213 office visit',
+  'Quantity: 1',
+  'Dx: I10 essential hypertension',
+  'Place of service: 11',
+  'Ordering provider NPI: 1234567893',
+  'TIN: 123456789',
+  'Chief complaint: hypertension follow-up',
+  'Medical necessity: required for blood-pressure control.',
+  'Step therapy: trial of lisinopril completed without adequate response.',
+  'Active medications: lisinopril 10 mg daily.',
+  'Allergies: NKDA.',
+  'Duration: 12 months requested.',
+  'Signature: Jane Doe MD, 2026-04-12',
+].join('\n') + '\n';
 
 test('pa-lint: happy-path TXT lights every starter rule green', async ({ page }) => {
   await page.goto('/#pa-lint');
@@ -36,7 +51,7 @@ test('pa-lint: happy-path TXT lights every starter rule green', async ({ page })
   await expect(page.locator('.pa-findings-headline')).toBeVisible({ timeout: 10_000 });
   // At least 7 rules render (the wave 52-1e starter set).
   const rules = page.locator('.pa-rule');
-  await expect(rules).toHaveCount(7);
+  await expect(rules).toHaveCount(25);
   // None of them should be block / flag / error on the happy packet.
   await expect(page.locator('.pa-rule[data-status="block"]')).toHaveCount(0);
   await expect(page.locator('.pa-rule[data-status="flag"]')).toHaveCount(0);
