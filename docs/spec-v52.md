@@ -1345,6 +1345,31 @@ silently; the audit trail records the disablement.
 
 - 2026-05-27 — v52 proposed. Five waves outlined (52-1 through
   52-5+). Catalog count target at v52-1 close: 255.
+- 2026-05-27 — wave 52-1g (classifier + payer-detect + per-document
+  role/payer) shipped. Adds `lib/pa/classify.js` (8 roles: clinical-
+  note, pa-form, medical-necessity-letter, lab-result, imaging-report,
+  path-report, prior-auth-denial, other) and `lib/pa/payer.js` (5
+  buckets: cms-medicare-ffs, cms-medicare-advantage, medicaid,
+  commercial, unknown). Both are deterministic, keyword-anchor-based,
+  and explainable (no ML, no probabilities). `buildBundle` now tags
+  each document with `role` + `payer`, plus a bundle-level `payer`
+  via simple majority across documents (unknowns excluded).
+  
+  R-PA-005 / R-PA-006 are refactored to use a new `extract.serviceDates`
+  field (labeled "Date of service" / "DOS" / "Service date" only) so
+  the retro-auth-window and future-date ceiling no longer catch DOB
+  strings or signature dates that share a document. The 5-year-look-
+  back heuristic introduced in wave 52-1f is removed.
+  
+  The pa-lint findings panel now surfaces the detected packet payer
+  and a per-document role/payer line so the user can audit the
+  classifier's picks before subsequent waves start firing payer-
+  overlay rules.
+  
+  Coverage: 14 new unit assertions across classifier, payer-detect,
+  and the R-PA-005 refactor (+1 for `extractServiceDates`). Total PA
+  unit suite is now 62 assertions. Engine output and ordering remain
+  deterministic; the property test still holds.
 - 2026-05-27 — wave 52-1f (core ruleset backfill 7 -> 25) shipped.
   Adds 18 more of the 60 §4.5.1 core rules: R-PA-002 (DOB), R-PA-003
   (member ID), R-PA-005 (retro-auth window, default 90 days),

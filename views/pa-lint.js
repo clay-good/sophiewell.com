@@ -165,7 +165,7 @@ function isTxt(file) {
   return (file.type === 'text/plain') || /\.txt$/i.test(file.name || '');
 }
 
-function renderFindingsPanel(panel, findings, counts) {
+function renderFindingsPanel(panel, findings, counts, bundle) {
   clear(panel);
   if (!findings.length) return;
   const headline = el('h3', { class: 'pa-findings-headline',
@@ -173,6 +173,21 @@ function renderFindingsPanel(panel, findings, counts) {
       + counts.flag + ' flag / ' + counts.pass + ' pass'
       + (counts.error ? ' / ' + counts.error + ' error' : '') + ')' });
   panel.appendChild(headline);
+  // spec-v52 §4.3: render the detected payer bucket + the per-document
+  // role tags so the user can verify the classifier picked the right
+  // payer overlay path. The payer-selector UI per §4.2 step 4 lands
+  // when the first payer overlay rule ships.
+  if (bundle) {
+    panel.appendChild(el('p', { class: 'pa-payer-line',
+      text: 'Detected payer: ' + bundle.payer
+        + ' · ' + bundle.documents.length + ' document'
+        + (bundle.documents.length === 1 ? '' : 's') + ' classified.' }));
+    const roleList = el('ul', { class: 'pa-role-list', 'aria-label': 'Document roles' });
+    for (const d of bundle.documents) {
+      roleList.appendChild(el('li', { text: d.name + ': ' + d.role + ' (payer ' + d.payer + ')' }));
+    }
+    panel.appendChild(roleList);
+  }
   const list = el('ul', { class: 'pa-findings-list', 'aria-label': 'Rule findings' });
   for (const f of findings) {
     const li = el('li', { class: 'pa-rule', 'data-status': f.status });
@@ -273,7 +288,7 @@ async function processFiles(fileList, resultsList, statusNode, findingsPanel) {
       const bundle = buildBundle(documents, { totalBytes });
       const findings = runEngine(bundle);
       const counts = summarizeFindings(findings);
-      renderFindingsPanel(findingsPanel, findings, counts);
+      renderFindingsPanel(findingsPanel, findings, counts, bundle);
       statusNode.textContent = 'Done. ' + files.length + ' file'
         + (files.length === 1 ? '' : 's') + ' processed; '
         + findings.length + ' rule' + (findings.length === 1 ? '' : 's')
