@@ -96,6 +96,14 @@ const VENDORED = [
     license: 'Apache-2.0',
     purpose: 'PDF text extraction for the Prior-Auth Packet Linter (spec-v52 §4.3).',
   },
+  {
+    name: 'mammoth.js',
+    path: '/vendored/mammoth/',
+    upstream: 'https://github.com/mwilliamson/mammoth.js',
+    version: '1.2.5',
+    license: 'BSD-2-Clause',
+    purpose: 'DOCX text extraction for the Prior-Auth Packet Linter (spec-v52 §4.3).',
+  },
 ];
 
 function esc(s) {

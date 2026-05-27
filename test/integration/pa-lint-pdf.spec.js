@@ -49,5 +49,6 @@ test('pa-lint: dropping a PDF surfaces the pdf.js page count and text length', a
   const finding = page.locator('.pa-finding').first();
   await expect(finding).toBeVisible({ timeout: 20_000 });
   await expect(finding.locator('.pa-finding-hash')).toContainText('sha256:');
-  await expect(finding.locator('.pa-finding-extract')).toContainText('PDF parsed: 1 page', { timeout: 20_000 });
+  await expect(finding.locator('.pa-finding-extract')).toContainText('PDF parsed', { timeout: 20_000 });
+  await expect(finding.locator('.pa-finding-extract')).toContainText('1 page');
 });

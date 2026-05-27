@@ -1345,6 +1345,24 @@ silently; the audit trail records the disablement.
 
 - 2026-05-27 — v52 proposed. Five waves outlined (52-1 through
   52-5+). Catalog count target at v52-1 close: 255.
+- 2026-05-27 — wave 52-1d (vendored mammoth.js + DOCX text extraction)
+  shipped. `mwilliamson/mammoth.js` 1.2.5 (BSD-2-Clause) is vendored at
+  `vendored/mammoth/mammoth.browser.min.js` per spec-v52 §5.2. Upstream
+  ships as a UMD bundle (not ESM), so the pa-lint view injects a
+  same-origin classic `<script>` on first DOCX drop and resolves on
+  `script.onload` to `window.mammoth`; the existing strict CSP
+  (`script-src 'self'`) covers this without modification. The per-file
+  finding now uses a unified `extract.kind` field (`'PDF'` or `'DOCX'`)
+  and renders "<kind> parsed · [page count] · N characters of
+  extractable text". The `/commitments/` page picks up mammoth in the
+  Vendored components section. `vendored/README.md` is updated. A new
+  Playwright spec `test/integration/pa-lint-docx.spec.js` drops a
+  hand-built 1,494-byte one-paragraph DOCX (base64'd into the spec
+  file) and asserts mammoth extracts text end-to-end. The PDF spec
+  was updated to match the new rendering wording. Open questions:
+  password-protected DOCX is intentionally surfaced as a non-fatal
+  parse-failed line under the hash rather than dropped from the
+  audit trail.
 - 2026-05-27 — wave 52-1c (vendored pdf.js + PDF text extraction) shipped.
   Mozilla pdf.js v5.7.284 is vendored under `vendored/pdfjs/` (Apache-2.0,
   per spec-v52 §5.2). Only `build/pdf.mjs` (loader) and

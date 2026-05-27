@@ -48,6 +48,38 @@ function loadPdfjs() {
   return pdfjsPromise;
 }
 
+// spec-v52 §5.2: mammoth.js vendored under /vendored/mammoth/ for
+// DOCX text extraction. Upstream ships as a UMD bundle so we inject a
+// same-origin classic <script> on first DOCX drop and resolve on load
+// to `window.mammoth`. Memoized — only one network/disk hit per session.
+let mammothPromise = null;
+function loadMammoth() {
+  if (!mammothPromise) {
+    mammothPromise = new Promise((resolve, reject) => {
+      if (typeof window !== 'undefined' && window.mammoth) {
+        resolve(window.mammoth);
+        return;
+      }
+      const s = document.createElement('script');
+      s.src = '/vendored/mammoth/mammoth.browser.min.js';
+      s.async = true;
+      s.onload = () => {
+        if (window.mammoth) resolve(window.mammoth);
+        else reject(new Error('mammoth loaded but window.mammoth was not set'));
+      };
+      s.onerror = () => reject(new Error('failed to load /vendored/mammoth/mammoth.browser.min.js'));
+      document.head.appendChild(s);
+    });
+  }
+  return mammothPromise;
+}
+
+async function extractDocxText(arrayBuffer) {
+  const mammoth = await loadMammoth();
+  const result = await mammoth.extractRawText({ arrayBuffer });
+  return { text: String(result && result.value || '') };
+}
+
 async function extractPdfText(arrayBuffer) {
   const pdfjs = await loadPdfjs();
   const loadingTask = pdfjs.getDocument({
@@ -107,10 +139,13 @@ function renderFinding(file, opts) {
     li.appendChild(el('p', { class: 'pa-finding-hash', text: 'sha256: ' + hash }));
   }
   if (extract) {
-    li.appendChild(el('p', { class: 'pa-finding-extract',
-      text: 'PDF parsed: ' + extract.pageCount + ' page'
-        + (extract.pageCount === 1 ? '' : 's') + ' · '
-        + extract.text.length + ' characters of extractable text' }));
+    const kind = extract.kind || 'Document';
+    const parts = [kind + ' parsed'];
+    if (typeof extract.pageCount === 'number') {
+      parts.push(extract.pageCount + ' page' + (extract.pageCount === 1 ? '' : 's'));
+    }
+    parts.push(extract.text.length + ' characters of extractable text');
+    li.appendChild(el('p', { class: 'pa-finding-extract', text: parts.join(' · ') }));
   }
   return li;
 }
@@ -118,6 +153,11 @@ function renderFinding(file, opts) {
 function isPdf(file) {
   return (file.type === 'application/pdf')
     || /\.pdf$/i.test(file.name || '');
+}
+
+function isDocx(file) {
+  return (file.type === 'application/vnd.openxmlformats-officedocument.wordprocessingml.document')
+    || /\.docx$/i.test(file.name || '');
 }
 
 async function processFiles(fileList, resultsList, statusNode) {
@@ -156,19 +196,28 @@ async function processFiles(fileList, resultsList, statusNode) {
       continue;
     }
     let extract = null;
-    if (isPdf(file)) {
-      try {
-        extract = await extractPdfText(buf);
-      } catch (err) {
-        // Render hash + a parse-failed note rather than dropping the
-        // file entirely. Common causes: encrypted PDF, malformed file,
-        // or (for advanced PDFs) WebAssembly path blocked by CSP.
-        const li = renderFinding(file, { hash });
-        li.appendChild(el('p', { class: 'pa-finding-err',
-          text: 'PDF text extraction failed: ' + (err && err.message ? err.message : String(err)) }));
-        resultsList.appendChild(li);
-        continue;
+    let parseLabel = null;
+    try {
+      if (isPdf(file)) {
+        parseLabel = 'PDF';
+        const out = await extractPdfText(buf);
+        extract = { kind: 'PDF', pageCount: out.pageCount, text: out.text };
+      } else if (isDocx(file)) {
+        parseLabel = 'DOCX';
+        const out = await extractDocxText(buf);
+        extract = { kind: 'DOCX', text: out.text };
       }
+    } catch (err) {
+      // Render hash + a parse-failed note rather than dropping the
+      // file entirely. Common causes: encrypted PDF, malformed file,
+      // or password-protected DOCX. One bad file should not lose the
+      // audit trail for the rest of the packet.
+      const li = renderFinding(file, { hash });
+      li.appendChild(el('p', { class: 'pa-finding-err',
+        text: parseLabel + ' text extraction failed: '
+          + (err && err.message ? err.message : String(err)) }));
+      resultsList.appendChild(li);
+      continue;
     }
     resultsList.appendChild(renderFinding(file, { hash, extract }));
   }
@@ -179,11 +228,12 @@ async function processFiles(fileList, resultsList, statusNode) {
 export const renderers = {
   'pa-lint'(root) {
     root.appendChild(el('p', { class: 'notice', text:
-      'Wave 52-1c: drop a PDF and Sophie reports the page count and the '
-      + 'character count of extractable text (Mozilla pdf.js, vendored). '
-      + 'DOCX parsing, the 60-rule core ruleset, and the DOCX report ship '
-      + 'in subsequent waves (spec-v52 §4.5, §4.6, §5.2). Your packet '
-      + 'stays in this tab; no network, no storage, no AI.' }));
+      'Wave 52-1d: drop PDF, DOCX, or TXT files and Sophie reports the '
+      + 'extractable-text length per file (Mozilla pdf.js + mammoth.js, '
+      + 'both vendored, both run entirely in the browser). The 60-rule '
+      + 'core ruleset and the DOCX report ship in subsequent waves '
+      + '(spec-v52 §4.5, §4.6). Your packet stays in this tab; no '
+      + 'network, no storage, no AI.' }));
 
     const trust = el('ul', { class: 'pa-trust-strip' });
     for (const line of [

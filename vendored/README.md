@@ -25,6 +25,7 @@ intact:
 | Path           | Library      | Upstream                                  | License    | Purpose                                                |
 |----------------|--------------|-------------------------------------------|------------|--------------------------------------------------------|
 | `pdfjs/`       | Mozilla pdf.js | https://github.com/mozilla/pdf.js       | Apache-2.0 | PDF text extraction for the `pa-lint` tile (spec-v52)  |
+| `mammoth/`     | mammoth.js   | https://github.com/mwilliamson/mammoth.js | BSD-2-Clause | DOCX text extraction for the `pa-lint` tile (spec-v52) |
 
-The mammoth (DOCX -> text) and docx (DOCX generation) vendored
-entries from spec-v52 §5.2 will land in subsequent waves.
+The docx (DOCX generation) vendored entry from spec-v52 §5.2 will
+land in a subsequent wave.
