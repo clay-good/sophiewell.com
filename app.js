@@ -840,20 +840,38 @@ function applyHashState(body) {
 }
 
 function trackHashState(body) {
+  // Coalesce bursts of input/change events into a single replaceState call.
+  // Restoration helpers (applyHashState, applyExample) dispatch one event per
+  // field, which on a multi-field tile would otherwise produce N replaceState
+  // calls back-to-back. WebKit caps replaceState at 100 calls per 10 seconds
+  // across the page, so an unthrottled writer trips the limit when a test
+  // walks every tool route in sequence. Also no-op when the produced hash
+  // already matches the current one to avoid redundant history churn.
+  let scheduled = false;
   const writeState = () => {
-    const state = {};
-    body.querySelectorAll('input, select, textarea').forEach((node) => {
-      if (!node.id) return;
-      // Skip ephemeral pieces (search boxes inside lookup tools, the bill
-      // textarea, free-text fields with no semantic meaning).
-      if (node.tagName === 'TEXTAREA') return;
-      if (node.type === 'checkbox') {
-        if (node.checked) state[node.id] = '1';
-      } else if (node.value !== '' && node.value != null) {
-        state[node.id] = String(node.value);
+    if (scheduled) return;
+    scheduled = true;
+    const flush = () => {
+      scheduled = false;
+      const state = {};
+      body.querySelectorAll('input, select, textarea').forEach((node) => {
+        if (!node.id) return;
+        // Skip ephemeral pieces (search boxes inside lookup tools, the bill
+        // textarea, free-text fields with no semantic meaning).
+        if (node.tagName === 'TEXTAREA') return;
+        if (node.type === 'checkbox') {
+          if (node.checked) state[node.id] = '1';
+        } else if (node.value !== '' && node.value != null) {
+          state[node.id] = String(node.value);
+        }
+      });
+      const nextHash = patchHash({ state });
+      if (nextHash !== window.location.hash) {
+        window.history.replaceState(null, '', nextHash);
       }
-    });
-    window.history.replaceState(null, '', patchHash({ state }));
+    };
+    if (typeof queueMicrotask === 'function') queueMicrotask(flush);
+    else Promise.resolve().then(flush);
   };
   body.addEventListener('input', writeState);
   body.addEventListener('change', writeState);
