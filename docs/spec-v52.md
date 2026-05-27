@@ -1345,6 +1345,31 @@ silently; the audit trail records the disablement.
 
 - 2026-05-27 — v52 proposed. Five waves outlined (52-1 through
   52-5+). Catalog count target at v52-1 close: 255.
+- 2026-05-27 — wave 52-1c (vendored pdf.js + PDF text extraction) shipped.
+  Mozilla pdf.js v5.7.284 is vendored under `vendored/pdfjs/` (Apache-2.0,
+  per spec-v52 §5.2). Only `build/pdf.mjs` (loader) and
+  `build/pdf.worker.mjs` (worker) ship; `pdf.sandbox.mjs`, the viewer
+  chrome under `web/`, the `cmaps/` non-Latin character tables, and the
+  `iccs/` color profiles are omitted (see `vendored/pdfjs/_vendored.md`).
+  The pa-lint view (`views/pa-lint.js`) lazy-loads pdf.js on first PDF
+  drop via dynamic `import()` and points `GlobalWorkerOptions.workerSrc`
+  at the same-origin worker URL; `isEvalSupported: false` is set so
+  pdf.js does not try to compile font programs with the `Function`
+  constructor (which the existing eslint `no-new-func` rule and CSP
+  `script-src 'self'` both forbid for first-party code). On success
+  the per-file finding renders the page count and the character count
+  of extractable text alongside the existing SHA-256. Failures are
+  caught and rendered as a `.pa-finding-err` line under the hash so
+  one bad PDF does not lose the audit trail for the rest of the
+  packet. `scripts/build.mjs` now copies the `vendored/` tree into
+  `dist/`. `scripts/build-commitments-page.mjs` grows a new
+  "Vendored third-party components" section per spec-v52 §5.2 that
+  lists each vendored library's upstream, pinned version, license,
+  and purpose. `eslint.config.js` adds `vendored/**` to the ignore
+  list. A new Playwright spec `test/integration/pa-lint-pdf.spec.js`
+  drops a one-page PDF and asserts pdf.js reports `1 page` end-to-
+  end under the strict CSP. The CSP, the commitment to no third-
+  party fetch, and the storage-allowlist are all unchanged.
 - 2026-05-27 — wave 52-1b (tile shell + audit-trail stub) shipped.
   The `pa-lint` tile is registered in `UTILITIES` as the first
   `shape: 'document-linter'` tile (§3.2, §3.4). The new top-level

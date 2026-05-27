@@ -75,10 +75,26 @@ const COMMITMENTS = [
   {
     n: '8',
     heading: 'MIT-licensed forever; SBOM published every build',
-    body: 'Sophie is MIT-licensed. The license never changes. Every build publishes a Software Bill of Materials listing every runtime file, every source file, and every development dependency.',
-    enforcement: 'check-commitments.mjs asserts package.json license === "MIT" and LICENSE first line begins with "MIT License". scripts/build-sbom.mjs runs on every build.',
+    body: 'Sophie is MIT-licensed. The license never changes. Every build publishes a Software Bill of Materials listing every runtime file, every source file, and every development dependency. A small number of vendored third-party libraries under /vendored/ carry their own permissive licenses (Apache-2.0, BSD-2, MIT) and ship from the same origin as the rest of the site.',
+    enforcement: 'check-commitments.mjs asserts package.json license === "MIT" and LICENSE first line begins with "MIT License". scripts/build-sbom.mjs runs on every build. Vendored components live under /vendored/<name>/ with their upstream LICENSE and a _vendored.md provenance ledger (spec-v52 §5.2).',
     checkPath: 'scripts/check-commitments.mjs',
     spec: 'spec-v50 §3.8',
+  },
+];
+
+// spec-v52 §5.2: per-vendored-library disclosure block. Listed here so the
+// /commitments/ page surfaces the actual provenance + licenses of the
+// non-MIT code shipping under /vendored/, alongside the eight commitments.
+// Each entry MUST stay in sync with the corresponding _vendored.md ledger
+// (vendored/<name>/_vendored.md).
+const VENDORED = [
+  {
+    name: 'Mozilla pdf.js',
+    path: '/vendored/pdfjs/',
+    upstream: 'https://github.com/mozilla/pdf.js',
+    version: 'v5.7.284',
+    license: 'Apache-2.0',
+    purpose: 'PDF text extraction for the Prior-Auth Packet Linter (spec-v52 §4.3).',
   },
 ];
 
@@ -170,6 +186,27 @@ function pageHtml() {
         </p>
 
 ${COMMITMENTS.map(commitmentHtml).join('\n\n')}
+
+        <section class="commitments-vendored" aria-labelledby="vendored-h">
+          <h2 id="vendored-h">Vendored third-party components</h2>
+          <p class="commitments-body">
+            Sophie's first-party code is MIT-licensed. A small set of
+            third-party libraries are vendored verbatim under
+            <a href="https://github.com/clay-good/sophiewell.com/tree/main/vendored" rel="noopener" target="_blank">/vendored/</a>,
+            pinned at a specific upstream release, and served from the
+            same origin as the rest of the site (no third-party CDN).
+            Each one carries its own upstream LICENSE and a
+            <code>_vendored.md</code> provenance ledger.
+          </p>
+          <ul class="commitments-vendored-list">
+${VENDORED.map((v) => `            <li>
+              <strong>${esc(v.name)}</strong> (${esc(v.version)}, ${esc(v.license)})
+              &mdash; ${esc(v.purpose)}
+              <a href="${esc(v.upstream)}" rel="noopener" target="_blank">upstream</a>,
+              <a href="https://github.com/clay-good/sophiewell.com/tree/main${esc(v.path)}" rel="noopener" target="_blank">vendored copy</a>.
+            </li>`).join('\n')}
+          </ul>
+        </section>
 
         <section class="commitments-footnote">
           <h2>Change process</h2>

@@ -5,6 +5,12 @@ export default [
       "dist/**",
       "data/**",
       "docs/**",
+      // spec-v52 §5.2: vendored third-party libraries ship verbatim from
+      // upstream with their own license. Linting them with Sophie's own
+      // rules would be both redundant (upstream has its own quality bar)
+      // and noisy (e.g. pdf.js uses constructor-style Function references
+      // that eslint forbids in first-party code).
+      "vendored/**",
       "README.md",
       "CHANGELOG.md",
       "sbom.json",

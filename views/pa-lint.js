@@ -29,6 +29,52 @@ import { el, clear } from '../lib/dom.js';
 const MAX_FILE_BYTES = 50 * 1024 * 1024; // 50 MB per file, per spec-v52 §4.3
 const MAX_TOTAL_BYTES = 200 * 1024 * 1024; // 200 MB packet ceiling
 
+// spec-v52 §5.2, §5.4: pdf.js vendored under /vendored/pdfjs/. Lazy-
+// loaded on first PDF drop so the tile page's idle weight stays under
+// the §4.9 budget. The dynamic import resolves the absolute path so
+// the same code works from the SPA home route (#pa-lint) and from any
+// pre-rendered /tools/pa-lint/index.html the build emits later.
+let pdfjsPromise = null;
+function loadPdfjs() {
+  if (!pdfjsPromise) {
+    pdfjsPromise = import('/vendored/pdfjs/build/pdf.mjs').then((mod) => {
+      const lib = mod.default || mod;
+      if (lib.GlobalWorkerOptions && !lib.GlobalWorkerOptions.workerSrc) {
+        lib.GlobalWorkerOptions.workerSrc = '/vendored/pdfjs/build/pdf.worker.mjs';
+      }
+      return lib;
+    });
+  }
+  return pdfjsPromise;
+}
+
+async function extractPdfText(arrayBuffer) {
+  const pdfjs = await loadPdfjs();
+  const loadingTask = pdfjs.getDocument({
+    data: new Uint8Array(arrayBuffer),
+    // Disable side-channel network fetches: pdf.js sometimes pulls CMap
+    // tables from a remote URL for non-Latin scripts. Sophie ships no
+    // CMaps in v52 (vendored/pdfjs/_vendored.md "what is omitted"), so
+    // disable the lookup entirely to keep the no-network guarantee.
+    disableFontFace: false,
+    isEvalSupported: false,
+    useSystemFonts: false,
+  });
+  const doc = await loadingTask.promise;
+  const pageCount = doc.numPages;
+  let combined = '';
+  for (let p = 1; p <= pageCount; p += 1) {
+    const page = await doc.getPage(p);
+    const content = await page.getTextContent();
+    const pageText = content.items.map((it) => (it.str || '')).join(' ');
+    combined += pageText + '\n';
+    page.cleanup();
+  }
+  await doc.cleanup();
+  await doc.destroy();
+  return { pageCount, text: combined };
+}
+
 function formatBytes(n) {
   if (n < 1024) return n + ' B';
   if (n < 1024 * 1024) return (n / 1024).toFixed(1) + ' KB';
@@ -45,7 +91,8 @@ async function sha256Hex(buffer) {
   return out;
 }
 
-function renderFinding(file, hash, error) {
+function renderFinding(file, opts) {
+  const { hash, error, extract } = opts || {};
   const li = el('li', { class: 'pa-finding', 'data-severity': error ? 'flag' : 'info' });
   li.appendChild(el('span', { class: 'pa-finding-label visually-hidden',
     text: (error ? 'Flag: ' : 'Info: ') + file.name }));
@@ -59,7 +106,18 @@ function renderFinding(file, hash, error) {
   } else {
     li.appendChild(el('p', { class: 'pa-finding-hash', text: 'sha256: ' + hash }));
   }
+  if (extract) {
+    li.appendChild(el('p', { class: 'pa-finding-extract',
+      text: 'PDF parsed: ' + extract.pageCount + ' page'
+        + (extract.pageCount === 1 ? '' : 's') + ' · '
+        + extract.text.length + ' characters of extractable text' }));
+  }
   return li;
+}
+
+function isPdf(file) {
+  return (file.type === 'application/pdf')
+    || /\.pdf$/i.test(file.name || '');
 }
 
 async function processFiles(fileList, resultsList, statusNode) {
@@ -80,28 +138,52 @@ async function processFiles(fileList, resultsList, statusNode) {
     i += 1;
     statusNode.textContent = 'Hashing ' + i + ' of ' + files.length + ': ' + file.name;
     if (file.size > MAX_FILE_BYTES) {
-      resultsList.appendChild(renderFinding(file, null, 'File exceeds 50 MB per-file ceiling (spec-v52 §4.3).'));
+      resultsList.appendChild(renderFinding(file, { error: 'File exceeds 50 MB per-file ceiling (spec-v52 §4.3).' }));
       continue;
     }
+    let buf;
     try {
-      const buf = await file.arrayBuffer();
-      const hash = await sha256Hex(buf);
-      resultsList.appendChild(renderFinding(file, hash));
+      buf = await file.arrayBuffer();
     } catch (err) {
-      resultsList.appendChild(renderFinding(file, null, 'Read failed: ' + (err && err.message ? err.message : String(err))));
+      resultsList.appendChild(renderFinding(file, { error: 'Read failed: ' + (err && err.message ? err.message : String(err)) }));
+      continue;
     }
+    let hash;
+    try {
+      hash = await sha256Hex(buf);
+    } catch (err) {
+      resultsList.appendChild(renderFinding(file, { error: 'Hash failed: ' + (err && err.message ? err.message : String(err)) }));
+      continue;
+    }
+    let extract = null;
+    if (isPdf(file)) {
+      try {
+        extract = await extractPdfText(buf);
+      } catch (err) {
+        // Render hash + a parse-failed note rather than dropping the
+        // file entirely. Common causes: encrypted PDF, malformed file,
+        // or (for advanced PDFs) WebAssembly path blocked by CSP.
+        const li = renderFinding(file, { hash });
+        li.appendChild(el('p', { class: 'pa-finding-err',
+          text: 'PDF text extraction failed: ' + (err && err.message ? err.message : String(err)) }));
+        resultsList.appendChild(li);
+        continue;
+      }
+    }
+    resultsList.appendChild(renderFinding(file, { hash, extract }));
   }
   statusNode.textContent = 'Done. ' + files.length + ' file' + (files.length === 1 ? '' : 's')
-    + ' hashed. The deterministic rule engine ships in the next wave (spec-v52 §4.5).';
+    + ' processed. The deterministic rule engine ships in the next wave (spec-v52 §4.5).';
 }
 
 export const renderers = {
   'pa-lint'(root) {
     root.appendChild(el('p', { class: 'notice', text:
-      'Wave 52-1b: dropzone + SHA-256 audit trail. The 60-rule core ruleset, '
-      + 'the PDF / DOCX parsers, and the DOCX report ship in the next wave '
-      + '(spec-v52 §4.5, §5.2, §4.6). Your packet stays in this tab; no '
-      + 'network, no storage, no AI.' }));
+      'Wave 52-1c: drop a PDF and Sophie reports the page count and the '
+      + 'character count of extractable text (Mozilla pdf.js, vendored). '
+      + 'DOCX parsing, the 60-rule core ruleset, and the DOCX report ship '
+      + 'in subsequent waves (spec-v52 §4.5, §4.6, §5.2). Your packet '
+      + 'stays in this tab; no network, no storage, no AI.' }));
 
     const trust = el('ul', { class: 'pa-trust-strip' });
     for (const line of [

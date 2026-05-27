@@ -17,7 +17,7 @@ const COPY_FILES = [
   '_headers', 'robots.txt', 'sitemap.xml', 'site.webmanifest',
   'CHANGELOG.md', 'sbom.json', 'sbom.md',
 ];
-const COPY_DIRS = ['lib', 'views', 'data', 'docs'];
+const COPY_DIRS = ['lib', 'views', 'data', 'docs', 'vendored'];
 
 async function* walk(dir) {
   const entries = await readdir(dir, { withFileTypes: true });
