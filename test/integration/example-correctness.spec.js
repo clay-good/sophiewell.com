@@ -85,6 +85,13 @@ test('every example payload produces the documented numeric output', async ({ pa
     // ISO output uses runner's offset); the unit test asserts the
     // math directly.
     'ews-escalation',
+    // spec-v52 wave 52-1b: pa-lint is a document-linter tile (shape:
+    // document-linter); its output is computed at file-drop time, not
+    // from a META.example.fields payload, and its expected text is
+    // descriptive (mentions "SHA-256" and "spec-v29 §3"). The numeric
+    // sweep can't drive a file-drop, so this tile is allowlisted; the
+    // unit tests cover the hashing path indirectly via crypto.subtle.
+    'pa-lint',
   ]);
 
   const failures = [];

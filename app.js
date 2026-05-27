@@ -12,6 +12,7 @@ import { renderers as RJ } from './views/group-j.js';
 import { renderers as RKLMNO } from './views/group-klmno.js';
 import { renderers as RV5 } from './views/group-v5.js';
 import { renderers as RV6 } from './views/group-v6.js';
+import { renderers as RPALINT } from './views/pa-lint.js';
 import { META } from './lib/meta.js';
 import { fetchJson } from './lib/data.js';
 import { copyButton } from './lib/clipboard.js';
@@ -24,7 +25,7 @@ import { resolvePrompt } from './lib/prompt.js';
 // artifact-detect / artifact-route / artifact-handoff helpers were
 // deleted in spec-v29 wave 29-2 (Group C/L).
 
-const RENDERERS = { ...RA, ...RC, ...RE, ...RF, ...RG, ...RH, ...RI, ...RJ, ...RKLMNO, ...RV5, ...RV6 };
+const RENDERERS = { ...RA, ...RC, ...RE, ...RF, ...RG, ...RH, ...RI, ...RJ, ...RKLMNO, ...RV5, ...RV6, ...RPALINT };
 
 // ----- Utility registry ----------------------------------------------------
 // Source of truth for routes, names, group, audiences, and clinical flag.
@@ -396,6 +397,15 @@ const UTILITIES = [
 
   // spec-v6 §3.3: lab result interpreter. Patient-decoder category.
   { id: 'lab-interpret',       name: 'Lab Result Interpreter',                           group: 'C', audiences: ['patients', 'clinicians', 'educators'], clinical: true },
+
+  // spec-v52 §3.2 + §4: prior-auth packet linter. First tile with the
+  // new document-linter shape (the existing 254 default to numeric).
+  // Group 'P' is the new top-level "Revenue cycle & utilization" group
+  // introduced for revenue-cycle / utilization-management tiles. Wave
+  // 52-1b ships the dropzone + SHA-256 audit-trail stub; the 60-rule
+  // core ruleset, the PDF/DOCX parsers, and the DOCX report follow in
+  // subsequent waves.
+  { id: 'pa-lint',                name: 'Prior-Auth Packet Linter',                         group: 'P', audiences: ['billers', 'case-managers'], clinical: false, shape: 'document-linter' },
 ];
 
 const UTIL_BY_ID = new Map(UTILITIES.map((u) => [u.id, u]));
@@ -615,6 +625,9 @@ const GROUP_LABELS = {
   M: 'State & Coverage Reference',
   N: 'Pediatrics & Neonatal',
   O: 'High-Alert & Safety',
+  // spec-v52 §10.1: new top-level group for revenue-cycle / utilization
+  // tiles. Ships with one tile (pa-lint) at v52-1b close.
+  P: 'Revenue cycle & utilization',
 };
 
 function syncToggleGroupState(group, value) {

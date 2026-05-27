@@ -17,6 +17,8 @@
     { "phrases": ["qtc", "corrected qt", "qt interval"],
       "tile": "qtc", "audience": "clinicians" },
     { "phrases": ["unit converter", "convert units", "mg to mmol", "lb to kg"],
-      "tile": "unit-converter-v4", "audience": "patients" }
+      "tile": "unit-converter-v4", "audience": "patients" },
+    { "phrases": ["prior auth", "prior authorization", "preauth", "preauthorization", "pa packet", "pa linter", "pa checker", "packet check", "pa checklist", "utilization management", "um packet", "denial prevention"],
+      "tile": "pa-lint", "audience": "billers" }
   ]
 }

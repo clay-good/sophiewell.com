@@ -642,6 +642,96 @@ body {
   outline: 2px solid var(--focus-ring);
   outline-offset: 2px;
 }
+/* spec-v52 §4.2: prior-auth packet linter dropzone. Lives on the
+   pa-lint tile only; reuses the existing tool-meta + tool-result
+   surrounds. The wave 52-1b stub computes per-file SHA-256 + size +
+   MIME; subsequent waves slot the rule engine, the parsers, and the
+   DOCX report under the same dropzone without UI churn. */
+.pa-trust-strip {
+  list-style: none;
+  padding: 0;
+  margin: 12px 0 16px;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+.pa-trust-strip li {
+  margin: 4px 0;
+}
+.pa-dropzone {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  align-items: center;
+  justify-content: center;
+  padding: 28px 18px;
+  background: var(--bg-secondary);
+  border: 2px dashed var(--border);
+  border-radius: var(--radius-card);
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: background 120ms ease, border-color 120ms ease;
+}
+.pa-dropzone:focus-visible {
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 2px;
+}
+.pa-dropzone-hot {
+  background: var(--bg-tertiary);
+  border-color: var(--focus-ring);
+}
+.pa-dropzone-headline {
+  margin: 0;
+  font-weight: 600;
+}
+.pa-dropzone-sub {
+  margin: 0;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+.pa-status {
+  margin: 12px 0 6px;
+  font-size: 0.88rem;
+  color: var(--text-muted);
+}
+.pa-results {
+  list-style: none;
+  padding: 0;
+  margin: 6px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.pa-finding {
+  padding: 10px 12px;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-left-width: 4px;
+  border-radius: var(--radius-card);
+}
+.pa-finding[data-severity="flag"] {
+  border-left-color: #c9a227;
+}
+.pa-finding[data-severity="info"] {
+  border-left-color: #4d8fcc;
+}
+.pa-finding-name {
+  margin: 0;
+  font-weight: 600;
+}
+.pa-finding-meta,
+.pa-finding-hash,
+.pa-finding-err {
+  margin: 4px 0 0;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  word-break: break-all;
+}
+.pa-finding-hash {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.78rem;
+}
+
 /* spec-v52 §6: tool-picker. Native <select> listing every tile in the
    catalog, alphabetically by visible title. Replaces the v51 ten-tile
    quick-picks grid. The native control gives free a11y, mobile-native

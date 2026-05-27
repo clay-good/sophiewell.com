@@ -35,8 +35,10 @@ const GROUP_LABELS = {
   M: 'State & Coverage Reference',
   N: 'Pediatrics & Neonatal',
   O: 'High-Alert & Safety',
+  // spec-v52 §10.1: revenue-cycle / utilization-management group.
+  P: 'Revenue cycle & utilization',
 };
-const GROUP_ORDER = ['A', 'C', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O'];
+const GROUP_ORDER = ['A', 'C', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P'];
 
 // Per-audience SEO copy + workflow framing. These are the indexable
 // paragraphs that earn the long-tail "healthcare tools for X" queries.
@@ -80,6 +82,17 @@ export const HUBS = {
     title: 'Healthcare Tools for Educators - Free, with citations · Sophie Well',
     description: 'Free deterministic reference tools for clinical educators, coding instructors, and EMS trainers. Every tool ships a primary citation and a worked example.',
     lede: 'Citation-first reference tools you can use in lectures, simulation, and skills labs. Every clinical formula links its primary source; every lookup ships the authoritative dataset name and fetched-on date; every scoring tile carries a worked example.',
+  },
+  // spec-v52 §10.2: case-managers / utilization-management hub. Ships
+  // with one tile (pa-lint) at v52-1b close; expected to grow as
+  // revenue-cycle and utilization-management tiles ship in v52-2+.
+  'case-managers': {
+    slug: 'case-managers',
+    label: 'Case managers and UM nurses',
+    h1: 'Tools for case managers, UM nurses, and prior-auth coordinators',
+    title: 'Tools for Case Managers and UM Nurses - Free, in your browser · Sophie Well',
+    description: 'Free deterministic tools for case management and utilization management: prior-authorization packet linting, with the rule sources, payer overlays, and dataset versions pinned. Runs in your browser, no signup.',
+    lede: 'Tools sized for the people who actually move prior authorizations through the day: utilization-management nurses, case managers, prior-auth coordinators, and the moonlighting clinician who just got handed a denial. Drop a packet, get a deterministic findings report. Your packet stays in the tab; the rule sources, dataset versions, and source hashes are all pinned and visible.',
   },
 };
 

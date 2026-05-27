@@ -20,9 +20,12 @@ output; "searchable lookup of static facts" does not qualify. See
 [docs/spec-v10.md](docs/spec-v10.md) for the audience and
 dependency-budget commitments and
 [docs/spec-v29.md](docs/spec-v29.md) for the nurse-first pivot
-and the v29 catalog ledger. At v50 close the catalog is 254
+and the v29 catalog ledger. At v52 close the catalog is 255
 deterministic tiles — every one of them computes from at least
-one user input. Catalog-truth invariants
+one user input (the new `pa-lint` tile in spec-v52 consumes
+dropped files instead of form fields and produces a
+deterministic findings report, the first instance of the
+`shape: 'document-linter'` tile shape). Catalog-truth invariants
 ([docs/spec-v46.md](docs/spec-v46.md)) fail CI on any drift
 between `UTILITIES.length` and the public marketing copy.
 Sophie's eight posture commitments
@@ -82,7 +85,7 @@ discharge-planning functional-status index, and the spec-v43
 Lawton IADL instrumental-ADL companion, and the spec-v44 Barthel
 Index rehab-nursing weighted ADL, and the spec-v45 C-SSRS
 bedside suicide-risk screener added on top), the
-site organizes 254 deterministic calculators
+site organizes 255 deterministic calculators
 across the bedside-shift surfaces a
 nurse, doctor, pharmacist, RT, EMS provider, biller-coder, or
 educator actually reaches for. Every tile takes at least one

@@ -1345,6 +1345,30 @@ silently; the audit trail records the disablement.
 
 - 2026-05-27 — v52 proposed. Five waves outlined (52-1 through
   52-5+). Catalog count target at v52-1 close: 255.
+- 2026-05-27 — wave 52-1b (tile shell + audit-trail stub) shipped.
+  The `pa-lint` tile is registered in `UTILITIES` as the first
+  `shape: 'document-linter'` tile (§3.2, §3.4). The new top-level
+  `Revenue cycle & utilization` catalog group (group key `P`,
+  §10.1) lands in `app.js`, `scripts/build-hub-pages.mjs`, and
+  `scripts/audit-coverage.mjs`. A new `case-managers` audience
+  hub (§10.2) is generated at `/for/case-managers/`. The
+  `/tools/pa-lint/` route mounts a dropzone that computes the
+  per-file SHA-256, size, and MIME — the deterministic audit-
+  trail spine of every future finding (§4.3 ingest step, §4.10
+  determinism guarantees) and the minimum that satisfies the
+  spec-v29 §3 scope test. The 60-rule core ruleset (§4.5.1),
+  the vendored PDF/DOCX parsers (§5.2), the payer overlays
+  (§4.5.2–§4.5.4), the specialty overlays (§4.5.5), the DOCX
+  report (§4.6), the staleness CI (§8.3), and the property
+  tests (§8.4) are deferred to wave 52-1c+. The catalog count
+  surfaces (lede, hero label, `<title>`, OG/Twitter, JSON-LD
+  featureList, sitemap, README, package.json, parity ledger)
+  all advance 254 → 255 in the same commit;
+  `scripts/check-catalog-truth.mjs` is extended with the
+  shape-aware invariant from §3.4 (exactly one
+  `shape: 'document-linter'` tile at v52-1b close). Synonyms
+  per §10.3 land in `data/synonyms.json`. Spec-v52 §6
+  (homepage dropdown) was closed earlier today as wave 52-1a.
 - 2026-05-27 — wave 52-1a (homepage-only slice) shipped. §6 is
   closed: the ten `.quick-pick` buttons are removed and replaced
   by a native `<select id="tool-picker-select">` whose `<option>`

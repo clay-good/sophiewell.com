@@ -94,7 +94,10 @@ literacy decoders, the field-medicine and EMS workflow tiles).
 > v50 close — [spec-v50](spec-v50.md), a governance pass that
 > codifies the eight posture commitments as automated checks and
 > ships the public `/commitments/` page but adds **zero new
-> tiles** — is 254.)
+> tiles** — is 254; v52 close — [spec-v52](spec-v52.md), which
+> adds the Prior-Auth Packet Linter (`pa-lint`) as the first
+> instance of the new `shape: 'document-linter'` tile shape
+> (the existing 254 default to `shape: 'numeric'`) — is 255.)
 
 A reasonable steady-state estimate is **400–600 tiles over 3–5
 years**, depending on how aggressive the audit pace is and how

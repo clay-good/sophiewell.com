@@ -133,6 +133,32 @@ function lastCapture(text, re) {
   return last;
 }
 
+// spec-v52 §3.4 + §8.2: at v52-1b close exactly one tile carries the new
+// `shape: 'document-linter'` field. The remaining 254 tiles default to
+// `shape: 'numeric'` and have no explicit `shape:` field; counting the
+// explicit `shape: 'document-linter'` occurrences in the UTILITIES body
+// is sufficient. Raise the expected count as additional document-linter
+// tiles are registered.
+function countDocumentLinterTiles(appJsText) {
+  const start = appJsText.indexOf('const UTILITIES = [');
+  if (start === -1) return 0;
+  let depth = 0;
+  let i = appJsText.indexOf('[', start);
+  let end = -1;
+  for (; i < appJsText.length; i += 1) {
+    const ch = appJsText[i];
+    if (ch === '[') depth += 1;
+    else if (ch === ']') {
+      depth -= 1;
+      if (depth === 0) { end = i; break; }
+    }
+  }
+  if (end === -1) return 0;
+  const body = appJsText.slice(start, end);
+  const matches = body.match(/shape:\s*'document-linter'/g);
+  return matches ? matches.length : 0;
+}
+
 async function main() {
   const appJs = await readFile(join(ROOT, 'app.js'), 'utf8');
   const truth = countUtilities(appJs);
@@ -158,7 +184,17 @@ async function main() {
     for (const d of diffs) console.error(d);
     process.exit(1);
   }
-  console.log(`check-catalog-truth: clean (${truth} tiles across ${surfaces.length} surfaces)`);
+
+  // spec-v52 §3.4 + §8.2: shape-aware invariant. v52-1b registers
+  // exactly one `shape: 'document-linter'` tile (pa-lint). Lift this
+  // floor when additional document-linter tiles ship.
+  const docLinters = countDocumentLinterTiles(appJs);
+  if (docLinters !== 1) {
+    console.error(`check-catalog-truth: expected exactly 1 tile with shape: 'document-linter' (spec-v52 §3.4), found ${docLinters}.`);
+    process.exit(1);
+  }
+
+  console.log(`check-catalog-truth: clean (${truth} tiles across ${surfaces.length} surfaces, ${docLinters} document-linter)`);
 }
 
 main().catch((err) => {
