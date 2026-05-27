@@ -4,7 +4,7 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { META } from '../../lib/meta.js';
 import { wellsPe, gcs, wellsDvt, chadsVasc, hasBled } from '../../lib/clinical.js';
-import { qsofa, timi, heart, perc, sofa, news2, meld30, curb65, centor, mcisaac, ciwaAr, fourScore, bisap, cows, icdsc, fourAt, psi, cpot, bps, braden, morseFalls, lawtonIadl, katzAdl, barthel, rosier, cpss, lams, race, sos, flacc, hendrichII, atriaBleeding, orbitBleeding, painad, miniCog, mews, comfortB, wat1, stopBang, fourTs, ichScore, improveVte, khorana, dashVte, herdoo2, hospitalScore, improveBleeding, aldrete, padss, lace, hemorr2hages, daptScore, mustNutrition, crb65, isthDic, alvarado, pediatricAppendicitis, lips, westley, pramAsthma, passAsthma } from '../../lib/scoring-v4.js';
+import { qsofa, timi, heart, perc, sofa, news2, meld30, curb65, centor, mcisaac, ciwaAr, fourScore, bisap, cows, icdsc, fourAt, psi, cpot, bps, braden, morseFalls, lawtonIadl, katzAdl, barthel, rosier, cpss, lams, race, sos, flacc, hendrichII, atriaBleeding, orbitBleeding, painad, miniCog, mews, comfortB, wat1, stopBang, fourTs, ichScore, improveVte, khorana, dashVte, herdoo2, hospitalScore, improveBleeding, aldrete, padss, lace, hemorr2hages, daptScore, mustNutrition, crb65, isthDic, alvarado, pediatricAppendicitis, lips, westley, pramAsthma, passAsthma, bishop, abcMtp, mgap, gap } from '../../lib/scoring-v4.js';
 import { pews as pewsV5 } from '../../lib/clinical-v5.js';
 import { nihss } from '../../lib/clinical.js';
 import { rcri, abcd2 } from '../../lib/clinical-v5.js';
@@ -31,7 +31,8 @@ const WAVE_48_4F_TILES = ['herdoo2', 'hospital-score', 'improve-bleeding', 'aldr
 const WAVE_48_4G_TILES = ['lace', 'hemorr2hages', 'dapt-score', 'must-nutrition'];
 const WAVE_48_4H_TILES = ['crb65', 'isth-dic', 'pews', 'alvarado-pas'];
 const WAVE_48_4I_TILES = ['lips', 'westley', 'pram-asthma', 'pass-asthma'];
-const ALL_DERIVATION_TILES = [...WAVE_48_1A_TILES, ...WAVE_48_1B_TILES, ...WAVE_48_1C_TILES, ...WAVE_48_2A_TILES, ...WAVE_48_2B_TILES, ...WAVE_48_2C_TILES, ...WAVE_48_3A_TILES, ...WAVE_48_3B_TILES, ...WAVE_48_3C_TILES, ...WAVE_48_3D_TILES, ...WAVE_48_4A_TILES, ...WAVE_48_4B_TILES, ...WAVE_48_4C_TILES, ...WAVE_48_4D_TILES, ...WAVE_48_4E_TILES, ...WAVE_48_4F_TILES, ...WAVE_48_4G_TILES, ...WAVE_48_4H_TILES, ...WAVE_48_4I_TILES];
+const WAVE_48_4J_TILES = ['bishop', 'abc-mtp', 'mgap', 'gap'];
+const ALL_DERIVATION_TILES = [...WAVE_48_1A_TILES, ...WAVE_48_1B_TILES, ...WAVE_48_1C_TILES, ...WAVE_48_2A_TILES, ...WAVE_48_2B_TILES, ...WAVE_48_2C_TILES, ...WAVE_48_3A_TILES, ...WAVE_48_3B_TILES, ...WAVE_48_3C_TILES, ...WAVE_48_3D_TILES, ...WAVE_48_4A_TILES, ...WAVE_48_4B_TILES, ...WAVE_48_4C_TILES, ...WAVE_48_4D_TILES, ...WAVE_48_4E_TILES, ...WAVE_48_4F_TILES, ...WAVE_48_4G_TILES, ...WAVE_48_4H_TILES, ...WAVE_48_4I_TILES, ...WAVE_48_4J_TILES];
 
 for (const id of ALL_DERIVATION_TILES) {
   test(`derivation schema: ${id} has all required fields`, () => {
@@ -2017,6 +2018,106 @@ test('pass-asthma clamps out-of-range values to 0-2', () => {
   assert.equal(sumComponents(META['pass-asthma'], inputs), r.score);
   // -1 -> 0; 5 -> 2; 1 = 3
   assert.equal(r.score, 3);
+});
+
+// --- Wave 48-4j: Bishop, ABC MTP, MGAP, GAP -----------------------------
+
+test('bishop components sum equals bishop() (zero)', () => {
+  const inputs = { dilation: 0, effacement: 0, station: -3, consistency: 'firm', position: 'posterior' };
+  const r = bishop(inputs);
+  assert.equal(sumComponents(META.bishop, inputs), r.score);
+  assert.equal(r.score, 0);
+});
+
+test('bishop components sum equals bishop() (max 13)', () => {
+  const inputs = { dilation: 5, effacement: 80, station: 2, consistency: 'soft', position: 'anterior' };
+  const r = bishop(inputs);
+  assert.equal(sumComponents(META.bishop, inputs), r.score);
+  assert.equal(r.score, 13);
+});
+
+test('bishop dilation banded callback (0 / 2 / 4 / 5 -> 0 / 1 / 2 / 3)', () => {
+  for (const [d, expected] of [[0, 0], [1, 1], [2, 1], [3, 2], [4, 2], [5, 3], [10, 3]]) {
+    const inputs = { dilation: d, effacement: 0, station: -3, consistency: 'firm', position: 'posterior' };
+    assert.equal(sumComponents(META.bishop, inputs), expected, `dilation=${d}`);
+    assert.equal(bishop(inputs).score, expected, `dilation=${d}`);
+  }
+});
+
+test('bishop station banded callback (-3 / -2 / 0 / 1 -> 0 / 1 / 2 / 3)', () => {
+  for (const [s, expected] of [[-5, 0], [-3, 0], [-2, 1], [-1, 2], [0, 2], [1, 3], [2, 3]]) {
+    const inputs = { dilation: 0, effacement: 0, station: s, consistency: 'firm', position: 'posterior' };
+    assert.equal(sumComponents(META.bishop, inputs), expected, `station=${s}`);
+  }
+});
+
+test('abc-mtp components sum equals abcMtp() (zero)', () => {
+  const inputs = { penetratingMechanism: false, sbpLe90: false, hrGe120: false, positiveFast: false };
+  const r = abcMtp(inputs);
+  assert.equal(sumComponents(META['abc-mtp'], inputs), r.score);
+  assert.equal(r.score, 0);
+});
+
+test('abc-mtp components sum equals abcMtp() (cutoff at 2)', () => {
+  const inputs = { penetratingMechanism: true, sbpLe90: true, hrGe120: false, positiveFast: false };
+  const r = abcMtp(inputs);
+  assert.equal(sumComponents(META['abc-mtp'], inputs), r.score);
+  assert.equal(r.score, 2);
+  assert.equal(r.activateMtp, true);
+});
+
+test('abc-mtp components sum equals abcMtp() (max 4)', () => {
+  const inputs = { penetratingMechanism: true, sbpLe90: true, hrGe120: true, positiveFast: true };
+  const r = abcMtp(inputs);
+  assert.equal(sumComponents(META['abc-mtp'], inputs), r.score);
+  assert.equal(r.score, 4);
+});
+
+test('mgap components sum equals mgap() (low risk, max 29)', () => {
+  const inputs = { mechanismBlunt: true, gcs: 15, ageLt60: true, sbp: 130 };
+  const r = mgap(inputs);
+  assert.equal(sumComponents(META.mgap, inputs), r.score);
+  assert.equal(r.score, 29);
+});
+
+test('mgap penetrating with severe hypotension (min 3)', () => {
+  // penetrating (0) + GCS 3 + age >=60 (0) + SBP < 60 (0) = 3
+  const inputs = { mechanismBlunt: false, gcs: 3, ageLt60: false, sbp: 50 };
+  const r = mgap(inputs);
+  assert.equal(sumComponents(META.mgap, inputs), r.score);
+  assert.equal(r.score, 3);
+});
+
+test('mgap SBP banded callback (50 / 100 / 130 -> 0 / 3 / 5)', () => {
+  for (const [s, expected] of [[50, 0], [60, 3], [120, 3], [121, 5], [130, 5]]) {
+    const inputs = { mechanismBlunt: false, gcs: 15, ageLt60: false, sbp: s };
+    const r = mgap(inputs);
+    assert.equal(sumComponents(META.mgap, inputs), r.score, `sbp=${s}`);
+    assert.equal(r.parts.sbp, expected, `sbp=${s} parts.sbp`);
+  }
+});
+
+test('gap components sum equals gap() (low risk, max 24)', () => {
+  const inputs = { gcs: 15, ageLt60: true, sbp: 130 };
+  const r = gap(inputs);
+  assert.equal(sumComponents(META.gap, inputs), r.score);
+  assert.equal(r.score, 24);
+});
+
+test('gap components sum equals gap() (min 3; GCS 3, age>=60, severe hypotension)', () => {
+  const inputs = { gcs: 3, ageLt60: false, sbp: 50 };
+  const r = gap(inputs);
+  assert.equal(sumComponents(META.gap, inputs), r.score);
+  assert.equal(r.score, 3);
+});
+
+test('gap SBP banded callback (50 / 100 / 130 -> 0 / 4 / 6)', () => {
+  for (const [s, expected] of [[50, 0], [60, 4], [120, 4], [121, 6], [200, 6]]) {
+    const inputs = { gcs: 15, ageLt60: false, sbp: s };
+    const r = gap(inputs);
+    assert.equal(sumComponents(META.gap, inputs), r.score, `sbp=${s}`);
+    assert.equal(r.parts.sbp, expected, `sbp=${s} parts.sbp`);
+  }
 });
 
 // --- 4. Renderer behavior (jsdom-free smoke via stub) -------------------

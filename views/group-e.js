@@ -7,6 +7,8 @@ import { el, clear } from '../lib/dom.js';
 import * as C from '../lib/clinical.js';
 import * as V4 from '../lib/clinical-v4.js';
 import * as S4 from '../lib/scoring-v4.js';
+import { META } from '../lib/meta.js';
+import { renderDerivation, updateDerivationSteps } from '../lib/derivation.js';
 
 function field(label, id, opts = {}) {
   const wrap = el('p');
@@ -560,15 +562,19 @@ export const renderers = {
     ]));
     root.appendChild(field('SBP (mmHg)', 'mgap-sbp', { value: 130 }));
     const o = out(); root.appendChild(o);
+    const deriv = renderDerivation(META.mgap);
+    if (deriv) root.appendChild(deriv);
     const run = () => safe(o, () => {
-      const r = S4.mgap({
+      const inputs = {
         mechanismBlunt: document.getElementById('mgap-mech').value === 'blunt',
         gcs: num('mgap-gcs'),
         ageLt60: document.getElementById('mgap-age').value === 'lt60',
         sbp: num('mgap-sbp'),
-      });
+      };
+      const r = S4.mgap(inputs);
       o.appendChild(el('h2', { text: `MGAP ${r.score}` }));
       o.appendChild(el('p', { text: r.band }));
+      if (deriv) updateDerivationSteps(deriv, META.mgap, inputs);
     });
     ['mgap-mech', 'mgap-gcs', 'mgap-age', 'mgap-sbp'].forEach((id) => document.getElementById(id).addEventListener('input', run));
     run();
@@ -583,14 +589,18 @@ export const renderers = {
     ]));
     root.appendChild(field('SBP (mmHg)', 'gap-sbp', { value: 130 }));
     const o = out(); root.appendChild(o);
+    const deriv = renderDerivation(META.gap);
+    if (deriv) root.appendChild(deriv);
     const run = () => safe(o, () => {
-      const r = S4.gap({
+      const inputs = {
         gcs: num('gap-gcs'),
         ageLt60: document.getElementById('gap-age').value === 'lt60',
         sbp: num('gap-sbp'),
-      });
+      };
+      const r = S4.gap(inputs);
       o.appendChild(el('h2', { text: `GAP ${r.score}` }));
       o.appendChild(el('p', { text: r.band }));
+      if (deriv) updateDerivationSteps(deriv, META.gap, inputs);
     });
     ['gap-gcs', 'gap-age', 'gap-sbp'].forEach((id) => document.getElementById(id).addEventListener('input', run));
     run();

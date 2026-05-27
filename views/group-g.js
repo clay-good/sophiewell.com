@@ -672,14 +672,18 @@ export const renderers = {
         el('option', { value: 'anterior', text: 'Anterior' }),
       ])]));
     const o = out(); root.appendChild(o);
+    const deriv = renderDerivation(META.bishop);
+    if (deriv) root.appendChild(deriv);
     const run = () => safe(o, () => {
-      const r = S4.bishop({
+      const inputs = {
         dilation: nv('bp-d'), effacement: nv('bp-e'), station: nv('bp-s'),
         consistency: document.getElementById('bp-c').value,
         position: document.getElementById('bp-p').value,
-      });
+      };
+      const r = S4.bishop(inputs);
       o.appendChild(el('h2', { text: `Bishop: ${r.score}` }));
       o.appendChild(el('p', { text: r.band }));
+      if (deriv) updateDerivationSteps(deriv, META.bishop, inputs);
     });
     ['bp-d','bp-e','bp-s','bp-c','bp-p'].forEach((id) => document.getElementById(id).addEventListener(id.startsWith('bp-c') || id.startsWith('bp-p') ? 'change' : 'input', run));
     run();
@@ -3677,15 +3681,19 @@ export const renderers = {
     ];
     for (const [l, id] of items) root.appendChild(checkbox(l, id));
     const o = out(); root.appendChild(o);
+    const deriv = renderDerivation(META['abc-mtp']);
+    if (deriv) root.appendChild(deriv);
     const run = () => safe(o, () => {
-      const r = S4.abcMtp({
+      const inputs = {
         penetratingMechanism: checked('abc-pen'),
         sbpLe90: checked('abc-sbp'),
         hrGe120: checked('abc-hr'),
         positiveFast: checked('abc-fast'),
-      });
+      };
+      const r = S4.abcMtp(inputs);
       o.appendChild(el('h2', { text: r.activateMtp ? `ABC ${r.score}/4: activate MTP` : `ABC ${r.score}/4` }));
       o.appendChild(el('p', { text: r.band }));
+      if (deriv) updateDerivationSteps(deriv, META['abc-mtp'], inputs);
     });
     items.forEach(([, id]) => document.getElementById(id).addEventListener('change', run));
     run();

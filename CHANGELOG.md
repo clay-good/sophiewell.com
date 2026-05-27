@@ -6,6 +6,29 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v48 wave 48-4j — Bishop, ABC MTP, MGAP, GAP)
+
+Four more long-tail derivation blocks spanning obstetric
+induction assessment and trauma triage scoring.
+
+- **Bishop** (`bishop`, Bishop 1964): 5 cervical-examination
+  items with banded callbacks (dilation, effacement, station,
+  consistency, position); range 0-13.
+- **ABC MTP** (`abc-mtp`, Nunez 2009): 4 binary criteria, range
+  0-4. Cutoff >= 2 -> activate massive transfusion protocol.
+- **MGAP** (`mgap`, Sartorius 2010): 4 items including a GCS
+  raw-value passthrough into the sum; range 3-29.
+- **GAP** (`gap`, Kondo 2011): 3 items (GCS passthrough, age,
+  banded SBP); range 3-24. MGAP minus the mechanism term.
+
+4 new provenance logs under `docs/audits/v48/`. 14 new unit
+tests including the Bishop dilation / station banded callbacks,
+the ABC MTP cutoff-at-2, the MGAP and GAP SBP three-level
+callbacks, and the GCS raw-value passthrough.
+
+Verified: `npm run lint`, `npm run test`, `npm run sbom`, and
+`npm run build` are all green. **Catalog count 254, unchanged.**
+
 ### Added (spec-v48 wave 48-4i — LIPS, Westley, PRAM, PASS)
 
 Four more long-tail derivation blocks spanning ALI/ARDS

@@ -635,6 +635,27 @@ tests including the LIPS diabetes -1 protective weight, the
 Westley cyanosis three-level callback, the PRAM binary-style
 items at the +2 weight, and the PASS 0-2 clamp.
 
+#### Wave 48-4j (shipped 2026-05-26) — Bishop, ABC MTP, MGAP, GAP
+
+Four more long-tail tiles spanning obstetric induction
+assessment and trauma triage scoring.
+
+- **Bishop** (`bishop`, Bishop 1964): 5 cervical-examination
+  items with banded callbacks (dilation, effacement, station,
+  consistency, position); range 0-13.
+- **ABC MTP** (`abc-mtp`, Nunez 2009): 4 binary criteria, range
+  0-4. Cutoff >= 2 -> activate massive transfusion protocol.
+- **MGAP** (`mgap`, Sartorius 2010): 4 items (mechanism, GCS
+  raw-value passthrough, age band, SBP banded). Range 3-29.
+- **GAP** (`gap`, Kondo 2011): 3 items (GCS raw-value
+  passthrough, age band, SBP banded). Range 3-24. MGAP minus
+  the mechanism term.
+
+4 new provenance logs under `docs/audits/v48/`. 14 new unit
+tests including the Bishop dilation / station banded callbacks,
+the ABC MTP cutoff-at-2, the MGAP and GAP SBP three-level
+callbacks, and the GCS raw-value passthrough into the sum.
+
 ## 6. Testing requirements
 
 For every tile with a `derivation` block, the test suite asserts:
