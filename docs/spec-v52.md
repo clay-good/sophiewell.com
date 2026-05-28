@@ -1345,6 +1345,42 @@ silently; the audit trail records the disablement.
 
 - 2026-05-27 — v52 proposed. Five waves outlined (52-1 through
   52-5+). Catalog count target at v52-1 close: 255.
+- 2026-05-28 — wave 52-3c (CMS Medicare Advantage overlay COMPLETE:
+  10 -> 15 of 15; closes §4.5.3). Final five §4.5.3 rules:
+  R-PA-MA-011 (organization-determination type indicator -- pre-
+  service / concurrent / payment -- so MA timeliness rules apply
+  correctly, info), R-PA-MA-012 (expedited review requires a
+  treating-clinician clinical-urgency / serious-jeopardy
+  attestation per CMS expedited-determination rules, flag),
+  R-PA-MA-013 (transition supply for new enrollees requires a
+  continuity-of-care anchor, flag), R-PA-MA-014 (hospice-related
+  service on an MA packet requires a hospice-election indicator
+  -- elected / not elected / revoked -- since hospice services
+  revert to Original Medicare, flag), R-PA-MA-015 (C-SNP / I-SNP
+  packets require a qualifying chronic-condition diagnosis or
+  institutional-residence anchor, flag).
+
+  Each rule self-gates on `bundle.payer === 'cms-medicare-advantage'`
+  and again on a context anchor (expedited / transition / hospice /
+  SNP-specific). R-PA-MA-015's qualifier-anchor set covers both the
+  C-SNP chronic conditions (diabetes / CHF / ESRD / dementia /
+  HIV/AIDS / COPD) and the I-SNP institutional-residence anchors
+  (SNF resident / long-term care facility), so one rule serves both
+  SNP variants.
+
+  The R-PA-MA-015 unit test strips HAPPY_TEXT's pre-existing
+  "Dx: I10 essential hypertension" and "Step therapy: trial of
+  lisinopril..." lines so neither "diabetes" nor any other
+  qualifier anchor pre-satisfies the rule.
+
+  5 new unit assertions in `test/unit/pa-engine.test.js`. Total PA
+  unit suite: 137 assertions. The Playwright happy-path now asserts
+  100 rules render. View wave banner advanced to 52-3c and now
+  reads "complete §4.5.3 CMS Medicare Advantage overlay (15 rules)".
+
+  This closes spec-v52 §4.5.3 (the CMS Medicare Advantage overlay).
+  Wave 52-4 picks up with the §4.5.4 Medicaid state-agnostic core
+  (10 rules).
 - 2026-05-28 — wave 52-3b (CMS Medicare Advantage overlay: 5 -> 10
   of 15). Adds five more §4.5.3 rules covering drug-coverage path,
   D-SNP coordination, supplemental benefits, Part B step therapy,

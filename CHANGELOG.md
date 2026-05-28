@@ -6,6 +6,48 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v52 wave 52-3c — CMS Medicare Advantage overlay COMPLETE: 10 -> 15)
+
+The final 5 of the 15 spec-v52 §4.5.3 CMS Medicare Advantage
+overlay rules ship, closing the overlay:
+
+- **R-PA-MA-011** — organization-determination type (pre-service
+  / concurrent / payment) indicator. Info.
+- **R-PA-MA-012** — expedited review: treating-clinician clinical-
+  urgency / serious-jeopardy attestation. Flag.
+- **R-PA-MA-013** — transition supply for new enrollees:
+  continuity-of-care anchor. Flag.
+- **R-PA-MA-014** — hospice-related service on MA packet:
+  hospice-election indicator (elected / not elected / revoked).
+  Flag.
+- **R-PA-MA-015** — C-SNP / I-SNP: qualifying chronic-condition
+  diagnosis or institutional-residence anchor. Flag.
+
+R-PA-MA-015's qualifier-anchor set covers both C-SNP chronic
+conditions (diabetes / CHF / ESRD / dementia / HIV/AIDS / COPD)
+and I-SNP institutional-residence anchors (SNF resident /
+long-term care facility), so one rule serves both SNP variants.
+
+Each rule self-gates on the detected payer bucket and again on a
+context anchor (expedited / transition / hospice / SNP-specific).
+No new extractors.
+
+The R-PA-MA-015 unit test explicitly strips HAPPY_TEXT's
+pre-existing "Dx: I10 essential hypertension" and "Step therapy:
+trial of lisinopril..." lines so neither "diabetes" nor any other
+qualifier anchor pre-satisfies the rule.
+
+5 new unit assertions in `test/unit/pa-engine.test.js`. Total PA
+unit suite: 137 assertions. The Playwright happy-path now asserts
+100 rules render in the findings panel.
+
+This closes spec-v52 §4.5.3 (the CMS Medicare Advantage overlay).
+Wave 52-4 picks up with §4.5.4 Medicaid state-agnostic core
+(10 rules).
+
+Verified: `npm run lint`, `npm run test`, and `npm run build` are
+all green. **Catalog count 255, unchanged.**
+
 ### Added (spec-v52 wave 52-3b — CMS Medicare Advantage overlay 5 -> 10 of 15)
 
 Five more spec-v52 §4.5.3 MA overlay rules covering drug-coverage

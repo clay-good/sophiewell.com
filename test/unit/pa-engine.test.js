@@ -140,8 +140,8 @@ test('runEngine passes every starter rule on a clean multi-doc happy-path packet
   assert.equal(counts.pass, STARTER_RULES.length);
 });
 
-test('STARTER_RULES at wave 52-3b close is 95 rules (60 core + 25 CMS FFS + 10 CMS MA)', () => {
-  assert.equal(STARTER_RULES.length, 95);
+test('STARTER_RULES at wave 52-3c close is 100 rules (60 core + 25 CMS FFS + 15 CMS MA COMPLETE)', () => {
+  assert.equal(STARTER_RULES.length, 100);
 });
 
 test('CMS overlay carries the spec-aligned id R-PA-CMS-004 for proof-of-delivery', () => {
@@ -440,6 +440,55 @@ test('R-PA-MA-010 flags an MA inpatient-admission request without a two-midnight
     + 'Inpatient admission requested for acute care.\n';
   const findings = runEngine(bundleOf(text));
   const f = findings.find((x) => x.ruleId === 'R-PA-MA-010');
+  assert.equal(f.status, 'flag');
+});
+
+// ---- wave 52-3c sanity checks ----
+
+test('R-PA-MA-011 fires (info) on an MA packet without an organization-determination type anchor', () => {
+  const text = HAPPY_TEXT
+    + '\nMedicare Advantage plan member.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-MA-011');
+  assert.equal(f.status, 'info');
+});
+
+test('R-PA-MA-012 flags an MA expedited-review request without a clinical-urgency attestation', () => {
+  const text = HAPPY_TEXT
+    + '\nMedicare Advantage plan member.\n'
+    + 'Expedited review requested for this PA.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-MA-012');
+  assert.equal(f.status, 'flag');
+});
+
+test('R-PA-MA-013 flags an MA transition request without a continuity-of-care anchor', () => {
+  const text = HAPPY_TEXT
+    + '\nMedicare Advantage plan member.\n'
+    + 'Transition fill requested for new enrollee.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-MA-013');
+  assert.equal(f.status, 'flag');
+});
+
+test('R-PA-MA-014 flags hospice-related services on an MA packet without a hospice-election indicator', () => {
+  const text = HAPPY_TEXT
+    + '\nMedicare Advantage plan member.\n'
+    + 'Hospice service / palliative care requested.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-MA-014');
+  assert.equal(f.status, 'flag');
+});
+
+test('R-PA-MA-015 flags a C-SNP / I-SNP packet without a qualifying condition / residence anchor', () => {
+  // Strip HAPPY_TEXT's "Step therapy: ..." line and the dx I10 line so
+  // none of the qualifying-condition anchors match, then add the C-SNP
+  // trigger.
+  const base = HAPPY_TEXT.replace(/Step therapy:.*\n/, '').replace(/Dx:.*\n/, 'Dx: M25.561 right knee pain\n');
+  const text = base
+    + '\nMedicare Advantage C-SNP chronic-condition special needs plan.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-MA-015');
   assert.equal(f.status, 'flag');
 });
 
