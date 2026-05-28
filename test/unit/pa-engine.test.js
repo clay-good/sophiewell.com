@@ -140,8 +140,8 @@ test('runEngine passes every starter rule on a clean multi-doc happy-path packet
   assert.equal(counts.pass, STARTER_RULES.length);
 });
 
-test('STARTER_RULES at wave 52-2e close is 85 rules (60 core + 25 CMS FFS overlay COMPLETE)', () => {
-  assert.equal(STARTER_RULES.length, 85);
+test('STARTER_RULES at wave 52-3a close is 90 rules (60 core + 25 CMS FFS + 5 CMS MA)', () => {
+  assert.equal(STARTER_RULES.length, 90);
 });
 
 test('CMS overlay carries the spec-aligned id R-PA-CMS-004 for proof-of-delivery', () => {
@@ -337,6 +337,60 @@ test('R-PA-CMS-026 flags a Medicare FFS post-cataract-lens request without surge
   const findings = runEngine(bundleOf(text));
   const f = findings.find((x) => x.ruleId === 'R-PA-CMS-026');
   assert.equal(f.status, 'flag');
+});
+
+// ---- wave 52-3a sanity checks: CMS Medicare Advantage overlay opens ----
+
+test('R-PA-MA-001 / -002 / -003 / -004 / -005 all vacuously pass on a non-MA packet', () => {
+  const findings = runEngine(happyBundle());
+  for (const id of ['R-PA-MA-001', 'R-PA-MA-002', 'R-PA-MA-003', 'R-PA-MA-004', 'R-PA-MA-005']) {
+    const f = findings.find((x) => x.ruleId === id);
+    assert.equal(f.status, 'pass', id + ' should vacuously pass when payer is not MA.');
+  }
+});
+
+test('R-PA-MA-001 blocks a Medicare Advantage HMO specialist request without a PCP referral anchor', () => {
+  const text = HAPPY_TEXT
+    + '\nMedicare Advantage HMO plan member.\n'
+    + 'Specialist consult requested for cardiology evaluation.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-MA-001');
+  assert.equal(f.status, 'block');
+});
+
+test('R-PA-MA-002 flags an MA packet without an in-network or OON-exception anchor', () => {
+  const text = HAPPY_TEXT
+    + '\nMedicare Advantage plan member.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-MA-002');
+  assert.equal(f.status, 'flag');
+});
+
+test('R-PA-MA-003 flags a gatekeepered MA plan with fewer than 2 distinct NPIs', () => {
+  // Strip the NPI line entirely so only 0 NPIs are present (sub-2).
+  const base = HAPPY_TEXT.replace('Ordering provider NPI: 1234567893\n', '');
+  const text = base
+    + '\nMedicare Advantage HMO plan member.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-MA-003');
+  assert.equal(f.status, 'flag');
+});
+
+test('R-PA-MA-004 flags an MA packet without a plan-name anchor', () => {
+  // HAPPY_TEXT already has a Member ID; we add an MA payer anchor without a "Plan name:" line.
+  const text = HAPPY_TEXT
+    + '\nMedicare Advantage member.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-MA-004');
+  assert.equal(f.status, 'flag');
+});
+
+test('R-PA-MA-005 fires (info) on an MA packet without a service-area anchor', () => {
+  const text = HAPPY_TEXT
+    + '\nMedicare Advantage plan member.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-MA-005');
+  assert.equal(f.status, 'info');
 });
 
 // ---- wave 52-2a sanity checks: CMS Medicare FFS overlay self-gating ----

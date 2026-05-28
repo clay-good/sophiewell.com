@@ -1345,6 +1345,39 @@ silently; the audit trail records the disablement.
 
 - 2026-05-27 — v52 proposed. Five waves outlined (52-1 through
   52-5+). Catalog count target at v52-1 close: 255.
+- 2026-05-28 — wave 52-3a (CMS Medicare Advantage overlay opens:
+  first 5 of 15). Opens spec-v52 §4.5.3 with five rules covering
+  the additional documentation MA plans request beyond FFS:
+  R-PA-MA-001 (HMO PCP referral for specialist services, block),
+  R-PA-MA-002 (in-network confirmation OR OON-exception anchor,
+  flag), R-PA-MA-003 (gatekeepered plan requires 2 distinct
+  Luhn-valid NPIs so ordering PCP and servicing specialist are
+  separable, flag), R-PA-MA-004 (plan name + member-ID format
+  both present so the payer can route the PA to the correct plan
+  unit, flag), R-PA-MA-005 (service-location / service-area
+  anchor, info; v52-3b+ will tie this to bundled CMS plan-service-
+  area files when those land).
+
+  Each MA overlay rule self-gates on `bundle.payer ===
+  'cms-medicare-advantage'` and, where applicable, on a plan-type
+  anchor (HMO / gatekeepered) so non-HMO MA packets bypass the
+  HMO-specific rules. The HAPPY_PACKET fixture continues to
+  all-pass without modification.
+
+  R-PA-MA-003 reuses the wave-52-1e `extract.npis` array and the
+  wave-52-2a self-gating pattern; R-PA-MA-004 reuses the
+  wave-52-1f `extract.memberId` extractor so the MA overlay
+  introduces zero new extractors.
+
+  6 new unit assertions in `test/unit/pa-engine.test.js` (one
+  aggregate guard that all five new rules vacuously pass on a
+  non-MA packet, plus a fires-when-it-should test per new rule).
+  Total PA unit suite: 127 assertions. The Playwright happy-path
+  now asserts 90 rules render. View wave banner advanced to 52-3a.
+
+  Wave 52-3b will continue with five more §4.5.3 MA rules
+  (Part B prescription drug indicator, dual-eligible / D-SNP
+  Medicaid coordination, supplemental benefit gating, etc.).
 - 2026-05-28 — wave 52-2e (CMS Medicare FFS overlay COMPLETE:
   20 -> 25 of 25; closes §4.5.2). Adds the final five DME / supply
   rules: R-PA-CMS-022 (external infusion pump covered indication +
