@@ -1345,6 +1345,32 @@ silently; the audit trail records the disablement.
 
 - 2026-05-27 — v52 proposed. Five waves outlined (52-1 through
   52-5+). Catalog count target at v52-1 close: 255.
+- 2026-05-28 — wave 52-1i (core ruleset backfill 35 -> 45) shipped.
+  Adds 10 more of the 60 §4.5.1 core rules: R-PA-030 (prior-treatment
+  list when step therapy applies), R-PA-035 (LFTs when a hepatically-
+  dosed agent is referenced, info-level), R-PA-038 / R-PA-039 / R-PA-040
+  (resubmission iff prior-denial document attached; resubmission cites
+  the prior PA reference number; resubmission addresses each denial
+  reason), R-PA-052 (date-of-injury anchor when an ICD-10 external-
+  cause code V/W/X/Y is in the packet), R-PA-054 (modifier 25 / 59
+  accompanied by "separately identifiable" supporting language),
+  R-PA-055 (bilateral mention matches modifier 50 presence), R-PA-058
+  (unlisted-procedure CPT has a narrative justification), R-PA-059
+  (consent date is on or before the latest service date).
+
+  All ten new rules are designed to be vacuously satisfied when their
+  trigger condition is absent — no false positives on the wave 52-1h
+  HAPPY_PACKET fixture. The classifier's `prior-auth-denial` role
+  becomes load-bearing for R-PA-038 / R-PA-040, and `extract.icd10`
+  with a V/W/X/Y leading-letter filter becomes load-bearing for
+  R-PA-052. No new extractors were required; R-PA-059 reuses
+  `extract.serviceDates` (wave 52-1g) and `extract.dates`.
+
+  10 new unit assertions in `test/unit/pa-engine.test.js` (one fires-
+  when-it-should per new rule). Total PA unit suite: 78 assertions.
+  The e2e happy-path now asserts 45 rules render in the findings
+  panel. Engine output and ordering remain deterministic; the
+  property test still holds.
 - 2026-05-27 — wave 52-1h (core ruleset backfill 25 -> 35) shipped.
   Adds 10 more of the 60 §4.5.1 core rules: R-PA-019 (servicing NPI
   presence — flags when only one Luhn-valid NPI is in the packet),

@@ -140,8 +140,84 @@ test('runEngine passes every starter rule on a clean multi-doc happy-path packet
   assert.equal(counts.pass, STARTER_RULES.length);
 });
 
-test('STARTER_RULES at wave 52-1h close is 35 rules total', () => {
-  assert.equal(STARTER_RULES.length, 35);
+test('STARTER_RULES at wave 52-1i close is 45 rules total', () => {
+  assert.equal(STARTER_RULES.length, 45);
+});
+
+// ---- wave 52-1i sanity checks (R-PA-030, 035, 038-040, 052, 054, 055, 058, 059) ----
+
+test('R-PA-030 flags when step therapy is referenced but no prior-treatment list is present', () => {
+  const docs = HAPPY_PACKET.documents.map((d) =>
+    d.name === 'pa-form.txt'
+      ? { ...d, text: d.text.replace('Step therapy: trial of lisinopril completed without adequate response.', 'Step therapy: required.') }
+      : d);
+  const findings = runEngine(buildBundle(docs, { totalBytes: 8192 }));
+  const f = findings.find((x) => x.ruleId === 'R-PA-030');
+  assert.equal(f.status, 'flag');
+});
+
+test('R-PA-035 fires (info) when a hepatically-dosed agent is referenced but no LFT value is present', () => {
+  const docs = HAPPY_PACKET.documents.map((d) =>
+    d.name === 'note.txt' ? { ...d, text: d.text + '\nPlan: start methotrexate weekly.' } : d);
+  const findings = runEngine(buildBundle(docs, { totalBytes: 8192 }));
+  const f = findings.find((x) => x.ruleId === 'R-PA-035');
+  assert.equal(f.status, 'info');
+});
+
+test('R-PA-038 flags when resubmission is declared but no prior-auth-denial document is attached', () => {
+  const docs = HAPPY_PACKET.documents.map((d) =>
+    d.name === 'pa-form.txt' ? { ...d, text: d.text + '\nThis is a resubmission.' } : d);
+  const findings = runEngine(buildBundle(docs, { totalBytes: 8192 }));
+  const f = findings.find((x) => x.ruleId === 'R-PA-038');
+  assert.equal(f.status, 'flag');
+});
+
+test('R-PA-039 flags when a resubmission is declared but no prior PA reference number is present', () => {
+  const docs = HAPPY_PACKET.documents.map((d) =>
+    d.name === 'pa-form.txt' ? { ...d, text: d.text + '\nResubmission for reconsideration.' } : d);
+  const findings = runEngine(buildBundle(docs, { totalBytes: 8192 }));
+  const f = findings.find((x) => x.ruleId === 'R-PA-039');
+  assert.equal(f.status, 'flag');
+});
+
+test('R-PA-052 flags when an external-cause ICD-10 code is present but no date of injury anchor is in the packet', () => {
+  const docs = HAPPY_PACKET.documents.map((d) =>
+    d.name === 'pa-form.txt' ? { ...d, text: d.text + '\nDx: V43.52 driver injured in collision' } : d);
+  const findings = runEngine(buildBundle(docs, { totalBytes: 8192 }));
+  const f = findings.find((x) => x.ruleId === 'R-PA-052');
+  assert.equal(f.status, 'flag');
+});
+
+test('R-PA-054 flags when modifier 25 is referenced but no separately-identifiable language is present', () => {
+  const docs = HAPPY_PACKET.documents.map((d) =>
+    d.name === 'pa-form.txt' ? { ...d, text: d.text + '\nUsing modifier 25 on the E/M.' } : d);
+  const findings = runEngine(buildBundle(docs, { totalBytes: 8192 }));
+  const f = findings.find((x) => x.ruleId === 'R-PA-054');
+  assert.equal(f.status, 'flag');
+});
+
+test('R-PA-055 flags when "bilateral" is mentioned but modifier 50 is not on the CPT line', () => {
+  const docs = HAPPY_PACKET.documents.map((d) =>
+    d.name === 'note.txt' ? { ...d, text: d.text + '\nBilateral knee assessment.' } : d);
+  const findings = runEngine(buildBundle(docs, { totalBytes: 8192 }));
+  const f = findings.find((x) => x.ruleId === 'R-PA-055');
+  assert.equal(f.status, 'flag');
+});
+
+test('R-PA-058 flags when an unlisted-procedure anchor is present without a narrative', () => {
+  const docs = HAPPY_PACKET.documents.map((d) =>
+    d.name === 'pa-form.txt' ? { ...d, text: d.text + '\nRequest: unlisted procedure.' } : d);
+  const findings = runEngine(buildBundle(docs, { totalBytes: 8192 }));
+  const f = findings.find((x) => x.ruleId === 'R-PA-058');
+  assert.equal(f.status, 'flag');
+});
+
+test('R-PA-059 flags when consent date is after the service date', () => {
+  const docs = HAPPY_PACKET.documents.map((d) =>
+    d.name === 'pa-form.txt' ? { ...d, text: d.text + '\nInformed consent signed 2026-05-15.' } : d);
+  const findings = runEngine(buildBundle(docs, { totalBytes: 8192 }));
+  const f = findings.find((x) => x.ruleId === 'R-PA-059');
+  assert.equal(f.status, 'flag');
 });
 
 // ---- wave 52-1f new-rule sanity checks ----

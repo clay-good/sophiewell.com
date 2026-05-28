@@ -6,6 +6,51 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v52 wave 52-1i — PA core ruleset backfill 35 -> 45)
+
+Ten more of the 60 spec-v52 §4.5.1 core rules land in
+`lib/pa/rules.js`, bringing the deterministic PA-packet linter's
+core ruleset from 35 to 45 rules.
+
+- **R-PA-030** — prior-treatment list when step therapy applies
+  (flag).
+- **R-PA-035** — LFTs (AST / ALT / bilirubin / alk phos) when
+  the packet references a hepatically-dosed agent (info).
+- **R-PA-038** — submission is a resubmission iff a prior-auth-
+  denial document is attached (flag). The classifier's
+  `prior-auth-denial` role becomes load-bearing here.
+- **R-PA-039** — resubmission references the original PA
+  reference number (flag).
+- **R-PA-040** — resubmission addresses each reason cited in
+  the prior denial (info).
+- **R-PA-052** — date-of-injury anchor present when an ICD-10
+  external-cause code (V/W/X/Y leading letter) is in the
+  packet (flag).
+- **R-PA-054** — modifier 25 / 59 accompanied by "separately
+  identifiable" / "distinct procedural service" supporting
+  language (flag).
+- **R-PA-055** — "bilateral" mention matches modifier 50
+  presence on the CPT line (flag).
+- **R-PA-058** — unlisted-procedure CPT carries a narrative /
+  procedure-description anchor (flag).
+- **R-PA-059** — consent date (when a consent document is
+  present) is on or before the latest service date (flag).
+
+All ten rules are vacuously satisfied when their trigger
+condition is absent, so the wave 52-1h HAPPY_PACKET fixture
+still returns all-pass without modification. No new extractors;
+R-PA-052 reuses `extract.icd10` with a V/W/X/Y filter and
+R-PA-059 reuses `extract.serviceDates` + `extract.dates`.
+
+10 new unit assertions in `test/unit/pa-engine.test.js` (one
+fires-when-it-should per new rule). Total PA unit suite: 78
+assertions. The Playwright happy-path now asserts 45 rules
+render in the findings panel. Engine output and ordering remain
+deterministic; the property test still holds.
+
+Verified: `npm run lint`, `npm run test`, and `npm run build`
+are all green. **Catalog count 255, unchanged.**
+
 ### Added (spec-v48 wave 48-4j — Bishop, ABC MTP, MGAP, GAP)
 
 Four more long-tail derivation blocks spanning obstetric

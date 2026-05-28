@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `3eb99fcb76a45ac6`
-Generated: 2026-05-27T23:59:42.729Z
+Build ID: `48efa5b76860aad4`
+Generated: 2026-05-28T12:57:40.106Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=20.18.1 <21, npm >=10.0.0
@@ -29,7 +29,7 @@ downloads is committed in this repository and is hashed below.
 | `sw.js` | 4062 | `60f524b1b69eb5170c59af42631e11cc05db2a44e8e530977db0327888b0ff6d` |
 | `site.webmanifest` | 709 | `0e0de4da60590a12e8b27a0ae2a2f5ffdb6500b7d2b78f93631ec2f64ed3d5ce` |
 | `robots.txt` | 127 | `38fbf9c1854e72abb20e01e81dd5a31d4ea96f154c12d5db1ec3af05524dd1a1` |
-| `sitemap.xml` | 40445 | `2a00b54194f314531a30b815e663b0ff34362a618d40c3046a836b62db696e7d` |
+| `sitemap.xml` | 40445 | `835f1699302cf1a5c9058003bb052a23a0d69db09aae6ba8e497e15b4772879f` |
 | `_headers` | 1297 | `8a0d2228d73c6b105d5d8fbd173974461cc6b6482ee72f06546a3a27248a9003` |
 | `logo.png` | 63440 | `11afaf1b0d3ca68393d202e4810bf766b5b6d591b4e3ec52f41d3cacaa4616ec` |
 | `favicon.ico` | 7411 | `407fde0ca2788409e87e11f596fa02e6a0b121817fcea7fd995beec1801e287b` |
@@ -62,7 +62,7 @@ downloads is committed in this repository and is hashed below.
 | `lib/pa/engine.js` | 3644 | `3b9ac1a6324a4fe4987123d793e2cc0db4a42f63c055bf7266b22c6c76590507` |
 | `lib/pa/extract.js` | 11430 | `dee69e7e20fbf8c89d963133e40083474fff233341bd3678ec2f385b38ea6913` |
 | `lib/pa/payer.js` | 3737 | `96641775291225fd2dc8f601fbf70445309d6c954553f3d739eccd18a3777f25` |
-| `lib/pa/rules.js` | 27434 | `f9e7f2573eea6e3cc9dfa0d7c8303e2ea6d10e6b1bbd6a5004744e70def507cd` |
+| `lib/pa/rules.js` | 38672 | `26ea5f53f76763439b8fcaa690493fc3c59c4e5e716e189947b87c2a30ed5a79` |
 | `lib/print.js` | 2588 | `74579a71f82b75993dea9f7d9b3c21e67744bd4dbe6f50e20c8eef9aa1be7546` |
 | `lib/prompt.js` | 6872 | `95ee9b9de5adbafd1497f378993e27d29c9f437bfc9ddc304886fd75e80fffd4` |
 | `lib/regulatory.js` | 4040 | `9e1ef6751facc0172c492010ccd35982061f06b000db2e857a98ec2013e7087c` |
