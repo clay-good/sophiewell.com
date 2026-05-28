@@ -1345,6 +1345,46 @@ silently; the audit trail records the disablement.
 
 - 2026-05-27 — v52 proposed. Five waves outlined (52-1 through
   52-5+). Catalog count target at v52-1 close: 255.
+- 2026-05-28 — wave 52-5a (§4.5.5 specialty overlays open: radiology,
+  5 of 25). Opens spec-v52 §4.5.5 with five radiology / advanced-
+  imaging rules: R-PA-RAD-001 (ACR Appropriateness Criteria
+  reference present, info), R-PA-RAD-002 (non-emergent MRI requires
+  a conservative-management trial anchor; emergent / red-flag
+  exception bypasses, flag), R-PA-RAD-003 (contrast study requires
+  contrast-allergy review AND renal-function (eGFR / SCr / CrCl)
+  anchors, flag), R-PA-RAD-004 (radiology procedure requires an
+  attached clinical-note document or clinical-evaluation anchor,
+  flag), R-PA-RAD-005 (pediatric imaging requires an ALARA /
+  dose-reduction anchor, info).
+
+  Specialty rules differ from payer overlays: they do NOT self-gate
+  on `bundle.payer` -- they apply across every payer once the
+  procedure trigger is met. Two new helpers in `lib/pa/rules.js`
+  -- `collectRadiologyCpts(bundle)` (CPT regex `/^7\d{4}$/` for
+  the AMA Radiology category 70010-79999) and `collectMriCpts(bundle)`
+  (compact prefix-match for the common MRI subranges 70551-70559 /
+  71550-71552 / 72141-72158 / 72195-72197 / 73218-73223 / 73718-
+  73723 / 74181-74183) -- supply the structural triggers. When no
+  imaging CPT is in the requested-procedures list each rule
+  vacuously passes, so the HAPPY_PACKET fixture (which requests
+  only 99213) continues to all-pass without modification despite
+  the fixture's imaging-report attachment.
+
+  R-PA-RAD-002's emergent-exception branch is the first specialty
+  rule to declare itself "does not apply" rather than vacuously
+  satisfied -- the evidence string reads "Emergent / red-flag
+  anchor present; rule does not apply" so the audit trail
+  distinguishes payer-bypass from trigger-absent. R-PA-RAD-003 is
+  the third dual-anchor rule (allergy AND renal-function).
+
+  6 new unit assertions in `test/unit/pa-engine.test.js` (one
+  aggregate vacuous-pass guard, plus a fires-when-it-should test
+  for RAD-001 / RAD-002 / RAD-003 / RAD-005). Total PA unit suite:
+  154 assertions. The Playwright happy-path now asserts 115 rules
+  render. View wave banner advanced to 52-5a.
+
+  Wave 52-5b will continue §4.5.5 with the infusion / specialty-
+  drug overlay (R-PA-INF-NNN, 5 rules).
 - 2026-05-28 — wave 52-4b (Medicaid state-agnostic core COMPLETE:
   5 -> 10 of 10; closes §4.5.4). Final 5 §4.5.4 rules: R-PA-MCD-006
   (J-code physician-administered drug requires NDC per Section

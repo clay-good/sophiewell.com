@@ -6,6 +6,53 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v52 wave 52-5a — §4.5.5 specialty overlays open: radiology, 5 of 25)
+
+Opens spec-v52 §4.5.5 with five radiology / advanced-imaging
+specialty rules:
+
+- **R-PA-RAD-001** — ACR Appropriateness Criteria reference
+  present. Info.
+- **R-PA-RAD-002** — non-emergent MRI: conservative-management
+  trial anchor; emergent / red-flag exception bypasses. Flag.
+- **R-PA-RAD-003** — contrast imaging study: contrast-allergy
+  review AND renal-function (eGFR / SCr / CrCl) anchors. Flag.
+- **R-PA-RAD-004** — radiology procedure: attached clinical-note
+  document or clinical-evaluation anchor. Flag.
+- **R-PA-RAD-005** — pediatric imaging: ALARA / dose-reduction
+  / pediatric-protocol anchor. Info.
+
+Specialty rules differ from payer overlays: they do NOT self-gate
+on `bundle.payer` -- they apply across every payer once the
+procedure trigger is met. Two new helpers in `lib/pa/rules.js`
+supply the structural triggers:
+
+- `collectRadiologyCpts(bundle)` -- CPT regex `/^7\d{4}$/`
+  for the AMA Radiology category 70010-79999.
+- `collectMriCpts(bundle)` -- compact prefix-match for the
+  common MRI subranges (70551-70559 brain, 71550-71552 chest,
+  72141-72158 spine, 72195-72197 pelvis, 73218-73223 upper
+  extremity, 73718-73723 lower extremity, 74181-74183 abdomen).
+
+When no imaging CPT is in the requested-procedures list each
+rule vacuously passes, so the HAPPY_PACKET fixture (which
+requests only 99213) continues to all-pass without modification
+despite the fixture's imaging-report attachment.
+
+R-PA-RAD-002's emergent-exception branch is the first specialty
+rule to declare itself "does not apply" rather than vacuously
+satisfied -- the evidence string reads "Emergent / red-flag
+anchor present; rule does not apply" so the audit trail
+distinguishes payer-bypass from trigger-absent. R-PA-RAD-003 is
+the third dual-anchor rule (allergy AND renal-function).
+
+6 new unit assertions in `test/unit/pa-engine.test.js`. Total PA
+unit suite: 154 assertions. The Playwright happy-path now asserts
+115 rules render in the findings panel.
+
+Verified: `npm run lint`, `npm run test`, and `npm run build` are
+all green. **Catalog count 255, unchanged.**
+
 ### Added (spec-v52 wave 52-4b — Medicaid state-agnostic core COMPLETE: 5 -> 10)
 
 The final 5 of the 10 spec-v52 §4.5.4 Medicaid state-agnostic

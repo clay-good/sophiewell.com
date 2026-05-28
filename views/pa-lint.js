@@ -312,13 +312,14 @@ async function processFiles(fileList, resultsList, statusNode, findingsPanel) {
 export const renderers = {
   'pa-lint'(root) {
     root.appendChild(el('p', { class: 'notice', text:
-      'Wave 52-4b: drop PDF, DOCX, or TXT files. Sophie hashes each file, '
+      'Wave 52-5a: drop PDF, DOCX, or TXT files. Sophie hashes each file, '
       + 'extracts text (pdf.js / mammoth.js, both vendored), classifies '
       + 'each document by role + payer, and runs the complete §4.5.1 '
       + 'core ruleset (60 rules), the complete §4.5.2 CMS Medicare FFS '
       + 'overlay (25 rules), the complete §4.5.3 CMS Medicare Advantage '
-      + 'overlay (15 rules), and the complete §4.5.4 Medicaid '
-      + 'state-agnostic core (10 rules) against the aggregated bundle. Overlay rules '
+      + 'overlay (15 rules), the complete §4.5.4 Medicaid state-agnostic '
+      + 'core (10 rules), plus the first 5 of the §4.5.5 radiology '
+      + 'specialty overlay against the aggregated bundle. Overlay rules '
       + 'self-gate on the detected payer; off-bucket packets see them '
       + 'vacuously pass. The Medicaid overlay and the DOCX report ship '
       + 'in subsequent waves. Your packet stays in this tab; no network, '

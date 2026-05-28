@@ -140,8 +140,8 @@ test('runEngine passes every starter rule on a clean multi-doc happy-path packet
   assert.equal(counts.pass, STARTER_RULES.length);
 });
 
-test('STARTER_RULES at wave 52-4b close is 110 rules (60 core + 25 CMS FFS + 15 CMS MA + 10 Medicaid COMPLETE)', () => {
-  assert.equal(STARTER_RULES.length, 110);
+test('STARTER_RULES at wave 52-5a close is 115 rules (110 overlay total + 5 radiology specialty)', () => {
+  assert.equal(STARTER_RULES.length, 115);
 });
 
 test('CMS overlay carries the spec-aligned id R-PA-CMS-004 for proof-of-delivery', () => {
@@ -574,6 +574,45 @@ test('R-PA-MCD-010 fires (info) on a Medicaid outpatient-prescription packet wit
     + 'Outpatient prescription drug requested.\n';
   const findings = runEngine(bundleOf(text));
   const f = findings.find((x) => x.ruleId === 'R-PA-MCD-010');
+  assert.equal(f.status, 'info');
+});
+
+// ---- wave 52-5a sanity checks: radiology specialty overlay opens ----
+
+test('R-PA-RAD-001..005 all vacuously pass on a packet without a radiology CPT', () => {
+  const findings = runEngine(happyBundle());
+  for (const id of ['R-PA-RAD-001', 'R-PA-RAD-002', 'R-PA-RAD-003', 'R-PA-RAD-004', 'R-PA-RAD-005']) {
+    const f = findings.find((x) => x.ruleId === id);
+    assert.equal(f.status, 'pass', id + ' should vacuously pass when no 70010-79999 CPT is in the packet.');
+  }
+});
+
+test('R-PA-RAD-001 fires (info) on an advanced-imaging request without an ACR AC anchor', () => {
+  const text = HAPPY_TEXT + '\nProcedure: 70551 MRI brain without contrast.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-RAD-001');
+  assert.equal(f.status, 'info');
+});
+
+test('R-PA-RAD-002 flags a non-emergent MRI without a conservative-management anchor', () => {
+  const base = HAPPY_TEXT.replace(/Step therapy:.*\n/, '');
+  const text = base + '\nProcedure: 72148 MRI lumbar spine without contrast for non-emergent back pain.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-RAD-002');
+  assert.equal(f.status, 'flag');
+});
+
+test('R-PA-RAD-003 flags a contrast imaging request without contrast-allergy + renal-function anchors', () => {
+  const text = HAPPY_TEXT + '\nProcedure: 70553 MRI brain with contrast. IV contrast required.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-RAD-003');
+  assert.equal(f.status, 'flag');
+});
+
+test('R-PA-RAD-005 fires (info) on a pediatric imaging request without an ALARA anchor', () => {
+  const text = HAPPY_TEXT + '\nProcedure: 70551 MRI brain without contrast.\nPediatric patient, adolescent.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-RAD-005');
   assert.equal(f.status, 'info');
 });
 
