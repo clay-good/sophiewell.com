@@ -140,8 +140,8 @@ test('runEngine passes every starter rule on a clean multi-doc happy-path packet
   assert.equal(counts.pass, STARTER_RULES.length);
 });
 
-test('STARTER_RULES at wave 52-3c close is 100 rules (60 core + 25 CMS FFS + 15 CMS MA COMPLETE)', () => {
-  assert.equal(STARTER_RULES.length, 100);
+test('STARTER_RULES at wave 52-4a close is 105 rules (60 core + 25 CMS FFS + 15 CMS MA + 5 Medicaid)', () => {
+  assert.equal(STARTER_RULES.length, 105);
 });
 
 test('CMS overlay carries the spec-aligned id R-PA-CMS-004 for proof-of-delivery', () => {
@@ -477,6 +477,56 @@ test('R-PA-MA-014 flags hospice-related services on an MA packet without a hospi
     + 'Hospice service / palliative care requested.\n';
   const findings = runEngine(bundleOf(text));
   const f = findings.find((x) => x.ruleId === 'R-PA-MA-014');
+  assert.equal(f.status, 'flag');
+});
+
+// ---- wave 52-4a sanity checks: Medicaid state-agnostic core opens ----
+
+test('R-PA-MCD-001 / -002 / -003 / -004 / -005 all vacuously pass on a non-Medicaid packet', () => {
+  const findings = runEngine(happyBundle());
+  for (const id of ['R-PA-MCD-001', 'R-PA-MCD-002', 'R-PA-MCD-003', 'R-PA-MCD-004', 'R-PA-MCD-005']) {
+    const f = findings.find((x) => x.ruleId === id);
+    assert.equal(f.status, 'pass', id + ' should vacuously pass when payer is not Medicaid.');
+  }
+});
+
+test('R-PA-MCD-001 blocks a Medicaid packet without a Member-ID line', () => {
+  const text = HAPPY_TEXT.replace(/Member ID:.*\n/, '')
+    + '\nState Medicaid recipient on file.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-MCD-001');
+  assert.equal(f.status, 'block');
+});
+
+test('R-PA-MCD-002 flags a pediatric Medicaid packet without an EPSDT anchor', () => {
+  const text = HAPPY_TEXT
+    + '\nState Medicaid pediatric patient.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-MCD-002');
+  assert.equal(f.status, 'flag');
+});
+
+test('R-PA-MCD-003 flags a Medicaid packet without an eligibility-window anchor', () => {
+  const text = HAPPY_TEXT
+    + '\nState Medicaid recipient on file.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-MCD-003');
+  assert.equal(f.status, 'flag');
+});
+
+test('R-PA-MCD-004 flags a Medicaid packet without a state-Medicaid medical-necessity anchor', () => {
+  const text = HAPPY_TEXT
+    + '\nState Medicaid recipient on file.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-MCD-004');
+  assert.equal(f.status, 'flag');
+});
+
+test('R-PA-MCD-005 flags a Medicaid packet without an MCO / FFS routing indicator', () => {
+  const text = HAPPY_TEXT
+    + '\nState Medicaid recipient on file.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-MCD-005');
   assert.equal(f.status, 'flag');
 });
 

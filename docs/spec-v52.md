@@ -1345,6 +1345,41 @@ silently; the audit trail records the disablement.
 
 - 2026-05-27 — v52 proposed. Five waves outlined (52-1 through
   52-5+). Catalog count target at v52-1 close: 255.
+- 2026-05-28 — wave 52-4a (Medicaid state-agnostic core opens:
+  first 5 of 10). Opens spec-v52 §4.5.4 with the cross-state
+  intersection rules: R-PA-MCD-001 (state Medicaid member-ID /
+  CIN / recipient-ID line present, block), R-PA-MCD-002 (pediatric
+  Medicaid patient under 21 requires an EPSDT / well-child /
+  periodic-screening anchor when seeking non-routine services,
+  flag), R-PA-MCD-003 (Medicaid eligibility-window / verification
+  anchor present for the service date, flag), R-PA-MCD-004
+  (state-Medicaid medical-necessity / state-plan reference, flag),
+  R-PA-MCD-005 (Managed Care Organization vs FFS Medicaid routing
+  indicator, flag).
+
+  Each Medicaid rule self-gates on `bundle.payer === 'medicaid'`
+  and, where applicable, on a context anchor (pediatric for
+  EPSDT). The HAPPY_PACKET fixture continues to all-pass without
+  modification.
+
+  R-PA-MCD-001 reuses the wave-52-1f `extract.memberId` extractor
+  so the Medicaid overlay introduces zero new extractors. The
+  rule is distinct from the core R-PA-003 (member-ID presence
+  anywhere) -- MCD-001 ties the existence of a member-ID to the
+  Medicaid-payer-bucket detection, so a Medicaid packet without
+  a recipient ID surfaces as a Medicaid-specific block
+  alongside the core block.
+
+  6 new unit assertions in `test/unit/pa-engine.test.js` (one
+  aggregate guard that all five new rules vacuously pass on a
+  non-Medicaid packet, plus a fires-when-it-should test per new
+  rule). Total PA unit suite: 143 assertions. The Playwright
+  happy-path now asserts 105 rules render. View wave banner
+  advanced to 52-4a.
+
+  Wave 52-4b will close §4.5.4 with the final 5 Medicaid rules
+  (NDC for J-codes, dental policy under Medicaid, transportation
+  benefits, behavioral-health carve-out, drug rebate program).
 - 2026-05-28 — wave 52-3c (CMS Medicare Advantage overlay COMPLETE:
   10 -> 15 of 15; closes §4.5.3). Final five §4.5.3 rules:
   R-PA-MA-011 (organization-determination type indicator -- pre-

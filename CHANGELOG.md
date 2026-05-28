@@ -6,6 +6,43 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v52 wave 52-4a — Medicaid state-agnostic core opens, first 5 of 10)
+
+Opens spec-v52 §4.5.4 with five Medicaid cross-state intersection
+rules:
+
+- **R-PA-MCD-001** — state Medicaid member-ID / CIN / recipient-
+  ID line present. Block.
+- **R-PA-MCD-002** — pediatric Medicaid patient: EPSDT /
+  well-child / periodic-screening anchor when seeking
+  non-routine services. Flag.
+- **R-PA-MCD-003** — eligibility-window / verification anchor
+  for the service date. Flag.
+- **R-PA-MCD-004** — state-Medicaid medical-necessity /
+  state-plan reference. Flag.
+- **R-PA-MCD-005** — Managed Care Organization vs FFS Medicaid
+  routing indicator. Flag.
+
+Each rule self-gates on `bundle.payer === 'medicaid'` and, where
+applicable, on a context anchor (pediatric for EPSDT). The
+HAPPY_PACKET fixture continues to all-pass without modification.
+
+R-PA-MCD-001 reuses the wave-52-1f `extract.memberId` extractor.
+The Medicaid overlay introduces zero new extractors. R-PA-MCD-001
+is distinct from core R-PA-003 (member-ID presence anywhere) --
+MCD-001 ties the existence of a recipient ID to the Medicaid-
+payer-bucket detection, so a Medicaid packet without a recipient
+ID surfaces as a Medicaid-specific block alongside the core block.
+
+6 new unit assertions in `test/unit/pa-engine.test.js` (one
+aggregate vacuous-pass guard plus a fires-when-it-should test
+per new rule). Total PA unit suite: 143 assertions. The
+Playwright happy-path now asserts 105 rules render in the
+findings panel.
+
+Verified: `npm run lint`, `npm run test`, and `npm run build` are
+all green. **Catalog count 255, unchanged.**
+
 ### Added (spec-v52 wave 52-3c — CMS Medicare Advantage overlay COMPLETE: 10 -> 15)
 
 The final 5 of the 15 spec-v52 §4.5.3 CMS Medicare Advantage
