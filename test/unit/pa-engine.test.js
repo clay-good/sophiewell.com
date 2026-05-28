@@ -140,8 +140,8 @@ test('runEngine passes every starter rule on a clean multi-doc happy-path packet
   assert.equal(counts.pass, STARTER_RULES.length);
 });
 
-test('STARTER_RULES at wave 52-2d close is 80 rules (60 core + 20 CMS FFS overlay)', () => {
-  assert.equal(STARTER_RULES.length, 80);
+test('STARTER_RULES at wave 52-2e close is 85 rules (60 core + 25 CMS FFS overlay COMPLETE)', () => {
+  assert.equal(STARTER_RULES.length, 85);
 });
 
 test('CMS overlay carries the spec-aligned id R-PA-CMS-004 for proof-of-delivery', () => {
@@ -289,6 +289,53 @@ test('R-PA-CMS-021 flags a Medicare FFS lymphedema-pump request without dx + fai
     + 'Pneumatic compression device ordered for swelling.\n';
   const findings = runEngine(bundleOf(text));
   const f = findings.find((x) => x.ruleId === 'R-PA-CMS-021');
+  assert.equal(f.status, 'flag');
+});
+
+// ---- wave 52-2e sanity checks ----
+
+test('R-PA-CMS-022 flags a Medicare FFS infusion-pump request without indication / drug anchors', () => {
+  const text = HAPPY_TEXT
+    + '\nMedicare Part B beneficiary on file.\n'
+    + 'External infusion pump ordered.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-CMS-022');
+  assert.equal(f.status, 'flag');
+});
+
+test('R-PA-CMS-023 flags a Medicare FFS ostomy-supply request without an ostomy-type anchor', () => {
+  // Use a fixture without a Quantity line so type anchor is the failure.
+  const text = 'Medicare Part B beneficiary on file.\n'
+    + 'Ostomy supplies ordered: ostomy pouch and wafer.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-CMS-023');
+  assert.equal(f.status, 'flag');
+});
+
+test('R-PA-CMS-024 flags a Medicare FFS urinary-catheter request without a covered diagnosis anchor', () => {
+  const text = HAPPY_TEXT
+    + '\nMedicare Part B beneficiary on file.\n'
+    + 'Foley catheter ordered for home use.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-CMS-024');
+  assert.equal(f.status, 'flag');
+});
+
+test('R-PA-CMS-025 flags a Medicare FFS surgical-dressing request without wound-area / change-frequency anchors', () => {
+  const text = HAPPY_TEXT
+    + '\nMedicare Part B beneficiary on file.\n'
+    + 'Surgical dressing supplies ordered for post-op wound.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-CMS-025');
+  assert.equal(f.status, 'flag');
+});
+
+test('R-PA-CMS-026 flags a Medicare FFS post-cataract-lens request without surgery anchor + CPT', () => {
+  const text = HAPPY_TEXT
+    + '\nMedicare Part B beneficiary on file.\n'
+    + 'Post-cataract eyeglasses ordered for aphakic patient.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-CMS-026');
   assert.equal(f.status, 'flag');
 });
 

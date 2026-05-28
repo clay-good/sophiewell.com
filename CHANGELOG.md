@@ -6,6 +6,45 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v52 wave 52-2e — CMS Medicare FFS overlay COMPLETE: 20 -> 25)
+
+The final 5 of the 25 spec-v52 §4.5.2 CMS Medicare Fee-for-Service
+overlay rules ship, closing the overlay:
+
+- **R-PA-CMS-022** — external infusion pump: covered indication +
+  drug documented. Flag, LCD L33794.
+- **R-PA-CMS-023** — ostomy supplies: ostomy type anchor + Quantity
+  field present. Flag, LCD L33828.
+- **R-PA-CMS-024** — urinary catheters: permanent incontinence /
+  retention diagnosis. Flag, LCD L33803.
+- **R-PA-CMS-025** — surgical dressings: wound surface area +
+  dressing-change frequency. Flag, LCD L33831.
+- **R-PA-CMS-026** — post-cataract refractive lenses: cataract-
+  surgery anchor + cataract CPT (66830-66999) present. Flag,
+  NCD 80.4.
+
+R-PA-CMS-026 is the second overlay rule to consume structural CPT
+codes via a regex filter (cataract-surgery range 66830-66999),
+alongside R-PA-CMS-017's L-code orthotic check from wave 52-2d.
+R-PA-CMS-023 ties into the wave-52-1f `extract.quantity`
+extractor so the LCD L33828 monthly-utilization gate has a
+structural quantity to reference.
+
+Each rule self-gates on the detected payer bucket and again on
+its device-category anchor. The HAPPY_PACKET fixture continues
+to all-pass without modification.
+
+5 new unit assertions in `test/unit/pa-engine.test.js`. Total PA
+unit suite: 121 assertions. The Playwright happy-path now asserts
+85 rules render in the findings panel.
+
+This closes spec-v52 §4.5.2 (the CMS Medicare Fee-for-Service
+overlay). Wave 52-3 picks up with §4.5.3 CMS Medicare Advantage
+(15 rules) and §4.5.4 Medicaid state-agnostic core (10 rules).
+
+Verified: `npm run lint`, `npm run test`, and `npm run build` are
+all green. **Catalog count 255, unchanged.**
+
 ### Added (spec-v52 wave 52-2d — CMS Medicare FFS overlay 15 -> 20 of 25)
 
 Five more spec-v52 §4.5.2 CMS Medicare Fee-for-Service overlay
