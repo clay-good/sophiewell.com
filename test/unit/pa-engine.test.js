@@ -140,8 +140,62 @@ test('runEngine passes every starter rule on a clean multi-doc happy-path packet
   assert.equal(counts.pass, STARTER_RULES.length);
 });
 
-test('STARTER_RULES at wave 52-2a close is 65 rules (60 core + 5 CMS FFS overlay)', () => {
-  assert.equal(STARTER_RULES.length, 65);
+test('STARTER_RULES at wave 52-2b close is 70 rules (60 core + 10 CMS FFS overlay)', () => {
+  assert.equal(STARTER_RULES.length, 70);
+});
+
+test('CMS overlay carries the spec-aligned id R-PA-CMS-004 for proof-of-delivery', () => {
+  const podRule = STARTER_RULES.find((r) => r.id === 'R-PA-CMS-004');
+  assert.ok(podRule, 'R-PA-CMS-004 should exist after wave 52-2b renumber.');
+  assert.match(podRule.description, /proof of delivery/i);
+});
+
+// ---- wave 52-2b sanity checks ----
+
+test('R-PA-CMS-003 blocks on a Medicare FFS DME SWO that is missing required elements', () => {
+  // SWO anchor present but no quantity / NPI / signature / patient name
+  const text = 'Medicare Part B beneficiary on file.\n'
+    + 'Durable medical equipment: standard wheelchair.\n'
+    + 'Standard Written Order on file.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-CMS-003');
+  assert.equal(f.status, 'block');
+});
+
+test('R-PA-CMS-005 flags a Medicare FFS power-mobility request without a functional-status anchor', () => {
+  const text = HAPPY_TEXT
+    + '\nMedicare Part B beneficiary on file.\n'
+    + 'Power wheelchair requested for ambulation impairment.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-CMS-005');
+  assert.equal(f.status, 'flag');
+});
+
+test('R-PA-CMS-007 flags a Medicare FFS PAP-continuation request without adherence data', () => {
+  const text = HAPPY_TEXT
+    + '\nMedicare Part B beneficiary on file.\n'
+    + 'CPAP continuation requested beyond 90-day compliance period.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-CMS-007');
+  assert.equal(f.status, 'flag');
+});
+
+test('R-PA-CMS-008 blocks a Medicare FFS home-oxygen request without an ABG / SpO2 anchor', () => {
+  const text = HAPPY_TEXT
+    + '\nMedicare Part B beneficiary on file.\n'
+    + 'Home oxygen therapy ordered for chronic hypoxemia.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-CMS-008');
+  assert.equal(f.status, 'block');
+});
+
+test('R-PA-CMS-011 flags a Medicare FFS hospital-bed request without a positioning anchor', () => {
+  const text = HAPPY_TEXT
+    + '\nMedicare Part B beneficiary on file.\n'
+    + 'Hospital bed (semi-electric) requested for home use.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-CMS-011');
+  assert.equal(f.status, 'flag');
 });
 
 // ---- wave 52-2a sanity checks: CMS Medicare FFS overlay self-gating ----

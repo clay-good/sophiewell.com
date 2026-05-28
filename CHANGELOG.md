@@ -6,6 +6,48 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v52 wave 52-2b — CMS Medicare FFS overlay 5 -> 10 of 25, plus a spec-alignment renumber)
+
+Five more spec-v52 §4.5.2 CMS Medicare Fee-for-Service overlay
+rules ship, bringing the overlay from 5 to 10 of its planned 25.
+
+- **R-PA-CMS-003** — Standard Written Order required elements
+  present (beneficiary identity, item / HCPCS, order date,
+  quantity, prescriber NPI, dated signature). Block, IOM Pub
+  100-08 ch. 5.
+- **R-PA-CMS-005** — power-mobility functional-status
+  documentation. Flag, LCD L33788.
+- **R-PA-CMS-007** — PAP continuation 90-day adherence /
+  compliance. Flag, LCD L33718.
+- **R-PA-CMS-008** — home-oxygen qualifying ABG or SpO2. Block,
+  NCD 240.2 / LCD L33797.
+- **R-PA-CMS-011** — hospital-bed positioning / medical-necessity.
+  Flag, LCD L33820.
+
+### Changed
+
+- **Spec-alignment renumber.** Wave 52-2a inadvertently shipped
+  the proof-of-delivery rule as R-PA-CMS-003, but spec-v52 §4.5.2
+  reserves that id for the SWO-elements-complete rule. Wave 52-2b
+  corrects the id: R-PA-CMS-003 (POD) is renumbered to
+  R-PA-CMS-004 (POD, the spec-aligned id; logic and citation
+  unchanged). A proper R-PA-CMS-003 (SWO elements) ships above.
+  The engine treats rule ids as opaque sort keys, so the audit
+  trail format remains stable across the rename.
+
+Each new overlay rule self-gates on the detected payer bucket
+(`bundle.payer === 'cms-medicare-ffs'`) and again on a device-
+context anchor (DME / power-mobility / PAP-continuation /
+home-oxygen / hospital-bed). The HAPPY_PACKET fixture continues
+to all-pass without modification.
+
+6 new unit assertions in `test/unit/pa-engine.test.js`. Total PA
+unit suite: 106 assertions. The Playwright happy-path now asserts
+70 rules render in the findings panel.
+
+Verified: `npm run lint`, `npm run test`, and `npm run build` are
+all green. **Catalog count 255, unchanged.**
+
 ### Added (spec-v52 wave 52-2a — CMS Medicare FFS overlay opens, first 5 of 25)
 
 Opens spec-v52 §4.5.2 with five Durable Medical Equipment / Positive

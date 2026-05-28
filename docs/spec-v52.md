@@ -1345,6 +1345,42 @@ silently; the audit trail records the disablement.
 
 - 2026-05-27 — v52 proposed. Five waves outlined (52-1 through
   52-5+). Catalog count target at v52-1 close: 255.
+- 2026-05-28 — wave 52-2b (CMS Medicare FFS overlay: 5 -> 10 of 25,
+  plus a spec-alignment renumber) shipped. Adds five more §4.5.2
+  rules: R-PA-CMS-003 (Standard Written Order required elements
+  present — beneficiary, item, date, quantity, prescriber NPI,
+  dated signature; block, IOM Pub 100-08 ch. 5), R-PA-CMS-005
+  (power-mobility functional-status documentation, flag, LCD L33788),
+  R-PA-CMS-007 (PAP continuation 90-day adherence / compliance,
+  flag, LCD L33718), R-PA-CMS-008 (home-oxygen qualifying ABG or
+  SpO2, block, NCD 240.2 / LCD L33797), R-PA-CMS-011 (hospital-bed
+  positioning / medical-necessity, flag, LCD L33820).
+
+  Wave 52-2a inadvertently shipped the proof-of-delivery rule as
+  R-PA-CMS-003 while spec-v52 §4.5.2 reserves that id for the
+  SWO-elements-complete rule. Wave 52-2b corrects the id:
+  R-PA-CMS-003 (POD) is renumbered to R-PA-CMS-004 (POD, the
+  spec-aligned id; logic and citation kept identical) and a proper
+  R-PA-CMS-003 (SWO elements) ships above. The rename is a pure id
+  / citation-prefix change; the engine treats rule ids as opaque
+  sort keys so the audit trail remains stable across the rename.
+
+  Each new overlay rule self-gates on `bundle.payer ===
+  'cms-medicare-ffs'` and again on a device-context anchor
+  (DME / power-mobility / PAP-continuation / home-oxygen /
+  hospital-bed). The HAPPY_PACKET fixture continues to all-pass
+  without modification.
+
+  6 new unit assertions in `test/unit/pa-engine.test.js` (one
+  fires-when-it-should per new rule plus an explicit guard that
+  R-PA-CMS-004 still exists with the POD description). Total PA
+  unit suite: 106 assertions. The Playwright happy-path now
+  asserts 70 rules render. View wave banner advanced to 52-2b.
+
+  Wave 52-2c will round out the §4.5.2 overlay (the remaining
+  15 rules: nebulizer / NPWT / TENS / lower-limb prosthetics /
+  enteral nutrition, etc.) or open §4.5.3 CMS MA, depending on
+  user priority.
 - 2026-05-28 — wave 52-2a (CMS Medicare FFS overlay: first 5 of 25)
   shipped. Opens spec-v52 §4.5.2 with five Durable Medical Equipment
   / Positive Airway Pressure starter rules that self-gate on the
