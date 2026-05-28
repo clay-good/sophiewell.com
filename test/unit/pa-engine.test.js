@@ -140,8 +140,54 @@ test('runEngine passes every starter rule on a clean multi-doc happy-path packet
   assert.equal(counts.pass, STARTER_RULES.length);
 });
 
-test('STARTER_RULES at wave 52-1j close is 55 rules total', () => {
-  assert.equal(STARTER_RULES.length, 55);
+test('STARTER_RULES at wave 52-1k close is 60 rules total (full §4.5.1 core)', () => {
+  assert.equal(STARTER_RULES.length, 60);
+});
+
+// ---- wave 52-1k sanity checks (R-PA-008, 009, 011, 012, 043) ----
+
+test('R-PA-008 passes (vacuous) when no CPT/HCPCS codes are extracted', () => {
+  const findings = runEngine(bundleOf('Patient: Jane Doe\nNo procedure codes here.\n'));
+  const f = findings.find((x) => x.ruleId === 'R-PA-008');
+  assert.equal(f.status, 'pass');
+});
+
+test('R-PA-009 passes (vacuous) when no HCPCS Level II code is in the packet', () => {
+  const findings = runEngine(happyBundle());
+  const f = findings.find((x) => x.ruleId === 'R-PA-009');
+  assert.equal(f.status, 'pass');
+});
+
+test('R-PA-011 passes (format-valid) on the happy multi-doc packet', () => {
+  const findings = runEngine(happyBundle());
+  const f = findings.find((x) => x.ruleId === 'R-PA-011');
+  assert.equal(f.status, 'pass');
+});
+
+test('R-PA-012 passes (placeholder) when NCCI pairs table is empty', () => {
+  const findings = runEngine(happyBundle());
+  const f = findings.find((x) => x.ruleId === 'R-PA-012');
+  assert.equal(f.status, 'pass');
+});
+
+test('R-PA-043 blocks when a document has a password-protected parse error', () => {
+  const docs = [
+    ...HAPPY_PACKET.documents,
+    { name: 'locked.pdf', sha256: 'sha-pdf', kind: 'PDF', text: '', parseError: 'PDF is password-protected' },
+  ];
+  const findings = runEngine(buildBundle(docs, { totalBytes: 8192 }));
+  const f = findings.find((x) => x.ruleId === 'R-PA-043');
+  assert.equal(f.status, 'block');
+});
+
+test('R-PA-043 blocks when a document text contains an encryption anchor', () => {
+  const docs = [
+    ...HAPPY_PACKET.documents,
+    { name: 'note.txt', sha256: 'sha-x', kind: 'TXT', text: 'This document is encrypted. Cannot proceed.' },
+  ];
+  const findings = runEngine(buildBundle(docs, { totalBytes: 8192 }));
+  const f = findings.find((x) => x.ruleId === 'R-PA-043');
+  assert.equal(f.status, 'block');
 });
 
 // ---- wave 52-1j sanity checks (R-PA-014, 042, 044, 047-051, 056, 057) ----

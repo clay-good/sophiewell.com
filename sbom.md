@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `84c13819ac0c26ef`
-Generated: 2026-05-28T13:19:08.365Z
+Build ID: `192d28435ce4fcee`
+Generated: 2026-05-28T14:41:53.220Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=20.18.1 <21, npm >=10.0.0
@@ -59,10 +59,10 @@ downloads is committed in this repository and is hashed below.
 | `lib/meta.js` | 453400 | `1b3b91e7ee71bb54ad037378c8b16a150e5290c5e88e89323ea0e7e7d929bbae` |
 | `lib/pa/classify.js` | 3432 | `a7958e40890ad63ebf68ce5a0107fe7ab5a5b0c9e877e2669e8f44ecfb7f34ca` |
 | `lib/pa/date.js` | 2482 | `91a44d0383958089ad0d749ba556227b3d8432443f1431c2871b15854111c645` |
-| `lib/pa/engine.js` | 3644 | `3b9ac1a6324a4fe4987123d793e2cc0db4a42f63c055bf7266b22c6c76590507` |
-| `lib/pa/extract.js` | 11430 | `dee69e7e20fbf8c89d963133e40083474fff233341bd3678ec2f385b38ea6913` |
+| `lib/pa/engine.js` | 3906 | `8783ca76c9601070ad4652466bc4622f8be0850e8bc554794bff7da59a19bc3a` |
+| `lib/pa/extract.js` | 12462 | `aae964461e8b77c8fb90bc8c2949a247754dd3feeec555a76c762b019b9d1616` |
 | `lib/pa/payer.js` | 3737 | `96641775291225fd2dc8f601fbf70445309d6c954553f3d739eccd18a3777f25` |
-| `lib/pa/rules.js` | 46742 | `4a1327d6de88d2fc2e23ec9f735e6d76eef9c80c7d2a24a4830e95b391b2e68e` |
+| `lib/pa/rules.js` | 52230 | `39644a0761fb67cf3c36d8e06185e1e34380f48e603b545bd8bad22316602e04` |
 | `lib/print.js` | 2588 | `74579a71f82b75993dea9f7d9b3c21e67744bd4dbe6f50e20c8eef9aa1be7546` |
 | `lib/prompt.js` | 6872 | `95ee9b9de5adbafd1497f378993e27d29c9f437bfc9ddc304886fd75e80fffd4` |
 | `lib/regulatory.js` | 4040 | `9e1ef6751facc0172c492010ccd35982061f06b000db2e857a98ec2013e7087c` |
@@ -85,7 +85,7 @@ downloads is committed in this repository and is hashed below.
 | `views/group-klmno.js` | 7870 | `bf6d3ced1a08fcb627284b649d07b8e5ace6857b29e46992d4e425925c63eaa9` |
 | `views/group-v5.js` | 26940 | `daba643b4b8c800ca5706cc9f7d80d64fb373cbfc1362b77e2fc22d6495c241a` |
 | `views/group-v6.js` | 5707 | `425918decb48cd9efac9fc5590ac8970a54c03c3b0df056fb99c9a22ff8dd1b2` |
-| `views/pa-lint.js` | 16240 | `2f896c99de53a84203dbb2e5ee725c5d4f2b06539b13d65f2ee70c238dee0cae` |
+| `views/pa-lint.js` | 16637 | `3d49ff908a41dc0d036e61be84a1673eb692efe6339905920207a04ab0b72d5c` |
 
 ## Verifying this SBOM
 

@@ -1345,6 +1345,41 @@ silently; the audit trail records the disablement.
 
 - 2026-05-27 — v52 proposed. Five waves outlined (52-1 through
   52-5+). Catalog count target at v52-1 close: 255.
+- 2026-05-28 — wave 52-1k (core ruleset complete: 55 -> 60, full §4.5.1)
+  shipped. The final 5 of the 60 §4.5.1 core rules land in
+  `lib/pa/rules.js`: R-PA-008 / R-PA-009 / R-PA-011 (each CPT / HCPCS /
+  ICD-10 code is well-formed and not on the bundled deleted-codes list
+  — block severity; v52-1k ships empty `DELETED_CPT_HCPCS_BUNDLED` and
+  `DELETED_ICD10_BUNDLED` sets in `lib/pa/extract.js` so the rules
+  behave as format-strict pass-or-fire and become substantive as the
+  maintainer refresh script populates the tables per §5.3), R-PA-012
+  (no bundled NCCI procedure-to-procedure edit-pair conflict — flag;
+  `NCCI_PAIRS_BUNDLED` empty at v52-1k per §5.3, expands to ~5,000
+  high-volume pairs in a later wave), and R-PA-043 (no document is
+  password-protected or encrypted — block; consumes a new optional
+  `parseError` string on bundle documents).
+
+  `lib/pa/engine.js#buildBundle` is extended to thread an optional
+  `parseError` field through from the view's ingest catch block to
+  the engine. `views/pa-lint.js` now pushes a stub document with
+  `parseError` set when pdf.js or mammoth throws (encrypted PDF,
+  password-protected DOCX, corrupted bytes) — previously the failed
+  file was rendered in the audit trail but dropped from the engine
+  bundle, so R-PA-043 / R-PA-044 could not fire. The audit-trail
+  render is unchanged; only the engine's view of the packet is
+  extended.
+
+  6 new unit assertions in `test/unit/pa-engine.test.js` (one
+  vacuous-pass guard per new placeholder rule plus two distinct
+  R-PA-043 trips — parseError-driven and text-anchor-driven). Total
+  PA unit suite: 94 assertions. The Playwright happy-path now
+  asserts 60 rules render in the findings panel.
+
+  This closes spec-v52 §4.5.1 (the core, payer-agnostic ruleset).
+  Wave 52-2 picks up with the §4.5.2 CMS Medicare FFS overlay
+  (25 rules), the §4.5.3 CMS Medicare Advantage overlay (15 rules),
+  and the §4.5.4 Medicaid state-agnostic core (10 rules), plus
+  payer detection for Medicare / MA / Medicaid letterheads.
 - 2026-05-28 — wave 52-1j (core ruleset backfill 45 -> 55) shipped.
   Adds 10 more of the 60 §4.5.1 core rules: R-PA-014 (CPT modifier
   format check), R-PA-042 (each PDF has non-zero extractable text;

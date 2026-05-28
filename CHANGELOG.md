@@ -6,6 +6,49 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v52 wave 52-1k — PA core ruleset COMPLETE: 55 -> 60)
+
+The final 5 of the 60 spec-v52 §4.5.1 core rules ship, closing the
+payer-agnostic core ruleset for the deterministic PA-packet linter.
+
+- **R-PA-008** — each extracted CPT code (5 digits) is well-formed
+  and not on the bundled deleted-codes list (block).
+- **R-PA-009** — each extracted HCPCS Level II code (letter + 4
+  digits) is well-formed and not on the bundled deleted-codes list
+  (block).
+- **R-PA-011** — each extracted ICD-10-CM code is well-formed and
+  not on the bundled deleted-codes list (block).
+- **R-PA-012** — no bundled NCCI procedure-to-procedure (PTP)
+  edit-pair conflict among the extracted CPT codes (flag).
+- **R-PA-043** — no document in the packet is password-protected
+  or encrypted (block).
+
+Three new bundled placeholders in `lib/pa/extract.js` —
+`DELETED_CPT_HCPCS_BUNDLED`, `DELETED_ICD10_BUNDLED`, and
+`NCCI_PAIRS_BUNDLED` — ship empty at v52-1k per spec-v52 §5.3.
+The maintainer refresh script populates them in subsequent waves
+without an engine change; the rules are wired through and behave
+as format-strict pass-or-fire today.
+
+R-PA-043 required a small plumbing change: `buildBundle` now
+threads an optional `parseError` string through from the view's
+ingest step, and `views/pa-lint.js` pushes a stub document with
+`parseError` set when pdf.js / mammoth throws (encrypted PDF,
+password-protected DOCX, corrupted bytes). Previously the failed
+file was rendered in the audit trail but silently dropped from
+the engine bundle. The audit-trail UI is unchanged; only the
+engine's view of the packet is extended.
+
+6 new unit assertions in `test/unit/pa-engine.test.js`. Total
+PA unit suite: 94 assertions. The Playwright happy-path now
+asserts 60 rules render in the findings panel.
+
+This closes the payer-agnostic core. Wave 52-2 picks up with
+CMS Medicare FFS / MA / Medicaid overlays + payer detection.
+
+Verified: `npm run lint`, `npm run test`, and `npm run build` are
+all green. **Catalog count 255, unchanged.**
+
 ### Added (spec-v52 wave 52-1j — PA core ruleset backfill 45 -> 55)
 
 Ten more of the 60 spec-v52 §4.5.1 core rules ship in

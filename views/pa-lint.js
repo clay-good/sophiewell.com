@@ -265,11 +265,16 @@ async function processFiles(fileList, resultsList, statusNode, findingsPanel) {
       // file entirely. Common causes: encrypted PDF, malformed file,
       // or password-protected DOCX. One bad file should not lose the
       // audit trail for the rest of the packet.
+      const message = err && err.message ? err.message : String(err);
       const li = renderFinding(file, { hash });
       li.appendChild(el('p', { class: 'pa-finding-err',
-        text: parseLabel + ' text extraction failed: '
-          + (err && err.message ? err.message : String(err)) }));
+        text: parseLabel + ' text extraction failed: ' + message }));
       resultsList.appendChild(li);
+      // spec-v52 wave 52-1k: push a stub document into the engine
+      // bundle so R-PA-043 (password / encrypted) and R-PA-044 (parse
+      // error / zero content) can fire deterministically on the
+      // packet rather than silently dropping the failed file.
+      documents.push({ name: file.name, sha256: hash, kind: parseLabel || '', text: '', parseError: message });
       continue;
     }
     resultsList.appendChild(renderFinding(file, { hash, extract }));
@@ -307,11 +312,11 @@ async function processFiles(fileList, resultsList, statusNode, findingsPanel) {
 export const renderers = {
   'pa-lint'(root) {
     root.appendChild(el('p', { class: 'notice', text:
-      'Wave 52-1h: drop PDF, DOCX, or TXT files. Sophie hashes each file, '
+      'Wave 52-1k: drop PDF, DOCX, or TXT files. Sophie hashes each file, '
       + 'extracts text (pdf.js / mammoth.js, both vendored), classifies '
-      + 'each document by role + payer, and runs the spec-v52 §4.5.1 '
-      + 'core-rule starter set (35 rules of the planned 60) against the '
-      + 'aggregated bundle. The DOCX report and payer overlays ship in '
+      + 'each document by role + payer, and runs the complete spec-v52 '
+      + '§4.5.1 core ruleset (60 rules) against the aggregated bundle. '
+      + 'CMS / MA / Medicaid payer overlays and the DOCX report ship in '
       + 'subsequent waves. Your packet stays in this tab; no network, '
       + 'no storage, no AI.' }));
 
