@@ -140,8 +140,8 @@ test('runEngine passes every starter rule on a clean multi-doc happy-path packet
   assert.equal(counts.pass, STARTER_RULES.length);
 });
 
-test('STARTER_RULES at wave 52-3a close is 90 rules (60 core + 25 CMS FFS + 5 CMS MA)', () => {
-  assert.equal(STARTER_RULES.length, 90);
+test('STARTER_RULES at wave 52-3b close is 95 rules (60 core + 25 CMS FFS + 10 CMS MA)', () => {
+  assert.equal(STARTER_RULES.length, 95);
 });
 
 test('CMS overlay carries the spec-aligned id R-PA-CMS-004 for proof-of-delivery', () => {
@@ -391,6 +391,56 @@ test('R-PA-MA-005 fires (info) on an MA packet without a service-area anchor', (
   const findings = runEngine(bundleOf(text));
   const f = findings.find((x) => x.ruleId === 'R-PA-MA-005');
   assert.equal(f.status, 'info');
+});
+
+// ---- wave 52-3b sanity checks ----
+
+test('R-PA-MA-006 flags an MA drug request without a Part B vs Part D coverage-path anchor', () => {
+  const text = HAPPY_TEXT
+    + '\nMedicare Advantage plan member.\n'
+    + 'Drug: specialty infusion drug requested.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-MA-006');
+  assert.equal(f.status, 'flag');
+});
+
+test('R-PA-MA-007 flags a D-SNP packet without a state-Medicaid plan / member-ID anchor', () => {
+  const text = HAPPY_TEXT
+    + '\nMedicare Advantage D-SNP dual-eligible member.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-MA-007');
+  assert.equal(f.status, 'flag');
+});
+
+test('R-PA-MA-008 fires (info) on an MA dental request without an Evidence-of-Coverage anchor', () => {
+  const text = HAPPY_TEXT
+    + '\nMedicare Advantage plan member.\n'
+    + 'Dental procedure: dental crown requested.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-MA-008');
+  assert.equal(f.status, 'info');
+});
+
+test('R-PA-MA-009 flags an MA Part B drug under step therapy without prior-failure documentation', () => {
+  // Strip HAPPY_TEXT's "Step therapy: trial of lisinopril..." line so the
+  // compliance anchor isn't pre-satisfied, then add the MA Part B + step-
+  // therapy trigger without any trial-of / failed-first-line language.
+  const base = HAPPY_TEXT.replace(/Step therapy:.*\n/, '');
+  const text = base
+    + '\nMedicare Advantage plan member.\n'
+    + 'Part B drug requested. Plan applies step therapy for this biologic.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-MA-009');
+  assert.equal(f.status, 'flag');
+});
+
+test('R-PA-MA-010 flags an MA inpatient-admission request without a two-midnight / short-stay anchor', () => {
+  const text = HAPPY_TEXT
+    + '\nMedicare Advantage plan member.\n'
+    + 'Inpatient admission requested for acute care.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-MA-010');
+  assert.equal(f.status, 'flag');
 });
 
 // ---- wave 52-2a sanity checks: CMS Medicare FFS overlay self-gating ----

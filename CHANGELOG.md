@@ -6,6 +6,36 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v52 wave 52-3b — CMS Medicare Advantage overlay 5 -> 10 of 15)
+
+Five more spec-v52 §4.5.3 MA overlay rules covering drug-coverage
+path, D-SNP Medicaid coordination, supplemental benefits, Part B
+step therapy, and inpatient admissions:
+
+- **R-PA-MA-006** — MA drug request: Part B vs Part D coverage-
+  path indicator. Flag.
+- **R-PA-MA-007** — D-SNP packets: state-Medicaid plan / member-
+  ID info documented. Flag.
+- **R-PA-MA-008** — supplemental benefit (dental / vision /
+  hearing) under Evidence of Coverage. Info.
+- **R-PA-MA-009** — Part B drug under step therapy requires
+  prior-trial / failure documentation per 2019 CMS final rule.
+  Flag.
+- **R-PA-MA-010** — inpatient admission: two-midnight
+  expectation or short-stay-criteria documentation per 2024
+  CMS extension. Flag.
+
+Each rule self-gates on the detected payer bucket and again on
+a context anchor (drug-request / D-SNP / dental-vision-hearing /
+Part B + step therapy / inpatient admission). No new extractors.
+
+5 new unit assertions in `test/unit/pa-engine.test.js`. Total PA
+unit suite: 132 assertions. The Playwright happy-path now asserts
+95 rules render in the findings panel.
+
+Verified: `npm run lint`, `npm run test`, and `npm run build` are
+all green. **Catalog count 255, unchanged.**
+
 ### Added (spec-v52 wave 52-3a — CMS Medicare Advantage overlay opens, first 5 of 15)
 
 Opens spec-v52 §4.5.3 with five Medicare Advantage starter rules

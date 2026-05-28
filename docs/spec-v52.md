@@ -1345,6 +1345,40 @@ silently; the audit trail records the disablement.
 
 - 2026-05-27 — v52 proposed. Five waves outlined (52-1 through
   52-5+). Catalog count target at v52-1 close: 255.
+- 2026-05-28 — wave 52-3b (CMS Medicare Advantage overlay: 5 -> 10
+  of 15). Adds five more §4.5.3 rules covering drug-coverage path,
+  D-SNP coordination, supplemental benefits, Part B step therapy,
+  and inpatient two-midnight: R-PA-MA-006 (MA drug request must
+  indicate Part B vs Part D coverage path, flag), R-PA-MA-007
+  (D-SNP packets must carry state-Medicaid plan / member-ID info,
+  flag), R-PA-MA-008 (supplemental benefit -- dental / vision /
+  hearing -- under Evidence of Coverage, info), R-PA-MA-009
+  (Part B drug under step therapy requires prior-trial / failure
+  documentation per 2019 CMS final rule, flag), R-PA-MA-010
+  (inpatient admission requires two-midnight expectation or short-
+  stay criteria per 2024 CMS extension to MA plans, flag).
+
+  Each MA overlay rule self-gates on `bundle.payer ===
+  'cms-medicare-advantage'` and again on a context anchor
+  (drug-request / D-SNP / dental-vision-hearing / Part B + step
+  therapy / inpatient admission). The HAPPY_PACKET fixture
+  continues to all-pass without modification; the test for
+  R-PA-MA-009 explicitly strips HAPPY_TEXT's pre-existing
+  "Step therapy: trial of lisinopril..." line so the compliance
+  anchor isn't pre-satisfied.
+
+  No new extractors. R-PA-MA-009 reuses the same step-therapy /
+  trial-of anchor set the R-PA-029 / R-PA-030 core rules use; the
+  MA Part B distinction is the only piece that's MA-specific.
+
+  5 new unit assertions in `test/unit/pa-engine.test.js`. Total PA
+  unit suite: 132 assertions. The Playwright happy-path now asserts
+  95 rules render. View wave banner advanced to 52-3b.
+
+  Wave 52-3c will close §4.5.3 with the final 5 MA rules
+  (organization determination / expedited review / continuity-of-care
+  in transition / hospice-revocation indicator / SNP eligibility),
+  then open §4.5.4 Medicaid state-agnostic core.
 - 2026-05-28 — wave 52-3a (CMS Medicare Advantage overlay opens:
   first 5 of 15). Opens spec-v52 §4.5.3 with five rules covering
   the additional documentation MA plans request beyond FFS:
