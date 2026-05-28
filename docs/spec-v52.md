@@ -1345,6 +1345,34 @@ silently; the audit trail records the disablement.
 
 - 2026-05-27 — v52 proposed. Five waves outlined (52-1 through
   52-5+). Catalog count target at v52-1 close: 255.
+- 2026-05-28 — wave 52-1j (core ruleset backfill 45 -> 55) shipped.
+  Adds 10 more of the 60 §4.5.1 core rules: R-PA-014 (CPT modifier
+  format check), R-PA-042 (each PDF has non-zero extractable text;
+  scans flagged), R-PA-044 (every document opened with non-zero
+  content — catches password-protected, corrupted, or empty files at
+  block severity), R-PA-047 / R-PA-048 / R-PA-049 (patient address /
+  subscriber relationship / COB — info-level, payer-overlay-gated;
+  vacuously satisfied until v52-2+), R-PA-050 (diagnosis-procedure
+  linkage shown — at least one document carries both an ICD-10 code
+  and a CPT/HCPCS code), R-PA-051 (CPT short-descriptor match —
+  info-level placeholder per spec-v52 §5.3 since AMA short
+  descriptors are not shipped yet), R-PA-056 (anesthesia time
+  documented when an anesthesia CPT in 00100-01999 is present),
+  R-PA-057 (assistant-surgeon modifier accompanied by a second
+  Luhn-valid NPI).
+
+  All ten rules continue the wave 52-1i posture: vacuously satisfied
+  when the trigger anchor is absent, so the HAPPY_PACKET fixture
+  still returns all-pass without modification. R-PA-042 / R-PA-044
+  consume `extract.textLength` (already populated by the wave 52-1e
+  extractor) so no new extractors are required.
+
+  10 new unit assertions in `test/unit/pa-engine.test.js` (one
+  fires-when-it-should per new rule plus one extra vacuous-pass
+  guard for R-PA-014). Total PA unit suite: 88 assertions. The
+  Playwright happy-path now asserts 55 rules render in the findings
+  panel. Engine output and ordering remain deterministic; the
+  property test still holds.
 - 2026-05-28 — wave 52-1i (core ruleset backfill 35 -> 45) shipped.
   Adds 10 more of the 60 §4.5.1 core rules: R-PA-030 (prior-treatment
   list when step therapy applies), R-PA-035 (LFTs when a hepatically-

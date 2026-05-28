@@ -6,6 +6,52 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v52 wave 52-1j — PA core ruleset backfill 45 -> 55)
+
+Ten more of the 60 spec-v52 §4.5.1 core rules ship in
+`lib/pa/rules.js`, bringing the deterministic PA-packet linter's
+core ruleset from 45 to 55 rules.
+
+- **R-PA-014** — each CPT modifier suffix is a well-formed
+  2-character code (flag). Format-only; payer-specific
+  permissibility lands with payer overlays.
+- **R-PA-042** — each PDF document in the packet has non-zero
+  extractable text (flag). Scanned PDFs without an embedded text
+  layer trip this rule.
+- **R-PA-044** — every document opened cleanly with non-zero
+  extractable content (block). Catches password-protected,
+  corrupted, or empty files at intake.
+- **R-PA-047** / **R-PA-048** / **R-PA-049** — patient address /
+  subscriber relationship / other-insurance (COB) presence
+  (info, payer-overlay-gated). Vacuously satisfied at v52-1j;
+  flip to "required" per plan when payer overlays ship in v52-2+.
+- **R-PA-050** — diagnosis-procedure linkage shown (flag). At
+  least one document in the packet carries both an ICD-10 code
+  and a CPT/HCPCS code, so the dx ↔ procedure linkage is
+  establishable.
+- **R-PA-051** — procedure description matches the CPT short
+  descriptor (info). Placeholder until a license-clean CPT
+  descriptor source ships per spec-v52 §5.3.
+- **R-PA-056** — anesthesia time documented when an anesthesia
+  CPT (00100-01999) or anesthesia anchor is present (flag).
+- **R-PA-057** — assistant-surgeon modifier (80 / 81 / 82 / AS)
+  accompanied by a second Luhn-valid NPI in the packet (flag).
+
+All ten rules are vacuously satisfied when their trigger condition
+is absent, so the wave 52-1h HAPPY_PACKET fixture still returns
+all-pass without modification. R-PA-042 / R-PA-044 consume
+`extract.textLength` already populated by the wave 52-1e extractor,
+so no new extractors were required.
+
+10 new unit assertions in `test/unit/pa-engine.test.js` (one
+fires-when-it-should per new rule plus a vacuous-pass guard for
+R-PA-014 and explicit placeholder guards for R-PA-047 / R-PA-051).
+Total PA unit suite: 88 assertions. The Playwright happy-path now
+asserts 55 rules render in the findings panel.
+
+Verified: `npm run lint`, `npm run test`, and `npm run build` are
+all green. **Catalog count 255, unchanged.**
+
 ### Added (spec-v52 wave 52-1i — PA core ruleset backfill 35 -> 45)
 
 Ten more of the 60 spec-v52 §4.5.1 core rules land in

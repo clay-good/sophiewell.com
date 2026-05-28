@@ -140,8 +140,85 @@ test('runEngine passes every starter rule on a clean multi-doc happy-path packet
   assert.equal(counts.pass, STARTER_RULES.length);
 });
 
-test('STARTER_RULES at wave 52-1i close is 45 rules total', () => {
-  assert.equal(STARTER_RULES.length, 45);
+test('STARTER_RULES at wave 52-1j close is 55 rules total', () => {
+  assert.equal(STARTER_RULES.length, 55);
+});
+
+// ---- wave 52-1j sanity checks (R-PA-014, 042, 044, 047-051, 056, 057) ----
+
+test('R-PA-014 flags a malformed CPT modifier suffix', () => {
+  const docs = HAPPY_PACKET.documents.map((d) =>
+    d.name === 'pa-form.txt' ? { ...d, text: d.text + '\nProcedure: 99213-Q office visit.' } : d);
+  const findings = runEngine(buildBundle(docs, { totalBytes: 8192 }));
+  const f = findings.find((x) => x.ruleId === 'R-PA-014');
+  assert.equal(f.status, 'flag');
+});
+
+test('R-PA-014 passes (vacuous) when no CPT modifier suffix is present', () => {
+  const findings = runEngine(happyBundle());
+  const f = findings.find((x) => x.ruleId === 'R-PA-014');
+  assert.equal(f.status, 'pass');
+});
+
+test('R-PA-042 flags a PDF document with zero extractable text', () => {
+  const docs = [
+    { name: 'scan.pdf', sha256: 'sha-pdf', kind: 'PDF', text: '' },
+    ...HAPPY_PACKET.documents,
+  ];
+  const findings = runEngine(buildBundle(docs, { totalBytes: 8192 }));
+  const f = findings.find((x) => x.ruleId === 'R-PA-042');
+  assert.equal(f.status, 'flag');
+});
+
+test('R-PA-044 blocks when any document opened with zero extractable content', () => {
+  const docs = [
+    ...HAPPY_PACKET.documents,
+    { name: 'empty.txt', sha256: 'sha-empty', kind: 'TXT', text: '' },
+  ];
+  const findings = runEngine(buildBundle(docs, { totalBytes: 8192 }));
+  const f = findings.find((x) => x.ruleId === 'R-PA-044');
+  assert.equal(f.status, 'block');
+});
+
+test('R-PA-047 passes (vacuous info) at v52-1j when no payer overlay is loaded', () => {
+  const findings = runEngine(happyBundle());
+  const f = findings.find((x) => x.ruleId === 'R-PA-047');
+  assert.equal(f.status, 'pass');
+});
+
+test('R-PA-050 flags when no document carries both an ICD-10 and a CPT/HCPCS code', () => {
+  const docs = [
+    { name: 'codes.txt', sha256: 's1', kind: 'TXT', text: 'Procedure 99213 office visit.\nPatient: Jane Q Doe\nDOB: 1985-03-12\nMember ID: W123456789\nDate of service: 2026-04-12\nPlace of service: 11\nQuantity: 1\nOrdering provider NPI: 1234567893\nServicing facility NPI: 1306849393\nTIN: 123456789\nChief complaint: hypertension follow-up\nMedical necessity: required.\nStep therapy: trial of lisinopril.\nActive medications: lisinopril daily.\nAllergies: NKDA.\nDuration: 12 months.\nFrequency: daily\nSignature: Jane Doe MD, 2026-04-12\n' },
+    { name: 'dx.txt', sha256: 's2', kind: 'TXT', text: 'Dx: I10 essential hypertension.\n' },
+  ];
+  const findings = runEngine(buildBundle(docs, { totalBytes: 4096 }));
+  const f = findings.find((x) => x.ruleId === 'R-PA-050');
+  assert.equal(f.status, 'flag');
+});
+
+test('R-PA-051 passes (vacuous info) at v52-1j when the CPT descriptor table is not loaded', () => {
+  const findings = runEngine(happyBundle());
+  const f = findings.find((x) => x.ruleId === 'R-PA-051');
+  assert.equal(f.status, 'pass');
+});
+
+test('R-PA-056 flags when an anesthesia CPT (00100-01999) is present without an anesthesia-time anchor', () => {
+  const docs = HAPPY_PACKET.documents.map((d) =>
+    d.name === 'pa-form.txt' ? { ...d, text: d.text + '\nAdditional CPT: 01967 neuraxial labor analgesia' } : d);
+  const findings = runEngine(buildBundle(docs, { totalBytes: 8192 }));
+  const f = findings.find((x) => x.ruleId === 'R-PA-056');
+  assert.equal(f.status, 'flag');
+});
+
+test('R-PA-057 flags when an assistant-surgeon modifier is referenced but fewer than 2 NPIs are present', () => {
+  // Strip the servicing NPI so only one NPI remains; add modifier 80.
+  const docs = HAPPY_PACKET.documents.map((d) =>
+    d.name === 'pa-form.txt'
+      ? { ...d, text: d.text.replace('Servicing facility NPI: 1306849393', '') + '\nUsing modifier 80 for assistant surgeon.' }
+      : d);
+  const findings = runEngine(buildBundle(docs, { totalBytes: 8192 }));
+  const f = findings.find((x) => x.ruleId === 'R-PA-057');
+  assert.equal(f.status, 'flag');
 });
 
 // ---- wave 52-1i sanity checks (R-PA-030, 035, 038-040, 052, 054, 055, 058, 059) ----
