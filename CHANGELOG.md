@@ -6,6 +6,40 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v52 wave 52-2a — CMS Medicare FFS overlay opens, first 5 of 25)
+
+Opens spec-v52 §4.5.2 with five Durable Medical Equipment / Positive
+Airway Pressure starter rules for Medicare Fee-for-Service:
+
+- **R-PA-CMS-001** — DME face-to-face encounter documented (block,
+  NCD-280.x).
+- **R-PA-CMS-002** — Standard / Detailed Written Order present and
+  signature-dated (block, CMS IOM Pub 100-08 ch. 5).
+- **R-PA-CMS-003** — proof of delivery (flag, IOM Pub 100-08 ch. 4
+  §4.26).
+- **R-PA-CMS-006** — PAP-device sleep-study results documented
+  (flag, LCD L33718).
+- **R-PA-CMS-009** — DME supplier PTAN documented (flag).
+
+Each overlay rule self-gates on the detected payer bucket from
+`lib/pa/payer.js`: `check()` short-circuits with a vacuous pass when
+`bundle.payer !== 'cms-medicare-ffs'`, and again when the packet
+lacks the rule's context anchor (DME, PAP, etc.). The HAPPY_PACKET
+fixture therefore sees them all pass without modification.
+
+The payer detector (wave 52-1g) becomes load-bearing for the engine,
+not just informational. No new extractors and no changes to
+`buildBundle`; overlay rules arrive as five additional entries in
+`STARTER_RULES` so the engine's rule-set stays monolithic and the
+audit trail records each rule's evaluation decision explicitly.
+
+6 new unit assertions in `test/unit/pa-engine.test.js`. Total PA
+unit suite: 100 assertions. The Playwright happy-path now asserts
+65 rules render in the findings panel.
+
+Verified: `npm run lint`, `npm run test`, and `npm run build` are
+all green. **Catalog count 255, unchanged.**
+
 ### Added (spec-v52 wave 52-1k — PA core ruleset COMPLETE: 55 -> 60)
 
 The final 5 of the 60 spec-v52 §4.5.1 core rules ship, closing the

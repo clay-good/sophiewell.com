@@ -1345,6 +1345,38 @@ silently; the audit trail records the disablement.
 
 - 2026-05-27 — v52 proposed. Five waves outlined (52-1 through
   52-5+). Catalog count target at v52-1 close: 255.
+- 2026-05-28 — wave 52-2a (CMS Medicare FFS overlay: first 5 of 25)
+  shipped. Opens spec-v52 §4.5.2 with five Durable Medical Equipment
+  / Positive Airway Pressure starter rules that self-gate on the
+  detected payer bucket from `lib/pa/payer.js`: R-PA-CMS-001 (DME
+  face-to-face encounter, block, NCD-280.x), R-PA-CMS-002 (Standard
+  / Detailed Written Order present and signature-dated, block, CMS
+  IOM Pub 100-08 ch. 5), R-PA-CMS-003 (proof of delivery, flag, IOM
+  Pub 100-08 ch. 4 §4.26), R-PA-CMS-006 (PAP-device sleep-study
+  results, flag, LCD L33718), R-PA-CMS-009 (DME supplier PTAN,
+  flag).
+
+  Each overlay rule's `check()` short-circuits with a vacuous pass
+  when `bundle.payer !== 'cms-medicare-ffs'`, and again when the
+  packet lacks the rule's context anchor (DME, PAP, etc.). The
+  HAPPY_PACKET fixture therefore sees them all pass without
+  modification. The wave-52-1g payer detector becomes load-bearing
+  for the engine, not just informational. No new extractors and no
+  changes to `buildBundle`; the overlay arrives as five additional
+  entries in `STARTER_RULES` so the engine's rule-set stays
+  monolithic and the audit trail records each rule's evaluation
+  decision explicitly.
+
+  6 new unit assertions: one vacuous-pass guard on a non-Medicare
+  packet, one vacuous-pass guard on a Medicare-FFS packet without
+  DME context, and a fires-when-it-should test per new rule.
+  Total PA unit suite: 100 assertions. The Playwright happy-path
+  now asserts 65 rules render. The view's wave-banner now reflects
+  the §4.5.2 overlay opening.
+
+  Wave 52-2b picks up with five more CMS FFS rules (mobility-device
+  functional status, oxygen-therapy criteria, hospital-bed medical
+  necessity, etc.) and begins the §4.5.3 CMS MA overlay.
 - 2026-05-28 — wave 52-1k (core ruleset complete: 55 -> 60, full §4.5.1)
   shipped. The final 5 of the 60 §4.5.1 core rules land in
   `lib/pa/rules.js`: R-PA-008 / R-PA-009 / R-PA-011 (each CPT / HCPCS /

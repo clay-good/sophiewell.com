@@ -140,8 +140,60 @@ test('runEngine passes every starter rule on a clean multi-doc happy-path packet
   assert.equal(counts.pass, STARTER_RULES.length);
 });
 
-test('STARTER_RULES at wave 52-1k close is 60 rules total (full §4.5.1 core)', () => {
-  assert.equal(STARTER_RULES.length, 60);
+test('STARTER_RULES at wave 52-2a close is 65 rules (60 core + 5 CMS FFS overlay)', () => {
+  assert.equal(STARTER_RULES.length, 65);
+});
+
+// ---- wave 52-2a sanity checks: CMS Medicare FFS overlay self-gating ----
+
+test('R-PA-CMS-001 passes (vacuous) when the detected payer is not Medicare FFS', () => {
+  const findings = runEngine(happyBundle());
+  const f = findings.find((x) => x.ruleId === 'R-PA-CMS-001');
+  assert.equal(f.status, 'pass');
+});
+
+test('R-PA-CMS-001 passes (vacuous) on a Medicare FFS packet without DME context', () => {
+  const text = HAPPY_TEXT + '\nMedicare Part B beneficiary on file.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-CMS-001');
+  assert.equal(f.status, 'pass');
+});
+
+test('R-PA-CMS-001 blocks on a Medicare FFS DME packet without a face-to-face anchor', () => {
+  const text = HAPPY_TEXT
+    + '\nMedicare Part B beneficiary on file.\n'
+    + 'Durable medical equipment: standard wheelchair.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-CMS-001');
+  assert.equal(f.status, 'block');
+});
+
+test('R-PA-CMS-002 blocks on a Medicare FFS DME packet without an SWO/DWO anchor', () => {
+  const text = HAPPY_TEXT
+    + '\nMedicare Part B beneficiary on file.\n'
+    + 'Durable medical equipment: standard wheelchair.\n'
+    + 'Face-to-face encounter completed 2026-04-01.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-CMS-002');
+  assert.equal(f.status, 'block');
+});
+
+test('R-PA-CMS-006 flags a Medicare FFS PAP request without a sleep-study anchor', () => {
+  const text = HAPPY_TEXT
+    + '\nMedicare Part B beneficiary on file.\n'
+    + 'Order: CPAP device.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-CMS-006');
+  assert.equal(f.status, 'flag');
+});
+
+test('R-PA-CMS-009 flags a Medicare FFS DME packet without a supplier PTAN anchor', () => {
+  const text = HAPPY_TEXT
+    + '\nMedicare Part B beneficiary on file.\n'
+    + 'Durable medical equipment: standard wheelchair.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-CMS-009');
+  assert.equal(f.status, 'flag');
 });
 
 // ---- wave 52-1k sanity checks (R-PA-008, 009, 011, 012, 043) ----
