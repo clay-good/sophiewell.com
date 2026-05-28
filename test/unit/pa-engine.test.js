@@ -140,8 +140,8 @@ test('runEngine passes every starter rule on a clean multi-doc happy-path packet
   assert.equal(counts.pass, STARTER_RULES.length);
 });
 
-test('STARTER_RULES at wave 52-5a close is 115 rules (110 overlay total + 5 radiology specialty)', () => {
-  assert.equal(STARTER_RULES.length, 115);
+test('STARTER_RULES at wave 52-5b close is 120 rules (110 overlay + 5 radiology + 5 infusion specialty)', () => {
+  assert.equal(STARTER_RULES.length, 120);
 });
 
 test('CMS overlay carries the spec-aligned id R-PA-CMS-004 for proof-of-delivery', () => {
@@ -613,6 +613,55 @@ test('R-PA-RAD-005 fires (info) on a pediatric imaging request without an ALARA 
   const text = HAPPY_TEXT + '\nProcedure: 70551 MRI brain without contrast.\nPediatric patient, adolescent.\n';
   const findings = runEngine(bundleOf(text));
   const f = findings.find((x) => x.ruleId === 'R-PA-RAD-005');
+  assert.equal(f.status, 'info');
+});
+
+// ---- wave 52-5b sanity checks: infusion specialty overlay ----
+
+test('R-PA-INF-001..005 all vacuously pass on a packet without a J-code', () => {
+  const findings = runEngine(happyBundle());
+  for (const id of ['R-PA-INF-001', 'R-PA-INF-002', 'R-PA-INF-003', 'R-PA-INF-004', 'R-PA-INF-005']) {
+    const f = findings.find((x) => x.ruleId === id);
+    assert.equal(f.status, 'pass', id + ' should vacuously pass when no J-code is in the packet.');
+  }
+});
+
+test('R-PA-INF-001 flags an infusion request with a J-code but no NDC anchor', () => {
+  const text = HAPPY_TEXT + '\nJ1745 infliximab infusion.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-INF-001');
+  assert.equal(f.status, 'flag');
+});
+
+test('R-PA-INF-002 flags a weight-based infusion without a dose-calculation anchor', () => {
+  const text = HAPPY_TEXT
+    + '\nJ1745 infliximab infusion.\n'
+    + 'Dosing: 5 mg/kg every 8 weeks.\n'
+    + 'Weight: 70 kg.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-INF-002');
+  assert.equal(f.status, 'flag');
+});
+
+test('R-PA-INF-003 flags an infusion request without a site-of-care anchor', () => {
+  const text = HAPPY_TEXT + '\nJ1745 infliximab infusion.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-INF-003');
+  assert.equal(f.status, 'flag');
+});
+
+test('R-PA-INF-004 flags an infusion request without an FDA-indication / NCCN-compendia anchor', () => {
+  const text = HAPPY_TEXT + '\nJ1745 infliximab infusion.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-INF-004');
+  assert.equal(f.status, 'flag');
+});
+
+test('R-PA-INF-005 fires (info) on an infusion-reaction-risk biologic without a premedication anchor', () => {
+  const text = HAPPY_TEXT
+    + '\nJ9312 rituximab infusion.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-INF-005');
   assert.equal(f.status, 'info');
 });
 

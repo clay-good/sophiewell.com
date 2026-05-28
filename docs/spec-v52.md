@@ -1345,6 +1345,42 @@ silently; the audit trail records the disablement.
 
 - 2026-05-27 — v52 proposed. Five waves outlined (52-1 through
   52-5+). Catalog count target at v52-1 close: 255.
+- 2026-05-28 — wave 52-5b (§4.5.5 infusion / specialty-drug overlay,
+  5 of 25). Adds five infusion / specialty-drug rules triggered by
+  J-code (HCPCS Level II J####) presence: R-PA-INF-001 (J-code +
+  NDC documented; generalizes the wave-52-4b R-PA-MCD-006 Medicaid
+  rule to all payers, flag), R-PA-INF-002 (weight-based dose
+  calculation shown when dosing is per kg -- weight + dose-calc
+  anchor both required, flag), R-PA-INF-003 (site-of-care indicator:
+  home / clinic / office / infusion center / hospital outpatient,
+  flag), R-PA-INF-004 (FDA-approved indication / NCCN-compendia
+  citation for the diagnosis, flag), R-PA-INF-005 (premedication /
+  monitoring plan when the drug carries infusion-reaction risk --
+  rituximab / infliximab / IV iron / taxanes / cetuximab /
+  trastuzumab, info).
+
+  New helper `collectJCodes(bundle)` in `lib/pa/rules.js` extracts
+  J-codes via `/^J\d{4}$/`, mirroring the radiology / MRI
+  collectors from wave 52-5a. Like the radiology overlay, these
+  rules apply across every payer once the J-code trigger fires.
+  R-PA-INF-002 is the fourth dual-anchor rule (weight AND dose
+  calculation) and reuses the wave-52-1h `extract.weight`
+  extractor; R-PA-INF-005's risk-trigger anchor set names the
+  drugs most commonly flagged for infusion-reaction premedication.
+
+  When no J-code is in the requested-procedures list each rule
+  vacuously passes, so the HAPPY_PACKET fixture continues to
+  all-pass without modification.
+
+  6 new unit assertions in `test/unit/pa-engine.test.js` (one
+  aggregate vacuous-pass guard plus a fires-when-it-should test
+  per new rule). Total PA unit suite: 160 assertions. The Playwright
+  happy-path now asserts 120 rules render. View wave banner
+  advanced to 52-5b.
+
+  Wave 52-5c will continue §4.5.5 with the surgery overlay
+  (R-PA-SURG-NNN, 5 rules) -- conservative-management trial,
+  imaging support, anesthesia clearance for ASA >= 3.
 - 2026-05-28 — wave 52-5a (§4.5.5 specialty overlays open: radiology,
   5 of 25). Opens spec-v52 §4.5.5 with five radiology / advanced-
   imaging rules: R-PA-RAD-001 (ACR Appropriateness Criteria

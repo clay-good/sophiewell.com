@@ -6,6 +6,45 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v52 wave 52-5b — §4.5.5 infusion / specialty-drug overlay, 5 of 25)
+
+Five infusion / specialty-drug rules triggered by J-code (HCPCS
+Level II J####) presence:
+
+- **R-PA-INF-001** — J-code + NDC documented (generalizes the
+  Medicaid-specific R-PA-MCD-006 to all payers). Flag.
+- **R-PA-INF-002** — weight-based dose: weight + dose-calculation
+  anchor (dual-anchor). Flag.
+- **R-PA-INF-003** — site-of-care indicator (home / clinic /
+  office / infusion center / hospital outpatient). Flag.
+- **R-PA-INF-004** — FDA-approved indication or NCCN-compendia
+  citation for the diagnosis. Flag.
+- **R-PA-INF-005** — premedication / monitoring plan when the
+  drug carries infusion-reaction risk (rituximab / infliximab /
+  IV iron / taxanes / cetuximab / trastuzumab). Info.
+
+New helper `collectJCodes(bundle)` in `lib/pa/rules.js` extracts
+J-codes via `/^J\d{4}$/`, mirroring the radiology / MRI collectors
+from wave 52-5a. Like radiology, these rules apply across every
+payer once the J-code trigger fires; specialty rules do NOT
+self-gate on `bundle.payer`.
+
+R-PA-INF-002 is the fourth dual-anchor rule and reuses the
+wave-52-1h `extract.weight` extractor; R-PA-INF-005's risk-trigger
+anchor set names the drugs most commonly flagged for infusion-
+reaction premedication.
+
+When no J-code is in the requested-procedures list each rule
+vacuously passes, so the HAPPY_PACKET fixture continues to
+all-pass without modification.
+
+6 new unit assertions in `test/unit/pa-engine.test.js`. Total PA
+unit suite: 160 assertions. The Playwright happy-path now asserts
+120 rules render in the findings panel.
+
+Verified: `npm run lint`, `npm run test`, and `npm run build` are
+all green. **Catalog count 255, unchanged.**
+
 ### Added (spec-v52 wave 52-5a — §4.5.5 specialty overlays open: radiology, 5 of 25)
 
 Opens spec-v52 §4.5.5 with five radiology / advanced-imaging
