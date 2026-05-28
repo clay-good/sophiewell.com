@@ -6,6 +6,42 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v52 wave 52-2d — CMS Medicare FFS overlay 15 -> 20 of 25)
+
+Five more spec-v52 §4.5.2 CMS Medicare Fee-for-Service overlay
+rules covering orthotics, continuous glucose monitors, post-
+transplant immunosuppressives, parenteral nutrition, and
+pneumatic compression devices:
+
+- **R-PA-CMS-017** — orthotics: covered-condition anchor AND an
+  L-code HCPCS present. Flag, LCD L33686.
+- **R-PA-CMS-018** — CGM: insulin-therapy AND frequent-self-
+  monitoring anchors present. Flag, LCD L33822.
+- **R-PA-CMS-019** — post-transplant immunosuppressives:
+  Medicare-covered transplant organ documented. Flag.
+- **R-PA-CMS-020** — parenteral nutrition: GI-tract failure AND
+  caloric-requirement anchors present. Flag, LCD L33799.
+- **R-PA-CMS-021** — lymphedema pump: lymphedema / CVI dx AND
+  failed-conservative-therapy anchors present. Flag, LCD L33829.
+
+R-PA-CMS-017 is the first overlay rule to consume HCPCS Level II
+L-codes from the existing `extract.cpts` array via a regex filter
+(`/^L\d{4}$/`), so the orthotic-device family ties to a structural
+signal alongside the free-text condition anchor. R-PA-CMS-018 /
+R-PA-CMS-020 / R-PA-CMS-021 continue the dual-anchor pattern
+introduced in wave 52-2c.
+
+Each rule self-gates on the detected payer bucket and again on
+its device-category anchor. The HAPPY_PACKET fixture continues
+to all-pass without modification.
+
+5 new unit assertions in `test/unit/pa-engine.test.js`. Total
+PA unit suite: 116 assertions. The Playwright happy-path now
+asserts 80 rules render in the findings panel.
+
+Verified: `npm run lint`, `npm run test`, and `npm run build` are
+all green. **Catalog count 255, unchanged.**
+
 ### Added (spec-v52 wave 52-2c — CMS Medicare FFS overlay 10 -> 15 of 25)
 
 Five more spec-v52 §4.5.2 CMS Medicare Fee-for-Service overlay

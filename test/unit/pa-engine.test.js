@@ -140,8 +140,8 @@ test('runEngine passes every starter rule on a clean multi-doc happy-path packet
   assert.equal(counts.pass, STARTER_RULES.length);
 });
 
-test('STARTER_RULES at wave 52-2c close is 75 rules (60 core + 15 CMS FFS overlay)', () => {
-  assert.equal(STARTER_RULES.length, 75);
+test('STARTER_RULES at wave 52-2d close is 80 rules (60 core + 20 CMS FFS overlay)', () => {
+  assert.equal(STARTER_RULES.length, 80);
 });
 
 test('CMS overlay carries the spec-aligned id R-PA-CMS-004 for proof-of-delivery', () => {
@@ -242,6 +242,53 @@ test('R-PA-CMS-016 flags a Medicare FFS lower-limb-prosthesis request without a 
     + 'Transtibial prosthesis prescribed for amputee.\n';
   const findings = runEngine(bundleOf(text));
   const f = findings.find((x) => x.ruleId === 'R-PA-CMS-016');
+  assert.equal(f.status, 'flag');
+});
+
+// ---- wave 52-2d sanity checks ----
+
+test('R-PA-CMS-017 flags a Medicare FFS orthotic request without a covered-condition anchor', () => {
+  const text = HAPPY_TEXT
+    + '\nMedicare Part B beneficiary on file.\n'
+    + 'Ankle-foot orthosis (L1960) ordered for patient.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-CMS-017');
+  assert.equal(f.status, 'flag');
+});
+
+test('R-PA-CMS-018 flags a Medicare FFS CGM request without insulin or monitoring anchors', () => {
+  const text = HAPPY_TEXT
+    + '\nMedicare Part B beneficiary on file.\n'
+    + 'Continuous glucose monitor (Dexcom) ordered for diabetic patient.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-CMS-018');
+  assert.equal(f.status, 'flag');
+});
+
+test('R-PA-CMS-019 flags a Medicare FFS immunosuppressive request without a transplant-organ anchor', () => {
+  const text = HAPPY_TEXT
+    + '\nMedicare Part B beneficiary on file.\n'
+    + 'Tacrolimus prescribed for anti-rejection therapy.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-CMS-019');
+  assert.equal(f.status, 'flag');
+});
+
+test('R-PA-CMS-020 flags a Medicare FFS TPN request without GI-failure or caloric anchors', () => {
+  const text = HAPPY_TEXT
+    + '\nMedicare Part B beneficiary on file.\n'
+    + 'Total parenteral nutrition ordered for inpatient.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-CMS-020');
+  assert.equal(f.status, 'flag');
+});
+
+test('R-PA-CMS-021 flags a Medicare FFS lymphedema-pump request without dx + failed-therapy anchors', () => {
+  const text = HAPPY_TEXT
+    + '\nMedicare Part B beneficiary on file.\n'
+    + 'Pneumatic compression device ordered for swelling.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-CMS-021');
   assert.equal(f.status, 'flag');
 });
 

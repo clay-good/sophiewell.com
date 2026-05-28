@@ -1345,6 +1345,36 @@ silently; the audit trail records the disablement.
 
 - 2026-05-27 — v52 proposed. Five waves outlined (52-1 through
   52-5+). Catalog count target at v52-1 close: 255.
+- 2026-05-28 — wave 52-2d (CMS Medicare FFS overlay: 15 -> 20 of 25)
+  shipped. Adds five more §4.5.2 DME-category rules: R-PA-CMS-017
+  (orthotics: covered condition + L-code present, flag, LCD L33686),
+  R-PA-CMS-018 (continuous glucose monitor: insulin therapy AND
+  frequent self-monitoring, flag, LCD L33822), R-PA-CMS-019
+  (post-transplant immunosuppressives: Medicare-covered transplant
+  organ documented, flag), R-PA-CMS-020 (parenteral nutrition:
+  GI-tract failure AND caloric requirements, flag, LCD L33799),
+  R-PA-CMS-021 (lymphedema pneumatic compression pump: lymphedema /
+  CVI dx AND failed conservative therapy, flag, LCD L33829).
+
+  R-PA-CMS-017 is the first overlay rule to consume HCPCS Level II
+  L-codes from the existing `extract.cpts` array via a regex filter
+  (`/^L\d{4}$/`), so the orthotic-device family ties to a structural
+  signal rather than free-text anchors. R-PA-CMS-018 / R-PA-CMS-020
+  / R-PA-CMS-021 are dual-anchor rules following the wave-52-2c
+  pattern.
+
+  Each rule self-gates on `bundle.payer === 'cms-medicare-ffs'` and
+  again on its device-category anchor. The HAPPY_PACKET fixture
+  continues to all-pass without modification.
+
+  5 new unit assertions in `test/unit/pa-engine.test.js`. Total PA
+  unit suite: 116 assertions. The Playwright happy-path now asserts
+  80 rules render. View wave banner advanced to 52-2d.
+
+  Wave 52-2e will close out §4.5.2 with the final 5 rules
+  (intermittent / external infusion pumps, ostomy supplies, urinary
+  catheters, surgical dressings, refractive lenses post-cataract)
+  and then open §4.5.3 CMS Medicare Advantage.
 - 2026-05-28 — wave 52-2c (CMS Medicare FFS overlay: 10 -> 15 of 25)
   shipped. Adds five DME-category rules per §4.5.2: R-PA-CMS-012
   (enteral nutrition inability-to-ingest / projected duration, flag,
