@@ -6,6 +6,40 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v52 wave 52-2c — CMS Medicare FFS overlay 10 -> 15 of 25)
+
+Five more spec-v52 §4.5.2 CMS Medicare Fee-for-Service overlay
+rules covering enteral nutrition, nebulizers, TENS, NPWT, and
+lower-limb prosthetics:
+
+- **R-PA-CMS-012** — enteral nutrition: inability-to-ingest /
+  projected-duration documented. Flag, LCD L33783.
+- **R-PA-CMS-013** — nebulizer: covered obstructive-pulmonary
+  diagnosis documented. Flag, LCD L33370.
+- **R-PA-CMS-014** — TENS: chronic intractable pain > 3 months
+  AND failed conventional therapy documented. Block, NCD 160.13
+  / LCD L33802.
+- **R-PA-CMS-015** — NPWT: covered wound type AND failed standard
+  wound care documented. Flag, LCD L33821.
+- **R-PA-CMS-016** — lower-limb prosthesis: K-level / functional
+  rehabilitation potential documented. Flag, LCD L33787.
+
+R-PA-CMS-014 / R-PA-CMS-015 are the first overlay rules to
+require TWO independent anchors -- both must be present for the
+rule to pass; either alone trips with a specific note pointing
+at the missing half of the requirement.
+
+Each rule self-gates on the detected payer bucket and again on
+its device-category anchor. The HAPPY_PACKET fixture continues
+to all-pass without modification.
+
+5 new unit assertions in `test/unit/pa-engine.test.js`. Total
+PA unit suite: 111 assertions. The Playwright happy-path now
+asserts 75 rules render in the findings panel.
+
+Verified: `npm run lint`, `npm run test`, and `npm run build`
+are all green. **Catalog count 255, unchanged.**
+
 ### Added (spec-v52 wave 52-2b — CMS Medicare FFS overlay 5 -> 10 of 25, plus a spec-alignment renumber)
 
 Five more spec-v52 §4.5.2 CMS Medicare Fee-for-Service overlay

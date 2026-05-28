@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `67ce8e6ea78ebac6`
-Generated: 2026-05-28T21:14:50.538Z
+Build ID: `51607766d75df8c7`
+Generated: 2026-05-28T21:29:01.972Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=20.18.1 <21, npm >=10.0.0
@@ -62,7 +62,7 @@ downloads is committed in this repository and is hashed below.
 | `lib/pa/engine.js` | 3906 | `8783ca76c9601070ad4652466bc4622f8be0850e8bc554794bff7da59a19bc3a` |
 | `lib/pa/extract.js` | 12462 | `aae964461e8b77c8fb90bc8c2949a247754dd3feeec555a76c762b019b9d1616` |
 | `lib/pa/payer.js` | 3737 | `96641775291225fd2dc8f601fbf70445309d6c954553f3d739eccd18a3777f25` |
-| `lib/pa/rules.js` | 67394 | `b05f576f96ff40b3fd2a5bc978382594ed9d23149c927eb955ed48f75932b713` |
+| `lib/pa/rules.js` | 74864 | `b2b7cb2c3840b380141e8c05ce80c3ad3538e0f60488e1dd5b2aefa30481cee9` |
 | `lib/print.js` | 2588 | `74579a71f82b75993dea9f7d9b3c21e67744bd4dbe6f50e20c8eef9aa1be7546` |
 | `lib/prompt.js` | 6872 | `95ee9b9de5adbafd1497f378993e27d29c9f437bfc9ddc304886fd75e80fffd4` |
 | `lib/regulatory.js` | 4040 | `9e1ef6751facc0172c492010ccd35982061f06b000db2e857a98ec2013e7087c` |
@@ -85,7 +85,7 @@ downloads is committed in this repository and is hashed below.
 | `views/group-klmno.js` | 7870 | `bf6d3ced1a08fcb627284b649d07b8e5ace6857b29e46992d4e425925c63eaa9` |
 | `views/group-v5.js` | 26940 | `daba643b4b8c800ca5706cc9f7d80d64fb373cbfc1362b77e2fc22d6495c241a` |
 | `views/group-v6.js` | 5707 | `425918decb48cd9efac9fc5590ac8970a54c03c3b0df056fb99c9a22ff8dd1b2` |
-| `views/pa-lint.js` | 16809 | `2e941ff3df812ccca174944fb1d5445fb9971159ff90df7d4b8545a31916d466` |
+| `views/pa-lint.js` | 16809 | `ac522663be38cf4048dd3946d66dea8882cbd712005d48b5e57cad5e20eddd80` |
 
 ## Verifying this SBOM
 

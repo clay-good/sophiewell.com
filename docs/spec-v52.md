@@ -1345,6 +1345,36 @@ silently; the audit trail records the disablement.
 
 - 2026-05-27 — v52 proposed. Five waves outlined (52-1 through
   52-5+). Catalog count target at v52-1 close: 255.
+- 2026-05-28 — wave 52-2c (CMS Medicare FFS overlay: 10 -> 15 of 25)
+  shipped. Adds five DME-category rules per §4.5.2: R-PA-CMS-012
+  (enteral nutrition inability-to-ingest / projected duration, flag,
+  LCD L33783), R-PA-CMS-013 (nebulizer covered obstructive-pulmonary
+  diagnosis, flag, LCD L33370), R-PA-CMS-014 (TENS chronic intractable
+  pain > 3 months plus failed conventional therapy, block, NCD 160.13
+  / LCD L33802), R-PA-CMS-015 (NPWT wound type/size + failed standard
+  wound care, flag, LCD L33821), R-PA-CMS-016 (lower-limb prosthesis
+  K-level / functional rehab potential, flag, LCD L33787).
+
+  Each rule self-gates on `bundle.payer === 'cms-medicare-ffs'` and
+  again on its device-category anchor (enteral / nebulizer / TENS /
+  NPWT / lower-limb prosthesis). The HAPPY_PACKET fixture still
+  all-passes without modification.
+
+  R-PA-CMS-014 is the first overlay rule to require TWO independent
+  anchors (chronic-pain AND failed-conventional-therapy) -- both
+  must be present for the rule to pass; either alone trips a block
+  with a specific note pointing at the missing half of the NCD 160.13
+  requirement. R-PA-CMS-015 follows the same dual-anchor pattern
+  (covered wound type AND failed standard wound care).
+
+  5 new unit assertions in `test/unit/pa-engine.test.js`. Total PA
+  unit suite: 111 assertions. The Playwright happy-path now asserts
+  75 rules render. View wave banner advanced to 52-2c.
+
+  Wave 52-2d will finish the §4.5.2 overlay's remaining 10 rules
+  (orthotics / glucose monitors / immunosuppressives / parenteral
+  nutrition / lymphedema-pump etc.) or open §4.5.3 CMS Medicare
+  Advantage.
 - 2026-05-28 — wave 52-2b (CMS Medicare FFS overlay: 5 -> 10 of 25,
   plus a spec-alignment renumber) shipped. Adds five more §4.5.2
   rules: R-PA-CMS-003 (Standard Written Order required elements
