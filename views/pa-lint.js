@@ -307,12 +307,13 @@ async function processFiles(fileList, resultsList, statusNode, findingsPanel) {
 export const renderers = {
   'pa-lint'(root) {
     root.appendChild(el('p', { class: 'notice', text:
-      'Wave 52-1f: drop PDF, DOCX, or TXT files. Sophie hashes each file, '
-      + 'extracts text (pdf.js / mammoth.js, both vendored), and runs the '
-      + 'spec-v52 §4.5.1 core-rule starter set (25 rules of the planned 60) '
-      + 'against the aggregated text. The DOCX report and the remaining '
-      + 'rules ship in subsequent waves. Your packet stays in this tab; '
-      + 'no network, no storage, no AI.' }));
+      'Wave 52-1h: drop PDF, DOCX, or TXT files. Sophie hashes each file, '
+      + 'extracts text (pdf.js / mammoth.js, both vendored), classifies '
+      + 'each document by role + payer, and runs the spec-v52 §4.5.1 '
+      + 'core-rule starter set (35 rules of the planned 60) against the '
+      + 'aggregated bundle. The DOCX report and payer overlays ship in '
+      + 'subsequent waves. Your packet stays in this tab; no network, '
+      + 'no storage, no AI.' }));
 
     const trust = el('ul', { class: 'pa-trust-strip' });
     for (const line of [

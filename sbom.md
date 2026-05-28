@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `416b95d4ce12fb07`
-Generated: 2026-05-27T23:45:32.841Z
+Build ID: `3eb99fcb76a45ac6`
+Generated: 2026-05-27T23:59:42.729Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=20.18.1 <21, npm >=10.0.0
@@ -60,9 +60,9 @@ downloads is committed in this repository and is hashed below.
 | `lib/pa/classify.js` | 3432 | `a7958e40890ad63ebf68ce5a0107fe7ab5a5b0c9e877e2669e8f44ecfb7f34ca` |
 | `lib/pa/date.js` | 2482 | `91a44d0383958089ad0d749ba556227b3d8432443f1431c2871b15854111c645` |
 | `lib/pa/engine.js` | 3644 | `3b9ac1a6324a4fe4987123d793e2cc0db4a42f63c055bf7266b22c6c76590507` |
-| `lib/pa/extract.js` | 8947 | `1b1ff7e9c58391293d5df7f0a3b71924fb3c2b5128cc3e60cd3bcbb8285c0e52` |
+| `lib/pa/extract.js` | 11430 | `dee69e7e20fbf8c89d963133e40083474fff233341bd3678ec2f385b38ea6913` |
 | `lib/pa/payer.js` | 3737 | `96641775291225fd2dc8f601fbf70445309d6c954553f3d739eccd18a3777f25` |
-| `lib/pa/rules.js` | 18330 | `25ca762ddd39723979804874bc6e590272ef3df98e42fc5c9b8602e23001f934` |
+| `lib/pa/rules.js` | 27434 | `f9e7f2573eea6e3cc9dfa0d7c8303e2ea6d10e6b1bbd6a5004744e70def507cd` |
 | `lib/print.js` | 2588 | `74579a71f82b75993dea9f7d9b3c21e67744bd4dbe6f50e20c8eef9aa1be7546` |
 | `lib/prompt.js` | 6872 | `95ee9b9de5adbafd1497f378993e27d29c9f437bfc9ddc304886fd75e80fffd4` |
 | `lib/regulatory.js` | 4040 | `9e1ef6751facc0172c492010ccd35982061f06b000db2e857a98ec2013e7087c` |
@@ -85,7 +85,7 @@ downloads is committed in this repository and is hashed below.
 | `views/group-klmno.js` | 7870 | `bf6d3ced1a08fcb627284b649d07b8e5ace6857b29e46992d4e425925c63eaa9` |
 | `views/group-v5.js` | 26940 | `daba643b4b8c800ca5706cc9f7d80d64fb373cbfc1362b77e2fc22d6495c241a` |
 | `views/group-v6.js` | 5707 | `425918decb48cd9efac9fc5590ac8970a54c03c3b0df056fb99c9a22ff8dd1b2` |
-| `views/pa-lint.js` | 16190 | `4fc28b036207bd6c8b57e8eb7784fb94abf68216ef17d3c4fd67ac6f651398ec` |
+| `views/pa-lint.js` | 16240 | `2f896c99de53a84203dbb2e5ee725c5d4f2b06539b13d65f2ee70c238dee0cae` |
 
 ## Verifying this SBOM
 

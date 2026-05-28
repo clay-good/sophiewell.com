@@ -35,6 +35,7 @@ const HAPPY_TEXT = [
   'Active medications: lisinopril 10 mg daily.',
   'Allergies: NKDA.',
   'Duration: 12 months requested.',
+  'Servicing facility NPI: 1306849393',
   'Signature: Jane Doe MD, 2026-04-12',
 ].join('\n') + '\n';
 
@@ -51,7 +52,7 @@ test('pa-lint: happy-path TXT lights every starter rule green', async ({ page })
   await expect(page.locator('.pa-findings-headline')).toBeVisible({ timeout: 10_000 });
   // At least 7 rules render (the wave 52-1e starter set).
   const rules = page.locator('.pa-rule');
-  await expect(rules).toHaveCount(25);
+  await expect(rules).toHaveCount(35);
   // None of them should be block / flag / error on the happy packet.
   await expect(page.locator('.pa-rule[data-status="block"]')).toHaveCount(0);
   await expect(page.locator('.pa-rule[data-status="flag"]')).toHaveCount(0);
@@ -62,7 +63,10 @@ test('pa-lint: a TXT missing the NPI flips R-PA-016 to block', async ({ page }) 
   await page.goto('/#pa-lint');
   await expect(page.locator('#pa-file-picker')).toBeAttached();
 
-  const text = HAPPY_TEXT.replace('Ordering provider NPI: 1234567893\n', '');
+  // Strip both NPI lines so R-PA-016 (any Luhn-valid NPI) flips.
+  const text = HAPPY_TEXT
+    .replace('Ordering provider NPI: 1234567893\n', '')
+    .replace('Servicing facility NPI: 1306849393\n', '');
   await page.setInputFiles('#pa-file-picker', {
     name: 'note.txt',
     mimeType: 'text/plain',
@@ -70,6 +74,9 @@ test('pa-lint: a TXT missing the NPI flips R-PA-016 to block', async ({ page }) 
   });
 
   await expect(page.locator('.pa-findings-headline')).toBeVisible({ timeout: 10_000 });
-  const npiRule = page.locator('.pa-rule', { hasText: 'R-PA-016' });
+  // Match on the rule-id chip span specifically; the .pa-rule body of
+  // R-PA-019 mentions R-PA-016 in its note text and would otherwise
+  // collide with a plain hasText filter.
+  const npiRule = page.locator('.pa-rule').filter({ has: page.locator('.pa-rule-id', { hasText: /^R-PA-016$/ }) });
   await expect(npiRule).toHaveAttribute('data-status', 'block');
 });

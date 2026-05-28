@@ -1345,6 +1345,34 @@ silently; the audit trail records the disablement.
 
 - 2026-05-27 — v52 proposed. Five waves outlined (52-1 through
   52-5+). Catalog count target at v52-1 close: 255.
+- 2026-05-27 — wave 52-1h (core ruleset backfill 25 -> 35) shipped.
+  Adds 10 more of the 60 §4.5.1 core rules: R-PA-019 (servicing NPI
+  presence — flags when only one Luhn-valid NPI is in the packet),
+  R-PA-022 (clinical-note has a date), R-PA-023 (note references at
+  least one requested CPT), R-PA-025 / R-PA-026 (lab / imaging
+  documents attached when referenced), R-PA-027 / R-PA-028
+  (lab / imaging freshness, default 12 months), R-PA-033 (height /
+  weight when packet references mg/kg dosing), R-PA-034 (renal
+  function when renally-dosed agent referenced), R-PA-036 (frequency
+  keyword present).
+  
+  New extractors land in `lib/pa/extract.js`: `extractWeight`,
+  `extractHeight`, `extractFrequency` (canonical-token scan against
+  the daily / BID / TID / q4-q24h / PRN / weekly / monthly set).
+  
+  Several rules consume the wave-52-1g classifier roles (R-PA-022,
+  R-PA-023, R-PA-027, R-PA-028 scope to clinical-note / lab-result /
+  imaging-report documents) so the classifier work is now load-
+  bearing for the rule engine, not just informational.
+  
+  The 35-rule happy-path fixture is now a 4-document packet
+  (pa-form, clinical-note, lab-result, imaging-report) so cross-
+  document rules have something to validate against. 6 new unit
+  assertions for the wave 52-1h rules + 3 for the new extractors.
+  Total PA unit suite: 68 assertions. The e2e happy-path was
+  expanded with a second NPI line; the missing-NPI test now uses a
+  rule-id-chip selector to avoid colliding with R-PA-019's note
+  text that mentions R-PA-016 by name.
 - 2026-05-27 — wave 52-1g (classifier + payer-detect + per-document
   role/payer) shipped. Adds `lib/pa/classify.js` (8 roles: clinical-
   note, pa-form, medical-necessity-letter, lab-result, imaging-report,

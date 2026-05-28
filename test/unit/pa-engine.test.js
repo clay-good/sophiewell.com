@@ -15,6 +15,10 @@ import { STARTER_RULES } from '../../lib/pa/rules.js';
 // at least one rule's check(); changes here cascade to multiple
 // rule assertions, so add to bundleOf({...}) rather than reshape
 // this block when extending.
+// Happy-path single-document packet -- satisfies the 25 rules from
+// wave 52-1f. Wave 52-1h ships rules that span document roles, so
+// the 35-rule happy-path fixture lives below as HAPPY_PACKET and
+// is built from multiple documents.
 const HAPPY_TEXT = [
   'Cover sheet',
   'Patient: Jane Q Doe',
@@ -36,6 +40,82 @@ const HAPPY_TEXT = [
   'Signature: Jane Doe MD, 2026-04-12',
 ].join('\n') + '\n';
 
+// Wave 52-1h: multi-document fixture that satisfies all 35 rules. The
+// clinical note carries the procedure code so R-PA-023 passes; a
+// second NPI on the lab cover satisfies R-PA-019; the lab-result and
+// imaging-report documents are present + dated so R-PA-025/026/027/
+// 028 pass.
+const HAPPY_PACKET = {
+  documents: [
+    {
+      name: 'pa-form.txt',
+      sha256: 'sha-pa',
+      kind: 'TXT',
+      text: [
+        'PA Cover sheet',
+        'Prior Authorization Request Form',
+        'Patient: Jane Q Doe',
+        'DOB: 1985-03-12',
+        'Member ID: W123456789',
+        'Date of service: 2026-04-12',
+        'Place of service: 11',
+        'Procedure 99213 office visit',
+        'Quantity: 1',
+        'Duration: 12 months requested.',
+        'Frequency: daily',
+        'Dx: I10 essential hypertension',
+        'Ordering provider NPI: 1234567893',
+        'Servicing facility NPI: 1306849393',
+        'TIN: 123456789',
+        'Step therapy: trial of lisinopril completed without adequate response.',
+        'Lab results attached. Imaging attached.',
+        'Signature: Jane Doe MD, 2026-04-12',
+      ].join('\n'),
+    },
+    {
+      name: 'note.txt',
+      sha256: 'sha-note',
+      kind: 'TXT',
+      text: [
+        'Clinical note',
+        'Chief complaint: hypertension follow-up',
+        'History of present illness: stable on lisinopril.',
+        'Assessment and plan: continue 99213-level office visit, daily lisinopril.',
+        'Medical necessity: required for blood-pressure control.',
+        'Active medications: lisinopril 10 mg daily.',
+        'Allergies: NKDA.',
+        'Weight: 70 kg. Height: 175 cm.',
+        'Note date: 2026-04-12',
+        'Signed: Jane Doe MD, 2026-04-12',
+      ].join('\n'),
+    },
+    {
+      name: 'lab.txt',
+      sha256: 'sha-lab',
+      kind: 'TXT',
+      text: [
+        'Laboratory report',
+        'Collection date: 2026-04-01',
+        'Reference range: 3.5-5.0 mEq/L',
+        'Result: 4.1 mEq/L',
+      ].join('\n'),
+    },
+    {
+      name: 'imaging.txt',
+      sha256: 'sha-img',
+      kind: 'TXT',
+      text: [
+        'Radiology report',
+        'Imaging date: 2026-03-15',
+        'MRI of the lumbar spine.',
+        'Findings: ...',
+        'Impression: ...',
+      ].join('\n'),
+    },
+  ],
+  totalBytes: 8192,
+};
+
 function bundleOf(textBlocks, opts) {
   const docs = (Array.isArray(textBlocks) ? textBlocks : [textBlocks]).map((t, i) => ({
     name: 'doc-' + (i + 1) + '.txt',
@@ -46,21 +126,22 @@ function bundleOf(textBlocks, opts) {
   return buildBundle(docs, opts || { totalBytes: 4096 });
 }
 
-test('runEngine passes every starter rule on a clean happy-path packet', () => {
-  const findings = runEngine(bundleOf(HAPPY_TEXT));
+function happyBundle(opts) {
+  return buildBundle(HAPPY_PACKET.documents, opts || { totalBytes: HAPPY_PACKET.totalBytes });
+}
+
+test('runEngine passes every starter rule on a clean multi-doc happy-path packet', () => {
+  const findings = runEngine(happyBundle());
   const counts = summarizeFindings(findings);
   assert.equal(findings.length, STARTER_RULES.length);
   assert.equal(counts.block, 0);
   assert.equal(counts.flag, 0);
   assert.equal(counts.error, 0);
-  // R-PA-053 (no-PA-needed list, info severity) and R-PA-031/032/060
-  // (info-severity informational rules) all return pass when the
-  // anchors are present, so the happy packet should be all-pass.
   assert.equal(counts.pass, STARTER_RULES.length);
 });
 
-test('STARTER_RULES at wave 52-1f close is 25 rules total', () => {
-  assert.equal(STARTER_RULES.length, 25);
+test('STARTER_RULES at wave 52-1h close is 35 rules total', () => {
+  assert.equal(STARTER_RULES.length, 35);
 });
 
 // ---- wave 52-1f new-rule sanity checks ----
@@ -117,6 +198,60 @@ test('R-PA-045 flags when totalBytes exceeds the default 50 MB ceiling', () => {
 test('R-PA-046 flags when extracted text contains U+FFFD characters', () => {
   const findings = runEngine(bundleOf(HAPPY_TEXT + 'mo�jibake here\n'));
   const f = findings.find((x) => x.ruleId === 'R-PA-046');
+  assert.equal(f.status, 'flag');
+});
+
+// ---- wave 52-1h sanity checks ----
+
+test('R-PA-019 flags when only one Luhn-valid NPI is in the packet', () => {
+  const findings = runEngine(bundleOf(HAPPY_TEXT));
+  const f = findings.find((x) => x.ruleId === 'R-PA-019');
+  assert.equal(f.status, 'flag');
+});
+
+test('R-PA-023 flags when no clinical-note document mentions the requested CPT', () => {
+  // Use the multi-doc happy packet but strip the CPT from the note.
+  const docs = HAPPY_PACKET.documents.map((d) =>
+    d.name === 'note.txt' ? { ...d, text: d.text.replace('99213-level office visit, daily lisinopril', 'office visit, daily lisinopril') } : d);
+  const findings = runEngine(buildBundle(docs, { totalBytes: 8192 }));
+  const f = findings.find((x) => x.ruleId === 'R-PA-023');
+  assert.equal(f.status, 'flag');
+});
+
+test('R-PA-025 flags when packet references labs but no lab-result document is attached', () => {
+  // PA form mentions labs, but no lab document in the bundle.
+  const docs = HAPPY_PACKET.documents.filter((d) => d.name !== 'lab.txt');
+  const findings = runEngine(buildBundle(docs, { totalBytes: 6144 }));
+  const f = findings.find((x) => x.ruleId === 'R-PA-025');
+  assert.equal(f.status, 'flag');
+});
+
+test('R-PA-027 flags when an attached lab-result is undated or stale', () => {
+  const docs = HAPPY_PACKET.documents.map((d) =>
+    d.name === 'lab.txt' ? { ...d, text: 'Laboratory report\nReference range: 3.5-5.0\nResult: 4.1\n' } : d);
+  const findings = runEngine(buildBundle(docs, { totalBytes: 8192 }));
+  const f = findings.find((x) => x.ruleId === 'R-PA-027');
+  assert.equal(f.status, 'flag');
+});
+
+test('R-PA-033 flags when a weight-based-dose anchor is present but no Weight: field', () => {
+  // Inject mg/kg trigger but strip Weight.
+  const docs = HAPPY_PACKET.documents.map((d) =>
+    d.name === 'note.txt' ? { ...d, text: d.text.replace('Weight: 70 kg. Height: 175 cm.', '') + '\nDose: 5 mg/kg' } : d);
+  const findings = runEngine(buildBundle(docs, { totalBytes: 8192 }));
+  const f = findings.find((x) => x.ruleId === 'R-PA-033');
+  assert.equal(f.status, 'flag');
+});
+
+test('R-PA-036 flags when no frequency keyword is present', () => {
+  const docs = HAPPY_PACKET.documents.map((d) => ({
+    ...d,
+    text: d.text
+      .replace(/Frequency: daily/g, '')
+      .replace(/\bdaily\b/g, ''),
+  }));
+  const findings = runEngine(buildBundle(docs, { totalBytes: 8192 }));
+  const f = findings.find((x) => x.ruleId === 'R-PA-036');
   assert.equal(f.status, 'flag');
 });
 
