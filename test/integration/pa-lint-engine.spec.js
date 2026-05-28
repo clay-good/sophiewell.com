@@ -52,7 +52,7 @@ test('pa-lint: happy-path TXT lights every starter rule green', async ({ page })
   await expect(page.locator('.pa-findings-headline')).toBeVisible({ timeout: 10_000 });
   // At least 7 rules render (the wave 52-1e starter set).
   const rules = page.locator('.pa-rule');
-  await expect(rules).toHaveCount(105);
+  await expect(rules).toHaveCount(110);
   // None of them should be block / flag / error on the happy packet.
   await expect(page.locator('.pa-rule[data-status="block"]')).toHaveCount(0);
   await expect(page.locator('.pa-rule[data-status="flag"]')).toHaveCount(0);

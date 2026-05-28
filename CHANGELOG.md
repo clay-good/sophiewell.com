@@ -6,6 +6,49 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v52 wave 52-4b — Medicaid state-agnostic core COMPLETE: 5 -> 10)
+
+The final 5 of the 10 spec-v52 §4.5.4 Medicaid state-agnostic
+core rules ship, closing both the overlay and the planned wave
+52-2 of the spec (§4.5.2 + §4.5.3 + §4.5.4 overlays):
+
+- **R-PA-MCD-006** — J-code physician-administered drug requires
+  an NDC (per Section 1927(a)(7) of the Social Security Act).
+  Flag.
+- **R-PA-MCD-007** — dental service requires an adult-vs-pediatric
+  / EPSDT-vs-state-optional coverage indicator. Flag.
+- **R-PA-MCD-008** — non-emergency medical transportation (NEMT)
+  requires a trip-purpose + appointment-date anchor (42 CFR
+  §431.53). Flag.
+- **R-PA-MCD-009** — behavioral-health service requires a
+  carve-out / integrated-BH indicator (PIHP / BHO / specialty
+  MCO). Info.
+- **R-PA-MCD-010** — outpatient prescription drug requires an
+  MDRP / labeler-agreement / participating-manufacturer indicator
+  (per Section 1927). Info.
+
+R-PA-MCD-006 is the third overlay rule to consume HCPCS Level II
+codes via regex (`/^J\d{4}$/`), alongside R-PA-CMS-017's L-codes
+and R-PA-CMS-026's cataract-surgery range. It also accepts NDC
+patterns in 5-4-2 / 5-3-2 / 4-4-2 hyphenated form or 11-digit run.
+
+Each rule self-gates on `bundle.payer === 'medicaid'` and again
+on its context anchor (J-code / dental / NEMT / BH / Rx). The
+HAPPY_PACKET fixture continues to all-pass without modification.
+
+5 new unit assertions in `test/unit/pa-engine.test.js`. Total PA
+unit suite: 148 assertions. The Playwright happy-path now asserts
+110 rules render in the findings panel.
+
+The complete payer-overlay surface is now shipped: 60 §4.5.1 core
++ 25 §4.5.2 CMS FFS + 15 §4.5.3 CMS MA + 10 §4.5.4 Medicaid =
+110 rules. Wave 52-3 of the spec (the §4.5.5 specialty overlays
+-- 25 rules across imaging / infusion / surgery / behavioral /
+genetic) picks up next.
+
+Verified: `npm run lint`, `npm run test`, and `npm run build` are
+all green. **Catalog count 255, unchanged.**
+
 ### Added (spec-v52 wave 52-4a — Medicaid state-agnostic core opens, first 5 of 10)
 
 Opens spec-v52 §4.5.4 with five Medicaid cross-state intersection

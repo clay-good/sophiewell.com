@@ -140,8 +140,8 @@ test('runEngine passes every starter rule on a clean multi-doc happy-path packet
   assert.equal(counts.pass, STARTER_RULES.length);
 });
 
-test('STARTER_RULES at wave 52-4a close is 105 rules (60 core + 25 CMS FFS + 15 CMS MA + 5 Medicaid)', () => {
-  assert.equal(STARTER_RULES.length, 105);
+test('STARTER_RULES at wave 52-4b close is 110 rules (60 core + 25 CMS FFS + 15 CMS MA + 10 Medicaid COMPLETE)', () => {
+  assert.equal(STARTER_RULES.length, 110);
 });
 
 test('CMS overlay carries the spec-aligned id R-PA-CMS-004 for proof-of-delivery', () => {
@@ -528,6 +528,53 @@ test('R-PA-MCD-005 flags a Medicaid packet without an MCO / FFS routing indicato
   const findings = runEngine(bundleOf(text));
   const f = findings.find((x) => x.ruleId === 'R-PA-MCD-005');
   assert.equal(f.status, 'flag');
+});
+
+// ---- wave 52-4b sanity checks ----
+
+test('R-PA-MCD-006 flags a Medicaid J-code request without an NDC anchor', () => {
+  const text = HAPPY_TEXT
+    + '\nState Medicaid recipient on file.\n'
+    + 'J-code billing: J1745 infliximab infusion.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-MCD-006');
+  assert.equal(f.status, 'flag');
+});
+
+test('R-PA-MCD-007 flags a Medicaid dental request without an adult / pediatric coverage anchor', () => {
+  const text = HAPPY_TEXT
+    + '\nState Medicaid recipient on file.\n'
+    + 'Dental procedure: tooth extraction requested.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-MCD-007');
+  assert.equal(f.status, 'flag');
+});
+
+test('R-PA-MCD-008 flags a Medicaid NEMT request without trip-purpose / appointment-date anchors', () => {
+  const text = HAPPY_TEXT
+    + '\nState Medicaid recipient on file.\n'
+    + 'NEMT transportation requested.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-MCD-008');
+  assert.equal(f.status, 'flag');
+});
+
+test('R-PA-MCD-009 fires (info) on a Medicaid behavioral-health service without a carve-out / integrated indicator', () => {
+  const text = HAPPY_TEXT
+    + '\nState Medicaid recipient on file.\n'
+    + 'Behavioral health psychotherapy session requested.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-MCD-009');
+  assert.equal(f.status, 'info');
+});
+
+test('R-PA-MCD-010 fires (info) on a Medicaid outpatient-prescription packet without an MDRP / labeler-agreement anchor', () => {
+  const text = HAPPY_TEXT
+    + '\nState Medicaid recipient on file.\n'
+    + 'Outpatient prescription drug requested.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-MCD-010');
+  assert.equal(f.status, 'info');
 });
 
 test('R-PA-MA-015 flags a C-SNP / I-SNP packet without a qualifying condition / residence anchor', () => {
