@@ -27,6 +27,8 @@
 import { el, clear } from '../lib/dom.js';
 import { buildBundle, runEngine, summarizeFindings } from '../lib/pa/engine.js';
 import { buildJsonReport, buildRedactedJsonReport, buildDocxReport } from '../lib/pa/report.js';
+import { disabledSourceMap } from '../lib/pa/staleness.js';
+import { PA_STALENESS_LEDGER } from '../lib/pa/staleness-ledger.js';
 
 const MAX_FILE_BYTES = 50 * 1024 * 1024; // 50 MB per file, per spec-v52 §4.3
 const MAX_TOTAL_BYTES = 200 * 1024 * 1024; // 200 MB packet ceiling
@@ -349,7 +351,11 @@ async function processFiles(fileList, resultsList, statusNode, findingsPanel) {
       statusNode.textContent = 'Running rule engine over ' + documents.length
         + ' parsed document' + (documents.length === 1 ? '' : 's') + '...';
       const bundle = buildBundle(documents, { totalBytes });
-      const findings = runEngine(bundle);
+      // spec-v52 §4.5.6: skip rules whose source the maintainer has disabled
+      // in the bundled ledger (no runtime fetch). The shipped ledger disables
+      // none, so this is a no-op today; it wires the mechanism for when a
+      // source goes 404 (surfaced by scripts/refresh-pa-rules.mjs).
+      const findings = runEngine(bundle, undefined, { disabledSources: disabledSourceMap(PA_STALENESS_LEDGER) });
       const counts = summarizeFindings(findings);
       renderFindingsPanel(findingsPanel, findings, counts, bundle);
       statusNode.textContent = 'Done. ' + files.length + ' file'
@@ -370,7 +376,7 @@ async function processFiles(fileList, resultsList, statusNode, findingsPanel) {
 export const renderers = {
   'pa-lint'(root) {
     root.appendChild(el('p', { class: 'notice', text:
-      'Wave 52-6i: drop PDF, DOCX, or TXT files. Sophie hashes each file, '
+      'Wave 52-6j: drop PDF, DOCX, or TXT files. Sophie hashes each file, '
       + 'extracts text (pdf.js / mammoth.js, both vendored), classifies '
       + 'each document by role + payer, and runs the complete §4.5.1 '
       + 'core ruleset (60 rules), the complete §4.5.2 CMS Medicare FFS '

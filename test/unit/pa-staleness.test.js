@@ -5,7 +5,7 @@
 
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { evaluateStaleness, STATE, findLedgerRuleOrphans, findRuleSourceOrphans, findLedgerCoverageGaps } from '../../lib/pa/staleness.js';
+import { evaluateStaleness, STATE, findLedgerRuleOrphans, findRuleSourceOrphans, findLedgerCoverageGaps, disabledSourceMap } from '../../lib/pa/staleness.js';
 
 function ledgerWith(sources, extra) {
   return {
@@ -204,4 +204,29 @@ test('the shipped ledger is fresh as of its verification date', async () => {
   assert.equal(r.summary.fail, 0);
   assert.equal(r.summary.invalid, 0);
   assert.ok(r.entries.length >= 10, 'ledger should enumerate the PA-rule source families');
+});
+
+// spec-v52 §4.5.6 (wave 52-6j): stale-source disabling. ----------------------
+
+test('disabledSourceMap normalizes both the object and bare-true disabled forms', () => {
+  const ledger = ledgerWith([
+    { ...SRC('a', '2026-05-01'), disabled: { since: '2026-06-01', reason: '404 on home page' } },
+    { ...SRC('b', '2026-05-01'), disabled: true },
+    SRC('c', '2026-05-01'), // not disabled
+  ]);
+  const map = disabledSourceMap(ledger);
+  assert.equal(map.size, 2);
+  assert.deepEqual(map.get('a'), { since: '2026-06-01', reason: '404 on home page' });
+  assert.equal(map.get('b').since, null);
+  assert.match(map.get('b').reason, /marked unavailable/);
+  assert.equal(map.has('c'), false);
+});
+
+test('the shipped ledger disables no source', async () => {
+  const { readFile } = await import('node:fs/promises');
+  const { fileURLToPath } = await import('node:url');
+  const { dirname, join } = await import('node:path');
+  const here = dirname(fileURLToPath(import.meta.url));
+  const ledger = JSON.parse(await readFile(join(here, '../../pa-staleness-ledger.json'), 'utf8'));
+  assert.equal(disabledSourceMap(ledger).size, 0, 'no PA source ships disabled');
 });

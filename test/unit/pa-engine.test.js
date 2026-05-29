@@ -1263,3 +1263,43 @@ test('runEngine is order-independent in input documents (property)', () => {
     assert.equal(a[i].status, b[i].status);
   }
 });
+
+// ---- spec-v52 §4.5.6 stale-source disabling (wave 52-6j) ----
+
+test('runEngine disables every rule anchored to a disabled source and skips its check', () => {
+  // cms-pos backs R-PA-013 (POS code valid). Disable it and the rule must not
+  // run -- it reports status 'disabled' regardless of the POS value.
+  const text = HAPPY_TEXT + '\nPlace of service: 88\n'; // 88 is off the bundled POS list
+  const disabled = { 'cms-pos': { since: '2026-06-01', reason: 'CMS POS page 404' } };
+  const findings = runEngine(bundleOf(text), undefined, { disabledSources: disabled });
+  const f = findings.find((x) => x.ruleId === 'R-PA-013');
+  assert.equal(f.status, 'disabled', 'R-PA-013 is anchored to cms-pos and must be disabled');
+  assert.equal(f.evidence, null);
+  assert.match(f.note, /cms-pos/);
+  assert.match(f.note, /CMS POS page 404/);
+  assert.match(f.note, /2026-06-01/);
+});
+
+test('disabling a source leaves rules anchored to other sources untouched', () => {
+  const disabled = { 'cms-pos': true }; // bare-true form is accepted
+  const findings = runEngine(happyBundle(), undefined, { disabledSources: disabled });
+  // R-PA-013 (cms-pos) is disabled; R-PA-016 (nppes-npi) is not.
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-013').status, 'disabled');
+  assert.notEqual(findings.find((x) => x.ruleId === 'R-PA-016').status, 'disabled');
+  // A structural rule (no sources) is never disabled.
+  assert.notEqual(findings.find((x) => x.ruleId === 'R-PA-001').status, 'disabled');
+});
+
+test('summarizeFindings counts disabled findings; an empty disabled map is a no-op', () => {
+  const off = summarizeFindings(runEngine(happyBundle(), undefined, { disabledSources: { 'cms-pos': true, 'cms-ncci': true } }));
+  // cms-pos backs R-PA-013; cms-ncci backs R-PA-012 and R-PA-054 -> 3 disabled.
+  assert.equal(off.disabled, 3);
+  assert.equal(off.pass, STARTER_RULES.length - 3);
+
+  const none = summarizeFindings(runEngine(happyBundle(), undefined, { disabledSources: {} }));
+  assert.equal(none.disabled, 0);
+  assert.equal(none.pass, STARTER_RULES.length);
+
+  // No opts at all is identical to an empty disabled map.
+  assert.equal(summarizeFindings(runEngine(happyBundle())).disabled, 0);
+});

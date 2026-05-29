@@ -15,7 +15,8 @@
       "flag": 3,
       "info": 2,
       "pass": 129,
-      "error": 0
+      "error": 0,
+      "disabled": 0
     },
     "blockFindings": [
       {
@@ -1650,6 +1651,7 @@
       "R-PA-SURG-004",
       "R-PA-SURG-005"
     ],
+    "disabledRules": [],
     "documentHashes": [
       {
         "document": "pa-form.txt",

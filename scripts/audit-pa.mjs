@@ -38,7 +38,11 @@ const update = process.argv.includes('--update');
 // committed goldens are human-reviewable in diffs.
 function reportFor(fixture) {
   const bundle = buildBundle(fixture.documents || [], fixture.opts || {});
-  const findings = runEngine(bundle);
+  // spec-v52 §4.5.6: a fixture may carry `disabledSources` (sourceId ->
+  // { since, reason }) to exercise the stale-source-disabling path without
+  // touching the shipped ledger. Omitted by every fixture but disabled-source.
+  const opts = fixture.disabledSources ? { disabledSources: fixture.disabledSources } : undefined;
+  const findings = runEngine(bundle, undefined, opts);
   const report = buildJsonReport(bundle, findings); // no generatedAt -> stable
   return JSON.stringify(report, null, 2) + '\n';
 }

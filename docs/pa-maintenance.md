@@ -177,15 +177,43 @@ no-network commitment, spec-v50 §3.1, is about Sophie's runtime; this is a
 maintainer laptop tool). Its report-building core is pure and network-free,
 unit-tested in `test/unit/pa-refresh.test.js` with injected fetch outcomes.
 
-## Not yet built
+## Disabling a source whose URL is gone (wave 52-6j)
 
-- **Per-rule auto-disable wiring** (spec-v52 §4.5.6, second half): the refresh
-  helper *recommends* disabling the rules backed by a `gone` source, but the
-  engine does not yet read a per-rule / per-source `disabled` flag from the
-  ledger and skip those rules with an audit-trail note. Wiring that is a
-  future wave; today the maintainer acts on the recommendation manually
-  (re-point the URL, or drop the affected rules) and the coverage checks keep
-  the ledger and ruleset in agreement.
+When `refresh-pa-rules.mjs` reports a source as **gone** (404 / 410) and you
+cannot immediately re-point it, mark it disabled in the ledger so the engine
+stops running the rules that depend on it (spec-v52 §4.5.6). Add a `disabled`
+field to the source -- either `true` or, preferably, an object recording when
+and why:
+
+```json
+{
+  "id": "cms-ncd-lcd",
+  "label": "CMS Medicare Coverage Database (NCDs, LCDs, LCAs)",
+  "ruleFamily": "cms-ffs",
+  "rules": ["R-PA-CMS-001"],
+  "url": "https://www.cms.gov/medicare-coverage-database/",
+  "lastVerified": "2026-05-28",
+  "disabled": { "since": "2026-06-01", "reason": "CMS Medicare Coverage Database URL returned 404 on 2026-06-01; re-point pending" }
+}
+```
+
+Then re-run `node scripts/build-pa-staleness-ledger.mjs` so the bundled
+`lib/pa/staleness-ledger.js` carries the flag (CI fails otherwise). On the
+next packet, `disabledSourceMap` (in `lib/pa/staleness.js`) turns the flag
+into the set the engine consumes: every rule whose per-rule `sources` includes
+the disabled source is **skipped** -- it reports `status: "disabled"` instead
+of running, its `note` records the source / since / reason, and the report's
+executive-summary counts and the audit trail's `disabledRules` list both
+surface it (in JSON and in the .docx). Rules anchored to other sources, and
+the structural rules with no source, are unaffected. Remove the `disabled`
+field (and rebuild the module) to re-enable the rules once the source is
+re-pointed.
+
+The `disabled-source` golden fixture
+(`test/fixtures/pa-lint/disabled-source.json`) exercises this path -- it
+disables `cms-ncd-lcd` for one packet and the committed report shows the 21
+NCD/LCD rules disabled while the IOM-anchored FFS rules still run. The shipped
+ledger disables nothing.
 
 ## Already shipped (kept here for the audit trail)
 

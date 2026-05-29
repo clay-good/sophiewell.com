@@ -14,9 +14,9 @@
       "block": 0,
       "flag": 5,
       "info": 3,
-      "pass": 127,
+      "pass": 106,
       "error": 0,
-      "disabled": 0
+      "disabled": 21
     },
     "blockFindings": []
   },
@@ -682,16 +682,6 @@
       "remediation": null
     },
     {
-      "ruleId": "R-PA-CMS-001",
-      "severity": "block",
-      "status": "pass",
-      "description": "Medicare FFS DME: face-to-face encounter documented",
-      "citation": "spec-v52 §4.5.2 R-PA-CMS-001. CMS NCD-280.x; Medicare requires a face-to-face encounter with the prescribing physician within 6 months prior to the written order for most DME categories.",
-      "evidence": "F2F encounter anchor in cms-note.txt",
-      "note": null,
-      "remediation": null
-    },
-    {
       "ruleId": "R-PA-CMS-002",
       "severity": "block",
       "status": "pass",
@@ -718,206 +708,6 @@
       "description": "Medicare FFS DME: proof of delivery requirements documented",
       "citation": "spec-v52 §4.5.2 R-PA-CMS-004. CMS IOM Pub 100-08 ch. 4 §4.26; supplier must retain proof of delivery (POD) including date and recipient signature.",
       "evidence": "POD anchor in cms-pa-form.txt",
-      "note": null,
-      "remediation": null
-    },
-    {
-      "ruleId": "R-PA-CMS-005",
-      "severity": "flag",
-      "status": "pass",
-      "description": "Medicare FFS mobility device: patient functional status documented",
-      "citation": "spec-v52 §4.5.2 R-PA-CMS-005. CMS LCD L33788 (Power Mobility Devices) requires a documented mobility limitation evaluation: ADL impact, ambulation distance, balance, and home accessibility.",
-      "evidence": "No mobility-device anchor; rule vacuously satisfied.",
-      "note": null,
-      "remediation": null
-    },
-    {
-      "ruleId": "R-PA-CMS-006",
-      "severity": "flag",
-      "status": "pass",
-      "description": "Medicare FFS PAP device: sleep study results documented within 12 months prior to initial PAP order",
-      "citation": "spec-v52 §4.5.2 R-PA-CMS-006. LCD L33718 (Positive Airway Pressure Devices) requires a Medicare-covered sleep test with results within 12 months prior to initiating PAP therapy.",
-      "evidence": "Sleep-study anchor in cms-note.txt",
-      "note": null,
-      "remediation": null
-    },
-    {
-      "ruleId": "R-PA-CMS-007",
-      "severity": "flag",
-      "status": "pass",
-      "description": "Medicare FFS PAP continuation: 90-day adherence / compliance documentation",
-      "citation": "spec-v52 §4.5.2 R-PA-CMS-007. LCD L33718 requires documentation that the beneficiary is using PAP >= 4 hours/night on >= 70% of nights during a consecutive 30-day period within the first 90 days of initial PAP use, before continued coverage past three months.",
-      "evidence": "No PAP-continuation anchor; rule vacuously satisfied.",
-      "note": null,
-      "remediation": null
-    },
-    {
-      "ruleId": "R-PA-CMS-008",
-      "severity": "block",
-      "status": "pass",
-      "description": "Medicare FFS home oxygen: qualifying arterial blood gas or pulse-oximetry result documented",
-      "citation": "spec-v52 §4.5.2 R-PA-CMS-008. CMS NCD 240.2 / LCD L33797 (Oxygen and Oxygen Equipment) requires a qualifying ABG (PaO2 <= 55 mmHg) or pulse oximetry (SpO2 <= 88%) on room air at rest, during sleep, or with exertion.",
-      "evidence": "No home-oxygen anchor; rule vacuously satisfied.",
-      "note": null,
-      "remediation": null
-    },
-    {
-      "ruleId": "R-PA-CMS-011",
-      "severity": "flag",
-      "status": "pass",
-      "description": "Medicare FFS hospital bed: medical-necessity documentation present",
-      "citation": "spec-v52 §4.5.2 R-PA-CMS-011. LCD L33820 (Hospital Beds and Accessories) requires documentation that the beneficiary has a condition requiring positioning of the body in ways not feasible with an ordinary bed (e.g., head elevation > 30°, frequent body position change).",
-      "evidence": "No hospital-bed anchor; rule vacuously satisfied.",
-      "note": null,
-      "remediation": null
-    },
-    {
-      "ruleId": "R-PA-CMS-012",
-      "severity": "flag",
-      "status": "pass",
-      "description": "Medicare FFS enteral nutrition: inability to ingest / projected duration documented",
-      "citation": "spec-v52 §4.5.2 R-PA-CMS-012. LCD L33783 (Enteral Nutrition) requires documentation of a permanent (>= 90 days) inability to take nutrition orally and a functioning gastrointestinal tract.",
-      "evidence": "No enteral-nutrition anchor; rule vacuously satisfied.",
-      "note": null,
-      "remediation": null
-    },
-    {
-      "ruleId": "R-PA-CMS-013",
-      "severity": "flag",
-      "status": "pass",
-      "description": "Medicare FFS nebulizer: obstructive pulmonary disease diagnosis documented",
-      "citation": "spec-v52 §4.5.2 R-PA-CMS-013. LCD L33370 (Nebulizers) requires documentation of a covered diagnosis (COPD, asthma, cystic fibrosis, bronchiectasis, etc.) and the inhalation drug being delivered.",
-      "evidence": "No nebulizer anchor; rule vacuously satisfied.",
-      "note": null,
-      "remediation": null
-    },
-    {
-      "ruleId": "R-PA-CMS-014",
-      "severity": "block",
-      "status": "pass",
-      "description": "Medicare FFS TENS unit: chronic intractable pain > 3 months + failed conventional therapy documented",
-      "citation": "spec-v52 §4.5.2 R-PA-CMS-014. NCD 160.13 / LCD L33802 (TENS) requires chronic intractable pain present > 3 months and documentation of failure or unsuitability of conventional therapy.",
-      "evidence": "No TENS anchor; rule vacuously satisfied.",
-      "note": null,
-      "remediation": null
-    },
-    {
-      "ruleId": "R-PA-CMS-015",
-      "severity": "flag",
-      "status": "pass",
-      "description": "Medicare FFS NPWT: wound type / size / failed standard wound care documented",
-      "citation": "spec-v52 §4.5.2 R-PA-CMS-015. LCD L33821 (Negative Pressure Wound Therapy) requires documentation of a covered wound type (Stage III/IV pressure ulcer, neuropathic ulcer, etc.) plus failure of standard wound care.",
-      "evidence": "No NPWT anchor; rule vacuously satisfied.",
-      "note": null,
-      "remediation": null
-    },
-    {
-      "ruleId": "R-PA-CMS-016",
-      "severity": "flag",
-      "status": "pass",
-      "description": "Medicare FFS lower-limb prosthesis: K-level / functional rehabilitation potential documented",
-      "citation": "spec-v52 §4.5.2 R-PA-CMS-016. LCD L33787 (Lower Limb Prostheses) requires documentation of the beneficiary's functional level (K0-K4) and rehabilitation potential.",
-      "evidence": "No lower-limb-prosthesis anchor; rule vacuously satisfied.",
-      "note": null,
-      "remediation": null
-    },
-    {
-      "ruleId": "R-PA-CMS-017",
-      "severity": "flag",
-      "status": "pass",
-      "description": "Medicare FFS orthotics: documented condition + L-code present",
-      "citation": "spec-v52 §4.5.2 R-PA-CMS-017. LCD L33686 (Ankle-Foot / Knee-Ankle-Foot Orthoses) requires documentation of a condition (e.g., drop foot, peroneal palsy, post-CVA) plus an appropriate L-code HCPCS.",
-      "evidence": "No orthotic anchor; rule vacuously satisfied.",
-      "note": null,
-      "remediation": null
-    },
-    {
-      "ruleId": "R-PA-CMS-018",
-      "severity": "flag",
-      "status": "pass",
-      "description": "Medicare FFS continuous glucose monitor: insulin therapy + frequent self-monitoring documented",
-      "citation": "spec-v52 §4.5.2 R-PA-CMS-018. LCD L33822 (Glucose Monitors) requires documentation of insulin therapy AND a history of frequent self-monitoring (>= 4 fingersticks/day) or problematic hypoglycemia before CGM coverage.",
-      "evidence": "No CGM anchor; rule vacuously satisfied.",
-      "note": null,
-      "remediation": null
-    },
-    {
-      "ruleId": "R-PA-CMS-019",
-      "severity": "flag",
-      "status": "pass",
-      "description": "Medicare FFS post-transplant immunosuppressives: date and Medicare-covered transplant type documented",
-      "citation": "spec-v52 §4.5.2 R-PA-CMS-019. CMS Part B covers immunosuppressive drugs for beneficiaries who had a Medicare-covered organ transplant (kidney, heart, liver, lung, pancreas, intestinal). The transplant date and organ must be documented.",
-      "evidence": "No immunosuppressive anchor; rule vacuously satisfied.",
-      "note": null,
-      "remediation": null
-    },
-    {
-      "ruleId": "R-PA-CMS-020",
-      "severity": "flag",
-      "status": "pass",
-      "description": "Medicare FFS parenteral nutrition: documented GI tract failure + caloric requirements",
-      "citation": "spec-v52 §4.5.2 R-PA-CMS-020. LCD L33799 (Parenteral Nutrition) requires documentation that the GI tract is non-functional or inaccessible (e.g., short bowel syndrome, motility disorder, fistula) and an estimate of caloric / protein requirements.",
-      "evidence": "No parenteral-nutrition anchor; rule vacuously satisfied.",
-      "note": null,
-      "remediation": null
-    },
-    {
-      "ruleId": "R-PA-CMS-021",
-      "severity": "flag",
-      "status": "pass",
-      "description": "Medicare FFS lymphedema pneumatic compression pump: documented lymphedema + failed conservative therapy",
-      "citation": "spec-v52 §4.5.2 R-PA-CMS-021. LCD L33829 (Pneumatic Compression Devices) requires documentation of chronic venous insufficiency or lymphedema plus failure of a 4-week trial of conservative therapy (compression garments / manual lymphatic drainage).",
-      "evidence": "No pneumatic-compression anchor; rule vacuously satisfied.",
-      "note": null,
-      "remediation": null
-    },
-    {
-      "ruleId": "R-PA-CMS-022",
-      "severity": "flag",
-      "status": "pass",
-      "description": "Medicare FFS external infusion pump: covered chronic-disease indication + drug compatibility documented",
-      "citation": "spec-v52 §4.5.2 R-PA-CMS-022. LCD L33794 (External Infusion Pumps) requires a covered indication (e.g., chemotherapy, antifungal therapy, parenteral hydration, inotropic therapy) and an FDA-approved infusion drug.",
-      "evidence": "No external-infusion-pump anchor; rule vacuously satisfied.",
-      "note": null,
-      "remediation": null
-    },
-    {
-      "ruleId": "R-PA-CMS-023",
-      "severity": "flag",
-      "status": "pass",
-      "description": "Medicare FFS ostomy supplies: ostomy type documented + quantity within monthly utilization limits",
-      "citation": "spec-v52 §4.5.2 R-PA-CMS-023. LCD L33828 (Ostomy Supplies) requires documentation of ostomy type (colostomy, ileostomy, urostomy) and quantity must align with the LCD utilization parameters.",
-      "evidence": "No ostomy anchor; rule vacuously satisfied.",
-      "note": null,
-      "remediation": null
-    },
-    {
-      "ruleId": "R-PA-CMS-024",
-      "severity": "flag",
-      "status": "pass",
-      "description": "Medicare FFS urinary catheters: permanent urinary incontinence / retention diagnosis documented",
-      "citation": "spec-v52 §4.5.2 R-PA-CMS-024. LCD L33803 (Urological Supplies) requires documentation of permanent urinary incontinence or urinary retention.",
-      "evidence": "No urinary-catheter anchor; rule vacuously satisfied.",
-      "note": null,
-      "remediation": null
-    },
-    {
-      "ruleId": "R-PA-CMS-025",
-      "severity": "flag",
-      "status": "pass",
-      "description": "Medicare FFS surgical dressings: wound surface area + dressing-change frequency documented",
-      "citation": "spec-v52 §4.5.2 R-PA-CMS-025. LCD L33831 (Surgical Dressings) requires documentation of wound surface area and frequency of dressing changes so utilization can be matched to the dressing category.",
-      "evidence": "No surgical-dressing anchor; rule vacuously satisfied.",
-      "note": null,
-      "remediation": null
-    },
-    {
-      "ruleId": "R-PA-CMS-026",
-      "severity": "flag",
-      "status": "pass",
-      "description": "Medicare FFS post-cataract refractive lenses: cataract-surgery date + surgical CPT documented",
-      "citation": "spec-v52 §4.5.2 R-PA-CMS-026. NCD 80.4 covers one pair of conventional eyeglasses or contact lenses after each cataract surgery with insertion of an intraocular lens; the surgery date and procedure code must be documented.",
-      "evidence": "No post-cataract-lens anchor; rule vacuously satisfied.",
       "note": null,
       "remediation": null
     },
@@ -1370,12 +1160,222 @@
       "evidence": "No surgery CPT in packet; rule vacuously satisfied.",
       "note": null,
       "remediation": null
+    },
+    {
+      "ruleId": "R-PA-CMS-001",
+      "severity": "block",
+      "status": "disabled",
+      "description": "Medicare FFS DME: face-to-face encounter documented",
+      "citation": "spec-v52 §4.5.2 R-PA-CMS-001. CMS NCD-280.x; Medicare requires a face-to-face encounter with the prescribing physician within 6 months prior to the written order for most DME categories.",
+      "evidence": null,
+      "note": "Rule disabled: source \"cms-ncd-lcd\" is unavailable as of 2026-06-01 -- CMS Medicare Coverage Database URL returned 404 on 2026-06-01; re-point pending. The rule did not run and will run again once the source is re-pointed (docs/pa-maintenance.md).",
+      "remediation": null
+    },
+    {
+      "ruleId": "R-PA-CMS-005",
+      "severity": "flag",
+      "status": "disabled",
+      "description": "Medicare FFS mobility device: patient functional status documented",
+      "citation": "spec-v52 §4.5.2 R-PA-CMS-005. CMS LCD L33788 (Power Mobility Devices) requires a documented mobility limitation evaluation: ADL impact, ambulation distance, balance, and home accessibility.",
+      "evidence": null,
+      "note": "Rule disabled: source \"cms-ncd-lcd\" is unavailable as of 2026-06-01 -- CMS Medicare Coverage Database URL returned 404 on 2026-06-01; re-point pending. The rule did not run and will run again once the source is re-pointed (docs/pa-maintenance.md).",
+      "remediation": null
+    },
+    {
+      "ruleId": "R-PA-CMS-006",
+      "severity": "flag",
+      "status": "disabled",
+      "description": "Medicare FFS PAP device: sleep study results documented within 12 months prior to initial PAP order",
+      "citation": "spec-v52 §4.5.2 R-PA-CMS-006. LCD L33718 (Positive Airway Pressure Devices) requires a Medicare-covered sleep test with results within 12 months prior to initiating PAP therapy.",
+      "evidence": null,
+      "note": "Rule disabled: source \"cms-ncd-lcd\" is unavailable as of 2026-06-01 -- CMS Medicare Coverage Database URL returned 404 on 2026-06-01; re-point pending. The rule did not run and will run again once the source is re-pointed (docs/pa-maintenance.md).",
+      "remediation": null
+    },
+    {
+      "ruleId": "R-PA-CMS-007",
+      "severity": "flag",
+      "status": "disabled",
+      "description": "Medicare FFS PAP continuation: 90-day adherence / compliance documentation",
+      "citation": "spec-v52 §4.5.2 R-PA-CMS-007. LCD L33718 requires documentation that the beneficiary is using PAP >= 4 hours/night on >= 70% of nights during a consecutive 30-day period within the first 90 days of initial PAP use, before continued coverage past three months.",
+      "evidence": null,
+      "note": "Rule disabled: source \"cms-ncd-lcd\" is unavailable as of 2026-06-01 -- CMS Medicare Coverage Database URL returned 404 on 2026-06-01; re-point pending. The rule did not run and will run again once the source is re-pointed (docs/pa-maintenance.md).",
+      "remediation": null
+    },
+    {
+      "ruleId": "R-PA-CMS-008",
+      "severity": "block",
+      "status": "disabled",
+      "description": "Medicare FFS home oxygen: qualifying arterial blood gas or pulse-oximetry result documented",
+      "citation": "spec-v52 §4.5.2 R-PA-CMS-008. CMS NCD 240.2 / LCD L33797 (Oxygen and Oxygen Equipment) requires a qualifying ABG (PaO2 <= 55 mmHg) or pulse oximetry (SpO2 <= 88%) on room air at rest, during sleep, or with exertion.",
+      "evidence": null,
+      "note": "Rule disabled: source \"cms-ncd-lcd\" is unavailable as of 2026-06-01 -- CMS Medicare Coverage Database URL returned 404 on 2026-06-01; re-point pending. The rule did not run and will run again once the source is re-pointed (docs/pa-maintenance.md).",
+      "remediation": null
+    },
+    {
+      "ruleId": "R-PA-CMS-011",
+      "severity": "flag",
+      "status": "disabled",
+      "description": "Medicare FFS hospital bed: medical-necessity documentation present",
+      "citation": "spec-v52 §4.5.2 R-PA-CMS-011. LCD L33820 (Hospital Beds and Accessories) requires documentation that the beneficiary has a condition requiring positioning of the body in ways not feasible with an ordinary bed (e.g., head elevation > 30°, frequent body position change).",
+      "evidence": null,
+      "note": "Rule disabled: source \"cms-ncd-lcd\" is unavailable as of 2026-06-01 -- CMS Medicare Coverage Database URL returned 404 on 2026-06-01; re-point pending. The rule did not run and will run again once the source is re-pointed (docs/pa-maintenance.md).",
+      "remediation": null
+    },
+    {
+      "ruleId": "R-PA-CMS-012",
+      "severity": "flag",
+      "status": "disabled",
+      "description": "Medicare FFS enteral nutrition: inability to ingest / projected duration documented",
+      "citation": "spec-v52 §4.5.2 R-PA-CMS-012. LCD L33783 (Enteral Nutrition) requires documentation of a permanent (>= 90 days) inability to take nutrition orally and a functioning gastrointestinal tract.",
+      "evidence": null,
+      "note": "Rule disabled: source \"cms-ncd-lcd\" is unavailable as of 2026-06-01 -- CMS Medicare Coverage Database URL returned 404 on 2026-06-01; re-point pending. The rule did not run and will run again once the source is re-pointed (docs/pa-maintenance.md).",
+      "remediation": null
+    },
+    {
+      "ruleId": "R-PA-CMS-013",
+      "severity": "flag",
+      "status": "disabled",
+      "description": "Medicare FFS nebulizer: obstructive pulmonary disease diagnosis documented",
+      "citation": "spec-v52 §4.5.2 R-PA-CMS-013. LCD L33370 (Nebulizers) requires documentation of a covered diagnosis (COPD, asthma, cystic fibrosis, bronchiectasis, etc.) and the inhalation drug being delivered.",
+      "evidence": null,
+      "note": "Rule disabled: source \"cms-ncd-lcd\" is unavailable as of 2026-06-01 -- CMS Medicare Coverage Database URL returned 404 on 2026-06-01; re-point pending. The rule did not run and will run again once the source is re-pointed (docs/pa-maintenance.md).",
+      "remediation": null
+    },
+    {
+      "ruleId": "R-PA-CMS-014",
+      "severity": "block",
+      "status": "disabled",
+      "description": "Medicare FFS TENS unit: chronic intractable pain > 3 months + failed conventional therapy documented",
+      "citation": "spec-v52 §4.5.2 R-PA-CMS-014. NCD 160.13 / LCD L33802 (TENS) requires chronic intractable pain present > 3 months and documentation of failure or unsuitability of conventional therapy.",
+      "evidence": null,
+      "note": "Rule disabled: source \"cms-ncd-lcd\" is unavailable as of 2026-06-01 -- CMS Medicare Coverage Database URL returned 404 on 2026-06-01; re-point pending. The rule did not run and will run again once the source is re-pointed (docs/pa-maintenance.md).",
+      "remediation": null
+    },
+    {
+      "ruleId": "R-PA-CMS-015",
+      "severity": "flag",
+      "status": "disabled",
+      "description": "Medicare FFS NPWT: wound type / size / failed standard wound care documented",
+      "citation": "spec-v52 §4.5.2 R-PA-CMS-015. LCD L33821 (Negative Pressure Wound Therapy) requires documentation of a covered wound type (Stage III/IV pressure ulcer, neuropathic ulcer, etc.) plus failure of standard wound care.",
+      "evidence": null,
+      "note": "Rule disabled: source \"cms-ncd-lcd\" is unavailable as of 2026-06-01 -- CMS Medicare Coverage Database URL returned 404 on 2026-06-01; re-point pending. The rule did not run and will run again once the source is re-pointed (docs/pa-maintenance.md).",
+      "remediation": null
+    },
+    {
+      "ruleId": "R-PA-CMS-016",
+      "severity": "flag",
+      "status": "disabled",
+      "description": "Medicare FFS lower-limb prosthesis: K-level / functional rehabilitation potential documented",
+      "citation": "spec-v52 §4.5.2 R-PA-CMS-016. LCD L33787 (Lower Limb Prostheses) requires documentation of the beneficiary's functional level (K0-K4) and rehabilitation potential.",
+      "evidence": null,
+      "note": "Rule disabled: source \"cms-ncd-lcd\" is unavailable as of 2026-06-01 -- CMS Medicare Coverage Database URL returned 404 on 2026-06-01; re-point pending. The rule did not run and will run again once the source is re-pointed (docs/pa-maintenance.md).",
+      "remediation": null
+    },
+    {
+      "ruleId": "R-PA-CMS-017",
+      "severity": "flag",
+      "status": "disabled",
+      "description": "Medicare FFS orthotics: documented condition + L-code present",
+      "citation": "spec-v52 §4.5.2 R-PA-CMS-017. LCD L33686 (Ankle-Foot / Knee-Ankle-Foot Orthoses) requires documentation of a condition (e.g., drop foot, peroneal palsy, post-CVA) plus an appropriate L-code HCPCS.",
+      "evidence": null,
+      "note": "Rule disabled: source \"cms-ncd-lcd\" is unavailable as of 2026-06-01 -- CMS Medicare Coverage Database URL returned 404 on 2026-06-01; re-point pending. The rule did not run and will run again once the source is re-pointed (docs/pa-maintenance.md).",
+      "remediation": null
+    },
+    {
+      "ruleId": "R-PA-CMS-018",
+      "severity": "flag",
+      "status": "disabled",
+      "description": "Medicare FFS continuous glucose monitor: insulin therapy + frequent self-monitoring documented",
+      "citation": "spec-v52 §4.5.2 R-PA-CMS-018. LCD L33822 (Glucose Monitors) requires documentation of insulin therapy AND a history of frequent self-monitoring (>= 4 fingersticks/day) or problematic hypoglycemia before CGM coverage.",
+      "evidence": null,
+      "note": "Rule disabled: source \"cms-ncd-lcd\" is unavailable as of 2026-06-01 -- CMS Medicare Coverage Database URL returned 404 on 2026-06-01; re-point pending. The rule did not run and will run again once the source is re-pointed (docs/pa-maintenance.md).",
+      "remediation": null
+    },
+    {
+      "ruleId": "R-PA-CMS-019",
+      "severity": "flag",
+      "status": "disabled",
+      "description": "Medicare FFS post-transplant immunosuppressives: date and Medicare-covered transplant type documented",
+      "citation": "spec-v52 §4.5.2 R-PA-CMS-019. CMS Part B covers immunosuppressive drugs for beneficiaries who had a Medicare-covered organ transplant (kidney, heart, liver, lung, pancreas, intestinal). The transplant date and organ must be documented.",
+      "evidence": null,
+      "note": "Rule disabled: source \"cms-ncd-lcd\" is unavailable as of 2026-06-01 -- CMS Medicare Coverage Database URL returned 404 on 2026-06-01; re-point pending. The rule did not run and will run again once the source is re-pointed (docs/pa-maintenance.md).",
+      "remediation": null
+    },
+    {
+      "ruleId": "R-PA-CMS-020",
+      "severity": "flag",
+      "status": "disabled",
+      "description": "Medicare FFS parenteral nutrition: documented GI tract failure + caloric requirements",
+      "citation": "spec-v52 §4.5.2 R-PA-CMS-020. LCD L33799 (Parenteral Nutrition) requires documentation that the GI tract is non-functional or inaccessible (e.g., short bowel syndrome, motility disorder, fistula) and an estimate of caloric / protein requirements.",
+      "evidence": null,
+      "note": "Rule disabled: source \"cms-ncd-lcd\" is unavailable as of 2026-06-01 -- CMS Medicare Coverage Database URL returned 404 on 2026-06-01; re-point pending. The rule did not run and will run again once the source is re-pointed (docs/pa-maintenance.md).",
+      "remediation": null
+    },
+    {
+      "ruleId": "R-PA-CMS-021",
+      "severity": "flag",
+      "status": "disabled",
+      "description": "Medicare FFS lymphedema pneumatic compression pump: documented lymphedema + failed conservative therapy",
+      "citation": "spec-v52 §4.5.2 R-PA-CMS-021. LCD L33829 (Pneumatic Compression Devices) requires documentation of chronic venous insufficiency or lymphedema plus failure of a 4-week trial of conservative therapy (compression garments / manual lymphatic drainage).",
+      "evidence": null,
+      "note": "Rule disabled: source \"cms-ncd-lcd\" is unavailable as of 2026-06-01 -- CMS Medicare Coverage Database URL returned 404 on 2026-06-01; re-point pending. The rule did not run and will run again once the source is re-pointed (docs/pa-maintenance.md).",
+      "remediation": null
+    },
+    {
+      "ruleId": "R-PA-CMS-022",
+      "severity": "flag",
+      "status": "disabled",
+      "description": "Medicare FFS external infusion pump: covered chronic-disease indication + drug compatibility documented",
+      "citation": "spec-v52 §4.5.2 R-PA-CMS-022. LCD L33794 (External Infusion Pumps) requires a covered indication (e.g., chemotherapy, antifungal therapy, parenteral hydration, inotropic therapy) and an FDA-approved infusion drug.",
+      "evidence": null,
+      "note": "Rule disabled: source \"cms-ncd-lcd\" is unavailable as of 2026-06-01 -- CMS Medicare Coverage Database URL returned 404 on 2026-06-01; re-point pending. The rule did not run and will run again once the source is re-pointed (docs/pa-maintenance.md).",
+      "remediation": null
+    },
+    {
+      "ruleId": "R-PA-CMS-023",
+      "severity": "flag",
+      "status": "disabled",
+      "description": "Medicare FFS ostomy supplies: ostomy type documented + quantity within monthly utilization limits",
+      "citation": "spec-v52 §4.5.2 R-PA-CMS-023. LCD L33828 (Ostomy Supplies) requires documentation of ostomy type (colostomy, ileostomy, urostomy) and quantity must align with the LCD utilization parameters.",
+      "evidence": null,
+      "note": "Rule disabled: source \"cms-ncd-lcd\" is unavailable as of 2026-06-01 -- CMS Medicare Coverage Database URL returned 404 on 2026-06-01; re-point pending. The rule did not run and will run again once the source is re-pointed (docs/pa-maintenance.md).",
+      "remediation": null
+    },
+    {
+      "ruleId": "R-PA-CMS-024",
+      "severity": "flag",
+      "status": "disabled",
+      "description": "Medicare FFS urinary catheters: permanent urinary incontinence / retention diagnosis documented",
+      "citation": "spec-v52 §4.5.2 R-PA-CMS-024. LCD L33803 (Urological Supplies) requires documentation of permanent urinary incontinence or urinary retention.",
+      "evidence": null,
+      "note": "Rule disabled: source \"cms-ncd-lcd\" is unavailable as of 2026-06-01 -- CMS Medicare Coverage Database URL returned 404 on 2026-06-01; re-point pending. The rule did not run and will run again once the source is re-pointed (docs/pa-maintenance.md).",
+      "remediation": null
+    },
+    {
+      "ruleId": "R-PA-CMS-025",
+      "severity": "flag",
+      "status": "disabled",
+      "description": "Medicare FFS surgical dressings: wound surface area + dressing-change frequency documented",
+      "citation": "spec-v52 §4.5.2 R-PA-CMS-025. LCD L33831 (Surgical Dressings) requires documentation of wound surface area and frequency of dressing changes so utilization can be matched to the dressing category.",
+      "evidence": null,
+      "note": "Rule disabled: source \"cms-ncd-lcd\" is unavailable as of 2026-06-01 -- CMS Medicare Coverage Database URL returned 404 on 2026-06-01; re-point pending. The rule did not run and will run again once the source is re-pointed (docs/pa-maintenance.md).",
+      "remediation": null
+    },
+    {
+      "ruleId": "R-PA-CMS-026",
+      "severity": "flag",
+      "status": "disabled",
+      "description": "Medicare FFS post-cataract refractive lenses: cataract-surgery date + surgical CPT documented",
+      "citation": "spec-v52 §4.5.2 R-PA-CMS-026. NCD 80.4 covers one pair of conventional eyeglasses or contact lenses after each cataract surgery with insertion of an intraocular lens; the surgery date and procedure code must be documented.",
+      "evidence": null,
+      "note": "Rule disabled: source \"cms-ncd-lcd\" is unavailable as of 2026-06-01 -- CMS Medicare Coverage Database URL returned 404 on 2026-06-01; re-point pending. The rule did not run and will run again once the source is re-pointed (docs/pa-maintenance.md).",
+      "remediation": null
     }
   ],
   "evidenceLedger": [
     {
       "document": "cms-pa-form.txt",
-      "sha256": "fixture-cms-dme-form",
+      "sha256": "fixture-disabled-source-form",
       "kind": "TXT",
       "role": "pa-form",
       "payer": "cms-medicare-ffs",
@@ -1417,7 +1417,7 @@
     },
     {
       "document": "cms-note.txt",
-      "sha256": "fixture-cms-dme-note",
+      "sha256": "fixture-disabled-source-note",
       "kind": "TXT",
       "role": "clinical-note",
       "payer": "unknown",
@@ -1438,7 +1438,7 @@
   "extractedData": [
     {
       "document": "cms-pa-form.txt",
-      "sha256": "fixture-cms-dme-form",
+      "sha256": "fixture-disabled-source-form",
       "extract": {
         "npis": [
           "1234567893",
@@ -1483,7 +1483,7 @@
     },
     {
       "document": "cms-note.txt",
-      "sha256": "fixture-cms-dme-note",
+      "sha256": "fixture-disabled-source-note",
       "extract": {
         "npis": [],
         "ssns": [],
@@ -1584,30 +1584,9 @@
       "R-PA-BH-003",
       "R-PA-BH-004",
       "R-PA-BH-005",
-      "R-PA-CMS-001",
       "R-PA-CMS-002",
       "R-PA-CMS-003",
       "R-PA-CMS-004",
-      "R-PA-CMS-005",
-      "R-PA-CMS-006",
-      "R-PA-CMS-007",
-      "R-PA-CMS-008",
-      "R-PA-CMS-011",
-      "R-PA-CMS-012",
-      "R-PA-CMS-013",
-      "R-PA-CMS-014",
-      "R-PA-CMS-015",
-      "R-PA-CMS-016",
-      "R-PA-CMS-017",
-      "R-PA-CMS-018",
-      "R-PA-CMS-019",
-      "R-PA-CMS-020",
-      "R-PA-CMS-021",
-      "R-PA-CMS-022",
-      "R-PA-CMS-023",
-      "R-PA-CMS-024",
-      "R-PA-CMS-025",
-      "R-PA-CMS-026",
       "R-PA-GEN-001",
       "R-PA-GEN-002",
       "R-PA-GEN-003",
@@ -1652,17 +1631,123 @@
       "R-PA-SURG-002",
       "R-PA-SURG-003",
       "R-PA-SURG-004",
-      "R-PA-SURG-005"
+      "R-PA-SURG-005",
+      "R-PA-CMS-001",
+      "R-PA-CMS-005",
+      "R-PA-CMS-006",
+      "R-PA-CMS-007",
+      "R-PA-CMS-008",
+      "R-PA-CMS-011",
+      "R-PA-CMS-012",
+      "R-PA-CMS-013",
+      "R-PA-CMS-014",
+      "R-PA-CMS-015",
+      "R-PA-CMS-016",
+      "R-PA-CMS-017",
+      "R-PA-CMS-018",
+      "R-PA-CMS-019",
+      "R-PA-CMS-020",
+      "R-PA-CMS-021",
+      "R-PA-CMS-022",
+      "R-PA-CMS-023",
+      "R-PA-CMS-024",
+      "R-PA-CMS-025",
+      "R-PA-CMS-026"
     ],
-    "disabledRules": [],
+    "disabledRules": [
+      {
+        "ruleId": "R-PA-CMS-001",
+        "reason": "Rule disabled: source \"cms-ncd-lcd\" is unavailable as of 2026-06-01 -- CMS Medicare Coverage Database URL returned 404 on 2026-06-01; re-point pending. The rule did not run and will run again once the source is re-pointed (docs/pa-maintenance.md)."
+      },
+      {
+        "ruleId": "R-PA-CMS-005",
+        "reason": "Rule disabled: source \"cms-ncd-lcd\" is unavailable as of 2026-06-01 -- CMS Medicare Coverage Database URL returned 404 on 2026-06-01; re-point pending. The rule did not run and will run again once the source is re-pointed (docs/pa-maintenance.md)."
+      },
+      {
+        "ruleId": "R-PA-CMS-006",
+        "reason": "Rule disabled: source \"cms-ncd-lcd\" is unavailable as of 2026-06-01 -- CMS Medicare Coverage Database URL returned 404 on 2026-06-01; re-point pending. The rule did not run and will run again once the source is re-pointed (docs/pa-maintenance.md)."
+      },
+      {
+        "ruleId": "R-PA-CMS-007",
+        "reason": "Rule disabled: source \"cms-ncd-lcd\" is unavailable as of 2026-06-01 -- CMS Medicare Coverage Database URL returned 404 on 2026-06-01; re-point pending. The rule did not run and will run again once the source is re-pointed (docs/pa-maintenance.md)."
+      },
+      {
+        "ruleId": "R-PA-CMS-008",
+        "reason": "Rule disabled: source \"cms-ncd-lcd\" is unavailable as of 2026-06-01 -- CMS Medicare Coverage Database URL returned 404 on 2026-06-01; re-point pending. The rule did not run and will run again once the source is re-pointed (docs/pa-maintenance.md)."
+      },
+      {
+        "ruleId": "R-PA-CMS-011",
+        "reason": "Rule disabled: source \"cms-ncd-lcd\" is unavailable as of 2026-06-01 -- CMS Medicare Coverage Database URL returned 404 on 2026-06-01; re-point pending. The rule did not run and will run again once the source is re-pointed (docs/pa-maintenance.md)."
+      },
+      {
+        "ruleId": "R-PA-CMS-012",
+        "reason": "Rule disabled: source \"cms-ncd-lcd\" is unavailable as of 2026-06-01 -- CMS Medicare Coverage Database URL returned 404 on 2026-06-01; re-point pending. The rule did not run and will run again once the source is re-pointed (docs/pa-maintenance.md)."
+      },
+      {
+        "ruleId": "R-PA-CMS-013",
+        "reason": "Rule disabled: source \"cms-ncd-lcd\" is unavailable as of 2026-06-01 -- CMS Medicare Coverage Database URL returned 404 on 2026-06-01; re-point pending. The rule did not run and will run again once the source is re-pointed (docs/pa-maintenance.md)."
+      },
+      {
+        "ruleId": "R-PA-CMS-014",
+        "reason": "Rule disabled: source \"cms-ncd-lcd\" is unavailable as of 2026-06-01 -- CMS Medicare Coverage Database URL returned 404 on 2026-06-01; re-point pending. The rule did not run and will run again once the source is re-pointed (docs/pa-maintenance.md)."
+      },
+      {
+        "ruleId": "R-PA-CMS-015",
+        "reason": "Rule disabled: source \"cms-ncd-lcd\" is unavailable as of 2026-06-01 -- CMS Medicare Coverage Database URL returned 404 on 2026-06-01; re-point pending. The rule did not run and will run again once the source is re-pointed (docs/pa-maintenance.md)."
+      },
+      {
+        "ruleId": "R-PA-CMS-016",
+        "reason": "Rule disabled: source \"cms-ncd-lcd\" is unavailable as of 2026-06-01 -- CMS Medicare Coverage Database URL returned 404 on 2026-06-01; re-point pending. The rule did not run and will run again once the source is re-pointed (docs/pa-maintenance.md)."
+      },
+      {
+        "ruleId": "R-PA-CMS-017",
+        "reason": "Rule disabled: source \"cms-ncd-lcd\" is unavailable as of 2026-06-01 -- CMS Medicare Coverage Database URL returned 404 on 2026-06-01; re-point pending. The rule did not run and will run again once the source is re-pointed (docs/pa-maintenance.md)."
+      },
+      {
+        "ruleId": "R-PA-CMS-018",
+        "reason": "Rule disabled: source \"cms-ncd-lcd\" is unavailable as of 2026-06-01 -- CMS Medicare Coverage Database URL returned 404 on 2026-06-01; re-point pending. The rule did not run and will run again once the source is re-pointed (docs/pa-maintenance.md)."
+      },
+      {
+        "ruleId": "R-PA-CMS-019",
+        "reason": "Rule disabled: source \"cms-ncd-lcd\" is unavailable as of 2026-06-01 -- CMS Medicare Coverage Database URL returned 404 on 2026-06-01; re-point pending. The rule did not run and will run again once the source is re-pointed (docs/pa-maintenance.md)."
+      },
+      {
+        "ruleId": "R-PA-CMS-020",
+        "reason": "Rule disabled: source \"cms-ncd-lcd\" is unavailable as of 2026-06-01 -- CMS Medicare Coverage Database URL returned 404 on 2026-06-01; re-point pending. The rule did not run and will run again once the source is re-pointed (docs/pa-maintenance.md)."
+      },
+      {
+        "ruleId": "R-PA-CMS-021",
+        "reason": "Rule disabled: source \"cms-ncd-lcd\" is unavailable as of 2026-06-01 -- CMS Medicare Coverage Database URL returned 404 on 2026-06-01; re-point pending. The rule did not run and will run again once the source is re-pointed (docs/pa-maintenance.md)."
+      },
+      {
+        "ruleId": "R-PA-CMS-022",
+        "reason": "Rule disabled: source \"cms-ncd-lcd\" is unavailable as of 2026-06-01 -- CMS Medicare Coverage Database URL returned 404 on 2026-06-01; re-point pending. The rule did not run and will run again once the source is re-pointed (docs/pa-maintenance.md)."
+      },
+      {
+        "ruleId": "R-PA-CMS-023",
+        "reason": "Rule disabled: source \"cms-ncd-lcd\" is unavailable as of 2026-06-01 -- CMS Medicare Coverage Database URL returned 404 on 2026-06-01; re-point pending. The rule did not run and will run again once the source is re-pointed (docs/pa-maintenance.md)."
+      },
+      {
+        "ruleId": "R-PA-CMS-024",
+        "reason": "Rule disabled: source \"cms-ncd-lcd\" is unavailable as of 2026-06-01 -- CMS Medicare Coverage Database URL returned 404 on 2026-06-01; re-point pending. The rule did not run and will run again once the source is re-pointed (docs/pa-maintenance.md)."
+      },
+      {
+        "ruleId": "R-PA-CMS-025",
+        "reason": "Rule disabled: source \"cms-ncd-lcd\" is unavailable as of 2026-06-01 -- CMS Medicare Coverage Database URL returned 404 on 2026-06-01; re-point pending. The rule did not run and will run again once the source is re-pointed (docs/pa-maintenance.md)."
+      },
+      {
+        "ruleId": "R-PA-CMS-026",
+        "reason": "Rule disabled: source \"cms-ncd-lcd\" is unavailable as of 2026-06-01 -- CMS Medicare Coverage Database URL returned 404 on 2026-06-01; re-point pending. The rule did not run and will run again once the source is re-pointed (docs/pa-maintenance.md)."
+      }
+    ],
     "documentHashes": [
       {
         "document": "cms-pa-form.txt",
-        "sha256": "fixture-cms-dme-form"
+        "sha256": "fixture-disabled-source-form"
       },
       {
         "document": "cms-note.txt",
-        "sha256": "fixture-cms-dme-note"
+        "sha256": "fixture-disabled-source-note"
       }
     ],
     "totalBytes": 16384,

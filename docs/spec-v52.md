@@ -1345,6 +1345,43 @@ silently; the audit trail records the disablement.
 
 - 2026-05-27 — v52 proposed. Five waves outlined (52-1 through
   52-5+). Catalog count target at v52-1 close: 255.
+- 2026-05-29 — wave 52-6j (§4.5.6 stale-source disabling — the engine half).
+  Closes the last "Not yet built" item in `docs/pa-maintenance.md`: §4.5.6's
+  "if the source URL 404s, the rule is set to `disabled` and the engine skips
+  it; the audit trail explicitly says why." Wave 52-6i's refresh helper only
+  *recommended* the disable; this wave wires the engine to act on it.
+
+  A ledger source may now carry a `disabled` field (`true` or
+  `{ since, reason }`). `disabledSourceMap(ledger)` (new, `lib/pa/staleness.js`,
+  pure) normalizes those into a `Map sourceId -> { since, reason }`.
+  `runEngine(bundle, rules, opts)` gains `opts.disabledSources`: before running
+  a rule it checks the rule's per-rule `sources` (wave 52-6h) against that map
+  and, on a hit, pushes a `status: "disabled"` finding (evidence null, note =
+  source + since + reason + "will run again once the source is re-pointed")
+  instead of calling `check`. `summarizeFindings` gains a `disabled` count;
+  `report.js` adds a `disabledRules` array (ruleId + reason) to the audit
+  trail; `docx.js` renders the disabled count in the executive summary and a
+  "Disabled rules" subsection. `views/pa-lint.js` derives the disabled set from
+  the bundled `PA_STALENESS_LEDGER` and passes it — a no-op today (the shipped
+  ledger disables nothing) that wires the mechanism for a real 404.
+
+  Determinism / no golden surprise: with no disabled sources the only output
+  delta is `counts.disabled: 0` and `auditTrail.disabledRules: []`, so the four
+  existing goldens were re-seeded to add exactly those two fields. A fifth
+  fixture, `disabled-source` (a `disabledSources` field on the fixture lets
+  `audit-pa` exercise the path without touching the shipped ledger), disables
+  `cms-ncd-lcd` and its golden shows the 21 NCD/LCD CMS rules disabled while the
+  4 IOM-anchored FFS rules and all core / overlay rules still run.
+
+  Tests: +3 assertions in `test/unit/pa-engine.test.js` (anchored rule disabled
+  and its check skipped; other-source and structural rules untouched; disabled
+  count + empty-map no-op) and +2 in `test/unit/pa-staleness.test.js`
+  (`disabledSourceMap` normalizes both forms; the shipped ledger disables
+  nothing). Unit suite 2028 -> 2033; `audit-pa` now covers 5 fixtures.
+  `docs/pa-maintenance.md` documents the disable workflow and its "Not yet
+  built" list is now empty — spec-v52's §4.5.6 surface is complete. Lint
+  (incl. `audit-pa`), the unit suite, a11y, the static build, and the PA +
+  smoke Playwright specs are green. View wave banner advanced to 52-6j.
 - 2026-05-29 — wave 52-6i (§4.5.6 / §8.2 `scripts/refresh-pa-rules.mjs`).
   Closes the last "Not yet built" item in `docs/pa-maintenance.md`: the
   maintainer refresh helper, unblocked by wave 52-6h's per-rule source
