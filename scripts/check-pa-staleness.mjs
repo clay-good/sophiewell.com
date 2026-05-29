@@ -21,8 +21,9 @@
 import { readFile } from 'node:fs/promises';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { evaluateStaleness, STATE } from '../lib/pa/staleness.js';
+import { evaluateStaleness, STATE, findLedgerRuleOrphans } from '../lib/pa/staleness.js';
 import { renderModule } from './build-pa-staleness-ledger.mjs';
+import { STARTER_RULES } from '../lib/pa/rules.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(__dirname, '..');
@@ -59,6 +60,22 @@ async function main() {
     process.exit(1);
   }
 
+  // spec-v52 §4.5.6 / §8.3: the ledger's per-source `rules` arrays must name
+  // rule ids that actually ship in lib/pa/rules.js. A renamed or retired rule
+  // (cf. the wave 52-2b id correction) would otherwise leave the ledger -- and
+  // the deferred refresh script that iterates these ids -- pointing at a dead
+  // reference. Fail on any orphan.
+  const shippedIds = new Set(STARTER_RULES.map((r) => r.id));
+  const orphans = findLedgerRuleOrphans(ledger, shippedIds);
+  if (orphans.length) {
+    for (const o of orphans) {
+      console.error(`  ORPHAN ${o.ruleId}: referenced by source "${o.sourceId}" but not in the shipped ruleset.`);
+    }
+    console.error(`check-pa-staleness: ${orphans.length} ledger rule reference(s) do not match lib/pa/rules.js.`);
+    console.error('  Re-point the ledger source\'s `rules` list to a current rule id, or drop the stale id. See docs/pa-maintenance.md.');
+    process.exit(1);
+  }
+
   const result = evaluateStaleness(ledger, now);
   const { summary, policy, evaluatedAt } = result;
 
@@ -89,10 +106,11 @@ async function main() {
     process.exit(1);
   }
 
+  const coverage = `${shippedIds.size} rules shipped, 0 ledger orphans`;
   if (warns.length) {
-    console.log(`check-pa-staleness: clean with warnings (${tally}).`);
+    console.log(`check-pa-staleness: clean with warnings (${tally}; ${coverage}).`);
   } else {
-    console.log(`check-pa-staleness: clean (${tally}).`);
+    console.log(`check-pa-staleness: clean (${tally}; ${coverage}).`);
   }
   process.exit(0);
 }

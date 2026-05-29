@@ -93,6 +93,19 @@ Pin the evaluation date for reproduction with
 The pure evaluator lives in `lib/pa/staleness.js` and is unit-tested in
 `test/unit/pa-staleness.test.js`.
 
+## Ledger -> ruleset coverage (spec-v52 §4.5.6)
+
+The same check (wave 52-6e) also verifies that every rule id named in a
+source's `rules` array actually ships in `lib/pa/rules.js` (the
+`STARTER_RULES` set). The `rules` arrays are the representative anchor rules
+for each source -- not an exhaustive map -- but a reference that no longer
+exists is a silent error: a renamed or retired rule (cf. the wave 52-2b id
+correction) would leave the ledger, and the deferred `refresh-pa-rules.mjs`
+that iterates these ids, pointing at a dead reference. `findLedgerRuleOrphans`
+(`lib/pa/staleness.js`) returns any such orphans and the check exits 1 on the
+first one, so when you rename a rule you must re-point or drop its ledger
+reference in the same change.
+
 ## Not yet built
 
 - `scripts/refresh-pa-rules.mjs` (spec-v52 §4.5.6 / §8.2): the nightly
@@ -100,7 +113,13 @@ The pure evaluator lives in `lib/pa/staleness.js` and is unit-tested in
   source URLs and the structured per-rule source metadata from §4.5.6,
   neither of which ships yet (the rules currently carry free-text
   citations in `lib/pa/rules.js`). Until it lands, verification is the
-  manual monthly pass above.
+  manual monthly pass above, and the ledger -> ruleset coverage check
+  guards the rule ids the script will iterate.
+
+## Already shipped (kept here for the audit trail)
+
 - Surfacing per-source staleness state inside the in-tab report audit
-  trail (§8.3 final clause). That needs the ledger bundled into the
-  shipped JS to honor no-network; deferred to a later wave.
+  trail (§8.3 final clause) shipped in wave 52-6d:
+  `scripts/build-pa-staleness-ledger.mjs` emits the browser-bundleable
+  `lib/pa/staleness-ledger.js`, and `lib/pa/report.js` renders a per-source
+  `datasetStaleness` block in the audit trail with no runtime fetch.

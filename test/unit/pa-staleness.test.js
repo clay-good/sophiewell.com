@@ -5,7 +5,7 @@
 
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { evaluateStaleness, STATE } from '../../lib/pa/staleness.js';
+import { evaluateStaleness, STATE, findLedgerRuleOrphans } from '../../lib/pa/staleness.js';
 
 function ledgerWith(sources, extra) {
   return {
@@ -90,6 +90,42 @@ test('summary tallies and worst reflect a mixed ledger', () => {
   assert.deepEqual(r.summary, { fresh: 1, warn: 1, fail: 1, acknowledged: 0, invalid: 0 });
   assert.equal(r.worst, STATE.FAIL);
   assert.equal(r.ok, false);
+});
+
+// spec-v52 §4.5.6 / §8.3 (wave 52-6e): ledger -> ruleset coverage. -----------
+
+test('findLedgerRuleOrphans returns an empty array when every reference ships', () => {
+  const ledger = ledgerWith([{ ...SRC('a', '2026-05-01'), rules: ['R-PA-001', 'R-PA-002'] }]);
+  assert.deepEqual(findLedgerRuleOrphans(ledger, ['R-PA-001', 'R-PA-002', 'R-PA-003']), []);
+  // a Set is accepted as well as an array
+  assert.deepEqual(findLedgerRuleOrphans(ledger, new Set(['R-PA-001', 'R-PA-002'])), []);
+});
+
+test('findLedgerRuleOrphans reports each dead reference with its source, in order', () => {
+  const ledger = ledgerWith([
+    { ...SRC('a', '2026-05-01'), rules: ['R-PA-001', 'R-PA-GONE'] },
+    { ...SRC('b', '2026-05-01'), rules: ['R-PA-ALSO-GONE'] },
+  ]);
+  assert.deepEqual(findLedgerRuleOrphans(ledger, ['R-PA-001']), [
+    { sourceId: 'a', ruleId: 'R-PA-GONE' },
+    { sourceId: 'b', ruleId: 'R-PA-ALSO-GONE' },
+  ]);
+});
+
+test('findLedgerRuleOrphans tolerates a source with no rules array', () => {
+  const ledger = ledgerWith([SRC('a', '2026-05-01')]);
+  assert.deepEqual(findLedgerRuleOrphans(ledger, ['R-PA-001']), []);
+});
+
+test('the shipped ledger references only rule ids that ship in lib/pa/rules.js', async () => {
+  const { readFile } = await import('node:fs/promises');
+  const { fileURLToPath } = await import('node:url');
+  const { dirname, join } = await import('node:path');
+  const { STARTER_RULES } = await import('../../lib/pa/rules.js');
+  const here = dirname(fileURLToPath(import.meta.url));
+  const ledger = JSON.parse(await readFile(join(here, '../../pa-staleness-ledger.json'), 'utf8'));
+  const orphans = findLedgerRuleOrphans(ledger, new Set(STARTER_RULES.map((r) => r.id)));
+  assert.deepEqual(orphans, [], 'every ledger rule reference must name a shipped rule');
 });
 
 test('the shipped ledger is fresh as of its verification date', async () => {

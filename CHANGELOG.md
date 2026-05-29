@@ -6,6 +6,35 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v52 wave 52-6e — §4.5.6 / §8.3 follow-up: ledger → ruleset coverage)
+
+Closes a silent-drift gap in the dataset-staleness ledger: its per-source
+`rules` arrays named rule ids with nothing verifying those ids still ship.
+A renamed or retired rule (cf. the wave 52-2b id correction) would leave
+the ledger — and the deferred `scripts/refresh-pa-rules.mjs` that will
+iterate exactly these ids — pointing at a dead reference.
+
+**New surfaces:**
+
+- `lib/pa/staleness.js` `findLedgerRuleOrphans(ledger, shippedRuleIds)` —
+  pure helper returning every ledger-referenced rule id absent from the
+  shipped set, in deterministic (source, then listed) order. Accepts an
+  array or a `Set`.
+- `scripts/check-pa-staleness.mjs` (already in `npm run lint`) imports
+  `STARTER_RULES` from `lib/pa/rules.js`, builds the shipped-id set, and
+  exits 1 on the first orphan; the clean line now also reports
+  `135 rules shipped, 0 ledger orphans`.
+
+The `rules` arrays stay the representative anchor rules per source (not an
+exhaustive map), so no reverse "every rule must have a source" check is
+added — that needs the per-rule structured source metadata §4.5.6 still
+defers with the refresh script.
+
+**Tests / docs:** 4 new assertions in `test/unit/pa-staleness.test.js`.
+`docs/pa-maintenance.md` documents the coverage check and corrects its
+"Not yet built" list — the in-tab report-audit-trail staleness item it
+still listed actually shipped in 52-6d.
+
 ### Added (spec-v52 wave 52-6d — §8.3 follow-up: staleness in the report audit trail)
 
 Surfaces per-source dataset staleness in the in-tab PA report audit
