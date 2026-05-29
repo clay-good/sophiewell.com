@@ -1345,6 +1345,30 @@ silently; the audit trail records the disablement.
 
 - 2026-05-27 — v52 proposed. Five waves outlined (52-1 through
   52-5+). Catalog count target at v52-1 close: 255.
+- 2026-05-29 — wave 52-6g (§4.3 / §8.1 PA runtime no-network spec).
+  Ships the runtime proof of §4.3 ("the only network access during a
+  session is the initial page load; after first paint there are zero
+  outbound requests") and of Sophie's first commitment ([spec-v50](spec-v50.md)
+  §3.1) that the packet never leaves the tab. The static side already
+  existed (`check-commitments.mjs`, `grep-check.mjs`) and the generic
+  runtime harness (`test/integration/no-network.spec.js`) covered a sample
+  of numeric tiles, but the PA pipeline — the one surface that ingests PHI
+  — had no runtime network assertion.
+
+  `test/integration/pa-no-network.spec.js` mirrors that harness's
+  tripwires (off-origin `request` listener, `navigator.sendBeacon` /
+  `Image.src` patches, cookie check, storage-allowlist check) but drives
+  the PA pipeline end-to-end: it drops a happy-path TXT packet plus a
+  one-page PDF — the PDF forces the lazy `pdf.js` import (`/vendored/pdfjs/`),
+  the single most likely place for an accidental off-origin fetch (a CDN
+  worker, cmaps, standard fonts) — then serializes all three report
+  flavors (DOCX, full JSON, redacted JSON) by clicking each download
+  button. It asserts zero off-origin requests, zero beacon / image-pixel
+  fires, an empty `document.cookie`, and only allowlisted storage keys
+  (the PA tile writes none, §4.7). Chromium-only, consistent with the
+  other `pa-lint-*` specs; the §8.1 unit suite covers the pure SHA-256
+  path on every browser. No source change — the test confirms the posture
+  the pipeline already had. View wave banner advanced to 52-6g.
 - 2026-05-29 — wave 52-6f (§4.10 / §8.2 PA pipeline golden-fixture audit
   + §8.4 property tests). Builds the two determinism-enforcement surfaces
   §8 named but the report waves had not yet shipped.

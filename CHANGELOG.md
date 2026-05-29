@@ -6,6 +6,32 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v52 wave 52-6g — §4.3 / §8.1 PA runtime no-network spec)
+
+Ships the runtime proof of §4.3's central commitment — "the only network
+access during a session is the initial page load; after first paint there
+are zero outbound requests" — and of Sophie's first commitment (spec-v50
+§3.1) that the patient's chart never leaves the tab. Until now that was
+asserted statically (`check-commitments.mjs`, `grep-check.mjs`) and at
+runtime only for a sample of numeric tiles (`no-network.spec.js`); the PA
+pipeline — the one surface that ingests PHI — had no runtime network
+assertion.
+
+**New surface:**
+
+- `test/integration/pa-no-network.spec.js` (§8.1) mirrors the generic
+  no-network harness but drives the PA pipeline end-to-end: it drops a
+  happy-path TXT packet plus a one-page PDF (the PDF forces the lazy
+  `pdf.js` import — the single most likely place for an accidental
+  off-origin fetch such as a CDN worker, cmaps, or standard fonts), then
+  serializes all three report flavors (DOCX, full JSON, redacted JSON) by
+  clicking each download button. It then asserts zero off-origin requests,
+  zero `navigator.sendBeacon` / `Image`-pixel fires, an empty
+  `document.cookie`, and only allowlisted storage keys (the PA tile writes
+  none). Chromium-only, consistent with the other `pa-lint-*` specs.
+
+View wave banner advanced to 52-6g.
+
 ### Added (spec-v52 wave 52-6f — §4.10 / §8.2 PA golden-fixture audit + §8.4 property tests)
 
 Builds the two determinism-enforcement surfaces §8 named but the report
