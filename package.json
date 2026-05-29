@@ -27,6 +27,7 @@
     "lint": "eslint . && node scripts/grep-check.mjs && node scripts/check-catalog-truth.mjs && node scripts/check-commitments.mjs && node scripts/check-pa-staleness.mjs && node scripts/audit-pa.mjs",
     "check:pa-staleness": "node scripts/check-pa-staleness.mjs",
     "audit:pa": "node scripts/audit-pa.mjs",
+    "refresh:pa-rules": "node scripts/refresh-pa-rules.mjs",
     "data:refresh": "node scripts/build-data.mjs",
     "data:verify": "node scripts/verify-integrity.mjs",
     "sbom": "node scripts/build-sbom.mjs",

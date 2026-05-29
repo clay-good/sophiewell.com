@@ -1345,6 +1345,39 @@ silently; the audit trail records the disablement.
 
 - 2026-05-27 — v52 proposed. Five waves outlined (52-1 through
   52-5+). Catalog count target at v52-1 close: 255.
+- 2026-05-29 — wave 52-6i (§4.5.6 / §8.2 `scripts/refresh-pa-rules.mjs`).
+  Closes the last "Not yet built" item in `docs/pa-maintenance.md`: the
+  maintainer refresh helper, unblocked by wave 52-6h's per-rule source
+  metadata. It fetches every ledger `sources[].url`, reports the HTTP outcome
+  and a content SHA-256, computes each source's staleness age, counts how many
+  shipped rules depend on the source (via the `sources` field, so the report
+  speaks in "this source backs 21 rules" rather than just the representative
+  anchors), and prints a per-source recommendation (resolved → bump
+  lastVerified; moved → re-point url; gone (404/410) → re-point or
+  acknowledge/disable per §4.5.6; error → retry, never touch the ledger on a
+  transient failure). It exits 0 when every source resolves, 1 when any is
+  gone or errored.
+
+  The script makes outbound network requests, so — consistent with §8.2
+  ("not in CI's required path; it requires outbound network access") — it is
+  NOT wired into `npm run lint` / `npm run test` and never runs in CI's
+  offline build or the browser (spec-v50 §3.1 governs Sophie's runtime; this
+  is a maintainer laptop tool, exposed as `npm run refresh:pa-rules`). Its
+  report-building core (`classifyFetchOutcome`, `dependentRuleCounts`,
+  `buildRefreshReport`, `formatReportText`, `sha256`) is pure and network-free;
+  `main()` is gated behind direct invocation so importing the helpers makes no
+  request.
+
+  Tests: new `test/unit/pa-refresh.test.js` (10 assertions: hash stability,
+  each outcome class incl. the never-silent missing-outcome case, dependent-
+  rule tallying, report summary/age/dependents, all-resolve ok=true, and a
+  guard that the shipped ledger maps cleanly through the report) using injected
+  outcomes — no network. The unit suite is 2028 (was 2018). The §4.5.6
+  *second* half (engine reading a per-rule `disabled` flag and skipping
+  gone-source rules with an audit-trail note) is now the sole deferred item,
+  documented in `docs/pa-maintenance.md`; the helper today *recommends* the
+  disable and the maintainer acts. Lint (incl. `audit-pa`), the unit suite,
+  a11y, and the static build are green. View wave banner advanced to 52-6i.
 - 2026-05-29 — wave 52-6h (§4.5.6 structured per-rule source metadata +
   reverse coverage checks). Closes the data-side half of the one remaining
   "Not yet built" item in `docs/pa-maintenance.md`: the deferred

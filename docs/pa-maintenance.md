@@ -140,17 +140,52 @@ coverage gaps`. When you change a rule's anchor, edit `lib/pa/rule-sources.js`
 (and, if it is an anchor rule, the matching ledger `rules` array) in the same
 change, or the check fails.
 
+## The refresh helper: `scripts/refresh-pa-rules.mjs` (wave 52-6i)
+
+Automates the mechanical half of the monthly verification pass. It fetches
+every ledger `sources[].url`, reports the HTTP outcome and a content SHA-256,
+computes each source's staleness age, counts how many shipped rules depend on
+the source (via the per-rule `sources` metadata above), and prints a
+per-source recommendation:
+
+- **resolved** (200 at the recorded URL) -- confirm the page still supports
+  its rules, then bump `lastVerified`.
+- **moved** (a redirect) -- confirm, then update `url` to the final URL and
+  bump `lastVerified`.
+- **gone** (404 / 410) -- re-point `url`, or acknowledge / disable the
+  affected rules per spec-v52 §4.5.6.
+- **error** (network failure, timeout, or any other status) -- retry; never
+  change the ledger on a transient failure.
+
+Run it from a networked machine:
+
+```
+node scripts/refresh-pa-rules.mjs            # human-readable report
+node scripts/refresh-pa-rules.mjs --json     # machine-readable JSON
+SOPHIEWELL_NOW=YYYY-MM-DD node scripts/refresh-pa-rules.mjs   # pin the age clock
+npm run refresh:pa-rules                      # the same, via package.json
+```
+
+It exits 0 when every source resolves and 1 when any source is gone or
+errored, so it can drive a maintainer alert. The human judgement -- "does the
+page still say what the rule assumes?" -- stays with the maintainer: the
+script does **not** auto-bump `lastVerified`.
+
+**This script makes outbound network requests, so it is NOT in `npm run lint`
+/ `npm run test` and never runs in CI's offline build or the browser** (the
+no-network commitment, spec-v50 §3.1, is about Sophie's runtime; this is a
+maintainer laptop tool). Its report-building core is pure and network-free,
+unit-tested in `test/unit/pa-refresh.test.js` with injected fetch outcomes.
+
 ## Not yet built
 
-- `scripts/refresh-pa-rules.mjs` (spec-v52 §4.5.6 / §8.2): the nightly
-  re-fetch-and-rehash helper. It requires outbound network access to the
-  source URLs -- which Sophie cannot do at runtime (spec-v50 §3.1) and which
-  CI's offline build does not perform -- so it remains a maintainer-laptop
-  script. Its data-side prerequisite, the structured per-rule source metadata,
-  now ships (the `sources` field above), so when the script lands it can
-  iterate every rule to the source URL(s) it must re-fetch. Until then,
-  verification is the manual monthly pass above, guarded by the three
-  coverage checks.
+- **Per-rule auto-disable wiring** (spec-v52 §4.5.6, second half): the refresh
+  helper *recommends* disabling the rules backed by a `gone` source, but the
+  engine does not yet read a per-rule / per-source `disabled` flag from the
+  ledger and skip those rules with an audit-trail note. Wiring that is a
+  future wave; today the maintainer acts on the recommendation manually
+  (re-point the URL, or drop the affected rules) and the coverage checks keep
+  the ledger and ruleset in agreement.
 
 ## Already shipped (kept here for the audit trail)
 
