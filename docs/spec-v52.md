@@ -1345,6 +1345,48 @@ silently; the audit trail records the disablement.
 
 - 2026-05-27 — v52 proposed. Five waves outlined (52-1 through
   52-5+). Catalog count target at v52-1 close: 255.
+- 2026-05-28 — wave 52-6c (§8.3 dataset-staleness CI). Adds the
+  staleness ledger + the CI check that §8.3 calls for, closing the
+  spec-v52 §8 CI surface for the report waves.
+
+  Deliberate refinement of the spec's letter (same posture as 52-6b):
+  §8.3 named the ledger `dkb-staleness-ack.yml`. Sophie ships zero
+  runtime dependencies (spec-v10 §6); introducing a YAML parser for
+  one config file is the wrong trade, so the ledger is JSON
+  (`pa-staleness-ledger.json`, repo root). It enumerates the 15
+  external source families the rules are anchored to (AMA CPT, CMS
+  HCPCS / ICD-10-CM / POS / NCCI, NPPES, CMS NCD-LCD / IOM, CMS MA,
+  Medicaid core, ACR AC, FDA labeling, ASA, DSM-5-TR, NCCN / ACMG),
+  each with its rule ids, canonical URL, and `lastVerified` date.
+
+  New modules: `lib/pa/staleness.js` (pure evaluator:
+  `evaluateStaleness(ledger, now)` over the deterministic
+  `lib/pa/date.js` UTC math; states fresh / warn / fail /
+  acknowledged / invalid; an acknowledgment downgrades a stale source
+  while the ack itself is current, and a stale ack stops masking),
+  `scripts/check-pa-staleness.mjs` (CLI wired into `npm run lint`,
+  therefore the CI Lint step). Policy window: warn at 90 days
+  (printed, exit 0), fail at 365 days / unparseable date / abandoned
+  ack (exit 1) -- this is §8.3's "fails (or warns, depending on the
+  configured grace window)". `--strict` turns warnings into failures;
+  `SOPHIEWELL_NOW=YYYY-MM-DD` pins the evaluation date for tests.
+
+  The maintainer keeps CI green by re-verifying each source monthly
+  (spec-v52 §1.3) and bumping `lastVerified`, or by acknowledging a
+  known-stale source. Documented in the new `docs/pa-maintenance.md`
+  (referenced by §8.2).
+
+  Tests: new `test/unit/pa-staleness.test.js` (9 assertions: fresh /
+  warn / fail boundaries, acknowledgment downgrade, stale-ack
+  re-surfacing, invalid date, mixed-ledger summary, and a guard that
+  the shipped ledger is green at ship time).
+
+  Two §8.3 follow-ups are explicitly deferred and noted in
+  `docs/pa-maintenance.md`: `scripts/refresh-pa-rules.mjs` (needs
+  outbound network + the §4.5.6 structured per-rule source metadata,
+  which the JS rules do not yet carry) and surfacing per-source
+  staleness in the in-tab report audit trail (needs the ledger
+  bundled into the shipped JS to honor no-network).
 - 2026-05-28 — wave 52-6b (§4.6 DOCX report COMPLETE + §4.7
   redaction hardening). Ships the human-facing `.docx` flavor of
   the §4.6 report and the third download button, closing the §4.6

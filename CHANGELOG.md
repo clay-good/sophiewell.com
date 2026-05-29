@@ -6,6 +6,46 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v52 wave 52-6c — §8.3 dataset-staleness CI)
+
+Adds the staleness ledger and CI check that spec-v52 §8.3 calls for,
+closing the §8 CI surface for the report waves.
+
+**Deliberate refinement of the spec's letter** (same posture as 52-6b):
+§8.3 named the ledger `dkb-staleness-ack.yml`. Sophie ships zero runtime
+dependencies (spec-v10 §6), so introducing a YAML parser for one config
+file is the wrong trade. The ledger is JSON (`pa-staleness-ledger.json`,
+repo root). It enumerates the 15 external source families the rules are
+anchored to (AMA CPT, CMS HCPCS / ICD-10-CM / POS / NCCI, NPPES, CMS
+NCD-LCD / IOM, CMS MA, Medicaid core, ACR AC, FDA labeling, ASA,
+DSM-5-TR, NCCN / ACMG), each with its rule ids, canonical URL, and
+`lastVerified` date.
+
+**New modules:**
+
+- `lib/pa/staleness.js` — pure evaluator `evaluateStaleness(ledger, now)`
+  over the deterministic `lib/pa/date.js` UTC math. States: fresh / warn
+  / fail / acknowledged / invalid. An acknowledgment downgrades a stale
+  source while the ack itself is current; a stale ack stops masking.
+- `scripts/check-pa-staleness.mjs` — CLI wired into `npm run lint` (and
+  therefore the CI Lint step). Policy window: warn at 90 days (printed,
+  exit 0), fail at 365 days / unparseable date / abandoned ack (exit 1).
+  This is §8.3's "fails (or warns, depending on the configured grace
+  window)". `--strict` turns warnings into failures; `SOPHIEWELL_NOW`
+  pins the evaluation date for reproduction.
+
+**Maintenance:** the new `docs/pa-maintenance.md` (referenced by §8.2)
+documents the monthly verification pass, the acknowledgment mechanism,
+and the two deferred §8.3 follow-ups (`scripts/refresh-pa-rules.mjs`,
+which needs network + §4.5.6 structured source metadata; and surfacing
+per-source staleness in the in-tab report audit trail, which needs the
+ledger bundled to honor no-network).
+
+**Tests:** new `test/unit/pa-staleness.test.js` (9 assertions covering
+the warn/fail boundaries, acknowledgment downgrade and re-surfacing,
+invalid dates, mixed-ledger summary, and a ship-time green guard for the
+shipped ledger).
+
 ### Added (spec-v52 wave 52-6b — §4.6 DOCX report complete + §4.7 redaction hardening)
 
 Ships the human-facing `.docx` flavor of the spec-v52 §4.6 report and the
