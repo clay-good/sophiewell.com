@@ -6,6 +6,45 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v52 wave 52-5d — §4.5.5 behavioral-health specialty overlay, 5 of 25)
+
+Five behavioral-health rules triggered by an AMA psychiatric CPT
+(90785-90899 psychotherapy, 96130-96139 psych testing) OR an
+ICD-10 F-code (F00-F99 mental and behavioral disorders):
+
+- **R-PA-BH-001** — ICD-10 F-code AND DSM-5-TR / diagnostic-
+  criteria reference present. Flag.
+- **R-PA-BH-002** — treatment plan with measurable / time-bound
+  goals. Flag.
+- **R-PA-BH-003** — step-up of care (outpatient -> IOP -> PHP ->
+  residential -> inpatient) requires a prior-level-of-care
+  anchor per ASAM / LOCUS. Flag.
+- **R-PA-BH-004** — risk assessment (SI / HI / self-harm) per
+  Joint Commission NPSG. Flag.
+- **R-PA-BH-005** — SUD packets requesting medication-assisted
+  treatment reference DEA X-waiver / OTP / induction-maintenance
+  phase. Info.
+
+New helper `collectBehavioralHealthSignals(bundle)` in
+`lib/pa/rules.js` returns the BH CPTs, the ICD-10 F-codes, and
+a `triggered` boolean -- ALL five BH rules consume the same
+signal so the trigger logic stays in one place. Specialty rules
+apply across every payer once the trigger fires (no
+`bundle.payer` self-gate).
+
+R-PA-BH-005's two-stage trigger -- SUD ICD-10 (F10-F19) OR MAT
+keyword -- is the first specialty rule to combine structural
+code-range filtering AND a keyword fallback in the gate; the
+rule fires when either signal is present, but vacuously passes
+on a non-SUD / non-MAT packet.
+
+6 new unit assertions in `test/unit/pa-engine.test.js`. Total
+PA unit suite: 172 assertions. The Playwright happy-path now
+asserts 130 rules render in the findings panel.
+
+Verified: `npm run lint`, `npm run test`, and `npm run build` are
+all green. **Catalog count 255, unchanged.**
+
 ### Added (spec-v52 wave 52-5c — §4.5.5 surgery specialty overlay, 5 of 25)
 
 Five surgery rules triggered by an AMA Surgery-category CPT

@@ -1345,6 +1345,44 @@ silently; the audit trail records the disablement.
 
 - 2026-05-27 — v52 proposed. Five waves outlined (52-1 through
   52-5+). Catalog count target at v52-1 close: 255.
+- 2026-05-28 — wave 52-5d (§4.5.5 behavioral-health specialty overlay,
+  5 of 25). Adds five behavioral-health rules triggered by an AMA
+  psychiatric CPT (90785-90899 psychotherapy, 96130-96139 psych
+  testing) OR an ICD-10 F-code (F00-F99 mental and behavioral
+  disorders): R-PA-BH-001 (BH packet carries an ICD-10 F-code AND
+  a DSM-5-TR / diagnostic-criteria reference, flag), R-PA-BH-002
+  (treatment plan with measurable / time-bound goals, flag),
+  R-PA-BH-003 (step-up of care -- outpatient -> IOP -> PHP ->
+  residential -> inpatient -- requires a prior-level-of-care
+  anchor per ASAM / LOCUS, flag), R-PA-BH-004 (risk assessment
+  covering suicidal / homicidal ideation / self-harm per Joint
+  Commission NPSG, flag), R-PA-BH-005 (SUD packets requesting
+  medication-assisted treatment reference DEA X-waiver / OTP /
+  induction-maintenance phase, info).
+
+  New helper `collectBehavioralHealthSignals(bundle)` in
+  `lib/pa/rules.js` returns the BH CPTs, the ICD-10 F-codes, and
+  a `triggered` boolean -- ALL five BH rules consume the same
+  signal so the trigger logic stays in one place. Specialty rules
+  apply across every payer once the trigger fires (no
+  `bundle.payer` self-gate).
+
+  R-PA-BH-005's two-stage trigger -- SUD ICD-10 (F10-F19) OR MAT
+  keyword -- is the first specialty rule to combine structural
+  code-range filtering AND a keyword fallback in the gate; the
+  rule fires when either signal is present, but vacuously passes
+  on a non-SUD / non-MAT packet.
+
+  6 new unit assertions in `test/unit/pa-engine.test.js` (one
+  aggregate vacuous-pass guard plus a fires-when-it-should test
+  per new rule). Total PA unit suite: 172 assertions. The
+  Playwright happy-path now asserts 130 rules render. View wave
+  banner advanced to 52-5d.
+
+  Wave 52-5e will close §4.5.5 with the genetic-testing overlay
+  (R-PA-GEN-NNN, 5 rules) -- family history, genetic counseling,
+  test specificity matches indication. That will close the
+  complete spec-v52 §4.5 ruleset at 135 rules.
 - 2026-05-28 — wave 52-5c (§4.5.5 surgery specialty overlay, 5 of 25).
   Adds five surgery rules triggered by an AMA Surgery-category CPT
   (10004-69990): R-PA-SURG-001 (conservative-management / non-

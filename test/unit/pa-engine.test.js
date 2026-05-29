@@ -140,8 +140,8 @@ test('runEngine passes every starter rule on a clean multi-doc happy-path packet
   assert.equal(counts.pass, STARTER_RULES.length);
 });
 
-test('STARTER_RULES at wave 52-5c close is 125 rules (110 overlay + 5 radiology + 5 infusion + 5 surgery specialty)', () => {
-  assert.equal(STARTER_RULES.length, 125);
+test('STARTER_RULES at wave 52-5d close is 130 rules (110 overlay + 20 specialty: rad/inf/surg/BH)', () => {
+  assert.equal(STARTER_RULES.length, 130);
 });
 
 test('CMS overlay carries the spec-aligned id R-PA-CMS-004 for proof-of-delivery', () => {
@@ -714,6 +714,56 @@ test('R-PA-SURG-005 flags a surgery request without an informed-consent anchor',
   const findings = runEngine(bundleOf(text));
   const f = findings.find((x) => x.ruleId === 'R-PA-SURG-005');
   assert.equal(f.status, 'flag');
+});
+
+// ---- wave 52-5d sanity checks: behavioral-health specialty overlay ----
+
+test('R-PA-BH-001..005 all vacuously pass on a packet without a BH CPT or F-code', () => {
+  const findings = runEngine(happyBundle());
+  for (const id of ['R-PA-BH-001', 'R-PA-BH-002', 'R-PA-BH-003', 'R-PA-BH-004', 'R-PA-BH-005']) {
+    const f = findings.find((x) => x.ruleId === id);
+    assert.equal(f.status, 'pass', id + ' should vacuously pass when no psychiatric CPT or ICD-10 F-code is in the packet.');
+  }
+});
+
+test('R-PA-BH-001 flags a BH CPT request without an ICD-10 F-code', () => {
+  // Use only the BH CPT trigger; HAPPY_TEXT's only ICD-10 is I10 (not F).
+  const text = HAPPY_TEXT + '\nProcedure: 90834 individual psychotherapy 45 minutes.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-BH-001');
+  assert.equal(f.status, 'flag');
+});
+
+test('R-PA-BH-002 flags a BH request without a treatment-plan / measurable-goals anchor', () => {
+  const text = HAPPY_TEXT + '\nDx: F32.9 major depressive disorder\nProcedure: 90834 individual psychotherapy.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-BH-002');
+  assert.equal(f.status, 'flag');
+});
+
+test('R-PA-BH-003 flags a BH step-up-of-care request without a prior-level-of-care anchor', () => {
+  const text = HAPPY_TEXT
+    + '\nDx: F32.9 major depressive disorder\nProcedure: 90834 individual psychotherapy.\n'
+    + 'Requesting step-up to higher level of care.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-BH-003');
+  assert.equal(f.status, 'flag');
+});
+
+test('R-PA-BH-004 flags a BH request without a risk-assessment anchor', () => {
+  const text = HAPPY_TEXT + '\nDx: F32.9 major depressive disorder\nProcedure: 90834 individual psychotherapy.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-BH-004');
+  assert.equal(f.status, 'flag');
+});
+
+test('R-PA-BH-005 fires (info) on an SUD / MAT request without an X-waiver / OTP anchor', () => {
+  const text = HAPPY_TEXT
+    + '\nDx: F11.20 opioid use disorder\nProcedure: 90834 individual psychotherapy.\n'
+    + 'Buprenorphine treatment requested.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-BH-005');
+  assert.equal(f.status, 'info');
 });
 
 test('R-PA-MA-015 flags a C-SNP / I-SNP packet without a qualifying condition / residence anchor', () => {
