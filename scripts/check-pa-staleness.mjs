@@ -22,10 +22,12 @@ import { readFile } from 'node:fs/promises';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { evaluateStaleness, STATE } from '../lib/pa/staleness.js';
+import { renderModule } from './build-pa-staleness-ledger.mjs';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(__dirname, '..');
 const LEDGER_PATH = join(ROOT, 'pa-staleness-ledger.json');
+const MODULE_PATH = join(ROOT, 'lib', 'pa', 'staleness-ledger.js');
 
 const strict = process.argv.includes('--strict');
 const now = process.env.SOPHIEWELL_NOW || null;
@@ -37,6 +39,24 @@ async function main() {
   } catch (err) {
     console.error('check-pa-staleness: cannot read pa-staleness-ledger.json:', err && err.message ? err.message : err);
     process.exit(2);
+  }
+
+  // spec-v52 §8.3 follow-up: the ledger is also bundled into the shipped JS
+  // (lib/pa/staleness-ledger.js) so the in-tab report can surface staleness
+  // with no runtime fetch. Fail if that generated module has drifted from
+  // the canonical JSON -- the maintainer must re-run
+  // `node scripts/build-pa-staleness-ledger.mjs` after editing the ledger.
+  const expectedModule = renderModule(ledger);
+  let actualModule;
+  try {
+    actualModule = await readFile(MODULE_PATH, 'utf8');
+  } catch {
+    actualModule = null;
+  }
+  if (actualModule !== expectedModule) {
+    console.error('check-pa-staleness: lib/pa/staleness-ledger.js is out of sync with pa-staleness-ledger.json.');
+    console.error('  Run `node scripts/build-pa-staleness-ledger.mjs` and commit the result.');
+    process.exit(1);
   }
 
   const result = evaluateStaleness(ledger, now);

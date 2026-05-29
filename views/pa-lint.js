@@ -245,16 +245,22 @@ function triggerDownload(blob, filename) {
   setTimeout(() => URL.revokeObjectURL(url), 1000);
 }
 
+// spec-v52 §4.10 + §8.3 follow-up: capture one timestamp at report-generation
+// time. It populates the cover-page / audit-trail "generated at" and lets the
+// audit trail surface live per-source dataset staleness from the bundled
+// ledger. Capturing `new Date()` here (in the view, on a user click) keeps it
+// out of the deterministic compute path -- the builders default to null.
 function downloadDocx(bundle, findings, filename) {
-  const bytes = buildDocxReport(bundle, findings);
+  const bytes = buildDocxReport(bundle, findings, { generatedAt: new Date().toISOString() });
   const blob = new Blob([bytes], { type: DOCX_MIME });
   triggerDownload(blob, filename);
 }
 
 function downloadReport(bundle, findings, filename, redacted) {
+  const opts = { generatedAt: new Date().toISOString() };
   const report = redacted
-    ? buildRedactedJsonReport(bundle, findings)
-    : buildJsonReport(bundle, findings);
+    ? buildRedactedJsonReport(bundle, findings, opts)
+    : buildJsonReport(bundle, findings, opts);
   const json = JSON.stringify(report, null, 2);
   const blob = new Blob([json], { type: 'application/json' });
   triggerDownload(blob, filename);
@@ -364,7 +370,7 @@ async function processFiles(fileList, resultsList, statusNode, findingsPanel) {
 export const renderers = {
   'pa-lint'(root) {
     root.appendChild(el('p', { class: 'notice', text:
-      'Wave 52-6b: drop PDF, DOCX, or TXT files. Sophie hashes each file, '
+      'Wave 52-6d: drop PDF, DOCX, or TXT files. Sophie hashes each file, '
       + 'extracts text (pdf.js / mammoth.js, both vendored), classifies '
       + 'each document by role + payer, and runs the complete §4.5.1 '
       + 'core ruleset (60 rules), the complete §4.5.2 CMS Medicare FFS '
@@ -377,7 +383,9 @@ export const renderers = {
       + 'vacuously pass. Wave 52-6b adds the human-facing DOCX report as '
       + 'a third download button alongside the full JSON report and the '
       + 'PHI-redacted JSON report (spec-v52 §4.6 / §4.7). All three are '
-      + 'built in-tab from the in-memory bundle. Your packet stays in '
+      + 'built in-tab from the in-memory bundle, and the audit trail now '
+      + 'surfaces per-source dataset staleness from the bundled ledger '
+      + '(spec-v52 §8.3). Your packet stays in '
       + 'this tab; no network, no storage, no AI.' }));
 
     const trust = el('ul', { class: 'pa-trust-strip' });

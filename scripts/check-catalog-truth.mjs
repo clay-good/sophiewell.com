@@ -81,11 +81,12 @@ function makeSurfaces() {
       file: 'index.html',
       extract: (t) => firstCapture(t, /<meta property="twitter:image:alt"[^>]*content="[^"]*?(\d{2,4})\s*free healthcare tools/i),
     },
-    {
-      name: 'home lede',
-      file: 'index.html',
-      extract: (t) => firstCapture(t, /<p class="home-lede">\s*(\d{2,4})\s+deterministic\s+calculators/i),
-    },
+    // spec-v52 (post-52-6c): the home lede was rewritten to a count-free
+    // SEO elevator pitch ("Private healthcare calculators, built for the
+    // bedside..."). The catalog count is no longer carried in the visible
+    // tagline; it remains enforced on the 13 surfaces below (title, meta /
+    // OG / Twitter description + image-alt, hero search label, JSON-LD,
+    // README, package.json, parity ledger).
     // spec-v51: #browse-tile-count surface retired with the homepage
     // tile-grid; the count now lives in the search-input label
     // ("Search NNN tools") and the existing surfaces (lede, JSON-LD,

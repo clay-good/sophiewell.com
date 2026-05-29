@@ -1345,6 +1345,58 @@ silently; the audit trail records the disablement.
 
 - 2026-05-27 — v52 proposed. Five waves outlined (52-1 through
   52-5+). Catalog count target at v52-1 close: 255.
+- 2026-05-29 — wave 52-6d (§8.3 follow-up: per-source staleness in the
+  in-tab report audit trail). Closes the first of the two §8.3 follow-ups
+  that wave 52-6c explicitly deferred ("surfacing per-source staleness in
+  the in-tab report audit trail (needs the ledger bundled into the shipped
+  JS to honor no-network)").
+
+  The canonical ledger stays `pa-staleness-ledger.json` (maintainer-edited).
+  A new generator `scripts/build-pa-staleness-ledger.mjs` emits the
+  importable, browser-bundleable module `lib/pa/staleness-ledger.js`
+  (`export const PA_STALENESS_LEDGER`); `scripts/check-pa-staleness.mjs`
+  (already in `npm run lint`) now also regenerates-and-diffs the module so
+  CI fails if a maintainer edits the JSON without rebuilding. No runtime
+  fetch and no new dependency — the module is plain JS, copied into `dist/`
+  by the existing `lib/` copy step.
+
+  `lib/pa/report.js` `auditTrail` gains a `datasetStaleness` block:
+  per-source `{id, label, url, ruleFamily, lastVerified}` plus, only when
+  the caller supplies `opts.generatedAt`, time-relative `{ageDays, state}`
+  per source and an `evaluated` summary (`evaluatedAt / summary / worst /
+  ok`) from `evaluateStaleness`. With no timestamp the block is the static
+  ledger facts only, so the report stays byte-stable for golden tests and
+  no `new Date()` enters the compute path (§4.10). `lib/pa/docx.js` renders
+  the block as a "Dataset source staleness" subsection of the audit trail.
+  `views/pa-lint.js` captures one `new Date().toISOString()` at
+  report-download time (in the view, on a user click — out of the
+  deterministic compute path) and threads it as `generatedAt`, which also
+  fills the previously-empty cover-page / audit-trail "generated at" field.
+
+  Tests: 3 new assertions in `test/unit/pa-report.test.js` (sources
+  populated + static facts; no state without a timestamp / byte-stable;
+  far-future timestamp -> every source `fail` + `ok: false`). Lint, the
+  1997-test unit suite, a11y, the static build, and the PA + smoke
+  Playwright specs are all green. View wave banner advanced to 52-6d.
+
+  The second §8.3 follow-up (`scripts/refresh-pa-rules.mjs`, which needs
+  outbound network + the §4.5.6 structured per-rule source metadata the JS
+  rules do not yet carry) remains deferred and noted in
+  `docs/pa-maintenance.md`.
+
+  Homepage (out-of-wave, maintainer request 2026-05-29): the home `<h1>` +
+  lede were rewritten to a count-free SEO elevator pitch ("Private
+  healthcare calculators, built for the bedside ...") per the spec-v29
+  nurse-first pivot. The catalog count is no longer carried in the visible
+  tagline; `check-catalog-truth.mjs` drops the retired "home lede" surface
+  and still enforces 255 across the remaining 13 surfaces (title, meta / OG
+  / Twitter description + image-alt, hero search label, JSON-LD, README,
+  package.json, parity ledger). A "pinned tools" homepage section was
+  considered and declined: it would require persistent client storage,
+  which spec-v50 §3.4 forbids and the spec-v8 §3.2/§5.2 smoke test actively
+  guards (no Pin button, no `#pinned-section`). Browser bookmarks of the
+  per-tool `/tools/<id>/` pages already provide the same affordance with
+  zero storage.
 - 2026-05-28 — wave 52-6c (§8.3 dataset-staleness CI). Adds the
   staleness ledger + the CI check that §8.3 calls for, closing the
   spec-v52 §8 CI surface for the report waves.

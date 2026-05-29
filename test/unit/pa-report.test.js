@@ -94,6 +94,47 @@ test('auditTrail records every rule id + document hash', () => {
   assert.deepEqual(report.auditTrail.documentHashes, [{ document: 'doc.txt', sha256: 'sha-1' }]);
 });
 
+// spec-v52 §8.3 follow-up: per-source dataset staleness in the audit trail.
+
+test('auditTrail.datasetStaleness lists the bundled ledger sources', () => {
+  const bundle = bundleOf(HAPPY_TEXT);
+  const findings = runEngine(bundle);
+  const report = buildJsonReport(bundle, findings);
+  const ds = report.auditTrail.datasetStaleness;
+  assert.ok(ds, 'audit trail should carry a datasetStaleness block');
+  assert.ok(Array.isArray(ds.sources) && ds.sources.length > 0, 'staleness sources should be populated');
+  assert.equal(ds.rulesetVersion, '1.0.0');
+  // Each source carries the static, byte-stable facts.
+  for (const s of ds.sources) {
+    assert.ok(s.id && s.label && s.url, 'source must carry id/label/url');
+    assert.ok(typeof s.lastVerified === 'string', 'source must carry lastVerified');
+  }
+});
+
+test('datasetStaleness omits time-relative state without a timestamp (byte-stable)', () => {
+  const bundle = bundleOf(HAPPY_TEXT);
+  const findings = runEngine(bundle);
+  const ds = buildJsonReport(bundle, findings).auditTrail.datasetStaleness;
+  assert.equal(ds.evaluated, null);
+  for (const s of ds.sources) {
+    assert.equal(s.state, undefined, 'no state without a generatedAt timestamp');
+    assert.equal(s.ageDays, undefined, 'no ageDays without a generatedAt timestamp');
+  }
+});
+
+test('datasetStaleness computes per-source state when generatedAt is supplied', () => {
+  const bundle = bundleOf(HAPPY_TEXT);
+  const findings = runEngine(bundle);
+  // Far-future date forces every source past the 365-day fail window.
+  const report = buildJsonReport(bundle, findings, { generatedAt: '2099-01-01T00:00:00.000Z' });
+  const ds = report.auditTrail.datasetStaleness;
+  assert.ok(ds.evaluated, 'evaluated summary present with a timestamp');
+  assert.equal(ds.evaluated.evaluatedAt, '2099-01-01');
+  assert.equal(ds.evaluated.ok, false, 'sources are stale in 2099 -> not ok');
+  assert.ok(ds.sources.every((s) => s.state === 'fail'), 'every source is fail in 2099');
+  assert.ok(ds.sources.every((s) => typeof s.ageDays === 'number' && s.ageDays > 365));
+});
+
 test('buildJsonReport is byte-stable for same input (determinism)', () => {
   const bundle = bundleOf(HAPPY_TEXT);
   const findings = runEngine(bundle);

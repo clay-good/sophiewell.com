@@ -6,6 +6,44 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v52 wave 52-6d — §8.3 follow-up: staleness in the report audit trail)
+
+Surfaces per-source dataset staleness in the in-tab PA report audit
+trail, closing the first of the two §8.3 follow-ups wave 52-6c deferred.
+
+**New surfaces:**
+
+- `scripts/build-pa-staleness-ledger.mjs` — generator that emits the
+  browser-bundleable module `lib/pa/staleness-ledger.js`
+  (`export const PA_STALENESS_LEDGER`) from the canonical
+  `pa-staleness-ledger.json`. No runtime fetch, no new dependency.
+- `lib/pa/report.js` `auditTrail.datasetStaleness` — per-source
+  `{id, label, url, ruleFamily, lastVerified}`; with a caller-supplied
+  `generatedAt`, also per-source `{ageDays, state}` and an `evaluated`
+  summary. Without a timestamp the block is static ledger facts only, so
+  the report stays byte-stable (§4.10).
+- `lib/pa/docx.js` — renders a "Dataset source staleness" audit-trail
+  subsection.
+- `views/pa-lint.js` — captures one timestamp at download time (a user
+  click, outside the deterministic compute path) so the in-tab report
+  shows live freshness state and a populated "generated at" field.
+
+**CI:** `scripts/check-pa-staleness.mjs` (already in `npm run lint`) now
+regenerates-and-diffs `lib/pa/staleness-ledger.js` against the JSON, so
+editing the ledger without rebuilding fails CI. 3 new assertions in
+`test/unit/pa-report.test.js`.
+
+### Changed (homepage tagline — maintainer request 2026-05-29)
+
+The home `<h1>` and lede were rewritten to a count-free SEO elevator
+pitch ("Private healthcare calculators, built for the bedside ...") per
+the spec-v29 nurse-first pivot. `check-catalog-truth.mjs` drops the
+retired "home lede" count surface; the catalog count of 255 is still
+enforced on the remaining 13 surfaces. A "pinned tools" homepage section
+was considered and declined — it requires persistent client storage,
+which spec-v50 §3.4 forbids and a smoke test guards. Browser bookmarks of
+the `/tools/<id>/` pages cover the same need with zero storage.
+
 ### Added (spec-v52 wave 52-6c — §8.3 dataset-staleness CI)
 
 Adds the staleness ledger and CI check that spec-v52 §8.3 calls for,
