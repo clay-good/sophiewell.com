@@ -78,3 +78,25 @@ test('redactBundle with redactFindings:true redacts PHI patterns in evidence + n
   const out = redactBundle(bundle, { redactFindings: true });
   assert.match(out.findings[0].note, /\[REDACTED\]/);
 });
+
+test('redactBundle with redactFindings:true scrubs unlabeled literal PHI from evidence', () => {
+  // A rule's evidence often quotes the raw extracted value back without a
+  // redaction-triggering label; pattern matching alone would miss it.
+  const bundle = {
+    documents: [
+      { name: 'doc.txt', sha256: 'sha-1', kind: 'TXT', text: 'Patient: Jane Q Doe',
+        role: 'pa-form', payer: 'unknown',
+        extract: { patientName: 'Jane Q Doe', dob: '1985-03-12', memberId: 'W123456789',
+          ssns: [], tins: [], npis: [], cpts: [], icd10: [], pos: [], dates: [], serviceDates: [] } },
+    ],
+    totalBytes: 20,
+    payer: 'unknown',
+    findings: [
+      { ruleId: 'R-PA-001', status: 'pass', severity: 'block', description: 'Patient name present',
+        citation: 'spec-v52 §4.5.1', evidence: 'Found "Jane Q Doe" in doc.txt', note: null },
+    ],
+  };
+  const out = redactBundle(bundle, { redactFindings: true });
+  assert.equal(/Jane Q Doe/.test(out.findings[0].evidence), false);
+  assert.match(out.findings[0].evidence, /\[REDACTED\]/);
+});

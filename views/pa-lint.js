@@ -26,7 +26,7 @@
 
 import { el, clear } from '../lib/dom.js';
 import { buildBundle, runEngine, summarizeFindings } from '../lib/pa/engine.js';
-import { buildJsonReport, buildRedactedJsonReport } from '../lib/pa/report.js';
+import { buildJsonReport, buildRedactedJsonReport, buildDocxReport } from '../lib/pa/report.js';
 
 const MAX_FILE_BYTES = 50 * 1024 * 1024; // 50 MB per file, per spec-v52 §4.3
 const MAX_TOTAL_BYTES = 200 * 1024 * 1024; // 200 MB packet ceiling
@@ -207,32 +207,33 @@ function renderFindingsPanel(panel, findings, counts, bundle) {
     list.appendChild(li);
   }
   panel.appendChild(list);
-  // spec-v52 §4.6: per-§4.2 step 5, the results panel offers downloads
-  // for the JSON report (full + PHI-redacted). The DOCX download lands
-  // in wave 52-6b alongside the vendored docx.js. The packet stays in
-  // the tab: each button serializes from the in-memory bundle / findings
-  // and writes a Blob via URL.createObjectURL.
+  // spec-v52 §4.6: per-§4.2 step 5, the results panel offers downloads.
+  // Wave 52-6a shipped the JSON report (full + PHI-redacted); wave 52-6b
+  // adds the human-facing DOCX report as the third button. The packet
+  // stays in the tab: each button serializes from the in-memory bundle /
+  // findings and writes a Blob via URL.createObjectURL. No network call.
   if (bundle) {
     const downloads = el('div', { class: 'pa-downloads', role: 'group',
       'aria-label': 'Download report' });
+    const docxBtn = el('button', { type: 'button', class: 'pa-download-btn',
+      'data-flavor': 'docx', text: 'Download report (.docx)' });
+    docxBtn.addEventListener('click', () => downloadDocx(bundle, findings, 'pa-report.docx'));
     const fullBtn = el('button', { type: 'button', class: 'pa-download-btn',
       'data-flavor': 'json-full', text: 'Download report (.json)' });
     fullBtn.addEventListener('click', () => downloadReport(bundle, findings, 'pa-report.json', false));
     const redactedBtn = el('button', { type: 'button', class: 'pa-download-btn',
       'data-flavor': 'json-redacted', text: 'Download PHI-redacted report (.json)' });
     redactedBtn.addEventListener('click', () => downloadReport(bundle, findings, 'pa-report.redacted.json', true));
+    downloads.appendChild(docxBtn);
     downloads.appendChild(fullBtn);
     downloads.appendChild(redactedBtn);
     panel.appendChild(downloads);
   }
 }
 
-function downloadReport(bundle, findings, filename, redacted) {
-  const report = redacted
-    ? buildRedactedJsonReport(bundle, findings)
-    : buildJsonReport(bundle, findings);
-  const json = JSON.stringify(report, null, 2);
-  const blob = new Blob([json], { type: 'application/json' });
+const DOCX_MIME = 'application/vnd.openxmlformats-officedocument.wordprocessingml.document';
+
+function triggerDownload(blob, filename) {
   const url = URL.createObjectURL(blob);
   const a = document.createElement('a');
   a.href = url;
@@ -242,6 +243,21 @@ function downloadReport(bundle, findings, filename, redacted) {
   document.body.removeChild(a);
   // Defer revoke so Safari has time to start the download.
   setTimeout(() => URL.revokeObjectURL(url), 1000);
+}
+
+function downloadDocx(bundle, findings, filename) {
+  const bytes = buildDocxReport(bundle, findings);
+  const blob = new Blob([bytes], { type: DOCX_MIME });
+  triggerDownload(blob, filename);
+}
+
+function downloadReport(bundle, findings, filename, redacted) {
+  const report = redacted
+    ? buildRedactedJsonReport(bundle, findings)
+    : buildJsonReport(bundle, findings);
+  const json = JSON.stringify(report, null, 2);
+  const blob = new Blob([json], { type: 'application/json' });
+  triggerDownload(blob, filename);
 }
 
 async function processFiles(fileList, resultsList, statusNode, findingsPanel) {
@@ -348,7 +364,7 @@ async function processFiles(fileList, resultsList, statusNode, findingsPanel) {
 export const renderers = {
   'pa-lint'(root) {
     root.appendChild(el('p', { class: 'notice', text:
-      'Wave 52-6a: drop PDF, DOCX, or TXT files. Sophie hashes each file, '
+      'Wave 52-6b: drop PDF, DOCX, or TXT files. Sophie hashes each file, '
       + 'extracts text (pdf.js / mammoth.js, both vendored), classifies '
       + 'each document by role + payer, and runs the complete §4.5.1 '
       + 'core ruleset (60 rules), the complete §4.5.2 CMS Medicare FFS '
@@ -358,10 +374,11 @@ export const renderers = {
       + '(25 rules: radiology + infusion + surgery + behavioral health + '
       + 'genetic testing) against the aggregated bundle. Overlay rules '
       + 'self-gate on the detected payer; off-bucket packets see them '
-      + 'vacuously pass. Wave 52-6a adds two download buttons to the '
-      + 'findings panel -- a full JSON report and a PHI-redacted JSON '
-      + 'report (spec-v52 §4.6 / §4.7). The DOCX flavor ships in 52-6b. '
-      + 'Your packet stays in this tab; no network, no storage, no AI.' }));
+      + 'vacuously pass. Wave 52-6b adds the human-facing DOCX report as '
+      + 'a third download button alongside the full JSON report and the '
+      + 'PHI-redacted JSON report (spec-v52 §4.6 / §4.7). All three are '
+      + 'built in-tab from the in-memory bundle. Your packet stays in '
+      + 'this tab; no network, no storage, no AI.' }));
 
     const trust = el('ul', { class: 'pa-trust-strip' });
     for (const line of [

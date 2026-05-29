@@ -6,6 +6,65 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v52 wave 52-6b — §4.6 DOCX report complete + §4.7 redaction hardening)
+
+Ships the human-facing `.docx` flavor of the spec-v52 §4.6 report and the
+third download button, closing the §4.6 report contract (JSON + DOCX, full
+and PHI-redacted).
+
+**Deliberate refinement of the spec's letter.** §4.6 / §5.2 named a vendored
+docx.js (~140 KB) packed in a worker. This wave instead ships a first-party,
+dependency-free OOXML writer (`lib/pa/docx.js`) because it better serves the
+spec's own intent:
+
+- **§8.1 testability.** `test/unit/pa-report.test.js` must assert "DOCX
+  assembles without throwing" under `node --test`. The vendored mammoth.js /
+  pdf.js bundles are browser-only and are never imported by the node runner,
+  so a vendored browser docx.js could not be exercised there. A module that
+  runs identically in node and the browser can.
+- **§4.10 determinism.** docx.js packs via jszip, which stamps each zip entry
+  with the wall-clock time (not reproducible). This writer zeroes every DOS
+  date/time (fixed 1980-01-01) so the same report yields byte-identical
+  `.docx` bytes.
+- **spec-v10 §6 dependency budget / §4.9 perf.** The ~140 KB dependency and
+  its lazy-load path are avoided entirely; the writer is a few hundred bytes
+  of first-party code with zero runtime cost until the user clicks Download.
+
+The output is a minimal valid OOXML package (`[Content_Types].xml` +
+`_rels/.rels` + `word/document.xml`) stored uncompressed; system `unzip -t`
+confirms CRC integrity and Word / LibreOffice / Google Docs open it. The
+§5.1 `report.worker.js` and `vendored/docxjs/` surfaces are therefore not
+needed and not added.
+
+**New module:**
+
+- `lib/pa/docx.js` — CRC-32 + store-method zip writer + OOXML paragraph
+  rendering. `renderReportDocx(report)` returns a `Uint8Array`; `_internals`
+  exposes `crc32` / `zipStore` for unit tests. `lib/pa/report.js` gains
+  `buildDocxReport` and `buildRedactedDocxReport`, both rendering the
+  already-deterministic JSON report object through the writer.
+
+**§4.7 hardening (PHI-leak fix).** Wave 52-6a's
+`redactBundle({redactFindings:true})` masked finding evidence / note strings
+by pattern only, so a rule that quoted a raw extracted value back without a
+label (e.g. `Found "Jane Q Doe" in doc.txt`) leaked the name into both the
+redacted JSON and redacted DOCX reports. `redactBundle` now also scrubs the
+literal PHI values the extractor pulled (`patientName` / `dob` / `memberId` /
+`ssns` / `tins`, longest-first) out of evidence / note before pattern
+redaction. The fix lands in the shared `lib/pa/redact.js`, so both report
+flavors are covered.
+
+**View wiring:** the `.pa-downloads` group leads with a third button,
+"Download report (.docx)", ahead of the two existing JSON buttons; it builds
+the DOCX from the in-memory bundle and writes a Blob via
+`URL.createObjectURL`. No network call. A shared `triggerDownload` helper now
+backs all three buttons.
+
+**Tests:** new `test/unit/pa-docx.test.js` (7 assertions); 3 new DOCX
+assertions in `test/unit/pa-report.test.js`; 1 new literal-scrub regression
+in `test/unit/pa-redact.test.js`. The Playwright happy-path is unchanged
+(still 135 rules).
+
 ### Added (spec-v52 wave 52-6a — §4.6 JSON report + §4.7 PHI redaction open)
 
 Ships the JSON half of the spec-v52 §4.6 report contract plus the

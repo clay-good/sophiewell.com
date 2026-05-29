@@ -1345,6 +1345,69 @@ silently; the audit trail records the disablement.
 
 - 2026-05-27 — v52 proposed. Five waves outlined (52-1 through
   52-5+). Catalog count target at v52-1 close: 255.
+- 2026-05-28 — wave 52-6b (§4.6 DOCX report COMPLETE + §4.7
+  redaction hardening). Ships the human-facing `.docx` flavor of
+  the §4.6 report and the third download button, closing the §4.6
+  report contract (JSON + DOCX, full + PHI-redacted).
+
+  Deliberate refinement of the spec's letter: §4.6 / §5.2 named a
+  vendored docx.js (~140 KB) packed in a worker. This wave instead
+  ships a first-party, dependency-free OOXML writer
+  (`lib/pa/docx.js`) for three reasons that better serve the spec's
+  intent. (1) §8.1 requires `test/unit/pa-report.test.js` to assert
+  "DOCX assembles without throwing" under `node --test`; the
+  vendored mammoth.js / pdf.js bundles are browser-only and are
+  never imported by the node runner, so a vendored browser docx.js
+  could not be exercised the same way, whereas a module that runs
+  identically in node and the browser can. (2) §4.10 demands
+  byte-for-byte determinism; docx.js packs via jszip, which stamps
+  each entry with the wall-clock time and is not reproducible, while
+  this writer zeroes every DOS date/time (fixed 1980-01-01) so the
+  same report yields byte-identical `.docx` bytes. (3) spec-v10 §6
+  (dependency budget) and §4.9 (perf): the ~140 KB dependency and
+  its lazy-load path are avoided entirely; the writer is a few
+  hundred bytes of first-party code with zero runtime cost until the
+  user clicks Download. The output is a minimal valid OOXML package
+  (`[Content_Types].xml` + `_rels/.rels` + `word/document.xml`)
+  stored uncompressed; system `unzip -t` confirms CRC integrity and
+  Word / LibreOffice / Google Docs open it. The §5.1 `report.worker.js`
+  and `vendored/docxjs/` surfaces are therefore not needed and not
+  added.
+
+  New module: `lib/pa/docx.js` (CRC-32 + store-method zip writer +
+  OOXML paragraph rendering; `renderReportDocx(report)` returns a
+  `Uint8Array`; `_internals` exposes `crc32` / `zipStore` for unit
+  tests). `lib/pa/report.js` gains `buildDocxReport` and
+  `buildRedactedDocxReport`, both rendering the already-deterministic
+  JSON report object through the writer.
+
+  §4.7 hardening (fixes a PHI leak surfaced by the new redacted-DOCX
+  test): wave 52-6a's `redactBundle({redactFindings:true})` masked
+  finding evidence / note strings by pattern only, so a rule that
+  quoted a raw extracted value back without a label (e.g.
+  `Found "Jane Q Doe" in doc.txt`) leaked the name into both the
+  redacted JSON and redacted DOCX reports. `redactBundle` now also
+  scrubs the literal PHI values the extractor pulled
+  (`patientName` / `dob` / `memberId` / `ssns` / `tins`,
+  longest-first) out of evidence / note before pattern redaction.
+  This fix lands in the shared `lib/pa/redact.js`, so both report
+  flavors are covered.
+
+  View wiring: the `.pa-downloads` group leads with a third button,
+  "Download report (.docx)", ahead of the two existing JSON buttons;
+  it builds the DOCX from the in-memory bundle and writes a Blob via
+  `URL.createObjectURL`. No network call. A shared `triggerDownload`
+  helper now backs all three buttons.
+
+  Tests: new `test/unit/pa-docx.test.js` (7 assertions: CRC-32
+  check value, zip signatures, docx magic, byte-determinism, text
+  embedding, XML escaping, empty-report safety); 3 new DOCX
+  assertions in `test/unit/pa-report.test.js`; 1 new literal-scrub
+  regression in `test/unit/pa-redact.test.js`. The Playwright
+  happy-path is unchanged (still 135 rules). View wave banner
+  advanced to 52-6b.
+
+  Wave 52-6c will add the §8.3 dataset-staleness CI.
 - 2026-05-28 — wave 52-6a (§4.6 JSON report + §4.7 PHI redaction
   opens). Ships the JSON half of the §4.6 contract plus the §4.7
   PHI redaction module. The DOCX flavor lands in wave 52-6b
