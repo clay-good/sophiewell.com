@@ -1345,6 +1345,47 @@ silently; the audit trail records the disablement.
 
 - 2026-05-27 — v52 proposed. Five waves outlined (52-1 through
   52-5+). Catalog count target at v52-1 close: 255.
+- 2026-05-29 — wave 52-6f (§4.10 / §8.2 PA pipeline golden-fixture audit
+  + §8.4 property tests). Builds the two determinism-enforcement surfaces
+  §8 named but the report waves had not yet shipped.
+
+  `scripts/audit-pa.mjs` (§8.2, wired into `npm run lint`, therefore the
+  CI Lint step) runs the full deterministic pipeline (`buildBundle` →
+  `runEngine` → `buildJsonReport`, no `generatedAt` so the output is
+  byte-stable, §4.10) against every fixture under `test/fixtures/pa-lint/`
+  and diffs the produced JSON report against the committed golden in
+  `test/fixtures/pa-lint/expected/<name>.report.json`. Any rule, extractor,
+  classifier, or staleness-ledger change that alters a report is caught;
+  the maintainer re-seeds the goldens deliberately with
+  `node scripts/audit-pa.mjs --update` (also exposed as `npm run audit:pa`).
+  Four fixtures ship: `happy-path` (clean office-visit packet),
+  `missing-npi` (R-PA-016 block fires), `bad-pos` (R-PA-013 block fires on
+  POS 88, off the bundled CMS list), and `cms-dme` (Medicare-Part-B
+  letterhead routes to `cms-medicare-ffs` so the §4.5.2 FFS overlay engages
+  instead of vacuously passing).
+
+  `test/unit/pa-property.test.js` (§8.4) verifies the four invariants as
+  properties rather than snapshots: reorder-invariance, irrelevant-file
+  invariance, double-run byte-identity, and redact idempotence (both the
+  plain and findings-aware redact paths).
+
+  §4.10 / §8.4 fix surfaced while writing property 1: the report was *not*
+  invariant under input file order — `evidenceLedger` / `extractedData`
+  echoed drop order, and rules that cite "the first matching document" in
+  their evidence picked by drop order too, so reordering changed the report
+  bytes. `buildBundle` now canonicalizes document order by content hash
+  (sha256, then name as a stable tiebreak) right after building the doc
+  records, so findings, the evidence ledger, and the extracted-data
+  appendix are all order-invariant and identical files always sort
+  identically regardless of how they were dropped. The in-tab document list
+  now renders in that canonical order. No existing unit test depended on
+  drop order (the order-indexing tests all use single-document or
+  hand-built bundles).
+
+  Tests: 5 new property assertions + the 4 golden fixtures; the unit suite
+  is 2006 (was 2001). Lint (now including `audit-pa`), the unit suite,
+  a11y, the static build, and the PA + smoke Playwright specs are green.
+  View wave banner advanced to 52-6f.
 - 2026-05-29 — wave 52-6e (§4.5.6 / §8.3 follow-up: ledger → ruleset
   coverage check). Closes a silent-drift gap in the dataset-staleness
   ledger: its per-source `rules` arrays named rule ids with nothing

@@ -1,0 +1,19 @@
+{
+  "name": "missing-npi",
+  "description": "Same office-visit packet as happy-path but with the ordering-provider NPI line removed, so R-PA-016 (ordering NPI present + Luhn-valid) fires as a block finding.",
+  "opts": { "totalBytes": 8192 },
+  "documents": [
+    {
+      "name": "pa-form.txt",
+      "sha256": "fixture-missing-npi",
+      "kind": "TXT",
+      "text": "PA Cover sheet\nPrior Authorization Request Form\nPatient: Jane Q Doe\nDOB: 1985-03-12\nMember ID: W123456789\nDate of service: 2026-04-12\nPlace of service: 11\nProcedure 99213 office visit\nQuantity: 1\nDuration: 12 months requested.\nDx: I10 essential hypertension\nTIN: 123456789\nSignature: Jane Doe MD, 2026-04-12\n"
+    },
+    {
+      "name": "note.txt",
+      "sha256": "fixture-missing-npi-note",
+      "kind": "TXT",
+      "text": "Clinical note\nChief complaint: hypertension follow-up\nAssessment and plan: continue 99213-level office visit.\nMedical necessity: required for blood-pressure control.\nNote date: 2026-04-12\nSigned: Jane Doe MD, 2026-04-12\n"
+    }
+  ]
+}

@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `d5c27ecc27ea471a`
-Generated: 2026-05-29T14:17:37.161Z
+Build ID: `590a03ad55de3899`
+Generated: 2026-05-29T14:42:07.407Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=20.18.1 <21, npm >=10.0.0
@@ -60,7 +60,7 @@ downloads is committed in this repository and is hashed below.
 | `lib/pa/classify.js` | 3432 | `a7958e40890ad63ebf68ce5a0107fe7ab5a5b0c9e877e2669e8f44ecfb7f34ca` |
 | `lib/pa/date.js` | 2482 | `91a44d0383958089ad0d749ba556227b3d8432443f1431c2871b15854111c645` |
 | `lib/pa/docx.js` | 12393 | `2d4d5f022a6bf4af5486c22f15339850a911842d7d2082f7a7061e167aed9a6c` |
-| `lib/pa/engine.js` | 3906 | `8783ca76c9601070ad4652466bc4622f8be0850e8bc554794bff7da59a19bc3a` |
+| `lib/pa/engine.js` | 4579 | `dcfffac1f92d42531b4c2f0b32aa971c3c44ba7ac6ee85eb8b31501cf431af8f` |
 | `lib/pa/extract.js` | 12462 | `aae964461e8b77c8fb90bc8c2949a247754dd3feeec555a76c762b019b9d1616` |
 | `lib/pa/payer.js` | 3737 | `96641775291225fd2dc8f601fbf70445309d6c954553f3d739eccd18a3777f25` |
 | `lib/pa/redact.js` | 6356 | `bb924c4bae0ddbc70e23786f5e594b2e4492d6196769947a607132f494495ce4` |
@@ -90,7 +90,7 @@ downloads is committed in this repository and is hashed below.
 | `views/group-klmno.js` | 7870 | `bf6d3ced1a08fcb627284b649d07b8e5ace6857b29e46992d4e425925c63eaa9` |
 | `views/group-v5.js` | 26940 | `daba643b4b8c800ca5706cc9f7d80d64fb373cbfc1362b77e2fc22d6495c241a` |
 | `views/group-v6.js` | 5707 | `425918decb48cd9efac9fc5590ac8970a54c03c3b0df056fb99c9a22ff8dd1b2` |
-| `views/pa-lint.js` | 20373 | `ada623b7bfa56b264ce3d067280c5d506ef21b00a75d5a56a9d72359f1d7e695` |
+| `views/pa-lint.js` | 20373 | `84576f3f35b9523ab503eae16c9dfef0f93d0fb051a7d1af31437df3ef2c9212` |
 
 ## Verifying this SBOM
 

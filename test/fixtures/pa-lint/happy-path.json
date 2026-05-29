@@ -1,0 +1,31 @@
+{
+  "name": "happy-path",
+  "description": "Synthetic multi-document Medicare-agnostic office-visit packet. Exercises the core ruleset on a complete, well-formed submission; most core rules pass.",
+  "opts": { "totalBytes": 20480 },
+  "documents": [
+    {
+      "name": "pa-form.txt",
+      "sha256": "fixture-pa-form",
+      "kind": "TXT",
+      "text": "PA Cover sheet\nPrior Authorization Request Form\nPatient: Jane Q Doe\nDOB: 1985-03-12\nMember ID: W123456789\nDate of service: 2026-04-12\nPlace of service: 11\nProcedure 99213 office visit\nQuantity: 1\nDuration: 12 months requested.\nFrequency: daily\nDx: I10 essential hypertension\nOrdering provider NPI: 1234567893\nServicing facility NPI: 1306849393\nTIN: 123456789\nStep therapy: trial of lisinopril completed without adequate response.\nLab results attached. Imaging attached.\nSignature: Jane Doe MD, 2026-04-12\n"
+    },
+    {
+      "name": "note.txt",
+      "sha256": "fixture-note",
+      "kind": "TXT",
+      "text": "Clinical note\nChief complaint: hypertension follow-up\nHistory of present illness: stable on lisinopril.\nAssessment and plan: continue 99213-level office visit, daily lisinopril.\nMedical necessity: required for blood-pressure control.\nActive medications: lisinopril 10 mg daily.\nAllergies: NKDA.\nWeight: 70 kg. Height: 175 cm.\nNote date: 2026-04-12\nSigned: Jane Doe MD, 2026-04-12\n"
+    },
+    {
+      "name": "lab.txt",
+      "sha256": "fixture-lab",
+      "kind": "TXT",
+      "text": "Laboratory report\nCollection date: 2026-04-01\nReference range: 3.5-5.0 mEq/L\nResult: 4.1 mEq/L\n"
+    },
+    {
+      "name": "imaging.txt",
+      "sha256": "fixture-img",
+      "kind": "TXT",
+      "text": "Radiology report\nImaging date: 2026-03-15\nMRI of the lumbar spine.\nImpression: mild degenerative changes.\n"
+    }
+  ]
+}

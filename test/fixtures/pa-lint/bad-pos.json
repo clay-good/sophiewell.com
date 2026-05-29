@@ -1,0 +1,19 @@
+{
+  "name": "bad-pos",
+  "description": "Office-visit packet carrying an invalid Place of Service code (88 is not on the bundled CMS POS list), so R-PA-013 (POS present + valid) fires as a block finding.",
+  "opts": { "totalBytes": 6144 },
+  "documents": [
+    {
+      "name": "pa-form.txt",
+      "sha256": "fixture-bad-pos",
+      "kind": "TXT",
+      "text": "PA Cover sheet\nPrior Authorization Request Form\nPatient: John A Smith\nDOB: 1970-07-04\nMember ID: A987654321\nDate of service: 2026-05-01\nPlace of service: 88\nProcedure 99214 office visit\nQuantity: 1\nDx: E11.9 type 2 diabetes mellitus\nOrdering provider NPI: 1234567893\nTIN: 123456789\nSignature: Pat Provider MD, 2026-05-01\n"
+    },
+    {
+      "name": "note.txt",
+      "sha256": "fixture-bad-pos-note",
+      "kind": "TXT",
+      "text": "Clinical note\nChief complaint: diabetes follow-up\nAssessment and plan: continue metformin, 99214-level visit.\nMedical necessity: required for glycemic control.\nNote date: 2026-05-01\nSigned: Pat Provider MD, 2026-05-01\n"
+    }
+  ]
+}

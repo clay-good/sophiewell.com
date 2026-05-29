@@ -1,0 +1,19 @@
+{
+  "name": "cms-dme",
+  "description": "Medicare FFS durable-medical-equipment (CPAP) packet. The 'Medicare Part B' letterhead routes the bundle to the cms-medicare-ffs payer bucket and the DME context anchors engage the §4.5.2 CMS FFS overlay (face-to-face, written order, proof of delivery, sleep study) instead of letting it vacuously pass.",
+  "opts": { "totalBytes": 16384 },
+  "documents": [
+    {
+      "name": "cms-pa-form.txt",
+      "sha256": "fixture-cms-dme-form",
+      "kind": "TXT",
+      "text": "Medicare Part B Prior Authorization Request\nNoridian Medicare DME MAC Jurisdiction\nPatient: Robert E Lee\nDOB: 1948-01-19\nMember ID: 1EG4TE5MK73\nDate of service: 2026-05-10\nPlace of service: 12\nDurable medical equipment: CPAP device E0601\nHCPCS E0601\nQuantity: 1\nDx: G47.33 obstructive sleep apnea\nOrdering provider NPI: 1234567893\nServicing facility NPI: 1306849393\nTIN: 123456789\nStandard written order: CPAP E0601, signed.\nProof of delivery: recipient signature on file, delivery date 2026-05-12.\nSignature: Sleep Med MD, 2026-05-08\n"
+    },
+    {
+      "name": "cms-note.txt",
+      "sha256": "fixture-cms-dme-note",
+      "kind": "TXT",
+      "text": "Clinical note\nFace-to-face encounter documented 2026-04-20.\nChief complaint: loud snoring, witnessed apneas.\nAssessment and plan: obstructive sleep apnea, initiate CPAP.\nMedical necessity: AHI 32 on diagnostic sleep study.\nSleep study date: 2026-03-01. Results: AHI 32 events/hour.\nNote date: 2026-04-20\nSigned: Sleep Med MD, 2026-04-20\n"
+    }
+  ]
+}

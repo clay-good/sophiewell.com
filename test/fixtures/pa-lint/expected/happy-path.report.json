@@ -1,0 +1,1897 @@
+{
+  "coverPage": {
+    "title": "Sophie PA Packet Lint Report",
+    "packetSize": 4,
+    "detectedPayer": "unknown",
+    "datasetVersion": "1.0.0",
+    "reportFormatVersion": "1",
+    "generatedAt": null,
+    "disclaimer": "Sophie Prior-Auth Packet Linter is a deterministic checklist. It is not medical advice. It is not legal advice. It is not coding advice. It does not transmit anything to any payer. Your packet stays in this browser tab; we never see your data. Findings reflect what Sophie's ruleset checks; they are not a guarantee of payer approval. A passing report does not mean the packet will be approved; a failing report does not mean the packet will be denied. The clinical adequacy of every document is the reviewer's responsibility. Sophie's ruleset is versioned and cites every source; verify citations against current payer policy before relying on any finding for a clinical or revenue decision."
+  },
+  "executiveSummary": {
+    "totalRulesEvaluated": 135,
+    "counts": {
+      "block": 0,
+      "flag": 0,
+      "info": 0,
+      "pass": 135,
+      "error": 0
+    },
+    "blockFindings": []
+  },
+  "findings": [
+    {
+      "ruleId": "R-PA-001",
+      "severity": "block",
+      "status": "pass",
+      "description": "Patient name present in at least one document",
+      "citation": "spec-v52 §4.5.1 R-PA-001 (core, payer-agnostic).",
+      "evidence": "Found \"Jane Q Doe\" in pa-form.txt",
+      "note": null,
+      "remediation": null
+    },
+    {
+      "ruleId": "R-PA-002",
+      "severity": "block",
+      "status": "pass",
+      "description": "Date of birth present in at least one document",
+      "citation": "spec-v52 §4.5.1 R-PA-002 (core, payer-agnostic).",
+      "evidence": "DOB \"1985-03-12\" in pa-form.txt",
+      "note": null,
+      "remediation": null
+    },
+    {
+      "ruleId": "R-PA-003",
+      "severity": "block",
+      "status": "pass",
+      "description": "Member ID present in at least one document",
+      "citation": "spec-v52 §4.5.1 R-PA-003. Payer-specific format validation lives in payer overlays (v52-2+).",
+      "evidence": "Member ID \"W123456789\" in pa-form.txt",
+      "note": null,
+      "remediation": null
+    },
+    {
+      "ruleId": "R-PA-004",
+      "severity": "block",
+      "status": "pass",
+      "description": "Service date present in the packet",
+      "citation": "spec-v52 §4.5.1 R-PA-004 (core, payer-agnostic).",
+      "evidence": "7 date string(s) recognized across the packet.",
+      "note": null,
+      "remediation": null
+    },
+    {
+      "ruleId": "R-PA-005",
+      "severity": "flag",
+      "status": "pass",
+      "description": "Service date is not past the default retro-auth window (90 days)",
+      "citation": "spec-v52 §4.5.1 R-PA-005. Default retro-auth window is 90 days; payer overlays override. Scoped to dates explicitly labeled \"Date of service\" / \"DOS\" / \"Service date\" so DOB strings and signature dates are excluded.",
+      "evidence": "Oldest labeled service date is 47 days in the past.",
+      "note": null,
+      "remediation": null
+    },
+    {
+      "ruleId": "R-PA-006",
+      "severity": "block",
+      "status": "pass",
+      "description": "Service date is not more than 365 days in the future",
+      "citation": "spec-v52 §4.5.1 R-PA-006. Hard ceiling, not payer-specific. Scoped to dates labeled \"Date of service\" / \"DOS\" / \"Service date\".",
+      "evidence": "Furthest labeled service date is -47 days in the future.",
+      "note": null,
+      "remediation": null
+    },
+    {
+      "ruleId": "R-PA-007",
+      "severity": "block",
+      "status": "pass",
+      "description": "At least one CPT or HCPCS code present",
+      "citation": "spec-v52 §4.5.1 R-PA-007 (core, payer-agnostic). AMA CPT / CMS HCPCS Level II.",
+      "evidence": "Codes: 99213",
+      "note": null,
+      "remediation": null
+    },
+    {
+      "ruleId": "R-PA-008",
+      "severity": "block",
+      "status": "pass",
+      "description": "Each extracted CPT code is well-formed (5 digits) and not on the bundled deleted-codes list",
+      "citation": "spec-v52 §4.5.1 R-PA-008. v52-1k ships an empty deleted-codes table; the rule is a format-strict pass and expands as payer-overlay waves populate the table per §5.3.",
+      "evidence": "1 code(s) format-valid; none on the bundled deleted list.",
+      "note": null,
+      "remediation": null
+    },
+    {
+      "ruleId": "R-PA-009",
+      "severity": "block",
+      "status": "pass",
+      "description": "Each extracted HCPCS code is well-formed (letter + 4 digits) and not on the bundled deleted-codes list",
+      "citation": "spec-v52 §4.5.1 R-PA-009. v52-1k ships an empty deleted-codes table.",
+      "evidence": "No HCPCS Level II code; rule vacuously satisfied.",
+      "note": null,
+      "remediation": null
+    },
+    {
+      "ruleId": "R-PA-010",
+      "severity": "block",
+      "status": "pass",
+      "description": "At least one ICD-10-CM diagnosis code present",
+      "citation": "spec-v52 §4.5.1 R-PA-010 (core, payer-agnostic). ICD-10-CM, public domain (CMS / CDC).",
+      "evidence": "Codes: I10",
+      "note": null,
+      "remediation": null
+    },
+    {
+      "ruleId": "R-PA-011",
+      "severity": "block",
+      "status": "pass",
+      "description": "Each extracted ICD-10-CM code is well-formed and not on the bundled deleted-codes list",
+      "citation": "spec-v52 §4.5.1 R-PA-011. v52-1k ships an empty deleted-codes table; CMS ICD-10-CM annual updates populate it via the maintainer refresh script.",
+      "evidence": "1 code(s) format-valid; none on the bundled deleted list.",
+      "note": null,
+      "remediation": null
+    },
+    {
+      "ruleId": "R-PA-012",
+      "severity": "flag",
+      "status": "pass",
+      "description": "No bundled NCCI procedure-to-procedure (PTP) edit-pair conflict among the extracted CPT codes",
+      "citation": "spec-v52 §4.5.1 R-PA-012. v52-1k ships an empty NCCI PTP-pairs table per §5.3; populated to ~5,000 high-volume pairs by a later wave.",
+      "evidence": "Fewer than 2 distinct CPT codes; rule vacuously satisfied.",
+      "note": null,
+      "remediation": null
+    },
+    {
+      "ruleId": "R-PA-013",
+      "severity": "block",
+      "status": "pass",
+      "description": "Place-of-service code is present and on the bundled CMS list",
+      "citation": "spec-v52 §4.5.1 R-PA-013. CMS Place of Service codes (POS list, public).",
+      "evidence": "POS code(s): 11",
+      "note": null,
+      "remediation": null
+    },
+    {
+      "ruleId": "R-PA-014",
+      "severity": "flag",
+      "status": "pass",
+      "description": "Each CPT modifier present is a well-formed 2-character code",
+      "citation": "spec-v52 §4.5.1 R-PA-014. Wave 52-1j enforces format only; payer-specific permissibility lands with payer overlays.",
+      "evidence": "No CPT modifier suffix found; rule vacuously satisfied.",
+      "note": null,
+      "remediation": null
+    },
+    {
+      "ruleId": "R-PA-015",
+      "severity": "block",
+      "status": "pass",
+      "description": "Quantity / units present and >= 1",
+      "citation": "spec-v52 §4.5.1 R-PA-015.",
+      "evidence": "Quantity 1 found.",
+      "note": null,
+      "remediation": null
+    },
+    {
+      "ruleId": "R-PA-016",
+      "severity": "block",
+      "status": "pass",
+      "description": "Ordering provider NPI passes Luhn checksum",
+      "citation": "spec-v52 §4.5.1 R-PA-016. NPPES Luhn-mod-10 with the 80840 issuer prefix. Registry membership is NOT verified (Sophie does not ship the NPPES dump).",
+      "evidence": "NPI(s): 1234567893, 1306849393",
+      "note": null,
+      "remediation": null
+    },
+    {
+      "ruleId": "R-PA-017",
+      "severity": "block",
+      "status": "pass",
+      "description": "Ordering provider signature present in at least one document",
+      "citation": "spec-v52 §4.5.1 R-PA-017. Detects \"Signature:\" / \"Signed by\" / \"Electronically signed\" / \"/s/\" anchors.",
+      "evidence": "Signature anchor in note.txt",
+      "note": null,
+      "remediation": null
+    },
+    {
+      "ruleId": "R-PA-018",
+      "severity": "block",
+      "status": "pass",
+      "description": "Ordering provider signature is dated (only if a signature is present)",
+      "citation": "spec-v52 §4.5.1 R-PA-018.",
+      "evidence": "Dated signature in note.txt",
+      "note": null,
+      "remediation": null
+    },
+    {
+      "ruleId": "R-PA-019",
+      "severity": "flag",
+      "status": "pass",
+      "description": "Servicing facility / second NPI present (distinct from ordering)",
+      "citation": "spec-v52 §4.5.1 R-PA-019. Most institutional PA packets carry both an ordering and a servicing NPI; v52-1h flags when only one Luhn-valid NPI is in the packet.",
+      "evidence": "2 distinct Luhn-valid NPIs found.",
+      "note": null,
+      "remediation": null
+    },
+    {
+      "ruleId": "R-PA-020",
+      "severity": "flag",
+      "status": "pass",
+      "description": "Servicing facility TIN present (9 digits)",
+      "citation": "spec-v52 §4.5.1 R-PA-020. Federal tax ID expected on most institutional PA packets.",
+      "evidence": "TIN(s): 123456789",
+      "note": null,
+      "remediation": null
+    },
+    {
+      "ruleId": "R-PA-021",
+      "severity": "block",
+      "status": "pass",
+      "description": "Clinical-note content appears in at least one document",
+      "citation": "spec-v52 §4.5.1 R-PA-021. Keyword anchors: \"chief complaint\", \"history of present illness\", \"assessment and plan\", \"progress note\", \"clinical note\", \"soap note\".",
+      "evidence": "Clinical-note anchor in note.txt",
+      "note": null,
+      "remediation": null
+    },
+    {
+      "ruleId": "R-PA-022",
+      "severity": "flag",
+      "status": "pass",
+      "description": "Clinical-note document has at least one extractable date",
+      "citation": "spec-v52 §4.5.1 R-PA-022. Default clinical-look-back window is payer-specific; v52-1h checks date presence inside the clinical-note document(s) only.",
+      "evidence": "Date(s) found in clinical-note: note.txt",
+      "note": null,
+      "remediation": null
+    },
+    {
+      "ruleId": "R-PA-023",
+      "severity": "flag",
+      "status": "pass",
+      "description": "Clinical note references at least one of the requested CPT/HCPCS codes",
+      "citation": "spec-v52 §4.5.1 R-PA-023. Heuristic: at least one CPT/HCPCS code extracted anywhere in the packet also appears inside a clinical-note document.",
+      "evidence": "Code 99213 in note.txt",
+      "note": null,
+      "remediation": null
+    },
+    {
+      "ruleId": "R-PA-024",
+      "severity": "flag",
+      "status": "pass",
+      "description": "Medical-necessity statement present",
+      "citation": "spec-v52 §4.5.1 R-PA-024. Free-text anchor: \"medical necessity\", \"medically necessary\", \"necessary because\", \"necessary due to\".",
+      "evidence": "Anchor in note.txt",
+      "note": null,
+      "remediation": null
+    },
+    {
+      "ruleId": "R-PA-025",
+      "severity": "flag",
+      "status": "pass",
+      "description": "Lab-result document attached when the packet references labs",
+      "citation": "spec-v52 §4.5.1 R-PA-025.",
+      "evidence": "Lab-result document attached: lab.txt",
+      "note": null,
+      "remediation": null
+    },
+    {
+      "ruleId": "R-PA-026",
+      "severity": "flag",
+      "status": "pass",
+      "description": "Imaging-report document attached when the packet references imaging",
+      "citation": "spec-v52 §4.5.1 R-PA-026.",
+      "evidence": "Imaging-report attached: imaging.txt",
+      "note": null,
+      "remediation": null
+    },
+    {
+      "ruleId": "R-PA-027",
+      "severity": "flag",
+      "status": "pass",
+      "description": "Each attached lab-result document is dated within the default freshness window (360 days)",
+      "citation": "spec-v52 §4.5.1 R-PA-027. Default freshness window is 12 months; payer overlays override.",
+      "evidence": "1 lab-result document(s) within freshness window.",
+      "note": null,
+      "remediation": null
+    },
+    {
+      "ruleId": "R-PA-028",
+      "severity": "flag",
+      "status": "pass",
+      "description": "Each attached imaging-report document is dated within the default freshness window (12 months)",
+      "citation": "spec-v52 §4.5.1 R-PA-028.",
+      "evidence": "1 imaging-report document(s) within freshness window.",
+      "note": null,
+      "remediation": null
+    },
+    {
+      "ruleId": "R-PA-029",
+      "severity": "flag",
+      "status": "pass",
+      "description": "Step-therapy documentation present when payer requires it",
+      "citation": "spec-v52 §4.5.1 R-PA-029. Default firing condition is keyword absence; payer overlays will pre-filter on whether the requested drug class triggers step therapy.",
+      "evidence": "Anchor in pa-form.txt",
+      "note": null,
+      "remediation": null
+    },
+    {
+      "ruleId": "R-PA-030",
+      "severity": "flag",
+      "status": "pass",
+      "description": "Prior-treatment list present when step therapy applies",
+      "citation": "spec-v52 §4.5.1 R-PA-030. Triggered when a step-therapy anchor is present; passes when the packet documents at least one prior tried-and-failed medication.",
+      "evidence": "Prior-treatment anchor in pa-form.txt",
+      "note": null,
+      "remediation": null
+    },
+    {
+      "ruleId": "R-PA-031",
+      "severity": "info",
+      "status": "pass",
+      "description": "Allergies / intolerances list present",
+      "citation": "spec-v52 §4.5.1 R-PA-031.",
+      "evidence": "Anchor in note.txt",
+      "note": null,
+      "remediation": null
+    },
+    {
+      "ruleId": "R-PA-032",
+      "severity": "info",
+      "status": "pass",
+      "description": "Active medication list present",
+      "citation": "spec-v52 §4.5.1 R-PA-032.",
+      "evidence": "Anchor in note.txt",
+      "note": null,
+      "remediation": null
+    },
+    {
+      "ruleId": "R-PA-033",
+      "severity": "flag",
+      "status": "pass",
+      "description": "Height / weight present when the packet references a weight-based dose",
+      "citation": "spec-v52 §4.5.1 R-PA-033. Triggered by \"mg/kg\" / \"weight-based\" anchors in the packet text.",
+      "evidence": "No weight-based-dose anchor; rule vacuously satisfied.",
+      "note": null,
+      "remediation": null
+    },
+    {
+      "ruleId": "R-PA-034",
+      "severity": "flag",
+      "status": "pass",
+      "description": "Renal function present when the packet references a renally-dosed agent",
+      "citation": "spec-v52 §4.5.1 R-PA-034. Triggered by \"renal dose adjustment\" / \"CrCl\" / common renally-dosed drug names.",
+      "evidence": "No renally-dosed-agent anchor; rule vacuously satisfied.",
+      "note": null,
+      "remediation": null
+    },
+    {
+      "ruleId": "R-PA-035",
+      "severity": "info",
+      "status": "pass",
+      "description": "Hepatic function (LFTs) present when packet references a hepatically-dosed agent",
+      "citation": "spec-v52 §4.5.1 R-PA-035. Triggered by \"hepatic dose adjustment\" / common hepatically-cleared drug names.",
+      "evidence": "No hepatically-dosed-agent anchor; rule vacuously satisfied.",
+      "note": null,
+      "remediation": null
+    },
+    {
+      "ruleId": "R-PA-036",
+      "severity": "flag",
+      "status": "pass",
+      "description": "Frequency / interval present (daily, BID, q6h, etc.)",
+      "citation": "spec-v52 §4.5.1 R-PA-036.",
+      "evidence": "Frequency \"daily\" in note.txt",
+      "note": null,
+      "remediation": null
+    },
+    {
+      "ruleId": "R-PA-037",
+      "severity": "flag",
+      "status": "pass",
+      "description": "Duration / length of approval requested is present",
+      "citation": "spec-v52 §4.5.1 R-PA-037.",
+      "evidence": "Anchor in pa-form.txt",
+      "note": null,
+      "remediation": null
+    },
+    {
+      "ruleId": "R-PA-038",
+      "severity": "flag",
+      "status": "pass",
+      "description": "Submission is a resubmission iff a prior-auth-denial document is attached",
+      "citation": "spec-v52 §4.5.1 R-PA-038. The packet declares resubmission/reconsideration intent and a prior-auth-denial document is attached, or neither is the case.",
+      "evidence": "Not a resubmission; rule vacuously satisfied.",
+      "note": null,
+      "remediation": null
+    },
+    {
+      "ruleId": "R-PA-039",
+      "severity": "flag",
+      "status": "pass",
+      "description": "Resubmission references the original PA reference number",
+      "citation": "spec-v52 §4.5.1 R-PA-039. Only checked when a resubmission/denial signal is present.",
+      "evidence": "Not a resubmission; rule vacuously satisfied.",
+      "note": null,
+      "remediation": null
+    },
+    {
+      "ruleId": "R-PA-040",
+      "severity": "info",
+      "status": "pass",
+      "description": "Resubmission addresses each reason cited in the prior denial",
+      "citation": "spec-v52 §4.5.1 R-PA-040. Heuristic: a \"denial reason\" or \"response to denial\" anchor is present when a prior-denial document is in the packet.",
+      "evidence": "No prior-auth-denial document; rule vacuously satisfied.",
+      "note": null,
+      "remediation": null
+    },
+    {
+      "ruleId": "R-PA-041",
+      "severity": "flag",
+      "status": "pass",
+      "description": "At-risk PHI (SSN) is NOT present in the packet",
+      "citation": "spec-v52 §4.5.1 R-PA-041. SSA SSN format. SSN in a PA packet is a PHI minimization concern; payers rarely require it.",
+      "evidence": "No SSN-shaped string found.",
+      "note": null,
+      "remediation": null
+    },
+    {
+      "ruleId": "R-PA-042",
+      "severity": "flag",
+      "status": "pass",
+      "description": "Each PDF document in the packet is text-extractable (non-zero extracted text length)",
+      "citation": "spec-v52 §4.5.1 R-PA-042. A scanned PDF without an embedded text layer fails this rule; the user is steered toward OCR before resubmission (spec-v52 §2).",
+      "evidence": "No PDF documents in packet; rule vacuously satisfied.",
+      "note": null,
+      "remediation": null
+    },
+    {
+      "ruleId": "R-PA-043",
+      "severity": "block",
+      "status": "pass",
+      "description": "No document in the packet is password-protected or encrypted",
+      "citation": "spec-v52 §4.5.1 R-PA-043. Triggered by the view's parse-error metadata (encrypted PDFs and password-protected DOCXs throw at extract time) and by explicit \"password protected\" / \"encrypted document\" anchors in the extracted text.",
+      "evidence": "4 document(s) opened without an encryption error.",
+      "note": null,
+      "remediation": null
+    },
+    {
+      "ruleId": "R-PA-044",
+      "severity": "block",
+      "status": "pass",
+      "description": "Every document in the packet has extractable content (non-zero text length)",
+      "citation": "spec-v52 §4.5.1 R-PA-044. Catches password-protected, corrupted, or empty documents that the ingest step could not open.",
+      "evidence": "4 document(s) opened cleanly.",
+      "note": null,
+      "remediation": null
+    },
+    {
+      "ruleId": "R-PA-045",
+      "severity": "flag",
+      "status": "pass",
+      "description": "Total packet size <= 50 MB (default payer max)",
+      "citation": "spec-v52 §4.5.1 R-PA-045. Default payer maximum is 50 MB; payer overlays may raise / lower.",
+      "evidence": "Packet is 0 MB.",
+      "note": null,
+      "remediation": null
+    },
+    {
+      "ruleId": "R-PA-046",
+      "severity": "flag",
+      "status": "pass",
+      "description": "No corrupted character encoding (mojibake) in extracted text",
+      "citation": "spec-v52 §4.5.1 R-PA-046. Non-zero count of U+FFFD REPLACEMENT CHARACTER signals a non-UTF8 source that the parser fell back on.",
+      "evidence": "No U+FFFD replacement chars in extracted text.",
+      "note": null,
+      "remediation": null
+    },
+    {
+      "ruleId": "R-PA-047",
+      "severity": "info",
+      "status": "pass",
+      "description": "Patient address present (info — only fires when a payer overlay requires it)",
+      "citation": "spec-v52 §4.5.1 R-PA-047. Default payer-agnostic posture: vacuously satisfied at v52-1j. Payer overlays in v52-2+ flip this to \"required\" per plan.",
+      "evidence": "No payer overlay loaded; rule vacuously satisfied until v52-2+.",
+      "note": null,
+      "remediation": null
+    },
+    {
+      "ruleId": "R-PA-048",
+      "severity": "info",
+      "status": "pass",
+      "description": "Subscriber relationship to patient indicated (info — payer-overlay-gated)",
+      "citation": "spec-v52 §4.5.1 R-PA-048. Default payer-agnostic posture: vacuously satisfied at v52-1j.",
+      "evidence": "No payer overlay loaded; rule vacuously satisfied until v52-2+.",
+      "note": null,
+      "remediation": null
+    },
+    {
+      "ruleId": "R-PA-049",
+      "severity": "info",
+      "status": "pass",
+      "description": "Other insurance / COB information indicated (info — payer-overlay-gated)",
+      "citation": "spec-v52 §4.5.1 R-PA-049. Default payer-agnostic posture: vacuously satisfied at v52-1j.",
+      "evidence": "No payer overlay loaded; rule vacuously satisfied until v52-2+.",
+      "note": null,
+      "remediation": null
+    },
+    {
+      "ruleId": "R-PA-050",
+      "severity": "flag",
+      "status": "pass",
+      "description": "Diagnosis-procedure linkage shown (an ICD-10 code and a CPT/HCPCS code co-occur within the same document)",
+      "citation": "spec-v52 §4.5.1 R-PA-050. Heuristic: at least one document carries both an ICD-10 code and a CPT/HCPCS code within ~400 characters of each other.",
+      "evidence": "ICD-10 + CPT/HCPCS co-occur in pa-form.txt",
+      "note": null,
+      "remediation": null
+    },
+    {
+      "ruleId": "R-PA-051",
+      "severity": "info",
+      "status": "pass",
+      "description": "Procedure description matches the CPT short descriptor (info — descriptor table not shipped at v52-1j)",
+      "citation": "spec-v52 §4.5.1 R-PA-051. AMA CPT short descriptors are copyrighted; per spec-v52 §5.3, descriptor-match degrades to an info-level \"check skipped\" finding until a license-clean source ships.",
+      "evidence": "CPT descriptor table not loaded (license-gated); descriptor match skipped.",
+      "note": null,
+      "remediation": null
+    },
+    {
+      "ruleId": "R-PA-052",
+      "severity": "flag",
+      "status": "pass",
+      "description": "Date of injury present when an external-cause ICD-10 code (V/W/X/Y) is in the packet",
+      "citation": "spec-v52 §4.5.1 R-PA-052. ICD-10-CM external-cause codes (V00-Y99) signal injury-related encounters; payers require a date of injury.",
+      "evidence": "No external-cause (V/W/X/Y) ICD-10 code; rule vacuously satisfied.",
+      "note": null,
+      "remediation": null
+    },
+    {
+      "ruleId": "R-PA-053",
+      "severity": "info",
+      "status": "pass",
+      "description": "Authorization not requested for a code on the bundled no-PA-needed list (v52-1f: empty; expands with payer overlays)",
+      "citation": "spec-v52 §4.5.1 R-PA-053. Wave 52-1f ships an empty bundled no-PA list; the rule remains in the table so payer overlays can populate the list without an engine change.",
+      "evidence": "No bundled no-PA-needed list at v52-1f close.",
+      "note": null,
+      "remediation": null
+    },
+    {
+      "ruleId": "R-PA-054",
+      "severity": "flag",
+      "status": "pass",
+      "description": "Each modifier 25 / 59 is accompanied by supporting documentation",
+      "citation": "spec-v52 §4.5.1 R-PA-054. Modifiers 25 and 59 are the two most-audited CPT modifiers; both require documentation of a separately identifiable service.",
+      "evidence": "No modifier 25 / 59 anchor; rule vacuously satisfied.",
+      "note": null,
+      "remediation": null
+    },
+    {
+      "ruleId": "R-PA-055",
+      "severity": "flag",
+      "status": "pass",
+      "description": "Bilateral procedure flag matches modifier 50 presence",
+      "citation": "spec-v52 §4.5.1 R-PA-055. \"Bilateral\" mentioned in the clinical narrative should be accompanied by modifier 50 on the CPT line.",
+      "evidence": "No bilateral mention; rule vacuously satisfied.",
+      "note": null,
+      "remediation": null
+    },
+    {
+      "ruleId": "R-PA-056",
+      "severity": "flag",
+      "status": "pass",
+      "description": "Anesthesia time is documented when an anesthesia CPT is present",
+      "citation": "spec-v52 §4.5.1 R-PA-056. Anesthesia CPT range is 00100-01999; anesthesia claims require start/stop times.",
+      "evidence": "No anesthesia CPT or anesthesia anchor; rule vacuously satisfied.",
+      "note": null,
+      "remediation": null
+    },
+    {
+      "ruleId": "R-PA-057",
+      "severity": "flag",
+      "status": "pass",
+      "description": "Assistant surgeon modifier (80/81/82/AS) is accompanied by a second Luhn-valid NPI",
+      "citation": "spec-v52 §4.5.1 R-PA-057. Modifiers 80/81/82 (assistant surgeon, MD) and AS (PA/NP assistant) require the assistant to be identifiable; payers expect a second NPI.",
+      "evidence": "No assistant-surgeon anchor; rule vacuously satisfied.",
+      "note": null,
+      "remediation": null
+    },
+    {
+      "ruleId": "R-PA-058",
+      "severity": "flag",
+      "status": "pass",
+      "description": "Unlisted-code procedure has a narrative justification",
+      "citation": "spec-v52 §4.5.1 R-PA-058. CPT unlisted codes require a clinician narrative explaining what was done.",
+      "evidence": "No unlisted-procedure anchor; rule vacuously satisfied.",
+      "note": null,
+      "remediation": null
+    },
+    {
+      "ruleId": "R-PA-059",
+      "severity": "flag",
+      "status": "pass",
+      "description": "Date of consent (when a consent document is present) is on or before the date of service",
+      "citation": "spec-v52 §4.5.1 R-PA-059. Consent must be obtained before the procedure.",
+      "evidence": "No consent document; rule vacuously satisfied.",
+      "note": null,
+      "remediation": null
+    },
+    {
+      "ruleId": "R-PA-060",
+      "severity": "info",
+      "status": "pass",
+      "description": "Packet completeness summary / cover sheet present",
+      "citation": "spec-v52 §4.5.1 R-PA-060.",
+      "evidence": "Anchor in pa-form.txt",
+      "note": null,
+      "remediation": null
+    },
+    {
+      "ruleId": "R-PA-BH-001",
+      "severity": "flag",
+      "status": "pass",
+      "description": "Behavioral health: DSM-5-TR diagnosis documented (ICD-10 F-code aligned)",
+      "citation": "spec-v52 §4.5.5 R-PA-BH-001. Behavioral-health PAs require a documented DSM-5-TR diagnosis; the packet should carry the ICD-10 F-code AND a DSM-5-TR / diagnostic-criteria reference for medical-necessity review.",
+      "evidence": "No behavioral-health CPT or ICD-10 F-code trigger; rule vacuously satisfied.",
+      "note": null,
+      "remediation": null
+    },
+    {
+      "ruleId": "R-PA-BH-002",
+      "severity": "flag",
+      "status": "pass",
+      "description": "Behavioral health: treatment plan with measurable goals documented",
+      "citation": "spec-v52 §4.5.5 R-PA-BH-002. Payer convention (commercial and public): behavioral-health treatment plans must specify measurable, time-bound goals that map to the documented diagnosis so progress can be evaluated at reauthorization.",
+      "evidence": "No behavioral-health trigger; rule vacuously satisfied.",
+      "note": null,
+      "remediation": null
+    },
+    {
+      "ruleId": "R-PA-BH-003",
+      "severity": "flag",
+      "status": "pass",
+      "description": "Behavioral health: prior level of care documented when stepping up",
+      "citation": "spec-v52 §4.5.5 R-PA-BH-003. ASAM / LOCUS frameworks: when requesting a higher level of care (outpatient -> IOP -> PHP -> residential -> inpatient), the packet must document the prior level and reason for step-up.",
+      "evidence": "No behavioral-health trigger; rule vacuously satisfied.",
+      "note": null,
+      "remediation": null
+    },
+    {
+      "ruleId": "R-PA-BH-004",
+      "severity": "flag",
+      "status": "pass",
+      "description": "Behavioral health: risk assessment (SI / HI / self-harm) documented",
+      "citation": "spec-v52 §4.5.5 R-PA-BH-004. Payer convention and Joint Commission NPSG: behavioral-health PAs (especially higher levels of care) require documented risk assessment covering suicidal ideation, homicidal ideation, and self-harm.",
+      "evidence": "No behavioral-health trigger; rule vacuously satisfied.",
+      "note": null,
+      "remediation": null
+    },
+    {
+      "ruleId": "R-PA-BH-005",
+      "severity": "info",
+      "status": "pass",
+      "description": "Behavioral health: medication-assisted treatment (MAT) elements documented when SUD diagnosis present",
+      "citation": "spec-v52 §4.5.5 R-PA-BH-005. For substance-use-disorder packets (ICD-10 F10-F19) requesting MAT (buprenorphine, methadone, naltrexone), the packet should reference DEA X-waiver / OTP enrollment and the planned induction / maintenance phase.",
+      "evidence": "No behavioral-health trigger; rule vacuously satisfied.",
+      "note": null,
+      "remediation": null
+    },
+    {
+      "ruleId": "R-PA-CMS-001",
+      "severity": "block",
+      "status": "pass",
+      "description": "Medicare FFS DME: face-to-face encounter documented",
+      "citation": "spec-v52 §4.5.2 R-PA-CMS-001. CMS NCD-280.x; Medicare requires a face-to-face encounter with the prescribing physician within 6 months prior to the written order for most DME categories.",
+      "evidence": "Not Medicare FFS; rule vacuously satisfied.",
+      "note": null,
+      "remediation": null
+    },
+    {
+      "ruleId": "R-PA-CMS-002",
+      "severity": "block",
+      "status": "pass",
+      "description": "Medicare FFS DME: Detailed / Standard Written Order (DWO/SWO) present and dated",
+      "citation": "spec-v52 §4.5.2 R-PA-CMS-002. CMS IOM Pub 100-08 ch. 5; a Standard Written Order (or pre-2020 Detailed Written Order) signed and dated by the prescribing physician is required before DME delivery.",
+      "evidence": "Not Medicare FFS; rule vacuously satisfied.",
+      "note": null,
+      "remediation": null
+    },
+    {
+      "ruleId": "R-PA-CMS-003",
+      "severity": "block",
+      "status": "pass",
+      "description": "Medicare FFS DME: Standard Written Order elements complete (beneficiary, item, date, quantity, prescriber NPI, signature)",
+      "citation": "spec-v52 §4.5.2 R-PA-CMS-003. CMS IOM Pub 100-08 ch. 5; the SWO must carry the beneficiary identity, item description / HCPCS, order date, quantity, treating-practitioner NPI, and a dated prescriber signature.",
+      "evidence": "Not Medicare FFS; rule vacuously satisfied.",
+      "note": null,
+      "remediation": null
+    },
+    {
+      "ruleId": "R-PA-CMS-004",
+      "severity": "flag",
+      "status": "pass",
+      "description": "Medicare FFS DME: proof of delivery requirements documented",
+      "citation": "spec-v52 §4.5.2 R-PA-CMS-004. CMS IOM Pub 100-08 ch. 4 §4.26; supplier must retain proof of delivery (POD) including date and recipient signature.",
+      "evidence": "Not Medicare FFS; rule vacuously satisfied.",
+      "note": null,
+      "remediation": null
+    },
+    {
+      "ruleId": "R-PA-CMS-005",
+      "severity": "flag",
+      "status": "pass",
+      "description": "Medicare FFS mobility device: patient functional status documented",
+      "citation": "spec-v52 §4.5.2 R-PA-CMS-005. CMS LCD L33788 (Power Mobility Devices) requires a documented mobility limitation evaluation: ADL impact, ambulation distance, balance, and home accessibility.",
+      "evidence": "Not Medicare FFS; rule vacuously satisfied.",
+      "note": null,
+      "remediation": null
+    },
+    {
+      "ruleId": "R-PA-CMS-006",
+      "severity": "flag",
+      "status": "pass",
+      "description": "Medicare FFS PAP device: sleep study results documented within 12 months prior to initial PAP order",
+      "citation": "spec-v52 §4.5.2 R-PA-CMS-006. LCD L33718 (Positive Airway Pressure Devices) requires a Medicare-covered sleep test with results within 12 months prior to initiating PAP therapy.",
+      "evidence": "Not Medicare FFS; rule vacuously satisfied.",
+      "note": null,
+      "remediation": null
+    },
+    {
+      "ruleId": "R-PA-CMS-007",
+      "severity": "flag",
+      "status": "pass",
+      "description": "Medicare FFS PAP continuation: 90-day adherence / compliance documentation",
+      "citation": "spec-v52 §4.5.2 R-PA-CMS-007. LCD L33718 requires documentation that the beneficiary is using PAP >= 4 hours/night on >= 70% of nights during a consecutive 30-day period within the first 90 days of initial PAP use, before continued coverage past three months.",
+      "evidence": "Not Medicare FFS; rule vacuously satisfied.",
+      "note": null,
+      "remediation": null
+    },
+    {
+      "ruleId": "R-PA-CMS-008",
+      "severity": "block",
+      "status": "pass",
+      "description": "Medicare FFS home oxygen: qualifying arterial blood gas or pulse-oximetry result documented",
+      "citation": "spec-v52 §4.5.2 R-PA-CMS-008. CMS NCD 240.2 / LCD L33797 (Oxygen and Oxygen Equipment) requires a qualifying ABG (PaO2 <= 55 mmHg) or pulse oximetry (SpO2 <= 88%) on room air at rest, during sleep, or with exertion.",
+      "evidence": "Not Medicare FFS; rule vacuously satisfied.",
+      "note": null,
+      "remediation": null
+    },
+    {
+      "ruleId": "R-PA-CMS-009",
+      "severity": "flag",
+      "status": "pass",
+      "description": "Medicare FFS DME: supplier PTAN documented",
+      "citation": "spec-v52 §4.5.2 R-PA-CMS-009. CMS supplier PTAN (Provider Transaction Access Number) is required on DME claims so the MAC can match the supplier to the Medicare enrollment record.",
+      "evidence": "Not Medicare FFS; rule vacuously satisfied.",
+      "note": null,
+      "remediation": null
+    },
+    {
+      "ruleId": "R-PA-CMS-011",
+      "severity": "flag",
+      "status": "pass",
+      "description": "Medicare FFS hospital bed: medical-necessity documentation present",
+      "citation": "spec-v52 §4.5.2 R-PA-CMS-011. LCD L33820 (Hospital Beds and Accessories) requires documentation that the beneficiary has a condition requiring positioning of the body in ways not feasible with an ordinary bed (e.g., head elevation > 30°, frequent body position change).",
+      "evidence": "Not Medicare FFS; rule vacuously satisfied.",
+      "note": null,
+      "remediation": null
+    },
+    {
+      "ruleId": "R-PA-CMS-012",
+      "severity": "flag",
+      "status": "pass",
+      "description": "Medicare FFS enteral nutrition: inability to ingest / projected duration documented",
+      "citation": "spec-v52 §4.5.2 R-PA-CMS-012. LCD L33783 (Enteral Nutrition) requires documentation of a permanent (>= 90 days) inability to take nutrition orally and a functioning gastrointestinal tract.",
+      "evidence": "Not Medicare FFS; rule vacuously satisfied.",
+      "note": null,
+      "remediation": null
+    },
+    {
+      "ruleId": "R-PA-CMS-013",
+      "severity": "flag",
+      "status": "pass",
+      "description": "Medicare FFS nebulizer: obstructive pulmonary disease diagnosis documented",
+      "citation": "spec-v52 §4.5.2 R-PA-CMS-013. LCD L33370 (Nebulizers) requires documentation of a covered diagnosis (COPD, asthma, cystic fibrosis, bronchiectasis, etc.) and the inhalation drug being delivered.",
+      "evidence": "Not Medicare FFS; rule vacuously satisfied.",
+      "note": null,
+      "remediation": null
+    },
+    {
+      "ruleId": "R-PA-CMS-014",
+      "severity": "block",
+      "status": "pass",
+      "description": "Medicare FFS TENS unit: chronic intractable pain > 3 months + failed conventional therapy documented",
+      "citation": "spec-v52 §4.5.2 R-PA-CMS-014. NCD 160.13 / LCD L33802 (TENS) requires chronic intractable pain present > 3 months and documentation of failure or unsuitability of conventional therapy.",
+      "evidence": "Not Medicare FFS; rule vacuously satisfied.",
+      "note": null,
+      "remediation": null
+    },
+    {
+      "ruleId": "R-PA-CMS-015",
+      "severity": "flag",
+      "status": "pass",
+      "description": "Medicare FFS NPWT: wound type / size / failed standard wound care documented",
+      "citation": "spec-v52 §4.5.2 R-PA-CMS-015. LCD L33821 (Negative Pressure Wound Therapy) requires documentation of a covered wound type (Stage III/IV pressure ulcer, neuropathic ulcer, etc.) plus failure of standard wound care.",
+      "evidence": "Not Medicare FFS; rule vacuously satisfied.",
+      "note": null,
+      "remediation": null
+    },
+    {
+      "ruleId": "R-PA-CMS-016",
+      "severity": "flag",
+      "status": "pass",
+      "description": "Medicare FFS lower-limb prosthesis: K-level / functional rehabilitation potential documented",
+      "citation": "spec-v52 §4.5.2 R-PA-CMS-016. LCD L33787 (Lower Limb Prostheses) requires documentation of the beneficiary's functional level (K0-K4) and rehabilitation potential.",
+      "evidence": "Not Medicare FFS; rule vacuously satisfied.",
+      "note": null,
+      "remediation": null
+    },
+    {
+      "ruleId": "R-PA-CMS-017",
+      "severity": "flag",
+      "status": "pass",
+      "description": "Medicare FFS orthotics: documented condition + L-code present",
+      "citation": "spec-v52 §4.5.2 R-PA-CMS-017. LCD L33686 (Ankle-Foot / Knee-Ankle-Foot Orthoses) requires documentation of a condition (e.g., drop foot, peroneal palsy, post-CVA) plus an appropriate L-code HCPCS.",
+      "evidence": "Not Medicare FFS; rule vacuously satisfied.",
+      "note": null,
+      "remediation": null
+    },
+    {
+      "ruleId": "R-PA-CMS-018",
+      "severity": "flag",
+      "status": "pass",
+      "description": "Medicare FFS continuous glucose monitor: insulin therapy + frequent self-monitoring documented",
+      "citation": "spec-v52 §4.5.2 R-PA-CMS-018. LCD L33822 (Glucose Monitors) requires documentation of insulin therapy AND a history of frequent self-monitoring (>= 4 fingersticks/day) or problematic hypoglycemia before CGM coverage.",
+      "evidence": "Not Medicare FFS; rule vacuously satisfied.",
+      "note": null,
+      "remediation": null
+    },
+    {
+      "ruleId": "R-PA-CMS-019",
+      "severity": "flag",
+      "status": "pass",
+      "description": "Medicare FFS post-transplant immunosuppressives: date and Medicare-covered transplant type documented",
+      "citation": "spec-v52 §4.5.2 R-PA-CMS-019. CMS Part B covers immunosuppressive drugs for beneficiaries who had a Medicare-covered organ transplant (kidney, heart, liver, lung, pancreas, intestinal). The transplant date and organ must be documented.",
+      "evidence": "Not Medicare FFS; rule vacuously satisfied.",
+      "note": null,
+      "remediation": null
+    },
+    {
+      "ruleId": "R-PA-CMS-020",
+      "severity": "flag",
+      "status": "pass",
+      "description": "Medicare FFS parenteral nutrition: documented GI tract failure + caloric requirements",
+      "citation": "spec-v52 §4.5.2 R-PA-CMS-020. LCD L33799 (Parenteral Nutrition) requires documentation that the GI tract is non-functional or inaccessible (e.g., short bowel syndrome, motility disorder, fistula) and an estimate of caloric / protein requirements.",
+      "evidence": "Not Medicare FFS; rule vacuously satisfied.",
+      "note": null,
+      "remediation": null
+    },
+    {
+      "ruleId": "R-PA-CMS-021",
+      "severity": "flag",
+      "status": "pass",
+      "description": "Medicare FFS lymphedema pneumatic compression pump: documented lymphedema + failed conservative therapy",
+      "citation": "spec-v52 §4.5.2 R-PA-CMS-021. LCD L33829 (Pneumatic Compression Devices) requires documentation of chronic venous insufficiency or lymphedema plus failure of a 4-week trial of conservative therapy (compression garments / manual lymphatic drainage).",
+      "evidence": "Not Medicare FFS; rule vacuously satisfied.",
+      "note": null,
+      "remediation": null
+    },
+    {
+      "ruleId": "R-PA-CMS-022",
+      "severity": "flag",
+      "status": "pass",
+      "description": "Medicare FFS external infusion pump: covered chronic-disease indication + drug compatibility documented",
+      "citation": "spec-v52 §4.5.2 R-PA-CMS-022. LCD L33794 (External Infusion Pumps) requires a covered indication (e.g., chemotherapy, antifungal therapy, parenteral hydration, inotropic therapy) and an FDA-approved infusion drug.",
+      "evidence": "Not Medicare FFS; rule vacuously satisfied.",
+      "note": null,
+      "remediation": null
+    },
+    {
+      "ruleId": "R-PA-CMS-023",
+      "severity": "flag",
+      "status": "pass",
+      "description": "Medicare FFS ostomy supplies: ostomy type documented + quantity within monthly utilization limits",
+      "citation": "spec-v52 §4.5.2 R-PA-CMS-023. LCD L33828 (Ostomy Supplies) requires documentation of ostomy type (colostomy, ileostomy, urostomy) and quantity must align with the LCD utilization parameters.",
+      "evidence": "Not Medicare FFS; rule vacuously satisfied.",
+      "note": null,
+      "remediation": null
+    },
+    {
+      "ruleId": "R-PA-CMS-024",
+      "severity": "flag",
+      "status": "pass",
+      "description": "Medicare FFS urinary catheters: permanent urinary incontinence / retention diagnosis documented",
+      "citation": "spec-v52 §4.5.2 R-PA-CMS-024. LCD L33803 (Urological Supplies) requires documentation of permanent urinary incontinence or urinary retention.",
+      "evidence": "Not Medicare FFS; rule vacuously satisfied.",
+      "note": null,
+      "remediation": null
+    },
+    {
+      "ruleId": "R-PA-CMS-025",
+      "severity": "flag",
+      "status": "pass",
+      "description": "Medicare FFS surgical dressings: wound surface area + dressing-change frequency documented",
+      "citation": "spec-v52 §4.5.2 R-PA-CMS-025. LCD L33831 (Surgical Dressings) requires documentation of wound surface area and frequency of dressing changes so utilization can be matched to the dressing category.",
+      "evidence": "Not Medicare FFS; rule vacuously satisfied.",
+      "note": null,
+      "remediation": null
+    },
+    {
+      "ruleId": "R-PA-CMS-026",
+      "severity": "flag",
+      "status": "pass",
+      "description": "Medicare FFS post-cataract refractive lenses: cataract-surgery date + surgical CPT documented",
+      "citation": "spec-v52 §4.5.2 R-PA-CMS-026. NCD 80.4 covers one pair of conventional eyeglasses or contact lenses after each cataract surgery with insertion of an intraocular lens; the surgery date and procedure code must be documented.",
+      "evidence": "Not Medicare FFS; rule vacuously satisfied.",
+      "note": null,
+      "remediation": null
+    },
+    {
+      "ruleId": "R-PA-GEN-001",
+      "severity": "flag",
+      "status": "pass",
+      "description": "Genetic testing: family history of relevant condition documented",
+      "citation": "spec-v52 §4.5.5 R-PA-GEN-001. Payer medical policies for hereditary-cancer / cardiomyopathy / Lynch / BRCA panels require a documented family history meeting test-specific criteria (e.g., NCCN BRCA testing criteria for hereditary breast / ovarian).",
+      "evidence": "No genetic-testing CPT (81xxx) in packet; rule vacuously satisfied.",
+      "note": null,
+      "remediation": null
+    },
+    {
+      "ruleId": "R-PA-GEN-002",
+      "severity": "flag",
+      "status": "pass",
+      "description": "Genetic testing: pre-test / post-test genetic counseling documented",
+      "citation": "spec-v52 §4.5.5 R-PA-GEN-002. ACMG / NSGC guidelines and most payer policies require documented pre-test (and post-test for positive results) genetic counseling by a board-certified genetic counselor or qualified clinician before a hereditary-disorder panel is ordered.",
+      "evidence": "No genetic-testing CPT in packet; rule vacuously satisfied.",
+      "note": null,
+      "remediation": null
+    },
+    {
+      "ruleId": "R-PA-GEN-003",
+      "severity": "flag",
+      "status": "pass",
+      "description": "Genetic testing: test specificity / panel scope matches the documented clinical indication",
+      "citation": "spec-v52 §4.5.5 R-PA-GEN-003. Payers deny broad-panel testing when a more targeted single-gene or focused panel matches the documented indication; the packet should state why the chosen panel scope (single-gene / focused / comprehensive / WES / WGS) is appropriate.",
+      "evidence": "No genetic-testing CPT in packet; rule vacuously satisfied.",
+      "note": null,
+      "remediation": null
+    },
+    {
+      "ruleId": "R-PA-GEN-004",
+      "severity": "flag",
+      "status": "pass",
+      "description": "Genetic testing: personal clinical indication documented (symptoms / dx / risk profile)",
+      "citation": "spec-v52 §4.5.5 R-PA-GEN-004. Predictive / asymptomatic genetic testing is approved only with documented risk based on personal history (signs / symptoms / preexisting dx / age criteria) or qualifying family history (R-PA-GEN-001) -- the packet must carry one or both.",
+      "evidence": "No genetic-testing CPT in packet; rule vacuously satisfied.",
+      "note": null,
+      "remediation": null
+    },
+    {
+      "ruleId": "R-PA-GEN-005",
+      "severity": "info",
+      "status": "pass",
+      "description": "Genetic testing: informed consent specific to genetic testing (covers GINA / insurance / employment implications)",
+      "citation": "spec-v52 §4.5.5 R-PA-GEN-005. Many state laws and payer policies require an informed consent specific to genetic testing -- separate from general procedure consent -- that addresses Genetic Information Nondiscrimination Act (GINA) protections, incidental findings, and family implications.",
+      "evidence": "No genetic-testing CPT in packet; rule vacuously satisfied.",
+      "note": null,
+      "remediation": null
+    },
+    {
+      "ruleId": "R-PA-INF-001",
+      "severity": "flag",
+      "status": "pass",
+      "description": "Infusion / specialty drug: J-code present + NDC documented",
+      "citation": "spec-v52 §4.5.5 R-PA-INF-001. Cross-payer convention: physician-administered drugs require the J-code AND the 11-digit NDC so the manufacturer rebate and drug-specific edits can be applied (echoes R-PA-MCD-006 for Medicaid; this rule generalizes).",
+      "evidence": "No J-code in packet; rule vacuously satisfied.",
+      "note": null,
+      "remediation": null
+    },
+    {
+      "ruleId": "R-PA-INF-002",
+      "severity": "flag",
+      "status": "pass",
+      "description": "Infusion / specialty drug: weight-based dose calculation shown when dosing is per kg",
+      "citation": "spec-v52 §4.5.5 R-PA-INF-002. Weight-based biologic / chemotherapy infusions require an explicit weight + dose calculation so the payer can verify the dose against FDA labeling.",
+      "evidence": "No J-code in packet; rule vacuously satisfied.",
+      "note": null,
+      "remediation": null
+    },
+    {
+      "ruleId": "R-PA-INF-003",
+      "severity": "flag",
+      "status": "pass",
+      "description": "Infusion / specialty drug: site-of-care indicator (home / clinic / hospital infusion) documented",
+      "citation": "spec-v52 §4.5.5 R-PA-INF-003. Payers route specialty-drug PAs to different review queues based on site of care (home infusion has different rules than hospital outpatient); the packet must label the planned site.",
+      "evidence": "No J-code in packet; rule vacuously satisfied.",
+      "note": null,
+      "remediation": null
+    },
+    {
+      "ruleId": "R-PA-INF-004",
+      "severity": "flag",
+      "status": "pass",
+      "description": "Infusion / specialty drug: FDA-approved indication referenced for the diagnosis",
+      "citation": "spec-v52 §4.5.5 R-PA-INF-004. Biologic / specialty-drug PA approval typically requires that the requested drug have an FDA-approved indication matching the documented diagnosis (or, for off-label use, an NCCN / compendia citation).",
+      "evidence": "No J-code in packet; rule vacuously satisfied.",
+      "note": null,
+      "remediation": null
+    },
+    {
+      "ruleId": "R-PA-INF-005",
+      "severity": "info",
+      "status": "pass",
+      "description": "Infusion / specialty drug: premedication / infusion-reaction monitoring plan documented",
+      "citation": "spec-v52 §4.5.5 R-PA-INF-005. Many biologics carry an infusion-reaction risk (rituximab, infliximab, IV iron, etc.); the packet should reference a premedication regimen or in-suite monitoring plan when the drug carries that risk.",
+      "evidence": "No J-code in packet; rule vacuously satisfied.",
+      "note": null,
+      "remediation": null
+    },
+    {
+      "ruleId": "R-PA-MA-001",
+      "severity": "block",
+      "status": "pass",
+      "description": "Medicare Advantage HMO: PCP referral present for specialist services",
+      "citation": "spec-v52 §4.5.3 R-PA-MA-001. MA HMO and HMO-POS plans require a PCP referral before non-emergent specialist services unless the member has an open-access benefit.",
+      "evidence": "Not Medicare Advantage; rule vacuously satisfied.",
+      "note": null,
+      "remediation": null
+    },
+    {
+      "ruleId": "R-PA-MA-002",
+      "severity": "flag",
+      "status": "pass",
+      "description": "Medicare Advantage: in-network status confirmed OR out-of-network exception documented",
+      "citation": "spec-v52 §4.5.3 R-PA-MA-002. MA plans pay differently in vs. out of network; the packet should indicate the servicing provider's network status, or an OON exception (continuity-of-care, urgent / emergent, network inadequacy) when going OON.",
+      "evidence": "Not Medicare Advantage; rule vacuously satisfied.",
+      "note": null,
+      "remediation": null
+    },
+    {
+      "ruleId": "R-PA-MA-003",
+      "severity": "flag",
+      "status": "pass",
+      "description": "Medicare Advantage gatekeepered plan: servicing specialist NPI distinct from ordering PCP NPI",
+      "citation": "spec-v52 §4.5.3 R-PA-MA-003. On a gatekeepered MA plan, the specialist NPI on the PA must differ from the ordering PCP NPI; both must be Luhn-valid and present in the packet.",
+      "evidence": "Not Medicare Advantage; rule vacuously satisfied.",
+      "note": null,
+      "remediation": null
+    },
+    {
+      "ruleId": "R-PA-MA-004",
+      "severity": "flag",
+      "status": "pass",
+      "description": "Medicare Advantage: plan name + member-ID format present on the packet",
+      "citation": "spec-v52 §4.5.3 R-PA-MA-004. MA plans require the plan name on the request form and a member ID matching the plan's issuer-specific format; without both the payer cannot route the PA to the correct plan unit.",
+      "evidence": "Not Medicare Advantage; rule vacuously satisfied.",
+      "note": null,
+      "remediation": null
+    },
+    {
+      "ruleId": "R-PA-MA-005",
+      "severity": "info",
+      "status": "pass",
+      "description": "Medicare Advantage: service location is within the plan's service area",
+      "citation": "spec-v52 §4.5.3 R-PA-MA-005. MA plans cover specific geographies; an out-of-area service location triggers different cost-share and may require an OON exception. v52-3a checks for a service-location / service-area anchor; v52-3b+ will tie this to the bundled CMS plan-service-area files when those land.",
+      "evidence": "Not Medicare Advantage; rule vacuously satisfied.",
+      "note": null,
+      "remediation": null
+    },
+    {
+      "ruleId": "R-PA-MA-006",
+      "severity": "flag",
+      "status": "pass",
+      "description": "Medicare Advantage drug request: Part B vs Part D coverage path indicated",
+      "citation": "spec-v52 §4.5.3 R-PA-MA-006. MA plans cover drugs under Part B (physician-administered, DME-administered, certain immunosuppressives) and Part D (most outpatient prescriptions); the packet must indicate which coverage path applies so the plan routes the PA to the correct review queue.",
+      "evidence": "Not Medicare Advantage; rule vacuously satisfied.",
+      "note": null,
+      "remediation": null
+    },
+    {
+      "ruleId": "R-PA-MA-007",
+      "severity": "flag",
+      "status": "pass",
+      "description": "Medicare Advantage D-SNP (dual-eligible Special Needs Plan): Medicaid plan information documented",
+      "citation": "spec-v52 §4.5.3 R-PA-MA-007. D-SNP enrollees have both Medicare (via the MA plan) and Medicaid; coordinated benefits require the state Medicaid plan name and member ID on the PA so cost-share and coverage gaps can be resolved.",
+      "evidence": "Not Medicare Advantage; rule vacuously satisfied.",
+      "note": null,
+      "remediation": null
+    },
+    {
+      "ruleId": "R-PA-MA-008",
+      "severity": "info",
+      "status": "pass",
+      "description": "Medicare Advantage supplemental benefit (dental / vision / hearing): plan-covered-benefit anchor documented",
+      "citation": "spec-v52 §4.5.3 R-PA-MA-008. MA plans often offer supplemental dental, vision, and hearing benefits that are NOT in Original Medicare; the packet should indicate the benefit is covered under the plan's Evidence of Coverage before submission.",
+      "evidence": "Not Medicare Advantage; rule vacuously satisfied.",
+      "note": null,
+      "remediation": null
+    },
+    {
+      "ruleId": "R-PA-MA-009",
+      "severity": "flag",
+      "status": "pass",
+      "description": "Medicare Advantage Part B drug: step-therapy compliance documented when plan applies step therapy",
+      "citation": "spec-v52 §4.5.3 R-PA-MA-009. Per CMS final rule (effective 2019), MA plans may apply step therapy to Part B drugs; when step therapy applies, the prior-trial / failure documentation must be attached.",
+      "evidence": "Not Medicare Advantage; rule vacuously satisfied.",
+      "note": null,
+      "remediation": null
+    },
+    {
+      "ruleId": "R-PA-MA-010",
+      "severity": "flag",
+      "status": "pass",
+      "description": "Medicare Advantage inpatient admission: two-midnight expectation or short-stay criteria documented",
+      "citation": "spec-v52 §4.5.3 R-PA-MA-010. CMS extended the two-midnight rule to MA plans effective 2024; an inpatient admission requires a documented expectation that the patient will need 2+ midnights of medically necessary hospital care, or short-stay criteria for case-by-case approval.",
+      "evidence": "Not Medicare Advantage; rule vacuously satisfied.",
+      "note": null,
+      "remediation": null
+    },
+    {
+      "ruleId": "R-PA-MA-011",
+      "severity": "info",
+      "status": "pass",
+      "description": "Medicare Advantage: organization determination type (pre-service / concurrent / payment) indicated",
+      "citation": "spec-v52 §4.5.3 R-PA-MA-011. CMS Chapter 13 distinguishes organization determinations by stage (pre-service before delivery, concurrent during ongoing care, payment after delivery). The packet should label which type is being requested so MA plan timeliness rules apply correctly.",
+      "evidence": "Not Medicare Advantage; rule vacuously satisfied.",
+      "note": null,
+      "remediation": null
+    },
+    {
+      "ruleId": "R-PA-MA-012",
+      "severity": "flag",
+      "status": "pass",
+      "description": "Medicare Advantage expedited review: clinical urgency / serious-jeopardy attestation present",
+      "citation": "spec-v52 §4.5.3 R-PA-MA-012. MA expedited (72-hour) determinations require a treating-clinician attestation that applying the standard 14-day timeframe could seriously jeopardize the enrollee's life, health, or ability to regain maximum function.",
+      "evidence": "Not Medicare Advantage; rule vacuously satisfied.",
+      "note": null,
+      "remediation": null
+    },
+    {
+      "ruleId": "R-PA-MA-013",
+      "severity": "flag",
+      "status": "pass",
+      "description": "Medicare Advantage transition fill: continuity-of-care anchor for new enrollee within 90 days of effective date",
+      "citation": "spec-v52 §4.5.3 R-PA-MA-013. CMS requires MA plans to honor a transition supply / continuity-of-care period (typically 90 days) for new enrollees on existing therapies; the packet should indicate the transition window when applicable.",
+      "evidence": "Not Medicare Advantage; rule vacuously satisfied.",
+      "note": null,
+      "remediation": null
+    },
+    {
+      "ruleId": "R-PA-MA-014",
+      "severity": "flag",
+      "status": "pass",
+      "description": "Medicare Advantage: hospice-election indicator (hospice services revert to Original Medicare)",
+      "citation": "spec-v52 §4.5.3 R-PA-MA-014. When an MA enrollee elects the Medicare hospice benefit, hospice-related services revert to Original Medicare; the MA plan continues to cover non-hospice services. The packet must indicate the hospice-election status when relevant so the PA routes to the correct payer.",
+      "evidence": "Not Medicare Advantage; rule vacuously satisfied.",
+      "note": null,
+      "remediation": null
+    },
+    {
+      "ruleId": "R-PA-MA-015",
+      "severity": "flag",
+      "status": "pass",
+      "description": "Medicare Advantage C-SNP / I-SNP: qualifying chronic condition or institutional status documented",
+      "citation": "spec-v52 §4.5.3 R-PA-MA-015. Chronic-condition SNPs (C-SNPs) require documented diagnosis of a qualifying chronic condition (e.g., diabetes, CHF, ESRD, dementia); institutional SNPs (I-SNPs) require documented nursing-facility residence. The PA must reference the qualifying condition.",
+      "evidence": "Not Medicare Advantage; rule vacuously satisfied.",
+      "note": null,
+      "remediation": null
+    },
+    {
+      "ruleId": "R-PA-MCD-001",
+      "severity": "block",
+      "status": "pass",
+      "description": "Medicaid: member-ID line present (state Medicaid CIN / recipient ID)",
+      "citation": "spec-v52 §4.5.4 R-PA-MCD-001. All state Medicaid programs require a state-issued recipient / CIN / RID on the PA request; without it the state cannot resolve eligibility.",
+      "evidence": "Not Medicaid; rule vacuously satisfied.",
+      "note": null,
+      "remediation": null
+    },
+    {
+      "ruleId": "R-PA-MCD-002",
+      "severity": "flag",
+      "status": "pass",
+      "description": "Medicaid pediatric patient: EPSDT documentation present when applicable",
+      "citation": "spec-v52 §4.5.4 R-PA-MCD-002. EPSDT (Early and Periodic Screening, Diagnostic, and Treatment) is mandatory under federal Medicaid for beneficiaries < 21; pediatric PA packets should reference EPSDT screening / treatment when seeking non-routine services.",
+      "evidence": "Not Medicaid; rule vacuously satisfied.",
+      "note": null,
+      "remediation": null
+    },
+    {
+      "ruleId": "R-PA-MCD-003",
+      "severity": "flag",
+      "status": "pass",
+      "description": "Medicaid: eligibility-date alignment anchor for the service date",
+      "citation": "spec-v52 §4.5.4 R-PA-MCD-003. State Medicaid programs deny PA requests when the date of service falls outside the recipient's eligibility span; the packet should indicate the eligibility window (start / end / verified-as-of).",
+      "evidence": "Not Medicaid; rule vacuously satisfied.",
+      "note": null,
+      "remediation": null
+    },
+    {
+      "ruleId": "R-PA-MCD-004",
+      "severity": "flag",
+      "status": "pass",
+      "description": "Medicaid: medical-necessity statement aligned to state Medicaid criteria",
+      "citation": "spec-v52 §4.5.4 R-PA-MCD-004. Each state Medicaid program defines medical necessity in statute / regulation; the packet should reference the program's medical-necessity standard (federal \"medically necessary\" plus state-specific language).",
+      "evidence": "Not Medicaid; rule vacuously satisfied.",
+      "note": null,
+      "remediation": null
+    },
+    {
+      "ruleId": "R-PA-MCD-005",
+      "severity": "flag",
+      "status": "pass",
+      "description": "Medicaid: Managed Care Organization (MCO) vs FFS Medicaid indicator",
+      "citation": "spec-v52 §4.5.4 R-PA-MCD-005. ~75% of Medicaid beneficiaries are in managed care; the packet must indicate which entity (state FFS vs a contracted MCO) is the responsible payer so the PA routes to the correct review queue.",
+      "evidence": "Not Medicaid; rule vacuously satisfied.",
+      "note": null,
+      "remediation": null
+    },
+    {
+      "ruleId": "R-PA-MCD-006",
+      "severity": "flag",
+      "status": "pass",
+      "description": "Medicaid physician-administered drug: NDC documented alongside the J-code / HCPCS",
+      "citation": "spec-v52 §4.5.4 R-PA-MCD-006. Section 1927(a)(7) of the Social Security Act requires state Medicaid programs to collect the 11-digit NDC on physician-administered drug claims so the manufacturer rebate can be billed; the packet should carry the NDC alongside the J-code.",
+      "evidence": "Not Medicaid; rule vacuously satisfied.",
+      "note": null,
+      "remediation": null
+    },
+    {
+      "ruleId": "R-PA-MCD-007",
+      "severity": "flag",
+      "status": "pass",
+      "description": "Medicaid dental service: covered-benefit anchor for adult (state-optional) vs pediatric (EPSDT-mandatory)",
+      "citation": "spec-v52 §4.5.4 R-PA-MCD-007. Federal Medicaid mandates dental for children < 21 under EPSDT; adult dental coverage is state-optional and varies widely (full / emergency-only / none). The packet should indicate the coverage path.",
+      "evidence": "Not Medicaid; rule vacuously satisfied.",
+      "note": null,
+      "remediation": null
+    },
+    {
+      "ruleId": "R-PA-MCD-008",
+      "severity": "flag",
+      "status": "pass",
+      "description": "Medicaid non-emergency medical transportation (NEMT): trip purpose + appointment date documented",
+      "citation": "spec-v52 §4.5.4 R-PA-MCD-008. NEMT is a mandatory Medicaid benefit (42 CFR §431.53). PA / brokerage approvals require the trip purpose (covered medical appointment), appointment date, and origin / destination so eligibility against the trip standard can be evaluated.",
+      "evidence": "Not Medicaid; rule vacuously satisfied.",
+      "note": null,
+      "remediation": null
+    },
+    {
+      "ruleId": "R-PA-MCD-009",
+      "severity": "info",
+      "status": "pass",
+      "description": "Medicaid behavioral-health service: carve-out indicator documented",
+      "citation": "spec-v52 §4.5.4 R-PA-MCD-009. Many state Medicaid programs carve behavioral-health benefits out to a separate plan (PIHP / BHO / specialty MCO); the packet should indicate whether BH is carved out vs integrated so the PA routes to the correct payer.",
+      "evidence": "Not Medicaid; rule vacuously satisfied.",
+      "note": null,
+      "remediation": null
+    },
+    {
+      "ruleId": "R-PA-MCD-010",
+      "severity": "info",
+      "status": "pass",
+      "description": "Medicaid prescription drug: Medicaid Drug Rebate Program (MDRP) labeler-agreement coverage indicator",
+      "citation": "spec-v52 §4.5.4 R-PA-MCD-010. Under Section 1927 of the Social Security Act, Medicaid covers outpatient prescription drugs from manufacturers that have signed a Medicaid drug-rebate agreement (Section 1927(a)). The packet should indicate the drug is from a participating manufacturer.",
+      "evidence": "Not Medicaid; rule vacuously satisfied.",
+      "note": null,
+      "remediation": null
+    },
+    {
+      "ruleId": "R-PA-RAD-001",
+      "severity": "info",
+      "status": "pass",
+      "description": "Advanced imaging request: ACR Appropriateness Criteria reference present",
+      "citation": "spec-v52 §4.5.5 R-PA-RAD-001. ACR (American College of Radiology) Appropriateness Criteria are the de-facto standard payers use to evaluate imaging-request medical necessity; referencing the matching ACR AC topic in the packet substantially improves first-pass approval rates.",
+      "evidence": "No radiology CPT (70010-79999) in packet; rule vacuously satisfied.",
+      "note": null,
+      "remediation": null
+    },
+    {
+      "ruleId": "R-PA-RAD-002",
+      "severity": "flag",
+      "status": "pass",
+      "description": "Non-emergent MRI: prior conservative management documented",
+      "citation": "spec-v52 §4.5.5 R-PA-RAD-002. Non-emergent MRIs (especially spine and joint) typically require a documented trial of conservative management -- PT, NSAIDs, activity modification, time -- before payer approval.",
+      "evidence": "No MRI CPT in packet; rule vacuously satisfied.",
+      "note": null,
+      "remediation": null
+    },
+    {
+      "ruleId": "R-PA-RAD-003",
+      "severity": "flag",
+      "status": "pass",
+      "description": "Contrast imaging study: contrast allergy review + renal-function check documented",
+      "citation": "spec-v52 §4.5.5 R-PA-RAD-003. Iodinated and gadolinium contrast carry hypersensitivity and nephrotoxicity risk; packets requesting a contrast study should document an allergy review and a recent eGFR / SCr.",
+      "evidence": "No radiology CPT in packet; rule vacuously satisfied.",
+      "note": null,
+      "remediation": null
+    },
+    {
+      "ruleId": "R-PA-RAD-004",
+      "severity": "flag",
+      "status": "pass",
+      "description": "Radiology procedure: preceding clinical evaluation referenced",
+      "citation": "spec-v52 §4.5.5 R-PA-RAD-004. Advanced imaging without a documented clinical evaluation (history, physical, working differential) is one of the most common denial reasons; the packet should reference a clinical note dated on or before the imaging request.",
+      "evidence": "No radiology CPT in packet; rule vacuously satisfied.",
+      "note": null,
+      "remediation": null
+    },
+    {
+      "ruleId": "R-PA-RAD-005",
+      "severity": "info",
+      "status": "pass",
+      "description": "Pediatric imaging: ALARA / radiation-dose consideration documented",
+      "citation": "spec-v52 §4.5.5 R-PA-RAD-005. For pediatric patients, ALARA (As Low As Reasonably Achievable) principles apply: image Gently / Image Wisely campaigns recommend documenting dose-reduction consideration for CT and nuclear-medicine studies in children.",
+      "evidence": "No radiology CPT in packet; rule vacuously satisfied.",
+      "note": null,
+      "remediation": null
+    },
+    {
+      "ruleId": "R-PA-SURG-001",
+      "severity": "flag",
+      "status": "pass",
+      "description": "Elective surgery: conservative-management trial documented",
+      "citation": "spec-v52 §4.5.5 R-PA-SURG-001. Payers approve elective surgery only after documented failure of non-operative management appropriate to the condition (e.g., joint replacement: PT + NSAIDs; spine: PT + epidurals); emergent surgery is exempt.",
+      "evidence": "No surgery CPT (10004-69990) in packet; rule vacuously satisfied.",
+      "note": null,
+      "remediation": null
+    },
+    {
+      "ruleId": "R-PA-SURG-002",
+      "severity": "flag",
+      "status": "pass",
+      "description": "Elective surgery: imaging supporting surgical indication attached",
+      "citation": "spec-v52 §4.5.5 R-PA-SURG-002. Surgical PAs typically require imaging (X-ray, MRI, CT, US) that demonstrates the anatomical / pathological basis for surgery; the imaging report or anchor must be in the packet.",
+      "evidence": "No surgery CPT in packet; rule vacuously satisfied.",
+      "note": null,
+      "remediation": null
+    },
+    {
+      "ruleId": "R-PA-SURG-003",
+      "severity": "flag",
+      "status": "pass",
+      "description": "Surgery with ASA >= 3: anesthesia / pre-op medical clearance documented",
+      "citation": "spec-v52 §4.5.5 R-PA-SURG-003. ASA Physical Status >= 3 (severe systemic disease) requires documented pre-operative medical clearance / anesthesia evaluation so the perioperative risk has been assessed by an appropriate clinician.",
+      "evidence": "No surgery CPT in packet; rule vacuously satisfied.",
+      "note": null,
+      "remediation": null
+    },
+    {
+      "ruleId": "R-PA-SURG-004",
+      "severity": "flag",
+      "status": "pass",
+      "description": "Surgery: ASA Physical Status classification documented",
+      "citation": "spec-v52 §4.5.5 R-PA-SURG-004. The ASA Physical Status is the de-facto standard for perioperative risk stratification; payers expect an ASA classification (1-5) on every elective surgery PA.",
+      "evidence": "No surgery CPT in packet; rule vacuously satisfied.",
+      "note": null,
+      "remediation": null
+    },
+    {
+      "ruleId": "R-PA-SURG-005",
+      "severity": "flag",
+      "status": "pass",
+      "description": "Surgery: informed consent documented, dated on or before the date of surgery",
+      "citation": "spec-v52 §4.5.5 R-PA-SURG-005. Joint Commission / payer convention: a procedure-specific informed consent must be obtained before the surgical encounter. This rule narrows R-PA-059 (core consent check) to the surgical specialty trigger so the audit trail flags consent issues in the specialty section of the report.",
+      "evidence": "No surgery CPT in packet; rule vacuously satisfied.",
+      "note": null,
+      "remediation": null
+    }
+  ],
+  "evidenceLedger": [
+    {
+      "document": "imaging.txt",
+      "sha256": "fixture-img",
+      "kind": "TXT",
+      "role": "imaging-report",
+      "payer": "unknown",
+      "ledger": {
+        "dates": [
+          "2026-03-15"
+        ],
+        "signature": {
+          "present": false,
+          "dated": false
+        }
+      }
+    },
+    {
+      "document": "lab.txt",
+      "sha256": "fixture-lab",
+      "kind": "TXT",
+      "role": "lab-result",
+      "payer": "unknown",
+      "ledger": {
+        "dates": [
+          "2026-04-01"
+        ],
+        "signature": {
+          "present": false,
+          "dated": false
+        }
+      }
+    },
+    {
+      "document": "note.txt",
+      "sha256": "fixture-note",
+      "kind": "TXT",
+      "role": "clinical-note",
+      "payer": "unknown",
+      "ledger": {
+        "cpts": [
+          "99213"
+        ],
+        "dates": [
+          "2026-04-12",
+          "2026-04-12"
+        ],
+        "weight": {
+          "value": 70,
+          "unit": "kg"
+        },
+        "height": {
+          "value": 175,
+          "unit": "cm"
+        },
+        "frequency": "daily",
+        "signature": {
+          "present": true,
+          "dated": true
+        }
+      }
+    },
+    {
+      "document": "pa-form.txt",
+      "sha256": "fixture-pa-form",
+      "kind": "TXT",
+      "role": "pa-form",
+      "payer": "unknown",
+      "ledger": {
+        "patientName": "Jane Q Doe",
+        "dob": "1985-03-12",
+        "memberId": "W123456789",
+        "npis": [
+          "1234567893",
+          "1306849393"
+        ],
+        "tins": [
+          "123456789"
+        ],
+        "cpts": [
+          "99213"
+        ],
+        "icd10": [
+          "I10"
+        ],
+        "pos": [
+          "11"
+        ],
+        "dates": [
+          "1985-03-12",
+          "2026-04-12",
+          "2026-04-12"
+        ],
+        "serviceDates": [
+          "2026-04-12"
+        ],
+        "quantity": 1,
+        "frequency": "daily",
+        "signature": {
+          "present": true,
+          "dated": true
+        }
+      }
+    }
+  ],
+  "extractedData": [
+    {
+      "document": "imaging.txt",
+      "sha256": "fixture-img",
+      "extract": {
+        "npis": [],
+        "ssns": [],
+        "cpts": [],
+        "icd10": [],
+        "pos": [],
+        "dates": [
+          "2026-03-15"
+        ],
+        "serviceDates": [],
+        "patientName": null,
+        "dob": null,
+        "memberId": null,
+        "tins": [],
+        "quantity": null,
+        "signature": {
+          "present": false,
+          "dated": false
+        },
+        "weight": null,
+        "height": null,
+        "frequency": null,
+        "replacementChars": 0,
+        "textLength": 106
+      }
+    },
+    {
+      "document": "lab.txt",
+      "sha256": "fixture-lab",
+      "extract": {
+        "npis": [],
+        "ssns": [],
+        "cpts": [],
+        "icd10": [],
+        "pos": [],
+        "dates": [
+          "2026-04-01"
+        ],
+        "serviceDates": [],
+        "patientName": null,
+        "dob": null,
+        "memberId": null,
+        "tins": [],
+        "quantity": null,
+        "signature": {
+          "present": false,
+          "dated": false
+        },
+        "weight": null,
+        "height": null,
+        "frequency": null,
+        "replacementChars": 0,
+        "textLength": 95
+      }
+    },
+    {
+      "document": "note.txt",
+      "sha256": "fixture-note",
+      "extract": {
+        "npis": [],
+        "ssns": [],
+        "cpts": [
+          "99213"
+        ],
+        "icd10": [],
+        "pos": [],
+        "dates": [
+          "2026-04-12",
+          "2026-04-12"
+        ],
+        "serviceDates": [],
+        "patientName": null,
+        "dob": null,
+        "memberId": null,
+        "tins": [],
+        "quantity": null,
+        "signature": {
+          "present": true,
+          "dated": true
+        },
+        "weight": {
+          "value": 70,
+          "unit": "kg"
+        },
+        "height": {
+          "value": 175,
+          "unit": "cm"
+        },
+        "frequency": "daily",
+        "replacementChars": 0,
+        "textLength": 380
+      }
+    },
+    {
+      "document": "pa-form.txt",
+      "sha256": "fixture-pa-form",
+      "extract": {
+        "npis": [
+          "1234567893",
+          "1306849393"
+        ],
+        "ssns": [],
+        "cpts": [
+          "99213"
+        ],
+        "icd10": [
+          "I10"
+        ],
+        "pos": [
+          "11"
+        ],
+        "dates": [
+          "1985-03-12",
+          "2026-04-12",
+          "2026-04-12"
+        ],
+        "serviceDates": [
+          "2026-04-12"
+        ],
+        "patientName": "Jane Q Doe",
+        "dob": "1985-03-12",
+        "memberId": "W123456789",
+        "tins": [
+          "123456789"
+        ],
+        "quantity": 1,
+        "signature": {
+          "present": true,
+          "dated": true
+        },
+        "weight": null,
+        "height": null,
+        "frequency": "daily",
+        "replacementChars": 0,
+        "textLength": 505
+      }
+    }
+  ],
+  "auditTrail": {
+    "rulesetVersion": "1.0.0",
+    "reportFormatVersion": "1",
+    "ruleIds": [
+      "R-PA-001",
+      "R-PA-002",
+      "R-PA-003",
+      "R-PA-004",
+      "R-PA-005",
+      "R-PA-006",
+      "R-PA-007",
+      "R-PA-008",
+      "R-PA-009",
+      "R-PA-010",
+      "R-PA-011",
+      "R-PA-012",
+      "R-PA-013",
+      "R-PA-014",
+      "R-PA-015",
+      "R-PA-016",
+      "R-PA-017",
+      "R-PA-018",
+      "R-PA-019",
+      "R-PA-020",
+      "R-PA-021",
+      "R-PA-022",
+      "R-PA-023",
+      "R-PA-024",
+      "R-PA-025",
+      "R-PA-026",
+      "R-PA-027",
+      "R-PA-028",
+      "R-PA-029",
+      "R-PA-030",
+      "R-PA-031",
+      "R-PA-032",
+      "R-PA-033",
+      "R-PA-034",
+      "R-PA-035",
+      "R-PA-036",
+      "R-PA-037",
+      "R-PA-038",
+      "R-PA-039",
+      "R-PA-040",
+      "R-PA-041",
+      "R-PA-042",
+      "R-PA-043",
+      "R-PA-044",
+      "R-PA-045",
+      "R-PA-046",
+      "R-PA-047",
+      "R-PA-048",
+      "R-PA-049",
+      "R-PA-050",
+      "R-PA-051",
+      "R-PA-052",
+      "R-PA-053",
+      "R-PA-054",
+      "R-PA-055",
+      "R-PA-056",
+      "R-PA-057",
+      "R-PA-058",
+      "R-PA-059",
+      "R-PA-060",
+      "R-PA-BH-001",
+      "R-PA-BH-002",
+      "R-PA-BH-003",
+      "R-PA-BH-004",
+      "R-PA-BH-005",
+      "R-PA-CMS-001",
+      "R-PA-CMS-002",
+      "R-PA-CMS-003",
+      "R-PA-CMS-004",
+      "R-PA-CMS-005",
+      "R-PA-CMS-006",
+      "R-PA-CMS-007",
+      "R-PA-CMS-008",
+      "R-PA-CMS-009",
+      "R-PA-CMS-011",
+      "R-PA-CMS-012",
+      "R-PA-CMS-013",
+      "R-PA-CMS-014",
+      "R-PA-CMS-015",
+      "R-PA-CMS-016",
+      "R-PA-CMS-017",
+      "R-PA-CMS-018",
+      "R-PA-CMS-019",
+      "R-PA-CMS-020",
+      "R-PA-CMS-021",
+      "R-PA-CMS-022",
+      "R-PA-CMS-023",
+      "R-PA-CMS-024",
+      "R-PA-CMS-025",
+      "R-PA-CMS-026",
+      "R-PA-GEN-001",
+      "R-PA-GEN-002",
+      "R-PA-GEN-003",
+      "R-PA-GEN-004",
+      "R-PA-GEN-005",
+      "R-PA-INF-001",
+      "R-PA-INF-002",
+      "R-PA-INF-003",
+      "R-PA-INF-004",
+      "R-PA-INF-005",
+      "R-PA-MA-001",
+      "R-PA-MA-002",
+      "R-PA-MA-003",
+      "R-PA-MA-004",
+      "R-PA-MA-005",
+      "R-PA-MA-006",
+      "R-PA-MA-007",
+      "R-PA-MA-008",
+      "R-PA-MA-009",
+      "R-PA-MA-010",
+      "R-PA-MA-011",
+      "R-PA-MA-012",
+      "R-PA-MA-013",
+      "R-PA-MA-014",
+      "R-PA-MA-015",
+      "R-PA-MCD-001",
+      "R-PA-MCD-002",
+      "R-PA-MCD-003",
+      "R-PA-MCD-004",
+      "R-PA-MCD-005",
+      "R-PA-MCD-006",
+      "R-PA-MCD-007",
+      "R-PA-MCD-008",
+      "R-PA-MCD-009",
+      "R-PA-MCD-010",
+      "R-PA-RAD-001",
+      "R-PA-RAD-002",
+      "R-PA-RAD-003",
+      "R-PA-RAD-004",
+      "R-PA-RAD-005",
+      "R-PA-SURG-001",
+      "R-PA-SURG-002",
+      "R-PA-SURG-003",
+      "R-PA-SURG-004",
+      "R-PA-SURG-005"
+    ],
+    "documentHashes": [
+      {
+        "document": "imaging.txt",
+        "sha256": "fixture-img"
+      },
+      {
+        "document": "lab.txt",
+        "sha256": "fixture-lab"
+      },
+      {
+        "document": "note.txt",
+        "sha256": "fixture-note"
+      },
+      {
+        "document": "pa-form.txt",
+        "sha256": "fixture-pa-form"
+      }
+    ],
+    "totalBytes": 20480,
+    "generatedAt": null,
+    "datasetStaleness": {
+      "rulesetVersion": "1.0.0",
+      "policy": {
+        "warnAfterDays": 90,
+        "failAfterDays": 365
+      },
+      "sources": [
+        {
+          "id": "ama-cpt",
+          "label": "AMA CPT code set (short descriptors)",
+          "url": "https://www.ama-assn.org/practice-management/cpt",
+          "ruleFamily": "core",
+          "lastVerified": "2026-05-28"
+        },
+        {
+          "id": "cms-hcpcs",
+          "label": "CMS HCPCS Level II code set",
+          "url": "https://www.cms.gov/medicare/coding-billing/healthcare-common-procedure-system",
+          "ruleFamily": "core",
+          "lastVerified": "2026-05-28"
+        },
+        {
+          "id": "cms-icd10cm",
+          "label": "CMS / CDC ICD-10-CM annual code files (public domain)",
+          "url": "https://www.cms.gov/medicare/coding-billing/icd-10-codes",
+          "ruleFamily": "core",
+          "lastVerified": "2026-05-28"
+        },
+        {
+          "id": "cms-pos",
+          "label": "CMS Place of Service (POS) code set",
+          "url": "https://www.cms.gov/medicare/coding-billing/place-of-service-codes/code-sets",
+          "ruleFamily": "core",
+          "lastVerified": "2026-05-28"
+        },
+        {
+          "id": "cms-ncci",
+          "label": "CMS National Correct Coding Initiative (NCCI) PTP edits",
+          "url": "https://www.cms.gov/medicare/coding-billing/national-correct-coding-initiative-ncci-edits",
+          "ruleFamily": "core",
+          "lastVerified": "2026-05-28"
+        },
+        {
+          "id": "nppes-npi",
+          "label": "NPPES NPI standard (Luhn-mod-10 with 80840 issuer prefix)",
+          "url": "https://nppes.cms.hhs.gov/",
+          "ruleFamily": "core",
+          "lastVerified": "2026-05-28"
+        },
+        {
+          "id": "cms-ncd-lcd",
+          "label": "CMS Medicare Coverage Database (NCDs, LCDs, LCAs)",
+          "url": "https://www.cms.gov/medicare-coverage-database/",
+          "ruleFamily": "cms-ffs",
+          "lastVerified": "2026-05-28"
+        },
+        {
+          "id": "cms-iom-100-08",
+          "label": "CMS Internet-Only Manual Pub 100-08 (Program Integrity)",
+          "url": "https://www.cms.gov/regulations-and-guidance/guidance/manuals/internet-only-manuals-ioms",
+          "ruleFamily": "cms-ffs",
+          "lastVerified": "2026-05-28"
+        },
+        {
+          "id": "cms-ma-422",
+          "label": "CMS Medicare Advantage rules (42 CFR Part 422, organization determinations)",
+          "url": "https://www.ecfr.gov/current/title-42/chapter-IV/subchapter-B/part-422",
+          "ruleFamily": "cms-ma",
+          "lastVerified": "2026-05-28"
+        },
+        {
+          "id": "medicaid-core",
+          "label": "Medicaid program requirements (state-agnostic core, EPSDT)",
+          "url": "https://www.medicaid.gov/medicaid/benefits/early-and-periodic-screening-diagnostic-and-treatment/index.html",
+          "ruleFamily": "medicaid-core",
+          "lastVerified": "2026-05-28"
+        },
+        {
+          "id": "acr-appropriateness",
+          "label": "ACR Appropriateness Criteria (advanced imaging)",
+          "url": "https://www.acr.org/Clinical-Resources/Clinical-Tools-and-Reference/Appropriateness-Criteria",
+          "ruleFamily": "specialty-rad",
+          "lastVerified": "2026-05-28"
+        },
+        {
+          "id": "fda-labeling",
+          "label": "FDA drug labeling / NDC directory (infusion, specialty drug)",
+          "url": "https://www.accessdata.fda.gov/scripts/cder/ndc/",
+          "ruleFamily": "specialty-inf",
+          "lastVerified": "2026-05-28"
+        },
+        {
+          "id": "surgical-indication-policy",
+          "label": "Payer surgical-indication policy anchors (conservative management, ASA)",
+          "url": "https://www.asahq.org/standards-and-practice-parameters/statement-on-asa-physical-status-classification-system",
+          "ruleFamily": "specialty-surg",
+          "lastVerified": "2026-05-28"
+        },
+        {
+          "id": "dsm-5-tr",
+          "label": "APA DSM-5-TR / ASAM / Joint Commission (behavioral health)",
+          "url": "https://www.psychiatry.org/psychiatrists/practice/dsm",
+          "ruleFamily": "specialty-bh",
+          "lastVerified": "2026-05-28"
+        },
+        {
+          "id": "nccn-acmg-genetic",
+          "label": "NCCN / ACMG / NSGC genetic-testing criteria",
+          "url": "https://www.acmg.net/ACMG/Medical-Genetics-Practice-Resources/Practice-Guidelines.aspx",
+          "ruleFamily": "specialty-gen",
+          "lastVerified": "2026-05-28"
+        }
+      ],
+      "evaluated": null
+    }
+  }
+}

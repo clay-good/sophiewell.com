@@ -6,6 +6,35 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v52 wave 52-6f — §4.10 / §8.2 PA golden-fixture audit + §8.4 property tests)
+
+Builds the two determinism-enforcement surfaces §8 named but the report
+waves had not yet shipped.
+
+**New surfaces:**
+
+- `scripts/audit-pa.mjs` (§8.2, wired into `npm run lint` → the CI Lint
+  step; also `npm run audit:pa`) runs the full deterministic pipeline
+  against every fixture under `test/fixtures/pa-lint/` and diffs the
+  produced JSON report against the committed golden in
+  `test/fixtures/pa-lint/expected/`. The report is built without
+  `generatedAt`, so the output is byte-stable (§4.10). Re-seed intended
+  changes with `node scripts/audit-pa.mjs --update`.
+- Four fixtures: `happy-path`, `missing-npi` (R-PA-016 block), `bad-pos`
+  (R-PA-013 block on a POS off the CMS list), `cms-dme` (Medicare FFS
+  letterhead engages the §4.5.2 overlay).
+- `test/unit/pa-property.test.js` (§8.4) — reorder-invariance,
+  irrelevant-file invariance, double-run byte-identity, and redact
+  idempotence (plain + findings-aware paths).
+
+**Determinism fix:** the report was not invariant under input file order —
+`evidenceLedger` / `extractedData` echoed drop order, and rules citing the
+first matching document picked by drop order. `buildBundle` now
+canonicalizes document order by content hash (sha256, then name), so the
+whole report is order-invariant. No existing test depended on drop order.
+
+Unit suite: 2006 (was 2001).
+
 ### Added (spec-v52 wave 52-6e — §4.5.6 / §8.3 follow-up: ledger → ruleset coverage)
 
 Closes a silent-drift gap in the dataset-staleness ledger: its per-source
