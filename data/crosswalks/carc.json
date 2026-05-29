@@ -1,0 +1,34 @@
+[
+  {
+    "code": "1",
+    "desc": "Deductible amount."
+  },
+  {
+    "code": "2",
+    "desc": "Coinsurance amount."
+  },
+  {
+    "code": "3",
+    "desc": "Co-payment amount."
+  },
+  {
+    "code": "45",
+    "desc": "Charge exceeds fee schedule/maximum allowable or contracted/legislated fee arrangement."
+  },
+  {
+    "code": "50",
+    "desc": "These are non-covered services because this is not deemed a \"medical necessity\" by the payer."
+  },
+  {
+    "code": "96",
+    "desc": "Non-covered charge(s)."
+  },
+  {
+    "code": "97",
+    "desc": "The benefit for this service is included in the payment/allowance for another service that has already been adjudicated."
+  },
+  {
+    "code": "109",
+    "desc": "Claim/service not covered by this payer/contractor. You must send the claim to the correct payer/contractor."
+  }
+]

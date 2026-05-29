@@ -1,0 +1,22 @@
+[
+  {
+    "code": "M76",
+    "desc": "Missing/incomplete/invalid diagnosis or condition."
+  },
+  {
+    "code": "M119",
+    "desc": "Missing/incomplete/invalid/deactivated/withdrawn National Drug Code (NDC)."
+  },
+  {
+    "code": "N130",
+    "desc": "Consult plan benefit documents/guidelines for information about restrictions for this service."
+  },
+  {
+    "code": "N362",
+    "desc": "The number of days or units of service exceeds our acceptable maximum."
+  },
+  {
+    "code": "N435",
+    "desc": "Exceeds number/frequency approved/allowed within time period without support documentation."
+  }
+]

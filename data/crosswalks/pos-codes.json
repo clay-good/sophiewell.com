@@ -1,0 +1,47 @@
+[
+  {
+    "code": "11",
+    "name": "Office",
+    "desc": "Location, other than a hospital, where the health professional routinely provides health examinations."
+  },
+  {
+    "code": "12",
+    "name": "Home",
+    "desc": "Location where health services and health-related services are provided in the patient's home."
+  },
+  {
+    "code": "21",
+    "name": "Inpatient Hospital",
+    "desc": "A facility that provides inpatient medical and surgical services."
+  },
+  {
+    "code": "22",
+    "name": "Outpatient Hospital",
+    "desc": "A portion of a hospital providing outpatient services."
+  },
+  {
+    "code": "23",
+    "name": "Emergency Room - Hospital",
+    "desc": "A portion of a hospital where emergency services are provided."
+  },
+  {
+    "code": "24",
+    "name": "Ambulatory Surgical Center",
+    "desc": "A freestanding facility for outpatient surgery."
+  },
+  {
+    "code": "31",
+    "name": "Skilled Nursing Facility",
+    "desc": "A facility primarily engaged in providing skilled nursing care."
+  },
+  {
+    "code": "32",
+    "name": "Nursing Facility",
+    "desc": "A facility providing nursing care, but not at the skilled level."
+  },
+  {
+    "code": "81",
+    "name": "Independent Laboratory",
+    "desc": "A laboratory certified to perform diagnostic and other tests."
+  }
+]
