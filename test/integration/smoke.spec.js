@@ -8,16 +8,19 @@
 
 import { test, expect } from '@playwright/test';
 
-test('home: renders centered topbar, hero search, and full-catalog tool picker', async ({ page }) => {
+test('home: renders centered topbar and a full-catalog search combobox', async ({ page }) => {
   await page.goto('/');
   await expect(page.locator('.topbar .topbar-brand')).toContainText('Sophie Well');
-  // spec-v52 §6: the v51 ten quick-picks were replaced by a single
-  // native <select> that lists every tile in the catalog alphabetically.
-  // The placeholder option + one <option> per tile = catalog count + 1.
-  await expect(page.locator('#hero-search')).toBeVisible();
-  await expect(page.locator('#tool-picker-select')).toBeVisible();
-  const optCount = await page.locator('#tool-picker-select option').count();
-  expect(optCount).toBeGreaterThan(200);
+  // spec-v53: the v52 tool-picker <select> was replaced by a single search
+  // combobox. Focusing the input opens a listbox of the full catalog (one
+  // row per tile, alphabetical); typing filters it.
+  const hero = page.locator('#hero-search');
+  await expect(hero).toBeVisible();
+  await expect(page.locator('#tool-picker-select')).toHaveCount(0);
+  await hero.click();
+  await expect(page.locator('#hero-search-results')).toBeVisible();
+  const rowCount = await page.locator('#hero-search-results .hero-search-result').count();
+  expect(rowCount).toBeGreaterThan(200);
   await expect(page.locator('.quick-pick')).toHaveCount(0);
   await expect(page.locator('.filters:not(.visually-hidden)')).toHaveCount(0);
   await expect(page.locator('#search')).toHaveCount(0);

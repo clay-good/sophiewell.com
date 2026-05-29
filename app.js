@@ -587,25 +587,6 @@ if (typeof document !== 'undefined') {
       location.hash = '#' + id;
     }
   });
-
-  // spec-v52 §6: the homepage tool-picker <select> routes on the
-  // `change` event. Same hash-routing as the hero search and the
-  // delegated tile-card click above.
-  document.addEventListener('change', (event) => {
-    const sel = event.target;
-    if (!sel || sel.id !== 'tool-picker-select') return;
-    const id = sel.value;
-    if (!id) return;
-    if (location.hash === '#' + id) {
-      currentRouteId = null;
-      route();
-    } else {
-      location.hash = '#' + id;
-    }
-    // Reset to the placeholder so re-selecting the same tile later still
-    // fires a change event.
-    sel.selectedIndex = 0;
-  });
 }
 
 // spec-v11 §4.1: visible specialty / category labels. The letter is the
@@ -664,43 +645,12 @@ function wireFilters() {
     });
   }
 
-  // spec-v6 §4.2.1 + spec-v7 §3.2: task hero search with synonym routing.
-  // Synonym table match is checked first (deterministic phrase lookup against
-  // data/synonyms.json); if it hits, a breadcrumb explains why and Enter
-  // routes to that tile. Falls through to the existing fuzzy ranker otherwise.
-  // Typing in the hero opens the disclosure so users can see filtered tiles.
-  const hero = document.getElementById('hero-search');
-  if (hero) {
-    hero.addEventListener('input', () => {
-      filterState.query = hero.value.trim();
-      if (filterState.query) openDisclosure();
-      applyFilters();
-      updateSynonymHint(hero.value);
-    });
-    hero.addEventListener('keydown', (e) => {
-      if (e.key === 'Enter') {
-        const q = hero.value.trim();
-        if (!q) return;
-        const target = resolveQueryToTileId(q);
-        if (target) {
-          e.preventDefault();
-          hero.value = '';
-          filterState.query = '';
-          applyFilters();
-          updateSynonymHint('');
-          location.hash = '#' + target;
-        }
-      } else if (e.key === 'Escape') {
-        if (hero.value) {
-          hero.value = '';
-          filterState.query = '';
-          applyFilters();
-          updateSynonymHint('');
-          e.preventDefault();
-        }
-      }
-    });
-  }
+  // spec-v53: the home view is a single search combobox. Focusing the input
+  // opens a listbox of the full catalog A-Z; typing filters it; the results
+  // dropdown routes to the tile on click or Enter. bindHeroSearch is called
+  // here (rather than once at boot) because the home view is cloned and
+  // restored via restoreHome(), and a cloned node loses its listeners.
+  bindHeroSearch();
 
   // spec-v7 §3.4: disclosure defaults **open** in static markup so the
   // catalog is visible on first paint. Toggle persists in the URL hash
@@ -1358,6 +1308,141 @@ function installTopbarSearch() {
     setExpanded(false);
     setActive(-1);
   });
+}
+
+// spec-v53: the home-view search combobox. Mirrors the topbar search, with
+// one difference: focusing the empty input lists the entire catalog A-Z so
+// the bar doubles as the "browse all tools" affordance the retired
+// tool-picker <select> used to provide. Typing narrows to the ranked top
+// matches; click / Enter routes to the tile.
+let heroSearchDocClickBound = false;
+function bindHeroSearch() {
+  const input = document.getElementById('hero-search');
+  const list = document.getElementById('hero-search-results');
+  if (!input || !list) return;
+
+  let activeIndex = -1;
+  let currentMatches = [];
+  const ALL = UTILITIES.slice().sort((a, b) => a.name.localeCompare(b.name));
+
+  function setExpanded(open) {
+    input.setAttribute('aria-expanded', open ? 'true' : 'false');
+    list.hidden = !open;
+  }
+
+  function setActive(idx) {
+    const items = list.querySelectorAll('.hero-search-result');
+    items.forEach((node, i) => {
+      const on = i === idx;
+      node.classList.toggle('is-active', on);
+      node.setAttribute('aria-selected', on ? 'true' : 'false');
+      if (on) {
+        input.setAttribute('aria-activedescendant', node.id);
+        node.scrollIntoView({ block: 'nearest' });
+      }
+    });
+    if (idx === -1) input.removeAttribute('aria-activedescendant');
+    activeIndex = idx;
+  }
+
+  function navigateTo(util) {
+    if (!util) return;
+    input.value = '';
+    currentMatches = [];
+    clear(list);
+    setExpanded(false);
+    setActive(-1);
+    input.blur();
+    if (location.hash === '#' + util.id) {
+      currentRouteId = null;
+      route();
+    } else {
+      location.hash = '#' + util.id;
+    }
+  }
+
+  // Empty query (e.g. on focus) lists the whole catalog A-Z; a typed query
+  // returns the ranked top matches.
+  function matchesFor(query) {
+    const q = query.trim();
+    return q ? searchUtilities(q, 12) : ALL;
+  }
+
+  function render(query) {
+    clear(list);
+    currentMatches = matchesFor(query);
+    if (currentMatches.length === 0) {
+      list.appendChild(el('li', { class: 'hero-search-empty', role: 'presentation', text: 'No tools match.' }));
+      setExpanded(true);
+      setActive(-1);
+      return;
+    }
+    currentMatches.forEach((util, i) => {
+      const item = el('li', {
+        class: 'hero-search-result',
+        role: 'option',
+        id: `hero-search-result-${i}`,
+        'data-tool': util.id,
+        'aria-selected': 'false',
+      }, [
+        el('span', { class: 'hsr-name', text: util.name }),
+        el('span', { class: 'hsr-group', text: GROUP_LABELS[util.group] || util.group }),
+      ]);
+      // mousedown so the route fires before the input-blur close handler.
+      item.addEventListener('mousedown', (e) => { e.preventDefault(); navigateTo(util); });
+      item.addEventListener('mouseenter', () => setActive(i));
+      list.appendChild(item);
+    });
+    setExpanded(true);
+    setActive(0);
+  }
+
+  input.addEventListener('focus', () => render(input.value));
+  input.addEventListener('input', () => render(input.value));
+
+  input.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowDown') {
+      if (!currentMatches.length) return;
+      setActive((activeIndex + 1) % currentMatches.length);
+      e.preventDefault();
+    } else if (e.key === 'ArrowUp') {
+      if (!currentMatches.length) return;
+      setActive((activeIndex - 1 + currentMatches.length) % currentMatches.length);
+      e.preventDefault();
+    } else if (e.key === 'Enter') {
+      if (activeIndex >= 0 && currentMatches[activeIndex]) {
+        e.preventDefault();
+        navigateTo(currentMatches[activeIndex]);
+      } else if (currentMatches[0]) {
+        e.preventDefault();
+        navigateTo(currentMatches[0]);
+      }
+    } else if (e.key === 'Escape') {
+      if (input.value || !list.hidden) {
+        input.value = '';
+        clear(list);
+        currentMatches = [];
+        setExpanded(false);
+        setActive(-1);
+        e.preventDefault();
+      }
+    }
+  });
+
+  // Close on an outside click. Bound once at the document level (the hero
+  // element itself is replaced on each restoreHome clone, so the handler
+  // re-queries the live nodes by id rather than closing over them).
+  if (!heroSearchDocClickBound) {
+    heroSearchDocClickBound = true;
+    document.addEventListener('click', (e) => {
+      const inp = document.getElementById('hero-search');
+      const lst = document.getElementById('hero-search-results');
+      if (!inp || !lst) return;
+      if (e.target === inp || lst.contains(e.target)) return;
+      inp.setAttribute('aria-expanded', 'false');
+      lst.hidden = true;
+    });
+  }
 }
 
 // ----- Service worker registration ----------------------------------------

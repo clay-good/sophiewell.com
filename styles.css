@@ -612,35 +612,93 @@ body {
   gap: 6px;
 }
 
-/* spec-v6 §4.2.1: task hero. A promoted search input above the tile grid. */
+/* spec-v53: task hero. One big search combobox, centered, as the single
+   entry point to the catalog. Focusing the input opens the results listbox
+   (full catalog A-Z); typing filters it; the dropdown routes to the tile on
+   click or Enter. The results list anchors to this positioned wrapper. */
 .task-hero {
-  margin: 8px 0 20px;
-  padding: 20px 22px 18px;
-  background: var(--bg-secondary);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-card);
+  position: relative;
+  width: 100%;
+  max-width: 720px;
+  margin: 8px auto 24px;
 }
 .task-hero .hero-label {
   display: block;
-  font-size: 1.05rem;
+  margin-bottom: 12px;
+  font-size: 1.15rem;
   font-weight: 700;
+  letter-spacing: -0.01em;
   color: var(--text-primary);
-  margin-bottom: 10px;
+  text-align: center;
 }
 .task-hero input[type="search"] {
   display: block;
   width: 100%;
   font: inherit;
-  font-size: 1rem;
-  padding: 12px 14px;
-  background: var(--bg-primary);
+  font-size: 1.2rem;
+  padding: 18px 24px;
+  background: var(--bg-secondary);
   color: var(--text-primary);
-  border: 1px solid var(--border-light);
-  border-radius: 8px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-pill);
+  box-shadow: 0 1px 2px var(--shadow-soft);
+  transition: border-color 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
 }
-.task-hero input[type="search"]:focus-visible {
-  outline: 2px solid var(--focus-ring);
-  outline-offset: 2px;
+.task-hero input[type="search"]::placeholder { color: var(--text-muted); }
+.task-hero input[type="search"]:hover { border-color: var(--border-light); }
+.task-hero input[type="search"]:focus {
+  outline: none;
+  border-color: var(--focus-ring);
+  box-shadow: 0 0 0 3px rgba(77, 144, 254, 0.25);
+  background: var(--bg-tertiary);
+}
+
+.hero-search-results {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  right: 0;
+  list-style: none;
+  margin: 0;
+  padding: 6px;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-card);
+  box-shadow: 0 12px 36px var(--shadow-strong);
+  max-height: min(60vh, 460px);
+  overflow-y: auto;
+  z-index: 60;
+  text-align: left;
+}
+.hero-search-results[hidden] { display: none; }
+.hero-search-result {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 10px 14px;
+  border-radius: var(--radius);
+  cursor: pointer;
+  color: var(--text-primary);
+  user-select: none;
+}
+.hero-search-result .hsr-name { font-weight: 600; font-size: 0.98rem; }
+.hero-search-result .hsr-group { font-size: 0.78rem; color: var(--text-muted); }
+.hero-search-result:hover,
+.hero-search-result.is-active { background: var(--bg-tertiary); }
+.hero-search-empty {
+  padding: 16px 14px;
+  color: var(--text-muted);
+  font-size: 0.92rem;
+  text-align: center;
+}
+
+/* Small screens: keep the bar prominent but trim padding, and hold the
+   input font at >=16px so iOS Safari does not zoom on focus. */
+@media (max-width: 600px) {
+  .task-hero { margin: 4px auto 18px; }
+  .task-hero .hero-label { font-size: 1.05rem; }
+  .task-hero input[type="search"] { font-size: 1.05rem; padding: 14px 18px; }
+  .hero-search-results { max-height: min(70vh, 420px); }
 }
 /* spec-v52 §4.2: prior-auth packet linter dropzone. Lives on the
    pa-lint tile only; reuses the existing tool-meta + tool-result
@@ -795,38 +853,6 @@ body {
   opacity: 0.85;
 }
 
-/* spec-v52 §6: tool-picker. Native <select> listing every tile in the
-   catalog, alphabetically by visible title. Replaces the v51 ten-tile
-   quick-picks grid. The native control gives free a11y, mobile-native
-   pickers, and OS-level type-ahead with zero JS to render. */
-.tool-picker {
-  margin: 28px 0 12px;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-.tool-picker-label {
-  font-size: 0.78rem;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--text-muted);
-}
-.tool-picker-select {
-  padding: 10px 12px;
-  background: var(--bg-secondary);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-card);
-  color: var(--text-primary);
-  font: inherit;
-  font-size: 0.95rem;
-  cursor: pointer;
-}
-.tool-picker-select:focus-visible {
-  outline: 2px solid var(--focus-ring);
-  outline-offset: 2px;
-}
-
 /* Patient-artifact dropzone CSS removed when the dropzone UI shipped
    in spec-v7 sec 3.1 was retired during the clinical-staff-first
    pivot; the lib/artifact-*.js helpers were deleted in spec-v29 wave
@@ -835,23 +861,6 @@ body {
 .empty-state {
   margin: 16px 4px 24px;
   font-size: 0.95rem;
-}
-
-/* spec-v7 section 3.2: synonym-routed prompt breadcrumb. Surfaces the
-   matched phrase under the hero so the user understands why a tile is
-   routed to. */
-.hero-synonym-hint {
-  margin: -4px 4px 12px;
-  padding: 8px 12px;
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  background: var(--bg-secondary);
-  font-size: 0.92rem;
-  color: var(--text-secondary);
-}
-.hero-synonym-hint .synonym-link {
-  color: var(--text-primary);
-  font-weight: 600;
 }
 
 /* spec-v6 §3.3: lab result interpreter. */
