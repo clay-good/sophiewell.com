@@ -6,6 +6,48 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v52 wave 52-5c — §4.5.5 surgery specialty overlay, 5 of 25)
+
+Five surgery rules triggered by an AMA Surgery-category CPT
+(10004-69990):
+
+- **R-PA-SURG-001** — conservative-management / non-operative
+  trial documented; emergent-surgery anchor bypasses with a
+  "does not apply" branch. Flag.
+- **R-PA-SURG-002** — imaging supporting surgical indication
+  (attached imaging-report doc OR imaging-findings anchor).
+  Flag.
+- **R-PA-SURG-003** — ASA Physical Status >= 3: pre-op medical
+  / anesthesia clearance. Flag.
+- **R-PA-SURG-004** — ASA classification 1-5 documented. Flag.
+- **R-PA-SURG-005** — informed-consent anchor present (R-PA-059
+  covers consent date vs service date ordering across the
+  packet). Flag.
+
+New helper `collectSurgeryCpts(bundle)` in `lib/pa/rules.js`
+collects surgery-category CPTs via `/^[1-6]\d{4}$/`, mirroring
+the radiology / J-code collectors. E/M codes like 99213 (9xxxx)
+and radiology codes like 70551 (7xxxx) fall outside the trigger
+range so the HAPPY_PACKET fixture continues to all-pass.
+
+R-PA-SURG-001 reuses the wave-52-5a R-PA-RAD-002 emergent-
+exception pattern: the rule self-bypasses with "Emergent /
+urgent surgical anchor present; rule does not apply" rather
+than vacuously passing. R-PA-SURG-005 intentionally narrows
+R-PA-059 (core consent date check) to the surgery specialty
+section so consent issues surface in the specialty audit
+cluster.
+
+6 new unit assertions in `test/unit/pa-engine.test.js`.
+R-PA-SURG-001's test explicitly strips HAPPY_TEXT's pre-existing
+"Step therapy: trial of lisinopril" line so the "trial of"
+anchor doesn't pre-satisfy the conservative-management check.
+Total PA unit suite: 166 assertions. The Playwright happy-path
+now asserts 125 rules render in the findings panel.
+
+Verified: `npm run lint`, `npm run test`, and `npm run build` are
+all green. **Catalog count 255, unchanged.**
+
 ### Added (spec-v52 wave 52-5b — §4.5.5 infusion / specialty-drug overlay, 5 of 25)
 
 Five infusion / specialty-drug rules triggered by J-code (HCPCS

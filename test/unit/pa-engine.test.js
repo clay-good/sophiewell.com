@@ -140,8 +140,8 @@ test('runEngine passes every starter rule on a clean multi-doc happy-path packet
   assert.equal(counts.pass, STARTER_RULES.length);
 });
 
-test('STARTER_RULES at wave 52-5b close is 120 rules (110 overlay + 5 radiology + 5 infusion specialty)', () => {
-  assert.equal(STARTER_RULES.length, 120);
+test('STARTER_RULES at wave 52-5c close is 125 rules (110 overlay + 5 radiology + 5 infusion + 5 surgery specialty)', () => {
+  assert.equal(STARTER_RULES.length, 125);
 });
 
 test('CMS overlay carries the spec-aligned id R-PA-CMS-004 for proof-of-delivery', () => {
@@ -663,6 +663,57 @@ test('R-PA-INF-005 fires (info) on an infusion-reaction-risk biologic without a 
   const findings = runEngine(bundleOf(text));
   const f = findings.find((x) => x.ruleId === 'R-PA-INF-005');
   assert.equal(f.status, 'info');
+});
+
+// ---- wave 52-5c sanity checks: surgery specialty overlay ----
+
+test('R-PA-SURG-001..005 all vacuously pass on a packet without a surgery CPT (10004-69990)', () => {
+  const findings = runEngine(happyBundle());
+  for (const id of ['R-PA-SURG-001', 'R-PA-SURG-002', 'R-PA-SURG-003', 'R-PA-SURG-004', 'R-PA-SURG-005']) {
+    const f = findings.find((x) => x.ruleId === id);
+    assert.equal(f.status, 'pass', id + ' should vacuously pass when no surgery CPT is in the packet.');
+  }
+});
+
+test('R-PA-SURG-001 flags an elective surgery request without a conservative-management anchor', () => {
+  // Strip HAPPY_TEXT's pre-existing "Step therapy: trial of lisinopril" so
+  // the "trial of" anchor doesn't pre-satisfy the conservative check.
+  const base = HAPPY_TEXT.replace(/Step therapy:.*\n/, '');
+  const text = base + '\nProcedure: 27447 total knee arthroplasty.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-SURG-001');
+  assert.equal(f.status, 'flag');
+});
+
+test('R-PA-SURG-002 flags an elective surgery request without imaging support', () => {
+  // bundleOf wraps text in a single TXT document; no imaging-report doc role.
+  const text = HAPPY_TEXT + '\nProcedure: 27447 total knee arthroplasty.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-SURG-002');
+  assert.equal(f.status, 'flag');
+});
+
+test('R-PA-SURG-003 flags an ASA >= 3 surgical patient without a pre-op clearance anchor', () => {
+  const text = HAPPY_TEXT
+    + '\nProcedure: 27447 total knee arthroplasty.\n'
+    + 'ASA Physical Status 3 -- patient has severe systemic disease.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-SURG-003');
+  assert.equal(f.status, 'flag');
+});
+
+test('R-PA-SURG-004 flags a surgery request without an ASA classification anchor', () => {
+  const text = HAPPY_TEXT + '\nProcedure: 27447 total knee arthroplasty.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-SURG-004');
+  assert.equal(f.status, 'flag');
+});
+
+test('R-PA-SURG-005 flags a surgery request without an informed-consent anchor', () => {
+  const text = HAPPY_TEXT + '\nProcedure: 27447 total knee arthroplasty.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-SURG-005');
+  assert.equal(f.status, 'flag');
 });
 
 test('R-PA-MA-015 flags a C-SNP / I-SNP packet without a qualifying condition / residence anchor', () => {

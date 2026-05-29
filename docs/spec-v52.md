@@ -1345,6 +1345,47 @@ silently; the audit trail records the disablement.
 
 - 2026-05-27 — v52 proposed. Five waves outlined (52-1 through
   52-5+). Catalog count target at v52-1 close: 255.
+- 2026-05-28 — wave 52-5c (§4.5.5 surgery specialty overlay, 5 of 25).
+  Adds five surgery rules triggered by an AMA Surgery-category CPT
+  (10004-69990): R-PA-SURG-001 (conservative-management / non-
+  operative trial documented; emergent-surgery anchor bypasses with
+  a "does not apply" branch, flag), R-PA-SURG-002 (imaging
+  supporting surgical indication -- attached imaging-report doc OR
+  imaging-findings anchor, flag), R-PA-SURG-003 (ASA Physical
+  Status >= 3 requires pre-op medical / anesthesia clearance,
+  flag), R-PA-SURG-004 (ASA classification 1-5 documented on the
+  request, flag), R-PA-SURG-005 (informed-consent anchor present;
+  R-PA-059 covers date-vs-service-date ordering across the packet,
+  flag).
+
+  New helper `collectSurgeryCpts(bundle)` in `lib/pa/rules.js`
+  collects surgery-category CPTs via `/^[1-6]\d{4}$/`, mirroring
+  the radiology / J-code collectors. E/M codes like 99213 (9xxxx)
+  and radiology codes like 70551 (7xxxx) fall outside the trigger
+  range so the HAPPY_PACKET fixture continues to all-pass.
+
+  R-PA-SURG-001 reuses the wave-52-5a R-PA-RAD-002 emergent-
+  exception pattern: the rule self-bypasses with "Emergent /
+  urgent surgical anchor present; rule does not apply" rather
+  than vacuously passing, so the audit trail distinguishes the
+  two branches. R-PA-SURG-003 is the fifth dual-context rule
+  (ASA >= 3 trigger AND clearance anchor); R-PA-SURG-005
+  intentionally narrows R-PA-059 (core consent date check) to
+  the surgery specialty section so consent issues surface in the
+  specialty audit cluster.
+
+  6 new unit assertions in `test/unit/pa-engine.test.js` (one
+  aggregate vacuous-pass guard plus a fires-when-it-should test
+  per new rule). R-PA-SURG-001's test explicitly strips
+  HAPPY_TEXT's pre-existing "Step therapy: trial of lisinopril"
+  line so the "trial of" anchor doesn't pre-satisfy the
+  conservative-management check. Total PA unit suite: 166
+  assertions. The Playwright happy-path now asserts 125 rules
+  render. View wave banner advanced to 52-5c.
+
+  Wave 52-5d will continue §4.5.5 with the behavioral-health
+  overlay (R-PA-BH-NNN, 5 rules) -- DSM-5-TR diagnosis,
+  treatment plan with measurable goals, prior level of care.
 - 2026-05-28 — wave 52-5b (§4.5.5 infusion / specialty-drug overlay,
   5 of 25). Adds five infusion / specialty-drug rules triggered by
   J-code (HCPCS Level II J####) presence: R-PA-INF-001 (J-code +
