@@ -6,6 +6,50 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v52 wave 52-6a — §4.6 JSON report + §4.7 PHI redaction open)
+
+Ships the JSON half of the spec-v52 §4.6 report contract plus the
+§4.7 PHI redaction module. The DOCX flavor lands in wave 52-6b
+alongside the vendored docx.js.
+
+**New modules:**
+
+- `lib/pa/redact.js` — deterministic PHI masking covering
+  Patient / Name / DOB / Member ID / Subscriber ID / MRN / Chart
+  Number / Address / SSN / phone / email. Labeled patterns keep
+  the label and replace the value (`Patient: [REDACTED]`); free-
+  text patterns redact in full. Idempotent: redacting twice
+  changes nothing. Bundle-level `redactBundle` hard-redacts
+  extract-block PHI fields (`patientName`, `dob`, `memberId`,
+  `ssns`, `tins`, `serviceDates`, `dates`) via a per-field
+  allowlist; structural fields (CPT / ICD-10 / POS / NPI codes)
+  pass through unchanged.
+- `lib/pa/report.js` — six-section JSON report builder mirroring
+  the §4.6 enumeration (coverPage / executiveSummary / findings /
+  evidenceLedger / extractedData / auditTrail). Per-rule
+  remediation hints by rule-id prefix. Deterministic: same
+  `bundle` + `findings` produces byte-identical JSON (no
+  `Date.now()`, no random, no fetch); `opts.generatedAt` is
+  caller-supplied so golden-tests are byte-stable.
+
+**View wiring:** the findings panel now appends a `.pa-downloads`
+group with two `<button>` elements — "Download report (.json)"
+and "Download PHI-redacted report (.json)". Each click serializes
+the in-memory bundle + findings, builds the JSON report (full or
+redacted), wraps it in a Blob via `URL.createObjectURL`, and
+triggers a same-origin download. No network call.
+
+19 new unit assertions across `test/unit/pa-redact.test.js` (9)
+and `test/unit/pa-report.test.js` (10). Total PA unit suite:
+197 assertions. The Playwright happy-path is unchanged at 135
+rules.
+
+Wave 52-6b will land the DOCX report (vendored docx.js, ~140 KB
+gzipped, MIT) and a third download button.
+
+Verified: `npm run lint`, `npm run test`, and `npm run build` are
+all green. **Catalog count 255, unchanged.**
+
 ### Added (spec-v52 wave 52-5e — §4.5.5 genetic-testing overlay COMPLETE: closes §4.5.5 + §4.5)
 
 Final 5 specialty rules triggered by AMA molecular-pathology CPT

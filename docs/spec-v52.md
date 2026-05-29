@@ -1345,6 +1345,50 @@ silently; the audit trail records the disablement.
 
 - 2026-05-27 — v52 proposed. Five waves outlined (52-1 through
   52-5+). Catalog count target at v52-1 close: 255.
+- 2026-05-28 — wave 52-6a (§4.6 JSON report + §4.7 PHI redaction
+  opens). Ships the JSON half of the §4.6 contract plus the §4.7
+  PHI redaction module. The DOCX flavor lands in wave 52-6b
+  alongside the vendored docx.js.
+
+  New modules: `lib/pa/redact.js` (deterministic PHI masking --
+  Patient / Name / DOB / Member ID / Subscriber ID / MRN / Chart
+  Number / Address / SSN / phone / email; labeled patterns keep
+  the label and replace the value, free-text patterns redact in
+  full; idempotent), `lib/pa/report.js` (the six §4.6 sections:
+  coverPage / executiveSummary / findings / evidenceLedger /
+  extractedData / auditTrail; per-rule remediation hints by
+  rule-id prefix; deterministic -- no `Date.now()`, no random,
+  no fetch; same `bundle` + `findings` -> byte-identical JSON).
+
+  `redactBundle` accepts an optional `{redactFindings: true}` to
+  redact PHI patterns in evidence + note strings; it hard-redacts
+  extract-block PHI fields (`patientName`, `dob`, `memberId`,
+  `ssns`, `tins`, `serviceDates`, `dates`) via a per-field
+  allowlist so raw values without labels still get masked, while
+  structural fields (CPT / ICD-10 / POS / NPI / cpts / icd10 /
+  pos / npis) pass through unchanged since they are not PHI.
+
+  View wiring: the findings panel now appends a `.pa-downloads`
+  group with two `<button>` elements -- "Download report (.json)"
+  and "Download PHI-redacted report (.json)". Each click
+  serializes the in-memory bundle + findings, builds the JSON
+  report (full or redacted), wraps it in a Blob via
+  `URL.createObjectURL`, and triggers a same-origin download.
+  No network call.
+
+  Determinism guarantees (§4.10) preserved: the report builder
+  accepts an optional caller-supplied `generatedAt` ISO string;
+  when omitted the field is `null` so byte-for-byte equality
+  holds across runs (golden-test friendly).
+
+  19 new unit assertions across `test/unit/pa-redact.test.js`
+  (9) and `test/unit/pa-report.test.js` (10). Total PA unit suite:
+  197 assertions. The Playwright happy-path is unchanged (still
+  135 rules). View wave banner advanced to 52-6a.
+
+  Wave 52-6b will land the DOCX report (vendored docx.js, ~140 KB
+  gzipped, MIT) and a third download button; wave 52-6c will add
+  the §8.3 dataset-staleness CI.
 - 2026-05-28 — wave 52-5e (§4.5.5 genetic-testing overlay COMPLETE:
   closes §4.5.5 + §4.5). Final 5 specialty rules triggered by AMA
   molecular-pathology CPT (81105-81512, simplified to 81xxx):
