@@ -5,7 +5,7 @@
 
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { evaluateStaleness, STATE, findLedgerRuleOrphans } from '../../lib/pa/staleness.js';
+import { evaluateStaleness, STATE, findLedgerRuleOrphans, findRuleSourceOrphans, findLedgerCoverageGaps } from '../../lib/pa/staleness.js';
 
 function ledgerWith(sources, extra) {
   return {
@@ -126,6 +126,70 @@ test('the shipped ledger references only rule ids that ship in lib/pa/rules.js',
   const ledger = JSON.parse(await readFile(join(here, '../../pa-staleness-ledger.json'), 'utf8'));
   const orphans = findLedgerRuleOrphans(ledger, new Set(STARTER_RULES.map((r) => r.id)));
   assert.deepEqual(orphans, [], 'every ledger rule reference must name a shipped rule');
+});
+
+// spec-v52 §4.5.6 (wave 52-6h): per-rule source metadata coverage. ----------
+
+test('findRuleSourceOrphans returns empty when every rule source is a known ledger id', () => {
+  const rules = [
+    { id: 'R-PA-001', sources: [] },
+    { id: 'R-PA-007', sources: ['ama-cpt', 'cms-hcpcs'] },
+  ];
+  assert.deepEqual(findRuleSourceOrphans(rules, ['ama-cpt', 'cms-hcpcs', 'cms-pos']), []);
+  assert.deepEqual(findRuleSourceOrphans(rules, new Set(['ama-cpt', 'cms-hcpcs'])), []);
+});
+
+test('findRuleSourceOrphans reports each unknown source with its rule, in order', () => {
+  const rules = [
+    { id: 'R-PA-007', sources: ['ama-cpt', 'gone-source'] },
+    { id: 'R-PA-013', sources: ['also-gone'] },
+  ];
+  assert.deepEqual(findRuleSourceOrphans(rules, ['ama-cpt']), [
+    { ruleId: 'R-PA-007', source: 'gone-source' },
+    { ruleId: 'R-PA-013', source: 'also-gone' },
+  ]);
+});
+
+test('findLedgerCoverageGaps returns empty when every ledger anchor is reflected in rule.sources', () => {
+  const ledger = ledgerWith([{ ...SRC('ama-cpt', '2026-05-01'), rules: ['R-PA-007', 'R-PA-008'] }]);
+  const rules = [
+    { id: 'R-PA-007', sources: ['ama-cpt', 'cms-hcpcs'] },
+    { id: 'R-PA-008', sources: ['ama-cpt'] },
+  ];
+  assert.deepEqual(findLedgerCoverageGaps(ledger, new Map(rules.map((r) => [r.id, r]))), []);
+  // a plain id -> sources object is accepted too
+  assert.deepEqual(findLedgerCoverageGaps(ledger, { 'R-PA-007': ['ama-cpt'], 'R-PA-008': ['ama-cpt'] }), []);
+});
+
+test('findLedgerCoverageGaps reports an anchor the per-rule map fails to honor', () => {
+  const ledger = ledgerWith([{ ...SRC('cms-ncci', '2026-05-01'), rules: ['R-PA-012', 'R-PA-054'] }]);
+  // R-PA-054 has drifted: it no longer claims cms-ncci.
+  const rules = new Map([
+    ['R-PA-012', { id: 'R-PA-012', sources: ['cms-ncci'] }],
+    ['R-PA-054', { id: 'R-PA-054', sources: [] }],
+  ]);
+  assert.deepEqual(findLedgerCoverageGaps(ledger, rules), [
+    { sourceId: 'cms-ncci', ruleId: 'R-PA-054' },
+  ]);
+});
+
+test('the shipped ruleset and ledger agree in both coverage directions', async () => {
+  const { readFile } = await import('node:fs/promises');
+  const { fileURLToPath } = await import('node:url');
+  const { dirname, join } = await import('node:path');
+  const { STARTER_RULES } = await import('../../lib/pa/rules.js');
+  const here = dirname(fileURLToPath(import.meta.url));
+  const ledger = JSON.parse(await readFile(join(here, '../../pa-staleness-ledger.json'), 'utf8'));
+  const ledgerIds = new Set((ledger.sources || []).map((s) => s.id));
+  // Every shipped rule carries a sources array, and every id it names is real.
+  for (const r of STARTER_RULES) assert.ok(Array.isArray(r.sources), `${r.id} must carry a sources array`);
+  assert.deepEqual(findRuleSourceOrphans(STARTER_RULES, ledgerIds), [], 'no rule may claim an unknown source');
+  // Every ledger anchor is reflected in the per-rule sources.
+  assert.deepEqual(
+    findLedgerCoverageGaps(ledger, new Map(STARTER_RULES.map((r) => [r.id, r]))),
+    [],
+    'every ledger anchor must be reflected in the rule it anchors',
+  );
 });
 
 test('the shipped ledger is fresh as of its verification date', async () => {

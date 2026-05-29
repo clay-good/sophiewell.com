@@ -21,7 +21,7 @@
 import { readFile } from 'node:fs/promises';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { evaluateStaleness, STATE, findLedgerRuleOrphans } from '../lib/pa/staleness.js';
+import { evaluateStaleness, STATE, findLedgerRuleOrphans, findRuleSourceOrphans, findLedgerCoverageGaps } from '../lib/pa/staleness.js';
 import { renderModule } from './build-pa-staleness-ledger.mjs';
 import { STARTER_RULES } from '../lib/pa/rules.js';
 
@@ -76,6 +76,34 @@ async function main() {
     process.exit(1);
   }
 
+  // spec-v52 §4.5.6: the reverse direction. Every source id a rule claims via
+  // its structured `sources` metadata (rules.js / lib/pa/rule-sources.js) must
+  // be a real ledger source -- otherwise the deferred refresh script would
+  // chase a source that does not exist. Fail on any orphan.
+  const ledgerSourceIds = new Set((ledger.sources || []).map((s) => s && s.id).filter(Boolean));
+  const sourceOrphans = findRuleSourceOrphans(STARTER_RULES, ledgerSourceIds);
+  if (sourceOrphans.length) {
+    for (const o of sourceOrphans) {
+      console.error(`  ORPHAN ${o.ruleId}: claims source "${o.source}" which is not in pa-staleness-ledger.json.`);
+    }
+    console.error(`check-pa-staleness: ${sourceOrphans.length} rule source reference(s) do not match the ledger.`);
+    console.error('  Fix the assignment in lib/pa/rule-sources.js, or add the source to pa-staleness-ledger.json. See docs/pa-maintenance.md.');
+    process.exit(1);
+  }
+
+  // spec-v52 §4.5.6: the two coverage directions must agree. Every ledger
+  // anchor (source -> representative rule) must be reflected in that rule's
+  // own `sources`, so the ledger and the per-rule map cannot silently drift.
+  const coverageGaps = findLedgerCoverageGaps(ledger, new Map(STARTER_RULES.map((r) => [r.id, r])));
+  if (coverageGaps.length) {
+    for (const g of coverageGaps) {
+      console.error(`  GAP ${g.ruleId}: ledger source "${g.sourceId}" anchors it, but the rule's sources omit "${g.sourceId}".`);
+    }
+    console.error(`check-pa-staleness: ${coverageGaps.length} ledger anchor(s) not reflected in per-rule sources.`);
+    console.error('  Align lib/pa/rule-sources.js with the ledger\'s per-source `rules` arrays. See docs/pa-maintenance.md.');
+    process.exit(1);
+  }
+
   const result = evaluateStaleness(ledger, now);
   const { summary, policy, evaluatedAt } = result;
 
@@ -106,7 +134,8 @@ async function main() {
     process.exit(1);
   }
 
-  const coverage = `${shippedIds.size} rules shipped, 0 ledger orphans`;
+  const sourced = STARTER_RULES.filter((r) => (r.sources || []).length).length;
+  const coverage = `${shippedIds.size} rules shipped, 0 ledger orphans, ${sourced} source-anchored, 0 source orphans, 0 coverage gaps`;
   if (warns.length) {
     console.log(`check-pa-staleness: clean with warnings (${tally}; ${coverage}).`);
   } else {

@@ -106,15 +106,51 @@ that iterates these ids, pointing at a dead reference. `findLedgerRuleOrphans`
 first one, so when you rename a rule you must re-point or drop its ledger
 reference in the same change.
 
+## Per-rule source metadata and the reverse coverage checks (wave 52-6h)
+
+Each shipped rule carries a structured `sources` field -- the ledger source
+id(s) it is anchored to, or `[]` for a *structural* rule (a payer-agnostic
+completeness / heuristic check that consumes no external reference dataset
+and so has nothing to go stale). The map is a pure function of the rule id in
+`lib/pa/rule-sources.js` (`ruleSourceIds`), attached to each rule in
+`rules.js` at load. It is build/maintenance plumbing only: it never enters a
+finding or the user-facing report (`engine.js` copies rule fields explicitly),
+so an over-association fails safe -- at worst the future refresh script
+re-verifies one extra already-tracked URL.
+
+The assignments are deliberately low-judgement: the core code-set rules are
+the exact inverse of the ledger's core-source `rules` arrays; the overlay
+rules map by id prefix to the single source backing that family; and the
+CMS-FFS family's two sources are split by the citation each rule already
+carries (IOM Pub 100-08 program-integrity rules -- the SWO, proof-of-delivery,
+and supplier-PTAN checks -- vs. the NCD/LCD coverage-policy rules).
+
+`scripts/check-pa-staleness.mjs` enforces two reverse-direction invariants on
+top of the ledger -> ruleset orphan check:
+
+- **`findRuleSourceOrphans`** -- every source id a rule claims must be a real
+  ledger source, so a typo or a retired source id cannot point the refresh
+  script at a source that does not exist.
+- **`findLedgerCoverageGaps`** -- every ledger anchor (`source -> rule`) must
+  be reflected in that rule's own `sources`, so the ledger and the per-rule
+  map cannot silently drift apart.
+
+The clean check line reports `<N> source-anchored, 0 source orphans, 0
+coverage gaps`. When you change a rule's anchor, edit `lib/pa/rule-sources.js`
+(and, if it is an anchor rule, the matching ledger `rules` array) in the same
+change, or the check fails.
+
 ## Not yet built
 
 - `scripts/refresh-pa-rules.mjs` (spec-v52 §4.5.6 / §8.2): the nightly
   re-fetch-and-rehash helper. It requires outbound network access to the
-  source URLs and the structured per-rule source metadata from §4.5.6,
-  neither of which ships yet (the rules currently carry free-text
-  citations in `lib/pa/rules.js`). Until it lands, verification is the
-  manual monthly pass above, and the ledger -> ruleset coverage check
-  guards the rule ids the script will iterate.
+  source URLs -- which Sophie cannot do at runtime (spec-v50 §3.1) and which
+  CI's offline build does not perform -- so it remains a maintainer-laptop
+  script. Its data-side prerequisite, the structured per-rule source metadata,
+  now ships (the `sources` field above), so when the script lands it can
+  iterate every rule to the source URL(s) it must re-fetch. Until then,
+  verification is the manual monthly pass above, guarded by the three
+  coverage checks.
 
 ## Already shipped (kept here for the audit trail)
 

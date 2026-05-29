@@ -1345,6 +1345,49 @@ silently; the audit trail records the disablement.
 
 - 2026-05-27 — v52 proposed. Five waves outlined (52-1 through
   52-5+). Catalog count target at v52-1 close: 255.
+- 2026-05-29 — wave 52-6h (§4.5.6 structured per-rule source metadata +
+  reverse coverage checks). Closes the data-side half of the one remaining
+  "Not yet built" item in `docs/pa-maintenance.md`: the deferred
+  `scripts/refresh-pa-rules.mjs` needs, per rule, the source URL(s) it must
+  re-fetch, but "the rules currently carry free-text citations" — there was
+  no machine-iterable rule → source map. Waves 52-6c/6d/6e each named this
+  gap as deferred.
+
+  New pure module `lib/pa/rule-sources.js` exports `ruleSourceIds(id)`: a
+  total function from a rule id to the ledger source id(s) it is anchored to,
+  or `[]` for a *structural* rule (a payer-agnostic completeness / heuristic
+  check that consumes no external reference dataset). `rules.js` attaches the
+  result as each rule's `sources` field at load. The assignments are
+  deliberately low-judgement and honesty-preserving: the 12 core code-set
+  rules are the exact inverse of the ledger's core-source `rules` arrays; the
+  75 overlay rules map by id prefix to the single source backing their family;
+  the CMS-FFS family's two sources are split by the citation each rule already
+  carries (IOM Pub 100-08 program-integrity — SWO, proof-of-delivery, supplier
+  PTAN — vs. NCD/LCD coverage). 87 of 135 rules are source-anchored; the other
+  48 are structural. The field is build/maintenance plumbing: `engine.js`
+  copies rule fields into findings explicitly (id, severity, description,
+  citation, status, evidence, note), so `sources` never enters a finding, the
+  report, or the golden fixtures — `audit-pa` is unchanged.
+
+  `lib/pa/staleness.js` gains two pure helpers, both wired into
+  `scripts/check-pa-staleness.mjs` (already in `npm run lint`):
+  `findRuleSourceOrphans` (every source a rule claims must be a real ledger
+  source) and `findLedgerCoverageGaps` (every ledger `source → rule` anchor
+  must be reflected in that rule's own `sources`, so the two directions cannot
+  drift). The clean line now also reports
+  `87 source-anchored, 0 source orphans, 0 coverage gaps`.
+
+  Tests: new `test/unit/pa-rule-sources.test.js` (7 assertions: core code-set
+  mapping, structural rules, the CMS IOM/NCD-LCD split, overlay-by-prefix,
+  totality + fresh-array, every shipped rule matches the map, and the
+  CORE map is a superset of the ledger core anchors) + 5 new assertions in
+  `test/unit/pa-staleness.test.js` for the two helpers and a shipped-ruleset
+  both-directions guard; the unit suite is 2018 (was 2006). `refresh-pa-rules.mjs`
+  itself stays deferred — it needs outbound network, which neither the browser
+  nor CI's offline build performs. `docs/pa-maintenance.md` documents the
+  metadata + checks and narrows its "Not yet built" entry accordingly. Lint
+  (incl. `audit-pa`), the unit suite, a11y, and the static build are green.
+  View wave banner advanced to 52-6h.
 - 2026-05-29 — wave 52-6g (§4.3 / §8.1 PA runtime no-network spec).
   Ships the runtime proof of §4.3 ("the only network access during a
   session is the initial page load; after first paint there are zero
