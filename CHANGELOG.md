@@ -6,6 +6,59 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v52 wave 52-5e — §4.5.5 genetic-testing overlay COMPLETE: closes §4.5.5 + §4.5)
+
+Final 5 specialty rules triggered by AMA molecular-pathology CPT
+(81105-81512, simplified to 81xxx). This wave closes the §4.5.5
+specialty surface AND the complete spec-v52 §4.5 ruleset.
+
+- **R-PA-GEN-001** — family-history / pedigree / familial anchor
+  per NCCN BRCA / hereditary-cancer criteria. Flag.
+- **R-PA-GEN-002** — pre-test / post-test genetic-counseling
+  anchor per ACMG / NSGC guidelines. Flag.
+- **R-PA-GEN-003** — panel-scope rationale (why single-gene vs
+  focused vs comprehensive vs WES vs WGS is appropriate)
+  documented. Flag.
+- **R-PA-GEN-004** — personal clinical indication: either an
+  extracted ICD-10 dx OR a clinical-indication anchor. Flag.
+- **R-PA-GEN-005** — genetic-specific informed consent covering
+  GINA / incidental findings / family implications. Info.
+
+New helper `collectGeneticTestingCpts(bundle)` in `lib/pa/rules.js`
+uses the compact `/^81\d{3}$/` filter for AMA Molecular Pathology
+Tier 1 + Tier 2 + Genomic Sequencing Procedures. PLA proprietary
+lab codes (0001U-0999U) are intentionally NOT consumed here --
+the wave-52-1e CPT extractor doesn't match the 4-digit-plus-U
+form, so genetic-test trigger relies on the 81xxx CPTs the
+extractor already produces.
+
+R-PA-GEN-004's dual-acceptance logic (either an ICD-10 dx OR a
+clinical-indication anchor satisfies the rule) follows the
+R-PA-RAD-004 pattern. The evidence string records which branch
+fired so the audit trail distinguishes structural-signal pass
+from anchor pass.
+
+6 new unit assertions in `test/unit/pa-engine.test.js`. Total PA
+unit suite: 178 assertions. The Playwright happy-path now asserts
+135 rules render in the findings panel.
+
+This closes spec-v52 §4.5.5 AND the complete §4.5 ruleset:
+
+| Section | Description                              | Rules |
+|---------|------------------------------------------|-------|
+| §4.5.1  | Core (payer-agnostic)                    | 60    |
+| §4.5.2  | CMS Medicare FFS overlay                 | 25    |
+| §4.5.3  | CMS Medicare Advantage overlay           | 15    |
+| §4.5.4  | Medicaid state-agnostic core             | 10    |
+| §4.5.5  | Specialty (rad / inf / surg / BH / gen)  | 25    |
+| **§4.5**| **Complete deterministic ruleset**       | **135** |
+
+Wave 52-6 picks up with the §4.6 DOCX report, the §4.7 PHI
+redaction, and the §8.3 dataset-staleness CI.
+
+Verified: `npm run lint`, `npm run test`, and `npm run build` are
+all green. **Catalog count 255, unchanged.**
+
 ### Added (spec-v52 wave 52-5d — §4.5.5 behavioral-health specialty overlay, 5 of 25)
 
 Five behavioral-health rules triggered by an AMA psychiatric CPT

@@ -140,8 +140,8 @@ test('runEngine passes every starter rule on a clean multi-doc happy-path packet
   assert.equal(counts.pass, STARTER_RULES.length);
 });
 
-test('STARTER_RULES at wave 52-5d close is 130 rules (110 overlay + 20 specialty: rad/inf/surg/BH)', () => {
-  assert.equal(STARTER_RULES.length, 130);
+test('STARTER_RULES at wave 52-5e close is 135 rules (110 overlay + 25 specialty COMPLETE; §4.5 COMPLETE)', () => {
+  assert.equal(STARTER_RULES.length, 135);
 });
 
 test('CMS overlay carries the spec-aligned id R-PA-CMS-004 for proof-of-delivery', () => {
@@ -763,6 +763,44 @@ test('R-PA-BH-005 fires (info) on an SUD / MAT request without an X-waiver / OTP
     + 'Buprenorphine treatment requested.\n';
   const findings = runEngine(bundleOf(text));
   const f = findings.find((x) => x.ruleId === 'R-PA-BH-005');
+  assert.equal(f.status, 'info');
+});
+
+// ---- wave 52-5e sanity checks: genetic-testing specialty overlay (closes §4.5.5 + §4.5) ----
+
+test('R-PA-GEN-001..005 all vacuously pass on a packet without a genetic-testing CPT', () => {
+  const findings = runEngine(happyBundle());
+  for (const id of ['R-PA-GEN-001', 'R-PA-GEN-002', 'R-PA-GEN-003', 'R-PA-GEN-004', 'R-PA-GEN-005']) {
+    const f = findings.find((x) => x.ruleId === id);
+    assert.equal(f.status, 'pass', id + ' should vacuously pass when no 81xxx CPT is in the packet.');
+  }
+});
+
+test('R-PA-GEN-001 flags a genetic-testing request without a family-history anchor', () => {
+  const text = HAPPY_TEXT + '\nProcedure: 81479 unlisted molecular pathology procedure.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-GEN-001');
+  assert.equal(f.status, 'flag');
+});
+
+test('R-PA-GEN-002 flags a genetic-testing request without a genetic-counseling anchor', () => {
+  const text = HAPPY_TEXT + '\nProcedure: 81479 unlisted molecular pathology procedure.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-GEN-002');
+  assert.equal(f.status, 'flag');
+});
+
+test('R-PA-GEN-003 flags a genetic-testing request without a panel-scope rationale anchor', () => {
+  const text = HAPPY_TEXT + '\nProcedure: 81479 unlisted molecular pathology procedure.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-GEN-003');
+  assert.equal(f.status, 'flag');
+});
+
+test('R-PA-GEN-005 fires (info) on a genetic-testing request without a genetic-specific consent anchor', () => {
+  const text = HAPPY_TEXT + '\nProcedure: 81479 unlisted molecular pathology procedure.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-GEN-005');
   assert.equal(f.status, 'info');
 });
 

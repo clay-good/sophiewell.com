@@ -1345,6 +1345,48 @@ silently; the audit trail records the disablement.
 
 - 2026-05-27 — v52 proposed. Five waves outlined (52-1 through
   52-5+). Catalog count target at v52-1 close: 255.
+- 2026-05-28 — wave 52-5e (§4.5.5 genetic-testing overlay COMPLETE:
+  closes §4.5.5 + §4.5). Final 5 specialty rules triggered by AMA
+  molecular-pathology CPT (81105-81512, simplified to 81xxx):
+  R-PA-GEN-001 (family-history / pedigree / familial anchor per
+  NCCN BRCA / hereditary-cancer criteria, flag), R-PA-GEN-002
+  (pre-test / post-test genetic-counseling anchor per ACMG / NSGC
+  guidelines, flag), R-PA-GEN-003 (panel-scope rationale -- why
+  single-gene vs focused vs comprehensive vs WES vs WGS is
+  appropriate -- documented, flag), R-PA-GEN-004 (personal clinical
+  indication: either an extracted ICD-10 dx in the packet OR a
+  clinical-indication anchor, flag), R-PA-GEN-005 (genetic-specific
+  informed consent covering GINA / incidental findings / family
+  implications, info).
+
+  New helper `collectGeneticTestingCpts(bundle)` in `lib/pa/rules.js`
+  uses the compact `/^81\d{3}$/` filter for AMA Molecular Pathology
+  Tier 1 + Tier 2 + Genomic Sequencing Procedures. PLA proprietary
+  lab codes (0001U-0999U) are intentionally NOT consumed here --
+  the wave-52-1e CPT extractor doesn't match the 4-digit-plus-U
+  form, so genetic-test trigger relies on the 81xxx CPTs the
+  extractor already produces.
+
+  R-PA-GEN-004's dual-acceptance logic (either an ICD-10 dx OR a
+  clinical-indication anchor satisfies the rule) follows the
+  R-PA-RAD-004 pattern (either a clinical-note doc role OR a
+  clinical-evaluation anchor satisfies). The evidence string
+  records which branch fired so the audit trail distinguishes
+  structural-signal pass from anchor pass.
+
+  6 new unit assertions in `test/unit/pa-engine.test.js`. Total PA
+  unit suite: 178 assertions. The Playwright happy-path now asserts
+  135 rules render. View wave banner advanced to 52-5e and now
+  reads "complete §4.5.5 specialty overlays (25 rules: radiology +
+  infusion + surgery + behavioral health + genetic testing)".
+
+  This closes spec-v52 §4.5.5 AND the complete §4.5 ruleset: 60
+  §4.5.1 core + 25 §4.5.2 CMS FFS + 15 §4.5.3 CMS MA + 10 §4.5.4
+  Medicaid state-agnostic + 25 §4.5.5 specialty = 135 rules. Wave
+  52-6 picks up with the §4.6 DOCX report (cover page + executive
+  summary + findings + evidence ledger + extracted-data appendix +
+  audit trail), the §4.7 PHI redaction, and §8.3 dataset-staleness
+  CI.
 - 2026-05-28 — wave 52-5d (§4.5.5 behavioral-health specialty overlay,
   5 of 25). Adds five behavioral-health rules triggered by an AMA
   psychiatric CPT (90785-90899 psychotherapy, 96130-96139 psych
