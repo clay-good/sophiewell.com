@@ -5,12 +5,13 @@ dist/
 .parcel-cache/
 .wrangler/
 
-# Test + coverage outputs (Playwright, node:test, c8/nyc)
+# Test + coverage outputs (Playwright, node:test, c8/nyc, Lighthouse CI)
 test-results/
 playwright-report/
 playwright/.cache/
 coverage/
 .nyc_output/
+.lighthouseci/
 
 # Secrets — never commit credentials, env files, or private keys
 .env
