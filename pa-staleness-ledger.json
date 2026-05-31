@@ -125,6 +125,14 @@
       "rules": ["R-PA-GEN-001", "R-PA-GEN-002"],
       "url": "https://www.acmg.net/ACMG/Medical-Genetics-Practice-Resources/Practice-Guidelines.aspx",
       "lastVerified": "2026-05-28"
+    },
+    {
+      "id": "aetna-precert",
+      "label": "Aetna participating-provider precertification requirements & Clinical Policy Bulletins",
+      "ruleFamily": "commercial-aetna",
+      "rules": ["R-PA-AETNA-001", "R-PA-AETNA-002"],
+      "url": "https://www.aetna.com/health-care-professionals/precertification.html",
+      "lastVerified": "2026-05-30"
     }
   ],
   "acknowledgments": []

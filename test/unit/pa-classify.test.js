@@ -67,6 +67,13 @@ test('detectPayer: commercial fallthrough', () => {
   assert.equal(detectPayer('UnitedHealthcare Choice Plus'), 'commercial');
 });
 
+test('detectPayer: Aetna commercial routes to its own bucket (wave 52-7)', () => {
+  // Plain Aetna commercial -> the named 'aetna' overlay bucket.
+  assert.equal(detectPayer('Aetna Choice POS II member'), 'aetna');
+  // ...but Aetna Medicare Advantage still routes to the MA bucket (checked first).
+  assert.equal(detectPayer('Aetna Medicare Advantage HMO'), 'cms-medicare-advantage');
+});
+
 test('detectPayer: unknown for empty / non-payer text', () => {
   assert.equal(detectPayer(''), 'unknown');
   assert.equal(detectPayer('this packet has no payer letterhead'), 'unknown');

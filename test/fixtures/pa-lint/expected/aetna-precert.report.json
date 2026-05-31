@@ -2,7 +2,7 @@
   "coverPage": {
     "title": "Sophie PA Packet Lint Report",
     "packetSize": 2,
-    "detectedPayer": "unknown",
+    "detectedPayer": "aetna",
     "datasetVersion": "1.0.0",
     "reportFormatVersion": "1",
     "generatedAt": null,
@@ -11,39 +11,34 @@
   "executiveSummary": {
     "totalRulesEvaluated": 140,
     "counts": {
-      "block": 1,
-      "flag": 4,
-      "info": 2,
-      "pass": 133,
+      "block": 0,
+      "flag": 11,
+      "info": 4,
+      "pass": 125,
       "error": 0,
       "disabled": 0
     },
-    "blockFindings": [
-      {
-        "ruleId": "R-PA-013",
-        "description": "Place-of-service code is present and on the bundled CMS list"
-      }
-    ]
+    "blockFindings": []
   },
   "findings": [
     {
-      "ruleId": "R-PA-013",
-      "severity": "block",
-      "status": "block",
-      "description": "Place-of-service code is present and on the bundled CMS list",
-      "citation": "spec-v52 §4.5.1 R-PA-013. CMS Place of Service codes (POS list, public).",
+      "ruleId": "R-PA-023",
+      "severity": "flag",
+      "status": "flag",
+      "description": "Clinical note references at least one of the requested CPT/HCPCS codes",
+      "citation": "spec-v52 §4.5.1 R-PA-023. Heuristic: at least one CPT/HCPCS code extracted anywhere in the packet also appears inside a clinical-note document.",
       "evidence": null,
-      "note": "POS code(s) not on bundled CMS list: 88",
+      "note": "No requested CPT/HCPCS code appears in any clinical-note document.",
       "remediation": "Address the rule's `note` field and resubmit."
     },
     {
-      "ruleId": "R-PA-019",
+      "ruleId": "R-PA-026",
       "severity": "flag",
       "status": "flag",
-      "description": "Servicing facility / second NPI present (distinct from ordering)",
-      "citation": "spec-v52 §4.5.1 R-PA-019. Most institutional PA packets carry both an ordering and a servicing NPI; v52-1h flags when only one Luhn-valid NPI is in the packet.",
+      "description": "Imaging-report document attached when the packet references imaging",
+      "citation": "spec-v52 §4.5.1 R-PA-026.",
       "evidence": null,
-      "note": "Only one Luhn-valid NPI found; servicing-facility NPI may be missing.",
+      "note": "Packet references imaging but no document was classified as imaging-report.",
       "remediation": "Address the rule's `note` field and resubmit."
     },
     {
@@ -77,6 +72,66 @@
       "remediation": "Address the rule's `note` field and resubmit."
     },
     {
+      "ruleId": "R-PA-055",
+      "severity": "flag",
+      "status": "flag",
+      "description": "Bilateral procedure flag matches modifier 50 presence",
+      "citation": "spec-v52 §4.5.1 R-PA-055. \"Bilateral\" mentioned in the clinical narrative should be accompanied by modifier 50 on the CPT line.",
+      "evidence": null,
+      "note": "Packet references a bilateral procedure but modifier 50 is not on the CPT line.",
+      "remediation": "Address the rule's `note` field and resubmit."
+    },
+    {
+      "ruleId": "R-PA-AETNA-005",
+      "severity": "flag",
+      "status": "flag",
+      "description": "Aetna precertification: procedure-specific clinical questionnaire / precertification information request form completed when required",
+      "citation": "spec-v52 §4.5.7 R-PA-AETNA-005. Aetna: \"Providers may be asked to complete a short questionnaire to provide additional clinical information,\" and publishes procedure-specific Precertification Information Request Forms (e.g. spinal surgery, obesity/bariatric surgery, dorsal column / spinal-cord stimulator). When the packet requests one of those procedures, the matching questionnaire response should be present. <https://www.aetna.com/health-care-professionals/precertification.html>",
+      "evidence": null,
+      "note": "Aetna packet requests a procedure with a dedicated precertification questionnaire (aetna-pa-form.txt) but no questionnaire response / clinical-criteria answer is present. Complete the matching Aetna Precertification Information Request Form.",
+      "remediation": "Address the rule's `note` field and resubmit."
+    },
+    {
+      "ruleId": "R-PA-SURG-001",
+      "severity": "flag",
+      "status": "flag",
+      "description": "Elective surgery: conservative-management trial documented",
+      "citation": "spec-v52 §4.5.5 R-PA-SURG-001. Payers approve elective surgery only after documented failure of non-operative management appropriate to the condition (e.g., joint replacement: PT + NSAIDs; spine: PT + epidurals); emergent surgery is exempt.",
+      "evidence": null,
+      "note": "Elective surgery request without a conservative-management / non-operative-trial anchor.",
+      "remediation": "Attach the missing surgical supporting documentation (conservative management, imaging, ASA, consent)."
+    },
+    {
+      "ruleId": "R-PA-SURG-002",
+      "severity": "flag",
+      "status": "flag",
+      "description": "Elective surgery: imaging supporting surgical indication attached",
+      "citation": "spec-v52 §4.5.5 R-PA-SURG-002. Surgical PAs typically require imaging (X-ray, MRI, CT, US) that demonstrates the anatomical / pathological basis for surgery; the imaging report or anchor must be in the packet.",
+      "evidence": null,
+      "note": "Surgery request without an attached imaging-report document or imaging-findings anchor.",
+      "remediation": "Attach the missing surgical supporting documentation (conservative management, imaging, ASA, consent)."
+    },
+    {
+      "ruleId": "R-PA-SURG-004",
+      "severity": "flag",
+      "status": "flag",
+      "description": "Surgery: ASA Physical Status classification documented",
+      "citation": "spec-v52 §4.5.5 R-PA-SURG-004. The ASA Physical Status is the de-facto standard for perioperative risk stratification; payers expect an ASA classification (1-5) on every elective surgery PA.",
+      "evidence": null,
+      "note": "Surgery request without an ASA Physical Status (1-5) anchor.",
+      "remediation": "Attach the missing surgical supporting documentation (conservative management, imaging, ASA, consent)."
+    },
+    {
+      "ruleId": "R-PA-SURG-005",
+      "severity": "flag",
+      "status": "flag",
+      "description": "Surgery: informed consent documented, dated on or before the date of surgery",
+      "citation": "spec-v52 §4.5.5 R-PA-SURG-005. Joint Commission / payer convention: a procedure-specific informed consent must be obtained before the surgical encounter. This rule narrows R-PA-059 (core consent check) to the surgical specialty trigger so the audit trail flags consent issues in the specialty section of the report.",
+      "evidence": null,
+      "note": "Surgery request without an informed-consent / surgical-consent anchor.",
+      "remediation": "Attach the missing surgical supporting documentation (conservative management, imaging, ASA, consent)."
+    },
+    {
       "ruleId": "R-PA-031",
       "severity": "info",
       "status": "info",
@@ -97,12 +152,32 @@
       "remediation": null
     },
     {
+      "ruleId": "R-PA-060",
+      "severity": "info",
+      "status": "info",
+      "description": "Packet completeness summary / cover sheet present",
+      "citation": "spec-v52 §4.5.1 R-PA-060.",
+      "evidence": null,
+      "note": "No cover-sheet / checklist anchor found.",
+      "remediation": null
+    },
+    {
+      "ruleId": "R-PA-AETNA-003",
+      "severity": "info",
+      "status": "info",
+      "description": "Aetna precertification: submission channel (EDI / secure provider portal / phone on member ID card) indicated",
+      "citation": "spec-v52 §4.5.7 R-PA-AETNA-003. Aetna: \"You can submit a precertification by electronic data interchange (EDI), through our secure provider website or by phone, using the number on the member's ID card.\" Informational: a cover sheet that names the channel speeds routing. <https://www.aetna.com/health-care-professionals/precertification.html>",
+      "evidence": null,
+      "note": "No Aetna submission channel (Availity / EDI / secure provider portal / the precertification phone number on the member ID card) is noted in the packet. Informational only -- does not affect medical-necessity review.",
+      "remediation": null
+    },
+    {
       "ruleId": "R-PA-001",
       "severity": "block",
       "status": "pass",
       "description": "Patient name present in at least one document",
       "citation": "spec-v52 §4.5.1 R-PA-001 (core, payer-agnostic).",
-      "evidence": "Found \"John A Smith\" in pa-form.txt",
+      "evidence": "Found \"Jane A Smith\" in aetna-pa-form.txt",
       "note": null,
       "remediation": null
     },
@@ -112,7 +187,7 @@
       "status": "pass",
       "description": "Date of birth present in at least one document",
       "citation": "spec-v52 §4.5.1 R-PA-002 (core, payer-agnostic).",
-      "evidence": "DOB \"1970-07-04\" in pa-form.txt",
+      "evidence": "DOB \"1962-07-14\" in aetna-pa-form.txt",
       "note": null,
       "remediation": null
     },
@@ -122,7 +197,7 @@
       "status": "pass",
       "description": "Member ID present in at least one document",
       "citation": "spec-v52 §4.5.1 R-PA-003. Payer-specific format validation lives in payer overlays (v52-2+).",
-      "evidence": "Member ID \"A987654321\" in pa-form.txt",
+      "evidence": "Member ID \"W123456789\" in aetna-pa-form.txt",
       "note": null,
       "remediation": null
     },
@@ -142,7 +217,7 @@
       "status": "pass",
       "description": "Service date is not past the default retro-auth window (90 days)",
       "citation": "spec-v52 §4.5.1 R-PA-005. Default retro-auth window is 90 days; payer overlays override. Scoped to dates explicitly labeled \"Date of service\" / \"DOS\" / \"Service date\" so DOB strings and signature dates are excluded.",
-      "evidence": "Oldest labeled service date is 28 days in the past.",
+      "evidence": "No labeled service date; rule vacuously satisfied (R-PA-004 covers presence).",
       "note": null,
       "remediation": null
     },
@@ -152,7 +227,7 @@
       "status": "pass",
       "description": "Service date is not more than 365 days in the future",
       "citation": "spec-v52 §4.5.1 R-PA-006. Hard ceiling, not payer-specific. Scoped to dates labeled \"Date of service\" / \"DOS\" / \"Service date\".",
-      "evidence": "Furthest labeled service date is -28 days in the future.",
+      "evidence": "Furthest labeled service date is 17 days in the future.",
       "note": null,
       "remediation": null
     },
@@ -162,7 +237,7 @@
       "status": "pass",
       "description": "At least one CPT or HCPCS code present",
       "citation": "spec-v52 §4.5.1 R-PA-007 (core, payer-agnostic). AMA CPT / CMS HCPCS Level II.",
-      "evidence": "Codes: 99214",
+      "evidence": "Codes: 22633",
       "note": null,
       "remediation": null
     },
@@ -192,7 +267,7 @@
       "status": "pass",
       "description": "At least one ICD-10-CM diagnosis code present",
       "citation": "spec-v52 §4.5.1 R-PA-010 (core, payer-agnostic). ICD-10-CM, public domain (CMS / CDC).",
-      "evidence": "Codes: E11.9",
+      "evidence": "Codes: M48.062",
       "note": null,
       "remediation": null
     },
@@ -213,6 +288,16 @@
       "description": "No bundled NCCI procedure-to-procedure (PTP) edit-pair conflict among the extracted CPT codes",
       "citation": "spec-v52 §4.5.1 R-PA-012. v52-1k ships an empty NCCI PTP-pairs table per §5.3; populated to ~5,000 high-volume pairs by a later wave.",
       "evidence": "Fewer than 2 distinct CPT codes; rule vacuously satisfied.",
+      "note": null,
+      "remediation": null
+    },
+    {
+      "ruleId": "R-PA-013",
+      "severity": "block",
+      "status": "pass",
+      "description": "Place-of-service code is present and on the bundled CMS list",
+      "citation": "spec-v52 §4.5.1 R-PA-013. CMS Place of Service codes (POS list, public).",
+      "evidence": "POS code(s): 21",
       "note": null,
       "remediation": null
     },
@@ -242,7 +327,7 @@
       "status": "pass",
       "description": "Ordering provider NPI passes Luhn checksum",
       "citation": "spec-v52 §4.5.1 R-PA-016. NPPES Luhn-mod-10 with the 80840 issuer prefix. Registry membership is NOT verified (Sophie does not ship the NPPES dump).",
-      "evidence": "NPI(s): 1234567893",
+      "evidence": "NPI(s): 1234567893, 1306849393",
       "note": null,
       "remediation": null
     },
@@ -252,7 +337,7 @@
       "status": "pass",
       "description": "Ordering provider signature present in at least one document",
       "citation": "spec-v52 §4.5.1 R-PA-017. Detects \"Signature:\" / \"Signed by\" / \"Electronically signed\" / \"/s/\" anchors.",
-      "evidence": "Signature anchor in pa-form.txt",
+      "evidence": "Signature anchor in aetna-pa-form.txt",
       "note": null,
       "remediation": null
     },
@@ -262,7 +347,17 @@
       "status": "pass",
       "description": "Ordering provider signature is dated (only if a signature is present)",
       "citation": "spec-v52 §4.5.1 R-PA-018.",
-      "evidence": "Dated signature in pa-form.txt",
+      "evidence": "Dated signature in aetna-pa-form.txt",
+      "note": null,
+      "remediation": null
+    },
+    {
+      "ruleId": "R-PA-019",
+      "severity": "flag",
+      "status": "pass",
+      "description": "Servicing facility / second NPI present (distinct from ordering)",
+      "citation": "spec-v52 §4.5.1 R-PA-019. Most institutional PA packets carry both an ordering and a servicing NPI; v52-1h flags when only one Luhn-valid NPI is in the packet.",
+      "evidence": "2 distinct Luhn-valid NPIs found.",
       "note": null,
       "remediation": null
     },
@@ -282,7 +377,7 @@
       "status": "pass",
       "description": "Clinical-note content appears in at least one document",
       "citation": "spec-v52 §4.5.1 R-PA-021. Keyword anchors: \"chief complaint\", \"history of present illness\", \"assessment and plan\", \"progress note\", \"clinical note\", \"soap note\".",
-      "evidence": "Clinical-note anchor in note.txt",
+      "evidence": "Clinical-note anchor in aetna-note.txt",
       "note": null,
       "remediation": null
     },
@@ -292,17 +387,7 @@
       "status": "pass",
       "description": "Clinical-note document has at least one extractable date",
       "citation": "spec-v52 §4.5.1 R-PA-022. Default clinical-look-back window is payer-specific; v52-1h checks date presence inside the clinical-note document(s) only.",
-      "evidence": "Date(s) found in clinical-note: note.txt",
-      "note": null,
-      "remediation": null
-    },
-    {
-      "ruleId": "R-PA-023",
-      "severity": "flag",
-      "status": "pass",
-      "description": "Clinical note references at least one of the requested CPT/HCPCS codes",
-      "citation": "spec-v52 §4.5.1 R-PA-023. Heuristic: at least one CPT/HCPCS code extracted anywhere in the packet also appears inside a clinical-note document.",
-      "evidence": "Code 99214 in note.txt",
+      "evidence": "Date(s) found in clinical-note: aetna-note.txt",
       "note": null,
       "remediation": null
     },
@@ -312,7 +397,7 @@
       "status": "pass",
       "description": "Medical-necessity statement present",
       "citation": "spec-v52 §4.5.1 R-PA-024. Free-text anchor: \"medical necessity\", \"medically necessary\", \"necessary because\", \"necessary due to\".",
-      "evidence": "Anchor in note.txt",
+      "evidence": "Anchor in aetna-pa-form.txt",
       "note": null,
       "remediation": null
     },
@@ -323,16 +408,6 @@
       "description": "Lab-result document attached when the packet references labs",
       "citation": "spec-v52 §4.5.1 R-PA-025.",
       "evidence": "No lab references in packet; rule vacuously satisfied.",
-      "note": null,
-      "remediation": null
-    },
-    {
-      "ruleId": "R-PA-026",
-      "severity": "flag",
-      "status": "pass",
-      "description": "Imaging-report document attached when the packet references imaging",
-      "citation": "spec-v52 §4.5.1 R-PA-026.",
-      "evidence": "No imaging references in packet; rule vacuously satisfied.",
       "note": null,
       "remediation": null
     },
@@ -522,7 +597,7 @@
       "status": "pass",
       "description": "Diagnosis-procedure linkage shown (an ICD-10 code and a CPT/HCPCS code co-occur within the same document)",
       "citation": "spec-v52 §4.5.1 R-PA-050. Heuristic: at least one document carries both an ICD-10 code and a CPT/HCPCS code within ~400 characters of each other.",
-      "evidence": "ICD-10 + CPT/HCPCS co-occur in pa-form.txt",
+      "evidence": "ICD-10 + CPT/HCPCS co-occur in aetna-pa-form.txt",
       "note": null,
       "remediation": null
     },
@@ -567,16 +642,6 @@
       "remediation": null
     },
     {
-      "ruleId": "R-PA-055",
-      "severity": "flag",
-      "status": "pass",
-      "description": "Bilateral procedure flag matches modifier 50 presence",
-      "citation": "spec-v52 §4.5.1 R-PA-055. \"Bilateral\" mentioned in the clinical narrative should be accompanied by modifier 50 on the CPT line.",
-      "evidence": "No bilateral mention; rule vacuously satisfied.",
-      "note": null,
-      "remediation": null
-    },
-    {
       "ruleId": "R-PA-056",
       "severity": "flag",
       "status": "pass",
@@ -617,22 +682,12 @@
       "remediation": null
     },
     {
-      "ruleId": "R-PA-060",
-      "severity": "info",
-      "status": "pass",
-      "description": "Packet completeness summary / cover sheet present",
-      "citation": "spec-v52 §4.5.1 R-PA-060.",
-      "evidence": "Anchor in pa-form.txt",
-      "note": null,
-      "remediation": null
-    },
-    {
       "ruleId": "R-PA-AETNA-001",
       "severity": "flag",
       "status": "pass",
       "description": "Aetna precertification: medical-necessity criteria (Clinical Policy Bulletin / CMS / MCG) referenced",
       "citation": "spec-v52 §4.5.7 R-PA-AETNA-001. Aetna determines coverage from \"plan documents and (when applicable) a review of clinical information to determine whether clinical guidelines/criteria for coverage are met,\" applying Aetna Clinical Policy Bulletins, CMS guidelines, or MCG criteria, and asks providers to review the applicable CPB before submitting. <https://www.aetna.com/health-care-professionals/precertification.html>",
-      "evidence": "Not an Aetna packet; rule vacuously satisfied.",
+      "evidence": "Medical-necessity criteria reference in aetna-pa-form.txt",
       "note": null,
       "remediation": null
     },
@@ -642,17 +697,7 @@
       "status": "pass",
       "description": "Aetna precertification: supporting medical records / clinical documentation attached",
       "citation": "spec-v52 §4.5.7 R-PA-AETNA-002. Aetna instructs providers to submit medical records related to the member's condition for which treatment is proposed; a precertification with no clinical document attached cannot be reviewed on the merits. <https://www.aetna.com/health-care-professionals/precertification.html>",
-      "evidence": "Not an Aetna packet; rule vacuously satisfied.",
-      "note": null,
-      "remediation": null
-    },
-    {
-      "ruleId": "R-PA-AETNA-003",
-      "severity": "info",
-      "status": "pass",
-      "description": "Aetna precertification: submission channel (EDI / secure provider portal / phone on member ID card) indicated",
-      "citation": "spec-v52 §4.5.7 R-PA-AETNA-003. Aetna: \"You can submit a precertification by electronic data interchange (EDI), through our secure provider website or by phone, using the number on the member's ID card.\" Informational: a cover sheet that names the channel speeds routing. <https://www.aetna.com/health-care-professionals/precertification.html>",
-      "evidence": "Not an Aetna packet; rule vacuously satisfied.",
+      "evidence": "Supporting clinical document present: aetna-note.txt (clinical-note)",
       "note": null,
       "remediation": null
     },
@@ -662,17 +707,7 @@
       "status": "pass",
       "description": "Aetna precertification: requested service is on Aetna's participating-provider precertification list",
       "citation": "spec-v52 §4.5.7 R-PA-AETNA-004. Aetna precertification applies only to services on its \"Participating provider precertification list\"; requesting authorization for a non-listed service is unnecessary. Wave 52-7a ships no bundled list, so the rule is vacuously satisfied with a pointer to the list (it mirrors core R-PA-053; a later wave bundles the list and flips this to a real membership test). <https://www.aetna.com/health-care-professionals/precertification.html>",
-      "evidence": "Not an Aetna packet; rule vacuously satisfied.",
-      "note": null,
-      "remediation": null
-    },
-    {
-      "ruleId": "R-PA-AETNA-005",
-      "severity": "flag",
-      "status": "pass",
-      "description": "Aetna precertification: procedure-specific clinical questionnaire / precertification information request form completed when required",
-      "citation": "spec-v52 §4.5.7 R-PA-AETNA-005. Aetna: \"Providers may be asked to complete a short questionnaire to provide additional clinical information,\" and publishes procedure-specific Precertification Information Request Forms (e.g. spinal surgery, obesity/bariatric surgery, dorsal column / spinal-cord stimulator). When the packet requests one of those procedures, the matching questionnaire response should be present. <https://www.aetna.com/health-care-professionals/precertification.html>",
-      "evidence": "Not an Aetna packet; rule vacuously satisfied.",
+      "evidence": "No bundled Aetna precertification list at wave 52-7a; rule vacuously satisfied. Verify the requested service against Aetna's current participating-provider precertification list.",
       "note": null,
       "remediation": null
     },
@@ -1377,89 +1412,50 @@
       "remediation": null
     },
     {
-      "ruleId": "R-PA-SURG-001",
-      "severity": "flag",
-      "status": "pass",
-      "description": "Elective surgery: conservative-management trial documented",
-      "citation": "spec-v52 §4.5.5 R-PA-SURG-001. Payers approve elective surgery only after documented failure of non-operative management appropriate to the condition (e.g., joint replacement: PT + NSAIDs; spine: PT + epidurals); emergent surgery is exempt.",
-      "evidence": "No surgery CPT (10004-69990) in packet; rule vacuously satisfied.",
-      "note": null,
-      "remediation": null
-    },
-    {
-      "ruleId": "R-PA-SURG-002",
-      "severity": "flag",
-      "status": "pass",
-      "description": "Elective surgery: imaging supporting surgical indication attached",
-      "citation": "spec-v52 §4.5.5 R-PA-SURG-002. Surgical PAs typically require imaging (X-ray, MRI, CT, US) that demonstrates the anatomical / pathological basis for surgery; the imaging report or anchor must be in the packet.",
-      "evidence": "No surgery CPT in packet; rule vacuously satisfied.",
-      "note": null,
-      "remediation": null
-    },
-    {
       "ruleId": "R-PA-SURG-003",
       "severity": "flag",
       "status": "pass",
       "description": "Surgery with ASA >= 3: anesthesia / pre-op medical clearance documented",
       "citation": "spec-v52 §4.5.5 R-PA-SURG-003. ASA Physical Status >= 3 (severe systemic disease) requires documented pre-operative medical clearance / anesthesia evaluation so the perioperative risk has been assessed by an appropriate clinician.",
-      "evidence": "No surgery CPT in packet; rule vacuously satisfied.",
-      "note": null,
-      "remediation": null
-    },
-    {
-      "ruleId": "R-PA-SURG-004",
-      "severity": "flag",
-      "status": "pass",
-      "description": "Surgery: ASA Physical Status classification documented",
-      "citation": "spec-v52 §4.5.5 R-PA-SURG-004. The ASA Physical Status is the de-facto standard for perioperative risk stratification; payers expect an ASA classification (1-5) on every elective surgery PA.",
-      "evidence": "No surgery CPT in packet; rule vacuously satisfied.",
-      "note": null,
-      "remediation": null
-    },
-    {
-      "ruleId": "R-PA-SURG-005",
-      "severity": "flag",
-      "status": "pass",
-      "description": "Surgery: informed consent documented, dated on or before the date of surgery",
-      "citation": "spec-v52 §4.5.5 R-PA-SURG-005. Joint Commission / payer convention: a procedure-specific informed consent must be obtained before the surgical encounter. This rule narrows R-PA-059 (core consent check) to the surgical specialty trigger so the audit trail flags consent issues in the specialty section of the report.",
-      "evidence": "No surgery CPT in packet; rule vacuously satisfied.",
+      "evidence": "No ASA >= 3 anchor; rule vacuously satisfied.",
       "note": null,
       "remediation": null
     }
   ],
   "evidenceLedger": [
     {
-      "document": "pa-form.txt",
-      "sha256": "fixture-bad-pos",
+      "document": "aetna-pa-form.txt",
+      "sha256": "fixture-aetna-precert-form",
       "kind": "TXT",
       "role": "pa-form",
-      "payer": "unknown",
+      "payer": "aetna",
       "ledger": {
-        "patientName": "John A Smith",
-        "dob": "1970-07-04",
-        "memberId": "A987654321",
+        "patientName": "Jane A Smith",
+        "dob": "1962-07-14",
+        "memberId": "W123456789",
         "npis": [
-          "1234567893"
+          "1234567893",
+          "1306849393"
         ],
         "tins": [
           "123456789"
         ],
         "cpts": [
-          "99214"
+          "22633"
         ],
         "icd10": [
-          "E11.9"
+          "M48.062"
         ],
         "pos": [
-          "88"
+          "21"
         ],
         "dates": [
-          "1970-07-04",
-          "2026-05-01",
-          "2026-05-01"
+          "1962-07-14",
+          "2026-06-15",
+          "2026-06-01"
         ],
         "serviceDates": [
-          "2026-05-01"
+          "2026-06-15"
         ],
         "quantity": 1,
         "signature": {
@@ -1469,18 +1465,15 @@
       }
     },
     {
-      "document": "note.txt",
-      "sha256": "fixture-bad-pos-note",
+      "document": "aetna-note.txt",
+      "sha256": "fixture-aetna-precert-note",
       "kind": "TXT",
       "role": "clinical-note",
       "payer": "unknown",
       "ledger": {
-        "cpts": [
-          "99214"
-        ],
         "dates": [
-          "2026-05-01",
-          "2026-05-01"
+          "2026-06-01",
+          "2026-06-01"
         ],
         "signature": {
           "present": true,
@@ -1491,33 +1484,34 @@
   ],
   "extractedData": [
     {
-      "document": "pa-form.txt",
-      "sha256": "fixture-bad-pos",
+      "document": "aetna-pa-form.txt",
+      "sha256": "fixture-aetna-precert-form",
       "extract": {
         "npis": [
-          "1234567893"
+          "1234567893",
+          "1306849393"
         ],
         "ssns": [],
         "cpts": [
-          "99214"
+          "22633"
         ],
         "icd10": [
-          "E11.9"
+          "M48.062"
         ],
         "pos": [
-          "88"
+          "21"
         ],
         "dates": [
-          "1970-07-04",
-          "2026-05-01",
-          "2026-05-01"
+          "1962-07-14",
+          "2026-06-15",
+          "2026-06-01"
         ],
         "serviceDates": [
-          "2026-05-01"
+          "2026-06-15"
         ],
-        "patientName": "John A Smith",
-        "dob": "1970-07-04",
-        "memberId": "A987654321",
+        "patientName": "Jane A Smith",
+        "dob": "1962-07-14",
+        "memberId": "W123456789",
         "tins": [
           "123456789"
         ],
@@ -1530,23 +1524,21 @@
         "height": null,
         "frequency": null,
         "replacementChars": 0,
-        "textLength": 321
+        "textLength": 511
       }
     },
     {
-      "document": "note.txt",
-      "sha256": "fixture-bad-pos-note",
+      "document": "aetna-note.txt",
+      "sha256": "fixture-aetna-precert-note",
       "extract": {
         "npis": [],
         "ssns": [],
-        "cpts": [
-          "99214"
-        ],
+        "cpts": [],
         "icd10": [],
         "pos": [],
         "dates": [
-          "2026-05-01",
-          "2026-05-01"
+          "2026-06-01",
+          "2026-06-01"
         ],
         "serviceDates": [],
         "patientName": null,
@@ -1562,7 +1554,7 @@
         "height": null,
         "frequency": null,
         "replacementChars": 0,
-        "textLength": 218
+        "textLength": 428
       }
     }
   ],
@@ -1570,13 +1562,21 @@
     "rulesetVersion": "1.0.0",
     "reportFormatVersion": "1",
     "ruleIds": [
-      "R-PA-013",
-      "R-PA-019",
+      "R-PA-023",
+      "R-PA-026",
       "R-PA-029",
       "R-PA-036",
       "R-PA-037",
+      "R-PA-055",
+      "R-PA-AETNA-005",
+      "R-PA-SURG-001",
+      "R-PA-SURG-002",
+      "R-PA-SURG-004",
+      "R-PA-SURG-005",
       "R-PA-031",
       "R-PA-032",
+      "R-PA-060",
+      "R-PA-AETNA-003",
       "R-PA-001",
       "R-PA-002",
       "R-PA-003",
@@ -1589,18 +1589,18 @@
       "R-PA-010",
       "R-PA-011",
       "R-PA-012",
+      "R-PA-013",
       "R-PA-014",
       "R-PA-015",
       "R-PA-016",
       "R-PA-017",
       "R-PA-018",
+      "R-PA-019",
       "R-PA-020",
       "R-PA-021",
       "R-PA-022",
-      "R-PA-023",
       "R-PA-024",
       "R-PA-025",
-      "R-PA-026",
       "R-PA-027",
       "R-PA-028",
       "R-PA-030",
@@ -1624,17 +1624,13 @@
       "R-PA-052",
       "R-PA-053",
       "R-PA-054",
-      "R-PA-055",
       "R-PA-056",
       "R-PA-057",
       "R-PA-058",
       "R-PA-059",
-      "R-PA-060",
       "R-PA-AETNA-001",
       "R-PA-AETNA-002",
-      "R-PA-AETNA-003",
       "R-PA-AETNA-004",
-      "R-PA-AETNA-005",
       "R-PA-BH-001",
       "R-PA-BH-002",
       "R-PA-BH-003",
@@ -1705,24 +1701,20 @@
       "R-PA-RAD-003",
       "R-PA-RAD-004",
       "R-PA-RAD-005",
-      "R-PA-SURG-001",
-      "R-PA-SURG-002",
-      "R-PA-SURG-003",
-      "R-PA-SURG-004",
-      "R-PA-SURG-005"
+      "R-PA-SURG-003"
     ],
     "disabledRules": [],
     "documentHashes": [
       {
-        "document": "pa-form.txt",
-        "sha256": "fixture-bad-pos"
+        "document": "aetna-pa-form.txt",
+        "sha256": "fixture-aetna-precert-form"
       },
       {
-        "document": "note.txt",
-        "sha256": "fixture-bad-pos-note"
+        "document": "aetna-note.txt",
+        "sha256": "fixture-aetna-precert-note"
       }
     ],
-    "totalBytes": 6144,
+    "totalBytes": 16384,
     "generatedAt": null,
     "datasetStaleness": {
       "rulesetVersion": "1.0.0",

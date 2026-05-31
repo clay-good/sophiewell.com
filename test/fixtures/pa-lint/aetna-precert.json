@@ -1,0 +1,19 @@
+{
+  "name": "aetna-precert",
+  "description": "Aetna commercial precertification packet for a lumbar fusion. The 'Aetna Choice POS II' letterhead routes the bundle to the new 'aetna' payer bucket (spec-v52 §4.5.7, wave 52-7a) and engages the Aetna commercial overlay. The packet deliberately cites the applicable Clinical Policy Bulletin and attaches a clinical note (R-PA-AETNA-001/002 pass), omits any submission-channel reference (R-PA-AETNA-003 info), and requests a spinal-fusion procedure without the matching precertification questionnaire / conservative-management documentation (R-PA-AETNA-005 flag).",
+  "opts": { "totalBytes": 16384 },
+  "documents": [
+    {
+      "name": "aetna-pa-form.txt",
+      "sha256": "fixture-aetna-precert-form",
+      "kind": "TXT",
+      "text": "Aetna Choice POS II Prior Authorization Request\nPatient: Jane A Smith\nDOB: 1962-07-14\nMember ID: W123456789\nDate of service: 2026-06-15\nPlace of service: 21\nRequested procedure: lumbar fusion CPT 22633\nDx: M48.062 lumbar spinal stenosis with neurogenic claudication\nQuantity: 1\nOrdering provider NPI: 1234567893\nServicing facility NPI: 1306849393\nTIN: 123456789\nMedical necessity: progressive neurogenic claudication; see Aetna Clinical Policy Bulletin for spinal surgery.\nSignature: Ortho Spine MD, 2026-06-01\n"
+    },
+    {
+      "name": "aetna-note.txt",
+      "sha256": "fixture-aetna-precert-note",
+      "kind": "TXT",
+      "text": "Clinical note\nChief complaint: low back pain with bilateral leg claudication.\nHistory of present illness: eight months of progressively worsening symptoms.\nPhysical exam: positive straight-leg raise bilaterally.\nAssessment and plan: lumbar spinal stenosis; recommend L4-L5 decompression and fusion.\nMedical necessity: MRI confirms severe central canal stenosis at L4-L5.\nNote date: 2026-06-01\nSigned: Ortho Spine MD, 2026-06-01\n"
+    }
+  ]
+}

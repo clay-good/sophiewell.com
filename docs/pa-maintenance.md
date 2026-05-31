@@ -140,6 +140,22 @@ coverage gaps`. When you change a rule's anchor, edit `lib/pa/rule-sources.js`
 (and, if it is an anchor rule, the matching ledger `rules` array) in the same
 change, or the check fails.
 
+## Commercial payer overlays (wave 52-7+)
+
+Commercial overlays are keyed to a single named payer (its own
+`lib/pa/payer.js` bucket) and check the **procedural completeness** of a
+precertification packet against the payer's *own published* submission
+requirements — never clinical coverage criteria, which are the reviewer's
+judgement and the payer's Clinical Policy Bulletin's job. The first is Aetna
+(`R-PA-AETNA-NNN`, ledger source `aetna-precert`).
+
+Payer precertification pages change more often than the government code sets,
+so verify them on the standard 90-day cadence: open the source URL, confirm
+the submission requirements the rules assert still hold, and bump
+`lastVerified`. If a payer reorganizes its provider site (a likely "moved"
+outcome from the refresh helper), re-point the source URL rather than
+disabling it — the requirements rarely disappear, only the URL.
+
 ## The refresh helper: `scripts/refresh-pa-rules.mjs` (wave 52-6i)
 
 Automates the mechanical half of the monthly verification pass. It fetches

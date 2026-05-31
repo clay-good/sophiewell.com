@@ -50,9 +50,10 @@ test('pa-lint: happy-path TXT lights every starter rule green', async ({ page })
   });
 
   await expect(page.locator('.pa-findings-headline')).toBeVisible({ timeout: 10_000 });
-  // At least 7 rules render (the wave 52-1e starter set).
+  // One .pa-rule entry per starter rule (140 at wave 52-7a: 135 §4.5
+  // core/overlay/specialty + 5 §4.5.7 Aetna commercial).
   const rules = page.locator('.pa-rule');
-  await expect(rules).toHaveCount(135);
+  await expect(rules).toHaveCount(140);
   // None of them should be block / flag / error on the happy packet.
   await expect(page.locator('.pa-rule[data-status="block"]')).toHaveCount(0);
   await expect(page.locator('.pa-rule[data-status="flag"]')).toHaveCount(0);

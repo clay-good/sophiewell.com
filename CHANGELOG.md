@@ -6,6 +6,60 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v52 wave 52-7a — §4.5.7 commercial payer overlays open: Aetna)
+
+The §9 wave plan's "first commercial payer overlays" land now that the core,
+CMS FFS / MA / Medicaid, specialty, report, and maintenance surfaces are all
+complete. `lib/pa/payer.js` gains a named `aetna` payer bucket (before the
+generic `commercial` fall-through; `aetna medicare advantage` still routes to
+the MA bucket). `lib/pa/rules.js` adds five self-gating `R-PA-AETNA-NNN` rules
+(§4.5.7): medical-necessity criteria (Aetna CPB / CMS / MCG) referenced (flag),
+supporting clinical documentation attached (flag), submission channel noted
+(info), service-on-precert-list (info stub, R-PA-053 pattern), and a
+procedure-specific precertification questionnaire when required (flag). Each
+rule vacuously passes on non-Aetna packets and cites Aetna's public
+precertification hub.
+
+`lib/pa/rule-sources.js` maps `R-PA-AETNA-` to a new ledger source
+`aetna-precert`; `pa-staleness-ledger.json` and the bundled
+`lib/pa/staleness-ledger.js` were regenerated (16 sources; 140 rules shipped;
+92 source-anchored; 0 orphans; 0 coverage gaps). A new `aetna-precert` golden
+fixture demonstrates the overlay; the four prior goldens were re-seeded to add
+the five vacuously-passing Aetna findings. View wave banner advanced to 52-7a.
+
+### Added (spec-v52 wave 52-6j — §4.5.6 stale-source disabling: the engine half)
+
+Wires the engine to act on a ledger source marked `disabled` (`true` or
+`{ since, reason }`): `disabledSourceMap(ledger)` (`lib/pa/staleness.js`)
+normalizes the flag, and `runEngine(bundle, rules, { disabledSources })` skips
+any rule anchored to a disabled source — emitting a `status: "disabled"`
+finding (evidence null, note recording the source / since / reason) instead of
+running its check. `summarizeFindings` gains a `disabled` count; the report
+audit trail gains a `disabledRules` array; the DOCX renders both. A
+`disabled-source` golden fixture exercises the path. Closes the last "Not yet
+built" item in `docs/pa-maintenance.md`; §4.5.6 is complete.
+
+### Added (spec-v52 wave 52-6i — §4.5.6 / §8.2 maintainer refresh helper)
+
+`scripts/refresh-pa-rules.mjs` (exposed as `npm run refresh:pa-rules`) fetches
+every ledger source URL, reports the HTTP outcome and a content SHA-256,
+computes staleness age, tallies dependent rules per source, and prints a
+per-source recommendation. Because it makes outbound network requests it is
+NOT wired into `npm run lint` / `npm run test` and never runs in CI's offline
+build or the browser (spec-v50 §3.1). Its report-building core is pure and
+network-free, unit-tested in `test/unit/pa-refresh.test.js` with injected
+fetch outcomes.
+
+### Added (spec-v52 wave 52-6h — §4.5.6 structured per-rule source metadata)
+
+New pure module `lib/pa/rule-sources.js` exports `ruleSourceIds(id)`, a total
+map from rule id to the ledger source id(s) it is anchored to (or `[]` for a
+structural rule). `rules.js` attaches the result as each rule's `sources`
+field at load. `lib/pa/staleness.js` gains `findRuleSourceOrphans` and
+`findLedgerCoverageGaps`, both wired into `scripts/check-pa-staleness.mjs` so
+the ledger and the per-rule map cannot drift in either direction. The field is
+build/maintenance plumbing and never enters a finding or the report.
+
 ### Added (spec-v52 wave 52-6g — §4.3 / §8.1 PA runtime no-network spec)
 
 Ships the runtime proof of §4.3's central commitment — "the only network

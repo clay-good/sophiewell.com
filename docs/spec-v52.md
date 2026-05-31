@@ -585,6 +585,45 @@ session loads a single bundled `pa-rules.json` (one file per
 ruleset, ~200–400 KB gzipped at v1) and runs entirely against
 that bundle.
 
+#### 4.5.7 Commercial payer overlays — opens with Aetna (wave 52-7)
+
+The §9 wave plan's "first commercial payer overlays" land here.
+Unlike the government overlays (§4.5.2–§4.5.4), a commercial
+overlay is keyed to a **single named payer**, detected by
+`lib/pa/payer.js` as its own bucket (`'aetna'`, placed before
+the generic `'commercial'` fall-through; `aetna medicare
+[advantage]` is still caught earlier by the MA bucket). Each
+commercial rule self-gates on `bundle.payer === '<payer>'` and
+returns a vacuous pass on every other packet, exactly like the
+CMS-FFS overlay.
+
+Scope discipline: commercial overlay rules check the
+**procedural completeness** of a precertification packet against
+the payer's *own published* submission requirements — not
+clinical coverage criteria, which are the reviewer's judgement
+and the payer's Clinical Policy Bulletin's job. Every rule is
+anchored to a public payer URL tracked in the staleness ledger
+(§8.3) and re-verified on the §4.5.6 cadence.
+
+The first overlay is **Aetna** (`R-PA-AETNA-NNN`, ledger source
+`aetna-precert`, anchored to Aetna's participating-provider
+precertification hub). Wave 52-7a ships the first 5 of a planned
+~20:
+
+| Id              | Rule                                                                       | Severity |
+|-----------------|----------------------------------------------------------------------------|----------|
+| `R-PA-AETNA-001`| Medical-necessity criteria (Aetna CPB / CMS / MCG) referenced for the request | flag  |
+| `R-PA-AETNA-002`| Supporting medical records / clinical documentation attached               | flag     |
+| `R-PA-AETNA-003`| Submission channel (EDI / secure provider portal / phone on ID card) noted | info     |
+| `R-PA-AETNA-004`| Requested service is on Aetna's participating-provider precert list (stub) | info     |
+| `R-PA-AETNA-005`| Procedure-specific precertification questionnaire completed when required  | flag     |
+
+`R-PA-AETNA-004` mirrors core `R-PA-053`: it ships without a
+bundled precert list and vacuously passes with a pointer until a
+later wave bundles the list and flips it to a real membership
+test. Subsequent waves extend the Aetna set toward ~20 rules and
+then add United Healthcare and Anthem as their own buckets.
+
 ### 4.6 The DOCX report
 
 Structure (mirrors Vaulytica v3 with healthcare-specific
@@ -1172,6 +1211,9 @@ self-contained PR; the catalog count rises only at wave 52-1.
 - Each overlay sourced from the payer's public medical
   policy bulletin library. Source URLs pinned and hashed.
 - ~20–40 rules per payer.
+- **Status: Aetna opened ahead of schedule in wave 52-7a
+  (2026-05-30) — first 5 of ~20 rules, the `R-PA-AETNA-NNN`
+  family (§4.5.7). United Healthcare and Anthem follow.**
 
 ### Wave 52-5+ — State Medicaid overlays, additional commercial payers, OCR
 
@@ -1345,6 +1387,38 @@ silently; the audit trail records the disablement.
 
 - 2026-05-27 — v52 proposed. Five waves outlined (52-1 through
   52-5+). Catalog count target at v52-1 close: 255.
+- 2026-05-30 — wave 52-7a (§4.5.7 commercial payer overlays open — Aetna,
+  first 5 of ~20). Picks up the §9 wave plan's "first commercial payer
+  overlays" now that the core (§4.5.1), CMS FFS / MA / Medicaid
+  (§4.5.2–§4.5.4), specialty (§4.5.5), report (§4.6), and maintenance
+  (§4.5.6) surfaces are all complete.
+
+  `lib/pa/payer.js` gains a named `'aetna'` bucket, placed before the generic
+  `'commercial'` fall-through (and after the MA bucket, so `aetna medicare
+  advantage` still routes to MA). `lib/pa/rules.js` adds five self-gating
+  `R-PA-AETNA-NNN` rules (§4.5.7): medical-necessity-criteria reference
+  (CPB / CMS / MCG, flag), supporting clinical documentation attached (flag),
+  submission channel noted (info), service-on-precert-list (info, an
+  R-PA-053-style stub until the list is bundled), and a procedure-specific
+  precertification questionnaire when one is required (flag, triggered by
+  spinal-fusion / bariatric / spinal-cord-stimulator anchors). Each rule
+  returns a vacuous pass on any non-Aetna packet, exactly like the CMS-FFS
+  overlay. Every citation is anchored to Aetna's public precertification hub.
+
+  `lib/pa/rule-sources.js` maps the `R-PA-AETNA-` prefix to a new ledger
+  source `aetna-precert` (verified 2026-05-30); the ledger and the bundled
+  `lib/pa/staleness-ledger.js` were regenerated. Coverage is now 16 sources,
+  140 rules shipped (was 135), 92 source-anchored (was 87), 0 orphans,
+  0 gaps.
+
+  Determinism / goldens: every existing fixture gains five vacuously-passing
+  Aetna findings, so the four prior goldens were re-seeded; a new
+  `aetna-precert` fixture (an Aetna lumbar-fusion packet) demonstrates
+  R-PA-AETNA-001/002 passing, 003 firing info, 004 vacuous, and 005 flagging
+  a fusion request with no questionnaire response. Tests: +1 payer-detection
+  test, +1 rule-sources assertion, and +6 engine assertions (count 135→140
+  plus the overlay sanity checks); the unit suite stays green. View wave
+  banner advanced to 52-7a.
 - 2026-05-29 — wave 52-6j (§4.5.6 stale-source disabling — the engine half).
   Closes the last "Not yet built" item in `docs/pa-maintenance.md`: §4.5.6's
   "if the source URL 404s, the rule is set to `disabled` and the engine skips

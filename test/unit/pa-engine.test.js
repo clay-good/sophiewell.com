@@ -140,8 +140,54 @@ test('runEngine passes every starter rule on a clean multi-doc happy-path packet
   assert.equal(counts.pass, STARTER_RULES.length);
 });
 
-test('STARTER_RULES at wave 52-5e close is 135 rules (110 overlay + 25 specialty COMPLETE; §4.5 COMPLETE)', () => {
-  assert.equal(STARTER_RULES.length, 135);
+test('STARTER_RULES at wave 52-7a is 140 rules (135 §4.5 core/overlay/specialty + 5 §4.5.7 Aetna commercial)', () => {
+  assert.equal(STARTER_RULES.length, 140);
+});
+
+// ---- wave 52-7a sanity checks: Aetna commercial overlay (§4.5.7) ----
+
+test('Aetna overlay rules vacuously pass on a non-Aetna packet', () => {
+  // happyBundle is not an Aetna packet -> every R-PA-AETNA-* rule passes.
+  const findings = runEngine(happyBundle());
+  for (const id of ['R-PA-AETNA-001', 'R-PA-AETNA-002', 'R-PA-AETNA-003', 'R-PA-AETNA-004', 'R-PA-AETNA-005']) {
+    const f = findings.find((x) => x.ruleId === id);
+    assert.ok(f, id + ' should be in the findings');
+    assert.equal(f.status, 'pass', id + ' should vacuously pass off-bucket');
+  }
+});
+
+test('R-PA-AETNA-001 flags an Aetna request with a procedure but no medical-necessity criteria reference', () => {
+  const text = 'Aetna Choice POS II member.\n'
+    + 'Requested procedure: CPT 72148 (MRI lumbar spine).\n'
+    + 'Please authorize.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-AETNA-001');
+  assert.equal(f.status, 'flag');
+});
+
+test('R-PA-AETNA-001 passes when the Aetna packet cites the applicable CPB / medical necessity', () => {
+  const text = 'Aetna Choice POS II member.\n'
+    + 'Requested procedure: CPT 72148 (MRI lumbar spine).\n'
+    + 'Medical necessity: persistent radiculopathy per Aetna Clinical Policy Bulletin.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-AETNA-001');
+  assert.equal(f.status, 'pass');
+});
+
+test('R-PA-AETNA-002 flags an Aetna packet with no clinical document attached', () => {
+  const text = 'Aetna PPO member.\nRequested procedure: CPT 72148.\nMedical necessity per CPB.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-AETNA-002');
+  assert.equal(f.status, 'flag');
+});
+
+test('R-PA-AETNA-005 flags an Aetna spinal-fusion request without a questionnaire response', () => {
+  const text = 'Aetna commercial member.\n'
+    + 'Requested procedure: lumbar fusion (CPT 22633).\n'
+    + 'Medical necessity per Aetna CPB.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-AETNA-005');
+  assert.equal(f.status, 'flag');
 });
 
 test('CMS overlay carries the spec-aligned id R-PA-CMS-004 for proof-of-delivery', () => {

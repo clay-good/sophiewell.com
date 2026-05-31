@@ -44,6 +44,7 @@ test('overlay families map to their single source by id prefix', () => {
   assert.deepEqual(ruleSourceIds('R-PA-SURG-002'), ['surgical-indication-policy']);
   assert.deepEqual(ruleSourceIds('R-PA-BH-005'), ['dsm-5-tr']);
   assert.deepEqual(ruleSourceIds('R-PA-GEN-001'), ['nccn-acmg-genetic']);
+  assert.deepEqual(ruleSourceIds('R-PA-AETNA-003'), ['aetna-precert']);
 });
 
 test('ruleSourceIds is total and deterministic (returns a fresh array)', () => {
