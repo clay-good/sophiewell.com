@@ -130,6 +130,7 @@ export const renderers = {
     noticeBlock(root);
     const o = out(); root.appendChild(o);
     loadFile('field-triage', 'guidelines.json').then((data) => {
+      if (!root.isConnected) return; // view torn down before fetch resolved
       o.appendChild(el('p', { class: 'muted', text: data.edition }));
       const ids = [];
       for (const step of data.steps) {

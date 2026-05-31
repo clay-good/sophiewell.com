@@ -6,6 +6,22 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Fixed (tool views — deferred listener wiring on a torn-down view)
+
+Hardened a navigation/teardown race that surfaced intermittently in the
+`all-tools` e2e sweep on Firefox (a `pageerror`: `getElementById(...) is null`
+→ `.addEventListener`). Eleven tool renderers (opioid-mme, steroid-equiv,
+benzo-equiv, abx-renal, vasopressor, field-triage, tetanus, rabies-pep,
+bbp-exposure, tb-testing, sti-screening) build their UI and wire input
+listeners **inside** a `loadFile(...).then(...)` callback. When the user (or
+the test) navigated to another tool before the dataset fetch resolved,
+`renderToolView` had already cleared the DOM, so the late callback wired
+listeners to elements that no longer existed and threw. Each deferred callback
+now bails with `if (!root.isConnected) return;` when its view was torn down
+before the fetch resolved. Real-user impact: navigating away from one of these
+tools mid-load no longer logs a console error. Verified with
+`all-tools --project=firefox --repeat-each=3` (9/9 green).
+
 ### Added (spec-v52 wave 52-7c — §4.5.7 Aetna commercial overlay, 11 → 15 of ~20)
 
 Five more self-gating `R-PA-AETNA-NNN` rules anchored to named Aetna Clinical

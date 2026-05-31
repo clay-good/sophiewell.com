@@ -18,6 +18,7 @@ export const renderers = {
     const region = el('div', { id: 'q-results', role: 'region' });
     root.appendChild(region);
     loadFile('tetanus', 'tetanus.json').then((d) => {
+      if (!root.isConnected) return; // view torn down before fetch resolved
       const result = (key, hist) => ({
         result: `Td/Tdap: ${key.tdap}; TIG: ${key.tig}`,
         rationale: hist,
@@ -49,6 +50,7 @@ export const renderers = {
     const region = el('div', { id: 'q-results', role: 'region' });
     root.appendChild(region);
     loadFile('rabies-pep', 'rabies.json').then((d) => {
+      if (!root.isConnected) return; // view torn down before fetch resolved
       const tree = {
         question: 'Animal involved?',
         options: d.animalRules.map((a) => ({
@@ -77,6 +79,7 @@ export const renderers = {
     const region = el('div', { id: 'q-results', role: 'region' });
     root.appendChild(region);
     loadFile('bbp-exposure', 'bbp.json').then((d) => {
+      if (!root.isConnected) return; // view torn down before fetch resolved
       const tree = {
         question: 'Exposure type?',
         helpText: 'Percutaneous, mucous-membrane, or intact skin?',
@@ -128,6 +131,7 @@ export const renderers = {
     ]));
     const o = out(); root.appendChild(o);
     loadFile('tb-tst-igra', 'tb.json').then((d) => {
+      if (!root.isConnected) return; // view torn down before fetch resolved
       const run = () => {
         clear(o);
         const mm = num('tb-mm');
@@ -148,6 +152,7 @@ export const renderers = {
     const region = el('div', { id: 'q-results', role: 'region' });
     root.appendChild(region);
     loadFile('sti-screening', 'sti.json').then((rows) => {
+      if (!root.isConnected) return; // view torn down before fetch resolved
       renderTable(region, {
         columns: [
           { key: 'population', label: 'Population' },

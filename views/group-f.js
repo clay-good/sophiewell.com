@@ -174,7 +174,10 @@ export const renderers = {
 
     let factors = [];
     let counter = 0;
-    loadFile('mme-factors', 'mme.json').then((rows) => { factors = rows; addRow(); run(); });
+    loadFile('mme-factors', 'mme.json').then((rows) => {
+      if (!root.isConnected) return; // view torn down before fetch resolved
+      factors = rows; addRow(); run();
+    });
 
     function addRow() {
       counter += 1;
@@ -228,6 +231,7 @@ export const renderers = {
     const out = el('div', { id: 'q-results', 'aria-live': 'polite' });
     root.appendChild(out);
     loadFile('steroid-equiv', 'steroid.json').then((table) => {
+      if (!root.isConnected) return; // view torn down before fetch resolved
       for (const r of table) {
         if (typeof r.equivDoseMg !== 'number') continue;
         fromSel.appendChild(el('option', { value: r.drug, text: r.drug }));
@@ -257,6 +261,7 @@ export const renderers = {
     const out = el('div', { id: 'q-results', 'aria-live': 'polite' });
     root.appendChild(out);
     loadFile('benzo-equiv', 'benzo.json').then((table) => {
+      if (!root.isConnected) return; // view torn down before fetch resolved
       for (const r of table) {
         fromSel.appendChild(el('option', { value: r.drug, text: r.drug }));
         toSel.appendChild(el('option', { value: r.drug, text: r.drug }));
@@ -280,6 +285,7 @@ export const renderers = {
     const out = el('div', { id: 'q-results', 'aria-live': 'polite' });
     root.appendChild(out);
     loadFile('abx-renal', 'abx.json').then((table) => {
+      if (!root.isConnected) return; // view torn down before fetch resolved
       for (const r of table) drugSel.appendChild(el('option', { value: r.drug, text: r.drug }));
       const run = () => {
         clear(out);
@@ -304,6 +310,7 @@ export const renderers = {
     const out = el('div', { id: 'q-results', 'aria-live': 'polite' });
     root.appendChild(out);
     loadFile('vasopressor-doses', 'vasopressors.json').then((table) => {
+      if (!root.isConnected) return; // view torn down before fetch resolved
       for (const r of table) drugSel.appendChild(el('option', { value: r.drug, text: `${r.drug} (${r.units})` }));
       const run = () => {
         clear(out);
