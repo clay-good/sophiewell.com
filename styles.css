@@ -359,6 +359,18 @@ body {
   font-size: 0.85rem;
   color: var(--text-muted);
 }
+.tool-page .tp-citation-link {
+  color: var(--accent-pop-strong);
+  font-weight: 600;
+  text-decoration: none;
+  white-space: nowrap;
+  word-break: break-word;
+}
+.tool-page .tp-citation-link:hover,
+.tool-page .tp-citation-link:focus-visible {
+  color: var(--accent-pop);
+  text-decoration: underline;
+}
 .tool-page .tp-related ul {
   list-style: none;
   padding: 0;
@@ -1203,6 +1215,36 @@ main h1 {
   color: var(--text-muted);
   font-family: var(--font-mono);
   font-size: 0.8rem;
+}
+/* Citation + source links: the teal accent marks them as the primary
+   source without shouting, underline keeps them recognizable as links. */
+.tool-meta .citation-inline-link,
+.tool-meta .source-link {
+  color: var(--accent-pop-strong);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  word-break: break-word;
+}
+.tool-meta .citation-link {
+  display: inline-block;
+  margin-left: 2px;
+  color: var(--accent-pop-strong);
+  font-weight: 600;
+  text-decoration: none;
+  white-space: nowrap;
+}
+.tool-meta .citation-link:hover,
+.tool-meta .citation-link:focus-visible,
+.tool-meta .citation-inline-link:hover,
+.tool-meta .source-link:hover,
+.tool-meta .source-link:focus-visible {
+  color: var(--accent-pop);
+  text-decoration: underline;
+}
+.tool-meta a:focus-visible {
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 2px;
+  border-radius: 3px;
 }
 .tool-meta .example-row { margin-bottom: 0; }
 .tool-meta .example-expected { margin-left: var(--space-2); font-size: 0.85rem; }

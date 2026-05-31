@@ -163,6 +163,28 @@ function esc(s) {
     .replace(/'/g, '&#39;');
 }
 
+// Escape citation prose, then promote any bare https:// URL it contains
+// into a clickable, privacy-safe anchor. Punctuation directly trailing a
+// URL stays as text. Returns an HTML string; non-URL text is always
+// escaped first so this stays injection-safe.
+function linkifyCitation(s) {
+  const str = String(s == null ? '' : s);
+  const re = /https?:\/\/[^\s)]+/g;
+  let out = '';
+  let last = 0;
+  let m;
+  while ((m = re.exec(str)) !== null) {
+    out += esc(str.slice(last, m.index));
+    let url = m[0];
+    let trail = '';
+    while (url && /[.,;]$/.test(url)) { trail = url.slice(-1) + trail; url = url.slice(0, -1); }
+    out += `<a class="tp-citation-link" href="${esc(url)}" target="_blank" rel="noopener noreferrer">${esc(url)}</a>${esc(trail)}`;
+    last = m.index + m[0].length;
+  }
+  out += esc(str.slice(last));
+  return out;
+}
+
 function clampTitle(s, max = 65) {
   if (s.length <= max) return s;
   return s.slice(0, max - 1).trimEnd() + '…';
@@ -194,8 +216,13 @@ function buildPageHtml({ tile, desc, meta, related, copy }) {
   const canonical = `${SITE}/tools/${tile.id}/`;
   const hashUrl = `${SITE}/#${tile.id}`;
 
+  // Citation prose with links where possible: bare URLs in the text become
+  // anchors, and a structured citationUrl (permanent DOI / publisher page)
+  // renders as an explicit "Read the source" link. Mirrors the SPA's
+  // References region (app.js renderMetaBlock) so the indexable page and
+  // the live tool point at the same primary source.
   const citationHtml = meta?.citation
-    ? `<p>${esc(meta.citation)}</p>`
+    ? `<p>${linkifyCitation(meta.citation)}${meta.citationUrl ? ` <a class="tp-citation-link" href="${esc(meta.citationUrl)}" target="_blank" rel="noopener noreferrer">Read the source &#8599;</a>` : ''}</p>`
     : '';
   const sourceHtml = meta?.source?.label
     ? `<p class="src-stamp"><strong>Source:</strong> ${esc(meta.source.label)}</p>`

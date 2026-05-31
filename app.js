@@ -859,6 +859,32 @@ function trackHashState(body) {
   body.addEventListener('change', writeState);
 }
 
+// Append `str` to `parent`, turning any bare https:// URL it contains into
+// a real clickable, privacy-safe anchor. The text is author-controlled
+// (lib/meta.js citation strings), not user input, and every anchor is built
+// with createElement + textContent (no raw-markup assignment) so the strict
+// CSP and no-XSS posture hold. rel="noopener noreferrer" + the global
+// no-referrer meta keep the outbound click from leaking where the reader
+// came from.
+function appendLinkified(parent, str) {
+  const re = /https?:\/\/[^\s)]+/g;
+  let last = 0;
+  let m;
+  while ((m = re.exec(str)) !== null) {
+    if (m.index > last) parent.appendChild(document.createTextNode(str.slice(last, m.index)));
+    // Trailing sentence punctuation should stay as text, not part of the URL.
+    let url = m[0];
+    let trail = '';
+    while (url && /[.,;]$/.test(url)) { trail = url.slice(-1) + trail; url = url.slice(0, -1); }
+    parent.appendChild(el('a', {
+      class: 'citation-inline-link', href: url, target: '_blank', rel: 'noopener noreferrer', text: url,
+    }));
+    if (trail) parent.appendChild(document.createTextNode(trail));
+    last = m.index + m[0].length;
+  }
+  if (last < str.length) parent.appendChild(document.createTextNode(str.slice(last)));
+}
+
 // spec-v9 §3.2: the meta block now renders as the per-tile References
 // region below the tool body. It carries the citation, the dataset stamp
 // (when present), a "Reset to example" link (when an example is defined),
@@ -869,7 +895,24 @@ function renderMetaBlock(util) {
   const block = el('section', { class: 'tool-meta', 'aria-label': 'References' });
 
   if (meta.citation) {
-    block.appendChild(el('p', { class: 'citation', text: `Citation: ${meta.citation}` }));
+    // Inline + detailed citation, with links where possible: bare URLs in
+    // the citation text become clickable, and an optional structured
+    // `citationUrl` (a permanent DOI or the publisher's canonical page)
+    // renders as an explicit "Read the source" link after the reference.
+    const p = el('p', { class: 'citation' });
+    p.appendChild(document.createTextNode('Citation: '));
+    appendLinkified(p, meta.citation);
+    if (meta.citationUrl) {
+      p.appendChild(document.createTextNode(' '));
+      p.appendChild(el('a', {
+        class: 'citation-link',
+        href: meta.citationUrl,
+        target: '_blank',
+        rel: 'noopener noreferrer',
+        text: 'Read the source ↗',
+      }));
+    }
+    block.appendChild(p);
   }
 
   // spec-v11 §5: optional per-band `interpretation` block. Renders below
@@ -895,7 +938,19 @@ function renderMetaBlock(util) {
     const stamp = el('p', { class: 'source-stamp', text: `Source: ${meta.source.label} (loading version...)` });
     block.appendChild(stamp);
     fetchJson(`data/${meta.source.dataset}/manifest.json`).then((m) => {
-      stamp.textContent = `Source: ${meta.source.label}, fetched ${m.fetchDate}`;
+      // When the dataset manifest carries a vetted sourceUrl (the agency's
+      // canonical page, verified by the data pipeline), make the label a
+      // clickable link so the citation points at its primary source.
+      clear(stamp);
+      stamp.appendChild(document.createTextNode('Source: '));
+      if (m && m.sourceUrl) {
+        stamp.appendChild(el('a', {
+          class: 'source-link', href: m.sourceUrl, target: '_blank', rel: 'noopener noreferrer', text: meta.source.label,
+        }));
+      } else {
+        stamp.appendChild(document.createTextNode(meta.source.label));
+      }
+      if (m && m.fetchDate) stamp.appendChild(document.createTextNode(`, fetched ${m.fetchDate}`));
     }).catch(() => {
       stamp.textContent = `Source: ${meta.source.label}`;
     });
