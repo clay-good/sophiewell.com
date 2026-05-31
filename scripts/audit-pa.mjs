@@ -16,14 +16,26 @@
 //
 //   node scripts/audit-pa.mjs --update
 //
-// Determinism note: this is a snapshot check, not a clock-dependent one.
-// SOPHIEWELL_NOW is not consulted -- the goldens must hold for all time.
+// Determinism note: two rules (R-PA-005 retro window, R-PA-006 future
+// ceiling) compare labeled service dates against "today", so their
+// findings are inherently clock-relative. To keep the goldens byte-stable
+// for all time we pin "today" to a fixed date via SOPHIEWELL_NOW (honored
+// by lib/pa/date.js todayUtc). The pin is the date the goldens were last
+// seeded, so re-running on any future day reproduces the committed reports
+// exactly. An explicit env value (a maintainer re-seeding under a new
+// date) takes precedence.
 
 import { readFile, writeFile, readdir, mkdir } from 'node:fs/promises';
 import { dirname, join, basename } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { buildBundle, runEngine } from '../lib/pa/engine.js';
 import { buildJsonReport } from '../lib/pa/report.js';
+
+// Pin "today" before any rule runs. rules.js reads SOPHIEWELL_NOW lazily
+// inside check(), so setting it here (after the hoisted imports) is in
+// time for the pipeline. Kept in sync with the day the goldens were seeded.
+const AUDIT_PINNED_NOW = '2026-05-29';
+if (!process.env.SOPHIEWELL_NOW) process.env.SOPHIEWELL_NOW = AUDIT_PINNED_NOW;
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(__dirname, '..');
