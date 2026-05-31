@@ -606,9 +606,9 @@ anchored to a public payer URL tracked in the staleness ledger
 (§8.3) and re-verified on the §4.5.6 cadence.
 
 The first overlay is **Aetna** (`R-PA-AETNA-NNN`, ledger source
-`aetna-precert`, anchored to Aetna's participating-provider
-precertification hub). Wave 52-7a ships the first 5 of a planned
-~20:
+`aetna-precert`, anchored to Aetna's public precertification and
+utilization-management pages). Waves 52-7a/7b ship the first 10
+of a planned ~20:
 
 | Id              | Rule                                                                       | Severity |
 |-----------------|----------------------------------------------------------------------------|----------|
@@ -617,12 +617,22 @@ precertification hub). Wave 52-7a ships the first 5 of a planned
 | `R-PA-AETNA-003`| Submission channel (EDI / secure provider portal / phone on ID card) noted | info     |
 | `R-PA-AETNA-004`| Requested service is on Aetna's participating-provider precert list (stub) | info     |
 | `R-PA-AETNA-005`| Procedure-specific precertification questionnaire completed when required  | flag     |
+| `R-PA-AETNA-006`| Inpatient request carries concurrent-review (progress + discharge) docs    | flag     |
+| `R-PA-AETNA-007`| Hospital-outpatient MRI / CT addresses Aetna's site-of-care requirement    | flag     |
+| `R-PA-AETNA-008`| Expedited / urgent request states the clinical urgency                     | flag     |
+| `R-PA-AETNA-009`| Objective evidence (visual field / photos / measurements) when CPB requires it | flag |
+| `R-PA-AETNA-010`| NDC documented for a physician-administered (J-code) drug request          | info     |
 
 `R-PA-AETNA-004` mirrors core `R-PA-053`: it ships without a
 bundled precert list and vacuously passes with a pointer until a
 later wave bundles the list and flips it to a real membership
-test. Subsequent waves extend the Aetna set toward ~20 rules and
-then add United Healthcare and Anthem as their own buckets.
+test. Rules 006–008 key off the review *modes* Aetna runs
+(concurrent / continued-stay, site-of-service, expedited); 009–010
+off documentation Aetna's CPBs and precert forms call out. Each
+self-gates on the `aetna` bucket and vacuously passes on every
+other packet. Subsequent waves extend the Aetna set toward ~20
+rules and then add United Healthcare and Anthem as their own
+buckets.
 
 ### 4.6 The DOCX report
 
@@ -1212,8 +1222,9 @@ self-contained PR; the catalog count rises only at wave 52-1.
   policy bulletin library. Source URLs pinned and hashed.
 - ~20–40 rules per payer.
 - **Status: Aetna opened ahead of schedule in wave 52-7a
-  (2026-05-30) — first 5 of ~20 rules, the `R-PA-AETNA-NNN`
-  family (§4.5.7). United Healthcare and Anthem follow.**
+  (2026-05-30) and reached 10 of ~20 rules in wave 52-7b
+  (2026-05-30), the `R-PA-AETNA-NNN` family (§4.5.7). United
+  Healthcare and Anthem follow.**
 
 ### Wave 52-5+ — State Medicaid overlays, additional commercial payers, OCR
 
@@ -1387,6 +1398,25 @@ silently; the audit trail records the disablement.
 
 - 2026-05-27 — v52 proposed. Five waves outlined (52-1 through
   52-5+). Catalog count target at v52-1 close: 255.
+- 2026-05-30 — wave 52-7b (§4.5.7 Aetna commercial overlay, 6 → 10 of ~20).
+  Adds five more self-gating `R-PA-AETNA-NNN` rules keyed to Aetna's public
+  utilization-management surface: concurrent-review documentation for an
+  inpatient request (R-PA-AETNA-006, flag), the site-of-care requirement for a
+  hospital-outpatient MRI/CT (007, flag), a clinical-urgency justification on
+  an expedited request (008, flag), objective evidence (visual field / photos /
+  measurements) for procedures whose CPB requires it (009, flag), and the NDC
+  on a physician-administered J-code drug request (010, info). All five
+  vacuously pass off the `aetna` bucket, exactly like 001–005.
+
+  No ledger change (the `aetna-precert` source's representative `rules`
+  anchors already cover the family; all ten map to it by prefix). Coverage is
+  now 145 rules shipped (was 140), 97 source-anchored (was 92), 0 orphans,
+  0 gaps. A second golden fixture `aetna-imaging` (hospital-outpatient
+  expedited MRI) demonstrates 007 + 008 firing; the `aetna-precert` fixture
+  now also surfaces 006 (its POS-21 inpatient request carries no discharge
+  plan). All seven goldens re-seeded; e2e finding count 140 → 145. Tests:
+  +8 engine sanity assertions (count 140→145 plus per-rule checks). View wave
+  banner advanced to 52-7b.
 - 2026-05-30 — wave 52-7a (§4.5.7 commercial payer overlays open — Aetna,
   first 5 of ~20). Picks up the §9 wave plan's "first commercial payer
   overlays" now that the core (§4.5.1), CMS FFS / MA / Medicaid

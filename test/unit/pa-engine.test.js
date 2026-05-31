@@ -140,8 +140,8 @@ test('runEngine passes every starter rule on a clean multi-doc happy-path packet
   assert.equal(counts.pass, STARTER_RULES.length);
 });
 
-test('STARTER_RULES at wave 52-7a is 140 rules (135 §4.5 core/overlay/specialty + 5 §4.5.7 Aetna commercial)', () => {
-  assert.equal(STARTER_RULES.length, 140);
+test('STARTER_RULES at wave 52-7b is 145 rules (135 §4.5 core/overlay/specialty + 10 §4.5.7 Aetna commercial)', () => {
+  assert.equal(STARTER_RULES.length, 145);
 });
 
 // ---- wave 52-7a sanity checks: Aetna commercial overlay (§4.5.7) ----
@@ -149,7 +149,8 @@ test('STARTER_RULES at wave 52-7a is 140 rules (135 §4.5 core/overlay/specialty
 test('Aetna overlay rules vacuously pass on a non-Aetna packet', () => {
   // happyBundle is not an Aetna packet -> every R-PA-AETNA-* rule passes.
   const findings = runEngine(happyBundle());
-  for (const id of ['R-PA-AETNA-001', 'R-PA-AETNA-002', 'R-PA-AETNA-003', 'R-PA-AETNA-004', 'R-PA-AETNA-005']) {
+  for (let n = 1; n <= 10; n += 1) {
+    const id = 'R-PA-AETNA-' + String(n).padStart(3, '0');
     const f = findings.find((x) => x.ruleId === id);
     assert.ok(f, id + ' should be in the findings');
     assert.equal(f.status, 'pass', id + ' should vacuously pass off-bucket');
@@ -188,6 +189,57 @@ test('R-PA-AETNA-005 flags an Aetna spinal-fusion request without a questionnair
   const findings = runEngine(bundleOf(text));
   const f = findings.find((x) => x.ruleId === 'R-PA-AETNA-005');
   assert.equal(f.status, 'flag');
+});
+
+// ---- wave 52-7b sanity checks (Aetna rules 6-10) ----
+
+test('R-PA-AETNA-006 flags an inpatient (POS 21) Aetna request with no discharge / progress documentation', () => {
+  const text = 'Aetna PPO member.\nPlace of service: 21\nInpatient admission for lumbar fusion CPT 22633.\nMedical necessity per CPB.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-AETNA-006');
+  assert.equal(f.status, 'flag');
+});
+
+test('R-PA-AETNA-006 passes when the inpatient Aetna packet documents a discharge plan', () => {
+  const text = 'Aetna PPO member.\nPlace of service: 21\nInpatient admission.\nDischarge plan: home with PT; estimated length of stay 2 days.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-AETNA-006');
+  assert.equal(f.status, 'pass');
+});
+
+test('R-PA-AETNA-007 flags a hospital-outpatient (POS 22) Aetna MRI with no site-of-care justification', () => {
+  const text = 'Aetna member.\nPlace of service: 22\nMRI brain CPT 70551 at hospital outpatient imaging.\nMedical necessity per CPB.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-AETNA-007');
+  assert.equal(f.status, 'flag');
+});
+
+test('R-PA-AETNA-008 flags an expedited Aetna request with no clinical urgency stated', () => {
+  const text = 'Aetna member.\nExpedited / urgent request.\nRequested procedure: MRI brain CPT 70551.\nMedical necessity per CPB.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-AETNA-008');
+  assert.equal(f.status, 'flag');
+});
+
+test('R-PA-AETNA-008 passes when an expedited Aetna request documents the clinical urgency', () => {
+  const text = 'Aetna member.\nExpedited / urgent request: delay would seriously jeopardize the life or health of the member.\nMRI brain CPT 70551.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-AETNA-008');
+  assert.equal(f.status, 'pass');
+});
+
+test('R-PA-AETNA-009 flags an Aetna blepharoplasty request with no visual-field / photographic evidence', () => {
+  const text = 'Aetna member.\nRequested procedure: blepharoplasty CPT 15823.\nMedical necessity per CPB.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-AETNA-009');
+  assert.equal(f.status, 'flag');
+});
+
+test('R-PA-AETNA-010 flags an Aetna J-code drug request with no NDC', () => {
+  const text = 'Aetna member.\nRequested drug: J9299 nivolumab infusion.\nMedical necessity per CPB.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-AETNA-010');
+  assert.equal(f.status, 'info');
 });
 
 test('CMS overlay carries the spec-aligned id R-PA-CMS-004 for proof-of-delivery', () => {

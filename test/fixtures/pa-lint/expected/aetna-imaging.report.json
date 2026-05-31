@@ -12,9 +12,9 @@
     "totalRulesEvaluated": 145,
     "counts": {
       "block": 0,
-      "flag": 12,
-      "info": 4,
-      "pass": 129,
+      "flag": 7,
+      "info": 5,
+      "pass": 133,
       "error": 0,
       "disabled": 0
     },
@@ -52,16 +52,6 @@
       "remediation": "Address the rule's `note` field and resubmit."
     },
     {
-      "ruleId": "R-PA-036",
-      "severity": "flag",
-      "status": "flag",
-      "description": "Frequency / interval present (daily, BID, q6h, etc.)",
-      "citation": "spec-v52 §4.5.1 R-PA-036.",
-      "evidence": null,
-      "note": "No frequency/interval keyword (daily, BID, TID, qXh, etc.) found.",
-      "remediation": "Address the rule's `note` field and resubmit."
-    },
-    {
       "ruleId": "R-PA-037",
       "severity": "flag",
       "status": "flag",
@@ -72,74 +62,34 @@
       "remediation": "Address the rule's `note` field and resubmit."
     },
     {
-      "ruleId": "R-PA-055",
+      "ruleId": "R-PA-AETNA-007",
       "severity": "flag",
       "status": "flag",
-      "description": "Bilateral procedure flag matches modifier 50 presence",
-      "citation": "spec-v52 §4.5.1 R-PA-055. \"Bilateral\" mentioned in the clinical narrative should be accompanied by modifier 50 on the CPT line.",
+      "description": "Aetna site-of-service review: hospital-outpatient MRI / CT addresses the site-of-care requirement",
+      "citation": "spec-v52 §4.5.7 R-PA-AETNA-007. Aetna: \"Some members will have site-of-care requirements for MRI and CT scans when services are requested in a hospital outpatient setting.\" A hospital-outpatient advanced-imaging request should document why that site is required rather than a freestanding center. <https://www.aetna.com/health-care-professionals/precertification.html>",
       "evidence": null,
-      "note": "Packet references a bilateral procedure but modifier 50 is not on the CPT line.",
+      "note": "Aetna hospital-outpatient MRI / CT request without a site-of-care justification. Document why the hospital setting (vs. a freestanding imaging center) is required, or expect a site-of-service redirect.",
       "remediation": "Address the rule's `note` field and resubmit."
     },
     {
-      "ruleId": "R-PA-AETNA-005",
+      "ruleId": "R-PA-AETNA-008",
       "severity": "flag",
       "status": "flag",
-      "description": "Aetna precertification: procedure-specific clinical questionnaire / precertification information request form completed when required",
-      "citation": "spec-v52 §4.5.7 R-PA-AETNA-005. Aetna: \"Providers may be asked to complete a short questionnaire to provide additional clinical information,\" and publishes procedure-specific Precertification Information Request Forms (e.g. spinal surgery, obesity/bariatric surgery, dorsal column / spinal-cord stimulator). When the packet requests one of those procedures, the matching questionnaire response should be present. <https://www.aetna.com/health-care-professionals/precertification.html>",
+      "description": "Aetna expedited / urgent precertification: clinical urgency justification present",
+      "citation": "spec-v52 §4.5.7 R-PA-AETNA-008. Aetna processes a request on an expedited basis when \"a delay in decision making might seriously jeopardize the life or health of the member or [the] ability to regain maximum function.\" A request that asks for expedited handling should state that clinical urgency. <https://www.aetna.com/health-care-professionals/precertification.html>",
       "evidence": null,
-      "note": "Aetna packet requests a procedure with a dedicated precertification questionnaire (aetna-pa-form.txt) but no questionnaire response / clinical-criteria answer is present. Complete the matching Aetna Precertification Information Request Form.",
+      "note": "Aetna request asks for expedited / urgent handling (aetna-imaging-form.txt) but states no clinical urgency. Document why a standard-timeframe decision would jeopardize the member's life, health, or ability to regain maximum function.",
       "remediation": "Address the rule's `note` field and resubmit."
     },
     {
-      "ruleId": "R-PA-AETNA-006",
+      "ruleId": "R-PA-RAD-002",
       "severity": "flag",
       "status": "flag",
-      "description": "Aetna inpatient precertification: concurrent-review documentation (clinical progress + discharge / continuing-care plan) present",
-      "citation": "spec-v52 §4.5.7 R-PA-AETNA-006. Aetna concurrent review \"collect[s] information from the care team about the patient's condition and progress to determine coverage\" and develops a discharge and continuing-care plan early in the stay; an inpatient request should carry that clinical update. <https://www.aetna.com/health-care-professionals/utilization-management/concurrent-review.html>",
+      "description": "Non-emergent MRI: prior conservative management documented",
+      "citation": "spec-v52 §4.5.5 R-PA-RAD-002. Non-emergent MRIs (especially spine and joint) typically require a documented trial of conservative management -- PT, NSAIDs, activity modification, time -- before payer approval.",
       "evidence": null,
-      "note": "Aetna inpatient / continued-stay request without a clinical-progress or discharge / continuing-care plan anchor. Concurrent review needs the patient's condition, progress, and discharge plan.",
-      "remediation": "Address the rule's `note` field and resubmit."
-    },
-    {
-      "ruleId": "R-PA-SURG-001",
-      "severity": "flag",
-      "status": "flag",
-      "description": "Elective surgery: conservative-management trial documented",
-      "citation": "spec-v52 §4.5.5 R-PA-SURG-001. Payers approve elective surgery only after documented failure of non-operative management appropriate to the condition (e.g., joint replacement: PT + NSAIDs; spine: PT + epidurals); emergent surgery is exempt.",
-      "evidence": null,
-      "note": "Elective surgery request without a conservative-management / non-operative-trial anchor.",
-      "remediation": "Attach the missing surgical supporting documentation (conservative management, imaging, ASA, consent)."
-    },
-    {
-      "ruleId": "R-PA-SURG-002",
-      "severity": "flag",
-      "status": "flag",
-      "description": "Elective surgery: imaging supporting surgical indication attached",
-      "citation": "spec-v52 §4.5.5 R-PA-SURG-002. Surgical PAs typically require imaging (X-ray, MRI, CT, US) that demonstrates the anatomical / pathological basis for surgery; the imaging report or anchor must be in the packet.",
-      "evidence": null,
-      "note": "Surgery request without an attached imaging-report document or imaging-findings anchor.",
-      "remediation": "Attach the missing surgical supporting documentation (conservative management, imaging, ASA, consent)."
-    },
-    {
-      "ruleId": "R-PA-SURG-004",
-      "severity": "flag",
-      "status": "flag",
-      "description": "Surgery: ASA Physical Status classification documented",
-      "citation": "spec-v52 §4.5.5 R-PA-SURG-004. The ASA Physical Status is the de-facto standard for perioperative risk stratification; payers expect an ASA classification (1-5) on every elective surgery PA.",
-      "evidence": null,
-      "note": "Surgery request without an ASA Physical Status (1-5) anchor.",
-      "remediation": "Attach the missing surgical supporting documentation (conservative management, imaging, ASA, consent)."
-    },
-    {
-      "ruleId": "R-PA-SURG-005",
-      "severity": "flag",
-      "status": "flag",
-      "description": "Surgery: informed consent documented, dated on or before the date of surgery",
-      "citation": "spec-v52 §4.5.5 R-PA-SURG-005. Joint Commission / payer convention: a procedure-specific informed consent must be obtained before the surgical encounter. This rule narrows R-PA-059 (core consent check) to the surgical specialty trigger so the audit trail flags consent issues in the specialty section of the report.",
-      "evidence": null,
-      "note": "Surgery request without an informed-consent / surgical-consent anchor.",
-      "remediation": "Attach the missing surgical supporting documentation (conservative management, imaging, ASA, consent)."
+      "note": "Non-emergent MRI request without a conservative-management trial anchor.",
+      "remediation": "Attach the missing radiology supporting documentation (ACR AC, conservative management, contrast workup)."
     },
     {
       "ruleId": "R-PA-031",
@@ -182,12 +132,22 @@
       "remediation": null
     },
     {
+      "ruleId": "R-PA-RAD-001",
+      "severity": "info",
+      "status": "info",
+      "description": "Advanced imaging request: ACR Appropriateness Criteria reference present",
+      "citation": "spec-v52 §4.5.5 R-PA-RAD-001. ACR (American College of Radiology) Appropriateness Criteria are the de-facto standard payers use to evaluate imaging-request medical necessity; referencing the matching ACR AC topic in the packet substantially improves first-pass approval rates.",
+      "evidence": null,
+      "note": "Advanced-imaging request without an ACR Appropriateness Criteria reference anchor.",
+      "remediation": null
+    },
+    {
       "ruleId": "R-PA-001",
       "severity": "block",
       "status": "pass",
       "description": "Patient name present in at least one document",
       "citation": "spec-v52 §4.5.1 R-PA-001 (core, payer-agnostic).",
-      "evidence": "Found \"Jane A Smith\" in aetna-pa-form.txt",
+      "evidence": "Found \"Mark T Lee\" in aetna-imaging-form.txt",
       "note": null,
       "remediation": null
     },
@@ -197,7 +157,7 @@
       "status": "pass",
       "description": "Date of birth present in at least one document",
       "citation": "spec-v52 §4.5.1 R-PA-002 (core, payer-agnostic).",
-      "evidence": "DOB \"1962-07-14\" in aetna-pa-form.txt",
+      "evidence": "DOB \"1979-02-03\" in aetna-imaging-form.txt",
       "note": null,
       "remediation": null
     },
@@ -207,7 +167,7 @@
       "status": "pass",
       "description": "Member ID present in at least one document",
       "citation": "spec-v52 §4.5.1 R-PA-003. Payer-specific format validation lives in payer overlays (v52-2+).",
-      "evidence": "Member ID \"W123456789\" in aetna-pa-form.txt",
+      "evidence": "Member ID \"W987654321\" in aetna-imaging-form.txt",
       "note": null,
       "remediation": null
     },
@@ -237,7 +197,7 @@
       "status": "pass",
       "description": "Service date is not more than 365 days in the future",
       "citation": "spec-v52 §4.5.1 R-PA-006. Hard ceiling, not payer-specific. Scoped to dates labeled \"Date of service\" / \"DOS\" / \"Service date\".",
-      "evidence": "Furthest labeled service date is 17 days in the future.",
+      "evidence": "Furthest labeled service date is 22 days in the future.",
       "note": null,
       "remediation": null
     },
@@ -247,7 +207,7 @@
       "status": "pass",
       "description": "At least one CPT or HCPCS code present",
       "citation": "spec-v52 §4.5.1 R-PA-007 (core, payer-agnostic). AMA CPT / CMS HCPCS Level II.",
-      "evidence": "Codes: 22633",
+      "evidence": "Codes: 70551",
       "note": null,
       "remediation": null
     },
@@ -277,7 +237,7 @@
       "status": "pass",
       "description": "At least one ICD-10-CM diagnosis code present",
       "citation": "spec-v52 §4.5.1 R-PA-010 (core, payer-agnostic). ICD-10-CM, public domain (CMS / CDC).",
-      "evidence": "Codes: M48.062",
+      "evidence": "Codes: R51.9",
       "note": null,
       "remediation": null
     },
@@ -307,7 +267,7 @@
       "status": "pass",
       "description": "Place-of-service code is present and on the bundled CMS list",
       "citation": "spec-v52 §4.5.1 R-PA-013. CMS Place of Service codes (POS list, public).",
-      "evidence": "POS code(s): 21",
+      "evidence": "POS code(s): 22",
       "note": null,
       "remediation": null
     },
@@ -347,7 +307,7 @@
       "status": "pass",
       "description": "Ordering provider signature present in at least one document",
       "citation": "spec-v52 §4.5.1 R-PA-017. Detects \"Signature:\" / \"Signed by\" / \"Electronically signed\" / \"/s/\" anchors.",
-      "evidence": "Signature anchor in aetna-pa-form.txt",
+      "evidence": "Signature anchor in aetna-imaging-form.txt",
       "note": null,
       "remediation": null
     },
@@ -357,7 +317,7 @@
       "status": "pass",
       "description": "Ordering provider signature is dated (only if a signature is present)",
       "citation": "spec-v52 §4.5.1 R-PA-018.",
-      "evidence": "Dated signature in aetna-pa-form.txt",
+      "evidence": "Dated signature in aetna-imaging-form.txt",
       "note": null,
       "remediation": null
     },
@@ -387,7 +347,7 @@
       "status": "pass",
       "description": "Clinical-note content appears in at least one document",
       "citation": "spec-v52 §4.5.1 R-PA-021. Keyword anchors: \"chief complaint\", \"history of present illness\", \"assessment and plan\", \"progress note\", \"clinical note\", \"soap note\".",
-      "evidence": "Clinical-note anchor in aetna-note.txt",
+      "evidence": "Clinical-note anchor in aetna-imaging-note.txt",
       "note": null,
       "remediation": null
     },
@@ -397,7 +357,7 @@
       "status": "pass",
       "description": "Clinical-note document has at least one extractable date",
       "citation": "spec-v52 §4.5.1 R-PA-022. Default clinical-look-back window is payer-specific; v52-1h checks date presence inside the clinical-note document(s) only.",
-      "evidence": "Date(s) found in clinical-note: aetna-note.txt",
+      "evidence": "Date(s) found in clinical-note: aetna-imaging-note.txt",
       "note": null,
       "remediation": null
     },
@@ -407,7 +367,7 @@
       "status": "pass",
       "description": "Medical-necessity statement present",
       "citation": "spec-v52 §4.5.1 R-PA-024. Free-text anchor: \"medical necessity\", \"medically necessary\", \"necessary because\", \"necessary due to\".",
-      "evidence": "Anchor in aetna-pa-form.txt",
+      "evidence": "Anchor in aetna-imaging-form.txt",
       "note": null,
       "remediation": null
     },
@@ -478,6 +438,16 @@
       "description": "Hepatic function (LFTs) present when packet references a hepatically-dosed agent",
       "citation": "spec-v52 §4.5.1 R-PA-035. Triggered by \"hepatic dose adjustment\" / common hepatically-cleared drug names.",
       "evidence": "No hepatically-dosed-agent anchor; rule vacuously satisfied.",
+      "note": null,
+      "remediation": null
+    },
+    {
+      "ruleId": "R-PA-036",
+      "severity": "flag",
+      "status": "pass",
+      "description": "Frequency / interval present (daily, BID, q6h, etc.)",
+      "citation": "spec-v52 §4.5.1 R-PA-036.",
+      "evidence": "Frequency \"daily\" in aetna-imaging-form.txt",
       "note": null,
       "remediation": null
     },
@@ -607,7 +577,7 @@
       "status": "pass",
       "description": "Diagnosis-procedure linkage shown (an ICD-10 code and a CPT/HCPCS code co-occur within the same document)",
       "citation": "spec-v52 §4.5.1 R-PA-050. Heuristic: at least one document carries both an ICD-10 code and a CPT/HCPCS code within ~400 characters of each other.",
-      "evidence": "ICD-10 + CPT/HCPCS co-occur in aetna-pa-form.txt",
+      "evidence": "ICD-10 + CPT/HCPCS co-occur in aetna-imaging-form.txt",
       "note": null,
       "remediation": null
     },
@@ -648,6 +618,16 @@
       "description": "Each modifier 25 / 59 is accompanied by supporting documentation",
       "citation": "spec-v52 §4.5.1 R-PA-054. Modifiers 25 and 59 are the two most-audited CPT modifiers; both require documentation of a separately identifiable service.",
       "evidence": "No modifier 25 / 59 anchor; rule vacuously satisfied.",
+      "note": null,
+      "remediation": null
+    },
+    {
+      "ruleId": "R-PA-055",
+      "severity": "flag",
+      "status": "pass",
+      "description": "Bilateral procedure flag matches modifier 50 presence",
+      "citation": "spec-v52 §4.5.1 R-PA-055. \"Bilateral\" mentioned in the clinical narrative should be accompanied by modifier 50 on the CPT line.",
+      "evidence": "No bilateral mention; rule vacuously satisfied.",
       "note": null,
       "remediation": null
     },
@@ -697,7 +677,7 @@
       "status": "pass",
       "description": "Aetna precertification: medical-necessity criteria (Clinical Policy Bulletin / CMS / MCG) referenced",
       "citation": "spec-v52 §4.5.7 R-PA-AETNA-001. Aetna determines coverage from \"plan documents and (when applicable) a review of clinical information to determine whether clinical guidelines/criteria for coverage are met,\" applying Aetna Clinical Policy Bulletins, CMS guidelines, or MCG criteria, and asks providers to review the applicable CPB before submitting. <https://www.aetna.com/health-care-professionals/precertification.html>",
-      "evidence": "Medical-necessity criteria reference in aetna-pa-form.txt",
+      "evidence": "Medical-necessity criteria reference in aetna-imaging-form.txt",
       "note": null,
       "remediation": null
     },
@@ -707,7 +687,7 @@
       "status": "pass",
       "description": "Aetna precertification: supporting medical records / clinical documentation attached",
       "citation": "spec-v52 §4.5.7 R-PA-AETNA-002. Aetna instructs providers to submit medical records related to the member's condition for which treatment is proposed; a precertification with no clinical document attached cannot be reviewed on the merits. <https://www.aetna.com/health-care-professionals/precertification.html>",
-      "evidence": "Supporting clinical document present: aetna-note.txt (clinical-note)",
+      "evidence": "Supporting clinical document present: aetna-imaging-note.txt (clinical-note)",
       "note": null,
       "remediation": null
     },
@@ -722,22 +702,22 @@
       "remediation": null
     },
     {
-      "ruleId": "R-PA-AETNA-007",
+      "ruleId": "R-PA-AETNA-005",
       "severity": "flag",
       "status": "pass",
-      "description": "Aetna site-of-service review: hospital-outpatient MRI / CT addresses the site-of-care requirement",
-      "citation": "spec-v52 §4.5.7 R-PA-AETNA-007. Aetna: \"Some members will have site-of-care requirements for MRI and CT scans when services are requested in a hospital outpatient setting.\" A hospital-outpatient advanced-imaging request should document why that site is required rather than a freestanding center. <https://www.aetna.com/health-care-professionals/precertification.html>",
-      "evidence": "Aetna packet without a hospital-outpatient MRI / CT request; site-of-care rule vacuously satisfied.",
+      "description": "Aetna precertification: procedure-specific clinical questionnaire / precertification information request form completed when required",
+      "citation": "spec-v52 §4.5.7 R-PA-AETNA-005. Aetna: \"Providers may be asked to complete a short questionnaire to provide additional clinical information,\" and publishes procedure-specific Precertification Information Request Forms (e.g. spinal surgery, obesity/bariatric surgery, dorsal column / spinal-cord stimulator). When the packet requests one of those procedures, the matching questionnaire response should be present. <https://www.aetna.com/health-care-professionals/precertification.html>",
+      "evidence": "Aetna packet without a procedure that triggers a specific precertification questionnaire; rule vacuously satisfied.",
       "note": null,
       "remediation": null
     },
     {
-      "ruleId": "R-PA-AETNA-008",
+      "ruleId": "R-PA-AETNA-006",
       "severity": "flag",
       "status": "pass",
-      "description": "Aetna expedited / urgent precertification: clinical urgency justification present",
-      "citation": "spec-v52 §4.5.7 R-PA-AETNA-008. Aetna processes a request on an expedited basis when \"a delay in decision making might seriously jeopardize the life or health of the member or [the] ability to regain maximum function.\" A request that asks for expedited handling should state that clinical urgency. <https://www.aetna.com/health-care-professionals/precertification.html>",
-      "evidence": "Aetna packet without an expedited / urgent request; rule vacuously satisfied.",
+      "description": "Aetna inpatient precertification: concurrent-review documentation (clinical progress + discharge / continuing-care plan) present",
+      "citation": "spec-v52 §4.5.7 R-PA-AETNA-006. Aetna concurrent review \"collect[s] information from the care team about the patient's condition and progress to determine coverage\" and develops a discharge and continuing-care plan early in the stay; an inpatient request should carry that clinical update. <https://www.aetna.com/health-care-professionals/utilization-management/concurrent-review.html>",
+      "evidence": "Aetna packet without an inpatient / continued-stay context; rule vacuously satisfied.",
       "note": null,
       "remediation": null
     },
@@ -1412,32 +1392,12 @@
       "remediation": null
     },
     {
-      "ruleId": "R-PA-RAD-001",
-      "severity": "info",
-      "status": "pass",
-      "description": "Advanced imaging request: ACR Appropriateness Criteria reference present",
-      "citation": "spec-v52 §4.5.5 R-PA-RAD-001. ACR (American College of Radiology) Appropriateness Criteria are the de-facto standard payers use to evaluate imaging-request medical necessity; referencing the matching ACR AC topic in the packet substantially improves first-pass approval rates.",
-      "evidence": "No radiology CPT (70010-79999) in packet; rule vacuously satisfied.",
-      "note": null,
-      "remediation": null
-    },
-    {
-      "ruleId": "R-PA-RAD-002",
-      "severity": "flag",
-      "status": "pass",
-      "description": "Non-emergent MRI: prior conservative management documented",
-      "citation": "spec-v52 §4.5.5 R-PA-RAD-002. Non-emergent MRIs (especially spine and joint) typically require a documented trial of conservative management -- PT, NSAIDs, activity modification, time -- before payer approval.",
-      "evidence": "No MRI CPT in packet; rule vacuously satisfied.",
-      "note": null,
-      "remediation": null
-    },
-    {
       "ruleId": "R-PA-RAD-003",
       "severity": "flag",
       "status": "pass",
       "description": "Contrast imaging study: contrast allergy review + renal-function check documented",
       "citation": "spec-v52 §4.5.5 R-PA-RAD-003. Iodinated and gadolinium contrast carry hypersensitivity and nephrotoxicity risk; packets requesting a contrast study should document an allergy review and a recent eGFR / SCr.",
-      "evidence": "No radiology CPT in packet; rule vacuously satisfied.",
+      "evidence": "No contrast anchor; rule vacuously satisfied.",
       "note": null,
       "remediation": null
     },
@@ -1447,7 +1407,7 @@
       "status": "pass",
       "description": "Radiology procedure: preceding clinical evaluation referenced",
       "citation": "spec-v52 §4.5.5 R-PA-RAD-004. Advanced imaging without a documented clinical evaluation (history, physical, working differential) is one of the most common denial reasons; the packet should reference a clinical note dated on or before the imaging request.",
-      "evidence": "No radiology CPT in packet; rule vacuously satisfied.",
+      "evidence": "Clinical-note document attached.",
       "note": null,
       "remediation": null
     },
@@ -1457,7 +1417,27 @@
       "status": "pass",
       "description": "Pediatric imaging: ALARA / radiation-dose consideration documented",
       "citation": "spec-v52 §4.5.5 R-PA-RAD-005. For pediatric patients, ALARA (As Low As Reasonably Achievable) principles apply: image Gently / Image Wisely campaigns recommend documenting dose-reduction consideration for CT and nuclear-medicine studies in children.",
-      "evidence": "No radiology CPT in packet; rule vacuously satisfied.",
+      "evidence": "No pediatric anchor; rule vacuously satisfied.",
+      "note": null,
+      "remediation": null
+    },
+    {
+      "ruleId": "R-PA-SURG-001",
+      "severity": "flag",
+      "status": "pass",
+      "description": "Elective surgery: conservative-management trial documented",
+      "citation": "spec-v52 §4.5.5 R-PA-SURG-001. Payers approve elective surgery only after documented failure of non-operative management appropriate to the condition (e.g., joint replacement: PT + NSAIDs; spine: PT + epidurals); emergent surgery is exempt.",
+      "evidence": "No surgery CPT (10004-69990) in packet; rule vacuously satisfied.",
+      "note": null,
+      "remediation": null
+    },
+    {
+      "ruleId": "R-PA-SURG-002",
+      "severity": "flag",
+      "status": "pass",
+      "description": "Elective surgery: imaging supporting surgical indication attached",
+      "citation": "spec-v52 §4.5.5 R-PA-SURG-002. Surgical PAs typically require imaging (X-ray, MRI, CT, US) that demonstrates the anatomical / pathological basis for surgery; the imaging report or anchor must be in the packet.",
+      "evidence": "No surgery CPT in packet; rule vacuously satisfied.",
       "note": null,
       "remediation": null
     },
@@ -1467,22 +1447,42 @@
       "status": "pass",
       "description": "Surgery with ASA >= 3: anesthesia / pre-op medical clearance documented",
       "citation": "spec-v52 §4.5.5 R-PA-SURG-003. ASA Physical Status >= 3 (severe systemic disease) requires documented pre-operative medical clearance / anesthesia evaluation so the perioperative risk has been assessed by an appropriate clinician.",
-      "evidence": "No ASA >= 3 anchor; rule vacuously satisfied.",
+      "evidence": "No surgery CPT in packet; rule vacuously satisfied.",
+      "note": null,
+      "remediation": null
+    },
+    {
+      "ruleId": "R-PA-SURG-004",
+      "severity": "flag",
+      "status": "pass",
+      "description": "Surgery: ASA Physical Status classification documented",
+      "citation": "spec-v52 §4.5.5 R-PA-SURG-004. The ASA Physical Status is the de-facto standard for perioperative risk stratification; payers expect an ASA classification (1-5) on every elective surgery PA.",
+      "evidence": "No surgery CPT in packet; rule vacuously satisfied.",
+      "note": null,
+      "remediation": null
+    },
+    {
+      "ruleId": "R-PA-SURG-005",
+      "severity": "flag",
+      "status": "pass",
+      "description": "Surgery: informed consent documented, dated on or before the date of surgery",
+      "citation": "spec-v52 §4.5.5 R-PA-SURG-005. Joint Commission / payer convention: a procedure-specific informed consent must be obtained before the surgical encounter. This rule narrows R-PA-059 (core consent check) to the surgical specialty trigger so the audit trail flags consent issues in the specialty section of the report.",
+      "evidence": "No surgery CPT in packet; rule vacuously satisfied.",
       "note": null,
       "remediation": null
     }
   ],
   "evidenceLedger": [
     {
-      "document": "aetna-pa-form.txt",
-      "sha256": "fixture-aetna-precert-form",
+      "document": "aetna-imaging-form.txt",
+      "sha256": "fixture-aetna-imaging-form",
       "kind": "TXT",
       "role": "pa-form",
       "payer": "aetna",
       "ledger": {
-        "patientName": "Jane A Smith",
-        "dob": "1962-07-14",
-        "memberId": "W123456789",
+        "patientName": "Mark T Lee",
+        "dob": "1979-02-03",
+        "memberId": "W987654321",
         "npis": [
           "1234567893",
           "1306849393"
@@ -1491,23 +1491,24 @@
           "123456789"
         ],
         "cpts": [
-          "22633"
+          "70551"
         ],
         "icd10": [
-          "M48.062"
+          "R51.9"
         ],
         "pos": [
-          "21"
+          "22"
         ],
         "dates": [
-          "1962-07-14",
-          "2026-06-15",
-          "2026-06-01"
+          "1979-02-03",
+          "2026-06-20",
+          "2026-06-10"
         ],
         "serviceDates": [
-          "2026-06-15"
+          "2026-06-20"
         ],
         "quantity": 1,
+        "frequency": "daily",
         "signature": {
           "present": true,
           "dated": true
@@ -1515,16 +1516,17 @@
       }
     },
     {
-      "document": "aetna-note.txt",
-      "sha256": "fixture-aetna-precert-note",
+      "document": "aetna-imaging-note.txt",
+      "sha256": "fixture-aetna-imaging-note",
       "kind": "TXT",
       "role": "clinical-note",
       "payer": "unknown",
       "ledger": {
         "dates": [
-          "2026-06-01",
-          "2026-06-01"
+          "2026-06-10",
+          "2026-06-10"
         ],
+        "frequency": "daily",
         "signature": {
           "present": true,
           "dated": true
@@ -1534,8 +1536,8 @@
   ],
   "extractedData": [
     {
-      "document": "aetna-pa-form.txt",
-      "sha256": "fixture-aetna-precert-form",
+      "document": "aetna-imaging-form.txt",
+      "sha256": "fixture-aetna-imaging-form",
       "extract": {
         "npis": [
           "1234567893",
@@ -1543,25 +1545,25 @@
         ],
         "ssns": [],
         "cpts": [
-          "22633"
+          "70551"
         ],
         "icd10": [
-          "M48.062"
+          "R51.9"
         ],
         "pos": [
-          "21"
+          "22"
         ],
         "dates": [
-          "1962-07-14",
-          "2026-06-15",
-          "2026-06-01"
+          "1979-02-03",
+          "2026-06-20",
+          "2026-06-10"
         ],
         "serviceDates": [
-          "2026-06-15"
+          "2026-06-20"
         ],
-        "patientName": "Jane A Smith",
-        "dob": "1962-07-14",
-        "memberId": "W123456789",
+        "patientName": "Mark T Lee",
+        "dob": "1979-02-03",
+        "memberId": "W987654321",
         "tins": [
           "123456789"
         ],
@@ -1572,14 +1574,14 @@
         },
         "weight": null,
         "height": null,
-        "frequency": null,
+        "frequency": "daily",
         "replacementChars": 0,
-        "textLength": 511
+        "textLength": 533
       }
     },
     {
-      "document": "aetna-note.txt",
-      "sha256": "fixture-aetna-precert-note",
+      "document": "aetna-imaging-note.txt",
+      "sha256": "fixture-aetna-imaging-note",
       "extract": {
         "npis": [],
         "ssns": [],
@@ -1587,8 +1589,8 @@
         "icd10": [],
         "pos": [],
         "dates": [
-          "2026-06-01",
-          "2026-06-01"
+          "2026-06-10",
+          "2026-06-10"
         ],
         "serviceDates": [],
         "patientName": null,
@@ -1602,9 +1604,9 @@
         },
         "weight": null,
         "height": null,
-        "frequency": null,
+        "frequency": "daily",
         "replacementChars": 0,
-        "textLength": 428
+        "textLength": 312
       }
     }
   ],
@@ -1615,19 +1617,15 @@
       "R-PA-023",
       "R-PA-026",
       "R-PA-029",
-      "R-PA-036",
       "R-PA-037",
-      "R-PA-055",
-      "R-PA-AETNA-005",
-      "R-PA-AETNA-006",
-      "R-PA-SURG-001",
-      "R-PA-SURG-002",
-      "R-PA-SURG-004",
-      "R-PA-SURG-005",
+      "R-PA-AETNA-007",
+      "R-PA-AETNA-008",
+      "R-PA-RAD-002",
       "R-PA-031",
       "R-PA-032",
       "R-PA-060",
       "R-PA-AETNA-003",
+      "R-PA-RAD-001",
       "R-PA-001",
       "R-PA-002",
       "R-PA-003",
@@ -1658,6 +1656,7 @@
       "R-PA-033",
       "R-PA-034",
       "R-PA-035",
+      "R-PA-036",
       "R-PA-038",
       "R-PA-039",
       "R-PA-040",
@@ -1675,6 +1674,7 @@
       "R-PA-052",
       "R-PA-053",
       "R-PA-054",
+      "R-PA-055",
       "R-PA-056",
       "R-PA-057",
       "R-PA-058",
@@ -1682,8 +1682,8 @@
       "R-PA-AETNA-001",
       "R-PA-AETNA-002",
       "R-PA-AETNA-004",
-      "R-PA-AETNA-007",
-      "R-PA-AETNA-008",
+      "R-PA-AETNA-005",
+      "R-PA-AETNA-006",
       "R-PA-AETNA-009",
       "R-PA-AETNA-010",
       "R-PA-BH-001",
@@ -1751,25 +1751,27 @@
       "R-PA-MCD-008",
       "R-PA-MCD-009",
       "R-PA-MCD-010",
-      "R-PA-RAD-001",
-      "R-PA-RAD-002",
       "R-PA-RAD-003",
       "R-PA-RAD-004",
       "R-PA-RAD-005",
-      "R-PA-SURG-003"
+      "R-PA-SURG-001",
+      "R-PA-SURG-002",
+      "R-PA-SURG-003",
+      "R-PA-SURG-004",
+      "R-PA-SURG-005"
     ],
     "disabledRules": [],
     "documentHashes": [
       {
-        "document": "aetna-pa-form.txt",
-        "sha256": "fixture-aetna-precert-form"
+        "document": "aetna-imaging-form.txt",
+        "sha256": "fixture-aetna-imaging-form"
       },
       {
-        "document": "aetna-note.txt",
-        "sha256": "fixture-aetna-precert-note"
+        "document": "aetna-imaging-note.txt",
+        "sha256": "fixture-aetna-imaging-note"
       }
     ],
-    "totalBytes": 16384,
+    "totalBytes": 12288,
     "generatedAt": null,
     "datasetStaleness": {
       "rulesetVersion": "1.0.0",

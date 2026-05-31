@@ -6,6 +6,24 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v52 wave 52-7b — §4.5.7 Aetna commercial overlay, 6 → 10 of ~20)
+
+Five more self-gating `R-PA-AETNA-NNN` rules keyed to Aetna's public
+utilization-management surface: concurrent-review documentation for an
+inpatient request (006, flag), the site-of-care requirement for a
+hospital-outpatient MRI/CT (007, flag), a clinical-urgency justification on an
+expedited request (008, flag), objective evidence (visual field / photos /
+measurements) for procedures whose Clinical Policy Bulletin requires it (009,
+flag), and the NDC on a physician-administered J-code drug request (010, info).
+Each vacuously passes off the `aetna` bucket.
+
+No ledger change (all ten Aetna rules map to the existing `aetna-precert`
+source by prefix). Coverage is now 145 rules shipped, 97 source-anchored, 0
+orphans, 0 gaps. A new `aetna-imaging` golden fixture (hospital-outpatient
+expedited MRI) demonstrates 007 + 008 firing; the `aetna-precert` fixture now
+also surfaces 006. All seven goldens re-seeded; e2e finding count 140 → 145.
+View wave banner advanced to 52-7b.
+
 ### Added (spec-v52 wave 52-7a — §4.5.7 commercial payer overlays open: Aetna)
 
 The §9 wave plan's "first commercial payer overlays" land now that the core,

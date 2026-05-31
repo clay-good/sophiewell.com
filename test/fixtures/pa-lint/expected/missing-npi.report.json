@@ -9,12 +9,12 @@
     "disclaimer": "Sophie Prior-Auth Packet Linter is a deterministic checklist. It is not medical advice. It is not legal advice. It is not coding advice. It does not transmit anything to any payer. Your packet stays in this browser tab; we never see your data. Findings reflect what Sophie's ruleset checks; they are not a guarantee of payer approval. A passing report does not mean the packet will be approved; a failing report does not mean the packet will be denied. The clinical adequacy of every document is the reviewer's responsibility. Sophie's ruleset is versioned and cites every source; verify citations against current payer policy before relying on any finding for a clinical or revenue decision."
   },
   "executiveSummary": {
-    "totalRulesEvaluated": 140,
+    "totalRulesEvaluated": 145,
     "counts": {
       "block": 1,
       "flag": 3,
       "info": 2,
-      "pass": 134,
+      "pass": 139,
       "error": 0,
       "disabled": 0
     },
@@ -672,6 +672,56 @@
       "status": "pass",
       "description": "Aetna precertification: procedure-specific clinical questionnaire / precertification information request form completed when required",
       "citation": "spec-v52 §4.5.7 R-PA-AETNA-005. Aetna: \"Providers may be asked to complete a short questionnaire to provide additional clinical information,\" and publishes procedure-specific Precertification Information Request Forms (e.g. spinal surgery, obesity/bariatric surgery, dorsal column / spinal-cord stimulator). When the packet requests one of those procedures, the matching questionnaire response should be present. <https://www.aetna.com/health-care-professionals/precertification.html>",
+      "evidence": "Not an Aetna packet; rule vacuously satisfied.",
+      "note": null,
+      "remediation": null
+    },
+    {
+      "ruleId": "R-PA-AETNA-006",
+      "severity": "flag",
+      "status": "pass",
+      "description": "Aetna inpatient precertification: concurrent-review documentation (clinical progress + discharge / continuing-care plan) present",
+      "citation": "spec-v52 §4.5.7 R-PA-AETNA-006. Aetna concurrent review \"collect[s] information from the care team about the patient's condition and progress to determine coverage\" and develops a discharge and continuing-care plan early in the stay; an inpatient request should carry that clinical update. <https://www.aetna.com/health-care-professionals/utilization-management/concurrent-review.html>",
+      "evidence": "Not an Aetna packet; rule vacuously satisfied.",
+      "note": null,
+      "remediation": null
+    },
+    {
+      "ruleId": "R-PA-AETNA-007",
+      "severity": "flag",
+      "status": "pass",
+      "description": "Aetna site-of-service review: hospital-outpatient MRI / CT addresses the site-of-care requirement",
+      "citation": "spec-v52 §4.5.7 R-PA-AETNA-007. Aetna: \"Some members will have site-of-care requirements for MRI and CT scans when services are requested in a hospital outpatient setting.\" A hospital-outpatient advanced-imaging request should document why that site is required rather than a freestanding center. <https://www.aetna.com/health-care-professionals/precertification.html>",
+      "evidence": "Not an Aetna packet; rule vacuously satisfied.",
+      "note": null,
+      "remediation": null
+    },
+    {
+      "ruleId": "R-PA-AETNA-008",
+      "severity": "flag",
+      "status": "pass",
+      "description": "Aetna expedited / urgent precertification: clinical urgency justification present",
+      "citation": "spec-v52 §4.5.7 R-PA-AETNA-008. Aetna processes a request on an expedited basis when \"a delay in decision making might seriously jeopardize the life or health of the member or [the] ability to regain maximum function.\" A request that asks for expedited handling should state that clinical urgency. <https://www.aetna.com/health-care-professionals/precertification.html>",
+      "evidence": "Not an Aetna packet; rule vacuously satisfied.",
+      "note": null,
+      "remediation": null
+    },
+    {
+      "ruleId": "R-PA-AETNA-009",
+      "severity": "flag",
+      "status": "pass",
+      "description": "Aetna precertification: objective evidence (visual field / photographs / measurements) present for procedures whose CPB requires it",
+      "citation": "spec-v52 §4.5.7 R-PA-AETNA-009. Several Aetna Clinical Policy Bulletins condition coverage on objective evidence -- e.g. visual-field tests and margin-reflex-distance photographs for blepharoplasty, photographs and excised-tissue weight for panniculectomy / reduction mammaplasty. When the packet requests one of those procedures, that objective evidence should be attached. <https://www.aetna.com/health-care-professionals/precertification.html>",
+      "evidence": "Not an Aetna packet; rule vacuously satisfied.",
+      "note": null,
+      "remediation": null
+    },
+    {
+      "ruleId": "R-PA-AETNA-010",
+      "severity": "info",
+      "status": "pass",
+      "description": "Aetna precertification: NDC documented for a physician-administered (J-code) drug request",
+      "citation": "spec-v52 §4.5.7 R-PA-AETNA-010. Aetna's precertification information request for physician-administered (buy-and-bill) drugs asks for the National Drug Code in addition to the HCPCS J-code, so the request maps to a specific product and dose. Informational: a J-code request without an NDC routes more slowly. <https://www.aetna.com/health-care-professionals/precertification.html>",
       "evidence": "Not an Aetna packet; rule vacuously satisfied.",
       "note": null,
       "remediation": null
@@ -1630,6 +1680,11 @@
       "R-PA-AETNA-003",
       "R-PA-AETNA-004",
       "R-PA-AETNA-005",
+      "R-PA-AETNA-006",
+      "R-PA-AETNA-007",
+      "R-PA-AETNA-008",
+      "R-PA-AETNA-009",
+      "R-PA-AETNA-010",
       "R-PA-BH-001",
       "R-PA-BH-002",
       "R-PA-BH-003",

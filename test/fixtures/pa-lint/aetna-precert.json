@@ -1,6 +1,6 @@
 {
   "name": "aetna-precert",
-  "description": "Aetna commercial precertification packet for a lumbar fusion. The 'Aetna Choice POS II' letterhead routes the bundle to the new 'aetna' payer bucket (spec-v52 §4.5.7, wave 52-7a) and engages the Aetna commercial overlay. The packet deliberately cites the applicable Clinical Policy Bulletin and attaches a clinical note (R-PA-AETNA-001/002 pass), omits any submission-channel reference (R-PA-AETNA-003 info), and requests a spinal-fusion procedure without the matching precertification questionnaire / conservative-management documentation (R-PA-AETNA-005 flag).",
+  "description": "Aetna commercial precertification packet for an inpatient (POS 21) lumbar fusion. The 'Aetna Choice POS II' letterhead routes the bundle to the 'aetna' payer bucket (spec-v52 §4.5.7) and engages the Aetna commercial overlay. The packet cites the applicable Clinical Policy Bulletin and attaches a clinical note (R-PA-AETNA-001/002 pass), omits any submission-channel reference (R-PA-AETNA-003 info), requests a spinal-fusion procedure without the matching precertification questionnaire / conservative-management documentation (R-PA-AETNA-005 flag), and -- as an inpatient request -- carries no discharge / continuing-care plan for concurrent review (R-PA-AETNA-006 flag, wave 52-7b).",
   "opts": { "totalBytes": 16384 },
   "documents": [
     {

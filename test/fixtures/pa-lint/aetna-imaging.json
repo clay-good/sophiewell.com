@@ -1,0 +1,19 @@
+{
+  "name": "aetna-imaging",
+  "description": "Aetna commercial hospital-outpatient MRI precertification, submitted expedited. Exercises the wave 52-7b Aetna overlay rules: R-PA-AETNA-007 flags the hospital-outpatient (POS 22) MRI with no site-of-care justification, and R-PA-AETNA-008 flags the expedited request with no clinical urgency stated. R-PA-AETNA-001/002 pass (CPB cited, clinical note attached); 003 fires info (no submission channel); 004/005/006/009/010 are vacuous for this packet.",
+  "opts": { "totalBytes": 12288 },
+  "documents": [
+    {
+      "name": "aetna-imaging-form.txt",
+      "sha256": "fixture-aetna-imaging-form",
+      "kind": "TXT",
+      "text": "Aetna Choice POS II Prior Authorization Request\nPatient: Mark T Lee\nDOB: 1979-02-03\nMember ID: W987654321\nDate of service: 2026-06-20\nPlace of service: 22\nRequested procedure: MRI brain without contrast CPT 70551\nDx: R51.9 headache\nQuantity: 1\nOrdering provider NPI: 1234567893\nServicing facility NPI: 1306849393\nTIN: 123456789\nEXPEDITED / urgent request.\nSetting: hospital outpatient imaging.\nMedical necessity: new daily persistent headache; see Aetna Clinical Policy Bulletin for advanced imaging.\nSignature: Neuro MD, 2026-06-10\n"
+    },
+    {
+      "name": "aetna-imaging-note.txt",
+      "sha256": "fixture-aetna-imaging-note",
+      "kind": "TXT",
+      "text": "Clinical note\nChief complaint: new daily persistent headache for three weeks.\nHistory of present illness: progressive, worse in the mornings.\nPhysical exam: nonfocal neurologic exam.\nAssessment and plan: obtain MRI brain to exclude an intracranial mass lesion.\nNote date: 2026-06-10\nSigned: Neuro MD, 2026-06-10\n"
+    }
+  ]
+}
