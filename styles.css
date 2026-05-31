@@ -39,6 +39,15 @@
   --tint-faint: rgba(255, 255, 255, 0.02);
   --tint-border: rgba(255, 255, 255, 0.22);
   --tint-inset: rgba(255, 255, 255, 0.04);
+
+  /* A single cheerful accent for interactive flourishes (category pills,
+     hovers, friendly highlights). Kept separate from --accent (which stays
+     monochrome for sober body chrome and focus) so the utility reads
+     calm-and-clinical at rest and pops a clean medical teal on touch. */
+  --accent-pop: #2dd4bf;
+  --accent-pop-strong: #14b8a6;
+  --accent-pop-tint: rgba(45, 212, 191, 0.14);
+  --accent-pop-glow: rgba(45, 212, 191, 0.28);
 }
 
 [data-theme="light"] {
@@ -61,6 +70,13 @@
   --tint-faint: rgba(0, 0, 0, 0.02);
   --tint-border: rgba(0, 0, 0, 0.18);
   --tint-inset: rgba(0, 0, 0, 0.04);
+
+  /* Light theme leans on the darker teal so the pill text/border keeps
+     AA contrast on the near-white background. */
+  --accent-pop: #0d9488;
+  --accent-pop-strong: #0f766e;
+  --accent-pop-tint: rgba(13, 148, 136, 0.10);
+  --accent-pop-glow: rgba(13, 148, 136, 0.22);
 }
 
 *,
@@ -699,6 +715,77 @@ body {
   .task-hero .hero-label { font-size: 1.05rem; }
   .task-hero input[type="search"] { font-size: 1.05rem; padding: 14px 18px; }
   .hero-search-results { max-height: min(70vh, 420px); }
+}
+
+/* spec-seo §10: "browse by category" nav under the hero. Two grouped
+   pill clusters (specialty topics + audience hubs) that link out to the
+   prerendered /topics/<slug>/ and /for/<slug>/ landing pages. Calm at
+   rest, cheery on touch -- the pills lift and bloom the teal accent on
+   hover/focus so the home page feels alive without shouting. */
+.home-browse {
+  width: 100%;
+  max-width: 760px;
+  margin: var(--space-4) auto 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+}
+.home-browse-group { text-align: center; }
+.home-browse-h2 {
+  margin: 0 0 var(--space-3);
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+  color: var(--text-muted);
+}
+.home-browse-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-2);
+}
+.home-browse-list a {
+  display: inline-block;
+  padding: 9px 16px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  line-height: 1.2;
+  color: var(--text-secondary);
+  text-decoration: none;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-pill);
+  transition: color 0.16s ease, border-color 0.16s ease,
+    background 0.16s ease, transform 0.16s ease, box-shadow 0.16s ease;
+}
+.home-browse-list a:hover,
+.home-browse-list a:focus-visible {
+  color: var(--accent-pop-strong);
+  background: var(--accent-pop-tint);
+  border-color: var(--accent-pop);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px var(--accent-pop-glow);
+  outline: none;
+}
+.home-browse-list a:focus-visible {
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 2px;
+}
+.home-browse-list a:active { transform: translateY(0); }
+
+@media (prefers-reduced-motion: reduce) {
+  .home-browse-list a { transition: color 0.16s ease, border-color 0.16s ease, background 0.16s ease; }
+  .home-browse-list a:hover,
+  .home-browse-list a:focus-visible { transform: none; }
+}
+
+@media (max-width: 600px) {
+  .home-browse { gap: var(--space-4); margin-top: var(--space-3); }
+  .home-browse-list a { padding: 8px 14px; font-size: 0.9rem; }
 }
 /* spec-v52 §4.2: prior-auth packet linter dropzone. Lives on the
    pa-lint tile only; reuses the existing tool-meta + tool-result

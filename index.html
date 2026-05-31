@@ -555,6 +555,41 @@
             />
             <ul id="hero-search-results" class="hero-search-results" role="listbox" aria-label="Tools" hidden></ul>
           </div>
+
+          <!-- spec-seo §10: a static, crawlable index of the curated topic
+               clusters (/topics/<slug>/) and audience hubs (/for/<slug>/).
+               This is the "browse by category" half of the home page: a
+               crawler that reads the home document finds real navigable
+               internal links to the indexable landing pages, not only the
+               hero copy, and a human who would rather skim than search has
+               an entry point into every specialty. Present for JS and no-JS
+               alike (plain anchors, no script needed). -->
+          <nav class="home-browse" aria-label="Browse tools by category">
+            <div class="home-browse-group">
+              <h2 class="home-browse-h2">Browse by specialty</h2>
+              <ul class="home-browse-list">
+                <li><a href="/topics/cardiology/">Cardiology</a></li>
+                <li><a href="/topics/nephrology/">Nephrology &amp; acid-base</a></li>
+                <li><a href="/topics/triage/">Triage &amp; acuity</a></li>
+                <li><a href="/topics/medication-safety/">Medication safety</a></li>
+                <li><a href="/topics/obstetrics-pediatrics/">Obstetrics &amp; pediatrics</a></li>
+                <li><a href="/topics/behavioral-health/">Behavioral health</a></li>
+                <li><a href="/topics/billing-and-coding/">Billing &amp; coding</a></li>
+                <li><a href="/topics/patient-literacy/">Patient &amp; insurance literacy</a></li>
+              </ul>
+            </div>
+            <div class="home-browse-group">
+              <h2 class="home-browse-h2">Browse by who you are</h2>
+              <ul class="home-browse-list">
+                <li><a href="/for/clinicians/">Nurses &amp; clinicians</a></li>
+                <li><a href="/for/ems/">EMS &amp; field medicine</a></li>
+                <li><a href="/for/case-managers/">Case managers &amp; UM nurses</a></li>
+                <li><a href="/for/patients/">Patients</a></li>
+                <li><a href="/for/billers/">Billers &amp; coders</a></li>
+                <li><a href="/for/educators/">Educators</a></li>
+              </ul>
+            </div>
+          </nav>
         </section>
       </main>
     </div>
