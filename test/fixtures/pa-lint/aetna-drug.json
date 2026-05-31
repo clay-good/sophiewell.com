@@ -1,0 +1,19 @@
+{
+  "name": "aetna-drug",
+  "description": "Aetna commercial specialty-drug (physician-administered, buy-and-bill) precertification. Exercises the drug-related Aetna overlay rules: R-PA-AETNA-011 flags the step-therapy request with no prior-trial documentation (wave 52-7c), and R-PA-AETNA-010 fires info for the J-code request with no NDC (wave 52-7b). R-PA-AETNA-001/002 pass (CPB cited, clinical note attached); 003 fires info; all other Aetna rules are vacuous for this packet.",
+  "opts": { "totalBytes": 12288 },
+  "documents": [
+    {
+      "name": "aetna-drug-form.txt",
+      "sha256": "fixture-aetna-drug-form",
+      "kind": "TXT",
+      "text": "Aetna Choice POS II Prior Authorization Request\nSpecialty medication precertification.\nPatient: Ana R Gomez\nDOB: 1985-09-22\nMember ID: W246813579\nDate of service: 2026-06-25\nPlace of service: 11\nRequested drug: J9299 nivolumab infusion\nDx: C34.90 lung cancer\nQuantity: 1\nOrdering provider NPI: 1234567893\nServicing facility NPI: 1306849393\nTIN: 123456789\nMedical necessity: stage IV NSCLC per Aetna Clinical Policy Bulletin.\nSignature: Onc MD, 2026-06-15\n"
+    },
+    {
+      "name": "aetna-drug-note.txt",
+      "sha256": "fixture-aetna-drug-note",
+      "kind": "TXT",
+      "text": "Clinical note\nChief complaint: stage IV non-small cell lung cancer.\nHistory of present illness: newly diagnosed metastatic NSCLC, PD-L1 high.\nAssessment and plan: initiate immunotherapy.\nNote date: 2026-06-15\nSigned: Onc MD, 2026-06-15\n"
+    }
+  ]
+}

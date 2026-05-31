@@ -140,8 +140,8 @@ test('runEngine passes every starter rule on a clean multi-doc happy-path packet
   assert.equal(counts.pass, STARTER_RULES.length);
 });
 
-test('STARTER_RULES at wave 52-7b is 145 rules (135 §4.5 core/overlay/specialty + 10 §4.5.7 Aetna commercial)', () => {
-  assert.equal(STARTER_RULES.length, 145);
+test('STARTER_RULES at wave 52-7c is 150 rules (135 §4.5 core/overlay/specialty + 15 §4.5.7 Aetna commercial)', () => {
+  assert.equal(STARTER_RULES.length, 150);
 });
 
 // ---- wave 52-7a sanity checks: Aetna commercial overlay (§4.5.7) ----
@@ -149,7 +149,7 @@ test('STARTER_RULES at wave 52-7b is 145 rules (135 §4.5 core/overlay/specialty
 test('Aetna overlay rules vacuously pass on a non-Aetna packet', () => {
   // happyBundle is not an Aetna packet -> every R-PA-AETNA-* rule passes.
   const findings = runEngine(happyBundle());
-  for (let n = 1; n <= 10; n += 1) {
+  for (let n = 1; n <= 15; n += 1) {
     const id = 'R-PA-AETNA-' + String(n).padStart(3, '0');
     const f = findings.find((x) => x.ruleId === id);
     assert.ok(f, id + ' should be in the findings');
@@ -239,6 +239,57 @@ test('R-PA-AETNA-010 flags an Aetna J-code drug request with no NDC', () => {
   const text = 'Aetna member.\nRequested drug: J9299 nivolumab infusion.\nMedical necessity per CPB.\n';
   const findings = runEngine(bundleOf(text));
   const f = findings.find((x) => x.ruleId === 'R-PA-AETNA-010');
+  assert.equal(f.status, 'info');
+});
+
+// ---- wave 52-7c sanity checks (Aetna rules 11-15) ----
+
+test('R-PA-AETNA-011 flags an Aetna specialty-drug request with no step-therapy prior-trial documentation', () => {
+  const text = 'Aetna member.\nSpecialty medication precertification: J9299 nivolumab.\nMedical necessity per CPB.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-AETNA-011');
+  assert.equal(f.status, 'flag');
+});
+
+test('R-PA-AETNA-011 passes when prior tried-and-failed therapy is documented', () => {
+  const text = 'Aetna member.\nSpecialty medication precertification: J9299 nivolumab.\nPrior therapy: tried and failed carboplatin/pemetrexed with therapeutic failure.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-AETNA-011');
+  assert.equal(f.status, 'pass');
+});
+
+test('R-PA-AETNA-012 flags an Aetna bariatric request missing BMI or a supervised weight-management program', () => {
+  const text = 'Aetna member.\nRequested procedure: sleeve gastrectomy (obesity surgery).\nMedical necessity per CPB 0157.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-AETNA-012');
+  assert.equal(f.status, 'flag');
+});
+
+test('R-PA-AETNA-012 passes when BMI and a supervised weight-management program are documented', () => {
+  const text = 'Aetna member.\nRequested procedure: sleeve gastrectomy.\nBMI 43. Completed a 6-month physician-supervised weight management program with a dietitian.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-AETNA-012');
+  assert.equal(f.status, 'pass');
+});
+
+test('R-PA-AETNA-013 flags an Aetna genetic-testing request with no counseling / family history', () => {
+  const text = 'Aetna member.\nRequested test: hereditary cancer gene panel (BRCA), CPT 81432.\nMedical necessity per CPB 0140.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-AETNA-013');
+  assert.equal(f.status, 'flag');
+});
+
+test('R-PA-AETNA-014 flags a retrospective Aetna request with no justification (info)', () => {
+  const text = 'Aetna member.\nRetrospective review request for services already rendered.\nProcedure CPT 70551.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-AETNA-014');
+  assert.equal(f.status, 'info');
+});
+
+test('R-PA-AETNA-015 flags an Aetna elective surgery in an inpatient setting with no site rationale (info)', () => {
+  const text = 'Aetna member.\nPlace of service: 21\nInpatient admission for knee arthroplasty CPT 27447.\nMedical necessity per CPB.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-AETNA-015');
   assert.equal(f.status, 'info');
 });
 

@@ -1,8 +1,8 @@
 {
   "coverPage": {
     "title": "Sophie PA Packet Lint Report",
-    "packetSize": 4,
-    "detectedPayer": "unknown",
+    "packetSize": 2,
+    "detectedPayer": "aetna",
     "datasetVersion": "1.0.0",
     "reportFormatVersion": "1",
     "generatedAt": null,
@@ -12,9 +12,9 @@
     "totalRulesEvaluated": 150,
     "counts": {
       "block": 0,
-      "flag": 0,
-      "info": 0,
-      "pass": 150,
+      "flag": 8,
+      "info": 5,
+      "pass": 137,
       "error": 0,
       "disabled": 0
     },
@@ -22,12 +22,142 @@
   },
   "findings": [
     {
+      "ruleId": "R-PA-023",
+      "severity": "flag",
+      "status": "flag",
+      "description": "Clinical note references at least one of the requested CPT/HCPCS codes",
+      "citation": "spec-v52 §4.5.1 R-PA-023. Heuristic: at least one CPT/HCPCS code extracted anywhere in the packet also appears inside a clinical-note document.",
+      "evidence": null,
+      "note": "No requested CPT/HCPCS code appears in any clinical-note document.",
+      "remediation": "Address the rule's `note` field and resubmit."
+    },
+    {
+      "ruleId": "R-PA-029",
+      "severity": "flag",
+      "status": "flag",
+      "description": "Step-therapy documentation present when payer requires it",
+      "citation": "spec-v52 §4.5.1 R-PA-029. Default firing condition is keyword absence; payer overlays will pre-filter on whether the requested drug class triggers step therapy.",
+      "evidence": null,
+      "note": "No step-therapy documentation anchor found. If the requested drug class requires step therapy, the packet will be denied.",
+      "remediation": "Address the rule's `note` field and resubmit."
+    },
+    {
+      "ruleId": "R-PA-036",
+      "severity": "flag",
+      "status": "flag",
+      "description": "Frequency / interval present (daily, BID, q6h, etc.)",
+      "citation": "spec-v52 §4.5.1 R-PA-036.",
+      "evidence": null,
+      "note": "No frequency/interval keyword (daily, BID, TID, qXh, etc.) found.",
+      "remediation": "Address the rule's `note` field and resubmit."
+    },
+    {
+      "ruleId": "R-PA-037",
+      "severity": "flag",
+      "status": "flag",
+      "description": "Duration / length of approval requested is present",
+      "citation": "spec-v52 §4.5.1 R-PA-037.",
+      "evidence": null,
+      "note": "No duration / length-of-approval anchor found.",
+      "remediation": "Address the rule's `note` field and resubmit."
+    },
+    {
+      "ruleId": "R-PA-AETNA-011",
+      "severity": "flag",
+      "status": "flag",
+      "description": "Aetna drug precertification: step-therapy prior-trial documentation (drugs tried + therapeutic failure) present",
+      "citation": "spec-v52 §4.5.7 R-PA-AETNA-011. For drugs subject to step therapy Aetna asks providers to \"list all medications the patient has tried specific to the diagnosis and specify therapeutic failure, including length of therapy for each drug.\" (Step therapy does not apply if the requested drug was already used within the past 365 days.) <https://www.aetna.com/health-care-professionals/medicare/part-b-drug-um.html>",
+      "evidence": null,
+      "note": "Aetna drug request subject to step therapy without prior-trial documentation. List the preferred/prerequisite drugs tried, the therapeutic failure, and the length of therapy for each (or document a contraindication / prior use within 365 days).",
+      "remediation": "Address the rule's `note` field and resubmit."
+    },
+    {
+      "ruleId": "R-PA-INF-001",
+      "severity": "flag",
+      "status": "flag",
+      "description": "Infusion / specialty drug: J-code present + NDC documented",
+      "citation": "spec-v52 §4.5.5 R-PA-INF-001. Cross-payer convention: physician-administered drugs require the J-code AND the 11-digit NDC so the manufacturer rebate and drug-specific edits can be applied (echoes R-PA-MCD-006 for Medicaid; this rule generalizes).",
+      "evidence": null,
+      "note": "Infusion request with J-code(s) J9299 but no NDC line / 11-digit NDC pattern.",
+      "remediation": "Attach the missing infusion supporting documentation (NDC, weight-based dose, site of care, FDA indication)."
+    },
+    {
+      "ruleId": "R-PA-INF-003",
+      "severity": "flag",
+      "status": "flag",
+      "description": "Infusion / specialty drug: site-of-care indicator (home / clinic / hospital infusion) documented",
+      "citation": "spec-v52 §4.5.5 R-PA-INF-003. Payers route specialty-drug PAs to different review queues based on site of care (home infusion has different rules than hospital outpatient); the packet must label the planned site.",
+      "evidence": null,
+      "note": "Infusion request without a site-of-care anchor (home / clinic / office / hospital outpatient / infusion center).",
+      "remediation": "Attach the missing infusion supporting documentation (NDC, weight-based dose, site of care, FDA indication)."
+    },
+    {
+      "ruleId": "R-PA-INF-004",
+      "severity": "flag",
+      "status": "flag",
+      "description": "Infusion / specialty drug: FDA-approved indication referenced for the diagnosis",
+      "citation": "spec-v52 §4.5.5 R-PA-INF-004. Biologic / specialty-drug PA approval typically requires that the requested drug have an FDA-approved indication matching the documented diagnosis (or, for off-label use, an NCCN / compendia citation).",
+      "evidence": null,
+      "note": "Specialty-drug infusion request without an FDA-indication / NCCN-compendia anchor.",
+      "remediation": "Attach the missing infusion supporting documentation (NDC, weight-based dose, site of care, FDA indication)."
+    },
+    {
+      "ruleId": "R-PA-031",
+      "severity": "info",
+      "status": "info",
+      "description": "Allergies / intolerances list present",
+      "citation": "spec-v52 §4.5.1 R-PA-031.",
+      "evidence": null,
+      "note": "No allergies / intolerances anchor found.",
+      "remediation": null
+    },
+    {
+      "ruleId": "R-PA-032",
+      "severity": "info",
+      "status": "info",
+      "description": "Active medication list present",
+      "citation": "spec-v52 §4.5.1 R-PA-032.",
+      "evidence": null,
+      "note": "No active-medication-list anchor found.",
+      "remediation": null
+    },
+    {
+      "ruleId": "R-PA-060",
+      "severity": "info",
+      "status": "info",
+      "description": "Packet completeness summary / cover sheet present",
+      "citation": "spec-v52 §4.5.1 R-PA-060.",
+      "evidence": null,
+      "note": "No cover-sheet / checklist anchor found.",
+      "remediation": null
+    },
+    {
+      "ruleId": "R-PA-AETNA-003",
+      "severity": "info",
+      "status": "info",
+      "description": "Aetna precertification: submission channel (EDI / secure provider portal / phone on member ID card) indicated",
+      "citation": "spec-v52 §4.5.7 R-PA-AETNA-003. Aetna: \"You can submit a precertification by electronic data interchange (EDI), through our secure provider website or by phone, using the number on the member's ID card.\" Informational: a cover sheet that names the channel speeds routing. <https://www.aetna.com/health-care-professionals/precertification.html>",
+      "evidence": null,
+      "note": "No Aetna submission channel (Availity / EDI / secure provider portal / the precertification phone number on the member ID card) is noted in the packet. Informational only -- does not affect medical-necessity review.",
+      "remediation": null
+    },
+    {
+      "ruleId": "R-PA-AETNA-010",
+      "severity": "info",
+      "status": "info",
+      "description": "Aetna precertification: NDC documented for a physician-administered (J-code) drug request",
+      "citation": "spec-v52 §4.5.7 R-PA-AETNA-010. Aetna's precertification information request for physician-administered (buy-and-bill) drugs asks for the National Drug Code in addition to the HCPCS J-code, so the request maps to a specific product and dose. Informational: a J-code request without an NDC routes more slowly. <https://www.aetna.com/health-care-professionals/precertification.html>",
+      "evidence": null,
+      "note": "Aetna physician-administered (J-code) drug request without an NDC. Add the National Drug Code so the request maps to a specific product and dose. Informational -- does not affect medical-necessity review.",
+      "remediation": null
+    },
+    {
       "ruleId": "R-PA-001",
       "severity": "block",
       "status": "pass",
       "description": "Patient name present in at least one document",
       "citation": "spec-v52 §4.5.1 R-PA-001 (core, payer-agnostic).",
-      "evidence": "Found \"Jane Q Doe\" in pa-form.txt",
+      "evidence": "Found \"Ana R Gomez\" in aetna-drug-form.txt",
       "note": null,
       "remediation": null
     },
@@ -37,7 +167,7 @@
       "status": "pass",
       "description": "Date of birth present in at least one document",
       "citation": "spec-v52 §4.5.1 R-PA-002 (core, payer-agnostic).",
-      "evidence": "DOB \"1985-03-12\" in pa-form.txt",
+      "evidence": "DOB \"1985-09-22\" in aetna-drug-form.txt",
       "note": null,
       "remediation": null
     },
@@ -47,7 +177,7 @@
       "status": "pass",
       "description": "Member ID present in at least one document",
       "citation": "spec-v52 §4.5.1 R-PA-003. Payer-specific format validation lives in payer overlays (v52-2+).",
-      "evidence": "Member ID \"W123456789\" in pa-form.txt",
+      "evidence": "Member ID \"W246813579\" in aetna-drug-form.txt",
       "note": null,
       "remediation": null
     },
@@ -57,7 +187,7 @@
       "status": "pass",
       "description": "Service date present in the packet",
       "citation": "spec-v52 §4.5.1 R-PA-004 (core, payer-agnostic).",
-      "evidence": "7 date string(s) recognized across the packet.",
+      "evidence": "5 date string(s) recognized across the packet.",
       "note": null,
       "remediation": null
     },
@@ -67,7 +197,7 @@
       "status": "pass",
       "description": "Service date is not past the default retro-auth window (90 days)",
       "citation": "spec-v52 §4.5.1 R-PA-005. Default retro-auth window is 90 days; payer overlays override. Scoped to dates explicitly labeled \"Date of service\" / \"DOS\" / \"Service date\" so DOB strings and signature dates are excluded.",
-      "evidence": "Oldest labeled service date is 47 days in the past.",
+      "evidence": "No labeled service date; rule vacuously satisfied (R-PA-004 covers presence).",
       "note": null,
       "remediation": null
     },
@@ -77,7 +207,7 @@
       "status": "pass",
       "description": "Service date is not more than 365 days in the future",
       "citation": "spec-v52 §4.5.1 R-PA-006. Hard ceiling, not payer-specific. Scoped to dates labeled \"Date of service\" / \"DOS\" / \"Service date\".",
-      "evidence": "Furthest labeled service date is -47 days in the future.",
+      "evidence": "Furthest labeled service date is 27 days in the future.",
       "note": null,
       "remediation": null
     },
@@ -87,7 +217,7 @@
       "status": "pass",
       "description": "At least one CPT or HCPCS code present",
       "citation": "spec-v52 §4.5.1 R-PA-007 (core, payer-agnostic). AMA CPT / CMS HCPCS Level II.",
-      "evidence": "Codes: 99213",
+      "evidence": "Codes: J9299",
       "note": null,
       "remediation": null
     },
@@ -107,7 +237,7 @@
       "status": "pass",
       "description": "Each extracted HCPCS code is well-formed (letter + 4 digits) and not on the bundled deleted-codes list",
       "citation": "spec-v52 §4.5.1 R-PA-009. v52-1k ships an empty deleted-codes table.",
-      "evidence": "No HCPCS Level II code; rule vacuously satisfied.",
+      "evidence": "1 HCPCS code(s) format-valid; none on the bundled deleted list.",
       "note": null,
       "remediation": null
     },
@@ -117,7 +247,7 @@
       "status": "pass",
       "description": "At least one ICD-10-CM diagnosis code present",
       "citation": "spec-v52 §4.5.1 R-PA-010 (core, payer-agnostic). ICD-10-CM, public domain (CMS / CDC).",
-      "evidence": "Codes: I10",
+      "evidence": "Codes: C34.90",
       "note": null,
       "remediation": null
     },
@@ -187,7 +317,7 @@
       "status": "pass",
       "description": "Ordering provider signature present in at least one document",
       "citation": "spec-v52 §4.5.1 R-PA-017. Detects \"Signature:\" / \"Signed by\" / \"Electronically signed\" / \"/s/\" anchors.",
-      "evidence": "Signature anchor in note.txt",
+      "evidence": "Signature anchor in aetna-drug-form.txt",
       "note": null,
       "remediation": null
     },
@@ -197,7 +327,7 @@
       "status": "pass",
       "description": "Ordering provider signature is dated (only if a signature is present)",
       "citation": "spec-v52 §4.5.1 R-PA-018.",
-      "evidence": "Dated signature in note.txt",
+      "evidence": "Dated signature in aetna-drug-form.txt",
       "note": null,
       "remediation": null
     },
@@ -227,7 +357,7 @@
       "status": "pass",
       "description": "Clinical-note content appears in at least one document",
       "citation": "spec-v52 §4.5.1 R-PA-021. Keyword anchors: \"chief complaint\", \"history of present illness\", \"assessment and plan\", \"progress note\", \"clinical note\", \"soap note\".",
-      "evidence": "Clinical-note anchor in note.txt",
+      "evidence": "Clinical-note anchor in aetna-drug-note.txt",
       "note": null,
       "remediation": null
     },
@@ -237,17 +367,7 @@
       "status": "pass",
       "description": "Clinical-note document has at least one extractable date",
       "citation": "spec-v52 §4.5.1 R-PA-022. Default clinical-look-back window is payer-specific; v52-1h checks date presence inside the clinical-note document(s) only.",
-      "evidence": "Date(s) found in clinical-note: note.txt",
-      "note": null,
-      "remediation": null
-    },
-    {
-      "ruleId": "R-PA-023",
-      "severity": "flag",
-      "status": "pass",
-      "description": "Clinical note references at least one of the requested CPT/HCPCS codes",
-      "citation": "spec-v52 §4.5.1 R-PA-023. Heuristic: at least one CPT/HCPCS code extracted anywhere in the packet also appears inside a clinical-note document.",
-      "evidence": "Code 99213 in note.txt",
+      "evidence": "Date(s) found in clinical-note: aetna-drug-note.txt",
       "note": null,
       "remediation": null
     },
@@ -257,7 +377,7 @@
       "status": "pass",
       "description": "Medical-necessity statement present",
       "citation": "spec-v52 §4.5.1 R-PA-024. Free-text anchor: \"medical necessity\", \"medically necessary\", \"necessary because\", \"necessary due to\".",
-      "evidence": "Anchor in note.txt",
+      "evidence": "Anchor in aetna-drug-form.txt",
       "note": null,
       "remediation": null
     },
@@ -267,7 +387,7 @@
       "status": "pass",
       "description": "Lab-result document attached when the packet references labs",
       "citation": "spec-v52 §4.5.1 R-PA-025.",
-      "evidence": "Lab-result document attached: lab.txt",
+      "evidence": "No lab references in packet; rule vacuously satisfied.",
       "note": null,
       "remediation": null
     },
@@ -277,7 +397,7 @@
       "status": "pass",
       "description": "Imaging-report document attached when the packet references imaging",
       "citation": "spec-v52 §4.5.1 R-PA-026.",
-      "evidence": "Imaging-report attached: imaging.txt",
+      "evidence": "No imaging references in packet; rule vacuously satisfied.",
       "note": null,
       "remediation": null
     },
@@ -287,7 +407,7 @@
       "status": "pass",
       "description": "Each attached lab-result document is dated within the default freshness window (360 days)",
       "citation": "spec-v52 §4.5.1 R-PA-027. Default freshness window is 12 months; payer overlays override.",
-      "evidence": "1 lab-result document(s) within freshness window.",
+      "evidence": "No lab-result documents to evaluate.",
       "note": null,
       "remediation": null
     },
@@ -297,17 +417,7 @@
       "status": "pass",
       "description": "Each attached imaging-report document is dated within the default freshness window (12 months)",
       "citation": "spec-v52 §4.5.1 R-PA-028.",
-      "evidence": "1 imaging-report document(s) within freshness window.",
-      "note": null,
-      "remediation": null
-    },
-    {
-      "ruleId": "R-PA-029",
-      "severity": "flag",
-      "status": "pass",
-      "description": "Step-therapy documentation present when payer requires it",
-      "citation": "spec-v52 §4.5.1 R-PA-029. Default firing condition is keyword absence; payer overlays will pre-filter on whether the requested drug class triggers step therapy.",
-      "evidence": "Anchor in pa-form.txt",
+      "evidence": "No imaging-report documents to evaluate.",
       "note": null,
       "remediation": null
     },
@@ -317,27 +427,7 @@
       "status": "pass",
       "description": "Prior-treatment list present when step therapy applies",
       "citation": "spec-v52 §4.5.1 R-PA-030. Triggered when a step-therapy anchor is present; passes when the packet documents at least one prior tried-and-failed medication.",
-      "evidence": "Prior-treatment anchor in pa-form.txt",
-      "note": null,
-      "remediation": null
-    },
-    {
-      "ruleId": "R-PA-031",
-      "severity": "info",
-      "status": "pass",
-      "description": "Allergies / intolerances list present",
-      "citation": "spec-v52 §4.5.1 R-PA-031.",
-      "evidence": "Anchor in note.txt",
-      "note": null,
-      "remediation": null
-    },
-    {
-      "ruleId": "R-PA-032",
-      "severity": "info",
-      "status": "pass",
-      "description": "Active medication list present",
-      "citation": "spec-v52 §4.5.1 R-PA-032.",
-      "evidence": "Anchor in note.txt",
+      "evidence": "No step-therapy anchor; rule vacuously satisfied (R-PA-029 covers presence).",
       "note": null,
       "remediation": null
     },
@@ -368,26 +458,6 @@
       "description": "Hepatic function (LFTs) present when packet references a hepatically-dosed agent",
       "citation": "spec-v52 §4.5.1 R-PA-035. Triggered by \"hepatic dose adjustment\" / common hepatically-cleared drug names.",
       "evidence": "No hepatically-dosed-agent anchor; rule vacuously satisfied.",
-      "note": null,
-      "remediation": null
-    },
-    {
-      "ruleId": "R-PA-036",
-      "severity": "flag",
-      "status": "pass",
-      "description": "Frequency / interval present (daily, BID, q6h, etc.)",
-      "citation": "spec-v52 §4.5.1 R-PA-036.",
-      "evidence": "Frequency \"daily\" in note.txt",
-      "note": null,
-      "remediation": null
-    },
-    {
-      "ruleId": "R-PA-037",
-      "severity": "flag",
-      "status": "pass",
-      "description": "Duration / length of approval requested is present",
-      "citation": "spec-v52 §4.5.1 R-PA-037.",
-      "evidence": "Anchor in pa-form.txt",
       "note": null,
       "remediation": null
     },
@@ -447,7 +517,7 @@
       "status": "pass",
       "description": "No document in the packet is password-protected or encrypted",
       "citation": "spec-v52 §4.5.1 R-PA-043. Triggered by the view's parse-error metadata (encrypted PDFs and password-protected DOCXs throw at extract time) and by explicit \"password protected\" / \"encrypted document\" anchors in the extracted text.",
-      "evidence": "4 document(s) opened without an encryption error.",
+      "evidence": "2 document(s) opened without an encryption error.",
       "note": null,
       "remediation": null
     },
@@ -457,7 +527,7 @@
       "status": "pass",
       "description": "Every document in the packet has extractable content (non-zero text length)",
       "citation": "spec-v52 §4.5.1 R-PA-044. Catches password-protected, corrupted, or empty documents that the ingest step could not open.",
-      "evidence": "4 document(s) opened cleanly.",
+      "evidence": "2 document(s) opened cleanly.",
       "note": null,
       "remediation": null
     },
@@ -517,7 +587,7 @@
       "status": "pass",
       "description": "Diagnosis-procedure linkage shown (an ICD-10 code and a CPT/HCPCS code co-occur within the same document)",
       "citation": "spec-v52 §4.5.1 R-PA-050. Heuristic: at least one document carries both an ICD-10 code and a CPT/HCPCS code within ~400 characters of each other.",
-      "evidence": "ICD-10 + CPT/HCPCS co-occur in pa-form.txt",
+      "evidence": "ICD-10 + CPT/HCPCS co-occur in aetna-drug-form.txt",
       "note": null,
       "remediation": null
     },
@@ -612,22 +682,12 @@
       "remediation": null
     },
     {
-      "ruleId": "R-PA-060",
-      "severity": "info",
-      "status": "pass",
-      "description": "Packet completeness summary / cover sheet present",
-      "citation": "spec-v52 §4.5.1 R-PA-060.",
-      "evidence": "Anchor in pa-form.txt",
-      "note": null,
-      "remediation": null
-    },
-    {
       "ruleId": "R-PA-AETNA-001",
       "severity": "flag",
       "status": "pass",
       "description": "Aetna precertification: medical-necessity criteria (Clinical Policy Bulletin / CMS / MCG) referenced",
       "citation": "spec-v52 §4.5.7 R-PA-AETNA-001. Aetna determines coverage from \"plan documents and (when applicable) a review of clinical information to determine whether clinical guidelines/criteria for coverage are met,\" applying Aetna Clinical Policy Bulletins, CMS guidelines, or MCG criteria, and asks providers to review the applicable CPB before submitting. <https://www.aetna.com/health-care-professionals/precertification.html>",
-      "evidence": "Not an Aetna packet; rule vacuously satisfied.",
+      "evidence": "Medical-necessity criteria reference in aetna-drug-form.txt",
       "note": null,
       "remediation": null
     },
@@ -637,17 +697,7 @@
       "status": "pass",
       "description": "Aetna precertification: supporting medical records / clinical documentation attached",
       "citation": "spec-v52 §4.5.7 R-PA-AETNA-002. Aetna instructs providers to submit medical records related to the member's condition for which treatment is proposed; a precertification with no clinical document attached cannot be reviewed on the merits. <https://www.aetna.com/health-care-professionals/precertification.html>",
-      "evidence": "Not an Aetna packet; rule vacuously satisfied.",
-      "note": null,
-      "remediation": null
-    },
-    {
-      "ruleId": "R-PA-AETNA-003",
-      "severity": "info",
-      "status": "pass",
-      "description": "Aetna precertification: submission channel (EDI / secure provider portal / phone on member ID card) indicated",
-      "citation": "spec-v52 §4.5.7 R-PA-AETNA-003. Aetna: \"You can submit a precertification by electronic data interchange (EDI), through our secure provider website or by phone, using the number on the member's ID card.\" Informational: a cover sheet that names the channel speeds routing. <https://www.aetna.com/health-care-professionals/precertification.html>",
-      "evidence": "Not an Aetna packet; rule vacuously satisfied.",
+      "evidence": "Supporting clinical document present: aetna-drug-note.txt (clinical-note)",
       "note": null,
       "remediation": null
     },
@@ -657,7 +707,7 @@
       "status": "pass",
       "description": "Aetna precertification: requested service is on Aetna's participating-provider precertification list",
       "citation": "spec-v52 §4.5.7 R-PA-AETNA-004. Aetna precertification applies only to services on its \"Participating provider precertification list\"; requesting authorization for a non-listed service is unnecessary. Wave 52-7a ships no bundled list, so the rule is vacuously satisfied with a pointer to the list (it mirrors core R-PA-053; a later wave bundles the list and flips this to a real membership test). <https://www.aetna.com/health-care-professionals/precertification.html>",
-      "evidence": "Not an Aetna packet; rule vacuously satisfied.",
+      "evidence": "No bundled Aetna precertification list at wave 52-7a; rule vacuously satisfied. Verify the requested service against Aetna's current participating-provider precertification list.",
       "note": null,
       "remediation": null
     },
@@ -667,7 +717,7 @@
       "status": "pass",
       "description": "Aetna precertification: procedure-specific clinical questionnaire / precertification information request form completed when required",
       "citation": "spec-v52 §4.5.7 R-PA-AETNA-005. Aetna: \"Providers may be asked to complete a short questionnaire to provide additional clinical information,\" and publishes procedure-specific Precertification Information Request Forms (e.g. spinal surgery, obesity/bariatric surgery, dorsal column / spinal-cord stimulator). When the packet requests one of those procedures, the matching questionnaire response should be present. <https://www.aetna.com/health-care-professionals/precertification.html>",
-      "evidence": "Not an Aetna packet; rule vacuously satisfied.",
+      "evidence": "Aetna packet without a procedure that triggers a specific precertification questionnaire; rule vacuously satisfied.",
       "note": null,
       "remediation": null
     },
@@ -677,7 +727,7 @@
       "status": "pass",
       "description": "Aetna inpatient precertification: concurrent-review documentation (clinical progress + discharge / continuing-care plan) present",
       "citation": "spec-v52 §4.5.7 R-PA-AETNA-006. Aetna concurrent review \"collect[s] information from the care team about the patient's condition and progress to determine coverage\" and develops a discharge and continuing-care plan early in the stay; an inpatient request should carry that clinical update. <https://www.aetna.com/health-care-professionals/utilization-management/concurrent-review.html>",
-      "evidence": "Not an Aetna packet; rule vacuously satisfied.",
+      "evidence": "Aetna packet without an inpatient / continued-stay context; rule vacuously satisfied.",
       "note": null,
       "remediation": null
     },
@@ -687,7 +737,7 @@
       "status": "pass",
       "description": "Aetna site-of-service review: hospital-outpatient MRI / CT addresses the site-of-care requirement",
       "citation": "spec-v52 §4.5.7 R-PA-AETNA-007. Aetna: \"Some members will have site-of-care requirements for MRI and CT scans when services are requested in a hospital outpatient setting.\" A hospital-outpatient advanced-imaging request should document why that site is required rather than a freestanding center. <https://www.aetna.com/health-care-professionals/precertification.html>",
-      "evidence": "Not an Aetna packet; rule vacuously satisfied.",
+      "evidence": "Aetna packet without a hospital-outpatient MRI / CT request; site-of-care rule vacuously satisfied.",
       "note": null,
       "remediation": null
     },
@@ -697,7 +747,7 @@
       "status": "pass",
       "description": "Aetna expedited / urgent precertification: clinical urgency justification present",
       "citation": "spec-v52 §4.5.7 R-PA-AETNA-008. Aetna processes a request on an expedited basis when \"a delay in decision making might seriously jeopardize the life or health of the member or [the] ability to regain maximum function.\" A request that asks for expedited handling should state that clinical urgency. <https://www.aetna.com/health-care-professionals/precertification.html>",
-      "evidence": "Not an Aetna packet; rule vacuously satisfied.",
+      "evidence": "Aetna packet without an expedited / urgent request; rule vacuously satisfied.",
       "note": null,
       "remediation": null
     },
@@ -707,27 +757,7 @@
       "status": "pass",
       "description": "Aetna precertification: objective evidence (visual field / photographs / measurements) present for procedures whose CPB requires it",
       "citation": "spec-v52 §4.5.7 R-PA-AETNA-009. Several Aetna Clinical Policy Bulletins condition coverage on objective evidence -- e.g. visual-field tests and margin-reflex-distance photographs for blepharoplasty, photographs and excised-tissue weight for panniculectomy / reduction mammaplasty. When the packet requests one of those procedures, that objective evidence should be attached. <https://www.aetna.com/health-care-professionals/precertification.html>",
-      "evidence": "Not an Aetna packet; rule vacuously satisfied.",
-      "note": null,
-      "remediation": null
-    },
-    {
-      "ruleId": "R-PA-AETNA-010",
-      "severity": "info",
-      "status": "pass",
-      "description": "Aetna precertification: NDC documented for a physician-administered (J-code) drug request",
-      "citation": "spec-v52 §4.5.7 R-PA-AETNA-010. Aetna's precertification information request for physician-administered (buy-and-bill) drugs asks for the National Drug Code in addition to the HCPCS J-code, so the request maps to a specific product and dose. Informational: a J-code request without an NDC routes more slowly. <https://www.aetna.com/health-care-professionals/precertification.html>",
-      "evidence": "Not an Aetna packet; rule vacuously satisfied.",
-      "note": null,
-      "remediation": null
-    },
-    {
-      "ruleId": "R-PA-AETNA-011",
-      "severity": "flag",
-      "status": "pass",
-      "description": "Aetna drug precertification: step-therapy prior-trial documentation (drugs tried + therapeutic failure) present",
-      "citation": "spec-v52 §4.5.7 R-PA-AETNA-011. For drugs subject to step therapy Aetna asks providers to \"list all medications the patient has tried specific to the diagnosis and specify therapeutic failure, including length of therapy for each drug.\" (Step therapy does not apply if the requested drug was already used within the past 365 days.) <https://www.aetna.com/health-care-professionals/medicare/part-b-drug-um.html>",
-      "evidence": "Not an Aetna packet; rule vacuously satisfied.",
+      "evidence": "Aetna packet without a procedure that requires objective photographic / measurement evidence; rule vacuously satisfied.",
       "note": null,
       "remediation": null
     },
@@ -737,7 +767,7 @@
       "status": "pass",
       "description": "Aetna bariatric surgery (CPB 0157): BMI and a structured / supervised weight-management program documented",
       "citation": "spec-v52 §4.5.7 R-PA-AETNA-012. Aetna CPB 0157 (Obesity Surgery) requires class III obesity (BMI >= 40, or >= 35 with a serious comorbidity) and documentation of a structured / physician-supervised weight-management program before bariatric surgery. <https://www.aetna.com/cpb/medical/data/100_199/0157.html>",
-      "evidence": "Not an Aetna packet; rule vacuously satisfied.",
+      "evidence": "Aetna packet without a bariatric-surgery request; rule vacuously satisfied.",
       "note": null,
       "remediation": null
     },
@@ -747,7 +777,7 @@
       "status": "pass",
       "description": "Aetna genetic testing (CPB 0140): pre-test genetic counseling and personal / family history documented",
       "citation": "spec-v52 §4.5.7 R-PA-AETNA-013. Aetna CPB 0140 conditions many genetic tests on \"pre- and post-test counseling by an appropriate independent provider (not an employee of the genetics testing laboratory)\" and a supporting personal / family history (pedigree). <https://www.aetna.com/cpb/medical/data/100_199/0140.html>",
-      "evidence": "Not an Aetna packet; rule vacuously satisfied.",
+      "evidence": "Aetna packet without a genetic-testing request; rule vacuously satisfied.",
       "note": null,
       "remediation": null
     },
@@ -757,7 +787,7 @@
       "status": "pass",
       "description": "Aetna retrospective / retroactive request: a retro-review justification is documented",
       "citation": "spec-v52 §4.5.7 R-PA-AETNA-014. Aetna accepts retrospective review only when the service was already rendered for a documented reason (e.g. emergent care, member eligibility not known at the time). A retro request should state that reason. Informational. <https://www.aetna.com/health-care-professionals/precertification.html>",
-      "evidence": "Not an Aetna packet; rule vacuously satisfied.",
+      "evidence": "Aetna packet is not a retrospective request; rule vacuously satisfied.",
       "note": null,
       "remediation": null
     },
@@ -767,7 +797,7 @@
       "status": "pass",
       "description": "Aetna Outpatient Surgical Procedures policy: hospital-setting elective surgery documents the medical-necessity rationale for the site",
       "citation": "spec-v52 §4.5.7 R-PA-AETNA-015. Aetna's Outpatient Surgical Procedures policy: elective procedures in the program \"should be performed in an ambulatory surgical center (ASC) or office setting unless the medical necessity criteria ... is met,\" and \"clinical rationale and documentation must be provided for ... exceptions.\" A hospital-outpatient / inpatient elective surgery should document why the higher-acuity site is required. Informational. <https://www.aetna.com/health-care-professionals/outpatient-surgical-procedures.html>",
-      "evidence": "Not an Aetna packet; rule vacuously satisfied.",
+      "evidence": "Aetna packet without a surgical CPT; site-of-service rule vacuously satisfied.",
       "note": null,
       "remediation": null
     },
@@ -1122,42 +1152,12 @@
       "remediation": null
     },
     {
-      "ruleId": "R-PA-INF-001",
-      "severity": "flag",
-      "status": "pass",
-      "description": "Infusion / specialty drug: J-code present + NDC documented",
-      "citation": "spec-v52 §4.5.5 R-PA-INF-001. Cross-payer convention: physician-administered drugs require the J-code AND the 11-digit NDC so the manufacturer rebate and drug-specific edits can be applied (echoes R-PA-MCD-006 for Medicaid; this rule generalizes).",
-      "evidence": "No J-code in packet; rule vacuously satisfied.",
-      "note": null,
-      "remediation": null
-    },
-    {
       "ruleId": "R-PA-INF-002",
       "severity": "flag",
       "status": "pass",
       "description": "Infusion / specialty drug: weight-based dose calculation shown when dosing is per kg",
       "citation": "spec-v52 §4.5.5 R-PA-INF-002. Weight-based biologic / chemotherapy infusions require an explicit weight + dose calculation so the payer can verify the dose against FDA labeling.",
-      "evidence": "No J-code in packet; rule vacuously satisfied.",
-      "note": null,
-      "remediation": null
-    },
-    {
-      "ruleId": "R-PA-INF-003",
-      "severity": "flag",
-      "status": "pass",
-      "description": "Infusion / specialty drug: site-of-care indicator (home / clinic / hospital infusion) documented",
-      "citation": "spec-v52 §4.5.5 R-PA-INF-003. Payers route specialty-drug PAs to different review queues based on site of care (home infusion has different rules than hospital outpatient); the packet must label the planned site.",
-      "evidence": "No J-code in packet; rule vacuously satisfied.",
-      "note": null,
-      "remediation": null
-    },
-    {
-      "ruleId": "R-PA-INF-004",
-      "severity": "flag",
-      "status": "pass",
-      "description": "Infusion / specialty drug: FDA-approved indication referenced for the diagnosis",
-      "citation": "spec-v52 §4.5.5 R-PA-INF-004. Biologic / specialty-drug PA approval typically requires that the requested drug have an FDA-approved indication matching the documented diagnosis (or, for off-label use, an NCCN / compendia citation).",
-      "evidence": "No J-code in packet; rule vacuously satisfied.",
+      "evidence": "No weight-based-dose anchor; rule vacuously satisfied.",
       "note": null,
       "remediation": null
     },
@@ -1167,7 +1167,7 @@
       "status": "pass",
       "description": "Infusion / specialty drug: premedication / infusion-reaction monitoring plan documented",
       "citation": "spec-v52 §4.5.5 R-PA-INF-005. Many biologics carry an infusion-reaction risk (rituximab, infliximab, IV iron, etc.); the packet should reference a premedication regimen or in-suite monitoring plan when the drug carries that risk.",
-      "evidence": "No J-code in packet; rule vacuously satisfied.",
+      "evidence": "No infusion-reaction-risk drug anchor; rule vacuously satisfied.",
       "note": null,
       "remediation": null
     },
@@ -1524,76 +1524,15 @@
   ],
   "evidenceLedger": [
     {
-      "document": "imaging.txt",
-      "sha256": "fixture-img",
-      "kind": "TXT",
-      "role": "imaging-report",
-      "payer": "unknown",
-      "ledger": {
-        "dates": [
-          "2026-03-15"
-        ],
-        "signature": {
-          "present": false,
-          "dated": false
-        }
-      }
-    },
-    {
-      "document": "lab.txt",
-      "sha256": "fixture-lab",
-      "kind": "TXT",
-      "role": "lab-result",
-      "payer": "unknown",
-      "ledger": {
-        "dates": [
-          "2026-04-01"
-        ],
-        "signature": {
-          "present": false,
-          "dated": false
-        }
-      }
-    },
-    {
-      "document": "note.txt",
-      "sha256": "fixture-note",
-      "kind": "TXT",
-      "role": "clinical-note",
-      "payer": "unknown",
-      "ledger": {
-        "cpts": [
-          "99213"
-        ],
-        "dates": [
-          "2026-04-12",
-          "2026-04-12"
-        ],
-        "weight": {
-          "value": 70,
-          "unit": "kg"
-        },
-        "height": {
-          "value": 175,
-          "unit": "cm"
-        },
-        "frequency": "daily",
-        "signature": {
-          "present": true,
-          "dated": true
-        }
-      }
-    },
-    {
-      "document": "pa-form.txt",
-      "sha256": "fixture-pa-form",
+      "document": "aetna-drug-form.txt",
+      "sha256": "fixture-aetna-drug-form",
       "kind": "TXT",
       "role": "pa-form",
-      "payer": "unknown",
+      "payer": "aetna",
       "ledger": {
-        "patientName": "Jane Q Doe",
-        "dob": "1985-03-12",
-        "memberId": "W123456789",
+        "patientName": "Ana R Gomez",
+        "dob": "1985-09-22",
+        "memberId": "W246813579",
         "npis": [
           "1234567893",
           "1306849393"
@@ -1602,24 +1541,40 @@
           "123456789"
         ],
         "cpts": [
-          "99213"
+          "J9299"
         ],
         "icd10": [
-          "I10"
+          "C34.90"
         ],
         "pos": [
           "11"
         ],
         "dates": [
-          "1985-03-12",
-          "2026-04-12",
-          "2026-04-12"
+          "1985-09-22",
+          "2026-06-25",
+          "2026-06-15"
         ],
         "serviceDates": [
-          "2026-04-12"
+          "2026-06-25"
         ],
         "quantity": 1,
-        "frequency": "daily",
+        "signature": {
+          "present": true,
+          "dated": true
+        }
+      }
+    },
+    {
+      "document": "aetna-drug-note.txt",
+      "sha256": "fixture-aetna-drug-note",
+      "kind": "TXT",
+      "role": "clinical-note",
+      "payer": "unknown",
+      "ledger": {
+        "dates": [
+          "2026-06-15",
+          "2026-06-15"
+        ],
         "signature": {
           "present": true,
           "dated": true
@@ -1629,104 +1584,8 @@
   ],
   "extractedData": [
     {
-      "document": "imaging.txt",
-      "sha256": "fixture-img",
-      "extract": {
-        "npis": [],
-        "ssns": [],
-        "cpts": [],
-        "icd10": [],
-        "pos": [],
-        "dates": [
-          "2026-03-15"
-        ],
-        "serviceDates": [],
-        "patientName": null,
-        "dob": null,
-        "memberId": null,
-        "tins": [],
-        "quantity": null,
-        "signature": {
-          "present": false,
-          "dated": false
-        },
-        "weight": null,
-        "height": null,
-        "frequency": null,
-        "replacementChars": 0,
-        "textLength": 106
-      }
-    },
-    {
-      "document": "lab.txt",
-      "sha256": "fixture-lab",
-      "extract": {
-        "npis": [],
-        "ssns": [],
-        "cpts": [],
-        "icd10": [],
-        "pos": [],
-        "dates": [
-          "2026-04-01"
-        ],
-        "serviceDates": [],
-        "patientName": null,
-        "dob": null,
-        "memberId": null,
-        "tins": [],
-        "quantity": null,
-        "signature": {
-          "present": false,
-          "dated": false
-        },
-        "weight": null,
-        "height": null,
-        "frequency": null,
-        "replacementChars": 0,
-        "textLength": 95
-      }
-    },
-    {
-      "document": "note.txt",
-      "sha256": "fixture-note",
-      "extract": {
-        "npis": [],
-        "ssns": [],
-        "cpts": [
-          "99213"
-        ],
-        "icd10": [],
-        "pos": [],
-        "dates": [
-          "2026-04-12",
-          "2026-04-12"
-        ],
-        "serviceDates": [],
-        "patientName": null,
-        "dob": null,
-        "memberId": null,
-        "tins": [],
-        "quantity": null,
-        "signature": {
-          "present": true,
-          "dated": true
-        },
-        "weight": {
-          "value": 70,
-          "unit": "kg"
-        },
-        "height": {
-          "value": 175,
-          "unit": "cm"
-        },
-        "frequency": "daily",
-        "replacementChars": 0,
-        "textLength": 380
-      }
-    },
-    {
-      "document": "pa-form.txt",
-      "sha256": "fixture-pa-form",
+      "document": "aetna-drug-form.txt",
+      "sha256": "fixture-aetna-drug-form",
       "extract": {
         "npis": [
           "1234567893",
@@ -1734,25 +1593,25 @@
         ],
         "ssns": [],
         "cpts": [
-          "99213"
+          "J9299"
         ],
         "icd10": [
-          "I10"
+          "C34.90"
         ],
         "pos": [
           "11"
         ],
         "dates": [
-          "1985-03-12",
-          "2026-04-12",
-          "2026-04-12"
+          "1985-09-22",
+          "2026-06-25",
+          "2026-06-15"
         ],
         "serviceDates": [
-          "2026-04-12"
+          "2026-06-25"
         ],
-        "patientName": "Jane Q Doe",
-        "dob": "1985-03-12",
-        "memberId": "W123456789",
+        "patientName": "Ana R Gomez",
+        "dob": "1985-09-22",
+        "memberId": "W246813579",
         "tins": [
           "123456789"
         ],
@@ -1763,9 +1622,39 @@
         },
         "weight": null,
         "height": null,
-        "frequency": "daily",
+        "frequency": null,
         "replacementChars": 0,
-        "textLength": 505
+        "textLength": 455
+      }
+    },
+    {
+      "document": "aetna-drug-note.txt",
+      "sha256": "fixture-aetna-drug-note",
+      "extract": {
+        "npis": [],
+        "ssns": [],
+        "cpts": [],
+        "icd10": [],
+        "pos": [],
+        "dates": [
+          "2026-06-15",
+          "2026-06-15"
+        ],
+        "serviceDates": [],
+        "patientName": null,
+        "dob": null,
+        "memberId": null,
+        "tins": [],
+        "quantity": null,
+        "signature": {
+          "present": true,
+          "dated": true
+        },
+        "weight": null,
+        "height": null,
+        "frequency": null,
+        "replacementChars": 0,
+        "textLength": 236
       }
     }
   ],
@@ -1773,6 +1662,19 @@
     "rulesetVersion": "1.0.0",
     "reportFormatVersion": "1",
     "ruleIds": [
+      "R-PA-023",
+      "R-PA-029",
+      "R-PA-036",
+      "R-PA-037",
+      "R-PA-AETNA-011",
+      "R-PA-INF-001",
+      "R-PA-INF-003",
+      "R-PA-INF-004",
+      "R-PA-031",
+      "R-PA-032",
+      "R-PA-060",
+      "R-PA-AETNA-003",
+      "R-PA-AETNA-010",
       "R-PA-001",
       "R-PA-002",
       "R-PA-003",
@@ -1795,21 +1697,15 @@
       "R-PA-020",
       "R-PA-021",
       "R-PA-022",
-      "R-PA-023",
       "R-PA-024",
       "R-PA-025",
       "R-PA-026",
       "R-PA-027",
       "R-PA-028",
-      "R-PA-029",
       "R-PA-030",
-      "R-PA-031",
-      "R-PA-032",
       "R-PA-033",
       "R-PA-034",
       "R-PA-035",
-      "R-PA-036",
-      "R-PA-037",
       "R-PA-038",
       "R-PA-039",
       "R-PA-040",
@@ -1832,18 +1728,14 @@
       "R-PA-057",
       "R-PA-058",
       "R-PA-059",
-      "R-PA-060",
       "R-PA-AETNA-001",
       "R-PA-AETNA-002",
-      "R-PA-AETNA-003",
       "R-PA-AETNA-004",
       "R-PA-AETNA-005",
       "R-PA-AETNA-006",
       "R-PA-AETNA-007",
       "R-PA-AETNA-008",
       "R-PA-AETNA-009",
-      "R-PA-AETNA-010",
-      "R-PA-AETNA-011",
       "R-PA-AETNA-012",
       "R-PA-AETNA-013",
       "R-PA-AETNA-014",
@@ -1883,10 +1775,7 @@
       "R-PA-GEN-003",
       "R-PA-GEN-004",
       "R-PA-GEN-005",
-      "R-PA-INF-001",
       "R-PA-INF-002",
-      "R-PA-INF-003",
-      "R-PA-INF-004",
       "R-PA-INF-005",
       "R-PA-MA-001",
       "R-PA-MA-002",
@@ -1927,23 +1816,15 @@
     "disabledRules": [],
     "documentHashes": [
       {
-        "document": "imaging.txt",
-        "sha256": "fixture-img"
+        "document": "aetna-drug-form.txt",
+        "sha256": "fixture-aetna-drug-form"
       },
       {
-        "document": "lab.txt",
-        "sha256": "fixture-lab"
-      },
-      {
-        "document": "note.txt",
-        "sha256": "fixture-note"
-      },
-      {
-        "document": "pa-form.txt",
-        "sha256": "fixture-pa-form"
+        "document": "aetna-drug-note.txt",
+        "sha256": "fixture-aetna-drug-note"
       }
     ],
-    "totalBytes": 20480,
+    "totalBytes": 12288,
     "generatedAt": null,
     "datasetStaleness": {
       "rulesetVersion": "1.0.0",

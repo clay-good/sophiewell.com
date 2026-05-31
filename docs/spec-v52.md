@@ -606,9 +606,9 @@ anchored to a public payer URL tracked in the staleness ledger
 (§8.3) and re-verified on the §4.5.6 cadence.
 
 The first overlay is **Aetna** (`R-PA-AETNA-NNN`, ledger source
-`aetna-precert`, anchored to Aetna's public precertification and
-utilization-management pages). Waves 52-7a/7b ship the first 10
-of a planned ~20:
+`aetna-precert`, anchored to Aetna's public precertification,
+utilization-management, and Clinical Policy Bulletin pages). Waves
+52-7a/7b/7c ship the first 15 of a planned ~20:
 
 | Id              | Rule                                                                       | Severity |
 |-----------------|----------------------------------------------------------------------------|----------|
@@ -622,13 +622,21 @@ of a planned ~20:
 | `R-PA-AETNA-008`| Expedited / urgent request states the clinical urgency                     | flag     |
 | `R-PA-AETNA-009`| Objective evidence (visual field / photos / measurements) when CPB requires it | flag |
 | `R-PA-AETNA-010`| NDC documented for a physician-administered (J-code) drug request          | info     |
+| `R-PA-AETNA-011`| Step-therapy prior-trial documentation for a drug request                  | flag     |
+| `R-PA-AETNA-012`| Bariatric surgery (CPB 0157): BMI + supervised weight-management program   | flag     |
+| `R-PA-AETNA-013`| Genetic testing (CPB 0140): pre-test counseling + family history           | flag     |
+| `R-PA-AETNA-014`| Retrospective / retroactive request states a retro-review justification    | info     |
+| `R-PA-AETNA-015`| Hospital-setting elective surgery documents the site-of-service rationale  | info     |
 
 `R-PA-AETNA-004` mirrors core `R-PA-053`: it ships without a
 bundled precert list and vacuously passes with a pointer until a
 later wave bundles the list and flips it to a real membership
 test. Rules 006–008 key off the review *modes* Aetna runs
-(concurrent / continued-stay, site-of-service, expedited); 009–010
-off documentation Aetna's CPBs and precert forms call out. Each
+(concurrent / continued-stay, site-of-service, expedited); 009–013
+off documentation Aetna's CPBs and precert forms call out
+(objective evidence, NDC, step therapy, bariatric CPB 0157,
+genetic CPB 0140); 014–015 off submission timing and the
+Outpatient Surgical Procedures site-of-service policy. Each
 self-gates on the `aetna` bucket and vacuously passes on every
 other packet. Subsequent waves extend the Aetna set toward ~20
 rules and then add United Healthcare and Anthem as their own
@@ -1222,7 +1230,7 @@ self-contained PR; the catalog count rises only at wave 52-1.
   policy bulletin library. Source URLs pinned and hashed.
 - ~20–40 rules per payer.
 - **Status: Aetna opened ahead of schedule in wave 52-7a
-  (2026-05-30) and reached 10 of ~20 rules in wave 52-7b
+  (2026-05-30) and reached 15 of ~20 rules by wave 52-7c
   (2026-05-30), the `R-PA-AETNA-NNN` family (§4.5.7). United
   Healthcare and Anthem follow.**
 
@@ -1398,6 +1406,24 @@ silently; the audit trail records the disablement.
 
 - 2026-05-27 — v52 proposed. Five waves outlined (52-1 through
   52-5+). Catalog count target at v52-1 close: 255.
+- 2026-05-30 — wave 52-7c (§4.5.7 Aetna commercial overlay, 11 → 15 of ~20).
+  Adds five more self-gating `R-PA-AETNA-NNN` rules anchored to named Aetna
+  Clinical Policy Bulletins and the Outpatient Surgical Procedures policy:
+  step-therapy prior-trial documentation for a drug request (R-PA-AETNA-011,
+  flag), the bariatric CPB 0157 BMI + supervised-weight-management requirement
+  (012, flag), the genetic CPB 0140 pre-test counseling + family-history
+  requirement (013, flag), a retrospective-request justification (014, info),
+  and the Outpatient Surgical Procedures site-of-service rationale for a
+  hospital-setting elective surgery (015, info). All five vacuously pass off
+  the `aetna` bucket.
+
+  No ledger/bucket change (all fifteen Aetna rules map to the `aetna-precert`
+  source by prefix). Coverage is now 150 rules shipped (was 145), 102
+  source-anchored (was 97), 0 orphans, 0 gaps. A third golden fixture
+  `aetna-drug` (specialty J-code request) demonstrates 011 + 010 firing; the
+  `aetna-precert` fixture now also surfaces 015. All eight goldens re-seeded;
+  e2e finding count 145 → 150. Tests: +9 engine sanity assertions (count
+  145→150 plus per-rule checks). View wave banner advanced to 52-7c.
 - 2026-05-30 — wave 52-7b (§4.5.7 Aetna commercial overlay, 6 → 10 of ~20).
   Adds five more self-gating `R-PA-AETNA-NNN` rules keyed to Aetna's public
   utilization-management surface: concurrent-review documentation for an

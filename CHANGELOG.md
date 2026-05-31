@@ -6,6 +6,24 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v52 wave 52-7c — §4.5.7 Aetna commercial overlay, 11 → 15 of ~20)
+
+Five more self-gating `R-PA-AETNA-NNN` rules anchored to named Aetna Clinical
+Policy Bulletins and the Outpatient Surgical Procedures policy: step-therapy
+prior-trial documentation for a drug request (011, flag), the bariatric CPB
+0157 BMI + supervised-weight-management requirement (012, flag), the genetic
+CPB 0140 pre-test counseling + family-history requirement (013, flag), a
+retrospective-request justification (014, info), and the Outpatient Surgical
+Procedures site-of-service rationale for a hospital-setting elective surgery
+(015, info). Each vacuously passes off the `aetna` bucket.
+
+No ledger/bucket change (all fifteen Aetna rules map to the existing
+`aetna-precert` source by prefix). Coverage is now 150 rules shipped, 102
+source-anchored, 0 orphans, 0 gaps. A new `aetna-drug` golden fixture
+(specialty J-code request) demonstrates 011 + 010 firing; the `aetna-precert`
+fixture now also surfaces 015. All eight goldens re-seeded; e2e finding count
+145 → 150. View wave banner advanced to 52-7c.
+
 ### Added (spec-v52 wave 52-7b — §4.5.7 Aetna commercial overlay, 6 → 10 of ~20)
 
 Five more self-gating `R-PA-AETNA-NNN` rules keyed to Aetna's public

@@ -9,12 +9,12 @@
     "disclaimer": "Sophie Prior-Auth Packet Linter is a deterministic checklist. It is not medical advice. It is not legal advice. It is not coding advice. It does not transmit anything to any payer. Your packet stays in this browser tab; we never see your data. Findings reflect what Sophie's ruleset checks; they are not a guarantee of payer approval. A passing report does not mean the packet will be approved; a failing report does not mean the packet will be denied. The clinical adequacy of every document is the reviewer's responsibility. Sophie's ruleset is versioned and cites every source; verify citations against current payer policy before relying on any finding for a clinical or revenue decision."
   },
   "executiveSummary": {
-    "totalRulesEvaluated": 145,
+    "totalRulesEvaluated": 150,
     "counts": {
       "block": 1,
       "flag": 3,
       "info": 2,
-      "pass": 139,
+      "pass": 144,
       "error": 0,
       "disabled": 0
     },
@@ -722,6 +722,56 @@
       "status": "pass",
       "description": "Aetna precertification: NDC documented for a physician-administered (J-code) drug request",
       "citation": "spec-v52 §4.5.7 R-PA-AETNA-010. Aetna's precertification information request for physician-administered (buy-and-bill) drugs asks for the National Drug Code in addition to the HCPCS J-code, so the request maps to a specific product and dose. Informational: a J-code request without an NDC routes more slowly. <https://www.aetna.com/health-care-professionals/precertification.html>",
+      "evidence": "Not an Aetna packet; rule vacuously satisfied.",
+      "note": null,
+      "remediation": null
+    },
+    {
+      "ruleId": "R-PA-AETNA-011",
+      "severity": "flag",
+      "status": "pass",
+      "description": "Aetna drug precertification: step-therapy prior-trial documentation (drugs tried + therapeutic failure) present",
+      "citation": "spec-v52 §4.5.7 R-PA-AETNA-011. For drugs subject to step therapy Aetna asks providers to \"list all medications the patient has tried specific to the diagnosis and specify therapeutic failure, including length of therapy for each drug.\" (Step therapy does not apply if the requested drug was already used within the past 365 days.) <https://www.aetna.com/health-care-professionals/medicare/part-b-drug-um.html>",
+      "evidence": "Not an Aetna packet; rule vacuously satisfied.",
+      "note": null,
+      "remediation": null
+    },
+    {
+      "ruleId": "R-PA-AETNA-012",
+      "severity": "flag",
+      "status": "pass",
+      "description": "Aetna bariatric surgery (CPB 0157): BMI and a structured / supervised weight-management program documented",
+      "citation": "spec-v52 §4.5.7 R-PA-AETNA-012. Aetna CPB 0157 (Obesity Surgery) requires class III obesity (BMI >= 40, or >= 35 with a serious comorbidity) and documentation of a structured / physician-supervised weight-management program before bariatric surgery. <https://www.aetna.com/cpb/medical/data/100_199/0157.html>",
+      "evidence": "Not an Aetna packet; rule vacuously satisfied.",
+      "note": null,
+      "remediation": null
+    },
+    {
+      "ruleId": "R-PA-AETNA-013",
+      "severity": "flag",
+      "status": "pass",
+      "description": "Aetna genetic testing (CPB 0140): pre-test genetic counseling and personal / family history documented",
+      "citation": "spec-v52 §4.5.7 R-PA-AETNA-013. Aetna CPB 0140 conditions many genetic tests on \"pre- and post-test counseling by an appropriate independent provider (not an employee of the genetics testing laboratory)\" and a supporting personal / family history (pedigree). <https://www.aetna.com/cpb/medical/data/100_199/0140.html>",
+      "evidence": "Not an Aetna packet; rule vacuously satisfied.",
+      "note": null,
+      "remediation": null
+    },
+    {
+      "ruleId": "R-PA-AETNA-014",
+      "severity": "info",
+      "status": "pass",
+      "description": "Aetna retrospective / retroactive request: a retro-review justification is documented",
+      "citation": "spec-v52 §4.5.7 R-PA-AETNA-014. Aetna accepts retrospective review only when the service was already rendered for a documented reason (e.g. emergent care, member eligibility not known at the time). A retro request should state that reason. Informational. <https://www.aetna.com/health-care-professionals/precertification.html>",
+      "evidence": "Not an Aetna packet; rule vacuously satisfied.",
+      "note": null,
+      "remediation": null
+    },
+    {
+      "ruleId": "R-PA-AETNA-015",
+      "severity": "info",
+      "status": "pass",
+      "description": "Aetna Outpatient Surgical Procedures policy: hospital-setting elective surgery documents the medical-necessity rationale for the site",
+      "citation": "spec-v52 §4.5.7 R-PA-AETNA-015. Aetna's Outpatient Surgical Procedures policy: elective procedures in the program \"should be performed in an ambulatory surgical center (ASC) or office setting unless the medical necessity criteria ... is met,\" and \"clinical rationale and documentation must be provided for ... exceptions.\" A hospital-outpatient / inpatient elective surgery should document why the higher-acuity site is required. Informational. <https://www.aetna.com/health-care-professionals/outpatient-surgical-procedures.html>",
       "evidence": "Not an Aetna packet; rule vacuously satisfied.",
       "note": null,
       "remediation": null
@@ -1685,6 +1735,11 @@
       "R-PA-AETNA-008",
       "R-PA-AETNA-009",
       "R-PA-AETNA-010",
+      "R-PA-AETNA-011",
+      "R-PA-AETNA-012",
+      "R-PA-AETNA-013",
+      "R-PA-AETNA-014",
+      "R-PA-AETNA-015",
       "R-PA-BH-001",
       "R-PA-BH-002",
       "R-PA-BH-003",
