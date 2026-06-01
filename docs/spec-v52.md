@@ -608,7 +608,7 @@ anchored to a public payer URL tracked in the staleness ledger
 The first overlay is **Aetna** (`R-PA-AETNA-NNN`, ledger source
 `aetna-precert`, anchored to Aetna's public precertification,
 utilization-management, and Clinical Policy Bulletin pages). Waves
-52-7a/7b/7c ship the first 15 of a planned ~20:
+Waves 52-7a through 52-7d ship the full planned set of 20:
 
 | Id              | Rule                                                                       | Severity |
 |-----------------|----------------------------------------------------------------------------|----------|
@@ -627,6 +627,11 @@ utilization-management, and Clinical Policy Bulletin pages). Waves
 | `R-PA-AETNA-013`| Genetic testing (CPB 0140): pre-test counseling + family history           | flag     |
 | `R-PA-AETNA-014`| Retrospective / retroactive request states a retro-review justification    | info     |
 | `R-PA-AETNA-015`| Hospital-setting elective surgery documents the site-of-service rationale  | info     |
+| `R-PA-AETNA-016`| DME / home-health request carries a signed, dated written order            | flag     |
+| `R-PA-AETNA-017`| Transplant routed through the National Medical Excellence / IOE program    | flag     |
+| `R-PA-AETNA-018`| Experimental / investigational service carries peer-reviewed evidence      | flag     |
+| `R-PA-AETNA-019`| Appeal / reconsideration references the original determination             | info     |
+| `R-PA-AETNA-020`| Out-of-network request documents a network-gap / continuity-of-care reason | info     |
 
 `R-PA-AETNA-004` mirrors core `R-PA-053`: it ships without a
 bundled precert list and vacuously passes with a pointer until a
@@ -636,11 +641,15 @@ test. Rules 006–008 key off the review *modes* Aetna runs
 off documentation Aetna's CPBs and precert forms call out
 (objective evidence, NDC, step therapy, bariatric CPB 0157,
 genetic CPB 0140); 014–015 off submission timing and the
-Outpatient Surgical Procedures site-of-service policy. Each
+Outpatient Surgical Procedures site-of-service policy; 016–020
+(wave 52-7d) close the set on the service lines the earlier waves
+did not reach — DME / home-health written orders, the National
+Medical Excellence transplant program, the experimental /
+investigational determination, the appeal / reconsideration
+pathway, and out-of-network / network-gap requests. Each
 self-gates on the `aetna` bucket and vacuously passes on every
-other packet. Subsequent waves extend the Aetna set toward ~20
-rules and then add United Healthcare and Anthem as their own
-buckets.
+other packet. With the Aetna set complete, subsequent waves add
+United Healthcare and Anthem as their own buckets.
 
 ### 4.6 The DOCX report
 
@@ -1230,9 +1239,9 @@ self-contained PR; the catalog count rises only at wave 52-1.
   policy bulletin library. Source URLs pinned and hashed.
 - ~20–40 rules per payer.
 - **Status: Aetna opened ahead of schedule in wave 52-7a
-  (2026-05-30) and reached 15 of ~20 rules by wave 52-7c
-  (2026-05-30), the `R-PA-AETNA-NNN` family (§4.5.7). United
-  Healthcare and Anthem follow.**
+  (2026-05-30) and completed its planned 20-rule set in wave
+  52-7d (2026-06-01), the `R-PA-AETNA-NNN` family (§4.5.7).
+  United Healthcare and Anthem follow.**
 
 ### Wave 52-5+ — State Medicaid overlays, additional commercial payers, OCR
 
@@ -1406,6 +1415,24 @@ silently; the audit trail records the disablement.
 
 - 2026-05-27 — v52 proposed. Five waves outlined (52-1 through
   52-5+). Catalog count target at v52-1 close: 255.
+- 2026-06-01 — wave 52-7d (§4.5.7 Aetna commercial overlay, 16 → 20 of 20 —
+  the Aetna set is complete). Adds the final five self-gating `R-PA-AETNA-NNN`
+  rules, each anchored to Aetna's public precertification hub: a signed, dated
+  written order for a DME / home-health request (R-PA-AETNA-016, flag), the
+  National Medical Excellence / Institutes of Excellence transplant routing
+  (017, flag), peer-reviewed evidence / CPB exception for an experimental or
+  investigational service (018, flag), the original-determination reference on
+  an appeal / reconsideration (019, info), and a network-gap / continuity-of-
+  care justification on an out-of-network request (020, info). All five
+  vacuously pass off the `aetna` bucket and on all eight pa-lint fixtures.
+
+  No ledger/bucket change (all twenty Aetna rules map to the `aetna-precert`
+  source by prefix). Coverage is now 155 rules shipped (was 150), 107
+  source-anchored (was 102), 0 orphans, 0 gaps. The eight golden fixtures
+  re-seed deterministically (totalRulesEvaluated 150 → 155, +5 vacuous-pass
+  findings each). Tests: +9 engine sanity assertions (count 150 → 155, the
+  off-bucket loop 15 → 20, and fire/pass checks for 016–020). View wave
+  banner advanced to 52-7d.
 - 2026-05-30 — wave 52-7c (§4.5.7 Aetna commercial overlay, 11 → 15 of ~20).
   Adds five more self-gating `R-PA-AETNA-NNN` rules anchored to named Aetna
   Clinical Policy Bulletins and the Outpatient Surgical Procedures policy:

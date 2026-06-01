@@ -9,12 +9,12 @@
     "disclaimer": "Sophie Prior-Auth Packet Linter is a deterministic checklist. It is not medical advice. It is not legal advice. It is not coding advice. It does not transmit anything to any payer. Your packet stays in this browser tab; we never see your data. Findings reflect what Sophie's ruleset checks; they are not a guarantee of payer approval. A passing report does not mean the packet will be approved; a failing report does not mean the packet will be denied. The clinical adequacy of every document is the reviewer's responsibility. Sophie's ruleset is versioned and cites every source; verify citations against current payer policy before relying on any finding for a clinical or revenue decision."
   },
   "executiveSummary": {
-    "totalRulesEvaluated": 150,
+    "totalRulesEvaluated": 155,
     "counts": {
       "block": 0,
       "flag": 12,
       "info": 5,
-      "pass": 133,
+      "pass": 138,
       "error": 0,
       "disabled": 0
     },
@@ -808,6 +808,56 @@
       "description": "Aetna retrospective / retroactive request: a retro-review justification is documented",
       "citation": "spec-v52 §4.5.7 R-PA-AETNA-014. Aetna accepts retrospective review only when the service was already rendered for a documented reason (e.g. emergent care, member eligibility not known at the time). A retro request should state that reason. Informational. <https://www.aetna.com/health-care-professionals/precertification.html>",
       "evidence": "Aetna packet is not a retrospective request; rule vacuously satisfied.",
+      "note": null,
+      "remediation": null
+    },
+    {
+      "ruleId": "R-PA-AETNA-016",
+      "severity": "flag",
+      "status": "pass",
+      "description": "Aetna DME / home-health precertification: a signed, dated written order accompanies the request",
+      "citation": "spec-v52 §4.5.7 R-PA-AETNA-016. Aetna precertification for durable medical equipment and home-health services requires a written order, signed and dated by the ordering provider, before the item / service is dispensed. <https://www.aetna.com/health-care-professionals/precertification.html>",
+      "evidence": "Aetna packet without a DME / home-health request; rule vacuously satisfied.",
+      "note": null,
+      "remediation": null
+    },
+    {
+      "ruleId": "R-PA-AETNA-017",
+      "severity": "flag",
+      "status": "pass",
+      "description": "Aetna transplant precertification: routed through the National Medical Excellence / Institutes of Excellence program with a transplant-center evaluation",
+      "citation": "spec-v52 §4.5.7 R-PA-AETNA-017. Aetna directs solid-organ and hematopoietic stem-cell transplants through its National Medical Excellence Program (NME) / Institutes of Excellence (IOE) network; a transplant precertification should reference that routing and carry the transplant-center evaluation. <https://www.aetna.com/health-care-professionals/precertification.html>",
+      "evidence": "Aetna packet without a transplant request; rule vacuously satisfied.",
+      "note": null,
+      "remediation": null
+    },
+    {
+      "ruleId": "R-PA-AETNA-018",
+      "severity": "flag",
+      "status": "pass",
+      "description": "Aetna experimental / investigational determination: peer-reviewed evidence or a documented CPB exception is present when the service is flagged experimental",
+      "citation": "spec-v52 §4.5.7 R-PA-AETNA-018. Aetna excludes services it deems experimental or investigational under the applicable Clinical Policy Bulletin; a request for such a service must carry the peer-reviewed evidence or the documented exception the CPB allows, or it will be denied. <https://www.aetna.com/health-care-professionals/precertification.html>",
+      "evidence": "Aetna packet without an experimental / investigational service; rule vacuously satisfied.",
+      "note": null,
+      "remediation": null
+    },
+    {
+      "ruleId": "R-PA-AETNA-019",
+      "severity": "info",
+      "status": "pass",
+      "description": "Aetna reconsideration / appeal: references the original determination and adds new clinical information",
+      "citation": "spec-v52 §4.5.7 R-PA-AETNA-019. When a precertification is resubmitted as a reconsideration or appeal, Aetna asks the provider to reference the original determination and supply additional clinical information that addresses the denial reason. Informational. <https://www.aetna.com/health-care-professionals/precertification.html>",
+      "evidence": "Aetna packet is not an appeal / reconsideration; rule vacuously satisfied.",
+      "note": null,
+      "remediation": null
+    },
+    {
+      "ruleId": "R-PA-AETNA-020",
+      "severity": "info",
+      "status": "pass",
+      "description": "Aetna out-of-network / network-gap request: a continuity-of-care or network-gap justification is documented",
+      "citation": "spec-v52 §4.5.7 R-PA-AETNA-020. Aetna reviews out-of-network precertification for a documented network gap or continuity-of-care reason (no participating provider with the required expertise, an active course of treatment). An out-of-network request should state that justification. Informational. <https://www.aetna.com/health-care-professionals/precertification.html>",
+      "evidence": "Aetna packet without an out-of-network request; rule vacuously satisfied.",
       "note": null,
       "remediation": null
     },
@@ -1741,6 +1791,11 @@
       "R-PA-AETNA-012",
       "R-PA-AETNA-013",
       "R-PA-AETNA-014",
+      "R-PA-AETNA-016",
+      "R-PA-AETNA-017",
+      "R-PA-AETNA-018",
+      "R-PA-AETNA-019",
+      "R-PA-AETNA-020",
       "R-PA-BH-001",
       "R-PA-BH-002",
       "R-PA-BH-003",

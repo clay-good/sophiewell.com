@@ -184,6 +184,84 @@ application has zero runtime dependencies. A weekly CI job runs the data
 refresh pipeline and opens a pull request with any updated data. For the
 long version, see [docs/architecture.md](docs/architecture.md).
 
+## The Prior-Auth Packet Linter (`pa-lint`)
+
+`pa-lint` (spec-v52) is the catalog's first `document-linter` tile: instead
+of form fields it consumes dropped files (PDF / DOCX / TXT) and produces a
+deterministic findings report. It checks the *procedural completeness* of a
+prior-authorization packet — is the member ID present, is the ordering NPI
+Luhn-valid, is a clinical note attached, does an inpatient Aetna request
+carry a discharge plan — **not** clinical coverage criteria, which are the
+reviewer's judgment. Everything runs in the browser; the packet never leaves
+the tab.
+
+The pipeline is a pure, byte-deterministic function of the input bytes
+(spec-v52 §4.10): the same packet always yields the same report, which is
+what makes the golden-fixture CI gate possible.
+
+```
+ drop files (PDF/DOCX/TXT)
+        │
+        ▼
+ ┌──────────────┐   pdf.js / mammoth.js (vendored, no network)
+ │   ingest     │── extract text, SHA-256 each file
+ └──────┬───────┘
+        ▼
+ ┌──────────────┐   lib/pa/extract.js  → codes, dates, NPIs, POS, signatures
+ │   extract    │   lib/pa/classify.js → per-document role (clinical-note,
+ └──────┬───────┘                         imaging-report, lab-result, …)
+        ▼
+ ┌──────────────┐   lib/pa/payer.js → one bucket: cms-medicare-ffs |
+ │ detect payer │     cms-medicare-advantage | medicaid | aetna |
+ └──────┬───────┘     commercial | unknown
+        ▼
+ ┌──────────────┐   lib/pa/rules.js → 155 rules, each a pure check(bundle).
+ │  run engine  │   Overlay rules self-gate on the detected payer and
+ └──────┬───────┘   vacuously pass off-bucket.
+        ▼
+ ┌──────────────┐   lib/pa/report.js → severity-sorted findings + evidence
+ │ build report │   Three downloads, all built in-tab:
+ └──────────────┘     • full JSON   • PHI-redacted JSON   • DOCX (§4.6/§4.7)
+```
+
+Severities follow spec-v52 §4.4: `block` (packet cannot be reviewed as-is),
+`flag` (likely denial / RFI), `info` (nice-to-have), `pass`. A finding never
+guarantees an approval or a denial — it reports only what the ruleset checks.
+
+### Ruleset at a glance (155 rules)
+
+| Family            | Count | Scope                                                        | Ledger source              |
+|-------------------|-------|--------------------------------------------------------------|----------------------------|
+| `R-PA-NNN`        | 60    | §4.5.1 core, payer-agnostic completeness (IDs, codes, NPI, dates, signatures, PHI minimization) | AMA CPT / CMS HCPCS / ICD-10-CM / POS / NCCI / NPPES |
+| `R-PA-CMS-NNN`    | 25    | §4.5.2 Medicare FFS DME / oxygen / PAP / mobility            | CMS IOM 100-08, NCD/LCD     |
+| `R-PA-MA-NNN`     | 15    | §4.5.3 Medicare Advantage                                    | CMS MA 422                  |
+| `R-PA-MCD-NNN`    | 10    | §4.5.4 Medicaid state-agnostic core                          | Medicaid core              |
+| `R-PA-RAD-NNN`    | 5     | §4.5.5 radiology / advanced imaging                          | ACR Appropriateness        |
+| `R-PA-INF-NNN`    | 5     | §4.5.5 infusion / biologics                                  | FDA labeling               |
+| `R-PA-SURG-NNN`   | 5     | §4.5.5 surgery (conservative trial, imaging, ASA, consent)   | Surgical-indication policy  |
+| `R-PA-BH-NNN`     | 5     | §4.5.5 behavioral health (DSM-5-TR, LOC, risk)               | DSM-5-TR                   |
+| `R-PA-GEN-NNN`    | 5     | §4.5.5 genetic testing                                       | NCCN / ACMG                |
+| `R-PA-AETNA-NNN`  | 20    | §4.5.7 Aetna commercial overlay — the first named-payer set  | `aetna-precert`            |
+
+The Aetna overlay (§4.5.7) is the first commercial payer keyed to a single
+named payer. It completed its planned 20-rule set in wave 52-7d:
+
+| Rules     | Cover                                                                   |
+|-----------|-------------------------------------------------------------------------|
+| 001–005   | Medical-necessity criteria, supporting records, submission channel, precert-list stub, procedure questionnaire |
+| 006–010   | Review *modes*: concurrent review, site-of-care MRI/CT, expedited urgency, objective evidence, J-code NDC |
+| 011–015   | Step therapy, bariatric CPB 0157, genetic CPB 0140, retrospective review, outpatient-surgery site-of-service |
+| 016–020   | DME / home-health written order, NME transplant routing, experimental-service evidence, appeal reference, out-of-network gap |
+
+Every Aetna rule self-gates on `bundle.payer === 'aetna'` and vacuously
+passes on any other packet, so the 135 non-Aetna rules and the 20 Aetna
+rules coexist without false positives. Each rule's source URL is tracked in
+[pa-staleness-ledger.json](pa-staleness-ledger.json) and re-verified on the
+§4.5.6 maintenance cadence; `npm run lint` fails CI on any ledger ↔ ruleset
+drift, and `scripts/audit-pa.mjs` diffs the full pipeline output against
+eight committed golden reports so any rule, extractor, or classifier change
+that moves a byte is caught.
+
 ## Deterministic logic versus LLM usage
 
 The product uses zero LLM inference and zero AI of any kind. All operations
@@ -222,7 +300,7 @@ rules, not soft preferences.
 | `npm run dev`            | Serve the directory locally on http://localhost:4173              |
 | `npm run build`          | Copy static files into `dist/` for deployment                     |
 | `npm test`               | Run the full test suite (unit, a11y, grep, data integrity)        |
-| `npm run test:unit`      | Run Node's built-in unit tests (1,782 tests)                      |
+| `npm run test:unit`      | Run Node's built-in unit tests (2,061 tests)                      |
 | `npm run test:e2e`       | Run Playwright integration tests against a real browser           |
 | `npm run test:a11y`      | Run accessibility checks on every utility view                    |
 | `npm run lint`           | Run ESLint with the project rules (bans innerHTML, eval, others)  |
@@ -295,6 +373,9 @@ build, integrity-verified data shards) are documented in
   long-horizon scope: every actionable clinical calculator a
   healthcare worker would otherwise reach for MDCalc to find,
   shipped slowly at the v11 quality bar
+- [docs/spec-v52.md](docs/spec-v52.md) — the `pa-lint` prior-auth packet
+  linter: pipeline, the 155-rule ruleset, payer overlays, and the
+  byte-determinism / golden-fixture guarantee
 - [docs/architecture.md](docs/architecture.md) — runtime architecture,
   data flow, no-backend rationale
 - [docs/data-sources.md](docs/data-sources.md) — every bundled dataset
