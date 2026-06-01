@@ -140,8 +140,8 @@ test('runEngine passes every starter rule on a clean multi-doc happy-path packet
   assert.equal(counts.pass, STARTER_RULES.length);
 });
 
-test('STARTER_RULES at wave 52-7d is 155 rules (135 §4.5 core/overlay/specialty + 20 §4.5.7 Aetna commercial)', () => {
-  assert.equal(STARTER_RULES.length, 155);
+test('STARTER_RULES at wave 52-8 is 175 rules (135 §4.5 core/overlay/specialty + 20 §4.5.7 Aetna + 20 §4.5.8 UnitedHealthcare)', () => {
+  assert.equal(STARTER_RULES.length, 175);
 });
 
 // ---- wave 52-7a sanity checks: Aetna commercial overlay (§4.5.7) ----
@@ -348,6 +348,100 @@ test('R-PA-AETNA-020 flags an Aetna out-of-network request with no network-gap j
   const text = 'Aetna member.\nOut-of-network precertification request.\nProcedure CPT 70551.\n';
   const findings = runEngine(bundleOf(text));
   const f = findings.find((x) => x.ruleId === 'R-PA-AETNA-020');
+  assert.equal(f.status, 'info');
+});
+
+// ---- wave 52-8 sanity checks: UnitedHealthcare commercial overlay (§4.5.8) ----
+
+test('UnitedHealthcare overlay rules vacuously pass on a non-UHC packet', () => {
+  // happyBundle is not a UHC packet -> every R-PA-UHC-* rule passes.
+  const findings = runEngine(happyBundle());
+  for (let n = 1; n <= 20; n += 1) {
+    const id = 'R-PA-UHC-' + String(n).padStart(3, '0');
+    const f = findings.find((x) => x.ruleId === id);
+    assert.ok(f, id + ' should be in the findings');
+    assert.equal(f.status, 'pass', id + ' should vacuously pass off-bucket');
+  }
+});
+
+test('R-PA-UHC-001 flags a UHC request with a procedure but no coverage-criteria reference', () => {
+  const text = 'UnitedHealthcare Choice Plus member.\n'
+    + 'Requested procedure: CPT 72148 (MRI lumbar spine).\n'
+    + 'Please authorize.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-UHC-001');
+  assert.equal(f.status, 'flag');
+});
+
+test('R-PA-UHC-001 passes when the UHC packet cites the applicable Coverage Determination Guideline', () => {
+  const text = 'UnitedHealthcare member.\n'
+    + 'Requested procedure: CPT 72148.\n'
+    + 'Medical necessity per the applicable UHC Coverage Determination Guideline (MCG).\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-UHC-001');
+  assert.equal(f.status, 'pass');
+});
+
+test('R-PA-UHC-002 flags a UHC packet with no clinical document attached', () => {
+  const text = 'UnitedHealthcare PPO member.\nRequested procedure: CPT 27447.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-UHC-002');
+  assert.equal(f.status, 'flag');
+});
+
+test('R-PA-UHC-005 flags a notification-required UHC service with no notification reference', () => {
+  const text = 'UnitedHealthcare member.\nThis service requires notification / prior authorization required.\nProcedure CPT 27447.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-UHC-005');
+  assert.equal(f.status, 'flag');
+});
+
+test('R-PA-UHC-006 flags an inpatient (POS 21) UHC request with no admission / progress documentation', () => {
+  const text = 'UnitedHealthcare member.\nPlace of service: 21\nInpatient admission for acute care.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-UHC-006');
+  assert.equal(f.status, 'flag');
+});
+
+test('R-PA-UHC-006 passes when the inpatient UHC packet documents an admission notification + discharge plan', () => {
+  const text = 'UnitedHealthcare member.\nPlace of service: 21\nInpatient admission.\nAdmission notification submitted. Discharge plan: home with PT; estimated length of stay 2 days.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-UHC-006');
+  assert.equal(f.status, 'pass');
+});
+
+test('R-PA-UHC-007 flags a UHC outpatient MRI with no clinical indication', () => {
+  const text = 'UnitedHealthcare member.\nRequested: MRI lumbar spine, CPT 72148.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-UHC-007');
+  assert.equal(f.status, 'flag');
+});
+
+test('R-PA-UHC-008 passes when an expedited UHC request documents the clinical urgency', () => {
+  const text = 'UnitedHealthcare member.\nExpedited review requested: delay would jeopardize the member\'s life or health.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-UHC-008');
+  assert.equal(f.status, 'pass');
+});
+
+test('R-PA-UHC-011 flags a UHC specialty-drug request with no step-therapy prior-trial documentation', () => {
+  const text = 'UnitedHealthcare member.\nSpecialty drug requested via OptumRx; step therapy applies.\nProcedure J3590.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-UHC-011');
+  assert.equal(f.status, 'flag');
+});
+
+test('R-PA-UHC-016 flags a UHC behavioral-health request with no level-of-care criteria', () => {
+  const text = 'UnitedHealthcare member.\nRequest: inpatient psychiatric admission (Optum Behavioral Health).\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-UHC-016');
+  assert.equal(f.status, 'flag');
+});
+
+test('R-PA-UHC-020 flags a UHC out-of-network request with no network-gap justification (info)', () => {
+  const text = 'UnitedHealthcare member.\nOut-of-network prior authorization request.\nProcedure CPT 70551.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-UHC-020');
   assert.equal(f.status, 'info');
 });
 

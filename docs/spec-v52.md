@@ -648,8 +648,77 @@ Medical Excellence transplant program, the experimental /
 investigational determination, the appeal / reconsideration
 pathway, and out-of-network / network-gap requests. Each
 self-gates on the `aetna` bucket and vacuously passes on every
-other packet. With the Aetna set complete, subsequent waves add
-United Healthcare and Anthem as their own buckets.
+other packet. With the Aetna set complete, the next commercial
+overlay (UnitedHealthcare, §4.5.8) opened in wave 52-8; Anthem
+follows.
+
+#### 4.5.8 Commercial payer overlays — UnitedHealthcare (wave 52-8)
+
+The second named commercial-payer overlay. Like Aetna (§4.5.7),
+UnitedHealthcare is keyed to its own payer bucket (`'uhc'`,
+detected by `lib/pa/payer.js` and placed before the generic
+`'commercial'` fall-through; `uhc / unitedhealthcare medicare
+[advantage]` is still caught earlier by the MA bucket). The
+`uhc` bucket also admits UHC's TPA and subsidiary brands (UMR,
+Oxford) because they adjudicate under UHC's prior-authorization
+protocols. Each commercial rule self-gates on `bundle.payer ===
+'uhc'` and returns a vacuous pass on every other packet.
+
+Scope discipline is identical to §4.5.7: the rules check the
+**procedural completeness** of a UnitedHealthcare prior-
+authorization / advance-notification packet against UHC's *own
+published* submission requirements — not clinical coverage
+criteria, which are the reviewer's judgement and the applicable
+Coverage Determination Guideline / Medical Policy's job. Every
+rule is anchored to a public UHC provider URL tracked in the
+staleness ledger (§8.3, source `uhc-precert`) and re-verified on
+the §4.5.6 cadence.
+
+The set deliberately mirrors the Aetna families so the two
+commercial overlays stay structurally parallel and auditable
+side by side. Wave 52-8 ships the full planned set of 20
+(`R-PA-UHC-NNN`):
+
+| Id            | Rule                                                                           | Severity |
+|---------------|--------------------------------------------------------------------------------|----------|
+| `R-PA-UHC-001`| Coverage criteria (Coverage Determination Guideline / Medical Policy / MCG) referenced | flag |
+| `R-PA-UHC-002`| Supporting medical records / clinical documentation attached                   | flag     |
+| `R-PA-UHC-003`| Submission channel (UnitedHealthcare Provider Portal / EDI 278 / phone) noted  | info     |
+| `R-PA-UHC-004`| Requested service is on UHC's prior-auth / advance-notification list (stub)     | info     |
+| `R-PA-UHC-005`| Advance notification documented for a notification-required service            | flag     |
+| `R-PA-UHC-006`| Inpatient request carries admission notification + concurrent-review docs      | flag     |
+| `R-PA-UHC-007`| Outpatient MRI / CT / PET carries the clinical indication for the imaging program | flag  |
+| `R-PA-UHC-008`| Expedited / urgent request states the clinical urgency                         | flag     |
+| `R-PA-UHC-009`| Outpatient surgery addresses the hospital-outpatient vs. ASC site-of-service   | flag     |
+| `R-PA-UHC-010`| NDC documented for a physician-administered (J-code) drug request              | info     |
+| `R-PA-UHC-011`| Step-therapy prior-trial documentation for a drug request (OptumRx)            | flag     |
+| `R-PA-UHC-012`| Genetic / molecular testing carries the specific test + indication             | flag     |
+| `R-PA-UHC-013`| Specialty / injectable drug carries the supporting diagnosis for the Drug Policy | flag   |
+| `R-PA-UHC-014`| Retrospective / retroactive request states a retro-review justification        | info     |
+| `R-PA-UHC-015`| DME / home-health request carries a signed, dated written order / plan of care | flag     |
+| `R-PA-UHC-016`| Behavioral health (Optum / UBH) request carries level-of-care criteria         | flag     |
+| `R-PA-UHC-017`| Transplant routed through the UHC transplant / Centers of Excellence network   | flag     |
+| `R-PA-UHC-018`| Experimental / investigational / unproven service carries peer-reviewed evidence | flag   |
+| `R-PA-UHC-019`| Appeal / reconsideration references the original determination                 | info     |
+| `R-PA-UHC-020`| Out-of-network request documents a network-gap / continuity-of-care reason     | info     |
+
+`R-PA-UHC-004` mirrors core `R-PA-053` and `R-PA-AETNA-004`: it
+ships without a bundled prior-authorization list and vacuously
+passes with a pointer until a later wave bundles the list and
+flips it to a real membership test. Rules 005–009 key off the
+review *modes* UHC runs (advance notification, concurrent /
+continued-stay, the advanced-imaging notification program,
+expedited handling, Site of Service); 010–013 off documentation
+UHC's policies call out (NDC, step therapy, the Genetic and
+Molecular Testing program, the Medical Benefit Drug Policy
+diagnosis); 014–020 close the set on the service lines Aetna's
+set also reached — retrospective justification, DME / home-health
+written orders, behavioral-health level-of-care criteria (Optum /
+UBH), the transplant Centers of Excellence routing, the
+experimental / investigational / unproven determination, the
+appeal / reconsideration pathway, and out-of-network /
+network-gap requests. With the UnitedHealthcare set complete,
+Anthem is the next commercial bucket.
 
 ### 4.6 The DOCX report
 
@@ -1241,7 +1310,22 @@ self-contained PR; the catalog count rises only at wave 52-1.
 - **Status: Aetna opened ahead of schedule in wave 52-7a
   (2026-05-30) and completed its planned 20-rule set in wave
   52-7d (2026-06-01), the `R-PA-AETNA-NNN` family (§4.5.7).
-  United Healthcare and Anthem follow.**
+  UnitedHealthcare followed in wave 52-8 (2026-06-01) with its
+  own 20-rule set, the `R-PA-UHC-NNN` family (§4.5.8). Anthem
+  follows.**
+
+### Wave 52-8 — UnitedHealthcare commercial overlay (2026-06)
+
+- The 20 UnitedHealthcare rules (§4.5.8), the `R-PA-UHC-NNN`
+  family, anchored to UHC's public prior-authorization /
+  advance-notification hub, Medical & Drug Policies, and
+  Coverage Determination Guidelines (ledger source
+  `uhc-precert`).
+- A `'uhc'` payer bucket in `lib/pa/payer.js`, placed before the
+  generic `'commercial'` fall-through and after `'aetna'`; the
+  MA bucket still wins for `uhc medicare advantage`.
+- Catalog count unchanged (255 tiles; UHC adds rules, not a
+  tile). Ruleset rises 155 → 175.
 
 ### Wave 52-5+ — State Medicaid overlays, additional commercial payers, OCR
 
@@ -1415,6 +1499,37 @@ silently; the audit trail records the disablement.
 
 - 2026-05-27 — v52 proposed. Five waves outlined (52-1 through
   52-5+). Catalog count target at v52-1 close: 255.
+- 2026-06-01 — wave 52-8 (§4.5.8 UnitedHealthcare commercial overlay, the
+  full 20-rule `R-PA-UHC-NNN` family — the second named commercial overlay
+  after Aetna). Opens a `'uhc'` payer bucket in `lib/pa/payer.js` (placed
+  after `'aetna'` and before the generic `'commercial'` fall-through; the MA
+  bucket still wins for `uhc medicare advantage`; UMR / Oxford route to
+  `uhc`). The 20 rules mirror the Aetna families so the two commercial
+  overlays stay structurally parallel: coverage-criteria reference (001,
+  flag), supporting clinical records (002, flag), submission channel (003,
+  info), the prior-auth-list stub (004, info, mirrors R-PA-053), advance
+  notification (005, flag), inpatient admission notification + concurrent
+  review (006, flag), the advanced-imaging notification program (007, flag),
+  expedited urgency (008, flag), Site of Service for outpatient surgery (009,
+  flag), NDC on a J-code drug (010, info), step therapy / OptumRx (011,
+  flag), the Genetic and Molecular Testing program (012, flag), the Medical
+  Benefit Drug Policy diagnosis (013, flag), retrospective justification
+  (014, info), DME / home-health written order (015, flag), behavioral-health
+  level-of-care via Optum / UBH (016, flag), the transplant Centers of
+  Excellence routing (017, flag), the experimental / investigational /
+  unproven determination (018, flag), the appeal original-determination
+  reference (019, info), and the out-of-network network-gap justification
+  (020, info). Each self-gates on `bundle.payer === 'uhc'` and vacuously
+  passes on every other packet. New ledger source `uhc-precert` anchored to
+  UHC's public prior-authorization / advance-notification hub (all twenty
+  rules map to it by prefix). Coverage is now 175 rules shipped (was 155),
+  127 source-anchored (was 107), 17 sources (was 16), 0 orphans, 0 gaps. The
+  eight golden fixtures re-seed deterministically (totalRulesEvaluated 155 →
+  175, +20 vacuous-pass findings each). Tests: +13 engine assertions (count
+  155 → 175, the off-bucket loop, and fire/pass checks for 001/002/005/006/
+  007/008/011/016/020) and +1 classify assertion (UHC commercial → `uhc`;
+  UHC MA still → the MA bucket). Catalog count unchanged (255). View wave
+  banner advanced to 52-8.
 - 2026-06-01 — wave 52-7d (§4.5.7 Aetna commercial overlay, 16 → 20 of 20 —
   the Aetna set is complete). Adds the final five self-gating `R-PA-AETNA-NNN`
   rules, each anchored to Aetna's public precertification hub: a signed, dated

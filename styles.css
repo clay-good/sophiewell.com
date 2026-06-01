@@ -946,6 +946,10 @@ body {
   margin: 4px 0 0;
   font-size: 0.85rem;
   color: var(--text-muted);
+  /* Citations embed long policy URLs (e.g. uhcprovider.com /
+     aetna.com paths). Break them anywhere so a narrow viewport
+     never scrolls horizontally (spec-v52 §4.6 report parity). */
+  overflow-wrap: anywhere;
 }
 .pa-rule-citation {
   font-size: 0.78rem;

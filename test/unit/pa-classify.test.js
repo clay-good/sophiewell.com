@@ -64,7 +64,7 @@ test('detectPayer: Medicare FFS', () => {
 
 test('detectPayer: commercial fallthrough', () => {
   assert.equal(detectPayer('Anthem Blue Cross PPO plan'), 'commercial');
-  assert.equal(detectPayer('UnitedHealthcare Choice Plus'), 'commercial');
+  assert.equal(detectPayer('Cigna Open Access Plus'), 'commercial');
 });
 
 test('detectPayer: Aetna commercial routes to its own bucket (wave 52-7)', () => {
@@ -72,6 +72,14 @@ test('detectPayer: Aetna commercial routes to its own bucket (wave 52-7)', () =>
   assert.equal(detectPayer('Aetna Choice POS II member'), 'aetna');
   // ...but Aetna Medicare Advantage still routes to the MA bucket (checked first).
   assert.equal(detectPayer('Aetna Medicare Advantage HMO'), 'cms-medicare-advantage');
+});
+
+test('detectPayer: UnitedHealthcare commercial routes to its own bucket (wave 52-8)', () => {
+  // Plain UHC commercial -> the named 'uhc' overlay bucket.
+  assert.equal(detectPayer('UnitedHealthcare Choice Plus'), 'uhc');
+  assert.equal(detectPayer('United Healthcare PPO member'), 'uhc');
+  // ...but UHC Medicare Advantage still routes to the MA bucket (checked first).
+  assert.equal(detectPayer('UnitedHealthcare Medicare Advantage HMO'), 'cms-medicare-advantage');
 });
 
 test('detectPayer: unknown for empty / non-payer text', () => {

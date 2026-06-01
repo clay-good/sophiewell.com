@@ -133,6 +133,14 @@
       "rules": ["R-PA-AETNA-001", "R-PA-AETNA-002"],
       "url": "https://www.aetna.com/health-care-professionals/precertification.html",
       "lastVerified": "2026-05-30"
+    },
+    {
+      "id": "uhc-precert",
+      "label": "UnitedHealthcare prior-authorization / advance-notification requirements, Medical & Drug Policies, and Coverage Determination Guidelines",
+      "ruleFamily": "commercial-uhc",
+      "rules": ["R-PA-UHC-001", "R-PA-UHC-002"],
+      "url": "https://www.uhcprovider.com/en/prior-auth-advance-notification.html",
+      "lastVerified": "2026-06-01"
     }
   ],
   "acknowledgments": []

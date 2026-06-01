@@ -147,7 +147,10 @@ Commercial overlays are keyed to a single named payer (its own
 precertification packet against the payer's *own published* submission
 requirements — never clinical coverage criteria, which are the reviewer's
 judgement and the payer's Clinical Policy Bulletin's job. The first is Aetna
-(`R-PA-AETNA-NNN`, ledger source `aetna-precert`).
+(`R-PA-AETNA-NNN`, ledger source `aetna-precert`); the second is
+UnitedHealthcare (`R-PA-UHC-NNN`, ledger source `uhc-precert`, anchored to
+UHC's public prior-authorization / advance-notification hub, Medical & Drug
+Policies, and Coverage Determination Guidelines).
 
 Payer precertification pages change more often than the government code sets,
 so verify them on the standard 90-day cadence: open the source URL, confirm

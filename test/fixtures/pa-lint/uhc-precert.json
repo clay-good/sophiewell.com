@@ -1,0 +1,19 @@
+{
+  "name": "uhc-precert",
+  "description": "UnitedHealthcare commercial prior-authorization packet for a hospital-outpatient (POS 22) knee arthroscopy. The 'UnitedHealthcare Choice Plus' letterhead routes the bundle to the 'uhc' payer bucket (spec-v52 §4.5.8) and engages the UnitedHealthcare commercial overlay. The packet cites the applicable Coverage Determination Guideline and attaches a clinical note (R-PA-UHC-001/002 pass), omits any submission-channel reference (R-PA-UHC-003 info), and -- as an outpatient surgery requested in a hospital-outpatient setting -- carries no site-of-service rationale for the higher-acuity site (R-PA-UHC-009 flag). Every other UHC rule self-gates off (no imaging, drug, DME, behavioral-health, transplant, appeal, or out-of-network trigger) and vacuously passes.",
+  "opts": { "totalBytes": 16384 },
+  "documents": [
+    {
+      "name": "uhc-pa-form.txt",
+      "sha256": "fixture-uhc-precert-form",
+      "kind": "TXT",
+      "text": "UnitedHealthcare Choice Plus Prior Authorization Request\nPatient: John B Doe\nDOB: 1970-05-09\nMember ID: 987654321\nDate of service: 2026-06-20\nPlace of service: 22\nRequested procedure: knee arthroscopy with meniscectomy CPT 29881\nDx: M23.205 derangement of medial meniscus, left knee\nQuantity: 1\nOrdering provider NPI: 1234567893\nServicing facility NPI: 1306849393\nTIN: 123456789\nMedical necessity: persistent mechanical symptoms; see the applicable UnitedHealthcare Coverage Determination Guideline.\nSignature: Ortho Sports MD, 2026-06-05\n"
+    },
+    {
+      "name": "uhc-note.txt",
+      "sha256": "fixture-uhc-precert-note",
+      "kind": "TXT",
+      "text": "Clinical note\nChief complaint: left knee pain with locking and catching.\nHistory of present illness: four months of mechanical symptoms despite activity modification.\nPhysical exam: positive McMurray on the left; joint-line tenderness medially.\nAssessment and plan: left medial meniscus tear; recommend arthroscopic partial meniscectomy.\nMedical necessity: imaging confirms a displaced medial meniscus tear.\nNote date: 2026-06-05\nSigned: Ortho Sports MD, 2026-06-05\n"
+    }
+  ]
+}
