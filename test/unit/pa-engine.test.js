@@ -140,8 +140,8 @@ test('runEngine passes every starter rule on a clean multi-doc happy-path packet
   assert.equal(counts.pass, STARTER_RULES.length);
 });
 
-test('STARTER_RULES at wave 52-10 is 215 rules (135 §4.5 core/overlay/specialty + 20 Aetna + 20 UnitedHealthcare + 20 Anthem + 20 Cigna)', () => {
-  assert.equal(STARTER_RULES.length, 215);
+test('STARTER_RULES at wave 52-11 is 235 rules (135 §4.5 core/overlay/specialty + 20 Aetna + 20 UnitedHealthcare + 20 Anthem + 20 Cigna + 20 Humana)', () => {
+  assert.equal(STARTER_RULES.length, 235);
 });
 
 // ---- wave 52-7a sanity checks: Aetna commercial overlay (§4.5.7) ----
@@ -616,6 +616,93 @@ test('R-PA-CIGNA-020 flags a Cigna out-of-network request with no network-gap ju
   const text = 'Cigna member.\nOut-of-network prior authorization request.\nProcedure CPT 70551.\n';
   const findings = runEngine(bundleOf(text));
   const f = findings.find((x) => x.ruleId === 'R-PA-CIGNA-020');
+  assert.equal(f.status, 'info');
+});
+
+// ---- wave 52-11 sanity checks: Humana commercial overlay (§4.5.11) ----
+
+test('Humana overlay rules vacuously pass on a non-Humana packet', () => {
+  // happyBundle is not a Humana packet -> every R-PA-HUMANA-* rule passes.
+  const findings = runEngine(happyBundle());
+  for (let n = 1; n <= 20; n += 1) {
+    const id = 'R-PA-HUMANA-' + String(n).padStart(3, '0');
+    const f = findings.find((x) => x.ruleId === id);
+    assert.ok(f, id + ' should be in the findings');
+    assert.equal(f.status, 'pass', id + ' should vacuously pass off-bucket');
+  }
+});
+
+test('R-PA-HUMANA-001 flags a Humana request with a procedure but no coverage-criteria reference', () => {
+  const text = 'Humana ChoiceCare PPO member.\n'
+    + 'Requested procedure: CPT 72148 (MRI lumbar spine).\n'
+    + 'Please authorize.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-HUMANA-001');
+  assert.equal(f.status, 'flag');
+});
+
+test('R-PA-HUMANA-001 passes when the Humana packet cites the applicable Medical Coverage Policy', () => {
+  const text = 'Humana member.\n'
+    + 'Requested procedure: CPT 72148.\n'
+    + 'Medical necessity per the applicable Humana Medical Coverage Policy (MCG).\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-HUMANA-001');
+  assert.equal(f.status, 'pass');
+});
+
+test('R-PA-HUMANA-002 flags a Humana packet with no clinical document attached', () => {
+  const text = 'Humana ChoiceCare PPO member.\nRequested procedure: CPT 27447.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-HUMANA-002');
+  assert.equal(f.status, 'flag');
+});
+
+test('R-PA-HUMANA-003 passes when the Humana packet names the Availity channel (info)', () => {
+  const text = 'Humana member.\nSubmitted via the Availity Essentials portal.\nProcedure CPT 27447.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-HUMANA-003');
+  assert.equal(f.status, 'pass');
+});
+
+test('R-PA-HUMANA-006 flags an inpatient (POS 21) Humana request with no admission / progress documentation', () => {
+  const text = 'Humana member.\nPlace of service: 21\nInpatient admission for acute care.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-HUMANA-006');
+  assert.equal(f.status, 'flag');
+});
+
+test('R-PA-HUMANA-007 flags a Humana outpatient MRI with no clinical indication', () => {
+  const text = 'Humana member.\nRequested: MRI lumbar spine, CPT 72148.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-HUMANA-007');
+  assert.equal(f.status, 'flag');
+});
+
+test('R-PA-HUMANA-008 passes when an expedited Humana request documents the clinical urgency', () => {
+  const text = 'Humana member.\nExpedited review requested: delay would jeopardize the member\'s life or health.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-HUMANA-008');
+  assert.equal(f.status, 'pass');
+});
+
+test('R-PA-HUMANA-011 flags a Humana specialty-drug request with no step-therapy prior-trial documentation', () => {
+  const text = 'Humana member.\nSpecialty drug requested via CenterWell Pharmacy; step therapy applies.\nProcedure J3590.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-HUMANA-011');
+  assert.equal(f.status, 'flag');
+});
+
+test('R-PA-HUMANA-017 flags a Humana transplant request with no National Transplant Network routing', () => {
+  const text = 'Humana member.\nRequested service: kidney transplant.\nMedical necessity per Medical Coverage Policy.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-HUMANA-017');
+  assert.equal(f.status, 'flag');
+});
+
+test('R-PA-HUMANA-020 flags a Humana out-of-network request with no network-gap justification (info)', () => {
+  const text = 'Humana member.\nOut-of-network prior authorization request.\nProcedure CPT 70551.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-HUMANA-020');
   assert.equal(f.status, 'info');
 });
 

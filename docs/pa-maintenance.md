@@ -156,12 +156,20 @@ Cross Blue Shield / Elevance Health (`R-PA-ANTHEM-NNN`, ledger source
 Clinical UM Guidelines, and Medical Policies); the fourth is Cigna
 (`R-PA-CIGNA-NNN`, ledger source `cigna-precert`, anchored to Cigna's public
 prior-authorization / precertification hub, Medical Coverage Policies, and the
-eviCore / Evernorth program requirements). The Anthem bucket matches only
-`anthem` / `elevance` — generic `blue cross` / `blue shield` stays in the
-commercial fall-through, since most Blues plans are independent licensees,
-not Anthem/Elevance. The Cigna bucket matches `cigna` / `evernorth` (Cigna's
-health-services brand, under which it runs Express Scripts / Accredo pharmacy
-and Evernorth Behavioral Health).
+eviCore / Evernorth program requirements); the fifth is Humana
+(`R-PA-HUMANA-NNN`, ledger source `humana-precert`, anchored to Humana's
+public prior-authorization / preauthorization hub, Medical Coverage Policies,
+and utilization-management / CenterWell program requirements). The Anthem
+bucket matches only `anthem` / `elevance` — generic `blue cross` / `blue
+shield` stays in the commercial fall-through, since most Blues plans are
+independent licensees, not Anthem/Elevance. The Cigna bucket matches `cigna` /
+`evernorth` (Cigna's health-services brand, under which it runs Express
+Scripts / Accredo pharmacy and Evernorth Behavioral Health). The Humana bucket
+matches `humana` / `centerwell`; `humana gold plus` and explicit "Medicare
+Advantage" strings route to the MA bucket first. Note Humana's imaging /
+lab-management program is named generically in the ruleset, since its current
+vendor name collides with an AI-vendor substring barred from source by
+spec-v50 §3.6.
 
 Payer precertification pages change more often than the government code sets,
 so verify them on the standard 90-day cadence: open the source URL, confirm

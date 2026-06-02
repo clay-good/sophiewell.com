@@ -65,7 +65,7 @@ test('detectPayer: Medicare FFS', () => {
 test('detectPayer: commercial fallthrough', () => {
   // Generic Blues (not Anthem/Elevance) and other commercial plans fall through.
   assert.equal(detectPayer('Florida Blue BlueCross PPO plan'), 'commercial');
-  assert.equal(detectPayer('Humana ChoiceCare PPO'), 'commercial');
+  assert.equal(detectPayer('TRICARE West region plan'), 'commercial');
 });
 
 test('detectPayer: Aetna commercial routes to its own bucket (wave 52-7)', () => {
@@ -100,6 +100,17 @@ test('detectPayer: Cigna commercial routes to its own bucket (wave 52-10)', () =
   assert.equal(detectPayer('Evernorth Behavioral Health member'), 'cigna');
   // ...but an explicit Cigna Medicare Advantage string still routes to the MA bucket.
   assert.equal(detectPayer('Cigna Medicare Advantage HMO'), 'cms-medicare-advantage');
+});
+
+test('detectPayer: Humana commercial routes to its own bucket (wave 52-11)', () => {
+  // Plain Humana commercial (and the CenterWell brand) -> the named 'humana'
+  // overlay bucket.
+  assert.equal(detectPayer('Humana ChoiceCare PPO'), 'humana');
+  assert.equal(detectPayer('CenterWell Pharmacy specialty request'), 'humana');
+  // ...but Humana Gold Plus (and any explicit Medicare Advantage string) still
+  // routes to the MA bucket (checked first).
+  assert.equal(detectPayer('Humana Gold Plus HMO'), 'cms-medicare-advantage');
+  assert.equal(detectPayer('Humana Medicare Advantage PPO'), 'cms-medicare-advantage');
 });
 
 test('detectPayer: unknown for empty / non-payer text', () => {

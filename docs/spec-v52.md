@@ -854,8 +854,81 @@ Anthem -004 rules: it ships without a bundled precertification
 list and vacuously passes with a pointer until a later wave
 bundles the list. With four commercial overlays shipped (Aetna,
 UnitedHealthcare, Anthem, Cigna — the four largest commercial
-plans by national PA volume), Humana is the next candidate as
-user-volume data warrants (§9 wave 52-5+).
+plans by national PA volume), Humana opened in wave 52-11
+(§4.5.11) as the fifth.
+
+#### 4.5.11 Commercial payer overlays — Humana (wave 52-11)
+
+The fifth named commercial-payer overlay. Like the four before
+it, Humana is keyed to its own payer bucket (`'humana'`, detected
+by `lib/pa/payer.js` and placed before the generic `'commercial'`
+fall-through, after `'cigna'`). The bucket matches the anchors
+`humana` and `centerwell` (Humana's pharmacy and care-delivery
+brand). Humana is predominantly a Medicare Advantage insurer, so
+`humana gold plus` and any explicit "Medicare Advantage" string
+are caught earlier by the MA bucket; a plain Humana commercial
+packet routes here. As with the Anthem and Cigna buckets, a plain
+Humana MA packet without an explicit "Medicare Advantage" string
+also routes here, which is acceptable because the overlay rules
+self-gate on requested services, not on the line of business.
+Each commercial rule self-gates on `bundle.payer === 'humana'`
+and returns a vacuous pass on every other packet.
+
+Scope discipline is identical to §4.5.7–§4.5.10: the rules check
+the **procedural completeness** of a Humana prior-authorization /
+preauthorization packet against Humana's *own published*
+submission requirements — not clinical coverage criteria, which
+are the reviewer's judgement and the applicable Humana Medical
+Coverage Policy's job. Every rule is anchored to a public Humana
+provider URL tracked in the staleness ledger (§8.3, source
+`humana-precert`) and re-verified on the §4.5.6 cadence.
+
+The set mirrors the earlier commercial families so the five
+overlays stay structurally parallel and auditable side by side;
+Humana-specific routing names appear where Humana actually uses
+them — the **Availity Essentials** portal for submission, Humana's
+**advanced-imaging utilization-management program** for advanced
+imaging / MSK / cardiology and genetic / molecular testing,
+**Evolent / New Century Health** for oncology, **CenterWell
+Pharmacy** / Humana Pharmacy Solutions for pharmacy, **Humana
+Behavioral Health** for behavioral health, and the **Humana
+National Transplant Network** for transplant. (The imaging /
+lab-management program is described generically in the ruleset
+rather than by its current vendor name, which collides with an
+AI-vendor substring barred from source by spec-v50 §3.6.) Wave
+52-11 ships the full planned set of 20 (`R-PA-HUMANA-NNN`):
+
+| Id               | Rule                                                                          | Severity |
+|------------------|-------------------------------------------------------------------------------|----------|
+| `R-PA-HUMANA-001`| Coverage criteria (Humana Medical Coverage Policy / MCG) referenced           | flag     |
+| `R-PA-HUMANA-002`| Supporting medical records / clinical documentation attached                 | flag     |
+| `R-PA-HUMANA-003`| Submission channel (Availity Essentials / phone) noted                        | info     |
+| `R-PA-HUMANA-004`| Requested service is on Humana's preauthorization / notification list (stub)  | info     |
+| `R-PA-HUMANA-005`| Authorization referenced for a service that requires it before the service date | flag  |
+| `R-PA-HUMANA-006`| Inpatient request carries admission notification + concurrent-review docs     | flag     |
+| `R-PA-HUMANA-007`| Outpatient MRI / CT / PET carries the clinical indication for the imaging program | flag |
+| `R-PA-HUMANA-008`| Expedited / urgent request states the clinical urgency                        | flag     |
+| `R-PA-HUMANA-009`| Outpatient surgery / imaging addresses the hospital-outpatient site-of-care   | flag     |
+| `R-PA-HUMANA-010`| NDC documented for a physician-administered (J-code) drug request             | info     |
+| `R-PA-HUMANA-011`| Step-therapy prior-trial documentation for a drug request (CenterWell)        | flag     |
+| `R-PA-HUMANA-012`| Genetic / molecular testing carries the specific test + indication            | flag     |
+| `R-PA-HUMANA-013`| Specialty / oncology drug carries the supporting diagnosis (Evolent oncology) | flag     |
+| `R-PA-HUMANA-014`| Retrospective / retroactive request states a retro-review justification       | info     |
+| `R-PA-HUMANA-015`| DME / home-health request carries a signed, dated written order / plan of care | flag    |
+| `R-PA-HUMANA-016`| Behavioral health request carries level-of-care criteria (Humana BH / ASAM)   | flag     |
+| `R-PA-HUMANA-017`| Transplant routed through the Humana National Transplant Network / COE         | flag     |
+| `R-PA-HUMANA-018`| Experimental / investigational / unproven service carries peer-reviewed evidence | flag   |
+| `R-PA-HUMANA-019`| Appeal / reconsideration references the original determination                | info     |
+| `R-PA-HUMANA-020`| Out-of-network request documents a network-gap / continuity-of-care reason    | info     |
+
+`R-PA-HUMANA-004` mirrors core `R-PA-053` and the Aetna / UHC /
+Anthem / Cigna -004 rules: it ships without a bundled
+preauthorization list and vacuously passes with a pointer until a
+later wave bundles the list. With five commercial overlays
+shipped (Aetna, UnitedHealthcare, Anthem, Cigna, Humana — the
+five largest commercial / MA plans by national PA volume), the
+remaining §9 wave 52-5+ candidates are the Blues plans by state
+and per-state Medicaid overlays as user-volume data warrants.
 
 ### 4.6 The DOCX report
 
@@ -1454,7 +1527,10 @@ self-contained PR; the catalog count rises only at wave 52-1.
   commercial overlays are now complete. Cigna followed in wave
   52-10 (2026-06-02) with its own 20-rule set, the
   `R-PA-CIGNA-NNN` family (§4.5.10), extending the set to the four
-  largest commercial plans by national PA volume.**
+  largest commercial plans by national PA volume. Humana followed
+  in wave 52-11 (2026-06-02) with its own 20-rule set, the
+  `R-PA-HUMANA-NNN` family (§4.5.11), bringing the named
+  commercial / MA overlays to five.**
 
 ### Wave 52-8 — UnitedHealthcare commercial overlay (2026-06)
 
@@ -1501,10 +1577,28 @@ self-contained PR; the catalog count rises only at wave 52-1.
   to the four largest commercial plans (Aetna + UnitedHealthcare +
   Anthem + Cigna).
 
+### Wave 52-11 — Humana commercial overlay (2026-06)
+
+- The 20 Humana rules (§4.5.11), the `R-PA-HUMANA-NNN` family,
+  anchored to Humana's public prior-authorization / preauthorization
+  hub, Medical Coverage Policies, and utilization-management /
+  CenterWell program requirements (ledger source `humana-precert`).
+- A `'humana'` payer bucket in `lib/pa/payer.js`, placed before the
+  generic `'commercial'` fall-through and after `'cigna'`. It
+  matches `humana` / `centerwell`; `humana gold plus` and explicit
+  "Medicare Advantage" strings still win the MA bucket earlier, and
+  a plain Humana MA packet without that string routes here (the
+  overlay rules self-gate on requested services).
+- Catalog count unchanged (255 tiles; Humana adds rules, not a
+  tile). Ruleset rises 215 → 235. Brings the named commercial / MA
+  overlays to five (Aetna + UnitedHealthcare + Anthem + Cigna +
+  Humana).
+
 ### Wave 52-5+ — State Medicaid overlays, additional commercial payers, OCR
 
 - Per-state Medicaid overlays as user-volume data warrants.
-- Humana, Blues plans by state (Cigna shipped in wave 52-10).
+- Blues plans by state (Cigna shipped in wave 52-10; Humana in
+  wave 52-11).
 - Optional in-browser OCR via tesseract.js (lazy-loaded,
   user-toggled, ≈ 11 MB gzipped). Only if §2's no-OCR
   experience proves insufficient.
@@ -1673,6 +1767,45 @@ silently; the audit trail records the disablement.
 
 - 2026-05-27 — v52 proposed. Five waves outlined (52-1 through
   52-5+). Catalog count target at v52-1 close: 255.
+- 2026-06-02 — wave 52-11 (§4.5.11 Humana commercial overlay, the full 20-rule
+  `R-PA-HUMANA-NNN` family — the fifth named commercial overlay after Aetna,
+  UnitedHealthcare, Anthem, and Cigna). Opens a `'humana'` payer bucket in
+  `lib/pa/payer.js` (placed after `'cigna'` and before the generic
+  `'commercial'` fall-through). The bucket matches `humana` / `centerwell`;
+  `humana gold plus` and explicit "Medicare Advantage" strings still win the
+  MA bucket earlier, and a plain Humana MA packet without that string routes
+  here (the rules self-gate on requested services, not the line of business).
+  The 20 rules mirror the Aetna / UHC / Anthem / Cigna families so the five
+  commercial overlays stay structurally parallel, with Humana-specific routing
+  names where Humana uses them: coverage-criteria reference (001, flag),
+  supporting clinical records (002, flag), the Availity Essentials submission
+  channel (003, info), the preauthorization-list stub (004, info, mirrors
+  R-PA-053), authorization-before-service (005, flag), inpatient admission
+  notification + concurrent review (006, flag), the advanced-imaging
+  utilization-management program (007, flag), expedited urgency (008, flag),
+  site-of-care for outpatient surgery (009, flag), NDC on a J-code drug (010,
+  info), step therapy / CenterWell Pharmacy (011, flag), the genetic /
+  molecular lab-management program (012, flag), the Coverage Policy
+  specialty / oncology-drug diagnosis (013, flag, Evolent / New Century
+  Health oncology), retrospective justification (014, info), DME / home-health
+  written order (015, flag), behavioral-health level-of-care via Humana
+  Behavioral Health (016, flag), the National Transplant Network routing (017,
+  flag), the experimental / investigational determination (018, flag), the
+  appeal original-determination reference (019, info), and the out-of-network
+  network-gap justification (020, info). Each self-gates on `bundle.payer ===
+  'humana'` and vacuously passes on every other packet. The imaging /
+  lab-management program is described generically rather than by its current
+  vendor name, which collides with an AI-vendor substring barred from source
+  by spec-v50 §3.6 (grep-check enforces this). New ledger source
+  `humana-precert` anchored to Humana's public prior-authorization hub (all
+  twenty rules map to it by prefix). Coverage is now 235 rules shipped (was
+  215), 187 source-anchored (was 167), 20 sources (was 19), 0 orphans, 0 gaps.
+  The golden fixtures re-seed deterministically (a new `humana-precert`
+  fixture exercises the on-bucket path — 009 flag, 003 info; the other eleven
+  gain +20 vacuous-pass findings each). Tests: +13 engine assertions (count
+  235, the off-bucket loop, and fire/pass checks) and +1 classify assertion
+  (Humana / CenterWell → `humana`; Humana Gold Plus / Humana MA → the MA
+  bucket). Catalog count unchanged (255). View wave banner advanced to 52-11.
 - 2026-06-02 — wave 52-10 (§4.5.10 Cigna commercial overlay, the full 20-rule
   `R-PA-CIGNA-NNN` family — the fourth named commercial overlay after Aetna,
   UnitedHealthcare, and Anthem). Extends the commercial overlays to the four
