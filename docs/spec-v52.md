@@ -784,8 +784,78 @@ vacuously passes with a pointer until a later wave bundles the
 list. With three commercial overlays shipped (Aetna,
 UnitedHealthcare, Anthem — the three largest commercial plans by
 national PA volume), the §9 wave plan's "first commercial payer
-overlays" item is complete; Cigna and Humana are the next
-candidates as user-volume data warrants (§9 wave 52-5+).
+overlays" item is complete; Cigna opened in wave 52-10 (§4.5.10),
+with Humana the next candidate as user-volume data warrants (§9
+wave 52-5+).
+
+#### 4.5.10 Commercial payer overlays — Cigna (wave 52-10)
+
+The fourth named commercial-payer overlay. Like Aetna (§4.5.7),
+UnitedHealthcare (§4.5.8), and Anthem (§4.5.9), Cigna is keyed to
+its own payer bucket (`'cigna'`, detected by `lib/pa/payer.js` and
+placed before the generic `'commercial'` fall-through, after
+`'anthem'`). The bucket matches the anchors `cigna` and
+`elevance`'s Cigna counterpart `evernorth` — Cigna's
+health-services brand, under which it runs pharmacy (Express
+Scripts / Accredo) and behavioral health. As with the Anthem
+bucket, there is no `cigna medicare` anchor in the MA bucket, so a
+plain Cigna Medicare Advantage packet without an explicit
+"Medicare Advantage" string routes here; that is acceptable
+because the overlay rules self-gate on requested services, not on
+the line of business. Each commercial rule self-gates on
+`bundle.payer === 'cigna'` and returns a vacuous pass on every
+other packet.
+
+Scope discipline is identical to §4.5.7–§4.5.9: the rules check
+the **procedural completeness** of a Cigna prior-authorization /
+precertification packet against Cigna's *own published*
+submission requirements — not clinical coverage criteria, which
+are the reviewer's judgement and the applicable Cigna Medical
+Coverage Policy's job. Every rule is anchored to a public Cigna
+provider URL tracked in the staleness ledger (§8.3, source
+`cigna-precert`) and re-verified on the §4.5.6 cadence.
+
+The set mirrors the Aetna / UHC / Anthem families so the four
+commercial overlays stay structurally parallel and auditable side
+by side; Cigna-specific routing names appear where Cigna actually
+uses them — the **CignaforHCP** provider portal (and Availity)
+for submission, **eviCore by Evernorth** for advanced imaging and
+genetic / molecular testing, **Express Scripts / Accredo** for
+pharmacy and specialty drugs, **Evernorth Behavioral Health** for
+behavioral health, and the **Cigna LifeSOURCE Transplant
+Network** / Centers of Excellence for transplant. Wave 52-10
+ships the full planned set of 20 (`R-PA-CIGNA-NNN`):
+
+| Id              | Rule                                                                          | Severity |
+|-----------------|-------------------------------------------------------------------------------|----------|
+| `R-PA-CIGNA-001`| Coverage criteria (Cigna Medical Coverage Policy / MCG) referenced            | flag     |
+| `R-PA-CIGNA-002`| Supporting medical records / clinical documentation attached                 | flag     |
+| `R-PA-CIGNA-003`| Submission channel (CignaforHCP provider portal / Availity / phone) noted     | info     |
+| `R-PA-CIGNA-004`| Requested service is on Cigna's precertification list (stub)                  | info     |
+| `R-PA-CIGNA-005`| Authorization referenced for a service that requires it before the service date | flag  |
+| `R-PA-CIGNA-006`| Inpatient request carries admission notification + concurrent-review docs     | flag     |
+| `R-PA-CIGNA-007`| Outpatient MRI / CT / PET carries the clinical indication for the eviCore program | flag |
+| `R-PA-CIGNA-008`| Expedited / urgent request states the clinical urgency                        | flag     |
+| `R-PA-CIGNA-009`| Outpatient surgery / imaging addresses the hospital-outpatient site-of-care   | flag     |
+| `R-PA-CIGNA-010`| NDC documented for a physician-administered (J-code) drug request             | info     |
+| `R-PA-CIGNA-011`| Step-therapy prior-trial documentation for a drug request (Express Scripts)   | flag     |
+| `R-PA-CIGNA-012`| Genetic / molecular testing carries the specific test + indication (eviCore)  | flag     |
+| `R-PA-CIGNA-013`| Specialty / injectable drug carries the supporting diagnosis for the Coverage Policy | flag |
+| `R-PA-CIGNA-014`| Retrospective / retroactive request states a retro-review justification       | info     |
+| `R-PA-CIGNA-015`| DME / home-health request carries a signed, dated written order / plan of care | flag    |
+| `R-PA-CIGNA-016`| Behavioral health request carries level-of-care criteria (Evernorth / ASAM)   | flag     |
+| `R-PA-CIGNA-017`| Transplant routed through the Cigna LifeSOURCE Transplant Network / COE        | flag     |
+| `R-PA-CIGNA-018`| Experimental / investigational / unproven service carries peer-reviewed evidence | flag   |
+| `R-PA-CIGNA-019`| Appeal / reconsideration references the original determination                | info     |
+| `R-PA-CIGNA-020`| Out-of-network request documents a network-gap / continuity-of-care reason    | info     |
+
+`R-PA-CIGNA-004` mirrors core `R-PA-053` and the Aetna / UHC /
+Anthem -004 rules: it ships without a bundled precertification
+list and vacuously passes with a pointer until a later wave
+bundles the list. With four commercial overlays shipped (Aetna,
+UnitedHealthcare, Anthem, Cigna — the four largest commercial
+plans by national PA volume), Humana is the next candidate as
+user-volume data warrants (§9 wave 52-5+).
 
 ### 4.6 The DOCX report
 
@@ -1381,7 +1451,10 @@ self-contained PR; the catalog count rises only at wave 52-1.
   own 20-rule set, the `R-PA-UHC-NNN` family (§4.5.8). Anthem
   followed in wave 52-9 (2026-06-02) with its own 20-rule set,
   the `R-PA-ANTHEM-NNN` family (§4.5.9). All three planned
-  commercial overlays are now complete.**
+  commercial overlays are now complete. Cigna followed in wave
+  52-10 (2026-06-02) with its own 20-rule set, the
+  `R-PA-CIGNA-NNN` family (§4.5.10), extending the set to the four
+  largest commercial plans by national PA volume.**
 
 ### Wave 52-8 — UnitedHealthcare commercial overlay (2026-06)
 
@@ -1411,10 +1484,27 @@ self-contained PR; the catalog count rises only at wave 52-1.
   tile). Ruleset rises 175 → 195. Completes the three planned
   commercial overlays (Aetna + UnitedHealthcare + Anthem).
 
+### Wave 52-10 — Cigna commercial overlay (2026-06)
+
+- The 20 Cigna rules (§4.5.10), the `R-PA-CIGNA-NNN` family,
+  anchored to Cigna's public prior-authorization / precertification
+  hub, Medical Coverage Policies, and the eviCore / Evernorth
+  program requirements (ledger source `cigna-precert`).
+- A `'cigna'` payer bucket in `lib/pa/payer.js`, placed before the
+  generic `'commercial'` fall-through and after `'anthem'`. It
+  matches `cigna` / `evernorth` (Cigna's health-services brand for
+  pharmacy and behavioral health); a plain Cigna MA packet without
+  an explicit "Medicare Advantage" string routes here, which is
+  acceptable (the overlay rules self-gate on requested services).
+- Catalog count unchanged (255 tiles; Cigna adds rules, not a
+  tile). Ruleset rises 195 → 215. Extends the commercial overlays
+  to the four largest commercial plans (Aetna + UnitedHealthcare +
+  Anthem + Cigna).
+
 ### Wave 52-5+ — State Medicaid overlays, additional commercial payers, OCR
 
 - Per-state Medicaid overlays as user-volume data warrants.
-- Cigna, Humana, Blues plans by state.
+- Humana, Blues plans by state (Cigna shipped in wave 52-10).
 - Optional in-browser OCR via tesseract.js (lazy-loaded,
   user-toggled, ≈ 11 MB gzipped). Only if §2's no-OCR
   experience proves insufficient.
@@ -1583,6 +1673,43 @@ silently; the audit trail records the disablement.
 
 - 2026-05-27 — v52 proposed. Five waves outlined (52-1 through
   52-5+). Catalog count target at v52-1 close: 255.
+- 2026-06-02 — wave 52-10 (§4.5.10 Cigna commercial overlay, the full 20-rule
+  `R-PA-CIGNA-NNN` family — the fourth named commercial overlay after Aetna,
+  UnitedHealthcare, and Anthem). Extends the commercial overlays to the four
+  largest commercial plans by national PA volume. Opens a `'cigna'` payer
+  bucket in `lib/pa/payer.js` (placed after `'anthem'` and before the generic
+  `'commercial'` fall-through). The bucket matches `cigna` / `evernorth`
+  (Cigna's health-services brand, under which it runs Express Scripts /
+  Accredo pharmacy and Evernorth Behavioral Health); a plain Cigna MA packet
+  without an explicit "Medicare Advantage" string routes here, which is
+  acceptable (the rules self-gate on requested services, not the line of
+  business). The 20 rules mirror the Aetna / UHC / Anthem families so the four
+  commercial overlays stay structurally parallel, with Cigna-specific routing
+  names where Cigna uses them: coverage-criteria reference (001, flag),
+  supporting clinical records (002, flag), the CignaforHCP / Availity
+  submission channel (003, info), the precertification-list stub (004, info,
+  mirrors R-PA-053), authorization-before-service (005, flag), inpatient
+  admission notification + concurrent review (006, flag), the eviCore
+  advanced-imaging program (007, flag), expedited urgency (008, flag),
+  site-of-care for outpatient surgery (009, flag), NDC on a J-code drug (010,
+  info), step therapy / Express Scripts (011, flag), the eviCore genetic /
+  molecular testing program (012, flag), the Coverage Policy specialty-drug
+  diagnosis (013, flag), retrospective justification (014, info), DME /
+  home-health written order (015, flag), behavioral-health level-of-care via
+  Evernorth (016, flag), the LifeSOURCE Transplant Network routing (017,
+  flag), the experimental / investigational determination (018, flag), the
+  appeal original-determination reference (019, info), and the out-of-network
+  network-gap justification (020, info). Each self-gates on `bundle.payer ===
+  'cigna'` and vacuously passes on every other packet. New ledger source
+  `cigna-precert` anchored to Cigna's public prior-authorization /
+  precertification hub (all twenty rules map to it by prefix). Coverage is now
+  215 rules shipped (was 195), 167 source-anchored (was 147), 19 sources (was
+  18), 0 orphans, 0 gaps. The golden fixtures re-seed deterministically (a new
+  `cigna-precert` fixture exercises the on-bucket path — 009 flag, 003 info;
+  the other ten gain +20 vacuous-pass findings each). Tests: +13 engine
+  assertions (count 215, the off-bucket loop, and fire/pass checks) and +1
+  classify assertion (Cigna / Evernorth → `cigna`; Cigna MA → the MA bucket).
+  Catalog count unchanged (255). View wave banner advanced to 52-10.
 - 2026-06-02 — wave 52-9 (§4.5.9 Anthem commercial overlay, the full 20-rule
   `R-PA-ANTHEM-NNN` family — the third named commercial overlay after Aetna
   and UnitedHealthcare). Completes the three planned commercial overlays.

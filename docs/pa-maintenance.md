@@ -153,10 +153,15 @@ UHC's public prior-authorization / advance-notification hub, Medical & Drug
 Policies, and Coverage Determination Guidelines); the third is Anthem Blue
 Cross Blue Shield / Elevance Health (`R-PA-ANTHEM-NNN`, ledger source
 `anthem-precert`, anchored to Anthem's public prior-authorization hub,
-Clinical UM Guidelines, and Medical Policies). The Anthem bucket matches only
+Clinical UM Guidelines, and Medical Policies); the fourth is Cigna
+(`R-PA-CIGNA-NNN`, ledger source `cigna-precert`, anchored to Cigna's public
+prior-authorization / precertification hub, Medical Coverage Policies, and the
+eviCore / Evernorth program requirements). The Anthem bucket matches only
 `anthem` / `elevance` — generic `blue cross` / `blue shield` stays in the
 commercial fall-through, since most Blues plans are independent licensees,
-not Anthem/Elevance.
+not Anthem/Elevance. The Cigna bucket matches `cigna` / `evernorth` (Cigna's
+health-services brand, under which it runs Express Scripts / Accredo pharmacy
+and Evernorth Behavioral Health).
 
 Payer precertification pages change more often than the government code sets,
 so verify them on the standard 90-day cadence: open the source URL, confirm

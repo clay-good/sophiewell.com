@@ -149,6 +149,14 @@
       "rules": ["R-PA-ANTHEM-001", "R-PA-ANTHEM-002"],
       "url": "https://www.anthem.com/provider/prior-authorization/",
       "lastVerified": "2026-06-01"
+    },
+    {
+      "id": "cigna-precert",
+      "label": "Cigna prior-authorization / precertification requirements, Medical Coverage Policies, and eviCore / Evernorth program requirements",
+      "ruleFamily": "commercial-cigna",
+      "rules": ["R-PA-CIGNA-001", "R-PA-CIGNA-002"],
+      "url": "https://www.cigna.com/health-care-providers/coverage-and-claims/prior-authorization",
+      "lastVerified": "2026-06-01"
     }
   ],
   "acknowledgments": []
