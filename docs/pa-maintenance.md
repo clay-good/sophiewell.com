@@ -150,7 +150,13 @@ judgement and the payer's Clinical Policy Bulletin's job. The first is Aetna
 (`R-PA-AETNA-NNN`, ledger source `aetna-precert`); the second is
 UnitedHealthcare (`R-PA-UHC-NNN`, ledger source `uhc-precert`, anchored to
 UHC's public prior-authorization / advance-notification hub, Medical & Drug
-Policies, and Coverage Determination Guidelines).
+Policies, and Coverage Determination Guidelines); the third is Anthem Blue
+Cross Blue Shield / Elevance Health (`R-PA-ANTHEM-NNN`, ledger source
+`anthem-precert`, anchored to Anthem's public prior-authorization hub,
+Clinical UM Guidelines, and Medical Policies). The Anthem bucket matches only
+`anthem` / `elevance` — generic `blue cross` / `blue shield` stays in the
+commercial fall-through, since most Blues plans are independent licensees,
+not Anthem/Elevance.
 
 Payer precertification pages change more often than the government code sets,
 so verify them on the standard 90-day cadence: open the source URL, confirm

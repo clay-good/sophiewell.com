@@ -63,7 +63,8 @@ test('detectPayer: Medicare FFS', () => {
 });
 
 test('detectPayer: commercial fallthrough', () => {
-  assert.equal(detectPayer('Anthem Blue Cross PPO plan'), 'commercial');
+  // Generic Blues (not Anthem/Elevance) and other commercial plans fall through.
+  assert.equal(detectPayer('Florida Blue BlueCross PPO plan'), 'commercial');
   assert.equal(detectPayer('Cigna Open Access Plus'), 'commercial');
 });
 
@@ -80,6 +81,16 @@ test('detectPayer: UnitedHealthcare commercial routes to its own bucket (wave 52
   assert.equal(detectPayer('United Healthcare PPO member'), 'uhc');
   // ...but UHC Medicare Advantage still routes to the MA bucket (checked first).
   assert.equal(detectPayer('UnitedHealthcare Medicare Advantage HMO'), 'cms-medicare-advantage');
+});
+
+test('detectPayer: Anthem / Elevance commercial routes to its own bucket (wave 52-9)', () => {
+  // Anthem (and the Elevance Health parent) -> the named 'anthem' overlay bucket.
+  assert.equal(detectPayer('Anthem Blue Cross PPO plan'), 'anthem');
+  assert.equal(detectPayer('Elevance Health member'), 'anthem');
+  // ...but an explicit Anthem Medicare Advantage string still routes to the MA bucket.
+  assert.equal(detectPayer('Anthem Medicare Advantage HMO'), 'cms-medicare-advantage');
+  // Generic Blues without the Anthem/Elevance name stay in the commercial bucket.
+  assert.equal(detectPayer('Blue Shield of California PPO'), 'commercial');
 });
 
 test('detectPayer: unknown for empty / non-payer text', () => {

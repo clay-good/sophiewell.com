@@ -140,8 +140,8 @@ test('runEngine passes every starter rule on a clean multi-doc happy-path packet
   assert.equal(counts.pass, STARTER_RULES.length);
 });
 
-test('STARTER_RULES at wave 52-8 is 175 rules (135 §4.5 core/overlay/specialty + 20 §4.5.7 Aetna + 20 §4.5.8 UnitedHealthcare)', () => {
-  assert.equal(STARTER_RULES.length, 175);
+test('STARTER_RULES at wave 52-9 is 195 rules (135 §4.5 core/overlay/specialty + 20 Aetna + 20 UnitedHealthcare + 20 Anthem)', () => {
+  assert.equal(STARTER_RULES.length, 195);
 });
 
 // ---- wave 52-7a sanity checks: Aetna commercial overlay (§4.5.7) ----
@@ -442,6 +442,93 @@ test('R-PA-UHC-020 flags a UHC out-of-network request with no network-gap justif
   const text = 'UnitedHealthcare member.\nOut-of-network prior authorization request.\nProcedure CPT 70551.\n';
   const findings = runEngine(bundleOf(text));
   const f = findings.find((x) => x.ruleId === 'R-PA-UHC-020');
+  assert.equal(f.status, 'info');
+});
+
+// ---- wave 52-9 sanity checks: Anthem commercial overlay (§4.5.9) ----
+
+test('Anthem overlay rules vacuously pass on a non-Anthem packet', () => {
+  // happyBundle is not an Anthem packet -> every R-PA-ANTHEM-* rule passes.
+  const findings = runEngine(happyBundle());
+  for (let n = 1; n <= 20; n += 1) {
+    const id = 'R-PA-ANTHEM-' + String(n).padStart(3, '0');
+    const f = findings.find((x) => x.ruleId === id);
+    assert.ok(f, id + ' should be in the findings');
+    assert.equal(f.status, 'pass', id + ' should vacuously pass off-bucket');
+  }
+});
+
+test('R-PA-ANTHEM-001 flags an Anthem request with a procedure but no medical-necessity criteria reference', () => {
+  const text = 'Anthem Blue Cross PPO member.\n'
+    + 'Requested procedure: CPT 72148 (MRI lumbar spine).\n'
+    + 'Please authorize.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-ANTHEM-001');
+  assert.equal(f.status, 'flag');
+});
+
+test('R-PA-ANTHEM-001 passes when the Anthem packet cites the applicable Clinical UM Guideline', () => {
+  const text = 'Anthem member.\n'
+    + 'Requested procedure: CPT 72148.\n'
+    + 'Medical necessity per the applicable Anthem Clinical UM Guideline (MCG).\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-ANTHEM-001');
+  assert.equal(f.status, 'pass');
+});
+
+test('R-PA-ANTHEM-002 flags an Anthem packet with no clinical document attached', () => {
+  const text = 'Anthem Blue Cross PPO member.\nRequested procedure: CPT 27447.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-ANTHEM-002');
+  assert.equal(f.status, 'flag');
+});
+
+test('R-PA-ANTHEM-003 passes when the Anthem packet names the Availity / Interactive Care Reviewer channel (info)', () => {
+  const text = 'Anthem member.\nSubmitted via Availity Interactive Care Reviewer.\nProcedure CPT 27447.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-ANTHEM-003');
+  assert.equal(f.status, 'pass');
+});
+
+test('R-PA-ANTHEM-006 flags an inpatient (POS 21) Anthem request with no admission / progress documentation', () => {
+  const text = 'Anthem member.\nPlace of service: 21\nInpatient admission for acute care.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-ANTHEM-006');
+  assert.equal(f.status, 'flag');
+});
+
+test('R-PA-ANTHEM-007 flags an Anthem outpatient MRI with no clinical indication', () => {
+  const text = 'Anthem member.\nRequested: MRI lumbar spine, CPT 72148.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-ANTHEM-007');
+  assert.equal(f.status, 'flag');
+});
+
+test('R-PA-ANTHEM-008 passes when an expedited Anthem request documents the clinical urgency', () => {
+  const text = 'Anthem member.\nExpedited review requested: delay would jeopardize the member\'s life or health.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-ANTHEM-008');
+  assert.equal(f.status, 'pass');
+});
+
+test('R-PA-ANTHEM-011 flags an Anthem specialty-drug request with no step-therapy prior-trial documentation', () => {
+  const text = 'Anthem member.\nSpecialty drug requested via CarelonRx; step therapy applies.\nProcedure J3590.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-ANTHEM-011');
+  assert.equal(f.status, 'flag');
+});
+
+test('R-PA-ANTHEM-017 flags an Anthem transplant request with no Blue Distinction / network routing', () => {
+  const text = 'Anthem member.\nRequested service: kidney transplant.\nMedical necessity per Clinical UM Guideline.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-ANTHEM-017');
+  assert.equal(f.status, 'flag');
+});
+
+test('R-PA-ANTHEM-020 flags an Anthem out-of-network request with no network-gap justification (info)', () => {
+  const text = 'Anthem member.\nOut-of-network prior authorization request.\nProcedure CPT 70551.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-ANTHEM-020');
   assert.equal(f.status, 'info');
 });
 

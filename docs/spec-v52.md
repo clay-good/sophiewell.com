@@ -718,7 +718,74 @@ UBH), the transplant Centers of Excellence routing, the
 experimental / investigational / unproven determination, the
 appeal / reconsideration pathway, and out-of-network /
 network-gap requests. With the UnitedHealthcare set complete,
-Anthem is the next commercial bucket.
+Anthem opened in wave 52-9 (§4.5.9).
+
+#### 4.5.9 Commercial payer overlays — Anthem (wave 52-9)
+
+The third named commercial-payer overlay. Like Aetna (§4.5.7) and
+UnitedHealthcare (§4.5.8), Anthem Blue Cross Blue Shield (Elevance
+Health) is keyed to its own payer bucket (`'anthem'`, detected by
+`lib/pa/payer.js` and placed before the generic `'commercial'`
+fall-through). The bucket matches **only** the definitively-Anthem
+anchors `anthem` and `elevance`; generic `blue cross` / `blue
+shield` stays in the `'commercial'` fall-through, because most Blue
+Cross Blue Shield plans are independent licensees rather than
+Anthem/Elevance and the overlay asserts Anthem's *specific*
+submission requirements. An explicit "Medicare Advantage" string
+still wins the MA bucket earlier. Each commercial rule self-gates
+on `bundle.payer === 'anthem'` and returns a vacuous pass on every
+other packet.
+
+Scope discipline is identical to §4.5.7–§4.5.8: the rules check
+the **procedural completeness** of an Anthem prior-authorization
+packet against Anthem's *own published* submission requirements —
+not clinical coverage criteria, which are the reviewer's judgement
+and the applicable Clinical UM Guideline / Medical Policy's job.
+Every rule is anchored to a public Anthem provider URL tracked in
+the staleness ledger (§8.3, source `anthem-precert`) and
+re-verified on the §4.5.6 cadence.
+
+The set mirrors the Aetna / UHC families so the three commercial
+overlays stay structurally parallel and auditable side by side;
+Anthem-specific routing names appear where Anthem actually uses
+them — the Availity Essentials portal's **Interactive Care
+Reviewer (ICR)** for submission, **Carelon Medical Benefits
+Management** (formerly AIM Specialty Health) for advanced imaging
+and genetic testing, **CarelonRx** for pharmacy, and **Blue
+Distinction Centers** for transplant. Wave 52-9 ships the full
+planned set of 20 (`R-PA-ANTHEM-NNN`):
+
+| Id              | Rule                                                                          | Severity |
+|-----------------|-------------------------------------------------------------------------------|----------|
+| `R-PA-ANTHEM-001`| Medical-necessity criteria (Clinical UM Guideline / Medical Policy / MCG) referenced | flag |
+| `R-PA-ANTHEM-002`| Supporting medical records / clinical documentation attached                 | flag     |
+| `R-PA-ANTHEM-003`| Submission channel (Availity / Interactive Care Reviewer / phone) noted       | info     |
+| `R-PA-ANTHEM-004`| Requested service is on Anthem's prior-authorization list (stub)              | info     |
+| `R-PA-ANTHEM-005`| Authorization referenced for a service that requires it before the service date | flag   |
+| `R-PA-ANTHEM-006`| Inpatient request carries admission notification + concurrent-review docs     | flag     |
+| `R-PA-ANTHEM-007`| Outpatient MRI / CT / PET carries the clinical indication for the Carelon (AIM) program | flag |
+| `R-PA-ANTHEM-008`| Expedited / urgent request states the clinical urgency                        | flag     |
+| `R-PA-ANTHEM-009`| Outpatient surgery / imaging addresses the hospital-outpatient site-of-care   | flag     |
+| `R-PA-ANTHEM-010`| NDC documented for a physician-administered (J-code) drug request             | info     |
+| `R-PA-ANTHEM-011`| Step-therapy prior-trial documentation for a drug request (CarelonRx)         | flag     |
+| `R-PA-ANTHEM-012`| Genetic / molecular testing carries the specific test + indication (Carelon)  | flag     |
+| `R-PA-ANTHEM-013`| Specialty / oncology drug carries the supporting diagnosis for Clinical Criteria | flag   |
+| `R-PA-ANTHEM-014`| Retrospective / retroactive request states a retro-review justification       | info     |
+| `R-PA-ANTHEM-015`| DME / home-health request carries a signed, dated written order / plan of care | flag    |
+| `R-PA-ANTHEM-016`| Behavioral health request carries level-of-care criteria (MCG / ASAM)         | flag     |
+| `R-PA-ANTHEM-017`| Transplant routed through the Anthem network / Blue Distinction Centers       | flag     |
+| `R-PA-ANTHEM-018`| Experimental / investigational service carries peer-reviewed evidence         | flag     |
+| `R-PA-ANTHEM-019`| Appeal / reconsideration references the original determination                | info     |
+| `R-PA-ANTHEM-020`| Out-of-network request documents a network-gap / continuity-of-care reason    | info     |
+
+`R-PA-ANTHEM-004` mirrors core `R-PA-053` and the Aetna / UHC -004
+rules: it ships without a bundled prior-authorization list and
+vacuously passes with a pointer until a later wave bundles the
+list. With three commercial overlays shipped (Aetna,
+UnitedHealthcare, Anthem — the three largest commercial plans by
+national PA volume), the §9 wave plan's "first commercial payer
+overlays" item is complete; Cigna and Humana are the next
+candidates as user-volume data warrants (§9 wave 52-5+).
 
 ### 4.6 The DOCX report
 
@@ -1312,7 +1379,9 @@ self-contained PR; the catalog count rises only at wave 52-1.
   52-7d (2026-06-01), the `R-PA-AETNA-NNN` family (§4.5.7).
   UnitedHealthcare followed in wave 52-8 (2026-06-01) with its
   own 20-rule set, the `R-PA-UHC-NNN` family (§4.5.8). Anthem
-  follows.**
+  followed in wave 52-9 (2026-06-02) with its own 20-rule set,
+  the `R-PA-ANTHEM-NNN` family (§4.5.9). All three planned
+  commercial overlays are now complete.**
 
 ### Wave 52-8 — UnitedHealthcare commercial overlay (2026-06)
 
@@ -1326,6 +1395,21 @@ self-contained PR; the catalog count rises only at wave 52-1.
   MA bucket still wins for `uhc medicare advantage`.
 - Catalog count unchanged (255 tiles; UHC adds rules, not a
   tile). Ruleset rises 155 → 175.
+
+### Wave 52-9 — Anthem commercial overlay (2026-06)
+
+- The 20 Anthem rules (§4.5.9), the `R-PA-ANTHEM-NNN` family,
+  anchored to Anthem's public prior-authorization hub, Clinical
+  UM Guidelines, and Medical Policies (ledger source
+  `anthem-precert`).
+- An `'anthem'` payer bucket in `lib/pa/payer.js`, placed before
+  the generic `'commercial'` fall-through and after `'uhc'`. It
+  matches only `anthem` / `elevance`; generic `blue cross` /
+  `blue shield` stays in the commercial fall-through (most Blues
+  plans are independent licensees, not Anthem/Elevance).
+- Catalog count unchanged (255 tiles; Anthem adds rules, not a
+  tile). Ruleset rises 175 → 195. Completes the three planned
+  commercial overlays (Aetna + UnitedHealthcare + Anthem).
 
 ### Wave 52-5+ — State Medicaid overlays, additional commercial payers, OCR
 
@@ -1499,6 +1583,42 @@ silently; the audit trail records the disablement.
 
 - 2026-05-27 — v52 proposed. Five waves outlined (52-1 through
   52-5+). Catalog count target at v52-1 close: 255.
+- 2026-06-02 — wave 52-9 (§4.5.9 Anthem commercial overlay, the full 20-rule
+  `R-PA-ANTHEM-NNN` family — the third named commercial overlay after Aetna
+  and UnitedHealthcare). Completes the three planned commercial overlays.
+  Opens an `'anthem'` payer bucket in `lib/pa/payer.js` (placed after
+  `'uhc'` and before the generic `'commercial'` fall-through). The bucket
+  matches only the definitively-Anthem anchors `anthem` / `elevance`;
+  generic `blue cross` / `blue shield` stays in the commercial fall-through,
+  because most Blue Cross Blue Shield plans are independent licensees rather
+  than Anthem/Elevance. The 20 rules mirror the Aetna / UHC families so the
+  three commercial overlays stay structurally parallel, with Anthem-specific
+  routing names where Anthem uses them: medical-necessity criteria reference
+  (001, flag), supporting clinical records (002, flag), the Availity /
+  Interactive Care Reviewer submission channel (003, info), the prior-auth-
+  list stub (004, info, mirrors R-PA-053), authorization-before-service
+  (005, flag), inpatient admission notification + concurrent review (006,
+  flag), the Carelon (AIM) advanced-imaging program (007, flag), expedited
+  urgency (008, flag), site-of-care for outpatient surgery (009, flag), NDC
+  on a J-code drug (010, info), step therapy / CarelonRx (011, flag), the
+  Carelon genetic / molecular testing program (012, flag), the Clinical
+  Criteria specialty-drug diagnosis (013, flag), retrospective justification
+  (014, info), DME / home-health written order (015, flag), behavioral-
+  health level-of-care (016, flag), the Blue Distinction Centers transplant
+  routing (017, flag), the experimental / investigational determination
+  (018, flag), the appeal original-determination reference (019, info), and
+  the out-of-network network-gap justification (020, info). Each self-gates
+  on `bundle.payer === 'anthem'` and vacuously passes on every other packet.
+  New ledger source `anthem-precert` anchored to Anthem's public
+  prior-authorization hub (all twenty rules map to it by prefix). Coverage
+  is now 195 rules shipped (was 175), 147 source-anchored (was 127), 18
+  sources (was 17), 0 orphans, 0 gaps. The golden fixtures re-seed
+  deterministically (a new `anthem-precert` fixture exercises the on-bucket
+  path — 009 flag, 003 info; the other nine gain +20 vacuous-pass findings
+  each). Tests: +13 engine assertions (count 195, the off-bucket loop, and
+  fire/pass checks) and +1 classify assertion (Anthem / Elevance → `anthem`;
+  generic Blues → `commercial`; Anthem MA → the MA bucket). Catalog count
+  unchanged (255). View wave banner advanced to 52-9.
 - 2026-06-01 — wave 52-8 (§4.5.8 UnitedHealthcare commercial overlay, the
   full 20-rule `R-PA-UHC-NNN` family — the second named commercial overlay
   after Aetna). Opens a `'uhc'` payer bucket in `lib/pa/payer.js` (placed

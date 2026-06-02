@@ -1,0 +1,19 @@
+{
+  "name": "anthem-precert",
+  "description": "Anthem Blue Cross Blue Shield commercial prior-authorization packet for a hospital-outpatient (POS 22) knee arthroscopy. The 'Anthem Blue Cross PPO' letterhead routes the bundle to the 'anthem' payer bucket (spec-v52 §4.5.9) and engages the Anthem commercial overlay. The packet cites the applicable Clinical UM Guideline and attaches a clinical note (R-PA-ANTHEM-001/002 pass), omits any submission-channel reference (R-PA-ANTHEM-003 info), and -- as an outpatient surgery requested in a hospital-outpatient setting -- carries no site-of-care rationale for the higher-acuity site (R-PA-ANTHEM-009 flag). Every other Anthem rule self-gates off (no imaging, drug, DME, behavioral-health, transplant, appeal, or out-of-network trigger) and vacuously passes.",
+  "opts": { "totalBytes": 16384 },
+  "documents": [
+    {
+      "name": "anthem-pa-form.txt",
+      "sha256": "fixture-anthem-precert-form",
+      "kind": "TXT",
+      "text": "Anthem Blue Cross PPO Prior Authorization Request\nPatient: Mary C Roe\nDOB: 1968-11-22\nMember ID: ABC123456789\nDate of service: 2026-06-25\nPlace of service: 22\nRequested procedure: knee arthroscopy with meniscectomy CPT 29881\nDx: M23.205 derangement of medial meniscus, left knee\nQuantity: 1\nOrdering provider NPI: 1234567893\nServicing facility NPI: 1306849393\nTIN: 123456789\nMedical necessity: persistent mechanical symptoms; see the applicable Anthem Clinical UM Guideline.\nSignature: Ortho Sports MD, 2026-06-10\n"
+    },
+    {
+      "name": "anthem-note.txt",
+      "sha256": "fixture-anthem-precert-note",
+      "kind": "TXT",
+      "text": "Clinical note\nChief complaint: left knee pain with locking and catching.\nHistory of present illness: four months of mechanical symptoms despite activity modification.\nPhysical exam: positive McMurray on the left; joint-line tenderness medially.\nAssessment and plan: left medial meniscus tear; recommend arthroscopic partial meniscectomy.\nMedical necessity: imaging confirms a displaced medial meniscus tear.\nNote date: 2026-06-10\nSigned: Ortho Sports MD, 2026-06-10\n"
+    }
+  ]
+}

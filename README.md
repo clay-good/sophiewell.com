@@ -190,10 +190,10 @@ long version, see [docs/architecture.md](docs/architecture.md).
 of form fields it consumes dropped files (PDF / DOCX / TXT) and produces a
 deterministic findings report. It checks the *procedural completeness* of a
 prior-authorization packet — is the member ID present, is the ordering NPI
-Luhn-valid, is a clinical note attached, does an inpatient Aetna or
-UnitedHealthcare request carry a discharge plan — **not** clinical coverage
-criteria, which are the reviewer's judgment. Everything runs in the browser;
-the packet never leaves the tab.
+Luhn-valid, is a clinical note attached, does an inpatient Aetna,
+UnitedHealthcare, or Anthem request carry a discharge plan — **not** clinical
+coverage criteria, which are the reviewer's judgment. Everything runs in the
+browser; the packet never leaves the tab.
 
 The pipeline is a pure, byte-deterministic function of the input bytes
 (spec-v52 §4.10): the same packet always yields the same report, which is
@@ -213,9 +213,9 @@ what makes the golden-fixture CI gate possible.
         ▼
  ┌──────────────┐   lib/pa/payer.js → one bucket: cms-medicare-ffs |
  │ detect payer │     cms-medicare-advantage | medicaid | aetna | uhc |
- └──────┬───────┘     commercial | unknown
+ └──────┬───────┘     anthem | commercial | unknown
         ▼
- ┌──────────────┐   lib/pa/rules.js → 175 rules, each a pure check(bundle).
+ ┌──────────────┐   lib/pa/rules.js → 195 rules, each a pure check(bundle).
  │  run engine  │   Overlay rules self-gate on the detected payer and
  └──────┬───────┘   vacuously pass off-bucket.
         ▼
@@ -228,7 +228,7 @@ Severities follow spec-v52 §4.4: `block` (packet cannot be reviewed as-is),
 `flag` (likely denial / RFI), `info` (nice-to-have), `pass`. A finding never
 guarantees an approval or a denial — it reports only what the ruleset checks.
 
-### Ruleset at a glance (175 rules)
+### Ruleset at a glance (195 rules)
 
 | Family            | Count | Scope                                                        | Ledger source              |
 |-------------------|-------|--------------------------------------------------------------|----------------------------|
@@ -243,28 +243,32 @@ guarantees an approval or a denial — it reports only what the ruleset checks.
 | `R-PA-GEN-NNN`    | 5     | §4.5.5 genetic testing                                       | NCCN / ACMG                |
 | `R-PA-AETNA-NNN`  | 20    | §4.5.7 Aetna commercial overlay — the first named-payer set  | `aetna-precert`            |
 | `R-PA-UHC-NNN`    | 20    | §4.5.8 UnitedHealthcare commercial overlay — the second named-payer set | `uhc-precert`   |
+| `R-PA-ANTHEM-NNN` | 20    | §4.5.9 Anthem BCBS / Elevance commercial overlay — the third named-payer set | `anthem-precert` |
 
-The two commercial overlays (§4.5.7 Aetna, §4.5.8 UnitedHealthcare) are each
-keyed to a single named payer and ship 20 rules apiece. They are deliberately
-structurally parallel — same families, same severities — so a packet linted
-under either payer is auditable against the other:
+The three commercial overlays (§4.5.7 Aetna, §4.5.8 UnitedHealthcare, §4.5.9
+Anthem) are each keyed to a single named payer and ship 20 rules apiece. They
+are deliberately structurally parallel — same families, same severities — so
+a packet linted under any one payer is auditable against the others. The
+payer-specific routing names differ where each payer actually differs
+(Aetna's CPB / NME; UHC's Provider Portal / Optum; Anthem's Availity ICR /
+Carelon / Blue Distinction Centers):
 
-| Rules     | Aetna (`R-PA-AETNA-`) / UnitedHealthcare (`R-PA-UHC-`)                   |
+| Rules     | Aetna (`-AETNA-`) / UnitedHealthcare (`-UHC-`) / Anthem (`-ANTHEM-`)     |
 |-----------|-------------------------------------------------------------------------|
-| 001–005   | Coverage criteria, supporting records, submission channel, prior-auth-list stub, procedure questionnaire / advance notification |
-| 006–010   | Review *modes*: concurrent / continued-stay, advanced-imaging site-of-care, expedited urgency, objective evidence / surgery site-of-service, J-code NDC |
+| 001–005   | Coverage criteria, supporting records, submission channel, prior-auth-list stub, questionnaire / advance notification / auth-before-service |
+| 006–010   | Review *modes*: concurrent / continued-stay, advanced-imaging site-of-care, expedited urgency, objective evidence / surgery site-of-care, J-code NDC |
 | 011–015   | Step therapy, bariatric / specialty-drug diagnosis, genetic-testing program, retrospective review, DME written order |
-| 016–020   | DME or behavioral-health LOC, transplant Centers-of-Excellence routing, experimental-service evidence, appeal reference, out-of-network gap |
+| 016–020   | DME or behavioral-health LOC, transplant Centers-of-Excellence / Blue Distinction routing, experimental-service evidence, appeal reference, out-of-network gap |
 
 Every overlay rule self-gates on `bundle.payer === '<payer>'` and vacuously
-passes on any other packet, so the 135 non-commercial rules and the two
+passes on any other packet, so the 135 non-commercial rules and the three
 20-rule commercial overlays coexist without false positives — a Medicare FFS
-packet never trips a UnitedHealthcare rule, and vice versa. Each rule's
+packet never trips an Anthem rule, and vice versa. Each rule's
 source URL is tracked in
 [pa-staleness-ledger.json](pa-staleness-ledger.json) and re-verified on the
 §4.5.6 maintenance cadence; `npm run lint` fails CI on any ledger ↔ ruleset
 drift, and `scripts/audit-pa.mjs` diffs the full pipeline output against
-nine committed golden reports so any rule, extractor, or classifier change
+ten committed golden reports so any rule, extractor, or classifier change
 that moves a byte is caught.
 
 **Design decisions baked into the linter.** (1) *Deterministic, not
@@ -273,7 +277,7 @@ packet always yields the same report; this is what makes a golden-fixture CI
 gate possible and is the opposite of the LLM-on-top-of-rules direction the
 PA-automation SaaS vendors took (spec-v52 §1.1). (2) *Self-gating overlays* —
 adding a payer is additive: a new bucket plus a prefix → ledger-source map,
-never an edit to an existing rule, so the 175-rule set grows without
+never an edit to an existing rule, so the 195-rule set grows without
 regression risk. (3) *Procedural completeness only* — the linter never
 asserts medical necessity; it checks whether the mechanically-detectable
 pieces a reviewer needs are present, which keeps it on the right side of the
@@ -317,7 +321,7 @@ rules, not soft preferences.
 | `npm run dev`            | Serve the directory locally on http://localhost:4173              |
 | `npm run build`          | Copy static files into `dist/` for deployment                     |
 | `npm test`               | Run the full test suite (unit, a11y, grep, data integrity)        |
-| `npm run test:unit`      | Run Node's built-in unit tests (2,074 tests)                      |
+| `npm run test:unit`      | Run Node's built-in unit tests (2,086 tests)                      |
 | `npm run test:e2e`       | Run Playwright integration tests against a real browser           |
 | `npm run test:a11y`      | Run accessibility checks on every utility view                    |
 | `npm run lint`           | Run ESLint with the project rules (bans innerHTML, eval, others)  |
@@ -391,8 +395,8 @@ build, integrity-verified data shards) are documented in
   healthcare worker would otherwise reach for MDCalc to find,
   shipped slowly at the v11 quality bar
 - [docs/spec-v52.md](docs/spec-v52.md) — the `pa-lint` prior-auth packet
-  linter: pipeline, the 175-rule ruleset, payer overlays (Aetna + United-
-  Healthcare), and the byte-determinism / golden-fixture guarantee
+  linter: pipeline, the 195-rule ruleset, payer overlays (Aetna +
+  UnitedHealthcare + Anthem), and the byte-determinism / golden-fixture guarantee
 - [docs/architecture.md](docs/architecture.md) — runtime architecture,
   data flow, no-backend rationale
 - [docs/data-sources.md](docs/data-sources.md) — every bundled dataset
