@@ -113,6 +113,19 @@ test('detectPayer: Humana commercial routes to its own bucket (wave 52-11)', () 
   assert.equal(detectPayer('Humana Medicare Advantage PPO'), 'cms-medicare-advantage');
 });
 
+test('detectPayer: HCSC (Blue Cross Blue Shield of IL/TX/MT/NM/OK) routes to its own bucket (wave 52-12)', () => {
+  // The five HCSC state plans (and the corporate name / acronym) -> the named
+  // 'hcsc' overlay bucket.
+  assert.equal(detectPayer('Blue Cross Blue Shield of Illinois PPO'), 'hcsc');
+  assert.equal(detectPayer('Blue Cross and Blue Shield of Texas member'), 'hcsc');
+  assert.equal(detectPayer('Health Care Service Corporation'), 'hcsc');
+  // ...but generic / other-licensee Blues stay in the commercial fall-through.
+  assert.equal(detectPayer('Florida Blue BlueCross PPO plan'), 'commercial');
+  assert.equal(detectPayer('Blue Shield of California PPO'), 'commercial');
+  // ...and an explicit Medicare Advantage string still routes to the MA bucket.
+  assert.equal(detectPayer('Blue Cross Medicare Advantage from Illinois'), 'cms-medicare-advantage');
+});
+
 test('detectPayer: unknown for empty / non-payer text', () => {
   assert.equal(detectPayer(''), 'unknown');
   assert.equal(detectPayer('this packet has no payer letterhead'), 'unknown');

@@ -6,6 +6,48 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v52 wave 52-12 — §4.5.12 HCSC / Blue Cross Blue Shield commercial overlay, 20 of 20)
+
+The sixth named commercial-payer overlay, and the first to address the §9
+"Blues plans by state" candidate directly. The full 20-rule `R-PA-HCSC-NNN`
+family is anchored to Health Care Service Corporation's public BCBSIL provider
+prior-authorization hub, Medical Policies, and utilization-management / Prime
+Therapeutics program requirements (new ledger source `hcsc-precert`). HCSC is
+the largest Blue Cross Blue Shield licensee not already routed to the
+Anthem/Elevance bucket; it operates the Blues plans of Illinois, Texas,
+Montana, New Mexico, and Oklahoma.
+
+A new `'hcsc'` payer bucket in `lib/pa/payer.js` is placed after `'humana'` and
+before the generic `'commercial'` fall-through. It matches only
+definitively-HCSC anchors — the corporate name, the `hcsc` acronym, and the
+five state plan names (Blue Cross [and] Blue Shield of Illinois / Texas /
+Montana / New Mexico / Oklahoma). Generic `blue cross` / `blue shield` and
+other licensees (Florida Blue, Blue Shield of California) stay in the
+commercial fall-through, exactly as the Anthem bucket leaves them, and "Blue
+Cross Medicare Advantage" still wins the MA bucket earlier. Each rule self-gates
+on `bundle.payer === 'hcsc'` and vacuously passes on every other packet.
+
+The 20 rules mirror the Aetna / UHC / Anthem / Cigna / Humana families so the
+six commercial overlays stay structurally parallel and auditable side by side,
+with HCSC-specific routing names where HCSC uses them: the Availity Essentials
+submission channel (003), HCSC's advanced-imaging utilization-management
+program (007, 012), Prime Therapeutics (which HCSC co-owns) for pharmacy / step
+therapy (011), HCSC Behavioral Health for behavioral health (016), and the Blue
+Distinction Centers for Transplant for transplant (017). As with Humana, the
+imaging / lab-management program is named generically in the ruleset, since its
+current vendor name collides with an AI-vendor substring barred from source by
+spec-v50 §3.6 (check-commitments enforces this).
+
+Coverage is now 255 rules shipped (was 235), 207 source-anchored (was 187), 21
+sources (was 20), 0 ledger orphans, 0 coverage gaps. A new `hcsc-precert`
+golden fixture (hospital-outpatient knee arthroscopy under a BCBSIL letterhead)
+exercises the on-bucket path — 009 flag, 003 info — and the other twelve
+goldens gain +20 vacuous-pass findings each; all thirteen re-seeded
+deterministically. Tests: +10 engine assertions (count 255, the off-bucket
+loop, fire/pass checks) and +1 classify assertion. Catalog count unchanged
+(255 tiles; HCSC adds rules, not a tile). The PA tile's wave banner advances to
+52-12.
+
 ### Fixed (tool views — deferred listener wiring on a torn-down view)
 
 Hardened a navigation/teardown race that surfaced intermittently in the

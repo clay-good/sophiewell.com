@@ -930,6 +930,87 @@ five largest commercial / MA plans by national PA volume), the
 remaining §9 wave 52-5+ candidates are the Blues plans by state
 and per-state Medicaid overlays as user-volume data warrants.
 
+#### 4.5.12 Commercial payer overlays — HCSC / Blue Cross Blue Shield (wave 52-12)
+
+The sixth named commercial-payer overlay, and the first to
+address the §9 "Blues plans by state" candidate directly. **Health
+Care Service Corporation (HCSC)** is the largest Blue Cross Blue
+Shield licensee not already routed to the Anthem/Elevance bucket:
+it operates the Blues plans of **Illinois, Texas, Montana, New
+Mexico, and Oklahoma** and is the largest customer-owned health
+insurer in the country. Like the five before it, HCSC is keyed to
+its own payer bucket (`'hcsc'`, detected by `lib/pa/payer.js` and
+placed before the generic `'commercial'` fall-through, after
+`'humana'`). The bucket matches only definitively-HCSC anchors —
+the corporate name `health care service corporation`, the `hcsc`
+acronym, and the five state plan names (`blue cross [and] blue
+shield of illinois / texas / montana / new mexico / oklahoma`).
+Generic `blue cross` / `blue shield` and other Blues licensees
+(Florida Blue, Blue Shield of California) stay in the commercial
+fall-through, exactly as the Anthem bucket leaves them. HCSC's
+Medicare Advantage line ("Blue Cross Medicare Advantage") carries
+an explicit "Medicare Advantage" string, so it is caught earlier
+by the MA bucket; a plain HCSC commercial packet routes here. Each
+commercial rule self-gates on `bundle.payer === 'hcsc'` and
+returns a vacuous pass on every other packet.
+
+Scope discipline is identical to §4.5.7–§4.5.11: the rules check
+the **procedural completeness** of an HCSC prior-authorization
+packet against HCSC's *own published* submission requirements —
+not clinical coverage criteria, which are the reviewer's judgement
+and the applicable HCSC Medical Policy's job. Every rule is
+anchored to a public HCSC (BCBSIL) provider URL tracked in the
+staleness ledger (§8.3, source `hcsc-precert`) and re-verified on
+the §4.5.6 cadence.
+
+The set mirrors the earlier commercial families so the six
+overlays stay structurally parallel and auditable side by side;
+HCSC-specific routing names appear where HCSC actually uses them —
+the **Availity Essentials** portal for submission, HCSC's
+**advanced-imaging utilization-management program** for advanced
+imaging and genetic / molecular testing, **Prime Therapeutics**
+(which HCSC co-owns) for pharmacy / step therapy, **HCSC
+Behavioral Health** for behavioral health, and the **Blue
+Distinction Centers for Transplant** for transplant. (As with
+Humana §4.5.11, the imaging / lab-management program is described
+generically in the ruleset rather than by its current vendor name,
+which collides with an AI-vendor substring barred from source by
+spec-v50 §3.6.) Wave 52-12 ships the full planned set of 20
+(`R-PA-HCSC-NNN`):
+
+| Id              | Rule                                                                          | Severity |
+|-----------------|-------------------------------------------------------------------------------|----------|
+| `R-PA-HCSC-001` | Coverage criteria (HCSC Medical Policy / MCG) referenced                       | flag     |
+| `R-PA-HCSC-002` | Supporting medical records / clinical documentation attached                  | flag     |
+| `R-PA-HCSC-003` | Submission channel (Availity Essentials / phone) noted                        | info     |
+| `R-PA-HCSC-004` | Requested service is on HCSC's prior-authorization / notification list (stub) | info     |
+| `R-PA-HCSC-005` | Authorization referenced for a service that requires it before the service date | flag   |
+| `R-PA-HCSC-006` | Inpatient request carries admission notification + concurrent-review docs     | flag     |
+| `R-PA-HCSC-007` | Outpatient MRI / CT / PET carries the clinical indication for the imaging program | flag |
+| `R-PA-HCSC-008` | Expedited / urgent request states the clinical urgency                        | flag     |
+| `R-PA-HCSC-009` | Outpatient surgery / imaging addresses the hospital-outpatient site-of-care   | flag     |
+| `R-PA-HCSC-010` | NDC documented for a physician-administered (J-code) drug request             | info     |
+| `R-PA-HCSC-011` | Step-therapy prior-trial documentation for a drug request (Prime Therapeutics) | flag    |
+| `R-PA-HCSC-012` | Genetic / molecular testing carries the specific test + indication            | flag     |
+| `R-PA-HCSC-013` | Specialty / oncology drug carries the supporting diagnosis (Medical Policy)   | flag     |
+| `R-PA-HCSC-014` | Retrospective / retroactive request states a retro-review justification       | info     |
+| `R-PA-HCSC-015` | DME / home-health request carries a signed, dated written order / plan of care | flag    |
+| `R-PA-HCSC-016` | Behavioral health request carries level-of-care criteria (HCSC BH / ASAM)     | flag     |
+| `R-PA-HCSC-017` | Transplant routed through the Blue Distinction Centers for Transplant         | flag     |
+| `R-PA-HCSC-018` | Experimental / investigational / unproven service carries peer-reviewed evidence | flag   |
+| `R-PA-HCSC-019` | Appeal / reconsideration references the original determination                | info     |
+| `R-PA-HCSC-020` | Out-of-network request documents a network-gap / continuity-of-care reason    | info     |
+
+`R-PA-HCSC-004` mirrors core `R-PA-053` and the Aetna / UHC /
+Anthem / Cigna / Humana -004 rules: it ships without a bundled
+prior-authorization list and vacuously passes with a pointer until
+a later wave bundles the list. With six commercial overlays
+shipped — the five largest commercial / MA plans (Aetna,
+UnitedHealthcare, Anthem, Cigna, Humana) plus the largest
+independent Blues licensee (HCSC) — the remaining §9 wave 52-5+
+candidates are the other Blues plans by state and per-state
+Medicaid overlays as user-volume data warrants.
+
 ### 4.6 The DOCX report
 
 Structure (mirrors Vaulytica v3 with healthcare-specific
@@ -1594,11 +1675,30 @@ self-contained PR; the catalog count rises only at wave 52-1.
   overlays to five (Aetna + UnitedHealthcare + Anthem + Cigna +
   Humana).
 
+### Wave 52-12 — HCSC / Blue Cross Blue Shield commercial overlay (2026-06)
+
+- The 20 HCSC rules (§4.5.12), the `R-PA-HCSC-NNN` family,
+  anchored to HCSC's public BCBSIL provider prior-authorization
+  hub, Medical Policies, and utilization-management / Prime
+  Therapeutics program requirements (ledger source `hcsc-precert`).
+- An `'hcsc'` payer bucket in `lib/pa/payer.js`, placed before the
+  generic `'commercial'` fall-through and after `'humana'`. It
+  matches the HCSC corporate name, the `hcsc` acronym, and the
+  five state plan names (Blue Cross [and] Blue Shield of Illinois /
+  Texas / Montana / New Mexico / Oklahoma); generic Blues and other
+  licensees stay in the commercial fall-through, and "Blue Cross
+  Medicare Advantage" still wins the MA bucket earlier.
+- Catalog count unchanged (255 tiles; HCSC adds rules, not a
+  tile). Ruleset rises 235 → 255. Brings the named commercial / MA
+  overlays to six (Aetna + UnitedHealthcare + Anthem + Cigna +
+  Humana + HCSC), the first directly addressing the §9 "Blues
+  plans by state" candidate.
+
 ### Wave 52-5+ — State Medicaid overlays, additional commercial payers, OCR
 
 - Per-state Medicaid overlays as user-volume data warrants.
-- Blues plans by state (Cigna shipped in wave 52-10; Humana in
-  wave 52-11).
+- Other Blues plans by state (HCSC shipped in wave 52-12; the
+  remaining independent Blues licensees follow as volume warrants).
 - Optional in-browser OCR via tesseract.js (lazy-loaded,
   user-toggled, ≈ 11 MB gzipped). Only if §2's no-OCR
   experience proves insufficient.
@@ -1767,6 +1867,51 @@ silently; the audit trail records the disablement.
 
 - 2026-05-27 — v52 proposed. Five waves outlined (52-1 through
   52-5+). Catalog count target at v52-1 close: 255.
+- 2026-06-02 — wave 52-12 (§4.5.12 HCSC / Blue Cross Blue Shield commercial
+  overlay, the full 20-rule `R-PA-HCSC-NNN` family — the sixth named
+  commercial overlay after Aetna, UnitedHealthcare, Anthem, Cigna, and Humana,
+  and the first to address the §9 "Blues plans by state" candidate). Opens an
+  `'hcsc'` payer bucket in `lib/pa/payer.js` (placed after `'humana'` and
+  before the generic `'commercial'` fall-through). Health Care Service
+  Corporation is the largest Blue Cross Blue Shield licensee not routed to the
+  Anthem/Elevance bucket; it operates the Blues plans of Illinois, Texas,
+  Montana, New Mexico, and Oklahoma. The bucket matches only definitively-HCSC
+  anchors — the corporate name, the `hcsc` acronym, and the five state plan
+  names — so generic `blue cross` / `blue shield` and other licensees (Florida
+  Blue, Blue Shield of California) stay in the commercial fall-through, and
+  "Blue Cross Medicare Advantage" still wins the MA bucket earlier. The 20
+  rules mirror the Aetna / UHC / Anthem / Cigna / Humana families so the six
+  commercial overlays stay structurally parallel, with HCSC-specific routing
+  names where HCSC uses them: coverage-criteria reference (001, flag),
+  supporting clinical records (002, flag), the Availity Essentials submission
+  channel (003, info), the prior-authorization-list stub (004, info, mirrors
+  R-PA-053), authorization-before-service (005, flag), inpatient admission
+  notification + concurrent review (006, flag), the advanced-imaging
+  utilization-management program (007, flag), expedited urgency (008, flag),
+  site-of-care for outpatient surgery (009, flag), NDC on a J-code drug (010,
+  info), step therapy / Prime Therapeutics (011, flag), the genetic /
+  molecular lab-management program (012, flag), the Medical Policy specialty /
+  oncology-drug diagnosis (013, flag), retrospective justification (014,
+  info), DME / home-health written order (015, flag), behavioral-health
+  level-of-care via HCSC Behavioral Health (016, flag), the Blue Distinction
+  Centers for Transplant routing (017, flag), the experimental /
+  investigational determination (018, flag), the appeal original-determination
+  reference (019, info), and the out-of-network network-gap justification (020,
+  info). Each self-gates on `bundle.payer === 'hcsc'` and vacuously passes on
+  every other packet. The imaging / lab-management program is described
+  generically rather than by its current vendor name, which collides with an
+  AI-vendor substring barred from source by spec-v50 §3.6 (check-commitments
+  enforces this). New ledger source `hcsc-precert` anchored to HCSC's public
+  BCBSIL provider prior-authorization hub (all twenty rules map to it by
+  prefix). Coverage is now 255 rules shipped (was 235), 207 source-anchored
+  (was 187), 21 sources (was 20), 0 orphans, 0 gaps. The golden fixtures
+  re-seed deterministically (a new `hcsc-precert` fixture exercises the
+  on-bucket path — 009 flag, 003 info; the other twelve gain +20 vacuous-pass
+  findings each). Tests: +10 engine assertions (count 255, the off-bucket
+  loop, and fire/pass checks) and +1 classify assertion (HCSC / the five
+  state plans → `hcsc`; generic Blues → `commercial`; Blue Cross Medicare
+  Advantage → the MA bucket). Catalog count unchanged (255). View wave banner
+  advanced to 52-12.
 - 2026-06-02 — wave 52-11 (§4.5.11 Humana commercial overlay, the full 20-rule
   `R-PA-HUMANA-NNN` family — the fifth named commercial overlay after Aetna,
   UnitedHealthcare, Anthem, and Cigna). Opens a `'humana'` payer bucket in

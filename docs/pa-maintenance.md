@@ -159,17 +159,26 @@ prior-authorization / precertification hub, Medical Coverage Policies, and the
 eviCore / Evernorth program requirements); the fifth is Humana
 (`R-PA-HUMANA-NNN`, ledger source `humana-precert`, anchored to Humana's
 public prior-authorization / preauthorization hub, Medical Coverage Policies,
-and utilization-management / CenterWell program requirements). The Anthem
-bucket matches only `anthem` / `elevance` — generic `blue cross` / `blue
-shield` stays in the commercial fall-through, since most Blues plans are
-independent licensees, not Anthem/Elevance. The Cigna bucket matches `cigna` /
-`evernorth` (Cigna's health-services brand, under which it runs Express
-Scripts / Accredo pharmacy and Evernorth Behavioral Health). The Humana bucket
-matches `humana` / `centerwell`; `humana gold plus` and explicit "Medicare
-Advantage" strings route to the MA bucket first. Note Humana's imaging /
-lab-management program is named generically in the ruleset, since its current
-vendor name collides with an AI-vendor substring barred from source by
-spec-v50 §3.6.
+and utilization-management / CenterWell program requirements); the sixth is
+Health Care Service Corporation (`R-PA-HCSC-NNN`, ledger source `hcsc-precert`,
+anchored to HCSC's public BCBSIL provider prior-authorization hub, Medical
+Policies, and utilization-management / Prime Therapeutics program
+requirements). The Anthem bucket matches only `anthem` / `elevance` — generic
+`blue cross` / `blue shield` stays in the commercial fall-through, since most
+Blues plans are independent licensees, not Anthem/Elevance. The Cigna bucket
+matches `cigna` / `evernorth` (Cigna's health-services brand, under which it
+runs Express Scripts / Accredo pharmacy and Evernorth Behavioral Health). The
+Humana bucket matches `humana` / `centerwell`; `humana gold plus` and explicit
+"Medicare Advantage" strings route to the MA bucket first. The HCSC bucket
+matches the corporate name, the `hcsc` acronym, and the five state plan names
+(`blue cross [and] blue shield of illinois / texas / montana / new mexico /
+oklahoma`) — the largest Blues licensee not already routed to the
+Anthem/Elevance bucket; generic Blues plans (Florida Blue, Blue Shield of
+California) stay in the commercial fall-through, and HCSC's "Blue Cross Medicare
+Advantage" line routes to the MA bucket first. Note both Humana's and HCSC's
+imaging / lab-management programs are named generically in the ruleset, since
+their current vendor names collide with an AI-vendor substring barred from
+source by spec-v50 §3.6.
 
 Payer precertification pages change more often than the government code sets,
 so verify them on the standard 90-day cadence: open the source URL, confirm
