@@ -173,6 +173,14 @@
       "rules": ["R-PA-HCSC-001", "R-PA-HCSC-002"],
       "url": "https://www.bcbsil.com/provider/clinical/clinical-resources/prior-authorization",
       "lastVerified": "2026-06-02"
+    },
+    {
+      "id": "highmark-precert",
+      "label": "Highmark (Blue Cross Blue Shield of PA/WV/DE + western NY) prior-authorization requirements, Medical Policies, and utilization-management / pharmacy program requirements",
+      "ruleFamily": "commercial-highmark",
+      "rules": ["R-PA-HIGHMARK-001", "R-PA-HIGHMARK-002"],
+      "url": "https://www.highmark.com/provider/resource-center",
+      "lastVerified": "2026-06-03"
     }
   ],
   "acknowledgments": []

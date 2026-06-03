@@ -6,6 +6,43 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v52 wave 52-13 — §4.5.13 Highmark / Blue Cross Blue Shield commercial overlay, 20 of 20)
+
+The seventh named commercial-payer overlay, and the second "Blues plans by
+state" overlay after HCSC. The full 20-rule `R-PA-HIGHMARK-NNN` family is
+anchored to Highmark's public Provider Resource Center, Medical Policies, and
+utilization-management / pharmacy program requirements (new ledger source
+`highmark-precert`). Highmark is the second-largest independent Blue Cross Blue
+Shield licensee (after HCSC); it operates the Blues plans of Pennsylvania, West
+Virginia, Delaware, and western / northeastern New York.
+
+A new `'highmark'` payer bucket in `lib/pa/payer.js` is placed after `'hcsc'`
+and before the generic `'commercial'` fall-through. It matches the single
+unambiguous brand anchor `highmark` (a distinct trade name, not a generic Blues
+phrase), so generic `blue cross` / `blue shield` and other licensees stay in
+the commercial fall-through, and "Highmark Medicare Advantage" (Freedom Blue)
+still wins the MA bucket earlier when it carries an explicit "Medicare
+Advantage" string. Each rule self-gates on `bundle.payer === 'highmark'` and
+vacuously passes on every other packet.
+
+The 20 rules mirror the Aetna / UHC / Anthem / Cigna / Humana / HCSC families so
+the seven commercial overlays stay structurally parallel and auditable side by
+side, with Highmark-specific routing names where Highmark uses them: the
+Availity Essentials portal and Provider Resource Center (003), Highmark's
+advanced-imaging utilization-management program (007, 012), Highmark pharmacy
+management for step therapy (011), Highmark behavioral health (016), and the
+Blue Distinction Centers for Transplant (017).
+
+Coverage is now 275 rules shipped (was 255), 227 source-anchored (was 207), 22
+sources (was 21), 0 ledger orphans, 0 coverage gaps. A new `highmark-precert`
+golden fixture (hospital-outpatient knee arthroscopy under a Highmark
+letterhead) exercises the on-bucket path — 009 flag, 003 info — and the other
+thirteen goldens gain +20 vacuous-pass findings each; all fourteen re-seeded
+deterministically. Tests: +10 engine assertions (count 275, the off-bucket
+loop, fire/pass checks) and +1 classify assertion. e2e pa-lint rule count
+255 -> 275. Catalog count unchanged (255 tiles; Highmark adds rules, not a
+tile). The PA tile's wave banner advances to 52-13.
+
 ### Added (spec-v52 wave 52-12 — §4.5.12 HCSC / Blue Cross Blue Shield commercial overlay, 20 of 20)
 
 The sixth named commercial-payer overlay, and the first to address the §9

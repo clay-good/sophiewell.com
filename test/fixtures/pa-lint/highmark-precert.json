@@ -1,0 +1,19 @@
+{
+  "name": "highmark-precert",
+  "description": "Highmark (Blue Cross Blue Shield of PA/WV/DE + western NY) commercial prior-authorization packet for a hospital-outpatient (POS 22) knee arthroscopy. The 'Highmark' letterhead routes the bundle to the 'highmark' payer bucket (spec-v52 §4.5.13) and engages the Highmark commercial overlay. The packet cites the applicable Highmark Medical Policy and attaches a clinical note (R-PA-HIGHMARK-001/002 pass), omits any submission-channel reference (R-PA-HIGHMARK-003 info), and -- as an outpatient surgery requested in a hospital-outpatient setting -- carries no site-of-care rationale for the higher-acuity site (R-PA-HIGHMARK-009 flag). Every other Highmark rule self-gates off (no imaging, drug, DME, behavioral-health, transplant, appeal, or out-of-network trigger) and vacuously passes.",
+  "opts": { "totalBytes": 16384 },
+  "documents": [
+    {
+      "name": "highmark-pa-form.txt",
+      "sha256": "fixture-highmark-precert-form",
+      "kind": "TXT",
+      "text": "Highmark Blue Shield PPO Prior Authorization Request\nPatient: Mary C Roe\nDOB: 1968-11-22\nMember ID: HMK123456789\nDate of service: 2026-06-25\nPlace of service: 22\nRequested procedure: knee arthroscopy with meniscectomy CPT 29881\nDx: M23.205 derangement of medial meniscus, left knee\nQuantity: 1\nOrdering provider NPI: 1234567893\nServicing facility NPI: 1306849393\nTIN: 123456789\nMedical necessity: persistent mechanical symptoms; see the applicable Highmark Medical Policy.\nSignature: Ortho Sports MD, 2026-06-10\n"
+    },
+    {
+      "name": "highmark-note.txt",
+      "sha256": "fixture-highmark-precert-note",
+      "kind": "TXT",
+      "text": "Clinical note\nChief complaint: left knee pain with locking and catching.\nHistory of present illness: four months of mechanical symptoms despite activity modification.\nPhysical exam: positive McMurray on the left; joint-line tenderness medially.\nAssessment and plan: left medial meniscus tear; recommend arthroscopic partial meniscectomy.\nMedical necessity: imaging confirms a displaced medial meniscus tear.\nNote date: 2026-06-10\nSigned: Ortho Sports MD, 2026-06-10\n"
+    }
+  ]
+}

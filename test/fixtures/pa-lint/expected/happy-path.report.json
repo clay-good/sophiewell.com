@@ -9,12 +9,12 @@
     "disclaimer": "Sophie Prior-Auth Packet Linter is a deterministic checklist. It is not medical advice. It is not legal advice. It is not coding advice. It does not transmit anything to any payer. Your packet stays in this browser tab; we never see your data. Findings reflect what Sophie's ruleset checks; they are not a guarantee of payer approval. A passing report does not mean the packet will be approved; a failing report does not mean the packet will be denied. The clinical adequacy of every document is the reviewer's responsibility. Sophie's ruleset is versioned and cites every source; verify citations against current payer policy before relying on any finding for a clinical or revenue decision."
   },
   "executiveSummary": {
-    "totalRulesEvaluated": 255,
+    "totalRulesEvaluated": 275,
     "counts": {
       "block": 0,
       "flag": 0,
       "info": 0,
-      "pass": 255,
+      "pass": 275,
       "error": 0,
       "disabled": 0
     },
@@ -1772,6 +1772,206 @@
       "remediation": null
     },
     {
+      "ruleId": "R-PA-HIGHMARK-001",
+      "severity": "flag",
+      "status": "pass",
+      "description": "Highmark prior authorization: coverage criteria (Highmark Medical Policy / MCG) referenced",
+      "citation": "spec-v52 §4.5.13 R-PA-HIGHMARK-001. Highmark adjudicates prior-authorization requests against its published Medical Policies (and MCG care guidelines); a request should cite the policy it is being judged against so the reviewer can map it to the coverage criteria. <https://www.highmark.com/provider/resource-center>",
+      "evidence": "Not a Highmark packet; rule vacuously satisfied.",
+      "note": null,
+      "remediation": null
+    },
+    {
+      "ruleId": "R-PA-HIGHMARK-002",
+      "severity": "flag",
+      "status": "pass",
+      "description": "Highmark prior authorization: supporting medical records / clinical documentation attached",
+      "citation": "spec-v52 §4.5.13 R-PA-HIGHMARK-002. Highmark requires the clinical information that supports medical necessity to be submitted with the prior-authorization request; a request with no clinical document attached cannot be reviewed on the merits. <https://www.highmark.com/provider/resource-center>",
+      "evidence": "Not a Highmark packet; rule vacuously satisfied.",
+      "note": null,
+      "remediation": null
+    },
+    {
+      "ruleId": "R-PA-HIGHMARK-003",
+      "severity": "info",
+      "status": "pass",
+      "description": "Highmark prior authorization: submission channel (Availity Essentials / Provider Resource Center / phone on member ID card) indicated",
+      "citation": "spec-v52 §4.5.13 R-PA-HIGHMARK-003. Highmark directs providers to submit prior-authorization requests through the Availity Essentials portal or the Provider Resource Center, by 278 EDI transaction, or by phone using the number on the member ID card. Informational: a cover sheet that names the channel speeds routing. <https://www.highmark.com/provider/resource-center>",
+      "evidence": "Not a Highmark packet; rule vacuously satisfied.",
+      "note": null,
+      "remediation": null
+    },
+    {
+      "ruleId": "R-PA-HIGHMARK-004",
+      "severity": "info",
+      "status": "pass",
+      "description": "Highmark prior authorization: requested service is on Highmark's prior-authorization / notification requirement list",
+      "citation": "spec-v52 §4.5.13 R-PA-HIGHMARK-004. Highmark prior authorization applies only to services on its published prior-authorization and notification lists; requesting authorization for a non-listed service is unnecessary. Wave 52-13 ships no bundled list, so the rule is vacuously satisfied with a pointer to the list (it mirrors core R-PA-053 and the Aetna / UHC / Anthem / Cigna / Humana / HCSC -004 rules; a later wave bundles the list and flips this to a real membership test). <https://www.highmark.com/provider/resource-center>",
+      "evidence": "Not a Highmark packet; rule vacuously satisfied.",
+      "note": null,
+      "remediation": null
+    },
+    {
+      "ruleId": "R-PA-HIGHMARK-005",
+      "severity": "flag",
+      "status": "pass",
+      "description": "Highmark prior authorization: authorization is referenced for a service that requires it before the service date",
+      "citation": "spec-v52 §4.5.13 R-PA-HIGHMARK-005. Highmark requires prior authorization to be obtained before a service on its requirement list is rendered; a packet for an authorization-required service should show the authorization / reference number rather than relying on post-service review. <https://www.highmark.com/provider/resource-center>",
+      "evidence": "Not a Highmark packet; rule vacuously satisfied.",
+      "note": null,
+      "remediation": null
+    },
+    {
+      "ruleId": "R-PA-HIGHMARK-006",
+      "severity": "flag",
+      "status": "pass",
+      "description": "Highmark inpatient prior authorization: admission notification + concurrent / continued-stay clinical review documentation present",
+      "citation": "spec-v52 §4.5.13 R-PA-HIGHMARK-006. Highmark requires admission notification and conducts concurrent (continued-stay) review for inpatient admissions, collecting the clinical update and discharge plan; an inpatient request should carry that documentation. <https://www.highmark.com/provider/resource-center>",
+      "evidence": "Not a Highmark packet; rule vacuously satisfied.",
+      "note": null,
+      "remediation": null
+    },
+    {
+      "ruleId": "R-PA-HIGHMARK-007",
+      "severity": "flag",
+      "status": "pass",
+      "description": "Highmark advanced-imaging review: outpatient MRI / CT / PET carries the clinical indication for Highmark's advanced-imaging utilization-management program",
+      "citation": "spec-v52 §4.5.13 R-PA-HIGHMARK-007. Highmark delegates outpatient advanced-imaging (MRI / CT / PET / nuclear cardiology) prior authorization to its advanced-imaging utilization-management program; the request should carry the clinical indication that supports the study. <https://www.highmark.com/provider/resource-center>",
+      "evidence": "Not a Highmark packet; rule vacuously satisfied.",
+      "note": null,
+      "remediation": null
+    },
+    {
+      "ruleId": "R-PA-HIGHMARK-008",
+      "severity": "flag",
+      "status": "pass",
+      "description": "Highmark expedited / urgent prior authorization: clinical urgency justification present",
+      "citation": "spec-v52 §4.5.13 R-PA-HIGHMARK-008. Highmark processes an expedited prior-authorization review when a standard timeframe could seriously jeopardize the member's life, health, or ability to regain maximum function. A request that asks for expedited handling should state that clinical urgency. <https://www.highmark.com/provider/resource-center>",
+      "evidence": "Not a Highmark packet; rule vacuously satisfied.",
+      "note": null,
+      "remediation": null
+    },
+    {
+      "ruleId": "R-PA-HIGHMARK-009",
+      "severity": "flag",
+      "status": "pass",
+      "description": "Highmark site-of-care review: outpatient surgery / imaging addresses the hospital-outpatient vs. ASC / freestanding site-of-care requirement",
+      "citation": "spec-v52 §4.5.13 R-PA-HIGHMARK-009. Highmark's site-of-care medical policy directs certain outpatient surgical and imaging services to an ambulatory surgical center or freestanding facility unless hospital-outpatient care is medically necessary; a hospital-outpatient request should document why that site is required. <https://www.highmark.com/provider/resource-center>",
+      "evidence": "Not a Highmark packet; rule vacuously satisfied.",
+      "note": null,
+      "remediation": null
+    },
+    {
+      "ruleId": "R-PA-HIGHMARK-010",
+      "severity": "info",
+      "status": "pass",
+      "description": "Highmark prior authorization: NDC documented for a physician-administered (J-code) drug request",
+      "citation": "spec-v52 §4.5.13 R-PA-HIGHMARK-010. Highmark review of physician-administered (buy-and-bill) drugs maps the request to a specific product and dose via the National Drug Code in addition to the HCPCS J-code. Informational: a J-code request without an NDC routes more slowly. <https://www.highmark.com/provider/resource-center>",
+      "evidence": "Not a Highmark packet; rule vacuously satisfied.",
+      "note": null,
+      "remediation": null
+    },
+    {
+      "ruleId": "R-PA-HIGHMARK-011",
+      "severity": "flag",
+      "status": "pass",
+      "description": "Highmark drug prior authorization: step-therapy prior-trial documentation (drugs tried + therapeutic failure) present",
+      "citation": "spec-v52 §4.5.13 R-PA-HIGHMARK-011. For drugs subject to step therapy Highmark pharmacy management requires documentation of the prerequisite drugs tried and the therapeutic failure / intolerance for each before the requested agent is approved. <https://www.highmark.com/provider/resource-center>",
+      "evidence": "Not a Highmark packet; rule vacuously satisfied.",
+      "note": null,
+      "remediation": null
+    },
+    {
+      "ruleId": "R-PA-HIGHMARK-012",
+      "severity": "flag",
+      "status": "pass",
+      "description": "Highmark genetic / molecular testing: the specific test and indication are documented for Highmark's genetic / molecular lab-management program",
+      "citation": "spec-v52 §4.5.13 R-PA-HIGHMARK-012. Highmark delegates genetic / molecular testing prior authorization to its lab-management program, which requires the specific test name (and, where applicable, the unique test identifier) plus the clinical indication. <https://www.highmark.com/provider/resource-center>",
+      "evidence": "Not a Highmark packet; rule vacuously satisfied.",
+      "note": null,
+      "remediation": null
+    },
+    {
+      "ruleId": "R-PA-HIGHMARK-013",
+      "severity": "flag",
+      "status": "pass",
+      "description": "Highmark specialty / oncology drug: the supporting diagnosis is documented for the applicable Medical Policy",
+      "citation": "spec-v52 §4.5.13 R-PA-HIGHMARK-013. Highmark specialty and oncology drug coverage is governed by drug-specific Medical Policies that condition coverage on a supporting diagnosis (ICD-10) matching the policy's indication; the request should carry that diagnosis. <https://www.highmark.com/provider/resource-center>",
+      "evidence": "Not a Highmark packet; rule vacuously satisfied.",
+      "note": null,
+      "remediation": null
+    },
+    {
+      "ruleId": "R-PA-HIGHMARK-014",
+      "severity": "info",
+      "status": "pass",
+      "description": "Highmark retrospective / retroactive request: a retro-review justification is documented",
+      "citation": "spec-v52 §4.5.13 R-PA-HIGHMARK-014. Highmark considers a retrospective review only when the service was already rendered for a documented reason (e.g. emergent care, member eligibility not known at the time). A retro request should state that reason. Informational. <https://www.highmark.com/provider/resource-center>",
+      "evidence": "Not a Highmark packet; rule vacuously satisfied.",
+      "note": null,
+      "remediation": null
+    },
+    {
+      "ruleId": "R-PA-HIGHMARK-015",
+      "severity": "flag",
+      "status": "pass",
+      "description": "Highmark DME / home-health prior authorization: a signed, dated written order / plan of care accompanies the request",
+      "citation": "spec-v52 §4.5.13 R-PA-HIGHMARK-015. Highmark prior authorization for durable medical equipment and home-health services requires a written order / plan of care, signed and dated by the ordering provider, before the item / service is dispensed. <https://www.highmark.com/provider/resource-center>",
+      "evidence": "Not a Highmark packet; rule vacuously satisfied.",
+      "note": null,
+      "remediation": null
+    },
+    {
+      "ruleId": "R-PA-HIGHMARK-016",
+      "severity": "flag",
+      "status": "pass",
+      "description": "Highmark behavioral health: level-of-care criteria documentation present",
+      "citation": "spec-v52 §4.5.13 R-PA-HIGHMARK-016. Highmark behavioral-health prior authorization reviews the requested level of care against published level-of-care guidelines (e.g. MCG behavioral-health care guidelines, ASAM criteria); the request should document the criteria that support the level requested. <https://www.highmark.com/provider/resource-center>",
+      "evidence": "Not a Highmark packet; rule vacuously satisfied.",
+      "note": null,
+      "remediation": null
+    },
+    {
+      "ruleId": "R-PA-HIGHMARK-017",
+      "severity": "flag",
+      "status": "pass",
+      "description": "Highmark transplant prior authorization: routed through the Blue Distinction Centers for Transplant with a transplant-center evaluation",
+      "citation": "spec-v52 §4.5.13 R-PA-HIGHMARK-017. Highmark directs solid-organ and hematopoietic stem-cell transplants through the Blue Distinction Centers for Transplant network; a transplant prior authorization should reference that routing and carry the transplant-center evaluation. <https://www.highmark.com/provider/resource-center>",
+      "evidence": "Not a Highmark packet; rule vacuously satisfied.",
+      "note": null,
+      "remediation": null
+    },
+    {
+      "ruleId": "R-PA-HIGHMARK-018",
+      "severity": "flag",
+      "status": "pass",
+      "description": "Highmark experimental / investigational determination: peer-reviewed evidence or a documented policy exception is present",
+      "citation": "spec-v52 §4.5.13 R-PA-HIGHMARK-018. Highmark excludes services its Medical Policy classifies as experimental, investigational, or unproven; a request for such a service must carry the peer-reviewed evidence or the documented exception the policy allows, or it will be denied. <https://www.highmark.com/provider/resource-center>",
+      "evidence": "Not a Highmark packet; rule vacuously satisfied.",
+      "note": null,
+      "remediation": null
+    },
+    {
+      "ruleId": "R-PA-HIGHMARK-019",
+      "severity": "info",
+      "status": "pass",
+      "description": "Highmark reconsideration / appeal: references the original determination and adds new clinical information",
+      "citation": "spec-v52 §4.5.13 R-PA-HIGHMARK-019. When a prior authorization is resubmitted as a reconsideration or appeal, Highmark asks the provider to reference the original determination and supply additional clinical information that addresses the denial reason. Informational. <https://www.highmark.com/provider/resource-center>",
+      "evidence": "Not a Highmark packet; rule vacuously satisfied.",
+      "note": null,
+      "remediation": null
+    },
+    {
+      "ruleId": "R-PA-HIGHMARK-020",
+      "severity": "info",
+      "status": "pass",
+      "description": "Highmark out-of-network / network-gap request: a continuity-of-care or network-gap justification is documented",
+      "citation": "spec-v52 §4.5.13 R-PA-HIGHMARK-020. Highmark reviews out-of-network prior authorization for a documented network gap or continuity-of-care reason (no participating provider with the required expertise, an active course of treatment). An out-of-network request should state that justification. Informational. <https://www.highmark.com/provider/resource-center>",
+      "evidence": "Not a Highmark packet; rule vacuously satisfied.",
+      "note": null,
+      "remediation": null
+    },
+    {
       "ruleId": "R-PA-HUMANA-001",
       "severity": "flag",
       "status": "pass",
@@ -2998,6 +3198,26 @@
       "R-PA-HCSC-018",
       "R-PA-HCSC-019",
       "R-PA-HCSC-020",
+      "R-PA-HIGHMARK-001",
+      "R-PA-HIGHMARK-002",
+      "R-PA-HIGHMARK-003",
+      "R-PA-HIGHMARK-004",
+      "R-PA-HIGHMARK-005",
+      "R-PA-HIGHMARK-006",
+      "R-PA-HIGHMARK-007",
+      "R-PA-HIGHMARK-008",
+      "R-PA-HIGHMARK-009",
+      "R-PA-HIGHMARK-010",
+      "R-PA-HIGHMARK-011",
+      "R-PA-HIGHMARK-012",
+      "R-PA-HIGHMARK-013",
+      "R-PA-HIGHMARK-014",
+      "R-PA-HIGHMARK-015",
+      "R-PA-HIGHMARK-016",
+      "R-PA-HIGHMARK-017",
+      "R-PA-HIGHMARK-018",
+      "R-PA-HIGHMARK-019",
+      "R-PA-HIGHMARK-020",
       "R-PA-HUMANA-001",
       "R-PA-HUMANA-002",
       "R-PA-HUMANA-003",
@@ -3253,6 +3473,13 @@
           "url": "https://www.bcbsil.com/provider/clinical/clinical-resources/prior-authorization",
           "ruleFamily": "commercial-hcsc",
           "lastVerified": "2026-06-02"
+        },
+        {
+          "id": "highmark-precert",
+          "label": "Highmark (Blue Cross Blue Shield of PA/WV/DE + western NY) prior-authorization requirements, Medical Policies, and utilization-management / pharmacy program requirements",
+          "url": "https://www.highmark.com/provider/resource-center",
+          "ruleFamily": "commercial-highmark",
+          "lastVerified": "2026-06-03"
         }
       ],
       "evaluated": null

@@ -163,7 +163,10 @@ and utilization-management / CenterWell program requirements); the sixth is
 Health Care Service Corporation (`R-PA-HCSC-NNN`, ledger source `hcsc-precert`,
 anchored to HCSC's public BCBSIL provider prior-authorization hub, Medical
 Policies, and utilization-management / Prime Therapeutics program
-requirements). The Anthem bucket matches only `anthem` / `elevance` — generic
+requirements); the seventh is Highmark (`R-PA-HIGHMARK-NNN`, ledger source
+`highmark-precert`, anchored to Highmark's public Provider Resource Center,
+Medical Policies, and utilization-management / pharmacy program requirements).
+The Anthem bucket matches only `anthem` / `elevance` — generic
 `blue cross` / `blue shield` stays in the commercial fall-through, since most
 Blues plans are independent licensees, not Anthem/Elevance. The Cigna bucket
 matches `cigna` / `evernorth` (Cigna's health-services brand, under which it
@@ -175,9 +178,13 @@ matches the corporate name, the `hcsc` acronym, and the five state plan names
 oklahoma`) — the largest Blues licensee not already routed to the
 Anthem/Elevance bucket; generic Blues plans (Florida Blue, Blue Shield of
 California) stay in the commercial fall-through, and HCSC's "Blue Cross Medicare
-Advantage" line routes to the MA bucket first. Note both Humana's and HCSC's
-imaging / lab-management programs are named generically in the ruleset, since
-their current vendor names collide with an AI-vendor substring barred from
+Advantage" line routes to the MA bucket first. The Highmark bucket matches the
+single unambiguous brand anchor `highmark` (a distinct trade name, not a generic
+Blues phrase), so other Blues licensees stay in the commercial fall-through;
+Highmark's Medicare Advantage line ("Freedom Blue") routes to the MA bucket only
+when it carries an explicit "Medicare Advantage" string. Note both Humana's and
+HCSC's imaging / lab-management programs are named generically in the ruleset,
+since their current vendor names collide with an AI-vendor substring barred from
 source by spec-v50 §3.6.
 
 Payer precertification pages change more often than the government code sets,

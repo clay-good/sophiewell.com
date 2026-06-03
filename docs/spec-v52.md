@@ -1011,6 +1011,78 @@ independent Blues licensee (HCSC) — the remaining §9 wave 52-5+
 candidates are the other Blues plans by state and per-state
 Medicaid overlays as user-volume data warrants.
 
+#### 4.5.13 Commercial payer overlays — Highmark / Blue Cross Blue Shield (wave 52-13)
+
+The seventh named commercial-payer overlay, and the second
+"Blues plans by state" overlay after HCSC. **Highmark** is the
+second-largest independent Blue Cross Blue Shield licensee (after
+HCSC): it operates the Blues plans of **Pennsylvania, West
+Virginia, Delaware, and western / northeastern New York**. Like
+the six before it, Highmark is keyed to its own payer bucket
+(`'highmark'`, detected by `lib/pa/payer.js` and placed before the
+generic `'commercial'` fall-through, after `'hcsc'`). The bucket
+matches the single unambiguous brand anchor `highmark` — a
+distinct trade name, not a generic Blues phrase — so generic
+`blue cross` / `blue shield` and other Blues licensees stay in the
+commercial fall-through, exactly as the HCSC bucket leaves them.
+Highmark's Medicare Advantage line ("Freedom Blue") routes to the
+MA bucket only when it carries an explicit "Medicare Advantage"
+string; a plain Highmark commercial packet routes here. Each
+commercial rule self-gates on `bundle.payer === 'highmark'` and
+returns a vacuous pass on every other packet.
+
+Scope discipline is identical to §4.5.7–§4.5.12: the rules check
+the **procedural completeness** of a Highmark prior-authorization
+packet against Highmark's *own published* submission requirements —
+not clinical coverage criteria, which are the reviewer's judgement
+and the applicable Highmark Medical Policy's job. Every rule is
+anchored to a public Highmark Provider Resource Center URL tracked
+in the staleness ledger (§8.3, source `highmark-precert`) and
+re-verified on the §4.5.6 cadence.
+
+The set mirrors the earlier commercial families so the seven
+overlays stay structurally parallel and auditable side by side;
+Highmark-specific routing names appear where Highmark actually
+uses them — the **Availity Essentials** portal and the **Provider
+Resource Center** for submission, Highmark's **advanced-imaging
+utilization-management program** for advanced imaging and genetic /
+molecular testing, **Highmark pharmacy management** for pharmacy /
+step therapy, **Highmark behavioral health** for behavioral health,
+and the **Blue Distinction Centers for Transplant** for transplant.
+Wave 52-13 ships the full planned set of 20 (`R-PA-HIGHMARK-NNN`):
+
+| Id                  | Rule                                                                          | Severity |
+|---------------------|-------------------------------------------------------------------------------|----------|
+| `R-PA-HIGHMARK-001` | Coverage criteria (Highmark Medical Policy / MCG) referenced                   | flag     |
+| `R-PA-HIGHMARK-002` | Supporting medical records / clinical documentation attached                  | flag     |
+| `R-PA-HIGHMARK-003` | Submission channel (Availity Essentials / Provider Resource Center) noted      | info     |
+| `R-PA-HIGHMARK-004` | Requested service is on Highmark's prior-authorization / notification list (stub) | info  |
+| `R-PA-HIGHMARK-005` | Authorization referenced for a service that requires it before the service date | flag   |
+| `R-PA-HIGHMARK-006` | Inpatient request carries admission notification + concurrent-review docs     | flag     |
+| `R-PA-HIGHMARK-007` | Outpatient MRI / CT / PET carries the clinical indication for the imaging program | flag |
+| `R-PA-HIGHMARK-008` | Expedited / urgent request states the clinical urgency                        | flag     |
+| `R-PA-HIGHMARK-009` | Outpatient surgery / imaging addresses the hospital-outpatient site-of-care   | flag     |
+| `R-PA-HIGHMARK-010` | NDC documented for a physician-administered (J-code) drug request             | info     |
+| `R-PA-HIGHMARK-011` | Step-therapy prior-trial documentation for a drug request (Highmark pharmacy) | flag     |
+| `R-PA-HIGHMARK-012` | Genetic / molecular testing carries the specific test + indication            | flag     |
+| `R-PA-HIGHMARK-013` | Specialty / oncology drug carries the supporting diagnosis (Medical Policy)   | flag     |
+| `R-PA-HIGHMARK-014` | Retrospective / retroactive request states a retro-review justification       | info     |
+| `R-PA-HIGHMARK-015` | DME / home-health request carries a signed, dated written order / plan of care | flag    |
+| `R-PA-HIGHMARK-016` | Behavioral health request carries level-of-care criteria (Highmark BH / ASAM) | flag     |
+| `R-PA-HIGHMARK-017` | Transplant routed through the Blue Distinction Centers for Transplant         | flag     |
+| `R-PA-HIGHMARK-018` | Experimental / investigational / unproven service carries peer-reviewed evidence | flag   |
+| `R-PA-HIGHMARK-019` | Appeal / reconsideration references the original determination                | info     |
+| `R-PA-HIGHMARK-020` | Out-of-network request documents a network-gap / continuity-of-care reason    | info     |
+
+`R-PA-HIGHMARK-004` mirrors core `R-PA-053` and the Aetna / UHC /
+Anthem / Cigna / Humana / HCSC -004 rules: it ships without a
+bundled prior-authorization list and vacuously passes with a
+pointer until a later wave bundles the list. With seven commercial
+overlays shipped — the five largest commercial / MA plans plus the
+two largest independent Blues licensees (HCSC, Highmark) — the
+remaining §9 wave 52-5+ candidates are the other Blues plans by
+state and per-state Medicaid overlays as user-volume data warrants.
+
 ### 4.6 The DOCX report
 
 Structure (mirrors Vaulytica v3 with healthcare-specific
@@ -1694,11 +1766,30 @@ self-contained PR; the catalog count rises only at wave 52-1.
   Humana + HCSC), the first directly addressing the §9 "Blues
   plans by state" candidate.
 
+### Wave 52-13 — Highmark / Blue Cross Blue Shield commercial overlay (2026-06)
+
+- The 20 Highmark rules (§4.5.13), the `R-PA-HIGHMARK-NNN` family,
+  anchored to Highmark's public Provider Resource Center, Medical
+  Policies, and utilization-management / pharmacy program
+  requirements (ledger source `highmark-precert`).
+- A `'highmark'` payer bucket in `lib/pa/payer.js`, placed before
+  the generic `'commercial'` fall-through and after `'hcsc'`. It
+  matches the single unambiguous brand anchor `highmark`; generic
+  Blues and other licensees stay in the commercial fall-through,
+  and "Highmark Medicare Advantage" still wins the MA bucket
+  earlier.
+- Catalog count unchanged (255 tiles; Highmark adds rules, not a
+  tile). Ruleset rises 255 → 275. Brings the named commercial / MA
+  overlays to seven (Aetna + UnitedHealthcare + Anthem + Cigna +
+  Humana + HCSC + Highmark), the two largest independent Blues
+  licensees now both covered.
+
 ### Wave 52-5+ — State Medicaid overlays, additional commercial payers, OCR
 
 - Per-state Medicaid overlays as user-volume data warrants.
-- Other Blues plans by state (HCSC shipped in wave 52-12; the
-  remaining independent Blues licensees follow as volume warrants).
+- Other Blues plans by state (HCSC shipped in wave 52-12, Highmark
+  in wave 52-13; the remaining independent Blues licensees follow
+  as volume warrants).
 - Optional in-browser OCR via tesseract.js (lazy-loaded,
   user-toggled, ≈ 11 MB gzipped). Only if §2's no-OCR
   experience proves insufficient.
@@ -1867,6 +1958,48 @@ silently; the audit trail records the disablement.
 
 - 2026-05-27 — v52 proposed. Five waves outlined (52-1 through
   52-5+). Catalog count target at v52-1 close: 255.
+- 2026-06-03 — wave 52-13 (§4.5.13 Highmark / Blue Cross Blue Shield commercial
+  overlay, the full 20-rule `R-PA-HIGHMARK-NNN` family — the seventh named
+  commercial overlay after Aetna, UnitedHealthcare, Anthem, Cigna, Humana, and
+  HCSC, and the second "Blues plans by state" overlay). Opens a `'highmark'`
+  payer bucket in `lib/pa/payer.js` (placed after `'hcsc'` and before the
+  generic `'commercial'` fall-through). Highmark is the second-largest
+  independent Blue Cross Blue Shield licensee (after HCSC); it operates the
+  Blues plans of Pennsylvania, West Virginia, Delaware, and western /
+  northeastern New York. The bucket matches the single unambiguous brand anchor
+  `highmark` — a distinct trade name, not a generic Blues phrase — so generic
+  `blue cross` / `blue shield` and other licensees stay in the commercial
+  fall-through, and "Highmark Medicare Advantage" (Freedom Blue) still wins the
+  MA bucket earlier when it carries an explicit "Medicare Advantage" string. The
+  20 rules mirror the Aetna / UHC / Anthem / Cigna / Humana / HCSC families so
+  the seven commercial overlays stay structurally parallel, with
+  Highmark-specific routing names where Highmark uses them: coverage-criteria
+  reference (001, flag), supporting clinical records (002, flag), the Availity
+  Essentials / Provider Resource Center submission channel (003, info), the
+  prior-authorization-list stub (004, info, mirrors R-PA-053),
+  authorization-before-service (005, flag), inpatient admission notification +
+  concurrent review (006, flag), the advanced-imaging utilization-management
+  program (007, flag), expedited urgency (008, flag), site-of-care for
+  outpatient surgery (009, flag), NDC on a J-code drug (010, info), step therapy
+  / Highmark pharmacy management (011, flag), the genetic / molecular
+  lab-management program (012, flag), the Medical Policy specialty /
+  oncology-drug diagnosis (013, flag), retrospective justification (014, info),
+  DME / home-health written order (015, flag), behavioral-health level-of-care
+  via Highmark behavioral health (016, flag), the Blue Distinction Centers for
+  Transplant routing (017, flag), the experimental / investigational
+  determination (018, flag), the appeal original-determination reference (019,
+  info), and the out-of-network network-gap justification (020, info). Each
+  self-gates on `bundle.payer === 'highmark'` and vacuously passes on every
+  other packet. New ledger source `highmark-precert` anchored to Highmark's
+  public Provider Resource Center (all twenty rules map to it by prefix).
+  Coverage is now 275 rules shipped (was 255), 227 source-anchored (was 207),
+  22 sources (was 21), 0 orphans, 0 gaps. The golden fixtures re-seed
+  deterministically (a new `highmark-precert` fixture exercises the on-bucket
+  path — 009 flag, 003 info; the other thirteen gain +20 vacuous-pass findings
+  each). Tests: +10 engine assertions (count 275, the off-bucket loop, and
+  fire/pass checks) and +1 classify assertion (Highmark → `highmark`; generic
+  Blues → `commercial`; Highmark Medicare Advantage → the MA bucket). Catalog
+  count unchanged (255). View wave banner advanced to 52-13.
 - 2026-06-02 — wave 52-12 (§4.5.12 HCSC / Blue Cross Blue Shield commercial
   overlay, the full 20-rule `R-PA-HCSC-NNN` family — the sixth named
   commercial overlay after Aetna, UnitedHealthcare, Anthem, Cigna, and Humana,

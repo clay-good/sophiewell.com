@@ -126,6 +126,16 @@ test('detectPayer: HCSC (Blue Cross Blue Shield of IL/TX/MT/NM/OK) routes to its
   assert.equal(detectPayer('Blue Cross Medicare Advantage from Illinois'), 'cms-medicare-advantage');
 });
 
+test('detectPayer: Highmark (Blue Cross Blue Shield of PA/WV/DE + western NY) routes to its own bucket (wave 52-13)', () => {
+  // The distinct 'highmark' brand anchor -> the named 'highmark' overlay bucket.
+  assert.equal(detectPayer('Highmark Blue Shield PPO'), 'highmark');
+  assert.equal(detectPayer('Highmark Blue Cross Blue Shield West Virginia'), 'highmark');
+  // ...but generic / other-licensee Blues stay in the commercial fall-through.
+  assert.equal(detectPayer('Florida Blue BlueCross PPO plan'), 'commercial');
+  // ...and an explicit Medicare Advantage string still routes to the MA bucket.
+  assert.equal(detectPayer('Highmark Medicare Advantage Freedom Blue PPO'), 'cms-medicare-advantage');
+});
+
 test('detectPayer: unknown for empty / non-payer text', () => {
   assert.equal(detectPayer(''), 'unknown');
   assert.equal(detectPayer('this packet has no payer letterhead'), 'unknown');
