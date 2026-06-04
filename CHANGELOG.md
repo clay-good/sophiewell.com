@@ -6,6 +6,46 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v52 wave 52-16 — §4.5.16 Blue Shield of California commercial overlay, 20 of 20)
+
+The tenth named commercial-payer overlay, and the fifth "Blues plans by state"
+overlay after HCSC, Highmark, Florida Blue, and BCBSM. The full 20-rule
+`R-PA-BSCA-NNN` family is anchored to Blue Shield of California's public provider
+authorizations pages, Medical Policies, and utilization-management / pharmacy
+program requirements (new ledger source `blueshieldca-precert`). Blue Shield of
+California is the second-largest health plan in California and one of the largest
+independent Blue Cross Blue Shield licensees not already routed to the
+Anthem/Elevance, HCSC, Highmark, Florida Blue, or BCBSM buckets.
+
+A new `'blue-shield-ca'` payer bucket in `lib/pa/payer.js` is placed after
+`'bcbsm'` and before the generic `'commercial'` fall-through. It matches the
+unambiguous plan-name anchor `blue shield of california` (and `blue shield of
+ca`), so generic `blue cross` / `blue shield` and other licensees stay in the
+commercial fall-through. Critically, Blue Shield of California is a distinct
+licensee from Anthem Blue Cross of California (Elevance) — the `'anthem'` bucket
+catches the latter earlier — and an explicit "Medicare Advantage" string still
+wins the MA bucket earlier. Each rule self-gates on
+`bundle.payer === 'blue-shield-ca'` and vacuously passes on every other packet.
+
+The 20 rules mirror the Aetna / UHC / Anthem / Cigna / Humana / HCSC / Highmark /
+Florida Blue / BCBSM families so the ten commercial overlays stay structurally
+parallel and auditable side by side, with Blue Shield of California-specific
+routing names where the plan uses them: the Availity / provider connection
+submission channel (003), the advanced-imaging utilization-management program
+(007, 012), pharmacy management for step therapy (011), behavioral health (016),
+and the Blue Distinction Centers for Transplant (017).
+
+Coverage is now 335 rules shipped (was 315), 287 source-anchored (was 267), 25
+sources (was 24), 0 ledger orphans, 0 coverage gaps. A new
+`blue-shield-ca-precert` golden fixture (hospital-outpatient knee arthroscopy
+under a Blue Shield of California letterhead) exercises the on-bucket path — 009
+flag, 003 info — and the other sixteen goldens gain +20 vacuous-pass findings
+each; all seventeen re-seeded deterministically. Tests: +10 engine assertions
+(count 335, the off-bucket loop, fire/pass checks) and +1 classify assertion.
+e2e pa-lint rule count 315 -> 335. Catalog count unchanged (255 tiles; Blue
+Shield of California adds rules, not a tile). The PA tile's wave banner advances
+to 52-16.
+
 ### Added (spec-v52 wave 52-15 — §4.5.15 BCBSM / Blue Cross Blue Shield of Michigan commercial overlay, 20 of 20)
 
 The ninth named commercial-payer overlay, and the fourth "Blues plans by state"

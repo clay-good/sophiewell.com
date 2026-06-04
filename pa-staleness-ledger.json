@@ -197,6 +197,14 @@
       "rules": ["R-PA-BCBSM-001", "R-PA-BCBSM-002"],
       "url": "https://www.bcbsm.com/providers/help/authorization-requirements-criteria/",
       "lastVerified": "2026-06-04"
+    },
+    {
+      "id": "blueshieldca-precert",
+      "label": "Blue Shield of California prior-authorization requirements, Medical Policies, and utilization-management / pharmacy program requirements",
+      "ruleFamily": "commercial-blue-shield-ca",
+      "rules": ["R-PA-BSCA-001", "R-PA-BSCA-002"],
+      "url": "https://www.blueshieldca.com/en/provider/authorizations",
+      "lastVerified": "2026-06-04"
     }
   ],
   "acknowledgments": []

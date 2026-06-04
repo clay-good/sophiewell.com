@@ -140,8 +140,8 @@ test('runEngine passes every starter rule on a clean multi-doc happy-path packet
   assert.equal(counts.pass, STARTER_RULES.length);
 });
 
-test('STARTER_RULES at wave 52-15 is 315 rules (135 §4.5 core/overlay/specialty + 20 Aetna + 20 UnitedHealthcare + 20 Anthem + 20 Cigna + 20 Humana + 20 HCSC + 20 Highmark + 20 Florida Blue + 20 BCBSM)', () => {
-  assert.equal(STARTER_RULES.length, 315);
+test('STARTER_RULES at wave 52-16 is 335 rules (135 §4.5 core/overlay/specialty + 20 Aetna + 20 UnitedHealthcare + 20 Anthem + 20 Cigna + 20 Humana + 20 HCSC + 20 Highmark + 20 Florida Blue + 20 BCBSM + 20 Blue Shield of California)', () => {
+  assert.equal(STARTER_RULES.length, 335);
 });
 
 // ---- wave 52-7a sanity checks: Aetna commercial overlay (§4.5.7) ----
@@ -1051,6 +1051,93 @@ test('R-PA-BCBSM-020 flags a BCBSM out-of-network request with no network-gap ju
   const text = 'Blue Cross Blue Shield of Michigan member.\nOut-of-network prior authorization request.\nProcedure CPT 70551.\n';
   const findings = runEngine(bundleOf(text));
   const f = findings.find((x) => x.ruleId === 'R-PA-BCBSM-020');
+  assert.equal(f.status, 'info');
+});
+
+// ---- wave 52-16 sanity checks: Blue Shield of California (Blue Cross Blue Shield) overlay (§4.5.16) ----
+
+test('Blue Shield of California overlay rules vacuously pass on a non-Blue-Shield-of-California packet', () => {
+  // happyBundle is not a Blue Shield of California packet -> every R-PA-BSCA-* rule passes.
+  const findings = runEngine(happyBundle());
+  for (let n = 1; n <= 20; n += 1) {
+    const id = 'R-PA-BSCA-' + String(n).padStart(3, '0');
+    const f = findings.find((x) => x.ruleId === id);
+    assert.ok(f, id + ' should be in the findings');
+    assert.equal(f.status, 'pass', id + ' should vacuously pass off-bucket');
+  }
+});
+
+test('R-PA-BSCA-001 flags a Blue Shield of California request with a procedure but no coverage-criteria reference', () => {
+  const text = 'Blue Shield of California member.\n'
+    + 'Requested procedure: CPT 72148 (MRI lumbar spine).\n'
+    + 'Please authorize.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-BSCA-001');
+  assert.equal(f.status, 'flag');
+});
+
+test('R-PA-BSCA-001 passes when the Blue Shield of California packet cites the applicable Medical Policy', () => {
+  const text = 'Blue Shield of California member.\n'
+    + 'Requested procedure: CPT 72148.\n'
+    + 'Medical necessity per the applicable Blue Shield of California Medical Policy (MCG).\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-BSCA-001');
+  assert.equal(f.status, 'pass');
+});
+
+test('R-PA-BSCA-002 flags a Blue Shield of California packet with no clinical document attached', () => {
+  const text = 'Blue Shield of California member.\nRequested procedure: CPT 27447.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-BSCA-002');
+  assert.equal(f.status, 'flag');
+});
+
+test('R-PA-BSCA-003 passes when the Blue Shield of California packet names the Availity channel (info)', () => {
+  const text = 'Blue Shield of California member.\nSubmitted via the Availity Essentials portal.\nProcedure CPT 27447.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-BSCA-003');
+  assert.equal(f.status, 'pass');
+});
+
+test('R-PA-BSCA-006 flags an inpatient (POS 21) Blue Shield of California request with no admission / progress documentation', () => {
+  const text = 'Blue Shield of California member.\nPlace of service: 21\nInpatient admission for acute care.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-BSCA-006');
+  assert.equal(f.status, 'flag');
+});
+
+test('R-PA-BSCA-007 flags a Blue Shield of California outpatient MRI with no clinical indication', () => {
+  const text = 'Blue Shield of California member.\nRequested: MRI lumbar spine, CPT 72148.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-BSCA-007');
+  assert.equal(f.status, 'flag');
+});
+
+test('R-PA-BSCA-008 passes when an expedited Blue Shield of California request documents the clinical urgency', () => {
+  const text = 'Blue Shield of California member.\nExpedited review requested: delay would jeopardize the member\'s life or health.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-BSCA-008');
+  assert.equal(f.status, 'pass');
+});
+
+test('R-PA-BSCA-011 flags a Blue Shield of California specialty-drug request with no step-therapy prior-trial documentation', () => {
+  const text = 'Blue Shield of California member.\nSpecialty drug requested; Blue Shield of California pharmacy step therapy applies.\nProcedure J3590.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-BSCA-011');
+  assert.equal(f.status, 'flag');
+});
+
+test('R-PA-BSCA-017 flags a Blue Shield of California transplant request with no Blue Distinction routing', () => {
+  const text = 'Blue Shield of California member.\nRequested service: kidney transplant.\nMedical necessity per Medical Policy.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-BSCA-017');
+  assert.equal(f.status, 'flag');
+});
+
+test('R-PA-BSCA-020 flags a Blue Shield of California out-of-network request with no network-gap justification (info)', () => {
+  const text = 'Blue Shield of California member.\nOut-of-network prior authorization request.\nProcedure CPT 70551.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-BSCA-020');
   assert.equal(f.status, 'info');
 });
 

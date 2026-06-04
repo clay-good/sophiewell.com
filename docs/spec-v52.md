@@ -1234,6 +1234,83 @@ licensees (HCSC, Highmark, Florida Blue, BCBSM) — the remaining §9
 wave 52-5+ candidates are the other Blues plans by state and
 per-state Medicaid overlays as user-volume data warrants.
 
+#### 4.5.16 Commercial payer overlays — Blue Shield of California (wave 52-16)
+
+The tenth named commercial-payer overlay, and the fifth "Blues
+plans by state" overlay after HCSC, Highmark, Florida Blue, and
+BCBSM. **Blue Shield of California** is the second-largest health
+plan in **California** and one of the largest independent Blue
+Cross Blue Shield licensees not already routed to the
+Anthem/Elevance, HCSC, Highmark, Florida Blue, or BCBSM buckets. It
+is a **distinct licensee from Anthem Blue Cross of California**
+(Elevance), which the `'anthem'` bucket catches earlier. Like the
+nine before it, Blue Shield of California is keyed to its own payer
+bucket (`'blue-shield-ca'`, detected by `lib/pa/payer.js` and placed
+before the generic `'commercial'` fall-through, after `'bcbsm'`).
+The bucket matches the unambiguous plan-name anchor `blue shield of
+california` (and `blue shield of ca`), so generic `blue cross` /
+`blue shield` and other Blues licensees stay in the commercial
+fall-through. Its Medicare Advantage line routes to the MA bucket
+only when it carries an explicit "Medicare Advantage" string; a
+plain commercial packet routes here. Each commercial rule
+self-gates on `bundle.payer === 'blue-shield-ca'` and returns a
+vacuous pass on every other packet.
+
+Scope discipline is identical to §4.5.7–§4.5.15: the rules check
+the **procedural completeness** of a Blue Shield of California
+prior-authorization packet against the plan's *own published*
+submission requirements — not clinical coverage criteria, which are
+the reviewer's judgement and the applicable Medical Policy's job.
+Every rule is anchored to a public Blue Shield of California
+provider authorizations URL tracked in the staleness ledger (§8.3,
+source `blueshieldca-precert`) and re-verified on the §4.5.6
+cadence.
+
+The set mirrors the earlier commercial families so the ten overlays
+stay structurally parallel and auditable side by side; Blue Shield
+of California-specific routing names appear where the plan actually
+uses them — the **Availity / provider connection** portal for
+submission, the **advanced-imaging utilization-management program**
+for advanced imaging and genetic / molecular testing, the plan's
+**pharmacy management** for pharmacy / step therapy, **behavioral
+health** for behavioral health, and the **Blue Distinction Centers
+for Transplant** for transplant. Wave 52-16 ships the full planned
+set of 20 (`R-PA-BSCA-NNN`):
+
+| Id              | Rule                                                                          | Severity |
+|-----------------|-------------------------------------------------------------------------------|----------|
+| `R-PA-BSCA-001` | Coverage criteria (Medical Policy / MCG) referenced                           | flag     |
+| `R-PA-BSCA-002` | Supporting medical records / clinical documentation attached                  | flag     |
+| `R-PA-BSCA-003` | Submission channel (Availity / provider portal) noted                         | info     |
+| `R-PA-BSCA-004` | Requested service is on the prior-authorization / notification list (stub)    | info     |
+| `R-PA-BSCA-005` | Authorization referenced for a service that requires it before the service date | flag   |
+| `R-PA-BSCA-006` | Inpatient request carries admission notification + concurrent-review docs     | flag     |
+| `R-PA-BSCA-007` | Outpatient MRI / CT / PET carries the clinical indication for the imaging program | flag |
+| `R-PA-BSCA-008` | Expedited / urgent request states the clinical urgency                        | flag     |
+| `R-PA-BSCA-009` | Outpatient surgery / imaging addresses the hospital-outpatient site-of-care   | flag     |
+| `R-PA-BSCA-010` | NDC documented for a physician-administered (J-code) drug request             | info     |
+| `R-PA-BSCA-011` | Step-therapy prior-trial documentation for a drug request (pharmacy)          | flag     |
+| `R-PA-BSCA-012` | Genetic / molecular testing carries the specific test + indication            | flag     |
+| `R-PA-BSCA-013` | Specialty / oncology drug carries the supporting diagnosis (Medical Policy)   | flag     |
+| `R-PA-BSCA-014` | Retrospective / retroactive request states a retro-review justification       | info     |
+| `R-PA-BSCA-015` | DME / home-health request carries a signed, dated written order / plan of care | flag    |
+| `R-PA-BSCA-016` | Behavioral health request carries level-of-care criteria (BH / ASAM)          | flag     |
+| `R-PA-BSCA-017` | Transplant routed through the Blue Distinction Centers for Transplant         | flag     |
+| `R-PA-BSCA-018` | Experimental / investigational / unproven service carries peer-reviewed evidence | flag   |
+| `R-PA-BSCA-019` | Appeal / reconsideration references the original determination                | info     |
+| `R-PA-BSCA-020` | Out-of-network request documents a network-gap / continuity-of-care reason    | info     |
+
+`R-PA-BSCA-004` mirrors core `R-PA-053` and the Aetna / UHC /
+Anthem / Cigna / Humana / HCSC / Highmark / Florida Blue / BCBSM
+-004 rules: it ships without a bundled prior-authorization list and
+vacuously passes with a pointer until a later wave bundles the
+list. With ten commercial overlays shipped — the five largest
+commercial / MA plans plus the five largest independent Blues
+licensees (HCSC, Highmark, Florida Blue, BCBSM, Blue Shield of
+California) — the remaining §9 wave 52-5+ candidates are the other
+Blues plans by state and per-state Medicaid overlays as user-volume
+data warrants.
+
 ### 4.6 The DOCX report
 
 Structure (mirrors Vaulytica v3 with healthcare-specific
@@ -1974,13 +2051,35 @@ self-contained PR; the catalog count rises only at wave 52-1.
   + Highmark + Florida Blue + BCBSM), the four largest independent
   Blues licensees now all covered.
 
+### Wave 52-16 — Blue Shield of California commercial overlay (2026-06)
+
+- The 20 Blue Shield of California rules (§4.5.16), the
+  `R-PA-BSCA-NNN` family, anchored to the plan's public provider
+  authorizations pages, Medical Policies, and utilization-management
+  / pharmacy program requirements (ledger source
+  `blueshieldca-precert`).
+- A `'blue-shield-ca'` payer bucket in `lib/pa/payer.js`, placed
+  before the generic `'commercial'` fall-through and after
+  `'bcbsm'`. It matches the unambiguous plan-name anchor `blue
+  shield of california` (and `blue shield of ca`); generic Blues and
+  other licensees stay in the commercial fall-through, Anthem Blue
+  Cross of California still wins the `'anthem'` bucket earlier, and
+  an explicit "Medicare Advantage" string still wins the MA bucket
+  earlier.
+- Catalog count unchanged (255 tiles; Blue Shield of California adds
+  rules, not a tile). Ruleset rises 315 → 335. Brings the named
+  commercial / MA overlays to ten (Aetna + UnitedHealthcare + Anthem
+  + Cigna + Humana + HCSC + Highmark + Florida Blue + BCBSM + Blue
+  Shield of California), the five largest independent Blues licensees
+  now all covered.
+
 ### Wave 52-5+ — State Medicaid overlays, additional commercial payers, OCR
 
 - Per-state Medicaid overlays as user-volume data warrants.
 - Other Blues plans by state (HCSC shipped in wave 52-12, Highmark
-  in wave 52-13, Florida Blue in wave 52-14, BCBSM in wave 52-15;
-  the remaining independent Blues licensees follow as volume
-  warrants).
+  in wave 52-13, Florida Blue in wave 52-14, BCBSM in wave 52-15,
+  Blue Shield of California in wave 52-16; the remaining independent
+  Blues licensees follow as volume warrants).
 - Optional in-browser OCR via tesseract.js (lazy-loaded,
   user-toggled, ≈ 11 MB gzipped). Only if §2's no-OCR
   experience proves insufficient.
@@ -2149,6 +2248,36 @@ silently; the audit trail records the disablement.
 
 - 2026-05-27 — v52 proposed. Five waves outlined (52-1 through
   52-5+). Catalog count target at v52-1 close: 255.
+- 2026-06-04 — wave 52-16 (§4.5.16 Blue Shield of California commercial overlay,
+  the full 20-rule `R-PA-BSCA-NNN` family — the tenth named commercial overlay
+  after Aetna, UnitedHealthcare, Anthem, Cigna, Humana, HCSC, Highmark, Florida
+  Blue, and BCBSM, and the fifth "Blues plans by state" overlay). Opens a
+  `'blue-shield-ca'` payer bucket in `lib/pa/payer.js` (placed after `'bcbsm'`
+  and before the generic `'commercial'` fall-through). Blue Shield of California
+  is the second-largest health plan in California and a distinct independent
+  licensee from Anthem Blue Cross of California (Elevance), which the `'anthem'`
+  bucket catches earlier. The bucket matches the unambiguous plan-name anchor
+  `blue shield of california` (and `blue shield of ca`), so generic `blue cross`
+  / `blue shield` and other licensees stay in the commercial fall-through, and an
+  explicit "Medicare Advantage" string still wins the MA bucket earlier. The 20
+  rules mirror the Aetna / UHC / Anthem / Cigna / Humana / HCSC / Highmark /
+  Florida Blue / BCBSM families so the ten commercial overlays stay structurally
+  parallel, with Blue Shield of California-specific routing names where the plan
+  uses them (Availity / provider connection submission, the advanced-imaging
+  utilization-management program, pharmacy management for step therapy,
+  behavioral health, and the Blue Distinction Centers for Transplant). Each
+  self-gates on `bundle.payer === 'blue-shield-ca'` and vacuously passes on every
+  other packet. New ledger source `blueshieldca-precert` anchored to the plan's
+  public provider authorizations page (all twenty rules map to it by prefix).
+  Coverage is now 335 rules shipped (was 315), 287 source-anchored (was 267), 25
+  sources (was 24), 0 orphans, 0 gaps. The golden fixtures re-seed
+  deterministically (a new `blue-shield-ca-precert` fixture exercises the
+  on-bucket path — 009 flag, 003 info; the other sixteen gain +20 vacuous-pass
+  findings each). Tests: +10 engine assertions (count 335, the off-bucket loop,
+  and fire/pass checks) and +1 classify assertion (Blue Shield of California →
+  `blue-shield-ca`; Anthem Blue Cross of California → `anthem`; generic Blues →
+  `commercial`; Blue Shield of California Medicare Advantage → the MA bucket).
+  Catalog count unchanged (255). View wave banner advanced to 52-16.
 - 2026-06-04 — wave 52-15 (§4.5.15 BCBSM / Blue Cross Blue Shield of Michigan
   commercial overlay, the full 20-rule `R-PA-BCBSM-NNN` family — the ninth named
   commercial overlay after Aetna, UnitedHealthcare, Anthem, Cigna, Humana, HCSC,
