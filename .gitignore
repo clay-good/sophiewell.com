@@ -47,3 +47,7 @@ Desktop.ini
 .local/
 .cloudflare/
 
+
+# openlore analysis artifacts
+.openlore/
+ARCHITECTURE.md
