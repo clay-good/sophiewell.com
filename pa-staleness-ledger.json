@@ -205,6 +205,14 @@
       "rules": ["R-PA-BSCA-001", "R-PA-BSCA-002"],
       "url": "https://www.blueshieldca.com/en/provider/authorizations",
       "lastVerified": "2026-06-04"
+    },
+    {
+      "id": "ibx-precert",
+      "label": "Independence Blue Cross (southeastern Pennsylvania / Philadelphia) prior-authorization requirements, Medical Policies, and utilization-management / pharmacy program requirements",
+      "ruleFamily": "commercial-ibx",
+      "rules": ["R-PA-IBX-001", "R-PA-IBX-002"],
+      "url": "https://www.ibx.com/resources/for-providers/authorizations",
+      "lastVerified": "2026-06-04"
     }
   ],
   "acknowledgments": []

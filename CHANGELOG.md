@@ -6,6 +6,44 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v52 wave 52-17 — §4.5.17 Independence Blue Cross commercial overlay, 20 of 20)
+
+The eleventh named commercial-payer overlay, and the sixth "Blues plans by
+state" overlay after HCSC, Highmark, Florida Blue, BCBSM, and Blue Shield of
+California. The full 20-rule `R-PA-IBX-NNN` family is anchored to Independence
+Blue Cross's public provider authorizations pages, Medical Policies, and
+utilization-management / pharmacy program requirements (new ledger source
+`ibx-precert`). Independence Blue Cross (IBX) is the dominant Blue Cross Blue
+Shield licensee in southeastern Pennsylvania (the Philadelphia region) and one
+of the largest independent licensees not already routed to the Anthem/Elevance,
+HCSC, Highmark, Florida Blue, BCBSM, or Blue Shield of California buckets.
+
+A new `'ibx'` payer bucket in `lib/pa/payer.js` is placed after `'blue-shield-ca'`
+and before the generic `'commercial'` fall-through. It matches the `independence
+blue cross` / `independence administrators` / `ibx` anchors. Critically, IBX
+(southeastern PA) is a distinct licensee from Highmark (western / central PA) —
+the `'highmark'` bucket catches that brand earlier — so generic `blue cross` /
+`blue shield` and other licensees stay in the commercial fall-through, and an
+explicit "Medicare Advantage" string still wins the MA bucket earlier. Each rule
+self-gates on `bundle.payer === 'ibx'` and vacuously passes on every other packet.
+
+The 20 rules mirror the prior ten commercial families so the eleven commercial
+overlays stay structurally parallel and auditable side by side, with IBX-specific
+routing names where the plan uses them: the Availity / PEAR provider portal
+submission channel (003), the advanced-imaging utilization-management program
+(007, 012), pharmacy management for step therapy (011), behavioral health (016),
+and the Blue Distinction Centers for Transplant (017).
+
+Coverage is now 355 rules shipped (was 335), 307 source-anchored (was 287), 26
+sources (was 25), 0 ledger orphans, 0 coverage gaps. A new `ibx-precert` golden
+fixture (hospital-outpatient knee arthroscopy under an Independence Blue Cross
+letterhead) exercises the on-bucket path — 009 flag, 003 info — and the other
+seventeen goldens gain +20 vacuous-pass findings each; all eighteen re-seeded
+deterministically. Tests: +10 engine assertions (count 355, the off-bucket loop,
+fire/pass checks) and +1 classify assertion. e2e pa-lint rule count 335 -> 355.
+Catalog count unchanged (255 tiles; IBX adds rules, not a tile). The PA tile's
+wave banner advances to 52-17.
+
 ### Added (spec-v52 wave 52-16 — §4.5.16 Blue Shield of California commercial overlay, 20 of 20)
 
 The tenth named commercial-payer overlay, and the fifth "Blues plans by state"

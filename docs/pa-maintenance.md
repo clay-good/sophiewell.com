@@ -175,7 +175,10 @@ provider authorization-requirements pages, Medical Policies, and
 utilization-management / pharmacy program requirements); the tenth is Blue
 Shield of California (`R-PA-BSCA-NNN`, ledger source `blueshieldca-precert`,
 anchored to the plan's public provider authorizations pages, Medical Policies,
-and utilization-management / pharmacy program requirements). The Anthem bucket matches only `anthem` / `elevance` — generic
+and utilization-management / pharmacy program requirements); the eleventh is
+Independence Blue Cross (`R-PA-IBX-NNN`, ledger source `ibx-precert`, anchored to
+the plan's public provider authorizations pages, Medical Policies, and
+utilization-management / pharmacy program requirements). The Anthem bucket matches only `anthem` / `elevance` — generic
 `blue cross` / `blue shield` stays in the commercial fall-through, since most
 Blues plans are independent licensees, not Anthem/Elevance. The Cigna bucket
 matches `cigna` / `evernorth` (Cigna's health-services brand, under which it
@@ -209,7 +212,13 @@ The Blue Shield of California bucket matches the `blue shield of california` (an
 California and a distinct licensee from Anthem Blue Cross of California
 (Elevance), which the `anthem` bucket catches earlier; generic Blues and other
 licensees stay in the commercial fall-through, and an explicit "Medicare
-Advantage" string routes to the MA bucket first.
+Advantage" string routes to the MA bucket first. The Independence Blue Cross
+bucket matches the `independence blue cross` / `independence administrators` /
+`ibx` anchors — the dominant Blues licensee in southeastern Pennsylvania and a
+distinct licensee from Highmark (western / central PA), which the `highmark`
+bucket catches earlier; generic Blues and other licensees stay in the commercial
+fall-through, and an explicit "Medicare Advantage" string routes to the MA bucket
+first.
 Note both Humana's and
 HCSC's imaging / lab-management programs are named generically in the ruleset,
 since their current vendor names collide with an AI-vendor substring barred from

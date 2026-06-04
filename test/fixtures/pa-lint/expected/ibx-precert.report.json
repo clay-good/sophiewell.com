@@ -2,7 +2,7 @@
   "coverPage": {
     "title": "Sophie PA Packet Lint Report",
     "packetSize": 2,
-    "detectedPayer": "cms-medicare-ffs",
+    "detectedPayer": "ibx",
     "datasetVersion": "1.0.0",
     "reportFormatVersion": "1",
     "generatedAt": null,
@@ -12,9 +12,9 @@
     "totalRulesEvaluated": 355,
     "counts": {
       "block": 0,
-      "flag": 5,
-      "info": 3,
-      "pass": 347,
+      "flag": 10,
+      "info": 4,
+      "pass": 341,
       "error": 0,
       "disabled": 0
     },
@@ -29,6 +29,16 @@
       "citation": "spec-v52 §4.5.1 R-PA-023. Heuristic: at least one CPT/HCPCS code extracted anywhere in the packet also appears inside a clinical-note document.",
       "evidence": null,
       "note": "No requested CPT/HCPCS code appears in any clinical-note document.",
+      "remediation": "Address the rule's `note` field and resubmit."
+    },
+    {
+      "ruleId": "R-PA-026",
+      "severity": "flag",
+      "status": "flag",
+      "description": "Imaging-report document attached when the packet references imaging",
+      "citation": "spec-v52 §4.5.1 R-PA-026.",
+      "evidence": null,
+      "note": "Packet references imaging but no document was classified as imaging-report.",
       "remediation": "Address the rule's `note` field and resubmit."
     },
     {
@@ -62,14 +72,54 @@
       "remediation": "Address the rule's `note` field and resubmit."
     },
     {
-      "ruleId": "R-PA-CMS-009",
+      "ruleId": "R-PA-IBX-009",
       "severity": "flag",
       "status": "flag",
-      "description": "Medicare FFS DME: supplier PTAN documented",
-      "citation": "spec-v52 §4.5.2 R-PA-CMS-009. CMS supplier PTAN (Provider Transaction Access Number) is required on DME claims so the MAC can match the supplier to the Medicare enrollment record.",
+      "description": "Independence Blue Cross site-of-care review: outpatient surgery / imaging addresses the hospital-outpatient vs. ASC / freestanding site-of-care requirement",
+      "citation": "spec-v52 §4.5.17 R-PA-IBX-009. Independence Blue Cross's site-of-care medical policy directs certain outpatient surgical and imaging services to an ambulatory surgical center or freestanding facility unless hospital-outpatient care is medically necessary; a hospital-outpatient request should document why that site is required. <https://www.ibx.com/resources/for-providers/authorizations>",
       "evidence": null,
-      "note": "Medicare FFS DME request without a supplier PTAN anchor.",
-      "remediation": "Attach the missing CMS documentation (NCD / LCD / IOM citation) and resubmit."
+      "note": "Independence Blue Cross outpatient surgery is requested in a hospital-outpatient setting without a documented medical-necessity rationale for that site. The site-of-care policy expects an ASC / freestanding facility unless an exception is documented.",
+      "remediation": "Address the rule's `note` field and resubmit."
+    },
+    {
+      "ruleId": "R-PA-SURG-001",
+      "severity": "flag",
+      "status": "flag",
+      "description": "Elective surgery: conservative-management trial documented",
+      "citation": "spec-v52 §4.5.5 R-PA-SURG-001. Payers approve elective surgery only after documented failure of non-operative management appropriate to the condition (e.g., joint replacement: PT + NSAIDs; spine: PT + epidurals); emergent surgery is exempt.",
+      "evidence": null,
+      "note": "Elective surgery request without a conservative-management / non-operative-trial anchor.",
+      "remediation": "Attach the missing surgical supporting documentation (conservative management, imaging, ASA, consent)."
+    },
+    {
+      "ruleId": "R-PA-SURG-002",
+      "severity": "flag",
+      "status": "flag",
+      "description": "Elective surgery: imaging supporting surgical indication attached",
+      "citation": "spec-v52 §4.5.5 R-PA-SURG-002. Surgical PAs typically require imaging (X-ray, MRI, CT, US) that demonstrates the anatomical / pathological basis for surgery; the imaging report or anchor must be in the packet.",
+      "evidence": null,
+      "note": "Surgery request without an attached imaging-report document or imaging-findings anchor.",
+      "remediation": "Attach the missing surgical supporting documentation (conservative management, imaging, ASA, consent)."
+    },
+    {
+      "ruleId": "R-PA-SURG-004",
+      "severity": "flag",
+      "status": "flag",
+      "description": "Surgery: ASA Physical Status classification documented",
+      "citation": "spec-v52 §4.5.5 R-PA-SURG-004. The ASA Physical Status is the de-facto standard for perioperative risk stratification; payers expect an ASA classification (1-5) on every elective surgery PA.",
+      "evidence": null,
+      "note": "Surgery request without an ASA Physical Status (1-5) anchor.",
+      "remediation": "Attach the missing surgical supporting documentation (conservative management, imaging, ASA, consent)."
+    },
+    {
+      "ruleId": "R-PA-SURG-005",
+      "severity": "flag",
+      "status": "flag",
+      "description": "Surgery: informed consent documented, dated on or before the date of surgery",
+      "citation": "spec-v52 §4.5.5 R-PA-SURG-005. Joint Commission / payer convention: a procedure-specific informed consent must be obtained before the surgical encounter. This rule narrows R-PA-059 (core consent check) to the surgical specialty trigger so the audit trail flags consent issues in the specialty section of the report.",
+      "evidence": null,
+      "note": "Surgery request without an informed-consent / surgical-consent anchor.",
+      "remediation": "Attach the missing surgical supporting documentation (conservative management, imaging, ASA, consent)."
     },
     {
       "ruleId": "R-PA-031",
@@ -102,12 +152,22 @@
       "remediation": null
     },
     {
+      "ruleId": "R-PA-IBX-003",
+      "severity": "info",
+      "status": "info",
+      "description": "Independence Blue Cross prior authorization: submission channel (Availity Essentials / Provider Resource Center / phone on member ID card) indicated",
+      "citation": "spec-v52 §4.5.17 R-PA-IBX-003. Independence Blue Cross directs providers to submit prior-authorization requests through the Availity Essentials portal or the Provider Resource Center, by 278 EDI transaction, or by phone using the number on the member ID card. Informational: a cover sheet that names the channel speeds routing. <https://www.ibx.com/resources/for-providers/authorizations>",
+      "evidence": null,
+      "note": "No Independence Blue Cross submission channel (the Availity Essentials portal / Provider Resource Center / EDI 278 / the phone number on the member ID card) is noted in the packet. Informational only -- does not affect medical-necessity review.",
+      "remediation": null
+    },
+    {
       "ruleId": "R-PA-001",
       "severity": "block",
       "status": "pass",
       "description": "Patient name present in at least one document",
       "citation": "spec-v52 §4.5.1 R-PA-001 (core, payer-agnostic).",
-      "evidence": "Found \"Robert E Lee\" in cms-pa-form.txt",
+      "evidence": "Found \"Mary C Roe\" in ibx-pa-form.txt",
       "note": null,
       "remediation": null
     },
@@ -117,7 +177,7 @@
       "status": "pass",
       "description": "Date of birth present in at least one document",
       "citation": "spec-v52 §4.5.1 R-PA-002 (core, payer-agnostic).",
-      "evidence": "DOB \"1948-01-19\" in cms-pa-form.txt",
+      "evidence": "DOB \"1968-11-22\" in ibx-pa-form.txt",
       "note": null,
       "remediation": null
     },
@@ -127,7 +187,7 @@
       "status": "pass",
       "description": "Member ID present in at least one document",
       "citation": "spec-v52 §4.5.1 R-PA-003. Payer-specific format validation lives in payer overlays (v52-2+).",
-      "evidence": "Member ID \"1EG4TE5MK73\" in cms-pa-form.txt",
+      "evidence": "Member ID \"IBX123456789\" in ibx-pa-form.txt",
       "note": null,
       "remediation": null
     },
@@ -137,7 +197,7 @@
       "status": "pass",
       "description": "Service date present in the packet",
       "citation": "spec-v52 §4.5.1 R-PA-004 (core, payer-agnostic).",
-      "evidence": "8 date string(s) recognized across the packet.",
+      "evidence": "5 date string(s) recognized across the packet.",
       "note": null,
       "remediation": null
     },
@@ -147,7 +207,7 @@
       "status": "pass",
       "description": "Service date is not past the default retro-auth window (90 days)",
       "citation": "spec-v52 §4.5.1 R-PA-005. Default retro-auth window is 90 days; payer overlays override. Scoped to dates explicitly labeled \"Date of service\" / \"DOS\" / \"Service date\" so DOB strings and signature dates are excluded.",
-      "evidence": "Oldest labeled service date is 19 days in the past.",
+      "evidence": "No labeled service date; rule vacuously satisfied (R-PA-004 covers presence).",
       "note": null,
       "remediation": null
     },
@@ -157,7 +217,7 @@
       "status": "pass",
       "description": "Service date is not more than 365 days in the future",
       "citation": "spec-v52 §4.5.1 R-PA-006. Hard ceiling, not payer-specific. Scoped to dates labeled \"Date of service\" / \"DOS\" / \"Service date\".",
-      "evidence": "Furthest labeled service date is -19 days in the future.",
+      "evidence": "Furthest labeled service date is 27 days in the future.",
       "note": null,
       "remediation": null
     },
@@ -167,7 +227,7 @@
       "status": "pass",
       "description": "At least one CPT or HCPCS code present",
       "citation": "spec-v52 §4.5.1 R-PA-007 (core, payer-agnostic). AMA CPT / CMS HCPCS Level II.",
-      "evidence": "Codes: E0601",
+      "evidence": "Codes: 29881",
       "note": null,
       "remediation": null
     },
@@ -187,7 +247,7 @@
       "status": "pass",
       "description": "Each extracted HCPCS code is well-formed (letter + 4 digits) and not on the bundled deleted-codes list",
       "citation": "spec-v52 §4.5.1 R-PA-009. v52-1k ships an empty deleted-codes table.",
-      "evidence": "1 HCPCS code(s) format-valid; none on the bundled deleted list.",
+      "evidence": "No HCPCS Level II code; rule vacuously satisfied.",
       "note": null,
       "remediation": null
     },
@@ -197,7 +257,7 @@
       "status": "pass",
       "description": "At least one ICD-10-CM diagnosis code present",
       "citation": "spec-v52 §4.5.1 R-PA-010 (core, payer-agnostic). ICD-10-CM, public domain (CMS / CDC).",
-      "evidence": "Codes: G47.33",
+      "evidence": "Codes: M23.205",
       "note": null,
       "remediation": null
     },
@@ -227,7 +287,7 @@
       "status": "pass",
       "description": "Place-of-service code is present and on the bundled CMS list",
       "citation": "spec-v52 §4.5.1 R-PA-013. CMS Place of Service codes (POS list, public).",
-      "evidence": "POS code(s): 12",
+      "evidence": "POS code(s): 22",
       "note": null,
       "remediation": null
     },
@@ -267,7 +327,7 @@
       "status": "pass",
       "description": "Ordering provider signature present in at least one document",
       "citation": "spec-v52 §4.5.1 R-PA-017. Detects \"Signature:\" / \"Signed by\" / \"Electronically signed\" / \"/s/\" anchors.",
-      "evidence": "Signature anchor in cms-pa-form.txt",
+      "evidence": "Signature anchor in ibx-pa-form.txt",
       "note": null,
       "remediation": null
     },
@@ -277,7 +337,7 @@
       "status": "pass",
       "description": "Ordering provider signature is dated (only if a signature is present)",
       "citation": "spec-v52 §4.5.1 R-PA-018.",
-      "evidence": "Dated signature in cms-pa-form.txt",
+      "evidence": "Dated signature in ibx-pa-form.txt",
       "note": null,
       "remediation": null
     },
@@ -307,7 +367,7 @@
       "status": "pass",
       "description": "Clinical-note content appears in at least one document",
       "citation": "spec-v52 §4.5.1 R-PA-021. Keyword anchors: \"chief complaint\", \"history of present illness\", \"assessment and plan\", \"progress note\", \"clinical note\", \"soap note\".",
-      "evidence": "Clinical-note anchor in cms-note.txt",
+      "evidence": "Clinical-note anchor in ibx-note.txt",
       "note": null,
       "remediation": null
     },
@@ -317,7 +377,7 @@
       "status": "pass",
       "description": "Clinical-note document has at least one extractable date",
       "citation": "spec-v52 §4.5.1 R-PA-022. Default clinical-look-back window is payer-specific; v52-1h checks date presence inside the clinical-note document(s) only.",
-      "evidence": "Date(s) found in clinical-note: cms-note.txt",
+      "evidence": "Date(s) found in clinical-note: ibx-note.txt",
       "note": null,
       "remediation": null
     },
@@ -327,7 +387,7 @@
       "status": "pass",
       "description": "Medical-necessity statement present",
       "citation": "spec-v52 §4.5.1 R-PA-024. Free-text anchor: \"medical necessity\", \"medically necessary\", \"necessary because\", \"necessary due to\".",
-      "evidence": "Anchor in cms-note.txt",
+      "evidence": "Anchor in ibx-pa-form.txt",
       "note": null,
       "remediation": null
     },
@@ -338,16 +398,6 @@
       "description": "Lab-result document attached when the packet references labs",
       "citation": "spec-v52 §4.5.1 R-PA-025.",
       "evidence": "No lab references in packet; rule vacuously satisfied.",
-      "note": null,
-      "remediation": null
-    },
-    {
-      "ruleId": "R-PA-026",
-      "severity": "flag",
-      "status": "pass",
-      "description": "Imaging-report document attached when the packet references imaging",
-      "citation": "spec-v52 §4.5.1 R-PA-026.",
-      "evidence": "No imaging references in packet; rule vacuously satisfied.",
       "note": null,
       "remediation": null
     },
@@ -537,7 +587,7 @@
       "status": "pass",
       "description": "Diagnosis-procedure linkage shown (an ICD-10 code and a CPT/HCPCS code co-occur within the same document)",
       "citation": "spec-v52 §4.5.1 R-PA-050. Heuristic: at least one document carries both an ICD-10 code and a CPT/HCPCS code within ~400 characters of each other.",
-      "evidence": "ICD-10 + CPT/HCPCS co-occur in cms-pa-form.txt",
+      "evidence": "ICD-10 + CPT/HCPCS co-occur in ibx-pa-form.txt",
       "note": null,
       "remediation": null
     },
@@ -1687,7 +1737,7 @@
       "status": "pass",
       "description": "Medicare FFS DME: face-to-face encounter documented",
       "citation": "spec-v52 §4.5.2 R-PA-CMS-001. CMS NCD-280.x; Medicare requires a face-to-face encounter with the prescribing physician within 6 months prior to the written order for most DME categories.",
-      "evidence": "F2F encounter anchor in cms-note.txt",
+      "evidence": "Not Medicare FFS; rule vacuously satisfied.",
       "note": null,
       "remediation": null
     },
@@ -1697,7 +1747,7 @@
       "status": "pass",
       "description": "Medicare FFS DME: Detailed / Standard Written Order (DWO/SWO) present and dated",
       "citation": "spec-v52 §4.5.2 R-PA-CMS-002. CMS IOM Pub 100-08 ch. 5; a Standard Written Order (or pre-2020 Detailed Written Order) signed and dated by the prescribing physician is required before DME delivery.",
-      "evidence": "SWO/DWO + dated signature present.",
+      "evidence": "Not Medicare FFS; rule vacuously satisfied.",
       "note": null,
       "remediation": null
     },
@@ -1707,7 +1757,7 @@
       "status": "pass",
       "description": "Medicare FFS DME: Standard Written Order elements complete (beneficiary, item, date, quantity, prescriber NPI, signature)",
       "citation": "spec-v52 §4.5.2 R-PA-CMS-003. CMS IOM Pub 100-08 ch. 5; the SWO must carry the beneficiary identity, item description / HCPCS, order date, quantity, treating-practitioner NPI, and a dated prescriber signature.",
-      "evidence": "All required SWO elements detected.",
+      "evidence": "Not Medicare FFS; rule vacuously satisfied.",
       "note": null,
       "remediation": null
     },
@@ -1717,7 +1767,7 @@
       "status": "pass",
       "description": "Medicare FFS DME: proof of delivery requirements documented",
       "citation": "spec-v52 §4.5.2 R-PA-CMS-004. CMS IOM Pub 100-08 ch. 4 §4.26; supplier must retain proof of delivery (POD) including date and recipient signature.",
-      "evidence": "POD anchor in cms-pa-form.txt",
+      "evidence": "Not Medicare FFS; rule vacuously satisfied.",
       "note": null,
       "remediation": null
     },
@@ -1727,7 +1777,7 @@
       "status": "pass",
       "description": "Medicare FFS mobility device: patient functional status documented",
       "citation": "spec-v52 §4.5.2 R-PA-CMS-005. CMS LCD L33788 (Power Mobility Devices) requires a documented mobility limitation evaluation: ADL impact, ambulation distance, balance, and home accessibility.",
-      "evidence": "No mobility-device anchor; rule vacuously satisfied.",
+      "evidence": "Not Medicare FFS; rule vacuously satisfied.",
       "note": null,
       "remediation": null
     },
@@ -1737,7 +1787,7 @@
       "status": "pass",
       "description": "Medicare FFS PAP device: sleep study results documented within 12 months prior to initial PAP order",
       "citation": "spec-v52 §4.5.2 R-PA-CMS-006. LCD L33718 (Positive Airway Pressure Devices) requires a Medicare-covered sleep test with results within 12 months prior to initiating PAP therapy.",
-      "evidence": "Sleep-study anchor in cms-note.txt",
+      "evidence": "Not Medicare FFS; rule vacuously satisfied.",
       "note": null,
       "remediation": null
     },
@@ -1747,7 +1797,7 @@
       "status": "pass",
       "description": "Medicare FFS PAP continuation: 90-day adherence / compliance documentation",
       "citation": "spec-v52 §4.5.2 R-PA-CMS-007. LCD L33718 requires documentation that the beneficiary is using PAP >= 4 hours/night on >= 70% of nights during a consecutive 30-day period within the first 90 days of initial PAP use, before continued coverage past three months.",
-      "evidence": "No PAP-continuation anchor; rule vacuously satisfied.",
+      "evidence": "Not Medicare FFS; rule vacuously satisfied.",
       "note": null,
       "remediation": null
     },
@@ -1757,7 +1807,17 @@
       "status": "pass",
       "description": "Medicare FFS home oxygen: qualifying arterial blood gas or pulse-oximetry result documented",
       "citation": "spec-v52 §4.5.2 R-PA-CMS-008. CMS NCD 240.2 / LCD L33797 (Oxygen and Oxygen Equipment) requires a qualifying ABG (PaO2 <= 55 mmHg) or pulse oximetry (SpO2 <= 88%) on room air at rest, during sleep, or with exertion.",
-      "evidence": "No home-oxygen anchor; rule vacuously satisfied.",
+      "evidence": "Not Medicare FFS; rule vacuously satisfied.",
+      "note": null,
+      "remediation": null
+    },
+    {
+      "ruleId": "R-PA-CMS-009",
+      "severity": "flag",
+      "status": "pass",
+      "description": "Medicare FFS DME: supplier PTAN documented",
+      "citation": "spec-v52 §4.5.2 R-PA-CMS-009. CMS supplier PTAN (Provider Transaction Access Number) is required on DME claims so the MAC can match the supplier to the Medicare enrollment record.",
+      "evidence": "Not Medicare FFS; rule vacuously satisfied.",
       "note": null,
       "remediation": null
     },
@@ -1767,7 +1827,7 @@
       "status": "pass",
       "description": "Medicare FFS hospital bed: medical-necessity documentation present",
       "citation": "spec-v52 §4.5.2 R-PA-CMS-011. LCD L33820 (Hospital Beds and Accessories) requires documentation that the beneficiary has a condition requiring positioning of the body in ways not feasible with an ordinary bed (e.g., head elevation > 30°, frequent body position change).",
-      "evidence": "No hospital-bed anchor; rule vacuously satisfied.",
+      "evidence": "Not Medicare FFS; rule vacuously satisfied.",
       "note": null,
       "remediation": null
     },
@@ -1777,7 +1837,7 @@
       "status": "pass",
       "description": "Medicare FFS enteral nutrition: inability to ingest / projected duration documented",
       "citation": "spec-v52 §4.5.2 R-PA-CMS-012. LCD L33783 (Enteral Nutrition) requires documentation of a permanent (>= 90 days) inability to take nutrition orally and a functioning gastrointestinal tract.",
-      "evidence": "No enteral-nutrition anchor; rule vacuously satisfied.",
+      "evidence": "Not Medicare FFS; rule vacuously satisfied.",
       "note": null,
       "remediation": null
     },
@@ -1787,7 +1847,7 @@
       "status": "pass",
       "description": "Medicare FFS nebulizer: obstructive pulmonary disease diagnosis documented",
       "citation": "spec-v52 §4.5.2 R-PA-CMS-013. LCD L33370 (Nebulizers) requires documentation of a covered diagnosis (COPD, asthma, cystic fibrosis, bronchiectasis, etc.) and the inhalation drug being delivered.",
-      "evidence": "No nebulizer anchor; rule vacuously satisfied.",
+      "evidence": "Not Medicare FFS; rule vacuously satisfied.",
       "note": null,
       "remediation": null
     },
@@ -1797,7 +1857,7 @@
       "status": "pass",
       "description": "Medicare FFS TENS unit: chronic intractable pain > 3 months + failed conventional therapy documented",
       "citation": "spec-v52 §4.5.2 R-PA-CMS-014. NCD 160.13 / LCD L33802 (TENS) requires chronic intractable pain present > 3 months and documentation of failure or unsuitability of conventional therapy.",
-      "evidence": "No TENS anchor; rule vacuously satisfied.",
+      "evidence": "Not Medicare FFS; rule vacuously satisfied.",
       "note": null,
       "remediation": null
     },
@@ -1807,7 +1867,7 @@
       "status": "pass",
       "description": "Medicare FFS NPWT: wound type / size / failed standard wound care documented",
       "citation": "spec-v52 §4.5.2 R-PA-CMS-015. LCD L33821 (Negative Pressure Wound Therapy) requires documentation of a covered wound type (Stage III/IV pressure ulcer, neuropathic ulcer, etc.) plus failure of standard wound care.",
-      "evidence": "No NPWT anchor; rule vacuously satisfied.",
+      "evidence": "Not Medicare FFS; rule vacuously satisfied.",
       "note": null,
       "remediation": null
     },
@@ -1817,7 +1877,7 @@
       "status": "pass",
       "description": "Medicare FFS lower-limb prosthesis: K-level / functional rehabilitation potential documented",
       "citation": "spec-v52 §4.5.2 R-PA-CMS-016. LCD L33787 (Lower Limb Prostheses) requires documentation of the beneficiary's functional level (K0-K4) and rehabilitation potential.",
-      "evidence": "No lower-limb-prosthesis anchor; rule vacuously satisfied.",
+      "evidence": "Not Medicare FFS; rule vacuously satisfied.",
       "note": null,
       "remediation": null
     },
@@ -1827,7 +1887,7 @@
       "status": "pass",
       "description": "Medicare FFS orthotics: documented condition + L-code present",
       "citation": "spec-v52 §4.5.2 R-PA-CMS-017. LCD L33686 (Ankle-Foot / Knee-Ankle-Foot Orthoses) requires documentation of a condition (e.g., drop foot, peroneal palsy, post-CVA) plus an appropriate L-code HCPCS.",
-      "evidence": "No orthotic anchor; rule vacuously satisfied.",
+      "evidence": "Not Medicare FFS; rule vacuously satisfied.",
       "note": null,
       "remediation": null
     },
@@ -1837,7 +1897,7 @@
       "status": "pass",
       "description": "Medicare FFS continuous glucose monitor: insulin therapy + frequent self-monitoring documented",
       "citation": "spec-v52 §4.5.2 R-PA-CMS-018. LCD L33822 (Glucose Monitors) requires documentation of insulin therapy AND a history of frequent self-monitoring (>= 4 fingersticks/day) or problematic hypoglycemia before CGM coverage.",
-      "evidence": "No CGM anchor; rule vacuously satisfied.",
+      "evidence": "Not Medicare FFS; rule vacuously satisfied.",
       "note": null,
       "remediation": null
     },
@@ -1847,7 +1907,7 @@
       "status": "pass",
       "description": "Medicare FFS post-transplant immunosuppressives: date and Medicare-covered transplant type documented",
       "citation": "spec-v52 §4.5.2 R-PA-CMS-019. CMS Part B covers immunosuppressive drugs for beneficiaries who had a Medicare-covered organ transplant (kidney, heart, liver, lung, pancreas, intestinal). The transplant date and organ must be documented.",
-      "evidence": "No immunosuppressive anchor; rule vacuously satisfied.",
+      "evidence": "Not Medicare FFS; rule vacuously satisfied.",
       "note": null,
       "remediation": null
     },
@@ -1857,7 +1917,7 @@
       "status": "pass",
       "description": "Medicare FFS parenteral nutrition: documented GI tract failure + caloric requirements",
       "citation": "spec-v52 §4.5.2 R-PA-CMS-020. LCD L33799 (Parenteral Nutrition) requires documentation that the GI tract is non-functional or inaccessible (e.g., short bowel syndrome, motility disorder, fistula) and an estimate of caloric / protein requirements.",
-      "evidence": "No parenteral-nutrition anchor; rule vacuously satisfied.",
+      "evidence": "Not Medicare FFS; rule vacuously satisfied.",
       "note": null,
       "remediation": null
     },
@@ -1867,7 +1927,7 @@
       "status": "pass",
       "description": "Medicare FFS lymphedema pneumatic compression pump: documented lymphedema + failed conservative therapy",
       "citation": "spec-v52 §4.5.2 R-PA-CMS-021. LCD L33829 (Pneumatic Compression Devices) requires documentation of chronic venous insufficiency or lymphedema plus failure of a 4-week trial of conservative therapy (compression garments / manual lymphatic drainage).",
-      "evidence": "No pneumatic-compression anchor; rule vacuously satisfied.",
+      "evidence": "Not Medicare FFS; rule vacuously satisfied.",
       "note": null,
       "remediation": null
     },
@@ -1877,7 +1937,7 @@
       "status": "pass",
       "description": "Medicare FFS external infusion pump: covered chronic-disease indication + drug compatibility documented",
       "citation": "spec-v52 §4.5.2 R-PA-CMS-022. LCD L33794 (External Infusion Pumps) requires a covered indication (e.g., chemotherapy, antifungal therapy, parenteral hydration, inotropic therapy) and an FDA-approved infusion drug.",
-      "evidence": "No external-infusion-pump anchor; rule vacuously satisfied.",
+      "evidence": "Not Medicare FFS; rule vacuously satisfied.",
       "note": null,
       "remediation": null
     },
@@ -1887,7 +1947,7 @@
       "status": "pass",
       "description": "Medicare FFS ostomy supplies: ostomy type documented + quantity within monthly utilization limits",
       "citation": "spec-v52 §4.5.2 R-PA-CMS-023. LCD L33828 (Ostomy Supplies) requires documentation of ostomy type (colostomy, ileostomy, urostomy) and quantity must align with the LCD utilization parameters.",
-      "evidence": "No ostomy anchor; rule vacuously satisfied.",
+      "evidence": "Not Medicare FFS; rule vacuously satisfied.",
       "note": null,
       "remediation": null
     },
@@ -1897,7 +1957,7 @@
       "status": "pass",
       "description": "Medicare FFS urinary catheters: permanent urinary incontinence / retention diagnosis documented",
       "citation": "spec-v52 §4.5.2 R-PA-CMS-024. LCD L33803 (Urological Supplies) requires documentation of permanent urinary incontinence or urinary retention.",
-      "evidence": "No urinary-catheter anchor; rule vacuously satisfied.",
+      "evidence": "Not Medicare FFS; rule vacuously satisfied.",
       "note": null,
       "remediation": null
     },
@@ -1907,7 +1967,7 @@
       "status": "pass",
       "description": "Medicare FFS surgical dressings: wound surface area + dressing-change frequency documented",
       "citation": "spec-v52 §4.5.2 R-PA-CMS-025. LCD L33831 (Surgical Dressings) requires documentation of wound surface area and frequency of dressing changes so utilization can be matched to the dressing category.",
-      "evidence": "No surgical-dressing anchor; rule vacuously satisfied.",
+      "evidence": "Not Medicare FFS; rule vacuously satisfied.",
       "note": null,
       "remediation": null
     },
@@ -1917,7 +1977,7 @@
       "status": "pass",
       "description": "Medicare FFS post-cataract refractive lenses: cataract-surgery date + surgical CPT documented",
       "citation": "spec-v52 §4.5.2 R-PA-CMS-026. NCD 80.4 covers one pair of conventional eyeglasses or contact lenses after each cataract surgery with insertion of an intraocular lens; the surgery date and procedure code must be documented.",
-      "evidence": "No post-cataract-lens anchor; rule vacuously satisfied.",
+      "evidence": "Not Medicare FFS; rule vacuously satisfied.",
       "note": null,
       "remediation": null
     },
@@ -2777,7 +2837,7 @@
       "status": "pass",
       "description": "Independence Blue Cross prior authorization: coverage criteria (Independence Blue Cross Medical Policy / MCG) referenced",
       "citation": "spec-v52 §4.5.17 R-PA-IBX-001. Independence Blue Cross adjudicates prior-authorization requests against its published Medical Policies (and MCG care guidelines); a request should cite the policy it is being judged against so the reviewer can map it to the coverage criteria. <https://www.ibx.com/resources/for-providers/authorizations>",
-      "evidence": "Not a Independence Blue Cross packet; rule vacuously satisfied.",
+      "evidence": "Coverage-criteria reference in ibx-pa-form.txt",
       "note": null,
       "remediation": null
     },
@@ -2787,17 +2847,7 @@
       "status": "pass",
       "description": "Independence Blue Cross prior authorization: supporting medical records / clinical documentation attached",
       "citation": "spec-v52 §4.5.17 R-PA-IBX-002. Independence Blue Cross requires the clinical information that supports medical necessity to be submitted with the prior-authorization request; a request with no clinical document attached cannot be reviewed on the merits. <https://www.ibx.com/resources/for-providers/authorizations>",
-      "evidence": "Not a Independence Blue Cross packet; rule vacuously satisfied.",
-      "note": null,
-      "remediation": null
-    },
-    {
-      "ruleId": "R-PA-IBX-003",
-      "severity": "info",
-      "status": "pass",
-      "description": "Independence Blue Cross prior authorization: submission channel (Availity Essentials / Provider Resource Center / phone on member ID card) indicated",
-      "citation": "spec-v52 §4.5.17 R-PA-IBX-003. Independence Blue Cross directs providers to submit prior-authorization requests through the Availity Essentials portal or the Provider Resource Center, by 278 EDI transaction, or by phone using the number on the member ID card. Informational: a cover sheet that names the channel speeds routing. <https://www.ibx.com/resources/for-providers/authorizations>",
-      "evidence": "Not a Independence Blue Cross packet; rule vacuously satisfied.",
+      "evidence": "Supporting clinical document present: ibx-note.txt (clinical-note)",
       "note": null,
       "remediation": null
     },
@@ -2807,7 +2857,7 @@
       "status": "pass",
       "description": "Independence Blue Cross prior authorization: requested service is on Independence Blue Cross's prior-authorization / notification requirement list",
       "citation": "spec-v52 §4.5.17 R-PA-IBX-004. Independence Blue Cross prior authorization applies only to services on its published prior-authorization and notification lists; requesting authorization for a non-listed service is unnecessary. Wave 52-17 ships no bundled list, so the rule is vacuously satisfied with a pointer to the list (it mirrors core R-PA-053 and the Aetna / UHC / Anthem / Cigna / Humana / HCSC / Highmark / Florida Blue / BCBSM / Blue Shield of California -004 rules; a later wave bundles the list and flips this to a real membership test). <https://www.ibx.com/resources/for-providers/authorizations>",
-      "evidence": "Not a Independence Blue Cross packet; rule vacuously satisfied.",
+      "evidence": "No bundled Independence Blue Cross prior-authorization list at wave 52-17; rule vacuously satisfied. Verify the requested service against Independence Blue Cross's current prior-authorization and notification list.",
       "note": null,
       "remediation": null
     },
@@ -2817,7 +2867,7 @@
       "status": "pass",
       "description": "Independence Blue Cross prior authorization: authorization is referenced for a service that requires it before the service date",
       "citation": "spec-v52 §4.5.17 R-PA-IBX-005. Independence Blue Cross requires prior authorization to be obtained before a service on its requirement list is rendered; a packet for an authorization-required service should show the authorization / reference number rather than relying on post-service review. <https://www.ibx.com/resources/for-providers/authorizations>",
-      "evidence": "Not a Independence Blue Cross packet; rule vacuously satisfied.",
+      "evidence": "Independence Blue Cross packet without an authorization-required service flag; rule vacuously satisfied.",
       "note": null,
       "remediation": null
     },
@@ -2827,7 +2877,7 @@
       "status": "pass",
       "description": "Independence Blue Cross inpatient prior authorization: admission notification + concurrent / continued-stay clinical review documentation present",
       "citation": "spec-v52 §4.5.17 R-PA-IBX-006. Independence Blue Cross requires admission notification and conducts concurrent (continued-stay) review for inpatient admissions, collecting the clinical update and discharge plan; an inpatient request should carry that documentation. <https://www.ibx.com/resources/for-providers/authorizations>",
-      "evidence": "Not a Independence Blue Cross packet; rule vacuously satisfied.",
+      "evidence": "Independence Blue Cross packet without an inpatient / continued-stay context; rule vacuously satisfied.",
       "note": null,
       "remediation": null
     },
@@ -2837,7 +2887,7 @@
       "status": "pass",
       "description": "Independence Blue Cross advanced-imaging review: outpatient MRI / CT / PET carries the clinical indication for Independence Blue Cross's advanced-imaging utilization-management program",
       "citation": "spec-v52 §4.5.17 R-PA-IBX-007. Independence Blue Cross delegates outpatient advanced-imaging (MRI / CT / PET / nuclear cardiology) prior authorization to its advanced-imaging utilization-management program; the request should carry the clinical indication that supports the study. <https://www.ibx.com/resources/for-providers/authorizations>",
-      "evidence": "Not a Independence Blue Cross packet; rule vacuously satisfied.",
+      "evidence": "Independence Blue Cross packet without an outpatient advanced-imaging request; rule vacuously satisfied.",
       "note": null,
       "remediation": null
     },
@@ -2847,17 +2897,7 @@
       "status": "pass",
       "description": "Independence Blue Cross expedited / urgent prior authorization: clinical urgency justification present",
       "citation": "spec-v52 §4.5.17 R-PA-IBX-008. Independence Blue Cross processes an expedited prior-authorization review when a standard timeframe could seriously jeopardize the member's life, health, or ability to regain maximum function. A request that asks for expedited handling should state that clinical urgency. <https://www.ibx.com/resources/for-providers/authorizations>",
-      "evidence": "Not a Independence Blue Cross packet; rule vacuously satisfied.",
-      "note": null,
-      "remediation": null
-    },
-    {
-      "ruleId": "R-PA-IBX-009",
-      "severity": "flag",
-      "status": "pass",
-      "description": "Independence Blue Cross site-of-care review: outpatient surgery / imaging addresses the hospital-outpatient vs. ASC / freestanding site-of-care requirement",
-      "citation": "spec-v52 §4.5.17 R-PA-IBX-009. Independence Blue Cross's site-of-care medical policy directs certain outpatient surgical and imaging services to an ambulatory surgical center or freestanding facility unless hospital-outpatient care is medically necessary; a hospital-outpatient request should document why that site is required. <https://www.ibx.com/resources/for-providers/authorizations>",
-      "evidence": "Not a Independence Blue Cross packet; rule vacuously satisfied.",
+      "evidence": "Independence Blue Cross packet without an expedited / urgent request; rule vacuously satisfied.",
       "note": null,
       "remediation": null
     },
@@ -2867,7 +2907,7 @@
       "status": "pass",
       "description": "Independence Blue Cross prior authorization: NDC documented for a physician-administered (J-code) drug request",
       "citation": "spec-v52 §4.5.17 R-PA-IBX-010. Independence Blue Cross review of physician-administered (buy-and-bill) drugs maps the request to a specific product and dose via the National Drug Code in addition to the HCPCS J-code. Informational: a J-code request without an NDC routes more slowly. <https://www.ibx.com/resources/for-providers/authorizations>",
-      "evidence": "Not a Independence Blue Cross packet; rule vacuously satisfied.",
+      "evidence": "Independence Blue Cross packet without a physician-administered (J-code) drug request; rule vacuously satisfied.",
       "note": null,
       "remediation": null
     },
@@ -2877,7 +2917,7 @@
       "status": "pass",
       "description": "Independence Blue Cross drug prior authorization: step-therapy prior-trial documentation (drugs tried + therapeutic failure) present",
       "citation": "spec-v52 §4.5.17 R-PA-IBX-011. For drugs subject to step therapy Independence Blue Cross pharmacy management requires documentation of the prerequisite drugs tried and the therapeutic failure / intolerance for each before the requested agent is approved. <https://www.ibx.com/resources/for-providers/authorizations>",
-      "evidence": "Not a Independence Blue Cross packet; rule vacuously satisfied.",
+      "evidence": "Independence Blue Cross packet without a drug request subject to step therapy; rule vacuously satisfied.",
       "note": null,
       "remediation": null
     },
@@ -2887,7 +2927,7 @@
       "status": "pass",
       "description": "Independence Blue Cross genetic / molecular testing: the specific test and indication are documented for Independence Blue Cross's genetic / molecular lab-management program",
       "citation": "spec-v52 §4.5.17 R-PA-IBX-012. Independence Blue Cross delegates genetic / molecular testing prior authorization to its lab-management program, which requires the specific test name (and, where applicable, the unique test identifier) plus the clinical indication. <https://www.ibx.com/resources/for-providers/authorizations>",
-      "evidence": "Not a Independence Blue Cross packet; rule vacuously satisfied.",
+      "evidence": "Independence Blue Cross packet without a genetic / molecular testing request; rule vacuously satisfied.",
       "note": null,
       "remediation": null
     },
@@ -2897,7 +2937,7 @@
       "status": "pass",
       "description": "Independence Blue Cross specialty / oncology drug: the supporting diagnosis is documented for the applicable Medical Policy",
       "citation": "spec-v52 §4.5.17 R-PA-IBX-013. Independence Blue Cross specialty and oncology drug coverage is governed by drug-specific Medical Policies that condition coverage on a supporting diagnosis (ICD-10) matching the policy's indication; the request should carry that diagnosis. <https://www.ibx.com/resources/for-providers/authorizations>",
-      "evidence": "Not a Independence Blue Cross packet; rule vacuously satisfied.",
+      "evidence": "Independence Blue Cross packet without a specialty / oncology drug request; rule vacuously satisfied.",
       "note": null,
       "remediation": null
     },
@@ -2907,7 +2947,7 @@
       "status": "pass",
       "description": "Independence Blue Cross retrospective / retroactive request: a retro-review justification is documented",
       "citation": "spec-v52 §4.5.17 R-PA-IBX-014. Independence Blue Cross considers a retrospective review only when the service was already rendered for a documented reason (e.g. emergent care, member eligibility not known at the time). A retro request should state that reason. Informational. <https://www.ibx.com/resources/for-providers/authorizations>",
-      "evidence": "Not a Independence Blue Cross packet; rule vacuously satisfied.",
+      "evidence": "Independence Blue Cross packet is not a retrospective request; rule vacuously satisfied.",
       "note": null,
       "remediation": null
     },
@@ -2917,7 +2957,7 @@
       "status": "pass",
       "description": "Independence Blue Cross DME / home-health prior authorization: a signed, dated written order / plan of care accompanies the request",
       "citation": "spec-v52 §4.5.17 R-PA-IBX-015. Independence Blue Cross prior authorization for durable medical equipment and home-health services requires a written order / plan of care, signed and dated by the ordering provider, before the item / service is dispensed. <https://www.ibx.com/resources/for-providers/authorizations>",
-      "evidence": "Not a Independence Blue Cross packet; rule vacuously satisfied.",
+      "evidence": "Independence Blue Cross packet without a DME / home-health request; rule vacuously satisfied.",
       "note": null,
       "remediation": null
     },
@@ -2927,7 +2967,7 @@
       "status": "pass",
       "description": "Independence Blue Cross behavioral health: level-of-care criteria documentation present",
       "citation": "spec-v52 §4.5.17 R-PA-IBX-016. Independence Blue Cross behavioral-health prior authorization reviews the requested level of care against published level-of-care guidelines (e.g. MCG behavioral-health care guidelines, ASAM criteria); the request should document the criteria that support the level requested. <https://www.ibx.com/resources/for-providers/authorizations>",
-      "evidence": "Not a Independence Blue Cross packet; rule vacuously satisfied.",
+      "evidence": "Independence Blue Cross packet without a behavioral-health request; rule vacuously satisfied.",
       "note": null,
       "remediation": null
     },
@@ -2937,7 +2977,7 @@
       "status": "pass",
       "description": "Independence Blue Cross transplant prior authorization: routed through the Blue Distinction Centers for Transplant with a transplant-center evaluation",
       "citation": "spec-v52 §4.5.17 R-PA-IBX-017. Independence Blue Cross directs solid-organ and hematopoietic stem-cell transplants through the Blue Distinction Centers for Transplant network; a transplant prior authorization should reference that routing and carry the transplant-center evaluation. <https://www.ibx.com/resources/for-providers/authorizations>",
-      "evidence": "Not a Independence Blue Cross packet; rule vacuously satisfied.",
+      "evidence": "Independence Blue Cross packet without a transplant request; rule vacuously satisfied.",
       "note": null,
       "remediation": null
     },
@@ -2947,7 +2987,7 @@
       "status": "pass",
       "description": "Independence Blue Cross experimental / investigational determination: peer-reviewed evidence or a documented policy exception is present",
       "citation": "spec-v52 §4.5.17 R-PA-IBX-018. Independence Blue Cross excludes services its Medical Policy classifies as experimental, investigational, or unproven; a request for such a service must carry the peer-reviewed evidence or the documented exception the policy allows, or it will be denied. <https://www.ibx.com/resources/for-providers/authorizations>",
-      "evidence": "Not a Independence Blue Cross packet; rule vacuously satisfied.",
+      "evidence": "Independence Blue Cross packet without an experimental / investigational service; rule vacuously satisfied.",
       "note": null,
       "remediation": null
     },
@@ -2957,7 +2997,7 @@
       "status": "pass",
       "description": "Independence Blue Cross reconsideration / appeal: references the original determination and adds new clinical information",
       "citation": "spec-v52 §4.5.17 R-PA-IBX-019. When a prior authorization is resubmitted as a reconsideration or appeal, Independence Blue Cross asks the provider to reference the original determination and supply additional clinical information that addresses the denial reason. Informational. <https://www.ibx.com/resources/for-providers/authorizations>",
-      "evidence": "Not a Independence Blue Cross packet; rule vacuously satisfied.",
+      "evidence": "Independence Blue Cross packet is not an appeal / reconsideration; rule vacuously satisfied.",
       "note": null,
       "remediation": null
     },
@@ -2967,7 +3007,7 @@
       "status": "pass",
       "description": "Independence Blue Cross out-of-network / network-gap request: a continuity-of-care or network-gap justification is documented",
       "citation": "spec-v52 §4.5.17 R-PA-IBX-020. Independence Blue Cross reviews out-of-network prior authorization for a documented network gap or continuity-of-care reason (no participating provider with the required expertise, an active course of treatment). An out-of-network request should state that justification. Informational. <https://www.ibx.com/resources/for-providers/authorizations>",
-      "evidence": "Not a Independence Blue Cross packet; rule vacuously satisfied.",
+      "evidence": "Independence Blue Cross packet without an out-of-network request; rule vacuously satisfied.",
       "note": null,
       "remediation": null
     },
@@ -3322,52 +3362,12 @@
       "remediation": null
     },
     {
-      "ruleId": "R-PA-SURG-001",
-      "severity": "flag",
-      "status": "pass",
-      "description": "Elective surgery: conservative-management trial documented",
-      "citation": "spec-v52 §4.5.5 R-PA-SURG-001. Payers approve elective surgery only after documented failure of non-operative management appropriate to the condition (e.g., joint replacement: PT + NSAIDs; spine: PT + epidurals); emergent surgery is exempt.",
-      "evidence": "No surgery CPT (10004-69990) in packet; rule vacuously satisfied.",
-      "note": null,
-      "remediation": null
-    },
-    {
-      "ruleId": "R-PA-SURG-002",
-      "severity": "flag",
-      "status": "pass",
-      "description": "Elective surgery: imaging supporting surgical indication attached",
-      "citation": "spec-v52 §4.5.5 R-PA-SURG-002. Surgical PAs typically require imaging (X-ray, MRI, CT, US) that demonstrates the anatomical / pathological basis for surgery; the imaging report or anchor must be in the packet.",
-      "evidence": "No surgery CPT in packet; rule vacuously satisfied.",
-      "note": null,
-      "remediation": null
-    },
-    {
       "ruleId": "R-PA-SURG-003",
       "severity": "flag",
       "status": "pass",
       "description": "Surgery with ASA >= 3: anesthesia / pre-op medical clearance documented",
       "citation": "spec-v52 §4.5.5 R-PA-SURG-003. ASA Physical Status >= 3 (severe systemic disease) requires documented pre-operative medical clearance / anesthesia evaluation so the perioperative risk has been assessed by an appropriate clinician.",
-      "evidence": "No surgery CPT in packet; rule vacuously satisfied.",
-      "note": null,
-      "remediation": null
-    },
-    {
-      "ruleId": "R-PA-SURG-004",
-      "severity": "flag",
-      "status": "pass",
-      "description": "Surgery: ASA Physical Status classification documented",
-      "citation": "spec-v52 §4.5.5 R-PA-SURG-004. The ASA Physical Status is the de-facto standard for perioperative risk stratification; payers expect an ASA classification (1-5) on every elective surgery PA.",
-      "evidence": "No surgery CPT in packet; rule vacuously satisfied.",
-      "note": null,
-      "remediation": null
-    },
-    {
-      "ruleId": "R-PA-SURG-005",
-      "severity": "flag",
-      "status": "pass",
-      "description": "Surgery: informed consent documented, dated on or before the date of surgery",
-      "citation": "spec-v52 §4.5.5 R-PA-SURG-005. Joint Commission / payer convention: a procedure-specific informed consent must be obtained before the surgical encounter. This rule narrows R-PA-059 (core consent check) to the surgical specialty trigger so the audit trail flags consent issues in the specialty section of the report.",
-      "evidence": "No surgery CPT in packet; rule vacuously satisfied.",
+      "evidence": "No ASA >= 3 anchor; rule vacuously satisfied.",
       "note": null,
       "remediation": null
     },
@@ -3574,15 +3574,15 @@
   ],
   "evidenceLedger": [
     {
-      "document": "cms-pa-form.txt",
-      "sha256": "fixture-cms-dme-form",
+      "document": "ibx-pa-form.txt",
+      "sha256": "fixture-ibx-precert-form",
       "kind": "TXT",
       "role": "pa-form",
-      "payer": "cms-medicare-ffs",
+      "payer": "ibx",
       "ledger": {
-        "patientName": "Robert E Lee",
-        "dob": "1948-01-19",
-        "memberId": "1EG4TE5MK73",
+        "patientName": "Mary C Roe",
+        "dob": "1968-11-22",
+        "memberId": "IBX123456789",
         "npis": [
           "1234567893",
           "1306849393"
@@ -3591,22 +3591,21 @@
           "123456789"
         ],
         "cpts": [
-          "E0601"
+          "29881"
         ],
         "icd10": [
-          "G47.33"
+          "M23.205"
         ],
         "pos": [
-          "12"
+          "22"
         ],
         "dates": [
-          "1948-01-19",
-          "2026-05-10",
-          "2026-05-12",
-          "2026-05-08"
+          "1968-11-22",
+          "2026-06-25",
+          "2026-06-10"
         ],
         "serviceDates": [
-          "2026-05-10"
+          "2026-06-25"
         ],
         "quantity": 1,
         "signature": {
@@ -3616,17 +3615,15 @@
       }
     },
     {
-      "document": "cms-note.txt",
-      "sha256": "fixture-cms-dme-note",
+      "document": "ibx-note.txt",
+      "sha256": "fixture-ibx-precert-note",
       "kind": "TXT",
       "role": "clinical-note",
       "payer": "unknown",
       "ledger": {
         "dates": [
-          "2026-04-20",
-          "2026-03-01",
-          "2026-04-20",
-          "2026-04-20"
+          "2026-06-10",
+          "2026-06-10"
         ],
         "signature": {
           "present": true,
@@ -3637,8 +3634,8 @@
   ],
   "extractedData": [
     {
-      "document": "cms-pa-form.txt",
-      "sha256": "fixture-cms-dme-form",
+      "document": "ibx-pa-form.txt",
+      "sha256": "fixture-ibx-precert-form",
       "extract": {
         "npis": [
           "1234567893",
@@ -3646,26 +3643,25 @@
         ],
         "ssns": [],
         "cpts": [
-          "E0601"
+          "29881"
         ],
         "icd10": [
-          "G47.33"
+          "M23.205"
         ],
         "pos": [
-          "12"
+          "22"
         ],
         "dates": [
-          "1948-01-19",
-          "2026-05-10",
-          "2026-05-12",
-          "2026-05-08"
+          "1968-11-22",
+          "2026-06-25",
+          "2026-06-10"
         ],
         "serviceDates": [
-          "2026-05-10"
+          "2026-06-25"
         ],
-        "patientName": "Robert E Lee",
-        "dob": "1948-01-19",
-        "memberId": "1EG4TE5MK73",
+        "patientName": "Mary C Roe",
+        "dob": "1968-11-22",
+        "memberId": "IBX123456789",
         "tins": [
           "123456789"
         ],
@@ -3678,12 +3674,12 @@
         "height": null,
         "frequency": null,
         "replacementChars": 0,
-        "textLength": 535
+        "textLength": 530
       }
     },
     {
-      "document": "cms-note.txt",
-      "sha256": "fixture-cms-dme-note",
+      "document": "ibx-note.txt",
+      "sha256": "fixture-ibx-precert-note",
       "extract": {
         "npis": [],
         "ssns": [],
@@ -3691,10 +3687,8 @@
         "icd10": [],
         "pos": [],
         "dates": [
-          "2026-04-20",
-          "2026-03-01",
-          "2026-04-20",
-          "2026-04-20"
+          "2026-06-10",
+          "2026-06-10"
         ],
         "serviceDates": [],
         "patientName": null,
@@ -3710,7 +3704,7 @@
         "height": null,
         "frequency": null,
         "replacementChars": 0,
-        "textLength": 337
+        "textLength": 466
       }
     }
   ],
@@ -3719,13 +3713,19 @@
     "reportFormatVersion": "1",
     "ruleIds": [
       "R-PA-023",
+      "R-PA-026",
       "R-PA-029",
       "R-PA-036",
       "R-PA-037",
-      "R-PA-CMS-009",
+      "R-PA-IBX-009",
+      "R-PA-SURG-001",
+      "R-PA-SURG-002",
+      "R-PA-SURG-004",
+      "R-PA-SURG-005",
       "R-PA-031",
       "R-PA-032",
       "R-PA-060",
+      "R-PA-IBX-003",
       "R-PA-001",
       "R-PA-002",
       "R-PA-003",
@@ -3750,7 +3750,6 @@
       "R-PA-022",
       "R-PA-024",
       "R-PA-025",
-      "R-PA-026",
       "R-PA-027",
       "R-PA-028",
       "R-PA-030",
@@ -3892,6 +3891,7 @@
       "R-PA-CMS-006",
       "R-PA-CMS-007",
       "R-PA-CMS-008",
+      "R-PA-CMS-009",
       "R-PA-CMS-011",
       "R-PA-CMS-012",
       "R-PA-CMS-013",
@@ -3995,13 +3995,11 @@
       "R-PA-HUMANA-020",
       "R-PA-IBX-001",
       "R-PA-IBX-002",
-      "R-PA-IBX-003",
       "R-PA-IBX-004",
       "R-PA-IBX-005",
       "R-PA-IBX-006",
       "R-PA-IBX-007",
       "R-PA-IBX-008",
-      "R-PA-IBX-009",
       "R-PA-IBX-010",
       "R-PA-IBX-011",
       "R-PA-IBX-012",
@@ -4048,11 +4046,7 @@
       "R-PA-RAD-003",
       "R-PA-RAD-004",
       "R-PA-RAD-005",
-      "R-PA-SURG-001",
-      "R-PA-SURG-002",
       "R-PA-SURG-003",
-      "R-PA-SURG-004",
-      "R-PA-SURG-005",
       "R-PA-UHC-001",
       "R-PA-UHC-002",
       "R-PA-UHC-003",
@@ -4077,12 +4071,12 @@
     "disabledRules": [],
     "documentHashes": [
       {
-        "document": "cms-pa-form.txt",
-        "sha256": "fixture-cms-dme-form"
+        "document": "ibx-pa-form.txt",
+        "sha256": "fixture-ibx-precert-form"
       },
       {
-        "document": "cms-note.txt",
-        "sha256": "fixture-cms-dme-note"
+        "document": "ibx-note.txt",
+        "sha256": "fixture-ibx-precert-note"
       }
     ],
     "totalBytes": 16384,

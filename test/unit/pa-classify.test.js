@@ -143,7 +143,7 @@ test('detectPayer: Florida Blue / GuideWell (Blue Cross and Blue Shield of Flori
   assert.equal(detectPayer('Blue Cross and Blue Shield of Florida member'), 'florida-blue');
   assert.equal(detectPayer('GuideWell health plan'), 'florida-blue');
   // ...but generic / other-licensee Blues stay in the commercial fall-through.
-  assert.equal(detectPayer('Independence Blue Cross PPO plan'), 'commercial');
+  assert.equal(detectPayer('Horizon Blue Cross Blue Shield of New Jersey PPO plan'), 'commercial');
   // ...and an explicit Medicare Advantage string still routes to the MA bucket.
   assert.equal(detectPayer('Florida Blue Medicare Advantage HMO plan'), 'cms-medicare-advantage');
 });
@@ -172,6 +172,20 @@ test('detectPayer: Blue Shield of California routes to its own bucket (wave 52-1
   assert.equal(detectPayer('Premera Blue Cross PPO plan'), 'commercial');
   // ...and an explicit Medicare Advantage string still routes to the MA bucket.
   assert.equal(detectPayer('Blue Shield of California Medicare Advantage HMO'), 'cms-medicare-advantage');
+});
+
+test('detectPayer: Independence Blue Cross (IBX) routes to its own bucket (wave 52-17)', () => {
+  // The 'independence blue cross' / 'ibx' anchors -> the named 'ibx' overlay
+  // bucket. IBX (southeastern PA) is a distinct licensee from Highmark
+  // (western / central PA), which the 'highmark' bucket catches earlier.
+  assert.equal(detectPayer('Independence Blue Cross PPO plan'), 'ibx');
+  assert.equal(detectPayer('IBX Keystone Health Plan East member'), 'ibx');
+  // ...Highmark still routes to the Highmark bucket.
+  assert.equal(detectPayer('Highmark Blue Shield of Pennsylvania'), 'highmark');
+  // ...but generic / other-licensee Blues stay in the commercial fall-through.
+  assert.equal(detectPayer('Excellus BlueCross BlueShield PPO plan'), 'commercial');
+  // ...and an explicit Medicare Advantage string still routes to the MA bucket.
+  assert.equal(detectPayer('Independence Blue Cross Medicare Advantage HMO'), 'cms-medicare-advantage');
 });
 
 test('detectPayer: unknown for empty / non-payer text', () => {

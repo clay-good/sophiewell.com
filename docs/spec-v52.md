@@ -1311,6 +1311,82 @@ California) — the remaining §9 wave 52-5+ candidates are the other
 Blues plans by state and per-state Medicaid overlays as user-volume
 data warrants.
 
+#### 4.5.17 Commercial payer overlays — Independence Blue Cross (wave 52-17)
+
+The eleventh named commercial-payer overlay, and the sixth "Blues
+plans by state" overlay after HCSC, Highmark, Florida Blue, BCBSM,
+and Blue Shield of California. **Independence Blue Cross** (IBX) is
+the dominant Blue Cross Blue Shield licensee in **southeastern
+Pennsylvania** (the five-county Philadelphia region) and one of the
+largest independent licensees not already routed to the
+Anthem/Elevance, HCSC, Highmark, Florida Blue, BCBSM, or Blue Shield
+of California buckets. It is a **distinct licensee from Highmark**,
+which operates western / central Pennsylvania — the `'highmark'`
+bucket catches that brand earlier, and IBX is matched only by its
+own `independence blue cross` / `ibx` anchors. Like the ten before
+it, IBX is keyed to its own payer bucket (`'ibx'`, detected by
+`lib/pa/payer.js` and placed before the generic `'commercial'`
+fall-through, after `'blue-shield-ca'`). Generic `blue cross` /
+`blue shield` and other Blues licensees stay in the commercial
+fall-through; an explicit "Medicare Advantage" string still wins the
+MA bucket earlier. Each commercial rule self-gates on
+`bundle.payer === 'ibx'` and returns a vacuous pass on every other
+packet.
+
+Scope discipline is identical to §4.5.7–§4.5.16: the rules check the
+**procedural completeness** of an IBX prior-authorization packet
+against the plan's *own published* submission requirements — not
+clinical coverage criteria, which are the reviewer's judgement and
+the applicable Medical Policy's job. Every rule is anchored to a
+public Independence Blue Cross provider authorizations URL tracked
+in the staleness ledger (§8.3, source `ibx-precert`) and re-verified
+on the §4.5.6 cadence.
+
+The set mirrors the earlier commercial families so the eleven
+overlays stay structurally parallel and auditable side by side;
+IBX-specific routing names appear where the plan actually uses them
+— the **Availity / PEAR provider portal** for submission, the
+**advanced-imaging utilization-management program** for advanced
+imaging and genetic / molecular testing, the plan's **pharmacy
+management** for pharmacy / step therapy, **behavioral health** for
+behavioral health, and the **Blue Distinction Centers for
+Transplant** for transplant. Wave 52-17 ships the full planned set
+of 20 (`R-PA-IBX-NNN`):
+
+| Id            | Rule                                                                          | Severity |
+|---------------|-------------------------------------------------------------------------------|----------|
+| `R-PA-IBX-001` | Coverage criteria (Medical Policy / MCG) referenced                          | flag     |
+| `R-PA-IBX-002` | Supporting medical records / clinical documentation attached                 | flag     |
+| `R-PA-IBX-003` | Submission channel (Availity / PEAR provider portal) noted                   | info     |
+| `R-PA-IBX-004` | Requested service is on the prior-authorization / notification list (stub)   | info     |
+| `R-PA-IBX-005` | Authorization referenced for a service that requires it before the service date | flag  |
+| `R-PA-IBX-006` | Inpatient request carries admission notification + concurrent-review docs    | flag     |
+| `R-PA-IBX-007` | Outpatient MRI / CT / PET carries the clinical indication for the imaging program | flag |
+| `R-PA-IBX-008` | Expedited / urgent request states the clinical urgency                       | flag     |
+| `R-PA-IBX-009` | Outpatient surgery / imaging addresses the hospital-outpatient site-of-care  | flag     |
+| `R-PA-IBX-010` | NDC documented for a physician-administered (J-code) drug request            | info     |
+| `R-PA-IBX-011` | Step-therapy prior-trial documentation for a drug request (pharmacy)         | flag     |
+| `R-PA-IBX-012` | Genetic / molecular testing carries the specific test + indication           | flag     |
+| `R-PA-IBX-013` | Specialty / oncology drug carries the supporting diagnosis (Medical Policy)  | flag     |
+| `R-PA-IBX-014` | Retrospective / retroactive request states a retro-review justification      | info     |
+| `R-PA-IBX-015` | DME / home-health request carries a signed, dated written order / plan of care | flag   |
+| `R-PA-IBX-016` | Behavioral health request carries level-of-care criteria (BH / ASAM)         | flag     |
+| `R-PA-IBX-017` | Transplant routed through the Blue Distinction Centers for Transplant        | flag     |
+| `R-PA-IBX-018` | Experimental / investigational / unproven service carries peer-reviewed evidence | flag  |
+| `R-PA-IBX-019` | Appeal / reconsideration references the original determination               | info     |
+| `R-PA-IBX-020` | Out-of-network request documents a network-gap / continuity-of-care reason   | info     |
+
+`R-PA-IBX-004` mirrors core `R-PA-053` and the Aetna / UHC / Anthem /
+Cigna / Humana / HCSC / Highmark / Florida Blue / BCBSM / Blue Shield
+of California -004 rules: it ships without a bundled
+prior-authorization list and vacuously passes with a pointer until a
+later wave bundles the list. With eleven commercial overlays shipped
+— the five largest commercial / MA plans plus the six largest
+independent Blues licensees (HCSC, Highmark, Florida Blue, BCBSM,
+Blue Shield of California, Independence Blue Cross) — the remaining
+§9 wave 52-5+ candidates are the other Blues plans by state and
+per-state Medicaid overlays as user-volume data warrants.
+
 ### 4.6 The DOCX report
 
 Structure (mirrors Vaulytica v3 with healthcare-specific
@@ -2073,13 +2149,35 @@ self-contained PR; the catalog count rises only at wave 52-1.
   Shield of California), the five largest independent Blues licensees
   now all covered.
 
+### Wave 52-17 — Independence Blue Cross commercial overlay (2026-06)
+
+- The 20 Independence Blue Cross rules (§4.5.17), the `R-PA-IBX-NNN`
+  family, anchored to the plan's public provider authorizations
+  pages, Medical Policies, and utilization-management / pharmacy
+  program requirements (ledger source `ibx-precert`).
+- An `'ibx'` payer bucket in `lib/pa/payer.js`, placed before the
+  generic `'commercial'` fall-through and after `'blue-shield-ca'`.
+  It matches the `independence blue cross` / `independence
+  administrators` / `ibx` anchors; IBX (southeastern PA) is a
+  distinct licensee from Highmark (western / central PA), which the
+  `'highmark'` bucket catches earlier. Generic Blues and other
+  licensees stay in the commercial fall-through, and an explicit
+  "Medicare Advantage" string still wins the MA bucket earlier.
+- Catalog count unchanged (255 tiles; IBX adds rules, not a tile).
+  Ruleset rises 335 → 355. Brings the named commercial / MA overlays
+  to eleven (Aetna + UnitedHealthcare + Anthem + Cigna + Humana +
+  HCSC + Highmark + Florida Blue + BCBSM + Blue Shield of California
+  + Independence Blue Cross), the six largest independent Blues
+  licensees now all covered.
+
 ### Wave 52-5+ — State Medicaid overlays, additional commercial payers, OCR
 
 - Per-state Medicaid overlays as user-volume data warrants.
 - Other Blues plans by state (HCSC shipped in wave 52-12, Highmark
   in wave 52-13, Florida Blue in wave 52-14, BCBSM in wave 52-15,
-  Blue Shield of California in wave 52-16; the remaining independent
-  Blues licensees follow as volume warrants).
+  Blue Shield of California in wave 52-16, Independence Blue Cross in
+  wave 52-17; the remaining independent Blues licensees follow as
+  volume warrants).
 - Optional in-browser OCR via tesseract.js (lazy-loaded,
   user-toggled, ≈ 11 MB gzipped). Only if §2's no-OCR
   experience proves insufficient.
@@ -2248,6 +2346,36 @@ silently; the audit trail records the disablement.
 
 - 2026-05-27 — v52 proposed. Five waves outlined (52-1 through
   52-5+). Catalog count target at v52-1 close: 255.
+- 2026-06-04 — wave 52-17 (§4.5.17 Independence Blue Cross commercial overlay,
+  the full 20-rule `R-PA-IBX-NNN` family — the eleventh named commercial overlay
+  after Aetna, UnitedHealthcare, Anthem, Cigna, Humana, HCSC, Highmark, Florida
+  Blue, BCBSM, and Blue Shield of California, and the sixth "Blues plans by
+  state" overlay). Opens an `'ibx'` payer bucket in `lib/pa/payer.js` (placed
+  after `'blue-shield-ca'` and before the generic `'commercial'` fall-through).
+  Independence Blue Cross is the dominant Blues licensee in southeastern
+  Pennsylvania (the Philadelphia region) and a distinct licensee from Highmark
+  (western / central PA), which the `'highmark'` bucket catches earlier. The
+  bucket matches the `independence blue cross` / `independence administrators` /
+  `ibx` anchors, so generic `blue cross` / `blue shield` and other licensees stay
+  in the commercial fall-through, and an explicit "Medicare Advantage" string
+  still wins the MA bucket earlier. The 20 rules mirror the Aetna / UHC / Anthem /
+  Cigna / Humana / HCSC / Highmark / Florida Blue / BCBSM / Blue Shield of
+  California families so the eleven commercial overlays stay structurally
+  parallel, with IBX-specific routing names where the plan uses them (Availity /
+  PEAR provider portal submission, the advanced-imaging utilization-management
+  program, pharmacy management for step therapy, behavioral health, and the Blue
+  Distinction Centers for Transplant). Each self-gates on `bundle.payer === 'ibx'`
+  and vacuously passes on every other packet. New ledger source `ibx-precert`
+  anchored to the plan's public provider authorizations page (all twenty rules
+  map to it by prefix). Coverage is now 355 rules shipped (was 335), 307
+  source-anchored (was 287), 26 sources (was 25), 0 orphans, 0 gaps. The golden
+  fixtures re-seed deterministically (a new `ibx-precert` fixture exercises the
+  on-bucket path — 009 flag, 003 info; the other seventeen gain +20 vacuous-pass
+  findings each). Tests: +10 engine assertions (count 355, the off-bucket loop,
+  and fire/pass checks) and +1 classify assertion (Independence Blue Cross →
+  `ibx`; Highmark → `highmark`; generic Blues → `commercial`; IBX Medicare
+  Advantage → the MA bucket). Catalog count unchanged (255). View wave banner
+  advanced to 52-17.
 - 2026-06-04 — wave 52-16 (§4.5.16 Blue Shield of California commercial overlay,
   the full 20-rule `R-PA-BSCA-NNN` family — the tenth named commercial overlay
   after Aetna, UnitedHealthcare, Anthem, Cigna, Humana, HCSC, Highmark, Florida
