@@ -1361,6 +1361,38 @@ main h1 {
   margin-bottom: var(--space-3);
   background: var(--bg-tertiary);
 }
+/* Preformatted output blocks (SBAR handoff, generated templates, derivation
+   formulas) wrap instead of overflowing on narrow screens. A bare <pre>
+   defaults to white-space: pre and would force the page to scroll sideways
+   (mobile no-hscroll guard). overflow-wrap: anywhere also breaks a single long
+   token (a URL or drug name pasted into a field) rather than overflowing. */
+pre {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+.sbar-output {
+  font-family: var(--mono, ui-monospace, monospace);
+  font-size: 0.9rem;
+  padding: var(--space-3);
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  margin-bottom: var(--space-3);
+}
+
+/* Wide tables pan within their own box on narrow screens so the page itself
+   never scrolls sideways (mobile no-hscroll guard). The wrapper is the scroll
+   container; the table keeps its natural minimum width inside it. */
+.table-scroll {
+  max-width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  margin-bottom: var(--space-3);
+}
+.table-scroll:focus-visible {
+  outline: 2px solid var(--accent, #2563eb);
+  outline-offset: 2px;
+}
 .lookup-table {
   width: 100%;
   border-collapse: collapse;

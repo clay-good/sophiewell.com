@@ -225,6 +225,27 @@ physically cannot leave the device. Everything below the router is a pure
 function of (URL hash + bundled data); there is no mutable server state, no
 session, and nothing to log.
 
+### Repository layout
+
+```
+index.html          single-page shell (hero search, home grid, tile mount)
+styles.css          one stylesheet (responsive, no horizontal scroll by design)
+app.js              router, filters, view wiring (zero runtime deps)
+sw.js               service worker — precache shell, cache shards by build hash
+theme.js            light/dark theme toggle (no storage)
+lib/                pure compute modules, one per tile family
+  ├─ data.js        the UTILITIES catalog (255 tiles, the single source of truth)
+  ├─ clinical*.js   clinical math / scoring / criteria
+  └─ pa/            the prior-auth linter: extract · classify · payer · rules ·
+                    engine · report · docx · staleness  (spec-v52)
+views/              per-group view renderers (group-*.js, pa-lint.js)
+data/               sharded public datasets + SHA-256 manifests (46 datasets)
+scripts/            build-*, check-*, audit-* (build + the CI lint gates)
+docs/               specs (spec-v4 … spec-v52) + architecture / threat-model / …
+test/               unit/ (node:test) · integration/ (Playwright) · fixtures/
+dist/               build output (255 tool pages, OG cards, sitemap, SBOM)
+```
+
 ## The Prior-Auth Packet Linter (`pa-lint`)
 
 `pa-lint` (spec-v52) is the catalog's first `document-linter` tile: instead
@@ -232,8 +253,9 @@ of form fields it consumes dropped files (PDF / DOCX / TXT) and produces a
 deterministic findings report. It checks the *procedural completeness* of a
 prior-authorization packet — is the member ID present, is the ordering NPI
 Luhn-valid, is a clinical note attached, does an inpatient Aetna,
-UnitedHealthcare, Anthem, Cigna, Humana, HCSC, or Highmark request carry a discharge
-plan — **not** clinical coverage criteria, which are the reviewer's judgment.
+UnitedHealthcare, Anthem, Cigna, Humana, HCSC, Highmark, or Florida Blue request
+carry a discharge plan — **not** clinical coverage criteria, which are the
+reviewer's judgment.
 Everything runs in the browser; the packet never leaves the tab.
 
 The pipeline is a pure, byte-deterministic function of the input bytes
@@ -253,10 +275,10 @@ what makes the golden-fixture CI gate possible.
  └──────┬───────┘                         imaging-report, lab-result, …)
         ▼
  ┌──────────────┐   lib/pa/payer.js → one bucket: cms-medicare-ffs |
- │ detect payer │     cms-medicare-advantage | medicaid | aetna | uhc |
- └──────┬───────┘     anthem | cigna | humana | hcsc | highmark | commercial
-        ▼                                                         | unknown
- ┌──────────────┐   lib/pa/rules.js → 275 rules, each a pure check(bundle).
+ │ detect payer │     cms-medicare-advantage | medicaid | aetna | uhc | anthem |
+ └──────┬───────┘     cigna | humana | hcsc | highmark | florida-blue |
+        ▼                                            commercial | unknown
+ ┌──────────────┐   lib/pa/rules.js → 295 rules, each a pure check(bundle).
  │  run engine  │   Overlay rules self-gate on the detected payer and
  └──────┬───────┘   vacuously pass off-bucket.
         ▼
@@ -269,7 +291,7 @@ Severities follow spec-v52 §4.4: `block` (packet cannot be reviewed as-is),
 `flag` (likely denial / RFI), `info` (nice-to-have), `pass`. A finding never
 guarantees an approval or a denial — it reports only what the ruleset checks.
 
-### Ruleset at a glance (275 rules)
+### Ruleset at a glance (295 rules)
 
 | Family            | Count | Scope                                                        | Ledger source              |
 |-------------------|-------|--------------------------------------------------------------|----------------------------|
@@ -289,25 +311,27 @@ guarantees an approval or a denial — it reports only what the ruleset checks.
 | `R-PA-HUMANA-NNN` | 20    | §4.5.11 Humana commercial overlay — the fifth named-payer set | `humana-precert`           |
 | `R-PA-HCSC-NNN`   | 20    | §4.5.12 HCSC / Blue Cross Blue Shield (IL/TX/MT/NM/OK) — the sixth named-payer set | `hcsc-precert` |
 | `R-PA-HIGHMARK-NNN` | 20  | §4.5.13 Highmark / Blue Cross Blue Shield (PA/WV/DE/NY) — the seventh named-payer set | `highmark-precert` |
+| `R-PA-FLBLUE-NNN` | 20  | §4.5.14 Florida Blue / GuideWell (Blue Cross and Blue Shield of Florida) — the eighth named-payer set | `floridablue-precert` |
 
-The seven commercial overlays (§4.5.7 Aetna, §4.5.8 UnitedHealthcare, §4.5.9
-Anthem, §4.5.10 Cigna, §4.5.11 Humana, §4.5.12 HCSC, §4.5.13 Highmark) are each
-keyed to a single named payer and ship 20 rules apiece. They are deliberately
-structurally parallel — same families, same severities — so a packet linted
-under any one payer is auditable against the others. The payer-specific routing
-names differ where each payer actually differs (Aetna's CPB / NME; UHC's
-Provider Portal / Optum; Anthem's Availity ICR / Carelon / Blue Distinction
-Centers; Cigna's CignaforHCP / eviCore / Express Scripts / LifeSOURCE; Humana's
-Availity / CenterWell / National Transplant Network; HCSC's Availity / Prime
-Therapeutics / Blue Distinction Centers; Highmark's Availity / Provider Resource
-Center / Blue Distinction Centers — both Humana's and HCSC's imaging programs
-are named generically since the vendor names collide with a barred AI-vendor
-substring, spec-v50 §3.6). The first five are the largest commercial / MA plans
-by national PA volume; HCSC and Highmark are the two largest independent Blue
-Cross Blue Shield licensees and the first of the §9 "Blues plans by state"
-candidates:
+The eight commercial overlays (§4.5.7 Aetna, §4.5.8 UnitedHealthcare, §4.5.9
+Anthem, §4.5.10 Cigna, §4.5.11 Humana, §4.5.12 HCSC, §4.5.13 Highmark, §4.5.14
+Florida Blue) are each keyed to a single named payer and ship 20 rules apiece.
+They are deliberately structurally parallel — same families, same severities —
+so a packet linted under any one payer is auditable against the others. The
+payer-specific routing names differ where each payer actually differs (Aetna's
+CPB / NME; UHC's Provider Portal / Optum; Anthem's Availity ICR / Carelon / Blue
+Distinction Centers; Cigna's CignaforHCP / eviCore / Express Scripts /
+LifeSOURCE; Humana's Availity / CenterWell / National Transplant Network; HCSC's
+Availity / Prime Therapeutics / Blue Distinction Centers; Highmark's Availity /
+Provider Resource Center / Blue Distinction Centers; Florida Blue's Availity /
+provider portal / Blue Distinction Centers — both Humana's and HCSC's imaging
+programs are named generically since the vendor names collide with a barred
+AI-vendor substring, spec-v50 §3.6). The first five are the largest commercial /
+MA plans by national PA volume; HCSC, Highmark, and Florida Blue are the three
+largest independent Blue Cross Blue Shield licensees and the first of the §9
+"Blues plans by state" candidates:
 
-| Rules     | Aetna / UHC / Anthem / Cigna / Humana / HCSC / Highmark                 |
+| Rules     | Aetna / UHC / Anthem / Cigna / Humana / HCSC / Highmark / Florida Blue   |
 |-----------|-------------------------------------------------------------------------|
 | 001–005   | Coverage criteria, supporting records, submission channel, prior-auth-list stub, questionnaire / advance notification / auth-before-service |
 | 006–010   | Review *modes*: concurrent / continued-stay, advanced-imaging site-of-care, expedited urgency, objective evidence / surgery site-of-care, J-code NDC |
@@ -315,15 +339,45 @@ candidates:
 | 016–020   | DME or behavioral-health LOC, transplant Centers-of-Excellence / Blue Distinction routing, experimental-service evidence, appeal reference, out-of-network gap |
 
 Every overlay rule self-gates on `bundle.payer === '<payer>'` and vacuously
-passes on any other packet, so the 135 non-commercial rules and the seven
+passes on any other packet, so the 135 non-commercial rules and the eight
 20-rule commercial overlays coexist without false positives — a Medicare FFS
 packet never trips a Humana rule, and vice versa. Each rule's
 source URL is tracked in
 [pa-staleness-ledger.json](pa-staleness-ledger.json) and re-verified on the
 §4.5.6 maintenance cadence; `npm run lint` fails CI on any ledger ↔ ruleset
 drift, and `scripts/audit-pa.mjs` diffs the full pipeline output against
-fourteen committed golden reports so any rule, extractor, or classifier change
+fifteen committed golden reports so any rule, extractor, or classifier change
 that moves a byte is caught.
+
+**Payer detection is first-match-wins, in a deliberate order.** The buckets
+are nested — "Aetna Medicare Advantage" is *both* an MA plan and an Aetna plan —
+so `lib/pa/payer.js` checks them in a fixed precedence and stops at the first
+anchor hit. This is the cheat sheet:
+
+```
+ 1. cms-medicare-advantage   "medicare advantage", "mapd", "humana gold plus", …
+ 2. medicaid                 "medicaid", "medi-cal", "masshealth", "chip", …
+ 3. cms-medicare-ffs         "medicare part a/b", "noridian", "palmetto gba", …
+ 4. aetna                    "aetna"
+ 5. uhc                      "unitedhealthcare", "optumrx", "umr", "oxford health"
+ 6. anthem                   "anthem", "elevance"
+ 7. cigna                    "cigna", "evernorth"
+ 8. humana                   "humana", "centerwell"
+ 9. hcsc                     "blue cross [and] blue shield of il/tx/mt/nm/ok", "hcsc"
+10. highmark                 "highmark"
+11. florida-blue             "florida blue", "guidewell", "bcbs of florida"
+12. commercial               "blue cross", "blue shield", "kaiser", "tricare"
+13. unknown                  (no anchor hit)
+```
+
+Government lines of business win first so an MA or Medicaid packet never routes
+to a commercial overlay on a stray brand string. The named-commercial buckets
+(4–11) sit above the generic `commercial` fall-through (12) and match only
+*unambiguous* anchors, so independent Blues licensees that aren't yet modeled
+(Independence Blue Cross, CareFirst, Blue Shield of California, Horizon BCBS NJ)
+stay in `commercial` rather than being misrouted. A per-packet majority vote
+(`detectPacketPayer`) aggregates multi-document bundles, with ties broken by
+this same order.
 
 **Design decisions baked into the linter.** (1) *Deterministic, not
 probabilistic* — the linter is a pure function of input bytes, so the same
@@ -331,7 +385,7 @@ packet always yields the same report; this is what makes a golden-fixture CI
 gate possible and is the opposite of the LLM-on-top-of-rules direction the
 PA-automation SaaS vendors took (spec-v52 §1.1). (2) *Self-gating overlays* —
 adding a payer is additive: a new bucket plus a prefix → ledger-source map,
-never an edit to an existing rule, so the 275-rule set grows without
+never an edit to an existing rule, so the 295-rule set grows without
 regression risk. (3) *Procedural completeness only* — the linter never
 asserts medical necessity; it checks whether the mechanically-detectable
 pieces a reviewer needs are present, which keeps it on the right side of the
@@ -375,7 +429,7 @@ rules, not soft preferences.
 | `npm run dev`            | Serve the directory locally on http://localhost:4173              |
 | `npm run build`          | Copy static files into `dist/` for deployment                     |
 | `npm test`               | Run the full test suite (unit, a11y, grep, data integrity)        |
-| `npm run test:unit`      | Run Node's built-in unit tests (2,134 tests)                      |
+| `npm run test:unit`      | Run Node's built-in unit tests (2,146 tests)                      |
 | `npm run test:e2e`       | Run Playwright integration tests against a real browser           |
 | `npm run test:a11y`      | Run accessibility checks on every utility view                    |
 | `npm run lint`           | Run ESLint with the project rules (bans innerHTML, eval, others)  |
@@ -449,8 +503,9 @@ build, integrity-verified data shards) are documented in
   healthcare worker would otherwise reach for MDCalc to find,
   shipped slowly at the v11 quality bar
 - [docs/spec-v52.md](docs/spec-v52.md) — the `pa-lint` prior-auth packet
-  linter: pipeline, the 275-rule ruleset, payer overlays (Aetna +
-  UnitedHealthcare + Anthem + Cigna + Humana + HCSC + Highmark), and the byte-determinism / golden-fixture guarantee
+  linter: pipeline, the 295-rule ruleset, payer overlays (Aetna +
+  UnitedHealthcare + Anthem + Cigna + Humana + HCSC + Highmark + Florida Blue),
+  and the byte-determinism / golden-fixture guarantee
 - [docs/architecture.md](docs/architecture.md) — runtime architecture,
   data flow, no-backend rationale
 - [docs/data-sources.md](docs/data-sources.md) — every bundled dataset

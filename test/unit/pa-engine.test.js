@@ -140,8 +140,8 @@ test('runEngine passes every starter rule on a clean multi-doc happy-path packet
   assert.equal(counts.pass, STARTER_RULES.length);
 });
 
-test('STARTER_RULES at wave 52-13 is 275 rules (135 §4.5 core/overlay/specialty + 20 Aetna + 20 UnitedHealthcare + 20 Anthem + 20 Cigna + 20 Humana + 20 HCSC + 20 Highmark)', () => {
-  assert.equal(STARTER_RULES.length, 275);
+test('STARTER_RULES at wave 52-14 is 295 rules (135 §4.5 core/overlay/specialty + 20 Aetna + 20 UnitedHealthcare + 20 Anthem + 20 Cigna + 20 Humana + 20 HCSC + 20 Highmark + 20 Florida Blue)', () => {
+  assert.equal(STARTER_RULES.length, 295);
 });
 
 // ---- wave 52-7a sanity checks: Aetna commercial overlay (§4.5.7) ----
@@ -877,6 +877,93 @@ test('R-PA-HIGHMARK-020 flags a Highmark out-of-network request with no network-
   const text = 'Highmark member.\nOut-of-network prior authorization request.\nProcedure CPT 70551.\n';
   const findings = runEngine(bundleOf(text));
   const f = findings.find((x) => x.ruleId === 'R-PA-HIGHMARK-020');
+  assert.equal(f.status, 'info');
+});
+
+// ---- wave 52-14 sanity checks: Florida Blue (Blue Cross Blue Shield) overlay (§4.5.14) ----
+
+test('Florida Blue overlay rules vacuously pass on a non-Florida-Blue packet', () => {
+  // happyBundle is not a Florida Blue packet -> every R-PA-FLBLUE-* rule passes.
+  const findings = runEngine(happyBundle());
+  for (let n = 1; n <= 20; n += 1) {
+    const id = 'R-PA-FLBLUE-' + String(n).padStart(3, '0');
+    const f = findings.find((x) => x.ruleId === id);
+    assert.ok(f, id + ' should be in the findings');
+    assert.equal(f.status, 'pass', id + ' should vacuously pass off-bucket');
+  }
+});
+
+test('R-PA-FLBLUE-001 flags a Florida Blue request with a procedure but no coverage-criteria reference', () => {
+  const text = 'Florida Blue PPO member.\n'
+    + 'Requested procedure: CPT 72148 (MRI lumbar spine).\n'
+    + 'Please authorize.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-FLBLUE-001');
+  assert.equal(f.status, 'flag');
+});
+
+test('R-PA-FLBLUE-001 passes when the Florida Blue packet cites the applicable Medical Policy', () => {
+  const text = 'Florida Blue member.\n'
+    + 'Requested procedure: CPT 72148.\n'
+    + 'Medical necessity per the applicable Florida Blue Medical Policy (MCG).\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-FLBLUE-001');
+  assert.equal(f.status, 'pass');
+});
+
+test('R-PA-FLBLUE-002 flags a Florida Blue packet with no clinical document attached', () => {
+  const text = 'Florida Blue PPO member.\nRequested procedure: CPT 27447.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-FLBLUE-002');
+  assert.equal(f.status, 'flag');
+});
+
+test('R-PA-FLBLUE-003 passes when the Florida Blue packet names the Availity channel (info)', () => {
+  const text = 'Florida Blue member.\nSubmitted via the Availity Essentials portal.\nProcedure CPT 27447.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-FLBLUE-003');
+  assert.equal(f.status, 'pass');
+});
+
+test('R-PA-FLBLUE-006 flags an inpatient (POS 21) Florida Blue request with no admission / progress documentation', () => {
+  const text = 'Florida Blue member.\nPlace of service: 21\nInpatient admission for acute care.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-FLBLUE-006');
+  assert.equal(f.status, 'flag');
+});
+
+test('R-PA-FLBLUE-007 flags a Florida Blue outpatient MRI with no clinical indication', () => {
+  const text = 'Florida Blue member.\nRequested: MRI lumbar spine, CPT 72148.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-FLBLUE-007');
+  assert.equal(f.status, 'flag');
+});
+
+test('R-PA-FLBLUE-008 passes when an expedited Florida Blue request documents the clinical urgency', () => {
+  const text = 'Florida Blue member.\nExpedited review requested: delay would jeopardize the member\'s life or health.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-FLBLUE-008');
+  assert.equal(f.status, 'pass');
+});
+
+test('R-PA-FLBLUE-011 flags a Florida Blue specialty-drug request with no step-therapy prior-trial documentation', () => {
+  const text = 'Florida Blue member.\nSpecialty drug requested; Florida Blue pharmacy step therapy applies.\nProcedure J3590.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-FLBLUE-011');
+  assert.equal(f.status, 'flag');
+});
+
+test('R-PA-FLBLUE-017 flags a Florida Blue transplant request with no Blue Distinction routing', () => {
+  const text = 'Florida Blue member.\nRequested service: kidney transplant.\nMedical necessity per Medical Policy.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-FLBLUE-017');
+  assert.equal(f.status, 'flag');
+});
+
+test('R-PA-FLBLUE-020 flags a Florida Blue out-of-network request with no network-gap justification (info)', () => {
+  const text = 'Florida Blue member.\nOut-of-network prior authorization request.\nProcedure CPT 70551.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-FLBLUE-020');
   assert.equal(f.status, 'info');
 });
 

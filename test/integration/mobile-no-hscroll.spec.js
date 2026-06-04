@@ -31,15 +31,28 @@ const STATIC_VIEWS = [
   { hash: '/#bmi', label: 'bmi (numeric calculator)' },
   { hash: '/#wells-pe', label: 'wells-pe (scoring tile)' },
   { hash: '/#pa-lint', label: 'pa-lint (document-linter, empty state)' },
+  // Regression guards for the three views a full-catalog sweep caught
+  // overflowing at <=414px: two wide reference tables (now wrapped in a
+  // .table-scroll region) and the SBAR <pre> output (now white-space:
+  // pre-wrap). See styles.css .table-scroll / pre and lib/table.js.
+  { hash: '/#peds-dose', label: 'peds-dose (wide reference table)' },
+  { hash: '/#anticoag-reversal', label: 'anticoag-reversal (wide reference table)' },
+  { hash: '/#sbar-template', label: 'sbar-template (pre-formatted output)' },
 ];
 
+// 320px is the narrowest mainstream phone (older/smaller Android, iPhone SE
+// in some zoom states); 360px is the common Android floor.
+const VIEWPORTS = [{ width: 320, height: 800 }, PHONE];
+
 for (const view of STATIC_VIEWS) {
-  test(`mobile 360px: ${view.label} does not scroll horizontally`, async ({ page }) => {
-    await page.setViewportSize(PHONE);
-    await page.goto(view.hash);
-    await expect(page.locator('.content, .home-view, main').first()).toBeVisible();
-    await assertNoHorizontalScroll(page, view.label);
-  });
+  for (const vp of VIEWPORTS) {
+    test(`mobile ${vp.width}px: ${view.label} does not scroll horizontally`, async ({ page }) => {
+      await page.setViewportSize(vp);
+      await page.goto(view.hash);
+      await expect(page.locator('.content, .home-view, main').first()).toBeVisible();
+      await assertNoHorizontalScroll(page, view.label);
+    });
+  }
 }
 
 // chromium-only: depends on the file-drop + lazy-parse path the other PA

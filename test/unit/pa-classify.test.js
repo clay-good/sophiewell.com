@@ -63,8 +63,8 @@ test('detectPayer: Medicare FFS', () => {
 });
 
 test('detectPayer: commercial fallthrough', () => {
-  // Generic Blues (not Anthem/Elevance) and other commercial plans fall through.
-  assert.equal(detectPayer('Florida Blue BlueCross PPO plan'), 'commercial');
+  // Generic Blues (not a named overlay licensee) and other commercial plans fall through.
+  assert.equal(detectPayer('Horizon BlueCross BlueShield of New Jersey PPO plan'), 'commercial');
   assert.equal(detectPayer('TRICARE West region plan'), 'commercial');
 });
 
@@ -120,7 +120,7 @@ test('detectPayer: HCSC (Blue Cross Blue Shield of IL/TX/MT/NM/OK) routes to its
   assert.equal(detectPayer('Blue Cross and Blue Shield of Texas member'), 'hcsc');
   assert.equal(detectPayer('Health Care Service Corporation'), 'hcsc');
   // ...but generic / other-licensee Blues stay in the commercial fall-through.
-  assert.equal(detectPayer('Florida Blue BlueCross PPO plan'), 'commercial');
+  assert.equal(detectPayer('CareFirst BlueCross BlueShield PPO plan'), 'commercial');
   assert.equal(detectPayer('Blue Shield of California PPO'), 'commercial');
   // ...and an explicit Medicare Advantage string still routes to the MA bucket.
   assert.equal(detectPayer('Blue Cross Medicare Advantage from Illinois'), 'cms-medicare-advantage');
@@ -131,9 +131,21 @@ test('detectPayer: Highmark (Blue Cross Blue Shield of PA/WV/DE + western NY) ro
   assert.equal(detectPayer('Highmark Blue Shield PPO'), 'highmark');
   assert.equal(detectPayer('Highmark Blue Cross Blue Shield West Virginia'), 'highmark');
   // ...but generic / other-licensee Blues stay in the commercial fall-through.
-  assert.equal(detectPayer('Florida Blue BlueCross PPO plan'), 'commercial');
+  assert.equal(detectPayer('Blue Shield of California PPO plan'), 'commercial');
   // ...and an explicit Medicare Advantage string still routes to the MA bucket.
   assert.equal(detectPayer('Highmark Medicare Advantage Freedom Blue PPO'), 'cms-medicare-advantage');
+});
+
+test('detectPayer: Florida Blue / GuideWell (Blue Cross and Blue Shield of Florida) routes to its own bucket (wave 52-14)', () => {
+  // The 'florida blue' / 'guidewell' trade names and the plan name -> the
+  // named 'florida-blue' overlay bucket.
+  assert.equal(detectPayer('Florida Blue PPO plan'), 'florida-blue');
+  assert.equal(detectPayer('Blue Cross and Blue Shield of Florida member'), 'florida-blue');
+  assert.equal(detectPayer('GuideWell health plan'), 'florida-blue');
+  // ...but generic / other-licensee Blues stay in the commercial fall-through.
+  assert.equal(detectPayer('Independence Blue Cross PPO plan'), 'commercial');
+  // ...and an explicit Medicare Advantage string still routes to the MA bucket.
+  assert.equal(detectPayer('Florida Blue Medicare Advantage HMO plan'), 'cms-medicare-advantage');
 });
 
 test('detectPayer: unknown for empty / non-payer text', () => {

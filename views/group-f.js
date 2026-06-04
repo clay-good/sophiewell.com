@@ -116,7 +116,7 @@ export const renderers = {
     ];
     for (const r of rows) tbody.appendChild(el('tr', {}, [el('td', { text: r[0] }), el('td', { text: r[1] }), el('td', { text: r[2] })]));
     tbl.appendChild(tbody);
-    o.appendChild(tbl);
+    o.appendChild(el('div', { class: 'table-scroll', role: 'region', 'aria-label': 'Pediatric dose table (scrolls horizontally)', tabindex: '0' }, [tbl]));
     o.appendChild(el('p', { class: 'muted', text: 'Citations: AAP, NLM/DailyMed, manufacturer labels. Reference only.' }));
   },
 
@@ -155,7 +155,8 @@ export const renderers = {
       ['Antiplatelets (ASA, P2Y12)', 'Platelet transfusion in life-threatening bleed', 'Evidence mixed'],
     ];
     for (const r of rows) tbody.appendChild(el('tr', {}, [el('td', { text: r[0] }), el('td', { text: r[1] }), el('td', { text: r[2] })]));
-    tbl.appendChild(tbody); o.appendChild(tbl);
+    tbl.appendChild(tbody);
+    o.appendChild(el('div', { class: 'table-scroll', role: 'region', 'aria-label': 'Anticoagulant reversal table (scrolls horizontally)', tabindex: '0' }, [tbl]));
   },
 
   // high-alert removed in spec-v29 wave 29-2 (Group K/O).

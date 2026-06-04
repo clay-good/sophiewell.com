@@ -1083,6 +1083,82 @@ two largest independent Blues licensees (HCSC, Highmark) — the
 remaining §9 wave 52-5+ candidates are the other Blues plans by
 state and per-state Medicaid overlays as user-volume data warrants.
 
+#### 4.5.14 Commercial payer overlays — Florida Blue / GuideWell (wave 52-14)
+
+The eighth named commercial-payer overlay, and the third "Blues
+plans by state" overlay after HCSC and Highmark. **Florida Blue**
+(Blue Cross and Blue Shield of Florida, a **GuideWell** company) is
+the dominant Blue Cross Blue Shield licensee in **Florida** and one
+of the largest independent licensees not already routed to the
+Anthem/Elevance, HCSC, or Highmark buckets. Like the seven before
+it, Florida Blue is keyed to its own payer bucket
+(`'florida-blue'`, detected by `lib/pa/payer.js` and placed before
+the generic `'commercial'` fall-through, after `'highmark'`). The
+bucket matches only definitively-Florida-Blue anchors — the
+`florida blue` / `guidewell` trade names and the `blue cross [and]
+blue shield of florida` plan name — so generic `blue cross` /
+`blue shield` and other Blues licensees stay in the commercial
+fall-through, exactly as the HCSC and Highmark buckets leave them.
+Florida Blue's Medicare Advantage line ("Florida Blue Medicare")
+routes to the MA bucket only when it carries an explicit "Medicare
+Advantage" string; a plain Florida Blue commercial packet routes
+here. Each commercial rule self-gates on
+`bundle.payer === 'florida-blue'` and returns a vacuous pass on
+every other packet.
+
+Scope discipline is identical to §4.5.7–§4.5.13: the rules check
+the **procedural completeness** of a Florida Blue prior-authorization
+packet against Florida Blue's *own published* submission
+requirements — not clinical coverage criteria, which are the
+reviewer's judgement and the applicable Florida Blue Medical
+Policy's job. Every rule is anchored to a public Florida Blue
+provider authorizations URL tracked in the staleness ledger (§8.3,
+source `floridablue-precert`) and re-verified on the §4.5.6 cadence.
+
+The set mirrors the earlier commercial families so the eight
+overlays stay structurally parallel and auditable side by side;
+Florida Blue-specific routing names appear where Florida Blue
+actually uses them — the **Availity Essentials** portal for
+submission, Florida Blue's **advanced-imaging utilization-management
+program** for advanced imaging and genetic / molecular testing,
+**Florida Blue pharmacy management** for pharmacy / step therapy,
+**Florida Blue behavioral health** for behavioral health, and the
+**Blue Distinction Centers for Transplant** for transplant. Wave
+52-14 ships the full planned set of 20 (`R-PA-FLBLUE-NNN`):
+
+| Id                | Rule                                                                          | Severity |
+|-------------------|-------------------------------------------------------------------------------|----------|
+| `R-PA-FLBLUE-001` | Coverage criteria (Florida Blue Medical Policy / MCG) referenced              | flag     |
+| `R-PA-FLBLUE-002` | Supporting medical records / clinical documentation attached                  | flag     |
+| `R-PA-FLBLUE-003` | Submission channel (Availity Essentials / provider portal) noted              | info     |
+| `R-PA-FLBLUE-004` | Requested service is on Florida Blue's prior-authorization / notification list (stub) | info |
+| `R-PA-FLBLUE-005` | Authorization referenced for a service that requires it before the service date | flag   |
+| `R-PA-FLBLUE-006` | Inpatient request carries admission notification + concurrent-review docs     | flag     |
+| `R-PA-FLBLUE-007` | Outpatient MRI / CT / PET carries the clinical indication for the imaging program | flag |
+| `R-PA-FLBLUE-008` | Expedited / urgent request states the clinical urgency                        | flag     |
+| `R-PA-FLBLUE-009` | Outpatient surgery / imaging addresses the hospital-outpatient site-of-care   | flag     |
+| `R-PA-FLBLUE-010` | NDC documented for a physician-administered (J-code) drug request             | info     |
+| `R-PA-FLBLUE-011` | Step-therapy prior-trial documentation for a drug request (Florida Blue pharmacy) | flag |
+| `R-PA-FLBLUE-012` | Genetic / molecular testing carries the specific test + indication            | flag     |
+| `R-PA-FLBLUE-013` | Specialty / oncology drug carries the supporting diagnosis (Medical Policy)   | flag     |
+| `R-PA-FLBLUE-014` | Retrospective / retroactive request states a retro-review justification       | info     |
+| `R-PA-FLBLUE-015` | DME / home-health request carries a signed, dated written order / plan of care | flag    |
+| `R-PA-FLBLUE-016` | Behavioral health request carries level-of-care criteria (BH / ASAM)          | flag     |
+| `R-PA-FLBLUE-017` | Transplant routed through the Blue Distinction Centers for Transplant         | flag     |
+| `R-PA-FLBLUE-018` | Experimental / investigational / unproven service carries peer-reviewed evidence | flag   |
+| `R-PA-FLBLUE-019` | Appeal / reconsideration references the original determination                | info     |
+| `R-PA-FLBLUE-020` | Out-of-network request documents a network-gap / continuity-of-care reason    | info     |
+
+`R-PA-FLBLUE-004` mirrors core `R-PA-053` and the Aetna / UHC /
+Anthem / Cigna / Humana / HCSC / Highmark -004 rules: it ships
+without a bundled prior-authorization list and vacuously passes
+with a pointer until a later wave bundles the list. With eight
+commercial overlays shipped — the five largest commercial / MA
+plans plus the three largest independent Blues licensees (HCSC,
+Highmark, Florida Blue) — the remaining §9 wave 52-5+ candidates
+are the other Blues plans by state and per-state Medicaid overlays
+as user-volume data warrants.
+
 ### 4.6 The DOCX report
 
 Structure (mirrors Vaulytica v3 with healthcare-specific
@@ -1784,12 +1860,31 @@ self-contained PR; the catalog count rises only at wave 52-1.
   Humana + HCSC + Highmark), the two largest independent Blues
   licensees now both covered.
 
+### Wave 52-14 — Florida Blue / GuideWell commercial overlay (2026-06)
+
+- The 20 Florida Blue rules (§4.5.14), the `R-PA-FLBLUE-NNN` family,
+  anchored to Florida Blue's public provider authorizations pages,
+  Medical Policies, and utilization-management / pharmacy program
+  requirements (ledger source `floridablue-precert`).
+- A `'florida-blue'` payer bucket in `lib/pa/payer.js`, placed
+  before the generic `'commercial'` fall-through and after
+  `'highmark'`. It matches only definitively-Florida-Blue anchors
+  (`florida blue` / `guidewell` and the `blue cross [and] blue
+  shield of florida` plan name); generic Blues and other licensees
+  stay in the commercial fall-through, and "Florida Blue Medicare
+  Advantage" still wins the MA bucket earlier.
+- Catalog count unchanged (255 tiles; Florida Blue adds rules, not a
+  tile). Ruleset rises 275 → 295. Brings the named commercial / MA
+  overlays to eight (Aetna + UnitedHealthcare + Anthem + Cigna +
+  Humana + HCSC + Highmark + Florida Blue), the three largest
+  independent Blues licensees now all covered.
+
 ### Wave 52-5+ — State Medicaid overlays, additional commercial payers, OCR
 
 - Per-state Medicaid overlays as user-volume data warrants.
 - Other Blues plans by state (HCSC shipped in wave 52-12, Highmark
-  in wave 52-13; the remaining independent Blues licensees follow
-  as volume warrants).
+  in wave 52-13, Florida Blue in wave 52-14; the remaining
+  independent Blues licensees follow as volume warrants).
 - Optional in-browser OCR via tesseract.js (lazy-loaded,
   user-toggled, ≈ 11 MB gzipped). Only if §2's no-OCR
   experience proves insufficient.
@@ -1958,6 +2053,37 @@ silently; the audit trail records the disablement.
 
 - 2026-05-27 — v52 proposed. Five waves outlined (52-1 through
   52-5+). Catalog count target at v52-1 close: 255.
+- 2026-06-03 — wave 52-14 (§4.5.14 Florida Blue / GuideWell commercial overlay,
+  the full 20-rule `R-PA-FLBLUE-NNN` family — the eighth named commercial
+  overlay after Aetna, UnitedHealthcare, Anthem, Cigna, Humana, HCSC, and
+  Highmark, and the third "Blues plans by state" overlay). Opens a
+  `'florida-blue'` payer bucket in `lib/pa/payer.js` (placed after `'highmark'`
+  and before the generic `'commercial'` fall-through). Florida Blue (Blue Cross
+  and Blue Shield of Florida, a GuideWell company) is the dominant Blues
+  licensee in Florida and one of the largest independent licensees not routed
+  to the Anthem/Elevance, HCSC, or Highmark buckets. The bucket matches only
+  definitively-Florida-Blue anchors — the `florida blue` / `guidewell` trade
+  names and the `blue cross [and] blue shield of florida` plan name — so generic
+  `blue cross` / `blue shield` and other licensees stay in the commercial
+  fall-through, and "Florida Blue Medicare Advantage" still wins the MA bucket
+  earlier when it carries an explicit "Medicare Advantage" string. The 20 rules
+  mirror the Aetna / UHC / Anthem / Cigna / Humana / HCSC / Highmark families so
+  the eight commercial overlays stay structurally parallel, with Florida
+  Blue-specific routing names where Florida Blue uses them (Availity Essentials
+  submission, the advanced-imaging utilization-management program, Florida Blue
+  pharmacy management for step therapy, Florida Blue behavioral health, and the
+  Blue Distinction Centers for Transplant). Each self-gates on
+  `bundle.payer === 'florida-blue'` and vacuously passes on every other packet.
+  New ledger source `floridablue-precert` anchored to Florida Blue's public
+  provider authorizations page (all twenty rules map to it by prefix). Coverage
+  is now 295 rules shipped (was 275), 247 source-anchored (was 227), 23 sources
+  (was 22), 0 orphans, 0 gaps. The golden fixtures re-seed deterministically (a
+  new `florida-blue-precert` fixture exercises the on-bucket path — 009 flag,
+  003 info; the other fourteen gain +20 vacuous-pass findings each). Tests: +10
+  engine assertions (count 295, the off-bucket loop, and fire/pass checks) and
+  +1 classify assertion (Florida Blue / GuideWell → `florida-blue`; generic
+  Blues → `commercial`; Florida Blue Medicare Advantage → the MA bucket).
+  Catalog count unchanged (255). View wave banner advanced to 52-14.
 - 2026-06-03 — wave 52-13 (§4.5.13 Highmark / Blue Cross Blue Shield commercial
   overlay, the full 20-rule `R-PA-HIGHMARK-NNN` family — the seventh named
   commercial overlay after Aetna, UnitedHealthcare, Anthem, Cigna, Humana, and

@@ -6,6 +6,45 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v52 wave 52-14 — §4.5.14 Florida Blue / GuideWell commercial overlay, 20 of 20)
+
+The eighth named commercial-payer overlay, and the third "Blues plans by state"
+overlay after HCSC and Highmark. The full 20-rule `R-PA-FLBLUE-NNN` family is
+anchored to Florida Blue's public provider authorizations pages, Medical
+Policies, and utilization-management / pharmacy program requirements (new ledger
+source `floridablue-precert`). Florida Blue (Blue Cross and Blue Shield of
+Florida, a GuideWell company) is the dominant Blue Cross Blue Shield licensee in
+Florida and one of the largest independent licensees not already routed to the
+Anthem/Elevance, HCSC, or Highmark buckets.
+
+A new `'florida-blue'` payer bucket in `lib/pa/payer.js` is placed after
+`'highmark'` and before the generic `'commercial'` fall-through. It matches only
+definitively-Florida-Blue anchors — the `florida blue` / `guidewell` trade names
+and the `blue cross [and] blue shield of florida` plan name — so generic
+`blue cross` / `blue shield` and other licensees (Independence Blue Cross, Blue
+Shield of California) stay in the commercial fall-through, and "Florida Blue
+Medicare Advantage" still wins the MA bucket earlier when it carries an explicit
+"Medicare Advantage" string. Each rule self-gates on
+`bundle.payer === 'florida-blue'` and vacuously passes on every other packet.
+
+The 20 rules mirror the Aetna / UHC / Anthem / Cigna / Humana / HCSC / Highmark
+families so the eight commercial overlays stay structurally parallel and
+auditable side by side, with Florida Blue-specific routing names where Florida
+Blue uses them: the Availity Essentials submission channel (003), Florida Blue's
+advanced-imaging utilization-management program (007, 012), Florida Blue pharmacy
+management for step therapy (011), Florida Blue behavioral health (016), and the
+Blue Distinction Centers for Transplant (017).
+
+Coverage is now 295 rules shipped (was 275), 247 source-anchored (was 227), 23
+sources (was 22), 0 ledger orphans, 0 coverage gaps. A new
+`florida-blue-precert` golden fixture (hospital-outpatient knee arthroscopy
+under a Florida Blue letterhead) exercises the on-bucket path — 009 flag, 003
+info — and the other fourteen goldens gain +20 vacuous-pass findings each; all
+fifteen re-seeded deterministically. Tests: +10 engine assertions (count 295,
+the off-bucket loop, fire/pass checks) and +1 classify assertion. e2e pa-lint
+rule count 275 -> 295. Catalog count unchanged (255 tiles; Florida Blue adds
+rules, not a tile). The PA tile's wave banner advances to 52-14.
+
 ### Added (spec-v52 wave 52-13 — §4.5.13 Highmark / Blue Cross Blue Shield commercial overlay, 20 of 20)
 
 The seventh named commercial-payer overlay, and the second "Blues plans by

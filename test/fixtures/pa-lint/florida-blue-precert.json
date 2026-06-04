@@ -1,0 +1,19 @@
+{
+  "name": "florida-blue-precert",
+  "description": "Florida Blue (Blue Cross and Blue Shield of Florida, a GuideWell company) commercial prior-authorization packet for a hospital-outpatient (POS 22) knee arthroscopy. The 'Florida Blue' letterhead routes the bundle to the 'florida-blue' payer bucket (spec-v52 §4.5.14) and engages the Florida Blue commercial overlay. The packet cites the applicable Florida Blue Medical Policy and attaches a clinical note (R-PA-FLBLUE-001/002 pass), omits any submission-channel reference (R-PA-FLBLUE-003 info), and -- as an outpatient surgery requested in a hospital-outpatient setting -- carries no site-of-care rationale for the higher-acuity site (R-PA-FLBLUE-009 flag). Every other Florida Blue rule self-gates off (no imaging, drug, DME, behavioral-health, transplant, appeal, or out-of-network trigger) and vacuously passes.",
+  "opts": { "totalBytes": 16384 },
+  "documents": [
+    {
+      "name": "florida-blue-pa-form.txt",
+      "sha256": "fixture-florida-blue-precert-form",
+      "kind": "TXT",
+      "text": "Florida Blue PPO Prior Authorization Request\nPatient: Mary C Roe\nDOB: 1968-11-22\nMember ID: FLB123456789\nDate of service: 2026-06-25\nPlace of service: 22\nRequested procedure: knee arthroscopy with meniscectomy CPT 29881\nDx: M23.205 derangement of medial meniscus, left knee\nQuantity: 1\nOrdering provider NPI: 1234567893\nServicing facility NPI: 1306849393\nTIN: 123456789\nMedical necessity: persistent mechanical symptoms; see the applicable Florida Blue Medical Policy.\nSignature: Ortho Sports MD, 2026-06-10\n"
+    },
+    {
+      "name": "florida-blue-note.txt",
+      "sha256": "fixture-florida-blue-precert-note",
+      "kind": "TXT",
+      "text": "Clinical note\nChief complaint: left knee pain with locking and catching.\nHistory of present illness: four months of mechanical symptoms despite activity modification.\nPhysical exam: positive McMurray on the left; joint-line tenderness medially.\nAssessment and plan: left medial meniscus tear; recommend arthroscopic partial meniscectomy.\nMedical necessity: imaging confirms a displaced medial meniscus tear.\nNote date: 2026-06-10\nSigned: Ortho Sports MD, 2026-06-10\n"
+    }
+  ]
+}
