@@ -6,6 +6,46 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v52 wave 52-15 — §4.5.15 BCBSM / Blue Cross Blue Shield of Michigan commercial overlay, 20 of 20)
+
+The ninth named commercial-payer overlay, and the fourth "Blues plans by state"
+overlay after HCSC, Highmark, and Florida Blue. The full 20-rule
+`R-PA-BCBSM-NNN` family is anchored to BCBSM's public provider
+authorization-requirements pages, Medical Policies, and utilization-management /
+pharmacy program requirements (new ledger source `bcbsm-precert`). Blue Cross
+Blue Shield of Michigan (with its HMO subsidiary Blue Care Network) is the
+dominant Blue Cross Blue Shield licensee in Michigan and one of the largest
+independent licensees not already routed to the Anthem/Elevance, HCSC, Highmark,
+or Florida Blue buckets.
+
+A new `'bcbsm'` payer bucket in `lib/pa/payer.js` is placed after
+`'florida-blue'` and before the generic `'commercial'` fall-through. It matches
+only definitively-BCBSM anchors — the `blue cross [and] blue shield of michigan`
+plan name, the `bcbsm` acronym, and the `blue care network` HMO brand — so
+generic `blue cross` / `blue shield` and other licensees (Independence Blue
+Cross, CareFirst) stay in the commercial fall-through, and "BCBSM Medicare Plus
+Blue" still wins the MA bucket earlier when it carries an explicit "Medicare
+Advantage" string. Each rule self-gates on `bundle.payer === 'bcbsm'` and
+vacuously passes on every other packet.
+
+The 20 rules mirror the Aetna / UHC / Anthem / Cigna / Humana / HCSC / Highmark /
+Florida Blue families so the nine commercial overlays stay structurally parallel
+and auditable side by side, with BCBSM-specific routing names where BCBSM uses
+them: the Availity Essentials submission channel (003), BCBSM's advanced-imaging
+utilization-management program (007, 012), BCBSM pharmacy management for step
+therapy (011), BCBSM behavioral health (016), and the Blue Distinction Centers
+for Transplant (017).
+
+Coverage is now 315 rules shipped (was 295), 267 source-anchored (was 247), 24
+sources (was 23), 0 ledger orphans, 0 coverage gaps. A new `bcbsm-precert`
+golden fixture (hospital-outpatient knee arthroscopy under a BCBSM letterhead)
+exercises the on-bucket path — 009 flag, 003 info — and the other fifteen
+goldens gain +20 vacuous-pass findings each; all sixteen re-seeded
+deterministically. Tests: +10 engine assertions (count 315, the off-bucket loop,
+fire/pass checks) and +1 classify assertion. e2e pa-lint rule count 295 -> 315.
+Catalog count unchanged (255 tiles; BCBSM adds rules, not a tile). The PA tile's
+wave banner advances to 52-15.
+
 ### Added (spec-v52 wave 52-14 — §4.5.14 Florida Blue / GuideWell commercial overlay, 20 of 20)
 
 The eighth named commercial-payer overlay, and the third "Blues plans by state"

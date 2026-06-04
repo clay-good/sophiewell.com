@@ -1159,6 +1159,81 @@ Highmark, Florida Blue) — the remaining §9 wave 52-5+ candidates
 are the other Blues plans by state and per-state Medicaid overlays
 as user-volume data warrants.
 
+#### 4.5.15 Commercial payer overlays — BCBSM / Blue Cross Blue Shield of Michigan (wave 52-15)
+
+The ninth named commercial-payer overlay, and the fourth "Blues
+plans by state" overlay after HCSC, Highmark, and Florida Blue.
+**Blue Cross Blue Shield of Michigan** (BCBSM, with its HMO
+subsidiary **Blue Care Network**) is the dominant Blue Cross Blue
+Shield licensee in **Michigan** and one of the largest independent
+licensees not already routed to the Anthem/Elevance, HCSC,
+Highmark, or Florida Blue buckets. Like the eight before it, BCBSM
+is keyed to its own payer bucket (`'bcbsm'`, detected by
+`lib/pa/payer.js` and placed before the generic `'commercial'`
+fall-through, after `'florida-blue'`). The bucket matches only
+definitively-BCBSM anchors — the `blue cross [and] blue shield of
+michigan` plan name, the `bcbsm` acronym, and the `blue care
+network` HMO brand — so generic `blue cross` / `blue shield` and
+other Blues licensees stay in the commercial fall-through. BCBSM's
+Medicare Advantage line ("Medicare Plus Blue") routes to the MA
+bucket only when it carries an explicit "Medicare Advantage"
+string; a plain BCBSM commercial packet routes here. Each
+commercial rule self-gates on `bundle.payer === 'bcbsm'` and
+returns a vacuous pass on every other packet.
+
+Scope discipline is identical to §4.5.7–§4.5.14: the rules check
+the **procedural completeness** of a BCBSM prior-authorization
+packet against BCBSM's *own published* submission requirements —
+not clinical coverage criteria, which are the reviewer's judgement
+and the applicable BCBSM Medical Policy's job. Every rule is
+anchored to a public BCBSM provider authorization-requirements URL
+tracked in the staleness ledger (§8.3, source `bcbsm-precert`) and
+re-verified on the §4.5.6 cadence.
+
+The set mirrors the earlier commercial families so the nine
+overlays stay structurally parallel and auditable side by side;
+BCBSM-specific routing names appear where BCBSM actually uses
+them — the **Availity Essentials** portal for submission, BCBSM's
+**advanced-imaging utilization-management program** for advanced
+imaging and genetic / molecular testing, **BCBSM pharmacy
+management** for pharmacy / step therapy, **BCBSM behavioral
+health** for behavioral health, and the **Blue Distinction Centers
+for Transplant** for transplant. Wave 52-15 ships the full planned
+set of 20 (`R-PA-BCBSM-NNN`):
+
+| Id              | Rule                                                                          | Severity |
+|-----------------|-------------------------------------------------------------------------------|----------|
+| `R-PA-BCBSM-001` | Coverage criteria (BCBSM Medical Policy / MCG) referenced                     | flag     |
+| `R-PA-BCBSM-002` | Supporting medical records / clinical documentation attached                  | flag     |
+| `R-PA-BCBSM-003` | Submission channel (Availity Essentials / provider portal) noted              | info     |
+| `R-PA-BCBSM-004` | Requested service is on BCBSM's prior-authorization / notification list (stub) | info    |
+| `R-PA-BCBSM-005` | Authorization referenced for a service that requires it before the service date | flag   |
+| `R-PA-BCBSM-006` | Inpatient request carries admission notification + concurrent-review docs     | flag     |
+| `R-PA-BCBSM-007` | Outpatient MRI / CT / PET carries the clinical indication for the imaging program | flag |
+| `R-PA-BCBSM-008` | Expedited / urgent request states the clinical urgency                        | flag     |
+| `R-PA-BCBSM-009` | Outpatient surgery / imaging addresses the hospital-outpatient site-of-care   | flag     |
+| `R-PA-BCBSM-010` | NDC documented for a physician-administered (J-code) drug request             | info     |
+| `R-PA-BCBSM-011` | Step-therapy prior-trial documentation for a drug request (BCBSM pharmacy)    | flag     |
+| `R-PA-BCBSM-012` | Genetic / molecular testing carries the specific test + indication            | flag     |
+| `R-PA-BCBSM-013` | Specialty / oncology drug carries the supporting diagnosis (Medical Policy)   | flag     |
+| `R-PA-BCBSM-014` | Retrospective / retroactive request states a retro-review justification       | info     |
+| `R-PA-BCBSM-015` | DME / home-health request carries a signed, dated written order / plan of care | flag    |
+| `R-PA-BCBSM-016` | Behavioral health request carries level-of-care criteria (BH / ASAM)          | flag     |
+| `R-PA-BCBSM-017` | Transplant routed through the Blue Distinction Centers for Transplant         | flag     |
+| `R-PA-BCBSM-018` | Experimental / investigational / unproven service carries peer-reviewed evidence | flag   |
+| `R-PA-BCBSM-019` | Appeal / reconsideration references the original determination                | info     |
+| `R-PA-BCBSM-020` | Out-of-network request documents a network-gap / continuity-of-care reason    | info     |
+
+`R-PA-BCBSM-004` mirrors core `R-PA-053` and the Aetna / UHC /
+Anthem / Cigna / Humana / HCSC / Highmark / Florida Blue -004
+rules: it ships without a bundled prior-authorization list and
+vacuously passes with a pointer until a later wave bundles the
+list. With nine commercial overlays shipped — the five largest
+commercial / MA plans plus the four largest independent Blues
+licensees (HCSC, Highmark, Florida Blue, BCBSM) — the remaining §9
+wave 52-5+ candidates are the other Blues plans by state and
+per-state Medicaid overlays as user-volume data warrants.
+
 ### 4.6 The DOCX report
 
 Structure (mirrors Vaulytica v3 with healthcare-specific
@@ -1879,12 +1954,33 @@ self-contained PR; the catalog count rises only at wave 52-1.
   Humana + HCSC + Highmark + Florida Blue), the three largest
   independent Blues licensees now all covered.
 
+### Wave 52-15 — BCBSM / Blue Cross Blue Shield of Michigan commercial overlay (2026-06)
+
+- The 20 BCBSM rules (§4.5.15), the `R-PA-BCBSM-NNN` family,
+  anchored to BCBSM's public provider authorization-requirements
+  pages, Medical Policies, and utilization-management / pharmacy
+  program requirements (ledger source `bcbsm-precert`).
+- A `'bcbsm'` payer bucket in `lib/pa/payer.js`, placed before the
+  generic `'commercial'` fall-through and after `'florida-blue'`. It
+  matches only definitively-BCBSM anchors (the `blue cross [and]
+  blue shield of michigan` plan name, the `bcbsm` acronym, and the
+  `blue care network` HMO brand); generic Blues and other licensees
+  stay in the commercial fall-through, and "BCBSM Medicare Plus
+  Blue" still wins the MA bucket earlier when it carries an explicit
+  "Medicare Advantage" string.
+- Catalog count unchanged (255 tiles; BCBSM adds rules, not a tile).
+  Ruleset rises 295 → 315. Brings the named commercial / MA overlays
+  to nine (Aetna + UnitedHealthcare + Anthem + Cigna + Humana + HCSC
+  + Highmark + Florida Blue + BCBSM), the four largest independent
+  Blues licensees now all covered.
+
 ### Wave 52-5+ — State Medicaid overlays, additional commercial payers, OCR
 
 - Per-state Medicaid overlays as user-volume data warrants.
 - Other Blues plans by state (HCSC shipped in wave 52-12, Highmark
-  in wave 52-13, Florida Blue in wave 52-14; the remaining
-  independent Blues licensees follow as volume warrants).
+  in wave 52-13, Florida Blue in wave 52-14, BCBSM in wave 52-15;
+  the remaining independent Blues licensees follow as volume
+  warrants).
 - Optional in-browser OCR via tesseract.js (lazy-loaded,
   user-toggled, ≈ 11 MB gzipped). Only if §2's no-OCR
   experience proves insufficient.
@@ -2053,6 +2149,37 @@ silently; the audit trail records the disablement.
 
 - 2026-05-27 — v52 proposed. Five waves outlined (52-1 through
   52-5+). Catalog count target at v52-1 close: 255.
+- 2026-06-04 — wave 52-15 (§4.5.15 BCBSM / Blue Cross Blue Shield of Michigan
+  commercial overlay, the full 20-rule `R-PA-BCBSM-NNN` family — the ninth named
+  commercial overlay after Aetna, UnitedHealthcare, Anthem, Cigna, Humana, HCSC,
+  Highmark, and Florida Blue, and the fourth "Blues plans by state" overlay).
+  Opens a `'bcbsm'` payer bucket in `lib/pa/payer.js` (placed after
+  `'florida-blue'` and before the generic `'commercial'` fall-through). Blue
+  Cross Blue Shield of Michigan (with its HMO subsidiary Blue Care Network) is
+  the dominant Blues licensee in Michigan and one of the largest independent
+  licensees not routed to the Anthem/Elevance, HCSC, Highmark, or Florida Blue
+  buckets. The bucket matches only definitively-BCBSM anchors — the `blue cross
+  [and] blue shield of michigan` plan name, the `bcbsm` acronym, and the `blue
+  care network` HMO brand — so generic `blue cross` / `blue shield` and other
+  licensees stay in the commercial fall-through, and "BCBSM Medicare Plus Blue"
+  still wins the MA bucket earlier when it carries an explicit "Medicare
+  Advantage" string. The 20 rules mirror the Aetna / UHC / Anthem / Cigna /
+  Humana / HCSC / Highmark / Florida Blue families so the nine commercial
+  overlays stay structurally parallel, with BCBSM-specific routing names where
+  BCBSM uses them (Availity Essentials submission, the advanced-imaging
+  utilization-management program, BCBSM pharmacy management for step therapy,
+  BCBSM behavioral health, and the Blue Distinction Centers for Transplant).
+  Each self-gates on `bundle.payer === 'bcbsm'` and vacuously passes on every
+  other packet. New ledger source `bcbsm-precert` anchored to BCBSM's public
+  provider authorization-requirements page (all twenty rules map to it by
+  prefix). Coverage is now 315 rules shipped (was 295), 267 source-anchored (was
+  247), 24 sources (was 23), 0 orphans, 0 gaps. The golden fixtures re-seed
+  deterministically (a new `bcbsm-precert` fixture exercises the on-bucket
+  path — 009 flag, 003 info; the other fifteen gain +20 vacuous-pass findings
+  each). Tests: +10 engine assertions (count 315, the off-bucket loop, and
+  fire/pass checks) and +1 classify assertion (BCBSM / Blue Care Network →
+  `bcbsm`; generic Blues → `commercial`; BCBSM Medicare Plus Blue → the MA
+  bucket). Catalog count unchanged (255). View wave banner advanced to 52-15.
 - 2026-06-03 — wave 52-14 (§4.5.14 Florida Blue / GuideWell commercial overlay,
   the full 20-rule `R-PA-FLBLUE-NNN` family — the eighth named commercial
   overlay after Aetna, UnitedHealthcare, Anthem, Cigna, Humana, HCSC, and

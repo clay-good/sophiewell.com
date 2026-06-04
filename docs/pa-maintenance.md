@@ -169,7 +169,10 @@ Medical Policies, and utilization-management / pharmacy program requirements);
 the eighth is Florida Blue / GuideWell (`R-PA-FLBLUE-NNN`, ledger source
 `floridablue-precert`, anchored to Florida Blue's public provider
 authorizations pages, Medical Policies, and utilization-management / pharmacy
-program requirements). The Anthem bucket matches only `anthem` / `elevance` — generic
+program requirements); the ninth is Blue Cross Blue Shield of Michigan
+(`R-PA-BCBSM-NNN`, ledger source `bcbsm-precert`, anchored to BCBSM's public
+provider authorization-requirements pages, Medical Policies, and
+utilization-management / pharmacy program requirements). The Anthem bucket matches only `anthem` / `elevance` — generic
 `blue cross` / `blue shield` stays in the commercial fall-through, since most
 Blues plans are independent licensees, not Anthem/Elevance. The Cigna bucket
 matches `cigna` / `evernorth` (Cigna's health-services brand, under which it
@@ -191,7 +194,14 @@ names and the `blue cross [and] blue shield of florida` plan name — the domina
 Blues licensee in Florida and one of the largest independent licensees not
 already routed to the Anthem/Elevance, HCSC, or Highmark buckets; other Blues
 licensees stay in the commercial fall-through, and Florida Blue's "Florida Blue
-Medicare Advantage" line routes to the MA bucket first. Note both Humana's and
+Medicare Advantage" line routes to the MA bucket first. The BCBSM bucket matches
+the `blue cross [and] blue shield of michigan` plan name, the `bcbsm` acronym,
+and the `blue care network` HMO brand — the dominant Blues licensee in Michigan
+and one of the largest independent licensees not already routed to the
+Anthem/Elevance, HCSC, Highmark, or Florida Blue buckets; other Blues licensees
+stay in the commercial fall-through, and BCBSM's "Medicare Plus Blue" line routes
+to the MA bucket first when it carries an explicit "Medicare Advantage" string.
+Note both Humana's and
 HCSC's imaging / lab-management programs are named generically in the ruleset,
 since their current vendor names collide with an AI-vendor substring barred from
 source by spec-v50 §3.6.

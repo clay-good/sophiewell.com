@@ -148,6 +148,18 @@ test('detectPayer: Florida Blue / GuideWell (Blue Cross and Blue Shield of Flori
   assert.equal(detectPayer('Florida Blue Medicare Advantage HMO plan'), 'cms-medicare-advantage');
 });
 
+test('detectPayer: BCBSM (Blue Cross Blue Shield of Michigan) routes to its own bucket (wave 52-15)', () => {
+  // The Michigan plan name, the 'bcbsm' acronym, and the Blue Care Network HMO
+  // brand -> the named 'bcbsm' overlay bucket.
+  assert.equal(detectPayer('Blue Cross Blue Shield of Michigan PPO'), 'bcbsm');
+  assert.equal(detectPayer('Blue Cross and Blue Shield of Michigan member'), 'bcbsm');
+  assert.equal(detectPayer('Blue Care Network HMO plan'), 'bcbsm');
+  // ...but generic / other-licensee Blues stay in the commercial fall-through.
+  assert.equal(detectPayer('CareFirst BlueCross BlueShield PPO plan'), 'commercial');
+  // ...and an explicit Medicare Advantage string still routes to the MA bucket.
+  assert.equal(detectPayer('BCBSM Medicare Plus Blue Medicare Advantage PPO'), 'cms-medicare-advantage');
+});
+
 test('detectPayer: unknown for empty / non-payer text', () => {
   assert.equal(detectPayer(''), 'unknown');
   assert.equal(detectPayer('this packet has no payer letterhead'), 'unknown');
