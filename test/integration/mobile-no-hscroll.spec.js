@@ -3,9 +3,21 @@
 // The site is built for the nurse on shift, who reaches for it on a phone
 // as often as a workstation. A horizontal scrollbar on any view is a defect
 // (long URLs in PA citations, wide tables, unbreakable hashes are the usual
-// culprits). This spec loads the home view and a representative tile from
-// each shape at a narrow phone viewport (360 CSS px, the common Android
-// floor) and asserts the document never overflows its own width.
+// culprits). This spec has three layers:
+//
+//   1. A per-shape sample (home + one tile of each shape) at BOTH 320 and
+//      360 px, on every browser engine.
+//   2. The PA linter with long citation URLs rendered (the content most
+//      likely to overflow).
+//   3. A FULL-CATALOG sweep (every tile in the sitemap) at 320 px -- the
+//      narrowest mainstream width -- so the "no horizontal scroll on every
+//      view" guarantee is *enforced* across all 255 tiles, not just a
+//      sample. Previously a full-catalog sweep was a one-time manual check;
+//      this makes it a permanent regression guard, so a new tile can never
+//      ship horizontal overflow undetected.
+//
+// 320 px is the strictest case: a layout that fits there fits at 360 px and
+// up, so the full sweep runs at 320 px only (the sample still covers 360 px).
 //
 // The PA linter case additionally drops a UnitedHealthcare TXT packet so the
 // findings list renders its long uhcprovider.com citation URLs -- the exact
@@ -80,4 +92,38 @@ test('mobile 360px: pa-lint findings with long citation URLs do not scroll horiz
   // Wait for the findings list (citations rendered) before measuring.
   await expect(page.locator('.pa-rule-citation').first()).toBeVisible({ timeout: 20_000 });
   await assertNoHorizontalScroll(page, 'pa-lint findings');
+});
+
+// Full-catalog sweep: every tile route, at the strictest mainstream width
+// (320 px), must not scroll horizontally. Tile ids come from sitemap.xml (the
+// same catalog source all-tools.spec.js uses). One test loops all tiles and
+// reports every offender at once, so a regression names exactly which views
+// broke. SPA hash routes re-render in place, so this is fast (~10-15 s for the
+// whole catalog) despite covering 255 tiles. chromium-only (inherits the skip
+// above): horizontal overflow is layout/CSS-driven and the documentElement
+// scrollWidth-vs-clientWidth check is engine-agnostic, so one engine is a
+// sufficient guard and keeps the sweep cheap.
+test('mobile 320px: every tile in the catalog (sitemap) does not scroll horizontally', async ({ page }) => {
+  test.setTimeout(180_000);
+  const resp = await page.request.get('/sitemap.xml');
+  expect(resp.ok(), 'sitemap.xml must be reachable').toBe(true);
+  const xml = await resp.text();
+  const ids = [...xml.matchAll(/<loc>[^<]*\/tools\/([^/<]+)\/<\/loc>/g)].map((m) => m[1]);
+  expect(ids.length, 'sitemap must list the full tile catalog').toBeGreaterThan(150);
+
+  await page.setViewportSize({ width: 320, height: 800 });
+  const offenders = [];
+  for (const id of ids) {
+    await page.goto('/#' + id, { waitUntil: 'load' });
+    // Let async data fetches and the meta-block source stamp settle.
+    await page.waitForTimeout(40);
+    const overflow = await page.evaluate(() => {
+      const doc = document.documentElement;
+      return { scroll: doc.scrollWidth, client: doc.clientWidth };
+    });
+    if (overflow.scroll > overflow.client + 1) {
+      offenders.push(`${id} (scrollWidth ${overflow.scroll} > clientWidth ${overflow.client})`);
+    }
+  }
+  expect(offenders, `tiles with horizontal scroll at 320px:\n${offenders.join('\n')}`).toEqual([]);
 });

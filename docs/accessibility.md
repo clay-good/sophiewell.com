@@ -109,6 +109,11 @@ both pass against the v4 (encryptalotta-style) chrome.
       home grid uses `repeat(auto-fill, minmax(240px, 1fr))` so cards
       reflow into a single column on narrow viewports; the responsive
       media query at 700px collapses the grid further.
+- [x] No view scrolls horizontally at 320px (the narrowest mainstream
+      phone width). Enforced catalog-wide:
+      `test/integration/mobile-no-hscroll.spec.js` sweeps every tile from
+      `sitemap.xml` at 320px and fails CI on any horizontal overflow, in
+      addition to the per-shape sample it checks at 320px and 360px.
 
 ## Language
 

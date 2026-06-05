@@ -46,7 +46,11 @@ Per spec-v2 section 2.2:
 
 WCAG 2.2 target-size guidance: every interactive element is at least
 44 by 44 CSS pixels. The site is fully usable down to 320 px viewport
-width with no horizontal scroll.
+width with no horizontal scroll. This is **enforced**, not asserted:
+`test/integration/mobile-no-hscroll.spec.js` sweeps every tile in the
+catalog (discovered from `sitemap.xml`) at 320 px and fails CI if any
+view's `documentElement.scrollWidth` exceeds its `clientWidth`, so a
+new tile cannot ship horizontal overflow undetected.
 
 ## CI Wiring
 

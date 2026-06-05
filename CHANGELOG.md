@@ -6,6 +6,29 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added — enforce no-horizontal-scroll across the **entire** tile catalog at 320px
+
+The site is built for the nurse reaching for it on a phone, and "no horizontal
+scroll on every view" was a stated commitment — but the automated guard only
+covered seven representative views (one per shape) plus the PA linter; a
+full-catalog sweep had only ever been run *manually, once*. A tile added later
+could ship horizontal overflow undetected.
+
+- `test/integration/mobile-no-hscroll.spec.js` now includes a **full-catalog
+  sweep**: it discovers every tile id from `sitemap.xml` (the same catalog
+  source `all-tools.spec.js` uses) and asserts no view's
+  `documentElement.scrollWidth` exceeds its `clientWidth` at 320px — the
+  narrowest mainstream phone width (a layout that fits at 320px fits at every
+  wider width). All 255 tiles pass today; the sweep makes it a permanent CI
+  regression guard. chromium-only and ~12 s for the whole catalog (SPA hash
+  routes re-render in place), so the cost is negligible.
+- Docs updated to reflect that the 320px no-horizontal-scroll guarantee is now
+  *enforced*, not merely asserted: `docs/performance.md` (Mobile Touch Targets)
+  and `docs/accessibility.md` (a new reflow checklist item).
+- Housekeeping: corrected the README CLI-reference unit-test count (2,182 →
+  2,381, stale) and noted the responsiveness sweep in the `test:e2e` row and the
+  `styles.css` repository-layout line.
+
 ### Fixed (spec-v52 wave 52-46 — complete the CMS Place-of-Service code set; `R-PA-013` false-block on telehealth and other valid POS codes)
 
 `R-PA-013` ("place-of-service code present and on the bundled CMS list",

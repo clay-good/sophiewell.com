@@ -229,7 +229,7 @@ session, and nothing to log.
 
 ```
 index.html          single-page shell (hero search, home grid, tile mount)
-styles.css          one stylesheet (responsive, no horizontal scroll by design)
+styles.css          one stylesheet (responsive; no horizontal scroll — enforced catalog-wide at 320px in CI)
 app.js              router, filters, view wiring (zero runtime deps)
 sw.js               service worker — precache shell, cache shards by build hash
 theme.js            light/dark theme toggle (no storage)
@@ -607,8 +607,8 @@ rules, not soft preferences.
 | `npm run dev`            | Serve the directory locally on http://localhost:4173              |
 | `npm run build`          | Copy static files into `dist/` for deployment                     |
 | `npm test`               | Run the full test suite (unit, a11y, grep, data integrity)        |
-| `npm run test:unit`      | Run Node's built-in unit tests (2,182 tests)                      |
-| `npm run test:e2e`       | Run Playwright integration tests against a real browser           |
+| `npm run test:unit`      | Run Node's built-in unit tests (2,381 tests)                      |
+| `npm run test:e2e`       | Run Playwright integration tests against a real browser (incl. a full-catalog 320px no-horizontal-scroll sweep) |
 | `npm run test:a11y`      | Run accessibility checks on every utility view                    |
 | `npm run lint`           | Run ESLint with the project rules (bans innerHTML, eval, others)  |
 | `npm run data:refresh`   | Re-fetch and re-shard every public dataset                        |
