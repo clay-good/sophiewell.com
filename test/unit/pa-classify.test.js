@@ -475,6 +475,22 @@ test('detectPayer: Arizona Medicaid (AHCCCS) routes to its own per-state bucket 
   assert.equal(detectPayer('Arizona Medicaid Medicare Advantage dual plan'), 'cms-medicare-advantage');
 });
 
+test('detectPayer: Indiana Medicaid routes to its own per-state bucket, distinct from the same-state Blues (Anthem) (wave 52-44)', () => {
+  assert.equal(detectPayer('Indiana Medicaid prior authorization'), 'medicaid-in');
+  assert.equal(detectPayer('Healthy Indiana Plan managed care'), 'medicaid-in');
+  assert.equal(detectPayer('Indiana Health Coverage Programs IHCP'), 'medicaid-in');
+  // ...the same-state commercial Blues licensee (Anthem, HQ Indianapolis) still routes to its own bucket.
+  assert.equal(detectPayer('Anthem Blue Cross Blue Shield of Indiana'), 'anthem');
+  // ...the dangerous bare tokens are deliberately NOT anchors: "hip" must not
+  // match an orthopedic packet, and "in medicaid" must not match "enrolled in medicaid".
+  assert.equal(detectPayer('right hip replacement requested'), 'unknown');
+  assert.equal(detectPayer('the member is enrolled in Medicaid'), 'medicaid');
+  // ...a state-agnostic Medicaid packet stays in the generic bucket.
+  assert.equal(detectPayer('state Medicaid managed care'), 'medicaid');
+  // ...and a dual-eligible "Medicare Advantage" string wins the MA bucket.
+  assert.equal(detectPayer('Indiana Medicaid Medicare Advantage dual plan'), 'cms-medicare-advantage');
+});
+
 test('detectPayer: unknown for empty / non-payer text', () => {
   assert.equal(detectPayer(''), 'unknown');
   assert.equal(detectPayer('this packet has no payer letterhead'), 'unknown');

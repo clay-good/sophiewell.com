@@ -6,6 +6,46 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v52 wave 52-44 — §4.5.44 Indiana Medicaid / Healthy Indiana Plan overlay for the Prior-Auth Packet Linter)
+
+The fourteenth per-state Medicaid overlay, and the thirty-seventh named-payer
+overlay overall. **Indiana Medicaid** is administered by FSSA / OMPP under the
+umbrella **Indiana Health Coverage Programs** (IHCP); its expansion program is
+the **Healthy Indiana Plan** (HIP), the claims system is CoreMMIS, and providers
+submit through the IHCP Provider Healthcare Portal.
+
+- New per-state payer bucket `'medicaid-in'` in `lib/pa/payer.js` (anchors
+  `indiana medicaid` / `healthy indiana plan` / `indiana health coverage
+  programs` / `ihcp`), placed before the generic `'medicaid'` bucket and composing
+  with the §4.5.4 Medicaid core through `isMedicaid(bundle.payer)`. It is
+  deliberately disjoint from the same-state commercial Blues licensee `'anthem'`
+  (Anthem Blue Cross Blue Shield, headquartered in Indianapolis, §4.5.9); an
+  Indiana Medicaid packet and an Anthem packet route to different overlays
+  (unit-tested), and a dual-eligible "Medicare Advantage" string still wins the MA
+  bucket earlier. The bare tokens `hip` and `in medicaid` are **excluded** as
+  anchors (they would false-match "hip replacement" and "enrolled in medicaid"
+  respectively) — both edge cases are unit-tested.
+- 20 rules `R-PA-MCIN-001..020` in `lib/pa/rules.js`, each self-gating on
+  `bundle.payer === 'medicaid-in'` and vacuously passing on every other packet.
+  Structurally parallel to the other Medicaid overlays, with IHCP submission
+  routing and the two Medicaid reframings (transplant → Medicaid-designated
+  transplant center; appeal → state fair hearing). `R-PA-MCIN-004` mirrors core
+  `R-PA-053` (no bundled prior-authorization list yet; vacuous pass with a
+  pointer).
+- New staleness-ledger source `in-medicaid-precert` (`pa-staleness-ledger.json`,
+  regenerated into `lib/pa/staleness-ledger.js`) and a `R-PA-MCIN-` →
+  `in-medicaid-precert` prefix map in `lib/pa/rule-sources.js`. Anchored to the
+  public IHCP provider page.
+- New golden fixture `in-medicaid-precert` (44 fixtures total); `scripts/audit-pa.mjs`
+  re-seeded. Ruleset rises **855 → 875**; catalog count unchanged (255 tiles).
+- Tests: +1 classify test (`medicaid-in` vs. Anthem, plus the `hip` /
+  `in medicaid` anchor-safety edge cases) and the rule-count assertions (unit +
+  2 e2e) advanced to 875. View wave banner advanced to 52-44.
+- Docs housekeeping: refreshed `docs/pa-maintenance.md`, whose per-state Medicaid
+  operator runbook had fallen four waves behind (it listed nine overlays; now
+  fourteen — adds Pennsylvania, Michigan, New Jersey, Arizona, Indiana and the
+  corresponding same-state-Blues disjointness pairs).
+
 ### Added (spec-v52 wave 52-43 — §4.5.43 Arizona Medicaid / AHCCCS overlay for the Prior-Auth Packet Linter)
 
 The thirteenth per-state Medicaid overlay, and the thirty-sixth named-payer

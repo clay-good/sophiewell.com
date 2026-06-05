@@ -337,13 +337,27 @@ Department of Medicaid / PNM), Illinois (`R-PA-MCIL-NNN`, ledger source
 `il-medicaid-precert`, anchored to HFS / IMPACT / MEDI), Washington Apple Health
 (`R-PA-MCWA-NNN`, ledger source `wa-medicaid-precert`, anchored to the HCA /
 ProviderOne), Georgia (`R-PA-MCGA-NNN`, ledger source `ga-medicaid-precert`,
-anchored to the DCH / GAMMIS), and North Carolina (`R-PA-MCNC-NNN`, ledger source
-`nc-medicaid-precert`, anchored to NC DHHS / NCTracks) — nine of the largest
-state programs by enrollment. Three states are deliberately disjoint from their
-same-state Blues commercial buckets: `medicaid-fl` vs. `florida-blue` (§4.5.14),
-`medicaid-il` vs. `hcsc` (BCBS of Illinois, §4.5.12), and `medicaid-nc` vs.
-`bcbsnc` (Blue Cross NC, §4.5.19); all three pairs are unit-tested so a future
-anchor edit cannot cross-route them.
+anchored to the DCH / GAMMIS), North Carolina (`R-PA-MCNC-NNN`, ledger source
+`nc-medicaid-precert`, anchored to NC DHHS / NCTracks), Pennsylvania
+(`R-PA-MCPA-NNN`, ledger source `pa-medicaid-precert`, anchored to PA DHS /
+PROMISe / HealthChoices), Michigan (`R-PA-MCMI-NNN`, ledger source
+`mi-medicaid-precert`, anchored to MDHHS / CHAMPS / Healthy Michigan Plan), New
+Jersey (`R-PA-MCNJ-NNN`, ledger source `nj-medicaid-precert`, anchored to DMAHS /
+NJ FamilyCare / NJMMIS), Arizona (`R-PA-MCAZ-NNN`, ledger source
+`az-medicaid-precert`, anchored to AHCCCS / AHCCCS Online), and Indiana
+(`R-PA-MCIN-NNN`, ledger source `in-medicaid-precert`, anchored to FSSA / OMPP /
+IHCP / Healthy Indiana Plan) — fourteen of the largest state programs by
+enrollment. Six states are deliberately disjoint from their same-state Blues
+commercial buckets: `medicaid-fl` vs. `florida-blue` (§4.5.14), `medicaid-il` vs.
+`hcsc` (BCBS of Illinois, §4.5.12), `medicaid-nc` vs. `bcbsnc` (Blue Cross NC,
+§4.5.19), `medicaid-pa` vs. `highmark` / `ibx` (Pennsylvania Blues, §4.5.13 /
+§4.5.17), `medicaid-mi` vs. `bcbsm` (BCBS Michigan, §4.5.15), `medicaid-nj` vs.
+`horizon` (Horizon BCBS NJ, §4.5.20), and `medicaid-in` vs. `anthem` (Anthem
+BCBS, HQ Indianapolis, §4.5.9); all pairs are unit-tested so a future anchor edit
+cannot cross-route them. Arizona has no commercial Blues licensee modeled, so its
+`ahcccs` anchor needs no such disambiguation. Indiana additionally omits the bare
+tokens `hip` and `in medicaid` as anchors (they would false-match "hip
+replacement" and "enrolled in medicaid"); the two edge cases are unit-tested.
 
 The key invariant: the §4.5.4 Medicaid core (`R-PA-MCD-NNN`) **composes** with a
 per-state overlay rather than being replaced by it. All ten core gates use the

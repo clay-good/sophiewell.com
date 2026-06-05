@@ -53,7 +53,7 @@ test('pa-lint: an image runs on-device OCR and the engine lints the extracted te
   // Run on-device OCR; the engine should then evaluate the full rule set.
   await ocrBtn.click();
   await expect(page.locator('.pa-findings-headline')).toBeVisible({ timeout: 90_000 });
-  await expect(page.locator('.pa-rule')).toHaveCount(855);
+  await expect(page.locator('.pa-rule')).toHaveCount(875);
   // The Aetna overlay coverage-criteria rule (001) should resolve to a pass
   // because the OCR'd text both names a procedure and cites the CPB.
   await expect(page.locator('.pa-rule[data-rule="R-PA-AETNA-001"][data-status="pass"]')).toHaveCount(1);

@@ -2428,6 +2428,41 @@ Pennsylvania, Michigan, New Jersey, Arizona), the ruleset is **855 rules**; the
 remaining §9 wave 52-5+ candidates are additional state Medicaid programs and the
 other Blues plans by state as user-volume data warrants.
 
+#### 4.5.44 Per-state Medicaid overlays — Indiana Medicaid / Healthy Indiana Plan (wave 52-44)
+
+The fourteenth per-state Medicaid overlay, and the thirty-seventh named-payer
+overlay overall. **Indiana Medicaid** is administered by the Family and Social
+Services Administration (**FSSA**) through the Office of Medicaid Policy and
+Planning (**OMPP**) under the umbrella **Indiana Health Coverage Programs**
+(**IHCP**); its expansion program is the **Healthy Indiana Plan** (HIP), the
+claims system is **CoreMMIS**, and providers submit through the IHCP Provider
+Healthcare Portal. It is detected by a per-state bucket (`'medicaid-in'`, anchors
+`indiana medicaid` / `healthy indiana plan` / `indiana health coverage programs`
+/ `ihcp`) placed before the generic `'medicaid'` bucket, and composes with the
+§4.5.4 Medicaid core through `isMedicaid(bundle.payer)`. It is deliberately
+distinct from the same-state commercial Blues licensee `'anthem'` (Anthem Blue
+Cross Blue Shield, headquartered in Indianapolis, §4.5.9): an Indiana Medicaid
+packet and an Anthem packet route to different overlays (unit-tested). The bare
+tokens `hip` and `in medicaid` are deliberately **not** anchors — `hip` would
+false-match an orthopedic packet ("hip replacement") and `in medicaid` would
+match "enrolled in medicaid" — so only the unambiguous program / brand / portal
+names anchor (both edge cases are unit-tested). An explicit "Medicare Advantage"
+string still wins the MA bucket earlier.
+
+The 20 Indiana rules (`R-PA-MCIN-NNN`) mirror the established families with the
+two Medicaid reframings (transplant → Medicaid-designated transplant center;
+appeal → state fair hearing) and IHCP routing. Each rule self-gates on
+`bundle.payer === 'medicaid-in'` and returns a vacuous pass on every other
+packet. Every rule is anchored to a public Indiana Medicaid (IHCP) provider URL
+tracked in the staleness ledger (§8.3, source `in-medicaid-precert`).
+`R-PA-MCIN-004` mirrors core `R-PA-053`: it ships without a bundled
+prior-authorization list and vacuously passes with a pointer until a later wave
+bundles the list. With fourteen state Medicaid programs shipped (California, New
+York, Texas, Florida, Ohio, Illinois, Washington, Georgia, North Carolina,
+Pennsylvania, Michigan, New Jersey, Arizona, Indiana), the ruleset is **875
+rules**; the remaining §9 wave 52-5+ candidates are additional state Medicaid
+programs and the other Blues plans by state as user-volume data warrants.
+
 ### 4.6 The DOCX report
 
 Structure (mirrors Vaulytica v3 with healthcare-specific
@@ -3644,6 +3679,25 @@ self-contained PR; the catalog count rises only at wave 52-1.
   per-state Medicaid overlays to thirteen (CA, NY, TX, FL, OH, IL, WA, GA, NC,
   PA, MI, NJ, AZ).
 
+### Wave 52-44 — Indiana Medicaid / Healthy Indiana Plan overlay (2026-06)
+
+- Fourteenth per-state Medicaid overlay (§4.5.44), thirty-seventh named-payer
+  overlay overall. New per-state bucket `'medicaid-in'` (anchors `indiana
+  medicaid` / `healthy indiana plan` / `indiana health coverage programs` /
+  `ihcp`), placed before the generic `'medicaid'` bucket and composing with the
+  §4.5.4 core via `isMedicaid`. The bare tokens `hip` and `in medicaid` are
+  deliberately excluded as anchors (orthopedic / "enrolled in medicaid"
+  false-match risk; both unit-tested).
+- 20 rules `R-PA-MCIN-001..020`, each self-gating on `bundle.payer ===
+  'medicaid-in'`, anchored to the IHCP provider page and the new
+  staleness-ledger source `in-medicaid-precert`. IHCP routing; transplant /
+  appeal reframed for Medicaid. Disjoint from the same-state Blues bucket
+  `'anthem'` (Anthem BCBS, HQ Indianapolis, §4.5.9; unit-tested).
+- Golden fixture `in-medicaid-precert` added (44 fixtures total).
+- Catalog count unchanged (255 tiles). Ruleset rises 855 → 875. Brings
+  per-state Medicaid overlays to fourteen (CA, NY, TX, FL, OH, IL, WA, GA, NC,
+  PA, MI, NJ, AZ, IN).
+
 ### Wave 52-5+ — State Medicaid overlays, additional commercial payers, OCR
 
 - Per-state Medicaid overlays (Medi-Cal / California shipped in wave
@@ -3651,8 +3705,8 @@ self-contained PR; the catalog count rises only at wave 52-1.
   52-33, Ohio in wave 52-34, Illinois in wave 52-35, Washington in wave
   52-36, Georgia in wave 52-37, North Carolina in wave 52-38, Pennsylvania
   in wave 52-40, Michigan in wave 52-41, New Jersey in wave 52-42, Arizona
-  in wave 52-43; the remaining state Medicaid programs follow as user-volume
-  data warrants).
+  in wave 52-43, Indiana in wave 52-44; the remaining state Medicaid programs
+  follow as user-volume data warrants).
 - Other Blues plans by state (HCSC shipped in wave 52-12, Highmark
   in wave 52-13, Florida Blue in wave 52-14, BCBSM in wave 52-15,
   Blue Shield of California in wave 52-16, Independence Blue Cross in
@@ -3838,6 +3892,19 @@ silently; the audit trail records the disablement.
 
 - 2026-05-27 — v52 proposed. Five waves outlined (52-1 through
   52-5+). Catalog count target at v52-1 close: 255.
+- 2026-06-05 — wave 52-44 (§4.5.44 Indiana Medicaid / Healthy Indiana Plan — the
+  fourteenth per-state Medicaid overlay, thirty-seventh named-payer overlay
+  overall). New per-state bucket `'medicaid-in'` (anchors `indiana medicaid` /
+  `healthy indiana plan` / `indiana health coverage programs` / `ihcp`), placed
+  before the generic `'medicaid'` bucket and composing with the §4.5.4 core via
+  `isMedicaid`. Disjoint from the same-state Blues bucket `'anthem'` (Anthem BCBS,
+  HQ Indianapolis, §4.5.9; unit-tested); the bare `hip` / `in medicaid` tokens are
+  excluded as anchors (orthopedic / "enrolled in medicaid" false-match risk, both
+  unit-tested). 20 rules `R-PA-MCIN-001..020` self-gating on `bundle.payer ===
+  'medicaid-in'`, anchored to the IHCP provider page (Healthy Indiana Plan /
+  CoreMMIS) and the new staleness-ledger source `in-medicaid-precert`. Golden
+  fixture `in-medicaid-precert` added (44 fixtures). Ruleset 855 → 875. Catalog
+  unchanged (255). View wave banner advanced to 52-44.
 - 2026-06-05 — wave 52-43 (§4.5.43 Arizona Medicaid / AHCCCS — the thirteenth
   per-state Medicaid overlay, thirty-sixth named-payer overlay overall). New
   per-state bucket `'medicaid-az'` (anchors `arizona medicaid` / `az medicaid` /
