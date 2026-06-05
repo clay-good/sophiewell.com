@@ -1,0 +1,19 @@
+{
+  "name": "bcbsma-precert",
+  "description": "Blue Cross Blue Shield of Massachusetts (BCBSMA) commercial prior-authorization packet for a hospital-outpatient (POS 22) knee arthroscopy. The 'Blue Cross Blue Shield of Massachusetts' letterhead routes the bundle to the 'bcbsma' payer bucket (spec-v52 §4.5.22) and engages the BCBSMA commercial overlay. The packet cites the applicable Medical Policy and attaches a clinical note (R-PA-BCBSMA-001/002 pass), omits any submission-channel reference (R-PA-BCBSMA-003 info), and -- as an outpatient surgery requested in a hospital-outpatient setting -- carries no site-of-care rationale for the higher-acuity site (R-PA-BCBSMA-009 flag). Every other BCBSMA rule self-gates off (no imaging, drug, DME, behavioral-health, transplant, appeal, or out-of-network trigger) and vacuously passes.",
+  "opts": { "totalBytes": 16384 },
+  "documents": [
+    {
+      "name": "bcbsma-pa-form.txt",
+      "sha256": "fixture-bcbsma-precert-form",
+      "kind": "TXT",
+      "text": "Blue Cross Blue Shield of Massachusetts PPO Prior Authorization Request\nPatient: Mary C Roe\nDOB: 1968-11-22\nMember ID: JQH123456789\nDate of service: 2026-06-25\nPlace of service: 22\nRequested procedure: knee arthroscopy with meniscectomy CPT 29881\nDx: M23.205 derangement of medial meniscus, left knee\nQuantity: 1\nOrdering provider NPI: 1234567893\nServicing facility NPI: 1306849393\nTIN: 123456789\nMedical necessity: persistent mechanical symptoms; see the applicable BCBS of Massachusetts Medical Policy.\nSignature: Ortho Sports MD, 2026-06-10\n"
+    },
+    {
+      "name": "bcbsma-note.txt",
+      "sha256": "fixture-bcbsma-precert-note",
+      "kind": "TXT",
+      "text": "Clinical note\nChief complaint: left knee pain with locking and catching.\nHistory of present illness: four months of mechanical symptoms despite activity modification.\nPhysical exam: positive McMurray on the left; joint-line tenderness medially.\nAssessment and plan: left medial meniscus tear; recommend arthroscopic partial meniscectomy.\nMedical necessity: imaging confirms a displaced medial meniscus tear.\nNote date: 2026-06-10\nSigned: Ortho Sports MD, 2026-06-10\n"
+    }
+  ]
+}

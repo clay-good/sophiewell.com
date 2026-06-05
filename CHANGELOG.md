@@ -6,6 +6,47 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v52 wave 52-22 — §4.5.22 Blue Cross Blue Shield of Massachusetts commercial overlay, 20 of 20)
+
+The sixteenth named commercial-payer overlay, and the eleventh "Blues plans by
+state" overlay after HCSC, Highmark, Florida Blue, BCBSM, Blue Shield of
+California, Independence Blue Cross, CareFirst, Blue Cross NC, Horizon, and BCBST.
+The full 20-rule `R-PA-BCBSMA-NNN` family is anchored to Blue Cross Blue Shield
+of Massachusetts's public Provider Central pages, Medical Policies, and
+utilization-management / pharmacy program requirements (new ledger source
+`bcbsma-precert`). BCBSMA is the dominant Blue Cross Blue Shield licensee in
+Massachusetts and one of the largest independent licensees not already routed to
+the Anthem/Elevance, HCSC, Highmark, Florida Blue, BCBSM, Blue Shield of
+California, IBX, CareFirst, Blue Cross NC, Horizon, or BCBST buckets.
+
+A new `'bcbsma'` payer bucket in `lib/pa/payer.js` is placed after `'bcbst'` and
+before the generic `'commercial'` fall-through. It matches only the spelled-out
+plan name and the `bcbs of massachusetts` short form — the bare `bcbsma` acronym
+is deliberately omitted, because `bcbsm` (the earlier Michigan bucket) is a
+substring of `bcbsma` and a bare-acronym packet would otherwise route to
+Michigan; the spelled-out name has no such collision (a classify test asserts
+Michigan still routes to `bcbsm`). Generic `blue cross` / `blue shield` and other
+licensees stay in the commercial fall-through, and an explicit "Medicare
+Advantage" string still wins the MA bucket earlier. Each rule self-gates on
+`bundle.payer === 'bcbsma'` and vacuously passes on every other packet.
+
+The 20 rules mirror the prior fifteen commercial families so the sixteen
+commercial overlays stay structurally parallel and auditable side by side, with
+BCBSMA-specific routing names where the plan uses them: the Provider Central /
+Availity submission channel (003), the advanced-imaging utilization-management
+program (007, 012), pharmacy management for step therapy (011), behavioral health
+(016), and the Blue Distinction Centers for Transplant (017).
+
+Coverage is now 455 rules shipped (was 435), 407 source-anchored (was 387), 31
+sources (was 30), 0 ledger orphans, 0 coverage gaps. A new `bcbsma-precert`
+golden fixture (hospital-outpatient knee arthroscopy under a BCBSMA letterhead)
+exercises the on-bucket path — 009 flag, 003 info — and the other twenty-two
+goldens gain +20 vacuous-pass findings each; all twenty-three re-seeded
+deterministically. Tests: +9 engine assertions (count 455, the off-bucket loop,
+fire/pass checks) and +1 classify assertion. e2e pa-lint rule count 435 -> 455.
+Catalog count unchanged (255 tiles; BCBSMA adds rules, not a tile). The PA tile's
+wave banner advances to 52-22.
+
 ### Added (spec-v52 wave 52-21 — §4.5.21 Blue Cross Blue Shield of Tennessee commercial overlay, 20 of 20)
 
 The fifteenth named commercial-payer overlay, and the tenth "Blues plans by
