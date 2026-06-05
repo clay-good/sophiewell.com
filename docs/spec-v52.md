@@ -1835,8 +1835,57 @@ commercial overlays shipped — the five largest commercial / MA plans plus
 the fifteen largest independent Blues licensees (HCSC, Highmark, Florida
 Blue, BCBSM, Blue Shield of California, Independence Blue Cross, CareFirst,
 Blue Cross NC, Horizon, BCBST, BCBSMA, BCBSAL, BCBSSC, Arkansas BCBS, Blue
-KC) — the remaining §9 wave 52-5+ candidates are the other Blues plans by
-state and per-state Medicaid overlays as user-volume data warrants.
+KC) — Blue Cross and Blue Shield of Minnesota opened in wave 52-27
+(§4.5.27) as the twenty-first.
+
+#### 4.5.27 Commercial payer overlays — Blue Cross and Blue Shield of Minnesota (wave 52-27)
+
+The twenty-first named commercial-payer overlay, and the sixteenth "Blues
+plans by state" overlay. **Blue Cross and Blue Shield of Minnesota**
+(BCBSMN) is the dominant Blue Cross Blue Shield licensee in **Minnesota**
+and one of the largest independent licensees not already routed to an
+earlier bucket. Like the twenty before it, BCBSMN is keyed to its own
+payer bucket (`'bcbsmn'`, detected by `lib/pa/payer.js` and placed before
+the generic `'commercial'` fall-through, after `'bluekc'`). The bucket
+matches only the spelled-out plan name and the `blue cross of minnesota`
+short form — the bare `bcbsmn` acronym is **deliberately not an anchor**,
+because `bcbsm` (the earlier Michigan bucket, §4.5.15) is a substring of
+`bcbsmn` and a bare-acronym packet would otherwise route to Michigan; the
+spelled-out name carries no such collision. Generic `blue cross` / `blue
+shield` and other Blues licensees stay in the commercial fall-through, and
+an explicit "Medicare Advantage" string still wins the MA bucket earlier.
+Each commercial rule self-gates on `bundle.payer === 'bcbsmn'` and returns
+a vacuous pass on every other packet.
+
+Scope discipline is identical to §4.5.7–§4.5.26: the rules check the
+**procedural completeness** of a BCBSMN prior-authorization packet
+against the plan's *own published* submission requirements — not clinical
+coverage criteria, which are the reviewer's judgement and the applicable
+Medical Policy's job. Every rule is anchored to a public BCBSMN provider
+URL tracked in the staleness ledger (§8.3, source `bcbsmn-precert`) and
+re-verified on the §4.5.6 cadence.
+
+The set mirrors the earlier commercial families so the twenty-one overlays
+stay structurally parallel and auditable side by side; BCBSMN-specific
+routing names appear where the plan actually uses them — the **Availity /
+provider portal** for submission, the **advanced-imaging
+utilization-management program** for advanced imaging and genetic /
+molecular testing, the plan's **pharmacy management** for pharmacy / step
+therapy, **behavioral health** for behavioral health, and the **Blue
+Distinction Centers for Transplant** for transplant. Wave 52-27 ships the
+full planned set of 20 (`R-PA-BCBSMN-NNN`), structurally parallel to the
+Blue KC set (§4.5.26).
+
+`R-PA-BCBSMN-004` mirrors core `R-PA-053` and the prior commercial -004
+rules: it ships without a bundled prior-authorization list and vacuously
+passes with a pointer until a later wave bundles the list. With
+twenty-one commercial overlays shipped — the five largest commercial / MA
+plans plus the sixteen largest independent Blues licensees (HCSC,
+Highmark, Florida Blue, BCBSM, Blue Shield of California, Independence Blue
+Cross, CareFirst, Blue Cross NC, Horizon, BCBST, BCBSMA, BCBSAL, BCBSSC,
+Arkansas BCBS, Blue KC, BCBSMN) — the remaining §9 wave 52-5+ candidates
+are the other Blues plans by state and per-state Medicaid overlays as
+user-volume data warrants.
 
 ### 4.6 The DOCX report
 
@@ -2789,6 +2838,24 @@ self-contained PR; the catalog count rises only at wave 52-1.
   Ruleset rises 515 → 535. Brings the named commercial / MA overlays to
   twenty, the fifteen largest independent Blues licensees now all covered.
 
+### Wave 52-27 — Blue Cross and Blue Shield of Minnesota commercial overlay (2026-06)
+
+- The 20 BCBSMN rules (§4.5.27), the `R-PA-BCBSMN-NNN` family, anchored
+  to the plan's public provider pages, Medical Policies, and
+  utilization-management / pharmacy program requirements (ledger source
+  `bcbsmn-precert`).
+- A `'bcbsmn'` payer bucket in `lib/pa/payer.js`, placed before the
+  generic `'commercial'` fall-through and after `'bluekc'`. It matches
+  only the spelled-out plan name and the `blue cross of minnesota` short
+  form; the bare `bcbsmn` acronym is omitted because the earlier Michigan
+  `bcbsm` anchor is a substring of it. Generic Blues and other licensees
+  stay in the commercial fall-through, and an explicit "Medicare
+  Advantage" string still wins the MA bucket earlier.
+- Catalog count unchanged (255 tiles; BCBSMN adds rules, not a tile).
+  Ruleset rises 535 → 555. Brings the named commercial / MA overlays to
+  twenty-one, the sixteen largest independent Blues licensees now all
+  covered.
+
 ### Wave 52-5+ — State Medicaid overlays, additional commercial payers, OCR
 
 - Per-state Medicaid overlays as user-volume data warrants.
@@ -2801,8 +2868,9 @@ self-contained PR; the catalog count rises only at wave 52-1.
   in wave 52-21, Blue Cross Blue Shield of Massachusetts in wave 52-22,
   Blue Cross Blue Shield of Alabama in wave 52-23, Blue Cross Blue Shield
   of South Carolina in wave 52-24, Arkansas Blue Cross and Blue Shield in
-  wave 52-25, Blue Cross and Blue Shield of Kansas City in wave 52-26; the
-  remaining independent Blues licensees follow as volume warrants).
+  wave 52-25, Blue Cross and Blue Shield of Kansas City in wave 52-26, Blue
+  Cross and Blue Shield of Minnesota in wave 52-27; the remaining
+  independent Blues licensees follow as volume warrants).
 - Optional in-browser OCR via tesseract.js (lazy-loaded,
   user-toggled, ≈ 11 MB gzipped). Only if §2's no-OCR
   experience proves insufficient.
@@ -2971,6 +3039,34 @@ silently; the audit trail records the disablement.
 
 - 2026-05-27 — v52 proposed. Five waves outlined (52-1 through
   52-5+). Catalog count target at v52-1 close: 255.
+- 2026-06-05 — wave 52-27 (§4.5.27 Blue Cross and Blue Shield of Minnesota
+  commercial overlay, the full 20-rule `R-PA-BCBSMN-NNN` family — the twenty-first
+  named commercial overlay and the sixteenth "Blues plans by state" overlay).
+  Opens a `'bcbsmn'` payer bucket in `lib/pa/payer.js` (placed after `'bluekc'`
+  and before the generic `'commercial'` fall-through). BCBSMN is the dominant
+  Blues licensee in Minnesota; the bucket matches only the spelled-out plan name
+  and the `blue cross of minnesota` short form. The bare `bcbsmn` acronym is
+  deliberately omitted because the earlier Michigan bucket's `bcbsm` anchor
+  (§4.5.15) is a substring of `bcbsmn`, so a bare-acronym packet would route to
+  Michigan first; the spelled-out name has no such collision (a classify test
+  asserts Michigan still routes to `bcbsm`). Generic `blue cross` / `blue shield`
+  and other licensees stay in the commercial fall-through, and an explicit
+  "Medicare Advantage" string still wins the MA bucket earlier. The 20 rules
+  mirror the prior twenty commercial families so the twenty-one overlays stay
+  structurally parallel, with BCBSMN-specific routing names where the plan uses
+  them (the Availity / provider portal submission channel, the advanced-imaging
+  utilization-management program, pharmacy management for step therapy,
+  behavioral health, and the Blue Distinction Centers for Transplant). Each
+  self-gates on `bundle.payer === 'bcbsmn'` and vacuously passes on every other
+  packet. New ledger source `bcbsmn-precert` anchored to the plan's public
+  provider page (all twenty rules map to it by prefix). Coverage is now 555 rules
+  shipped (was 535), 507 source-anchored (was 487), 36 sources (was 35), 0
+  orphans, 0 gaps. The golden fixtures re-seed deterministically (a new
+  `bcbsmn-precert` fixture exercises the on-bucket path — 009 flag, 003 info; the
+  other twenty-seven gain +20 vacuous-pass findings each). Tests: +9 engine
+  assertions (count 555, the off-bucket loop, and fire/pass checks) and +1
+  classify assertion. Catalog count unchanged (255). View wave banner advanced to
+  52-27.
 - 2026-06-05 — wave 52-26 (§4.5.26 Blue Cross and Blue Shield of Kansas City
   commercial overlay, the full 20-rule `R-PA-BLUEKC-NNN` family — the twentieth
   named commercial overlay and the fifteenth "Blues plans by state" overlay).

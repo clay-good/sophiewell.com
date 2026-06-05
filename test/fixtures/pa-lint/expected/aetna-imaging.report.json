@@ -9,12 +9,12 @@
     "disclaimer": "Sophie Prior-Auth Packet Linter is a deterministic checklist. It is not medical advice. It is not legal advice. It is not coding advice. It does not transmit anything to any payer. Your packet stays in this browser tab; we never see your data. Findings reflect what Sophie's ruleset checks; they are not a guarantee of payer approval. A passing report does not mean the packet will be approved; a failing report does not mean the packet will be denied. The clinical adequacy of every document is the reviewer's responsibility. Sophie's ruleset is versioned and cites every source; verify citations against current payer policy before relying on any finding for a clinical or revenue decision."
   },
   "executiveSummary": {
-    "totalRulesEvaluated": 535,
+    "totalRulesEvaluated": 555,
     "counts": {
       "block": 0,
       "flag": 7,
       "info": 5,
-      "pass": 523,
+      "pass": 543,
       "error": 0,
       "disabled": 0
     },
@@ -1838,6 +1838,206 @@
       "description": "Blue Cross Blue Shield of Massachusetts out-of-network / network-gap request: a continuity-of-care or network-gap justification is documented",
       "citation": "spec-v52 §4.5.22 R-PA-BCBSMA-020. Blue Cross Blue Shield of Massachusetts reviews out-of-network prior authorization for a documented network gap or continuity-of-care reason (no participating provider with the required expertise, an active course of treatment). An out-of-network request should state that justification. Informational. <https://provider.bluecrossma.com/>",
       "evidence": "Not a Blue Cross Blue Shield of Massachusetts packet; rule vacuously satisfied.",
+      "note": null,
+      "remediation": null
+    },
+    {
+      "ruleId": "R-PA-BCBSMN-001",
+      "severity": "flag",
+      "status": "pass",
+      "description": "Blue Cross and Blue Shield of Minnesota prior authorization: coverage criteria (Blue Cross and Blue Shield of Minnesota Medical Policy / MCG) referenced",
+      "citation": "spec-v52 §4.5.27 R-PA-BCBSMN-001. Blue Cross and Blue Shield of Minnesota adjudicates prior-authorization requests against its published Medical Policies (and MCG care guidelines); a request should cite the policy it is being judged against so the reviewer can map it to the coverage criteria. <https://www.bluecrossmn.com/providers>",
+      "evidence": "Not a Blue Cross and Blue Shield of Minnesota packet; rule vacuously satisfied.",
+      "note": null,
+      "remediation": null
+    },
+    {
+      "ruleId": "R-PA-BCBSMN-002",
+      "severity": "flag",
+      "status": "pass",
+      "description": "Blue Cross and Blue Shield of Minnesota prior authorization: supporting medical records / clinical documentation attached",
+      "citation": "spec-v52 §4.5.27 R-PA-BCBSMN-002. Blue Cross and Blue Shield of Minnesota requires the clinical information that supports medical necessity to be submitted with the prior-authorization request; a request with no clinical document attached cannot be reviewed on the merits. <https://www.bluecrossmn.com/providers>",
+      "evidence": "Not a Blue Cross and Blue Shield of Minnesota packet; rule vacuously satisfied.",
+      "note": null,
+      "remediation": null
+    },
+    {
+      "ruleId": "R-PA-BCBSMN-003",
+      "severity": "info",
+      "status": "pass",
+      "description": "Blue Cross and Blue Shield of Minnesota prior authorization: submission channel (Availity / provider portal / phone on member ID card) indicated",
+      "citation": "spec-v52 §4.5.27 R-PA-BCBSMN-003. Blue Cross and Blue Shield of Minnesota directs providers to submit prior-authorization requests through the Availity Essentials portal or the Blue Cross and Blue Shield of Minnesota provider portal, by 278 EDI transaction, or by phone using the number on the member ID card. Informational: a cover sheet that names the channel speeds routing. <https://www.bluecrossmn.com/providers>",
+      "evidence": "Not a Blue Cross and Blue Shield of Minnesota packet; rule vacuously satisfied.",
+      "note": null,
+      "remediation": null
+    },
+    {
+      "ruleId": "R-PA-BCBSMN-004",
+      "severity": "info",
+      "status": "pass",
+      "description": "Blue Cross and Blue Shield of Minnesota prior authorization: requested service is on Blue Cross and Blue Shield of Minnesota's prior-authorization / notification requirement list",
+      "citation": "spec-v52 §4.5.27 R-PA-BCBSMN-004. Blue Cross and Blue Shield of Minnesota prior authorization applies only to services on its published prior-authorization and notification lists; requesting authorization for a non-listed service is unnecessary. Wave 52-27 ships no bundled list, so the rule is vacuously satisfied with a pointer to the list (it mirrors core R-PA-053 and the Aetna / UHC / Anthem / Cigna / Humana / HCSC / Highmark / Florida Blue / BCBSM / Blue Shield of California / Independence Blue Cross / CareFirst / Blue Cross NC / Horizon / BCBS Tennessee / BCBS Massachusetts / BCBS Alabama / BCBS South Carolina / Arkansas BCBS / BCBS Kansas City -004 rules; a later wave bundles the list and flips this to a real membership test). <https://www.bluecrossmn.com/providers>",
+      "evidence": "Not a Blue Cross and Blue Shield of Minnesota packet; rule vacuously satisfied.",
+      "note": null,
+      "remediation": null
+    },
+    {
+      "ruleId": "R-PA-BCBSMN-005",
+      "severity": "flag",
+      "status": "pass",
+      "description": "Blue Cross and Blue Shield of Minnesota prior authorization: authorization is referenced for a service that requires it before the service date",
+      "citation": "spec-v52 §4.5.27 R-PA-BCBSMN-005. Blue Cross and Blue Shield of Minnesota requires prior authorization to be obtained before a service on its requirement list is rendered; a packet for an authorization-required service should show the authorization / reference number rather than relying on post-service review. <https://www.bluecrossmn.com/providers>",
+      "evidence": "Not a Blue Cross and Blue Shield of Minnesota packet; rule vacuously satisfied.",
+      "note": null,
+      "remediation": null
+    },
+    {
+      "ruleId": "R-PA-BCBSMN-006",
+      "severity": "flag",
+      "status": "pass",
+      "description": "Blue Cross and Blue Shield of Minnesota inpatient prior authorization: admission notification + concurrent / continued-stay clinical review documentation present",
+      "citation": "spec-v52 §4.5.27 R-PA-BCBSMN-006. Blue Cross and Blue Shield of Minnesota requires admission notification and conducts concurrent (continued-stay) review for inpatient admissions, collecting the clinical update and discharge plan; an inpatient request should carry that documentation. <https://www.bluecrossmn.com/providers>",
+      "evidence": "Not a Blue Cross and Blue Shield of Minnesota packet; rule vacuously satisfied.",
+      "note": null,
+      "remediation": null
+    },
+    {
+      "ruleId": "R-PA-BCBSMN-007",
+      "severity": "flag",
+      "status": "pass",
+      "description": "Blue Cross and Blue Shield of Minnesota advanced-imaging review: outpatient MRI / CT / PET carries the clinical indication for Blue Cross and Blue Shield of Minnesota's advanced-imaging utilization-management program",
+      "citation": "spec-v52 §4.5.27 R-PA-BCBSMN-007. Blue Cross and Blue Shield of Minnesota delegates outpatient advanced-imaging (MRI / CT / PET / nuclear cardiology) prior authorization to its advanced-imaging utilization-management program; the request should carry the clinical indication that supports the study. <https://www.bluecrossmn.com/providers>",
+      "evidence": "Not a Blue Cross and Blue Shield of Minnesota packet; rule vacuously satisfied.",
+      "note": null,
+      "remediation": null
+    },
+    {
+      "ruleId": "R-PA-BCBSMN-008",
+      "severity": "flag",
+      "status": "pass",
+      "description": "Blue Cross and Blue Shield of Minnesota expedited / urgent prior authorization: clinical urgency justification present",
+      "citation": "spec-v52 §4.5.27 R-PA-BCBSMN-008. Blue Cross and Blue Shield of Minnesota processes an expedited prior-authorization review when a standard timeframe could seriously jeopardize the member's life, health, or ability to regain maximum function. A request that asks for expedited handling should state that clinical urgency. <https://www.bluecrossmn.com/providers>",
+      "evidence": "Not a Blue Cross and Blue Shield of Minnesota packet; rule vacuously satisfied.",
+      "note": null,
+      "remediation": null
+    },
+    {
+      "ruleId": "R-PA-BCBSMN-009",
+      "severity": "flag",
+      "status": "pass",
+      "description": "Blue Cross and Blue Shield of Minnesota site-of-care review: outpatient surgery / imaging addresses the hospital-outpatient vs. ASC / freestanding site-of-care requirement",
+      "citation": "spec-v52 §4.5.27 R-PA-BCBSMN-009. Blue Cross and Blue Shield of Minnesota's site-of-care medical policy directs certain outpatient surgical and imaging services to an ambulatory surgical center or freestanding facility unless hospital-outpatient care is medically necessary; a hospital-outpatient request should document why that site is required. <https://www.bluecrossmn.com/providers>",
+      "evidence": "Not a Blue Cross and Blue Shield of Minnesota packet; rule vacuously satisfied.",
+      "note": null,
+      "remediation": null
+    },
+    {
+      "ruleId": "R-PA-BCBSMN-010",
+      "severity": "info",
+      "status": "pass",
+      "description": "Blue Cross and Blue Shield of Minnesota prior authorization: NDC documented for a physician-administered (J-code) drug request",
+      "citation": "spec-v52 §4.5.27 R-PA-BCBSMN-010. Blue Cross and Blue Shield of Minnesota review of physician-administered (buy-and-bill) drugs maps the request to a specific product and dose via the National Drug Code in addition to the HCPCS J-code. Informational: a J-code request without an NDC routes more slowly. <https://www.bluecrossmn.com/providers>",
+      "evidence": "Not a Blue Cross and Blue Shield of Minnesota packet; rule vacuously satisfied.",
+      "note": null,
+      "remediation": null
+    },
+    {
+      "ruleId": "R-PA-BCBSMN-011",
+      "severity": "flag",
+      "status": "pass",
+      "description": "Blue Cross and Blue Shield of Minnesota drug prior authorization: step-therapy prior-trial documentation (drugs tried + therapeutic failure) present",
+      "citation": "spec-v52 §4.5.27 R-PA-BCBSMN-011. For drugs subject to step therapy Blue Cross and Blue Shield of Minnesota pharmacy management requires documentation of the prerequisite drugs tried and the therapeutic failure / intolerance for each before the requested agent is approved. <https://www.bluecrossmn.com/providers>",
+      "evidence": "Not a Blue Cross and Blue Shield of Minnesota packet; rule vacuously satisfied.",
+      "note": null,
+      "remediation": null
+    },
+    {
+      "ruleId": "R-PA-BCBSMN-012",
+      "severity": "flag",
+      "status": "pass",
+      "description": "Blue Cross and Blue Shield of Minnesota genetic / molecular testing: the specific test and indication are documented for Blue Cross and Blue Shield of Minnesota's genetic / molecular lab-management program",
+      "citation": "spec-v52 §4.5.27 R-PA-BCBSMN-012. Blue Cross and Blue Shield of Minnesota delegates genetic / molecular testing prior authorization to its lab-management program, which requires the specific test name (and, where applicable, the unique test identifier) plus the clinical indication. <https://www.bluecrossmn.com/providers>",
+      "evidence": "Not a Blue Cross and Blue Shield of Minnesota packet; rule vacuously satisfied.",
+      "note": null,
+      "remediation": null
+    },
+    {
+      "ruleId": "R-PA-BCBSMN-013",
+      "severity": "flag",
+      "status": "pass",
+      "description": "Blue Cross and Blue Shield of Minnesota specialty / oncology drug: the supporting diagnosis is documented for the applicable Medical Policy",
+      "citation": "spec-v52 §4.5.27 R-PA-BCBSMN-013. Blue Cross and Blue Shield of Minnesota specialty and oncology drug coverage is governed by drug-specific Medical Policies that condition coverage on a supporting diagnosis (ICD-10) matching the policy's indication; the request should carry that diagnosis. <https://www.bluecrossmn.com/providers>",
+      "evidence": "Not a Blue Cross and Blue Shield of Minnesota packet; rule vacuously satisfied.",
+      "note": null,
+      "remediation": null
+    },
+    {
+      "ruleId": "R-PA-BCBSMN-014",
+      "severity": "info",
+      "status": "pass",
+      "description": "Blue Cross and Blue Shield of Minnesota retrospective / retroactive request: a retro-review justification is documented",
+      "citation": "spec-v52 §4.5.27 R-PA-BCBSMN-014. Blue Cross and Blue Shield of Minnesota considers a retrospective review only when the service was already rendered for a documented reason (e.g. emergent care, member eligibility not known at the time). A retro request should state that reason. Informational. <https://www.bluecrossmn.com/providers>",
+      "evidence": "Not a Blue Cross and Blue Shield of Minnesota packet; rule vacuously satisfied.",
+      "note": null,
+      "remediation": null
+    },
+    {
+      "ruleId": "R-PA-BCBSMN-015",
+      "severity": "flag",
+      "status": "pass",
+      "description": "Blue Cross and Blue Shield of Minnesota DME / home-health prior authorization: a signed, dated written order / plan of care accompanies the request",
+      "citation": "spec-v52 §4.5.27 R-PA-BCBSMN-015. Blue Cross and Blue Shield of Minnesota prior authorization for durable medical equipment and home-health services requires a written order / plan of care, signed and dated by the ordering provider, before the item / service is dispensed. <https://www.bluecrossmn.com/providers>",
+      "evidence": "Not a Blue Cross and Blue Shield of Minnesota packet; rule vacuously satisfied.",
+      "note": null,
+      "remediation": null
+    },
+    {
+      "ruleId": "R-PA-BCBSMN-016",
+      "severity": "flag",
+      "status": "pass",
+      "description": "Blue Cross and Blue Shield of Minnesota behavioral health: level-of-care criteria documentation present",
+      "citation": "spec-v52 §4.5.27 R-PA-BCBSMN-016. Blue Cross and Blue Shield of Minnesota behavioral-health prior authorization reviews the requested level of care against published level-of-care guidelines (e.g. MCG behavioral-health care guidelines, ASAM criteria); the request should document the criteria that support the level requested. <https://www.bluecrossmn.com/providers>",
+      "evidence": "Not a Blue Cross and Blue Shield of Minnesota packet; rule vacuously satisfied.",
+      "note": null,
+      "remediation": null
+    },
+    {
+      "ruleId": "R-PA-BCBSMN-017",
+      "severity": "flag",
+      "status": "pass",
+      "description": "Blue Cross and Blue Shield of Minnesota transplant prior authorization: routed through the Blue Distinction Centers for Transplant with a transplant-center evaluation",
+      "citation": "spec-v52 §4.5.27 R-PA-BCBSMN-017. Blue Cross and Blue Shield of Minnesota directs solid-organ and hematopoietic stem-cell transplants through the Blue Distinction Centers for Transplant network; a transplant prior authorization should reference that routing and carry the transplant-center evaluation. <https://www.bluecrossmn.com/providers>",
+      "evidence": "Not a Blue Cross and Blue Shield of Minnesota packet; rule vacuously satisfied.",
+      "note": null,
+      "remediation": null
+    },
+    {
+      "ruleId": "R-PA-BCBSMN-018",
+      "severity": "flag",
+      "status": "pass",
+      "description": "Blue Cross and Blue Shield of Minnesota experimental / investigational determination: peer-reviewed evidence or a documented policy exception is present",
+      "citation": "spec-v52 §4.5.27 R-PA-BCBSMN-018. Blue Cross and Blue Shield of Minnesota excludes services its Medical Policy classifies as experimental, investigational, or unproven; a request for such a service must carry the peer-reviewed evidence or the documented exception the policy allows, or it will be denied. <https://www.bluecrossmn.com/providers>",
+      "evidence": "Not a Blue Cross and Blue Shield of Minnesota packet; rule vacuously satisfied.",
+      "note": null,
+      "remediation": null
+    },
+    {
+      "ruleId": "R-PA-BCBSMN-019",
+      "severity": "info",
+      "status": "pass",
+      "description": "Blue Cross and Blue Shield of Minnesota reconsideration / appeal: references the original determination and adds new clinical information",
+      "citation": "spec-v52 §4.5.27 R-PA-BCBSMN-019. When a prior authorization is resubmitted as a reconsideration or appeal, Blue Cross and Blue Shield of Minnesota asks the provider to reference the original determination and supply additional clinical information that addresses the denial reason. Informational. <https://www.bluecrossmn.com/providers>",
+      "evidence": "Not a Blue Cross and Blue Shield of Minnesota packet; rule vacuously satisfied.",
+      "note": null,
+      "remediation": null
+    },
+    {
+      "ruleId": "R-PA-BCBSMN-020",
+      "severity": "info",
+      "status": "pass",
+      "description": "Blue Cross and Blue Shield of Minnesota out-of-network / network-gap request: a continuity-of-care or network-gap justification is documented",
+      "citation": "spec-v52 §4.5.27 R-PA-BCBSMN-020. Blue Cross and Blue Shield of Minnesota reviews out-of-network prior authorization for a documented network gap or continuity-of-care reason (no participating provider with the required expertise, an active course of treatment). An out-of-network request should state that justification. Informational. <https://www.bluecrossmn.com/providers>",
+      "evidence": "Not a Blue Cross and Blue Shield of Minnesota packet; rule vacuously satisfied.",
       "note": null,
       "remediation": null
     },
@@ -5696,6 +5896,26 @@
       "R-PA-BCBSMA-018",
       "R-PA-BCBSMA-019",
       "R-PA-BCBSMA-020",
+      "R-PA-BCBSMN-001",
+      "R-PA-BCBSMN-002",
+      "R-PA-BCBSMN-003",
+      "R-PA-BCBSMN-004",
+      "R-PA-BCBSMN-005",
+      "R-PA-BCBSMN-006",
+      "R-PA-BCBSMN-007",
+      "R-PA-BCBSMN-008",
+      "R-PA-BCBSMN-009",
+      "R-PA-BCBSMN-010",
+      "R-PA-BCBSMN-011",
+      "R-PA-BCBSMN-012",
+      "R-PA-BCBSMN-013",
+      "R-PA-BCBSMN-014",
+      "R-PA-BCBSMN-015",
+      "R-PA-BCBSMN-016",
+      "R-PA-BCBSMN-017",
+      "R-PA-BCBSMN-018",
+      "R-PA-BCBSMN-019",
+      "R-PA-BCBSMN-020",
       "R-PA-BCBSNC-001",
       "R-PA-BCBSNC-002",
       "R-PA-BCBSNC-003",
@@ -6313,6 +6533,13 @@
           "label": "Blue Cross and Blue Shield of Kansas City (Blue KC) prior-authorization requirements, Medical Policies, and utilization-management / pharmacy program requirements",
           "url": "https://providers.bluekc.com/",
           "ruleFamily": "commercial-bluekc",
+          "lastVerified": "2026-06-05"
+        },
+        {
+          "id": "bcbsmn-precert",
+          "label": "Blue Cross and Blue Shield of Minnesota prior-authorization requirements, Medical Policies, and utilization-management / pharmacy program requirements",
+          "url": "https://www.bluecrossmn.com/providers",
+          "ruleFamily": "commercial-bcbsmn",
           "lastVerified": "2026-06-05"
         }
       ],

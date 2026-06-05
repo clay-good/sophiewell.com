@@ -140,8 +140,8 @@ test('runEngine passes every starter rule on a clean multi-doc happy-path packet
   assert.equal(counts.pass, STARTER_RULES.length);
 });
 
-test('STARTER_RULES at wave 52-26 is 535 rules (135 §4.5 core/overlay/specialty + 20 each for the 20 named commercial overlays: Aetna … Arkansas BCBS + BCBS Kansas City)', () => {
-  assert.equal(STARTER_RULES.length, 535);
+test('STARTER_RULES at wave 52-27 is 555 rules (135 §4.5 core/overlay/specialty + 20 each for the 21 named commercial overlays: Aetna … BCBS Kansas City + BCBS Minnesota)', () => {
+  assert.equal(STARTER_RULES.length, 555);
 });
 
 // ---- wave 52-7a sanity checks: Aetna commercial overlay (§4.5.7) ----
@@ -1882,6 +1882,81 @@ test('R-PA-BLUEKC-020 flags a Blue KC out-of-network request with no network-gap
   const text = 'Blue Cross and Blue Shield of Kansas City member.\nOut-of-network prior authorization request.\nProcedure CPT 70551.\n';
   const findings = runEngine(bundleOf(text));
   const f = findings.find((x) => x.ruleId === 'R-PA-BLUEKC-020');
+  assert.equal(f.status, 'info');
+});
+
+// ---- wave 52-27 sanity checks: Blue Cross and Blue Shield of Minnesota overlay (§4.5.27) ----
+// NOTE: the routing line uses the spelled-out plan name, never the bare "BCBSMN"
+// acronym, because 'bcbsm' (the Michigan bucket) is a substring of 'bcbsmn'.
+
+test('BCBSMN overlay rules vacuously pass on a non-BCBSMN packet', () => {
+  // happyBundle is not a BCBSMN packet -> every R-PA-BCBSMN-* rule passes.
+  const findings = runEngine(happyBundle());
+  for (let n = 1; n <= 20; n += 1) {
+    const id = 'R-PA-BCBSMN-' + String(n).padStart(3, '0');
+    const f = findings.find((x) => x.ruleId === id);
+    assert.ok(f, id + ' should be in the findings');
+    assert.equal(f.status, 'pass', id + ' should vacuously pass off-bucket');
+  }
+});
+
+test('R-PA-BCBSMN-001 flags a BCBSMN request with a procedure but no coverage-criteria reference', () => {
+  const text = 'Blue Cross and Blue Shield of Minnesota member.\n'
+    + 'Requested procedure: CPT 72148 (MRI lumbar spine).\n'
+    + 'Please authorize.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-BCBSMN-001');
+  assert.equal(f.status, 'flag');
+});
+
+test('R-PA-BCBSMN-001 passes when the BCBSMN packet cites the applicable Medical Policy', () => {
+  const text = 'Blue Cross and Blue Shield of Minnesota member.\n'
+    + 'Requested procedure: CPT 72148.\n'
+    + 'Medical necessity per the applicable Medical Policy (MCG).\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-BCBSMN-001');
+  assert.equal(f.status, 'pass');
+});
+
+test('R-PA-BCBSMN-002 flags a BCBSMN packet with no clinical document attached', () => {
+  const text = 'Blue Cross and Blue Shield of Minnesota member.\nRequested procedure: CPT 27447.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-BCBSMN-002');
+  assert.equal(f.status, 'flag');
+});
+
+test('R-PA-BCBSMN-003 passes when the BCBSMN packet names the Availity channel (info)', () => {
+  const text = 'Blue Cross and Blue Shield of Minnesota member.\nSubmitted via the Availity Essentials portal.\nProcedure CPT 27447.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-BCBSMN-003');
+  assert.equal(f.status, 'pass');
+});
+
+test('R-PA-BCBSMN-007 flags a BCBSMN outpatient MRI with no clinical indication', () => {
+  const text = 'Blue Cross and Blue Shield of Minnesota member.\nRequested: MRI lumbar spine, CPT 72148.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-BCBSMN-007');
+  assert.equal(f.status, 'flag');
+});
+
+test('R-PA-BCBSMN-008 passes when an expedited BCBSMN request documents the clinical urgency', () => {
+  const text = 'Blue Cross and Blue Shield of Minnesota member.\nExpedited review requested: delay would jeopardize the member\'s life or health.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-BCBSMN-008');
+  assert.equal(f.status, 'pass');
+});
+
+test('R-PA-BCBSMN-017 flags a BCBSMN transplant request with no Blue Distinction routing', () => {
+  const text = 'Blue Cross and Blue Shield of Minnesota member.\nRequested service: kidney transplant.\nMedical necessity per Medical Policy.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-BCBSMN-017');
+  assert.equal(f.status, 'flag');
+});
+
+test('R-PA-BCBSMN-020 flags a BCBSMN out-of-network request with no network-gap justification (info)', () => {
+  const text = 'Blue Cross and Blue Shield of Minnesota member.\nOut-of-network prior authorization request.\nProcedure CPT 70551.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-BCBSMN-020');
   assert.equal(f.status, 'info');
 });
 

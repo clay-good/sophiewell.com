@@ -6,6 +6,44 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v52 wave 52-27 — §4.5.27 Blue Cross and Blue Shield of Minnesota commercial overlay, 20 of 20)
+
+The twenty-first named commercial-payer overlay, and the sixteenth "Blues plans
+by state" overlay. The full 20-rule `R-PA-BCBSMN-NNN` family is anchored to Blue
+Cross and Blue Shield of Minnesota's public provider pages, Medical Policies, and
+utilization-management / pharmacy program requirements (new ledger source
+`bcbsmn-precert`). BCBSMN is the dominant Blue Cross Blue Shield licensee in
+Minnesota and one of the largest independent licensees not already routed to an
+earlier bucket.
+
+A new `'bcbsmn'` payer bucket in `lib/pa/payer.js` is placed after `'bluekc'`
+and before the generic `'commercial'` fall-through. It matches only the
+spelled-out plan name and the `blue cross of minnesota` short form — the bare
+`bcbsmn` acronym is deliberately omitted, because `bcbsm` (the earlier Michigan
+bucket) is a substring of `bcbsmn` and a bare-acronym packet would otherwise route
+to Michigan; the spelled-out name has no such collision (a classify test asserts
+Michigan still routes to `bcbsm`). Generic `blue cross` / `blue shield` and other
+licensees stay in the commercial fall-through, and an explicit "Medicare
+Advantage" string still wins the MA bucket earlier. Each rule self-gates on
+`bundle.payer === 'bcbsmn'` and vacuously passes on every other packet.
+
+The 20 rules mirror the prior twenty commercial families so the twenty-one
+commercial overlays stay structurally parallel and auditable side by side, with
+BCBSMN-specific routing names where the plan uses them: the Availity / provider
+portal submission channel (003), the advanced-imaging utilization-management
+program (007, 012), pharmacy management for step therapy (011), behavioral health
+(016), and the Blue Distinction Centers for Transplant (017).
+
+Coverage is now 555 rules shipped (was 535), 507 source-anchored (was 487), 36
+sources (was 35), 0 ledger orphans, 0 coverage gaps. A new `bcbsmn-precert` golden
+fixture (hospital-outpatient knee arthroscopy under a Blue Cross and Blue Shield
+of Minnesota letterhead) exercises the on-bucket path — 009 flag, 003 info — and
+the other twenty-seven goldens gain +20 vacuous-pass findings each; all
+twenty-eight re-seeded deterministically. Tests: +9 engine assertions (count 555,
+the off-bucket loop, fire/pass checks) and +1 classify assertion. e2e pa-lint rule
+count 535 -> 555. Catalog count unchanged (255 tiles; BCBSMN adds rules, not a
+tile). The PA tile's wave banner advances to 52-27.
+
 ### Added (spec-v52 wave 52-26 — §4.5.26 Blue Cross and Blue Shield of Kansas City commercial overlay, 20 of 20)
 
 The twentieth named commercial-payer overlay, and the fifteenth "Blues plans by
