@@ -2086,9 +2086,34 @@ ledger (§8.3, source `tx-medicaid-precert`). `R-PA-MCTX-004` mirrors core
 `R-PA-053`: it ships without a bundled prior-authorization list and vacuously
 passes with a pointer until a later wave bundles the list. With three state
 Medicaid programs shipped (California, New York, Texas — the three largest by
-enrollment), the per-state Medicaid line is well established; the remaining §9
-wave 52-5+ candidates are additional state Medicaid programs and the other Blues
-plans by state as user-volume data warrants.
+enrollment), the per-state Medicaid line is well established; Florida opened in
+wave 52-33 (§4.5.33).
+
+#### 4.5.33 Per-state Medicaid overlays — Florida Medicaid (wave 52-33)
+
+The fourth per-state Medicaid overlay (after California §4.5.30, New York
+§4.5.31, and Texas §4.5.32), and the twenty-seventh named-payer overlay overall.
+**Florida Medicaid** is administered by the **Agency for Health Care
+Administration (AHCA)** through the **Statewide Medicaid Managed Care (SMMC)**
+program, with **FMMIS** as the fiscal-agent provider portal. It is detected by a
+per-state bucket (`'medicaid-fl'`, anchors `florida medicaid` / `statewide
+medicaid managed care` / `florida agency for health care administration`) placed
+before the generic `'medicaid'` bucket, and composes with the §4.5.4 Medicaid
+core through `isMedicaid(bundle.payer)`. It is deliberately distinct from the
+`'florida-blue'` commercial Blues bucket (§4.5.14, which matches `florida blue` /
+`guidewell`); a Florida Medicaid packet and a Florida Blue packet route to
+different overlays, verified by a unit test. An explicit "Medicare Advantage"
+string still wins the MA bucket earlier.
+
+The 20 Florida rules (`R-PA-MCFL-NNN`) mirror the established families with the
+two Medicaid reframings (transplant → Medicaid-designated transplant center;
+appeal → state fair hearing) and Florida routing names (the Florida Medicaid Web
+Portal / FMMIS for submission). Each rule self-gates on `bundle.payer ===
+'medicaid-fl'` and returns a vacuous pass on every other packet. Every rule is
+anchored to a public Florida Medicaid (AHCA) provider URL tracked in the
+staleness ledger (§8.3, source `fl-medicaid-precert`). `R-PA-MCFL-004` mirrors
+core `R-PA-053`: it ships without a bundled prior-authorization list and
+vacuously passes with a pointer until a later wave bundles the list.
 
 ### 4.6 The DOCX report
 
@@ -3136,6 +3161,20 @@ self-contained PR; the catalog count rises only at wave 52-1.
   per-state Medicaid overlays to three (California, New York, Texas — the
   three largest by enrollment).
 
+### Wave 52-33 — Florida Medicaid overlay (2026-06)
+
+- The 20 Florida Medicaid rules (§4.5.33), the `R-PA-MCFL-NNN` family,
+  anchored to the program's public AHCA / FMMIS provider pages (ledger
+  source `fl-medicaid-precert`).
+- A `'medicaid-fl'` payer bucket placed before the generic `'medicaid'`
+  bucket (anchors `florida medicaid` / `statewide medicaid managed care`
+  / `florida agency for health care administration`); composes with the
+  §4.5.4 Medicaid core via `isMedicaid()`. Deliberately distinct from the
+  `'florida-blue'` commercial bucket (unit-tested). Transplant / appeal
+  reframed for Medicaid.
+- Catalog count unchanged (255 tiles). Ruleset rises 655 → 675. Brings
+  per-state Medicaid overlays to four (CA, NY, TX, FL).
+
 ### Wave 52-5+ — State Medicaid overlays, additional commercial payers, OCR
 
 - Per-state Medicaid overlays (Medi-Cal / California shipped in wave
@@ -3323,6 +3362,21 @@ silently; the audit trail records the disablement.
 
 - 2026-05-27 — v52 proposed. Five waves outlined (52-1 through
   52-5+). Catalog count target at v52-1 close: 255.
+- 2026-06-05 — wave 52-33 (§4.5.33 Florida Medicaid — the fourth per-state
+  Medicaid overlay, the full 20-rule `R-PA-MCFL-NNN` family, twenty-seventh
+  named-payer overlay overall). Opens a `'medicaid-fl'` payer bucket (anchors
+  `florida medicaid` / `statewide medicaid managed care` / `florida agency for
+  health care administration`) before the generic `'medicaid'` bucket; composes
+  with the §4.5.4 Medicaid core via `isMedicaid()`. Deliberately distinct from the
+  `'florida-blue'` commercial Blues bucket (§4.5.14) — a Florida Medicaid packet
+  and a Florida Blue packet route to different overlays (unit-tested). Transplant
+  (017) and appeal (019) reframed for Medicaid; Florida Medicaid Web Portal /
+  FMMIS routing. Each self-gates on `bundle.payer === 'medicaid-fl'`. New ledger
+  source `fl-medicaid-precert`. Coverage now 675 rules shipped (was 655), 627
+  source-anchored (was 607), 42 sources (was 41), 0 orphans, 0 gaps. New
+  `fl-medicaid-precert` golden fixture (Medicaid core all pass, MCFL-009 flag).
+  Tests: +7 engine assertions and +1 classify assertion. e2e count 655 -> 675.
+  Catalog unchanged (255). View wave banner advanced to 52-33.
 - 2026-06-05 — wave 52-32 (§4.5.32 Texas Medicaid — the third per-state Medicaid
   overlay, the full 20-rule `R-PA-MCTX-NNN` family, twenty-sixth named-payer
   overlay overall). Opens a `'medicaid-tx'` payer bucket (anchors `texas

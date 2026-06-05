@@ -6,6 +6,32 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v52 wave 52-33 — §4.5.33 Florida Medicaid per-state overlay, 20 of 20)
+
+The fourth per-state Medicaid overlay (after California §4.5.30, New York §4.5.31,
+and Texas §4.5.32), and the twenty-seventh named-payer overlay overall. The full
+20-rule `R-PA-MCFL-NNN` family is anchored to Florida Medicaid's public AHCA
+(Agency for Health Care Administration) / FMMIS provider pages (new ledger source
+`fl-medicaid-precert`).
+
+A new `'medicaid-fl'` payer bucket in `lib/pa/payer.js` (anchors `florida
+medicaid` / `statewide medicaid managed care` / `florida agency for health care
+administration`) is placed before the generic `'medicaid'` bucket and composes
+with the §4.5.4 Medicaid core via `isMedicaid()`. It is deliberately distinct
+from the `'florida-blue'` commercial Blues bucket (§4.5.14): a Florida Medicaid
+packet and a Florida Blue packet route to different overlays (unit-tested). The
+20 rules mirror the established families with the Medicaid reframings (transplant
+→ Medicaid-designated transplant center; appeal → state fair hearing) and Florida
+Medicaid Web Portal / FMMIS routing. Each rule self-gates on `bundle.payer ===
+'medicaid-fl'` and vacuously passes on every other packet.
+
+Coverage is now 675 rules shipped (was 655), 627 source-anchored (was 607), 42
+sources (was 41), 0 ledger orphans, 0 coverage gaps. A new `fl-medicaid-precert`
+golden fixture (Medicaid core all pass, MCFL-009 site-of-care flag) re-seeds
+deterministically; all thirty-four goldens re-seeded. Tests: +7 engine assertions
+and +1 classify assertion. e2e pa-lint rule count 655 -> 675. Catalog count
+unchanged (255 tiles). The PA tile's wave banner advances to 52-33.
+
 ### Added (spec-v52 wave 52-32 — §4.5.32 Texas Medicaid per-state overlay, 20 of 20)
 
 The third per-state Medicaid overlay (after Medi-Cal §4.5.30 and New York

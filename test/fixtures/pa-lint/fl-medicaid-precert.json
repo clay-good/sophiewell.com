@@ -1,0 +1,19 @@
+{
+  "name": "fl-medicaid-precert",
+  "description": "Florida Medicaid prior-authorization packet for a hospital-outpatient (POS 22) knee arthroscopy on an adult member. The 'Florida Medicaid' letterhead routes the bundle to the 'medicaid-fl' payer bucket (spec-v52 §4.5.33); both the §4.5.4 state-agnostic Medicaid core (R-PA-MCD-NNN, via isMedicaid) and the Florida Medicaid overlay (R-PA-MCFL-NNN) engage. The packet is a complete Medicaid request -- eligibility verified, state medical-necessity criteria cited, MCO/FFS indicated -- so the Medicaid core passes; it names the FMMIS channel (R-PA-MCFL-003 pass) and attaches a clinical note (R-PA-MCFL-001/002 pass). As an outpatient surgery requested in a hospital-outpatient setting it carries no site-of-care rationale (R-PA-MCFL-009 flag). The member is an adult, so EPSDT self-gates off. Every other Florida Medicaid overlay rule self-gates off and vacuously passes.",
+  "opts": { "totalBytes": 16384 },
+  "documents": [
+    {
+      "name": "fl-medicaid-pa.txt",
+      "sha256": "fixture-fl-medicaid-precert-form",
+      "kind": "TXT",
+      "text": "Florida Medicaid Prior Authorization Request (submitted via the Florida Medicaid Web Portal / FMMIS)\nPatient: Mary C Roe\nDOB: 1968-11-22\nMember ID: 1234567890\nDate of service: 2026-06-25\nPlace of service: 22\nRequested procedure: knee arthroscopy with meniscectomy CPT 29881\nDx: M23.205 derangement of medial meniscus, left knee\nQuantity: 1\nOrdering provider NPI: 1234567893\nServicing facility NPI: 1306849393\nTIN: 123456789\nPlan: Medicaid managed care plan.\nEligibility verified: active eligibility on file for the date of service.\nMedical necessity: persistent mechanical symptoms; see the applicable Medical Policy and the Medicaid medical necessity criteria.\nSignature: Ortho Sports MD, 2026-06-10\n"
+    },
+    {
+      "name": "fl-medicaid-note.txt",
+      "sha256": "fixture-fl-medicaid-precert-note",
+      "kind": "TXT",
+      "text": "Clinical note\nChief complaint: left knee pain with locking and catching.\nHistory of present illness: four months of mechanical symptoms despite activity modification.\nPhysical exam: positive McMurray on the left; joint-line tenderness medially.\nAssessment and plan: left medial meniscus tear; recommend arthroscopic partial meniscectomy.\nMedical necessity: imaging confirms a displaced medial meniscus tear.\nNote date: 2026-06-10\nSigned: Ortho Sports MD, 2026-06-10\n"
+    }
+  ]
+}

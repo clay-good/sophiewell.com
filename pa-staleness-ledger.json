@@ -333,6 +333,14 @@
       "rules": ["R-PA-MCTX-001", "R-PA-MCTX-002"],
       "url": "https://www.tmhp.com/",
       "lastVerified": "2026-06-05"
+    },
+    {
+      "id": "fl-medicaid-precert",
+      "label": "Florida Medicaid (AHCA -- Agency for Health Care Administration / FMMIS) prior-authorization requirements, provider manuals, and utilization-management / pharmacy program requirements",
+      "ruleFamily": "medicaid-fl",
+      "rules": ["R-PA-MCFL-001", "R-PA-MCFL-002"],
+      "url": "https://ahca.myflorida.com/medicaid",
+      "lastVerified": "2026-06-05"
     }
   ],
   "acknowledgments": []

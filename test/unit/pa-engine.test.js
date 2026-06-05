@@ -140,8 +140,8 @@ test('runEngine passes every starter rule on a clean multi-doc happy-path packet
   assert.equal(counts.pass, STARTER_RULES.length);
 });
 
-test('STARTER_RULES at wave 52-32 is 655 rules (135 §4.5 core/overlay/specialty + 20 each for the 23 commercial overlays + 20 Medi-Cal + 20 New York Medicaid + 20 Texas Medicaid)', () => {
-  assert.equal(STARTER_RULES.length, 655);
+test('STARTER_RULES at wave 52-33 is 675 rules (135 §4.5 core/overlay/specialty + 20 each for the 23 commercial overlays + 20 each for 4 per-state Medicaid overlays: California + New York + Texas + Florida)', () => {
+  assert.equal(STARTER_RULES.length, 675);
 });
 
 // ---- wave 52-7a sanity checks: Aetna commercial overlay (§4.5.7) ----
@@ -2252,6 +2252,49 @@ test('R-PA-MCTX core composition: the Medicaid core fires on a Texas Medicaid (m
   const findings = runEngine(bundleOf(text));
   const mcd003 = findings.find((x) => x.ruleId === 'R-PA-MCD-003');
   assert.equal(mcd003.status, 'flag', 'MCD core must evaluate on a TX Medicaid packet');
+});
+
+// ---- wave 52-33 sanity checks: Florida Medicaid overlay (§4.5.33) ----
+
+test('Florida Medicaid overlay rules vacuously pass on a non-Florida-Medicaid packet', () => {
+  const findings = runEngine(happyBundle());
+  for (let n = 1; n <= 20; n += 1) {
+    const id = 'R-PA-MCFL-' + String(n).padStart(3, '0');
+    const f = findings.find((x) => x.ruleId === id);
+    assert.ok(f, id + ' should be in the findings');
+    assert.equal(f.status, 'pass', id + ' should vacuously pass off-bucket');
+  }
+});
+
+test('R-PA-MCFL-001 flags a Florida Medicaid request with a procedure but no coverage-criteria reference', () => {
+  const text = 'Florida Medicaid member.\nRequested procedure: CPT 72148 (MRI lumbar spine).\nPlease authorize.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-MCFL-001');
+  assert.equal(f.status, 'flag');
+});
+
+test('R-PA-MCFL-003 passes when the Florida Medicaid packet names the FMMIS channel (info)', () => {
+  const text = 'Florida Medicaid request submitted via the Florida Medicaid Web Portal (FMMIS).\nProcedure CPT 27447.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-MCFL-003');
+  assert.equal(f.status, 'pass');
+});
+
+test('R-PA-MCFL-017 flags a Florida Medicaid transplant request with no Medicaid-designated transplant-center routing', () => {
+  const text = 'Florida Medicaid member.\nRequested service: kidney transplant.\nMedical necessity per Medical Policy.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-MCFL-017');
+  assert.equal(f.status, 'flag');
+});
+
+test('Florida Medicaid does not collide with the Florida Blue commercial overlay', () => {
+  // 'Florida Medicaid' -> medicaid-fl; 'Florida Blue' -> florida-blue. Each
+  // packet engages its own overlay and the other stays vacuous.
+  const flMcd = runEngine(bundleOf('Florida Medicaid member.\nProcedure CPT 29881.\n'));
+  assert.ok(flMcd.find((x) => x.ruleId === 'R-PA-MCFL-001'));
+  assert.equal(flMcd.find((x) => x.ruleId === 'R-PA-FLBLUE-001').status, 'pass');
+  const flBlue = runEngine(bundleOf('Florida Blue PPO member.\nProcedure CPT 29881.\n'));
+  assert.equal(flBlue.find((x) => x.ruleId === 'R-PA-MCFL-001').status, 'pass');
 });
 
 test('CMS overlay carries the spec-aligned id R-PA-CMS-004 for proof-of-delivery', () => {
