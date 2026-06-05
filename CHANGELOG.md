@@ -6,6 +6,44 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v52 wave 52-21 — §4.5.21 Blue Cross Blue Shield of Tennessee commercial overlay, 20 of 20)
+
+The fifteenth named commercial-payer overlay, and the tenth "Blues plans by
+state" overlay after HCSC, Highmark, Florida Blue, BCBSM, Blue Shield of
+California, Independence Blue Cross, CareFirst, Blue Cross NC, and Horizon. The
+full 20-rule `R-PA-BCBST-NNN` family is anchored to Blue Cross Blue Shield of
+Tennessee's public provider authorizations pages, Medical Policies, and
+utilization-management / pharmacy program requirements (new ledger source
+`bcbst-precert`). BCBST is the dominant Blue Cross Blue Shield licensee in
+Tennessee and one of the largest independent licensees not already routed to the
+Anthem/Elevance, HCSC, Highmark, Florida Blue, BCBSM, Blue Shield of California,
+IBX, CareFirst, Blue Cross NC, or Horizon buckets.
+
+A new `'bcbst'` payer bucket in `lib/pa/payer.js` is placed after `'horizon'`
+and before the generic `'commercial'` fall-through. It matches only
+definitively-Tennessee anchors (the plan name and the `bcbst` acronym), so
+generic `blue cross` / `blue shield` and other licensees stay in the commercial
+fall-through, and an explicit "Medicare Advantage" string still wins the MA
+bucket earlier. Each rule self-gates on `bundle.payer === 'bcbst'` and vacuously
+passes on every other packet.
+
+The 20 rules mirror the prior fourteen commercial families so the fifteen
+commercial overlays stay structurally parallel and auditable side by side, with
+BCBST-specific routing names where the plan uses them: the Availity Essentials /
+BlueAccess submission channel (003), the advanced-imaging utilization-management
+program (007, 012), pharmacy management for step therapy (011), behavioral health
+(016), and the Blue Distinction Centers for Transplant (017).
+
+Coverage is now 435 rules shipped (was 415), 387 source-anchored (was 367), 30
+sources (was 29), 0 ledger orphans, 0 coverage gaps. A new `bcbst-precert`
+golden fixture (hospital-outpatient knee arthroscopy under a BCBST letterhead)
+exercises the on-bucket path — 009 flag, 003 info — and the other twenty-one
+goldens gain +20 vacuous-pass findings each; all twenty-two re-seeded
+deterministically. Tests: +9 engine assertions (count 435, the off-bucket loop,
+fire/pass checks) and +1 classify assertion. e2e pa-lint rule count 415 -> 435.
+Catalog count unchanged (255 tiles; BCBST adds rules, not a tile). The PA tile's
+wave banner advances to 52-21.
+
 ### Added (spec-v52 wave 52-20 — §4.5.20 Horizon Blue Cross Blue Shield of New Jersey commercial overlay, 20 of 20)
 
 The fourteenth named commercial-payer overlay, and the ninth "Blues plans by
