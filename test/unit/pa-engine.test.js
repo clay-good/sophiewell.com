@@ -140,8 +140,8 @@ test('runEngine passes every starter rule on a clean multi-doc happy-path packet
   assert.equal(counts.pass, STARTER_RULES.length);
 });
 
-test('STARTER_RULES at wave 52-37 is 755 rules (135 §4.5 core/overlay/specialty + 20 each for the 23 commercial overlays + 20 each for 8 per-state Medicaid overlays: CA + NY + TX + FL + OH + IL + WA + GA)', () => {
-  assert.equal(STARTER_RULES.length, 755);
+test('STARTER_RULES at wave 52-38 is 775 rules (135 §4.5 core/overlay/specialty + 20 each for the 23 commercial overlays + 20 each for 9 per-state Medicaid overlays: CA + NY + TX + FL + OH + IL + WA + GA + NC)', () => {
+  assert.equal(STARTER_RULES.length, 775);
 });
 
 // ---- wave 52-7a sanity checks: Aetna commercial overlay (§4.5.7) ----
@@ -2454,6 +2454,49 @@ test('R-PA-MCGA-017 flags a Georgia Medicaid transplant request with no Medicaid
 test('R-PA-MCGA core composition: the Medicaid core fires on a Georgia Medicaid (medicaid-ga) packet', () => {
   const findings = runEngine(bundleOf('Georgia Medicaid member.\nRequested procedure: CPT 29881.\n'));
   assert.equal(findings.find((x) => x.ruleId === 'R-PA-MCD-003').status, 'flag');
+});
+
+// ---- wave 52-38 sanity checks: North Carolina Medicaid overlay (§4.5.38) ----
+
+test('North Carolina Medicaid overlay rules vacuously pass on a non-NC-Medicaid packet', () => {
+  const findings = runEngine(happyBundle());
+  for (let n = 1; n <= 20; n += 1) {
+    const id = 'R-PA-MCNC-' + String(n).padStart(3, '0');
+    const f = findings.find((x) => x.ruleId === id);
+    assert.ok(f, id + ' should be in the findings');
+    assert.equal(f.status, 'pass', id + ' should vacuously pass off-bucket');
+  }
+});
+
+test('R-PA-MCNC-001 flags a North Carolina Medicaid request with a procedure but no coverage-criteria reference', () => {
+  const text = 'North Carolina Medicaid member.\nRequested procedure: CPT 72148 (MRI lumbar spine).\nPlease authorize.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-MCNC-001');
+  assert.equal(f.status, 'flag');
+});
+
+test('R-PA-MCNC-003 passes when the North Carolina Medicaid packet names the NCTracks channel (info)', () => {
+  const text = 'North Carolina Medicaid request submitted via NCTracks.\nProcedure CPT 27447.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-MCNC-003');
+  assert.equal(f.status, 'pass');
+});
+
+test('R-PA-MCNC-017 flags a North Carolina Medicaid transplant request with no Medicaid-designated transplant-center routing', () => {
+  const text = 'North Carolina Medicaid member.\nRequested service: kidney transplant.\nMedical necessity per Medical Policy.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-MCNC-017');
+  assert.equal(f.status, 'flag');
+});
+
+test('North Carolina Medicaid does not collide with the Blue Cross NC commercial overlay', () => {
+  // 'North Carolina Medicaid' -> medicaid-nc; 'Blue Cross Blue Shield of NC' -> bcbsnc.
+  const ncMcd = runEngine(bundleOf('North Carolina Medicaid member.\nProcedure CPT 29881.\n'));
+  assert.ok(ncMcd.find((x) => x.ruleId === 'R-PA-MCNC-001'));
+  assert.equal(ncMcd.find((x) => x.ruleId === 'R-PA-BCBSNC-001').status, 'pass');
+  assert.equal(ncMcd.find((x) => x.ruleId === 'R-PA-MCD-003').status, 'flag');
+  const bcbsnc = runEngine(bundleOf('Blue Cross Blue Shield of North Carolina PPO member.\nProcedure CPT 29881.\n'));
+  assert.equal(bcbsnc.find((x) => x.ruleId === 'R-PA-MCNC-001').status, 'pass');
 });
 
 test('CMS overlay carries the spec-aligned id R-PA-CMS-004 for proof-of-delivery', () => {

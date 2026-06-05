@@ -415,6 +415,17 @@ test('detectPayer: Georgia Medicaid routes to its own per-state bucket (wave 52-
   assert.equal(detectPayer('Georgia Medicaid Medicare Advantage dual plan'), 'cms-medicare-advantage');
 });
 
+test('detectPayer: North Carolina Medicaid routes to its own per-state bucket, distinct from Blue Cross NC (wave 52-38)', () => {
+  assert.equal(detectPayer('North Carolina Medicaid prior authorization'), 'medicaid-nc');
+  assert.equal(detectPayer('NC Medicaid via NCTracks'), 'medicaid-nc');
+  // ...Blue Cross NC (the commercial Blues licensee) still routes to its bucket.
+  assert.equal(detectPayer('Blue Cross Blue Shield of North Carolina PPO'), 'bcbsnc');
+  // ...a state-agnostic Medicaid packet stays in the generic bucket.
+  assert.equal(detectPayer('state Medicaid managed care'), 'medicaid');
+  // ...and a dual-eligible "Medicare Advantage" string wins the MA bucket.
+  assert.equal(detectPayer('North Carolina Medicaid Medicare Advantage dual plan'), 'cms-medicare-advantage');
+});
+
 test('detectPayer: unknown for empty / non-payer text', () => {
   assert.equal(detectPayer(''), 'unknown');
   assert.equal(detectPayer('this packet has no payer letterhead'), 'unknown');

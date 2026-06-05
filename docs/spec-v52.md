@@ -2207,6 +2207,32 @@ Medicaid provider URL tracked in the staleness ledger (§8.3, source
 a bundled prior-authorization list and vacuously passes with a pointer until a
 later wave bundles the list.
 
+#### 4.5.38 Per-state Medicaid overlays — North Carolina Medicaid (wave 52-38)
+
+The ninth per-state Medicaid overlay, and the thirty-second named-payer overlay
+overall. **North Carolina Medicaid** (NC DHHS) uses **NCTracks** as its provider
+portal. It is detected by a per-state bucket (`'medicaid-nc'`, anchors `north
+carolina medicaid` / `nc medicaid` / `nctracks`) placed before the generic
+`'medicaid'` bucket, and composes with the §4.5.4 Medicaid core through
+`isMedicaid(bundle.payer)`. It is deliberately distinct from the `'bcbsnc'`
+commercial bucket (§4.5.19, Blue Cross NC): a North Carolina Medicaid packet and
+a Blue Cross NC packet route to different overlays (unit-tested). An explicit
+"Medicare Advantage" string still wins the MA bucket earlier.
+
+The 20 North Carolina rules (`R-PA-MCNC-NNN`) mirror the established families with
+the two Medicaid reframings (transplant → Medicaid-designated transplant center;
+appeal → state fair hearing) and NCTracks routing. Each rule self-gates on
+`bundle.payer === 'medicaid-nc'` and returns a vacuous pass on every other
+packet. Every rule is anchored to a public North Carolina Medicaid provider URL
+tracked in the staleness ledger (§8.3, source `nc-medicaid-precert`).
+`R-PA-MCNC-004` mirrors core `R-PA-053`: it ships without a bundled
+prior-authorization list and vacuously passes with a pointer until a later wave
+bundles the list. With nine state Medicaid programs shipped (California, New
+York, Texas, Florida, Ohio, Illinois, Washington, Georgia, North Carolina), the
+remaining §9 wave 52-5+ candidates are additional state Medicaid programs, the
+other Blues plans by state, and the optional in-browser OCR path as user-volume
+data warrants.
+
 ### 4.6 The DOCX report
 
 Structure (mirrors Vaulytica v3 with healthcare-specific
@@ -3316,6 +3342,19 @@ self-contained PR; the catalog count rises only at wave 52-1.
 - Catalog count unchanged (255 tiles). Ruleset rises 735 → 755. Brings
   per-state Medicaid overlays to eight (CA, NY, TX, FL, OH, IL, WA, GA).
 
+### Wave 52-38 — North Carolina Medicaid overlay (2026-06)
+
+- The 20 North Carolina rules (§4.5.38), the `R-PA-MCNC-NNN` family,
+  anchored to the NC DHHS / NCTracks provider pages (ledger source
+  `nc-medicaid-precert`).
+- A `'medicaid-nc'` payer bucket (anchors `north carolina medicaid` / `nc
+  medicaid` / `nctracks`) before the generic `'medicaid'` bucket; composes
+  with the §4.5.4 Medicaid core via `isMedicaid()`. Deliberately distinct
+  from the `'bcbsnc'` commercial bucket (Blue Cross NC; unit-tested).
+  Transplant / appeal reframed for Medicaid.
+- Catalog count unchanged (255 tiles). Ruleset rises 755 → 775. Brings
+  per-state Medicaid overlays to nine (CA, NY, TX, FL, OH, IL, WA, GA, NC).
+
 ### Wave 52-5+ — State Medicaid overlays, additional commercial payers, OCR
 
 - Per-state Medicaid overlays (Medi-Cal / California shipped in wave
@@ -3503,6 +3542,21 @@ silently; the audit trail records the disablement.
 
 - 2026-05-27 — v52 proposed. Five waves outlined (52-1 through
   52-5+). Catalog count target at v52-1 close: 255.
+- 2026-06-05 — wave 52-38 (§4.5.38 North Carolina Medicaid — the ninth per-state
+  Medicaid overlay, the full 20-rule `R-PA-MCNC-NNN` family, thirty-second
+  named-payer overlay overall). Opens a `'medicaid-nc'` payer bucket (anchors
+  `north carolina medicaid` / `nc medicaid` / `nctracks`) before the generic
+  `'medicaid'` bucket; composes with the §4.5.4 Medicaid core via `isMedicaid()`.
+  Deliberately distinct from the `'bcbsnc'` commercial bucket (Blue Cross NC,
+  §4.5.19) — a North Carolina Medicaid packet and a Blue Cross NC packet route to
+  different overlays (unit-tested). Transplant (017) and appeal (019) reframed for
+  Medicaid; NCTracks routing. Each self-gates on `bundle.payer === 'medicaid-nc'`.
+  New ledger source `nc-medicaid-precert`. Coverage now 775 rules shipped (was
+  755), 727 source-anchored (was 707), 47 sources (was 46), 0 orphans, 0 gaps.
+  New `nc-medicaid-precert` golden fixture (Medicaid core all pass, MCNC-009
+  flag). Tests: +6 engine assertions and +1 classify assertion. e2e count 755 ->
+  775. Catalog unchanged (255). View wave banner advanced to 52-38. Nine of the
+  largest state Medicaid programs by enrollment now covered.
 - 2026-06-05 — wave 52-37 (§4.5.37 Georgia Medicaid — the eighth per-state
   Medicaid overlay, the full 20-rule `R-PA-MCGA-NNN` family, thirty-first
   named-payer overlay overall). Opens a `'medicaid-ga'` payer bucket (anchors

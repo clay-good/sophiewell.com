@@ -373,6 +373,14 @@
       "rules": ["R-PA-MCGA-001", "R-PA-MCGA-002"],
       "url": "https://medicaid.georgia.gov/providers",
       "lastVerified": "2026-06-05"
+    },
+    {
+      "id": "nc-medicaid-precert",
+      "label": "North Carolina Medicaid (NC DHHS / NCTracks) prior-authorization requirements, provider manuals, and utilization-management / pharmacy program requirements",
+      "ruleFamily": "medicaid-nc",
+      "rules": ["R-PA-MCNC-001", "R-PA-MCNC-002"],
+      "url": "https://medicaid.ncdhhs.gov/providers",
+      "lastVerified": "2026-06-05"
     }
   ],
   "acknowledgments": []

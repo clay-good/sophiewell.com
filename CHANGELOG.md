@@ -6,6 +6,32 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v52 wave 52-38 — §4.5.38 North Carolina Medicaid per-state overlay, 20 of 20)
+
+The ninth per-state Medicaid overlay, and the thirty-second named-payer overlay
+overall. The full 20-rule `R-PA-MCNC-NNN` family is anchored to North Carolina
+Medicaid's public NC DHHS / NCTracks provider pages (new ledger source
+`nc-medicaid-precert`).
+
+A new `'medicaid-nc'` payer bucket (anchors `north carolina medicaid` / `nc
+medicaid` / `nctracks`) is placed before the generic `'medicaid'` bucket and
+composes with the §4.5.4 Medicaid core via `isMedicaid()`. It is deliberately
+distinct from the `'bcbsnc'` commercial bucket (Blue Cross NC, §4.5.19): a North
+Carolina Medicaid packet and a Blue Cross NC packet route to different overlays
+(unit-tested). The 20 rules mirror the established families with the Medicaid
+reframings (transplant → Medicaid-designated transplant center; appeal → state
+fair hearing) and NCTracks routing. Each rule self-gates on `bundle.payer ===
+'medicaid-nc'` and vacuously passes on every other packet.
+
+Coverage is now 775 rules shipped (was 755), 727 source-anchored (was 707), 47
+sources (was 46), 0 ledger orphans, 0 coverage gaps. A new `nc-medicaid-precert`
+golden fixture (Medicaid core all pass, MCNC-009 site-of-care flag) re-seeds
+deterministically; all thirty-nine goldens re-seeded. Tests: +6 engine assertions
+and +1 classify assertion. e2e pa-lint rule count 755 -> 775. Catalog count
+unchanged (255 tiles). The PA tile's wave banner advances to 52-38. Nine of the
+largest state Medicaid programs by enrollment (CA, NY, TX, FL, OH, IL, WA, GA, NC)
+now have overlays.
+
 ### Added (spec-v52 wave 52-37 — §4.5.37 Georgia Medicaid per-state overlay, 20 of 20)
 
 The eighth per-state Medicaid overlay, and the thirty-first named-payer overlay
