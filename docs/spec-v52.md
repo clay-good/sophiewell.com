@@ -593,6 +593,46 @@ specific NCD/LCD number and its CMS URL. Highlights:
   (`R-PA-CMS-007`).
 - And 18 more, enumerated in `data/pa-lint/rules/v1/cms-ffs.json`.
 
+#### 4.5.2.1 CMS Hospital OPD Prior Authorization — the first real bundled PA-list membership test (wave 52-45)
+
+Every `-004`-family rule to date ("the requested service is on the payer's
+prior-authorization list", mirroring core `R-PA-053`) ships **vacuous**: it passes
+with a pointer because no list is bundled. Wave 52-45 flips that for one real,
+federally published, stable list — the **CMS Hospital Outpatient Department (OPD)
+Prior Authorization** required-services list — and ships the linter's first
+genuine PA-list **membership test**.
+
+The CMS OPD PA program requires prior authorization, and a **Unique Tracking
+Number (UTN)** on the claim, **before** certain hospital-outpatient services are
+furnished. The bundled list (`lib/pa/cms-opd-pa-list.js`, ledger source
+`cms-opd-pa-list`) covers the program's published service categories as expanded
+through 2023:
+
+- **2020-07-01** — blepharoplasty / blepharoptosis / brow ptosis repair,
+  botulinum toxin injection (chemodenervation), panniculectomy, rhinoplasty,
+  vein ablation.
+- **2021-07-01** — cervical fusion with disc removal, implanted spinal
+  neurostimulators.
+- **2023-07-01** — facet joint interventions.
+
+Each category is stored as its CPT procedure codes in the exact string form the
+extractor emits (the drug J-codes sometimes billed alongside botulinum toxin are
+deliberately excluded — the OPD program gates on the procedure code, and the
+narrower set keeps the membership test conservative). One rule consumes it:
+
+- **`R-PA-OPD-001`** (`flag`) — self-gates on `bundle.payer ===
+  'cms-medicare-ffs'` and on a hospital-outpatient context (POS 22 / 19 or an
+  explicit outpatient-department anchor), so an office-based (POS 11) service —
+  to which the OPD program does not apply — never trips it. When a requested CPT
+  is on the OPD PA list and is furnished in the hospital outpatient department but
+  no UTN / prior-authorization reference is documented, the rule flags (a likely
+  RFI or denial); once a UTN / authorization reference is present, it passes. The
+  finding names the matched CPT and its OPD category in its evidence.
+
+This is the template the remaining `-004` rules follow as their payer lists are
+bundled in later waves. The list is re-verified against the single authoritative
+CMS page on the §4.5.6 maintenance cadence (`lastVerified` in the ledger).
+
 #### 4.5.3 CMS Medicare Advantage overlay — 15 rules
 
 Covers the additional documentation MA plans request beyond
@@ -3698,6 +3738,23 @@ self-contained PR; the catalog count rises only at wave 52-1.
   per-state Medicaid overlays to fourteen (CA, NY, TX, FL, OH, IL, WA, GA, NC,
   PA, MI, NJ, AZ, IN).
 
+### Wave 52-45 — CMS Hospital OPD Prior Authorization: first real bundled PA-list membership test (2026-06)
+
+- §4.5.2.1. The first non-vacuous `-004`-style rule. New bundled dataset
+  `lib/pa/cms-opd-pa-list.js` (the CMS Hospital OPD Prior Authorization
+  required-services CPT list, by category, through the 2023 facet-joint
+  addition) and new ledger source `cms-opd-pa-list` (anchored to the single
+  authoritative CMS OPD PA program page; `R-PA-OPD-` prefix map).
+- One rule `R-PA-OPD-001` (`flag`): for a Medicare FFS hospital-outpatient
+  packet (POS 22 / 19) requesting a listed OPD service with no UTN /
+  prior-authorization reference, flags that OPD PA + UTN are required before the
+  service is furnished. Self-gates off for non-Medicare-FFS payers, office-based
+  (POS 11) services, and non-listed CPTs. Five unit tests cover the membership
+  test, the UTN branch, and all three gates.
+- Golden fixture `cms-opd-pa` added (45 fixtures total) — a Medicare FFS
+  hospital-outpatient vein-ablation packet without a UTN.
+- Catalog count unchanged (255 tiles). Ruleset rises 875 → 876.
+
 ### Wave 52-5+ — State Medicaid overlays, additional commercial payers, OCR
 
 - Per-state Medicaid overlays (Medi-Cal / California shipped in wave
@@ -3892,6 +3949,18 @@ silently; the audit trail records the disablement.
 
 - 2026-05-27 — v52 proposed. Five waves outlined (52-1 through
   52-5+). Catalog count target at v52-1 close: 255.
+- 2026-06-05 — wave 52-45 (§4.5.2.1 CMS Hospital OPD Prior Authorization — the
+  first real bundled prior-authorization-list membership test, flipping the
+  `-004` archetype from vacuous to a genuine CPT-membership check). New bundled
+  dataset `lib/pa/cms-opd-pa-list.js` (the CMS OPD PA required-services CPT list
+  by category, through the 2023 facet-joint addition) and new staleness-ledger
+  source `cms-opd-pa-list`, anchored to the single authoritative CMS OPD PA
+  program page (`R-PA-OPD-` prefix map). One rule `R-PA-OPD-001` (`flag`): a
+  Medicare FFS hospital-outpatient packet (POS 22 / 19) requesting a listed OPD
+  service without a UTN / prior-authorization reference flags; it self-gates off
+  for non-Medicare-FFS payers, office-based (POS 11) services, and non-listed
+  CPTs. Golden fixture `cms-opd-pa` added (45 fixtures). Five unit tests. Ruleset
+  875 → 876. Catalog unchanged (255). View wave banner advanced to 52-45.
 - 2026-06-05 — wave 52-44 (§4.5.44 Indiana Medicaid / Healthy Indiana Plan — the
   fourteenth per-state Medicaid overlay, thirty-seventh named-payer overlay
   overall). New per-state bucket `'medicaid-in'` (anchors `indiana medicaid` /

@@ -1,0 +1,19 @@
+{
+  "name": "cms-opd-pa",
+  "description": "Medicare FFS hospital-outpatient (POS 22) prior-authorization packet for bilateral endovenous vein ablation (CPT 36475 / 36476) -- a service on the CMS Hospital OPD Required Prior Authorization list (spec-v52 §4.5.2.1). The 'Medicare Part B / Noridian' letterhead routes the bundle to the 'cms-medicare-ffs' bucket, so the §4.5.2 CMS FFS overlay and the new §4.5.2.1 OPD PA membership test (R-PA-OPD-001) engage. The packet requests a listed OPD service in the hospital outpatient department but documents no Unique Tracking Number (UTN) / OPD prior-authorization reference, so R-PA-OPD-001 flags: Medicare requires the OPD prior authorization and the UTN before the service is furnished. The DME-focused R-PA-CMS rules self-gate off (no DME requested) and vacuously pass.",
+  "opts": { "totalBytes": 16384 },
+  "documents": [
+    {
+      "name": "cms-opd-form.txt",
+      "sha256": "fixture-cms-opd-pa-form",
+      "kind": "TXT",
+      "text": "Medicare Part B Prior Authorization Request (Noridian Healthcare Solutions, MAC Jurisdiction F)\nPatient: John Q Public\nDOB: 1955-03-08\nMedicare Beneficiary Identifier: 1EG4-TE5-MK73\nDate of service: 2026-07-15\nPlace of service: 22\nServicing facility: Mercy Hospital Outpatient Department\nRequested procedure: bilateral endovenous radiofrequency vein ablation, great saphenous vein, CPT 36475 and 36476\nDx: I83.ptr811 varicose veins of right lower extremity with ulcer and inflammation\nQuantity: 2\nOrdering provider NPI: 1234567893\nServicing facility NPI: 1306849393\nTIN: 123456789\nMedical necessity: symptomatic venous reflux; failed 12 weeks of conservative therapy (compression stockings).\nSignature: Vascular Surgery MD, 2026-07-01\n"
+    },
+    {
+      "name": "cms-opd-note.txt",
+      "sha256": "fixture-cms-opd-pa-note",
+      "kind": "TXT",
+      "text": "Clinical note\nChief complaint: aching, heaviness, and a non-healing ulcer of the right lower leg.\nHistory of present illness: symptomatic great saphenous vein reflux > 0.5 s on duplex ultrasound; six months of symptoms despite a documented 12-week trial of graduated compression stockings.\nPhysical exam: visible varicosities medial right calf; healing venous stasis ulcer.\nAssessment and plan: endovenous ablation of the right great saphenous vein in the hospital outpatient department.\nMedical necessity: CEAP C6; conservative therapy failed.\nNote date: 2026-07-01\nSigned: Vascular Surgery MD, 2026-07-01\n"
+    }
+  ]
+}

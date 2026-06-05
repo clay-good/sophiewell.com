@@ -374,6 +374,23 @@ unambiguous program / fiscal-agent names (avoid the bare word "medical"; the
 hyphen in `medi-cal` is what keeps it from matching it) and verify the source on
 the same 90-day cadence as the commercial overlays.
 
+## Bundled prior-authorization lists (wave 52-45+)
+
+Most ledger sources are a *URL* the maintainer re-reads on cadence. The CMS
+Hospital OPD Prior Authorization list (`cms-opd-pa-list`) is the first source
+backed by a **bundled dataset** instead: `lib/pa/cms-opd-pa-list.js` holds the
+actual CPT codes (by category) that the rule `R-PA-OPD-001` membership-tests
+against. Re-verification therefore has two steps, done together: (1) re-read the
+single authoritative CMS OPD PA program page (the ledger `url`) to confirm the
+service categories and CPT codes are current, and (2) reconcile
+`lib/pa/cms-opd-pa-list.js` against it — CMS adds categories over time (it added
+facet joint interventions in 2023), so a new category means new codes in the
+dataset, and a new golden seed (`node scripts/audit-pa.mjs --update`). Bump
+`lastVerified` in both `pa-staleness-ledger.json` and the dataset comment in the
+same pass. This is the template the deferred per-overlay `-004` lists follow as
+each payer's prior-authorization list is bundled in a later wave (until then those
+rules pass vacuously with a pointer, mirroring core `R-PA-053`).
+
 ## The refresh helper: `scripts/refresh-pa-rules.mjs` (wave 52-6i)
 
 Automates the mechanical half of the monthly verification pass. It fetches

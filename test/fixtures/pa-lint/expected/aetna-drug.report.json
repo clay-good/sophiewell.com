@@ -9,12 +9,12 @@
     "disclaimer": "Sophie Prior-Auth Packet Linter is a deterministic checklist. It is not medical advice. It is not legal advice. It is not coding advice. It does not transmit anything to any payer. Your packet stays in this browser tab; we never see your data. Findings reflect what Sophie's ruleset checks; they are not a guarantee of payer approval. A passing report does not mean the packet will be approved; a failing report does not mean the packet will be denied. The clinical adequacy of every document is the reviewer's responsibility. Sophie's ruleset is versioned and cites every source; verify citations against current payer policy before relying on any finding for a clinical or revenue decision."
   },
   "executiveSummary": {
-    "totalRulesEvaluated": 875,
+    "totalRulesEvaluated": 876,
     "counts": {
       "block": 0,
       "flag": 8,
       "info": 5,
-      "pass": 862,
+      "pass": 863,
       "error": 0,
       "disabled": 0
     },
@@ -8472,6 +8472,16 @@
       "remediation": null
     },
     {
+      "ruleId": "R-PA-OPD-001",
+      "severity": "flag",
+      "status": "pass",
+      "description": "Medicare FFS hospital-outpatient service on the CMS OPD Required Prior Authorization list: UTN / prior-authorization reference present",
+      "citation": "spec-v52 §4.5.2.1 R-PA-OPD-001. CMS requires prior authorization for certain hospital outpatient department (OPD) services -- blepharoplasty, botulinum toxin injection, panniculectomy, rhinoplasty, vein ablation (2020), cervical fusion with disc removal, implanted spinal neurostimulators (2021), and facet joint interventions (2023) -- before the service is furnished; the provider receives a Unique Tracking Number (UTN) that must appear on the claim. A listed OPD service requested without that authorization / UTN is a likely RFI or denial. <https://www.cms.gov/research-statistics-data-and-systems/monitoring-programs/medicare-ffs-compliance-programs/prior-authorization-and-pre-claim-review-initiatives/prior-authorization-certain-hospital-outpatient-department-opd-services>",
+      "evidence": "Not a Medicare FFS packet; rule vacuously satisfied.",
+      "note": null,
+      "remediation": null
+    },
+    {
       "ruleId": "R-PA-RAD-001",
       "severity": "info",
       "status": "pass",
@@ -9757,6 +9767,7 @@
       "R-PA-MCWA-018",
       "R-PA-MCWA-019",
       "R-PA-MCWA-020",
+      "R-PA-OPD-001",
       "R-PA-RAD-001",
       "R-PA-RAD-002",
       "R-PA-RAD-003",
@@ -10170,6 +10181,13 @@
           "label": "Indiana Medicaid / Indiana Health Coverage Programs (FSSA / OMPP / Healthy Indiana Plan / IHCP / CoreMMIS) prior-authorization requirements, provider manuals, and utilization-management / pharmacy program requirements",
           "url": "https://www.in.gov/medicaid/providers/",
           "ruleFamily": "medicaid-in",
+          "lastVerified": "2026-06-05"
+        },
+        {
+          "id": "cms-opd-pa-list",
+          "label": "CMS Hospital Outpatient Department (OPD) Prior Authorization required-services list (blepharoplasty, botulinum toxin, panniculectomy, rhinoplasty, vein ablation, cervical fusion with disc removal, implanted spinal neurostimulators, facet joint interventions) -- the bundled CPT list backing the first real -004-style membership test",
+          "url": "https://www.cms.gov/research-statistics-data-and-systems/monitoring-programs/medicare-ffs-compliance-programs/prior-authorization-and-pre-claim-review-initiatives/prior-authorization-certain-hospital-outpatient-department-opd-services",
+          "ruleFamily": "cms-opd-pa",
           "lastVerified": "2026-06-05"
         }
       ],

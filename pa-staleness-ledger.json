@@ -421,6 +421,14 @@
       "rules": ["R-PA-MCIN-001", "R-PA-MCIN-002"],
       "url": "https://www.in.gov/medicaid/providers/",
       "lastVerified": "2026-06-05"
+    },
+    {
+      "id": "cms-opd-pa-list",
+      "label": "CMS Hospital Outpatient Department (OPD) Prior Authorization required-services list (blepharoplasty, botulinum toxin, panniculectomy, rhinoplasty, vein ablation, cervical fusion with disc removal, implanted spinal neurostimulators, facet joint interventions) -- the bundled CPT list backing the first real -004-style membership test",
+      "ruleFamily": "cms-opd-pa",
+      "rules": ["R-PA-OPD-001"],
+      "url": "https://www.cms.gov/research-statistics-data-and-systems/monitoring-programs/medicare-ffs-compliance-programs/prior-authorization-and-pre-claim-review-initiatives/prior-authorization-certain-hospital-outpatient-department-opd-services",
+      "lastVerified": "2026-06-05"
     }
   ],
   "acknowledgments": []

@@ -6,6 +6,39 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v52 wave 52-45 — §4.5.2.1 CMS Hospital OPD Prior Authorization: the first real bundled PA-list membership test)
+
+A different kind of wave: not another payer overlay, but the linter's **first
+non-vacuous prior-authorization-list membership test**. Every "is the requested
+service on the payer's PA list?" rule to date (`R-PA-053` and the per-overlay
+`-004` rules) ships vacuous — it passes with a pointer because no list is
+bundled. This wave flips that for one real, federally published, stable list.
+
+- New bundled dataset `lib/pa/cms-opd-pa-list.js` — the **CMS Hospital
+  Outpatient Department (OPD) Prior Authorization** required-services CPT list,
+  organized by category through the 2023 facet-joint addition: blepharoplasty,
+  botulinum toxin injection, panniculectomy, rhinoplasty, vein ablation (2020);
+  cervical fusion with disc removal, implanted spinal neurostimulators (2021);
+  facet joint interventions (2023). CPT procedure codes only (the drug J-codes
+  billed alongside botulinum toxin are deliberately excluded to keep the
+  membership test conservative).
+- New rule `R-PA-OPD-001` (`flag`) in `lib/pa/rules.js`: for a Medicare FFS
+  hospital-outpatient packet (POS 22 / 19, or an explicit outpatient-department
+  anchor) requesting a listed OPD service with **no Unique Tracking Number (UTN)
+  / prior-authorization reference**, it flags — Medicare requires the OPD
+  authorization and the UTN on the claim before the service is furnished. It
+  self-gates off for non-Medicare-FFS payers, office-based (POS 11) services, and
+  non-listed CPTs. The finding names the matched CPT and its OPD category.
+- New staleness-ledger source `cms-opd-pa-list` (`pa-staleness-ledger.json`,
+  regenerated into `lib/pa/staleness-ledger.js`) and a `R-PA-OPD-` →
+  `cms-opd-pa-list` prefix map in `lib/pa/rule-sources.js`, anchored to the single
+  authoritative CMS OPD PA program page and re-verified on the §4.5.6 cadence.
+- New golden fixture `cms-opd-pa` (45 fixtures total) — a Medicare FFS
+  hospital-outpatient vein-ablation packet without a UTN. Five unit tests cover
+  the membership test, the UTN branch, and the payer / POS / non-listed gates.
+- Catalog count unchanged (255 tiles). Ruleset rises **875 → 876**. View wave
+  banner advanced to 52-45.
+
 ### Added (spec-v52 wave 52-44 — §4.5.44 Indiana Medicaid / Healthy Indiana Plan overlay for the Prior-Auth Packet Linter)
 
 The fourteenth per-state Medicaid overlay, and the thirty-seventh named-payer

@@ -11,16 +11,31 @@
   "executiveSummary": {
     "totalRulesEvaluated": 876,
     "counts": {
-      "block": 0,
-      "flag": 5,
+      "block": 1,
+      "flag": 9,
       "info": 3,
-      "pass": 868,
+      "pass": 863,
       "error": 0,
       "disabled": 0
     },
-    "blockFindings": []
+    "blockFindings": [
+      {
+        "ruleId": "R-PA-003",
+        "description": "Member ID present in at least one document"
+      }
+    ]
   },
   "findings": [
+    {
+      "ruleId": "R-PA-003",
+      "severity": "block",
+      "status": "block",
+      "description": "Member ID present in at least one document",
+      "citation": "spec-v52 §4.5.1 R-PA-003. Payer-specific format validation lives in payer overlays (v52-2+).",
+      "evidence": null,
+      "note": "No \"Member ID:\" / \"Subscriber ID:\" / \"MRN:\" line found.",
+      "remediation": "Address the rule's `note` field and resubmit."
+    },
     {
       "ruleId": "R-PA-023",
       "severity": "flag",
@@ -32,13 +47,13 @@
       "remediation": "Address the rule's `note` field and resubmit."
     },
     {
-      "ruleId": "R-PA-029",
+      "ruleId": "R-PA-026",
       "severity": "flag",
       "status": "flag",
-      "description": "Step-therapy documentation present when payer requires it",
-      "citation": "spec-v52 §4.5.1 R-PA-029. Default firing condition is keyword absence; payer overlays will pre-filter on whether the requested drug class triggers step therapy.",
+      "description": "Imaging-report document attached when the packet references imaging",
+      "citation": "spec-v52 §4.5.1 R-PA-026.",
       "evidence": null,
-      "note": "No step-therapy documentation anchor found. If the requested drug class requires step therapy, the packet will be denied.",
+      "note": "Packet references imaging but no document was classified as imaging-report.",
       "remediation": "Address the rule's `note` field and resubmit."
     },
     {
@@ -62,14 +77,54 @@
       "remediation": "Address the rule's `note` field and resubmit."
     },
     {
-      "ruleId": "R-PA-CMS-009",
+      "ruleId": "R-PA-055",
       "severity": "flag",
       "status": "flag",
-      "description": "Medicare FFS DME: supplier PTAN documented",
-      "citation": "spec-v52 §4.5.2 R-PA-CMS-009. CMS supplier PTAN (Provider Transaction Access Number) is required on DME claims so the MAC can match the supplier to the Medicare enrollment record.",
+      "description": "Bilateral procedure flag matches modifier 50 presence",
+      "citation": "spec-v52 §4.5.1 R-PA-055. \"Bilateral\" mentioned in the clinical narrative should be accompanied by modifier 50 on the CPT line.",
       "evidence": null,
-      "note": "Medicare FFS DME request without a supplier PTAN anchor.",
-      "remediation": "Attach the missing CMS documentation (NCD / LCD / IOM citation) and resubmit."
+      "note": "Packet references a bilateral procedure but modifier 50 is not on the CPT line.",
+      "remediation": "Address the rule's `note` field and resubmit."
+    },
+    {
+      "ruleId": "R-PA-OPD-001",
+      "severity": "flag",
+      "status": "flag",
+      "description": "Medicare FFS hospital-outpatient service on the CMS OPD Required Prior Authorization list: UTN / prior-authorization reference present",
+      "citation": "spec-v52 §4.5.2.1 R-PA-OPD-001. CMS requires prior authorization for certain hospital outpatient department (OPD) services -- blepharoplasty, botulinum toxin injection, panniculectomy, rhinoplasty, vein ablation (2020), cervical fusion with disc removal, implanted spinal neurostimulators (2021), and facet joint interventions (2023) -- before the service is furnished; the provider receives a Unique Tracking Number (UTN) that must appear on the claim. A listed OPD service requested without that authorization / UTN is a likely RFI or denial. <https://www.cms.gov/research-statistics-data-and-systems/monitoring-programs/medicare-ffs-compliance-programs/prior-authorization-and-pre-claim-review-initiatives/prior-authorization-certain-hospital-outpatient-department-opd-services>",
+      "evidence": null,
+      "note": "Requested service CPT 36475 (vein ablation) is on the CMS Hospital OPD Required Prior Authorization list and is furnished in the hospital outpatient department, but no Unique Tracking Number (UTN) / prior-authorization reference is documented. Medicare requires OPD prior authorization, and the UTN on the claim, before the service is furnished.",
+      "remediation": "Address the rule's `note` field and resubmit."
+    },
+    {
+      "ruleId": "R-PA-SURG-002",
+      "severity": "flag",
+      "status": "flag",
+      "description": "Elective surgery: imaging supporting surgical indication attached",
+      "citation": "spec-v52 §4.5.5 R-PA-SURG-002. Surgical PAs typically require imaging (X-ray, MRI, CT, US) that demonstrates the anatomical / pathological basis for surgery; the imaging report or anchor must be in the packet.",
+      "evidence": null,
+      "note": "Surgery request without an attached imaging-report document or imaging-findings anchor.",
+      "remediation": "Attach the missing surgical supporting documentation (conservative management, imaging, ASA, consent)."
+    },
+    {
+      "ruleId": "R-PA-SURG-004",
+      "severity": "flag",
+      "status": "flag",
+      "description": "Surgery: ASA Physical Status classification documented",
+      "citation": "spec-v52 §4.5.5 R-PA-SURG-004. The ASA Physical Status is the de-facto standard for perioperative risk stratification; payers expect an ASA classification (1-5) on every elective surgery PA.",
+      "evidence": null,
+      "note": "Surgery request without an ASA Physical Status (1-5) anchor.",
+      "remediation": "Attach the missing surgical supporting documentation (conservative management, imaging, ASA, consent)."
+    },
+    {
+      "ruleId": "R-PA-SURG-005",
+      "severity": "flag",
+      "status": "flag",
+      "description": "Surgery: informed consent documented, dated on or before the date of surgery",
+      "citation": "spec-v52 §4.5.5 R-PA-SURG-005. Joint Commission / payer convention: a procedure-specific informed consent must be obtained before the surgical encounter. This rule narrows R-PA-059 (core consent check) to the surgical specialty trigger so the audit trail flags consent issues in the specialty section of the report.",
+      "evidence": null,
+      "note": "Surgery request without an informed-consent / surgical-consent anchor.",
+      "remediation": "Attach the missing surgical supporting documentation (conservative management, imaging, ASA, consent)."
     },
     {
       "ruleId": "R-PA-031",
@@ -107,7 +162,7 @@
       "status": "pass",
       "description": "Patient name present in at least one document",
       "citation": "spec-v52 §4.5.1 R-PA-001 (core, payer-agnostic).",
-      "evidence": "Found \"Robert E Lee\" in cms-pa-form.txt",
+      "evidence": "Found \"John Q Public\" in cms-opd-form.txt",
       "note": null,
       "remediation": null
     },
@@ -117,17 +172,7 @@
       "status": "pass",
       "description": "Date of birth present in at least one document",
       "citation": "spec-v52 §4.5.1 R-PA-002 (core, payer-agnostic).",
-      "evidence": "DOB \"1948-01-19\" in cms-pa-form.txt",
-      "note": null,
-      "remediation": null
-    },
-    {
-      "ruleId": "R-PA-003",
-      "severity": "block",
-      "status": "pass",
-      "description": "Member ID present in at least one document",
-      "citation": "spec-v52 §4.5.1 R-PA-003. Payer-specific format validation lives in payer overlays (v52-2+).",
-      "evidence": "Member ID \"1EG4TE5MK73\" in cms-pa-form.txt",
+      "evidence": "DOB \"1955-03-08\" in cms-opd-form.txt",
       "note": null,
       "remediation": null
     },
@@ -137,7 +182,7 @@
       "status": "pass",
       "description": "Service date present in the packet",
       "citation": "spec-v52 §4.5.1 R-PA-004 (core, payer-agnostic).",
-      "evidence": "8 date string(s) recognized across the packet.",
+      "evidence": "5 date string(s) recognized across the packet.",
       "note": null,
       "remediation": null
     },
@@ -147,7 +192,7 @@
       "status": "pass",
       "description": "Service date is not past the default retro-auth window (90 days)",
       "citation": "spec-v52 §4.5.1 R-PA-005. Default retro-auth window is 90 days; payer overlays override. Scoped to dates explicitly labeled \"Date of service\" / \"DOS\" / \"Service date\" so DOB strings and signature dates are excluded.",
-      "evidence": "Oldest labeled service date is 19 days in the past.",
+      "evidence": "No labeled service date; rule vacuously satisfied (R-PA-004 covers presence).",
       "note": null,
       "remediation": null
     },
@@ -157,7 +202,7 @@
       "status": "pass",
       "description": "Service date is not more than 365 days in the future",
       "citation": "spec-v52 §4.5.1 R-PA-006. Hard ceiling, not payer-specific. Scoped to dates labeled \"Date of service\" / \"DOS\" / \"Service date\".",
-      "evidence": "Furthest labeled service date is -19 days in the future.",
+      "evidence": "Furthest labeled service date is 47 days in the future.",
       "note": null,
       "remediation": null
     },
@@ -167,7 +212,7 @@
       "status": "pass",
       "description": "At least one CPT or HCPCS code present",
       "citation": "spec-v52 §4.5.1 R-PA-007 (core, payer-agnostic). AMA CPT / CMS HCPCS Level II.",
-      "evidence": "Codes: E0601",
+      "evidence": "Codes: 36475, 36476",
       "note": null,
       "remediation": null
     },
@@ -177,7 +222,7 @@
       "status": "pass",
       "description": "Each extracted CPT code is well-formed (5 digits) and not on the bundled deleted-codes list",
       "citation": "spec-v52 §4.5.1 R-PA-008. v52-1k ships an empty deleted-codes table; the rule is a format-strict pass and expands as payer-overlay waves populate the table per §5.3.",
-      "evidence": "1 code(s) format-valid; none on the bundled deleted list.",
+      "evidence": "2 code(s) format-valid; none on the bundled deleted list.",
       "note": null,
       "remediation": null
     },
@@ -187,7 +232,7 @@
       "status": "pass",
       "description": "Each extracted HCPCS code is well-formed (letter + 4 digits) and not on the bundled deleted-codes list",
       "citation": "spec-v52 §4.5.1 R-PA-009. v52-1k ships an empty deleted-codes table.",
-      "evidence": "1 HCPCS code(s) format-valid; none on the bundled deleted list.",
+      "evidence": "No HCPCS Level II code; rule vacuously satisfied.",
       "note": null,
       "remediation": null
     },
@@ -197,7 +242,7 @@
       "status": "pass",
       "description": "At least one ICD-10-CM diagnosis code present",
       "citation": "spec-v52 §4.5.1 R-PA-010 (core, payer-agnostic). ICD-10-CM, public domain (CMS / CDC).",
-      "evidence": "Codes: G47.33",
+      "evidence": "Codes: I83",
       "note": null,
       "remediation": null
     },
@@ -217,7 +262,7 @@
       "status": "pass",
       "description": "No bundled NCCI procedure-to-procedure (PTP) edit-pair conflict among the extracted CPT codes",
       "citation": "spec-v52 §4.5.1 R-PA-012. v52-1k ships an empty NCCI PTP-pairs table per §5.3; populated to ~5,000 high-volume pairs by a later wave.",
-      "evidence": "Fewer than 2 distinct CPT codes; rule vacuously satisfied.",
+      "evidence": "NCCI PTP-pairs table empty at v52-1k; check skipped.",
       "note": null,
       "remediation": null
     },
@@ -227,7 +272,7 @@
       "status": "pass",
       "description": "Place-of-service code is present and on the bundled CMS list",
       "citation": "spec-v52 §4.5.1 R-PA-013. CMS Place of Service codes (POS list, public).",
-      "evidence": "POS code(s): 12",
+      "evidence": "POS code(s): 22",
       "note": null,
       "remediation": null
     },
@@ -247,7 +292,7 @@
       "status": "pass",
       "description": "Quantity / units present and >= 1",
       "citation": "spec-v52 §4.5.1 R-PA-015.",
-      "evidence": "Quantity 1 found.",
+      "evidence": "Quantity 2 found.",
       "note": null,
       "remediation": null
     },
@@ -267,7 +312,7 @@
       "status": "pass",
       "description": "Ordering provider signature present in at least one document",
       "citation": "spec-v52 §4.5.1 R-PA-017. Detects \"Signature:\" / \"Signed by\" / \"Electronically signed\" / \"/s/\" anchors.",
-      "evidence": "Signature anchor in cms-pa-form.txt",
+      "evidence": "Signature anchor in cms-opd-form.txt",
       "note": null,
       "remediation": null
     },
@@ -277,7 +322,7 @@
       "status": "pass",
       "description": "Ordering provider signature is dated (only if a signature is present)",
       "citation": "spec-v52 §4.5.1 R-PA-018.",
-      "evidence": "Dated signature in cms-pa-form.txt",
+      "evidence": "Dated signature in cms-opd-form.txt",
       "note": null,
       "remediation": null
     },
@@ -307,7 +352,7 @@
       "status": "pass",
       "description": "Clinical-note content appears in at least one document",
       "citation": "spec-v52 §4.5.1 R-PA-021. Keyword anchors: \"chief complaint\", \"history of present illness\", \"assessment and plan\", \"progress note\", \"clinical note\", \"soap note\".",
-      "evidence": "Clinical-note anchor in cms-note.txt",
+      "evidence": "Clinical-note anchor in cms-opd-note.txt",
       "note": null,
       "remediation": null
     },
@@ -317,7 +362,7 @@
       "status": "pass",
       "description": "Clinical-note document has at least one extractable date",
       "citation": "spec-v52 §4.5.1 R-PA-022. Default clinical-look-back window is payer-specific; v52-1h checks date presence inside the clinical-note document(s) only.",
-      "evidence": "Date(s) found in clinical-note: cms-note.txt",
+      "evidence": "Date(s) found in clinical-note: cms-opd-note.txt",
       "note": null,
       "remediation": null
     },
@@ -327,7 +372,7 @@
       "status": "pass",
       "description": "Medical-necessity statement present",
       "citation": "spec-v52 §4.5.1 R-PA-024. Free-text anchor: \"medical necessity\", \"medically necessary\", \"necessary because\", \"necessary due to\".",
-      "evidence": "Anchor in cms-note.txt",
+      "evidence": "Anchor in cms-opd-form.txt",
       "note": null,
       "remediation": null
     },
@@ -338,16 +383,6 @@
       "description": "Lab-result document attached when the packet references labs",
       "citation": "spec-v52 §4.5.1 R-PA-025.",
       "evidence": "No lab references in packet; rule vacuously satisfied.",
-      "note": null,
-      "remediation": null
-    },
-    {
-      "ruleId": "R-PA-026",
-      "severity": "flag",
-      "status": "pass",
-      "description": "Imaging-report document attached when the packet references imaging",
-      "citation": "spec-v52 §4.5.1 R-PA-026.",
-      "evidence": "No imaging references in packet; rule vacuously satisfied.",
       "note": null,
       "remediation": null
     },
@@ -368,6 +403,16 @@
       "description": "Each attached imaging-report document is dated within the default freshness window (12 months)",
       "citation": "spec-v52 §4.5.1 R-PA-028.",
       "evidence": "No imaging-report documents to evaluate.",
+      "note": null,
+      "remediation": null
+    },
+    {
+      "ruleId": "R-PA-029",
+      "severity": "flag",
+      "status": "pass",
+      "description": "Step-therapy documentation present when payer requires it",
+      "citation": "spec-v52 §4.5.1 R-PA-029. Default firing condition is keyword absence; payer overlays will pre-filter on whether the requested drug class triggers step therapy.",
+      "evidence": "Anchor in cms-opd-note.txt",
       "note": null,
       "remediation": null
     },
@@ -537,7 +582,7 @@
       "status": "pass",
       "description": "Diagnosis-procedure linkage shown (an ICD-10 code and a CPT/HCPCS code co-occur within the same document)",
       "citation": "spec-v52 §4.5.1 R-PA-050. Heuristic: at least one document carries both an ICD-10 code and a CPT/HCPCS code within ~400 characters of each other.",
-      "evidence": "ICD-10 + CPT/HCPCS co-occur in cms-pa-form.txt",
+      "evidence": "ICD-10 + CPT/HCPCS co-occur in cms-opd-form.txt",
       "note": null,
       "remediation": null
     },
@@ -578,16 +623,6 @@
       "description": "Each modifier 25 / 59 is accompanied by supporting documentation",
       "citation": "spec-v52 §4.5.1 R-PA-054. Modifiers 25 and 59 are the two most-audited CPT modifiers; both require documentation of a separately identifiable service.",
       "evidence": "No modifier 25 / 59 anchor; rule vacuously satisfied.",
-      "note": null,
-      "remediation": null
-    },
-    {
-      "ruleId": "R-PA-055",
-      "severity": "flag",
-      "status": "pass",
-      "description": "Bilateral procedure flag matches modifier 50 presence",
-      "citation": "spec-v52 §4.5.1 R-PA-055. \"Bilateral\" mentioned in the clinical narrative should be accompanied by modifier 50 on the CPT line.",
-      "evidence": "No bilateral mention; rule vacuously satisfied.",
       "note": null,
       "remediation": null
     },
@@ -3687,7 +3722,7 @@
       "status": "pass",
       "description": "Medicare FFS DME: face-to-face encounter documented",
       "citation": "spec-v52 §4.5.2 R-PA-CMS-001. CMS NCD-280.x; Medicare requires a face-to-face encounter with the prescribing physician within 6 months prior to the written order for most DME categories.",
-      "evidence": "F2F encounter anchor in cms-note.txt",
+      "evidence": "Medicare FFS packet without a DME context anchor; rule vacuously satisfied.",
       "note": null,
       "remediation": null
     },
@@ -3697,7 +3732,7 @@
       "status": "pass",
       "description": "Medicare FFS DME: Detailed / Standard Written Order (DWO/SWO) present and dated",
       "citation": "spec-v52 §4.5.2 R-PA-CMS-002. CMS IOM Pub 100-08 ch. 5; a Standard Written Order (or pre-2020 Detailed Written Order) signed and dated by the prescribing physician is required before DME delivery.",
-      "evidence": "SWO/DWO + dated signature present.",
+      "evidence": "Medicare FFS packet without a DME context anchor; rule vacuously satisfied.",
       "note": null,
       "remediation": null
     },
@@ -3707,7 +3742,7 @@
       "status": "pass",
       "description": "Medicare FFS DME: Standard Written Order elements complete (beneficiary, item, date, quantity, prescriber NPI, signature)",
       "citation": "spec-v52 §4.5.2 R-PA-CMS-003. CMS IOM Pub 100-08 ch. 5; the SWO must carry the beneficiary identity, item description / HCPCS, order date, quantity, treating-practitioner NPI, and a dated prescriber signature.",
-      "evidence": "All required SWO elements detected.",
+      "evidence": "Medicare FFS packet without a DME context anchor; rule vacuously satisfied.",
       "note": null,
       "remediation": null
     },
@@ -3717,7 +3752,7 @@
       "status": "pass",
       "description": "Medicare FFS DME: proof of delivery requirements documented",
       "citation": "spec-v52 §4.5.2 R-PA-CMS-004. CMS IOM Pub 100-08 ch. 4 §4.26; supplier must retain proof of delivery (POD) including date and recipient signature.",
-      "evidence": "POD anchor in cms-pa-form.txt",
+      "evidence": "Medicare FFS packet without a DME context anchor; rule vacuously satisfied.",
       "note": null,
       "remediation": null
     },
@@ -3737,7 +3772,7 @@
       "status": "pass",
       "description": "Medicare FFS PAP device: sleep study results documented within 12 months prior to initial PAP order",
       "citation": "spec-v52 §4.5.2 R-PA-CMS-006. LCD L33718 (Positive Airway Pressure Devices) requires a Medicare-covered sleep test with results within 12 months prior to initiating PAP therapy.",
-      "evidence": "Sleep-study anchor in cms-note.txt",
+      "evidence": "Not a PAP-device request; rule vacuously satisfied.",
       "note": null,
       "remediation": null
     },
@@ -3758,6 +3793,16 @@
       "description": "Medicare FFS home oxygen: qualifying arterial blood gas or pulse-oximetry result documented",
       "citation": "spec-v52 §4.5.2 R-PA-CMS-008. CMS NCD 240.2 / LCD L33797 (Oxygen and Oxygen Equipment) requires a qualifying ABG (PaO2 <= 55 mmHg) or pulse oximetry (SpO2 <= 88%) on room air at rest, during sleep, or with exertion.",
       "evidence": "No home-oxygen anchor; rule vacuously satisfied.",
+      "note": null,
+      "remediation": null
+    },
+    {
+      "ruleId": "R-PA-CMS-009",
+      "severity": "flag",
+      "status": "pass",
+      "description": "Medicare FFS DME: supplier PTAN documented",
+      "citation": "spec-v52 §4.5.2 R-PA-CMS-009. CMS supplier PTAN (Provider Transaction Access Number) is required on DME claims so the MAC can match the supplier to the Medicare enrollment record.",
+      "evidence": "Medicare FFS packet without a DME context anchor; rule vacuously satisfied.",
       "note": null,
       "remediation": null
     },
@@ -8472,16 +8517,6 @@
       "remediation": null
     },
     {
-      "ruleId": "R-PA-OPD-001",
-      "severity": "flag",
-      "status": "pass",
-      "description": "Medicare FFS hospital-outpatient service on the CMS OPD Required Prior Authorization list: UTN / prior-authorization reference present",
-      "citation": "spec-v52 §4.5.2.1 R-PA-OPD-001. CMS requires prior authorization for certain hospital outpatient department (OPD) services -- blepharoplasty, botulinum toxin injection, panniculectomy, rhinoplasty, vein ablation (2020), cervical fusion with disc removal, implanted spinal neurostimulators (2021), and facet joint interventions (2023) -- before the service is furnished; the provider receives a Unique Tracking Number (UTN) that must appear on the claim. A listed OPD service requested without that authorization / UTN is a likely RFI or denial. <https://www.cms.gov/research-statistics-data-and-systems/monitoring-programs/medicare-ffs-compliance-programs/prior-authorization-and-pre-claim-review-initiatives/prior-authorization-certain-hospital-outpatient-department-opd-services>",
-      "evidence": "No requested service is on the CMS Hospital OPD Required Prior Authorization list; rule vacuously satisfied.",
-      "note": null,
-      "remediation": null
-    },
-    {
       "ruleId": "R-PA-RAD-001",
       "severity": "info",
       "status": "pass",
@@ -8537,17 +8572,7 @@
       "status": "pass",
       "description": "Elective surgery: conservative-management trial documented",
       "citation": "spec-v52 §4.5.5 R-PA-SURG-001. Payers approve elective surgery only after documented failure of non-operative management appropriate to the condition (e.g., joint replacement: PT + NSAIDs; spine: PT + epidurals); emergent surgery is exempt.",
-      "evidence": "No surgery CPT (10004-69990) in packet; rule vacuously satisfied.",
-      "note": null,
-      "remediation": null
-    },
-    {
-      "ruleId": "R-PA-SURG-002",
-      "severity": "flag",
-      "status": "pass",
-      "description": "Elective surgery: imaging supporting surgical indication attached",
-      "citation": "spec-v52 §4.5.5 R-PA-SURG-002. Surgical PAs typically require imaging (X-ray, MRI, CT, US) that demonstrates the anatomical / pathological basis for surgery; the imaging report or anchor must be in the packet.",
-      "evidence": "No surgery CPT in packet; rule vacuously satisfied.",
+      "evidence": "Conservative-management anchor in cms-opd-form.txt",
       "note": null,
       "remediation": null
     },
@@ -8557,27 +8582,7 @@
       "status": "pass",
       "description": "Surgery with ASA >= 3: anesthesia / pre-op medical clearance documented",
       "citation": "spec-v52 §4.5.5 R-PA-SURG-003. ASA Physical Status >= 3 (severe systemic disease) requires documented pre-operative medical clearance / anesthesia evaluation so the perioperative risk has been assessed by an appropriate clinician.",
-      "evidence": "No surgery CPT in packet; rule vacuously satisfied.",
-      "note": null,
-      "remediation": null
-    },
-    {
-      "ruleId": "R-PA-SURG-004",
-      "severity": "flag",
-      "status": "pass",
-      "description": "Surgery: ASA Physical Status classification documented",
-      "citation": "spec-v52 §4.5.5 R-PA-SURG-004. The ASA Physical Status is the de-facto standard for perioperative risk stratification; payers expect an ASA classification (1-5) on every elective surgery PA.",
-      "evidence": "No surgery CPT in packet; rule vacuously satisfied.",
-      "note": null,
-      "remediation": null
-    },
-    {
-      "ruleId": "R-PA-SURG-005",
-      "severity": "flag",
-      "status": "pass",
-      "description": "Surgery: informed consent documented, dated on or before the date of surgery",
-      "citation": "spec-v52 §4.5.5 R-PA-SURG-005. Joint Commission / payer convention: a procedure-specific informed consent must be obtained before the surgical encounter. This rule narrows R-PA-059 (core consent check) to the surgical specialty trigger so the audit trail flags consent issues in the specialty section of the report.",
-      "evidence": "No surgery CPT in packet; rule vacuously satisfied.",
+      "evidence": "No ASA >= 3 anchor; rule vacuously satisfied.",
       "note": null,
       "remediation": null
     },
@@ -8784,15 +8789,14 @@
   ],
   "evidenceLedger": [
     {
-      "document": "cms-pa-form.txt",
-      "sha256": "fixture-cms-dme-form",
+      "document": "cms-opd-form.txt",
+      "sha256": "fixture-cms-opd-pa-form",
       "kind": "TXT",
       "role": "pa-form",
       "payer": "cms-medicare-ffs",
       "ledger": {
-        "patientName": "Robert E Lee",
-        "dob": "1948-01-19",
-        "memberId": "1EG4TE5MK73",
+        "patientName": "John Q Public",
+        "dob": "1955-03-08",
         "npis": [
           "1234567893",
           "1306849393"
@@ -8801,24 +8805,24 @@
           "123456789"
         ],
         "cpts": [
-          "E0601"
+          "36475",
+          "36476"
         ],
         "icd10": [
-          "G47.33"
+          "I83"
         ],
         "pos": [
-          "12"
+          "22"
         ],
         "dates": [
-          "1948-01-19",
-          "2026-05-10",
-          "2026-05-12",
-          "2026-05-08"
+          "1955-03-08",
+          "2026-07-15",
+          "2026-07-01"
         ],
         "serviceDates": [
-          "2026-05-10"
+          "2026-07-15"
         ],
-        "quantity": 1,
+        "quantity": 2,
         "signature": {
           "present": true,
           "dated": true
@@ -8826,17 +8830,15 @@
       }
     },
     {
-      "document": "cms-note.txt",
-      "sha256": "fixture-cms-dme-note",
+      "document": "cms-opd-note.txt",
+      "sha256": "fixture-cms-opd-pa-note",
       "kind": "TXT",
       "role": "clinical-note",
       "payer": "unknown",
       "ledger": {
         "dates": [
-          "2026-04-20",
-          "2026-03-01",
-          "2026-04-20",
-          "2026-04-20"
+          "2026-07-01",
+          "2026-07-01"
         ],
         "signature": {
           "present": true,
@@ -8847,8 +8849,8 @@
   ],
   "extractedData": [
     {
-      "document": "cms-pa-form.txt",
-      "sha256": "fixture-cms-dme-form",
+      "document": "cms-opd-form.txt",
+      "sha256": "fixture-cms-opd-pa-form",
       "extract": {
         "npis": [
           "1234567893",
@@ -8856,30 +8858,30 @@
         ],
         "ssns": [],
         "cpts": [
-          "E0601"
+          "36475",
+          "36476"
         ],
         "icd10": [
-          "G47.33"
+          "I83"
         ],
         "pos": [
-          "12"
+          "22"
         ],
         "dates": [
-          "1948-01-19",
-          "2026-05-10",
-          "2026-05-12",
-          "2026-05-08"
+          "1955-03-08",
+          "2026-07-15",
+          "2026-07-01"
         ],
         "serviceDates": [
-          "2026-05-10"
+          "2026-07-15"
         ],
-        "patientName": "Robert E Lee",
-        "dob": "1948-01-19",
-        "memberId": "1EG4TE5MK73",
+        "patientName": "John Q Public",
+        "dob": "1955-03-08",
+        "memberId": null,
         "tins": [
           "123456789"
         ],
-        "quantity": 1,
+        "quantity": 2,
         "signature": {
           "present": true,
           "dated": true
@@ -8888,12 +8890,12 @@
         "height": null,
         "frequency": null,
         "replacementChars": 0,
-        "textLength": 535
+        "textLength": 735
       }
     },
     {
-      "document": "cms-note.txt",
-      "sha256": "fixture-cms-dme-note",
+      "document": "cms-opd-note.txt",
+      "sha256": "fixture-cms-opd-pa-note",
       "extract": {
         "npis": [],
         "ssns": [],
@@ -8901,10 +8903,8 @@
         "icd10": [],
         "pos": [],
         "dates": [
-          "2026-04-20",
-          "2026-03-01",
-          "2026-04-20",
-          "2026-04-20"
+          "2026-07-01",
+          "2026-07-01"
         ],
         "serviceDates": [],
         "patientName": null,
@@ -8920,7 +8920,7 @@
         "height": null,
         "frequency": null,
         "replacementChars": 0,
-        "textLength": 337
+        "textLength": 607
       }
     }
   ],
@@ -8928,17 +8928,21 @@
     "rulesetVersion": "1.0.0",
     "reportFormatVersion": "1",
     "ruleIds": [
+      "R-PA-003",
       "R-PA-023",
-      "R-PA-029",
+      "R-PA-026",
       "R-PA-036",
       "R-PA-037",
-      "R-PA-CMS-009",
+      "R-PA-055",
+      "R-PA-OPD-001",
+      "R-PA-SURG-002",
+      "R-PA-SURG-004",
+      "R-PA-SURG-005",
       "R-PA-031",
       "R-PA-032",
       "R-PA-060",
       "R-PA-001",
       "R-PA-002",
-      "R-PA-003",
       "R-PA-004",
       "R-PA-005",
       "R-PA-006",
@@ -8960,9 +8964,9 @@
       "R-PA-022",
       "R-PA-024",
       "R-PA-025",
-      "R-PA-026",
       "R-PA-027",
       "R-PA-028",
+      "R-PA-029",
       "R-PA-030",
       "R-PA-033",
       "R-PA-034",
@@ -8984,7 +8988,6 @@
       "R-PA-052",
       "R-PA-053",
       "R-PA-054",
-      "R-PA-055",
       "R-PA-056",
       "R-PA-057",
       "R-PA-058",
@@ -9302,6 +9305,7 @@
       "R-PA-CMS-006",
       "R-PA-CMS-007",
       "R-PA-CMS-008",
+      "R-PA-CMS-009",
       "R-PA-CMS-011",
       "R-PA-CMS-012",
       "R-PA-CMS-013",
@@ -9773,17 +9777,13 @@
       "R-PA-MCWA-018",
       "R-PA-MCWA-019",
       "R-PA-MCWA-020",
-      "R-PA-OPD-001",
       "R-PA-RAD-001",
       "R-PA-RAD-002",
       "R-PA-RAD-003",
       "R-PA-RAD-004",
       "R-PA-RAD-005",
       "R-PA-SURG-001",
-      "R-PA-SURG-002",
       "R-PA-SURG-003",
-      "R-PA-SURG-004",
-      "R-PA-SURG-005",
       "R-PA-UHC-001",
       "R-PA-UHC-002",
       "R-PA-UHC-003",
@@ -9808,12 +9808,12 @@
     "disabledRules": [],
     "documentHashes": [
       {
-        "document": "cms-pa-form.txt",
-        "sha256": "fixture-cms-dme-form"
+        "document": "cms-opd-form.txt",
+        "sha256": "fixture-cms-opd-pa-form"
       },
       {
-        "document": "cms-note.txt",
-        "sha256": "fixture-cms-dme-note"
+        "document": "cms-opd-note.txt",
+        "sha256": "fixture-cms-opd-pa-note"
       }
     ],
     "totalBytes": 16384,

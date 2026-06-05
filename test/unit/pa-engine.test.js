@@ -140,8 +140,45 @@ test('runEngine passes every starter rule on a clean multi-doc happy-path packet
   assert.equal(counts.pass, STARTER_RULES.length);
 });
 
-test('STARTER_RULES at wave 52-44 is 875 rules (135 §4.5 core/overlay/specialty + 20 each for the 23 commercial overlays + 20 each for 14 per-state Medicaid overlays: CA + NY + TX + FL + OH + IL + WA + GA + NC + PA + MI + NJ + AZ + IN)', () => {
-  assert.equal(STARTER_RULES.length, 875);
+test('STARTER_RULES at wave 52-45 is 876 rules (135 §4.5 core/overlay/specialty + 20 each for the 23 commercial overlays + 20 each for 14 per-state Medicaid overlays (CA + NY + TX + FL + OH + IL + WA + GA + NC + PA + MI + NJ + AZ + IN) + 1 CMS OPD prior-auth-list membership rule)', () => {
+  assert.equal(STARTER_RULES.length, 876);
+});
+
+// ---- wave 52-45: CMS Hospital OPD Prior Authorization membership test (§4.5.2.1) ----
+// The first REAL bundled PA-list membership test (R-PA-OPD-001). Builds a
+// single-document Medicare FFS bundle for each case and asserts the rule's
+// status. detectPayer routes "Medicare Part B (Noridian)" to 'cms-medicare-ffs'.
+function opdStatus(text) {
+  const bundle = buildBundle([{ name: 'f.txt', sha256: 'x', kind: 'TXT', text }], {});
+  const f = runEngine(bundle).find((x) => x.ruleId === 'R-PA-OPD-001');
+  return { payer: bundle.payer, status: f.status };
+}
+
+test('R-PA-OPD-001 flags a Medicare FFS hospital-outpatient OPD-listed service with no UTN / authorization reference', () => {
+  const r = opdStatus('Medicare Part B (Noridian) prior authorization\nPlace of service: 22\nRequested procedure: endovenous vein ablation CPT 36475\n');
+  assert.equal(r.payer, 'cms-medicare-ffs');
+  assert.equal(r.status, 'flag');
+});
+
+test('R-PA-OPD-001 passes once a UTN / authorization reference is documented', () => {
+  const r = opdStatus('Medicare Part B (Noridian) prior authorization\nPlace of service: 22\nRequested procedure: vein ablation CPT 36475\nUnique Tracking Number (UTN): ABC1234567890\n');
+  assert.equal(r.status, 'pass');
+});
+
+test('R-PA-OPD-001 self-gates off for an office-based (POS 11) service -- the OPD program does not apply', () => {
+  const r = opdStatus('Medicare Part B (Noridian) prior authorization\nPlace of service: 11\nRequested procedure: vein ablation CPT 36475\n');
+  assert.equal(r.status, 'pass');
+});
+
+test('R-PA-OPD-001 self-gates off when no requested CPT is on the CMS OPD PA list', () => {
+  const r = opdStatus('Medicare Part B (Noridian) prior authorization\nPlace of service: 22\nRequested procedure: knee arthroscopy CPT 29881\n');
+  assert.equal(r.status, 'pass');
+});
+
+test('R-PA-OPD-001 self-gates off for a non-Medicare-FFS payer (the OPD program is Medicare FFS only)', () => {
+  const r = opdStatus('Aetna prior authorization\nPlace of service: 22\nRequested procedure: vein ablation CPT 36475\n');
+  assert.equal(r.payer, 'aetna');
+  assert.equal(r.status, 'pass');
 });
 
 // ---- wave 52-7a sanity checks: Aetna commercial overlay (§4.5.7) ----

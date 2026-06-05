@@ -289,7 +289,7 @@ what makes the golden-fixture CI gate possible.
         ▼               blue-shield-ca | ibx | carefirst | bcbsnc | horizon |
         ▼               bcbst | bcbsma | bcbsal | bcbssc | arkbcbs | bluekc |
         ▼               bcbsmn | bcbsla | hmsa | commercial | unknown
- ┌──────────────┐   lib/pa/rules.js → 875 rules, each a pure check(bundle).
+ ┌──────────────┐   lib/pa/rules.js → 876 rules, each a pure check(bundle).
  │  run engine  │   Overlay rules self-gate on the detected payer and
  └──────┬───────┘   vacuously pass off-bucket.
         ▼
@@ -302,7 +302,7 @@ Severities follow spec-v52 §4.4: `block` (packet cannot be reviewed as-is),
 `flag` (likely denial / RFI), `info` (nice-to-have), `pass`. A finding never
 guarantees an approval or a denial — it reports only what the ruleset checks.
 
-### Ruleset at a glance (875 rules)
+### Ruleset at a glance (876 rules)
 
 | Family            | Count | Scope                                                        | Ledger source              |
 |-------------------|-------|--------------------------------------------------------------|----------------------------|
@@ -352,6 +352,7 @@ guarantees an approval or a denial — it reports only what the ruleset checks.
 | `R-PA-MCNJ-NNN` | 20 | §4.5.42 New Jersey Medicaid (DMAHS / NJ FamilyCare / NJMMIS) | `nj-medicaid-precert` |
 | `R-PA-MCAZ-NNN` | 20 | §4.5.43 Arizona Medicaid (AHCCCS / AHCCCS Complete Care / AHCCCS Online) | `az-medicaid-precert` |
 | `R-PA-MCIN-NNN` | 20 | §4.5.44 Indiana Medicaid (FSSA / OMPP / Healthy Indiana Plan / IHCP) | `in-medicaid-precert` |
+| `R-PA-OPD-NNN` | 1 | §4.5.2.1 CMS Hospital OPD Prior Authorization — the first **real** bundled PA-list membership test | `cms-opd-pa-list` |
 
 The twenty-three commercial overlays (§4.5.7 Aetna, §4.5.8 UnitedHealthcare, §4.5.9
 Anthem, §4.5.10 Cigna, §4.5.11 Humana, §4.5.12 HCSC, §4.5.13 Highmark, §4.5.14
@@ -409,15 +410,34 @@ spelled-out plan name and never the bare acronym:
 
 Every overlay rule self-gates on `bundle.payer === '<payer>'` and vacuously
 passes on any other packet, so the 135 non-commercial rules, the twenty-three
-20-rule commercial overlays, and the fourteen per-state Medicaid overlays coexist
+20-rule commercial overlays, the fourteen per-state Medicaid overlays, and the
+CMS OPD prior-auth-list rule coexist
 without false positives — a Medicare FFS
 packet never trips a Humana rule, and vice versa. Each rule's
 source URL is tracked in
 [pa-staleness-ledger.json](pa-staleness-ledger.json) and re-verified on the
 §4.5.6 maintenance cadence; `npm run lint` fails CI on any ledger ↔ ruleset
 drift, and `scripts/audit-pa.mjs` diffs the full pipeline output against
-forty-four committed golden reports so any rule, extractor, or classifier change
+forty-five committed golden reports so any rule, extractor, or classifier change
 that moves a byte is caught.
+
+**The first real PA-list membership test (`R-PA-OPD-001`, §4.5.2.1).** Until wave
+52-45, every "is the requested service on the payer's prior-auth list?" rule
+(`R-PA-053` and the per-overlay `-004` rules) shipped *vacuous* — it passed with a
+pointer because no list was bundled. Wave 52-45 flips that for one real list: the
+[CMS Hospital Outpatient Department (OPD) Prior Authorization](https://www.cms.gov/research-statistics-data-and-systems/monitoring-programs/medicare-ffs-compliance-programs/prior-authorization-and-pre-claim-review-initiatives/prior-authorization-certain-hospital-outpatient-department-opd-services)
+required-services CPT list, bundled by category in
+[`lib/pa/cms-opd-pa-list.js`](lib/pa/cms-opd-pa-list.js) (blepharoplasty,
+botulinum toxin, panniculectomy, rhinoplasty, vein ablation, cervical fusion with
+disc removal, implanted spinal neurostimulators, facet joint interventions). The
+rule does a genuine CPT-membership test: a **Medicare FFS hospital-outpatient**
+(POS 22 / 19) packet requesting a listed service **without a Unique Tracking
+Number (UTN)** flags (Medicare requires the OPD authorization and the UTN on the
+claim before the service is furnished); an office-based (POS 11) service, a
+non-listed CPT, or a non-Medicare-FFS payer self-gate it off. The CMS list is a
+single, federally published, stable source — the cleanest first list to bundle —
+and is re-verified on the §4.5.6 cadence (`cms-opd-pa-list` in the ledger). It is
+the template the remaining `-004` rules follow as their payer lists are bundled.
 
 **Payer detection is first-match-wins, in a deliberate order.** The buckets
 are nested — "Aetna Medicare Advantage" is *both* an MA plan and an Aetna plan —
@@ -523,7 +543,7 @@ packet always yields the same report; this is what makes a golden-fixture CI
 gate possible and is the opposite of the LLM-on-top-of-rules direction the
 PA-automation SaaS vendors took (spec-v52 §1.1). (2) *Self-gating overlays* —
 adding a payer is additive: a new bucket plus a prefix → ledger-source map,
-never an edit to an existing rule, so the 875-rule set grows without
+never an edit to an existing rule, so the 876-rule set grows without
 regression risk. (3) *Procedural completeness only* — the linter never
 asserts medical necessity; it checks whether the mechanically-detectable
 pieces a reviewer needs are present, which keeps it on the right side of the
@@ -661,14 +681,16 @@ build, integrity-verified data shards) are documented in
   healthcare worker would otherwise reach for MDCalc to find,
   shipped slowly at the v11 quality bar
 - [docs/spec-v52.md](docs/spec-v52.md) — the `pa-lint` prior-auth packet
-  linter: pipeline, the 875-rule ruleset, payer overlays (Aetna +
+  linter: pipeline, the 876-rule ruleset, payer overlays (Aetna +
   UnitedHealthcare + Anthem + Cigna + Humana + HCSC + Highmark + Florida Blue +
   BCBSM + Blue Shield of California + Independence Blue Cross + CareFirst +
   Blue Cross NC + Horizon + BCBS Tennessee + BCBS Massachusetts + BCBS Alabama +
   BCBS South Carolina + Arkansas BCBS + BCBS Kansas City + BCBS Minnesota +
   BCBS Louisiana + HMSA, plus per-state Medicaid overlays for California /
   New York / Texas / Florida / Ohio / Illinois / Washington / Georgia / North
-  Carolina / Pennsylvania / Michigan / New Jersey / Arizona / Indiana), the optional on-device OCR path (§4.3.1, vendored
+  Carolina / Pennsylvania / Michigan / New Jersey / Arizona / Indiana), the CMS
+  Hospital OPD prior-authorization membership test (§4.5.2.1, the first real
+  bundled PA-list rule), the optional on-device OCR path (§4.3.1, vendored
   tesseract.js),
   and the byte-determinism / golden-fixture guarantee
 - [docs/architecture.md](docs/architecture.md) — runtime architecture,
