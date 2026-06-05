@@ -6,6 +6,29 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v52 wave 52-34 — §4.5.34 Ohio Medicaid per-state overlay, 20 of 20)
+
+The fifth per-state Medicaid overlay (after California, New York, Texas, and
+Florida), and the twenty-eighth named-payer overlay overall. The full 20-rule
+`R-PA-MCOH-NNN` family is anchored to Ohio Medicaid's public Ohio Department of
+Medicaid / Provider Network Management (PNM) provider pages (new ledger source
+`oh-medicaid-precert`).
+
+A new `'medicaid-oh'` payer bucket (anchors `ohio medicaid` / `ohio department of
+medicaid`) is placed before the generic `'medicaid'` bucket and composes with the
+§4.5.4 Medicaid core via `isMedicaid()`. The 20 rules mirror the established
+families with the Medicaid reframings (transplant → Medicaid-designated
+transplant center; appeal → state fair hearing) and Ohio Medicaid PNM routing.
+Each rule self-gates on `bundle.payer === 'medicaid-oh'` and vacuously passes on
+every other packet.
+
+Coverage is now 695 rules shipped (was 675), 647 source-anchored (was 627), 43
+sources (was 42), 0 ledger orphans, 0 coverage gaps. A new `oh-medicaid-precert`
+golden fixture (Medicaid core all pass, MCOH-009 site-of-care flag) re-seeds
+deterministically; all thirty-five goldens re-seeded. Tests: +5 engine assertions
+and +1 classify assertion. e2e pa-lint rule count 675 -> 695. Catalog count
+unchanged (255 tiles). The PA tile's wave banner advances to 52-34.
+
 ### Added (spec-v52 wave 52-33 — §4.5.33 Florida Medicaid per-state overlay, 20 of 20)
 
 The fourth per-state Medicaid overlay (after California §4.5.30, New York §4.5.31,

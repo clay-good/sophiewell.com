@@ -140,8 +140,8 @@ test('runEngine passes every starter rule on a clean multi-doc happy-path packet
   assert.equal(counts.pass, STARTER_RULES.length);
 });
 
-test('STARTER_RULES at wave 52-33 is 675 rules (135 §4.5 core/overlay/specialty + 20 each for the 23 commercial overlays + 20 each for 4 per-state Medicaid overlays: California + New York + Texas + Florida)', () => {
-  assert.equal(STARTER_RULES.length, 675);
+test('STARTER_RULES at wave 52-34 is 695 rules (135 §4.5 core/overlay/specialty + 20 each for the 23 commercial overlays + 20 each for 5 per-state Medicaid overlays: California + New York + Texas + Florida + Ohio)', () => {
+  assert.equal(STARTER_RULES.length, 695);
 });
 
 // ---- wave 52-7a sanity checks: Aetna commercial overlay (§4.5.7) ----
@@ -2295,6 +2295,45 @@ test('Florida Medicaid does not collide with the Florida Blue commercial overlay
   assert.equal(flMcd.find((x) => x.ruleId === 'R-PA-FLBLUE-001').status, 'pass');
   const flBlue = runEngine(bundleOf('Florida Blue PPO member.\nProcedure CPT 29881.\n'));
   assert.equal(flBlue.find((x) => x.ruleId === 'R-PA-MCFL-001').status, 'pass');
+});
+
+// ---- wave 52-34 sanity checks: Ohio Medicaid overlay (§4.5.34) ----
+
+test('Ohio Medicaid overlay rules vacuously pass on a non-Ohio-Medicaid packet', () => {
+  const findings = runEngine(happyBundle());
+  for (let n = 1; n <= 20; n += 1) {
+    const id = 'R-PA-MCOH-' + String(n).padStart(3, '0');
+    const f = findings.find((x) => x.ruleId === id);
+    assert.ok(f, id + ' should be in the findings');
+    assert.equal(f.status, 'pass', id + ' should vacuously pass off-bucket');
+  }
+});
+
+test('R-PA-MCOH-001 flags an Ohio Medicaid request with a procedure but no coverage-criteria reference', () => {
+  const text = 'Ohio Medicaid member.\nRequested procedure: CPT 72148 (MRI lumbar spine).\nPlease authorize.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-MCOH-001');
+  assert.equal(f.status, 'flag');
+});
+
+test('R-PA-MCOH-003 passes when the Ohio Medicaid packet names the PNM channel (info)', () => {
+  const text = 'Ohio Medicaid request submitted via the Provider Network Management (PNM) portal.\nProcedure CPT 27447.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-MCOH-003');
+  assert.equal(f.status, 'pass');
+});
+
+test('R-PA-MCOH-017 flags an Ohio Medicaid transplant request with no Medicaid-designated transplant-center routing', () => {
+  const text = 'Ohio Medicaid member.\nRequested service: kidney transplant.\nMedical necessity per Medical Policy.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-MCOH-017');
+  assert.equal(f.status, 'flag');
+});
+
+test('R-PA-MCOH core composition: the Medicaid core fires on an Ohio Medicaid (medicaid-oh) packet', () => {
+  const text = 'Ohio Medicaid member.\nRequested procedure: CPT 29881.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-MCD-003').status, 'flag');
 });
 
 test('CMS overlay carries the spec-aligned id R-PA-CMS-004 for proof-of-delivery', () => {

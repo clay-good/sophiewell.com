@@ -341,6 +341,14 @@
       "rules": ["R-PA-MCFL-001", "R-PA-MCFL-002"],
       "url": "https://ahca.myflorida.com/medicaid",
       "lastVerified": "2026-06-05"
+    },
+    {
+      "id": "oh-medicaid-precert",
+      "label": "Ohio Medicaid (Ohio Department of Medicaid / Provider Network Management) prior-authorization requirements, provider manuals, and utilization-management / pharmacy program requirements",
+      "ruleFamily": "medicaid-oh",
+      "rules": ["R-PA-MCOH-001", "R-PA-MCOH-002"],
+      "url": "https://medicaid.ohio.gov/providers",
+      "lastVerified": "2026-06-05"
     }
   ],
   "acknowledgments": []

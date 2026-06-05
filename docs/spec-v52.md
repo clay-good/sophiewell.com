@@ -2115,6 +2115,27 @@ staleness ledger (§8.3, source `fl-medicaid-precert`). `R-PA-MCFL-004` mirrors
 core `R-PA-053`: it ships without a bundled prior-authorization list and
 vacuously passes with a pointer until a later wave bundles the list.
 
+#### 4.5.34 Per-state Medicaid overlays — Ohio Medicaid (wave 52-34)
+
+The fifth per-state Medicaid overlay (after California, New York, Texas, and
+Florida), and the twenty-eighth named-payer overlay overall. **Ohio Medicaid**
+is administered by the **Ohio Department of Medicaid**, which routes provider
+prior authorization through its **Provider Network Management (PNM)** module. It
+is detected by a per-state bucket (`'medicaid-oh'`, anchors `ohio medicaid` /
+`ohio department of medicaid`) placed before the generic `'medicaid'` bucket, and
+composes with the §4.5.4 Medicaid core through `isMedicaid(bundle.payer)`. An
+explicit "Medicare Advantage" string still wins the MA bucket earlier.
+
+The 20 Ohio rules (`R-PA-MCOH-NNN`) mirror the established families with the two
+Medicaid reframings (transplant → Medicaid-designated transplant center; appeal
+→ state fair hearing) and Ohio routing names (the PNM provider portal for
+submission). Each rule self-gates on `bundle.payer === 'medicaid-oh'` and returns
+a vacuous pass on every other packet. Every rule is anchored to a public Ohio
+Medicaid provider URL tracked in the staleness ledger (§8.3, source
+`oh-medicaid-precert`). `R-PA-MCOH-004` mirrors core `R-PA-053`: it ships without
+a bundled prior-authorization list and vacuously passes with a pointer until a
+later wave bundles the list.
+
 ### 4.6 The DOCX report
 
 Structure (mirrors Vaulytica v3 with healthcare-specific
@@ -3175,6 +3196,18 @@ self-contained PR; the catalog count rises only at wave 52-1.
 - Catalog count unchanged (255 tiles). Ruleset rises 655 → 675. Brings
   per-state Medicaid overlays to four (CA, NY, TX, FL).
 
+### Wave 52-34 — Ohio Medicaid overlay (2026-06)
+
+- The 20 Ohio Medicaid rules (§4.5.34), the `R-PA-MCOH-NNN` family,
+  anchored to the Ohio Department of Medicaid / PNM provider pages
+  (ledger source `oh-medicaid-precert`).
+- A `'medicaid-oh'` payer bucket (anchors `ohio medicaid` / `ohio
+  department of medicaid`) before the generic `'medicaid'` bucket;
+  composes with the §4.5.4 Medicaid core via `isMedicaid()`. Transplant /
+  appeal reframed for Medicaid; PNM routing.
+- Catalog count unchanged (255 tiles). Ruleset rises 675 → 695. Brings
+  per-state Medicaid overlays to five (CA, NY, TX, FL, OH).
+
 ### Wave 52-5+ — State Medicaid overlays, additional commercial payers, OCR
 
 - Per-state Medicaid overlays (Medi-Cal / California shipped in wave
@@ -3362,6 +3395,18 @@ silently; the audit trail records the disablement.
 
 - 2026-05-27 — v52 proposed. Five waves outlined (52-1 through
   52-5+). Catalog count target at v52-1 close: 255.
+- 2026-06-05 — wave 52-34 (§4.5.34 Ohio Medicaid — the fifth per-state Medicaid
+  overlay, the full 20-rule `R-PA-MCOH-NNN` family, twenty-eighth named-payer
+  overlay overall). Opens a `'medicaid-oh'` payer bucket (anchors `ohio medicaid`
+  / `ohio department of medicaid`) before the generic `'medicaid'` bucket;
+  composes with the §4.5.4 Medicaid core via `isMedicaid()` (regression-tested).
+  Transplant (017) and appeal (019) reframed for Medicaid; Ohio Medicaid PNM
+  routing. Each self-gates on `bundle.payer === 'medicaid-oh'`. New ledger source
+  `oh-medicaid-precert`. Coverage now 695 rules shipped (was 675), 647
+  source-anchored (was 627), 43 sources (was 42), 0 orphans, 0 gaps. New
+  `oh-medicaid-precert` golden fixture (Medicaid core all pass, MCOH-009 flag).
+  Tests: +5 engine assertions and +1 classify assertion. e2e count 675 -> 695.
+  Catalog unchanged (255). View wave banner advanced to 52-34.
 - 2026-06-05 — wave 52-33 (§4.5.33 Florida Medicaid — the fourth per-state
   Medicaid overlay, the full 20-rule `R-PA-MCFL-NNN` family, twenty-seventh
   named-payer overlay overall). Opens a `'medicaid-fl'` payer bucket (anchors

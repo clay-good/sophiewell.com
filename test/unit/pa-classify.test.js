@@ -383,6 +383,13 @@ test('detectPayer: Florida Medicaid routes to its own per-state bucket, distinct
   assert.equal(detectPayer('Florida Medicaid Medicare Advantage dual plan'), 'cms-medicare-advantage');
 });
 
+test('detectPayer: Ohio Medicaid routes to its own per-state bucket (wave 52-34)', () => {
+  assert.equal(detectPayer('Ohio Medicaid prior authorization'), 'medicaid-oh');
+  assert.equal(detectPayer('Ohio Department of Medicaid PNM'), 'medicaid-oh');
+  assert.equal(detectPayer('state Medicaid managed care'), 'medicaid');
+  assert.equal(detectPayer('Ohio Medicaid Medicare Advantage dual plan'), 'cms-medicare-advantage');
+});
+
 test('detectPayer: unknown for empty / non-payer text', () => {
   assert.equal(detectPayer(''), 'unknown');
   assert.equal(detectPayer('this packet has no payer letterhead'), 'unknown');

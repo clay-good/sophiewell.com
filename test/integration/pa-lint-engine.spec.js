@@ -50,11 +50,11 @@ test('pa-lint: happy-path TXT lights every starter rule green', async ({ page })
   });
 
   await expect(page.locator('.pa-findings-headline')).toBeVisible({ timeout: 10_000 });
-  // One .pa-rule entry per starter rule (675 at wave 52-33: 135 §4.5
+  // One .pa-rule entry per starter rule (695 at wave 52-34: 135 §4.5
   // core/overlay/specialty + 20 each for the 23 commercial overlays
-  // (Aetna … HMSA) + 20 each for 4 per-state Medicaid overlays (CA + NY + TX + FL).
+  // (Aetna … HMSA) + 20 each for 5 per-state Medicaid overlays (CA+NY+TX+FL+OH).
   const rules = page.locator('.pa-rule');
-  await expect(rules).toHaveCount(675);
+  await expect(rules).toHaveCount(695);
   // None of them should be block / flag / error on the happy packet.
   await expect(page.locator('.pa-rule[data-status="block"]')).toHaveCount(0);
   await expect(page.locator('.pa-rule[data-status="flag"]')).toHaveCount(0);
