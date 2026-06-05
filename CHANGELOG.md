@@ -6,6 +6,41 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v52 wave 52-25 — §4.5.25 Arkansas Blue Cross and Blue Shield commercial overlay, 20 of 20)
+
+The nineteenth named commercial-payer overlay, and the fourteenth "Blues plans by
+state" overlay. The full 20-rule `R-PA-ARKBCBS-NNN` family is anchored to Arkansas
+Blue Cross and Blue Shield's public provider pages, Medical Policies, and
+utilization-management / pharmacy program requirements (new ledger source
+`arkbcbs-precert`). Arkansas Blue Cross is the dominant Blue Cross Blue Shield
+licensee in Arkansas and one of the largest independent licensees not already
+routed to an earlier bucket.
+
+A new `'arkbcbs'` payer bucket in `lib/pa/payer.js` is placed after `'bcbssc'` and
+before the generic `'commercial'` fall-through. It matches only
+definitively-Arkansas anchors (the `arkansas blue cross [and blue shield]` plan
+name and the `arkansas bcbs` short form), so generic `blue cross` / `blue shield`
+and other licensees stay in the commercial fall-through, and an explicit "Medicare
+Advantage" string still wins the MA bucket earlier. Each rule self-gates on
+`bundle.payer === 'arkbcbs'` and vacuously passes on every other packet.
+
+The 20 rules mirror the prior eighteen commercial families so the nineteen
+commercial overlays stay structurally parallel and auditable side by side, with
+Arkansas-specific routing names where the plan uses them: the AHIN / Availity
+submission channel (003), the advanced-imaging utilization-management program
+(007, 012), pharmacy management for step therapy (011), behavioral health (016),
+and the Blue Distinction Centers for Transplant (017).
+
+Coverage is now 515 rules shipped (was 495), 467 source-anchored (was 447), 34
+sources (was 33), 0 ledger orphans, 0 coverage gaps. A new `arkbcbs-precert`
+golden fixture (hospital-outpatient knee arthroscopy under an Arkansas Blue Cross
+letterhead) exercises the on-bucket path — 009 flag, 003 info — and the other
+twenty-five goldens gain +20 vacuous-pass findings each; all twenty-six re-seeded
+deterministically. Tests: +9 engine assertions (count 515, the off-bucket loop,
+fire/pass checks) and +1 classify assertion. e2e pa-lint rule count 495 -> 515.
+Catalog count unchanged (255 tiles; Arkansas Blue Cross adds rules, not a tile).
+The PA tile's wave banner advances to 52-25.
+
 ### Added (spec-v52 wave 52-24 — §4.5.24 Blue Cross Blue Shield of South Carolina commercial overlay, 20 of 20)
 
 The eighteenth named commercial-payer overlay, and the thirteenth "Blues plans by

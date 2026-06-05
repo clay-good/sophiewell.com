@@ -140,8 +140,8 @@ test('runEngine passes every starter rule on a clean multi-doc happy-path packet
   assert.equal(counts.pass, STARTER_RULES.length);
 });
 
-test('STARTER_RULES at wave 52-24 is 495 rules (135 §4.5 core/overlay/specialty + 20 each for the 18 named commercial overlays: Aetna + UnitedHealthcare + Anthem + Cigna + Humana + HCSC + Highmark + Florida Blue + BCBSM + Blue Shield of California + Independence Blue Cross + CareFirst + Blue Cross NC + Horizon + BCBS Tennessee + BCBS Massachusetts + BCBS Alabama + BCBS South Carolina)', () => {
-  assert.equal(STARTER_RULES.length, 495);
+test('STARTER_RULES at wave 52-25 is 515 rules (135 §4.5 core/overlay/specialty + 20 each for the 19 named commercial overlays: Aetna … BCBS South Carolina + Arkansas BCBS)', () => {
+  assert.equal(STARTER_RULES.length, 515);
 });
 
 // ---- wave 52-7a sanity checks: Aetna commercial overlay (§4.5.7) ----
@@ -1736,6 +1736,79 @@ test('R-PA-BCBSSC-020 flags a BCBSSC out-of-network request with no network-gap 
   const text = 'Blue Cross Blue Shield of South Carolina member.\nOut-of-network prior authorization request.\nProcedure CPT 70551.\n';
   const findings = runEngine(bundleOf(text));
   const f = findings.find((x) => x.ruleId === 'R-PA-BCBSSC-020');
+  assert.equal(f.status, 'info');
+});
+
+// ---- wave 52-25 sanity checks: Arkansas Blue Cross and Blue Shield overlay (§4.5.25) ----
+
+test('Arkansas Blue Cross overlay rules vacuously pass on a non-Arkansas packet', () => {
+  // happyBundle is not an Arkansas Blue Cross packet -> every R-PA-ARKBCBS-* rule passes.
+  const findings = runEngine(happyBundle());
+  for (let n = 1; n <= 20; n += 1) {
+    const id = 'R-PA-ARKBCBS-' + String(n).padStart(3, '0');
+    const f = findings.find((x) => x.ruleId === id);
+    assert.ok(f, id + ' should be in the findings');
+    assert.equal(f.status, 'pass', id + ' should vacuously pass off-bucket');
+  }
+});
+
+test('R-PA-ARKBCBS-001 flags an Arkansas Blue Cross request with a procedure but no coverage-criteria reference', () => {
+  const text = 'Arkansas Blue Cross and Blue Shield member.\n'
+    + 'Requested procedure: CPT 72148 (MRI lumbar spine).\n'
+    + 'Please authorize.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-ARKBCBS-001');
+  assert.equal(f.status, 'flag');
+});
+
+test('R-PA-ARKBCBS-001 passes when the Arkansas Blue Cross packet cites the applicable Medical Policy', () => {
+  const text = 'Arkansas Blue Cross and Blue Shield member.\n'
+    + 'Requested procedure: CPT 72148.\n'
+    + 'Medical necessity per the applicable Arkansas Blue Cross Medical Policy (MCG).\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-ARKBCBS-001');
+  assert.equal(f.status, 'pass');
+});
+
+test('R-PA-ARKBCBS-002 flags an Arkansas Blue Cross packet with no clinical document attached', () => {
+  const text = 'Arkansas Blue Cross and Blue Shield member.\nRequested procedure: CPT 27447.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-ARKBCBS-002');
+  assert.equal(f.status, 'flag');
+});
+
+test('R-PA-ARKBCBS-003 passes when the Arkansas Blue Cross packet names the AHIN channel (info)', () => {
+  const text = 'Arkansas Blue Cross and Blue Shield member.\nSubmitted via the AHIN provider portal.\nProcedure CPT 27447.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-ARKBCBS-003');
+  assert.equal(f.status, 'pass');
+});
+
+test('R-PA-ARKBCBS-007 flags an Arkansas Blue Cross outpatient MRI with no clinical indication', () => {
+  const text = 'Arkansas Blue Cross and Blue Shield member.\nRequested: MRI lumbar spine, CPT 72148.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-ARKBCBS-007');
+  assert.equal(f.status, 'flag');
+});
+
+test('R-PA-ARKBCBS-008 passes when an expedited Arkansas Blue Cross request documents the clinical urgency', () => {
+  const text = 'Arkansas Blue Cross and Blue Shield member.\nExpedited review requested: delay would jeopardize the member\'s life or health.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-ARKBCBS-008');
+  assert.equal(f.status, 'pass');
+});
+
+test('R-PA-ARKBCBS-017 flags an Arkansas Blue Cross transplant request with no Blue Distinction routing', () => {
+  const text = 'Arkansas Blue Cross and Blue Shield member.\nRequested service: kidney transplant.\nMedical necessity per Medical Policy.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-ARKBCBS-017');
+  assert.equal(f.status, 'flag');
+});
+
+test('R-PA-ARKBCBS-020 flags an Arkansas Blue Cross out-of-network request with no network-gap justification (info)', () => {
+  const text = 'Arkansas Blue Cross and Blue Shield member.\nOut-of-network prior authorization request.\nProcedure CPT 70551.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-ARKBCBS-020');
   assert.equal(f.status, 'info');
 });
 

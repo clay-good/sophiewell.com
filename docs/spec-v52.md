@@ -1744,9 +1744,53 @@ passes with a pointer until a later wave bundles the list. With eighteen
 commercial overlays shipped — the five largest commercial / MA plans plus
 the thirteen largest independent Blues licensees (HCSC, Highmark, Florida
 Blue, BCBSM, Blue Shield of California, Independence Blue Cross, CareFirst,
-Blue Cross NC, Horizon, BCBST, BCBSMA, BCBSAL, BCBSSC) — the remaining §9
-wave 52-5+ candidates are the other Blues plans by state and per-state
-Medicaid overlays as user-volume data warrants.
+Blue Cross NC, Horizon, BCBST, BCBSMA, BCBSAL, BCBSSC) — Arkansas Blue
+Cross and Blue Shield opened in wave 52-25 (§4.5.25) as the nineteenth.
+
+#### 4.5.25 Commercial payer overlays — Arkansas Blue Cross and Blue Shield (wave 52-25)
+
+The nineteenth named commercial-payer overlay, and the fourteenth "Blues
+plans by state" overlay. **Arkansas Blue Cross and Blue Shield** is the
+dominant Blue Cross Blue Shield licensee in **Arkansas** and one of the
+largest independent licensees not already routed to an earlier bucket.
+Like the eighteen before it, Arkansas Blue Cross is keyed to its own payer
+bucket (`'arkbcbs'`, detected by `lib/pa/payer.js` and placed before the
+generic `'commercial'` fall-through, after `'bcbssc'`). The bucket matches
+only definitively-Arkansas anchors — the `arkansas blue cross [and blue
+shield]` plan name and the `arkansas bcbs` short form — so generic `blue
+cross` / `blue shield` and other Blues licensees stay in the commercial
+fall-through, and an explicit "Medicare Advantage" string still wins the
+MA bucket earlier. Each commercial rule self-gates on `bundle.payer ===
+'arkbcbs'` and returns a vacuous pass on every other packet.
+
+Scope discipline is identical to §4.5.7–§4.5.24: the rules check the
+**procedural completeness** of an Arkansas Blue Cross prior-authorization
+packet against the plan's *own published* submission requirements — not
+clinical coverage criteria, which are the reviewer's judgement and the
+applicable Medical Policy's job. Every rule is anchored to a public
+Arkansas Blue Cross provider URL tracked in the staleness ledger (§8.3,
+source `arkbcbs-precert`) and re-verified on the §4.5.6 cadence.
+
+The set mirrors the earlier commercial families so the nineteen overlays
+stay structurally parallel and auditable side by side; Arkansas-specific
+routing names appear where the plan actually uses them — the **AHIN
+(Advanced Health Information Network) / Availity** provider portal for
+submission, the **advanced-imaging utilization-management program** for
+advanced imaging and genetic / molecular testing, the plan's **pharmacy
+management** for pharmacy / step therapy, **behavioral health** for
+behavioral health, and the **Blue Distinction Centers for Transplant** for
+transplant. Wave 52-25 ships the full planned set of 20
+(`R-PA-ARKBCBS-NNN`), structurally parallel to the BCBSSC set (§4.5.24).
+
+`R-PA-ARKBCBS-004` mirrors core `R-PA-053` and the prior commercial -004
+rules: it ships without a bundled prior-authorization list and vacuously
+passes with a pointer until a later wave bundles the list. With nineteen
+commercial overlays shipped — the five largest commercial / MA plans plus
+the fourteen largest independent Blues licensees (HCSC, Highmark, Florida
+Blue, BCBSM, Blue Shield of California, Independence Blue Cross, CareFirst,
+Blue Cross NC, Horizon, BCBST, BCBSMA, BCBSAL, BCBSSC, Arkansas BCBS) —
+the remaining §9 wave 52-5+ candidates are the other Blues plans by state
+and per-state Medicaid overlays as user-volume data warrants.
 
 ### 4.6 The DOCX report
 
@@ -2666,6 +2710,23 @@ self-contained PR; the catalog count rises only at wave 52-1.
   eighteen, the thirteen largest independent Blues licensees now all
   covered.
 
+### Wave 52-25 — Arkansas Blue Cross and Blue Shield commercial overlay (2026-06)
+
+- The 20 Arkansas Blue Cross rules (§4.5.25), the `R-PA-ARKBCBS-NNN`
+  family, anchored to the plan's public provider pages, Medical Policies,
+  and utilization-management / pharmacy program requirements (ledger
+  source `arkbcbs-precert`).
+- An `'arkbcbs'` payer bucket in `lib/pa/payer.js`, placed before the
+  generic `'commercial'` fall-through and after `'bcbssc'`. It matches
+  only definitively-Arkansas anchors (the `arkansas blue cross [and blue
+  shield]` plan name and the `arkansas bcbs` short form); generic Blues
+  and other licensees stay in the commercial fall-through, and an explicit
+  "Medicare Advantage" string still wins the MA bucket earlier.
+- Catalog count unchanged (255 tiles; Arkansas Blue Cross adds rules, not
+  a tile). Ruleset rises 495 → 515. Brings the named commercial / MA
+  overlays to nineteen, the fourteen largest independent Blues licensees
+  now all covered.
+
 ### Wave 52-5+ — State Medicaid overlays, additional commercial payers, OCR
 
 - Per-state Medicaid overlays as user-volume data warrants.
@@ -2677,8 +2738,9 @@ self-contained PR; the catalog count rises only at wave 52-1.
   Shield of New Jersey in wave 52-20, Blue Cross Blue Shield of Tennessee
   in wave 52-21, Blue Cross Blue Shield of Massachusetts in wave 52-22,
   Blue Cross Blue Shield of Alabama in wave 52-23, Blue Cross Blue Shield
-  of South Carolina in wave 52-24; the remaining independent Blues
-  licensees follow as volume warrants).
+  of South Carolina in wave 52-24, Arkansas Blue Cross and Blue Shield in
+  wave 52-25; the remaining independent Blues licensees follow as volume
+  warrants).
 - Optional in-browser OCR via tesseract.js (lazy-loaded,
   user-toggled, ≈ 11 MB gzipped). Only if §2's no-OCR
   experience proves insufficient.
@@ -2847,6 +2909,31 @@ silently; the audit trail records the disablement.
 
 - 2026-05-27 — v52 proposed. Five waves outlined (52-1 through
   52-5+). Catalog count target at v52-1 close: 255.
+- 2026-06-05 — wave 52-25 (§4.5.25 Arkansas Blue Cross and Blue Shield commercial
+  overlay, the full 20-rule `R-PA-ARKBCBS-NNN` family — the nineteenth named
+  commercial overlay and the fourteenth "Blues plans by state" overlay). Opens an
+  `'arkbcbs'` payer bucket in `lib/pa/payer.js` (placed after `'bcbssc'` and
+  before the generic `'commercial'` fall-through). Arkansas Blue Cross is the
+  dominant Blues licensee in Arkansas; the bucket matches only
+  definitively-Arkansas anchors (the `arkansas blue cross [and blue shield]` plan
+  name and the `arkansas bcbs` short form), so generic `blue cross` / `blue
+  shield` and other licensees stay in the commercial fall-through, and an explicit
+  "Medicare Advantage" string still wins the MA bucket earlier. The 20 rules
+  mirror the prior eighteen commercial families so the nineteen overlays stay
+  structurally parallel, with Arkansas-specific routing names where the plan uses
+  them (the AHIN / Availity submission channel, the advanced-imaging
+  utilization-management program, pharmacy management for step therapy,
+  behavioral health, and the Blue Distinction Centers for Transplant). Each
+  self-gates on `bundle.payer === 'arkbcbs'` and vacuously passes on every other
+  packet. New ledger source `arkbcbs-precert` anchored to the plan's public
+  provider page (all twenty rules map to it by prefix). Coverage is now 515 rules
+  shipped (was 495), 467 source-anchored (was 447), 34 sources (was 33), 0
+  orphans, 0 gaps. The golden fixtures re-seed deterministically (a new
+  `arkbcbs-precert` fixture exercises the on-bucket path — 009 flag, 003 info; the
+  other twenty-five gain +20 vacuous-pass findings each). Tests: +9 engine
+  assertions (count 515, the off-bucket loop, and fire/pass checks) and +1
+  classify assertion. Catalog count unchanged (255). View wave banner advanced to
+  52-25.
 - 2026-06-05 — wave 52-24 (§4.5.24 Blue Cross Blue Shield of South Carolina
   commercial overlay, the full 20-rule `R-PA-BCBSSC-NNN` family — the eighteenth
   named commercial overlay and the thirteenth "Blues plans by state" overlay).
