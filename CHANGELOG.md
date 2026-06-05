@@ -6,6 +6,42 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v52 wave 52-28 — §4.5.28 Blue Cross and Blue Shield of Louisiana commercial overlay, 20 of 20)
+
+The twenty-second named commercial-payer overlay, and the seventeenth "Blues
+plans by state" overlay. The full 20-rule `R-PA-BCBSLA-NNN` family is anchored to
+Blue Cross and Blue Shield of Louisiana's public provider pages, Medical Policies,
+and utilization-management / pharmacy program requirements (new ledger source
+`bcbsla-precert`). BCBSLA is the dominant Blue Cross Blue Shield licensee in
+Louisiana and one of the largest independent licensees not already routed to an
+earlier bucket.
+
+A new `'bcbsla'` payer bucket in `lib/pa/payer.js` is placed after `'bcbsmn'` and
+before the generic `'commercial'` fall-through. It matches only
+definitively-Louisiana anchors (the plan name and the `bcbsla` acronym, which
+carries no substring collision with the `bcbsal` Alabama or `bcbsm` Michigan
+buckets), so generic `blue cross` / `blue shield` and other licensees stay in the
+commercial fall-through, and an explicit "Medicare Advantage" string still wins
+the MA bucket earlier. Each rule self-gates on `bundle.payer === 'bcbsla'` and
+vacuously passes on every other packet.
+
+The 20 rules mirror the prior twenty-one commercial families so the twenty-two
+commercial overlays stay structurally parallel and auditable side by side, with
+BCBSLA-specific routing names where the plan uses them: the iLinkBlue / Availity
+submission channel (003), the advanced-imaging utilization-management program
+(007, 012), pharmacy management for step therapy (011), behavioral health (016),
+and the Blue Distinction Centers for Transplant (017).
+
+Coverage is now 575 rules shipped (was 555), 527 source-anchored (was 507), 37
+sources (was 36), 0 ledger orphans, 0 coverage gaps. A new `bcbsla-precert` golden
+fixture (hospital-outpatient knee arthroscopy under a BCBSLA letterhead) exercises
+the on-bucket path — 009 flag, 003 info — and the other twenty-eight goldens gain
++20 vacuous-pass findings each; all twenty-nine re-seeded deterministically.
+Tests: +9 engine assertions (count 575, the off-bucket loop, fire/pass checks) and
++1 classify assertion. e2e pa-lint rule count 555 -> 575. Catalog count unchanged
+(255 tiles; BCBSLA adds rules, not a tile). The PA tile's wave banner advances to
+52-28.
+
 ### Added (spec-v52 wave 52-27 — §4.5.27 Blue Cross and Blue Shield of Minnesota commercial overlay, 20 of 20)
 
 The twenty-first named commercial-payer overlay, and the sixteenth "Blues plans

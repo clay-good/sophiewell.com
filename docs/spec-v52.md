@@ -1883,9 +1883,56 @@ twenty-one commercial overlays shipped — the five largest commercial / MA
 plans plus the sixteen largest independent Blues licensees (HCSC,
 Highmark, Florida Blue, BCBSM, Blue Shield of California, Independence Blue
 Cross, CareFirst, Blue Cross NC, Horizon, BCBST, BCBSMA, BCBSAL, BCBSSC,
-Arkansas BCBS, Blue KC, BCBSMN) — the remaining §9 wave 52-5+ candidates
-are the other Blues plans by state and per-state Medicaid overlays as
-user-volume data warrants.
+Arkansas BCBS, Blue KC, BCBSMN) — Blue Cross and Blue Shield of Louisiana
+opened in wave 52-28 (§4.5.28) as the twenty-second.
+
+#### 4.5.28 Commercial payer overlays — Blue Cross and Blue Shield of Louisiana (wave 52-28)
+
+The twenty-second named commercial-payer overlay, and the seventeenth
+"Blues plans by state" overlay. **Blue Cross and Blue Shield of
+Louisiana** (BCBSLA) is the dominant Blue Cross Blue Shield licensee in
+**Louisiana** and one of the largest independent licensees not already
+routed to an earlier bucket. Like the twenty-one before it, BCBSLA is
+keyed to its own payer bucket (`'bcbsla'`, detected by `lib/pa/payer.js`
+and placed before the generic `'commercial'` fall-through, after
+`'bcbsmn'`). The bucket matches only definitively-Louisiana anchors — the
+plan name and the `bcbsla` acronym, which carries no substring collision
+with the earlier `bcbsal` (Alabama) or `bcbsm` (Michigan) buckets — so
+generic `blue cross` / `blue shield` and other Blues licensees stay in the
+commercial fall-through, and an explicit "Medicare Advantage" string still
+wins the MA bucket earlier. Each commercial rule self-gates on
+`bundle.payer === 'bcbsla'` and returns a vacuous pass on every other
+packet.
+
+Scope discipline is identical to §4.5.7–§4.5.27: the rules check the
+**procedural completeness** of a BCBSLA prior-authorization packet
+against the plan's *own published* submission requirements — not clinical
+coverage criteria, which are the reviewer's judgement and the applicable
+Medical Policy's job. Every rule is anchored to a public BCBSLA provider
+URL tracked in the staleness ledger (§8.3, source `bcbsla-precert`) and
+re-verified on the §4.5.6 cadence.
+
+The set mirrors the earlier commercial families so the twenty-two overlays
+stay structurally parallel and auditable side by side; BCBSLA-specific
+routing names appear where the plan actually uses them — the **iLinkBlue /
+Availity** provider portal for submission, the **advanced-imaging
+utilization-management program** for advanced imaging and genetic /
+molecular testing, the plan's **pharmacy management** for pharmacy / step
+therapy, **behavioral health** for behavioral health, and the **Blue
+Distinction Centers for Transplant** for transplant. Wave 52-28 ships the
+full planned set of 20 (`R-PA-BCBSLA-NNN`), structurally parallel to the
+BCBSMN set (§4.5.27).
+
+`R-PA-BCBSLA-004` mirrors core `R-PA-053` and the prior commercial -004
+rules: it ships without a bundled prior-authorization list and vacuously
+passes with a pointer until a later wave bundles the list. With
+twenty-two commercial overlays shipped — the five largest commercial / MA
+plans plus the seventeen largest independent Blues licensees (HCSC,
+Highmark, Florida Blue, BCBSM, Blue Shield of California, Independence Blue
+Cross, CareFirst, Blue Cross NC, Horizon, BCBST, BCBSMA, BCBSAL, BCBSSC,
+Arkansas BCBS, Blue KC, BCBSMN, BCBSLA) — the remaining §9 wave 52-5+
+candidates are the other Blues plans by state and per-state Medicaid
+overlays as user-volume data warrants.
 
 ### 4.6 The DOCX report
 
@@ -2856,6 +2903,24 @@ self-contained PR; the catalog count rises only at wave 52-1.
   twenty-one, the sixteen largest independent Blues licensees now all
   covered.
 
+### Wave 52-28 — Blue Cross and Blue Shield of Louisiana commercial overlay (2026-06)
+
+- The 20 BCBSLA rules (§4.5.28), the `R-PA-BCBSLA-NNN` family, anchored
+  to the plan's public provider pages, Medical Policies, and
+  utilization-management / pharmacy program requirements (ledger source
+  `bcbsla-precert`).
+- A `'bcbsla'` payer bucket in `lib/pa/payer.js`, placed before the
+  generic `'commercial'` fall-through and after `'bcbsmn'`. It matches
+  only definitively-Louisiana anchors (the plan name and the `bcbsla`
+  acronym, which has no substring collision with the `bcbsal` Alabama or
+  `bcbsm` Michigan buckets); generic Blues and other licensees stay in the
+  commercial fall-through, and an explicit "Medicare Advantage" string
+  still wins the MA bucket earlier.
+- Catalog count unchanged (255 tiles; BCBSLA adds rules, not a tile).
+  Ruleset rises 555 → 575. Brings the named commercial / MA overlays to
+  twenty-two, the seventeen largest independent Blues licensees now all
+  covered.
+
 ### Wave 52-5+ — State Medicaid overlays, additional commercial payers, OCR
 
 - Per-state Medicaid overlays as user-volume data warrants.
@@ -2869,8 +2934,9 @@ self-contained PR; the catalog count rises only at wave 52-1.
   Blue Cross Blue Shield of Alabama in wave 52-23, Blue Cross Blue Shield
   of South Carolina in wave 52-24, Arkansas Blue Cross and Blue Shield in
   wave 52-25, Blue Cross and Blue Shield of Kansas City in wave 52-26, Blue
-  Cross and Blue Shield of Minnesota in wave 52-27; the remaining
-  independent Blues licensees follow as volume warrants).
+  Cross and Blue Shield of Minnesota in wave 52-27, Blue Cross and Blue
+  Shield of Louisiana in wave 52-28; the remaining independent Blues
+  licensees follow as volume warrants).
 - Optional in-browser OCR via tesseract.js (lazy-loaded,
   user-toggled, ≈ 11 MB gzipped). Only if §2's no-OCR
   experience proves insufficient.
@@ -3039,6 +3105,31 @@ silently; the audit trail records the disablement.
 
 - 2026-05-27 — v52 proposed. Five waves outlined (52-1 through
   52-5+). Catalog count target at v52-1 close: 255.
+- 2026-06-05 — wave 52-28 (§4.5.28 Blue Cross and Blue Shield of Louisiana
+  commercial overlay, the full 20-rule `R-PA-BCBSLA-NNN` family — the
+  twenty-second named commercial overlay and the seventeenth "Blues plans by
+  state" overlay). Opens a `'bcbsla'` payer bucket in `lib/pa/payer.js` (placed
+  after `'bcbsmn'` and before the generic `'commercial'` fall-through). BCBSLA is
+  the dominant Blues licensee in Louisiana; the bucket matches only
+  definitively-Louisiana anchors (the plan name and the `bcbsla` acronym, which
+  has no substring collision with the `bcbsal` Alabama or `bcbsm` Michigan
+  buckets), so generic `blue cross` / `blue shield` and other licensees stay in
+  the commercial fall-through, and an explicit "Medicare Advantage" string still
+  wins the MA bucket earlier. The 20 rules mirror the prior twenty-one commercial
+  families so the twenty-two overlays stay structurally parallel, with
+  BCBSLA-specific routing names where the plan uses them (the iLinkBlue / Availity
+  submission channel, the advanced-imaging utilization-management program,
+  pharmacy management for step therapy, behavioral health, and the Blue
+  Distinction Centers for Transplant). Each self-gates on `bundle.payer ===
+  'bcbsla'` and vacuously passes on every other packet. New ledger source
+  `bcbsla-precert` anchored to the plan's public provider page (all twenty rules
+  map to it by prefix). Coverage is now 575 rules shipped (was 555), 527
+  source-anchored (was 507), 37 sources (was 36), 0 orphans, 0 gaps. The golden
+  fixtures re-seed deterministically (a new `bcbsla-precert` fixture exercises the
+  on-bucket path — 009 flag, 003 info; the other twenty-eight gain +20
+  vacuous-pass findings each). Tests: +9 engine assertions (count 575, the
+  off-bucket loop, and fire/pass checks) and +1 classify assertion. Catalog count
+  unchanged (255). View wave banner advanced to 52-28.
 - 2026-06-05 — wave 52-27 (§4.5.27 Blue Cross and Blue Shield of Minnesota
   commercial overlay, the full 20-rule `R-PA-BCBSMN-NNN` family — the twenty-first
   named commercial overlay and the sixteenth "Blues plans by state" overlay).
