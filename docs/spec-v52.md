@@ -2037,6 +2037,31 @@ additional state Medicaid programs (New York opened in wave 52-31, Texas in
 wave 52-32) and the other Blues plans by state as user-volume data
 warrants.
 
+#### 4.5.31 Per-state Medicaid overlays — New York State Medicaid (wave 52-31)
+
+The second per-state Medicaid overlay (after Medi-Cal §4.5.30), and the
+twenty-fifth named-payer overlay overall. **New York State Medicaid** is the
+second-largest state Medicaid program by enrollment; its prior authorization
+and claims run through **eMedNY** (the state's Medicaid system) and **ePACES**
+(its provider portal). It is detected by a per-state bucket (`'medicaid-ny'`,
+anchors `new york state medicaid` / `nys medicaid` / `new york medicaid` /
+`emedny`) placed before the generic `'medicaid'` bucket, and — like Medi-Cal —
+composes with the §4.5.4 state-agnostic Medicaid core through the
+`isMedicaid(bundle.payer)` predicate (a New York Medicaid packet is checked
+against both the universal `R-PA-MCD-NNN` core and the New York overlay). An
+explicit "Medicare Advantage" string still wins the MA bucket earlier.
+
+The 20 New York rules (`R-PA-MCNY-NNN`) mirror the established families with the
+same two Medicaid reframings as Medi-Cal — transplant (017) routes through a
+Medicaid-designated transplant center, and appeal (019) admits the state
+fair-hearing pathway — and New-York-specific routing names (the eMedNY provider
+portal / ePACES for submission). Each rule self-gates on `bundle.payer ===
+'medicaid-ny'` and returns a vacuous pass on every other packet. Every rule is
+anchored to a public New York Medicaid (eMedNY) provider URL tracked in the
+staleness ledger (§8.3, source `ny-medicaid-precert`). `R-PA-MCNY-004` mirrors
+core `R-PA-053`: it ships without a bundled prior-authorization list and
+vacuously passes with a pointer until a later wave bundles the list.
+
 ### 4.6 The DOCX report
 
 Structure (mirrors Vaulytica v3 with healthcare-specific
@@ -3058,6 +3083,18 @@ self-contained PR; the catalog count rises only at wave 52-1.
 - Catalog count unchanged (255 tiles; Medi-Cal adds rules, not a tile).
   Ruleset rises 595 → 615. Opens the §9 per-state Medicaid line.
 
+### Wave 52-31 — New York State Medicaid overlay (2026-06)
+
+- The 20 New York Medicaid rules (§4.5.31), the `R-PA-MCNY-NNN` family,
+  anchored to the program's public eMedNY provider pages and manuals
+  (ledger source `ny-medicaid-precert`).
+- A `'medicaid-ny'` payer bucket in `lib/pa/payer.js`, placed before the
+  generic `'medicaid'` bucket (anchors `new york state medicaid` / `nys
+  medicaid` / `new york medicaid` / `emedny`); composes with the §4.5.4
+  Medicaid core via `isMedicaid()`. Transplant / appeal families reframed
+  for Medicaid as in §4.5.30.
+- Catalog count unchanged (255 tiles). Ruleset rises 615 → 635.
+
 ### Wave 52-5+ — State Medicaid overlays, additional commercial payers, OCR
 
 - Per-state Medicaid overlays (Medi-Cal / California shipped in wave
@@ -3245,6 +3282,19 @@ silently; the audit trail records the disablement.
 
 - 2026-05-27 — v52 proposed. Five waves outlined (52-1 through
   52-5+). Catalog count target at v52-1 close: 255.
+- 2026-06-05 — wave 52-31 (§4.5.31 New York State Medicaid — the second per-state
+  Medicaid overlay, the full 20-rule `R-PA-MCNY-NNN` family, twenty-fifth
+  named-payer overlay overall). Opens a `'medicaid-ny'` payer bucket (anchors
+  `new york state medicaid` / `nys medicaid` / `new york medicaid` / `emedny`)
+  before the generic `'medicaid'` bucket; composes with the §4.5.4 Medicaid core
+  via `isMedicaid()` (regression-tested). Transplant (017) and appeal (019)
+  reframed for Medicaid; eMedNY / ePACES routing names. Each self-gates on
+  `bundle.payer === 'medicaid-ny'`. New ledger source `ny-medicaid-precert`.
+  Coverage now 635 rules shipped (was 615), 587 source-anchored, 40 sources, 0
+  orphans, 0 gaps. New `ny-medicaid-precert` golden fixture (Medicaid core all
+  pass, MCNY-009 flag). Tests: +6 engine assertions and +1 classify assertion.
+  e2e count 615 -> 635. Catalog unchanged (255). View wave banner advanced to
+  52-31.
 - 2026-06-05 — wave 52-30 (§4.5.30 Medi-Cal / California Medicaid — the first
   PER-STATE Medicaid overlay, the full 20-rule `R-PA-MCAL-NNN` family, and the
   twenty-fourth named-payer overlay overall). Opens a `'medicaid-ca'` payer
@@ -3263,8 +3313,8 @@ silently; the audit trail records the disablement.
   Medi-Cal Provider Portal / eTAR Treatment Authorization Request, the program's
   pharmacy management / Contract Drugs List). Each self-gates on `bundle.payer ===
   'medicaid-ca'` and vacuously passes on every other packet. New ledger source
-  `medi-cal-precert`. Coverage is now 615 rules shipped (was 595), 587
-  source-anchored (was 567), 39 sources (was 38), 0 orphans, 0 gaps. A new
+  `medi-cal-precert`. Coverage is now 615 rules shipped (was 595), 567
+  source-anchored (was 547), 39 sources (was 38), 0 orphans, 0 gaps. A new
   `medi-cal-precert` golden fixture (a complete Medi-Cal TAR: Medicaid core all
   pass, MCAL-009 site-of-care flag) re-seeds deterministically; the other thirty
   goldens gain +20 vacuous-pass findings each. Tests: +9 engine assertions (count

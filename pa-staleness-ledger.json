@@ -317,6 +317,14 @@
       "rules": ["R-PA-MCAL-001", "R-PA-MCAL-002"],
       "url": "https://www.medi-cal.ca.gov/",
       "lastVerified": "2026-06-05"
+    },
+    {
+      "id": "ny-medicaid-precert",
+      "label": "New York State Medicaid (eMedNY) prior-authorization requirements, provider manuals, and utilization-management / pharmacy program requirements",
+      "ruleFamily": "medicaid-ny",
+      "rules": ["R-PA-MCNY-001", "R-PA-MCNY-002"],
+      "url": "https://www.emedny.org/",
+      "lastVerified": "2026-06-05"
     }
   ],
   "acknowledgments": []

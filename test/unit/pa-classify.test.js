@@ -354,6 +354,15 @@ test('detectPayer: Medi-Cal (California Medicaid) routes to its own per-state bu
   assert.equal(detectPayer('Medi-Cal Medicare Advantage dual plan'), 'cms-medicare-advantage');
 });
 
+test('detectPayer: New York State Medicaid routes to its own per-state bucket (wave 52-31)', () => {
+  assert.equal(detectPayer('New York State Medicaid prior authorization'), 'medicaid-ny');
+  assert.equal(detectPayer('Submitted via eMedNY / ePACES'), 'medicaid-ny');
+  // ...a state-agnostic Medicaid packet stays in the generic bucket.
+  assert.equal(detectPayer('state Medicaid fee-for-service'), 'medicaid');
+  // ...and a dual-eligible "Medicare Advantage" string wins the MA bucket.
+  assert.equal(detectPayer('New York Medicaid Medicare Advantage dual plan'), 'cms-medicare-advantage');
+});
+
 test('detectPayer: unknown for empty / non-payer text', () => {
   assert.equal(detectPayer(''), 'unknown');
   assert.equal(detectPayer('this packet has no payer letterhead'), 'unknown');

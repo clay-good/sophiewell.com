@@ -140,8 +140,8 @@ test('runEngine passes every starter rule on a clean multi-doc happy-path packet
   assert.equal(counts.pass, STARTER_RULES.length);
 });
 
-test('STARTER_RULES at wave 52-30 is 615 rules (135 §4.5 core/overlay/specialty + 20 each for the 23 commercial overlays Aetna … HMSA + 20 Medi-Cal, the first per-state Medicaid overlay)', () => {
-  assert.equal(STARTER_RULES.length, 615);
+test('STARTER_RULES at wave 52-31 is 635 rules (135 §4.5 core/overlay/specialty + 20 each for the 23 commercial overlays + 20 Medi-Cal + 20 New York Medicaid)', () => {
+  assert.equal(STARTER_RULES.length, 635);
 });
 
 // ---- wave 52-7a sanity checks: Aetna commercial overlay (§4.5.7) ----
@@ -2172,6 +2172,46 @@ test('R-PA-MCAL-019 treats a Medi-Cal state fair hearing as an appeal (info)', (
   const findings = runEngine(bundleOf(text));
   const f = findings.find((x) => x.ruleId === 'R-PA-MCAL-019');
   assert.equal(f.status, 'info');
+});
+
+// ---- wave 52-31 sanity checks: New York State Medicaid overlay (§4.5.31) ----
+
+test('New York Medicaid overlay rules vacuously pass on a non-NY-Medicaid packet', () => {
+  const findings = runEngine(happyBundle());
+  for (let n = 1; n <= 20; n += 1) {
+    const id = 'R-PA-MCNY-' + String(n).padStart(3, '0');
+    const f = findings.find((x) => x.ruleId === id);
+    assert.ok(f, id + ' should be in the findings');
+    assert.equal(f.status, 'pass', id + ' should vacuously pass off-bucket');
+  }
+});
+
+test('R-PA-MCNY-001 flags a New York Medicaid request with a procedure but no coverage-criteria reference', () => {
+  const text = 'New York State Medicaid member.\nRequested procedure: CPT 72148 (MRI lumbar spine).\nPlease authorize.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-MCNY-001');
+  assert.equal(f.status, 'flag');
+});
+
+test('R-PA-MCNY-003 passes when the New York Medicaid packet names the eMedNY channel (info)', () => {
+  const text = 'New York State Medicaid request submitted via eMedNY / ePACES.\nProcedure CPT 27447.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-MCNY-003');
+  assert.equal(f.status, 'pass');
+});
+
+test('R-PA-MCNY-017 flags a New York Medicaid transplant request with no Medicaid-designated transplant-center routing', () => {
+  const text = 'New York State Medicaid member.\nRequested service: kidney transplant.\nMedical necessity per Medical Policy.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-MCNY-017');
+  assert.equal(f.status, 'flag');
+});
+
+test('R-PA-MCNY core composition: the Medicaid core fires on a New York Medicaid (medicaid-ny) packet', () => {
+  const text = 'New York State Medicaid member.\nRequested procedure: CPT 29881.\n';
+  const findings = runEngine(bundleOf(text));
+  const mcd003 = findings.find((x) => x.ruleId === 'R-PA-MCD-003');
+  assert.equal(mcd003.status, 'flag', 'MCD core must evaluate on a NY Medicaid packet');
 });
 
 test('CMS overlay carries the spec-aligned id R-PA-CMS-004 for proof-of-delivery', () => {

@@ -6,6 +6,32 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v52 wave 52-31 — §4.5.31 New York State Medicaid per-state overlay, 20 of 20)
+
+The second per-state Medicaid overlay (after Medi-Cal §4.5.30), and the
+twenty-fifth named-payer overlay overall. The full 20-rule `R-PA-MCNY-NNN` family
+is anchored to New York State Medicaid's public eMedNY provider pages and manuals
+(new ledger source `ny-medicaid-precert`). New York is the second-largest state
+Medicaid program by enrollment.
+
+A new `'medicaid-ny'` payer bucket in `lib/pa/payer.js` (anchors `new york state
+medicaid` / `nys medicaid` / `new york medicaid` / `emedny`) is placed before the
+generic `'medicaid'` bucket, and composes with the §4.5.4 Medicaid core through
+the `isMedicaid()` predicate introduced in wave 52-30 (a NY Medicaid packet is
+checked against both the `R-PA-MCD-NNN` core and the NY overlay; regression-tested).
+The 20 rules mirror the established families with the Medicaid reframings
+(transplant → Medicaid-designated transplant center; appeal → state fair hearing)
+and New-York routing names (eMedNY / ePACES submission channel). Each rule
+self-gates on `bundle.payer === 'medicaid-ny'` and vacuously passes on every other
+packet.
+
+Coverage is now 635 rules shipped (was 615), 587 source-anchored (was 567), 40
+sources (was 39), 0 ledger orphans, 0 coverage gaps. A new `ny-medicaid-precert`
+golden fixture (Medicaid core all pass, MCNY-009 site-of-care flag) re-seeds
+deterministically; all thirty-two goldens re-seeded. Tests: +6 engine assertions
+and +1 classify assertion. e2e pa-lint rule count 615 -> 635. Catalog count
+unchanged (255 tiles). The PA tile's wave banner advances to 52-31.
+
 ### Added (spec-v52 wave 52-30 — §4.5.30 Medi-Cal / California Medicaid: first per-state Medicaid overlay, 20 of 20)
 
 The first **per-state Medicaid** overlay (after 23 commercial overlays), and the
@@ -40,7 +66,7 @@ the advanced-imaging UM program (007, 012), pharmacy management / Contract Drugs
 List for step therapy (011), behavioral health (016). Each rule self-gates on
 `bundle.payer === 'medicaid-ca'` and vacuously passes on every other packet.
 
-Coverage is now 615 rules shipped (was 595), 587 source-anchored (was 567), 39
+Coverage is now 615 rules shipped (was 595), 567 source-anchored (was 547), 39
 sources (was 38), 0 ledger orphans, 0 coverage gaps. A new `medi-cal-precert`
 golden fixture (a complete Medi-Cal TAR — Medicaid core all pass, MCAL-009
 site-of-care flag) re-seeds deterministically; the other thirty goldens gain +20
