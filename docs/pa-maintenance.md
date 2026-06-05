@@ -188,7 +188,16 @@ pages, Medical Policies, and utilization-management / pharmacy program
 requirements); the fourteenth is Horizon Blue Cross Blue Shield of New Jersey
 (`R-PA-HORIZON-NNN`, ledger source `horizon-precert`, anchored to the plan's
 public provider prior-authorization pages, Medical Policies, and
-utilization-management / pharmacy program requirements). The Anthem bucket matches only `anthem` / `elevance` — generic
+utilization-management / pharmacy program requirements); the fifteenth is Blue
+Cross Blue Shield of Tennessee (`R-PA-BCBST-NNN`, ledger source `bcbst-precert`,
+anchored to BCBST's public provider authorizations pages, Medical Policies, and
+utilization-management / pharmacy program requirements); the sixteenth is Blue
+Cross Blue Shield of Massachusetts (`R-PA-BCBSMA-NNN`, ledger source
+`bcbsma-precert`, anchored to BCBSMA's public Provider Central pages, Medical
+Policies, and utilization-management / pharmacy program requirements); the
+seventeenth is Blue Cross Blue Shield of Alabama (`R-PA-BCBSAL-NNN`, ledger
+source `bcbsal-precert`, anchored to BCBSAL's public provider pages, Medical
+Policies, and utilization-management / pharmacy program requirements). The Anthem bucket matches only `anthem` / `elevance` — generic
 `blue cross` / `blue shield` stays in the commercial fall-through, since most
 Blues plans are independent licensees, not Anthem/Elevance. The Cigna bucket
 matches `cigna` / `evernorth` (Cigna's health-services brand, under which it
@@ -241,7 +250,19 @@ matches only the disambiguated brand anchors `horizon blue cross` / `horizon
 bcbs` / `horizon healthcare services` (never the bare common word `horizon`) —
 the dominant Blues licensee in New Jersey; generic Blues and other licensees stay
 in the commercial fall-through, and an explicit "Medicare Advantage" string
-routes to the MA bucket first.
+routes to the MA bucket first. The BCBST bucket matches the `blue cross [and]
+blue shield of tennessee` plan name and the `bcbst` acronym — the dominant Blues
+licensee in Tennessee; generic Blues and other licensees stay in the commercial
+fall-through, and an explicit "Medicare Advantage" string routes to the MA bucket
+first. The BCBSMA bucket matches the `blue cross [and] blue shield of
+massachusetts` plan name and the `bcbs of massachusetts` short form — but
+deliberately NOT the bare `bcbsma` acronym, because the earlier Michigan bucket's
+`bcbsm` anchor is a substring of `bcbsma` and would swallow a bare-acronym
+packet; the spelled-out name carries no such collision. The BCBSAL bucket matches
+the `blue cross [and] blue shield of alabama` plan name and the `bcbsal` acronym —
+the dominant Blues licensee in Alabama; generic Blues and other licensees stay in
+the commercial fall-through, and an explicit "Medicare Advantage" string routes
+to the MA bucket first.
 Note both Humana's and
 HCSC's imaging / lab-management programs are named generically in the ruleset,
 since their current vendor names collide with an AI-vendor substring barred from
