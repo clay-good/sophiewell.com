@@ -6,6 +6,44 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v52 wave 52-23 — §4.5.23 Blue Cross Blue Shield of Alabama commercial overlay, 20 of 20)
+
+The seventeenth named commercial-payer overlay, and the twelfth "Blues plans by
+state" overlay after HCSC, Highmark, Florida Blue, BCBSM, Blue Shield of
+California, Independence Blue Cross, CareFirst, Blue Cross NC, Horizon, BCBST, and
+BCBSMA. The full 20-rule `R-PA-BCBSAL-NNN` family is anchored to Blue Cross Blue
+Shield of Alabama's public provider pages, Medical Policies, and
+utilization-management / pharmacy program requirements (new ledger source
+`bcbsal-precert`). BCBSAL is the dominant Blue Cross Blue Shield licensee in
+Alabama and one of the largest independent licensees not already routed to the
+Anthem/Elevance, HCSC, Highmark, Florida Blue, BCBSM, Blue Shield of California,
+IBX, CareFirst, Blue Cross NC, Horizon, BCBST, or BCBSMA buckets.
+
+A new `'bcbsal'` payer bucket in `lib/pa/payer.js` is placed after `'bcbsma'`
+and before the generic `'commercial'` fall-through. It matches only
+definitively-Alabama anchors (the plan name and the `bcbsal` acronym), so generic
+`blue cross` / `blue shield` and other licensees stay in the commercial
+fall-through, and an explicit "Medicare Advantage" string still wins the MA
+bucket earlier. Each rule self-gates on `bundle.payer === 'bcbsal'` and vacuously
+passes on every other packet.
+
+The 20 rules mirror the prior sixteen commercial families so the seventeen
+commercial overlays stay structurally parallel and auditable side by side, with
+BCBSAL-specific routing names where the plan uses them: the ProviderAccess /
+Availity submission channel (003), the advanced-imaging utilization-management
+program (007, 012), pharmacy management for step therapy (011), behavioral health
+(016), and the Blue Distinction Centers for Transplant (017).
+
+Coverage is now 475 rules shipped (was 455), 427 source-anchored (was 407), 32
+sources (was 31), 0 ledger orphans, 0 coverage gaps. A new `bcbsal-precert`
+golden fixture (hospital-outpatient knee arthroscopy under a BCBSAL letterhead)
+exercises the on-bucket path — 009 flag, 003 info — and the other twenty-three
+goldens gain +20 vacuous-pass findings each; all twenty-four re-seeded
+deterministically. Tests: +9 engine assertions (count 475, the off-bucket loop,
+fire/pass checks) and +1 classify assertion. e2e pa-lint rule count 455 -> 475.
+Catalog count unchanged (255 tiles; BCBSAL adds rules, not a tile). The PA tile's
+wave banner advances to 52-23.
+
 ### Added (spec-v52 wave 52-22 — §4.5.22 Blue Cross Blue Shield of Massachusetts commercial overlay, 20 of 20)
 
 The sixteenth named commercial-payer overlay, and the eleventh "Blues plans by

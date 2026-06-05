@@ -1644,8 +1644,60 @@ list. With sixteen commercial overlays shipped — the five largest
 commercial / MA plans plus the eleven largest independent Blues licensees
 (HCSC, Highmark, Florida Blue, BCBSM, Blue Shield of California,
 Independence Blue Cross, CareFirst, Blue Cross NC, Horizon, BCBST, BCBSMA)
-— the remaining §9 wave 52-5+ candidates are the other Blues plans by
-state and per-state Medicaid overlays as user-volume data warrants.
+— Blue Cross Blue Shield of Alabama opened in wave 52-23 (§4.5.23) as the
+seventeenth.
+
+#### 4.5.23 Commercial payer overlays — Blue Cross Blue Shield of Alabama (wave 52-23)
+
+The seventeenth named commercial-payer overlay, and the twelfth "Blues
+plans by state" overlay after HCSC, Highmark, Florida Blue, BCBSM, Blue
+Shield of California, Independence Blue Cross, CareFirst, Blue Cross NC,
+Horizon, BCBST, and BCBSMA. **Blue Cross Blue Shield of Alabama**
+(BCBSAL) is the dominant Blue Cross Blue Shield licensee in **Alabama**
+and one of the largest independent licensees not already routed to the
+Anthem/Elevance, HCSC, Highmark, Florida Blue, BCBSM, Blue Shield of
+California, IBX, CareFirst, Blue Cross NC, Horizon, BCBST, or BCBSMA
+buckets. Like the sixteen before it, BCBSAL is keyed to its own payer
+bucket (`'bcbsal'`, detected by `lib/pa/payer.js` and placed before the
+generic `'commercial'` fall-through, after `'bcbsma'`). The bucket
+matches only definitively-Alabama anchors — the plan name and the
+`bcbsal` acronym — so generic `blue cross` / `blue shield` and other
+Blues licensees stay in the commercial fall-through, and an explicit
+"Medicare Advantage" string still wins the MA bucket earlier. Each
+commercial rule self-gates on `bundle.payer === 'bcbsal'` and returns a
+vacuous pass on every other packet.
+
+Scope discipline is identical to §4.5.7–§4.5.22: the rules check the
+**procedural completeness** of a BCBSAL prior-authorization packet
+against the plan's *own published* submission requirements — not
+clinical coverage criteria, which are the reviewer's judgement and the
+applicable Medical Policy's job. Every rule is anchored to a public
+BCBSAL provider URL tracked in the staleness ledger (§8.3, source
+`bcbsal-precert`) and re-verified on the §4.5.6 cadence.
+
+The set mirrors the earlier commercial families so the seventeen overlays
+stay structurally parallel and auditable side by side; BCBSAL-specific
+routing names appear where the plan actually uses them — the
+**ProviderAccess portal / Availity** for submission, the
+**advanced-imaging utilization-management program** for advanced imaging
+and genetic / molecular testing, the plan's **pharmacy management** for
+pharmacy / step therapy, **behavioral health** for behavioral health, and
+the **Blue Distinction Centers for Transplant** for transplant. Wave
+52-23 ships the full planned set of 20 (`R-PA-BCBSAL-NNN`), structurally
+parallel to the BCBSMA set (§4.5.22).
+
+`R-PA-BCBSAL-004` mirrors core `R-PA-053` and the Aetna / UHC / Anthem /
+Cigna / Humana / HCSC / Highmark / Florida Blue / BCBSM / Blue Shield of
+California / Independence Blue Cross / CareFirst / Blue Cross NC / Horizon
+/ BCBS Tennessee / BCBS Massachusetts -004 rules: it ships without a
+bundled prior-authorization list and vacuously passes with a pointer
+until a later wave bundles the list. With seventeen commercial overlays
+shipped — the five largest commercial / MA plans plus the twelve largest
+independent Blues licensees (HCSC, Highmark, Florida Blue, BCBSM, Blue
+Shield of California, Independence Blue Cross, CareFirst, Blue Cross NC,
+Horizon, BCBST, BCBSMA, BCBSAL) — the remaining §9 wave 52-5+ candidates
+are the other Blues plans by state and per-state Medicaid overlays as
+user-volume data warrants.
 
 ### 4.6 The DOCX report
 
@@ -2527,6 +2579,26 @@ self-contained PR; the catalog count rises only at wave 52-1.
   Tennessee + BCBS Massachusetts), the eleven largest independent Blues
   licensees now all covered.
 
+### Wave 52-23 — Blue Cross Blue Shield of Alabama commercial overlay (2026-06)
+
+- The 20 BCBSAL rules (§4.5.23), the `R-PA-BCBSAL-NNN` family, anchored
+  to the plan's public provider pages, Medical Policies, and
+  utilization-management / pharmacy program requirements (ledger source
+  `bcbsal-precert`).
+- A `'bcbsal'` payer bucket in `lib/pa/payer.js`, placed before the
+  generic `'commercial'` fall-through and after `'bcbsma'`. It matches
+  only definitively-Alabama anchors (the plan name and the `bcbsal`
+  acronym); generic Blues and other licensees stay in the commercial
+  fall-through, and an explicit "Medicare Advantage" string still wins
+  the MA bucket earlier.
+- Catalog count unchanged (255 tiles; BCBSAL adds rules, not a tile).
+  Ruleset rises 455 → 475. Brings the named commercial / MA overlays to
+  seventeen (Aetna + UnitedHealthcare + Anthem + Cigna + Humana + HCSC +
+  Highmark + Florida Blue + BCBSM + Blue Shield of California +
+  Independence Blue Cross + CareFirst + Blue Cross NC + Horizon + BCBS
+  Tennessee + BCBS Massachusetts + BCBS Alabama), the twelve largest
+  independent Blues licensees now all covered.
+
 ### Wave 52-5+ — State Medicaid overlays, additional commercial payers, OCR
 
 - Per-state Medicaid overlays as user-volume data warrants.
@@ -2536,8 +2608,9 @@ self-contained PR; the catalog count rises only at wave 52-1.
   wave 52-17, CareFirst BlueCross BlueShield in wave 52-18, Blue Cross
   Blue Shield of North Carolina in wave 52-19, Horizon Blue Cross Blue
   Shield of New Jersey in wave 52-20, Blue Cross Blue Shield of Tennessee
-  in wave 52-21, Blue Cross Blue Shield of Massachusetts in wave 52-22;
-  the remaining independent Blues licensees follow as volume warrants).
+  in wave 52-21, Blue Cross Blue Shield of Massachusetts in wave 52-22,
+  Blue Cross Blue Shield of Alabama in wave 52-23; the remaining
+  independent Blues licensees follow as volume warrants).
 - Optional in-browser OCR via tesseract.js (lazy-loaded,
   user-toggled, ≈ 11 MB gzipped). Only if §2's no-OCR
   experience proves insufficient.
@@ -2706,6 +2779,33 @@ silently; the audit trail records the disablement.
 
 - 2026-05-27 — v52 proposed. Five waves outlined (52-1 through
   52-5+). Catalog count target at v52-1 close: 255.
+- 2026-06-05 — wave 52-23 (§4.5.23 Blue Cross Blue Shield of Alabama commercial
+  overlay, the full 20-rule `R-PA-BCBSAL-NNN` family — the seventeenth named
+  commercial overlay after Aetna, UnitedHealthcare, Anthem, Cigna, Humana, HCSC,
+  Highmark, Florida Blue, BCBSM, Blue Shield of California, Independence Blue
+  Cross, CareFirst, Blue Cross NC, Horizon, BCBST, and BCBSMA, and the twelfth
+  "Blues plans by state" overlay). Opens a `'bcbsal'` payer bucket in
+  `lib/pa/payer.js` (placed after `'bcbsma'` and before the generic `'commercial'`
+  fall-through). BCBSAL is the dominant Blues licensee in Alabama; the bucket
+  matches only definitively-Alabama anchors (the plan name and the `bcbsal`
+  acronym), so generic `blue cross` / `blue shield` and other licensees stay in
+  the commercial fall-through, and an explicit "Medicare Advantage" string still
+  wins the MA bucket earlier. The 20 rules mirror the prior sixteen commercial
+  families so the seventeen overlays stay structurally parallel, with
+  BCBSAL-specific routing names where the plan uses them (the ProviderAccess /
+  Availity submission channel, the advanced-imaging utilization-management
+  program, pharmacy management for step therapy, behavioral health, and the Blue
+  Distinction Centers for Transplant). Each self-gates on `bundle.payer ===
+  'bcbsal'` and vacuously passes on every other packet. New ledger source
+  `bcbsal-precert` anchored to the plan's public provider page (all twenty rules
+  map to it by prefix). Coverage is now 475 rules shipped (was 455), 427
+  source-anchored (was 407), 32 sources (was 31), 0 orphans, 0 gaps. The golden
+  fixtures re-seed deterministically (a new `bcbsal-precert` fixture exercises the
+  on-bucket path — 009 flag, 003 info; the other twenty-three gain +20
+  vacuous-pass findings each). Tests: +9 engine assertions (count 475, the
+  off-bucket loop, and fire/pass checks) and +1 classify assertion (BCBSAL →
+  `bcbsal`; generic Blues → `commercial`; BCBSAL Medicare Advantage → the MA
+  bucket). Catalog count unchanged (255). View wave banner advanced to 52-23.
 - 2026-06-05 — wave 52-22 (§4.5.22 Blue Cross Blue Shield of Massachusetts
   commercial overlay, the full 20-rule `R-PA-BCBSMA-NNN` family — the sixteenth
   named commercial overlay after Aetna, UnitedHealthcare, Anthem, Cigna, Humana,

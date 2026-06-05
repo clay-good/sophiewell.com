@@ -140,8 +140,8 @@ test('runEngine passes every starter rule on a clean multi-doc happy-path packet
   assert.equal(counts.pass, STARTER_RULES.length);
 });
 
-test('STARTER_RULES at wave 52-22 is 455 rules (135 §4.5 core/overlay/specialty + 20 Aetna + 20 UnitedHealthcare + 20 Anthem + 20 Cigna + 20 Humana + 20 HCSC + 20 Highmark + 20 Florida Blue + 20 BCBSM + 20 Blue Shield of California + 20 Independence Blue Cross + 20 CareFirst + 20 Blue Cross NC + 20 Horizon + 20 BCBS Tennessee + 20 BCBS Massachusetts)', () => {
-  assert.equal(STARTER_RULES.length, 455);
+test('STARTER_RULES at wave 52-23 is 475 rules (135 §4.5 core/overlay/specialty + 20 Aetna + 20 UnitedHealthcare + 20 Anthem + 20 Cigna + 20 Humana + 20 HCSC + 20 Highmark + 20 Florida Blue + 20 BCBSM + 20 Blue Shield of California + 20 Independence Blue Cross + 20 CareFirst + 20 Blue Cross NC + 20 Horizon + 20 BCBS Tennessee + 20 BCBS Massachusetts + 20 BCBS Alabama)', () => {
+  assert.equal(STARTER_RULES.length, 475);
 });
 
 // ---- wave 52-7a sanity checks: Aetna commercial overlay (§4.5.7) ----
@@ -1590,6 +1590,79 @@ test('R-PA-BCBSMA-020 flags a BCBSMA out-of-network request with no network-gap 
   const text = 'Blue Cross Blue Shield of Massachusetts member.\nOut-of-network prior authorization request.\nProcedure CPT 70551.\n';
   const findings = runEngine(bundleOf(text));
   const f = findings.find((x) => x.ruleId === 'R-PA-BCBSMA-020');
+  assert.equal(f.status, 'info');
+});
+
+// ---- wave 52-23 sanity checks: Blue Cross Blue Shield of Alabama overlay (§4.5.23) ----
+
+test('BCBSAL overlay rules vacuously pass on a non-BCBSAL packet', () => {
+  // happyBundle is not a BCBSAL packet -> every R-PA-BCBSAL-* rule passes.
+  const findings = runEngine(happyBundle());
+  for (let n = 1; n <= 20; n += 1) {
+    const id = 'R-PA-BCBSAL-' + String(n).padStart(3, '0');
+    const f = findings.find((x) => x.ruleId === id);
+    assert.ok(f, id + ' should be in the findings');
+    assert.equal(f.status, 'pass', id + ' should vacuously pass off-bucket');
+  }
+});
+
+test('R-PA-BCBSAL-001 flags a BCBSAL request with a procedure but no coverage-criteria reference', () => {
+  const text = 'Blue Cross Blue Shield of Alabama member.\n'
+    + 'Requested procedure: CPT 72148 (MRI lumbar spine).\n'
+    + 'Please authorize.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-BCBSAL-001');
+  assert.equal(f.status, 'flag');
+});
+
+test('R-PA-BCBSAL-001 passes when the BCBSAL packet cites the applicable Medical Policy', () => {
+  const text = 'Blue Cross Blue Shield of Alabama member.\n'
+    + 'Requested procedure: CPT 72148.\n'
+    + 'Medical necessity per the applicable BCBSAL Medical Policy (MCG).\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-BCBSAL-001');
+  assert.equal(f.status, 'pass');
+});
+
+test('R-PA-BCBSAL-002 flags a BCBSAL packet with no clinical document attached', () => {
+  const text = 'Blue Cross Blue Shield of Alabama member.\nRequested procedure: CPT 27447.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-BCBSAL-002');
+  assert.equal(f.status, 'flag');
+});
+
+test('R-PA-BCBSAL-003 passes when the BCBSAL packet names the ProviderAccess channel (info)', () => {
+  const text = 'Blue Cross Blue Shield of Alabama member.\nSubmitted via the ProviderAccess provider portal.\nProcedure CPT 27447.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-BCBSAL-003');
+  assert.equal(f.status, 'pass');
+});
+
+test('R-PA-BCBSAL-007 flags a BCBSAL outpatient MRI with no clinical indication', () => {
+  const text = 'Blue Cross Blue Shield of Alabama member.\nRequested: MRI lumbar spine, CPT 72148.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-BCBSAL-007');
+  assert.equal(f.status, 'flag');
+});
+
+test('R-PA-BCBSAL-008 passes when an expedited BCBSAL request documents the clinical urgency', () => {
+  const text = 'Blue Cross Blue Shield of Alabama member.\nExpedited review requested: delay would jeopardize the member\'s life or health.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-BCBSAL-008');
+  assert.equal(f.status, 'pass');
+});
+
+test('R-PA-BCBSAL-017 flags a BCBSAL transplant request with no Blue Distinction routing', () => {
+  const text = 'Blue Cross Blue Shield of Alabama member.\nRequested service: kidney transplant.\nMedical necessity per Medical Policy.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-BCBSAL-017');
+  assert.equal(f.status, 'flag');
+});
+
+test('R-PA-BCBSAL-020 flags a BCBSAL out-of-network request with no network-gap justification (info)', () => {
+  const text = 'Blue Cross Blue Shield of Alabama member.\nOut-of-network prior authorization request.\nProcedure CPT 70551.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-BCBSAL-020');
   assert.equal(f.status, 'info');
 });
 
