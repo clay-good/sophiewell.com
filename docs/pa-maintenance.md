@@ -197,6 +197,15 @@ Cross Blue Shield of Massachusetts (`R-PA-BCBSMA-NNN`, ledger source
 Policies, and utilization-management / pharmacy program requirements); the
 seventeenth is Blue Cross Blue Shield of Alabama (`R-PA-BCBSAL-NNN`, ledger
 source `bcbsal-precert`, anchored to BCBSAL's public provider pages, Medical
+Policies, and utilization-management / pharmacy program requirements); the
+eighteenth is Blue Cross Blue Shield of South Carolina (`R-PA-BCBSSC-NNN`, ledger
+source `bcbssc-precert`, anchored to BCBSSC's public provider pages, Medical
+Policies, and utilization-management / pharmacy program requirements); the
+nineteenth is Arkansas Blue Cross and Blue Shield (`R-PA-ARKBCBS-NNN`, ledger
+source `arkbcbs-precert`, anchored to the plan's public provider pages, Medical
+Policies, and utilization-management / pharmacy program requirements); the
+twentieth is Blue Cross and Blue Shield of Kansas City (`R-PA-BLUEKC-NNN`, ledger
+source `bluekc-precert`, anchored to the plan's public provider pages, Medical
 Policies, and utilization-management / pharmacy program requirements). The Anthem bucket matches only `anthem` / `elevance` — generic
 `blue cross` / `blue shield` stays in the commercial fall-through, since most
 Blues plans are independent licensees, not Anthem/Elevance. The Cigna bucket
@@ -262,7 +271,20 @@ packet; the spelled-out name carries no such collision. The BCBSAL bucket matche
 the `blue cross [and] blue shield of alabama` plan name and the `bcbsal` acronym —
 the dominant Blues licensee in Alabama; generic Blues and other licensees stay in
 the commercial fall-through, and an explicit "Medicare Advantage" string routes
-to the MA bucket first.
+to the MA bucket first. The BCBSSC bucket matches the `blue cross [and] blue
+shield of south carolina` plan name and the `bcbssc` acronym (no substring
+collision with the Michigan `bcbsm` bucket) — the dominant Blues licensee in
+South Carolina; generic Blues and other licensees stay in the commercial
+fall-through, and an explicit "Medicare Advantage" string routes to the MA bucket
+first. The Arkansas Blue Cross bucket matches the `arkansas blue cross [and blue
+shield]` plan name and the `arkansas bcbs` short form — the dominant Blues
+licensee in Arkansas; generic Blues and other licensees stay in the commercial
+fall-through, and an explicit "Medicare Advantage" string routes to the MA bucket
+first. The Blue KC bucket matches the `blue cross [and] blue shield of kansas
+city` plan name and the `blue kc` short form — the dominant Blues licensee in the
+greater Kansas City bistate metropolitan area; generic Blues and other licensees
+stay in the commercial fall-through, and an explicit "Medicare Advantage" string
+routes to the MA bucket first.
 Note both Humana's and
 HCSC's imaging / lab-management programs are named generically in the ruleset,
 since their current vendor names collide with an AI-vendor substring barred from
