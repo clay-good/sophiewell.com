@@ -329,9 +329,16 @@ generic `'medicaid'` bucket, so a named program routes to its overlay while a
 state-agnostic Medicaid packet still routes to the generic bucket. The shipped
 overlays are Medi-Cal / California (`R-PA-MCAL-NNN`, ledger source
 `medi-cal-precert`), New York (`R-PA-MCNY-NNN`, ledger source
-`ny-medicaid-precert`, anchored to eMedNY), and Texas (`R-PA-MCTX-NNN`, ledger
-source `tx-medicaid-precert`, anchored to TMHP) — the three largest state
-programs by enrollment.
+`ny-medicaid-precert`, anchored to eMedNY), Texas (`R-PA-MCTX-NNN`, ledger
+source `tx-medicaid-precert`, anchored to TMHP), Florida (`R-PA-MCFL-NNN`,
+ledger source `fl-medicaid-precert`, anchored to AHCA / FMMIS), Ohio
+(`R-PA-MCOH-NNN`, ledger source `oh-medicaid-precert`, anchored to the Ohio
+Department of Medicaid / PNM), and Illinois (`R-PA-MCIL-NNN`, ledger source
+`il-medicaid-precert`, anchored to HFS / IMPACT / MEDI) — six of the largest
+state programs by enrollment. Two states are deliberately disjoint from their
+same-state Blues commercial buckets: `medicaid-fl` vs. `florida-blue` (§4.5.14)
+and `medicaid-il` vs. `hcsc` (BCBS of Illinois, §4.5.12); both pairs are
+unit-tested so a future anchor edit cannot cross-route them.
 
 The key invariant: the §4.5.4 Medicaid core (`R-PA-MCD-NNN`) **composes** with a
 per-state overlay rather than being replaced by it. All ten core gates use the
