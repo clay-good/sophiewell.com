@@ -6,6 +6,28 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v52 wave 52-37 — §4.5.37 Georgia Medicaid per-state overlay, 20 of 20)
+
+The eighth per-state Medicaid overlay, and the thirty-first named-payer overlay
+overall. The full 20-rule `R-PA-MCGA-NNN` family is anchored to Georgia
+Medicaid's public Department of Community Health / GAMMIS provider pages (new
+ledger source `ga-medicaid-precert`).
+
+A new `'medicaid-ga'` payer bucket (anchors `georgia medicaid` / `gammis` /
+`georgia department of community health`) is placed before the generic
+`'medicaid'` bucket and composes with the §4.5.4 Medicaid core via
+`isMedicaid()`. The 20 rules mirror the established families with the Medicaid
+reframings (transplant → Medicaid-designated transplant center; appeal → state
+fair hearing) and Georgia GAMMIS routing. Each rule self-gates on `bundle.payer
+=== 'medicaid-ga'` and vacuously passes on every other packet.
+
+Coverage is now 755 rules shipped (was 735), 707 source-anchored (was 687), 46
+sources (was 45), 0 ledger orphans, 0 coverage gaps. A new `ga-medicaid-precert`
+golden fixture (Medicaid core all pass, MCGA-009 site-of-care flag) re-seeds
+deterministically; all thirty-eight goldens re-seeded. Tests: +5 engine
+assertions and +1 classify assertion. e2e pa-lint rule count 735 -> 755. Catalog
+count unchanged (255 tiles). The PA tile's wave banner advances to 52-37.
+
 ### Added (spec-v52 wave 52-36 — §4.5.36 Washington Apple Health (Medicaid) per-state overlay, 20 of 20)
 
 The seventh per-state Medicaid overlay (after California, New York, Texas,

@@ -140,8 +140,8 @@ test('runEngine passes every starter rule on a clean multi-doc happy-path packet
   assert.equal(counts.pass, STARTER_RULES.length);
 });
 
-test('STARTER_RULES at wave 52-36 is 735 rules (135 §4.5 core/overlay/specialty + 20 each for the 23 commercial overlays + 20 each for 7 per-state Medicaid overlays: CA + NY + TX + FL + OH + IL + WA)', () => {
-  assert.equal(STARTER_RULES.length, 735);
+test('STARTER_RULES at wave 52-37 is 755 rules (135 §4.5 core/overlay/specialty + 20 each for the 23 commercial overlays + 20 each for 8 per-state Medicaid overlays: CA + NY + TX + FL + OH + IL + WA + GA)', () => {
+  assert.equal(STARTER_RULES.length, 755);
 });
 
 // ---- wave 52-7a sanity checks: Aetna commercial overlay (§4.5.7) ----
@@ -2415,6 +2415,44 @@ test('R-PA-MCWA-017 flags a Washington Apple Health transplant request with no M
 
 test('R-PA-MCWA core composition: the Medicaid core fires on a Washington Apple Health (medicaid-wa) packet', () => {
   const findings = runEngine(bundleOf('Washington Apple Health member.\nRequested procedure: CPT 29881.\n'));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-MCD-003').status, 'flag');
+});
+
+// ---- wave 52-37 sanity checks: Georgia Medicaid overlay (§4.5.37) ----
+
+test('Georgia Medicaid overlay rules vacuously pass on a non-Georgia-Medicaid packet', () => {
+  const findings = runEngine(happyBundle());
+  for (let n = 1; n <= 20; n += 1) {
+    const id = 'R-PA-MCGA-' + String(n).padStart(3, '0');
+    const f = findings.find((x) => x.ruleId === id);
+    assert.ok(f, id + ' should be in the findings');
+    assert.equal(f.status, 'pass', id + ' should vacuously pass off-bucket');
+  }
+});
+
+test('R-PA-MCGA-001 flags a Georgia Medicaid request with a procedure but no coverage-criteria reference', () => {
+  const text = 'Georgia Medicaid member.\nRequested procedure: CPT 72148 (MRI lumbar spine).\nPlease authorize.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-MCGA-001');
+  assert.equal(f.status, 'flag');
+});
+
+test('R-PA-MCGA-003 passes when the Georgia Medicaid packet names the GAMMIS channel (info)', () => {
+  const text = 'Georgia Medicaid request submitted via GAMMIS.\nProcedure CPT 27447.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-MCGA-003');
+  assert.equal(f.status, 'pass');
+});
+
+test('R-PA-MCGA-017 flags a Georgia Medicaid transplant request with no Medicaid-designated transplant-center routing', () => {
+  const text = 'Georgia Medicaid member.\nRequested service: kidney transplant.\nMedical necessity per Medical Policy.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-MCGA-017');
+  assert.equal(f.status, 'flag');
+});
+
+test('R-PA-MCGA core composition: the Medicaid core fires on a Georgia Medicaid (medicaid-ga) packet', () => {
+  const findings = runEngine(bundleOf('Georgia Medicaid member.\nRequested procedure: CPT 29881.\n'));
   assert.equal(findings.find((x) => x.ruleId === 'R-PA-MCD-003').status, 'flag');
 });
 

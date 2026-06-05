@@ -2186,6 +2186,27 @@ source `wa-medicaid-precert`). `R-PA-MCWA-004` mirrors core `R-PA-053`: it ships
 without a bundled prior-authorization list and vacuously passes with a pointer
 until a later wave bundles the list.
 
+#### 4.5.37 Per-state Medicaid overlays — Georgia Medicaid (wave 52-37)
+
+The eighth per-state Medicaid overlay, and the thirty-first named-payer overlay
+overall. **Georgia Medicaid** is run by the **Department of Community Health**,
+with **GAMMIS** (the Georgia Medicaid Management Information System) as the
+provider portal. It is detected by a per-state bucket (`'medicaid-ga'`, anchors
+`georgia medicaid` / `gammis` / `georgia department of community health`) placed
+before the generic `'medicaid'` bucket, and composes with the §4.5.4 Medicaid
+core through `isMedicaid(bundle.payer)`. An explicit "Medicare Advantage" string
+still wins the MA bucket earlier.
+
+The 20 Georgia rules (`R-PA-MCGA-NNN`) mirror the established families with the
+two Medicaid reframings (transplant → Medicaid-designated transplant center;
+appeal → state fair hearing) and Georgia routing names (the GAMMIS portal for
+submission). Each rule self-gates on `bundle.payer === 'medicaid-ga'` and returns
+a vacuous pass on every other packet. Every rule is anchored to a public Georgia
+Medicaid provider URL tracked in the staleness ledger (§8.3, source
+`ga-medicaid-precert`). `R-PA-MCGA-004` mirrors core `R-PA-053`: it ships without
+a bundled prior-authorization list and vacuously passes with a pointer until a
+later wave bundles the list.
+
 ### 4.6 The DOCX report
 
 Structure (mirrors Vaulytica v3 with healthcare-specific
@@ -3283,6 +3304,18 @@ self-contained PR; the catalog count rises only at wave 52-1.
 - Catalog count unchanged (255 tiles). Ruleset rises 715 → 735. Brings
   per-state Medicaid overlays to seven (CA, NY, TX, FL, OH, IL, WA).
 
+### Wave 52-37 — Georgia Medicaid overlay (2026-06)
+
+- The 20 Georgia rules (§4.5.37), the `R-PA-MCGA-NNN` family, anchored to
+  the Georgia DCH / GAMMIS provider pages (ledger source
+  `ga-medicaid-precert`).
+- A `'medicaid-ga'` payer bucket (anchors `georgia medicaid` / `gammis` /
+  `georgia department of community health`) before the generic `'medicaid'`
+  bucket; composes with the §4.5.4 Medicaid core via `isMedicaid()`.
+  Transplant / appeal reframed for Medicaid.
+- Catalog count unchanged (255 tiles). Ruleset rises 735 → 755. Brings
+  per-state Medicaid overlays to eight (CA, NY, TX, FL, OH, IL, WA, GA).
+
 ### Wave 52-5+ — State Medicaid overlays, additional commercial payers, OCR
 
 - Per-state Medicaid overlays (Medi-Cal / California shipped in wave
@@ -3470,6 +3503,18 @@ silently; the audit trail records the disablement.
 
 - 2026-05-27 — v52 proposed. Five waves outlined (52-1 through
   52-5+). Catalog count target at v52-1 close: 255.
+- 2026-06-05 — wave 52-37 (§4.5.37 Georgia Medicaid — the eighth per-state
+  Medicaid overlay, the full 20-rule `R-PA-MCGA-NNN` family, thirty-first
+  named-payer overlay overall). Opens a `'medicaid-ga'` payer bucket (anchors
+  `georgia medicaid` / `gammis` / `georgia department of community health`)
+  before the generic `'medicaid'` bucket; composes with the §4.5.4 Medicaid core
+  via `isMedicaid()`. Transplant (017) and appeal (019) reframed for Medicaid;
+  GAMMIS routing. Each self-gates on `bundle.payer === 'medicaid-ga'`. New ledger
+  source `ga-medicaid-precert`. Coverage now 755 rules shipped (was 735), 707
+  source-anchored (was 687), 46 sources (was 45), 0 orphans, 0 gaps. New
+  `ga-medicaid-precert` golden fixture (Medicaid core all pass, MCGA-009 flag).
+  Tests: +5 engine assertions and +1 classify assertion. e2e count 735 -> 755.
+  Catalog unchanged (255). View wave banner advanced to 52-37.
 - 2026-06-05 — wave 52-36 (§4.5.36 Washington Apple Health / Medicaid — the
   seventh per-state Medicaid overlay, the full 20-rule `R-PA-MCWA-NNN` family,
   thirtieth named-payer overlay overall). Opens a `'medicaid-wa'` payer bucket

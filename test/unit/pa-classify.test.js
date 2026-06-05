@@ -408,6 +408,13 @@ test('detectPayer: Washington Apple Health (Medicaid) routes to its own per-stat
   assert.equal(detectPayer('Washington Apple Health Medicare Advantage dual plan'), 'cms-medicare-advantage');
 });
 
+test('detectPayer: Georgia Medicaid routes to its own per-state bucket (wave 52-37)', () => {
+  assert.equal(detectPayer('Georgia Medicaid prior authorization'), 'medicaid-ga');
+  assert.equal(detectPayer('submitted via GAMMIS'), 'medicaid-ga');
+  assert.equal(detectPayer('state Medicaid managed care'), 'medicaid');
+  assert.equal(detectPayer('Georgia Medicaid Medicare Advantage dual plan'), 'cms-medicare-advantage');
+});
+
 test('detectPayer: unknown for empty / non-payer text', () => {
   assert.equal(detectPayer(''), 'unknown');
   assert.equal(detectPayer('this packet has no payer letterhead'), 'unknown');
