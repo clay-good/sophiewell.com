@@ -389,6 +389,14 @@
       "rules": ["R-PA-MCPA-001", "R-PA-MCPA-002"],
       "url": "https://www.dhs.pa.gov/providers",
       "lastVerified": "2026-06-05"
+    },
+    {
+      "id": "mi-medicaid-precert",
+      "label": "Michigan Medicaid (MDHHS / CHAMPS / Healthy Michigan Plan) prior-authorization requirements, Medicaid Provider Manual, and utilization-management / pharmacy program requirements",
+      "ruleFamily": "medicaid-mi",
+      "rules": ["R-PA-MCMI-001", "R-PA-MCMI-002"],
+      "url": "https://www.michigan.gov/mdhhs/doing-business/providers",
+      "lastVerified": "2026-06-05"
     }
   ],
   "acknowledgments": []

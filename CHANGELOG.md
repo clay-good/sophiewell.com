@@ -6,6 +6,39 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v52 wave 52-41 — §4.5.41 Michigan Medicaid overlay for the Prior-Auth Packet Linter)
+
+The eleventh per-state Medicaid overlay, and the thirty-fourth named-payer
+overlay overall. **Michigan Medicaid** is administered by **MDHHS** (the Michigan
+Department of Health and Human Services); the provider portal is **CHAMPS** (the
+Community Health Automated Medicaid Processing System) and the Medicaid-expansion
+program is branded the **Healthy Michigan Plan**.
+
+- New per-state payer bucket `'medicaid-mi'` in `lib/pa/payer.js` (anchors
+  `michigan medicaid` / `mi medicaid` / `healthy michigan plan` / `champs`),
+  placed before the generic `'medicaid'` bucket and composing with the §4.5.4
+  Medicaid core through `isMedicaid(bundle.payer)`. It is deliberately disjoint
+  from the same-state commercial Blues bucket `'bcbsm'` / Blue Cross Blue Shield
+  of Michigan (§4.5.15); a Michigan Medicaid packet and a BCBSM packet route to
+  different overlays (unit-tested), and a dual-eligible "Medicare Advantage"
+  string still wins the MA bucket earlier.
+- 20 rules `R-PA-MCMI-001..020` in `lib/pa/rules.js`, each self-gating on
+  `bundle.payer === 'medicaid-mi'` and vacuously passing on every other packet.
+  Structurally parallel to the other Medicaid overlays, with CHAMPS submission
+  routing and the two Medicaid reframings (transplant → Medicaid-designated
+  transplant center; appeal → state fair hearing). `R-PA-MCMI-004` mirrors core
+  `R-PA-053` (no bundled prior-authorization list yet; vacuous pass with a
+  pointer).
+- New staleness-ledger source `mi-medicaid-precert` (`pa-staleness-ledger.json`,
+  regenerated into `lib/pa/staleness-ledger.js`) and a `R-PA-MCMI-` →
+  `mi-medicaid-precert` prefix map in `lib/pa/rule-sources.js`. Anchored to the
+  public MDHHS provider page.
+- New golden fixture `mi-medicaid-precert` (41 fixtures total); `scripts/audit-pa.mjs`
+  re-seeded. Ruleset rises **795 → 815**; catalog count unchanged (255 tiles).
+- Tests: +1 classify disjointness test (`medicaid-mi` vs. BCBSM) and the
+  rule-count assertions (unit + 2 e2e) advanced to 815. View wave banner advanced
+  to 52-41.
+
 ### Added (spec-v52 wave 52-40 — §4.5.40 Pennsylvania Medicaid overlay for the Prior-Auth Packet Linter)
 
 The tenth per-state Medicaid overlay, and the thirty-third named-payer overlay

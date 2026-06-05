@@ -2339,6 +2339,35 @@ Pennsylvania), the ruleset is **795 rules**; the remaining §9 wave 52-5+
 candidates are additional state Medicaid programs and the other Blues plans by
 state as user-volume data warrants.
 
+#### 4.5.41 Per-state Medicaid overlays — Michigan Medicaid (wave 52-41)
+
+The eleventh per-state Medicaid overlay, and the thirty-fourth named-payer
+overlay overall. **Michigan Medicaid** is administered by **MDHHS** (the Michigan
+Department of Health and Human Services); the provider portal is **CHAMPS** (the
+Community Health Automated Medicaid Processing System) and the Medicaid-expansion
+program is branded the **Healthy Michigan Plan**. It is detected by a per-state
+bucket (`'medicaid-mi'`, anchors `michigan medicaid` / `mi medicaid` / `healthy
+michigan plan` / `champs`) placed before the generic `'medicaid'` bucket, and
+composes with the §4.5.4 Medicaid core through `isMedicaid(bundle.payer)`. It is
+deliberately distinct from the same-state commercial Blues licensee `'bcbsm'`
+(Blue Cross Blue Shield of Michigan, §4.5.15): a Michigan Medicaid packet and a
+BCBSM packet route to different overlays (unit-tested). An explicit "Medicare
+Advantage" string still wins the MA bucket earlier.
+
+The 20 Michigan rules (`R-PA-MCMI-NNN`) mirror the established families with the
+two Medicaid reframings (transplant → Medicaid-designated transplant center;
+appeal → state fair hearing) and CHAMPS routing. Each rule self-gates on
+`bundle.payer === 'medicaid-mi'` and returns a vacuous pass on every other
+packet. Every rule is anchored to a public Michigan Medicaid provider URL tracked
+in the staleness ledger (§8.3, source `mi-medicaid-precert`). `R-PA-MCMI-004`
+mirrors core `R-PA-053`: it ships without a bundled prior-authorization list and
+vacuously passes with a pointer until a later wave bundles the list. With eleven
+state Medicaid programs shipped (California, New York, Texas, Florida, Ohio,
+Illinois, Washington, Georgia, North Carolina, Pennsylvania, Michigan), the
+ruleset is **815 rules**; the remaining §9 wave 52-5+ candidates are additional
+state Medicaid programs and the other Blues plans by state as user-volume data
+warrants.
+
 ### 4.6 The DOCX report
 
 Structure (mirrors Vaulytica v3 with healthcare-specific
@@ -3503,14 +3532,31 @@ self-contained PR; the catalog count rises only at wave 52-1.
 - Catalog count unchanged (255 tiles). Ruleset rises 775 → 795. Brings
   per-state Medicaid overlays to ten (CA, NY, TX, FL, OH, IL, WA, GA, NC, PA).
 
+### Wave 52-41 — Michigan Medicaid overlay (2026-06)
+
+- Eleventh per-state Medicaid overlay (§4.5.41), thirty-fourth named-payer
+  overlay overall. New per-state bucket `'medicaid-mi'` (anchors `michigan
+  medicaid` / `mi medicaid` / `healthy michigan plan` / `champs`), placed
+  before the generic `'medicaid'` bucket and composing with the §4.5.4 core
+  via `isMedicaid`.
+- 20 rules `R-PA-MCMI-001..020`, each self-gating on `bundle.payer ===
+  'medicaid-mi'`, anchored to the MDHHS provider page and the new
+  staleness-ledger source `mi-medicaid-precert`. CHAMPS routing; transplant /
+  appeal reframed for Medicaid. Disjoint from the same-state Blues bucket
+  `'bcbsm'` (§4.5.15; unit-tested).
+- Golden fixture `mi-medicaid-precert` added (41 fixtures total).
+- Catalog count unchanged (255 tiles). Ruleset rises 795 → 815. Brings
+  per-state Medicaid overlays to eleven (CA, NY, TX, FL, OH, IL, WA, GA, NC,
+  PA, MI).
+
 ### Wave 52-5+ — State Medicaid overlays, additional commercial payers, OCR
 
 - Per-state Medicaid overlays (Medi-Cal / California shipped in wave
   52-30, New York in wave 52-31, Texas in wave 52-32, Florida in wave
   52-33, Ohio in wave 52-34, Illinois in wave 52-35, Washington in wave
   52-36, Georgia in wave 52-37, North Carolina in wave 52-38, Pennsylvania
-  in wave 52-40; the remaining state Medicaid programs follow as
-  user-volume data warrants).
+  in wave 52-40, Michigan in wave 52-41; the remaining state Medicaid
+  programs follow as user-volume data warrants).
 - Other Blues plans by state (HCSC shipped in wave 52-12, Highmark
   in wave 52-13, Florida Blue in wave 52-14, BCBSM in wave 52-15,
   Blue Shield of California in wave 52-16, Independence Blue Cross in
@@ -3696,6 +3742,16 @@ silently; the audit trail records the disablement.
 
 - 2026-05-27 — v52 proposed. Five waves outlined (52-1 through
   52-5+). Catalog count target at v52-1 close: 255.
+- 2026-06-05 — wave 52-41 (§4.5.41 Michigan Medicaid — the eleventh per-state
+  Medicaid overlay, thirty-fourth named-payer overlay overall). New per-state
+  bucket `'medicaid-mi'` (anchors `michigan medicaid` / `mi medicaid` / `healthy
+  michigan plan` / `champs`), placed before the generic `'medicaid'` bucket and
+  composing with the §4.5.4 core via `isMedicaid`. Disjoint from the same-state
+  Blues bucket `'bcbsm'` (§4.5.15; unit-tested). 20 rules `R-PA-MCMI-001..020`
+  self-gating on `bundle.payer === 'medicaid-mi'`, anchored to the MDHHS provider
+  page (CHAMPS / Healthy Michigan Plan) and the new staleness-ledger source
+  `mi-medicaid-precert`. Golden fixture `mi-medicaid-precert` added (41 fixtures).
+  Ruleset 795 → 815. Catalog unchanged (255). View wave banner advanced to 52-41.
 - 2026-06-05 — wave 52-40 (§4.5.40 Pennsylvania Medicaid — the tenth per-state
   Medicaid overlay, thirty-third named-payer overlay overall). New per-state
   bucket `'medicaid-pa'` (anchors `pennsylvania medicaid` / `pa medicaid` /
