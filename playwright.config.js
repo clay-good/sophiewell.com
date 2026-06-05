@@ -7,6 +7,13 @@ export default defineConfig({
   timeout: 30000,
   expect: { timeout: 5000 },
   fullyParallel: true,
+  // Retry in CI only: the Firefox / WebKit engines intermittently exceed the
+  // 30s page-load budget under the loaded GitHub-runner (a transient that
+  // always clears on rerun — e.g. smoke.spec.js state-persists-across-reload,
+  // no-network.spec.js). Two retries absorb that infra flake without masking a
+  // real regression, which fails all three attempts. Local runs keep retries
+  // at 0 so a genuine flake is visible during development.
+  retries: process.env.CI ? 2 : 0,
   reporter: 'list',
   use: {
     baseURL: process.env.BASE_URL || 'http://localhost:4173',
