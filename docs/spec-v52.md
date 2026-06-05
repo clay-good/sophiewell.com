@@ -2310,6 +2310,35 @@ remaining §9 wave 52-5+ candidates are additional state Medicaid programs, the
 other Blues plans by state, and the optional in-browser OCR path as user-volume
 data warrants.
 
+#### 4.5.40 Per-state Medicaid overlays — Pennsylvania Medicaid (wave 52-40)
+
+The tenth per-state Medicaid overlay, and the thirty-third named-payer overlay
+overall. **Pennsylvania Medicaid** (PA DHS) brands its program **Medical
+Assistance**; the fee-for-service provider portal is **PROMISe** and the
+managed-care program is **HealthChoices**. It is detected by a per-state bucket
+(`'medicaid-pa'`, anchors `pennsylvania medicaid` / `pa medicaid` / `pennsylvania
+medical assistance` / `healthchoices`) placed before the generic `'medicaid'`
+bucket, and composes with the §4.5.4 Medicaid core through
+`isMedicaid(bundle.payer)`. It is deliberately distinct from the same-state
+commercial Blues licensees — `'highmark'` (§4.5.13) and `'ibx'` / Independence
+Blue Cross (§4.5.17): a Pennsylvania Medicaid packet and a Highmark / Independence
+packet route to different overlays (unit-tested). An explicit "Medicare
+Advantage" string still wins the MA bucket earlier.
+
+The 20 Pennsylvania rules (`R-PA-MCPA-NNN`) mirror the established families with
+the two Medicaid reframings (transplant → Medicaid-designated transplant center;
+appeal → state fair hearing) and PROMISe routing. Each rule self-gates on
+`bundle.payer === 'medicaid-pa'` and returns a vacuous pass on every other
+packet. Every rule is anchored to a public Pennsylvania Medicaid provider URL
+tracked in the staleness ledger (§8.3, source `pa-medicaid-precert`).
+`R-PA-MCPA-004` mirrors core `R-PA-053`: it ships without a bundled
+prior-authorization list and vacuously passes with a pointer until a later wave
+bundles the list. With ten state Medicaid programs shipped (California, New York,
+Texas, Florida, Ohio, Illinois, Washington, Georgia, North Carolina,
+Pennsylvania), the ruleset is **795 rules**; the remaining §9 wave 52-5+
+candidates are additional state Medicaid programs and the other Blues plans by
+state as user-volume data warrants.
+
 ### 4.6 The DOCX report
 
 Structure (mirrors Vaulytica v3 with healthcare-specific
@@ -3458,11 +3487,30 @@ self-contained PR; the catalog count rises only at wave 52-1.
   zero-off-origin-request guard). Catalog count unchanged (255);
   ruleset count unchanged (775 — OCR is an ingest adapter, not a rule).
 
+### Wave 52-40 — Pennsylvania Medicaid overlay (2026-06)
+
+- Tenth per-state Medicaid overlay (§4.5.40), thirty-third named-payer
+  overlay overall. New per-state bucket `'medicaid-pa'` (anchors
+  `pennsylvania medicaid` / `pa medicaid` / `pennsylvania medical
+  assistance` / `healthchoices`), placed before the generic `'medicaid'`
+  bucket and composing with the §4.5.4 core via `isMedicaid`.
+- 20 rules `R-PA-MCPA-001..020`, each self-gating on `bundle.payer ===
+  'medicaid-pa'`, anchored to the PA DHS provider page and the new
+  staleness-ledger source `pa-medicaid-precert`. PROMISe routing;
+  transplant / appeal reframed for Medicaid. Disjoint from the same-state
+  Blues buckets `'highmark'` (§4.5.13) and `'ibx'` (§4.5.17; unit-tested).
+- Golden fixture `pa-medicaid-precert` added (40 fixtures total).
+- Catalog count unchanged (255 tiles). Ruleset rises 775 → 795. Brings
+  per-state Medicaid overlays to ten (CA, NY, TX, FL, OH, IL, WA, GA, NC, PA).
+
 ### Wave 52-5+ — State Medicaid overlays, additional commercial payers, OCR
 
 - Per-state Medicaid overlays (Medi-Cal / California shipped in wave
-  52-30, New York in wave 52-31, Texas in wave 52-32; the remaining
-  state Medicaid programs follow as user-volume data warrants).
+  52-30, New York in wave 52-31, Texas in wave 52-32, Florida in wave
+  52-33, Ohio in wave 52-34, Illinois in wave 52-35, Washington in wave
+  52-36, Georgia in wave 52-37, North Carolina in wave 52-38, Pennsylvania
+  in wave 52-40; the remaining state Medicaid programs follow as
+  user-volume data warrants).
 - Other Blues plans by state (HCSC shipped in wave 52-12, Highmark
   in wave 52-13, Florida Blue in wave 52-14, BCBSM in wave 52-15,
   Blue Shield of California in wave 52-16, Independence Blue Cross in
@@ -3648,6 +3696,17 @@ silently; the audit trail records the disablement.
 
 - 2026-05-27 — v52 proposed. Five waves outlined (52-1 through
   52-5+). Catalog count target at v52-1 close: 255.
+- 2026-06-05 — wave 52-40 (§4.5.40 Pennsylvania Medicaid — the tenth per-state
+  Medicaid overlay, thirty-third named-payer overlay overall). New per-state
+  bucket `'medicaid-pa'` (anchors `pennsylvania medicaid` / `pa medicaid` /
+  `pennsylvania medical assistance` / `healthchoices`), placed before the generic
+  `'medicaid'` bucket and composing with the §4.5.4 core via `isMedicaid`.
+  Disjoint from the same-state Blues buckets `'highmark'` (§4.5.13) and `'ibx'`
+  (§4.5.17; unit-tested). 20 rules `R-PA-MCPA-001..020` self-gating on
+  `bundle.payer === 'medicaid-pa'`, anchored to the PA DHS provider page (PROMISe
+  / Medical Assistance / HealthChoices) and the new staleness-ledger source
+  `pa-medicaid-precert`. Golden fixture `pa-medicaid-precert` added (40 fixtures).
+  Ruleset 775 → 795. Catalog unchanged (255). View wave banner advanced to 52-40.
 - 2026-06-05 — wave 52-39 (§4.3.1 optional in-browser OCR — resolves the §2 OCR
   non-goal). Adds a bundled, lazy-loaded, user-triggered, fully on-device OCR
   path (tesseract.js 5.1.1 + core 5.1.0 + tessdata_fast eng, vendored under

@@ -287,7 +287,7 @@ what makes the golden-fixture CI gate possible.
         ▼               blue-shield-ca | ibx | carefirst | bcbsnc | horizon |
         ▼               bcbst | bcbsma | bcbsal | bcbssc | arkbcbs | bluekc |
         ▼               bcbsmn | bcbsla | hmsa | commercial | unknown
- ┌──────────────┐   lib/pa/rules.js → 775 rules, each a pure check(bundle).
+ ┌──────────────┐   lib/pa/rules.js → 795 rules, each a pure check(bundle).
  │  run engine  │   Overlay rules self-gate on the detected payer and
  └──────┬───────┘   vacuously pass off-bucket.
         ▼
@@ -300,7 +300,7 @@ Severities follow spec-v52 §4.4: `block` (packet cannot be reviewed as-is),
 `flag` (likely denial / RFI), `info` (nice-to-have), `pass`. A finding never
 guarantees an approval or a denial — it reports only what the ruleset checks.
 
-### Ruleset at a glance (775 rules)
+### Ruleset at a glance (795 rules)
 
 | Family            | Count | Scope                                                        | Ledger source              |
 |-------------------|-------|--------------------------------------------------------------|----------------------------|
@@ -345,6 +345,7 @@ guarantees an approval or a denial — it reports only what the ruleset checks.
 | `R-PA-MCWA-NNN` | 20 | §4.5.36 Washington Apple Health (Medicaid) | `wa-medicaid-precert` |
 | `R-PA-MCGA-NNN` | 20 | §4.5.37 Georgia Medicaid | `ga-medicaid-precert` |
 | `R-PA-MCNC-NNN` | 20 | §4.5.38 North Carolina Medicaid | `nc-medicaid-precert` |
+| `R-PA-MCPA-NNN` | 20 | §4.5.40 Pennsylvania Medicaid (Medical Assistance / PROMISe / HealthChoices) | `pa-medicaid-precert` |
 
 The twenty-three commercial overlays (§4.5.7 Aetna, §4.5.8 UnitedHealthcare, §4.5.9
 Anthem, §4.5.10 Cigna, §4.5.11 Humana, §4.5.12 HCSC, §4.5.13 Highmark, §4.5.14
@@ -402,14 +403,14 @@ spelled-out plan name and never the bare acronym:
 
 Every overlay rule self-gates on `bundle.payer === '<payer>'` and vacuously
 passes on any other packet, so the 135 non-commercial rules, the twenty-three
-20-rule commercial overlays, and the nine per-state Medicaid overlays coexist
+20-rule commercial overlays, and the ten per-state Medicaid overlays coexist
 without false positives — a Medicare FFS
 packet never trips a Humana rule, and vice versa. Each rule's
 source URL is tracked in
 [pa-staleness-ledger.json](pa-staleness-ledger.json) and re-verified on the
 §4.5.6 maintenance cadence; `npm run lint` fails CI on any ledger ↔ ruleset
 drift, and `scripts/audit-pa.mjs` diffs the full pipeline output against
-thirty-nine committed golden reports so any rule, extractor, or classifier change
+forty committed golden reports so any rule, extractor, or classifier change
 that moves a byte is caught.
 
 **Payer detection is first-match-wins, in a deliberate order.** The buckets
@@ -428,41 +429,43 @@ anchor hit. This is the cheat sheet:
  8. medicaid-wa              "washington apple health", "apple health", "washington medicaid"
  9. medicaid-ga              "georgia medicaid", "gammis"
 10. medicaid-nc              "north carolina medicaid", "nc medicaid", "nctracks"
-11. medicaid                 "medicaid", "masshealth", "chip", "state medicaid", …
-12. cms-medicare-ffs         "medicare part a/b", "noridian", "palmetto gba", …
-13. aetna                    "aetna"
-14. uhc                      "unitedhealthcare", "optumrx", "umr", "oxford health"
-15. anthem                   "anthem", "elevance"
-16. cigna                    "cigna", "evernorth"
-17. humana                   "humana", "centerwell"
-18. hcsc                     "blue cross [and] blue shield of il/tx/mt/nm/ok", "hcsc"
-19. highmark                 "highmark"
-20. florida-blue             "florida blue", "guidewell", "bcbs of florida"
-21. bcbsm                    "blue cross [and] blue shield of michigan", "bcbsm", "blue care network"
-22. blue-shield-ca           "blue shield of california", "blue shield of ca"
-23. ibx                      "independence blue cross", "independence administrators", "ibx"
-24. carefirst                "carefirst", "care first"
-25. bcbsnc                   "blue cross [and] blue shield of north carolina", "blue cross nc", "bcbsnc"
-26. horizon                  "horizon blue cross", "horizon bcbs", "horizon healthcare services"
-27. bcbst                    "blue cross [and] blue shield of tennessee", "bcbst"
-28. bcbsma                   "blue cross [and] blue shield of massachusetts", "bcbs of massachusetts"
-29. bcbsal                   "blue cross [and] blue shield of alabama", "bcbsal"
-30. bcbssc                   "blue cross [and] blue shield of south carolina", "bcbssc"
-31. arkbcbs                  "arkansas blue cross [and blue shield]", "arkansas bcbs"
-32. bluekc                   "blue cross [and] blue shield of kansas city", "blue kc"
-33. bcbsmn                   "blue cross [and] blue shield of minnesota", "blue cross of minnesota"
-34. bcbsla                   "blue cross [and] blue shield of louisiana", "bcbsla"
-35. hmsa                     "hmsa", "hawaii medical service association", "blue cross blue shield of hawaii"
-36. commercial               "blue cross", "blue shield", "kaiser", "tricare"
-37. unknown                  (no anchor hit)
+11. medicaid-pa              "pennsylvania medicaid", "pa medicaid", "pennsylvania medical assistance", "healthchoices"
+12. medicaid                 "medicaid", "masshealth", "chip", "state medicaid", …
+13. cms-medicare-ffs         "medicare part a/b", "noridian", "palmetto gba", …
+14. aetna                    "aetna"
+15. uhc                      "unitedhealthcare", "optumrx", "umr", "oxford health"
+16. anthem                   "anthem", "elevance"
+17. cigna                    "cigna", "evernorth"
+18. humana                   "humana", "centerwell"
+19. hcsc                     "blue cross [and] blue shield of il/tx/mt/nm/ok", "hcsc"
+20. highmark                 "highmark"
+21. florida-blue             "florida blue", "guidewell", "bcbs of florida"
+22. bcbsm                    "blue cross [and] blue shield of michigan", "bcbsm", "blue care network"
+23. blue-shield-ca           "blue shield of california", "blue shield of ca"
+24. ibx                      "independence blue cross", "independence administrators", "ibx"
+25. carefirst                "carefirst", "care first"
+26. bcbsnc                   "blue cross [and] blue shield of north carolina", "blue cross nc", "bcbsnc"
+27. horizon                  "horizon blue cross", "horizon bcbs", "horizon healthcare services"
+28. bcbst                    "blue cross [and] blue shield of tennessee", "bcbst"
+29. bcbsma                   "blue cross [and] blue shield of massachusetts", "bcbs of massachusetts"
+30. bcbsal                   "blue cross [and] blue shield of alabama", "bcbsal"
+31. bcbssc                   "blue cross [and] blue shield of south carolina", "bcbssc"
+32. arkbcbs                  "arkansas blue cross [and blue shield]", "arkansas bcbs"
+33. bluekc                   "blue cross [and] blue shield of kansas city", "blue kc"
+34. bcbsmn                   "blue cross [and] blue shield of minnesota", "blue cross of minnesota"
+35. bcbsla                   "blue cross [and] blue shield of louisiana", "bcbsla"
+36. hmsa                     "hmsa", "hawaii medical service association", "blue cross blue shield of hawaii"
+37. commercial               "blue cross", "blue shield", "kaiser", "tricare"
+38. unknown                  (no anchor hit)
 ```
 
 Government lines of business win first so an MA or Medicaid packet never routes
 to a commercial overlay on a stray brand string. **Per-state Medicaid** buckets
-(2–10: `medicaid-ca` / `-ny` / `-tx` / `-fl` / `-oh` / `-il` / `-wa` / `-ga` /
-`-nc`) are checked before the generic `medicaid` bucket (11), so a named program
-(Medi-Cal, "Texas Medicaid", eMedNY, "Florida Medicaid", "Ohio Medicaid",
-"Illinois Medicaid", "Apple Health", GAMMIS, NCTracks) routes to its overlay
+(2–11: `medicaid-ca` / `-ny` / `-tx` / `-fl` / `-oh` / `-il` / `-wa` / `-ga` /
+`-nc` / `-pa`) are checked before the generic `medicaid` bucket (12), so a named
+program (Medi-Cal, "Texas Medicaid", eMedNY, "Florida Medicaid", "Ohio Medicaid",
+"Illinois Medicaid", "Apple Health", GAMMIS, NCTracks, PROMISe / HealthChoices)
+routes to its overlay
 while a state-agnostic Medicaid packet falls through to the generic bucket — and
 the §4.5.4 Medicaid core (`R-PA-MCD-*`) keeps firing on every state bucket via
 the `isMedicaid()` predicate, so the core and the per-state overlay compose on
@@ -470,9 +473,10 @@ the same packet. The hyphen in `medi-cal` is load-bearing: it prevents a false
 match on the common word "medical"; the state-Medicaid buckets are also
 deliberately disjoint from their same-state Blues commercial buckets
 (`medicaid-fl` vs. `florida-blue`, `medicaid-il` vs. `hcsc`/BCBS-of-Illinois,
-`medicaid-nc` vs. `bcbsnc`/Blue-Cross-NC — each pair unit-tested). The
-named-commercial buckets (13–35) sit above the generic `commercial` fall-through
-(36) and match only *unambiguous* anchors, so independent Blues licensees that
+`medicaid-nc` vs. `bcbsnc`/Blue-Cross-NC, `medicaid-pa` vs.
+`highmark`/`ibx`/Pennsylvania-Blues — each pair unit-tested). The
+named-commercial buckets (14–36) sit above the generic `commercial` fall-through
+(37) and match only *unambiguous* anchors, so independent Blues licensees that
 aren't yet modeled (Premera, Regence, Wellmark, Excellus, Capital BlueCross) stay
 in `commercial` rather than being misrouted. Two same-state pairs are
 disambiguated purely by order: `anthem` (bucket 15) is checked before
@@ -499,7 +503,7 @@ packet always yields the same report; this is what makes a golden-fixture CI
 gate possible and is the opposite of the LLM-on-top-of-rules direction the
 PA-automation SaaS vendors took (spec-v52 §1.1). (2) *Self-gating overlays* —
 adding a payer is additive: a new bucket plus a prefix → ledger-source map,
-never an edit to an existing rule, so the 775-rule set grows without
+never an edit to an existing rule, so the 795-rule set grows without
 regression risk. (3) *Procedural completeness only* — the linter never
 asserts medical necessity; it checks whether the mechanically-detectable
 pieces a reviewer needs are present, which keeps it on the right side of the
@@ -637,14 +641,15 @@ build, integrity-verified data shards) are documented in
   healthcare worker would otherwise reach for MDCalc to find,
   shipped slowly at the v11 quality bar
 - [docs/spec-v52.md](docs/spec-v52.md) — the `pa-lint` prior-auth packet
-  linter: pipeline, the 775-rule ruleset, payer overlays (Aetna +
+  linter: pipeline, the 795-rule ruleset, payer overlays (Aetna +
   UnitedHealthcare + Anthem + Cigna + Humana + HCSC + Highmark + Florida Blue +
   BCBSM + Blue Shield of California + Independence Blue Cross + CareFirst +
   Blue Cross NC + Horizon + BCBS Tennessee + BCBS Massachusetts + BCBS Alabama +
   BCBS South Carolina + Arkansas BCBS + BCBS Kansas City + BCBS Minnesota +
   BCBS Louisiana + HMSA, plus per-state Medicaid overlays for California /
   New York / Texas / Florida / Ohio / Illinois / Washington / Georgia / North
-  Carolina), the optional on-device OCR path (§4.3.1, vendored tesseract.js),
+  Carolina / Pennsylvania), the optional on-device OCR path (§4.3.1, vendored
+  tesseract.js),
   and the byte-determinism / golden-fixture guarantee
 - [docs/architecture.md](docs/architecture.md) — runtime architecture,
   data flow, no-backend rationale

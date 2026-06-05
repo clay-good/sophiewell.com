@@ -6,6 +6,39 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v52 wave 52-40 — §4.5.40 Pennsylvania Medicaid overlay for the Prior-Auth Packet Linter)
+
+The tenth per-state Medicaid overlay, and the thirty-third named-payer overlay
+overall. **Pennsylvania Medicaid** (PA DHS) brands its program **Medical
+Assistance**; the fee-for-service provider portal is **PROMISe** and the
+managed-care program is **HealthChoices**.
+
+- New per-state payer bucket `'medicaid-pa'` in `lib/pa/payer.js` (anchors
+  `pennsylvania medicaid` / `pa medicaid` / `pennsylvania medical assistance` /
+  `healthchoices`), placed before the generic `'medicaid'` bucket and composing
+  with the §4.5.4 Medicaid core through `isMedicaid(bundle.payer)`. It is
+  deliberately disjoint from the same-state commercial Blues buckets `'highmark'`
+  (§4.5.13) and `'ibx'` / Independence Blue Cross (§4.5.17); a Pennsylvania
+  Medicaid packet and a Highmark / Independence packet route to different overlays
+  (unit-tested), and a dual-eligible "Medicare Advantage" string still wins the MA
+  bucket earlier.
+- 20 rules `R-PA-MCPA-001..020` in `lib/pa/rules.js`, each self-gating on
+  `bundle.payer === 'medicaid-pa'` and vacuously passing on every other packet.
+  Structurally parallel to the other Medicaid overlays, with PROMISe submission
+  routing and the two Medicaid reframings (transplant → Medicaid-designated
+  transplant center; appeal → state fair hearing). `R-PA-MCPA-004` mirrors core
+  `R-PA-053` (no bundled prior-authorization list yet; vacuous pass with a
+  pointer).
+- New staleness-ledger source `pa-medicaid-precert` (`pa-staleness-ledger.json`,
+  regenerated into `lib/pa/staleness-ledger.js`) and a `R-PA-MCPA-` →
+  `pa-medicaid-precert` prefix map in `lib/pa/rule-sources.js`. Anchored to the
+  public PA DHS provider page.
+- New golden fixture `pa-medicaid-precert` (40 fixtures total); `scripts/audit-pa.mjs`
+  re-seeded. Ruleset rises **775 → 795**; catalog count unchanged (255 tiles).
+- Tests: +1 classify disjointness test (`medicaid-pa` vs. Highmark / Independence)
+  and the rule-count assertions (unit + 2 e2e) advanced to 795. View wave banner
+  advanced to 52-40.
+
 ### Added (spec-v52 wave 52-39 — §4.3.1 optional in-browser OCR for the Prior-Auth Packet Linter)
 
 Resolves the §2 OCR non-goal. The `pa-lint` tile gains an **optional,
