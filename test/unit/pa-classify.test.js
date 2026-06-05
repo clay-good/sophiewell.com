@@ -325,6 +325,19 @@ test('detectPayer: Blue Cross and Blue Shield of Louisiana routes to its own buc
   assert.equal(detectPayer('Blue Cross and Blue Shield of Louisiana Medicare Advantage'), 'cms-medicare-advantage');
 });
 
+test('detectPayer: HMSA (Blue Cross Blue Shield of Hawaii) routes to its own bucket (wave 52-29)', () => {
+  // The 'hmsa' acronym, the 'hawaii medical service association' corporate name,
+  // and the 'blue cross blue shield of hawaii' plan name -> the named 'hmsa'
+  // overlay bucket.
+  assert.equal(detectPayer('HMSA Preferred Provider Plan member'), 'hmsa');
+  assert.equal(detectPayer('Hawaii Medical Service Association PPO'), 'hmsa');
+  assert.equal(detectPayer('Blue Cross Blue Shield of Hawaii member'), 'hmsa');
+  // ...but generic / other-licensee Blues stay in the commercial fall-through.
+  assert.equal(detectPayer('Premera Blue Cross PPO plan'), 'commercial');
+  // ...and an explicit Medicare Advantage string still routes to the MA bucket.
+  assert.equal(detectPayer('HMSA Akamai Advantage Medicare Advantage HMO'), 'cms-medicare-advantage');
+});
+
 test('detectPayer: unknown for empty / non-payer text', () => {
   assert.equal(detectPayer(''), 'unknown');
   assert.equal(detectPayer('this packet has no payer letterhead'), 'unknown');

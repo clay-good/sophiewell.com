@@ -140,8 +140,8 @@ test('runEngine passes every starter rule on a clean multi-doc happy-path packet
   assert.equal(counts.pass, STARTER_RULES.length);
 });
 
-test('STARTER_RULES at wave 52-28 is 575 rules (135 §4.5 core/overlay/specialty + 20 each for the 22 named commercial overlays: Aetna … BCBS Minnesota + BCBS Louisiana)', () => {
-  assert.equal(STARTER_RULES.length, 575);
+test('STARTER_RULES at wave 52-29 is 595 rules (135 §4.5 core/overlay/specialty + 20 each for the 23 named commercial overlays: Aetna … BCBS Louisiana + HMSA)', () => {
+  assert.equal(STARTER_RULES.length, 595);
 });
 
 // ---- wave 52-7a sanity checks: Aetna commercial overlay (§4.5.7) ----
@@ -2030,6 +2030,79 @@ test('R-PA-BCBSLA-020 flags a BCBSLA out-of-network request with no network-gap 
   const text = 'Blue Cross and Blue Shield of Louisiana member.\nOut-of-network prior authorization request.\nProcedure CPT 70551.\n';
   const findings = runEngine(bundleOf(text));
   const f = findings.find((x) => x.ruleId === 'R-PA-BCBSLA-020');
+  assert.equal(f.status, 'info');
+});
+
+// ---- wave 52-29 sanity checks: HMSA (Blue Cross Blue Shield of Hawaii) overlay (§4.5.29) ----
+
+test('HMSA overlay rules vacuously pass on a non-HMSA packet', () => {
+  // happyBundle is not an HMSA packet -> every R-PA-HMSA-* rule passes.
+  const findings = runEngine(happyBundle());
+  for (let n = 1; n <= 20; n += 1) {
+    const id = 'R-PA-HMSA-' + String(n).padStart(3, '0');
+    const f = findings.find((x) => x.ruleId === id);
+    assert.ok(f, id + ' should be in the findings');
+    assert.equal(f.status, 'pass', id + ' should vacuously pass off-bucket');
+  }
+});
+
+test('R-PA-HMSA-001 flags an HMSA request with a procedure but no coverage-criteria reference', () => {
+  const text = 'HMSA member.\n'
+    + 'Requested procedure: CPT 72148 (MRI lumbar spine).\n'
+    + 'Please authorize.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-HMSA-001');
+  assert.equal(f.status, 'flag');
+});
+
+test('R-PA-HMSA-001 passes when the HMSA packet cites the applicable Medical Policy', () => {
+  const text = 'HMSA member.\n'
+    + 'Requested procedure: CPT 72148.\n'
+    + 'Medical necessity per the applicable HMSA Medical Policy (MCG).\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-HMSA-001');
+  assert.equal(f.status, 'pass');
+});
+
+test('R-PA-HMSA-002 flags an HMSA packet with no clinical document attached', () => {
+  const text = 'HMSA member.\nRequested procedure: CPT 27447.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-HMSA-002');
+  assert.equal(f.status, 'flag');
+});
+
+test('R-PA-HMSA-003 passes when the HMSA packet names the HHIN channel (info)', () => {
+  const text = 'HMSA member.\nSubmitted via the HHIN provider portal.\nProcedure CPT 27447.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-HMSA-003');
+  assert.equal(f.status, 'pass');
+});
+
+test('R-PA-HMSA-007 flags an HMSA outpatient MRI with no clinical indication', () => {
+  const text = 'HMSA member.\nRequested: MRI lumbar spine, CPT 72148.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-HMSA-007');
+  assert.equal(f.status, 'flag');
+});
+
+test('R-PA-HMSA-008 passes when an expedited HMSA request documents the clinical urgency', () => {
+  const text = 'HMSA member.\nExpedited review requested: delay would jeopardize the member\'s life or health.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-HMSA-008');
+  assert.equal(f.status, 'pass');
+});
+
+test('R-PA-HMSA-017 flags an HMSA transplant request with no Blue Distinction routing', () => {
+  const text = 'HMSA member.\nRequested service: kidney transplant.\nMedical necessity per Medical Policy.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-HMSA-017');
+  assert.equal(f.status, 'flag');
+});
+
+test('R-PA-HMSA-020 flags an HMSA out-of-network request with no network-gap justification (info)', () => {
+  const text = 'HMSA member.\nOut-of-network prior authorization request.\nProcedure CPT 70551.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-HMSA-020');
   assert.equal(f.status, 'info');
 });
 

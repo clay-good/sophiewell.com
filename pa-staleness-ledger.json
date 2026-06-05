@@ -301,6 +301,14 @@
       "rules": ["R-PA-BCBSLA-001", "R-PA-BCBSLA-002"],
       "url": "https://www.bcbsla.com/providers",
       "lastVerified": "2026-06-05"
+    },
+    {
+      "id": "hmsa-precert",
+      "label": "HMSA (Hawaii Medical Service Association, Blue Cross Blue Shield of Hawaii) prior-authorization requirements, Medical Policies, and utilization-management / pharmacy program requirements",
+      "ruleFamily": "commercial-hmsa",
+      "rules": ["R-PA-HMSA-001", "R-PA-HMSA-002"],
+      "url": "https://hmsa.com/providers/",
+      "lastVerified": "2026-06-05"
     }
   ],
   "acknowledgments": []

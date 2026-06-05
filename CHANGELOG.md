@@ -6,6 +6,42 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v52 wave 52-29 — §4.5.29 HMSA / Blue Cross Blue Shield of Hawaii commercial overlay, 20 of 20)
+
+The twenty-third named commercial-payer overlay, and the eighteenth "Blues plans
+by state" overlay. The full 20-rule `R-PA-HMSA-NNN` family is anchored to HMSA's
+(the Hawaii Medical Service Association, the Blue Cross Blue Shield licensee for
+Hawaii) public provider pages, Medical Policies, and utilization-management /
+pharmacy program requirements (new ledger source `hmsa-precert`). HMSA is the
+dominant health plan in Hawaii and a distinct independent licensee not already
+routed to an earlier bucket.
+
+A new `'hmsa'` payer bucket in `lib/pa/payer.js` is placed after `'bcbsla'` and
+before the generic `'commercial'` fall-through. It matches the `hmsa` acronym, the
+`hawaii medical service association` corporate name, and the `blue cross blue
+shield of hawaii` plan name, so generic `blue cross` / `blue shield` and other
+licensees stay in the commercial fall-through, and an explicit "Medicare
+Advantage" string still wins the MA bucket earlier. Each rule self-gates on
+`bundle.payer === 'hmsa'` and vacuously passes on every other packet.
+
+The 20 rules mirror the prior twenty-two commercial families so the twenty-three
+commercial overlays stay structurally parallel and auditable side by side, with
+HMSA-specific routing names where the plan uses them: the HHIN (Hawaii Health
+Information Network) submission channel (003), the advanced-imaging
+utilization-management program (007, 012), pharmacy management for step therapy
+(011), behavioral health (016), and the Blue Distinction Centers for Transplant
+(017).
+
+Coverage is now 595 rules shipped (was 575), 547 source-anchored (was 527), 38
+sources (was 37), 0 ledger orphans, 0 coverage gaps. A new `hmsa-precert` golden
+fixture (hospital-outpatient knee arthroscopy under an HMSA letterhead) exercises
+the on-bucket path — 009 flag, 003 info — and the other twenty-nine goldens gain
++20 vacuous-pass findings each; all thirty re-seeded deterministically. Tests: +9
+engine assertions (count 595, the off-bucket loop, fire/pass checks) and +1
+classify assertion. e2e pa-lint rule count 575 -> 595. Catalog count unchanged
+(255 tiles; HMSA adds rules, not a tile). The PA tile's wave banner advances to
+52-29.
+
 ### Added (spec-v52 wave 52-28 — §4.5.28 Blue Cross and Blue Shield of Louisiana commercial overlay, 20 of 20)
 
 The twenty-second named commercial-payer overlay, and the seventeenth "Blues

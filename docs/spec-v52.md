@@ -1930,8 +1930,54 @@ twenty-two commercial overlays shipped — the five largest commercial / MA
 plans plus the seventeen largest independent Blues licensees (HCSC,
 Highmark, Florida Blue, BCBSM, Blue Shield of California, Independence Blue
 Cross, CareFirst, Blue Cross NC, Horizon, BCBST, BCBSMA, BCBSAL, BCBSSC,
-Arkansas BCBS, Blue KC, BCBSMN, BCBSLA) — the remaining §9 wave 52-5+
-candidates are the other Blues plans by state and per-state Medicaid
+Arkansas BCBS, Blue KC, BCBSMN, BCBSLA) — HMSA (the Blue Cross Blue Shield
+licensee for Hawaii) opened in wave 52-29 (§4.5.29) as the twenty-third.
+
+#### 4.5.29 Commercial payer overlays — HMSA / Blue Cross Blue Shield of Hawaii (wave 52-29)
+
+The twenty-third named commercial-payer overlay, and the eighteenth "Blues
+plans by state" overlay. **HMSA** (the Hawaii Medical Service Association,
+the Blue Cross Blue Shield licensee for **Hawaii**) is the dominant health
+plan in Hawaii and a distinct independent licensee not already routed to an
+earlier bucket. Like the twenty-two before it, HMSA is keyed to its own
+payer bucket (`'hmsa'`, detected by `lib/pa/payer.js` and placed before the
+generic `'commercial'` fall-through, after `'bcbsla'`). The bucket is
+matched by its own definitively-Hawaii anchors — the `hmsa` acronym, the
+`hawaii medical service association` corporate name, and the `blue cross
+blue shield of hawaii` plan name — so generic `blue cross` / `blue shield`
+and other Blues licensees stay in the commercial fall-through, and an
+explicit "Medicare Advantage" string still wins the MA bucket earlier.
+Each commercial rule self-gates on `bundle.payer === 'hmsa'` and returns a
+vacuous pass on every other packet.
+
+Scope discipline is identical to §4.5.7–§4.5.28: the rules check the
+**procedural completeness** of an HMSA prior-authorization packet against
+the plan's *own published* submission requirements — not clinical coverage
+criteria, which are the reviewer's judgement and the applicable Medical
+Policy's job. Every rule is anchored to a public HMSA provider URL tracked
+in the staleness ledger (§8.3, source `hmsa-precert`) and re-verified on
+the §4.5.6 cadence.
+
+The set mirrors the earlier commercial families so the twenty-three
+overlays stay structurally parallel and auditable side by side;
+HMSA-specific routing names appear where the plan actually uses them — the
+**HHIN (Hawaii Health Information Network)** provider portal for
+submission, the **advanced-imaging utilization-management program** for
+advanced imaging and genetic / molecular testing, the plan's **pharmacy
+management** for pharmacy / step therapy, **behavioral health** for
+behavioral health, and the **Blue Distinction Centers for Transplant** for
+transplant. Wave 52-29 ships the full planned set of 20 (`R-PA-HMSA-NNN`),
+structurally parallel to the BCBSLA set (§4.5.28).
+
+`R-PA-HMSA-004` mirrors core `R-PA-053` and the prior commercial -004
+rules: it ships without a bundled prior-authorization list and vacuously
+passes with a pointer until a later wave bundles the list. With
+twenty-three commercial overlays shipped — the five largest commercial /
+MA plans plus the eighteen largest independent Blues licensees (HCSC,
+Highmark, Florida Blue, BCBSM, Blue Shield of California, Independence Blue
+Cross, CareFirst, Blue Cross NC, Horizon, BCBST, BCBSMA, BCBSAL, BCBSSC,
+Arkansas BCBS, Blue KC, BCBSMN, BCBSLA, HMSA) — the remaining §9 wave
+52-5+ candidates are the other Blues plans by state and per-state Medicaid
 overlays as user-volume data warrants.
 
 ### 4.6 The DOCX report
@@ -2921,6 +2967,23 @@ self-contained PR; the catalog count rises only at wave 52-1.
   twenty-two, the seventeen largest independent Blues licensees now all
   covered.
 
+### Wave 52-29 — HMSA / Blue Cross Blue Shield of Hawaii commercial overlay (2026-06)
+
+- The 20 HMSA rules (§4.5.29), the `R-PA-HMSA-NNN` family, anchored to the
+  plan's public provider pages, Medical Policies, and
+  utilization-management / pharmacy program requirements (ledger source
+  `hmsa-precert`).
+- An `'hmsa'` payer bucket in `lib/pa/payer.js`, placed before the generic
+  `'commercial'` fall-through and after `'bcbsla'`. It matches the `hmsa`
+  acronym, the `hawaii medical service association` corporate name, and the
+  `blue cross blue shield of hawaii` plan name; generic Blues and other
+  licensees stay in the commercial fall-through, and an explicit "Medicare
+  Advantage" string still wins the MA bucket earlier.
+- Catalog count unchanged (255 tiles; HMSA adds rules, not a tile).
+  Ruleset rises 575 → 595. Brings the named commercial / MA overlays to
+  twenty-three, the eighteen largest independent Blues licensees now all
+  covered.
+
 ### Wave 52-5+ — State Medicaid overlays, additional commercial payers, OCR
 
 - Per-state Medicaid overlays as user-volume data warrants.
@@ -2935,8 +2998,9 @@ self-contained PR; the catalog count rises only at wave 52-1.
   of South Carolina in wave 52-24, Arkansas Blue Cross and Blue Shield in
   wave 52-25, Blue Cross and Blue Shield of Kansas City in wave 52-26, Blue
   Cross and Blue Shield of Minnesota in wave 52-27, Blue Cross and Blue
-  Shield of Louisiana in wave 52-28; the remaining independent Blues
-  licensees follow as volume warrants).
+  Shield of Louisiana in wave 52-28, HMSA / Blue Cross Blue Shield of
+  Hawaii in wave 52-29; the remaining independent Blues licensees follow as
+  volume warrants).
 - Optional in-browser OCR via tesseract.js (lazy-loaded,
   user-toggled, ≈ 11 MB gzipped). Only if §2's no-OCR
   experience proves insufficient.
@@ -3105,6 +3169,30 @@ silently; the audit trail records the disablement.
 
 - 2026-05-27 — v52 proposed. Five waves outlined (52-1 through
   52-5+). Catalog count target at v52-1 close: 255.
+- 2026-06-05 — wave 52-29 (§4.5.29 HMSA / Blue Cross Blue Shield of Hawaii
+  commercial overlay, the full 20-rule `R-PA-HMSA-NNN` family — the twenty-third
+  named commercial overlay and the eighteenth "Blues plans by state" overlay).
+  Opens an `'hmsa'` payer bucket in `lib/pa/payer.js` (placed after `'bcbsla'` and
+  before the generic `'commercial'` fall-through). HMSA is the dominant health
+  plan in Hawaii; the bucket matches the `hmsa` acronym, the `hawaii medical
+  service association` corporate name, and the `blue cross blue shield of hawaii`
+  plan name, so generic `blue cross` / `blue shield` and other licensees stay in
+  the commercial fall-through, and an explicit "Medicare Advantage" string still
+  wins the MA bucket earlier. The 20 rules mirror the prior twenty-two commercial
+  families so the twenty-three overlays stay structurally parallel, with
+  HMSA-specific routing names where the plan uses them (the HHIN submission
+  channel, the advanced-imaging utilization-management program, pharmacy
+  management for step therapy, behavioral health, and the Blue Distinction
+  Centers for Transplant). Each self-gates on `bundle.payer === 'hmsa'` and
+  vacuously passes on every other packet. New ledger source `hmsa-precert`
+  anchored to the plan's public provider page (all twenty rules map to it by
+  prefix). Coverage is now 595 rules shipped (was 575), 547 source-anchored (was
+  527), 38 sources (was 37), 0 orphans, 0 gaps. The golden fixtures re-seed
+  deterministically (a new `hmsa-precert` fixture exercises the on-bucket path —
+  009 flag, 003 info; the other twenty-nine gain +20 vacuous-pass findings each).
+  Tests: +9 engine assertions (count 595, the off-bucket loop, and fire/pass
+  checks) and +1 classify assertion. Catalog count unchanged (255). View wave
+  banner advanced to 52-29.
 - 2026-06-05 — wave 52-28 (§4.5.28 Blue Cross and Blue Shield of Louisiana
   commercial overlay, the full 20-rule `R-PA-BCBSLA-NNN` family — the
   twenty-second named commercial overlay and the seventeenth "Blues plans by
