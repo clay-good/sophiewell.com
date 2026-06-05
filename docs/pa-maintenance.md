@@ -319,6 +319,35 @@ the submission requirements the rules assert still hold, and bump
 outcome from the refresh helper), re-point the source URL rather than
 disabling it — the requirements rarely disappear, only the URL.
 
+## Per-state Medicaid overlays (wave 52-30+)
+
+Per-state Medicaid overlays are a distinct class from both the §4.5.4
+state-agnostic Medicaid core and the commercial overlays. Each names a single
+state program and gates on a per-state payer bucket (`'medicaid-ca'`,
+`'medicaid-ny'`, `'medicaid-tx'`) that `lib/pa/payer.js` detects **before** the
+generic `'medicaid'` bucket, so a named program routes to its overlay while a
+state-agnostic Medicaid packet still routes to the generic bucket. The shipped
+overlays are Medi-Cal / California (`R-PA-MCAL-NNN`, ledger source
+`medi-cal-precert`), New York (`R-PA-MCNY-NNN`, ledger source
+`ny-medicaid-precert`, anchored to eMedNY), and Texas (`R-PA-MCTX-NNN`, ledger
+source `tx-medicaid-precert`, anchored to TMHP) — the three largest state
+programs by enrollment.
+
+The key invariant: the §4.5.4 Medicaid core (`R-PA-MCD-NNN`) **composes** with a
+per-state overlay rather than being replaced by it. All ten core gates use the
+`isMedicaid(bundle.payer)` predicate (true for `'medicaid'` and every
+`'medicaid-*'` bucket, exported from `lib/pa/payer.js`), so a state Medicaid
+packet is checked against both the universal core and its state overlay. A unit
+regression test (`test/unit/pa-engine.test.js`) asserts the core still fires on a
+`medicaid-ca` packet; preserve it when adding a new state. Two families are
+reframed for Medicaid in every state overlay: transplant (rule 017) routes
+through a **Medicaid-designated transplant center** (not the BCBS "Blue
+Distinction Centers" used by the Blues commercial overlays), and appeal (rule
+019) admits the **state fair-hearing** pathway. When adding a state, anchor on
+unambiguous program / fiscal-agent names (avoid the bare word "medical"; the
+hyphen in `medi-cal` is what keeps it from matching it) and verify the source on
+the same 90-day cadence as the commercial overlays.
+
 ## The refresh helper: `scripts/refresh-pa-rules.mjs` (wave 52-6i)
 
 Automates the mechanical half of the monthly verification pass. It fetches
