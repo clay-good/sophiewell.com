@@ -200,6 +200,18 @@ test('detectPayer: CareFirst BlueCross BlueShield routes to its own bucket (wave
   assert.equal(detectPayer('CareFirst Medicare Advantage HMO'), 'cms-medicare-advantage');
 });
 
+test('detectPayer: Blue Cross Blue Shield of North Carolina routes to its own bucket (wave 52-19)', () => {
+  // The North Carolina plan name, the 'blue cross nc' short form, and the
+  // 'bcbsnc' acronym -> the named 'bcbsnc' overlay bucket.
+  assert.equal(detectPayer('Blue Cross Blue Shield of North Carolina PPO'), 'bcbsnc');
+  assert.equal(detectPayer('Blue Cross NC member'), 'bcbsnc');
+  assert.equal(detectPayer('BCBSNC Blue Advantage plan'), 'bcbsnc');
+  // ...but generic / other-licensee Blues stay in the commercial fall-through.
+  assert.equal(detectPayer('Premera Blue Cross PPO plan'), 'commercial');
+  // ...and an explicit Medicare Advantage string still routes to the MA bucket.
+  assert.equal(detectPayer('Blue Cross NC Medicare Advantage HMO'), 'cms-medicare-advantage');
+});
+
 test('detectPayer: unknown for empty / non-payer text', () => {
   assert.equal(detectPayer(''), 'unknown');
   assert.equal(detectPayer('this packet has no payer letterhead'), 'unknown');

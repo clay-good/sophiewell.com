@@ -6,6 +6,45 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v52 wave 52-19 — §4.5.19 Blue Cross Blue Shield of North Carolina commercial overlay, 20 of 20)
+
+The thirteenth named commercial-payer overlay, and the eighth "Blues plans by
+state" overlay after HCSC, Highmark, Florida Blue, BCBSM, Blue Shield of
+California, Independence Blue Cross, and CareFirst. The full 20-rule
+`R-PA-BCBSNC-NNN` family is anchored to Blue Cross Blue Shield of North
+Carolina's public provider prior-authorization pages, Medical Policies, and
+utilization-management / pharmacy program requirements (new ledger source
+`bcbsnc-precert`). Blue Cross NC is the dominant Blue Cross Blue Shield licensee
+in North Carolina and one of the largest independent licensees not already
+routed to the Anthem/Elevance, HCSC, Highmark, Florida Blue, BCBSM, Blue Shield
+of California, IBX, or CareFirst buckets.
+
+A new `'bcbsnc'` payer bucket in `lib/pa/payer.js` is placed after `'carefirst'`
+and before the generic `'commercial'` fall-through. It matches only
+definitively-North-Carolina anchors (the plan name, the `blue cross nc` short
+form, and the `bcbsnc` acronym), so generic `blue cross` / `blue shield` and
+other licensees stay in the commercial fall-through, and an explicit "Medicare
+Advantage" string still wins the MA bucket earlier. Each rule self-gates on
+`bundle.payer === 'bcbsnc'` and vacuously passes on every other packet.
+
+The 20 rules mirror the prior twelve commercial families so the thirteen
+commercial overlays stay structurally parallel and auditable side by side, with
+Blue-Cross-NC-specific routing names where the plan uses them: the Blue e
+provider portal / Availity submission channel (003), the advanced-imaging
+utilization-management program (007, 012), pharmacy management for step therapy
+(011), behavioral health (016), and the Blue Distinction Centers for Transplant
+(017).
+
+Coverage is now 395 rules shipped (was 375), 347 source-anchored (was 327), 28
+sources (was 27), 0 ledger orphans, 0 coverage gaps. A new `bcbsnc-precert`
+golden fixture (hospital-outpatient knee arthroscopy under a Blue Cross NC
+letterhead) exercises the on-bucket path — 009 flag, 003 info — and the other
+nineteen goldens gain +20 vacuous-pass findings each; all twenty re-seeded
+deterministically. Tests: +9 engine assertions (count 395, the off-bucket loop,
+fire/pass checks) and +1 classify assertion. e2e pa-lint rule count 375 -> 395.
+Catalog count unchanged (255 tiles; Blue Cross NC adds rules, not a tile). The
+PA tile's wave banner advances to 52-19.
+
 ### Added (spec-v52 wave 52-18 — §4.5.18 CareFirst BlueCross BlueShield commercial overlay, 20 of 20)
 
 The twelfth named commercial-payer overlay, and the seventh "Blues plans by

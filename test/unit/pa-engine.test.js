@@ -140,8 +140,8 @@ test('runEngine passes every starter rule on a clean multi-doc happy-path packet
   assert.equal(counts.pass, STARTER_RULES.length);
 });
 
-test('STARTER_RULES at wave 52-18 is 375 rules (135 §4.5 core/overlay/specialty + 20 Aetna + 20 UnitedHealthcare + 20 Anthem + 20 Cigna + 20 Humana + 20 HCSC + 20 Highmark + 20 Florida Blue + 20 BCBSM + 20 Blue Shield of California + 20 Independence Blue Cross + 20 CareFirst)', () => {
-  assert.equal(STARTER_RULES.length, 375);
+test('STARTER_RULES at wave 52-19 is 395 rules (135 §4.5 core/overlay/specialty + 20 Aetna + 20 UnitedHealthcare + 20 Anthem + 20 Cigna + 20 Humana + 20 HCSC + 20 Highmark + 20 Florida Blue + 20 BCBSM + 20 Blue Shield of California + 20 Independence Blue Cross + 20 CareFirst + 20 Blue Cross NC)', () => {
+  assert.equal(STARTER_RULES.length, 395);
 });
 
 // ---- wave 52-7a sanity checks: Aetna commercial overlay (§4.5.7) ----
@@ -1298,6 +1298,79 @@ test('R-PA-CAREFIRST-020 flags a CareFirst out-of-network request with no networ
   const text = 'CareFirst member.\nOut-of-network prior authorization request.\nProcedure CPT 70551.\n';
   const findings = runEngine(bundleOf(text));
   const f = findings.find((x) => x.ruleId === 'R-PA-CAREFIRST-020');
+  assert.equal(f.status, 'info');
+});
+
+// ---- wave 52-19 sanity checks: Blue Cross Blue Shield of North Carolina overlay (§4.5.19) ----
+
+test('Blue Cross NC overlay rules vacuously pass on a non-Blue-Cross-NC packet', () => {
+  // happyBundle is not a Blue Cross NC packet -> every R-PA-BCBSNC-* rule passes.
+  const findings = runEngine(happyBundle());
+  for (let n = 1; n <= 20; n += 1) {
+    const id = 'R-PA-BCBSNC-' + String(n).padStart(3, '0');
+    const f = findings.find((x) => x.ruleId === id);
+    assert.ok(f, id + ' should be in the findings');
+    assert.equal(f.status, 'pass', id + ' should vacuously pass off-bucket');
+  }
+});
+
+test('R-PA-BCBSNC-001 flags a Blue Cross NC request with a procedure but no coverage-criteria reference', () => {
+  const text = 'Blue Cross Blue Shield of North Carolina member.\n'
+    + 'Requested procedure: CPT 72148 (MRI lumbar spine).\n'
+    + 'Please authorize.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-BCBSNC-001');
+  assert.equal(f.status, 'flag');
+});
+
+test('R-PA-BCBSNC-001 passes when the Blue Cross NC packet cites the applicable Medical Policy', () => {
+  const text = 'Blue Cross Blue Shield of North Carolina member.\n'
+    + 'Requested procedure: CPT 72148.\n'
+    + 'Medical necessity per the applicable Blue Cross NC Medical Policy (MCG).\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-BCBSNC-001');
+  assert.equal(f.status, 'pass');
+});
+
+test('R-PA-BCBSNC-002 flags a Blue Cross NC packet with no clinical document attached', () => {
+  const text = 'Blue Cross Blue Shield of North Carolina member.\nRequested procedure: CPT 27447.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-BCBSNC-002');
+  assert.equal(f.status, 'flag');
+});
+
+test('R-PA-BCBSNC-003 passes when the Blue Cross NC packet names the Blue e channel (info)', () => {
+  const text = 'Blue Cross Blue Shield of North Carolina member.\nSubmitted via the Blue e provider portal.\nProcedure CPT 27447.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-BCBSNC-003');
+  assert.equal(f.status, 'pass');
+});
+
+test('R-PA-BCBSNC-007 flags a Blue Cross NC outpatient MRI with no clinical indication', () => {
+  const text = 'Blue Cross Blue Shield of North Carolina member.\nRequested: MRI lumbar spine, CPT 72148.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-BCBSNC-007');
+  assert.equal(f.status, 'flag');
+});
+
+test('R-PA-BCBSNC-008 passes when an expedited Blue Cross NC request documents the clinical urgency', () => {
+  const text = 'Blue Cross Blue Shield of North Carolina member.\nExpedited review requested: delay would jeopardize the member\'s life or health.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-BCBSNC-008');
+  assert.equal(f.status, 'pass');
+});
+
+test('R-PA-BCBSNC-017 flags a Blue Cross NC transplant request with no Blue Distinction routing', () => {
+  const text = 'Blue Cross Blue Shield of North Carolina member.\nRequested service: kidney transplant.\nMedical necessity per Medical Policy.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-BCBSNC-017');
+  assert.equal(f.status, 'flag');
+});
+
+test('R-PA-BCBSNC-020 flags a Blue Cross NC out-of-network request with no network-gap justification (info)', () => {
+  const text = 'Blue Cross Blue Shield of North Carolina member.\nOut-of-network prior authorization request.\nProcedure CPT 70551.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-BCBSNC-020');
   assert.equal(f.status, 'info');
 });
 
