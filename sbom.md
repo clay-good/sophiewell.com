@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `ed82528fc5d84ab4`
-Generated: 2026-06-04T13:41:07.212Z
+Build ID: `00f788aae3eaa01c`
+Generated: 2026-06-05T03:39:46.488Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=20.18.1 <21, npm >=10.0.0
@@ -30,7 +30,7 @@ downloads is committed in this repository and is hashed below.
 | `sw.js` | 4062 | `60f524b1b69eb5170c59af42631e11cc05db2a44e8e530977db0327888b0ff6d` |
 | `site.webmanifest` | 709 | `0e0de4da60590a12e8b27a0ae2a2f5ffdb6500b7d2b78f93631ec2f64ed3d5ce` |
 | `robots.txt` | 127 | `38fbf9c1854e72abb20e01e81dd5a31d4ea96f154c12d5db1ec3af05524dd1a1` |
-| `sitemap.xml` | 40445 | `8d724da55f6f3a2e8c3736d5989bfc1b49ffe541833f3877a85d3cf67e656f5a` |
+| `sitemap.xml` | 40445 | `64142ff7066ef20358a36263d435f9262e5a73c75a066da97f50bf4b12719eff` |
 | `_headers` | 1297 | `8a0d2228d73c6b105d5d8fbd173974461cc6b6482ee72f06546a3a27248a9003` |
 | `logo.png` | 63440 | `11afaf1b0d3ca68393d202e4810bf766b5b6d591b4e3ec52f41d3cacaa4616ec` |
 | `favicon.ico` | 7411 | `407fde0ca2788409e87e11f596fa02e6a0b121817fcea7fd995beec1801e287b` |
@@ -63,12 +63,12 @@ downloads is committed in this repository and is hashed below.
 | `lib/pa/docx.js` | 12768 | `6a1fe3cfd40a10b0ab50d37cf55cb11796e0e5385ee56101faed12b61894931f` |
 | `lib/pa/engine.js` | 6446 | `3b054765c7e2064de823ae7b0f32ba22e8d58aebd7df4be04c7a151a0401ebf6` |
 | `lib/pa/extract.js` | 12462 | `aae964461e8b77c8fb90bc8c2949a247754dd3feeec555a76c762b019b9d1616` |
-| `lib/pa/payer.js` | 16676 | `ec08a5d191d32bfd47cdb5f93bbc37aac06fbdea05cf559187fc1988e510a1c2` |
+| `lib/pa/payer.js` | 18010 | `b0195543b1d20b93844cc962483f592042a7532bb5359e88e716f2499aebd27c` |
 | `lib/pa/redact.js` | 6356 | `bb924c4bae0ddbc70e23786f5e594b2e4492d6196769947a607132f494495ce4` |
 | `lib/pa/report.js` | 9684 | `7f0d42557ada83b28106a053d983a54f6b0a4e10465ead58eda5f6786e2d0451` |
-| `lib/pa/rule-sources.js` | 5950 | `080d08d7f5b9681a71a60c40878b89320efcf4b39e9133322609abd45e237bbf` |
-| `lib/pa/rules.js` | 577026 | `0495d2d8e03666367b6a780dc8a402ea8a7a26fb3ec22e71f4e4d88d708e2b02` |
-| `lib/pa/staleness-ledger.js` | 11242 | `7ebfa8978b424e61c8ff09d4adb7005da7aef8218cbebfabee21795fd7e6b12d` |
+| `lib/pa/rule-sources.js` | 6039 | `8eb937db0733d60cec37aed91ec5708d7d5c465da1c02fa7f4b2f45b09518b86` |
+| `lib/pa/rules.js` | 617097 | `947b4da468ef70cb028c3b47c9d267a4229331f159c54427c7310b701011c52d` |
+| `lib/pa/staleness-ledger.js` | 11744 | `b4a9a049bce0007972b398196aa49044c88f76d1e464bb76445d7b4c9efd228b` |
 | `lib/pa/staleness.js` | 9310 | `99249cde34d35bb57ea644fced966019d1373b34f792f1ea9b42b586b94454df` |
 | `lib/print.js` | 2588 | `74579a71f82b75993dea9f7d9b3c21e67744bd4dbe6f50e20c8eef9aa1be7546` |
 | `lib/prompt.js` | 6872 | `95ee9b9de5adbafd1497f378993e27d29c9f437bfc9ddc304886fd75e80fffd4` |
@@ -92,7 +92,7 @@ downloads is committed in this repository and is hashed below.
 | `views/group-klmno.js` | 7870 | `bf6d3ced1a08fcb627284b649d07b8e5ace6857b29e46992d4e425925c63eaa9` |
 | `views/group-v5.js` | 26940 | `daba643b4b8c800ca5706cc9f7d80d64fb373cbfc1362b77e2fc22d6495c241a` |
 | `views/group-v6.js` | 5707 | `425918decb48cd9efac9fc5590ac8970a54c03c3b0df056fb99c9a22ff8dd1b2` |
-| `views/pa-lint.js` | 21114 | `cc9aa7cac63c76f69bd2ae1967bb902f2f353e47c9a99c0cdd5cc89f239d0d96` |
+| `views/pa-lint.js` | 21126 | `77e24f67861813445549fa367dfdb85451aa83062408ba0b516069ad1e17aaed` |
 
 ## Verifying this SBOM
 

@@ -120,7 +120,7 @@ test('detectPayer: HCSC (Blue Cross Blue Shield of IL/TX/MT/NM/OK) routes to its
   assert.equal(detectPayer('Blue Cross and Blue Shield of Texas member'), 'hcsc');
   assert.equal(detectPayer('Health Care Service Corporation'), 'hcsc');
   // ...but generic / other-licensee Blues stay in the commercial fall-through.
-  assert.equal(detectPayer('CareFirst BlueCross BlueShield PPO plan'), 'commercial');
+  assert.equal(detectPayer('Premera Blue Cross PPO plan'), 'commercial');
   assert.equal(detectPayer('Wellmark Blue Cross Blue Shield PPO'), 'commercial');
   // ...and an explicit Medicare Advantage string still routes to the MA bucket.
   assert.equal(detectPayer('Blue Cross Medicare Advantage from Illinois'), 'cms-medicare-advantage');
@@ -155,7 +155,7 @@ test('detectPayer: BCBSM (Blue Cross Blue Shield of Michigan) routes to its own 
   assert.equal(detectPayer('Blue Cross and Blue Shield of Michigan member'), 'bcbsm');
   assert.equal(detectPayer('Blue Care Network HMO plan'), 'bcbsm');
   // ...but generic / other-licensee Blues stay in the commercial fall-through.
-  assert.equal(detectPayer('CareFirst BlueCross BlueShield PPO plan'), 'commercial');
+  assert.equal(detectPayer('Premera Blue Cross PPO plan'), 'commercial');
   // ...and an explicit Medicare Advantage string still routes to the MA bucket.
   assert.equal(detectPayer('BCBSM Medicare Plus Blue Medicare Advantage PPO'), 'cms-medicare-advantage');
 });
@@ -186,6 +186,18 @@ test('detectPayer: Independence Blue Cross (IBX) routes to its own bucket (wave 
   assert.equal(detectPayer('Excellus BlueCross BlueShield PPO plan'), 'commercial');
   // ...and an explicit Medicare Advantage string still routes to the MA bucket.
   assert.equal(detectPayer('Independence Blue Cross Medicare Advantage HMO'), 'cms-medicare-advantage');
+});
+
+test('detectPayer: CareFirst BlueCross BlueShield routes to its own bucket (wave 52-18)', () => {
+  // The 'carefirst' anchor -> the named 'carefirst' overlay bucket. CareFirst
+  // (MD / DC / Northern VA) is matched only by its own distinct trade name, so
+  // generic / other-licensee Blues stay in the commercial fall-through.
+  assert.equal(detectPayer('CareFirst BlueCross BlueShield PPO plan'), 'carefirst');
+  assert.equal(detectPayer('CareFirst of Maryland member'), 'carefirst');
+  // ...but generic / other-licensee Blues stay in the commercial fall-through.
+  assert.equal(detectPayer('Capital BlueCross PPO plan'), 'commercial');
+  // ...and an explicit Medicare Advantage string still routes to the MA bucket.
+  assert.equal(detectPayer('CareFirst Medicare Advantage HMO'), 'cms-medicare-advantage');
 });
 
 test('detectPayer: unknown for empty / non-payer text', () => {

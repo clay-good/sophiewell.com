@@ -1383,9 +1383,65 @@ prior-authorization list and vacuously passes with a pointer until a
 later wave bundles the list. With eleven commercial overlays shipped
 — the five largest commercial / MA plans plus the six largest
 independent Blues licensees (HCSC, Highmark, Florida Blue, BCBSM,
-Blue Shield of California, Independence Blue Cross) — the remaining
-§9 wave 52-5+ candidates are the other Blues plans by state and
-per-state Medicaid overlays as user-volume data warrants.
+Blue Shield of California, Independence Blue Cross) — CareFirst
+BlueCross BlueShield opened in wave 52-18 (§4.5.18) as the twelfth.
+
+#### 4.5.18 Commercial payer overlays — CareFirst BlueCross BlueShield (wave 52-18)
+
+The twelfth named commercial-payer overlay, and the seventh "Blues
+plans by state" overlay after HCSC, Highmark, Florida Blue, BCBSM,
+Blue Shield of California, and Independence Blue Cross. **CareFirst
+BlueCross BlueShield** is the dominant Blue Cross Blue Shield licensee
+in the **mid-Atlantic** — Maryland, the District of Columbia, and
+Northern Virginia — and one of the largest independent licensees not
+already routed to the Anthem/Elevance, HCSC, Highmark, Florida Blue,
+BCBSM, Blue Shield of California, or IBX buckets. Like the eleven
+before it, CareFirst is keyed to its own payer bucket (`'carefirst'`,
+detected by `lib/pa/payer.js` and placed before the generic
+`'commercial'` fall-through, after `'ibx'`). The bucket matches the
+unambiguous `carefirst` trade-name anchor; generic `blue cross` /
+`blue shield` and other Blues licensees stay in the commercial
+fall-through, and an explicit "Medicare Advantage" string still wins
+the MA bucket earlier. Each commercial rule self-gates on
+`bundle.payer === 'carefirst'` and returns a vacuous pass on every
+other packet.
+
+Scope discipline is identical to §4.5.7–§4.5.17: the rules check the
+**procedural completeness** of a CareFirst prior-authorization packet
+against the plan's *own published* submission requirements — not
+clinical coverage criteria, which are the reviewer's judgement and the
+applicable Medical Policy's job. Every rule is anchored to a public
+CareFirst provider preauthorization URL tracked in the staleness
+ledger (§8.3, source `carefirst-precert`) and re-verified on the
+§4.5.6 cadence.
+
+The set mirrors the earlier commercial families so the twelve overlays
+stay structurally parallel and auditable side by side; CareFirst-specific
+routing names appear where the plan actually uses them — **CareFirst
+Direct / iEXchange** for submission, the **advanced-imaging
+utilization-management program** for advanced imaging and genetic /
+molecular testing, the plan's **pharmacy management** for pharmacy /
+step therapy, **behavioral health** for behavioral health, and the
+**Blue Distinction Centers for Transplant** for transplant. Wave 52-18
+ships the full planned set of 20 (`R-PA-CAREFIRST-NNN`), structurally
+parallel to the IBX set (§4.5.17): coverage-criteria / clinical-records
+/ submission-channel / prior-auth-list (001–004), authorization-before-
+service / inpatient concurrent review / advanced imaging / expedited /
+site-of-care (005–009), NDC / step therapy / genetic testing /
+specialty-drug diagnosis (010–013), and retro / DME / behavioral health
+/ transplant / experimental / appeal / out-of-network (014–020).
+
+`R-PA-CAREFIRST-004` mirrors core `R-PA-053` and the Aetna / UHC /
+Anthem / Cigna / Humana / HCSC / Highmark / Florida Blue / BCBSM / Blue
+Shield of California / Independence Blue Cross -004 rules: it ships
+without a bundled prior-authorization list and vacuously passes with a
+pointer until a later wave bundles the list. With twelve commercial
+overlays shipped — the five largest commercial / MA plans plus the
+seven largest independent Blues licensees (HCSC, Highmark, Florida
+Blue, BCBSM, Blue Shield of California, Independence Blue Cross,
+CareFirst) — the remaining §9 wave 52-5+ candidates are the other Blues
+plans by state and per-state Medicaid overlays as user-volume data
+warrants.
 
 ### 4.6 The DOCX report
 
@@ -2170,14 +2226,32 @@ self-contained PR; the catalog count rises only at wave 52-1.
   + Independence Blue Cross), the six largest independent Blues
   licensees now all covered.
 
+### Wave 52-18 — CareFirst BlueCross BlueShield commercial overlay (2026-06)
+
+- The 20 CareFirst rules (§4.5.18), the `R-PA-CAREFIRST-NNN` family,
+  anchored to the plan's public provider preauthorization pages,
+  Medical Policies, and utilization-management / pharmacy program
+  requirements (ledger source `carefirst-precert`).
+- A `'carefirst'` payer bucket in `lib/pa/payer.js`, placed before the
+  generic `'commercial'` fall-through and after `'ibx'`. It matches the
+  unambiguous `carefirst` trade-name anchor; generic Blues and other
+  licensees stay in the commercial fall-through, and an explicit
+  "Medicare Advantage" string still wins the MA bucket earlier.
+- Catalog count unchanged (255 tiles; CareFirst adds rules, not a
+  tile). Ruleset rises 355 → 375. Brings the named commercial / MA
+  overlays to twelve (Aetna + UnitedHealthcare + Anthem + Cigna +
+  Humana + HCSC + Highmark + Florida Blue + BCBSM + Blue Shield of
+  California + Independence Blue Cross + CareFirst), the seven largest
+  independent Blues licensees now all covered.
+
 ### Wave 52-5+ — State Medicaid overlays, additional commercial payers, OCR
 
 - Per-state Medicaid overlays as user-volume data warrants.
 - Other Blues plans by state (HCSC shipped in wave 52-12, Highmark
   in wave 52-13, Florida Blue in wave 52-14, BCBSM in wave 52-15,
   Blue Shield of California in wave 52-16, Independence Blue Cross in
-  wave 52-17; the remaining independent Blues licensees follow as
-  volume warrants).
+  wave 52-17, CareFirst BlueCross BlueShield in wave 52-18; the
+  remaining independent Blues licensees follow as volume warrants).
 - Optional in-browser OCR via tesseract.js (lazy-loaded,
   user-toggled, ≈ 11 MB gzipped). Only if §2's no-OCR
   experience proves insufficient.
@@ -2346,6 +2420,34 @@ silently; the audit trail records the disablement.
 
 - 2026-05-27 — v52 proposed. Five waves outlined (52-1 through
   52-5+). Catalog count target at v52-1 close: 255.
+- 2026-06-04 — wave 52-18 (§4.5.18 CareFirst BlueCross BlueShield commercial
+  overlay, the full 20-rule `R-PA-CAREFIRST-NNN` family — the twelfth named
+  commercial overlay after Aetna, UnitedHealthcare, Anthem, Cigna, Humana, HCSC,
+  Highmark, Florida Blue, BCBSM, Blue Shield of California, and Independence Blue
+  Cross, and the seventh "Blues plans by state" overlay). Opens a `'carefirst'`
+  payer bucket in `lib/pa/payer.js` (placed after `'ibx'` and before the generic
+  `'commercial'` fall-through). CareFirst is the dominant Blues licensee in the
+  mid-Atlantic (Maryland, the District of Columbia, and Northern Virginia); the
+  bucket matches the unambiguous `carefirst` trade-name anchor, so generic `blue
+  cross` / `blue shield` and other licensees stay in the commercial fall-through,
+  and an explicit "Medicare Advantage" string still wins the MA bucket earlier.
+  The 20 rules mirror the Aetna / UHC / Anthem / Cigna / Humana / HCSC / Highmark
+  / Florida Blue / BCBSM / Blue Shield of California / Independence Blue Cross
+  families so the twelve commercial overlays stay structurally parallel, with
+  CareFirst-specific routing names where the plan uses them (CareFirst Direct /
+  iEXchange submission, the advanced-imaging utilization-management program,
+  pharmacy management for step therapy, behavioral health, and the Blue
+  Distinction Centers for Transplant). Each self-gates on `bundle.payer ===
+  'carefirst'` and vacuously passes on every other packet. New ledger source
+  `carefirst-precert` anchored to the plan's public provider preauthorization
+  page (all twenty rules map to it by prefix). Coverage is now 375 rules shipped
+  (was 355), 327 source-anchored (was 307), 27 sources (was 26), 0 orphans, 0
+  gaps. The golden fixtures re-seed deterministically (a new `carefirst-precert`
+  fixture exercises the on-bucket path — 009 flag, 003 info; the other eighteen
+  gain +20 vacuous-pass findings each). Tests: +9 engine assertions (count 375,
+  the off-bucket loop, and fire/pass checks) and +1 classify assertion (CareFirst
+  → `carefirst`; generic Blues → `commercial`; CareFirst Medicare Advantage → the
+  MA bucket). Catalog count unchanged (255). View wave banner advanced to 52-18.
 - 2026-06-04 — wave 52-17 (§4.5.17 Independence Blue Cross commercial overlay,
   the full 20-rule `R-PA-IBX-NNN` family — the eleventh named commercial overlay
   after Aetna, UnitedHealthcare, Anthem, Cigna, Humana, HCSC, Highmark, Florida

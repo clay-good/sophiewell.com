@@ -6,6 +6,43 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v52 wave 52-18 — §4.5.18 CareFirst BlueCross BlueShield commercial overlay, 20 of 20)
+
+The twelfth named commercial-payer overlay, and the seventh "Blues plans by
+state" overlay after HCSC, Highmark, Florida Blue, BCBSM, Blue Shield of
+California, and Independence Blue Cross. The full 20-rule `R-PA-CAREFIRST-NNN`
+family is anchored to CareFirst BlueCross BlueShield's public provider
+preauthorization pages, Medical Policies, and utilization-management / pharmacy
+program requirements (new ledger source `carefirst-precert`). CareFirst is the
+dominant Blue Cross Blue Shield licensee in the mid-Atlantic — Maryland, the
+District of Columbia, and Northern Virginia — and one of the largest independent
+licensees not already routed to the Anthem/Elevance, HCSC, Highmark, Florida
+Blue, BCBSM, Blue Shield of California, or IBX buckets.
+
+A new `'carefirst'` payer bucket in `lib/pa/payer.js` is placed after `'ibx'`
+and before the generic `'commercial'` fall-through. It matches the unambiguous
+`carefirst` trade-name anchor, so generic `blue cross` / `blue shield` and other
+licensees stay in the commercial fall-through, and an explicit "Medicare
+Advantage" string still wins the MA bucket earlier. Each rule self-gates on
+`bundle.payer === 'carefirst'` and vacuously passes on every other packet.
+
+The 20 rules mirror the prior eleven commercial families so the twelve commercial
+overlays stay structurally parallel and auditable side by side, with
+CareFirst-specific routing names where the plan uses them: the CareFirst Direct /
+iEXchange submission channel (003), the advanced-imaging utilization-management
+program (007, 012), pharmacy management for step therapy (011), behavioral health
+(016), and the Blue Distinction Centers for Transplant (017).
+
+Coverage is now 375 rules shipped (was 355), 327 source-anchored (was 307), 27
+sources (was 26), 0 ledger orphans, 0 coverage gaps. A new `carefirst-precert`
+golden fixture (hospital-outpatient knee arthroscopy under a CareFirst
+letterhead) exercises the on-bucket path — 009 flag, 003 info — and the other
+eighteen goldens gain +20 vacuous-pass findings each; all nineteen re-seeded
+deterministically. Tests: +9 engine assertions (count 375, the off-bucket loop,
+fire/pass checks) and +1 classify assertion. e2e pa-lint rule count 355 -> 375.
+Catalog count unchanged (255 tiles; CareFirst adds rules, not a tile). The PA
+tile's wave banner advances to 52-18.
+
 ### Added (spec-v52 wave 52-17 — §4.5.17 Independence Blue Cross commercial overlay, 20 of 20)
 
 The eleventh named commercial-payer overlay, and the sixth "Blues plans by
