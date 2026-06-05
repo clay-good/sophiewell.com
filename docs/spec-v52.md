@@ -2136,6 +2136,35 @@ Medicaid provider URL tracked in the staleness ledger (§8.3, source
 a bundled prior-authorization list and vacuously passes with a pointer until a
 later wave bundles the list.
 
+#### 4.5.35 Per-state Medicaid overlays — Illinois Medicaid (wave 52-35)
+
+The sixth per-state Medicaid overlay (after California, New York, Texas, Florida,
+and Ohio), and the twenty-ninth named-payer overlay overall. **Illinois
+Medicaid** is run by the **Department of Healthcare and Family Services (HFS)**,
+with **IMPACT** and **MEDI** as the provider portals. It is detected by a
+per-state bucket (`'medicaid-il'`, anchors `illinois medicaid` / `illinois
+department of healthcare and family services` / `hfs medicaid`) placed before the
+generic `'medicaid'` bucket, and composes with the §4.5.4 Medicaid core through
+`isMedicaid(bundle.payer)`. It is deliberately distinct from the `'hcsc'`
+commercial bucket (§4.5.12, which matches `blue cross [and] blue shield of
+illinois`): an Illinois Medicaid packet and a BCBS-of-Illinois packet route to
+different overlays (unit-tested). An explicit "Medicare Advantage" string still
+wins the MA bucket earlier.
+
+The 20 Illinois rules (`R-PA-MCIL-NNN`) mirror the established families with the
+two Medicaid reframings (transplant → Medicaid-designated transplant center;
+appeal → state fair hearing) and Illinois routing names (the IMPACT / MEDI
+provider portal for submission). Each rule self-gates on `bundle.payer ===
+'medicaid-il'` and returns a vacuous pass on every other packet. Every rule is
+anchored to a public Illinois Medicaid (HFS) provider URL tracked in the
+staleness ledger (§8.3, source `il-medicaid-precert`). `R-PA-MCIL-004` mirrors
+core `R-PA-053`: it ships without a bundled prior-authorization list and
+vacuously passes with a pointer until a later wave bundles the list. With six
+state Medicaid programs shipped (California, New York, Texas, Florida, Ohio,
+Illinois — six of the largest by enrollment), the remaining §9 wave 52-5+
+candidates are additional state Medicaid programs, the other Blues plans by
+state, and the optional in-browser OCR path as user-volume data warrants.
+
 ### 4.6 The DOCX report
 
 Structure (mirrors Vaulytica v3 with healthcare-specific
@@ -3208,6 +3237,19 @@ self-contained PR; the catalog count rises only at wave 52-1.
 - Catalog count unchanged (255 tiles). Ruleset rises 675 → 695. Brings
   per-state Medicaid overlays to five (CA, NY, TX, FL, OH).
 
+### Wave 52-35 — Illinois Medicaid overlay (2026-06)
+
+- The 20 Illinois Medicaid rules (§4.5.35), the `R-PA-MCIL-NNN` family,
+  anchored to the Illinois HFS / IMPACT / MEDI provider pages (ledger
+  source `il-medicaid-precert`).
+- A `'medicaid-il'` payer bucket (anchors `illinois medicaid` / `illinois
+  department of healthcare and family services` / `hfs medicaid`) before
+  the generic `'medicaid'` bucket; composes with the §4.5.4 Medicaid core
+  via `isMedicaid()`. Deliberately distinct from the `'hcsc'` commercial
+  bucket (BCBS of Illinois; unit-tested). Transplant / appeal reframed.
+- Catalog count unchanged (255 tiles). Ruleset rises 695 → 715. Brings
+  per-state Medicaid overlays to six (CA, NY, TX, FL, OH, IL).
+
 ### Wave 52-5+ — State Medicaid overlays, additional commercial payers, OCR
 
 - Per-state Medicaid overlays (Medi-Cal / California shipped in wave
@@ -3395,6 +3437,22 @@ silently; the audit trail records the disablement.
 
 - 2026-05-27 — v52 proposed. Five waves outlined (52-1 through
   52-5+). Catalog count target at v52-1 close: 255.
+- 2026-06-05 — wave 52-35 (§4.5.35 Illinois Medicaid — the sixth per-state
+  Medicaid overlay, the full 20-rule `R-PA-MCIL-NNN` family, twenty-ninth
+  named-payer overlay overall). Opens a `'medicaid-il'` payer bucket (anchors
+  `illinois medicaid` / `illinois department of healthcare and family services` /
+  `hfs medicaid`) before the generic `'medicaid'` bucket; composes with the §4.5.4
+  Medicaid core via `isMedicaid()`. Deliberately distinct from the `'hcsc'`
+  commercial bucket (BCBS of Illinois, §4.5.12) — an Illinois Medicaid packet and
+  a BCBS-of-Illinois packet route to different overlays (unit-tested). Transplant
+  (017) and appeal (019) reframed for Medicaid; IMPACT / MEDI routing. Each
+  self-gates on `bundle.payer === 'medicaid-il'`. New ledger source
+  `il-medicaid-precert`. Coverage now 715 rules shipped (was 695), 667
+  source-anchored (was 647), 44 sources (was 43), 0 orphans, 0 gaps. New
+  `il-medicaid-precert` golden fixture (Medicaid core all pass, MCIL-009 flag).
+  Tests: +6 engine assertions and +1 classify assertion. e2e count 695 -> 715.
+  Catalog unchanged (255). View wave banner advanced to 52-35. Six of the largest
+  state Medicaid programs by enrollment now covered.
 - 2026-06-05 — wave 52-34 (§4.5.34 Ohio Medicaid — the fifth per-state Medicaid
   overlay, the full 20-rule `R-PA-MCOH-NNN` family, twenty-eighth named-payer
   overlay overall). Opens a `'medicaid-oh'` payer bucket (anchors `ohio medicaid`

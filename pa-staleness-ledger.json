@@ -349,6 +349,14 @@
       "rules": ["R-PA-MCOH-001", "R-PA-MCOH-002"],
       "url": "https://medicaid.ohio.gov/providers",
       "lastVerified": "2026-06-05"
+    },
+    {
+      "id": "il-medicaid-precert",
+      "label": "Illinois Medicaid (HFS -- Department of Healthcare and Family Services / IMPACT / MEDI) prior-authorization requirements, provider manuals, and utilization-management / pharmacy program requirements",
+      "ruleFamily": "medicaid-il",
+      "rules": ["R-PA-MCIL-001", "R-PA-MCIL-002"],
+      "url": "https://hfs.illinois.gov/medicalproviders.html",
+      "lastVerified": "2026-06-05"
     }
   ],
   "acknowledgments": []

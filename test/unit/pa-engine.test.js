@@ -140,8 +140,8 @@ test('runEngine passes every starter rule on a clean multi-doc happy-path packet
   assert.equal(counts.pass, STARTER_RULES.length);
 });
 
-test('STARTER_RULES at wave 52-34 is 695 rules (135 §4.5 core/overlay/specialty + 20 each for the 23 commercial overlays + 20 each for 5 per-state Medicaid overlays: California + New York + Texas + Florida + Ohio)', () => {
-  assert.equal(STARTER_RULES.length, 695);
+test('STARTER_RULES at wave 52-35 is 715 rules (135 §4.5 core/overlay/specialty + 20 each for the 23 commercial overlays + 20 each for 6 per-state Medicaid overlays: California + New York + Texas + Florida + Ohio + Illinois)', () => {
+  assert.equal(STARTER_RULES.length, 715);
 });
 
 // ---- wave 52-7a sanity checks: Aetna commercial overlay (§4.5.7) ----
@@ -2334,6 +2334,50 @@ test('R-PA-MCOH core composition: the Medicaid core fires on an Ohio Medicaid (m
   const text = 'Ohio Medicaid member.\nRequested procedure: CPT 29881.\n';
   const findings = runEngine(bundleOf(text));
   assert.equal(findings.find((x) => x.ruleId === 'R-PA-MCD-003').status, 'flag');
+});
+
+// ---- wave 52-35 sanity checks: Illinois Medicaid overlay (§4.5.35) ----
+
+test('Illinois Medicaid overlay rules vacuously pass on a non-Illinois-Medicaid packet', () => {
+  const findings = runEngine(happyBundle());
+  for (let n = 1; n <= 20; n += 1) {
+    const id = 'R-PA-MCIL-' + String(n).padStart(3, '0');
+    const f = findings.find((x) => x.ruleId === id);
+    assert.ok(f, id + ' should be in the findings');
+    assert.equal(f.status, 'pass', id + ' should vacuously pass off-bucket');
+  }
+});
+
+test('R-PA-MCIL-001 flags an Illinois Medicaid request with a procedure but no coverage-criteria reference', () => {
+  const text = 'Illinois Medicaid member.\nRequested procedure: CPT 72148 (MRI lumbar spine).\nPlease authorize.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-MCIL-001');
+  assert.equal(f.status, 'flag');
+});
+
+test('R-PA-MCIL-003 passes when the Illinois Medicaid packet names the IMPACT channel (info)', () => {
+  const text = 'Illinois Medicaid request submitted via the IMPACT provider portal.\nProcedure CPT 27447.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-MCIL-003');
+  assert.equal(f.status, 'pass');
+});
+
+test('R-PA-MCIL-017 flags an Illinois Medicaid transplant request with no Medicaid-designated transplant-center routing', () => {
+  const text = 'Illinois Medicaid member.\nRequested service: kidney transplant.\nMedical necessity per Medical Policy.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-MCIL-017');
+  assert.equal(f.status, 'flag');
+});
+
+test('Illinois Medicaid does not collide with the HCSC (BCBS of Illinois) commercial overlay', () => {
+  // 'Illinois Medicaid' -> medicaid-il; 'Blue Cross Blue Shield of Illinois' -> hcsc.
+  const ilMcd = runEngine(bundleOf('Illinois Medicaid member.\nProcedure CPT 29881.\n'));
+  assert.ok(ilMcd.find((x) => x.ruleId === 'R-PA-MCIL-001'));
+  assert.equal(ilMcd.find((x) => x.ruleId === 'R-PA-HCSC-001').status, 'pass');
+  // ...and the Medicaid core fires on the Illinois Medicaid packet.
+  assert.equal(ilMcd.find((x) => x.ruleId === 'R-PA-MCD-003').status, 'flag');
+  const hcsc = runEngine(bundleOf('Blue Cross Blue Shield of Illinois PPO member.\nProcedure CPT 29881.\n'));
+  assert.equal(hcsc.find((x) => x.ruleId === 'R-PA-MCIL-001').status, 'pass');
 });
 
 test('CMS overlay carries the spec-aligned id R-PA-CMS-004 for proof-of-delivery', () => {

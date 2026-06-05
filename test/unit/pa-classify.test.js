@@ -390,6 +390,17 @@ test('detectPayer: Ohio Medicaid routes to its own per-state bucket (wave 52-34)
   assert.equal(detectPayer('Ohio Medicaid Medicare Advantage dual plan'), 'cms-medicare-advantage');
 });
 
+test('detectPayer: Illinois Medicaid routes to its own per-state bucket, distinct from HCSC (wave 52-35)', () => {
+  assert.equal(detectPayer('Illinois Medicaid prior authorization'), 'medicaid-il');
+  assert.equal(detectPayer('Illinois Department of Healthcare and Family Services'), 'medicaid-il');
+  // ...BCBS of Illinois (HCSC) still routes to its commercial bucket.
+  assert.equal(detectPayer('Blue Cross Blue Shield of Illinois PPO'), 'hcsc');
+  // ...a state-agnostic Medicaid packet stays in the generic bucket.
+  assert.equal(detectPayer('state Medicaid managed care'), 'medicaid');
+  // ...and a dual-eligible "Medicare Advantage" string wins the MA bucket.
+  assert.equal(detectPayer('Illinois Medicaid Medicare Advantage dual plan'), 'cms-medicare-advantage');
+});
+
 test('detectPayer: unknown for empty / non-payer text', () => {
   assert.equal(detectPayer(''), 'unknown');
   assert.equal(detectPayer('this packet has no payer letterhead'), 'unknown');

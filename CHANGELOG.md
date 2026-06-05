@@ -6,6 +6,34 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v52 wave 52-35 — §4.5.35 Illinois Medicaid per-state overlay, 20 of 20)
+
+The sixth per-state Medicaid overlay (after California, New York, Texas, Florida,
+and Ohio), and the twenty-ninth named-payer overlay overall. The full 20-rule
+`R-PA-MCIL-NNN` family is anchored to Illinois Medicaid's public HFS (Department
+of Healthcare and Family Services) / IMPACT / MEDI provider pages (new ledger
+source `il-medicaid-precert`).
+
+A new `'medicaid-il'` payer bucket (anchors `illinois medicaid` / `illinois
+department of healthcare and family services` / `hfs medicaid`) is placed before
+the generic `'medicaid'` bucket and composes with the §4.5.4 Medicaid core via
+`isMedicaid()`. It is deliberately distinct from the `'hcsc'` commercial bucket
+(BCBS of Illinois, §4.5.12): an Illinois Medicaid packet and a BCBS-of-Illinois
+packet route to different overlays (unit-tested). The 20 rules mirror the
+established families with the Medicaid reframings (transplant → Medicaid-designated
+transplant center; appeal → state fair hearing) and Illinois IMPACT / MEDI
+routing. Each rule self-gates on `bundle.payer === 'medicaid-il'` and vacuously
+passes on every other packet.
+
+Coverage is now 715 rules shipped (was 695), 667 source-anchored (was 647), 44
+sources (was 43), 0 ledger orphans, 0 coverage gaps. A new `il-medicaid-precert`
+golden fixture (Medicaid core all pass, MCIL-009 site-of-care flag) re-seeds
+deterministically; all thirty-six goldens re-seeded. Tests: +6 engine assertions
+and +1 classify assertion. e2e pa-lint rule count 695 -> 715. Catalog count
+unchanged (255 tiles). The PA tile's wave banner advances to 52-35. Six of the
+largest state Medicaid programs by enrollment (CA, NY, TX, FL, OH, IL) now have
+overlays.
+
 ### Added (spec-v52 wave 52-34 — §4.5.34 Ohio Medicaid per-state overlay, 20 of 20)
 
 The fifth per-state Medicaid overlay (after California, New York, Texas, and
