@@ -229,6 +229,14 @@
       "rules": ["R-PA-BCBSNC-001", "R-PA-BCBSNC-002"],
       "url": "https://www.bluecrossnc.com/providers/prior-authorization",
       "lastVerified": "2026-06-04"
+    },
+    {
+      "id": "horizon-precert",
+      "label": "Horizon Blue Cross Blue Shield of New Jersey prior-authorization requirements, Medical Policies, and utilization-management / pharmacy program requirements",
+      "ruleFamily": "commercial-horizon",
+      "rules": ["R-PA-HORIZON-001", "R-PA-HORIZON-002"],
+      "url": "https://www.horizonblue.com/providers/prior-authorizations",
+      "lastVerified": "2026-06-04"
     }
   ],
   "acknowledgments": []

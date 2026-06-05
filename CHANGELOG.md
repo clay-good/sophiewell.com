@@ -6,6 +6,46 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v52 wave 52-20 — §4.5.20 Horizon Blue Cross Blue Shield of New Jersey commercial overlay, 20 of 20)
+
+The fourteenth named commercial-payer overlay, and the ninth "Blues plans by
+state" overlay after HCSC, Highmark, Florida Blue, BCBSM, Blue Shield of
+California, Independence Blue Cross, CareFirst, and Blue Cross NC. The full
+20-rule `R-PA-HORIZON-NNN` family is anchored to Horizon Blue Cross Blue Shield
+of New Jersey's public provider prior-authorization pages, Medical Policies, and
+utilization-management / pharmacy program requirements (new ledger source
+`horizon-precert`). Horizon is the dominant Blue Cross Blue Shield licensee in
+New Jersey and one of the largest independent licensees not already routed to the
+Anthem/Elevance, HCSC, Highmark, Florida Blue, BCBSM, Blue Shield of California,
+IBX, CareFirst, or Blue Cross NC buckets.
+
+A new `'horizon'` payer bucket in `lib/pa/payer.js` is placed after `'bcbsnc'`
+and before the generic `'commercial'` fall-through. It matches only
+definitively-Horizon anchors (`horizon blue cross`, `horizon bcbs`, `horizon
+healthcare services`), never the bare common word `horizon`, so generic `blue
+cross` / `blue shield` and other licensees stay in the commercial fall-through,
+and an explicit "Medicare Advantage" string still wins the MA bucket earlier.
+Each rule self-gates on `bundle.payer === 'horizon'` and vacuously passes on
+every other packet.
+
+The 20 rules mirror the prior thirteen commercial families so the fourteen
+commercial overlays stay structurally parallel and auditable side by side, with
+Horizon-specific routing names where the plan uses them: the NaviNet provider
+portal / Availity submission channel (003), the advanced-imaging
+utilization-management program (007, 012), pharmacy management for step therapy
+(011), behavioral health (016), and the Blue Distinction Centers for Transplant
+(017).
+
+Coverage is now 415 rules shipped (was 395), 367 source-anchored (was 347), 29
+sources (was 28), 0 ledger orphans, 0 coverage gaps. A new `horizon-precert`
+golden fixture (hospital-outpatient knee arthroscopy under a Horizon letterhead)
+exercises the on-bucket path — 009 flag, 003 info — and the other twenty goldens
+gain +20 vacuous-pass findings each; all twenty-one re-seeded deterministically.
+Tests: +9 engine assertions (count 415, the off-bucket loop, fire/pass checks)
+and +1 classify assertion. e2e pa-lint rule count 395 -> 415. Catalog count
+unchanged (255 tiles; Horizon adds rules, not a tile). The PA tile's wave banner
+advances to 52-20.
+
 ### Added (spec-v52 wave 52-19 — §4.5.19 Blue Cross Blue Shield of North Carolina commercial overlay, 20 of 20)
 
 The thirteenth named commercial-payer overlay, and the eighth "Blues plans by

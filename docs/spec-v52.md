@@ -1490,9 +1490,59 @@ pointer until a later wave bundles the list. With thirteen commercial
 overlays shipped — the five largest commercial / MA plans plus the eight
 largest independent Blues licensees (HCSC, Highmark, Florida Blue,
 BCBSM, Blue Shield of California, Independence Blue Cross, CareFirst,
-Blue Cross NC) — the remaining §9 wave 52-5+ candidates are the other
-Blues plans by state and per-state Medicaid overlays as user-volume data
-warrants.
+Blue Cross NC) — Horizon Blue Cross Blue Shield of New Jersey opened in
+wave 52-20 (§4.5.20) as the fourteenth.
+
+#### 4.5.20 Commercial payer overlays — Horizon Blue Cross Blue Shield of New Jersey (wave 52-20)
+
+The fourteenth named commercial-payer overlay, and the ninth "Blues
+plans by state" overlay after HCSC, Highmark, Florida Blue, BCBSM, Blue
+Shield of California, Independence Blue Cross, CareFirst, and Blue Cross
+NC. **Horizon Blue Cross Blue Shield of New Jersey** is the dominant
+Blue Cross Blue Shield licensee in **New Jersey** and one of the largest
+independent licensees not already routed to the Anthem/Elevance, HCSC,
+Highmark, Florida Blue, BCBSM, Blue Shield of California, IBX, CareFirst,
+or Blue Cross NC buckets. Like the thirteen before it, Horizon is keyed
+to its own payer bucket (`'horizon'`, detected by `lib/pa/payer.js` and
+placed before the generic `'commercial'` fall-through, after `'bcbsnc'`).
+The bucket matches only definitively-Horizon anchors — `horizon blue
+cross`, `horizon bcbs`, and `horizon healthcare services` — never the
+bare common word `horizon`, so generic `blue cross` / `blue shield` and
+other Blues licensees stay in the commercial fall-through, and an
+explicit "Medicare Advantage" string still wins the MA bucket earlier.
+Each commercial rule self-gates on `bundle.payer === 'horizon'` and
+returns a vacuous pass on every other packet.
+
+Scope discipline is identical to §4.5.7–§4.5.19: the rules check the
+**procedural completeness** of a Horizon prior-authorization packet
+against the plan's *own published* submission requirements — not
+clinical coverage criteria, which are the reviewer's judgement and the
+applicable Medical Policy's job. Every rule is anchored to a public
+Horizon provider prior-authorization URL tracked in the staleness ledger
+(§8.3, source `horizon-precert`) and re-verified on the §4.5.6 cadence.
+
+The set mirrors the earlier commercial families so the fourteen overlays
+stay structurally parallel and auditable side by side; Horizon-specific
+routing names appear where the plan actually uses them — the **NaviNet
+provider portal / Availity** for submission, the **advanced-imaging
+utilization-management program** for advanced imaging and genetic /
+molecular testing, the plan's **pharmacy management** for pharmacy /
+step therapy, **behavioral health** for behavioral health, and the
+**Blue Distinction Centers for Transplant** for transplant. Wave 52-20
+ships the full planned set of 20 (`R-PA-HORIZON-NNN`), structurally
+parallel to the Blue Cross NC set (§4.5.19).
+
+`R-PA-HORIZON-004` mirrors core `R-PA-053` and the Aetna / UHC / Anthem /
+Cigna / Humana / HCSC / Highmark / Florida Blue / BCBSM / Blue Shield of
+California / Independence Blue Cross / CareFirst / Blue Cross NC -004
+rules: it ships without a bundled prior-authorization list and vacuously
+passes with a pointer until a later wave bundles the list. With fourteen
+commercial overlays shipped — the five largest commercial / MA plans
+plus the nine largest independent Blues licensees (HCSC, Highmark,
+Florida Blue, BCBSM, Blue Shield of California, Independence Blue Cross,
+CareFirst, Blue Cross NC, Horizon) — the remaining §9 wave 52-5+
+candidates are the other Blues plans by state and per-state Medicaid
+overlays as user-volume data warrants.
 
 ### 4.6 The DOCX report
 
@@ -2314,6 +2364,26 @@ self-contained PR; the catalog count rises only at wave 52-1.
   California + Independence Blue Cross + CareFirst + Blue Cross NC), the
   eight largest independent Blues licensees now all covered.
 
+### Wave 52-20 — Horizon Blue Cross Blue Shield of New Jersey commercial overlay (2026-06)
+
+- The 20 Horizon rules (§4.5.20), the `R-PA-HORIZON-NNN` family,
+  anchored to the plan's public provider prior-authorization pages,
+  Medical Policies, and utilization-management / pharmacy program
+  requirements (ledger source `horizon-precert`).
+- A `'horizon'` payer bucket in `lib/pa/payer.js`, placed before the
+  generic `'commercial'` fall-through and after `'bcbsnc'`. It matches
+  only definitively-Horizon anchors (`horizon blue cross`, `horizon
+  bcbs`, `horizon healthcare services`), never the bare common word
+  `horizon`; generic Blues and other licensees stay in the commercial
+  fall-through, and an explicit "Medicare Advantage" string still wins
+  the MA bucket earlier.
+- Catalog count unchanged (255 tiles; Horizon adds rules, not a tile).
+  Ruleset rises 395 → 415. Brings the named commercial / MA overlays to
+  fourteen (Aetna + UnitedHealthcare + Anthem + Cigna + Humana + HCSC +
+  Highmark + Florida Blue + BCBSM + Blue Shield of California +
+  Independence Blue Cross + CareFirst + Blue Cross NC + Horizon), the
+  nine largest independent Blues licensees now all covered.
+
 ### Wave 52-5+ — State Medicaid overlays, additional commercial payers, OCR
 
 - Per-state Medicaid overlays as user-volume data warrants.
@@ -2321,8 +2391,9 @@ self-contained PR; the catalog count rises only at wave 52-1.
   in wave 52-13, Florida Blue in wave 52-14, BCBSM in wave 52-15,
   Blue Shield of California in wave 52-16, Independence Blue Cross in
   wave 52-17, CareFirst BlueCross BlueShield in wave 52-18, Blue Cross
-  Blue Shield of North Carolina in wave 52-19; the remaining
-  independent Blues licensees follow as volume warrants).
+  Blue Shield of North Carolina in wave 52-19, Horizon Blue Cross Blue
+  Shield of New Jersey in wave 52-20; the remaining independent Blues
+  licensees follow as volume warrants).
 - Optional in-browser OCR via tesseract.js (lazy-loaded,
   user-toggled, ≈ 11 MB gzipped). Only if §2's no-OCR
   experience proves insufficient.
@@ -2491,6 +2562,34 @@ silently; the audit trail records the disablement.
 
 - 2026-05-27 — v52 proposed. Five waves outlined (52-1 through
   52-5+). Catalog count target at v52-1 close: 255.
+- 2026-06-04 — wave 52-20 (§4.5.20 Horizon Blue Cross Blue Shield of New Jersey
+  commercial overlay, the full 20-rule `R-PA-HORIZON-NNN` family — the fourteenth
+  named commercial overlay after Aetna, UnitedHealthcare, Anthem, Cigna, Humana,
+  HCSC, Highmark, Florida Blue, BCBSM, Blue Shield of California, Independence
+  Blue Cross, CareFirst, and Blue Cross NC, and the ninth "Blues plans by state"
+  overlay). Opens a `'horizon'` payer bucket in `lib/pa/payer.js` (placed after
+  `'bcbsnc'` and before the generic `'commercial'` fall-through). Horizon is the
+  dominant Blues licensee in New Jersey; the bucket matches only
+  definitively-Horizon anchors (`horizon blue cross`, `horizon bcbs`, `horizon
+  healthcare services`), never the bare common word `horizon`, so generic `blue
+  cross` / `blue shield` and other licensees stay in the commercial fall-through,
+  and an explicit "Medicare Advantage" string still wins the MA bucket earlier.
+  The 20 rules mirror the prior thirteen commercial families so the fourteen
+  overlays stay structurally parallel, with Horizon-specific routing names where
+  the plan uses them (the NaviNet provider portal / Availity submission channel,
+  the advanced-imaging utilization-management program, pharmacy management for
+  step therapy, behavioral health, and the Blue Distinction Centers for
+  Transplant). Each self-gates on `bundle.payer === 'horizon'` and vacuously
+  passes on every other packet. New ledger source `horizon-precert` anchored to
+  the plan's public provider prior-authorization page (all twenty rules map to it
+  by prefix). Coverage is now 415 rules shipped (was 395), 367 source-anchored
+  (was 347), 29 sources (was 28), 0 orphans, 0 gaps. The golden fixtures re-seed
+  deterministically (a new `horizon-precert` fixture exercises the on-bucket
+  path — 009 flag, 003 info; the other twenty gain +20 vacuous-pass findings
+  each). Tests: +9 engine assertions (count 415, the off-bucket loop, and
+  fire/pass checks) and +1 classify assertion (Horizon → `horizon`; generic Blues
+  → `commercial`; Horizon Medicare Advantage → the MA bucket). Catalog count
+  unchanged (255). View wave banner advanced to 52-20.
 - 2026-06-04 — wave 52-19 (§4.5.19 Blue Cross Blue Shield of North Carolina
   commercial overlay, the full 20-rule `R-PA-BCBSNC-NNN` family — the thirteenth
   named commercial overlay after Aetna, UnitedHealthcare, Anthem, Cigna, Humana,

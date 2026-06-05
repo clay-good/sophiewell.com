@@ -143,7 +143,7 @@ test('detectPayer: Florida Blue / GuideWell (Blue Cross and Blue Shield of Flori
   assert.equal(detectPayer('Blue Cross and Blue Shield of Florida member'), 'florida-blue');
   assert.equal(detectPayer('GuideWell health plan'), 'florida-blue');
   // ...but generic / other-licensee Blues stay in the commercial fall-through.
-  assert.equal(detectPayer('Horizon Blue Cross Blue Shield of New Jersey PPO plan'), 'commercial');
+  assert.equal(detectPayer('Capital BlueCross PPO plan'), 'commercial');
   // ...and an explicit Medicare Advantage string still routes to the MA bucket.
   assert.equal(detectPayer('Florida Blue Medicare Advantage HMO plan'), 'cms-medicare-advantage');
 });
@@ -210,6 +210,19 @@ test('detectPayer: Blue Cross Blue Shield of North Carolina routes to its own bu
   assert.equal(detectPayer('Premera Blue Cross PPO plan'), 'commercial');
   // ...and an explicit Medicare Advantage string still routes to the MA bucket.
   assert.equal(detectPayer('Blue Cross NC Medicare Advantage HMO'), 'cms-medicare-advantage');
+});
+
+test('detectPayer: Horizon Blue Cross Blue Shield of New Jersey routes to its own bucket (wave 52-20)', () => {
+  // The 'horizon blue cross' / 'horizon bcbs' / 'horizon healthcare services'
+  // anchors -> the named 'horizon' overlay bucket. The bare common word
+  // 'horizon' is never used as an anchor.
+  assert.equal(detectPayer('Horizon Blue Cross Blue Shield of New Jersey PPO plan'), 'horizon');
+  assert.equal(detectPayer('Horizon BCBS NJ member'), 'horizon');
+  assert.equal(detectPayer('Horizon Healthcare Services, Inc.'), 'horizon');
+  // ...but generic / other-licensee Blues stay in the commercial fall-through.
+  assert.equal(detectPayer('Capital BlueCross PPO plan'), 'commercial');
+  // ...and an explicit Medicare Advantage string still routes to the MA bucket.
+  assert.equal(detectPayer('Horizon Medicare Advantage HMO plan'), 'cms-medicare-advantage');
 });
 
 test('detectPayer: unknown for empty / non-payer text', () => {

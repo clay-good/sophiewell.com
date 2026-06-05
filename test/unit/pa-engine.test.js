@@ -140,8 +140,8 @@ test('runEngine passes every starter rule on a clean multi-doc happy-path packet
   assert.equal(counts.pass, STARTER_RULES.length);
 });
 
-test('STARTER_RULES at wave 52-19 is 395 rules (135 §4.5 core/overlay/specialty + 20 Aetna + 20 UnitedHealthcare + 20 Anthem + 20 Cigna + 20 Humana + 20 HCSC + 20 Highmark + 20 Florida Blue + 20 BCBSM + 20 Blue Shield of California + 20 Independence Blue Cross + 20 CareFirst + 20 Blue Cross NC)', () => {
-  assert.equal(STARTER_RULES.length, 395);
+test('STARTER_RULES at wave 52-20 is 415 rules (135 §4.5 core/overlay/specialty + 20 Aetna + 20 UnitedHealthcare + 20 Anthem + 20 Cigna + 20 Humana + 20 HCSC + 20 Highmark + 20 Florida Blue + 20 BCBSM + 20 Blue Shield of California + 20 Independence Blue Cross + 20 CareFirst + 20 Blue Cross NC + 20 Horizon)', () => {
+  assert.equal(STARTER_RULES.length, 415);
 });
 
 // ---- wave 52-7a sanity checks: Aetna commercial overlay (§4.5.7) ----
@@ -1371,6 +1371,79 @@ test('R-PA-BCBSNC-020 flags a Blue Cross NC out-of-network request with no netwo
   const text = 'Blue Cross Blue Shield of North Carolina member.\nOut-of-network prior authorization request.\nProcedure CPT 70551.\n';
   const findings = runEngine(bundleOf(text));
   const f = findings.find((x) => x.ruleId === 'R-PA-BCBSNC-020');
+  assert.equal(f.status, 'info');
+});
+
+// ---- wave 52-20 sanity checks: Horizon Blue Cross Blue Shield of New Jersey overlay (§4.5.20) ----
+
+test('Horizon overlay rules vacuously pass on a non-Horizon packet', () => {
+  // happyBundle is not a Horizon packet -> every R-PA-HORIZON-* rule passes.
+  const findings = runEngine(happyBundle());
+  for (let n = 1; n <= 20; n += 1) {
+    const id = 'R-PA-HORIZON-' + String(n).padStart(3, '0');
+    const f = findings.find((x) => x.ruleId === id);
+    assert.ok(f, id + ' should be in the findings');
+    assert.equal(f.status, 'pass', id + ' should vacuously pass off-bucket');
+  }
+});
+
+test('R-PA-HORIZON-001 flags a Horizon request with a procedure but no coverage-criteria reference', () => {
+  const text = 'Horizon Blue Cross Blue Shield of New Jersey member.\n'
+    + 'Requested procedure: CPT 72148 (MRI lumbar spine).\n'
+    + 'Please authorize.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-HORIZON-001');
+  assert.equal(f.status, 'flag');
+});
+
+test('R-PA-HORIZON-001 passes when the Horizon packet cites the applicable Medical Policy', () => {
+  const text = 'Horizon Blue Cross Blue Shield of New Jersey member.\n'
+    + 'Requested procedure: CPT 72148.\n'
+    + 'Medical necessity per the applicable Horizon Medical Policy (MCG).\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-HORIZON-001');
+  assert.equal(f.status, 'pass');
+});
+
+test('R-PA-HORIZON-002 flags a Horizon packet with no clinical document attached', () => {
+  const text = 'Horizon Blue Cross Blue Shield of New Jersey member.\nRequested procedure: CPT 27447.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-HORIZON-002');
+  assert.equal(f.status, 'flag');
+});
+
+test('R-PA-HORIZON-003 passes when the Horizon packet names the NaviNet channel (info)', () => {
+  const text = 'Horizon Blue Cross Blue Shield of New Jersey member.\nSubmitted via the NaviNet provider portal.\nProcedure CPT 27447.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-HORIZON-003');
+  assert.equal(f.status, 'pass');
+});
+
+test('R-PA-HORIZON-007 flags a Horizon outpatient MRI with no clinical indication', () => {
+  const text = 'Horizon Blue Cross Blue Shield of New Jersey member.\nRequested: MRI lumbar spine, CPT 72148.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-HORIZON-007');
+  assert.equal(f.status, 'flag');
+});
+
+test('R-PA-HORIZON-008 passes when an expedited Horizon request documents the clinical urgency', () => {
+  const text = 'Horizon Blue Cross Blue Shield of New Jersey member.\nExpedited review requested: delay would jeopardize the member\'s life or health.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-HORIZON-008');
+  assert.equal(f.status, 'pass');
+});
+
+test('R-PA-HORIZON-017 flags a Horizon transplant request with no Blue Distinction routing', () => {
+  const text = 'Horizon Blue Cross Blue Shield of New Jersey member.\nRequested service: kidney transplant.\nMedical necessity per Medical Policy.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-HORIZON-017');
+  assert.equal(f.status, 'flag');
+});
+
+test('R-PA-HORIZON-020 flags a Horizon out-of-network request with no network-gap justification (info)', () => {
+  const text = 'Horizon Blue Cross Blue Shield of New Jersey member.\nOut-of-network prior authorization request.\nProcedure CPT 70551.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-HORIZON-020');
   assert.equal(f.status, 'info');
 });
 
