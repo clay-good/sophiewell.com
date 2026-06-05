@@ -281,8 +281,8 @@ what makes the golden-fixture CI gate possible.
  └──────┬───────┘     cigna | humana | hcsc | highmark | florida-blue | bcbsm |
         ▼               blue-shield-ca | ibx | carefirst | bcbsnc | horizon |
         ▼               bcbst | bcbsma | bcbsal | bcbssc | arkbcbs |
-        ▼               bluekc | commercial | unknown
- ┌──────────────┐   lib/pa/rules.js → 535 rules, each a pure check(bundle).
+        ▼               bluekc | bcbsmn | bcbsla | hmsa | commercial | unknown
+ ┌──────────────┐   lib/pa/rules.js → 595 rules, each a pure check(bundle).
  │  run engine  │   Overlay rules self-gate on the detected payer and
  └──────┬───────┘   vacuously pass off-bucket.
         ▼
@@ -295,7 +295,7 @@ Severities follow spec-v52 §4.4: `block` (packet cannot be reviewed as-is),
 `flag` (likely denial / RFI), `info` (nice-to-have), `pass`. A finding never
 guarantees an approval or a denial — it reports only what the ruleset checks.
 
-### Ruleset at a glance (535 rules)
+### Ruleset at a glance (595 rules)
 
 | Family            | Count | Scope                                                        | Ledger source              |
 |-------------------|-------|--------------------------------------------------------------|----------------------------|
@@ -328,14 +328,18 @@ guarantees an approval or a denial — it reports only what the ruleset checks.
 | `R-PA-BCBSSC-NNN` | 20 | §4.5.24 Blue Cross Blue Shield of South Carolina — the eighteenth named-payer set | `bcbssc-precert` |
 | `R-PA-ARKBCBS-NNN` | 20 | §4.5.25 Arkansas Blue Cross and Blue Shield — the nineteenth named-payer set | `arkbcbs-precert` |
 | `R-PA-BLUEKC-NNN` | 20 | §4.5.26 Blue Cross and Blue Shield of Kansas City — the twentieth named-payer set | `bluekc-precert` |
+| `R-PA-BCBSMN-NNN` | 20 | §4.5.27 Blue Cross and Blue Shield of Minnesota — the twenty-first named-payer set | `bcbsmn-precert` |
+| `R-PA-BCBSLA-NNN` | 20 | §4.5.28 Blue Cross and Blue Shield of Louisiana — the twenty-second named-payer set | `bcbsla-precert` |
+| `R-PA-HMSA-NNN` | 20 | §4.5.29 HMSA / Blue Cross Blue Shield of Hawaii — the twenty-third named-payer set | `hmsa-precert` |
 
-The twenty commercial overlays (§4.5.7 Aetna, §4.5.8 UnitedHealthcare, §4.5.9
+The twenty-three commercial overlays (§4.5.7 Aetna, §4.5.8 UnitedHealthcare, §4.5.9
 Anthem, §4.5.10 Cigna, §4.5.11 Humana, §4.5.12 HCSC, §4.5.13 Highmark, §4.5.14
 Florida Blue, §4.5.15 BCBSM, §4.5.16 Blue Shield of California, §4.5.17
 Independence Blue Cross, §4.5.18 CareFirst, §4.5.19 Blue Cross NC, §4.5.20
 Horizon, §4.5.21 BCBS Tennessee, §4.5.22 BCBS Massachusetts, §4.5.23 BCBS
 Alabama, §4.5.24 BCBS South Carolina, §4.5.25 Arkansas BCBS, §4.5.26 BCBS
-Kansas City) are each keyed to a single named payer and ship 20 rules
+Kansas City, §4.5.27 BCBS Minnesota, §4.5.28 BCBS Louisiana, §4.5.29 HMSA)
+are each keyed to a single named payer and ship 20 rules
 apiece. They are deliberately structurally parallel — same families, same
 severities — so a packet linted under any one payer is auditable against the
 others. The payer-specific routing names differ where each payer actually differs
@@ -354,14 +358,18 @@ BCBST's Availity / BlueAccess / Blue Distinction Centers; BCBSMA's Provider
 Central / Availity / Blue Distinction Centers; BCBSAL's ProviderAccess / Availity
 / Blue Distinction Centers; BCBSSC's My Insurance Manager / Availity / Blue
 Distinction Centers; Arkansas Blue Cross's AHIN / Availity / Blue Distinction
-Centers; Blue KC's Availity / Blue KC provider portal / Blue Distinction Centers —
+Centers; Blue KC's Availity / Blue KC provider portal / Blue Distinction Centers;
+BCBSMN's Availity / provider portal / Blue Distinction Centers; BCBSLA's
+iLinkBlue / Availity / Blue Distinction Centers; HMSA's HHIN / Blue Distinction
+Centers —
 both Humana's and HCSC's
 imaging programs are named generically since the vendor names collide with a
 barred AI-vendor substring, spec-v50 §3.6). The first five are the largest
 commercial / MA plans by national PA volume; HCSC, Highmark, Florida Blue, BCBSM,
 Blue Shield of California, Independence Blue Cross, CareFirst, Blue Cross NC,
 Horizon, BCBS Tennessee, BCBS Massachusetts, BCBS Alabama, BCBS South Carolina,
-Arkansas BCBS, and BCBS Kansas City are the fifteen
+Arkansas BCBS, BCBS Kansas City, BCBS Minnesota, BCBS Louisiana, and HMSA are
+the eighteen
 largest independent Blue Cross Blue Shield licensees and the first of the §9
 "Blues plans by state" candidates. Two same-state pairs are deliberately
 disambiguated by precedence: Blue Shield of California vs. Anthem Blue Cross of
@@ -371,7 +379,7 @@ collision is handled by anchor choice, not order: `bcbsm` (Michigan) is a
 substring of `bcbsma` (Massachusetts), so the Massachusetts bucket anchors on the
 spelled-out plan name and never the bare acronym:
 
-| Rules     | Aetna / UHC / Anthem / Cigna / Humana / HCSC / Highmark / Florida Blue / BCBSM / Blue Shield of CA / IBX / CareFirst / Blue Cross NC / Horizon / BCBST / BCBSMA / BCBSAL / BCBSSC / Arkansas / Blue KC |
+| Rules     | Aetna / UHC / Anthem / Cigna / Humana / HCSC / Highmark / Florida Blue / BCBSM / Blue Shield of CA / IBX / CareFirst / Blue Cross NC / Horizon / BCBST / BCBSMA / BCBSAL / BCBSSC / Arkansas / Blue KC / BCBSMN / BCBSLA / HMSA |
 |-----------|-------------------------------------------------------------------------|
 | 001–005   | Coverage criteria, supporting records, submission channel, prior-auth-list stub, questionnaire / advance notification / auth-before-service |
 | 006–010   | Review *modes*: concurrent / continued-stay, advanced-imaging site-of-care, expedited urgency, objective evidence / surgery site-of-care, J-code NDC |
@@ -379,14 +387,14 @@ spelled-out plan name and never the bare acronym:
 | 016–020   | DME or behavioral-health LOC, transplant Centers-of-Excellence / Blue Distinction routing, experimental-service evidence, appeal reference, out-of-network gap |
 
 Every overlay rule self-gates on `bundle.payer === '<payer>'` and vacuously
-passes on any other packet, so the 135 non-commercial rules and the twenty
+passes on any other packet, so the 135 non-commercial rules and the twenty-three
 20-rule commercial overlays coexist without false positives — a Medicare FFS
 packet never trips a Humana rule, and vice versa. Each rule's
 source URL is tracked in
 [pa-staleness-ledger.json](pa-staleness-ledger.json) and re-verified on the
 §4.5.6 maintenance cadence; `npm run lint` fails CI on any ledger ↔ ruleset
 drift, and `scripts/audit-pa.mjs` diffs the full pipeline output against
-twenty-seven committed golden reports so any rule, extractor, or classifier change
+thirty committed golden reports so any rule, extractor, or classifier change
 that moves a byte is caught.
 
 **Payer detection is first-match-wins, in a deliberate order.** The buckets
@@ -418,13 +426,16 @@ anchor hit. This is the cheat sheet:
 21. bcbssc                   "blue cross [and] blue shield of south carolina", "bcbssc"
 22. arkbcbs                  "arkansas blue cross [and blue shield]", "arkansas bcbs"
 23. bluekc                   "blue cross [and] blue shield of kansas city", "blue kc"
-24. commercial               "blue cross", "blue shield", "kaiser", "tricare"
-25. unknown                  (no anchor hit)
+24. bcbsmn                   "blue cross [and] blue shield of minnesota", "blue cross of minnesota"
+25. bcbsla                   "blue cross [and] blue shield of louisiana", "bcbsla"
+26. hmsa                     "hmsa", "hawaii medical service association", "blue cross blue shield of hawaii"
+27. commercial               "blue cross", "blue shield", "kaiser", "tricare"
+28. unknown                  (no anchor hit)
 ```
 
 Government lines of business win first so an MA or Medicaid packet never routes
 to a commercial overlay on a stray brand string. The named-commercial buckets
-(4–23) sit above the generic `commercial` fall-through (24) and match only
+(4–26) sit above the generic `commercial` fall-through (27) and match only
 *unambiguous* anchors, so independent Blues licensees that aren't yet modeled
 (Premera, Regence, Wellmark, Excellus, Capital BlueCross) stay in `commercial`
 rather than being misrouted. Two same-state pairs are disambiguated purely by
@@ -438,7 +449,9 @@ the bare common word `horizon`. A substring collision is handled by anchor choic
 rather than order: `bcbsm` (Michigan, bucket 12) is a prefix of `bcbsma`
 (Massachusetts, bucket 19), so the Massachusetts bucket anchors only on the
 spelled-out plan name and the `bcbs of massachusetts` short form — never the bare
-`bcbsma` acronym, which would otherwise be swallowed by Michigan.
+`bcbsma` acronym, which would otherwise be swallowed by Michigan. The same applies
+to `bcbsmn` (Minnesota, bucket 24), which also anchors only on its spelled-out
+name.
 A per-packet majority vote
 (`detectPacketPayer`) aggregates multi-document bundles, with ties broken by
 this same order.
@@ -449,7 +462,7 @@ packet always yields the same report; this is what makes a golden-fixture CI
 gate possible and is the opposite of the LLM-on-top-of-rules direction the
 PA-automation SaaS vendors took (spec-v52 §1.1). (2) *Self-gating overlays* —
 adding a payer is additive: a new bucket plus a prefix → ledger-source map,
-never an edit to an existing rule, so the 535-rule set grows without
+never an edit to an existing rule, so the 595-rule set grows without
 regression risk. (3) *Procedural completeness only* — the linter never
 asserts medical necessity; it checks whether the mechanically-detectable
 pieces a reviewer needs are present, which keeps it on the right side of the
@@ -567,12 +580,12 @@ build, integrity-verified data shards) are documented in
   healthcare worker would otherwise reach for MDCalc to find,
   shipped slowly at the v11 quality bar
 - [docs/spec-v52.md](docs/spec-v52.md) — the `pa-lint` prior-auth packet
-  linter: pipeline, the 535-rule ruleset, payer overlays (Aetna +
+  linter: pipeline, the 595-rule ruleset, payer overlays (Aetna +
   UnitedHealthcare + Anthem + Cigna + Humana + HCSC + Highmark + Florida Blue +
   BCBSM + Blue Shield of California + Independence Blue Cross + CareFirst +
   Blue Cross NC + Horizon + BCBS Tennessee + BCBS Massachusetts + BCBS Alabama +
-  BCBS South Carolina + Arkansas BCBS + BCBS Kansas City), and the
-  byte-determinism / golden-fixture guarantee
+  BCBS South Carolina + Arkansas BCBS + BCBS Kansas City + BCBS Minnesota +
+  BCBS Louisiana + HMSA), and the byte-determinism / golden-fixture guarantee
 - [docs/architecture.md](docs/architecture.md) — runtime architecture,
   data flow, no-backend rationale
 - [docs/data-sources.md](docs/data-sources.md) — every bundled dataset
