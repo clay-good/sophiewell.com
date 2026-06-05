@@ -333,12 +333,17 @@ overlays are Medi-Cal / California (`R-PA-MCAL-NNN`, ledger source
 source `tx-medicaid-precert`, anchored to TMHP), Florida (`R-PA-MCFL-NNN`,
 ledger source `fl-medicaid-precert`, anchored to AHCA / FMMIS), Ohio
 (`R-PA-MCOH-NNN`, ledger source `oh-medicaid-precert`, anchored to the Ohio
-Department of Medicaid / PNM), and Illinois (`R-PA-MCIL-NNN`, ledger source
-`il-medicaid-precert`, anchored to HFS / IMPACT / MEDI) — six of the largest
-state programs by enrollment. Two states are deliberately disjoint from their
-same-state Blues commercial buckets: `medicaid-fl` vs. `florida-blue` (§4.5.14)
-and `medicaid-il` vs. `hcsc` (BCBS of Illinois, §4.5.12); both pairs are
-unit-tested so a future anchor edit cannot cross-route them.
+Department of Medicaid / PNM), Illinois (`R-PA-MCIL-NNN`, ledger source
+`il-medicaid-precert`, anchored to HFS / IMPACT / MEDI), Washington Apple Health
+(`R-PA-MCWA-NNN`, ledger source `wa-medicaid-precert`, anchored to the HCA /
+ProviderOne), Georgia (`R-PA-MCGA-NNN`, ledger source `ga-medicaid-precert`,
+anchored to the DCH / GAMMIS), and North Carolina (`R-PA-MCNC-NNN`, ledger source
+`nc-medicaid-precert`, anchored to NC DHHS / NCTracks) — nine of the largest
+state programs by enrollment. Three states are deliberately disjoint from their
+same-state Blues commercial buckets: `medicaid-fl` vs. `florida-blue` (§4.5.14),
+`medicaid-il` vs. `hcsc` (BCBS of Illinois, §4.5.12), and `medicaid-nc` vs.
+`bcbsnc` (Blue Cross NC, §4.5.19); all three pairs are unit-tested so a future
+anchor edit cannot cross-route them.
 
 The key invariant: the §4.5.4 Medicaid core (`R-PA-MCD-NNN`) **composes** with a
 per-state overlay rather than being replaced by it. All ten core gates use the
