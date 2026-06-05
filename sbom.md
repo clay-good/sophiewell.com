@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `26b4c7fd8aed0256`
-Generated: 2026-06-05T18:46:19.502Z
+Build ID: `034bdbeb63da02ee`
+Generated: 2026-06-05T19:15:16.072Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=20.18.1 <21, npm >=10.0.0
@@ -64,12 +64,12 @@ downloads is committed in this repository and is hashed below.
 | `lib/pa/engine.js` | 6446 | `3b054765c7e2064de823ae7b0f32ba22e8d58aebd7df4be04c7a151a0401ebf6` |
 | `lib/pa/extract.js` | 12462 | `aae964461e8b77c8fb90bc8c2949a247754dd3feeec555a76c762b019b9d1616` |
 | `lib/pa/ocr.js` | 5131 | `0626ff42c66c7a41c9a25b8f9ab7bb019bcd4eacd21024c1835dec7498661bd6` |
-| `lib/pa/payer.js` | 42072 | `c47a2554ebc354c8a162756fe5d6b1ec6ed9b5d2efd91ac1e5a01501a7e8a057` |
+| `lib/pa/payer.js` | 43104 | `6db1da31199c369d108e61ad398b3ef4f9f56c4efe4999ef6585d1205c9034b7` |
 | `lib/pa/redact.js` | 6356 | `bb924c4bae0ddbc70e23786f5e594b2e4492d6196769947a607132f494495ce4` |
 | `lib/pa/report.js` | 9684 | `7f0d42557ada83b28106a053d983a54f6b0a4e10465ead58eda5f6786e2d0451` |
-| `lib/pa/rule-sources.js` | 8007 | `69244078154fc37b4b9a68baeeacf691bf28012525bff93ea60f717f20b2989f` |
-| `lib/pa/rules.js` | 1480845 | `c87d5dbd4f5875324ecd253b851eab6bf2b91f6eae03bc1495ba552ad2ea5175` |
-| `lib/pa/staleness-ledger.js` | 21334 | `3e4e2afd2833316a977582d470f6630194ce3b4c0c9cce4e796053543877e020` |
+| `lib/pa/rule-sources.js` | 8101 | `cccc92db867c7a41ef47e70c59e12eb70142be8bc6504966bcfc736b52a55bc0` |
+| `lib/pa/rules.js` | 1518828 | `f947858fc07f5a0b7184f18a04def2f53a1ed1268449372cd0e35dae903d063d` |
+| `lib/pa/staleness-ledger.js` | 21774 | `2e32668e8b6d63eec41fc7461487d4b003d67c4c6a32d1bfa65d1bd3476c1b17` |
 | `lib/pa/staleness.js` | 9310 | `99249cde34d35bb57ea644fced966019d1373b34f792f1ea9b42b586b94454df` |
 | `lib/print.js` | 2588 | `74579a71f82b75993dea9f7d9b3c21e67744bd4dbe6f50e20c8eef9aa1be7546` |
 | `lib/prompt.js` | 6872 | `95ee9b9de5adbafd1497f378993e27d29c9f437bfc9ddc304886fd75e80fffd4` |
@@ -93,7 +93,7 @@ downloads is committed in this repository and is hashed below.
 | `views/group-klmno.js` | 7870 | `bf6d3ced1a08fcb627284b649d07b8e5ace6857b29e46992d4e425925c63eaa9` |
 | `views/group-v5.js` | 26940 | `daba643b4b8c800ca5706cc9f7d80d64fb373cbfc1362b77e2fc22d6495c241a` |
 | `views/group-v6.js` | 5707 | `425918decb48cd9efac9fc5590ac8970a54c03c3b0df056fb99c9a22ff8dd1b2` |
-| `views/pa-lint.js` | 28132 | `9468f1071774994dc502083cbde4989a879f047f19186e6f7ad5bc82ee8466a1` |
+| `views/pa-lint.js` | 28145 | `3c122c9284f1c3fb8033a48758fe4b342ebafecb8dc25363610a3c6f8dbdc4ac` |
 
 ## Verifying this SBOM
 

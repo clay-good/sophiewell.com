@@ -397,6 +397,14 @@
       "rules": ["R-PA-MCMI-001", "R-PA-MCMI-002"],
       "url": "https://www.michigan.gov/mdhhs/doing-business/providers",
       "lastVerified": "2026-06-05"
+    },
+    {
+      "id": "nj-medicaid-precert",
+      "label": "New Jersey Medicaid / NJ FamilyCare (NJ DHS / DMAHS / NJMMIS) prior-authorization requirements, provider manuals, and utilization-management / pharmacy program requirements",
+      "ruleFamily": "medicaid-nj",
+      "rules": ["R-PA-MCNJ-001", "R-PA-MCNJ-002"],
+      "url": "https://www.nj.gov/humanservices/dmahs/",
+      "lastVerified": "2026-06-05"
     }
   ],
   "acknowledgments": []

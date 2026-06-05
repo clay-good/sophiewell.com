@@ -6,6 +6,42 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v52 wave 52-42 — §4.5.42 New Jersey Medicaid overlay for the Prior-Auth Packet Linter)
+
+The twelfth per-state Medicaid overlay, and the thirty-fifth named-payer overlay
+overall. **New Jersey Medicaid** is administered by the Department of Human
+Services' **Division of Medical Assistance and Health Services (DMAHS)** under
+the brand **NJ FamilyCare**; the fiscal-agent provider portal is **NJMMIS** (the
+New Jersey Medicaid Management Information System).
+
+- New per-state payer bucket `'medicaid-nj'` in `lib/pa/payer.js` (anchors `new
+  jersey medicaid` / `nj medicaid` / `nj familycare` / `njmmis`), placed before
+  the generic `'medicaid'` bucket and composing with the §4.5.4 Medicaid core
+  through `isMedicaid(bundle.payer)`. It is deliberately disjoint from the
+  same-state commercial Blues bucket `'horizon'` / Horizon Blue Cross Blue Shield
+  of New Jersey (§4.5.20); a New Jersey Medicaid packet and a Horizon packet route
+  to different overlays (unit-tested), and a dual-eligible "Medicare Advantage"
+  string still wins the MA bucket earlier.
+- 20 rules `R-PA-MCNJ-001..020` in `lib/pa/rules.js`, each self-gating on
+  `bundle.payer === 'medicaid-nj'` and vacuously passing on every other packet.
+  Structurally parallel to the other Medicaid overlays, with NJMMIS submission
+  routing and the two Medicaid reframings (transplant → Medicaid-designated
+  transplant center; appeal → state fair hearing). `R-PA-MCNJ-004` mirrors core
+  `R-PA-053` (no bundled prior-authorization list yet; vacuous pass with a
+  pointer).
+- New staleness-ledger source `nj-medicaid-precert` (`pa-staleness-ledger.json`,
+  regenerated into `lib/pa/staleness-ledger.js`) and a `R-PA-MCNJ-` →
+  `nj-medicaid-precert` prefix map in `lib/pa/rule-sources.js`. Anchored to the
+  public DMAHS provider page.
+- New golden fixture `nj-medicaid-precert` (42 fixtures total); `scripts/audit-pa.mjs`
+  re-seeded. Ruleset rises **815 → 835**; catalog count unchanged (255 tiles).
+- Tests: +1 classify disjointness test (`medicaid-nj` vs. Horizon) and the
+  rule-count assertions (unit + 2 e2e) advanced to 835. View wave banner advanced
+  to 52-42.
+- Docs housekeeping: corrected the README payer cheat-sheet prose, whose
+  per-bucket precedence numbers (`anthem`, `bcbsm`, `horizon`, …) had lagged the
+  renumbered table by one since the wave 52-41 insertion.
+
 ### Added (spec-v52 wave 52-41 — §4.5.41 Michigan Medicaid overlay for the Prior-Auth Packet Linter)
 
 The eleventh per-state Medicaid overlay, and the thirty-fourth named-payer

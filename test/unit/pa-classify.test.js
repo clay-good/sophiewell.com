@@ -452,6 +452,18 @@ test('detectPayer: Michigan Medicaid routes to its own per-state bucket, distinc
   assert.equal(detectPayer('Michigan Medicaid Medicare Advantage dual plan'), 'cms-medicare-advantage');
 });
 
+test('detectPayer: New Jersey Medicaid routes to its own per-state bucket, distinct from the same-state Blues (Horizon) (wave 52-42)', () => {
+  assert.equal(detectPayer('New Jersey Medicaid prior authorization'), 'medicaid-nj');
+  assert.equal(detectPayer('NJ Medicaid submitted via NJMMIS'), 'medicaid-nj');
+  assert.equal(detectPayer('NJ FamilyCare managed care'), 'medicaid-nj');
+  // ...the same-state commercial Blues licensee still routes to its own bucket.
+  assert.equal(detectPayer('Horizon Blue Cross Blue Shield of New Jersey'), 'horizon');
+  // ...a state-agnostic Medicaid packet stays in the generic bucket.
+  assert.equal(detectPayer('state Medicaid managed care'), 'medicaid');
+  // ...and a dual-eligible "Medicare Advantage" string wins the MA bucket.
+  assert.equal(detectPayer('New Jersey Medicaid Medicare Advantage dual plan'), 'cms-medicare-advantage');
+});
+
 test('detectPayer: unknown for empty / non-payer text', () => {
   assert.equal(detectPayer(''), 'unknown');
   assert.equal(detectPayer('this packet has no payer letterhead'), 'unknown');
