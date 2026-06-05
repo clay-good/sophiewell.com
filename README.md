@@ -265,12 +265,14 @@ The pipeline is a pure, byte-deterministic function of the input bytes
 what makes the golden-fixture CI gate possible.
 
 ```
- drop files (PDF/DOCX/TXT)
+ drop files (PDF/DOCX/TXT/scanned-PDF/image)
         │
         ▼
  ┌──────────────┐   pdf.js / mammoth.js (vendored, no network)
  │   ingest     │── extract text, SHA-256 each file
- └──────┬───────┘
+ └──────┬───────┘   scanned PDF / image? → "Run on-device OCR" button →
+        │           tesseract.js (vendored, lazy, same-origin, in-worker)
+        │           → text → re-run pipeline   (spec-v52 §4.3.1)
         ▼
  ┌──────────────┐   lib/pa/extract.js  → codes, dates, NPIs, POS, signatures
  │   extract    │   lib/pa/classify.js → per-document role (clinical-note,
@@ -501,16 +503,36 @@ never an edit to an existing rule, so the 775-rule set grows without
 regression risk. (3) *Procedural completeness only* — the linter never
 asserts medical necessity; it checks whether the mechanically-detectable
 pieces a reviewer needs are present, which keeps it on the right side of the
-"not medical advice" line.
+"not medical advice" line. (4) *OCR is an input adapter, not the substrate*
+(spec-v52 §4.3.1) — a scanned PDF or image can be turned into text with
+**optional, user-triggered, on-device** OCR (tesseract.js, vendored), but OCR
+only does what a human typist would; the deterministic rule engine still makes
+every determination. The engine is **lazy** (~9 MB, loaded only on the user's
+click, so idle weight is unchanged), runs **in-worker and same-origin** (no
+network, no AI service, the image never leaves the tab), and is **upstream of
+the audited surface** (the golden fixtures feed the engine text directly, so
+determinism is preserved). The one cost is a narrow CSP relaxation —
+`script-src 'self' 'wasm-unsafe-eval'` — which permits same-origin WebAssembly
+compilation and nothing else (no general `eval`, no third-party origin;
+`connect-src 'self'` is unchanged).
 
 ## Deterministic logic versus LLM usage
 
-The product uses zero LLM inference and zero AI of any kind. All operations
-are deterministic functions over public datasets and published formulas.
-There is no model in the loop, no embedding, no inference call, no API
-key. If a future sibling project explores AI-driven workflows, it will be
-a separate, clearly labeled product. sophiewell.com itself never calls a
-language model.
+The product uses zero LLM inference and zero AI *service* of any kind. All
+operations are deterministic functions over public datasets and published
+formulas. There is no model in the loop, no embedding, no inference call, no API
+key, and no network call to any AI vendor. If a future sibling project explores
+AI-driven workflows, it will be a separate, clearly labeled product.
+sophiewell.com itself never calls a language model.
+
+The one nuance is the `pa-lint` tile's **optional, on-device OCR**
+(spec-v52 §4.3.1): tesseract.js is a local, offline, deterministic
+text-extraction kernel — not an LLM and not a cloud-AI vendor (the
+`check-commitments.mjs` "no AI" deny-list targets OpenAI/Anthropic/onnxruntime/…,
+none of which appears here). It runs entirely in the browser tab, fetches
+nothing off-origin, and only converts a scan's pixels into the text a human
+would otherwise type. It is an input adapter to the deterministic engine, not a
+decision-maker — so the "deterministic, not probabilistic" posture is intact.
 
 ## Stability commitments
 
@@ -622,7 +644,8 @@ build, integrity-verified data shards) are documented in
   BCBS South Carolina + Arkansas BCBS + BCBS Kansas City + BCBS Minnesota +
   BCBS Louisiana + HMSA, plus per-state Medicaid overlays for California /
   New York / Texas / Florida / Ohio / Illinois / Washington / Georgia / North
-  Carolina), and the byte-determinism / golden-fixture guarantee
+  Carolina), the optional on-device OCR path (§4.3.1, vendored tesseract.js),
+  and the byte-determinism / golden-fixture guarantee
 - [docs/architecture.md](docs/architecture.md) — runtime architecture,
   data flow, no-backend rationale
 - [docs/data-sources.md](docs/data-sources.md) — every bundled dataset

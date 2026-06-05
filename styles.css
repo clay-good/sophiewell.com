@@ -851,6 +851,44 @@ body {
   font-size: 0.88rem;
   color: var(--text-muted);
 }
+/* spec-v52 §4.3.1: optional on-device OCR control. */
+.pa-ocr {
+  margin: 12px 0;
+  padding: 12px 14px;
+  max-width: 100%;
+  box-sizing: border-box;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--accent, #2b6cb0);
+  border-radius: 6px;
+}
+.pa-ocr-note {
+  margin: 0 0 10px;
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  overflow-wrap: anywhere;
+}
+.pa-ocr-btn {
+  display: inline-block;
+  max-width: 100%;
+  box-sizing: border-box;
+  white-space: normal;
+  overflow-wrap: anywhere;
+  cursor: pointer;
+  padding: 8px 14px;
+  font: inherit;
+  color: var(--text, inherit);
+  background: var(--bg, #fff);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+}
+.pa-ocr-btn:disabled { opacity: 0.6; cursor: default; }
+.pa-ocr-status {
+  margin: 8px 0 0;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  overflow-wrap: anywhere;
+}
 .pa-results {
   list-style: none;
   padding: 0;

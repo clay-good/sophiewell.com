@@ -27,8 +27,8 @@ const COMMITMENTS = [
   {
     n: '2',
     heading: 'No third-party scripts',
-    body: "Sophie loads no code from anyone else's servers. All JavaScript is part of the page you downloaded.",
-    enforcement: "_headers pins script-src 'self'. The grep-check rule and the commitments check both deny any third-party script vendor.",
+    body: "Sophie loads no code from anyone else's servers. All JavaScript (and the optional on-device OCR engine's WebAssembly) is part of the page you downloaded, served from this origin.",
+    enforcement: "_headers pins script-src to 'self' plus 'wasm-unsafe-eval' (which permits only same-origin WebAssembly compilation for the vendored on-device OCR engine, not general eval and not any third-party origin). The grep-check rule and the commitments check both deny any third-party script vendor and forbid 'unsafe-inline', wildcards, and off-origin script sources.",
     checkPath: 'scripts/grep-check.mjs',
     spec: 'spec-v50 §3.2',
   },
@@ -103,6 +103,14 @@ const VENDORED = [
     version: '1.2.5',
     license: 'BSD-2-Clause',
     purpose: 'DOCX text extraction for the Prior-Auth Packet Linter (spec-v52 §4.3).',
+  },
+  {
+    name: 'tesseract.js',
+    path: '/vendored/tesseract/',
+    upstream: 'https://github.com/naptha/tesseract.js',
+    version: '5.1.1 (+ tesseract.js-core 5.1.0, tessdata_fast eng)',
+    license: 'Apache-2.0',
+    purpose: 'Optional, user-triggered, fully on-device OCR for scanned PDFs and images in the Prior-Auth Packet Linter (spec-v52 §4.3.1). Loads on demand; runs entirely in the tab; no network, no AI service. Same-origin WebAssembly requires the narrow CSP token script-src \'wasm-unsafe-eval\' (no general eval, no third-party origin; connect-src \'self\' is unchanged).',
   },
 ];
 

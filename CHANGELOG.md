@@ -6,6 +6,51 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v52 wave 52-39 — §4.3.1 optional in-browser OCR for the Prior-Auth Packet Linter)
+
+Resolves the §2 OCR non-goal. The `pa-lint` tile gains an **optional,
+user-triggered, fully on-device OCR path** for scanned PDFs and dropped images
+(`image/jpeg`, `image/png`). When a dropped file is an image or a PDF that looks
+like a scan (no embedded text layer), the results panel shows a single **"Run
+on-device OCR"** control. Nothing loads until the user clicks it; then the
+vendored OCR engine extracts the text and the deterministic rule engine re-runs
+over it.
+
+**Engine.** [tesseract.js](https://github.com/naptha/tesseract.js) 5.1.1 (+
+`tesseract.js-core` 5.1.0 + the `tessdata_fast` English model), vendored under
+`vendored/tesseract/` (~9 MB). It is **lazy-loaded only on the user's click**, so
+idle page weight and the Lighthouse budget are unchanged; the service worker
+runtime-caches it on first use for offline OCR thereafter.
+
+**Posture.** OCR runs in a Web Worker in the tab; every asset (engine, worker,
+WASM core, language data) is same-origin under `/vendored/tesseract/` — **no
+network, no third-party service, no AI cloud**. The patient's image never leaves
+the device (no BAA, spec-v52 §4.7 / §1.4). OCR is an **input adapter** — it
+produces the text a human would otherwise type and makes no prior-authorization
+determination, so the deterministic engine, the golden-fixture audit, and the
+byte-determinism guarantee (§4.10) are all unchanged. tesseract is a local OCR
+kernel, not an LLM-vendor dependency, so the "no AI" commitment (spec-v50 §3.6)
+holds.
+
+**CSP (the design decision).** WebAssembly compilation under a CSP needs a
+`script-src` token, so `script-src` moves from `'self'` to `'self'
+'wasm-unsafe-eval'` (in `_headers`, `index.html`, and `scripts/serve.mjs`).
+`'wasm-unsafe-eval'` permits **only** same-origin WASM compilation — not general
+`eval`, not `'unsafe-inline'`, not any third-party origin — and `connect-src
+'self'` (the no-outbound-network promise) is unchanged, so "no third-party
+scripts" still holds in substance. `check-commitments.mjs` already permits the
+token while forbidding `unsafe-inline` / wildcards / off-origin sources.
+
+New `lib/pa/ocr.js` (Node-safe glue + a dependency-injected `createOcrRunner`);
+`views/pa-lint.js` gains the lazy loader, candidate detection, the OCR control,
+scanned-PDF page rendering (canvas + the vendored pdf.js), and a `data-rule` hook
+on findings rows. The /commitments page and `vendored/tesseract/_vendored.md`
+disclose the vendored engine, its Apache-2.0 license, and the CSP tradeoff.
+Tests: +10 unit (`test/unit/pa-ocr.test.js`, driven by a fake worker) and +1 e2e
+(`test/integration/pa-lint-ocr.spec.js` — runs real OCR on an in-page PNG across
+chromium/webkit/firefox and asserts zero off-origin requests). Catalog count
+unchanged (255 tiles); ruleset count unchanged (775 — OCR is ingest, not a rule).
+
 ### Added (spec-v52 wave 52-38 — §4.5.38 North Carolina Medicaid per-state overlay, 20 of 20)
 
 The ninth per-state Medicaid overlay, and the thirty-second named-payer overlay

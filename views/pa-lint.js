@@ -29,6 +29,7 @@ import { buildBundle, runEngine, summarizeFindings } from '../lib/pa/engine.js';
 import { buildJsonReport, buildRedactedJsonReport, buildDocxReport } from '../lib/pa/report.js';
 import { disabledSourceMap } from '../lib/pa/staleness.js';
 import { PA_STALENESS_LEDGER } from '../lib/pa/staleness-ledger.js';
+import { isImageFile, isOcrCandidate, ocrDocument, createOcrRunner } from '../lib/pa/ocr.js';
 
 const MAX_FILE_BYTES = 50 * 1024 * 1024; // 50 MB per file, per spec-v52 §4.3
 const MAX_TOTAL_BYTES = 200 * 1024 * 1024; // 200 MB packet ceiling
@@ -82,6 +83,59 @@ async function extractDocxText(arrayBuffer) {
   const mammoth = await loadMammoth();
   const result = await mammoth.extractRawText({ arrayBuffer });
   return { text: String(result && result.value || '') };
+}
+
+// spec-v52 §4.3.1 / §5.3: tesseract.js OCR engine, vendored under
+// /vendored/tesseract/. UMD bundle injected as a same-origin classic
+// <script> on the first "Run on-device OCR" click and resolved to
+// `window.Tesseract`. Memoized -- the ~9 MB engine loads at most once per
+// session and only when the user opts in (idle page weight unaffected,
+// spec-v10 §6). No third-party origin; no auto-load.
+let tesseractPromise = null;
+function loadTesseract() {
+  if (!tesseractPromise) {
+    tesseractPromise = new Promise((resolve, reject) => {
+      if (typeof window !== 'undefined' && window.Tesseract) {
+        resolve(window.Tesseract);
+        return;
+      }
+      const s = document.createElement('script');
+      s.src = '/vendored/tesseract/tesseract.min.js';
+      s.async = true;
+      s.onload = () => {
+        if (window.Tesseract) resolve(window.Tesseract);
+        else reject(new Error('tesseract.js loaded but window.Tesseract was not set'));
+      };
+      s.onerror = () => reject(new Error('failed to load /vendored/tesseract/tesseract.min.js'));
+      document.head.appendChild(s);
+    });
+  }
+  return tesseractPromise;
+}
+
+// OCR a scanned (image-only) PDF by rendering each page to a canvas with the
+// already-vendored pdf.js, then recognizing the canvas. Re-reads the file so
+// the buffer pdf.js may neuter at parse time is never reused.
+async function ocrScannedPdf(file, runner, onPage) {
+  const pdfjs = await loadPdfjs();
+  const buf = await file.arrayBuffer();
+  const doc = await pdfjs.getDocument({ data: new Uint8Array(buf), isEvalSupported: false }).promise;
+  let text = '';
+  for (let p = 1; p <= doc.numPages; p += 1) {
+    if (onPage) onPage(p, doc.numPages);
+    const page = await doc.getPage(p);
+    const viewport = page.getViewport({ scale: 2 });
+    const canvas = document.createElement('canvas');
+    canvas.width = Math.ceil(viewport.width);
+    canvas.height = Math.ceil(viewport.height);
+    const ctx = canvas.getContext('2d');
+    await page.render({ canvasContext: ctx, viewport }).promise;
+    text += (await runner.recognize(canvas)) + '\n';
+    page.cleanup();
+  }
+  await doc.cleanup();
+  await doc.destroy();
+  return text;
 }
 
 async function extractPdfText(arrayBuffer) {
@@ -142,13 +196,17 @@ function renderFinding(file, opts) {
   } else {
     li.appendChild(el('p', { class: 'pa-finding-hash', text: 'sha256: ' + hash }));
   }
-  if (extract) {
+  if (extract && extract.kind === 'IMAGE') {
+    li.appendChild(el('p', { class: 'pa-finding-extract',
+      text: 'Image · no embedded text layer · on-device OCR available below' }));
+  } else if (extract) {
     const kind = extract.kind || 'Document';
     const parts = [kind + ' parsed'];
     if (typeof extract.pageCount === 'number') {
       parts.push(extract.pageCount + ' page' + (extract.pageCount === 1 ? '' : 's'));
     }
     parts.push(extract.text.length + ' characters of extractable text');
+    if (opts && opts.scanned) parts.push('looks like a scan · on-device OCR available below');
     li.appendChild(el('p', { class: 'pa-finding-extract', text: parts.join(' · ') }));
   }
   return li;
@@ -193,7 +251,7 @@ function renderFindingsPanel(panel, findings, counts, bundle) {
   }
   const list = el('ul', { class: 'pa-findings-list', 'aria-label': 'Rule findings' });
   for (const f of findings) {
-    const li = el('li', { class: 'pa-rule', 'data-status': f.status });
+    const li = el('li', { class: 'pa-rule', 'data-status': f.status, 'data-rule': f.ruleId });
     li.appendChild(el('span', { class: 'pa-rule-label visually-hidden',
       text: f.status.toUpperCase() + ': ' + f.description }));
     const head = el('p', { class: 'pa-rule-head' });
@@ -282,6 +340,7 @@ async function processFiles(fileList, resultsList, statusNode, findingsPanel) {
   }
   statusNode.textContent = 'Hashing ' + files.length + ' file' + (files.length === 1 ? '' : 's') + '...';
   const documents = [];
+  const ocrCandidates = [];
   let i = 0;
   for (const file of files) {
     i += 1;
@@ -319,6 +378,11 @@ async function processFiles(fileList, resultsList, statusNode, findingsPanel) {
         parseLabel = 'TXT';
         const text = new TextDecoder('utf-8').decode(buf);
         extract = { kind: 'TXT', text };
+      } else if (isImageFile(file)) {
+        // spec-v52 §4.3.1: images carry no embedded text. The deterministic
+        // pipeline cannot lint them until OCR runs; mark them as OCR candidates.
+        parseLabel = 'IMAGE';
+        extract = { kind: 'IMAGE', text: '' };
       }
     } catch (err) {
       // Render hash + a parse-failed note rather than dropping the
@@ -337,24 +401,27 @@ async function processFiles(fileList, resultsList, statusNode, findingsPanel) {
       documents.push({ name: file.name, sha256: hash, kind: parseLabel || '', text: '', parseError: message });
       continue;
     }
-    resultsList.appendChild(renderFinding(file, { hash, extract }));
+    const scanned = isOcrCandidate(file, extract) && extract && extract.kind === 'PDF';
+    resultsList.appendChild(renderFinding(file, { hash, extract, scanned }));
     if (extract && extract.text) {
       documents.push({ name: file.name, sha256: hash, kind: extract.kind, text: extract.text });
     }
+    // spec-v52 §4.3.1: collect OCR candidates (images, scanned PDFs). The
+    // File reference is kept (not the buffer) so OCR re-reads it fresh.
+    if (isOcrCandidate(file, extract)) {
+      ocrCandidates.push({ file, hash, kind: extract && extract.kind === 'PDF' ? 'pdf' : 'image' });
+    }
   }
-  // spec-v52 §4.5: run the starter ruleset over the aggregated text
-  // bundle and render the findings panel. Empty bundle (e.g. user
-  // dropped only images) skips the engine pass and shows just the
-  // per-file audit-trail.
-  if (findingsPanel) {
+
+  // spec-v52 §4.5: run the starter ruleset over the aggregated text bundle and
+  // render the findings panel. Extracted into a closure so the OCR path can
+  // re-run it after adding OCR-sourced text to `documents`.
+  function runAndRender() {
+    if (!findingsPanel) return;
     if (documents.length) {
-      statusNode.textContent = 'Running rule engine over ' + documents.length
-        + ' parsed document' + (documents.length === 1 ? '' : 's') + '...';
       const bundle = buildBundle(documents, { totalBytes });
-      // spec-v52 §4.5.6: skip rules whose source the maintainer has disabled
-      // in the bundled ledger (no runtime fetch). The shipped ledger disables
-      // none, so this is a no-op today; it wires the mechanism for when a
-      // source goes 404 (surfaced by scripts/refresh-pa-rules.mjs).
+      // spec-v52 §4.5.6: skip rules whose source the maintainer disabled in the
+      // bundled ledger (no runtime fetch). The shipped ledger disables none.
       const findings = runEngine(bundle, undefined, { disabledSources: disabledSourceMap(PA_STALENESS_LEDGER) });
       const counts = summarizeFindings(findings);
       renderFindingsPanel(findingsPanel, findings, counts, bundle);
@@ -368,15 +435,80 @@ async function processFiles(fileList, resultsList, statusNode, findingsPanel) {
       clear(findingsPanel);
       statusNode.textContent = 'Done. ' + files.length + ' file'
         + (files.length === 1 ? '' : 's')
-        + ' processed; no extractable text -- engine pass skipped.';
+        + ' processed; no extractable text -- drop a text-bearing file or run OCR below.';
     }
   }
+
+  if (documents.length) {
+    statusNode.textContent = 'Running rule engine over ' + documents.length
+      + ' parsed document' + (documents.length === 1 ? '' : 's') + '...';
+  }
+  runAndRender();
+
+  // spec-v52 §4.3.1: if any dropped file is an image or a scanned PDF, offer a
+  // single user-triggered, on-device OCR control. Nothing loads or runs until
+  // the user clicks it (lazy ~9 MB engine; spec-v10 §6 budget). Each OCR'd file
+  // contributes a `kind: 'OCR'` document and the engine re-runs.
+  if (ocrCandidates.length) {
+    renderOcrControl(resultsList, ocrCandidates, documents, runAndRender, statusNode);
+  }
+}
+
+// Render the OCR affordance + wire the on-device OCR run. Kept in the view
+// (browser-only) and dependency-injects window.Tesseract.createWorker into the
+// pure runner from lib/pa/ocr.js.
+function renderOcrControl(resultsList, candidates, documents, runAndRender, statusNode) {
+  const n = candidates.length;
+  const wrap = el('div', { class: 'pa-ocr', role: 'group', 'aria-label': 'On-device OCR' });
+  wrap.appendChild(el('p', { class: 'pa-ocr-note', text:
+    n + ' file' + (n === 1 ? '' : 's') + ' (image or scanned PDF) carr'
+    + (n === 1 ? 'ies' : 'y') + ' no embedded text. Run optical character '
+    + 'recognition on this device to extract it — nothing leaves the tab, no '
+    + 'network, no AI service. The ~9 MB engine downloads once on first use.' }));
+  const btn = el('button', { type: 'button', class: 'pa-ocr-btn',
+    text: 'Run on-device OCR on ' + n + ' file' + (n === 1 ? '' : 's') });
+  const status = el('p', { class: 'pa-ocr-status', role: 'status', 'aria-live': 'polite' });
+  btn.addEventListener('click', async () => {
+    btn.disabled = true;
+    status.textContent = 'Loading the OCR engine (first use only)…';
+    let runner;
+    try {
+      const tesseract = await loadTesseract();
+      runner = createOcrRunner(tesseract.createWorker);
+    } catch (err) {
+      status.textContent = 'Could not load the OCR engine: ' + (err && err.message ? err.message : String(err));
+      btn.disabled = false;
+      return;
+    }
+    let done = 0;
+    for (const c of candidates) {
+      done += 1;
+      status.textContent = 'OCR ' + done + ' of ' + n + ': ' + c.file.name + '…';
+      try {
+        const text = c.kind === 'pdf'
+          ? await ocrScannedPdf(c.file, runner, (p, total) => {
+              status.textContent = 'OCR ' + done + ' of ' + n + ': ' + c.file.name + ' (page ' + p + '/' + total + ')…';
+            })
+          : await runner.recognize(c.file);
+        documents.push(ocrDocument(c.file, c.hash, text));
+      } catch (err) {
+        status.textContent = 'OCR failed for ' + c.file.name + ': ' + (err && err.message ? err.message : String(err));
+      }
+    }
+    try { await runner.terminate(); } catch { /* best effort */ }
+    status.textContent = 'OCR complete — re-running the rule engine over the extracted text.';
+    runAndRender();
+    wrap.setAttribute('data-ocr-done', 'true');
+  });
+  wrap.appendChild(btn);
+  wrap.appendChild(status);
+  resultsList.parentNode.insertBefore(wrap, resultsList.nextSibling);
 }
 
 export const renderers = {
   'pa-lint'(root) {
     root.appendChild(el('p', { class: 'notice', text:
-      'Wave 52-38: drop PDF, DOCX, or TXT files. Sophie hashes each file, '
+      'Wave 52-39: drop PDF, DOCX, or TXT files — or a scanned PDF or image for optional, on-device OCR. Sophie hashes each file, '
       + 'extracts text (pdf.js / mammoth.js, both vendored), classifies '
       + 'each document by role + payer, and runs the complete §4.5.1 '
       + 'core ruleset (60 rules), the complete §4.5.2 CMS Medicare FFS '
@@ -393,8 +525,12 @@ export const renderers = {
       + 'PHI-redacted JSON report (spec-v52 §4.6 / §4.7). All three are '
       + 'built in-tab from the in-memory bundle, and the audit trail now '
       + 'surfaces per-source dataset staleness from the bundled ledger '
-      + '(spec-v52 §8.3). Your packet stays in '
-      + 'this tab; no network, no storage, no AI.' }));
+      + '(spec-v52 §8.3). Scanned PDFs and images carry no embedded text; an '
+      + 'optional, user-triggered on-device OCR path (tesseract.js, vendored, '
+      + 'spec-v52 §4.3.1) converts them to text and re-runs the engine. It loads '
+      + 'the ~9 MB engine on demand and runs entirely in the tab — no network, '
+      + 'no third-party service. Your packet stays in '
+      + 'this tab; no network, no storage, no AI service.' }));
 
     const trust = el('ul', { class: 'pa-trust-strip' });
     for (const line of [
@@ -411,9 +547,9 @@ export const renderers = {
       'aria-label': 'Drop PA packet files here, or activate to choose files',
     });
     dropzone.appendChild(el('p', { class: 'pa-dropzone-headline',
-      text: 'Drop PDF / DOCX / TXT files here, or click to select.' }));
+      text: 'Drop PDF / DOCX / TXT — or a scanned PDF / image — here, or click to select.' }));
     dropzone.appendChild(el('p', { class: 'pa-dropzone-sub',
-      text: 'Per-file ceiling 50 MB; per-packet ceiling 200 MB.' }));
+      text: 'Per-file ceiling 50 MB; per-packet ceiling 200 MB. Scans and images offer on-device OCR.' }));
 
     const picker = el('input', {
       type: 'file',

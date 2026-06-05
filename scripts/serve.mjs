@@ -11,7 +11,7 @@ import { withInlineHashes } from './csp.mjs';
 const ROOT = resolve(fileURLToPath(import.meta.url), '..', '..');
 const PORT = Number(process.env.PORT || 4173);
 
-const CSP_BASE = "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'self'; form-action 'self'; base-uri 'self'; frame-ancestors 'none'; object-src 'none'";
+const CSP_BASE = "default-src 'self'; script-src 'self' 'wasm-unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'self'; form-action 'self'; base-uri 'self'; frame-ancestors 'none'; object-src 'none'";
 
 async function buildCsp() {
   try {

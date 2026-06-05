@@ -175,13 +175,20 @@ thing the AI calls.
   **documentation required by the payer's policy is present and
   on the page**. The clinical adequacy of that documentation is
   the reviewer's call.
-- **Not OCR (in v52).** Scanned PDFs without an embedded text
-  layer return an explicit "this PDF appears to be a scan;
-  please OCR before uploading" notice. A later wave (v52-3 or
-  v53) MAY add a bundled in-browser OCR path (tesseract.js
-  ≈ 11 MB gzipped), but only after the no-OCR experience is
-  proven. v52 ships without OCR to keep the dependency budget
-  honest ([spec-v10](spec-v10.md) §6).
+- **OCR — now shipped, optional and on-device (wave 52-39,
+  §4.3.1).** v52 originally shipped *without* OCR: scanned PDFs
+  with no embedded text returned a "please OCR before uploading"
+  notice, to keep the dependency budget honest until the no-OCR
+  experience was proven ([spec-v10](spec-v10.md) §6). Wave 52-39
+  adds the bundled in-browser OCR path (tesseract.js, vendored,
+  ~9 MB). It stays a *non-goal in the default path*: the ~9 MB
+  engine is **lazy-loaded only when the user clicks "Run on-device
+  OCR"** on a scanned PDF or image, so idle page weight is
+  unchanged. It is **on-device** (no network, no AI service; the
+  image never leaves the tab) and an **input adapter only** — it
+  produces the text a human would otherwise type, and the
+  deterministic rule engine still makes every determination
+  (§4.3.1).
 - **Not telemetry.** No "which payer is most-used" counters, no
   "which rule fires most often" instrumentation, no error
   reporting. [spec-v50](spec-v50.md) §3.5 prohibits it without
@@ -406,6 +413,76 @@ requests. This is verified by the existing
 ([spec-v50](spec-v50.md) §3.1), which v52 extends to fire the
 PA pipeline against a fixture packet and assert zero network
 calls.
+
+### 4.3.1 Optional in-browser OCR (wave 52-39)
+
+A scanned PDF (image-only, no embedded text layer) and a dropped
+image (`image/jpeg`, `image/png`) carry no text for the ingest /
+extract steps to read. v52 originally surfaced a "please OCR
+before uploading" notice (§2). Wave 52-39 adds an **optional,
+user-triggered, fully on-device OCR path** that turns those
+pixels into text and feeds the *same deterministic pipeline*.
+
+**The flow.** When a dropped file is an image, or a PDF whose
+extracted text averages fewer than `OCR_SCAN_CHARS_PER_PAGE` (16)
+non-whitespace characters per page (`lib/pa/ocr.js#looksLikeScan`),
+the results panel renders a single **"Run on-device OCR"** control.
+Nothing loads or runs until the user clicks it. On click the view
+lazy-loads the vendored tesseract.js engine (§5.3), OCRs each
+candidate — an image directly, a scanned PDF by rendering each page
+to a canvas with the already-vendored pdf.js and recognizing it —
+contributes a `kind: 'OCR'` document to the bundle, and **re-runs
+the rule engine** over the now-text-bearing packet.
+
+**Why this is consistent with Sophie's posture.**
+
+1. *Lazy, so the dependency budget is honored
+   ([spec-v10](spec-v10.md) §6).* The ~9 MB engine + language data
+   load **only** on the user's click, from the same-origin
+   `/vendored/tesseract/` directory. Idle page weight, first paint,
+   and the Lighthouse budget are unchanged; the service worker
+   runtime-caches the engine on first use so subsequent OCR is
+   offline.
+2. *On-device, so the privacy / PHI posture holds (§4.7,
+   [spec-v50](spec-v50.md) §3.1).* OCR runs in a Web Worker in the
+   tab. Every asset (engine, worker, WASM core, language data) is
+   same-origin; there is **no network call and no third-party
+   service**. The patient's image never leaves the device — so no
+   BAA obligation is created (§1.4). A Playwright test
+   (`pa-lint-ocr.spec.js`) asserts zero off-origin requests across a
+   full OCR run.
+3. *Not "AI" in the §3.6 sense.* The "no AI" commitment forbids
+   **LLM / cloud-AI vendor dependencies** (the
+   `check-commitments.mjs` deny-list) and any call to such a
+   service. Tesseract is a **local, offline, deterministic
+   text-extraction kernel** — an **input adapter**, the exact "AI
+   as interface, deterministic kernels as substrate" framing of
+   §1.4 read in reverse: OCR replaces the human typist, it does not
+   make the prior-authorization determination. The 60-rule core and
+   the deterministic overlays still do that.
+4. *Determinism (§4.10) is preserved.* OCR output is an *ingest*
+   artifact, upstream of the rule engine. The golden-fixture audit
+   (`scripts/audit-pa.mjs`) feeds the engine TXT fixtures directly,
+   so the "same input bytes → same report bytes" guarantee is
+   unchanged. (OCR itself is deterministic for a pinned engine +
+   language model, but its output is not part of the audited
+   surface.)
+
+**The CSP tradeoff (the design decision).** WebAssembly
+compilation under a Content-Security-Policy requires a `script-src`
+token. `_headers` therefore moves from `script-src 'self'` to
+`script-src 'self' 'wasm-unsafe-eval'`. `'wasm-unsafe-eval'` is the
+**narrowest** token that does the job: it permits *only*
+WebAssembly compilation, **not** general `eval`, **not**
+`'unsafe-inline'`, and **not** any third-party origin. `connect-src
+'self'` — the no-outbound-network promise — is unchanged, and the
+worker + WASM + language data are all same-origin. The "no
+third-party scripts" commitment ([spec-v50](spec-v50.md) §3.2) thus
+still holds in substance: every byte of executable code is
+first-party, served from this origin. `scripts/check-commitments.mjs`
+continues to forbid `'unsafe-inline'`, wildcards, and off-origin
+`script-src` sources; it permits the WASM token, exactly as it
+already anticipated for pdf.js's legacy build.
 
 ### 4.4 Severity model
 
@@ -2428,6 +2505,7 @@ test/
 | `pdf.js` (subset)| PDF text extraction    | ~310 KB        | Apache  | mozilla/pdf.js                             |
 | `mammoth.js`     | DOCX → text            | ~75 KB         | BSD-2   | mwilliamson/mammoth.js                     |
 | `docx.js`        | DOCX generation        | ~140 KB        | MIT     | dolanmiu/docx                              |
+| `tesseract.js` (+ core, tessdata_fast eng) | On-device OCR for scanned PDFs / images (§4.3.1) — **lazy-loaded only on the user's click** | ~9 MB on-demand | Apache | naptha/tesseract.js |
 
 All three are vendored under `vendored/` with a pinned
 upstream commit hash and a `_vendored.md` file recording the
@@ -3355,6 +3433,31 @@ self-contained PR; the catalog count rises only at wave 52-1.
 - Catalog count unchanged (255 tiles). Ruleset rises 755 → 775. Brings
   per-state Medicaid overlays to nine (CA, NY, TX, FL, OH, IL, WA, GA, NC).
 
+### Wave 52-39 — Optional in-browser OCR (2026-06)
+
+- Resolves the §2 OCR non-goal: a bundled, **lazy-loaded,
+  user-triggered, on-device** OCR path (tesseract.js, vendored under
+  `vendored/tesseract/`, ~9 MB loaded only on the user's click)
+  converts a scanned PDF or a dropped image to text and re-runs the
+  deterministic rule engine over it (§4.3.1).
+- `lib/pa/ocr.js`: Node-safe glue — `looksLikeScan`, `isImageFile`,
+  `isOcrCandidate`, `ocrDocument`, and a dependency-injected
+  `createOcrRunner` (the view injects `window.Tesseract.createWorker`;
+  unit tests inject a fake). All engine assets are same-origin
+  (`corePath` / `workerPath` / `langPath` under `/vendored/tesseract/`,
+  `workerBlobURL: false`, `cacheMethod: 'none'`, logger silenced).
+- `views/pa-lint.js`: detects OCR candidates, renders a single
+  "Run on-device OCR" control, lazy-loads the engine, OCRs images
+  directly and scanned PDFs page-by-page (canvas + pdf.js), and
+  re-runs the engine. Findings rows gain a `data-rule` hook.
+- CSP: `script-src` gains the narrow `'wasm-unsafe-eval'` (same-origin
+  WASM only; no general eval, no third-party origin; `connect-src
+  'self'` unchanged) in `_headers`, `index.html`, and `scripts/serve.mjs`.
+- Tests: `test/unit/pa-ocr.test.js` (10 assertions, fake worker) and
+  `test/integration/pa-lint-ocr.spec.js` (real OCR end-to-end +
+  zero-off-origin-request guard). Catalog count unchanged (255);
+  ruleset count unchanged (775 — OCR is an ingest adapter, not a rule).
+
 ### Wave 52-5+ — State Medicaid overlays, additional commercial payers, OCR
 
 - Per-state Medicaid overlays (Medi-Cal / California shipped in wave
@@ -3375,8 +3478,11 @@ self-contained PR; the catalog count rises only at wave 52-1.
   Hawaii in wave 52-29; the remaining independent Blues licensees follow as
   volume warrants).
 - Optional in-browser OCR via tesseract.js (lazy-loaded,
-  user-toggled, ≈ 11 MB gzipped). Only if §2's no-OCR
-  experience proves insufficient.
+  user-toggled, ~9 MB on demand) — **shipped in wave 52-39
+  (§4.3.1, §5.2, §5.3).** The no-OCR experience (a "please OCR
+  before uploading" notice) shipped first; OCR was then added as
+  an opt-in, on-device path that converts scanned PDFs / images to
+  text and re-runs the deterministic engine.
 
 Each wave updates this spec's changelog (below) with the
 ship date, the rule-count delta, and the dataset version.
@@ -3542,6 +3648,27 @@ silently; the audit trail records the disablement.
 
 - 2026-05-27 — v52 proposed. Five waves outlined (52-1 through
   52-5+). Catalog count target at v52-1 close: 255.
+- 2026-06-05 — wave 52-39 (§4.3.1 optional in-browser OCR — resolves the §2 OCR
+  non-goal). Adds a bundled, lazy-loaded, user-triggered, fully on-device OCR
+  path (tesseract.js 5.1.1 + core 5.1.0 + tessdata_fast eng, vendored under
+  `vendored/tesseract/`, ~9 MB loaded only on the user's "Run on-device OCR"
+  click). A scanned PDF (image-only) or a dropped image is OCR'd to text — images
+  directly, scanned PDFs page-by-page via canvas + the vendored pdf.js — and the
+  deterministic rule engine re-runs over the extracted text. New `lib/pa/ocr.js`
+  (Node-safe glue + dependency-injected `createOcrRunner`); `views/pa-lint.js`
+  gains the loader, candidate detection, the OCR control, and a `data-rule` hook
+  on findings rows; `lib/pa/payer.js` etc. unchanged. CSP `script-src` gains the
+  narrow `'wasm-unsafe-eval'` token (same-origin WebAssembly only — not general
+  eval, not third-party; `connect-src 'self'` unchanged) in `_headers`,
+  `index.html`, and `scripts/serve.mjs`; `check-commitments.mjs` already permits
+  it. Posture preserved: on-device, no network, no AI service, image never leaves
+  the tab (no BAA); OCR is an input adapter (§1.4), so the byte-determinism
+  guarantee (§4.10) and the golden-fixture audit are unchanged. /commitments page
+  + `vendored/tesseract/_vendored.md` document the vendored engine and the CSP
+  tradeoff. Tests: +10 unit (`pa-ocr.test.js`, fake worker) and +1 e2e
+  (`pa-lint-ocr.spec.js` — real OCR of an in-page PNG on all three browsers +
+  zero-off-origin guard). Catalog count unchanged (255); ruleset count unchanged
+  (775). View wave banner advanced to 52-39.
 - 2026-06-05 — wave 52-38 (§4.5.38 North Carolina Medicaid — the ninth per-state
   Medicaid overlay, the full 20-rule `R-PA-MCNC-NNN` family, thirty-second
   named-payer overlay overall). Opens a `'medicaid-nc'` payer bucket (anchors
