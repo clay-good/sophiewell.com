@@ -418,7 +418,7 @@ source URL is tracked in
 [pa-staleness-ledger.json](pa-staleness-ledger.json) and re-verified on the
 §4.5.6 maintenance cadence; `npm run lint` fails CI on any ledger ↔ ruleset
 drift, and `scripts/audit-pa.mjs` diffs the full pipeline output against
-forty-five committed golden reports so any rule, extractor, or classifier change
+forty-six committed golden reports so any rule, extractor, or classifier change
 that moves a byte is caught.
 
 **The first real PA-list membership test (`R-PA-OPD-001`, §4.5.2.1).** Until wave

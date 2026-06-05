@@ -9844,10 +9844,10 @@
         },
         {
           "id": "cms-pos",
-          "label": "CMS Place of Service (POS) code set",
+          "label": "CMS Place of Service (POS) code set (complete assigned set, incl. telehealth POS 02 / 10 and POS 27)",
           "url": "https://www.cms.gov/medicare/coding-billing/place-of-service-codes/code-sets",
           "ruleFamily": "core",
-          "lastVerified": "2026-05-28"
+          "lastVerified": "2026-06-05"
         },
         {
           "id": "cms-ncci",

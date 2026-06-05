@@ -1,0 +1,25 @@
+{
+  "name": "telehealth-pos10",
+  "description": "Synthetic telehealth packet furnished in the patient's home (Place of Service 10, added to the CMS POS code set 2022-01-01). Regression coverage for R-PA-013: before wave 52-46 the bundled POS list omitted 01-10, so a legitimate telehealth packet was FALSELY blocked with 'POS code not on bundled CMS list'. With the complete CMS POS set bundled, POS 10 is valid and R-PA-013 passes. The packet is otherwise a well-formed, complete submission (like happy-path), so the core ruleset mostly passes; this fixture exists to pin the telehealth POS behavior end to end.",
+  "opts": { "totalBytes": 20480 },
+  "documents": [
+    {
+      "name": "pa-form.txt",
+      "sha256": "fixture-telehealth-form",
+      "kind": "TXT",
+      "text": "PA Cover sheet\nPrior Authorization Request Form\nPatient: Sam R Lee\nDOB: 1990-07-22\nMember ID: W987654321\nDate of service: 2026-05-20\nPlace of service: 10\nVisit modality: telehealth provided in the patient's home (audio-video).\nProcedure 99214 telehealth evaluation and management\nQuantity: 1\nDuration: 6 months requested.\nFrequency: monthly\nDx: F41.1 generalized anxiety disorder\nOrdering provider NPI: 1234567893\nServicing facility NPI: 1306849393\nTIN: 123456789\nStep therapy: trial of sertraline completed without adequate response.\nLab results attached.\nSignature: Sam Lee MD, 2026-05-20\n"
+    },
+    {
+      "name": "note.txt",
+      "sha256": "fixture-telehealth-note",
+      "kind": "TXT",
+      "text": "Clinical note\nChief complaint: anxiety follow-up via telehealth\nHistory of present illness: stable on sertraline; telehealth visit conducted over a synchronous audio-video connection with the patient at home.\nAssessment and plan: continue 99214-level telehealth visit, monthly follow-up.\nMedical necessity: ongoing management of generalized anxiety disorder.\nActive medications: sertraline 50 mg daily.\nAllergies: NKDA.\nWeight: 68 kg. Height: 170 cm.\nNote date: 2026-05-20\nSigned: Sam Lee MD, 2026-05-20\n"
+    },
+    {
+      "name": "lab.txt",
+      "sha256": "fixture-telehealth-lab",
+      "kind": "TXT",
+      "text": "Laboratory report\nCollection date: 2026-05-10\nReference range: 0.4-4.0 mIU/L\nResult: 2.1 mIU/L\n"
+    }
+  ]
+}

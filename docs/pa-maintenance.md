@@ -391,6 +391,17 @@ same pass. This is the template the deferred per-overlay `-004` lists follow as
 each payer's prior-authorization list is bundled in a later wave (until then those
 rules pass vacuously with a pointer, mirroring core `R-PA-053`).
 
+The same two-step re-verification applies to the bundled **code-validity** sets in
+`lib/pa/extract.js` — most importantly `POS_CODES_BUNDLED` (ledger source
+`cms-pos`, rule `R-PA-013`, `block` severity). CMS adds Place-of-Service codes
+over time (POS 10 for in-home telehealth in 2022, POS 27 for outreach/street in
+2023); because `R-PA-013` **blocks** any POS not in the set, an out-of-date set
+*false-blocks valid packets* (this is exactly what wave 52-46 fixed — the shipped
+sample omitted POS 01–10 and 16 / 18 / 27, so telehealth packets were wrongly
+blocked). When re-verifying `cms-pos`, diff `POS_CODES_BUNDLED` against the CMS
+Place of Service Code Set page and add any newly assigned codes; keep the
+unassigned gaps out so the rule still catches a genuinely invalid code.
+
 ## The refresh helper: `scripts/refresh-pa-rules.mjs` (wave 52-6i)
 
 Automates the mechanical half of the monthly verification pass. It fetches

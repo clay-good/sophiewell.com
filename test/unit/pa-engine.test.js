@@ -144,6 +144,32 @@ test('STARTER_RULES at wave 52-45 is 876 rules (135 §4.5 core/overlay/specialty
   assert.equal(STARTER_RULES.length, 876);
 });
 
+// ---- wave 52-46: complete CMS Place-of-Service code set (R-PA-013) ----
+// Regression guard for the false-positive `block`: before wave 52-46 the bundled
+// POS list omitted 01-10 (and 16 / 18 / 27), so a legitimate telehealth packet
+// (POS 02 / 10) was wrongly blocked. The complete CMS POS set now accepts every
+// assigned code; a genuinely unassigned code (88) still blocks.
+function pos013(text) {
+  const bundle = buildBundle([{ name: 'f.txt', sha256: 'x', kind: 'TXT', text }], {});
+  return runEngine(bundle).find((x) => x.ruleId === 'R-PA-013').status;
+}
+
+test('R-PA-013 accepts the telehealth POS codes (02 / 10) that were previously false-blocked', () => {
+  assert.equal(pos013('Place of service: 02\nProcedure 99214'), 'pass');
+  assert.equal(pos013('Place of service: 10\nProcedure 99214'), 'pass');
+});
+
+test('R-PA-013 accepts the rest of the previously-missing assigned POS codes (01, 03-09, 16, 18, 27)', () => {
+  for (const p of ['01', '03', '04', '05', '06', '07', '08', '09', '16', '18', '27']) {
+    assert.equal(pos013('Place of service: ' + p + '\nProcedure 99214'), 'pass', 'POS ' + p + ' should be valid');
+  }
+});
+
+test('R-PA-013 still blocks a genuinely unassigned POS code (88) and a missing POS line', () => {
+  assert.equal(pos013('Place of service: 88\nProcedure 99214'), 'block');
+  assert.equal(pos013('Procedure 99214 with no place-of-service line'), 'block');
+});
+
 // ---- wave 52-45: CMS Hospital OPD Prior Authorization membership test (§4.5.2.1) ----
 // The first REAL bundled PA-list membership test (R-PA-OPD-001). Builds a
 // single-document Medicare FFS bundle for each case and asserts the rule's

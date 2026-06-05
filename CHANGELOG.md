@@ -6,6 +6,33 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Fixed (spec-v52 wave 52-46 — complete the CMS Place-of-Service code set; `R-PA-013` false-block on telehealth and other valid POS codes)
+
+`R-PA-013` ("place-of-service code present and on the bundled CMS list",
+**`block`** severity) tested POS codes against `POS_CODES_BUNDLED` in
+`lib/pa/extract.js`, which shipped an incomplete *sample* — it omitted the entire
+`01`–`10` range plus `16` / `18` / `27`. A legitimate prior-auth packet in the
+most common modern care settings was therefore **falsely blocked** with "POS
+code(s) not on bundled CMS list", most importantly:
+
+- **Telehealth** — POS `02` (telehealth other than in the patient's home) and POS
+  `10` (telehealth in the patient's home, added to the CMS set 2022-01-01).
+- Pharmacy (`01`), school (`03`), homeless shelter (`04`), the Indian Health
+  Service / Tribal 638 facilities (`05`–`08`), prison / correctional (`09`),
+  temporary lodging (`16`), place of employment-worksite (`18`), and outreach
+  site / street (`27`, added 2023-10-01).
+
+Fix: `POS_CODES_BUNDLED` now holds the **complete CMS assigned POS set** (51
+codes). The unassigned / reserved numbers in the gaps remain absent, so
+`R-PA-013` still blocks a genuinely invalid code (`88`, exercised by the
+`bad-pos` golden). New golden fixture `telehealth-pos10` (a POS 10 telehealth
+behavioral-health packet that now clears `R-PA-013`); three unit tests pin the
+telehealth codes, the rest of the previously-missing assigned codes, and the
+still-blocked invalid / missing cases. The `cms-pos` staleness-ledger source was
+re-verified against the CMS POS code set page (`lastVerified` bumped). Ruleset
+count unchanged (876 — this completes bundled data, it does not add a rule);
+catalog unchanged (255 tiles). 46 golden fixtures.
+
 ### Added (spec-v52 wave 52-45 — §4.5.2.1 CMS Hospital OPD Prior Authorization: the first real bundled PA-list membership test)
 
 A different kind of wave: not another payer overlay, but the linter's **first

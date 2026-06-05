@@ -3755,6 +3755,31 @@ self-contained PR; the catalog count rises only at wave 52-1.
   hospital-outpatient vein-ablation packet without a UTN.
 - Catalog count unchanged (255 tiles). Ruleset rises 875 → 876.
 
+### Wave 52-46 — Complete the CMS Place-of-Service code set (R-PA-013 false-block fix) (2026-06)
+
+- Bug fix, not a new rule. `R-PA-013` ("place-of-service code present and on the
+  bundled CMS list", `block` severity) tested POS codes against
+  `POS_CODES_BUNDLED` in `lib/pa/extract.js`, which shipped an incomplete
+  *sample* — it omitted the entire `01`–`10` range plus `16` / `18` / `27`. A
+  legitimate packet in the most common modern settings was therefore **falsely
+  blocked**, most importantly **telehealth** (POS `02` other-than-home and POS
+  `10` in-the-home, the latter added by CMS 2022-01-01), plus pharmacy (`01`),
+  school (`03`), homeless shelter (`04`), Indian Health Service / Tribal 638
+  facilities (`05`–`08`), prison / correctional (`09`), temporary lodging (`16`),
+  place of employment (`18`), and outreach site / street (`27`, added
+  2023-10-01).
+- `POS_CODES_BUNDLED` now holds the complete CMS assigned POS set (51 codes). The
+  unassigned / reserved numbers in the gaps stay absent, so `R-PA-013` still
+  blocks a genuinely invalid code (`88`, exercised by the `bad-pos` fixture).
+  This makes the §13.x data-sources claim ("POS codes … shipped in full") true.
+- New golden fixture `telehealth-pos10` (46 fixtures total) — a POS 10 telehealth
+  behavioral-health packet that now clears `R-PA-013`. Three unit tests pin the
+  telehealth codes, the rest of the previously-missing assigned codes, and the
+  still-blocked invalid `88` / missing-POS cases. The `cms-pos` ledger source's
+  `lastVerified` was bumped (re-verified against the CMS POS code set page).
+- Catalog count unchanged (255 tiles). Ruleset count unchanged (876 — completing
+  bundled data, not adding a rule).
+
 ### Wave 52-5+ — State Medicaid overlays, additional commercial payers, OCR
 
 - Per-state Medicaid overlays (Medi-Cal / California shipped in wave
@@ -3949,6 +3974,17 @@ silently; the audit trail records the disablement.
 
 - 2026-05-27 — v52 proposed. Five waves outlined (52-1 through
   52-5+). Catalog count target at v52-1 close: 255.
+- 2026-06-05 — wave 52-46 (complete the CMS Place-of-Service code set;
+  `R-PA-013` false-block fix). `POS_CODES_BUNDLED` (`lib/pa/extract.js`) shipped
+  an incomplete sample that omitted `01`–`10` and `16` / `18` / `27`, so the
+  `block`-severity `R-PA-013` falsely blocked legitimate packets in the most
+  common modern settings — telehealth (POS `02` / `10`), pharmacy, school, IHS /
+  Tribal 638, prison, temporary lodging, place of employment, outreach site.
+  Completed to the full CMS assigned set (51 codes); the unassigned gaps stay out
+  so a genuinely invalid code (`88`) still blocks. New golden fixture
+  `telehealth-pos10` (46 fixtures); three unit tests; `cms-pos` ledger
+  `lastVerified` bumped. Ruleset count unchanged (876 — bundled-data completion,
+  not a new rule). Catalog unchanged (255).
 - 2026-06-05 — wave 52-45 (§4.5.2.1 CMS Hospital OPD Prior Authorization — the
   first real bundled prior-authorization-list membership test, flipping the
   `-004` archetype from vacuous to a genuine CPT-membership check). New bundled

@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `ead73c102c86ea24`
-Generated: 2026-06-05T20:52:07.130Z
+Build ID: `9f350827b384b66f`
+Generated: 2026-06-05T21:20:40.545Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=20.18.1 <21, npm >=10.0.0
@@ -63,14 +63,14 @@ downloads is committed in this repository and is hashed below.
 | `lib/pa/date.js` | 3183 | `797ce4bc2a6f7807b076f4660fa6ade69d29e0ae984ef43f20b60dafd5ad4d14` |
 | `lib/pa/docx.js` | 12768 | `6a1fe3cfd40a10b0ab50d37cf55cb11796e0e5385ee56101faed12b61894931f` |
 | `lib/pa/engine.js` | 6446 | `3b054765c7e2064de823ae7b0f32ba22e8d58aebd7df4be04c7a151a0401ebf6` |
-| `lib/pa/extract.js` | 12462 | `aae964461e8b77c8fb90bc8c2949a247754dd3feeec555a76c762b019b9d1616` |
+| `lib/pa/extract.js` | 13410 | `9dcadbb5e6036304595d4d045ee8aac75e9d50fa0f9baca105b68816fd728aa4` |
 | `lib/pa/ocr.js` | 5131 | `0626ff42c66c7a41c9a25b8f9ab7bb019bcd4eacd21024c1835dec7498661bd6` |
 | `lib/pa/payer.js` | 45527 | `04c771304adaff21e171854ccb5da5602a6f4d54ad0b3684bb0bb03b3bfe3a1d` |
 | `lib/pa/redact.js` | 6356 | `bb924c4bae0ddbc70e23786f5e594b2e4492d6196769947a607132f494495ce4` |
 | `lib/pa/report.js` | 9684 | `7f0d42557ada83b28106a053d983a54f6b0a4e10465ead58eda5f6786e2d0451` |
 | `lib/pa/rule-sources.js` | 8399 | `6b12a7f0cca1e5c50dc023dc058eb8511c0573a935d9bb109439343bddcfd021` |
 | `lib/pa/rules.js` | 1598371 | `f2fad9d05f907e97f10093a47b29cde71b6f23af5a65334efeeb362741d6c162` |
-| `lib/pa/staleness-ledger.js` | 23474 | `5d0a0989d14a16e3ea504735b633f0b06183767116a7660b256ea36234d5fae8` |
+| `lib/pa/staleness-ledger.js` | 23539 | `bcd9b803e6cd985321df09dea32d47aff67b941b9cef21811df71dac581c6919` |
 | `lib/pa/staleness.js` | 9310 | `99249cde34d35bb57ea644fced966019d1373b34f792f1ea9b42b586b94454df` |
 | `lib/print.js` | 2588 | `74579a71f82b75993dea9f7d9b3c21e67744bd4dbe6f50e20c8eef9aa1be7546` |
 | `lib/prompt.js` | 6872 | `95ee9b9de5adbafd1497f378993e27d29c9f437bfc9ddc304886fd75e80fffd4` |
