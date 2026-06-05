@@ -2161,9 +2161,30 @@ staleness ledger (§8.3, source `il-medicaid-precert`). `R-PA-MCIL-004` mirrors
 core `R-PA-053`: it ships without a bundled prior-authorization list and
 vacuously passes with a pointer until a later wave bundles the list. With six
 state Medicaid programs shipped (California, New York, Texas, Florida, Ohio,
-Illinois — six of the largest by enrollment), the remaining §9 wave 52-5+
-candidates are additional state Medicaid programs, the other Blues plans by
-state, and the optional in-browser OCR path as user-volume data warrants.
+Illinois — six of the largest by enrollment), Washington opened in wave 52-36
+(§4.5.36).
+
+#### 4.5.36 Per-state Medicaid overlays — Washington Apple Health (wave 52-36)
+
+The seventh per-state Medicaid overlay (after California, New York, Texas,
+Florida, Ohio, and Illinois), and the thirtieth named-payer overlay overall.
+**Washington** brands its Medicaid program as **Apple Health**; the Health Care
+Authority (HCA) runs it and **ProviderOne** is the provider portal. It is
+detected by a per-state bucket (`'medicaid-wa'`, anchors `washington apple
+health` / `apple health` / `washington medicaid` / `washington state health care
+administration`) placed before the generic `'medicaid'` bucket, and composes with
+the §4.5.4 Medicaid core through `isMedicaid(bundle.payer)`. An explicit "Medicare
+Advantage" string still wins the MA bucket earlier.
+
+The 20 Washington rules (`R-PA-MCWA-NNN`) mirror the established families with the
+two Medicaid reframings (transplant → Medicaid-designated transplant center;
+appeal → state fair hearing) and Washington routing names (the ProviderOne portal
+for submission). Each rule self-gates on `bundle.payer === 'medicaid-wa'` and
+returns a vacuous pass on every other packet. Every rule is anchored to a public
+Washington Apple Health (HCA) provider URL tracked in the staleness ledger (§8.3,
+source `wa-medicaid-precert`). `R-PA-MCWA-004` mirrors core `R-PA-053`: it ships
+without a bundled prior-authorization list and vacuously passes with a pointer
+until a later wave bundles the list.
 
 ### 4.6 The DOCX report
 
@@ -3250,6 +3271,18 @@ self-contained PR; the catalog count rises only at wave 52-1.
 - Catalog count unchanged (255 tiles). Ruleset rises 695 → 715. Brings
   per-state Medicaid overlays to six (CA, NY, TX, FL, OH, IL).
 
+### Wave 52-36 — Washington Apple Health (Medicaid) overlay (2026-06)
+
+- The 20 Washington rules (§4.5.36), the `R-PA-MCWA-NNN` family, anchored
+  to the Washington HCA / ProviderOne provider pages (ledger source
+  `wa-medicaid-precert`).
+- A `'medicaid-wa'` payer bucket (anchors `washington apple health` /
+  `apple health` / `washington medicaid` / `washington state health care
+  authority`) before the generic `'medicaid'` bucket; composes with the
+  §4.5.4 Medicaid core via `isMedicaid()`. Transplant / appeal reframed.
+- Catalog count unchanged (255 tiles). Ruleset rises 715 → 735. Brings
+  per-state Medicaid overlays to seven (CA, NY, TX, FL, OH, IL, WA).
+
 ### Wave 52-5+ — State Medicaid overlays, additional commercial payers, OCR
 
 - Per-state Medicaid overlays (Medi-Cal / California shipped in wave
@@ -3437,6 +3470,19 @@ silently; the audit trail records the disablement.
 
 - 2026-05-27 — v52 proposed. Five waves outlined (52-1 through
   52-5+). Catalog count target at v52-1 close: 255.
+- 2026-06-05 — wave 52-36 (§4.5.36 Washington Apple Health / Medicaid — the
+  seventh per-state Medicaid overlay, the full 20-rule `R-PA-MCWA-NNN` family,
+  thirtieth named-payer overlay overall). Opens a `'medicaid-wa'` payer bucket
+  (anchors `washington apple health` / `apple health` / `washington medicaid` /
+  `washington state health care authority`) before the generic `'medicaid'`
+  bucket; composes with the §4.5.4 Medicaid core via `isMedicaid()`. Transplant
+  (017) and appeal (019) reframed for Medicaid; ProviderOne routing. Each
+  self-gates on `bundle.payer === 'medicaid-wa'`. New ledger source
+  `wa-medicaid-precert`. Coverage now 735 rules shipped (was 715), 687
+  source-anchored (was 667), 45 sources (was 44), 0 orphans, 0 gaps. New
+  `wa-medicaid-precert` golden fixture (Medicaid core all pass, MCWA-009 flag).
+  Tests: +5 engine assertions and +1 classify assertion. e2e count 715 -> 735.
+  Catalog unchanged (255). View wave banner advanced to 52-36.
 - 2026-06-05 — wave 52-35 (§4.5.35 Illinois Medicaid — the sixth per-state
   Medicaid overlay, the full 20-rule `R-PA-MCIL-NNN` family, twenty-ninth
   named-payer overlay overall). Opens a `'medicaid-il'` payer bucket (anchors

@@ -357,6 +357,14 @@
       "rules": ["R-PA-MCIL-001", "R-PA-MCIL-002"],
       "url": "https://hfs.illinois.gov/medicalproviders.html",
       "lastVerified": "2026-06-05"
+    },
+    {
+      "id": "wa-medicaid-precert",
+      "label": "Washington Apple Health / Medicaid (Health Care Authority / ProviderOne) prior-authorization requirements, provider manuals, and utilization-management / pharmacy program requirements",
+      "ruleFamily": "medicaid-wa",
+      "rules": ["R-PA-MCWA-001", "R-PA-MCWA-002"],
+      "url": "https://www.hca.wa.gov/billers-providers-partners",
+      "lastVerified": "2026-06-05"
     }
   ],
   "acknowledgments": []

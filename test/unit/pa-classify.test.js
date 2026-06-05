@@ -401,6 +401,13 @@ test('detectPayer: Illinois Medicaid routes to its own per-state bucket, distinc
   assert.equal(detectPayer('Illinois Medicaid Medicare Advantage dual plan'), 'cms-medicare-advantage');
 });
 
+test('detectPayer: Washington Apple Health (Medicaid) routes to its own per-state bucket (wave 52-36)', () => {
+  assert.equal(detectPayer('Washington Apple Health managed care'), 'medicaid-wa');
+  assert.equal(detectPayer('Washington Medicaid via ProviderOne'), 'medicaid-wa');
+  assert.equal(detectPayer('state Medicaid managed care'), 'medicaid');
+  assert.equal(detectPayer('Washington Apple Health Medicare Advantage dual plan'), 'cms-medicare-advantage');
+});
+
 test('detectPayer: unknown for empty / non-payer text', () => {
   assert.equal(detectPayer(''), 'unknown');
   assert.equal(detectPayer('this packet has no payer letterhead'), 'unknown');

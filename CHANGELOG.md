@@ -6,6 +6,31 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v52 wave 52-36 — §4.5.36 Washington Apple Health (Medicaid) per-state overlay, 20 of 20)
+
+The seventh per-state Medicaid overlay (after California, New York, Texas,
+Florida, Ohio, and Illinois), and the thirtieth named-payer overlay overall. The
+full 20-rule `R-PA-MCWA-NNN` family is anchored to Washington's public Apple
+Health / Health Care Authority (HCA) / ProviderOne provider pages (new ledger
+source `wa-medicaid-precert`). Washington brands its Medicaid program as Apple
+Health.
+
+A new `'medicaid-wa'` payer bucket (anchors `washington apple health` / `apple
+health` / `washington medicaid` / `washington state health care authority`) is
+placed before the generic `'medicaid'` bucket and composes with the §4.5.4
+Medicaid core via `isMedicaid()`. The 20 rules mirror the established families
+with the Medicaid reframings (transplant → Medicaid-designated transplant center;
+appeal → state fair hearing) and Washington ProviderOne routing. Each rule
+self-gates on `bundle.payer === 'medicaid-wa'` and vacuously passes on every other
+packet.
+
+Coverage is now 735 rules shipped (was 715), 687 source-anchored (was 667), 45
+sources (was 44), 0 ledger orphans, 0 coverage gaps. A new `wa-medicaid-precert`
+golden fixture (Medicaid core all pass, MCWA-009 site-of-care flag) re-seeds
+deterministically; all thirty-seven goldens re-seeded. Tests: +5 engine
+assertions and +1 classify assertion. e2e pa-lint rule count 715 -> 735. Catalog
+count unchanged (255 tiles). The PA tile's wave banner advances to 52-36.
+
 ### Added (spec-v52 wave 52-35 — §4.5.35 Illinois Medicaid per-state overlay, 20 of 20)
 
 The sixth per-state Medicaid overlay (after California, New York, Texas, Florida,
