@@ -254,7 +254,8 @@ deterministic findings report. It checks the *procedural completeness* of a
 prior-authorization packet — is the member ID present, is the ordering NPI
 Luhn-valid, is a clinical note attached, does an inpatient Aetna,
 UnitedHealthcare, Anthem, Cigna, Humana, HCSC, Highmark, Florida Blue, BCBSM,
-Blue Shield of California, or Independence Blue Cross request carry a discharge plan — **not** clinical
+Blue Shield of California, Independence Blue Cross, CareFirst, Blue Cross NC, or
+Horizon request carry a discharge plan — **not** clinical
 coverage criteria, which are the reviewer's judgment.
 Everything runs in the browser; the packet never leaves the tab.
 
@@ -277,8 +278,9 @@ what makes the golden-fixture CI gate possible.
  ┌──────────────┐   lib/pa/payer.js → one bucket: cms-medicare-ffs |
  │ detect payer │     cms-medicare-advantage | medicaid | aetna | uhc | anthem |
  └──────┬───────┘     cigna | humana | hcsc | highmark | florida-blue | bcbsm |
-        ▼                         blue-shield-ca | ibx | commercial | unknown
- ┌──────────────┐   lib/pa/rules.js → 355 rules, each a pure check(bundle).
+        ▼               blue-shield-ca | ibx | carefirst | bcbsnc | horizon |
+        ▼                                            commercial | unknown
+ ┌──────────────┐   lib/pa/rules.js → 415 rules, each a pure check(bundle).
  │  run engine  │   Overlay rules self-gate on the detected payer and
  └──────┬───────┘   vacuously pass off-bucket.
         ▼
@@ -291,7 +293,7 @@ Severities follow spec-v52 §4.4: `block` (packet cannot be reviewed as-is),
 `flag` (likely denial / RFI), `info` (nice-to-have), `pass`. A finding never
 guarantees an approval or a denial — it reports only what the ruleset checks.
 
-### Ruleset at a glance (355 rules)
+### Ruleset at a glance (415 rules)
 
 | Family            | Count | Scope                                                        | Ledger source              |
 |-------------------|-------|--------------------------------------------------------------|----------------------------|
@@ -315,11 +317,15 @@ guarantees an approval or a denial — it reports only what the ruleset checks.
 | `R-PA-BCBSM-NNN` | 20  | §4.5.15 BCBSM / Blue Cross Blue Shield of Michigan (+ Blue Care Network) — the ninth named-payer set | `bcbsm-precert` |
 | `R-PA-BSCA-NNN` | 20  | §4.5.16 Blue Shield of California — the tenth named-payer set | `blueshieldca-precert` |
 | `R-PA-IBX-NNN` | 20  | §4.5.17 Independence Blue Cross (southeastern PA / Philadelphia) — the eleventh named-payer set | `ibx-precert` |
+| `R-PA-CAREFIRST-NNN` | 20 | §4.5.18 CareFirst BlueCross BlueShield (MD / DC / Northern VA) — the twelfth named-payer set | `carefirst-precert` |
+| `R-PA-BCBSNC-NNN` | 20 | §4.5.19 Blue Cross Blue Shield of North Carolina (Blue Cross NC) — the thirteenth named-payer set | `bcbsnc-precert` |
+| `R-PA-HORIZON-NNN` | 20 | §4.5.20 Horizon Blue Cross Blue Shield of New Jersey — the fourteenth named-payer set | `horizon-precert` |
 
-The eleven commercial overlays (§4.5.7 Aetna, §4.5.8 UnitedHealthcare, §4.5.9
+The fourteen commercial overlays (§4.5.7 Aetna, §4.5.8 UnitedHealthcare, §4.5.9
 Anthem, §4.5.10 Cigna, §4.5.11 Humana, §4.5.12 HCSC, §4.5.13 Highmark, §4.5.14
 Florida Blue, §4.5.15 BCBSM, §4.5.16 Blue Shield of California, §4.5.17
-Independence Blue Cross) are each keyed to a single named payer and ship 20 rules
+Independence Blue Cross, §4.5.18 CareFirst, §4.5.19 Blue Cross NC, §4.5.20
+Horizon) are each keyed to a single named payer and ship 20 rules
 apiece. They are deliberately structurally parallel — same families, same
 severities — so a packet linted under any one payer is auditable against the
 others. The payer-specific routing names differ where each payer actually differs
@@ -331,18 +337,22 @@ Highmark's Availity / Provider Resource Center / Blue Distinction Centers; Flori
 Blue's Availity / provider portal / Blue Distinction Centers; BCBSM's Availity /
 Blue Care Network / Blue Distinction Centers; Blue Shield of California's Availity
 / provider connection / Blue Distinction Centers; Independence Blue Cross's
-Availity / PEAR portal / Blue Distinction Centers — both Humana's and HCSC's
+Availity / PEAR portal / Blue Distinction Centers; CareFirst's CareFirst Direct /
+iEXchange / Blue Distinction Centers; Blue Cross NC's Blue e / Availity / Blue
+Distinction Centers; Horizon's NaviNet / Availity / Blue Distinction Centers —
+both Humana's and HCSC's
 imaging programs are named generically since the vendor names collide with a
 barred AI-vendor substring, spec-v50 §3.6). The first five are the largest
 commercial / MA plans by national PA volume; HCSC, Highmark, Florida Blue, BCBSM,
-Blue Shield of California, and Independence Blue Cross are the six largest
-independent Blue Cross Blue Shield licensees and the first of the §9 "Blues plans
-by state" candidates. Two same-state pairs are deliberately disambiguated by
-precedence: Blue Shield of California vs. Anthem Blue Cross of California, and
-Independence Blue Cross (southeastern PA) vs. Highmark (western PA) — in each
-case the `anthem` / `highmark` bucket is checked first:
+Blue Shield of California, Independence Blue Cross, CareFirst, Blue Cross NC, and
+Horizon are the nine largest independent Blue Cross Blue Shield licensees and the
+first of the §9 "Blues plans by state" candidates. Two same-state pairs are
+deliberately disambiguated by precedence: Blue Shield of California vs. Anthem
+Blue Cross of California, and Independence Blue Cross (southeastern PA) vs.
+Highmark (western PA) — in each case the `anthem` / `highmark` bucket is checked
+first:
 
-| Rules     | Aetna / UHC / Anthem / Cigna / Humana / HCSC / Highmark / Florida Blue / BCBSM / Blue Shield of CA / IBX |
+| Rules     | Aetna / UHC / Anthem / Cigna / Humana / HCSC / Highmark / Florida Blue / BCBSM / Blue Shield of CA / IBX / CareFirst / Blue Cross NC / Horizon |
 |-----------|-------------------------------------------------------------------------|
 | 001–005   | Coverage criteria, supporting records, submission channel, prior-auth-list stub, questionnaire / advance notification / auth-before-service |
 | 006–010   | Review *modes*: concurrent / continued-stay, advanced-imaging site-of-care, expedited urgency, objective evidence / surgery site-of-care, J-code NDC |
@@ -350,14 +360,14 @@ case the `anthem` / `highmark` bucket is checked first:
 | 016–020   | DME or behavioral-health LOC, transplant Centers-of-Excellence / Blue Distinction routing, experimental-service evidence, appeal reference, out-of-network gap |
 
 Every overlay rule self-gates on `bundle.payer === '<payer>'` and vacuously
-passes on any other packet, so the 135 non-commercial rules and the eleven
+passes on any other packet, so the 135 non-commercial rules and the fourteen
 20-rule commercial overlays coexist without false positives — a Medicare FFS
 packet never trips a Humana rule, and vice versa. Each rule's
 source URL is tracked in
 [pa-staleness-ledger.json](pa-staleness-ledger.json) and re-verified on the
 §4.5.6 maintenance cadence; `npm run lint` fails CI on any ledger ↔ ruleset
 drift, and `scripts/audit-pa.mjs` diffs the full pipeline output against
-eighteen committed golden reports so any rule, extractor, or classifier change
+twenty-one committed golden reports so any rule, extractor, or classifier change
 that moves a byte is caught.
 
 **Payer detection is first-match-wins, in a deliberate order.** The buckets
@@ -380,20 +390,26 @@ anchor hit. This is the cheat sheet:
 12. bcbsm                    "blue cross [and] blue shield of michigan", "bcbsm", "blue care network"
 13. blue-shield-ca           "blue shield of california", "blue shield of ca"
 14. ibx                      "independence blue cross", "independence administrators", "ibx"
-15. commercial               "blue cross", "blue shield", "kaiser", "tricare"
-16. unknown                  (no anchor hit)
+15. carefirst                "carefirst", "care first"
+16. bcbsnc                   "blue cross [and] blue shield of north carolina", "blue cross nc", "bcbsnc"
+17. horizon                  "horizon blue cross", "horizon bcbs", "horizon healthcare services"
+18. commercial               "blue cross", "blue shield", "kaiser", "tricare"
+19. unknown                  (no anchor hit)
 ```
 
 Government lines of business win first so an MA or Medicaid packet never routes
 to a commercial overlay on a stray brand string. The named-commercial buckets
-(4–14) sit above the generic `commercial` fall-through (15) and match only
+(4–17) sit above the generic `commercial` fall-through (18) and match only
 *unambiguous* anchors, so independent Blues licensees that aren't yet modeled
-(CareFirst, Horizon BCBS NJ, Premera, Regence, Excellus) stay in `commercial`
+(Premera, Regence, Wellmark, Excellus, Capital BlueCross) stay in `commercial`
 rather than being misrouted. Two same-state pairs are disambiguated purely by
 order: `anthem` (bucket 6) is checked before `blue-shield-ca` (13), so "Anthem
 Blue Cross of California" routes to Anthem, not Blue Shield of California; and
 `highmark` (10) is checked before `ibx` (14), so a western-Pennsylvania Highmark
 packet never routes to the Philadelphia-region Independence Blue Cross overlay.
+Horizon's `'horizon'` bucket (17) matches only the disambiguated brand anchors
+(`horizon blue cross` / `horizon bcbs` / `horizon healthcare services`), never
+the bare common word `horizon`.
 A per-packet majority vote
 (`detectPacketPayer`) aggregates multi-document bundles, with ties broken by
 this same order.
@@ -404,7 +420,7 @@ packet always yields the same report; this is what makes a golden-fixture CI
 gate possible and is the opposite of the LLM-on-top-of-rules direction the
 PA-automation SaaS vendors took (spec-v52 §1.1). (2) *Self-gating overlays* —
 adding a payer is additive: a new bucket plus a prefix → ledger-source map,
-never an edit to an existing rule, so the 355-rule set grows without
+never an edit to an existing rule, so the 415-rule set grows without
 regression risk. (3) *Procedural completeness only* — the linter never
 asserts medical necessity; it checks whether the mechanically-detectable
 pieces a reviewer needs are present, which keeps it on the right side of the
@@ -522,10 +538,10 @@ build, integrity-verified data shards) are documented in
   healthcare worker would otherwise reach for MDCalc to find,
   shipped slowly at the v11 quality bar
 - [docs/spec-v52.md](docs/spec-v52.md) — the `pa-lint` prior-auth packet
-  linter: pipeline, the 355-rule ruleset, payer overlays (Aetna +
+  linter: pipeline, the 415-rule ruleset, payer overlays (Aetna +
   UnitedHealthcare + Anthem + Cigna + Humana + HCSC + Highmark + Florida Blue +
-  BCBSM + Blue Shield of California + Independence Blue Cross), and the
-  byte-determinism / golden-fixture guarantee
+  BCBSM + Blue Shield of California + Independence Blue Cross + CareFirst +
+  Blue Cross NC + Horizon), and the byte-determinism / golden-fixture guarantee
 - [docs/architecture.md](docs/architecture.md) — runtime architecture,
   data flow, no-backend rationale
 - [docs/data-sources.md](docs/data-sources.md) — every bundled dataset

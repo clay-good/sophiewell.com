@@ -178,6 +178,16 @@ anchored to the plan's public provider authorizations pages, Medical Policies,
 and utilization-management / pharmacy program requirements); the eleventh is
 Independence Blue Cross (`R-PA-IBX-NNN`, ledger source `ibx-precert`, anchored to
 the plan's public provider authorizations pages, Medical Policies, and
+utilization-management / pharmacy program requirements); the twelfth is CareFirst
+BlueCross BlueShield (`R-PA-CAREFIRST-NNN`, ledger source `carefirst-precert`,
+anchored to the plan's public provider preauthorization pages, Medical Policies,
+and utilization-management / pharmacy program requirements); the thirteenth is
+Blue Cross Blue Shield of North Carolina (`R-PA-BCBSNC-NNN`, ledger source
+`bcbsnc-precert`, anchored to the plan's public provider prior-authorization
+pages, Medical Policies, and utilization-management / pharmacy program
+requirements); the fourteenth is Horizon Blue Cross Blue Shield of New Jersey
+(`R-PA-HORIZON-NNN`, ledger source `horizon-precert`, anchored to the plan's
+public provider prior-authorization pages, Medical Policies, and
 utilization-management / pharmacy program requirements). The Anthem bucket matches only `anthem` / `elevance` — generic
 `blue cross` / `blue shield` stays in the commercial fall-through, since most
 Blues plans are independent licensees, not Anthem/Elevance. The Cigna bucket
@@ -218,7 +228,20 @@ bucket matches the `independence blue cross` / `independence administrators` /
 distinct licensee from Highmark (western / central PA), which the `highmark`
 bucket catches earlier; generic Blues and other licensees stay in the commercial
 fall-through, and an explicit "Medicare Advantage" string routes to the MA bucket
-first.
+first. The CareFirst bucket matches the unambiguous `carefirst` trade-name anchor
+— the dominant Blues licensee in the mid-Atlantic (Maryland, the District of
+Columbia, and Northern Virginia); generic Blues and other licensees stay in the
+commercial fall-through, and an explicit "Medicare Advantage" string routes to
+the MA bucket first. The Blue Cross NC bucket matches the `blue cross [and] blue
+shield of north carolina` plan name, the `blue cross nc` short form, and the
+`bcbsnc` acronym — the dominant Blues licensee in North Carolina; generic Blues
+and other licensees stay in the commercial fall-through, and an explicit
+"Medicare Advantage" string routes to the MA bucket first. The Horizon bucket
+matches only the disambiguated brand anchors `horizon blue cross` / `horizon
+bcbs` / `horizon healthcare services` (never the bare common word `horizon`) —
+the dominant Blues licensee in New Jersey; generic Blues and other licensees stay
+in the commercial fall-through, and an explicit "Medicare Advantage" string
+routes to the MA bucket first.
 Note both Humana's and
 HCSC's imaging / lab-management programs are named generically in the ruleset,
 since their current vendor names collide with an AI-vendor substring barred from
