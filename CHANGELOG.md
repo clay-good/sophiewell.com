@@ -6,6 +6,37 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v52 wave 52-43 — §4.5.43 Arizona Medicaid / AHCCCS overlay for the Prior-Auth Packet Linter)
+
+The thirteenth per-state Medicaid overlay, and the thirty-sixth named-payer
+overlay overall. **Arizona Medicaid** is run by a single state agency, **AHCCCS**
+(the Arizona Health Care Cost Containment System, pronounced "access"); its
+managed-care program is **AHCCCS Complete Care** and the provider portal is
+**AHCCCS Online**.
+
+- New per-state payer bucket `'medicaid-az'` in `lib/pa/payer.js` (anchors
+  `arizona medicaid` / `az medicaid` / `ahcccs` / `arizona health care cost
+  containment`), placed before the generic `'medicaid'` bucket and composing with
+  the §4.5.4 Medicaid core through `isMedicaid(bundle.payer)`. No commercial Blues
+  licensee for Arizona is modeled yet, so the unambiguous `ahcccs` brand anchors
+  directly with no same-state disambiguation; a dual-eligible "Medicare Advantage"
+  string still wins the MA bucket earlier.
+- 20 rules `R-PA-MCAZ-001..020` in `lib/pa/rules.js`, each self-gating on
+  `bundle.payer === 'medicaid-az'` and vacuously passing on every other packet.
+  Structurally parallel to the other Medicaid overlays, with AHCCCS Online
+  submission routing and the two Medicaid reframings (transplant →
+  Medicaid-designated transplant center; appeal → state fair hearing).
+  `R-PA-MCAZ-004` mirrors core `R-PA-053` (no bundled prior-authorization list
+  yet; vacuous pass with a pointer).
+- New staleness-ledger source `az-medicaid-precert` (`pa-staleness-ledger.json`,
+  regenerated into `lib/pa/staleness-ledger.js`) and a `R-PA-MCAZ-` →
+  `az-medicaid-precert` prefix map in `lib/pa/rule-sources.js`. Anchored to the
+  public AHCCCS provider page.
+- New golden fixture `az-medicaid-precert` (43 fixtures total); `scripts/audit-pa.mjs`
+  re-seeded. Ruleset rises **835 → 855**; catalog count unchanged (255 tiles).
+- Tests: +1 classify routing test (`medicaid-az` / AHCCCS) and the rule-count
+  assertions (unit + 2 e2e) advanced to 855. View wave banner advanced to 52-43.
+
 ### Added (spec-v52 wave 52-42 — §4.5.42 New Jersey Medicaid overlay for the Prior-Auth Packet Linter)
 
 The twelfth per-state Medicaid overlay, and the thirty-fifth named-payer overlay

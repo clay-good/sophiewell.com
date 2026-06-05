@@ -464,6 +464,17 @@ test('detectPayer: New Jersey Medicaid routes to its own per-state bucket, disti
   assert.equal(detectPayer('New Jersey Medicaid Medicare Advantage dual plan'), 'cms-medicare-advantage');
 });
 
+test('detectPayer: Arizona Medicaid (AHCCCS) routes to its own per-state bucket (wave 52-43)', () => {
+  assert.equal(detectPayer('Arizona Medicaid prior authorization'), 'medicaid-az');
+  assert.equal(detectPayer('AZ Medicaid via AHCCCS Online'), 'medicaid-az');
+  assert.equal(detectPayer('AHCCCS Complete Care managed care plan'), 'medicaid-az');
+  assert.equal(detectPayer('Arizona Health Care Cost Containment System'), 'medicaid-az');
+  // ...a state-agnostic Medicaid packet stays in the generic bucket.
+  assert.equal(detectPayer('state Medicaid managed care'), 'medicaid');
+  // ...and a dual-eligible "Medicare Advantage" string wins the MA bucket.
+  assert.equal(detectPayer('Arizona Medicaid Medicare Advantage dual plan'), 'cms-medicare-advantage');
+});
+
 test('detectPayer: unknown for empty / non-payer text', () => {
   assert.equal(detectPayer(''), 'unknown');
   assert.equal(detectPayer('this packet has no payer letterhead'), 'unknown');

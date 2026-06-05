@@ -405,6 +405,14 @@
       "rules": ["R-PA-MCNJ-001", "R-PA-MCNJ-002"],
       "url": "https://www.nj.gov/humanservices/dmahs/",
       "lastVerified": "2026-06-05"
+    },
+    {
+      "id": "az-medicaid-precert",
+      "label": "Arizona Medicaid / AHCCCS (Arizona Health Care Cost Containment System / AHCCCS Online) prior-authorization requirements, provider manuals, and utilization-management / pharmacy program requirements",
+      "ruleFamily": "medicaid-az",
+      "rules": ["R-PA-MCAZ-001", "R-PA-MCAZ-002"],
+      "url": "https://www.azahcccs.gov/",
+      "lastVerified": "2026-06-05"
     }
   ],
   "acknowledgments": []

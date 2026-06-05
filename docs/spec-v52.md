@@ -2398,6 +2398,36 @@ Pennsylvania, Michigan, New Jersey), the ruleset is **835 rules**; the remaining
 §9 wave 52-5+ candidates are additional state Medicaid programs and the other
 Blues plans by state as user-volume data warrants.
 
+#### 4.5.43 Per-state Medicaid overlays — Arizona Medicaid / AHCCCS (wave 52-43)
+
+The thirteenth per-state Medicaid overlay, and the thirty-sixth named-payer
+overlay overall. **Arizona Medicaid** is run by a single state agency,
+**AHCCCS** (the Arizona Health Care Cost Containment System, pronounced
+"access"); its managed-care program is **AHCCCS Complete Care** and the provider
+portal is **AHCCCS Online**. It is detected by a per-state bucket
+(`'medicaid-az'`, anchors `arizona medicaid` / `az medicaid` / `ahcccs` /
+`arizona health care cost containment`) placed before the generic `'medicaid'`
+bucket, and composes with the §4.5.4 Medicaid core through
+`isMedicaid(bundle.payer)`. Unlike the recent same-state-Blues overlays (Michigan
+vs. BCBSM, New Jersey vs. Horizon), no commercial Blues licensee for Arizona is
+modeled yet, so there is no same-state disambiguation to make; the unambiguous
+`ahcccs` brand anchors directly. An explicit "Medicare Advantage" string still
+wins the MA bucket earlier.
+
+The 20 Arizona rules (`R-PA-MCAZ-NNN`) mirror the established families with the
+two Medicaid reframings (transplant → Medicaid-designated transplant center;
+appeal → state fair hearing) and AHCCCS Online routing. Each rule self-gates on
+`bundle.payer === 'medicaid-az'` and returns a vacuous pass on every other
+packet. Every rule is anchored to a public Arizona Medicaid (AHCCCS) provider URL
+tracked in the staleness ledger (§8.3, source `az-medicaid-precert`).
+`R-PA-MCAZ-004` mirrors core `R-PA-053`: it ships without a bundled
+prior-authorization list and vacuously passes with a pointer until a later wave
+bundles the list. With thirteen state Medicaid programs shipped (California, New
+York, Texas, Florida, Ohio, Illinois, Washington, Georgia, North Carolina,
+Pennsylvania, Michigan, New Jersey, Arizona), the ruleset is **855 rules**; the
+remaining §9 wave 52-5+ candidates are additional state Medicaid programs and the
+other Blues plans by state as user-volume data warrants.
+
 ### 4.6 The DOCX report
 
 Structure (mirrors Vaulytica v3 with healthcare-specific
@@ -3596,14 +3626,33 @@ self-contained PR; the catalog count rises only at wave 52-1.
   per-state Medicaid overlays to twelve (CA, NY, TX, FL, OH, IL, WA, GA, NC,
   PA, MI, NJ).
 
+### Wave 52-43 — Arizona Medicaid / AHCCCS overlay (2026-06)
+
+- Thirteenth per-state Medicaid overlay (§4.5.43), thirty-sixth named-payer
+  overlay overall. New per-state bucket `'medicaid-az'` (anchors `arizona
+  medicaid` / `az medicaid` / `ahcccs` / `arizona health care cost
+  containment`), placed before the generic `'medicaid'` bucket and composing
+  with the §4.5.4 core via `isMedicaid`.
+- 20 rules `R-PA-MCAZ-001..020`, each self-gating on `bundle.payer ===
+  'medicaid-az'`, anchored to the AHCCCS provider page and the new
+  staleness-ledger source `az-medicaid-precert`. AHCCCS Online routing;
+  transplant / appeal reframed for Medicaid. No same-state Blues licensee is
+  modeled for Arizona, so the `ahcccs` brand anchors directly with no
+  disambiguation.
+- Golden fixture `az-medicaid-precert` added (43 fixtures total).
+- Catalog count unchanged (255 tiles). Ruleset rises 835 → 855. Brings
+  per-state Medicaid overlays to thirteen (CA, NY, TX, FL, OH, IL, WA, GA, NC,
+  PA, MI, NJ, AZ).
+
 ### Wave 52-5+ — State Medicaid overlays, additional commercial payers, OCR
 
 - Per-state Medicaid overlays (Medi-Cal / California shipped in wave
   52-30, New York in wave 52-31, Texas in wave 52-32, Florida in wave
   52-33, Ohio in wave 52-34, Illinois in wave 52-35, Washington in wave
   52-36, Georgia in wave 52-37, North Carolina in wave 52-38, Pennsylvania
-  in wave 52-40, Michigan in wave 52-41, New Jersey in wave 52-42; the
-  remaining state Medicaid programs follow as user-volume data warrants).
+  in wave 52-40, Michigan in wave 52-41, New Jersey in wave 52-42, Arizona
+  in wave 52-43; the remaining state Medicaid programs follow as user-volume
+  data warrants).
 - Other Blues plans by state (HCSC shipped in wave 52-12, Highmark
   in wave 52-13, Florida Blue in wave 52-14, BCBSM in wave 52-15,
   Blue Shield of California in wave 52-16, Independence Blue Cross in
@@ -3789,6 +3838,17 @@ silently; the audit trail records the disablement.
 
 - 2026-05-27 — v52 proposed. Five waves outlined (52-1 through
   52-5+). Catalog count target at v52-1 close: 255.
+- 2026-06-05 — wave 52-43 (§4.5.43 Arizona Medicaid / AHCCCS — the thirteenth
+  per-state Medicaid overlay, thirty-sixth named-payer overlay overall). New
+  per-state bucket `'medicaid-az'` (anchors `arizona medicaid` / `az medicaid` /
+  `ahcccs` / `arizona health care cost containment`), placed before the generic
+  `'medicaid'` bucket and composing with the §4.5.4 core via `isMedicaid`. No
+  same-state Blues licensee is modeled for Arizona, so the unambiguous `ahcccs`
+  brand anchors directly. 20 rules `R-PA-MCAZ-001..020` self-gating on
+  `bundle.payer === 'medicaid-az'`, anchored to the AHCCCS provider page (AHCCCS
+  Online / AHCCCS Complete Care) and the new staleness-ledger source
+  `az-medicaid-precert`. Golden fixture `az-medicaid-precert` added (43 fixtures).
+  Ruleset 835 → 855. Catalog unchanged (255). View wave banner advanced to 52-43.
 - 2026-06-05 — wave 52-42 (§4.5.42 New Jersey Medicaid — the twelfth per-state
   Medicaid overlay, thirty-fifth named-payer overlay overall). New per-state
   bucket `'medicaid-nj'` (anchors `new jersey medicaid` / `nj medicaid` / `nj

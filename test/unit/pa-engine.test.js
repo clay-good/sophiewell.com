@@ -140,8 +140,8 @@ test('runEngine passes every starter rule on a clean multi-doc happy-path packet
   assert.equal(counts.pass, STARTER_RULES.length);
 });
 
-test('STARTER_RULES at wave 52-42 is 835 rules (135 §4.5 core/overlay/specialty + 20 each for the 23 commercial overlays + 20 each for 12 per-state Medicaid overlays: CA + NY + TX + FL + OH + IL + WA + GA + NC + PA + MI + NJ)', () => {
-  assert.equal(STARTER_RULES.length, 835);
+test('STARTER_RULES at wave 52-43 is 855 rules (135 §4.5 core/overlay/specialty + 20 each for the 23 commercial overlays + 20 each for 13 per-state Medicaid overlays: CA + NY + TX + FL + OH + IL + WA + GA + NC + PA + MI + NJ + AZ)', () => {
+  assert.equal(STARTER_RULES.length, 855);
 });
 
 // ---- wave 52-7a sanity checks: Aetna commercial overlay (§4.5.7) ----
