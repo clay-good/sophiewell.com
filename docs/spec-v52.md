@@ -2062,6 +2062,34 @@ staleness ledger (§8.3, source `ny-medicaid-precert`). `R-PA-MCNY-004` mirrors
 core `R-PA-053`: it ships without a bundled prior-authorization list and
 vacuously passes with a pointer until a later wave bundles the list.
 
+#### 4.5.32 Per-state Medicaid overlays — Texas Medicaid (wave 52-32)
+
+The third per-state Medicaid overlay (after Medi-Cal §4.5.30 and New York
+§4.5.31), and the twenty-sixth named-payer overlay overall. **Texas Medicaid**
+is one of the largest state Medicaid programs by enrollment; its prior
+authorization and claims run through the **Texas Medicaid & Healthcare
+Partnership (TMHP)**. It is detected by a per-state bucket (`'medicaid-tx'`,
+anchors `texas medicaid` / `tmhp` / the two TMHP corporate spellings) placed
+before the generic `'medicaid'` bucket, and composes with the §4.5.4
+state-agnostic Medicaid core through the `isMedicaid(bundle.payer)` predicate (a
+Texas Medicaid packet is checked against both the `R-PA-MCD-NNN` core and the
+Texas overlay). An explicit "Medicare Advantage" string still wins the MA bucket
+earlier.
+
+The 20 Texas rules (`R-PA-MCTX-NNN`) mirror the established families with the
+same two Medicaid reframings (transplant → Medicaid-designated transplant
+center; appeal → state fair hearing) and Texas-specific routing names (the TMHP
+provider portal for submission). Each rule self-gates on `bundle.payer ===
+'medicaid-tx'` and returns a vacuous pass on every other packet. Every rule is
+anchored to a public Texas Medicaid (TMHP) provider URL tracked in the staleness
+ledger (§8.3, source `tx-medicaid-precert`). `R-PA-MCTX-004` mirrors core
+`R-PA-053`: it ships without a bundled prior-authorization list and vacuously
+passes with a pointer until a later wave bundles the list. With three state
+Medicaid programs shipped (California, New York, Texas — the three largest by
+enrollment), the per-state Medicaid line is well established; the remaining §9
+wave 52-5+ candidates are additional state Medicaid programs and the other Blues
+plans by state as user-volume data warrants.
+
 ### 4.6 The DOCX report
 
 Structure (mirrors Vaulytica v3 with healthcare-specific
@@ -3095,6 +3123,19 @@ self-contained PR; the catalog count rises only at wave 52-1.
   for Medicaid as in §4.5.30.
 - Catalog count unchanged (255 tiles). Ruleset rises 615 → 635.
 
+### Wave 52-32 — Texas Medicaid overlay (2026-06)
+
+- The 20 Texas Medicaid rules (§4.5.32), the `R-PA-MCTX-NNN` family,
+  anchored to the program's public TMHP provider pages and manuals
+  (ledger source `tx-medicaid-precert`).
+- A `'medicaid-tx'` payer bucket in `lib/pa/payer.js`, placed before the
+  generic `'medicaid'` bucket (anchors `texas medicaid` / `tmhp` / the two
+  TMHP corporate spellings); composes with the §4.5.4 Medicaid core via
+  `isMedicaid()`. Transplant / appeal families reframed for Medicaid.
+- Catalog count unchanged (255 tiles). Ruleset rises 635 → 655. Brings the
+  per-state Medicaid overlays to three (California, New York, Texas — the
+  three largest by enrollment).
+
 ### Wave 52-5+ — State Medicaid overlays, additional commercial payers, OCR
 
 - Per-state Medicaid overlays (Medi-Cal / California shipped in wave
@@ -3282,6 +3323,20 @@ silently; the audit trail records the disablement.
 
 - 2026-05-27 — v52 proposed. Five waves outlined (52-1 through
   52-5+). Catalog count target at v52-1 close: 255.
+- 2026-06-05 — wave 52-32 (§4.5.32 Texas Medicaid — the third per-state Medicaid
+  overlay, the full 20-rule `R-PA-MCTX-NNN` family, twenty-sixth named-payer
+  overlay overall). Opens a `'medicaid-tx'` payer bucket (anchors `texas
+  medicaid` / `tmhp` / the two TMHP corporate spellings) before the generic
+  `'medicaid'` bucket; composes with the §4.5.4 Medicaid core via `isMedicaid()`
+  (regression-tested). Transplant (017) and appeal (019) reframed for Medicaid;
+  TMHP routing names. Each self-gates on `bundle.payer === 'medicaid-tx'`. New
+  ledger source `tx-medicaid-precert`. Coverage now 655 rules shipped (was 635),
+  607 source-anchored (was 587), 41 sources (was 40), 0 orphans, 0 gaps. New
+  `tx-medicaid-precert` golden fixture (Medicaid core all pass, MCTX-009 flag).
+  Tests: +6 engine assertions and +1 classify assertion. e2e count 635 -> 655.
+  Catalog unchanged (255). View wave banner advanced to 52-32. With California,
+  New York, and Texas shipped, the per-state Medicaid line covers the three
+  largest state programs by enrollment.
 - 2026-06-05 — wave 52-31 (§4.5.31 New York State Medicaid — the second per-state
   Medicaid overlay, the full 20-rule `R-PA-MCNY-NNN` family, twenty-fifth
   named-payer overlay overall). Opens a `'medicaid-ny'` payer bucket (anchors

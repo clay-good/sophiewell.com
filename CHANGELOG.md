@@ -6,6 +6,34 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v52 wave 52-32 — §4.5.32 Texas Medicaid per-state overlay, 20 of 20)
+
+The third per-state Medicaid overlay (after Medi-Cal §4.5.30 and New York
+§4.5.31), and the twenty-sixth named-payer overlay overall. The full 20-rule
+`R-PA-MCTX-NNN` family is anchored to Texas Medicaid's public TMHP (Texas
+Medicaid & Healthcare Partnership) provider pages and manuals (new ledger source
+`tx-medicaid-precert`). Texas is one of the largest state Medicaid programs by
+enrollment.
+
+A new `'medicaid-tx'` payer bucket in `lib/pa/payer.js` (anchors `texas medicaid`
+/ `tmhp` / the two TMHP corporate spellings) is placed before the generic
+`'medicaid'` bucket, and composes with the §4.5.4 Medicaid core through the
+`isMedicaid()` predicate (a Texas Medicaid packet is checked against both the
+`R-PA-MCD-NNN` core and the Texas overlay; regression-tested). The 20 rules mirror
+the established families with the Medicaid reframings (transplant →
+Medicaid-designated transplant center; appeal → state fair hearing) and TMHP
+routing names. Each rule self-gates on `bundle.payer === 'medicaid-tx'` and
+vacuously passes on every other packet.
+
+Coverage is now 655 rules shipped (was 635), 607 source-anchored (was 587), 41
+sources (was 40), 0 ledger orphans, 0 coverage gaps. A new `tx-medicaid-precert`
+golden fixture (Medicaid core all pass, MCTX-009 site-of-care flag) re-seeds
+deterministically; all thirty-three goldens re-seeded. Tests: +6 engine
+assertions and +1 classify assertion. e2e pa-lint rule count 635 -> 655. Catalog
+count unchanged (255 tiles). The PA tile's wave banner advances to 52-32. With
+California, New York, and Texas shipped, the per-state Medicaid line covers the
+three largest state programs by enrollment.
+
 ### Added (spec-v52 wave 52-31 — §4.5.31 New York State Medicaid per-state overlay, 20 of 20)
 
 The second per-state Medicaid overlay (after Medi-Cal §4.5.30), and the

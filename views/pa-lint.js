@@ -376,7 +376,7 @@ async function processFiles(fileList, resultsList, statusNode, findingsPanel) {
 export const renderers = {
   'pa-lint'(root) {
     root.appendChild(el('p', { class: 'notice', text:
-      'Wave 52-31: drop PDF, DOCX, or TXT files. Sophie hashes each file, '
+      'Wave 52-32: drop PDF, DOCX, or TXT files. Sophie hashes each file, '
       + 'extracts text (pdf.js / mammoth.js, both vendored), classifies '
       + 'each document by role + payer, and runs the complete §4.5.1 '
       + 'core ruleset (60 rules), the complete §4.5.2 CMS Medicare FFS '
@@ -386,7 +386,7 @@ export const renderers = {
       + '(25 rules: radiology + infusion + surgery + behavioral health + '
       + 'genetic testing), the complete §4.5.7–§4.5.29 commercial '
       + 'overlays (Aetna + UnitedHealthcare + Anthem + Cigna + Humana + HCSC + '
-      + 'Highmark + Florida Blue + BCBSM + Blue Shield of California + Independence Blue Cross + CareFirst + Blue Cross NC + Horizon + BCBS Tennessee + BCBS Massachusetts + BCBS Alabama + BCBS South Carolina + Arkansas BCBS + BCBS Kansas City + BCBS Minnesota + BCBS Louisiana + HMSA, 20 rules each), and the §4.5.30–§4.5.31 per-state Medicaid overlays (Medi-Cal + New York Medicaid, 20 rules each) against the aggregated bundle. Overlay rules '
+      + 'Highmark + Florida Blue + BCBSM + Blue Shield of California + Independence Blue Cross + CareFirst + Blue Cross NC + Horizon + BCBS Tennessee + BCBS Massachusetts + BCBS Alabama + BCBS South Carolina + Arkansas BCBS + BCBS Kansas City + BCBS Minnesota + BCBS Louisiana + HMSA, 20 rules each), and the §4.5.30–§4.5.32 per-state Medicaid overlays (Medi-Cal + New York Medicaid + Texas Medicaid, 20 rules each) against the aggregated bundle. Overlay rules '
       + 'self-gate on the detected payer; off-bucket packets see them '
       + 'vacuously pass. Wave 52-6b adds the human-facing DOCX report as '
       + 'a third download button alongside the full JSON report and the '

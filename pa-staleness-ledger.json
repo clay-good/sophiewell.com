@@ -325,6 +325,14 @@
       "rules": ["R-PA-MCNY-001", "R-PA-MCNY-002"],
       "url": "https://www.emedny.org/",
       "lastVerified": "2026-06-05"
+    },
+    {
+      "id": "tx-medicaid-precert",
+      "label": "Texas Medicaid (TMHP -- Texas Medicaid & Healthcare Partnership) prior-authorization requirements, provider manuals, and utilization-management / pharmacy program requirements",
+      "ruleFamily": "medicaid-tx",
+      "rules": ["R-PA-MCTX-001", "R-PA-MCTX-002"],
+      "url": "https://www.tmhp.com/",
+      "lastVerified": "2026-06-05"
     }
   ],
   "acknowledgments": []

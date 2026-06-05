@@ -140,8 +140,8 @@ test('runEngine passes every starter rule on a clean multi-doc happy-path packet
   assert.equal(counts.pass, STARTER_RULES.length);
 });
 
-test('STARTER_RULES at wave 52-31 is 635 rules (135 §4.5 core/overlay/specialty + 20 each for the 23 commercial overlays + 20 Medi-Cal + 20 New York Medicaid)', () => {
-  assert.equal(STARTER_RULES.length, 635);
+test('STARTER_RULES at wave 52-32 is 655 rules (135 §4.5 core/overlay/specialty + 20 each for the 23 commercial overlays + 20 Medi-Cal + 20 New York Medicaid + 20 Texas Medicaid)', () => {
+  assert.equal(STARTER_RULES.length, 655);
 });
 
 // ---- wave 52-7a sanity checks: Aetna commercial overlay (§4.5.7) ----
@@ -2212,6 +2212,46 @@ test('R-PA-MCNY core composition: the Medicaid core fires on a New York Medicaid
   const findings = runEngine(bundleOf(text));
   const mcd003 = findings.find((x) => x.ruleId === 'R-PA-MCD-003');
   assert.equal(mcd003.status, 'flag', 'MCD core must evaluate on a NY Medicaid packet');
+});
+
+// ---- wave 52-32 sanity checks: Texas Medicaid overlay (§4.5.32) ----
+
+test('Texas Medicaid overlay rules vacuously pass on a non-Texas-Medicaid packet', () => {
+  const findings = runEngine(happyBundle());
+  for (let n = 1; n <= 20; n += 1) {
+    const id = 'R-PA-MCTX-' + String(n).padStart(3, '0');
+    const f = findings.find((x) => x.ruleId === id);
+    assert.ok(f, id + ' should be in the findings');
+    assert.equal(f.status, 'pass', id + ' should vacuously pass off-bucket');
+  }
+});
+
+test('R-PA-MCTX-001 flags a Texas Medicaid request with a procedure but no coverage-criteria reference', () => {
+  const text = 'Texas Medicaid member.\nRequested procedure: CPT 72148 (MRI lumbar spine).\nPlease authorize.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-MCTX-001');
+  assert.equal(f.status, 'flag');
+});
+
+test('R-PA-MCTX-003 passes when the Texas Medicaid packet names the TMHP channel (info)', () => {
+  const text = 'Texas Medicaid request submitted via the TMHP provider portal.\nProcedure CPT 27447.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-MCTX-003');
+  assert.equal(f.status, 'pass');
+});
+
+test('R-PA-MCTX-017 flags a Texas Medicaid transplant request with no Medicaid-designated transplant-center routing', () => {
+  const text = 'Texas Medicaid member.\nRequested service: kidney transplant.\nMedical necessity per Medical Policy.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-MCTX-017');
+  assert.equal(f.status, 'flag');
+});
+
+test('R-PA-MCTX core composition: the Medicaid core fires on a Texas Medicaid (medicaid-tx) packet', () => {
+  const text = 'Texas Medicaid member.\nRequested procedure: CPT 29881.\n';
+  const findings = runEngine(bundleOf(text));
+  const mcd003 = findings.find((x) => x.ruleId === 'R-PA-MCD-003');
+  assert.equal(mcd003.status, 'flag', 'MCD core must evaluate on a TX Medicaid packet');
 });
 
 test('CMS overlay carries the spec-aligned id R-PA-CMS-004 for proof-of-delivery', () => {

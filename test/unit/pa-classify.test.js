@@ -363,6 +363,15 @@ test('detectPayer: New York State Medicaid routes to its own per-state bucket (w
   assert.equal(detectPayer('New York Medicaid Medicare Advantage dual plan'), 'cms-medicare-advantage');
 });
 
+test('detectPayer: Texas Medicaid routes to its own per-state bucket (wave 52-32)', () => {
+  assert.equal(detectPayer('Texas Medicaid prior authorization'), 'medicaid-tx');
+  assert.equal(detectPayer('submitted via TMHP'), 'medicaid-tx');
+  // ...a state-agnostic Medicaid packet stays in the generic bucket.
+  assert.equal(detectPayer('state Medicaid managed care'), 'medicaid');
+  // ...and a dual-eligible "Medicare Advantage" string wins the MA bucket.
+  assert.equal(detectPayer('Texas Medicaid Medicare Advantage dual plan'), 'cms-medicare-advantage');
+});
+
 test('detectPayer: unknown for empty / non-payer text', () => {
   assert.equal(detectPayer(''), 'unknown');
   assert.equal(detectPayer('this packet has no payer letterhead'), 'unknown');
