@@ -1,0 +1,19 @@
+{
+  "name": "bcbssc-precert",
+  "description": "Blue Cross Blue Shield of South Carolina (BCBSSC) commercial prior-authorization packet for a hospital-outpatient (POS 22) knee arthroscopy. The 'Blue Cross Blue Shield of South Carolina' letterhead routes the bundle to the 'bcbssc' payer bucket (spec-v52 §4.5.24) and engages the BCBSSC commercial overlay. The packet cites the applicable Medical Policy and attaches a clinical note (R-PA-BCBSSC-001/002 pass), omits any submission-channel reference (R-PA-BCBSSC-003 info), and -- as an outpatient surgery requested in a hospital-outpatient setting -- carries no site-of-care rationale for the higher-acuity site (R-PA-BCBSSC-009 flag). Every other BCBSSC rule self-gates off (no imaging, drug, DME, behavioral-health, transplant, appeal, or out-of-network trigger) and vacuously passes.",
+  "opts": { "totalBytes": 16384 },
+  "documents": [
+    {
+      "name": "bcbssc-pa-form.txt",
+      "sha256": "fixture-bcbssc-precert-form",
+      "kind": "TXT",
+      "text": "Blue Cross Blue Shield of South Carolina PPO Prior Authorization Request\nPatient: Mary C Roe\nDOB: 1968-11-22\nMember ID: ZSC123456789\nDate of service: 2026-06-25\nPlace of service: 22\nRequested procedure: knee arthroscopy with meniscectomy CPT 29881\nDx: M23.205 derangement of medial meniscus, left knee\nQuantity: 1\nOrdering provider NPI: 1234567893\nServicing facility NPI: 1306849393\nTIN: 123456789\nMedical necessity: persistent mechanical symptoms; see the applicable BCBSSC Medical Policy.\nSignature: Ortho Sports MD, 2026-06-10\n"
+    },
+    {
+      "name": "bcbssc-note.txt",
+      "sha256": "fixture-bcbssc-precert-note",
+      "kind": "TXT",
+      "text": "Clinical note\nChief complaint: left knee pain with locking and catching.\nHistory of present illness: four months of mechanical symptoms despite activity modification.\nPhysical exam: positive McMurray on the left; joint-line tenderness medially.\nAssessment and plan: left medial meniscus tear; recommend arthroscopic partial meniscectomy.\nMedical necessity: imaging confirms a displaced medial meniscus tear.\nNote date: 2026-06-10\nSigned: Ortho Sports MD, 2026-06-10\n"
+    }
+  ]
+}

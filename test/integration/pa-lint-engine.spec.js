@@ -50,14 +50,11 @@ test('pa-lint: happy-path TXT lights every starter rule green', async ({ page })
   });
 
   await expect(page.locator('.pa-findings-headline')).toBeVisible({ timeout: 10_000 });
-  // One .pa-rule entry per starter rule (475 at wave 52-23: 135 §4.5
-  // core/overlay/specialty + 20 Aetna + 20 UnitedHealthcare + 20 Anthem
-  // + 20 Cigna + 20 Humana + 20 HCSC + 20 Highmark + 20 Florida Blue + 20 BCBSM
-  // + 20 Blue Shield of California + 20 Independence Blue Cross + 20 CareFirst
-  // + 20 Blue Cross NC + 20 Horizon + 20 BCBS Tennessee + 20 BCBS Massachusetts
-  // + 20 BCBS Alabama).
+  // One .pa-rule entry per starter rule (495 at wave 52-24: 135 §4.5
+  // core/overlay/specialty + 20 each for the 18 named commercial overlays
+  // (Aetna … BCBS Alabama + BCBS South Carolina).
   const rules = page.locator('.pa-rule');
-  await expect(rules).toHaveCount(475);
+  await expect(rules).toHaveCount(495);
   // None of them should be block / flag / error on the happy packet.
   await expect(page.locator('.pa-rule[data-status="block"]')).toHaveCount(0);
   await expect(page.locator('.pa-rule[data-status="flag"]')).toHaveCount(0);

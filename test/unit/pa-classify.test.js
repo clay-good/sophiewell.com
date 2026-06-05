@@ -262,6 +262,18 @@ test('detectPayer: Blue Cross Blue Shield of Alabama routes to its own bucket (w
   assert.equal(detectPayer('Blue Cross Blue Shield of Alabama Medicare Advantage'), 'cms-medicare-advantage');
 });
 
+test('detectPayer: Blue Cross Blue Shield of South Carolina routes to its own bucket (wave 52-24)', () => {
+  // The South Carolina plan name and the 'bcbssc' acronym -> the named 'bcbssc'
+  // overlay bucket. The 'bcbssc' acronym carries no substring collision with the
+  // Michigan 'bcbsm' bucket.
+  assert.equal(detectPayer('Blue Cross Blue Shield of South Carolina PPO'), 'bcbssc');
+  assert.equal(detectPayer('BCBSSC State Health Plan member'), 'bcbssc');
+  // ...but generic / other-licensee Blues stay in the commercial fall-through.
+  assert.equal(detectPayer('Premera Blue Cross PPO plan'), 'commercial');
+  // ...and an explicit Medicare Advantage string still routes to the MA bucket.
+  assert.equal(detectPayer('Blue Cross Blue Shield of South Carolina Medicare Advantage'), 'cms-medicare-advantage');
+});
+
 test('detectPayer: unknown for empty / non-payer text', () => {
   assert.equal(detectPayer(''), 'unknown');
   assert.equal(detectPayer('this packet has no payer letterhead'), 'unknown');

@@ -1695,9 +1695,58 @@ until a later wave bundles the list. With seventeen commercial overlays
 shipped — the five largest commercial / MA plans plus the twelve largest
 independent Blues licensees (HCSC, Highmark, Florida Blue, BCBSM, Blue
 Shield of California, Independence Blue Cross, CareFirst, Blue Cross NC,
-Horizon, BCBST, BCBSMA, BCBSAL) — the remaining §9 wave 52-5+ candidates
-are the other Blues plans by state and per-state Medicaid overlays as
-user-volume data warrants.
+Horizon, BCBST, BCBSMA, BCBSAL) — Blue Cross Blue Shield of South
+Carolina opened in wave 52-24 (§4.5.24) as the eighteenth.
+
+#### 4.5.24 Commercial payer overlays — Blue Cross Blue Shield of South Carolina (wave 52-24)
+
+The eighteenth named commercial-payer overlay, and the thirteenth "Blues
+plans by state" overlay after HCSC, Highmark, Florida Blue, BCBSM, Blue
+Shield of California, Independence Blue Cross, CareFirst, Blue Cross NC,
+Horizon, BCBST, BCBSMA, and BCBSAL. **Blue Cross Blue Shield of South
+Carolina** (BCBSSC) is the dominant Blue Cross Blue Shield licensee in
+**South Carolina** — and the operator of a large federal-program
+administration business — and one of the largest independent licensees
+not already routed to an earlier bucket. Like the seventeen before it,
+BCBSSC is keyed to its own payer bucket (`'bcbssc'`, detected by
+`lib/pa/payer.js` and placed before the generic `'commercial'`
+fall-through, after `'bcbsal'`). The bucket matches only
+definitively-South-Carolina anchors — the plan name and the `bcbssc`
+acronym, which carries no substring collision with the earlier `bcbsm`
+(Michigan) bucket — so generic `blue cross` / `blue shield` and other
+Blues licensees stay in the commercial fall-through, and an explicit
+"Medicare Advantage" string still wins the MA bucket earlier. Each
+commercial rule self-gates on `bundle.payer === 'bcbssc'` and returns a
+vacuous pass on every other packet.
+
+Scope discipline is identical to §4.5.7–§4.5.23: the rules check the
+**procedural completeness** of a BCBSSC prior-authorization packet
+against the plan's *own published* submission requirements — not
+clinical coverage criteria, which are the reviewer's judgement and the
+applicable Medical Policy's job. Every rule is anchored to a public
+BCBSSC provider URL tracked in the staleness ledger (§8.3, source
+`bcbssc-precert`) and re-verified on the §4.5.6 cadence.
+
+The set mirrors the earlier commercial families so the eighteen overlays
+stay structurally parallel and auditable side by side; BCBSSC-specific
+routing names appear where the plan actually uses them — the **My
+Insurance Manager portal / Availity** for submission, the
+**advanced-imaging utilization-management program** for advanced imaging
+and genetic / molecular testing, the plan's **pharmacy management** for
+pharmacy / step therapy, **behavioral health** for behavioral health, and
+the **Blue Distinction Centers for Transplant** for transplant. Wave
+52-24 ships the full planned set of 20 (`R-PA-BCBSSC-NNN`), structurally
+parallel to the BCBSAL set (§4.5.23).
+
+`R-PA-BCBSSC-004` mirrors core `R-PA-053` and the prior commercial -004
+rules: it ships without a bundled prior-authorization list and vacuously
+passes with a pointer until a later wave bundles the list. With eighteen
+commercial overlays shipped — the five largest commercial / MA plans plus
+the thirteen largest independent Blues licensees (HCSC, Highmark, Florida
+Blue, BCBSM, Blue Shield of California, Independence Blue Cross, CareFirst,
+Blue Cross NC, Horizon, BCBST, BCBSMA, BCBSAL, BCBSSC) — the remaining §9
+wave 52-5+ candidates are the other Blues plans by state and per-state
+Medicaid overlays as user-volume data warrants.
 
 ### 4.6 The DOCX report
 
@@ -2599,6 +2648,24 @@ self-contained PR; the catalog count rises only at wave 52-1.
   Tennessee + BCBS Massachusetts + BCBS Alabama), the twelve largest
   independent Blues licensees now all covered.
 
+### Wave 52-24 — Blue Cross Blue Shield of South Carolina commercial overlay (2026-06)
+
+- The 20 BCBSSC rules (§4.5.24), the `R-PA-BCBSSC-NNN` family, anchored
+  to the plan's public provider pages, Medical Policies, and
+  utilization-management / pharmacy program requirements (ledger source
+  `bcbssc-precert`).
+- A `'bcbssc'` payer bucket in `lib/pa/payer.js`, placed before the
+  generic `'commercial'` fall-through and after `'bcbsal'`. It matches
+  only definitively-South-Carolina anchors (the plan name and the
+  `bcbssc` acronym, which has no substring collision with the Michigan
+  `bcbsm` bucket); generic Blues and other licensees stay in the
+  commercial fall-through, and an explicit "Medicare Advantage" string
+  still wins the MA bucket earlier.
+- Catalog count unchanged (255 tiles; BCBSSC adds rules, not a tile).
+  Ruleset rises 475 → 495. Brings the named commercial / MA overlays to
+  eighteen, the thirteen largest independent Blues licensees now all
+  covered.
+
 ### Wave 52-5+ — State Medicaid overlays, additional commercial payers, OCR
 
 - Per-state Medicaid overlays as user-volume data warrants.
@@ -2609,8 +2676,9 @@ self-contained PR; the catalog count rises only at wave 52-1.
   Blue Shield of North Carolina in wave 52-19, Horizon Blue Cross Blue
   Shield of New Jersey in wave 52-20, Blue Cross Blue Shield of Tennessee
   in wave 52-21, Blue Cross Blue Shield of Massachusetts in wave 52-22,
-  Blue Cross Blue Shield of Alabama in wave 52-23; the remaining
-  independent Blues licensees follow as volume warrants).
+  Blue Cross Blue Shield of Alabama in wave 52-23, Blue Cross Blue Shield
+  of South Carolina in wave 52-24; the remaining independent Blues
+  licensees follow as volume warrants).
 - Optional in-browser OCR via tesseract.js (lazy-loaded,
   user-toggled, ≈ 11 MB gzipped). Only if §2's no-OCR
   experience proves insufficient.
@@ -2779,6 +2847,31 @@ silently; the audit trail records the disablement.
 
 - 2026-05-27 — v52 proposed. Five waves outlined (52-1 through
   52-5+). Catalog count target at v52-1 close: 255.
+- 2026-06-05 — wave 52-24 (§4.5.24 Blue Cross Blue Shield of South Carolina
+  commercial overlay, the full 20-rule `R-PA-BCBSSC-NNN` family — the eighteenth
+  named commercial overlay and the thirteenth "Blues plans by state" overlay).
+  Opens a `'bcbssc'` payer bucket in `lib/pa/payer.js` (placed after `'bcbsal'`
+  and before the generic `'commercial'` fall-through). BCBSSC is the dominant
+  Blues licensee in South Carolina; the bucket matches only
+  definitively-South-Carolina anchors (the plan name and the `bcbssc` acronym,
+  which has no substring collision with the Michigan `bcbsm` bucket), so generic
+  `blue cross` / `blue shield` and other licensees stay in the commercial
+  fall-through, and an explicit "Medicare Advantage" string still wins the MA
+  bucket earlier. The 20 rules mirror the prior seventeen commercial families so
+  the eighteen overlays stay structurally parallel, with BCBSSC-specific routing
+  names where the plan uses them (the My Insurance Manager / Availity submission
+  channel, the advanced-imaging utilization-management program, pharmacy
+  management for step therapy, behavioral health, and the Blue Distinction
+  Centers for Transplant). Each self-gates on `bundle.payer === 'bcbssc'` and
+  vacuously passes on every other packet. New ledger source `bcbssc-precert`
+  anchored to the plan's public provider page (all twenty rules map to it by
+  prefix). Coverage is now 495 rules shipped (was 475), 447 source-anchored (was
+  427), 33 sources (was 32), 0 orphans, 0 gaps. The golden fixtures re-seed
+  deterministically (a new `bcbssc-precert` fixture exercises the on-bucket path —
+  009 flag, 003 info; the other twenty-four gain +20 vacuous-pass findings each).
+  Tests: +9 engine assertions (count 495, the off-bucket loop, and fire/pass
+  checks) and +1 classify assertion. Catalog count unchanged (255). View wave
+  banner advanced to 52-24.
 - 2026-06-05 — wave 52-23 (§4.5.23 Blue Cross Blue Shield of Alabama commercial
   overlay, the full 20-rule `R-PA-BCBSAL-NNN` family — the seventeenth named
   commercial overlay after Aetna, UnitedHealthcare, Anthem, Cigna, Humana, HCSC,
