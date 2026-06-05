@@ -1,0 +1,19 @@
+{
+  "name": "medi-cal-precert",
+  "description": "Medi-Cal (California Medicaid) prior-authorization (Treatment Authorization Request) packet for a hospital-outpatient (POS 22) knee arthroscopy on an adult member. The 'Medi-Cal' letterhead routes the bundle to the 'medicaid-ca' payer bucket (spec-v52 §4.5.30); both the §4.5.4 state-agnostic Medicaid core (R-PA-MCD-NNN, which fires via isMedicaid) and the Medi-Cal state overlay (R-PA-MCAL-NNN) engage. The packet is a complete Medicaid request -- eligibility verified, state medical-necessity criteria cited, MCO/FFS indicated -- so the Medicaid core rules pass; it names the TAR channel (R-PA-MCAL-003 pass) and attaches a clinical note (R-PA-MCAL-001/002 pass). As an outpatient surgery requested in a hospital-outpatient setting it carries no site-of-care rationale (R-PA-MCAL-009 flag). The member is an adult, so the EPSDT core rule self-gates off. Every other Medi-Cal overlay rule self-gates off and vacuously passes.",
+  "opts": { "totalBytes": 16384 },
+  "documents": [
+    {
+      "name": "medi-cal-tar.txt",
+      "sha256": "fixture-medi-cal-precert-form",
+      "kind": "TXT",
+      "text": "Medi-Cal Treatment Authorization Request (TAR)\nPatient: Mary C Roe\nDOB: 1968-11-22\nMember ID: 90000000A\nDate of service: 2026-06-25\nPlace of service: 22\nRequested procedure: knee arthroscopy with meniscectomy CPT 29881\nDx: M23.205 derangement of medial meniscus, left knee\nQuantity: 1\nOrdering provider NPI: 1234567893\nServicing facility NPI: 1306849393\nTIN: 123456789\nPlan: Medi-Cal managed care plan.\nEligibility verified: active eligibility on file for the date of service.\nMedical necessity: persistent mechanical symptoms; see the applicable Medi-Cal Medical Policy and the Medicaid medical necessity criteria.\nSignature: Ortho Sports MD, 2026-06-10\n"
+    },
+    {
+      "name": "medi-cal-note.txt",
+      "sha256": "fixture-medi-cal-precert-note",
+      "kind": "TXT",
+      "text": "Clinical note\nChief complaint: left knee pain with locking and catching.\nHistory of present illness: four months of mechanical symptoms despite activity modification.\nPhysical exam: positive McMurray on the left; joint-line tenderness medially.\nAssessment and plan: left medial meniscus tear; recommend arthroscopic partial meniscectomy.\nMedical necessity: imaging confirms a displaced medial meniscus tear.\nNote date: 2026-06-10\nSigned: Ortho Sports MD, 2026-06-10\n"
+    }
+  ]
+}

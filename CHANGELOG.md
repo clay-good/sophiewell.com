@@ -6,6 +6,50 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v52 wave 52-30 — §4.5.30 Medi-Cal / California Medicaid: first per-state Medicaid overlay, 20 of 20)
+
+The first **per-state Medicaid** overlay (after 23 commercial overlays), and the
+twenty-fourth named-payer overlay overall. The full 20-rule `R-PA-MCAL-NNN`
+family is anchored to Medi-Cal's (California Medicaid) public provider pages,
+manuals, and utilization-management / pharmacy program requirements (new ledger
+source `medi-cal-precert`). Medi-Cal is the largest Medicaid program in the
+United States by enrollment.
+
+**Detection.** A new `'medicaid-ca'` payer bucket in `lib/pa/payer.js` is placed
+*before* the generic `'medicaid'` bucket, so a named program (Medi-Cal,
+Denti-Cal, "California Medicaid") routes to its overlay while a state-agnostic
+Medicaid packet still routes to the generic `'medicaid'` bucket. The `'medi-cal'`
+/ `'denti-cal'` anchors move out of the generic bucket; the hyphen in `medi-cal`
+prevents a false match on the common word "medical". An explicit "Medicare
+Advantage" (dual-eligible) string still wins the MA bucket earlier.
+
+**Composition with the Medicaid core (the key change).** The §4.5.4
+state-agnostic Medicaid core (`R-PA-MCD-NNN`) previously gated on `bundle.payer
+=== 'medicaid'`; a Medi-Cal packet routing to `'medicaid-ca'` would have silenced
+it. A new `isMedicaid(bucket)` predicate (true for `'medicaid'` and every
+`'medicaid-*'` bucket, exported from `lib/pa/payer.js`) now backs all ten MCD
+gates, so the core and the per-state overlay compose on the same packet. A unit
+regression test asserts the MCD core still fires on a `medicaid-ca` packet.
+
+The 20 rules mirror the commercial families, with two reframed for Medicaid:
+transplant (017) routes through a Medicaid-designated transplant center (not BCBS
+"Blue Distinction Centers"), and appeal (019) admits the state fair-hearing
+pathway. Medi-Cal routing names appear where the program uses them: the Medi-Cal
+Provider Portal / eTAR Treatment Authorization Request submission channel (003),
+the advanced-imaging UM program (007, 012), pharmacy management / Contract Drugs
+List for step therapy (011), behavioral health (016). Each rule self-gates on
+`bundle.payer === 'medicaid-ca'` and vacuously passes on every other packet.
+
+Coverage is now 615 rules shipped (was 595), 587 source-anchored (was 567), 39
+sources (was 38), 0 ledger orphans, 0 coverage gaps. A new `medi-cal-precert`
+golden fixture (a complete Medi-Cal TAR — Medicaid core all pass, MCAL-009
+site-of-care flag) re-seeds deterministically; the other thirty goldens gain +20
+vacuous-pass findings each; all thirty-one re-seeded. Tests: +9 engine assertions
+(count 615, off-bucket loop, the isMedicaid-composition regression guard,
+fire/pass checks) and +2 classify assertions. e2e pa-lint rule count 595 -> 615.
+Catalog count unchanged (255 tiles; Medi-Cal adds rules, not a tile). The PA
+tile's wave banner advances to 52-30.
+
 ### Added (spec-v52 wave 52-29 — §4.5.29 HMSA / Blue Cross Blue Shield of Hawaii commercial overlay, 20 of 20)
 
 The twenty-third named commercial-payer overlay, and the eighteenth "Blues plans

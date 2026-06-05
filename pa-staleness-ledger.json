@@ -309,6 +309,14 @@
       "rules": ["R-PA-HMSA-001", "R-PA-HMSA-002"],
       "url": "https://hmsa.com/providers/",
       "lastVerified": "2026-06-05"
+    },
+    {
+      "id": "medi-cal-precert",
+      "label": "Medi-Cal (California Medicaid) prior-authorization / Treatment Authorization Request requirements, provider manuals, and utilization-management / pharmacy program requirements",
+      "ruleFamily": "medicaid-ca",
+      "rules": ["R-PA-MCAL-001", "R-PA-MCAL-002"],
+      "url": "https://www.medi-cal.ca.gov/",
+      "lastVerified": "2026-06-05"
     }
   ],
   "acknowledgments": []

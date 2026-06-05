@@ -53,7 +53,9 @@ test('detectPayer: Medicare Advantage beats Medicare even when both phrases pres
 });
 
 test('detectPayer: Medicaid', () => {
-  assert.equal(detectPayer('California Medi-Cal program'), 'medicaid');
+  // 'Medi-Cal' now routes to its own per-state bucket (wave 52-30); a
+  // state-agnostic Medicaid string stays in the generic 'medicaid' bucket.
+  assert.equal(detectPayer('California Medi-Cal program'), 'medicaid-ca');
   assert.equal(detectPayer('Member is enrolled in state Medicaid managed care'), 'medicaid');
 });
 
@@ -336,6 +338,20 @@ test('detectPayer: HMSA (Blue Cross Blue Shield of Hawaii) routes to its own buc
   assert.equal(detectPayer('Premera Blue Cross PPO plan'), 'commercial');
   // ...and an explicit Medicare Advantage string still routes to the MA bucket.
   assert.equal(detectPayer('HMSA Akamai Advantage Medicare Advantage HMO'), 'cms-medicare-advantage');
+});
+
+test('detectPayer: Medi-Cal (California Medicaid) routes to its own per-state bucket (wave 52-30)', () => {
+  // The 'medi-cal' / 'denti-cal' / 'california medicaid' anchors -> the named
+  // 'medicaid-ca' overlay bucket, detected before the generic 'medicaid' bucket.
+  assert.equal(detectPayer('Medi-Cal managed care member'), 'medicaid-ca');
+  assert.equal(detectPayer('Denti-Cal dental authorization'), 'medicaid-ca');
+  assert.equal(detectPayer('California Medicaid TAR'), 'medicaid-ca');
+  // ...the hyphen in 'medi-cal' prevents a false match on the word "medical".
+  assert.equal(detectPayer('the patient has a complex medical history'), 'unknown');
+  // ...a state-agnostic Medicaid packet stays in the generic bucket.
+  assert.equal(detectPayer('state Medicaid fee-for-service'), 'medicaid');
+  // ...and a dual-eligible "Medi-Cal Medicare Advantage" string wins the MA bucket.
+  assert.equal(detectPayer('Medi-Cal Medicare Advantage dual plan'), 'cms-medicare-advantage');
 });
 
 test('detectPayer: unknown for empty / non-payer text', () => {

@@ -140,8 +140,8 @@ test('runEngine passes every starter rule on a clean multi-doc happy-path packet
   assert.equal(counts.pass, STARTER_RULES.length);
 });
 
-test('STARTER_RULES at wave 52-29 is 595 rules (135 §4.5 core/overlay/specialty + 20 each for the 23 named commercial overlays: Aetna … BCBS Louisiana + HMSA)', () => {
-  assert.equal(STARTER_RULES.length, 595);
+test('STARTER_RULES at wave 52-30 is 615 rules (135 §4.5 core/overlay/specialty + 20 each for the 23 commercial overlays Aetna … HMSA + 20 Medi-Cal, the first per-state Medicaid overlay)', () => {
+  assert.equal(STARTER_RULES.length, 615);
 });
 
 // ---- wave 52-7a sanity checks: Aetna commercial overlay (§4.5.7) ----
@@ -2103,6 +2103,74 @@ test('R-PA-HMSA-020 flags an HMSA out-of-network request with no network-gap jus
   const text = 'HMSA member.\nOut-of-network prior authorization request.\nProcedure CPT 70551.\n';
   const findings = runEngine(bundleOf(text));
   const f = findings.find((x) => x.ruleId === 'R-PA-HMSA-020');
+  assert.equal(f.status, 'info');
+});
+
+// ---- wave 52-30 sanity checks: Medi-Cal (California Medicaid) overlay (§4.5.30) ----
+// Medi-Cal is the first PER-STATE Medicaid overlay. Two things must hold: the
+// state overlay (R-PA-MCAL-*) engages on a Medi-Cal packet, AND the §4.5.4
+// state-agnostic Medicaid core (R-PA-MCD-*) keeps firing on it via isMedicaid().
+
+test('Medi-Cal overlay rules vacuously pass on a non-Medi-Cal packet', () => {
+  const findings = runEngine(happyBundle());
+  for (let n = 1; n <= 20; n += 1) {
+    const id = 'R-PA-MCAL-' + String(n).padStart(3, '0');
+    const f = findings.find((x) => x.ruleId === id);
+    assert.ok(f, id + ' should be in the findings');
+    assert.equal(f.status, 'pass', id + ' should vacuously pass off-bucket');
+  }
+});
+
+test('isMedicaid composition: the state-agnostic Medicaid core (R-PA-MCD) still fires on a Medi-Cal (medicaid-ca) packet', () => {
+  // A Medi-Cal packet with no eligibility-verification anchor must trip the
+  // core rule R-PA-MCD-003. This is the regression guard for the wave-52-30
+  // change that re-pointed the 10 MCD gates from `=== 'medicaid'` to
+  // isMedicaid(): adding the per-state bucket must NOT silence the core.
+  const text = 'Medi-Cal managed care member.\nRequested procedure: CPT 29881.\nMedicaid medical necessity criteria cited.\n';
+  const findings = runEngine(bundleOf(text));
+  // the Medi-Cal overlay engaged...
+  assert.ok(findings.find((x) => x.ruleId === 'R-PA-MCAL-001'), 'MCAL overlay should be present');
+  // ...and the Medicaid core fired (no eligibility anchor -> MCD-003 flags).
+  const mcd003 = findings.find((x) => x.ruleId === 'R-PA-MCD-003');
+  assert.equal(mcd003.status, 'flag', 'MCD core must evaluate on a state Medicaid packet');
+});
+
+test('R-PA-MCAL-001 flags a Medi-Cal request with a procedure but no coverage-criteria reference', () => {
+  const text = 'Medi-Cal managed care member.\n'
+    + 'Requested procedure: CPT 72148 (MRI lumbar spine).\n'
+    + 'Please authorize.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-MCAL-001');
+  assert.equal(f.status, 'flag');
+});
+
+test('R-PA-MCAL-001 passes when the Medi-Cal packet cites the applicable Medical Policy', () => {
+  const text = 'Medi-Cal managed care member.\n'
+    + 'Requested procedure: CPT 72148.\n'
+    + 'Medical necessity per the applicable Medi-Cal Medical Policy (MCG).\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-MCAL-001');
+  assert.equal(f.status, 'pass');
+});
+
+test('R-PA-MCAL-003 passes when the Medi-Cal packet names the TAR / provider-portal channel (info)', () => {
+  const text = 'Medi-Cal Treatment Authorization Request submitted via the Medi-Cal Provider Portal.\nProcedure CPT 27447.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-MCAL-003');
+  assert.equal(f.status, 'pass');
+});
+
+test('R-PA-MCAL-017 flags a Medi-Cal transplant request with no Medicaid-designated transplant-center routing', () => {
+  const text = 'Medi-Cal managed care member.\nRequested service: kidney transplant.\nMedical necessity per Medical Policy.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-MCAL-017');
+  assert.equal(f.status, 'flag');
+});
+
+test('R-PA-MCAL-019 treats a Medi-Cal state fair hearing as an appeal (info)', () => {
+  const text = 'Medi-Cal managed care member.\nThis is a state fair hearing request.\nProcedure CPT 70551.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-MCAL-019');
   assert.equal(f.status, 'info');
 });
 

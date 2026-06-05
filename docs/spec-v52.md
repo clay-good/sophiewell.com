@@ -1976,9 +1976,66 @@ twenty-three commercial overlays shipped — the five largest commercial /
 MA plans plus the eighteen largest independent Blues licensees (HCSC,
 Highmark, Florida Blue, BCBSM, Blue Shield of California, Independence Blue
 Cross, CareFirst, Blue Cross NC, Horizon, BCBST, BCBSMA, BCBSAL, BCBSSC,
-Arkansas BCBS, Blue KC, BCBSMN, BCBSLA, HMSA) — the remaining §9 wave
-52-5+ candidates are the other Blues plans by state and per-state Medicaid
-overlays as user-volume data warrants.
+Arkansas BCBS, Blue KC, BCBSMN, BCBSLA, HMSA) — the §9 "per-state Medicaid
+overlays" candidate opened with Medi-Cal in wave 52-30 (§4.5.30).
+
+#### 4.5.30 Per-state Medicaid overlays — Medi-Cal (California Medicaid) (wave 52-30)
+
+Waves 52-7 through 52-29 added *commercial* payer overlays, each gating on
+its own single-payer bucket. Wave 52-30 opens the §9 "per-state Medicaid
+overlays" line with **Medi-Cal** (the California Medicaid program, the
+largest Medicaid program in the United States by enrollment), and
+introduces a small architectural generalization so a state Medicaid
+overlay composes with the existing §4.5.4 state-agnostic Medicaid core
+rather than replacing it.
+
+**The detection model.** Per-state Medicaid programs are detected by a
+per-state bucket (`'medicaid-ca'` for Medi-Cal) placed in `lib/pa/payer.js`
+*before* the generic `'medicaid'` bucket, so a named program (Medi-Cal,
+Denti-Cal, "California Medicaid") routes to its overlay while a
+state-agnostic Medicaid packet ("state Medicaid", "managed care") still
+falls through to the generic `'medicaid'` bucket. The `'medi-cal'` /
+`'denti-cal'` anchors move out of the generic bucket into `'medicaid-ca'`.
+The hyphen in `medi-cal` is load-bearing: it prevents a false match on the
+common clinical word "medical". An explicit "Medicare Advantage" string (a
+dual-eligible packet) still wins the MA bucket earlier.
+
+**Composition with the Medicaid core (the key invariant).** The §4.5.4
+state-agnostic Medicaid core (`R-PA-MCD-NNN`: recipient ID, EPSDT,
+eligibility-date alignment, state medical-necessity, MCO/FFS indicator, …)
+previously gated on `bundle.payer === 'medicaid'`. If a Medi-Cal packet now
+routed to `'medicaid-ca'`, those rules would silently stop firing — a
+regression. Wave 52-30 re-points all ten MCD gates to a new
+`isMedicaid(bundle.payer)` predicate (true for `'medicaid'` and every
+`'medicaid-*'` state bucket, exported from `lib/pa/payer.js`), so the core
+and the per-state overlay **compose on the same packet**: a Medi-Cal
+request is checked against both the universal Medicaid core and the
+Medi-Cal-specific overlay. A unit regression test asserts the MCD core
+still fires on a `medicaid-ca` packet.
+
+**The overlay.** The 20 Medi-Cal rules (`R-PA-MCAL-NNN`) mirror the
+commercial families so the overlays stay structurally parallel and
+auditable side by side, with two families reframed for Medicaid: the
+transplant rule (017) routes through a **Medicaid-designated transplant
+center / Center of Excellence** (not the BCBS "Blue Distinction Centers"
+network), and the appeal rule (019) admits the **state fair-hearing**
+pathway alongside reconsideration / appeal. Medi-Cal-specific routing names
+appear where the program uses them — the **Medi-Cal Provider Portal /
+eTAR (Treatment Authorization Request)** for submission, the
+advanced-imaging utilization-management program for advanced imaging, the
+program's **pharmacy management / Contract Drugs List** for pharmacy / step
+therapy, behavioral health for behavioral health. Each rule self-gates on
+`bundle.payer === 'medicaid-ca'` and returns a vacuous pass on every other
+packet. Every rule is anchored to a public Medi-Cal provider URL tracked in
+the staleness ledger (§8.3, source `medi-cal-precert`).
+
+`R-PA-MCAL-004` mirrors core `R-PA-053` and the commercial -004 rules: it
+ships without a bundled prior-authorization list and vacuously passes with
+a pointer until a later wave bundles the list. With Medi-Cal shipped, the
+per-state Medicaid line is open; the remaining §9 wave 52-5+ candidates are
+additional state Medicaid programs (New York opened in wave 52-31, Texas in
+wave 52-32) and the other Blues plans by state as user-volume data
+warrants.
 
 ### 4.6 The DOCX report
 
@@ -2984,9 +3041,28 @@ self-contained PR; the catalog count rises only at wave 52-1.
   twenty-three, the eighteen largest independent Blues licensees now all
   covered.
 
+### Wave 52-30 — Medi-Cal (California Medicaid): first per-state Medicaid overlay (2026-06)
+
+- The 20 Medi-Cal rules (§4.5.30), the `R-PA-MCAL-NNN` family, anchored
+  to the program's public provider pages, manuals, and
+  utilization-management / pharmacy program requirements (ledger source
+  `medi-cal-precert`).
+- A `'medicaid-ca'` payer bucket in `lib/pa/payer.js`, placed *before* the
+  generic `'medicaid'` bucket (the `'medi-cal'` / `'denti-cal'` anchors
+  move here). A new `isMedicaid()` predicate generalizes the ten §4.5.4
+  Medicaid-core (`R-PA-MCD-NNN`) gates so the core keeps firing on every
+  `medicaid-*` state bucket — the core and the per-state overlay compose on
+  the same packet (regression-tested).
+- Transplant (017) and appeal (019) families reframed for Medicaid
+  (state-designated transplant center; state fair hearing).
+- Catalog count unchanged (255 tiles; Medi-Cal adds rules, not a tile).
+  Ruleset rises 595 → 615. Opens the §9 per-state Medicaid line.
+
 ### Wave 52-5+ — State Medicaid overlays, additional commercial payers, OCR
 
-- Per-state Medicaid overlays as user-volume data warrants.
+- Per-state Medicaid overlays (Medi-Cal / California shipped in wave
+  52-30, New York in wave 52-31, Texas in wave 52-32; the remaining
+  state Medicaid programs follow as user-volume data warrants).
 - Other Blues plans by state (HCSC shipped in wave 52-12, Highmark
   in wave 52-13, Florida Blue in wave 52-14, BCBSM in wave 52-15,
   Blue Shield of California in wave 52-16, Independence Blue Cross in
@@ -3169,6 +3245,33 @@ silently; the audit trail records the disablement.
 
 - 2026-05-27 — v52 proposed. Five waves outlined (52-1 through
   52-5+). Catalog count target at v52-1 close: 255.
+- 2026-06-05 — wave 52-30 (§4.5.30 Medi-Cal / California Medicaid — the first
+  PER-STATE Medicaid overlay, the full 20-rule `R-PA-MCAL-NNN` family, and the
+  twenty-fourth named-payer overlay overall). Opens a `'medicaid-ca'` payer
+  bucket in `lib/pa/payer.js`, placed BEFORE the generic `'medicaid'` bucket (the
+  `'medi-cal'` / `'denti-cal'` anchors move out of generic into it); the hyphen in
+  `medi-cal` prevents a false match on "medical", and an explicit "Medicare
+  Advantage" string still wins the MA bucket earlier. Introduces an
+  `isMedicaid(bucket)` predicate (true for `'medicaid'` and every `'medicaid-*'`
+  state bucket) and re-points all ten §4.5.4 Medicaid-core (`R-PA-MCD-NNN`) gates
+  to it, so the state-agnostic core keeps firing on a state Medicaid packet and
+  composes with the per-state overlay (regression-tested: a `medicaid-ca` packet
+  still trips the MCD core). The 20 rules mirror the commercial families with two
+  Medicaid reframings — transplant (017) routes through a Medicaid-designated
+  transplant center rather than BCBS "Blue Distinction Centers", and appeal (019)
+  admits the state fair-hearing pathway — plus Medi-Cal routing names (the
+  Medi-Cal Provider Portal / eTAR Treatment Authorization Request, the program's
+  pharmacy management / Contract Drugs List). Each self-gates on `bundle.payer ===
+  'medicaid-ca'` and vacuously passes on every other packet. New ledger source
+  `medi-cal-precert`. Coverage is now 615 rules shipped (was 595), 587
+  source-anchored (was 567), 39 sources (was 38), 0 orphans, 0 gaps. A new
+  `medi-cal-precert` golden fixture (a complete Medi-Cal TAR: Medicaid core all
+  pass, MCAL-009 site-of-care flag) re-seeds deterministically; the other thirty
+  goldens gain +20 vacuous-pass findings each. Tests: +9 engine assertions (count
+  615, the off-bucket loop, the isMedicaid-composition regression guard, and
+  fire/pass checks) and +2 classify assertions (Medi-Cal → `medicaid-ca`, generic
+  Medicaid → `medicaid`, "medical" → unknown, dual-eligible → MA). Catalog count
+  unchanged (255). View wave banner advanced to 52-30.
 - 2026-06-05 — wave 52-29 (§4.5.29 HMSA / Blue Cross Blue Shield of Hawaii
   commercial overlay, the full 20-rule `R-PA-HMSA-NNN` family — the twenty-third
   named commercial overlay and the eighteenth "Blues plans by state" overlay).
