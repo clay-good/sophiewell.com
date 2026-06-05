@@ -140,8 +140,8 @@ test('runEngine passes every starter rule on a clean multi-doc happy-path packet
   assert.equal(counts.pass, STARTER_RULES.length);
 });
 
-test('STARTER_RULES at wave 52-25 is 515 rules (135 §4.5 core/overlay/specialty + 20 each for the 19 named commercial overlays: Aetna … BCBS South Carolina + Arkansas BCBS)', () => {
-  assert.equal(STARTER_RULES.length, 515);
+test('STARTER_RULES at wave 52-26 is 535 rules (135 §4.5 core/overlay/specialty + 20 each for the 20 named commercial overlays: Aetna … Arkansas BCBS + BCBS Kansas City)', () => {
+  assert.equal(STARTER_RULES.length, 535);
 });
 
 // ---- wave 52-7a sanity checks: Aetna commercial overlay (§4.5.7) ----
@@ -1809,6 +1809,79 @@ test('R-PA-ARKBCBS-020 flags an Arkansas Blue Cross out-of-network request with 
   const text = 'Arkansas Blue Cross and Blue Shield member.\nOut-of-network prior authorization request.\nProcedure CPT 70551.\n';
   const findings = runEngine(bundleOf(text));
   const f = findings.find((x) => x.ruleId === 'R-PA-ARKBCBS-020');
+  assert.equal(f.status, 'info');
+});
+
+// ---- wave 52-26 sanity checks: Blue Cross and Blue Shield of Kansas City overlay (§4.5.26) ----
+
+test('Blue KC overlay rules vacuously pass on a non-Blue-KC packet', () => {
+  // happyBundle is not a Blue KC packet -> every R-PA-BLUEKC-* rule passes.
+  const findings = runEngine(happyBundle());
+  for (let n = 1; n <= 20; n += 1) {
+    const id = 'R-PA-BLUEKC-' + String(n).padStart(3, '0');
+    const f = findings.find((x) => x.ruleId === id);
+    assert.ok(f, id + ' should be in the findings');
+    assert.equal(f.status, 'pass', id + ' should vacuously pass off-bucket');
+  }
+});
+
+test('R-PA-BLUEKC-001 flags a Blue KC request with a procedure but no coverage-criteria reference', () => {
+  const text = 'Blue Cross and Blue Shield of Kansas City member.\n'
+    + 'Requested procedure: CPT 72148 (MRI lumbar spine).\n'
+    + 'Please authorize.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-BLUEKC-001');
+  assert.equal(f.status, 'flag');
+});
+
+test('R-PA-BLUEKC-001 passes when the Blue KC packet cites the applicable Medical Policy', () => {
+  const text = 'Blue Cross and Blue Shield of Kansas City member.\n'
+    + 'Requested procedure: CPT 72148.\n'
+    + 'Medical necessity per the applicable Blue KC Medical Policy (MCG).\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-BLUEKC-001');
+  assert.equal(f.status, 'pass');
+});
+
+test('R-PA-BLUEKC-002 flags a Blue KC packet with no clinical document attached', () => {
+  const text = 'Blue Cross and Blue Shield of Kansas City member.\nRequested procedure: CPT 27447.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-BLUEKC-002');
+  assert.equal(f.status, 'flag');
+});
+
+test('R-PA-BLUEKC-003 passes when the Blue KC packet names the Availity channel (info)', () => {
+  const text = 'Blue Cross and Blue Shield of Kansas City member.\nSubmitted via the Availity Essentials portal.\nProcedure CPT 27447.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-BLUEKC-003');
+  assert.equal(f.status, 'pass');
+});
+
+test('R-PA-BLUEKC-007 flags a Blue KC outpatient MRI with no clinical indication', () => {
+  const text = 'Blue Cross and Blue Shield of Kansas City member.\nRequested: MRI lumbar spine, CPT 72148.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-BLUEKC-007');
+  assert.equal(f.status, 'flag');
+});
+
+test('R-PA-BLUEKC-008 passes when an expedited Blue KC request documents the clinical urgency', () => {
+  const text = 'Blue Cross and Blue Shield of Kansas City member.\nExpedited review requested: delay would jeopardize the member\'s life or health.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-BLUEKC-008');
+  assert.equal(f.status, 'pass');
+});
+
+test('R-PA-BLUEKC-017 flags a Blue KC transplant request with no Blue Distinction routing', () => {
+  const text = 'Blue Cross and Blue Shield of Kansas City member.\nRequested service: kidney transplant.\nMedical necessity per Medical Policy.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-BLUEKC-017');
+  assert.equal(f.status, 'flag');
+});
+
+test('R-PA-BLUEKC-020 flags a Blue KC out-of-network request with no network-gap justification (info)', () => {
+  const text = 'Blue Cross and Blue Shield of Kansas City member.\nOut-of-network prior authorization request.\nProcedure CPT 70551.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-BLUEKC-020');
   assert.equal(f.status, 'info');
 });
 

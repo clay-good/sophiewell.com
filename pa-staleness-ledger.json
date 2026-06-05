@@ -277,6 +277,14 @@
       "rules": ["R-PA-ARKBCBS-001", "R-PA-ARKBCBS-002"],
       "url": "https://www.arkansasbluecross.com/providers",
       "lastVerified": "2026-06-05"
+    },
+    {
+      "id": "bluekc-precert",
+      "label": "Blue Cross and Blue Shield of Kansas City (Blue KC) prior-authorization requirements, Medical Policies, and utilization-management / pharmacy program requirements",
+      "ruleFamily": "commercial-bluekc",
+      "rules": ["R-PA-BLUEKC-001", "R-PA-BLUEKC-002"],
+      "url": "https://providers.bluekc.com/",
+      "lastVerified": "2026-06-05"
     }
   ],
   "acknowledgments": []
