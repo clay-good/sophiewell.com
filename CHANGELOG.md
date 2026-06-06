@@ -6,6 +6,44 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v57 — brief screeners, decision rules, and triage scores; +14 tiles, 281 → 295)
+
+Fourteen deterministic Group-G instruments that fill confirmed holes a bedside
+team hits routinely: the ultra-brief screeners used as a pre-gate to the full
+instrument, the imaging/discharge decision rules that keep the team out of
+unnecessary CT, and the chest-pain / syncope / PE / pharyngitis / trauma
+pathways that complement HEART, Wells, and Centor. Each consumes at least one
+input and computes an output (spec-v29 §3), ships its citation inline (spec-v54),
+and is covered by the object-aware fuzz harness with zero non-finite leaks. New
+module `lib/scoring-v5.js` (14 compute exports) + renderers in `views/group-v9.js`.
+
+- **Brief screeners:** `phq2-gad2` (PHQ-2 + GAD-2 pre-gates with the ≥3 flag),
+  `audit-full` (WHO 10-item AUDIT with the 8/16/20 zones), `dast10` (DAST-10,
+  item 3 reverse-scored), `gds15` (Geriatric Depression Scale, the
+  age-appropriate alternative to PHQ-9).
+- **Decision rules:** `ottawa-knee` (Ottawa Knee Rule), `nexus-chest` (NEXUS
+  Chest CT instrument), `sfsr` (San Francisco Syncope Rule / CHESS),
+  `canadian-syncope` (Canadian Syncope Risk Score, −3 to +11).
+- **Pathways:** `edacs` (EDACS + EDACS-ADP low-risk gate), `years-pe` (YEARS
+  with the variable D-dimer threshold surfaced explicitly), `feverpain`
+  (FeverPAIN, NICE NG84), `stone-score` (STONE ureteral-stone probability),
+  `iss-rts` (Injury Severity Score + Revised Trauma Score), `sipa` (Shock Index,
+  Pediatric Age-Adjusted, age-banded cutoffs).
+- **Conditional thresholds surfaced:** `years-pe` shows the 1000-vs-500 ng/mL
+  D-dimer threshold that flips with the item count, and `edacs` shows the
+  <16-plus-non-ischemic-ECG-plus-negative-troponins ADP gate, so the user sees
+  *why* the determination flipped.
+- **Robustness:** item screeners clamp each item to its declared range; `sipa`
+  guards HR/SBP=0 → `null` → `fmt()` fallback and returns no cutoff (caution
+  band) outside the validated 4–16 yr range; `iss-rts` clamps AIS 0–6 and the
+  vitals. 74 new unit tests (≥3 boundary examples each, including the YEARS/EDACS
+  threshold-flips and the SIPA age-band boundaries); 14 spec-v11 audit logs;
+  fuzz harness extended to `scoring-v5.js`.
+- **Provenance:** `audit-full` (WHO) and `feverpain` (NICE) carry
+  `citationAccessed` + a `docs/citation-staleness.md` row (spec-v54).
+- Catalog-truth surfaces (spec-v46) all advanced 281 → 295; `UTILITIES.length`
+  is 295. README gains a screeners/decision-rules cheat sheet.
+
 ### Added (spec-v56 — weight-based dosing, infusion titration, and bedside toxicology; +13 tiles, 268 → 281)
 
 Thirteen deterministic Group-F medication/infusion calculators that fill the

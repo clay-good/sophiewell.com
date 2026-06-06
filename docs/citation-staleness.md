@@ -48,6 +48,8 @@ the quarterly source pull. No clinical formula or threshold changes here.
 | digoxin | ACC/AHA/HFSA Heart Failure guideline (digoxin level target) | Heidenreich 2022 (Circulation 2022;145(18)) | same | 2026-06-06 | current — 2022 is the latest ACC/AHA/HFSA HF guideline; HF target 0.5-0.9 ng/mL unchanged (spec-v56) |
 | mgso4-preeclampsia | ACOG magnesium-sulfate seizure prophylaxis | ACOG Practice Bulletin 222 (2020) + Magpie (Lancet 2002) | same | 2026-06-06 | current — PB 222 is the latest ACOG preeclampsia bulletin; 4-6 g load / 1-2 g/h dosing unchanged (spec-v56) |
 | peds-resus | AHA PALS resuscitation bolus | PALS 2020 (Circulation 2020;142(16 suppl 2)) | same | 2026-06-06 | current — 2020 is the latest PALS edition; 10-20 mL/kg isotonic bolus unchanged (spec-v56) |
+| audit-full | WHO AUDIT alcohol-use screen | Saunders 1993 + WHO AUDIT Manual (2001) | same | 2026-06-06 | current — 2001 WHO manual is the governing edition; 8/16/20 risk zones unchanged (spec-v57) |
+| feverpain | NICE NG84-endorsed FeverPAIN score | Little 2013 (BMJ 347:f5806); NICE NG84 (2018) | same | 2026-06-06 | current — NG84 remains the endorsing guideline; FeverPAIN items/bands unchanged (spec-v57) |
 
 ## Foundational instruments (documentation only)
 

@@ -43,6 +43,7 @@ import * as clinicalV6 from '../../lib/clinical-v6.js';
 import * as medicationV4 from '../../lib/medication-v4.js';
 import * as medicationV5 from '../../lib/medication-v5.js';
 import * as scoringV4 from '../../lib/scoring-v4.js';
+import * as scoringV5 from '../../lib/scoring-v5.js';
 import * as labInterpret from '../../lib/lab-interpret.js';
 import * as unitConvert from '../../lib/unit-convert.js';
 
@@ -54,6 +55,7 @@ const MODULES = {
   'medication-v4.js': medicationV4,
   'medication-v5.js': medicationV5,
   'scoring-v4.js': scoringV4,
+  'scoring-v5.js': scoringV5,
   'lab-interpret.js': labInterpret,
   'unit-convert.js': unitConvert,
 };

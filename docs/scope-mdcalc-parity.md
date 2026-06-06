@@ -104,7 +104,8 @@ literacy decoders, the field-medicine and EMS workflow tiles).
 > renal/acid-base, and oxygenation calculators — is 268; v56
 > close — [spec-v56](spec-v56.md), which adds 13 weight-based
 > dosing, infusion-titration, and bedside-toxicology calculators
-> — is 281.)
+> — is 281; v57 close — [spec-v57](spec-v57.md), which adds 14
+> brief screeners, decision rules, and triage scores — is 295.)
 
 A reasonable steady-state estimate is **400–600 tiles over 3–5
 years**, depending on how aggressive the audit pace is and how

@@ -14,6 +14,7 @@ import { renderers as RV5 } from './views/group-v5.js';
 import { renderers as RV6 } from './views/group-v6.js';
 import { renderers as RV7 } from './views/group-v7.js';
 import { renderers as RV8 } from './views/group-v8.js';
+import { renderers as RV9 } from './views/group-v9.js';
 import { renderers as RPALINT } from './views/pa-lint.js';
 import { META } from './lib/meta.js';
 import { fetchJson } from './lib/data.js';
@@ -27,7 +28,7 @@ import { resolvePrompt } from './lib/prompt.js';
 // artifact-detect / artifact-route / artifact-handoff helpers were
 // deleted in spec-v29 wave 29-2 (Group C/L).
 
-const RENDERERS = { ...RA, ...RC, ...RE, ...RF, ...RG, ...RH, ...RI, ...RJ, ...RKLMNO, ...RV5, ...RV6, ...RV7, ...RV8, ...RPALINT };
+const RENDERERS = { ...RA, ...RC, ...RE, ...RF, ...RG, ...RH, ...RI, ...RJ, ...RKLMNO, ...RV5, ...RV6, ...RV7, ...RV8, ...RV9, ...RPALINT };
 
 // ----- Utility registry ----------------------------------------------------
 // Source of truth for routes, names, group, audiences, and clinical flag.
@@ -436,6 +437,21 @@ const UTILITIES = [
   { id: 'peds-fluid-deficit',   name: 'Pediatric dehydration deficit + maintenance',      group: 'F', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'peds-resus',           name: 'Pediatric resuscitation bolus',                    group: 'F', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'conc-percent',         name: 'Concentration / percent / ratio converter',        group: 'F', audiences: ['clinicians', 'educators'], clinical: true },
+  // spec-v57: brief screeners, decision rules, and triage scores (14 tiles).
+  { id: 'phq2-gad2',            name: 'PHQ-2 / GAD-2 ultra-brief screeners',              group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'audit-full',           name: 'AUDIT (10-item alcohol use screen)',               group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'dast10',               name: 'DAST-10 Drug Abuse Screening Test',                group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'gds15',                name: 'Geriatric Depression Scale (GDS-15)',              group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'ottawa-knee',          name: 'Ottawa Knee Rule',                                 group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'nexus-chest',          name: 'NEXUS Chest (blunt chest-trauma imaging)',         group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'sfsr',                 name: 'San Francisco Syncope Rule (CHESS)',               group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'canadian-syncope',     name: 'Canadian Syncope Risk Score',                      group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'edacs',                name: 'EDACS chest-pain score (+ EDACS-ADP)',             group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'years-pe',             name: 'YEARS algorithm for pulmonary embolism',           group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'feverpain',            name: 'FeverPAIN score (strep pharyngitis)',              group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'stone-score',          name: 'STONE score (ureteral stone)',                     group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'iss-rts',              name: 'Injury Severity Score + Revised Trauma Score',     group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'sipa',                 name: 'Shock Index, Pediatric Age-Adjusted (SIPA)',       group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
 ];
 
 const UTIL_BY_ID = new Map(UTILITIES.map((u) => [u.id, u]));
