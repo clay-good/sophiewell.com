@@ -1256,7 +1256,13 @@ main h1 {
   color: var(--text-secondary);
 }
 .tool-meta p:last-child { margin-bottom: 0; }
-.tool-meta .citation { color: var(--text-secondary); }
+/* spec-v54 §2.3: the citation block must wrap within the tile column at 320px.
+   overflow-wrap: anywhere breaks a long DOI/instrument token rather than
+   forcing horizontal scroll (the no-horizontal-scroll house rule). */
+.tool-meta .citation {
+  color: var(--text-secondary);
+  overflow-wrap: anywhere;
+}
 .tool-meta .source-stamp {
   color: var(--text-muted);
   font-family: var(--font-mono);
@@ -1270,6 +1276,7 @@ main h1 {
   text-decoration: underline;
   text-underline-offset: 2px;
   word-break: break-word;
+  overflow-wrap: anywhere;
 }
 .tool-meta .citation-link {
   display: inline-block;

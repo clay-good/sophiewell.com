@@ -6,6 +6,54 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Hardened (spec-v54 — citation integrity: inline, current, well-wrapped; zero new tiles)
+
+A zero-tile citation-integrity release: no new tile, no clinical formula,
+threshold, or rounding precision changed (every valid-input result is
+byte-identical). It defines and enforces three invariants on every clinical
+tile's source citation — **inline** (visible in `META[id].citation`, not only
+in a reference doc), **current or justified-stale** (a guideline tile carries an
+`accessed` date and a ledger row naming the shipped vs latest edition), and
+**well-formed / wrapping** (no bare URL in the citation text; the references
+block wraps within the tile column at 320px). Audit log:
+`docs/audits/v11/_citations-v54.md`.
+
+- **`scripts/check-citations.mjs` (new gate, wired into `npm run lint`)** —
+  five rules across all 255 tiles: (1) every `clinical: true` tile has a
+  non-empty inline `citation`; (2) no raw `http(s)://` in citation text (URLs
+  belong in `citationUrl`); (3) `citationUrl`, if present, is a valid `https://`
+  URL; (4) every tile whose citation matches the guideline-issuer pattern (CDC |
+  KDIGO | AGS | ACC | AHA | ATS | IDSA | ESC | WHO | AAP | ACOG | Joint
+  Commission | SAMHSA | NICE) carries an `accessed` date **and** a row in the
+  staleness ledger; (5) no unpinned phrase ("current edition" / "latest version"
+  / "most recent"). The issuer pattern is case-sensitive and word-bounded so it
+  matches `WHO 2014` but not the word "who" and not "ACCORD". The pure detector
+  `findCitationViolations` is unit-tested with one negative fixture per rule
+  (`test/unit/check-citations.test.js`, +12 tests).
+- **`docs/citation-staleness.md` (new ledger)** — one row per guideline-derived
+  tile (19 gate-enforced) plus the foundational instruments reviewed alongside
+  them (10 documentation rows), each naming edition shipped, latest known
+  edition, `accessed` date, and a justification where the shipped edition is
+  deliberately behind. The single auditable answer to "is Sophie current?"
+- **Unpinned editions pinned (rule 5 fixes):** `field-triage` ("current
+  edition" → 2021 ACS-COT/CDC National Guideline), `tetanus` (→ 2020 ACIP MMWR
+  69(3)), `rabies-pep` (→ 2010 ACIP MMWR 59(RR-2)). Each gains a
+  `citationAccessed` and a ledger row.
+- **`accessed` dates added** to all 19 guideline-issuer tiles via a uniform
+  `META[id].citationAccessed` field (the gate also accepts `source.accessed`).
+- **§3 provenance fixes:** `fib4` / `apri` gain DOI `citationUrl`s; `vis` splits
+  the conflated Gaies-2010 (VIS) vs Wernovsky-1995 (IS) attribution into one
+  labeled inline citation with a DOI. `docs/data-sources.md` reconciles the
+  Beers entry — the retired `beers.json` shard was the standalone reference
+  *table*; the live `beers-check` tile ships AGS 2023 content embedded in
+  `lib/medication-v4.js`, cited inline with `citationAccessed` and a ledger row.
+- **Wrapping made explicit (rule 3 / invariant 2.3):** `styles.css`
+  `.tool-meta .citation` and `.citation-inline-link` get `overflow-wrap:
+  anywhere`; `test/integration/citations.spec.js` pins that a long-DOI tile
+  (`egfr`) renders its inline citation and the references block has no
+  horizontal overflow at 320px.
+- Catalog unchanged (255 tiles). No `app.js` / `UTILITIES` change.
+
 ### Hardened (spec-v53 — public-tool output safety & input bounds; zero new tiles)
 
 A zero-tile hardening release: no new tile, no clinical formula, threshold, or

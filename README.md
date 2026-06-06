@@ -230,21 +230,64 @@ session, and nothing to log.
 ```
 index.html          single-page shell (hero search, home grid, tile mount)
 styles.css          one stylesheet (responsive; no horizontal scroll — enforced catalog-wide at 320px in CI)
-app.js              router, filters, view wiring (zero runtime deps)
+app.js              router, filters, view wiring, the UTILITIES catalog
+                    (255 tiles — the single source of truth; zero runtime deps)
 sw.js               service worker — precache shell, cache shards by build hash
 theme.js            light/dark theme toggle (no storage)
 lib/                pure compute modules, one per tile family
-  ├─ data.js        the UTILITIES catalog (255 tiles, the single source of truth)
+  ├─ data.js        same-origin data loader (per-URL promise cache)
+  ├─ meta.js        per-tile citation / example / source-stamp metadata
   ├─ clinical*.js   clinical math / scoring / criteria
   └─ pa/            the prior-auth linter: extract · classify · payer · rules ·
                     engine · report · docx · staleness  (spec-v52)
 views/              per-group view renderers (group-*.js, pa-lint.js)
 data/               sharded public datasets + SHA-256 manifests (46 datasets)
-scripts/            build-*, check-*, audit-* (build + the CI lint gates)
-docs/               specs (spec-v4 … spec-v52) + architecture / threat-model / …
+scripts/            build-*, check-* (catalog-truth, output-safety, citations,
+                    commitments, PA staleness), audit-* — the CI gate chain
+docs/               specs (spec-v4 … spec-v61) + citation-staleness ledger +
+                    architecture / threat-model / …
 test/               unit/ (node:test) · integration/ (Playwright) · fixtures/
 dist/               build output (255 tool pages, OG cards, sitemap, SBOM)
 ```
+
+### Provenance and citation integrity (spec-v54)
+
+A login-less, AI-free calculator earns trust only if the nurse can see, on the
+tile, exactly which published source produced the number — and tell whether that
+source is current. Three invariants make that auditable, each enforced by the
+`check-citations.mjs` lint gate (in the `npm run lint` chain) over all 255 tiles:
+
+| Invariant | Rule | Enforcement |
+|---|---|---|
+| **Inline** | every `clinical: true` tile has a non-empty `META[id].citation` | gate rule 1 (every clinical tile, 0 off-tile) |
+| **Well-formed** | no bare URL in citation text (URLs live in `citationUrl`); `citationUrl` parses as `https://` | gate rules 2–3 |
+| **Current — or justified-stale** | a guideline-issuer citation carries an `accessed` date **and** a staleness-ledger row; no unpinned "current edition" phrase | gate rules 4–5 (the guideline-issuer tiles) |
+
+```
+META[id].citation  ──►  check-citations.mjs  ──►  guideline-issuer?  ──► needs accessed + ledger row
+   (lib/meta.js)         (case-sensitive /\b(CDC|KDIGO|AGS|ACC|         │
+                          AHA|ATS|IDSA|ESC|WHO|AAP|ACOG|SAMHSA|         ▼
+                          NICE)\b|Joint Commission/)         docs/citation-staleness.md
+                                                             (shipped vs latest edition + justification)
+```
+
+The ledger ([docs/citation-staleness.md](docs/citation-staleness.md)) is the
+one-file answer to "is Sophie current?": one row per guideline tile naming the
+**edition shipped**, the **latest known edition**, the **accessed** date, and a
+**justification** wherever the two differ. Two examples of a *justified* gap:
+KDIGO AKI staging is deliberately kept at the 2012 edition because the 2024 KDIGO
+update governs CKD evaluation, not AKI staging; the 2013 ACC/AHA Pooled Cohort
+Equations (`ascvd`) are retained as the still-widely-charted instrument while the
+race-free 2024 AHA PREVENT model ships separately as the `prevent` tile.
+
+**Design decision — no build-time link checker.** URL *syntax* is verified
+statically; URL *liveness* is a human step at the quarterly source pull, stamped
+via `citationAccessed`. Fetching every DOI at build time would be a network call,
+which the dependency/network budget (spec-v10, spec-v50 §3) forbids. The
+gate's pure detector is unit-tested with one negative fixture per rule, and a
+Playwright pin ([test/integration/citations.spec.js](test/integration/citations.spec.js))
+confirms a long-DOI tile renders its inline citation and wraps — no horizontal
+scroll — at 320px.
 
 ## The Prior-Auth Packet Linter (`pa-lint`)
 
@@ -607,10 +650,10 @@ rules, not soft preferences.
 | `npm run dev`            | Serve the directory locally on http://localhost:4173              |
 | `npm run build`          | Copy static files into `dist/` for deployment                     |
 | `npm test`               | Run the full test suite (unit, a11y, grep, data integrity)        |
-| `npm run test:unit`      | Run Node's built-in unit tests (2,381 tests)                      |
-| `npm run test:e2e`       | Run Playwright integration tests against a real browser (incl. a full-catalog 320px no-horizontal-scroll sweep) |
+| `npm run test:unit`      | Run Node's built-in unit tests (2,658 tests)                      |
+| `npm run test:e2e`       | Run Playwright integration tests against a real browser (incl. a full-catalog 320px no-horizontal-scroll sweep and the citation-wrap pin) |
 | `npm run test:a11y`      | Run accessibility checks on every utility view                    |
-| `npm run lint`           | Run ESLint with the project rules (bans innerHTML, eval, others)  |
+| `npm run lint`           | ESLint + the CI gate chain: grep-check, output-safety, citation-integrity, catalog-truth, commitments, PA staleness, PA audit |
 | `npm run data:refresh`   | Re-fetch and re-shard every public dataset                        |
 | `npm run data:verify`    | Verify shard SHA-256 hashes against the manifests                 |
 | `npm run sbom`           | Regenerate the CycloneDX SBOM (`sbom.json`, `sbom.md`)            |
@@ -699,6 +742,9 @@ build, integrity-verified data shards) are documented in
   with canonical URL and refresh cadence
 - [docs/clinical-citations.md](docs/clinical-citations.md) — every
   formula and scoring system with citations
+- [docs/citation-staleness.md](docs/citation-staleness.md) — the spec-v54
+  staleness ledger: every guideline tile's shipped vs latest edition,
+  accessed date, and justification when deliberately behind
 - [docs/field-medicine-citations.md](docs/field-medicine-citations.md) —
   Group I citations, including AHA non-derivation posture
 - [docs/legal.md](docs/legal.md) — data sourcing posture, AMA CPT

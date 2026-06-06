@@ -30,6 +30,16 @@ that used to live in this folder (`pediatric-vitals.json`,
 `beers.json`, `asa-status.json`, `mallampati.json`) were retired
 with their tiles in spec-v29 wave 29-2 §2.5.
 
+Note (spec-v54 §3 #7 reconciliation): the retired `beers.json`
+was the standalone Beers reference *table*. The live `beers-check`
+deprescribing tile is a different artifact — it carries the AGS
+2023 Beers content **embedded in `lib/medication-v4.js`** (the
+`beersCheck` export), not in a JSON shard. Its citation is inline
+in `META['beers-check']` with `citationAccessed`, and it has a row
+in `docs/citation-staleness.md`. So "the `beers.json` shard was
+retired" and "the `beers-check` tile ships current Beers data" are
+both true and not in conflict.
+
 ## Field Medicine datasets
 
 The Group I (Field Medicine) datasets introduced in spec-v3 survive
