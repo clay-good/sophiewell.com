@@ -6,6 +6,61 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v61 — bedside medication-safety, electrolyte/fluid, and OB/peds tiles; +12 tiles, 307 → 319)
+
+Twelve deterministic, bedside-necessary nursing computations that fill confirmed
+gaps — each is something a working nurse computes by hand today, and each passes
+the [spec-v29] §3 one-line test (computes an output from input; no reference-only
+tables). No runtime network call and no AI; every tile ships its primary citation
+inline with a `citationUrl` and inherits the [spec-v59] input/output-safety
+contract and the [spec-v60] citation contract.
+
+- **`urine-output`** — hourly urine-output rate (mL/kg/hr) with the KDIGO oliguria
+  / AKI urine-output bands. The hourly Foley check.
+- **`gir`** — Glucose Infusion Rate (mg/kg/min) with the 4-8 neonatal target band.
+  The NICU dextrose-titration confirm.
+- **`ebv-mabl`** — estimated blood volume + maximum allowable blood loss (Gross,
+  age/sex-banded). The OR/L&D transfusion-threshold anticipation.
+- **`corrected-phenytoin`** — albumin-corrected phenytoin (Sheiner-Tozer), with the
+  CrCl<10/ESRD variant. Interpreting a "low" total level in hypoalbuminemia.
+- **`potassium-deficit`** — coarse total-body K deficit estimate + the standard
+  repletion-rate caveats. A planning aid, explicitly not an order.
+- **`magnesium-replacement`** — banded MgSO4 repletion estimate by severity.
+- **`rhig-dose`** — RhIG vials from a Kleihauer-Betke result (FMH ÷ 30 mL, round,
+  add one). The L&D post-positive-KB calculation.
+- **`peds-transfusion-volume`** — weight-based PRBC volume (mL) with the 10-15
+  mL/kg reference band.
+- **`iv-osmolarity`** — estimated IV/PN osmolarity with the ~900 mOsm/L
+  peripheral-vs-central line flag.
+- **`burn-uop-target`** — the hourly urine-output *target* the nurse chases to
+  titrate burn resuscitation (complements `burn-fluid`'s Parkland estimate).
+- **`fluid-balance`** — shift net I&O balance + cumulative percent-of-body-weight
+  with the >10% fluid-overload flag. The end-of-shift handoff tally.
+- **`carb-insulin-bolus`** — carb-counting meal bolus + correction bolus, shown
+  separately, with the correction floored at 0 below target.
+
+Each compute export lives in `lib/clinical-v7.js` (pure; validated through
+`lib/num.js`, denominators guarded, `boundsAdvisory()` on physiologic inputs) and
+is rendered in `views/group-v11.js`. Every tile carries a `META[id]` entry with an
+inline citation + `citationUrl` + `citationAccessed`, a Test-with-example payload
+verified end-to-end by the numeric-correctness sweep, ≥3 boundary worked examples
+in its unit test (including the zero-denominator/null fallback and the
+impossible-input `RangeError`), a [spec-v11] audit log under `docs/audits/v11/`,
+and a `docs/citation-staleness.md` ledger row. All 12 are added to the
+[spec-v59] object-aware fuzz harness (`test/unit/fuzz-tools.test.js`) with zero
+non-finite/leaked-token results. Every dosing/replacement tile renders an explicit
+"estimate / verify per local protocol and an independent double-check" note — the
+order stays with the clinician and the pharmacy ([spec-v61] §7).
+
+Catalog-truth surfaces ([spec-v46]) all updated to 319; `npm run lint`,
+`npm run test`, `npm run build`, the example-correctness sweep, and the
+full-catalog mobile no-horizontal-scroll sweep are green.
+
+Part A of [spec-v61] (cross-cutting enhancements — derivation/interpretation
+backfill, related-tool linking, labeled copy, unit toggles, copy-link, printable
+handoff, opt-in persistence) is tracked separately; the related-tool-linking and
+copy-link affordances land in this release, the broader backfills remain open.
+
 ### Changed (spec-v60 — citation-integrity completion & full-catalog currency re-verification; zero tiles, 307 → 307)
 
 A zero-tile provenance release. No clinical formula, threshold, or rounding

@@ -73,3 +73,24 @@ maintainer can see the instrument was reviewed and deliberately retained.
 | vis | Vasoactive-Inotropic Score | Gaies 2010 (Pediatr Crit Care Med 2010;11) | same | 2026-06-05 | foundational instrument; extends the older Inotropic Score (Wernovsky 1995), attribution split inline in v54 |
 | insulin-correction | ADA inpatient glycemic targets + ISF formulas (1800/1500-rule) | ADA Standards of Care 2024, ch. 16 (Diabetes Care 2024;47(Suppl 1):S295-S306) | ADA Standards of Care 2025 (Diabetes Care 2025;48(Suppl 1)) | 2026-06-06 | REFRESH reviewed (spec-v60 §4): the 2025 annual edition leaves the hospital glycemic targets (140-180 mg/dL general ward; 110-180 mg/dL ICU) and the insulin-sensitivity-factor rules unchanged from the cited 2024 chapter; the fully-paginated 2024 citation is retained over a less-precise 2025 reference per the no-degrade-precision rule. Re-pin pagination at the next quarterly source pull. |
 | lab-interpret | mixed reference ranges (ADA 2024; 2018 ACC/AHA cholesterol; ATA 2014) | ADA Standards of Care 2024 | ADA Standards of Care 2025 (Diabetes Care 2025;48(Suppl 1)) | 2026-06-06 | REFRESH reviewed (spec-v60 §4): the ADA-sourced glucose/A1c interpretation bands are unchanged in the 2025 edition; the 2018 cholesterol and ATA 2014 thyroid ranges remain current. No band moves; citation retained. |
+
+## spec-v61 bedside tiles (added 2026-06-06)
+
+`urine-output` matches the guideline-issuer pattern (KDIGO) and is therefore
+gate-enforced; the remaining rows are documentation only (their citations are
+foundational/society papers that do not match the issuer acronym set), recorded
+so a maintainer can see the source was reviewed and deliberately retained.
+
+| tile id | instrument | edition shipped | latest known edition | accessed | justification if behind |
+|---|---|---|---|---|---|
+| urine-output | KDIGO AKI urine-output staging | KDIGO AKI 2012 (Kidney Int Suppl 2012;2) | 2024 KDIGO CKD guideline | 2026-06-06 | current for AKI — the urine-output thresholds (0.5 / 0.3 mL/kg/hr) are unchanged from KDIGO AKI 2012; the 2024 update governs CKD, not AKI staging (same rationale as the kdigo-aki row) |
+| gir | Glucose infusion rate target band | Kalhan 1999 (Eur J Clin Nutr 1999;53 Suppl 1) | same | 2026-06-06 | foundational physiologic target; the 4-8 mg/kg/min neonatal band is stable |
+| ebv-mabl | Gross maximum allowable blood loss | Gross 1983 (Anesthesiology 1983;58) | same | 2026-06-06 | foundational formula, no superseding edition |
+| potassium-deficit | Kruse-Carlson KCl repletion | Kruse 1990 (Arch Intern Med 1990;150) | same | 2026-06-06 | foundational; presented as a coarse planning estimate with the standard repletion-rate caveats |
+| magnesium-replacement | Tong-Rude Mg repletion bands | Tong & Rude 2005 (J Intensive Care Med 2005;20) | same | 2026-06-06 | foundational review; banded dose ranges stable |
+| rhig-dose | AABB RhIG / FMH dosing | AABB Technical Manual; Sandler 2015 (Transfusion 2015;55) | current AABB Technical Manual | 2026-06-06 | the 30 mL fetal-whole-blood-per-vial and round-up-plus-one conventions are unchanged across AABB editions |
+| peds-transfusion-volume | BCSH/New neonatal-pediatric transfusion | New 2016 (Br J Haematol 2016;175) | same | 2026-06-06 | foundational guideline; weight-based volume formula stable |
+| iv-osmolarity | ASPEN PN safe-practices osmolarity | Boullata 2014 (JPEN 2014;38) | ASPEN PN Safe Practices (current) | 2026-06-06 | the macronutrient/electrolyte osmolarity estimation and ~900 mOsm/L central-line threshold are unchanged in current ASPEN guidance |
+| burn-uop-target | ABA burn-shock resuscitation UOP target | Pham 2008 (J Burn Care Res 2008;29) | same | 2026-06-06 | foundational ABA practice guideline; the 0.5 / 1.0 mL/kg/hr targets are unchanged |
+| fluid-balance | Malbrain fluid stewardship overload flag | Malbrain 2018 (Ann Intensive Care 2018;8) | same | 2026-06-06 | foundational; the >10%-of-body-weight cumulative-overload flag is stable |
+| carb-insulin-bolus | ADA carbohydrate-counting insulin dosing | ADA Standards of Care 2025 (Diabetes Care 2025;48 Suppl 1) | same | 2026-06-06 | current annual edition; meal-bolus / correction-factor method unchanged. Carries the spec-v60 §4 REFRESH discipline for the next annual update |

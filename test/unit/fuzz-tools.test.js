@@ -62,6 +62,7 @@ import * as clinical from '../../lib/clinical.js';
 import * as clinicalV4 from '../../lib/clinical-v4.js';
 import * as clinicalV5 from '../../lib/clinical-v5.js';
 import * as clinicalV6 from '../../lib/clinical-v6.js';
+import * as clinicalV7 from '../../lib/clinical-v7.js';
 import * as medicationV4 from '../../lib/medication-v4.js';
 import * as medicationV5 from '../../lib/medication-v5.js';
 import * as scoringV4 from '../../lib/scoring-v4.js';
@@ -80,6 +81,7 @@ const MODULES = {
   'clinical-v4.js': clinicalV4,
   'clinical-v5.js': clinicalV5,
   'clinical-v6.js': clinicalV6,
+  'clinical-v7.js': clinicalV7,
   'medication-v4.js': medicationV4,
   'medication-v5.js': medicationV5,
   'scoring-v4.js': scoringV4,

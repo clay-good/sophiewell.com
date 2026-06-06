@@ -16,6 +16,7 @@ import { renderers as RV7 } from './views/group-v7.js';
 import { renderers as RV8 } from './views/group-v8.js';
 import { renderers as RV9 } from './views/group-v9.js';
 import { renderers as RV10 } from './views/group-v10.js';
+import { renderers as RV11 } from './views/group-v11.js';
 import { renderers as RPALINT } from './views/pa-lint.js';
 import { META } from './lib/meta.js';
 import { fetchJson } from './lib/data.js';
@@ -29,7 +30,7 @@ import { resolvePrompt } from './lib/prompt.js';
 // artifact-detect / artifact-route / artifact-handoff helpers were
 // deleted in spec-v29 wave 29-2 (Group C/L).
 
-const RENDERERS = { ...RA, ...RC, ...RE, ...RF, ...RG, ...RH, ...RI, ...RJ, ...RKLMNO, ...RV5, ...RV6, ...RV7, ...RV8, ...RV9, ...RV10, ...RPALINT };
+const RENDERERS = { ...RA, ...RC, ...RE, ...RF, ...RG, ...RH, ...RI, ...RJ, ...RKLMNO, ...RV5, ...RV6, ...RV7, ...RV8, ...RV9, ...RV10, ...RV11, ...RPALINT };
 
 // ----- Utility registry ----------------------------------------------------
 // Source of truth for routes, names, group, audiences, and clinical flag.
@@ -466,6 +467,19 @@ const UTILITIES = [
   { id: 'ariscat',              name: 'ARISCAT postoperative pulmonary risk',             group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'apache2',              name: 'APACHE II (ICU mortality estimate)',               group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'braden-q',             name: 'Braden Q (pediatric pressure-injury risk)',        group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  // spec-v61 §3: 12 bedside medication-safety, electrolyte/fluid, and OB/peds tiles.
+  { id: 'urine-output',         name: 'Urine output rate + KDIGO oliguria flag',          group: 'E', audiences: ['clinicians', 'educators', 'field'], clinical: true },
+  { id: 'gir',                  name: 'Glucose Infusion Rate (mg/kg/min)',                group: 'F', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'ebv-mabl',             name: 'Estimated blood volume + max allowable blood loss', group: 'E', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'corrected-phenytoin',  name: 'Albumin-corrected phenytoin (Sheiner-Tozer)',      group: 'E', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'potassium-deficit',    name: 'Potassium deficit + replacement guidance',         group: 'F', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'magnesium-replacement', name: 'Magnesium repletion estimate',                    group: 'F', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'rhig-dose',            name: 'Rh immune globulin dose (fetomaternal hemorrhage)', group: 'N', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'peds-transfusion-volume', name: 'Pediatric / neonatal PRBC transfusion volume',  group: 'N', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'iv-osmolarity',        name: 'IV / PN osmolarity + central-line flag',           group: 'F', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'burn-uop-target',      name: 'Burn-resuscitation urine-output target',           group: 'E', audiences: ['clinicians', 'educators', 'field'], clinical: true },
+  { id: 'fluid-balance',        name: 'Shift net fluid balance (I&O)',                     group: 'E', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'carb-insulin-bolus',   name: 'Carb-counting mealtime insulin bolus',             group: 'F', audiences: ['clinicians', 'educators'], clinical: true },
 ];
 
 const UTIL_BY_ID = new Map(UTILITIES.map((u) => [u.id, u]));
@@ -1032,15 +1046,43 @@ function renderMetaBlock(util) {
     block.appendChild(el('p', { class: 'example-row' }, [link, note]));
   }
 
+  // spec-v61 §2 A2: related-tool linking. `META[id].related` lists sibling
+  // tile ids; render each that resolves to a real, in-catalog tile as a hash
+  // link so a nurse on `wells-pe` is one click from `perc` / `pesi`. Unknown
+  // ids are silently skipped (the related-tools unit test pins that every
+  // declared id resolves, so this is defensive, not a feature).
+  if (Array.isArray(meta.related) && meta.related.length) {
+    const seen = new Set();
+    const links = [];
+    for (const rid of meta.related) {
+      if (rid === util.id || seen.has(rid)) continue;
+      const target = UTILITIES.find((u) => u.id === rid);
+      if (!target) continue;
+      seen.add(rid);
+      const a = el('a', { class: 'related-link', href: `#${rid}`, text: target.name });
+      links.push(el('li', { class: 'related-item' }, [a]));
+    }
+    if (links.length) {
+      const rel = el('nav', { class: 'related-tools', 'aria-label': 'Related tools' });
+      rel.appendChild(el('p', { class: 'related-header', text: 'Related tools:' }));
+      rel.appendChild(el('ul', { class: 'related-list' }, links));
+      block.appendChild(rel);
+    }
+  }
+
   // spec-v2 section 3.2: a single "Copy all" button that grabs whatever the
   // results region currently shows. Per-result copy buttons live in the
-  // utility renderers; this is the universal fallback.
+  // utility renderers; this is the universal fallback. spec-v61 §2 A5: a
+  // sibling "Copy link" button copies the deep link (hash-state already
+  // encodes the inputs), so a populated calculation can be handed to a
+  // colleague. No new persistence, no network.
   const copyLive = el('span', { class: 'copy-live visually-hidden', 'aria-live': 'polite', role: 'status' });
   const copyAllBtn = copyButton(() => {
     const res = document.getElementById('q-results') || document.getElementById('tool-body');
     return res ? (res.innerText || res.textContent || '') : '';
   }, { label: 'Copy all', live: copyLive });
-  block.appendChild(el('p', { class: 'copy-row' }, [copyAllBtn, copyLive]));
+  const copyLinkBtn = copyButton(() => location.href, { label: 'Copy link', live: copyLive });
+  block.appendChild(el('p', { class: 'copy-row' }, [copyAllBtn, copyLinkBtn, copyLive]));
 
   return block.children.length ? block : null;
 }

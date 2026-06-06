@@ -1317,6 +1317,34 @@ main h1 {
   color: var(--accent-pop-strong);
 }
 
+/* spec-v61 §2 A2: related-tool links. The list wraps within the tile column
+   at 320px (flex-wrap) so a long cluster never forces horizontal scroll. */
+.tool-meta .related-tools { margin: var(--space-2) 0; }
+.tool-meta .related-header {
+  margin: 0 0 var(--space-1);
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+.tool-meta .related-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-1) var(--space-2);
+}
+.tool-meta .related-item { margin: 0; }
+.tool-meta .related-link {
+  display: inline-block;
+  font-size: 0.85rem;
+  color: var(--accent-pop-strong);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  overflow-wrap: anywhere;
+}
+.tool-meta .related-link:hover,
+.tool-meta .related-link:focus-visible { color: var(--accent-pop); }
+
 /* Keyboard shortcut overlay (spec-v2 3.3) */
 #shortcut-overlay {
   position: fixed; inset: 0; background: rgba(0,0,0,0.65);

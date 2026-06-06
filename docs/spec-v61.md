@@ -1,6 +1,8 @@
 # spec-v61.md — Tool-value enhancement pass & new bedside tiles (12 tiles)
 
-> Status: proposed (2026-06-05). v61 has two parts. **Part A** is
+> Status: Part B shipped (2026-06-06); Part A partially shipped (A2
+> related-tool linking and A5 copy-link landed; A1/A3/A4/A6/A7/A8
+> remain open follow-ups). v61 has two parts. **Part A** is
 > a zero-tile *enhancement* pass that raises the value of the
 > existing catalog by finishing three features that are partial or
 > entirely absent today — "show your work" derivation, related-tool
