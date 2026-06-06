@@ -39,6 +39,7 @@ import assert from 'node:assert/strict';
 import * as clinical from '../../lib/clinical.js';
 import * as clinicalV4 from '../../lib/clinical-v4.js';
 import * as clinicalV5 from '../../lib/clinical-v5.js';
+import * as clinicalV6 from '../../lib/clinical-v6.js';
 import * as medicationV4 from '../../lib/medication-v4.js';
 import * as scoringV4 from '../../lib/scoring-v4.js';
 import * as labInterpret from '../../lib/lab-interpret.js';
@@ -48,6 +49,7 @@ const MODULES = {
   'clinical.js': clinical,
   'clinical-v4.js': clinicalV4,
   'clinical-v5.js': clinicalV5,
+  'clinical-v6.js': clinicalV6,
   'medication-v4.js': medicationV4,
   'scoring-v4.js': scoringV4,
   'lab-interpret.js': labInterpret,

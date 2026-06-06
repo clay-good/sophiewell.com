@@ -12,6 +12,7 @@ import { renderers as RJ } from './views/group-j.js';
 import { renderers as RKLMNO } from './views/group-klmno.js';
 import { renderers as RV5 } from './views/group-v5.js';
 import { renderers as RV6 } from './views/group-v6.js';
+import { renderers as RV7 } from './views/group-v7.js';
 import { renderers as RPALINT } from './views/pa-lint.js';
 import { META } from './lib/meta.js';
 import { fetchJson } from './lib/data.js';
@@ -25,7 +26,7 @@ import { resolvePrompt } from './lib/prompt.js';
 // artifact-detect / artifact-route / artifact-handoff helpers were
 // deleted in spec-v29 wave 29-2 (Group C/L).
 
-const RENDERERS = { ...RA, ...RC, ...RE, ...RF, ...RG, ...RH, ...RI, ...RJ, ...RKLMNO, ...RV5, ...RV6, ...RPALINT };
+const RENDERERS = { ...RA, ...RC, ...RE, ...RF, ...RG, ...RH, ...RI, ...RJ, ...RKLMNO, ...RV5, ...RV6, ...RV7, ...RPALINT };
 
 // ----- Utility registry ----------------------------------------------------
 // Source of truth for routes, names, group, audiences, and clinical flag.
@@ -406,6 +407,20 @@ const UTILITIES = [
   // core ruleset, the PDF/DOCX parsers, and the DOCX report follow in
   // subsequent waves.
   { id: 'pa-lint',                name: 'Prior-Auth Packet Linter',                         group: 'P', audiences: ['billers', 'case-managers'], clinical: false, shape: 'document-linter' },
+  // spec-v55: bedside hematology, renal/acid-base, and oxygenation math (13 tiles).
+  { id: 'anc',                 name: 'Absolute Neutrophil Count (ANC) + neutropenia grade', group: 'E', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'retic-index',         name: 'Reticulocyte Production Index (corrected retic)',  group: 'E', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'tsat',                name: 'Transferrin Saturation + iron-studies interpreter', group: 'E', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'cci-platelet',        name: 'Corrected Count Increment (platelet refractoriness)', group: 'E', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'ldl-calc',            name: 'Calculated LDL (Friedewald + NIH)',                group: 'E', audiences: ['clinicians', 'educators', 'patients'], clinical: true },
+  { id: 'eag-a1c',             name: 'Estimated Average Glucose from A1c (eAG)',         group: 'E', audiences: ['clinicians', 'educators', 'patients'], clinical: true },
+  { id: 'cao2-do2',            name: 'Arterial O2 Content (CaO2) + O2 Delivery (DO2)',   group: 'E', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'oxygenation-index',   name: 'Oxygenation Index (OI) + Oxygen Saturation Index (OSI)', group: 'E', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'driving-pressure',    name: 'Driving Pressure + static/dynamic compliance',     group: 'E', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'ttkg',                name: 'Transtubular Potassium Gradient (TTKG)',           group: 'E', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'urine-anion-gap',     name: 'Urine Anion Gap (non-gap acidosis)',               group: 'E', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'acid-base-deficit',   name: 'Bicarbonate Deficit + Sodium Deficit',             group: 'E', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'schwartz-egfr',       name: 'Bedside Schwartz eGFR (pediatric)',                group: 'E', audiences: ['clinicians', 'educators'], clinical: true },
 ];
 
 const UTIL_BY_ID = new Map(UTILITIES.map((u) => [u.id, u]));

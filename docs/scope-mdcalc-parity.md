@@ -97,7 +97,11 @@ literacy decoders, the field-medicine and EMS workflow tiles).
 > tiles** — is 254; v52 close — [spec-v52](spec-v52.md), which
 > adds the Prior-Auth Packet Linter (`pa-lint`) as the first
 > instance of the new `shape: 'document-linter'` tile shape
-> (the existing 254 default to `shape: 'numeric'`) — is 255.)
+> (the existing 254 default to `shape: 'numeric'`) — is 255;
+> v53/v54 close — output-safety and citation-integrity hardening
+> passes with **zero new tiles** — is 255; v55 close —
+> [spec-v55](spec-v55.md), which adds 13 bedside hematology,
+> renal/acid-base, and oxygenation calculators — is 268.)
 
 A reasonable steady-state estimate is **400–600 tiles over 3–5
 years**, depending on how aggressive the audit pace is and how

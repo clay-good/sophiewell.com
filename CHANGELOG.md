@@ -6,6 +6,47 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v55 — bedside hematology, renal/acid-base, and oxygenation math; +13 tiles, 255 → 268)
+
+Thirteen deterministic Group-E calculators that fill confirmed gaps a bedside
+ICU/acute-care RN, RT, or 3 a.m. resident actually reaches for. Each consumes at
+least one input and computes an output (spec-v29 §3), ships its primary citation
+inline (spec-v54), and is covered by the spec-v53 object-aware fuzz harness with
+zero `NaN`/`Infinity`/`undefined` leaks. New module `lib/clinical-v6.js`
+(13 compute exports) + renderers in `views/group-v7.js`.
+
+- **Hematology:** `anc` (Absolute Neutrophil Count + CTCAE neutropenia grade),
+  `retic-index` (corrected reticulocyte % + Reticulocyte Production Index),
+  `tsat` (transferrin saturation + iron-studies pattern), `cci-platelet`
+  (Corrected Count Increment for platelet refractoriness).
+- **Renal / acid-base:** `ttkg` (Transtubular Potassium Gradient, with the
+  surfaced interpretability guard: urine osm > plasma osm and urine Na > 25),
+  `urine-anion-gap` (non-gap acidosis discriminator), `acid-base-deficit`
+  (bicarbonate + sodium deficit estimates with the over-rapid-correction
+  warning), `schwartz-egfr` (bedside pediatric eGFR), `eag-a1c` (estimated
+  average glucose from A1c, ADAG).
+- **Oxygenation / ventilation:** `cao2-do2` (arterial O₂ content + delivery),
+  `oxygenation-index` (OI + OSI with PALICC-2 pediatric-ARDS bands),
+  `driving-pressure` (ΔP + static/dynamic compliance with the ≤15 cmH₂O
+  lung-protective target).
+- **Lipids:** `ldl-calc` (calculated LDL). **Deliberate substitution:** the spec
+  named Friedewald + Martin/Hopkins; Martin/Hopkins requires a 180-cell
+  proprietary strata table that could not be source-verified, and the spec-v11
+  correctness floor forbids shipping an unverifiable clinical table — so the
+  second method is the published closed-form **NIH/Sampson 2020** equation
+  (same high-TG / low-LDL use case). Disclosed in the tile note, the META
+  citation, and `docs/audits/v11/ldl-calc.md`.
+- **Robustness:** every compute function imports `r1`/`r2`/`r3`/`num`/`fmt` from
+  `lib/num.js`; every division denominator (TIBC, plasma K, urine osm − plasma
+  osm, driving pressure, serum creatinine) is guarded to return `null` →
+  `fmt()` fallback, never a non-finite number to the DOM. 62 new unit tests
+  (≥3 boundary worked examples each, including the zero-denominator and
+  precondition-guard cases); 13 spec-v11 audit logs.
+- **Provenance:** `tsat` (KDIGO) and `oxygenation-index` (PALICC-2) carry
+  `citationAccessed` + a `docs/citation-staleness.md` row (spec-v54).
+- Catalog-truth surfaces (spec-v46) all advanced 255 → 268; `UTILITIES.length`
+  is 268.
+
 ### Hardened (spec-v54 — citation integrity: inline, current, well-wrapped; zero new tiles)
 
 A zero-tile citation-integrity release: no new tile, no clinical formula,

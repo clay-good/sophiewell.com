@@ -42,6 +42,8 @@ the quarterly source pull. No clinical formula or threshold changes here.
 | device-day-counter | CDC NHSN CAUTI/CLABSI definitions | CDC NHSN 2024 manual; SHEA CAUTI 2014 | NHSN refreshed annually | 2026-06-05 | current — the device-day denominator math is unchanged; NHSN definitions tracked to the 2024 manual |
 | beers-check | AGS Beers Criteria | AGS 2023 (J Am Geriatr Soc 2023;71(7)) | same (next AGS update expected ~2026) | 2026-06-05 | current — 2023 is the latest AGS Beers edition; data embedded in `lib/medication-v4.js` (see docs/data-sources.md) |
 | lab-interpret | Reference ranges (multi-source) | ADA 2024 / ACC-AHA 2018 cholesterol / ATA 2014 | ADA refreshed annually | 2026-06-05 | current — charted reference ranges unchanged; the ADA-sourced bands carry the spec-v60 §4 REFRESH discipline |
+| tsat | KDIGO anemia-in-CKD / AGA-ACG iron guidance | KDIGO Anemia 2012 + AGA 2020 iron-deficiency guideline | same | 2026-06-05 | current — TSAT = iron/TIBC is a stable definition; the <20% threshold is unchanged across editions (spec-v55) |
+| oxygenation-index | PALICC-2 pediatric ARDS severity | PALICC-2 (Emeriaud 2023, Pediatr Crit Care Med) | same | 2026-06-05 | current — 2023 is the latest PALICC consensus; OI/OSI bands as published (spec-v55) |
 
 ## Foundational instruments (documentation only)
 

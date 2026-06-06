@@ -5,7 +5,7 @@
 <h1 align="center">sophiewell.com</h1>
 
 <p align="center">
-  <strong>255 deterministic healthcare calculators tuned to the nurse on shift.</strong><br>
+  <strong>268 deterministic healthcare calculators tuned to the nurse on shift.</strong><br>
   Free forever. No servers, no accounts, no telemetry, no AI, no network call after first paint.
 </p>
 
@@ -36,7 +36,7 @@ output; "searchable lookup of static facts" does not qualify. See
 [docs/spec-v10.md](docs/spec-v10.md) for the audience and
 dependency-budget commitments and
 [docs/spec-v29.md](docs/spec-v29.md) for the nurse-first pivot
-and the v29 catalog ledger. At v52 close the catalog is 255
+and the v29 catalog ledger. At v55 close the catalog is 268
 deterministic tiles — every one of them computes from at least
 one user input (the new `pa-lint` tile in spec-v52 consumes
 dropped files instead of form fields and produces a
@@ -101,7 +101,7 @@ discharge-planning functional-status index, and the spec-v43
 Lawton IADL instrumental-ADL companion, and the spec-v44 Barthel
 Index rehab-nursing weighted ADL, and the spec-v45 C-SSRS
 bedside suicide-risk screener added on top), the
-site organizes 255 deterministic calculators
+site organizes 268 deterministic calculators
 across the bedside-shift surfaces a
 nurse, doctor, pharmacist, RT, EMS provider, biller-coder, or
 educator actually reaches for. Every tile takes at least one
@@ -187,6 +187,29 @@ a permalink.
 All computation happens in the browser. For the full picture, see
 [docs/architecture.md](docs/architecture.md).
 
+### Bedside-math cheat sheet (spec-v55 additions)
+
+The thirteen Group-E calculators added in spec-v55, with the formula a nurse or
+RT would otherwise run on scratch paper. Every denominator is guarded (a bad
+input shows a `(…)` fallback, never a non-finite number), and each ships its
+primary citation inline on the tile.
+
+| Tile | Formula / output | Reaches for it |
+|---|---|---|
+| `anc` | WBC × (segs% + bands%) ÷ 100 → ANC + CTCAE grade | neutropenic-precautions / fever-emergency call |
+| `retic-index` | retic% × (Hct ÷ 45) ÷ maturation factor → RPI | hypo- vs hyper-proliferative anemia |
+| `tsat` | iron ÷ TIBC × pct → saturation + pattern | gating IV iron; absolute vs functional deficiency |
+| `cci-platelet` | (Δplt × BSA) ÷ dose → CCI | platelet refractoriness on the transfusion service |
+| `ldl-calc` | Friedewald + NIH/Sampson side by side | LDL when TG is high or LDL is low |
+| `eag-a1c` | 28.7 × A1c − 46.7 → mg/dL and mmol/L | translating A1c to an average glucose |
+| `cao2-do2` | (1.34·Hb·SaO₂) + (0.0031·PaO₂); ×CO×10 | O₂ content and delivery in shock |
+| `oxygenation-index` | (FiO₂ · MAP · pct) ÷ PaO₂ → OI / OSI | PALICC-2 pediatric-ARDS severity |
+| `driving-pressure` | plateau − PEEP; Vt ÷ ΔP → compliance | lung-protective ≤15 cmH₂O target |
+| `ttkg` | (uK÷pK) ÷ (uOsm÷pOsm), with validity guard | hypo-/hyperkalemia renal work-up |
+| `urine-anion-gap` | uNa + uK − uCl → sign | non-gap acidosis: GI loss vs RTA |
+| `acid-base-deficit` | 0.5·wt·ΔHCO₃; TBW·ΔNa → deficits | planning replacement, with over-rapid-Na warning |
+| `schwartz-egfr` | 0.413 × height ÷ SCr → eGFR | pediatric renal dosing (ages 1–18) |
+
 ## System design and architecture overview
 
 The application is one HTML file, one CSS file, one JavaScript module set,
@@ -211,7 +234,7 @@ long version, see [docs/architecture.md](docs/architecture.md).
  │  manifests (data/)            │  static │        ▼                     ▼             │
  │        │  scripts/build       │  files  │   lazy-load data shard   pure compute      │
  │        ▼                      │         │   (verified vs manifest)  (lib/*.js)       │
- │  dist/  (255 tool pages,      │         │        │                     │             │
+ │  dist/  (268 tool pages,      │         │        │                     │             │
  │  OG cards, sitemap, SBOM)     │         │        ▼                     ▼             │
  └───────────────────────────────┘         │   service worker cache    result + cite   │
                                             │   (keyed to build hash)                    │
@@ -231,7 +254,7 @@ session, and nothing to log.
 index.html          single-page shell (hero search, home grid, tile mount)
 styles.css          one stylesheet (responsive; no horizontal scroll — enforced catalog-wide at 320px in CI)
 app.js              router, filters, view wiring, the UTILITIES catalog
-                    (255 tiles — the single source of truth; zero runtime deps)
+                    (268 tiles — the single source of truth; zero runtime deps)
 sw.js               service worker — precache shell, cache shards by build hash
 theme.js            light/dark theme toggle (no storage)
 lib/                pure compute modules, one per tile family
@@ -247,7 +270,7 @@ scripts/            build-*, check-* (catalog-truth, output-safety, citations,
 docs/               specs (spec-v4 … spec-v61) + citation-staleness ledger +
                     architecture / threat-model / …
 test/               unit/ (node:test) · integration/ (Playwright) · fixtures/
-dist/               build output (255 tool pages, OG cards, sitemap, SBOM)
+dist/               build output (268 tool pages, OG cards, sitemap, SBOM)
 ```
 
 ### Provenance and citation integrity (spec-v54)
@@ -255,7 +278,7 @@ dist/               build output (255 tool pages, OG cards, sitemap, SBOM)
 A login-less, AI-free calculator earns trust only if the nurse can see, on the
 tile, exactly which published source produced the number — and tell whether that
 source is current. Three invariants make that auditable, each enforced by the
-`check-citations.mjs` lint gate (in the `npm run lint` chain) over all 255 tiles:
+`check-citations.mjs` lint gate (in the `npm run lint` chain) over all 268 tiles:
 
 | Invariant | Rule | Enforcement |
 |---|---|---|
