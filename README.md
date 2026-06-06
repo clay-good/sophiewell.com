@@ -36,7 +36,7 @@ output; "searchable lookup of static facts" does not qualify. See
 [docs/spec-v10.md](docs/spec-v10.md) for the audience and
 dependency-budget commitments and
 [docs/spec-v29.md](docs/spec-v29.md) for the nurse-first pivot
-and the v29 catalog ledger. At v58 close the catalog is 307
+and the v29 catalog ledger. At v60 close the catalog is 307
 deterministic tiles — every one of them computes from at least
 one user input (the new `pa-lint` tile in spec-v52 consumes
 dropped files instead of form fields and produces a
@@ -344,11 +344,15 @@ test/               unit/ (node:test) · integration/ (Playwright) · fixtures/
 dist/               build output (307 tool pages, OG cards, sitemap, SBOM)
 ```
 
-### Provenance and citation integrity (spec-v54)
+### Provenance and citation integrity (spec-v54 design, spec-v60 completion)
 
 A login-less, AI-free calculator earns trust only if the nurse can see, on the
 tile, exactly which published source produced the number — and tell whether that
-source is current. Three invariants make that auditable, each enforced by the
+source is current. spec-v54 defined the invariants; spec-v60 built the machinery
+(the gate, the ledger, and the `citationAccessed` convention) and extended it
+across the full 307-tile catalog, pinning the last three unpinned "current
+edition" phrases and re-verifying every guideline tile against its latest known
+edition. Three invariants make that auditable, each enforced by the
 `check-citations.mjs` lint gate (in the `npm run lint` chain) over all 307 tiles:
 
 | Invariant | Rule | Enforcement |

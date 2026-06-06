@@ -6,6 +6,51 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Changed (spec-v60 — citation-integrity completion & full-catalog currency re-verification; zero tiles, 307 → 307)
+
+A zero-tile provenance release. No clinical formula, threshold, or rounding
+changed — every valid-input result is byte-identical. v60 finishes the three
+citation-integrity artifacts [spec-v54] designed but never fully shipped, extends
+them across the full post-v58 catalog (307 tiles, up from the 255 v54 audited),
+and performs the currency re-verification the catalog had drifted on.
+
+- **The gate is real and in CI.** `scripts/check-citations.mjs` runs in
+  `npm run lint` and enforces five rules over all 307 tiles: every tile carries a
+  non-empty inline `citation` with no bare URL; every guideline-issuer tile (CDC,
+  KDIGO, AGS, ACC, AHA, ATS, IDSA, ESC, WHO, AAP, ACOG, Joint Commission, SAMHSA,
+  NICE) carries a `citationAccessed` date **and** a `docs/citation-staleness.md`
+  ledger row; no citation uses the forbidden unpinned phrasing ("current
+  edition" / "latest version" / "most recent"); every `citationUrl` is a
+  syntactically valid `https://` URL. `test/unit/check-citations.test.js` proves
+  each rule bites with a negative fixture.
+- **The ledger exists.** `docs/citation-staleness.md` carries one row per
+  guideline-derived tile (28 gate-enforced) plus the foundational instruments
+  reviewed alongside them — naming the edition shipped, the latest known edition,
+  the `accessed` date, and a justification wherever the shipped edition is behind.
+  40 rows at v60 close.
+- **Unpinned phrases pinned (P-1…P-3).** `field-triage` → ACS-COT *National
+  Guideline for the Field Triage of Injured Patients* (2021); `tetanus` → ACIP
+  *MMWR* 2020;69(3) + 2018 wound-management guidance; `rabies-pep` → ACIP rabies
+  PEP *MMWR* 2022. A grep for the three forbidden phrases in `lib/meta.js` now
+  returns zero.
+- **Currency re-verified.** Each REFRESH row in §4 is resolved: the CDC/NHSN
+  tiles (`device-day-counter`, `sti-screening`, `tb-testing`, `bbp-exposure`)
+  carry an `accessed` date and a ledger row; the two non-gated ADA tiles
+  (`insulin-correction`, `lab-interpret`) were reviewed against ADA Standards of
+  Care 2025 and their inpatient glycemic targets / interpretation bands confirmed
+  unchanged, documented in the ledger with the fully-paginated 2024 citation
+  retained over a less-precise 2025 reference (no-degrade-precision rule). No
+  threshold moves silently inside v60.
+- **`citationUrl` backfill.** DOI-preferred structured `citationUrl` extended
+  from 9 to 37 named-instrument tiles, so the one-click path to the source is
+  present on the high-traffic instruments. The URL is never embedded in citation
+  text — `app.js` `renderMetaBlock` controls wrapping.
+- **`docs/data-sources.md` reconciled.** No longer claims the Beers data is
+  retired; the `beers-check` tile ships the 2023 AGS Beers content embedded in
+  `lib/medication-v4.js` with `citationAccessed` and a ledger row.
+- See [docs/audits/v11/_citations-v60.md] for the per-tile inline/accessed/url/
+  currency verification log.
+
 ### Changed (spec-v59 — full-catalog stress-test sweep & PA-toolchain hardening; zero tiles, 307 → 307)
 
 A zero-tile hardening release. No clinical formula, threshold, or rounding

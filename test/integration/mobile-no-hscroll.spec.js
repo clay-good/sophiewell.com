@@ -11,7 +11,7 @@
 //      likely to overflow).
 //   3. A FULL-CATALOG sweep (every tile in the sitemap) at 320 px -- the
 //      narrowest mainstream width -- so the "no horizontal scroll on every
-//      view" guarantee is *enforced* across all 255 tiles, not just a
+//      view" guarantee is *enforced* across all 307 tiles, not just a
 //      sample. Previously a full-catalog sweep was a one-time manual check;
 //      this makes it a permanent regression guard, so a new tile can never
 //      ship horizontal overflow undetected.
@@ -99,7 +99,7 @@ test('mobile 360px: pa-lint findings with long citation URLs do not scroll horiz
 // same catalog source all-tools.spec.js uses). One test loops all tiles and
 // reports every offender at once, so a regression names exactly which views
 // broke. SPA hash routes re-render in place, so this is fast (~10-15 s for the
-// whole catalog) despite covering 255 tiles. chromium-only (inherits the skip
+// whole catalog) despite covering 307 tiles. chromium-only (inherits the skip
 // above): horizontal overflow is layout/CSS-driven and the documentElement
 // scrollWidth-vs-clientWidth check is engine-agnostic, so one engine is a
 // sufficient guard and keeps the sweep cheap.
