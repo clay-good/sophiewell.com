@@ -15,6 +15,7 @@ import { renderers as RV6 } from './views/group-v6.js';
 import { renderers as RV7 } from './views/group-v7.js';
 import { renderers as RV8 } from './views/group-v8.js';
 import { renderers as RV9 } from './views/group-v9.js';
+import { renderers as RV10 } from './views/group-v10.js';
 import { renderers as RPALINT } from './views/pa-lint.js';
 import { META } from './lib/meta.js';
 import { fetchJson } from './lib/data.js';
@@ -28,7 +29,7 @@ import { resolvePrompt } from './lib/prompt.js';
 // artifact-detect / artifact-route / artifact-handoff helpers were
 // deleted in spec-v29 wave 29-2 (Group C/L).
 
-const RENDERERS = { ...RA, ...RC, ...RE, ...RF, ...RG, ...RH, ...RI, ...RJ, ...RKLMNO, ...RV5, ...RV6, ...RV7, ...RV8, ...RV9, ...RPALINT };
+const RENDERERS = { ...RA, ...RC, ...RE, ...RF, ...RG, ...RH, ...RI, ...RJ, ...RKLMNO, ...RV5, ...RV6, ...RV7, ...RV8, ...RV9, ...RV10, ...RPALINT };
 
 // ----- Utility registry ----------------------------------------------------
 // Source of truth for routes, names, group, audiences, and clinical flag.
@@ -452,6 +453,19 @@ const UTILITIES = [
   { id: 'stone-score',          name: 'STONE score (ureteral stone)',                     group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'iss-rts',              name: 'Injury Severity Score + Revised Trauma Score',     group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'sipa',                 name: 'Shock Index, Pediatric Age-Adjusted (SIPA)',       group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  // spec-v58: neonatal, maternal, and pediatric/adult ICU bedside scores (12 tiles).
+  { id: 'ballard',              name: 'New Ballard Score (gestational age)',              group: 'N', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'finnegan',             name: 'Finnegan Neonatal Abstinence Score (NAS)',         group: 'N', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'silverman-andersen',   name: 'Silverman-Andersen respiratory severity',          group: 'N', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'downes',               name: 'Downes score (neonatal respiratory distress)',     group: 'N', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'bhutani-bilirubin',    name: 'Bhutani bilirubin nomogram + AAP phototherapy',    group: 'N', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'qbl-pph',              name: 'Quantitative blood loss + PPH risk',               group: 'N', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'pelod2',               name: 'PELOD-2 (pediatric organ dysfunction)',            group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'psofa',                name: 'Pediatric SOFA (pSOFA)',                           group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'burch-wartofsky',      name: 'Burch-Wartofsky point scale (thyroid storm)',      group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'ariscat',              name: 'ARISCAT postoperative pulmonary risk',             group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'apache2',              name: 'APACHE II (ICU mortality estimate)',               group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'braden-q',             name: 'Braden Q (pediatric pressure-injury risk)',        group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
 ];
 
 const UTIL_BY_ID = new Map(UTILITIES.map((u) => [u.id, u]));

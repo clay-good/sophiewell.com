@@ -50,6 +50,8 @@ the quarterly source pull. No clinical formula or threshold changes here.
 | peds-resus | AHA PALS resuscitation bolus | PALS 2020 (Circulation 2020;142(16 suppl 2)) | same | 2026-06-06 | current — 2020 is the latest PALS edition; 10-20 mL/kg isotonic bolus unchanged (spec-v56) |
 | audit-full | WHO AUDIT alcohol-use screen | Saunders 1993 + WHO AUDIT Manual (2001) | same | 2026-06-06 | current — 2001 WHO manual is the governing edition; 8/16/20 risk zones unchanged (spec-v57) |
 | feverpain | NICE NG84-endorsed FeverPAIN score | Little 2013 (BMJ 347:f5806); NICE NG84 (2018) | same | 2026-06-06 | current — NG84 remains the endorsing guideline; FeverPAIN items/bands unchanged (spec-v57) |
+| bhutani-bilirubin | AAP hyperbilirubinemia phototherapy thresholds | Bhutani 1999 (nomogram) + AAP CPG Kemper 2022 (Pediatrics 150(3)) | same | 2026-06-06 | current — 2022 AAP CPG is the latest edition; hour-specific zones and phototherapy lines as published (spec-v58) |
+| qbl-pph | ACOG / AIM / CMQCC obstetric-hemorrhage bundle | ACOG Practice Bulletin 183 + AIM/CMQCC Obstetric Hemorrhage bundle | same | 2026-06-06 | current — PB 183 remains the governing ACOG hemorrhage bulletin; >=1000 mL QBL threshold and risk tiers unchanged (spec-v58) |
 
 ## Foundational instruments (documentation only)
 

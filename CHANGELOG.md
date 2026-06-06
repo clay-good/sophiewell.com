@@ -6,6 +6,48 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v58 — neonatal, maternal, and pediatric/adult ICU bedside scores; +12 tiles, 295 → 307)
+
+Twelve deterministic neonatal, maternal, and ICU bedside scores that fill
+confirmed gaps for the NICU / L&D / PICU / ICU nurse. Each is a published,
+deterministic instrument a bedside nurse already assigns by hand; v58 brings
+them onto the page and closes the 50-tile expansion begun in v55 (v55–v58
+together add 52 tiles, 255 → 307). Each consumes at least one input and
+computes an output (spec-v29 §3), ships its citation inline (spec-v54), and is
+covered by the object-aware fuzz harness with zero non-finite leaks. New module
+`lib/scoring-v6.js` (12 compute exports) + renderers in `views/group-v10.js`.
+
+- **Neonatal (Group N):** `ballard` (New Ballard Score → gestational age, GA =
+  24 + 0.4 × maturity score, ±2 wk), `finnegan` (modified Finnegan NAS, framed
+  as the trend tool it is), `silverman-andersen` and `downes` (neonatal
+  respiratory-distress severity), `bhutani-bilirubin` (hour-specific risk zone +
+  AAP-2022 phototherapy threshold).
+- **Maternal (Group N / OB):** `qbl-pph` (quantitative blood loss with the
+  1 g = 1 mL weighed-pad convention + the CMQCC risk tier; decision support,
+  never a transfusion order).
+- **Pediatric/adult ICU (Group G):** `pelod2` and `psofa` (pediatric
+  organ-dysfunction scores with age-banded MAP/creatinine cutoffs applied
+  automatically), `burch-wartofsky` (thyroid-storm point scale), `ariscat`
+  (postoperative pulmonary-complication risk), `apache2` (APACHE II ICU
+  mortality estimate), `braden-q` (pediatric pressure-injury risk, the peds
+  counterpart to the adult Braden).
+- **Convention safety:** the higher-is-worse neonatal scores
+  (`silverman-andersen`, `downes`, `finnegan`) and the lower-is-worse
+  `braden-q` state their direction explicitly so a cross-reading nurse cannot
+  invert the interpretation. The age-banded tiles (`bhutani-bilirubin`,
+  `pelod2`, `psofa`) show the active band so the right threshold can be
+  verified.
+- **Robustness:** every compute function validates inputs via `lib/num.js`
+  `num()` and is covered by the spec-v53 fuzz harness with zero
+  `NaN`/`Infinity`/`undefined` leaks. 41 new unit tests (≥3 boundary examples
+  each, including the age-band boundaries for `bhutani-bilirubin`/`pelod2`/
+  `psofa`); 12 spec-v11 audit logs.
+- **Provenance:** `bhutani-bilirubin` (AAP 2022) and `qbl-pph` (ACOG/CMQCC)
+  carry `citationAccessed` + a `docs/citation-staleness.md` row (spec-v54).
+- Catalog-truth surfaces all advanced 295 → 307; `UTILITIES.length` is 307;
+  sitemap + SBOM + JSON-LD regenerated. README gains a neonatal/maternal/ICU
+  cheat sheet.
+
 ### Added (spec-v57 — brief screeners, decision rules, and triage scores; +14 tiles, 281 → 295)
 
 Fourteen deterministic Group-G instruments that fill confirmed holes a bedside

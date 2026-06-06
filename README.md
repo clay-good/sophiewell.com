@@ -5,7 +5,7 @@
 <h1 align="center">sophiewell.com</h1>
 
 <p align="center">
-  <strong>295 deterministic healthcare calculators tuned to the nurse on shift.</strong><br>
+  <strong>307 deterministic healthcare calculators tuned to the nurse on shift.</strong><br>
   Free forever. No servers, no accounts, no telemetry, no AI, no network call after first paint.
 </p>
 
@@ -36,7 +36,7 @@ output; "searchable lookup of static facts" does not qualify. See
 [docs/spec-v10.md](docs/spec-v10.md) for the audience and
 dependency-budget commitments and
 [docs/spec-v29.md](docs/spec-v29.md) for the nurse-first pivot
-and the v29 catalog ledger. At v57 close the catalog is 295
+and the v29 catalog ledger. At v58 close the catalog is 307
 deterministic tiles — every one of them computes from at least
 one user input (the new `pa-lint` tile in spec-v52 consumes
 dropped files instead of form fields and produces a
@@ -101,7 +101,7 @@ discharge-planning functional-status index, and the spec-v43
 Lawton IADL instrumental-ADL companion, and the spec-v44 Barthel
 Index rehab-nursing weighted ADL, and the spec-v45 C-SSRS
 bedside suicide-risk screener added on top), the
-site organizes 295 deterministic calculators
+site organizes 307 deterministic calculators
 across the bedside-shift surfaces a
 nurse, doctor, pharmacist, RT, EMS provider, biller-coder, or
 educator actually reaches for. Every tile takes at least one
@@ -256,6 +256,31 @@ sees why the determination flipped.
 | `iss-rts` | ISS 0–75 (+ major-trauma flag), RTS | trauma severity scoring |
 | `sipa` | shock index vs age-banded cutoff | pediatric trauma triage |
 
+### Neonatal, maternal & ICU cheat sheet (spec-v58 additions)
+
+The twelve neonatal / maternal / pediatric-and-adult-ICU scores added in
+<!-- catalog-truth:historical -->
+spec-v58, closing the 50-tile expansion begun in v55 (255 → 307). Each is a
+published instrument a bedside nurse already assigns by hand. Three apply
+**age- or gestational-age-banded cutoffs** automatically and show the active
+band; three neonatal scores and `braden-q` state their **direction**
+(higher-vs-lower = worse) explicitly so a cross-reading nurse cannot invert it.
+
+| Tile | Output | Reaches for it |
+|---|---|---|
+| `ballard` | maturity score → GA = 24 + 0.4 × score, ±2 wk | NICU/nursery gestational-age assignment |
+| `finnegan` | modified NAS total, ≥8 / ≥12 trend bands | neonatal abstinence rescoring |
+| `silverman-andersen` | 0–10, higher = worse | neonatal respiratory severity |
+| `downes` | 0–10, mild/moderate/severe | neonatal respiratory distress |
+| `bhutani-bilirubin` | Bhutani risk zone + AAP-2022 photo threshold | hour-specific bilirubin / phototherapy gate |
+| `qbl-pph` | quantitative blood loss + CMQCC risk tier | L&D obstetric-hemorrhage bundle |
+| `pelod2` | 0–33, age-banded MAP/creatinine | pediatric organ-dysfunction |
+| `psofa` | 0–24, age-adjusted CV/renal | pediatric SOFA companion to adult |
+| `burch-wartofsky` | <25 / 25–44 / ≥45 thyroid-storm bands | endocrine-emergency decision support |
+| `ariscat` | low / intermediate / high PPC risk | postoperative pulmonary risk |
+| `apache2` | 0–71 + approximate ICU mortality band | ICU severity-of-illness |
+| `braden-q` | 7–28, lower = worse, at-risk ≤16 | pediatric pressure-injury risk |
+
 ## System design and architecture overview
 
 The application is one HTML file, one CSS file, one JavaScript module set,
@@ -280,7 +305,7 @@ long version, see [docs/architecture.md](docs/architecture.md).
  │  manifests (data/)            │  static │        ▼                     ▼             │
  │        │  scripts/build       │  files  │   lazy-load data shard   pure compute      │
  │        ▼                      │         │   (verified vs manifest)  (lib/*.js)       │
- │  dist/  (295 tool pages,      │         │        │                     │             │
+ │  dist/  (307 tool pages,      │         │        │                     │             │
  │  OG cards, sitemap, SBOM)     │         │        ▼                     ▼             │
  └───────────────────────────────┘         │   service worker cache    result + cite   │
                                             │   (keyed to build hash)                    │
@@ -300,7 +325,7 @@ session, and nothing to log.
 index.html          single-page shell (hero search, home grid, tile mount)
 styles.css          one stylesheet (responsive; no horizontal scroll — enforced catalog-wide at 320px in CI)
 app.js              router, filters, view wiring, the UTILITIES catalog
-                    (295 tiles — the single source of truth; zero runtime deps)
+                    (307 tiles — the single source of truth; zero runtime deps)
 sw.js               service worker — precache shell, cache shards by build hash
 theme.js            light/dark theme toggle (no storage)
 lib/                pure compute modules, one per tile family
@@ -316,7 +341,7 @@ scripts/            build-*, check-* (catalog-truth, output-safety, citations,
 docs/               specs (spec-v4 … spec-v61) + citation-staleness ledger +
                     architecture / threat-model / …
 test/               unit/ (node:test) · integration/ (Playwright) · fixtures/
-dist/               build output (295 tool pages, OG cards, sitemap, SBOM)
+dist/               build output (307 tool pages, OG cards, sitemap, SBOM)
 ```
 
 ### Provenance and citation integrity (spec-v54)
@@ -324,7 +349,7 @@ dist/               build output (295 tool pages, OG cards, sitemap, SBOM)
 A login-less, AI-free calculator earns trust only if the nurse can see, on the
 tile, exactly which published source produced the number — and tell whether that
 source is current. Three invariants make that auditable, each enforced by the
-`check-citations.mjs` lint gate (in the `npm run lint` chain) over all 295 tiles:
+`check-citations.mjs` lint gate (in the `npm run lint` chain) over all 307 tiles:
 
 | Invariant | Rule | Enforcement |
 |---|---|---|

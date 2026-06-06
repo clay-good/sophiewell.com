@@ -105,7 +105,7 @@ literacy decoders, the field-medicine and EMS workflow tiles).
 > close — [spec-v56](spec-v56.md), which adds 13 weight-based
 > dosing, infusion-titration, and bedside-toxicology calculators
 > — is 281; v57 close — [spec-v57](spec-v57.md), which adds 14
-> brief screeners, decision rules, and triage scores — is 295.)
+> brief screeners, decision rules, and triage scores — is 295; v58 close — adds 12 neonatal, maternal, and pediatric/adult ICU bedside scores — is 307.)
 
 A reasonable steady-state estimate is **400–600 tiles over 3–5
 years**, depending on how aggressive the audit pace is and how
