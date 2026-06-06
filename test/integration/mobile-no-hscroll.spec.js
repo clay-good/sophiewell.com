@@ -11,7 +11,7 @@
 //      likely to overflow).
 //   3. A FULL-CATALOG sweep (every tile in the sitemap) at 320 px -- the
 //      narrowest mainstream width -- so the "no horizontal scroll on every
-//      view" guarantee is *enforced* across all 307 tiles, not just a
+//      view" guarantee is *enforced* across all 319 tiles, not just a
 //      sample. Previously a full-catalog sweep was a one-time manual check;
 //      this makes it a permanent regression guard, so a new tile can never
 //      ship horizontal overflow undetected.
@@ -99,7 +99,7 @@ test('mobile 360px: pa-lint findings with long citation URLs do not scroll horiz
 // same catalog source all-tools.spec.js uses). One test loops all tiles and
 // reports every offender at once, so a regression names exactly which views
 // broke. SPA hash routes re-render in place, so this is fast (~10-15 s for the
-// whole catalog) despite covering 307 tiles. chromium-only (inherits the skip
+// whole catalog) despite covering 319 tiles. chromium-only (inherits the skip
 // above): horizontal overflow is layout/CSS-driven and the documentElement
 // scrollWidth-vs-clientWidth check is engine-agnostic, so one engine is a
 // sufficient guard and keeps the sweep cheap.
@@ -126,4 +126,31 @@ test('mobile 320px: every tile in the catalog (sitemap) does not scroll horizont
     }
   }
   expect(offenders, `tiles with horizontal scroll at 320px:\n${offenders.join('\n')}`).toEqual([]);
+});
+
+// spec-v61 §2 A6: the printable handoff/summary views (SBAR, code-blue) render
+// the shared print template on a button click. Build each and confirm (a) the
+// printable footer is present and (b) the rendered template does not scroll
+// horizontally at 320px. chromium-only (inherits the engine-agnostic rationale
+// above).
+test.skip(({ browserName }) => browserName !== 'chromium', 'printable build is chromium-only');
+
+test('mobile 320px: printable SBAR + code-blue summaries build without horizontal scroll', async ({ page }) => {
+  await page.setViewportSize({ width: 320, height: 800 });
+
+  // SBAR handoff: fill a long field, build the printable, assert footer + no hscroll.
+  await page.goto('/#sbar-template', { waitUntil: 'load' });
+  await page.fill('#s', 'Mrs. Chen in 412B, post-op day 1, new chest pressure radiating to the jaw with diaphoresis and a single run of nonsustained VT on telemetry.');
+  await page.getByRole('button', { name: 'Build printable handoff' }).click();
+  await expect(page.locator('.printable-footer')).toContainText('No data was sent or stored');
+  await assertNoHorizontalScroll(page, 'sbar-template printable');
+
+  // Code-blue summary: fill timestamps, build the printable, assert it renders.
+  await page.goto('/#code-blue-clock', { waitUntil: 'load' });
+  await page.fill('#cb-start', '2026-06-06T10:00');
+  await page.fill('#cb-rhy', '2026-06-06T10:02');
+  await page.fill('#cb-cyc', '3');
+  await page.getByRole('button', { name: 'Build printable code summary' }).click();
+  await expect(page.locator('.printable-footer')).toContainText('No data was sent or stored');
+  await assertNoHorizontalScroll(page, 'code-blue-clock printable');
 });

@@ -59,7 +59,11 @@ full-catalog mobile no-horizontal-scroll sweep are green.
 Part A of [spec-v61] (cross-cutting enhancements — derivation/interpretation
 backfill, related-tool linking, labeled copy, unit toggles, copy-link, printable
 handoff, opt-in persistence) ships incrementally. Landed so far: **A2**
-related-tool linking, **A5** the copy-link affordance, and **A8**
+related-tool linking, **A5** the copy-link affordance, **A6** the printable
+handoff (the shared `lib/print.js` template — with its "No data was sent or
+stored" footer — now extends to `sbar-template` and `code-blue-clock`, so a
+nurse can print an SBAR handoff or a code-blue summary for the chart; a focused
+e2e test builds each and asserts no horizontal scroll at 320px), and **A8**
 interpretation-band parity — 45 additional score tiles now carry a
 source-anchored "Per source:" band block (150 → 195 tiles with
 `META[id].interpretation`), covering the v55–v58/v61 bedside scores plus
@@ -74,8 +78,8 @@ every band passes the `meta-interpretation.test.js` guard (source-quoted,
 (gestational-age estimate), `pelod2`/`psofa` (continuous mortality, no standard
 discrete bands), and the two v61 dose calculators (`rhig-dose`,
 `peds-transfusion-volume`). The remaining Part A items — A1 derivation rollout,
-A3 labeled copy, A4 unit toggles, A6 printable handoff, A7 opt-in persistence —
-remain open follow-ups.
+A3 labeled copy, A4 unit toggles, A7 opt-in persistence — remain open
+follow-ups.
 
 ### Changed (spec-v60 — citation-integrity completion & full-catalog currency re-verification; zero tiles, 307 → 307)
 

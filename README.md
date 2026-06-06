@@ -309,7 +309,11 @@ The wave also seeded **related-tool links** (`META[id].related`, rendered as a
 "Related tools" row in the citation block — e.g. `wells-pe` → `perc` / `pesi` /
 `years-pe`) and a **"Copy link"** affordance next to "Copy all" that copies the
 deep link (hash-state already encodes the inputs), so a populated calculation
-can be handed to a colleague with no new persistence and no network.
+can be handed to a colleague with no new persistence and no network. The shared
+printable template ([lib/print.js](lib/print.js), with its "No data was sent or
+stored" footer) now also covers the **SBAR handoff** and **code-blue summary**
+tiles (spec-v61 A6), so a nurse can print a structured handoff or a code
+timeline straight from the tile.
 
 **Interpretation-band parity (spec-v61 A8).** Every backfilled score now shows a
 source-anchored "Per source:" band block under its citation — the verbatim

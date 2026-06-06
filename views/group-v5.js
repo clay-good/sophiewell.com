@@ -10,6 +10,7 @@ import * as Code from '../lib/coding-v5.js';
 import { breachNotificationDeadlines } from '../lib/regulatory.js';
 import { META } from '../lib/meta.js';
 import { renderDerivation, updateDerivationSteps } from '../lib/derivation.js';
+import { renderPrintable } from '../lib/print.js';
 
 function field(label, id, opts = {}) {
   const wrap = el('p');
@@ -464,6 +465,24 @@ export const renderers = {
       });
       o.appendChild(copy);
     });
+    // spec-v61 §2 A6: a printable SBAR handoff (the shared print template with
+    // the "No data was sent or stored" footer), alongside the existing
+    // copy-to-clipboard path. Blank fields render as "(blank)".
+    const printRegion = el('div', { class: 'print-region', role: 'region', 'aria-live': 'polite' });
+    const printBtn = el('button', { type: 'button', class: 'render-btn', text: 'Build printable handoff' });
+    printBtn.addEventListener('click', () => {
+      renderPrintable(printRegion, {
+        title: 'SBAR Handoff',
+        sections: [
+          { heading: 'S — Situation', paragraphs: [str('s') || '(blank)'] },
+          { heading: 'B — Background', paragraphs: [str('b') || '(blank)'] },
+          { heading: 'A — Assessment', paragraphs: [str('a') || '(blank)'] },
+          { heading: 'R — Recommendation', paragraphs: [str('r') || '(blank)'] },
+        ],
+      });
+    });
+    root.appendChild(el('p', {}, [printBtn]));
+    root.appendChild(printRegion);
     ['s', 'b', 'a', 'r'].forEach((id) => document.getElementById(id).addEventListener('input', run));
     run();
   },

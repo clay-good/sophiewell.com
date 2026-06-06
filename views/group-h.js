@@ -360,20 +360,50 @@ export const renderers = {
     root.appendChild(f29d('Last shock energy (J)', 'cb-shock'));
     root.appendChild(f29d('Cumulative cycle count', 'cb-cyc'));
     const o = out(); root.appendChild(o);
+    const compute = () => codeBlueClock({
+      codeStartTimestamp: v29d('cb-start'),
+      lastRhythmCheck:    v29d('cb-rhy'),
+      lastEpi:            v29d('cb-epi'),
+      lastShockJ:         nv29d('cb-shock'),
+      cycleCount:         nv29d('cb-cyc'),
+    });
     const run = () => safe29d(o, () => {
-      const r = codeBlueClock({
-        codeStartTimestamp: v29d('cb-start'),
-        lastRhythmCheck:    v29d('cb-rhy'),
-        lastEpi:            v29d('cb-epi'),
-        lastShockJ:         nv29d('cb-shock'),
-        cycleCount:         nv29d('cb-cyc'),
-      });
+      const r = compute();
       o.appendChild(el('h2', { text: `Code time: ${r.minutesFromStart} min, ${r.cycleCount} cycles` }));
       o.appendChild(el('p', { text: `Next rhythm check: ${r.nextRhythmCheckIso}` }));
       if (r.nextEpiIso) o.appendChild(el('p', { text: `Next epinephrine due: ${r.nextEpiIso}` }));
       if (r.lastShockJ !== null) o.appendChild(el('p', { text: `Last shock: ${r.lastShockJ} J` }));
       o.appendChild(el('p', { class: 'clinical-notice', text: r.banner }));
     });
+    // spec-v61 §2 A6: a printable code-blue summary for the chart/record, with
+    // the shared "No data was sent or stored" footer. Recomputes from the
+    // current inputs; empty/bad inputs surface the message, not a stack trace.
+    const printRegion = el('div', { class: 'print-region', role: 'region', 'aria-live': 'polite' });
+    const printBtn = el('button', { type: 'button', class: 'render-btn', text: 'Build printable code summary' });
+    printBtn.addEventListener('click', () => {
+      try {
+        const r = compute();
+        renderPrintable(printRegion, {
+          title: 'Code Blue Summary',
+          sections: [{
+            heading: 'Timeline',
+            items: [
+              `Elapsed code time: ${r.minutesFromStart} min`,
+              `Cumulative cycles: ${r.cycleCount}`,
+              `Next rhythm check due: ${r.nextRhythmCheckIso}`,
+              r.nextEpiIso ? `Next epinephrine due: ${r.nextEpiIso}` : null,
+              r.lastShockJ !== null ? `Last shock energy: ${r.lastShockJ} J` : null,
+            ].filter(Boolean),
+          }],
+          warnings: r.banner ? [r.banner] : [],
+        });
+      } catch (err) {
+        clear(printRegion);
+        printRegion.appendChild(el('p', { class: 'muted', text: err.message }));
+      }
+    });
+    root.appendChild(el('p', {}, [printBtn]));
+    root.appendChild(printRegion);
     ['cb-start', 'cb-rhy', 'cb-epi', 'cb-shock', 'cb-cyc'].forEach((id) => document.getElementById(id).addEventListener('input', run));
   },
 
