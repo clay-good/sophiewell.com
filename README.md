@@ -311,6 +311,19 @@ The wave also seeded **related-tool links** (`META[id].related`, rendered as a
 deep link (hash-state already encodes the inputs), so a populated calculation
 can be handed to a colleague with no new persistence and no network.
 
+**Interpretation-band parity (spec-v61 A8).** Every backfilled score now shows a
+source-anchored "Per source:" band block under its citation — the verbatim
+meaning of the number from the instrument's own paper, not Sophie's phrasing.
+The pass raised `META[id].interpretation` coverage from 150 to 195 of the
+catalog's scores (45 added), covering the recent bedside scores plus classics
+(APGAR, qSOFA, MELD,
+Ranson, Alvarado, AUDIT-C, ASCVD/PREVENT, KDIGO-AKI, ARISCAT, APACHE II, Braden
+Q, and more). The bands are authored as one reviewable merge map in
+[lib/meta.js](lib/meta.js) and render through the shared `renderMetaBlock` with
+zero per-view wiring; a CI guard ([test/unit/meta-interpretation.test.js](test/unit/meta-interpretation.test.js))
+pins every band to `sourceQuoted: true`, a non-empty `sourceCitation`, ≤200
+chars, and no Sophie-authored phrasing.
+
 ## System design and architecture overview
 
 The application is one HTML file, one CSS file, one JavaScript module set,

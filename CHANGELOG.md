@@ -58,8 +58,24 @@ full-catalog mobile no-horizontal-scroll sweep are green.
 
 Part A of [spec-v61] (cross-cutting enhancements — derivation/interpretation
 backfill, related-tool linking, labeled copy, unit toggles, copy-link, printable
-handoff, opt-in persistence) is tracked separately; the related-tool-linking and
-copy-link affordances land in this release, the broader backfills remain open.
+handoff, opt-in persistence) ships incrementally. Landed so far: **A2**
+related-tool linking, **A5** the copy-link affordance, and **A8**
+interpretation-band parity — 45 additional score tiles now carry a
+source-anchored "Per source:" band block (150 → 195 tiles with
+`META[id].interpretation`), covering the v55–v58/v61 bedside scores plus
+classic instruments (APGAR, qSOFA, MELD, Ranson, Alvarado, AUDIT-C, CAGE, EPDS,
+Mini-Cog, ASCVD/PREVENT, KDIGO-AKI, Sgarbossa, SAAG, Bishop, FeverPAIN, STONE,
+EDACS, YEARS, AUDIT, DAST-10, GDS-15, ARISCAT, APACHE II, Braden Q, and more).
+The backfill is authored as one reviewable merge map in `lib/meta.js` and
+renders through the existing `renderMetaBlock` path with zero view changes;
+every band passes the `meta-interpretation.test.js` guard (source-quoted,
+≤200 chars, no Sophie-authored phrasing). Tiles deliberately omitted: `abg`
+(acid-base walkthrough), `pews` (institution-specific thresholds), `ballard`
+(gestational-age estimate), `pelod2`/`psofa` (continuous mortality, no standard
+discrete bands), and the two v61 dose calculators (`rhig-dose`,
+`peds-transfusion-volume`). The remaining Part A items — A1 derivation rollout,
+A3 labeled copy, A4 unit toggles, A6 printable handoff, A7 opt-in persistence —
+remain open follow-ups.
 
 ### Changed (spec-v60 — citation-integrity completion & full-catalog currency re-verification; zero tiles, 307 → 307)
 

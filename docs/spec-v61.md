@@ -1,7 +1,9 @@
 # spec-v61.md — Tool-value enhancement pass & new bedside tiles (12 tiles)
 
 > Status: Part B shipped (2026-06-06); Part A partially shipped (A2
-> related-tool linking and A5 copy-link landed; A1/A3/A4/A6/A7/A8
+> related-tool linking, A5 copy-link, and A8 interpretation-band parity
+> landed — A8 backfilled 45 score tiles, raising
+> `META[id].interpretation` coverage from 150 to 195; A1/A3/A4/A6/A7
 > remain open follow-ups). v61 has two parts. **Part A** is
 > a zero-tile *enhancement* pass that raises the value of the
 > existing catalog by finishing three features that are partial or
