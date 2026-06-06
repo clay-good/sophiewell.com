@@ -5,7 +5,7 @@
 <h1 align="center">sophiewell.com</h1>
 
 <p align="center">
-  <strong>268 deterministic healthcare calculators tuned to the nurse on shift.</strong><br>
+  <strong>281 deterministic healthcare calculators tuned to the nurse on shift.</strong><br>
   Free forever. No servers, no accounts, no telemetry, no AI, no network call after first paint.
 </p>
 
@@ -36,7 +36,7 @@ output; "searchable lookup of static facts" does not qualify. See
 [docs/spec-v10.md](docs/spec-v10.md) for the audience and
 dependency-budget commitments and
 [docs/spec-v29.md](docs/spec-v29.md) for the nurse-first pivot
-and the v29 catalog ledger. At v55 close the catalog is 268
+and the v29 catalog ledger. At v56 close the catalog is 281
 deterministic tiles — every one of them computes from at least
 one user input (the new `pa-lint` tile in spec-v52 consumes
 dropped files instead of form fields and produces a
@@ -101,7 +101,7 @@ discharge-planning functional-status index, and the spec-v43
 Lawton IADL instrumental-ADL companion, and the spec-v44 Barthel
 Index rehab-nursing weighted ADL, and the spec-v45 C-SSRS
 bedside suicide-risk screener added on top), the
-site organizes 268 deterministic calculators
+site organizes 281 deterministic calculators
 across the bedside-shift surfaces a
 nurse, doctor, pharmacist, RT, EMS provider, biller-coder, or
 educator actually reaches for. Every tile takes at least one
@@ -210,6 +210,29 @@ primary citation inline on the tile.
 | `acid-base-deficit` | 0.5·wt·ΔHCO₃; TBW·ΔNa → deficits | planning replacement, with over-rapid-Na warning |
 | `schwartz-egfr` | 0.413 × height ÷ SCr → eGFR | pediatric renal dosing (ages 1–18) |
 
+### Dosing & infusion cheat sheet (spec-v56 additions)
+
+The thirteen Group-F medication/infusion calculators added in spec-v56. Each is
+dosing decision-support, not a prescription, and renders the standing "verify
+against institutional protocol and a current reference" notice. Two tiles
+**refuse** outside their validity window rather than mislead.
+
+| Tile | Output | Reaches for it |
+|---|---|---|
+| `heparin-nomogram` | weight-based bolus/rate + Raschke aPTT step | titrating the heparin drip |
+| `vanc-auc` | first-order two-level AUC24/MIC vs 400–600 | dosing vancomycin with pharmacy |
+| `aminoglycoside` | extended-interval dose + CrCl interval | once-daily gent/tobra/amikacin |
+| `acetaminophen-nomogram` | Rumack-Matthew line → NAC or not (4–24 h only) | timed APAP level in the ED |
+| `digoxin` | renal/age maintenance + level vs 0.5–0.9 ng/mL | starting/checking digoxin |
+| `local-anesthetic-max` | mg/kg ceiling vs absolute cap → mg + mL | max safe local before LAST |
+| `mgso4-preeclampsia` | load + maintenance mL/h, renal-halved default | the MgSO₄ drip on L&D |
+| `pca-pump` | lockout-derived hourly max + limit check | programming a PCA safely |
+| `sugammadex` | dose by depth of block on actual weight | reversing rocuronium in PACU |
+| `ketamine-propofol` | initial dose + mL + re-dose increment | drawing up procedural sedation |
+| `peds-fluid-deficit` | 4-2-1 maintenance + deficit schedule | the dehydrated peds admission |
+| `peds-resus` | 10–20 mL/kg bolus, cardiac/DKA caution | the PALS fluid bolus |
+| `conc-percent` | % ⇄ mg/mL ⇄ ratio | reading a crash-cart label (1:1000 = 1 mg/mL) |
+
 ## System design and architecture overview
 
 The application is one HTML file, one CSS file, one JavaScript module set,
@@ -234,7 +257,7 @@ long version, see [docs/architecture.md](docs/architecture.md).
  │  manifests (data/)            │  static │        ▼                     ▼             │
  │        │  scripts/build       │  files  │   lazy-load data shard   pure compute      │
  │        ▼                      │         │   (verified vs manifest)  (lib/*.js)       │
- │  dist/  (268 tool pages,      │         │        │                     │             │
+ │  dist/  (281 tool pages,      │         │        │                     │             │
  │  OG cards, sitemap, SBOM)     │         │        ▼                     ▼             │
  └───────────────────────────────┘         │   service worker cache    result + cite   │
                                             │   (keyed to build hash)                    │
@@ -254,7 +277,7 @@ session, and nothing to log.
 index.html          single-page shell (hero search, home grid, tile mount)
 styles.css          one stylesheet (responsive; no horizontal scroll — enforced catalog-wide at 320px in CI)
 app.js              router, filters, view wiring, the UTILITIES catalog
-                    (268 tiles — the single source of truth; zero runtime deps)
+                    (281 tiles — the single source of truth; zero runtime deps)
 sw.js               service worker — precache shell, cache shards by build hash
 theme.js            light/dark theme toggle (no storage)
 lib/                pure compute modules, one per tile family
@@ -270,7 +293,7 @@ scripts/            build-*, check-* (catalog-truth, output-safety, citations,
 docs/               specs (spec-v4 … spec-v61) + citation-staleness ledger +
                     architecture / threat-model / …
 test/               unit/ (node:test) · integration/ (Playwright) · fixtures/
-dist/               build output (268 tool pages, OG cards, sitemap, SBOM)
+dist/               build output (281 tool pages, OG cards, sitemap, SBOM)
 ```
 
 ### Provenance and citation integrity (spec-v54)
@@ -278,7 +301,7 @@ dist/               build output (268 tool pages, OG cards, sitemap, SBOM)
 A login-less, AI-free calculator earns trust only if the nurse can see, on the
 tile, exactly which published source produced the number — and tell whether that
 source is current. Three invariants make that auditable, each enforced by the
-`check-citations.mjs` lint gate (in the `npm run lint` chain) over all 268 tiles:
+`check-citations.mjs` lint gate (in the `npm run lint` chain) over all 281 tiles:
 
 | Invariant | Rule | Enforcement |
 |---|---|---|

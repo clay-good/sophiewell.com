@@ -6,6 +6,57 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v56 — weight-based dosing, infusion titration, and bedside toxicology; +13 tiles, 268 → 281)
+
+Thirteen deterministic Group-F medication/infusion calculators that fill the
+high-frequency titration and reconstitution tasks a floor/ICU/ED/PACU/L&D nurse
+currently does on paper. Each consumes at least one input and computes an output
+(spec-v29 §3), ships its primary citation inline (spec-v54), inherits the
+spec-v53 input/output-safety contract, and is covered by the object-aware fuzz
+harness with zero `NaN`/`Infinity`/`undefined` leaks. New module
+`lib/medication-v5.js` (13 compute exports) + renderers in `views/group-v8.js`.
+**Every tile is dosing decision-support, not a prescription, and renders the
+standing "verify against institutional protocol and a current reference"
+notice.**
+
+- **Infusion nomograms:** `heparin-nomogram` (weight-based heparin, Raschke 1993
+  initial dosing + aPTT titration step, VTE/ACS caps, 150 kg weight cap),
+  `vanc-auc` (vancomycin AUC24/MIC, first-order two-level Sawchuk-Zaske, target
+  400–600), `aminoglycoside` (extended-interval Hartford dose + CrCl-set
+  interval).
+- **Pediatric fluids:** `peds-fluid-deficit` (Holliday-Segar 4-2-1 maintenance +
+  dehydration deficit replacement), `peds-resus` (PALS 10–20 mL/kg bolus with
+  the cardiac/DKA caution and adult weight cap).
+- **Procedural / peri-op:** `mgso4-preeclampsia` (ACOG/Magpie load + maintenance
+  with the renal-halving default), `pca-pump` (lockout-derived hourly maximum +
+  1-hour-limit consistency check, no-PCA-by-proxy note), `sugammadex` (reversal
+  by depth of block on actual body weight), `ketamine-propofol` (procedural
+  sedation dose + re-dose increment).
+- **Bedside toxicology:** `acetaminophen-nomogram` (Rumack-Matthew treatment
+  line), `digoxin` (renal/age-categorical maintenance + level interpretation),
+  `local-anesthetic-max` (per-agent mg/kg ceiling vs absolute cap, LAST note),
+  `conc-percent` (percent ⇄ mg/mL ⇄ ratio).
+- **Validity refusals (spec-v56 §3):** `acetaminophen-nomogram` refuses outside
+  the 4–24 h window and `aminoglycoside` refuses dialysis / CrCl <20 — they
+  throw rather than return a misleading number; both refusals are pinned by
+  unit tests.
+- **Deliberate substitution (correctness floor, same discipline as v55
+  `ldl-calc`):** the Hartford concentration-vs-time *graph* is a proprietary
+  figure with no closed form, so `aminoglycoside` sets the starting interval
+  from CrCl and refers the random level to the institution's printed nomogram
+  rather than fabricate a zone. Disclosed in the tile note, the META citation,
+  and `docs/audits/v11/aminoglycoside.md`.
+- **Robustness:** every compute function imports `r1`/`r2`/`r3`/`num`/`fmt` from
+  `lib/num.js`; every denominator (TIBC analog, concentration, lockout, MIC,
+  bag concentration) is guarded to return `null` → `fmt()` fallback. 65 new unit
+  tests (≥3 boundary worked examples each, including the two validity-refusal
+  cases); 13 spec-v11 audit logs; fuzz harness extended to `medication-v5.js`.
+- **Provenance:** `vanc-auc` (IDSA), `digoxin` (ACC/AHA), `mgso4-preeclampsia`
+  (ACOG), and `peds-resus` (AHA) carry `citationAccessed` + a
+  `docs/citation-staleness.md` row (spec-v54).
+- Catalog-truth surfaces (spec-v46) all advanced 268 → 281; `UTILITIES.length`
+  is 281.
+
 ### Added (spec-v55 — bedside hematology, renal/acid-base, and oxygenation math; +13 tiles, 255 → 268)
 
 Thirteen deterministic Group-E calculators that fill confirmed gaps a bedside

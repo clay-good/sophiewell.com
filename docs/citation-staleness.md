@@ -44,6 +44,10 @@ the quarterly source pull. No clinical formula or threshold changes here.
 | lab-interpret | Reference ranges (multi-source) | ADA 2024 / ACC-AHA 2018 cholesterol / ATA 2014 | ADA refreshed annually | 2026-06-05 | current — charted reference ranges unchanged; the ADA-sourced bands carry the spec-v60 §4 REFRESH discipline |
 | tsat | KDIGO anemia-in-CKD / AGA-ACG iron guidance | KDIGO Anemia 2012 + AGA 2020 iron-deficiency guideline | same | 2026-06-05 | current — TSAT = iron/TIBC is a stable definition; the <20% threshold is unchanged across editions (spec-v55) |
 | oxygenation-index | PALICC-2 pediatric ARDS severity | PALICC-2 (Emeriaud 2023, Pediatr Crit Care Med) | same | 2026-06-05 | current — 2023 is the latest PALICC consensus; OI/OSI bands as published (spec-v55) |
+| vanc-auc | ASHP/IDSA/PIDS/SIDP vancomycin AUC consensus | Rybak 2020 (Am J Health-Syst Pharm 2020;77(11)) | same | 2026-06-06 | current — 2020 is the latest consensus; AUC24/MIC 400-600 target unchanged (spec-v56) |
+| digoxin | ACC/AHA/HFSA Heart Failure guideline (digoxin level target) | Heidenreich 2022 (Circulation 2022;145(18)) | same | 2026-06-06 | current — 2022 is the latest ACC/AHA/HFSA HF guideline; HF target 0.5-0.9 ng/mL unchanged (spec-v56) |
+| mgso4-preeclampsia | ACOG magnesium-sulfate seizure prophylaxis | ACOG Practice Bulletin 222 (2020) + Magpie (Lancet 2002) | same | 2026-06-06 | current — PB 222 is the latest ACOG preeclampsia bulletin; 4-6 g load / 1-2 g/h dosing unchanged (spec-v56) |
+| peds-resus | AHA PALS resuscitation bolus | PALS 2020 (Circulation 2020;142(16 suppl 2)) | same | 2026-06-06 | current — 2020 is the latest PALS edition; 10-20 mL/kg isotonic bolus unchanged (spec-v56) |
 
 ## Foundational instruments (documentation only)
 

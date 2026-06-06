@@ -101,7 +101,10 @@ literacy decoders, the field-medicine and EMS workflow tiles).
 > v53/v54 close — output-safety and citation-integrity hardening
 > passes with **zero new tiles** — is 255; v55 close —
 > [spec-v55](spec-v55.md), which adds 13 bedside hematology,
-> renal/acid-base, and oxygenation calculators — is 268.)
+> renal/acid-base, and oxygenation calculators — is 268; v56
+> close — [spec-v56](spec-v56.md), which adds 13 weight-based
+> dosing, infusion-titration, and bedside-toxicology calculators
+> — is 281.)
 
 A reasonable steady-state estimate is **400–600 tiles over 3–5
 years**, depending on how aggressive the audit pace is and how

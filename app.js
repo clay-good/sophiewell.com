@@ -13,6 +13,7 @@ import { renderers as RKLMNO } from './views/group-klmno.js';
 import { renderers as RV5 } from './views/group-v5.js';
 import { renderers as RV6 } from './views/group-v6.js';
 import { renderers as RV7 } from './views/group-v7.js';
+import { renderers as RV8 } from './views/group-v8.js';
 import { renderers as RPALINT } from './views/pa-lint.js';
 import { META } from './lib/meta.js';
 import { fetchJson } from './lib/data.js';
@@ -26,7 +27,7 @@ import { resolvePrompt } from './lib/prompt.js';
 // artifact-detect / artifact-route / artifact-handoff helpers were
 // deleted in spec-v29 wave 29-2 (Group C/L).
 
-const RENDERERS = { ...RA, ...RC, ...RE, ...RF, ...RG, ...RH, ...RI, ...RJ, ...RKLMNO, ...RV5, ...RV6, ...RV7, ...RPALINT };
+const RENDERERS = { ...RA, ...RC, ...RE, ...RF, ...RG, ...RH, ...RI, ...RJ, ...RKLMNO, ...RV5, ...RV6, ...RV7, ...RV8, ...RPALINT };
 
 // ----- Utility registry ----------------------------------------------------
 // Source of truth for routes, names, group, audiences, and clinical flag.
@@ -421,6 +422,20 @@ const UTILITIES = [
   { id: 'urine-anion-gap',     name: 'Urine Anion Gap (non-gap acidosis)',               group: 'E', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'acid-base-deficit',   name: 'Bicarbonate Deficit + Sodium Deficit',             group: 'E', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'schwartz-egfr',       name: 'Bedside Schwartz eGFR (pediatric)',                group: 'E', audiences: ['clinicians', 'educators'], clinical: true },
+  // spec-v56: weight-based dosing, infusion titration, and bedside toxicology (13 tiles).
+  { id: 'heparin-nomogram',     name: 'Weight-based heparin infusion nomogram',           group: 'F', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'vanc-auc',             name: 'Vancomycin AUC24/MIC (first-order, two-level)',    group: 'F', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'aminoglycoside',       name: 'Extended-interval aminoglycoside (Hartford)',      group: 'F', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'acetaminophen-nomogram', name: 'Acetaminophen (Rumack-Matthew) nomogram',        group: 'F', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'digoxin',              name: 'Digoxin maintenance dose + level interpretation',  group: 'F', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'local-anesthetic-max', name: 'Local anesthetic maximum dose',                    group: 'F', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'mgso4-preeclampsia',   name: 'Magnesium sulfate (preeclampsia / eclampsia)',     group: 'F', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'pca-pump',             name: 'PCA pump settings + hourly-maximum guardrail',     group: 'F', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'sugammadex',           name: 'Sugammadex reversal dose',                         group: 'F', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'ketamine-propofol',    name: 'Procedural sedation dosing (ketamine/propofol)',   group: 'F', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'peds-fluid-deficit',   name: 'Pediatric dehydration deficit + maintenance',      group: 'F', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'peds-resus',           name: 'Pediatric resuscitation bolus',                    group: 'F', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'conc-percent',         name: 'Concentration / percent / ratio converter',        group: 'F', audiences: ['clinicians', 'educators'], clinical: true },
 ];
 
 const UTIL_BY_ID = new Map(UTILITIES.map((u) => [u.id, u]));
