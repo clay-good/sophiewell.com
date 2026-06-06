@@ -21,6 +21,9 @@ import { renderers as RPALINT } from './views/pa-lint.js';
 import { META } from './lib/meta.js';
 import { fetchJson } from './lib/data.js';
 import { copyButton } from './lib/clipboard.js';
+import {
+  isRememberEnabled, setRememberEnabled, saveInputs, applySavedInputs, hasPersistableInputs,
+} from './lib/input-persist.js';
 import { installKeyboard } from './lib/keyboard.js';
 import { parseHash, buildHash, patchHash } from './lib/hash.js';
 import { matchSynonym, loadSynonyms } from './lib/synonyms.js';
@@ -1084,6 +1087,31 @@ function renderMetaBlock(util) {
   const copyLinkBtn = copyButton(() => location.href, { label: 'Copy link', live: copyLive });
   block.appendChild(el('p', { class: 'copy-row' }, [copyAllBtn, copyLinkBtn, copyLive]));
 
+  // spec-v61 §2 A7: opt-in, client-only input persistence. Only shown on tiles
+  // that actually have persistable (numeric/choice) inputs. Off by default;
+  // checking it stores this tile's current values immediately, unchecking it
+  // erases everything stored. No PHI free-text is ever persisted (see
+  // lib/input-persist.js), and nothing leaves the device.
+  const toolBody = document.getElementById('tool-body');
+  if (toolBody && hasPersistableInputs(toolBody)) {
+    const cb = el('input', { type: 'checkbox', class: 'remember-checkbox' });
+    cb.checked = isRememberEnabled();
+    cb.addEventListener('change', () => {
+      setRememberEnabled(cb.checked);
+      const tb = document.getElementById('tool-body');
+      if (cb.checked && tb) saveInputs(util.id, tb);
+    });
+    const label = el('label', { class: 'remember-row' }, [
+      cb,
+      el('span', { class: 'remember-text', text: 'Remember my inputs on this device' }),
+    ]);
+    const note = el('span', {
+      class: 'remember-note muted',
+      text: 'Stored only in this browser. Numbers only, never free-text. Off by default; unchecking erases it.',
+    });
+    block.appendChild(el('p', { class: 'remember-line' }, [label, note]));
+  }
+
   return block.children.length ? block : null;
 }
 
@@ -1179,7 +1207,15 @@ function renderToolView(util) {
         applyHashState(body);
         trackHashState(body);
         const hashKeys = new Set(Object.keys(parseHash(window.location.hash).state || {}));
-        const filled = applyExample(util, { skip: hashKeys });
+        // spec-v61 §2 A7: opt-in remembered inputs fill fields the deep link
+        // didn't set, and win over the example. The save listeners are always
+        // attached; saveInputs() no-ops unless the toggle is on, so flipping
+        // it on mid-session starts persisting from the next edit.
+        const remembered = applySavedInputs(body, util.id, hashKeys);
+        const save = () => saveInputs(util.id, body);
+        body.addEventListener('input', save);
+        body.addEventListener('change', save);
+        const filled = applyExample(util, { skip: new Set([...hashKeys, ...remembered]) });
         const meta = META[util.id];
         if (meta && meta.example && meta.example.fields) {
           for (const [id, value] of Object.entries(meta.example.fields)) {

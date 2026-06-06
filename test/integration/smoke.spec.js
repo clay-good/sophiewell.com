@@ -165,6 +165,33 @@ test('spec-v2: hash-based calculator state persists across reload', async ({ pag
   expect(hash).toContain('w%3D60');
 });
 
+test('spec-v61 §2 A7: remember-inputs toggle is off by default and restores on opt-in', async ({ page }) => {
+  await page.goto('/#bmi');
+  const toggle = page.locator('.remember-checkbox');
+  await expect(toggle).toBeVisible();
+  await expect(toggle).not.toBeChecked();
+  // Off by default: visiting the tile writes nothing to storage.
+  let count = await page.evaluate(() => localStorage.length);
+  expect(count).toBe(0);
+
+  // Opt in, enter a value, then reload the bare route (no hash state).
+  await toggle.check();
+  await page.fill('#w', '83');
+  await page.fill('#h', '1.91');
+  await page.waitForTimeout(100);
+  count = await page.evaluate(() => Number(localStorage.getItem('sw-remember') === '1'));
+  expect(count).toBe(1);
+
+  await page.goto('/#bmi');
+  await expect(page.locator('#w')).toHaveValue('83');
+  await expect(page.locator('.remember-checkbox')).toBeChecked();
+
+  // Opting out erases the stored inputs.
+  await page.locator('.remember-checkbox').uncheck();
+  const saved = await page.evaluate(() => localStorage.getItem('sw-saved-inputs'));
+  expect(saved).toBeNull();
+});
+
 test('spec-v8 §3.2 / §5.2: no Pin button and no #pinned-section render on the home view', async ({ page }) => {
   await page.goto('/');
   await expect(page.locator('.pin-btn')).toHaveCount(0);

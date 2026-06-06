@@ -77,9 +77,25 @@ every band passes the `meta-interpretation.test.js` guard (source-quoted,
 (acid-base walkthrough), `pews` (institution-specific thresholds), `ballard`
 (gestational-age estimate), `pelod2`/`psofa` (continuous mortality, no standard
 discrete bands), and the two v61 dose calculators (`rhig-dose`,
-`peds-transfusion-volume`). The remaining Part A items — A1 derivation rollout,
-A3 labeled copy, A4 unit toggles, A7 opt-in persistence — remain open
-follow-ups.
+`peds-transfusion-volume`).
+
+**A7** opt-in input persistence now landed too. A privacy-safe, client-only
+"Remember my inputs on this device" toggle (`lib/input-persist.js`) lets a nurse
+reopening a tile each shift skip re-entering constants. It is **off by default**
+(the smoke test still asserts an empty `localStorage` on a fresh visit), is shown
+only on tiles that have persistable inputs, and stores **numeric/choice inputs
+only** — `<input type=number|range|checkbox|radio>` and `<select>` — under two
+string-literal keys (`sw-remember`, `sw-saved-inputs`, both added to
+`scripts/storage-allowlist.json`). Free-text (`type=text`/`search`) and
+`<textarea>` are never persisted, so a name/allergy/clinical-note field can never
+reach storage (the "never on for PHI-bearing free-text" rule). Remembered values
+fill fields the deep-link hash did not, and win over the example; unchecking the
+toggle removes both keys, so opting out also erases anything stored. Wired into
+the tile render flow in `app.js` alongside `applyHashState`/`applyExample`;
+covered by `test/unit/input-persist.test.js` and a `smoke.spec.js` opt-in
+round-trip e2e. The remaining Part A items — A1 derivation rollout (the named
+high-value multi-input scores already carry derivation; the lower-value tail is
+the open work), A3 labeled copy, and A4 unit toggles — remain open follow-ups.
 
 ### Changed (spec-v60 — citation-integrity completion & full-catalog currency re-verification; zero tiles, 307 → 307)
 

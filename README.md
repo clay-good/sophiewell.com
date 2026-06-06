@@ -328,6 +328,19 @@ zero per-view wiring; a CI guard ([test/unit/meta-interpretation.test.js](test/u
 pins every band to `sourceQuoted: true`, a non-empty `sourceCitation`, ≤200
 chars, and no Sophie-authored phrasing.
 
+**Opt-in input persistence (spec-v61 A7).** Tiles with numeric/choice inputs
+show a **"Remember my inputs on this device"** toggle in the references block,
+**off by default**. When a nurse opts in, that tile's values are written to
+`localStorage` ([lib/input-persist.js](lib/input-persist.js)) so reopening it
+next shift skips re-entering constants. Only `number`/`range`/`checkbox`/`radio`
+inputs and `<select>` values are stored — free-text and `<textarea>` are never
+persisted, so a name, allergy, or clinical note cannot reach storage. The two
+keys (`sw-remember`, `sw-saved-inputs`) are string literals on the
+[storage allowlist](scripts/storage-allowlist.json) enforced by
+`check-commitments`; unchecking the toggle erases both. Remembered values fill
+fields a deep link did not set and win over the example. Nothing leaves the
+device — the CSP still blocks every network egress.
+
 ## System design and architecture overview
 
 The application is one HTML file, one CSS file, one JavaScript module set,
@@ -356,7 +369,7 @@ long version, see [docs/architecture.md](docs/architecture.md).
  │  OG cards, sitemap, SBOM)     │         │        ▼                     ▼             │
  └───────────────────────────────┘         │   service worker cache    result + cite   │
                                             │   (keyed to build hash)                    │
-   CSP: connect-src 'self'  ───────────────►│   NO outbound network · NO storage · NO AI │
+   CSP: connect-src 'self'  ───────────────►│   NO outbound network · local-only · NO AI │
                                             └──────────────────────────────────────────┘
 ```
 
@@ -374,7 +387,8 @@ styles.css          one stylesheet (responsive; no horizontal scroll — enforce
 app.js              router, filters, view wiring, the UTILITIES catalog
                     (319 tiles — the single source of truth; zero runtime deps)
 sw.js               service worker — precache shell, cache shards by build hash
-theme.js            light/dark theme toggle (no storage)
+theme.js            light/dark theme toggle (writes only sw-theme, allowlisted)
+lib/input-persist.js opt-in "remember my inputs" (off by default; numbers only)
 lib/                pure compute modules, one per tile family
   ├─ data.js        same-origin data loader (per-URL promise cache)
   ├─ meta.js        per-tile citation / example / source-stamp metadata
@@ -807,15 +821,31 @@ rules, not soft preferences.
 
 ## Safety guarantees
 
-- The application makes no outbound network requests at runtime.
-- The application does not store user input anywhere.
+- The application makes no outbound network requests at runtime. This is
+  the hard guarantee: the CSP `connect-src 'self'` directive means user
+  input physically cannot leave the device, so nothing below is a privacy
+  trade-off, only a convenience-vs-clean-slate choice that stays on-device.
 - The application is read-only with respect to all bundled data.
-- The application does not write to any storage location other than the
-  service worker's own cache of its own static files.
-- Clinical input is processed in memory and discarded when the page
-  is closed.
-- There is no `localStorage`, no `sessionStorage`, no cookies, and no
-  IndexedDB. All four are verified empty by the integration test suite.
+- By default the application writes nothing to `localStorage`,
+  `sessionStorage`, cookies, or IndexedDB. A fresh visit leaves all four
+  empty, which the integration test suite asserts (`smoke.spec.js`).
+- Exactly two **opt-in** features may write to `localStorage`, and only to
+  an allowlisted set of **string-literal** keys enforced by
+  `scripts/check-commitments.mjs` against `scripts/storage-allowlist.json`
+  (spec-v50 §3.4) and re-verified at runtime by `no-network.spec.js`:
+  - the light/dark **theme** preference (`sw-theme`), written only when the
+    user toggles the theme; and
+  - the spec-v61 **"Remember my inputs on this device"** toggle
+    (`sw-remember`, `sw-saved-inputs`), off by default. When enabled it
+    stores **numeric/choice inputs only** (`number`/`range`/`checkbox`/
+    `radio` and `<select>`); free-text (`type=text`/`search`) and
+    `<textarea>` are never persisted, so a name, allergy, or clinical note
+    cannot reach storage. Unchecking the toggle erases both keys.
+- There are no cookies, no `sessionStorage`, and no IndexedDB at any time;
+  the service worker's Cache Storage holds only the site's own static
+  shell files, keyed to the build hash.
+- Clinical input is processed in memory and (unless the opt-in toggle is on)
+  discarded when the page is closed.
 - `innerHTML`, `outerHTML`, `insertAdjacentHTML`, `eval`, and the
   `Function` constructor are banned by the ESLint config and a grep
   check; the `el()` DOM helper throws on any attempt to set raw HTML.

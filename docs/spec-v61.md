@@ -1,11 +1,17 @@
 # spec-v61.md — Tool-value enhancement pass & new bedside tiles (12 tiles)
 
 > Status: Part B shipped (2026-06-06); Part A partially shipped (A2
-> related-tool linking, A5 copy-link, A6 printable handoff, and A8
-> interpretation-band parity landed — A6 extended the shared print
-> template to `sbar-template` and `code-blue-clock`; A8 backfilled 45
-> score tiles, raising `META[id].interpretation` coverage from 150 to
-> 195; A1/A3/A4/A7 remain open follow-ups). v61 has two parts.
+> related-tool linking, A5 copy-link, A6 printable handoff, A8
+> interpretation-band parity, and A7 opt-in input persistence landed —
+> A6 extended the shared print template to `sbar-template` and
+> `code-blue-clock`; A8 backfilled 45 score tiles, raising
+> `META[id].interpretation` coverage from 150 to 195; A7 added the
+> client-only, off-by-default "Remember my inputs on this device"
+> toggle (`lib/input-persist.js`, numeric/choice inputs only, never
+> PHI free-text). A1's named high-value scores (Braden, MEWS, NEWS2,
+> HEART, Wells, Caprini) already carry derivation; A1's lower-value
+> tail, A3 labeled copy, and A4 unit toggles remain open follow-ups).
+> v61 has two parts.
 > **Part A** is
 > a zero-tile *enhancement* pass that raises the value of the
 > existing catalog by finishing three features that are partial or

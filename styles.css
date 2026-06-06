@@ -1306,6 +1306,25 @@ main h1 {
 /* spec-v9 §3.3: muted "(example: <value>)" annotation next to input labels. */
 .example-hint { font-size: 0.8rem; margin-left: var(--space-1); font-weight: normal; }
 
+/* spec-v61 §2 A7: opt-in "remember my inputs" toggle. Wraps naturally on
+   narrow screens so it never forces horizontal scroll. */
+.remember-line {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: var(--space-1) var(--space-2);
+  margin: var(--space-2) 0 0;
+}
+.remember-row {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+.remember-checkbox { flex: 0 0 auto; }
+.remember-note { font-size: 0.78rem; }
+
 /* Copy buttons */
 .copy-row { margin-bottom: 0; }
 .copy-btn { font-size: 0.85rem; padding: 4px 10px; }
