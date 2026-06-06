@@ -6,6 +6,53 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Changed (spec-v59 — full-catalog stress-test sweep & PA-toolchain hardening; zero tiles, 307 → 307)
+
+A zero-tile hardening release. No clinical formula, threshold, or rounding
+changed — every valid-input result is byte-identical (the full unit suite is the
+regression guard). It finishes the [spec-v53] output-safety + physiologic-bounds
+migration across the whole catalog and extends the contract to the
+prior-authorization document-linter for the first time.
+
+- **Class A — magic constants → fallbacks.** `hacor` and `lisMurray`
+  (`lib/scoring-v4.js`) no longer render a magic P/F of 0 / 300 when FiO2 ≤ 0;
+  they refuse to score (and the renderer routes the P/F line through `fmt()`).
+- **Class B2 — empty-instrument refusal.** `hacor`, `lisMurray`, and `bps` no
+  longer substitute a clinically-loaded default (blank pH → 7.4, blank GCS → 15,
+  blank compliance → 80, blank pain item → 1) and emit a band from no data; an
+  absent input refuses with a “complete all inputs” fallback.
+- **Class B1 — physiologic-plausibility advisories.** `lib/bounds.js` `BOUNDS`
+  expanded from 6 to 31 sourced envelopes (glucose, electrolytes, blood gases,
+  FiO2 ≤ 1.0, temperature, QT, hematology, …); `boundsAdvisory()` is wired at the
+  corrected-sodium / corrected-calcium / MAP / A-a-gradient render sites. The
+  number is unchanged — a frankly-impossible input now shows a visible
+  “verify the units” note instead of a silent authoritative value.
+- **Class D — helper de-duplication.** `lib/field.js` and `lib/scoring-v4.js`
+  import `r1`/`r2`/`r3`/`num` from `lib/num.js`; the local copies (one already
+  diverged on its `min` default) are deleted. No remaining helper declaration
+  outside `lib/num.js`.
+- **Fuzz harness — object-aware, 16 modules.** `test/unit/fuzz-tools.test.js`
+  now reflects each function’s fields and drives each through the adversarial
+  matrix on a valid baseline (the reachable “valid object + one bad field” path),
+  across all 16 pure compute modules. It caught four real string-leaks the
+  scalar harness missed — `rox` (`at NaNh`), `vis` (`VIS Infinity`),
+  `berlinArds` (`PaO2/FiO2 NaN`), `mtpTracker` (`Infinity:1:1`) — all fixed.
+- **`derivation.js` / `workflow-v4.js`** route user-value interpolation through
+  `fmt()` / a `txt()` sanitizer so a non-finite value never leaks its token into
+  the show-your-work panel or a generated HIPAA/ROI/wallet-card document.
+- **PA toolchain (new surface).** The **default report export is now
+  PHI-redacted**; the raw extract (patient name / DOB / member ID) is reached
+  only behind an explicit, labeled “include raw PHI” checkbox — a nurse who
+  clicks “Download report” to share never gets full PHI by default. Redaction
+  patterns widened (unlabeled address + ZIP, unlabeled “born <date>”, ID to the
+  token boundary, international phone, `Last, First` names — all ReDoS-safe,
+  bounded quantifiers). The date/POS extractors are capped (U-1); a binary /
+  non-UTF8 `.txt` is pre-gated and skipped (U-3). A new `pa-stress` test pins
+  that the extractor + redactor + engine + report builders finish under a fixed
+  wall-clock budget on a 1 MB hostile packet (§3.4 regex-timing guard).
+- See [docs/audits/v11/_hardening-v59.md] for the full repro/fix log, the
+  scoping-decision rationale, and the documented residual (U-2/U-4/U-5).
+
 ### Added (spec-v58 — neonatal, maternal, and pediatric/adult ICU bedside scores; +12 tiles, 295 → 307)
 
 Twelve deterministic neonatal, maternal, and ICU bedside scores that fill

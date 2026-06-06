@@ -156,12 +156,22 @@ test('runtime: PA pipeline fires fully client-side, no off-origin calls', async 
   // Serialize every report flavor. Each click builds a Blob from the
   // in-memory bundle and downloads it; capturing the download proves the
   // report path ran to completion without a fetch.
-  for (const flavor of ['docx', 'json-full', 'json-redacted']) {
+  // spec-v59 §3.1: the two default (PHI-redacted) buttons, plus the raw-PHI
+  // export reached by first ticking the explicit include-PHI checkbox.
+  for (const flavor of ['docx', 'json']) {
     const [download] = await Promise.all([
       page.waitForEvent('download'),
       page.click(`.pa-download-btn[data-flavor="${flavor}"]`),
     ]);
     expect(download.suggestedFilename(), `download fired for ${flavor}`).toBeTruthy();
+  }
+  await page.check('#pa-include-phi');
+  for (const flavor of ['docx', 'json']) {
+    const [download] = await Promise.all([
+      page.waitForEvent('download'),
+      page.click(`.pa-download-btn[data-flavor="${flavor}"]`),
+    ]);
+    expect(download.suggestedFilename(), `PHI-included download fired for ${flavor}`).toContain('with-phi');
   }
 
   // Drain any async work (lazy import revoke timers, worker postMessage).

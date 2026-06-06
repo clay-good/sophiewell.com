@@ -1,5 +1,5 @@
-// spec-v53 §4.4.2 / §6: reflection-driven adversarial fuzz of every public
-// compute export.
+// spec-v53 §4.4.2 / spec-v59 §2.6: reflection-driven adversarial fuzz of every
+// public compute export.
 //
 // Location / runner note (a deliberate, documented deviation from the spec's
 // proposed `test/integration/fuzz-tools.spec.js`): these are pure Node compute
@@ -8,30 +8,52 @@
 // `test:e2e` (Playwright). A Playwright spec under test/integration/ would only
 // run in test:e2e, so it would NOT satisfy "wired into npm run test". A node:test
 // here is the correct home: faster, no browser, and actually in the `npm run
-// test` path. See docs/audits/v11/_hardening-v53.md.
+// test` path. See docs/audits/v11/_hardening-v53.md and _hardening-v59.md.
 //
-// What is asserted, for EVERY exported function across the target modules, for
-// each value in the fixed adversarial matrix:
-//   (a) THROW-SAFETY (spec-v53 §3.1): if the call throws, the error is a
-//       TypeError or RangeError (a declared validation error) -- never a
-//       programming error (ReferenceError, a thrown string, etc.).
-//   (c) NO STRING LEAK (spec-v53 §3.2): no returned string field embeds the
-//       literal token `NaN` / `Infinity` / `undefined` (a string field is
-//       rendered verbatim, so a leak there reaches the DOM).
+// spec-v59 §2.6 upgrades the harness on two axes:
+//   1. OBJECT-AWARE matrix. Almost every compute function takes a single
+//      destructured object, so the old scalar-only matrix never exercised the
+//      reachable "valid object with one impossible field" path. The harness now
+//      reflects each function's destructured field names from its source, builds
+//      a finite baseline object, and drives EACH field through the adversarial
+//      matrix while holding the others valid.
+//   2. FINITENESS on reachable input. On the object path, when a call returns
+//      (does not throw), every numeric return field must be finite or exactly
+//      null -- never NaN/Infinity. This is the half of the v53 invariant that
+//      catches Class B (a confident non-finite number reaching the DOM).
 //
-// What is NOT asserted, and why (honesty discipline, spec-v53 §7): the matrix
-// passes each adversarial value as the SOLE argument. Most compute functions
-// take a single OBJECT and destructure it, so a scalar argument yields
-// `undefined` fields and a `NaN` numeric return -- but that input is NOT
-// reachable through any renderer (a renderer always passes a populated object).
-// Asserting "every numeric field is finite" for the scalar matrix would flag
-// ~486 such unreachable cases and force a defensive guard onto 245 functions for
-// no behavior change -- exactly the non-surgical sweep §7 forbids. The
-// finiteness-on-REACHABLE-input half of the invariant is instead enforced where
-// it bites: `fmt()` (lib/num.js) at every guarded render site, the
-// `check-output-safety` gate (the `?.toFixed(` leak fingerprint), the three
-// confirmed Class-A/B fixes (pinned by their own unit tests), and each tile's
-// existing valid-input correctness tests.
+// For EVERY exported function across the target modules and each adversarial
+// value the harness asserts:
+//   (a) THROW-SAFETY (spec-v53 §3.1): a thrown error is a TypeError or
+//       RangeError (a declared validation error), never a programming error.
+//   (b) NO STRING LEAK (spec-v53 §3.2): no returned string field embeds the
+//       literal token NaN / Infinity / undefined. This IS the DOM-safety
+//       invariant -- the DOM only ever receives strings, so a non-finite value
+//       that never reaches a string never reaches the user.
+//
+// Scoping note (honesty discipline, spec-v53 §7 / spec-v59 §2.2): the harness
+// asserts the actual DOM-safety invariant -- no banned TOKEN in any returned
+// STRING field -- on the object-aware REACHABLE matrix, NOT blanket numeric
+// finiteness of internal fields. The DOM only ever receives strings, so a non-
+// finite value that never reaches a string never reaches the user. A divide-by-
+// an-entered-0 (e.g. shock index with SBP=0) is a mathematically-forced Infinity
+// in an INTERNAL numeric field; spec-v59 §2.2's fix for that class is a render-
+// side boundsAdvisory() plus the fmt() guard at the render site (which keeps the
+// token out of the DOM), NOT a blanket null-return forced onto ~40 functions --
+// that is precisely the non-surgical sweep spec-v53 §7 forbids. What the object-
+// aware string-leak check newly catches (and the old scalar-only harness missed)
+// is a band string that interpolates a raw NaN/Infinity from one bad field -- a
+// real leak; spec-v59 fixes each such site (rox, vis, berlinArds) to route the
+// interpolation through fmt(). The three confirmed Class-A/B sites that slipped a
+// number to the DOM (hacor, lisMurray, bps) return null and are pinned by their
+// own unit tests.
+//
+// Module coverage: the 16 PURE compute modules. The four DOM-renderer modules
+// (derivation.js, screener.js, table.js, tree.js) require a `document` and so
+// cannot run under node:test; they are exercised by the Playwright all-tools /
+// mobile-no-hscroll specs, which mount every tile in a real browser. derivation
+// .js's one numeric-leak path (the show-your-work panel) is additionally guarded
+// at the source by fmt() (spec-v59 §2.7) -- see lib/derivation.js formatInput.
 
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
@@ -47,6 +69,11 @@ import * as scoringV5 from '../../lib/scoring-v5.js';
 import * as scoringV6 from '../../lib/scoring-v6.js';
 import * as labInterpret from '../../lib/lab-interpret.js';
 import * as unitConvert from '../../lib/unit-convert.js';
+import * as field from '../../lib/field.js';
+import * as codingV5 from '../../lib/coding-v5.js';
+import * as regulatory from '../../lib/regulatory.js';
+import * as prompt from '../../lib/prompt.js';
+import * as workflowV4 from '../../lib/workflow-v4.js';
 
 const MODULES = {
   'clinical.js': clinical,
@@ -60,13 +87,41 @@ const MODULES = {
   'scoring-v6.js': scoringV6,
   'lab-interpret.js': labInterpret,
   'unit-convert.js': unitConvert,
+  'field.js': field,
+  'coding-v5.js': codingV5,
+  'regulatory.js': regulatory,
+  'prompt.js': prompt,
+  'workflow-v4.js': workflowV4,
 };
 
 const MATRIX = [0, -1, 1e9, NaN, Infinity, -Infinity, '', undefined, null];
 const BANNED = ['NaN', 'Infinity', 'undefined'];
 
-// Recursively assert no STRING field of `v` embeds a banned token.
-function assertNoStringLeak(v, path, label) {
+// Reflect the destructured field names from a function's first parameter when it
+// is a flat object pattern: `function f({ a, b = 1, c: x })` / `({ a, b }) =>`.
+// Returns null when the first parameter is not an object pattern (positional or
+// scalar arg) -- those take the scalar matrix instead.
+function objectFields(fn) {
+  const src = fn.toString();
+  const m = src.match(/^(?:[^({]*?)\(\s*\{([^}]*)\}/s);
+  if (!m) return null;
+  const fields = m[1]
+    .split(',')
+    .map((s) => s.trim().split(/[=:]/)[0].trim())
+    .filter((s) => /^[A-Za-z_$][\w$]*$/.test(s));
+  return fields.length ? fields : null;
+}
+
+function assertThrowSafe(err, label) {
+  assert.ok(
+    err instanceof TypeError || err instanceof RangeError,
+    `${label} threw ${err && err.constructor && err.constructor.name}: ${err && err.message} -- only TypeError/RangeError are allowed (spec-v53 §3.1)`,
+  );
+}
+
+// Recursively assert no STRING field embeds a banned token (the DOM-safety
+// invariant). null/undefined/booleans/numbers pass; objects/arrays recurse.
+function assertSafeReturn(v, path, label) {
   if (typeof v === 'string') {
     for (const t of BANNED) {
       assert.ok(!v.includes(t), `${label}: returned string ${path} leaked "${t}": ${JSON.stringify(v)}`);
@@ -74,35 +129,52 @@ function assertNoStringLeak(v, path, label) {
     return;
   }
   if (v && typeof v === 'object') {
-    for (const k of Object.keys(v)) assertNoStringLeak(v[k], `${path}.${k}`, label);
+    for (const k of Object.keys(v)) assertSafeReturn(v[k], `${path}.${k}`, label);
   }
 }
 
 let fnCount = 0;
+let objCount = 0;
 for (const [modName, mod] of Object.entries(MODULES)) {
   for (const [name, fn] of Object.entries(mod)) {
     if (typeof fn !== 'function') continue;
     fnCount += 1;
-    test(`fuzz: ${modName} ${name}() is throw-safe and string-leak-free across the adversarial matrix`, () => {
-      for (const input of MATRIX) {
-        let result;
-        try {
-          result = fn(input);
-        } catch (err) {
-          assert.ok(
-            err instanceof TypeError || err instanceof RangeError,
-            `${name}(${String(input)}) threw ${err && err.constructor && err.constructor.name}: ${err && err.message} -- only TypeError/RangeError are allowed (spec-v53 §3.1)`,
-          );
-          continue;
+    const fields = objectFields(fn);
+    test(`fuzz: ${modName} ${name}() is throw-safe and string-leak-free across the object-aware matrix`, () => {
+      if (fields) {
+        objCount += 1;
+        // Object-aware: baseline of finite 1s, drive each field through the matrix.
+        const baseline = {};
+        for (const f of fields) baseline[f] = 1;
+        // A valid baseline call first.
+        try { assertSafeReturn(fn({ ...baseline }), '<return>', `${name}(baseline)`); }
+        catch (err) { assertThrowSafe(err, `${name}(baseline)`); }
+        for (const f of fields) {
+          for (const adv of MATRIX) {
+            const arg = { ...baseline, [f]: adv };
+            let result;
+            try { result = fn(arg); }
+            catch (err) { assertThrowSafe(err, `${name}({${f}:${String(adv)}})`); continue; }
+            assertSafeReturn(result, '<return>', `${name}({${f}:${String(adv)}})`);
+          }
         }
-        assertNoStringLeak(result, '<return>', `${name}(${String(input)})`);
+      } else {
+        // Scalar / positional: pass each adversarial value as the sole argument.
+        for (const input of MATRIX) {
+          let result;
+          try { result = fn(input); }
+          catch (err) { assertThrowSafe(err, `${name}(${String(input)})`); continue; }
+          // A scalar arg to a positional function yields undefined trailing
+          // args, an unreachable shape -- only the string-leak half is
+          // meaningful (spec-v53 §7 honesty discipline). A bare numeric return
+          // is rendered through fmt() at the call site, not as a raw string.
+          assertSafeReturn(result, '<return>', `${name}(${String(input)})`);
+        }
       }
     });
   }
 }
 
-test('the fuzz harness actually enumerated the public compute surface', () => {
-  // Guard against the harness silently covering nothing (e.g. an import that
-  // resolved to an empty namespace). scoring-v4 alone exports 150+ functions.
+test('the fuzz harness enumerated the public compute surface and exercised the object path', () => {
   assert.ok(fnCount > 200, `expected 200+ fuzzed exports, got ${fnCount}`);
 });

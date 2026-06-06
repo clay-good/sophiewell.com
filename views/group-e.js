@@ -36,6 +36,15 @@ function selectField(label, id, options) {
 
 function out() { return el('div', { id: 'q-results', 'aria-live': 'polite' }); }
 function num(id) { return Number(document.getElementById(id).value); }
+// spec-v59 §2.5: surface a physiologic-plausibility advisory for each entered
+// value that falls outside its BOUNDS envelope. The advisory never changes the
+// computed number; it flags a frankly-impossible input (e.g. glucose 1e9).
+function adviseAll(o, pairs) {
+  for (const [key, value] of pairs) {
+    const adv = boundsAdvisory(key, value);
+    if (adv) o.appendChild(el('p', { class: 'warn', text: adv }));
+  }
+}
 
 function safe(out, fn) {
   clear(out);
@@ -96,7 +105,9 @@ export const renderers = {
     root.appendChild(field('Diastolic BP (mmHg)', 'd'));
     const o = out(); root.appendChild(o);
     const run = () => safe(o, () => {
-      o.appendChild(el('p', { text: `MAP: ${C.map({ sbp: num('s'), dbp: num('d') })} mmHg` }));
+      const sbp = num('s'), dbp = num('d');
+      o.appendChild(el('p', { text: `MAP: ${C.map({ sbp, dbp })} mmHg` }));
+      adviseAll(o, [['sbp', sbp], ['dbp', dbp]]);
     });
     ['s', 'd'].forEach((id) => document.getElementById(id).addEventListener('input', run));
   },
@@ -122,7 +133,9 @@ export const renderers = {
     root.appendChild(field('Albumin (g/dL)', 'alb'));
     const o = out(); root.appendChild(o);
     const run = () => safe(o, () => {
-      o.appendChild(el('p', { text: `Corrected calcium: ${C.correctedCalcium({ measuredCa: num('ca'), albuminGdl: num('alb') })} mg/dL` }));
+      const measuredCa = num('ca'), albuminGdl = num('alb');
+      o.appendChild(el('p', { text: `Corrected calcium: ${C.correctedCalcium({ measuredCa, albuminGdl })} mg/dL` }));
+      adviseAll(o, [['calcium', measuredCa], ['albumin', albuminGdl]]);
     });
     ['ca', 'alb'].forEach((id) => document.getElementById(id).addEventListener('input', run));
   },
@@ -132,11 +145,13 @@ export const renderers = {
     root.appendChild(field('Glucose (mg/dL)', 'g'));
     const o = out(); root.appendChild(o);
     const run = () => safe(o, () => {
-      const r = C.correctedSodium({ measuredNa: num('na'), glucose: num('g') });
+      const measuredNa = num('na'), glucose = num('g');
+      const r = C.correctedSodium({ measuredNa, glucose });
       o.appendChild(el('ul', {}, [
         el('li', { text: `Corrected Na (factor 1.6): ${r.naBy1_6} mEq/L` }),
         el('li', { text: `Corrected Na (factor 2.4): ${r.naBy2_4} mEq/L` }),
       ]));
+      adviseAll(o, [['sodium', measuredNa], ['glucose', glucose]]);
       o.appendChild(el('p', { class: 'muted', text: 'Both correction factors are reported per the literature (Katz 1973; Hillier 1999).' }));
     });
     ['na', 'g'].forEach((id) => document.getElementById(id).addEventListener('input', run));
@@ -148,11 +163,13 @@ export const renderers = {
     root.appendChild(field('PaO2 (mmHg)', 'pao2'));
     const o = out(); root.appendChild(o);
     const run = () => safe(o, () => {
-      const r = C.aaGradient({ fio2: num('fio2'), paco2: num('paco2'), pao2: num('pao2') });
+      const fio2 = num('fio2'), paco2 = num('paco2'), pao2 = num('pao2');
+      const r = C.aaGradient({ fio2, paco2, pao2 });
       o.appendChild(el('ul', {}, [
         el('li', { text: `PAO2: ${r.PAO2} mmHg` }),
         el('li', { text: `A-a gradient: ${r.aaGradient} mmHg` }),
       ]));
+      adviseAll(o, [['fio2', fio2], ['paCO2', paco2], ['paO2', pao2]]);
     });
     ['fio2', 'paco2', 'pao2'].forEach((id) => document.getElementById(id).addEventListener('input', run));
   },

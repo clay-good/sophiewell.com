@@ -131,3 +131,19 @@ test('flag taxonomy: every result uses one of the four bands from spec-v6 §3.3'
     );
   }
 });
+
+// spec-v59 §2.3: the oneSidedLow analytes (totalChol, ldl, triglycerides)
+// must never raise a low flag -- a low value is clinically benign, and
+// refLow:0 is a deliberate "never flag low" choice, not an accidental default
+// that would silently report an impossibly low value as "within range".
+test('oneSidedLow analytes never flag low (spec-v59 §2.3 regression)', () => {
+  for (const id of Object.keys(LAB_ANALYTES)) {
+    if (!LAB_ANALYTES[id].oneSidedLow) continue;
+    // An impossibly low value (and a moderately low one) must not be flagged low.
+    for (const v of [0, 1, 10]) {
+      const r = interpretLab(id, v);
+      assert.notEqual(r.direction, 'low', `${id} at ${v} should not flag low`);
+      assert.equal(r.flag, 'within-range', `${id} at ${v} should be within-range`);
+    }
+  }
+});

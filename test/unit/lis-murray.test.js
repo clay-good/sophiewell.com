@@ -28,3 +28,16 @@ test('lis-murray quadrants clamped to 0-4', () => {
   const r = lisMurray({ quadrants: 99, pao2: 300, fio2: 0.4, peep: 5, complianceMlPerCmH2O: 80 });
   assert.equal(r.parts.quadrants, 4);
 });
+
+// spec-v59 §2.1/§2.2: refuse from an empty instrument; no magic P/F of 300.
+test('lis-murray refuses an all-empty instrument', () => {
+  const r = lisMurray({});
+  assert.equal(r.score, null);
+  assert.equal(r.pfRatio, null);
+  assert.match(r.band, /Enter all five/);
+});
+test('lis-murray refuses when FiO2 <= 0 (no fictitious P/F of 300)', () => {
+  const r = lisMurray({ quadrants: 2, pao2: 100, fio2: 0, peep: 5, complianceMlPerCmH2O: 80 });
+  assert.equal(r.score, null);
+  assert.equal(r.pfRatio, null);
+});

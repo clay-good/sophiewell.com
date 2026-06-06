@@ -100,3 +100,29 @@ test('redactBundle with redactFindings:true scrubs unlabeled literal PHI from ev
   assert.equal(/Jane Q Doe/.test(out.findings[0].evidence), false);
   assert.match(out.findings[0].evidence, /\[REDACTED\]/);
 });
+
+// spec-v59 §3.2: widened redaction negative cases (R-1 .. R-4). Each previously
+// passed through unredacted; the broadened patterns now mask them.
+test('R-1: an UNLABELED street address + City, ST ZIP is redacted', () => {
+  const s = 'patient lives at 123 Main St, Springfield, IL 62704 today';
+  const out = redactText(s);
+  assert.equal(/123 Main St/.test(out), false, 'street not redacted');
+  assert.equal(/62704/.test(out), false, 'ZIP not redacted');
+});
+test('R-2: an UNLABELED "born <date>" is redacted', () => {
+  const out = redactText('the infant was born 03/12/1985 at term');
+  assert.equal(/03\/12\/1985/.test(out), false);
+});
+test('R-3: an over-long member ID is redacted to the token boundary (no overflow)', () => {
+  const out = redactText('Member ID: 1234567890123456789012345 on file');
+  assert.equal(/\d{21}/.test(out), false, 'ID overflow leaked');
+  assert.match(out, /\[REDACTED\]/);
+});
+test('R-4: an international phone (+ country code) is redacted', () => {
+  const out = redactText('call the office at +44 20 7946 0958 to confirm');
+  assert.equal(/7946 0958/.test(out), false);
+});
+test('redactText remains idempotent after widening', () => {
+  const s = 'lives at 45 North Bedford Avenue, Boston, MA 02115; born 1/2/1990';
+  assert.equal(redactText(redactText(s)), redactText(s));
+});

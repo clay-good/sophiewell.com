@@ -194,3 +194,23 @@ test('buildDocxReport embeds the full PHI; redacted DOCX masks it', () => {
   assert.ok(!redacted.includes('Jane Q Doe'), 'redacted DOCX must not contain the patient name');
   assert.ok(redacted.includes('[REDACTED]'), 'redacted DOCX should carry the redaction marker');
 });
+
+// spec-v59 §3.1: the DEFAULT export (the redacted builder, now wired to the
+// default download buttons in views/pa-lint.js) must contain NONE of the
+// extracted patient-identifier values. The raw extract is reachable only via
+// the explicit include-PHI builder (buildJsonReport), tested separately above.
+test('the redacted report contains no extracted PHI values (spec-v59 §3.1)', () => {
+  const bundle = bundleOf(HAPPY_TEXT);
+  const findings = runEngine(bundle);
+  const json = JSON.stringify(buildRedactedJsonReport(bundle, findings, {}));
+  for (const phi of ['Jane Q Doe', 'Jane Doe', '1985-03-12', 'W123456789']) {
+    assert.equal(json.includes(phi), false, `redacted report leaked PHI: ${phi}`);
+  }
+});
+
+test('the full report DOES still carry PHI (so the redaction test is meaningful)', () => {
+  const bundle = bundleOf(HAPPY_TEXT);
+  const findings = runEngine(bundle);
+  const json = JSON.stringify(buildJsonReport(bundle, findings, {}));
+  assert.ok(json.includes('Jane Q Doe'), 'control: full report should carry the raw name');
+});

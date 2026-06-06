@@ -6,6 +6,7 @@ import * as S4 from '../lib/scoring-v4.js';
 import { renderScreener } from '../lib/screener.js';
 import { META } from '../lib/meta.js';
 import { renderDerivation, updateDerivationSteps } from '../lib/derivation.js';
+import { fmt } from '../lib/num.js';
 
 function rangeField(label, id, min, max, value) {
   const wrap = el('p');
@@ -29,6 +30,10 @@ function checkbox(label, id) {
 }
 function out() { return el('div', { id: 'q-results', 'aria-live': 'polite' }); }
 function nv(id) { return Number(document.getElementById(id).value); }
+// spec-v59 §2.2: blank-aware reader. A genuinely empty field reads as null (not
+// 0), so a compute function can refuse to score an empty instrument instead of
+// substituting a clinically-loaded default. A present "0" still reads as 0.
+function nvOrNull(id) { const s = document.getElementById(id).value; return s.trim() === '' ? null : Number(s); }
 function checked(id) { return document.getElementById(id).checked; }
 function safe(o, fn) { clear(o); try { fn(); } catch (err) { o.appendChild(el('p', { class: 'muted', text: err.message })); } }
 
@@ -2274,12 +2279,13 @@ export const renderers = {
     const o = out(); root.appendChild(o);
     const run = () => safe(o, () => {
       const r = S4.hacor({
-        hr: nv('hc-hr'), ph: nv('hc-ph'), gcs: nv('hc-gcs'),
-        pao2: nv('hc-pao2'), fio2: nv('hc-fio2'), rr: nv('hc-rr'),
+        hr: nvOrNull('hc-hr'), ph: nvOrNull('hc-ph'), gcs: nvOrNull('hc-gcs'),
+        pao2: nvOrNull('hc-pao2'), fio2: nvOrNull('hc-fio2'), rr: nvOrNull('hc-rr'),
       });
+      if (r.score == null) { o.appendChild(el('p', { class: 'muted', text: r.band })); return; }
       o.appendChild(el('h2', { text: `HACOR ${r.score}` }));
       o.appendChild(el('p', { text: r.band }));
-      o.appendChild(el('p', { class: 'muted', text: `Per-parameter: HR ${r.parts.hr}, pH ${r.parts.ph}, GCS ${r.parts.gcs}, PaO2/FiO2 ${r.pfRatio.toFixed(0)} -> ${r.parts.pf}, RR ${r.parts.rr}.` }));
+      o.appendChild(el('p', { class: 'muted', text: `Per-parameter: HR ${r.parts.hr}, pH ${r.parts.ph}, GCS ${r.parts.gcs}, PaO2/FiO2 ${fmt(r.pfRatio, { digits: 0, fallback: '(enter PaO2 & FiO2)' })} -> ${r.parts.pf}, RR ${r.parts.rr}.` }));
     });
     fields.forEach(([, id]) => document.getElementById(id).addEventListener('input', run));
     run();
@@ -2342,15 +2348,16 @@ export const renderers = {
     const o = out(); root.appendChild(o);
     const run = () => safe(o, () => {
       const r = S4.lisMurray({
-        quadrants: nv('lm-quad'),
-        pao2: nv('lm-pao2'),
-        fio2: nv('lm-fio2'),
-        peep: nv('lm-peep'),
-        complianceMlPerCmH2O: nv('lm-comp'),
+        quadrants: nvOrNull('lm-quad'),
+        pao2: nvOrNull('lm-pao2'),
+        fio2: nvOrNull('lm-fio2'),
+        peep: nvOrNull('lm-peep'),
+        complianceMlPerCmH2O: nvOrNull('lm-comp'),
       });
+      if (r.score == null) { o.appendChild(el('p', { class: 'muted', text: r.band })); return; }
       o.appendChild(el('h2', { text: `Murray LIS ${r.score.toFixed(2)}` }));
       o.appendChild(el('p', { text: r.band }));
-      o.appendChild(el('p', { class: 'muted', text: `Per-component: quadrants ${r.parts.quadrants}, PaO2/FiO2 ${r.pfRatio.toFixed(0)} -> ${r.parts.pf}, PEEP ${r.parts.peep}, compliance ${r.parts.compliance}.` }));
+      o.appendChild(el('p', { class: 'muted', text: `Per-component: quadrants ${r.parts.quadrants}, PaO2/FiO2 ${fmt(r.pfRatio, { digits: 0, fallback: '(enter PaO2 & FiO2)' })} -> ${r.parts.pf}, PEEP ${r.parts.peep}, compliance ${r.parts.compliance}.` }));
     });
     document.querySelectorAll('input').forEach((n) => n.addEventListener('input', run));
     run();

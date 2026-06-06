@@ -26,7 +26,7 @@
 
 import { el, clear } from '../lib/dom.js';
 import { buildBundle, runEngine, summarizeFindings } from '../lib/pa/engine.js';
-import { buildJsonReport, buildRedactedJsonReport, buildDocxReport } from '../lib/pa/report.js';
+import { buildJsonReport, buildRedactedJsonReport, buildDocxReport, buildRedactedDocxReport } from '../lib/pa/report.js';
 import { disabledSourceMap } from '../lib/pa/staleness.js';
 import { PA_STALENESS_LEDGER } from '../lib/pa/staleness-ledger.js';
 import { isImageFile, isOcrCandidate, ocrDocument, createOcrRunner } from '../lib/pa/ocr.js';
@@ -273,20 +273,33 @@ function renderFindingsPanel(panel, findings, counts, bundle) {
   // stays in the tab: each button serializes from the in-memory bundle /
   // findings and writes a Blob via URL.createObjectURL. No network call.
   if (bundle) {
+    // spec-v59 §3.1: the DEFAULT export is PHI-redacted. The raw-extract export
+    // (which echoes patientName / dob / memberId / SSN counts) is reached only
+    // by explicitly ticking the labeled "include PHI" box first -- a nurse who
+    // clicks "Download report" to attach or share never gets full PHI by default.
     const downloads = el('div', { class: 'pa-downloads', role: 'group',
       'aria-label': 'Download report' });
+
+    const phiToggleWrap = el('p', { class: 'pa-phi-toggle' });
+    const phiToggle = el('input', { id: 'pa-include-phi', type: 'checkbox' });
+    phiToggleWrap.appendChild(phiToggle);
+    phiToggleWrap.appendChild(el('label', { for: 'pa-include-phi',
+      text: ' Include raw PHI in the export (internal use only — the report will contain patient name, DOB, and member ID)' }));
+
+    const includePhi = () => phiToggle.checked;
+
     const docxBtn = el('button', { type: 'button', class: 'pa-download-btn',
       'data-flavor': 'docx', text: 'Download report (.docx)' });
-    docxBtn.addEventListener('click', () => downloadDocx(bundle, findings, 'pa-report.docx'));
-    const fullBtn = el('button', { type: 'button', class: 'pa-download-btn',
-      'data-flavor': 'json-full', text: 'Download report (.json)' });
-    fullBtn.addEventListener('click', () => downloadReport(bundle, findings, 'pa-report.json', false));
-    const redactedBtn = el('button', { type: 'button', class: 'pa-download-btn',
-      'data-flavor': 'json-redacted', text: 'Download PHI-redacted report (.json)' });
-    redactedBtn.addEventListener('click', () => downloadReport(bundle, findings, 'pa-report.redacted.json', true));
+    docxBtn.addEventListener('click', () => downloadDocx(bundle, findings,
+      includePhi() ? 'pa-report.with-phi.docx' : 'pa-report.docx', includePhi()));
+    const jsonBtn = el('button', { type: 'button', class: 'pa-download-btn',
+      'data-flavor': 'json', text: 'Download report (.json)' });
+    jsonBtn.addEventListener('click', () => downloadReport(bundle, findings,
+      includePhi() ? 'pa-report.with-phi.json' : 'pa-report.json', includePhi()));
+
     downloads.appendChild(docxBtn);
-    downloads.appendChild(fullBtn);
-    downloads.appendChild(redactedBtn);
+    downloads.appendChild(jsonBtn);
+    panel.appendChild(phiToggleWrap);
     panel.appendChild(downloads);
   }
 }
@@ -310,17 +323,22 @@ function triggerDownload(blob, filename) {
 // audit trail surface live per-source dataset staleness from the bundled
 // ledger. Capturing `new Date()` here (in the view, on a user click) keeps it
 // out of the deterministic compute path -- the builders default to null.
-function downloadDocx(bundle, findings, filename) {
-  const bytes = buildDocxReport(bundle, findings, { generatedAt: new Date().toISOString() });
+// spec-v59 §3.1: redacted by default. `includePhi` (the explicit opt-in) routes
+// to the raw-extract builder; otherwise the redacted builder is used.
+function downloadDocx(bundle, findings, filename, includePhi) {
+  const opts = { generatedAt: new Date().toISOString() };
+  const bytes = includePhi
+    ? buildDocxReport(bundle, findings, opts)
+    : buildRedactedDocxReport(bundle, findings, opts);
   const blob = new Blob([bytes], { type: DOCX_MIME });
   triggerDownload(blob, filename);
 }
 
-function downloadReport(bundle, findings, filename, redacted) {
+function downloadReport(bundle, findings, filename, includePhi) {
   const opts = { generatedAt: new Date().toISOString() };
-  const report = redacted
-    ? buildRedactedJsonReport(bundle, findings, opts)
-    : buildJsonReport(bundle, findings, opts);
+  const report = includePhi
+    ? buildJsonReport(bundle, findings, opts)
+    : buildRedactedJsonReport(bundle, findings, opts);
   const json = JSON.stringify(report, null, 2);
   const blob = new Blob([json], { type: 'application/json' });
   triggerDownload(blob, filename);
@@ -377,7 +395,17 @@ async function processFiles(fileList, resultsList, statusNode, findingsPanel) {
       } else if (isTxt(file)) {
         parseLabel = 'TXT';
         const text = new TextDecoder('utf-8').decode(buf);
-        extract = { kind: 'TXT', text };
+        // spec-v59 §3.3 U-3: a binary / non-UTF8 file decoded as text is a run
+        // of U+FFFD replacement chars. Running the full ~40-rule engine over
+        // that garbage is wasted work and yields meaningless findings; pre-gate
+        // on the replacement-char ratio and treat the file as non-text instead.
+        let replacements = 0;
+        for (let i = 0; i < text.length; i += 1) if (text.charCodeAt(i) === 0xfffd) replacements += 1;
+        if (text.length && replacements / text.length > 0.3) {
+          extract = { kind: 'TXT', text: '', parseError: 'binary or non-UTF8 content (skipped)' };
+        } else {
+          extract = { kind: 'TXT', text };
+        }
       } else if (isImageFile(file)) {
         // spec-v52 §4.3.1: images carry no embedded text. The deterministic
         // pipeline cannot lint them until OCR runs; mark them as OCR candidates.

@@ -27,3 +27,17 @@ test('hacor pH bands per Duan 2017 Table 1', () => {
   assert.equal(hacor({ hr: 0, ph: 7.28, gcs: 15, pao2: 200, fio2: 0.5, rr: 20 }).parts.ph, 3);
   assert.equal(hacor({ hr: 0, ph: 7.20, gcs: 15, pao2: 200, fio2: 0.5, rr: 20 }).parts.ph, 4);
 });
+
+// spec-v59 §2.2: refuse to score from an empty/impossible instrument rather
+// than substitute a clinically-loaded default (blank pH -> 7.4, blank GCS -> 15).
+test('hacor refuses an all-empty instrument (no band from no data)', () => {
+  const r = hacor({});
+  assert.equal(r.score, null);
+  assert.equal(r.pfRatio, null);
+  assert.match(r.band, /Enter all six/);
+});
+test('hacor refuses when FiO2 <= 0 (P/F undefined), not a magic ratio', () => {
+  const r = hacor({ hr: 110, ph: 7.4, gcs: 15, pao2: 120, fio2: 0, rr: 25 });
+  assert.equal(r.score, null);
+  assert.equal(r.pfRatio, null);
+});

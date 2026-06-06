@@ -35,3 +35,12 @@ test('bps clamps each input to 1-4', () => {
   assert.equal(r.parts.upperLimb, 1);
   assert.equal(r.parts.ventilatorCompliance, 4);
 });
+
+// spec-v59 §2.2: refuse an unobserved instrument rather than default each item
+// to 1 and emit "acceptable pain" from no data.
+test('bps refuses when an item is unobserved (missing)', () => {
+  const r = bps({ facial: 2, upperLimb: 2 });
+  assert.equal(r.score, null);
+  assert.equal(r.unacceptablePain, null);
+  assert.match(r.band, /Score all three/);
+});
