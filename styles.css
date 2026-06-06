@@ -1238,6 +1238,10 @@ main h1 {
 }
 .tool-sources h2 { font-size: 0.95rem; margin: 0 0 var(--space-2); color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.12em; }
 .muted { color: var(--text-muted); }
+/* spec-v53 §3.3: a visible advisory shown next to a result when an input is
+   outside its physiologic envelope. Text stays the default (accessible) color;
+   a left accent bar makes it stand out without a contrast risk in either theme. */
+.warn { border-left: 3px solid var(--accent-pop-strong); padding-left: var(--space-2); }
 
 .tool-meta {
   margin: 0 0 var(--space-4);

@@ -6,6 +6,41 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Hardened (spec-v53 — public-tool output safety & input bounds; zero new tiles)
+
+A zero-tile hardening release: no new tile, no clinical formula, threshold, or
+rounding precision changed (every valid-input result is byte-identical). It
+defines and enforces the invariant that **no public compute path may render
+`NaN` / `undefined` / `Infinity` to the user, throw anything but a validation
+error, or return a non-finite number that reaches the DOM**, fixes the concrete
+defects found in the v52-close audit, and adds two automated gates so the class
+cannot reappear. Audit log: `docs/audits/v11/_hardening-v53.md`.
+
+- **`lib/num.js` (new)** — single source of truth for `r1`/`r2`/`r3` and `num()`
+  (previously duplicated in `clinical.js` and `clinical-v5.js`; a latent
+  drift risk), plus the new **`fmt()`** display guard that substitutes a
+  caller-supplied fallback for any `null` / non-finite value.
+- **Class A (leaked tokens):** `views/group-e.js` shock index / modified shock
+  index rendered the literal `undefined` at SBP=0; now routed through `fmt()`.
+  The fuzz harness additionally found `cfs` / `rass` leaking `CFS 9 (undefined)`
+  / `RASS NaN` into their rendered band for non-finite input — fixed.
+- **Class B (impossible input → silent nonsense):** `lib/bounds.js` (new) plus a
+  `.warn` advisory next to the result for a frankly-impossible serum creatinine
+  (Cockcroft-Gault / eGFR) or height (BMI); `pbwArdsnet` now returns `null`
+  tidal-volume targets (not silent `0 mL`) below the Devine floor and the
+  renderer finally displays the warning it had always computed.
+- **Class C:** the bare `refLow: 0` lipid analytes (`totalChol`, `ldl`,
+  `triglycerides`) are now explicitly `oneSidedLow: true` (a documented choice).
+- **Gate 1 — `scripts/check-output-safety.mjs`** (wired into `npm run lint`):
+  bans the `)?.toFixed(` leak fingerprint in `views/`; unit-tested both ways.
+- **Gate 2 — `test/unit/fuzz-tools.test.js`** (wired into `npm run test`):
+  reflection-driven; drives all 245 public compute exports with an adversarial
+  matrix and asserts throw-safety (only `TypeError`/`RangeError`) and no
+  banned-token leak into returned strings. It surfaced — and this release fixes —
+  42 functions that threw a plain `Error` for validation (normalized to
+  `TypeError`/`RangeError`).
+- Catalog unchanged (255 tiles). No `app.js` / `UTILITIES` change.
+
 ### Added — enforce no-horizontal-scroll across the **entire** tile catalog at 320px
 
 The site is built for the nurse reaching for it on a phone, and "no horizontal

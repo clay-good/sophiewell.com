@@ -4,6 +4,7 @@
 // v5 surface easy to audit.
 
 import { el, clear } from '../lib/dom.js';
+import { fmt } from '../lib/num.js';
 import * as V5 from '../lib/clinical-v5.js';
 import * as Code from '../lib/coding-v5.js';
 import { breachNotificationDeadlines } from '../lib/regulatory.js';
@@ -158,11 +159,13 @@ export const renderers = {
     const o = out(); root.appendChild(o);
     const run = () => safe(o, () => {
       const r = V5.pbwArdsnet({ heightCm: num('h'), sex: str('sex'), mlPerKg: num('mlkg') });
+      const fb = '(height too low for PBW)';
       o.appendChild(el('ul', {}, [
-        el('li', { text: `Predicted body weight: ${r.pbwKg} kg` }),
-        el('li', { text: `Target Vt: ${r.vtTargetMl} mL` }),
-        el('li', { text: `ARDSnet range (4-8 mL/kg): ${r.vtRangeMl.low} - ${r.vtRangeMl.high} mL` }),
+        el('li', { text: `Predicted body weight: ${fmt(r.pbwKg, { unit: 'kg', fallback: fb })}` }),
+        el('li', { text: `Target Vt: ${fmt(r.vtTargetMl, { unit: 'mL', fallback: fb })}` }),
+        el('li', { text: `ARDSnet range (4-8 mL/kg): ${r.vtRangeMl.low == null ? fb : `${r.vtRangeMl.low} - ${r.vtRangeMl.high} mL`}` }),
       ]));
+      if (r.warning) o.appendChild(el('p', { class: 'warn', text: r.warning }));
     });
     ['h', 'sex', 'mlkg'].forEach((id) => document.getElementById(id).addEventListener('input', run));
   },

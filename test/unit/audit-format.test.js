@@ -30,6 +30,11 @@ test('audit-format: every docs/audits/v11/<tile>.md parses to the spec-v11 §3.2
   for (const name of entries) {
     if (!name.endsWith('.md')) continue;
     if (name === 'README.md') continue;
+    // Underscore-prefixed files are meta/non-tile artifacts (e.g. the
+    // spec-v53 hardening log `_hardening-v53.md`), not per-tile audits, so
+    // they are not held to the per-tile spec-v11 §3.2 schema. Tile audits are
+    // named `<tile-id>.md` and never start with an underscore.
+    if (name.startsWith('_')) continue;
     const body = await readFile(join(AUDIT_DIR, name), 'utf8');
     if (!body.match(/^# v11 audit /m)) {
       failures.push(`${name}: missing "# v11 audit ..." heading`);

@@ -4,6 +4,8 @@
 // rendered by the router for any utility flagged clinical.
 
 import { el, clear } from '../lib/dom.js';
+import { fmt } from '../lib/num.js';
+import { boundsAdvisory } from '../lib/bounds.js';
 import * as C from '../lib/clinical.js';
 import * as V4 from '../lib/clinical-v4.js';
 import * as S4 from '../lib/scoring-v4.js';
@@ -66,8 +68,11 @@ export const renderers = {
     root.appendChild(field('Height (m)', 'h'));
     const o = out(); root.appendChild(o);
     const run = () => safe(o, () => {
-      const r = C.bmi({ weightKg: num('w'), heightM: num('h') });
+      const heightM = num('h');
+      const r = C.bmi({ weightKg: num('w'), heightM });
       o.appendChild(el('p', { text: `BMI: ${r.bmi} kg/m^2 (${r.category})` }));
+      const adv = boundsAdvisory('heightM', heightM);
+      if (adv) o.appendChild(el('p', { class: 'warn', text: adv }));
     });
     ['w', 'h'].forEach((id) => document.getElementById(id).addEventListener('input', run));
   },
@@ -171,8 +176,11 @@ export const renderers = {
     root.appendChild(selectField('Sex', 'sex', [{ value: 'M', text: 'Male' }, { value: 'F', text: 'Female' }]));
     const o = out(); root.appendChild(o);
     const run = () => safe(o, () => {
-      const v = C.cockcroftGault({ age: num('age'), weightKg: num('w'), scr: num('scr'), sex: document.getElementById('sex').value });
+      const scr = num('scr');
+      const v = C.cockcroftGault({ age: num('age'), weightKg: num('w'), scr, sex: document.getElementById('sex').value });
       o.appendChild(el('p', { text: `Creatinine clearance: ${v} mL/min` }));
+      const adv = boundsAdvisory('scr', scr);
+      if (adv) o.appendChild(el('p', { class: 'warn', text: adv }));
     });
     ['age', 'w', 'scr', 'sex'].forEach((id) => document.getElementById(id).addEventListener('input', run));
   },
@@ -336,8 +344,8 @@ export const renderers = {
       o.appendChild(el('ul', {}, [
         el('li', { text: `MAP: ${mapV.toFixed(1)} mmHg` }),
         el('li', { text: `Pulse pressure: ${V4.pulsePressure({ sbp, dbp })} mmHg` }),
-        el('li', { text: `Shock index (HR/SBP): ${V4.shockIndex({ hr, sbp })?.toFixed(2)}` }),
-        el('li', { text: `Modified shock index (HR/MAP): ${V4.modifiedShockIndex({ hr, sbp, dbp })?.toFixed(2)}` }),
+        el('li', { text: `Shock index (HR/SBP): ${fmt(V4.shockIndex({ hr, sbp }), { digits: 2, fallback: '(enter HR & SBP > 0)' })}` }),
+        el('li', { text: `Modified shock index (HR/MAP): ${fmt(V4.modifiedShockIndex({ hr, sbp, dbp }), { digits: 2, fallback: '(enter HR, SBP & DBP > 0)' })}` }),
       ]));
     });
     ['si-sbp', 'si-dbp', 'si-hr'].forEach((id) => document.getElementById(id).addEventListener('input', run));
@@ -382,6 +390,8 @@ export const renderers = {
         el('li', { text: `MDRD (race-free): ${mdrd.toFixed(1)} mL/min/1.73m^2` }),
         el('li', { text: `Cockcroft-Gault: ${cg.toFixed(1)} mL/min` }),
       ]));
+      const adv = boundsAdvisory('scr', scr);
+      if (adv) o.appendChild(el('p', { class: 'warn', text: adv }));
       o.appendChild(el('p', { class: 'muted', text: '2021 race-free shift: NIH/NKF removed the race coefficient from CKD-EPI in 2021. Many labs use CKD-EPI; nephrology references increasingly use MDRD race-free for legacy comparison.' }));
     });
     ['es-scr', 'es-age', 'es-w', 'es-sex'].forEach((id) => document.getElementById(id).addEventListener(id === 'es-sex' ? 'change' : 'input', run));
