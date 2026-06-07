@@ -4,8 +4,8 @@
   "agency": "FDA",
   "status": "public-domain",
   "cadence": "daily",
-  "fetchDate": "2026-05-29",
-  "offlineSeed": true,
+  "fetchDate": "2026-06-07",
+  "offlineSeed": false,
   "recordCount": 5,
   "shardLayout": "shards",
   "shards": [

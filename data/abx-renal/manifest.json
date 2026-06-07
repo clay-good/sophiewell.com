@@ -5,10 +5,9 @@
   "agency": "FDA / NLM DailyMed",
   "status": "public-domain",
   "cadence": "quarterly",
-  "fetchDate": "2026-05-07",
-  "offlineSeed": true,
+  "fetchDate": "2026-06-07",
+  "offlineSeed": false,
   "recordCount": 4,
-  "shardLayout": "root",
   "shards": [
     {
       "name": "abx.json",
