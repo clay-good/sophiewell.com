@@ -6,6 +6,33 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v61 A2 — finish the related-tool linking rollout; 9 → 267 tiles)
+
+Completes the last open Part A enhancement in [spec-v61](docs/spec-v61.md) §2.
+The A2 related-tool feature shipped with three seed clusters and the v61 inline
+links (9 tiles total); this finishes the rollout so a nurse on any tile is one
+click from the siblings she reaches for next.
+
+- **`RELATED_BACKFILL` map in `lib/meta.js`.** One reviewable map, organized by
+  clinical family (VTE pretest-probability/prophylaxis/bleeding, sepsis severity,
+  community-acquired pneumonia, stroke/TIA/ICH, GI bleed/hepatology,
+  renal/acid-base/electrolyte, oxygenation/ventilation, sedation/delirium/pain,
+  depression/substance/suicide screeners, functional status, obstetrics,
+  neonatal/pediatric, trauma/massive-transfusion, dosing/infusion,
+  perioperative/airway, triage/decision-rules, heme labs, toxicology, nutrition).
+  Merged into META exactly like the A8 interpretation backfill, and **defers to
+  any `related` already on a tile** so the inline v61 seeds win. Raises
+  `META[id].related` coverage from **9 to 267** of 319 tiles. No new clinical
+  result — additive navigation metadata rendered through the existing
+  `renderMetaBlock` "Related tools" row.
+- **Guardrails in `test/unit/related-tools.test.js`.** Beyond the existing
+  resolves-to-a-real-tile / not-self-referential check: a coverage floor (≥250
+  tiles linked) so the rollout cannot silently regress, and a shape check that
+  every list stays ≤4 siblings with no duplicates (the related row wraps as a
+  single flex line; an overlong list crowds the result at 320px). The full
+  320px mobile sweep was re-run with the 267 newly-rendered related blocks — no
+  horizontal-scroll regression.
+
 ### Fixed / Added (responsive coverage for the pre-rendered static build; dev/prod server parity)
 
 The mobile no-horizontal-scroll guarantee now extends to the **pre-rendered

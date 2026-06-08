@@ -32,3 +32,27 @@ test('the related-tool seed clusters are present', () => {
   assert.ok(META['cockcroft-gault'].related.includes('egfr-suite'));
   assert.ok(META['qsofa-sofa'].related.includes('news2'));
 });
+
+test('the spec-v61 A2 related-tool rollout reaches most of the catalog', () => {
+  // A2 finished the related-tool linking pass: the RELATED_BACKFILL map in
+  // lib/meta.js fills the clinical families on top of the inline v61 seeds.
+  // This floor keeps the rollout from silently regressing (it was 9 tiles
+  // before the backfill, 267 after).
+  const linked = Object.values(META).filter(
+    (m) => m && Array.isArray(m.related) && m.related.length,
+  ).length;
+  assert.ok(linked >= 250, `expected >=250 tiles with related links, found ${linked}`);
+});
+
+test('every related list is short enough to render on a phone', () => {
+  // renderMetaBlock lays the related tools out as a single horizontal-wrapping
+  // row; an overlong list crowds the result on a 320px screen. spec-v61 A2
+  // keeps every cluster to <=4 siblings.
+  const offenders = [];
+  for (const [id, m] of Object.entries(META)) {
+    if (!m || !m.related) continue;
+    if (m.related.length > 4) offenders.push(`${id}: ${m.related.length} related (>4)`);
+    if (new Set(m.related).size !== m.related.length) offenders.push(`${id}: duplicate related id`);
+  }
+  assert.deepEqual(offenders, [], `related-list shape failures:\n  - ${offenders.join('\n  - ')}`);
+});

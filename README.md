@@ -86,29 +86,23 @@ production security headers. Any static file server will also work.
 
 ## How it works and how to use it
 
-After the spec-v29 nurse-first prune (plus the spec-v30
-thermal-emergency decision tiles, the spec-v31 Beers
-deprescribing checker, the spec-v32 non-verbal pain scales, the
-spec-v33 opioid-sedation + neonatal-pain extensions, the
-spec-v34 pediatric-ICU bedside extensions, the spec-v35
-SOS withdrawal companion, the spec-v36 MEOWS maternal
-track-and-trigger, the spec-v37 CPSS + LAMS prehospital stroke
-triage scales, the spec-v38 RACE prehospital LVO predictor, and
-the spec-v39 ROSIER ED stroke-recognition scale, and the
-spec-v40 GUSS post-stroke bedside dysphagia screen, and the
-spec-v41 FOUR Score ICU coma scale, and the spec-v42 Katz ADL
-discharge-planning functional-status index, and the spec-v43
-Lawton IADL instrumental-ADL companion, and the spec-v44 Barthel
-Index rehab-nursing weighted ADL, and the spec-v45 C-SSRS
-bedside suicide-risk screener added on top), the
-site organizes 319 deterministic calculators
-across the bedside-shift surfaces a
-nurse, doctor, pharmacist, RT, EMS provider, biller-coder, or
-educator actually reaches for. Every tile takes at least one
-user input and produces a computed output; searchable indexes
-of static facts are explicitly out of scope (see
-[docs/spec-v29.md §3](docs/spec-v29.md) and
-[docs/spec-v10.md §2.3](docs/spec-v10.md)).
+Since the spec-v29 nurse-first prune the catalog has grown one
+reviewable spec at a time to **319** deterministic calculators
+(the full per-version history is in [CHANGELOG.md](CHANGELOG.md)
+and `docs/spec-v*.md`; the most recent bedside additions are
+summarized in the cheat sheets below). They organize across the
+bedside-shift surfaces a nurse, doctor, pharmacist, RT, EMS
+provider, biller-coder, or educator actually reaches for. Every
+tile takes at least one user input and produces a computed
+output; searchable indexes of static facts are explicitly out of
+scope (see [docs/spec-v29.md §3](docs/spec-v29.md) and
+[docs/spec-v10.md §2.3](docs/spec-v10.md)). Tiles that sit in the
+same clinical workflow cross-link: a "Related tools" row —
+present across most of the catalog ([spec-v61](docs/spec-v61.md)
+§2 A2) — puts the sibling a nurse reaches for next: `wells-pe` →
+`perc` / `pesi` / `years-pe`, `cockcroft-gault` → the renal-dosing
+tools, one tap away, with every link verified in CI to resolve to
+a real tile.
 
 **Clinical math & conversions** covers BMI, BSA suite, MAP /
 pulse pressure / shock index, anion gap with delta-delta,
@@ -305,9 +299,14 @@ tile: the order stays with the clinician and the pharmacy.
 | `fluid-balance` | net I&O (mL) + % body weight, >10% overload flag | end-of-shift handoff tally |
 | `carb-insulin-bolus` | meal + correction bolus (units), shown separately | carb-counting mealtime dose |
 
-The wave also seeded **related-tool links** (`META[id].related`, rendered as a
+The wave also added **related-tool links** (`META[id].related`, rendered as a
 "Related tools" row in the citation block — e.g. `wells-pe` → `perc` / `pesi` /
-`years-pe`) and a **"Copy link"** affordance next to "Copy all" that copies the
+`years-pe`). The rollout is now complete: a single reviewable `RELATED_BACKFILL`
+map (spec-v61 A2) carries the linking across the catalog — **267 curated
+sibling clusters**, grouped by clinical family — with every link verified in CI
+to resolve to a real tile and each list capped at four siblings so the row never
+crowds the result at 320px.
+The wave also added a **"Copy link"** affordance next to "Copy all" that copies the
 deep link (hash-state already encodes the inputs), so a populated calculation
 can be handed to a colleague with no new persistence and no network. The shared
 printable template ([lib/print.js](lib/print.js), with its "No data was sent or

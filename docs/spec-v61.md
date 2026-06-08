@@ -15,7 +15,15 @@
 > default so examples/deep-links are byte-identical), and the
 > multi-output tiles (`bsa`, `anion-gap`, `corrected-sodium`,
 > `aa-gradient`) gained a `formatCopyAll`-backed "Copy results" button
-> (`test/integration/unit-toggle.spec.js`). The A4 weight toggle then
+> (`test/integration/unit-toggle.spec.js`). A2 is now finished: the
+> related-tool rollout reaches the whole catalog — a single reviewable
+> `RELATED_BACKFILL` map (merged into META, deferring to the inline v61
+> seeds) raised `META[id].related` coverage from 9 to 267 tiles across
+> the clinical families (VTE, sepsis, pneumonia, stroke, GI bleed,
+> renal/acid-base, oxygenation, sedation/pain, screeners, OB/peds,
+> dosing); `related-tools.test.js` pins every link to a real tile, caps
+> each list at four siblings for phone layout, and floors the rollout at
+> 250 tiles. The A4 weight toggle then
 > rolled out via shared helpers (`lib/field-units.js`): a kg⇄lb toggle
 > on every weight-bearing dosing tile in Group F (`weight-dose`,
 > `conc-rate`, `vasopressor`, `crrt-dose`, `ecmo-titration`) and the
@@ -25,7 +33,7 @@
 > `boundsAdvisory()`. A1's named high-value scores (Braden, MEWS,
 > NEWS2, HEART, Wells, Caprini) already carry derivation; A1's
 > lower-value tail and A3 labeled copy beyond Group E remain open
-> follow-ups.
+> follow-ups. A2 (related-tool linking) is complete.
 > v61 has two parts.
 > **Part A** is
 > a zero-tile *enhancement* pass that raises the value of the
