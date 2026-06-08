@@ -1530,6 +1530,25 @@ textarea {
   transition: border-color 0.18s ease;
 }
 input::placeholder, textarea::placeholder { color: var(--text-muted); }
+
+/* spec-v61 §2 A4: a numeric input paired with a unit <select>. The row wraps
+   so the pair never forces horizontal scroll on a 320px phone; the number
+   input flexes to fill, the unit select sizes to its content. */
+.unit-field-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  align-items: stretch;
+}
+.unit-field-row input[type="number"] {
+  flex: 1 1 8rem;
+  min-width: 0;
+}
+.unit-field-row select {
+  flex: 0 0 auto;
+  min-width: 0;
+  width: auto;
+}
 input:focus-visible,
 select:focus-visible,
 textarea:focus-visible,

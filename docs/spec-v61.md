@@ -8,9 +8,17 @@
 > `META[id].interpretation` coverage from 150 to 195; A7 added the
 > client-only, off-by-default "Remember my inputs on this device"
 > toggle (`lib/input-persist.js`, numeric/choice inputs only, never
-> PHI free-text). A1's named high-value scores (Braden, MEWS, NEWS2,
-> HEART, Wells, Caprini) already carry derivation; A1's lower-value
-> tail, A3 labeled copy, and A4 unit toggles remain open follow-ups).
+> PHI free-text). A4 unit toggles and A3 labeled copy then landed for
+> the Group E clinical-math tiles: `bmi`/`bsa`/`cockcroft-gault` gained
+> per-field unit `<select>`s driven by `lib/unit-convert.js`
+> (weight kg⇄lb, height m/cm⇄in, creatinine mg/dL⇄µmol/L; canonical
+> default so examples/deep-links are byte-identical), and the
+> multi-output tiles (`bsa`, `anion-gap`, `corrected-sodium`,
+> `aa-gradient`) gained a `formatCopyAll`-backed "Copy results" button
+> (`test/integration/unit-toggle.spec.js`). A1's named high-value
+> scores (Braden, MEWS, NEWS2, HEART, Wells, Caprini) already carry
+> derivation; A1's lower-value tail and the A3/A4 rollout to the
+> Group F/G/H tiles remain open follow-ups.
 > v61 has two parts.
 > **Part A** is
 > a zero-tile *enhancement* pass that raises the value of the

@@ -11,6 +11,50 @@ import * as V4 from '../lib/clinical-v4.js';
 import * as S4 from '../lib/scoring-v4.js';
 import { META } from '../lib/meta.js';
 import { renderDerivation, updateDerivationSteps } from '../lib/derivation.js';
+import { lbToKg, inchesToCm, labConvert } from '../lib/unit-convert.js';
+import { copyButton, formatCopyAll } from '../lib/clipboard.js';
+
+// spec-v61 §2 A4: a numeric field with an adjacent unit <select> that drives
+// the lib/unit-convert.js converters. The compute functions expect canonical
+// units (kg, m, cm, mg/dL); each option carries a `toCanonical` converter, and
+// unitNum(id) returns the value already converted, so no compute path changes.
+// US bedside charts enter weight in lb and height in inches; SI labs report
+// creatinine in µmol/L. The first (default) option is always the canonical
+// unit, so META examples and deep-link hashes reproduce a calculation
+// unchanged. The unit <select> rides the existing input/change listeners and
+// the trackHashState/input-persist machinery for free.
+function unitField(label, id, units) {
+  const wrap = el('p', { class: 'unit-field' });
+  wrap.appendChild(el('label', { for: id, text: label }));
+  wrap.appendChild(el('br'));
+  const row = el('span', { class: 'unit-field-row' });
+  const inp = el('input', { id, type: 'number', autocomplete: 'off' });
+  inp.setAttribute('step', 'any');
+  row.appendChild(inp);
+  const sel = el('select', { id: `${id}-unit`, 'aria-label': `${label} unit` });
+  for (const u of units) {
+    const opt = el('option', { value: u.unit, text: u.unit });
+    opt._toCanonical = u.toCanonical || ((v) => v);
+    sel.appendChild(opt);
+  }
+  row.appendChild(sel);
+  wrap.appendChild(row);
+  return wrap;
+}
+
+// Read a unitField value already converted to its canonical unit.
+function unitNum(id) {
+  const v = Number(document.getElementById(id).value);
+  const sel = document.getElementById(`${id}-unit`);
+  const opt = sel ? sel.options[sel.selectedIndex] : null;
+  const conv = opt && typeof opt._toCanonical === 'function' ? opt._toCanonical : (x) => x;
+  return conv(v);
+}
+
+const WEIGHT_UNITS = [
+  { unit: 'kg', toCanonical: (v) => v },
+  { unit: 'lb', toCanonical: lbToKg },
+];
 
 function field(label, id, opts = {}) {
   const wrap = el('p');
@@ -51,6 +95,24 @@ function safe(out, fn) {
   try { fn(); } catch (err) { out.appendChild(el('p', { class: 'muted', text: err.message })); }
 }
 
+// spec-v61 §2 A3: chart-ready labeled copy. A multi-output tile builds its
+// results as `{label, value, units}` items, renders them as a list, and offers
+// a "Copy results" button that pastes clean `Label: Value Units` lines via
+// lib/clipboard.js `formatCopyAll` — instead of the universal "Copy all"
+// scraping `innerText` into a blob. The list text is identical to what the
+// hand-built `<li>`s produced, so the numeric-correctness sweep is unaffected.
+function resultList(o, items) {
+  const lines = items.filter(Boolean);
+  o.appendChild(el('ul', {}, lines.map((it) => el('li', {
+    text: it.units ? `${it.label}: ${it.value} ${it.units}` : `${it.label}: ${it.value}`,
+  }))));
+  const live = el('span', { class: 'copy-live visually-hidden', 'aria-live': 'polite', role: 'status' });
+  o.appendChild(el('p', { class: 'copy-row' }, [
+    copyButton(() => formatCopyAll(lines), { label: 'Copy results', live }),
+    live,
+  ]));
+}
+
 export const renderers = {
   'unit-converter'(root) {
     root.appendChild(selectField('Quantity', 'kind', [
@@ -73,31 +135,38 @@ export const renderers = {
   },
 
   bmi(root) {
-    root.appendChild(field('Weight (kg)', 'w'));
-    root.appendChild(field('Height (m)', 'h'));
+    root.appendChild(unitField('Weight', 'w', WEIGHT_UNITS));
+    root.appendChild(unitField('Height', 'h', [
+      { unit: 'm', toCanonical: (v) => v },
+      { unit: 'cm', toCanonical: (v) => v / 100 },
+      { unit: 'in', toCanonical: (v) => inchesToCm(v) / 100 },
+    ]));
     const o = out(); root.appendChild(o);
     const run = () => safe(o, () => {
-      const heightM = num('h');
-      const r = C.bmi({ weightKg: num('w'), heightM });
+      const heightM = unitNum('h');
+      const r = C.bmi({ weightKg: unitNum('w'), heightM });
       o.appendChild(el('p', { text: `BMI: ${r.bmi} kg/m^2 (${r.category})` }));
       const adv = boundsAdvisory('heightM', heightM);
       if (adv) o.appendChild(el('p', { class: 'warn', text: adv }));
     });
-    ['w', 'h'].forEach((id) => document.getElementById(id).addEventListener('input', run));
+    ['w', 'w-unit', 'h', 'h-unit'].forEach((id) => document.getElementById(id).addEventListener('input', run));
   },
 
   bsa(root) {
-    root.appendChild(field('Weight (kg)', 'w'));
-    root.appendChild(field('Height (cm)', 'h'));
+    root.appendChild(unitField('Weight', 'w', WEIGHT_UNITS));
+    root.appendChild(unitField('Height', 'h', [
+      { unit: 'cm', toCanonical: (v) => v },
+      { unit: 'in', toCanonical: inchesToCm },
+    ]));
     const o = out(); root.appendChild(o);
     const run = () => safe(o, () => {
-      const w = num('w'), h = num('h');
-      o.appendChild(el('ul', {}, [
-        el('li', { text: `Du Bois: ${C.bsaDuBois({ weightKg: w, heightCm: h })} m^2` }),
-        el('li', { text: `Mosteller: ${C.bsaMosteller({ weightKg: w, heightCm: h })} m^2` }),
-      ]));
+      const w = unitNum('w'), h = unitNum('h');
+      resultList(o, [
+        { label: 'Du Bois', value: C.bsaDuBois({ weightKg: w, heightCm: h }), units: 'm^2' },
+        { label: 'Mosteller', value: C.bsaMosteller({ weightKg: w, heightCm: h }), units: 'm^2' },
+      ]);
     });
-    ['w', 'h'].forEach((id) => document.getElementById(id).addEventListener('input', run));
+    ['w', 'w-unit', 'h', 'h-unit'].forEach((id) => document.getElementById(id).addEventListener('input', run));
   },
 
   map(root) {
@@ -121,9 +190,9 @@ export const renderers = {
     const run = () => safe(o, () => {
       const alb = document.getElementById('alb').value;
       const r = C.anionGap({ sodium: num('na'), chloride: num('cl'), bicarbonate: num('hco3'), albuminGdl: alb === '' ? null : Number(alb) });
-      const items = [el('li', { text: `Anion gap: ${r.anionGap}` })];
-      if (r.correctedAnionGap != null) items.push(el('li', { text: `Albumin-corrected: ${r.correctedAnionGap}` }));
-      o.appendChild(el('ul', {}, items));
+      const items = [{ label: 'Anion gap', value: r.anionGap }];
+      if (r.correctedAnionGap != null) items.push({ label: 'Albumin-corrected', value: r.correctedAnionGap });
+      resultList(o, items);
     });
     ['na', 'cl', 'hco3', 'alb'].forEach((id) => document.getElementById(id).addEventListener('input', run));
   },
@@ -147,10 +216,10 @@ export const renderers = {
     const run = () => safe(o, () => {
       const measuredNa = num('na'), glucose = num('g');
       const r = C.correctedSodium({ measuredNa, glucose });
-      o.appendChild(el('ul', {}, [
-        el('li', { text: `Corrected Na (factor 1.6): ${r.naBy1_6} mEq/L` }),
-        el('li', { text: `Corrected Na (factor 2.4): ${r.naBy2_4} mEq/L` }),
-      ]));
+      resultList(o, [
+        { label: 'Corrected Na (factor 1.6)', value: r.naBy1_6, units: 'mEq/L' },
+        { label: 'Corrected Na (factor 2.4)', value: r.naBy2_4, units: 'mEq/L' },
+      ]);
       adviseAll(o, [['sodium', measuredNa], ['glucose', glucose]]);
       o.appendChild(el('p', { class: 'muted', text: 'Both correction factors are reported per the literature (Katz 1973; Hillier 1999).' }));
     });
@@ -165,10 +234,10 @@ export const renderers = {
     const run = () => safe(o, () => {
       const fio2 = num('fio2'), paco2 = num('paco2'), pao2 = num('pao2');
       const r = C.aaGradient({ fio2, paco2, pao2 });
-      o.appendChild(el('ul', {}, [
-        el('li', { text: `PAO2: ${r.PAO2} mmHg` }),
-        el('li', { text: `A-a gradient: ${r.aaGradient} mmHg` }),
-      ]));
+      resultList(o, [
+        { label: 'PAO2', value: r.PAO2, units: 'mmHg' },
+        { label: 'A-a gradient', value: r.aaGradient, units: 'mmHg' },
+      ]);
       adviseAll(o, [['fio2', fio2], ['paCO2', paco2], ['paO2', pao2]]);
     });
     ['fio2', 'paco2', 'pao2'].forEach((id) => document.getElementById(id).addEventListener('input', run));
@@ -188,18 +257,21 @@ export const renderers = {
 
   'cockcroft-gault'(root) {
     root.appendChild(field('Age (years)', 'age'));
-    root.appendChild(field('Weight (kg)', 'w'));
-    root.appendChild(field('Serum creatinine (mg/dL)', 'scr'));
+    root.appendChild(unitField('Weight', 'w', WEIGHT_UNITS));
+    root.appendChild(unitField('Serum creatinine', 'scr', [
+      { unit: 'mg/dL', toCanonical: (v) => v },
+      { unit: 'µmol/L', toCanonical: (v) => labConvert('creatinine', v, 'fromSi') },
+    ]));
     root.appendChild(selectField('Sex', 'sex', [{ value: 'M', text: 'Male' }, { value: 'F', text: 'Female' }]));
     const o = out(); root.appendChild(o);
     const run = () => safe(o, () => {
-      const scr = num('scr');
-      const v = C.cockcroftGault({ age: num('age'), weightKg: num('w'), scr, sex: document.getElementById('sex').value });
+      const scr = unitNum('scr');
+      const v = C.cockcroftGault({ age: num('age'), weightKg: unitNum('w'), scr, sex: document.getElementById('sex').value });
       o.appendChild(el('p', { text: `Creatinine clearance: ${v} mL/min` }));
       const adv = boundsAdvisory('scr', scr);
       if (adv) o.appendChild(el('p', { class: 'warn', text: adv }));
     });
-    ['age', 'w', 'scr', 'sex'].forEach((id) => document.getElementById(id).addEventListener('input', run));
+    ['age', 'w', 'w-unit', 'scr', 'scr-unit', 'sex'].forEach((id) => document.getElementById(id).addEventListener('input', run));
   },
 
   'pack-years'(root) {

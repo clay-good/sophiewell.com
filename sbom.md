@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `e33d957d8159ce86`
-Generated: 2026-06-06T19:18:42.544Z
+Build ID: `4bfea5f831658248`
+Generated: 2026-06-08T22:50:59.030Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=20.18.1 <21, npm >=10.0.0
@@ -25,12 +25,12 @@ downloads is committed in this repository and is hashed below.
 | Path | Bytes | SHA-256 |
 |---|---:|---|
 | `index.html` | 35079 | `e1f7f60993553407ba268561e2dc6ea892645420e4f86bf93a2f0fd9b57dcd0d` |
-| `styles.css` | 46692 | `e2c4ac4f798b0d80b30b0d053136c97a26185d90ed7453604bc37039547f7c32` |
+| `styles.css` | 47167 | `13d11b8cfce74762866a54ac8e3157bcb54a5bf68de5322768d341d195ea41ba` |
 | `app.js` | 108073 | `11945bb261de90d3683ad81cfa6f9601c1b6e1315de250b1f7708aae9bcb618a` |
 | `sw.js` | 4062 | `60f524b1b69eb5170c59af42631e11cc05db2a44e8e530977db0327888b0ff6d` |
 | `site.webmanifest` | 709 | `0e0de4da60590a12e8b27a0ae2a2f5ffdb6500b7d2b78f93631ec2f64ed3d5ce` |
 | `robots.txt` | 127 | `38fbf9c1854e72abb20e01e81dd5a31d4ea96f154c12d5db1ec3af05524dd1a1` |
-| `sitemap.xml` | 50118 | `3abd464d2167719b82e763dc1208d903ba3b2ca5e11bab2d7707301fde0534e3` |
+| `sitemap.xml` | 50118 | `622c9b57a04ec2df285459a4fb12e11e3f9d50b5f66c7931f7dd1c9743bae8d3` |
 | `_headers` | 1316 | `2f39986457d2feff7e73e491a7d09ee871e8f2f4cc2bc437f86bd86a42554ec6` |
 | `logo.png` | 63440 | `11afaf1b0d3ca68393d202e4810bf766b5b6d591b4e3ec52f41d3cacaa4616ec` |
 | `favicon.ico` | 7411 | `407fde0ca2788409e87e11f596fa02e6a0b121817fcea7fd995beec1801e287b` |
@@ -93,7 +93,7 @@ downloads is committed in this repository and is hashed below.
 | `lib/workflow-v4.js` | 7999 | `927a8a476e2c1b124c9e51040e549001b580b0baf2a4409ce463a0681fd08a72` |
 | `views/group-a.js` | 577 | `eed37c656d1fa00c097a07f07db4b1b6ac7a0a74bafc210978265a1d90856bd7` |
 | `views/group-c.js` | 6030 | `3aeac0ab24d035c43a6f5f3fcbc4f51cc4d2c7467145821a300bf219629bac46` |
-| `views/group-e.js` | 31537 | `a1a6015aadce3bd27f44cc8021f5d9bb4a70c15f43c7399f460bd32cfe703cfe` |
+| `views/group-e.js` | 34951 | `4554b5ede631466935e2b77a44f7285885d12b94397c925df5cb5a350a8002b6` |
 | `views/group-f.js` | 30840 | `588f3aba5e18f39dae06f751f26724a75dce2fcbf75175e2a36ce6f201be6e5a` |
 | `views/group-g.js` | 225177 | `86ff75ad4c7f6c9b286ebb13bbe7b6ad592ca27c84dcf77e1487e73c4a8cdb3f` |
 | `views/group-h.js` | 27952 | `6393fcba60f1d58334f40d12cb18cf183c086666c7777ab35c8e1e3ada88d4f5` |

@@ -341,6 +341,24 @@ keys (`sw-remember`, `sw-saved-inputs`) are string literals on the
 fields a deep link did not set and win over the example. Nothing leaves the
 device — the CSP still blocks every network egress.
 
+**Unit toggles & chart-ready copy (spec-v61 A4/A3).** The Group E clinical-math
+tiles now meet the nurse in her own units. `bmi`, `bsa`, and `cockcroft-gault`
+carry a per-field unit `<select>` (weight kg⇄lb, height m/cm⇄in, creatinine
+mg/dL⇄µmol/L) driven by the existing [lib/unit-convert.js](lib/unit-convert.js)
+converters; each option converts to the canonical unit *before* the formula
+runs, so the math is untouched and — because the canonical unit is always the
+default — every documented example and deep-link hash reproduces a calculation
+byte-identically. The input+select row wraps, so it never forces horizontal
+scrolling on the narrowest phones. Alongside, the multi-output tiles (`bsa`, `anion-gap`,
+`corrected-sodium`, `aa-gradient`) build their results as `{label, value, units}`
+items and render a **"Copy results"** button that pastes clean
+`Label: Value Units` lines via [lib/clipboard.js](lib/clipboard.js)
+`formatCopyAll` — a chart-ready paste instead of a scraped `innerText` blob.
+Both are pinned by [test/integration/unit-toggle.spec.js](test/integration/unit-toggle.spec.js)
+(alternate-unit parity, example-prefill parity, the labeled-copy affordance, and
+a 320px no-overflow assertion). The A1 derivation tail and the A3/A4 rollout to
+the Group F/G/H tiles remain tracked follow-ups.
+
 ## System design and architecture overview
 
 The application is one HTML file, one CSS file, one JavaScript module set,

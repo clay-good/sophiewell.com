@@ -93,9 +93,30 @@ fill fields the deep-link hash did not, and win over the example; unchecking the
 toggle removes both keys, so opting out also erases anything stored. Wired into
 the tile render flow in `app.js` alongside `applyHashState`/`applyExample`;
 covered by `test/unit/input-persist.test.js` and a `smoke.spec.js` opt-in
-round-trip e2e. The remaining Part A items — A1 derivation rollout (the named
-high-value multi-input scores already carry derivation; the lower-value tail is
-the open work), A3 labeled copy, and A4 unit toggles — remain open follow-ups.
+round-trip e2e.
+
+**A4** per-field unit toggles and **A3** chart-ready labeled copy now land for
+the Group E clinical-math tiles. **A4**: `bmi`, `bsa`, and `cockcroft-gault`
+gain an adjacent unit `<select>` on each weight/height/lab field, driven by the
+existing `lib/unit-convert.js` converters (weight kg⇄lb, height m/cm⇄in,
+creatinine mg/dL⇄µmol/L) — so a US nurse can enter lb and inches, or an SI lab
+in µmol/L, and the compute path is unchanged because each option converts to
+the canonical unit before the formula runs. The first option is always the
+canonical unit, so every `META.example` and deep-link hash reproduces a
+calculation byte-identically; the select rides the existing
+`trackHashState`/input-persist machinery for free, and the input+select row
+wraps so it never forces horizontal scroll at 320px. **A3**: the multi-output
+Group E tiles (`bsa`, `anion-gap`, `corrected-sodium`, `aa-gradient`) now build
+their results as `{label, value, units}` items and render a "Copy results"
+button that pastes clean `Label: Value Units` lines via `lib/clipboard.js`
+`formatCopyAll`, instead of the universal "Copy all" scraping `innerText` into a
+blob. Both are covered by `test/integration/unit-toggle.spec.js` (alternate-unit
+parity, example-prefill parity, the labeled-copy affordance, and a 320px
+no-overflow assertion). The remaining Part A items — **A1** derivation rollout
+(the named high-value multi-input scores already carry derivation; the
+lower-value tail, which requires a verbatim source quote per instrument, is the
+open work) and the **A3/A4** rollout to the Group F/G/H tiles — remain open
+follow-ups.
 
 ### Changed (spec-v60 — citation-integrity completion & full-catalog currency re-verification; zero tiles, 307 → 307)
 
