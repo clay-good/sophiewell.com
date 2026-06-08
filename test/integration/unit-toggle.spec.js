@@ -37,6 +37,44 @@ test('the unit-field pair does not overflow at 320px', async ({ page }) => {
   expect(overflow).toBe(false);
 });
 
+// spec-v61 §2 A4 rollout: the kg<->lb weight toggle on the Group F / v11
+// dosing tiles must produce the same result as the canonical kg entry.
+// 70 kg = 154.32358 lb, 3 kg = 6.6138679 lb, 60 kg = 132.27736 lb.
+test('weight toggle in lb matches the kg dose calculation across Group F / v11', async ({ page }) => {
+  // weight-dose: 70 kg * 5 mg/kg = 350 mg.
+  await page.goto('/#weight-dose', { waitUntil: 'load' });
+  await page.locator('#w-unit').selectOption('lb');
+  await page.fill('#w', '154.32358');
+  await page.fill('#d', '5');
+  await page.fill('#u', 'mg/kg');
+  await expect(page.locator('#q-results')).toContainText('350 mg');
+
+  // gir: D10 at 15 mL/hr for 3 kg -> 8.33 mg/kg/min.
+  await page.goto('/#gir', { waitUntil: 'load' });
+  await page.locator('#gir-wt-unit').selectOption('lb');
+  await page.fill('#gir-dex', '10');
+  await page.fill('#gir-rate', '15');
+  await page.fill('#gir-wt', '6.6138679');
+  await expect(page.locator('#q-results')).toContainText('8.33');
+
+  // ebv-mabl: 70 kg at 75 mL/kg -> EBV 5250 mL.
+  await page.goto('/#ebv-mabl', { waitUntil: 'load' });
+  await page.locator('#em-wt-unit').selectOption('lb');
+  await page.fill('#em-wt', '154.32358');
+  await page.locator('#em-factor').selectOption('75');
+  await page.fill('#em-start', '45');
+  await page.fill('#em-min', '30');
+  await expect(page.locator('#q-results')).toContainText('5250');
+
+  // urine-output: 120 mL over 4 h for 60 kg -> 0.5 mL/kg/hr.
+  await page.goto('/#urine-output', { waitUntil: 'load' });
+  await page.locator('#uo-wt-unit').selectOption('lb');
+  await page.fill('#uo-vol', '120');
+  await page.fill('#uo-int', '4');
+  await page.fill('#uo-wt', '132.27736');
+  await expect(page.locator('#q-results')).toContainText('0.5 mL/kg/hr');
+});
+
 // spec-v61 §2 A3: chart-ready labeled copy. Multi-output tiles render a
 // "Copy results" button inside #q-results so a paste lands as clean
 // `Label: Value Units` lines (lib/clipboard.js formatCopyAll) rather than a

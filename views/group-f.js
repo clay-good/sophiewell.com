@@ -12,6 +12,7 @@ import {
 import {
   insulinCorrection, electrolyteReplacement, crrtDose, ecmoTitration,
 } from '../lib/scoring-v4.js';
+import { unitField, unitNum, WEIGHT_UNITS } from '../lib/field-units.js';
 
 function field(label, id, opts = {}) {
   const wrap = el('p');
@@ -53,20 +54,21 @@ export const renderers = {
   },
 
   'weight-dose'(root) {
-    root.appendChild(field('Weight (kg)', 'w'));
+    root.appendChild(unitField('Weight', 'w', WEIGHT_UNITS));
     root.appendChild(field('Dose per kg', 'd'));
     root.appendChild(field('Dose unit (e.g. mg/kg, mcg/kg)', 'u', { type: 'text', placeholder: 'mg/kg' }));
     const o = out(); root.appendChild(o);
     const run = () => safe(o, () => {
-      const total = C.weightDose({ weightKg: nv('w'), dosePerKg: nv('d') });
+      const weightKg = unitNum('w');
+      const total = C.weightDose({ weightKg, dosePerKg: nv('d') });
       const unit = document.getElementById('u').value.trim().replace(/\/kg$/, '') || 'units';
       o.appendChild(el('p', { text: `Total dose: ${total} ${unit}` }));
       // Sanity bounds (general adult heuristic): warn when computed exceeds 5x typical adult dose.
-      if (nv('w') > 0 && total / nv('w') > 100) {
+      if (weightKg > 0 && total / weightKg > 100) {
         o.appendChild(el('p', { class: 'notice', text: 'Computed per-kg value is unusually large. Double-check the unit and the dose against your formulary.' }));
       }
     });
-    ['w', 'd', 'u'].forEach((id) => document.getElementById(id).addEventListener('input', run));
+    ['w', 'w-unit', 'd', 'u'].forEach((id) => document.getElementById(id).addEventListener('input', run));
   },
 
   'conc-rate'(root) {
@@ -76,7 +78,7 @@ export const renderers = {
       { value: 'mg/min', text: 'mg/min' }, { value: 'units/hr', text: 'units/hr' },
       { value: 'units/min', text: 'units/min' },
     ]));
-    root.appendChild(field('Patient weight (kg, if dose per kg)', 'w'));
+    root.appendChild(unitField('Patient weight (if dose per kg)', 'w', WEIGHT_UNITS));
     root.appendChild(field('Concentration value', 'cv'));
     root.appendChild(selectField('Concentration unit', 'cu', [
       { value: 'mg/mL', text: 'mg/mL' }, { value: 'units/mL', text: 'units/mL' },
@@ -90,13 +92,13 @@ export const renderers = {
     const run = () => safe(o, () => {
       const r = C.concentrationToRate({
         doseValue: nv('dv'), doseUnit: document.getElementById('du').value,
-        weightKg: nv('w'), concentrationValue: nv('cv'),
+        weightKg: unitNum('w'), concentrationValue: nv('cv'),
         concentrationUnit: document.getElementById('cu').value,
       });
       o.appendChild(el('p', { text: `Infusion rate: ${r.mlPerHr} mL/hr` }));
       o.appendChild(el('p', { class: 'muted', text: 'Verify against your institution\'s protocol and pump configuration.' }));
     });
-    ['dv', 'du', 'w', 'cv', 'cu'].forEach((id) => document.getElementById(id).addEventListener('input', run));
+    ['dv', 'du', 'w', 'w-unit', 'cv', 'cu'].forEach((id) => document.getElementById(id).addEventListener('input', run));
   },
 
   'peds-dose'(root) {
@@ -304,7 +306,7 @@ export const renderers = {
   'vasopressor'(root) {
     const drugSel = el('select', { id: 'vp-drug' });
     root.appendChild(el('p', {}, [el('label', { for: 'vp-drug', text: 'Drug' }), el('br'), drugSel]));
-    root.appendChild(field('Patient weight (kg)', 'vp-w'));
+    root.appendChild(unitField('Patient weight', 'vp-w', WEIGHT_UNITS));
     root.appendChild(field('Bag concentration (mcg/mL)', 'vp-conc'));
     root.appendChild(field('Desired dose (units below)', 'vp-dose'));
     root.appendChild(field('OR pump rate (mL/hr) for reverse calc', 'vp-rate'));
@@ -318,7 +320,7 @@ export const renderers = {
         const row = table.find((r) => r.drug === drugSel.value);
         if (!row) return;
         const units = row.units === 'units/min' ? 'mcg/min' : row.units; // vasopressin treated as mcg/min for the math wrapper
-        const w = Number(document.getElementById('vp-w').value);
+        const w = unitNum('vp-w');
         const conc = Number(document.getElementById('vp-conc').value);
         const dose = Number(document.getElementById('vp-dose').value);
         const rate = Number(document.getElementById('vp-rate').value);
@@ -337,7 +339,7 @@ export const renderers = {
           out.appendChild(el('p', { class: 'muted', text: err.message }));
         }
       };
-      ['vp-drug', 'vp-w', 'vp-conc', 'vp-dose', 'vp-rate'].forEach((id) => document.getElementById(id).addEventListener(id === 'vp-drug' ? 'change' : 'input', run));
+      ['vp-drug', 'vp-w', 'vp-w-unit', 'vp-conc', 'vp-dose', 'vp-rate'].forEach((id) => document.getElementById(id).addEventListener((id === 'vp-drug' || id === 'vp-w-unit') ? 'change' : 'input', run));
     });
   },
 
@@ -447,7 +449,7 @@ export const renderers = {
 
   // spec-v29 sec 4.17.1 wave 29-3c: CRRT effluent dose + citrate ratio.
   'crrt-dose'(root) {
-    root.appendChild(field('Patient weight (kg)', 'cr-w'));
+    root.appendChild(unitField('Patient weight', 'cr-w', WEIGHT_UNITS));
     root.appendChild(field('Prescribed effluent rate (mL/h)', 'cr-r'));
     root.appendChild(selectField('Modality', 'cr-mod', [
       { value: 'CVVH',   text: 'CVVH' },
@@ -461,7 +463,7 @@ export const renderers = {
     const o = out(); root.appendChild(o);
     const run = () => safe(o, () => {
       const r = crrtDose({
-        weightKg:              nv('cr-w'),
+        weightKg:              unitNum('cr-w'),
         effluentRateMlPerHr:   nv('cr-r'),
         modality:              document.getElementById('cr-mod').value,
         ultrafiltrationMlPerHr: nv('cr-uf'),
@@ -475,7 +477,7 @@ export const renderers = {
       for (const b of r.banners) o.appendChild(el('p', { class: 'clinical-notice', text: b }));
     });
     ['cr-w', 'cr-r', 'cr-uf', 'cr-sca', 'cr-pca', 'cr-tca'].forEach((id) => document.getElementById(id).addEventListener('input', run));
-    document.getElementById('cr-mod').addEventListener('change', run);
+    ['cr-mod', 'cr-w-unit'].forEach((id) => document.getElementById(id).addEventListener('change', run));
   },
 
   // spec-v29 sec 4.18.1 wave 29-3c: ECMO sweep / flow titration.
@@ -484,7 +486,7 @@ export const renderers = {
       { value: 'VV', text: 'VV (respiratory)' },
       { value: 'VA', text: 'VA (cardiopulmonary)' },
     ]));
-    root.appendChild(field('Patient weight (kg)', 'ec-w'));
+    root.appendChild(unitField('Patient weight', 'ec-w', WEIGHT_UNITS));
     root.appendChild(field('Current sweep (L/min)', 'ec-sw'));
     root.appendChild(field('Current pump flow (L/min)', 'ec-fl'));
     root.appendChild(field('Current PaCO2 (mmHg)', 'ec-pco'));
@@ -495,7 +497,7 @@ export const renderers = {
     const run = () => safe(o, () => {
       const r = ecmoTitration({
         modality:        document.getElementById('ec-mod').value,
-        weightKg:        nv('ec-w'),
+        weightKg:        unitNum('ec-w'),
         currentSweepLpm: nv('ec-sw'),
         currentFlowLpm:  nv('ec-fl'),
         currentPaCO2:    nv('ec-pco'),
@@ -508,7 +510,7 @@ export const renderers = {
       for (const b of r.banners) o.appendChild(el('p', { class: 'clinical-notice', text: b }));
     });
     ['ec-w', 'ec-sw', 'ec-fl', 'ec-pco', 'ec-tgt', 'ec-hb', 'ec-sat'].forEach((id) => document.getElementById(id).addEventListener('input', run));
-    document.getElementById('ec-mod').addEventListener('change', run);
+    ['ec-mod', 'ec-w-unit'].forEach((id) => document.getElementById(id).addEventListener('change', run));
   },
 
   // spec-v31 §2.1: Beers Criteria (AGS 2023) deprescribing checker.

@@ -356,8 +356,20 @@ items and render a **"Copy results"** button that pastes clean
 `formatCopyAll` — a chart-ready paste instead of a scraped `innerText` blob.
 Both are pinned by [test/integration/unit-toggle.spec.js](test/integration/unit-toggle.spec.js)
 (alternate-unit parity, example-prefill parity, the labeled-copy affordance, and
-a 320px no-overflow assertion). The A1 derivation tail and the A3/A4 rollout to
-the Group F/G/H tiles remain tracked follow-ups.
+a 320px no-overflow assertion).
+
+The A4 weight toggle then rolled out to the dosing tiles. The helpers were
+extracted to [lib/field-units.js](lib/field-units.js) and a **kg⇄lb** toggle
+added to every weight-bearing dosing tile in Group F (`weight-dose`,
+`conc-rate`, `vasopressor`, `crrt-dose`, `ecmo-titration`) and the twelve v61
+bedside tiles (`urine-output`, `gir`, `ebv-mabl`, `potassium-deficit`,
+`peds-transfusion-volume`, `burn-uop-target`, `fluid-balance`) — so a US nurse
+who weighs a patient in pounds skips the hand-conversion before a weight-based
+dose, infusion rate, or hourly urine-output check. The converter feeds the
+canonical kg value to both the formula and the `boundsAdvisory()` plausibility
+note, so result and advisory match the kg entry exactly; the cross-group
+lb-parity test in `unit-toggle.spec.js` pins it. The A1 derivation tail and A3
+labeled copy beyond Group E remain tracked follow-ups.
 
 ## System design and architecture overview
 

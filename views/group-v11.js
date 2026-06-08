@@ -14,6 +14,7 @@ import { el, clear } from '../lib/dom.js';
 import { fmt } from '../lib/num.js';
 import { boundsAdvisory } from '../lib/bounds.js';
 import * as C from '../lib/clinical-v7.js';
+import { unitField, unitNum, WEIGHT_UNITS } from '../lib/field-units.js';
 
 function field(label, id, opts = {}) {
   const wrap = el('p');
@@ -73,16 +74,16 @@ export const renderers = {
   'urine-output'(root) {
     root.appendChild(field('Total urine volume (mL)', 'uo-vol', { placeholder: 'e.g. 120' }));
     root.appendChild(field('Collection interval (hr)', 'uo-int', { placeholder: 'e.g. 4' }));
-    root.appendChild(field('Weight (kg)', 'uo-wt', { placeholder: 'e.g. 60' }));
+    root.appendChild(unitField('Weight', 'uo-wt', WEIGHT_UNITS, { placeholder: 'e.g. 60' }));
     const o = out(); root.appendChild(o);
-    wire(['uo-vol', 'uo-int', 'uo-wt'], () => safe(o, () => {
-      const r = C.urineOutput({ volumeMl: val('uo-vol'), intervalHr: val('uo-int'), weightKg: val('uo-wt') });
+    wire(['uo-vol', 'uo-int', 'uo-wt', 'uo-wt-unit'], () => safe(o, () => {
+      const r = C.urineOutput({ volumeMl: val('uo-vol'), intervalHr: val('uo-int'), weightKg: unitNum('uo-wt') });
       if (!r) { o.appendChild(el('p', { class: 'muted', text: fmt(null, { fallback: 'Enter volume, interval, and weight.' }) })); return; }
       o.appendChild(list([
         li(`Urine output: ${fmt(r.rate, { digits: 2, unit: 'mL/kg/hr' })}`, r.oliguria ? 'warn' : null),
         li(r.band, r.oliguria ? 'warn' : null),
       ]));
-      advise(o, 'weightKg', val('uo-wt'));
+      advise(o, 'weightKg', unitNum('uo-wt'));
       note(o, r.note);
     }));
   },
@@ -91,23 +92,23 @@ export const renderers = {
   gir(root) {
     root.appendChild(field('Dextrose concentration (%)', 'gir-dex', { placeholder: 'e.g. 10' }));
     root.appendChild(field('Infusion rate (mL/hr)', 'gir-rate', { placeholder: 'e.g. 15' }));
-    root.appendChild(field('Weight (kg)', 'gir-wt', { placeholder: 'e.g. 3' }));
+    root.appendChild(unitField('Weight', 'gir-wt', WEIGHT_UNITS, { placeholder: 'e.g. 3' }));
     const o = out(); root.appendChild(o);
-    wire(['gir-dex', 'gir-rate', 'gir-wt'], () => safe(o, () => {
-      const r = C.gir({ dextrosePct: val('gir-dex'), rateMlHr: val('gir-rate'), weightKg: val('gir-wt') });
+    wire(['gir-dex', 'gir-rate', 'gir-wt', 'gir-wt-unit'], () => safe(o, () => {
+      const r = C.gir({ dextrosePct: val('gir-dex'), rateMlHr: val('gir-rate'), weightKg: unitNum('gir-wt') });
       if (!r) { o.appendChild(el('p', { class: 'muted', text: 'Enter dextrose %, rate, and weight.' })); return; }
       o.appendChild(list([
         li(`GIR: ${fmt(r.gir, { digits: 2, unit: 'mg/kg/min' })}`),
         li(r.band),
       ]));
-      advise(o, 'weightKg', val('gir-wt'));
+      advise(o, 'weightKg', unitNum('gir-wt'));
       note(o, r.note);
     }));
   },
 
   // ----- 3.3 ebv-mabl ----------------------------------------------------
   'ebv-mabl'(root) {
-    root.appendChild(field('Weight (kg)', 'em-wt', { placeholder: 'e.g. 70' }));
+    root.appendChild(unitField('Weight', 'em-wt', WEIGHT_UNITS, { placeholder: 'e.g. 70' }));
     root.appendChild(selectField('Patient type (EBV factor, mL/kg)', 'em-factor', [
       { value: '100', text: 'Premature neonate (100)' },
       { value: '90', text: 'Term neonate (90)' },
@@ -118,14 +119,14 @@ export const renderers = {
     root.appendChild(field('Starting hematocrit (%)', 'em-start', { placeholder: 'e.g. 45' }));
     root.appendChild(field('Minimum acceptable hematocrit (%)', 'em-min', { placeholder: 'e.g. 30' }));
     const o = out(); root.appendChild(o);
-    wire(['em-wt', 'em-factor', 'em-start', 'em-min'], () => safe(o, () => {
-      const r = C.ebvMabl({ weightKg: val('em-wt'), ebvFactor: val('em-factor'), startHct: val('em-start'), minHct: val('em-min') });
+    wire(['em-wt', 'em-wt-unit', 'em-factor', 'em-start', 'em-min'], () => safe(o, () => {
+      const r = C.ebvMabl({ weightKg: unitNum('em-wt'), ebvFactor: val('em-factor'), startHct: val('em-start'), minHct: val('em-min') });
       if (!r) { o.appendChild(el('p', { class: 'muted', text: 'Enter weight and a starting hematocrit.' })); return; }
       o.appendChild(list([
         li(`Estimated blood volume: ${fmt(r.ebv, { unit: 'mL' })}`),
         li(`Maximum allowable blood loss: ${fmt(r.mabl, { unit: 'mL' })}`, 'warn'),
       ]));
-      advise(o, 'weightKg', val('em-wt'));
+      advise(o, 'weightKg', unitNum('em-wt'));
       note(o, r.note);
     }));
     estimateNote(root);
@@ -153,17 +154,17 @@ export const renderers = {
   // ----- 3.5 potassium-deficit -------------------------------------------
   'potassium-deficit'(root) {
     root.appendChild(field('Serum potassium (mEq/L)', 'kd-k', { placeholder: 'e.g. 3.0' }));
-    root.appendChild(field('Weight (kg)', 'kd-wt', { placeholder: 'e.g. 70' }));
+    root.appendChild(unitField('Weight', 'kd-wt', WEIGHT_UNITS, { placeholder: 'e.g. 70' }));
     root.appendChild(field('Target potassium (mEq/L)', 'kd-target', { placeholder: 'e.g. 4.0' }));
     const o = out(); root.appendChild(o);
-    wire(['kd-k', 'kd-wt', 'kd-target'], () => safe(o, () => {
-      const r = C.potassiumDeficit({ serumK: val('kd-k'), weightKg: val('kd-wt'), targetK: val('kd-target') });
+    wire(['kd-k', 'kd-wt', 'kd-wt-unit', 'kd-target'], () => safe(o, () => {
+      const r = C.potassiumDeficit({ serumK: val('kd-k'), weightKg: unitNum('kd-wt'), targetK: val('kd-target') });
       o.appendChild(list([
         li(`Estimated total-body K deficit: ${fmt(r.deficit, { unit: 'mEq' })}`),
         li(r.band),
       ]));
       advise(o, 'potassium', val('kd-k'));
-      advise(o, 'weightKg', val('kd-wt'));
+      advise(o, 'weightKg', unitNum('kd-wt'));
       note(o, r.note);
     }));
     estimateNote(root);
@@ -210,7 +211,7 @@ export const renderers = {
 
   // ----- 3.8 peds-transfusion-volume -------------------------------------
   'peds-transfusion-volume'(root) {
-    root.appendChild(field('Weight (kg)', 'pt-wt', { placeholder: 'e.g. 3' }));
+    root.appendChild(unitField('Weight', 'pt-wt', WEIGHT_UNITS, { placeholder: 'e.g. 3' }));
     root.appendChild(field('Desired hemoglobin rise (g/dL)', 'pt-rise', { placeholder: 'e.g. 2' }));
     root.appendChild(selectField('Product hematocrit (%)', 'pt-hct', [
       { value: '60', text: 'Standard PRBC (~60%)' },
@@ -218,15 +219,15 @@ export const renderers = {
       { value: '70', text: 'Concentrated (~70%)' },
     ]));
     const o = out(); root.appendChild(o);
-    wire(['pt-wt', 'pt-rise', 'pt-hct'], () => safe(o, () => {
-      const r = C.pedsTransfusionVolume({ weightKg: val('pt-wt'), hbRise: val('pt-rise'), productHctPct: val('pt-hct') });
+    wire(['pt-wt', 'pt-wt-unit', 'pt-rise', 'pt-hct'], () => safe(o, () => {
+      const r = C.pedsTransfusionVolume({ weightKg: unitNum('pt-wt'), hbRise: val('pt-rise'), productHctPct: val('pt-hct') });
       if (!r) { o.appendChild(el('p', { class: 'muted', text: 'Enter weight and a desired Hb rise.' })); return; }
       o.appendChild(list([
         li(`PRBC transfusion volume: ${fmt(r.volumeMl, { unit: 'mL' })}`),
         li(`Weight-based: ${fmt(r.mlPerKg, { digits: 1, unit: 'mL/kg' })}`),
         li(r.band),
       ]));
-      advise(o, 'weightKg', val('pt-wt'));
+      advise(o, 'weightKg', unitNum('pt-wt'));
       note(o, r.note);
     }));
     estimateNote(root);
@@ -251,12 +252,12 @@ export const renderers = {
 
   // ----- 3.10 burn-uop-target --------------------------------------------
   'burn-uop-target'(root) {
-    root.appendChild(field('Weight (kg)', 'bu-wt', { placeholder: 'e.g. 70' }));
+    root.appendChild(unitField('Weight', 'bu-wt', WEIGHT_UNITS, { placeholder: 'e.g. 70' }));
     root.appendChild(checkField('Pediatric (<30 kg)', 'bu-peds'));
     root.appendChild(checkField('Electrical injury / pigmenturia', 'bu-elec'));
     const o = out(); root.appendChild(o);
-    wire(['bu-wt', 'bu-peds', 'bu-elec'], () => safe(o, () => {
-      const r = C.burnUopTarget({ weightKg: val('bu-wt'), pediatric: chk('bu-peds'), electrical: chk('bu-elec') });
+    wire(['bu-wt', 'bu-wt-unit', 'bu-peds', 'bu-elec'], () => safe(o, () => {
+      const r = C.burnUopTarget({ weightKg: unitNum('bu-wt'), pediatric: chk('bu-peds'), electrical: chk('bu-elec') });
       const target = r.targetLowMlHr === r.targetHighMlHr
         ? fmt(r.targetLowMlHr, { digits: 1, unit: 'mL/hr' })
         : `${fmt(r.targetLowMlHr, { digits: 1 })}-${fmt(r.targetHighMlHr, { digits: 1, unit: 'mL/hr' })}`;
@@ -264,7 +265,7 @@ export const renderers = {
         li(`Hourly urine-output target: ${target}`),
         li(r.band),
       ]));
-      advise(o, 'weightKg', val('bu-wt'));
+      advise(o, 'weightKg', unitNum('bu-wt'));
       note(o, r.note);
     }));
   },
@@ -273,15 +274,15 @@ export const renderers = {
   'fluid-balance'(root) {
     root.appendChild(field('Total intake (mL)', 'fb-in', { placeholder: 'e.g. 3000' }));
     root.appendChild(field('Total output (mL)', 'fb-out', { placeholder: 'e.g. 2200' }));
-    root.appendChild(field('Weight (kg, optional)', 'fb-wt', { placeholder: 'e.g. 80' }));
+    root.appendChild(unitField('Weight (optional)', 'fb-wt', WEIGHT_UNITS, { placeholder: 'e.g. 80' }));
     const o = out(); root.appendChild(o);
-    wire(['fb-in', 'fb-out', 'fb-wt'], () => safe(o, () => {
-      const r = C.fluidBalance({ intakeMl: val('fb-in'), outputMl: val('fb-out'), weightKg: val('fb-wt') });
+    wire(['fb-in', 'fb-out', 'fb-wt', 'fb-wt-unit'], () => safe(o, () => {
+      const r = C.fluidBalance({ intakeMl: val('fb-in'), outputMl: val('fb-out'), weightKg: unitNum('fb-wt') });
       const items = [li(`Net fluid balance: ${fmt(r.netMl, { unit: 'mL' })}`, (r.pctBodyWeight !== null && r.pctBodyWeight >= 10) ? 'warn' : null)];
       if (r.pctBodyWeight !== null) items.push(li(`As percent of body weight: ${fmt(r.pctBodyWeight, { digits: 1, unit: '%' })}`, r.pctBodyWeight >= 10 ? 'warn' : null));
       items.push(li(r.band));
       o.appendChild(list(items));
-      advise(o, 'weightKg', val('fb-wt'));
+      advise(o, 'weightKg', unitNum('fb-wt'));
       note(o, r.note);
     }));
   },

@@ -112,10 +112,27 @@ button that pastes clean `Label: Value Units` lines via `lib/clipboard.js`
 `formatCopyAll`, instead of the universal "Copy all" scraping `innerText` into a
 blob. Both are covered by `test/integration/unit-toggle.spec.js` (alternate-unit
 parity, example-prefill parity, the labeled-copy affordance, and a 320px
-no-overflow assertion). The remaining Part A items — **A1** derivation rollout
-(the named high-value multi-input scores already carry derivation; the
+no-overflow assertion).
+
+The **A4** weight toggle then rolled out to the dosing tiles. The shared
+helpers were extracted to `lib/field-units.js` (`unitField`, `unitNum`,
+`WEIGHT_UNITS`) and a **kg⇄lb** toggle was added to every weight-bearing dosing
+tile in Group F (`weight-dose`, `conc-rate`, `vasopressor`, `crrt-dose`,
+`ecmo-titration`) and the twelve v61 bedside tiles (`urine-output`, `gir`,
+`ebv-mabl`, `potassium-deficit`, `peds-transfusion-volume`, `burn-uop-target`,
+`fluid-balance`), so a US nurse who weighs a patient in pounds no longer
+hand-converts before a weight-based dose, infusion rate, or urine-output check.
+The converter feeds the canonical kg value to the formula **and** to the
+`boundsAdvisory()` plausibility check, so the result and every advisory are
+identical to the kg entry; the canonical default keeps all twelve documented
+examples byte-identical (validated by the example-correctness sweep), and
+`unit-toggle.spec.js` adds a cross-group lb-parity test (`weight-dose`, `gir`,
+`ebv-mabl`, `urine-output`). The remaining Part A items — **A1** derivation
+rollout (the named high-value multi-input scores already carry derivation; the
 lower-value tail, which requires a verbatim source quote per instrument, is the
-open work) and the **A3/A4** rollout to the Group F/G/H tiles — remain open
+open work) and **A3** labeled copy beyond Group E (the v11 dosing outputs
+interleave bands/advisories with numeric results, so a clean `formatCopyAll`
+extraction is deferred until those outputs are restructured) — remain open
 follow-ups.
 
 ### Changed (spec-v60 — citation-integrity completion & full-catalog currency re-verification; zero tiles, 307 → 307)

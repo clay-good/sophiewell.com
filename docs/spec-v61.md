@@ -15,10 +15,17 @@
 > default so examples/deep-links are byte-identical), and the
 > multi-output tiles (`bsa`, `anion-gap`, `corrected-sodium`,
 > `aa-gradient`) gained a `formatCopyAll`-backed "Copy results" button
-> (`test/integration/unit-toggle.spec.js`). A1's named high-value
-> scores (Braden, MEWS, NEWS2, HEART, Wells, Caprini) already carry
-> derivation; A1's lower-value tail and the A3/A4 rollout to the
-> Group F/G/H tiles remain open follow-ups.
+> (`test/integration/unit-toggle.spec.js`). The A4 weight toggle then
+> rolled out via shared helpers (`lib/field-units.js`): a kg⇄lb toggle
+> on every weight-bearing dosing tile in Group F (`weight-dose`,
+> `conc-rate`, `vasopressor`, `crrt-dose`, `ecmo-titration`) and the
+> twelve v61 bedside tiles (`urine-output`, `gir`, `ebv-mabl`,
+> `potassium-deficit`, `peds-transfusion-volume`, `burn-uop-target`,
+> `fluid-balance`), feeding canonical kg to both the formula and
+> `boundsAdvisory()`. A1's named high-value scores (Braden, MEWS,
+> NEWS2, HEART, Wells, Caprini) already carry derivation; A1's
+> lower-value tail and A3 labeled copy beyond Group E remain open
+> follow-ups.
 > v61 has two parts.
 > **Part A** is
 > a zero-tile *enhancement* pass that raises the value of the

@@ -11,50 +11,9 @@ import * as V4 from '../lib/clinical-v4.js';
 import * as S4 from '../lib/scoring-v4.js';
 import { META } from '../lib/meta.js';
 import { renderDerivation, updateDerivationSteps } from '../lib/derivation.js';
-import { lbToKg, inchesToCm, labConvert } from '../lib/unit-convert.js';
+import { inchesToCm, labConvert } from '../lib/unit-convert.js';
 import { copyButton, formatCopyAll } from '../lib/clipboard.js';
-
-// spec-v61 §2 A4: a numeric field with an adjacent unit <select> that drives
-// the lib/unit-convert.js converters. The compute functions expect canonical
-// units (kg, m, cm, mg/dL); each option carries a `toCanonical` converter, and
-// unitNum(id) returns the value already converted, so no compute path changes.
-// US bedside charts enter weight in lb and height in inches; SI labs report
-// creatinine in µmol/L. The first (default) option is always the canonical
-// unit, so META examples and deep-link hashes reproduce a calculation
-// unchanged. The unit <select> rides the existing input/change listeners and
-// the trackHashState/input-persist machinery for free.
-function unitField(label, id, units) {
-  const wrap = el('p', { class: 'unit-field' });
-  wrap.appendChild(el('label', { for: id, text: label }));
-  wrap.appendChild(el('br'));
-  const row = el('span', { class: 'unit-field-row' });
-  const inp = el('input', { id, type: 'number', autocomplete: 'off' });
-  inp.setAttribute('step', 'any');
-  row.appendChild(inp);
-  const sel = el('select', { id: `${id}-unit`, 'aria-label': `${label} unit` });
-  for (const u of units) {
-    const opt = el('option', { value: u.unit, text: u.unit });
-    opt._toCanonical = u.toCanonical || ((v) => v);
-    sel.appendChild(opt);
-  }
-  row.appendChild(sel);
-  wrap.appendChild(row);
-  return wrap;
-}
-
-// Read a unitField value already converted to its canonical unit.
-function unitNum(id) {
-  const v = Number(document.getElementById(id).value);
-  const sel = document.getElementById(`${id}-unit`);
-  const opt = sel ? sel.options[sel.selectedIndex] : null;
-  const conv = opt && typeof opt._toCanonical === 'function' ? opt._toCanonical : (x) => x;
-  return conv(v);
-}
-
-const WEIGHT_UNITS = [
-  { unit: 'kg', toCanonical: (v) => v },
-  { unit: 'lb', toCanonical: lbToKg },
-];
+import { unitField, unitNum, WEIGHT_UNITS } from '../lib/field-units.js';
 
 function field(label, id, opts = {}) {
   const wrap = el('p');
