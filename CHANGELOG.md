@@ -6,6 +6,36 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Fixed / Added (responsive coverage for the pre-rendered static build; dev/prod server parity)
+
+The mobile no-horizontal-scroll guarantee now extends to the **pre-rendered
+static pages** Cloudflare Pages serves to a visitor or crawler landing on a deep
+link from search — the audience hubs (`/for/<audience>/`), topic pages
+(`/topics/<slug>/`), the `/commitments/` page, and all 319 `/tools/<id>/` pages.
+These are distinct HTML documents from the SPA hash routes the existing
+`mobile-no-hscroll.spec.js` covers (a pre-rendered page carries hand-authored
+copy, breadcrumbs, and OG headers the live SPA view never renders), so they were
+previously unguarded.
+
+- **Dev/prod parity fix in `scripts/serve.mjs`.** The dev server could not serve
+  any of these pages: a directory request (`/for/clinicians/`) returned **403**,
+  and the root was hard-coded to the repo root, so `npm run dev` could not
+  preview a single hub, topic, or tool page the way production does. The server
+  now resolves a directory to its `index.html` (matching Cloudflare Pages) and
+  honors a `SERVE_ROOT` env var (relative to the repo root) so the same
+  zero-dependency server can serve `dist/`. The path-traversal guard and the
+  production security headers are unchanged, and the default (no `SERVE_ROOT`,
+  SPA at the repo root) is byte-for-byte the prior behavior.
+- **New regression sweep `test/integration/static-pages-mobile.spec.js`.** A
+  second Playwright `webServer` serves `dist/` on `:4174` (its readiness probe
+  hits `/commitments/`, which also exercises the new directory→index resolution).
+  The structural pages (hubs/topics/commitments, read straight off the built
+  `dist/` tree so the list can never drift) are swept cross-browser at 320px;
+  the full 319-page `/tools/<id>/` set is swept on chromium. `npm run test:e2e`
+  now runs `npm run build` first so `dist/` exists before Playwright launches.
+  All static pages already pass at 320px; the sweep makes that a standing
+  guarantee.
+
 ### Added (spec-v61 — bedside medication-safety, electrolyte/fluid, and OB/peds tiles; +12 tiles, 307 → 319)
 
 Twelve deterministic, bedside-necessary nursing computations that fill confirmed

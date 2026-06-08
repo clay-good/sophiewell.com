@@ -8,7 +8,13 @@ import { extname, join, normalize, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { withInlineHashes } from './csp.mjs';
 
-const ROOT = resolve(fileURLToPath(import.meta.url), '..', '..');
+const REPO_ROOT = resolve(fileURLToPath(import.meta.url), '..', '..');
+// SERVE_ROOT (relative to the repo root) lets the same server preview the
+// pre-rendered static build under dist/ -- the audience hubs (/for/...), topic
+// pages (/topics/...), the /commitments/ page, and the /tools/<id>/ pages --
+// exactly as Cloudflare Pages serves them in production. Defaults to the repo
+// root (the SPA at index.html), so the existing dev/e2e behavior is unchanged.
+const ROOT = process.env.SERVE_ROOT ? resolve(REPO_ROOT, process.env.SERVE_ROOT) : REPO_ROOT;
 const PORT = Number(process.env.PORT || 4173);
 
 const CSP_BASE = "default-src 'self'; script-src 'self' 'wasm-unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'self'; form-action 'self'; base-uri 'self'; frame-ancestors 'none'; object-src 'none'";
@@ -52,12 +58,21 @@ const server = createServer(async (req, res) => {
     let urlPath = decodeURIComponent((req.url || '/').split('?')[0]);
     if (urlPath === '/') urlPath = '/index.html';
     const safe = normalize(urlPath).replace(/^([./\\]+)/, '');
-    const filePath = join(ROOT, safe);
+    let filePath = join(ROOT, safe);
     if (!filePath.startsWith(ROOT)) { res.writeHead(403); return res.end('Forbidden'); }
     let s;
     try { s = await stat(filePath); }
     catch { res.writeHead(404, HEADERS); return res.end('Not found'); }
-    if (s.isDirectory()) { res.writeHead(403, HEADERS); return res.end('Forbidden'); }
+    // Directory → index.html, matching how Cloudflare Pages serves the
+    // pre-rendered /for/, /topics/, /commitments/, and /tools/<id>/ pages.
+    if (s.isDirectory()) {
+      const indexPath = join(filePath, 'index.html');
+      try {
+        const is = await stat(indexPath);
+        if (!is.isFile()) throw new Error('no index');
+        filePath = indexPath;
+      } catch { res.writeHead(403, HEADERS); return res.end('Forbidden'); }
+    }
     const body = await readFile(filePath);
     const headers = { ...HEADERS, 'Content-Type': MIME[extname(filePath)] || 'application/octet-stream', 'Content-Length': String(body.length) };
     res.writeHead(200, headers);

@@ -19,12 +19,26 @@ export default defineConfig({
     baseURL: process.env.BASE_URL || 'http://localhost:4173',
     trace: 'on-first-retry',
   },
-  webServer: {
-    command: 'node scripts/serve.mjs',
-    url: 'http://localhost:4173',
-    reuseExistingServer: !process.env.CI,
-    timeout: 30000,
-  },
+  // Two servers: the SPA at the repo root (4173, the default baseURL every
+  // spec uses) and the pre-rendered static build under dist/ (4174), which
+  // static-pages-mobile.spec.js sweeps for horizontal scroll. `npm run test:e2e`
+  // builds dist/ before Playwright launches, so the dist server has content to
+  // serve. The 4174 readiness probe hits /commitments/, which also confirms the
+  // directory→index.html resolution the static pages rely on in production.
+  webServer: [
+    {
+      command: 'node scripts/serve.mjs',
+      url: 'http://localhost:4173',
+      reuseExistingServer: !process.env.CI,
+      timeout: 30000,
+    },
+    {
+      command: 'SERVE_ROOT=dist PORT=4174 node scripts/serve.mjs',
+      url: 'http://localhost:4174/commitments/',
+      reuseExistingServer: !process.env.CI,
+      timeout: 30000,
+    },
+  ],
   projects: [
     { name: 'chromium', use: { ...devices['Desktop Chrome'] } },
     { name: 'firefox',  use: { ...devices['Desktop Firefox'] } },
