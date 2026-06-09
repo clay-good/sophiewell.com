@@ -321,13 +321,17 @@ export const renderers = {
     root.appendChild(checkField('Atrial fibrillation (10)', 'bw-afib'));
     root.appendChild(checkField('Precipitant history (10)', 'bw-precip'));
     const o = out(); root.appendChild(o);
+    const deriv = renderDerivation(META['burch-wartofsky']);
+    if (deriv) root.appendChild(deriv);
     wire(['bw-temp', 'bw-cns', 'bw-gi', 'bw-hr', 'bw-chf', 'bw-afib', 'bw-precip'], () => safe(o, () => {
-      const r = S.burchWartofsky({
+      const inputs = {
         temp: val('bw-temp'), cns: val('bw-cns'), gi: val('bw-gi'), hr: val('bw-hr'), chf: val('bw-chf'),
         afib: chk('bw-afib'), precipitant: chk('bw-precip'),
-      });
+      };
+      const r = S.burchWartofsky(inputs);
       o.appendChild(list([li(`Total: ${fmt(r.total)}`, r.total >= 45 ? 'warn' : null), li(r.band, r.total >= 45 ? 'warn' : null)]));
       note(o, r.note);
+      if (deriv) updateDerivationSteps(deriv, META['burch-wartofsky'], inputs);
     }));
     screenerNote(root);
   },
@@ -350,13 +354,17 @@ export const renderers = {
     root.appendChild(checkField('Preoperative anemia (Hb <=10 g/dL) (11)', 'ar-anemia'));
     root.appendChild(checkField('Emergency procedure (8)', 'ar-emergency'));
     const o = out(); root.appendChild(o);
+    const deriv = renderDerivation(META.ariscat);
+    if (deriv) root.appendChild(deriv);
     wire(['ar-age', 'ar-spo2', 'ar-incision', 'ar-duration', 'ar-infection', 'ar-anemia', 'ar-emergency'], () => safe(o, () => {
-      const r = S.ariscat({
+      const inputs = {
         agePts: val('ar-age'), spo2Pts: val('ar-spo2'), incisionPts: val('ar-incision'), durationPts: val('ar-duration'),
         respInfection: chk('ar-infection'), anemia: chk('ar-anemia'), emergency: chk('ar-emergency'),
-      });
+      };
+      const r = S.ariscat(inputs);
       o.appendChild(list([li(`Total: ${fmt(r.total)}`, r.total >= 45 ? 'warn' : null), li(r.band, r.total >= 26 ? 'warn' : null)]));
       note(o, r.note);
+      if (deriv) updateDerivationSteps(deriv, META.ariscat, inputs);
     }));
     screenerNote(root);
   },
@@ -409,14 +417,18 @@ export const renderers = {
     root.appendChild(rangeField('Nutrition', 'bq-nutrition', 1, 4));
     root.appendChild(rangeField('Tissue perfusion / oxygenation', 'bq-perfusion', 1, 4));
     const o = out(); root.appendChild(o);
+    const deriv = renderDerivation(META['braden-q']);
+    if (deriv) root.appendChild(deriv);
     const ids = ['bq-mobility', 'bq-activity', 'bq-sensory', 'bq-moisture', 'bq-friction', 'bq-nutrition', 'bq-perfusion'];
     wire(ids, () => safe(o, () => {
-      const r = S.bradenQ({
+      const inputs = {
         mobility: val('bq-mobility'), activity: val('bq-activity'), sensory: val('bq-sensory'), moisture: val('bq-moisture'),
         friction: val('bq-friction'), nutrition: val('bq-nutrition'), perfusion: val('bq-perfusion'),
-      });
+      };
+      const r = S.bradenQ(inputs);
       o.appendChild(list([li(`Total: ${fmt(r.total)} / 28`, r.total <= 16 ? 'warn' : null), li(r.band, r.total <= 16 ? 'warn' : null)]));
       note(o, r.note);
+      if (deriv) updateDerivationSteps(deriv, META['braden-q'], inputs);
     }));
     screenerNote(root);
   },

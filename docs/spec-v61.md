@@ -69,7 +69,11 @@
 > the live `score` exactly. Wave 7 adds the ICU-prognosis additive
 > indices — `nutric` and `mnutric` (banded age/APACHE/SOFA weights
 > plus binaries; mNUTRIC drops the IL-6 term) and `mods` (six
-> organ-system 0-4 subscores) — bringing derivation coverage to 100
+> organ-system 0-4 subscores). Wave 8 adds the specialty bedside
+> point scales whose inputs are already per-criterion point values
+> — `burch-wartofsky` (thyroid storm), `ariscat` (postoperative
+> pulmonary complications), and `braden-q` (pediatric
+> pressure-injury risk) — bringing derivation coverage to 103
 > tiles. A2
 > (related-tool linking) is complete. A3 (chart-ready labeled copy) now also
 > covers the five 2+-numeric-output v61 bedside tiles

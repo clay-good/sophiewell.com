@@ -6,6 +6,34 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v61 A1 wave 8 — "show your work" derivation for the specialty bedside point scales: Burch-Wartofsky, ARISCAT & Braden Q)
+
+Continues the A1 derivation tail with three specialty point scales a nurse fills
+in by selecting a per-criterion point value — **`burch-wartofsky`** (thyroid-storm
+likelihood), **`ariscat`** (postoperative pulmonary-complication risk), and
+**`braden-q`** (pediatric pressure-injury risk). Because each input is already
+the criterion's point value (or a fixed-point yes/no), every component is a
+near-identity callback and the sum reproduces the live total exactly. Derivation
+coverage 100 → 103 tiles.
+
+- **`lib/meta.js`**: each tile gains a full `derivation` block whose verbatim
+  `source` reuses the tile's already-vetted inline citation. Burch-Wartofsky sums
+  the five point-valued categories (thermoregulatory, CNS, GI-hepatic,
+  tachycardia, CHF) plus two +10 binaries (atrial fibrillation, precipitant);
+  ARISCAT sums four point-valued predictors (age, SpO2, incision, duration) plus
+  the +17/+11/+8 binaries; Braden Q sums seven 1-4 subscales (lower = higher
+  risk) via the same clamp callback the adult Braden uses.
+- **`views/group-v10.js`** (`burch-wartofsky`, `ariscat`, `braden-q`): each
+  renderer lifts its arguments object into a local `inputs`, mounts
+  `renderDerivation(META[id])`, and calls `updateDerivationSteps` on every input
+  change (the established spec-v48 wiring, matching the wave-4 silverman-andersen
+  / downes pattern already in this module).
+- **`test/unit/derivation.test.js`**: the three tiles join `ALL_DERIVATION_TILES`
+  (schema + units-coverage guards) and each gets component-sum cross-checks
+  asserting the derivation reproduces the live total (`burchWartofsky().total`,
+  `ariscat().total`, `bradenQ().total`) across the documented-example, zero/min,
+  and high/max boundary cases.
+
 ### Added (spec-v61 A1 wave 7 — "show your work" derivation for the ICU-prognosis additive indices: NUTRIC, mNUTRIC & MODS)
 
 Continues the A1 derivation tail with three ICU-prognosis indices a nurse charts

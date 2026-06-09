@@ -15,6 +15,7 @@ import { silvermanAndersen, downes } from '../../lib/scoring-v6.js';
 import { pesi, spesi, nigrovic } from '../../lib/scoring-v4.js';
 import { gbs, rockall, oakland } from '../../lib/scoring-v4.js';
 import { nutric, mnutric, mods } from '../../lib/scoring-v4.js';
+import { burchWartofsky, ariscat, bradenQ } from '../../lib/scoring-v6.js';
 
 // --- 1. Schema completeness ---------------------------------------------
 
@@ -78,7 +79,13 @@ const WAVE_61_A1F_TILES = ['gbs', 'rockall', 'oakland'];
 // band). Each banded weight is a `points` callback replicating the live banding,
 // so the component sum reproduces the live `score` exactly (all expose `parts`).
 const WAVE_61_A1G_TILES = ['nutric', 'mnutric', 'mods'];
-const ALL_DERIVATION_TILES = [...WAVE_48_1A_TILES, ...WAVE_48_1B_TILES, ...WAVE_48_1C_TILES, ...WAVE_48_2A_TILES, ...WAVE_48_2B_TILES, ...WAVE_48_2C_TILES, ...WAVE_48_3A_TILES, ...WAVE_48_3B_TILES, ...WAVE_48_3C_TILES, ...WAVE_48_3D_TILES, ...WAVE_48_4A_TILES, ...WAVE_48_4B_TILES, ...WAVE_48_4C_TILES, ...WAVE_48_4D_TILES, ...WAVE_48_4E_TILES, ...WAVE_48_4F_TILES, ...WAVE_48_4G_TILES, ...WAVE_48_4H_TILES, ...WAVE_48_4I_TILES, ...WAVE_48_4J_TILES, ...WAVE_61_A1_TILES, ...WAVE_61_A1B_TILES, ...WAVE_61_A1C_TILES, ...WAVE_61_A1D_TILES, ...WAVE_61_A1E_TILES, ...WAVE_61_A1F_TILES, ...WAVE_61_A1G_TILES];
+// spec-v61 A1 derivation tail, wave 8: specialty bedside point scales whose
+// inputs are already per-criterion point values (or fixed-point binaries), so
+// each component is a near-identity callback and the sum reproduces the live
+// total exactly. Burch-Wartofsky (thyroid storm), ARISCAT (postoperative
+// pulmonary complications), and Braden Q (pediatric pressure-injury risk).
+const WAVE_61_A1H_TILES = ['burch-wartofsky', 'ariscat', 'braden-q'];
+const ALL_DERIVATION_TILES = [...WAVE_48_1A_TILES, ...WAVE_48_1B_TILES, ...WAVE_48_1C_TILES, ...WAVE_48_2A_TILES, ...WAVE_48_2B_TILES, ...WAVE_48_2C_TILES, ...WAVE_48_3A_TILES, ...WAVE_48_3B_TILES, ...WAVE_48_3C_TILES, ...WAVE_48_3D_TILES, ...WAVE_48_4A_TILES, ...WAVE_48_4B_TILES, ...WAVE_48_4C_TILES, ...WAVE_48_4D_TILES, ...WAVE_48_4E_TILES, ...WAVE_48_4F_TILES, ...WAVE_48_4G_TILES, ...WAVE_48_4H_TILES, ...WAVE_48_4I_TILES, ...WAVE_48_4J_TILES, ...WAVE_61_A1_TILES, ...WAVE_61_A1B_TILES, ...WAVE_61_A1C_TILES, ...WAVE_61_A1D_TILES, ...WAVE_61_A1E_TILES, ...WAVE_61_A1F_TILES, ...WAVE_61_A1G_TILES, ...WAVE_61_A1H_TILES];
 
 for (const id of ALL_DERIVATION_TILES) {
   test(`derivation schema: ${id} has all required fields`, () => {
@@ -509,6 +516,49 @@ for (const [label, inputs, expected] of [
     const r = mods(inputs);
     const sum = sumDerivation('mods', inputs);
     assert.equal(sum, r.score);
+    assert.equal(sum, expected);
+  });
+}
+
+// --- spec-v61 A1 wave 8: specialty bedside point scales -----------------
+// Inputs are already per-criterion point values (or fixed-point binaries), so
+// each component is a near-identity callback; the sum reproduces the live total.
+
+for (const [label, inputs, expected] of [
+  ['example 75 (>=45)', { temp: 15, cns: 10, gi: 10, hr: 15, chf: 5, afib: true, precipitant: true }, 75],
+  ['all-zero', { temp: 0, cns: 0, gi: 0, hr: 0, chf: 0, afib: false, precipitant: false }, 0],
+  ['cutoff 45 (impending boundary)', { temp: 10, cns: 20, gi: 0, hr: 5, chf: 0, afib: false, precipitant: true }, 45],
+]) {
+  test(`burch-wartofsky components sum equals burchWartofsky() total (${label})`, () => {
+    const r = burchWartofsky(inputs);
+    const sum = sumDerivation('burch-wartofsky', inputs);
+    assert.equal(sum, r.total);
+    assert.equal(sum, expected);
+  });
+}
+
+for (const [label, inputs, expected] of [
+  ['example 42 (intermediate)', { agePts: 3, spo2Pts: 8, incisionPts: 15, durationPts: 16, respInfection: false, anemia: false, emergency: false }, 42],
+  ['all-zero', { agePts: 0, spo2Pts: 0, incisionPts: 0, durationPts: 0, respInfection: false, anemia: false, emergency: false }, 0],
+  ['high with all binaries', { agePts: 16, spo2Pts: 24, incisionPts: 24, durationPts: 23, respInfection: true, anemia: true, emergency: true }, 16 + 24 + 24 + 23 + 17 + 11 + 8],
+]) {
+  test(`ariscat components sum equals ariscat() total (${label})`, () => {
+    const r = ariscat(inputs);
+    const sum = sumDerivation('ariscat', inputs);
+    assert.equal(sum, r.total);
+    assert.equal(sum, expected);
+  });
+}
+
+for (const [label, inputs, expected] of [
+  ['example 14 (at risk)', { mobility: 2, activity: 2, sensory: 2, moisture: 2, friction: 2, nutrition: 2, perfusion: 2 }, 14],
+  ['minimum 7 (highest risk)', { mobility: 1, activity: 1, sensory: 1, moisture: 1, friction: 1, nutrition: 1, perfusion: 1 }, 7],
+  ['maximum 28 (lowest risk)', { mobility: 4, activity: 4, sensory: 4, moisture: 4, friction: 4, nutrition: 4, perfusion: 4 }, 28],
+]) {
+  test(`braden-q components sum equals bradenQ() total (${label})`, () => {
+    const r = bradenQ(inputs);
+    const sum = sumDerivation('braden-q', inputs);
+    assert.equal(sum, r.total);
     assert.equal(sum, expected);
   });
 }
