@@ -52,10 +52,15 @@
 > rating clamp so the show-your-work sum reproduces the live score
 > on out-of-range input. Wave 4 adds the three "five signs, 0-2
 > each, sum" bedside scores `apgar`, `silverman-andersen`, and
-> `downes` (wired in `views/group-g.js` and `views/group-v10.js`),
-> bringing derivation coverage to 91 tiles; a shared `sign02Clamp`
+> `downes` (wired in `views/group-g.js` and `views/group-v10.js`);
+> a shared `sign02Clamp`
 > helper in `lib/meta.js` mirrors the live `num()`/`sumItems()`
-> range guard so the component sum reproduces each live total. A2
+> range guard so the component sum reproduces each live total. Wave
+> 5 adds the PE-prognosis scores `pesi` (raw age + male-sex
+> callback + nine weighted predictors) and `spesi` (six equal
+> binaries) plus the pediatric `nigrovic` Bacterial Meningitis
+> Score (Gram stain weighted +2), wired in `views/group-g.js` and
+> bringing derivation coverage to 94 tiles. A2
 > (related-tool linking) is complete. A3 (chart-ready labeled copy) now also
 > covers the five 2+-numeric-output v61 bedside tiles
 > (`ebv-mabl`, `peds-transfusion-volume`, `rhig-dose`,

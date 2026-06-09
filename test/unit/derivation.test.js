@@ -12,6 +12,7 @@ import { feverpain, canadianSyncope, stoneScore } from '../../lib/scoring-v5.js'
 import { padua, epworth, nrs2002 } from '../../lib/scoring-v4.js';
 import { apgar } from '../../lib/clinical.js';
 import { silvermanAndersen, downes } from '../../lib/scoring-v6.js';
+import { pesi, spesi, nigrovic } from '../../lib/scoring-v4.js';
 
 // --- 1. Schema completeness ---------------------------------------------
 
@@ -56,7 +57,13 @@ const WAVE_61_A1C_TILES = ['padua', 'epworth', 'nrs2002'];
 // Downes (higher = worse) each sum five 0-2 ratings to a numeric total via the
 // shared sign02Clamp, so the component sum reproduces the live total exactly.
 const WAVE_61_A1D_TILES = ['apgar', 'silverman-andersen', 'downes'];
-const ALL_DERIVATION_TILES = [...WAVE_48_1A_TILES, ...WAVE_48_1B_TILES, ...WAVE_48_1C_TILES, ...WAVE_48_2A_TILES, ...WAVE_48_2B_TILES, ...WAVE_48_2C_TILES, ...WAVE_48_3A_TILES, ...WAVE_48_3B_TILES, ...WAVE_48_3C_TILES, ...WAVE_48_3D_TILES, ...WAVE_48_4A_TILES, ...WAVE_48_4B_TILES, ...WAVE_48_4C_TILES, ...WAVE_48_4D_TILES, ...WAVE_48_4E_TILES, ...WAVE_48_4F_TILES, ...WAVE_48_4G_TILES, ...WAVE_48_4H_TILES, ...WAVE_48_4I_TILES, ...WAVE_48_4J_TILES, ...WAVE_61_A1_TILES, ...WAVE_61_A1B_TILES, ...WAVE_61_A1C_TILES, ...WAVE_61_A1D_TILES];
+// spec-v61 A1 derivation tail, wave 5: the PE-prognosis scores PESI (age added
+// directly + 9 weighted predictors + male-sex callback) and sPESI (6 equal
+// binaries), and the pediatric Bacterial Meningitis Score (Nigrovic; Gram stain
+// weighted +2, four +1 predictors). Each returns a numeric `score` for an exact
+// component-sum cross-check.
+const WAVE_61_A1E_TILES = ['pesi', 'spesi', 'nigrovic'];
+const ALL_DERIVATION_TILES = [...WAVE_48_1A_TILES, ...WAVE_48_1B_TILES, ...WAVE_48_1C_TILES, ...WAVE_48_2A_TILES, ...WAVE_48_2B_TILES, ...WAVE_48_2C_TILES, ...WAVE_48_3A_TILES, ...WAVE_48_3B_TILES, ...WAVE_48_3C_TILES, ...WAVE_48_3D_TILES, ...WAVE_48_4A_TILES, ...WAVE_48_4B_TILES, ...WAVE_48_4C_TILES, ...WAVE_48_4D_TILES, ...WAVE_48_4E_TILES, ...WAVE_48_4F_TILES, ...WAVE_48_4G_TILES, ...WAVE_48_4H_TILES, ...WAVE_48_4I_TILES, ...WAVE_48_4J_TILES, ...WAVE_61_A1_TILES, ...WAVE_61_A1B_TILES, ...WAVE_61_A1C_TILES, ...WAVE_61_A1D_TILES, ...WAVE_61_A1E_TILES];
 
 for (const id of ALL_DERIVATION_TILES) {
   test(`derivation schema: ${id} has all required fields`, () => {
@@ -352,6 +359,50 @@ for (const [label, inputs, expected] of [
     const r = downes(inputs);
     const sum = sumDerivation('downes', inputs);
     assert.equal(sum, r.total);
+    assert.equal(sum, expected);
+  });
+}
+
+// --- spec-v61 A1 wave 5: PESI, sPESI, Nigrovic --------------------------
+// PESI mixes a raw age term and a male-sex callback with weighted binaries;
+// sPESI is six equal binaries; Nigrovic weights the Gram stain +2. The shared
+// sumDerivation reducer reproduces each live `score` exactly.
+
+for (const [label, inputs, expected] of [
+  ['example age 50 F, all-negative (Class I, 50)', { age: 50, sex: 'F', cancer: false, heartFailure: false, chronicLungDisease: false, hr110: false, sbp100: false, rr30: false, tempLt36: false, alteredMental: false, sao2Lt90: false }, 50],
+  ['male + cancer + AMS (age 70 -> 170)', { age: 70, sex: 'M', cancer: true, heartFailure: false, chronicLungDisease: false, hr110: false, sbp100: false, rr30: false, tempLt36: false, alteredMental: true, sao2Lt90: false }, 170],
+  ['all predictors, age 80 M (Class V)', { age: 80, sex: 'M', cancer: true, heartFailure: true, chronicLungDisease: true, hr110: true, sbp100: true, rr30: true, tempLt36: true, alteredMental: true, sao2Lt90: true }, 80 + 10 + 30 + 10 + 10 + 20 + 30 + 20 + 20 + 60 + 20],
+]) {
+  test(`pesi components sum equals pesi() score (${label})`, () => {
+    const r = pesi(inputs);
+    const sum = sumDerivation('pesi', inputs);
+    assert.equal(sum, r.score);
+    assert.equal(sum, expected);
+  });
+}
+
+for (const [label, inputs, expected] of [
+  ['low risk 0', { ageOver80: false, cancer: false, chronicCardiopulmonary: false, hr110: false, sbp100: false, sao2Lt90: false }, 0],
+  ['cutoff 1 (cancer)', { ageOver80: false, cancer: true, chronicCardiopulmonary: false, hr110: false, sbp100: false, sao2Lt90: false }, 1],
+  ['max 6', { ageOver80: true, cancer: true, chronicCardiopulmonary: true, hr110: true, sbp100: true, sao2Lt90: true }, 6],
+]) {
+  test(`spesi components sum equals spesi() score (${label})`, () => {
+    const r = spesi(inputs);
+    const sum = sumDerivation('spesi', inputs);
+    assert.equal(sum, r.score);
+    assert.equal(sum, expected);
+  });
+}
+
+for (const [label, inputs, expected] of [
+  ['very low risk 0', { csfGramStainPositive: false, csfAncGte1000: false, csfProteinGte80: false, peripheralAncGte10000: false, seizureAtOrBeforePresentation: false }, 0],
+  ['Gram stain alone (+2)', { csfGramStainPositive: true, csfAncGte1000: false, csfProteinGte80: false, peripheralAncGte10000: false, seizureAtOrBeforePresentation: false }, 2],
+  ['max 6', { csfGramStainPositive: true, csfAncGte1000: true, csfProteinGte80: true, peripheralAncGte10000: true, seizureAtOrBeforePresentation: true }, 6],
+]) {
+  test(`nigrovic components sum equals nigrovic() score (${label})`, () => {
+    const r = nigrovic(inputs);
+    const sum = sumDerivation('nigrovic', inputs);
+    assert.equal(sum, r.score);
     assert.equal(sum, expected);
   });
 }

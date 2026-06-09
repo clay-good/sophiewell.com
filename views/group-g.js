@@ -1087,8 +1087,10 @@ export const renderers = {
     ];
     for (const [l, id] of items) root.appendChild(checkbox(l, id));
     const o = out(); root.appendChild(o);
+    const deriv = renderDerivation(META.pesi);
+    if (deriv) root.appendChild(deriv);
     const run = () => safe(o, () => {
-      const r = S4.pesi({
+      const inputs = {
         age: nv('pe-age'),
         sex: document.getElementById('pe-sex').value,
         cancer: checked('pe-ca'),
@@ -1100,9 +1102,11 @@ export const renderers = {
         tempLt36: checked('pe-tmp'),
         alteredMental: checked('pe-ams'),
         sao2Lt90: checked('pe-sao2'),
-      });
+      };
+      const r = S4.pesi(inputs);
       o.appendChild(el('h2', { text: `PESI ${r.score} - Class ${r.class}` }));
       o.appendChild(el('p', { text: r.band }));
+      if (deriv) updateDerivationSteps(deriv, META.pesi, inputs);
     });
     document.querySelectorAll('input, select').forEach((n) => n.addEventListener(n.type === 'checkbox' || n.tagName === 'SELECT' ? 'change' : 'input', run));
     run();
@@ -1120,17 +1124,21 @@ export const renderers = {
     ];
     for (const [l, id] of items) root.appendChild(checkbox(l, id));
     const o = out(); root.appendChild(o);
+    const deriv = renderDerivation(META.spesi);
+    if (deriv) root.appendChild(deriv);
     const run = () => safe(o, () => {
-      const r = S4.spesi({
+      const inputs = {
         ageOver80: checked('sp-age80'),
         cancer: checked('sp-ca'),
         chronicCardiopulmonary: checked('sp-ccp'),
         hr110: checked('sp-hr'),
         sbp100: checked('sp-sbp'),
         sao2Lt90: checked('sp-sao2'),
-      });
+      };
+      const r = S4.spesi(inputs);
       o.appendChild(el('h2', { text: `sPESI ${r.score}` }));
       o.appendChild(el('p', { text: r.band }));
+      if (deriv) updateDerivationSteps(deriv, META.spesi, inputs);
     });
     items.forEach(([, id]) => document.getElementById(id).addEventListener('change', run));
     run();
@@ -3629,16 +3637,20 @@ export const renderers = {
     ];
     for (const [l, id] of items) root.appendChild(checkbox(l, id));
     const o = out(); root.appendChild(o);
+    const deriv = renderDerivation(META.nigrovic);
+    if (deriv) root.appendChild(deriv);
     const run = () => safe(o, () => {
-      const r = S4.nigrovic({
+      const inputs = {
         csfGramStainPositive: checked('ni-gram'),
         csfAncGte1000: checked('ni-csf-anc'),
         csfProteinGte80: checked('ni-prot'),
         peripheralAncGte10000: checked('ni-anc'),
         seizureAtOrBeforePresentation: checked('ni-sz'),
-      });
+      };
+      const r = S4.nigrovic(inputs);
       o.appendChild(el('h2', { text: r.veryLowRisk ? 'Nigrovic: very low risk' : `Nigrovic ${r.score}: not low risk` }));
       o.appendChild(el('p', { text: r.band }));
+      if (deriv) updateDerivationSteps(deriv, META.nigrovic, inputs);
     });
     items.forEach(([, id]) => document.getElementById(id).addEventListener('change', run));
     run();

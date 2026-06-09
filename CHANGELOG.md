@@ -6,6 +6,31 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v61 A1 wave 5 — "show your work" derivation for PESI, sPESI & the Nigrovic Bacterial Meningitis Score)
+
+Continues the A1 derivation tail with the two PE-prognosis scores a nurse charts
+to support outpatient-vs-inpatient triage — **`pesi`** (the full Pulmonary
+Embolism Severity Index) and **`spesi`** (its simplified form) — plus the
+pediatric **`nigrovic`** Bacterial Meningitis Score. Derivation coverage 91 → 94
+tiles.
+
+- **`lib/meta.js`**: each tile gains a full `derivation` block whose verbatim
+  `source` reuses the tile's already-vetted inline citation (no new clinical
+  quote). PESI's block models the mixed formula exactly — age added directly via
+  a `(v) => Number(v) || 0` callback, a `sex === 'M' ? 10 : 0` callback, and the
+  nine weighted binary predictors — with the five PESI risk-class ranges as
+  `bands`; sPESI is six equal binaries; Nigrovic weights the CSF Gram stain +2
+  over its four +1 predictors.
+- **`views/group-g.js`** (`pesi`, `spesi`, `nigrovic`): each renderer lifts its
+  `inputs` object into a local, mounts `renderDerivation(META[id])`, and calls
+  `updateDerivationSteps` on every input/change (the established spec-v48 wiring).
+- **`test/unit/derivation.test.js`**: the three tiles join `ALL_DERIVATION_TILES`
+  (schema + units-coverage guards) and each gets component-sum cross-checks
+  asserting the derivation reproduces the live `score` (`pesi().score`,
+  `spesi().score`, `nigrovic().score`) — including PESI's raw-age + male-sex +
+  altered-mental-status worked case, sPESI's 0/1/6 boundaries, and the Nigrovic
+  Gram-stain-weighted-+2 case.
+
 ### Added (spec-v61 A1 wave 4 — "show your work" derivation for the 0-2-per-sign bedside scores)
 
 Continues the A1 derivation tail with the three "five signs, 0-2 each, sum"
