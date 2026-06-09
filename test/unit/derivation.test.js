@@ -4,7 +4,7 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { META } from '../../lib/meta.js';
 import { wellsPe, gcs, wellsDvt, chadsVasc, hasBled } from '../../lib/clinical.js';
-import { qsofa, timi, heart, perc, sofa, news2, meld30, curb65, centor, mcisaac, ciwaAr, fourScore, bisap, cows, icdsc, fourAt, psi, cpot, bps, braden, morseFalls, lawtonIadl, katzAdl, barthel, rosier, cpss, lams, race, sos, flacc, hendrichII, atriaBleeding, orbitBleeding, painad, miniCog, mews, comfortB, wat1, stopBang, fourTs, ichScore, improveVte, khorana, dashVte, herdoo2, hospitalScore, improveBleeding, aldrete, padss, lace, hemorr2hages, daptScore, mustNutrition, crb65, isthDic, alvarado, pediatricAppendicitis, lips, westley, pramAsthma, passAsthma, bishop, abcMtp, mgap, gap } from '../../lib/scoring-v4.js';
+import { qsofa, timi, heart, perc, sofa, news2, meld30, curb65, centor, mcisaac, ciwaAr, fourScore, bisap, cows, icdsc, fourAt, psi, cpot, bps, braden, morseFalls, lawtonIadl, katzAdl, barthel, rosier, cpss, lams, race, sos, flacc, hendrichII, atriaBleeding, orbitBleeding, painad, miniCog, mews, comfortB, wat1, stopBang, fourTs, ichScore, improveVte, khorana, dashVte, herdoo2, hospitalScore, improveBleeding, aldrete, padss, lace, hemorr2hages, daptScore, mustNutrition, crb65, isthDic, alvarado, pediatricAppendicitis, lips, westley, pramAsthma, passAsthma, bishop, abcMtp, mgap, gap, sirs, apfel, aims65 } from '../../lib/scoring-v4.js';
 import { pews as pewsV5 } from '../../lib/clinical-v5.js';
 import { nihss } from '../../lib/clinical.js';
 import { rcri, abcd2 } from '../../lib/clinical-v5.js';
@@ -32,7 +32,12 @@ const WAVE_48_4G_TILES = ['lace', 'hemorr2hages', 'dapt-score', 'must-nutrition'
 const WAVE_48_4H_TILES = ['crb65', 'isth-dic', 'pews', 'alvarado-pas'];
 const WAVE_48_4I_TILES = ['lips', 'westley', 'pram-asthma', 'pass-asthma'];
 const WAVE_48_4J_TILES = ['bishop', 'abc-mtp', 'mgap', 'gap'];
-const ALL_DERIVATION_TILES = [...WAVE_48_1A_TILES, ...WAVE_48_1B_TILES, ...WAVE_48_1C_TILES, ...WAVE_48_2A_TILES, ...WAVE_48_2B_TILES, ...WAVE_48_2C_TILES, ...WAVE_48_3A_TILES, ...WAVE_48_3B_TILES, ...WAVE_48_3C_TILES, ...WAVE_48_3D_TILES, ...WAVE_48_4A_TILES, ...WAVE_48_4B_TILES, ...WAVE_48_4C_TILES, ...WAVE_48_4D_TILES, ...WAVE_48_4E_TILES, ...WAVE_48_4F_TILES, ...WAVE_48_4G_TILES, ...WAVE_48_4H_TILES, ...WAVE_48_4I_TILES, ...WAVE_48_4J_TILES];
+// spec-v61 A1 derivation tail: simple additive screening scores backfilled with
+// a per-input "show your work" block. `source` reuses each tile's already-vetted
+// inline citation; the component sums are cross-checked against the live scoring
+// function below.
+const WAVE_61_A1_TILES = ['sirs', 'apfel', 'aims65'];
+const ALL_DERIVATION_TILES = [...WAVE_48_1A_TILES, ...WAVE_48_1B_TILES, ...WAVE_48_1C_TILES, ...WAVE_48_2A_TILES, ...WAVE_48_2B_TILES, ...WAVE_48_2C_TILES, ...WAVE_48_3A_TILES, ...WAVE_48_3B_TILES, ...WAVE_48_3C_TILES, ...WAVE_48_3D_TILES, ...WAVE_48_4A_TILES, ...WAVE_48_4B_TILES, ...WAVE_48_4C_TILES, ...WAVE_48_4D_TILES, ...WAVE_48_4E_TILES, ...WAVE_48_4F_TILES, ...WAVE_48_4G_TILES, ...WAVE_48_4H_TILES, ...WAVE_48_4I_TILES, ...WAVE_48_4J_TILES, ...WAVE_61_A1_TILES];
 
 for (const id of ALL_DERIVATION_TILES) {
   test(`derivation schema: ${id} has all required fields`, () => {
@@ -146,6 +151,53 @@ test('qsofa components sum equals qsofa() computed score (negative 0/3)', () => 
   assert.equal(sum, r.score);
   assert.equal(sum, 0);
 });
+
+// --- spec-v61 A1: additive-score component cross-checks ------------------
+
+function sumBinary(id, inputs) {
+  return META[id].derivation.components.reduce(
+    (acc, c) => acc + (inputs[c.inputKey] ? c.points : 0), 0,
+  );
+}
+
+for (const [label, inputs, expected] of [
+  ['negative 0/4', { tempAbnormal: false, hrGt90: false, rrOrPaco2: false, wbcOrBands: false }, 0],
+  ['positive 2/4', { tempAbnormal: true, hrGt90: true, rrOrPaco2: false, wbcOrBands: false }, 2],
+  ['all 4/4', { tempAbnormal: true, hrGt90: true, rrOrPaco2: true, wbcOrBands: true }, 4],
+]) {
+  test(`sirs components sum equals sirs() count (${label})`, () => {
+    const r = sirs(inputs);
+    const sum = sumBinary('sirs', inputs);
+    assert.equal(sum, r.count);
+    assert.equal(sum, expected);
+  });
+}
+
+for (const [label, inputs, expected] of [
+  ['0 factors', { female: false, nonsmoker: false, historyPonvOrMotionSickness: false, postopOpioids: false }, 0],
+  ['example 2 factors', { female: true, nonsmoker: true, historyPonvOrMotionSickness: false, postopOpioids: false }, 2],
+  ['all 4 factors', { female: true, nonsmoker: true, historyPonvOrMotionSickness: true, postopOpioids: true }, 4],
+]) {
+  test(`apfel components sum equals apfel() score (${label})`, () => {
+    const r = apfel(inputs);
+    const sum = sumBinary('apfel', inputs);
+    assert.equal(sum, r.score);
+    assert.equal(sum, expected);
+  });
+}
+
+for (const [label, inputs, expected] of [
+  ['0 factors', { albuminLt3: false, inrGt15: false, alteredMental: false, sbpLe90: false, ageGt65: false }, 0],
+  ['3 factors', { albuminLt3: true, inrGt15: false, alteredMental: true, sbpLe90: false, ageGt65: true }, 3],
+  ['all 5 factors', { albuminLt3: true, inrGt15: true, alteredMental: true, sbpLe90: true, ageGt65: true }, 5],
+]) {
+  test(`aims65 components sum equals aims65() score (${label})`, () => {
+    const r = aims65(inputs);
+    const sum = sumBinary('aims65', inputs);
+    assert.equal(sum, r.score);
+    assert.equal(sum, expected);
+  });
+}
 
 // --- 3. Bands cover the achievable range --------------------------------
 

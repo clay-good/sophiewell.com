@@ -6,6 +6,29 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v61 A1 — "show your work" derivation for three additive screening scores)
+
+Begins working down the A1 derivation tail (the per-input "Where does this come
+from?" contribution list) one small, fully-verified wave at a time. This wave
+backfills three simple additive screening scores that a nurse charts and must
+defend: **`sirs`** (SIRS criteria), **`apfel`** (PONV risk), and **`aims65`**
+(upper-GI-bleed mortality).
+
+- **`lib/meta.js`**: each gains a complete `derivation` block — `formula`,
+  per-input `components`, `bands`, `population`, `validity`, and a verbatim
+  `source`. The `source` reuses the tile's **already-vetted inline citation**
+  (no new clinical quote is authored), and `population` stays factual without
+  unverified cohort specifics, so the only new clinical content is the
+  component/​band structure — which is machine-verified.
+- **`views/group-g.js`**: each renderer now mounts `renderDerivation(META[id])`
+  and calls `updateDerivationSteps` on every input change, so the per-input
+  contribution list populates live (the established spec-v48 wiring pattern).
+- **`test/unit/derivation.test.js`**: the three tiles join `ALL_DERIVATION_TILES`
+  (schema + units-coverage guards) and each gets three component-sum
+  cross-checks asserting the derivation components reproduce the live scoring
+  function exactly (`sirs().count`, `apfel().score`, `aims65().score`) across
+  the zero, mid, and max cases. Derivation coverage 79 → 82 tiles.
+
 ### Added (spec-v61 A3 — chart-ready labeled copy on the multi-output bedside tiles)
 
 Extends the A3 "Copy results" affordance — clean `Label: Value Units` lines via

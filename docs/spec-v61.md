@@ -32,8 +32,15 @@
 > `fluid-balance`), feeding canonical kg to both the formula and
 > `boundsAdvisory()`. A1's named high-value scores (Braden, MEWS,
 > NEWS2, HEART, Wells, Caprini) already carry derivation; A1's
-> lower-value tail remains an open follow-up. A2 (related-tool
-> linking) is complete. A3 (chart-ready labeled copy) now also
+> lower-value tail is being worked down one small wave at a time —
+> the simple additive screening scores `sirs`, `apfel`, and
+> `aims65` now carry a full derivation block (formula, per-input
+> components, bands, population, validity, and a verbatim `source`
+> that reuses the tile's already-vetted inline citation), wired
+> through `renderDerivation`/`updateDerivationSteps` in
+> `views/group-g.js`; each component sum is cross-checked against
+> the live scoring function in `derivation.test.js`. A2
+> (related-tool linking) is complete. A3 (chart-ready labeled copy) now also
 > covers the five 2+-numeric-output v61 bedside tiles
 > (`ebv-mabl`, `peds-transfusion-volume`, `rhig-dose`,
 > `fluid-balance`, `carb-insulin-bolus`) via a shared `resultRow`

@@ -1309,16 +1309,20 @@ export const renderers = {
     ];
     for (const [l, id] of items) root.appendChild(checkbox(l, id));
     const o = out(); root.appendChild(o);
+    const deriv = renderDerivation(META.aims65);
+    if (deriv) root.appendChild(deriv);
     const run = () => safe(o, () => {
-      const r = S4.aims65({
+      const inputs = {
         albuminLt3: checked('am-alb'),
         inrGt15: checked('am-inr'),
         alteredMental: checked('am-am'),
         sbpLe90: checked('am-sbp'),
         ageGt65: checked('am-age'),
-      });
+      };
+      const r = S4.aims65(inputs);
       o.appendChild(el('h2', { text: `AIMS65 ${r.score}` }));
       o.appendChild(el('p', { text: r.band }));
+      if (deriv) updateDerivationSteps(deriv, META.aims65, inputs);
     });
     items.forEach(([, id]) => document.getElementById(id).addEventListener('change', run));
     run();
@@ -1849,15 +1853,19 @@ export const renderers = {
     ];
     for (const [l, id] of items) root.appendChild(checkbox(l, id));
     const o = out(); root.appendChild(o);
+    const deriv = renderDerivation(META.sirs);
+    if (deriv) root.appendChild(deriv);
     const run = () => safe(o, () => {
-      const r = S4.sirs({
+      const inputs = {
         tempAbnormal: checked('sr-temp'),
         hrGt90: checked('sr-hr'),
         rrOrPaco2: checked('sr-resp'),
         wbcOrBands: checked('sr-wbc'),
-      });
+      };
+      const r = S4.sirs(inputs);
       o.appendChild(el('h2', { text: `SIRS criteria met: ${r.count} of 4` }));
       o.appendChild(el('p', { text: r.band }));
+      if (deriv) updateDerivationSteps(deriv, META.sirs, inputs);
     });
     items.forEach(([, id]) => document.getElementById(id).addEventListener('change', run));
     run();
@@ -2636,15 +2644,19 @@ export const renderers = {
     ];
     for (const [l, id] of items) root.appendChild(checkbox(l, id));
     const o = out(); root.appendChild(o);
+    const deriv = renderDerivation(META.apfel);
+    if (deriv) root.appendChild(deriv);
     const run = () => safe(o, () => {
-      const r = S4.apfel({
+      const inputs = {
         female: checked('ap-female'),
         nonsmoker: checked('ap-nonsmoker'),
         historyPonvOrMotionSickness: checked('ap-hx'),
         postopOpioids: checked('ap-opioid'),
-      });
+      };
+      const r = S4.apfel(inputs);
       o.appendChild(el('h2', { text: `Apfel ${r.score} of 4` }));
       o.appendChild(el('p', { text: r.band }));
+      if (deriv) updateDerivationSteps(deriv, META.apfel, inputs);
     });
     items.forEach(([, id]) => document.getElementById(id).addEventListener('change', run));
     run();
