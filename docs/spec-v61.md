@@ -32,8 +32,15 @@
 > `fluid-balance`), feeding canonical kg to both the formula and
 > `boundsAdvisory()`. A1's named high-value scores (Braden, MEWS,
 > NEWS2, HEART, Wells, Caprini) already carry derivation; A1's
-> lower-value tail and A3 labeled copy beyond Group E remain open
-> follow-ups. A2 (related-tool linking) is complete.
+> lower-value tail remains an open follow-up. A2 (related-tool
+> linking) is complete. A3 (chart-ready labeled copy) now also
+> covers the five 2+-numeric-output v61 bedside tiles
+> (`ebv-mabl`, `peds-transfusion-volume`, `rhig-dose`,
+> `fluid-balance`, `carb-insulin-bolus`) via a shared `resultRow`
+> helper in `views/group-v11.js`, byte-identical on-screen text
+> with a `formatCopyAll`-backed "Copy results" button; the labeled
+> copy beyond these and Group E (other view modules) is the
+> remaining A3 tail.
 > v61 has two parts.
 > **Part A** is
 > a zero-tile *enhancement* pass that raises the value of the

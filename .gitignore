@@ -46,6 +46,7 @@ Desktop.ini
 # Runtime/local-only
 .local/
 .cloudflare/
+.claude/scheduled_tasks.lock
 
 
 # openlore analysis artifacts

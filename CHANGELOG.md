@@ -6,6 +6,33 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v61 A3 — chart-ready labeled copy on the multi-output bedside tiles)
+
+Extends the A3 "Copy results" affordance — clean `Label: Value Units` lines via
+`lib/clipboard.js` `formatCopyAll`, instead of the universal "Copy all" scraping
+`innerText` into a chart blob — from the Group E clinical-math tiles (A4) to the
+genuinely multi-output v61 bedside tiles.
+
+- **`resultRow` helper in `views/group-v11.js`.** A small shared helper that
+  renders a result list and a "Copy results" button from one structured item
+  list (`{label, value, units, cls}` for numeric results; `{text, cls}` for
+  band/interpretation lines). The `<li>` text is built with the same
+  `Label: Value Units` join `formatCopyAll` uses, so the on-screen text is
+  **byte-identical** to the prior hand-built `<li>`s and the paste matches the
+  screen exactly.
+- **Wired on the five 2+-numeric-output tiles**: `ebv-mabl` (blood volume +
+  max allowable loss), `peds-transfusion-volume` (volume + mL/kg),
+  `rhig-dose` (FMH volume + vials), `fluid-balance` (net mL + % body weight),
+  and `carb-insulin-bolus` (meal + correction + total). These are exactly the
+  outputs a nurse pastes into a transfusion, I&O, or insulin chart. Single-
+  numeric tiles (`urine-output`, `gir`, `iv-osmolarity`, etc.) are left on the
+  universal "Copy all", matching the Group E precedent.
+- **Test**: `test/integration/unit-toggle.spec.js` now asserts the "Copy
+  results" button renders on all nine multi-output tiles (4 Group E + 5 v61).
+  The full `example-correctness` sweep (every documented example still produces
+  its exact output) and the 320px mobile sweep were re-run green — no text or
+  layout regression.
+
 ### Added (spec-v61 A2 — finish the related-tool linking rollout; 9 → 267 tiles)
 
 Completes the last open Part A enhancement in [spec-v61](docs/spec-v61.md) §2.

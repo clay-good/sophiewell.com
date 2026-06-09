@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `dba27d39ab6b3dda`
-Generated: 2026-06-08T23:58:22.876Z
+Build ID: `d331a912be739543`
+Generated: 2026-06-09T00:17:15.746Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=20.18.1 <21, npm >=10.0.0
@@ -30,7 +30,7 @@ downloads is committed in this repository and is hashed below.
 | `sw.js` | 4062 | `60f524b1b69eb5170c59af42631e11cc05db2a44e8e530977db0327888b0ff6d` |
 | `site.webmanifest` | 709 | `0e0de4da60590a12e8b27a0ae2a2f5ffdb6500b7d2b78f93631ec2f64ed3d5ce` |
 | `robots.txt` | 127 | `38fbf9c1854e72abb20e01e81dd5a31d4ea96f154c12d5db1ec3af05524dd1a1` |
-| `sitemap.xml` | 50118 | `622c9b57a04ec2df285459a4fb12e11e3f9d50b5f66c7931f7dd1c9743bae8d3` |
+| `sitemap.xml` | 50118 | `7a086ca47a67fc0f0f2fc12ec24ae02144b9a8eb02e732f29e2eaba12fe8ec42` |
 | `_headers` | 1316 | `2f39986457d2feff7e73e491a7d09ee871e8f2f4cc2bc437f86bd86a42554ec6` |
 | `logo.png` | 63440 | `11afaf1b0d3ca68393d202e4810bf766b5b6d591b4e3ec52f41d3cacaa4616ec` |
 | `favicon.ico` | 7411 | `407fde0ca2788409e87e11f596fa02e6a0b121817fcea7fd995beec1801e287b` |
@@ -102,7 +102,7 @@ downloads is committed in this repository and is hashed below.
 | `views/group-j.js` | 8483 | `1c6714d458ee2cc9f30325800afc118164987ae4e25a9b7fffae78f5bf87dd5b` |
 | `views/group-klmno.js` | 7870 | `bf6d3ced1a08fcb627284b649d07b8e5ace6857b29e46992d4e425925c63eaa9` |
 | `views/group-v10.js` | 23142 | `3a1eb0a47b86c78599cfc929f58ab75be0b969a88c7da16cc641b8bdf6e590b7` |
-| `views/group-v11.js` | 16009 | `d03e3f2fd5f716253fa77651b14e6c19de2567f0f122cb309845349b73c23420` |
+| `views/group-v11.js` | 17534 | `1f75d2ad5a3acb7113b3e6973e5df48dd65f66c3983e0873cceb4b6e4437a7c9` |
 | `views/group-v5.js` | 28251 | `7165f9b5a26dfa3dc741f61d06641bfd5faaa4cc04c8619f97125482b7ee6097` |
 | `views/group-v6.js` | 5707 | `425918decb48cd9efac9fc5590ac8970a54c03c3b0df056fb99c9a22ff8dd1b2` |
 | `views/group-v7.js` | 14540 | `62cafb116458fc6bf0e7a8eb8ba2df7a64577e1bb97ff662603cc969adbd02c5` |

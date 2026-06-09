@@ -13,6 +13,7 @@
 import { el, clear } from '../lib/dom.js';
 import { fmt } from '../lib/num.js';
 import { boundsAdvisory } from '../lib/bounds.js';
+import { copyButton, formatCopyAll } from '../lib/clipboard.js';
 import * as C from '../lib/clinical-v7.js';
 import { unitField, unitNum, WEIGHT_UNITS } from '../lib/field-units.js';
 
@@ -51,6 +52,32 @@ function safe(o, fn) {
 }
 function list(items) { return el('ul', {}, items.filter(Boolean)); }
 function li(text, cls) { return el('li', cls ? { class: cls, text } : { text }); }
+
+// spec-v61 §2 A3: chart-ready labeled copy for the genuinely multi-output
+// bedside tiles. Each item is { label, value, units?, cls? } (a labeled numeric
+// result) or { text, cls? } (a band / interpretation line). The <li> text is
+// built with the same `Label: Value Units` join formatCopyAll uses, so the
+// "Copy results" button pastes clean lines identical to what is on screen --
+// instead of the universal "Copy all" scraping innerText into a chart blob. The
+// rendered text is byte-identical to the prior hand-built <li>s (Group E's A4
+// pattern), so the numeric-correctness sweep is unaffected.
+function resultRow(o, items) {
+  const rows = items.filter(Boolean);
+  o.appendChild(el('ul', {}, rows.map((it) => {
+    const text = it.text !== undefined
+      ? it.text
+      : (it.units ? `${it.label}: ${it.value} ${it.units}` : `${it.label}: ${it.value}`);
+    return li(text, it.cls || null);
+  })));
+  const copyItems = rows.map((it) => (it.text !== undefined
+    ? { value: it.text }
+    : { label: it.label, value: it.value, units: it.units }));
+  const live = el('span', { class: 'copy-live visually-hidden', 'aria-live': 'polite', role: 'status' });
+  o.appendChild(el('p', { class: 'copy-row' }, [
+    copyButton(() => formatCopyAll(copyItems), { label: 'Copy results', live }),
+    live,
+  ]));
+}
 function note(root, text) { if (text) root.appendChild(el('p', { class: 'muted', text })); }
 function estimateNote(root) {
   root.appendChild(el('p', { class: 'muted', text: 'Estimate / decision support, not an order. Verify against local protocol and an independent double-check before acting.' }));
@@ -122,10 +149,10 @@ export const renderers = {
     wire(['em-wt', 'em-wt-unit', 'em-factor', 'em-start', 'em-min'], () => safe(o, () => {
       const r = C.ebvMabl({ weightKg: unitNum('em-wt'), ebvFactor: val('em-factor'), startHct: val('em-start'), minHct: val('em-min') });
       if (!r) { o.appendChild(el('p', { class: 'muted', text: 'Enter weight and a starting hematocrit.' })); return; }
-      o.appendChild(list([
-        li(`Estimated blood volume: ${fmt(r.ebv, { unit: 'mL' })}`),
-        li(`Maximum allowable blood loss: ${fmt(r.mabl, { unit: 'mL' })}`, 'warn'),
-      ]));
+      resultRow(o, [
+        { label: 'Estimated blood volume', value: fmt(r.ebv), units: 'mL' },
+        { label: 'Maximum allowable blood loss', value: fmt(r.mabl), units: 'mL', cls: 'warn' },
+      ]);
       advise(o, 'weightKg', unitNum('em-wt'));
       note(o, r.note);
     }));
@@ -199,11 +226,11 @@ export const renderers = {
     const o = out(); root.appendChild(o);
     wire(['rh-bv', 'rh-kb'], () => safe(o, () => {
       const r = C.rhigDose({ maternalBloodVolumeMl: val('rh-bv'), fetalCellPct: val('rh-kb') });
-      o.appendChild(list([
-        li(`Estimated fetomaternal hemorrhage: ${fmt(r.fmhMl, { digits: 1, unit: 'mL' })}`),
-        li(`RhIG dose: ${fmt(r.vials)} standard 300 µg vial(s)`, 'warn'),
-        li(r.band),
-      ]));
+      resultRow(o, [
+        { label: 'Estimated fetomaternal hemorrhage', value: fmt(r.fmhMl, { digits: 1 }), units: 'mL' },
+        { label: 'RhIG dose', value: fmt(r.vials), units: 'standard 300 µg vial(s)', cls: 'warn' },
+        { text: r.band },
+      ]);
       note(o, r.note);
     }));
     estimateNote(root);
@@ -222,11 +249,11 @@ export const renderers = {
     wire(['pt-wt', 'pt-wt-unit', 'pt-rise', 'pt-hct'], () => safe(o, () => {
       const r = C.pedsTransfusionVolume({ weightKg: unitNum('pt-wt'), hbRise: val('pt-rise'), productHctPct: val('pt-hct') });
       if (!r) { o.appendChild(el('p', { class: 'muted', text: 'Enter weight and a desired Hb rise.' })); return; }
-      o.appendChild(list([
-        li(`PRBC transfusion volume: ${fmt(r.volumeMl, { unit: 'mL' })}`),
-        li(`Weight-based: ${fmt(r.mlPerKg, { digits: 1, unit: 'mL/kg' })}`),
-        li(r.band),
-      ]));
+      resultRow(o, [
+        { label: 'PRBC transfusion volume', value: fmt(r.volumeMl), units: 'mL' },
+        { label: 'Weight-based', value: fmt(r.mlPerKg, { digits: 1 }), units: 'mL/kg' },
+        { text: r.band },
+      ]);
       advise(o, 'weightKg', unitNum('pt-wt'));
       note(o, r.note);
     }));
@@ -278,10 +305,10 @@ export const renderers = {
     const o = out(); root.appendChild(o);
     wire(['fb-in', 'fb-out', 'fb-wt', 'fb-wt-unit'], () => safe(o, () => {
       const r = C.fluidBalance({ intakeMl: val('fb-in'), outputMl: val('fb-out'), weightKg: unitNum('fb-wt') });
-      const items = [li(`Net fluid balance: ${fmt(r.netMl, { unit: 'mL' })}`, (r.pctBodyWeight !== null && r.pctBodyWeight >= 10) ? 'warn' : null)];
-      if (r.pctBodyWeight !== null) items.push(li(`As percent of body weight: ${fmt(r.pctBodyWeight, { digits: 1, unit: '%' })}`, r.pctBodyWeight >= 10 ? 'warn' : null));
-      items.push(li(r.band));
-      o.appendChild(list(items));
+      const items = [{ label: 'Net fluid balance', value: fmt(r.netMl), units: 'mL', cls: (r.pctBodyWeight !== null && r.pctBodyWeight >= 10) ? 'warn' : null }];
+      if (r.pctBodyWeight !== null) items.push({ label: 'As percent of body weight', value: fmt(r.pctBodyWeight, { digits: 1 }), units: '%', cls: r.pctBodyWeight >= 10 ? 'warn' : null });
+      items.push({ text: r.band });
+      resultRow(o, items);
       advise(o, 'weightKg', unitNum('fb-wt'));
       note(o, r.note);
     }));
@@ -298,12 +325,12 @@ export const renderers = {
     wire(['ci-carbs', 'ci-ic', 'ci-isf', 'ci-cur', 'ci-tgt'], () => safe(o, () => {
       const r = C.carbInsulinBolus({ carbsG: val('ci-carbs'), icRatio: val('ci-ic'), isf: val('ci-isf'), currentGlucose: val('ci-cur'), targetGlucose: val('ci-tgt') });
       if (!r) { o.appendChild(el('p', { class: 'muted', text: 'Enter carbs, an IC ratio, and an ISF.' })); return; }
-      o.appendChild(list([
-        li(`Meal bolus: ${fmt(r.mealBolus, { digits: 1, unit: 'units' })}`),
-        li(`Correction bolus: ${fmt(r.correctionBolus, { digits: 1, unit: 'units' })}`, r.floored ? 'warn' : null),
-        li(`Total: ${fmt(r.totalBolus, { digits: 1, unit: 'units' })}`),
-        li(r.band),
-      ]));
+      resultRow(o, [
+        { label: 'Meal bolus', value: fmt(r.mealBolus, { digits: 1 }), units: 'units' },
+        { label: 'Correction bolus', value: fmt(r.correctionBolus, { digits: 1 }), units: 'units', cls: r.floored ? 'warn' : null },
+        { label: 'Total', value: fmt(r.totalBolus, { digits: 1 }), units: 'units' },
+        { text: r.band },
+      ]);
       advise(o, 'glucose', val('ci-cur'));
       note(o, r.note);
     }));

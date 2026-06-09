@@ -80,7 +80,13 @@ test('weight toggle in lb matches the kg dose calculation across Group F / v11',
 // `Label: Value Units` lines (lib/clipboard.js formatCopyAll) rather than a
 // scraped innerText blob.
 test('multi-output tiles offer a labeled "Copy results" button', async ({ page }) => {
-  for (const id of ['bsa', 'anion-gap', 'corrected-sodium', 'aa-gradient']) {
+  // Group E (A4) plus the v61 bedside calc tiles (A3 rollout): every tile that
+  // produces two or more numeric results surfaces the clean-copy affordance.
+  const ids = [
+    'bsa', 'anion-gap', 'corrected-sodium', 'aa-gradient',
+    'ebv-mabl', 'peds-transfusion-volume', 'rhig-dose', 'fluid-balance', 'carb-insulin-bolus',
+  ];
+  for (const id of ids) {
     await page.goto('/#' + id, { waitUntil: 'load' });
     await page.waitForTimeout(60);
     await page.locator('.example-reset').first().click();

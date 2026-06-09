@@ -348,12 +348,17 @@ converters; each option converts to the canonical unit *before* the formula
 runs, so the math is untouched and — because the canonical unit is always the
 default — every documented example and deep-link hash reproduces a calculation
 byte-identically. The input+select row wraps, so it never forces horizontal
-scrolling on the narrowest phones. Alongside, the multi-output tiles (`bsa`, `anion-gap`,
-`corrected-sodium`, `aa-gradient`) build their results as `{label, value, units}`
+scrolling on the narrowest phones. Alongside, the multi-output tiles build their results as `{label, value, units}`
 items and render a **"Copy results"** button that pastes clean
 `Label: Value Units` lines via [lib/clipboard.js](lib/clipboard.js)
 `formatCopyAll` — a chart-ready paste instead of a scraped `innerText` blob.
-Both are pinned by [test/integration/unit-toggle.spec.js](test/integration/unit-toggle.spec.js)
+The labeled copy covers the Group E math tiles (`bsa`, `anion-gap`,
+`corrected-sodium`, `aa-gradient`) and, through a shared `resultRow` helper, the
+five 2+-numeric-output v61 bedside tiles (`ebv-mabl`, `peds-transfusion-volume`,
+`rhig-dose`, `fluid-balance`, `carb-insulin-bolus`) — exactly the values a nurse
+pastes into a transfusion, I&O, or insulin chart, with on-screen text
+byte-identical to the prior hand-built list. All nine are pinned by
+[test/integration/unit-toggle.spec.js](test/integration/unit-toggle.spec.js)
 (alternate-unit parity, example-prefill parity, the labeled-copy affordance, and
 a 320px no-overflow assertion).
 
@@ -367,8 +372,9 @@ who weighs a patient in pounds skips the hand-conversion before a weight-based
 dose, infusion rate, or hourly urine-output check. The converter feeds the
 canonical kg value to both the formula and the `boundsAdvisory()` plausibility
 note, so result and advisory match the kg entry exactly; the cross-group
-lb-parity test in `unit-toggle.spec.js` pins it. The A1 derivation tail and A3
-labeled copy beyond Group E remain tracked follow-ups.
+lb-parity test in `unit-toggle.spec.js` pins it. The A1 derivation tail and the
+A3 labeled copy beyond Group E and the five v61 bedside tiles remain tracked
+follow-ups.
 
 ## System design and architecture overview
 
