@@ -9,6 +9,7 @@
 import { el, clear } from '../lib/dom.js';
 import { fmt } from '../lib/num.js';
 import * as S from '../lib/scoring-v6.js';
+import * as C8 from '../lib/clinical-v8.js';
 import { META } from '../lib/meta.js';
 import { renderDerivation, updateDerivationSteps } from '../lib/derivation.js';
 
@@ -446,5 +447,65 @@ export const renderers = {
       if (deriv) updateDerivationSteps(deriv, META['braden-q'], inputs);
     }));
     screenerNote(root);
+  },
+
+  // --- spec-v62 §3 Part B (wave 1): OB/L&D & neonatal tiles -----------------
+
+  'neonatal-feeding-volume'(root) {
+    root.appendChild(field('Weight (kg)', 'nfv-w', { placeholder: '3.2' }));
+    root.appendChild(field('Target volume (mL/kg/day, term ~150)', 'nfv-mlkg', { placeholder: '150' }));
+    root.appendChild(selectField('Feeding frequency', 'nfv-freq', [
+      { value: '8', text: 'q3h (8 feeds/day)' },
+      { value: '12', text: 'q2h (12 feeds/day)' },
+      { value: '6', text: 'q4h (6 feeds/day)' },
+    ]));
+    const o = out(); root.appendChild(o);
+    const run = () => safe(o, () => {
+      const r = C8.neonatalFeedingVolume({
+        weightKg: val('nfv-w'),
+        mlPerKgDay: val('nfv-mlkg'),
+        feedsPerDay: Number(document.getElementById('nfv-freq').value),
+      });
+      o.appendChild(list([
+        li(`Total daily volume: ${fmt(r.dailyMl)} mL/day`),
+        li(`Per feed: ${fmt(r.perFeedMl)} mL`),
+      ]));
+      note(o, 'Term newborn 120-180 mL/kg/day (typ. 150); advance per day of life in preterm infants. AAP Pediatric Nutrition.');
+    });
+    ['nfv-w', 'nfv-mlkg', 'nfv-freq'].forEach((id) => {
+      const node = document.getElementById(id);
+      node.addEventListener('input', run);
+      node.addEventListener('change', run);
+    });
+  },
+
+  'oxytocin-titration'(root) {
+    root.appendChild(el('p', { class: 'muted', text: 'Planning conversion aid. Follow your unit\'s oxytocin protocol and uterine-activity monitoring.' }));
+    root.appendChild(selectField('Bag concentration', 'oxy-conc', [
+      { value: '60', text: '30 units / 500 mL (60 mU/mL)' },
+      { value: '30', text: '30 units / 1000 mL (30 mU/mL)' },
+      { value: '20', text: '20 units / 1000 mL (20 mU/mL)' },
+      { value: '10', text: '10 units / 1000 mL (10 mU/mL)' },
+    ]));
+    root.appendChild(field('Ordered dose (mU/min)', 'oxy-dose', { placeholder: '6' }));
+    root.appendChild(field('Pump rate (mL/hr)', 'oxy-rate', { placeholder: '12' }));
+    const o = out(); root.appendChild(o);
+    const run = () => safe(o, () => {
+      const r = C8.oxytocinConvert({
+        milliunitsPerMl: Number(document.getElementById('oxy-conc').value),
+        doseMilliunitsMin: val('oxy-dose') || 0,
+        rateMlHr: val('oxy-rate') || 0,
+      });
+      o.appendChild(list([
+        li(`Ordered dose -> pump rate: ${fmt(r.rateFromDoseMlHr)} mL/hr`),
+        li(`Pump rate -> delivered dose: ${fmt(r.doseFromRateMuMin)} mU/min`),
+      ]));
+      note(o, 'Typical titration: low-dose 1-2 mU/min q15-40 min; high-dose 3-6 mU/min. ACOG Induction of Labor.');
+    });
+    ['oxy-conc', 'oxy-dose', 'oxy-rate'].forEach((id) => {
+      const node = document.getElementById(id);
+      node.addEventListener('input', run);
+      node.addEventListener('change', run);
+    });
   },
 };

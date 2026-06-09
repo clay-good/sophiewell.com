@@ -6,6 +6,58 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v62 Part B wave 1 — 7 bedside tiles + Part C: the last two static reference tables converted to calculators; catalog 319 → 326)
+
+The clinical-side depth/expansion spec. This wave ships seven of the nine
+planned Part B bedside tiles and converts the project's last two static
+"reference table" tiles into input-driven calculators (Part C), closing the
+last `<table>`-with-no-input gap in the live catalog. Every tile is pure,
+`num.js`-validated, fuzz-covered (zero non-finite leaks), and ships its primary
+citation inline with a `citationUrl`.
+
+- **`lib/clinical-v8.js`** (new): seven new pure compute exports plus the two
+  conversion functions, all `num.js`-backed arithmetic. Registered in the
+  spec-v59 object-aware fuzz harness (`test/unit/fuzz-tools.test.js`).
+- **New tiles (+7, Group F + N):**
+  - `infusion-time-remaining` — bag/syringe time-to-empty and the inverse
+    rate-to-last (ISMP smart-pump framing).
+  - `enteral-free-water` — tube-feed free-water delivery and flush-to-goal
+    (ASPEN 2017).
+  - `apap-24h-max` — acetaminophen 24-hour running total vs the selected
+    ceiling, catching hidden combination-product overdose (FDA labeling).
+  - `icu-nutrition-target` — ICU energy/protein target ranges by weight
+    (ASPEN/SCCM 2016).
+  - `vte-prophylaxis-dose` — enoxaparin dose by weight, indication, and renal
+    function with the CrCl <30 reduction flagged (Lovenox PI; CHEST 2012).
+  - `neonatal-feeding-volume` — newborn enteral feeding daily/per-feed volume
+    (AAP Pediatric Nutrition).
+  - `oxytocin-titration` — oxytocin mU/min ⇄ mL/hr conversion both directions
+    (ACOG Induction of Labor).
+- **Part C conversions (no count change; ids and permalinks retained):**
+  - `peds-dose` — from a static per-kg table to a weight-driven quick-dose
+    panel computed to actual mg with per-dose caps applied.
+  - `anticoag-reversal` — from a static agent table to a weight/INR-driven
+    reversal-dose calculator (4F-PCC Kcentra INR-band dosing, idarucizumab
+    5 g, andexanet ANNEXA-4, protamine 1 mg/100 units max 50 mg). Removing
+    both static tables also removes the last two horizontally-scrolling
+    `<table>`s from the catalog, improving the mobile no-horizontal-scroll
+    posture.
+- **Every dosing/reversal/replacement tile** renders the explicit "planning
+  estimate, not an order — verify against local protocol and an independent
+  double-check" notice (spec-v62 §5).
+- **Catalog-truth + provenance:** all 13 count surfaces moved 319 → 326; the
+  two AAP/ACOG tiles (`neonatal-feeding-volume`, `oxytocin-titration`) carry
+  `accessed` dates and `docs/citation-staleness.md` rows under the
+  `check-citations` gate; spec-v11 audit logs added/updated for all nine tiles.
+- **Deferred to a later wave (honesty note):** the two remaining Part B tiles,
+  `norepi-equiv` (§3.1) and `neo-phototherapy` (§3.3), are intentionally not in
+  this wave — the published norepinephrine-equivalent vasopressin/angiotensin
+  factors vary across the scoping reviews and the AAP-2022 hyperbilirubinemia
+  curves are a continuous risk-stratified nomogram; both warrant exact
+  source-table encoding before shipping a number a clinician might lean on.
+  Part A (trend/action/reverse-solve/lab-toggle/substituted-derivation depth
+  pass) is likewise deferred. See [docs/spec-v62.md](docs/spec-v62.md) §status.
+
 ### Added (spec-v61 A8 — interpretation parity for `pews`; CI invariant locking derivation-band ↔ interpretation coverage)
 
 Closes the last gap between the two per-tile explanation displays. An audit

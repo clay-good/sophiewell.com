@@ -105,7 +105,7 @@ literacy decoders, the field-medicine and EMS workflow tiles).
 > close — [spec-v56](spec-v56.md), which adds 13 weight-based
 > dosing, infusion-titration, and bedside-toxicology calculators
 > — is 281; v57 close — [spec-v57](spec-v57.md), which adds 14
-> brief screeners, decision rules, and triage scores — is 295; v58 close — adds 12 neonatal, maternal, and pediatric/adult ICU bedside scores — is 307; v61 close — [spec-v61](spec-v61.md), which adds 12 bedside medication-safety, electrolyte/fluid, and OB/peds tiles — is 319.)
+> brief screeners, decision rules, and triage scores — is 295; v58 close — adds 12 neonatal, maternal, and pediatric/adult ICU bedside scores — is 307; v61 close — [spec-v61](spec-v61.md), which adds 12 bedside medication-safety, electrolyte/fluid, and OB/peds tiles — is 319; v62 Part B wave 1 — [spec-v62](spec-v62.md), which adds 7 of 9 planned ICU-infusion / med-surg / OB-neonatal tiles and converts the two residual static reference tables (`peds-dose`, `anticoag-reversal`) into §3 input-driven calculators (no count change for the conversions; `norepi-equiv` and `neo-phototherapy` deferred to a later wave) — is 326.)
 
 A reasonable steady-state estimate is **400–600 tiles over 3–5
 years**, depending on how aggressive the audit pace is and how

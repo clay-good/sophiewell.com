@@ -94,3 +94,20 @@ so a maintainer can see the source was reviewed and deliberately retained.
 | burn-uop-target | ABA burn-shock resuscitation UOP target | Pham 2008 (J Burn Care Res 2008;29) | same | 2026-06-06 | foundational ABA practice guideline; the 0.5 / 1.0 mL/kg/hr targets are unchanged |
 | fluid-balance | Malbrain fluid stewardship overload flag | Malbrain 2018 (Ann Intensive Care 2018;8) | same | 2026-06-06 | foundational; the >10%-of-body-weight cumulative-overload flag is stable |
 | carb-insulin-bolus | ADA carbohydrate-counting insulin dosing | ADA Standards of Care 2025 (Diabetes Care 2025;48 Suppl 1) | same | 2026-06-06 | current annual edition; meal-bolus / correction-factor method unchanged. Carries the spec-v60 §4 REFRESH discipline for the next annual update |
+
+## spec-v62 bedside tiles (added 2026-06-09)
+
+`neonatal-feeding-volume` (AAP) and `oxytocin-titration` (ACOG) match the
+guideline-issuer pattern and are gate-enforced; the remaining v62 wave-1 tiles
+cite ASPEN/SCCM, the FDA label, ISMP safe-practice framing, the enoxaparin US
+PI/CHEST, or the Neurocritical Care Society guideline, none of which matches the
+issuer acronym set, so they are documentation only. The two converted tiles
+(`peds-dose`, `anticoag-reversal`) keep their existing rows above.
+
+| tile id | instrument | edition shipped | latest known edition | accessed | justification if behind |
+|---|---|---|---|---|---|
+| neonatal-feeding-volume | AAP Pediatric Nutrition feeding volume | AAP Pediatric Nutrition (Kleinman & Greer, eds.) | same | 2026-06-09 | current — the 120-180 mL/kg/day term-newborn requirement is stable across editions |
+| oxytocin-titration | ACOG Induction of Labor oxytocin titration | ACOG Practice Bulletin (Induction of Labor) | same | 2026-06-09 | current — standard low-dose / high-dose titration regimens unchanged; the tile's core output is a unit conversion, not a dose recommendation |
+| icu-nutrition-target | ASPEN/SCCM adult critical-care nutrition | McClave 2016 (JPEN 2016;40(2)) | same | 2026-06-09 | foundational guideline; 25-30 kcal/kg and 1.2-2.0 g/kg targets unchanged (documentation only — does not match the issuer pattern) |
+| vte-prophylaxis-dose | Enoxaparin US PI + CHEST VTE prevention | Lovenox US PI; Gould 2012 (Chest 2012;141 Suppl) | same | 2026-06-09 | label-anchored; the CrCl <30 renal reduction and prophylaxis/treatment regimens are unchanged (documentation only) |
+| enteral-free-water | ASPEN enteral-nutrition safe practices | Boullata 2017 (JPEN 2017;41(1)) | same | 2026-06-09 | foundational; free-water-fraction arithmetic is stable (documentation only) |

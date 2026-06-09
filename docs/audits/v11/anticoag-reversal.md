@@ -1,32 +1,22 @@
-# v11 audit - Anticoagulation Reversal Reference (`anticoag-reversal`)
+# v11 audit - Anticoagulation Reversal Dose (`anticoag-reversal`)
 
 - Auditor: CG
-- Date: 2026-05-17
-- Citation re-verified against: ASH 2018 guideline for management of anticoagulant-associated bleeding; Tomaselli et al. *2020 ACC Expert Consensus Decision Pathway on Management of Bleeding in Patients on Oral Anticoagulants* (JACC 2020;76(5):594-622); Frontera et al. *Reversal of Antithrombotic Agents in Major Bleeding* (Neurocritical Care Society / Society of Critical Care Medicine, Crit Care Med 2016).
+- Date: 2026-06-09
+- Citation re-verified against: Frontera JA, et al. Guideline for Reversal of Antithrombotics in Intracranial Hemorrhage (Neurocritical Care Society / SCCM). Neurocrit Care. 2016;24(1):6-46; Kcentra (4F-PCC) US label INR-band dosing; REVERSE-AD (idarucizumab); ANNEXA-4 (andexanet alfa); protamine labeling. spec-v62 §4.1 converts this tile from a static reference table to a weight/INR-driven calculator; it now passes the spec-v29 §3 one-line test.
 
-## Boundary examples added (table coverage rows)
-This is a pure reference table tile (no inputs). Per spec-v11 §3.3 step 10, coverage rows are individual table entries verified against the cited consensus statements:
-- Warfarin -> 4-factor PCC + Vitamin K 10 mg IV (FFP only if PCC unavailable). Matches the ACC 2020 pathway; FFP-only is acknowledged as second-line, not equivalent.
-- Dabigatran -> Idarucizumab 5 g IV; hemodialysis as adjunct. Matches REVERSE-AD and the ACC 2020 pathway.
-- Apixaban / Rivaroxaban -> Andexanet alfa per dosing nomogram; 4F-PCC 50 units/kg if andexanet unavailable. Matches ANNEXA-4 and ACC 2020.
-- Heparin (UFH) -> Protamine 1 mg per 100 units last 2-3 h; max 50 mg single dose. Matches the Frontera 2016 consensus.
-- LMWH -> Protamine 1 mg per 1 mg LMWH within 8 h; partial reversal only. Matches Frontera 2016.
-- Antiplatelets -> Platelet transfusion in life-threatening bleed (evidence mixed). Matches the AHA/ASA ICH guideline framing.
-
-All six rows verified against the cited consensus statements; no numerical drift in dose strings or interval framing.
+## Boundary examples added
+- warfarin, 80 kg, INR 5 (band 4-6): 4F-PCC 35 units/kg x 80 = 2800 units (max 3500) + Vitamin K 10 mg IV.
+- warfarin, 120 kg, INR 8 (band >6): dosing weight capped at 100 kg, 50 units/kg x 100 = 5000 units (label max 5000) -> `capped` flag set.
+- dabigatran: idarucizumab fixed 5 g; UFH protamine 4000 units / 100 = 40 mg (max 50 mg); unknown agent -> null (guidance note).
 
 ## Cross-implementation differential
-- Reference implementation: ACC 2020 Expert Consensus Decision Pathway (Tomaselli et al.) Tables 2-4.
-- Test case: apixaban-associated life-threatening bleed.
-- Sophie reference: andexanet alfa per dosing nomogram; 4F-PCC 50 units/kg if andexanet unavailable.
-- Reference result: identical recommendation (ACC 2020 pathway Table 4).
-- Delta: 0%. PASS.
+- Reference: Kcentra US label INR-band table (2-<4 = 25 u/kg max 2500; 4-6 = 35 u/kg max 3500; >6 = 50 u/kg max 5000; dosing weight capped at 100 kg) and protamine 1 mg/100 units (max 50 mg). 80 kg x 35 = 2800; 6000 units / 100 = 60 -> capped 50 mg. Sophie matches exactly. Delta 0%. PASS.
 
 ## Edge-input handling notes
-- No inputs. The "Reference table. Always confirm against your institution's protocol and current literature." muted paragraph above the table frames the tile as reference only. PASS.
+- `weightKg` bounded `[0.3, 500]`, `inr` `[0, 30]`; out-of-range throws RangeError, non-finite throws TypeError, both caught by `safe()`. INR <2 returns a non-numeric note (band not defined by the label). Unrecognized agent returns null -> guidance note (no NaN). The "planning estimate, not an order; reversal decisions belong to the treating team and pharmacy" notice renders above the result. PASS.
 
 ## A11y / keyboard notes
-- `<table class="lookup-table">` with `scope="col"` headers. `npm run test:a11y` clean.
+- One labeled agent `<select>` plus three labeled numeric inputs, `aria-live="polite"` output; Tab order = source order. `npm run test:a11y` clean. PASS.
 
 ## Defects opened
 - none

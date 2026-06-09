@@ -96,8 +96,9 @@ const NO_INPUTS_TILES = new Set([
   // fills before getting an answer; the tile *is* the table). opioid-mme
   // builds inputs dynamically per row, so there is no static field set
   // to pre-fill from META.
-  'peds-dose',         // Group F: pediatric dose reference table.
-  'anticoag-reversal', // Group F: anticoagulant reversal reference table.
+  // spec-v62 §4 Part C: peds-dose and anticoag-reversal were converted from
+  // static reference tables to input-driven calculators and now carry
+  // META.example payloads, so they are no longer input-less.
   // high-alert + iv-to-po removed in spec-v29 wave 29-2 (Group K/O).
   'opioid-mme',        // Group F: dynamic per-row opioid MME calculator.
   // Wave 3c: pure-reference tiles in Group G and Group I that show a

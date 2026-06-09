@@ -3,6 +3,8 @@
 import { el, clear } from '../lib/dom.js';
 import { loadFile } from '../lib/data.js';
 import * as C from '../lib/clinical.js';
+import * as C8 from '../lib/clinical-v8.js';
+import { fmt } from '../lib/num.js';
 import {
   mmeTotal, steroidEquivalent, benzoEquivalent,
   abxRenalDose, vasopressorRateMlHr, vasopressorDose,
@@ -102,25 +104,21 @@ export const renderers = {
     ['dv', 'du', 'w', 'w-unit', 'cv', 'cu'].forEach((id) => document.getElementById(id).addEventListener('input', run));
   },
 
+  // spec-v62 §4.2: converted from a static reference table to a weight-driven
+  // quick-dose calculator (passes the spec-v29 §3 one-line test).
   'peds-dose'(root) {
+    root.appendChild(el('p', { class: 'notice', text: 'Planning estimate, not an order. Verify every dose against your institution\'s formulary and an independent double-check.' }));
+    root.appendChild(field('Child weight (kg)', 'pd-w', { placeholder: '20' }));
     const o = out(); root.appendChild(o);
-    o.appendChild(el('p', { class: 'muted', text: 'Reference table. Verify against your institution\'s formulary.' }));
-    const tbl = el('table', { class: 'lookup-table' });
-    tbl.appendChild(el('thead', {}, [el('tr', {}, [el('th', { scope: 'col', text: 'Drug' }), el('th', { scope: 'col', text: 'Typical pediatric dose (per kg)' }), el('th', { scope: 'col', text: 'Notes' })])]));
-    const tbody = el('tbody');
-    const rows = [
-      ['Acetaminophen (PO/PR)', '10-15 mg/kg q4-6h', 'Max 75 mg/kg/day; max single 1 g'],
-      ['Ibuprofen (PO)', '5-10 mg/kg q6-8h', 'Avoid in dehydration, age <6 mo'],
-      ['Amoxicillin (PO)', '25-50 mg/kg/day divided q8-12h', 'High-dose 80-100 mg/kg/day for AOM'],
-      ['Ceftriaxone (IV)', '50-75 mg/kg/day', 'Meningitis dosing differs'],
-      ['Epinephrine (IM, anaphylaxis)', '0.01 mg/kg (max 0.3-0.5 mg)', '1 mg/mL concentration'],
-      ['Albuterol nebulized', '0.15 mg/kg (min 2.5 mg)', 'Continuous in severe asthma per protocol'],
-      ['Dexamethasone (croup)', '0.6 mg/kg PO/IM/IV', 'Single dose; max 16 mg'],
-    ];
-    for (const r of rows) tbody.appendChild(el('tr', {}, [el('td', { text: r[0] }), el('td', { text: r[1] }), el('td', { text: r[2] })]));
-    tbl.appendChild(tbody);
-    o.appendChild(el('div', { class: 'table-scroll', role: 'region', 'aria-label': 'Pediatric dose table (scrolls horizontally)', tabindex: '0' }, [tbl]));
-    o.appendChild(el('p', { class: 'muted', text: 'Citations: AAP, NLM/DailyMed, manufacturer labels. Reference only.' }));
+    const run = () => safe(o, () => {
+      const r = C8.pedsDosePanel({ weightKg: nv('pd-w') });
+      const items = r.rows.map((d) => ({
+        text: `${d.drug}: ${d.lowMg === d.highMg ? fmt(d.lowMg) : `${fmt(d.lowMg)}-${fmt(d.highMg)}`} mg ${d.freq}${d.capped ? ' (capped at per-dose max)' : ''} — ${d.note}`,
+      }));
+      resultRow(o, items);
+      o.appendChild(el('p', { class: 'muted', text: 'Citations: AAP, NLM/DailyMed, manufacturer labels. Computed at the entered weight; per-dose caps applied.' }));
+    });
+    document.getElementById('pd-w').addEventListener('input', run);
   },
 
   'insulin-drip'(root) {
@@ -143,23 +141,190 @@ export const renderers = {
     ['p', 'bg'].forEach((id) => document.getElementById(id).addEventListener('input', run));
   },
 
+  // spec-v62 §4.1: converted from a static reference table to a weight/INR-
+  // driven reversal-dose calculator (passes the spec-v29 §3 one-line test).
   'anticoag-reversal'(root) {
+    root.appendChild(el('p', { class: 'notice', text: 'Planning estimate, not an order. Confirm against your institution\'s protocol and current literature; reversal decisions belong to the treating team and pharmacy.' }));
+    root.appendChild(selectField('Anticoagulant', 'ar-agent', [
+      { value: 'warfarin', text: 'Warfarin (4F-PCC + Vit K)' },
+      { value: 'dabigatran', text: 'Dabigatran (idarucizumab)' },
+      { value: 'apixaban-rivaroxaban', text: 'Apixaban / Rivaroxaban (andexanet)' },
+      { value: 'heparin-ufh', text: 'Heparin, UFH (protamine)' },
+    ]));
+    root.appendChild(field('Weight (kg)', 'ar-w', { placeholder: '80' }));
+    root.appendChild(field('INR (warfarin only)', 'ar-inr', { placeholder: '5' }));
+    root.appendChild(field('Heparin units in last 2-3 h (UFH only)', 'ar-heparin', { placeholder: '4000' }));
     const o = out(); root.appendChild(o);
-    o.appendChild(el('p', { class: 'muted', text: 'Reference table. Always confirm against your institution\'s protocol and current literature.' }));
-    const tbl = el('table', { class: 'lookup-table' });
-    tbl.appendChild(el('thead', {}, [el('tr', {}, [el('th', { scope: 'col', text: 'Agent' }), el('th', { scope: 'col', text: 'Standard reversal' }), el('th', { scope: 'col', text: 'Notes' })])]));
-    const tbody = el('tbody');
-    const rows = [
-      ['Warfarin', '4-factor PCC + Vitamin K 10 mg IV', 'Use FFP if PCC unavailable'],
-      ['Dabigatran', 'Idarucizumab 5 g IV', 'Hemodialysis as adjunct'],
-      ['Apixaban / Rivaroxaban', 'Andexanet alfa per dosing nomogram', '4F-PCC 50 units/kg if andexanet unavailable'],
-      ['Heparin (UFH)', 'Protamine 1 mg per 100 units last 2-3 hours', 'Max 50 mg single dose'],
-      ['LMWH', 'Protamine 1 mg per 1 mg LMWH within 8 hours', 'Partial reversal only'],
-      ['Antiplatelets (ASA, P2Y12)', 'Platelet transfusion in life-threatening bleed', 'Evidence mixed'],
-    ];
-    for (const r of rows) tbody.appendChild(el('tr', {}, [el('td', { text: r[0] }), el('td', { text: r[1] }), el('td', { text: r[2] })]));
-    tbl.appendChild(tbody);
-    o.appendChild(el('div', { class: 'table-scroll', role: 'region', 'aria-label': 'Anticoagulant reversal table (scrolls horizontally)', tabindex: '0' }, [tbl]));
+    const run = () => safe(o, () => {
+      const agent = document.getElementById('ar-agent').value;
+      clear(o);
+      if (agent === 'heparin-ufh') {
+        if (!(nv('ar-heparin') > 0)) { o.appendChild(el('p', { class: 'muted', text: 'Enter the heparin units given in the last 2-3 h.' })); return; }
+        const r = C8.protamineDose({ heparinUnits: nv('ar-heparin') });
+        resultRow(o, [
+          { label: 'Protamine', value: fmt(r.protamineMg), units: `mg${r.capped ? ' (capped at 50 mg single dose)' : ''}` },
+          { text: '1 mg protamine per 100 units of heparin given in the last 2-3 h; LMWH reversal is partial only.' },
+        ]);
+        return;
+      }
+      if (!(nv('ar-w') > 0)) { o.appendChild(el('p', { class: 'muted', text: 'Enter weight (and INR for warfarin).' })); return; }
+      const r = C8.anticoagReversalDose({ weightKg: nv('ar-w'), inr: nv('ar-inr') || 0, agent });
+      if (!r) { o.appendChild(el('p', { class: 'muted', text: 'Select an agent and enter weight (and INR for warfarin).' })); return; }
+      const items = [{ label: 'Agent', value: r.product, text: `Agent: ${r.product}` }];
+      if (r.units != null) items.push({ label: '4F-PCC dose', value: fmt(r.units), units: `units (${r.unitsPerKg} units/kg${r.capped ? ', dosing weight capped at 100 kg' : ''})` });
+      if (r.doseG != null) items.push({ label: 'Dose', value: fmt(r.doseG), units: 'g' });
+      if (r.adjunct) items.push({ text: `Adjunct: ${r.adjunct}` });
+      if (r.altPcc4Units != null) items.push({ text: `Alt if andexanet unavailable: 4F-PCC ${fmt(r.altPcc4Units)} units (50 units/kg)` });
+      if (r.note) items.push({ text: r.note });
+      resultRow(o, items);
+    });
+    ['ar-agent', 'ar-w', 'ar-inr', 'ar-heparin'].forEach((id) => {
+      const node = document.getElementById(id);
+      node.addEventListener('input', run);
+      node.addEventListener('change', run);
+    });
+    run();
+  },
+
+  // --- spec-v62 §3 Part B (wave 1): ICU-infusion + med-surg tiles ----------
+
+  'infusion-time-remaining'(root) {
+    root.appendChild(field('Volume remaining (mL)', 'itr-vol', { placeholder: '250' }));
+    root.appendChild(field('Current rate (mL/hr)', 'itr-rate', { placeholder: '100' }));
+    root.appendChild(field('Or: make this volume last (hours)', 'itr-hrs', { placeholder: '8' }));
+    const o = out(); root.appendChild(o);
+    const run = () => safe(o, () => {
+      clear(o);
+      const vol = nv('itr-vol');
+      const rate = nv('itr-rate');
+      const hrs = nv('itr-hrs');
+      const items = [];
+      if (vol > 0 && rate > 0) {
+        const r = C8.infusionTimeRemaining({ volumeMl: vol, rateMlHr: rate });
+        const h = Math.floor(r.minutesToEmpty / 60);
+        const m = r.minutesToEmpty % 60;
+        items.push({ text: `Time to empty: ${h}h ${String(m).padStart(2, '0')}m (${fmt(r.hoursToEmpty)} h)` });
+      }
+      if (vol > 0 && hrs > 0) {
+        const r = C8.infusionRateToLast({ volumeMl: vol, hours: hrs });
+        items.push({ text: `Rate to last ${fmt(hrs)} h: ${fmt(r.rateMlHr)} mL/hr` });
+      }
+      if (!items.length) { o.appendChild(el('p', { class: 'muted', text: 'Enter a volume with either a rate or a target duration.' })); return; }
+      resultRow(o, items);
+    });
+    ['itr-vol', 'itr-rate', 'itr-hrs'].forEach((id) => document.getElementById(id).addEventListener('input', run));
+  },
+
+  'enteral-free-water'(root) {
+    root.appendChild(field('Daily formula volume (mL/day)', 'efw-vol', { placeholder: '1200' }));
+    root.appendChild(field('Formula free-water fraction (%, ~84 for 1.0 kcal/mL)', 'efw-fw', { placeholder: '84' }));
+    root.appendChild(field('Daily free-water goal (mL)', 'efw-goal', { placeholder: '1500' }));
+    const o = out(); root.appendChild(o);
+    const run = () => safe(o, () => {
+      const r = C8.enteralFreeWater({ dailyVolumeMl: nv('efw-vol'), freeWaterPct: nv('efw-fw'), goalMl: nv('efw-goal') });
+      resultRow(o, [
+        { label: 'Free water in formula', value: fmt(r.freeWaterFromFormulaMl), units: 'mL/day' },
+        { label: 'Additional flush needed', value: fmt(r.additionalFlushMl), units: 'mL/day' },
+        { label: 'Flush per shift', value: fmt(r.flushPerShiftMlQ6h), units: 'mL q6h' },
+      ]);
+    });
+    ['efw-vol', 'efw-fw', 'efw-goal'].forEach((id) => document.getElementById(id).addEventListener('input', run));
+  },
+
+  'apap-24h-max'(root) {
+    root.appendChild(el('p', { class: 'muted', text: 'Add each acetaminophen source in the last 24 h — including the acetaminophen component of combination products (oxycodone-APAP, hydrocodone-APAP).' }));
+    root.appendChild(field('Source 1: mg per dose', 'apap-d1', { placeholder: '650' }));
+    root.appendChild(field('Source 1: doses per day', 'apap-n1', { placeholder: '4' }));
+    root.appendChild(field('Source 2: mg per dose', 'apap-d2', { placeholder: '325' }));
+    root.appendChild(field('Source 2: doses per day', 'apap-n2', { placeholder: '4' }));
+    root.appendChild(field('Source 3: mg per dose', 'apap-d3', { placeholder: '0' }));
+    root.appendChild(field('Source 3: doses per day', 'apap-n3', { placeholder: '0' }));
+    root.appendChild(selectField('24-hour ceiling', 'apap-ceiling', [
+      { value: '4000', text: '4000 mg (standard adult)' },
+      { value: '3000', text: '3000 mg (conservative)' },
+      { value: '2000', text: '2000 mg (hepatic impairment / chronic alcohol use)' },
+    ]));
+    const o = out(); root.appendChild(o);
+    const run = () => safe(o, () => {
+      let total = 0;
+      for (const [d, n] of [['apap-d1', 'apap-n1'], ['apap-d2', 'apap-n2'], ['apap-d3', 'apap-n3']]) {
+        const dose = nv(d);
+        const freq = nv(n);
+        if (dose > 0 && freq > 0) total += C8.apapSourceTotal({ doseMg: dose, dosesPerDay: freq }).totalMg;
+      }
+      const ceiling = Number(document.getElementById('apap-ceiling').value);
+      const r = C8.apapCeilingCheck({ totalMg: total, ceilingMg: ceiling });
+      resultRow(o, [
+        { label: '24-hour acetaminophen total', value: fmt(total), units: 'mg' },
+        { label: r.over ? 'OVER the ceiling by' : 'Remaining to ceiling', value: fmt(Math.abs(r.remainingMg)), units: `mg (${fmt(r.pctOfCeiling)}% of ${ceiling} mg)`, cls: r.over ? 'flag' : null },
+      ]);
+    });
+    ['apap-d1', 'apap-n1', 'apap-d2', 'apap-n2', 'apap-d3', 'apap-n3', 'apap-ceiling'].forEach((id) => {
+      const node = document.getElementById(id);
+      node.addEventListener('input', run);
+      node.addEventListener('change', run);
+    });
+  },
+
+  'icu-nutrition-target'(root) {
+    root.appendChild(field('Weight (kg, use adjusted weight in obesity)', 'int-w', { placeholder: '70' }));
+    root.appendChild(selectField('Energy target (kcal/kg/day)', 'int-kcal', [
+      { value: '25-30', text: '25-30 (ASPEN/SCCM standard)' },
+      { value: '20-25', text: '20-25 (early / hypocaloric)' },
+    ]));
+    root.appendChild(selectField('Protein target (g/kg/day)', 'int-pro', [
+      { value: '1.2-2.0', text: '1.2-2.0 (standard critically ill)' },
+      { value: '2.0-2.5', text: '2.0-2.5 (CRRT / burns / high catabolism)' },
+    ]));
+    const o = out(); root.appendChild(o);
+    const run = () => safe(o, () => {
+      const [kl, kh] = document.getElementById('int-kcal').value.split('-').map(Number);
+      const [pl, ph] = document.getElementById('int-pro').value.split('-').map(Number);
+      const r = C8.icuNutritionTarget({ weightKg: nv('int-w'), kcalLow: kl, kcalHigh: kh, proteinLow: pl, proteinHigh: ph });
+      resultRow(o, [
+        { label: 'Energy target', value: `${fmt(r.energyLowKcal)}-${fmt(r.energyHighKcal)}`, units: 'kcal/day' },
+        { label: 'Protein target', value: `${fmt(r.proteinLowG)}-${fmt(r.proteinHighG)}`, units: 'g/day' },
+      ]);
+      o.appendChild(el('p', { class: 'muted', text: 'Use ideal/adjusted body weight in obesity; higher protein for CRRT and burns. ASPEN/SCCM 2016.' }));
+    });
+    ['int-w', 'int-kcal', 'int-pro'].forEach((id) => {
+      const node = document.getElementById(id);
+      node.addEventListener('input', run);
+      node.addEventListener('change', run);
+    });
+  },
+
+  'vte-prophylaxis-dose'(root) {
+    root.appendChild(el('p', { class: 'notice', text: 'Planning estimate, not an order. Verify against local protocol; obesity and renal edges may warrant anti-Xa monitoring.' }));
+    root.appendChild(field('Weight (kg)', 'vte-w', { placeholder: '80' }));
+    root.appendChild(field('Creatinine clearance (mL/min)', 'vte-crcl', { placeholder: '80' }));
+    root.appendChild(selectField('Indication', 'vte-ind', [
+      { value: 'prophylaxis', text: 'Prophylaxis' },
+      { value: 'treatment', text: 'Treatment' },
+    ]));
+    root.appendChild(selectField('Treatment regimen', 'vte-reg', [
+      { value: 'q12', text: '1 mg/kg q12h' },
+      { value: 'daily', text: '1.5 mg/kg q24h' },
+    ]));
+    const o = out(); root.appendChild(o);
+    const run = () => safe(o, () => {
+      const r = C8.enoxaparinDose({
+        weightKg: nv('vte-w'),
+        crcl: nv('vte-crcl'),
+        indication: document.getElementById('vte-ind').value,
+        regimen: document.getElementById('vte-reg').value,
+      });
+      if (!r) { clear(o); o.appendChild(el('p', { class: 'muted', text: 'Enter weight and CrCl.' })); return; }
+      resultRow(o, [
+        { label: 'Enoxaparin', value: fmt(r.doseMg), units: `mg ${r.interval}${r.mgPerKg ? ` (${r.mgPerKg} mg/kg)` : ''}` },
+        r.renalAdjusted ? { text: 'CrCl <30 mL/min: renal reduction applied.', cls: 'flag' } : null,
+      ]);
+    });
+    ['vte-w', 'vte-crcl', 'vte-ind', 'vte-reg'].forEach((id) => {
+      const node = document.getElementById(id);
+      node.addEventListener('input', run);
+      node.addEventListener('change', run);
+    });
   },
 
   // high-alert removed in spec-v29 wave 29-2 (Group K/O).
