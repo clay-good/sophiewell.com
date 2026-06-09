@@ -18,7 +18,17 @@
 > sodium-correction rate). The creatinine Δ / KDIGO stage-transition variant on
 > `kdigo-aki` is deferred — that tile already exposes baseline→current
 > creatinine and a 48-h-rise field, so a trend block there overlaps its inputs
-> and needs a careful redesign, not a quick add. Original Part B/C wave delivered: 7 of 9
+> and needs a careful redesign, not a quick add.
+>
+> **Part A2 wave 1 (2026-06-09):** the source-anchored "next step" action field
+> (`META[id].actions = { source, bands: [{range, step}] }`) shipped — rendered
+> in `renderMetaBlock` under a "Recommended next step (per source):" header,
+> guarded by a CI test (non-empty source + bands, no Sophie-authored phrasing).
+> Seeded with `kdigo-aki` (KDIGO 2012 staged-management bundle), the additive
+> action table alongside its staging-definition interpretation. `news2` is
+> deliberately not seeded (its interpretation already states the RCP-2017
+> escalation response). Later A2 waves seed CIWA-Ar/COWS, Centor/FeverPAIN, and
+> Braden/Norton where verbatim-citable and not already in interpretation. Original Part B/C wave delivered: 7 of 9
 > Part B tiles (`infusion-time-remaining`, `enteral-free-water`, `apap-24h-max`,
 > `icu-nutrition-target`, `vte-prophylaxis-dose`, `neonatal-feeding-volume`,
 > `oxytocin-titration`) in `lib/clinical-v8.js`, and both Part C conversions

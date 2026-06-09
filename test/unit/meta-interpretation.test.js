@@ -83,3 +83,37 @@ test('META: every tile with discrete derivation.bands also carries an interpreta
   assert.deepEqual(offenders, [],
     `derivation-band tiles missing interpretation:\n  - ${offenders.join('\n  - ')}`);
 });
+
+// spec-v62 §2 A2 invariant: the optional META[id].actions block carries the
+// governing publication's verbatim "next step" recommendation. Every entry must
+// name its source and ship at least one band with a range and a step; the words
+// shown are the source's, not Sophie's (same FORBIDDEN_PHRASES guard as
+// interpretation). Only the deliberately-seeded instruments carry it.
+test('META.actions: non-empty source, well-formed bands, no Sophie-authored phrasing', () => {
+  const offenders = [];
+  for (const [id, m] of Object.entries(META)) {
+    if (!m || !m.actions) continue;
+    const a = m.actions;
+    if (typeof a.source !== 'string' || a.source.length === 0) {
+      offenders.push(`${id}: actions.source must be a non-empty string`);
+    }
+    if (!Array.isArray(a.bands) || a.bands.length === 0) {
+      offenders.push(`${id}: actions.bands must be a non-empty array`);
+      continue;
+    }
+    for (const band of a.bands) {
+      if (!band || typeof band.range !== 'string' || band.range.length === 0) {
+        offenders.push(`${id}: every actions band needs a non-empty range`);
+      }
+      if (!band || typeof band.step !== 'string' || band.step.length === 0) {
+        offenders.push(`${id}: every actions band needs a non-empty step`);
+      }
+      const hay = `${band && band.step}`.toLowerCase();
+      for (const phrase of FORBIDDEN_PHRASES) {
+        if (hay.includes(phrase)) offenders.push(`${id}: actions step contains forbidden phrase "${phrase}"`);
+      }
+    }
+  }
+  assert.deepEqual(offenders, [],
+    `actions guard failures:\n  - ${offenders.join('\n  - ')}`);
+});

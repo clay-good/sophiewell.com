@@ -1020,6 +1020,27 @@ function renderMetaBlock(util) {
     block.appendChild(interp);
   }
 
+  // spec-v62 §2 A2: optional source-anchored "next step" (action) block. Renders
+  // beneath interpretation under its own "Recommended next step (per source):"
+  // header. Every line is the governing publication's verbatim recommendation
+  // (never an order Sophie generates), with the source named below.
+  if (meta.actions && Array.isArray(meta.actions.bands) && meta.actions.bands.length) {
+    const actions = el('div', { class: 'actions', 'aria-label': 'Recommended next step per source' });
+    actions.appendChild(el('p', { class: 'actions-header', text: 'Recommended next step (per source):' }));
+    const alist = el('ul', { class: 'actions-bands' });
+    for (const band of meta.actions.bands) {
+      if (!band || !band.range || !band.step) continue;
+      const item = el('li', { class: 'actions-band' });
+      item.appendChild(el('span', { class: 'actions-range', text: String(band.range) }));
+      item.appendChild(document.createTextNode(' - '));
+      item.appendChild(el('span', { class: 'actions-text', text: String(band.step) }));
+      alist.appendChild(item);
+    }
+    actions.appendChild(alist);
+    if (meta.actions.source) actions.appendChild(el('p', { class: 'actions-source muted', text: `Source: ${meta.actions.source}` }));
+    block.appendChild(actions);
+  }
+
   if (meta.source) {
     const stamp = el('p', { class: 'source-stamp', text: `Source: ${meta.source.label} (loading version...)` });
     block.appendChild(stamp);

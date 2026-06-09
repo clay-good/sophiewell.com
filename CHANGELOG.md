@@ -6,6 +6,36 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v62 Part A2 wave 1 — source-anchored "next step" action field, seeded on `kdigo-aki`)
+
+Starts Part A2. Interpretation tells the user what a number *means*; the new
+`META[id].actions` block tells them what the governing publication says to *do*
+next — rendered beneath interpretation under a "Recommended next step (per
+source):" header, every line the source's words (not an order Sophie generates),
+with the source named below.
+
+- **`lib/meta.js`**: adds an `ACTIONS_BACKFILL` map (merged like the
+  interpretation/related backfills) with the field shape `{ source, bands:
+  [{ range, step }] }`. Seeded with **`kdigo-aki`** — the KDIGO 2012 staged-
+  management bundle (discontinue nephrotoxins / optimize volume + perfusion /
+  monitor SCr + UO / avoid contrast at all stages; diagnostic workup at stage 1+;
+  drug-dose review + consider RRT/ICU at stage 2+; RRT + avoid subclavian access
+  at stage 3). This is genuinely additive: the tile's interpretation states the
+  staging *definition*, while the action table states the *management*.
+- **`app.js` (`renderMetaBlock`)**: renders the actions block after
+  interpretation, mirroring its markup (no new CSS needed — both live in
+  `.tool-meta`).
+- **`test/unit/meta-interpretation.test.js`**: a CI guard requires every
+  `actions` block to carry a non-empty `source`, at least one band with a
+  non-empty `range` and `step`, and no Sophie-authored phrasing (same
+  FORBIDDEN_PHRASES list as interpretation).
+- **`news2` is deliberately not seeded** even though RCP 2017 ships an escalation
+  table: its `interpretation` block already states that escalation response, so
+  an `actions` block there would duplicate it. Later A2 waves seed instruments
+  whose interpretation does not already carry the action (CIWA-Ar/COWS dosing
+  interval, Centor/FeverPAIN test-vs-treat, Braden/Norton turn schedule), each
+  only where verbatim-citable. See [docs/spec-v62.md](docs/spec-v62.md).
+
 ### Added (spec-v62 Part A1 wave 4 — hemoglobin-drop trend on `gbs` and `oakland`)
 
 Applies the trend primitive to the GI-bleed scores along a new axis. The
