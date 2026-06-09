@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `27ccbdf573ec376b`
-Generated: 2026-06-09T21:47:21.087Z
+Build ID: `091a4cedb815af96`
+Generated: 2026-06-09T21:58:51.506Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=20.18.1 <21, npm >=10.0.0
@@ -92,14 +92,14 @@ downloads is committed in this repository and is hashed below.
 | `lib/synonyms.js` | 3339 | `f28e834e5b603c1564099976489ad33f05109a0b74f130f9153aa2a90518bc16` |
 | `lib/table.js` | 5372 | `c1c9b7f8ad0cd087d76e3e1aac879feb9837373b11f067b0f910fa8e5a7974d1` |
 | `lib/tree.js` | 5187 | `947cd24aa948c81432844601adc03446917bcb5e32ac187f66491bcd3420df08` |
-| `lib/trend.js` | 2048 | `1bf198af755f8f0f879eb14e1f5cf68da62578c6572717871a4927ce1a32312e` |
+| `lib/trend.js` | 2889 | `6a34ffbc9758a99976d15e9c09e69d03c21771e827f5e5310e8ae51473a5fb3d` |
 | `lib/unit-convert.js` | 2169 | `95a6519c9d0dc4aecaf521d5609dffac4d3fa00f481f54657e082fafd10698ed` |
 | `lib/workflow-v4.js` | 7999 | `927a8a476e2c1b124c9e51040e549001b580b0baf2a4409ce463a0681fd08a72` |
 | `views/group-a.js` | 577 | `eed37c656d1fa00c097a07f07db4b1b6ac7a0a74bafc210978265a1d90856bd7` |
 | `views/group-c.js` | 6030 | `3aeac0ab24d035c43a6f5f3fcbc4f51cc4d2c7467145821a300bf219629bac46` |
 | `views/group-e.js` | 32444 | `e36960f6550a051b4b22a5942206cf4c4b90186548f47eaf290c2b4c5182e5f3` |
 | `views/group-f.js` | 40048 | `f7606fc9ced2e52d74fa6ae82cbe7a6aa5976f0714d8fa5fac11fe290d598ce2` |
-| `views/group-g.js` | 229273 | `8fb51c266fe7fa46d234ebd116676d40f3f3282a2fa3651310bb2a4a92c715ce` |
+| `views/group-g.js` | 231244 | `9a00e3458af4c40cf747a05df139561204c7e7c95ec0d72ddd278eb53d1fc17c` |
 | `views/group-h.js` | 27952 | `6393fcba60f1d58334f40d12cb18cf183c086666c7777ab35c8e1e3ada88d4f5` |
 | `views/group-i.js` | 26890 | `82670dfe2c1e1ac7e1c349e840d79b4c7a823f7c185a8363fccc3dd5b23d4ee3` |
 | `views/group-j.js` | 8483 | `1c6714d458ee2cc9f30325800afc118164987ae4e25a9b7fffae78f5bf87dd5b` |

@@ -7,6 +7,7 @@ import { renderScreener } from '../lib/screener.js';
 import { META } from '../lib/meta.js';
 import { renderDerivation, updateDerivationSteps } from '../lib/derivation.js';
 import { fmt } from '../lib/num.js';
+import { trend } from '../lib/trend.js';
 
 function rangeField(label, id, min, max, value) {
   const wrap = el('p');
@@ -36,6 +37,32 @@ function nv(id) { return Number(document.getElementById(id).value); }
 function nvOrNull(id) { const s = document.getElementById(id).value; return s.trim() === '' ? null : Number(s); }
 function checked(id) { return document.getElementById(id).checked; }
 function safe(o, fn) { clear(o); try { fn(); } catch (err) { o.appendChild(el('p', { class: 'muted', text: err.message })); } }
+
+// spec-v62 §2 A1: optional early-warning-score trend. A single early-warning
+// score rarely escalates care; a *rising* one does (RCP 2017 NEWS2 monitoring).
+// `ewsTrendInputs` adds an optional "prior total + hours since" pair; default-
+// empty, so the score output and the documented example are unchanged.
+// `renderEwsTrend` appends the delta/rate/direction line only when both are set.
+function ewsTrendInputs(root, prefix) {
+  root.appendChild(el('p', { class: 'muted', text: 'Optional: trend vs a prior score (a rising early-warning trend escalates care).' }));
+  root.appendChild(el('p', {}, [
+    el('label', { for: `${prefix}-prior`, text: 'Prior total score (optional)' }), el('br'),
+    el('input', { id: `${prefix}-prior`, type: 'number', step: 'any', autocomplete: 'off' }),
+  ]));
+  root.appendChild(el('p', {}, [
+    el('label', { for: `${prefix}-hours`, text: 'Hours since prior score (optional)' }), el('br'),
+    el('input', { id: `${prefix}-hours`, type: 'number', step: 'any', autocomplete: 'off' }),
+  ]));
+}
+function renderEwsTrend(o, prefix, currentScore) {
+  const priorEl = document.getElementById(`${prefix}-prior`);
+  const hoursEl = document.getElementById(`${prefix}-hours`);
+  if (!priorEl || !hoursEl) return;
+  if (priorEl.value === '' || hoursEl.value === '' || !(Number(hoursEl.value) > 0)) return;
+  const t = trend({ prior: Number(priorEl.value), current: currentScore, hours: Number(hoursEl.value) });
+  o.appendChild(el('p', { class: t.direction === 'rising' ? 'warn' : 'muted',
+    text: `Trend: ${t.direction} ${fmt(Math.abs(t.delta))} point(s) over ${fmt(Number(hoursEl.value))} h (${fmt(t.ratePerHour)}/h).${t.direction === 'rising' ? ' A rising early-warning trend warrants escalation per the score\'s monitoring protocol.' : ''}` }));
+}
 
 export const renderers = {
   gcs(root) {
@@ -1038,6 +1065,7 @@ export const renderers = {
         el('option', { value: 'U', text: 'U - Unresponsive' }),
       ]),
     ]));
+    ewsTrendInputs(root, 'n2');
     const o = out(); root.appendChild(o);
     const deriv = renderDerivation(META.news2);
     if (deriv) root.appendChild(deriv);
@@ -1056,6 +1084,7 @@ export const renderers = {
       const p = r.parts;
       o.appendChild(el('p', { class: 'muted',
         text: `Per-parameter: RR ${p.rr}, SpO2 ${p.spo2}, supplemental O2 ${p.supplementalO2}, SBP ${p.sbp}, pulse ${p.pulse}, consciousness ${p.consciousness}, temperature ${p.temp}.` }));
+      renderEwsTrend(o, 'n2', r.score);
     });
     document.querySelectorAll('input, select').forEach((n) => n.addEventListener(n.type === 'checkbox' || n.tagName === 'SELECT' ? 'change' : 'input', run));
     run();
@@ -1209,6 +1238,7 @@ export const renderers = {
         el('option', { value: 'U', text: 'U - Unresponsive' }),
       ]),
     ]));
+    ewsTrendInputs(root, 'me');
     const o = out(); root.appendChild(o);
     const deriv = renderDerivation(META.mews);
     if (deriv) root.appendChild(deriv);
@@ -1225,6 +1255,7 @@ export const renderers = {
       o.appendChild(el('p', { class: 'muted',
         text: `Per-parameter: SBP ${p.sbp}, pulse ${p.pulse}, RR ${p.rr}, temperature ${p.temp}, AVPU ${p.avpu}.` }));
       if (deriv) updateDerivationSteps(deriv, META.mews, inputs);
+      renderEwsTrend(o, 'me', r.score);
     });
     document.querySelectorAll('input, select').forEach((n) => n.addEventListener(n.type === 'checkbox' || n.tagName === 'SELECT' ? 'change' : 'input', run));
     run();

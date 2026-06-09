@@ -4,8 +4,11 @@
 > remaining 2 Part B tiles deferred.** **Part A1 wave 1 (2026-06-09):** the
 > serial/trend primitive `lib/trend.js` (`correctionRate`) shipped and wired
 > into `sodium-correction` as an optional, default-empty achieved-rate-vs-
-> ceiling block (no existing result or example changed); later A1 waves extend
-> it to the other named trend tiles. Original Part B/C wave delivered: 7 of 9
+> ceiling block (no existing result or example changed). **A1 wave 2
+> (2026-06-09):** the generic `trend()` core (delta / rate / direction) added
+> and wired into `news2` and `mews` as an optional prior-score-vs-now trend
+> line (rising-trend warning), again purely additive. Later A1 waves extend it
+> to `pews`, `meows`, creatinine Δ / KDIGO, and hemoglobin-drop rate. Original Part B/C wave delivered: 7 of 9
 > Part B tiles (`infusion-time-remaining`, `enteral-free-water`, `apap-24h-max`,
 > `icu-nutrition-target`, `vte-prophylaxis-dose`, `neonatal-feeding-volume`,
 > `oxytocin-titration`) in `lib/clinical-v8.js`, and both Part C conversions

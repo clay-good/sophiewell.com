@@ -6,6 +6,27 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v62 Part A1 wave 2 — early-warning-score trend on `news2` and `mews`)
+
+Extends the trend primitive to the early-warning scores. A single NEWS2/MEWS
+value rarely escalates care; a *rising* one does (RCP 2017 NEWS2 monitoring
+guidance), and no tile let a nurse capture that trend.
+
+- **`lib/trend.js`**: adds the generic `trend({prior, current, hours})` core —
+  observed delta, per-hour rate, and a labeled direction (rising / falling /
+  unchanged). Same num.js validation and divide-by-zero-safe interval as
+  `correctionRate`. Covered by `test/unit/trend.test.js`; fuzz-harness coverage
+  is automatic (reflection over the module's exports).
+- **`views/group-g.js` (`news2`, `mews`)**: a shared `ewsTrendInputs` /
+  `renderEwsTrend` helper adds an optional, default-empty "prior total score +
+  hours since" pair. When both are entered, the tile appends a trend line
+  (direction + delta + per-hour rate) and warns on a rising trend. The computed
+  score, its band, the per-parameter breakdown, the derivation panel, and the
+  documented example are all unchanged — the block is purely additive.
+- Later A1 waves extend the same helper to `pews` (Group V5) and `meows`, and
+  the primitive to creatinine Δ / KDIGO and hemoglobin-drop rate. See
+  [docs/spec-v62.md](docs/spec-v62.md).
+
 ### Added (spec-v62 Part A1 wave 1 — serial/trend primitive `lib/trend.js`, wired into `sodium-correction`)
 
 Starts the Part A depth pass. The bedside fact a single value rarely carries is

@@ -7,6 +7,23 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import * as T from '../../lib/trend.js';
 
+test('trend: NEWS2 3 -> 7 over 4 h -> +4, 1/h, rising', () => {
+  const r = T.trend({ prior: 3, current: 7, hours: 4 });
+  assert.equal(r.delta, 4);
+  assert.equal(r.ratePerHour, 1);
+  assert.equal(r.direction, 'rising');
+});
+
+test('trend: 8 -> 4 over 2 h -> -4, falling; equal -> unchanged', () => {
+  assert.equal(T.trend({ prior: 8, current: 4, hours: 2 }).direction, 'falling');
+  assert.equal(T.trend({ prior: 5, current: 5, hours: 1 }).direction, 'unchanged');
+});
+
+test('trend: zero/negative interval throws (no signed-infinity rate)', () => {
+  assert.throws(() => T.trend({ prior: 3, current: 7, hours: 0 }), RangeError);
+  assert.throws(() => T.trend({ prior: 3, current: NaN, hours: 4 }), TypeError);
+});
+
 test('correctionRate: Na 120 -> 126 over 12 h, ceiling 8 -> +0.5/h, +12/24h, exceeds', () => {
   const r = T.correctionRate({ prior: 120, current: 126, hours: 12, ceilingPer24h: 8 });
   assert.equal(r.delta, 6);
