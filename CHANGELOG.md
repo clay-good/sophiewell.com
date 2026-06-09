@@ -6,6 +6,31 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v61 A1 wave 10 — "show your work" derivation for the array-scored brief screeners: AUDIT, DAST-10 & GDS-15)
+
+Continues the A1 derivation tail with three brief screeners — **`audit-full`**
+(AUDIT alcohol screen), **`dast10`** (Drug Abuse Screening Test), and **`gds15`**
+(Geriatric Depression Scale). Their value here is transparency of the
+**reverse-scored items** (DAST item 3; GDS items 1/5/7/11/13), a common
+manual-scoring error the per-item breakdown makes explicit. Derivation coverage
+106 → 109 tiles.
+
+- **`lib/meta.js`**: three small helpers (`yesNoItems`, `ordinalItems`,
+  `screenerUnits`) generate the per-item components keyed `q1..qN` so the
+  reverse-scored items are encoded once and correctly; AUDIT items are ordinal
+  (0-4), DAST/GDS are yes/no with the reverse set passed explicitly. Each block
+  carries the full formula, bands, population, units, validity, and a verbatim
+  `source` reusing the tile's inline citation.
+- **`views/group-v9.js`** (`audit-full`, `dast10`, `gds15`): each renderer mounts
+  `renderDerivation(META[id])` and, on change, passes the live items array mapped
+  to a `{q1..qN}` object via `Object.fromEntries` — so the show-your-work sum
+  reproduces the live array-based total exactly.
+- **`test/unit/derivation.test.js`**: the three tiles join `ALL_DERIVATION_TILES`
+  (schema + units-coverage guards) with component-sum cross-checks against
+  `auditFull().total`, `dast10().total`, and `gds15().total` — including the
+  all-"No" cases that isolate the reverse-scored items (DAST all-no = 1, GDS
+  all-no = 5).
+
 ### Added (spec-v61 A1 wave 9 — "show your work" derivation for three high-value scores: HACOR, VIS & the Charlson Comorbidity Index)
 
 Continues the A1 derivation tail with three commonly charted scores of distinct

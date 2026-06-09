@@ -78,7 +78,10 @@
 > computed from PaO2 and FiO2 in a callback), `vis` (continuous
 > weighted sum of vasoactive infusion rates), and `charlson` (the
 > Comorbidity Index, with severity-dominance callbacks and age
-> points) — bringing derivation coverage to 106 tiles. A2
+> points). Wave 10 adds the array-scored brief screeners —
+> `audit-full` (AUDIT), `dast10` (DAST-10), and `gds15` (GDS-15) —
+> whose show-your-work breakdown makes the reverse-scored items
+> explicit, bringing derivation coverage to 109 tiles. A2
 > (related-tool linking) is complete. A3 (chart-ready labeled copy) now also
 > covers the five 2+-numeric-output v61 bedside tiles
 > (`ebv-mabl`, `peds-transfusion-volume`, `rhig-dose`,

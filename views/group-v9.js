@@ -107,12 +107,16 @@ export const renderers = {
     ]));
     const ids = Array.from({ length: 10 }, (_, i) => `af-${i + 1}`);
     const o = out(); root.appendChild(o);
+    const deriv = renderDerivation(META['audit-full']);
+    if (deriv) root.appendChild(deriv);
     wire(ids, () => safe(o, () => {
-      const r = S.auditFull({ items: ids.map(val) });
+      const items = ids.map(val);
+      const r = S.auditFull({ items });
       o.appendChild(list([
         li(`AUDIT total: ${fmt(r.total, { fallback: '--' })} / 40`),
         li(r.band, r.total >= 8 ? 'warn' : null),
       ]));
+      if (deriv) updateDerivationSteps(deriv, META['audit-full'], Object.fromEntries(items.map((v, i) => [`q${i + 1}`, v])));
     }));
     note(root, 'Complements the briefer AUDIT-C. Zones: low risk 0-7, hazardous 8-15, harmful 16-19, likely dependence 20+.');
     screenerNote(root);
@@ -135,12 +139,16 @@ export const renderers = {
     q.forEach((label, i) => root.appendChild(checkField(label, `dt-${i + 1}`)));
     const ids = Array.from({ length: 10 }, (_, i) => `dt-${i + 1}`);
     const o = out(); root.appendChild(o);
+    const deriv = renderDerivation(META.dast10);
+    if (deriv) root.appendChild(deriv);
     wire(ids, () => safe(o, () => {
-      const r = S.dast10({ items: ids.map(chk) });
+      const items = ids.map(chk);
+      const r = S.dast10({ items });
       o.appendChild(list([
         li(`DAST-10 total: ${fmt(r.total, { fallback: '--' })} / 10`),
         li(r.band, r.total >= 3 ? 'warn' : null),
       ]));
+      if (deriv) updateDerivationSteps(deriv, META.dast10, Object.fromEntries(items.map((v, i) => [`q${i + 1}`, v])));
     }));
     note(root, 'Item 3 is reverse-scored (a "No" answer scores 1).');
     screenerNote(root);
@@ -169,12 +177,16 @@ export const renderers = {
     q.forEach((label, i) => root.appendChild(checkField(`${i + 1}. ${label}`, `gd-${i + 1}`)));
     const ids = Array.from({ length: 15 }, (_, i) => `gd-${i + 1}`);
     const o = out(); root.appendChild(o);
+    const deriv = renderDerivation(META.gds15);
+    if (deriv) root.appendChild(deriv);
     wire(ids, () => safe(o, () => {
-      const r = S.gds15({ items: ids.map(chk) });
+      const items = ids.map(chk);
+      const r = S.gds15({ items });
       o.appendChild(list([
         li(`GDS-15 total: ${fmt(r.total, { fallback: '--' })} / 15`),
         li(r.band, r.total >= 5 ? 'warn' : null),
       ]));
+      if (deriv) updateDerivationSteps(deriv, META.gds15, Object.fromEntries(items.map((v, i) => [`q${i + 1}`, v])));
     }));
     note(root, 'Age-appropriate alternative to PHQ-9 in older adults (fewer somatic confounders).');
     screenerNote(root);

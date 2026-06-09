@@ -18,6 +18,7 @@ import { nutric, mnutric, mods } from '../../lib/scoring-v4.js';
 import { burchWartofsky, ariscat, bradenQ } from '../../lib/scoring-v6.js';
 import { charlson, hacor } from '../../lib/scoring-v4.js';
 import { vis } from '../../lib/clinical-v4.js';
+import { auditFull, dast10, gds15 } from '../../lib/scoring-v5.js';
 
 // --- 1. Schema completeness ---------------------------------------------
 
@@ -93,7 +94,13 @@ const WAVE_61_A1H_TILES = ['burch-wartofsky', 'ariscat', 'braden-q'];
 // Charlson Comorbidity Index (weighted comorbidities with severity-dominance
 // callbacks plus an age-points callback). Each reproduces its live score exactly.
 const WAVE_61_A1I_TILES = ['hacor', 'vis', 'charlson'];
-const ALL_DERIVATION_TILES = [...WAVE_48_1A_TILES, ...WAVE_48_1B_TILES, ...WAVE_48_1C_TILES, ...WAVE_48_2A_TILES, ...WAVE_48_2B_TILES, ...WAVE_48_2C_TILES, ...WAVE_48_3A_TILES, ...WAVE_48_3B_TILES, ...WAVE_48_3C_TILES, ...WAVE_48_3D_TILES, ...WAVE_48_4A_TILES, ...WAVE_48_4B_TILES, ...WAVE_48_4C_TILES, ...WAVE_48_4D_TILES, ...WAVE_48_4E_TILES, ...WAVE_48_4F_TILES, ...WAVE_48_4G_TILES, ...WAVE_48_4H_TILES, ...WAVE_48_4I_TILES, ...WAVE_48_4J_TILES, ...WAVE_61_A1_TILES, ...WAVE_61_A1B_TILES, ...WAVE_61_A1C_TILES, ...WAVE_61_A1D_TILES, ...WAVE_61_A1E_TILES, ...WAVE_61_A1F_TILES, ...WAVE_61_A1G_TILES, ...WAVE_61_A1H_TILES, ...WAVE_61_A1I_TILES];
+// spec-v61 A1 derivation tail, wave 10: the array-scored brief screeners. AUDIT
+// (ten 0-4 items), DAST-10 (ten yes/no, item 3 reverse-scored), and GDS-15
+// (fifteen yes/no, items 1/5/7/11/13 reverse-scored). The derivation keys items
+// q1..qN; passing a {q1..qN} object reproduces the live array-based total,
+// including the reverse-scored items the breakdown makes explicit.
+const WAVE_61_A1J_TILES = ['audit-full', 'dast10', 'gds15'];
+const ALL_DERIVATION_TILES = [...WAVE_48_1A_TILES, ...WAVE_48_1B_TILES, ...WAVE_48_1C_TILES, ...WAVE_48_2A_TILES, ...WAVE_48_2B_TILES, ...WAVE_48_2C_TILES, ...WAVE_48_3A_TILES, ...WAVE_48_3B_TILES, ...WAVE_48_3C_TILES, ...WAVE_48_3D_TILES, ...WAVE_48_4A_TILES, ...WAVE_48_4B_TILES, ...WAVE_48_4C_TILES, ...WAVE_48_4D_TILES, ...WAVE_48_4E_TILES, ...WAVE_48_4F_TILES, ...WAVE_48_4G_TILES, ...WAVE_48_4H_TILES, ...WAVE_48_4I_TILES, ...WAVE_48_4J_TILES, ...WAVE_61_A1_TILES, ...WAVE_61_A1B_TILES, ...WAVE_61_A1C_TILES, ...WAVE_61_A1D_TILES, ...WAVE_61_A1E_TILES, ...WAVE_61_A1F_TILES, ...WAVE_61_A1G_TILES, ...WAVE_61_A1H_TILES, ...WAVE_61_A1I_TILES, ...WAVE_61_A1J_TILES];
 
 for (const id of ALL_DERIVATION_TILES) {
   test(`derivation schema: ${id} has all required fields`, () => {
@@ -620,6 +627,51 @@ for (const [label, flat, expected] of [
     const r = charlson({ items, ageYears });
     const sum = sumDerivation('charlson', flat);
     assert.equal(sum, r.score);
+    assert.equal(sum, expected);
+  });
+}
+
+// --- spec-v61 A1 wave 10: array-scored brief screeners ------------------
+// The scoring functions take { items: array }; the derivation keys q1..qN. byQ
+// maps an array to that object so the component sum reproduces the live total,
+// including the reverse-scored items.
+const byQ = (arr) => Object.fromEntries(arr.map((v, i) => [`q${i + 1}`, v]));
+
+for (const [label, items, expected] of [
+  ['example (4+4+2) = 10', [4, 4, 2, 0, 0, 0, 0, 0, 0, 0], 10],
+  ['all-zero', [0, 0, 0, 0, 0, 0, 0, 0, 0, 0], 0],
+  ['max 40', [4, 4, 4, 4, 4, 4, 4, 4, 4, 4], 40],
+]) {
+  test(`audit-full components sum equals auditFull() total (${label})`, () => {
+    const r = auditFull({ items });
+    const sum = sumDerivation('audit-full', byQ(items));
+    assert.equal(sum, r.total);
+    assert.equal(sum, expected);
+  });
+}
+
+for (const [label, items, expected] of [
+  ['example (items 1-2 yes) = 3 incl reverse item 3', [true, true, false, false, false, false, false, false, false, false], 3],
+  ['all-no = 1 (reverse item 3 scores on No)', [false, false, false, false, false, false, false, false, false, false], 1],
+  ['all-yes = 9 (reverse item 3 scores 0)', [true, true, true, true, true, true, true, true, true, true], 9],
+]) {
+  test(`dast10 components sum equals dast10() total (${label})`, () => {
+    const r = dast10({ items });
+    const sum = sumDerivation('dast10', byQ(items));
+    assert.equal(sum, r.total);
+    assert.equal(sum, expected);
+  });
+}
+
+for (const [label, items, expected] of [
+  ['example (items 2,3 yes) = 7', [false, true, true, false, false, false, false, false, false, false, false, false, false, false, false], 7],
+  ['all-no = 5 (five reverse items score on No)', new Array(15).fill(false), 5],
+  ['all-yes = 10 (ten non-reverse items)', new Array(15).fill(true), 10],
+]) {
+  test(`gds15 components sum equals gds15() total (${label})`, () => {
+    const r = gds15({ items });
+    const sum = sumDerivation('gds15', byQ(items));
+    assert.equal(sum, r.total);
     assert.equal(sum, expected);
   });
 }
