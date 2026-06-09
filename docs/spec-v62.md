@@ -1,7 +1,11 @@
 # spec-v62.md — Deepen the clinical tools: trend, action, and target intelligence; convert the residual reference tables; +9 bedside tiles
 
 > Status: **Part B wave 1 + Part C shipped (2026-06-09); Part A and the
-> remaining 2 Part B tiles deferred.** Delivered in this wave: 7 of the 9
+> remaining 2 Part B tiles deferred.** **Part A1 wave 1 (2026-06-09):** the
+> serial/trend primitive `lib/trend.js` (`correctionRate`) shipped and wired
+> into `sodium-correction` as an optional, default-empty achieved-rate-vs-
+> ceiling block (no existing result or example changed); later A1 waves extend
+> it to the other named trend tiles. Original Part B/C wave delivered: 7 of 9
 > Part B tiles (`infusion-time-remaining`, `enteral-free-water`, `apap-24h-max`,
 > `icu-nutrition-target`, `vte-prophylaxis-dose`, `neonatal-feeding-volume`,
 > `oxytocin-titration`) in `lib/clinical-v8.js`, and both Part C conversions

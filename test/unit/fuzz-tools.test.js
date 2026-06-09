@@ -76,6 +76,7 @@ import * as codingV5 from '../../lib/coding-v5.js';
 import * as regulatory from '../../lib/regulatory.js';
 import * as prompt from '../../lib/prompt.js';
 import * as workflowV4 from '../../lib/workflow-v4.js';
+import * as trend from '../../lib/trend.js';
 
 const MODULES = {
   'clinical.js': clinical,
@@ -96,6 +97,7 @@ const MODULES = {
   'regulatory.js': regulatory,
   'prompt.js': prompt,
   'workflow-v4.js': workflowV4,
+  'trend.js': trend,
 };
 
 const MATRIX = [0, -1, 1e9, NaN, Infinity, -Infinity, '', undefined, null];

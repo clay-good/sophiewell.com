@@ -12,6 +12,7 @@ import { META } from '../lib/meta.js';
 import { renderDerivation, updateDerivationSteps } from '../lib/derivation.js';
 import { renderPrintable } from '../lib/print.js';
 import { resultRow } from '../lib/result-copy.js';
+import { correctionRate } from '../lib/trend.js';
 
 function field(label, id, opts = {}) {
   const wrap = el('p');
@@ -80,6 +81,13 @@ export const renderers = {
       { value: 'chronic', text: 'Chronic / unknown onset (ceiling 8 mEq/L/24h)' },
       { value: 'acute',   text: 'Acute (onset < 48 h documented; ceiling 10 mEq/L/24h)' },
     ]));
+    // spec-v62 §2 A1: optional serial-trend mode. If a prior Na and the hours
+    // since it are entered, compute the achieved correction rate against the
+    // acuity ceiling. Default-empty, so the base result and the documented
+    // example are unchanged.
+    root.appendChild(el('p', { class: 'muted', text: 'Optional: track the achieved correction rate over time.' }));
+    root.appendChild(field('Prior serum Na (mEq/L, optional)', 'na-prior'));
+    root.appendChild(field('Hours since prior Na (optional)', 'na-hours'));
     const o = out(); root.appendChild(o);
     const run = () => safe(o, () => {
       const ageRaw = str('age');
@@ -90,7 +98,7 @@ export const renderers = {
         targetChangePer24h: num('tgt'),
         acuity: str('acuity'),
       });
-      resultRow(o, [
+      const items = [
         { label: 'Total body water', value: r.tbwLiters, units: 'L' },
         { label: 'Direction', value: r.direction },
         r.totalSodiumDeficitMeq != null ? { label: `Total Na ${r.totalSodiumDeficitMeq >= 0 ? 'deficit' : 'excess'} vs 140`, value: Math.abs(r.totalSodiumDeficitMeq), units: 'mEq' } : null,
@@ -99,9 +107,20 @@ export const renderers = {
         r.rateMlPerHour != null ? { label: 'Infusion rate', value: r.rateMlPerHour, units: 'mL/h' } : null,
         r.directionNote ? { text: r.directionNote, cls: 'warn' } : null,
         { text: r.safetyNote },
-      ]);
+      ];
+      const priorRaw = str('na-prior');
+      const hoursRaw = str('na-hours');
+      if (priorRaw !== '' && hoursRaw !== '' && num('na-hours') > 0) {
+        const ceiling = str('acuity') === 'acute' ? 10 : 8;
+        const t = correctionRate({ prior: num('na-prior'), current: num('na'), hours: num('na-hours'), ceilingPer24h: ceiling });
+        items.push({ label: 'Achieved ΔNa', value: t.delta, units: `mEq/L over ${fmt(num('na-hours'))} h` });
+        items.push({ label: 'Achieved rate', value: t.ratePerHour, units: 'mEq/L/h' });
+        items.push({ label: 'Projected over 24 h at this rate', value: t.projectedPer24h, units: `mEq/L (ceiling ${ceiling})`, cls: t.exceedsCeiling ? 'warn' : null });
+        if (t.exceedsCeiling) items.push({ text: `Over-rapid: the current trend projects to ${fmt(t.projectedPer24h)} mEq/L/24h, beyond the ${ceiling} mEq/L/24h ceiling. Reassess and consider slowing or relowering.`, cls: 'warn' });
+      }
+      resultRow(o, items);
     });
-    ['w', 'sex', 'age', 'na', 'infusate', 'tgt', 'acuity'].forEach((id) => document.getElementById(id).addEventListener('input', run));
+    ['w', 'sex', 'age', 'na', 'infusate', 'tgt', 'acuity', 'na-prior', 'na-hours'].forEach((id) => document.getElementById(id).addEventListener('input', run));
   },
 
   // ----- T2: Free water deficit -------------------------------------------

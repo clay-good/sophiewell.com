@@ -6,6 +6,34 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v62 Part A1 wave 1 — serial/trend primitive `lib/trend.js`, wired into `sodium-correction`)
+
+Starts the Part A depth pass. The bedside fact a single value rarely carries is
+its *rate of change*; A1 adds that as an optional, default-empty affordance that
+changes no existing result and keeps every documented example byte-identical.
+
+- **`lib/trend.js`** (new): pure, `num.js`-backed `correctionRate({prior,
+  current, hours, ceilingPer24h})` — observed delta, per-hour rate, the rate
+  projected to 24 h, and a direction-agnostic over-ceiling flag (so it catches
+  both over-rapid rise and over-rapid fall). The time interval is the
+  denominator and is rejected at/below zero, so no signed-infinity rate can
+  leak. Registered in the spec-v59 object-aware fuzz harness; covered by
+  `test/unit/trend.test.js` (delta, within-ceiling, over-rapid-fall, and the
+  bad-interval fallback).
+- **`views/group-v5.js` (`sodium-correction`)**: adds an optional "prior serum
+  Na + hours since" pair. When both are entered, the tile reports the achieved
+  ΔNa, the achieved rate (mEq/L/h), and the rate projected to 24 h against the
+  acuity ceiling (8 mEq/L/24h chronic, 10 acute), warning on over-rapid
+  correction. The Adrogue-Madias planning output is untouched; the trend block
+  is purely additive. This is the natural first home for the primitive — the
+  tile is itself a correction-rate planner.
+- Later A1 waves extend the same primitive to the other named trend tiles
+  (lactate clearance, creatinine Δ / KDIGO transition, early-warning-score
+  trend); the remaining Part A capabilities (A2 actions, A3 reverse-solve, A4
+  lab toggles, A5 substituted derivation) and the two deferred Part B tiles
+  (`norepi-equiv`, `neo-phototherapy`) remain open. See
+  [docs/spec-v62.md](docs/spec-v62.md).
+
 ### Added (spec-v62 Part B wave 1 — 7 bedside tiles + Part C: the last two static reference tables converted to calculators; catalog 319 → 326)
 
 The clinical-side depth/expansion spec. This wave ships seven of the nine
