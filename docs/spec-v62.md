@@ -40,8 +40,11 @@
 > `derivation.substituted(inputs)` function (alongside, or instead of, the
 > additive component breakdown), with a banned-token guard at the render layer.
 > Seeded on `cockcroft-gault` (full derivation block + guarded substituted
-> equation). Later A5 waves extend `substituted` to eGFR, Parkland `burn-fluid`,
-> `corrected-sodium`, `winters`, `aa-gradient`, `osmolal-gap`, `fena-feurea`. Original Part B/C wave delivered: 7 of 9
+> equation). **A5 wave 2 (2026-06-09):** `corrected-sodium` (Katz/Hillier
+> hyperglycemia correction, both factors) and `aa-gradient` (sea-level alveolar
+> gas equation) gained full derivation blocks + guarded substituted lines. Later
+> A5 waves extend `substituted` to eGFR, Parkland `burn-fluid`, `winters`,
+> `osmolal-gap`, `fena-feurea`. Original Part B/C wave delivered: 7 of 9
 > Part B tiles (`infusion-time-remaining`, `enteral-free-water`, `apap-24h-max`,
 > `icu-nutrition-target`, `vte-prophylaxis-dose`, `neonatal-feeding-volume`,
 > `oxytocin-titration`) in `lib/clinical-v8.js`, and both Part C conversions

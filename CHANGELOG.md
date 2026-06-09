@@ -6,6 +6,21 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v62 Part A5 wave 2 — substituted-formula derivation on `corrected-sodium` and `aa-gradient`)
+
+Extends the substituted "show your work" line to two more canonical formula
+tiles, each gaining a full `derivation` block (formula / population / validity /
+source / units) plus a guarded `substituted(inputs)`:
+
+- **`corrected-sodium`**: `Corrected Na = 130 + 1.6 x (600 - 100)/100 = 138 mEq/L
+  (Katz); with factor 2.4 = 142 mEq/L (Hillier)` — both literature factors shown.
+- **`aa-gradient`**: `PAO2 = 0.21 x (760 - 47) - 40/0.8 = 99.7 mmHg; A-a = 99.7 -
+  90 = 9.7 mmHg` — sea-level alveolar gas equation (R = 0.8).
+- Both `substituted` functions return null on any missing/non-finite input, and
+  `views/group-e.js` wires `renderDerivation` + `updateDerivationSteps` for each
+  (the computed result rows are unchanged). Coverage in
+  `test/unit/derivation-substituted.test.js`.
+
 ### Added (spec-v62 Part A5 wave 1 — substituted-formula derivation, seeded on `cockcroft-gault`)
 
 Brings the "show your work" panel that additive scores already have to the

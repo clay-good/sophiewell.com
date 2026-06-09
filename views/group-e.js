@@ -162,15 +162,19 @@ export const renderers = {
     root.appendChild(field('Measured sodium (mEq/L)', 'na'));
     root.appendChild(field('Glucose (mg/dL)', 'g'));
     const o = out(); root.appendChild(o);
+    const deriv = renderDerivation(META['corrected-sodium']);
+    if (deriv) root.appendChild(deriv);
     const run = () => safe(o, () => {
       const measuredNa = num('na'), glucose = num('g');
-      const r = C.correctedSodium({ measuredNa, glucose });
+      const inputs = { measuredNa, glucose };
+      const r = C.correctedSodium(inputs);
       resultRow(o, [
         { label: 'Corrected Na (factor 1.6)', value: r.naBy1_6, units: 'mEq/L' },
         { label: 'Corrected Na (factor 2.4)', value: r.naBy2_4, units: 'mEq/L' },
       ]);
       adviseAll(o, [['sodium', measuredNa], ['glucose', glucose]]);
       o.appendChild(el('p', { class: 'muted', text: 'Both correction factors are reported per the literature (Katz 1973; Hillier 1999).' }));
+      if (deriv) updateDerivationSteps(deriv, META['corrected-sodium'], inputs);
     });
     ['na', 'g'].forEach((id) => document.getElementById(id).addEventListener('input', run));
   },
@@ -180,14 +184,18 @@ export const renderers = {
     root.appendChild(field('PaCO2 (mmHg)', 'paco2'));
     root.appendChild(field('PaO2 (mmHg)', 'pao2'));
     const o = out(); root.appendChild(o);
+    const deriv = renderDerivation(META['aa-gradient']);
+    if (deriv) root.appendChild(deriv);
     const run = () => safe(o, () => {
       const fio2 = num('fio2'), paco2 = num('paco2'), pao2 = num('pao2');
-      const r = C.aaGradient({ fio2, paco2, pao2 });
+      const inputs = { fio2, paco2, pao2 };
+      const r = C.aaGradient(inputs);
       resultRow(o, [
         { label: 'PAO2', value: r.PAO2, units: 'mmHg' },
         { label: 'A-a gradient', value: r.aaGradient, units: 'mmHg' },
       ]);
       adviseAll(o, [['fio2', fio2], ['paCO2', paco2], ['paO2', pao2]]);
+      if (deriv) updateDerivationSteps(deriv, META['aa-gradient'], inputs);
     });
     ['fio2', 'paco2', 'pao2'].forEach((id) => document.getElementById(id).addEventListener('input', run));
   },
