@@ -19,6 +19,7 @@ import { burchWartofsky, ariscat, bradenQ } from '../../lib/scoring-v6.js';
 import { charlson, hacor } from '../../lib/scoring-v4.js';
 import { vis } from '../../lib/clinical-v4.js';
 import { auditFull, dast10, gds15 } from '../../lib/scoring-v5.js';
+import { nips, cries, pedsGcs } from '../../lib/scoring-v4.js';
 
 // --- 1. Schema completeness ---------------------------------------------
 
@@ -100,7 +101,12 @@ const WAVE_61_A1I_TILES = ['hacor', 'vis', 'charlson'];
 // q1..qN; passing a {q1..qN} object reproduces the live array-based total,
 // including the reverse-scored items the breakdown makes explicit.
 const WAVE_61_A1J_TILES = ['audit-full', 'dast10', 'gds15'];
-const ALL_DERIVATION_TILES = [...WAVE_48_1A_TILES, ...WAVE_48_1B_TILES, ...WAVE_48_1C_TILES, ...WAVE_48_2A_TILES, ...WAVE_48_2B_TILES, ...WAVE_48_2C_TILES, ...WAVE_48_3A_TILES, ...WAVE_48_3B_TILES, ...WAVE_48_3C_TILES, ...WAVE_48_3D_TILES, ...WAVE_48_4A_TILES, ...WAVE_48_4B_TILES, ...WAVE_48_4C_TILES, ...WAVE_48_4D_TILES, ...WAVE_48_4E_TILES, ...WAVE_48_4F_TILES, ...WAVE_48_4G_TILES, ...WAVE_48_4H_TILES, ...WAVE_48_4I_TILES, ...WAVE_48_4J_TILES, ...WAVE_61_A1_TILES, ...WAVE_61_A1B_TILES, ...WAVE_61_A1C_TILES, ...WAVE_61_A1D_TILES, ...WAVE_61_A1E_TILES, ...WAVE_61_A1F_TILES, ...WAVE_61_A1G_TILES, ...WAVE_61_A1H_TILES, ...WAVE_61_A1I_TILES, ...WAVE_61_A1J_TILES];
+// spec-v61 A1 derivation tail, wave 11: pediatric/neonatal bedside assessment
+// scales. NIPS (six 0-1/0-2 pain indicators), CRIES (five 0-2 postoperative pain
+// items), and the pediatric GCS (E+V+M, age-adjusted verbal). Each is a simple
+// additive sum, so identity `points` reproduce the live score.
+const WAVE_61_A1K_TILES = ['nips', 'cries', 'peds-gcs'];
+const ALL_DERIVATION_TILES = [...WAVE_48_1A_TILES, ...WAVE_48_1B_TILES, ...WAVE_48_1C_TILES, ...WAVE_48_2A_TILES, ...WAVE_48_2B_TILES, ...WAVE_48_2C_TILES, ...WAVE_48_3A_TILES, ...WAVE_48_3B_TILES, ...WAVE_48_3C_TILES, ...WAVE_48_3D_TILES, ...WAVE_48_4A_TILES, ...WAVE_48_4B_TILES, ...WAVE_48_4C_TILES, ...WAVE_48_4D_TILES, ...WAVE_48_4E_TILES, ...WAVE_48_4F_TILES, ...WAVE_48_4G_TILES, ...WAVE_48_4H_TILES, ...WAVE_48_4I_TILES, ...WAVE_48_4J_TILES, ...WAVE_61_A1_TILES, ...WAVE_61_A1B_TILES, ...WAVE_61_A1C_TILES, ...WAVE_61_A1D_TILES, ...WAVE_61_A1E_TILES, ...WAVE_61_A1F_TILES, ...WAVE_61_A1G_TILES, ...WAVE_61_A1H_TILES, ...WAVE_61_A1I_TILES, ...WAVE_61_A1J_TILES, ...WAVE_61_A1K_TILES];
 
 for (const id of ALL_DERIVATION_TILES) {
   test(`derivation schema: ${id} has all required fields`, () => {
@@ -672,6 +678,47 @@ for (const [label, items, expected] of [
     const r = gds15({ items });
     const sum = sumDerivation('gds15', byQ(items));
     assert.equal(sum, r.total);
+    assert.equal(sum, expected);
+  });
+}
+
+// --- spec-v61 A1 wave 11: pediatric/neonatal bedside scales -------------
+
+for (const [label, inputs, expected] of [
+  ['all-zero', { facialExpression: 0, cry: 0, breathingPatterns: 0, arms: 0, legs: 0, stateOfArousal: 0 }, 0],
+  ['mild-to-moderate (cry 2 + arousal 1)', { facialExpression: 0, cry: 2, breathingPatterns: 0, arms: 0, legs: 0, stateOfArousal: 1 }, 3],
+  ['max 7', { facialExpression: 1, cry: 2, breathingPatterns: 1, arms: 1, legs: 1, stateOfArousal: 1 }, 7],
+]) {
+  test(`nips components sum equals nips() score (${label})`, () => {
+    const r = nips(inputs);
+    const sum = sumDerivation('nips', inputs);
+    assert.equal(sum, r.score);
+    assert.equal(sum, expected);
+  });
+}
+
+for (const [label, inputs, expected] of [
+  ['all-zero', { crying: 0, requiresO2: 0, vitals: 0, expression: 0, sleeplessness: 0 }, 0],
+  ['moderate 4 (analgesia indicated)', { crying: 2, requiresO2: 0, vitals: 1, expression: 1, sleeplessness: 0 }, 4],
+  ['max 10', { crying: 2, requiresO2: 2, vitals: 2, expression: 2, sleeplessness: 2 }, 10],
+]) {
+  test(`cries components sum equals cries() score (${label})`, () => {
+    const r = cries(inputs);
+    const sum = sumDerivation('cries', inputs);
+    assert.equal(sum, r.score);
+    assert.equal(sum, expected);
+  });
+}
+
+for (const [label, inputs, expected] of [
+  ['max 15 (mild)', { eye: 4, verbal: 5, motor: 6, ageBand: 'older' }, 15],
+  ['severe 6', { eye: 1, verbal: 1, motor: 4, ageBand: 'under-2' }, 6],
+  ['moderate 10', { eye: 3, verbal: 3, motor: 4, ageBand: '2-5' }, 10],
+]) {
+  test(`peds-gcs components sum equals pedsGcs() score (${label})`, () => {
+    const r = pedsGcs(inputs);
+    const sum = sumDerivation('peds-gcs', inputs);
+    assert.equal(sum, r.score);
     assert.equal(sum, expected);
   });
 }

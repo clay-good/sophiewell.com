@@ -81,7 +81,9 @@
 > points). Wave 10 adds the array-scored brief screeners —
 > `audit-full` (AUDIT), `dast10` (DAST-10), and `gds15` (GDS-15) —
 > whose show-your-work breakdown makes the reverse-scored items
-> explicit, bringing derivation coverage to 109 tiles. A2
+> explicit. Wave 11 adds the pediatric/neonatal bedside scales
+> `nips` and `cries` (neonatal pain) and `peds-gcs` (the pediatric
+> Glasgow Coma Scale), bringing derivation coverage to 112 tiles. A2
 > (related-tool linking) is complete. A3 (chart-ready labeled copy) now also
 > covers the five 2+-numeric-output v61 bedside tiles
 > (`ebv-mabl`, `peds-transfusion-volume`, `rhig-dose`,

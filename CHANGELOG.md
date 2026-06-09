@@ -6,6 +6,28 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v61 A1 wave 11 — "show your work" derivation for the pediatric/neonatal bedside scales: NIPS, CRIES & pediatric GCS)
+
+Continues the A1 derivation tail with three pediatric/neonatal bedside assessment
+scales a nurse scores at the cot side — **`nips`** (Neonatal Infant Pain Scale),
+**`cries`** (neonatal postoperative pain), and **`peds-gcs`** (the pediatric
+Glasgow Coma Scale). Each is a simple additive sum, so identity `points`
+reproduce the live score exactly. Derivation coverage 109 → 112 tiles.
+
+- **`lib/meta.js`**: each tile gains a full `derivation` block whose verbatim
+  `source` reuses the tile's already-vetted inline citation. NIPS sums six
+  0-1/0-2 indicators (bands 0-2 / 3-4 / >4); CRIES sums five 0-2 items (bands <4
+  / 4-6 / >=7, the >=4 analgesia threshold made explicit); pediatric GCS sums
+  E+V+M (3-15) with the age-adjusted verbal subscale, interpreted with the adult
+  severity bands — mirroring the adult `gcs` derivation.
+- **`views/group-g.js`** (`nips`, `cries`, `peds-gcs`): each renderer lifts its
+  arguments into a local `inputs`, mounts `renderDerivation(META[id])`, and calls
+  `updateDerivationSteps` on every input change (the established spec-v48 wiring).
+- **`test/unit/derivation.test.js`**: the three tiles join `ALL_DERIVATION_TILES`
+  (schema + units-coverage guards) with component-sum cross-checks against
+  `nips().score`, `cries().score`, and `pedsGcs().score` across the zero, mid-band,
+  and maximum boundary cases.
+
 ### Added (spec-v61 A1 wave 10 — "show your work" derivation for the array-scored brief screeners: AUDIT, DAST-10 & GDS-15)
 
 Continues the A1 derivation tail with three brief screeners — **`audit-full`**

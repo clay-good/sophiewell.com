@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `7f88ca4a49179144`
-Generated: 2026-06-09T11:15:41.016Z
+Build ID: `58efc565104b7d14`
+Generated: 2026-06-09T11:27:43.515Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=20.18.1 <21, npm >=10.0.0
@@ -63,7 +63,7 @@ downloads is committed in this repository and is hashed below.
 | `lib/live.js` | 1138 | `304978d3c170b6eb06cade7702e5f99d868e9b3e1f5651aa9a28da15e62a6a9c` |
 | `lib/medication-v4.js` | 18192 | `467f9576c50da696cc56094eb022d0a5ed1e88de0c7618448554ede8067270b0` |
 | `lib/medication-v5.js` | 18339 | `76e1f064ed9e7aea8862adbc6e05e88031e0a1e7dbbf38d82c6a7f42a5414ff1` |
-| `lib/meta.js` | 591812 | `9e70903a129ba0ce5547bce5c9cf495f58edf198dc258d51c0e2a367e2180829` |
+| `lib/meta.js` | 596909 | `c5c806ad52ecf1a3ce8fef1e4d8b018647f0610aeffe152f2ebe9b29faff931b` |
 | `lib/num.js` | 2476 | `93934466539979571db7a6251b68b42acbc4a91101a988d72e3d2c3f7fb153bf` |
 | `lib/pa/classify.js` | 3432 | `a7958e40890ad63ebf68ce5a0107fe7ab5a5b0c9e877e2669e8f44ecfb7f34ca` |
 | `lib/pa/cms-opd-pa-list.js` | 3701 | `d142fdc90cc782bb472d729df2ee6d0e89429cba2ecf0cfc7857a4e7e471b454` |
@@ -96,7 +96,7 @@ downloads is committed in this repository and is hashed below.
 | `views/group-c.js` | 6030 | `3aeac0ab24d035c43a6f5f3fcbc4f51cc4d2c7467145821a300bf219629bac46` |
 | `views/group-e.js` | 33361 | `1780db8e25c16e1e75f3fe729cf2be2bf7b8e9688c8874cbe1f2e54d305bc080` |
 | `views/group-f.js` | 31122 | `ae362b7d3a095826dd65965e89c7f4eb7783ab0e252eb145c3e9f99e2a353286` |
-| `views/group-g.js` | 228525 | `e939c3351bd4797c339c4e29a371e4d839556bb88b25d2a6adef8b634981c361` |
+| `views/group-g.js` | 229087 | `d0e7840589785d5478b3d53fc21cd99c1e373922a56483b6fbfb96f4820a096a` |
 | `views/group-h.js` | 27952 | `6393fcba60f1d58334f40d12cb18cf183c086666c7777ab35c8e1e3ada88d4f5` |
 | `views/group-i.js` | 26971 | `b8b928db2f4fbcb9b85242378a1ddeb33ee930868295ddf76540a60cf502c343` |
 | `views/group-j.js` | 8483 | `1c6714d458ee2cc9f30325800afc118164987ae4e25a9b7fffae78f5bf87dd5b` |

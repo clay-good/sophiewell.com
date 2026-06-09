@@ -3643,15 +3643,19 @@ export const renderers = {
     root.appendChild(rangeField('Best verbal response (1-5; age-adjusted: see audit log)', 'pg-verb', 1, 5, 5));
     root.appendChild(rangeField('Best motor response (1 none, 6 obeys/spontaneous)', 'pg-mot', 1, 6, 6));
     const o = out(); root.appendChild(o);
+    const deriv = renderDerivation(META['peds-gcs']);
+    if (deriv) root.appendChild(deriv);
     const run = () => safe(o, () => {
-      const r = S4.pedsGcs({
+      const inputs = {
         eye: nv('pg-eye'),
         verbal: nv('pg-verb'),
         motor: nv('pg-mot'),
         ageBand: document.getElementById('pg-age').value,
-      });
+      };
+      const r = S4.pedsGcs(inputs);
       o.appendChild(el('h2', { text: `Pediatric GCS ${r.score} of 15` }));
       o.appendChild(el('p', { text: r.band }));
+      if (deriv) updateDerivationSteps(deriv, META['peds-gcs'], inputs);
     });
     ['pg-age', 'pg-eye', 'pg-verb', 'pg-mot'].forEach((id) =>
       document.getElementById(id).addEventListener(id === 'pg-age' ? 'change' : 'input', run));
@@ -4305,14 +4309,18 @@ export const renderers = {
     ];
     for (const [l, id, max] of items) root.appendChild(rangeField(l, id, 0, max, 0));
     const o = out(); root.appendChild(o);
+    const deriv = renderDerivation(META.nips);
+    if (deriv) root.appendChild(deriv);
     const run = () => safe(o, () => {
-      const r = S4.nips({
+      const inputs = {
         facialExpression: nv('ni-face'), cry: nv('ni-cry'),
         breathingPatterns: nv('ni-br'), arms: nv('ni-arms'),
         legs: nv('ni-legs'), stateOfArousal: nv('ni-sta'),
-      });
+      };
+      const r = S4.nips(inputs);
       o.appendChild(el('h2', { text: `NIPS ${r.score} of 7 (${r.band})` }));
       o.appendChild(el('p', { text: r.text }));
+      if (deriv) updateDerivationSteps(deriv, META.nips, inputs);
     });
     items.forEach(([, id]) => document.getElementById(id).addEventListener('input', run));
     run();
@@ -4372,13 +4380,17 @@ export const renderers = {
     ];
     for (const [l, id] of items) root.appendChild(rangeField(l, id, 0, 2, 0));
     const o = out(); root.appendChild(o);
+    const deriv = renderDerivation(META.cries);
+    if (deriv) root.appendChild(deriv);
     const run = () => safe(o, () => {
-      const r = S4.cries({
+      const inputs = {
         crying: nv('cr-cry'), requiresO2: nv('cr-o2'), vitals: nv('cr-vit'),
         expression: nv('cr-exp'), sleeplessness: nv('cr-slp'),
-      });
+      };
+      const r = S4.cries(inputs);
       o.appendChild(el('h2', { text: `CRIES ${r.score} of 10 (${r.band})` }));
       o.appendChild(el('p', { text: r.text }));
+      if (deriv) updateDerivationSteps(deriv, META.cries, inputs);
     });
     items.forEach(([, id]) => document.getElementById(id).addEventListener('input', run));
     run();
