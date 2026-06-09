@@ -27,8 +27,13 @@
 > Seeded with `kdigo-aki` (KDIGO 2012 staged-management bundle), the additive
 > action table alongside its staging-definition interpretation. `news2` is
 > deliberately not seeded (its interpretation already states the RCP-2017
-> escalation response). Later A2 waves seed CIWA-Ar/COWS, Centor/FeverPAIN, and
-> Braden/Norton where verbatim-citable and not already in interpretation. Original Part B/C wave delivered: 7 of 9
+> escalation response). **A2 wave 2 (2026-06-09):** `ciwa` (CIWA-Ar
+> symptom-triggered regimen, Mayo-Smith 1997) and `cows` (COWS buprenorphine-
+> induction timing, SAMHSA TIP 63) seeded — severity is their interpretation,
+> management is the additive action. `centor`/`feverpain` evaluated and *not*
+> seeded (their interpretation already carries the test-vs-treat action, like
+> `news2`). Later A2 waves may add Braden/Norton turn-schedule actions where a
+> verbatim source table exists and is not already in interpretation. Original Part B/C wave delivered: 7 of 9
 > Part B tiles (`infusion-time-remaining`, `enteral-free-water`, `apap-24h-max`,
 > `icu-nutrition-target`, `vte-prophylaxis-dose`, `neonatal-feeding-volume`,
 > `oxytocin-titration`) in `lib/clinical-v8.js`, and both Part C conversions

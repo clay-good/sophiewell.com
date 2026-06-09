@@ -6,6 +6,29 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v62 Part A2 wave 2 — withdrawal-scale next-step actions on `ciwa` and `cows`)
+
+Extends the source-anchored action field to the two withdrawal scales, where the
+*severity* is the interpretation but the *management* is not.
+
+- **`lib/meta.js` (`ACTIONS_BACKFILL`)**:
+  - **`ciwa`** (CIWA-Ar): the symptom-triggered benzodiazepine regimen — below
+    the protocol threshold (commonly < 8-10), supportive care and reassess at
+    the protocol interval; at/above it, give a benzodiazepine and re-dose driven
+    by the repeat score. Source: Mayo-Smith 1997 (already named in the tile's
+    interpretation).
+  - **`cows`** (COWS): buprenorphine-induction *timing* — defer before adequate
+    objective withdrawal (precipitated-withdrawal risk), begin induction once
+    present (commonly COWS >= 8-12). Source: SAMHSA TIP 63.
+- Both are additive: each tile's `interpretation` states the withdrawal
+  severity band; neither states the management step. Threshold ranges are
+  phrased to reflect the documented institutional variability, and the block is
+  explicitly "per source" (decision support, not an order). The existing A2 CI
+  guard validates source + bands + no Sophie-authored phrasing.
+- `centor`/`feverpain` were evaluated and **not** seeded: their interpretation
+  blocks already carry the test-vs-treat action (seeding would duplicate, as
+  with `news2`). See [docs/spec-v62.md](docs/spec-v62.md).
+
 ### Added (spec-v62 Part A2 wave 1 — source-anchored "next step" action field, seeded on `kdigo-aki`)
 
 Starts Part A2. Interpretation tells the user what a number *means*; the new
