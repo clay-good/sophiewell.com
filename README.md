@@ -500,6 +500,67 @@ Playwright pin ([test/integration/citations.spec.js](test/integration/citations.
 confirms a long-DOI tile renders its inline citation and wraps — no horizontal
 scroll — at 320px.
 
+### Show your work: source-anchored derivations (spec-v48)
+
+A citation tells the nurse *where* a number comes from; a derivation shows *how
+this number* was built from the inputs in front of her. Every wired score tile
+carries a collapsed **"Where does this come from?"** block
+([docs/spec-v48.md](docs/spec-v48.md)) that, on each input change, re-renders the
+formula, the original study population, the limits of validity, a verbatim source
+quote, and a live `Your inputs` list whose per-input contributions sum to the
+score. Coverage has been backfilled in small reviewable waves (the running count
+is in the feature summary above and in [CHANGELOG.md](CHANGELOG.md)).
+
+The block is pure data. `META[id].derivation` declares it; `lib/derivation.js`
+renders it with no `innerHTML` and no third-party deps:
+
+```js
+META.gbs.derivation = {
+  formula: 'Glasgow-Blatchford = sum of weighted markers (0-23): …',
+  components: [
+    // a fixed integer weight …
+    { inputKey: 'melena', label: 'Melena present', points: 1 },
+    // … or a (value, allInputs) callback for banded / sex- / age- /
+    //   cross-input weights (here hemoglobin is scored by sex):
+    { inputKey: 'hgbGdl', label: 'Hemoglobin (g/dL)',
+      points: (v, inputs) => hgbBand(v, inputs.sex) },
+  ],
+  bands: [ /* total → interpretation */ ],
+  population: '…', units: { /* one entry per inputKey */ }, validity: '…',
+  source: 'Blatchford O, et al. Lancet. 2000;356:1318-1321.', // verbatim citation
+};
+```
+
+A `points` value is either a fixed integer weight or a `(value, inputs) => number`
+callback. The callback form is what lets a single uniform renderer express banded
+thresholds (Glasgow-Blatchford, Oakland, MODS), sex-specific cutoffs (GBS
+hemoglobin), severity dominance (Charlson), reverse-scored items (DAST-10,
+GDS-15), and age-banded cutoffs (PELOD-2, pSOFA) without bespoke per-tile render
+code — each callback sees the whole input object, not just its own field.
+
+```
+input change ─► updateDerivationSteps(detailsEl, META[id], inputs)
+                    │  per component:  pts = points(inputs[inputKey], inputs)
+                    ▼
+                Your inputs:   +pts — label (input: value)   × N
+                Total: Σ pts   →   band
+                    ▲
+   CI cross-check (test/unit/derivation.test.js):
+       re-sum the SAME components and assert  Σ pts === scoringFn(inputs)
+       across boundary cases, for every wired tile
+```
+
+**The guarantee that makes it trustworthy.** The on-screen breakdown and the
+headline score come from two independent code paths — the derivation `components`
+(metadata in `lib/meta.js`) and the tile's scoring function (`lib/*.js`). A unit
+suite ([test/unit/derivation.test.js](test/unit/derivation.test.js)) re-sums the
+components for every wired tile across boundary cases and asserts the total equals
+the live score, and a units-coverage guard asserts every `inputKey` is documented.
+So the "show your work" panel **cannot silently drift** from the number the nurse
+acts on: a mis-transcribed weight, or a shared scoring table changing under a
+copied band, fails CI. Non-finite inputs route through `fmt()` (spec-v59), so a
+blank or impossible field renders an em-dash — never `NaN` — in the breakdown.
+
 ## The Prior-Auth Packet Linter (`pa-lint`)
 
 `pa-lint` (spec-v52) is the catalog's first `document-linter` tile: instead
