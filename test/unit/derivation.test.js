@@ -14,6 +14,7 @@ import { apgar } from '../../lib/clinical.js';
 import { silvermanAndersen, downes } from '../../lib/scoring-v6.js';
 import { pesi, spesi, nigrovic } from '../../lib/scoring-v4.js';
 import { gbs, rockall, oakland } from '../../lib/scoring-v4.js';
+import { nutric, mnutric, mods } from '../../lib/scoring-v4.js';
 
 // --- 1. Schema completeness ---------------------------------------------
 
@@ -71,7 +72,13 @@ const WAVE_61_A1E_TILES = ['pesi', 'spesi', 'nigrovic'];
 // as a `points` callback that replicates the live banding, so the component sum
 // reproduces the live `score` exactly (gbs/oakland also expose `parts`).
 const WAVE_61_A1F_TILES = ['gbs', 'rockall', 'oakland'];
-const ALL_DERIVATION_TILES = [...WAVE_48_1A_TILES, ...WAVE_48_1B_TILES, ...WAVE_48_1C_TILES, ...WAVE_48_2A_TILES, ...WAVE_48_2B_TILES, ...WAVE_48_2C_TILES, ...WAVE_48_3A_TILES, ...WAVE_48_3B_TILES, ...WAVE_48_3C_TILES, ...WAVE_48_3D_TILES, ...WAVE_48_4A_TILES, ...WAVE_48_4B_TILES, ...WAVE_48_4C_TILES, ...WAVE_48_4D_TILES, ...WAVE_48_4E_TILES, ...WAVE_48_4F_TILES, ...WAVE_48_4G_TILES, ...WAVE_48_4H_TILES, ...WAVE_48_4I_TILES, ...WAVE_48_4J_TILES, ...WAVE_61_A1_TILES, ...WAVE_61_A1B_TILES, ...WAVE_61_A1C_TILES, ...WAVE_61_A1D_TILES, ...WAVE_61_A1E_TILES, ...WAVE_61_A1F_TILES];
+// spec-v61 A1 derivation tail, wave 7: the ICU-prognosis additive indices.
+// NUTRIC and mNUTRIC (banded age/APACHE/SOFA weights plus binaries; mNUTRIC is
+// NUTRIC without the IL-6 term) and MODS (six organ-system subscores, each a 0-4
+// band). Each banded weight is a `points` callback replicating the live banding,
+// so the component sum reproduces the live `score` exactly (all expose `parts`).
+const WAVE_61_A1G_TILES = ['nutric', 'mnutric', 'mods'];
+const ALL_DERIVATION_TILES = [...WAVE_48_1A_TILES, ...WAVE_48_1B_TILES, ...WAVE_48_1C_TILES, ...WAVE_48_2A_TILES, ...WAVE_48_2B_TILES, ...WAVE_48_2C_TILES, ...WAVE_48_3A_TILES, ...WAVE_48_3B_TILES, ...WAVE_48_3C_TILES, ...WAVE_48_3D_TILES, ...WAVE_48_4A_TILES, ...WAVE_48_4B_TILES, ...WAVE_48_4C_TILES, ...WAVE_48_4D_TILES, ...WAVE_48_4E_TILES, ...WAVE_48_4F_TILES, ...WAVE_48_4G_TILES, ...WAVE_48_4H_TILES, ...WAVE_48_4I_TILES, ...WAVE_48_4J_TILES, ...WAVE_61_A1_TILES, ...WAVE_61_A1B_TILES, ...WAVE_61_A1C_TILES, ...WAVE_61_A1D_TILES, ...WAVE_61_A1E_TILES, ...WAVE_61_A1F_TILES, ...WAVE_61_A1G_TILES];
 
 for (const id of ALL_DERIVATION_TILES) {
   test(`derivation schema: ${id} has all required fields`, () => {
@@ -457,6 +464,50 @@ for (const [label, inputs, expected] of [
   test(`oakland components sum equals oakland() score (${label})`, () => {
     const r = oakland(inputs);
     const sum = sumDerivation('oakland', inputs);
+    assert.equal(sum, r.score);
+    assert.equal(sum, expected);
+  });
+}
+
+// --- spec-v61 A1 wave 7: ICU-prognosis additive indices -----------------
+// Banded age/APACHE/SOFA weights (NUTRIC/mNUTRIC) and six 0-4 organ subscores
+// (MODS) are encoded as `points` callbacks; the component sum reproduces each
+// live `score` exactly across the band boundaries.
+
+for (const [label, inputs, expected] of [
+  ['low-risk example (age 55, APACHE 18, SOFA 6, 1 comorbid, 0 days, IL-6 0) = 3', { ageYears: 55, apache2: 18, sofa: 6, comorbidities: 1, daysHospitalToIcu: 0, il6Pg: 0 }, 1 + 1 + 1 + 0 + 0 + 0],
+  ['high-risk cutoff (age 75, APACHE 29, SOFA 10, 2 comorbid, 1 day, IL-6 400)', { ageYears: 75, apache2: 29, sofa: 10, comorbidities: 2, daysHospitalToIcu: 1, il6Pg: 400 }, 2 + 3 + 2 + 1 + 1 + 1],
+  ['all-zero', { ageYears: 40, apache2: 10, sofa: 0, comorbidities: 0, daysHospitalToIcu: 0, il6Pg: 0 }, 0],
+]) {
+  test(`nutric components sum equals nutric() score (${label})`, () => {
+    const r = nutric(inputs);
+    const sum = sumDerivation('nutric', inputs);
+    assert.equal(sum, r.score);
+    assert.equal(sum, expected);
+  });
+}
+
+for (const [label, inputs, expected] of [
+  ['low-risk example (age 55, APACHE 18, SOFA 6, 1 comorbid, 0 days) = 3', { ageYears: 55, apache2: 18, sofa: 6, comorbidities: 1, daysHospitalToIcu: 0 }, 1 + 1 + 1 + 0 + 0],
+  ['high-risk max 9 (age 75, APACHE 29, SOFA 10, 2 comorbid, 1 day)', { ageYears: 75, apache2: 29, sofa: 10, comorbidities: 2, daysHospitalToIcu: 1 }, 2 + 3 + 2 + 1 + 1],
+  ['all-zero', { ageYears: 40, apache2: 10, sofa: 0, comorbidities: 0, daysHospitalToIcu: 0 }, 0],
+]) {
+  test(`mnutric components sum equals mnutric() score (${label})`, () => {
+    const r = mnutric(inputs);
+    const sum = sumDerivation('mnutric', inputs);
+    assert.equal(sum, r.score);
+    assert.equal(sum, expected);
+  });
+}
+
+for (const [label, inputs, expected] of [
+  ['no dysfunction (PF 350, Cr 1.0, bili 1.0, PAR 8, plt 200, GCS 15) = 0', { pfRatio: 350, creatinineMgDl: 1.0, bilirubinMgDl: 1.0, par: 8, plateletsK: 200, gcs: 15 }, 0],
+  ['mid (PF 200=+2, Cr 3.0=+2, bili 5.0=+2, PAR 18=+2, plt 60=+2, GCS 11=+2)', { pfRatio: 200, creatinineMgDl: 3.0, bilirubinMgDl: 5.0, par: 18, plateletsK: 60, gcs: 11 }, 2 + 2 + 2 + 2 + 2 + 2],
+  ['max 24 (PF 50, Cr 6, bili 20, PAR 40, plt 10, GCS 5)', { pfRatio: 50, creatinineMgDl: 6, bilirubinMgDl: 20, par: 40, plateletsK: 10, gcs: 5 }, 24],
+]) {
+  test(`mods components sum equals mods() score (${label})`, () => {
+    const r = mods(inputs);
+    const sum = sumDerivation('mods', inputs);
     assert.equal(sum, r.score);
     assert.equal(sum, expected);
   });

@@ -1916,18 +1916,22 @@ export const renderers = {
       ]));
     }
     const o = out(); root.appendChild(o);
+    const deriv = renderDerivation(META.mods);
+    if (deriv) root.appendChild(deriv);
     const run = () => safe(o, () => {
-      const r = S4.mods({
+      const inputs = {
         pfRatio: nv('mods-pf'),
         creatinineMgDl: nv('mods-cr'),
         bilirubinMgDl: nv('mods-bili'),
         par: nv('mods-par'),
         plateletsK: nv('mods-plt'),
         gcs: nv('mods-gcs'),
-      });
+      };
+      const r = S4.mods(inputs);
       o.appendChild(el('h2', { text: `MODS ${r.score} of 24` }));
       o.appendChild(el('p', { text: r.band }));
       o.appendChild(el('p', { text: `Per-organ subscores: respiratory ${r.parts.respiratory}, renal ${r.parts.renal}, hepatic ${r.parts.hepatic}, cardiovascular ${r.parts.cardiovascular}, hematologic ${r.parts.hematologic}, neurologic ${r.parts.neurologic}.` }));
+      if (deriv) updateDerivationSteps(deriv, META.mods, inputs);
     });
     numFields.forEach(([, id]) => document.getElementById(id).addEventListener('input', run));
     run();
@@ -2193,14 +2197,18 @@ export const renderers = {
       ]));
     }
     const o = out(); root.appendChild(o);
+    const deriv = renderDerivation(META.nutric);
+    if (deriv) root.appendChild(deriv);
     const run = () => safe(o, () => {
-      const r = S4.nutric({
+      const inputs = {
         ageYears: nv('nt-age'), apache2: nv('nt-apache'), sofa: nv('nt-sofa'),
         comorbidities: nv('nt-comorb'), daysHospitalToIcu: nv('nt-days'),
         il6Pg: nv('nt-il6'),
-      });
+      };
+      const r = S4.nutric(inputs);
       o.appendChild(el('h2', { text: `NUTRIC ${r.score} of 10` }));
       o.appendChild(el('p', { text: r.band }));
+      if (deriv) updateDerivationSteps(deriv, META.nutric, inputs);
     });
     fields.forEach(([, id]) => document.getElementById(id).addEventListener('input', run));
     run();
@@ -2222,13 +2230,17 @@ export const renderers = {
       ]));
     }
     const o = out(); root.appendChild(o);
+    const deriv = renderDerivation(META.mnutric);
+    if (deriv) root.appendChild(deriv);
     const run = () => safe(o, () => {
-      const r = S4.mnutric({
+      const inputs = {
         ageYears: nv('mn-age'), apache2: nv('mn-apache'), sofa: nv('mn-sofa'),
         comorbidities: nv('mn-comorb'), daysHospitalToIcu: nv('mn-days'),
-      });
+      };
+      const r = S4.mnutric(inputs);
       o.appendChild(el('h2', { text: `mNUTRIC ${r.score} of 9` }));
       o.appendChild(el('p', { text: r.band }));
+      if (deriv) updateDerivationSteps(deriv, META.mnutric, inputs);
     });
     fields.forEach(([, id]) => document.getElementById(id).addEventListener('input', run));
     run();

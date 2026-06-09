@@ -66,7 +66,10 @@
 > omits the last two items), and `oakland` (banded age/HR/SBP/Hgb
 > plus binaries) — each banded weight encoded as a `points` callback
 > that replicates the live banding so the component sum reproduces
-> the live `score` exactly, bringing derivation coverage to 97
+> the live `score` exactly. Wave 7 adds the ICU-prognosis additive
+> indices — `nutric` and `mnutric` (banded age/APACHE/SOFA weights
+> plus binaries; mNUTRIC drops the IL-6 term) and `mods` (six
+> organ-system 0-4 subscores) — bringing derivation coverage to 100
 > tiles. A2
 > (related-tool linking) is complete. A3 (chart-ready labeled copy) now also
 > covers the five 2+-numeric-output v61 bedside tiles

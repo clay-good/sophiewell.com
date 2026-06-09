@@ -49,12 +49,13 @@ Sophie's eight posture commitments
 telemetry, no third-party fetch, no AI, no cookies, no paid
 tier, MIT-licensed forever — are listed at
 [/commitments/](https://sophiewell.com/commitments/) and
-enforced by automated checks on every commit. 97 scoring tiles
-expose a collapsed "where does this come from?" derivation
-block ([docs/spec-v48.md](docs/spec-v48.md)) with the verbatim
-source formula, study cohort, limits of validity, and a live
-per-input contribution list whose component sums are cross-checked
-in CI against the tile's own scoring function.
+enforced by automated checks on every commit. Scoring tiles
+expose a collapsed "where does this come from?" derivation block
+([docs/spec-v48.md](docs/spec-v48.md)) — 100 carry one today —
+with the verbatim source formula, study cohort, limits of
+validity, and a live per-input contribution list whose component
+sums are cross-checked in CI against the tile's own scoring
+function.
 
 ## The problem
 
@@ -381,8 +382,9 @@ and `aims65`; then the ED scores `feverpain`, `canadian-syncope`, and
 bedside scores `apgar`, `silverman-andersen`, and `downes`; then the PE-prognosis
 scores `pesi` and `spesi` with the pediatric `nigrovic` meningitis score; then the
 GI-bleed risk family `gbs`, `rockall`, and `oakland` (the first banded-weight
-wave, each band encoded as a `points` callback) — 97
-tiles now carry derivation, each with CI-cross-checked component sums); the A3
+wave, each band encoded as a `points` callback); then the ICU-prognosis additive
+indices `nutric`, `mnutric`, and `mods` — 100
+scores now carry derivation, each with CI-cross-checked component sums); the A3
 labeled copy beyond Group E and the five v61 bedside tiles remains a tracked
 follow-up.
 

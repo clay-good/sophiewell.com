@@ -6,6 +6,33 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v61 A1 wave 7 — "show your work" derivation for the ICU-prognosis additive indices: NUTRIC, mNUTRIC & MODS)
+
+Continues the A1 derivation tail with three ICU-prognosis indices a nurse charts
+when planning nutrition therapy and tracking organ-dysfunction severity —
+**`nutric`** (NUTRIC nutritional-risk score), **`mnutric`** (the IL-6-free
+modified form), and **`mods`** (Multiple Organ Dysfunction Score). Like the
+GI-bleed wave, all weights are banded, so each band is encoded as a `points`
+callback. Derivation coverage 97 → 100 tiles.
+
+- **`lib/meta.js`**: each tile gains a full `derivation` block whose verbatim
+  `source` reuses the tile's already-vetted inline citation. NUTRIC/mNUTRIC band
+  age, APACHE II, and SOFA and add the comorbidity/days-to-ICU (and, for NUTRIC,
+  IL-6) binaries; MODS encodes its six organ-system 0-4 subscores (respiratory
+  PaO2/FiO2, renal creatinine, hepatic bilirubin, cardiovascular PAR, hematologic
+  platelets, neurologic GCS), each callback reproducing the live banding —
+  including the `Number.isFinite` guard that returns 0 for a blank field, so the
+  show-your-work sum never diverges from `mods().score`.
+- **`views/group-g.js`** (`nutric`, `mnutric`, `mods`): each renderer lifts its
+  arguments object into a local `inputs`, mounts `renderDerivation(META[id])`, and
+  calls `updateDerivationSteps` on every input change (the established spec-v48
+  wiring).
+- **`test/unit/derivation.test.js`**: the three tiles join `ALL_DERIVATION_TILES`
+  (schema + units-coverage guards) and each gets component-sum cross-checks
+  asserting the derivation reproduces the live `score` (`nutric().score`,
+  `mnutric().score`, `mods().score`) across the no-dysfunction, mid-band, and
+  maximum boundary cases.
+
 ### Added (spec-v61 A1 wave 6 — "show your work" derivation for the GI-bleed risk family: Glasgow-Blatchford, Rockall & Oakland)
 
 Continues the A1 derivation tail with the three GI-bleeding risk scores a nurse
