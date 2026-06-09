@@ -16,6 +16,8 @@ import { pesi, spesi, nigrovic } from '../../lib/scoring-v4.js';
 import { gbs, rockall, oakland } from '../../lib/scoring-v4.js';
 import { nutric, mnutric, mods } from '../../lib/scoring-v4.js';
 import { burchWartofsky, ariscat, bradenQ } from '../../lib/scoring-v6.js';
+import { charlson, hacor } from '../../lib/scoring-v4.js';
+import { vis } from '../../lib/clinical-v4.js';
 
 // --- 1. Schema completeness ---------------------------------------------
 
@@ -85,7 +87,13 @@ const WAVE_61_A1G_TILES = ['nutric', 'mnutric', 'mods'];
 // total exactly. Burch-Wartofsky (thyroid storm), ARISCAT (postoperative
 // pulmonary complications), and Braden Q (pediatric pressure-injury risk).
 const WAVE_61_A1H_TILES = ['burch-wartofsky', 'ariscat', 'braden-q'];
-const ALL_DERIVATION_TILES = [...WAVE_48_1A_TILES, ...WAVE_48_1B_TILES, ...WAVE_48_1C_TILES, ...WAVE_48_2A_TILES, ...WAVE_48_2B_TILES, ...WAVE_48_2C_TILES, ...WAVE_48_3A_TILES, ...WAVE_48_3B_TILES, ...WAVE_48_3C_TILES, ...WAVE_48_3D_TILES, ...WAVE_48_4A_TILES, ...WAVE_48_4B_TILES, ...WAVE_48_4C_TILES, ...WAVE_48_4D_TILES, ...WAVE_48_4E_TILES, ...WAVE_48_4F_TILES, ...WAVE_48_4G_TILES, ...WAVE_48_4H_TILES, ...WAVE_48_4I_TILES, ...WAVE_48_4J_TILES, ...WAVE_61_A1_TILES, ...WAVE_61_A1B_TILES, ...WAVE_61_A1C_TILES, ...WAVE_61_A1D_TILES, ...WAVE_61_A1E_TILES, ...WAVE_61_A1F_TILES, ...WAVE_61_A1G_TILES, ...WAVE_61_A1H_TILES];
+// spec-v61 A1 derivation tail, wave 9: high-value bedside scores with distinct
+// shapes. HACOR (banded NIV-failure score, P/F computed from PaO2 and FiO2 in a
+// callback), VIS (continuous weighted sum of vasoactive infusion rates), and the
+// Charlson Comorbidity Index (weighted comorbidities with severity-dominance
+// callbacks plus an age-points callback). Each reproduces its live score exactly.
+const WAVE_61_A1I_TILES = ['hacor', 'vis', 'charlson'];
+const ALL_DERIVATION_TILES = [...WAVE_48_1A_TILES, ...WAVE_48_1B_TILES, ...WAVE_48_1C_TILES, ...WAVE_48_2A_TILES, ...WAVE_48_2B_TILES, ...WAVE_48_2C_TILES, ...WAVE_48_3A_TILES, ...WAVE_48_3B_TILES, ...WAVE_48_3C_TILES, ...WAVE_48_3D_TILES, ...WAVE_48_4A_TILES, ...WAVE_48_4B_TILES, ...WAVE_48_4C_TILES, ...WAVE_48_4D_TILES, ...WAVE_48_4E_TILES, ...WAVE_48_4F_TILES, ...WAVE_48_4G_TILES, ...WAVE_48_4H_TILES, ...WAVE_48_4I_TILES, ...WAVE_48_4J_TILES, ...WAVE_61_A1_TILES, ...WAVE_61_A1B_TILES, ...WAVE_61_A1C_TILES, ...WAVE_61_A1D_TILES, ...WAVE_61_A1E_TILES, ...WAVE_61_A1F_TILES, ...WAVE_61_A1G_TILES, ...WAVE_61_A1H_TILES, ...WAVE_61_A1I_TILES];
 
 for (const id of ALL_DERIVATION_TILES) {
   test(`derivation schema: ${id} has all required fields`, () => {
@@ -559,6 +567,59 @@ for (const [label, inputs, expected] of [
     const r = bradenQ(inputs);
     const sum = sumDerivation('braden-q', inputs);
     assert.equal(sum, r.total);
+    assert.equal(sum, expected);
+  });
+}
+
+// --- spec-v61 A1 wave 9: HACOR, VIS, Charlson ---------------------------
+// HACOR's P/F component reads PaO2 and FiO2 from the inputs object inside its
+// callback; VIS is a continuous weighted sum (cross-checked against the live
+// float); Charlson's severity-dominance callbacks read sibling inputs.
+
+for (const [label, inputs, expected] of [
+  ['default low-risk (HR110, pH7.40, GCS15, P/F 240, RR25) = 0', { hr: 110, ph: 7.40, gcs: 15, pao2: 120, fio2: 0.5, rr: 25 }, 0],
+  ['mid (HR130 +1, pH7.28 +3, GCS12 +5, P/F 150 +4, RR42 +3)', { hr: 130, ph: 7.28, gcs: 12, pao2: 90, fio2: 0.6, rr: 42 }, 1 + 3 + 5 + 4 + 3],
+  ['max-band (HR121 +1, pH7.24 +4, GCS10 +10, P/F 100 +6, RR50 +4)', { hr: 121, ph: 7.24, gcs: 10, pao2: 100, fio2: 1.0, rr: 50 }, 1 + 4 + 10 + 6 + 4],
+]) {
+  test(`hacor components sum equals hacor() score (${label})`, () => {
+    const r = hacor(inputs);
+    const sum = sumDerivation('hacor', inputs);
+    assert.equal(sum, r.score);
+    assert.equal(sum, expected);
+  });
+}
+
+for (const [label, inputs] of [
+  ['all-zero', { dopamine: 0, dobutamine: 0, epinephrine: 0, norepinephrine: 0, milrinone: 0, vasopressin: 0 }],
+  ['mixed agents', { dopamine: 5, dobutamine: 5, epinephrine: 0.05, norepinephrine: 0.1, milrinone: 0.5, vasopressin: 0.001 }],
+  ['norepinephrine only', { dopamine: 0, dobutamine: 0, epinephrine: 0, norepinephrine: 0.2, milrinone: 0, vasopressin: 0 }],
+]) {
+  test(`vis components sum equals vis() weighted score (${label})`, () => {
+    const r = vis(inputs);
+    const sum = sumDerivation('vis', inputs);
+    // VIS is a continuous weighted sum; the derivation reproduces the live float
+    // exactly because both apply the same per-agent coefficients in order.
+    assert.equal(sum, r.vis);
+  });
+}
+
+// Charlson: the live function takes { items, ageYears }; the derivation keys on
+// the flat comorbidity inputs plus ageYears, so build both from one object.
+for (const [label, flat, expected] of [
+  ['age 55, no comorbidities (age +1)', { ageYears: 55 }, 1],
+  ['severity dominance (uncomplicated/mild/any all overridden)', {
+    ageYears: 40, diabetesUncomplicated: true, diabetesEndOrgan: true,
+    mildLiver: true, modSevereLiver: true, anyTumor: true, metastaticSolidTumor: true,
+  }, 2 + 3 + 6],
+  ['mixed comorbidities + age 70 (+3)', {
+    ageYears: 70, mi: true, chf: true, modSevereRenal: true, aids: true,
+  }, 1 + 1 + 2 + 6 + 3],
+]) {
+  test(`charlson components sum equals charlson() score (${label})`, () => {
+    const { ageYears, ...items } = flat;
+    const r = charlson({ items, ageYears });
+    const sum = sumDerivation('charlson', flat);
+    assert.equal(sum, r.score);
     assert.equal(sum, expected);
   });
 }

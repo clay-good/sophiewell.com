@@ -51,7 +51,7 @@ tier, MIT-licensed forever — are listed at
 [/commitments/](https://sophiewell.com/commitments/) and
 enforced by automated checks on every commit. Scoring tiles
 expose a collapsed "where does this come from?" derivation block
-([docs/spec-v48.md](docs/spec-v48.md)) — 103 carry one today —
+([docs/spec-v48.md](docs/spec-v48.md)) — 106 carry one today —
 with the verbatim source formula, study cohort, limits of
 validity, and a live per-input contribution list whose component
 sums are cross-checked in CI against the tile's own scoring
@@ -384,7 +384,8 @@ scores `pesi` and `spesi` with the pediatric `nigrovic` meningitis score; then t
 GI-bleed risk family `gbs`, `rockall`, and `oakland` (the first banded-weight
 wave, each band encoded as a `points` callback); then the ICU-prognosis additive
 indices `nutric`, `mnutric`, and `mods`; then the specialty point scales
-`burch-wartofsky`, `ariscat`, and `braden-q` — 103
+`burch-wartofsky`, `ariscat`, and `braden-q`; then the high-value scores `hacor`,
+`vis`, and `charlson` — 106
 scores now carry derivation, each with CI-cross-checked component sums); the A3
 labeled copy beyond Group E and the five v61 bedside tiles remains a tracked
 follow-up.

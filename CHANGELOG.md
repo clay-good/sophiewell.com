@@ -6,6 +6,34 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v61 A1 wave 9 — "show your work" derivation for three high-value scores: HACOR, VIS & the Charlson Comorbidity Index)
+
+Continues the A1 derivation tail with three commonly charted scores of distinct
+computational shapes — **`hacor`** (NIV-failure risk), **`vis`** (vasoactive-
+inotropic load), and **`charlson`** (comorbidity burden / 10-year mortality).
+Each exercises a different derivation feature, and all reproduce their live score
+exactly. Derivation coverage 103 → 106 tiles.
+
+- **`lib/meta.js`**: each tile gains a full `derivation` block whose verbatim
+  `source` reuses the tile's already-vetted inline citation. HACOR bands HR/pH/
+  GCS/RR and computes its PaO2/FiO2 band inside a callback that reads both gases
+  from the inputs object; VIS is a continuous weighted sum (dopamine ×1 …
+  vasopressin ×10000); Charlson sums weighted comorbidities — its mild-liver,
+  uncomplicated-diabetes, and any-tumor callbacks read the sibling
+  moderate-severe/end-organ/metastatic inputs to apply the same severity
+  dominance as the live function — plus an age-points callback (+1 per decade
+  from 50, capped at 4).
+- **`views/group-g.js`** (`hacor`, `charlson`) and **`views/group-e.js`**
+  (`vis`): each renderer lifts its arguments into a local `inputs`, mounts
+  `renderDerivation(META[id])`, and calls `updateDerivationSteps` on change
+  (HACOR only on the computable path; Charlson passes the flattened
+  comorbidities + ageYears so the dominance callbacks resolve).
+- **`test/unit/derivation.test.js`**: the three tiles join `ALL_DERIVATION_TILES`
+  (schema + units-coverage guards) with component-sum cross-checks against the
+  live score — including HACOR's banded P/F, VIS's continuous float (compared
+  against the live `vis` value), and Charlson's three severity-dominance edge
+  cases and age bands.
+
 ### Added (spec-v61 A1 wave 8 — "show your work" derivation for the specialty bedside point scales: Burch-Wartofsky, ARISCAT & Braden Q)
 
 Continues the A1 derivation tail with three specialty point scales a nurse fills

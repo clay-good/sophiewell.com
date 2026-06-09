@@ -1767,14 +1767,18 @@ export const renderers = {
       modSevereLiver: 'ch-mod-liver',
       metastaticSolidTumor: 'ch-mets', aids: 'ch-aids',
     };
+    const deriv = renderDerivation(META.charlson);
+    if (deriv) root.appendChild(deriv);
     const run = () => safe(o, () => {
       const items = {};
       for (const [k, id] of Object.entries(map)) items[k] = checked(id);
-      const r = S4.charlson({ items, ageYears: nv('ch-age') });
+      const ageYears = nv('ch-age');
+      const r = S4.charlson({ items, ageYears });
       o.appendChild(el('h2', { text: `Charlson (age-adjusted) ${r.score}` }));
       o.appendChild(el('p', { text: r.band }));
       o.appendChild(el('p', { class: 'muted',
         text: `Comorbidity component: ${r.comorbidity}; age adjustment: ${r.ageAdj}.` }));
+      if (deriv) updateDerivationSteps(deriv, META.charlson, { ...items, ageYears });
     });
     document.querySelectorAll('input').forEach((n) => n.addEventListener(n.type === 'checkbox' ? 'change' : 'input', run));
     run();
@@ -2329,15 +2333,19 @@ export const renderers = {
       ]));
     }
     const o = out(); root.appendChild(o);
+    const deriv = renderDerivation(META.hacor);
+    if (deriv) root.appendChild(deriv);
     const run = () => safe(o, () => {
-      const r = S4.hacor({
+      const inputs = {
         hr: nvOrNull('hc-hr'), ph: nvOrNull('hc-ph'), gcs: nvOrNull('hc-gcs'),
         pao2: nvOrNull('hc-pao2'), fio2: nvOrNull('hc-fio2'), rr: nvOrNull('hc-rr'),
-      });
+      };
+      const r = S4.hacor(inputs);
       if (r.score == null) { o.appendChild(el('p', { class: 'muted', text: r.band })); return; }
       o.appendChild(el('h2', { text: `HACOR ${r.score}` }));
       o.appendChild(el('p', { text: r.band }));
       o.appendChild(el('p', { class: 'muted', text: `Per-parameter: HR ${r.parts.hr}, pH ${r.parts.ph}, GCS ${r.parts.gcs}, PaO2/FiO2 ${fmt(r.pfRatio, { digits: 0, fallback: '(enter PaO2 & FiO2)' })} -> ${r.parts.pf}, RR ${r.parts.rr}.` }));
+      if (deriv) updateDerivationSteps(deriv, META.hacor, inputs);
     });
     fields.forEach(([, id]) => document.getElementById(id).addEventListener('input', run));
     run();

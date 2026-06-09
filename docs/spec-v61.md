@@ -73,8 +73,12 @@
 > point scales whose inputs are already per-criterion point values
 > — `burch-wartofsky` (thyroid storm), `ariscat` (postoperative
 > pulmonary complications), and `braden-q` (pediatric
-> pressure-injury risk) — bringing derivation coverage to 103
-> tiles. A2
+> pressure-injury risk). Wave 9 adds three high-value scores of
+> distinct shapes — `hacor` (banded NIV-failure risk, its P/F band
+> computed from PaO2 and FiO2 in a callback), `vis` (continuous
+> weighted sum of vasoactive infusion rates), and `charlson` (the
+> Comorbidity Index, with severity-dominance callbacks and age
+> points) — bringing derivation coverage to 106 tiles. A2
 > (related-tool linking) is complete. A3 (chart-ready labeled copy) now also
 > covers the five 2+-numeric-output v61 bedside tiles
 > (`ebv-mabl`, `peds-transfusion-volume`, `rhig-dose`,

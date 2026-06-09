@@ -571,18 +571,22 @@ export const renderers = {
     root.appendChild(field('Milrinone (mcg/kg/min)', 'vs-mil', { value: 0 }));
     root.appendChild(field('Vasopressin (units/kg/min)', 'vs-vaso', { value: 0 }));
     const o = out(); root.appendChild(o);
+    const deriv = renderDerivation(META.vis);
+    if (deriv) root.appendChild(deriv);
     const run = () => safe(o, () => {
-      const r = V4.vis({
+      const inputs = {
         dopamine: num('vs-dop'),
         dobutamine: num('vs-dob'),
         epinephrine: num('vs-epi'),
         norepinephrine: num('vs-ne'),
         milrinone: num('vs-mil'),
         vasopressin: num('vs-vaso'),
-      });
+      };
+      const r = V4.vis(inputs);
       o.appendChild(el('p', { text: `VIS: ${r.vis.toFixed(1)}` }));
       o.appendChild(el('p', { text: `Inotrope Score (IS, Wernovsky 1995): ${r.is.toFixed(1)}` }));
       o.appendChild(el('p', { text: r.band }));
+      if (deriv) updateDerivationSteps(deriv, META.vis, inputs);
     });
     ['vs-dop', 'vs-dob', 'vs-epi', 'vs-ne', 'vs-mil', 'vs-vaso'].forEach((id) => document.getElementById(id).addEventListener('input', run));
     run();
