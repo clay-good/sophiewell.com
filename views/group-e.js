@@ -213,12 +213,16 @@ export const renderers = {
     ]));
     root.appendChild(selectField('Sex', 'sex', [{ value: 'M', text: 'Male' }, { value: 'F', text: 'Female' }]));
     const o = out(); root.appendChild(o);
+    const deriv = renderDerivation(META['cockcroft-gault']);
+    if (deriv) root.appendChild(deriv);
     const run = () => safe(o, () => {
       const scr = unitNum('scr');
-      const v = C.cockcroftGault({ age: num('age'), weightKg: unitNum('w'), scr, sex: document.getElementById('sex').value });
+      const inputs = { age: num('age'), weightKg: unitNum('w'), scr, sex: document.getElementById('sex').value };
+      const v = C.cockcroftGault(inputs);
       o.appendChild(el('p', { text: `Creatinine clearance: ${v} mL/min` }));
       const adv = boundsAdvisory('scr', scr);
       if (adv) o.appendChild(el('p', { class: 'warn', text: adv }));
+      if (deriv) updateDerivationSteps(deriv, META['cockcroft-gault'], inputs);
     });
     ['age', 'w', 'w-unit', 'scr', 'scr-unit', 'sex'].forEach((id) => document.getElementById(id).addEventListener('input', run));
   },

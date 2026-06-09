@@ -33,7 +33,15 @@
 > management is the additive action. `centor`/`feverpain` evaluated and *not*
 > seeded (their interpretation already carries the test-vs-treat action, like
 > `news2`). Later A2 waves may add Braden/Norton turn-schedule actions where a
-> verbatim source table exists and is not already in interpretation. Original Part B/C wave delivered: 7 of 9
+> verbatim source table exists and is not already in interpretation.
+>
+> **Part A5 wave 1 (2026-06-09):** substituted-formula derivation shipped.
+> `lib/derivation.js` now renders a "With your inputs" line from a
+> `derivation.substituted(inputs)` function (alongside, or instead of, the
+> additive component breakdown), with a banned-token guard at the render layer.
+> Seeded on `cockcroft-gault` (full derivation block + guarded substituted
+> equation). Later A5 waves extend `substituted` to eGFR, Parkland `burn-fluid`,
+> `corrected-sodium`, `winters`, `aa-gradient`, `osmolal-gap`, `fena-feurea`. Original Part B/C wave delivered: 7 of 9
 > Part B tiles (`infusion-time-remaining`, `enteral-free-water`, `apap-24h-max`,
 > `icu-nutrition-target`, `vte-prophylaxis-dose`, `neonatal-feeding-volume`,
 > `oxytocin-titration`) in `lib/clinical-v8.js`, and both Part C conversions

@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `2a7ab16b24492bd4`
-Generated: 2026-06-09T23:06:45.774Z
+Build ID: `6772dce0331a56e3`
+Generated: 2026-06-09T23:14:15.095Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=20.18.1 <21, npm >=10.0.0
@@ -52,7 +52,7 @@ downloads is committed in this repository and is hashed below.
 | `lib/clipboard.js` | 2907 | `951c41df24f58df747734474d383d6f75f52d22d2c4d0a370ef5bfb269a15147` |
 | `lib/coding-v5.js` | 6582 | `80c3a2bc258f35b5f70e68ee5e2b8d8d336359bc15e032d0420da4f9f9a710f7` |
 | `lib/data.js` | 2448 | `58e3f307653fe83b2a86332e23b71ff2c53ca45a44228ebacf0c4d5ca5a790f9` |
-| `lib/derivation.js` | 5055 | `a954a55eb8a55e8f8f5819438524cdf5f88a8c100580362727c417d86fa732be` |
+| `lib/derivation.js` | 6390 | `eb93d90e4c26bc1ee2d6ae3b6736992a737530cc07c1a88dd7135c37923c4a40` |
 | `lib/dom.js` | 984 | `b4b4ac74decb848bde516bfc1773e6c45a8d80031ed8f9d14226393d18fcde54` |
 | `lib/field-units.js` | 2225 | `9322d13f3563662f87d6ad7e1ea7994b7765ea712461930069408d45337eabdd` |
 | `lib/field.js` | 12156 | `6a6b07f76a519a8f873a37a9b57c52909e9088c3a09bd256e0ac60240e16d2ea` |
@@ -64,7 +64,7 @@ downloads is committed in this repository and is hashed below.
 | `lib/live.js` | 1138 | `304978d3c170b6eb06cade7702e5f99d868e9b3e1f5651aa9a28da15e62a6a9c` |
 | `lib/medication-v4.js` | 18192 | `467f9576c50da696cc56094eb022d0a5ed1e88de0c7618448554ede8067270b0` |
 | `lib/medication-v5.js` | 18339 | `76e1f064ed9e7aea8862adbc6e05e88031e0a1e7dbbf38d82c6a7f42a5414ff1` |
-| `lib/meta.js` | 623993 | `60109ad00df992044bf1f1be93ee29fa41b550604ea960797903392cdf0ab9a7` |
+| `lib/meta.js` | 626314 | `aaf25550dcf44c12a361d2268caea6fef6cb855b904ffdbaa076b97924326446` |
 | `lib/num.js` | 2476 | `93934466539979571db7a6251b68b42acbc4a91101a988d72e3d2c3f7fb153bf` |
 | `lib/pa/classify.js` | 3432 | `a7958e40890ad63ebf68ce5a0107fe7ab5a5b0c9e877e2669e8f44ecfb7f34ca` |
 | `lib/pa/cms-opd-pa-list.js` | 3701 | `d142fdc90cc782bb472d729df2ee6d0e89429cba2ecf0cfc7857a4e7e471b454` |
@@ -97,7 +97,7 @@ downloads is committed in this repository and is hashed below.
 | `lib/workflow-v4.js` | 7999 | `927a8a476e2c1b124c9e51040e549001b580b0baf2a4409ce463a0681fd08a72` |
 | `views/group-a.js` | 577 | `eed37c656d1fa00c097a07f07db4b1b6ac7a0a74bafc210978265a1d90856bd7` |
 | `views/group-c.js` | 6030 | `3aeac0ab24d035c43a6f5f3fcbc4f51cc4d2c7467145821a300bf219629bac46` |
-| `views/group-e.js` | 32444 | `e36960f6550a051b4b22a5942206cf4c4b90186548f47eaf290c2b4c5182e5f3` |
+| `views/group-e.js` | 32654 | `cf2d4c168557fdf5b80cd847d2d3b10286e9a6f13b4a483434551961a5631a70` |
 | `views/group-f.js` | 40048 | `f7606fc9ced2e52d74fa6ae82cbe7a6aa5976f0714d8fa5fac11fe290d598ce2` |
 | `views/group-g.js` | 233275 | `76bb9763d0e28c4e5a42e7557d84958fdfdf7165a6dbbb1f4c9ee097f9a38406` |
 | `views/group-h.js` | 27952 | `6393fcba60f1d58334f40d12cb18cf183c086666c7777ab35c8e1e3ada88d4f5` |

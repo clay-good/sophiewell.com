@@ -6,6 +6,35 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v62 Part A5 wave 1 — substituted-formula derivation, seeded on `cockcroft-gault`)
+
+Brings the "show your work" panel that additive scores already have to the
+*formula* calculators. Where an additive score lists each input's point
+contribution, a formula tile now shows the published equation with the user's
+current values plugged in and the arithmetic carried through.
+
+- **`lib/derivation.js`**: the live "your inputs" section now also renders a
+  `substituted` line. `renderDerivation` creates the section when the tile has
+  either `components` (additive) **or** a `substituted` function (formula);
+  `updateDerivationSteps` renders "With your inputs" = the substituted string.
+  Defense in depth on the spec-v59 numeric-leak rule: the author's `substituted`
+  guards bad inputs (returns null), and the render layer additionally refuses any
+  string carrying a banned token, falling back to a prompt.
+- **`lib/meta.js` (`cockcroft-gault`)**: gains a full `derivation` block
+  (formula / population / validity / source / units) plus a guarded
+  `substituted(inputs)` that renders e.g. `CrCl = (140 - 60) x 80 kg / (72 x 1
+  mg/dL) = 88.89 mL/min`, applying the 0.85 female factor and returning null on
+  any missing/zero/non-finite input.
+- **`views/group-e.js` (`cockcroft-gault`)**: wires `renderDerivation` +
+  `updateDerivationSteps` (the computed CrCl output is unchanged).
+- **`test/unit/derivation-substituted.test.js`**: covers the male/female worked
+  examples and the null-on-bad-input guard.
+- The substituted `<pre>` inherits the global `white-space: pre-wrap`, so the
+  equation wraps rather than scrolling sideways at 320px. Later A5 waves extend
+  the same `substituted` field to the other formula tiles (eGFR, Parkland
+  `burn-fluid`, `corrected-sodium`, `winters`, `aa-gradient`, `osmolal-gap`,
+  `fena-feurea`). See [docs/spec-v62.md](docs/spec-v62.md).
+
 ### Added (spec-v62 Part A2 wave 2 — withdrawal-scale next-step actions on `ciwa` and `cows`)
 
 Extends the source-anchored action field to the two withdrawal scales, where the
