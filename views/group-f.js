@@ -13,6 +13,7 @@ import {
   insulinCorrection, electrolyteReplacement, crrtDose, ecmoTitration,
 } from '../lib/scoring-v4.js';
 import { unitField, unitNum, WEIGHT_UNITS } from '../lib/field-units.js';
+import { resultRow } from '../lib/result-copy.js';
 
 function field(label, id, opts = {}) {
   const wrap = el('p');
@@ -45,10 +46,10 @@ export const renderers = {
     const o = out(); root.appendChild(o);
     const run = () => safe(o, () => {
       const r = C.dripRate({ volumeMl: nv('v'), durationMin: nv('t'), dropFactor: nv('df') });
-      o.appendChild(el('ul', {}, [
-        el('li', { text: `Rate: ${r.mlPerHr} mL/hr` }),
-        el('li', { text: `Drops: ${r.gttsPerMin} gtts/min` }),
-      ]));
+      resultRow(o, [
+        { label: 'Rate', value: r.mlPerHr, units: 'mL/hr' },
+        { label: 'Drops', value: r.gttsPerMin, units: 'gtts/min' },
+      ]);
     });
     ['v', 't', 'df'].forEach((id) => document.getElementById(id).addEventListener('input', run));
   },
@@ -359,12 +360,12 @@ export const renderers = {
           aminoAcidPct: Number(document.getElementById('tpn-aa').value) || 0,
           lipidPctOfVolume: Number(document.getElementById('tpn-lipid').value) || 0,
         });
-        out.appendChild(el('h2', { text: `Total: ${r.totalKcal.toFixed(0)} kcal in ${r.volumeMl} mL` }));
-        out.appendChild(el('ul', {}, [
-          el('li', { text: `Dextrose: ${r.dextroseG.toFixed(1)} g (${r.kcalDextrose.toFixed(0)} kcal)` }),
-          el('li', { text: `Protein: ${r.proteinG.toFixed(1)} g (${r.kcalProtein.toFixed(0)} kcal)` }),
-          el('li', { text: `Lipid: ${r.lipidG.toFixed(1)} g (${r.kcalLipid.toFixed(0)} kcal)` }),
-        ]));
+        resultRow(out, [
+          { label: 'Total', value: `${r.totalKcal.toFixed(0)} kcal in ${r.volumeMl} mL` },
+          { label: 'Dextrose', value: `${r.dextroseG.toFixed(1)} g (${r.kcalDextrose.toFixed(0)} kcal)` },
+          { label: 'Protein', value: `${r.proteinG.toFixed(1)} g (${r.kcalProtein.toFixed(0)} kcal)` },
+          { label: 'Lipid', value: `${r.lipidG.toFixed(1)} g (${r.kcalLipid.toFixed(0)} kcal)` },
+        ]);
       } catch (err) {
         out.appendChild(el('p', { class: 'muted', text: err.message }));
       }
@@ -398,12 +399,12 @@ export const renderers = {
         carbs:     nv('ic-carbs'),
         icr:       nv('ic-icr'),
       });
-      o.appendChild(el('h2', { text: `${r.totalUnits} U total` }));
-      o.appendChild(el('p', { text: `ISF ${r.isf}${r.isfDerivedFromTdd ? ' (derived from TDD)' : ''}` }));
-      o.appendChild(el('ul', {}, [
-        el('li', { text: `Correction: ${r.correctionUnits} U` }),
-        el('li', { text: `Meal coverage: ${r.mealUnits} U` }),
-      ]));
+      resultRow(o, [
+        { label: 'Total', value: r.totalUnits, units: 'U' },
+        { label: 'ISF', value: `${r.isf}${r.isfDerivedFromTdd ? ' (derived from TDD)' : ''}` },
+        { label: 'Correction', value: r.correctionUnits, units: 'U' },
+        { label: 'Meal coverage', value: r.mealUnits, units: 'U' },
+      ]);
       o.appendChild(el('p', { class: 'clinical-notice', text: 'ADA 2024 hospital glycemic target: 140-180 mg/dL non-critical; 110-180 mg/dL ICU.' }));
     });
     ['ic-bg', 'ic-target', 'ic-isf', 'ic-tdd', 'ic-rule', 'ic-carbs', 'ic-icr'].forEach((id) => document.getElementById(id).addEventListener('input', run));

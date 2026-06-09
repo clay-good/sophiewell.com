@@ -6,6 +6,24 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v61 A3 wave 3 — chart-ready labeled copy for the multi-output Group F medication / infusion tiles)
+
+Extends the A3 "Copy results" affordance to the three multi-output Group F
+calculators: **`drip-rate`** (rate + drops/min), **`tpn-macro`** (total kcal +
+the dextrose/protein/lipid macro breakdown), and **`insulin-correction`**
+(total + ISF + correction + meal-coverage units). These are the
+infusion/nutrition/glycemic numbers a nurse pastes into a pump, TPN, or
+insulin-titration chart.
+
+- **`views/group-f.js`**: imports the shared `resultRow` helper
+  (`lib/result-copy.js`). `tpn-macro` and `insulin-correction` fold their
+  prominent `<h2>` headline total (and, for insulin, the ISF `<p>`) into the
+  labeled `resultRow` list so the headline value is part of the copy payload —
+  the same pattern Group E used for `anion-gap-dd`. The trailing
+  clinical-notice line stays outside the copied result block.
+- **`test/integration/unit-toggle.spec.js`**: the three ids join the
+  labeled-"Copy results" sweep.
+
 ### Added (spec-v61 A3 wave 2 — chart-ready labeled copy for the multi-output Group V5 lab / clinical-math tiles)
 
 Extends the A3 "Copy results" affordance — clean `Label: Value Units` lines via

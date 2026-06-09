@@ -358,12 +358,15 @@ items and render a **"Copy results"** button that pastes clean
 The labeled copy covers the Group E math tiles (`bsa`, `anion-gap`,
 `corrected-sodium`, `aa-gradient`), the five 2+-numeric-output v61 bedside tiles
 (`ebv-mabl`, `peds-transfusion-volume`, `rhig-dose`, `fluid-balance`,
-`carb-insulin-bolus`), and — through the same shared `resultRow` helper — the six
-multi-output Group V5 lab / clinical-math tiles (`sodium-correction`,
-`free-water-deficit`, `iron-ganzoni`, `pbw-ardsnet`, `lights`,
-`corrected-anion-gap`) — exactly the values a nurse pastes into a transfusion,
-I&O, electrolyte-correction, ventilator, or insulin chart, with on-screen text
-byte-identical to the prior hand-built list. All fifteen are pinned by
+`carb-insulin-bolus`), the six multi-output Group V5 lab / clinical-math tiles
+(`sodium-correction`, `free-water-deficit`, `iron-ganzoni`, `pbw-ardsnet`,
+`lights`, `corrected-anion-gap`), and — through the same shared `resultRow`
+helper — the three Group F medication / infusion tiles (`drip-rate`,
+`tpn-macro`, `insulin-correction`, the latter two folding their headline total
+into the copied list as `anion-gap-dd` does) — exactly the values a nurse pastes
+into a transfusion, I&O, electrolyte-correction, ventilator, pump, TPN, or
+insulin chart, with on-screen text byte-identical to the prior hand-built list.
+All eighteen are pinned by
 [test/integration/unit-toggle.spec.js](test/integration/unit-toggle.spec.js)
 (alternate-unit parity, example-prefill parity, the labeled-copy affordance, and
 a 320px no-overflow assertion).
@@ -396,9 +399,10 @@ adult-ICU severity score, twelve banded variables); then `mnihss` (the modified
 NIHSS stroke scale); then `finnegan` (the modified Finnegan neonatal-abstinence
 score) — 117
 scores now carry derivation, each with CI-cross-checked component sums). The A3
-labeled copy then extended (wave 2) to the six multi-output Group V5 lab /
-clinical-math tiles above; the remaining single-numeric-output tiles (one value
-plus an interpretation line) keep the universal "Copy all".
+labeled copy then extended to the six multi-output Group V5 lab / clinical-math
+tiles (wave 2) and the three Group F medication / infusion tiles (wave 3) above;
+the remaining single-numeric-output tiles (one value plus an interpretation
+line) keep the universal "Copy all".
 
 ## System design and architecture overview
 
