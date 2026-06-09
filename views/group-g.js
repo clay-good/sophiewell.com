@@ -64,6 +64,33 @@ function renderEwsTrend(o, prefix, currentScore) {
     text: `Trend: ${t.direction} ${fmt(Math.abs(t.delta))} point(s) over ${fmt(Number(hoursEl.value))} h (${fmt(t.ratePerHour)}/h).${t.direction === 'rising' ? ' A rising early-warning trend warrants escalation per the score\'s monitoring protocol.' : ''}` }));
 }
 
+// spec-v62 §2 A1: optional hemoglobin-drop trend for the GI-bleed scores. The
+// score weights a single Hgb; the *drop rate* is a distinct active-bleeding
+// signal the score does not capture. Here a falling value is the concern (the
+// mirror of the early-warning trend, where a rising score is the concern).
+// Default-empty: the score and the documented example are unchanged.
+function hgbTrendInputs(root, prefix) {
+  root.appendChild(el('p', { class: 'muted', text: 'Optional: hemoglobin trend vs a prior value (a falling Hgb suggests ongoing blood loss).' }));
+  root.appendChild(el('p', {}, [
+    el('label', { for: `${prefix}-prior`, text: 'Prior hemoglobin (g/dL, optional)' }), el('br'),
+    el('input', { id: `${prefix}-prior`, type: 'number', step: 'any', autocomplete: 'off' }),
+  ]));
+  root.appendChild(el('p', {}, [
+    el('label', { for: `${prefix}-hours`, text: 'Hours since prior hemoglobin (optional)' }), el('br'),
+    el('input', { id: `${prefix}-hours`, type: 'number', step: 'any', autocomplete: 'off' }),
+  ]));
+}
+function renderHgbTrend(o, prefix, currentHgb) {
+  const priorEl = document.getElementById(`${prefix}-prior`);
+  const hoursEl = document.getElementById(`${prefix}-hours`);
+  if (!priorEl || !hoursEl) return;
+  if (priorEl.value === '' || hoursEl.value === '' || !(Number(hoursEl.value) > 0)) return;
+  const t = trend({ prior: Number(priorEl.value), current: currentHgb, hours: Number(hoursEl.value) });
+  const dropping = t.delta < 0;
+  o.appendChild(el('p', { class: dropping ? 'warn' : 'muted',
+    text: `Hemoglobin trend: ${t.direction} ${fmt(Math.abs(t.delta))} g/dL over ${fmt(Number(hoursEl.value))} h (${fmt(Math.abs(t.ratePerHour))} g/dL per hour).${dropping ? ' A falling hemoglobin suggests ongoing blood loss; correlate with hemodynamics and the resuscitation response.' : ''}` }));
+}
+
 export const renderers = {
   gcs(root) {
     root.appendChild(rangeField('Eye opening', 'eye', 1, 4, 4));
@@ -1289,6 +1316,7 @@ export const renderers = {
       ['Cardiac failure', 'gb-cf'],
     ];
     for (const [l, id] of items) root.appendChild(checkbox(l, id));
+    hgbTrendInputs(root, 'gb-hgbtrend');
     const o = out(); root.appendChild(o);
     const deriv = renderDerivation(META.gbs);
     if (deriv) root.appendChild(deriv);
@@ -1311,6 +1339,7 @@ export const renderers = {
       o.appendChild(el('p', { class: 'muted',
         text: `Per-parameter: BUN ${p.bun}, hemoglobin ${p.hgb}, SBP ${p.sbp}, pulse ${p.pulse}, melena ${p.melena}, syncope ${p.syncope}, hepatic disease ${p.hepaticDisease}, cardiac failure ${p.cardiacFailure}.` }));
       if (deriv) updateDerivationSteps(deriv, META.gbs, inputs);
+      renderHgbTrend(o, 'gb-hgbtrend', nv('gb-hgb'));
     });
     document.querySelectorAll('input, select').forEach((n) => n.addEventListener(n.type === 'checkbox' || n.tagName === 'SELECT' ? 'change' : 'input', run));
     run();
@@ -1406,6 +1435,7 @@ export const renderers = {
     ]));
     root.appendChild(checkbox('Previous LGIB admission', 'ok-prior'));
     root.appendChild(checkbox('Blood on digital rectal examination', 'ok-dre'));
+    hgbTrendInputs(root, 'ok-hgbtrend');
     const o = out(); root.appendChild(o);
     const deriv = renderDerivation(META.oakland);
     if (deriv) root.appendChild(deriv);
@@ -1426,6 +1456,7 @@ export const renderers = {
       o.appendChild(el('p', { class: 'muted',
         text: `Per-parameter: age ${p.age}, sex ${p.sex}, prior LGIB ${p.priorLgibAdmission}, DRE blood ${p.dreBlood}, HR ${p.hr}, SBP ${p.sbp}, hemoglobin ${p.hgb}.` }));
       if (deriv) updateDerivationSteps(deriv, META.oakland, inputs);
+      renderHgbTrend(o, 'ok-hgbtrend', nv('ok-hgb'));
     });
     document.querySelectorAll('input, select').forEach((n) => n.addEventListener(n.type === 'checkbox' || n.tagName === 'SELECT' ? 'change' : 'input', run));
     run();

@@ -10,8 +10,15 @@
 > line (rising-trend warning), again purely additive. **A1 wave 3
 > (2026-06-09):** same trend block wired into `pews`, completing the
 > single-additive-total early-warning family; `meows` is deliberately excluded
-> (track-and-trigger flag-count instrument, no single total to trend). Later A1
-> waves extend the primitive to creatinine Δ / KDIGO and hemoglobin-drop rate. Original Part B/C wave delivered: 7 of 9
+> (track-and-trigger flag-count instrument, no single total to trend). **A1
+> wave 4 (2026-06-09):** hemoglobin-drop trend (`hgbTrendInputs`/
+> `renderHgbTrend`, warns on a *falling* Hgb) wired into `gbs` and `oakland`.
+> The serial-delta trend rollout is now complete across the named tiles whose
+> derived quantity is a clean delta (early-warning scores, hemoglobin drop,
+> sodium-correction rate). The creatinine Δ / KDIGO stage-transition variant on
+> `kdigo-aki` is deferred — that tile already exposes baseline→current
+> creatinine and a 48-h-rise field, so a trend block there overlaps its inputs
+> and needs a careful redesign, not a quick add. Original Part B/C wave delivered: 7 of 9
 > Part B tiles (`infusion-time-remaining`, `enteral-free-water`, `apap-24h-max`,
 > `icu-nutrition-target`, `vte-prophylaxis-dose`, `neonatal-feeding-volume`,
 > `oxytocin-titration`) in `lib/clinical-v8.js`, and both Part C conversions

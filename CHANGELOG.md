@@ -6,6 +6,28 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v62 Part A1 wave 4 — hemoglobin-drop trend on `gbs` and `oakland`)
+
+Applies the trend primitive to the GI-bleed scores along a new axis. The
+Glasgow-Blatchford and Oakland scores each weight a single hemoglobin; the
+*drop rate* is a distinct active-bleeding signal the score does not capture.
+
+- **`views/group-g.js` (`gbs`, `oakland`)**: a shared `hgbTrendInputs` /
+  `renderHgbTrend` helper adds an optional, default-empty "prior hemoglobin +
+  hours since" pair. When both are entered, the tile appends the Hgb change,
+  per-hour drop rate, and direction, warning when the hemoglobin is *falling*
+  (the mirror of the early-warning trend, where a *rising* score is the
+  concern). Built on the same `trend()` core from `lib/trend.js`. The computed
+  score, band, per-parameter breakdown, derivation panel, and documented
+  example are unchanged — purely additive.
+- This closes the Part A1 trend rollout across the named tiles whose derived
+  quantity is a clean serial delta (early-warning scores + hemoglobin drop) plus
+  the sodium-correction rate. A creatinine Δ / KDIGO stage-transition variant on
+  `kdigo-aki` is deferred: that tile already exposes baseline→current creatinine
+  and a 48-hour-rise field, so a trend block there would overlap its existing
+  inputs and warrants a careful redesign rather than a quick add. See
+  [docs/spec-v62.md](docs/spec-v62.md).
+
 ### Added (spec-v62 Part A1 wave 3 — early-warning-score trend on `pews`)
 
 Completes the numeric-total early-warning family. `pews` (Brighton PEWS) returns
