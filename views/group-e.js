@@ -285,13 +285,14 @@ export const renderers = {
       const ag = C.anionGap({ sodium: num('na'), chloride: num('cl'), bicarbonate: num('hco3'), albuminGdl: num('alb') || undefined });
       const baseAg = ag.correctedAnionGap != null ? ag.correctedAnionGap : ag.anionGap;
       const dd = V4.deltaDelta({ anionGap: baseAg, hco3: num('hco3') });
-      o.appendChild(el('h2', { text: `AG ${ag.anionGap}${ag.correctedAnionGap != null ? `; albumin-corrected AG ${ag.correctedAnionGap}` : ''}` }));
-      o.appendChild(el('ul', {}, [
-        el('li', { text: `delta-AG = ${dd.deltaAg}` }),
-        el('li', { text: `delta-HCO3 = ${dd.deltaHco3}` }),
-        el('li', { text: `delta/delta ratio = ${dd.ratio == null ? 'n/a' : dd.ratio.toFixed(2)}` }),
-        el('li', { text: dd.interpretation }),
-      ]));
+      resultRow(o, [
+        { label: 'Anion gap', value: ag.anionGap },
+        ag.correctedAnionGap != null ? { label: 'Albumin-corrected AG', value: ag.correctedAnionGap } : null,
+        { text: `delta-AG = ${dd.deltaAg}` },
+        { text: `delta-HCO3 = ${dd.deltaHco3}` },
+        { text: `delta/delta ratio = ${dd.ratio == null ? 'n/a' : dd.ratio.toFixed(2)}` },
+        { text: dd.interpretation },
+      ]);
     });
     ['na', 'cl', 'hco3', 'alb'].forEach((id) => document.getElementById(id).addEventListener('input', run));
   },
@@ -305,18 +306,18 @@ export const renderers = {
     root.appendChild(field('Glucose (mg/dL)', 'glu'));
     const o = out(); root.appendChild(o);
     const run = () => safe(o, () => {
-      const lines = [];
+      const items = [];
       const ca = num('ca'), alb = num('cca-alb');
       if (ca && alb) {
         const cc = C.correctedCalcium({ measuredCa: ca, albuminGdl: alb });
-        lines.push(el('li', { text: `Corrected Ca: ${cc.toFixed(2)} mg/dL` }));
+        items.push({ text: `Corrected Ca: ${cc.toFixed(2)} mg/dL` });
       }
       const na = num('csna-na'), glu = num('glu');
       if (na && glu) {
         const cs = C.correctedSodium({ measuredNa: na, glucose: glu });
-        lines.push(el('li', { text: `Corrected Na (Katz 1.6): ${cs.naBy1_6.toFixed(1)}; Hillier 2.4: ${cs.naBy2_4.toFixed(1)}` }));
+        items.push({ text: `Corrected Na (Katz 1.6): ${cs.naBy1_6.toFixed(1)}; Hillier 2.4: ${cs.naBy2_4.toFixed(1)}` });
       }
-      o.appendChild(el('ul', {}, lines));
+      if (items.length) resultRow(o, items);
     });
     ['ca', 'cca-alb', 'csna-na', 'glu'].forEach((id) => document.getElementById(id).addEventListener('input', run));
   },
@@ -401,12 +402,12 @@ export const renderers = {
       const heightCm = num('bw-hin') * 2.54;
       const bsaM = C.bsaMosteller({ weightKg: num('bw-kg'), heightCm });
       const bsaD = C.bsaDuBois({ weightKg: num('bw-kg'), heightCm });
-      o.appendChild(el('ul', {}, [
-        el('li', { text: `IBW (Devine): ${ibw.toFixed(1)} kg` }),
-        el('li', { text: `AdjBW (40% rule): ${adj.toFixed(1)} kg` }),
-        el('li', { text: `BSA Mosteller: ${bsaM.toFixed(2)} m^2` }),
-        el('li', { text: `BSA Du Bois: ${bsaD.toFixed(2)} m^2` }),
-      ]));
+      resultRow(o, [
+        { text: `IBW (Devine): ${ibw.toFixed(1)} kg` },
+        { text: `AdjBW (40% rule): ${adj.toFixed(1)} kg` },
+        { text: `BSA Mosteller: ${bsaM.toFixed(2)} m^2` },
+        { text: `BSA Du Bois: ${bsaD.toFixed(2)} m^2` },
+      ]);
     });
     ['bw-hin', 'bw-kg', 'bw-sex'].forEach((id) => document.getElementById(id).addEventListener(id === 'bw-sex' ? 'change' : 'input', run));
   },
@@ -423,11 +424,11 @@ export const renderers = {
       const ckdEpi = C.egfrCkdEpi2021({ scr, age, sex });
       const cg = C.cockcroftGault({ age, weightKg: w, scr, sex });
       const mdrd = V4.egfrMdrd({ scr, age, sex });
-      o.appendChild(el('ul', {}, [
-        el('li', { text: `CKD-EPI 2021 (race-free): ${ckdEpi.toFixed(1)} mL/min/1.73m^2` }),
-        el('li', { text: `MDRD (race-free): ${mdrd.toFixed(1)} mL/min/1.73m^2` }),
-        el('li', { text: `Cockcroft-Gault: ${cg.toFixed(1)} mL/min` }),
-      ]));
+      resultRow(o, [
+        { text: `CKD-EPI 2021 (race-free): ${ckdEpi.toFixed(1)} mL/min/1.73m^2` },
+        { text: `MDRD (race-free): ${mdrd.toFixed(1)} mL/min/1.73m^2` },
+        { text: `Cockcroft-Gault: ${cg.toFixed(1)} mL/min` },
+      ]);
       const adv = boundsAdvisory('scr', scr);
       if (adv) o.appendChild(el('p', { class: 'warn', text: adv }));
       o.appendChild(el('p', { class: 'muted', text: '2021 race-free shift: NIH/NKF removed the race coefficient from CKD-EPI in 2021. Many labs use CKD-EPI; nephrology references increasingly use MDRD race-free for legacy comparison.' }));
@@ -448,10 +449,10 @@ export const renderers = {
     const run = () => safe(o, () => {
       const fena = V4.feNa({ urineNa: num('fn-una'), plasmaNa: num('fn-pna'), urineCr: num('fn-ucr'), plasmaCr: num('fn-pcr') });
       const feurea = V4.feUrea({ urineUrea: num('fu-uu'), plasmaUrea: num('fu-pu'), urineCr: num('fn-ucr'), plasmaCr: num('fn-pcr') });
-      o.appendChild(el('ul', {}, [
-        el('li', { text: `FENa: ${fena == null ? '(incomplete inputs)' : fena.toFixed(2) + '%'} (<1% prerenal, >2% ATN)` }),
-        el('li', { text: `FEUrea: ${feurea == null ? '(incomplete inputs)' : feurea.toFixed(2) + '%'} (<35% prerenal, useful when on diuretics)` }),
-      ]));
+      resultRow(o, [
+        { text: `FENa: ${fena == null ? '(incomplete inputs)' : fena.toFixed(2) + '%'} (<1% prerenal, >2% ATN)` },
+        { text: `FEUrea: ${feurea == null ? '(incomplete inputs)' : feurea.toFixed(2) + '%'} (<35% prerenal, useful when on diuretics)` },
+      ]);
     });
     ['fn-una', 'fn-pna', 'fn-ucr', 'fn-pcr', 'fu-uu', 'fu-pu'].forEach((id) => document.getElementById(id).addEventListener('input', run));
   },
@@ -472,12 +473,12 @@ export const renderers = {
     const o = out(); root.appendChild(o);
     const run = () => safe(o, () => {
       const r = V4.qtcAll({ qtMs: num('qs-qt'), hrBpm: num('qs-hr') });
-      o.appendChild(el('ul', {}, [
-        el('li', { text: `Bazett: ${r.bazett.toFixed(0)} ms` }),
-        el('li', { text: `Fridericia: ${r.fridericia.toFixed(0)} ms` }),
-        el('li', { text: `Framingham: ${r.framingham.toFixed(0)} ms` }),
-        el('li', { text: `Hodges: ${r.hodges.toFixed(0)} ms` }),
-      ]));
+      resultRow(o, [
+        { text: `Bazett: ${r.bazett.toFixed(0)} ms` },
+        { text: `Fridericia: ${r.fridericia.toFixed(0)} ms` },
+        { text: `Framingham: ${r.framingham.toFixed(0)} ms` },
+        { text: `Hodges: ${r.hodges.toFixed(0)} ms` },
+      ]);
     });
     ['qs-qt', 'qs-hr'].forEach((id) => document.getElementById(id).addEventListener('input', run));
   },

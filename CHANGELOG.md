@@ -6,6 +6,28 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Changed (spec-v61 A3 — Group E chart-ready labeled copy completed)
+
+Finishes the A3 rollout across Group E: the remaining multi-output calculators
+that still rendered a plain `<ul>` and relied on the universal "Copy all"
+scraping `innerText` now use the shared `resultRow` helper, gaining a clean
+`formatCopyAll`-backed "Copy results" button.
+
+- **`views/group-e.js`**: `corrected-ca-na`, `bw-bsa-suite`, `egfr-suite`,
+  `fena-feurea`, and `qtc-suite` convert their result lists to `resultRow`
+  (on-screen text byte-identical). `anion-gap-dd` previously put its primary
+  anion-gap result in an `<h2>` headline that the labeled copy could not reach;
+  the headline is folded into the `resultRow` list as labeled items
+  (`Anion gap`, `Albumin-corrected AG`) so the chart paste now includes the
+  anion gap alongside the delta-delta breakdown. `corrected-ca-na` only renders
+  the button when at least one of its two independent results is present.
+
+With this, every genuinely multi-output Group E tile offers "Copy results";
+single-output calculators keep the universal "Copy all" (nothing multi-line to
+copy). No clinical-result, data, or dependency change. The example-correctness
+sweep (every tile's documented numbers still render) and the 320px no-horizontal-
+scroll sweep pass; lint, unit, build, and SBOM are green.
+
 ### Changed (spec-v61 A3 — shared chart-ready labeled-copy helper + Group E suite-tile rollout)
 
 Advances the A3 "chart-ready labeled copy" tail (clean `Label: Value Units`

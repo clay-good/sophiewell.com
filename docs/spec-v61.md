@@ -88,22 +88,22 @@
 > their derivation mirrors the scoring module's age-band tables and
 > is cross-checked across age bands, bringing derivation coverage to
 > 114 tiles. A2
-> (related-tool linking) is complete. A3 (chart-ready labeled copy) covers the
-> five 2+-numeric-output v61 bedside tiles
-> (`ebv-mabl`, `peds-transfusion-volume`, `rhig-dose`,
-> `fluid-balance`, `carb-insulin-bolus`) and the Group E multi-output
-> calculators; the `resultRow` helper has been promoted to a shared
-> module (`lib/result-copy.js`) so `group-v11`, `group-e`, and future
-> view modules use one byte-identical implementation. A3's reach then
-> extended to the Group E multi-output *suite* tiles that still scraped
-> innerText — `osmolal-gap`, `aa-pf-suite`, `winters`, and
-> `shock-index` now build their results as `resultRow` items with a
-> `formatCopyAll`-backed "Copy results" button (byte-identical
-> on-screen text). The remaining A3 tail is the multi-output suite
-> tiles whose primary result sits in an `<h2>` headline
-> (`anion-gap-dd`, `corrected-ca-na`, `egfr-suite`, `qtc-suite`,
-> `bw-bsa-suite`), which need a small restructure to fold the headline
-> into the copied result set.
+> (related-tool linking) is complete. A3 (chart-ready labeled copy) is now
+> complete across Group E and the five 2+-numeric-output v61 bedside
+> tiles (`ebv-mabl`, `peds-transfusion-volume`, `rhig-dose`,
+> `fluid-balance`, `carb-insulin-bolus`). The `resultRow` helper was
+> promoted to a shared module (`lib/result-copy.js`) so `group-v11`,
+> `group-e`, and future view modules use one byte-identical
+> implementation, then every multi-output Group E calculator was wired
+> to it: the simple results (`bsa`, `anion-gap`, `corrected-sodium`,
+> `aa-gradient`), the suite tiles (`osmolal-gap`, `aa-pf-suite`,
+> `winters`, `shock-index`, `bw-bsa-suite`, `egfr-suite`,
+> `fena-feurea`, `qtc-suite`, `corrected-ca-na`), and `anion-gap-dd`
+> (whose primary anion-gap result was folded out of its `<h2>` headline
+> into the labeled `resultRow` list so it is part of the "Copy results"
+> payload). Every multi-output tile now offers a `formatCopyAll`-backed
+> "Copy results" button; the remaining single-output calculators have
+> nothing multi-line to copy and keep the universal "Copy all".
 > v61 has two parts.
 > **Part A** is
 > a zero-tile *enhancement* pass that raises the value of the
