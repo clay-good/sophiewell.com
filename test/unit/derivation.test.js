@@ -21,6 +21,7 @@ import { vis } from '../../lib/clinical-v4.js';
 import { auditFull, dast10, gds15 } from '../../lib/scoring-v5.js';
 import { nips, cries, pedsGcs } from '../../lib/scoring-v4.js';
 import { pelod2, psofa } from '../../lib/scoring-v6.js';
+import { apache2 } from '../../lib/scoring-v6.js';
 
 // --- 1. Schema completeness ---------------------------------------------
 
@@ -113,7 +114,12 @@ const WAVE_61_A1K_TILES = ['nips', 'cries', 'peds-gcs'];
 // grade overriding MAP). The meta.js band tables mirror scoring-v6; these
 // cross-checks span multiple age bands so any drift fails loudly.
 const WAVE_61_A1L_TILES = ['pelod2', 'psofa'];
-const ALL_DERIVATION_TILES = [...WAVE_48_1A_TILES, ...WAVE_48_1B_TILES, ...WAVE_48_1C_TILES, ...WAVE_48_2A_TILES, ...WAVE_48_2B_TILES, ...WAVE_48_2C_TILES, ...WAVE_48_3A_TILES, ...WAVE_48_3B_TILES, ...WAVE_48_3C_TILES, ...WAVE_48_3D_TILES, ...WAVE_48_4A_TILES, ...WAVE_48_4B_TILES, ...WAVE_48_4C_TILES, ...WAVE_48_4D_TILES, ...WAVE_48_4E_TILES, ...WAVE_48_4F_TILES, ...WAVE_48_4G_TILES, ...WAVE_48_4H_TILES, ...WAVE_48_4I_TILES, ...WAVE_48_4J_TILES, ...WAVE_61_A1_TILES, ...WAVE_61_A1B_TILES, ...WAVE_61_A1C_TILES, ...WAVE_61_A1D_TILES, ...WAVE_61_A1E_TILES, ...WAVE_61_A1F_TILES, ...WAVE_61_A1G_TILES, ...WAVE_61_A1H_TILES, ...WAVE_61_A1I_TILES, ...WAVE_61_A1J_TILES, ...WAVE_61_A1K_TILES, ...WAVE_61_A1L_TILES];
+// spec-v61 A1 derivation tail, wave 13: APACHE II -- the canonical adult ICU
+// severity score. Twelve acute-physiology variables (each a banded apsStep) plus
+// 15-GCS, age points, and a cross-input chronic-health callback. The meta.js
+// apsStep breaks mirror scoring-v6; cross-checks span varied bands so drift fails.
+const WAVE_61_A1M_TILES = ['apache2'];
+const ALL_DERIVATION_TILES = [...WAVE_48_1A_TILES, ...WAVE_48_1B_TILES, ...WAVE_48_1C_TILES, ...WAVE_48_2A_TILES, ...WAVE_48_2B_TILES, ...WAVE_48_2C_TILES, ...WAVE_48_3A_TILES, ...WAVE_48_3B_TILES, ...WAVE_48_3C_TILES, ...WAVE_48_3D_TILES, ...WAVE_48_4A_TILES, ...WAVE_48_4B_TILES, ...WAVE_48_4C_TILES, ...WAVE_48_4D_TILES, ...WAVE_48_4E_TILES, ...WAVE_48_4F_TILES, ...WAVE_48_4G_TILES, ...WAVE_48_4H_TILES, ...WAVE_48_4I_TILES, ...WAVE_48_4J_TILES, ...WAVE_61_A1_TILES, ...WAVE_61_A1B_TILES, ...WAVE_61_A1C_TILES, ...WAVE_61_A1D_TILES, ...WAVE_61_A1E_TILES, ...WAVE_61_A1F_TILES, ...WAVE_61_A1G_TILES, ...WAVE_61_A1H_TILES, ...WAVE_61_A1I_TILES, ...WAVE_61_A1J_TILES, ...WAVE_61_A1K_TILES, ...WAVE_61_A1L_TILES, ...WAVE_61_A1M_TILES];
 
 for (const id of ALL_DERIVATION_TILES) {
   test(`derivation schema: ${id} has all required fields`, () => {
@@ -760,6 +766,24 @@ for (const [label, inputs, expected] of [
     const sum = sumDerivation('psofa', inputs);
     assert.equal(sum, r.score);
     assert.equal(sum, expected);
+  });
+}
+
+// --- spec-v61 A1 wave 13: APACHE II (12 banded vars + age + chronic) ----
+// sumDerivation passes (value, inputs); the chronic-health callback reads
+// inputs.nonoperativeOrEmergency. Cases span the documented example, a healthy
+// all-normal patient, the chronic-health override, and a high-acuity patient.
+for (const [label, inputs, expected] of [
+  ['documented example = 23', { temp: 39, map: 60, hr: 120, rr: 30, oxy: 65, ph: 7.3, na: 150, k: 5.6, creatinine: 2, hct: 48, wbc: 18, gcs: 13, age: 60, chronicHealth: false, nonoperativeOrEmergency: false }, 23],
+  ['healthy all-normal = 0', { temp: 37, map: 80, hr: 75, rr: 14, oxy: 90, ph: 7.4, na: 140, k: 4, creatinine: 1, hct: 40, wbc: 8, gcs: 15, age: 30, chronicHealth: false, nonoperativeOrEmergency: false }, 0],
+  ['chronic-health nonoperative override (+5)', { temp: 37, map: 80, hr: 75, rr: 14, oxy: 90, ph: 7.4, na: 140, k: 4, creatinine: 1, hct: 40, wbc: 8, gcs: 15, age: 50, chronicHealth: true, nonoperativeOrEmergency: true }, null],
+  ['high-acuity, many extreme bands', { temp: 41, map: 40, hr: 190, rr: 55, oxy: 50, ph: 7.7, na: 185, k: 7.2, creatinine: 4, hct: 65, wbc: 45, gcs: 3, age: 80, chronicHealth: true, nonoperativeOrEmergency: false }, null],
+]) {
+  test(`apache2 components sum equals apache2() total (${label})`, () => {
+    const r = apache2(inputs);
+    const sum = sumDerivation('apache2', inputs);
+    assert.equal(sum, r.total);
+    if (expected !== null) assert.equal(sum, expected);
   });
 }
 

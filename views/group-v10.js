@@ -396,20 +396,24 @@ export const renderers = {
     root.appendChild(checkField('Severe chronic-organ insufficiency / immunocompromise', 'ap-chronic'));
     root.appendChild(checkField('Nonoperative or emergency postoperative admission', 'ap-nonop'));
     const o = out(); root.appendChild(o);
+    const deriv = renderDerivation(META.apache2);
+    if (deriv) root.appendChild(deriv);
     const ids = ['ap-temp', 'ap-map', 'ap-hr', 'ap-rr', 'ap-oxy', 'ap-ph', 'ap-na', 'ap-k', 'ap-creat', 'ap-hct', 'ap-wbc', 'ap-gcs', 'ap-age', 'ap-chronic', 'ap-nonop'];
     wire(ids, () => safe(o, () => {
-      const r = S.apache2({
+      const inputs = {
         temp: val('ap-temp'), map: val('ap-map'), hr: val('ap-hr'), rr: val('ap-rr'), oxy: val('ap-oxy'),
         ph: val('ap-ph'), na: val('ap-na'), k: val('ap-k'), creatinine: val('ap-creat'), hct: val('ap-hct'),
         wbc: val('ap-wbc'), gcs: val('ap-gcs'), age: val('ap-age'),
         chronicHealth: chk('ap-chronic'), nonoperativeOrEmergency: chk('ap-nonop'),
-      });
+      };
+      const r = S.apache2(inputs);
       o.appendChild(list([
         li(`APACHE II: ${fmt(r.total)} / 71`),
         li(`Acute physiology ${r.aps} + age ${r.agePts} + chronic health ${r.chronicPts}`),
         li(r.band),
       ]));
       note(o, r.note);
+      if (deriv) updateDerivationSteps(deriv, META.apache2, inputs);
     }));
     screenerNote(root);
   },

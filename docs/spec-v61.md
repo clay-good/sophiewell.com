@@ -86,8 +86,11 @@
 > Glasgow Coma Scale). Wave 12 adds the age-banded pediatric
 > organ-dysfunction scores `pelod2` (PELOD-2) and `psofa` (pSOFA);
 > their derivation mirrors the scoring module's age-band tables and
-> is cross-checked across age bands, bringing derivation coverage to
-> 114 tiles. A2
+> is cross-checked across age bands. Wave 13 adds `apache2`
+> (APACHE II) — its twelve banded acute-physiology variables (via a
+> mirrored `apsStep` lookup), the `15 - GCS` neuro term, age points,
+> and a cross-input chronic-health callback — bringing derivation
+> coverage to 115 tiles. A2
 > (related-tool linking) is complete. A3 (chart-ready labeled copy) is now
 > complete across Group E and the five 2+-numeric-output v61 bedside
 > tiles (`ebv-mabl`, `peds-transfusion-volume`, `rhig-dose`,

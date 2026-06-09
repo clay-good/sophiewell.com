@@ -6,6 +6,29 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v61 A1 wave 13 — "show your work" derivation for APACHE II)
+
+Adds the canonical adult-ICU severity score, **`apache2`** (APACHE II), to the
+derivation rollout. It is notoriously fiddly to hand-calculate, so a per-variable
+breakdown is high-value at the bedside. Derivation coverage 114 → 115 tiles.
+
+- **`lib/meta.js`**: a small `apsStep(value, breaks)` helper mirrors the
+  acute-physiology step lookup in `lib/scoring-v6.js`; the `apache2.derivation`
+  block scores all twelve physiology variables (temperature, MAP, HR, RR, PaO2,
+  pH, Na, K, creatinine, hematocrit, WBC) by their banded breaks, plus the
+  `15 - GCS` neurologic term, the age points (45-54 +2 … >=75 +6), and a
+  chronic-health component whose callback reads `inputs.nonoperativeOrEmergency`
+  (+5 nonoperative/emergency-postop, else +2). A verbatim `source` reuses the
+  inline citation.
+- **`views/group-v10.js`** (`apache2`): the renderer lifts its arguments into a
+  local `inputs`, mounts `renderDerivation(META.apache2)`, and calls
+  `updateDerivationSteps` on change.
+- **`test/unit/derivation.test.js`**: `apache2` joins `ALL_DERIVATION_TILES`
+  (schema + units guards) with component-sum cross-checks against
+  `apache2().total` — the documented example (23), an all-normal patient (0), the
+  chronic-health override, and a high-acuity patient hitting many extreme bands —
+  so any drift in the meta.js breaks tables fails CI.
+
 ### Changed (spec-v61 A3 — Group E chart-ready labeled copy completed)
 
 Finishes the A3 rollout across Group E: the remaining multi-output calculators
