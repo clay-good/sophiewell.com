@@ -8,6 +8,7 @@ import { qsofa, timi, heart, perc, sofa, news2, meld30, curb65, centor, mcisaac,
 import { pews as pewsV5 } from '../../lib/clinical-v5.js';
 import { nihss } from '../../lib/clinical.js';
 import { rcri, abcd2 } from '../../lib/clinical-v5.js';
+import { feverpain, canadianSyncope, stoneScore } from '../../lib/scoring-v5.js';
 
 // --- 1. Schema completeness ---------------------------------------------
 
@@ -37,7 +38,12 @@ const WAVE_48_4J_TILES = ['bishop', 'abc-mtp', 'mgap', 'gap'];
 // inline citation; the component sums are cross-checked against the live scoring
 // function below.
 const WAVE_61_A1_TILES = ['sirs', 'apfel', 'aims65'];
-const ALL_DERIVATION_TILES = [...WAVE_48_1A_TILES, ...WAVE_48_1B_TILES, ...WAVE_48_1C_TILES, ...WAVE_48_2A_TILES, ...WAVE_48_2B_TILES, ...WAVE_48_2C_TILES, ...WAVE_48_3A_TILES, ...WAVE_48_3B_TILES, ...WAVE_48_3C_TILES, ...WAVE_48_3D_TILES, ...WAVE_48_4A_TILES, ...WAVE_48_4B_TILES, ...WAVE_48_4C_TILES, ...WAVE_48_4D_TILES, ...WAVE_48_4E_TILES, ...WAVE_48_4F_TILES, ...WAVE_48_4G_TILES, ...WAVE_48_4H_TILES, ...WAVE_48_4I_TILES, ...WAVE_48_4J_TILES, ...WAVE_61_A1_TILES];
+// spec-v61 A1 derivation tail, wave 2: additive ED screening / decision scores
+// with named inputs that each return a numeric (feverpain().total,
+// canadianSyncope().score, stoneScore().score) for an exact component-sum
+// cross-check.
+const WAVE_61_A1B_TILES = ['feverpain', 'canadian-syncope', 'stone-score'];
+const ALL_DERIVATION_TILES = [...WAVE_48_1A_TILES, ...WAVE_48_1B_TILES, ...WAVE_48_1C_TILES, ...WAVE_48_2A_TILES, ...WAVE_48_2B_TILES, ...WAVE_48_2C_TILES, ...WAVE_48_3A_TILES, ...WAVE_48_3B_TILES, ...WAVE_48_3C_TILES, ...WAVE_48_3D_TILES, ...WAVE_48_4A_TILES, ...WAVE_48_4B_TILES, ...WAVE_48_4C_TILES, ...WAVE_48_4D_TILES, ...WAVE_48_4E_TILES, ...WAVE_48_4F_TILES, ...WAVE_48_4G_TILES, ...WAVE_48_4H_TILES, ...WAVE_48_4I_TILES, ...WAVE_48_4J_TILES, ...WAVE_61_A1_TILES, ...WAVE_61_A1B_TILES];
 
 for (const id of ALL_DERIVATION_TILES) {
   test(`derivation schema: ${id} has all required fields`, () => {
@@ -194,6 +200,58 @@ for (const [label, inputs, expected] of [
   test(`aims65 components sum equals aims65() score (${label})`, () => {
     const r = aims65(inputs);
     const sum = sumBinary('aims65', inputs);
+    assert.equal(sum, r.score);
+    assert.equal(sum, expected);
+  });
+}
+
+// --- spec-v61 A1 wave 2: additive ED screening / decision scores --------
+// Local component-sum reducer (the file-level sumComponents helper is declared
+// later in the file); handles numeric, boolean, and callback `points`.
+function sumDerivation(id, inputs) {
+  return META[id].derivation.components.reduce((acc, c) => {
+    const v = inputs[c.inputKey];
+    if (typeof c.points === 'function') return acc + (Number(c.points(v, inputs)) || 0);
+    if (v) return acc + c.points;
+    return acc;
+  }, 0);
+}
+
+for (const [label, inputs, expected] of [
+  ['0/5', { fever: false, purulence: false, attendRapid: false, inflamedTonsils: false, noCough: false }, 0],
+  ['example 4/5', { fever: true, purulence: true, attendRapid: true, inflamedTonsils: true, noCough: false }, 4],
+  ['max 5/5', { fever: true, purulence: true, attendRapid: true, inflamedTonsils: true, noCough: true }, 5],
+]) {
+  test(`feverpain components sum equals feverpain() total (${label})`, () => {
+    const r = feverpain(inputs);
+    const sum = sumDerivation('feverpain', inputs);
+    assert.equal(sum, r.total);
+    assert.equal(sum, expected);
+  });
+}
+
+for (const [label, inputs, expected] of [
+  ['baseline 0', { vasovagalPredisp: false, heartDisease: false, sbpExtreme: false, tropElevated: false, abnormalAxis: false, qrsProlonged: false, qtcProlonged: false, edxVasovagal: false, edxCardiac: false }, 0],
+  ['example heart+trop = 3', { vasovagalPredisp: false, heartDisease: true, sbpExtreme: false, tropElevated: true, abnormalAxis: false, qrsProlonged: false, qtcProlonged: false, edxVasovagal: false, edxCardiac: false }, 3],
+  ['min -3 (both negative items)', { vasovagalPredisp: true, heartDisease: false, sbpExtreme: false, tropElevated: false, abnormalAxis: false, qrsProlonged: false, qtcProlonged: false, edxVasovagal: true, edxCardiac: false }, -3],
+  ['max +11 (all positives)', { vasovagalPredisp: false, heartDisease: true, sbpExtreme: true, tropElevated: true, abnormalAxis: true, qrsProlonged: true, qtcProlonged: true, edxVasovagal: false, edxCardiac: true }, 11],
+]) {
+  test(`canadian-syncope components sum equals canadianSyncope() score (${label})`, () => {
+    const r = canadianSyncope(inputs);
+    const sum = sumDerivation('canadian-syncope', inputs);
+    assert.equal(sum, r.score);
+    assert.equal(sum, expected);
+  });
+}
+
+for (const [label, inputs, expected] of [
+  ['all-zero', { sex: 'female', timing: 'gt24', nonBlack: false, nausea: 'none', hematuria: false }, 0],
+  ['mid (male + 6-24h + nausea)', { sex: 'male', timing: '6to24', nonBlack: false, nausea: 'nausea', hematuria: false }, 4],
+  ['max 13', { sex: 'male', timing: 'lt6', nonBlack: true, nausea: 'vomiting', hematuria: true }, 13],
+]) {
+  test(`stone-score components sum equals stoneScore() score (${label})`, () => {
+    const r = stoneScore(inputs);
+    const sum = sumDerivation('stone-score', inputs);
     assert.equal(sum, r.score);
     assert.equal(sum, expected);
   });

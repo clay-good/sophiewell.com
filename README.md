@@ -49,7 +49,7 @@ Sophie's eight posture commitments
 telemetry, no third-party fetch, no AI, no cookies, no paid
 tier, MIT-licensed forever — are listed at
 [/commitments/](https://sophiewell.com/commitments/) and
-enforced by automated checks on every commit. 82 scoring tiles
+enforced by automated checks on every commit. 85 scoring tiles
 expose a collapsed "where does this come from?" derivation
 block ([docs/spec-v48.md](docs/spec-v48.md)) with the verbatim
 source formula, study cohort, limits of validity, and a live
@@ -376,9 +376,10 @@ canonical kg value to both the formula and the `boundsAdvisory()` plausibility
 note, so result and advisory match the kg entry exactly; the cross-group
 lb-parity test in `unit-toggle.spec.js` pins it. The A1 derivation tail is being
 worked down one verified wave at a time (the additive screeners `sirs`, `apfel`,
-and `aims65` landed most recently, each with CI-cross-checked component sums);
-the A3 labeled copy beyond Group E and the five v61 bedside tiles remains a
-tracked follow-up.
+and `aims65`, then the ED scores `feverpain`, `canadian-syncope`, and
+`stone-score`, landed most recently — 85 tiles now carry derivation, each with
+CI-cross-checked component sums); the A3 labeled copy beyond Group E and the five
+v61 bedside tiles remains a tracked follow-up.
 
 ## System design and architecture overview
 

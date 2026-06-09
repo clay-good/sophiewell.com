@@ -8,6 +8,8 @@
 import { el, clear } from '../lib/dom.js';
 import { fmt } from '../lib/num.js';
 import * as S from '../lib/scoring-v5.js';
+import { META } from '../lib/meta.js';
+import { renderDerivation, updateDerivationSteps } from '../lib/derivation.js';
 
 function field(label, id, opts = {}) {
   const wrap = el('p');
@@ -240,13 +242,17 @@ export const renderers = {
     root.appendChild(checkField('ED diagnosis of vasovagal syncope (-2)', 'cs-dxvaso'));
     root.appendChild(checkField('ED diagnosis of cardiac syncope (+2)', 'cs-dxcardiac'));
     const o = out(); root.appendChild(o);
+    const deriv = renderDerivation(META['canadian-syncope']);
+    if (deriv) root.appendChild(deriv);
     const ids = ['cs-vaso', 'cs-heart', 'cs-sbp', 'cs-trop', 'cs-axis', 'cs-qrs', 'cs-qtc', 'cs-dxvaso', 'cs-dxcardiac'];
     wire(ids, () => safe(o, () => {
-      const r = S.canadianSyncope({ vasovagalPredisp: chk('cs-vaso'), heartDisease: chk('cs-heart'), sbpExtreme: chk('cs-sbp'), tropElevated: chk('cs-trop'), abnormalAxis: chk('cs-axis'), qrsProlonged: chk('cs-qrs'), qtcProlonged: chk('cs-qtc'), edxVasovagal: chk('cs-dxvaso'), edxCardiac: chk('cs-dxcardiac') });
+      const inputs = { vasovagalPredisp: chk('cs-vaso'), heartDisease: chk('cs-heart'), sbpExtreme: chk('cs-sbp'), tropElevated: chk('cs-trop'), abnormalAxis: chk('cs-axis'), qrsProlonged: chk('cs-qrs'), qtcProlonged: chk('cs-qtc'), edxVasovagal: chk('cs-dxvaso'), edxCardiac: chk('cs-dxcardiac') };
+      const r = S.canadianSyncope(inputs);
       o.appendChild(list([
         li(`Canadian Syncope score: ${fmt(r.score, { fallback: '--' })}`),
         li(r.band, r.score >= 1 ? 'warn' : null),
       ]));
+      if (deriv) updateDerivationSteps(deriv, META['canadian-syncope'], inputs);
     }));
     screenerNote(root);
   },
@@ -302,12 +308,16 @@ export const renderers = {
     root.appendChild(checkField('Severely Inflamed tonsils', 'fp-inflamed'));
     root.appendChild(checkField('No cough or coryza', 'fp-nocough'));
     const o = out(); root.appendChild(o);
+    const deriv = renderDerivation(META.feverpain);
+    if (deriv) root.appendChild(deriv);
     wire(['fp-fever', 'fp-pus', 'fp-attend', 'fp-inflamed', 'fp-nocough'], () => safe(o, () => {
-      const r = S.feverpain({ fever: chk('fp-fever'), purulence: chk('fp-pus'), attendRapid: chk('fp-attend'), inflamedTonsils: chk('fp-inflamed'), noCough: chk('fp-nocough') });
+      const inputs = { fever: chk('fp-fever'), purulence: chk('fp-pus'), attendRapid: chk('fp-attend'), inflamedTonsils: chk('fp-inflamed'), noCough: chk('fp-nocough') };
+      const r = S.feverpain(inputs);
       o.appendChild(list([
         li(`FeverPAIN score: ${fmt(r.total, { fallback: '--' })} / 5`),
         li(r.band, r.total >= 4 ? 'warn' : null),
       ]));
+      if (deriv) updateDerivationSteps(deriv, META.feverpain, inputs);
     }));
     note(root, 'Complements Centor/McIsaac. NICE NG84 endorses FeverPAIN for antibiotic decisions.');
     screenerNote(root);
@@ -325,12 +335,16 @@ export const renderers = {
     ]));
     root.appendChild(checkField('Erythrocytes: microscopic hematuria present (+3)', 'st-hematuria'));
     const o = out(); root.appendChild(o);
+    const deriv = renderDerivation(META['stone-score']);
+    if (deriv) root.appendChild(deriv);
     wire(['st-sex', 'st-timing', 'st-nonblack', 'st-nausea', 'st-hematuria'], () => safe(o, () => {
-      const r = S.stoneScore({ sex: str('st-sex'), timing: str('st-timing'), nonBlack: chk('st-nonblack'), nausea: str('st-nausea'), hematuria: chk('st-hematuria') });
+      const inputs = { sex: str('st-sex'), timing: str('st-timing'), nonBlack: chk('st-nonblack'), nausea: str('st-nausea'), hematuria: chk('st-hematuria') };
+      const r = S.stoneScore(inputs);
       o.appendChild(list([
         li(`STONE score: ${fmt(r.score, { fallback: '--' })} / 13`),
         li(r.band, r.score >= 10 ? 'warn' : null),
       ]));
+      if (deriv) updateDerivationSteps(deriv, META['stone-score'], inputs);
     }));
     note(root, 'CT-reduction decision support: a high score with no red flags makes an uncomplicated ureteral stone likely.');
     screenerNote(root);

@@ -6,6 +6,34 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v61 A1 wave 2 — "show your work" derivation for three ED screening / decision scores)
+
+Continues working down the A1 derivation tail one fully-verified wave at a time.
+This wave backfills the per-input "Where does this come from?" contribution list
+on three additive emergency-department scores a nurse charts and must defend:
+**`feverpain`** (FeverPAIN sore-throat antibiotic decision), **`canadian-syncope`**
+(Canadian Syncope Risk Score), and **`stone-score`** (STONE ureteral-stone
+probability). Derivation coverage 82 → 85 tiles.
+
+- **`lib/meta.js`**: each gains a complete `derivation` block — `formula`,
+  per-input `components`, `bands`, `population`, `units`, `validity`, and a
+  verbatim `source` that reuses the tile's **already-vetted inline citation**
+  (no new clinical quote authored). The component set captures the real scoring
+  weights: FeverPAIN's five +1 items; the Canadian Syncope Score's signed
+  weights (−1 to +2, range −3..+11); and STONE's mixed categorical/binary items
+  via `points` callbacks (sex, timing, nausea) plus the two +3 binaries.
+- **`views/group-v9.js`**: the `feverpain`, `canadian-syncope`, and
+  `stone-score` renderers now mount `renderDerivation(META[id])` and call
+  `updateDerivationSteps` on every input change (the established spec-v48 wiring),
+  with the live `inputs` object lifted into a local so it feeds both the scoring
+  function and the show-your-work list.
+- **`test/unit/derivation.test.js`**: the three tiles join `ALL_DERIVATION_TILES`
+  (schema + units-coverage guards) and each gets component-sum cross-checks
+  asserting the derivation reproduces the live scoring function exactly
+  (`feverpain().total`, `canadianSyncope().score`, `stoneScore().score`) across
+  the zero, example, min/max boundary cases — including the Canadian Syncope
+  −3 floor and +11 ceiling, and STONE's full 0 and 13 range.
+
 ### Added (spec-v61 A1 — "show your work" derivation for three additive screening scores)
 
 Begins working down the A1 derivation tail (the per-input "Where does this come

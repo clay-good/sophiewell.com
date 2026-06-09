@@ -39,7 +39,14 @@
 > that reuses the tile's already-vetted inline citation), wired
 > through `renderDerivation`/`updateDerivationSteps` in
 > `views/group-g.js`; each component sum is cross-checked against
-> the live scoring function in `derivation.test.js`. A2
+> the live scoring function in `derivation.test.js`. Wave 2 of the
+> same tail adds the three additive ED screening / decision scores
+> `feverpain`, `canadian-syncope`, and `stone-score` (wired in
+> `views/group-v9.js`), bringing derivation coverage to 85 tiles;
+> the Canadian Syncope Score's signed weights and STONE's mixed
+> categorical/binary `points` callbacks are component-sum
+> cross-checked against `canadianSyncope().score`,
+> `stoneScore().score`, and `feverpain().total`. A2
 > (related-tool linking) is complete. A3 (chart-ready labeled copy) now also
 > covers the five 2+-numeric-output v61 bedside tiles
 > (`ebv-mabl`, `peds-transfusion-volume`, `rhig-dose`,
