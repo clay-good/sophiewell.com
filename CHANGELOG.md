@@ -6,6 +6,32 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v61 A1 wave 15 — "show your work" derivation for the Finnegan NAS; additive-score rollout complete)
+
+Adds **`finnegan`** (the modified Finnegan Neonatal Abstinence Scoring system) to
+the derivation rollout — the last additive-score tile. Its value is making the
+non-obvious per-sign weights explicit (e.g., excessive high-pitched cry +2 vs
+continuous +3; convulsions +5). Derivation coverage 116 → 117 tiles.
+
+- **`lib/meta.js`**: a `weightedBinaryItems([[inputKey, label, weight], …])` helper
+  builds the 24 weighted-binary sign components (a present sign contributes its
+  weight) from one source of truth, mirroring `FINNEGAN_WEIGHTS` in
+  `lib/scoring-v6.js`; three graded components (sleep 0-3, fever 0-2, respiratory
+  rate 0-2) clamp their value. Banded high (>=12) / elevated (8-11) / below-
+  threshold (<8), with a verbatim `source`.
+- **`views/group-v10.js`** (`finnegan`): the renderer lifts its `signs` object
+  into the call, mounts `renderDerivation(META.finnegan)`, and calls
+  `updateDerivationSteps` on change.
+- **`test/unit/derivation.test.js`**: `finnegan` joins `ALL_DERIVATION_TILES`
+  (schema + units guards) with component-sum cross-checks against
+  `finnegan().total` — none-reported (0), the documented example (10), and a
+  severe weighted mix — so any drift in the meta.js weights fails CI.
+
+With this wave every summed or weighted-additive score in the catalog carries a
+CI-cross-checked "show your work" derivation; the remaining no-derivation tiles
+are continuous formulas, single-ordinal pickers, and decision rules that do not
+fit the component-sum model.
+
 ### Added (spec-v61 A1 wave 14 — "show your work" derivation for the modified NIHSS)
 
 Adds **`mnihss`** (the modified NIHSS stroke-severity scale) to the derivation

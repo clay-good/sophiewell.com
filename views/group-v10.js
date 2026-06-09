@@ -130,6 +130,8 @@ export const renderers = {
     root.appendChild(rangeField('Fever: 37.2-38.3 C (1) / >38.3 C (2)', 'fn-fever', 0, 2));
     root.appendChild(rangeField('Respiratory rate: >60 (1) / >60 with retractions (2)', 'fn-respRate', 0, 2));
     const o = out(); root.appendChild(o);
+    const deriv = renderDerivation(META.finnegan);
+    if (deriv) root.appendChild(deriv);
     const ids = FINNEGAN_BINARY.map(([k]) => `fn-${k}`).concat(['fn-sleep', 'fn-fever', 'fn-respRate']);
     wire(ids, () => safe(o, () => {
       const signs = {};
@@ -141,6 +143,7 @@ export const renderers = {
         li(r.band, r.total >= 8 ? 'warn' : null),
       ]));
       note(o, r.note);
+      if (deriv) updateDerivationSteps(deriv, META.finnegan, signs);
     }));
     screenerNote(root);
   },

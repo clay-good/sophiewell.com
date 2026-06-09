@@ -51,7 +51,7 @@ tier, MIT-licensed forever — are listed at
 [/commitments/](https://sophiewell.com/commitments/) and
 enforced by automated checks on every commit. Scoring tiles
 expose a collapsed "where does this come from?" derivation block
-([docs/spec-v48.md](docs/spec-v48.md)) — 116 carry one today —
+([docs/spec-v48.md](docs/spec-v48.md)) — 117 carry one today —
 with the verbatim source formula, study cohort, limits of
 validity, and a live per-input contribution list whose component
 sums are cross-checked in CI against the tile's own scoring
@@ -390,7 +390,8 @@ indices `nutric`, `mnutric`, and `mods`; then the specialty point scales
 bedside scales `nips`, `cries`, and `peds-gcs`; then the age-banded pediatric
 organ-dysfunction scores `pelod2` and `psofa`; then `apache2` (the APACHE II
 adult-ICU severity score, twelve banded variables); then `mnihss` (the modified
-NIHSS stroke scale) — 116
+NIHSS stroke scale); then `finnegan` (the modified Finnegan neonatal-abstinence
+score) — 117
 scores now carry derivation, each with CI-cross-checked component sums); the A3
 labeled copy beyond Group E and the five v61 bedside tiles remains a tracked
 follow-up.

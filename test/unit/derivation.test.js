@@ -23,6 +23,7 @@ import { nips, cries, pedsGcs } from '../../lib/scoring-v4.js';
 import { pelod2, psofa } from '../../lib/scoring-v6.js';
 import { apache2 } from '../../lib/scoring-v6.js';
 import { mnihss } from '../../lib/scoring-v4.js';
+import { finnegan } from '../../lib/scoring-v6.js';
 
 // --- 1. Schema completeness ---------------------------------------------
 
@@ -123,7 +124,11 @@ const WAVE_61_A1M_TILES = ['apache2'];
 // spec-v61 A1 derivation tail, wave 14: modified NIHSS -- eleven 0-N stroke
 // items summed (0-31). Identity `points` reproduce the live total.
 const WAVE_61_A1N_TILES = ['mnihss'];
-const ALL_DERIVATION_TILES = [...WAVE_48_1A_TILES, ...WAVE_48_1B_TILES, ...WAVE_48_1C_TILES, ...WAVE_48_2A_TILES, ...WAVE_48_2B_TILES, ...WAVE_48_2C_TILES, ...WAVE_48_3A_TILES, ...WAVE_48_3B_TILES, ...WAVE_48_3C_TILES, ...WAVE_48_3D_TILES, ...WAVE_48_4A_TILES, ...WAVE_48_4B_TILES, ...WAVE_48_4C_TILES, ...WAVE_48_4D_TILES, ...WAVE_48_4E_TILES, ...WAVE_48_4F_TILES, ...WAVE_48_4G_TILES, ...WAVE_48_4H_TILES, ...WAVE_48_4I_TILES, ...WAVE_48_4J_TILES, ...WAVE_61_A1_TILES, ...WAVE_61_A1B_TILES, ...WAVE_61_A1C_TILES, ...WAVE_61_A1D_TILES, ...WAVE_61_A1E_TILES, ...WAVE_61_A1F_TILES, ...WAVE_61_A1G_TILES, ...WAVE_61_A1H_TILES, ...WAVE_61_A1I_TILES, ...WAVE_61_A1J_TILES, ...WAVE_61_A1K_TILES, ...WAVE_61_A1L_TILES, ...WAVE_61_A1M_TILES, ...WAVE_61_A1N_TILES];
+// spec-v61 A1 derivation tail, wave 15: Finnegan NAS -- 24 weighted-binary signs
+// (via weightedBinaryItems) plus three graded items (sleep/fever/respRate). The
+// meta.js weights mirror FINNEGAN_WEIGHTS; the cross-checks fail if any drifts.
+const WAVE_61_A1O_TILES = ['finnegan'];
+const ALL_DERIVATION_TILES = [...WAVE_48_1A_TILES, ...WAVE_48_1B_TILES, ...WAVE_48_1C_TILES, ...WAVE_48_2A_TILES, ...WAVE_48_2B_TILES, ...WAVE_48_2C_TILES, ...WAVE_48_3A_TILES, ...WAVE_48_3B_TILES, ...WAVE_48_3C_TILES, ...WAVE_48_3D_TILES, ...WAVE_48_4A_TILES, ...WAVE_48_4B_TILES, ...WAVE_48_4C_TILES, ...WAVE_48_4D_TILES, ...WAVE_48_4E_TILES, ...WAVE_48_4F_TILES, ...WAVE_48_4G_TILES, ...WAVE_48_4H_TILES, ...WAVE_48_4I_TILES, ...WAVE_48_4J_TILES, ...WAVE_61_A1_TILES, ...WAVE_61_A1B_TILES, ...WAVE_61_A1C_TILES, ...WAVE_61_A1D_TILES, ...WAVE_61_A1E_TILES, ...WAVE_61_A1F_TILES, ...WAVE_61_A1G_TILES, ...WAVE_61_A1H_TILES, ...WAVE_61_A1I_TILES, ...WAVE_61_A1J_TILES, ...WAVE_61_A1K_TILES, ...WAVE_61_A1L_TILES, ...WAVE_61_A1M_TILES, ...WAVE_61_A1N_TILES, ...WAVE_61_A1O_TILES];
 
 for (const id of ALL_DERIVATION_TILES) {
   test(`derivation schema: ${id} has all required fields`, () => {
@@ -802,6 +807,21 @@ for (const [label, inputs, expected] of [
     const sum = sumDerivation('mnihss', inputs);
     assert.equal(sum, r.total);
     assert.equal(sum, expected);
+  });
+}
+
+// --- spec-v61 A1 wave 15: Finnegan NAS ----------------------------------
+// Weighted-binary signs (present -> weight) plus graded sleep/fever/respRate.
+for (const [label, signs, expected] of [
+  ['none reported', {}, 0],
+  ['documented example = 10', { highPitchedCry: true, moro: true, sweating: true, looseStools: true, sleep: 2, fever: 1 }, 10],
+  ['severe mix (convulsions + marked tremors + cont cry + graded max + watery stools)', { convulsions: true, markedTremorsUndisturbed: true, continuousCry: true, wateryStools: true, sleep: 3, fever: 2, respRate: 2 }, null],
+]) {
+  test(`finnegan components sum equals finnegan() total (${label})`, () => {
+    const r = finnegan(signs);
+    const sum = sumDerivation('finnegan', signs);
+    assert.equal(sum, r.total);
+    if (expected !== null) assert.equal(sum, expected);
   });
 }
 
