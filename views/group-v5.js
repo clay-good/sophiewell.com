@@ -12,7 +12,7 @@ import { META } from '../lib/meta.js';
 import { renderDerivation, updateDerivationSteps } from '../lib/derivation.js';
 import { renderPrintable } from '../lib/print.js';
 import { resultRow } from '../lib/result-copy.js';
-import { correctionRate } from '../lib/trend.js';
+import { correctionRate, trend } from '../lib/trend.js';
 
 function field(label, id, opts = {}) {
   const wrap = el('p');
@@ -360,6 +360,11 @@ export const renderers = {
     root.appendChild(subOpts('Behavior'));
     root.appendChild(subOpts('Cardiovascular'));
     root.appendChild(subOpts('Respiratory'));
+    // spec-v62 §2 A1: optional early-warning-score trend (a rising PEWS
+    // escalates care). Default-empty, so the score and example are unchanged.
+    root.appendChild(el('p', { class: 'muted', text: 'Optional: trend vs a prior score (a rising early-warning trend escalates care).' }));
+    root.appendChild(field('Prior total PEWS (optional)', 'pews-prior'));
+    root.appendChild(field('Hours since prior PEWS (optional)', 'pews-hours'));
     const o = out(); root.appendChild(o);
     const deriv = renderDerivation(META.pews);
     if (deriv) root.appendChild(deriv);
@@ -375,8 +380,14 @@ export const renderers = {
         el('li', { text: r.band }),
       ]));
       if (deriv) updateDerivationSteps(deriv, META.pews, inputs);
+      if (str('pews-prior') !== '' && str('pews-hours') !== '' && num('pews-hours') > 0) {
+        const t = trend({ prior: num('pews-prior'), current: r.total, hours: num('pews-hours') });
+        o.appendChild(el('p', { class: t.direction === 'rising' ? 'warn' : 'muted',
+          text: `Trend: ${t.direction} ${fmt(Math.abs(t.delta))} point(s) over ${fmt(num('pews-hours'))} h (${fmt(t.ratePerHour)}/h).${t.direction === 'rising' ? ' A rising early-warning trend warrants escalation per the score\'s monitoring protocol.' : ''}` }));
+      }
     });
     ['Behavior', 'Cardiovascular', 'Respiratory'].forEach((id) => document.getElementById(id).addEventListener('change', run));
+    ['pews-prior', 'pews-hours'].forEach((id) => document.getElementById(id).addEventListener('input', run));
   },
 
   // ----- T14: E/M time selector ------------------------------------------

@@ -6,6 +6,24 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v62 Part A1 wave 3 — early-warning-score trend on `pews`)
+
+Completes the numeric-total early-warning family. `pews` (Brighton PEWS) returns
+a single additive total, so the same optional, default-empty "prior total +
+hours since" trend block fits it directly.
+
+- **`views/group-v5.js` (`pews`)**: adds the optional prior-score-vs-now trend
+  line (delta, per-hour rate, direction, rising-trend warning) via the generic
+  `trend()` core from `lib/trend.js`. The PEWS total, band, and derivation panel
+  are unchanged; the block is purely additive and renders only when both a prior
+  score and the hours since are entered.
+- **`meows` is deliberately excluded** from the score-trend: MEOWS is a
+  track-and-trigger instrument whose output is a red/yellow *flag count*, not a
+  single additive total, so a score-delta trend would be a clinically awkward
+  fit. The trend family is therefore the three single-total scores (`news2`,
+  `mews`, `pews`). Later A1 waves extend the primitive to creatinine Δ / KDIGO
+  and hemoglobin-drop rate. See [docs/spec-v62.md](docs/spec-v62.md).
+
 ### Added (spec-v62 Part A1 wave 2 — early-warning-score trend on `news2` and `mews`)
 
 Extends the trend primitive to the early-warning scores. A single NEWS2/MEWS
