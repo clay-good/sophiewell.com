@@ -12,7 +12,7 @@ import * as S4 from '../lib/scoring-v4.js';
 import { META } from '../lib/meta.js';
 import { renderDerivation, updateDerivationSteps } from '../lib/derivation.js';
 import { inchesToCm, labConvert } from '../lib/unit-convert.js';
-import { copyButton, formatCopyAll } from '../lib/clipboard.js';
+import { resultRow } from '../lib/result-copy.js';
 import { unitField, unitNum, WEIGHT_UNITS } from '../lib/field-units.js';
 
 function field(label, id, opts = {}) {
@@ -54,23 +54,13 @@ function safe(out, fn) {
   try { fn(); } catch (err) { out.appendChild(el('p', { class: 'muted', text: err.message })); }
 }
 
-// spec-v61 §2 A3: chart-ready labeled copy. A multi-output tile builds its
-// results as `{label, value, units}` items, renders them as a list, and offers
-// a "Copy results" button that pastes clean `Label: Value Units` lines via
-// lib/clipboard.js `formatCopyAll` — instead of the universal "Copy all"
-// scraping `innerText` into a blob. The list text is identical to what the
-// hand-built `<li>`s produced, so the numeric-correctness sweep is unaffected.
-function resultList(o, items) {
-  const lines = items.filter(Boolean);
-  o.appendChild(el('ul', {}, lines.map((it) => el('li', {
-    text: it.units ? `${it.label}: ${it.value} ${it.units}` : `${it.label}: ${it.value}`,
-  }))));
-  const live = el('span', { class: 'copy-live visually-hidden', 'aria-live': 'polite', role: 'status' });
-  o.appendChild(el('p', { class: 'copy-row' }, [
-    copyButton(() => formatCopyAll(lines), { label: 'Copy results', live }),
-    live,
-  ]));
-}
+// spec-v61 §2 A3: chart-ready labeled copy via the shared resultRow helper
+// (lib/result-copy.js). A multi-output tile builds its results as
+// `{label, value, units}` items (or `{text}` for a band/interpretation line) and
+// gets a "Copy results" button that pastes clean `Label: Value Units` lines
+// instead of the universal "Copy all" scraping `innerText` into a blob. The list
+// text is byte-identical to the prior hand-built `<li>`s, so the numeric-
+// correctness sweep is unaffected.
 
 export const renderers = {
   'unit-converter'(root) {
@@ -120,7 +110,7 @@ export const renderers = {
     const o = out(); root.appendChild(o);
     const run = () => safe(o, () => {
       const w = unitNum('w'), h = unitNum('h');
-      resultList(o, [
+      resultRow(o, [
         { label: 'Du Bois', value: C.bsaDuBois({ weightKg: w, heightCm: h }), units: 'm^2' },
         { label: 'Mosteller', value: C.bsaMosteller({ weightKg: w, heightCm: h }), units: 'm^2' },
       ]);
@@ -151,7 +141,7 @@ export const renderers = {
       const r = C.anionGap({ sodium: num('na'), chloride: num('cl'), bicarbonate: num('hco3'), albuminGdl: alb === '' ? null : Number(alb) });
       const items = [{ label: 'Anion gap', value: r.anionGap }];
       if (r.correctedAnionGap != null) items.push({ label: 'Albumin-corrected', value: r.correctedAnionGap });
-      resultList(o, items);
+      resultRow(o, items);
     });
     ['na', 'cl', 'hco3', 'alb'].forEach((id) => document.getElementById(id).addEventListener('input', run));
   },
@@ -175,7 +165,7 @@ export const renderers = {
     const run = () => safe(o, () => {
       const measuredNa = num('na'), glucose = num('g');
       const r = C.correctedSodium({ measuredNa, glucose });
-      resultList(o, [
+      resultRow(o, [
         { label: 'Corrected Na (factor 1.6)', value: r.naBy1_6, units: 'mEq/L' },
         { label: 'Corrected Na (factor 2.4)', value: r.naBy2_4, units: 'mEq/L' },
       ]);
@@ -193,7 +183,7 @@ export const renderers = {
     const run = () => safe(o, () => {
       const fio2 = num('fio2'), paco2 = num('paco2'), pao2 = num('pao2');
       const r = C.aaGradient({ fio2, paco2, pao2 });
-      resultList(o, [
+      resultRow(o, [
         { label: 'PAO2', value: r.PAO2, units: 'mmHg' },
         { label: 'A-a gradient', value: r.aaGradient, units: 'mmHg' },
       ]);
@@ -340,10 +330,10 @@ export const renderers = {
     const o = out(); root.appendChild(o);
     const run = () => safe(o, () => {
       const r = V4.osmolalGap({ measuredOsm: num('measured'), sodium: num('og-na'), glucoseMgDl: num('og-glu'), bunMgDl: num('og-bun'), etohMgDl: num('og-etoh') || 0 });
-      o.appendChild(el('ul', {}, [
-        el('li', { text: `Calculated osm: ${r.calculatedOsm.toFixed(1)}` }),
-        el('li', { text: `Osmolal gap: ${r.gap.toFixed(1)} (>10 raises suspicion of toxic alcohols)` }),
-      ]));
+      resultRow(o, [
+        { text: `Calculated osm: ${r.calculatedOsm.toFixed(1)}` },
+        { text: `Osmolal gap: ${r.gap.toFixed(1)} (>10 raises suspicion of toxic alcohols)` },
+      ]);
     });
     ['measured', 'og-na', 'og-glu', 'og-bun', 'og-etoh'].forEach((id) => document.getElementById(id).addEventListener('input', run));
   },
@@ -358,11 +348,11 @@ export const renderers = {
       const aa = C.aaGradient({ fio2: num('sf-fio2'), paco2: num('sf-paco2'), pao2: num('sf-pao2') });
       const pf = C.pfRatio({ pao2: num('sf-pao2'), fio2: num('sf-fio2') });
       const expectedAa = num('sf-age') ? num('sf-age') / 4 + 4 : null;
-      o.appendChild(el('ul', {}, [
-        el('li', { text: `A-a gradient: ${aa.aaGradient.toFixed(1)} mmHg (PAO2 ${aa.PAO2.toFixed(1)})` }),
-        expectedAa ? el('li', { text: `Expected A-a by age: ${expectedAa.toFixed(1)}` }) : null,
-        el('li', { text: `P/F ratio: ${pf.ratio} - ${pf.category}` }),
-      ].filter(Boolean)));
+      resultRow(o, [
+        { text: `A-a gradient: ${aa.aaGradient.toFixed(1)} mmHg (PAO2 ${aa.PAO2.toFixed(1)})` },
+        expectedAa ? { text: `Expected A-a by age: ${expectedAa.toFixed(1)}` } : null,
+        { text: `P/F ratio: ${pf.ratio} - ${pf.category}` },
+      ]);
     });
     ['sf-fio2', 'sf-pao2', 'sf-paco2', 'sf-age'].forEach((id) => document.getElementById(id).addEventListener('input', run));
   },
@@ -373,10 +363,10 @@ export const renderers = {
     const o = out(); root.appendChild(o);
     const run = () => safe(o, () => {
       const r = V4.wintersFormula({ hco3: num('wf-hco3'), measuredPaco2: num('wf-paco2') || NaN });
-      o.appendChild(el('ul', {}, [
-        el('li', { text: `Expected PaCO2: ${r.expectedPaco2Low.toFixed(1)} to ${r.expectedPaco2High.toFixed(1)} mmHg` }),
-        r.secondaryDisorder ? el('li', { text: r.secondaryDisorder }) : null,
-      ].filter(Boolean)));
+      resultRow(o, [
+        { text: `Expected PaCO2: ${r.expectedPaco2Low.toFixed(1)} to ${r.expectedPaco2High.toFixed(1)} mmHg` },
+        r.secondaryDisorder ? { text: r.secondaryDisorder } : null,
+      ]);
     });
     ['wf-hco3', 'wf-paco2'].forEach((id) => document.getElementById(id).addEventListener('input', run));
   },
@@ -389,12 +379,12 @@ export const renderers = {
     const run = () => safe(o, () => {
       const sbp = num('si-sbp'), dbp = num('si-dbp'), hr = num('si-hr');
       const mapV = C.map({ sbp, dbp });
-      o.appendChild(el('ul', {}, [
-        el('li', { text: `MAP: ${mapV.toFixed(1)} mmHg` }),
-        el('li', { text: `Pulse pressure: ${V4.pulsePressure({ sbp, dbp })} mmHg` }),
-        el('li', { text: `Shock index (HR/SBP): ${fmt(V4.shockIndex({ hr, sbp }), { digits: 2, fallback: '(enter HR & SBP > 0)' })}` }),
-        el('li', { text: `Modified shock index (HR/MAP): ${fmt(V4.modifiedShockIndex({ hr, sbp, dbp }), { digits: 2, fallback: '(enter HR, SBP & DBP > 0)' })}` }),
-      ]));
+      resultRow(o, [
+        { text: `MAP: ${mapV.toFixed(1)} mmHg` },
+        { text: `Pulse pressure: ${V4.pulsePressure({ sbp, dbp })} mmHg` },
+        { text: `Shock index (HR/SBP): ${fmt(V4.shockIndex({ hr, sbp }), { digits: 2, fallback: '(enter HR & SBP > 0)' })}` },
+        { text: `Modified shock index (HR/MAP): ${fmt(V4.modifiedShockIndex({ hr, sbp, dbp }), { digits: 2, fallback: '(enter HR, SBP & DBP > 0)' })}` },
+      ]);
     });
     ['si-sbp', 'si-dbp', 'si-hr'].forEach((id) => document.getElementById(id).addEventListener('input', run));
   },

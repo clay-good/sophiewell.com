@@ -88,14 +88,22 @@
 > their derivation mirrors the scoring module's age-band tables and
 > is cross-checked across age bands, bringing derivation coverage to
 > 114 tiles. A2
-> (related-tool linking) is complete. A3 (chart-ready labeled copy) now also
-> covers the five 2+-numeric-output v61 bedside tiles
+> (related-tool linking) is complete. A3 (chart-ready labeled copy) covers the
+> five 2+-numeric-output v61 bedside tiles
 > (`ebv-mabl`, `peds-transfusion-volume`, `rhig-dose`,
-> `fluid-balance`, `carb-insulin-bolus`) via a shared `resultRow`
-> helper in `views/group-v11.js`, byte-identical on-screen text
-> with a `formatCopyAll`-backed "Copy results" button; the labeled
-> copy beyond these and Group E (other view modules) is the
-> remaining A3 tail.
+> `fluid-balance`, `carb-insulin-bolus`) and the Group E multi-output
+> calculators; the `resultRow` helper has been promoted to a shared
+> module (`lib/result-copy.js`) so `group-v11`, `group-e`, and future
+> view modules use one byte-identical implementation. A3's reach then
+> extended to the Group E multi-output *suite* tiles that still scraped
+> innerText — `osmolal-gap`, `aa-pf-suite`, `winters`, and
+> `shock-index` now build their results as `resultRow` items with a
+> `formatCopyAll`-backed "Copy results" button (byte-identical
+> on-screen text). The remaining A3 tail is the multi-output suite
+> tiles whose primary result sits in an `<h2>` headline
+> (`anion-gap-dd`, `corrected-ca-na`, `egfr-suite`, `qtc-suite`,
+> `bw-bsa-suite`), which need a small restructure to fold the headline
+> into the copied result set.
 > v61 has two parts.
 > **Part A** is
 > a zero-tile *enhancement* pass that raises the value of the

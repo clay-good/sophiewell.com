@@ -6,6 +6,30 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Changed (spec-v61 A3 — shared chart-ready labeled-copy helper + Group E suite-tile rollout)
+
+Advances the A3 "chart-ready labeled copy" tail (clean `Label: Value Units`
+paste instead of the universal "Copy all" scraping `innerText`) with a dedup and
+a rollout:
+
+- **`lib/result-copy.js`** (new): the `resultRow` helper — previously duplicated
+  as `resultRow` in `views/group-v11.js` and `resultList` in `views/group-e.js` —
+  is promoted to one shared module. It renders result items
+  (`{label, value, units?, cls?}` or a free `{text, cls?}` line) as a `<ul>` plus
+  a `formatCopyAll`-backed "Copy results" button, byte-identical to a hand-built
+  list. `group-v11` and `group-e` now import it (their local copies removed; the
+  now-unused `clipboard` imports dropped), so there is one implementation to
+  maintain and future view modules can reuse it.
+- **`views/group-e.js`**: four multi-output "suite" calculators that still built
+  a plain `<ul>` and relied on innerText scraping now use `resultRow` —
+  `osmolal-gap`, `aa-pf-suite`, `winters`, and `shock-index` — gaining a clean
+  "Copy results" button with on-screen text unchanged.
+
+No clinical-result, data, or dependency change. The on-screen text is
+byte-identical (the spec-v9 numeric-correctness sweep and the 320px no-horizontal-
+scroll sweep both still pass); lint (incl. output-safety + catalog-truth), the
+unit suite, build, and SBOM (now 68 source files) are green.
+
 ### Added (spec-v61 A1 wave 12 — "show your work" derivation for the age-banded pediatric organ-dysfunction scores: PELOD-2 & pSOFA)
 
 Continues the A1 derivation tail with the two age-banded PICU organ-dysfunction

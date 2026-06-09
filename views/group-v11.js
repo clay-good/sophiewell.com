@@ -13,7 +13,7 @@
 import { el, clear } from '../lib/dom.js';
 import { fmt } from '../lib/num.js';
 import { boundsAdvisory } from '../lib/bounds.js';
-import { copyButton, formatCopyAll } from '../lib/clipboard.js';
+import { resultRow } from '../lib/result-copy.js';
 import * as C from '../lib/clinical-v7.js';
 import { unitField, unitNum, WEIGHT_UNITS } from '../lib/field-units.js';
 
@@ -54,30 +54,10 @@ function list(items) { return el('ul', {}, items.filter(Boolean)); }
 function li(text, cls) { return el('li', cls ? { class: cls, text } : { text }); }
 
 // spec-v61 §2 A3: chart-ready labeled copy for the genuinely multi-output
-// bedside tiles. Each item is { label, value, units?, cls? } (a labeled numeric
-// result) or { text, cls? } (a band / interpretation line). The <li> text is
-// built with the same `Label: Value Units` join formatCopyAll uses, so the
-// "Copy results" button pastes clean lines identical to what is on screen --
-// instead of the universal "Copy all" scraping innerText into a chart blob. The
-// rendered text is byte-identical to the prior hand-built <li>s (Group E's A4
-// pattern), so the numeric-correctness sweep is unaffected.
-function resultRow(o, items) {
-  const rows = items.filter(Boolean);
-  o.appendChild(el('ul', {}, rows.map((it) => {
-    const text = it.text !== undefined
-      ? it.text
-      : (it.units ? `${it.label}: ${it.value} ${it.units}` : `${it.label}: ${it.value}`);
-    return li(text, it.cls || null);
-  })));
-  const copyItems = rows.map((it) => (it.text !== undefined
-    ? { value: it.text }
-    : { label: it.label, value: it.value, units: it.units }));
-  const live = el('span', { class: 'copy-live visually-hidden', 'aria-live': 'polite', role: 'status' });
-  o.appendChild(el('p', { class: 'copy-row' }, [
-    copyButton(() => formatCopyAll(copyItems), { label: 'Copy results', live }),
-    live,
-  ]));
-}
+// bedside tiles, via the shared resultRow helper (lib/result-copy.js). Each item
+// is { label, value, units?, cls? } (a labeled numeric result) or { text, cls? }
+// (a band / interpretation line); the rendered text is byte-identical to a
+// hand-built <li> list, so the numeric-correctness sweep is unaffected.
 function note(root, text) { if (text) root.appendChild(el('p', { class: 'muted', text })); }
 function estimateNote(root) {
   root.appendChild(el('p', { class: 'muted', text: 'Estimate / decision support, not an order. Verify against local protocol and an independent double-check before acting.' }));
