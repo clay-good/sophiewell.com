@@ -320,15 +320,21 @@ timeline straight from the tile.
 **Interpretation-band parity (spec-v61 A8).** Every backfilled score now shows a
 source-anchored "Per source:" band block under its citation — the verbatim
 meaning of the number from the instrument's own paper, not Sophie's phrasing.
-The pass raised `META[id].interpretation` coverage from 150 to 195 of the
-catalog's scores (45 added), covering the recent bedside scores plus classics
+The pass raised `META[id].interpretation` coverage from 150 to 196 of the
+catalog's scores, covering the recent bedside scores plus classics
 (APGAR, qSOFA, MELD,
 Ranson, Alvarado, AUDIT-C, ASCVD/PREVENT, KDIGO-AKI, ARISCAT, APACHE II, Braden
 Q, and more). The bands are authored as one reviewable merge map in
 [lib/meta.js](lib/meta.js) and render through the shared `renderMetaBlock` with
 zero per-view wiring; a CI guard ([test/unit/meta-interpretation.test.js](test/unit/meta-interpretation.test.js))
 pins every band to `sourceQuoted: true`, a non-empty `sourceCitation`, ≤200
-chars, and no Sophie-authored phrasing.
+chars, and no Sophie-authored phrasing. A second invariant in the same guard
+requires every tile that carries discrete `derivation.bands` (a score with named
+result cut-points) to also carry an interpretation block, so the "where the
+number comes from" and "what it means per source" displays cannot drift apart;
+continuous-mortality scores (`pelod2`, `psofa`) omit discrete bands and stay out
+of the rule. The final tile to satisfy this was `pews` (Brighton PEWS), whose
+interpretation restates its Monaghan-2005 escalation thresholds.
 
 **Opt-in input persistence (spec-v61 A7).** Tiles with numeric/choice inputs
 show a **"Remember my inputs on this device"** toggle in the references block,

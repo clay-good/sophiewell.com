@@ -62,3 +62,24 @@ test('META.interpretation: every band text <=200 chars and free of Sophie-author
   assert.deepEqual(offenders, [],
     `interpretation guard failures:\n  - ${offenders.join('\n  - ')}`);
 });
+
+// spec-v61 A8 invariant: any tile whose derivation carries discrete result
+// bands (a score that maps its total to named cut-points) must also surface a
+// source-anchored "Per source:" interpretation block, so the bedside user sees
+// what the number means and not just where it comes from. Continuous-mortality
+// scores (e.g. pelod2, psofa) deliberately omit derivation.bands and are
+// therefore out of this invariant. This guard keeps the two displays from
+// drifting apart as future band-carrying scores are added.
+test('META: every tile with discrete derivation.bands also carries an interpretation block', () => {
+  const offenders = [];
+  for (const [id, m] of Object.entries(META)) {
+    if (!m || !m.derivation) continue;
+    const bands = m.derivation.bands;
+    if (!Array.isArray(bands) || bands.length === 0) continue;
+    if (!m.interpretation || !Array.isArray(m.interpretation.bands) || m.interpretation.bands.length === 0) {
+      offenders.push(`${id}: has derivation.bands but no interpretation.bands`);
+    }
+  }
+  assert.deepEqual(offenders, [],
+    `derivation-band tiles missing interpretation:\n  - ${offenders.join('\n  - ')}`);
+});

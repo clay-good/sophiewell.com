@@ -6,6 +6,30 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v61 A8 — interpretation parity for `pews`; CI invariant locking derivation-band ↔ interpretation coverage)
+
+Closes the last gap between the two per-tile explanation displays. An audit
+found exactly one tile — **`pews`** (the Brighton Pediatric Early Warning Score)
+— that carried discrete `derivation.bands` (a total mapped to named escalation
+cut-points) but no `interpretation` block, so it showed *where the number comes
+from* without the source-anchored *what it means* under the mandatory "Per
+source:" header.
+
+- **`lib/meta.js`** (`pews`): adds an `interpretation` block whose four bands
+  (`0-2`, `3`, `4`, `5+`) mirror the tile's already-vetted Monaghan 2005
+  Brighton-PEWS escalation thresholds — routine monitoring → hourly + bedside
+  review → half-hourly + medical review → urgent senior review — with
+  `sourceQuoted: true` and the Monaghan 2005 citation. No new clinical claim:
+  the bands restate the derivation's source-anchored escalation labels in the
+  interpretation slot.
+- **`test/unit/meta-interpretation.test.js`**: adds an invariant guard — every
+  tile with discrete `derivation.bands` must also carry an `interpretation`
+  block. This locks the two displays together so a future band-carrying score
+  cannot ship the component breakdown without the source-anchored meaning.
+  Continuous-mortality scores (`pelod2`, `psofa`) deliberately omit
+  `derivation.bands` (their total maps to a continuous calibration, not discrete
+  cut-points) and are correctly outside the invariant.
+
 ### Added (spec-v61 A3 wave 5 — chart-ready labeled copy for the multi-output Group V7 oxygenation / renal-acid / lipid tiles)
 
 Extends the A3 "Copy results" affordance to the five multi-output Group V7

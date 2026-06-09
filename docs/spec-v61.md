@@ -5,7 +5,12 @@
 > interpretation-band parity, and A7 opt-in input persistence landed —
 > A6 extended the shared print template to `sbar-template` and
 > `code-blue-clock`; A8 backfilled 45 score tiles, raising
-> `META[id].interpretation` coverage from 150 to 195; A7 added the
+> `META[id].interpretation` coverage from 150 to 196 (the final tile,
+> `pews`, was the last carrying discrete `derivation.bands` without an
+> interpretation; a `meta-interpretation.test.js` invariant now requires
+> every discrete-band score to surface a source-anchored "Per source:"
+> block, while continuous-mortality scores like `pelod2`/`psofa` that omit
+> `derivation.bands` stay correctly out of the rule); A7 added the
 > client-only, off-by-default "Remember my inputs on this device"
 > toggle (`lib/input-persist.js`, numeric/choice inputs only, never
 > PHI free-text). A4 unit toggles and A3 labeled copy then landed for
