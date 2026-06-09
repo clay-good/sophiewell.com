@@ -6,6 +6,30 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v61 A3 wave 2 — chart-ready labeled copy for the multi-output Group V5 lab / clinical-math tiles)
+
+Extends the A3 "Copy results" affordance — clean `Label: Value Units` lines via
+`lib/clipboard.js` `formatCopyAll`, instead of a scraped `innerText` blob —
+beyond Group E and the v61 bedside tiles to the six multi-output Group V5
+calculators: **`sodium-correction`**, **`free-water-deficit`**, **`iron-ganzoni`**,
+**`pbw-ardsnet`**, **`lights`**, and **`corrected-anion-gap`**. These are exactly
+the dense, multi-row lab/clinical-math results a nurse pastes into a chart.
+
+- **`views/group-v5.js`**: imports the shared `resultRow` helper
+  (`lib/result-copy.js`) and rebuilds each tile's result list through it. The
+  per-`<li>` text is byte-identical to the prior hand-built list (so the
+  spec-v9 numeric-correctness sweep is unaffected); each tile now renders the
+  labeled "Copy results" button, and free band / interpretation / safety-note
+  lines pass through as `{ text }` items so they join the copy payload verbatim.
+- **`test/integration/unit-toggle.spec.js`**: the six ids join the
+  "multi-output tiles offer a labeled Copy results button" sweep, so CI asserts
+  the affordance renders after the example is applied.
+
+This leaves the remaining single-numeric-output Group V5 tiles (`rsbi`,
+`mentzer`, `saag`, `r-factor`, `kdigo-aki`) — whose copy payload is one value
+plus an interpretation line, below the "2+ numeric output" bar — on the
+universal "Copy all", consistent with the A3 scope.
+
 ### Added (spec-v61 A1 wave 15 — "show your work" derivation for the Finnegan NAS; additive-score rollout complete)
 
 Adds **`finnegan`** (the modified Finnegan Neonatal Abstinence Scoring system) to

@@ -85,6 +85,8 @@ test('multi-output tiles offer a labeled "Copy results" button', async ({ page }
   const ids = [
     'bsa', 'anion-gap', 'corrected-sodium', 'aa-gradient',
     'ebv-mabl', 'peds-transfusion-volume', 'rhig-dose', 'fluid-balance', 'carb-insulin-bolus',
+    // spec-v61 A3 wave 2: the multi-output Group V5 lab / clinical-math tiles.
+    'sodium-correction', 'free-water-deficit', 'iron-ganzoni', 'pbw-ardsnet', 'lights', 'corrected-anion-gap',
   ];
   for (const id of ids) {
     await page.goto('/#' + id, { waitUntil: 'load' });

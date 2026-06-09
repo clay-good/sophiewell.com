@@ -96,9 +96,12 @@
 > additive-score tile; with it every summed/weighted-additive score
 > in the catalog carries derivation, bringing coverage to 117 tiles. A2
 > (related-tool linking) is complete. A3 (chart-ready labeled copy) is now
-> complete across Group E and the five 2+-numeric-output v61 bedside
+> complete across Group E, the five 2+-numeric-output v61 bedside
 > tiles (`ebv-mabl`, `peds-transfusion-volume`, `rhig-dose`,
-> `fluid-balance`, `carb-insulin-bolus`). The `resultRow` helper was
+> `fluid-balance`, `carb-insulin-bolus`), and (A3 wave 2) the six
+> multi-output Group V5 lab / clinical-math tiles (`sodium-correction`,
+> `free-water-deficit`, `iron-ganzoni`, `pbw-ardsnet`, `lights`,
+> `corrected-anion-gap`). The `resultRow` helper was
 > promoted to a shared module (`lib/result-copy.js`) so `group-v11`,
 > `group-e`, and future view modules use one byte-identical
 > implementation, then every multi-output Group E calculator was wired
@@ -108,9 +111,10 @@
 > `fena-feurea`, `qtc-suite`, `corrected-ca-na`), and `anion-gap-dd`
 > (whose primary anion-gap result was folded out of its `<h2>` headline
 > into the labeled `resultRow` list so it is part of the "Copy results"
-> payload). Every multi-output tile now offers a `formatCopyAll`-backed
-> "Copy results" button; the remaining single-output calculators have
-> nothing multi-line to copy and keep the universal "Copy all".
+> payload). Every multi-output Group E and Group V5 tile now offers a
+> `formatCopyAll`-backed "Copy results" button; single-numeric-output
+> calculators (one value plus an interpretation line) have nothing
+> multi-line worth a separate button and keep the universal "Copy all".
 > v61 has two parts.
 > **Part A** is
 > a zero-tile *enhancement* pass that raises the value of the

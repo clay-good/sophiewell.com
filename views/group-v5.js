@@ -11,6 +11,7 @@ import { breachNotificationDeadlines } from '../lib/regulatory.js';
 import { META } from '../lib/meta.js';
 import { renderDerivation, updateDerivationSteps } from '../lib/derivation.js';
 import { renderPrintable } from '../lib/print.js';
+import { resultRow } from '../lib/result-copy.js';
 
 function field(label, id, opts = {}) {
   const wrap = el('p');
@@ -89,16 +90,16 @@ export const renderers = {
         targetChangePer24h: num('tgt'),
         acuity: str('acuity'),
       });
-      o.appendChild(el('ul', {}, [
-        el('li', { text: `Total body water: ${r.tbwLiters} L` }),
-        el('li', { text: `Direction: ${r.direction}` }),
-        r.totalSodiumDeficitMeq != null ? el('li', { text: `Total Na ${r.totalSodiumDeficitMeq >= 0 ? 'deficit' : 'excess'} vs 140: ${Math.abs(r.totalSodiumDeficitMeq)} mEq` }) : null,
-        el('li', { text: `ΔNa per liter infusate: ${r.changePerLiterInfusate} mEq/L` }),
-        r.volumeLiters != null ? el('li', { text: `Volume to reach target: ${r.volumeLiters} L over 24 h` }) : null,
-        r.rateMlPerHour != null ? el('li', { text: `Infusion rate: ${r.rateMlPerHour} mL/h` }) : null,
-        r.directionNote ? el('li', { class: 'warn', text: r.directionNote }) : null,
-        el('li', { text: r.safetyNote }),
-      ]));
+      resultRow(o, [
+        { label: 'Total body water', value: r.tbwLiters, units: 'L' },
+        { label: 'Direction', value: r.direction },
+        r.totalSodiumDeficitMeq != null ? { label: `Total Na ${r.totalSodiumDeficitMeq >= 0 ? 'deficit' : 'excess'} vs 140`, value: Math.abs(r.totalSodiumDeficitMeq), units: 'mEq' } : null,
+        { label: 'ΔNa per liter infusate', value: r.changePerLiterInfusate, units: 'mEq/L' },
+        r.volumeLiters != null ? { label: 'Volume to reach target', value: `${r.volumeLiters} L over 24 h` } : null,
+        r.rateMlPerHour != null ? { label: 'Infusion rate', value: r.rateMlPerHour, units: 'mL/h' } : null,
+        r.directionNote ? { text: r.directionNote, cls: 'warn' } : null,
+        { text: r.safetyNote },
+      ]);
     });
     ['w', 'sex', 'age', 'na', 'infusate', 'tgt', 'acuity'].forEach((id) => document.getElementById(id).addEventListener('input', run));
   },
@@ -120,13 +121,13 @@ export const renderers = {
         currentNa: num('na'), targetNa: num('tgt'),
         replaceOverHours: num('hrs'),
       });
-      o.appendChild(el('ul', {}, [
-        el('li', { text: `TBW: ${r.tbwLiters} L` }),
-        el('li', { text: `Free water deficit: ${r.deficitLiters} L` }),
-        el('li', { text: `Replacement rate: ${r.replacementRateMlPerHour} mL/h` }),
-        el('li', { text: `Implied Na drop: ${r.impliedNaDropPer24h} mEq/L/24h` }),
-        el('li', { text: r.safetyNote }),
-      ]));
+      resultRow(o, [
+        { label: 'TBW', value: r.tbwLiters, units: 'L' },
+        { label: 'Free water deficit', value: r.deficitLiters, units: 'L' },
+        { label: 'Replacement rate', value: r.replacementRateMlPerHour, units: 'mL/h' },
+        { label: 'Implied Na drop', value: r.impliedNaDropPer24h, units: 'mEq/L/24h' },
+        { text: r.safetyNote },
+      ]);
     });
     ['w', 'sex', 'age', 'na', 'tgt', 'hrs'].forEach((id) => document.getElementById(id).addEventListener('input', run));
   },
@@ -144,10 +145,10 @@ export const renderers = {
         weightKg: num('w'), currentHb: num('hb'), targetHb: num('tgt'),
         ironStoresMg: sRaw === '' ? null : Number(sRaw),
       });
-      o.appendChild(el('ul', {}, [
-        el('li', { text: `Iron stores used: ${r.ironStoresMg} mg` }),
-        el('li', { text: `Total iron deficit: ${r.totalDeficitMg} mg` }),
-      ]));
+      resultRow(o, [
+        { label: 'Iron stores used', value: r.ironStoresMg, units: 'mg' },
+        { label: 'Total iron deficit', value: r.totalDeficitMg, units: 'mg' },
+      ]);
     });
     ['w', 'hb', 'tgt', 'stores'].forEach((id) => document.getElementById(id).addEventListener('input', run));
   },
@@ -161,11 +162,11 @@ export const renderers = {
     const run = () => safe(o, () => {
       const r = V5.pbwArdsnet({ heightCm: num('h'), sex: str('sex'), mlPerKg: num('mlkg') });
       const fb = '(height too low for PBW)';
-      o.appendChild(el('ul', {}, [
-        el('li', { text: `Predicted body weight: ${fmt(r.pbwKg, { unit: 'kg', fallback: fb })}` }),
-        el('li', { text: `Target Vt: ${fmt(r.vtTargetMl, { unit: 'mL', fallback: fb })}` }),
-        el('li', { text: `ARDSnet range (4-8 mL/kg): ${r.vtRangeMl.low == null ? fb : `${r.vtRangeMl.low} - ${r.vtRangeMl.high} mL`}` }),
-      ]));
+      resultRow(o, [
+        { label: 'Predicted body weight', value: fmt(r.pbwKg, { unit: 'kg', fallback: fb }) },
+        { label: 'Target Vt', value: fmt(r.vtTargetMl, { unit: 'mL', fallback: fb }) },
+        { label: 'ARDSnet range (4-8 mL/kg)', value: r.vtRangeMl.low == null ? fb : `${r.vtRangeMl.low} - ${r.vtRangeMl.high} mL` },
+      ]);
       if (r.warning) o.appendChild(el('p', { class: 'warn', text: r.warning }));
     });
     ['h', 'sex', 'mlkg'].forEach((id) => document.getElementById(id).addEventListener('input', run));
@@ -199,12 +200,12 @@ export const renderers = {
         pleuralProtein: num('pp'), serumProtein: num('sp'),
         pleuralLdh: num('pl'), serumLdh: num('sl'), serumLdhUln: num('uln'),
       });
-      o.appendChild(el('ul', {}, [
-        el('li', { text: `Protein ratio: ${r.proteinRatio} (>0.5 ${r.criterionProtein ? '✓' : '✗'})` }),
-        el('li', { text: `LDH ratio: ${r.ldhRatio} (>0.6 ${r.criterionLdhRatio ? '✓' : '✗'})` }),
-        el('li', { text: `Pleural LDH vs ULN: ${r.ldhVsUlnRatio} (>2/3 ${r.criterionLdhVsUln ? '✓' : '✗'})` }),
-        el('li', { text: `Classification: ${r.classification}` }),
-      ]));
+      resultRow(o, [
+        { label: 'Protein ratio', value: `${r.proteinRatio} (>0.5 ${r.criterionProtein ? '✓' : '✗'})` },
+        { label: 'LDH ratio', value: `${r.ldhRatio} (>0.6 ${r.criterionLdhRatio ? '✓' : '✗'})` },
+        { label: 'Pleural LDH vs ULN', value: `${r.ldhVsUlnRatio} (>2/3 ${r.criterionLdhVsUln ? '✓' : '✗'})` },
+        { label: 'Classification', value: r.classification },
+      ]);
     });
     ['pp', 'sp', 'pl', 'sl', 'uln'].forEach((id) => document.getElementById(id).addEventListener('input', run));
   },
@@ -504,13 +505,13 @@ export const renderers = {
         includePotassium: usek,
         k: usek ? (kRaw === '' ? null : Number(kRaw)) : null,
       });
-      o.appendChild(el('ul', {}, [
-        el('li', { text: `Measured AG: ${r.measuredAg} mEq/L` }),
-        el('li', { text: `Corrected AG: ${r.correctedAg} mEq/L` }),
-        el('li', { text: `Reference: ${r.referenceLow}-${r.referenceHigh} mEq/L` }),
-        el('li', { text: r.band }),
-        el('li', { class: 'muted', text: r.formulaNote }),
-      ]));
+      resultRow(o, [
+        { label: 'Measured AG', value: r.measuredAg, units: 'mEq/L' },
+        { label: 'Corrected AG', value: r.correctedAg, units: 'mEq/L' },
+        { label: 'Reference', value: `${r.referenceLow}-${r.referenceHigh} mEq/L` },
+        { text: r.band },
+        { text: r.formulaNote, cls: 'muted' },
+      ]);
     });
     ['na', 'cl', 'hco3', 'alb', 'usek', 'k'].forEach((id) => {
       const node = document.getElementById(id);
