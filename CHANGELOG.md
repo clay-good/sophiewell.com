@@ -6,6 +6,24 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v61 A3 wave 4 — chart-ready labeled copy for the multi-output Group I field-medicine tiles)
+
+Extends the A3 "Copy results" affordance to the three multi-output Group I
+field/EMS calculators: **`burn-fluid`** (the Parkland + Modified Brooke
+resuscitation schedule), **`peds-ett`** (tube size + insertion depth), and
+**`naloxone`** (initial dose + re-dose + escalation).
+
+- **`views/group-i.js`**: imports the shared `resultRow` helper
+  (`lib/result-copy.js`). `burn-fluid` previously rendered two `<h3>`-headed
+  `<ul>` blocks (one per method); it now renders a single `resultRow` with the
+  two method names as inline `{ text }` section headers, so the tile surfaces
+  exactly one "Copy results" button and one paste carries the full two-method
+  schedule (a medic copying the whole resuscitation plan in one action). The
+  per-`<li>` text is preserved; the trailing reference notes on `peds-ett` and
+  `naloxone` stay outside the copied block.
+- **`test/integration/unit-toggle.spec.js`**: the three ids join the
+  labeled-"Copy results" sweep (now 21 tiles).
+
 ### Added (spec-v61 A3 wave 3 — chart-ready labeled copy for the multi-output Group F medication / infusion tiles)
 
 Extends the A3 "Copy results" affordance to the three multi-output Group F

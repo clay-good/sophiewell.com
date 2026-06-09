@@ -7,6 +7,7 @@ import { loadFile } from '../lib/data.js';
 import { pedsDose, cincinnatiStroke, fast, fieldTriage, startTriage, jumpStartTriage, ruleOfNines, lundBrowder, burnFluid, pediatricEtt, naloxoneDose, selectEmsChecklist, RULE_OF_NINES_ADULT, PEDS_DOSE_RECIPES } from '../lib/field.js';
 import { fetchJson } from '../lib/data.js';
 import { hypothermiaRewarm, heatstrokeDecision } from '../lib/scoring-v4.js';
+import { resultRow } from '../lib/result-copy.js';
 
 function field(label, id, opts = {}) {
   const wrap = el('p');
@@ -291,20 +292,18 @@ export const renderers = {
         weightKg: nv('bf-w'), tbsaPercent: nv('bf-bsa'),
         hoursSinceInjury: document.getElementById('bf-h').value === '' ? undefined : nv('bf-h'),
       });
-      o.appendChild(el('h3', { text: 'Parkland (4 mL/kg/% TBSA over 24h)' }));
-      o.appendChild(el('ul', {}, [
-        el('li', { text: `Total 24h: ${r.parkland.total24h} mL` }),
-        el('li', { text: `First 8h: ${r.parkland.first8h} mL` }),
-        el('li', { text: `Subsequent 16h: ${r.parkland.remaining16h} mL` }),
-        ...(r.parkland.remainingInFirst8h != null ? [el('li', { text: `Remaining for first 8h window: ${r.parkland.remainingInFirst8h} mL (${r.parkland.ratePerHourRemainingFirst8h} mL/hr)` })] : []),
-      ]));
-      o.appendChild(el('h3', { text: 'Modified Brooke (2 mL/kg/% TBSA over 24h)' }));
-      o.appendChild(el('ul', {}, [
-        el('li', { text: `Total 24h: ${r.brooke.total24h} mL` }),
-        el('li', { text: `First 8h: ${r.brooke.first8h} mL` }),
-        el('li', { text: `Subsequent 16h: ${r.brooke.remaining16h} mL` }),
-        ...(r.brooke.remainingInFirst8h != null ? [el('li', { text: `Remaining for first 8h window: ${r.brooke.remainingInFirst8h} mL (${r.brooke.ratePerHourRemainingFirst8h} mL/hr)` })] : []),
-      ]));
+      resultRow(o, [
+        { text: 'Parkland (4 mL/kg/% TBSA over 24h)' },
+        { label: 'Total 24h', value: r.parkland.total24h, units: 'mL' },
+        { label: 'First 8h', value: r.parkland.first8h, units: 'mL' },
+        { label: 'Subsequent 16h', value: r.parkland.remaining16h, units: 'mL' },
+        r.parkland.remainingInFirst8h != null ? { label: 'Remaining for first 8h window', value: `${r.parkland.remainingInFirst8h} mL (${r.parkland.ratePerHourRemainingFirst8h} mL/hr)` } : null,
+        { text: 'Modified Brooke (2 mL/kg/% TBSA over 24h)' },
+        { label: 'Total 24h', value: r.brooke.total24h, units: 'mL' },
+        { label: 'First 8h', value: r.brooke.first8h, units: 'mL' },
+        { label: 'Subsequent 16h', value: r.brooke.remaining16h, units: 'mL' },
+        r.brooke.remainingInFirst8h != null ? { label: 'Remaining for first 8h window', value: `${r.brooke.remainingInFirst8h} mL (${r.brooke.ratePerHourRemainingFirst8h} mL/hr)` } : null,
+      ]);
     });
     ['bf-w', 'bf-bsa', 'bf-h'].forEach((id) => document.getElementById(id).addEventListener('input', run));
   },
@@ -322,10 +321,10 @@ export const renderers = {
     const o = out(); root.appendChild(o);
     const run = () => safe(o, () => {
       const r = pediatricEtt({ ageYears: nv('pet-age'), cuffed: document.getElementById('pet-cuffed').value === 'cuffed' });
-      o.appendChild(el('ul', {}, [
-        el('li', { text: `Tube size: ${r.sizeMm} mm internal diameter (${r.cuffed ? 'cuffed' : 'uncuffed'})` }),
-        el('li', { text: `Depth of insertion: ${r.depthCm} cm at the lip` }),
-      ]));
+      resultRow(o, [
+        { label: 'Tube size', value: `${r.sizeMm} mm internal diameter (${r.cuffed ? 'cuffed' : 'uncuffed'})` },
+        { label: 'Depth of insertion', value: `${r.depthCm} cm at the lip` },
+      ]);
       o.appendChild(el('p', { class: 'muted', text: 'Standard pediatric airway formulas; verify against bedside assessment.' }));
     });
     ['pet-age', 'pet-cuffed'].forEach((id) => {
@@ -352,11 +351,11 @@ export const renderers = {
     const run = () => safe(o, () => {
       const pop = document.getElementById('nx-pop').value;
       const r = naloxoneDose({ population: pop, route: document.getElementById('nx-route').value, weightKg: pop === 'pediatric' ? nv('nx-w') : undefined });
-      o.appendChild(el('ul', {}, [
-        el('li', { text: `Initial: ${r.dose}` }),
-        el('li', { text: `Re-dose: ${r.redose}` }),
-        el('li', { text: `Max / escalation: ${r.max}` }),
-      ]));
+      resultRow(o, [
+        { label: 'Initial', value: r.dose },
+        { label: 'Re-dose', value: r.redose },
+        { label: 'Max / escalation', value: r.max },
+      ]);
       o.appendChild(el('p', { class: 'muted', text: 'Sources: FDA labeling and CDC opioid overdose guidance. Reference only.' }));
     });
     ['nx-pop', 'nx-route', 'nx-w'].forEach((id) => {

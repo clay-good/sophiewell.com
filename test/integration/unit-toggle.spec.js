@@ -90,6 +90,9 @@ test('multi-output tiles offer a labeled "Copy results" button', async ({ page }
     // spec-v61 A3 wave 3: the multi-output Group F medication / infusion tiles
     // (tpn-macro and insulin-correction fold their headline total into the list).
     'drip-rate', 'tpn-macro', 'insulin-correction',
+    // spec-v61 A3 wave 4: the multi-output Group I field-medicine tiles
+    // (burn-fluid folds both resuscitation methods into one copyable schedule).
+    'burn-fluid', 'peds-ett', 'naloxone',
   ];
   for (const id of ids) {
     await page.goto('/#' + id, { waitUntil: 'load' });

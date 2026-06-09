@@ -104,7 +104,12 @@
 > `corrected-anion-gap`), and (A3 wave 3) the three multi-output Group F
 > medication / infusion tiles (`drip-rate`, `tpn-macro`,
 > `insulin-correction` — the latter two folding their `<h2>` headline
-> total into the labeled list, as `anion-gap-dd` did). The `resultRow`
+> total into the labeled list, as `anion-gap-dd` did), and (A3 wave 4)
+> the three multi-output Group I field-medicine tiles (`burn-fluid`,
+> `peds-ett`, `naloxone` — `burn-fluid` folding its two `<h3>`-headed
+> resuscitation-method blocks into one `resultRow` with inline
+> section-header `{ text }` items, so a medic copies the whole
+> Parkland-plus-Brooke schedule in one action). The `resultRow`
 > helper was
 > promoted to a shared module (`lib/result-copy.js`) so `group-v11`,
 > `group-e`, and future view modules use one byte-identical
@@ -115,8 +120,9 @@
 > `fena-feurea`, `qtc-suite`, `corrected-ca-na`), and `anion-gap-dd`
 > (whose primary anion-gap result was folded out of its `<h2>` headline
 > into the labeled `resultRow` list so it is part of the "Copy results"
-> payload). Every multi-output Group E, Group V5, and Group F medication /
-> infusion tile now offers a `formatCopyAll`-backed "Copy results" button;
+> payload). Every multi-output Group E, Group V5, Group F medication /
+> infusion, and Group I field-medicine tile now offers a
+> `formatCopyAll`-backed "Copy results" button;
 > single-numeric-output calculators (one value plus an interpretation line)
 > have nothing multi-line worth a separate button and keep the universal
 > "Copy all".

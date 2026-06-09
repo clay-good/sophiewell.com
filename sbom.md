@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `cefbacfc59529c9f`
-Generated: 2026-06-09T16:17:18.667Z
+Build ID: `0b9595bf4c46703f`
+Generated: 2026-06-09T16:29:58.042Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=20.18.1 <21, npm >=10.0.0
@@ -99,7 +99,7 @@ downloads is committed in this repository and is hashed below.
 | `views/group-f.js` | 31115 | `d20a566452a7eff1096b845eb7163f4e3dcf466e9d151fc52fbef12ce0abd83f` |
 | `views/group-g.js` | 229273 | `8fb51c266fe7fa46d234ebd116676d40f3f3282a2fa3651310bb2a4a92c715ce` |
 | `views/group-h.js` | 27952 | `6393fcba60f1d58334f40d12cb18cf183c086666c7777ab35c8e1e3ada88d4f5` |
-| `views/group-i.js` | 26971 | `b8b928db2f4fbcb9b85242378a1ddeb33ee930868295ddf76540a60cf502c343` |
+| `views/group-i.js` | 26890 | `82670dfe2c1e1ac7e1c349e840d79b4c7a823f7c185a8363fccc3dd5b23d4ee3` |
 | `views/group-j.js` | 8483 | `1c6714d458ee2cc9f30325800afc118164987ae4e25a9b7fffae78f5bf87dd5b` |
 | `views/group-klmno.js` | 7870 | `bf6d3ced1a08fcb627284b649d07b8e5ace6857b29e46992d4e425925c63eaa9` |
 | `views/group-v10.js` | 24975 | `1d3e72e0ba23342e828928323876d2479004d9b3589ea1ff9bca51300f2a8842` |
