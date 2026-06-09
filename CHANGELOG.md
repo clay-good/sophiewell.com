@@ -6,6 +6,32 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v61 A1 wave 12 — "show your work" derivation for the age-banded pediatric organ-dysfunction scores: PELOD-2 & pSOFA)
+
+Continues the A1 derivation tail with the two age-banded PICU organ-dysfunction
+scores — **`pelod2`** (PELOD-2, ten variables across five organ systems) and
+**`psofa`** (pediatric SOFA, six subscores). These are the first derivations
+whose component points depend on the patient's age, plus cross-input rules
+(PELOD-2 pupils forcing the neurologic subscore; pSOFA's vasoactive grade
+overriding the age-banded MAP). Derivation coverage 112 → 114 tiles.
+
+- **`lib/meta.js`**: because the data module is import-free by design, the
+  six-band MAP/creatinine tables (`D_PELOD2_MAP`, `D_PELOD2_CREAT`,
+  `D_PSOFA_MAP`, `D_PSOFA_CREAT`) and a `pelodAgeBand` helper are replicated here
+  to mirror `lib/scoring-v6.js`. Each age-banded component callback reads
+  `inputs.ageMonths` to pick the active band; the PELOD-2 neuro callback reads
+  `inputs.pupilsFixed`, and the pSOFA cardiovascular callback reads
+  `inputs.vasoactive` (taking the worse of the banded MAP or the vasoactive
+  grade). A verbatim `source` reuses each tile's inline citation.
+- **`views/group-v10.js`** (`pelod2`, `psofa`): each renderer lifts its arguments
+  into a local `inputs`, mounts `renderDerivation(META[id])`, and calls
+  `updateDerivationSteps` on change.
+- **`test/unit/derivation.test.js`**: the two tiles join `ALL_DERIVATION_TILES`
+  (schema + units guards) with component-sum cross-checks against `pelod2().score`
+  and `psofa().score` spanning the neonate (band 0), 24-59 mo (band 3), and
+  >=12 yr (band 5) age bands, plus the pSOFA vasoactive-override case. These
+  cross-checks fail loudly if the meta.js band tables ever drift from scoring-v6.
+
 ### Added (spec-v61 A1 wave 11 — "show your work" derivation for the pediatric/neonatal bedside scales: NIPS, CRIES & pediatric GCS)
 
 Continues the A1 derivation tail with three pediatric/neonatal bedside assessment

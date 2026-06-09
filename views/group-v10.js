@@ -253,19 +253,23 @@ export const renderers = {
     root.appendChild(field('WBC (x10^3/uL)', 'p2-wbc', { placeholder: 'e.g. 5' }));
     root.appendChild(field('Platelets (x10^3/uL)', 'p2-plt', { placeholder: 'e.g. 100' }));
     const o = out(); root.appendChild(o);
+    const deriv = renderDerivation(META.pelod2);
+    if (deriv) root.appendChild(deriv);
     const ids = ['p2-age', 'p2-gcs', 'p2-pupils', 'p2-lactate', 'p2-map', 'p2-creat', 'p2-pf', 'p2-paco2', 'p2-vent', 'p2-wbc', 'p2-plt'];
     wire(ids, () => safe(o, () => {
-      const r = S.pelod2({
+      const inputs = {
         ageMonths: val('p2-age'), gcs: val('p2-gcs'), pupilsFixed: chk('p2-pupils'), lactate: val('p2-lactate'),
         map: val('p2-map'), creatinine: val('p2-creat'), pao2fio2: val('p2-pf'), paco2: val('p2-paco2'),
         invasiveVent: chk('p2-vent'), wbc: val('p2-wbc'), platelets: val('p2-plt'),
-      });
+      };
+      const r = S.pelod2(inputs);
       o.appendChild(list([
         li(`PELOD-2 score: ${fmt(r.score)} / 33`),
         li(`Active age band: ${r.activeBand}`),
       ]));
       o.appendChild(list(r.parts.map(([label, pts]) => li(`${label}: ${pts}`))));
       note(o, r.note);
+      if (deriv) updateDerivationSteps(deriv, META.pelod2, inputs);
     }));
     screenerNote(root);
   },
@@ -283,18 +287,22 @@ export const renderers = {
     root.appendChild(field('Glasgow Coma Scale (3-15)', 'ps-gcs', { placeholder: 'e.g. 13' }));
     root.appendChild(field('Creatinine (mg/dL)', 'ps-creat', { placeholder: 'e.g. 0.7' }));
     const o = out(); root.appendChild(o);
+    const deriv = renderDerivation(META.psofa);
+    if (deriv) root.appendChild(deriv);
     const ids = ['ps-age', 'ps-pf', 'ps-vent', 'ps-plt', 'ps-bili', 'ps-map', 'ps-vaso', 'ps-gcs', 'ps-creat'];
     wire(ids, () => safe(o, () => {
-      const r = S.psofa({
+      const inputs = {
         ageMonths: val('ps-age'), pao2fio2: val('ps-pf'), vent: chk('ps-vent'), platelets: val('ps-plt'),
         bilirubin: val('ps-bili'), map: val('ps-map'), vasoactive: val('ps-vaso'), gcs: val('ps-gcs'), creatinine: val('ps-creat'),
-      });
+      };
+      const r = S.psofa(inputs);
       o.appendChild(list([
         li(`pSOFA: ${fmt(r.score)} / 24`),
         li(`Active age band: ${r.activeBand}`),
       ]));
       o.appendChild(list(r.parts.map(([label, pts]) => li(`${label}: ${pts}`))));
       note(o, r.note);
+      if (deriv) updateDerivationSteps(deriv, META.psofa, inputs);
     }));
     screenerNote(root);
   },

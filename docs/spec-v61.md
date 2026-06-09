@@ -83,7 +83,11 @@
 > whose show-your-work breakdown makes the reverse-scored items
 > explicit. Wave 11 adds the pediatric/neonatal bedside scales
 > `nips` and `cries` (neonatal pain) and `peds-gcs` (the pediatric
-> Glasgow Coma Scale), bringing derivation coverage to 112 tiles. A2
+> Glasgow Coma Scale). Wave 12 adds the age-banded pediatric
+> organ-dysfunction scores `pelod2` (PELOD-2) and `psofa` (pSOFA);
+> their derivation mirrors the scoring module's age-band tables and
+> is cross-checked across age bands, bringing derivation coverage to
+> 114 tiles. A2
 > (related-tool linking) is complete. A3 (chart-ready labeled copy) now also
 > covers the five 2+-numeric-output v61 bedside tiles
 > (`ebv-mabl`, `peds-transfusion-volume`, `rhig-dose`,

@@ -51,7 +51,7 @@ tier, MIT-licensed forever — are listed at
 [/commitments/](https://sophiewell.com/commitments/) and
 enforced by automated checks on every commit. Scoring tiles
 expose a collapsed "where does this come from?" derivation block
-([docs/spec-v48.md](docs/spec-v48.md)) — 112 carry one today —
+([docs/spec-v48.md](docs/spec-v48.md)) — 114 carry one today —
 with the verbatim source formula, study cohort, limits of
 validity, and a live per-input contribution list whose component
 sums are cross-checked in CI against the tile's own scoring
@@ -387,7 +387,8 @@ indices `nutric`, `mnutric`, and `mods`; then the specialty point scales
 `burch-wartofsky`, `ariscat`, and `braden-q`; then the high-value scores `hacor`,
 `vis`, and `charlson`; then the array-scored screeners `audit-full`, `dast10`, and
 `gds15` (their reverse-scored items made explicit); then the pediatric/neonatal
-bedside scales `nips`, `cries`, and `peds-gcs` — 112
+bedside scales `nips`, `cries`, and `peds-gcs`; then the age-banded pediatric
+organ-dysfunction scores `pelod2` and `psofa` — 114
 scores now carry derivation, each with CI-cross-checked component sums); the A3
 labeled copy beyond Group E and the five v61 bedside tiles remains a tracked
 follow-up.

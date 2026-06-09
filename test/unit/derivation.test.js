@@ -20,6 +20,7 @@ import { charlson, hacor } from '../../lib/scoring-v4.js';
 import { vis } from '../../lib/clinical-v4.js';
 import { auditFull, dast10, gds15 } from '../../lib/scoring-v5.js';
 import { nips, cries, pedsGcs } from '../../lib/scoring-v4.js';
+import { pelod2, psofa } from '../../lib/scoring-v6.js';
 
 // --- 1. Schema completeness ---------------------------------------------
 
@@ -106,7 +107,13 @@ const WAVE_61_A1J_TILES = ['audit-full', 'dast10', 'gds15'];
 // items), and the pediatric GCS (E+V+M, age-adjusted verbal). Each is a simple
 // additive sum, so identity `points` reproduce the live score.
 const WAVE_61_A1K_TILES = ['nips', 'cries', 'peds-gcs'];
-const ALL_DERIVATION_TILES = [...WAVE_48_1A_TILES, ...WAVE_48_1B_TILES, ...WAVE_48_1C_TILES, ...WAVE_48_2A_TILES, ...WAVE_48_2B_TILES, ...WAVE_48_2C_TILES, ...WAVE_48_3A_TILES, ...WAVE_48_3B_TILES, ...WAVE_48_3C_TILES, ...WAVE_48_3D_TILES, ...WAVE_48_4A_TILES, ...WAVE_48_4B_TILES, ...WAVE_48_4C_TILES, ...WAVE_48_4D_TILES, ...WAVE_48_4E_TILES, ...WAVE_48_4F_TILES, ...WAVE_48_4G_TILES, ...WAVE_48_4H_TILES, ...WAVE_48_4I_TILES, ...WAVE_48_4J_TILES, ...WAVE_61_A1_TILES, ...WAVE_61_A1B_TILES, ...WAVE_61_A1C_TILES, ...WAVE_61_A1D_TILES, ...WAVE_61_A1E_TILES, ...WAVE_61_A1F_TILES, ...WAVE_61_A1G_TILES, ...WAVE_61_A1H_TILES, ...WAVE_61_A1I_TILES, ...WAVE_61_A1J_TILES, ...WAVE_61_A1K_TILES];
+// spec-v61 A1 derivation tail, wave 12: the age-banded pediatric organ-dysfunction
+// scores. PELOD-2 (ten variables, age-banded MAP/creatinine, pupils forcing the
+// neuro subscore) and pSOFA (six subscores, age-banded MAP/creatinine, vasoactive
+// grade overriding MAP). The meta.js band tables mirror scoring-v6; these
+// cross-checks span multiple age bands so any drift fails loudly.
+const WAVE_61_A1L_TILES = ['pelod2', 'psofa'];
+const ALL_DERIVATION_TILES = [...WAVE_48_1A_TILES, ...WAVE_48_1B_TILES, ...WAVE_48_1C_TILES, ...WAVE_48_2A_TILES, ...WAVE_48_2B_TILES, ...WAVE_48_2C_TILES, ...WAVE_48_3A_TILES, ...WAVE_48_3B_TILES, ...WAVE_48_3C_TILES, ...WAVE_48_3D_TILES, ...WAVE_48_4A_TILES, ...WAVE_48_4B_TILES, ...WAVE_48_4C_TILES, ...WAVE_48_4D_TILES, ...WAVE_48_4E_TILES, ...WAVE_48_4F_TILES, ...WAVE_48_4G_TILES, ...WAVE_48_4H_TILES, ...WAVE_48_4I_TILES, ...WAVE_48_4J_TILES, ...WAVE_61_A1_TILES, ...WAVE_61_A1B_TILES, ...WAVE_61_A1C_TILES, ...WAVE_61_A1D_TILES, ...WAVE_61_A1E_TILES, ...WAVE_61_A1F_TILES, ...WAVE_61_A1G_TILES, ...WAVE_61_A1H_TILES, ...WAVE_61_A1I_TILES, ...WAVE_61_A1J_TILES, ...WAVE_61_A1K_TILES, ...WAVE_61_A1L_TILES];
 
 for (const id of ALL_DERIVATION_TILES) {
   test(`derivation schema: ${id} has all required fields`, () => {
@@ -718,6 +725,39 @@ for (const [label, inputs, expected] of [
   test(`peds-gcs components sum equals pedsGcs() score (${label})`, () => {
     const r = pedsGcs(inputs);
     const sum = sumDerivation('peds-gcs', inputs);
+    assert.equal(sum, r.score);
+    assert.equal(sum, expected);
+  });
+}
+
+// --- spec-v61 A1 wave 12: PELOD-2, pSOFA (age-banded) -------------------
+// Inputs are passed to both the live function and sumDerivation; the age-banded
+// MAP/creatinine callbacks and the pupils/vasoactive cross-input callbacks read
+// the sibling inputs. Cases span the neonate (band 0), 24-59 mo (band 3), and
+// >=12 yr (band 5) age bands.
+
+for (const [label, inputs, expected] of [
+  ['example, 24-59 mo band', { ageMonths: 24, gcs: 12, pupilsFixed: false, lactate: 6, map: 50, creatinine: 60, pao2fio2: 300, paco2: 40, invasiveVent: true, wbc: 5, platelets: 100 }, 9],
+  ['neonate band 0, pupils fixed, severe', { ageMonths: 0.5, gcs: 3, pupilsFixed: true, lactate: 12, map: 10, creatinine: 80, pao2fio2: 50, paco2: 100, invasiveVent: true, wbc: 1, platelets: 50 }, 29],
+  ['healthy adolescent band 5 = 0', { ageMonths: 200, gcs: 15, pupilsFixed: false, lactate: 2, map: 80, creatinine: 50, pao2fio2: 400, paco2: 40, invasiveVent: false, wbc: 10, platelets: 300 }, 0],
+]) {
+  test(`pelod2 components sum equals pelod2() score (${label})`, () => {
+    const r = pelod2(inputs);
+    const sum = sumDerivation('pelod2', inputs);
+    assert.equal(sum, r.score);
+    assert.equal(sum, expected);
+  });
+}
+
+for (const [label, inputs, expected] of [
+  ['example, 24-59 mo band', { ageMonths: 24, pao2fio2: 250, vent: true, platelets: 120, bilirubin: 1.5, map: 50, vasoactive: 0, gcs: 13, creatinine: 0.7 }, 7],
+  ['neonate band 0, severe', { ageMonths: 0.5, pao2fio2: 90, vent: true, platelets: 10, bilirubin: 15, map: 30, vasoactive: 0, gcs: 5, creatinine: 1.8 }, 21],
+  ['vasoactive overrides MAP (band 3)', { ageMonths: 24, pao2fio2: 400, vent: false, platelets: 300, bilirubin: 0.5, map: 80, vasoactive: 3, gcs: 15, creatinine: 0.5 }, 3],
+  ['healthy adolescent band 5 = 0', { ageMonths: 200, pao2fio2: 400, vent: false, platelets: 300, bilirubin: 0.5, map: 80, vasoactive: 0, gcs: 15, creatinine: 0.9 }, 0],
+]) {
+  test(`psofa components sum equals psofa() score (${label})`, () => {
+    const r = psofa(inputs);
+    const sum = sumDerivation('psofa', inputs);
     assert.equal(sum, r.score);
     assert.equal(sum, expected);
   });
