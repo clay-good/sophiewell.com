@@ -47,10 +47,15 @@
 > component-sum cross-checked against `canadianSyncope().score`,
 > `stoneScore().score`, and `feverpain().total`. Wave 3 adds the
 > additive scores `padua`, `epworth`, and `nrs2002` (wired in
-> `views/group-g.js`), bringing derivation coverage to 88 tiles; a
+> `views/group-g.js`); a
 > shared `essClamp` helper in `lib/meta.js` mirrors the Epworth
 > rating clamp so the show-your-work sum reproduces the live score
-> on out-of-range input. A2
+> on out-of-range input. Wave 4 adds the three "five signs, 0-2
+> each, sum" bedside scores `apgar`, `silverman-andersen`, and
+> `downes` (wired in `views/group-g.js` and `views/group-v10.js`),
+> bringing derivation coverage to 91 tiles; a shared `sign02Clamp`
+> helper in `lib/meta.js` mirrors the live `num()`/`sumItems()`
+> range guard so the component sum reproduces each live total. A2
 > (related-tool linking) is complete. A3 (chart-ready labeled copy) now also
 > covers the five 2+-numeric-output v61 bedside tiles
 > (`ebv-mabl`, `peds-transfusion-volume`, `rhig-dose`,

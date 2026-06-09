@@ -60,12 +60,16 @@ export const renderers = {
       root.appendChild(rangeField(k.charAt(0).toUpperCase() + k.slice(1), k, 0, 2, 2));
     }
     const o = out(); root.appendChild(o);
+    const deriv = renderDerivation(META.apgar);
+    if (deriv) root.appendChild(deriv);
     const run = () => safe(o, () => {
-      const r = C.apgar({
+      const inputs = {
         appearance: nv('appearance'), pulse: nv('pulse'), grimace: nv('grimace'),
         activity: nv('activity'), respiration: nv('respiration'),
-      });
+      };
+      const r = C.apgar(inputs);
       o.appendChild(el('p', { text: `APGAR: ${r.total} (${r.category})` }));
+      if (deriv) updateDerivationSteps(deriv, META.apgar, inputs);
     });
     ['appearance', 'pulse', 'grimace', 'activity', 'respiration'].forEach((id) => document.getElementById(id).addEventListener('input', run));
     run();

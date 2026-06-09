@@ -6,6 +6,33 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v61 A1 wave 4 — "show your work" derivation for the 0-2-per-sign bedside scores)
+
+Continues the A1 derivation tail with the three "five signs, 0-2 each, sum"
+bedside scores a nurse charts at the warmer and the cot side: **`apgar`** (the
+1- and 5-minute newborn assessment, higher = better) and its two inverses
+**`silverman-andersen`** and **`downes`** (neonatal respiratory-distress
+severity, higher = worse). Derivation coverage 88 → 91 tiles.
+
+- **`lib/meta.js`**: a shared `sign02Clamp` helper (sibling to `essClamp`)
+  clamps a per-sign rating to 0-2, mirroring the `num()`/`sumItems()` range
+  guard in the live functions so the show-your-work component sum reproduces the
+  live total exactly for in-range input and never renders NaN out of range. Each
+  tile gains a full `derivation` block — `formula`, the five per-sign
+  `components`, severity `bands`, `population`, `units`, `validity`, and a
+  verbatim `source` that reuses the tile's already-vetted inline citation (no new
+  clinical quote authored).
+- **`views/group-g.js`** (`apgar`) and **`views/group-v10.js`**
+  (`silverman-andersen`, `downes`): each renderer lifts its `inputs` object into
+  a local, mounts `renderDerivation(META[id])`, and calls `updateDerivationSteps`
+  on every input change (the established spec-v48 wiring). `group-v10.js` now
+  imports `META` and the derivation helpers.
+- **`test/unit/derivation.test.js`**: the three tiles join `ALL_DERIVATION_TILES`
+  (schema + units-coverage guards) and each gets component-sum cross-checks
+  asserting the derivation reproduces the live total (`apgar().total`,
+  `silvermanAndersen().total`, `downes().total`) across the zero, example, and
+  max boundary cases.
+
 ### Added (spec-v61 A1 wave 3 — "show your work" derivation for Padua, Epworth & NRS-2002)
 
 Continues the A1 derivation tail with three additive scores whose live function

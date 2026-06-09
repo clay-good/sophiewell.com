@@ -9,6 +9,8 @@
 import { el, clear } from '../lib/dom.js';
 import { fmt } from '../lib/num.js';
 import * as S from '../lib/scoring-v6.js';
+import { META } from '../lib/meta.js';
+import { renderDerivation, updateDerivationSteps } from '../lib/derivation.js';
 
 function field(label, id, opts = {}) {
   const wrap = el('p');
@@ -152,13 +154,17 @@ export const renderers = {
     root.appendChild(rangeField('Nares dilatation', 'sa-nares', 0, 2));
     root.appendChild(rangeField('Expiratory grunt', 'sa-grunt', 0, 2));
     const o = out(); root.appendChild(o);
+    const deriv = renderDerivation(META['silverman-andersen']);
+    if (deriv) root.appendChild(deriv);
     wire(['sa-chest', 'sa-intercostal', 'sa-xiphoid', 'sa-nares', 'sa-grunt'], () => safe(o, () => {
-      const r = S.silvermanAndersen({
+      const inputs = {
         chestMovement: val('sa-chest'), intercostal: val('sa-intercostal'), xiphoid: val('sa-xiphoid'),
         naresDilatation: val('sa-nares'), grunt: val('sa-grunt'),
-      });
+      };
+      const r = S.silvermanAndersen(inputs);
       o.appendChild(list([li(`Total: ${fmt(r.total)} / 10`), li(r.band)]));
       note(o, r.note);
+      if (deriv) updateDerivationSteps(deriv, META['silverman-andersen'], inputs);
     }));
     screenerNote(root);
   },
@@ -172,13 +178,17 @@ export const renderers = {
     root.appendChild(rangeField('Grunting', 'dn-grunting', 0, 2));
     root.appendChild(rangeField('Retractions', 'dn-retractions', 0, 2));
     const o = out(); root.appendChild(o);
+    const deriv = renderDerivation(META.downes);
+    if (deriv) root.appendChild(deriv);
     wire(['dn-rr', 'dn-cyanosis', 'dn-airentry', 'dn-grunting', 'dn-retractions'], () => safe(o, () => {
-      const r = S.downes({
+      const inputs = {
         respiratoryRate: val('dn-rr'), cyanosis: val('dn-cyanosis'), airEntry: val('dn-airentry'),
         grunting: val('dn-grunting'), retractions: val('dn-retractions'),
-      });
+      };
+      const r = S.downes(inputs);
       o.appendChild(list([li(`Total: ${fmt(r.total)} / 10`), li(r.band)]));
       note(o, r.note);
+      if (deriv) updateDerivationSteps(deriv, META.downes, inputs);
     }));
     screenerNote(root);
   },

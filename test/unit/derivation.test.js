@@ -10,6 +10,8 @@ import { nihss } from '../../lib/clinical.js';
 import { rcri, abcd2 } from '../../lib/clinical-v5.js';
 import { feverpain, canadianSyncope, stoneScore } from '../../lib/scoring-v5.js';
 import { padua, epworth, nrs2002 } from '../../lib/scoring-v4.js';
+import { apgar } from '../../lib/clinical.js';
+import { silvermanAndersen, downes } from '../../lib/scoring-v6.js';
 
 // --- 1. Schema completeness ---------------------------------------------
 
@@ -49,7 +51,12 @@ const WAVE_61_A1B_TILES = ['feverpain', 'canadian-syncope', 'stone-score'];
 // Epworth (eight 0-3 ratings via the shared essClamp), and NRS-2002 (two 0-3
 // ordinals plus an age binary).
 const WAVE_61_A1C_TILES = ['padua', 'epworth', 'nrs2002'];
-const ALL_DERIVATION_TILES = [...WAVE_48_1A_TILES, ...WAVE_48_1B_TILES, ...WAVE_48_1C_TILES, ...WAVE_48_2A_TILES, ...WAVE_48_2B_TILES, ...WAVE_48_2C_TILES, ...WAVE_48_3A_TILES, ...WAVE_48_3B_TILES, ...WAVE_48_3C_TILES, ...WAVE_48_3D_TILES, ...WAVE_48_4A_TILES, ...WAVE_48_4B_TILES, ...WAVE_48_4C_TILES, ...WAVE_48_4D_TILES, ...WAVE_48_4E_TILES, ...WAVE_48_4F_TILES, ...WAVE_48_4G_TILES, ...WAVE_48_4H_TILES, ...WAVE_48_4I_TILES, ...WAVE_48_4J_TILES, ...WAVE_61_A1_TILES, ...WAVE_61_A1B_TILES, ...WAVE_61_A1C_TILES];
+// spec-v61 A1 derivation tail, wave 4: the "five signs, 0-2 each, sum" bedside
+// scores. APGAR (higher = better) and its two inverses Silverman-Andersen and
+// Downes (higher = worse) each sum five 0-2 ratings to a numeric total via the
+// shared sign02Clamp, so the component sum reproduces the live total exactly.
+const WAVE_61_A1D_TILES = ['apgar', 'silverman-andersen', 'downes'];
+const ALL_DERIVATION_TILES = [...WAVE_48_1A_TILES, ...WAVE_48_1B_TILES, ...WAVE_48_1C_TILES, ...WAVE_48_2A_TILES, ...WAVE_48_2B_TILES, ...WAVE_48_2C_TILES, ...WAVE_48_3A_TILES, ...WAVE_48_3B_TILES, ...WAVE_48_3C_TILES, ...WAVE_48_3D_TILES, ...WAVE_48_4A_TILES, ...WAVE_48_4B_TILES, ...WAVE_48_4C_TILES, ...WAVE_48_4D_TILES, ...WAVE_48_4E_TILES, ...WAVE_48_4F_TILES, ...WAVE_48_4G_TILES, ...WAVE_48_4H_TILES, ...WAVE_48_4I_TILES, ...WAVE_48_4J_TILES, ...WAVE_61_A1_TILES, ...WAVE_61_A1B_TILES, ...WAVE_61_A1C_TILES, ...WAVE_61_A1D_TILES];
 
 for (const id of ALL_DERIVATION_TILES) {
   test(`derivation schema: ${id} has all required fields`, () => {
@@ -302,6 +309,49 @@ for (const [label, inputs, expected] of [
     const r = nrs2002(inputs);
     const sum = sumDerivation('nrs2002', inputs);
     assert.equal(sum, r.score);
+    assert.equal(sum, expected);
+  });
+}
+
+// --- spec-v61 A1 wave 4: APGAR, Silverman-Andersen, Downes --------------
+// Five 0-2 signs summed to a numeric total; the component sum (via the shared
+// sign02Clamp callback) must reproduce the live total for in-range input.
+
+for (const [label, inputs, expected] of [
+  ['all-zero (severely depressed)', { appearance: 0, pulse: 0, grimace: 0, activity: 0, respiration: 0 }, 0],
+  ['example all-2 (normal, 10)', { appearance: 2, pulse: 2, grimace: 2, activity: 2, respiration: 2 }, 10],
+  ['mixed 1+2+1+0+2 = 6 (moderately depressed)', { appearance: 1, pulse: 2, grimace: 1, activity: 0, respiration: 2 }, 6],
+]) {
+  test(`apgar components sum equals apgar() total (${label})`, () => {
+    const r = apgar(inputs);
+    const sum = sumDerivation('apgar', inputs);
+    assert.equal(sum, r.total);
+    assert.equal(sum, expected);
+  });
+}
+
+for (const [label, inputs, expected] of [
+  ['no distress (0)', { chestMovement: 0, intercostal: 0, xiphoid: 0, naresDilatation: 0, grunt: 0 }, 0],
+  ['example all-1 (moderate, 5)', { chestMovement: 1, intercostal: 1, xiphoid: 1, naresDilatation: 1, grunt: 1 }, 5],
+  ['max 10 (severe)', { chestMovement: 2, intercostal: 2, xiphoid: 2, naresDilatation: 2, grunt: 2 }, 10],
+]) {
+  test(`silverman-andersen components sum equals silvermanAndersen() total (${label})`, () => {
+    const r = silvermanAndersen(inputs);
+    const sum = sumDerivation('silverman-andersen', inputs);
+    assert.equal(sum, r.total);
+    assert.equal(sum, expected);
+  });
+}
+
+for (const [label, inputs, expected] of [
+  ['mild (0)', { respiratoryRate: 0, cyanosis: 0, airEntry: 0, grunting: 0, retractions: 0 }, 0],
+  ['example all-1 (moderate, 5)', { respiratoryRate: 1, cyanosis: 1, airEntry: 1, grunting: 1, retractions: 1 }, 5],
+  ['max 10 (severe)', { respiratoryRate: 2, cyanosis: 2, airEntry: 2, grunting: 2, retractions: 2 }, 10],
+]) {
+  test(`downes components sum equals downes() total (${label})`, () => {
+    const r = downes(inputs);
+    const sum = sumDerivation('downes', inputs);
+    assert.equal(sum, r.total);
     assert.equal(sum, expected);
   });
 }
