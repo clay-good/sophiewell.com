@@ -54,3 +54,34 @@ test('aa-gradient substituted: missing/non-finite input -> null', () => {
   assert.equal(subAa({ fio2: 0.21, paco2: 40 }), null);
   assert.equal(subAa({ fio2: Infinity, paco2: 40, pao2: 90 }), null);
 });
+
+const subOg = META['osmolal-gap'].derivation.substituted;
+
+test('osmolal-gap substituted: Na 140, glu 90, BUN 14, measured 300 -> gap ~10', () => {
+  const s = subOg({ measuredOsm: 300, sodium: 140, glucoseMgDl: 90, bunMgDl: 14, etohMgDl: 0 });
+  assert.match(s, /2 x 140 \+ 90\/18 \+ 14\/2\.8/);
+  assert.match(s, /gap = 300 - 290 = 10/);
+});
+
+test('osmolal-gap substituted: EtOH term appears only when nonzero; missing -> null', () => {
+  assert.match(subOg({ measuredOsm: 320, sodium: 140, glucoseMgDl: 90, bunMgDl: 14, etohMgDl: 100 }), /\+ 100\/4\.6/);
+  assert.equal(subOg({ measuredOsm: 300, sodium: 140, glucoseMgDl: 90 }), null);
+});
+
+const subW = META.winters.derivation.substituted;
+
+test('winters substituted: HCO3 14 -> 27 to 31 mmHg', () => {
+  assert.match(subW({ hco3: 14 }), /1\.5 x 14 \+ 8 \+\/- 2 = 27 to 31 mmHg/);
+  assert.equal(subW({}), null);
+});
+
+const subFe = META['fena-feurea'].derivation.substituted;
+
+test('fena-feurea substituted: both fractions rendered; partial -> one line; none -> null', () => {
+  const s = subFe({ urineNa: 20, plasmaNa: 140, urineCr: 50, plasmaCr: 2.0, urineUrea: 300, plasmaUrea: 60 });
+  assert.match(s, /FENa = \(20 x 2\) \/ \(140 x 50\) x 100 = 0\.57%/);
+  assert.match(s, /FEUrea = \(300 x 2\) \/ \(60 x 50\) x 100 = 20%/);
+  // FENa only (urea inputs missing)
+  assert.match(subFe({ urineNa: 20, plasmaNa: 140, urineCr: 50, plasmaCr: 2.0 }), /^FENa = /);
+  assert.equal(subFe({}), null);
+});

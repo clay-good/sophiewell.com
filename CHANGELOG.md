@@ -6,6 +6,26 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v62 Part A5 wave 3 — substituted-formula derivation on `osmolal-gap`, `winters`, `fena-feurea`)
+
+Three more formula tiles gain a full `derivation` block (formula / population /
+validity / source / units) plus a guarded `substituted(inputs)`:
+
+- **`osmolal-gap`**: `Calculated osm = 2 x 140 + 90/18 + 14/2.8 = 290 mOsm/kg;
+  gap = 300 - 290 = 10` (the EtOH term appears only when entered).
+- **`winters`**: `Expected PaCO2 = 1.5 x 14 + 8 +/- 2 = 27 to 31 mmHg`.
+- **`fena-feurea`**: both fractions, e.g. `FENa = (20 x 2) / (140 x 50) x 100 =
+  0.57%` and `FEUrea = (300 x 2) / (60 x 50) x 100 = 20%`, each rendered only
+  when its inputs are complete.
+- All `substituted` functions return null on missing/non-finite/non-positive
+  inputs; `views/group-e.js` wires `renderDerivation` + `updateDerivationSteps`
+  for each (result rows unchanged). Coverage in
+  `test/unit/derivation-substituted.test.js` (now 11 cases across 5 tiles).
+- A5 now covers `cockcroft-gault`, `corrected-sodium`, `aa-gradient`,
+  `osmolal-gap`, `winters`, and `fena-feurea`. The remaining named formula tiles
+  (eGFR CKD-EPI 2021, Parkland `burn-fluid`) follow. See
+  [docs/spec-v62.md](docs/spec-v62.md).
+
 ### Added (spec-v62 Part A5 wave 2 — substituted-formula derivation on `corrected-sodium` and `aa-gradient`)
 
 Extends the substituted "show your work" line to two more canonical formula

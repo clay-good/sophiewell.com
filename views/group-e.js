@@ -341,12 +341,16 @@ export const renderers = {
     root.appendChild(field('BUN (mg/dL)', 'og-bun'));
     root.appendChild(field('EtOH (mg/dL, optional)', 'og-etoh'));
     const o = out(); root.appendChild(o);
+    const deriv = renderDerivation(META['osmolal-gap']);
+    if (deriv) root.appendChild(deriv);
     const run = () => safe(o, () => {
-      const r = V4.osmolalGap({ measuredOsm: num('measured'), sodium: num('og-na'), glucoseMgDl: num('og-glu'), bunMgDl: num('og-bun'), etohMgDl: num('og-etoh') || 0 });
+      const inputs = { measuredOsm: num('measured'), sodium: num('og-na'), glucoseMgDl: num('og-glu'), bunMgDl: num('og-bun'), etohMgDl: num('og-etoh') || 0 };
+      const r = V4.osmolalGap(inputs);
       resultRow(o, [
         { text: `Calculated osm: ${r.calculatedOsm.toFixed(1)}` },
         { text: `Osmolal gap: ${r.gap.toFixed(1)} (>10 raises suspicion of toxic alcohols)` },
       ]);
+      if (deriv) updateDerivationSteps(deriv, META['osmolal-gap'], inputs);
     });
     ['measured', 'og-na', 'og-glu', 'og-bun', 'og-etoh'].forEach((id) => document.getElementById(id).addEventListener('input', run));
   },
@@ -374,12 +378,16 @@ export const renderers = {
     root.appendChild(field('HCO3 (mEq/L)', 'wf-hco3'));
     root.appendChild(field('Measured PaCO2 (mmHg, optional)', 'wf-paco2'));
     const o = out(); root.appendChild(o);
+    const deriv = renderDerivation(META.winters);
+    if (deriv) root.appendChild(deriv);
     const run = () => safe(o, () => {
-      const r = V4.wintersFormula({ hco3: num('wf-hco3'), measuredPaco2: num('wf-paco2') || NaN });
+      const inputs = { hco3: num('wf-hco3'), measuredPaco2: num('wf-paco2') || NaN };
+      const r = V4.wintersFormula(inputs);
       resultRow(o, [
         { text: `Expected PaCO2: ${r.expectedPaco2Low.toFixed(1)} to ${r.expectedPaco2High.toFixed(1)} mmHg` },
         r.secondaryDisorder ? { text: r.secondaryDisorder } : null,
       ]);
+      if (deriv) updateDerivationSteps(deriv, META.winters, inputs);
     });
     ['wf-hco3', 'wf-paco2'].forEach((id) => document.getElementById(id).addEventListener('input', run));
   },
@@ -458,13 +466,20 @@ export const renderers = {
     root.appendChild(field('Urine urea (mg/dL)', 'fu-uu'));
     root.appendChild(field('Plasma urea (BUN, mg/dL)', 'fu-pu'));
     const o = out(); root.appendChild(o);
+    const deriv = renderDerivation(META['fena-feurea']);
+    if (deriv) root.appendChild(deriv);
     const run = () => safe(o, () => {
-      const fena = V4.feNa({ urineNa: num('fn-una'), plasmaNa: num('fn-pna'), urineCr: num('fn-ucr'), plasmaCr: num('fn-pcr') });
-      const feurea = V4.feUrea({ urineUrea: num('fu-uu'), plasmaUrea: num('fu-pu'), urineCr: num('fn-ucr'), plasmaCr: num('fn-pcr') });
+      const inputs = {
+        urineNa: num('fn-una'), plasmaNa: num('fn-pna'), urineCr: num('fn-ucr'), plasmaCr: num('fn-pcr'),
+        urineUrea: num('fu-uu'), plasmaUrea: num('fu-pu'),
+      };
+      const fena = V4.feNa({ urineNa: inputs.urineNa, plasmaNa: inputs.plasmaNa, urineCr: inputs.urineCr, plasmaCr: inputs.plasmaCr });
+      const feurea = V4.feUrea({ urineUrea: inputs.urineUrea, plasmaUrea: inputs.plasmaUrea, urineCr: inputs.urineCr, plasmaCr: inputs.plasmaCr });
       resultRow(o, [
         { text: `FENa: ${fena == null ? '(incomplete inputs)' : fena.toFixed(2) + '%'} (<1% prerenal, >2% ATN)` },
         { text: `FEUrea: ${feurea == null ? '(incomplete inputs)' : feurea.toFixed(2) + '%'} (<35% prerenal, useful when on diuretics)` },
       ]);
+      if (deriv) updateDerivationSteps(deriv, META['fena-feurea'], inputs);
     });
     ['fn-una', 'fn-pna', 'fn-ucr', 'fn-pcr', 'fu-uu', 'fu-pu'].forEach((id) => document.getElementById(id).addEventListener('input', run));
   },

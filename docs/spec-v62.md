@@ -42,9 +42,11 @@
 > Seeded on `cockcroft-gault` (full derivation block + guarded substituted
 > equation). **A5 wave 2 (2026-06-09):** `corrected-sodium` (Katz/Hillier
 > hyperglycemia correction, both factors) and `aa-gradient` (sea-level alveolar
-> gas equation) gained full derivation blocks + guarded substituted lines. Later
-> A5 waves extend `substituted` to eGFR, Parkland `burn-fluid`, `winters`,
-> `osmolal-gap`, `fena-feurea`. Original Part B/C wave delivered: 7 of 9
+> gas equation) gained full derivation blocks + guarded substituted lines.
+> **A5 wave 3 (2026-06-09):** `osmolal-gap`, `winters`, and `fena-feurea`
+> (the last rendering both FENa and FEUrea) gained derivation blocks + guarded
+> substituted lines. A5 now covers six formula tiles; the remaining named ones
+> (eGFR CKD-EPI 2021, Parkland `burn-fluid`) follow. Original Part B/C wave delivered: 7 of 9
 > Part B tiles (`infusion-time-remaining`, `enteral-free-water`, `apap-24h-max`,
 > `icu-nutrition-target`, `vte-prophylaxis-dose`, `neonatal-feeding-volume`,
 > `oxytocin-titration`) in `lib/clinical-v8.js`, and both Part C conversions
