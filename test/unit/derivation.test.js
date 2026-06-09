@@ -9,6 +9,7 @@ import { pews as pewsV5 } from '../../lib/clinical-v5.js';
 import { nihss } from '../../lib/clinical.js';
 import { rcri, abcd2 } from '../../lib/clinical-v5.js';
 import { feverpain, canadianSyncope, stoneScore } from '../../lib/scoring-v5.js';
+import { padua, epworth, nrs2002 } from '../../lib/scoring-v4.js';
 
 // --- 1. Schema completeness ---------------------------------------------
 
@@ -43,7 +44,12 @@ const WAVE_61_A1_TILES = ['sirs', 'apfel', 'aims65'];
 // canadianSyncope().score, stoneScore().score) for an exact component-sum
 // cross-check.
 const WAVE_61_A1B_TILES = ['feverpain', 'canadian-syncope', 'stone-score'];
-const ALL_DERIVATION_TILES = [...WAVE_48_1A_TILES, ...WAVE_48_1B_TILES, ...WAVE_48_1C_TILES, ...WAVE_48_2A_TILES, ...WAVE_48_2B_TILES, ...WAVE_48_2C_TILES, ...WAVE_48_3A_TILES, ...WAVE_48_3B_TILES, ...WAVE_48_3C_TILES, ...WAVE_48_3D_TILES, ...WAVE_48_4A_TILES, ...WAVE_48_4B_TILES, ...WAVE_48_4C_TILES, ...WAVE_48_4D_TILES, ...WAVE_48_4E_TILES, ...WAVE_48_4F_TILES, ...WAVE_48_4G_TILES, ...WAVE_48_4H_TILES, ...WAVE_48_4I_TILES, ...WAVE_48_4J_TILES, ...WAVE_61_A1_TILES, ...WAVE_61_A1B_TILES];
+// spec-v61 A1 derivation tail, wave 3: additive scores whose live function
+// returns a numeric `score` from named inputs. Padua VTE (weighted binaries),
+// Epworth (eight 0-3 ratings via the shared essClamp), and NRS-2002 (two 0-3
+// ordinals plus an age binary).
+const WAVE_61_A1C_TILES = ['padua', 'epworth', 'nrs2002'];
+const ALL_DERIVATION_TILES = [...WAVE_48_1A_TILES, ...WAVE_48_1B_TILES, ...WAVE_48_1C_TILES, ...WAVE_48_2A_TILES, ...WAVE_48_2B_TILES, ...WAVE_48_2C_TILES, ...WAVE_48_3A_TILES, ...WAVE_48_3B_TILES, ...WAVE_48_3C_TILES, ...WAVE_48_3D_TILES, ...WAVE_48_4A_TILES, ...WAVE_48_4B_TILES, ...WAVE_48_4C_TILES, ...WAVE_48_4D_TILES, ...WAVE_48_4E_TILES, ...WAVE_48_4F_TILES, ...WAVE_48_4G_TILES, ...WAVE_48_4H_TILES, ...WAVE_48_4I_TILES, ...WAVE_48_4J_TILES, ...WAVE_61_A1_TILES, ...WAVE_61_A1B_TILES, ...WAVE_61_A1C_TILES];
 
 for (const id of ALL_DERIVATION_TILES) {
   test(`derivation schema: ${id} has all required fields`, () => {
@@ -252,6 +258,49 @@ for (const [label, inputs, expected] of [
   test(`stone-score components sum equals stoneScore() score (${label})`, () => {
     const r = stoneScore(inputs);
     const sum = sumDerivation('stone-score', inputs);
+    assert.equal(sum, r.score);
+    assert.equal(sum, expected);
+  });
+}
+
+// --- spec-v61 A1 wave 3: Padua, Epworth, NRS-2002 -----------------------
+
+for (const [label, inputs, expected] of [
+  ['all-zero', { activeCancer: false, priorVte: false, reducedMobility: false, thrombophilia: false, recentTrauma: false, ageOver70: false, heartOrRespFailure: false, miOrStroke: false, acuteInfectionOrRheum: false, bmi30: false, hormonalTreatment: false }, 0],
+  ['cutoff 4 (cancer + age)', { activeCancer: true, priorVte: false, reducedMobility: false, thrombophilia: false, recentTrauma: false, ageOver70: true, heartOrRespFailure: false, miOrStroke: false, acuteInfectionOrRheum: false, bmi30: false, hormonalTreatment: false }, 4],
+  ['max 20 (all factors)', { activeCancer: true, priorVte: true, reducedMobility: true, thrombophilia: true, recentTrauma: true, ageOver70: true, heartOrRespFailure: true, miOrStroke: true, acuteInfectionOrRheum: true, bmi30: true, hormonalTreatment: true }, 20],
+]) {
+  test(`padua components sum equals padua() score (${label})`, () => {
+    const r = padua(inputs);
+    const sum = sumDerivation('padua', inputs);
+    assert.equal(sum, r.score);
+    assert.equal(sum, expected);
+  });
+}
+
+for (const [label, inputs, expected] of [
+  ['example 6/24', { reading: 1, tv: 1, publicPlace: 0, carPassenger: 1, lyingDown: 2, sittingTalking: 0, afterLunch: 1, carTraffic: 0 }, 6],
+  ['all-zero', { reading: 0, tv: 0, publicPlace: 0, carPassenger: 0, lyingDown: 0, sittingTalking: 0, afterLunch: 0, carTraffic: 0 }, 0],
+  ['max 24', { reading: 3, tv: 3, publicPlace: 3, carPassenger: 3, lyingDown: 3, sittingTalking: 3, afterLunch: 3, carTraffic: 3 }, 24],
+  ['clamps out-of-range ratings to 0-3', { reading: 9, tv: -1, publicPlace: 3, carPassenger: 3, lyingDown: 0, sittingTalking: 0, afterLunch: 0, carTraffic: 0 }, 9],
+]) {
+  test(`epworth components sum equals epworth() score (${label})`, () => {
+    const r = epworth(inputs);
+    const sum = sumDerivation('epworth', inputs);
+    assert.equal(sum, r.score);
+    assert.equal(sum, expected);
+  });
+}
+
+for (const [label, inputs, expected] of [
+  ['example 2 (sev1 + nut1)', { severityOfDisease: 1, nutritionalStatus: 1, ageGe70: false }, 2],
+  ['cutoff 3 (sev1 + nut1 + age)', { severityOfDisease: 1, nutritionalStatus: 1, ageGe70: true }, 3],
+  ['max 7', { severityOfDisease: 3, nutritionalStatus: 3, ageGe70: true }, 7],
+  ['clamps out-of-range ordinals', { severityOfDisease: 9, nutritionalStatus: -2, ageGe70: false }, 3],
+]) {
+  test(`nrs2002 components sum equals nrs2002() score (${label})`, () => {
+    const r = nrs2002(inputs);
+    const sum = sumDerivation('nrs2002', inputs);
     assert.equal(sum, r.score);
     assert.equal(sum, expected);
   });

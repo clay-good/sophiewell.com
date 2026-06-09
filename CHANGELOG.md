@@ -6,6 +6,30 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v61 A1 wave 3 — "show your work" derivation for Padua, Epworth & NRS-2002)
+
+Continues the A1 derivation tail with three additive scores whose live function
+returns a numeric `score` from named inputs, so the component sum is cross-checked
+against the implementation exactly. Derivation coverage 85 → 88 tiles.
+
+- **`padua`** (Padua VTE Prediction Score): the eleven weighted binary risk
+  factors (+3 / +2 / +1), high-risk band at ≥4.
+- **`epworth`** (Epworth Sleepiness Scale): the eight 0–3 situational ratings.
+  A shared `essClamp` helper in `lib/meta.js` mirrors `epworthClamp` in
+  `lib/scoring-v4.js` so an out-of-range rating clamps identically in the
+  show-your-work list and the score.
+- **`nrs2002`** (Nutritional Risk Screening 2002): severity (0–3) + nutritional
+  status (0–3) + age ≥70 (+1), at-risk band at ≥3, with the same 0–3 clamp on
+  the two ordinals.
+
+Wiring lands in `views/group-g.js` (which already imports the spec-v48 derivation
+helpers): each renderer mounts `renderDerivation(META[id])` and calls
+`updateDerivationSteps` on every input change, with the live `inputs` object
+lifted into a local. `test/unit/derivation.test.js` adds the three to
+`ALL_DERIVATION_TILES` and gives each component-sum cross-checks across the zero,
+example, and min/max boundary cases — including the Epworth 0/24 and 24/24 ends,
+the NRS-2002 ≥3 cutoff, and the out-of-range-clamp cases for both clamped scores.
+
 ### Added (spec-v61 A1 wave 2 — "show your work" derivation for three ED screening / decision scores)
 
 Continues working down the A1 derivation tail one fully-verified wave at a time.

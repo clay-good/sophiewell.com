@@ -1149,8 +1149,10 @@ export const renderers = {
     ];
     for (const [l, id] of items) root.appendChild(checkbox(l, id));
     const o = out(); root.appendChild(o);
+    const deriv = renderDerivation(META.padua);
+    if (deriv) root.appendChild(deriv);
     const run = () => safe(o, () => {
-      const r = S4.padua({
+      const inputs = {
         activeCancer: checked('pa-ca'),
         priorVte: checked('pa-vte'),
         reducedMobility: checked('pa-mob'),
@@ -1162,9 +1164,11 @@ export const renderers = {
         acuteInfectionOrRheum: checked('pa-inf'),
         bmi30: checked('pa-bmi'),
         hormonalTreatment: checked('pa-horm'),
-      });
+      };
+      const r = S4.padua(inputs);
       o.appendChild(el('h2', { text: `Padua ${r.score}` }));
       o.appendChild(el('p', { text: r.band }));
+      if (deriv) updateDerivationSteps(deriv, META.padua, inputs);
     });
     items.forEach(([, id]) => document.getElementById(id).addEventListener('change', run));
     run();
@@ -2226,14 +2230,18 @@ export const renderers = {
     ]);
     root.appendChild(checkbox('Age >= 70 years (+1)', 'nr-age'));
     const o = out(); root.appendChild(o);
+    const deriv = renderDerivation(META.nrs2002);
+    if (deriv) root.appendChild(deriv);
     const run = () => safe(o, () => {
-      const r = S4.nrs2002({
+      const inputs = {
         severityOfDisease: nv('nr-sev'),
         nutritionalStatus: nv('nr-nut'),
         ageGe70: checked('nr-age'),
-      });
+      };
+      const r = S4.nrs2002(inputs);
       o.appendChild(el('h2', { text: `NRS-2002 ${r.score}` }));
       o.appendChild(el('p', { text: r.band }));
+      if (deriv) updateDerivationSteps(deriv, META.nrs2002, inputs);
     });
     ['nr-sev', 'nr-nut', 'nr-age'].forEach((id) => document.getElementById(id).addEventListener('change', run));
     run();
@@ -2616,8 +2624,10 @@ export const renderers = {
     ];
     for (const [l, id] of items) root.appendChild(rangeField(l, id, 0, 3, 0));
     const o = out(); root.appendChild(o);
+    const deriv = renderDerivation(META.epworth);
+    if (deriv) root.appendChild(deriv);
     const run = () => safe(o, () => {
-      const r = S4.epworth({
+      const inputs = {
         reading: nv('ep-read'),
         tv: nv('ep-tv'),
         publicPlace: nv('ep-pub'),
@@ -2626,9 +2636,11 @@ export const renderers = {
         sittingTalking: nv('ep-talk'),
         afterLunch: nv('ep-lunch'),
         carTraffic: nv('ep-traffic'),
-      });
+      };
+      const r = S4.epworth(inputs);
       o.appendChild(el('h2', { text: `Epworth ${r.score} of 24` }));
       o.appendChild(el('p', { text: r.band }));
+      if (deriv) updateDerivationSteps(deriv, META.epworth, inputs);
     });
     items.forEach(([, id]) => document.getElementById(id).addEventListener('input', run));
     run();
