@@ -1259,8 +1259,10 @@ export const renderers = {
     ];
     for (const [l, id] of items) root.appendChild(checkbox(l, id));
     const o = out(); root.appendChild(o);
+    const deriv = renderDerivation(META.gbs);
+    if (deriv) root.appendChild(deriv);
     const run = () => safe(o, () => {
-      const r = S4.gbs({
+      const inputs = {
         bunMgDl: nv('gb-bun'),
         hgbGdl: nv('gb-hgb'),
         sex: document.getElementById('gb-sex').value,
@@ -1270,12 +1272,14 @@ export const renderers = {
         syncope: checked('gb-syn'),
         hepaticDisease: checked('gb-hep'),
         cardiacFailure: checked('gb-cf'),
-      });
+      };
+      const r = S4.gbs(inputs);
       o.appendChild(el('h2', { text: `GBS ${r.score}` }));
       o.appendChild(el('p', { text: r.band }));
       const p = r.parts;
       o.appendChild(el('p', { class: 'muted',
         text: `Per-parameter: BUN ${p.bun}, hemoglobin ${p.hgb}, SBP ${p.sbp}, pulse ${p.pulse}, melena ${p.melena}, syncope ${p.syncope}, hepatic disease ${p.hepaticDisease}, cardiac failure ${p.cardiacFailure}.` }));
+      if (deriv) updateDerivationSteps(deriv, META.gbs, inputs);
     });
     document.querySelectorAll('input, select').forEach((n) => n.addEventListener(n.type === 'checkbox' || n.tagName === 'SELECT' ? 'change' : 'input', run));
     run();
@@ -1298,17 +1302,21 @@ export const renderers = {
     }
     root.appendChild(checkbox('Use pre-endoscopy variant (Vreeburg 1999 / NICE CG141; omits endoscopic dx and stigmata)', 'rk-pre'));
     const o = out(); root.appendChild(o);
+    const deriv = renderDerivation(META.rockall);
+    if (deriv) root.appendChild(deriv);
     const run = () => safe(o, () => {
-      const r = S4.rockall({
+      const inputs = {
         ageBand: nv('rk-age'),
         shock: nv('rk-shock'),
         comorbidity: nv('rk-co'),
         endoscopicDx: nv('rk-dx'),
         stigmata: nv('rk-stig'),
         preEndoscopy: checked('rk-pre'),
-      });
+      };
+      const r = S4.rockall(inputs);
       o.appendChild(el('h2', { text: `${r.preEndoscopy ? 'Pre-endoscopy' : 'Complete'} Rockall: ${r.score}` }));
       o.appendChild(el('p', { text: r.band }));
+      if (deriv) updateDerivationSteps(deriv, META.rockall, inputs);
     });
     document.querySelectorAll('input, select').forEach((n) => n.addEventListener(n.type === 'checkbox' || n.tagName === 'SELECT' ? 'change' : 'input', run));
     run();
@@ -1368,8 +1376,10 @@ export const renderers = {
     root.appendChild(checkbox('Previous LGIB admission', 'ok-prior'));
     root.appendChild(checkbox('Blood on digital rectal examination', 'ok-dre'));
     const o = out(); root.appendChild(o);
+    const deriv = renderDerivation(META.oakland);
+    if (deriv) root.appendChild(deriv);
     const run = () => safe(o, () => {
-      const r = S4.oakland({
+      const inputs = {
         age: nv('ok-age'),
         sex: document.getElementById('ok-sex').value,
         priorLgibAdmission: checked('ok-prior'),
@@ -1377,12 +1387,14 @@ export const renderers = {
         hr: nv('ok-hr'),
         sbp: nv('ok-sbp'),
         hgbGdl: nv('ok-hgb'),
-      });
+      };
+      const r = S4.oakland(inputs);
       o.appendChild(el('h2', { text: `Oakland ${r.score}` }));
       o.appendChild(el('p', { text: r.band }));
       const p = r.parts;
       o.appendChild(el('p', { class: 'muted',
         text: `Per-parameter: age ${p.age}, sex ${p.sex}, prior LGIB ${p.priorLgibAdmission}, DRE blood ${p.dreBlood}, HR ${p.hr}, SBP ${p.sbp}, hemoglobin ${p.hgb}.` }));
+      if (deriv) updateDerivationSteps(deriv, META.oakland, inputs);
     });
     document.querySelectorAll('input, select').forEach((n) => n.addEventListener(n.type === 'checkbox' || n.tagName === 'SELECT' ? 'change' : 'input', run));
     run();

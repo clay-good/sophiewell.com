@@ -59,8 +59,15 @@
 > 5 adds the PE-prognosis scores `pesi` (raw age + male-sex
 > callback + nine weighted predictors) and `spesi` (six equal
 > binaries) plus the pediatric `nigrovic` Bacterial Meningitis
-> Score (Gram stain weighted +2), wired in `views/group-g.js` and
-> bringing derivation coverage to 94 tiles. A2
+> Score (Gram stain weighted +2), wired in `views/group-g.js`. Wave
+> 6 adds the GI-bleed risk family — `gbs` (Glasgow-Blatchford, with
+> banded BUN/Hgb/SBP weights and sex-specific hemoglobin bands),
+> `rockall` (clamped ordinals plus the pre-endoscopy variant that
+> omits the last two items), and `oakland` (banded age/HR/SBP/Hgb
+> plus binaries) — each banded weight encoded as a `points` callback
+> that replicates the live banding so the component sum reproduces
+> the live `score` exactly, bringing derivation coverage to 97
+> tiles. A2
 > (related-tool linking) is complete. A3 (chart-ready labeled copy) now also
 > covers the five 2+-numeric-output v61 bedside tiles
 > (`ebv-mabl`, `peds-transfusion-volume`, `rhig-dose`,

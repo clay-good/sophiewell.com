@@ -13,6 +13,7 @@ import { padua, epworth, nrs2002 } from '../../lib/scoring-v4.js';
 import { apgar } from '../../lib/clinical.js';
 import { silvermanAndersen, downes } from '../../lib/scoring-v6.js';
 import { pesi, spesi, nigrovic } from '../../lib/scoring-v4.js';
+import { gbs, rockall, oakland } from '../../lib/scoring-v4.js';
 
 // --- 1. Schema completeness ---------------------------------------------
 
@@ -63,7 +64,14 @@ const WAVE_61_A1D_TILES = ['apgar', 'silverman-andersen', 'downes'];
 // weighted +2, four +1 predictors). Each returns a numeric `score` for an exact
 // component-sum cross-check.
 const WAVE_61_A1E_TILES = ['pesi', 'spesi', 'nigrovic'];
-const ALL_DERIVATION_TILES = [...WAVE_48_1A_TILES, ...WAVE_48_1B_TILES, ...WAVE_48_1C_TILES, ...WAVE_48_2A_TILES, ...WAVE_48_2B_TILES, ...WAVE_48_2C_TILES, ...WAVE_48_3A_TILES, ...WAVE_48_3B_TILES, ...WAVE_48_3C_TILES, ...WAVE_48_3D_TILES, ...WAVE_48_4A_TILES, ...WAVE_48_4B_TILES, ...WAVE_48_4C_TILES, ...WAVE_48_4D_TILES, ...WAVE_48_4E_TILES, ...WAVE_48_4F_TILES, ...WAVE_48_4G_TILES, ...WAVE_48_4H_TILES, ...WAVE_48_4I_TILES, ...WAVE_48_4J_TILES, ...WAVE_61_A1_TILES, ...WAVE_61_A1B_TILES, ...WAVE_61_A1C_TILES, ...WAVE_61_A1D_TILES, ...WAVE_61_A1E_TILES];
+// spec-v61 A1 derivation tail, wave 6: the GI-bleed risk family. Glasgow-
+// Blatchford (banded BUN/Hgb/SBP weights, Hgb sex-specific), Rockall (clamped
+// ordinals with a pre-endoscopy variant that omits the last two items), and
+// Oakland (banded age/HR/SBP/Hgb plus binaries). Each banded weight is encoded
+// as a `points` callback that replicates the live banding, so the component sum
+// reproduces the live `score` exactly (gbs/oakland also expose `parts`).
+const WAVE_61_A1F_TILES = ['gbs', 'rockall', 'oakland'];
+const ALL_DERIVATION_TILES = [...WAVE_48_1A_TILES, ...WAVE_48_1B_TILES, ...WAVE_48_1C_TILES, ...WAVE_48_2A_TILES, ...WAVE_48_2B_TILES, ...WAVE_48_2C_TILES, ...WAVE_48_3A_TILES, ...WAVE_48_3B_TILES, ...WAVE_48_3C_TILES, ...WAVE_48_3D_TILES, ...WAVE_48_4A_TILES, ...WAVE_48_4B_TILES, ...WAVE_48_4C_TILES, ...WAVE_48_4D_TILES, ...WAVE_48_4E_TILES, ...WAVE_48_4F_TILES, ...WAVE_48_4G_TILES, ...WAVE_48_4H_TILES, ...WAVE_48_4I_TILES, ...WAVE_48_4J_TILES, ...WAVE_61_A1_TILES, ...WAVE_61_A1B_TILES, ...WAVE_61_A1C_TILES, ...WAVE_61_A1D_TILES, ...WAVE_61_A1E_TILES, ...WAVE_61_A1F_TILES];
 
 for (const id of ALL_DERIVATION_TILES) {
   test(`derivation schema: ${id} has all required fields`, () => {
@@ -402,6 +410,53 @@ for (const [label, inputs, expected] of [
   test(`nigrovic components sum equals nigrovic() score (${label})`, () => {
     const r = nigrovic(inputs);
     const sum = sumDerivation('nigrovic', inputs);
+    assert.equal(sum, r.score);
+    assert.equal(sum, expected);
+  });
+}
+
+// --- spec-v61 A1 wave 6: GI-bleed risk family ---------------------------
+// The banded weights (BUN/Hgb/SBP for GBS; age/HR/SBP/Hgb for Oakland; the
+// clamped ordinals and pre-endoscopy interaction for Rockall) are encoded as
+// `points` callbacks; sumDerivation passes (value, inputs) so the Hgb-by-sex
+// and pre-endoscopy callbacks resolve, reproducing each live score exactly.
+
+for (const [label, inputs, expected] of [
+  ['default low-risk (BUN 14, Hgb 15 M, SBP 120, no flags) = 0', { bunMgDl: 14, hgbGdl: 15, sex: 'M', sbp: 120, pulse100: false, melena: false, syncope: false, hepaticDisease: false, cardiacFailure: false }, 0],
+  ['banded BUN+Hgb(M)+SBP', { bunMgDl: 30, hgbGdl: 11, sex: 'M', sbp: 95, pulse100: false, melena: false, syncope: false, hepaticDisease: false, cardiacFailure: false }, 4 + 3 + 2],
+  ['female Hgb band differs (Hgb 11 F = +1, not +3)', { bunMgDl: 14, hgbGdl: 11, sex: 'F', sbp: 120, pulse100: false, melena: false, syncope: false, hepaticDisease: false, cardiacFailure: false }, 1],
+  ['max-ish (BUN>=70, Hgb<10, SBP<90, all binaries)', { bunMgDl: 80, hgbGdl: 8, sex: 'F', sbp: 80, pulse100: true, melena: true, syncope: true, hepaticDisease: true, cardiacFailure: true }, 6 + 6 + 3 + 1 + 1 + 2 + 2 + 2],
+]) {
+  test(`gbs components sum equals gbs() score (${label})`, () => {
+    const r = gbs(inputs);
+    const sum = sumDerivation('gbs', inputs);
+    assert.equal(sum, r.score);
+    assert.equal(sum, expected);
+  });
+}
+
+for (const [label, inputs, expected] of [
+  ['complete, all-zero', { ageBand: 0, shock: 0, comorbidity: 0, endoscopicDx: 0, stigmata: 0, preEndoscopy: false }, 0],
+  ['complete, mid (age 60-79 + shock tachy + comorbid major + dx other + stigmata)', { ageBand: 1, shock: 1, comorbidity: 2, endoscopicDx: 1, stigmata: 2, preEndoscopy: false }, 7],
+  ['complete, max 11', { ageBand: 2, shock: 2, comorbidity: 3, endoscopicDx: 2, stigmata: 2, preEndoscopy: false }, 11],
+  ['pre-endoscopy omits dx + stigmata (max 7)', { ageBand: 2, shock: 2, comorbidity: 3, endoscopicDx: 2, stigmata: 2, preEndoscopy: true }, 7],
+]) {
+  test(`rockall components sum equals rockall() score (${label})`, () => {
+    const r = rockall(inputs);
+    const sum = sumDerivation('rockall', inputs);
+    assert.equal(sum, r.score);
+    assert.equal(sum, expected);
+  });
+}
+
+for (const [label, inputs, expected] of [
+  ['safe-discharge example (age 35 F, HR 65, SBP 165, Hgb 17) = 0', { age: 35, sex: 'F', priorLgibAdmission: false, dreBlood: false, hr: 65, sbp: 165, hgbGdl: 17 }, 0],
+  ['banded mid (age 70 M, HR 95, SBP 125, Hgb 12 + prior + DRE)', { age: 70, sex: 'M', priorLgibAdmission: true, dreBlood: true, hr: 95, sbp: 125, hgbGdl: 12 }, 2 + 1 + 1 + 1 + 2 + 3 + 8],
+  ['max-ish (age>=70, HR>=110, SBP<90, Hgb<7, all binaries)', { age: 80, sex: 'M', priorLgibAdmission: true, dreBlood: true, hr: 120, sbp: 80, hgbGdl: 6 }, 2 + 1 + 1 + 1 + 3 + 5 + 22],
+]) {
+  test(`oakland components sum equals oakland() score (${label})`, () => {
+    const r = oakland(inputs);
+    const sum = sumDerivation('oakland', inputs);
     assert.equal(sum, r.score);
     assert.equal(sum, expected);
   });

@@ -6,6 +6,37 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v61 A1 wave 6 — "show your work" derivation for the GI-bleed risk family: Glasgow-Blatchford, Rockall & Oakland)
+
+Continues the A1 derivation tail with the three GI-bleeding risk scores a nurse
+charts to support an admit-vs-discharge decision — **`gbs`** (Glasgow-Blatchford
+Bleeding Score, upper GI), **`rockall`** (upper GI, with the pre-endoscopy
+variant), and **`oakland`** (lower GI safe-discharge). Unlike the prior additive
+waves, these carry *banded* weights, so each band is encoded as a `points`
+callback that replicates the live banding exactly. Derivation coverage 94 → 97
+tiles.
+
+- **`lib/meta.js`**: each tile gains a full `derivation` block whose verbatim
+  `source` reuses the tile's already-vetted inline citation (no new clinical
+  quote). GBS models the Blatchford 2000 Table 1 weights — BUN, SBP, and a
+  **sex-specific** hemoglobin band (the callback reads `inputs.sex`) plus five
+  binaries; Rockall clamps its five ordinals and zeroes the endoscopic-diagnosis
+  and stigmata items when `inputs.preEndoscopy` is set (reproducing both the
+  complete 0-11 and pre-endoscopy 0-7 models from one block); Oakland encodes the
+  banded age/HR/SBP/Hgb weights (Hgb converted g/dL→g/L to match Oakland 2017
+  Table 2) plus three binaries.
+- **`views/group-g.js`** (`gbs`, `rockall`, `oakland`): each renderer lifts its
+  arguments object into a local `inputs`, mounts `renderDerivation(META[id])`,
+  and calls `updateDerivationSteps` on every input/change (the established
+  spec-v48 wiring). `lib/derivation.js` already passes `(value, inputs)` to a
+  callback `points`, so the sex- and pre-endoscopy-dependent callbacks resolve.
+- **`test/unit/derivation.test.js`**: the three tiles join `ALL_DERIVATION_TILES`
+  (schema + units-coverage guards) and each gets component-sum cross-checks
+  asserting the derivation reproduces the live `score` (`gbs().score`,
+  `rockall().score`, `oakland().score`) across the boundary cases — including
+  GBS's male-vs-female hemoglobin band difference, Rockall's pre-endoscopy
+  variant omitting its last two items, and Oakland's banded vitals.
+
 ### Added (spec-v61 A1 wave 5 — "show your work" derivation for PESI, sPESI & the Nigrovic Bacterial Meningitis Score)
 
 Continues the A1 derivation tail with the two PE-prognosis scores a nurse charts
