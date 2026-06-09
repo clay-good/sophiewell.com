@@ -22,6 +22,7 @@ import { auditFull, dast10, gds15 } from '../../lib/scoring-v5.js';
 import { nips, cries, pedsGcs } from '../../lib/scoring-v4.js';
 import { pelod2, psofa } from '../../lib/scoring-v6.js';
 import { apache2 } from '../../lib/scoring-v6.js';
+import { mnihss } from '../../lib/scoring-v4.js';
 
 // --- 1. Schema completeness ---------------------------------------------
 
@@ -119,7 +120,10 @@ const WAVE_61_A1L_TILES = ['pelod2', 'psofa'];
 // 15-GCS, age points, and a cross-input chronic-health callback. The meta.js
 // apsStep breaks mirror scoring-v6; cross-checks span varied bands so drift fails.
 const WAVE_61_A1M_TILES = ['apache2'];
-const ALL_DERIVATION_TILES = [...WAVE_48_1A_TILES, ...WAVE_48_1B_TILES, ...WAVE_48_1C_TILES, ...WAVE_48_2A_TILES, ...WAVE_48_2B_TILES, ...WAVE_48_2C_TILES, ...WAVE_48_3A_TILES, ...WAVE_48_3B_TILES, ...WAVE_48_3C_TILES, ...WAVE_48_3D_TILES, ...WAVE_48_4A_TILES, ...WAVE_48_4B_TILES, ...WAVE_48_4C_TILES, ...WAVE_48_4D_TILES, ...WAVE_48_4E_TILES, ...WAVE_48_4F_TILES, ...WAVE_48_4G_TILES, ...WAVE_48_4H_TILES, ...WAVE_48_4I_TILES, ...WAVE_48_4J_TILES, ...WAVE_61_A1_TILES, ...WAVE_61_A1B_TILES, ...WAVE_61_A1C_TILES, ...WAVE_61_A1D_TILES, ...WAVE_61_A1E_TILES, ...WAVE_61_A1F_TILES, ...WAVE_61_A1G_TILES, ...WAVE_61_A1H_TILES, ...WAVE_61_A1I_TILES, ...WAVE_61_A1J_TILES, ...WAVE_61_A1K_TILES, ...WAVE_61_A1L_TILES, ...WAVE_61_A1M_TILES];
+// spec-v61 A1 derivation tail, wave 14: modified NIHSS -- eleven 0-N stroke
+// items summed (0-31). Identity `points` reproduce the live total.
+const WAVE_61_A1N_TILES = ['mnihss'];
+const ALL_DERIVATION_TILES = [...WAVE_48_1A_TILES, ...WAVE_48_1B_TILES, ...WAVE_48_1C_TILES, ...WAVE_48_2A_TILES, ...WAVE_48_2B_TILES, ...WAVE_48_2C_TILES, ...WAVE_48_3A_TILES, ...WAVE_48_3B_TILES, ...WAVE_48_3C_TILES, ...WAVE_48_3D_TILES, ...WAVE_48_4A_TILES, ...WAVE_48_4B_TILES, ...WAVE_48_4C_TILES, ...WAVE_48_4D_TILES, ...WAVE_48_4E_TILES, ...WAVE_48_4F_TILES, ...WAVE_48_4G_TILES, ...WAVE_48_4H_TILES, ...WAVE_48_4I_TILES, ...WAVE_48_4J_TILES, ...WAVE_61_A1_TILES, ...WAVE_61_A1B_TILES, ...WAVE_61_A1C_TILES, ...WAVE_61_A1D_TILES, ...WAVE_61_A1E_TILES, ...WAVE_61_A1F_TILES, ...WAVE_61_A1G_TILES, ...WAVE_61_A1H_TILES, ...WAVE_61_A1I_TILES, ...WAVE_61_A1J_TILES, ...WAVE_61_A1K_TILES, ...WAVE_61_A1L_TILES, ...WAVE_61_A1M_TILES, ...WAVE_61_A1N_TILES];
 
 for (const id of ALL_DERIVATION_TILES) {
   test(`derivation schema: ${id} has all required fields`, () => {
@@ -784,6 +788,20 @@ for (const [label, inputs, expected] of [
     const sum = sumDerivation('apache2', inputs);
     assert.equal(sum, r.total);
     if (expected !== null) assert.equal(sum, expected);
+  });
+}
+
+// --- spec-v61 A1 wave 14: modified NIHSS --------------------------------
+for (const [label, inputs, expected] of [
+  ['all-zero', { locQuestions: 0, locCommands: 0, gaze: 0, visualFields: 0, motorArmL: 0, motorArmR: 0, motorLegL: 0, motorLegR: 0, sensory: 0, language: 0, extinction: 0 }, 0],
+  ['mid (LOC-Q 2 + arm 4 + language 3) = 9', { locQuestions: 2, locCommands: 0, gaze: 0, visualFields: 0, motorArmL: 4, motorArmR: 0, motorLegL: 0, motorLegR: 0, sensory: 0, language: 3, extinction: 0 }, 9],
+  ['max 31', { locQuestions: 2, locCommands: 2, gaze: 2, visualFields: 3, motorArmL: 4, motorArmR: 4, motorLegL: 4, motorLegR: 4, sensory: 1, language: 3, extinction: 2 }, 31],
+]) {
+  test(`mnihss components sum equals mnihss() total (${label})`, () => {
+    const r = mnihss(inputs);
+    const sum = sumDerivation('mnihss', inputs);
+    assert.equal(sum, r.total);
+    assert.equal(sum, expected);
   });
 }
 

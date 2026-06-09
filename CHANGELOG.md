@@ -6,6 +6,22 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v61 A1 wave 14 — "show your work" derivation for the modified NIHSS)
+
+Adds **`mnihss`** (the modified NIHSS stroke-severity scale) to the derivation
+rollout. Derivation coverage 115 → 116 tiles.
+
+- **`lib/meta.js`**: the `mnihss.derivation` block sums the eleven 0-N items (LOC
+  questions/commands, gaze, visual fields, motor arm L/R, motor leg L/R, sensory,
+  language, extinction) with identity `points`, banded 0 / 1-4 / 5-15 / 16-20 /
+  >=21, with a verbatim `source` reusing the inline citation.
+- **`views/group-g.js`** (`mnihss`): the renderer lifts its arguments into a
+  local `inputs`, mounts `renderDerivation(META.mnihss)`, and calls
+  `updateDerivationSteps` on change.
+- **`test/unit/derivation.test.js`**: `mnihss` joins `ALL_DERIVATION_TILES`
+  (schema + units guards) with component-sum cross-checks against `mnihss().total`
+  (zero, a mid case, and the 31-point maximum).
+
 ### Added (spec-v61 A1 wave 13 — "show your work" derivation for APACHE II)
 
 Adds the canonical adult-ICU severity score, **`apache2`** (APACHE II), to the

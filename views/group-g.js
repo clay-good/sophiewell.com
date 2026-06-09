@@ -4086,8 +4086,10 @@ export const renderers = {
     ];
     for (const [l, id, max] of items) root.appendChild(rangeField(l, id, 0, max, 0));
     const o = out(); root.appendChild(o);
+    const deriv = renderDerivation(META.mnihss);
+    if (deriv) root.appendChild(deriv);
     const run = () => safe(o, () => {
-      const r = S4.mnihss({
+      const inputs = {
         locQuestions: nv('mn-loc-q'),
         locCommands:  nv('mn-loc-c'),
         gaze:         nv('mn-gaze'),
@@ -4099,9 +4101,11 @@ export const renderers = {
         sensory:      nv('mn-sens'),
         language:     nv('mn-lang'),
         extinction:   nv('mn-ext'),
-      });
+      };
+      const r = S4.mnihss(inputs);
       o.appendChild(el('h2', { text: `mNIHSS ${r.total} of 31` }));
       o.appendChild(el('p', { text: r.band }));
+      if (deriv) updateDerivationSteps(deriv, META.mnihss, inputs);
     });
     items.forEach(([, id]) => document.getElementById(id).addEventListener('input', run));
     run();

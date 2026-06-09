@@ -89,8 +89,9 @@
 > is cross-checked across age bands. Wave 13 adds `apache2`
 > (APACHE II) — its twelve banded acute-physiology variables (via a
 > mirrored `apsStep` lookup), the `15 - GCS` neuro term, age points,
-> and a cross-input chronic-health callback — bringing derivation
-> coverage to 115 tiles. A2
+> and a cross-input chronic-health callback. Wave 14 adds `mnihss`
+> (the modified NIHSS — eleven 0-N stroke items summed), bringing
+> derivation coverage to 116 tiles. A2
 > (related-tool linking) is complete. A3 (chart-ready labeled copy) is now
 > complete across Group E and the five 2+-numeric-output v61 bedside
 > tiles (`ebv-mabl`, `peds-transfusion-volume`, `rhig-dose`,
