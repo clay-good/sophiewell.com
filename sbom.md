@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `0b9595bf4c46703f`
-Generated: 2026-06-09T16:29:58.042Z
+Build ID: `e73edfb5e2395397`
+Generated: 2026-06-09T16:51:17.561Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=20.18.1 <21, npm >=10.0.0
@@ -106,7 +106,7 @@ downloads is committed in this repository and is hashed below.
 | `views/group-v11.js` | 16589 | `e5a07cd39d0b94fe386afe4c2a694624330e428d03514776a0d1dfe357e9c299` |
 | `views/group-v5.js` | 28193 | `b39f6a9d0129e2f338190259138ab015374e7122c26362e03beefd95f3de56c8` |
 | `views/group-v6.js` | 5707 | `425918decb48cd9efac9fc5590ac8970a54c03c3b0df056fb99c9a22ff8dd1b2` |
-| `views/group-v7.js` | 14540 | `62cafb116458fc6bf0e7a8eb8ba2df7a64577e1bb97ff662603cc969adbd02c5` |
+| `views/group-v7.js` | 14881 | `686615cfd90249e482d4a8d72fe702559148151a660fa1441d763dc4be59decf` |
 | `views/group-v8.js` | 20315 | `9617fd28337104e69eb7c6d98e1a196d690d6b3e0ec6d5acaf871e1be0f2788f` |
 | `views/group-v9.js` | 22815 | `66b61a3aa7fc5d8e0eb324392f546ff29c8bc88af80c0a418879f887737e5e1a` |
 | `views/pa-lint.js` | 29811 | `892654ebc944da5f8c649fa0afb0aab0b803d4d754498804caade37fbed083db` |

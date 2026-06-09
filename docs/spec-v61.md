@@ -109,7 +109,12 @@
 > `peds-ett`, `naloxone` — `burn-fluid` folding its two `<h3>`-headed
 > resuscitation-method blocks into one `resultRow` with inline
 > section-header `{ text }` items, so a medic copies the whole
-> Parkland-plus-Brooke schedule in one action). The `resultRow`
+> Parkland-plus-Brooke schedule in one action), and (A3 wave 5) the
+> five multi-output Group V7 oxygenation / renal-acid / lipid tiles
+> (`ldl-calc`, `cao2-do2`, `oxygenation-index`, `driving-pressure`,
+> `acid-base-deficit` — each emitting two-to-four distinct computed
+> numeric results), which completes the multi-numeric rollout. The
+> `resultRow`
 > helper was
 > promoted to a shared module (`lib/result-copy.js`) so `group-v11`,
 > `group-e`, and future view modules use one byte-identical
@@ -121,11 +126,11 @@
 > (whose primary anion-gap result was folded out of its `<h2>` headline
 > into the labeled `resultRow` list so it is part of the "Copy results"
 > payload). Every multi-output Group E, Group V5, Group F medication /
-> infusion, and Group I field-medicine tile now offers a
-> `formatCopyAll`-backed "Copy results" button;
-> single-numeric-output calculators (one value plus an interpretation line)
-> have nothing multi-line worth a separate button and keep the universal
-> "Copy all".
+> infusion, Group I field-medicine, and Group V7 oxygenation / renal-acid /
+> lipid tile now offers a `formatCopyAll`-backed "Copy results" button;
+> single-numeric-output calculators (one value plus an interpretation line),
+> unit-conversion / dose-time utilities, and workflow checklists have nothing
+> multi-line worth a separate button and keep the universal "Copy all".
 > v61 has two parts.
 > **Part A** is
 > a zero-tile *enhancement* pass that raises the value of the

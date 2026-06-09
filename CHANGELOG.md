@@ -6,6 +6,34 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v61 A3 wave 5 — chart-ready labeled copy for the multi-output Group V7 oxygenation / renal-acid / lipid tiles)
+
+Extends the A3 "Copy results" affordance to the five multi-output Group V7
+bedside calculators, each of which emits two-to-four distinct *computed* numeric
+results: **`ldl-calc`** (non-HDL / Friedewald / NIH-Sampson LDL), **`cao2-do2`**
+(arterial O₂ content + Hb-bound/dissolved split + O₂ delivery),
+**`oxygenation-index`** (OI + OSI), **`driving-pressure`** (dP + static/dynamic
+compliance), and **`acid-base-deficit`** (total body water + bicarbonate deficit
++ sodium deficit).
+
+- **`views/group-v7.js`**: imports the shared `resultRow` helper
+  (`lib/result-copy.js`) and rebuilds each of these five tiles' result list
+  through it (the module keeps its local `list()`/`li()` helpers for the
+  single-value tiles). The per-`<li>` text is byte-identical to the prior
+  hand-built list — including the `fmt()` fallback strings (e.g.
+  `(enter cardiac output)`) and the warn-class band lines — so the spec-v9
+  numeric-correctness sweep and the spec-v53 null-safety guarantees are
+  unaffected; the trailing protocol/estimate notes pass through as `{ text }`
+  items so they join the copy payload.
+- **`test/integration/unit-toggle.spec.js`**: the five ids join the
+  labeled-"Copy results" sweep (now 26 tiles).
+
+With this wave the A3 multi-output rollout covers every clean multi-*numeric*
+result cluster in the catalog (Groups E, V5, F, I, V7); the remaining
+hand-built lists are single-value-plus-interpretation scores, categorical
+pickers, unit-conversion / dose-time utilities, and workflow checklists, none
+of which fit the labeled `{ label, value, units }` result model.
+
 ### Added (spec-v61 A3 wave 4 — chart-ready labeled copy for the multi-output Group I field-medicine tiles)
 
 Extends the A3 "Copy results" affordance to the three multi-output Group I

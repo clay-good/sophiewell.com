@@ -93,6 +93,9 @@ test('multi-output tiles offer a labeled "Copy results" button', async ({ page }
     // spec-v61 A3 wave 4: the multi-output Group I field-medicine tiles
     // (burn-fluid folds both resuscitation methods into one copyable schedule).
     'burn-fluid', 'peds-ett', 'naloxone',
+    // spec-v61 A3 wave 5: the multi-output Group V7 oxygenation / renal-acid /
+    // lipid tiles (each emits 2-4 distinct computed numeric results).
+    'ldl-calc', 'cao2-do2', 'oxygenation-index', 'driving-pressure', 'acid-base-deficit',
   ];
   for (const id of ids) {
     await page.goto('/#' + id, { waitUntil: 'load' });

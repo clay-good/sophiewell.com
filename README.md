@@ -365,10 +365,14 @@ The labeled copy covers the Group E math tiles (`bsa`, `anion-gap`,
 headline total into the copied list as `anion-gap-dd` does), and — through the
 same shared `resultRow` helper — the three Group I field-medicine tiles
 (`burn-fluid`, `peds-ett`, `naloxone`, where `burn-fluid` folds the Parkland and
-Modified-Brooke schedules into one copyable block) — exactly the values a nurse
-or medic pastes into a transfusion, I&O, electrolyte-correction, ventilator,
-pump, TPN, insulin, burn-resuscitation, or airway chart, with on-screen text
-byte-identical to the prior hand-built list. All twenty-one are pinned by
+Modified-Brooke schedules into one copyable block) and the five Group V7
+oxygenation / renal-acid / lipid tiles (`ldl-calc`, `cao2-do2`,
+`oxygenation-index`, `driving-pressure`, `acid-base-deficit`, each emitting
+two-to-four computed numeric results) — exactly the values a nurse or medic
+pastes into a transfusion, I&O, electrolyte-correction, ventilator, pump, TPN,
+insulin, burn-resuscitation, airway, lipid, or oxygen-delivery chart, with
+on-screen text byte-identical to the prior hand-built list. All twenty-six are
+pinned by
 [test/integration/unit-toggle.spec.js](test/integration/unit-toggle.spec.js)
 (alternate-unit parity, example-prefill parity, the labeled-copy affordance, and
 a 320px no-overflow assertion).
@@ -402,9 +406,11 @@ NIHSS stroke scale); then `finnegan` (the modified Finnegan neonatal-abstinence
 score) — 117
 scores now carry derivation, each with CI-cross-checked component sums). The A3
 labeled copy then extended to the six multi-output Group V5 lab / clinical-math
-tiles (wave 2), the three Group F medication / infusion tiles (wave 3), and the
-three Group I field-medicine tiles (wave 4) above; the remaining
-single-numeric-output tiles (one value plus an interpretation line) keep the
+tiles (wave 2), the three Group F medication / infusion tiles (wave 3), the
+three Group I field-medicine tiles (wave 4), and the five Group V7 oxygenation /
+renal-acid / lipid tiles (wave 5) above — completing the multi-numeric rollout;
+the remaining hand-built lists (single value plus an interpretation line,
+unit-conversion / dose-time utilities, and workflow checklists) keep the
 universal "Copy all".
 
 ## System design and architecture overview

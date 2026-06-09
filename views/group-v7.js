@@ -7,6 +7,7 @@
 import { el, clear } from '../lib/dom.js';
 import { fmt } from '../lib/num.js';
 import * as V6 from '../lib/clinical-v6.js';
+import { resultRow } from '../lib/result-copy.js';
 
 function field(label, id, opts = {}) {
   const wrap = el('p');
@@ -124,12 +125,12 @@ export const renderers = {
     const o = out(); root.appendChild(o);
     wire(['ldl-tc', 'ldl-hdl', 'ldl-tg'], () => safe(o, () => {
       const r = V6.ldlCalc({ totalChol: val('ldl-tc'), hdl: val('ldl-hdl'), tg: val('ldl-tg') });
-      o.appendChild(list([
-        li(`Non-HDL cholesterol: ${fmt(r.nonHdl, { fallback: '--' })} mg/dL`),
-        li(`Friedewald LDL: ${fmt(r.friedewald, { fallback: '(invalid at TG >=400)' })} mg/dL`),
-        li(`NIH (Sampson 2020) LDL: ${fmt(r.nih, { fallback: '(out of range)' })} mg/dL`),
-        li(r.note),
-      ]));
+      resultRow(o, [
+        { label: 'Non-HDL cholesterol', value: fmt(r.nonHdl, { fallback: '--' }), units: 'mg/dL' },
+        { label: 'Friedewald LDL', value: fmt(r.friedewald, { fallback: '(invalid at TG >=400)' }), units: 'mg/dL' },
+        { label: 'NIH (Sampson 2020) LDL', value: fmt(r.nih, { fallback: '(out of range)' }), units: 'mg/dL' },
+        { text: r.note },
+      ]);
     }));
   },
 
@@ -156,11 +157,11 @@ export const renderers = {
     const o = out(); root.appendChild(o);
     wire(['cao2-hb', 'cao2-sao2', 'cao2-pao2', 'cao2-co'], () => safe(o, () => {
       const r = V6.cao2Do2({ hb: val('cao2-hb'), sao2: val('cao2-sao2'), pao2: val('cao2-pao2'), cardiacOutput: optNum('cao2-co') });
-      o.appendChild(list([
-        li(`Arterial O2 content (CaO2): ${fmt(r.cao2, { fallback: '(enter values)' })} mL O2/dL`),
-        li(`Hb-bound: ${fmt(r.boundO2, { fallback: '--' })} | dissolved: ${fmt(r.dissolvedO2, { fallback: '--' })} mL O2/dL`),
-        li(`O2 delivery (DO2): ${fmt(r.do2, { fallback: '(enter cardiac output)' })} mL O2/min`),
-      ]));
+      resultRow(o, [
+        { label: 'Arterial O2 content (CaO2)', value: fmt(r.cao2, { fallback: '(enter values)' }), units: 'mL O2/dL' },
+        { label: 'Hb-bound', value: `${fmt(r.boundO2, { fallback: '--' })} | dissolved: ${fmt(r.dissolvedO2, { fallback: '--' })}`, units: 'mL O2/dL' },
+        { label: 'O2 delivery (DO2)', value: fmt(r.do2, { fallback: '(enter cardiac output)' }), units: 'mL O2/min' },
+      ]);
     }));
   },
 
@@ -173,12 +174,12 @@ export const renderers = {
     const o = out(); root.appendChild(o);
     wire(['oi-fio2', 'oi-map', 'oi-pao2', 'oi-spo2'], () => safe(o, () => {
       const r = V6.oxygenationIndex({ fio2: val('oi-fio2'), map: val('oi-map'), pao2: optNum('oi-pao2'), spo2: optNum('oi-spo2') });
-      o.appendChild(list([
-        li(`Oxygenation Index (OI): ${fmt(r.oi, { fallback: '(enter PaO2)' })}`),
-        r.oiBand ? li(r.oiBand) : null,
-        li(`Oxygen Saturation Index (OSI): ${fmt(r.osi, { fallback: '(enter SpO2)' })}`),
-        r.osiBand ? li(r.osiBand) : null,
-      ]));
+      resultRow(o, [
+        { label: 'Oxygenation Index (OI)', value: fmt(r.oi, { fallback: '(enter PaO2)' }) },
+        r.oiBand ? { text: r.oiBand } : null,
+        { label: 'Oxygen Saturation Index (OSI)', value: fmt(r.osi, { fallback: '(enter SpO2)' }) },
+        r.osiBand ? { text: r.osiBand } : null,
+      ]);
     }));
   },
 
@@ -191,12 +192,12 @@ export const renderers = {
     const o = out(); root.appendChild(o);
     wire(['dp-plat', 'dp-peep', 'dp-vt', 'dp-peak'], () => safe(o, () => {
       const r = V6.drivingPressure({ plateau: val('dp-plat'), peep: val('dp-peep'), tidalVolume: val('dp-vt'), peak: optNum('dp-peak') });
-      o.appendChild(list([
-        li(`Driving pressure (dP): ${fmt(r.drivingPressure, { fallback: '(plateau must exceed PEEP)' })} cmH2O`),
-        li(`Static compliance: ${fmt(r.staticCompliance, { fallback: '--' })} mL/cmH2O`),
-        li(`Dynamic compliance: ${fmt(r.dynamicCompliance, { fallback: '(enter peak pressure)' })} mL/cmH2O`),
-        li(r.band, r.drivingPressure != null && r.drivingPressure > 15 ? 'warn' : null),
-      ]));
+      resultRow(o, [
+        { label: 'Driving pressure (dP)', value: fmt(r.drivingPressure, { fallback: '(plateau must exceed PEEP)' }), units: 'cmH2O' },
+        { label: 'Static compliance', value: fmt(r.staticCompliance, { fallback: '--' }), units: 'mL/cmH2O' },
+        { label: 'Dynamic compliance', value: fmt(r.dynamicCompliance, { fallback: '(enter peak pressure)' }), units: 'mL/cmH2O' },
+        { text: r.band, cls: r.drivingPressure != null && r.drivingPressure > 15 ? 'warn' : null },
+      ]);
     }));
   },
 
@@ -251,13 +252,13 @@ export const renderers = {
         measuredHco3: val('abd-mhco3'), targetHco3: val('abd-thco3'),
         measuredNa: val('abd-mna'), targetNa: val('abd-tna'),
       });
-      o.appendChild(list([
-        li(`Total body water: ${fmt(r.tbwLiters, { fallback: '--' })} L`),
-        li(`Bicarbonate deficit: ${fmt(r.hco3DeficitMeq, { fallback: '(enter values)' })} mEq`),
-        li(`Sodium deficit: ${fmt(r.naDeficitMeq, { fallback: '(enter values)' })} mEq`),
-        li('Deficit estimates, not infusion rates. Verify against local protocol.'),
-        r.hyponatremiaWarn ? li(r.hyponatremiaWarn, 'warn') : null,
-      ]));
+      resultRow(o, [
+        { label: 'Total body water', value: fmt(r.tbwLiters, { fallback: '--' }), units: 'L' },
+        { label: 'Bicarbonate deficit', value: fmt(r.hco3DeficitMeq, { fallback: '(enter values)' }), units: 'mEq' },
+        { label: 'Sodium deficit', value: fmt(r.naDeficitMeq, { fallback: '(enter values)' }), units: 'mEq' },
+        { text: 'Deficit estimates, not infusion rates. Verify against local protocol.' },
+        r.hyponatremiaWarn ? { text: r.hyponatremiaWarn, cls: 'warn' } : null,
+      ]);
     }));
   },
 
