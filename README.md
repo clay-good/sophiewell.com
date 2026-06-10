@@ -598,6 +598,36 @@ line as bicarbonate or phosphate; caution in digoxin toxicity). Dosing is
 anchored to AHA ACLS 2020; elemental content to USP / product labeling. It states
 the dose; it does not write the order. See [docs/spec-v64.md](docs/spec-v64.md).
 
+### Bedside physiology a nurse still does on paper (spec-v65)
+
+A render-tree and near-neighbor audit against the live catalog found three
+deterministic, source-anchored calculations an ICU/ED/floor nurse performs on a
+routine shift that no existing tile computed. Each passes the
+[spec-v29](docs/spec-v29.md) §3 one-line test (input → computed output), is a
+pure `lib/clinical-v8.js` function fuzz-covered by the spec-v59 harness, and
+renders the explicit **"planning estimate — verify against the device / monitor
+and local protocol"** notice. This takes the catalog to 337.
+
+| Tile | Formula | Output | Reaches for it |
+|---|---|---|---|
+| `o2-cylinder-duration` | usable L = (gauge − residual) × cylinder factor; min = usable ÷ flow | usable O₂ (L), time-to-residual (hh:mm), and the inverse max-flow for a target transport time | "will this tank make it to CT and back?" |
+| `minute-ventilation` | V̇E = RR × Vt; V̇A subtracts ~2.2 mL/kg IBW dead space; target rate = RR × PaCO₂/target | minute & alveolar ventilation (L/min) and the RR to reach a target PaCO₂ | every ventilator CO₂ adjustment |
+| `cerebral-perfusion-pressure` | CPP = MAP − ICP (MAP from SBP/DBP when not measured) | CPP (mmHg) with the BTF-2017 60–70 band and a negative-CPP critical flag | every neuro-ICU hourly flowsheet |
+
+The three are deliberately distinct from their near-neighbors and cross-linked
+to them: `o2-cylinder-duration` is the **gas** analog of the IV-bag
+`infusion-time-remaining`; `minute-ventilation` is the **gas-exchange** calc the
+mechanics tiles (`driving-pressure`, `pbw-ardsnet`, `rsbi`) do not cover; and
+`cerebral-perfusion-pressure` extends `map` (which computes MAP from blood
+pressure but never subtracts ICP). Cylinder factors (D 0.16 / E 0.28 / M 1.56 /
+G 2.41 / H-K 3.14 L/psi) are physical constants of the cylinder geometry; the
+ventilation math is anchored to Marino's *ICU Book*; CPP and its target band to
+the Brain Trauma Foundation 2017 guideline (Carney N, *Neurosurgery*
+2017;80(1):6-15). A gauge at/below the safe residual flags "swap now" rather
+than rendering a negative duration, and a negative CPP (ICP > MAP) is surfaced
+with an explicit critical-low flag, never hidden. See
+[docs/spec-v65.md](docs/spec-v65.md).
+
 ## System design and architecture overview
 
 The application is one HTML file, one CSS file, one JavaScript module set,
