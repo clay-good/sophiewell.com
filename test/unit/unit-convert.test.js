@@ -5,7 +5,7 @@ import assert from 'node:assert/strict';
 import {
   labConvert, a1cPctToIfcc, a1cIfccToPct,
   mmHgToKpa, kpaToMmHg, fToC, cToF,
-  inchesToCm, cmToInches, lbToKg, kgToLb, lbOzToKg, kgToLbOz,
+  inchesToCm, cmToInches, lbToKg, kgToLb, lbOzToKg, kgToLbOz, feetInToCm,
 } from '../../lib/unit-convert.js';
 
 const close = (a, b, eps = 0.05) => assert.ok(Math.abs(a - b) <= eps, `expected ~${b}, got ${a}`);
@@ -73,6 +73,8 @@ test('32 F -> 0 C', () => close(fToC(32), 0, 0.05));
 
 // Basics
 test('70 inches -> 177.8 cm', () => close(inchesToCm(70), 177.8, 0.05));
+test('5 ft 10 in -> 177.8 cm', () => close(feetInToCm(5, 10), 177.8, 0.05));
+test('6 ft 0 in -> 182.88 cm', () => close(feetInToCm(6, 0), 182.88, 0.05));
 test('100 cm -> 39.37 in', () => close(cmToInches(100), 39.37, 0.05));
 test('150 lb -> 68.04 kg', () => close(lbToKg(150), 68.04, 0.05));
 test('70 kg -> 154.32 lb', () => close(kgToLb(70), 154.32, 0.05));

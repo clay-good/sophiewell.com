@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { parseHash, buildHash } from '../../lib/hash.js';
+import { parseHash, buildHash, patchHash } from '../../lib/hash.js';
 
 test('parseHash: empty hash defaults audience to "nurse" (spec-v29 §5.3)', () => {
   const r = parseHash('');
@@ -103,4 +103,27 @@ test('buildHash: empty state omits the key', () => {
 test('buildHash: pinned field is dropped (spec-v8 §3.2)', () => {
   // Passing pinned (legacy callers) does not emit a p= segment.
   assert.equal(buildHash({ route: 'bmi', pinned: ['icd10'] }), '#bmi');
+});
+
+// patchHash merges a partial change into the *current* hash (read from
+// window.location.hash), preserving the other fields. Used by the audience
+// chip, the browse disclosure, and the deep-link state writers; previously
+// covered only indirectly via the e2e deep-link tests.
+test('patchHash: merges one field into the current hash, preserving the rest', () => {
+  const prev = globalThis.window;
+  try {
+    globalThis.window = { location: { hash: '#bmi&a=patients' } };
+    // Patching the browse flag keeps the route and audience.
+    assert.equal(patchHash({ browse: 'open' }), '#bmi&a=patients&b=open');
+    // Patching the audience overrides only that field.
+    assert.equal(patchHash({ audience: 'clinicians' }), '#bmi&a=clinicians');
+    // A state patch encodes and round-trips through parseHash.
+    globalThis.window.location.hash = '#bmi';
+    const patched = patchHash({ state: { w: '70' } });
+    assert.deepEqual(parseHash(patched).state, { w: '70' });
+    assert.equal(parseHash(patched).route, 'bmi');
+  } finally {
+    if (prev === undefined) delete globalThis.window;
+    else globalThis.window = prev;
+  }
 });
