@@ -6,6 +6,46 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v63 OA1 + Part B — regulatory-deadline engine and the 5 ops calculators, catalog 328 → 333)
+
+The ops-side counterpart to spec-v62. The catalog could compute exactly one
+regulatory deadline (breach-clock); v63 adds the shared primitive and the five
+ops calculators that the gap analysis flagged as missing.
+
+- **OA1 — `lib/deadline.js` (regulatory-deadline engine).** Pure UTC-midnight
+  date arithmetic: `deadline({anchor, days, basis, now, rollForward})` returns the
+  deadline date, days elapsed/remaining vs today, and a past-due flag, in CALENDAR
+  or FEDERAL BUSINESS days. Business-day mode skips weekends and the 5 U.S.C. 6103
+  federal holidays (federal weekend-observance rule + the Dec-31 New-Year
+  year-boundary edge), rolling forward deterministically; calendar mode optionally
+  rolls a weekend/holiday deadline to the next business day. Impossible string
+  dates (2026-13-40) are rejected, not silently normalized. `breach-clock` was
+  re-pointed onto the engine's date primitives — output byte-identical
+  (regression-pinned). (Shipped in 446b99c.)
+- **`appeal-deadline`** (Group C) — Medicare appeal-level filing deadline (42 CFR
+  Part 405 Subpart I: redetermination 120 d, QIC 180 d, ALJ/Council/court 60 d)
+  with the next level, the deadline + live days-remaining, and the CY2026
+  amount-in-controversy gate (ALJ $200, court $1,960).
+- **`timely-filing`** (Group C) — claim filing deadline (42 CFR 424.44: Medicare
+  one calendar year; other payers' limits user-supplied, no payer directory).
+- **`em-mdm`** (Group A) — 2021 E/M level by Medical Decision Making (AMA CPT
+  2-of-3 grid), completing the 2021 E/M rules alongside `em-time` (the time path).
+- **`pa-turnaround`** (Group C) — prior-authorization decision clock (CMS-0057-F:
+  standard 7 calendar days, expedited 72 hours; plan-specified windows supported).
+- **`overpayment-60day`** (Group C) — 60-day report-and-return clock (ACA 6402(a),
+  42 CFR 401.305); the catalog's second federal 60-day clock after breach-clock.
+- Compute in `lib/ops-v63.js` (all deadline tiles route through `lib/deadline.js`);
+  renderers in `views/group-v63.js`; both new modules are in the spec-v59 fuzz
+  harness. 31 new unit tests (`deadline.test.js`, `ops-v63.test.js`); each tile
+  ships a META example with a deterministic deadline date driving the
+  example-correctness sweep, a spec-v11 audit log, and a per-result "surfaces the
+  regulatory date/level only; confirm against the current rule — not legal advice"
+  note. Catalog 328 → 333 across all 13 catalog-truth surfaces.
+- Remaining v63 work (a later wave): the Part A depth pass OA2 (denial→next-step
+  routing), OA3 (generator completeness linting), OA4 (extend the staleness ledger
+  to the non-PA ops rule families — the dated constants are cited inline with
+  accessed dates today), and OA5 (the ops related-tool cluster + printable output).
+
 ### Added (spec-v62 Part B wave 2 — the two deferred tiles ship; Part B complete, catalog 326 → 328)
 
 Wave 1 deferred the two Part-B tiles whose published constants had to be pinned

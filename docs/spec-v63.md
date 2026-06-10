@@ -1,6 +1,25 @@
 # spec-v63.md — Deepen the operations tools: a regulatory-deadline engine, denial→next-step routing, generator linting, inline rule provenance; +5 ops calculators
 
-> Status: proposed (2026-06-09). v63 is the operations-side
+> Status: **OA1 + Part B shipped (2026-06-10); Part A OA2-OA5 deferred.**
+> The regulatory-deadline engine `lib/deadline.js` (OA1) shipped — calendar +
+> federal-business-day math over UTC-midnight dates with the 5 U.S.C. §6103
+> holiday set and weekend/year-boundary observance — and `breach-clock` was
+> re-pointed onto it byte-identically. All **5 Part B calculators** shipped
+> (`appeal-deadline`, `timely-filing`, `em-mdm`, `pa-turnaround`,
+> `overpayment-60day`), each computing through the engine (or the AMA E/M grid),
+> taking the catalog **328 → 333**: compute in `lib/ops-v63.js`, renderers in
+> `views/group-v63.js`, 31 unit tests, fuzz-covered, each with a META example,
+> a spec-v11 audit log, and the "regulatory date/level only — not legal advice"
+> note. The dated constants (appeal day-counts, CY2026 AIC, the 365-day
+> timely-filing basis, the CMS-0057-F windows, the E/M edition, the federal
+> holiday set) are cited inline with `accessed` dates. **Deferred to a later
+> wave:** the Part A depth pass — OA2 (denial→next-step routing), OA3 (generator
+> completeness linting), OA4 (extend `pa-staleness-ledger.json` and
+> `check-pa-staleness` to the non-PA ops rule families), and OA5 (the ops
+> `related` cluster + printable/paste-ready output). The original proposal
+> follows unchanged.
+>
+> Originally proposed (2026-06-09). v63 is the operations-side
 > counterpart to [spec-v62](spec-v62.md): it deepens the
 > billing / coding / regulatory / patient-administrative tiles the
 > same way v62 deepens the bedside tiles, and adds the ops

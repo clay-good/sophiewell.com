@@ -17,6 +17,7 @@ import { renderers as RV8 } from './views/group-v8.js';
 import { renderers as RV9 } from './views/group-v9.js';
 import { renderers as RV10 } from './views/group-v10.js';
 import { renderers as RV11 } from './views/group-v11.js';
+import { renderers as RV63 } from './views/group-v63.js';
 import { renderers as RPALINT } from './views/pa-lint.js';
 import { META } from './lib/meta.js';
 import { fetchJson } from './lib/data.js';
@@ -33,7 +34,7 @@ import { resolvePrompt } from './lib/prompt.js';
 // artifact-detect / artifact-route / artifact-handoff helpers were
 // deleted in spec-v29 wave 29-2 (Group C/L).
 
-const RENDERERS = { ...RA, ...RC, ...RE, ...RF, ...RG, ...RH, ...RI, ...RJ, ...RKLMNO, ...RV5, ...RV6, ...RV7, ...RV8, ...RV9, ...RV10, ...RV11, ...RPALINT };
+const RENDERERS = { ...RA, ...RC, ...RE, ...RF, ...RG, ...RH, ...RI, ...RJ, ...RKLMNO, ...RV5, ...RV6, ...RV7, ...RV8, ...RV9, ...RV10, ...RV11, ...RV63, ...RPALINT };
 
 // ----- Utility registry ----------------------------------------------------
 // Source of truth for routes, names, group, audiences, and clinical flag.
@@ -61,6 +62,11 @@ const UTILITIES = [
   // (workflow generators per spec-v29 sec 10 open question 1).
   { id: 'appeal-letter', name: 'Appeal Letter Generator', group: 'C', audiences: ['patients'], clinical: false },
   { id: 'hipaa-roa', name: 'HIPAA Right of Access Request Generator', group: 'C', audiences: ['patients'], clinical: false },
+  // spec-v63 Part B: ops-deadline calculators (compute through lib/deadline.js).
+  { id: 'appeal-deadline', name: 'Medicare Appeal-Level Deadline Calculator', group: 'C', audiences: ['billers', 'patients'], clinical: false },
+  { id: 'timely-filing', name: 'Claim Timely-Filing Deadline', group: 'C', audiences: ['billers'], clinical: false },
+  { id: 'pa-turnaround', name: 'Prior-Authorization Decision-Deadline Clock', group: 'C', audiences: ['billers', 'clinicians'], clinical: false },
+  { id: 'overpayment-60day', name: '60-Day Overpayment Report-and-Return Clock', group: 'C', audiences: ['billers'], clinical: false },
   // Group D: Provider and Plan Lookup
   // Group D: v4 extensions (utilities 115-116)
   // Group E: Clinical Math and Conversions
@@ -218,6 +224,7 @@ const UTILITIES = [
   { id: 'rcri',               name: 'Revised Cardiac Risk Index (Lee)',                 group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'pews',               name: 'Pediatric Early Warning Score (PEWS)',             group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'em-time',            name: 'Time-Based E/M Code Selector (2021)',              group: 'A', audiences: ['billers', 'clinicians', 'educators'], clinical: false },
+  { id: 'em-mdm',             name: 'MDM-Based E/M Code Selector (2021)',               group: 'A', audiences: ['billers', 'clinicians', 'educators'], clinical: false },
   { id: 'ndc-convert',        name: 'NDC 10 ↔ 11 Digit Converter',                      group: 'A', audiences: ['billers', 'clinicians', 'educators'], clinical: false },
   { id: 'avpu-gcs',           name: 'AVPU ↔ GCS Quick Reference',                       group: 'I', audiences: ['clinicians', 'educators', 'field'], clinical: true },
   { id: 'sbar-template',      name: 'SBAR Handoff Template Generator',                  group: 'H', audiences: ['clinicians', 'field', 'educators'], clinical: false },

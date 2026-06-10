@@ -5,7 +5,7 @@
 <h1 align="center">sophiewell.com</h1>
 
 <p align="center">
-  <strong>328 deterministic healthcare calculators tuned to the nurse on shift.</strong><br>
+  <strong>333 deterministic healthcare calculators tuned to the nurse on shift.</strong><br>
   Free forever. No servers, no accounts, no telemetry, no AI, no network call after first paint.
 </p>
 
@@ -36,15 +36,15 @@ output; "searchable lookup of static facts" does not qualify. See
 [docs/spec-v10.md](docs/spec-v10.md) for the audience and
 dependency-budget commitments and
 [docs/spec-v29.md](docs/spec-v29.md) for the nurse-first pivot
-and the v29 catalog ledger. At v62 close the catalog is 328
+and the v29 catalog ledger. At v63 close the catalog is 333
 deterministic tiles — every one of them computes from at least
-one user input. (v62 Part B added all 9 planned
-bedside tiles, across two waves, and converted the last two static reference
-tables — `peds-dose`, `anticoag-reversal` — into input-driven
-calculators; wave 2 added the two pinned-constant tiles,
-`norepi-equiv` (Kotani 2023 norepinephrine-equivalent factors)
-and `neo-phototherapy` (AAP-2022 phototherapy + exchange curves),
-closing Part B. See [docs/spec-v62.md](docs/spec-v62.md).)
+one user input. (v62 Part B closed the bedside expansion at 328;
+spec-v63 adds the ops-side counterpart — a shared regulatory-deadline
+engine ([lib/deadline.js](lib/deadline.js)) and five ops calculators
+(Medicare appeal-level deadlines, claim timely-filing, the 2021 E/M
+Medical-Decision-Making level, the prior-authorization decision clock,
+and the 60-day overpayment clock) — taking the catalog to 333. See
+[docs/spec-v62.md](docs/spec-v62.md) and [docs/spec-v63.md](docs/spec-v63.md).)
 The new `pa-lint` tile in spec-v52 consumes
 dropped files instead of form fields and produces a
 deterministic findings report, the first instance of the
@@ -97,7 +97,7 @@ production security headers. Any static file server will also work.
 ## How it works and how to use it
 
 Since the spec-v29 nurse-first prune the catalog has grown one
-reviewable spec at a time to **328** deterministic calculators
+reviewable spec at a time to **333** deterministic calculators
 (the full per-version history is in [CHANGELOG.md](CHANGELOG.md)
 and `docs/spec-v*.md`; the most recent bedside additions are
 summarized in the cheat sheets below). They organize across the
@@ -433,6 +433,7 @@ last two static reference tables into calculators (Part C). Wave 1 shipped seven
 unambiguous tiles; wave 2 added the two pinned-constant tiles — `norepi-equiv`
 (Kotani 2023 norepinephrine-equivalent factors) and `neo-phototherapy` (AAP-2022
 phototherapy + exchange-transfusion curves). This takes the catalog
+<!-- catalog-truth:historical -->
 to 328 (a net +9 from the prior wave).
 Every tile is a pure `lib/clinical-v8.js` function, validated through
 [lib/num.js](lib/num.js) (so a zero/non-finite/out-of-range input throws a
@@ -528,7 +529,7 @@ long version, see [docs/architecture.md](docs/architecture.md).
  │  manifests (data/)            │  static │        ▼                     ▼             │
  │        │  scripts/build       │  files  │   lazy-load data shard   pure compute      │
  │        ▼                      │         │   (verified vs manifest)  (lib/*.js)       │
- │  dist/  (328 tool pages,      │         │        │                     │             │
+ │  dist/  (333 tool pages,      │         │        │                     │             │
  │  OG cards, sitemap, SBOM)     │         │        ▼                     ▼             │
  └───────────────────────────────┘         │   service worker cache    result + cite   │
                                             │   (keyed to build hash)                    │
@@ -548,7 +549,7 @@ session, and nothing to log.
 index.html          single-page shell (hero search, home grid, tile mount)
 styles.css          one stylesheet (responsive; no horizontal scroll — enforced catalog-wide at 320px in CI)
 app.js              router, filters, view wiring, the UTILITIES catalog
-                    (328 tiles — the single source of truth; zero runtime deps)
+                    (333 tiles — the single source of truth; zero runtime deps)
 sw.js               service worker — precache shell, cache shards by build hash
 theme.js            light/dark theme toggle (writes only sw-theme, allowlisted)
 lib/input-persist.js opt-in "remember my inputs" (off by default; numbers only)
@@ -565,7 +566,7 @@ scripts/            build-*, check-* (catalog-truth, output-safety, citations,
 docs/               specs (spec-v4 … spec-v61) + citation-staleness ledger +
                     architecture / threat-model / …
 test/               unit/ (node:test) · integration/ (Playwright) · fixtures/
-dist/               build output (328 tool pages, OG cards, sitemap, SBOM)
+dist/               build output (333 tool pages, OG cards, sitemap, SBOM)
 ```
 
 ### Provenance and citation integrity (spec-v54 design, spec-v60 completion)
@@ -574,10 +575,10 @@ A login-less, AI-free calculator earns trust only if the nurse can see, on the
 tile, exactly which published source produced the number — and tell whether that
 source is current. spec-v54 defined the invariants; spec-v60 built the machinery
 (the gate, the ledger, and the `citationAccessed` convention) and extended it
-across the full 328-tile catalog, pinning the last three unpinned "current
+across the full 333-tile catalog, pinning the last three unpinned "current
 edition" phrases and re-verifying every guideline tile against its latest known
 edition. Three invariants make that auditable, each enforced by the
-`check-citations.mjs` lint gate (in the `npm run lint` chain) over all 328 tiles:
+`check-citations.mjs` lint gate (in the `npm run lint` chain) over all 333 tiles:
 
 | Invariant | Rule | Enforcement |
 |---|---|---|
@@ -1034,7 +1035,7 @@ rules, not soft preferences.
 | `npm run build`          | Copy static files into `dist/` for deployment                     |
 | `npm test`               | Run the full test suite (unit, a11y, grep, data integrity)        |
 | `npm run test:unit`      | Run Node's built-in unit tests (3,045 tests)                      |
-| `npm run test:e2e`       | Build `dist/`, then run Playwright integration tests against real browsers — incl. a full-catalog 320px no-horizontal-scroll sweep over both the SPA routes and the 328 pre-rendered static tool pages, the hub/topic/commitments pages, and the citation-wrap pin |
+| `npm run test:e2e`       | Build `dist/`, then run Playwright integration tests against real browsers — incl. a full-catalog 320px no-horizontal-scroll sweep over both the SPA routes and the 333 pre-rendered static tool pages, the hub/topic/commitments pages, and the citation-wrap pin |
 | `npm run test:a11y`      | Run accessibility checks on every utility view                    |
 | `npm run lint`           | ESLint + the CI gate chain: grep-check, output-safety, citation-integrity, catalog-truth, commitments, PA staleness, PA audit |
 | `npm run data:refresh`   | Re-fetch and re-shard every public dataset                        |
