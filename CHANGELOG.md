@@ -6,6 +6,41 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v62 Part B wave 2 — the two deferred tiles ship; Part B complete, catalog 326 → 328)
+
+Wave 1 deferred the two Part-B tiles whose published constants had to be pinned
+exactly before shipping a number a clinician might lean on. Wave 2 pins them and
+ships both, closing Part B and taking the catalog to **328**.
+
+- **`norepi-equiv` — Norepinephrine-Equivalent Vasopressor Dose** (Group F).
+  `lib/clinical-v8.js` `norepinephrineEquivalent()` sums each agent's dose times
+  its Kotani-2023 proposed-standard factor: norepinephrine ×1, epinephrine ×1,
+  dopamine ÷100, phenylephrine ×0.06 (all mcg/kg/min), vasopressin ×2.5 (units/min),
+  angiotensin II ×0.0025 (ng/kg/min). The total NE-equivalent (mcg/kg/min) plus
+  each agent's contribution lets an ICU team describe total pressor burden in one
+  number and compare shift-to-shift. Weight is **not** an input — the catecholamine
+  doses are already weight-indexed and vasopressin is units/min, so the published
+  formula is weight-normalized; a weight field would be dead UI, and the tile says
+  so. Source pinned against Kotani Y, et al. Crit Care. 2023;27:29.
+- **`neo-phototherapy` — Neonatal Phototherapy Threshold (AAP 2022)** (Group N).
+  `lib/scoring-v6.js` `neoPhototherapy()` reuses the AAP-2022 phototherapy curve
+  already validated for `bhutani-bilirubin` (`aapPhotoThreshold`) and adds the
+  **exchange-transfusion curve** (`aapExchangeThreshold`) read from the published
+  Kemper-2022 Figure 6 at the same 0/24/48/72/96h+ anchors by gestational-age band,
+  plus the AAP **"escalation of care" line** at exchange − 2 mg/dL (NICU admission,
+  q2h rechecks). Output: the phototherapy threshold, the current TSB's distance
+  from it, the exchange/escalation thresholds, and which treatment band the infant
+  falls in. Decision support, not a treatment order — the tile note directs
+  confirmation against the AAP chart / BiliTool. On the spec-v60 §4 REFRESH list.
+- Coverage: 3 norepi-equiv boundary cases in `test/unit/clinical-v8.test.js`
+  (each factor applied; all-zero → 0; bad input throws) and 4 neo-phototherapy
+  cases in `test/unit/bhutani-bilirubin.test.js` (worked example; below-line;
+  exchange-crossed with risk factors; out-of-range throws). Both modules are
+  already in the spec-v59 object-aware fuzz harness; both tiles ship a META
+  example driving the example-correctness sweep. Audits in
+  `docs/audits/v11/{norepi-equiv,neo-phototherapy}.md`; citation-staleness rows
+  added; all 13 catalog-truth surfaces moved 326 → 328.
+
 ### Added (spec-v62 Part A4 wave 3 — magnesium SI⇄conventional toggle; Part A3 closed for the qualifying tiles)
 
 - **A4 wave 3:** `magnesium-replacement` (Group V11) now offers a mg/dL ⇄ mmol/L

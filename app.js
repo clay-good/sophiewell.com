@@ -104,6 +104,7 @@ const UTILITIES = [
   { id: 'apap-24h-max', name: 'Acetaminophen 24-Hour Total & Ceiling', group: 'F', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'icu-nutrition-target', name: 'ICU Energy & Protein Target', group: 'F', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'vte-prophylaxis-dose', name: 'Enoxaparin Dose (weight & renal)', group: 'F', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'norepi-equiv', name: 'Norepinephrine-Equivalent Vasopressor Dose', group: 'F', audiences: ['clinicians', 'educators'], clinical: true },
   // spec-v29 wave 29-2 (Group K/O): high-alert removed (ISMP wallet
   // reference); iv-to-po removed (static equivalence table, audit
   // confirmed no numeric output per spec-v29 sec 7.2 deferral).
@@ -492,6 +493,8 @@ const UTILITIES = [
   // spec-v62 §3 Part B (wave 1): OB/L&D & neonatal bedside math.
   { id: 'neonatal-feeding-volume', name: 'Neonatal Feeding Volume (mL/kg/day)',          group: 'N', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'oxytocin-titration',   name: 'Oxytocin mU/min <-> mL/hr',                        group: 'N', audiences: ['clinicians', 'educators'], clinical: true },
+  // spec-v62 §3.3 Part B (wave 2): AAP-2022 neonatal phototherapy threshold.
+  { id: 'neo-phototherapy',     name: 'Neonatal Phototherapy Threshold (AAP 2022)',      group: 'N', audiences: ['clinicians', 'educators'], clinical: true },
 ];
 
 const UTIL_BY_ID = new Map(UTILITIES.map((u) => [u.id, u]));

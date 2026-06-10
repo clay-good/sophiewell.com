@@ -178,3 +178,21 @@ test('protamineDose: 4000 units -> 40 mg; 6000 units -> caps at 50 mg', () => {
   assert.equal(big.protamineMg, 50);
   assert.equal(big.capped, true);
 });
+
+// --- norepi-equiv (spec-v62 §3.1 wave 2): Kotani 2023 NEE factors -----------
+test('norepinephrineEquivalent: NE 0.1 + epi 0.05 + vasopressin 0.04 U/min -> 0.25 mcg/kg/min', () => {
+  const r = C.norepinephrineEquivalent({ norepinephrine: 0.1, epinephrine: 0.05, vasopressin: 0.04 });
+  assert.equal(r.totalNeeMcgKgMin, 0.25);
+  assert.equal(r.contributions.vasopressin, 0.1); // 0.04 x 2.5
+  assert.equal(r.contributions.norepinephrine, 0.1);
+});
+test('norepinephrineEquivalent: each published factor applied (dopamine/100, phenylephrine x0.06, angiotensin II x0.0025)', () => {
+  assert.equal(C.norepinephrineEquivalent({ dopamine: 10 }).contributions.dopamine, 0.1);
+  assert.equal(C.norepinephrineEquivalent({ phenylephrine: 1 }).contributions.phenylephrine, 0.06);
+  assert.equal(C.norepinephrineEquivalent({ angiotensin2: 20 }).contributions.angiotensin2, 0.05);
+});
+test('norepinephrineEquivalent: all-zero -> 0; bad input throws (no NaN leak)', () => {
+  assert.equal(C.norepinephrineEquivalent({}).totalNeeMcgKgMin, 0);
+  assert.throws(() => C.norepinephrineEquivalent({ norepinephrine: NaN }), TypeError);
+  assert.throws(() => C.norepinephrineEquivalent({ vasopressin: -1 }), RangeError);
+});

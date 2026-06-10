@@ -111,3 +111,16 @@ issuer acronym set, so they are documentation only. The two converted tiles
 | icu-nutrition-target | ASPEN/SCCM adult critical-care nutrition | McClave 2016 (JPEN 2016;40(2)) | same | 2026-06-09 | foundational guideline; 25-30 kcal/kg and 1.2-2.0 g/kg targets unchanged (documentation only — does not match the issuer pattern) |
 | vte-prophylaxis-dose | Enoxaparin US PI + CHEST VTE prevention | Lovenox US PI; Gould 2012 (Chest 2012;141 Suppl) | same | 2026-06-09 | label-anchored; the CrCl <30 renal reduction and prophylaxis/treatment regimens are unchanged (documentation only) |
 | enteral-free-water | ASPEN enteral-nutrition safe practices | Boullata 2017 (JPEN 2017;41(1)) | same | 2026-06-09 | foundational; free-water-fraction arithmetic is stable (documentation only) |
+
+## spec-v62 Part B wave 2 (added 2026-06-10)
+
+`neo-phototherapy` cites the AAP 2022 hyperbilirubinemia CPG and matches the
+guideline-issuer pattern, so it is gate-enforced and carries the spec-v60 §4
+REFRESH discipline for the next AAP edition. `norepi-equiv` cites the Kotani
+2023 / Goradia 2021 scoping reviews (Crit Care / J Crit Care), which do not
+match the issuer acronym set, so it is documentation only.
+
+| tile id | instrument | edition shipped | latest known edition | accessed | justification if behind |
+|---|---|---|---|---|---|
+| neo-phototherapy | AAP hyperbilirubinemia phototherapy + exchange thresholds | AAP CPG Kemper 2022 (Pediatrics 150(3)) | same | 2026-06-10 | current — 2022 AAP CPG is the latest edition; phototherapy and exchange-transfusion curves anchored from the published figures (spec-v62 §3.3). Carries the spec-v60 §4 REFRESH discipline for the next AAP edition |
+| norepi-equiv | Kotani norepinephrine-equivalent (NEE) score | Kotani 2023 (Crit Care 2023;27:29); Goradia 2021 (J Crit Care 2021;61) | same | 2026-06-10 | proposed-standard conversion factors stable since 2023 (documentation only — does not match the issuer pattern) |

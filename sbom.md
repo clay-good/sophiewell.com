@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `007744cb45f50419`
-Generated: 2026-06-10T01:23:49.392Z
+Build ID: `82f038e504ece2e9`
+Generated: 2026-06-10T01:56:55.065Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=20.18.1 <21, npm >=10.0.0
@@ -24,13 +24,13 @@ downloads is committed in this repository and is hashed below.
 
 | Path | Bytes | SHA-256 |
 |---|---:|---|
-| `index.html` | 35423 | `c8a8e9e51e88c0205784876df6d81646fcc664458286eaf89217716b1ff66359` |
+| `index.html` | 35539 | `4ff0d3225c59085d40ad5187778be96ba697bf5cc5eb6f564454c5f394e66d60` |
 | `styles.css` | 47167 | `13d11b8cfce74762866a54ac8e3157bcb54a5bf68de5322768d341d195ea41ba` |
-| `app.js` | 110554 | `07d676ea034dc3d3c2d56104fa81dffe1f4e3b565bae569dd0f56a9cf3720ffa` |
+| `app.js` | 110938 | `50babd629d7148d1a3ec36767d9f043b000435ffe8e257fcece3c7817b28c5b0` |
 | `sw.js` | 4062 | `60f524b1b69eb5170c59af42631e11cc05db2a44e8e530977db0327888b0ff6d` |
 | `site.webmanifest` | 709 | `0e0de4da60590a12e8b27a0ae2a2f5ffdb6500b7d2b78f93631ec2f64ed3d5ce` |
 | `robots.txt` | 127 | `38fbf9c1854e72abb20e01e81dd5a31d4ea96f154c12d5db1ec3af05524dd1a1` |
-| `sitemap.xml` | 51232 | `6321004eddd31d57b8b897945ebd1b7c19cac17a4bae27f74f04fa677ec5aa4b` |
+| `sitemap.xml` | 51540 | `d2f7d29a0ac9ad5ee9efd1fa99c97c793830ce996c4427c7ba8f6f467645ca3d` |
 | `_headers` | 1316 | `2f39986457d2feff7e73e491a7d09ee871e8f2f4cc2bc437f86bd86a42554ec6` |
 | `logo.png` | 63440 | `11afaf1b0d3ca68393d202e4810bf766b5b6d591b4e3ec52f41d3cacaa4616ec` |
 | `favicon.ico` | 7411 | `407fde0ca2788409e87e11f596fa02e6a0b121817fcea7fd995beec1801e287b` |
@@ -47,7 +47,7 @@ downloads is committed in this repository and is hashed below.
 | `lib/clinical-v5.js` | 25042 | `1da466fb812401a08c4a1419f8b5eb579943d80e3626c00749a1b3bc87ac57cc` |
 | `lib/clinical-v6.js` | 15465 | `e70291e35cbce6cebe2bb660f0f0670f6174534a53a7da541e5c1e341d28878b` |
 | `lib/clinical-v7.js` | 14732 | `cab667f7393ad1b2541584c6338e01df2d4496be5f897d819e8b9918661786d3` |
-| `lib/clinical-v8.js` | 10831 | `650eac3d594807b0c1b687f2ad76239c755bc2d43d991161d9839de6500b3eaf` |
+| `lib/clinical-v8.js` | 12786 | `0c14b43b65276989a8cb6710f874cb0f0fbfed73932e3d80c68dd2c87a9041dc` |
 | `lib/clinical.js` | 15290 | `ccc5d9cf8e459507e40305dc10c1b6a361a0eced2cb4ee8d0a0dcc10e785ad60` |
 | `lib/clipboard.js` | 2907 | `951c41df24f58df747734474d383d6f75f52d22d2c4d0a370ef5bfb269a15147` |
 | `lib/coding-v5.js` | 6582 | `80c3a2bc258f35b5f70e68ee5e2b8d8d336359bc15e032d0420da4f9f9a710f7` |
@@ -64,7 +64,7 @@ downloads is committed in this repository and is hashed below.
 | `lib/live.js` | 1138 | `304978d3c170b6eb06cade7702e5f99d868e9b3e1f5651aa9a28da15e62a6a9c` |
 | `lib/medication-v4.js` | 18192 | `467f9576c50da696cc56094eb022d0a5ed1e88de0c7618448554ede8067270b0` |
 | `lib/medication-v5.js` | 18339 | `76e1f064ed9e7aea8862adbc6e05e88031e0a1e7dbbf38d82c6a7f42a5414ff1` |
-| `lib/meta.js` | 643154 | `cf48a4484fbbe59cd8e72c7421b99204c80a7065db3b1ecd9e7f7906547267d4` |
+| `lib/meta.js` | 644764 | `296c9b92b8cea5f4ecab4164446c5441b0d79ad6cbdb22e6203fdd27ce6503f1` |
 | `lib/num.js` | 2476 | `93934466539979571db7a6251b68b42acbc4a91101a988d72e3d2c3f7fb153bf` |
 | `lib/pa/classify.js` | 3432 | `a7958e40890ad63ebf68ce5a0107fe7ab5a5b0c9e877e2669e8f44ecfb7f34ca` |
 | `lib/pa/cms-opd-pa-list.js` | 3701 | `d142fdc90cc782bb472d729df2ee6d0e89429cba2ecf0cfc7857a4e7e471b454` |
@@ -86,7 +86,7 @@ downloads is committed in this repository and is hashed below.
 | `lib/result-copy.js` | 1745 | `0389d38cabd3d8adca91096d93e663a5e446f3062f6282d0fb7e77f5a0ffad93` |
 | `lib/scoring-v4.js` | 225997 | `441afea2316073d2c709b723c1d9e90b706f323cf805825a6595831d231d11e5` |
 | `lib/scoring-v5.js` | 13048 | `3fabc60daa3144ffbb37e6016de326a427649ca545b9bd32a9ee2fb2c7126b60` |
-| `lib/scoring-v6.js` | 23390 | `105997cb23a1846a7d74d076bbb1d60d452b36daa1790dc571570bf5e7bca208` |
+| `lib/scoring-v6.js` | 26559 | `4f2d7d77c536dce8d356539e2c69f941feb34146d251ac96b882c590399ce562` |
 | `lib/screener.js` | 6613 | `e017903130ae2d23cb1560f6ad55990ef3dda443a5ac1e9c289b283e3dcd930b` |
 | `lib/search.js` | 1726 | `eb447d039ac1ea7b459743b6aeeffea114f90f07d45a6bd53dbe60eb1c8fdd9b` |
 | `lib/synonyms.js` | 3339 | `f28e834e5b603c1564099976489ad33f05109a0b74f130f9153aa2a90518bc16` |
@@ -98,13 +98,13 @@ downloads is committed in this repository and is hashed below.
 | `views/group-a.js` | 577 | `eed37c656d1fa00c097a07f07db4b1b6ac7a0a74bafc210978265a1d90856bd7` |
 | `views/group-c.js` | 6030 | `3aeac0ab24d035c43a6f5f3fcbc4f51cc4d2c7467145821a300bf219629bac46` |
 | `views/group-e.js` | 34367 | `a25b1781e962ad8bddb9203feca37b442ad3db0e0e9639ac506b3704aada65dd` |
-| `views/group-f.js` | 40365 | `d81c4f4e6eae106a41c21049d96ad2f76f590d79ce309e9b286b7d0b91d30237` |
+| `views/group-f.js` | 42444 | `88e76844451d02793724504abe2eadc26ad075be80ede4c99e2926beda04e689` |
 | `views/group-g.js` | 233275 | `76bb9763d0e28c4e5a42e7557d84958fdfdf7165a6dbbb1f4c9ee097f9a38406` |
 | `views/group-h.js` | 27952 | `6393fcba60f1d58334f40d12cb18cf183c086666c7777ab35c8e1e3ada88d4f5` |
 | `views/group-i.js` | 27209 | `5f0f28ebc7ea938bf6279d2d31bee2aaad286f5858c94187073f28edf0233b22` |
 | `views/group-j.js` | 8483 | `1c6714d458ee2cc9f30325800afc118164987ae4e25a9b7fffae78f5bf87dd5b` |
 | `views/group-klmno.js` | 7870 | `bf6d3ced1a08fcb627284b649d07b8e5ace6857b29e46992d4e425925c63eaa9` |
-| `views/group-v10.js` | 27809 | `f85e57fbe1cf256decd079f0c909d55fbd313c3394ab007ab2e9ff7c338a5981` |
+| `views/group-v10.js` | 29270 | `ae5c3aea9888b762d6662009966f5201fa50152119ad68b007c8634a4983a5fe` |
 | `views/group-v11.js` | 16654 | `6448272d066c3fa2d114d9180a37af8f1f4118fcdd9557a4f81c8046d8e7d9a5` |
 | `views/group-v5.js` | 31370 | `2f85217573137b857a00500e1b8eac2a0d9906e42f9d8f54aace948ddd4a4c3a` |
 | `views/group-v6.js` | 5707 | `425918decb48cd9efac9fc5590ac8970a54c03c3b0df056fb99c9a22ff8dd1b2` |

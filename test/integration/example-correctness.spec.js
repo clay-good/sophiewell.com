@@ -17,7 +17,13 @@ import { test, expect } from '@playwright/test';
 test.skip(({ browserName }) => browserName !== 'chromium', 'numeric sweep is chromium-only');
 
 test('every example payload produces the documented numeric output', async ({ page }) => {
-  test.setTimeout(360_000);
+  // This is a serial, full-catalog numeric sweep (one navigation + reset-click
+  // per tile). Its wall-clock grows linearly with the catalog and contends for
+  // CPU with the other browser projects under `npm run test:e2e`. At 328 tiles a
+  // clean run is ~5 min in isolation, so the budget is generous headroom above
+  // that to absorb CI worker contention without a timeout flake; a real numeric
+  // mismatch still fails fast (per-tile), never via this timeout.
+  test.setTimeout(600_000);
 
   // Pull META.example payloads out of the live module so the test stays in
   // sync with whatever lib/meta.js currently declares -- no duplication.

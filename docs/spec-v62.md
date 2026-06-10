@@ -1,7 +1,20 @@
 # spec-v62.md — Deepen the clinical tools: trend, action, and target intelligence; convert the residual reference tables; +9 bedside tiles
 
-> Status: **Part B wave 1 + Part C shipped (2026-06-09); Part A and the
-> remaining 2 Part B tiles deferred.** **Part A1 wave 1 (2026-06-09):** the
+> Status: **Part B COMPLETE + Part C shipped; Part A depth pass landed
+> wave-by-wave (2026-06-09 → 2026-06-10).** **Part B wave 2 (2026-06-10):**
+> the two deferred pinned-constant tiles shipped, closing Part B and taking
+> the catalog 326 → **328**: `norepi-equiv` (`lib/clinical-v8.js`
+> `norepinephrineEquivalent`, the Kotani 2023 proposed-standard
+> norepinephrine-equivalent factors — NE/epi x1, dopamine/100,
+> phenylephrine x0.06, vasopressin x2.5 U/min, angiotensin II x0.0025
+> ng/kg/min; weight is intentionally not an input since the formula is
+> weight-normalized) and `neo-phototherapy` (`lib/scoring-v6.js`
+> `neoPhototherapy`, reusing the AAP-2022 phototherapy curve already
+> validated for `bhutani-bilirubin` and adding the exchange-transfusion
+> curve `aapExchangeThreshold` read from the published Kemper-2022 Figure 6,
+> plus the AAP "escalation of care" line at exchange − 2 mg/dL). Both carry
+> the per-result decision-support / verify note; `neo-phototherapy` is on the
+> spec-v60 §4 REFRESH list. **Part A1 wave 1 (2026-06-09):** the
 > serial/trend primitive `lib/trend.js` (`correctionRate`) shipped and wired
 > into `sodium-correction` as an optional, default-empty achieved-rate-vs-
 > ceiling block (no existing result or example changed). **A1 wave 2

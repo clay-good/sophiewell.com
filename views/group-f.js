@@ -333,6 +333,39 @@ export const renderers = {
     });
   },
 
+  'norepi-equiv'(root) {
+    root.appendChild(el('p', { class: 'muted', text: 'Enter each agent at its current infusion dose in its native units. Catecholamine doses are already weight-indexed (mcg/kg/min), so no weight is needed; vasopressin is units/min and angiotensin II is ng/kg/min. Kotani 2023 norepinephrine-equivalent factors.' }));
+    root.appendChild(field('Norepinephrine (mcg/kg/min)', 'nee-ne', { placeholder: '0.1' }));
+    root.appendChild(field('Epinephrine (mcg/kg/min)', 'nee-epi', { placeholder: '0' }));
+    root.appendChild(field('Dopamine (mcg/kg/min)', 'nee-dopa', { placeholder: '0' }));
+    root.appendChild(field('Phenylephrine (mcg/kg/min)', 'nee-phe', { placeholder: '0' }));
+    root.appendChild(field('Vasopressin (units/min)', 'nee-vaso', { placeholder: '0.04' }));
+    root.appendChild(field('Angiotensin II (ng/kg/min)', 'nee-at2', { placeholder: '0' }));
+    const o = out(); root.appendChild(o);
+    const run = () => safe(o, () => {
+      const r = C8.norepinephrineEquivalent({
+        norepinephrine: nv('nee-ne') || 0,
+        epinephrine: nv('nee-epi') || 0,
+        dopamine: nv('nee-dopa') || 0,
+        phenylephrine: nv('nee-phe') || 0,
+        vasopressin: nv('nee-vaso') || 0,
+        angiotensin2: nv('nee-at2') || 0,
+      });
+      const c = r.contributions;
+      const labels = {
+        norepinephrine: 'norepinephrine', epinephrine: 'epinephrine', dopamine: 'dopamine',
+        phenylephrine: 'phenylephrine', vasopressin: 'vasopressin', angiotensin2: 'angiotensin II',
+      };
+      const parts = Object.keys(labels).filter((k) => c[k] > 0).map((k) => `${labels[k]} ${fmt(c[k])}`);
+      resultRow(o, [
+        { label: 'Total norepinephrine-equivalent', value: fmt(r.totalNeeMcgKgMin), units: 'mcg/kg/min' },
+        parts.length ? { text: `Contributions: ${parts.join(' + ')} mcg/kg/min` } : { text: 'Enter at least one agent dose.' },
+      ]);
+    });
+    ['nee-ne', 'nee-epi', 'nee-dopa', 'nee-phe', 'nee-vaso', 'nee-at2'].forEach((id) => document.getElementById(id).addEventListener('input', run));
+    run();
+  },
+
   // high-alert removed in spec-v29 wave 29-2 (Group K/O).
 
   // --- spec-v4 §5: Group F extensions (utilities 129-135) -------------

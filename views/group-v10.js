@@ -449,6 +449,33 @@ export const renderers = {
     screenerNote(root);
   },
 
+  // --- spec-v62 §3.3 Part B (wave 2): neonatal phototherapy threshold -------
+
+  'neo-phototherapy'(root) {
+    root.appendChild(field('Gestational age (weeks, 35-44)', 'np-ga', { placeholder: 'e.g. 38' }));
+    root.appendChild(field('Age (hours, 0-336)', 'np-hours', { placeholder: 'e.g. 48' }));
+    root.appendChild(field('Total serum bilirubin (mg/dL)', 'np-tsb', { placeholder: 'e.g. 18' }));
+    root.appendChild(checkField('Neurotoxicity risk factor(s) present', 'np-risk'));
+    const o = out(); root.appendChild(o);
+    wire(['np-ga', 'np-hours', 'np-tsb', 'np-risk'], () => safe(o, () => {
+      const tsb = val('np-tsb');
+      const r = S.neoPhototherapy({
+        gaWeeks: val('np-ga'), ageHours: val('np-hours'), tsb, riskFactors: chk('np-risk'),
+      });
+      const marginText = r.atPhoto
+        ? `TSB ${fmt(tsb)} is ${fmt(r.marginToPhoto)} mg/dL above the phototherapy line`
+        : `TSB ${fmt(tsb)} is ${fmt(-r.marginToPhoto)} mg/dL below the phototherapy line`;
+      o.appendChild(list([
+        li(`Phototherapy threshold: ${fmt(r.photoThreshold)} mg/dL`, r.atPhoto ? 'warn' : null),
+        li(marginText, r.atPhoto ? 'warn' : null),
+        li(`Exchange-transfusion threshold: ${fmt(r.exchangeThreshold)} mg/dL (escalation of care at ${fmt(r.escalationThreshold)} mg/dL)`, r.atEscalation ? 'warn' : null),
+        li(r.band, r.atExchange ? 'warn' : null),
+      ]));
+      note(o, r.note);
+    }));
+    screenerNote(root);
+  },
+
   // --- spec-v62 §3 Part B (wave 1): OB/L&D & neonatal tiles -----------------
 
   'neonatal-feeding-volume'(root) {
