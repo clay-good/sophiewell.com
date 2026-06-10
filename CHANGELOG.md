@@ -6,6 +6,29 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v62 Part A3 — ceiling-capped max-safe reverse-solve rate on `sodium-correction`)
+
+`sodium-correction` already solves the inverse (target ΔNa over 24 h → infusion
+rate) and flags a target above the acuity ceiling, but it still *displayed the
+over-ceiling rate*. Per spec-v62 §2 A3 / §5 ("reverse-solve rows clamp to the
+published safe-correction ceiling and flag, never silently exceed it"), it now
+also surfaces the **ceiling-capped max-safe rate** whenever the requested target
+exceeds the ceiling:
+
+- `lib/clinical-v5.js` `sodiumCorrection()` returns a new `cappedRateMlPerHour` —
+  the infusion rate that achieves *exactly* the acuity ceiling (8 mEq/L/24h
+  chronic, 10 acute). It is `null` when the target is at or below the ceiling
+  (nothing to cap), so no existing result changes.
+- `views/group-v5.js` renders it as a flagged **"Max safe rate (≤ N mEq/L/24h
+  ceiling)"** row, shown only when the target is over the ceiling — alongside the
+  existing over-cap `safetyNote`. The bedside user now sees both "the rate your
+  target implies" and "the most you should run."
+- The documented example (target 8 mEq/L/24h, chronic ceiling 8 → not over) is
+  unchanged and byte-identical (example-correctness e2e). Coverage:
+  `test/unit/clinical-v5.test.js` (the capped rate equals the at-ceiling rate and
+  is strictly slower than the over-cap rate; a within-ceiling target has no
+  capped rate). First [spec-v62](docs/spec-v62.md) Part A3 (reverse-solve) item.
+
 ### Added (spec-v62 Part A4 wave 2 — albumin SI⇄conventional toggle on the anion-gap & ascites tiles)
 
 Extends the A4 lab toggle to the remaining albumin-input gap/ascites tiles,

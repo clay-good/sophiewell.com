@@ -106,6 +106,7 @@ export const renderers = {
         { label: 'ΔNa per liter infusate', value: r.changePerLiterInfusate, units: 'mEq/L' },
         r.volumeLiters != null ? { label: 'Volume to reach target', value: `${r.volumeLiters} L over 24 h` } : null,
         r.rateMlPerHour != null ? { label: 'Infusion rate', value: r.rateMlPerHour, units: 'mL/h' } : null,
+        r.cappedRateMlPerHour != null ? { label: `Max safe rate (≤ ${r.safetyCap} mEq/L/24h ceiling)`, value: r.cappedRateMlPerHour, units: 'mL/h', cls: 'warn' } : null,
         r.directionNote ? { text: r.directionNote, cls: 'warn' } : null,
         { text: r.safetyNote },
       ];

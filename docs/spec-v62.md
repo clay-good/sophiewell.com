@@ -63,6 +63,13 @@
 > now imports the shared helpers). The remaining lab-input fields across the other
 > groups (bilirubin on the hepatic tiles, Mg/phosphate on electrolyte-replacement,
 > lactate on the sepsis tiles) follow in later A4 waves.
+> **Part A3 wave 1 (2026-06-10):** the first reverse-solve safety item —
+> `sodium-correction` now surfaces a **ceiling-capped max-safe rate**
+> (`cappedRateMlPerHour`) whenever the requested target exceeds the acuity ceiling,
+> so the reverse-solve clamps to the published ceiling and flags it rather than
+> silently displaying an over-ceiling rate (spec §5). Null at or below the ceiling,
+> so no existing result changes. The remaining A3 targets (`insulin-drip` /
+> `heparin-nomogram` "rate for target"; `free-water-deficit` capped rate) follow.
 > Original Part B/C wave delivered: 7 of 9
 > Part B tiles (`infusion-time-remaining`, `enteral-free-water`, `apap-24h-max`,
 > `icu-nutrition-target`, `vte-prophylaxis-dose`, `neonatal-feeding-volume`,

@@ -33,6 +33,29 @@ test('sodiumCorrection: hyponatremia overcap flag at 12 mEq/L/24h', () => {
   assert.equal(r.overCap, true);
   assert.equal(r.safetyCap, 8);
 });
+// spec-v62 §2 A3 / §5: an over-ceiling target also returns the ceiling-capped
+// max-safe rate, and the reverse-solve never silently exceeds the ceiling.
+test('sodiumCorrection: over-cap target returns the ceiling-capped max-safe rate', () => {
+  const over = V5.sodiumCorrection({
+    weightKg: 70, sex: 'M', currentNa: 110, infusate: '3pct-saline', targetChangePer24h: 12,
+  });
+  const atCeiling = V5.sodiumCorrection({
+    weightKg: 70, sex: 'M', currentNa: 110, infusate: '3pct-saline', targetChangePer24h: 8,
+  });
+  assert.equal(over.overCap, true);
+  assert.ok(over.cappedRateMlPerHour != null);
+  // the capped rate is the rate that hits exactly the 8 mEq/L/24h ceiling...
+  assert.ok(close(over.cappedRateMlPerHour, atCeiling.rateMlPerHour, 0.2));
+  // ...and is strictly slower than the (over-cap) rate the raw target implies.
+  assert.ok(over.cappedRateMlPerHour < over.rateMlPerHour);
+});
+test('sodiumCorrection: a within-ceiling target has no capped rate (null)', () => {
+  const r = V5.sodiumCorrection({
+    weightKg: 70, sex: 'M', currentNa: 110, infusate: '3pct-saline', targetChangePer24h: 8,
+  });
+  assert.equal(r.overCap, false);
+  assert.equal(r.cappedRateMlPerHour, null);
+});
 test('sodiumCorrection: acute acuity raises ceiling to 10 mEq/L/24h', () => {
   const r = V5.sodiumCorrection({
     weightKg: 70, sex: 'M', currentNa: 110,
