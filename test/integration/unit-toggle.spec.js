@@ -69,6 +69,15 @@ test('saag albumin in g/L matches the g/dL calculation (SAAG 3.0)', async ({ pag
   await expect(page.locator('#q-results')).toContainText('SAAG: 3');
 });
 
+test('magnesium-replacement accepts serum Mg in mmol/L (toggle drives unitNum)', async ({ page }) => {
+  await page.goto('/#magnesium-replacement', { waitUntil: 'load' });
+  // 0.5 mmol/L = 1.215 mg/dL; dose is severity-driven, so moderate -> 2-4 g IV.
+  await page.locator('#mg-serum-unit').selectOption('mmol/L');
+  await page.fill('#mg-serum', '0.5');
+  await page.locator('#mg-sev').selectOption('2');
+  await expect(page.locator('#q-results')).toContainText('2-4');
+});
+
 test('the unit-field pair does not overflow at 320px', async ({ page }) => {
   await page.setViewportSize({ width: 320, height: 720 });
   await page.goto('/#bmi', { waitUntil: 'load' });

@@ -15,7 +15,7 @@ import { fmt } from '../lib/num.js';
 import { boundsAdvisory } from '../lib/bounds.js';
 import { resultRow } from '../lib/result-copy.js';
 import * as C from '../lib/clinical-v7.js';
-import { unitField, unitNum, WEIGHT_UNITS } from '../lib/field-units.js';
+import { unitField, unitNum, WEIGHT_UNITS, MAGNESIUM_UNITS } from '../lib/field-units.js';
 
 function field(label, id, opts = {}) {
   const wrap = el('p');
@@ -179,21 +179,22 @@ export const renderers = {
 
   // ----- 3.6 magnesium-replacement ---------------------------------------
   'magnesium-replacement'(root) {
-    root.appendChild(field('Serum magnesium (mg/dL)', 'mg-serum', { placeholder: 'e.g. 1.2' }));
+    root.appendChild(unitField('Serum magnesium', 'mg-serum', MAGNESIUM_UNITS, { placeholder: 'e.g. 1.2' }));
     root.appendChild(selectField('Severity', 'mg-sev', [
       { value: '1', text: 'Mild (~1.4-1.8 mg/dL)' },
       { value: '2', text: 'Moderate (~1.0-1.4 mg/dL)' },
       { value: '3', text: 'Severe (<1.0 mg/dL)' },
     ]));
     const o = out(); root.appendChild(o);
-    wire(['mg-serum', 'mg-sev'], () => safe(o, () => {
-      const r = C.magnesiumReplacement({ serumMg: val('mg-serum'), severity: val('mg-sev') });
+    wire(['mg-serum', 'mg-serum-unit', 'mg-sev'], () => safe(o, () => {
+      const serumMg = unitNum('mg-serum');
+      const r = C.magnesiumReplacement({ serumMg, severity: val('mg-sev') });
       if (!r) { o.appendChild(el('p', { class: 'muted', text: 'Choose a severity band.' })); return; }
       o.appendChild(list([
         li(`Magnesium sulfate: ${fmt(r.doseLow)}-${fmt(r.doseHigh, { unit: 'g IV' })}`),
         li(r.band),
       ]));
-      advise(o, 'magnesium', val('mg-serum'));
+      advise(o, 'magnesium', serumMg);
       note(o, r.note);
     }));
     estimateNote(root);

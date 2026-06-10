@@ -71,8 +71,14 @@
 > so no existing result changes. **A3 wave 2 (2026-06-10):** the same capped
 > max-safe rate added to `free-water-deficit` (`cappedReplacementRateMlPerHour` —
 > the rate that delivers the full deficit but drops Na at exactly 10 mEq/L/24h),
-> shown only when the chosen schedule exceeds the ceiling. The remaining A3 targets
-> (`insulin-drip` / `heparin-nomogram` "rate for target") follow.
+> shown only when the chosen schedule exceeds the ceiling. **A3 is now closed for
+> the qualifying tiles:** §2 A3 admits a reverse-solve only "where the inverse is
+> single-valued," and the two remaining named tiles do not qualify — `insulin-drip`
+> is an example-only sliding-scale verifier (a banded lookup, not an invertible
+> equation) and `heparin-nomogram` is the Raschke step-adjustment table (already
+> aPTT-target-seeking); `vasopressor`/`conc-rate` already carry the dose⇄rate
+> inverse. **A4 wave 3 (2026-06-10):** magnesium mg/dL⇄mmol/L toggle on
+> `magnesium-replacement` (added the `magnesium` analyte + `MAGNESIUM_UNITS`).
 > Original Part B/C wave delivered: 7 of 9
 > Part B tiles (`infusion-time-remaining`, `enteral-free-water`, `apap-24h-max`,
 > `icu-nutrition-target`, `vte-prophylaxis-dose`, `neonatal-feeding-volume`,

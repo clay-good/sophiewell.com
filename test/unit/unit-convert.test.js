@@ -20,17 +20,20 @@ test('calcium 10 mg/dL -> 2.5 mmol/L', () => close(labConvert('calcium', 10), 2.
 test('uric acid 6 mg/dL -> 357 umol/L', () => close(labConvert('uricAcid', 6), 357, 1));
 test('albumin 4 g/dL -> 40 g/L', () => close(labConvert('albumin', 4), 40, 0.01));
 test('albumin 40 g/L -> 4 g/dL', () => close(labConvert('albumin', 40, 'fromSi'), 4, 0.01));
+test('magnesium 2.0 mg/dL -> 0.82 mmol/L', () => close(labConvert('magnesium', 2.0), 0.823, 0.01));
+test('magnesium 0.5 mmol/L -> 1.215 mg/dL', () => close(labConvert('magnesium', 0.5, 'fromSi'), 1.215, 0.01));
 test('labConvert: unknown kind throws', () => assert.throws(() => labConvert('foo', 1)));
 
 // spec-v62 §2 A4: the reusable analyte unit arrays' SI option must convert an
 // SI-entered value back to the canonical conventional unit the compute expects.
 test('A4 unit arrays: SI option converts back to canonical conventional unit', async () => {
-  const { GLUCOSE_UNITS, BUN_UNITS, CALCIUM_UNITS, ALBUMIN_UNITS } = await import('../../lib/field-units.js');
+  const { GLUCOSE_UNITS, BUN_UNITS, CALCIUM_UNITS, ALBUMIN_UNITS, MAGNESIUM_UNITS } = await import('../../lib/field-units.js');
   const siOpt = (arr) => arr[1].toCanonical;
   close(siOpt(GLUCOSE_UNITS)(5.0), 90, 0.5);   // 5.0 mmol/L glucose -> ~90 mg/dL
   close(siOpt(BUN_UNITS)(5.0), 14, 0.1);        // 5.0 mmol/L urea -> ~14 mg/dL BUN
   close(siOpt(CALCIUM_UNITS)(2.5), 10, 0.05);   // 2.5 mmol/L -> 10 mg/dL
   close(siOpt(ALBUMIN_UNITS)(40), 4, 0.01);     // 40 g/L -> 4 g/dL
+  close(siOpt(MAGNESIUM_UNITS)(0.5), 1.215, 0.01); // 0.5 mmol/L -> 1.215 mg/dL
   // the default (canonical) option is always identity, so examples stay byte-identical
   assert.equal(GLUCOSE_UNITS[0].toCanonical(90), 90);
   assert.equal(ALBUMIN_UNITS[0].toCanonical(4), 4);

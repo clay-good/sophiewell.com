@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `5344f173203dd153`
-Generated: 2026-06-10T01:11:03.028Z
+Build ID: `007744cb45f50419`
+Generated: 2026-06-10T01:23:49.392Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=20.18.1 <21, npm >=10.0.0
@@ -54,7 +54,7 @@ downloads is committed in this repository and is hashed below.
 | `lib/data.js` | 2448 | `58e3f307653fe83b2a86332e23b71ff2c53ca45a44228ebacf0c4d5ca5a790f9` |
 | `lib/derivation.js` | 6390 | `eb93d90e4c26bc1ee2d6ae3b6736992a737530cc07c1a88dd7135c37923c4a40` |
 | `lib/dom.js` | 984 | `b4b4ac74decb848bde516bfc1773e6c45a8d80031ed8f9d14226393d18fcde54` |
-| `lib/field-units.js` | 3255 | `167537e27765b0b521cb9b5a1bdda4de59ebcaf49b7ee4c766251a32c43059fa` |
+| `lib/field-units.js` | 3401 | `5d94f2fe3744cf1090b50a7f8012124f5575c6cfcb12c7eac3d99c6b67f71811` |
 | `lib/field.js` | 12156 | `6a6b07f76a519a8f873a37a9b57c52909e9088c3a09bd256e0ac60240e16d2ea` |
 | `lib/hash.js` | 3985 | `ba49aa8fce1db3444491fbc5804508e9dd1839adac68bcb0e3c71f6943d6a873` |
 | `lib/input-persist.js` | 4716 | `aa35b830df15bd1410a5f80c3829b6092122f0118d72d3f581c64d5678e94427` |
@@ -93,7 +93,7 @@ downloads is committed in this repository and is hashed below.
 | `lib/table.js` | 5372 | `c1c9b7f8ad0cd087d76e3e1aac879feb9837373b11f067b0f910fa8e5a7974d1` |
 | `lib/tree.js` | 5187 | `947cd24aa948c81432844601adc03446917bcb5e32ac187f66491bcd3420df08` |
 | `lib/trend.js` | 2889 | `6a34ffbc9758a99976d15e9c09e69d03c21771e827f5e5310e8ae51473a5fb3d` |
-| `lib/unit-convert.js` | 2251 | `8ad6857055c85daf684f966da1a42cf518d6c8cf9fc9fba70c2669a7c8d37ddf` |
+| `lib/unit-convert.js` | 2338 | `7f0f0ee447aaae345759354a6a30f950d9560d3553c7a94567c01f621b074d15` |
 | `lib/workflow-v4.js` | 7999 | `927a8a476e2c1b124c9e51040e549001b580b0baf2a4409ce463a0681fd08a72` |
 | `views/group-a.js` | 577 | `eed37c656d1fa00c097a07f07db4b1b6ac7a0a74bafc210978265a1d90856bd7` |
 | `views/group-c.js` | 6030 | `3aeac0ab24d035c43a6f5f3fcbc4f51cc4d2c7467145821a300bf219629bac46` |
@@ -105,7 +105,7 @@ downloads is committed in this repository and is hashed below.
 | `views/group-j.js` | 8483 | `1c6714d458ee2cc9f30325800afc118164987ae4e25a9b7fffae78f5bf87dd5b` |
 | `views/group-klmno.js` | 7870 | `bf6d3ced1a08fcb627284b649d07b8e5ace6857b29e46992d4e425925c63eaa9` |
 | `views/group-v10.js` | 27809 | `f85e57fbe1cf256decd079f0c909d55fbd313c3394ab007ab2e9ff7c338a5981` |
-| `views/group-v11.js` | 16589 | `e5a07cd39d0b94fe386afe4c2a694624330e428d03514776a0d1dfe357e9c299` |
+| `views/group-v11.js` | 16654 | `6448272d066c3fa2d114d9180a37af8f1f4118fcdd9557a4f81c8046d8e7d9a5` |
 | `views/group-v5.js` | 31370 | `2f85217573137b857a00500e1b8eac2a0d9906e42f9d8f54aace948ddd4a4c3a` |
 | `views/group-v6.js` | 5707 | `425918decb48cd9efac9fc5590ac8970a54c03c3b0df056fb99c9a22ff8dd1b2` |
 | `views/group-v7.js` | 14881 | `686615cfd90249e482d4a8d72fe702559148151a660fa1441d763dc4be59decf` |

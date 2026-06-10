@@ -6,6 +6,27 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v62 Part A4 wave 3 — magnesium SI⇄conventional toggle; Part A3 closed for the qualifying tiles)
+
+- **A4 wave 3:** `magnesium-replacement` (Group V11) now offers a mg/dL ⇄ mmol/L
+  toggle on its serum-magnesium input, driving both the compute and the bounds
+  advisory through `unitNum()`. Added the `magnesium` analyte (mg/dL ⇄ mmol/L,
+  factor 1/2.43) to the `LAB` table and a `MAGNESIUM_UNITS` array to
+  [lib/field-units.js](lib/field-units.js). The conventional unit (mg/dL) stays
+  the default, so the example (serum 1.2 mg/dL, moderate severity) is unchanged.
+  Coverage: `test/unit/unit-convert.test.js` (magnesium round-trip + the array's
+  SI conversion) and an `unit-toggle.spec.js` case (mmol/L entry still renders the
+  severity-driven dose).
+- **A3 closed for the qualifying tiles.** spec-v62 §2 A3 admits a reverse-solve
+  row only "where the inverse is single-valued." After shipping the capped-rate
+  reverse-solve on `sodium-correction` and `free-water-deficit` (and confirming
+  the `vasopressor`/`conc-rate` dose⇄rate inverse already exists), the two
+  remaining named tiles do **not** admit a single-valued inverse and get none:
+  `insulin-drip` is explicitly an "example-only" sliding-scale verifier (a banded
+  lookup, not an invertible equation) and `heparin-nomogram` is the Raschke
+  step-adjustment table (already aPTT-target-seeking). Recording this so the gap
+  is closed honestly rather than left as an open TODO.
+
 ### Added (spec-v62 Part A3 wave 2 — ceiling-capped max-safe replacement rate on `free-water-deficit`)
 
 The companion hypernatremia tile to `sodium-correction` gets the same §5

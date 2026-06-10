@@ -476,8 +476,9 @@ reach the panel. A4 (the **SI⇄conventional lab toggle**, the v61 per-field
 calcium, and albumin toggles onto the Group E correction tiles (`corrected-calcium`,
 `corrected-sodium`, `corrected-ca-na`, `osmolal-gap`); wave 2 extended the albumin
 toggle to the anion-gap and ascites tiles (`anion-gap`, `anion-gap-dd`, `saag`),
-preserving the optional-albumin empty-check. The canonical conventional unit is
-always the default option, so every documented example and deep link stays
+preserving the optional-albumin empty-check; wave 3 added a magnesium
+(mg/dL ⇄ mmol/L) toggle to `magnesium-replacement`. The canonical conventional
+unit is always the default option, so every documented example and deep link stays
 byte-identical (the example-correctness e2e sweep proves it).
 
 A3 (the **reverse-solve / target mode**) has shipped on both safety-critical
@@ -486,14 +487,18 @@ a **ceiling-capped max-safe rate** — when the requested schedule would move Na
 faster than the published ceiling (8 mEq/L/24 h chronic / 10 acute for raising,
 10 for lowering), each surfaces the rate that hits *exactly* the ceiling and flags
 it, so the reverse-solve never silently displays an over-ceiling infusion rate.
+A3 is **closed for the qualifying tiles**: the spec admits a reverse-solve only
+where the inverse is single-valued, and the remaining named tiles do not qualify
+(`insulin-drip` is an example-only sliding-scale verifier; `heparin-nomogram` is
+the Raschke step table, already aPTT-target-seeking; `vasopressor`/`conc-rate`
+already carry the dose⇄rate inverse).
 
 Still deferred (documented honestly rather than shipped half-right): the two
 highest-risk Part B tiles — `norepi-equiv` (NE-equivalent vasopressin/angiotensin
 factors vary across the scoping reviews) and `neo-phototherapy` (AAP-2022 is a
-continuous risk-stratified nomogram) — and the rest of Part A (the remaining A3
-reverse-solve targets `insulin-drip`/`heparin-nomogram`, and the rest of the A4
-lab-toggle rollout across the other groups). See
-[docs/spec-v62.md](docs/spec-v62.md).
+continuous risk-stratified nomogram) — and the rest of the A4 lab-toggle rollout
+across the other groups (bilirubin on the hepatic tiles, lactate on the pediatric
+scores). See [docs/spec-v62.md](docs/spec-v62.md).
 
 ## System design and architecture overview
 
