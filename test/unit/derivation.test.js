@@ -128,7 +128,16 @@ const WAVE_61_A1N_TILES = ['mnihss'];
 // (via weightedBinaryItems) plus three graded items (sleep/fever/respRate). The
 // meta.js weights mirror FINNEGAN_WEIGHTS; the cross-checks fail if any drifts.
 const WAVE_61_A1O_TILES = ['finnegan'];
-const ALL_DERIVATION_TILES = [...WAVE_48_1A_TILES, ...WAVE_48_1B_TILES, ...WAVE_48_1C_TILES, ...WAVE_48_2A_TILES, ...WAVE_48_2B_TILES, ...WAVE_48_2C_TILES, ...WAVE_48_3A_TILES, ...WAVE_48_3B_TILES, ...WAVE_48_3C_TILES, ...WAVE_48_3D_TILES, ...WAVE_48_4A_TILES, ...WAVE_48_4B_TILES, ...WAVE_48_4C_TILES, ...WAVE_48_4D_TILES, ...WAVE_48_4E_TILES, ...WAVE_48_4F_TILES, ...WAVE_48_4G_TILES, ...WAVE_48_4H_TILES, ...WAVE_48_4I_TILES, ...WAVE_48_4J_TILES, ...WAVE_61_A1_TILES, ...WAVE_61_A1B_TILES, ...WAVE_61_A1C_TILES, ...WAVE_61_A1D_TILES, ...WAVE_61_A1E_TILES, ...WAVE_61_A1F_TILES, ...WAVE_61_A1G_TILES, ...WAVE_61_A1H_TILES, ...WAVE_61_A1I_TILES, ...WAVE_61_A1J_TILES, ...WAVE_61_A1K_TILES, ...WAVE_61_A1L_TILES, ...WAVE_61_A1M_TILES, ...WAVE_61_A1N_TILES, ...WAVE_61_A1O_TILES];
+// spec-v62 A5: the nine named-formula tiles that gained a full derivation block
+// plus a guarded substituted() line. They carry no additive `components` array
+// (the units-key cross-check below early-returns for them), but they DO carry
+// the required derivation metadata, so the schema/required-field checks must
+// guard them too -- they were previously validated only by the substituted
+// correctness suite (derivation-substituted.test.js), leaving their derivation
+// schema unguarded. Registering them here closes that coverage gap and keeps
+// ALL_DERIVATION_TILES the authoritative count of derivation-block tiles.
+const WAVE_62_A5_TILES = ['cockcroft-gault', 'corrected-sodium', 'aa-gradient', 'osmolal-gap', 'winters', 'fena-feurea', 'egfr', 'drip-rate', 'burn-fluid'];
+const ALL_DERIVATION_TILES = [...WAVE_48_1A_TILES, ...WAVE_48_1B_TILES, ...WAVE_48_1C_TILES, ...WAVE_48_2A_TILES, ...WAVE_48_2B_TILES, ...WAVE_48_2C_TILES, ...WAVE_48_3A_TILES, ...WAVE_48_3B_TILES, ...WAVE_48_3C_TILES, ...WAVE_48_3D_TILES, ...WAVE_48_4A_TILES, ...WAVE_48_4B_TILES, ...WAVE_48_4C_TILES, ...WAVE_48_4D_TILES, ...WAVE_48_4E_TILES, ...WAVE_48_4F_TILES, ...WAVE_48_4G_TILES, ...WAVE_48_4H_TILES, ...WAVE_48_4I_TILES, ...WAVE_48_4J_TILES, ...WAVE_61_A1_TILES, ...WAVE_61_A1B_TILES, ...WAVE_61_A1C_TILES, ...WAVE_61_A1D_TILES, ...WAVE_61_A1E_TILES, ...WAVE_61_A1F_TILES, ...WAVE_61_A1G_TILES, ...WAVE_61_A1H_TILES, ...WAVE_61_A1I_TILES, ...WAVE_61_A1J_TILES, ...WAVE_61_A1K_TILES, ...WAVE_61_A1L_TILES, ...WAVE_61_A1M_TILES, ...WAVE_61_A1N_TILES, ...WAVE_61_A1O_TILES, ...WAVE_62_A5_TILES];
 
 for (const id of ALL_DERIVATION_TILES) {
   test(`derivation schema: ${id} has all required fields`, () => {

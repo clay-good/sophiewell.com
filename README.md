@@ -67,7 +67,7 @@ tier, MIT-licensed forever — are listed at
 [/commitments/](https://sophiewell.com/commitments/) and
 enforced by automated checks on every commit. Scoring tiles
 expose a collapsed "where does this come from?" derivation block
-([docs/spec-v48.md](docs/spec-v48.md)) — 117 carry one today —
+([docs/spec-v48.md](docs/spec-v48.md)) — 126 carry one today —
 with the verbatim source formula, study cohort, limits of
 validity, and a live per-input contribution list whose component
 sums are cross-checked in CI against the tile's own scoring
@@ -321,7 +321,7 @@ tile: the order stays with the clinician and the pharmacy.
 The wave also added **related-tool links** (`META[id].related`, rendered as a
 "Related tools" row in the citation block — e.g. `wells-pe` → `perc` / `pesi` /
 `years-pe`). The rollout is now complete: a single reviewable `RELATED_BACKFILL`
-map (spec-v61 A2) carries the linking across the catalog — **267 curated
+map (spec-v61 A2) carries the linking across the catalog — **282 curated
 sibling clusters**, grouped by clinical family — with every link verified in CI
 to resolve to a real tile and each list capped at four siblings so the row never
 crowds the result at 320px.
@@ -425,8 +425,10 @@ bedside scales `nips`, `cries`, and `peds-gcs`; then the age-banded pediatric
 organ-dysfunction scores `pelod2` and `psofa`; then `apache2` (the APACHE II
 adult-ICU severity score, twelve banded variables); then `mnihss` (the modified
 NIHSS stroke scale); then `finnegan` (the modified Finnegan neonatal-abstinence
-score) — 117
-scores now carry derivation, each with CI-cross-checked component sums). The A3
+score) — 112
+additive scores now carry a derivation whose component sums are cross-checked in
+CI, within the 126 that carry a derivation block in all (the spec-v62 A5
+named-formula tiles add a substituted-formula line instead of a component sum)). The A3
 labeled copy then extended to the six multi-output Group V5 lab / clinical-math
 tiles (wave 2), the three Group F medication / infusion tiles (wave 3), the
 three Group I field-medicine tiles (wave 4), and the five Group V7 oxygenation /
