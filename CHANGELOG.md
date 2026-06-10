@@ -6,6 +6,26 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Changed (specialty-tag rollout completed — discovery metadata; no catalog change)
+
+`META[id].specialties` (spec-v11 §4.3 / spec-v29 §5.1) are additive search
+tokens (`lib/prompt.js` weights them) and drive the audience/specialty filter
+(`app.js`), so an untagged tile is under-discoverable by specialty. The tag
+rollout had reached the recent spec waves but never the spec-v4-era foundation,
+leaving 110 clinical tiles untagged — including high-traffic ones (`bmi`, `gcs`,
+`apgar`, `wells-pe`, `chads`, `nihss`, `curb-65`, `meld-childpugh`).
+
+- A single reviewable `SPECIALTIES_BACKFILL` map in `lib/meta.js` (the
+  `RELATED_BACKFILL` / `ACTIONS_BACKFILL` pattern) tags all 110, grouped by
+  clinical family. It merges only where a tile carries no inline `specialties`,
+  so inline values still win, and uses **only** values from the established
+  closed vocabulary (no new terms — the distinct vocabulary stays at 85). Every
+  clinical tile now carries at least one specialty.
+- New `test/unit/specialty-coverage.test.js` codifies two invariants the spec
+  described but never enforced: every clinical tile has ≥1 specialty (coverage),
+  and every specialty value is in the closed vocabulary and kebab-case (the
+  typo/drift guard that did not previously exist).
+
 ### Added (spec-v64 — `calcium-replacement`; catalog 333 → 334)
 
 One bedside tile, closing the single electrolyte the K/Mg/Phos
