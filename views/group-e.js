@@ -134,16 +134,16 @@ export const renderers = {
     root.appendChild(field('Sodium (mEq/L)', 'na'));
     root.appendChild(field('Chloride (mEq/L)', 'cl'));
     root.appendChild(field('Bicarbonate (mEq/L)', 'hco3'));
-    root.appendChild(field('Albumin (g/dL, optional)', 'alb'));
+    root.appendChild(unitField('Albumin (optional)', 'alb', ALBUMIN_UNITS));
     const o = out(); root.appendChild(o);
     const run = () => safe(o, () => {
-      const alb = document.getElementById('alb').value;
-      const r = C.anionGap({ sodium: num('na'), chloride: num('cl'), bicarbonate: num('hco3'), albuminGdl: alb === '' ? null : Number(alb) });
+      const albRaw = document.getElementById('alb').value;
+      const r = C.anionGap({ sodium: num('na'), chloride: num('cl'), bicarbonate: num('hco3'), albuminGdl: albRaw === '' ? null : unitNum('alb') });
       const items = [{ label: 'Anion gap', value: r.anionGap }];
       if (r.correctedAnionGap != null) items.push({ label: 'Albumin-corrected', value: r.correctedAnionGap });
       resultRow(o, items);
     });
-    ['na', 'cl', 'hco3', 'alb'].forEach((id) => document.getElementById(id).addEventListener('input', run));
+    ['na', 'cl', 'hco3', 'alb', 'alb-unit'].forEach((id) => document.getElementById(id).addEventListener('input', run));
   },
 
   'corrected-calcium'(root) {
@@ -295,10 +295,10 @@ export const renderers = {
     root.appendChild(field('Sodium (mEq/L)', 'na'));
     root.appendChild(field('Chloride (mEq/L)', 'cl'));
     root.appendChild(field('HCO3 (mEq/L)', 'hco3'));
-    root.appendChild(field('Albumin (g/dL, optional)', 'alb'));
+    root.appendChild(unitField('Albumin (optional)', 'alb', ALBUMIN_UNITS));
     const o = out(); root.appendChild(o);
     const run = () => safe(o, () => {
-      const ag = C.anionGap({ sodium: num('na'), chloride: num('cl'), bicarbonate: num('hco3'), albuminGdl: num('alb') || undefined });
+      const ag = C.anionGap({ sodium: num('na'), chloride: num('cl'), bicarbonate: num('hco3'), albuminGdl: unitNum('alb') || undefined });
       const baseAg = ag.correctedAnionGap != null ? ag.correctedAnionGap : ag.anionGap;
       const dd = V4.deltaDelta({ anionGap: baseAg, hco3: num('hco3') });
       resultRow(o, [
@@ -310,7 +310,7 @@ export const renderers = {
         { text: dd.interpretation },
       ]);
     });
-    ['na', 'cl', 'hco3', 'alb'].forEach((id) => document.getElementById(id).addEventListener('input', run));
+    ['na', 'cl', 'hco3', 'alb', 'alb-unit'].forEach((id) => document.getElementById(id).addEventListener('input', run));
   },
 
   'corrected-ca-na'(root) {

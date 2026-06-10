@@ -48,6 +48,27 @@ test('corrected-calcium in mmol/L + g/L matches the mg/dL + g/dL example', async
   await expect(page.locator('#q-results')).toContainText('9.6');
 });
 
+test('anion-gap albumin in g/L matches the g/dL example (corrected AG 16)', async ({ page }) => {
+  await page.goto('/#anion-gap', { waitUntil: 'load' });
+  // 4.0 g/dL = 40 g/L albumin; Na 140, Cl 100, HCO3 24 -> AG 16, corrected AG 16.
+  await page.fill('#na', '140');
+  await page.fill('#cl', '100');
+  await page.fill('#hco3', '24');
+  await page.locator('#alb-unit').selectOption('g/L');
+  await page.fill('#alb', '40');
+  await expect(page.locator('#q-results')).toContainText('16');
+});
+
+test('saag albumin in g/L matches the g/dL calculation (SAAG 3.0)', async ({ page }) => {
+  await page.goto('/#saag', { waitUntil: 'load' });
+  // serum 4.0 g/dL = 40 g/L, ascites 1.0 g/dL = 10 g/L -> SAAG 3.0 g/dL.
+  await page.locator('#sa-unit').selectOption('g/L');
+  await page.fill('#sa', '40');
+  await page.locator('#aa-unit').selectOption('g/L');
+  await page.fill('#aa', '10');
+  await expect(page.locator('#q-results')).toContainText('SAAG: 3');
+});
+
 test('the unit-field pair does not overflow at 320px', async ({ page }) => {
   await page.setViewportSize({ width: 320, height: 720 });
   await page.goto('/#bmi', { waitUntil: 'load' });

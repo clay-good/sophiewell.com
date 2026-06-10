@@ -474,8 +474,10 @@ string carrying a `NaN`/`Infinity`/`undefined` token), so a bad input can never
 reach the panel. A4 (the **SI⇄conventional lab toggle**, the v61 per-field
 `<select>` mechanism) is rolling out wave-by-wave: wave 1 wired glucose, BUN,
 calcium, and albumin toggles onto the Group E correction tiles (`corrected-calcium`,
-`corrected-sodium`, `corrected-ca-na`, `osmolal-gap`). The canonical conventional
-unit is always the default option, so every documented example and deep link stays
+`corrected-sodium`, `corrected-ca-na`, `osmolal-gap`); wave 2 extended the albumin
+toggle to the anion-gap and ascites tiles (`anion-gap`, `anion-gap-dd`, `saag`),
+preserving the optional-albumin empty-check. The canonical conventional unit is
+always the default option, so every documented example and deep link stays
 byte-identical (the example-correctness e2e sweep proves it).
 
 Still deferred (documented honestly rather than shipped half-right): the two

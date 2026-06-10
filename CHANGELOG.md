@@ -6,6 +6,24 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v62 Part A4 wave 2 — albumin SI⇄conventional toggle on the anion-gap & ascites tiles)
+
+Extends the A4 lab toggle to the remaining albumin-input gap/ascites tiles,
+reusing the `ALBUMIN_UNITS` array from wave 1 (no new `LAB` constant):
+
+- **`anion-gap`** and **`anion-gap-dd`** (Group E): the optional albumin field
+  now offers g/dL ⇄ g/L. The optional-field empty-check is preserved — an empty
+  input still yields `null`/`undefined` (no albumin correction), and a filled
+  input is read through `unitNum()` so the value reaches `anionGap()` in canonical
+  g/dL. This closes the optional-albumin handling deferred from wave 1.
+- **`saag`** (Group V5, Serum-Ascites Albumin Gradient): both the serum and
+  ascites albumin fields offer g/dL ⇄ g/L. `views/group-v5.js` now imports the
+  shared `unitField`/`unitNum`/`ALBUMIN_UNITS` helpers.
+- The conventional unit (g/dL) remains the default option, so the `anion-gap` and
+  `anion-gap-dd` examples stay byte-identical (verified by the example-correctness
+  e2e sweep). Two new parity cases in `test/integration/unit-toggle.spec.js`
+  (anion-gap albumin in g/L → corrected AG 16; SAAG in g/L → 3.0 g/dL).
+
 ### Added (spec-v62 Part A4 wave 1 — SI⇄conventional lab toggles on the Group E correction tiles)
 
 The per-field unit `<select>` (the v61 A4 mechanism, previously wired only onto

@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `bdafa82aa4ac7df2`
-Generated: 2026-06-10T00:35:34.094Z
+Build ID: `9de3108a654a982b`
+Generated: 2026-06-10T00:46:05.574Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=20.18.1 <21, npm >=10.0.0
@@ -97,7 +97,7 @@ downloads is committed in this repository and is hashed below.
 | `lib/workflow-v4.js` | 7999 | `927a8a476e2c1b124c9e51040e549001b580b0baf2a4409ce463a0681fd08a72` |
 | `views/group-a.js` | 577 | `eed37c656d1fa00c097a07f07db4b1b6ac7a0a74bafc210978265a1d90856bd7` |
 | `views/group-c.js` | 6030 | `3aeac0ab24d035c43a6f5f3fcbc4f51cc4d2c7467145821a300bf219629bac46` |
-| `views/group-e.js` | 34304 | `511f72195dc01ea721d482a2a7721e14f6480ec2b4f63d7a07e36e512f63619c` |
+| `views/group-e.js` | 34367 | `a25b1781e962ad8bddb9203feca37b442ad3db0e0e9639ac506b3704aada65dd` |
 | `views/group-f.js` | 40365 | `d81c4f4e6eae106a41c21049d96ad2f76f590d79ce309e9b286b7d0b91d30237` |
 | `views/group-g.js` | 233275 | `76bb9763d0e28c4e5a42e7557d84958fdfdf7165a6dbbb1f4c9ee097f9a38406` |
 | `views/group-h.js` | 27952 | `6393fcba60f1d58334f40d12cb18cf183c086666c7777ab35c8e1e3ada88d4f5` |
@@ -106,7 +106,7 @@ downloads is committed in this repository and is hashed below.
 | `views/group-klmno.js` | 7870 | `bf6d3ced1a08fcb627284b649d07b8e5ace6857b29e46992d4e425925c63eaa9` |
 | `views/group-v10.js` | 27809 | `f85e57fbe1cf256decd079f0c909d55fbd313c3394ab007ab2e9ff7c338a5981` |
 | `views/group-v11.js` | 16589 | `e5a07cd39d0b94fe386afe4c2a694624330e428d03514776a0d1dfe357e9c299` |
-| `views/group-v5.js` | 30887 | `cc1b720cf20dc0b09a39d2184b438dc649583039ef1655c566d2720107c07c45` |
+| `views/group-v5.js` | 31016 | `6189ba1f51fcde826e00dbcab4ed6dcb34576f5131cdb674d2da5af53a9b978b` |
 | `views/group-v6.js` | 5707 | `425918decb48cd9efac9fc5590ac8970a54c03c3b0df056fb99c9a22ff8dd1b2` |
 | `views/group-v7.js` | 14881 | `686615cfd90249e482d4a8d72fe702559148151a660fa1441d763dc4be59decf` |
 | `views/group-v8.js` | 20315 | `9617fd28337104e69eb7c6d98e1a196d690d6b3e0ec6d5acaf871e1be0f2788f` |

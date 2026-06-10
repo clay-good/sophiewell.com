@@ -13,6 +13,7 @@ import { renderDerivation, updateDerivationSteps } from '../lib/derivation.js';
 import { renderPrintable } from '../lib/print.js';
 import { resultRow } from '../lib/result-copy.js';
 import { correctionRate, trend } from '../lib/trend.js';
+import { unitField, unitNum, ALBUMIN_UNITS } from '../lib/field-units.js';
 
 function field(label, id, opts = {}) {
   const wrap = el('p');
@@ -246,17 +247,17 @@ export const renderers = {
 
   // ----- T8: SAAG --------------------------------------------------------
   saag(root) {
-    root.appendChild(field('Serum albumin (g/dL)', 'sa'));
-    root.appendChild(field('Ascites albumin (g/dL)', 'aa'));
+    root.appendChild(unitField('Serum albumin', 'sa', ALBUMIN_UNITS));
+    root.appendChild(unitField('Ascites albumin', 'aa', ALBUMIN_UNITS));
     const o = out(); root.appendChild(o);
     const run = () => safe(o, () => {
-      const r = V5.saag({ serumAlbumin: num('sa'), ascitesAlbumin: num('aa') });
+      const r = V5.saag({ serumAlbumin: unitNum('sa'), ascitesAlbumin: unitNum('aa') });
       o.appendChild(el('ul', {}, [
         el('li', { text: `SAAG: ${r.saag} g/dL` }),
         el('li', { text: `Classification: ${r.classification}` }),
       ]));
     });
-    ['sa', 'aa'].forEach((id) => document.getElementById(id).addEventListener('input', run));
+    ['sa', 'sa-unit', 'aa', 'aa-unit'].forEach((id) => document.getElementById(id).addEventListener('input', run));
   },
 
   // ----- T9: R-factor (DILI pattern) -------------------------------------

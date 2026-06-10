@@ -57,7 +57,12 @@
 > glucose/BUN on `osmolal-gap` — via four reusable analyte option arrays
 > (`GLUCOSE_UNITS`/`BUN_UNITS`/`CALCIUM_UNITS`/`ALBUMIN_UNITS`) with the canonical
 > conventional unit as the default option, so every example stays byte-identical.
-> The remaining lab-input fields across the other groups follow in later A4 waves.
+> **A4 wave 2 (2026-06-10):** the albumin toggle extended to the remaining
+> albumin-input gap/ascites tiles — `anion-gap` and `anion-gap-dd` (optional
+> albumin, empty-check preserved) and `saag` (serum + ascites albumin, `group-v5.js`
+> now imports the shared helpers). The remaining lab-input fields across the other
+> groups (bilirubin on the hepatic tiles, Mg/phosphate on electrolyte-replacement,
+> lactate on the sepsis tiles) follow in later A4 waves.
 > Original Part B/C wave delivered: 7 of 9
 > Part B tiles (`infusion-time-remaining`, `enteral-free-water`, `apap-24h-max`,
 > `icu-nutrition-target`, `vte-prophylaxis-dose`, `neonatal-feeding-volume`,
