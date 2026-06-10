@@ -6,6 +6,30 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v62 Part A4 wave 1 — SI⇄conventional lab toggles on the Group E correction tiles)
+
+The per-field unit `<select>` (the v61 A4 mechanism, previously wired only onto
+weight/height/temp/creatinine) now extends to the high-frequency lab analytes on
+the acid-base & electrolyte correction tiles:
+
+- **`corrected-calcium`**: calcium (mg/dL ⇄ mmol/L) and albumin (g/dL ⇄ g/L).
+- **`corrected-sodium`**: glucose (mg/dL ⇄ mmol/L).
+- **`corrected-ca-na`**: calcium, albumin, and glucose.
+- **`osmolal-gap`**: glucose and BUN (mg/dL ⇄ mmol/L urea).
+- Four reusable analyte option arrays (`GLUCOSE_UNITS`, `BUN_UNITS`,
+  `CALCIUM_UNITS`, `ALBUMIN_UNITS`) added to [lib/field-units.js](lib/field-units.js);
+  the SI option converts back to the canonical conventional unit via
+  `labConvert(kind, v, 'fromSi')`. The `albumin` analyte (g/dL ⇄ g/L, factor 10)
+  was added to the `LAB` table in [lib/unit-convert.js](lib/unit-convert.js).
+- **The first (default) option is always the conventional US unit the compute
+  function already expects**, so every `META.example` and deep-link hash
+  reproduces byte-identically — confirmed by the example-correctness e2e sweep.
+  `unitNum()` returns the value already converted to canonical, so no compute
+  path changed; electrolyte fields entered in mEq/L (= mmol/L 1:1) keep their
+  plain inputs. Coverage: `test/unit/unit-convert.test.js` (albumin round-trip +
+  the four arrays' SI conversions) and two new parity cases in
+  `test/integration/unit-toggle.spec.js`. See [docs/spec-v62.md](docs/spec-v62.md).
+
 ### Added (spec-v62 Part A5 wave 4 — substituted-formula derivation on `egfr`, `drip-rate`, `burn-fluid`)
 
 The final three named A5 formula tiles gain a full `derivation` block (formula /

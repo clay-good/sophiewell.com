@@ -50,7 +50,15 @@
 > substituted lines (`group-f.js` and `group-i.js` now import `META` + the
 > derivation helpers); the egfr substituted line recomputes identically to
 > `egfrCkdEpi2021` so the line and the result never drift. **A5 is now complete**
-> across all nine named formula tiles. Original Part B/C wave delivered: 7 of 9
+> across all nine named formula tiles. **A4 wave 1 (2026-06-10):** the
+> SI⇄conventional lab toggle (the v61 A4 mechanism) extended to the high-frequency
+> analytes on the Group E correction tiles — calcium/albumin on `corrected-calcium`,
+> glucose on `corrected-sodium`, calcium/albumin/glucose on `corrected-ca-na`, and
+> glucose/BUN on `osmolal-gap` — via four reusable analyte option arrays
+> (`GLUCOSE_UNITS`/`BUN_UNITS`/`CALCIUM_UNITS`/`ALBUMIN_UNITS`) with the canonical
+> conventional unit as the default option, so every example stays byte-identical.
+> The remaining lab-input fields across the other groups follow in later A4 waves.
+> Original Part B/C wave delivered: 7 of 9
 > Part B tiles (`infusion-time-remaining`, `enteral-free-water`, `apap-24h-max`,
 > `icu-nutrition-target`, `vte-prophylaxis-dose`, `neonatal-feeding-volume`,
 > `oxytocin-titration`) in `lib/clinical-v8.js`, and both Part C conversions

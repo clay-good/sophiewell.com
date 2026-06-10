@@ -471,14 +471,19 @@ nine named formula tiles: `cockcroft-gault`, `corrected-sodium`, `aa-gradient`,
 Each substituted line is guarded at both the author layer (returns `null` on any
 missing / non-finite / non-positive input) and the render layer (refuses any
 string carrying a `NaN`/`Infinity`/`undefined` token), so a bad input can never
-reach the panel.
+reach the panel. A4 (the **SI⇄conventional lab toggle**, the v61 per-field
+`<select>` mechanism) is rolling out wave-by-wave: wave 1 wired glucose, BUN,
+calcium, and albumin toggles onto the Group E correction tiles (`corrected-calcium`,
+`corrected-sodium`, `corrected-ca-na`, `osmolal-gap`). The canonical conventional
+unit is always the default option, so every documented example and deep link stays
+byte-identical (the example-correctness e2e sweep proves it).
 
 Still deferred (documented honestly rather than shipped half-right): the two
 highest-risk Part B tiles — `norepi-equiv` (NE-equivalent vasopressin/angiotensin
 factors vary across the scoping reviews) and `neo-phototherapy` (AAP-2022 is a
 continuous risk-stratified nomogram) — and the remaining Part A capabilities (A3
-reverse-solve and A4 the full SI⇄conventional lab-toggle rollout). See
-[docs/spec-v62.md](docs/spec-v62.md).
+reverse-solve and the rest of the A4 lab-toggle rollout across the other groups).
+See [docs/spec-v62.md](docs/spec-v62.md).
 
 ## System design and architecture overview
 

@@ -27,6 +27,27 @@ test('Cockcroft-Gault in µmol/L matches the mg/dL calculation', async ({ page }
   await expect(page.locator('#q-results')).toContainText('88.89');
 });
 
+// spec-v62 §2 A4: SI<->conventional lab toggles on the Group E correction tiles.
+test('corrected-sodium glucose in mmol/L matches the mg/dL example', async ({ page }) => {
+  await page.goto('/#corrected-sodium', { waitUntil: 'load' });
+  // 600 mg/dL = 33.3333 mmol/L; Na 130 -> corrected Na 138 (1.6) / 142 (2.4).
+  await page.fill('#na', '130');
+  await page.locator('#g-unit').selectOption('mmol/L');
+  await page.fill('#g', '33.3333');
+  await expect(page.locator('#q-results')).toContainText('138');
+  await expect(page.locator('#q-results')).toContainText('142');
+});
+
+test('corrected-calcium in mmol/L + g/L matches the mg/dL + g/dL example', async ({ page }) => {
+  await page.goto('/#corrected-calcium', { waitUntil: 'load' });
+  // 8.0 mg/dL = 2.0 mmol/L Ca; 2.0 g/dL = 20 g/L albumin -> corrected Ca 9.6 mg/dL.
+  await page.locator('#ca-unit').selectOption('mmol/L');
+  await page.fill('#ca', '2.0');
+  await page.locator('#alb-unit').selectOption('g/L');
+  await page.fill('#alb', '20');
+  await expect(page.locator('#q-results')).toContainText('9.6');
+});
+
 test('the unit-field pair does not overflow at 320px', async ({ page }) => {
   await page.setViewportSize({ width: 320, height: 720 });
   await page.goto('/#bmi', { waitUntil: 'load' });

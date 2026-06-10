@@ -13,7 +13,7 @@ import { META } from '../lib/meta.js';
 import { renderDerivation, updateDerivationSteps } from '../lib/derivation.js';
 import { inchesToCm, labConvert } from '../lib/unit-convert.js';
 import { resultRow } from '../lib/result-copy.js';
-import { unitField, unitNum, WEIGHT_UNITS } from '../lib/field-units.js';
+import { unitField, unitNum, WEIGHT_UNITS, GLUCOSE_UNITS, BUN_UNITS, CALCIUM_UNITS, ALBUMIN_UNITS } from '../lib/field-units.js';
 
 function field(label, id, opts = {}) {
   const wrap = el('p');
@@ -147,25 +147,25 @@ export const renderers = {
   },
 
   'corrected-calcium'(root) {
-    root.appendChild(field('Measured calcium (mg/dL)', 'ca'));
-    root.appendChild(field('Albumin (g/dL)', 'alb'));
+    root.appendChild(unitField('Measured calcium', 'ca', CALCIUM_UNITS));
+    root.appendChild(unitField('Albumin', 'alb', ALBUMIN_UNITS));
     const o = out(); root.appendChild(o);
     const run = () => safe(o, () => {
-      const measuredCa = num('ca'), albuminGdl = num('alb');
+      const measuredCa = unitNum('ca'), albuminGdl = unitNum('alb');
       o.appendChild(el('p', { text: `Corrected calcium: ${C.correctedCalcium({ measuredCa, albuminGdl })} mg/dL` }));
       adviseAll(o, [['calcium', measuredCa], ['albumin', albuminGdl]]);
     });
-    ['ca', 'alb'].forEach((id) => document.getElementById(id).addEventListener('input', run));
+    ['ca', 'ca-unit', 'alb', 'alb-unit'].forEach((id) => document.getElementById(id).addEventListener('input', run));
   },
 
   'corrected-sodium'(root) {
     root.appendChild(field('Measured sodium (mEq/L)', 'na'));
-    root.appendChild(field('Glucose (mg/dL)', 'g'));
+    root.appendChild(unitField('Glucose', 'g', GLUCOSE_UNITS));
     const o = out(); root.appendChild(o);
     const deriv = renderDerivation(META['corrected-sodium']);
     if (deriv) root.appendChild(deriv);
     const run = () => safe(o, () => {
-      const measuredNa = num('na'), glucose = num('g');
+      const measuredNa = num('na'), glucose = unitNum('g');
       const inputs = { measuredNa, glucose };
       const r = C.correctedSodium(inputs);
       resultRow(o, [
@@ -176,7 +176,7 @@ export const renderers = {
       o.appendChild(el('p', { class: 'muted', text: 'Both correction factors are reported per the literature (Katz 1973; Hillier 1999).' }));
       if (deriv) updateDerivationSteps(deriv, META['corrected-sodium'], inputs);
     });
-    ['na', 'g'].forEach((id) => document.getElementById(id).addEventListener('input', run));
+    ['na', 'g', 'g-unit'].forEach((id) => document.getElementById(id).addEventListener('input', run));
   },
 
   'aa-gradient'(root) {
@@ -315,40 +315,40 @@ export const renderers = {
 
   'corrected-ca-na'(root) {
     root.appendChild(el('h3', { text: 'Corrected Calcium' }));
-    root.appendChild(field('Measured Ca (mg/dL)', 'ca'));
-    root.appendChild(field('Albumin (g/dL)', 'cca-alb'));
+    root.appendChild(unitField('Measured Ca', 'ca', CALCIUM_UNITS));
+    root.appendChild(unitField('Albumin', 'cca-alb', ALBUMIN_UNITS));
     root.appendChild(el('h3', { text: 'Corrected Sodium (Katz)' }));
     root.appendChild(field('Measured Na (mEq/L)', 'csna-na'));
-    root.appendChild(field('Glucose (mg/dL)', 'glu'));
+    root.appendChild(unitField('Glucose', 'glu', GLUCOSE_UNITS));
     const o = out(); root.appendChild(o);
     const run = () => safe(o, () => {
       const items = [];
-      const ca = num('ca'), alb = num('cca-alb');
+      const ca = unitNum('ca'), alb = unitNum('cca-alb');
       if (ca && alb) {
         const cc = C.correctedCalcium({ measuredCa: ca, albuminGdl: alb });
         items.push({ text: `Corrected Ca: ${cc.toFixed(2)} mg/dL` });
       }
-      const na = num('csna-na'), glu = num('glu');
+      const na = num('csna-na'), glu = unitNum('glu');
       if (na && glu) {
         const cs = C.correctedSodium({ measuredNa: na, glucose: glu });
         items.push({ text: `Corrected Na (Katz 1.6): ${cs.naBy1_6.toFixed(1)}; Hillier 2.4: ${cs.naBy2_4.toFixed(1)}` });
       }
       if (items.length) resultRow(o, items);
     });
-    ['ca', 'cca-alb', 'csna-na', 'glu'].forEach((id) => document.getElementById(id).addEventListener('input', run));
+    ['ca', 'ca-unit', 'cca-alb', 'cca-alb-unit', 'csna-na', 'glu', 'glu-unit'].forEach((id) => document.getElementById(id).addEventListener('input', run));
   },
 
   'osmolal-gap'(root) {
     root.appendChild(field('Measured serum osmolality (mOsm/kg)', 'measured'));
     root.appendChild(field('Sodium (mEq/L)', 'og-na'));
-    root.appendChild(field('Glucose (mg/dL)', 'og-glu'));
-    root.appendChild(field('BUN (mg/dL)', 'og-bun'));
+    root.appendChild(unitField('Glucose', 'og-glu', GLUCOSE_UNITS));
+    root.appendChild(unitField('BUN', 'og-bun', BUN_UNITS));
     root.appendChild(field('EtOH (mg/dL, optional)', 'og-etoh'));
     const o = out(); root.appendChild(o);
     const deriv = renderDerivation(META['osmolal-gap']);
     if (deriv) root.appendChild(deriv);
     const run = () => safe(o, () => {
-      const inputs = { measuredOsm: num('measured'), sodium: num('og-na'), glucoseMgDl: num('og-glu'), bunMgDl: num('og-bun'), etohMgDl: num('og-etoh') || 0 };
+      const inputs = { measuredOsm: num('measured'), sodium: num('og-na'), glucoseMgDl: unitNum('og-glu'), bunMgDl: unitNum('og-bun'), etohMgDl: num('og-etoh') || 0 };
       const r = V4.osmolalGap(inputs);
       resultRow(o, [
         { text: `Calculated osm: ${r.calculatedOsm.toFixed(1)}` },
@@ -356,7 +356,7 @@ export const renderers = {
       ]);
       if (deriv) updateDerivationSteps(deriv, META['osmolal-gap'], inputs);
     });
-    ['measured', 'og-na', 'og-glu', 'og-bun', 'og-etoh'].forEach((id) => document.getElementById(id).addEventListener('input', run));
+    ['measured', 'og-na', 'og-glu', 'og-glu-unit', 'og-bun', 'og-bun-unit', 'og-etoh'].forEach((id) => document.getElementById(id).addEventListener('input', run));
   },
 
   'aa-pf-suite'(root) {
