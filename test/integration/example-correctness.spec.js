@@ -19,7 +19,7 @@ test.skip(({ browserName }) => browserName !== 'chromium', 'numeric sweep is chr
 test('every example payload produces the documented numeric output', async ({ page }) => {
   // This is a serial, full-catalog numeric sweep (one navigation + reset-click
   // per tile). Its wall-clock grows linearly with the catalog and contends for
-  // CPU with the other browser projects under `npm run test:e2e`. At 328 tiles a
+  // CPU with the other browser projects under `npm run test:e2e`. At 337 tiles a
   // clean run is ~5 min in isolation, so the budget is generous headroom above
   // that to absorb CI worker contention without a timeout flake; a real numeric
   // mismatch still fails fast (per-tile), never via this timeout.
