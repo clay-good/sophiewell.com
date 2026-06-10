@@ -106,6 +106,22 @@ test('freeWaterDeficit: flags implied Na drop > 10 mEq/L/24h', () => {
   assert.ok(r.impliedNaDropPer24h > 10);
   assert.match(r.safetyNote, /exceeds/);
 });
+// spec-v62 §2 A3 / §5: an over-ceiling drop also returns the ceiling-capped
+// max-safe replacement rate (the rate that drops Na at exactly 10 mEq/L/24h).
+test('freeWaterDeficit: over-ceiling drop returns the capped max-safe rate', () => {
+  const r = V5.freeWaterDeficit({ weightKg: 70, sex: 'M', currentNa: 165, replaceOverHours: 24 });
+  assert.ok(r.cappedReplacementRateMlPerHour != null);
+  // capped rate = replacement rate scaled by 10 / impliedDrop (Na-drop is linear in rate)
+  assert.ok(close(r.cappedReplacementRateMlPerHour, (r.replacementRateMlPerHour * 10) / r.impliedNaDropPer24h, 0.2));
+  // and is strictly slower than the over-ceiling rate
+  assert.ok(r.cappedReplacementRateMlPerHour < r.replacementRateMlPerHour);
+});
+test('freeWaterDeficit: within-ceiling drop has no capped rate (null)', () => {
+  // Na 160 -> 145 over 48 h implies 7.5 mEq/L/24h, within the ceiling.
+  const r = V5.freeWaterDeficit({ weightKg: 70, sex: 'M', currentNa: 160, replaceOverHours: 48 });
+  assert.ok(r.impliedNaDropPer24h <= 10);
+  assert.equal(r.cappedReplacementRateMlPerHour, null);
+});
 
 // --- T3: Iron deficit (Ganzoni) ------------------------------------------
 test('ironDeficitGanzoni: 70 kg, Hb 9, target 15 -> 1508 mg', () => {

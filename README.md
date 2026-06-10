@@ -480,18 +480,19 @@ preserving the optional-albumin empty-check. The canonical conventional unit is
 always the default option, so every documented example and deep link stays
 byte-identical (the example-correctness e2e sweep proves it).
 
-A3 (the **reverse-solve / target mode**) has begun on the safety-critical
-correction tiles: `sodium-correction` now computes a **ceiling-capped max-safe
-rate** — when the requested ΔNa target is above the acuity ceiling (8 mEq/L/24 h
-chronic, 10 acute), it surfaces the rate that hits *exactly* the ceiling and flags
+A3 (the **reverse-solve / target mode**) has shipped on both safety-critical
+sodium correction tiles: `sodium-correction` and `free-water-deficit` now compute
+a **ceiling-capped max-safe rate** — when the requested schedule would move Na
+faster than the published ceiling (8 mEq/L/24 h chronic / 10 acute for raising,
+10 for lowering), each surfaces the rate that hits *exactly* the ceiling and flags
 it, so the reverse-solve never silently displays an over-ceiling infusion rate.
 
 Still deferred (documented honestly rather than shipped half-right): the two
 highest-risk Part B tiles — `norepi-equiv` (NE-equivalent vasopressin/angiotensin
 factors vary across the scoping reviews) and `neo-phototherapy` (AAP-2022 is a
 continuous risk-stratified nomogram) — and the rest of Part A (the remaining A3
-reverse-solve targets `insulin-drip`/`heparin-nomogram`/`free-water-deficit`, and
-the rest of the A4 lab-toggle rollout across the other groups). See
+reverse-solve targets `insulin-drip`/`heparin-nomogram`, and the rest of the A4
+lab-toggle rollout across the other groups). See
 [docs/spec-v62.md](docs/spec-v62.md).
 
 ## System design and architecture overview

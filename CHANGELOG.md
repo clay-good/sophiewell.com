@@ -6,6 +6,25 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v62 Part A3 wave 2 — ceiling-capped max-safe replacement rate on `free-water-deficit`)
+
+The companion hypernatremia tile to `sodium-correction` gets the same §5
+treatment. `free-water-deficit` already flagged a replacement schedule that drops
+Na faster than the 10 mEq/L/24h ceiling; it now also surfaces the **capped
+max-safe replacement rate**:
+
+- `lib/clinical-v5.js` `freeWaterDeficit()` returns `cappedReplacementRateMlPerHour`
+  — the rate that delivers the same total free-water deficit but drops Na at
+  *exactly* 10 mEq/L/24h (Na-drop is linear in the rate, so the over-ceiling rate
+  is scaled by `10 / impliedDrop`). It is `null` when the schedule is already
+  within the ceiling, so no existing result changes.
+- `views/group-v5.js` renders a flagged **"Max safe rate (≤ 10 mEq/L/24h
+  ceiling)"** row, shown only when the implied Na drop is over the ceiling.
+- The documented example (Na 160 → 145 over 48 h = 7.5 mEq/L/24h, within ceiling)
+  is unchanged and byte-identical. Coverage: `test/unit/clinical-v5.test.js` (the
+  capped rate equals `replacementRate × 10 / impliedDrop` and is strictly slower
+  than the over-ceiling rate; a within-ceiling schedule has no capped rate).
+
 ### Added (spec-v62 Part A3 — ceiling-capped max-safe reverse-solve rate on `sodium-correction`)
 
 `sodium-correction` already solves the inverse (target ΔNa over 24 h → infusion

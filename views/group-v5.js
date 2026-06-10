@@ -146,6 +146,7 @@ export const renderers = {
         { label: 'TBW', value: r.tbwLiters, units: 'L' },
         { label: 'Free water deficit', value: r.deficitLiters, units: 'L' },
         { label: 'Replacement rate', value: r.replacementRateMlPerHour, units: 'mL/h' },
+        r.cappedReplacementRateMlPerHour != null ? { label: 'Max safe rate (≤ 10 mEq/L/24h ceiling)', value: r.cappedReplacementRateMlPerHour, units: 'mL/h', cls: 'warn' } : null,
         { label: 'Implied Na drop', value: r.impliedNaDropPer24h, units: 'mEq/L/24h' },
         { text: r.safetyNote },
       ]);
