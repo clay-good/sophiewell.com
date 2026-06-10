@@ -7,6 +7,7 @@ import { el, clear } from '../lib/dom.js';
 import { fmt } from '../lib/num.js';
 import { boundsAdvisory } from '../lib/bounds.js';
 import * as C from '../lib/clinical.js';
+import * as C8 from '../lib/clinical-v8.js';
 import * as V4 from '../lib/clinical-v4.js';
 import * as S4 from '../lib/scoring-v4.js';
 import { META } from '../lib/meta.js';
@@ -128,6 +129,68 @@ export const renderers = {
       adviseAll(o, [['sbp', sbp], ['dbp', dbp]]);
     });
     ['s', 'd'].forEach((id) => document.getElementById(id).addEventListener('input', run));
+  },
+
+  // --- spec-v65 §2.3 cerebral-perfusion-pressure (CPP = MAP - ICP) ----------
+  'cerebral-perfusion-pressure'(root) {
+    root.appendChild(field('MAP (mmHg, if measured)', 'cpp-map', { placeholder: '90' }));
+    root.appendChild(field('Or systolic BP (mmHg)', 'cpp-sbp', { placeholder: '120' }));
+    root.appendChild(field('Or diastolic BP (mmHg)', 'cpp-dbp', { placeholder: '60' }));
+    root.appendChild(field('ICP (mmHg)', 'cpp-icp', { placeholder: '20' }));
+    const o = out(); root.appendChild(o);
+    const run = () => safe(o, () => {
+      clear(o);
+      const mapV = num('cpp-map');
+      const sbp = num('cpp-sbp');
+      const dbp = num('cpp-dbp');
+      const icpRaw = document.getElementById('cpp-icp').value.trim();
+      if (icpRaw === '' || !(mapV > 0 || (sbp > 0 && dbp > 0))) {
+        o.appendChild(el('p', { class: 'muted', text: 'Enter ICP plus either a measured MAP or both SBP and DBP.' }));
+        return;
+      }
+      const r = C8.cerebralPerfusionPressure({ map: mapV > 0 ? mapV : 0, sbp: sbp > 0 ? sbp : 0, dbp: dbp > 0 ? dbp : 0, icp: Number(icpRaw) });
+      if (!r) { o.appendChild(el('p', { class: 'muted', text: 'Enter ICP plus either a measured MAP or both SBP and DBP.' })); return; }
+      resultRow(o, [
+        { label: 'MAP', value: fmt(r.map), units: 'mmHg' },
+        { label: 'Cerebral perfusion pressure (CPP)', value: fmt(r.cpp), units: 'mmHg', cls: r.critical ? 'flag' : null },
+        { text: r.negative ? 'Negative CPP: ICP exceeds MAP - critical, no forward cerebral perfusion.' : r.band, cls: r.critical ? 'warn' : null },
+      ]);
+      o.appendChild(el('p', { class: 'muted', text: 'Planning estimate - verify against the monitor and local protocol. Optimal CPP may be individualized by autoregulation (PRx) where measured; this tile computes the standard CPP and BTF target band only.' }));
+    });
+    ['cpp-map', 'cpp-sbp', 'cpp-dbp', 'cpp-icp'].forEach((id) => document.getElementById(id).addEventListener('input', run));
+  },
+
+  // --- spec-v65 §2.2 minute-ventilation (V̇E & target-PaCO2 rate) ------------
+  'minute-ventilation'(root) {
+    root.appendChild(field('Respiratory rate (/min)', 'mv-rr', { placeholder: '16' }));
+    root.appendChild(field('Tidal volume (mL)', 'mv-vt', { placeholder: '450' }));
+    root.appendChild(field('Ideal body weight (kg, optional - for alveolar V̇A)', 'mv-ibw', { placeholder: 'optional' }));
+    root.appendChild(field('Current PaCO2 (mmHg, optional)', 'mv-paco2', { placeholder: 'optional' }));
+    root.appendChild(field('Target PaCO2 (mmHg, optional)', 'mv-target', { placeholder: 'optional' }));
+    const o = out(); root.appendChild(o);
+    const run = () => safe(o, () => {
+      clear(o);
+      const rr = num('mv-rr');
+      const vt = num('mv-vt');
+      if (!(rr > 0 && vt > 0)) { o.appendChild(el('p', { class: 'muted', text: 'Enter a respiratory rate and tidal volume.' })); return; }
+      const ibw = num('mv-ibw');
+      const cur = num('mv-paco2');
+      const tgt = num('mv-target');
+      const r = C8.minuteVentilation({
+        respiratoryRate: rr, tidalVolumeMl: vt,
+        ibwKg: ibw > 0 ? ibw : 0, currentPaco2: cur > 0 ? cur : 0, targetPaco2: tgt > 0 ? tgt : 0,
+      });
+      const items = [{ label: 'Minute ventilation (V̇E)', value: fmt(r.minuteVentilationLMin), units: 'L/min' }];
+      if (r.alveolarVentilationLMin != null) items.push({ label: 'Alveolar ventilation (V̇A)', value: fmt(r.alveolarVentilationLMin), units: 'L/min' });
+      if (r.requiredRate != null) {
+        const high = r.requiredRate > 35;
+        items.push({ label: 'Rate to reach target PaCO2', value: fmt(r.requiredRate), units: '/min', cls: high ? 'flag' : null });
+        if (high) items.push({ text: 'Computed rate exceeds ~35/min: raise tidal volume within the lung-protective 6 mL/kg limit instead, and watch for breath-stacking / auto-PEEP.', cls: 'warn' });
+      }
+      resultRow(o, items);
+      o.appendChild(el('p', { class: 'muted', text: 'Planning estimate - verify against the ventilator and an arterial blood gas. Computes gas-exchange targets, not ventilator-mode settings.' }));
+    });
+    ['mv-rr', 'mv-vt', 'mv-ibw', 'mv-paco2', 'mv-target'].forEach((id) => document.getElementById(id).addEventListener('input', run));
   },
 
   'anion-gap'(root) {

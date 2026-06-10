@@ -221,6 +221,51 @@ export const renderers = {
     ['itr-vol', 'itr-rate', 'itr-hrs'].forEach((id) => document.getElementById(id).addEventListener('input', run));
   },
 
+  // --- spec-v65 §2.1 o2-cylinder-duration ----------------------------------
+  'o2-cylinder-duration'(root) {
+    root.appendChild(selectField('Cylinder size', 'o2-size', [
+      { value: 'E', text: 'E (0.28 L/psi) - transport / wheelchair' },
+      { value: 'D', text: 'D (0.16 L/psi) - small portable' },
+      { value: 'M', text: 'M (1.56 L/psi)' },
+      { value: 'G', text: 'G (2.41 L/psi)' },
+      { value: 'H', text: 'H / K (3.14 L/psi) - large stationary' },
+    ]));
+    root.appendChild(field('Current gauge pressure (psi)', 'o2-psi', { placeholder: '2000' }));
+    root.appendChild(field('Flow rate (L/min)', 'o2-flow', { placeholder: '2' }));
+    root.appendChild(field('Safe residual pressure (psi)', 'o2-res', { placeholder: '200' }));
+    root.appendChild(field('Or: target transport time (minutes) for max-flow', 'o2-target', { placeholder: '45' }));
+    const o = out(); root.appendChild(o);
+    const run = () => safe(o, () => {
+      clear(o);
+      const factor = C8.O2_CYLINDER_FACTORS[document.getElementById('o2-size').value] || C8.O2_CYLINDER_FACTORS.E;
+      const psi = nv('o2-psi');
+      const flow = nv('o2-flow');
+      const resRaw = document.getElementById('o2-res').value.trim();
+      const residual = resRaw === '' ? 200 : Number(resRaw);
+      const target = nv('o2-target');
+      if (!(psi > 0)) { o.appendChild(el('p', { class: 'muted', text: 'Enter the gauge pressure with a flow rate (or a target transport time).' })); return; }
+      const r = C8.o2CylinderDuration({ factorLPsi: factor, gaugePsi: psi, flowLpm: flow > 0 ? flow : 0, residualPsi: residual, targetMinutes: target > 0 ? target : 0 });
+      const items = [{ label: 'Usable oxygen volume', value: fmt(r.usableVolumeL), units: `L (above the ${fmt(residual)} psi residual)` }];
+      if (r.atOrBelowResidual) {
+        items.push({ text: 'Gauge is at or below the safe residual - swap the cylinder now.', cls: 'flag' });
+      } else if (r.minutesRemaining != null) {
+        const h = Math.floor(r.minutesRemaining / 60);
+        const m = r.minutesRemaining % 60;
+        items.push({ label: 'Time to residual', value: `${h}h ${String(m).padStart(2, '0')}m`, units: `(${fmt(r.minutesRemaining)} min)` });
+      }
+      if (r.maxFlowLpm != null) {
+        items.push({ label: `Max flow to last ${fmt(target)} min`, value: fmt(r.maxFlowLpm), units: 'L/min' });
+      }
+      resultRow(o, items);
+      o.appendChild(el('p', { class: 'muted', text: 'Planning estimate - verify against your gauge and institutional transport policy; carry a spare and swap before the residual threshold.' }));
+    });
+    ['o2-size', 'o2-psi', 'o2-flow', 'o2-res', 'o2-target'].forEach((id) => {
+      const node = document.getElementById(id);
+      node.addEventListener('input', run);
+      node.addEventListener('change', run);
+    });
+  },
+
   'enteral-free-water'(root) {
     root.appendChild(field('Daily formula volume (mL/day)', 'efw-vol', { placeholder: '1200' }));
     root.appendChild(field('Formula free-water fraction (%, ~84 for 1.0 kcal/mL)', 'efw-fw', { placeholder: '84' }));

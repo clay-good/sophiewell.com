@@ -111,6 +111,8 @@ const UTILITIES = [
   { id: 'icu-nutrition-target', name: 'ICU Energy & Protein Target', group: 'F', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'vte-prophylaxis-dose', name: 'Enoxaparin Dose (weight & renal)', group: 'F', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'norepi-equiv', name: 'Norepinephrine-Equivalent Vasopressor Dose', group: 'F', audiences: ['clinicians', 'educators'], clinical: true },
+  // spec-v65 §2.1: oxygen-cylinder time-to-empty (respiratory-safety analog of infusion-time-remaining).
+  { id: 'o2-cylinder-duration', name: 'Oxygen Cylinder Duration & Max Transport Flow', group: 'F', audiences: ['clinicians', 'field'], clinical: true },
   // spec-v29 wave 29-2 (Group K/O): high-alert removed (ISMP wallet
   // reference); iv-to-po removed (static equivalence table, audit
   // confirmed no numeric output per spec-v29 sec 7.2 deferral).
@@ -438,6 +440,9 @@ const UTILITIES = [
   { id: 'cao2-do2',            name: 'Arterial O2 Content (CaO2) + O2 Delivery (DO2)',   group: 'E', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'oxygenation-index',   name: 'Oxygenation Index (OI) + Oxygen Saturation Index (OSI)', group: 'E', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'driving-pressure',    name: 'Driving Pressure + static/dynamic compliance',     group: 'E', audiences: ['clinicians', 'educators'], clinical: true },
+  // spec-v65 §2.2-2.3: gas-exchange ventilation target and cerebral perfusion pressure.
+  { id: 'minute-ventilation',  name: 'Minute Ventilation + Target-PaCO2 Rate',           group: 'E', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'cerebral-perfusion-pressure', name: 'Cerebral Perfusion Pressure (CPP = MAP - ICP)', group: 'E', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'ttkg',                name: 'Transtubular Potassium Gradient (TTKG)',           group: 'E', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'urine-anion-gap',     name: 'Urine Anion Gap (non-gap acidosis)',               group: 'E', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'acid-base-deficit',   name: 'Bicarbonate Deficit + Sodium Deficit',             group: 'E', audiences: ['clinicians', 'educators'], clinical: true },

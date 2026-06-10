@@ -6,6 +6,39 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v65 — three bedside-physiology tiles; catalog 334 → 337)
+
+A render-tree and near-neighbor audit against the live catalog found three
+deterministic, source-anchored calculations an ICU/ED/floor nurse still does on
+scratch paper that no existing tile computed. All three are pure
+`lib/num.js`-backed functions in `lib/clinical-v8.js` (already enrolled in the
+spec-v59 object-aware fuzz harness), with inline citations, spec-v11 audit logs,
+and ≥3 boundary unit tests each (including the zero-denominator `null` path).
+
+- **`o2-cylinder-duration`** (Group F). The respiratory-safety analog of
+  `infusion-time-remaining`: usable volume = (gauge psi − safe residual) ×
+  cylinder factor (D 0.16 / E 0.28 / M 1.56 / G 2.41 / H-K 3.14 L/psi);
+  minutes-to-residual = usable ÷ flow; plus the inverse — the max flow that
+  lasts a target transport time. A gauge at/below the residual flags
+  "swap now" rather than rendering a negative duration. (Egan's *Fundamentals
+  of Respiratory Care*, 12th ed.)
+- **`minute-ventilation`** (Group E). V̇E = RR × Vt; alveolar ventilation
+  subtracts anatomic dead space (~2.2 mL/kg IBW); and, from a current/target
+  PaCO2 pair, the respiratory rate that reaches the target — flagged when it
+  exceeds ~35/min with the source-anchored note to raise tidal volume within the
+  6 mL/kg limit instead. Covers the gas-exchange calculation the existing vent
+  mechanics tiles (`driving-pressure`, `pbw-ardsnet`, `rsbi`) do not. (Marino,
+  *The ICU Book*, 4th ed.)
+- **`cerebral-perfusion-pressure`** (Group E). CPP = MAP − ICP with the Brain
+  Trauma Foundation 2017 target band (< 60 / 60–70 / > 70 mmHg); computes MAP
+  from SBP/DBP when not measured directly; reports a negative CPP (ICP > MAP)
+  with an explicit critical-low flag. (Carney N, et al. *Neurosurgery*
+  2017;80(1):6-15.)
+- `test/unit/specialty-coverage.test.js` gains two deliberate closed-vocabulary
+  terms (`nursing-transport`, `neurocritical-care`) for the new tiles' specialty
+  tags. Catalog-count surfaces (title, OG/Twitter, JSON-LD, hero label, README,
+  `package.json`, parity ledger) all move 334 → 337.
+
 ### Changed (specialty-tag rollout completed — discovery metadata; no catalog change)
 
 `META[id].specialties` (spec-v11 §4.3 / spec-v29 §5.1) are additive search

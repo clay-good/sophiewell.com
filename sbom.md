@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `20cfc6ee6c2ffa02`
-Generated: 2026-06-10T15:19:04.788Z
+Build ID: `3944e60c95f2bd56`
+Generated: 2026-06-10T16:00:42.591Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=20.18.1 <21, npm >=10.0.0
@@ -24,13 +24,13 @@ downloads is committed in this repository and is hashed below.
 
 | Path | Bytes | SHA-256 |
 |---|---:|---|
-| `index.html` | 35880 | `ddc12e4804de370a821fcba8484e317459bebbaa00a11c1b81b38e6ef6bd019b` |
+| `index.html` | 36056 | `0673303f3d6b2a7f776d99e912902bf98288d5e9502519e06d0af6293bad2e17` |
 | `styles.css` | 48226 | `94b6c23e416afbf76b8be709d70abbedf4a8bee8e373e7b166b368505f0df7f0` |
-| `app.js` | 111972 | `5a7c46165862264286b98037f898d30bfd332965f1b0ba6f3837cac6b996b80e` |
+| `app.js` | 112645 | `4e10a49d042dff0a6041dec636e93341c58e48567544157d84bb1390b8915a68` |
 | `sw.js` | 4062 | `60f524b1b69eb5170c59af42631e11cc05db2a44e8e530977db0327888b0ff6d` |
 | `site.webmanifest` | 709 | `0e0de4da60590a12e8b27a0ae2a2f5ffdb6500b7d2b78f93631ec2f64ed3d5ce` |
 | `robots.txt` | 127 | `38fbf9c1854e72abb20e01e81dd5a31d4ea96f154c12d5db1ec3af05524dd1a1` |
-| `sitemap.xml` | 52463 | `029d3350a3c7d0f301e2ee078ee2e7d407e4138169df3da6befd7bb9cfcf4bef` |
+| `sitemap.xml` | 52948 | `69b5cb8dcd8c07c3b53aef9e33045a0d0bbabd3b13a840da78afe94efdd6d954` |
 | `_headers` | 1316 | `2f39986457d2feff7e73e491a7d09ee871e8f2f4cc2bc437f86bd86a42554ec6` |
 | `logo.png` | 63440 | `11afaf1b0d3ca68393d202e4810bf766b5b6d591b4e3ec52f41d3cacaa4616ec` |
 | `favicon.ico` | 7411 | `407fde0ca2788409e87e11f596fa02e6a0b121817fcea7fd995beec1801e287b` |
@@ -47,7 +47,7 @@ downloads is committed in this repository and is hashed below.
 | `lib/clinical-v5.js` | 25042 | `1da466fb812401a08c4a1419f8b5eb579943d80e3626c00749a1b3bc87ac57cc` |
 | `lib/clinical-v6.js` | 15465 | `e70291e35cbce6cebe2bb660f0f0670f6174534a53a7da541e5c1e341d28878b` |
 | `lib/clinical-v7.js` | 17865 | `e3ce3b434ff443c8ebbf7428384cb9d995eeb6ac2b96b49136405f2d85dccc73` |
-| `lib/clinical-v8.js` | 12786 | `0c14b43b65276989a8cb6710f874cb0f0fbfed73932e3d80c68dd2c87a9041dc` |
+| `lib/clinical-v8.js` | 17487 | `1620bb22277f42f6ae3f0e59f3f3042f9c577920c9ee0a5730a7907aec7252a7` |
 | `lib/clinical.js` | 15290 | `ccc5d9cf8e459507e40305dc10c1b6a361a0eced2cb4ee8d0a0dcc10e785ad60` |
 | `lib/clipboard.js` | 2907 | `951c41df24f58df747734474d383d6f75f52d22d2c4d0a370ef5bfb269a15147` |
 | `lib/coding-v5.js` | 12119 | `9dd3bbc7e833f65a612386b9a9474bff60d822d7cb7bc2e8f6b5ce48456a8ef1` |
@@ -65,7 +65,7 @@ downloads is committed in this repository and is hashed below.
 | `lib/live.js` | 1138 | `304978d3c170b6eb06cade7702e5f99d868e9b3e1f5651aa9a28da15e62a6a9c` |
 | `lib/medication-v4.js` | 18192 | `467f9576c50da696cc56094eb022d0a5ed1e88de0c7618448554ede8067270b0` |
 | `lib/medication-v5.js` | 18339 | `76e1f064ed9e7aea8862adbc6e05e88031e0a1e7dbbf38d82c6a7f42a5414ff1` |
-| `lib/meta.js` | 658526 | `e3c06a49f5b66ebfebf10e7f016946f9b0ea6c844c72da353c12dbf6b754cb8d` |
+| `lib/meta.js` | 660837 | `47c6565e75df6ae917370f977876090c6f7114042737107c4f0abe2601dd7bd8` |
 | `lib/num.js` | 2476 | `93934466539979571db7a6251b68b42acbc4a91101a988d72e3d2c3f7fb153bf` |
 | `lib/ops-v63.js` | 7082 | `9c07767f3517da717261f99d5edddc7d11e20f79692b53bcfc6c5eac3f8bd7ce` |
 | `lib/pa/classify.js` | 3432 | `a7958e40890ad63ebf68ce5a0107fe7ab5a5b0c9e877e2669e8f44ecfb7f34ca` |
@@ -99,8 +99,8 @@ downloads is committed in this repository and is hashed below.
 | `lib/workflow-v4.js` | 7999 | `927a8a476e2c1b124c9e51040e549001b580b0baf2a4409ce463a0681fd08a72` |
 | `views/group-a.js` | 577 | `eed37c656d1fa00c097a07f07db4b1b6ac7a0a74bafc210978265a1d90856bd7` |
 | `views/group-c.js` | 6991 | `7f4dfe12abfa318962d44ffc659213c83d9fe726d1ce16dd0a7f3f5a4e5e2cc7` |
-| `views/group-e.js` | 34367 | `a25b1781e962ad8bddb9203feca37b442ad3db0e0e9639ac506b3704aada65dd` |
-| `views/group-f.js` | 42883 | `4b5db7c4b05483398c680db9ebf69a38fef8b9c41e29fedd1644c25594bd35bd` |
+| `views/group-e.js` | 38675 | `1b2820544f5dd85ba9598b52d1d2398511f07970a35903dafdf530778ca2efb9` |
+| `views/group-f.js` | 45717 | `0b79ad6ef32daee0c7b180d842892a9168405c7eeef12bf82f2980edecbf587c` |
 | `views/group-g.js` | 234073 | `19e623b53ac3499e173bce3974d326f94194d2b806ffdf2d18266fa7cf7c899d` |
 | `views/group-h.js` | 28477 | `f9a8dc4ddbf7987b39a6bb88908d3523599eddaca1d6fcde22dbd847b4594b14` |
 | `views/group-i.js` | 27209 | `5f0f28ebc7ea938bf6279d2d31bee2aaad286f5858c94187073f28edf0233b22` |
