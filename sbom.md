@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `82f038e504ece2e9`
-Generated: 2026-06-10T01:56:55.065Z
+Build ID: `89fe8e5b1a2d1209`
+Generated: 2026-06-10T02:49:58.389Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=20.18.1 <21, npm >=10.0.0
@@ -52,6 +52,7 @@ downloads is committed in this repository and is hashed below.
 | `lib/clipboard.js` | 2907 | `951c41df24f58df747734474d383d6f75f52d22d2c4d0a370ef5bfb269a15147` |
 | `lib/coding-v5.js` | 6582 | `80c3a2bc258f35b5f70e68ee5e2b8d8d336359bc15e032d0420da4f9f9a710f7` |
 | `lib/data.js` | 2448 | `58e3f307653fe83b2a86332e23b71ff2c53ca45a44228ebacf0c4d5ca5a790f9` |
+| `lib/deadline.js` | 7266 | `f96d5aadad7fbd7d7924090b85150da7813c79affb1b0520d0328d6cfd3fa3ac` |
 | `lib/derivation.js` | 6390 | `eb93d90e4c26bc1ee2d6ae3b6736992a737530cc07c1a88dd7135c37923c4a40` |
 | `lib/dom.js` | 984 | `b4b4ac74decb848bde516bfc1773e6c45a8d80031ed8f9d14226393d18fcde54` |
 | `lib/field-units.js` | 3401 | `5d94f2fe3744cf1090b50a7f8012124f5575c6cfcb12c7eac3d99c6b67f71811` |
@@ -82,7 +83,7 @@ downloads is committed in this repository and is hashed below.
 | `lib/pa/staleness.js` | 9310 | `99249cde34d35bb57ea644fced966019d1373b34f792f1ea9b42b586b94454df` |
 | `lib/print.js` | 2588 | `74579a71f82b75993dea9f7d9b3c21e67744bd4dbe6f50e20c8eef9aa1be7546` |
 | `lib/prompt.js` | 6872 | `95ee9b9de5adbafd1497f378993e27d29c9f437bfc9ddc304886fd75e80fffd4` |
-| `lib/regulatory.js` | 4040 | `9e1ef6751facc0172c492010ccd35982061f06b000db2e857a98ec2013e7087c` |
+| `lib/regulatory.js` | 3603 | `9ea04461a41c8767fb8b1eabd567f9b9d2743f3a48bfc5460c978b759ac47b7f` |
 | `lib/result-copy.js` | 1745 | `0389d38cabd3d8adca91096d93e663a5e446f3062f6282d0fb7e77f5a0ffad93` |
 | `lib/scoring-v4.js` | 225997 | `441afea2316073d2c709b723c1d9e90b706f323cf805825a6595831d231d11e5` |
 | `lib/scoring-v5.js` | 13048 | `3fabc60daa3144ffbb37e6016de326a427649ca545b9bd32a9ee2fb2c7126b60` |
