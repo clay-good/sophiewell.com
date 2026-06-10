@@ -207,6 +207,23 @@ test('abgInterpret: pH 7.50 PaCO2 28 HCO3 24 -> respiratory alkalosis', () => {
   const r = C.abgInterpret({ pH: 7.50, paco2: 28, hco3: 24 });
   assert.match(r.primary, /Respiratory alkalosis/);
 });
+// spec-v66: respiratory primaries now predict the expected HCO3 (Boston rules).
+test('abgInterpret: respiratory acidosis predicts acute/chronic HCO3 (Boston rules)', () => {
+  // PaCO2 60: acute HCO3 = 24 + 0.1*(60-40) = 26; chronic = 24 + 0.35*20 = 31.
+  const r = C.abgInterpret({ pH: 7.25, paco2: 60, hco3: 26 });
+  assert.match(r.primary, /Respiratory acidosis/);
+  assert.match(r.compensation, /Boston rules/);
+  assert.match(r.compensation, /26/);
+  assert.match(r.compensation, /31/);
+});
+test('abgInterpret: respiratory alkalosis predicts acute/chronic HCO3 (Boston rules)', () => {
+  // PaCO2 28: acute HCO3 = 24 + 0.2*(28-40) = 21.6; chronic = 24 + 0.4*(-12) = 19.2.
+  const r = C.abgInterpret({ pH: 7.52, paco2: 28, hco3: 22 });
+  assert.match(r.primary, /Respiratory alkalosis/);
+  assert.match(r.compensation, /Boston rules/);
+  assert.match(r.compensation, /21\.6/);
+  assert.match(r.compensation, /19\.2/);
+});
 test('abgInterpret: with PaO2/FiO2 reports A-a and PF', () => {
   const r = C.abgInterpret({ pH: 7.40, paco2: 40, hco3: 24, pao2: 90, fio2: 0.21 });
   assert.ok(Number.isFinite(r.aaGradient));

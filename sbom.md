@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `3944e60c95f2bd56`
-Generated: 2026-06-10T16:00:42.591Z
+Build ID: `733fc24f2186a6e8`
+Generated: 2026-06-10T17:22:38.929Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=20.18.1 <21, npm >=10.0.0
@@ -48,7 +48,7 @@ downloads is committed in this repository and is hashed below.
 | `lib/clinical-v6.js` | 15465 | `e70291e35cbce6cebe2bb660f0f0670f6174534a53a7da541e5c1e341d28878b` |
 | `lib/clinical-v7.js` | 17865 | `e3ce3b434ff443c8ebbf7428384cb9d995eeb6ac2b96b49136405f2d85dccc73` |
 | `lib/clinical-v8.js` | 17487 | `1620bb22277f42f6ae3f0e59f3f3042f9c577920c9ee0a5730a7907aec7252a7` |
-| `lib/clinical.js` | 15290 | `ccc5d9cf8e459507e40305dc10c1b6a361a0eced2cb4ee8d0a0dcc10e785ad60` |
+| `lib/clinical.js` | 16372 | `817e2bdffe1b58b64ac9cdc13eec076d25f4effa7424a91cf86845949bf22888` |
 | `lib/clipboard.js` | 2907 | `951c41df24f58df747734474d383d6f75f52d22d2c4d0a370ef5bfb269a15147` |
 | `lib/coding-v5.js` | 12119 | `9dd3bbc7e833f65a612386b9a9474bff60d822d7cb7bc2e8f6b5ce48456a8ef1` |
 | `lib/data.js` | 2448 | `58e3f307653fe83b2a86332e23b71ff2c53ca45a44228ebacf0c4d5ca5a790f9` |
@@ -65,7 +65,7 @@ downloads is committed in this repository and is hashed below.
 | `lib/live.js` | 1138 | `304978d3c170b6eb06cade7702e5f99d868e9b3e1f5651aa9a28da15e62a6a9c` |
 | `lib/medication-v4.js` | 18192 | `467f9576c50da696cc56094eb022d0a5ed1e88de0c7618448554ede8067270b0` |
 | `lib/medication-v5.js` | 18339 | `76e1f064ed9e7aea8862adbc6e05e88031e0a1e7dbbf38d82c6a7f42a5414ff1` |
-| `lib/meta.js` | 660837 | `47c6565e75df6ae917370f977876090c6f7114042737107c4f0abe2601dd7bd8` |
+| `lib/meta.js` | 660940 | `efdcc2779fb903781d97cc06f2edaaadd759371d62151e749dcd2ccbf9d662bf` |
 | `lib/num.js` | 2476 | `93934466539979571db7a6251b68b42acbc4a91101a988d72e3d2c3f7fb153bf` |
 | `lib/ops-v63.js` | 7082 | `9c07767f3517da717261f99d5edddc7d11e20f79692b53bcfc6c5eac3f8bd7ce` |
 | `lib/pa/classify.js` | 3432 | `a7958e40890ad63ebf68ce5a0107fe7ab5a5b0c9e877e2669e8f44ecfb7f34ca` |

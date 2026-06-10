@@ -56,9 +56,13 @@ to 334. spec-v65 then adds three bedside-physiology tiles a nurse still does
 on scratch paper — `o2-cylinder-duration` (the oxygen-tank time-to-empty that
 gates every transport), `minute-ventilation` (V̇E and the target-PaCO2 rate
 adjustment), and `cerebral-perfusion-pressure` (CPP = MAP − ICP, the governed
-neuro-ICU number) — taking the catalog to 337. See [docs/spec-v62.md](docs/spec-v62.md),
-[docs/spec-v63.md](docs/spec-v63.md), [docs/spec-v64.md](docs/spec-v64.md), and
-[docs/spec-v65.md](docs/spec-v65.md).)
+neuro-ICU number) — taking the catalog to 337. spec-v66 then completes the `abg`
+interpreter's compensation analysis with **zero new tiles**: the respiratory
+primaries now carry the Boston-rules expected-HCO₃ bands (acute and chronic), so
+the tool flags a superimposed metabolic process for every primary disorder, not
+just the metabolic two. See [docs/spec-v62.md](docs/spec-v62.md),
+[docs/spec-v63.md](docs/spec-v63.md), [docs/spec-v64.md](docs/spec-v64.md),
+[docs/spec-v65.md](docs/spec-v65.md), and [docs/spec-v66.md](docs/spec-v66.md).)
 The new `pa-lint` tile in spec-v52 consumes
 dropped files instead of form fields and produces a
 deterministic findings report, the first instance of the

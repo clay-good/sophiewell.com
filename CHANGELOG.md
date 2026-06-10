@@ -6,6 +6,29 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Changed (spec-v66 — complete the `abg` compensation analysis; catalog unchanged at 337)
+
+The `abg` acid-base interpreter (`lib/clinical.js` `abgInterpret()`) already
+predicted the expected **PaCO₂** for metabolic primaries (Winter's formula for
+metabolic acidosis; the 0.7 rule for metabolic alkalosis) but predicted **no
+expected HCO₃** for the respiratory primaries — it labeled a respiratory
+acidosis/alkalosis and stopped, so the user had no anchor to judge whether the
+metabolic side was compensating appropriately or a second process was present.
+
+- v66 adds the **Boston rules** expected-HCO₃ bands (acute and chronic) for both
+  respiratory primaries: respiratory acidosis HCO₃ = 24 + 0.10×(PaCO₂−40) acute /
+  24 + 0.35×(PaCO₂−40) chronic; respiratory alkalosis HCO₃ = 24 + 0.20×(PaCO₂−40)
+  acute / 24 + 0.40×(PaCO₂−40) chronic. The compensation line now also states the
+  reading rule (HCO₃ above the chronic value → added metabolic alkalosis; below
+  the acute value → added metabolic acidosis). Source: Narins RG, Emmett M.
+  *Medicine* (Baltimore) 1980;59(3):161-187, coefficients corroborated by Berend
+  K, et al. *N Engl J Med* 2014;371:1434-1445.
+- Additive only: the metabolic-primary outputs, the A-a gradient, and the P/F
+  ratio are byte-for-byte unchanged; the renderer already prints `compensation`
+  generically, so no view changed. No new tile (catalog stays 337), no new input,
+  no network call, no AI. +2 boundary unit tests; the `abg` spec-v11 audit log
+  re-run with respiratory worked examples; `lib/meta.js` citation extended.
+
 ### Added (spec-v65 — three bedside-physiology tiles; catalog 334 → 337)
 
 A render-tree and near-neighbor audit against the live catalog found three
