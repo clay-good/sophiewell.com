@@ -491,6 +491,7 @@ const UTILITIES = [
   { id: 'corrected-phenytoin',  name: 'Albumin-corrected phenytoin (Sheiner-Tozer)',      group: 'E', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'potassium-deficit',    name: 'Potassium deficit + replacement guidance',         group: 'F', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'magnesium-replacement', name: 'Magnesium repletion estimate',                    group: 'F', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'calcium-replacement',  name: 'Calcium replacement (gluconate / chloride + elemental Ca)', group: 'F', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'rhig-dose',            name: 'Rh immune globulin dose (fetomaternal hemorrhage)', group: 'N', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'peds-transfusion-volume', name: 'Pediatric / neonatal PRBC transfusion volume',  group: 'N', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'iv-osmolarity',        name: 'IV / PN osmolarity + central-line flag',           group: 'F', audiences: ['clinicians', 'educators'], clinical: true },

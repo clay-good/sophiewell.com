@@ -6,6 +6,31 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v64 — `calcium-replacement`; catalog 333 → 334)
+
+One bedside tile, closing the single electrolyte the K/Mg/Phos
+`electrolyte-replacement` ladder omits — and the one where the *form* of the
+salt is itself a documented, dangerous source of error.
+
+- **`calcium-replacement`** (Group F). `lib/clinical-v7.js` `calciumReplacement()`:
+  given a calcium salt (gluconate 10% / chloride 10%) and a dose in grams, it
+  returns the elemental calcium delivered (mg + mEq), the 10%-solution volume,
+  and the **equivalent dose of the other salt** for the same elemental calcium —
+  computing away the recurring "1 g gluconate vs 1 g chloride" confusion (chloride
+  carries ~273 mg/g vs gluconate ~93 mg/g of elemental calcium, ~3x). Adds the
+  standard adult dose for the chosen indication (hyperkalemia membrane
+  stabilization, symptomatic hypocalcemia, citrate toxicity) and the slow-push /
+  central-line / no-bicarbonate-or-phosphate / digoxin-caution notes.
+- Elemental-calcium content per USP / product labeling; hyperkalemia dosing per
+  AHA ACLS 2020 (Panchal, Circulation 2020;142:S366). The guideline-issuer
+  citation carries an `accessed` date and a `docs/citation-staleness.md` row,
+  guarded by `check-citations`.
+- Renderer in `views/group-v11.js`; product gated first (unknown → null,
+  fuzz-safe), dose validated via `lib/num.js`. Covered by the spec-v59 object-
+  aware fuzz harness on import. 5 unit tests (`test/unit/calcium-replacement.test.js`),
+  a spec-v11 audit log, and a META example. Catalog 333 → 334 across all 13
+  catalog-truth surfaces; `electrolyte-replacement` now links to it.
+
 ### Added (spec-v62 Part A4 wave 4 — final lab-toggle wave; A4 and spec-v62 Part A complete)
 
 The SI⇄conventional lab toggle reached the last lab-input fields that have a

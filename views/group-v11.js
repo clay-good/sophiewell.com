@@ -200,6 +200,38 @@ export const renderers = {
     estimateNote(root);
   },
 
+  // ----- 3.6b calcium-replacement ----------------------------------------
+  'calcium-replacement'(root) {
+    root.appendChild(selectField('Calcium product', 'cap-prod', [
+      { value: 'gluconate', text: 'Calcium gluconate 10%' },
+      { value: 'chloride', text: 'Calcium chloride 10%' },
+    ]));
+    root.appendChild(field('Dose (g of salt)', 'cap-dose', { placeholder: 'e.g. 1' }));
+    root.appendChild(selectField('Indication', 'cap-ind', [
+      { value: 'hyperkalemia', text: 'Hyperkalemia (membrane stabilization)' },
+      { value: 'hypocalcemia', text: 'Symptomatic hypocalcemia' },
+      { value: 'citrate', text: 'Citrate toxicity / massive transfusion' },
+    ]));
+    const o = out(); root.appendChild(o);
+    wire(['cap-prod', 'cap-dose', 'cap-ind'], () => safe(o, () => {
+      if (!(val('cap-dose') > 0)) { o.appendChild(el('p', { class: 'muted', text: 'Enter a dose in grams.' })); return; }
+      const r = C.calciumReplacement({
+        product: document.getElementById('cap-prod').value,
+        doseGrams: val('cap-dose'),
+        indication: document.getElementById('cap-ind').value,
+      });
+      if (!r) { o.appendChild(el('p', { class: 'muted', text: 'Choose a calcium product.' })); return; }
+      o.appendChild(list([
+        li(r.band),
+        li(`Elemental calcium delivered: ${fmt(r.elementalMg, { unit: 'mg' })} (${fmt(r.elementalMEq)} mEq).`),
+        li(`Equivalent dose: ${fmt(r.equivGrams)} g ${r.equivProduct} (${fmt(r.equivVolumeMl, { unit: 'mL' })}).`),
+        r.indicationText ? li(r.indicationText) : null,
+      ]));
+      note(o, r.note);
+    }));
+    estimateNote(root);
+  },
+
   // ----- 3.7 rhig-dose ---------------------------------------------------
   'rhig-dose'(root) {
     root.appendChild(field('Maternal blood volume (mL)', 'rh-bv', { placeholder: 'e.g. 5000' }));

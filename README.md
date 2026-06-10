@@ -5,7 +5,7 @@
 <h1 align="center">sophiewell.com</h1>
 
 <p align="center">
-  <strong>333 deterministic healthcare calculators tuned to the nurse on shift.</strong><br>
+  <strong>334 deterministic healthcare calculators tuned to the nurse on shift.</strong><br>
   Free forever. No servers, no accounts, no telemetry, no AI, no network call after first paint.
 </p>
 
@@ -36,7 +36,7 @@ output; "searchable lookup of static facts" does not qualify. See
 [docs/spec-v10.md](docs/spec-v10.md) for the audience and
 dependency-budget commitments and
 [docs/spec-v29.md](docs/spec-v29.md) for the nurse-first pivot
-and the v29 catalog ledger. At v63 close the catalog is 333
+and the v29 catalog ledger. At v64 close the catalog is 334
 deterministic tiles — every one of them computes from at least
 one user input. (v62 Part B closed the bedside expansion at 328;
 spec-v63 adds the ops-side counterpart — a shared regulatory-deadline
@@ -48,8 +48,12 @@ Part A then deepens the ops tiles themselves with **zero new tiles**:
 denial → next-step routing on the appeal cluster, rule-validated
 document generators (each checked against its CFR required-element
 checklist), the non-PA regulatory constants brought under the staleness
-ledger, and the ops related-tool workflow chain. See
-[docs/spec-v62.md](docs/spec-v62.md) and [docs/spec-v63.md](docs/spec-v63.md).)
+ledger, and the ops related-tool workflow chain. spec-v64 then adds
+`calcium-replacement` — the IV-calcium dose / elemental-calcium /
+gluconate↔chloride-equivalence calculator that closes the one electrolyte
+the K/Mg/Phos `electrolyte-replacement` ladder omits — taking the catalog
+to 334. See [docs/spec-v62.md](docs/spec-v62.md),
+[docs/spec-v63.md](docs/spec-v63.md), and [docs/spec-v64.md](docs/spec-v64.md).)
 The new `pa-lint` tile in spec-v52 consumes
 dropped files instead of form fields and produces a
 deterministic findings report, the first instance of the
@@ -102,7 +106,7 @@ production security headers. Any static file server will also work.
 ## How it works and how to use it
 
 Since the spec-v29 nurse-first prune the catalog has grown one
-reviewable spec at a time to **333** deterministic calculators
+reviewable spec at a time to **334** deterministic calculators
 (the full per-version history is in [CHANGELOG.md](CHANGELOG.md)
 and `docs/spec-v*.md`; the most recent bedside additions are
 summarized in the cheat sheets below). They organize across the
@@ -563,6 +567,30 @@ surfaces the regulatory **date or level** and cites the rule; it never decides
 whether a breach/overpayment occurred, whether an appeal will succeed, or whether
 a service is covered.
 
+### Calcium replacement: the salt the K/Mg/Phos ladder omits (spec-v64)
+
+The `electrolyte-replacement` ladder doses potassium, magnesium, and phosphate;
+calcium is the one electrolyte where the *form of the salt is itself the error*.
+Calcium gluconate 10% and calcium chloride 10% are **not interchangeable
+gram-for-gram** — and calcium is given in exactly the moments (hyperkalemia,
+symptomatic hypocalcemia, citrate toxicity, CCB overdose) where the wrong salt
+or an unnamed "1 g calcium" order is most costly. `calcium-replacement`
+(`lib/clinical-v7.js` `calciumReplacement()`) computes the confusion away:
+
+| Per 1 g of salt (10%) | Elemental Ca | mEq | Volume |
+|---|---|---|---|
+| Calcium **gluconate** | ~93 mg | 4.65 | 10 mL |
+| Calcium **chloride** | ~273 mg | 13.6 | 10 mL |
+
+So **1 g calcium chloride ≈ 2.94 g calcium gluconate** for the same elemental
+calcium (≈3×). Given a salt + dose, the tile returns the elemental calcium (mg +
+mEq), the volume, and the **equivalent dose of the other salt**, plus the
+standard adult dose for the indication and the precaution notes (slow IV push on
+a monitor; chloride is sclerosing — central line preferred; never in the same
+line as bicarbonate or phosphate; caution in digoxin toxicity). Dosing is
+anchored to AHA ACLS 2020; elemental content to USP / product labeling. It states
+the dose; it does not write the order. See [docs/spec-v64.md](docs/spec-v64.md).
+
 ## System design and architecture overview
 
 The application is one HTML file, one CSS file, one JavaScript module set,
@@ -587,7 +615,7 @@ long version, see [docs/architecture.md](docs/architecture.md).
  │  manifests (data/)            │  static │        ▼                     ▼             │
  │        │  scripts/build       │  files  │   lazy-load data shard   pure compute      │
  │        ▼                      │         │   (verified vs manifest)  (lib/*.js)       │
- │  dist/  (333 tool pages,      │         │        │                     │             │
+ │  dist/  (334 tool pages,      │         │        │                     │             │
  │  OG cards, sitemap, SBOM)     │         │        ▼                     ▼             │
  └───────────────────────────────┘         │   service worker cache    result + cite   │
                                             │   (keyed to build hash)                    │
@@ -607,7 +635,7 @@ session, and nothing to log.
 index.html          single-page shell (hero search, home grid, tile mount)
 styles.css          one stylesheet (responsive; no horizontal scroll — enforced catalog-wide at 320px in CI)
 app.js              router, filters, view wiring, the UTILITIES catalog
-                    (333 tiles — the single source of truth; zero runtime deps)
+                    (334 tiles — the single source of truth; zero runtime deps)
 sw.js               service worker — precache shell, cache shards by build hash
 theme.js            light/dark theme toggle (writes only sw-theme, allowlisted)
 lib/input-persist.js opt-in "remember my inputs" (off by default; numbers only)
@@ -624,7 +652,7 @@ scripts/            build-*, check-* (catalog-truth, output-safety, citations,
 docs/               specs (spec-v4 … spec-v61) + citation-staleness ledger +
                     architecture / threat-model / …
 test/               unit/ (node:test) · integration/ (Playwright) · fixtures/
-dist/               build output (333 tool pages, OG cards, sitemap, SBOM)
+dist/               build output (334 tool pages, OG cards, sitemap, SBOM)
 ```
 
 ### Provenance and citation integrity (spec-v54 design, spec-v60 completion)
@@ -633,10 +661,10 @@ A login-less, AI-free calculator earns trust only if the nurse can see, on the
 tile, exactly which published source produced the number — and tell whether that
 source is current. spec-v54 defined the invariants; spec-v60 built the machinery
 (the gate, the ledger, and the `citationAccessed` convention) and extended it
-across the full 333-tile catalog, pinning the last three unpinned "current
+across the full 334-tile catalog, pinning the last three unpinned "current
 edition" phrases and re-verifying every guideline tile against its latest known
 edition. Three invariants make that auditable, each enforced by the
-`check-citations.mjs` lint gate (in the `npm run lint` chain) over all 333 tiles:
+`check-citations.mjs` lint gate (in the `npm run lint` chain) over all 334 tiles:
 
 | Invariant | Rule | Enforcement |
 |---|---|---|
@@ -1093,7 +1121,7 @@ rules, not soft preferences.
 | `npm run build`          | Copy static files into `dist/` for deployment                     |
 | `npm test`               | Run the full test suite (unit, a11y, grep, data integrity)        |
 | `npm run test:unit`      | Run Node's built-in unit tests (3,045 tests)                      |
-| `npm run test:e2e`       | Build `dist/`, then run Playwright integration tests against real browsers — incl. a full-catalog 320px no-horizontal-scroll sweep over both the SPA routes and the 333 pre-rendered static tool pages, the hub/topic/commitments pages, and the citation-wrap pin |
+| `npm run test:e2e`       | Build `dist/`, then run Playwright integration tests against real browsers — incl. a full-catalog 320px no-horizontal-scroll sweep over both the SPA routes and the 334 pre-rendered static tool pages, the hub/topic/commitments pages, and the citation-wrap pin |
 | `npm run test:a11y`      | Run accessibility checks on every utility view                    |
 | `npm run lint`           | ESLint + the CI gate chain: grep-check, output-safety, citation-integrity, catalog-truth, commitments, PA staleness, PA audit |
 | `npm run data:refresh`   | Re-fetch and re-shard every public dataset                        |
