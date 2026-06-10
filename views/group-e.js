@@ -205,9 +205,13 @@ export const renderers = {
     root.appendChild(field('Age (years)', 'age'));
     root.appendChild(selectField('Sex', 'sex', [{ value: 'M', text: 'Male' }, { value: 'F', text: 'Female' }]));
     const o = out(); root.appendChild(o);
+    const deriv = renderDerivation(META.egfr);
+    if (deriv) root.appendChild(deriv);
     const run = () => safe(o, () => {
-      const v = C.egfrCkdEpi2021({ scr: num('scr'), age: num('age'), sex: document.getElementById('sex').value });
+      const inputs = { scr: num('scr'), age: num('age'), sex: document.getElementById('sex').value };
+      const v = C.egfrCkdEpi2021(inputs);
       o.appendChild(el('p', { text: `eGFR: ${v} mL/min/1.73 m^2 (CKD-EPI 2021 race-free)` }));
+      if (deriv) updateDerivationSteps(deriv, META.egfr, inputs);
     });
     ['scr', 'age', 'sex'].forEach((id) => document.getElementById(id).addEventListener('input', run));
   },

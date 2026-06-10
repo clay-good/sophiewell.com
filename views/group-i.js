@@ -8,6 +8,8 @@ import { pedsDose, cincinnatiStroke, fast, fieldTriage, startTriage, jumpStartTr
 import { fetchJson } from '../lib/data.js';
 import { hypothermiaRewarm, heatstrokeDecision } from '../lib/scoring-v4.js';
 import { resultRow } from '../lib/result-copy.js';
+import { META } from '../lib/meta.js';
+import { renderDerivation, updateDerivationSteps } from '../lib/derivation.js';
 
 function field(label, id, opts = {}) {
   const wrap = el('p');
@@ -287,11 +289,14 @@ export const renderers = {
     root.appendChild(field('Burn surface area (% TBSA)', 'bf-bsa', { placeholder: '20' }));
     root.appendChild(field('Hours since injury (optional, 0-8)', 'bf-h', { placeholder: '0' }));
     const o = out(); root.appendChild(o);
+    const deriv = renderDerivation(META['burn-fluid']);
+    if (deriv) root.appendChild(deriv);
     const run = () => safe(o, () => {
-      const r = burnFluid({
+      const inputs = {
         weightKg: nv('bf-w'), tbsaPercent: nv('bf-bsa'),
         hoursSinceInjury: document.getElementById('bf-h').value === '' ? undefined : nv('bf-h'),
-      });
+      };
+      const r = burnFluid(inputs);
       resultRow(o, [
         { text: 'Parkland (4 mL/kg/% TBSA over 24h)' },
         { label: 'Total 24h', value: r.parkland.total24h, units: 'mL' },
@@ -304,6 +309,7 @@ export const renderers = {
         { label: 'Subsequent 16h', value: r.brooke.remaining16h, units: 'mL' },
         r.brooke.remainingInFirst8h != null ? { label: 'Remaining for first 8h window', value: `${r.brooke.remainingInFirst8h} mL (${r.brooke.ratePerHourRemainingFirst8h} mL/hr)` } : null,
       ]);
+      if (deriv) updateDerivationSteps(deriv, META['burn-fluid'], inputs);
     });
     ['bf-w', 'bf-bsa', 'bf-h'].forEach((id) => document.getElementById(id).addEventListener('input', run));
   },

@@ -85,3 +85,55 @@ test('fena-feurea substituted: both fractions rendered; partial -> one line; non
   assert.match(subFe({ urineNa: 20, plasmaNa: 140, urineCr: 50, plasmaCr: 2.0 }), /^FENa = /);
   assert.equal(subFe({}), null);
 });
+
+// spec-v62 A5 wave 4 -------------------------------------------------------
+
+const subEg = META.egfr.derivation.substituted;
+
+test('egfr substituted: SCr 1.0, age 60, female -> 64.5 (matches the compute)', () => {
+  const s = subEg({ scr: 1.0, age: 60, sex: 'F' });
+  assert.match(s, /142 x min\(1\/0\.7, 1\)\^-0\.241/);
+  assert.match(s, /x 1\.012 \(female\) = 64\.5 mL\/min\/1\.73m\^2$/);
+});
+
+test('egfr substituted: male drops the female 1.012 factor -> 86.2', () => {
+  const s = subEg({ scr: 1.0, age: 60, sex: 'M' });
+  assert.match(s, /142 x min\(1\/0\.9, 1\)\^-0\.302/);
+  assert.doesNotMatch(s, /female/);
+  assert.match(s, /= 86\.2 mL\/min\/1\.73m\^2$/);
+});
+
+test('egfr substituted: missing/zero/invalid input -> null (no NaN leak)', () => {
+  assert.equal(subEg({ scr: 0, age: 60, sex: 'F' }), null);
+  assert.equal(subEg({ scr: 1.0, age: 60, sex: 'X' }), null);
+  assert.equal(subEg({ scr: NaN, age: 60, sex: 'F' }), null);
+  assert.equal(subEg({}), null);
+});
+
+const subDr = META['drip-rate'].derivation.substituted;
+
+test('drip-rate substituted: 1000 mL over 480 min, drop factor 15 -> 125 mL/hr, 31 gtts/min', () => {
+  const s = subDr({ volumeMl: 1000, durationMin: 480, dropFactor: 15 });
+  assert.match(s, /Rate = 1000 mL x 60 \/ 480 min = 125 mL\/hr/);
+  assert.match(s, /drops = 1000 x 15 \/ 480 = 31 gtts\/min$/);
+});
+
+test('drip-rate substituted: zero/missing duration -> null (no divide-by-zero leak)', () => {
+  assert.equal(subDr({ volumeMl: 1000, durationMin: 0, dropFactor: 15 }), null);
+  assert.equal(subDr({ volumeMl: 1000, dropFactor: 15 }), null);
+  assert.equal(subDr({}), null);
+});
+
+const subBf = META['burn-fluid'].derivation.substituted;
+
+test('burn-fluid substituted: 70 kg, 20% TBSA -> Parkland 5600, Brooke 2800', () => {
+  const s = subBf({ weightKg: 70, tbsaPercent: 20 });
+  assert.match(s, /Parkland = 4 mL x 70 kg x 20% = 5600 mL\/24h; first 8h = 2800 mL \(350 mL\/hr\), next 16h = 2800 mL/);
+  assert.match(s, /Modified Brooke = 2 mL x 70 kg x 20% = 2800 mL\/24h$/);
+});
+
+test('burn-fluid substituted: zero/missing input -> null', () => {
+  assert.equal(subBf({ weightKg: 0, tbsaPercent: 20 }), null);
+  assert.equal(subBf({ weightKg: 70 }), null);
+  assert.equal(subBf({}), null);
+});

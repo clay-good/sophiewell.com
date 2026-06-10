@@ -16,6 +16,8 @@ import {
 } from '../lib/scoring-v4.js';
 import { unitField, unitNum, WEIGHT_UNITS } from '../lib/field-units.js';
 import { resultRow } from '../lib/result-copy.js';
+import { META } from '../lib/meta.js';
+import { renderDerivation, updateDerivationSteps } from '../lib/derivation.js';
 
 function field(label, id, opts = {}) {
   const wrap = el('p');
@@ -46,12 +48,16 @@ export const renderers = {
     root.appendChild(field('Duration (minutes)', 't'));
     root.appendChild(field('Drop factor (gtts/mL, e.g. 15)', 'df'));
     const o = out(); root.appendChild(o);
+    const deriv = renderDerivation(META['drip-rate']);
+    if (deriv) root.appendChild(deriv);
     const run = () => safe(o, () => {
-      const r = C.dripRate({ volumeMl: nv('v'), durationMin: nv('t'), dropFactor: nv('df') });
+      const inputs = { volumeMl: nv('v'), durationMin: nv('t'), dropFactor: nv('df') };
+      const r = C.dripRate(inputs);
       resultRow(o, [
         { label: 'Rate', value: r.mlPerHr, units: 'mL/hr' },
         { label: 'Drops', value: r.gttsPerMin, units: 'gtts/min' },
       ]);
+      if (deriv) updateDerivationSteps(deriv, META['drip-rate'], inputs);
     });
     ['v', 't', 'df'].forEach((id) => document.getElementById(id).addEventListener('input', run));
   },

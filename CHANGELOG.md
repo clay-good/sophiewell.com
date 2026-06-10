@@ -6,6 +6,33 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v62 Part A5 wave 4 — substituted-formula derivation on `egfr`, `drip-rate`, `burn-fluid`)
+
+The final three named A5 formula tiles gain a full `derivation` block (formula /
+population / validity / source / units) plus a guarded `substituted(inputs)`,
+completing the Part A5 substituted-derivation rollout:
+
+- **`egfr`** (CKD-EPI 2021 race-free): `eGFR = 142 x min(1/0.7, 1)^-0.241 x
+  max(1/0.7, 1)^-1.200 x 0.9938^60 x 1.012 (female) = 64.5 mL/min/1.73m^2`; the
+  female `1.012` factor and the sex-specific `k`/`a` constants appear only for
+  the selected sex, and the displayed result is recomputed identically to
+  `egfrCkdEpi2021` (no drift between the line and the tile result).
+- **`drip-rate`**: `Rate = 1000 mL x 60 / 480 min = 125 mL/hr; drops = 1000 x 15
+  / 480 = 31 gtts/min` — both the pump (mL/hr) and gravity (gtts/min) paths.
+- **`burn-fluid`**: both formulas, `Parkland = 4 mL x 70 kg x 20% = 5600 mL/24h;
+  first 8h = 2800 mL (350 mL/hr), next 16h = 2800 mL` and `Modified Brooke = 2 mL
+  x 70 kg x 20% = 2800 mL/24h`.
+- All `substituted` functions return null on missing / non-finite / non-positive
+  inputs (no NaN / divide-by-zero leak past the render guard). `views/group-e.js`
+  (egfr), `views/group-f.js` (drip-rate, now imports `META` + the derivation
+  helpers), and `views/group-i.js` (burn-fluid, same) wire `renderDerivation` +
+  `updateDerivationSteps`; result rows are unchanged. Coverage in
+  `test/unit/derivation-substituted.test.js` (now 18 cases across 8 tiles).
+- **A5 is now complete**: `cockcroft-gault`, `corrected-sodium`, `aa-gradient`,
+  `osmolal-gap`, `winters`, `fena-feurea`, `egfr`, `drip-rate`, and `burn-fluid`
+  all carry the substituted "where did this number come from" line. See
+  [docs/spec-v62.md](docs/spec-v62.md).
+
 ### Added (spec-v62 Part A5 wave 3 — substituted-formula derivation on `osmolal-gap`, `winters`, `fena-feurea`)
 
 Three more formula tiles gain a full `derivation` block (formula / population /

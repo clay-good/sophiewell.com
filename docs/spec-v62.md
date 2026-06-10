@@ -45,8 +45,12 @@
 > gas equation) gained full derivation blocks + guarded substituted lines.
 > **A5 wave 3 (2026-06-09):** `osmolal-gap`, `winters`, and `fena-feurea`
 > (the last rendering both FENa and FEUrea) gained derivation blocks + guarded
-> substituted lines. A5 now covers six formula tiles; the remaining named ones
-> (eGFR CKD-EPI 2021, Parkland `burn-fluid`) follow. Original Part B/C wave delivered: 7 of 9
+> substituted lines. **A5 wave 4 (2026-06-10):** `egfr` (CKD-EPI 2021 race-free),
+> `drip-rate`, and Parkland `burn-fluid` gained derivation blocks + guarded
+> substituted lines (`group-f.js` and `group-i.js` now import `META` + the
+> derivation helpers); the egfr substituted line recomputes identically to
+> `egfrCkdEpi2021` so the line and the result never drift. **A5 is now complete**
+> across all nine named formula tiles. Original Part B/C wave delivered: 7 of 9
 > Part B tiles (`infusion-time-remaining`, `enteral-free-water`, `apap-24h-max`,
 > `icu-nutrition-target`, `vte-prophylaxis-dose`, `neonatal-feeding-volume`,
 > `oxytocin-titration`) in `lib/clinical-v8.js`, and both Part C conversions

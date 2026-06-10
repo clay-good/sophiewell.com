@@ -459,12 +459,26 @@ dosing-weight cap, idarucizumab 5 g, andexanet ANNEXA-4, protamine
 in the catalog, so the 320px no-horizontal-scroll sweep now has no `table-scroll`
 region left to guard on a clinical tile.
 
-Deferred to a later wave (documented honestly rather than shipped half-right):
-the two highest-risk Part B tiles — `norepi-equiv` (NE-equivalent
-vasopressin/angiotensin factors vary across the scoping reviews) and
-`neo-phototherapy` (AAP-2022 is a continuous risk-stratified nomogram) — and the
-Part A depth pass (trend/action/reverse-solve/lab-toggle/substituted-derivation
-metadata across existing tiles). See [docs/spec-v62.md](docs/spec-v62.md).
+**Part A depth pass — landed in waves on the existing tiles (no count change).**
+A1 (serial/trend mode, `lib/trend.js`) is wired onto the early-warning family
+(`news2`, `mews`, `pews`), the hemoglobin-drop tiles (`gbs`, `oakland`), and
+`sodium-correction`. A2 (the source-anchored "next step" action field,
+`META[id].actions`) is seeded on `kdigo-aki`, `ciwa`, and `cows`. A5 (the
+**substituted-formula derivation** — the published equation with the user's own
+numbers plugged in and the arithmetic carried through) is **complete** across all
+nine named formula tiles: `cockcroft-gault`, `corrected-sodium`, `aa-gradient`,
+`osmolal-gap`, `winters`, `fena-feurea`, `egfr`, `drip-rate`, and `burn-fluid`.
+Each substituted line is guarded at both the author layer (returns `null` on any
+missing / non-finite / non-positive input) and the render layer (refuses any
+string carrying a `NaN`/`Infinity`/`undefined` token), so a bad input can never
+reach the panel.
+
+Still deferred (documented honestly rather than shipped half-right): the two
+highest-risk Part B tiles — `norepi-equiv` (NE-equivalent vasopressin/angiotensin
+factors vary across the scoping reviews) and `neo-phototherapy` (AAP-2022 is a
+continuous risk-stratified nomogram) — and the remaining Part A capabilities (A3
+reverse-solve and A4 the full SI⇄conventional lab-toggle rollout). See
+[docs/spec-v62.md](docs/spec-v62.md).
 
 ## System design and architecture overview
 
