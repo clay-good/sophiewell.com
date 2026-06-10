@@ -9,6 +9,19 @@
 
 import { el, clear } from '../lib/dom.js';
 import * as Ops from '../lib/ops-v63.js';
+import { denialRoute } from '../lib/coding-v5.js';
+
+// Friendly labels for the tiles the OA2 denial routing points at, so the
+// "open next" link reads as a tool name rather than a bare id. Every id here is
+// a real catalog tile (pinned by the OA2 routing unit test).
+const TILE_LABELS = {
+  'appeal-letter': 'Appeal letter builder',
+  'pa-turnaround': 'PA decision-turnaround clock',
+  'pa-lint': 'Prior-auth packet linter',
+  'timely-filing': 'Timely-filing deadline',
+  'ndc-convert': 'NDC 10/11 converter',
+  roi: 'Release-of-information request',
+};
 
 function field(label, id, opts = {}) {
   const wrap = el('p');
@@ -59,6 +72,21 @@ export const renderers = {
   // ----- 3.1 appeal-deadline ------------------------------------------------
   'appeal-deadline'(root) {
     root.appendChild(el('p', { class: 'notice', text: 'Surfaces the Medicare appeal filing deadline and amount-in-controversy gate only. Confirm against the current rule; this is not legal advice and decides no appeal.' }));
+    // spec-v63 OA2: optional denial-reason routing. Pick the denial category you
+    // were given and the tile routes you: plain meaning -> appealable? -> the
+    // next step + which tool to open, each cited. Not a CARC/RARC index -- no
+    // code list is shipped; this is an input-driven decision only.
+    root.appendChild(selectField('Denial reason (optional -- routes your next step)', 'apd-denial', [
+      { value: '', text: '-- skip; I just need a level deadline --' },
+      { value: 'medical-necessity', text: 'Medical necessity / not reasonable and necessary' },
+      { value: 'non-covered', text: 'Non-covered / excluded service' },
+      { value: 'no-prior-auth', text: 'Prior authorization not on file' },
+      { value: 'coding-bundling', text: 'Coding / bundling edit (NCCI)' },
+      { value: 'timely-filing', text: 'Untimely filing (past the limit)' },
+      { value: 'duplicate', text: 'Duplicate claim/service' },
+      { value: 'cob', text: 'Coordination of benefits / other payer primary' },
+      { value: 'missing-info', text: 'Missing / invalid information' },
+    ]));
     root.appendChild(selectField('Level just completed', 'apd-level', [
       { value: 'initial', text: 'Initial determination' },
       { value: 'redetermination', text: 'Redetermination (MAC) -- level 1' },
@@ -68,8 +96,39 @@ export const renderers = {
     ]));
     root.appendChild(dateField('Decision / notice date', 'apd-date', '2026-01-15'));
     const o = out(); root.appendChild(o);
-    wire(['apd-level', 'apd-date'], () => safe(o, () => {
-      if (!str('apd-date')) { o.appendChild(el('p', { class: 'muted', text: 'Enter the decision/notice date.' })); return; }
+    wire(['apd-denial', 'apd-level', 'apd-date'], () => safe(o, () => {
+      // Denial routing block (renders only when a denial reason is chosen).
+      const route = denialRoute({ category: str('apd-denial') });
+      if (route) {
+        const items = [
+          li(`Meaning: ${route.meaning}`),
+          li(route.appealable
+            ? 'Appealable on the merits: yes.'
+            : 'Appealable on the merits: no -- this is an administrative/resubmission path, not a coverage appeal.',
+          route.appealable ? null : 'flag'),
+          li(`Next step: ${route.nextStep}`),
+        ];
+        // When appealable and a notice date is present, surface the level-1
+        // redetermination deadline through the OA1 engine.
+        if (route.appealable && route.appealStart && str('apd-date')) {
+          const rr = Ops.appealDeadline({ level: route.appealStart, decisionDate: str('apd-date') });
+          if (rr) items.push(li(`File the ${rr.nextLevel} by ${rr.deadline} (${rr.windowDays}-day window, ${rr.cfr}).`, rr.pastDue ? 'flag' : null));
+        }
+        items.push(li(`Governing rule: ${route.cfr}`, 'muted'));
+        const block = el('div', { class: 'denial-route' });
+        block.appendChild(el('p', { class: 'denial-route-header', text: `Denial routing -- ${route.label}` }));
+        block.appendChild(el('ul', {}, items.filter(Boolean)));
+        const target = TILE_LABELS[route.tile];
+        if (target) {
+          block.appendChild(el('p', { class: 'muted' }, [
+            document.createTextNode('Open next: '),
+            el('a', { class: 'related-link', href: `#${route.tile}`, text: target }),
+          ]));
+        }
+        o.appendChild(block);
+      }
+      // Level + date deadline block (always available).
+      if (!str('apd-date')) { o.appendChild(el('p', { class: 'muted', text: 'Enter the decision/notice date for the level deadline.' })); return; }
       const r = Ops.appealDeadline({ level: str('apd-level'), decisionDate: str('apd-date') });
       if (!r) { o.appendChild(el('p', { class: 'muted', text: 'Select a level.' })); return; }
       o.appendChild(el('ul', {}, [

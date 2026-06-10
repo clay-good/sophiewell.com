@@ -7,10 +7,10 @@ import { el, clear } from '../lib/dom.js';
 import { fmt } from '../lib/num.js';
 import * as V5 from '../lib/clinical-v5.js';
 import * as Code from '../lib/coding-v5.js';
-import { breachNotificationDeadlines } from '../lib/regulatory.js';
+import { breachNotificationDeadlines, lintGenerator } from '../lib/regulatory.js';
 import { META } from '../lib/meta.js';
 import { renderDerivation, updateDerivationSteps } from '../lib/derivation.js';
-import { renderPrintable } from '../lib/print.js';
+import { renderPrintable, renderCompleteness } from '../lib/print.js';
 import { resultRow } from '../lib/result-copy.js';
 import { correctionRate, trend } from '../lib/trend.js';
 import { unitField, unitNum, ALBUMIN_UNITS } from '../lib/field-units.js';
@@ -595,6 +595,15 @@ export const renderers = {
   'breach-clock'(root) {
     root.appendChild(field('Discovery date (YYYY-MM-DD)', 'd', { type: 'text', placeholder: '2026-03-15' }));
     root.appendChild(field('Affected individuals', 'n', { value: 1 }));
+    // spec-v63 OA3: optional 45 CFR 164.404(c)(1) notice-content completeness
+    // check. Tick each element your individual notice contains; unchecked
+    // elements render as flagged "missing" findings with their CFR anchor.
+    root.appendChild(el('p', { class: 'muted', text: 'Optional: confirm your individual breach notice carries each required content element (45 CFR 164.404(c)(1)).' }));
+    root.appendChild(checkField('Description of what happened (incl. breach + discovery dates)', 'bc-what'));
+    root.appendChild(checkField('Types of unsecured PHI involved', 'bc-types'));
+    root.appendChild(checkField('Steps individuals should take to protect themselves', 'bc-steps'));
+    root.appendChild(checkField('What the entity is doing to investigate / mitigate / protect', 'bc-mitigation'));
+    root.appendChild(checkField('Contact procedures (toll-free number, email, website, or address)', 'bc-contact'));
     const o = out(); root.appendChild(o);
     const run = () => safe(o, () => {
       const r = breachNotificationDeadlines({
@@ -612,7 +621,16 @@ export const renderers = {
       o.appendChild(el('h3', { text: 'Recipients' }));
       o.appendChild(recipients);
       o.appendChild(el('p', { class: 'muted', text: r.note }));
+      renderCompleteness(o, lintGenerator('breach-notice', {
+        what: bool('bc-what'), types: bool('bc-types'), steps: bool('bc-steps'),
+        mitigation: bool('bc-mitigation'), contact: bool('bc-contact'),
+      }));
     });
-    ['d', 'n'].forEach((id) => document.getElementById(id).addEventListener('input', run));
+    ['d', 'n', 'bc-what', 'bc-types', 'bc-steps', 'bc-mitigation', 'bc-contact']
+      .forEach((id) => {
+        const node = document.getElementById(id);
+        node.addEventListener('input', run);
+        node.addEventListener('change', run);
+      });
   },
 };

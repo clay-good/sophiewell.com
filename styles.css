@@ -1364,6 +1364,36 @@ main h1 {
 .tool-meta .related-link:hover,
 .tool-meta .related-link:focus-visible { color: var(--accent-pop); }
 
+/* spec-v63 OA2/OA3: ops denial-routing and generator completeness blocks.
+   Both render inside #q-results / a print region; they reuse the muted/border
+   palette so they read as structured guidance, not new chrome. A flagged line
+   (a past-due deadline, a non-appealable denial, a missing required element)
+   gets an amber left rule and a bold lead so it stands out at a glance. */
+.denial-route,
+.completeness {
+  margin: var(--space-3) 0 0;
+  padding: var(--space-2) var(--space-3);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--bg-tertiary);
+}
+.denial-route-header,
+.completeness-header {
+  margin: 0 0 var(--space-1);
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+.completeness-list { margin: var(--space-1) 0; padding-left: var(--space-3); }
+.completeness-status { font-weight: 600; }
+.completeness-ok { color: var(--text-secondary); }
+.completeness-missing { color: #b8860b; }
+#q-results li.flag,
+.denial-route li.flag {
+  border-left: 3px solid #c9a227;
+  padding-left: var(--space-2);
+  font-weight: 600;
+}
+
 /* Keyboard shortcut overlay (spec-v2 3.3) */
 #shortcut-overlay {
   position: fixed; inset: 0; background: rgba(0,0,0,0.65);

@@ -47,6 +47,23 @@ Each `sources[]` entry names one external authority, the rule ids it
 backs, its canonical URL, and the ISO date the maintainer last confirmed
 the URL resolves and the rule still reflects it.
 
+### Non-PA operations rule families (spec-v63 OA4)
+
+The ledger is no longer PA-only. spec-v63 OA4 extended it to the
+**operations** rule families: the dated regulatory constants behind the
+v63 ops calculators — the federal-holiday table (5 U.S.C. 6103), the
+Medicare appeal-level deadlines, the amount-in-controversy thresholds, the
+timely-filing one-year basis, the CMS-0057-F prior-authorization windows,
+the 2021 E/M edition, and the 60-day overpayment rule. These sources carry
+`ruleFamily: "ops-v63"` and an **empty `rules` array** — they anchor no
+`pa-lint` rule, so they are inert to the ledger↔ruleset orphan checks, but
+they are staleness-tracked exactly like every PA source: `check-pa-staleness`
+warns/fails on them past the same policy window. Verify them on the same
+monthly pass (open each `url`, confirm the constant is current, bump
+`lastVerified`). When the amount-in-controversy thresholds re-index each
+calendar year, that is a content change — update the constant in
+`lib/ops-v63.js` and bump the `ops-medicare-aic` row together.
+
 ## The monthly verification pass
 
 On the cadence in spec-v52 §1.3 (monthly payer-policy pulls):

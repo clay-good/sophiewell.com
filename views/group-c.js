@@ -9,7 +9,8 @@
 // remain per spec-v29 sec 10 open question 1.
 
 import { el } from '../lib/dom.js';
-import { renderPrintable } from '../lib/print.js';
+import { renderPrintable, renderCompleteness } from '../lib/print.js';
+import { lintGenerator } from '../lib/regulatory.js';
 
 function field(label, id, type = 'text', placeholder = '') {
   const wrap = el('p');
@@ -67,6 +68,15 @@ export const renderers = {
           ] },
         ],
       });
+      // spec-v63 OA3: completeness check against 42 CFR 405.944(b).
+      const filled = (id) => (document.getElementById(id).value || '').trim() !== '';
+      renderCompleteness(printRegion, lintGenerator('appeal-letter', {
+        name: filled('al-pt'),
+        memberId: filled('al-id'),
+        service: filled('al-svc') || filled('al-dos'),
+        reason: filled('al-reason'),
+        basis: filled('al-dx'),
+      }));
     });
   },
 
@@ -110,6 +120,15 @@ export const renderers = {
           ] },
         ],
       });
+      // spec-v63 OA3: completeness check against 45 CFR 164.524.
+      const filled = (id) => (document.getElementById(id).value || '').trim() !== '';
+      renderCompleteness(printRegion, lintGenerator('hipaa-roa', {
+        individual: filled('roa-pt') || filled('roa-dob'),
+        entity: filled('roa-fac'),
+        records: filled('roa-recs') || filled('roa-range'),
+        format: filled('roa-fmt'),
+        delivery: filled('roa-deliver'),
+      }));
     });
   },
 };

@@ -5,7 +5,8 @@
 import { el, clear } from '../lib/dom.js';
 import { fetchJson } from '../lib/data.js';
 import { selectQuestions, selectChecklist } from '../lib/keywords.js';
-import { renderPrintable } from '../lib/print.js';
+import { renderPrintable, renderCompleteness } from '../lib/print.js';
+import { lintGenerator } from '../lib/regulatory.js';
 import {
   buildHipaaAuthorization, buildROIRequest, buildDischargeInstructions,
   buildSpecialtyVisit, buildWalletCard,
@@ -154,6 +155,16 @@ export const renderers = {
       renderPrintable(region, buildHipaaAuthorization({
         patient: v('ha-pt'), plan: v('ha-plan'), info: v('ha-info'),
         recipient: v('ha-rcpt'), purpose: v('ha-purpose'), expiration: v('ha-exp'),
+      }));
+      // spec-v63 OA3: completeness check against 45 CFR 164.508(c).
+      const filled = (id) => (document.getElementById(id).value || '').trim() !== '';
+      renderCompleteness(region, lintGenerator('hipaa-auth', {
+        phi: filled('ha-info'),
+        discloser: filled('ha-plan'),
+        recipient: filled('ha-rcpt'),
+        purpose: filled('ha-purpose'),
+        expiration: filled('ha-exp'),
+        individual: filled('ha-pt'),
       }));
     });
   },

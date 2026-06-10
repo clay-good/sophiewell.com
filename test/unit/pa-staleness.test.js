@@ -128,6 +128,36 @@ test('the shipped ledger references only rule ids that ship in lib/pa/rules.js',
   assert.deepEqual(orphans, [], 'every ledger rule reference must name a shipped rule');
 });
 
+// spec-v63 OA4: the ledger now also tracks the non-PA ops rule families (the
+// dated regulatory constants behind the v63 ops calculators). They carry an
+// empty `rules` array (they anchor no pa-lint rule) but must still be
+// staleness-evaluated, and must not introduce any rule orphan.
+test('OA4: the ledger tracks the spec-v63 ops rule families without orphans', async () => {
+  const { readFile } = await import('node:fs/promises');
+  const { fileURLToPath } = await import('node:url');
+  const { dirname, join } = await import('node:path');
+  const { STARTER_RULES } = await import('../../lib/pa/rules.js');
+  const here = dirname(fileURLToPath(import.meta.url));
+  const ledger = JSON.parse(await readFile(join(here, '../../pa-staleness-ledger.json'), 'utf8'));
+
+  const ops = ledger.sources.filter((s) => s.ruleFamily === 'ops-v63');
+  // One source per dated constant family named in spec-v63 §5 (OA4).
+  assert.ok(ops.length >= 7, `expected >=7 ops-v63 ledger sources, found ${ops.length}`);
+  for (const s of ops) {
+    assert.deepEqual(s.rules, [], `${s.id}: an ops source anchors no pa-lint rule (empty rules array)`);
+    assert.match(s.lastVerified, /^\d{4}-\d{2}-\d{2}$/, `${s.id}: needs an ISO lastVerified date`);
+    assert.ok(s.url && s.label, `${s.id}: needs a url and label`);
+  }
+  // The ops additions introduce no rule orphan (empty rules arrays are inert).
+  const orphans = findLedgerRuleOrphans(ledger, new Set(STARTER_RULES.map((r) => r.id)));
+  assert.deepEqual(orphans, []);
+
+  // Each ops family is staleness-evaluated like any other source.
+  const ev = evaluateStaleness(ledger, '2026-06-10');
+  const evIds = new Set(ev.entries.map((e) => e.id));
+  for (const s of ops) assert.ok(evIds.has(s.id), `${s.id}: must be staleness-evaluated`);
+});
+
 // spec-v52 §4.5.6 (wave 52-6h): per-rule source metadata coverage. ----------
 
 test('findRuleSourceOrphans returns empty when every rule source is a known ledger id', () => {

@@ -1,6 +1,6 @@
 # spec-v63.md — Deepen the operations tools: a regulatory-deadline engine, denial→next-step routing, generator linting, inline rule provenance; +5 ops calculators
 
-> Status: **OA1 + Part B shipped (2026-06-10); Part A OA2-OA5 deferred.**
+> Status: **COMPLETE — OA1 + Part B (2026-06-10) and Part A OA2-OA5 (2026-06-10) all shipped.**
 > The regulatory-deadline engine `lib/deadline.js` (OA1) shipped — calendar +
 > federal-business-day math over UTC-midnight dates with the 5 U.S.C. §6103
 > holiday set and weekend/year-boundary observance — and `breach-clock` was
@@ -8,16 +8,37 @@
 > (`appeal-deadline`, `timely-filing`, `em-mdm`, `pa-turnaround`,
 > `overpayment-60day`), each computing through the engine (or the AMA E/M grid),
 > taking the catalog **328 → 333**: compute in `lib/ops-v63.js`, renderers in
-> `views/group-v63.js`, 31 unit tests, fuzz-covered, each with a META example,
+> `views/group-v63.js`, unit tests, fuzz-covered, each with a META example,
 > a spec-v11 audit log, and the "regulatory date/level only — not legal advice"
 > note. The dated constants (appeal day-counts, CY2026 AIC, the 365-day
 > timely-filing basis, the CMS-0057-F windows, the E/M edition, the federal
-> holiday set) are cited inline with `accessed` dates. **Deferred to a later
-> wave:** the Part A depth pass — OA2 (denial→next-step routing), OA3 (generator
-> completeness linting), OA4 (extend `pa-staleness-ledger.json` and
-> `check-pa-staleness` to the non-PA ops rule families), and OA5 (the ops
-> `related` cluster + printable/paste-ready output). The original proposal
-> follows unchanged.
+> holiday set) are cited inline with `accessed` dates.
+>
+> **Part A depth pass now shipped (2026-06-10):**
+> - **OA2** — denial→next-step routing: `DENIAL_ROUTES` / `denialRoute()` in
+>   `lib/coding-v5.js` (8 input-driven denial categories → meaning, appealable?,
+>   next step, the tile to open next, each anchored to its 42 CFR Part 405 / 424
+>   / 411 / CMS-manual section), rendered as an optional denial-reason select on
+>   the `appeal-deadline` tile that computes the level-1 redetermination deadline
+>   through OA1 when appealable. No CARC/RARC index is shipped.
+> - **OA3** — generator completeness linting: `GENERATOR_ELEMENTS` /
+>   `lintGenerator()` in `lib/regulatory.js` carry the required-element
+>   checklists with CFR anchors for `hipaa-auth` (45 CFR 164.508(c)), `hipaa-roa`
+>   (45 CFR 164.524), `appeal-letter` (42 CFR 405.944(b)), and the breach notice
+>   (45 CFR 164.404(c)); `renderCompleteness()` in `lib/print.js` shows each
+>   element present/missing with its anchor on the four generators.
+> - **OA4** — `pa-staleness-ledger.json` extended to the non-PA ops rule families
+>   (`ruleFamily: "ops-v63"`, empty `rules` arrays): the federal-holiday table,
+>   appeal-level deadlines, AIC thresholds, the timely-filing basis, the
+>   CMS-0057-F windows, the 2021 E/M edition, and the 60-day overpayment rule are
+>   now staleness-tracked and guarded by `check-pa-staleness`.
+> - **OA5** — the ops `related` cluster (denial → `appeal-deadline` →
+>   `appeal-letter`; PA request → `pa-turnaround` → `pa-lint`; breach →
+>   `breach-clock` → notice content) is seeded in `RELATED_BACKFILL`; the
+>   generators already render `renderPrintable`'s paste-ready output with the
+>   "No data was sent or stored" footer.
+>
+> The original proposal follows unchanged.
 >
 > Originally proposed (2026-06-09). v63 is the operations-side
 > counterpart to [spec-v62](spec-v62.md): it deepens the

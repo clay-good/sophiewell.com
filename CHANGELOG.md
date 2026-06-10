@@ -41,10 +41,51 @@ ops calculators that the gap analysis flagged as missing.
   example-correctness sweep, a spec-v11 audit log, and a per-result "surfaces the
   regulatory date/level only; confirm against the current rule — not legal advice"
   note. Catalog 328 → 333 across all 13 catalog-truth surfaces.
-- Remaining v63 work (a later wave): the Part A depth pass OA2 (denial→next-step
-  routing), OA3 (generator completeness linting), OA4 (extend the staleness ledger
-  to the non-PA ops rule families — the dated constants are cited inline with
-  accessed dates today), and OA5 (the ops related-tool cluster + printable output).
+### Added (spec-v63 Part A — ops depth pass OA2-OA5, zero new tiles; v63 now complete)
+
+Part A deepens the existing ops tiles the way spec-v62 deepened the bedside tiles
+— it changes no current output, adding a shared decision/validation layer over the
+appeal, generator, and staleness infrastructure.
+
+- **OA2 — denial → next-step routing.** `DENIAL_ROUTES` / `denialRoute()` in
+  `lib/coding-v5.js` map eight plain-language denial categories (medical necessity,
+  non-covered, no-prior-auth, coding/bundling, timely-filing, duplicate, COB,
+  missing-info) to a computed next step: the meaning, whether it is appealable on
+  the merits, the action to take, and the catalog tile to open next — each line
+  anchored to its 42 CFR Part 405 / 424 / 411 or CMS-manual section. Rendered as an
+  optional denial-reason select on `appeal-deadline` (`views/group-v63.js`) that
+  computes the level-1 redetermination deadline through the OA1 engine when the
+  denial is appealable. It is an input-driven decision, **not** a browsable
+  CARC/RARC code index — no code list is shipped (the spec-v29 §3 retirement holds).
+- **OA3 — generator completeness linting.** `GENERATOR_ELEMENTS` /
+  `lintGenerator()` in `lib/regulatory.js` carry the required-element checklists,
+  each with its governing CFR anchor, for `hipaa-auth` (45 CFR 164.508(c)
+  authorization core elements), `hipaa-roa` (45 CFR 164.524 access-request
+  elements), `appeal-letter` (42 CFR 405.944(b) redetermination request elements),
+  and the breach notice (45 CFR 164.404(c) content). `renderCompleteness()` in
+  `lib/print.js` shows each element as present or MISSING with its anchor on all
+  four generators (`views/group-c.js`, `group-h.js`, `group-v5.js`) — turning a
+  document generator into a rule-validated one, reusing the v52 pa-lint linter
+  pattern at small scale.
+- **OA4 — non-PA ops rule families in the staleness ledger.** `pa-staleness-ledger.json`
+  now carries seven `ruleFamily: "ops-v63"` sources (empty `rules` arrays — they
+  anchor no pa-lint rule but are staleness-tracked): the federal-holiday table
+  (5 U.S.C. 6103), the Medicare appeal-level deadlines, the CY2026 amount-in-controversy
+  thresholds, the timely-filing one-year basis, the CMS-0057-F PA windows, the 2021
+  E/M edition, and the 60-day overpayment rule. `check-pa-staleness` now guards their
+  currency (60 sources tracked, 0 orphans); the bundled `lib/pa/staleness-ledger.js`
+  and the 46 golden pa-lint reports were regenerated.
+- **OA5 — ops related-tool cluster.** Seeded in `RELATED_BACKFILL` (`lib/meta.js`):
+  denial → `appeal-deadline` → `appeal-letter`; PA request → `pa-turnaround` →
+  `pa-lint`; breach → `breach-clock` → `overpayment-60day`; plus `em-mdm` ↔ `em-time`
+  and the HIPAA generators. Every generator already renders `renderPrintable`'s
+  paste-ready / printable output with the "No data was sent or stored" footer.
+- Coverage: new `test/unit/denial-route.test.js` (OA2 — every route resolves a real
+  tile, carries an anchor, appealable routes name a valid appeal level), OA3 cases
+  in `test/unit/regulatory.test.js` (each checklist element carries a CFR anchor;
+  missing/complete detection), an OA4 case in `test/unit/pa-staleness.test.js` (the
+  ops families are tracked without orphans), and the OA5 cluster assertion in
+  `test/unit/related-tools.test.js`.
 
 ### Added (spec-v62 Part B wave 2 — the two deferred tiles ship; Part B complete, catalog 326 → 328)
 

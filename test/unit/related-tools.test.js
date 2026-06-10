@@ -33,6 +33,16 @@ test('the related-tool seed clusters are present', () => {
   assert.ok(META['qsofa-sofa'].related.includes('news2'));
 });
 
+test('the spec-v63 OA5 ops related-tool cluster is present and resolves', () => {
+  // The ops workflow chain: denial -> appeal-deadline -> appeal-letter; PA
+  // request -> pa-turnaround -> pa-lint; breach -> breach-clock -> notice
+  // content. Pin the seed links so the ops rollout cannot silently regress.
+  assert.ok(META['appeal-deadline'].related.includes('appeal-letter'));
+  assert.ok(META['pa-turnaround'].related.includes('pa-lint'));
+  assert.ok(META['breach-clock'].related.includes('overpayment-60day'));
+  assert.ok(META['em-mdm'].related.includes('em-time'));
+});
+
 test('the spec-v61 A2 related-tool rollout reaches most of the catalog', () => {
   // A2 finished the related-tool linking pass: the RELATED_BACKFILL map in
   // lib/meta.js fills the clinical families on top of the inline v61 seeds.

@@ -10191,6 +10191,55 @@
           "url": "https://www.cms.gov/research-statistics-data-and-systems/monitoring-programs/medicare-ffs-compliance-programs/prior-authorization-and-pre-claim-review-initiatives/prior-authorization-certain-hospital-outpatient-department-opd-services",
           "ruleFamily": "cms-opd-pa",
           "lastVerified": "2026-06-05"
+        },
+        {
+          "id": "ops-fed-holidays",
+          "label": "Federal holidays (5 U.S.C. 6103) backing lib/deadline.js business-day deadline math (fixed + floating holidays, federal weekend observance)",
+          "url": "https://www.law.cornell.edu/uscode/text/5/6103",
+          "ruleFamily": "ops-v63",
+          "lastVerified": "2026-06-10"
+        },
+        {
+          "id": "ops-medicare-appeal-deadlines",
+          "label": "Medicare claim appeal-level filing deadlines (42 CFR Part 405 Subpart I: redetermination 120 d, QIC 180 d, ALJ/OMHA 60 d, Council 60 d, federal court 60 d) backing appeal-deadline and the OA2 denial routing",
+          "url": "https://www.ecfr.gov/current/title-42/part-405/subpart-I",
+          "ruleFamily": "ops-v63",
+          "lastVerified": "2026-06-10"
+        },
+        {
+          "id": "ops-medicare-aic",
+          "label": "Medicare appeal amount-in-controversy thresholds (CY2026: ALJ $200, federal court $1,960; annually indexed, Fed Reg 2025-21879) backing appeal-deadline",
+          "url": "https://www.federalregister.gov/documents/2025/11/01/2025-21879/",
+          "ruleFamily": "ops-v63",
+          "lastVerified": "2026-06-10"
+        },
+        {
+          "id": "ops-medicare-timely-filing",
+          "label": "Medicare claim timely-filing one-calendar-year basis (42 CFR 424.44; ACA 6404) backing timely-filing",
+          "url": "https://www.ecfr.gov/current/title-42/section-424.44",
+          "ruleFamily": "ops-v63",
+          "lastVerified": "2026-06-10"
+        },
+        {
+          "id": "ops-cms-0057f-pa-windows",
+          "label": "CMS Interoperability and Prior Authorization Final Rule (CMS-0057-F, 2024) decision windows (standard 7 calendar days, expedited 72 hours; effective 2026 for impacted payers) backing pa-turnaround",
+          "url": "https://www.federalregister.gov/documents/2024/02/08/2024-00895/",
+          "ruleFamily": "ops-v63",
+          "lastVerified": "2026-06-10"
+        },
+        {
+          "id": "ops-ama-em-2021",
+          "label": "AMA CPT 2021 office/outpatient E/M guidelines edition (2-of-3 Medical Decision Making grid; extended to other E/M settings 2023) backing em-mdm",
+          "url": "https://www.ama-assn.org/practice-management/cpt/cpt-evaluation-and-management",
+          "ruleFamily": "ops-v63",
+          "lastVerified": "2026-06-10"
+        },
+        {
+          "id": "ops-medicare-overpayment-60day",
+          "label": "Medicare 60-day overpayment report-and-return rule (42 CFR 401.305; ACA 6402(a) / 42 U.S.C. 1320a-7k(d)) backing overpayment-60day",
+          "url": "https://www.ecfr.gov/current/title-42/section-401.305",
+          "ruleFamily": "ops-v63",
+          "lastVerified": "2026-06-10"
         }
       ],
       "evaluated": null

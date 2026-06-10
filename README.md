@@ -43,7 +43,12 @@ spec-v63 adds the ops-side counterpart — a shared regulatory-deadline
 engine ([lib/deadline.js](lib/deadline.js)) and five ops calculators
 (Medicare appeal-level deadlines, claim timely-filing, the 2021 E/M
 Medical-Decision-Making level, the prior-authorization decision clock,
-and the 60-day overpayment clock) — taking the catalog to 333. See
+and the 60-day overpayment clock) — taking the catalog to 333. spec-v63
+Part A then deepens the ops tiles themselves with **zero new tiles**:
+denial → next-step routing on the appeal cluster, rule-validated
+document generators (each checked against its CFR required-element
+checklist), the non-PA regulatory constants brought under the staleness
+ledger, and the ops related-tool workflow chain. See
 [docs/spec-v62.md](docs/spec-v62.md) and [docs/spec-v63.md](docs/spec-v63.md).)
 The new `pa-lint` tile in spec-v52 consumes
 dropped files instead of form fields and produces a
@@ -498,12 +503,55 @@ where the inverse is single-valued, and the remaining named tiles do not qualify
 the Raschke step table, already aPTT-target-seeking; `vasopressor`/`conc-rate`
 already carry the dose⇄rate inverse).
 
-Still deferred (documented honestly rather than shipped half-right): the two
-highest-risk Part B tiles — `norepi-equiv` (NE-equivalent vasopressin/angiotensin
-factors vary across the scoping reviews) and `neo-phototherapy` (AAP-2022 is a
-continuous risk-stratified nomogram) — and the rest of the A4 lab-toggle rollout
-across the other groups (bilirubin on the hepatic tiles, lactate on the pediatric
-scores). See [docs/spec-v62.md](docs/spec-v62.md).
+Still deferred (documented honestly rather than shipped half-right): the rest of
+the A4 lab-toggle rollout across the other groups (bilirubin on the hepatic tiles,
+lactate on the pediatric scores). See [docs/spec-v62.md](docs/spec-v62.md).
+
+### Operations depth: deadlines, denial routing & document linting (spec-v63)
+
+The ops surface (billing, coding, regulatory, patient-admin) used to *state* a
+rule; it now *computes* the clock the rule sets, *routes* a denial, and
+*validates* the document against the rule's required elements. v63 has two parts:
+Part B added five ops calculators (above), and Part A is a **zero-tile depth
+pass** that deepens the existing ops tiles the same way spec-v62 deepened the
+bedside tiles.
+
+**The shared primitive — `lib/deadline.js` (OA1).** Before v63 the catalog could
+compute exactly one regulatory deadline (`breach-clock`) and had **no business-day
+or federal-holiday math at all**. `deadline()` is pure UTC-midnight arithmetic —
+no local-timezone drift — over calendar **or** federal business days:
+
+```
+deadline({ anchor, days, basis, now, rollForward })
+   anchor (ISO string | Date)                              now (pin "today")
+        │  parseIsoStrict — rejects 2026-13-40                  │
+        ▼  (calendar)            (business)                     ▼
+   addCalendarDaysUtc      addBusinessDaysUtc ── skip Sat/Sun + 5 U.S.C. 6103
+        │                        │   holidays (fixed + floating, federal
+        │   rollForward?         │   weekend observance, Dec-31 NYE edge)
+        ▼                        ▼
+   { deadline, daysElapsed, daysRemaining, pastDue, basis, anchor }
+```
+
+`breach-clock` was re-pointed onto the engine's date primitives, byte-identical
+(regression-pinned). Every Part B deadline tile and the OA2 routing run through
+this one audited path.
+
+| Capability | Where | What it does |
+|---|---|---|
+| **OA2** denial → next-step routing | `lib/coding-v5.js` `DENIAL_ROUTES`; `views/group-v63.js` | 8 plain-language denial categories → meaning, *appealable?*, the next step, and the tile to open next — each line cited (42 CFR 405/424/411, CMS manuals). Appealable denials compute the level-1 redetermination deadline via OA1. **Input-driven decision, not a CARC/RARC index** — no code list ships. |
+| **OA3** generator completeness linting | `lib/regulatory.js` `lintGenerator`; `lib/print.js` `renderCompleteness` | Each document generator is checked against its CFR required-element checklist; every element renders present / **MISSING** with its anchor. `hipaa-auth` → 45 CFR 164.508(c); `hipaa-roa` → 164.524; `appeal-letter` → 42 CFR 405.944(b); breach notice → 164.404(c). The v52 `pa-lint` linter pattern, at small scale. |
+| **OA4** inline provenance + freshness | `pa-staleness-ledger.json`; `scripts/check-pa-staleness.mjs` | The non-PA ops constants (federal holidays, appeal deadlines, AIC thresholds, timely-filing basis, CMS-0057-F windows, 2021 E/M edition, 60-day overpayment rule) are now staleness-tracked rows (`ruleFamily: "ops-v63"`, empty `rules`) guarded by the same CI gate as the PA ruleset. |
+| **OA5** workflow chaining | `lib/meta.js` `RELATED_BACKFILL` | The ops related-tool chain: denial → `appeal-deadline` → `appeal-letter`; PA → `pa-turnaround` → `pa-lint`; breach → `breach-clock` → `overpayment-60day`; `em-mdm` ↔ `em-time`. Every generator already emits paste-ready / printable output with the "No data was sent or stored" footer. |
+
+Design decision: OA2 and OA3 are **decisions and validations, not directories**.
+A denial category is an input the user already has (off their EOB); a completeness
+finding checks the user's own document. Neither ships anything browsable or
+searchable, so neither reopens the [spec-v29](docs/spec-v29.md) §3 code/payer-index
+retirement. And every ops output still carries the `regulatory.js` posture — it
+surfaces the regulatory **date or level** and cites the rule; it never decides
+whether a breach/overpayment occurred, whether an appeal will succeed, or whether
+a service is covered.
 
 ## System design and architecture overview
 
