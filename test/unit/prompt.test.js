@@ -132,3 +132,44 @@ test('withinOneEdit: two edits rejected', () => {
   assert.equal(_testing.withinOneEdit('cat', 'dog'), false);
   assert.equal(_testing.withinOneEdit('discharge', 'dscharg'), false);
 });
+
+// --- specialty tokens in ranking (spec-v11 §4.3) --------------------------
+// `META[id].specialties` (filled for every clinical tile by the meta.js
+// SPECIALTIES_BACKFILL) are tokenized into the search doc and weighted +1 per
+// matched token, the same as audiences and tags. They are tie-breakers / score
+// boosters, not primary routes: a single specialty match (+1) sits below the
+// ranker threshold (3), so a specialty term surfaces a tile only in combination
+// with a name/desc hit. This pins that contribution, which the fixture corpus
+// above (no specialties) did not exercise.
+
+test('rankTiles: a matching specialty token breaks a name-token tie', () => {
+  const { rankTiles } = _testing;
+  const tiles = [
+    { id: 'no-spec', name: 'Renal panel', desc: '' },
+    { id: 'with-spec', name: 'Renal panel', desc: '', specialties: ['nephrology'] },
+  ];
+  // "renal" alone ties both at +3 (token-in-name); the first listed wins.
+  assert.equal(rankTiles('renal', tiles, 'all').tileId, 'no-spec');
+  // adding the specialty term gives the tagged tile +1, overtaking the tie.
+  assert.equal(rankTiles('renal nephrology', tiles, 'all').tileId, 'with-spec');
+});
+
+test('rankTiles: a hyphenated specialty is tokenized (nursing-icu matches "icu")', () => {
+  const { rankTiles } = _testing;
+  const tiles = [
+    { id: 'no-spec', name: 'Drip rate', desc: '' },
+    { id: 'with-spec', name: 'Drip rate', desc: '', specialties: ['nursing-icu'] },
+  ];
+  // normalizePhrase splits the hyphen, so 'nursing-icu' tokenizes to
+  // ['nursing', 'icu']. "drip" ties both; adding "icu" matches only the tagged
+  // tile's tokenized specialty (+1), breaking the tie in its favor.
+  assert.equal(rankTiles('drip', tiles, 'all').tileId, 'no-spec');
+  assert.equal(rankTiles('drip icu', tiles, 'all').tileId, 'with-spec');
+});
+
+test('rankTiles: a specialty match alone stays below the surfacing threshold', () => {
+  const { rankTiles } = _testing;
+  const tiles = [{ id: 'a', name: 'Glomerular estimate', desc: '', specialties: ['nephrology'] }];
+  // "nephrology" matches only the specialty token (+1) < threshold (3) -> no route.
+  assert.equal(rankTiles('nephrology', tiles, 'all'), null);
+});

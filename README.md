@@ -657,6 +657,58 @@ test/               unit/ (node:test) · integration/ (Playwright) · fixtures/
 dist/               build output (334 tool pages, OG cards, sitemap, SBOM)
 ```
 
+### Discovery: how a query finds the right tool among 334
+
+With 334 tiles, search quality *is* the product — a tool you cannot find does
+not exist. Discovery is deterministic and offline (no fuzzy-match service, no
+embedding model, no AI): `resolvePrompt` ([lib/prompt.js](lib/prompt.js)) runs a
+typed query through three ordered passes and returns the single best tile id or
+`null`.
+
+```
+query ─► normalizePhrase (lowercase, strip punctuation, collapse spaces)
+          │
+          ▼
+   ① synonym table ── data/synonyms.json: hand-curated patient phrasing
+          │            ("they denied it" ► appeal-letter). Exact/substring,
+          │            audience-aware. Hit ► return {why:'synonym'}.
+          ▼ miss
+   ② token ranker ── rankTiles(): score every tile by the rubric below,
+          │            keep the best if it clears the threshold.
+          ▼ miss
+   ③ edit-distance retry ── re-run the synonym table allowing one typo
+                            (withinOneEdit) ► return {why:'synonym-edit-distance'}.
+```
+
+The ranker scores each tile against a transparent, unit-tested rubric
+(`RANKER_RUBRIC`); the highest score wins, and nothing surfaces below the
+threshold (so a weak partial match returns `null` rather than a wrong tool):
+
+| Signal | Weight | Where it comes from |
+|---|---|---|
+| Exact query phrase in the tile **name** | +10 | `name` |
+| Exact query phrase in the **description** | +5 | `desc` |
+| Per-token match in the **name** | +3 | tokenized `name` |
+| Per-token match in the **description** | +1 | tokenized `desc` |
+| Per-token match in an **audience / tag / specialty** | +1 | `audiences` + `tags` + `specialties` |
+| Audience-aligned with the active chip | +2 | the `#a=` audience filter |
+| Audience-misaligned | −2 | — |
+| **Surfacing threshold** | **3** | a result must score ≥ 3 |
+
+**Design decisions.** (1) Curated synonyms run *first* because patient phrasing
+("my labs are weird") rarely shares tokens with a clinical tile name
+(`lab-interpret`); the ranker handles the long tail of clinician/biller queries.
+(2) `specialties` and `tags` are weighted +1 — they are *boosters and
+tie-breakers*, not primary routes: a lone specialty hit (+1) sits below the
+threshold (3), so "nephrology" surfaces `egfr` only when it also matches the
+name/description, never on the tag alone. That keeps the specialty backfill
+(every clinical tile now carries specialty tags, via `SPECIALTIES_BACKFILL` in
+[lib/meta.js](lib/meta.js)) from flooding results with loose tag-only matches.
+(3) The whole
+path is pure and deterministic, so it is exhaustively unit-tested
+([test/unit/prompt.test.js](test/unit/prompt.test.js)) — including the audience
+alignment and the specialty tie-break — and adds no network call.
+
 ### Provenance and citation integrity (spec-v54 design, spec-v60 completion)
 
 A login-less, AI-free calculator earns trust only if the nurse can see, on the
