@@ -73,9 +73,23 @@
 > **A4 wave 2 (2026-06-10):** the albumin toggle extended to the remaining
 > albumin-input gap/ascites tiles — `anion-gap` and `anion-gap-dd` (optional
 > albumin, empty-check preserved) and `saag` (serum + ascites albumin, `group-v5.js`
-> now imports the shared helpers). The remaining lab-input fields across the other
-> groups (bilirubin on the hepatic tiles, Mg/phosphate on electrolyte-replacement,
-> lactate on the sepsis tiles) follow in later A4 waves.
+> now imports the shared helpers).
+> **A4 wave 4 (2026-06-10) — final wave, A4 COMPLETE:** the toggle reached the
+> last lab-input fields with a real consumer. Bilirubin (mg/dL⇄µmol/L, ×17.1)
+> on the hepatic and neonatal tiles — `meld-childpugh`, `maddrey-lille` (three
+> bilirubin fields), `bhutani-bilirubin`, `psofa` (`ps-bili`), and
+> `neo-phototherapy`; lactate (mmol/L⇄mg/dL) on `pelod2`; and ionised/total
+> calcium (mmol/L⇄mg/dL) on the three CRRT citrate fields (`crrt-dose`). Added
+> `bilirubin`/`lactate` to the `lib/unit-convert.js` LAB table and
+> `BILIRUBIN_UNITS`/`LACTATE_UNITS`/`CALCIUM_MMOL_UNITS` to `lib/field-units.js`
+> — the last two are **SI-canonical** (mmol/L is the compute unit, so the
+> default option is mmol/L and the alternate converts the conventional mg/dL
+> value up), the inverse layout of the conventional-canonical analytes.
+> `unitField` gained `opts.value` so the prefilled-default tiles (MELD,
+> Maddrey/Lille) keep byte-identical examples. Phosphate has no remaining
+> dedicated lab input (the only candidate, `electrolyte-replacement`, has a
+> polymorphic level field whose unit follows the K/Mg/phos selector — a fixed
+> toggle does not fit), so A4 is complete for every analyte with a real consumer.
 > **Part A3 wave 1 (2026-06-10):** the first reverse-solve safety item —
 > `sodium-correction` now surfaces a **ceiling-capped max-safe rate**
 > (`cappedRateMlPerHour`) whenever the requested target exceeds the acuity ceiling,

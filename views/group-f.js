@@ -14,7 +14,7 @@ import {
 import {
   insulinCorrection, electrolyteReplacement, crrtDose, ecmoTitration,
 } from '../lib/scoring-v4.js';
-import { unitField, unitNum, WEIGHT_UNITS } from '../lib/field-units.js';
+import { unitField, unitNum, WEIGHT_UNITS, CALCIUM_MMOL_UNITS } from '../lib/field-units.js';
 import { resultRow } from '../lib/result-copy.js';
 import { META } from '../lib/meta.js';
 import { renderDerivation, updateDerivationSteps } from '../lib/derivation.js';
@@ -662,9 +662,13 @@ export const renderers = {
       { value: 'CVVHDF', text: 'CVVHDF' },
     ]));
     root.appendChild(field('Ultrafiltration (mL/h, optional)', 'cr-uf'));
-    root.appendChild(field('Systemic ionised Ca (mmol/L, optional)', 'cr-sca'));
-    root.appendChild(field('Post-filter ionised Ca (mmol/L, optional)', 'cr-pca'));
-    root.appendChild(field('Total Ca (mmol/L, optional)', 'cr-tca'));
+    // spec-v62 A4 (final wave): ionised/total Ca SI toggle. mmol/L is the
+    // compute/canonical unit (Davenport 2009 targets are mmol/L), so mmol/L is
+    // the default option and the mg/dL alternate converts up via the calcium
+    // factor; empty stays 0 -> treated as not provided, identical to before.
+    root.appendChild(unitField('Systemic ionised Ca (optional)', 'cr-sca', CALCIUM_MMOL_UNITS));
+    root.appendChild(unitField('Post-filter ionised Ca (optional)', 'cr-pca', CALCIUM_MMOL_UNITS));
+    root.appendChild(unitField('Total Ca (optional)', 'cr-tca', CALCIUM_MMOL_UNITS));
     const o = out(); root.appendChild(o);
     const run = () => safe(o, () => {
       const r = crrtDose({
@@ -672,9 +676,9 @@ export const renderers = {
         effluentRateMlPerHr:   nv('cr-r'),
         modality:              document.getElementById('cr-mod').value,
         ultrafiltrationMlPerHr: nv('cr-uf'),
-        systemicIonisedCa:     nv('cr-sca'),
-        postFilterIonisedCa:   nv('cr-pca'),
-        totalCa:               nv('cr-tca'),
+        systemicIonisedCa:     unitNum('cr-sca'),
+        postFilterIonisedCa:   unitNum('cr-pca'),
+        totalCa:               unitNum('cr-tca'),
       });
       o.appendChild(el('h2', { text: `${r.effluentDoseMlPerKgPerHr} mL/kg/h` }));
       o.appendChild(el('p', { text: r.text }));
@@ -682,7 +686,7 @@ export const renderers = {
       for (const b of r.banners) o.appendChild(el('p', { class: 'clinical-notice', text: b }));
     });
     ['cr-w', 'cr-r', 'cr-uf', 'cr-sca', 'cr-pca', 'cr-tca'].forEach((id) => document.getElementById(id).addEventListener('input', run));
-    ['cr-mod', 'cr-w-unit'].forEach((id) => document.getElementById(id).addEventListener('change', run));
+    ['cr-mod', 'cr-w-unit', 'cr-sca-unit', 'cr-pca-unit', 'cr-tca-unit'].forEach((id) => document.getElementById(id).addEventListener('change', run));
   },
 
   // spec-v29 sec 4.18.1 wave 29-3c: ECMO sweep / flow titration.

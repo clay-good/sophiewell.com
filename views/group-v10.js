@@ -12,6 +12,7 @@ import * as S from '../lib/scoring-v6.js';
 import * as C8 from '../lib/clinical-v8.js';
 import { META } from '../lib/meta.js';
 import { renderDerivation, updateDerivationSteps } from '../lib/derivation.js';
+import { unitField, unitNum, BILIRUBIN_UNITS, LACTATE_UNITS } from '../lib/field-units.js';
 
 function field(label, id, opts = {}) {
   const wrap = el('p');
@@ -200,13 +201,13 @@ export const renderers = {
   // ----- 2.5 bhutani-bilirubin -------------------------------------------
   'bhutani-bilirubin'(root) {
     root.appendChild(field('Age (hours)', 'bb-hours', { placeholder: 'e.g. 48' }));
-    root.appendChild(field('Total serum bilirubin (mg/dL)', 'bb-tsb', { placeholder: 'e.g. 14' }));
+    root.appendChild(unitField('Total serum bilirubin', 'bb-tsb', BILIRUBIN_UNITS, { placeholder: 'e.g. 14' }));
     root.appendChild(field('Gestational age (weeks, 35-44)', 'bb-ga', { placeholder: 'e.g. 38' }));
     root.appendChild(checkField('Neurotoxicity risk factor(s) present', 'bb-risk'));
     const o = out(); root.appendChild(o);
-    wire(['bb-hours', 'bb-tsb', 'bb-ga', 'bb-risk'], () => safe(o, () => {
+    wire(['bb-hours', 'bb-tsb', 'bb-tsb-unit', 'bb-ga', 'bb-risk'], () => safe(o, () => {
       const r = S.bhutaniBilirubin({
-        ageHours: val('bb-hours'), tsb: val('bb-tsb'), gaWeeks: val('bb-ga'), riskFactors: chk('bb-risk'),
+        ageHours: val('bb-hours'), tsb: unitNum('bb-tsb'), gaWeeks: val('bb-ga'), riskFactors: chk('bb-risk'),
       });
       o.appendChild(list([
         li(`Bhutani zone: ${r.zone}`, r.abovePhoto ? 'warn' : null),
@@ -248,7 +249,7 @@ export const renderers = {
     root.appendChild(field('Age (months)', 'p2-age', { placeholder: 'e.g. 24' }));
     root.appendChild(field('Glasgow Coma Scale (3-15)', 'p2-gcs', { placeholder: 'e.g. 12' }));
     root.appendChild(checkField('Both pupils fixed', 'p2-pupils'));
-    root.appendChild(field('Lactate (mmol/L)', 'p2-lactate', { placeholder: 'e.g. 6' }));
+    root.appendChild(unitField('Lactate', 'p2-lactate', LACTATE_UNITS, { placeholder: 'e.g. 6' }));
     root.appendChild(field('Mean arterial pressure (mmHg)', 'p2-map', { placeholder: 'e.g. 50' }));
     root.appendChild(field('Creatinine (umol/L)', 'p2-creat', { placeholder: 'e.g. 60' }));
     root.appendChild(field('PaO2/FiO2 (mmHg)', 'p2-pf', { placeholder: 'e.g. 300' }));
@@ -259,10 +260,10 @@ export const renderers = {
     const o = out(); root.appendChild(o);
     const deriv = renderDerivation(META.pelod2);
     if (deriv) root.appendChild(deriv);
-    const ids = ['p2-age', 'p2-gcs', 'p2-pupils', 'p2-lactate', 'p2-map', 'p2-creat', 'p2-pf', 'p2-paco2', 'p2-vent', 'p2-wbc', 'p2-plt'];
+    const ids = ['p2-age', 'p2-gcs', 'p2-pupils', 'p2-lactate', 'p2-lactate-unit', 'p2-map', 'p2-creat', 'p2-pf', 'p2-paco2', 'p2-vent', 'p2-wbc', 'p2-plt'];
     wire(ids, () => safe(o, () => {
       const inputs = {
-        ageMonths: val('p2-age'), gcs: val('p2-gcs'), pupilsFixed: chk('p2-pupils'), lactate: val('p2-lactate'),
+        ageMonths: val('p2-age'), gcs: val('p2-gcs'), pupilsFixed: chk('p2-pupils'), lactate: unitNum('p2-lactate'),
         map: val('p2-map'), creatinine: val('p2-creat'), pao2fio2: val('p2-pf'), paco2: val('p2-paco2'),
         invasiveVent: chk('p2-vent'), wbc: val('p2-wbc'), platelets: val('p2-plt'),
       };
@@ -285,7 +286,7 @@ export const renderers = {
     root.appendChild(field('PaO2/FiO2 (mmHg)', 'ps-pf', { placeholder: 'e.g. 250' }));
     root.appendChild(checkField('Mechanically ventilated', 'ps-vent'));
     root.appendChild(field('Platelets (x10^3/uL)', 'ps-plt', { placeholder: 'e.g. 120' }));
-    root.appendChild(field('Bilirubin (mg/dL)', 'ps-bili', { placeholder: 'e.g. 1.5' }));
+    root.appendChild(unitField('Bilirubin', 'ps-bili', BILIRUBIN_UNITS, { placeholder: 'e.g. 1.5' }));
     root.appendChild(field('Mean arterial pressure (mmHg)', 'ps-map', { placeholder: 'e.g. 50' }));
     root.appendChild(rangeField('Vasoactive grade (0 none .. 4 high-dose)', 'ps-vaso', 0, 4));
     root.appendChild(field('Glasgow Coma Scale (3-15)', 'ps-gcs', { placeholder: 'e.g. 13' }));
@@ -293,11 +294,11 @@ export const renderers = {
     const o = out(); root.appendChild(o);
     const deriv = renderDerivation(META.psofa);
     if (deriv) root.appendChild(deriv);
-    const ids = ['ps-age', 'ps-pf', 'ps-vent', 'ps-plt', 'ps-bili', 'ps-map', 'ps-vaso', 'ps-gcs', 'ps-creat'];
+    const ids = ['ps-age', 'ps-pf', 'ps-vent', 'ps-plt', 'ps-bili', 'ps-bili-unit', 'ps-map', 'ps-vaso', 'ps-gcs', 'ps-creat'];
     wire(ids, () => safe(o, () => {
       const inputs = {
         ageMonths: val('ps-age'), pao2fio2: val('ps-pf'), vent: chk('ps-vent'), platelets: val('ps-plt'),
-        bilirubin: val('ps-bili'), map: val('ps-map'), vasoactive: val('ps-vaso'), gcs: val('ps-gcs'), creatinine: val('ps-creat'),
+        bilirubin: unitNum('ps-bili'), map: val('ps-map'), vasoactive: val('ps-vaso'), gcs: val('ps-gcs'), creatinine: val('ps-creat'),
       };
       const r = S.psofa(inputs);
       o.appendChild(list([
@@ -454,11 +455,11 @@ export const renderers = {
   'neo-phototherapy'(root) {
     root.appendChild(field('Gestational age (weeks, 35-44)', 'np-ga', { placeholder: 'e.g. 38' }));
     root.appendChild(field('Age (hours, 0-336)', 'np-hours', { placeholder: 'e.g. 48' }));
-    root.appendChild(field('Total serum bilirubin (mg/dL)', 'np-tsb', { placeholder: 'e.g. 18' }));
+    root.appendChild(unitField('Total serum bilirubin', 'np-tsb', BILIRUBIN_UNITS, { placeholder: 'e.g. 18' }));
     root.appendChild(checkField('Neurotoxicity risk factor(s) present', 'np-risk'));
     const o = out(); root.appendChild(o);
-    wire(['np-ga', 'np-hours', 'np-tsb', 'np-risk'], () => safe(o, () => {
-      const tsb = val('np-tsb');
+    wire(['np-ga', 'np-hours', 'np-tsb', 'np-tsb-unit', 'np-risk'], () => safe(o, () => {
+      const tsb = unitNum('np-tsb');
       const r = S.neoPhototherapy({
         gaWeeks: val('np-ga'), ageHours: val('np-hours'), tsb, riskFactors: chk('np-risk'),
       });

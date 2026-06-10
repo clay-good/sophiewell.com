@@ -487,9 +487,19 @@ calcium, and albumin toggles onto the Group E correction tiles (`corrected-calci
 `corrected-sodium`, `corrected-ca-na`, `osmolal-gap`); wave 2 extended the albumin
 toggle to the anion-gap and ascites tiles (`anion-gap`, `anion-gap-dd`, `saag`),
 preserving the optional-albumin empty-check; wave 3 added a magnesium
-(mg/dL ⇄ mmol/L) toggle to `magnesium-replacement`. The canonical conventional
-unit is always the default option, so every documented example and deep link stays
-byte-identical (the example-correctness e2e sweep proves it).
+(mg/dL ⇄ mmol/L) toggle to `magnesium-replacement`; and **wave 4 (the final
+wave) completed the rollout** — bilirubin (mg/dL ⇄ µmol/L) on the hepatic and
+neonatal tiles (`meld-childpugh`, `maddrey-lille`, `bhutani-bilirubin`,
+`psofa`, `neo-phototherapy`), lactate on `pelod2`, and ionised/total calcium on
+the three CRRT citrate fields (`crrt-dose`). The canonical compute unit is
+always the default option, so every documented example and deep link stays
+byte-identical (the example-correctness e2e sweep proves it). Lactate and the
+CRRT calcium fields are **SI-canonical** (mmol/L is the compute unit, so mmol/L
+is the default and the conventional mg/dL alternate converts up) — the inverse
+layout of the conventional-default analytes. A4 is now complete for every
+lab-input field with a real consumer; phosphate has none (its only candidate,
+`electrolyte-replacement`, carries a polymorphic level field whose unit follows
+the K/Mg/phosphate selector, so a fixed toggle does not fit).
 
 A3 (the **reverse-solve / target mode**) has shipped on both safety-critical
 sodium correction tiles: `sodium-correction` and `free-water-deficit` now compute
@@ -503,9 +513,9 @@ where the inverse is single-valued, and the remaining named tiles do not qualify
 the Raschke step table, already aPTT-target-seeking; `vasopressor`/`conc-rate`
 already carry the dose⇄rate inverse).
 
-Still deferred (documented honestly rather than shipped half-right): the rest of
-the A4 lab-toggle rollout across the other groups (bilirubin on the hepatic tiles,
-lactate on the pediatric scores). See [docs/spec-v62.md](docs/spec-v62.md).
+With wave 4 the A4 lab-toggle rollout is complete, and with it **spec-v62 Part A
+is fully shipped** (A1 trend, A2 action, A3 reverse-solve, A4 lab toggles, A5
+substituted derivation). See [docs/spec-v62.md](docs/spec-v62.md).
 
 ### Operations depth: deadlines, denial routing & document linting (spec-v63)
 

@@ -78,6 +78,36 @@ test('magnesium-replacement accepts serum Mg in mmol/L (toggle drives unitNum)',
   await expect(page.locator('#q-results')).toContainText('2-4');
 });
 
+// spec-v62 A4 (final wave): bilirubin (mg/dL<->umol/L), lactate and the CRRT
+// ionised/total Ca (mmol/L<->mg/dL) toggles.
+test('meld bilirubin in umol/L reproduces the mg/dL example (MELD-3.0 18)', async ({ page }) => {
+  await page.goto('/#meld-childpugh', { waitUntil: 'load' });
+  // The example auto-applies bilirubin 2.0 mg/dL (-> MELD-3.0 18). Entering the
+  // SI-equivalent 34.2 umol/L = 2.0 mg/dL via the toggle must reproduce it.
+  await page.locator('#m-bili-unit').selectOption('umol/L');
+  await page.fill('#m-bili', '34.2');
+  await expect(page.locator('#q-results')).toContainText('MELD-3.0: 18');
+});
+
+test('pelod2 lactate in mg/dL reproduces the mmol/L example (score 9)', async ({ page }) => {
+  await page.goto('/#pelod2', { waitUntil: 'load' });
+  // The example auto-applies lactate 6 mmol/L (-> PELOD-2 score 9). Entering the
+  // conventional-equivalent 54.05 mg/dL = 6.0 mmol/L via the toggle must reproduce it.
+  await page.locator('#p2-lactate-unit').selectOption('mg/dL');
+  await page.fill('#p2-lactate', '54.05');
+  await expect(page.locator('#q-results')).toContainText('PELOD-2 score: 9');
+});
+
+test('crrt ionised Ca in mg/dL matches the mmol/L banner threshold', async ({ page }) => {
+  await page.goto('/#crrt-dose', { waitUntil: 'load' });
+  // 6.0 mg/dL = 1.5 mmol/L systemic ionised Ca -> outside the 1.1-1.2 target banner.
+  await page.fill('#cr-w', '70');
+  await page.fill('#cr-r', '2000');
+  await page.locator('#cr-sca-unit').selectOption('mg/dL');
+  await page.fill('#cr-sca', '6.0');
+  await expect(page.locator('#q-results')).toContainText('1.5 mmol/L outside 1.1-1.2');
+});
+
 test('the unit-field pair does not overflow at 320px', async ({ page }) => {
   await page.setViewportSize({ width: 320, height: 720 });
   await page.goto('/#bmi', { waitUntil: 'load' });

@@ -8,6 +8,7 @@ import { META } from '../lib/meta.js';
 import { renderDerivation, updateDerivationSteps } from '../lib/derivation.js';
 import { fmt } from '../lib/num.js';
 import { trend } from '../lib/trend.js';
+import { unitField, unitNum, BILIRUBIN_UNITS } from '../lib/field-units.js';
 
 function rangeField(label, id, min, max, value) {
   const wrap = el('p');
@@ -553,8 +554,11 @@ export const renderers = {
 
   'meld-childpugh'(root) {
     root.appendChild(el('h3', { text: 'MELD-3.0' }));
+    // spec-v62 A4 (final wave): bilirubin SI toggle (mg/dL <-> umol/L). Default
+    // option is mg/dL with the prefilled 1.0, so the example stays identical.
+    root.appendChild(unitField('Bilirubin', 'm-bili', BILIRUBIN_UNITS, { value: 1.0 }));
     const numFields = [
-      ['Bilirubin (mg/dL)', 'm-bili', 1.0], ['INR', 'm-inr', 1.0],
+      ['INR', 'm-inr', 1.0],
       ['Creatinine (mg/dL)', 'm-cr', 1.0], ['Sodium (mEq/L)', 'm-na', 137],
       ['Albumin (g/dL)', 'm-alb', 3.5],
     ];
@@ -591,12 +595,12 @@ export const renderers = {
     if (deriv) root.appendChild(deriv);
     const run = () => safe(o, () => {
       const m = S4.meld30({
-        bilirubin: nv('m-bili'), inr: nv('m-inr'), creatinine: nv('m-cr'),
+        bilirubin: unitNum('m-bili'), inr: nv('m-inr'), creatinine: nv('m-cr'),
         sodium: nv('m-na'), albumin: nv('m-alb'),
         sex: document.getElementById('m-sex').value, hadDialysisTwiceLastWeek: checked('m-dial'),
       });
       const cp = S4.childPugh({
-        bilirubin: nv('m-bili'), albumin: nv('m-alb'), inr: nv('m-inr'),
+        bilirubin: unitNum('m-bili'), albumin: nv('m-alb'), inr: nv('m-inr'),
         ascites: document.getElementById('cp-asc').value,
         encephalopathy: document.getElementById('cp-enc').value,
       });
@@ -1468,7 +1472,6 @@ export const renderers = {
     const dfFields = [
       ['Patient PT (sec)', 'ml-pt', '20'],
       ['Control PT (sec)', 'ml-ctrl', '12'],
-      ['Bilirubin (mg/dL)', 'ml-bili', '10'],
     ];
     for (const [l, id, v] of dfFields) {
       root.appendChild(el('p', {}, [
@@ -1476,14 +1479,14 @@ export const renderers = {
         el('input', { id, type: 'number', step: 'any', value: String(v) }),
       ]));
     }
+    // spec-v62 A4 (final wave): bilirubin SI toggle on the three bilirubin
+    // fields; mg/dL default keeps the prefilled values and the example identical.
+    root.appendChild(unitField('Bilirubin', 'ml-bili', BILIRUBIN_UNITS, { value: 10 }));
     root.appendChild(el('h3', { text: 'Lille Model (Louvet 2007; interpret only after >= 7 days of steroids in a DF >= 32 patient)' }));
     const lilleFields = [
       ['Age (years)', 'ml-age', '50'],
       ['Albumin (g/dL)', 'ml-alb', '3.0'],
       ['Creatinine (mg/dL)', 'ml-cr', '0.9'],
-      ['Bilirubin day 0 (mg/dL)', 'ml-b0', '10'],
-      ['Bilirubin day 7 (mg/dL)', 'ml-b7', '6'],
-      ['Prothrombin time (sec)', 'ml-ptl', '20'],
     ];
     for (const [l, id, v] of lilleFields) {
       root.appendChild(el('p', {}, [
@@ -1491,12 +1494,18 @@ export const renderers = {
         el('input', { id, type: 'number', step: 'any', value: String(v) }),
       ]));
     }
+    root.appendChild(unitField('Bilirubin day 0', 'ml-b0', BILIRUBIN_UNITS, { value: 10 }));
+    root.appendChild(unitField('Bilirubin day 7', 'ml-b7', BILIRUBIN_UNITS, { value: 6 }));
+    root.appendChild(el('p', {}, [
+      el('label', { for: 'ml-ptl', text: 'Prothrombin time (sec)' }), el('br'),
+      el('input', { id: 'ml-ptl', type: 'number', step: 'any', value: '20' }),
+    ]));
     const o = out(); root.appendChild(o);
     const run = () => safe(o, () => {
       const df = S4.maddreyDf({
         patientPtSec: nv('ml-pt'),
         controlPtSec: nv('ml-ctrl'),
-        bilirubinMgDl: nv('ml-bili'),
+        bilirubinMgDl: unitNum('ml-bili'),
       });
       o.appendChild(el('h2', { text: `Maddrey DF: ${df.df.toFixed(1)}` }));
       o.appendChild(el('p', { text: df.band }));
@@ -1504,15 +1513,15 @@ export const renderers = {
         ageYears: nv('ml-age'),
         albuminGDl: nv('ml-alb'),
         creatinineMgDl: nv('ml-cr'),
-        bilirubinDay0MgDl: nv('ml-b0'),
-        bilirubinDay7MgDl: nv('ml-b7'),
+        bilirubinDay0MgDl: unitNum('ml-b0'),
+        bilirubinDay7MgDl: unitNum('ml-b7'),
         ptSec: nv('ml-ptl'),
       });
       o.appendChild(el('h2', { text: `Lille Model: ${li.score.toFixed(3)}` }));
       o.appendChild(el('p', { text: li.band }));
       o.appendChild(el('p', { class: 'muted', text: 'Lille is only interpretable in the context of corticosteroid therapy initiated for severe alcoholic hepatitis (Maddrey DF >= 32) per Louvet 2007.' }));
     });
-    document.querySelectorAll('input').forEach((n) => n.addEventListener('input', run));
+    document.querySelectorAll('input, select').forEach((n) => n.addEventListener(n.tagName === 'SELECT' ? 'change' : 'input', run));
     run();
   },
 

@@ -6,6 +6,35 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v62 Part A4 wave 4 — final lab-toggle wave; A4 and spec-v62 Part A complete)
+
+The SI⇄conventional lab toggle reached the last lab-input fields that have a
+real consumer, completing the A4 rollout (and with it all of spec-v62 Part A).
+No catalog count change; every example stays byte-identical (default option is
+the compute/canonical unit).
+
+- **Bilirubin (mg/dL ⇄ µmol/L, ×17.1)** on the hepatic and neonatal tiles:
+  `meld-childpugh`, `maddrey-lille` (all three bilirubin fields: DF, Lille day 0,
+  Lille day 7), `bhutani-bilirubin`, `psofa` (`ps-bili`), and `neo-phototherapy`.
+- **Lactate (mmol/L ⇄ mg/dL)** on `pelod2`, and **ionised/total calcium
+  (mmol/L ⇄ mg/dL)** on the three CRRT citrate fields (`crrt-dose`). These are
+  SI-canonical: mmol/L is the compute unit, so it is the default (identity)
+  option and the conventional mg/dL alternate converts up — the inverse layout
+  of the conventional-default analytes. Calcium reuses the existing `calcium`
+  LAB factor (elemental Ca: 1 mmol/L = 4 mg/dL).
+- `lib/unit-convert.js` gains the `bilirubin` and `lactate` LAB entries;
+  `lib/field-units.js` gains `BILIRUBIN_UNITS`, `LACTATE_UNITS`, and
+  `CALCIUM_MMOL_UNITS`. `unitField` gains `opts.value` so the prefilled-default
+  tiles (MELD, Maddrey/Lille) keep byte-identical examples.
+- Phosphate has no remaining dedicated lab input (its only candidate,
+  `electrolyte-replacement`, has a polymorphic level field whose unit follows
+  the K/Mg/phosphate selector, so a fixed toggle does not fit) — A4 is therefore
+  complete for every analyte with a real consumer.
+- Tests: bilirubin/lactate/calcium-array cases in `test/unit/unit-convert.test.js`;
+  three e2e parity cases in `test/integration/unit-toggle.spec.js` (MELD bilirubin
+  in µmol/L → MELD-3.0 18; PELOD-2 lactate in mg/dL → score 9; CRRT ionised Ca in
+  mg/dL → the 1.1-1.2 mmol/L banner).
+
 ### Added (spec-v63 OA1 + Part B — regulatory-deadline engine and the 5 ops calculators, catalog 328 → 333)
 
 The ops-side counterpart to spec-v62. The catalog could compute exactly one
