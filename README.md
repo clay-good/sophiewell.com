@@ -73,11 +73,16 @@ read the "below target" floor at the HF bound (0.5 ng/mL) for *both* indications
 so an AF rate-control level of 0.6–0.7 ng/mL rendered "within 0.8–2.0 ng/mL (rate
 control)" — contradicting its own printed target; the floor is now
 indication-aware (0.5 HF / 0.8 rate control), again with **zero new tiles**.
+spec-v70 then fixes the `sas-riker` (Riker Sedation-Agitation Scale) interpreter,
+which printed a light-sedation goal band of "SAS 3-4" but treated only SAS 4 as
+in-goal — so a SAS 3 (the lower edge of the band, and in-target on the paired
+`rass`) was told it was "deeper than goal; consider lightening sedation"; SAS 3
+now reads as in-goal, again with **zero new tiles**.
 See [docs/spec-v62.md](docs/spec-v62.md),
 [docs/spec-v63.md](docs/spec-v63.md), [docs/spec-v64.md](docs/spec-v64.md),
 [docs/spec-v65.md](docs/spec-v65.md), [docs/spec-v66.md](docs/spec-v66.md),
-[docs/spec-v67.md](docs/spec-v67.md), [docs/spec-v68.md](docs/spec-v68.md), and
-[docs/spec-v69.md](docs/spec-v69.md).)
+[docs/spec-v67.md](docs/spec-v67.md), [docs/spec-v68.md](docs/spec-v68.md),
+[docs/spec-v69.md](docs/spec-v69.md), and [docs/spec-v70.md](docs/spec-v70.md).)
 The new `pa-lint` tile in spec-v52 consumes
 dropped files instead of form fields and produces a
 deterministic findings report, the first instance of the
@@ -345,7 +350,7 @@ tile: the order stays with the clinician and the pharmacy.
 The wave also added **related-tool links** (`META[id].related`, rendered as a
 "Related tools" row in the citation block — e.g. `wells-pe` → `perc` / `pesi` /
 `years-pe`). The rollout is now complete: a single reviewable `RELATED_BACKFILL`
-map (spec-v61 A2) carries the linking across the catalog — **282 curated
+map (spec-v61 A2) carries the linking across the catalog — **285 curated
 sibling clusters**, grouped by clinical family — with every link verified in CI
 to resolve to a real tile and each list capped at four siblings so the row never
 crowds the result at 320px.
@@ -705,7 +710,7 @@ views/              per-group view renderers (group-*.js, pa-lint.js)
 data/               sharded public datasets + SHA-256 manifests (46 datasets)
 scripts/            build-*, check-* (catalog-truth, output-safety, citations,
                     commitments, PA staleness), audit-* — the CI gate chain
-docs/               specs (spec-v4 … spec-v68) + per-tile v11 audit logs +
+docs/               specs (spec-v4 … spec-v70) + per-tile v11 audit logs +
                     citation-staleness ledger +
                     architecture / threat-model / …
 test/               unit/ (node:test) · integration/ (Playwright) · fixtures/

@@ -6,6 +6,50 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Fixed (spec-v70 — `sas-riker` told an at-goal SAS 3 to "lighten sedation"; +0 catalog delta)
+
+The Riker Sedation-Agitation Scale interpreter prints a light-sedation goal band
+of "SAS 3-4" but enforced it as "SAS 4 only": the lone in-goal branch was
+`lv === 4`, so a **SAS 3** ("Sedated; awakens to verbal stimuli or gentle
+shaking" — the lower edge of the goal) fell through and rendered *"SAS 3: deeper
+than the … goal of SAS 3-4; consider lightening sedation,"* contradicting the
+band it named and prompting a nurse to lighten sedation on an at-goal patient.
+
+- `lib/scoring-v4.js` `sasRiker()`: add an `lv === 3` in-goal branch so the
+  function honors the 3-4 band it prints. The SAS 4, SAS ≥5, and SAS ≤2 strings
+  are byte-for-byte unchanged, so the goal's lower bound is now enforced at 2/3
+  (SAS 2 still reads "deeper than goal") rather than at 3/4. No new input, no new
+  tile, no new citation, no renderer change.
+- Two artifacts already encoded the intended behavior, confirming this was a bug:
+  the **paired `rass()`** accepts its whole −2-to-0 target band (lower edge
+  included), and this tile's own committed v11 audit documents "SAS 3 → still
+  within the goal band (3-4)." Root cause was a vacuous test: the existing SAS 3
+  test asserted only `/goal of SAS 3-4/`, which the contradictory "deeper than …
+  goal of SAS 3-4" string also matched. Strengthened to assert in-goal + a new
+  SAS 2 lower-bound test; `docs/audits/v11/sas-riker.md` re-audited to
+  PASS-WITH-FIXES. See [docs/spec-v70.md](docs/spec-v70.md).
+
+### Fixed (housekeeping — three stale count-claims and a stale spec range on live surfaces; no behavior change)
+
+A doc-accuracy sweep of live (non-frozen) surfaces found three drifted numbers
+and a stale spec range, each verified against the real artifact:
+
+- `README.md`: "282 curated sibling clusters" → **285** (tiles with related-tool
+  links: `Object.values(META).filter(m => m.related?.length).length`); repo-layout
+  note "specs (spec-v4 … spec-v68)" → "… spec-v70" (latest spec is now v70).
+- `docs/data-sources.md`: "the 121 tiles that have bespoke pre-rendered copy on
+  their `/tools/<id>/` page" → **122** (the count `build-tool-pages.mjs` reports
+  as "with hand-authored copy" — tiles whose id matches a `data/tool-copy/<id>.json`).
+  Reworded to count *rendered* copy, not raw files: there are 179 json files but
+  only 122 match a current tile; the other 57 are orphaned copy for renamed or
+  removed tile ids that the build silently skips (flagged for a future cleanup —
+  no tile, test, or manifest references them). The line carries a
+  `catalog-truth:historical` marker, which is why the count drifted undetected.
+
+(A fourth flagged item — the "254 tiles default to numeric" comment in
+`scripts/check-catalog-truth.mjs` — was verified to be a correct historical
+"at v52-1b close" snapshot, not current-state drift, and left unchanged.)
+
 ### Fixed (spec-v69 — `digoxin` rate-control subtherapeutic band contradicted its own printed target; +0 catalog delta)
 
 The `digoxin` level interpreter prints an indication-specific target —

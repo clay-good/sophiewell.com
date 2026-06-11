@@ -133,11 +133,15 @@ original content, MIT-licensed.
 
 `data/tool-copy/` carries the hand-authored lede + intro markdown
 <!-- catalog-truth:historical -->
-for the 121 tiles that have bespoke pre-rendered copy on their
-`/tools/<id>/` page (see `scripts/build-tool-pages.mjs`). Each
-file is project-author original content. The "121" here is the
-count of *hand-authored copy files*, not the catalog total — it
-grows independently as more per-tile prose is written.
+for the 122 tiles that have bespoke pre-rendered copy on their
+`/tools/<id>/` page (see `scripts/build-tool-pages.mjs`, which
+reports this as "N with hand-authored copy"). Each file is
+project-author original content. The "122" here is the count of
+tiles whose id matches a `data/tool-copy/<id>.json` and therefore
+renders that copy — not the catalog total. It grows independently
+as more per-tile prose is written. (The directory also holds a
+handful of orphaned copy files for renamed/removed tile ids; the
+build silently skips any file without a matching tile.)
 
 ## MPFS (vestigial; not consumed at runtime)
 
