@@ -6,6 +6,33 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Fixed (accessibility — two unlabeled form controls; + a catalog-wide accessible-name guard)
+
+A runtime sweep of all 337 rendered tile views (the dynamic-DOM analog of the
+static `a11y-check.mjs` `<label for>` scan, which can only see renderer source)
+found two views with form controls that had **no accessible name** — a
+screen-reader user would hear a bare "edit text" / "combo box" with no idea what
+to enter:
+
+- `opioid-mme` (`views/group-f.js`): the runtime-added medication rows built a
+  drug `<select>` and two number `<input>`s whose only hint was a `placeholder`
+  (not an accessible name — it vanishes on input and is not reliably announced).
+  Added `aria-label`s ("Opioid (row N)", "mg per dose (row N)", "Doses per day
+  (row N)"), keeping the placeholders as visual hints.
+- `pa-lint` (`views/pa-lint.js`): the offscreen multi-file `<input type="file">`
+  had no label. Added `aria-label` "Upload prior-authorization files (PDF, DOCX,
+  TXT, or image)".
+
+- Added a permanent regression guard in `test/integration/all-tools.spec.js`:
+  every form control in every tool view must have an accessible name (via
+  aria-label, aria-labelledby, an associated `<label>`, title, or a value-bearing
+  button/submit). chromium-only (DOM-driven, engine-agnostic), per-test skip so
+  the rest of the file still runs on every engine. The guard fails on the exact
+  two controls above before the fix, so it can never pass vacuously.
+- Corrected a stale comment in `scripts/a11y-check.mjs` that claimed "CI also
+  runs axe-core against the running page" — axe-core is not a dependency and was
+  never wired; the new runtime sweep is the actual complementary check.
+
 ### Fixed (mobile-no-hscroll e2e — restore cross-engine coverage + add a dark-theme guard)
 
 Found while visually auditing every view shape in both themes: the

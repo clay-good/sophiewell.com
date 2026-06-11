@@ -8,8 +8,11 @@
 //   - <img> without alt
 //   - empty <a> elements (links with no text content)
 //
-// CI also runs axe-core against the running page in test:a11y; this static
-// check catches structural drift before a browser is launched.
+// A complementary runtime sweep in test/integration/all-tools.spec.js asserts
+// every form control in every rendered tile view has an accessible name (the
+// dynamic-DOM cases this source-level scan cannot see); this static check
+// catches structural drift in index.html + renderer sources before a browser
+// is launched.
 
 import { readFile } from 'node:fs/promises';
 import { fileURLToPath } from 'node:url';

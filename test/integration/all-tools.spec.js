@@ -52,6 +52,43 @@ test('every tool route renders without console errors and shows an h1', async ({
   expect(failures, JSON.stringify(failures, null, 2)).toEqual([]);
 });
 
+// Accessibility: every form control in every rendered tile view must have an
+// accessible name, so a screen-reader user hears a label, not a bare "edit
+// text" / "combo box". The static a11y-check scans renderer SOURCE for
+// <label for>; this catches the dynamic-DOM cases it cannot see -- controls
+// built at runtime whose name comes from aria-label (the added MME rows, the
+// offscreen PA file picker). chromium-only: accessible-name computation is
+// DOM-driven and engine-agnostic, so one engine guards it cheaply (per-test
+// skip so the rest of this file still runs on every engine).
+test('every form control in every tool view has an accessible name', async ({ page, browserName }) => {
+  test.skip(browserName !== 'chromium', 'accessible-name sweep is chromium-only (DOM-driven, engine-agnostic)');
+  test.setTimeout(180_000);
+  const ids = await discoverIds(page);
+  const offenders = [];
+  for (const id of ids) {
+    await page.goto('/#' + id, { waitUntil: 'load' });
+    await page.waitForTimeout(40);
+    const bad = await page.evaluate(() => {
+      function named(el) {
+        const a = el.getAttribute('aria-label'); if (a && a.trim()) return true;
+        const lb = el.getAttribute('aria-labelledby');
+        if (lb && lb.split(/\s+/).some((r) => { const t = document.getElementById(r); return t && t.textContent.trim(); })) return true;
+        if (el.labels && [...el.labels].some((l) => l.textContent.trim())) return true;
+        const ti = el.getAttribute('title'); if (ti && ti.trim()) return true;
+        const ty = (el.getAttribute('type') || '').toLowerCase();
+        // hidden/submit/button inputs take their name from value, not a label.
+        if (el.tagName === 'INPUT' && (ty === 'hidden' || ty === 'submit' || ty === 'button') && (el.value || '').trim()) return true;
+        return false;
+      }
+      return [...document.querySelectorAll('main input, main select, main textarea, .content input, .content select, .content textarea')]
+        .filter((el) => !named(el))
+        .map((el) => `${el.tagName.toLowerCase()}#${el.id || '(noid)'}`);
+    });
+    if (bad.length) offenders.push(`${id}: ${bad.join(', ')}`);
+  }
+  expect(offenders, `form controls with no accessible name:\n${offenders.join('\n')}`).toEqual([]);
+});
+
 test('every tool route exposes a working back button to home', async ({ page }) => {
   test.setTimeout(120_000);
   const ids = await discoverIds(page);

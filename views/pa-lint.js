@@ -576,6 +576,7 @@ export const renderers = {
       id: 'pa-file-picker',
       multiple: 'multiple',
       accept: '.pdf,.docx,.txt,.jpg,.jpeg,.png',
+      'aria-label': 'Upload prior-authorization files (PDF, DOCX, TXT, or image)',
     });
     picker.style.position = 'absolute';
     picker.style.left = '-9999px';

@@ -435,10 +435,10 @@ export const renderers = {
     function addRow() {
       counter += 1;
       const id = `mme-row-${counter}`;
-      const drugSel = el('select', { id: `${id}-drug` });
+      const drugSel = el('select', { id: `${id}-drug`, 'aria-label': `Opioid (row ${counter})` });
       for (const f of factors) drugSel.appendChild(el('option', { value: f.drug, text: f.drug }));
-      const mg = el('input', { id: `${id}-mg`, type: 'number', step: 'any', placeholder: 'mg/dose' });
-      const n = el('input', { id: `${id}-n`, type: 'number', step: 'any', placeholder: 'doses/day' });
+      const mg = el('input', { id: `${id}-mg`, type: 'number', step: 'any', placeholder: 'mg/dose', 'aria-label': `mg per dose (row ${counter})` });
+      const n = el('input', { id: `${id}-n`, type: 'number', step: 'any', placeholder: 'doses/day', 'aria-label': `Doses per day (row ${counter})` });
       const rm = el('button', { type: 'button', text: 'Remove' });
       const row = el('p', { class: 'mme-row', id }, [drugSel, ' ', mg, ' ', n, ' ', rm]);
       rm.addEventListener('click', () => { row.remove(); run(); });
