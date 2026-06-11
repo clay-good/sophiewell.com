@@ -139,9 +139,11 @@ reports this as "N with hand-authored copy"). Each file is
 project-author original content. The "122" here is the count of
 tiles whose id matches a `data/tool-copy/<id>.json` and therefore
 renders that copy — not the catalog total. It grows independently
-as more per-tile prose is written. (The directory also holds a
-handful of orphaned copy files for renamed/removed tile ids; the
-build silently skips any file without a matching tile.)
+as more per-tile prose is written. Every file maps 1:1 to a
+current tile: `check-catalog-truth.mjs` fails CI if copy lingers
+for a tile removed in the v29 prune (`REMOVED_V29_IDS`), so the
+directory cannot re-accumulate the 57 orphaned files that the v29
+deletions had left behind.
 
 ## MPFS (vestigial; not consumed at runtime)
 

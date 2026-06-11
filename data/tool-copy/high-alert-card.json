@@ -1,4 +1,0 @@
-{
-  "whatThisIs": "Generate a printable, wallet-sized reference card listing the medication classes the Institute for Safe Medication Practices (ISMP) flags as high-alert in the ambulatory setting - insulins, oral anticoagulants, opioid analgesics, chemotherapy, immunosuppressants, sulfonylureas, and similar drugs whose error margin is small and whose harm-on-error is large. Sophie Well renders the identities and the standard caution language; ISMP's website remains the authoritative source.",
-  "whenToUse": "Use this when a patient or caregiver is being handed a new prescription in any of these classes, especially at transitions of care (hospital discharge, new diagnosis, polypharmacy review). The card is meant to live in a wallet or be stuck on the fridge so anyone who treats the patient in an emergency knows which medicines warrant extra confirmation. It is patient-literacy infrastructure, not a clinical alert system."
-}

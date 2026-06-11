@@ -8,10 +8,28 @@
 // Surfaces enumerated in docs/spec-v46.md §4. A drift on any of them fails CI
 // with a per-surface diff message.
 
-import { readFile } from 'node:fs/promises';
+import { readFile, readdir } from 'node:fs/promises';
 import { join } from 'node:path';
 
 const ROOT = process.cwd();
+
+// spec-v29: the ids the v29 prune removed from the catalog, parsed from the
+// `REMOVED_V29_IDS` map in app.js. Used to assert no per-tile copy lingers for
+// a removed tile. Each removed group is authored as `...[ 'id', 'id', … ]
+// .map((id) => [id, '<tombstone message>'])`; we read ids only from the array
+// literals, never the message strings.
+function parseRemovedV29Ids(appJsText) {
+  const start = appJsText.indexOf('const REMOVED_V29_IDS = new Map([');
+  if (start === -1) throw new Error('catalog-truth: cannot locate REMOVED_V29_IDS in app.js');
+  const end = appJsText.indexOf(']);', start);
+  if (end === -1) throw new Error('catalog-truth: cannot locate end of REMOVED_V29_IDS');
+  const block = appJsText.slice(start, end);
+  const ids = new Set();
+  for (const seg of block.matchAll(/\.\.\.\[([\s\S]*?)\]\.map\(/g)) {
+    for (const m of seg[1].matchAll(/'([a-z0-9-]+)'/g)) ids.add(m[1]);
+  }
+  return ids;
+}
 
 function countUtilities(appJsText) {
   const start = appJsText.indexOf('const UTILITIES = [');
@@ -195,7 +213,22 @@ async function main() {
     process.exit(1);
   }
 
-  console.log(`check-catalog-truth: clean (${truth} tiles across ${surfaces.length} surfaces, ${docLinters} document-linter)`);
+  // spec-v29 housekeeping invariant: no per-tile copy may linger for a tile the
+  // v29 prune removed. `data/tool-copy/<id>.json` for a REMOVED_V29_IDS id is
+  // dead data the build silently skips; fail so it cannot accumulate again
+  // (it had drifted to 57 such files before this guard).
+  const removed = parseRemovedV29Ids(appJs);
+  const copyDir = join(ROOT, 'data', 'tool-copy');
+  const copyIds = (await readdir(copyDir))
+    .filter((f) => f.endsWith('.json'))
+    .map((f) => f.replace(/\.json$/, ''));
+  const deadCopy = copyIds.filter((id) => removed.has(id)).sort();
+  if (deadCopy.length > 0) {
+    console.error(`check-catalog-truth: ${deadCopy.length} data/tool-copy/*.json file(s) belong to spec-v29-removed tiles (dead data; build skips them). Delete: ${deadCopy.join(', ')}`);
+    process.exit(1);
+  }
+
+  console.log(`check-catalog-truth: clean (${truth} tiles across ${surfaces.length} surfaces, ${docLinters} document-linter, ${removed.size} v29-removed ids guarded, 0 orphan copy)`);
 }
 
 main().catch((err) => {

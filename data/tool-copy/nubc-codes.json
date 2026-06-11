@@ -1,4 +1,0 @@
-{
-  "whatThisIs": "Look up NUBC condition codes (FL 18-28), occurrence and occurrence-span codes (FL 31-36), and value codes (FL 39-41) - the three-character qualifiers that an institutional UB-04 claim uses to describe special circumstances, dates that drove the admission, and dollar amounts that do not belong in the charge lines. Sophie Well returns the code, its category, and the plain-language description from the NUBC manual.",
-  "whenToUse": "Use this when an EOB or a UB-04 image shows a condition / occurrence / value code that is not obvious, when an MCR or commercial reviewer is asking why a claim was flagged, or when a learner needs to know which NUBC slot a particular fact (accident date, working-aged-spouse Medicare secondary, no-fault auto insurance amount) belongs in. The codes are static reference data; payer interpretation can still vary by contract."
-}

@@ -6,6 +6,27 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Removed (housekeeping — 57 orphaned `data/tool-copy/` files for v29-removed tiles + a guard so they can't re-accumulate)
+
+`data/tool-copy/<id>.json` holds the hand-authored `/tools/<id>/` page copy,
+loaded per current tile; the build silently skips any file without a matching
+tile. That tolerance let 57 copy files for tiles deleted in the **spec-v29
+prune** linger as dead data — they can never render. Verified the orphan set is
+**exactly** the `REMOVED_V29_IDS` map in `app.js` (19 code-reference lookups +
+15 patient-literacy/form-locator decoders + 10 field-medicine reference cards +
+8 reference-range/wallet-card tables + 5 Group-G single-class references = 57),
+with no orphan outside that authoritative list and none matching a current tile.
+
+- Deleted all 57 (e.g. `icd10`, `hcpcs`, `cpt`, `ndc`, `pos-codes`, `carc`,
+  `rarc`, `drg-lookup`, `ub04`, `cms1500`, `lab-ranges`, `toxidromes`, `beers`,
+  `mallampati`, `mrs`, …). The build still reports "122 with hand-authored copy"
+  — the deletions removed only never-rendered files, changing no page output.
+- Added a guard in `scripts/check-catalog-truth.mjs`: it parses `REMOVED_V29_IDS`
+  from `app.js` and fails CI if any `data/tool-copy/*.json` belongs to a removed
+  tile (non-vacuous — it listed all 57 before the deletion). The guard reports
+  "57 v29-removed ids guarded, 0 orphan copy" when clean. `docs/data-sources.md`
+  updated to note the 1:1 copy↔tile invariant.
+
 ### Fixed (spec-v70 — `sas-riker` told an at-goal SAS 3 to "lighten sedation"; +0 catalog delta)
 
 The Riker Sedation-Agitation Scale interpreter prints a light-sedation goal band

@@ -1,4 +1,0 @@
-{
-  "whatThisIs": "Look up CMS Ambulatory Payment Classification (APC) groups under the Hospital Outpatient Prospective Payment System (HOPPS) - the bundled payment categories that Medicare uses to pay for outpatient hospital services. Sophie Well returns the APC number, its descriptive title, the status indicator that drives the payment rule (T = significant procedure subject to multiple-procedure discount, S = significant procedure not discounted, V = clinic / ED visit, etc.), and the current relative-weight payment factor when shipped with the dataset.",
-  "whenToUse": "Use this when a hospital outpatient claim shows a CPT or HCPCS code and you want to know the APC bucket it falls into, when estimating the Medicare payment for an outpatient procedure, or when teaching the difference between OPPS payment (APCs) and physician-fee-schedule payment (RVUs). The APC payment is the hospital's facility fee; the professional fee is a separate MPFS calculation."
-}

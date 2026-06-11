@@ -1,4 +1,0 @@
-{
-  "whatThisIs": "Look up a hazardous-material UN/NA identifier or shipping name against the DOT Emergency Response Guidebook (ERG). Sophie Well returns the matching guide number (the orange-bordered section), initial isolation and protective-action distances for the spill or fire scenarios, and the standard precautions - fire, public safety, evacuation, first aid - that the ERG prescribes for that material category.",
-  "whenToUse": "Use this on scene of a hazardous-materials incident, a placarded vehicle accident, or a fixed-facility release when responders need the initial-response box (isolation distance, evacuation downwind, recommended PPE class) before the formal hazmat team arrives. The ERG is the first-30-minutes reference, not a substitute for a trained hazmat response - confirm the material identity, switch to SDS / Chemtrec / facility-specific protocols once those are available, and escalate before entry into the hot zone."
-}
