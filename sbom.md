@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `1f8961442fcd7dfc`
-Generated: 2026-06-11T21:30:20.359Z
+Build ID: `5c02d42e5a5f3b84`
+Generated: 2026-06-11T21:56:27.088Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=20.18.1 <21, npm >=10.0.0
@@ -64,7 +64,7 @@ downloads is committed in this repository and is hashed below.
 | `lib/lab-interpret.js` | 29621 | `be761b932dc862967f40f148b094209b01ef6594ecc5c06c603db46feaa30514` |
 | `lib/live.js` | 1138 | `304978d3c170b6eb06cade7702e5f99d868e9b3e1f5651aa9a28da15e62a6a9c` |
 | `lib/medication-v4.js` | 18192 | `467f9576c50da696cc56094eb022d0a5ed1e88de0c7618448554ede8067270b0` |
-| `lib/medication-v5.js` | 18339 | `76e1f064ed9e7aea8862adbc6e05e88031e0a1e7dbbf38d82c6a7f42a5414ff1` |
+| `lib/medication-v5.js` | 18863 | `ce81d9f8954abbd412892c13af9936f992239164f26fd2b999eaea7902787ab7` |
 | `lib/meta.js` | 660940 | `efdcc2779fb903781d97cc06f2edaaadd759371d62151e749dcd2ccbf9d662bf` |
 | `lib/num.js` | 2476 | `93934466539979571db7a6251b68b42acbc4a91101a988d72e3d2c3f7fb153bf` |
 | `lib/ops-v63.js` | 7082 | `9c07767f3517da717261f99d5edddc7d11e20f79692b53bcfc6c5eac3f8bd7ce` |
