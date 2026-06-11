@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `9dad5f0a8424a1d1`
-Generated: 2026-06-11T20:21:08.311Z
+Build ID: `61ada14e874d4262`
+Generated: 2026-06-11T20:35:03.658Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=20.18.1 <21, npm >=10.0.0
@@ -46,7 +46,7 @@ downloads is committed in this repository and is hashed below.
 | `lib/clinical-v4.js` | 12560 | `03a313ef83a8dcb101c143c0d2e5e423bf2eca6b01cd989da77aaf18a376fabe` |
 | `lib/clinical-v5.js` | 25042 | `1da466fb812401a08c4a1419f8b5eb579943d80e3626c00749a1b3bc87ac57cc` |
 | `lib/clinical-v6.js` | 16042 | `69c1de74d7f171a3c6e87329c1cb69324758a368a34f1961e6201caec0470f8d` |
-| `lib/clinical-v7.js` | 17865 | `e3ce3b434ff443c8ebbf7428384cb9d995eeb6ac2b96b49136405f2d85dccc73` |
+| `lib/clinical-v7.js` | 17904 | `fa45bdf92995662b6f094b14c3817762e33429ce1b2b566397c304b65f9d211d` |
 | `lib/clinical-v8.js` | 17487 | `1620bb22277f42f6ae3f0e59f3f3042f9c577920c9ee0a5730a7907aec7252a7` |
 | `lib/clinical.js` | 16372 | `817e2bdffe1b58b64ac9cdc13eec076d25f4effa7424a91cf86845949bf22888` |
 | `lib/clipboard.js` | 2907 | `951c41df24f58df747734474d383d6f75f52d22d2c4d0a370ef5bfb269a15147` |

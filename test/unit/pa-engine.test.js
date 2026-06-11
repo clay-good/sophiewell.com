@@ -1,6 +1,8 @@
-// spec-v52 §4.5, §4.10: PA rule engine. Each of the 7 starter rules
-// gets a fires-when-it-should and doesn't-fire-when-it-shouldn't
-// assertion. Plus engine-level invariants: order is deterministic;
+// spec-v52 §4.5, §4.10: PA rule engine. Starter rules get fires-when-it-should
+// and doesn't-fire-when-it-shouldn't assertions; the ruleset has grown from the
+// original 7 to 876 rules (see the STARTER_RULES count assertion below), with
+// representative per-rule coverage across the commercial and Medicaid overlays.
+// Plus engine-level invariants: order is deterministic;
 // same input -> same output (property test); rule throw is caught.
 
 import { test } from 'node:test';

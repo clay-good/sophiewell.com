@@ -48,7 +48,7 @@
 // number to the DOM (hacor, lisMurray, bps) return null and are pinned by their
 // own unit tests.
 //
-// Module coverage: the 16 PURE compute modules. The four DOM-renderer modules
+// Module coverage: the 21 PURE compute modules. The four DOM-renderer modules
 // (derivation.js, screener.js, table.js, tree.js) require a `document` and so
 // cannot run under node:test; they are exercised by the Playwright all-tools /
 // mobile-no-hscroll specs, which mount every tile in a real browser. derivation
