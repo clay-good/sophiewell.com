@@ -6,6 +6,29 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Changed (spec-v68 — align the `ttkg` hypokalemia threshold to its own spec; catalog unchanged at 337)
+
+The `ttkg` (transtubular potassium gradient) interpreter
+(`lib/clinical-v6.js` `ttkg()`) split its **hypokalemia** band at a TTKG of **2**
+with an awkward "TTKG >2-4" label, while the tile's own committed spec
+(spec-v19 §3.2.4, citing Ethier 1990) documents the contract as "hypokalemia:
+**TTKG >3** suggests renal K wasting." The hyperkalemia side was already a clean
+`<7` / `>7` pair; the hypokalemia side disagreed with the spec and with its own
+sibling branch.
+
+- v68 aligns the code to its own spec: a clean `<3` (appropriate renal K
+  conservation) / `>3` (renal potassium wasting) split, mirroring the `<7` / `>7`
+  hyperkalemia structure. No new citation — the threshold is the one spec-v19
+  already named (Ethier JH, et al. *Am J Kidney Dis* 1990;15(4):309-315).
+- Additive/corrective only: the computed TTKG value, the hyperkalemia bands, and
+  the two interpretability preconditions (urine osm > plasma osm; urine Na > 25)
+  are byte-for-byte unchanged. Only the hypokalemia band re-labels, and only in
+  the 2-to-3 TTKG zone (now "conservation," previously "wasting"). The committed
+  boundary example (TTKG 6.4) and the META example are both >3 and render
+  identically. No new tile (catalog stays 337), no new input, no network call,
+  no AI. +1 boundary unit test (TTKG 2.8 → conservation); the `ttkg` spec-v11
+  audit log re-run.
+
 ### Changed (spec-v67 — complete the `acid-base-deficit` over-rapid-correction warning; catalog unchanged at 337)
 
 The `acid-base-deficit` tile (`lib/clinical-v6.js` `acidBaseDeficit()`) computes a

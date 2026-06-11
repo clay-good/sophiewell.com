@@ -64,11 +64,14 @@ just the metabolic two. spec-v67 then completes the `acid-base-deficit` tile's
 over-rapid-correction safety logic the same way, again with **zero new tiles**:
 the sodium-deficit warning was one-directional (it flagged raising a chronic
 hyponatremia too fast → osmotic demyelination) and now fires symmetrically for
-lowering a chronic hypernatremia too fast (>10 mEq/L/24h → cerebral edema). See
-[docs/spec-v62.md](docs/spec-v62.md),
+lowering a chronic hypernatremia too fast (>10 mEq/L/24h → cerebral edema).
+spec-v68 then aligns the `ttkg` (transtubular potassium gradient) interpreter to
+its own committed spec — the hypokalemia renal-wasting threshold was 2 but
+spec-v19 §3.2.4 (Ethier 1990) documents it as >3 — again with **zero new tiles**.
+See [docs/spec-v62.md](docs/spec-v62.md),
 [docs/spec-v63.md](docs/spec-v63.md), [docs/spec-v64.md](docs/spec-v64.md),
-[docs/spec-v65.md](docs/spec-v65.md), [docs/spec-v66.md](docs/spec-v66.md), and
-[docs/spec-v67.md](docs/spec-v67.md).)
+[docs/spec-v65.md](docs/spec-v65.md), [docs/spec-v66.md](docs/spec-v66.md),
+[docs/spec-v67.md](docs/spec-v67.md), and [docs/spec-v68.md](docs/spec-v68.md).)
 The new `pa-lint` tile in spec-v52 consumes
 dropped files instead of form fields and produces a
 deterministic findings report, the first instance of the

@@ -10,6 +10,15 @@ test('ttkg hypokalemia wasting: uK 40, pK 3.0, uOsm 600, pOsm 290, uNa 40 -> 6.4
   assert.match(r.band, /renal potassium wasting/);
 });
 
+test('ttkg hypokalemia conservation: TTKG ~2.6 (between 2 and 3) reads as appropriate conservation, per spec-v19 >3 wasting threshold', () => {
+  // uK 18, pK 3.0, uOsm 580, pOsm 290 -> (18/3)/(580/290) = 6/2 = 3.0 boundary;
+  // nudge below 3 with uK 17 -> (17/3)/2 = 2.83 -> conservation, not wasting.
+  const r = ttkg({ urineK: 17, plasmaK: 3.0, urineOsm: 580, plasmaOsm: 290, urineNa: 40 });
+  assert.equal(r.ttkg, 2.8);
+  assert.equal(r.valid, true);
+  assert.match(r.band, /appropriate renal K conservation/);
+});
+
 test('ttkg hyperkalemia impaired: uK 60, pK 6.0, uOsm 500, pOsm 290, uNa 40 -> 5.8', () => {
   const r = ttkg({ urineK: 60, plasmaK: 6.0, urineOsm: 500, plasmaOsm: 290, urineNa: 40 });
   assert.equal(r.ttkg, 5.8);
