@@ -11,9 +11,21 @@ test('sasRiker 4: calm and cooperative (goal band)', () => {
   assert.match(r.band, /goal sedation/);
 });
 
-test('sasRiker 3: sedated (still in goal band 3-4)', () => {
+// spec-v70: SAS 3 is the lower edge of the printed light-sedation goal (SAS
+// 3-4), so it must read as in-goal -- not "deeper than goal; lighten sedation".
+// Before v70 this passed vacuously: the old /goal of SAS 3-4/ regex also
+// matched the contradictory "deeper than ... goal of SAS 3-4" string.
+test('sasRiker 3: sedated but within the goal band 3-4 (not "deeper than goal")', () => {
   const r = sasRiker({ level: 3 });
-  assert.match(r.band, /goal of SAS 3-4/);
+  assert.match(r.band, /within the .* goal of SAS 3-4/);
+  assert.doesNotMatch(r.band, /deeper than/);
+  assert.doesNotMatch(r.band, /lightening sedation/);
+});
+
+test('sasRiker 2: very sedated, deeper than the 3-4 goal (lower bound enforced)', () => {
+  const r = sasRiker({ level: 2 });
+  assert.match(r.band, /deeper than/);
+  assert.match(r.band, /lightening sedation/);
 });
 
 test('sasRiker 5: agitated', () => {
