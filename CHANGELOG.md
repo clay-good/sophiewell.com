@@ -6,6 +6,33 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Fixed (mobile-no-hscroll e2e — restore cross-engine coverage + add a dark-theme guard)
+
+Found while visually auditing every view shape in both themes: the
+`mobile-no-hscroll.spec.js` per-shape no-horizontal-scroll sample was documented
+to run "on every browser engine," but two top-level `test.skip(({ browserName })
+=> browserName !== 'chromium', …)` calls (added to gate the PA file-drop sweep,
+the full-catalog loop, and the printable build to chromium) silently made the
+**entire file** chromium-only — a top-level `test.skip(fn)` in Playwright applies
+to every test in the file, not just the ones after it. So firefox/webkit
+no-horizontal-scroll coverage for the home + per-shape sample had been lost,
+exactly the engines where layout-driven overflow tends to differ.
+
+- Scoped each chromium-only skip to its own test body (`test.skip(browserName
+  !== 'chromium', …)` as the first line) instead of file scope. The per-shape
+  sample now runs on all three engines again (42 runs, up from 14 chromium-only);
+  the three genuinely-chromium-only tests still skip on firefox/webkit. No view
+  was overflowing on the restored engines — the coverage gap had simply been
+  invisible.
+- Added a dark-theme guard: the same per-shape sample at 320px with
+  `localStorage['sw-theme']='dark'` injected via `addInitScript` (deterministic
+  on every engine; the `colorScheme:'dark'` emulation path is flaky at
+  document-start on firefox). Dark is the live default for any visitor whose OS
+  prefers dark, yet Playwright defaults to light, so dark-mode layout had never
+  been exercised by CI. The test asserts `data-theme="dark"` actually engaged
+  before measuring, so it can never pass vacuously. All views pass clean in dark
+  at 320px.
+
 ### Changed (`pa-lint` intro copy — readability/delight; no behavior change)
 
 The Prior-Auth Packet Linter's primary description had grown into a single

@@ -67,11 +67,50 @@ for (const view of STATIC_VIEWS) {
   }
 }
 
-// chromium-only: depends on the file-drop + lazy-parse path the other PA
-// integration specs already gate to chromium.
-test.skip(({ browserName }) => browserName !== 'chromium', 'PA findings sweep is chromium-only');
+// Dark theme is the live default for any visitor whose OS prefers dark
+// (theme.js: no stored 'sw-theme' + prefers-color-scheme != light -> 'dark'),
+// yet Playwright's default colorScheme is 'light', so every sweep above runs in
+// light mode only. This block forces the dark path and re-checks the same
+// per-shape sample at the strictest 320px width -- a dark-only
+// [data-theme="dark"] CSS rule that widened a row would otherwise ship
+// undetected. One test reports every dark-mode offender at once.
+//
+// We force dark via the STORED-preference path (localStorage 'sw-theme'),
+// injected by addInitScript so it is present before theme.js runs at boot. This
+// is deterministic on every engine; the colorScheme:'dark' emulation path is
+// flaky at document-start on firefox (matchMedia resolves light before the
+// emulation applies), which would make the guard vacuous there.
+test.describe('dark theme', () => {
+  test('mobile 320px: representative views do not scroll horizontally in dark mode', async ({ page }) => {
+    await page.addInitScript(() => {
+      try { localStorage.setItem('sw-theme', 'dark'); } catch (_) { /* storage blocked: theme falls back, asserted below */ }
+    });
+    await page.setViewportSize({ width: 320, height: 800 });
+    const offenders = [];
+    for (const view of STATIC_VIEWS) {
+      await page.goto(view.hash, { waitUntil: 'load' });
+      await expect(page.locator('.content, .home-view, main').first()).toBeVisible();
+      // Confirm the dark path actually engaged, else the guard is vacuous.
+      const theme = await page.evaluate(() => document.documentElement.getAttribute('data-theme'));
+      expect(theme, `${view.label}: dark theme should be active`).toBe('dark');
+      const o = await page.evaluate(() => ({
+        s: document.documentElement.scrollWidth, c: document.documentElement.clientWidth,
+      }));
+      if (o.s > o.c + 1) offenders.push(`${view.label} (scrollWidth ${o.s} > clientWidth ${o.c})`);
+    }
+    expect(offenders, `dark-mode views with horizontal scroll at 320px:\n${offenders.join('\n')}`).toEqual([]);
+  });
+});
 
-test('mobile 360px: pa-lint findings with long citation URLs do not scroll horizontally', async ({ page }) => {
+// chromium-only: depends on the file-drop + lazy-parse path the other PA
+// integration specs already gate to chromium. The skip lives INSIDE each test
+// (not at file scope) on purpose: a top-level test.skip(fn) in Playwright
+// applies to EVERY test in the file, not just the ones after it -- which
+// previously made the cross-engine per-shape sample and the dark-theme guard
+// above silently chromium-only too. Per-test skips keep those running on
+// firefox/webkit while these three stay chromium-only.
+test('mobile 360px: pa-lint findings with long citation URLs do not scroll horizontally', async ({ page, browserName }) => {
+  test.skip(browserName !== 'chromium', 'file-drop / lazy-parse path is chromium-only');
   await page.setViewportSize(PHONE);
   await page.goto('/#pa-lint');
   await expect(page.locator('#pa-file-picker')).toBeAttached();
@@ -99,11 +138,12 @@ test('mobile 360px: pa-lint findings with long citation URLs do not scroll horiz
 // same catalog source all-tools.spec.js uses). One test loops all tiles and
 // reports every offender at once, so a regression names exactly which views
 // broke. SPA hash routes re-render in place, so this is fast (~10-15 s for the
-// whole catalog) despite covering the full tile catalog. chromium-only (inherits the skip
-// above): horizontal overflow is layout/CSS-driven and the documentElement
+// whole catalog) despite covering the full tile catalog. chromium-only:
+// horizontal overflow is layout/CSS-driven and the documentElement
 // scrollWidth-vs-clientWidth check is engine-agnostic, so one engine is a
 // sufficient guard and keeps the sweep cheap.
-test('mobile 320px: every tile in the catalog (sitemap) does not scroll horizontally', async ({ page }) => {
+test('mobile 320px: every tile in the catalog (sitemap) does not scroll horizontally', async ({ page, browserName }) => {
+  test.skip(browserName !== 'chromium', 'full-catalog single-navigation loop is chromium-only (the layout check is engine-agnostic)');
   test.setTimeout(180_000);
   const resp = await page.request.get('/sitemap.xml');
   expect(resp.ok(), 'sitemap.xml must be reachable').toBe(true);
@@ -131,11 +171,9 @@ test('mobile 320px: every tile in the catalog (sitemap) does not scroll horizont
 // spec-v61 §2 A6: the printable handoff/summary views (SBAR, code-blue) render
 // the shared print template on a button click. Build each and confirm (a) the
 // printable footer is present and (b) the rendered template does not scroll
-// horizontally at 320px. chromium-only (inherits the engine-agnostic rationale
-// above).
-test.skip(({ browserName }) => browserName !== 'chromium', 'printable build is chromium-only');
-
-test('mobile 320px: printable SBAR + code-blue summaries build without horizontal scroll', async ({ page }) => {
+// horizontally at 320px. chromium-only (the engine-agnostic rationale above).
+test('mobile 320px: printable SBAR + code-blue summaries build without horizontal scroll', async ({ page, browserName }) => {
+  test.skip(browserName !== 'chromium', 'printable build is chromium-only');
   await page.setViewportSize({ width: 320, height: 800 });
 
   // SBAR handoff: fill a long field, build the printable, assert footer + no hscroll.
