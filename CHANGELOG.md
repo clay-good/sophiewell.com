@@ -6,6 +6,58 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Fixed (spec-v69 — `digoxin` rate-control subtherapeutic band contradicted its own printed target; +0 catalog delta)
+
+The `digoxin` level interpreter prints an indication-specific target —
+`0.5-0.9 ng/mL` for heart failure, `0.8-2.0 ng/mL` for AF rate control — but its
+"below target" test was hardcoded to a single floor (`< 0.5`, the HF bound) for
+**both** indications. So a rate-control level in `[0.5, 0.8)` — e.g. 0.6 or 0.7
+ng/mL — fell through to the "within" branch and rendered "within 0.8-2.0 ng/mL
+(rate control)," flatly contradicting the target string the same function printed
+one line above and telling a nurse a subtherapeutic rate-control level was in
+range.
+
+- `lib/medication-v5.js` `digoxin()`: derive an indication-aware `targetLow`
+  (`0.5` HF / `0.8` rate control) from the existing `indication` input and test
+  the "below" branch against it. The `0.8` floor is the lower bound of the
+  `0.8-2.0 ng/mL` range the function and the renderer label already commit to, so
+  this is a self-consistency fix (the same class as spec-v68's `ttkg` alignment)
+  — no new input, no new tile, no new citation, no renderer change.
+- Every HF output is byte-for-byte unchanged (`targetLow` is `0.5` for HF); only
+  the rate-control "below/within" boundary moves to the 0.8 the tile advertises.
+- Root cause was a test gap: every prior `digoxin` level test used
+  `indication: 'hf'`, so the rate-control level path was entirely unguarded.
+  `test/unit/digoxin.test.js` gains 3 tests (af 0.7 → below, af 0.9 → within,
+  hf 0.7 → still within). `docs/audits/v11/digoxin.md` re-audited to
+  PASS-WITH-FIXES. See [docs/spec-v69.md](docs/spec-v69.md).
+
+### Added (v11 audit log for `pa-lint` — closes the last coverage gap, 337/337)
+
+The spec-v11 per-tile audit was completed in Waves 3a–3n / Wave 4 *before*
+`pa-lint` (the spec-v52 Prior-Auth Packet Linter) was added to group P, so the
+catalog's one `document-linter` tile was the only one without a committed
+`docs/audits/v11/<id>.md` log — `node scripts/audit-coverage.mjs` reported group
+P at 0/1 and the catalog at 336/337.
+
+- Wrote `docs/audits/v11/pa-lint.md` to the spec-v11 §3.2 schema. Because
+  `pa-lint` lints rather than computes a number, the audit reframes the v11
+  dimensions for a document linter: boundary examples become classification /
+  finding endpoints (empty packet, unparseable / encrypted file → R-PA-043/044,
+  scanned-PDF OCR path, clock-relative R-PA-005/006 windows, payer-overlay
+  self-gating); the cross-implementation differential becomes the byte-for-byte
+  determinism + golden-fixture check (`scripts/audit-pa.mjs`, **46/46** fixtures
+  match) plus the orphan-free rule↔source mapping; edge-input notes cover the
+  ReDoS/DoS caps (`EXTRACT_MATCH_CAP = 200`, the 50 MB/200 MB ceilings, the
+  4000 ms stress budget) and the non-UTF-8 / invalid-date guards. Status: PASS,
+  no defects — the pipeline's 13 unit-test modules, the 46-fixture golden
+  harness, and the `check-pa-staleness` ledger gate already held; the audit
+  confirmed them and added no fixes.
+- `audit-coverage` now reports group P **1/1** and the catalog **337/337
+  (100%)** — the v11 correctness-floor audit is complete for every tile.
+- Documentation: README's repo-layout note now lists `docs/` as carrying the
+  per-tile v11 audit logs and corrects a stale spec range (`spec-v4 … spec-v61`
+  → `… spec-v68`); the spec-v11 doc bullet records the 337/337 coverage.
+
 ### Fixed (accessibility — two unlabeled form controls; + a catalog-wide accessible-name guard)
 
 A runtime sweep of all 337 rendered tile views (the dynamic-DOM analog of the

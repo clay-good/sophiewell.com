@@ -68,10 +68,16 @@ lowering a chronic hypernatremia too fast (>10 mEq/L/24h → cerebral edema).
 spec-v68 then aligns the `ttkg` (transtubular potassium gradient) interpreter to
 its own committed spec — the hypokalemia renal-wasting threshold was 2 but
 spec-v19 §3.2.4 (Ethier 1990) documents it as >3 — again with **zero new tiles**.
+spec-v69 then fixes the `digoxin` level interpreter's subtherapeutic band, which
+read the "below target" floor at the HF bound (0.5 ng/mL) for *both* indications,
+so an AF rate-control level of 0.6–0.7 ng/mL rendered "within 0.8–2.0 ng/mL (rate
+control)" — contradicting its own printed target; the floor is now
+indication-aware (0.5 HF / 0.8 rate control), again with **zero new tiles**.
 See [docs/spec-v62.md](docs/spec-v62.md),
 [docs/spec-v63.md](docs/spec-v63.md), [docs/spec-v64.md](docs/spec-v64.md),
 [docs/spec-v65.md](docs/spec-v65.md), [docs/spec-v66.md](docs/spec-v66.md),
-[docs/spec-v67.md](docs/spec-v67.md), and [docs/spec-v68.md](docs/spec-v68.md).)
+[docs/spec-v67.md](docs/spec-v67.md), [docs/spec-v68.md](docs/spec-v68.md), and
+[docs/spec-v69.md](docs/spec-v69.md).)
 The new `pa-lint` tile in spec-v52 consumes
 dropped files instead of form fields and produces a
 deterministic findings report, the first instance of the
@@ -254,7 +260,7 @@ against institutional protocol and a current reference" notice. Two tiles
 | `vanc-auc` | first-order two-level AUC24/MIC vs 400–600 | dosing vancomycin with pharmacy |
 | `aminoglycoside` | extended-interval dose + CrCl interval | once-daily gent/tobra/amikacin |
 | `acetaminophen-nomogram` | Rumack-Matthew line → NAC or not (4–24 h only) | timed APAP level in the ED |
-| `digoxin` | renal/age maintenance + level vs 0.5–0.9 ng/mL | starting/checking digoxin |
+| `digoxin` | renal/age maintenance + level vs indication target (HF 0.5–0.9; AF rate-control 0.8–2.0 ng/mL) | starting/checking digoxin |
 | `local-anesthetic-max` | mg/kg ceiling vs absolute cap → mg + mL | max safe local before LAST |
 | `mgso4-preeclampsia` | load + maintenance mL/h, renal-halved default | the MgSO₄ drip on L&D |
 | `pca-pump` | lockout-derived hourly max + limit check | programming a PCA safely |
@@ -699,7 +705,8 @@ views/              per-group view renderers (group-*.js, pa-lint.js)
 data/               sharded public datasets + SHA-256 manifests (46 datasets)
 scripts/            build-*, check-* (catalog-truth, output-safety, citations,
                     commitments, PA staleness), audit-* — the CI gate chain
-docs/               specs (spec-v4 … spec-v61) + citation-staleness ledger +
+docs/               specs (spec-v4 … spec-v68) + per-tile v11 audit logs +
+                    citation-staleness ledger +
                     architecture / threat-model / …
 test/               unit/ (node:test) · integration/ (Playwright) · fixtures/
 dist/               build output (337 tool pages, OG cards, sitemap, SBOM)
@@ -1306,7 +1313,9 @@ build, integrity-verified data shards) are documented in
   out-of-scope list
 - [docs/spec-v11.md](docs/spec-v11.md) — correctness-floor spec:
   per-tile audit protocol, specialty-named groups, optional
-  source-quoted `interpretation` field
+  source-quoted `interpretation` field. Audit coverage is **complete
+  — 337/337 tiles** carry a committed `docs/audits/v11/<id>.md`
+  log (`node scripts/audit-coverage.mjs`)
 - [docs/scope-mdcalc-parity.md](docs/scope-mdcalc-parity.md) —
   long-horizon scope: every actionable clinical calculator a
   healthcare worker would otherwise reach for MDCalc to find,
