@@ -23,6 +23,21 @@ test('no over-rapid warning when Na change <= 8 and not hyponatremic', () => {
   assert.equal(r.hco3DeficitMeq, 160);
   assert.equal(r.naDeficitMeq, 96);
   assert.equal(r.hyponatremiaWarn, null);
+  assert.equal(r.hypernatremiaWarn, null);
+});
+
+test('hypernatremia: lowering Na 160->145 (>10 mEq/L) warns about cerebral edema', () => {
+  const r = acidBaseDeficit({ weightKg: 70, sex: 'M', measuredHco3: 24, targetHco3: 24, measuredNa: 160, targetNa: 145 });
+  // Na deficit is negative (a free-water deficit, Na must come down, not up).
+  assert.equal(r.naDeficitMeq, -630);
+  assert.match(r.hypernatremiaWarn, /cerebral edema/);
+  assert.equal(r.hyponatremiaWarn, null);
+});
+
+test('hypernatremia: lowering Na by exactly 10 mEq/L does not warn', () => {
+  const r = acidBaseDeficit({ weightKg: 70, sex: 'M', measuredHco3: 24, targetHco3: 24, measuredNa: 155, targetNa: 145 });
+  assert.equal(r.hypernatremiaWarn, null);
+  assert.equal(r.hyponatremiaWarn, null);
 });
 
 test('acid-base-deficit rejects impossible input', () => {

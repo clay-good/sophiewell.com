@@ -60,9 +60,15 @@ neuro-ICU number) — taking the catalog to 337. spec-v66 then completes the `ab
 interpreter's compensation analysis with **zero new tiles**: the respiratory
 primaries now carry the Boston-rules expected-HCO₃ bands (acute and chronic), so
 the tool flags a superimposed metabolic process for every primary disorder, not
-just the metabolic two. See [docs/spec-v62.md](docs/spec-v62.md),
+just the metabolic two. spec-v67 then completes the `acid-base-deficit` tile's
+over-rapid-correction safety logic the same way, again with **zero new tiles**:
+the sodium-deficit warning was one-directional (it flagged raising a chronic
+hyponatremia too fast → osmotic demyelination) and now fires symmetrically for
+lowering a chronic hypernatremia too fast (>10 mEq/L/24h → cerebral edema). See
+[docs/spec-v62.md](docs/spec-v62.md),
 [docs/spec-v63.md](docs/spec-v63.md), [docs/spec-v64.md](docs/spec-v64.md),
-[docs/spec-v65.md](docs/spec-v65.md), and [docs/spec-v66.md](docs/spec-v66.md).)
+[docs/spec-v65.md](docs/spec-v65.md), [docs/spec-v66.md](docs/spec-v66.md), and
+[docs/spec-v67.md](docs/spec-v67.md).)
 The new `pa-lint` tile in spec-v52 consumes
 dropped files instead of form fields and produces a
 deterministic findings report, the first instance of the
@@ -229,7 +235,7 @@ primary citation inline on the tile.
 | `driving-pressure` | plateau − PEEP; Vt ÷ ΔP → compliance | lung-protective ≤15 cmH₂O target |
 | `ttkg` | (uK÷pK) ÷ (uOsm÷pOsm), with validity guard | hypo-/hyperkalemia renal work-up |
 | `urine-anion-gap` | uNa + uK − uCl → sign | non-gap acidosis: GI loss vs RTA |
-| `acid-base-deficit` | 0.5·wt·ΔHCO₃; TBW·ΔNa → deficits | planning replacement, with over-rapid-Na warning |
+| `acid-base-deficit` | 0.5·wt·ΔHCO₃; TBW·ΔNa → deficits | planning replacement, with two-way over-rapid-Na warning (ODS up / cerebral edema down) |
 | `schwartz-egfr` | 0.413 × height ÷ SCr → eGFR | pediatric renal dosing (ages 1–18) |
 
 ### Dosing & infusion cheat sheet (spec-v56 additions)

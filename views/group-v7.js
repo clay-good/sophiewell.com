@@ -258,6 +258,7 @@ export const renderers = {
         { label: 'Sodium deficit', value: fmt(r.naDeficitMeq, { fallback: '(enter values)' }), units: 'mEq' },
         { text: 'Deficit estimates, not infusion rates. Verify against local protocol.' },
         r.hyponatremiaWarn ? { text: r.hyponatremiaWarn, cls: 'warn' } : null,
+        r.hypernatremiaWarn ? { text: r.hypernatremiaWarn, cls: 'warn' } : null,
       ]);
     }));
   },

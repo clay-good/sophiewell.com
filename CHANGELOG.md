@@ -6,6 +6,31 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Changed (spec-v67 — complete the `acid-base-deficit` over-rapid-correction warning; catalog unchanged at 337)
+
+The `acid-base-deficit` tile (`lib/clinical-v6.js` `acidBaseDeficit()`) computes a
+**signed** sodium deficit — positive when a hyponatremic patient must be brought
+up, negative (a free-water deficit) when a hypernatremic patient must be brought
+down — but fired an over-rapid-correction warning in **only one direction**: it
+flagged raising a chronic hyponatremia by >8 mEq/L/24h (osmotic demyelination)
+and stayed silent when lowering a chronic hypernatremia, where dropping serum Na
+too fast causes cerebral edema. The same audited safety ceiling exists on both
+sides of normal.
+
+- v67 adds the symmetric `hypernatremiaWarn`: when measured Na >145 and the
+  planned drop (measured − target) exceeds 10 mEq/L/24h, the tile warns that
+  lowering Na faster than 10 mEq/L/24h risks cerebral edema and to limit the
+  rate. The 10 mEq/L/24h ceiling is the Adrogué-Madias limit — the cited source
+  (NEJM 2000;342(20):1493-1499) is itself the *hypernatremia* paper, so no new
+  citation is introduced.
+- Additive only: the TBW, bicarbonate-deficit, sodium-deficit, and existing
+  hyponatremia-warning outputs are byte-for-byte unchanged; the META example
+  (Na 120→135, a hyponatremia case) renders identically. The renderer
+  (`views/group-v7.js`) adds one mirror `warn` row alongside the existing one.
+  No new tile (catalog stays 337), no new input, no network call, no AI. +2
+  boundary unit tests (hypernatremia warn at a 15 mEq/L drop; no-warn at exactly
+  10); the `acid-base-deficit` spec-v11 audit log re-run with the two new cases.
+
 ### Changed (spec-v66 — complete the `abg` compensation analysis; catalog unchanged at 337)
 
 The `abg` acid-base interpreter (`lib/clinical.js` `abgInterpret()`) already
