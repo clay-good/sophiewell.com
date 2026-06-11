@@ -6,6 +6,31 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Changed (`pa-lint` intro copy — readability/delight; no behavior change)
+
+The Prior-Auth Packet Linter's primary description had grown into a single
+run-on paragraph of developer-facing provenance: internal build-wave numbers
+("Wave 52-45", "Wave 52-6b"), every `§4.5.x` ruleset section number with its
+rule count, and an exhaustive inline enumeration of all 23 commercial payers and
+all 14 state Medicaid programs by name. For the biller/coder/nurse the tool is
+built for, that read as a wall of jargon rather than an explanation.
+
+- Rewrote the intro into concise, audience-appropriate copy that keeps every
+  user-relevant fact — what to drop (PDF/DOCX/TXT or a scanned PDF/image with
+  optional on-device OCR), what it does (local hashing, text extraction,
+  role/payer classification, the full ruleset summarized as core + Medicare
+  FFS/Advantage + Medicaid + specialty overlays + payer-specific overlays for 23
+  commercial payers and 14 state Medicaid programs, each self-gating on the
+  detected payer), the three downloadable reports (full JSON, PHI-redacted JSON,
+  human-readable DOCX), and the privacy promise (everything in-tab, no network,
+  no storage, no AI). The dropped detail — exact section numbers, build-wave
+  labels, and the full payer/state name lists — is unchanged in its real homes
+  (spec-v52, docs/pa-maintenance.md, and the `STARTER_RULES` count assertion in
+  test/unit/pa-engine.test.js), so no provenance is lost.
+- Copy-only change to `views/pa-lint.js`; the engine, rules, downloads, OCR path,
+  and audit trail are untouched. No test asserts the intro text; `check-output-
+  safety`, `grep-check`, and the pa-lint e2e suites stay green.
+
 ### Changed (spec-v68 — align the `ttkg` hypokalemia threshold to its own spec; catalog unchanged at 337)
 
 The `ttkg` (transtubular potassium gradient) interpreter

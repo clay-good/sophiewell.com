@@ -536,31 +536,21 @@ function renderOcrControl(resultsList, candidates, documents, runAndRender, stat
 export const renderers = {
   'pa-lint'(root) {
     root.appendChild(el('p', { class: 'notice', text:
-      'Wave 52-45: drop PDF, DOCX, or TXT files — or a scanned PDF or image for optional, on-device OCR. Sophie hashes each file, '
-      + 'extracts text (pdf.js / mammoth.js, both vendored), classifies '
-      + 'each document by role + payer, and runs the complete §4.5.1 '
-      + 'core ruleset (60 rules), the complete §4.5.2 CMS Medicare FFS '
-      + 'overlay (25 rules), the §4.5.2.1 CMS Hospital OPD '
-      + 'prior-authorization membership test (the first real bundled '
-      + 'PA-list rule), the complete §4.5.3 CMS Medicare Advantage '
-      + 'overlay (15 rules), the complete §4.5.4 Medicaid state-agnostic '
-      + 'core (10 rules), the complete §4.5.5 specialty overlays '
-      + '(25 rules: radiology + infusion + surgery + behavioral health + '
-      + 'genetic testing), the complete §4.5.7–§4.5.29 commercial '
-      + 'overlays (Aetna + UnitedHealthcare + Anthem + Cigna + Humana + HCSC + '
-      + 'Highmark + Florida Blue + BCBSM + Blue Shield of California + Independence Blue Cross + CareFirst + Blue Cross NC + Horizon + BCBS Tennessee + BCBS Massachusetts + BCBS Alabama + BCBS South Carolina + Arkansas BCBS + BCBS Kansas City + BCBS Minnesota + BCBS Louisiana + HMSA, 20 rules each), and the §4.5.30–§4.5.44 per-state Medicaid overlays (Medi-Cal + New York + Texas + Florida + Ohio + Illinois + Washington + Georgia + North Carolina + Pennsylvania + Michigan + New Jersey + Arizona + Indiana Medicaid, 20 rules each) against the aggregated bundle. Overlay rules '
-      + 'self-gate on the detected payer; off-bucket packets see them '
-      + 'vacuously pass. Wave 52-6b adds the human-facing DOCX report as '
-      + 'a third download button alongside the full JSON report and the '
-      + 'PHI-redacted JSON report (spec-v52 §4.6 / §4.7). All three are '
-      + 'built in-tab from the in-memory bundle, and the audit trail now '
-      + 'surfaces per-source dataset staleness from the bundled ledger '
-      + '(spec-v52 §8.3). Scanned PDFs and images carry no embedded text; an '
-      + 'optional, user-triggered on-device OCR path (tesseract.js, vendored, '
-      + 'spec-v52 §4.3.1) converts them to text and re-runs the engine. It loads '
-      + 'the ~9 MB engine on demand and runs entirely in the tab — no network, '
-      + 'no third-party service. Your packet stays in '
-      + 'this tab; no network, no storage, no AI service.' }));
+      'Drop a prior-authorization packet — PDF, DOCX, or TXT, or a scanned PDF or '
+      + 'image for optional, on-device OCR. Sophie hashes each file locally, '
+      + 'extracts the text (pdf.js / mammoth.js, both vendored), classifies every '
+      + 'document by role and payer, and runs its full deterministic ruleset: a '
+      + 'core set plus Medicare FFS, Medicare Advantage, and Medicaid overlays, '
+      + 'specialty overlays (radiology, infusion, surgery, behavioral health, '
+      + 'genetic testing), and payer-specific overlays for 23 commercial payers '
+      + 'and 14 state Medicaid programs. Each overlay self-gates on the detected '
+      + 'payer, so an off-payer packet simply sees those rules pass. You get three '
+      + 'downloadable reports — a full JSON report, a PHI-redacted JSON report, and '
+      + 'a human-readable DOCX — all built in this tab, and the audit trail flags '
+      + 'any stale data source. Scanned files carry no text layer; the optional, '
+      + 'user-triggered OCR (vendored tesseract.js) loads on demand and runs '
+      + 'entirely in the tab. Your packet never leaves this tab: no network, no '
+      + 'storage, no AI.' }));
 
     const trust = el('ul', { class: 'pa-trust-strip' });
     for (const line of [
