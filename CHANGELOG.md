@@ -6,6 +6,33 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Fixed (accessibility — heading-level skips across the tile catalog + a permanent guard; WCAG 1.3.1 / 2.4.10)
+
+A runtime sweep of every rendered tile body (the deferred finding from the prior
+session) found pervasive heading-level skips: under the page `<h1>` (the tool
+name), many tiles jumped straight to `<h4>` or `<h3>` with no `<h2>` between, so
+a screen-reader user navigating by heading hears a missing level. Two sources,
+both now fixed with no change to any computed output:
+
+- **The shared "show your work" derivation block** (`lib/derivation.js`,
+  spec-v48) was the dominant cause — present on 126 tiles, it emitted its
+  `Formula` / `Original population` / `Limits of validity` / `Source` / `Your
+  inputs` / `With your inputs` labels as `<h4>` headings (→ `h1->h4` / `h2->h4`
+  skips). These are term→definition pairs, not document sections, so they are
+  now a `<dl>`/`<dt>`/`<dd>` description list: same visual layout, but out of the
+  heading outline entirely (and more semantically honest). CSS retargeted
+  `.tile-derivation h4` → `.tile-derivation dt` with `dd`/`dl` margin resets.
+- **24 tile renderers** used `<h3>` for their first, top-level section heading
+  under the `<h1>` (e.g. `corrected-ca-na` "Corrected Calcium", `charlson`
+  "1-point comorbidities", `ccsr` "Step 1", `field-triage`, `qsofa-sofa`,
+  `meld-childpugh`, `ranson-bisap`, the Ottawa/PECARN/Wells rules, …). Promoted
+  those 49 first-level `<h3>`s to `<h2>` (across `views/group-e/f/g/i/j/klmno/v5`),
+  leaving the 14 correctly-nested `<h3>`s (those under an existing `<h2>`)
+  untouched.
+- **Permanent guard:** `test/integration/all-tools.spec.js` gains a chromium-only
+  sweep asserting no tile body skips a heading level (each heading ≤ previous +
+  1). It listed all ~70 offenders before the fix, so it cannot pass vacuously.
+
 ### Fixed (four tiles rendered the literal "NaN" for plausible partial input; +0 catalog delta)
 
 The per-tile `safe()` renderer wrapper only catches *thrown* errors, but

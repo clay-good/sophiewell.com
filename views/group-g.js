@@ -397,14 +397,14 @@ export const renderers = {
   },
 
   'wells-pe-geneva'(root) {
-    root.appendChild(el('h3', { text: 'Wells PE' }));
+    root.appendChild(el('h2', { text: 'Wells PE' }));
     const wp = [
       ['Clinical signs of DVT (3)', 'wp-dvt'], ['Alternative dx less likely (3)', 'wp-alt'],
       ['HR > 100 (1.5)', 'wp-hr'], ['Immobilization or surgery <4wk (1.5)', 'wp-immo'],
       ['Prior VTE (1.5)', 'wp-vte'], ['Hemoptysis (1)', 'wp-hemo'], ['Malignancy (1)', 'wp-mal'],
     ];
     for (const [l, id] of wp) root.appendChild(checkbox(l, id));
-    root.appendChild(el('h3', { text: 'Revised Geneva' }));
+    root.appendChild(el('h2', { text: 'Revised Geneva' }));
     const gv = [
       ['Age > 65 (1)', 'gv-age'], ['Prior VTE (3)', 'gv-vte'],
       ['Surgery / fracture <1mo (2)', 'gv-surg'], ['Active malignancy (2)', 'gv-mal'],
@@ -513,12 +513,12 @@ export const renderers = {
   },
 
   'qsofa-sofa'(root) {
-    root.appendChild(el('h3', { text: 'qSOFA' }));
+    root.appendChild(el('h2', { text: 'qSOFA' }));
     const q = [
       ['RR >= 22/min', 'q-rr'], ['Altered mental status', 'q-am'], ['SBP <= 100', 'q-sbp'],
     ];
     for (const [l, id] of q) root.appendChild(checkbox(l, id));
-    root.appendChild(el('h3', { text: 'SOFA (each system 0-4)' }));
+    root.appendChild(el('h2', { text: 'SOFA (each system 0-4)' }));
     const sf = [
       ['Respiration', 's-resp'], ['Coagulation', 's-coag'], ['Liver', 's-liv'],
       ['Cardiovascular', 's-cv'], ['CNS', 's-cns'], ['Renal', 's-ren'],
@@ -553,7 +553,7 @@ export const renderers = {
   },
 
   'meld-childpugh'(root) {
-    root.appendChild(el('h3', { text: 'MELD-3.0' }));
+    root.appendChild(el('h2', { text: 'MELD-3.0' }));
     // spec-v62 A4 (final wave): bilirubin SI toggle (mg/dL <-> umol/L). Default
     // option is mg/dL with the prefilled 1.0, so the example stays identical.
     root.appendChild(unitField('Bilirubin', 'm-bili', BILIRUBIN_UNITS, { value: 1.0 }));
@@ -573,7 +573,7 @@ export const renderers = {
       el('select', { id: 'm-sex' }, [el('option', { value: 'M', text: 'M' }), el('option', { value: 'F', text: 'F' })]),
     ]));
     root.appendChild(checkbox('Hemodialysis x2 in past week', 'm-dial'));
-    root.appendChild(el('h3', { text: 'Child-Pugh' }));
+    root.appendChild(el('h2', { text: 'Child-Pugh' }));
     root.appendChild(el('p', {}, [
       el('label', { for: 'cp-asc', text: 'Ascites' }), el('br'),
       el('select', { id: 'cp-asc' }, [
@@ -612,20 +612,20 @@ export const renderers = {
   },
 
   'ranson-bisap'(root) {
-    root.appendChild(el('h3', { text: 'Ranson admission criteria' }));
+    root.appendChild(el('h2', { text: 'Ranson admission criteria' }));
     const ad = [
       ['Age > 55', 'r-age'], ['WBC > 16k', 'r-wbc'], ['Glucose > 200 mg/dL', 'r-glu'],
       ['LDH > 350 IU/L', 'r-ldh'], ['AST > 250 IU/L', 'r-ast'],
     ];
     for (const [l, id] of ad) root.appendChild(checkbox(l, id));
-    root.appendChild(el('h3', { text: 'Ranson 48-hour criteria' }));
+    root.appendChild(el('h2', { text: 'Ranson 48-hour criteria' }));
     const fh = [
       ['Hct drop > 10%', 'r-hct'], ['BUN rise > 5 mg/dL', 'r-bun'],
       ['Calcium < 8 mg/dL', 'r-calc'], ['PaO2 < 60 mmHg', 'r-pao2'],
       ['Base deficit > 4 mEq/L', 'r-base'], ['Fluid sequestration > 6 L', 'r-fluid'],
     ];
     for (const [l, id] of fh) root.appendChild(checkbox(l, id));
-    root.appendChild(el('h3', { text: 'BISAP' }));
+    root.appendChild(el('h2', { text: 'BISAP' }));
     const b = [
       ['BUN > 25', 'b-bun'], ['Altered mental status', 'b-am'],
       ['SIRS', 'b-sirs'], ['Age > 60', 'b-age'], ['Pleural effusion', 'b-pl'],
@@ -687,7 +687,7 @@ export const renderers = {
   },
 
   'wells-dvt-caprini'(root) {
-    root.appendChild(el('h3', { text: 'Wells DVT' }));
+    root.appendChild(el('h2', { text: 'Wells DVT' }));
     const dvtItems = [
       ['Active cancer', 'wd-cancer'], ['Paralysis / recent immobilization', 'wd-paralysis'],
       ['Recently bedridden >3d or surgery <12wk', 'wd-bedrest'], ['Localized tenderness along deep veins', 'wd-tender'],
@@ -696,7 +696,7 @@ export const renderers = {
       ['Previously documented DVT', 'wd-prior'], ['Alternative diagnosis as likely or more likely (-2)', 'wd-alt'],
     ];
     for (const [l, id] of dvtItems) root.appendChild(checkbox(l, id));
-    root.appendChild(el('h3', { text: 'Caprini items (enter total points)' }));
+    root.appendChild(el('h2', { text: 'Caprini items (enter total points)' }));
     root.appendChild(el('p', {}, [
       el('label', { for: 'cap-pts', text: 'Caprini total points' }), el('br'),
       el('input', { id: 'cap-pts', type: 'number', step: '1', value: '0' }),
@@ -757,7 +757,7 @@ export const renderers = {
   },
 
   'alvarado-pas'(root) {
-    root.appendChild(el('h3', { text: 'Alvarado (MANTRELS)' }));
+    root.appendChild(el('h2', { text: 'Alvarado (MANTRELS)' }));
     const av = [
       ['M - Migration of pain to RLQ', 'a-mig'],
       ['A - Anorexia', 'a-anx'],
@@ -769,7 +769,7 @@ export const renderers = {
       ['S - Shift to left', 'a-shift'],
     ];
     for (const [l, id] of av) root.appendChild(checkbox(l, id));
-    root.appendChild(el('h3', { text: 'Pediatric Appendicitis Score' }));
+    root.appendChild(el('h2', { text: 'Pediatric Appendicitis Score' }));
     const ps = [
       ['Cough/hop/percussion tenderness (+2)', 'p-cough'], ['RLQ tenderness (+2)', 'p-rlq'],
       ['Migration', 'p-mig'], ['Anorexia', 'p-anx'], ['Fever', 'p-fev'],
@@ -1468,7 +1468,7 @@ export const renderers = {
 
   // spec-v12 §3.4.3 wave 12-4: Maddrey DF + Lille Model (alcoholic hepatitis).
   'maddrey-lille'(root) {
-    root.appendChild(el('h3', { text: 'Maddrey Discriminant Function (Maddrey 1978)' }));
+    root.appendChild(el('h2', { text: 'Maddrey Discriminant Function (Maddrey 1978)' }));
     const dfFields = [
       ['Patient PT (sec)', 'ml-pt', '20'],
       ['Control PT (sec)', 'ml-ctrl', '12'],
@@ -1482,7 +1482,7 @@ export const renderers = {
     // spec-v62 A4 (final wave): bilirubin SI toggle on the three bilirubin
     // fields; mg/dL default keeps the prefilled values and the example identical.
     root.appendChild(unitField('Bilirubin', 'ml-bili', BILIRUBIN_UNITS, { value: 10 }));
-    root.appendChild(el('h3', { text: 'Lille Model (Louvet 2007; interpret only after >= 7 days of steroids in a DF >= 32 patient)' }));
+    root.appendChild(el('h2', { text: 'Lille Model (Louvet 2007; interpret only after >= 7 days of steroids in a DF >= 32 patient)' }));
     const lilleFields = [
       ['Age (years)', 'ml-age', '50'],
       ['Albumin (g/dL)', 'ml-alb', '3.0'],
@@ -1528,7 +1528,7 @@ export const renderers = {
   // spec-v12 §3.5.1 wave 12-5: Canadian CT Head Rule (Stiell 2001).
   cthr(root) {
     root.appendChild(el('p', { class: 'muted', text: 'Apply only to GCS 13-15 blunt head injury with witnessed LOC, definite amnesia, or witnessed disorientation (Stiell 2001 §Methods).' }));
-    root.appendChild(el('h3', { text: 'High-risk criteria (neurosurgical-intervention concern)' }));
+    root.appendChild(el('h2', { text: 'High-risk criteria (neurosurgical-intervention concern)' }));
     const high = [
       ['GCS < 15 at 2 hours post-injury', 'ct-h1'],
       ['Suspected open or depressed skull fracture', 'ct-h2'],
@@ -1537,7 +1537,7 @@ export const renderers = {
       ['Age >= 65', 'ct-h5'],
     ];
     for (const [l, id] of high) root.appendChild(checkbox(l, id));
-    root.appendChild(el('h3', { text: 'Medium-risk criteria (clinically important brain injury concern)' }));
+    root.appendChild(el('h2', { text: 'Medium-risk criteria (clinically important brain injury concern)' }));
     const medium = [
       ['Retrograde amnesia >= 30 minutes', 'ct-m1'],
       ['Dangerous mechanism (pedestrian struck, ejection, fall > 3 feet / 5 stairs)', 'ct-m2'],
@@ -1558,14 +1558,14 @@ export const renderers = {
   // spec-v12 §3.5.2 wave 12-5: Canadian C-Spine Rule (Stiell 2001).
   ccsr(root) {
     root.appendChild(el('p', { class: 'muted', text: 'Apply only to alert (GCS 15) stable trauma patients with neck pain or visible injury above the clavicles, non-ambulatory, or with dangerous mechanism (Stiell 2001 §Methods). Ships side by side with the existing NEXUS + Canadian C-Spine tile.' }));
-    root.appendChild(el('h3', { text: 'Step 1: any high-risk factor? (yes -> image)' }));
+    root.appendChild(el('h2', { text: 'Step 1: any high-risk factor? (yes -> image)' }));
     const high = [
       ['Age >= 65', 'cs-h1'],
       ['Dangerous mechanism (fall >= 1 m / 5 stairs, axial load, MVC >100 kph or rollover/ejection, motorized recreational vehicle, bicycle collision)', 'cs-h2'],
       ['Paresthesias in extremities', 'cs-h3'],
     ];
     for (const [l, id] of high) root.appendChild(checkbox(l, id));
-    root.appendChild(el('h3', { text: 'Step 2: any low-risk factor that allows safe range-of-motion assessment?' }));
+    root.appendChild(el('h2', { text: 'Step 2: any low-risk factor that allows safe range-of-motion assessment?' }));
     const low = [
       ['Simple rear-end MVC', 'cs-l1'],
       ['Sitting position in ED', 'cs-l2'],
@@ -1574,7 +1574,7 @@ export const renderers = {
       ['Absence of midline c-spine tenderness', 'cs-l5'],
     ];
     for (const [l, id] of low) root.appendChild(checkbox(l, id));
-    root.appendChild(el('h3', { text: 'Step 3: range of motion' }));
+    root.appendChild(el('h2', { text: 'Step 3: range of motion' }));
     root.appendChild(checkbox('Able to actively rotate neck 45 degrees left and right', 'cs-rot'));
     const o = out(); root.appendChild(o);
     const run = () => safe(o, () => {
@@ -1596,7 +1596,7 @@ export const renderers = {
       el('label', { for: 'ph-age', text: 'Age (years)' }), el('br'),
       el('input', { id: 'ph-age', type: 'number', step: 'any', value: '5' }),
     ]));
-    root.appendChild(el('h3', { text: 'High-risk predictors (any present -> high risk; CT recommended)' }));
+    root.appendChild(el('h2', { text: 'High-risk predictors (any present -> high risk; CT recommended)' }));
     const high = [
       ['GCS = 15 (uncheck if GCS 14 or other AMS)', 'ph-gcs15'],
       ['Palpable skull fracture (age <2 only)', 'ph-skfx'],
@@ -1608,7 +1608,7 @@ export const renderers = {
       if (id === 'ph-gcs15') cb.querySelector('input').checked = true;
       root.appendChild(cb);
     }
-    root.appendChild(el('h3', { text: 'Intermediate-risk predictors' }));
+    root.appendChild(el('h2', { text: 'Intermediate-risk predictors' }));
     const med = [
       ['LOC >= 5 seconds (age <2) / any LOC (age >=2)', 'ph-loc'],
       ['Vomiting (age >=2 only)', 'ph-vom'],
@@ -1647,7 +1647,7 @@ export const renderers = {
   // spec-v12 §3.5.4 wave 12-5: Ottawa Ankle Rules (Stiell 1992).
   'ottawa-ankle'(root) {
     root.appendChild(el('p', { class: 'muted', text: 'Rule for patients >= 18 with ankle or midfoot injury within 10 days. Pediatric Plint 1999 variant deferred to a future spec.' }));
-    root.appendChild(el('h3', { text: 'Malleolar zone' }));
+    root.appendChild(el('h2', { text: 'Malleolar zone' }));
     root.appendChild(checkbox('Pain in malleolar zone', 'oa-mp'));
     const ankle = [
       ['Tenderness at posterior edge or tip of lateral malleolus (distal 6 cm)', 'oa-lat'],
@@ -1655,7 +1655,7 @@ export const renderers = {
       ['Inability to bear weight 4 steps immediately and in the ED', 'oa-abw'],
     ];
     for (const [l, id] of ankle) root.appendChild(checkbox(l, id));
-    root.appendChild(el('h3', { text: 'Midfoot zone' }));
+    root.appendChild(el('h2', { text: 'Midfoot zone' }));
     root.appendChild(checkbox('Pain in midfoot zone', 'oa-fp'));
     const foot = [
       ['Tenderness at base of 5th metatarsal', 'oa-fmt'],
@@ -1685,9 +1685,9 @@ export const renderers = {
   // spec-v12 §3.5.5 wave 12-5: Ottawa SAH Rule (Perry 2013).
   'ottawa-sah'(root) {
     root.appendChild(el('p', { class: 'muted', text: 'Apply only to alert patients >= 15 with new severe non-traumatic headache peaking within 1 hour. Exclusions per Perry 2013 §Methods are surfaced first.' }));
-    root.appendChild(el('h3', { text: 'Exclusion check' }));
+    root.appendChild(el('h2', { text: 'Exclusion check' }));
     root.appendChild(checkbox('Any exclusion present (new neurologic deficit, prior aneurysm / SAH / brain tumor, recurrent identical-pattern headaches, or age <15)', 'os-excl'));
-    root.appendChild(el('h3', { text: 'Six clinical criteria (any positive -> cannot rule out SAH)' }));
+    root.appendChild(el('h2', { text: 'Six clinical criteria (any positive -> cannot rule out SAH)' }));
     const items = [
       ['Age >= 40', 'os-age'],
       ['Neck pain or stiffness', 'os-neck'],
@@ -1798,7 +1798,7 @@ export const renderers = {
       el('label', { for: 'ch-age', text: 'Age (years; 1 point per decade >=50, capped at 4)' }), el('br'),
       el('input', { id: 'ch-age', type: 'number', step: '1', min: '0', value: '55' }),
     ]));
-    root.appendChild(el('h3', { text: '1-point comorbidities (Charlson 1987 Table 3)' }));
+    root.appendChild(el('h2', { text: '1-point comorbidities (Charlson 1987 Table 3)' }));
     const w1 = [
       ['Myocardial infarction', 'ch-mi'],
       ['Congestive heart failure', 'ch-chf'],
@@ -1812,7 +1812,7 @@ export const renderers = {
       ['Diabetes (uncomplicated)', 'ch-dm'],
     ];
     for (const [l, id] of w1) root.appendChild(checkbox(l, id));
-    root.appendChild(el('h3', { text: '2-point comorbidities' }));
+    root.appendChild(el('h2', { text: '2-point comorbidities' }));
     const w2 = [
       ['Hemiplegia', 'ch-hemi'],
       ['Moderate or severe renal disease', 'ch-renal'],
@@ -1822,9 +1822,9 @@ export const renderers = {
       ['Lymphoma', 'ch-lymph'],
     ];
     for (const [l, id] of w2) root.appendChild(checkbox(l, id));
-    root.appendChild(el('h3', { text: '3-point comorbidities' }));
+    root.appendChild(el('h2', { text: '3-point comorbidities' }));
     root.appendChild(checkbox('Moderate or severe liver disease', 'ch-mod-liver'));
-    root.appendChild(el('h3', { text: '6-point comorbidities' }));
+    root.appendChild(el('h2', { text: '6-point comorbidities' }));
     root.appendChild(checkbox('Metastatic solid tumor', 'ch-mets'));
     root.appendChild(checkbox('AIDS', 'ch-aids'));
     const o = out(); root.appendChild(o);
@@ -2544,7 +2544,7 @@ export const renderers = {
     ]));
     root.appendChild(checkbox('Heart rate >= 125 bpm (1)', 'sc-hr'));
     root.appendChild(checkbox('Confusion / new-onset (1)', 'sc-conf'));
-    root.appendChild(el('h3', { text: 'Oxygenation (any positive triggers 2 points; age-adjusted)' }));
+    root.appendChild(el('h2', { text: 'Oxygenation (any positive triggers 2 points; age-adjusted)' }));
     root.appendChild(el('p', { class: 'muted', text: 'Age <=50: PaO2 <70 OR SpO2 <94% OR P/F <333. Age >50: PaO2 <60 OR SpO2 <90% OR P/F <250.' }));
     root.appendChild(el('p', {}, [
       el('label', { for: 'sc-pao2', text: 'PaO2 (mmHg; blank if unknown)' }), el('br'),
@@ -2610,10 +2610,10 @@ export const renderers = {
 
   // spec-v13 §3.7.3 wave 13-7: ATS/IDSA Severe CAP (Metlay 2019).
   'ats-idsa-cap'(root) {
-    root.appendChild(el('h3', { text: 'Major criteria (any one -> severe)' }));
+    root.appendChild(el('h2', { text: 'Major criteria (any one -> severe)' }));
     root.appendChild(checkbox('Septic shock requiring vasopressors', 'ai-major-vp'));
     root.appendChild(checkbox('Respiratory failure requiring mechanical ventilation', 'ai-major-mv'));
-    root.appendChild(el('h3', { text: 'Minor criteria (>=3 -> severe)' }));
+    root.appendChild(el('h2', { text: 'Minor criteria (>=3 -> severe)' }));
     const minors = [
       ['Respiratory rate >= 30 / min', 'ai-rr'],
       ['PaO2/FiO2 <= 250', 'ai-pf'],
@@ -2650,7 +2650,7 @@ export const renderers = {
 
   // spec-v13 §3.7.4 wave 13-7: DRIP Score (Webb 2016).
   drip(root) {
-    root.appendChild(el('h3', { text: 'Major risk factors (each +2)' }));
+    root.appendChild(el('h2', { text: 'Major risk factors (each +2)' }));
     const majors = [
       ['Antibiotic use in past 60 days', 'dr-abx'],
       ['Long-term care facility residence', 'dr-ltc'],
@@ -2658,7 +2658,7 @@ export const renderers = {
       ['Prior multidrug-resistant isolate', 'dr-mdr'],
     ];
     for (const [l, id] of majors) root.appendChild(checkbox(l, id));
-    root.appendChild(el('h3', { text: 'Minor risk factors (each +1)' }));
+    root.appendChild(el('h2', { text: 'Minor risk factors (each +1)' }));
     const minors = [
       ['Hospitalization in past 60 days', 'dr-hosp'],
       ['Chronic pulmonary disease', 'dr-cpd'],
@@ -3208,7 +3208,7 @@ export const renderers = {
 
   // spec-v14 §3.2.2 wave 14-2 backfill: Berlin Questionnaire (Netzer 1999).
   'berlin-osa'(root) {
-    root.appendChild(el('h3', { text: 'Category 1: snoring (positive if >=2 answers below)' }));
+    root.appendChild(el('h2', { text: 'Category 1: snoring (positive if >=2 answers below)' }));
     const cat1 = [
       ['Do you snore?', 'bo-q1'],
       ['Is your snoring louder than talking?', 'bo-q2'],
@@ -3217,14 +3217,14 @@ export const renderers = {
       ['Has anyone noticed you stop breathing during sleep >=3-4 times/week?', 'bo-q5'],
     ];
     for (const [l, id] of cat1) root.appendChild(checkbox(l, id));
-    root.appendChild(el('h3', { text: 'Category 2: daytime sleepiness (positive if >=2)' }));
+    root.appendChild(el('h2', { text: 'Category 2: daytime sleepiness (positive if >=2)' }));
     const cat2 = [
       ['Tired or fatigued after sleep >=3-4 times/week?', 'bo-q6'],
       ['Tired/fatigued during waking hours >=3-4 times/week?', 'bo-q7'],
       ['Have you nodded off or fallen asleep while driving?', 'bo-q8'],
     ];
     for (const [l, id] of cat2) root.appendChild(checkbox(l, id));
-    root.appendChild(el('h3', { text: 'Category 3: hypertension or obesity (positive if either)' }));
+    root.appendChild(el('h2', { text: 'Category 3: hypertension or obesity (positive if either)' }));
     const cat3 = [
       ['Hypertension (history of high blood pressure)', 'bo-htn'],
       ['BMI > 30 kg/m^2', 'bo-bmi'],
@@ -4829,7 +4829,7 @@ export const renderers = {
 
   // spec-v40 §2.1: GUSS (Trapl 2007). Two-stage post-stroke dysphagia screen.
   guss(root) {
-    root.appendChild(el('h3', { text: 'Stage 1: preliminary investigation (must score 5 to proceed)' }));
+    root.appendChild(el('h2', { text: 'Stage 1: preliminary investigation (must score 5 to proceed)' }));
     const stage1 = [
       ['Vigilance: patient awake / alert (1) vs none (0)',   'gu-vig', 'vigilance'],
       ['Voluntary cough or throat clearing (1) vs no (0)',   'gu-cgh', 'coughClear'],
@@ -4844,7 +4844,7 @@ export const renderers = {
       ['Solid',     'so', 'solid'],
     ];
     for (const [label, prefix] of consistencies) {
-      root.appendChild(el('h3', { text: `Stage 2: ${label} (must score 5 to advance to next consistency)` }));
+      root.appendChild(el('h2', { text: `Stage 2: ${label} (must score 5 to advance to next consistency)` }));
       root.appendChild(rangeField('Deglutition (0 not possible - 1 delayed - 2 successful)', `gu-${prefix}Sw`, 0, 2, 2));
       root.appendChild(rangeField('No involuntary cough (1) vs cough (0)',                    `gu-${prefix}Cg`, 0, 1, 1));
       root.appendChild(rangeField('No drooling (1) vs drooling (0)',                          `gu-${prefix}Dr`, 0, 1, 1));

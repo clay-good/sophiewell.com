@@ -138,7 +138,7 @@ export const renderers = {
       const ids = [];
       for (const step of data.steps) {
         const sec = el('section');
-        sec.appendChild(el('h3', { text: `Step ${step.step}: ${step.name}` }));
+        sec.appendChild(el('h2', { text: `Step ${step.step}: ${step.name}` }));
         for (const c of step.criteria) {
           const cb = checkbox(c.label, `ft-${c.id}`);
           sec.appendChild(cb);

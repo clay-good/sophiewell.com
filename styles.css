@@ -1699,9 +1699,16 @@ button:active { transform: translateY(1px) scale(0.985); }
   cursor: pointer;
   font-weight: 600;
 }
-.tile-derivation h4 {
+.tile-derivation-dl {
+  margin: 0;
+}
+.tile-derivation dt {
   margin: 0.75rem 0 0.25rem;
   font-size: 0.95rem;
+  font-weight: 600;
+}
+.tile-derivation dd {
+  margin: 0;
 }
 .tile-derivation pre.tile-derivation-formula {
   white-space: pre-wrap;

@@ -618,7 +618,7 @@ export const renderers = {
         el('li', { text: `HHS notice deadline: ${r.hhsNoticeDeadline}` }),
       ]));
       const recipients = el('ul', {}, r.recipients.map((s) => el('li', { text: s })));
-      o.appendChild(el('h3', { text: 'Recipients' }));
+      o.appendChild(el('h2', { text: 'Recipients' }));
       o.appendChild(recipients);
       o.appendChild(el('p', { class: 'muted', text: r.note }));
       renderCompleteness(o, lintGenerator('breach-notice', {

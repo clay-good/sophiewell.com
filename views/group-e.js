@@ -377,10 +377,10 @@ export const renderers = {
   },
 
   'corrected-ca-na'(root) {
-    root.appendChild(el('h3', { text: 'Corrected Calcium' }));
+    root.appendChild(el('h2', { text: 'Corrected Calcium' }));
     root.appendChild(unitField('Measured Ca', 'ca', CALCIUM_UNITS));
     root.appendChild(unitField('Albumin', 'cca-alb', ALBUMIN_UNITS));
-    root.appendChild(el('h3', { text: 'Corrected Sodium (Katz)' }));
+    root.appendChild(el('h2', { text: 'Corrected Sodium (Katz)' }));
     root.appendChild(field('Measured Na (mEq/L)', 'csna-na'));
     root.appendChild(unitField('Glucose', 'glu', GLUCOSE_UNITS));
     const o = out(); root.appendChild(o);
@@ -524,12 +524,12 @@ export const renderers = {
   },
 
   'fena-feurea'(root) {
-    root.appendChild(el('h3', { text: 'FENa' }));
+    root.appendChild(el('h2', { text: 'FENa' }));
     root.appendChild(field('Urine Na (mEq/L)', 'fn-una'));
     root.appendChild(field('Plasma Na (mEq/L)', 'fn-pna'));
     root.appendChild(field('Urine Cr (mg/dL)', 'fn-ucr'));
     root.appendChild(field('Plasma Cr (mg/dL)', 'fn-pcr'));
-    root.appendChild(el('h3', { text: 'FEUrea' }));
+    root.appendChild(el('h2', { text: 'FEUrea' }));
     root.appendChild(field('Urine urea (mg/dL)', 'fu-uu'));
     root.appendChild(field('Plasma urea (BUN, mg/dL)', 'fu-pu'));
     const o = out(); root.appendChild(o);

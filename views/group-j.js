@@ -116,7 +116,7 @@ export const renderers = {
   },
 
   'tb-testing'(root) {
-    root.appendChild(el('h3', { text: 'TST induration interpretation' }));
+    root.appendChild(el('h2', { text: 'TST induration interpretation' }));
     root.appendChild(el('p', {}, [
       el('label', { for: 'tb-mm', text: 'Induration (mm)' }), el('br'),
       el('input', { id: 'tb-mm', type: 'number', step: '1', value: '0' }),
@@ -137,7 +137,7 @@ export const renderers = {
         const mm = num('tb-mm');
         const cutoff = Number(document.getElementById('tb-risk').value);
         o.appendChild(el('h2', { text: `TST: ${mm} mm vs cutoff ${cutoff} mm -> ${mm >= cutoff ? 'POSITIVE' : 'Negative'}` }));
-        o.appendChild(el('h3', { text: 'IGRA interpretation reference' }));
+        o.appendChild(el('h2', { text: 'IGRA interpretation reference' }));
         const ul = el('ul');
         for (const r of d.igra) ul.appendChild(el('li', { text: `${r.result}: ${r.interpretation}` }));
         o.appendChild(ul);

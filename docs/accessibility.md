@@ -17,8 +17,13 @@ both pass against the v4 (encryptalotta-style) chrome.
       [app.js](../app.js) `renderToolView`.
 - [x] Heading levels never skip. Home uses h1 (visually-hidden) - h2
       (visually-hidden Filters / Tools) - h3 (group section labels). Tool
-      views use h1 (tool name) - h2 (Data sources). Enforced by
-      `scripts/a11y-check.mjs`.
+      views use h1 (tool name) - h2 (result + section headings); the
+      derivation "show your work" block is a `<dl>`, not headings, so it
+      never adds a level. `scripts/a11y-check.mjs` checks the static
+      `index.html` order; the dynamic per-tile body is enforced at runtime
+      by the heading-order sweep in
+      [test/integration/all-tools.spec.js](../test/integration/all-tools.spec.js)
+      (asserts every rendered tile's headings step by at most one level).
 - [x] Landmarks are used: `header` (`.topbar`), `main` (`#main`),
       `footer` (`.site-footer`), `nav` is implicit via the topbar brand link
       and the in-tool breadcrumb back button. `section` is used for the
@@ -77,11 +82,22 @@ both pass against the v4 (encryptalotta-style) chrome.
 
 ## Automated checks
 
-- [x] axe-core runs via `npm run test:a11y` in CI on every utility view
-      ([test/integration/smoke.spec.js](../test/integration/smoke.spec.js)
-      visits a card from each group).
-      `scripts/a11y-check.mjs` adds a static structural pass that is part
-      of `npm test` and the CI workflow `unit` job.
+The project ships no axe-core dependency (the runtime-dependency budget keeps
+it dependency-free, spec-v10 §2.2). Accessibility is enforced by purpose-built,
+dependency-free checks instead:
+
+- [x] `scripts/a11y-check.mjs` — a static structural pass over the renderer
+      source and `index.html` (label/`for` associations, landmark and
+      heading-order in the static shell). Part of `npm test` and the CI `unit`
+      job.
+- [x] Runtime DOM sweeps in
+      [test/integration/all-tools.spec.js](../test/integration/all-tools.spec.js)
+      (CI `e2e` job, chromium) boot every tile route and assert, against the
+      real rendered DOM, that (a) every form control has an accessible name and
+      (b) no heading level is skipped — the dynamic cases the static pass cannot
+      see.
+- [x] [test/integration/smoke.spec.js](../test/integration/smoke.spec.js) drives
+      a representative tile from each group end to end in a real browser.
 
 ## Manual pass
 

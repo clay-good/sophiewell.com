@@ -138,7 +138,7 @@ export const renderers = {
         lines.push(`${kgIn} kg = ${r.lb} lb ${r.oz.toFixed(1)} oz`);
       }
       o.appendChild(el('ul', {}, lines.map((l) => el('li', { text: l }))));
-      o.appendChild(el('h3', { text: 'Common neonatal/infant weight reference' }));
+      o.appendChild(el('h2', { text: 'Common neonatal/infant weight reference' }));
       o.appendChild(el('ul', {}, [
         el('li', { text: 'Term newborn: ~3.5 kg (range 2.5-4.5 kg)' }),
         el('li', { text: 'LBW: <2.5 kg' }),

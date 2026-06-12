@@ -89,6 +89,37 @@ test('every form control in every tool view has an accessible name', async ({ pa
   expect(offenders, `form controls with no accessible name:\n${offenders.join('\n')}`).toEqual([]);
 });
 
+// Accessibility: heading levels in a rendered tile body must not skip a level
+// (WCAG 1.3.1 Info and Relationships, 2.4.10 Section Headings). The page name
+// is the `.content > h1`; a renderer whose first section heading is an <h3>
+// produces an h1->h3 skip that a screen-reader's heading navigation reports as a
+// missing level. The static a11y-check only validates heading order in
+// index.html, and the h1 test above only checks h1 presence, so this dynamic
+// case slips through both. chromium-only (DOM-driven, engine-agnostic).
+test('no tool view skips a heading level (h1 -> h3 with no h2)', async ({ page, browserName }) => {
+  test.skip(browserName !== 'chromium', 'heading-order sweep is chromium-only (DOM-driven, engine-agnostic)');
+  test.setTimeout(180_000);
+  const ids = await discoverIds(page);
+  const offenders = [];
+  for (const id of ids) {
+    await page.goto('/#' + id, { waitUntil: 'load' });
+    await page.waitForTimeout(40);
+    const skips = await page.evaluate(() => {
+      const hs = [...document.querySelectorAll('.content h1, .content h2, .content h3, .content h4, .content h5, .content h6')]
+        .map((el) => ({ level: Number(el.tagName[1]), text: el.textContent.trim().slice(0, 40) }));
+      const out = [];
+      let prev = 0;
+      for (const h of hs) {
+        if (prev !== 0 && h.level > prev + 1) out.push(`h${prev}->h${h.level} "${h.text}"`);
+        prev = h.level;
+      }
+      return out;
+    });
+    if (skips.length) offenders.push(`${id}: ${skips.join('; ')}`);
+  }
+  expect(offenders, `heading-level skips:\n${offenders.join('\n')}`).toEqual([]);
+});
+
 test('every tool route exposes a working back button to home', async ({ page }) => {
   test.setTimeout(120_000);
   const ids = await discoverIds(page);
