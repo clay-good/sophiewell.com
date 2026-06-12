@@ -122,10 +122,11 @@ dependency-free checks instead:
       sets `animation: none !important; transition: none !important` for
       `prefers-reduced-motion: reduce`.
 - [x] The page is usable at 200 percent zoom without horizontal scroll on
-      a common desktop width. The container max-width is 1200px and the
-      home grid uses `repeat(auto-fill, minmax(240px, 1fr))` so cards
-      reflow into a single column on narrow viewports; the responsive
-      media query at 700px collapses the grid further.
+      a common desktop width. The `.container` max-width is `--content-max`
+      (1200px) and every block inside it (the hero-search combobox, the
+      static browse-by-category nav, and each tile's single-column form)
+      is fluid-width, so content reflows rather than overflowing; the
+      responsive media queries at 700px and 600px tighten spacing further.
 - [x] No view scrolls horizontally at 320px (the narrowest mainstream
       phone width). Enforced catalog-wide:
       `test/integration/mobile-no-hscroll.spec.js` sweeps every tile from

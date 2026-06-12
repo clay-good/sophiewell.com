@@ -216,7 +216,7 @@ use your EHR, CMS, FDA, or NUBC source instead.
 
 The user flow is simple: type what you need into the hero search
 ("wells PE", "CHA2DS2-VASc", "ICD-10", "magnesium replacement") or
-pick a tile from the disclosure-collapsible home grid, enter input,
+follow one of the static browse links below it, enter input,
 read output. The hero consults a hand-curated synonym table
 (`data/synonyms.json`, spec-v7 section 3.2) before falling back to
 fuzzy matching, and shows a one-line breadcrumb explaining why a
@@ -699,9 +699,9 @@ session, and nothing to log.
 ### Repository layout
 
 ```
-index.html          single-page shell (hero search, home grid, tile mount)
+index.html          single-page shell (hero-search combobox + static browse-by-category nav, tile mount)
 styles.css          one stylesheet (responsive; no horizontal scroll — enforced catalog-wide at 320px in CI)
-app.js              router, filters, view wiring, the UTILITIES catalog
+app.js              router, hero-search wiring, view wiring, the UTILITIES catalog
                     (337 tiles — the single source of truth; zero runtime deps)
 sw.js               service worker — precache shell, cache shards by build hash
 theme.js            light/dark theme toggle (writes only sw-theme, allowlisted)
@@ -774,7 +774,7 @@ threshold (so a weak partial match returns `null` rather than a wrong tool):
 | Per-token match in the **name** | +3 | tokenized `name` |
 | Per-token match in the **description** | +1 | tokenized `desc` |
 | Per-token match in an **audience / tag / specialty** | +1 | `audiences` + `tags` + `specialties` |
-| Audience-aligned with the active chip | +2 | the `#a=` audience filter |
+| Audience-aligned with the active audience | +2 | the `#a=` deep-link audience (nurse-first by default) |
 | Audience-misaligned | −2 | — |
 | **Surfacing threshold** | **3** | a result must score ≥ 3 |
 
@@ -1257,7 +1257,7 @@ rules, not soft preferences.
 | `npm run dev`            | Serve the directory locally on http://localhost:4173 (set `SERVE_ROOT=dist` to preview the pre-rendered hubs/topics/tool pages as production serves them) |
 | `npm run build`          | Copy static files into `dist/` for deployment                     |
 | `npm test`               | Run the full test suite (unit, a11y, grep, data integrity)        |
-| `npm run test:unit`      | Run Node's built-in unit tests (3,045 tests)                      |
+| `npm run test:unit`      | Run Node's built-in unit tests (3,468 tests)                      |
 | `npm run test:e2e`       | Build `dist/`, then run Playwright integration tests against real browsers — incl. a full-catalog 320px no-horizontal-scroll sweep over both the SPA routes and the 337 pre-rendered static tool pages, the hub/topic/commitments pages, and the citation-wrap pin |
 | `npm run test:a11y`      | Run accessibility checks on every utility view                    |
 | `npm run lint`           | ESLint + the CI gate chain: grep-check, output-safety, citation-integrity, catalog-truth, commitments, PA staleness, PA audit |

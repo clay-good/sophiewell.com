@@ -6,6 +6,36 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Fixed (housekeeping — documentation drift left by the spec-v51/v53 home redesign and the session 8–10 dead-UI prune)
+
+The filter-chip + tile-grid home was replaced by the `#hero-search` combobox in
+spec-v51/v53, and the dead JS/CSS for it was removed in sessions 8–10, but
+several prose docs still described the retired UI as live. This pass corrects the
+last of that drift — no runtime code changed (the one `lib/prompt.js` edit is a
+comment); lint, the 3,468 unit tests, and the e2e suite stay green.
+
+- `README.md`: (1) the user-flow text said "pick a tile from the
+  disclosure-collapsible home grid" — now "follow one of the static browse links
+  below it" (the home is the hero-search combobox + a static browse-by-category
+  nav); (2) the repository-layout block called `index.html` a shell with a "home
+  grid" and listed app.js as carrying "filters" — corrected to the
+  hero-search-combobox + browse-nav shell and "hero-search wiring"; (3) the
+  discovery ranker rubric row "Audience-aligned with the active chip" became
+  "Audience-aligned with the active audience" sourced from "the `#a=` deep-link
+  audience (nurse-first by default)", since the chip UI is gone; (4) the unit-test
+  count was stale at 3,045 — now 3,468.
+- `docs/architecture.md`: the Overview and Runtime-Architecture sections still
+  described "a tile grid of utilities" with "a filter bar … chip set" — rewritten
+  to the hero-search combobox + static browse nav, noting the `#a=` deep-link
+  audience bias replaces the on-page filter bar.
+- `docs/accessibility.md`: the 200%-zoom item cited the removed
+  `repeat(auto-fill, minmax(240px, 1fr))` home-grid CSS; reworded to the current
+  fluid-width `.container` (`--content-max` 1200px) reflow and the 700px/600px
+  media queries.
+- `lib/prompt.js`: header comment "the active audience chip" → "the active
+  audience (the `#a=` deep-link, nurse-first by default; the chip-filter UI was
+  removed in spec-v51/v53)". Comment-only; no behavior change.
+
 ### Removed (housekeeping — 355 lines of dead filter/grid machinery from app.js)
 
 The spec-v51/v53 home redesign replaced the old tile-grid + filter-chip +

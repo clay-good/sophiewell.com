@@ -4,8 +4,9 @@
 
 sophiewell.com is a single-page static web application. There is no backend. The
 browser receives `index.html`, `styles.css`, and `app.js` from the same origin,
-boots a vanilla JavaScript application, and renders a tile grid of utilities.
-Each utility runs entirely client side and operates either on user-supplied
+boots a vanilla JavaScript application, and renders the home view (a
+hero-search combobox over all 337 utilities plus a static browse-by-category
+nav). Each utility runs entirely client side and operates either on user-supplied
 input or on bundled reference data served from the same origin.
 
 The application is structurally identical in spirit to encryptalotta.com: one
@@ -52,11 +53,14 @@ file host; it serves files and nothing else.
 
 The user navigates to sophiewell.com. The browser receives `index.html`,
 `styles.css`, and `app.js`. The application boots, registers a service worker
-for offline use, and renders the home view with a tile grid. A filter bar at
-the top of the grid lets the user filter by the spec-v29 §5.3 chip set
-(All / Nurse / Doctor / Pharmacist / RT / EMS / Biller-Coder / Educator;
-Nurse is the on-first-visit default) and by group. Selecting a tile loads
-only the data shards relevant to that utility (when a tile needs one).
+for offline use, and renders the home view: a `#hero-search` combobox and a
+static browse-by-category nav (the spec-v51/v53 redesign replaced the earlier
+tile-grid + audience-filter-chip home). The combobox routes a typed query
+through a deterministic name/id ranker plus the `lib/prompt.js` synonym/phrasing
+resolver; an `#a=<audience>` deep-link still biases that resolver toward one of
+the spec-v29 §5.3 audiences (Nurse is the default), but there is no on-page
+filter bar. Selecting a tile loads only the data shards relevant to that utility
+(when a tile needs one).
 No data is loaded eagerly. Most tiles ship no shard at all — the formula
 is in `app.js` / `lib/*.js` and the citation is in `lib/meta.js`.
 
