@@ -6,6 +6,31 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Fixed (robustness — a malformed URL fragment crashed the router instead of resolving to home)
+
+`parseHash` ([lib/hash.js](lib/hash.js)) decoded the route, sub-segment, `q=`
+state body, and `a=`/`b=` values with bare `decodeURIComponent`. A fragment with
+a malformed percent-escape — a stray `%`, a truncated multibyte sequence
+(`#%E0%A4`), or invalid UTF-8 (`#%FF`) — makes `decodeURIComponent` throw
+`URIError`, and because `parseHash` runs inside `boot()` and `route()` with no
+guard, the throw propagated and white-screened the page. Such fragments arrive
+from corrupted bookmarks, hand-truncated share links, and fuzzers.
+
+- Added a `safeDecode` helper that returns the raw, still-encoded segment on
+  `URIError` instead of throwing. This honors the file's existing contract — a
+  fragment the parser cannot make sense of resolves to the home view, never a
+  crash: the raw segment misses the `UTIL_BY_ID` lookup in `route()`, which
+  already falls back to `restoreHome()`. All five decode sites now route through
+  it; `lib/hash.js` is the only `decodeURIComponent` consumer in the codebase
+  (verified), so the surface is fully closed.
+- Regression test in [test/unit/hash.test.js](test/unit/hash.test.js): malformed
+  escapes in every segment (route, sub, `q=`, `a=`, `b=`) no longer throw, and
+  the parse still yields a usable shape (`#%FF` → `route:'%FF'`, empty state →
+  router lands on home).
+- Drive-by: corrected one stale "above the home grid" comment in `app.js`'s
+  removed-tile-note path to "above the home view" (the grid was retired in
+  spec-v51/v53). Comment-only.
+
 ### Fixed (housekeeping — documentation drift left by the spec-v51/v53 home redesign and the session 8–10 dead-UI prune)
 
 The filter-chip + tile-grid home was replaced by the `#hero-search` combobox in

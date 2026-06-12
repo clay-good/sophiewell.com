@@ -1114,7 +1114,7 @@ function route() {
     currentRouteId = null;
     restoreHome();
     // spec-v29 wave 29-2: removed-tile hashes show a one-line note above
-    // the home grid. The note is inserted on every navigation so that
+    // the home view. The note is inserted on every navigation so that
     // following a removed-tile permalink always surfaces the explanation.
     if (REMOVED_V29_IDS.has(id)) {
       const main = getMain();

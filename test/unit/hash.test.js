@@ -50,6 +50,27 @@ test('buildHash: audience=all is non-default and emits a=all (spec-v29 §5.3)', 
   assert.equal(buildHash({ route: 'bmi', audience: 'all' }), '#bmi&a=all');
 });
 
+test('parseHash: malformed percent-escapes never throw (route, sub, q, a, b)', () => {
+  // A stray "%", a truncated multibyte escape, and invalid UTF-8 all make
+  // decodeURIComponent throw URIError. parseHash must degrade to the raw
+  // segment rather than propagate the throw into boot()/route() and
+  // white-screen the page (corrupted bookmark / truncated share link / fuzzer).
+  assert.doesNotThrow(() => parseHash('#%FF'));
+  assert.doesNotThrow(() => parseHash('#%E0%A4'));
+  assert.doesNotThrow(() => parseHash('#bmi/%C3%28'));
+  assert.doesNotThrow(() => parseHash('#bmi&q=%E0%A4%A'));
+  assert.doesNotThrow(() => parseHash('#&a=%FF'));
+  assert.doesNotThrow(() => parseHash('#&b=%FF'));
+  // The fragment still parses to a usable shape: a bad route falls back to the
+  // raw (unmatched) string, so the router lands on home rather than crashing.
+  assert.equal(parseHash('#%FF').route, '%FF');
+  assert.deepEqual(parseHash('#%FF').state, {});
+  // A malformed q-body keeps the rest of the parse intact (route survives).
+  assert.equal(parseHash('#bmi&q=%E0%A4%A').route, 'bmi');
+  // A malformed audience falls back to the raw token, not the default crash.
+  assert.equal(parseHash('#&a=%FF').audience, '%FF');
+});
+
 test('parseHash: route + sub', () => {
   const r = parseHash('#icd10/I10');
   assert.equal(r.route, 'icd10');
