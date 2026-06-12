@@ -6,6 +6,35 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Fixed (documentation/config accuracy + removed dead keyboard grid-nav)
+
+A doc/security/perf-accuracy audit found several committed claims that no longer
+matched the shipped artifact, plus a dead code path:
+
+- **CSP drift (security docs).** `docs/threat-model.md` and `SECURITY.md` still
+  documented the pre-OCR `script-src 'self'`; the deployed CSP (in `_headers`)
+  is `script-src 'self' 'wasm-unsafe-eval'` — the `'wasm-unsafe-eval'` token was
+  added for the vendored on-device OCR engine and permits only same-origin WASM
+  compilation (not `eval`/`Function`/inline script). Both docs now quote the real
+  CSP with that clarification.
+- **performance.md drift.** Corrected four stale claims against the actual
+  `.lighthouserc.json`: the run is `preset: "desktop"` with Slow-4G-class
+  throttling (not "Slow 4G, mid-range Android emulation"); the timing metrics and
+  the performance score are `warn` assertions (not build-failing) while only the
+  accessibility/best-practices/SEO category floors are hard `error` gates; the
+  config asserts **no** `resource-summary` byte-budget (that claim was removed);
+  and Lighthouse runs in its own `lighthouse` CI job (not the `e2e` job).
+- **Stale Lighthouse URLs.** `.lighthouserc.json` sampled `#icd10` (a v29-removed
+  tile) and `#mpfs` (a dataset, not a tile); replaced with the real `#egfr` and
+  `#wells-pe` routes. Verified the suite still passes (`@lhci/cli` exit 0; the
+  category-floor gates hold).
+- **Dead keyboard grid-nav.** `lib/keyboard.js` still registered a capture-phase
+  `keydown` handler (`onGridKey` + `tileLinks` + `computeColumns`) navigating a
+  `#tile-grid`/`.tile-link` element grid that was removed in spec-v51/v53 — the
+  guard `classList.contains('tile-link')` was permanently false. Removed the dead
+  handler and its listener; the live G-leader shortcuts and the `?` overlay are
+  untouched (keyboard tests still pass).
+
 ### Fixed (spec-v71 — `psi` Risk Class I was unreachable; every low-risk young patient was mislabeled Class II; +0 catalog delta)
 
 The Pneumonia Severity Index assigned **Risk Class I** with `age <= 50 && pts ===

@@ -35,9 +35,12 @@ summary:
 - A strict Content Security Policy is set both via `<meta>` and via real
   HTTP response headers in [`_headers`](_headers) (Cloudflare Pages) and
   [`scripts/serve.mjs`](scripts/serve.mjs) (local dev). The deployed CSP
-  is `default-src 'self'; script-src 'self'; style-src 'self'
-  'unsafe-inline'; img-src 'self' data:; connect-src 'self'; form-action
-  'self'; base-uri 'self'; frame-ancestors 'none'; object-src 'none'`.
+  is `default-src 'self'; script-src 'self' 'wasm-unsafe-eval'; style-src
+  'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'self';
+  form-action 'self'; base-uri 'self'; frame-ancestors 'none'; object-src
+  'none'`. The `'wasm-unsafe-eval'` token permits only same-origin
+  WebAssembly compilation for the vendored on-device OCR engine
+  (`lib/pa/ocr.js`); it does not permit `eval`, `Function`, or inline scripts.
 - All data shards under `data/` are integrity-verified at build time by
   [`scripts/verify-integrity.mjs`](scripts/verify-integrity.mjs)
   against SHA-256 hashes recorded in each dataset's `manifest.json`.

@@ -5,8 +5,8 @@
       "url": [
         "http://localhost/index.html",
         "http://localhost/index.html#bmi",
-        "http://localhost/index.html#mpfs",
-        "http://localhost/index.html#icd10",
+        "http://localhost/index.html#egfr",
+        "http://localhost/index.html#wells-pe",
         "http://localhost/index.html#gcs"
       ],
       "numberOfRuns": 1,

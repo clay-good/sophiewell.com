@@ -18,9 +18,13 @@ Mitigations:
   or `createTextNode` for any user-derived value.
 - `innerHTML` is forbidden in the codebase, enforced by an ESLint rule and a
   CI grep check.
-- The Content Security Policy disallows inline script (`script-src 'self'`).
+- The Content Security Policy disallows inline script
+  (`script-src 'self' 'wasm-unsafe-eval'`). The `'wasm-unsafe-eval'` token
+  permits only same-origin WebAssembly compilation — required by the vendored
+  on-device OCR engine (`lib/pa/ocr.js`, tesseract) — and does **not** permit
+  inline `<script>` or string evaluation.
 - The CSP disallows `eval` and the `Function` constructor by virtue of
-  omitting `unsafe-eval`.
+  omitting `unsafe-eval` (`wasm-unsafe-eval` gates only WASM, not `eval`).
 
 ### T2. Network exfiltration of pasted user data
 

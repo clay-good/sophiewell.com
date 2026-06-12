@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `6a5d3f01719f4ee3`
-Generated: 2026-06-12T00:37:00.214Z
+Build ID: `4f99f878352ccbe0`
+Generated: 2026-06-12T01:23:42.601Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=20.18.1 <21, npm >=10.0.0
@@ -59,7 +59,7 @@ downloads is committed in this repository and is hashed below.
 | `lib/field.js` | 12156 | `6a6b07f76a519a8f873a37a9b57c52909e9088c3a09bd256e0ac60240e16d2ea` |
 | `lib/hash.js` | 3985 | `ba49aa8fce1db3444491fbc5804508e9dd1839adac68bcb0e3c71f6943d6a873` |
 | `lib/input-persist.js` | 4716 | `aa35b830df15bd1410a5f80c3829b6092122f0118d72d3f581c64d5678e94427` |
-| `lib/keyboard.js` | 6212 | `c36b2aadd7a92062c45f07be84af28d6521e636707c5feac1044a4dd783b7ac3` |
+| `lib/keyboard.js` | 4876 | `631f85b7b49a68ca7aa8e3c3d31cfbfbefb44360a5aace83305ed27d5e0d8ee0` |
 | `lib/keywords.js` | 2715 | `8ba3e40698eaf14947556b0d2078f168a99e8589644808057fa1b453d903a742` |
 | `lib/lab-interpret.js` | 29621 | `be761b932dc862967f40f148b094209b01ef6594ecc5c06c603db46feaa30514` |
 | `lib/live.js` | 1138 | `304978d3c170b6eb06cade7702e5f99d868e9b3e1f5651aa9a28da15e62a6a9c` |
@@ -86,7 +86,7 @@ downloads is committed in this repository and is hashed below.
 | `lib/prompt.js` | 6872 | `95ee9b9de5adbafd1497f378993e27d29c9f437bfc9ddc304886fd75e80fffd4` |
 | `lib/regulatory.js` | 8260 | `c65d46053e1a36ff443d8c518dc6cbae1d61e35dc640ddc9a1ad483d07eb62e4` |
 | `lib/result-copy.js` | 1745 | `0389d38cabd3d8adca91096d93e663a5e446f3062f6282d0fb7e77f5a0ffad93` |
-| `lib/scoring-v4.js` | 227539 | `0a2df61e1801de09646735c7b03329c0ca1b167d641977cc89899cdfa39fa6dc` |
+| `lib/scoring-v4.js` | 228126 | `41af85021cb6517a6a14e75b14b7b445fc4e0f2f3e771f1e0df531ab468af485` |
 | `lib/scoring-v5.js` | 13048 | `3fabc60daa3144ffbb37e6016de326a427649ca545b9bd32a9ee2fb2c7126b60` |
 | `lib/scoring-v6.js` | 26559 | `4f2d7d77c536dce8d356539e2c69f941feb34146d251ac96b882c590399ce562` |
 | `lib/screener.js` | 6613 | `e017903130ae2d23cb1560f6ad55990ef3dda443a5ac1e9c289b283e3dcd930b` |
