@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `ad813f4a987b1f67`
-Generated: 2026-06-11T22:40:59.041Z
+Build ID: `a42ba95093e34bbb`
+Generated: 2026-06-11T23:56:23.765Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=20.18.1 <21, npm >=10.0.0
@@ -43,7 +43,7 @@ downloads is committed in this repository and is hashed below.
 | Path | Bytes | SHA-256 |
 |---|---:|---|
 | `lib/bounds.js` | 6360 | `2417098c7e9bd78ba92156465958ea89ef0a4dfac937621ae6141d4607fbf468` |
-| `lib/clinical-v4.js` | 12560 | `03a313ef83a8dcb101c143c0d2e5e423bf2eca6b01cd989da77aaf18a376fabe` |
+| `lib/clinical-v4.js` | 13144 | `a7102763eb24aa82afb9566ee81779fc9433ff2b36d17d70eeed0ae12e7cdd4f` |
 | `lib/clinical-v5.js` | 25042 | `1da466fb812401a08c4a1419f8b5eb579943d80e3626c00749a1b3bc87ac57cc` |
 | `lib/clinical-v6.js` | 16042 | `69c1de74d7f171a3c6e87329c1cb69324758a368a34f1961e6201caec0470f8d` |
 | `lib/clinical-v7.js` | 17904 | `fa45bdf92995662b6f094b14c3817762e33429ce1b2b566397c304b65f9d211d` |
@@ -86,7 +86,7 @@ downloads is committed in this repository and is hashed below.
 | `lib/prompt.js` | 6872 | `95ee9b9de5adbafd1497f378993e27d29c9f437bfc9ddc304886fd75e80fffd4` |
 | `lib/regulatory.js` | 8260 | `c65d46053e1a36ff443d8c518dc6cbae1d61e35dc640ddc9a1ad483d07eb62e4` |
 | `lib/result-copy.js` | 1745 | `0389d38cabd3d8adca91096d93e663a5e446f3062f6282d0fb7e77f5a0ffad93` |
-| `lib/scoring-v4.js` | 226572 | `5f1406a4d2fe5fda0acbee87edc5ea100a275ca8eba9c6991133386a6a8924a6` |
+| `lib/scoring-v4.js` | 227539 | `0a2df61e1801de09646735c7b03329c0ca1b167d641977cc89899cdfa39fa6dc` |
 | `lib/scoring-v5.js` | 13048 | `3fabc60daa3144ffbb37e6016de326a427649ca545b9bd32a9ee2fb2c7126b60` |
 | `lib/scoring-v6.js` | 26559 | `4f2d7d77c536dce8d356539e2c69f941feb34146d251ac96b882c590399ce562` |
 | `lib/screener.js` | 6613 | `e017903130ae2d23cb1560f6ad55990ef3dda443a5ac1e9c289b283e3dcd930b` |

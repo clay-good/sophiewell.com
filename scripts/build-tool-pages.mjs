@@ -252,7 +252,12 @@ ${related.map((r) => `          <li><a href="${SITE}/tools/${r.id}/">${esc(r.nam
     '@type': 'BreadcrumbList',
     itemListElement: [
       { '@type': 'ListItem', position: 1, name: 'Sophie Well', item: `${SITE}/` },
-      { '@type': 'ListItem', position: 2, name: groupLabel, item: `${SITE}/#g-${tile.group}` },
+      // Group is a category label, not a navigable page: the home grid shows it
+      // as a non-clickable section heading and the on-page breadcrumb renders it
+      // as plain text. There is no `#g-<group>` route (it falls through to the
+      // home view), so emitting it as an `item` URL asserted a dead link. A
+      // name-only intermediate ListItem is valid schema.org and mirrors the UI.
+      { '@type': 'ListItem', position: 2, name: groupLabel },
       { '@type': 'ListItem', position: 3, name: tile.name, item: canonical },
     ],
   };

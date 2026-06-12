@@ -88,6 +88,19 @@ test('PCE: out-of-age-range returns informative band', () => {
 test('PCE: throws on bad sex', () => {
   assert.throws(() => ascvdPce({ age: 55, totalChol: 200, hdl: 50, sbp: 120, sex: 'X', race: 'white' }));
 });
+// Regression: a non-finite numeric input must return the guidance band, not
+// render "NaN%". A blank field passes the age-range check (NaN comparisons are
+// false), so the finite guard must run first.
+test('PCE: blank total cholesterol -> guidance band, not NaN', () => {
+  const r = ascvdPce({ age: 55, totalChol: NaN, hdl: 50, sbp: 120, sex: 'M', race: 'white' });
+  assert.equal(r.score, null);
+  assert.match(r.band, /Enter age/);
+});
+test('PCE: blank age -> guidance band (NaN age does not slip past 40-79 check)', () => {
+  const r = ascvdPce({ age: NaN, totalChol: 200, hdl: 50, sbp: 120, sex: 'M', race: 'white' });
+  assert.equal(r.score, null);
+  assert.match(r.band, /Enter age/);
+});
 
 // --- 160 PREVENT 2023 -------------------------------------------------
 test('PREVENT: female low-risk profile -> Low band', () => {
@@ -101,6 +114,12 @@ test('PREVENT: male low-risk profile -> Low or Borderline', () => {
 test('PREVENT: high-risk male -> Intermediate or High', () => {
   const r = prevent10yr({ age: 65, sex: 'M', totalChol: 240, hdl: 35, sbp: 160, treatedSbp: true, diabetes: true, smoker: true, bmi: 32, egfr: 55 });
   assert.ok(r.score > 0.10);
+});
+// Regression: a non-finite numeric input returns the guidance band, not "NaN%".
+test('PREVENT: blank BMI/eGFR -> guidance band, not NaN', () => {
+  const r = prevent10yr({ age: 55, sex: 'M', totalChol: 200, hdl: 50, sbp: 120, bmi: NaN, egfr: 90 });
+  assert.equal(r.score, null);
+  assert.match(r.band, /Enter age/);
 });
 test('PREVENT: out-of-range age', () => {
   const r = prevent10yr({ age: 25, sex: 'M', totalChol: 200, hdl: 50, sbp: 120, diabetes: false, smoker: false, bmi: 25, egfr: 90 });

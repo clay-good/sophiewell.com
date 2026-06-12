@@ -71,6 +71,16 @@ test("Winter's: detects respiratory alkalosis", () => {
   const r = wintersFormula({ hco3: 14, measuredPaco2: 20 });
   assert.match(r.secondaryDisorder, /respiratory alkalosis/);
 });
+// Regression: a blank/non-finite required input must throw (caught by the
+// renderer's safe() wrapper) instead of rendering "NaN" to a clinician.
+test("Winter's: missing HCO3 throws, not NaN", () => {
+  assert.throws(() => wintersFormula({ measuredPaco2: 30 }), /HCO3 must be a finite number/);
+  assert.throws(() => wintersFormula({ hco3: NaN, measuredPaco2: 30 }), /finite/);
+});
+test('osmolalGap: missing measured osmolality throws, not NaN', () => {
+  assert.throws(() => osmolalGap({ sodium: 140, glucoseMgDl: 90, bunMgDl: 14 }), /finite number/);
+  assert.throws(() => osmolalGap({ measuredOsm: 300, sodium: 140, glucoseMgDl: NaN, bunMgDl: 14 }), /finite/);
+});
 
 // --- 122 PP / SI / MSI --------------------------------------------------
 test('pulsePressure: 120/80 -> 40', () => assert.equal(pulsePressure({ sbp: 120, dbp: 80 }), 40));

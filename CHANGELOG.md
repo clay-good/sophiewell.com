@@ -6,6 +6,49 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Fixed (four tiles rendered the literal "NaN" for plausible partial input; +0 catalog delta)
+
+The per-tile `safe()` renderer wrapper only catches *thrown* errors, but
+`NaN.toFixed()` returns the string `"NaN"` without throwing, and the
+`check-output-safety` gate only bans one exact fingerprint — so four computes
+that skipped input validation rendered `NaN` to a clinician on partial input:
+
+- **`winters`** — `wintersFormula` validated `measuredPaco2` but not `hco3`;
+  a value in PaCO2 with HCO3 blank produced "Expected PaCO2: NaN to NaN mmHg".
+- **`osmolal-gap`** — `osmolalGap` did no validation; a blank "measured
+  osmolality" produced "Osmolal gap: NaN".
+- **`ascvd`** / **`prevent`** — `ascvdPce` / `prevent10yr` guarded only the
+  age *range*, but `age < 40 || age > 79` is `false` when a field is `NaN`, so a
+  blank cholesterol/HDL/BP (or even blank age) slipped past and the renderer's
+  `r.score == null` guard failed (`NaN == null` is `false`) → "…risk: NaN%".
+
+Fixes route each through validation the way their sibling computes already do:
+`wintersFormula`/`osmolalGap` now call `num()` (throws on non-finite → caught by
+`safe()`, shows a muted message like the sibling `anion-gap` tiles);
+`ascvdPce`/`prevent10yr` gained a finite-input guard *before* the range check
+that returns the existing `{ score: null, band }` shape with a "Enter …"
+prompt. Every valid-input path is byte-for-byte unchanged (all META examples
+render identically). Added 5 regression tests
+(`clinical-v4.test.js`, `scoring-v4-w56.test.js`).
+
+### Fixed (BreadcrumbList JSON-LD asserted a dead group link on all 337 tool pages; SEO)
+
+`scripts/build-tool-pages.mjs` set the level-2 breadcrumb `item` to
+`https://sophiewell.com/#g-<group>`, but no `#g-<group>` route exists (it falls
+through to the home view) and the on-page breadcrumb renders the group as plain,
+non-clickable text. The structured data therefore asserted a navigable
+category page that doesn't exist. Made the group a **name-only** intermediate
+`ListItem` (no `item` URL) — valid schema.org, mirrors the non-linked on-page
+label, and removes the dead link from every `dist/tools/*/index.html`.
+
+### Fixed (dead ternary in `huntHessWfns`; cleanup, no output change)
+
+`lib/scoring-v4.js` had `else if (g >= 7) wfns = focalMotorDeficit ? 4 : 4` —
+both arms identical. WFNS IV is GCS 7-12 regardless of motor deficit (the
+deficit only splits grades II/III at GCS 13-14, handled above), so simplified to
+`wfns = 4`. Output was already correct; existing tests (GCS 7 no-focal → 4, GCS
+12 with-focal → 4) already prove the behavior is unchanged.
+
 ### Removed (housekeeping — 57 orphaned `data/tool-copy/` files for v29-removed tiles + a guard so they can't re-accumulate)
 
 `data/tool-copy/<id>.json` holds the hand-authored `/tools/<id>/` page copy,
