@@ -6,6 +6,32 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Fixed (spec-v71 — `psi` Risk Class I was unreachable; every low-risk young patient was mislabeled Class II; +0 catalog delta)
+
+The Pneumonia Severity Index assigned **Risk Class I** with `age <= 50 && pts ===
+0`, but the first scoring step always adds the age contribution (`pts += age` for
+men, `age − 10` for women), so `pts === 0` could only hold for a female aged ≤10
+— never a real CAP patient. Class I (0.1% 30-day mortality, the rule's "safe for
+home" headline) was therefore **unreachable**, and a textbook Class I patient
+(young, no comorbidity, no exam abnormality) was always mislabeled Class II. The
+tile's own v11 audit even asserted "age 50, male → Class I", and a unit test was
+named "30yo healthy male → Class I" while its assertion quietly accepted Class II.
+
+- `lib/scoring-v4.js` `psi()`: capture the age term as `agePoints` and assign
+  Class I when `age <= 50 && pts === agePoints` (no points beyond age) — exactly
+  the Fine 1997 (NEJM 1997;336(4):243-250) Step 1 pre-screen the audit documents.
+  No new input, no new tile, no new citation, no renderer change. Classes II–V
+  and every point assignment are byte-for-byte unchanged.
+- Conservative by design: any entered risk factor (comorbidity, exam abnormality,
+  abnormal lab, or nursing-home stay) routes to point scoring, so the rule never
+  under-triages into the 0.1% band. Disposition impact is low (Class I and II are
+  both outpatient), but the class label and the 0.1% vs 0.6% mortality band were
+  wrong.
+- Corrected the mis-named test and added boundary coverage (age 50/51, and
+  risk-factor-routes-out-of-Class-I); `docs/audits/v11/psi.md` re-audited to
+  PASS-WITH-FIXES (fixing its stale "0 points" arithmetic). See
+  [docs/spec-v71.md](docs/spec-v71.md).
+
 ### Fixed (accessibility — heading-level skips across the tile catalog + a permanent guard; WCAG 1.3.1 / 2.4.10)
 
 A runtime sweep of every rendered tile body (the deferred finding from the prior

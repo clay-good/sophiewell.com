@@ -1,13 +1,13 @@
 # v11 audit - PSI / PORT (pneumonia severity) (`psi`)
 
 - Auditor: CG
-- Date: 2026-05-17
+- Date: 2026-06-12 (spec-v71 re-audit: Class I made reachable). Original audit 2026-05-17.
 - Citation re-verified against: Fine MJ, Auble TE, Yealy DM, et al. *A prediction rule to identify low-risk patients with community-acquired pneumonia.* N Engl J Med. 1997;336(4):243-250.
 
-Two-step rule per Fine 1997 Figure 1 + Table 4. Step 1 (Class I): age <= 50, no comorbidity, no exam abnormality -> Class I (low risk). Step 2 (Classes II-V): sum points from age (age in years for men; age-10 for women), nursing-home resident +10, neoplastic disease +30, liver disease +20, CHF +10, cerebrovascular disease +10, renal disease +10, altered mental status +20, RR >= 30 +20, SBP < 90 +20, temp < 35 or >= 40 +15, HR >= 125 +10, pH < 7.35 +30, BUN >= 30 +20, Na < 130 +20, glucose >= 250 +10, Hct < 30 +10, PaO2 < 60 +10, pleural effusion +10. Class thresholds per Fine 1997 Table 4: II <= 70, III 71-90, IV 91-130, V > 130. 30-day mortality per Fine 1997 Table 5: I 0.1%, II 0.6%, III 0.9-2.8%, IV 8.2-9.3%, V 27-31.1%. `lib/scoring-v4.js psi()` implements every point assignment + the Class I short-circuit verbatim.
+Two-step rule per Fine 1997 Figure 1 + Table 4. Step 1 (Class I): age <= 50, no comorbidity, no exam abnormality -> Class I (low risk). Step 2 (Classes II-V): sum points from age (age in years for men; age-10 for women), nursing-home resident +10, neoplastic disease +30, liver disease +20, CHF +10, cerebrovascular disease +10, renal disease +10, altered mental status +20, RR >= 30 +20, SBP < 90 +20, temp < 35 or >= 40 +15, HR >= 125 +10, pH < 7.35 +30, BUN >= 30 +20, Na < 130 +20, glucose >= 250 +10, Hct < 30 +10, PaO2 < 60 +10, pleural effusion +10. Class thresholds per Fine 1997 Table 4: II <= 70, III 71-90, IV 91-130, V > 130. 30-day mortality per Fine 1997 Table 5: I 0.1%, II 0.6%, III 0.9-2.8%, IV 8.2-9.3%, V 27-31.1%. **spec-v71: Class I is implemented as `pts === agePoints` (no points beyond the age contribution) with `age <= 50`. The original `pts === 0` short-circuit was unreachable -- age always contributes points -- so every genuinely low-risk young patient was mislabeled Class II. Any entered risk factor (comorbidity, exam abnormality, abnormal lab, or nursing-home stay) now routes to point scoring, so the rule never under-triages to Class I.**
 
 ## Boundary examples added
-- low (Class I): age 40, male, no comorbidities, no exam findings, no labs entered -> 0 points and age <= 50 -> Class I (0.1% mortality).
+- low (Class I): age 40, male, no comorbidities, no exam findings, no abnormal labs -> 40 age points, no other points -> Class I (0.1% mortality). spec-v71: before the fix this rendered Class II (the unreachable `pts === 0` check); now correctly Class I.
 - mid: META example (age 70, male, RR >= 30 alone among extras) -> 70 + 20 = 90 -> Class III (short observation typically considered; 0.9-2.8% 30-day mortality).
 - high (Class V): age 85, male, nursing home, neoplasm, altered mental status, RR >= 30, SBP < 90, pH 7.25, BUN 50, Na 125, pleural effusion -> 85 + 10 + 30 + 20 + 20 + 20 + 30 + 20 + 20 + 10 = 265 -> Class V (27-31.1% mortality).
 
@@ -32,7 +32,7 @@ Class-boundary edges:
 - Two number inputs (age + sex select) + ~17 checkboxes / numeric labs, all label-bound and Tab-reachable in source order. The output region is `aria-live="polite"`. `npm run test:a11y` clean.
 
 ## Defects opened
-- none
+- spec-v71 (fixed this PR): Risk Class I was unreachable. The check was `age <= 50 && pts === 0`, but the first scoring step always adds the age contribution (`pts += age` for men, `age - 10` for women), so `pts === 0` could only hold for a female aged <= 10 -- never a real CAP patient. Every textbook Class I patient (young, no comorbidity, no exam abnormality) was therefore mislabeled Class II. The original audit even asserted "Age 50, male -> Class I", which the code did not produce. Fixed to `age <= 50 && pts === agePoints` (no points beyond age), matching Fine 1997 Step 1; +3 boundary tests and the mis-named existing test corrected. Disposition impact is low (Class I and II are both outpatient) but the class label and the 0.1% vs 0.6% mortality band were wrong.
 
 ## Status
-- PASS
+- PASS-WITH-FIXES

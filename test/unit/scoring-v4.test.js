@@ -153,11 +153,23 @@ test('curb65: 5 -> ICU', () => {
 });
 
 // --- 142 PSI -----------------------------------------------------------
-test('psi: 30yo healthy male -> Class I', () => {
+test('psi: 30yo healthy male -> Class I (Fine 1997 Step 1)', () => {
+  // A patient <=50 with no risk factor beyond age is Risk Class I. Before the
+  // fix the unreachable `pts === 0` check mislabeled every such patient Class II.
   const r = psi({ age: 30, sex: 'M' });
-  // Note: low-age + sex=F shifts base; for a 30yo M with no comorbidities the
-  // age points alone push into Class II per the published score. Assert numeric.
-  assert.ok(r.score >= 30 && r.score <= 71, `expected 30-71, got ${r.score}`);
+  assert.equal(r.score, 30);
+  assert.match(r.band, /Class I \(/);
+});
+test('psi: Class I boundary at age 50, Class II at 51', () => {
+  assert.match(psi({ age: 50, sex: 'M' }).band, /Class I \(/);
+  assert.match(psi({ age: 51, sex: 'M' }).band, /Class II/);
+});
+test('psi: any risk factor routes out of Class I (no under-triage)', () => {
+  // age <= 50 but a comorbidity / abnormal lab / nursing-home stay must not be
+  // Class I -- it scores into II-V instead.
+  assert.match(psi({ age: 40, sex: 'M', neoplasm: true }).band, /Class II/);
+  assert.match(psi({ age: 40, sex: 'M', bun: 50 }).band, /Class II/);
+  assert.match(psi({ age: 40, sex: 'M', nursingHome: true }).band, /Class II/);
 });
 test('psi: elderly w/ comorbid -> higher class', () => {
   const r = psi({ age: 80, sex: 'M', neoplasm: true, alteredMental: true, sbp90: true });
