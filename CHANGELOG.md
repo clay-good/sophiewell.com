@@ -6,6 +6,39 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Removed (housekeeping — 355 lines of dead filter/grid machinery from app.js)
+
+The spec-v51/v53 home redesign replaced the old tile-grid + filter-chip +
+browse-disclosure + topbar-search UI with a single `#hero-search` combobox, but
+left the driving JavaScript behind. Every one of those functions operated on DOM
+ids/classes that no longer exist in `index.html` (`#tile-grid`, `.tool-card`,
+`.toggle-group`, `#browse-disclosure`, `#topbar-search`, `#empty-state`, …) — all
+null-guarded, so it no-op'd at runtime, but it was ~355 lines of dead code in the
+112 KB main file that every audit re-analyzed.
+
+- Removed `tileMatches`, `applyFilters`, `CHIP_MATCHERS`, `syncToggleGroupState`,
+  `wireFilters`, `installTopbarSearch`, the delegated `.tool-card` document click
+  handler, the never-called `resolveQueryToTileId`, the no-op `updateSynonymHint`
+  (its `#hero-synonym-hint` target was retired), and `openDisclosure`; trimmed the
+  dead DOM blocks out of `boot()` and `restoreHome()`; dropped two unused imports
+  (`buildHash`, `matchSynonym`) and the dead `#tile-grid` scrape inside
+  `tileCorpus`. `app.js` 1760 → 1405 lines.
+- **The synonym chain stays live**: `bindHeroSearch` (called from inside the
+  removed `wireFilters`) was re-homed to direct calls in `boot()` and
+  `restoreHome()`; `resolvePrompt` / `tileCorpus` / `audienceHint` /
+  `SYNONYM_ENTRIES` remain wired into the search (the prior change). Verified
+  in-browser: home search → synonym resolution → navigate to a tile → back to
+  home → search resolves again (the re-bind), zero console errors; lint, 3468
+  unit tests, and 36 e2e (smoke / no-network / all-tools, which boots every route
+  and fails on any console error) all green.
+- `docs/accessibility.md` ARIA notes updated — the filter-toggle `aria-pressed`
+  controls and tool-card grid no longer exist; the home is the combobox.
+- Not done here (follow-up): the corresponding dead CSS rule families
+  (`.tool-card`, `.home-section`, `.filters`, `.toggle-group`, `.toggle`,
+  `.topbar-search`, `.empty-state`) still ship; they never match an element, and
+  pruning them cleanly (a shared `@media print` selector list, scattered `@media`
+  overrides) wants its own screenshot-verified pass.
+
 ### Fixed (hero search silently lost synonym / patient-phrasing resolution in the spec-v51/v53 redesign)
 
 The home `#hero-search` combobox ranked results with `searchUtilities()` /

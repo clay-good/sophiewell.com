@@ -26,8 +26,8 @@ import {
   isRememberEnabled, setRememberEnabled, saveInputs, applySavedInputs, hasPersistableInputs,
 } from './lib/input-persist.js';
 import { installKeyboard } from './lib/keyboard.js';
-import { parseHash, buildHash, patchHash } from './lib/hash.js';
-import { matchSynonym, loadSynonyms } from './lib/synonyms.js';
+import { parseHash, patchHash } from './lib/hash.js';
+import { loadSynonyms } from './lib/synonyms.js';
 import { resolvePrompt } from './lib/prompt.js';
 // The patient-artifact dropzone UI (spec-v7 sec 3.1) was removed when
 // Sophie pivoted to a clinical-staff-first wedge. The orphaned
@@ -588,28 +588,8 @@ function clear(node) {
 
 // spec-v29 §5.3: Nurse is the default-selected audience chip on first visit
 // (nurse-first pivot). URL-hash persists divergence from this default.
-const filterState = {
-  audience: 'nurse',
-  group: 'all',
-  query: '',
-};
+const filterState = { audience: 'nurse' };
 
-// spec-v29 §5.3: each chip filters the grid by the union of tile `audiences`
-// and `specialties` (the closed vocabulary from spec-v11 §4.3 + spec-v29 §5.1).
-// Tile audiences ('clinicians', 'patients', 'billers', 'field', 'educators')
-// remain the back-end taxonomy used by data/synonyms.json and the prompt
-// ranker; the chip values are a separate UI taxonomy that resolves to a
-// predicate over (audiences, specialties).
-const CHIP_MATCHERS = {
-  all: () => true,
-  nurse: (aud, spec) => aud.includes('clinicians') || spec.some((s) => s.startsWith('nursing-')),
-  doctor: (aud) => aud.includes('clinicians'),
-  pharmacist: (aud, spec) => spec.includes('pharmacy'),
-  rt: (aud, spec) => spec.includes('respiratory-therapy') || spec.includes('pulmonology'),
-  ems: (aud, spec) => aud.includes('field') || spec.includes('emergency-medicine'),
-  'biller-coder': (aud) => aud.includes('billers'),
-  educator: (aud) => aud.includes('educators'),
-};
 
 // spec-v29 §5.3: chips and back-end audience tokens are decoupled, but the
 // prompt-ranker and synonym matcher still want a single audience hint per
@@ -625,71 +605,8 @@ const CHIP_TO_AUDIENCE_HINT = {
   educator: 'educators',
 };
 
-function tileMatches(tile) {
-  const group = tile.getAttribute('data-group') || '';
-  const audiences = (tile.getAttribute('data-audiences') || '').split(/\s+/).filter(Boolean);
-  if (filterState.group !== 'all' && group !== filterState.group) return false;
-  const matcher = CHIP_MATCHERS[filterState.audience] || CHIP_MATCHERS.all;
-  if (matcher !== CHIP_MATCHERS.all) {
-    const id = tile.getAttribute('data-tool') || '';
-    const specialties = (META[id] && META[id].specialties) || [];
-    if (!matcher(audiences, specialties)) return false;
-  }
-  if (filterState.query) {
-    const q = filterState.query.toLowerCase();
-    const text = (tile.textContent || '').toLowerCase();
-    if (!text.includes(q)) return false;
-  }
-  return true;
-}
 
-function applyFilters() {
-  const tiles = document.querySelectorAll('#tile-grid .tool-card');
-  let visible = 0;
-  const sectionVisible = new Map();
-  tiles.forEach((tile) => {
-    const show = tileMatches(tile);
-    tile.hidden = !show;
-    if (show) visible += 1;
-    const section = tile.closest('.home-section');
-    if (section) {
-      sectionVisible.set(section, (sectionVisible.get(section) || 0) + (show ? 1 : 0));
-    }
-  });
-  // Hide entire section if no cards match.
-  sectionVisible.forEach((count, section) => {
-    section.hidden = count === 0;
-  });
-  const empty = document.getElementById('empty-state');
-  if (empty) empty.hidden = visible !== 0;
-}
 
-// Delegated tile click. Targets `document` so it survives the
-// captureHomeSnapshot / restoreHome cloneNode cycle (which would otherwise
-// strip per-element listeners). Setting location.hash triggers route().
-// Guarded so this module can still be imported under Node for unit tests.
-if (typeof document !== 'undefined') {
-  document.addEventListener('click', (event) => {
-    if (!event.target || typeof event.target.closest !== 'function') return;
-    // Don't swallow clicks on nested action buttons. Their own handlers
-    // call stopPropagation, but if any child carries data-no-route, skip.
-    const ignore = event.target.closest('[data-no-route]');
-    if (ignore) return;
-    const card = event.target.closest('.tool-card');
-    if (!card) return;
-    const id = card.getAttribute('data-tool');
-    if (!id) return;
-    event.preventDefault();
-    // Force a route refresh even if the user clicks the card matching the
-    // currently-active route.
-    if (location.hash === '#' + id) {
-      currentRouteId = null;
-      route();
-    } else {
-      location.hash = '#' + id;
-    }
-  });
-}
 
 // spec-v11 §4.1: visible specialty / category labels. The letter is the
 // legacy id retained inside UTILITIES entries so deep links keep working;
@@ -713,87 +630,29 @@ const GROUP_LABELS = {
   P: 'Revenue cycle & utilization',
 };
 
-function syncToggleGroupState(group, value) {
-  group.querySelectorAll('.toggle').forEach((b) => {
-    const active = b.getAttribute('data-value') === value;
-    b.classList.toggle('is-active', active);
-    b.setAttribute('aria-pressed', active ? 'true' : 'false');
-  });
-}
 
-function wireFilters() {
-  const groups = document.querySelectorAll('.toggle-group');
-  groups.forEach((group) => {
-    const filterName = group.getAttribute('data-filter');
-    group.addEventListener('click', (event) => {
-      const btn = event.target.closest('.toggle');
-      if (!btn) return;
-      const value = btn.getAttribute('data-value');
-      syncToggleGroupState(group, value);
-      filterState[filterName] = value;
-      // spec-v6 §4.2.2: audience selection persists in URL hash.
-      if (filterName === 'audience') {
-        window.history.replaceState(null, '', patchHash({ audience: value }));
-      }
-      applyFilters();
-    });
-  });
-
-  const search = document.getElementById('search');
-  if (search) {
-    search.addEventListener('input', () => {
-      filterState.query = search.value.trim();
-      applyFilters();
-    });
-  }
-
-  // spec-v53: the home view is a single search combobox. Focusing the input
-  // opens a listbox of the full catalog A-Z; typing filters it; the results
-  // dropdown routes to the tile on click or Enter. bindHeroSearch is called
-  // here (rather than once at boot) because the home view is cloned and
-  // restored via restoreHome(), and a cloned node loses its listeners.
-  bindHeroSearch();
-
-  // spec-v7 §3.4: disclosure defaults **open** in static markup so the
-  // catalog is visible on first paint. Toggle persists in the URL hash
-  // as b=closed when the user diverges from the open default; the open
-  // state is the default and emits no key.
-  const disclosure = document.getElementById('browse-disclosure');
-  if (disclosure) {
-    disclosure.addEventListener('toggle', () => {
-      const next = disclosure.open ? '' : 'closed';
-      window.history.replaceState(null, '', patchHash({ browse: next }));
-    });
-  }
-}
 
 // spec-v7 §3.2: in-memory cache of the loaded synonym table. Empty until
-// loadSynonyms() resolves at boot; matchSynonym() against an empty list
-// returns null so the hero falls back to fuzzy search safely.
+// loadSynonyms() resolves the curated synonym table at boot. Until it lands,
+// SYNONYM_ENTRIES is empty and resolvePrompt() ranks on name/id tokens only, so
+// the hero search degrades gracefully (synonyms are an accelerator, not a hard
+// dependency).
 let SYNONYM_ENTRIES = [];
 
-// spec-v8 §4.3: assemble the tile corpus the prompt matcher reads.
-// Description text lives in the home tile-grid markup (`.tc-desc` spans);
-// audiences and group come from UTILITIES; tags from META[id].tags
-// (optional, defaults to empty per spec-v8 §3.2 META extension).
+// spec-v8 §4.3: assemble the tile corpus the synonym resolver reads.
+// id / name / group / audiences come from UTILITIES; tags + specialties from
+// META[id]. The per-tile description was scraped from the home tile-grid before
+// spec-v51/v53 removed that grid, so desc is now empty -- the resolver ranks on
+// name / id / tags / specialties, which is enough for synonym + token matching.
 let TILE_CORPUS_CACHE = null;
 function tileCorpus() {
   if (TILE_CORPUS_CACHE) return TILE_CORPUS_CACHE;
-  const grid = typeof document !== 'undefined' ? document.getElementById('tile-grid') : null;
-  const descById = new Map();
-  if (grid) {
-    grid.querySelectorAll('.tool-card').forEach((card) => {
-      const id = card.getAttribute('data-tool');
-      const desc = card.querySelector('.tc-desc');
-      if (id && desc) descById.set(id, desc.textContent || '');
-    });
-  }
   TILE_CORPUS_CACHE = UTILITIES.map((u) => ({
     id: u.id,
     name: u.name,
     group: u.group,
     audiences: u.audiences || [],
-    desc: descById.get(u.id) || '',
+    desc: '',
     tags: (META[u.id] && Array.isArray(META[u.id].tags)) ? META[u.id].tags : [],
     // spec-v11 §4.3: optional specialty tags, additive search tokens.
     specialties: (META[u.id] && Array.isArray(META[u.id].specialties)) ? META[u.id].specialties : [],
@@ -805,61 +664,8 @@ function audienceHint() {
   return CHIP_TO_AUDIENCE_HINT[filterState.audience] || 'all';
 }
 
-function resolveQueryToTileId(query) {
-  const r = resolvePrompt(query, tileCorpus(), SYNONYM_ENTRIES, audienceHint());
-  if (r && UTIL_BY_ID && UTIL_BY_ID.get(r.tileId)) return r.tileId;
-  // Defensive fallback: the legacy fuzzy ranker covers cases the v8
-  // resolver intentionally rejects (e.g., score below threshold but
-  // the user still hit Enter).
-  const fuzzy = searchUtilities(query, 1);
-  return fuzzy[0] ? fuzzy[0].id : null;
-}
 
-function updateSynonymHint(rawQuery) {
-  const hint = document.getElementById('hero-synonym-hint');
-  if (!hint) return;
-  const q = String(rawQuery || '').trim();
-  if (!q) { hint.hidden = true; clear(hint); return; }
-  // spec-v7 §3.2 + spec-v51 §2: the hero hint is the only live feedback
-  // the search input shows. Prior code asked matchSynonym() directly, so
-  // queries like "wells pe" or "cha2ds2-vasc" (no synonym row) silently
-  // showed nothing even though Enter would have resolved them via the
-  // token ranker. Drive the hint from resolvePrompt() instead so any
-  // query the Enter handler would route to a tile produces a visible
-  // confirmation first.
-  const r = resolvePrompt(q, tileCorpus(), SYNONYM_ENTRIES, audienceHint());
-  const tileId = r && r.tileId;
-  const util = tileId && UTIL_BY_ID ? UTIL_BY_ID.get(tileId) : null;
-  if (!util) {
-    // Last-chance fallback to the legacy fuzzy ranker so the hint stays
-    // in sync with the Enter handler's own fallback (resolveQueryToTileId).
-    const fuzzy = searchUtilities(q, 1);
-    const fb = fuzzy[0] && UTIL_BY_ID.get(fuzzy[0].id);
-    if (!fb) { hint.hidden = true; clear(hint); return; }
-    clear(hint);
-    hint.appendChild(document.createTextNode('Press Enter to open '));
-    hint.appendChild(el('a', { href: '#' + fb.id, class: 'synonym-link', text: fb.name }));
-    hint.appendChild(document.createTextNode('.'));
-    hint.hidden = false;
-    return;
-  }
-  clear(hint);
-  if (r.phrase) {
-    hint.appendChild(document.createTextNode('Matched "' + r.phrase + '" to '));
-    hint.appendChild(el('a', { href: '#' + util.id, class: 'synonym-link', text: util.name }));
-    hint.appendChild(document.createTextNode('. Press Enter to open.'));
-  } else {
-    hint.appendChild(document.createTextNode('Press Enter to open '));
-    hint.appendChild(el('a', { href: '#' + util.id, class: 'synonym-link', text: util.name }));
-    hint.appendChild(document.createTextNode('.'));
-  }
-  hint.hidden = false;
-}
 
-function openDisclosure() {
-  const d = document.getElementById('browse-disclosure');
-  if (d && !d.open) d.open = true;
-}
 
 // ----- Routing -------------------------------------------------------------
 
@@ -884,26 +690,9 @@ function restoreHome() {
   clear(main);
   const fresh = homeViewSnapshot.cloneNode(true);
   while (fresh.firstChild) main.appendChild(fresh.firstChild);
-  // Re-wire filters and re-apply state to the restored DOM.
-  wireFilters();
-  // Restore filter UI state.
-  document.querySelectorAll('.toggle-group').forEach((group) => {
-    const filterName = group.getAttribute('data-filter');
-    syncToggleGroupState(group, filterState[filterName]);
-  });
-  const search = document.getElementById('search');
-  if (search) search.value = filterState.query;
-  const hero = document.getElementById('hero-search');
-  if (hero) hero.value = filterState.query;
-  // spec-v7 §3.4: restore disclosure state from the current hash on home return.
-  // Default is **open** (matches static markup); only b=closed collapses.
-  const disclosure = document.getElementById('browse-disclosure');
-  if (disclosure) disclosure.open = parseHash(window.location.hash).browse !== 'closed';
-  // spec-v7 §3.4: keep the visible tile count in sync after a clone restore.
-  const countNode = document.getElementById('browse-tile-count');
-  if (countNode) countNode.textContent = String(UTILITIES.length);
-  applyFilters();
-  updateSynonymHint(hero ? hero.value : '');
+  // The home view is restored from a cloned snapshot, so the hero combobox
+  // loses its event listeners -- re-bind them. The clone ships an empty input.
+  bindHeroSearch();
   document.title = 'Sophie Well';
 }
 
@@ -1423,131 +1212,6 @@ function searchUtilities(query, limit) {
   return ranked.slice(0, limit).map((r) => r.util);
 }
 
-function installTopbarSearch() {
-  const input = document.getElementById('topbar-search');
-  const list = document.getElementById('topbar-search-results');
-  if (!input || !list) return;
-
-  let activeIndex = -1;
-  let currentMatches = [];
-
-  function setExpanded(open) {
-    input.setAttribute('aria-expanded', open ? 'true' : 'false');
-    list.hidden = !open;
-  }
-
-  function setActive(idx) {
-    const items = list.querySelectorAll('.topbar-search-result');
-    items.forEach((node, i) => {
-      const on = i === idx;
-      node.classList.toggle('is-active', on);
-      node.setAttribute('aria-selected', on ? 'true' : 'false');
-      if (on) {
-        input.setAttribute('aria-activedescendant', node.id);
-        node.scrollIntoView({ block: 'nearest' });
-      }
-    });
-    if (idx === -1) input.removeAttribute('aria-activedescendant');
-    activeIndex = idx;
-  }
-
-  function navigateTo(util) {
-    if (!util) return;
-    input.value = '';
-    currentMatches = [];
-    clear(list);
-    setExpanded(false);
-    input.blur();
-    if (location.hash === '#' + util.id) {
-      currentRouteId = null;
-      route();
-    } else {
-      location.hash = '#' + util.id;
-    }
-  }
-
-  function render(matches, query) {
-    clear(list);
-    currentMatches = matches;
-    if (!query) { setExpanded(false); setActive(-1); return; }
-    if (matches.length === 0) {
-      const empty = el('li', { class: 'topbar-search-empty', role: 'presentation', text: 'No tools match.' });
-      list.appendChild(empty);
-      setExpanded(true);
-      setActive(-1);
-      return;
-    }
-    matches.forEach((util, i) => {
-      const item = el('li', {
-        class: 'topbar-search-result',
-        role: 'option',
-        id: `topbar-search-result-${i}`,
-        'data-tool': util.id,
-        'aria-selected': 'false',
-      }, [
-        el('span', { class: 'tsr-name', text: util.name }),
-        el('span', { class: 'tsr-group', text: GROUP_LABELS[util.group] || util.group }),
-      ]);
-      item.addEventListener('mousedown', (e) => {
-        // mousedown so it fires before the input blur clears state.
-        e.preventDefault();
-        navigateTo(util);
-      });
-      item.addEventListener('mouseenter', () => setActive(i));
-      list.appendChild(item);
-    });
-    setExpanded(true);
-    setActive(0);
-  }
-
-  input.addEventListener('input', () => {
-    const matches = searchUtilities(input.value, 8);
-    render(matches, input.value.trim());
-  });
-
-  input.addEventListener('focus', () => {
-    if (input.value.trim()) {
-      const matches = searchUtilities(input.value, 8);
-      render(matches, input.value.trim());
-    }
-  });
-
-  input.addEventListener('keydown', (e) => {
-    if (e.key === 'ArrowDown') {
-      if (!currentMatches.length) return;
-      setActive((activeIndex + 1) % currentMatches.length);
-      e.preventDefault();
-    } else if (e.key === 'ArrowUp') {
-      if (!currentMatches.length) return;
-      setActive((activeIndex - 1 + currentMatches.length) % currentMatches.length);
-      e.preventDefault();
-    } else if (e.key === 'Enter') {
-      if (activeIndex >= 0 && currentMatches[activeIndex]) {
-        e.preventDefault();
-        navigateTo(currentMatches[activeIndex]);
-      } else if (currentMatches[0]) {
-        e.preventDefault();
-        navigateTo(currentMatches[0]);
-      }
-    } else if (e.key === 'Escape') {
-      if (input.value || !list.hidden) {
-        input.value = '';
-        clear(list);
-        currentMatches = [];
-        setExpanded(false);
-        setActive(-1);
-        e.preventDefault();
-      }
-    }
-  });
-
-  document.addEventListener('click', (e) => {
-    if (e.target === input) return;
-    if (list.contains(e.target)) return;
-    setExpanded(false);
-    setActive(-1);
-  });
-}
 
 // spec-v53: the home-view search combobox. Mirrors the topbar search, with
 // one difference: focusing the empty input lists the entire catalog A-Z so
@@ -1716,32 +1380,13 @@ function registerServiceWorker() {
 
 function boot() {
   captureHomeSnapshot();
-  // spec-v6 §4.2.2 + spec-v29 §5.3: initial audience chip from URL hash;
-  // 'nurse' is the on-first-visit default. The static markup ships Nurse
-  // as is-active, so only sync when the hash diverges from the default.
+  // spec-v29 §5.3: a deep-linked #a=<audience> overrides the nurse-first
+  // default and biases the synonym resolver's audience hint. The chip-filter
+  // UI was removed in spec-v51/v53, so this only reads the hash now.
   const initial = parseHash(window.location.hash);
-  if (initial.audience && initial.audience !== filterState.audience) {
-    filterState.audience = initial.audience;
-    const group = document.querySelector('.toggle-group[data-filter="audience"]');
-    if (group) syncToggleGroupState(group, initial.audience);
-  }
-  // spec-v7 §3.4: initial disclosure state from URL hash. The static
-  // markup ships **open** so the catalog is visible on first paint;
-  // an explicit b=closed in the hash collapses it for deep links that
-  // want to narrow focus, and b=open is the redundant deep-link form.
-  const disclosure = document.getElementById('browse-disclosure');
-  if (disclosure) {
-    if (initial.browse === 'open') disclosure.open = true;
-    else if (initial.browse === 'closed') disclosure.open = false;
-  }
-  // spec-v7 §3.4: visible tile count next to "Browse all". Pulled from the
-  // utility registry so it stays correct as tiles land.
-  const countNode = document.getElementById('browse-tile-count');
-  if (countNode) countNode.textContent = String(UTILITIES.length);
-  wireFilters();
-  applyFilters();
+  if (initial.audience) filterState.audience = initial.audience;
+  bindHeroSearch();
   installKeyboard();
-  installTopbarSearch();
   // spec-v7 §3.2: load the synonym table once at boot. Hero search degrades
   // to fuzzy-only if the fetch fails (e.g., file:// load); synonyms are an
   // optional accelerator, not a hard dependency.

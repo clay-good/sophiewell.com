@@ -72,13 +72,14 @@ both pass against the v4 (encryptalotta-style) chrome.
 
 ## ARIA
 
-- [x] ARIA is used sparingly and correctly. Filter toggles use
-      `aria-pressed`, sections use `aria-labelledby`, the tool-card grid
-      and result lists use `aria-live="polite"` where they update.
+- [x] ARIA is used sparingly and correctly. The home `#hero-search`
+      combobox uses `role="combobox"` + `aria-expanded` / `aria-activedescendant`
+      over a `role="listbox"` of results; each tool view's result region uses
+      `aria-live="polite"` where it updates. (The spec-v51/v53 redesign replaced
+      the old filter-chip + tool-card grid home with this single combobox, so the
+      earlier filter-toggle `aria-pressed` controls no longer exist.)
 - [x] A live region with `aria-live="polite"` announces results when a
       calculation or lookup completes. Implemented in renderer components.
-- [x] Buttons that control state expose `aria-pressed` (filter toggles)
-      where appropriate.
 
 ## Automated checks
 
