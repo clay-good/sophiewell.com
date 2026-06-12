@@ -1,5 +1,5 @@
 /* sophiewell.com styles. Dark theme ported from encryptalotta.com.
-   Tokens, topbar, home-grid, tool-card, breadcrumb, footer-badges, and
+   Tokens, topbar, hero search, breadcrumb, footer-badges, and
    form treatments mirror encryptalotta/index.html. */
 
 :root {
@@ -204,71 +204,6 @@ body {
 [data-theme="dark"] .topbar-theme-toggle .theme-icon-sun { display: block; }
 [data-theme="light"] .topbar-theme-toggle .theme-icon-moon { display: block; }
 
-/* Header search */
-.topbar-search {
-  position: relative;
-  flex: 1 1 auto;
-  max-width: 560px;
-  margin: 0 auto;
-}
-.topbar-search input[type="search"] {
-  width: 100%;
-  padding: 10px 14px;
-  background: var(--bg-secondary);
-  color: var(--text-primary);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-pill);
-  font: inherit;
-  outline: none;
-  transition: border-color 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
-}
-.topbar-search input[type="search"]::placeholder { color: var(--text-muted); }
-.topbar-search input[type="search"]:hover { border-color: var(--border-light); }
-.topbar-search input[type="search"]:focus {
-  border-color: var(--focus-ring);
-  box-shadow: 0 0 0 3px rgba(77, 144, 254, 0.25);
-  background: var(--bg-tertiary);
-}
-.topbar-search-results {
-  position: absolute;
-  top: calc(100% + 6px);
-  left: 0;
-  right: 0;
-  list-style: none;
-  margin: 0;
-  padding: 6px;
-  background: var(--bg-secondary);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-card);
-  box-shadow: 0 10px 30px var(--shadow-strong);
-  max-height: min(60vh, 480px);
-  overflow-y: auto;
-  z-index: 60;
-}
-.topbar-search-results[hidden] { display: none; }
-.topbar-search-result {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-  padding: 10px 12px;
-  border-radius: var(--radius);
-  cursor: pointer;
-  color: var(--text-primary);
-  user-select: none;
-}
-.topbar-search-result .tsr-name { font-weight: 600; font-size: 0.95rem; }
-.topbar-search-result .tsr-group { font-size: 0.78rem; color: var(--text-muted); }
-.topbar-search-result:hover,
-.topbar-search-result.is-active {
-  background: var(--bg-tertiary);
-}
-.topbar-search-empty {
-  padding: 14px 12px;
-  color: var(--text-muted);
-  font-size: 0.9rem;
-  text-align: center;
-}
-
 /* ==========================================================
    CONTAINER
    ========================================================== */
@@ -469,175 +404,13 @@ body {
 }
 
 /* ==========================================================
-   HOME GRID
+   HOME VIEW
    ========================================================== */
 .home-view {
   padding: 24px 0 32px;
   max-width: 1100px;
   margin: 0 auto;
   animation: fadeInUp 0.6s ease-out;
-}
-.home-section { margin-bottom: 56px; }
-.home-section:last-child { margin-bottom: 16px; }
-.home-section h3 {
-  font-size: 0.72rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.22em;
-  color: var(--text-muted);
-  margin: 0 0 20px;
-  padding-left: 4px;
-  display: flex;
-  align-items: center;
-  gap: 14px;
-}
-.home-section h3::after {
-  content: "";
-  flex: 1;
-  height: 1px;
-  background: linear-gradient(to right, var(--border) 0%, transparent 100%);
-}
-.home-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-  gap: 16px;
-}
-
-.tool-card {
-  background: var(--bg-secondary);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-card);
-  padding: 24px 22px;
-  cursor: pointer;
-  text-align: left;
-  color: var(--text-primary);
-  transition:
-    transform 0.22s cubic-bezier(0.34, 1.56, 0.64, 1),
-    border-color 0.22s ease,
-    background 0.22s ease,
-    box-shadow 0.22s ease;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  min-height: 110px;
-  font-family: inherit;
-  position: relative;
-  overflow: hidden;
-  isolation: isolate;
-}
-.tool-card::before {
-  /* Subtle radial-gradient sheen that lights up on hover. Pure CSS, no
-     new images, no extra DOM. Sits behind the text via z-index 0. */
-  content: "";
-  position: absolute;
-  inset: -1px;
-  background: radial-gradient(
-    600px circle at var(--mx, 50%) var(--my, -10%),
-    var(--tint-soft),
-    transparent 40%
-  );
-  opacity: 0;
-  transition: opacity 0.25s ease;
-  pointer-events: none;
-  z-index: 0;
-}
-.tool-card:hover::before { opacity: 1; }
-.tool-card > * { position: relative; z-index: 1; }
-.tool-card::after {
-  content: "→";
-  position: absolute;
-  top: 22px;
-  right: 22px;
-  color: var(--text-muted);
-  font-size: 1.1rem;
-  opacity: 0;
-  transform: translateX(-4px);
-  transition: opacity 0.18s ease, transform 0.18s ease, color 0.18s ease;
-}
-.tool-card:hover {
-  border-color: var(--tint-border);
-  background: var(--bg-tertiary);
-  transform: translateY(-3px);
-  box-shadow:
-    0 10px 28px var(--shadow-strong),
-    0 0 0 1px var(--tint-inset) inset;
-}
-.tool-card:hover::after {
-  opacity: 1;
-  transform: translateX(0);
-  color: var(--text-primary);
-}
-.tool-card:active { transform: translateY(0); }
-.tool-card:focus-visible {
-  outline: 2px solid var(--focus-ring);
-  outline-offset: 3px;
-}
-.tool-card[hidden] { display: none; }
-.tool-card .tc-title {
-  font-weight: 700;
-  font-size: 1.02rem;
-  color: var(--text-primary);
-  letter-spacing: -0.005em;
-  display: block;
-}
-.tool-card .tc-desc {
-  font-size: 0.88rem;
-  color: var(--text-secondary);
-  line-height: 1.5;
-  display: block;
-}
-.tool-card .tc-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-  margin-top: 6px;
-}
-.tool-card .tc-tag {
-  font-size: 0.7rem;
-  padding: 2px 8px;
-  border-radius: var(--radius-pill);
-  border: 1px solid var(--border);
-  color: var(--text-muted);
-  background: var(--tint-faint);
-  letter-spacing: 0.02em;
-}
-
-/* ==========================================================
-   FILTERS  -  kept from sophiewell, restyled to encryptalotta look.
-   ========================================================== */
-.filters {
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-  margin: 12px auto 28px;
-  max-width: 1100px;
-  padding: 18px 20px;
-  border: 1px solid var(--border);
-  border-radius: var(--radius-card);
-  background: var(--bg-secondary);
-}
-.filter-row {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 10px 14px;
-}
-.filter-label {
-  font-weight: 700;
-  font-size: 0.78rem;
-  text-transform: uppercase;
-  letter-spacing: 0.14em;
-  min-width: 5.5rem;
-  color: var(--text-muted);
-}
-.search-row input[type="search"] {
-  flex: 1 1 240px;
-  min-width: 0;
-}
-.toggle-group {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
 }
 
 /* spec-v53: task hero. One big search combobox, centered, as the single
@@ -999,11 +772,6 @@ body {
    pivot; the lib/artifact-*.js helpers were deleted in spec-v29 wave
    29-2 (Group C/L). */
 
-.empty-state {
-  margin: 16px 4px 24px;
-  font-size: 0.95rem;
-}
-
 /* spec-v6 §3.3: lab result interpreter. */
 .lab-ctx, .lab-panel {
   border: 1px solid var(--border);
@@ -1046,29 +814,6 @@ body {
 .lab-result-ask { margin: 6px 0; font-style: italic; color: var(--text-secondary); }
 .lab-result-source { font-size: 0.78rem; margin-top: 4px; }
 .lab-result-footer { margin-top: 14px; font-size: 0.88rem; }
-.toggle {
-  font: inherit;
-  font-size: 0.85rem;
-  font-weight: 600;
-  color: var(--text-secondary);
-  background: transparent;
-  border: 1px solid transparent;
-  border-radius: 6px;
-  padding: 7px 12px;
-  cursor: pointer;
-  line-height: 1.2;
-  transition: background 0.18s ease, color 0.18s ease, border-color 0.18s ease;
-}
-.toggle:hover {
-  background: var(--bg-tertiary);
-  color: var(--text-primary);
-}
-.toggle:focus-visible { outline: 2px solid var(--focus-ring); outline-offset: 2px; }
-.toggle.is-active {
-  background: var(--text-primary);
-  color: var(--bg-primary);
-  border-color: var(--text-primary);
-}
 
 /* ==========================================================
    BREADCRUMB
@@ -1136,16 +881,6 @@ main h1 {
 }
 
 #tools h2 { font-size: 1rem; margin: 0 0 var(--space-3); color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.14em; font-weight: 700; }
-
-.empty-state {
-  margin: var(--space-5) auto;
-  padding: var(--space-4);
-  border: 1px dashed var(--border);
-  border-radius: var(--radius-card);
-  color: var(--text-muted);
-  text-align: center;
-  max-width: 1100px;
-}
 
 /* ==========================================================
    FOOTER  -  credit-badge + gh-badge pills, disclaimer above.
@@ -1642,14 +1377,9 @@ button:active { transform: translateY(1px) scale(0.985); }
   .topbar .topbar-brand { font-size: 1rem; gap: 10px; }
   .topbar .topbar-brand img { width: 28px; height: 28px; }
   .topbar-spacer { display: none; }
-  .topbar-search { order: 3; flex: 1 1 100%; max-width: none; margin: 0; }
-  .container { padding: 12px; }
+    .container { padding: 12px; }
   .home-view { padding: 4px 4px 16px; }
-  .home-section { margin-bottom: 40px; }
-  .home-grid { grid-template-columns: 1fr; gap: 12px; }
-  .tool-card { padding: 20px 18px; min-height: 96px; }
-  .tool-card::after { top: 18px; right: 18px; }
-  .site-footer { margin: 32px auto 24px; }
+          .site-footer { margin: 32px auto 24px; }
   .content { padding: 22px 18px; }
   main h1 { font-size: 1.5rem; }
 }
@@ -1658,7 +1388,6 @@ button:active { transform: translateY(1px) scale(0.985); }
    v4 shared printable-template renderer (lib/print.js). */
 @media print {
   .topbar,
-  .filters,
   .back-link,
   .breadcrumb,
   #print-btn,

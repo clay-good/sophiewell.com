@@ -33,11 +33,33 @@ null-guarded, so it no-op'd at runtime, but it was ~355 lines of dead code in th
   and fails on any console error) all green.
 - `docs/accessibility.md` ARIA notes updated — the filter-toggle `aria-pressed`
   controls and tool-card grid no longer exist; the home is the combobox.
-- Not done here (follow-up): the corresponding dead CSS rule families
-  (`.tool-card`, `.home-section`, `.filters`, `.toggle-group`, `.toggle`,
-  `.topbar-search`, `.empty-state`) still ship; they never match an element, and
-  pruning them cleanly (a shared `@media print` selector list, scattered `@media`
-  overrides) wants its own screenshot-verified pass.
+- The corresponding dead CSS was pruned in the follow-up below.
+
+### Removed (housekeeping — 271 lines of dead CSS for the removed filter/grid UI)
+
+The follow-up to the app.js prune above: the stylesheet still carried the rules
+for the tile-grid + filter-chip + topbar-search UI that the spec-v51/v53 redesign
+replaced with the `#hero-search` combobox. None of these selectors can match an
+element (verified each is 0× in `index.html` / `dist/index.html` / `app.js` /
+`views/`).
+
+- Removed **47 fully-dead rules** — the `.tool-card` / `.tc-*`, `.home-section`,
+  `.home-grid`, `.filters` / `.filter-row` / `.filter-label` / `.search-row`,
+  `.toggle-group`, `.toggle` (the filter button — distinct from the live
+  `.topbar-theme-toggle`), `.empty-state`, and `.topbar-search` / `.tsr-*`
+  families, plus the dead `@media (max-width: 700px)` overrides for them — and
+  trimmed the now-dead `.filters` selector out of the shared `@media print` hide
+  list (keeping its live `.topbar` / `.back-link` / `.breadcrumb` / `#print-btn`
+  selectors). `styles.css` 1731 → 1460 lines.
+- A CSS-aware walker did the removal (brace-matched rule boundaries; a selector
+  is dead iff every selector in its list references a removed class/id), so no
+  live rule was touched; the result is brace-balanced. Cleaned the orphaned
+  section banners (`/* Header search */`, the `FILTERS` banner), relabeled the
+  stale `HOME GRID` banner to `HOME VIEW` (`.home-view` still lives under it), and
+  corrected the file-header description.
+- **Visual verification** (CSS has no automated guard): screenshotted the home
+  (light + dark), a tile with its derivation block expanded, all clean; the
+  320px mobile-no-hscroll sweep, smoke, and all-tools e2e pass.
 
 ### Fixed (hero search silently lost synonym / patient-phrasing resolution in the spec-v51/v53 redesign)
 
