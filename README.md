@@ -727,9 +727,26 @@ dist/               build output (337 tool pages, OG cards, sitemap, SBOM)
 
 With 337 tiles, search quality *is* the product — a tool you cannot find does
 not exist. Discovery is deterministic and offline (no fuzzy-match service, no
-embedding model, no AI): `resolvePrompt` ([lib/prompt.js](lib/prompt.js)) runs a
-typed query through three ordered passes and returns the single best tile id or
-`null`.
+embedding model, no AI). The home `#hero-search` combobox builds its dropdown
+from two complementary rankers, both pure functions of the typed query:
+
+```
+type into #hero-search
+          │
+          ├─► searchUtilities() ── fast name/id ranker (exact / prefix /
+          │     (the dropdown list)   substring / word-boundary over every
+          │                           tile's name + id) → ranked top 12
+          │
+          └─► resolvePrompt() ───── the synonym + phrasing resolver below;
+                (surfaced first)     its single best tile is hoisted to the
+                                     top of the list so patient phrasing that
+                                     shares no token with a tile name still
+                                     wins ("they denied it" → appeal-letter,
+                                     "kidney function" → egfr).
+```
+
+`resolvePrompt` ([lib/prompt.js](lib/prompt.js)) runs the query through three
+ordered passes and returns the single best tile id or `null`:
 
 ```
 query ─► normalizePhrase (lowercase, strip punctuation, collapse spaces)

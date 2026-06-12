@@ -40,6 +40,23 @@ test('home: hero-search routes to a tile on Enter (BMI smoke)', async ({ page })
   await expect(page.getByText('BMI: 22.9 kg/m^2 (Normal)')).toBeVisible();
 });
 
+// spec-v7 §3.2 regression: the hero search must consult the curated synonym
+// table + token ranker (resolvePrompt), not just name/id matching. The
+// spec-v51/v53 redesign silently dropped this -- patient-phrasing queries that
+// share no token with a tile name ("they denied it" -> appeal-letter,
+// "kidney function" -> egfr) returned the wrong tile or nothing. The dropdown's
+// first result must be the synonym/ranker-resolved tile.
+test('home: hero-search resolves patient phrasing via the synonym table', async ({ page }) => {
+  await page.goto('/');
+  await page.waitForSelector('#hero-search');
+  const cases = [['they denied it', 'appeal-letter'], ['kidney function', 'egfr']];
+  for (const [query, expectedId] of cases) {
+    await page.fill('#hero-search', query);
+    const first = page.locator('#hero-search-results .hero-search-result').first();
+    await expect(first, `"${query}" should resolve to #${expectedId}`).toHaveAttribute('data-tool', expectedId, { timeout: 5000 });
+  }
+});
+
 // spec-v29 wave 29-2: tiles in Groups A (code-reference lookups), C/L
 // (patient-literacy / form-locator), I (field-medicine reference cards),
 // K/O (lab-range / wallet-card reference), and the single-class clinical

@@ -6,6 +6,36 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Fixed (hero search silently lost synonym / patient-phrasing resolution in the spec-v51/v53 redesign)
+
+The home `#hero-search` combobox ranked results with `searchUtilities()` /
+`scoreUtility()`, which match a query only against each tile's **name and id** —
+it never consulted the curated synonym table (`data/synonyms.json`), the token
+ranker, or the description/tags. So patient-mental-model queries that share no
+token with a tile name returned nothing or the wrong tool:
+
+- "they denied it" → (no result / `unit-converter`), instead of `appeal-letter`
+- "kidney function" → `mods` ("Multiple Organ **Dysfunction**"), instead of `egfr`
+
+The synonym resolver `resolvePrompt()` (the documented 3-pass synonym → ranker →
+edit-distance flow) was still in `app.js`, but only wired to a never-called Enter
+fallback and a no-op synonym hint (its target element was retired) — so the
+synonym table was loaded at boot and then ignored, and the README's flagship
+"they denied it → appeal-letter" example did not actually work.
+
+- `app.js` `matchesFor()` (inside `bindHeroSearch`): now also runs the query
+  through `resolvePrompt()` and hoists its single best tile to the **top** of the
+  dropdown. `resolvePrompt` returns `null` below its surfacing threshold, so a
+  non-matching query simply falls back to the existing name/id ranking — no
+  spurious results. This re-animates the previously-dead synonym chain
+  (`resolvePrompt` / `tileCorpus` / `audienceHint` / `SYNONYM_ENTRIES`) into the
+  live search.
+- Added a regression test (`test/integration/smoke.spec.js`): the dropdown's
+  first result for "they denied it" must be `appeal-letter` and for "kidney
+  function" must be `egfr` — it failed before the fix, so it cannot pass
+  vacuously. Updated the README "Discovery" section to describe the actual live
+  hybrid (name/id list + synonym-resolved tile surfaced first).
+
 ### Fixed (documentation/config accuracy + removed dead keyboard grid-nav)
 
 A doc/security/perf-accuracy audit found several committed claims that no longer

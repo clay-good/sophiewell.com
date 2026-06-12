@@ -1604,7 +1604,22 @@ function bindHeroSearch() {
   // returns the ranked top matches.
   function matchesFor(query) {
     const q = query.trim();
-    return q ? searchUtilities(q, 12) : ALL;
+    if (!q) return ALL;
+    const ranked = searchUtilities(q, 12);
+    // spec-v7 §3.2: searchUtilities ranks on name/id only and is blind to the
+    // curated synonym table and patient phrasing, so a query like "they denied
+    // it" -> appeal-letter or "kidney function" -> egfr (which share no token
+    // with the tile name) returned nothing useful or the wrong tile. Consult
+    // resolvePrompt() (synonyms -> token ranker -> one-edit retry) and surface
+    // its single best tile first so patient-mental-model queries resolve to the
+    // right tool. resolvePrompt returns null below its threshold, so a
+    // non-matching query simply falls back to the name/id ranking.
+    const r = resolvePrompt(q, tileCorpus(), SYNONYM_ENTRIES, audienceHint());
+    if (r && r.tileId && UTIL_BY_ID) {
+      const u = UTIL_BY_ID.get(r.tileId);
+      if (u) return [u, ...ranked.filter((x) => x.id !== u.id)].slice(0, 12);
+    }
+    return ranked;
   }
 
   function render(query) {
