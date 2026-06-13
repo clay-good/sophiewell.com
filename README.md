@@ -93,13 +93,19 @@ dark-only, so the browser painted native controls (a black `<input type=date>`,
 dark `<select>` popups and scrollbars) to the dark scheme on the light page — now
 the CSS `color-scheme` and the mobile `theme-color` chrome track the active
 (toggled) theme — again with **zero new tiles**.
+spec-v74 then fixes the "Skip to content" link, which in this hash-routed SPA
+sent `#main` to the router (no tile `main` → `restoreHome`), ejecting the user
+from their tile back to home with focus lost on `<body>`; it now moves focus to
+the `<main>` landmark without touching the route (WCAG 2.4.1) — again with
+**zero new tiles**.
 See [docs/spec-v62.md](docs/spec-v62.md),
 [docs/spec-v63.md](docs/spec-v63.md), [docs/spec-v64.md](docs/spec-v64.md),
 [docs/spec-v65.md](docs/spec-v65.md), [docs/spec-v66.md](docs/spec-v66.md),
 [docs/spec-v67.md](docs/spec-v67.md), [docs/spec-v68.md](docs/spec-v68.md),
 [docs/spec-v69.md](docs/spec-v69.md), [docs/spec-v70.md](docs/spec-v70.md),
-[docs/spec-v71.md](docs/spec-v71.md), [docs/spec-v72.md](docs/spec-v72.md), and
-[docs/spec-v73.md](docs/spec-v73.md).)
+[docs/spec-v71.md](docs/spec-v71.md), [docs/spec-v72.md](docs/spec-v72.md),
+[docs/spec-v73.md](docs/spec-v73.md), and
+[docs/spec-v74.md](docs/spec-v74.md).)
 The new `pa-lint` tile in spec-v52 consumes
 dropped files instead of form fields and produces a
 deterministic findings report, the first instance of the
@@ -727,7 +733,7 @@ views/              per-group view renderers (group-*.js, pa-lint.js)
 data/               sharded public datasets + SHA-256 manifests (46 datasets)
 scripts/            build-*, check-* (catalog-truth, output-safety, citations,
                     commitments, PA staleness), audit-* — the CI gate chain
-docs/               specs (spec-v4 … spec-v73) + per-tile v11 audit logs +
+docs/               specs (spec-v4 … spec-v74) + per-tile v11 audit logs +
                     citation-staleness ledger +
                     architecture / threat-model / …
 test/               unit/ (node:test) · integration/ (Playwright) · fixtures/

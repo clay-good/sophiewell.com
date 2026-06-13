@@ -6,6 +6,28 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Fixed (spec-v74 — the "Skip to content" link works in the SPA again; catalog unchanged at 337)
+
+The skip link (`<a class="skip-link" href="#main">`) is the keyboard/screen-reader
+affordance for bypassing the repeated topbar + browse nav (WCAG 2.4.1). But the
+home view is a hash-routed SPA: a bare `href="#main"` sets `location.hash`, the
+router reads route `"main"`, finds no tile, and calls `restoreHome()`. So
+activating the skip link **on any tile ejected the user back to the home view**,
+with focus on `<body>` instead of the content — a trap, not a shortcut. See
+[docs/spec-v74.md](docs/spec-v74.md).
+
+- `app.js`: `bindSkipLink()` (bound once at `boot()`) intercepts the link,
+  `preventDefault()`s the hash navigation, and moves focus to the `<main>`
+  landmark (`tabindex="-1"` + `focus()` + `scrollIntoView`) without touching the
+  hash. The current tile, its `q=` input state, and the URL are preserved.
+- Scope is the SPA only: the pre-rendered static pages (`/tools/<id>/`,
+  `/for/<hub>/`, `/topics/<topic>/`) don't load `app.js`, so their native
+  `#main` anchor already worked and is untouched.
+- New guard `test/integration/skip-link.spec.js`: on `/#bmi`, activating the
+  skip link must leave the tile heading unchanged (not ejected to home), leave
+  the hash unchanged, and focus `#main`; a second test pins the home view. All
+  three assertions failed pre-fix (heading became the home hero, focus `<body>`).
+
 ### Fixed (spec-v73 — the UA color-scheme now follows the active theme; black date field in light mode fixed; catalog unchanged at 337)
 
 `color-scheme` was declared dark-only — a hardcoded `<meta name="color-scheme"

@@ -675,6 +675,27 @@ function getMain() {
   return document.getElementById('main');
 }
 
+// spec-v74: the "Skip to content" link targets #main, but this is a hash-routed
+// SPA -- a bare href="#main" sets location.hash, the router reads route "main",
+// finds no such tile, and calls restoreHome(). So on any tile the skip link
+// ejected the user back to the home view (and focus landed on <body>, not the
+// content) -- a WCAG 2.4.1 (Bypass Blocks) failure, worse than a no-op. Static
+// pre-rendered pages don't load app.js, so their native #main anchor is fine;
+// this handler scopes the fix to the SPA: move focus to the main landmark
+// without touching the hash or the router.
+function bindSkipLink() {
+  const link = document.querySelector('.skip-link');
+  if (!link) return;
+  link.addEventListener('click', (e) => {
+    e.preventDefault();
+    const main = getMain();
+    if (!main) return;
+    main.setAttribute('tabindex', '-1');
+    main.focus({ preventScroll: true });
+    main.scrollIntoView({ block: 'start', behavior: 'auto' });
+  });
+}
+
 let homeViewSnapshot = null;
 
 function captureHomeSnapshot() {
@@ -1386,6 +1407,7 @@ function boot() {
   const initial = parseHash(window.location.hash);
   if (initial.audience) filterState.audience = initial.audience;
   bindHeroSearch();
+  bindSkipLink();
   installKeyboard();
   // spec-v7 §3.2: load the synonym table once at boot. Hero search degrades
   // to fuzzy-only if the fetch fails (e.g., file:// load); synonyms are an
