@@ -6,6 +6,49 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Changed (spec-v72 — every primary interactive control now meets the 44px touch target; catalog unchanged at 337)
+
+The horizontal-scroll guarantee proved nothing *overflows* the phone viewport,
+but four controls still rendered below the 44 CSS px touch-target floor (WCAG
+2.5.5 Target Size, Apple HIG) — a comfortable mouse click, a routine thumb
+mis-tap. A 360px measurement found: the copy pills (`.copy-btn`, ~24px tall,
+present on every tool that emits a copyable result — the highest-traffic small
+target), the topbar theme toggle (40px), the breadcrumb back-button
+(`.breadcrumb-back`, ~30px), and the load-example reset (`.example-reset`,
+~36px). Each was a base `button` (~44px) overridden *down* for visual
+compactness. See [docs/spec-v72.md](docs/spec-v72.md).
+
+- `styles.css`: `.copy-btn` and `.breadcrumb-back` gain `min-height: 44px` with
+  `inline-flex` centering; `.tool-meta .example-reset` gains `min-height: 44px`;
+  `.topbar-theme-toggle` goes 40×40 → 44×44. The small `0.85rem` label is kept,
+  so the pills stay visually light while the tap zone becomes a full target, now
+  matching the base-button height as a consistent control family. CSS-only; no
+  renderer, compute, markup, or output change. The 320px no-horizontal-scroll
+  sweep stays green (`min-height` is width-neutral).
+- Removed the dead `.tool-meta .example-btn` rule, orphaned by the spec-v9
+  `.example-btn` → `.example-reset` rename (no live element has carried
+  `example-btn` since), and corrected the matching stale `:not(.example-btn)`
+  exclusion in [tool-interactions.spec.js](test/integration/tool-interactions.spec.js)
+  to `:not(.example-reset)`, restoring its documented intent.
+- New regression guard
+  [test/integration/mobile-touch-targets.spec.js](test/integration/mobile-touch-targets.spec.js):
+  at 360px, every copy pill, the theme toggle, the breadcrumb back-button, and
+  the example reset must measure ≥44px in their binding dimension, reported all
+  at once. A new control can never silently reintroduce a sub-44px tap target.
+
+### Fixed (housekeeping — three documentation-drift items surfaced by a doc audit)
+
+- `docs/deployment.md`: the post-deploy CSP verification line was missing
+  `'wasm-unsafe-eval'` in `script-src` (present in `_headers`, SECURITY.md, and
+  README for the vendored on-device OCR WebAssembly engine); a `curl -I` check
+  against the documented value would not have matched production.
+- `README.md`: the `npm run test:unit` count was `3,468`; the suite reports
+  `3,469`.
+- `docs/operations.md`: the "add a pure function" step listed the deleted
+  `lib/decoder.js` (removed in spec-v29) as a current compute module; replaced
+  with the live modules (`lib/clinical.js`, `lib/clinical-v5.js`, `lib/field.js`,
+  `lib/scoring-v4.js`).
+
 ### Fixed (robustness — a malformed URL fragment crashed the router instead of resolving to home)
 
 `parseHash` ([lib/hash.js](lib/hash.js)) decoded the route, sub-segment, `q=`

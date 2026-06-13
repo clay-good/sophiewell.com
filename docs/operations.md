@@ -78,7 +78,8 @@ The pattern mirrors what already exists. Briefly:
    `scripts/build-data.mjs` and run the script. Update
    `docs/data-sources.md` and `scripts/sources.md`.
 2. Add a pure function (if the utility computes anything) to one of
-   `lib/clinical.js`, `lib/field.js`, `lib/decoder.js`, etc.
+   `lib/clinical.js`, `lib/clinical-v5.js`, `lib/field.js`,
+   `lib/scoring-v4.js`, etc.
 3. Add a renderer to the appropriate `views/group-X.js` module.
 4. Add the utility id to the `UTILITIES` registry in `app.js` with
    group, audiences, and `clinical` flag.

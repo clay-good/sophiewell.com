@@ -54,7 +54,7 @@ test('every tool tolerates indiscriminate interaction without crashing', async (
     // and the example-button (the example button is exercised separately
     // and reloading the body mid-loop confuses Playwright's locator caching).
     const btns = await page.locator(
-      'main button:not(.breadcrumb-back):not(.print-btn):not(.example-btn)',
+      'main button:not(.breadcrumb-back):not(.print-btn):not(.example-reset)',
     ).all();
     for (const b of btns) {
       try {

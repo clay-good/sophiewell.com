@@ -83,12 +83,18 @@ the Class I screen was `pts === 0`, but age always adds points, so the rule's
 lowest-risk "safe for home" band never appeared and every healthy young patient
 was mislabeled Class II — now Class I is "age ≤50 with no points beyond age" per
 Fine 1997 Step 1, again with **zero new tiles**.
+spec-v72 then completes the mobile-usability pass that the no-horizontal-scroll
+guarantee started: four interactive controls (the copy pills, the theme toggle,
+the breadcrumb back-button, and the load-example reset) rendered below the 44px
+touch-target floor (WCAG 2.5.5) and are now brought up to a comfortable tap, with
+a permanent regression guard — again with **zero new tiles**.
 See [docs/spec-v62.md](docs/spec-v62.md),
 [docs/spec-v63.md](docs/spec-v63.md), [docs/spec-v64.md](docs/spec-v64.md),
 [docs/spec-v65.md](docs/spec-v65.md), [docs/spec-v66.md](docs/spec-v66.md),
 [docs/spec-v67.md](docs/spec-v67.md), [docs/spec-v68.md](docs/spec-v68.md),
-[docs/spec-v69.md](docs/spec-v69.md), [docs/spec-v70.md](docs/spec-v70.md), and
-[docs/spec-v71.md](docs/spec-v71.md).)
+[docs/spec-v69.md](docs/spec-v69.md), [docs/spec-v70.md](docs/spec-v70.md),
+[docs/spec-v71.md](docs/spec-v71.md), and
+[docs/spec-v72.md](docs/spec-v72.md).)
 The new `pa-lint` tile in spec-v52 consumes
 dropped files instead of form fields and produces a
 deterministic findings report, the first instance of the
@@ -716,7 +722,7 @@ views/              per-group view renderers (group-*.js, pa-lint.js)
 data/               sharded public datasets + SHA-256 manifests (46 datasets)
 scripts/            build-*, check-* (catalog-truth, output-safety, citations,
                     commitments, PA staleness), audit-* — the CI gate chain
-docs/               specs (spec-v4 … spec-v71) + per-tile v11 audit logs +
+docs/               specs (spec-v4 … spec-v72) + per-tile v11 audit logs +
                     citation-staleness ledger +
                     architecture / threat-model / …
 test/               unit/ (node:test) · integration/ (Playwright) · fixtures/
@@ -1257,7 +1263,7 @@ rules, not soft preferences.
 | `npm run dev`            | Serve the directory locally on http://localhost:4173 (set `SERVE_ROOT=dist` to preview the pre-rendered hubs/topics/tool pages as production serves them) |
 | `npm run build`          | Copy static files into `dist/` for deployment                     |
 | `npm test`               | Run the full test suite (unit, a11y, grep, data integrity)        |
-| `npm run test:unit`      | Run Node's built-in unit tests (3,468 tests)                      |
+| `npm run test:unit`      | Run Node's built-in unit tests (3,469 tests)                      |
 | `npm run test:e2e`       | Build `dist/`, then run Playwright integration tests against real browsers — incl. a full-catalog 320px no-horizontal-scroll sweep over both the SPA routes and the 337 pre-rendered static tool pages, the hub/topic/commitments pages, and the citation-wrap pin |
 | `npm run test:a11y`      | Run accessibility checks on every utility view                    |
 | `npm run lint`           | ESLint + the CI gate chain: grep-check, output-safety, citation-integrity, catalog-truth, commitments, PA staleness, PA audit |

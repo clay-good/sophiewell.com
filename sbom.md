@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `feaddcbcf0a53c22`
-Generated: 2026-06-12T11:24:08.881Z
+Build ID: `455033685bf0f6d7`
+Generated: 2026-06-13T17:12:58.262Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=20.18.1 <21, npm >=10.0.0
@@ -25,12 +25,12 @@ downloads is committed in this repository and is hashed below.
 | Path | Bytes | SHA-256 |
 |---|---:|---|
 | `index.html` | 36056 | `0673303f3d6b2a7f776d99e912902bf98288d5e9502519e06d0af6293bad2e17` |
-| `styles.css` | 41564 | `8063deef2969bc179e44bbfe126dcb92fd681ac21a7ba6cfa86ba7fa15f2b0e8` |
-| `app.js` | 99584 | `02be119f72389a50fe13a3c49eb3607c58bad822f8d21cec37d3efdfdff3f684` |
+| `styles.css` | 42427 | `71f342b52a366383bd4601e871dbb6b6cb226555d721cad0c7efe0c27c8586ae` |
+| `app.js` | 99584 | `3358b7361eff61733f81b2489a6290477f8bb4339f17783fce51bcbf088360f4` |
 | `sw.js` | 4062 | `60f524b1b69eb5170c59af42631e11cc05db2a44e8e530977db0327888b0ff6d` |
 | `site.webmanifest` | 709 | `0e0de4da60590a12e8b27a0ae2a2f5ffdb6500b7d2b78f93631ec2f64ed3d5ce` |
 | `robots.txt` | 127 | `38fbf9c1854e72abb20e01e81dd5a31d4ea96f154c12d5db1ec3af05524dd1a1` |
-| `sitemap.xml` | 52948 | `d16927e0545424e5e80aa2cd677c88dda6741ab5933a0041f09559c36b45c8f1` |
+| `sitemap.xml` | 52948 | `5cb5a933e104828958996e1eb6850cd0416d671a59faa9356e7d505e4589f0af` |
 | `_headers` | 1316 | `2f39986457d2feff7e73e491a7d09ee871e8f2f4cc2bc437f86bd86a42554ec6` |
 | `logo.png` | 63440 | `11afaf1b0d3ca68393d202e4810bf766b5b6d591b4e3ec52f41d3cacaa4616ec` |
 | `favicon.ico` | 7411 | `407fde0ca2788409e87e11f596fa02e6a0b121817fcea7fd995beec1801e287b` |
@@ -57,7 +57,7 @@ downloads is committed in this repository and is hashed below.
 | `lib/dom.js` | 984 | `b4b4ac74decb848bde516bfc1773e6c45a8d80031ed8f9d14226393d18fcde54` |
 | `lib/field-units.js` | 4669 | `953f803a1f251fe4945f4b98659bfbdd76f45386006c9a298fc931db6a2a8c2f` |
 | `lib/field.js` | 12156 | `6a6b07f76a519a8f873a37a9b57c52909e9088c3a09bd256e0ac60240e16d2ea` |
-| `lib/hash.js` | 3985 | `ba49aa8fce1db3444491fbc5804508e9dd1839adac68bcb0e3c71f6943d6a873` |
+| `lib/hash.js` | 4585 | `de41dadb11142ea86f1536176e94408ac124ca90305161fe04f1956355512403` |
 | `lib/input-persist.js` | 4716 | `aa35b830df15bd1410a5f80c3829b6092122f0118d72d3f581c64d5678e94427` |
 | `lib/keyboard.js` | 4876 | `631f85b7b49a68ca7aa8e3c3d31cfbfbefb44360a5aace83305ed27d5e0d8ee0` |
 | `lib/keywords.js` | 2715 | `8ba3e40698eaf14947556b0d2078f168a99e8589644808057fa1b453d903a742` |
@@ -83,7 +83,7 @@ downloads is committed in this repository and is hashed below.
 | `lib/pa/staleness-ledger.js` | 26743 | `ecde53a1c9f32d2f4dab092fdae098d9ed9eb2f4a48a40831f67eb27201c7cee` |
 | `lib/pa/staleness.js` | 9310 | `99249cde34d35bb57ea644fced966019d1373b34f792f1ea9b42b586b94454df` |
 | `lib/print.js` | 4179 | `84053c26cd3859b4156ddf0cc33bc546656c7ce4b01651de786d1dced7cf4d3c` |
-| `lib/prompt.js` | 6872 | `95ee9b9de5adbafd1497f378993e27d29c9f437bfc9ddc304886fd75e80fffd4` |
+| `lib/prompt.js` | 6964 | `b6ff725099ef39fa16557978afb491542d951a223257fae72446982e480ce302` |
 | `lib/regulatory.js` | 8260 | `c65d46053e1a36ff443d8c518dc6cbae1d61e35dc640ddc9a1ad483d07eb62e4` |
 | `lib/result-copy.js` | 1745 | `0389d38cabd3d8adca91096d93e663a5e446f3062f6282d0fb7e77f5a0ffad93` |
 | `lib/scoring-v4.js` | 228126 | `41af85021cb6517a6a14e75b14b7b445fc4e0f2f3e771f1e0df531ab468af485` |

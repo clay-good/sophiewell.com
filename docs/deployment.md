@@ -47,7 +47,7 @@ headers from spec section 7.
 After every production deploy, verify in a browser developer tools panel
 or with `curl -I https://sophiewell.com/`:
 
-- `Content-Security-Policy: default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'self'; form-action 'self'; base-uri 'self'; frame-ancestors 'none'; object-src 'none'`
+- `Content-Security-Policy: default-src 'self'; script-src 'self' 'wasm-unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'self'; form-action 'self'; base-uri 'self'; frame-ancestors 'none'; object-src 'none'`
 - `Strict-Transport-Security: max-age=31536000; includeSubDomains; preload`
 - `X-Content-Type-Options: nosniff`
 - `X-Frame-Options: DENY`

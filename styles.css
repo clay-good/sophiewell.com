@@ -182,8 +182,8 @@ body {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 40px;
-  height: 40px;
+  width: 44px;
+  height: 44px;
   padding: 0;
   background: var(--bg-secondary);
   color: var(--text-primary);
@@ -830,7 +830,12 @@ body {
   background: transparent;
   border: 1px solid var(--border);
   color: var(--text-secondary);
+  /* spec-v72: 44px min touch target (WCAG 2.5.5) for the primary back control
+     on every tool view; inline-flex centers the label inside the taller box. */
   padding: 7px 14px;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
   border-radius: 8px;
   cursor: pointer;
   font-family: inherit;
@@ -1034,10 +1039,17 @@ main h1 {
   outline-offset: 2px;
   border-radius: 3px;
 }
-.tool-meta .example-row { margin-bottom: 0; }
+.tool-meta .example-row { margin-bottom: 0; display: flex; align-items: center; flex-wrap: wrap; }
 .tool-meta .example-expected { margin-left: var(--space-2); font-size: 0.85rem; }
-.tool-meta .example-btn { font-size: 0.85rem; }
-.tool-meta .example-reset { font-size: 0.85rem; }
+/* spec-v72: the "Reset to example" control is an <a> on its own row, not a
+   button, so it needs inline-flex for min-height to apply (44px touch target,
+   WCAG 2.5.5). The flex example-row keeps it centered beside its note. */
+.tool-meta .example-reset {
+  font-size: 0.85rem;
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+}
 /* spec-v9 §3.3: muted "(example: <value>)" annotation next to input labels. */
 .example-hint { font-size: 0.8rem; margin-left: var(--space-1); font-weight: normal; }
 
@@ -1062,7 +1074,17 @@ main h1 {
 
 /* Copy buttons */
 .copy-row { margin-bottom: 0; }
-.copy-btn { font-size: 0.85rem; padding: 4px 10px; }
+/* spec-v72: 44px min touch target (WCAG 2.5.5). The small font keeps the pill
+   visually light; min-height matches the base button so the control is a
+   comfortable tap on a phone, not a 24px sliver packed beside its neighbors. */
+.copy-btn {
+  font-size: 0.85rem;
+  padding: 4px 12px;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
 /* Copy confirms with a cheerful teal flash so the user sees the action
    land, not just hears the screen-reader announcement. */
 .copy-btn[data-copied='1'] {
