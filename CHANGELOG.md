@@ -6,6 +6,34 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Fixed (spec-v76 — the tool-page builder's discovery-surface allowlist names only live tiles, and proves it; catalog unchanged at 337)
+
+The static tool-page builder ([scripts/build-tool-pages.mjs](scripts/build-tool-pages.mjs))
+classifies each tile's schema.org `additionalType` (`MedicalCalculator` /
+`HowTo` / `Dataset` / `Reference`) from three hand-curated allowlists.
+`HOW_TO_TILES` still named **seven tile ids retired in the spec-v29 prune**
+(`decoder`, `eob-decoder`, `msn-decoder`, `insurance-card`, `abn-explainer`,
+`cms1500`, `ub04`). Because `classify()` is only ever called on live tiles the
+dead ids matched nothing and emitted no output — but the set's comment frames
+each entry as a deliberate per-tile discovery choice, so the dead ids advertised
+seven tiles that do not exist. Same drift shape as spec-v75's stale precache
+list. See [docs/spec-v76.md](docs/spec-v76.md).
+
+- `scripts/build-tool-pages.mjs`: removed the seven spec-v29-removed ids from
+  `HOW_TO_TILES` (and corrected the now-stale comments); **no generated page
+  changes** — the dead ids produced zero output before and after, so every
+  `/tools/<id>/` page's JSON-LD is byte-identical.
+- `scripts/build-tool-pages.mjs`: added a build-time guard in `main()` that
+  throws if any id in `HOW_TO_TILES` / `DATASET_TILES` / `REFERENCE_TILES` is not
+  in the live `UTILITIES` catalog, naming the offenders. The build (a CI step and
+  a `test:e2e` prerequisite) now fails loudly on this class of drift instead of
+  tolerating it silently. An exhaustive sweep confirmed no other hardcoded
+  tile-id list in `scripts/`, `lib/`, or CI config carries a dead id.
+- `SECURITY.md`: doc-drift fix — the "Pinned dev dependencies" example cited
+  ESLint `9.17.0` and `@playwright/test` `1.49.1`, but `package.json` pins
+  `9.39.4` and `1.59.1`. The pinning posture was already accurate; only the
+  example version strings had gone stale.
+
 ### Fixed (spec-v75 — service worker precaches the live shell, not removed datasets; catalog unchanged at 337)
 
 The `sw.js` `SHELL_ASSETS` precache list still named **ten code-lookup dataset

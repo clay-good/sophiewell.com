@@ -103,14 +103,20 @@ code-lookup dataset manifests retired in the spec-v29 prune (five of whose
 directories no longer exist) while omitting two shell scripts the page loads
 (`theme.js`, `file-origin-guard.js`); the precache now covers the full app shell
 and datasets stay lazily cached — again with **zero new tiles**.
+spec-v76 then applies the same lesson to the static tool-page builder, whose
+schema.org discovery-surface allowlist still named seven spec-v29-removed tile
+ids (`decoder`, `cms1500`, `ub04`, …); because the allowlist is only matched
+against live tiles the dead ids emitted nothing, but they advertised tiles that
+do not exist — so v76 removes them and adds a build-time guard that fails loudly
+if any allowlisted id leaves the catalog — again with **zero new tiles**.
 See [docs/spec-v62.md](docs/spec-v62.md),
 [docs/spec-v63.md](docs/spec-v63.md), [docs/spec-v64.md](docs/spec-v64.md),
 [docs/spec-v65.md](docs/spec-v65.md), [docs/spec-v66.md](docs/spec-v66.md),
 [docs/spec-v67.md](docs/spec-v67.md), [docs/spec-v68.md](docs/spec-v68.md),
 [docs/spec-v69.md](docs/spec-v69.md), [docs/spec-v70.md](docs/spec-v70.md),
 [docs/spec-v71.md](docs/spec-v71.md), [docs/spec-v72.md](docs/spec-v72.md),
-[docs/spec-v73.md](docs/spec-v73.md), [docs/spec-v74.md](docs/spec-v74.md), and
-[docs/spec-v75.md](docs/spec-v75.md).)
+[docs/spec-v73.md](docs/spec-v73.md), [docs/spec-v74.md](docs/spec-v74.md),
+[docs/spec-v75.md](docs/spec-v75.md), and [docs/spec-v76.md](docs/spec-v76.md).)
 The new `pa-lint` tile in spec-v52 consumes
 dropped files instead of form fields and produces a
 deterministic findings report, the first instance of the
@@ -738,7 +744,7 @@ views/              per-group view renderers (group-*.js, pa-lint.js)
 data/               sharded public datasets + SHA-256 manifests (46 datasets)
 scripts/            build-*, check-* (catalog-truth, output-safety, citations,
                     commitments, PA staleness), audit-* — the CI gate chain
-docs/               specs (spec-v4 … spec-v75) + per-tile v11 audit logs +
+docs/               specs (spec-v4 … spec-v76) + per-tile v11 audit logs +
                     citation-staleness ledger +
                     architecture / threat-model / …
 test/               unit/ (node:test) · integration/ (Playwright) · fixtures/

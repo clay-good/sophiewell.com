@@ -109,16 +109,13 @@ async function loadToolCopy(id) {
 // look for. Sets are explicit (not heuristic) so a contributor adding
 // a new tile makes a deliberate choice about its discovery surface.
 const HOW_TO_TILES = new Set([
-  // Group C decoders + template generators
-  'decoder', 'eob-decoder', 'msn-decoder', 'insurance-card',
-  'abn-explainer', 'appeal-letter', 'hipaa-roa',
+  // Group C template generators
+  'appeal-letter', 'hipaa-roa',
   // Group H workflow templates
   'prep', 'prior-auth', 'hipaa-auth', 'roi', 'discharge-instr',
   'specialty-visit', 'wallet-card', 'sbar-template',
   // Group I documentation helper
   'ems-doc',
-  // Group L printable forms
-  'cms1500', 'ub04',
 ]);
 const DATASET_TILES = new Set([
   // Group J reference table
@@ -294,7 +291,7 @@ ${related.map((r) => `          <li><a href="${SITE}/tools/${r.id}/">${esc(r.nam
       }
     : null;
 
-  // Minimal HowTo recipe for decoders + template generators. Google's
+  // Minimal HowTo recipe for the template/workflow generators. Google's
   // HowTo rich result needs an explicit step list; without it the
   // additionalType is just a hint.
   const howToLd = (kind === 'howto')
@@ -435,6 +432,22 @@ async function main() {
   const [tiles, descriptions, meta] = await Promise.all([
     loadUtilities(), loadDescriptions(), loadMeta(),
   ]);
+
+  // spec-v76: the discovery-surface allowlists (classify()) are matched only
+  // against live tiles, so a dead id in them is silently inert: exactly the
+  // drift that let seven spec-v29-removed ids linger here. Assert every
+  // allowlisted id is a live tile so any future removal fails the build loudly
+  // instead of leaving a misleading "deliberate choice" comment behind.
+  const liveIds = new Set(tiles.map((t) => t.id));
+  const orphanAllowlistIds = [...HOW_TO_TILES, ...DATASET_TILES, ...REFERENCE_TILES]
+    .filter((id) => !liveIds.has(id));
+  if (orphanAllowlistIds.length > 0) {
+    throw new Error(
+      `build-tool-pages: classify() allowlist names ${orphanAllowlistIds.length} non-catalog tile id(s): ` +
+        `${orphanAllowlistIds.join(', ')}. Remove them from HOW_TO_TILES/DATASET_TILES/REFERENCE_TILES ` +
+        `or restore the tile in UTILITIES (app.js).`,
+    );
+  }
 
   let written = 0;
   let withCopy = 0;

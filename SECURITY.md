@@ -56,7 +56,7 @@ summary:
   trackers, no external scripts of any kind.
 - **Pinned dev dependencies.** All entries in `package.json`
   `devDependencies` use exact versions (no `^` or `~`). Today: ESLint
-  `9.17.0` and `@playwright/test` `1.49.1`.
+  `9.39.4` and `@playwright/test` `1.59.1`.
 - **Pinned runtime engine.** `engines.node` is constrained to
   `>=20.18.1 <21`; `.nvmrc` records the exact patch. Cloudflare Pages
   reads `.nvmrc` to lock the build's Node version.
