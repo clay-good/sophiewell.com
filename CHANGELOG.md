@@ -6,6 +6,35 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Fixed (spec-v73 — the UA color-scheme now follows the active theme; black date field in light mode fixed; catalog unchanged at 337)
+
+`color-scheme` was declared dark-only — a hardcoded `<meta name="color-scheme"
+content="dark">` on every page, with no CSS counterpart — but the site ships a
+full light theme reachable by OS preference or the manual toggle. So in light
+mode the browser painted every native control to the dark scheme: most visibly a
+**black `<input type=date>`** on the ops/deadline tiles (`appeal-deadline`,
+`timely-filing`, `pa-turnaround`, `overpayment-60day`, `em-mdm`), plus dark
+number-spinner arrows, `<select>` popups, and scrollbars on a white page. See
+[docs/spec-v73.md](docs/spec-v73.md).
+
+- `styles.css`: `color-scheme: dark` on `:root` and `color-scheme: light` on
+  `[data-theme="light"]`. Keyed on `data-theme` (set by theme.js before paint),
+  so it tracks the manual toggle — not just `prefers-color-scheme`, which a meta
+  and a media query cannot follow. Applies to the SPA and all 351 pre-rendered
+  pages via the shared stylesheet. No palette/token/output change.
+- `index.html` + the 4 static-page build templates (5 spots): `<meta
+  name="color-scheme">` `dark` → `dark light` (accurate declaration; a pre-CSS
+  hint that avoids a flash of dark widgets before styles.css loads).
+- `theme.js`: `swSetThemeColor()` finds-or-creates `<meta name="theme-color">`
+  and sets it to `#ffffff` (light) / `#0a0a0a` (dark) to match `--bg-primary`,
+  on the before-paint init and on every toggle — so the mobile browser-chrome
+  bar matches the page (it stayed dark in light mode before). Find-or-create
+  means it also covers the static pages, which omit the static meta.
+- New guard `test/integration/theme-color-scheme.spec.js`: on `/#appeal-deadline`
+  (the date-input route the bug appeared on), in both themes, asserts the
+  computed `color-scheme` equals the theme and there is exactly one `theme-color`
+  meta matching `--bg-primary`. Non-vacuous: the value was `normal` pre-fix.
+
 ### Changed (spec-v72 — every primary interactive control now meets the 44px touch target; catalog unchanged at 337)
 
 The horizontal-scroll guarantee proved nothing *overflows* the phone viewport,

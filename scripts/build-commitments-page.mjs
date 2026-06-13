@@ -152,7 +152,7 @@ function pageHtml() {
     <link rel="manifest" href="/site.webmanifest" />
 
     <meta name="referrer" content="no-referrer" />
-    <meta name="color-scheme" content="dark" />
+    <meta name="color-scheme" content="dark light" />
 
     <title>${esc(TITLE)}</title>
     <meta name="description" content="${esc(DESCRIPTION)}" />

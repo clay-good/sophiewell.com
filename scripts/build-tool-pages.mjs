@@ -329,7 +329,7 @@ ${related.map((r) => `          <li><a href="${SITE}/tools/${r.id}/">${esc(r.nam
     <link rel="manifest" href="/site.webmanifest" />
 
     <meta name="referrer" content="no-referrer" />
-    <meta name="color-scheme" content="dark" />
+    <meta name="color-scheme" content="dark light" />
 
     <title>${esc(seoTitle)}</title>
     <meta name="description" content="${esc(seoDesc)}" />

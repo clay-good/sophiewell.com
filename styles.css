@@ -3,6 +3,12 @@
    form treatments mirror encryptalotta/index.html. */
 
 :root {
+  /* spec-v73: declare the active scheme so the UA paints native controls
+     (date pickers, number spinners, <select> popups, scrollbars) to match
+     the theme. Keyed on data-theme below, so it tracks the manual toggle,
+     not just the OS preference -- before this, a light-mode page rendered a
+     black date field and dark scrollbars. */
+  color-scheme: dark;
   --bg-primary: #0a0a0a;
   --bg-secondary: #1a1a1a;
   --bg-tertiary: #2a2a2a;
@@ -51,6 +57,7 @@
 }
 
 [data-theme="light"] {
+  color-scheme: light;
   --bg-primary: #ffffff;
   --bg-secondary: #f4f4f5;
   --bg-tertiary: #e6e6e8;

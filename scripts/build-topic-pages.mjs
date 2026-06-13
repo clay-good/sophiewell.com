@@ -226,7 +226,7 @@ function buildTopicHtml({ topic, tiles }) {
     <link rel="manifest" href="/site.webmanifest" />
 
     <meta name="referrer" content="no-referrer" />
-    <meta name="color-scheme" content="dark" />
+    <meta name="color-scheme" content="dark light" />
 
     <title>${esc(topic.title)}</title>
     <meta name="description" content="${esc(topic.description)}" />
@@ -351,7 +351,7 @@ function buildIndexHtml({ topics }) {
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
     <link rel="manifest" href="/site.webmanifest" />
     <meta name="referrer" content="no-referrer" />
-    <meta name="color-scheme" content="dark" />
+    <meta name="color-scheme" content="dark light" />
     <title>Sophie Well Topics - Browse by clinical area · Sophie Well</title>
     <meta name="description" content="Browse Sophie Well's free healthcare tools by clinical topic: cardiology, nephrology, medication safety, triage, OB/peds, behavioral health, billing, literacy." />
     <meta name="author" content="Clay Good" />

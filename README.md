@@ -88,13 +88,18 @@ guarantee started: four interactive controls (the copy pills, the theme toggle,
 the breadcrumb back-button, and the load-example reset) rendered below the 44px
 touch-target floor (WCAG 2.5.5) and are now brought up to a comfortable tap, with
 a permanent regression guard — again with **zero new tiles**.
+spec-v73 then fixes a light-mode rendering defect: `color-scheme` was declared
+dark-only, so the browser painted native controls (a black `<input type=date>`,
+dark `<select>` popups and scrollbars) to the dark scheme on the light page — now
+the CSS `color-scheme` and the mobile `theme-color` chrome track the active
+(toggled) theme — again with **zero new tiles**.
 See [docs/spec-v62.md](docs/spec-v62.md),
 [docs/spec-v63.md](docs/spec-v63.md), [docs/spec-v64.md](docs/spec-v64.md),
 [docs/spec-v65.md](docs/spec-v65.md), [docs/spec-v66.md](docs/spec-v66.md),
 [docs/spec-v67.md](docs/spec-v67.md), [docs/spec-v68.md](docs/spec-v68.md),
 [docs/spec-v69.md](docs/spec-v69.md), [docs/spec-v70.md](docs/spec-v70.md),
-[docs/spec-v71.md](docs/spec-v71.md), and
-[docs/spec-v72.md](docs/spec-v72.md).)
+[docs/spec-v71.md](docs/spec-v71.md), [docs/spec-v72.md](docs/spec-v72.md), and
+[docs/spec-v73.md](docs/spec-v73.md).)
 The new `pa-lint` tile in spec-v52 consumes
 dropped files instead of form fields and produces a
 deterministic findings report, the first instance of the
@@ -722,7 +727,7 @@ views/              per-group view renderers (group-*.js, pa-lint.js)
 data/               sharded public datasets + SHA-256 manifests (46 datasets)
 scripts/            build-*, check-* (catalog-truth, output-safety, citations,
                     commitments, PA staleness), audit-* — the CI gate chain
-docs/               specs (spec-v4 … spec-v72) + per-tile v11 audit logs +
+docs/               specs (spec-v4 … spec-v73) + per-tile v11 audit logs +
                     citation-staleness ledger +
                     architecture / threat-model / …
 test/               unit/ (node:test) · integration/ (Playwright) · fixtures/
