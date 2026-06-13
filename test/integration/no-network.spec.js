@@ -38,9 +38,10 @@ function isSameOrigin(reqUrl, pageOrigin) {
 
 // Three representative tiles exercising distinct code paths:
 //   bmi               - pure compute, no data fetch
-//   icd10cm-lookup    - data-shard fetch (must hit /data/* on the page origin)
+//   sti-screening     - bundled-data fetch (must hit /data/* on the page origin;
+//                       icd10cm-lookup, the old pick, was removed in spec-v29)
 //   wells-pe          - boolean / additive scoring with synonym match
-const SAMPLE_TILES = ['bmi', 'icd10cm-lookup', 'wells-pe'];
+const SAMPLE_TILES = ['bmi', 'sti-screening', 'wells-pe'];
 
 test('runtime: no off-origin network calls, no cookies, allowlisted storage only', async ({ page }) => {
   test.setTimeout(60_000);

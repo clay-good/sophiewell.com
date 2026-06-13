@@ -6,6 +6,29 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Fixed (spec-v75 — service worker precaches the live shell, not removed datasets; catalog unchanged at 337)
+
+The `sw.js` `SHELL_ASSETS` precache list still named **ten code-lookup dataset
+manifests** retired in the spec-v29 prune: five of those directories no longer
+exist (their install fetch 404'd and was silently swallowed) and none of the ten
+is fetched by any current tile. Meanwhile it **omitted two shell scripts** the
+page loads (`theme.js`, `file-origin-guard.js`). See
+[docs/spec-v75.md](docs/spec-v75.md).
+
+- `sw.js`: dropped the ten stale `/data/*/manifest.json` precache entries and
+  added `theme.js` + `file-origin-guard.js`, so the precache is now the complete
+  app shell. Dataset manifests and shards remain cached lazily on first fetch via
+  `DATA_CACHE` (the documented shell-precache + lazy-data model), which already
+  covers every live tile and does not rot as the catalog changes. The
+  `install`/`activate`/`fetch` handlers and the build-time `BUILD_HASH` stamping
+  are unchanged.
+- `test/integration/no-network.spec.js`: its three-tile sample used
+  `icd10cm-lookup` (removed in spec-v29) as the "data-shard fetch" representative,
+  so it no longer exercised any on-origin data fetch (it still passed, asserting
+  only the absence of off-origin calls). Swapped to `sti-screening`, a live tile
+  that fetches `/data/sti-screening/sti.json` on render — restoring genuine
+  coverage of the on-origin-data-fetch path.
+
 ### Fixed (spec-v74 — the "Skip to content" link works in the SPA again; catalog unchanged at 337)
 
 The skip link (`<a class="skip-link" href="#main">`) is the keyboard/screen-reader

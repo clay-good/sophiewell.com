@@ -10,25 +10,23 @@ const BUILD_HASH = 'dev';
 const SHELL_CACHE = `sophiewell-shell-${BUILD_HASH}`;
 const DATA_CACHE = `sophiewell-data-${BUILD_HASH}`;
 
+// spec-v75: precache the full application shell -- every file index.html loads.
+// theme.js and file-origin-guard.js were previously omitted (so an offline cold
+// reload missed them); they are added here. Dataset manifests are NOT
+// precached: they (and their shards) are cached lazily on first fetch via
+// DATA_CACHE in the fetch handler below. The old list named ten code-lookup
+// datasets removed in the spec-v29 prune -- five of those directories no longer
+// exist (their install fetch 404'd and was silently swallowed) and none is
+// fetched by any current tile, so precaching them helped nothing.
 const SHELL_ASSETS = [
   './',
   './index.html',
   './styles.css',
   './app.js',
+  './theme.js',
+  './file-origin-guard.js',
   './CHANGELOG.md',
   './docs/stability.md',
-  // Per-dataset manifests. Listing them by path so they precache for offline
-  // first-load. Shards themselves are cached lazily on first fetch.
-  './data/icd10cm/manifest.json',
-  './data/hcpcs/manifest.json',
-  './data/cpt-summaries/manifest.json',
-  './data/mpfs/manifest.json',
-  './data/nadac/manifest.json',
-  './data/ndc/manifest.json',
-  './data/npi/manifest.json',
-  './data/ncci/manifest.json',
-  './data/mue/manifest.json',
-  './data/hospital-prices/manifest.json',
 ];
 
 self.addEventListener('install', (event) => {
