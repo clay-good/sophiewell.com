@@ -37,6 +37,6 @@
   "devDependencies": {
     "@playwright/test": "1.59.1",
     "eslint": "9.39.4",
-    "openlore": "2.0.8"
+    "openlore": "2.0.18"
   }
 }
