@@ -31,6 +31,7 @@ const SITE = 'https://sophiewell.com';
 // spec-v11 §4.1: visible specialty / category labels.
 const GROUP_LABELS = {
   A: 'Billing & Coding',
+  B: 'Billing & Reimbursement',
   C: 'Insurance & Patient Literacy',
   E: 'Clinical Math & Conversions',
   F: 'Medication & Infusion',

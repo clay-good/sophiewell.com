@@ -18,7 +18,14 @@ test.describe.configure({ mode: 'parallel' });
 test.skip(({ browserName }) => browserName !== 'chromium', 'fuzz pass is chromium-only');
 
 test('every tool tolerates indiscriminate interaction without crashing', async ({ page }) => {
-  test.setTimeout(360_000);
+  // Serial, full-catalog interaction sweep: one navigation + a burst of input
+  // edits per tile. Its wall-clock grows linearly with the catalog (~1s/tile)
+  // and contends for CPU with the other browser projects under
+  // `npm run test:e2e`. At 342 tiles a clean run is ~6 min, so the budget is
+  // generous headroom above that to absorb CI worker contention without a
+  // timeout flake (same rationale as example-correctness.spec.js). A real crash
+  // still fails fast per-tile, never via this timeout. Raise as the catalog grows.
+  test.setTimeout(600_000);
   const errors = [];
   page.on('pageerror', (e) => errors.push(`pageerror: ${e}`));
   page.on('console', (m) => { if (m.type() === 'error') errors.push(`console: ${m.text()}`); });

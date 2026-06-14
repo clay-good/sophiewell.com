@@ -18,6 +18,7 @@ import { renderers as RV9 } from './views/group-v9.js';
 import { renderers as RV10 } from './views/group-v10.js';
 import { renderers as RV11 } from './views/group-v11.js';
 import { renderers as RV63 } from './views/group-v63.js';
+import { renderers as RB } from './views/group-b.js';
 import { renderers as RPALINT } from './views/pa-lint.js';
 import { META } from './lib/meta.js';
 import { fetchJson } from './lib/data.js';
@@ -34,7 +35,7 @@ import { resolvePrompt } from './lib/prompt.js';
 // artifact-detect / artifact-route / artifact-handoff helpers were
 // deleted in spec-v29 wave 29-2 (Group C/L).
 
-const RENDERERS = { ...RA, ...RC, ...RE, ...RF, ...RG, ...RH, ...RI, ...RJ, ...RKLMNO, ...RV5, ...RV6, ...RV7, ...RV8, ...RV9, ...RV10, ...RV11, ...RV63, ...RPALINT };
+const RENDERERS = { ...RA, ...RB, ...RC, ...RE, ...RF, ...RG, ...RH, ...RI, ...RJ, ...RKLMNO, ...RV5, ...RV6, ...RV7, ...RV8, ...RV9, ...RV10, ...RV11, ...RV63, ...RPALINT };
 
 // ----- Utility registry ----------------------------------------------------
 // Source of truth for routes, names, group, audiences, and clinical flag.
@@ -50,8 +51,15 @@ const UTILITIES = [
   // Their URL hashes route to the home view with a removed-note via
   // REMOVED_V29_IDS below. Surviving Group A calculators (em-time,
   // ndc-convert) live below in the v5 block.
-  // Group B: Pricing and Cost Reference
-  // Group B: v4 extensions (utilities 94-104)
+  // Group B: Billing & Reimbursement (spec-v77 charter / spec-v78 program).
+  // The MPFS reimbursement engine: what Medicare actually pays a professional
+  // line after every reduction. Deterministic, cited, integer-cents money;
+  // input-or-bundled-data (doctrine clause 2). views/group-b.js, lib/billing-v78.js.
+  { id: 'rvu-payment', name: 'MPFS Allowed Amount (RVU x GPCI x CF)', group: 'B', audiences: ['billers'], clinical: false },
+  { id: 'mppr', name: 'Multiple-Procedure Payment Reduction', group: 'B', audiences: ['billers'], clinical: false },
+  { id: 'bilateral-pay', name: 'Bilateral (Modifier 50) Payment by Indicator', group: 'B', audiences: ['billers'], clinical: false },
+  { id: 'multi-surgeon-pay', name: 'Assistant / Co- / Team-Surgeon Payment', group: 'B', audiences: ['billers'], clinical: false },
+  { id: 'sequestration-adjust', name: 'Medicare 2% Sequestration Adjustment', group: 'B', audiences: ['billers'], clinical: false },
   // Group C: Patient Bill and Insurance Tools
   // spec-v29 wave 29-2: 12 Group C patient-literacy / eligibility tiles
   // removed (decoder, insurance, eob-decoder, no-surprises,
@@ -613,6 +621,8 @@ const CHIP_TO_AUDIENCE_HINT = {
 // the label is the visible name everywhere a user sees it.
 const GROUP_LABELS = {
   A: 'Billing & Coding',
+  // spec-v77 §3: the computational reimbursement/payment/edit group.
+  B: 'Billing & Reimbursement',
   C: 'Insurance & Patient Literacy',
   E: 'Clinical Math & Conversions',
   F: 'Medication & Infusion',

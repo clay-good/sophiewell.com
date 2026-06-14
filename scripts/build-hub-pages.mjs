@@ -23,6 +23,7 @@ const SITE = 'https://sophiewell.com';
 // spec-v11 §4.1: visible specialty / category labels.
 const GROUP_LABELS = {
   A: 'Billing & Coding',
+  B: 'Billing & Reimbursement',
   C: 'Insurance & Patient Literacy',
   E: 'Clinical Math & Conversions',
   F: 'Medication & Infusion',
@@ -38,7 +39,7 @@ const GROUP_LABELS = {
   // spec-v52 §10.1: revenue-cycle / utilization-management group.
   P: 'Revenue cycle & utilization',
 };
-const GROUP_ORDER = ['A', 'C', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P'];
+const GROUP_ORDER = ['A', 'B', 'C', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P'];
 
 // Per-audience SEO copy + workflow framing. These are the indexable
 // paragraphs that earn the long-tail "healthcare tools for X" queries.

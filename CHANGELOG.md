@@ -6,6 +6,61 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v78 — the MPFS reimbursement engine: Group B "Billing & Reimbursement"; +5 tiles, catalog 337 -> 342)
+
+First feature spec of the [spec-v77](docs/spec-v77.md) billing & coding program.
+It opens **Group B "Billing & Reimbursement"** ([views/group-b.js](views/group-b.js),
+[lib/billing-v78.js](lib/billing-v78.js)) with five deterministic, CMS-cited,
+integer-cents reimbursement calculators — the math a revenue-cycle professional
+redoes for every claim, which is not Googleable. The fixed reduction chain (base
+allowed -> bilateral -> multiple-procedure ranking -> assistant/co/team
+percentage -> sequestration) is encoded once and unit-tested with worked CMS
+examples. See [docs/spec-v78.md](docs/spec-v78.md).
+
+- `rvu-payment` — the locality-priced MPFS allowed amount,
+  `[workRVU*workGPCI + peRVU*peGPCI + mpRVU*mpGPCI] x CF`, for both the
+  non-facility and facility site of service, plus the site-of-service
+  differential. Reproduces a hand-checked CMS example (99214, National Average
+  GPCI, CY2026 CF $32.7442 -> $116.24 non-facility / $89.72 facility) to the cent.
+  Reads the bundled `data/mpfs` RVU shards + `data/mpfs/gpci.json` triplets +
+  `data/mpfs/conversion-factor.json` as a convenience; every value is overridable
+  (doctrine clause 2), so the tool never fails for a code or locality off the
+  bundle, and the CF override models a percent-of-Medicare contract.
+- `mppr` — the multiple-procedure payment reduction: 100% of the highest line,
+  50% of each subsequent (Pub. 100-04 Ch. 12 40.6), plus the endoscopy base-code
+  rule (40.7). Re-ranks the lines and shows per-line and total expected allowed
+  and the dollars the reduction withholds.
+- `bilateral-pay` — the modifier-50 payable amount by MPFS BILAT SURG indicator
+  (1 = 150% of the pair, 2 = 100% already-bilateral, 3 = 200% each side, 0/9 =
+  hard not-payable gate). Stops the two common bilateral errors at once.
+- `multi-surgeon-pay` — assistant (16%), co-surgeon (62.5% to each), or team
+  (by report) payment, gated by the matching ASST/CO/TEAM SURG indicator
+  (0/9 = not separately payable).
+- `sequestration-adjust` — the 2% Medicare sequestration cut applied to the
+  program-payment portion only (Budget Control Act of 2011 251A), never to the
+  allowed amount or the patient cost-share; the last reduction in the chain.
+- New compute module `lib/billing-v78.js` (pure, integer cents end-to-end; bad
+  inputs throw `TypeError`/`RangeError` caught by the renderer `safe()` wrapper;
+  zero `NaN`/`Infinity` by construction) with 15 unit tests in
+  `test/unit/billing-v78.test.js` (>=3 boundary worked examples per tile,
+  including the indicator-0 not-payable gate, the facility/non-facility
+  differential, and the four-line MPPR chain).
+- Five dated constants (PFS conversion factor, 2% sequestration, 16%/62.5%
+  surgical percentages, 100/50/50 + 150% reduction factors) added to
+  [pa-staleness-ledger.json](pa-staleness-ledger.json) under a new ruleFamily
+  `billing-v78`; `check-pa-staleness` guards their currency in CI.
+- Wiring: `app.js` (+5 `UTILITIES` rows in Group B, `RB` renderers,
+  `GROUP_LABELS.B`), `lib/meta.js` (inline citation + `citationUrl` + `accessed`
+  + Test-with-example payload + related-tool cluster), the hub/tool/topic
+  builders learn Group B, and the `billing-and-coding` topic page lists the suite.
+  Catalog-truth surfaces bumped 337 -> 342; five `docs/audits/v12/` audit logs.
+- **Design decisions (within doctrine, see [docs/spec-v78.md](docs/spec-v78.md)
+  implementation notes):** GPCI/RVU/CF are consumed from the existing `data/mpfs`
+  corpus rather than a new `data/gpci` dataset (non-duplicative); the MPFS policy
+  indicators are a labeled user input rather than bundled (keeps the bundle light,
+  avoids shipping stale indicators); the tiles classify as schema.org `WebPage`
+  like the existing billing tiles, not `MedicalCalculator`.
+
 ### Fixed (spec-v76 — the tool-page builder's discovery-surface allowlist names only live tiles, and proves it; catalog unchanged at 337)
 
 The static tool-page builder ([scripts/build-tool-pages.mjs](scripts/build-tool-pages.mjs))

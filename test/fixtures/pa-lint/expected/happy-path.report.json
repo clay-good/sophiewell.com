@@ -10357,6 +10357,34 @@
           "url": "https://www.ecfr.gov/current/title-42/section-401.305",
           "ruleFamily": "ops-v63",
           "lastVerified": "2026-06-10"
+        },
+        {
+          "id": "billing-pfs-conversion-factor",
+          "label": "CMS Physician Fee Schedule conversion factor (CY2026: $32.7442 per RVU; annual PFS Final Rule) backing rvu-payment. Overridable per call to model a percent-of-Medicare contract.",
+          "url": "https://www.cms.gov/medicare/payment/fee-schedules/physician",
+          "ruleFamily": "billing-v78",
+          "lastVerified": "2026-06-13"
+        },
+        {
+          "id": "billing-sequestration-rate",
+          "label": "Medicare sequestration rate (2% of the program-payment portion; Budget Control Act of 2011 Pub. L. 112-25 251A) backing sequestration-adjust. Overridable to model the suspended/phased rates Congress has set.",
+          "url": "https://www.cms.gov/medicare/payment",
+          "ruleFamily": "billing-v78",
+          "lastVerified": "2026-06-13"
+        },
+        {
+          "id": "billing-surgical-payment-percentages",
+          "label": "MPFS surgical payment percentages (assistant at surgery 16%; co-surgeon 62.5% to each; CMS Pub. 100-04 Ch. 12 20.4.3/40.8) backing multi-surgeon-pay.",
+          "url": "https://www.cms.gov/regulations-and-guidance/guidance/manuals/downloads/clm104c12.pdf",
+          "ruleFamily": "billing-v78",
+          "lastVerified": "2026-06-13"
+        },
+        {
+          "id": "billing-mppr-bilateral-factors",
+          "label": "Multiple-procedure (100% highest / 50% each subsequent) and bilateral (150%) reduction factors and the MPFS MULT PROC / BILAT SURG indicator semantics (CMS Pub. 100-04 Ch. 12 40.6/40.7) backing mppr and bilateral-pay.",
+          "url": "https://www.cms.gov/regulations-and-guidance/guidance/manuals/downloads/clm104c12.pdf",
+          "ruleFamily": "billing-v78",
+          "lastVerified": "2026-06-13"
         }
       ],
       "evaluated": null
