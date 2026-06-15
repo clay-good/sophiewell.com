@@ -60,6 +60,15 @@ const UTILITIES = [
   { id: 'bilateral-pay', name: 'Bilateral (Modifier 50) Payment by Indicator', group: 'B', audiences: ['billers'], clinical: false },
   { id: 'multi-surgeon-pay', name: 'Assistant / Co- / Team-Surgeon Payment', group: 'B', audiences: ['billers'], clinical: false },
   { id: 'sequestration-adjust', name: 'Medicare 2% Sequestration Adjustment', group: 'B', audiences: ['billers'], clinical: false },
+  // spec-v79: claim edits & modifier logic. v78 prices the line; these five
+  // decide whether it survives. No NCCI PTP / MUE table ships (doctrine clause 2):
+  // the indicator / MUE value is a user input, so the tool is never silently
+  // stale. views/group-b.js, lib/billing-v79.js.
+  { id: 'ncci-ptp', name: 'NCCI Edit & Modifier-Bypass Checker', group: 'B', audiences: ['coders', 'billers'], clinical: false },
+  { id: 'mue-check', name: 'MUE Units Adjudication (MAI 1/2/3)', group: 'B', audiences: ['coders', 'billers'], clinical: false },
+  { id: 'modifier-x-selector', name: 'Modifier 59 vs XE/XS/XP/XU Selector', group: 'B', audiences: ['coders', 'billers'], clinical: false },
+  { id: 'global-period', name: 'Global Surgery Period & Required Modifier', group: 'B', audiences: ['coders', 'billers'], clinical: false },
+  { id: 'modifier-order', name: 'Pricing vs Informational Modifier Order', group: 'B', audiences: ['coders', 'billers'], clinical: false },
   // Group C: Patient Bill and Insurance Tools
   // spec-v29 wave 29-2: 12 Group C patient-literacy / eligibility tiles
   // removed (decoder, insurance, eob-decoder, no-surprises,

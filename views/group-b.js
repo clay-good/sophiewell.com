@@ -17,6 +17,7 @@ import { el, clear } from '../lib/dom.js';
 import { fmt } from '../lib/num.js';
 import { loadAllShards, loadFile } from '../lib/data.js';
 import * as Bill from '../lib/billing-v78.js';
+import * as Edit from '../lib/billing-v79.js';
 
 // ---- shared local helpers (mirrors views/group-v63.js) ----------------------
 function field(label, id, opts = {}) {
@@ -77,6 +78,21 @@ function derivation(pairs) {
 }
 function postureNote(text) { return el('p', { class: 'muted', text }); }
 const r2 = (n) => Math.round(n * 100) / 100;
+function dateField(label, id) { return field(label, id, { type: 'date' }); }
+// A labeled checkbox (its <label> wraps the box so the whole row is the hit
+// target; reads top-to-bottom on a phone with no sideways scroll).
+function checkField(label, id) {
+  const wrap = el('p');
+  const lab = el('label', { for: id });
+  lab.appendChild(el('input', { id, type: 'checkbox' }));
+  lab.appendChild(document.createTextNode(' ' + label));
+  wrap.appendChild(lab);
+  return wrap;
+}
+function checked(id) { const n = document.getElementById(id); return !!(n && n.checked); }
+// Render a verdict line; `tone` 'flag' (red) for a not-payable / refusal gate,
+// null for a normal/payable verdict.
+function verdictLine(o, text, tone) { o.appendChild(el('p', { class: tone || null, text })); }
 
 export const renderers = {
   // ----- 2.1 rvu-payment ----------------------------------------------------
@@ -322,6 +338,160 @@ export const renderers = {
         ['Net payment to the provider', usd(r.netPaymentCents)],
       ]));
       o.appendChild(postureNote('Budget Control Act of 2011 (Pub. L. 112-25) 251A. Sequestration reduces the payment, never the allowed amount or the beneficiary\'s coinsurance.'));
+    }));
+  },
+
+  // ===== spec-v79: claim edits & modifier logic ============================
+  // v78 prices the line; these five decide whether the line survives. No NCCI
+  // PTP / MUE table ships (doctrine clause 2): the indicator / MUE value is an
+  // input, so the tool can never be silently stale. Indicators gate, never guess.
+
+  // ----- 2.1 ncci-ptp -------------------------------------------------------
+  'ncci-ptp'(root) {
+    root.appendChild(el('p', { class: 'notice', text: 'Decides whether a code pair is an NCCI procedure-to-procedure edit and whether a modifier can unbundle it. Look the pair up in the CMS PTP edit file, enter its modifier indicator (0/1/9) here, and the tool computes the verdict. No edit file ships -- this is the decision, not the quarterly table.' }));
+    root.appendChild(field('Code A', 'ncci-a', { placeholder: '11042' }));
+    root.appendChild(field('Code B', 'ncci-b', { placeholder: '97597' }));
+    root.appendChild(selectField('Which code is Column 1 (the comprehensive, payable code)?', 'ncci-col', [
+      { value: 'unknown', text: 'Unknown -- explain the ordering rule' },
+      { value: 'a', text: 'Code A is Column 1 (B bundles into A)' },
+      { value: 'b', text: 'Code B is Column 1 (A bundles into B)' },
+    ]));
+    root.appendChild(selectField('PTP modifier indicator (from the CMS edit file)', 'ncci-ind', [
+      { value: '1', text: '1 -- a permitted NCCI-associated modifier may bypass' },
+      { value: '0', text: '0 -- no modifier permitted (hard bundle)' },
+      { value: '9', text: '9 -- edit deleted / not active' },
+    ]));
+    root.appendChild(field('Proposed bypass modifier (optional)', 'ncci-mod', { placeholder: '59 / XS / RT ...' }));
+    const o = out(); root.appendChild(o);
+    wire(['ncci-a', 'ncci-b', 'ncci-col', 'ncci-ind', 'ncci-mod'], () => safe(o, () => {
+      if (rawEmpty('ncci-a') || rawEmpty('ncci-b')) { o.appendChild(el('p', { class: 'muted', text: 'Enter both codes.' })); return; }
+      const r = Edit.ncciPtp({
+        codeA: str('ncci-a'), codeB: str('ncci-b'), column1: str('ncci-col'),
+        modifierIndicator: Math.round(numv('ncci-ind')), proposedModifier: str('ncci-mod'),
+      });
+      o.appendChild(el('h2', { text: r.isEdit ? (r.canBypass ? 'Edit -- bypass possible with the right modifier' : 'Edit -- hard bundle, no bypass') : 'Not an active NCCI edit' }));
+      verdictLine(o, r.columnNote);
+      verdictLine(o, r.bypassVerdict, r.canBypass || !r.isEdit ? null : 'flag');
+      if (r.proposedModifier) {
+        verdictLine(o, `Proposed modifier ${r.proposedModifier}: ${r.proposedIsNcciAssociated ? 'is' : 'is NOT'} an NCCI-associated modifier.`, r.proposedIsNcciAssociated ? null : 'flag');
+      }
+      o.appendChild(postureNote('CMS NCCI Policy Manual, Ch. I; Pub. 100-04 Ch. 23. Indicator semantics: 0 no bypass, 1 NCCI-associated modifier may bypass, 9 not an active edit. Whether the modifier is documented stays with the record.'));
+    }));
+  },
+
+  // ----- 2.2 mue-check ------------------------------------------------------
+  'mue-check'(root) {
+    root.appendChild(el('p', { class: 'notice', text: 'Adjudicates units against the Medically Unlikely Edit (MUE) value by its MUE Adjudication Indicator (MAI). Enter the code\'s MUE value and MAI from your CMS MUE lookup; the tool computes payable vs at-risk units and whether the excess can be rescued. No MUE table ships.' }));
+    root.appendChild(field('Units billed', 'mue-units', { type: 'number', inputmode: 'numeric', placeholder: '5' }));
+    root.appendChild(field('MUE value (from the CMS MUE file)', 'mue-value', { type: 'number', inputmode: 'numeric', placeholder: '3' }));
+    root.appendChild(selectField('MUE Adjudication Indicator (MAI)', 'mue-mai', [
+      { value: '1', text: '1 -- claim-line edit (excess may be split to a second line)' },
+      { value: '2', text: '2 -- date-of-service edit, ABSOLUTE (never payable)' },
+      { value: '3', text: '3 -- date-of-service edit, reviewable with documentation' },
+    ]));
+    root.appendChild(checkField('Units are already split across multiple lines/dates', 'mue-split'));
+    const o = out(); root.appendChild(o);
+    wire(['mue-units', 'mue-value', 'mue-mai', 'mue-split'], () => safe(o, () => {
+      if (rawEmpty('mue-units') || rawEmpty('mue-value')) { o.appendChild(el('p', { class: 'muted', text: 'Enter the units billed and the MUE value.' })); return; }
+      const r = Edit.mueCheck({
+        unitsBilled: Math.round(numv('mue-units')), mueValue: Math.round(numv('mue-value')),
+        mai: Math.round(numv('mue-mai')), splitAcrossLines: checked('mue-split'),
+      });
+      o.appendChild(el('h2', { text: r.pass ? `Passes -- ${r.payableUnits} unit(s) payable` : `Over the MUE -- ${r.payableUnits} payable, ${r.unitsAtRisk} at risk` }));
+      verdictLine(o, r.verdict, r.pass ? null : (r.rescuable ? null : 'flag'));
+      o.appendChild(derivation([
+        ['Units billed', String(r.unitsBilled)],
+        ['MUE value', String(r.mueValue)],
+        ['Payable units', String(r.payableUnits)],
+        ['Units at risk', String(r.unitsAtRisk)],
+        ['Excess rescuable?', r.rescuable ? 'Yes -- see the verdict' : 'No -- absolute'],
+      ]));
+      o.appendChild(postureNote('CMS MUE program; MAI 1 line edit / 2 absolute date-of-service / 3 reviewable date-of-service. The tool that stops a coder from appealing an MAI-2 edit that will never pay.'));
+    }));
+  },
+
+  // ----- 2.3 modifier-x-selector --------------------------------------------
+  'modifier-x-selector'(root) {
+    root.appendChild(el('p', { class: 'notice', text: 'Picks the single most specific distinct-service modifier (XE/XS/XP/XU) for the scenario, or 59 when none of the four subsets fits, or refuses when there is no distinct-service basis at all. CMS prefers the specific X-modifier over the blunt 59.' }));
+    root.appendChild(checkField('There is a distinct procedural service that would otherwise bundle', 'mx-distinct'));
+    root.appendChild(checkField('Separate ENCOUNTER (different session that day)', 'mx-enc'));
+    root.appendChild(checkField('Separate anatomic SITE / structure', 'mx-site'));
+    root.appendChild(checkField('Separate PRACTITIONER', 'mx-prac'));
+    root.appendChild(checkField('Unusual, non-overlapping service (same encounter)', 'mx-unusual'));
+    const o = out(); root.appendChild(o);
+    wire(['mx-distinct', 'mx-enc', 'mx-site', 'mx-prac', 'mx-unusual'], () => safe(o, () => {
+      const r = Edit.modifierXSelector({
+        distinctService: checked('mx-distinct'), separateEncounter: checked('mx-enc'),
+        separateSite: checked('mx-site'), separatePractitioner: checked('mx-prac'),
+        nonOverlapping: checked('mx-unusual'),
+      });
+      o.appendChild(el('h2', { text: r.modifier ? `Modifier ${r.modifier}` : 'No distinct-service modifier' }));
+      verdictLine(o, r.verdict, r.modifier ? null : 'flag');
+      if (r.alsoApply && r.alsoApply.length) verdictLine(o, `Also describe(s) the scenario: ${r.alsoApply.join(', ')}.`);
+      o.appendChild(postureNote('CMS MLN "Proper Use of Modifiers 59 & X{EPSU}"; Pub. 100-04 Ch. 23. Feed the chosen modifier back into ncci-ptp to confirm the pair\'s indicator permits a bypass.'));
+    }));
+  },
+
+  // ----- 2.4 global-period --------------------------------------------------
+  'global-period'(root) {
+    root.appendChild(el('p', { class: 'notice', text: 'Computes whether a follow-up encounter falls inside the surgical global package from the surgery date and the GLOB DAYS indicator, and names the modifier (24/25/57/58/78/79) that unlocks separate payment for its nature. Calendar math is UTC, day-0 = the day of surgery.' }));
+    root.appendChild(dateField('Surgery date', 'gp-surg'));
+    root.appendChild(selectField('Global-days indicator (MPFS GLOB DAYS)', 'gp-glob', [
+      { value: '090', text: '090 -- major surgery (90-day, + 1 preop day)' },
+      { value: '010', text: '010 -- minor procedure (10-day)' },
+      { value: '000', text: '000 -- endoscopy / minor (0-day, day of service only)' },
+      { value: 'XXX', text: 'XXX -- global concept does not apply' },
+      { value: 'YYY', text: 'YYY -- carrier/MAC-priced global' },
+      { value: 'ZZZ', text: 'ZZZ -- add-on (global of the primary code)' },
+      { value: 'MMM', text: 'MMM -- maternity package' },
+    ]));
+    root.appendChild(dateField('Subsequent encounter date', 'gp-sub'));
+    root.appendChild(selectField('Nature of the subsequent encounter', 'gp-nat', [
+      { value: 'unrelated-em', text: 'Unrelated E/M visit' },
+      { value: 'staged', text: 'Staged / related procedure or therapy' },
+      { value: 'return-to-or', text: 'Return to OR for a complication' },
+      { value: 'unrelated-procedure', text: 'Unrelated procedure' },
+      { value: 'decision-for-surgery', text: 'Decision-for-surgery visit' },
+      { value: 'related-postop', text: 'Routine related post-op visit' },
+    ]));
+    const o = out(); root.appendChild(o);
+    wire(['gp-surg', 'gp-glob', 'gp-sub', 'gp-nat'], () => safe(o, () => {
+      if (rawEmpty('gp-surg') || rawEmpty('gp-sub')) { o.appendChild(el('p', { class: 'muted', text: 'Enter the surgery date and the subsequent encounter date.' })); return; }
+      const r = Edit.globalPeriod({ surgeryDate: str('gp-surg'), globalDays: str('gp-glob'), subsequentDate: str('gp-sub'), nature: str('gp-nat') });
+      o.appendChild(el('h2', { text: r.requiredModifier ? `Separately billable -- modifier ${r.requiredModifier}` : (r.separatelyBillable ? 'Bill normally' : 'Bundled into the surgical package') }));
+      verdictLine(o, r.verdict, r.separatelyBillable ? null : 'flag');
+      if (r.windowStart && r.windowEnd) {
+        o.appendChild(derivation([
+          ['Global package window', `${r.windowStart} through ${r.windowEnd}`],
+          ['Days from surgery (day 0 = surgery)', r.daysFromSurgery === null ? '--' : String(r.daysFromSurgery)],
+          ['Inside the global period?', r.insideGlobal ? 'Yes' : 'No'],
+        ]));
+      }
+      o.appendChild(postureNote('CMS Pub. 100-04 Ch. 12 40; MLN Global Surgery Booklet. The major-surgery fee already includes the 90-day package -- this tells you when a visit is extra.'));
+    }));
+  },
+
+  // ----- 2.5 modifier-order -------------------------------------------------
+  'modifier-order'(root) {
+    root.appendChild(el('p', { class: 'notice', text: 'Re-sequences up to four modifiers into the correct claim order -- pricing (payment-affecting) modifiers first, then informational/statistical -- tags each, and flags conflicting pairs. The wrong order can mis-price or reject an otherwise clean line.' }));
+    root.appendChild(field('Modifier 1', 'mo-1', { placeholder: '59' }));
+    root.appendChild(field('Modifier 2', 'mo-2', { placeholder: '26' }));
+    root.appendChild(field('Modifier 3', 'mo-3', { placeholder: 'RT' }));
+    root.appendChild(field('Modifier 4', 'mo-4', { placeholder: '' }));
+    const o = out(); root.appendChild(o);
+    wire(['mo-1', 'mo-2', 'mo-3', 'mo-4'], () => safe(o, () => {
+      const mods = ['mo-1', 'mo-2', 'mo-3', 'mo-4'].map((id) => str(id).trim()).filter(Boolean);
+      if (!mods.length) { o.appendChild(el('p', { class: 'muted', text: 'Enter at least one modifier.' })); return; }
+      const r = Edit.modifierOrder({ modifiers: mods });
+      o.appendChild(el('h2', { text: `Claim order: ${r.sequence.join(' ')}` }));
+      o.appendChild(el('ul', {}, r.ordered.map((t) =>
+        li(`${t.modifier} -- ${t.class}${t.recognized ? '' : ' (unrecognized; verify placement)'}`))));
+      if (r.conflicts.length) {
+        o.appendChild(el('h3', { text: 'Conflicts' }));
+        o.appendChild(el('ul', {}, r.conflicts.map((c) => li(c, 'flag'))));
+      }
+      o.appendChild(postureNote(r.note));
+      o.appendChild(postureNote('CMS Pub. 100-04 Ch. 12 / 23 modifier-reporting guidance. The "why did this clean-looking claim under-pay" fix that is invisible until you check the order.'));
     }));
   },
 };

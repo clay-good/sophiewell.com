@@ -111,10 +111,11 @@ export const TOPICS = {
     label: 'Billing and coding',
     h1: 'Medical billing and coding calculators',
     title: 'Medical Billing & Coding Calculators - E/M time, NDC, HIPAA · Sophie Well',
-    description: 'Sophie\'s billing and coding calculators: the MPFS reimbursement engine (RVU x GPCI x CF allowed amount, multiple-procedure and bilateral reductions, assistant/co-surgeon pay, 2% sequestration), the time-based E/M code selector, NDC 10/11 converter, and HIPAA breach-notification clock.',
-    lede: 'spec-v29 removed the static code-reference lookups (ICD-10, HCPCS, CPT, NDC, POS, modifiers, CARC/RARC, MS-DRG, APC, RxNorm, NUBC) and the form-locator / EOB-glossary references - those belong in your EHR or the upstream CMS / FDA / NUBC / X12 release. What remains are the calculators that compute a deterministic output: the spec-v78 MPFS reimbursement engine (what Medicare actually pays a line, after every reduction), the time-based E/M selector, the NDC 10/11 converter, and the HIPAA breach-notification clock.',
+    description: 'Sophie\'s billing and coding calculators: the MPFS reimbursement engine (RVU x GPCI x CF allowed amount, multiple-procedure and bilateral reductions, assistant/co-surgeon pay, 2% sequestration), the claim-edit decision engines (NCCI procedure-to-procedure bypass, MUE units adjudication, 59-vs-X{EPSU} modifier selection, global-surgery period math, modifier ordering), the time-based E/M code selector, NDC 10/11 converter, and HIPAA breach-notification clock.',
+    lede: 'spec-v29 removed the static code-reference lookups (ICD-10, HCPCS, CPT, NDC, POS, modifiers, CARC/RARC, MS-DRG, APC, RxNorm, NUBC) and the form-locator / EOB-glossary references - those belong in your EHR or the upstream CMS / FDA / NUBC / X12 release. What remains are the calculators that compute a deterministic output: the spec-v78 MPFS reimbursement engine (what Medicare actually pays a line, after every reduction), the spec-v79 claim-edit decision engines (will this line deny, and which modifier unlocks it), the time-based E/M selector, the NDC 10/11 converter, and the HIPAA breach-notification clock.',
     tiles: [
       'rvu-payment', 'mppr', 'bilateral-pay', 'multi-surgeon-pay', 'sequestration-adjust',
+      'ncci-ptp', 'mue-check', 'modifier-x-selector', 'global-period', 'modifier-order',
       'em-time', 'ndc-convert', 'breach-clock',
     ],
   },

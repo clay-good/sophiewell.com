@@ -10274,6 +10274,41 @@
           "url": "https://www.cms.gov/regulations-and-guidance/guidance/manuals/downloads/clm104c12.pdf",
           "ruleFamily": "billing-v78",
           "lastVerified": "2026-06-13"
+        },
+        {
+          "id": "billing-ncci-ptp-indicators",
+          "label": "NCCI procedure-to-procedure modifier-indicator semantics (0 = no modifier permitted; 1 = a permitted NCCI-associated modifier may bypass; 9 = edit deleted/not active) and the NCCI-associated-modifier set (anatomic, global-surgery, 59/X{EPSU}) backing ncci-ptp. NCCI Policy Manual Ch. I; Pub. 100-04 Ch. 23. No PTP edit file ships -- the indicator is entered.",
+          "url": "https://www.cms.gov/medicare/coding-billing/national-correct-coding-initiative-ncci-edits",
+          "ruleFamily": "billing-v79",
+          "lastVerified": "2026-06-13"
+        },
+        {
+          "id": "billing-mue-mai-semantics",
+          "label": "MUE Adjudication Indicator (MAI) semantics (1 = claim-line edit; 2 = date-of-service absolute, never payable; 3 = date-of-service reviewable with documentation) backing mue-check. CMS Medically Unlikely Edits program. No MUE value table ships -- the value and MAI are entered.",
+          "url": "https://www.cms.gov/medicare/coding-billing/national-correct-coding-initiative-ncci-edits/medicare-ncci-medically-unlikely-edits",
+          "ruleFamily": "billing-v79",
+          "lastVerified": "2026-06-13"
+        },
+        {
+          "id": "billing-modifier-59-xepsu",
+          "label": "The 59 / X{EPSU} distinct-procedural-service hierarchy (XE separate encounter, XS separate structure, XP separate practitioner, XU unusual non-overlapping; 59 only when no X-modifier fits) backing modifier-x-selector. CMS MLN 'Proper Use of Modifiers 59 & X{EPSU}'.",
+          "url": "https://www.cms.gov/files/document/proper-use-modifiers-59-xepsu.pdf",
+          "ruleFamily": "billing-v79",
+          "lastVerified": "2026-06-13"
+        },
+        {
+          "id": "billing-global-surgery-days",
+          "label": "MPFS GLOB DAYS definitions (000/010/090 = 0/10/90 postoperative days, 090 adds 1 preoperative day; XXX/YYY/ZZZ/MMM non-numeric) and the global-package modifiers (24/25/57/58/78/79) backing global-period. CMS Pub. 100-04 Ch. 12 40; MLN Global Surgery Booklet.",
+          "url": "https://www.cms.gov/outreach-and-education/medicare-learning-network-mln/mlnproducts/downloads/globallsurgery-icn907166.pdf",
+          "ruleFamily": "billing-v79",
+          "lastVerified": "2026-06-13"
+        },
+        {
+          "id": "billing-modifier-ordering",
+          "label": "The pricing-before-informational modifier-sequencing convention and the pricing/informational classification of the common CPT/HCPCS modifiers backing modifier-order. CMS Pub. 100-04 Ch. 12 / 23 modifier-reporting guidance and payer claim-editing convention.",
+          "url": "https://www.cms.gov/regulations-and-guidance/guidance/manuals/downloads/clm104c12.pdf",
+          "ruleFamily": "billing-v79",
+          "lastVerified": "2026-06-13"
         }
       ],
       "evaluated": null

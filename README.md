@@ -5,7 +5,7 @@
 <h1 align="center">sophiewell.com</h1>
 
 <p align="center">
-  <strong>342 deterministic healthcare calculators tuned to the nurse on shift.</strong><br>
+  <strong>347 deterministic healthcare calculators tuned to the nurse on shift.</strong><br>
   Free forever. No servers, no accounts, no telemetry, no AI, no network call after first paint.
 </p>
 
@@ -36,7 +36,7 @@ output; "searchable lookup of static facts" does not qualify. See
 [docs/spec-v10.md](docs/spec-v10.md) for the audience and
 dependency-budget commitments and
 [docs/spec-v29.md](docs/spec-v29.md) for the nurse-first pivot
-and the v29 catalog ledger. At v78 close the catalog is 342
+and the v29 catalog ledger. At v79 close the catalog is 347
 deterministic tiles — every one of them computes from at least
 one user input. (v62 Part B closed the bedside expansion at 328;
 spec-v63 adds the ops-side counterpart — a shared regulatory-deadline
@@ -169,7 +169,7 @@ production security headers. Any static file server will also work.
 ## How it works and how to use it
 
 Since the spec-v29 nurse-first prune the catalog has grown one
-reviewable spec at a time to **342** deterministic calculators
+reviewable spec at a time to **347** deterministic calculators
 (the full per-version history is in [CHANGELOG.md](CHANGELOG.md)
 and `docs/spec-v*.md`; the most recent bedside additions are
 summarized in the cheat sheets below). They organize across the
@@ -686,7 +686,7 @@ than rendering a negative duration, and a negative CPP (ICP > MAP) is surfaced
 with an explicit critical-low flag, never hidden. See
 [docs/spec-v65.md](docs/spec-v65.md).
 
-### Billing & reimbursement: what Medicare actually pays (spec-v77 / spec-v78)
+### Billing & reimbursement: what Medicare actually pays, and whether the line survives (spec-v77 / spec-v78 / spec-v79)
 
 The catalog has always been strong on the clinician at the bedside and competent
 on the operations clock (appeal/timely-filing/PA deadlines, the 2021 E/M
@@ -744,12 +744,57 @@ labeled user input** rather than bundled, keeping the bundle light and avoiding
 shipping potentially-stale values; the five dated constants are
 ledger-tracked (`pa-staleness-ledger.json` ruleFamily `billing-v78`); and the
 tiles classify as schema.org `WebPage` like the existing `em-time` / `ndc-convert`
-billing tiles. The remaining program specs ([v79](docs/spec-v79.md) claim
-edits/modifiers, [v80](docs/spec-v80.md) E/M completion, [v81](docs/spec-v81.md)
-drug/infusion billing, [v82](docs/spec-v82.md) patient responsibility,
-[v83](docs/spec-v83.md) claim integrity & facility payment) remain proposed and
-land one reviewable spec at a time (the full program adds 29 more, to a 366
-end state).
+billing tiles.
+
+**[spec-v79](docs/spec-v79.md) ships the program's second feature: claim edits &
+modifier logic** ([lib/billing-v79.js](lib/billing-v79.js)), five decision engines
+for the question v78 doesn't answer — *will this line deny, and which modifier
+unlocks it?* Catalog **342 → 347**. Where v78 is arithmetic, v79 is adjudication:
+each tile is a clean input → decision, and **indicators gate, never guess**. Per
+doctrine clause 2 **no NCCI PTP edit file and no MUE value table ship** — the
+indicator/value is a labeled user input, so the tool can never be silently stale.
+
+```
+  ncci-ptp           mue-check          modifier-x-selector   global-period         modifier-order
+  ────────           ─────────          ───────────────────   ─────────────         ──────────────
+  Col-1 vs Col-2;    units vs MUE by    most-specific of      surgery date + GLOB   re-sequence ≤4:
+  modifier ind.:     MAI: 1 cut/split,  XE>XS>XP>XU, else     DAYS → in/out of      pricing modifiers
+  0 hard bundle,     2 ABSOLUTE (never  59 fallback, else     the 000/010/090       FIRST, then
+  1 NCCI-assoc.      pays), 3 review.   refuse (no basis).    package → 24/58/78/   informational;
+  modifier may       w/ docs. payable   CMS prefers the       79 (post-op) or 57/   flag LT+RT, 26+TC,
+  bypass, 9 not      vs at-risk units.  specific X over 59.    25 (pre-op), or       dup, multi-asst.
+  an active edit.                                             bundled (not payable).
+```
+
+Worked anchors (each reproduced to the letter by the example-correctness e2e):
+`ncci-ptp` 11042/97597 indicator 1 + modifier 59 → *bypass permitted, 59 is
+NCCI-associated*; `mue-check` 4 units vs MUE 1, **MAI 2** → *1 payable, 3 at risk,
+absolutely non-payable — do not appeal as a units error*; `global-period` surgery
+2026-01-01, **090**, follow-up 2026-02-01 unrelated E/M → *inside the window
+2025-12-31 … 2026-04-01, modifier 24* (UTC calendar math reused from
+[lib/deadline.js](lib/deadline.js), day-0 = surgery, boundary day **inside**);
+`modifier-order` `59 26 RT` → *claim order `26 59 RT`* (26 pricing leads).
+
+Decision cheat sheet (the indicators a coder reads off the CMS edit files and
+enters, per doctrine clause 2):
+
+| Indicator | Meaning | Tile |
+|---|---|---|
+| **PTP 0 / 1 / 9** | no modifier permitted / NCCI-associated modifier may bypass / not an active edit | `ncci-ptp` |
+| **MAI 1 / 2 / 3** | claim-line cut (rescuable) / date-of-service **absolute** / date-of-service reviewable w/ docs | `mue-check` |
+| **X{EPSU}** | XE encounter · XS structure · XP practitioner · XU unusual — most specific wins; 59 only if none fits | `modifier-x-selector` |
+| **GLOB DAYS** | 000 day-of-service · 010 minor 10-day · 090 major 90-day (+1 preop) · XXX/YYY/ZZZ/MMM no fixed window | `global-period` |
+| **post-op / pre-op mods** | 24 unrelated E/M · 58 staged · 78 return-to-OR · 79 unrelated · 57/25 decision-for-surgery | `global-period` |
+
+`lib/billing-v79.js` is in the [spec-v59](docs/spec-v59.md) fuzz harness alongside
+`lib/billing-v78.js` (every export throw-safe and banned-token-free across the
+object-aware matrix), its five decision constants are ledger-tracked under
+ruleFamily `billing-v79`, and all ten Group B tiles carry a `docs/audits/v12/`
+audit log. The remaining program specs ([v80](docs/spec-v80.md) E/M completion,
+[v81](docs/spec-v81.md) drug/infusion billing, [v82](docs/spec-v82.md) patient
+responsibility, [v83](docs/spec-v83.md) claim integrity & facility payment) remain
+proposed and land one reviewable spec at a time (the full program adds 19 more, to
+a 366 end state).
 
 ## System design and architecture overview
 
@@ -775,7 +820,7 @@ long version, see [docs/architecture.md](docs/architecture.md).
  │  manifests (data/)            │  static │        ▼                     ▼             │
  │        │  scripts/build       │  files  │   lazy-load data shard   pure compute      │
  │        ▼                      │         │   (verified vs manifest)  (lib/*.js)       │
- │  dist/  (342 tool pages,      │         │        │                     │             │
+ │  dist/  (347 tool pages,      │         │        │                     │             │
  │  OG cards, sitemap, SBOM)     │         │        ▼                     ▼             │
  └───────────────────────────────┘         │   service worker cache    result + cite   │
                                             │   (keyed to build hash)                    │
@@ -795,7 +840,7 @@ session, and nothing to log.
 index.html          single-page shell (hero-search combobox + static browse-by-category nav, tile mount)
 styles.css          one stylesheet (responsive; no horizontal scroll — enforced catalog-wide at 320px in CI)
 app.js              router, hero-search wiring, view wiring, the UTILITIES catalog
-                    (342 tiles — the single source of truth; zero runtime deps)
+                    (347 tiles — the single source of truth; zero runtime deps)
 sw.js               service worker — precache shell, cache shards by build hash
 theme.js            light/dark theme toggle (writes only sw-theme, allowlisted)
 lib/input-persist.js opt-in "remember my inputs" (off by default; numbers only)
@@ -813,12 +858,12 @@ docs/               specs (spec-v4 … spec-v76) + per-tile v11 audit logs +
                     citation-staleness ledger +
                     architecture / threat-model / …
 test/               unit/ (node:test) · integration/ (Playwright) · fixtures/
-dist/               build output (342 tool pages, OG cards, sitemap, SBOM)
+dist/               build output (347 tool pages, OG cards, sitemap, SBOM)
 ```
 
-### Discovery: how a query finds the right tool among 342
+### Discovery: how a query finds the right tool among 347
 
-With 342 tiles, search quality *is* the product — a tool you cannot find does
+With 347 tiles, search quality *is* the product — a tool you cannot find does
 not exist. Discovery is deterministic and offline (no fuzzy-match service, no
 embedding model, no AI). The home `#hero-search` combobox builds its dropdown
 from two complementary rankers, both pure functions of the typed query:
@@ -891,10 +936,10 @@ A login-less, AI-free calculator earns trust only if the nurse can see, on the
 tile, exactly which published source produced the number — and tell whether that
 source is current. spec-v54 defined the invariants; spec-v60 built the machinery
 (the gate, the ledger, and the `citationAccessed` convention) and extended it
-across the full 342-tile catalog, pinning the last three unpinned "current
+across the full 347-tile catalog, pinning the last three unpinned "current
 edition" phrases and re-verifying every guideline tile against its latest known
 edition. Three invariants make that auditable, each enforced by the
-`check-citations.mjs` lint gate (in the `npm run lint` chain) over all 342 tiles:
+`check-citations.mjs` lint gate (in the `npm run lint` chain) over all 347 tiles:
 
 | Invariant | Rule | Enforcement |
 |---|---|---|
@@ -1351,7 +1396,7 @@ rules, not soft preferences.
 | `npm run build`          | Copy static files into `dist/` for deployment                     |
 | `npm test`               | Run the full test suite (unit, a11y, grep, data integrity)        |
 | `npm run test:unit`      | Run Node's built-in unit tests (3,469 tests)                      |
-| `npm run test:e2e`       | Build `dist/`, then run Playwright integration tests against real browsers — incl. a full-catalog 320px no-horizontal-scroll sweep over both the SPA routes and the 342 pre-rendered static tool pages, the hub/topic/commitments pages, and the citation-wrap pin |
+| `npm run test:e2e`       | Build `dist/`, then run Playwright integration tests against real browsers — incl. a full-catalog 320px no-horizontal-scroll sweep over both the SPA routes and the 347 pre-rendered static tool pages, the hub/topic/commitments pages, and the citation-wrap pin |
 | `npm run test:a11y`      | Run accessibility checks on every utility view                    |
 | `npm run lint`           | ESLint + the CI gate chain: grep-check, output-safety, citation-integrity, catalog-truth, commitments, PA staleness, PA audit |
 | `npm run data:refresh`   | Re-fetch and re-shard every public dataset                        |
@@ -1435,9 +1480,9 @@ build, integrity-verified data shards) are documented in
 - [docs/spec-v11.md](docs/spec-v11.md) — correctness-floor spec:
   per-tile audit protocol, specialty-named groups, optional
   source-quoted `interpretation` field. Audit coverage is **complete
-  — 342/342 tiles** carry a committed per-tile audit log
+  — 347/347 tiles** carry a committed per-tile audit log
   (`docs/audits/v11/<id>.md` for the pre-v78 catalog;
-  `docs/audits/v12/<id>.md` for the five spec-v78 Group B tiles)
+  `docs/audits/v12/<id>.md` for the ten spec-v78/v79 Group B tiles)
   (`node scripts/audit-coverage.mjs`)
 - [docs/scope-mdcalc-parity.md](docs/scope-mdcalc-parity.md) —
   long-horizon scope: every actionable clinical calculator a

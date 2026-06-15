@@ -6,6 +6,53 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v79 — claim edits & modifier logic: will this line deny, and which modifier unlocks it; +5 tiles, catalog 342 -> 347)
+
+Second feature spec of the [spec-v77](docs/spec-v77.md) billing & coding program.
+Where [spec-v78](docs/spec-v78.md) prices the line, v79 decides whether it
+*survives*: five deterministic, CMS-cited decision engines
+([views/group-b.js](views/group-b.js), [lib/billing-v79.js](lib/billing-v79.js))
+for the denial questions a coder fights every day. Per doctrine clause 2, **no
+NCCI PTP edit file and no MUE value table ship** — each tile takes the published
+indicator / value as a user input and computes the *decision*, so it can never be
+silently stale. Indicators gate, never guess. See [docs/spec-v79.md](docs/spec-v79.md).
+
+- `ncci-ptp` — NCCI procedure-to-procedure edit & modifier-bypass checker.
+  Determines the Column 1 (comprehensive, payable) vs Column 2 (component,
+  bundled) code, and whether the entered modifier indicator permits a bypass:
+  **0** no modifier can unbundle (hard gate), **1** a permitted NCCI-associated
+  modifier may bypass, **9** not an active edit. Flags a proposed modifier that is
+  not NCCI-associated; refuses to bless a bypass on an indicator-0 pair.
+- `mue-check` — Medically Unlikely Edits units adjudication by MAI. Compares units
+  billed to the MUE value: **MAI 1** cuts the per-line excess (rescuable on a
+  separate line with a modifier), **MAI 2** is absolute (the excess never pays and
+  must not be appealed as a units error), **MAI 3** denies-but-reviewable with
+  documentation. Reports payable vs at-risk units.
+- `modifier-x-selector` — 59 vs XE/XS/XP/XU decision. Returns the single most
+  specific X-modifier the scenario supports (precedence XE > XS > XP > XU), `59`
+  only when a distinct service fits no X-subset, or a hard refusal when there is no
+  distinct-service basis at all. CMS prefers the specific X-modifier over the blunt 59.
+- `global-period` — global-surgery package date math & required modifier. From the
+  surgery date and the GLOB DAYS indicator (000/010/090 with the 90-day's 1-day
+  preop; XXX/YYY/ZZZ/MMM gated), computes whether a subsequent encounter is inside
+  the package (UTC calendar math via [lib/deadline.js](lib/deadline.js), day-0 =
+  surgery, boundary day inside) and names the modifier (24/58/78/79 post-op, 57/25
+  pre-op decision) — or marks a routine related post-op visit bundled and not payable.
+- `modifier-order` — pricing vs informational modifier sequencing. Re-sequences up
+  to four modifiers into the correct claim order (pricing/payment-affecting first,
+  ranked, then informational), tags each, and flags conflicting pairs (LT+RT, 26+TC,
+  duplicate, multiple assistant-at-surgery). The "why did this clean-looking claim
+  under-pay" fix that is invisible until you check the order.
+
+- **Robustness.** `lib/billing-v79.js` joins the [spec-v59](docs/spec-v59.md) fuzz
+  harness ([test/unit/fuzz-tools.test.js](test/unit/fuzz-tools.test.js)) — and so
+  does `lib/billing-v78.js`, closing the v78 acceptance bullet — with zero
+  non-finite / `Invalid Date` / banned-token leaks across the object-aware matrix.
+  19 worked-example unit tests ([test/unit/billing-v79.test.js](test/unit/billing-v79.test.js)),
+  five ledger rows under ruleFamily `billing-v79`, five [spec-v11](docs/spec-v11.md)
+  audit logs, the billing-and-coding topic page, and the Group B related-tools
+  cluster. Catalog count synced to **347** across all 13 catalog-truth surfaces.
+
 ### Added (spec-v78 — the MPFS reimbursement engine: Group B "Billing & Reimbursement"; +5 tiles, catalog 337 -> 342)
 
 First feature spec of the [spec-v77](docs/spec-v77.md) billing & coding program.

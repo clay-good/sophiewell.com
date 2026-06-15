@@ -1,12 +1,29 @@
 # spec-v79.md — Claim edits & modifier logic: will this line deny, and which modifier unlocks it; +5 tiles
 
-> Status: **PROPOSED (2026-06-13).** Second feature spec of the
+> Status: **IMPLEMENTED (2026-06-15).** Second feature spec of the
 > [spec-v77](spec-v77.md) billing & coding program. Adds **5 deterministic
 > edit/modifier tools** that answer the denial questions a coder fights every day:
 > are these two codes an NCCI bundle, can a modifier unbundle them, are the units
 > over the MUE, is this visit inside a global package, which X-modifier fits, and
 > in what order do the modifiers go. The complement to [spec-v78](spec-v78.md):
 > v78 prices the line, v79 decides whether the line survives.
+>
+> **Implementation notes (deviations from §4, all within doctrine):** (1) The five
+> unit tests ship as a **single `test/unit/billing-v79.test.js`** (19 tests, ≥3
+> boundary examples per tile), mirroring the v78 `billing-v78.test.js` precedent
+> rather than five files — same coverage, one import surface. (2) The
+> [spec-v59](spec-v59.md) fuzz harness lives at `test/unit/fuzz-tools.test.js`
+> (not the `test/integration/fuzz-tools.spec.js` path §4 names, which does not
+> exist — same correction v78 documented); **both `lib/billing-v79.js` and
+> `lib/billing-v78.js` are now added to it** (every export throw-safe and string-
+> leak-free across the object-aware matrix; 378 harness tests pass), closing the
+> v78 acceptance bullet that the deviation had left open. (3) `modifier-x-selector`
+> takes an explicit top-level **`distinctService`** boolean in addition to the
+> four scenario flags, which is what cleanly separates the "59 fallback" path
+> (a distinct service that fits no X-subset) from the "hard refusal" path (no
+> distinct-service basis at all) the §2.3 output requires. (4) The five tiles are
+> added to the **billing-and-coding topic page** (`scripts/build-topic-pages.mjs`)
+> and the v78 Group B related-tools cluster, beyond the §4 file list.
 >
 > Catalog effect: **342 → 347 (+5).** Home: **Group B — Billing & Reimbursement**
 > ([spec-v77](spec-v77.md) §3).

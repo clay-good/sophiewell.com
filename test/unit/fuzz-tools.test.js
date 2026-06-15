@@ -79,6 +79,8 @@ import * as workflowV4 from '../../lib/workflow-v4.js';
 import * as trend from '../../lib/trend.js';
 import * as deadlineMod from '../../lib/deadline.js';
 import * as opsV63 from '../../lib/ops-v63.js';
+import * as billingV78 from '../../lib/billing-v78.js';
+import * as billingV79 from '../../lib/billing-v79.js';
 
 const MODULES = {
   'clinical.js': clinical,
@@ -102,6 +104,8 @@ const MODULES = {
   'trend.js': trend,
   'deadline.js': deadlineMod,
   'ops-v63.js': opsV63,
+  'billing-v78.js': billingV78,
+  'billing-v79.js': billingV79,
 };
 
 const MATRIX = [0, -1, 1e9, NaN, Infinity, -Infinity, '', undefined, null];
