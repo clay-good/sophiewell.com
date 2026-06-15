@@ -5,7 +5,7 @@
 <h1 align="center">sophiewell.com</h1>
 
 <p align="center">
-  <strong>353 deterministic healthcare calculators tuned to the nurse on shift.</strong><br>
+  <strong>356 deterministic healthcare calculators tuned to the nurse on shift.</strong><br>
   Free forever. No servers, no accounts, no telemetry, no AI, no network call after first paint.
 </p>
 
@@ -36,7 +36,7 @@ output; "searchable lookup of static facts" does not qualify. See
 [docs/spec-v10.md](docs/spec-v10.md) for the audience and
 dependency-budget commitments and
 [docs/spec-v29.md](docs/spec-v29.md) for the nurse-first pivot
-and the v29 catalog ledger. At v80 close the catalog is 353
+and the v29 catalog ledger. At v81 close the catalog is 356
 deterministic tiles — every one of them computes from at least
 one user input. (v62 Part B closed the bedside expansion at 328;
 spec-v63 adds the ops-side counterpart — a shared regulatory-deadline
@@ -169,7 +169,7 @@ production security headers. Any static file server will also work.
 ## How it works and how to use it
 
 Since the spec-v29 nurse-first prune the catalog has grown one
-reviewable spec at a time to **353** deterministic calculators
+reviewable spec at a time to **356** deterministic calculators
 (the full per-version history is in [CHANGELOG.md](CHANGELOG.md)
 and `docs/spec-v*.md`; the most recent bedside additions are
 summarized in the cheat sheets below). They organize across the
@@ -840,10 +840,51 @@ carry a `docs/audits/v12/` audit log — sixteen Group B audit logs in all. One
 implementation note (recorded in the [spec-v80](docs/spec-v80.md) status):
 `prolonged-services` ships the **physician** add-ons; the clinical-staff
 99415/99416 path is deferred rather than shipped with an unverifiable threshold.
-The remaining program specs ([v81](docs/spec-v81.md) drug/infusion billing,
-[v82](docs/spec-v82.md) patient responsibility, [v83](docs/spec-v83.md) claim
-integrity & facility payment) remain proposed and land one reviewable spec at a
-time (the full program adds 13 more, to a 366 end state).
+The remaining program specs ([v82](docs/spec-v82.md) patient responsibility,
+[v83](docs/spec-v83.md) claim integrity & facility payment) remain proposed and
+land one reviewable spec at a time (the full program adds 10 more, to a 366 end
+state).
+
+**[spec-v81](docs/spec-v81.md) ships the program's fourth feature: drug & infusion
+billing** ([lib/billing-v81.js](lib/billing-v81.js)), three engines for the place
+claims hemorrhage money and trigger audits. The HCPCS billing unit is almost never
+the milligrams given; the JW/JZ discarded-drug rules are mandatory and error-prone;
+and the 96360–96379 infusion hierarchy makes the primary code depend on the
+*timeline*, not the drug. Catalog **353 → 356**. The vial-type fork is a **hard
+gate** — a multi-dose vial **refuses** JW, it is not merely warned.
+
+```
+  ndc-hcpcs-units                drug-wastage                       infusion-hierarchy
+  ───────────────                ────────────                       ──────────────────
+  dose ÷ billing-unit size,      single-dose vial: administered     ONE initial per encounter,
+  rounded per the rule           on one line + discarded with JW;   by the CMS HIERARCHY not
+  (up/nearest/down):             zero waste → JZ (req. 2023-07-01). the clock — chemo > therap.
+  35 mg ÷ 10 mg/unit = 3.5       multi-dose → JW REFUSED.           > hydration; infusion > push.
+  → 4 units (flagged not a       admin + JW must total the units    <16-min infusion → IV push.
+  clean multiple).               drawn. + least-waste vial search.  rest = seq/concurrent/+hr/push.
+```
+
+Worked anchors (each reproduced to the letter by the example-correctness e2e):
+`ndc-hcpcs-units` 35 mg ÷ 10 mg/unit = **3.5 → 4 billing units** (rounded up, not a
+clean multiple); `drug-wastage` 35 mg from a 50 mg single-dose vial (10 mg unit) →
+**4 administered + 1 discarded (JW)** of **5** units drawn; `infusion-hierarchy`
+chemo + therapeutic + hydration → chemo infusion is the initial **96413** (by
+hierarchy, not chronology), therapeutic sequential **96367**, hydration **96361**.
+
+Drug & infusion cheat sheet (what the tile turns into units/codes):
+
+| Tile | Input | Output |
+|---|---|---|
+| `ndc-hcpcs-units` | dose + unit · billing-unit size · rounding | billing units · exact ratio · **not-a-clean-multiple** flag |
+| `drug-wastage` | vial size · dose · unit · vial type (± sizes) | administered + **JW** units · **JZ** verdict · multi-dose **refusal** · least-waste vials |
+| `infusion-hierarchy` | per-administration list (type, minutes) | the single **initial** code + every add-on role (seq/concurrent/+hour/push) |
+
+`lib/billing-v81.js` joins the fuzz harness, its dated constants (the JZ-required
+date, the 16-minute infusion/push floor, the 96360–96379 hierarchy ordering) are
+ledger-tracked under ruleFamily `billing-v81`, and all three tiles carry a
+`docs/audits/v12/` audit log — nineteen Group B audit logs in all. The tiles
+compose with the existing `ndc-convert` (a digit-format converter, a different job)
+and `mme-factors` without shadowing them; all are retained and cross-linked.
 
 ## System design and architecture overview
 
@@ -869,7 +910,7 @@ long version, see [docs/architecture.md](docs/architecture.md).
  │  manifests (data/)            │  static │        ▼                     ▼             │
  │        │  scripts/build       │  files  │   lazy-load data shard   pure compute      │
  │        ▼                      │         │   (verified vs manifest)  (lib/*.js)       │
- │  dist/  (353 tool pages,      │         │        │                     │             │
+ │  dist/  (356 tool pages,      │         │        │                     │             │
  │  OG cards, sitemap, SBOM)     │         │        ▼                     ▼             │
  └───────────────────────────────┘         │   service worker cache    result + cite   │
                                             │   (keyed to build hash)                    │
@@ -889,7 +930,7 @@ session, and nothing to log.
 index.html          single-page shell (hero-search combobox + static browse-by-category nav, tile mount)
 styles.css          one stylesheet (responsive; no horizontal scroll — enforced catalog-wide at 320px in CI)
 app.js              router, hero-search wiring, view wiring, the UTILITIES catalog
-                    (353 tiles — the single source of truth; zero runtime deps)
+                    (356 tiles — the single source of truth; zero runtime deps)
 sw.js               service worker — precache shell, cache shards by build hash
 theme.js            light/dark theme toggle (writes only sw-theme, allowlisted)
 lib/input-persist.js opt-in "remember my inputs" (off by default; numbers only)
@@ -907,12 +948,12 @@ docs/               specs (spec-v4 … spec-v76) + per-tile v11 audit logs +
                     citation-staleness ledger +
                     architecture / threat-model / …
 test/               unit/ (node:test) · integration/ (Playwright) · fixtures/
-dist/               build output (353 tool pages, OG cards, sitemap, SBOM)
+dist/               build output (356 tool pages, OG cards, sitemap, SBOM)
 ```
 
-### Discovery: how a query finds the right tool among 353
+### Discovery: how a query finds the right tool among 356
 
-With 353 tiles, search quality *is* the product — a tool you cannot find does
+With 356 tiles, search quality *is* the product — a tool you cannot find does
 not exist. Discovery is deterministic and offline (no fuzzy-match service, no
 embedding model, no AI). The home `#hero-search` combobox builds its dropdown
 from two complementary rankers, both pure functions of the typed query:
@@ -985,10 +1026,10 @@ A login-less, AI-free calculator earns trust only if the nurse can see, on the
 tile, exactly which published source produced the number — and tell whether that
 source is current. spec-v54 defined the invariants; spec-v60 built the machinery
 (the gate, the ledger, and the `citationAccessed` convention) and extended it
-across the full 353-tile catalog, pinning the last three unpinned "current
+across the full 356-tile catalog, pinning the last three unpinned "current
 edition" phrases and re-verifying every guideline tile against its latest known
 edition. Three invariants make that auditable, each enforced by the
-`check-citations.mjs` lint gate (in the `npm run lint` chain) over all 353 tiles:
+`check-citations.mjs` lint gate (in the `npm run lint` chain) over all 356 tiles:
 
 | Invariant | Rule | Enforcement |
 |---|---|---|
@@ -1445,7 +1486,7 @@ rules, not soft preferences.
 | `npm run build`          | Copy static files into `dist/` for deployment                     |
 | `npm test`               | Run the full test suite (unit, a11y, grep, data integrity)        |
 | `npm run test:unit`      | Run Node's built-in unit tests (3,469 tests)                      |
-| `npm run test:e2e`       | Build `dist/`, then run Playwright integration tests against real browsers — incl. a full-catalog 320px no-horizontal-scroll sweep over both the SPA routes and the 353 pre-rendered static tool pages, the hub/topic/commitments pages, and the citation-wrap pin |
+| `npm run test:e2e`       | Build `dist/`, then run Playwright integration tests against real browsers — incl. a full-catalog 320px no-horizontal-scroll sweep over both the SPA routes and the 356 pre-rendered static tool pages, the hub/topic/commitments pages, and the citation-wrap pin |
 | `npm run test:a11y`      | Run accessibility checks on every utility view                    |
 | `npm run lint`           | ESLint + the CI gate chain: grep-check, output-safety, citation-integrity, catalog-truth, commitments, PA staleness, PA audit |
 | `npm run data:refresh`   | Re-fetch and re-shard every public dataset                        |
@@ -1529,7 +1570,7 @@ build, integrity-verified data shards) are documented in
 - [docs/spec-v11.md](docs/spec-v11.md) — correctness-floor spec:
   per-tile audit protocol, specialty-named groups, optional
   source-quoted `interpretation` field. Audit coverage is **complete
-  — 353/353 tiles** carry a committed per-tile audit log
+  — 356/356 tiles** carry a committed per-tile audit log
   (`docs/audits/v11/<id>.md` for the pre-v78 catalog;
   `docs/audits/v12/<id>.md` for the sixteen spec-v78/v79/v80 Group B tiles)
   (`node scripts/audit-coverage.mjs`)

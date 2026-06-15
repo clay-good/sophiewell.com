@@ -80,6 +80,9 @@ const UTILITIES = [
   { id: 'prolonged-services', name: 'Prolonged Services (99417 / G2212 Units)', group: 'B', audiences: ['coders', 'billers'], clinical: false },
   { id: 'therapy-units', name: 'Therapy Units (8-Minute Rule vs Rule of Eights)', group: 'B', audiences: ['coders', 'billers'], clinical: false },
   { id: 'anesthesia-units', name: 'Anesthesia Units (Base + Time + Modifying x CF)', group: 'B', audiences: ['billers', 'coders'], clinical: false },
+  { id: 'ndc-hcpcs-units', name: 'HCPCS Drug Billing Units (Dose -> Units)', group: 'B', audiences: ['billers', 'coders'], clinical: false },
+  { id: 'drug-wastage', name: 'Drug Wastage (JW / JZ Units, Single-Dose Vial)', group: 'B', audiences: ['billers', 'coders'], clinical: false },
+  { id: 'infusion-hierarchy', name: 'Infusion Hierarchy (Initial Code Picker, 96360-96379)', group: 'B', audiences: ['coders', 'billers'], clinical: false },
   // Group C: Patient Bill and Insurance Tools
   // spec-v29 wave 29-2: 12 Group C patient-literacy / eligibility tiles
   // removed (decoder, insurance, eob-decoder, no-surprises,

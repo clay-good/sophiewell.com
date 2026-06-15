@@ -4,9 +4,10 @@
 > shipped the first feature spec, creating Group B "Billing & Reimbursement"
 > (`views/group-b.js`, `lib/billing-v78.js`) and taking the catalog 337 -> 342.
 > The doctrine in §2 is the cited contract for the remaining feature specs.
-> [v79](spec-v79.md) (claim edits, →347) and [v80](spec-v80.md) (E/M & time-based
-> coding, →353) have since shipped; [v81](spec-v81.md)-[v83](spec-v83.md) remain
-> PROPOSED. Charter spec — **zero tiles of its own.**
+> [v79](spec-v79.md) (claim edits, →347), [v80](spec-v80.md) (E/M & time-based
+> coding, →353), and [v81](spec-v81.md) (drug & infusion billing, →356) have since
+> shipped; [v82](spec-v82.md)-[v83](spec-v83.md) remain PROPOSED. Charter spec —
+> **zero tiles of its own.**
 > v77 is the umbrella for a six-spec program ([spec-v78](spec-v78.md) through
 > [spec-v83](spec-v83.md)) that builds a world-class, US-standard medical
 > **billing & coding** tool suite on top of the deterministic-calculator

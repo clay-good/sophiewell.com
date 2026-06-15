@@ -1,6 +1,13 @@
 # spec-v81.md — Drug & infusion billing: HCPCS units, JW/JZ wastage, and the infusion hierarchy; +3 tiles
 
-> Status: **PROPOSED (2026-06-13).** Fourth feature spec of the
+> Status: **ACCEPTED (2026-06-15).** Shipped: `lib/billing-v81.js` (the three
+> compute exports `ndcHcpcsUnits` / `drugWastage` / `infusionHierarchy`), the
+> three `views/group-b.js` renderers, the +3 Group B catalog rows, the META
+> entries with worked examples (validated by the example-correctness e2e sweep),
+> the `billing-v81` ledger family, the `test/unit/billing-v81.test.js` boundary
+> suite (consolidated one file, mirroring the v79/v80 precedent rather than three
+> files as §4 lists), and the three `docs/audits/v12/` logs. Catalog 353 → **356**.
+> Fourth feature spec of the
 > [spec-v77](spec-v77.md) billing & coding program. Drug administration is where
 > claims hemorrhage money and trigger audits: the **HCPCS billing unit** rarely
 > equals the milligrams given, the **JW/JZ** discarded-drug rules are mandatory and

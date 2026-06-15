@@ -82,6 +82,7 @@ import * as opsV63 from '../../lib/ops-v63.js';
 import * as billingV78 from '../../lib/billing-v78.js';
 import * as billingV79 from '../../lib/billing-v79.js';
 import * as billingV80 from '../../lib/billing-v80.js';
+import * as billingV81 from '../../lib/billing-v81.js';
 
 const MODULES = {
   'clinical.js': clinical,
@@ -108,6 +109,7 @@ const MODULES = {
   'billing-v78.js': billingV78,
   'billing-v79.js': billingV79,
   'billing-v80.js': billingV80,
+  'billing-v81.js': billingV81,
 };
 
 const MATRIX = [0, -1, 1e9, NaN, Infinity, -Infinity, '', undefined, null];

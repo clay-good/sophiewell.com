@@ -6,6 +6,43 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v81 — drug & infusion billing: HCPCS units, JW/JZ wastage, the infusion hierarchy; +3 tiles, catalog 353 -> 356)
+
+Fourth feature spec of the [spec-v77](docs/spec-v77.md) billing & coding program.
+Drug administration is where claims hemorrhage money and trigger audits: the HCPCS
+**billing unit** rarely equals the milligrams given, the **JW/JZ** discarded-drug
+rules are mandatory and error-prone, and the **infusion/injection CPT hierarchy**
+(96360–96379) makes the primary code depend on the *timeline*, not the drug. v81
+ships three deterministic, CMS/AMA-cited engines ([views/group-b.js](views/group-b.js),
+[lib/billing-v81.js](lib/billing-v81.js)) that get all three right. The unit size
+stays the user's input (doctrine clause 2 — no drug-pricing file ships). See
+[docs/spec-v81.md](docs/spec-v81.md).
+
+- `ndc-hcpcs-units` — dose → **HCPCS billing units**. Divides the dose by the code's
+  billing-unit size (entered from the descriptor) and rounds per the explicit rule
+  (up / nearest / down), converting across the mass family (mcg/mg/g) and refusing a
+  cross-family divide. Reports the exact ratio and flags a dose that is **not a clean
+  multiple** of the unit — the case that produces fractional-unit and rounding errors.
+  Near-neighbor to `ndc-convert` (a digit-format converter); different job, both kept.
+- `drug-wastage` — **JW (discarded) / JZ (zero waste)** units from a single-dose vial.
+  Computes administered + discarded units (which must total the units drawn), returns
+  the **JZ** verdict when the dose uses the full vial (required since 2023-07-01), and
+  **hard-refuses JW on a multi-dose vial** rather than warning. When vial sizes are
+  supplied, an exact bounded search returns the **least-waste vial combination**.
+- `infusion-hierarchy` — the 96360–96379 **initial-code picker**. Chooses the single
+  "initial" code per encounter by the CMS hierarchy (chemo > therapeutic > hydration;
+  within a category, infusion > push), **not** by chronology; reclassifies a sub-16-
+  minute infusion to an IV push; and assigns every other administration its
+  sequential / concurrent / additional-hour / additional-push role and code.
+
+Each tile passes the [spec-v29](docs/spec-v29.md) §3 one-line test, joins the
+[spec-v59](docs/spec-v59.md) fuzz harness with zero non-finite leaks, ships an
+inline citation + `citationUrl` + `accessed`, a [spec-v11](docs/spec-v11.md)
+`docs/audits/v12/` audit log, and a META example reproduced by the
+example-correctness e2e. Dated constants (the JZ-required date, the 16-minute
+infusion/push floor, the hierarchy ordering) are ledger-tracked under ruleFamily
+`billing-v81`. Catalog **353 → 356**; all catalog-truth surfaces updated.
+
 ### Added (spec-v80 — E/M & time-based coding, completed: the 2023 overhaul across every setting, plus the time-unit codes; +6 tiles, catalog 347 -> 353)
 
 Third feature spec of the [spec-v77](docs/spec-v77.md) billing & coding program.

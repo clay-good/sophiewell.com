@@ -19,6 +19,7 @@ import { loadAllShards, loadFile } from '../lib/data.js';
 import * as Bill from '../lib/billing-v78.js';
 import * as Edit from '../lib/billing-v79.js';
 import * as Em from '../lib/billing-v80.js';
+import * as Drug from '../lib/billing-v81.js';
 
 // ---- shared local helpers (mirrors views/group-v63.js) ----------------------
 function field(label, id, opts = {}) {
@@ -45,6 +46,28 @@ function selectField(label, id, options) {
   const sel = el('select', { id });
   for (const o of options) sel.appendChild(el('option', { value: o.value, text: o.text }));
   wrap.appendChild(sel);
+  return wrap;
+}
+// A dose/billing-unit measure picker (spec-v81): mass converts within itself;
+// units / mL are their own families.
+function unitSelect(label, id, value) {
+  const sel = selectField(label, id, [
+    { value: 'mg', text: 'mg' }, { value: 'mcg', text: 'mcg' }, { value: 'g', text: 'g' },
+    { value: 'units', text: 'units (IU/USP)' }, { value: 'ml', text: 'mL' },
+  ]);
+  const node = sel.querySelector('select');
+  if (node && value) node.value = value;
+  return sel;
+}
+// A multi-row text input with a real <label for> (spec-v81 per-administration
+// list); reads top-to-bottom on a phone with no sideways scroll.
+function textareaField(label, id, placeholder) {
+  const wrap = el('p');
+  wrap.appendChild(el('label', { for: id, text: label }));
+  wrap.appendChild(el('br'));
+  const ta = el('textarea', { id, rows: '4', autocomplete: 'off' });
+  if (placeholder) ta.setAttribute('placeholder', placeholder);
+  wrap.appendChild(ta);
   return wrap;
 }
 function out() { return el('div', { id: 'q-results', 'aria-live': 'polite' }); }
@@ -706,6 +729,119 @@ export const renderers = {
         [r.directionLabel, usd(r.directedPaymentCents)],
       ]));
       o.appendChild(postureNote('CMS Pub. 100-04 Ch. 12 50; ASA Relative Value Guide base units (entered, not shipped). Near-neighbor: rvu-payment prices everything EXCEPT anesthesia -- this is the exception.'));
+    }));
+  },
+
+  // ===== spec-v81: drug & infusion billing =================================
+  // ----- 2.1 ndc-hcpcs-units ------------------------------------------------
+  'ndc-hcpcs-units'(root) {
+    root.appendChild(el('p', { class: 'notice', text: 'Converts a dose to the number of HCPCS billing units to report. A J-code\'s billing unit is a fixed amount ("1 unit = 10 mg") -- the units are almost never the milligrams given, and the off-by-a-factor error here is the most common drug-claim mistake. Enter the unit size from the code descriptor. Near-neighbor: ndc-convert flips the NDC digit format; this is dose -> units.' }));
+    root.appendChild(field('Dose administered', 'nh-dose', { type: 'number', inputmode: 'decimal', placeholder: '35' }));
+    root.appendChild(unitSelect('Dose unit', 'nh-dose-unit', 'mg'));
+    root.appendChild(field('Billing-unit size (1 unit = this much)', 'nh-unitsize', { type: 'number', inputmode: 'decimal', placeholder: '10' }));
+    root.appendChild(unitSelect('Billing-unit measure', 'nh-unit-unit', 'mg'));
+    root.appendChild(selectField('Rounding rule', 'nh-round', [
+      { value: 'up', text: 'Round up (single-dose default)' },
+      { value: 'nearest', text: 'Round to nearest' },
+      { value: 'down', text: 'Round down' },
+    ]));
+    const o = out(); root.appendChild(o);
+    wire(['nh-dose', 'nh-dose-unit', 'nh-unitsize', 'nh-unit-unit', 'nh-round'], () => safe(o, () => {
+      if (rawEmpty('nh-dose') || rawEmpty('nh-unitsize')) { o.appendChild(el('p', { class: 'muted', text: 'Enter the dose and the billing-unit size.' })); return; }
+      const r = Drug.ndcHcpcsUnits({
+        dose: numv('nh-dose'), doseUnit: str('nh-dose-unit'),
+        unitSize: numv('nh-unitsize'), unitUnit: str('nh-unit-unit'), rounding: str('nh-round'),
+      });
+      o.appendChild(el('h2', { text: `${r.billingUnits} billing unit(s)` }));
+      verdictLine(o, r.note, r.isCleanMultiple ? null : 'flag');
+      o.appendChild(derivation([
+        ['Dose', `${fmt(r.dose)} ${r.doseUnit}`],
+        ['Billing unit', `1 unit = ${fmt(r.unitSize)} ${r.unitUnit}`],
+        ['Exact ratio (dose / unit)', String(r.exactUnits)],
+        ['Rounding', r.rounding],
+        ['Billing units to report', String(r.billingUnits)],
+        ['Clean multiple?', r.isCleanMultiple ? 'yes' : 'no -- rounding applied'],
+      ]));
+      o.appendChild(postureNote('CMS HCPCS Level II drug descriptors; CMS Pub. 100-04 Ch. 17. The unit size is entered from the code descriptor (doctrine clause 2 -- no drug-pricing file ships). Pairs with drug-wastage to split administered vs discarded units.'));
+    }));
+  },
+
+  // ----- 2.2 drug-wastage ---------------------------------------------------
+  'drug-wastage'(root) {
+    root.appendChild(el('p', { class: 'notice', text: 'Splits a single-dose vial into administered units and discarded (JW) units, or returns the JZ "zero waste" verdict when the dose uses the full vial -- and hard-refuses JW on a multi-dose vial. Missing JZ and improper JW on a multi-dose vial are both active audit targets. Optionally enter the available vial sizes for the least-waste selection.' }));
+    root.appendChild(field('Vial size', 'dw-vial', { type: 'number', inputmode: 'decimal', placeholder: '50' }));
+    root.appendChild(field('Dose administered', 'dw-dose', { type: 'number', inputmode: 'decimal', placeholder: '35' }));
+    root.appendChild(unitSelect('Dose / vial unit', 'dw-dose-unit', 'mg'));
+    root.appendChild(field('Billing-unit size (1 unit = this much)', 'dw-unitsize', { type: 'number', inputmode: 'decimal', placeholder: '10' }));
+    root.appendChild(unitSelect('Billing-unit measure', 'dw-unit-unit', 'mg'));
+    root.appendChild(selectField('Vial type', 'dw-type', [
+      { value: 'single', text: 'Single-dose vial (JW/JZ eligible)' },
+      { value: 'multi', text: 'Multi-dose vial (JW does NOT apply)' },
+    ]));
+    root.appendChild(field('Available vial sizes (optional, comma-separated)', 'dw-sizes', { placeholder: '50, 20, 10' }));
+    const o = out(); root.appendChild(o);
+    wire(['dw-vial', 'dw-dose', 'dw-dose-unit', 'dw-unitsize', 'dw-unit-unit', 'dw-type', 'dw-sizes'], () => safe(o, () => {
+      if (rawEmpty('dw-vial') || rawEmpty('dw-dose') || rawEmpty('dw-unitsize')) {
+        o.appendChild(el('p', { class: 'muted', text: 'Enter the vial size, the dose, and the billing-unit size.' })); return;
+      }
+      const sizes = str('dw-sizes').split(',').map((s) => Number(s.trim())).filter((n) => Number.isFinite(n) && n > 0);
+      const r = Drug.drugWastage({
+        vialSize: numv('dw-vial'), dose: numv('dw-dose'), doseUnit: str('dw-dose-unit'),
+        unitSize: numv('dw-unitsize'), unitUnit: str('dw-unit-unit'), vialType: str('dw-type'),
+        availableVialSizes: sizes.length ? sizes : undefined,
+      });
+      o.appendChild(el('h2', { text: r.modifier ? `Modifier ${r.modifier}` : 'No waste billing (multi-dose)' }));
+      verdictLine(o, r.note, r.modifier === 'JW' || !r.eligibleForJW ? 'flag' : null);
+      o.appendChild(derivation([
+        ['Dose administered', `${fmt(numv('dw-dose'))} ${str('dw-dose-unit')}`],
+        ['Vial size', `${fmt(numv('dw-vial'))} ${str('dw-dose-unit')}`],
+        ['Vial type', r.vialType === 'single' ? 'Single-dose' : 'Multi-dose'],
+        ['Vials drawn', String(r.vialsUsed)],
+        ['Total units drawn', String(r.totalUnits)],
+        ['Administered units', String(r.administeredUnits)],
+        ['Discarded (JW) units', r.eligibleForJW ? String(r.discardedUnits) : 'not billable (multi-dose)'],
+        ['Modifier', r.modifier || 'none'],
+        r.leastWaste ? ['Least-waste vial selection', `${r.leastWaste.combo.map((c) => `${c.count}x${c.size}`).join(' + ')} = ${r.leastWaste.totalAmount} (${r.leastWaste.wasteAmount} wasted)`] : null,
+      ]));
+      o.appendChild(postureNote('CMS Pub. 100-04 Ch. 17 §40; JW/JZ modifier guidance. Near-neighbor: ndc-hcpcs-units supplies the unit math this splits.'));
+    }));
+  },
+
+  // ----- 2.3 infusion-hierarchy ---------------------------------------------
+  'infusion-hierarchy'(root) {
+    root.appendChild(el('p', { class: 'notice', text: 'Picks the single "initial" infusion/injection code for an encounter by the CMS hierarchy (chemo > therapeutic > hydration; infusion > push), NOT by what ran first on the clock, and assigns every other administration its add-on role. An infusion under 16 minutes is reported as an IV push. One administration per line as "type, minutes".' }));
+    root.appendChild(textareaField('Administrations (one per line: type, minutes)', 'ih-list',
+      'chemo-infusion, 90\ntherapeutic-infusion, 60\nhydration, 30'));
+    root.appendChild(el('p', { class: 'muted', text: 'Types: chemo-infusion, chemo-push, therapeutic-infusion, therapeutic-push, hydration. Append ", concurrent" to a line for a concurrently-run infusion.' }));
+    const o = out(); root.appendChild(o);
+    const ROLE_LABEL = {
+      initial: 'INITIAL', 'sequential-infusion': 'Sequential infusion',
+      'sequential-hydration': 'Sequential/secondary hydration', 'concurrent-infusion': 'Concurrent infusion',
+      'additional-push': 'Additional/sequential push',
+    };
+    wire(['ih-list'], () => safe(o, () => {
+      const raw = str('ih-list').split('\n').map((s) => s.trim()).filter(Boolean);
+      if (!raw.length) { o.appendChild(el('p', { class: 'muted', text: 'Enter one administration per line, e.g. "chemo-infusion, 90".' })); return; }
+      const administrations = raw.map((line) => {
+        const parts = line.split(',').map((s) => s.trim());
+        return {
+          type: parts[0],
+          minutes: parts[1] != null && parts[1] !== '' ? Number(parts[1]) : 0,
+          concurrent: parts.slice(2).some((p) => p.toLowerCase() === 'concurrent'),
+        };
+      });
+      const r = Drug.infusionHierarchy({ administrations });
+      o.appendChild(el('h2', { text: `Initial code ${r.initialCode}` }));
+      verdictLine(o, r.note);
+      const ul = el('ul');
+      for (const ln of r.lines) {
+        const role = ROLE_LABEL[ln.role] || ln.role;
+        const addOn = ln.addOnCode && ln.addOnUnits ? ` + ${ln.addOnCode} x${ln.addOnUnits}` : '';
+        const reclass = ln.reclassified ? ' (<16 min -> reported as a push)' : '';
+        ul.appendChild(li(`${ln.type.replace('-', ' ')}, ${ln.minutes} min: ${role} -> ${ln.code}${addOn}${reclass}`, ln.role === 'initial' ? null : 'muted'));
+      }
+      o.appendChild(ul);
+      o.appendChild(postureNote('AMA CPT 96360-96379; CMS Pub. 100-04 Ch. 12. Exactly one initial code per IV site/encounter; the rest are sequential/concurrent/additional-hour/additional-push add-ons.'));
     }));
   },
 };
