@@ -69,6 +69,17 @@ const UTILITIES = [
   { id: 'modifier-x-selector', name: 'Modifier 59 vs XE/XS/XP/XU Selector', group: 'B', audiences: ['coders', 'billers'], clinical: false },
   { id: 'global-period', name: 'Global Surgery Period & Required Modifier', group: 'B', audiences: ['coders', 'billers'], clinical: false },
   { id: 'modifier-order', name: 'Pricing vs Informational Modifier Order', group: 'B', audiences: ['coders', 'billers'], clinical: false },
+  // spec-v80: E/M & time-based coding, completed. The office em-time/em-mdm
+  // tiles only do 99202-99215; these six extend MDM leveling to every setting
+  // and add the time-unit codes (critical care, prolonged, therapy 8-minute,
+  // anesthesia). Setting/payer forks are explicit; CPT descriptors and ASA base
+  // units are user inputs (doctrine clause 2). views/group-b.js, lib/billing-v80.js.
+  { id: 'em-mdm-2023', name: 'E/M MDM Level by Setting (2023, all places of service)', group: 'B', audiences: ['coders', 'billers', 'clinicians'], clinical: false },
+  { id: 'critical-care-time', name: 'Critical Care Time (99291 + 99292 Units)', group: 'B', audiences: ['coders', 'billers', 'clinicians'], clinical: false },
+  { id: 'split-shared', name: 'Split / Shared Visit & FS Modifier', group: 'B', audiences: ['coders', 'billers', 'clinicians'], clinical: false },
+  { id: 'prolonged-services', name: 'Prolonged Services (99417 / G2212 Units)', group: 'B', audiences: ['coders', 'billers'], clinical: false },
+  { id: 'therapy-units', name: 'Therapy Units (8-Minute Rule vs Rule of Eights)', group: 'B', audiences: ['coders', 'billers'], clinical: false },
+  { id: 'anesthesia-units', name: 'Anesthesia Units (Base + Time + Modifying x CF)', group: 'B', audiences: ['billers', 'coders'], clinical: false },
   // Group C: Patient Bill and Insurance Tools
   // spec-v29 wave 29-2: 12 Group C patient-literacy / eligibility tiles
   // removed (decoder, insurance, eob-decoder, no-surprises,

@@ -1,6 +1,18 @@
 # spec-v80.md — E/M & time-based coding, completed: the 2023 overhaul across every setting, plus the time-unit codes; +6 tiles
 
-> Status: **PROPOSED (2026-06-13).** Third feature spec of the
+> Status: **ACCEPTED (2026-06-15).** Shipped: `lib/billing-v80.js` (the six
+> compute exports), the six `views/group-b.js` renderers, the +6 Group B
+> catalog rows, the META entries with worked examples (validated by the
+> example-correctness e2e sweep), the `billing-v80` ledger family, the
+> `test/unit/billing-v80.test.js` boundary suite, and the six
+> `docs/audits/v12/` logs. Catalog 347 → **353**. One implementation note vs the
+> proposal: `prolonged-services` is scoped to the **physician** prolonged add-ons
+> (99417/99418 vs Medicare G2212/G0316); the clinical-staff 99415/99416 path
+> (a first-hour/30-minute model on a different axis) is deferred rather than
+> shipped with an unverifiable threshold — the AMA-vs-Medicare divergence the
+> spec headlines is fully delivered on the physician codes.
+>
+> Third feature spec of the
 > [spec-v77](spec-v77.md) billing & coding program. The catalog's E/M tools stop
 > at the **office** (`em-time`, `em-mdm` cover 99202–99215). The AMA's 2023
 > overhaul extended the same framework to **every** E/M setting, and the

@@ -5,7 +5,7 @@
 <h1 align="center">sophiewell.com</h1>
 
 <p align="center">
-  <strong>347 deterministic healthcare calculators tuned to the nurse on shift.</strong><br>
+  <strong>353 deterministic healthcare calculators tuned to the nurse on shift.</strong><br>
   Free forever. No servers, no accounts, no telemetry, no AI, no network call after first paint.
 </p>
 
@@ -36,7 +36,7 @@ output; "searchable lookup of static facts" does not qualify. See
 [docs/spec-v10.md](docs/spec-v10.md) for the audience and
 dependency-budget commitments and
 [docs/spec-v29.md](docs/spec-v29.md) for the nurse-first pivot
-and the v29 catalog ledger. At v79 close the catalog is 347
+and the v29 catalog ledger. At v80 close the catalog is 353
 deterministic tiles — every one of them computes from at least
 one user input. (v62 Part B closed the bedside expansion at 328;
 spec-v63 adds the ops-side counterpart — a shared regulatory-deadline
@@ -169,7 +169,7 @@ production security headers. Any static file server will also work.
 ## How it works and how to use it
 
 Since the spec-v29 nurse-first prune the catalog has grown one
-reviewable spec at a time to **347** deterministic calculators
+reviewable spec at a time to **353** deterministic calculators
 (the full per-version history is in [CHANGELOG.md](CHANGELOG.md)
 and `docs/spec-v*.md`; the most recent bedside additions are
 summarized in the cheat sheets below). They organize across the
@@ -686,7 +686,7 @@ than rendering a negative duration, and a negative CPP (ICP > MAP) is surfaced
 with an explicit critical-low flag, never hidden. See
 [docs/spec-v65.md](docs/spec-v65.md).
 
-### Billing & reimbursement: what Medicare actually pays, and whether the line survives (spec-v77 / spec-v78 / spec-v79)
+### Billing & reimbursement: what Medicare pays, whether the line survives, and how the visit codes (spec-v77 / spec-v78 / spec-v79 / spec-v80)
 
 The catalog has always been strong on the clinician at the bedside and competent
 on the operations clock (appeal/timely-filing/PA deadlines, the 2021 E/M
@@ -789,12 +789,61 @@ enters, per doctrine clause 2):
 `lib/billing-v79.js` is in the [spec-v59](docs/spec-v59.md) fuzz harness alongside
 `lib/billing-v78.js` (every export throw-safe and banned-token-free across the
 object-aware matrix), its five decision constants are ledger-tracked under
-ruleFamily `billing-v79`, and all ten Group B tiles carry a `docs/audits/v12/`
-audit log. The remaining program specs ([v80](docs/spec-v80.md) E/M completion,
-[v81](docs/spec-v81.md) drug/infusion billing, [v82](docs/spec-v82.md) patient
-responsibility, [v83](docs/spec-v83.md) claim integrity & facility payment) remain
-proposed and land one reviewable spec at a time (the full program adds 19 more, to
-a 366 end state).
+ruleFamily `billing-v79`, and all ten v78/v79 Group B tiles carry a
+`docs/audits/v12/` audit log.
+
+**[spec-v80](docs/spec-v80.md) ships the program's third feature: E/M & time-based
+coding, completed** ([lib/billing-v80.js](lib/billing-v80.js)), six engines that
+finish a surface the catalog only half-covered. The office `em-time` / `em-mdm`
+tiles do 99202–99215; the AMA's 2023 overhaul extended the same 2-of-3 MDM grid to
+**every** setting, and the time-unit codes (critical care, prolonged services,
+therapy minutes, anesthesia) are each pure input → output band math. Catalog
+**347 → 353**. Setting and payer/rule forks are **explicit, never inferred** — no
+tile silently assumes Medicare or office.
+
+```
+  em-mdm-2023        critical-care-time   split-shared         prolonged-services    therapy-units        anesthesia-units
+  ───────────        ──────────────────   ────────────         ──────────────────    ─────────────        ────────────────
+  2-of-3 MDM →       net min (− proc):    substantive part:    AMA 99417/99418 vs    Medicare 8-min:      (base + time/15
+  setting code:      <30 not crit care,   >½ time OR the MDM    Medicare G2212/G0316  8-22=1, 23-37=2,     + modifying) × CF;
+  inpt 99221-33,     30-74 = 99291,       → who BILLS + FS;     — AMA floor = prim.   38-52=3, 53-67=4     AA/QZ 100%, QK/QY/
+  ED 99281-85,       then 99292 ×N per     NPP pays 85% of      min+15, Medicare =    (cumulative) vs     QX 50%, AD flat 3
+  SNF 99304-10,      +30 min (104→×1,      the fee schedule.    max+15 (higher) →     AMA Rule of Eights  base units. The one
+  home 99341-50.     134→×2). subtract     2024 CMS rule.       99205 75 vs 89 min.   (per-service) —     fee NOT on the RVU
+  office → em-mdm.   the procedure time.                        each unit +15 min.    diverge at remndrs.  formula.
+```
+
+Worked anchors (each reproduced to the letter by the example-correctness e2e):
+`em-mdm-2023` ED, Moderate MDM (problems & data reach Moderate, risk limits) →
+**99284**; `critical-care-time` 104 net minutes → **99291 + 99292 ×1**;
+`split-shared` physician 20 of 35 min → *physician bills, modifier FS, 100%*;
+`prolonged-services` Medicare 99205 at 90 min → **G2212 ×1** (Medicare floor 89;
+the AMA 99417 floor is 75 — the error this prevents); `therapy-units` 50
+cumulative minutes → **3 units**; `anesthesia-units` 5 base + 60 min (4 time
+units) + 1 modifying = **10 units × $22 = $220**, QK 50% = **$110**.
+
+E/M & time-unit cheat sheet (what the tile turns into a code/units):
+
+| Tile | Input | Output |
+|---|---|---|
+| `em-mdm-2023` | setting + 2-of-3 MDM (SF/Low/Mod/High) | the setting-specific code (99221–99350) + the limiting element |
+| `critical-care-time` | net critical-care minutes | nothing <30 · 99291 for 30–74 · 99291 + 99292 ×N |
+| `split-shared` | time split **or** who did the MDM | which provider bills · modifier **FS** · 100% (MD) vs **85%** (NPP) |
+| `prolonged-services` | primary code + payer + total time | **99417/99418** (AMA) vs **G2212/G0316** (Medicare), units at +15 min |
+| `therapy-units` | total min (Medicare) or per-service (RoE) | billable units + where the two rules **diverge** |
+| `anesthesia-units` | base + time + mod + CF + direction | total units · (units × CF) · the medical-direction % |
+
+`lib/billing-v80.js` joins the fuzz harness, its dated constants (the anesthesia
+CF, the prolonged thresholds, the medical-direction percentages, the CPT E/M
+edition) are ledger-tracked under ruleFamily `billing-v80`, and all six tiles
+carry a `docs/audits/v12/` audit log — sixteen Group B audit logs in all. One
+implementation note (recorded in the [spec-v80](docs/spec-v80.md) status):
+`prolonged-services` ships the **physician** add-ons; the clinical-staff
+99415/99416 path is deferred rather than shipped with an unverifiable threshold.
+The remaining program specs ([v81](docs/spec-v81.md) drug/infusion billing,
+[v82](docs/spec-v82.md) patient responsibility, [v83](docs/spec-v83.md) claim
+integrity & facility payment) remain proposed and land one reviewable spec at a
+time (the full program adds 13 more, to a 366 end state).
 
 ## System design and architecture overview
 
@@ -820,7 +869,7 @@ long version, see [docs/architecture.md](docs/architecture.md).
  │  manifests (data/)            │  static │        ▼                     ▼             │
  │        │  scripts/build       │  files  │   lazy-load data shard   pure compute      │
  │        ▼                      │         │   (verified vs manifest)  (lib/*.js)       │
- │  dist/  (347 tool pages,      │         │        │                     │             │
+ │  dist/  (353 tool pages,      │         │        │                     │             │
  │  OG cards, sitemap, SBOM)     │         │        ▼                     ▼             │
  └───────────────────────────────┘         │   service worker cache    result + cite   │
                                             │   (keyed to build hash)                    │
@@ -840,7 +889,7 @@ session, and nothing to log.
 index.html          single-page shell (hero-search combobox + static browse-by-category nav, tile mount)
 styles.css          one stylesheet (responsive; no horizontal scroll — enforced catalog-wide at 320px in CI)
 app.js              router, hero-search wiring, view wiring, the UTILITIES catalog
-                    (347 tiles — the single source of truth; zero runtime deps)
+                    (353 tiles — the single source of truth; zero runtime deps)
 sw.js               service worker — precache shell, cache shards by build hash
 theme.js            light/dark theme toggle (writes only sw-theme, allowlisted)
 lib/input-persist.js opt-in "remember my inputs" (off by default; numbers only)
@@ -858,12 +907,12 @@ docs/               specs (spec-v4 … spec-v76) + per-tile v11 audit logs +
                     citation-staleness ledger +
                     architecture / threat-model / …
 test/               unit/ (node:test) · integration/ (Playwright) · fixtures/
-dist/               build output (347 tool pages, OG cards, sitemap, SBOM)
+dist/               build output (353 tool pages, OG cards, sitemap, SBOM)
 ```
 
-### Discovery: how a query finds the right tool among 347
+### Discovery: how a query finds the right tool among 353
 
-With 347 tiles, search quality *is* the product — a tool you cannot find does
+With 353 tiles, search quality *is* the product — a tool you cannot find does
 not exist. Discovery is deterministic and offline (no fuzzy-match service, no
 embedding model, no AI). The home `#hero-search` combobox builds its dropdown
 from two complementary rankers, both pure functions of the typed query:
@@ -936,10 +985,10 @@ A login-less, AI-free calculator earns trust only if the nurse can see, on the
 tile, exactly which published source produced the number — and tell whether that
 source is current. spec-v54 defined the invariants; spec-v60 built the machinery
 (the gate, the ledger, and the `citationAccessed` convention) and extended it
-across the full 347-tile catalog, pinning the last three unpinned "current
+across the full 353-tile catalog, pinning the last three unpinned "current
 edition" phrases and re-verifying every guideline tile against its latest known
 edition. Three invariants make that auditable, each enforced by the
-`check-citations.mjs` lint gate (in the `npm run lint` chain) over all 347 tiles:
+`check-citations.mjs` lint gate (in the `npm run lint` chain) over all 353 tiles:
 
 | Invariant | Rule | Enforcement |
 |---|---|---|
@@ -1396,7 +1445,7 @@ rules, not soft preferences.
 | `npm run build`          | Copy static files into `dist/` for deployment                     |
 | `npm test`               | Run the full test suite (unit, a11y, grep, data integrity)        |
 | `npm run test:unit`      | Run Node's built-in unit tests (3,469 tests)                      |
-| `npm run test:e2e`       | Build `dist/`, then run Playwright integration tests against real browsers — incl. a full-catalog 320px no-horizontal-scroll sweep over both the SPA routes and the 347 pre-rendered static tool pages, the hub/topic/commitments pages, and the citation-wrap pin |
+| `npm run test:e2e`       | Build `dist/`, then run Playwright integration tests against real browsers — incl. a full-catalog 320px no-horizontal-scroll sweep over both the SPA routes and the 353 pre-rendered static tool pages, the hub/topic/commitments pages, and the citation-wrap pin |
 | `npm run test:a11y`      | Run accessibility checks on every utility view                    |
 | `npm run lint`           | ESLint + the CI gate chain: grep-check, output-safety, citation-integrity, catalog-truth, commitments, PA staleness, PA audit |
 | `npm run data:refresh`   | Re-fetch and re-shard every public dataset                        |
@@ -1480,9 +1529,9 @@ build, integrity-verified data shards) are documented in
 - [docs/spec-v11.md](docs/spec-v11.md) — correctness-floor spec:
   per-tile audit protocol, specialty-named groups, optional
   source-quoted `interpretation` field. Audit coverage is **complete
-  — 347/347 tiles** carry a committed per-tile audit log
+  — 353/353 tiles** carry a committed per-tile audit log
   (`docs/audits/v11/<id>.md` for the pre-v78 catalog;
-  `docs/audits/v12/<id>.md` for the ten spec-v78/v79 Group B tiles)
+  `docs/audits/v12/<id>.md` for the sixteen spec-v78/v79/v80 Group B tiles)
   (`node scripts/audit-coverage.mjs`)
 - [docs/scope-mdcalc-parity.md](docs/scope-mdcalc-parity.md) —
   long-horizon scope: every actionable clinical calculator a

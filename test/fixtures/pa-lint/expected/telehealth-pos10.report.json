@@ -10371,6 +10371,48 @@
           "url": "https://www.cms.gov/regulations-and-guidance/guidance/manuals/downloads/clm104c12.pdf",
           "ruleFamily": "billing-v79",
           "lastVerified": "2026-06-13"
+        },
+        {
+          "id": "billing-em-mdm-2023-edition",
+          "label": "The CPT 2023 E/M edition and the setting-specific MDM code maps (inpatient/observation 99221-99233, ED 99281-99285, nursing facility 99304-99310, home/residence 99341-99350; 99343 deleted 2023) backing em-mdm-2023. AMA CPT 2023 E/M Guidelines. No CPT descriptor file ships -- the MDM elements are entered.",
+          "url": "https://www.ama-assn.org/practice-management/cpt/cpt-evaluation-and-management",
+          "ruleFamily": "billing-v80",
+          "lastVerified": "2026-06-15"
+        },
+        {
+          "id": "billing-critical-care-bands",
+          "label": "The 99291 (first 30-74 min) / 99292 (each additional 30 min) critical-care time bands and the separately-reported-procedure subtraction rule backing critical-care-time. AMA CPT; CMS Pub. 100-04 Ch. 12 30.6.12.",
+          "url": "https://www.cms.gov/regulations-and-guidance/guidance/manuals/downloads/clm104c12.pdf",
+          "ruleFamily": "billing-v80",
+          "lastVerified": "2026-06-15"
+        },
+        {
+          "id": "billing-split-shared-fs",
+          "label": "The split (or shared) visit substantive-portion policy, the FS modifier, and the 85% NPP payment percentage backing split-shared. CMS Pub. 100-04 Ch. 12 30.6.18; PFS split/shared visit policy (2024 rule).",
+          "url": "https://www.cms.gov/regulations-and-guidance/guidance/manuals/downloads/clm104c12.pdf",
+          "ruleFamily": "billing-v80",
+          "lastVerified": "2026-06-15"
+        },
+        {
+          "id": "billing-prolonged-thresholds",
+          "label": "The prolonged-service add-on codes (AMA 99417/99418 vs Medicare G2212/G0316) and their per-primary-code time thresholds (99205 75/89, 99215 55/69, 99223 90/104, 99233 65/79; each unit +15 min) backing prolonged-services. AMA CPT; CMS Pub. 100-04 Ch. 12.",
+          "url": "https://www.cms.gov/medicare/payment/fee-schedules/physician",
+          "ruleFamily": "billing-v80",
+          "lastVerified": "2026-06-15"
+        },
+        {
+          "id": "billing-therapy-8minute",
+          "label": "The Medicare 8-minute rule band table (8-22=1, 23-37=2, 38-52=3, 53-67=4, each +15 adds a unit) and the AMA Rule of Eights per-service contrast backing therapy-units. CMS Pub. 100-04 Ch. 5 20.2; 42 CFR 410.",
+          "url": "https://www.cms.gov/regulations-and-guidance/guidance/manuals/downloads/clm104c05.pdf",
+          "ruleFamily": "billing-v80",
+          "lastVerified": "2026-06-15"
+        },
+        {
+          "id": "billing-anesthesia-cf-direction",
+          "label": "The anesthesia payment formula ((base+time+modifying units) x CF; time unit = 15 min), the default national anesthesia conversion factor (CY2025 $20.3178, overridable), and the medical-direction percentages (AA/QZ 100%, QK/QY/QX 50%, AD flat 3 base units) backing anesthesia-units. CMS Pub. 100-04 Ch. 12 50; ASA RVG base units entered, not shipped.",
+          "url": "https://www.cms.gov/regulations-and-guidance/guidance/manuals/downloads/clm104c12.pdf",
+          "ruleFamily": "billing-v80",
+          "lastVerified": "2026-06-15"
         }
       ],
       "evaluated": null

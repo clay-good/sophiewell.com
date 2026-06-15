@@ -18,6 +18,7 @@ import { fmt } from '../lib/num.js';
 import { loadAllShards, loadFile } from '../lib/data.js';
 import * as Bill from '../lib/billing-v78.js';
 import * as Edit from '../lib/billing-v79.js';
+import * as Em from '../lib/billing-v80.js';
 
 // ---- shared local helpers (mirrors views/group-v63.js) ----------------------
 function field(label, id, opts = {}) {
@@ -492,6 +493,219 @@ export const renderers = {
       }
       o.appendChild(postureNote(r.note));
       o.appendChild(postureNote('CMS Pub. 100-04 Ch. 12 / 23 modifier-reporting guidance. The "why did this clean-looking claim under-pay" fix that is invisible until you check the order.'));
+    }));
+  },
+
+  // ===== spec-v80: E/M & time-based coding, completed ======================
+  // The office em-time/em-mdm tiles only do 99202-99215. These six finish the
+  // E/M surface: MDM leveling in every setting, critical-care minutes, the
+  // split/shared substantive-portion call, prolonged services, the therapy
+  // 8-minute rule, and anesthesia units. Setting/payer forks are explicit
+  // (spec-v80 §3); no tile assumes Medicare or office. CPT descriptors and ASA
+  // base units are the user's inputs (doctrine clause 2).
+
+  // ----- 2.1 em-mdm-2023 ----------------------------------------------------
+  'em-mdm-2023'(root) {
+    root.appendChild(el('p', { class: 'notice', text: 'Sets the E/M level from the 2-of-3 MDM grid in EVERY setting -- inpatient/observation, ED, nursing facility, home -- not just the office. Pick the setting, grade the three MDM elements, and the tool returns the setting-specific code. The office path defers to the existing em-mdm tile. This is the level the documented MDM supports, not a documentation audit.' }));
+    root.appendChild(selectField('Setting', 'emm-setting', [
+      { value: 'inpatient-initial', text: 'Inpatient / observation -- initial (99221-99223)' },
+      { value: 'inpatient-subsequent', text: 'Inpatient / observation -- subsequent (99231-99233)' },
+      { value: 'ed', text: 'Emergency department (99281-99285; MDM only)' },
+      { value: 'snf-initial', text: 'Nursing facility -- initial (99304-99306)' },
+      { value: 'snf-subsequent', text: 'Nursing facility -- subsequent (99307-99310)' },
+      { value: 'home-new', text: 'Home / residence -- new patient (99341-99345)' },
+      { value: 'home-established', text: 'Home / residence -- established (99347-99350)' },
+      { value: 'office', text: 'Office / outpatient (99202-99215) -- see em-mdm' },
+    ]));
+    const mdmOpts = [
+      { value: '2', text: 'Straightforward' },
+      { value: '3', text: 'Low' },
+      { value: '4', text: 'Moderate' },
+      { value: '5', text: 'High' },
+    ];
+    root.appendChild(selectField('Number / complexity of problems addressed', 'emm-prob', mdmOpts));
+    root.appendChild(selectField('Amount / complexity of data reviewed', 'emm-data', mdmOpts));
+    root.appendChild(selectField('Risk of complications / morbidity', 'emm-risk', mdmOpts));
+    const o = out(); root.appendChild(o);
+    wire(['emm-setting', 'emm-prob', 'emm-data', 'emm-risk'], () => safe(o, () => {
+      const r = Em.emMdm2023({
+        setting: str('emm-setting'),
+        problems: Math.round(numv('emm-prob')), data: Math.round(numv('emm-data')), risk: Math.round(numv('emm-risk')),
+      });
+      if (r.setting === 'office') {
+        o.appendChild(el('h2', { text: `${r.mdm} MDM -> new ${r.newCode} / established ${r.estCode}` }));
+      } else {
+        o.appendChild(el('h2', { text: `${r.mdm} MDM -> ${r.code}` }));
+      }
+      o.appendChild(derivation([
+        ['Setting', r.settingLabel],
+        ['MDM level (2 of 3)', `${r.mdm}`],
+        ['Limiting element', r.limitingElements.length ? r.limitingElements.join(', ') : 'none -- all three reach the level'],
+      ]));
+      verdictLine(o, r.note);
+      o.appendChild(postureNote('AMA CPT 2023 E/M Guidelines (the 2021 office MDM grid extended to all settings). Confirm code selection against the current CPT code set and your documentation. Office near-neighbors: em-mdm (MDM) and em-time (time path).'));
+    }));
+  },
+
+  // ----- 2.2 critical-care-time ---------------------------------------------
+  'critical-care-time'(root) {
+    root.appendChild(el('p', { class: 'notice', text: 'Converts the day\'s aggregated critical-care minutes into 99291 + 99292 units. Below 30 minutes is not critical care (report an E/M instead). Subtract any separately billable procedure time -- the rule that trips most coders. Aggregate bedside + unit time per CMS before entering it.' }));
+    root.appendChild(field('Total critical-care minutes for the day', 'cc-total', { type: 'number', inputmode: 'numeric', placeholder: '104' }));
+    root.appendChild(field('Minutes of separately billable procedures to subtract', 'cc-proc', { type: 'number', inputmode: 'numeric', placeholder: '0' }));
+    const o = out(); root.appendChild(o);
+    wire(['cc-total', 'cc-proc'], () => safe(o, () => {
+      if (rawEmpty('cc-total')) { o.appendChild(el('p', { class: 'muted', text: 'Enter the total critical-care minutes.' })); return; }
+      const r = Em.criticalCareTime({ totalMinutes: Math.round(numv('cc-total')), procedureMinutes: Math.round(numv('cc-proc') || 0) });
+      o.appendChild(el('h2', { text: r.isCriticalCare ? (r.units99292 ? `99291 + 99292 x${r.units99292}` : '99291') : 'Not critical care' }));
+      verdictLine(o, r.note, r.isCriticalCare ? null : 'flag');
+      o.appendChild(derivation([
+        ['Total minutes', String(r.totalMinutes)],
+        ['Less separately billable procedure time', String(r.procedureMinutes)],
+        ['Net critical-care minutes', String(r.netMinutes)],
+        ['99291 (first 30-74 min)', r.code99291 ? '1' : '0 -- below the 30-minute floor'],
+        ['99292 units (each +30 min)', String(r.units99292)],
+      ]));
+      o.appendChild(postureNote('AMA CPT 99291 / 99292; CMS Pub. 100-04 Ch. 12 30.6.12. The <30-minute floor and the procedure-time subtraction are the two miscoding traps.'));
+    }));
+  },
+
+  // ----- 2.3 split-shared ---------------------------------------------------
+  'split-shared'(root) {
+    root.appendChild(el('p', { class: 'notice', text: 'Determines which provider must bill a facility split/shared E/M -- physician or NPP -- under the substantive-portion basis you select, whether modifier FS applies, and the payment consequence (NPP billing pays at the reduced NPP percentage). The 2024 CMS rule made this call mandatory.' }));
+    root.appendChild(selectField('Substantive-portion basis', 'ss-basis', [
+      { value: 'time', text: 'More than half of the total time' },
+      { value: 'mdm', text: 'Substantive part of the MDM' },
+    ]));
+    root.appendChild(field('Physician minutes (time basis)', 'ss-phys', { type: 'number', inputmode: 'numeric', placeholder: '20' }));
+    root.appendChild(field('NPP minutes (time basis)', 'ss-npp', { type: 'number', inputmode: 'numeric', placeholder: '15' }));
+    root.appendChild(selectField('Who performed the substantive MDM (MDM basis)', 'ss-mdmby', [
+      { value: 'physician', text: 'Physician' },
+      { value: 'npp', text: 'NPP' },
+    ]));
+    const o = out(); root.appendChild(o);
+    wire(['ss-basis', 'ss-phys', 'ss-npp', 'ss-mdmby'], () => safe(o, () => {
+      const basis = str('ss-basis');
+      if (basis === 'time' && rawEmpty('ss-phys') && rawEmpty('ss-npp')) {
+        o.appendChild(el('p', { class: 'muted', text: 'Enter the physician and NPP minutes.' })); return;
+      }
+      const r = Em.splitShared({
+        basis,
+        physicianTime: Math.round(numv('ss-phys') || 0), nppTime: Math.round(numv('ss-npp') || 0),
+        mdmBy: str('ss-mdmby'),
+      });
+      o.appendChild(el('h2', { text: `${r.billingProvider === 'physician' ? 'Physician' : 'NPP'} bills (+ modifier FS)` }));
+      verdictLine(o, r.verdict);
+      verdictLine(o, r.paymentNote, r.billingProvider === 'physician' ? null : 'flag');
+      o.appendChild(derivation([
+        ['Basis', r.basis === 'time' ? 'More than half of total time' : 'Substantive part of MDM'],
+        ['Billing provider', r.billingProvider === 'physician' ? 'Physician' : 'NPP'],
+        ['Modifier FS', 'Required (identifies the split/shared service)'],
+        ['Pays at', `${r.paymentPercent}% of the physician fee schedule`],
+      ]));
+      o.appendChild(postureNote('CMS Pub. 100-04 Ch. 12 30.6.18; PFS split (or shared) visit policy. Near-neighbor: multi-surgeon-pay is the surgical two-provider split; this is the E/M one.'));
+    }));
+  },
+
+  // ----- 2.4 prolonged-services ---------------------------------------------
+  'prolonged-services'(root) {
+    root.appendChild(el('p', { class: 'notice', text: 'Computes the prolonged-service add-on and its units once total time crosses the floor -- distinguishing AMA 99417/99418 from Medicare G2212/G0316, whose thresholds differ. Billing 99417 to a Medicare payer that wants G2212 is the classic error this prevents. Pick the time-selected primary code and the payer.' }));
+    root.appendChild(selectField('Primary E/M code (selected by time)', 'ps-code', [
+      { value: '99205', text: '99205 -- office/outpatient new (60-74 min)' },
+      { value: '99215', text: '99215 -- office/outpatient established (40-54 min)' },
+      { value: '99223', text: '99223 -- inpatient/observation initial (75-89 min)' },
+      { value: '99233', text: '99233 -- inpatient/observation subsequent (50-64 min)' },
+    ]));
+    root.appendChild(selectField('Payer', 'ps-payer', [
+      { value: 'ama', text: 'CPT / commercial (AMA 99417 / 99418)' },
+      { value: 'medicare', text: 'Medicare (G2212 / G0316)' },
+    ]));
+    root.appendChild(field('Total documented time (minutes)', 'ps-min', { type: 'number', inputmode: 'numeric', placeholder: '90' }));
+    const o = out(); root.appendChild(o);
+    wire(['ps-code', 'ps-payer', 'ps-min'], () => safe(o, () => {
+      if (rawEmpty('ps-min')) { o.appendChild(el('p', { class: 'muted', text: 'Enter the total documented time.' })); return; }
+      const r = Em.prolongedServices({ primaryCode: str('ps-code'), totalMinutes: Math.round(numv('ps-min')), payer: str('ps-payer') });
+      o.appendChild(el('h2', { text: r.units ? `${r.prolongedCode} x${r.units}` : 'Below the prolonged-service threshold' }));
+      verdictLine(o, r.note, r.units ? null : 'flag');
+      o.appendChild(derivation([
+        ['Primary code', `${r.primaryCode} (${r.primarySetting})`],
+        ['Payer / add-on', `${r.payer === 'ama' ? 'CPT / commercial' : 'Medicare'} -> ${r.prolongedCode}`],
+        ['Threshold (first unit)', `${r.threshold} minutes`],
+        ['Total time', `${r.totalMinutes} minutes`],
+        ['Prolonged units', String(r.units)],
+      ]));
+      o.appendChild(postureNote('AMA CPT 99417 / 99418; CMS Pub. 100-04 (G2212 / G0316). Near-neighbor: em-time selects the primary code this adds onto.'));
+    }));
+  },
+
+  // ----- 2.5 therapy-units --------------------------------------------------
+  'therapy-units'(root) {
+    root.appendChild(el('p', { class: 'notice', text: 'Converts timed-treatment minutes into billable units under the Medicare 8-minute rule (cumulative) or the AMA Rule of Eights (per-service), and shows where the two diverge -- the boundary cases that drive PT/OT/SLP under- and over-billing. Exclude untimed-code services from the minutes.' }));
+    root.appendChild(selectField('Rule', 'tu-rule', [
+      { value: 'medicare', text: 'Medicare 8-minute rule (cumulative total)' },
+      { value: 'rule-of-eights', text: 'AMA Rule of Eights (per-service)' },
+    ]));
+    root.appendChild(field('Total timed minutes (8-minute rule)', 'tu-total', { type: 'number', inputmode: 'numeric', placeholder: '50' }));
+    root.appendChild(field('Per-service minutes, comma-separated (Rule of Eights)', 'tu-services', { placeholder: '8, 8' }));
+    const o = out(); root.appendChild(o);
+    wire(['tu-rule', 'tu-total', 'tu-services'], () => safe(o, () => {
+      const rule = str('tu-rule');
+      if (rule === 'medicare') {
+        if (rawEmpty('tu-total')) { o.appendChild(el('p', { class: 'muted', text: 'Enter the total timed minutes.' })); return; }
+        const r = Em.therapyUnits({ rule, totalMinutes: Math.round(numv('tu-total')) });
+        o.appendChild(el('h2', { text: `${r.units} unit(s)` }));
+        verdictLine(o, r.note, r.units ? null : 'flag');
+        o.appendChild(derivation([['Total timed minutes', String(r.totalMinutes)], ['Band', r.band], ['Units', String(r.units)]]));
+      } else {
+        const per = str('tu-services').split(',').map((s) => Number(s.trim())).filter((n) => Number.isFinite(n));
+        if (!per.length) { o.appendChild(el('p', { class: 'muted', text: 'Enter per-service minutes, comma-separated (e.g., 8, 8).' })); return; }
+        const r = Em.therapyUnits({ rule, perServiceMinutes: per });
+        o.appendChild(el('h2', { text: `${r.units} unit(s)${r.diverges ? ` (Medicare rule: ${r.medicareUnits})` : ''}` }));
+        verdictLine(o, r.note, r.diverges ? 'flag' : null);
+        o.appendChild(derivation([
+          ['Per-service units', r.services.map((s) => `${s.minutes}m=${s.units}u`).join(', ')],
+          ['Rule of Eights total', String(r.units)],
+          ['Medicare cumulative', String(r.medicareUnits)],
+        ]));
+      }
+      o.appendChild(postureNote('CMS Pub. 100-04 Ch. 5 20.2; 42 CFR 410. 8-minute bands: 8-22=1, 23-37=2, 38-52=3, 53-67=4. The Rule of Eights diverges by pooling vs splitting the boundary remainders.'));
+    }));
+  },
+
+  // ----- 2.6 anesthesia-units -----------------------------------------------
+  'anesthesia-units'(root) {
+    root.appendChild(el('p', { class: 'notice', text: 'Anesthesia is the one fee that does NOT use the RVU formula: payment = (base + time + modifying units) x the anesthesia conversion factor, where one time unit = 15 minutes. Enter the ASA base units (not shipped), the time, the CF, and the medical-direction modifier (which sets the concurrency percentage). This is the rule\'s math, not a payment guarantee.' }));
+    root.appendChild(field('Base units (from the ASA Relative Value Guide)', 'an-base', { type: 'number', inputmode: 'decimal', placeholder: '5' }));
+    root.appendChild(field('Anesthesia time (minutes)', 'an-time', { type: 'number', inputmode: 'numeric', placeholder: '60' }));
+    root.appendChild(field('Modifying units (physical status / qualifying circumstances)', 'an-mod', { type: 'number', inputmode: 'decimal', placeholder: '0' }));
+    root.appendChild(moneyField('Anesthesia conversion factor ($ per unit)', 'an-cf', '20.3178'));
+    root.appendChild(selectField('Medical-direction modifier', 'an-dir', [
+      { value: 'aa', text: 'AA -- personally performed (100%)' },
+      { value: 'qz', text: 'QZ -- CRNA, non-medically-directed (100%)' },
+      { value: 'qy', text: 'QY -- medical direction of one CRNA (50%)' },
+      { value: 'qk', text: 'QK -- medical direction of 2-4 concurrent (50%)' },
+      { value: 'qx', text: 'QX -- CRNA with medical direction (50%)' },
+      { value: 'ad', text: 'AD -- medical supervision, >4 concurrent (flat 3 base units)' },
+    ]));
+    const o = out(); root.appendChild(o);
+    wire(['an-base', 'an-time', 'an-mod', 'an-cf', 'an-dir'], () => safe(o, () => {
+      if (rawEmpty('an-base') || rawEmpty('an-time') || !(numv('an-cf') > 0)) {
+        o.appendChild(el('p', { class: 'muted', text: 'Enter base units, time, and the conversion factor.' })); return;
+      }
+      const r = Em.anesthesiaUnits({
+        baseUnits: numv('an-base'), timeMinutes: Math.round(numv('an-time')), modifyingUnits: numv('an-mod') || 0,
+        conversionFactor: numv('an-cf'), medicalDirection: str('an-dir'),
+      });
+      o.appendChild(el('h2', { text: `${usd(r.directedPaymentCents)} (${r.directionPercent != null ? r.directionPercent + '%' : 'AD flat'})` }));
+      o.appendChild(derivation([
+        ['Base units', String(r.baseUnits)],
+        ['Time units (minutes / 15)', String(r.timeUnits)],
+        ['Modifying units', String(r.modifyingUnits)],
+        ['Total units', String(r.totalUnits)],
+        ['x Conversion factor', `$${fmt(r.conversionFactor, { digits: 4 })} per unit`],
+        ['Full payment (before direction)', usd(r.fullPaymentCents)],
+        [r.directionLabel, usd(r.directedPaymentCents)],
+      ]));
+      o.appendChild(postureNote('CMS Pub. 100-04 Ch. 12 50; ASA Relative Value Guide base units (entered, not shipped). Near-neighbor: rvu-payment prices everything EXCEPT anesthesia -- this is the exception.'));
     }));
   },
 };

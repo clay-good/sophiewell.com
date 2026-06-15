@@ -6,6 +6,59 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v80 — E/M & time-based coding, completed: the 2023 overhaul across every setting, plus the time-unit codes; +6 tiles, catalog 347 -> 353)
+
+Third feature spec of the [spec-v77](docs/spec-v77.md) billing & coding program.
+The catalog's E/M tools stopped at the **office** (`em-time` / `em-mdm` cover
+99202–99215). The AMA's 2023 overhaul extended the same 2-of-3 MDM framework to
+**every** setting, and the highest-dollar coding errors now live in the settings
+the office tiles never reached. v80 ships six deterministic, AMA/CMS-cited engines
+([views/group-b.js](views/group-b.js), [lib/billing-v80.js](lib/billing-v80.js))
+that finish the E/M surface. Setting and payer/rule forks are **explicit, never
+inferred**; CPT descriptors and ASA base units stay the user's inputs (doctrine
+clause 2). See [docs/spec-v80.md](docs/spec-v80.md).
+
+- `em-mdm-2023` — MDM-based E/M level **across every setting**. The 2021 office
+  2-of-3 grid (problems / data / risk) extended to inpatient/observation
+  (99221–99233), ED (99281–99285), nursing facility (99304–99310), and
+  home/residence (99341–99350); returns the setting-specific code and the limiting
+  element. The office path defers to (and cross-links) the existing `em-mdm`; that
+  tile's output is regression-pinned and unchanged.
+- `critical-care-time` — 99291 + 99292 aggregate-time units. Subtracts separately
+  reported procedure time, gates net **< 30 min** to "not critical care (report an
+  E/M)," reports 99291 for 30–74, then 99292 × N at the 30-minute add-on bands
+  (104 → ×1, 134 → ×2). The subtraction rule and the floor are the two miscoding traps.
+- `split-shared` — substantive-portion determiner & **FS modifier** (2024 CMS
+  rule). Names which provider must bill a facility split/shared E/M under the
+  selected basis (more-than-half-of-time, or substantive part of the MDM), whether
+  FS applies, and the payment consequence (NPP billing pays at **85%** of the fee
+  schedule). An exact time tie is flagged, not silently resolved.
+- `prolonged-services` — 99417 / 99418 vs Medicare G2212 / G0316 unit calculator.
+  The AMA add-on starts 15 min past the primary code's *minimum* time; the Medicare
+  add-on starts 15 min past its *maximum* time — a higher floor. Surfaces the
+  AMA-vs-Medicare threshold divergence as the headline so a coder never bills 99417
+  to a Medicare payer that wants G2212. (Physician path; clinical-staff 99415/99416
+  deferred — see spec-v80 status.)
+- `therapy-units` — timed-code units under the Medicare **8-minute rule** (8–22 = 1,
+  23–37 = 2, 38–52 = 3, 53–67 = 4, each +15 adds a unit) vs the AMA **Rule of
+  Eights** (per-service), showing where the two diverge at pooled remainders — the
+  classic PT/OT/SLP under- and over-billing boundary.
+- `anesthesia-units` — the one fee that does **not** use the RVU formula:
+  (base + time + modifying units) × the anesthesia CF, time unit = 15 min, with the
+  medical-direction percentage (AA/QZ 100%, QK/QY/QX 50%, AD flat 3 base units)
+  applied. Money in integer cents; the default CY2025 CF is overridable and
+  ledger-tracked.
+
+Plumbing: +6 [app.js](app.js) Group B catalog rows (347 → **353**); META entries
+with worked examples (validated by the example-correctness e2e sweep) and the
+`em-time`/`em-mdm` ↔ `em-mdm-2023` cross-links; a `billing-v80` ledger family
+([pa-staleness-ledger.json](pa-staleness-ledger.json), regenerated derived module)
+for the anesthesia CF, the prolonged thresholds, the medical-direction percentages,
+and the CPT E/M edition; [test/unit/billing-v80.test.js](test/unit/billing-v80.test.js)
+boundary suite (every time-band boundary minute); `lib/billing-v80.js` joins the
+fuzz harness (zero non-finite leaks); and six [docs/audits/v12/](docs/audits/v12/)
+audit logs. All catalog-truth surfaces updated to 353.
+
 ### Added (spec-v79 — claim edits & modifier logic: will this line deny, and which modifier unlocks it; +5 tiles, catalog 342 -> 347)
 
 Second feature spec of the [spec-v77](docs/spec-v77.md) billing & coding program.

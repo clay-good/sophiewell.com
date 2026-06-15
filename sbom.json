@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:sophiewell-d4a9716f593bf0c9",
+  "serialNumber": "urn:uuid:sophiewell-4aba9264eae878cb",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-06-15T12:01:18.212Z",
+    "timestamp": "2026-06-15T18:06:16.609Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -16,7 +16,7 @@
       "type": "application",
       "name": "sophiewell.com",
       "version": "1.0.0",
-      "description": "Sophie Well - 347 deterministic healthcare calculators tuned to the nurse on shift. Free, client-side, no servers, no telemetry, no AI.",
+      "description": "Sophie Well - 353 deterministic healthcare calculators tuned to the nurse on shift. Free, client-side, no servers, no telemetry, no AI.",
       "licenses": [
         {
           "license": {
@@ -72,18 +72,18 @@
       "purl": "pkg:npm/eslint@9.39.4"
     },
     {
-      "bom-ref": "pkg:npm/openlore@2.0.8",
+      "bom-ref": "pkg:npm/openlore@2.0.18",
       "type": "library",
       "name": "openlore",
-      "version": "2.0.8",
+      "version": "2.0.18",
       "scope": "optional",
-      "purl": "pkg:npm/openlore@2.0.8"
+      "purl": "pkg:npm/openlore@2.0.18"
     }
   ],
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "d4a9716f593bf0c9"
+      "value": "4aba9264eae878cb"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -91,7 +91,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "76"
+      "value": "77"
     }
   ]
 }
