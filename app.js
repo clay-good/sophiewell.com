@@ -98,6 +98,15 @@ const UTILITIES = [
   { id: 'timely-filing', name: 'Claim Timely-Filing Deadline', group: 'C', audiences: ['billers'], clinical: false },
   { id: 'pa-turnaround', name: 'Prior-Authorization Decision-Deadline Clock', group: 'C', audiences: ['billers', 'clinicians'], clinical: false },
   { id: 'overpayment-60day', name: '60-Day Overpayment Report-and-Return Clock', group: 'C', audiences: ['billers'], clinical: false },
+  // spec-v82: patient responsibility & coordination of benefits. v78 computes
+  // what the payer pays; these four compute what the PATIENT owes -- Medicare
+  // cost-share, COB/MSP, the contractual write-off, and the No Surprises Act
+  // cap. Money is integer cents; the protection/network gate is hard, not
+  // advisory. views/group-c.js, lib/billing-v82.js.
+  { id: 'medicare-cost-share', name: 'Medicare Patient Cost-Share (Part A / B / SNF)', group: 'C', audiences: ['patients', 'billers'], clinical: false },
+  { id: 'cob-calc', name: 'Coordination of Benefits & Medicare Secondary Payer', group: 'C', audiences: ['billers', 'patients'], clinical: false },
+  { id: 'allowed-amount', name: 'Contractual Write-Off vs Patient Balance', group: 'C', audiences: ['billers', 'patients'], clinical: false },
+  { id: 'nsa-cost-share', name: 'No Surprises Act Cost-Share (QPA-Based)', group: 'C', audiences: ['patients', 'billers'], clinical: false },
   // Group D: Provider and Plan Lookup
   // Group D: v4 extensions (utilities 115-116)
   // Group E: Clinical Math and Conversions

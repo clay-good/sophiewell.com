@@ -6,6 +6,46 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v82 — patient responsibility & coordination of benefits: what the patient actually owes; +4 tiles, catalog 356 -> 360)
+
+Fifth feature spec of the [spec-v77](docs/spec-v77.md) billing & coding program.
+[spec-v78](docs/spec-v78.md) computes what the *payer* pays; v82 computes what the
+*patient* owes — the numbers on the statement the patient actually reads, and pure
+arithmetic that billing offices routinely get wrong. Four deterministic,
+integer-cents, CMS/statute-cited calculators land in **Group C "Patient Bill &
+Insurance Tools"** ([views/group-c.js](views/group-c.js),
+[lib/billing-v82.js](lib/billing-v82.js)). See [docs/spec-v82.md](docs/spec-v82.md).
+
+- `medicare-cost-share` — Part A / Part B / SNF **beneficiary liability**. Part B is the
+  annual deductible then 20% of the Medicare-approved amount; Part A inpatient is the
+  per-benefit-period deductible plus the day-61–90 and lifetime-reserve coinsurance;
+  SNF is the day-21–100 daily coinsurance. Defaults are the **CY2026 CMS amounts**
+  ($1,736 / $434 / $868 / $217 / $283), overridable for a prior year, and the result is
+  the share **before** any Medigap / secondary coverage (which `cob-calc` coordinates).
+- `cob-calc` — **coordination of benefits / Medicare Secondary Payer**. Computes the
+  secondary payment and the patient residual under each *named* method — **lesser-of**,
+  **come-out-whole** (benefits-less-paid), **non-duplication**, and **MSP** — never
+  silently picking one. The arithmetic that decides whether a dual-coverage patient owes
+  $0 or a real balance.
+- `allowed-amount` — the **contractual write-off vs patient balance**. Splits a line into
+  the write-off (charge − allowed), the patient cost-share on the *allowed*, and the
+  payer payment, and **flags a would-be balance bill** an in-network claim must write off.
+  Out-of-network it refuses to invent a write-off (hard gate, not the patient-favorable
+  default).
+- `nsa-cost-share` — the **No Surprises Act** QPA-based cost-share. For a protected
+  service it caps the patient cost-share at the in-network amount off the **QPA** and
+  reports the **prohibited balance-bill** amount; a non-protected service gets a hard
+  refusal. Computes the cost-share number only — not an NSA/IDR eligibility tree.
+
+Each tile passes the [spec-v29](docs/spec-v29.md) §3 one-line test, joins the
+[spec-v59](docs/spec-v59.md) fuzz harness with zero non-finite leaks, ships an
+inline citation + `citationUrl` + `accessed`, a [spec-v11](docs/spec-v11.md)
+`docs/audits/v12/` audit log, and a META example reproduced by the
+example-correctness e2e. Money is integer cents end-to-end; the deductible-before-
+coinsurance ordering is tested at the partial-deductible boundary. The dated CMS
+cost-sharing constants are ledger-tracked under ruleFamily `billing-v82`. Catalog
+**356 → 360**; all catalog-truth surfaces updated.
+
 ### Added (spec-v81 — drug & infusion billing: HCPCS units, JW/JZ wastage, the infusion hierarchy; +3 tiles, catalog 353 -> 356)
 
 Fourth feature spec of the [spec-v77](docs/spec-v77.md) billing & coding program.

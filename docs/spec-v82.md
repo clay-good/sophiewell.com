@@ -1,7 +1,15 @@
 # spec-v82.md — Patient responsibility & coordination of benefits: what the patient actually owes; +4 tiles
 
-> Status: **PROPOSED (2026-06-13).** Fifth feature spec of the
-> [spec-v77](spec-v77.md) billing & coding program. [spec-v78](spec-v78.md)
+> Status: **ACCEPTED (2026-06-15).** Shipped: `lib/billing-v82.js` (the four
+> compute exports `medicareCostShare` / `cobCalc` / `allowedAmount` /
+> `nsaCostShare`, sharing `dollarsToCents` with `lib/billing-v78.js`), the four
+> `views/group-c.js` renderers, the +4 Group C catalog rows, the META entries
+> with worked examples (validated by the example-correctness e2e sweep), the
+> `billing-v82` ledger family (the CY2026 CMS cost-sharing constants), the
+> `test/unit/billing-v82.test.js` boundary suite (consolidated one file,
+> mirroring the v79/v80/v81 precedent rather than four files as §4 lists), and
+> the four `docs/audits/v12/` logs. Catalog 356 → **360**. Fifth feature spec of
+> the [spec-v77](spec-v77.md) billing & coding program. [spec-v78](spec-v78.md)
 > computes what the *payer* pays; this spec computes what the *patient* owes —
 > Medicare Part A/B cost-share, coordination of benefits with a secondary payer,
 > the contractual write-off vs patient balance on any contracted claim, and the

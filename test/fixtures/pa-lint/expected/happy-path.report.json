@@ -10483,6 +10483,27 @@
           "url": "https://www.cms.gov/regulations-and-guidance/guidance/manuals/downloads/clm104c12.pdf",
           "ruleFamily": "billing-v81",
           "lastVerified": "2026-06-15"
+        },
+        {
+          "id": "billing-medicare-cost-share",
+          "label": "The CMS CY2026 Medicare cost-sharing amounts (announced 2025-11-14) backing medicare-cost-share: Part A inpatient deductible $1,736/benefit period, days 61-90 coinsurance $434/day, lifetime-reserve $868/day, SNF days 21-100 $217/day; Part B annual deductible $283 then 20% of the approved amount. SSA Title XVIII; CMS annual cost-sharing notice. Overridable per call for a prior year.",
+          "url": "https://www.cms.gov/newsroom/fact-sheets/2026-medicare-parts-b-premiums-deductibles",
+          "ruleFamily": "billing-v82",
+          "lastVerified": "2026-06-15"
+        },
+        {
+          "id": "billing-cob-msp-methods",
+          "label": "The coordination-of-benefits methods (lesser-of, come-out-whole / benefits-less-paid, non-duplication) and the Medicare Secondary Payer calculation backing cob-calc. 42 CFR Part 411; CMS Pub. 100-05 (Medicare Secondary Payer Manual).",
+          "url": "https://www.cms.gov/medicare/coordination-benefits-recovery",
+          "ruleFamily": "billing-v82",
+          "lastVerified": "2026-06-15"
+        },
+        {
+          "id": "billing-nsa-qpa-cost-share",
+          "label": "The No Surprises Act QPA-based patient cost-share rule (protected emergency / ancillary-at-in-network-facility services are cost-shared as if in-network off the Qualifying Payment Amount; balance billing prohibited) backing nsa-cost-share. PHS Act §2799A-1/§2799A-2; 45 CFR Part 149.",
+          "url": "https://www.cms.gov/nosurprises",
+          "ruleFamily": "billing-v82",
+          "lastVerified": "2026-06-15"
         }
       ],
       "evaluated": null

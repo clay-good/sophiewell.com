@@ -5,7 +5,7 @@
 <h1 align="center">sophiewell.com</h1>
 
 <p align="center">
-  <strong>356 deterministic healthcare calculators tuned to the nurse on shift.</strong><br>
+  <strong>360 deterministic healthcare calculators tuned to the nurse on shift.</strong><br>
   Free forever. No servers, no accounts, no telemetry, no AI, no network call after first paint.
 </p>
 
@@ -36,7 +36,7 @@ output; "searchable lookup of static facts" does not qualify. See
 [docs/spec-v10.md](docs/spec-v10.md) for the audience and
 dependency-budget commitments and
 [docs/spec-v29.md](docs/spec-v29.md) for the nurse-first pivot
-and the v29 catalog ledger. At v81 close the catalog is 356
+and the v29 catalog ledger. At v81 close the catalog is 360
 deterministic tiles — every one of them computes from at least
 one user input. (v62 Part B closed the bedside expansion at 328;
 spec-v63 adds the ops-side counterpart — a shared regulatory-deadline
@@ -169,7 +169,7 @@ production security headers. Any static file server will also work.
 ## How it works and how to use it
 
 Since the spec-v29 nurse-first prune the catalog has grown one
-reviewable spec at a time to **356** deterministic calculators
+reviewable spec at a time to **360** deterministic calculators
 (the full per-version history is in [CHANGELOG.md](CHANGELOG.md)
 and `docs/spec-v*.md`; the most recent bedside additions are
 summarized in the cheat sheets below). They organize across the
@@ -840,10 +840,9 @@ carry a `docs/audits/v12/` audit log — sixteen Group B audit logs in all. One
 implementation note (recorded in the [spec-v80](docs/spec-v80.md) status):
 `prolonged-services` ships the **physician** add-ons; the clinical-staff
 99415/99416 path is deferred rather than shipped with an unverifiable threshold.
-The remaining program specs ([v82](docs/spec-v82.md) patient responsibility,
-[v83](docs/spec-v83.md) claim integrity & facility payment) remain proposed and
-land one reviewable spec at a time (the full program adds 10 more, to a 366 end
-state).
+The last program spec ([v83](docs/spec-v83.md) claim integrity & facility
+payment) remains proposed and lands one reviewable spec at a time (the full
+program ends at a 366 state).
 
 **[spec-v81](docs/spec-v81.md) ships the program's fourth feature: drug & infusion
 billing** ([lib/billing-v81.js](lib/billing-v81.js)), three engines for the place
@@ -886,6 +885,52 @@ ledger-tracked under ruleFamily `billing-v81`, and all three tiles carry a
 compose with the existing `ndc-convert` (a digit-format converter, a different job)
 and `mme-factors` without shadowing them; all are retained and cross-linked.
 
+**[spec-v82](docs/spec-v82.md) ships the program's fifth feature: patient
+responsibility & coordination of benefits** ([lib/billing-v82.js](lib/billing-v82.js)),
+four engines that compute what the *patient* owes (spec-v78 computes what the *payer*
+pays). These are the numbers on the statement the patient actually reads — pure
+arithmetic billing offices routinely get wrong. They land in **Group C "Patient Bill
+& Insurance Tools"** beside the appeal/deadline generators. Catalog **356 → 360**.
+Money is integer cents end-to-end; the protection/network gate is **hard**, not the
+patient-favorable default.
+
+```
+  medicare-cost-share        cob-calc                       allowed-amount             nsa-cost-share
+  ───────────────────        ────────                       ──────────────             ──────────────
+  Part B: deductible then    secondary payment + patient    charge − allowed =         protected service →
+  20% of the allowed.        residual under ONE named       contractual WRITE-OFF;     cost-share capped at
+  Part A: $1,736 ded +       method: lesser-of /            patient owes cost-share    the in-network amount
+  $434/day (61-90) +         come-out-whole / non-          on the ALLOWED, not the    off the QPA; balance
+  $868/day (LRD).            duplication / MSP — never      charge. In-network →       billing PROHIBITED.
+  SNF: $217/day (21-100).    silently picked.               balance bill PROHIBITED.   Non-protected → refused.
+```
+
+Worked anchors (each reproduced to the letter by the example-correctness e2e):
+`medicare-cost-share` Part B $500 approved → **$283 deductible + 20% of $217 ($43.40)
+= $326.40**, Medicare pays **$173.60**; `cob-calc` lesser-of (primary left a $120
+balance, secondary would pay $400) → secondary pays **$120**, patient residual **$0**;
+`allowed-amount` charge $1,000 / allowed $600 in-network → **$400 write-off**, patient
+**$200**, payer **$400** (balance billing the gap prohibited); `nsa-cost-share`
+protected emergency, QPA $800, 20% → patient **$160**, plan **$640**, **$200**
+prohibited balance bill.
+
+Patient-bill cheat sheet (what the tile turns the claim into):
+
+| Tile | Input | Output |
+|---|---|---|
+| `medicare-cost-share` | Part A/B/SNF + the dated CMS amounts | deductible + coinsurance the **patient** owes, before Medigap |
+| `cob-calc` | primary allowed/paid · secondary allowed/would-pay · method | secondary payment + **patient residual** under the named method |
+| `allowed-amount` | charge · allowed · benefit · in-network? | **write-off** + patient responsibility + payer pay · balance-bill flag |
+| `nsa-cost-share` | service category · QPA · benefit | capped cost-share + **prohibited balance bill**, or a hard refusal |
+
+`lib/billing-v82.js` joins the fuzz harness (zero non-finite leaks), shares the
+integer-cents `dollarsToCents` with `lib/billing-v78.js`, and its dated CY2026 CMS
+cost-sharing constants (the Part A/B deductibles, the day-banded and SNF coinsurance,
+the 20% Part B share) are ledger-tracked under ruleFamily `billing-v82`. All four
+tiles carry a `docs/audits/v12/` audit log. The deductible-before-coinsurance ordering
+is encoded once and tested at the partial-deductible boundary — the case practices
+miscompute.
+
 ## System design and architecture overview
 
 The application is one HTML file, one CSS file, one JavaScript module set,
@@ -910,7 +955,7 @@ long version, see [docs/architecture.md](docs/architecture.md).
  │  manifests (data/)            │  static │        ▼                     ▼             │
  │        │  scripts/build       │  files  │   lazy-load data shard   pure compute      │
  │        ▼                      │         │   (verified vs manifest)  (lib/*.js)       │
- │  dist/  (356 tool pages,      │         │        │                     │             │
+ │  dist/  (360 tool pages,      │         │        │                     │             │
  │  OG cards, sitemap, SBOM)     │         │        ▼                     ▼             │
  └───────────────────────────────┘         │   service worker cache    result + cite   │
                                             │   (keyed to build hash)                    │
@@ -930,7 +975,7 @@ session, and nothing to log.
 index.html          single-page shell (hero-search combobox + static browse-by-category nav, tile mount)
 styles.css          one stylesheet (responsive; no horizontal scroll — enforced catalog-wide at 320px in CI)
 app.js              router, hero-search wiring, view wiring, the UTILITIES catalog
-                    (356 tiles — the single source of truth; zero runtime deps)
+                    (360 tiles — the single source of truth; zero runtime deps)
 sw.js               service worker — precache shell, cache shards by build hash
 theme.js            light/dark theme toggle (writes only sw-theme, allowlisted)
 lib/input-persist.js opt-in "remember my inputs" (off by default; numbers only)
@@ -948,12 +993,12 @@ docs/               specs (spec-v4 … spec-v76) + per-tile v11 audit logs +
                     citation-staleness ledger +
                     architecture / threat-model / …
 test/               unit/ (node:test) · integration/ (Playwright) · fixtures/
-dist/               build output (356 tool pages, OG cards, sitemap, SBOM)
+dist/               build output (360 tool pages, OG cards, sitemap, SBOM)
 ```
 
-### Discovery: how a query finds the right tool among 356
+### Discovery: how a query finds the right tool among 360
 
-With 356 tiles, search quality *is* the product — a tool you cannot find does
+With 360 tiles, search quality *is* the product — a tool you cannot find does
 not exist. Discovery is deterministic and offline (no fuzzy-match service, no
 embedding model, no AI). The home `#hero-search` combobox builds its dropdown
 from two complementary rankers, both pure functions of the typed query:
@@ -1026,10 +1071,10 @@ A login-less, AI-free calculator earns trust only if the nurse can see, on the
 tile, exactly which published source produced the number — and tell whether that
 source is current. spec-v54 defined the invariants; spec-v60 built the machinery
 (the gate, the ledger, and the `citationAccessed` convention) and extended it
-across the full 356-tile catalog, pinning the last three unpinned "current
+across the full 360-tile catalog, pinning the last three unpinned "current
 edition" phrases and re-verifying every guideline tile against its latest known
 edition. Three invariants make that auditable, each enforced by the
-`check-citations.mjs` lint gate (in the `npm run lint` chain) over all 356 tiles:
+`check-citations.mjs` lint gate (in the `npm run lint` chain) over all 360 tiles:
 
 | Invariant | Rule | Enforcement |
 |---|---|---|
@@ -1090,7 +1135,7 @@ META.gbs.derivation = {
   ],
   bands: [ /* total → interpretation */ ],
   population: '…', units: { /* one entry per inputKey */ }, validity: '…',
-  source: 'Blatchford O, et al. Lancet. 2000;356:1318-1321.', // verbatim citation
+  source: 'Blatchford O, et al. Lancet. 2000;360:1318-1321.', // verbatim citation
 };
 ```
 
@@ -1486,7 +1531,7 @@ rules, not soft preferences.
 | `npm run build`          | Copy static files into `dist/` for deployment                     |
 | `npm test`               | Run the full test suite (unit, a11y, grep, data integrity)        |
 | `npm run test:unit`      | Run Node's built-in unit tests (3,469 tests)                      |
-| `npm run test:e2e`       | Build `dist/`, then run Playwright integration tests against real browsers — incl. a full-catalog 320px no-horizontal-scroll sweep over both the SPA routes and the 356 pre-rendered static tool pages, the hub/topic/commitments pages, and the citation-wrap pin |
+| `npm run test:e2e`       | Build `dist/`, then run Playwright integration tests against real browsers — incl. a full-catalog 320px no-horizontal-scroll sweep over both the SPA routes and the 360 pre-rendered static tool pages, the hub/topic/commitments pages, and the citation-wrap pin |
 | `npm run test:a11y`      | Run accessibility checks on every utility view                    |
 | `npm run lint`           | ESLint + the CI gate chain: grep-check, output-safety, citation-integrity, catalog-truth, commitments, PA staleness, PA audit |
 | `npm run data:refresh`   | Re-fetch and re-shard every public dataset                        |
@@ -1570,7 +1615,7 @@ build, integrity-verified data shards) are documented in
 - [docs/spec-v11.md](docs/spec-v11.md) — correctness-floor spec:
   per-tile audit protocol, specialty-named groups, optional
   source-quoted `interpretation` field. Audit coverage is **complete
-  — 356/356 tiles** carry a committed per-tile audit log
+  — 360/360 tiles** carry a committed per-tile audit log
   (`docs/audits/v11/<id>.md` for the pre-v78 catalog;
   `docs/audits/v12/<id>.md` for the sixteen spec-v78/v79/v80 Group B tiles)
   (`node scripts/audit-coverage.mjs`)
