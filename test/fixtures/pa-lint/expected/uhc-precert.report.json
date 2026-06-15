@@ -10385,6 +10385,27 @@
           "url": "https://www.cms.gov/nosurprises",
           "ruleFamily": "billing-v82",
           "lastVerified": "2026-06-15"
+        },
+        {
+          "id": "billing-ipps-base-rates",
+          "label": "The IPPS operating and capital standardized base rates (wage-index adjusted) that, times the MS-DRG relative weight, give the base DRG payment backing drg-payment, before outlier/IME/DSH add-ons. The relative-weight table is the bundled data/drg corpus; the base rates are entered/dated constants. 42 CFR Part 412; CMS IPPS Final Rule.",
+          "url": "https://www.cms.gov/medicare/payment/prospective-payment-systems/acute-inpatient-pps",
+          "ruleFamily": "billing-v83",
+          "lastVerified": "2026-06-15"
+        },
+        {
+          "id": "billing-opps-conversion-factor",
+          "label": "The OPPS conversion factor (wage adjusted) that, times the APC relative weight, gives the APC payment backing apc-payment, plus the status-indicator packaging set and the multiple-procedure discount. The relative-weight/status table is the bundled data/apc corpus; the conversion factor is an entered/dated constant. 42 CFR Part 419; CMS OPPS Final Rule.",
+          "url": "https://www.cms.gov/medicare/payment/prospective-payment-systems/hospital-outpatient",
+          "ruleFamily": "billing-v83",
+          "lastVerified": "2026-06-15"
+        },
+        {
+          "id": "billing-mbi-grammar",
+          "label": "The CMS Medicare Beneficiary Identifier (MBI) 11-character position grammar (numeric / alphabetic / alphanumeric by position) and the excluded-letter set S, L, O, I, B, Z backing mbi-validate. Validates format only, not active entitlement. CMS new Medicare card specification.",
+          "url": "https://www.cms.gov/medicare/new-medicare-card",
+          "ruleFamily": "billing-v83",
+          "lastVerified": "2026-06-15"
         }
       ],
       "evaluated": null

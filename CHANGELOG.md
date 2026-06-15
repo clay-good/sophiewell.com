@@ -6,6 +6,52 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v83 — claim integrity & facility payment: validate the identifiers, balance the remittance, price the institutional claim; +6 tiles, catalog 360 -> 366; spec-v77 program complete, 337 -> 366, +29)
+
+Sixth and **final** feature spec of the [spec-v77](docs/spec-v77.md) billing &
+coding program. It closes two gaps at once — **claim integrity** (the validators
+that catch a bad identifier or an out-of-balance remittance *before* the
+clearinghouse rejects it) and **facility payment** (the UB-04 institutional side
+the professional [spec-v78](docs/spec-v78.md) engine does not compute). Six
+deterministic, CMS/X12-cited engines land in **Group B "Billing &
+Reimbursement"** ([views/group-b.js](views/group-b.js),
+[lib/billing-v83.js](lib/billing-v83.js)). See [docs/spec-v83.md](docs/spec-v83.md).
+
+- `npi-validate` — **NPI Luhn check-digit** validate / generate. Recomputes the
+  ISO/IEC 7812 check digit over the `80840` issuer prefix and shows it, so a
+  transposition is *visible*, not just "invalid"; a 9-digit base gets its 10th
+  digit generated. Format/check-digit only — not an NPPES enrollment check.
+- `mbi-validate` — **Medicare Beneficiary Identifier** position-grammar check.
+  Names the first offending position and rule (e.g. "position 2 must be
+  alphabetic" / "contains the excluded letter S") against the CMS 11-character
+  grammar and the excluded set S, L, O, I, B, Z. Format only — not entitlement.
+- `icd10-validate` — **ICD-10-CM structural & specificity** checker. Validates
+  the category/site/laterality grammar and the placeholder X, and flags the
+  "will deny for lack of specificity" case when a required 7th character is
+  missing. Structure/specificity only — not the clinically correct diagnosis.
+- `era-balance` — **835 / EOB remittance balancing**. Proves `billed − paid −
+  Σ(CAS adjustments CO/PR/OA/PI) = 0` to the cent, reports the exact residual
+  when it doesn't, and returns the patient responsibility (Σ PR) to post. The
+  pre-posting check that stops an unbalanced remittance corrupting the ledger.
+- `drg-payment` — **IPPS DRG payment** estimate = relative weight × the
+  wage-index-adjusted base rate (operating + capital), with the per-diem
+  reduction for a post-acute transfer. Reads the bundled `data/drg` weights;
+  takes rates as inputs. Estimates the operating model — outlier/IME/DSH need the
+  hospital's own cost-report factors.
+- `apc-payment` — **OPPS APC payment** estimate = relative weight × the OPPS
+  conversion factor, wage adjusted, with status-indicator packaging (status N
+  pays $0) and the multiple-procedure discount on lower-weighted status-T
+  procedures. Reads the bundled `data/apc` weights; takes the CF as an input.
+
+All money is integer cents; the validators verify **format/structure only** and
+say so; the facility pricers read the bundled relative-weight corpora but take
+every dated rate as an input so they price any DRG/APC or hospital off-bundle
+(doctrine clause 2). The IPPS base rates, the OPPS conversion factor, and the MBI
+grammar/excluded-letter set get `pa-staleness-ledger.json` rows (ruleFamily
+`billing-v83`). Each tile ships a worked example, a [spec-v11](docs/spec-v11.md)
+audit log, and passes the [spec-v29](docs/spec-v29.md) §3 one-line test. With
+v83 the spec-v77 billing & coding program is **complete: 337 → 366 (+29)**.
+
 ### Added (spec-v82 — patient responsibility & coordination of benefits: what the patient actually owes; +4 tiles, catalog 356 -> 360)
 
 Fifth feature spec of the [spec-v77](docs/spec-v77.md) billing & coding program.

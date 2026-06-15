@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `d2683e10b6562a0e`
-Generated: 2026-06-15T19:32:01.046Z
+Build ID: `bd465f15e2ad0ccb`
+Generated: 2026-06-15T23:04:48.907Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=20.18.1 <21, npm >=10.0.0
@@ -24,13 +24,13 @@ downloads is committed in this repository and is hashed below.
 
 | Path | Bytes | SHA-256 |
 |---|---:|---|
-| `index.html` | 37382 | `c16010126d356dcad74e8bdb6771865062c671798850b5b9d251c4e922276883` |
+| `index.html` | 37696 | `40c816133dfbe5760ee4b2163c9917c9bf547cf502b65869a2b73fdd038b6323` |
 | `styles.css` | 42819 | `bea421c79d390a364eb571c3a9599cdf28264128d4ac02d7abb00f31000c7cda` |
-| `app.js` | 105286 | `34abe4ef8520fba46965636ff56ef8b59d506c76309e03b1b1feba72c1ae5822` |
+| `app.js` | 106609 | `7fde40946bb8aa8be7b28f424a0f37185739d599b3143f474c062caff9dd7eb9` |
 | `sw.js` | 4236 | `b7de06f3861a5a51436efd226d2dbbebcae2b3fdea0b4592f3c439ae1dc186bd` |
 | `site.webmanifest` | 709 | `0e0de4da60590a12e8b27a0ae2a2f5ffdb6500b7d2b78f93631ec2f64ed3d5ce` |
 | `robots.txt` | 127 | `38fbf9c1854e72abb20e01e81dd5a31d4ea96f154c12d5db1ec3af05524dd1a1` |
-| `sitemap.xml` | 56484 | `8250368f2ea12f72ae6b0dc33d5bb27e1c780580d2f115053e0428e16b7a0c43` |
+| `sitemap.xml` | 57395 | `a65f600453962e9d0d235337882225304a065c3ec4c75f9ddd57d6b36c8c2c65` |
 | `_headers` | 1316 | `2f39986457d2feff7e73e491a7d09ee871e8f2f4cc2bc437f86bd86a42554ec6` |
 | `logo.png` | 63440 | `11afaf1b0d3ca68393d202e4810bf766b5b6d591b4e3ec52f41d3cacaa4616ec` |
 | `favicon.ico` | 7411 | `407fde0ca2788409e87e11f596fa02e6a0b121817fcea7fd995beec1801e287b` |
@@ -47,6 +47,7 @@ downloads is committed in this repository and is hashed below.
 | `lib/billing-v80.js` | 22076 | `85885aeab655b38f4ecaf3b549711fb298c074e1366ba65e9a82d02fdd4e9c11` |
 | `lib/billing-v81.js` | 16760 | `a6fab93c9220fdd227e21f3dd6c5f624f246ce3ea0741e6dab46a906ae759c05` |
 | `lib/billing-v82.js` | 20705 | `886399d32bb333435752f44b11daa4a34c6fcc46862658975db30b3af55fda92` |
+| `lib/billing-v83.js` | 20694 | `5eabcbce52f58f03f426b5c4fdb925a23fc9f7f5f11faa7e591b6d3d376d00f2` |
 | `lib/bounds.js` | 6360 | `2417098c7e9bd78ba92156465958ea89ef0a4dfac937621ae6141d4607fbf468` |
 | `lib/clinical-v4.js` | 13144 | `a7102763eb24aa82afb9566ee81779fc9433ff2b36d17d70eeed0ae12e7cdd4f` |
 | `lib/clinical-v5.js` | 25042 | `1da466fb812401a08c4a1419f8b5eb579943d80e3626c00749a1b3bc87ac57cc` |
@@ -70,7 +71,7 @@ downloads is committed in this repository and is hashed below.
 | `lib/live.js` | 1138 | `304978d3c170b6eb06cade7702e5f99d868e9b3e1f5651aa9a28da15e62a6a9c` |
 | `lib/medication-v4.js` | 18192 | `467f9576c50da696cc56094eb022d0a5ed1e88de0c7618448554ede8067270b0` |
 | `lib/medication-v5.js` | 18863 | `ce81d9f8954abbd412892c13af9936f992239164f26fd2b999eaea7902787ab7` |
-| `lib/meta.js` | 679791 | `66407176e08b4e7fd1ff8a4cd973bef8e1e241f631ec508c44f26fc045b2c888` |
+| `lib/meta.js` | 684316 | `3550ffcb4e48471182e5a6d58f0238432eb9378dbac9352f9046cf5c71cc8445` |
 | `lib/num.js` | 2476 | `93934466539979571db7a6251b68b42acbc4a91101a988d72e3d2c3f7fb153bf` |
 | `lib/ops-v63.js` | 7082 | `9c07767f3517da717261f99d5edddc7d11e20f79692b53bcfc6c5eac3f8bd7ce` |
 | `lib/pa/classify.js` | 3432 | `a7958e40890ad63ebf68ce5a0107fe7ab5a5b0c9e877e2669e8f44ecfb7f34ca` |
@@ -85,7 +86,7 @@ downloads is committed in this repository and is hashed below.
 | `lib/pa/report.js` | 9684 | `7f0d42557ada83b28106a053d983a54f6b0a4e10465ead58eda5f6786e2d0451` |
 | `lib/pa/rule-sources.js` | 8399 | `6b12a7f0cca1e5c50dc023dc058eb8511c0573a935d9bb109439343bddcfd021` |
 | `lib/pa/rules.js` | 1598371 | `f2fad9d05f907e97f10093a47b29cde71b6f23af5a65334efeeb362741d6c162` |
-| `lib/pa/staleness-ledger.js` | 37679 | `66321df11c413dc0cd3db40bb38a566f55fcb70700da556b6f7b0eec5ab2e60d` |
+| `lib/pa/staleness-ledger.js` | 39392 | `2828590419b53ab3be5c64a9d5884c51f6e47d67cc1feb3c8d243444ed200ff9` |
 | `lib/pa/staleness.js` | 9310 | `99249cde34d35bb57ea644fced966019d1373b34f792f1ea9b42b586b94454df` |
 | `lib/print.js` | 4179 | `84053c26cd3859b4156ddf0cc33bc546656c7ce4b01651de786d1dced7cf4d3c` |
 | `lib/prompt.js` | 6964 | `b6ff725099ef39fa16557978afb491542d951a223257fae72446982e480ce302` |
@@ -103,7 +104,7 @@ downloads is committed in this repository and is hashed below.
 | `lib/unit-convert.js` | 2520 | `0a191eec26a96b8b8dc448ee9ebf59e7eba8bac036eccfd138da297b83082465` |
 | `lib/workflow-v4.js` | 7999 | `927a8a476e2c1b124c9e51040e549001b580b0baf2a4409ce463a0681fd08a72` |
 | `views/group-a.js` | 577 | `eed37c656d1fa00c097a07f07db4b1b6ac7a0a74bafc210978265a1d90856bd7` |
-| `views/group-b.js` | 57414 | `6e49fb02cb8489f45537600ed9712ade460746744a07aae9dfc30147574804b5` |
+| `views/group-b.js` | 73728 | `1b48361cb5082396e399accbae4fb477760d67a46334091b49b985d490bc8662` |
 | `views/group-c.js` | 24109 | `740cf6e20ec90c4d71f1a1b06abef48d14b859e19bed7a365b607ac31a4b2e2e` |
 | `views/group-e.js` | 38675 | `55774a9d04f49a1f2485291ac0432b964180fa477616e0b7a93602b316eeb47d` |
 | `views/group-f.js` | 45852 | `2fccf536b26c6a95db431dd28bd6d05ae582d3fcc746d463e9cc40837a4578e6` |

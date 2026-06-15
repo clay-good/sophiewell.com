@@ -15,11 +15,12 @@
 
 import { el, clear } from '../lib/dom.js';
 import { fmt } from '../lib/num.js';
-import { loadAllShards, loadFile } from '../lib/data.js';
+import { loadAllShards, loadFile, loadShard } from '../lib/data.js';
 import * as Bill from '../lib/billing-v78.js';
 import * as Edit from '../lib/billing-v79.js';
 import * as Em from '../lib/billing-v80.js';
 import * as Drug from '../lib/billing-v81.js';
+import * as Integ from '../lib/billing-v83.js';
 
 // ---- shared local helpers (mirrors views/group-v63.js) ----------------------
 function field(label, id, opts = {}) {
@@ -842,6 +843,226 @@ export const renderers = {
       }
       o.appendChild(ul);
       o.appendChild(postureNote('AMA CPT 96360-96379; CMS Pub. 100-04 Ch. 12. Exactly one initial code per IV site/encounter; the rest are sequential/concurrent/additional-hour/additional-push add-ons.'));
+    }));
+  },
+
+  // ===== spec-v83: claim integrity & facility payment ======================
+  // The four integrity validators catch a bad identifier / out-of-balance
+  // remittance before the clearinghouse rejects it; the two facility pricers
+  // compute the UB-04 (DRG/APC) side the v78 professional engine does not.
+  // Validators verify FORMAT/STRUCTURE only; pricers read bundled weights but
+  // take rates as inputs (doctrine clause 2).
+
+  // ----- 2.1 npi-validate ---------------------------------------------------
+  'npi-validate'(root) {
+    root.appendChild(el('p', { class: 'notice', text: 'Validates a 10-digit NPI by recomputing its Luhn (ISO/IEC 7812) check digit over the 80840 issuer prefix, or generates the 10th digit from a 9-digit base. A wrong check digit means a typo or transposition. This verifies the format/check digit only -- not that the NPI is enrolled in NPPES.' }));
+    root.appendChild(field('NPI (10 digits) or 9-digit base to generate', 'npi-in', { placeholder: '1234567893', inputmode: 'numeric' }));
+    const o = out(); root.appendChild(o);
+    wire(['npi-in'], () => safe(o, () => {
+      if (rawEmpty('npi-in')) { o.appendChild(el('p', { class: 'muted', text: 'Enter a 10-digit NPI or a 9-digit base.' })); return; }
+      const r = Integ.npiValidate({ npi: str('npi-in') });
+      if (r.mode === 'generate') {
+        o.appendChild(el('h2', { text: `NPI ${r.npi} (check digit ${r.checkDigit})` }));
+        verdictLine(o, r.note);
+      } else {
+        o.appendChild(el('h2', { text: r.valid ? `NPI ${r.npi} is valid (check digit ${r.checkDigit})` : `NPI ${r.npi} is INVALID` }));
+        verdictLine(o, r.note, r.valid ? null : 'flag');
+        o.appendChild(derivation([
+          ['NPI', r.npi],
+          ['Check digit present', String(r.checkDigit)],
+          ['Recomputed Luhn check digit', String(r.expectedCheckDigit)],
+        ]));
+      }
+      o.appendChild(postureNote('45 CFR 162.406; NPI check digit per the Luhn algorithm over the 80840 prefix. Format/check-digit validation only -- enrollment lives in NPPES.'));
+    }));
+  },
+
+  // ----- 2.2 mbi-validate ---------------------------------------------------
+  'mbi-validate'(root) {
+    root.appendChild(el('p', { class: 'notice', text: 'Checks a Medicare Beneficiary Identifier against the CMS 11-character position grammar (which positions are numeric, alphabetic, or alphanumeric) and the excluded letters S, L, O, I, B, Z. Names the first offending position and rule so you can fix the character. Validates format only -- not active entitlement.' }));
+    root.appendChild(field('MBI (11 characters)', 'mbi-in', { placeholder: '1EG4-TE5-MK73' }));
+    const o = out(); root.appendChild(o);
+    wire(['mbi-in'], () => safe(o, () => {
+      if (rawEmpty('mbi-in')) { o.appendChild(el('p', { class: 'muted', text: 'Enter an MBI.' })); return; }
+      const r = Integ.mbiValidate({ mbi: str('mbi-in') });
+      o.appendChild(el('h2', { text: r.valid ? `${r.mbi}: valid (all 11 positions pass)` : `${r.mbi}: INVALID` }));
+      verdictLine(o, r.note, r.valid ? null : 'flag');
+      if (!r.valid && r.firstError && r.firstError.position) {
+        o.appendChild(derivation([
+          ['First offending position', String(r.firstError.position)],
+          ['Character', r.firstError.got || '--'],
+          ['Rule', r.firstError.rule],
+        ]));
+      }
+      o.appendChild(postureNote('CMS Medicare Beneficiary Identifier format specification (the new Medicare card). Excluded letters: S, L, O, I, B, Z. Format only -- not an entitlement check.'));
+    }));
+  },
+
+  // ----- 2.3 icd10-validate -------------------------------------------------
+  'icd10-validate'(root) {
+    root.appendChild(el('p', { class: 'notice', text: 'Checks an ICD-10-CM code against the code-set structural grammar (category / etiology / site / laterality, the placeholder X) and the required 7th character for the chapters that demand it. Flags the "will deny for lack of specificity" case before submission. Validates structure/specificity only -- not that the code is the clinically correct diagnosis.' }));
+    root.appendChild(field('ICD-10-CM code', 'icd-in', { placeholder: 'M54.5' }));
+    root.appendChild(checkField('A 7th character is required for this code (injury, OB, certain chapters)', 'icd-7th'));
+    const o = out(); root.appendChild(o);
+    let existsByLetter = null; // best-effort existence check against bundled shards
+    wire(['icd-in', 'icd-7th'], () => safe(o, () => {
+      if (rawEmpty('icd-in')) { o.appendChild(el('p', { class: 'muted', text: 'Enter an ICD-10-CM code.' })); return; }
+      const r = Integ.icd10Validate({ code: str('icd-in'), requires7th: checked('icd-7th') });
+      o.appendChild(el('h2', { text: r.valid ? `${r.code}: valid structure` : `${r.code}: ${r.structurallyValid ? 'incomplete' : 'invalid structure'}` }));
+      verdictLine(o, r.note, r.valid ? null : 'flag');
+      o.appendChild(derivation([
+        ['Code', r.code],
+        ['Structurally valid', r.structurallyValid ? 'yes' : 'no'],
+        ['7th character required', r.requires7th ? 'yes' : 'no'],
+        ['7th character present', r.has7th ? 'yes' : 'no'],
+      ]));
+      // Best-effort: confirm the code exists in the bundled ICD-10-CM shards.
+      if (r.structurallyValid && existsByLetter) {
+        const bare = r.code.replace('.', '').toUpperCase();
+        const hit = existsByLetter.has(bare);
+        o.appendChild(el('p', { class: 'muted', text: hit ? `Found in the bundled ICD-10-CM sample set.` : `Not in the bundled ICD-10-CM sample set (the sample set is a small offline seed, not the full code list) -- the structural verdict above stands regardless.` }));
+      }
+      o.appendChild(postureNote('ICD-10-CM Official Guidelines and the code-set conventions (CMS/CDC). Structure & specificity only -- it does not assert the code is the clinically correct diagnosis.'));
+    }));
+    // Load the shard for the entered code's first letter on demand for the
+    // existence note; degrades silently to structural-only on any failure.
+    const reloadShard = () => {
+      const letter = str('icd-in').trim().toUpperCase().charAt(0);
+      if (!/^[A-Z]$/.test(letter)) return;
+      loadShard('icd10cm', `${letter}.json`).then((rows) => {
+        if (!root.isConnected || !Array.isArray(rows)) return;
+        existsByLetter = new Set(rows.map((x) => String(x.code || '').replace('.', '').toUpperCase()));
+        const ev = () => { const n = document.getElementById('icd-in'); if (n) n.dispatchEvent(new Event('input', { bubbles: true })); };
+        ev();
+      }).catch(() => {});
+    };
+    document.getElementById('icd-in').addEventListener('change', reloadShard);
+    reloadShard();
+  },
+
+  // ----- 2.4 era-balance ----------------------------------------------------
+  'era-balance'(root) {
+    root.appendChild(el('p', { class: 'notice', text: 'Confirms an 835 / EOB balances before you post it: billed = paid + the sum of the CAS claim-adjustment amounts (CO contractual, PR patient responsibility, OA other, PI payer-initiated). Reports the exact out-of-balance amount and the patient responsibility (sum of PR) to bill. Integer cents, proven to the penny.' }));
+    root.appendChild(moneyField('Billed charge ($)', 'era-billed', '200.00'));
+    root.appendChild(moneyField('Paid amount ($)', 'era-paid', '120.00'));
+    root.appendChild(moneyField('CO -- contractual obligation ($)', 'era-co', '50.00'));
+    root.appendChild(moneyField('PR -- patient responsibility ($)', 'era-pr', '30.00'));
+    root.appendChild(moneyField('OA -- other adjustment ($)', 'era-oa', '0'));
+    root.appendChild(moneyField('PI -- payer-initiated ($)', 'era-pi', '0'));
+    const o = out(); root.appendChild(o);
+    wire(['era-billed', 'era-paid', 'era-co', 'era-pr', 'era-oa', 'era-pi'], () => safe(o, () => {
+      if (rawEmpty('era-billed') || rawEmpty('era-paid')) { o.appendChild(el('p', { class: 'muted', text: 'Enter at least the billed charge and the paid amount.' })); return; }
+      const r = Integ.eraBalance({
+        billedCents: Math.round(numv('era-billed') * 100),
+        paidCents: Math.round((numv('era-paid') || 0) * 100),
+        coCents: Math.round((numv('era-co') || 0) * 100),
+        prCents: Math.round((numv('era-pr') || 0) * 100),
+        oaCents: Math.round((numv('era-oa') || 0) * 100),
+        piCents: Math.round((numv('era-pi') || 0) * 100),
+      });
+      o.appendChild(el('h2', { text: r.balanced ? `Balances ($${fmt(0, { digits: 2 })} residual)` : `OUT OF BALANCE by ${usd(Math.abs(r.residualCents))}` }));
+      verdictLine(o, r.note, r.balanced ? null : 'flag');
+      o.appendChild(derivation([
+        ['Billed', usd(r.billedCents)],
+        ['Paid', usd(r.paidCents)],
+        ['Sum of adjustments (CO+PR+OA+PI)', usd(r.sumAdjCents)],
+        ['Residual (billed - paid - adjustments)', usd(r.residualCents)],
+        ['Patient responsibility (Sigma PR) to bill', usd(r.patientResponsibilityCents)],
+      ]));
+      o.appendChild(postureNote('ASC X12 835 balancing; CAS group codes CO/PR/OA/PI (CARC/RARC per CAQH CORE). Near-neighbor: allowed-amount projects the split from the contract; this reconciles the split the payer sent.'));
+    }));
+  },
+
+  // ----- 2.5 drg-payment ----------------------------------------------------
+  'drg-payment'(root) {
+    root.appendChild(el('p', { class: 'notice', text: 'Estimates the IPPS DRG payment = relative weight x the wage-index-adjusted hospital base rate (operating + capital), with the per-diem reduction for a post-acute transfer. Enter the MS-DRG to fill the bundled relative weight / GMLOS, or type them. Estimates the operating model; outlier/IME/DSH need the hospital\'s own cost-report factors.' }));
+    root.appendChild(field('MS-DRG (optional -- fills bundled weight / GMLOS)', 'drg-code', { placeholder: '470' }));
+    root.appendChild(moneyField('Relative weight', 'drg-weight', '1.5'));
+    root.appendChild(moneyField('Operating base rate ($)', 'drg-oper', '6000.00'));
+    root.appendChild(moneyField('Capital base rate ($)', 'drg-cap', '500.00'));
+    root.appendChild(moneyField('Wage index', 'drg-wage', '1.0'));
+    root.appendChild(checkField('Post-acute transfer (apply the per-diem reduction)', 'drg-transfer'));
+    root.appendChild(field('Length of stay (days, transfer only)', 'drg-los', { type: 'number', inputmode: 'numeric', placeholder: '2' }));
+    root.appendChild(moneyField('Geometric mean LOS (days, transfer only)', 'drg-gmlos', '5'));
+    root.appendChild(moneyField('Entered add-ons -- outlier / IME / DSH ($)', 'drg-addon', '0'));
+    const o = out(); root.appendChild(o);
+    const drgByCode = new Map();
+
+    function run() {
+      safe(o, () => {
+        if (!(numv('drg-weight') > 0)) { o.appendChild(el('p', { class: 'muted', text: 'Enter the relative weight (or an MS-DRG that fills it).' })); return; }
+        if (!(numv('drg-oper') > 0)) { o.appendChild(el('p', { class: 'muted', text: 'Enter the operating base rate.' })); return; }
+        const r = Integ.drgPayment({
+          relativeWeight: numv('drg-weight'),
+          operatingBaseCents: Math.round(numv('drg-oper') * 100),
+          capitalBaseCents: Math.round((numv('drg-cap') || 0) * 100),
+          wageIndex: numv('drg-wage') > 0 ? numv('drg-wage') : 1,
+          isTransfer: checked('drg-transfer'),
+          lengthOfStay: Math.round(numv('drg-los') || 0),
+          gmlos: numv('drg-gmlos') || 0,
+          addOnCents: Math.round((numv('drg-addon') || 0) * 100),
+        });
+        o.appendChild(el('h2', { text: `${r.isTransferPriced ? 'Transfer-adjusted' : 'Base'} DRG payment: ${usd(r.transferAdjustedCents)}` }));
+        verdictLine(o, r.note, r.isTransferPriced ? 'flag' : null);
+        o.appendChild(derivation([
+          ['Relative weight', String(r.relativeWeight)],
+          ['Wage-adjusted base (operating + capital)', usd(r.wageAdjustedBaseCents)],
+          ['Base DRG payment (weight x base)', usd(r.baseDrgCents)],
+          r.isTransferPriced ? ['Per-diem rate (base / GMLOS)', usd(r.perDiemCents)] : null,
+          r.isTransferPriced ? ['Transfer-adjusted payment', usd(r.transferAdjustedCents)] : null,
+          r.addOnCents > 0 ? ['Entered add-ons', usd(r.addOnCents)] : null,
+          ['Total estimated payment', usd(r.totalCents)],
+        ]));
+        o.appendChild(postureNote('42 CFR Part 412 (IPPS); relative weight from the bundled data/drg or entered. Estimates the operating model -- outlier/IME/DSH/new-tech need the hospital\'s cost-report factors. Near-neighbor: apc-payment is the outpatient counterpart.'));
+      });
+    }
+    wire(['drg-code', 'drg-weight', 'drg-oper', 'drg-cap', 'drg-wage', 'drg-transfer', 'drg-los', 'drg-gmlos', 'drg-addon'], run);
+    function fillFromCode() {
+      const row = drgByCode.get(str('drg-code').trim());
+      if (!row) return;
+      if (row.relativeWeight != null) document.getElementById('drg-weight').value = row.relativeWeight;
+      if (row.gmlos != null) document.getElementById('drg-gmlos').value = row.gmlos;
+      run();
+    }
+    document.getElementById('drg-code').addEventListener('input', fillFromCode);
+    loadFile('drg', 'drg.json').then((rows) => {
+      if (!root.isConnected || !Array.isArray(rows)) return;
+      for (const row of rows) if (row && row.drg) drgByCode.set(String(row.drg), row);
+    }).catch(() => {});
+  },
+
+  // ----- 2.6 apc-payment ----------------------------------------------------
+  'apc-payment'(root) {
+    root.appendChild(el('p', { class: 'notice', text: 'Estimates the OPPS APC payment = relative weight x the OPPS conversion factor, wage adjusted, with status-indicator packaging (status N lines pay $0, bundled into the primary) and the multiple-procedure discount (the lower-weighted significant procedures, status T, are reduced). One APC per line as "weight, status indicator". Estimates the base model; comprehensive-APC and pass-through nuances need the facility\'s factors.' }));
+    root.appendChild(textareaField('APC lines (one per line: weight, status indicator)', 'apc-list', '10, T\n4, T\n2, N'));
+    root.appendChild(el('p', { class: 'muted', text: 'Status indicators: T = significant procedure (discounted); J1 = comprehensive APC; S / V = separately payable, not discounted; N = packaged ($0).' }));
+    root.appendChild(moneyField('OPPS conversion factor ($ per relative-weight unit)', 'apc-cf', '87.00'));
+    root.appendChild(moneyField('Wage index', 'apc-wage', '1.0'));
+    root.appendChild(field('Multiple-procedure discount (%)', 'apc-disc', { type: 'number', inputmode: 'numeric', placeholder: '50', value: '50' }));
+    const o = out(); root.appendChild(o);
+    wire(['apc-list', 'apc-cf', 'apc-wage', 'apc-disc'], () => safe(o, () => {
+      const raw = str('apc-list').split('\n').map((s) => s.trim()).filter(Boolean);
+      if (!raw.length) { o.appendChild(el('p', { class: 'muted', text: 'Enter one APC per line, e.g. "10, T".' })); return; }
+      if (!(numv('apc-cf') > 0)) { o.appendChild(el('p', { class: 'muted', text: 'Enter the OPPS conversion factor.' })); return; }
+      const lines = raw.map((line) => {
+        const parts = line.split(',').map((s) => s.trim());
+        return { weight: Number(parts[0]), statusIndicator: parts[1] || 'N' };
+      });
+      const r = Integ.apcPayment({
+        lines,
+        conversionFactorCents: Math.round(numv('apc-cf') * 100),
+        wageIndex: numv('apc-wage') > 0 ? numv('apc-wage') : 1,
+        discountPct: numv('apc-disc') >= 0 ? numv('apc-disc') : 50,
+      });
+      o.appendChild(el('h2', { text: `Total OPPS payment: ${usd(r.totalCents)}` }));
+      verdictLine(o, r.note);
+      const ul = el('ul');
+      for (const ln of r.lines) {
+        const status = ln.packaged ? 'packaged ($0)' : (ln.discounted ? `discounted to ${r.discountPct}%` : 'separately payable');
+        ul.appendChild(li(`Weight ${ln.weight}, status ${ln.statusIndicator}: ${usd(ln.payCents)} (${status})`, ln.packaged ? 'muted' : null));
+      }
+      o.appendChild(ul);
+      o.appendChild(postureNote('42 CFR Part 419 (OPPS); relative weight / status indicator from the bundled data/apc or entered. Near-neighbor: mppr is the professional multiple-procedure reduction; this is the OPPS one. rvu-payment prices the professional line.'));
     }));
   },
 };

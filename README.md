@@ -5,7 +5,7 @@
 <h1 align="center">sophiewell.com</h1>
 
 <p align="center">
-  <strong>360 deterministic healthcare calculators tuned to the nurse on shift.</strong><br>
+  <strong>366 deterministic healthcare calculators tuned to the nurse on shift.</strong><br>
   Free forever. No servers, no accounts, no telemetry, no AI, no network call after first paint.
 </p>
 
@@ -36,7 +36,7 @@ output; "searchable lookup of static facts" does not qualify. See
 [docs/spec-v10.md](docs/spec-v10.md) for the audience and
 dependency-budget commitments and
 [docs/spec-v29.md](docs/spec-v29.md) for the nurse-first pivot
-and the v29 catalog ledger. At v81 close the catalog is 360
+and the v29 catalog ledger. At v83 close the catalog is 366
 deterministic tiles — every one of them computes from at least
 one user input. (v62 Part B closed the bedside expansion at 328;
 spec-v63 adds the ops-side counterpart — a shared regulatory-deadline
@@ -169,7 +169,7 @@ production security headers. Any static file server will also work.
 ## How it works and how to use it
 
 Since the spec-v29 nurse-first prune the catalog has grown one
-reviewable spec at a time to **360** deterministic calculators
+reviewable spec at a time to **366** deterministic calculators
 (the full per-version history is in [CHANGELOG.md](CHANGELOG.md)
 and `docs/spec-v*.md`; the most recent bedside additions are
 summarized in the cheat sheets below). They organize across the
@@ -686,7 +686,7 @@ than rendering a negative duration, and a negative CPP (ICP > MAP) is surfaced
 with an explicit critical-low flag, never hidden. See
 [docs/spec-v65.md](docs/spec-v65.md).
 
-### Billing & reimbursement: what Medicare pays, whether the line survives, and how the visit codes (spec-v77 / spec-v78 / spec-v79 / spec-v80)
+### Billing & reimbursement: what Medicare pays, whether the line survives, how the visit codes, what the drug bills, what the patient owes, and whether the claim is clean (spec-v77 → spec-v83, program complete)
 
 The catalog has always been strong on the clinician at the bedside and competent
 on the operations clock (appeal/timely-filing/PA deadlines, the 2021 E/M
@@ -841,8 +841,7 @@ implementation note (recorded in the [spec-v80](docs/spec-v80.md) status):
 `prolonged-services` ships the **physician** add-ons; the clinical-staff
 99415/99416 path is deferred rather than shipped with an unverifiable threshold.
 The last program spec ([v83](docs/spec-v83.md) claim integrity & facility
-payment) remains proposed and lands one reviewable spec at a time (the full
-program ends at a 366 state).
+payment) has now shipped, closing the program at a 366 state (337 → 366, +29).
 
 **[spec-v81](docs/spec-v81.md) ships the program's fourth feature: drug & infusion
 billing** ([lib/billing-v81.js](lib/billing-v81.js)), three engines for the place
@@ -931,6 +930,61 @@ tiles carry a `docs/audits/v12/` audit log. The deductible-before-coinsurance or
 is encoded once and tested at the partial-deductible boundary — the case practices
 miscompute.
 
+**[spec-v83](docs/spec-v83.md) ships the program's sixth and final feature: claim
+integrity & facility payment** ([lib/billing-v83.js](lib/billing-v83.js)), six engines
+that close two gaps at once. Four **validators** catch a bad identifier or an
+out-of-balance remittance *before* the clearinghouse rejects it; two **facility
+pricers** compute the UB-04 institutional side (IPPS DRG, OPPS APC) the professional
+spec-v78 engine does not touch. Catalog **360 → 366** — and with it the spec-v77
+billing & coding program is **complete: 337 → 366 (+29)**. The validators verify
+**format/structure only** (never enrollment, entitlement, or clinical correctness) and
+say so on the tile; the pricers read the bundled `data/drg` / `data/apc` relative
+weights but take every dated rate as an input, so they price any DRG/APC off-bundle.
+
+```
+  npi-validate          mbi-validate         icd10-validate        era-balance
+  ────────────          ────────────         ──────────────        ───────────
+  Luhn (ISO 7812) over  11-char CMS position grammar, structure +     billed = paid +
+  80840 + the 9 digits; grammar; excluded   the required 7th       Σ(CO/PR/OA/PI);
+  recompute & SHOW the  letters S,L,O,I,B,Z; char; placeholder X.   residual to the
+  check digit, so a     names the FIRST      "denies for           cent; Σ PR = the
+  transposition shows.  offending position.  specificity" flag.    patient balance.
+
+  drg-payment (IPPS)                          apc-payment (OPPS)
+  ──────────────────                          ──────────────────
+  weight × wage-adjusted base (operating +    weight × conversion factor × wage;
+  capital); post-acute transfer → per-diem    status-indicator packaging (N → $0);
+  (first day doubled, capped at the full DRG).multiple-procedure discount on status-T.
+```
+
+Worked anchors (each reproduced to the letter by the example-correctness e2e):
+`npi-validate` **1234567893** → valid, recomputed Luhn check digit **3** (a transposed
+final digit is caught with the expected digit shown); `mbi-validate` **1EG4-TE5-MK73** →
+valid against all **11** positions; `icd10-validate` **M54.5** → valid structure (and
+`S52.5` flagged incomplete when a 7th character is required); `era-balance` billed
+**$200** − paid **$120** − CO **$50** − PR **$30** = **$0** residual, patient owes **$30**;
+`drg-payment` weight **1.5** × wage-adjusted base **$6,500** = **$9,750** (a 2-day
+transfer at GMLOS 5 → **$5,850**); `apc-payment` two status-T procedures at CF **$87**
+→ **$870** + **$174** (the second discounted **50%**), a packaged status-N line **$0**,
+total **$1,044**.
+
+Claim-integrity & facility cheat sheet (what the tile turns the claim into):
+
+| Tile | Input | Output |
+|---|---|---|
+| `npi-validate` | a 10-digit NPI, or a 9-digit base | valid/invalid + the **recomputed check digit**, or the generated 10th digit |
+| `mbi-validate` | an MBI string | valid/invalid + the **first offending position & rule** (incl. excluded letters) |
+| `icd10-validate` | an ICD-10-CM code (± 7th-char-required) | structural validity + the **missing-7th-character / specificity** flag |
+| `era-balance` | billed · paid · CO/PR/OA/PI | balances? + the exact **residual** + the **Σ PR** patient balance to post |
+| `drg-payment` | DRG weight · operating/capital base · wage · transfer | base DRG payment + the **per-diem transfer** reduction + add-ons |
+| `apc-payment` | APC lines (weight, status) · CF · wage · discount | per-line + total, with **packaging** and the **multiple-procedure discount** |
+
+`lib/billing-v83.js` joins the fuzz harness (zero non-finite leaks), all money is
+integer cents, and its dated constants (the IPPS operating/capital base rates, the OPPS
+conversion factor, the MBI grammar/excluded-letter set) are ledger-tracked under
+ruleFamily `billing-v83`. All six tiles carry a `docs/audits/v12/` audit log — the
+final entries in a complete Group B of twenty-five billing & reimbursement engines.
+
 ## System design and architecture overview
 
 The application is one HTML file, one CSS file, one JavaScript module set,
@@ -955,7 +1009,7 @@ long version, see [docs/architecture.md](docs/architecture.md).
  │  manifests (data/)            │  static │        ▼                     ▼             │
  │        │  scripts/build       │  files  │   lazy-load data shard   pure compute      │
  │        ▼                      │         │   (verified vs manifest)  (lib/*.js)       │
- │  dist/  (360 tool pages,      │         │        │                     │             │
+ │  dist/  (366 tool pages,      │         │        │                     │             │
  │  OG cards, sitemap, SBOM)     │         │        ▼                     ▼             │
  └───────────────────────────────┘         │   service worker cache    result + cite   │
                                             │   (keyed to build hash)                    │
@@ -975,7 +1029,7 @@ session, and nothing to log.
 index.html          single-page shell (hero-search combobox + static browse-by-category nav, tile mount)
 styles.css          one stylesheet (responsive; no horizontal scroll — enforced catalog-wide at 320px in CI)
 app.js              router, hero-search wiring, view wiring, the UTILITIES catalog
-                    (360 tiles — the single source of truth; zero runtime deps)
+                    (366 tiles — the single source of truth; zero runtime deps)
 sw.js               service worker — precache shell, cache shards by build hash
 theme.js            light/dark theme toggle (writes only sw-theme, allowlisted)
 lib/input-persist.js opt-in "remember my inputs" (off by default; numbers only)
@@ -993,12 +1047,12 @@ docs/               specs (spec-v4 … spec-v76) + per-tile v11 audit logs +
                     citation-staleness ledger +
                     architecture / threat-model / …
 test/               unit/ (node:test) · integration/ (Playwright) · fixtures/
-dist/               build output (360 tool pages, OG cards, sitemap, SBOM)
+dist/               build output (366 tool pages, OG cards, sitemap, SBOM)
 ```
 
-### Discovery: how a query finds the right tool among 360
+### Discovery: how a query finds the right tool among 366
 
-With 360 tiles, search quality *is* the product — a tool you cannot find does
+With 366 tiles, search quality *is* the product — a tool you cannot find does
 not exist. Discovery is deterministic and offline (no fuzzy-match service, no
 embedding model, no AI). The home `#hero-search` combobox builds its dropdown
 from two complementary rankers, both pure functions of the typed query:
@@ -1071,10 +1125,10 @@ A login-less, AI-free calculator earns trust only if the nurse can see, on the
 tile, exactly which published source produced the number — and tell whether that
 source is current. spec-v54 defined the invariants; spec-v60 built the machinery
 (the gate, the ledger, and the `citationAccessed` convention) and extended it
-across the full 360-tile catalog, pinning the last three unpinned "current
+across the full 366-tile catalog, pinning the last three unpinned "current
 edition" phrases and re-verifying every guideline tile against its latest known
 edition. Three invariants make that auditable, each enforced by the
-`check-citations.mjs` lint gate (in the `npm run lint` chain) over all 360 tiles:
+`check-citations.mjs` lint gate (in the `npm run lint` chain) over all 366 tiles:
 
 | Invariant | Rule | Enforcement |
 |---|---|---|
@@ -1531,7 +1585,7 @@ rules, not soft preferences.
 | `npm run build`          | Copy static files into `dist/` for deployment                     |
 | `npm test`               | Run the full test suite (unit, a11y, grep, data integrity)        |
 | `npm run test:unit`      | Run Node's built-in unit tests (3,469 tests)                      |
-| `npm run test:e2e`       | Build `dist/`, then run Playwright integration tests against real browsers — incl. a full-catalog 320px no-horizontal-scroll sweep over both the SPA routes and the 360 pre-rendered static tool pages, the hub/topic/commitments pages, and the citation-wrap pin |
+| `npm run test:e2e`       | Build `dist/`, then run Playwright integration tests against real browsers — incl. a full-catalog 320px no-horizontal-scroll sweep over both the SPA routes and the 366 pre-rendered static tool pages, the hub/topic/commitments pages, and the citation-wrap pin |
 | `npm run test:a11y`      | Run accessibility checks on every utility view                    |
 | `npm run lint`           | ESLint + the CI gate chain: grep-check, output-safety, citation-integrity, catalog-truth, commitments, PA staleness, PA audit |
 | `npm run data:refresh`   | Re-fetch and re-shard every public dataset                        |
@@ -1615,9 +1669,10 @@ build, integrity-verified data shards) are documented in
 - [docs/spec-v11.md](docs/spec-v11.md) — correctness-floor spec:
   per-tile audit protocol, specialty-named groups, optional
   source-quoted `interpretation` field. Audit coverage is **complete
-  — 360/360 tiles** carry a committed per-tile audit log
+  — 366/366 tiles** carry a committed per-tile audit log
   (`docs/audits/v11/<id>.md` for the pre-v78 catalog;
-  `docs/audits/v12/<id>.md` for the sixteen spec-v78/v79/v80 Group B tiles)
+  `docs/audits/v12/<id>.md` for the twenty-nine spec-v78–v83 billing &
+  coding program tiles)
   (`node scripts/audit-coverage.mjs`)
 - [docs/scope-mdcalc-parity.md](docs/scope-mdcalc-parity.md) —
   long-horizon scope: every actionable clinical calculator a

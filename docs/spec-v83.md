@@ -1,6 +1,15 @@
 # spec-v83.md — Claim integrity & facility payment: validate the identifiers, balance the remittance, price the institutional claim; +6 tiles
 
-> Status: **PROPOSED (2026-06-13).** Sixth and final feature spec of the
+> Status: **ACCEPTED (2026-06-15).** Shipped: `lib/billing-v83.js` (the six
+> compute exports `npiValidate` / `mbiValidate` / `icd10Validate` / `eraBalance`
+> / `drgPayment` / `apcPayment`), the six `views/group-b.js` renderers, the +6
+> Group B catalog rows, the META entries with worked examples (validated by the
+> example-correctness e2e sweep), the `billing-v83` ledger family (IPPS base
+> rates, the OPPS conversion factor, the MBI grammar/excluded-letter set), the
+> consolidated `test/unit/billing-v83.test.js` boundary suite (one file,
+> mirroring the v81/v82 precedent rather than six files as §4 lists), and the
+> six `docs/audits/v12/` logs. Catalog 360 → **366** — the program's end state,
+> **337 → 366 (+29)**. Sixth and final feature spec of the
 > [spec-v77](spec-v77.md) billing & coding program. It closes two gaps at once:
 > **claim integrity** — the validators that catch a bad NPI/MBI/ICD-10 code or an
 > out-of-balance remittance *before* the clearinghouse rejects it — and **facility

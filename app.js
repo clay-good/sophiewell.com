@@ -83,6 +83,18 @@ const UTILITIES = [
   { id: 'ndc-hcpcs-units', name: 'HCPCS Drug Billing Units (Dose -> Units)', group: 'B', audiences: ['billers', 'coders'], clinical: false },
   { id: 'drug-wastage', name: 'Drug Wastage (JW / JZ Units, Single-Dose Vial)', group: 'B', audiences: ['billers', 'coders'], clinical: false },
   { id: 'infusion-hierarchy', name: 'Infusion Hierarchy (Initial Code Picker, 96360-96379)', group: 'B', audiences: ['coders', 'billers'], clinical: false },
+  // spec-v83: claim integrity & facility payment -- the program's sixth and
+  // final feature spec. Four validators catch a bad NPI/MBI/ICD-10 or an
+  // out-of-balance 835 before the clearinghouse rejects it; two pricers compute
+  // the UB-04 (DRG/APC) facility side the v78 professional engine doesn't.
+  // Validators verify format/structure only; pricers read bundled weights but
+  // take rates as inputs (doctrine clause 2). views/group-b.js, lib/billing-v83.js.
+  { id: 'npi-validate', name: 'NPI Luhn Check-Digit Validator / Generator', group: 'B', audiences: ['billers', 'coders', 'credentialing'], clinical: false },
+  { id: 'mbi-validate', name: 'Medicare Beneficiary Identifier (MBI) Format Validator', group: 'B', audiences: ['billers', 'front-desk'], clinical: false },
+  { id: 'icd10-validate', name: 'ICD-10-CM Structural & Specificity Checker', group: 'B', audiences: ['coders', 'billers'], clinical: false },
+  { id: 'era-balance', name: '835 / EOB Remittance Balancing', group: 'B', audiences: ['billers', 'posting'], clinical: false },
+  { id: 'drg-payment', name: 'IPPS DRG Payment Estimate', group: 'B', audiences: ['facility-billing', 'coders'], clinical: false },
+  { id: 'apc-payment', name: 'OPPS APC Payment Estimate', group: 'B', audiences: ['facility-billing', 'coders'], clinical: false },
   // Group C: Patient Bill and Insurance Tools
   // spec-v29 wave 29-2: 12 Group C patient-literacy / eligibility tiles
   // removed (decoder, insurance, eob-decoder, no-surprises,
