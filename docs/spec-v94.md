@@ -1,6 +1,6 @@
 # spec-v94.md — Hematology & oncology prognostic scores: HScore, IPSS-R, FLIPI/IPI, MASCC, and Sokal/ELTS (+5 tiles)
 
-> Status: **PROPOSED (2026-06-16).** Wave 2 feature spec of the
+> Status: **SHIPPED (2026-06-16).** Wave 2 feature spec of the
 > [spec-v85](spec-v85.md) Advanced Clinical Calculators program. Adds **5**
 > deterministic heme/onc prognostic scores that fill a confirmed gap in the
 > catalog's malignancy surface: the HScore for reactive hemophagocytic syndrome,

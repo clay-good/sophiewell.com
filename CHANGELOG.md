@@ -6,6 +6,54 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v94: hematology & oncology prognostic scores, +5)
+
+- **Fifth feature spec of Wave 2** of the [spec-v85](docs/spec-v85.md) Advanced
+  Clinical Calculators program. Five deterministic heme/onc prognostic scores
+  that close the catalog's **malignancy-prognosis** gap: the catalog shipped the
+  heme bedside cluster (`anc`, `khorana`, `four-ts`, `isth-dic`,
+  `tls-cairo-bishop`) but no scores that stratify a new diagnosis. These five
+  fill that gap (catalog **401 → 406**, all Group G):
+  - **`hscore-hlh`** — the **HScore** for reactive hemophagocytic syndrome
+    (Fardet 2014): nine weighted items (max 337) — immunosuppression,
+    temperature, organomegaly, cytopenia lineages, ferritin, triglyceride,
+    fibrinogen, AST, marrow hemophagocytosis — with the HLH probability read from
+    the published curve; ≥ 169 best discriminates (Se 93%, Sp 86%). **Class A**.
+    Cross-links `anc`, `isth-dic`, `tls-cairo-bishop`.
+  - **`ipss-r-mds`** — the **revised IPSS-R** for myelodysplastic syndromes
+    (Greenberg 2012): cytogenetic group + marrow blast % + Hgb + platelets + ANC
+    weighted 0–10 → very low (≤ 1.5) / low / intermediate / high / very high
+    (> 6), each with the cited median survival and time to 25% AML evolution. The
+    cytogenetic risk groups are compiled constants. **Class A**. Cross-links
+    `anc`.
+  - **`flipi`** — the **FLIPI** (Solal-Céligny 2004) + the **IPI** for aggressive
+    NHL (1993): two five-factor counts, FLIPI banded low 0–1 / intermediate 2 /
+    high ≥ 3 and IPI banded low / low-int / high-int / high, each with cited
+    survival. **Class A**. Cross-links `anc`.
+  - **`mascc`** — the **MASCC risk index** for febrile neutropenia (Klastersky
+    2000): seven weighted items (max 26); ≥ 21 identifies a low-risk patient (an
+    outpatient/oral-management candidate). Reports the index only, not the
+    admission decision. **Class A**. Cross-links `anc`.
+  - **`sokal-cml`** — the **Sokal relative risk** (1984) + the **ELTS score**
+    (Pfirrmann 2016) for chronic myeloid leukemia: two at-diagnosis hazard
+    formulas over age, spleen size, platelets and blast %, each banded. The ELTS
+    `(platelets/1000)^−0.5` term and the Sokal `exp()` are guarded so a
+    zero/negative platelet or an extreme input surfaces a finite fallback rather
+    than a `NaN`/`Infinity` term. **Class A**.
+- Implementation: `lib/hemonc-v94.js` (joined to the spec-v59 fuzz harness; zero
+  non-finite leaks — the `sokal-cml` `exp`/negative-power guards are the
+  load-bearing case) + `views/group-v20.js` renderers + `app.js` UTILITIES rows /
+  RENDERERS wiring + `lib/meta.js` entries (inline citation + `citationUrl` +
+  `accessed` + per-source interpretation + examples pinned by the chromium
+  example-correctness sweep). Five spec-v11 audit logs, five clinical-citations
+  rows, scope ledger, README (heme/onc cheat sheet). Catalog **401 → 406** across
+  all 13 catalog-truth surfaces (+ architecture.md). All five are **Class A**
+  fixed published derivations — **no `docs/citation-staleness.md` row** (the
+  citations name journals and authors, not a recurring guideline issuer, so
+  `check-citations.mjs`'s `ISSUER_PATTERN` does not match). No new specialty
+  vocab (all six tags — hematology, oncology, rheumatology, critical-care,
+  infectious-disease, emergency-medicine — already in the closed vocabulary).
+
 ### Added (spec-v93: hepatology & GI disease activity, +6)
 
 - **Fourth feature spec of Wave 2** of the [spec-v85](docs/spec-v85.md) Advanced

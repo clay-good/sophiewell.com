@@ -25,6 +25,7 @@ import { renderers as RV16 } from './views/group-v16.js';
 import { renderers as RV17 } from './views/group-v17.js';
 import { renderers as RV18 } from './views/group-v18.js';
 import { renderers as RV19 } from './views/group-v19.js';
+import { renderers as RV20 } from './views/group-v20.js';
 import { renderers as RV63 } from './views/group-v63.js';
 import { renderers as RB } from './views/group-b.js';
 import { renderers as RPALINT } from './views/pa-lint.js';
@@ -43,7 +44,7 @@ import { resolvePrompt } from './lib/prompt.js';
 // artifact-detect / artifact-route / artifact-handoff helpers were
 // deleted in spec-v29 wave 29-2 (Group C/L).
 
-const RENDERERS = { ...RA, ...RB, ...RC, ...RE, ...RF, ...RG, ...RH, ...RI, ...RJ, ...RKLMNO, ...RV5, ...RV6, ...RV7, ...RV8, ...RV9, ...RV10, ...RV11, ...RV12, ...RV13, ...RV14, ...RV15, ...RV16, ...RV17, ...RV18, ...RV19, ...RV63, ...RPALINT };
+const RENDERERS = { ...RA, ...RB, ...RC, ...RE, ...RF, ...RG, ...RH, ...RI, ...RJ, ...RKLMNO, ...RV5, ...RV6, ...RV7, ...RV8, ...RV9, ...RV10, ...RV11, ...RV12, ...RV13, ...RV14, ...RV15, ...RV16, ...RV17, ...RV18, ...RV19, ...RV20, ...RV63, ...RPALINT };
 
 // ----- Utility registry ----------------------------------------------------
 // Source of truth for routes, names, group, audiences, and clinical flag.
@@ -541,6 +542,17 @@ const UTILITIES = [
   { id: 'harvey-bradshaw',        name: 'Harvey-Bradshaw Index (Crohn’s activity)',         group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'mayo-uc',                name: 'Mayo Score / Partial Mayo (ulcerative colitis)',   group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'milan-criteria',         name: 'Milan Criteria (HCC transplant eligibility)',      group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  // spec-v94 (Wave 2 of the spec-v85 Advanced Clinical Calculators program):
+  // hematology & oncology prognostic scores. The HScore for reactive HLH, the
+  // revised IPSS-R for MDS, the FLIPI/IPI lymphoma indices, the MASCC febrile-
+  // neutropenia risk index, and the Sokal/ELTS CML risk scores. They join the
+  // heme bedside cluster (anc, khorana, four-ts, isth-dic, tls-cairo-bishop)
+  // with the malignancy-prognosis layer. views/group-v20.js, lib/hemonc-v94.js.
+  { id: 'hscore-hlh',             name: 'HScore (reactive hemophagocytic syndrome)',        group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'ipss-r-mds',             name: 'Revised IPSS-R (myelodysplastic syndromes)',       group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'flipi',                  name: 'FLIPI + IPI Lymphoma Prognostic Indices',          group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'mascc',                  name: 'MASCC Risk Index (febrile neutropenia)',           group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'sokal-cml',              name: 'Sokal / ELTS Risk Scores (CML)',                   group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
 
   // spec-v6 §3.3: lab result interpreter. Patient-decoder category.
   { id: 'lab-interpret',       name: 'Lab Result Interpreter',                           group: 'C', audiences: ['patients', 'clinicians', 'educators'], clinical: true },

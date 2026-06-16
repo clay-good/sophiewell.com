@@ -807,3 +807,64 @@ Rule: within = a single tumor <= 5 cm OR <= 3 nodules each <= 3 cm, AND no
 macrovascular invasion AND no extrahepatic spread; otherwise exceeds. Reports the
 criterion only, not a listing decision.
 Worked example: 1 nodule 4.5 cm, no invasion, no spread -> within Milan criteria.
+
+## spec-v94 hematology & oncology prognostic scores
+
+### HScore (reactive hemophagocytic syndrome)
+Citation: Fardet L, Galicier L, Lambotte O, et al. Development and validation of
+the HScore, a score for the diagnosis of reactive hemophagocytic syndrome.
+Arthritis Rheumatol. 2014;66(9):2613-2620.
+Rule: nine weighted items (max 337) -- immunosuppression 18; temperature 38.4-39.4 C
+= 33, > 39.4 = 49; organomegaly one organ 23, both 38; cytopenias 2 lineages 24, 3
+lineages 34; ferritin 2000-6000 = 35, > 6000 = 50; triglyceride 1.5-4 mmol/L = 44,
+> 4 = 64; fibrinogen <= 2.5 g/L = 30; AST >= 30 = 19; marrow hemophagocytosis 35.
+An HScore >= 169 best discriminates HLH (sensitivity 93%, specificity 86%);
+probability read from the published curve.
+Worked example: temp 40, both organs, 2 cytopenias, ferritin 4000, TG 3, fibrinogen
+2, AST 100, hemophagocytosis -> HScore 274, probability > 99%.
+
+### Revised IPSS-R (myelodysplastic syndromes)
+Citation: Greenberg PL, Tuechler H, Schanz J, et al. Revised international
+prognostic scoring system for myelodysplastic syndromes. Blood.
+2012;120(12):2454-2465.
+Rule: cytogenetic group (very good 0 to very poor 4) + marrow blasts (<=2% 0, >2-<5%
+1, 5-10% 2, >10% 3) + hemoglobin (>=10 g/dL 0, 8-<10 1, <8 1.5) + platelets (>=100 0,
+50-<100 0.5, <50 1) + ANC (>=0.8 0, <0.8 0.5). Categories: very low <=1.5, low
+>1.5-3, intermediate >3-4.5, high >4.5-6, very high >6.
+Worked example: good cytogenetics, 7% blasts, Hgb 9, plt 150, ANC 1.5 -> 4,
+intermediate (median OS 3.0 yr).
+
+### FLIPI + IPI lymphoma prognostic indices
+Citation: Solal-Celigny P, Roy P, Colombat P, et al. Follicular lymphoma
+international prognostic index. Blood. 2004;104(5):1258-1265 (FLIPI); The
+International Non-Hodgkin's Lymphoma Prognostic Factors Project. A predictive model
+for aggressive non-Hodgkin's lymphoma. N Engl J Med. 1993;329(14):987-994 (IPI).
+Rule: FLIPI counts age > 60, stage III/IV, Hgb < 12, > 4 nodal areas, LDH > normal
+-> low 0-1, intermediate 2, high >= 3. IPI counts age > 60, stage III/IV, ECOG >= 2,
+LDH > normal, > 1 extranodal site -> low 0-1, low-int 2, high-int 3, high 4-5.
+Worked example: age > 60, stage III/IV, LDH high -> FLIPI 3 (high), IPI 3
+(high-intermediate).
+
+### MASCC Risk Index (febrile neutropenia)
+Citation: Klastersky J, Paesmans M, Rubenstein EB, et al. The Multinational
+Association for Supportive Care in Cancer risk index. J Clin Oncol.
+2000;18(16):3038-3051.
+Rule: burden of illness (no/mild 5, moderate 3) + no hypotension 5 + no COPD 4 +
+solid tumor or no prior fungal 4 + no dehydration 3 + outpatient 3 + age < 60 2 (max
+26). >= 21 identifies a low-risk patient (candidate for outpatient/oral management).
+Reports the index only.
+Worked example: favorable profile -> 26, low risk.
+
+### Sokal / ELTS Risk Scores (CML)
+Citation: Sokal JE, Cox EB, Baccarani M, et al. Prognostic discrimination in
+"good-risk" chronic granulocytic leukemia. Blood. 1984;63(4):789-799 (Sokal);
+Pfirrmann M, Baccarani M, Saussele S, et al. Prognosis of long-term survival
+considering disease-specific death in patients with CML. Leukemia. 2016;30(1):48-56
+(ELTS).
+Rule: Sokal RR = exp[0.0116*(age-43.4) + 0.0345*(spleen-7.51) +
+0.188*((platelets/700)^2 - 0.563) + 0.0887*(blasts-2.10)] -> low < 0.8,
+intermediate 0.8-1.2, high > 1.2. ELTS = 0.0025*(age/10)^3 + 0.0615*spleen +
+0.1052*blasts + 0.4104*(platelets/1000)^(-0.5) -> low <= 1.5680, intermediate
+<= 2.2185, high > 2.2185.
+Worked example: age 50, spleen 5 cm, platelets 300, blasts 2% -> Sokal 0.91, ELTS
+1.58 (both intermediate).

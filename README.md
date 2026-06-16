@@ -5,7 +5,7 @@
 <h1 align="center">sophiewell.com</h1>
 
 <p align="center">
-  <strong>401 deterministic healthcare calculators tuned to the nurse on shift.</strong><br>
+  <strong>406 deterministic healthcare calculators tuned to the nurse on shift.</strong><br>
   Free forever. No servers, no accounts, no telemetry, no AI, no network call after first paint.
 </p>
 
@@ -36,7 +36,7 @@ output; "searchable lookup of static facts" does not qualify. See
 [docs/spec-v10.md](docs/spec-v10.md) for the audience and
 dependency-budget commitments and
 [docs/spec-v29.md](docs/spec-v29.md) for the nurse-first pivot
-and the v29 catalog ledger. At v93 close the catalog is 401
+and the v29 catalog ledger. At v94 close the catalog is 406
 deterministic tiles — every one of them computes from at least
 one user input. The catalog reached its present size on two tracks.
 **New tiles:** spec-v63 added the operations counterpart to the bedside
@@ -186,7 +186,7 @@ production security headers. Any static file server will also work.
 ## How it works and how to use it
 
 Since the spec-v29 nurse-first prune the catalog has grown one
-reviewable spec at a time to **401** deterministic calculators
+reviewable spec at a time to **406** deterministic calculators
 (the full per-version history is in [CHANGELOG.md](CHANGELOG.md)
 and `docs/spec-v*.md`; the most recent bedside additions are
 summarized in the cheat sheets below). They organize across the
@@ -832,6 +832,38 @@ Truelove & Witts 1955, Harvey-Bradshaw 1980, Schroeder 1987, Mazzaferro 1996), s
 citations name journals and authors, not a recurring guideline issuer. See
 [docs/spec-v93.md](docs/spec-v93.md).
 
+### Hematology & oncology prognosis: HScore, IPSS-R, FLIPI/IPI, MASCC & Sokal/ELTS cheat sheet (spec-v94, Wave 2 of the spec-v85 program)
+
+Five deterministic heme/onc prognostic scores that close the catalog's
+**malignancy-prognosis** gap beside the existing heme bedside cluster (`anc`,
+`khorana`, `four-ts`, `isth-dic`, `tls-cairo-bishop`). These are the scores an
+oncologist or hematologist computes to stratify a new diagnosis and set the
+survival expectation: the weighted diagnostic score for reactive HLH, the MDS
+prognosis index, the two lymphoma five-factor indices, the febrile-neutropenia
+disposition index, and the two at-diagnosis CML risk formulas. Each passes the
+[spec-v29](docs/spec-v29.md) §3 one-line test, is a pure `lib/hemonc-v94.js`
+function fuzz-covered by the spec-v59 harness, and quotes the cited source's own
+band / category / index. This takes the catalog to 406.
+
+| id | Formula / rule | Output | Reaches for it |
+|---|---|---|---|
+| `hscore-hlh` | nine weighted items (max 337): immunosuppression, temperature, organomegaly, cytopenia lineages, ferritin, triglyceride, fibrinogen, AST, marrow hemophagocytosis | HScore + HLH probability from the published curve; ≥ 169 best discriminates (Se 93%, Sp 86%) | reactive HLH/MAS diagnosis |
+| `ipss-r-mds` | cytogenetic group + marrow blast % + Hgb + platelets + ANC, weighted 0–10 | category very low → very high with the cited median survival and time to 25% AML evolution | MDS prognosis at diagnosis |
+| `flipi` | FLIPI: age > 60, stage III/IV, Hgb < 12, > 4 nodal areas, LDH↑. IPI: age > 60, stage III/IV, ECOG ≥ 2, LDH↑, > 1 extranodal site | FLIPI 0–5 (low/int/high) + IPI 0–5 (low/low-int/high-int/high), each with cited survival | follicular & aggressive lymphoma risk |
+| `mascc` | burden 5/3/0 + no hypotension 5 + no COPD 4 + solid/no fungal 4 + no dehydration 3 + outpatient 3 + age < 60 2 (max 26) | total + LOW risk ≥ 21 (outpatient/oral candidate); reports the index only | febrile-neutropenia disposition |
+| `sokal-cml` | Sokal RR = exp[0.0116·(age−43.4) + 0.0345·(spleen−7.51) + 0.188·((plt/700)²−0.563) + 0.0887·(blasts−2.10)]; ELTS = 0.0025·(age/10)³ + 0.0615·spleen + 0.1052·blasts + 0.4104·(plt/1000)^−0.5 | Sokal banded < 0.8 / 0.8–1.2 / > 1.2 and ELTS banded ≤ 1.5680 / ≤ 2.2185 / > | CML risk at diagnosis |
+
+The load-bearing guarded domains are in `sokal-cml`: the ELTS `(platelets/1000)^−0.5`
+term divides by the platelet count (a zero/negative platelet surfaces a labeled
+fallback), and the Sokal `exp()` overflows to `Infinity` for an extreme age/platelet
+input — surfaced as a finite null, never an `Infinity` term. The other four are
+point-table logic; `mascc` reports the index only, not the admission decision, and
+`ipss-r-mds` ships the clinical/cytogenetic IPSS-R, not the molecular IPSS-M. All
+five are **Class A** fixed published derivations (Fardet 2014, Greenberg 2012,
+Solal-Céligny 2004 / IPI 1993, Klastersky 2000, Sokal 1984 / Pfirrmann 2016), so
+**none carries a [citation-staleness](docs/citation-staleness.md) row**. See
+[docs/spec-v94.md](docs/spec-v94.md).
+
 ### Billing & reimbursement: what Medicare pays, whether the line survives, how the visit codes, what the drug bills, what the patient owes, and whether the claim is clean (spec-v77 → spec-v83, program complete)
 
 The catalog has always been strong on the clinician at the bedside and competent
@@ -1155,7 +1187,7 @@ long version, see [docs/architecture.md](docs/architecture.md).
  │  manifests (data/)            │  static │        ▼                     ▼             │
  │        │  scripts/build       │  files  │   lazy-load data shard   pure compute      │
  │        ▼                      │         │   (verified vs manifest)  (lib/*.js)       │
- │  dist/  (401 tool pages,      │         │        │                     │             │
+ │  dist/  (406 tool pages,      │         │        │                     │             │
  │  OG cards, sitemap, SBOM)     │         │        ▼                     ▼             │
  └───────────────────────────────┘         │   service worker cache    result + cite   │
                                             │   (keyed to build hash)                    │
@@ -1175,7 +1207,7 @@ session, and nothing to log.
 index.html          single-page shell (hero-search combobox + static browse-by-category nav, tile mount)
 styles.css          one stylesheet (responsive; no horizontal scroll — enforced catalog-wide at 320px in CI)
 app.js              router, hero-search wiring, view wiring, the UTILITIES catalog
-                    (401 tiles — the single source of truth; zero runtime deps)
+                    (406 tiles — the single source of truth; zero runtime deps)
 sw.js               service worker — precache shell, cache shards by build hash
 theme.js            light/dark theme toggle (writes only sw-theme, allowlisted)
 lib/input-persist.js opt-in "remember my inputs" (off by default; numbers only)
@@ -1193,12 +1225,12 @@ docs/               specs (spec-v4 … spec-v84) + per-tile v11/v12 audit logs +
                     citation-staleness ledger +
                     architecture / threat-model / …
 test/               unit/ (node:test) · integration/ (Playwright) · fixtures/
-dist/               build output (401 tool pages, OG cards, sitemap, SBOM)
+dist/               build output (406 tool pages, OG cards, sitemap, SBOM)
 ```
 
-### Discovery: how a query finds the right tool among 401
+### Discovery: how a query finds the right tool among 406
 
-With 401 tiles, search quality *is* the product — a tool you cannot find does
+With 406 tiles, search quality *is* the product — a tool you cannot find does
 not exist. Discovery is deterministic and offline (no fuzzy-match service, no
 embedding model, no AI). The home `#hero-search` combobox builds its dropdown
 from two complementary rankers, both pure functions of the typed query:
@@ -1271,10 +1303,10 @@ A login-less, AI-free calculator earns trust only if the nurse can see, on the
 tile, exactly which published source produced the number — and tell whether that
 source is current. spec-v54 defined the invariants; spec-v60 built the machinery
 (the gate, the ledger, and the `citationAccessed` convention) and extended it
-across the full 401-tile catalog, pinning the last three unpinned "current
+across the full 406-tile catalog, pinning the last three unpinned "current
 edition" phrases and re-verifying every guideline tile against its latest known
 edition. Three invariants make that auditable, each enforced by the
-`check-citations.mjs` lint gate (in the `npm run lint` chain) over all 401 tiles:
+`check-citations.mjs` lint gate (in the `npm run lint` chain) over all 406 tiles:
 
 | Invariant | Rule | Enforcement |
 |---|---|---|
@@ -1731,7 +1763,7 @@ rules, not soft preferences.
 | `npm run build`          | Copy static files into `dist/` for deployment                     |
 | `npm test`               | Run the full test suite (unit, a11y, grep, data integrity)        |
 | `npm run test:unit`      | Run Node's built-in unit tests (3,613 tests)                      |
-| `npm run test:e2e`       | Build `dist/`, then run Playwright integration tests against real browsers — incl. a full-catalog 320px no-horizontal-scroll sweep over both the SPA routes and the 401 pre-rendered static tool pages, the hub/topic/commitments pages, and the citation-wrap pin |
+| `npm run test:e2e`       | Build `dist/`, then run Playwright integration tests against real browsers — incl. a full-catalog 320px no-horizontal-scroll sweep over both the SPA routes and the 406 pre-rendered static tool pages, the hub/topic/commitments pages, and the citation-wrap pin |
 | `npm run test:a11y`      | Run accessibility checks on every utility view                    |
 | `npm run lint`           | ESLint + the CI gate chain: grep-check, output-safety, citation-integrity, catalog-truth, commitments, PA staleness, PA audit |
 | `npm run data:refresh`   | Re-fetch and re-shard every public dataset                        |
@@ -1815,7 +1847,7 @@ build, integrity-verified data shards) are documented in
 - [docs/spec-v11.md](docs/spec-v11.md) — correctness-floor spec:
   per-tile audit protocol, specialty-named groups, optional
   source-quoted `interpretation` field. Audit coverage is **complete
-  — 401/401 tiles** carry a committed per-tile audit log
+  — 406/406 tiles** carry a committed per-tile audit log
   (`docs/audits/v11/<id>.md` for the pre-v78 catalog;
   `docs/audits/v12/<id>.md` for the twenty-nine spec-v78–v83 billing &
   coding program tiles)
