@@ -10,14 +10,17 @@ const BUILD_HASH = 'dev';
 const SHELL_CACHE = `sophiewell-shell-${BUILD_HASH}`;
 const DATA_CACHE = `sophiewell-data-${BUILD_HASH}`;
 
-// spec-v75: precache the full application shell -- every file index.html loads.
-// theme.js and file-origin-guard.js were previously omitted (so an offline cold
-// reload missed them); they are added here. Dataset manifests are NOT
-// precached: they (and their shards) are cached lazily on first fetch via
-// DATA_CACHE in the fetch handler below. The old list named ten code-lookup
-// datasets removed in the spec-v29 prune -- five of those directories no longer
-// exist (their install fetch 404'd and was silently swallowed) and none is
-// fetched by any current tile, so precaching them helped nothing.
+// Precache the full application shell -- every file index.html references.
+// spec-v75 added the two shell scripts (theme.js, file-origin-guard.js) the list
+// had omitted but stopped short of the head's icon/manifest links and the topbar
+// brand <img>, so an offline cold reload still rendered a broken logo and missing
+// favicons. spec-v84 closes that gap: the six head/chrome assets index.html loads
+// (favicon.ico, the two PNG favicons, apple-touch-icon, site.webmanifest, logo.png)
+// are now precached too, so SHELL_ASSETS is the complete static shell. A unit
+// guard (test/unit/sw-shell.test.js) asserts every local href/src in index.html
+// stays in this list, so it cannot silently drift again. Dataset manifests are
+// still NOT precached: they (and their shards) are cached lazily on first fetch
+// via DATA_CACHE in the fetch handler below.
 const SHELL_ASSETS = [
   './',
   './index.html',
@@ -25,6 +28,12 @@ const SHELL_ASSETS = [
   './app.js',
   './theme.js',
   './file-origin-guard.js',
+  './favicon.ico',
+  './favicon-32x32.png',
+  './favicon-16x16.png',
+  './apple-touch-icon.png',
+  './site.webmanifest',
+  './logo.png',
   './CHANGELOG.md',
   './docs/stability.md',
 ];

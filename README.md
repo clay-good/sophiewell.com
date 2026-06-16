@@ -56,10 +56,12 @@ compensation, the symmetric over-rapid-correction warning in
 `digoxin` floor, the `sas-riker` light-sedation goal band, and the reachable
 `psi` Risk Class I — alongside denial→next-step ops routing, CFR-checklist
 document generators, and a run of accessibility / rendering / offline repairs
-(44px touch targets, theme-tracked `color-scheme`, a working SPA skip-link, an
-accurate service-worker precache, and a guarded tool-page discovery allowlist).
-Per-wave detail lives in the [CHANGELOG](CHANGELOG.md) and the spec docs
-([spec-v62](docs/spec-v62.md) through [spec-v76](docs/spec-v76.md)).
+(44px touch targets, theme-tracked `color-scheme`, a working SPA skip-link, a
+complete-shell service-worker precache, and a guarded tool-page discovery
+allowlist). Per-wave detail lives in the [CHANGELOG](CHANGELOG.md) and the spec
+docs ([spec-v62](docs/spec-v62.md) through [spec-v76](docs/spec-v76.md), with the
+offline shell precache finished in [spec-v84](docs/spec-v84.md) — every local
+asset `index.html` loads is now precached, guarded so the list cannot drift).
 The new `pa-lint` tile in spec-v52 consumes
 dropped files instead of form fields and produces a
 deterministic findings report, the first instance of the
@@ -986,7 +988,7 @@ views/              per-group view renderers (group-*.js, pa-lint.js)
 data/               sharded public datasets + SHA-256 manifests (46 datasets)
 scripts/            build-*, check-* (catalog-truth, output-safety, citations,
                     commitments, PA staleness), audit-* — the CI gate chain
-docs/               specs (spec-v4 … spec-v83) + per-tile v11/v12 audit logs +
+docs/               specs (spec-v4 … spec-v84) + per-tile v11/v12 audit logs +
                     citation-staleness ledger +
                     architecture / threat-model / …
 test/               unit/ (node:test) · integration/ (Playwright) · fixtures/

@@ -8,6 +8,23 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- The service worker now precaches the **complete** application shell, so an
+  offline cold reload no longer renders a broken topbar logo or drops the
+  favicons/manifest (spec-v84). [spec-v75](docs/spec-v75.md) set out to precache
+  "every file `index.html` loads" but only added the two shell *scripts*
+  (`theme.js`, `file-origin-guard.js`); it overlooked the six remaining local
+  assets the head and topbar reference — `favicon.ico`, the two PNG favicons,
+  `apple-touch-icon.png`, `site.webmanifest`, and `logo.png` (the brand `<img>`
+  shown on **every** view). The install handler swallows per-asset fetch
+  failures, so the gap never surfaced at runtime; the lazy shell cache only
+  picked these up on the first *online* visit. [sw.js](sw.js) `SHELL_ASSETS` now
+  lists all six. A new unit guard
+  ([test/unit/sw-shell.test.js](test/unit/sw-shell.test.js)) parses every local
+  `<link>`/`<script>`/`<img>` reference in `index.html` and asserts each is
+  precached (and that no `/data/*` manifest sneaks back in), so the
+  hand-maintained list can never silently fall behind the HTML again — the exact
+  drift v75 and v84 both hit. +0 catalog delta (still 366). See
+  [docs/spec-v84.md](docs/spec-v84.md).
 - `qtc-suite` (spec-v4 Group E) no longer leaks `NaN ms` to all four formula
   rows (and the copy buffer) when the Heart-rate field is filled but QT is left
   blank — a normal mid-entry state for a user who types HR first. The compute
