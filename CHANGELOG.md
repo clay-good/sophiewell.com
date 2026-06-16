@@ -6,6 +6,56 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v92: nephrology, +5)
+
+- **Third feature spec of Wave 2** of the [spec-v85](docs/spec-v85.md) Advanced
+  Clinical Calculators program. Five deterministic nephrology computations that
+  close a confirmed **chronic / procedural** gap: the catalog shipped the renal
+  filtration / injury / dosing surface (`egfr-suite`, `egfr`, `fena-feurea`,
+  `kdigo-aki`, `ttkg`, `cockcroft-gault`) but no CKD G×A staging, proteinuria
+  ratio, dialysis adequacy, contrast-nephropathy risk, or cystatin-based eGFR.
+  These five are the nephrology-clinic and dialysis-unit standards (catalog
+  **390 → 395**):
+  - **`ckd-staging`** (Group G) — the **KDIGO CKD G×A risk classification**: eGFR
+    → G-stage (G1 ≥ 90, G2 60–89, G3a 45–59, G3b 30–44, G4 15–29, G5 < 15) × UACR
+    → A-stage (A1 < 30, A2 30–300, A3 > 300 mg/g, or the A-category entered
+    directly) → the KDIGO heat-map risk cell (low / moderate / high / very high).
+    **Class B** (KDIGO 2024 CKD guideline, on-publication cadence). Cross-links
+    `egfr-suite`, `uacr-upcr`.
+  - **`uacr-upcr`** (Group E) — the **spot urine albumin/protein-to-creatinine
+    ratios**: ratio (mg/g) = analyte (mg/dL) / urine Cr (mg/dL) × 1000, the
+    estimated 24-hour excretion, and the KDIGO A-stage (matching `ckd-staging`).
+    Urine creatinine of 0/blank is a surfaced fallback (no `NaN`/`Infinity`); the
+    mg/dL↔mg/L toggle converts before the ratio. **Class A**. Cross-links
+    `ckd-staging`, `egfr`.
+  - **`ktv-urr`** (Group E) — **hemodialysis adequacy**: the urea reduction ratio
+    `URR = (1 − post/pre) × 100%` and the **Daugirdas second-generation
+    single-pool Kt/V** `= −ln(R − 0.008·t) + (4 − 3.5·R)·UF/W`, against the KDOQI
+    minimum targets (URR ≥ 65%, spKt/V ≥ 1.2). The ln domain and pre-BUN are
+    guarded; URR is reported alone on partial input. **Class A**. Cross-links
+    `cockcroft-gault`, `egfr`.
+  - **`mehran-cin`** (Group G) — the **Mehran contrast-induced nephropathy risk
+    score** (Mehran 2004): hypotension 5 + IABP 5 + CHF 5 + age > 75 = 4 +
+    anemia 3 + diabetes 3 + contrast 1/100 mL + eGFR (40–60 = 2, 20–40 = 4,
+    < 20 = 6), banded ≤ 5 low / 6–10 moderate / 11–15 high / ≥ 16 very high with
+    the cited CIN and dialysis risk. A blank optional factor contributes 0.
+    **Class A**. Cross-links `kdigo-aki`, `ckd-staging`.
+  - **`ckd-epi-cystatin`** (Group E) — the **2021 race-free CKD-EPI** eGFRcys
+    (cystatin-only), eGFRcr-cys (combined, the confirmatory estimate near a
+    decision threshold) and eGFRcr (creatinine-only) shown side by side (Inker
+    2021). Cystatin C and creatinine must be positive; eGFRcys is yielded alone
+    on a missing creatinine. **Class A**. Cross-links `egfr`, `egfr-suite`.
+- Implementation: `lib/nephro-v92.js` (joined to the spec-v59 fuzz harness; zero
+  non-finite leaks) + `views/group-v18.js` renderers + `app.js` UTILITIES rows /
+  RENDERERS wiring + `lib/meta.js` entries (inline citation + `citationUrl` +
+  `accessed` + per-source interpretation + examples pinned by the chromium
+  example-correctness sweep). Five spec-v11 audit logs, five clinical-citations
+  rows, one `docs/citation-staleness.md` Class-B row (`ckd-staging`, read by
+  `check-citation-cadence.mjs`), nephrology topic-page tiles, scope ledger,
+  README (Wave-2 narrative + nephrology cheat sheet). Catalog **390 → 395**
+  across all 13 catalog-truth surfaces (+ architecture.md). New specialty vocab:
+  `dialysis-nursing`, `interventional-radiology`.
+
 ### Added (spec-v91: pulmonary function & chronic respiratory disease, +5)
 
 - **Second feature spec of Wave 2** of the [spec-v85](docs/spec-v85.md) Advanced

@@ -710,3 +710,45 @@ hill; 2 slower than peers; 3 stops after ~100 m; 4 too breathless to leave the
 house). Feeds the BODE index and the GOLD ABE assessment.
 Worked example: grade 2 -> walks slower than peers on the level, or stops for
 breath at own pace.
+
+### KDIGO CKD Staging (G×A risk)
+Citation: KDIGO 2024 Clinical Practice Guideline for the Evaluation and Management
+of Chronic Kidney Disease. Kidney Int. 2024;105(4S):S117-S314.
+Rule: G-stage by eGFR (G1 >= 90, G2 60-89, G3a 45-59, G3b 30-44, G4 15-29, G5
+< 15) x A-stage by UACR (A1 < 30, A2 30-300, A3 > 300 mg/g); the prognosis is the
+heat-map cell (low/moderate/high/very high).
+Worked example: eGFR 38, UACR 340 -> G3b/A3 -> very high risk (red).
+
+### Urine Albumin/Protein-to-Creatinine Ratio
+Citation: Spot urine albumin/protein-to-creatinine ratio; albuminuria categories
+per the 2024 international CKD guideline. Kidney Int. 2024;105(4S):S117-S314.
+Rule: ratio (mg/g) = analyte (mg/dL) / urine creatinine (mg/dL) x 1000; with ~1 g
+creatinine excreted daily the ratio also estimates 24-hour excretion (mg). A-stage
+A1 < 30, A2 30-300, A3 > 300 mg/g.
+Worked example: albumin 30 mg/dL, urine Cr 100 mg/dL -> UACR 300 mg/g (A2).
+
+### Dialysis Adequacy (URR + Kt/V)
+Citation: Daugirdas JT. Second generation logarithmic estimates of single-pool
+variable volume Kt/V: an analysis of error. J Am Soc Nephrol. 1993;4(5):1205-1213.
+Rule: URR = (1 - post-BUN/pre-BUN) x 100%; single-pool Kt/V = -ln(R - 0.008·t) +
+(4 - 3.5·R)·UF/W, R = post/pre. KDOQI minimum: URR >= 65%, spKt/V >= 1.2.
+Worked example: pre 60, post 18, UF 3 L, 4 h, 70 kg -> URR 70%, Kt/V 1.44.
+
+### Mehran Contrast-Induced Nephropathy Risk
+Citation: Mehran R, Aymong ED, Nikolsky E, et al. A simple risk score for
+prediction of contrast-induced nephropathy after percutaneous coronary
+intervention. J Am Coll Cardiol. 2004;44(7):1393-1399.
+Rule: hypotension 5, IABP 5, CHF 5, age > 75 = 4, anemia 3, diabetes 3, contrast
+1 per 100 mL, eGFR (40-60 = 2, 20-40 = 4, < 20 = 6); <= 5 low, 6-10 moderate,
+11-15 high, >= 16 very high.
+Worked example: CHF + diabetes + 300 mL contrast + eGFR 30 -> 15, high (~26.1%).
+
+### CKD-EPI 2021 Cystatin-C eGFR (race-free)
+Citation: Inker LA, Eneanya ND, Coresh J, et al. New creatinine- and cystatin
+C-based equations to estimate GFR without race. N Engl J Med.
+2021;385(19):1737-1749.
+Rule: eGFRcys (cystatin C only), eGFRcr-cys (combined creatinine + cystatin C, the
+confirmatory estimate), and eGFRcr (creatinine only), all without a race
+coefficient, in mL/min/1.73m².
+Worked example: female 70, cystatin 1.5, creatinine 1.1 -> eGFRcys 40.6,
+eGFRcr-cys 47.4, eGFRcr 54.1.

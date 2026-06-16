@@ -5,7 +5,7 @@
 <h1 align="center">sophiewell.com</h1>
 
 <p align="center">
-  <strong>390 deterministic healthcare calculators tuned to the nurse on shift.</strong><br>
+  <strong>395 deterministic healthcare calculators tuned to the nurse on shift.</strong><br>
   Free forever. No servers, no accounts, no telemetry, no AI, no network call after first paint.
 </p>
 
@@ -36,7 +36,7 @@ output; "searchable lookup of static facts" does not qualify. See
 [docs/spec-v10.md](docs/spec-v10.md) for the audience and
 dependency-budget commitments and
 [docs/spec-v29.md](docs/spec-v29.md) for the nurse-first pivot
-and the v29 catalog ledger. At v91 close the catalog is 390
+and the v29 catalog ledger. At v92 close the catalog is 395
 deterministic tiles — every one of them computes from at least
 one user input. The catalog reached its present size on two tracks.
 **New tiles:** spec-v63 added the operations counterpart to the bedside
@@ -123,6 +123,17 @@ cannot-perform-DLCO limb and stage mortality, Group G), `predicted-spirometry`
 coefficient/spline constants, Group E), and `mmrc-dyspnea` (the Bestall 1999
 modified MRC dyspnea grade 0–4 that feeds BODE and the GOLD ABE assessment, Group
 G).
+[spec-v92](docs/spec-v92.md) continues Wave 2 with five nephrology computations
+that close the **chronic / procedural** renal gap beside the catalog's existing
+filtration / injury / dosing surface (`egfr-suite`, `fena-feurea`, `kdigo-aki`,
+`cockcroft-gault`) — `ckd-staging` (the KDIGO 2024 CKD G×A risk heat-map cell
+from eGFR and UACR, Group G), `uacr-upcr` (the spot urine albumin/protein-to-
+creatinine ratios with the estimated 24-hour excretion and the KDIGO A-stage,
+Group E), `ktv-urr` (the hemodialysis adequacy URR + Daugirdas second-generation
+single-pool Kt/V against the KDOQI targets, Group E), `mehran-cin` (the Mehran
+2004 contrast-induced-nephropathy risk score with the CIN / dialysis bands, Group
+G), and `ckd-epi-cystatin` (the 2021 race-free CKD-EPI cystatin-C / combined /
+creatinine eGFR, Group E).
 The new `pa-lint` tile in spec-v52 consumes
 dropped files instead of form fields and produces a
 deterministic findings report, the first instance of the
@@ -175,7 +186,7 @@ production security headers. Any static file server will also work.
 ## How it works and how to use it
 
 Since the spec-v29 nurse-first prune the catalog has grown one
-reviewable spec at a time to **390** deterministic calculators
+reviewable spec at a time to **395** deterministic calculators
 (the full per-version history is in [CHANGELOG.md](CHANGELOG.md)
 and `docs/spec-v*.md`; the most recent bedside additions are
 summarized in the cheat sheets below). They organize across the
@@ -755,6 +766,38 @@ on-publication) are **Class B** and carry [citation-staleness](docs/citation-sta
 rows read by `scripts/check-citation-cadence.mjs`. See
 [docs/spec-v91.md](docs/spec-v91.md).
 
+### Nephrology: CKD staging, proteinuria ratios, dialysis adequacy, contrast-nephropathy risk & cystatin-C eGFR cheat sheet (spec-v92, Wave 2 of the spec-v85 program)
+
+Five deterministic nephrology computations that close the **chronic / procedural**
+renal gap beside the catalog's existing filtration / injury / dosing surface
+(`egfr-suite`, `fena-feurea`, `kdigo-aki`, `cockcroft-gault`). These are the
+nephrology-clinic and dialysis-unit standards: the KDIGO G×A risk heat-map, the
+spot albumin/protein ratios, hemodialysis adequacy, the Mehran contrast-risk
+score, and the race-free cystatin-C eGFR. Each passes the
+[spec-v29](docs/spec-v29.md) §3 one-line test, is a pure `lib/nephro-v92.js`
+function fuzz-covered by the spec-v59 harness, and quotes the cited source's own
+cell / ratio / target / band / estimate. This takes the catalog to 395.
+
+| id | Formula / rule | Output | Reaches for it |
+|---|---|---|---|
+| `ckd-staging` | eGFR → G-stage (G1 ≥ 90 … G5 < 15) × UACR → A-stage (A1 < 30, A2 30–300, A3 > 300 mg/g) | KDIGO heat-map cell with the prognosis colour (green low → red very high); e.g. eGFR 38 + UACR 340 → G3b/A3 → very high | place an eGFR + UACR in the CKD risk grid |
+| `uacr-upcr` | ratio (mg/g) = analyte (mg/dL) / urine Cr (mg/dL) × 1000 | UACR/UPCR + estimated 24-h excretion + KDIGO A-stage; urine-Cr = 0 guarded; mg/dL↔mg/L toggle | spot proteinuria off a single specimen |
+| `ktv-urr` | URR = (1 − post/pre) × 100%; spKt/V = −ln(R − 0.008·t) + (4 − 3.5·R)·UF/W | URR + single-pool Kt/V against the KDOQI targets (≥ 65%, ≥ 1.2); ln-domain + pre-BUN guards; URR alone on partial input | hemodialysis adequacy each session |
+| `mehran-cin` | hypotension 5 + IABP 5 + CHF 5 + age > 75 = 4 + anemia 3 + diabetes 3 + contrast 1/100 mL + eGFR (2/4/6) | total + band (≤ 5 low … ≥ 16 very high) with the cited CIN / dialysis risk | contrast-nephropathy risk pre-procedure |
+| `ckd-epi-cystatin` | 2021 race-free CKD-EPI cystatin-C / combined / creatinine equations | eGFRcys, eGFRcr-cys (confirmatory) and eGFRcr side by side; cystatin/creatinine > 0 guarded; eGFRcys alone on a missing creatinine | confirmatory eGFR near a decision threshold |
+
+The two-axis `ckd-staging` is band-mapping over ordinal axes (it accepts the
+A-category directly when no numeric UACR is given and never emits an unlabeled
+cell), and `uacr-upcr` shares its A-stage cutoffs so the two agree. Every
+division (`uacr-upcr` urine creatinine, `ktv-urr` pre-BUN), logarithm (`ktv-urr`
+domain `R − 0.008·t > 0`), and power term (`ckd-epi-cystatin` cystatin/creatinine
+bases) is domain-guarded so a zero/blank input surfaces a labeled fallback rather
+than a `NaN`/`Infinity`. Four tiles are **Class A** fixed instruments (the ratio
+math, the Daugirdas Kt/V, the 2004 Mehran weights, the 2021 CKD-EPI coefficients);
+`ckd-staging` (KDIGO 2024, on-publication) is **Class B** and carries a
+[citation-staleness](docs/citation-staleness.md) row read by
+`scripts/check-citation-cadence.mjs`. See [docs/spec-v92.md](docs/spec-v92.md).
+
 ### Billing & reimbursement: what Medicare pays, whether the line survives, how the visit codes, what the drug bills, what the patient owes, and whether the claim is clean (spec-v77 → spec-v83, program complete)
 
 The catalog has always been strong on the clinician at the bedside and competent
@@ -1078,7 +1121,7 @@ long version, see [docs/architecture.md](docs/architecture.md).
  │  manifests (data/)            │  static │        ▼                     ▼             │
  │        │  scripts/build       │  files  │   lazy-load data shard   pure compute      │
  │        ▼                      │         │   (verified vs manifest)  (lib/*.js)       │
- │  dist/  (390 tool pages,      │         │        │                     │             │
+ │  dist/  (395 tool pages,      │         │        │                     │             │
  │  OG cards, sitemap, SBOM)     │         │        ▼                     ▼             │
  └───────────────────────────────┘         │   service worker cache    result + cite   │
                                             │   (keyed to build hash)                    │
@@ -1098,7 +1141,7 @@ session, and nothing to log.
 index.html          single-page shell (hero-search combobox + static browse-by-category nav, tile mount)
 styles.css          one stylesheet (responsive; no horizontal scroll — enforced catalog-wide at 320px in CI)
 app.js              router, hero-search wiring, view wiring, the UTILITIES catalog
-                    (390 tiles — the single source of truth; zero runtime deps)
+                    (395 tiles — the single source of truth; zero runtime deps)
 sw.js               service worker — precache shell, cache shards by build hash
 theme.js            light/dark theme toggle (writes only sw-theme, allowlisted)
 lib/input-persist.js opt-in "remember my inputs" (off by default; numbers only)
@@ -1116,12 +1159,12 @@ docs/               specs (spec-v4 … spec-v84) + per-tile v11/v12 audit logs +
                     citation-staleness ledger +
                     architecture / threat-model / …
 test/               unit/ (node:test) · integration/ (Playwright) · fixtures/
-dist/               build output (390 tool pages, OG cards, sitemap, SBOM)
+dist/               build output (395 tool pages, OG cards, sitemap, SBOM)
 ```
 
-### Discovery: how a query finds the right tool among 390
+### Discovery: how a query finds the right tool among 395
 
-With 390 tiles, search quality *is* the product — a tool you cannot find does
+With 395 tiles, search quality *is* the product — a tool you cannot find does
 not exist. Discovery is deterministic and offline (no fuzzy-match service, no
 embedding model, no AI). The home `#hero-search` combobox builds its dropdown
 from two complementary rankers, both pure functions of the typed query:
@@ -1194,10 +1237,10 @@ A login-less, AI-free calculator earns trust only if the nurse can see, on the
 tile, exactly which published source produced the number — and tell whether that
 source is current. spec-v54 defined the invariants; spec-v60 built the machinery
 (the gate, the ledger, and the `citationAccessed` convention) and extended it
-across the full 390-tile catalog, pinning the last three unpinned "current
+across the full 395-tile catalog, pinning the last three unpinned "current
 edition" phrases and re-verifying every guideline tile against its latest known
 edition. Three invariants make that auditable, each enforced by the
-`check-citations.mjs` lint gate (in the `npm run lint` chain) over all 390 tiles:
+`check-citations.mjs` lint gate (in the `npm run lint` chain) over all 395 tiles:
 
 | Invariant | Rule | Enforcement |
 |---|---|---|
@@ -1654,7 +1697,7 @@ rules, not soft preferences.
 | `npm run build`          | Copy static files into `dist/` for deployment                     |
 | `npm test`               | Run the full test suite (unit, a11y, grep, data integrity)        |
 | `npm run test:unit`      | Run Node's built-in unit tests (3,613 tests)                      |
-| `npm run test:e2e`       | Build `dist/`, then run Playwright integration tests against real browsers — incl. a full-catalog 320px no-horizontal-scroll sweep over both the SPA routes and the 390 pre-rendered static tool pages, the hub/topic/commitments pages, and the citation-wrap pin |
+| `npm run test:e2e`       | Build `dist/`, then run Playwright integration tests against real browsers — incl. a full-catalog 320px no-horizontal-scroll sweep over both the SPA routes and the 395 pre-rendered static tool pages, the hub/topic/commitments pages, and the citation-wrap pin |
 | `npm run test:a11y`      | Run accessibility checks on every utility view                    |
 | `npm run lint`           | ESLint + the CI gate chain: grep-check, output-safety, citation-integrity, catalog-truth, commitments, PA staleness, PA audit |
 | `npm run data:refresh`   | Re-fetch and re-shard every public dataset                        |
@@ -1738,7 +1781,7 @@ build, integrity-verified data shards) are documented in
 - [docs/spec-v11.md](docs/spec-v11.md) — correctness-floor spec:
   per-tile audit protocol, specialty-named groups, optional
   source-quoted `interpretation` field. Audit coverage is **complete
-  — 390/390 tiles** carry a committed per-tile audit log
+  — 395/395 tiles** carry a committed per-tile audit log
   (`docs/audits/v11/<id>.md` for the pre-v78 catalog;
   `docs/audits/v12/<id>.md` for the twenty-nine spec-v78–v83 billing &
   coding program tiles)

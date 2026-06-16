@@ -78,7 +78,8 @@ export const TOPICS = {
     description: 'Free nephrology and acid-base tools: eGFR (CKD-EPI 2021, race-free), Cockcroft-Gault, FeNa/FeUrea, KDIGO AKI staging, anion gap, Winters, ABG, SAAG. No signup.',
     lede: 'Renal function, fluid, electrolyte, and acid-base math with the primary citation under every result. eGFR under the 2021 race-free CKD-EPI equation, Cockcroft-Gault, FeNa and FeUrea, KDIGO AKI staging, anion gap (with delta-delta and corrected variants), osmolal gap, SAAG, Winters formula, ABG interpretation, maintenance fluids, sodium correction with the free-water deficit, corrected calcium and sodium.',
     tiles: [
-      'egfr', 'egfr-suite', 'cockcroft-gault', 'fena-feurea', 'kdigo-aki',
+      'egfr', 'egfr-suite', 'ckd-epi-cystatin', 'cockcroft-gault', 'fena-feurea',
+      'kdigo-aki', 'ckd-staging', 'uacr-upcr', 'ktv-urr', 'mehran-cin',
       'anion-gap', 'corrected-anion-gap', 'anion-gap-dd', 'osmolal-gap',
       'saag', 'winters', 'abg', 'sodium-correction', 'free-water-deficit',
       'corrected-sodium', 'corrected-calcium', 'corrected-ca-na',

@@ -234,3 +234,23 @@ gate-required issuer pattern, so the rows are maintenance-driven, not gate-force
 |---|---|---|---|---|---|
 | gold-spirometry | GOLD spirometric classification of COPD (FEV1/FVC < 0.70 + FEV1 %predicted grade cut-points) | GOLD 2024 Report | same | 2026-06-16 | current -- the 2024 Report is the latest; Class B, review annual (GOLD republishes each year). The < 0.70 fixed ratio and the 80/50/30 grade edges are stable across recent editions |
 | predicted-spirometry | GLI-2012 spirometry reference equations (predicted FEV1/FVC/ratio + LLN) | GLI-2012 (Quanjer ERJ 40(6)) | same | 2026-06-16 | current -- GLI-2012 is the reference standard; Class B, review on-publication of the next GLI reference-equation update. The LMS model form is fixed (Class A) |
+
+## spec-v92 nephrology (added 2026-06-16)
+
+Wave 2 of the spec-v85 Advanced Clinical Calculators program adds five nephrology
+computations. Four are Class A fixed instruments whose citations do not match the
+check-citations issuer pattern and carry no row: `uacr-upcr` (the ratio math and
+the albuminuria cutoffs, which reference the `ckd-staging` row below rather than
+duplicating it), `ktv-urr` (the Daugirdas second-generation Kt/V and the URR
+percentage), `mehran-cin` (the 2004 Mehran point weights and bands), and
+`ckd-epi-cystatin` (the fixed 2021 CKD-EPI coefficients). One is a Class B
+revisable-guideline threshold and carries the row below for the §6.3 cadence job
+(`scripts/check-citation-cadence.mjs`), which warns -- never blocks -- when an
+`accessed` date ages past the stated cadence. `ckd-staging` cites the KDIGO CKD
+guideline; its citation also matches the gate-required issuer pattern (KDIGO), so
+the row is gate-required. Cadence is on-publication: re-verify when the next KDIGO
+CKD edition publishes.
+
+| tile id | instrument | edition shipped | latest known edition | accessed | justification if behind |
+|---|---|---|---|---|---|
+| ckd-staging | KDIGO CKD G x A risk classification (GFR G1-G5 x albuminuria A1-A3 heat-map cells) | KDIGO 2024 CKD guideline (Kidney Int 105(4S)) | same | 2026-06-16 | current -- the 2024 edition is the latest; Class B, review on-publication of the next KDIGO CKD guideline. The G/A category cut-points are stable across the 2012 and 2024 editions |

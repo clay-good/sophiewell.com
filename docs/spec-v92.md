@@ -1,6 +1,6 @@
 # spec-v92.md — Nephrology: KDIGO CKD staging, urine albumin/protein ratios, dialysis adequacy, contrast-nephropathy risk, and cystatin-C eGFR (+5 tiles)
 
-> Status: **PROPOSED (2026-06-16).** Wave 2 feature spec of the
+> Status: **SHIPPED (2026-06-16).** Wave 2 feature spec of the
 > [spec-v85](spec-v85.md) Advanced Clinical Calculators program (the nephrology slot,
 > [spec-v85](spec-v85.md) §4 roster). Adds **5** deterministic nephrology tools that
 > close confirmed gaps in the renal cluster: the KDIGO CKD G×A risk heat-map, the

@@ -23,6 +23,7 @@ import { renderers as RV14 } from './views/group-v14.js';
 import { renderers as RV15 } from './views/group-v15.js';
 import { renderers as RV16 } from './views/group-v16.js';
 import { renderers as RV17 } from './views/group-v17.js';
+import { renderers as RV18 } from './views/group-v18.js';
 import { renderers as RV63 } from './views/group-v63.js';
 import { renderers as RB } from './views/group-b.js';
 import { renderers as RPALINT } from './views/pa-lint.js';
@@ -41,7 +42,7 @@ import { resolvePrompt } from './lib/prompt.js';
 // artifact-detect / artifact-route / artifact-handoff helpers were
 // deleted in spec-v29 wave 29-2 (Group C/L).
 
-const RENDERERS = { ...RA, ...RB, ...RC, ...RE, ...RF, ...RG, ...RH, ...RI, ...RJ, ...RKLMNO, ...RV5, ...RV6, ...RV7, ...RV8, ...RV9, ...RV10, ...RV11, ...RV12, ...RV13, ...RV14, ...RV15, ...RV16, ...RV17, ...RV63, ...RPALINT };
+const RENDERERS = { ...RA, ...RB, ...RC, ...RE, ...RF, ...RG, ...RH, ...RI, ...RJ, ...RKLMNO, ...RV5, ...RV6, ...RV7, ...RV8, ...RV9, ...RV10, ...RV11, ...RV12, ...RV13, ...RV14, ...RV15, ...RV16, ...RV17, ...RV18, ...RV63, ...RPALINT };
 
 // ----- Utility registry ----------------------------------------------------
 // Source of truth for routes, names, group, audiences, and clinical flag.
@@ -518,6 +519,16 @@ const UTILITIES = [
   { id: 'gap-ipf',                name: 'GAP Index (idiopathic pulmonary fibrosis)',        group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'predicted-spirometry',   name: 'Predicted Spirometry + LLN (GLI-2012)',            group: 'E', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'mmrc-dyspnea',           name: 'mMRC Dyspnea Scale',                               group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  // spec-v92 (Wave 2 of the spec-v85 Advanced Clinical Calculators program):
+  // nephrology. KDIGO CKD G×A staging, spot urine albumin/protein ratios,
+  // hemodialysis adequacy (URR + Daugirdas Kt/V), the Mehran contrast-nephropathy
+  // risk score, and the 2021 race-free CKD-EPI cystatin-C eGFR.
+  // views/group-v18.js, lib/nephro-v92.js.
+  { id: 'ckd-staging',            name: 'KDIGO CKD Staging (G×A risk)',                     group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'uacr-upcr',              name: 'Urine Albumin/Protein-to-Creatinine Ratio',        group: 'E', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'ktv-urr',                name: 'Dialysis Adequacy (URR + Kt/V)',                   group: 'E', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'mehran-cin',             name: 'Mehran Contrast-Induced Nephropathy Risk',         group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'ckd-epi-cystatin',       name: 'CKD-EPI 2021 Cystatin-C eGFR (race-free)',         group: 'E', audiences: ['clinicians', 'educators'], clinical: true },
 
   // spec-v6 §3.3: lab result interpreter. Patient-decoder category.
   { id: 'lab-interpret',       name: 'Lab Result Interpreter',                           group: 'C', audiences: ['patients', 'clinicians', 'educators'], clinical: true },
