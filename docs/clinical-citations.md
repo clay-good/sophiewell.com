@@ -487,3 +487,38 @@ documented level >20 mg/dL, recent ingestion + gap >10, or strong suspicion +
 >=2 of (pH<7.3, bicarbonate<20, gap>10). A normal gap does not exclude.
 Worked example: measured 305, Na 140, glucose 90, BUN 14, ethanol 0 ->
 calculated 290, osmolar gap 15.
+
+## spec-v87 hemodynamics & ICU physiology
+
+### Hemodynamics: Cardiac Index, Stroke Volume, SVR/PVR Suite
+Citation: Swan HJC, Ganz W, Forrester J, et al. Catheterization of the heart
+in man with use of a flow-directed balloon-tipped catheter. N Engl J Med.
+1970;283(9):447-451. PVR in Wood units and the <2 WU threshold: 2022 ESC/ERS
+Guidelines for pulmonary hypertension (Humbert M, et al. Eur Heart J.
+2022;43(38):3618-3731).
+Formulas: CI = CO/BSA; SV = CO/HR x 1000; SVI = SV/BSA; SVR = 80*(MAP-CVP)/CO;
+SVRI = SVR*BSA; PVR = 80*(mPAP-PCWP)/CO (dynes); PVR(Wood) = (mPAP-PCWP)/CO;
+PVRI = PVR*BSA. The x80 factor converts mmHg/(L/min) to dynes*s*cm^-5. Normal
+ranges: CI 2.5-4.0, SV 60-100, SVI 33-47, SVR 800-1200, PVR <2 Wood units.
+Worked example: CO 5, HR 80, BSA 2, MAP 90, CVP 5, mPAP 20, PCWP 10 ->
+CI 2.5, SV 62.5, SVR 1360, PVR 2 Wood units, PVRI 320.
+
+### Mechanical Power of Ventilation (Gattinoni)
+Citation: Gattinoni L, Tonetti T, Cressoni M, et al. Ventilator-related causes
+of lung injury: the mechanical power. Intensive Care Med. 2016;42(10):1567-1575.
+Higher-risk association above ~17 J/min: Serpa Neto A, et al. Intensive Care
+Med. 2018;44(11):1914-1922.
+Formula: MP (J/min) = 0.098 * RR * Vt(L) * (Ppeak - 0.5*(Pplat-PEEP)); the
+0.098 constant converts cmH2O*L to joules. Driving pressure = Pplat - PEEP.
+Worked example: RR 22, Vt 420, Pplat 26, PEEP 12, Ppeak 32 -> driving pressure
+14, mechanical power 22.6 J/min (over the 17 J/min higher-VILI-risk threshold).
+
+### Physiologic Dead-Space Fraction (Bohr-Enghoff Vd/Vt)
+Citation: Enghoff modification of the Bohr equation; prognostic value in ARDS:
+Nuckton TJ, Alonso JA, Kallet RH, et al. Pulmonary dead-space fraction as a
+risk factor for death in the acute respiratory distress syndrome. N Engl J Med.
+2002;346(17):1281-1287.
+Formula: Vd/Vt = (PaCO2 - PECO2) / PaCO2 (Enghoff). PECO2 is the mixed-expired
+CO2; EtCO2 (end-tidal) is a bedside surrogate that underestimates true dead
+space. Nuckton 2002: Vd/Vt >0.6 carried independent mortality risk in ARDS.
+Worked example: PaCO2 60, PECO2 20 -> Vd/Vt 0.67 (67%), above the 0.6 threshold.

@@ -6,6 +6,35 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v87: hemodynamics & ICU physiology, +3)
+
+- Second feature spec of the [spec-v85](docs/spec-v85.md) Advanced Clinical
+  Calculators program. Three deterministic critical-care physiology
+  calculators join Group E (Clinical Math & Conversions):
+  - **`hemodynamic-suite`** — the pulmonary-artery-catheter cardiac-index /
+    stroke-volume / SVR / PVR resistance suite (Swan-Ganz 1970). From an entered
+    cardiac output and the catheter pressures it computes CI, SV, SVI, SVR,
+    SVRI, PVR, and PVRI, each with its normal-range flag; PVR is reported in
+    **both** dynes·s·cm⁻⁵ and Wood units (the 2022 ESC/ERS <2 WU threshold), the
+    ×80 conversion shown. Cross-links `cao2-do2` (oxygen delivery from the same
+    CO). A zero/blank cardiac output surfaces a guarded fallback, never Infinity.
+  - **`mechanical-power`** — the Gattinoni 2016 simplified mechanical power of
+    ventilation, MP = 0.098 × RR × Vt(L) × (Ppeak − ½ × driving pressure), with
+    the driving-pressure intermediate shown and the **>17 J/min** higher-VILI-
+    risk flag (Serpa Neto 2018).
+  - **`dead-space`** — the Bohr-Enghoff physiologic dead-space fraction Vd/Vt =
+    (PaCO₂ − PĒCO₂) / PaCO₂ (Enghoff form), with the **>0.6** ARDS-mortality flag
+    (Nuckton 2002); when an end-tidal EtCO₂ is used in place of mixed-expired
+    PĒCO₂ the output labels the estimate as an underestimating surrogate.
+- Each ships an inline primary citation + `citationUrl` + `accessed`, a
+  per-source interpretation block, ≥3 boundary unit examples (incl. a
+  cardiogenic-shock pattern, the 17 J/min flip, and the implausible/surrogate
+  dead-space cases), a [spec-v11](docs/spec-v11.md) audit log, and joins the
+  [spec-v59](docs/spec-v59.md) fuzz harness (zero non-finite leaks). No new
+  bundled dataset (doctrine clause 2). The ESC/ERS 2022 PVR threshold is a
+  Class-B revisable guideline value with a [citation-staleness](docs/citation-staleness.md)
+  row. Catalog 369 → 372 (+3).
+
 ### Added (spec-v86: toxicology decision rules, +3)
 
 - First feature spec of the [spec-v85](docs/spec-v85.md) Advanced Clinical

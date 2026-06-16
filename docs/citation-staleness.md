@@ -140,3 +140,21 @@ fixed published decision rule (Class A) with no calendar revision.
 | serotonin-toxicity | Hunter Serotonin Toxicity Criteria | Dunkley 2003 (QJM 96(9):635-642) | same | 2026-06-16 | current — fixed published decision rule (Class A); no calendar revision (documentation only — does not match the issuer pattern) |
 | salicylate-toxicity | EXTRIP salicylate hemodialysis recommendation | EXTRIP Workgroup 2015 (Ann Emerg Med 66(2):165-181) | same | 2026-06-16 | current — 2015 EXTRIP recommendations are the latest; review on next EXTRIP publication (documentation only — does not match the issuer pattern) |
 | toxic-alcohol | AACT methanol / ethylene-glycol fomepizole indication | Barceloux methanol 2002 / ethylene glycol 1999 (J Toxicol Clin Toxicol) | same | 2026-06-16 | current — AACT practice guidelines; osmolar-gap arithmetic (Smithline 1976) is a stable formula (documentation only — does not match the issuer pattern) |
+
+## spec-v87 hemodynamics & ICU physiology (added 2026-06-16)
+
+Second feature spec of the spec-v85 Advanced Clinical Calculators program. Only
+`hemodynamic-suite` cites a guideline issuer in the pattern set (ESC), and its
+revisable value is the **Class B** ESC/ERS 2022 PVR threshold (PVR > 2 Wood
+units defines pre-capillary pulmonary hypertension); review on the next ESC/ERS
+pulmonary-hypertension guideline edition. The Swan-Ganz resistance arithmetic
+itself is a fixed formula (Class A). `mechanical-power` (Gattinoni 2016 /
+Serpa Neto 2018) and `dead-space` (Bohr-Enghoff / Nuckton 2002) are fixed
+published equations with no issuer-pattern acronym (Class A; documentation
+only) and are recorded here for completeness.
+
+| tile id | instrument | edition shipped | latest known edition | accessed | justification if behind |
+|---|---|---|---|---|---|
+| hemodynamic-suite | ESC/ERS PVR threshold (> 2 Wood units) | 2022 ESC/ERS PH guideline (Eur Heart J 43(38):3618-3731) | same | 2026-06-16 | current — 2022 ESC/ERS is the latest edition; Class B, review on the next ESC/ERS PH guideline. Swan-Ganz resistance arithmetic is a stable formula (Class A) |
+| mechanical-power | Gattinoni mechanical-power equation + Serpa Neto 17 J/min association | Gattinoni 2016 (Intensive Care Med 42(10)) / Serpa Neto 2018 (44(11)) | same | 2026-06-16 | current — fixed published equation (Class A); no calendar revision (documentation only — does not match the issuer pattern) |
+| dead-space | Bohr-Enghoff Vd/Vt + Nuckton 0.6 ARDS threshold | Nuckton 2002 (N Engl J Med 346(17):1281-1287) | same | 2026-06-16 | current — fixed published equation (Class A); no calendar revision (documentation only — does not match the issuer pattern) |

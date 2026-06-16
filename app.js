@@ -18,6 +18,7 @@ import { renderers as RV9 } from './views/group-v9.js';
 import { renderers as RV10 } from './views/group-v10.js';
 import { renderers as RV11 } from './views/group-v11.js';
 import { renderers as RV12 } from './views/group-v12.js';
+import { renderers as RV13 } from './views/group-v13.js';
 import { renderers as RV63 } from './views/group-v63.js';
 import { renderers as RB } from './views/group-b.js';
 import { renderers as RPALINT } from './views/pa-lint.js';
@@ -36,7 +37,7 @@ import { resolvePrompt } from './lib/prompt.js';
 // artifact-detect / artifact-route / artifact-handoff helpers were
 // deleted in spec-v29 wave 29-2 (Group C/L).
 
-const RENDERERS = { ...RA, ...RB, ...RC, ...RE, ...RF, ...RG, ...RH, ...RI, ...RJ, ...RKLMNO, ...RV5, ...RV6, ...RV7, ...RV8, ...RV9, ...RV10, ...RV11, ...RV12, ...RV63, ...RPALINT };
+const RENDERERS = { ...RA, ...RB, ...RC, ...RE, ...RF, ...RG, ...RH, ...RI, ...RJ, ...RKLMNO, ...RV5, ...RV6, ...RV7, ...RV8, ...RV9, ...RV10, ...RV11, ...RV12, ...RV13, ...RV63, ...RPALINT };
 
 // ----- Utility registry ----------------------------------------------------
 // Source of truth for routes, names, group, audiences, and clinical flag.
@@ -501,6 +502,12 @@ const UTILITIES = [
   { id: 'cao2-do2',            name: 'Arterial O2 Content (CaO2) + O2 Delivery (DO2)',   group: 'E', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'oxygenation-index',   name: 'Oxygenation Index (OI) + Oxygen Saturation Index (OSI)', group: 'E', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'driving-pressure',    name: 'Driving Pressure + static/dynamic compliance',     group: 'E', audiences: ['clinicians', 'educators'], clinical: true },
+  // spec-v87 §2: critical-care physiology - PA-catheter resistance suite,
+  // mechanical power of ventilation, Bohr-Enghoff dead-space fraction.
+  // views/group-v13.js, lib/hemodynamics-v87.js.
+  { id: 'hemodynamic-suite',   name: 'Hemodynamics: Cardiac Index, Stroke Volume, SVR/PVR Suite', group: 'E', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'mechanical-power',    name: 'Mechanical Power of Ventilation (Gattinoni)',      group: 'E', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'dead-space',          name: 'Physiologic Dead-Space Fraction (Bohr-Enghoff Vd/Vt)', group: 'E', audiences: ['clinicians', 'educators'], clinical: true },
   // spec-v65 §2.2-2.3: gas-exchange ventilation target and cerebral perfusion pressure.
   { id: 'minute-ventilation',  name: 'Minute Ventilation + Target-PaCO2 Rate',           group: 'E', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'cerebral-perfusion-pressure', name: 'Cerebral Perfusion Pressure (CPP = MAP - ICP)', group: 'E', audiences: ['clinicians', 'educators'], clinical: true },
