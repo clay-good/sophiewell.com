@@ -65,12 +65,13 @@ External grades to check:
 ## Manual smoke test
 
 1. Visit https://sophiewell.com.
-2. Filter by audience and group; search for a tile.
+2. Use the hero search or the browse-by-category links to find a tile.
 3. Open a clinical calculator (BMI, drip rate); confirm the inline notice
    from spec section 9 is visible.
-4. Open the Bill Decoder; paste a test bill; verify codes resolve.
-5. Open the CPT Code Reference; confirm the AMA notice is shown and no
-   AMA descriptors appear.
+4. Open a billing tile (e.g. `em-time` or `ndc-convert`); enter inputs and
+   verify the computed code/units and inline notice render.
+5. Open `em-mdm` (2021 E/M level by medical decision-making); confirm the
+   AMA notice is shown and no verbatim AMA descriptors appear.
 6. In the developer tools console:
    - Run `await fetch('https://example.com/')` and verify it is blocked
      by CSP.

@@ -8,6 +8,15 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- Documentation accuracy: the [README](README.md) CLI reference said the unit
+  suite is `3,571 tests`; it is **3,573**. The [deployment](docs/deployment.md)
+  manual smoke test referenced UI and tiles that no longer exist — an
+  "audience/group filter" (removed when the filter/grid machinery was deleted;
+  only the hero search + browse-by-category links remain), the "Bill Decoder,"
+  and the "CPT Code Reference" (both static code-index surfaces retired in
+  spec-v29). Those steps now point at the live hero search and the `em-time` /
+  `ndc-convert` / `em-mdm` billing tiles. Docs-only; no catalog or behavior
+  change (still 366 tiles).
 - The service worker now precaches the **complete** application shell, so an
   offline cold reload no longer renders a broken topbar logo or drops the
   favicons/manifest (spec-v84). [spec-v75](docs/spec-v75.md) set out to precache
