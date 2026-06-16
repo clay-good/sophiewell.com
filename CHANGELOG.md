@@ -6,6 +6,20 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Fixed
+
+- `icd10-validate` (spec-v83) no longer fires a 404 (and the accompanying
+  console error) when the entered code's first letter has no bundled shard. The
+  bundled `data/icd10cm` set is a small offline seed covering only some letters
+  (A, E, I, J, K, M, N, R, Z); typing an S- or T-chapter code — *exactly* the
+  injury/poisoning codes whose missing 7th character this tile flags — requested
+  a shard that does not exist. The on-demand existence check now consults the
+  manifest's shard list first and skips the fetch when the letter isn't bundled;
+  the structural/specificity verdict (which never depended on the shard) is
+  unchanged. Guarded by [test/integration/icd10-validate-shard.spec.js](test/integration/icd10-validate-shard.spec.js)
+  (a fast focused check) in addition to the broad `tool-interactions` sweep that
+  caught it.
+
 ### Added (spec-v83 — claim integrity & facility payment: validate the identifiers, balance the remittance, price the institutional claim; +6 tiles, catalog 360 -> 366; spec-v77 program complete, 337 -> 366, +29)
 
 Sixth and **final** feature spec of the [spec-v77](docs/spec-v77.md) billing &

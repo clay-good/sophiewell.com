@@ -15,7 +15,7 @@
 
 import { el, clear } from '../lib/dom.js';
 import { fmt } from '../lib/num.js';
-import { loadAllShards, loadFile, loadShard } from '../lib/data.js';
+import { loadAllShards, loadFile, loadManifest, loadShard } from '../lib/data.js';
 import * as Bill from '../lib/billing-v78.js';
 import * as Edit from '../lib/billing-v79.js';
 import * as Em from '../lib/billing-v80.js';
@@ -926,10 +926,18 @@ export const renderers = {
     }));
     // Load the shard for the entered code's first letter on demand for the
     // existence note; degrades silently to structural-only on any failure.
+    // The bundled set is a small offline seed covering only some letters, so we
+    // consult the manifest's shard list FIRST and skip the fetch when the letter
+    // isn't bundled -- requesting a missing shard would 404 (and emit a console
+    // error) even though the structural verdict never depends on it.
     const reloadShard = () => {
       const letter = str('icd-in').trim().toUpperCase().charAt(0);
       if (!/^[A-Z]$/.test(letter)) return;
-      loadShard('icd10cm', `${letter}.json`).then((rows) => {
+      loadManifest('icd10cm').then((m) => {
+        const has = Array.isArray(m.shards) && m.shards.some((s) => s.name === `${letter}.json`);
+        if (!has) return null;
+        return loadShard('icd10cm', `${letter}.json`);
+      }).then((rows) => {
         if (!root.isConnected || !Array.isArray(rows)) return;
         existsByLetter = new Set(rows.map((x) => String(x.code || '').replace('.', '').toUpperCase()));
         const ev = () => { const n = document.getElementById('icd-in'); if (n) n.dispatchEvent(new Event('input', { bubbles: true })); };

@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `bd465f15e2ad0ccb`
-Generated: 2026-06-15T23:04:48.907Z
+Build ID: `f283544a11f5557e`
+Generated: 2026-06-16T03:18:03.928Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=20.18.1 <21, npm >=10.0.0
@@ -104,7 +104,7 @@ downloads is committed in this repository and is hashed below.
 | `lib/unit-convert.js` | 2520 | `0a191eec26a96b8b8dc448ee9ebf59e7eba8bac036eccfd138da297b83082465` |
 | `lib/workflow-v4.js` | 7999 | `927a8a476e2c1b124c9e51040e549001b580b0baf2a4409ce463a0681fd08a72` |
 | `views/group-a.js` | 577 | `eed37c656d1fa00c097a07f07db4b1b6ac7a0a74bafc210978265a1d90856bd7` |
-| `views/group-b.js` | 73728 | `1b48361cb5082396e399accbae4fb477760d67a46334091b49b985d490bc8662` |
+| `views/group-b.js` | 74248 | `d70e83be8d304672f596e7464c807a3b928f7bffe5265b5915c9471b90681442` |
 | `views/group-c.js` | 24109 | `740cf6e20ec90c4d71f1a1b06abef48d14b859e19bed7a365b607ac31a4b2e2e` |
 | `views/group-e.js` | 38675 | `55774a9d04f49a1f2485291ac0432b964180fa477616e0b7a93602b316eeb47d` |
 | `views/group-f.js` | 45852 | `2fccf536b26c6a95db431dd28bd6d05ae582d3fcc746d463e9cc40837a4578e6` |
