@@ -5,7 +5,7 @@
 <h1 align="center">sophiewell.com</h1>
 
 <p align="center">
-  <strong>395 deterministic healthcare calculators tuned to the nurse on shift.</strong><br>
+  <strong>401 deterministic healthcare calculators tuned to the nurse on shift.</strong><br>
   Free forever. No servers, no accounts, no telemetry, no AI, no network call after first paint.
 </p>
 
@@ -36,7 +36,7 @@ output; "searchable lookup of static facts" does not qualify. See
 [docs/spec-v10.md](docs/spec-v10.md) for the audience and
 dependency-budget commitments and
 [docs/spec-v29.md](docs/spec-v29.md) for the nurse-first pivot
-and the v29 catalog ledger. At v92 close the catalog is 395
+and the v29 catalog ledger. At v93 close the catalog is 401
 deterministic tiles — every one of them computes from at least
 one user input. The catalog reached its present size on two tracks.
 **New tiles:** spec-v63 added the operations counterpart to the bedside
@@ -186,7 +186,7 @@ production security headers. Any static file server will also work.
 ## How it works and how to use it
 
 Since the spec-v29 nurse-first prune the catalog has grown one
-reviewable spec at a time to **395** deterministic calculators
+reviewable spec at a time to **401** deterministic calculators
 (the full per-version history is in [CHANGELOG.md](CHANGELOG.md)
 and `docs/spec-v*.md`; the most recent bedside additions are
 summarized in the cheat sheets below). They organize across the
@@ -798,6 +798,40 @@ math, the Daugirdas Kt/V, the 2004 Mehran weights, the 2021 CKD-EPI coefficients
 [citation-staleness](docs/citation-staleness.md) row read by
 `scripts/check-citation-cadence.mjs`. See [docs/spec-v92.md](docs/spec-v92.md).
 
+### Hepatology & GI disease activity: NAFLD fibrosis, Glasgow-Imrie pancreatitis, Truelove-Witts, Harvey-Bradshaw, Mayo UC & Milan criteria cheat sheet (spec-v93, Wave 2 of the spec-v85 program)
+
+Six deterministic hepatology & GI disease-activity instruments that close the
+catalog's **liver/gut** gap beside the existing chronic-liver and pancreatitis
+spine (`meld-childpugh`, `fib4`, `apri`, `ranson-bisap`, `maddrey-lille`). These
+are the disease-*activity* and fibrosis instruments a hepatology and GI clinic
+score constantly: the NAFLD-specific non-invasive fibrosis estimate, the parallel
+UK/European pancreatitis severity score, the two ulcerative-colitis activity
+indices, the Crohn's index, and the HCC transplant-eligibility criterion. Each
+passes the [spec-v29](docs/spec-v29.md) §3 one-line test, is a pure
+`lib/hepgi-v93.js` function fuzz-covered by the spec-v59 harness, and quotes the
+cited source's own band / class / index / criterion. This takes the catalog to 401.
+
+| id | Formula / rule | Output | Reaches for it |
+|---|---|---|---|
+| `nafld-fibrosis` | NFS = −1.675 + 0.037·age + 0.094·BMI + 1.13·(IFG/DM) − 0.013·platelets − 0.66·albumin + 0.99·(AST/ALT) | score + band: < −1.455 excludes advanced fibrosis, > 0.676 indicates it, between is indeterminate; ALT = 0 guarded | NAFLD-specific fibrosis triage beside FIB-4/APRI |
+| `glasgow-imrie` | PANCREAS at 48 h, 1 point each (PaO₂, age, WBC, Ca, urea, LDH, albumin, glucose) | total 0–8, severe ≥ 3; blank item is "not assessed", and the count of items scored is shown | the UK/European alternative to Ranson/BISAP |
+| `truelove-witts` | ≥ 6 bloody stools/day plus ≥ 1 systemic criterion (temp, HR, Hgb, ESR) | mild / moderate / severe, naming which systemic criteria are met | acute UC severity at the admit decision |
+| `harvey-bradshaw` | wellbeing + pain + liquid stools/day + abdominal mass + complications | total HBI, bands: remission < 5, mild 5–7, moderate 8–16, severe > 16 | Crohn's disease activity in clinic |
+| `mayo-uc` | full Mayo (0–12) = stool + bleeding + PGA + endoscopy; partial Mayo (0–9) omits endoscopy | banded score with the form labeled, so a partial score is never read against full-score bands | UC activity in trials and follow-up |
+| `milan-criteria` | single tumor ≤ 5 cm OR ≤ 3 nodules each ≤ 3 cm, AND no macrovascular invasion AND no extrahepatic spread | within / exceeds, naming the failing limb | HCC transplant-eligibility screen beside MELD |
+
+The one guarded domain is `nafld-fibrosis`'s AST/ALT division — a blank/zero ALT
+surfaces a labeled fallback rather than a `NaN`/`Infinity` term; the other five
+are point-table or decision logic. `glasgow-imrie` never lets a partial 48-hour
+panel masquerade as a complete low score, `truelove-witts` reports a near-miss as
+the band it actually falls in, `mayo-uc` keys the partial-vs-full fallback on the
+endoscopy subscore, and `milan-criteria` guards a zero count / missing size. All
+six are **Class A** fixed published derivations (Angulo 2007, Blamey/Imrie 1984,
+Truelove & Witts 1955, Harvey-Bradshaw 1980, Schroeder 1987, Mazzaferro 1996), so
+**none carries a [citation-staleness](docs/citation-staleness.md) row** — their
+citations name journals and authors, not a recurring guideline issuer. See
+[docs/spec-v93.md](docs/spec-v93.md).
+
 ### Billing & reimbursement: what Medicare pays, whether the line survives, how the visit codes, what the drug bills, what the patient owes, and whether the claim is clean (spec-v77 → spec-v83, program complete)
 
 The catalog has always been strong on the clinician at the bedside and competent
@@ -1121,7 +1155,7 @@ long version, see [docs/architecture.md](docs/architecture.md).
  │  manifests (data/)            │  static │        ▼                     ▼             │
  │        │  scripts/build       │  files  │   lazy-load data shard   pure compute      │
  │        ▼                      │         │   (verified vs manifest)  (lib/*.js)       │
- │  dist/  (395 tool pages,      │         │        │                     │             │
+ │  dist/  (401 tool pages,      │         │        │                     │             │
  │  OG cards, sitemap, SBOM)     │         │        ▼                     ▼             │
  └───────────────────────────────┘         │   service worker cache    result + cite   │
                                             │   (keyed to build hash)                    │
@@ -1141,7 +1175,7 @@ session, and nothing to log.
 index.html          single-page shell (hero-search combobox + static browse-by-category nav, tile mount)
 styles.css          one stylesheet (responsive; no horizontal scroll — enforced catalog-wide at 320px in CI)
 app.js              router, hero-search wiring, view wiring, the UTILITIES catalog
-                    (395 tiles — the single source of truth; zero runtime deps)
+                    (401 tiles — the single source of truth; zero runtime deps)
 sw.js               service worker — precache shell, cache shards by build hash
 theme.js            light/dark theme toggle (writes only sw-theme, allowlisted)
 lib/input-persist.js opt-in "remember my inputs" (off by default; numbers only)
@@ -1159,12 +1193,12 @@ docs/               specs (spec-v4 … spec-v84) + per-tile v11/v12 audit logs +
                     citation-staleness ledger +
                     architecture / threat-model / …
 test/               unit/ (node:test) · integration/ (Playwright) · fixtures/
-dist/               build output (395 tool pages, OG cards, sitemap, SBOM)
+dist/               build output (401 tool pages, OG cards, sitemap, SBOM)
 ```
 
-### Discovery: how a query finds the right tool among 395
+### Discovery: how a query finds the right tool among 401
 
-With 395 tiles, search quality *is* the product — a tool you cannot find does
+With 401 tiles, search quality *is* the product — a tool you cannot find does
 not exist. Discovery is deterministic and offline (no fuzzy-match service, no
 embedding model, no AI). The home `#hero-search` combobox builds its dropdown
 from two complementary rankers, both pure functions of the typed query:
@@ -1237,10 +1271,10 @@ A login-less, AI-free calculator earns trust only if the nurse can see, on the
 tile, exactly which published source produced the number — and tell whether that
 source is current. spec-v54 defined the invariants; spec-v60 built the machinery
 (the gate, the ledger, and the `citationAccessed` convention) and extended it
-across the full 395-tile catalog, pinning the last three unpinned "current
+across the full 401-tile catalog, pinning the last three unpinned "current
 edition" phrases and re-verifying every guideline tile against its latest known
 edition. Three invariants make that auditable, each enforced by the
-`check-citations.mjs` lint gate (in the `npm run lint` chain) over all 395 tiles:
+`check-citations.mjs` lint gate (in the `npm run lint` chain) over all 401 tiles:
 
 | Invariant | Rule | Enforcement |
 |---|---|---|
@@ -1697,7 +1731,7 @@ rules, not soft preferences.
 | `npm run build`          | Copy static files into `dist/` for deployment                     |
 | `npm test`               | Run the full test suite (unit, a11y, grep, data integrity)        |
 | `npm run test:unit`      | Run Node's built-in unit tests (3,613 tests)                      |
-| `npm run test:e2e`       | Build `dist/`, then run Playwright integration tests against real browsers — incl. a full-catalog 320px no-horizontal-scroll sweep over both the SPA routes and the 395 pre-rendered static tool pages, the hub/topic/commitments pages, and the citation-wrap pin |
+| `npm run test:e2e`       | Build `dist/`, then run Playwright integration tests against real browsers — incl. a full-catalog 320px no-horizontal-scroll sweep over both the SPA routes and the 401 pre-rendered static tool pages, the hub/topic/commitments pages, and the citation-wrap pin |
 | `npm run test:a11y`      | Run accessibility checks on every utility view                    |
 | `npm run lint`           | ESLint + the CI gate chain: grep-check, output-safety, citation-integrity, catalog-truth, commitments, PA staleness, PA audit |
 | `npm run data:refresh`   | Re-fetch and re-shard every public dataset                        |
@@ -1781,7 +1815,7 @@ build, integrity-verified data shards) are documented in
 - [docs/spec-v11.md](docs/spec-v11.md) — correctness-floor spec:
   per-tile audit protocol, specialty-named groups, optional
   source-quoted `interpretation` field. Audit coverage is **complete
-  — 395/395 tiles** carry a committed per-tile audit log
+  — 401/401 tiles** carry a committed per-tile audit log
   (`docs/audits/v11/<id>.md` for the pre-v78 catalog;
   `docs/audits/v12/<id>.md` for the twenty-nine spec-v78–v83 billing &
   coding program tiles)

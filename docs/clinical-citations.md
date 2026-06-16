@@ -752,3 +752,58 @@ confirmatory estimate), and eGFRcr (creatinine only), all without a race
 coefficient, in mL/min/1.73m².
 Worked example: female 70, cystatin 1.5, creatinine 1.1 -> eGFRcys 40.6,
 eGFRcr-cys 47.4, eGFRcr 54.1.
+
+### NAFLD Fibrosis Score
+Citation: Angulo P, Hui JM, Marchesini G, et al. The NAFLD fibrosis score: a
+noninvasive system that identifies liver fibrosis in patients with NAFLD.
+Hepatology. 2007;45(4):846-854.
+Rule: NFS = -1.675 + 0.037*age + 0.094*BMI + 1.13*(IFG/DM) - 0.013*platelets
+- 0.66*albumin + 0.99*(AST/ALT); < -1.455 excludes advanced fibrosis (F0-F2),
+> 0.676 indicates advanced fibrosis (F3-F4), between is indeterminate.
+Worked example: age 60, BMI 30, IFG/DM, AST 60, ALT 40, platelets 200, albumin
+4.0 -> NFS 0.74 (advanced fibrosis).
+
+### Modified Glasgow (Imrie) Pancreatitis Severity
+Citation: Blamey SL, Imrie CW, O'Neill J, et al. Prognostic factors in acute
+pancreatitis. Gut. 1984;25(12):1340-1346.
+Rule: PANCREAS at 48 hours, one point each: PaO2 < 60 mmHg, age > 55, WBC > 15,
+calcium < 2 mmol/L, urea > 16 mmol/L, LDH > 600 IU/L, albumin < 32 g/L, glucose
+> 10 mmol/L; >= 3 predicts severe pancreatitis.
+Worked example: PaO2 55, age 60, urea 20, glucose 12 (4 of 8 met) -> 4, severe.
+
+### Truelove & Witts UC Severity
+Citation: Truelove SC, Witts LJ. Cortisone in ulcerative colitis; final report on
+a therapeutic trial. BMJ. 1955;2(4947):1041-1048.
+Rule: severe = >= 6 bloody stools/day plus >= 1 of temperature > 37.8 C, heart
+rate > 90, hemoglobin < 10.5 g/dL, ESR > 30 mm/h; mild = < 4 stools/day with
+minimal systemic disturbance; moderate is intermediate.
+Worked example: 8 bloody stools/day with fever, tachycardia, anemia and a high
+ESR -> severe.
+
+### Harvey-Bradshaw Index (Crohn's activity)
+Citation: Harvey RF, Bradshaw JM. A simple index of Crohn's-disease activity.
+Lancet. 1980;1(8167):514.
+Rule: wellbeing (0-4) + abdominal pain (0-3) + liquid stools/day + abdominal mass
+(0-3) + 1 point per complication; remission < 5, mild 5-7, moderate 8-16, severe
+> 16.
+Worked example: wellbeing 2, pain 2, stools 4, mass 1, 1 complication -> 10,
+moderate.
+
+### Mayo Score / Partial Mayo (ulcerative colitis)
+Citation: Schroeder KW, Tremaine WJ, Ilstrup DM. Coated oral 5-aminosalicylic
+acid therapy for mildly to moderately active ulcerative colitis. N Engl J Med.
+1987;317(26):1625-1629.
+Rule: full Mayo (0-12) = stool frequency + rectal bleeding + physician global +
+endoscopy (each 0-3); remission 0-2, mild 3-5, moderate 6-10, severe 11-12. The
+partial Mayo (0-9) omits endoscopy (remission 0-2, mild 3-4, moderate 5-6, severe
+7-9).
+Worked example: stool 2, bleeding 2, PGA 2, endoscopy 2 -> full Mayo 8, moderate.
+
+### Milan Criteria (HCC transplant eligibility)
+Citation: Mazzaferro V, Regalia E, Doci R, et al. Liver transplantation for the
+treatment of small hepatocellular carcinomas in patients with cirrhosis. N Engl J
+Med. 1996;334(11):693-699.
+Rule: within = a single tumor <= 5 cm OR <= 3 nodules each <= 3 cm, AND no
+macrovascular invasion AND no extrahepatic spread; otherwise exceeds. Reports the
+criterion only, not a listing decision.
+Worked example: 1 nodule 4.5 cm, no invasion, no spread -> within Milan criteria.

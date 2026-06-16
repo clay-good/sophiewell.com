@@ -6,6 +6,57 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v93: hepatology & GI disease activity, +6)
+
+- **Fourth feature spec of Wave 2** of the [spec-v85](docs/spec-v85.md) Advanced
+  Clinical Calculators program. Six deterministic hepatology & GI
+  disease-activity instruments that close the catalog's **liver/gut** gap: the
+  catalog shipped the chronic-liver and pancreatitis spine (`meld-childpugh`,
+  `fib4`, `apri`, `ranson-bisap`, `maddrey-lille`) but none of the
+  disease-*activity* / fibrosis instruments a hepatology and GI clinic score
+  daily. These six fill that gap (catalog **395 → 401**, all Group G):
+  - **`nafld-fibrosis`** — the **NAFLD Fibrosis Score** (Angulo 2007):
+    `NFS = −1.675 + 0.037·age + 0.094·BMI + 1.13·(IFG/DM) − 0.013·platelets − 0.66·albumin + 0.99·(AST/ALT)`,
+    banded < −1.455 excludes advanced fibrosis (F0–F2), > 0.676 indicates it
+    (F3–F4), between is indeterminate. The AST/ALT division guards a blank/zero
+    ALT. **Class A**. Cross-links `fib4`, `apri`.
+  - **`glasgow-imrie`** — the **modified Glasgow (Imrie)** acute-pancreatitis
+    severity (Blamey/Imrie 1984): the eight-item PANCREAS 48-hour score, one
+    point each, ≥ 3 predicts severe. A blank item is "not assessed", not zero;
+    the count of items scored is reported. **Class A**. Cross-links
+    `ranson-bisap`.
+  - **`truelove-witts`** — the **Truelove & Witts** acute ulcerative-colitis
+    severity (1955): severe = ≥ 6 bloody stools/day plus ≥ 1 systemic criterion
+    (temp > 37.8 °C, HR > 90, Hgb < 10.5 g/dL, ESR > 30 mm/h); mild / moderate
+    otherwise, naming the met criteria. **Class A**. Cross-links `mayo-uc`,
+    `harvey-bradshaw`.
+  - **`harvey-bradshaw`** — the **Harvey-Bradshaw Index** of Crohn's activity
+    (1980): wellbeing + pain + liquid stools/day + abdominal mass + complications,
+    banded remission < 5 / mild 5–7 / moderate 8–16 / severe > 16. Each ordinal
+    subscore is clamped. **Class A**. Cross-links `truelove-witts`, `mayo-uc`.
+  - **`mayo-uc`** — the **Mayo score / partial Mayo** for ulcerative colitis
+    (Schroeder 1987): full Mayo (0–12, all four subscores) or partial Mayo (0–9,
+    endoscopy omitted), with the form labeled so a partial score is never read
+    against the full-score bands. **Class A**. Cross-links `truelove-witts`,
+    `harvey-bradshaw`.
+  - **`milan-criteria`** — the **Milan criteria** for HCC transplant eligibility
+    (Mazzaferro 1996): within = a single tumor ≤ 5 cm OR ≤ 3 nodules each ≤ 3 cm,
+    AND no macrovascular invasion AND no extrahepatic spread; names the failing
+    limb. Reports the criterion only, not a listing decision. **Class A**.
+    Cross-links `meld-childpugh`.
+- Implementation: `lib/hepgi-v93.js` (joined to the spec-v59 fuzz harness; zero
+  non-finite leaks) + `views/group-v19.js` renderers + `app.js` UTILITIES rows /
+  RENDERERS wiring + `lib/meta.js` entries (inline citation + `citationUrl` +
+  `accessed` + per-source interpretation + examples pinned by the chromium
+  example-correctness sweep). Six spec-v11 audit logs, six clinical-citations
+  rows, scope ledger, README (Wave-2 narrative + hepatology/GI cheat sheet).
+  Catalog **395 → 401** across all 13 catalog-truth surfaces (+ architecture.md).
+  All six are **Class A** fixed published derivations — **no
+  `docs/citation-staleness.md` row** (the citations name journals and authors,
+  not a recurring guideline issuer, so `check-citations.mjs`'s `ISSUER_PATTERN`
+  does not match). No new specialty vocab (`surgery-general` reused for
+  `glasgow-imrie`).
+
 ### Added (spec-v92: nephrology, +5)
 
 - **Third feature spec of Wave 2** of the [spec-v85](docs/spec-v85.md) Advanced

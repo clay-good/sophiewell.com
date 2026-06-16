@@ -24,6 +24,7 @@ import { renderers as RV15 } from './views/group-v15.js';
 import { renderers as RV16 } from './views/group-v16.js';
 import { renderers as RV17 } from './views/group-v17.js';
 import { renderers as RV18 } from './views/group-v18.js';
+import { renderers as RV19 } from './views/group-v19.js';
 import { renderers as RV63 } from './views/group-v63.js';
 import { renderers as RB } from './views/group-b.js';
 import { renderers as RPALINT } from './views/pa-lint.js';
@@ -42,7 +43,7 @@ import { resolvePrompt } from './lib/prompt.js';
 // artifact-detect / artifact-route / artifact-handoff helpers were
 // deleted in spec-v29 wave 29-2 (Group C/L).
 
-const RENDERERS = { ...RA, ...RB, ...RC, ...RE, ...RF, ...RG, ...RH, ...RI, ...RJ, ...RKLMNO, ...RV5, ...RV6, ...RV7, ...RV8, ...RV9, ...RV10, ...RV11, ...RV12, ...RV13, ...RV14, ...RV15, ...RV16, ...RV17, ...RV18, ...RV63, ...RPALINT };
+const RENDERERS = { ...RA, ...RB, ...RC, ...RE, ...RF, ...RG, ...RH, ...RI, ...RJ, ...RKLMNO, ...RV5, ...RV6, ...RV7, ...RV8, ...RV9, ...RV10, ...RV11, ...RV12, ...RV13, ...RV14, ...RV15, ...RV16, ...RV17, ...RV18, ...RV19, ...RV63, ...RPALINT };
 
 // ----- Utility registry ----------------------------------------------------
 // Source of truth for routes, names, group, audiences, and clinical flag.
@@ -529,6 +530,17 @@ const UTILITIES = [
   { id: 'ktv-urr',                name: 'Dialysis Adequacy (URR + Kt/V)',                   group: 'E', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'mehran-cin',             name: 'Mehran Contrast-Induced Nephropathy Risk',         group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'ckd-epi-cystatin',       name: 'CKD-EPI 2021 Cystatin-C eGFR (race-free)',         group: 'E', audiences: ['clinicians', 'educators'], clinical: true },
+  // spec-v93 (Wave 2 of the spec-v85 Advanced Clinical Calculators program):
+  // hepatology & GI disease activity. The NAFLD Fibrosis Score, the modified
+  // Glasgow (Imrie) pancreatitis severity, Truelove & Witts and Mayo for
+  // ulcerative colitis, the Harvey-Bradshaw index for Crohn's, and the Milan
+  // criteria for HCC transplant eligibility. views/group-v19.js, lib/hepgi-v93.js.
+  { id: 'nafld-fibrosis',         name: 'NAFLD Fibrosis Score',                             group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'glasgow-imrie',          name: 'Modified Glasgow (Imrie) Pancreatitis Severity',   group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'truelove-witts',         name: 'Truelove & Witts UC Severity',                     group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'harvey-bradshaw',        name: 'Harvey-Bradshaw Index (Crohn’s activity)',         group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'mayo-uc',                name: 'Mayo Score / Partial Mayo (ulcerative colitis)',   group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'milan-criteria',         name: 'Milan Criteria (HCC transplant eligibility)',      group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
 
   // spec-v6 §3.3: lab result interpreter. Patient-decoder category.
   { id: 'lab-interpret',       name: 'Lab Result Interpreter',                           group: 'C', audiences: ['patients', 'clinicians', 'educators'], clinical: true },

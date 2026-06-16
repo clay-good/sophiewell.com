@@ -92,6 +92,7 @@ import * as rheumPeriopV89 from '../../lib/rheum-periop-v89.js';
 import * as cardioV90 from '../../lib/cardio-v90.js';
 import * as pulmV91 from '../../lib/pulm-v91.js';
 import * as nephroV92 from '../../lib/nephro-v92.js';
+import * as hepgiV93 from '../../lib/hepgi-v93.js';
 
 const MODULES = {
   'clinical.js': clinical,
@@ -128,6 +129,7 @@ const MODULES = {
   'cardio-v90.js': cardioV90,
   'pulm-v91.js': pulmV91,
   'nephro-v92.js': nephroV92,
+  'hepgi-v93.js': hepgiV93,
 };
 
 const MATRIX = [0, -1, 1e9, NaN, Infinity, -Infinity, '', undefined, null];

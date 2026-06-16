@@ -1,6 +1,6 @@
 # spec-v93.md — Hepatology & GI disease activity: NAFLD fibrosis, Glasgow-Imrie pancreatitis, Truelove-Witts, Harvey-Bradshaw, Mayo UC, and Milan criteria (+6 tiles)
 
-> Status: **PROPOSED (2026-06-16).** Wave 2 feature spec of the
+> Status: **SHIPPED (2026-06-16).** Wave 2 feature spec of the
 > [spec-v85](spec-v85.md) Advanced Clinical Calculators program. Adds **6**
 > deterministic hepatology & GI disease-activity instruments that fill confirmed
 > gaps in the catalog's liver/gut surface: the non-invasive NAFLD fibrosis estimate,
