@@ -19,6 +19,7 @@ import { renderers as RV10 } from './views/group-v10.js';
 import { renderers as RV11 } from './views/group-v11.js';
 import { renderers as RV12 } from './views/group-v12.js';
 import { renderers as RV13 } from './views/group-v13.js';
+import { renderers as RV14 } from './views/group-v14.js';
 import { renderers as RV63 } from './views/group-v63.js';
 import { renderers as RB } from './views/group-b.js';
 import { renderers as RPALINT } from './views/pa-lint.js';
@@ -37,7 +38,7 @@ import { resolvePrompt } from './lib/prompt.js';
 // artifact-detect / artifact-route / artifact-handoff helpers were
 // deleted in spec-v29 wave 29-2 (Group C/L).
 
-const RENDERERS = { ...RA, ...RB, ...RC, ...RE, ...RF, ...RG, ...RH, ...RI, ...RJ, ...RKLMNO, ...RV5, ...RV6, ...RV7, ...RV8, ...RV9, ...RV10, ...RV11, ...RV12, ...RV13, ...RV63, ...RPALINT };
+const RENDERERS = { ...RA, ...RB, ...RC, ...RE, ...RF, ...RG, ...RH, ...RI, ...RJ, ...RKLMNO, ...RV5, ...RV6, ...RV7, ...RV8, ...RV9, ...RV10, ...RV11, ...RV12, ...RV13, ...RV14, ...RV63, ...RPALINT };
 
 // ----- Utility registry ----------------------------------------------------
 // Source of truth for routes, names, group, audiences, and clinical flag.
@@ -480,6 +481,13 @@ const UTILITIES = [
   { id: 'serotonin-toxicity',     name: 'Serotonin Toxicity (Hunter Criteria)',             group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'salicylate-toxicity',    name: 'Salicylate Poisoning + EXTRIP Hemodialysis Indication', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'toxic-alcohol',          name: 'Toxic Alcohol: Osmolar Gap + Fomepizole Indication', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  // spec-v88 (third feature spec of the spec-v85 Advanced Clinical Calculators
+  // program): endocrine + oncologic emergencies. ADA DKA/HHS classification and
+  // Cairo-Bishop tumor-lysis grading (Group G); the Calvert carboplatin dose
+  // with the FDA GFR cap lives in Group F below. views/group-v14.js,
+  // lib/metabolic-onc-v88.js.
+  { id: 'dka-hhs',                name: 'DKA vs HHS Classification + DKA Severity (ADA)',    group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'tls-cairo-bishop',       name: 'Tumor Lysis Syndrome (Cairo-Bishop grading)',      group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
 
   // spec-v6 §3.3: lab result interpreter. Patient-decoder category.
   { id: 'lab-interpret',       name: 'Lab Result Interpreter',                           group: 'C', audiences: ['patients', 'clinicians', 'educators'], clinical: true },
@@ -529,6 +537,9 @@ const UTILITIES = [
   { id: 'peds-fluid-deficit',   name: 'Pediatric dehydration deficit + maintenance',      group: 'F', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'peds-resus',           name: 'Pediatric resuscitation bolus',                    group: 'F', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'conc-percent',         name: 'Concentration / percent / ratio converter',        group: 'F', audiences: ['clinicians', 'educators'], clinical: true },
+  // spec-v88 §2.2: AUC-based carboplatin dose (Calvert 1989) with the FDA
+  // estimated-GFR cap. views/group-v14.js, lib/metabolic-onc-v88.js.
+  { id: 'calvert-carboplatin',  name: 'Carboplatin Dose (Calvert formula + FDA GFR cap)', group: 'F', audiences: ['clinicians', 'educators'], clinical: true },
   // spec-v57: brief screeners, decision rules, and triage scores (14 tiles).
   { id: 'phq2-gad2',            name: 'PHQ-2 / GAD-2 ultra-brief screeners',              group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'audit-full',           name: 'AUDIT (10-item alcohol use screen)',               group: 'G', audiences: ['clinicians', 'educators'], clinical: true },

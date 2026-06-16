@@ -158,3 +158,21 @@ only) and are recorded here for completeness.
 | hemodynamic-suite | ESC/ERS PVR threshold (> 2 Wood units) | 2022 ESC/ERS PH guideline (Eur Heart J 43(38):3618-3731) | same | 2026-06-16 | current — 2022 ESC/ERS is the latest edition; Class B, review on the next ESC/ERS PH guideline. Swan-Ganz resistance arithmetic is a stable formula (Class A) |
 | mechanical-power | Gattinoni mechanical-power equation + Serpa Neto 17 J/min association | Gattinoni 2016 (Intensive Care Med 42(10)) / Serpa Neto 2018 (44(11)) | same | 2026-06-16 | current — fixed published equation (Class A); no calendar revision (documentation only — does not match the issuer pattern) |
 | dead-space | Bohr-Enghoff Vd/Vt + Nuckton 0.6 ARDS threshold | Nuckton 2002 (N Engl J Med 346(17):1281-1287) | same | 2026-06-16 | current — fixed published equation (Class A); no calendar revision (documentation only — does not match the issuer pattern) |
+
+## spec-v88 endocrine & oncologic emergencies (added 2026-06-16)
+
+Third feature spec of the spec-v85 Advanced Clinical Calculators program. None
+of the three citations names a guideline issuer in the check-citations issuer
+pattern, so these rows are documentation-only. Two carry revisable thresholds
+(Class B per spec-v85 §6.3): the ADA hyperglycemic-crisis diagnostic thresholds
+(reconciled to the 2024 ADA/EASD consensus) behind `dka-hhs`, and the FDA
+estimated-GFR cap (125 mL/min) behind `calvert-carboplatin`. `tls-cairo-bishop`
+is the fixed 2004 Cairo-Bishop definition (Class A). The underlying arithmetic
+(effective osmolality, anion gap, the Calvert formula, corrected calcium) is
+stable formula in every case.
+
+| tile id | instrument | edition shipped | latest known edition | accessed | justification if behind |
+|---|---|---|---|---|---|
+| dka-hhs | ADA hyperglycemic-crisis diagnostic & DKA-severity thresholds | Kitabchi 2009 (Diabetes Care 32(7)) + 2024 ADA/EASD consensus | same | 2026-06-16 | current — 2024 consensus is the latest; Class B, review on the next ADA/EASD hyperglycemic-crises statement. Osmolality and anion-gap arithmetic are stable formula (Class A) |
+| calvert-carboplatin | FDA estimated-GFR cap (125 mL/min) for carboplatin dosing | FDA recommendation 2010 | same | 2026-06-16 | current — the FDA cap recommendation stands; Class B, review on the next FDA carboplatin-labeling update. The Calvert formula (J Clin Oncol 1989;7(11):1748-1756) is a fixed equation (Class A) |
+| tls-cairo-bishop | Cairo-Bishop tumor-lysis-syndrome definition & grading | Cairo-Bishop 2004 (Br J Haematol 127(1):3-11) | same | 2026-06-16 | current — fixed published definition (Class A); no calendar revision (documentation only — does not match the issuer pattern) |

@@ -6,6 +6,41 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v88: endocrine & oncologic emergencies, +3)
+
+- Third feature spec of the [spec-v85](docs/spec-v85.md) Advanced Clinical
+  Calculators program. Three deterministic high-acuity calculators across
+  endocrinology and oncology:
+  - **`dka-hhs`** — the ADA hyperglycemic-crisis classification (Group G). From
+    glucose, pH, bicarbonate, β-hydroxybutyrate, mental status, sodium, and
+    chloride it classifies **DKA** (graded mild / moderate / severe on the ADA
+    pH and HCO₃ cutoffs), **HHS**, or a **mixed** picture, and shows the computed
+    **anion gap** (Na − Cl − HCO₃) and **effective serum osmolality** (2·Na +
+    glucose/18) plus the criterion grid. Without β-hydroxybutyrate a strict DKA
+    verdict is withheld; a partial input renders the complete-the-fields fallback.
+    Cross-links `anion-gap-dd`, `osmolal-gap`, `corrected-sodium`.
+  - **`calvert-carboplatin`** — the AUC-based carboplatin dose (Group F),
+    dose (mg) = target AUC × (GFR + 25) (Calvert 1989), with the **FDA estimated-
+    GFR cap at 125 mL/min** (on by default): an estimated GFR over 125 is computed
+    at 125 and the substitution is **shown**, so the uncapped (overdosing) value
+    is never returned silently. A blank/zero AUC or GFR is guarded. Cross-links
+    `cockcroft-gault`, `egfr-suite`, `bsa`.
+  - **`tls-cairo-bishop`** — the Cairo-Bishop tumor-lysis-syndrome grading (Group
+    G). Laboratory TLS at **≥ 2** of uric acid ≥ 8 / potassium ≥ 6 / phosphate ≥
+    4.5 adult (6.5 pediatric) / corrected calcium ≤ 7 mg/dL — each by the absolute
+    threshold or a **25% change** from an entered baseline; clinical TLS adds an
+    end-organ criterion (creatinine ≥ 1.5× ULN, arrhythmia/sudden death, seizure)
+    with the **Cairo-Bishop grade 0–V**. Corrected calcium reuses the albumin
+    correction. Cross-links `kdigo-aki`, `corrected-calcium`.
+- Each ships an inline primary citation + `citationUrl` + `accessed`, a per-
+  source interpretation block, ≥3 boundary unit examples (incl. severe-DKA /
+  pure-HHS / mixed, the GFR>125 cap, and the lab-TLS boundary + baseline branch),
+  a [spec-v11](docs/spec-v11.md) audit log, and joins the
+  [spec-v59](docs/spec-v59.md) fuzz harness (zero non-finite leaks). No new
+  bundled dataset (doctrine clause 2). The ADA hyperglycemic-crisis thresholds
+  and the FDA carboplatin GFR-cap are Class-B revisable values with
+  [citation-staleness](docs/citation-staleness.md) rows. Catalog 372 → 375 (+3).
+
 ### Added (spec-v87: hemodynamics & ICU physiology, +3)
 
 - Second feature spec of the [spec-v85](docs/spec-v85.md) Advanced Clinical

@@ -522,3 +522,42 @@ Formula: Vd/Vt = (PaCO2 - PECO2) / PaCO2 (Enghoff). PECO2 is the mixed-expired
 CO2; EtCO2 (end-tidal) is a bedside surrogate that underestimates true dead
 space. Nuckton 2002: Vd/Vt >0.6 carried independent mortality risk in ARDS.
 Worked example: PaCO2 60, PECO2 20 -> Vd/Vt 0.67 (67%), above the 0.6 threshold.
+
+## spec-v88 endocrine & oncologic emergencies
+
+### DKA vs HHS Classification + DKA Severity (ADA)
+Citation: Kitabchi AE, Umpierrez GE, Miles JM, Fisher JN. Hyperglycemic crises
+in adult patients with diabetes. Diabetes Care. 2009;32(7):1335-1343. Thresholds
+reconciled to the 2024 ADA/EASD hyperglycemic-crises consensus (Umpierrez GE,
+et al. Diabetes Care. 2024).
+Formulas: effective serum osmolality = 2 x Na + glucose/18; anion gap = Na - Cl
+- HCO3. DKA = glucose >= 250 + pH < 7.30 + HCO3 < 18 + ketosis; graded mild
+(pH 7.25-7.30, HCO3 15-18), moderate (pH 7.00-7.24, HCO3 10-14), severe
+(pH < 7.00, HCO3 < 10). HHS = glucose > 600 + effective osmolality > 320 +
+pH > 7.30 + HCO3 > 18 + minimal ketosis.
+Worked example: glucose 520, pH 6.95, HCO3 6, beta-OHB 6, Na 130, Cl 95 ->
+DKA severe, anion gap 29, effective osmolality 289.
+
+### Carboplatin Dose (Calvert formula + FDA GFR cap)
+Citation: Calvert AH, Newell DR, Gumbrell LA, et al. Carboplatin dosage:
+prospective evaluation of a simple formula based on renal function. J Clin
+Oncol. 1989;7(11):1748-1756. FDA recommends capping estimated GFR at 125 mL/min
+for carboplatin dosing (2010).
+Formula: dose (mg) = target AUC x (GFR + 25). When GFR is estimated from serum
+creatinine, capping it at 125 mL/min prevents overdosing with IDMS-standardized
+assays; the cap is applied before the dose and the substitution is shown.
+Worked example: AUC 5, GFR 140, cap on -> GFR used 125, dose 750 mg
+(uncapped would be 825 mg).
+
+### Tumor Lysis Syndrome (Cairo-Bishop grading)
+Citation: Cairo MS, Bishop M. Tumour lysis syndrome: new therapeutic strategies
+and classification. Br J Haematol. 2004;127(1):3-11.
+Definition: laboratory TLS = >= 2 of uric acid >= 8, potassium >= 6, phosphate
+>= 4.5 (adult) / 6.5 (pediatric), corrected calcium <= 7 mg/dL — each by the
+absolute threshold or a 25% change from baseline, within 3 days before to 7 days
+after cytotoxic therapy. Clinical TLS = laboratory TLS + creatinine >= 1.5x ULN,
+cardiac arrhythmia/sudden death, or seizure; graded 0-V by the maximum
+manifestation. Corrected calcium reuses Ca + 0.8 x (4 - albumin).
+Worked example: uric acid 9, K 6.5, phosphate 5, calcium 6 (adult), creatinine
+2.4, ULN 1.2 -> laboratory + clinical TLS, 4 of 4 metabolic criteria,
+creatinine 2x ULN, Cairo-Bishop grade II.
