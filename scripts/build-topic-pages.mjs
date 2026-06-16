@@ -37,8 +37,9 @@ export const TOPICS = {
     tiles: [
       'qtc', 'qtc-suite', 'wells-pe', 'wells-pe-geneva', 'wells-dvt',
       'wells-dvt-caprini', 'perc', 'chads', 'hasbled', 'heart', 'timi',
-      'grace', 'ascvd', 'prevent', 'sgarbossa', 'rcri',
-      'cincinnati', 'fast',
+      'timi-stemi', 'grace', 'ascvd', 'prevent', 'sgarbossa', 'rcri',
+      'ecg-axis', 'lvh-criteria', 'duke-treadmill', 'cardiac-power-output',
+      'aortic-valve-area', 'cincinnati', 'fast',
     ],
   },
   'medication-safety': {

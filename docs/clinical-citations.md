@@ -607,3 +607,55 @@ lowest MAP (>=70=3, 55-69=2, 40-54=1, <40=0) + lowest HR (<=55=4, 56-65=3,
 66-75=2, 76-85=1, >85=0); 0-10 sum, <=4 high risk. Distinct from the neonatal
 Apgar.
 Worked example: EBL 200, MAP 60, HR 80 -> 2 + 2 + 1 = 5, intermediate risk.
+
+### Mean QRS Axis (frontal plane, hexaxial)
+Citation: Surawicz B, Knilans T. Chou's Electrocardiography in Clinical
+Practice. 6th ed. Saunders/Elsevier; 2008 (standard hexaxial reference).
+Rule: mean frontal-plane axis = atan2(net aVF, net lead I); lead I = 0 deg,
+aVF = +90 deg. Normal -30 to +90 deg; left-axis deviation -30 to -90 deg;
+right-axis deviation +90 to +180 deg; extreme/northwest -90 to -180 deg. The
+all-isoelectric (0,0) input is surfaced as indeterminate, never 0 deg.
+Worked example: lead I 8, aVF 6 -> atan2(6,8) = 36.9 deg, normal axis.
+
+### ECG LVH Voltage Criteria (Sokolow-Lyon, Cornell)
+Citation: Sokolow M, Lyon TP. Am Heart J. 1949;37(2):161-186 (Sokolow-Lyon).
+Casale PN, Devereux RB, et al. J Am Coll Cardiol. 1985;6(3):572-580 (Cornell
+voltage).
+Rule: Sokolow-Lyon SV1 + max(RV5, RV6) >= 35 mm; Cornell voltage SV3 + RaVL
+> 28 mm (men) or > 20 mm (women).
+Worked example: SV1 20, RV5 18, RV6 16, SV3 12, RaVL 10, male -> Sokolow 38
+positive, Cornell 22 negative.
+
+### TIMI Risk Score for STEMI (Morrow)
+Citation: Morrow DA, Antman EM, Charlesworth A, et al. TIMI risk score for
+ST-elevation myocardial infarction. Circulation. 2000;102(17):2031-2037.
+Rule: weighted point sum 0-14 (age 65-74 = 2, >= 75 = 3; DM/HTN/angina = 1;
+SBP < 100 = 3; HR > 100 = 2; Killip II-IV = 2; weight < 67 kg = 1; anterior
+STE/LBBB = 1; time > 4 h = 1) mapped to the 30-day mortality band.
+Worked example: age 70 + anterior STE + time > 4 h = 4 points -> 7.3% mortality.
+
+### Duke Treadmill Score (exercise-test prognosis)
+Citation: Mark DB, Hlatky MA, Harrell FE Jr, et al. Exercise treadmill score for
+predicting prognosis in coronary artery disease. Ann Intern Med.
+1987;106(6):793-800.
+Rule: DTS = exercise time(min) - (5 x ST deviation mm) - (4 x angina index).
+Risk band: low >= +5 (99% 5-year survival), moderate -10 to +4 (95%), high
+<= -11 (79%).
+Worked example: time 7, ST 1, angina 0 -> 2, moderate risk, 95% survival.
+
+### Cardiac Power Output (CPO)
+Citation: Fincke R, Hochman JS, Lowe AM, et al. Cardiac power is the strongest
+hemodynamic correlate of mortality in cardiogenic shock. J Am Coll Cardiol.
+2004;44(2):340-348.
+Rule: CPO = (MAP x cardiac output) / 451, in watts. CPO < 0.6 W flags the
+cardiogenic-shock mortality threshold.
+Worked example: MAP 80, CO 5 -> (80 x 5) / 451 = 0.89 W, above the threshold.
+
+### Aortic Valve Area (continuity equation)
+Citation: Baumgartner H, Hung J, Bermejo J, et al. Echocardiographic assessment
+of aortic stenosis: a focused update from the EACVI and the ASE. J Am Soc
+Echocardiogr. 2017;30(4):372-392. Severity bands per the 2020 ACC/AHA valvular
+guideline (Otto CM, et al. Circulation. 2021;143(5)).
+Rule: AVA = (pi x (LVOT diameter/2)^2 x LVOT VTI) / AV VTI, in cm2; dimensionless
+index = LVOT VTI / AV VTI. Mild > 1.5, moderate 1.0-1.5, severe < 1.0 cm2.
+Worked example: LVOT d 2.0, LVOT VTI 20, AV VTI 100 -> 0.63 cm2 severe, DI 0.20.

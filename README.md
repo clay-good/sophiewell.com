@@ -5,7 +5,7 @@
 <h1 align="center">sophiewell.com</h1>
 
 <p align="center">
-  <strong>379 deterministic healthcare calculators tuned to the nurse on shift.</strong><br>
+  <strong>385 deterministic healthcare calculators tuned to the nurse on shift.</strong><br>
   Free forever. No servers, no accounts, no telemetry, no AI, no network call after first paint.
 </p>
 
@@ -36,7 +36,7 @@ output; "searchable lookup of static facts" does not qualify. See
 [docs/spec-v10.md](docs/spec-v10.md) for the audience and
 dependency-budget commitments and
 [docs/spec-v29.md](docs/spec-v29.md) for the nurse-first pivot
-and the v29 catalog ledger. At v89 close the catalog is 379
+and the v29 catalog ledger. At v90 close the catalog is 385
 deterministic tiles — every one of them computes from at least
 one user input. The catalog reached its present size on two tracks.
 **New tiles:** spec-v63 added the operations counterpart to the bedside
@@ -86,15 +86,31 @@ carboplatin dose by the Calvert formula with the FDA estimated-GFR cap at 125
 mL/min shown as a visible substitution, Group F), and `tls-cairo-bishop` (the
 Cairo-Bishop tumor-lysis-syndrome laboratory/clinical grading with the
 25%-change-from-baseline branch and the corrected-calcium criterion, Group G).
-[spec-v89](docs/spec-v89.md) closes the spec-v85 program with four subspecialty
-calculators (all Group G) — `das28` (the DAS28-ESR/DAS28-CRP rheumatoid-arthritis
-disease-activity score with the EULAR remission/low/moderate/high bands, the
-catalog's first rheumatology tile), `kings-college` (the King's College Criteria
-for transplant referral in acetaminophen-induced acute liver failure, with the
-pH limb, the three-part coagulopathy/renal/encephalopathy limb, and the Bernal
-lactate modification), `asa-ps` (the ASA Physical Status classification I–VI with
-the E-modifier rules enforced), and `surgical-apgar` (the Gawande intraoperative
-0–10 outcome score, distinct from the neonatal Apgar).
+[spec-v89](docs/spec-v89.md) closes **Wave 1** of the spec-v85 program with four
+subspecialty calculators (all Group G) — `das28` (the DAS28-ESR/DAS28-CRP
+rheumatoid-arthritis disease-activity score with the EULAR
+remission/low/moderate/high bands, the catalog's first rheumatology tile),
+`kings-college` (the King's College Criteria for transplant referral in
+acetaminophen-induced acute liver failure, with the pH limb, the three-part
+coagulopathy/renal/encephalopathy limb, and the Bernal lactate modification),
+`asa-ps` (the ASA Physical Status classification I–VI with the E-modifier rules
+enforced), and `surgical-apgar` (the Gawande intraoperative 0–10 outcome score,
+distinct from the neonatal Apgar).
+[spec-v90](docs/spec-v90.md) opens **Wave 2** with six cardiology / ECG
+computations — `ecg-axis` (the mean frontal-plane QRS axis by hexaxial `atan2`
+geometry, with the all-isoelectric `(0,0)` input surfaced as "indeterminate
+axis" rather than a spurious 0°, Group E), `lvh-criteria` (the Sokolow-Lyon and
+Cornell ECG-LVH voltage criteria with the sex-specific Cornell threshold, Group
+G), `timi-stemi` (the Morrow 2000 TIMI risk score for STEMI with the 30-day
+mortality band, Group G), `duke-treadmill` (the Mark 1987 exercise-test
+prognosis with the cited five-year survival, Group E), `cardiac-power-output`
+(the Fincke `CPO = MAP×CO/451` watts with the <0.6 W cardiogenic-shock
+threshold, Group E), and `aortic-valve-area` (the continuity-equation valve area
+with the dimensionless index and the ASE/EACVI 2017 + 2020 ACC/AHA severity
+bands, Group E). As the first Wave-2 spec it also authors the spec-v85 §6.3
+warn-only monthly `scripts/check-citation-cadence.mjs` job, which annotates (but
+never blocks) when a calendar-tracked Class-B citation row is overdue for
+re-verification.
 The new `pa-lint` tile in spec-v52 consumes
 dropped files instead of form fields and produces a
 deterministic findings report, the first instance of the
@@ -147,7 +163,7 @@ production security headers. Any static file server will also work.
 ## How it works and how to use it
 
 Since the spec-v29 nurse-first prune the catalog has grown one
-reviewable spec at a time to **379** deterministic calculators
+reviewable spec at a time to **385** deterministic calculators
 (the full per-version history is in [CHANGELOG.md](CHANGELOG.md)
 and `docs/spec-v*.md`; the most recent bedside additions are
 summarized in the cheat sheets below). They organize across the
@@ -664,6 +680,35 @@ than rendering a negative duration, and a negative CPP (ICP > MAP) is surfaced
 with an explicit critical-low flag, never hidden. See
 [docs/spec-v65.md](docs/spec-v65.md).
 
+### Cardiology & ECG cheat sheet (spec-v90, Wave 2 of the spec-v85 program)
+
+Six deterministic cardiology / ECG computations that fill confirmed gaps in the
+catalog's cardiology surface (it had `qtc-suite`, `sgarbossa`, `map`, and the
+spec-v87 hemodynamics, but none of these six). Each passes the
+[spec-v29](docs/spec-v29.md) §3 one-line test, is a pure `lib/cardio-v90.js`
+function fuzz-covered by the spec-v59 harness, and quotes the cited source's own
+band — none reads a waveform or auto-disposes. This takes the catalog to 385.
+
+| id | Formula / rule | Output | Reaches for it |
+|---|---|---|---|
+| `ecg-axis` | mean axis = atan2(net aVF, net lead I); lead I = 0°, aVF = +90° (orthogonal) | axis in degrees + quadrant (normal −30..+90, LAD −30..−90, RAD +90..+180, extreme −90..−180); `(0,0)` → indeterminate, never 0° | every wide-QRS / axis read |
+| `lvh-criteria` | Sokolow-Lyon SV1 + max(RV5,RV6) ≥ 35 mm; Cornell SV3 + RaVL > 28 mm (M) / > 20 mm (F) | each voltage sum against its threshold, met/not-met, sex-correct Cornell cutoff | LVH on the 12-lead |
+| `timi-stemi` | Morrow weighted 0–14 point sum over nine bedside variables | score + 30-day mortality band (0 → 0.8% … >8 → 35.9%) | STEMI risk at presentation |
+| `duke-treadmill` | DTS = exercise time − (5 × ST dev) − (4 × angina index) | score + band (low ≥ +5, moderate −10..+4, high ≤ −11) + cited 5-yr survival (99/95/79%) | post-exercise-test prognosis |
+| `cardiac-power-output` | CPO = (MAP × CO) / 451 watts | CPO (W) with the < 0.6 W cardiogenic-shock threshold flagged | the shock companion to `hemodynamic-suite` |
+| `aortic-valve-area` | AVA = (π·(LVOT_d/2)² × LVOT_VTI) / AV_VTI | area (cm²) + dimensionless index + severity (mild > 1.5, moderate 1.0–1.5, severe < 1.0); AV_VTI = 0 guarded | continuity-equation AS severity |
+
+The two ill-defined inputs are domain-guarded so no non-finite value reaches the
+DOM (spec-v59): `ecg-axis` surfaces the all-isoelectric `(0,0)` complex as an
+"indeterminate axis" rather than a spurious 0° or `NaN`, and `aortic-valve-area`
+guards division by `AV_VTI = 0`. Five are **Class A** fixed instruments (hexaxial
+geometry; the 1949/1985 voltage thresholds; the Morrow 2000 weights; the Mark
+1987 coefficients; the constant 451) with no staleness row; `aortic-valve-area`
+is **Class B** — its ASE/EACVI 2017 + 2020 ACC/AHA severity cutoffs carry a
+[citation-staleness](docs/citation-staleness.md) row and are the first subject of
+the new `scripts/check-citation-cadence.mjs` warn-only monthly job. See
+[docs/spec-v90.md](docs/spec-v90.md).
+
 ### Billing & reimbursement: what Medicare pays, whether the line survives, how the visit codes, what the drug bills, what the patient owes, and whether the claim is clean (spec-v77 → spec-v83, program complete)
 
 The catalog has always been strong on the clinician at the bedside and competent
@@ -987,7 +1032,7 @@ long version, see [docs/architecture.md](docs/architecture.md).
  │  manifests (data/)            │  static │        ▼                     ▼             │
  │        │  scripts/build       │  files  │   lazy-load data shard   pure compute      │
  │        ▼                      │         │   (verified vs manifest)  (lib/*.js)       │
- │  dist/  (379 tool pages,      │         │        │                     │             │
+ │  dist/  (385 tool pages,      │         │        │                     │             │
  │  OG cards, sitemap, SBOM)     │         │        ▼                     ▼             │
  └───────────────────────────────┘         │   service worker cache    result + cite   │
                                             │   (keyed to build hash)                    │
@@ -1007,7 +1052,7 @@ session, and nothing to log.
 index.html          single-page shell (hero-search combobox + static browse-by-category nav, tile mount)
 styles.css          one stylesheet (responsive; no horizontal scroll — enforced catalog-wide at 320px in CI)
 app.js              router, hero-search wiring, view wiring, the UTILITIES catalog
-                    (379 tiles — the single source of truth; zero runtime deps)
+                    (385 tiles — the single source of truth; zero runtime deps)
 sw.js               service worker — precache shell, cache shards by build hash
 theme.js            light/dark theme toggle (writes only sw-theme, allowlisted)
 lib/input-persist.js opt-in "remember my inputs" (off by default; numbers only)
@@ -1025,12 +1070,12 @@ docs/               specs (spec-v4 … spec-v84) + per-tile v11/v12 audit logs +
                     citation-staleness ledger +
                     architecture / threat-model / …
 test/               unit/ (node:test) · integration/ (Playwright) · fixtures/
-dist/               build output (379 tool pages, OG cards, sitemap, SBOM)
+dist/               build output (385 tool pages, OG cards, sitemap, SBOM)
 ```
 
-### Discovery: how a query finds the right tool among 379
+### Discovery: how a query finds the right tool among 385
 
-With 379 tiles, search quality *is* the product — a tool you cannot find does
+With 385 tiles, search quality *is* the product — a tool you cannot find does
 not exist. Discovery is deterministic and offline (no fuzzy-match service, no
 embedding model, no AI). The home `#hero-search` combobox builds its dropdown
 from two complementary rankers, both pure functions of the typed query:
@@ -1103,10 +1148,10 @@ A login-less, AI-free calculator earns trust only if the nurse can see, on the
 tile, exactly which published source produced the number — and tell whether that
 source is current. spec-v54 defined the invariants; spec-v60 built the machinery
 (the gate, the ledger, and the `citationAccessed` convention) and extended it
-across the full 379-tile catalog, pinning the last three unpinned "current
+across the full 385-tile catalog, pinning the last three unpinned "current
 edition" phrases and re-verifying every guideline tile against its latest known
 edition. Three invariants make that auditable, each enforced by the
-`check-citations.mjs` lint gate (in the `npm run lint` chain) over all 379 tiles:
+`check-citations.mjs` lint gate (in the `npm run lint` chain) over all 385 tiles:
 
 | Invariant | Rule | Enforcement |
 |---|---|---|
@@ -1563,7 +1608,7 @@ rules, not soft preferences.
 | `npm run build`          | Copy static files into `dist/` for deployment                     |
 | `npm test`               | Run the full test suite (unit, a11y, grep, data integrity)        |
 | `npm run test:unit`      | Run Node's built-in unit tests (3,613 tests)                      |
-| `npm run test:e2e`       | Build `dist/`, then run Playwright integration tests against real browsers — incl. a full-catalog 320px no-horizontal-scroll sweep over both the SPA routes and the 379 pre-rendered static tool pages, the hub/topic/commitments pages, and the citation-wrap pin |
+| `npm run test:e2e`       | Build `dist/`, then run Playwright integration tests against real browsers — incl. a full-catalog 320px no-horizontal-scroll sweep over both the SPA routes and the 385 pre-rendered static tool pages, the hub/topic/commitments pages, and the citation-wrap pin |
 | `npm run test:a11y`      | Run accessibility checks on every utility view                    |
 | `npm run lint`           | ESLint + the CI gate chain: grep-check, output-safety, citation-integrity, catalog-truth, commitments, PA staleness, PA audit |
 | `npm run data:refresh`   | Re-fetch and re-shard every public dataset                        |
@@ -1647,7 +1692,7 @@ build, integrity-verified data shards) are documented in
 - [docs/spec-v11.md](docs/spec-v11.md) — correctness-floor spec:
   per-tile audit protocol, specialty-named groups, optional
   source-quoted `interpretation` field. Audit coverage is **complete
-  — 379/379 tiles** carry a committed per-tile audit log
+  — 385/385 tiles** carry a committed per-tile audit log
   (`docs/audits/v11/<id>.md` for the pre-v78 catalog;
   `docs/audits/v12/<id>.md` for the twenty-nine spec-v78–v83 billing &
   coding program tiles)

@@ -1,6 +1,6 @@
 # spec-v90.md — Cardiology computations & ECG: QRS axis, LVH voltage criteria, TIMI-STEMI, Duke treadmill, cardiac power, and aortic valve area (+6 tiles)
 
-> Status: **PROPOSED (2026-06-16).** First feature spec of **Wave 2** of the
+> Status: **SHIPPED (2026-06-16).** First feature spec of **Wave 2** of the
 > [spec-v85](spec-v85.md) Advanced Clinical Calculators program. Adds **6**
 > deterministic cardiology computations that fill confirmed gaps in the catalog's
 > cardiology/ECG surface: the mean frontal-plane QRS axis off the 12-lead, the two

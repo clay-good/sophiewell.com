@@ -2,7 +2,7 @@
   "name": "sophiewell.com",
   "version": "1.0.0",
   "private": true,
-  "description": "Sophie Well - 379 deterministic healthcare calculators tuned to the nurse on shift. Free, client-side, no servers, no telemetry, no AI.",
+  "description": "Sophie Well - 385 deterministic healthcare calculators tuned to the nurse on shift. Free, client-side, no servers, no telemetry, no AI.",
   "homepage": "https://sophiewell.com",
   "repository": {
     "type": "git",
@@ -26,6 +26,7 @@
     "test:a11y": "node scripts/a11y-check.mjs",
     "lint": "eslint . && node scripts/grep-check.mjs && node scripts/check-output-safety.mjs && node scripts/check-citations.mjs && node scripts/check-catalog-truth.mjs && node scripts/check-commitments.mjs && node scripts/check-pa-staleness.mjs && node scripts/audit-pa.mjs",
     "check:pa-staleness": "node scripts/check-pa-staleness.mjs",
+    "check:citation-cadence": "node scripts/check-citation-cadence.mjs",
     "audit:pa": "node scripts/audit-pa.mjs",
     "refresh:pa-rules": "node scripts/refresh-pa-rules.mjs",
     "data:refresh": "node scripts/build-data.mjs",

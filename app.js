@@ -21,6 +21,7 @@ import { renderers as RV12 } from './views/group-v12.js';
 import { renderers as RV13 } from './views/group-v13.js';
 import { renderers as RV14 } from './views/group-v14.js';
 import { renderers as RV15 } from './views/group-v15.js';
+import { renderers as RV16 } from './views/group-v16.js';
 import { renderers as RV63 } from './views/group-v63.js';
 import { renderers as RB } from './views/group-b.js';
 import { renderers as RPALINT } from './views/pa-lint.js';
@@ -39,7 +40,7 @@ import { resolvePrompt } from './lib/prompt.js';
 // artifact-detect / artifact-route / artifact-handoff helpers were
 // deleted in spec-v29 wave 29-2 (Group C/L).
 
-const RENDERERS = { ...RA, ...RB, ...RC, ...RE, ...RF, ...RG, ...RH, ...RI, ...RJ, ...RKLMNO, ...RV5, ...RV6, ...RV7, ...RV8, ...RV9, ...RV10, ...RV11, ...RV12, ...RV13, ...RV14, ...RV15, ...RV63, ...RPALINT };
+const RENDERERS = { ...RA, ...RB, ...RC, ...RE, ...RF, ...RG, ...RH, ...RI, ...RJ, ...RKLMNO, ...RV5, ...RV6, ...RV7, ...RV8, ...RV9, ...RV10, ...RV11, ...RV12, ...RV13, ...RV14, ...RV15, ...RV16, ...RV63, ...RPALINT };
 
 // ----- Utility registry ----------------------------------------------------
 // Source of truth for routes, names, group, audiences, and clinical flag.
@@ -497,6 +498,16 @@ const UTILITIES = [
   { id: 'kings-college',          name: 'King’s College Criteria (acetaminophen-induced ALF)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'asa-ps',                 name: 'ASA Physical Status Classification',                group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'surgical-apgar',         name: 'Surgical Apgar Score (intraoperative outcome)',     group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  // spec-v90 (first feature spec of Wave 2 of the spec-v85 Advanced Clinical
+  // Calculators program): cardiology & ECG. Mean QRS axis, ECG-LVH voltage
+  // criteria, TIMI-STEMI, Duke treadmill, cardiac power output, and continuity-
+  // equation aortic valve area. views/group-v16.js, lib/cardio-v90.js.
+  { id: 'ecg-axis',               name: 'Mean QRS Axis (frontal plane, hexaxial)',          group: 'E', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'lvh-criteria',           name: 'ECG LVH Voltage Criteria (Sokolow-Lyon, Cornell)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'timi-stemi',             name: 'TIMI Risk Score for STEMI (Morrow)',               group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'duke-treadmill',         name: 'Duke Treadmill Score (exercise-test prognosis)',   group: 'E', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'cardiac-power-output',   name: 'Cardiac Power Output (CPO)',                        group: 'E', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'aortic-valve-area',      name: 'Aortic Valve Area (continuity equation)',          group: 'E', audiences: ['clinicians', 'educators'], clinical: true },
 
   // spec-v6 §3.3: lab result interpreter. Patient-decoder category.
   { id: 'lab-interpret',       name: 'Lab Result Interpreter',                           group: 'C', audiences: ['patients', 'clinicians', 'educators'], clinical: true },

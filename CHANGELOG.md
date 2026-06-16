@@ -6,6 +6,66 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v90: cardiology & ECG, +6)
+
+- **First feature spec of Wave 2** of the [spec-v85](docs/spec-v85.md) Advanced
+  Clinical Calculators program. Six deterministic cardiology / ECG computations
+  that fill confirmed gaps in the catalog's cardiology surface (it had
+  `qtc-suite`, `sgarbossa`, `map`, and the spec-v87 hemodynamics, but none of
+  these six):
+  - **`ecg-axis`** (Group E) — the **mean frontal-plane QRS axis** from the net
+    QRS deflection in lead I and lead aVF via `atan2` on the hexaxial reference
+    (lead I = 0°, aVF = +90°, an orthogonal pair), with the quadrant
+    interpretation (normal −30° to +90°, left-axis deviation −30° to −90°,
+    right-axis deviation +90° to +180°, extreme/northwest −90° to −180°). Lead II
+    is accepted but does not change the result. The **all-isoelectric `(0,0)`
+    input returns "indeterminate axis"**, never `0°` or a `NaN` (the spec-v85 §2
+    `atan2` guard). Cross-links `qtc-suite`, `sgarbossa`.
+  - **`lvh-criteria`** (Group G) — the two standard **ECG-LVH voltage criteria**:
+    Sokolow-Lyon (`SV1 + max(RV5, RV6) ≥ 35 mm`) and Cornell voltage
+    (`SV3 + RaVL > 28 mm` men / `> 20 mm` women), each shown as a sum against its
+    threshold with the met/not-met determination and the **sex-specific Cornell
+    cutoff**. A partial limb reads unknown, not a false negative. Cross-links
+    `sgarbossa`, `ecg-axis`.
+  - **`timi-stemi`** (Group G) — the **TIMI Risk Score for STEMI** (Morrow 2000),
+    a weighted `0–14` point sum over nine bedside variables mapped to the
+    published **30-day mortality band** (0 → 0.8% … >8 → 35.9%). Cross-links
+    `sgarbossa`, `lvh-criteria`.
+  - **`duke-treadmill`** (Group E) — the **Duke Treadmill Score** (Mark 1987):
+    `DTS = exercise time − (5 × ST deviation) − (4 × angina index)`, with the risk
+    band (low ≥ +5, moderate −10 to +4, high ≤ −11) and the cited **five-year
+    survival** (99% / 95% / 79%). Cross-links `qtc-suite`, `timi-stemi`.
+  - **`cardiac-power-output`** (Group E) — **CPO = (MAP × CO) / 451** watts
+    (Fincke 2004), with the **< 0.6 W** cardiogenic-shock-mortality threshold
+    flagged. Divides only by the fixed constant 451; the natural companion to the
+    spec-v87 `hemodynamic-suite`. Cross-links `hemodynamic-suite`, `map`.
+  - **`aortic-valve-area`** (Group E) — the **continuity-equation aortic valve
+    area** `AVA = (π·(LVOT_d/2)² × LVOT_VTI) / AV_VTI` cm², the **dimensionless
+    index** (LVOT_VTI / AV_VTI), and the severity band (mild > 1.5, moderate
+    1.0–1.5, severe < 1.0 cm²). **Division by AV_VTI = 0 is guarded** →
+    `valid:false`, never a `NaN`. **Class B** — the ASE/EACVI 2017 + 2020 ACC/AHA
+    severity cutoffs carry a [citation-staleness](docs/citation-staleness.md) row.
+    Cross-links `qtc-suite`, `cardiac-power-output`.
+- Each ships an inline primary citation + `citationUrl` + `accessed`, a
+  per-source interpretation block, a pinned `META.example`, ≥3 boundary unit
+  examples (incl. every axis-quadrant boundary and the `(0,0)` gate, the
+  Sokolow-Lyon 35 mm edge and the sex-specific Cornell threshold, the DTS band
+  flips at +5 and −11, the CPO 0.6 W threshold, and the AVA severity boundaries
+  at 1.0 and 1.5 cm² plus the AV_VTI = 0 guard), a
+  [spec-v11](docs/spec-v11.md) audit log, and joins the
+  [spec-v59](docs/spec-v59.md) fuzz harness (`lib/cardio-v90.js`, zero non-finite
+  leaks). New module `lib/cardio-v90.js` + renderers `views/group-v16.js`. No new
+  bundled dataset (doctrine clause 2). New specialty vocabulary:
+  `echocardiography`. Catalog 379 → 385 (+6).
+- **CI:** as the first Wave-2 spec, v90 also authors
+  `scripts/check-citation-cadence.mjs` — the [spec-v85](docs/spec-v85.md) §6.3
+  **warn-only monthly** citation-cadence job (scheduled in
+  `.github/workflows/citation-cadence.yml`). It reads our own
+  [citation-staleness](docs/citation-staleness.md) ledger and annotates the run
+  when a calendar-tracked Class-B row is overdue for re-verification; it never
+  blocks and never auto-edits (spec-v85 §6.4). The `aortic-valve-area` row (an
+  on-publication cadence) is its first subject.
+
 ### Added (spec-v89: rheumatology, hepatology & perioperative, +4)
 
 - Fourth and **final** feature spec of the [spec-v85](docs/spec-v85.md) Advanced

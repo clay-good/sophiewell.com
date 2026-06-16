@@ -195,3 +195,23 @@ Surgical Apgar point bands) is stable formula in every case.
 | asa-ps | ASA Physical Status definitions & approved examples | ASA 2020 amendment | same | 2026-06-16 | current — the 2020 amendment is the latest; Class B, review on the next ASA Physical Status statement. The descriptor->class mapping and E-modifier rule are stable (Class A) |
 | kings-college | King's College Criteria (acetaminophen pathway) + Bernal lactate modification | O'Grady 1989 (Gastroenterology 97(2)) + Bernal 2002 (Lancet 359(9306)) | same | 2026-06-16 | current — fixed published rule (Class A); no calendar revision (documentation only — does not match the issuer pattern) |
 | surgical-apgar | Surgical Apgar Score point bands & risk gradient | Gawande 2007 (J Am Coll Surg 204(2)) + Regenbogen 2009 (Arch Surg 144(1)) | same | 2026-06-16 | current — fixed published score (Class A); no calendar revision (documentation only — does not match the issuer pattern) |
+
+## spec-v90 cardiology & ECG (added 2026-06-16)
+
+First feature spec of Wave 2 of the spec-v85 Advanced Clinical Calculators
+program (catalog 379 to 385, +6). Five of the six computations are Class A
+fixed instruments whose citations do not match the check-citations issuer
+pattern and carry no row: `ecg-axis` (hexaxial geometry), `lvh-criteria`
+(Sokolow-Lyon 1949 + Cornell 1985 voltage thresholds), `timi-stemi` (Morrow
+2000 point weights / mortality bands), `duke-treadmill` (Mark 1987 coefficients
+/ bands), and `cardiac-power-output` (the fixed conversion divisor 451 watts).
+One computation is Class B: the
+`aortic-valve-area` severity cutoffs follow the revisable ASE/EACVI 2017
+echo-assessment recommendations and the 2020 ACC/AHA valvular guideline, so it
+carries the row below (its citation also matches the ACC/AHA issuer pattern, so
+the row is gate-required). Cadence is on-publication: re-verify when the next
+ASE/EACVI echo-assessment update or ACC/AHA valvular guideline publishes.
+
+| tile id | instrument | edition shipped | latest known edition | accessed | justification if behind |
+|---|---|---|---|---|---|
+| aortic-valve-area | Aortic-stenosis severity cutoffs (mild/moderate/severe AVA + dimensionless index) | ASE/EACVI 2017 (J Am Soc Echocardiogr 30(4)) + 2020 ACC/AHA valvular guideline (Circulation 2021;143(5)) | same | 2026-06-16 | current — the 2017 ASE/EACVI recommendations and the 2020 ACC/AHA guideline are the latest; Class B, review on-publication of the next echo-assessment update. The continuity equation (pi.(d/2)^2.VTI ratio) is fixed formula (Class A) |
