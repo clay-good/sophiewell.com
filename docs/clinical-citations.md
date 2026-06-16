@@ -449,3 +449,41 @@ Citation: Institute for Healthcare Improvement (IHI) SBAR communication
 toolkit. Originally developed by Kaiser Permanente (Doug Bonacum).
 Logic: pure template -- four free-text fields (S/B/A/R) rendered as a
 printable, copyable card. No formula, no thresholds.
+
+## spec-v86 toxicology decision rules
+
+### Serotonin Toxicity (Hunter Criteria)
+Citation: Dunkley EJC, Isbister GK, Sibbritt D, Dawson AH, Whyte IM. The
+Hunter Serotonin Toxicity Criteria: simple and accurate diagnostic decision
+rules for serotonin toxicity. QJM. 2003;96(9):635-642.
+Logic: in the presence of a serotonergic agent, serotonin toxicity is
+diagnosed if ANY of five branches is met -- (1) spontaneous clonus; (2)
+inducible clonus + (agitation or diaphoresis); (3) ocular clonus + (agitation
+or diaphoresis); (4) tremor + hyperreflexia; (5) hypertonia + temp >38 C +
+(ocular or inducible clonus). Sensitivity 84%, specificity 97%.
+Worked example: serotonergic agent + spontaneous clonus -> meets criteria
+(branch 1).
+
+### Salicylate Poisoning + EXTRIP Hemodialysis Indication
+Citation: Juurlink DN, Gosselin S, Kielstein JT, et al; EXTRIP Workgroup.
+Extracorporeal Treatment for Salicylate Poisoning: Systematic Review and
+Recommendations From the EXTRIP Workgroup. Ann Emerg Med. 2015;66(2):165-181.
+Logic: hemodialysis (intermittent HD preferred) recommended when salicylate
+>100 mg/dL acute (>90 with impaired kidneys), altered mental status, new
+hypoxemia requiring oxygen, or arterial pH <=7.20; suggested when standard
+therapy fails. The Done nomogram is not used. Salicylate MW 138.12: 1 mmol/L
+= 13.81 mg/dL.
+Worked example: acute salicylate 110 mg/dL -> hemodialysis recommended (level
+>100 mg/dL).
+
+### Toxic Alcohol: Osmolar Gap + AACT Fomepizole Indication
+Citation: Smithline N, Gardner KD. Gaps -- anionic and osmolal. JAMA.
+1976;236(14):1594-1597. Treatment indication: Barceloux DG, et al (American
+Academy of Clinical Toxicology) methanol (J Toxicol Clin Toxicol.
+2002;40(4):415-446) and ethylene glycol (1999;37(5):537-560) guidelines.
+Formula: calculated osmolality = 2*Na + glucose/18 + BUN/2.8 + ethanol/3.7;
+osmolar gap = measured - calculated (signed). Fomepizole indicated on a
+documented level >20 mg/dL, recent ingestion + gap >10, or strong suspicion +
+>=2 of (pH<7.3, bicarbonate<20, gap>10). A normal gap does not exclude.
+Worked example: measured 305, Na 140, glucose 90, BUN 14, ethanol 0 ->
+calculated 290, osmolar gap 15.

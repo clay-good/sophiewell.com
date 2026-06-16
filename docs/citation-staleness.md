@@ -125,3 +125,18 @@ match the issuer acronym set, so it is documentation only.
 |---|---|---|---|---|---|
 | neo-phototherapy | AAP hyperbilirubinemia phototherapy + exchange thresholds | AAP CPG Kemper 2022 (Pediatrics 150(3)) | same | 2026-06-10 | current — 2022 AAP CPG is the latest edition; phototherapy and exchange-transfusion curves anchored from the published figures (spec-v62 §3.3). Carries the spec-v60 §4 REFRESH discipline for the next AAP edition |
 | norepi-equiv | Kotani norepinephrine-equivalent (NEE) score | Kotani 2023 (Crit Care 2023;27:29); Goradia 2021 (J Crit Care 2021;61) | same | 2026-06-10 | proposed-standard conversion factors stable since 2023 (documentation only — does not match the issuer pattern) |
+
+## spec-v86 toxicology decision rules (added 2026-06-16)
+
+First feature spec of the spec-v85 Advanced Clinical Calculators program. The
+three sources do not match the guideline-issuer acronym set (EXTRIP, AACT, QJM,
+JAMA, Ann Emerg Med are not in the pattern), so these rows are documentation
+only, recording that each revisable recommendation (Class B per spec-v85 §6.3)
+was reviewed and the edition in force was pinned. `serotonin-toxicity` is a
+fixed published decision rule (Class A) with no calendar revision.
+
+| tile id | instrument | edition shipped | latest known edition | accessed | justification if behind |
+|---|---|---|---|---|---|
+| serotonin-toxicity | Hunter Serotonin Toxicity Criteria | Dunkley 2003 (QJM 96(9):635-642) | same | 2026-06-16 | current — fixed published decision rule (Class A); no calendar revision (documentation only — does not match the issuer pattern) |
+| salicylate-toxicity | EXTRIP salicylate hemodialysis recommendation | EXTRIP Workgroup 2015 (Ann Emerg Med 66(2):165-181) | same | 2026-06-16 | current — 2015 EXTRIP recommendations are the latest; review on next EXTRIP publication (documentation only — does not match the issuer pattern) |
+| toxic-alcohol | AACT methanol / ethylene-glycol fomepizole indication | Barceloux methanol 2002 / ethylene glycol 1999 (J Toxicol Clin Toxicol) | same | 2026-06-16 | current — AACT practice guidelines; osmolar-gap arithmetic (Smithline 1976) is a stable formula (documentation only — does not match the issuer pattern) |

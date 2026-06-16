@@ -6,6 +6,32 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v86: toxicology decision rules, +3)
+
+- First feature spec of the [spec-v85](docs/spec-v85.md) Advanced Clinical
+  Calculators program. Three deterministic toxicology decision rules join Group
+  G (Clinical Scoring & Risk):
+  - **`serotonin-toxicity`** — the Hunter Serotonin Toxicity Criteria (Dunkley
+    2003): in the presence of a serotonergic agent, the five-branch decision
+    rule (clonus / agitation / diaphoresis / tremor / hyperreflexia / hypertonia
+    / temperature) with the firing branch named, gated on the serotonergic-agent
+    precondition (sensitivity 84% / specificity 97%).
+  - **`salicylate-toxicity`** — the EXTRIP Workgroup (2015) evidence-based
+    hemodialysis indication: recommends on salicylate >100 mg/dL acute (>90 with
+    impaired kidneys), altered mental status, new hypoxemia, or pH ≤7.20;
+    suggests when standard therapy fails. Unit-aware (mg/dL ↔ mmol/L). The
+    discredited Done nomogram is excluded by name.
+  - **`toxic-alcohol`** — the ethanol-corrected calculated osmolality + signed
+    osmolar gap (Smithline 1976) and the AACT fomepizole indication (methanol
+    2002 / ethylene glycol 1999), with the hard caveat that a normal gap does
+    not exclude toxic alcohol once metabolized to its acids.
+- Each ships an inline primary citation + `citationUrl` + `accessed`, a
+  per-source interpretation block, ≥3 boundary unit examples (incl. each fired
+  branch / limb), a [spec-v11](docs/spec-v11.md) audit log, and joins the
+  [spec-v59](docs/spec-v59.md) fuzz harness (zero non-finite leaks). No bundled
+  drug database (doctrine clause 2): the serotonergic-agent precondition is a
+  user attestation. Catalog 366 → 369 (+3).
+
 ### Fixed
 
 - Documentation accuracy: the [README](README.md) CLI reference said the unit
