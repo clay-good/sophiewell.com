@@ -38,85 +38,28 @@ dependency-budget commitments and
 [docs/spec-v29.md](docs/spec-v29.md) for the nurse-first pivot
 and the v29 catalog ledger. At v83 close the catalog is 366
 deterministic tiles — every one of them computes from at least
-one user input. (v62 Part B closed the bedside expansion at 328;
-spec-v63 adds the ops-side counterpart — a shared regulatory-deadline
-engine ([lib/deadline.js](lib/deadline.js)) and five ops calculators
-(Medicare appeal-level deadlines, claim timely-filing, the 2021 E/M
-Medical-Decision-Making level, the prior-authorization decision clock,
-and the 60-day overpayment clock) — taking the catalog to 333. spec-v63
-Part A then deepens the ops tiles themselves with **zero new tiles**:
-denial → next-step routing on the appeal cluster, rule-validated
-document generators (each checked against its CFR required-element
-checklist), the non-PA regulatory constants brought under the staleness
-ledger, and the ops related-tool workflow chain. spec-v64 then adds
-`calcium-replacement` — the IV-calcium dose / elemental-calcium /
-gluconate↔chloride-equivalence calculator that closes the one electrolyte
-the K/Mg/Phos `electrolyte-replacement` ladder omits — taking the catalog
-to 334. spec-v65 then adds three bedside-physiology tiles a nurse still does
-on scratch paper — `o2-cylinder-duration` (the oxygen-tank time-to-empty that
-gates every transport), `minute-ventilation` (V̇E and the target-PaCO2 rate
-adjustment), and `cerebral-perfusion-pressure` (CPP = MAP − ICP, the governed
-neuro-ICU number) — taking the catalog to 337. spec-v66 then completes the `abg`
-interpreter's compensation analysis with **zero new tiles**: the respiratory
-primaries now carry the Boston-rules expected-HCO₃ bands (acute and chronic), so
-the tool flags a superimposed metabolic process for every primary disorder, not
-just the metabolic two. spec-v67 then completes the `acid-base-deficit` tile's
-over-rapid-correction safety logic the same way, again with **zero new tiles**:
-the sodium-deficit warning was one-directional (it flagged raising a chronic
-hyponatremia too fast → osmotic demyelination) and now fires symmetrically for
-lowering a chronic hypernatremia too fast (>10 mEq/L/24h → cerebral edema).
-spec-v68 then aligns the `ttkg` (transtubular potassium gradient) interpreter to
-its own committed spec — the hypokalemia renal-wasting threshold was 2 but
-spec-v19 §3.2.4 (Ethier 1990) documents it as >3 — again with **zero new tiles**.
-spec-v69 then fixes the `digoxin` level interpreter's subtherapeutic band, which
-read the "below target" floor at the HF bound (0.5 ng/mL) for *both* indications,
-so an AF rate-control level of 0.6–0.7 ng/mL rendered "within 0.8–2.0 ng/mL (rate
-control)" — contradicting its own printed target; the floor is now
-indication-aware (0.5 HF / 0.8 rate control), again with **zero new tiles**.
-spec-v70 then fixes the `sas-riker` (Riker Sedation-Agitation Scale) interpreter,
-which printed a light-sedation goal band of "SAS 3-4" but treated only SAS 4 as
-in-goal — so a SAS 3 (the lower edge of the band, and in-target on the paired
-`rass`) was told it was "deeper than goal; consider lightening sedation"; SAS 3
-now reads as in-goal, again with **zero new tiles**.
-spec-v71 then makes the `psi` (Pneumonia Severity Index) Risk Class I reachable:
-the Class I screen was `pts === 0`, but age always adds points, so the rule's
-lowest-risk "safe for home" band never appeared and every healthy young patient
-was mislabeled Class II — now Class I is "age ≤50 with no points beyond age" per
-Fine 1997 Step 1, again with **zero new tiles**.
-spec-v72 then completes the mobile-usability pass that the no-horizontal-scroll
-guarantee started: four interactive controls (the copy pills, the theme toggle,
-the breadcrumb back-button, and the load-example reset) rendered below the 44px
-touch-target floor (WCAG 2.5.5) and are now brought up to a comfortable tap, with
-a permanent regression guard — again with **zero new tiles**.
-spec-v73 then fixes a light-mode rendering defect: `color-scheme` was declared
-dark-only, so the browser painted native controls (a black `<input type=date>`,
-dark `<select>` popups and scrollbars) to the dark scheme on the light page — now
-the CSS `color-scheme` and the mobile `theme-color` chrome track the active
-(toggled) theme — again with **zero new tiles**.
-spec-v74 then fixes the "Skip to content" link, which in this hash-routed SPA
-sent `#main` to the router (no tile `main` → `restoreHome`), ejecting the user
-from their tile back to home with focus lost on `<body>`; it now moves focus to
-the `<main>` landmark without touching the route (WCAG 2.4.1) — again with
-**zero new tiles**.
-spec-v75 then prunes the service-worker precache list, which still named ten
-code-lookup dataset manifests retired in the spec-v29 prune (five of whose
-directories no longer exist) while omitting two shell scripts the page loads
-(`theme.js`, `file-origin-guard.js`); the precache now covers the full app shell
-and datasets stay lazily cached — again with **zero new tiles**.
-spec-v76 then applies the same lesson to the static tool-page builder, whose
-schema.org discovery-surface allowlist still named seven spec-v29-removed tile
-ids (`decoder`, `cms1500`, `ub04`, …); because the allowlist is only matched
-against live tiles the dead ids emitted nothing, but they advertised tiles that
-do not exist — so v76 removes them and adds a build-time guard that fails loudly
-if any allowlisted id leaves the catalog — again with **zero new tiles**.
-See [docs/spec-v62.md](docs/spec-v62.md),
-[docs/spec-v63.md](docs/spec-v63.md), [docs/spec-v64.md](docs/spec-v64.md),
-[docs/spec-v65.md](docs/spec-v65.md), [docs/spec-v66.md](docs/spec-v66.md),
-[docs/spec-v67.md](docs/spec-v67.md), [docs/spec-v68.md](docs/spec-v68.md),
-[docs/spec-v69.md](docs/spec-v69.md), [docs/spec-v70.md](docs/spec-v70.md),
-[docs/spec-v71.md](docs/spec-v71.md), [docs/spec-v72.md](docs/spec-v72.md),
-[docs/spec-v73.md](docs/spec-v73.md), [docs/spec-v74.md](docs/spec-v74.md),
-[docs/spec-v75.md](docs/spec-v75.md), and [docs/spec-v76.md](docs/spec-v76.md).)
+one user input. The catalog reached its present size on two tracks.
+**New tiles:** spec-v63 added the operations counterpart to the bedside
+surface — a shared regulatory-deadline engine ([lib/deadline.js](lib/deadline.js))
+and five calculators (Medicare appeal-level deadlines, claim timely-filing,
+the 2021 E/M Medical-Decision-Making level, the prior-authorization decision
+clock, and the 60-day overpayment clock); spec-v64 added `calcium-replacement`,
+the IV-calcium / elemental-calcium / gluconate↔chloride converter that closes
+the one electrolyte the K/Mg/Phos `electrolyte-replacement` ladder omitted; and
+spec-v65 added three bedside-physiology calculations a nurse still does on
+scratch paper (`o2-cylinder-duration`, `minute-ventilation`, and
+`cerebral-perfusion-pressure`, CPP = MAP − ICP). **Zero-new-tile hardening
+(spec-v63 Part A, spec-v66 → spec-v76):** correctness fixes that aligned each
+printed band to what the code actually computes — `abg` Boston-rules
+compensation, the symmetric over-rapid-correction warning in
+`acid-base-deficit`, the `ttkg` renal-wasting threshold, the indication-aware
+`digoxin` floor, the `sas-riker` light-sedation goal band, and the reachable
+`psi` Risk Class I — alongside denial→next-step ops routing, CFR-checklist
+document generators, and a run of accessibility / rendering / offline repairs
+(44px touch targets, theme-tracked `color-scheme`, a working SPA skip-link, an
+accurate service-worker precache, and a guarded tool-page discovery allowlist).
+Per-wave detail lives in the [CHANGELOG](CHANGELOG.md) and the spec docs
+([spec-v62](docs/spec-v62.md) through [spec-v76](docs/spec-v76.md)).
 The new `pa-lint` tile in spec-v52 consumes
 dropped files instead of form fields and produces a
 deterministic findings report, the first instance of the
