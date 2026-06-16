@@ -561,3 +561,49 @@ manifestation. Corrected calcium reuses Ca + 0.8 x (4 - albumin).
 Worked example: uric acid 9, K 6.5, phosphate 5, calcium 6 (adult), creatinine
 2.4, ULN 1.2 -> laboratory + clinical TLS, 4 of 4 metabolic criteria,
 creatinine 2x ULN, Cairo-Bishop grade II.
+
+## spec-v89 rheumatology, hepatology & perioperative
+
+### DAS28 (rheumatoid arthritis disease activity, ESR/CRP)
+Citation: Prevoo MLL, van 't Hof MA, Kuper HH, et al. Modified disease activity
+scores that include twenty-eight-joint counts. Arthritis Rheum.
+1995;38(1):44-48 (DAS28-ESR). CRP form: Wells G, et al. Validation of the
+28-joint DAS28 and EULAR response criteria based on CRP. Ann Rheum Dis.
+2009;68(6):954-960.
+Formulas: DAS28-ESR = 0.56 x sqrt(TJC28) + 0.28 x sqrt(SJC28) + 0.70 x ln(ESR)
++ 0.014 x GH; DAS28-CRP = 0.56 x sqrt(TJC28) + 0.28 x sqrt(SJC28) + 0.36 x
+ln(CRP+1) + 0.014 x GH + 0.96. EULAR bands: remission < 2.6, low <= 3.2,
+moderate <= 5.1, high > 5.1. The two forms are not interchangeable.
+Worked example: TJC 8, SJC 4, ESR 30, GH 50 -> DAS28-ESR 5.22, high activity.
+
+### King's College Criteria (acetaminophen-induced ALF)
+Citation: O'Grady JG, Alexander GJM, Hayllar KM, Williams R. Early indicators of
+prognosis in fulminant hepatic failure. Gastroenterology. 1989;97(2):439-445.
+Lactate modification: Bernal W, Donaldson N, Wyncoll D, Wendon J. Blood lactate
+as an early predictor of outcome in paracetamol-induced acute liver failure.
+Lancet. 2002;359(9306):558-563.
+Rule (acetaminophen pathway): poor prognosis when EITHER arterial pH < 7.30
+after fluid resuscitation, OR all of INR > 6.5 (PT > 100 s) + creatinine > 3.4
+mg/dL (> 300 umol/L) + grade III/IV encephalopathy. Bernal modification:
+arterial lactate > 3.5 mmol/L early (or > 3.0 after resuscitation).
+Worked example: INR 7, creatinine 4.0 mg/dL, grade III/IV -> meets via the
+three-part limb.
+
+### ASA Physical Status Classification
+Citation: American Society of Anesthesiologists. ASA Physical Status
+Classification System (Committee on Economics; last amended December 13, 2020,
+with approved examples).
+Rule: descriptor I-VI with the published definition and example conditions; the
+emergency (E) modifier is appended for an emergency but is not assignable to ASA
+I or VI. ASA-PS describes preoperative physical status, not operative risk.
+Worked example: class III emergency -> "ASA III-E".
+
+### Surgical Apgar Score (intraoperative outcome)
+Citation: Gawande AA, Kwaan MR, Regenbogen SE, Lipsitz SA, Zinner MJ. An Apgar
+score for surgery. J Am Coll Surg. 2007;204(2):201-208. Validation: Regenbogen
+SE, et al. Arch Surg. 2009;144(1):30-36.
+Bands: estimated blood loss (<=100 mL=3, 101-600=2, 601-1000=1, >1000=0) +
+lowest MAP (>=70=3, 55-69=2, 40-54=1, <40=0) + lowest HR (<=55=4, 56-65=3,
+66-75=2, 76-85=1, >85=0); 0-10 sum, <=4 high risk. Distinct from the neonatal
+Apgar.
+Worked example: EBL 200, MAP 60, HR 80 -> 2 + 2 + 1 = 5, intermediate risk.

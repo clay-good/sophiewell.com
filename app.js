@@ -20,6 +20,7 @@ import { renderers as RV11 } from './views/group-v11.js';
 import { renderers as RV12 } from './views/group-v12.js';
 import { renderers as RV13 } from './views/group-v13.js';
 import { renderers as RV14 } from './views/group-v14.js';
+import { renderers as RV15 } from './views/group-v15.js';
 import { renderers as RV63 } from './views/group-v63.js';
 import { renderers as RB } from './views/group-b.js';
 import { renderers as RPALINT } from './views/pa-lint.js';
@@ -38,7 +39,7 @@ import { resolvePrompt } from './lib/prompt.js';
 // artifact-detect / artifact-route / artifact-handoff helpers were
 // deleted in spec-v29 wave 29-2 (Group C/L).
 
-const RENDERERS = { ...RA, ...RB, ...RC, ...RE, ...RF, ...RG, ...RH, ...RI, ...RJ, ...RKLMNO, ...RV5, ...RV6, ...RV7, ...RV8, ...RV9, ...RV10, ...RV11, ...RV12, ...RV13, ...RV14, ...RV63, ...RPALINT };
+const RENDERERS = { ...RA, ...RB, ...RC, ...RE, ...RF, ...RG, ...RH, ...RI, ...RJ, ...RKLMNO, ...RV5, ...RV6, ...RV7, ...RV8, ...RV9, ...RV10, ...RV11, ...RV12, ...RV13, ...RV14, ...RV15, ...RV63, ...RPALINT };
 
 // ----- Utility registry ----------------------------------------------------
 // Source of truth for routes, names, group, audiences, and clinical flag.
@@ -488,6 +489,14 @@ const UTILITIES = [
   // lib/metabolic-onc-v88.js.
   { id: 'dka-hhs',                name: 'DKA vs HHS Classification + DKA Severity (ADA)',    group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'tls-cairo-bishop',       name: 'Tumor Lysis Syndrome (Cairo-Bishop grading)',      group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  // spec-v89 (fourth and final feature spec of the spec-v85 Advanced Clinical
+  // Calculators program): rheumatology, hepatology & perioperative. DAS28
+  // disease activity, King's College Criteria, ASA Physical Status, and the
+  // Surgical Apgar Score - all Group G. views/group-v15.js, lib/rheum-periop-v89.js.
+  { id: 'das28',                  name: 'DAS28 (rheumatoid arthritis disease activity, ESR/CRP)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'kings-college',          name: 'King’s College Criteria (acetaminophen-induced ALF)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'asa-ps',                 name: 'ASA Physical Status Classification',                group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'surgical-apgar',         name: 'Surgical Apgar Score (intraoperative outcome)',     group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
 
   // spec-v6 §3.3: lab result interpreter. Patient-decoder category.
   { id: 'lab-interpret',       name: 'Lab Result Interpreter',                           group: 'C', audiences: ['patients', 'clinicians', 'educators'], clinical: true },

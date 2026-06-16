@@ -88,6 +88,7 @@ import * as billingV83 from '../../lib/billing-v83.js';
 import * as toxV86 from '../../lib/tox-v86.js';
 import * as hemodynamicsV87 from '../../lib/hemodynamics-v87.js';
 import * as metabolicOncV88 from '../../lib/metabolic-onc-v88.js';
+import * as rheumPeriopV89 from '../../lib/rheum-periop-v89.js';
 
 const MODULES = {
   'clinical.js': clinical,
@@ -120,6 +121,7 @@ const MODULES = {
   'tox-v86.js': toxV86,
   'hemodynamics-v87.js': hemodynamicsV87,
   'metabolic-onc-v88.js': metabolicOncV88,
+  'rheum-periop-v89.js': rheumPeriopV89,
 };
 
 const MATRIX = [0, -1, 1e9, NaN, Infinity, -Infinity, '', undefined, null];

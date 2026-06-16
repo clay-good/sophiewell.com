@@ -176,3 +176,22 @@ stable formula in every case.
 | dka-hhs | ADA hyperglycemic-crisis diagnostic & DKA-severity thresholds | Kitabchi 2009 (Diabetes Care 32(7)) + 2024 ADA/EASD consensus | same | 2026-06-16 | current — 2024 consensus is the latest; Class B, review on the next ADA/EASD hyperglycemic-crises statement. Osmolality and anion-gap arithmetic are stable formula (Class A) |
 | calvert-carboplatin | FDA estimated-GFR cap (125 mL/min) for carboplatin dosing | FDA recommendation 2010 | same | 2026-06-16 | current — the FDA cap recommendation stands; Class B, review on the next FDA carboplatin-labeling update. The Calvert formula (J Clin Oncol 1989;7(11):1748-1756) is a fixed equation (Class A) |
 | tls-cairo-bishop | Cairo-Bishop tumor-lysis-syndrome definition & grading | Cairo-Bishop 2004 (Br J Haematol 127(1):3-11) | same | 2026-06-16 | current — fixed published definition (Class A); no calendar revision (documentation only — does not match the issuer pattern) |
+
+## spec-v89 rheumatology, hepatology & perioperative (added 2026-06-16)
+
+Fourth and final feature spec of the spec-v85 Advanced Clinical Calculators
+program, closing it (366 -> 379, +13). None of the four citations names a
+guideline issuer in the check-citations issuer pattern, so these rows are
+documentation-only. Two carry revisable thresholds (Class B per spec-v85 §6.3):
+the EULAR DAS28 disease-activity cutoffs behind `das28`, and the ASA Physical
+Status 2020 definitions behind `asa-ps`. `kings-college` (O'Grady 1989 + Bernal
+2002) and `surgical-apgar` (Gawande 2007) are fixed published rules (Class A).
+The underlying arithmetic (the DAS28 formula, the King's College thresholds, the
+Surgical Apgar point bands) is stable formula in every case.
+
+| tile id | instrument | edition shipped | latest known edition | accessed | justification if behind |
+|---|---|---|---|---|---|
+| das28 | EULAR DAS28 disease-activity cutoffs (remission/low/moderate/high) | EULAR cutoffs over Prevoo 1995 (Arthritis Rheum 38(1)) / Wells 2009 (Ann Rheum Dis 68(6)) | same | 2026-06-16 | current — EULAR remission < 2.6 / low 3.2 / moderate 5.1 cutoffs stand; Class B, review on the next EULAR RA management update. The DAS28 formula is a fixed equation (Class A) |
+| asa-ps | ASA Physical Status definitions & approved examples | ASA 2020 amendment | same | 2026-06-16 | current — the 2020 amendment is the latest; Class B, review on the next ASA Physical Status statement. The descriptor->class mapping and E-modifier rule are stable (Class A) |
+| kings-college | King's College Criteria (acetaminophen pathway) + Bernal lactate modification | O'Grady 1989 (Gastroenterology 97(2)) + Bernal 2002 (Lancet 359(9306)) | same | 2026-06-16 | current — fixed published rule (Class A); no calendar revision (documentation only — does not match the issuer pattern) |
+| surgical-apgar | Surgical Apgar Score point bands & risk gradient | Gawande 2007 (J Am Coll Surg 204(2)) + Regenbogen 2009 (Arch Surg 144(1)) | same | 2026-06-16 | current — fixed published score (Class A); no calendar revision (documentation only — does not match the issuer pattern) |

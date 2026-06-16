@@ -6,6 +6,50 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v89: rheumatology, hepatology & perioperative, +4)
+
+- Fourth and **final** feature spec of the [spec-v85](docs/spec-v85.md) Advanced
+  Clinical Calculators program, closing it (366 → 379, +13). Four deterministic
+  subspecialty calculators that open the missing rheumatology surface and
+  complete the hepatology/perioperative cluster — all Group G:
+  - **`das28`** — the DAS28-ESR / DAS28-CRP rheumatoid-arthritis disease-activity
+    score, the **catalog's first rheumatology tile**. From the 28-joint tender
+    and swollen counts, the inflammatory marker (ESR or CRP, with a form toggle),
+    and the patient global health VAS it computes
+    `0.56·√TJC28 + 0.28·√SJC28 + 0.70·ln(ESR) + 0.014·GH` (ESR form) or the CRP
+    form (`0.36·ln(CRP+1) … + 0.96`) and applies the **EULAR** band (remission
+    < 2.6, low ≤ 3.2, moderate ≤ 5.1, high > 5.1). The two forms are not
+    interchangeable and the output labels which was computed; the logarithm
+    domain is guarded. Cross-links `anc`, `corrected-calcium`.
+  - **`kings-college`** — the King's College Criteria for transplant referral in
+    **acetaminophen-induced acute liver failure**. Poor prognosis when EITHER
+    arterial pH < 7.30 after resuscitation, OR all of INR > 6.5 (PT > 100 s) +
+    creatinine > 3.4 mg/dL (> 300 µmol/L) + grade III/IV encephalopathy; the
+    Bernal lactate modification (> 3.5 early / > 3.0 after resuscitation) is a
+    surfaced limb. A partial three-part limb is reported **incomplete**, never a
+    false negative; creatinine is unit-aware. Cross-links
+    `acetaminophen-nomogram`, `meld-childpugh`.
+  - **`asa-ps`** — the **ASA Physical Status** classification I–VI with the 2020
+    definitions and approved examples. The **E modifier** is appended for an
+    emergency but is **not assignable to ASA I or VI** (the tile enforces that
+    and notes the suppression). States that ASA-PS describes physical status, not
+    operative risk. Cross-links `rcri`, `ariscat`.
+  - **`surgical-apgar`** — the **Surgical Apgar Score** (Gawande 2007), a 0–10
+    intraoperative outcome predictor from estimated blood loss and the lowest
+    intraoperative MAP and heart rate; ≤ 4 flags high major-complication/death
+    risk. Distinct from the neonatal `apgar` tile (same name, different
+    instrument). Cross-links `apgar`, `rcri`.
+- Each ships an inline primary citation + `citationUrl` + `accessed`, a per-
+  source interpretation block, ≥3 boundary unit examples (incl. the DAS28
+  band-flip across both ESR/CRP forms, both King's College limbs and the
+  incomplete-limb guard, the ASA E-modifier rules, and the Surgical Apgar band
+  edges), a [spec-v11](docs/spec-v11.md) audit log, and joins the
+  [spec-v59](docs/spec-v59.md) fuzz harness (zero non-finite leaks). No new
+  bundled dataset (doctrine clause 2). The EULAR DAS28 cutoffs and the ASA 2020
+  definitions are Class-B revisable values with
+  [citation-staleness](docs/citation-staleness.md) rows. Catalog 375 → 379 (+4).
+  **The spec-v85 Advanced Clinical Calculators program is complete.**
+
 ### Added (spec-v88: endocrine & oncologic emergencies, +3)
 
 - Third feature spec of the [spec-v85](docs/spec-v85.md) Advanced Clinical

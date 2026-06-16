@@ -1,6 +1,6 @@
 # spec-v89.md — Rheumatology, hepatology & perioperative: DAS28, King's College criteria, ASA Physical Status, and the Surgical Apgar (+4 tiles)
 
-> Status: **PROPOSED (2026-06-16).** Fourth and final feature spec of the
+> Status: **SHIPPED (2026-06-16).** Fourth and final feature spec of the
 > [spec-v85](spec-v85.md) Advanced Clinical Calculators program. Adds **4**
 > deterministic subspecialty calculators that open a whole missing surface
 > (rheumatology) and complete the hepatology/perioperative cluster: the RA
