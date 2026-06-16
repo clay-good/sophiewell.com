@@ -5,7 +5,7 @@
 <h1 align="center">sophiewell.com</h1>
 
 <p align="center">
-  <strong>385 deterministic healthcare calculators tuned to the nurse on shift.</strong><br>
+  <strong>390 deterministic healthcare calculators tuned to the nurse on shift.</strong><br>
   Free forever. No servers, no accounts, no telemetry, no AI, no network call after first paint.
 </p>
 
@@ -36,7 +36,7 @@ output; "searchable lookup of static facts" does not qualify. See
 [docs/spec-v10.md](docs/spec-v10.md) for the audience and
 dependency-budget commitments and
 [docs/spec-v29.md](docs/spec-v29.md) for the nurse-first pivot
-and the v29 catalog ledger. At v90 close the catalog is 385
+and the v29 catalog ledger. At v91 close the catalog is 390
 deterministic tiles — every one of them computes from at least
 one user input. The catalog reached its present size on two tracks.
 **New tiles:** spec-v63 added the operations counterpart to the bedside
@@ -111,6 +111,18 @@ bands, Group E). As the first Wave-2 spec it also authors the spec-v85 §6.3
 warn-only monthly `scripts/check-citation-cadence.mjs` job, which annotates (but
 never blocks) when a calendar-tracked Class-B citation row is overdue for
 re-verification.
+[spec-v91](docs/spec-v91.md) continues Wave 2 with five pulmonary-function /
+chronic-respiratory computations that fill the gap beside the catalog's *acute*
+respiratory surface (`aa-pf-suite`, `rox`, `curb-65`, `smart-cop`) —
+`gold-spirometry` (the GOLD spirometric COPD grade off post-bronchodilator
+`FEV1/FVC < 0.70` and FEV1 %predicted, Group G), `bode-index` (the Celli 2004
+multidimensional COPD prognosis 0–10 with the 4-year survival quartile, Group G),
+`gap-ipf` (the Ley 2012 GAP index for idiopathic pulmonary fibrosis with the
+cannot-perform-DLCO limb and stage mortality, Group G), `predicted-spirometry`
+(the GLI-2012 LMS predicted FEV1/FVC/ratio + lower limit of normal from compiled
+coefficient/spline constants, Group E), and `mmrc-dyspnea` (the Bestall 1999
+modified MRC dyspnea grade 0–4 that feeds BODE and the GOLD ABE assessment, Group
+G).
 The new `pa-lint` tile in spec-v52 consumes
 dropped files instead of form fields and produces a
 deterministic findings report, the first instance of the
@@ -163,7 +175,7 @@ production security headers. Any static file server will also work.
 ## How it works and how to use it
 
 Since the spec-v29 nurse-first prune the catalog has grown one
-reviewable spec at a time to **385** deterministic calculators
+reviewable spec at a time to **390** deterministic calculators
 (the full per-version history is in [CHANGELOG.md](CHANGELOG.md)
 and `docs/spec-v*.md`; the most recent bedside additions are
 summarized in the cheat sheets below). They organize across the
@@ -709,6 +721,40 @@ is **Class B** — its ASE/EACVI 2017 + 2020 ACC/AHA severity cutoffs carry a
 the new `scripts/check-citation-cadence.mjs` warn-only monthly job. See
 [docs/spec-v90.md](docs/spec-v90.md).
 
+### Pulmonary function & chronic respiratory disease cheat sheet (spec-v91, Wave 2 of the spec-v85 program)
+
+Five deterministic pulmonary computations that fill the **chronic** gap beside
+the catalog's *acute* respiratory surface (`aa-pf-suite`, `rox`, `curb-65`,
+`smart-cop`). These are the PFT-lab and the COPD/ILD-clinic standards: the GOLD
+spirometric grade, the BODE COPD prognosis, the GAP index for IPF, the GLI-2012
+predicted-spirometry reference, and the mMRC dyspnea scale that feeds the first
+two. Each passes the [spec-v29](docs/spec-v29.md) §3 one-line test, is a pure
+`lib/pulm-v91.js` function fuzz-covered by the spec-v59 harness, and quotes the
+cited source's own grade / band / mortality. This takes the catalog to 390.
+
+| id | Formula / rule | Output | Reaches for it |
+|---|---|---|---|
+| `gold-spirometry` | obstruction when post-bronchodilator FEV1/FVC < 0.70; grade off FEV1 %predicted | grade 1 (≥ 80%), 2 (50–79%), 3 (30–49%), 4 (< 30%); no grade without obstruction; ratio entered or computed from volumes (FVC > 0 guard) | spirometric COPD severity |
+| `bode-index` | BMI (≤ 21 = 1) + obstruction (FEV1%) + dyspnea (mMRC) + exercise (6MWD), 0–10 | total + per-variable derivation + 4-yr survival quartile (0–2 ~80%, 3–4 ~67%, 5–6 ~57%, 7–10 ~18%) | COPD multidimensional prognosis |
+| `gap-ipf` | Gender (M = 1) + Age (> 65 = 2, > 60 = 1) + FVC% + DLCO% (cannot perform = 3) | stage I (0–3), II (4–5), III (6–8) with cited 1/2/3-yr mortality | IPF bedside prognosis |
+| `predicted-spirometry` | GLI-2012 LMS: M = exp(a0 + a1·lnH + a2·lnA + ethnicity + spline); LLN = 5th pct | predicted FEV1/FVC/ratio + LLN by age/height/sex/ethnicity; % predicted + above/below-LLN from a measured value | every PFT report read |
+| `mmrc-dyspnea` | single integer grade 0–4 (Bestall 1999 descriptors) | grade + descriptor; feeds BODE and the GOLD ABE assessment | standalone dyspnea grade |
+
+Grade inputs are clamped to their published range (`mmrc-dyspnea` and the mMRC
+that `bode-index` consumes accept only 0–4; `gap-ipf` treats "cannot perform"
+DLCO as a first-class 3-point state, never a blank). `gold-spirometry` and
+`predicted-spirometry` guard every division/`ln` domain so a zero/blank input
+surfaces "(complete the fields)" rather than a `NaN`/`Infinity`. The GLI-2012
+coefficient + spline sets are **compiled module constants** (`lib/gli-2012-data.js`,
+spec-v85 §5 — not a `data/` dataset), transcribed from the published GLI lookup
+table; the 40-yr/175-cm Caucasian-male predicted FEV1 (4.08 L) / FVC (5.05 L) /
+FEV1/FVC (0.81) and their LLNs reproduce the published reference values. Three
+tiles are **Class A** fixed instruments (Celli 2004, Ley 2012, Bestall 1999);
+`gold-spirometry` (GOLD 2024, annual) and `predicted-spirometry` (GLI-2012,
+on-publication) are **Class B** and carry [citation-staleness](docs/citation-staleness.md)
+rows read by `scripts/check-citation-cadence.mjs`. See
+[docs/spec-v91.md](docs/spec-v91.md).
+
 ### Billing & reimbursement: what Medicare pays, whether the line survives, how the visit codes, what the drug bills, what the patient owes, and whether the claim is clean (spec-v77 → spec-v83, program complete)
 
 The catalog has always been strong on the clinician at the bedside and competent
@@ -1032,7 +1078,7 @@ long version, see [docs/architecture.md](docs/architecture.md).
  │  manifests (data/)            │  static │        ▼                     ▼             │
  │        │  scripts/build       │  files  │   lazy-load data shard   pure compute      │
  │        ▼                      │         │   (verified vs manifest)  (lib/*.js)       │
- │  dist/  (385 tool pages,      │         │        │                     │             │
+ │  dist/  (390 tool pages,      │         │        │                     │             │
  │  OG cards, sitemap, SBOM)     │         │        ▼                     ▼             │
  └───────────────────────────────┘         │   service worker cache    result + cite   │
                                             │   (keyed to build hash)                    │
@@ -1052,7 +1098,7 @@ session, and nothing to log.
 index.html          single-page shell (hero-search combobox + static browse-by-category nav, tile mount)
 styles.css          one stylesheet (responsive; no horizontal scroll — enforced catalog-wide at 320px in CI)
 app.js              router, hero-search wiring, view wiring, the UTILITIES catalog
-                    (385 tiles — the single source of truth; zero runtime deps)
+                    (390 tiles — the single source of truth; zero runtime deps)
 sw.js               service worker — precache shell, cache shards by build hash
 theme.js            light/dark theme toggle (writes only sw-theme, allowlisted)
 lib/input-persist.js opt-in "remember my inputs" (off by default; numbers only)
@@ -1070,12 +1116,12 @@ docs/               specs (spec-v4 … spec-v84) + per-tile v11/v12 audit logs +
                     citation-staleness ledger +
                     architecture / threat-model / …
 test/               unit/ (node:test) · integration/ (Playwright) · fixtures/
-dist/               build output (385 tool pages, OG cards, sitemap, SBOM)
+dist/               build output (390 tool pages, OG cards, sitemap, SBOM)
 ```
 
-### Discovery: how a query finds the right tool among 385
+### Discovery: how a query finds the right tool among 390
 
-With 385 tiles, search quality *is* the product — a tool you cannot find does
+With 390 tiles, search quality *is* the product — a tool you cannot find does
 not exist. Discovery is deterministic and offline (no fuzzy-match service, no
 embedding model, no AI). The home `#hero-search` combobox builds its dropdown
 from two complementary rankers, both pure functions of the typed query:
@@ -1148,10 +1194,10 @@ A login-less, AI-free calculator earns trust only if the nurse can see, on the
 tile, exactly which published source produced the number — and tell whether that
 source is current. spec-v54 defined the invariants; spec-v60 built the machinery
 (the gate, the ledger, and the `citationAccessed` convention) and extended it
-across the full 385-tile catalog, pinning the last three unpinned "current
+across the full 390-tile catalog, pinning the last three unpinned "current
 edition" phrases and re-verifying every guideline tile against its latest known
 edition. Three invariants make that auditable, each enforced by the
-`check-citations.mjs` lint gate (in the `npm run lint` chain) over all 385 tiles:
+`check-citations.mjs` lint gate (in the `npm run lint` chain) over all 390 tiles:
 
 | Invariant | Rule | Enforcement |
 |---|---|---|
@@ -1608,7 +1654,7 @@ rules, not soft preferences.
 | `npm run build`          | Copy static files into `dist/` for deployment                     |
 | `npm test`               | Run the full test suite (unit, a11y, grep, data integrity)        |
 | `npm run test:unit`      | Run Node's built-in unit tests (3,613 tests)                      |
-| `npm run test:e2e`       | Build `dist/`, then run Playwright integration tests against real browsers — incl. a full-catalog 320px no-horizontal-scroll sweep over both the SPA routes and the 385 pre-rendered static tool pages, the hub/topic/commitments pages, and the citation-wrap pin |
+| `npm run test:e2e`       | Build `dist/`, then run Playwright integration tests against real browsers — incl. a full-catalog 320px no-horizontal-scroll sweep over both the SPA routes and the 390 pre-rendered static tool pages, the hub/topic/commitments pages, and the citation-wrap pin |
 | `npm run test:a11y`      | Run accessibility checks on every utility view                    |
 | `npm run lint`           | ESLint + the CI gate chain: grep-check, output-safety, citation-integrity, catalog-truth, commitments, PA staleness, PA audit |
 | `npm run data:refresh`   | Re-fetch and re-shard every public dataset                        |
@@ -1692,7 +1738,7 @@ build, integrity-verified data shards) are documented in
 - [docs/spec-v11.md](docs/spec-v11.md) — correctness-floor spec:
   per-tile audit protocol, specialty-named groups, optional
   source-quoted `interpretation` field. Audit coverage is **complete
-  — 385/385 tiles** carry a committed per-tile audit log
+  — 390/390 tiles** carry a committed per-tile audit log
   (`docs/audits/v11/<id>.md` for the pre-v78 catalog;
   `docs/audits/v12/<id>.md` for the twenty-nine spec-v78–v83 billing &
   coding program tiles)

@@ -659,3 +659,54 @@ guideline (Otto CM, et al. Circulation. 2021;143(5)).
 Rule: AVA = (pi x (LVOT diameter/2)^2 x LVOT VTI) / AV VTI, in cm2; dimensionless
 index = LVOT VTI / AV VTI. Mild > 1.5, moderate 1.0-1.5, severe < 1.0 cm2.
 Worked example: LVOT d 2.0, LVOT VTI 20, AV VTI 100 -> 0.63 cm2 severe, DI 0.20.
+
+### GOLD Spirometric Grade (COPD)
+Citation: Global Initiative for Chronic Obstructive Lung Disease (GOLD). Global
+Strategy for the Diagnosis, Management, and Prevention of COPD: 2024 Report
+(goldcopd.org).
+Rule: obstruction when post-bronchodilator FEV1/FVC < 0.70; GOLD grade off FEV1
+%predicted: 1 (>= 80%), 2 (50-79%), 3 (30-49%), 4 (< 30%). No grade is assigned
+without obstruction.
+Worked example: FEV1 45% predicted, ratio 0.6 -> obstruction, GOLD 3 (severe).
+
+### BODE Index (COPD prognosis)
+Citation: Celli BR, Cote CG, Marin JM, et al. The body-mass index, airflow
+obstruction, dyspnea, and exercise capacity index in chronic obstructive
+pulmonary disease. N Engl J Med. 2004;350(10):1005-1012.
+Rule: BMI (<= 21 = 1) + obstruction (FEV1% >= 65 = 0, 50-64 = 1, 36-49 = 2,
+<= 35 = 3) + dyspnea (mMRC 0-1 = 0, 2 = 1, 3 = 2, 4 = 3) + exercise (6MWD
+>= 350 = 0, 250-349 = 1, 150-249 = 2, <= 149 = 3); 0-10 with the 4-year survival
+quartile (0-2 ~80%, 3-4 ~67%, 5-6 ~57%, 7-10 ~18%).
+Worked example: BMI 24, FEV1 45%, mMRC 2, 6MWD 300 m -> 4, survival band 3-4
+(~67%).
+
+### GAP Index (idiopathic pulmonary fibrosis)
+Citation: Ley B, Ryerson CJ, Vittinghoff E, et al. A multidimensional index and
+staging system for idiopathic pulmonary fibrosis. Ann Intern Med.
+2012;156(10):684-691.
+Rule: Gender (male = 1) + Age (> 65 = 2, > 60 = 1) + FVC% (> 75 = 0, 50-75 = 1,
+< 50 = 2) + DLCO% (> 55 = 0, 36-55 = 1, <= 35 = 2, cannot perform = 3); stage I
+0-3, II 4-5, III 6-8 with cited 1/2/3-year mortality.
+Worked example: male 68, FVC 60%, DLCO 40% -> 5 points, stage II (1-yr 16.2%).
+
+### Predicted Spirometry + LLN (GLI-2012)
+Citation: Quanjer PH, Stanojevic S, Cole TJ, et al (Global Lung Function
+Initiative). Multi-ethnic reference values for spirometry for the 3-95-yr age
+range: the global lung function 2012 equations. Eur Respir J.
+2012;40(6):1324-1343.
+Rule: GLI-2012 LMS equations give predicted FEV1/FVC/ratio and the lower limit
+of normal (LLN, 5th percentile) by age, height, sex and ethnicity group; a
+measured value yields % predicted and an above/below-LLN flag.
+Worked example: Caucasian male age 40, height 175 cm -> FEV1 4.08 L (LLN 3.23),
+FVC 5.05 L (LLN 4.02), FEV1/FVC 0.81 (LLN 0.70).
+
+### mMRC Dyspnea Scale
+Citation: Bestall JC, Paul EA, Garrod R, Newcombe RG, Jones PW, Wedzicha JA.
+Usefulness of the Medical Research Council (MRC) dyspnoea scale as a measure of
+disability in patients with chronic obstructive pulmonary disease. Thorax.
+1999;54(7):581-586.
+Rule: a single integer grade 0-4 (0 strenuous exercise only; 1 hurrying/slight
+hill; 2 slower than peers; 3 stops after ~100 m; 4 too breathless to leave the
+house). Feeds the BODE index and the GOLD ABE assessment.
+Worked example: grade 2 -> walks slower than peers on the level, or stops for
+breath at own pace.

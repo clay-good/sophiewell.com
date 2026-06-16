@@ -90,6 +90,7 @@ import * as hemodynamicsV87 from '../../lib/hemodynamics-v87.js';
 import * as metabolicOncV88 from '../../lib/metabolic-onc-v88.js';
 import * as rheumPeriopV89 from '../../lib/rheum-periop-v89.js';
 import * as cardioV90 from '../../lib/cardio-v90.js';
+import * as pulmV91 from '../../lib/pulm-v91.js';
 
 const MODULES = {
   'clinical.js': clinical,
@@ -124,6 +125,7 @@ const MODULES = {
   'metabolic-onc-v88.js': metabolicOncV88,
   'rheum-periop-v89.js': rheumPeriopV89,
   'cardio-v90.js': cardioV90,
+  'pulm-v91.js': pulmV91,
 };
 
 const MATRIX = [0, -1, 1e9, NaN, Infinity, -Infinity, '', undefined, null];

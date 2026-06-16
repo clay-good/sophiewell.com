@@ -215,3 +215,22 @@ ASE/EACVI echo-assessment update or ACC/AHA valvular guideline publishes.
 | tile id | instrument | edition shipped | latest known edition | accessed | justification if behind |
 |---|---|---|---|---|---|
 | aortic-valve-area | Aortic-stenosis severity cutoffs (mild/moderate/severe AVA + dimensionless index) | ASE/EACVI 2017 (J Am Soc Echocardiogr 30(4)) + 2020 ACC/AHA valvular guideline (Circulation 2021;143(5)) | same | 2026-06-16 | current — the 2017 ASE/EACVI recommendations and the 2020 ACC/AHA guideline are the latest; Class B, review on-publication of the next echo-assessment update. The continuity equation (pi.(d/2)^2.VTI ratio) is fixed formula (Class A) |
+
+## spec-v91 pulmonary function & chronic respiratory disease (added 2026-06-16)
+
+Wave 2 of the spec-v85 Advanced Clinical Calculators program adds five pulmonary
+computations. Three are Class A fixed instruments whose citations do not match
+the check-citations issuer pattern and carry no row: `bode-index` (Celli 2004
+point weights / 4-year survival quartiles), `gap-ipf` (Ley 2012 point weights /
+stage mortality), and `mmrc-dyspnea` (the Bestall 1999 five-grade scale). Two are
+Class B revisable-guideline thresholds and carry the rows below for the §6.3
+cadence job (`scripts/check-citation-cadence.mjs`), which warns -- never blocks --
+when an `accessed` date ages past the stated cadence. `gold-spirometry` cites the
+GOLD report, which republishes annually; `predicted-spirometry` cites GLI-2012,
+whose next edition is event-driven (on-publication). Neither citation matches the
+gate-required issuer pattern, so the rows are maintenance-driven, not gate-forced.
+
+| tile id | instrument | edition shipped | latest known edition | accessed | justification if behind |
+|---|---|---|---|---|---|
+| gold-spirometry | GOLD spirometric classification of COPD (FEV1/FVC < 0.70 + FEV1 %predicted grade cut-points) | GOLD 2024 Report | same | 2026-06-16 | current -- the 2024 Report is the latest; Class B, review annual (GOLD republishes each year). The < 0.70 fixed ratio and the 80/50/30 grade edges are stable across recent editions |
+| predicted-spirometry | GLI-2012 spirometry reference equations (predicted FEV1/FVC/ratio + LLN) | GLI-2012 (Quanjer ERJ 40(6)) | same | 2026-06-16 | current -- GLI-2012 is the reference standard; Class B, review on-publication of the next GLI reference-equation update. The LMS model form is fixed (Class A) |

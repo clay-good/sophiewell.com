@@ -1,6 +1,6 @@
 # spec-v91.md — Pulmonary function & chronic respiratory disease: GOLD staging, BODE, GAP, predicted spirometry, and mMRC dyspnea (+5 tiles)
 
-> Status: **PROPOSED (2026-06-16).** Wave 2 of the
+> Status: **SHIPPED (2026-06-16).** Wave 2 of the
 > [spec-v85](spec-v85.md) Advanced Clinical Calculators program. Adds **5**
 > deterministic pulmonary tiles that fill a confirmed gap: the catalog ships the
 > *acute* respiratory surface — [`aa-pf-suite`](../app.js) (E),

@@ -6,6 +6,55 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v91: pulmonary function & chronic respiratory disease, +5)
+
+- **Second feature spec of Wave 2** of the [spec-v85](docs/spec-v85.md) Advanced
+  Clinical Calculators program. Five deterministic pulmonary-function /
+  chronic-respiratory computations that fill a confirmed gap: the catalog shipped
+  the **acute** respiratory surface (`aa-pf-suite`, `rox`, `curb-65`,
+  `smart-cop`) but nothing for **chronic staging or prognosis**. These five are
+  the PFT-lab and COPD/ILD-clinic standards (catalog **385 → 390**):
+  - **`gold-spirometry`** (Group G) — the **GOLD spirometric classification of
+    COPD**: obstruction when post-bronchodilator `FEV1/FVC < 0.70`, then the GOLD
+    grade off FEV1 %predicted (1 ≥ 80%, 2 50–79%, 3 30–49%, 4 < 30%). The ratio is
+    entered directly (range-checked) or computed from FEV1(L)/FVC(L) with an
+    `FVC > 0` guard; without obstruction no grade is assigned. **Class B** (GOLD
+    2024 Report, annual cadence). Cross-links `bode-index`, `mmrc-dyspnea`.
+  - **`bode-index`** (Group G) — the **BODE multidimensional COPD prognosis**
+    (Celli 2004), a four-variable `0–10` point sum (BMI, airflow obstruction,
+    dyspnea, exercise capacity) with the cited **approximate 4-year survival
+    quartile** (0–2 ~80%, 3–4 ~67%, 5–6 ~57%, 7–10 ~18%). The mMRC grade is
+    clamped to its `0–4` domain. Cross-links `mmrc-dyspnea`, `gold-spirometry`.
+  - **`gap-ipf`** (Group G) — the **GAP index for idiopathic pulmonary fibrosis**
+    (Ley 2012): Gender + Age + FVC% + DLCO% → stage I/II/III with the cited
+    1/2/3-year mortality. The **"cannot perform" DLCO** option is the source's
+    explicit highest-risk limb (3 points), surfaced as a selectable state.
+    Cross-links `predicted-spirometry`, `bode-index`.
+  - **`predicted-spirometry`** (Group E) — the **GLI-2012 predicted FEV1/FVC +
+    lower limit of normal** (Quanjer 2012). The LMS reference equations give
+    predicted FEV1, FVC and FEV1/FVC and the 5th-percentile LLN by age, height,
+    sex and ethnicity group; a measured value yields the % predicted and the
+    above/below-LLN flag. The GLI-2012 coefficient + spline sets are **compiled
+    module constants** (`lib/gli-2012-data.js`, spec-v85 §5 — not a `data/`
+    dataset), transcribed from the published GLI lookup table. **Class B**
+    (GLI-2012, on-publication cadence). Cross-links `gold-spirometry`,
+    `aa-pf-suite`.
+  - **`mmrc-dyspnea`** (Group G) — the **modified MRC dyspnea scale** (Bestall
+    1999), a single integer grade `0–4` with its descriptor; the connective
+    tissue that feeds BODE and the GOLD ABE assessment. An out-of-range grade is
+    refused with a surfaced fallback. Cross-links `bode-index`, `gold-spirometry`.
+- Implementation: `lib/pulm-v91.js` (joined to the spec-v59 fuzz harness; zero
+  non-finite leaks) + `lib/gli-2012-data.js` (the compiled GLI-2012 constants) +
+  `views/group-v17.js` renderers + `app.js` UTILITIES rows / RENDERERS wiring +
+  `lib/meta.js` entries (inline citation + `citationUrl` + `accessed` +
+  per-source interpretation + examples pinned by the chromium
+  example-correctness sweep). Five spec-v11 audit logs, five clinical-citations
+  rows, two `docs/citation-staleness.md` Class-B rows (read by
+  `check-citation-cadence.mjs`), scope ledger, README (Wave-2 narrative +
+  pulmonary cheat sheet). Catalog **385 → 390** across all 13 catalog-truth
+  surfaces (+ architecture.md). No new specialty vocab (pulmonology /
+  respiratory-therapy already present).
+
 ### Added (spec-v90: cardiology & ECG, +6)
 
 - **First feature spec of Wave 2** of the [spec-v85](docs/spec-v85.md) Advanced

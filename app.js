@@ -22,6 +22,7 @@ import { renderers as RV13 } from './views/group-v13.js';
 import { renderers as RV14 } from './views/group-v14.js';
 import { renderers as RV15 } from './views/group-v15.js';
 import { renderers as RV16 } from './views/group-v16.js';
+import { renderers as RV17 } from './views/group-v17.js';
 import { renderers as RV63 } from './views/group-v63.js';
 import { renderers as RB } from './views/group-b.js';
 import { renderers as RPALINT } from './views/pa-lint.js';
@@ -40,7 +41,7 @@ import { resolvePrompt } from './lib/prompt.js';
 // artifact-detect / artifact-route / artifact-handoff helpers were
 // deleted in spec-v29 wave 29-2 (Group C/L).
 
-const RENDERERS = { ...RA, ...RB, ...RC, ...RE, ...RF, ...RG, ...RH, ...RI, ...RJ, ...RKLMNO, ...RV5, ...RV6, ...RV7, ...RV8, ...RV9, ...RV10, ...RV11, ...RV12, ...RV13, ...RV14, ...RV15, ...RV16, ...RV63, ...RPALINT };
+const RENDERERS = { ...RA, ...RB, ...RC, ...RE, ...RF, ...RG, ...RH, ...RI, ...RJ, ...RKLMNO, ...RV5, ...RV6, ...RV7, ...RV8, ...RV9, ...RV10, ...RV11, ...RV12, ...RV13, ...RV14, ...RV15, ...RV16, ...RV17, ...RV63, ...RPALINT };
 
 // ----- Utility registry ----------------------------------------------------
 // Source of truth for routes, names, group, audiences, and clinical flag.
@@ -508,6 +509,15 @@ const UTILITIES = [
   { id: 'duke-treadmill',         name: 'Duke Treadmill Score (exercise-test prognosis)',   group: 'E', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'cardiac-power-output',   name: 'Cardiac Power Output (CPO)',                        group: 'E', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'aortic-valve-area',      name: 'Aortic Valve Area (continuity equation)',          group: 'E', audiences: ['clinicians', 'educators'], clinical: true },
+  // spec-v91 (Wave 2 of the spec-v85 Advanced Clinical Calculators program):
+  // pulmonary function & chronic respiratory disease. GOLD spirometric grade,
+  // BODE COPD prognosis, GAP index for IPF, GLI-2012 predicted spirometry, and
+  // the mMRC dyspnea scale. views/group-v17.js, lib/pulm-v91.js.
+  { id: 'gold-spirometry',        name: 'GOLD Spirometric Grade (COPD)',                    group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'bode-index',             name: 'BODE Index (COPD prognosis)',                      group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'gap-ipf',                name: 'GAP Index (idiopathic pulmonary fibrosis)',        group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'predicted-spirometry',   name: 'Predicted Spirometry + LLN (GLI-2012)',            group: 'E', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'mmrc-dyspnea',           name: 'mMRC Dyspnea Scale',                               group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
 
   // spec-v6 §3.3: lab result interpreter. Patient-decoder category.
   { id: 'lab-interpret',       name: 'Lab Result Interpreter',                           group: 'C', audiences: ['patients', 'clinicians', 'educators'], clinical: true },
