@@ -8,6 +8,20 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- `qtc-suite` (spec-v4 Group E) no longer leaks `NaN ms` to all four formula
+  rows (and the copy buffer) when the Heart-rate field is filled but QT is left
+  blank — a normal mid-entry state for a user who types HR first. The compute
+  `qtcAll` ([lib/clinical-v4.js](lib/clinical-v4.js)) validated only the rate
+  input (via `rrFromHrOrRr`) and passed an unguarded `qtMs` straight into
+  `qtMs / √rr`, so a blank QT (`Number('') = NaN`) rendered "Bazett: NaN ms",
+  etc. — the same "`safe()` catches throws, not NaN" class fixed in earlier
+  render audits. It now validates `qtMs` with the throwing `num()` at the top of
+  `qtcAll`, exactly as the older `qtc` tile (`lib/clinical.js`) already did, so a
+  blank QT throws and `safe()` renders the error instead. Guarded by a new
+  `qtcAll: missing QT throws, not NaN` unit test
+  ([test/unit/clinical-v4.test.js](test/unit/clinical-v4.test.js)). The
+  example-correctness e2e never caught it because the `qtc-suite` META example
+  fills both fields.
 - `icd10-validate` (spec-v83) no longer fires a 404 (and the accompanying
   console error) when the entered code's first letter has no bundled shard. The
   bundled `data/icd10cm` set is a small offline seed covering only some letters

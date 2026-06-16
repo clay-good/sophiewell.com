@@ -57,7 +57,7 @@ npm run release:check
 
 1. `npm run lint` (ESLint + the project-specific grep-check that bans
    `innerHTML`, em/en-dashes, raw HTML, etc).
-2. `npm run test:unit` (191 unit tests; node:test, no browser).
+2. `npm run test:unit` (the full unit suite; node:test, no browser).
 3. `npm run test:a11y` (static accessibility lint).
 4. `node scripts/grep-check.mjs`.
 5. `npm run data:verify` (SHA-256 every shard under `data/` against its

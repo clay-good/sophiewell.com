@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `f283544a11f5557e`
-Generated: 2026-06-16T03:18:03.928Z
+Build ID: `642b0ca516ed7a13`
+Generated: 2026-06-16T04:14:38.053Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=20.18.1 <21, npm >=10.0.0
@@ -30,7 +30,7 @@ downloads is committed in this repository and is hashed below.
 | `sw.js` | 4236 | `b7de06f3861a5a51436efd226d2dbbebcae2b3fdea0b4592f3c439ae1dc186bd` |
 | `site.webmanifest` | 709 | `0e0de4da60590a12e8b27a0ae2a2f5ffdb6500b7d2b78f93631ec2f64ed3d5ce` |
 | `robots.txt` | 127 | `38fbf9c1854e72abb20e01e81dd5a31d4ea96f154c12d5db1ec3af05524dd1a1` |
-| `sitemap.xml` | 57395 | `a65f600453962e9d0d235337882225304a065c3ec4c75f9ddd57d6b36c8c2c65` |
+| `sitemap.xml` | 57395 | `ba52f74e865441e483b581490604a3cc43b1035458ff28b6bb0f79c95a397922` |
 | `_headers` | 1316 | `2f39986457d2feff7e73e491a7d09ee871e8f2f4cc2bc437f86bd86a42554ec6` |
 | `logo.png` | 63440 | `11afaf1b0d3ca68393d202e4810bf766b5b6d591b4e3ec52f41d3cacaa4616ec` |
 | `favicon.ico` | 7411 | `407fde0ca2788409e87e11f596fa02e6a0b121817fcea7fd995beec1801e287b` |
@@ -49,7 +49,7 @@ downloads is committed in this repository and is hashed below.
 | `lib/billing-v82.js` | 20705 | `886399d32bb333435752f44b11daa4a34c6fcc46862658975db30b3af55fda92` |
 | `lib/billing-v83.js` | 20694 | `5eabcbce52f58f03f426b5c4fdb925a23fc9f7f5f11faa7e591b6d3d376d00f2` |
 | `lib/bounds.js` | 6360 | `2417098c7e9bd78ba92156465958ea89ef0a4dfac937621ae6141d4607fbf468` |
-| `lib/clinical-v4.js` | 13144 | `a7102763eb24aa82afb9566ee81779fc9433ff2b36d17d70eeed0ae12e7cdd4f` |
+| `lib/clinical-v4.js` | 13481 | `2434fa8ccf04a471d1d7ecf0075e6c279a2025b1eac834c06efb70c923a62e5e` |
 | `lib/clinical-v5.js` | 25042 | `1da466fb812401a08c4a1419f8b5eb579943d80e3626c00749a1b3bc87ac57cc` |
 | `lib/clinical-v6.js` | 16042 | `69c1de74d7f171a3c6e87329c1cb69324758a368a34f1961e6201caec0470f8d` |
 | `lib/clinical-v7.js` | 17904 | `fa45bdf92995662b6f094b14c3817762e33429ce1b2b566397c304b65f9d211d` |

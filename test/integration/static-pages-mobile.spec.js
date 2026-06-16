@@ -1,8 +1,8 @@
 // Mobile no-horizontal-scroll sweep over the PRE-RENDERED static build under
 // dist/ -- the pages Cloudflare Pages serves to a visitor (or crawler) who lands
 // on a deep link from search: the audience hubs (/for/<audience>/), the topic
-// pages (/topics/<slug>/), the /commitments/ page, and the 337 /tools/<id>/
-// pages. These are distinct HTML documents from the SPA hash routes that
+// pages (/topics/<slug>/), the /commitments/ page, and the full catalog of
+// /tools/<id>/ pages. These are distinct HTML documents from the SPA hash routes that
 // mobile-no-hscroll.spec.js already covers, so they need their own guard: a
 // pre-rendered page can carry hand-authored copy, breadcrumbs, and OG headers
 // the live SPA view never renders.
@@ -55,7 +55,7 @@ for (const path of STRUCTURAL) {
   });
 }
 
-// The full 337-page pre-rendered tool sweep is chromium-only (same rationale as
+// The full pre-rendered tool-page sweep is chromium-only (same rationale as
 // the SPA full-catalog sweep: a single long navigation loop is unreliable on
 // the firefox/webkit runners; chromium gives the per-page signal).
 test.describe('static tool pages', () => {

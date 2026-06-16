@@ -143,6 +143,12 @@ test('qtcAll: returns all four', () => {
   const r = qtcAll({ qtMs: 400, hrBpm: 60 });
   for (const k of ['bazett', 'fridericia', 'framingham', 'hodges']) close(r[k], 400, 0.5);
 });
+// A blank QT with a valid rate is a normal mid-entry state; it must throw
+// (so safe() renders an error) rather than leak "NaN ms" to every formula row.
+test('qtcAll: missing QT throws, not NaN', () => {
+  assert.throws(() => qtcAll({ hrBpm: 60 }), /finite number/);
+  assert.throws(() => qtcAll({ qtMs: NaN, hrBpm: 60 }), /finite/);
+});
 
 // --- 128 Pregnancy dating -----------------------------------------------
 test('eddFromLmp: LMP 2026-01-01 -> EDD 2026-10-08', () => {
