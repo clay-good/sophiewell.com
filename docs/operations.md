@@ -164,4 +164,5 @@ In the development checkout `SOPHIEWELL_OFFLINE=1` is set by default and
 each dataset ships with a small hand-curated seed shard. CI runs
 `scripts/build-data.mjs` with full network access, refreshes the data
 folder, and re-runs `scripts/verify-integrity.mjs` against the resulting
-manifests. Total manifest count after v4 lands: 78 (22 v3 + 56 v4).
+manifests. Current manifest count: 46 (v4 originally planned 78, but later
+spec waves consolidated and removed datasets down to the 46 shipped today).
