@@ -1360,6 +1360,43 @@ physically cannot leave the device. Everything below the router is a pure
 function of (URL hash + bundled data); there is no mutable server state, no
 session, and nothing to log.
 
+### Build output & the CI gate chain
+
+`npm run build` is deterministic: same inputs → same `dist/` (the build hash is
+content-addressed). One build emits **449 HTML pages** plus the supporting
+assets:
+
+| Output | Count | Source |
+|--------|------:|--------|
+| Pre-rendered tool pages (`dist/tools/<id>/`) | 432 | `scripts/build-tool-pages.mjs` |
+| Audience hub pages (`dist/for/<audience>/`) | 6 | `scripts/build-hub-pages.mjs` |
+| Topic pages + `/topics/` index | 8 + 1 | `scripts/build-topic-pages.mjs` |
+| `/commitments/` | 1 | `scripts/build-commitments-page.mjs` |
+| SPA shell (`dist/index.html`) | 1 | copied + LD-stamped |
+| **Total HTML** | **449** | — |
+| OG card PNGs (`dist/og/`) | 446 | `scripts/build-og-images.mjs` |
+| Sitemap URLs (`sitemap.xml`) | 448 | `scripts/build-sitemap.mjs` |
+
+Nothing ships unless it survives the gate chain. `npm run lint` is ESLint
+followed by seven custom static checks, each enforcing one invariant; any
+failure is a non-zero exit that blocks the merge:
+
+| Gate (`scripts/`) | Invariant it enforces |
+|-------------------|-----------------------|
+| `grep-check.mjs` | no banned tokens (em-dashes in tests, stale counts, AI/telemetry strings) |
+| `check-output-safety.mjs` | no view interpolates unescaped user input into the DOM |
+| `check-citations.mjs` | every tile is cited; guideline-issuer tiles carry an accessed-date + a staleness-ledger row |
+| `check-catalog-truth.mjs` | the catalog count (432) is identical across all 13 surfaces; no orphan/removed-tile ids |
+| `check-commitments.mjs` | storage allowlist + AI/auth deny + license + CSP are intact |
+| `check-pa-staleness.mjs` | every PA rule is source-anchored and within its freshness window |
+| `audit-pa.mjs` | the 46 PA-linter fixtures still reproduce their committed golden reports |
+
+`npm run test` adds the 3,984-test unit suite, the a11y check, and dataset
+integrity verification; `npm run test:e2e` runs the Playwright suite against
+real Chromium/Firefox/WebKit — including a full-catalog 320 px no-horizontal-
+scroll sweep over every SPA route **and** every one of the 432 pre-rendered
+static pages, so a tile can never ship mobile overflow undetected.
+
 ### Repository layout
 
 ```
@@ -2008,8 +2045,9 @@ build, integrity-verified data shards) are documented in
   source-quoted `interpretation` field. Audit coverage is **complete
   — 432/432 tiles** carry a committed per-tile audit log
   (`docs/audits/v11/<id>.md` for the pre-v78 catalog;
-  `docs/audits/v12/<id>.md` for the twenty-nine spec-v78–v83 billing &
-  coding program tiles)
+  `docs/audits/v12/<id>.md` for the 95 tiles added since — the
+  spec-v78–v83 billing & coding program and the spec-v85
+  advanced-clinical-calculators program, v86–v99)
   (`node scripts/audit-coverage.mjs`)
 - [docs/scope-mdcalc-parity.md](docs/scope-mdcalc-parity.md) —
   long-horizon scope: every actionable clinical calculator a
