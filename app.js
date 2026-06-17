@@ -26,6 +26,7 @@ import { renderers as RV17 } from './views/group-v17.js';
 import { renderers as RV18 } from './views/group-v18.js';
 import { renderers as RV19 } from './views/group-v19.js';
 import { renderers as RV20 } from './views/group-v20.js';
+import { renderers as RV21 } from './views/group-v21.js';
 import { renderers as RV63 } from './views/group-v63.js';
 import { renderers as RB } from './views/group-b.js';
 import { renderers as RPALINT } from './views/pa-lint.js';
@@ -44,7 +45,7 @@ import { resolvePrompt } from './lib/prompt.js';
 // artifact-detect / artifact-route / artifact-handoff helpers were
 // deleted in spec-v29 wave 29-2 (Group C/L).
 
-const RENDERERS = { ...RA, ...RB, ...RC, ...RE, ...RF, ...RG, ...RH, ...RI, ...RJ, ...RKLMNO, ...RV5, ...RV6, ...RV7, ...RV8, ...RV9, ...RV10, ...RV11, ...RV12, ...RV13, ...RV14, ...RV15, ...RV16, ...RV17, ...RV18, ...RV19, ...RV20, ...RV63, ...RPALINT };
+const RENDERERS = { ...RA, ...RB, ...RC, ...RE, ...RF, ...RG, ...RH, ...RI, ...RJ, ...RKLMNO, ...RV5, ...RV6, ...RV7, ...RV8, ...RV9, ...RV10, ...RV11, ...RV12, ...RV13, ...RV14, ...RV15, ...RV16, ...RV17, ...RV18, ...RV19, ...RV20, ...RV21, ...RV63, ...RPALINT };
 
 // ----- Utility registry ----------------------------------------------------
 // Source of truth for routes, names, group, audiences, and clinical flag.
@@ -553,6 +554,21 @@ const UTILITIES = [
   { id: 'flipi',                  name: 'FLIPI + IPI Lymphoma Prognostic Indices',          group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'mascc',                  name: 'MASCC Risk Index (febrile neutropenia)',           group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'sokal-cml',              name: 'Sokal / ELTS Risk Scores (CML)',                   group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+
+  // spec-v95 (Wave 2 of the spec-v85 Advanced Clinical Calculators program):
+  // neurology outcome scales & structural grading. The modified Rankin and
+  // GOS-E functional-outcome endpoints, Hoehn & Yahr Parkinson staging, the
+  // Spetzler-Martin AVM surgical grade (+ Lawton-Young supplement), the
+  // House-Brackmann facial-nerve grade, and the MIDAS migraine-disability
+  // index. They join the acute neuro cluster (nihss, ich-score,
+  // hunt-hess-wfns, four-score, abcd2) with the longitudinal layer the same
+  // patient is followed with. views/group-v21.js, lib/neuro-v95.js.
+  { id: 'mrs',                    name: 'Modified Rankin Scale (stroke outcome)',           group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'gose',                   name: 'Glasgow Outcome Scale - Extended (GOS-E)',         group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'hoehn-yahr',             name: 'Hoehn & Yahr Parkinson Disease Staging',           group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'spetzler-martin',        name: 'Spetzler-Martin AVM Grade (+ Lawton-Young)',       group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'house-brackmann',        name: 'House-Brackmann Facial Nerve Grading',             group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'midas',                  name: 'MIDAS (Migraine Disability Assessment)',           group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
 
   // spec-v6 §3.3: lab result interpreter. Patient-decoder category.
   { id: 'lab-interpret',       name: 'Lab Result Interpreter',                           group: 'C', audiences: ['patients', 'clinicians', 'educators'], clinical: true },

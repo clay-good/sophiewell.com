@@ -868,3 +868,59 @@ intermediate 0.8-1.2, high > 1.2. ELTS = 0.0025*(age/10)^3 + 0.0615*spleen +
 <= 2.2185, high > 2.2185.
 Worked example: age 50, spleen 5 cm, platelets 300, blasts 2% -> Sokal 0.91, ELTS
 1.58 (both intermediate).
+
+### Modified Rankin Scale (stroke outcome)
+Citation: van Swieten JC, Koudstaal PJ, Visser MC, et al. Interobserver
+agreement for the assessment of handicap in stroke patients. Stroke.
+1988;19(5):604-607.
+Rule: single 7-point ordinal grade 0 (no symptoms) to 6 (dead). Grades 0-2 are
+the "good outcome" stroke-trial dichotomy; 3-6 are the complementary "poor
+outcome" framing.
+Worked example: grade 2 -> slight disability, good outcome (0-2); grade 3 ->
+moderate disability, poor outcome (3-6).
+
+### Glasgow Outcome Scale - Extended (GOS-E)
+Citation: Wilson JT, Pettigrew LE, Teasdale GM. Structured interviews for the
+Glasgow Outcome Scale and the Extended Glasgow Outcome Scale: guidelines for
+their use. J Neurotrauma. 1998;15(8):573-585.
+Rule: 8-category structured-interview TBI outcome 1 (dead) to 8 (upper good
+recovery), mapped to the legacy 5-point GOS (1->1, 2->2, 3/4->3 severe
+disability, 5/6->4 moderate disability, 7/8->5 good recovery).
+Worked example: GOS-E 4 -> upper severe disability, legacy GOS 3; GOS-E 8 ->
+upper good recovery, legacy GOS 5.
+
+### Hoehn & Yahr Parkinson Disease Staging
+Citation: Hoehn MM, Yahr MD. Parkinsonism: onset, progression and mortality.
+Neurology. 1967;17(5):427-442.
+Rule: original stages 1-5 (1 unilateral, 2 bilateral without balance loss, 3
+postural instability but independent, 4 severe but walks unaided, 5
+wheelchair/bedridden unless aided); the modified scale adds 0, 1.5 and 2.5.
+Worked example: stage 2.5 -> mild bilateral disease, recovers on the pull test
+(modified scale); stage 2 -> bilateral, no balance impairment (original).
+
+### Spetzler-Martin AVM Grade (+ Lawton-Young)
+Citation: Spetzler RF, Martin NA. A proposed grading system for arteriovenous
+malformations. J Neurosurg. 1986;65(4):476-483; Lawton MT, et al. A
+supplementary grading scale for selecting patients with brain AVMs for surgery.
+Neurosurgery. 2010;66(4):702-713.
+Rule: core grade I-V = nidus size (<3 cm 1, 3-6 cm 2, >6 cm 3) + eloquent
+location (1) + deep venous drainage (1). Supplemented total 2-10 adds age (<20
+1, 20-40 2, >40 3) + unruptured (1) + diffuse nidus (1).
+Worked example: >6 cm + eloquent + deep -> core sum 5, grade V; with age >40 and
+ruptured/compact -> supplemented total 8.
+
+### House-Brackmann Facial Nerve Grading
+Citation: House JW, Brackmann DE. Facial nerve grading system. Otolaryngol Head
+Neck Surg. 1985;93(2):146-147.
+Rule: single 6-grade ordinal selector I (normal) to VI (total paralysis), keyed
+to symmetry and tone at rest and to forehead, eye and mouth motion.
+Worked example: grade III -> moderate dysfunction; grade VI -> total paralysis.
+
+### MIDAS (Migraine Disability Assessment)
+Citation: Stewart WF, Lipton RB, Dowson AJ, Sawyer J. Development and testing of
+the Migraine Disability Assessment (MIDAS) questionnaire to assess
+headache-related disability. Neurology. 2001;56(6 Suppl 1):S20-S28.
+Rule: sum of five prior-3-month disability questions -> grade I (0-5, little or
+none), II (6-10, mild), III (11-20, moderate), IV (>= 21, severe). Items A
+(headache days) and B (pain intensity 0-10) are reported but not scored.
+Worked example: 2 + 4 + 1 + 3 + 1 = 11 -> grade III, moderate disability.

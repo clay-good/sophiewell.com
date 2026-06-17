@@ -6,6 +6,48 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v95: neurology outcome scales & structural grading, +6)
+
+- **Sixth feature spec of Wave 2** of the [spec-v85](docs/spec-v85.md) Advanced
+  Clinical Calculators program. Six deterministic neurology **outcome scales and
+  grading systems** that close the catalog's **longitudinal-neurology** gap: it
+  shipped the *acute* scores (`nihss`, `ich-score`, `hunt-hess-wfns`,
+  `four-score`, `abcd2`) but nothing for the next visit — the functional-outcome
+  endpoint, the TBI outcome, the Parkinson stage, the AVM surgical grade, the
+  facial-nerve recovery grade, the migraine-disability band (catalog
+  **406 → 412**, all Group G):
+  - **`mrs`** — the **modified Rankin Scale** (van Swieten 1988): a 7-point
+    ordinal functional-outcome grade 0–6 with the verbatim descriptor and the
+    **"good outcome (0–2)"** stroke-trial dichotomy (vs the complementary "poor
+    outcome (3–6)"). **Class A**. Cross-links `nihss`, `ich-score`.
+  - **`gose`** — the **Glasgow Outcome Scale - Extended** (Wilson 1998): the
+    8-category structured-interview TBI outcome 1–8 with the descriptor **and the
+    legacy 5-point GOS mapping** (3/4 → GOS 3 severe disability, 5/6 → 4 moderate,
+    7/8 → 5 good recovery). **Class A**. Cross-links `nihss`, `four-score`.
+  - **`hoehn-yahr`** — **Hoehn & Yahr** Parkinson staging (1967): the original
+    1–5 stages plus the modified scale (0, 1.5, 2.5 half-steps), each with its
+    descriptor; the result names which variant the selected stage belongs to.
+    **Class A**.
+  - **`spetzler-martin`** — the **Spetzler-Martin AVM grade** (1986): core grade
+    I–V = nidus size + eloquence + deep venous drainage, **plus** the
+    supplemented **Spetzler-Martin–Lawton-Young** total (2–10) adding age,
+    unruptured presentation and diffuse nidus, with the component derivation
+    surfaced. **Class A**. Cross-links `ich-score`.
+  - **`house-brackmann`** — the **House-Brackmann** facial-nerve function grade
+    (1985): a 6-grade ordinal selector I (normal) – VI (total paralysis) keyed to
+    the per-grade gross / at-rest / motion descriptor. **Class A**.
+  - **`midas`** — the **Migraine Disability Assessment** (Stewart 2001): the sum
+    of five prior-3-month disability questions → grade I (0–5) / II (6–10) / III
+    (11–20) / IV (≥ 21); the day-counts clamp to the 92-day window and the
+    ancillary frequency/intensity items are reported but not scored. **Class A**.
+- All six are **Class A** (fixed ordinal definitions) — no
+  `docs/citation-staleness.md` row. New module `lib/neuro-v95.js`, renderers in
+  `views/group-v21.js`, six `META` entries with inline citations + worked
+  examples, six `test/unit/` boundary suites, six `docs/audits/v12/` logs, and
+  `lib/neuro-v95.js` added to the `fuzz-tools` `MODULES`. New closed-vocabulary
+  specialties: `stroke`, `rehabilitation`, `movement-disorders`,
+  `otolaryngology`, `headache`.
+
 ### Added (spec-v94: hematology & oncology prognostic scores, +5)
 
 - **Fifth feature spec of Wave 2** of the [spec-v85](docs/spec-v85.md) Advanced

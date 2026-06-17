@@ -94,6 +94,7 @@ import * as pulmV91 from '../../lib/pulm-v91.js';
 import * as nephroV92 from '../../lib/nephro-v92.js';
 import * as hepgiV93 from '../../lib/hepgi-v93.js';
 import * as hemoncV94 from '../../lib/hemonc-v94.js';
+import * as neuroV95 from '../../lib/neuro-v95.js';
 
 const MODULES = {
   'clinical.js': clinical,
@@ -132,6 +133,7 @@ const MODULES = {
   'nephro-v92.js': nephroV92,
   'hepgi-v93.js': hepgiV93,
   'hemonc-v94.js': hemoncV94,
+  'neuro-v95.js': neuroV95,
 };
 
 const MATRIX = [0, -1, 1e9, NaN, Infinity, -Infinity, '', undefined, null];
