@@ -1041,3 +1041,100 @@ procedure-category points, mapped to the published predicted in-hospital mortali
 c-statistic 0.944 derivation, 0.929 validation.
 Worked example: age 70 (10) + cancer (4) + major gastrointestinal surgery (16) ->
 30 points -> predicted in-hospital mortality 7.403%.
+
+### Kawasaki disease diagnostic criteria (classic + incomplete)
+Citation: McCrindle BW, Rowley AH, Newburger JW, et al. Diagnosis, Treatment,
+and Long-Term Management of Kawasaki Disease: A Scientific Statement From the
+American Heart Association. Circulation. 2017;135(17):e927-e999.
+Rule: classic Kawasaki = fever >= 5 days plus >= 4 of 5 principal features
+(bilateral non-exudative conjunctivitis, oral mucosal changes, cervical
+lymphadenopathy >= 1.5 cm, extremity changes, polymorphous rash). The AHA
+incomplete-Kawasaki algorithm: prolonged fever with 2-3 features, then a CRP/ESR
+inflammatory gate (CRP >= 3.0 mg/dL and/or ESR >= 40 mm/hr), then >= 3 of 6
+supplementary laboratory criteria or a positive echocardiogram supports the
+diagnosis. Class B (AHA statement); see docs/citation-staleness.md.
+Worked example: fever 6 days + 4 principal features present -> meets classic
+Kawasaki disease criteria.
+
+### Kocher criteria (septic arthritis vs transient synovitis of the hip)
+Citation: Kocher MS, Zurakowski D, Kasser JR. Differentiating between septic
+arthritis and transient synovitis of the hip in children: an evidence-based
+clinical prediction algorithm. J Bone Joint Surg Am. 1999;81(12):1662-1670.
+Rule: four predictors -- non-weight-bearing on the affected side, oral
+temperature > 38.5 C, ESR > 40 mm/hr, serum WBC > 12,000 cells/uL. The count maps
+to the predicted probability of septic arthritis: 0 -> < 0.2%, 1 -> 3.0%, 2 ->
+40.0%, 3 -> 93.1%, 4 -> 99.6%.
+Worked example: non-weight-bearing + fever (2 predictors) -> predicted septic
+arthritis probability 40.0%.
+
+### PIM3 (Paediatric Index of Mortality 3)
+Citation: Straney L, Clements A, Parslow RC, et al. Paediatric index of mortality
+3: an updated model for predicting mortality in pediatric intensive care. Pediatr
+Crit Care Med. 2013;14(7):673-681.
+Rule: a fixed logistic equation in systolic blood pressure (linear plus squared
+term), pupillary reaction, FiO2*100/PaO2, absolute base excess, mechanical
+ventilation, elective/recovery status, and diagnosis-risk category; predicted
+death = e^logit / (1 + e^logit). The published Straney 2013 coefficients are used
+(not the PIM3-anz13 recalibration), cross-verified against two reproductions.
+Worked example: SBP 90, ventilated, base excess -5, high-risk diagnosis -> logit
+-1.9 -> predicted probability of death 13.04%.
+
+### CATCH rule (CT for childhood minor head injury)
+Citation: Osmond MH, Klassen TP, Wells GA, et al (Pediatric Emergency Research
+Canada). CATCH: a clinical decision rule for the use of computed tomography in
+children with minor head injury. CMAJ. 2010;182(4):341-348.
+Rule: CT of the head is indicated if any high-risk factor (GCS < 15 at 2 h,
+suspected open/depressed skull fracture, worsening headache, irritability) or any
+medium-risk factor (basal-skull-fracture signs, large boggy scalp hematoma,
+dangerous mechanism) is present. The validated alternative to PECARN.
+Worked example: GCS < 15 at 2 hours (a high-risk factor) -> CT head indicated.
+
+### Modified Duke criteria for infective endocarditis (2023 Duke-ISCVID)
+Citation: Fowler VG, Durack DT, Selton-Suty C, et al. The 2023 Duke-ISCVID
+Criteria for Infective Endocarditis. Clin Infect Dis. 2023;77(4):518-526;
+updating Li JS, Sexton DJ, et al. Clin Infect Dis. 2000;30(4):633-638.
+Rule: definite IE = 2 major, or 1 major + 3 minor, or 5 minor criteria; possible
+IE = 1 major + 1 minor, or 3 minor; otherwise rejected. Class B (Duke-ISCVID);
+see docs/citation-staleness.md.
+Worked example: 2 major criteria -> definite infective endocarditis.
+
+### Pitt Bacteremia Score
+Citation: Paterson DL, Ko WC, Von Gottberg A, et al. International prospective
+study of Klebsiella pneumoniae bacteremia. Ann Intern Med. 2004;140(1):26-32.
+Rule: temperature band (>= 40.0 or <= 35.0 C = 2; 39.0-39.9 or 35.1-36.0 C = 1;
+36.1-38.9 C = 0) + hypotension (2) + mechanical ventilation (2) + cardiac arrest
+(4) + mental status (alert 0, disoriented 1, stupor 2, coma 4). Total 0-14; a
+score >= 4 denotes high mortality risk.
+Worked example: severe temperature (2) + hypotension (2), alert -> 4, at the
+high-risk threshold.
+
+### SAPS II (Simplified Acute Physiology Score II)
+Citation: Le Gall JR, Lemeshow S, Saulnier F. A new Simplified Acute Physiology
+Score (SAPS II) based on a European/North American multicenter study. JAMA.
+1993;270(24):2957-2963.
+Rule: 17 variables banded to fixed points (BUN in mg/dL, bilirubin in mg/dL); the
+point total converts to predicted hospital mortality via logit = -7.7631 +
+0.0737*SAPS + 0.9971*ln(SAPS+1). Companion to apache2.
+Worked example: a worked ICU case scoring 64 points -> predicted hospital
+mortality 75.3%.
+
+### Lund-Browder chart + Rule of Nines (%TBSA burn)
+Citation: Lund CC, Browder NC. The estimation of areas of burns. Surg Gynecol
+Obstet. 1944;79:352-358.
+Rule: age-adjusted regional percentages of total body surface area (head, thighs,
+and lower legs vary with age; the rest are fixed) scaled by each region's burned
+fraction give the %TBSA; the adult Rule of Nines is computed independently as a
+cross-check. Whole-region constants sum to exactly 100% at every age band.
+Worked example: adult, head and anterior trunk fully burned -> 20% TBSA (adult
+Rule of Nines cross-check 25%).
+
+### Refeeding-syndrome risk (NICE CG32)
+Citation: National Institute for Health and Care Excellence (NICE). Nutrition
+support for adults: oral nutrition support, enteral tube feeding and parenteral
+nutrition (CG32). 2006, updated 2017.
+Rule: high risk if one major criterion (BMI < 16 kg/m^2, unintentional weight
+loss > 15% over 3-6 months, > 10 days little or no nutritional intake, or low
+pre-feeding potassium/magnesium/phosphate) or two minor criteria (BMI < 18.5,
+weight loss > 10%, > 5 days little/no intake, or alcohol/drug history). Class B
+(NICE guidance); see docs/citation-staleness.md.
+Worked example: BMI 15 (one major criterion) -> high risk of refeeding syndrome.

@@ -6,6 +6,81 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v99: ID, critical-care & burns, +5 — spec-v85 program complete)
+
+- **Tenth and final feature spec of Wave 2** and the **closing spec of the
+  [spec-v85](docs/spec-v85.md) Advanced Clinical Calculators program.** Five
+  deterministic **infectious-disease, critical-care, and burns** decision rules
+  beside the existing acute-triage tools (`curb-65`, `sirs`, `qsofa-sofa`,
+  `smart-cop`, `apache2`) and `burn-fluid` (catalog **427 → 432**, all Group G):
+  - **`duke-endocarditis`** — the **2023 Duke-ISCVID modified Duke criteria** for
+    infective endocarditis (Fowler VG et al, *Clin Infect Dis* 2023; updating Li
+    JS et al 2000): definite = 2 major / 1 major + 3 minor / 5 minor; possible =
+    1 major + 1 minor / 3 minor; otherwise rejected. **Class B**.
+  - **`pitt-bacteremia`** — the **Pitt Bacteremia Score** (Paterson DL et al,
+    *Ann Intern Med* 2004): temperature band + hypotension + ventilation + cardiac
+    arrest + mental status, total 0–14, **≥ 4** high-mortality-risk. **Class A**.
+  - **`saps-ii`** — the **Simplified Acute Physiology Score II** (Le Gall JR et al,
+    *JAMA* 1993): 17 banded variables → point total → predicted hospital mortality
+    via `logit = −7.7631 + 0.0737·SAPS + 0.9971·ln(SAPS+1)`. The adult-ICU
+    companion to `apache2`; the logistic and `ln(SAPS+1)` are domain-guarded.
+    Point bands cross-verified against MDCalc/ClinCalc (the worked 64-point case
+    → 75.3% matches the published calibration). **Class A**.
+  - **`lund-browder`** — the **Lund-Browder age-adjusted %TBSA** estimator
+    (Lund CC, Browder NC, *Surg Gynecol Obstet* 1944) with the adult **Rule of
+    Nines** computed independently as a cross-check; whole-region constants
+    (cross-verified against the Joint Trauma System charts) sum to exactly 100% at
+    every age band. Region fractions are clamped to [0, 1] and a > 100% total is
+    flagged, not silently capped. *Produces* the %TBSA that `burn-fluid`
+    *consumes*. **Class A**.
+  - **`refeeding-risk`** — the **NICE CG32** refeeding-syndrome risk
+    stratification: high risk if one major (BMI < 16, weight loss > 15%, > 10 days
+    negligible intake, or low pre-feeding K/Mg/PO₄) or two minor criteria.
+    **Class B**. Cross-links `icu-nutrition-target`, `electrolyte-replacement`.
+- `duke-endocarditis` and `refeeding-risk` are **Class B** (revisable guidance) →
+  each carries a `docs/citation-staleness.md` row + `accessed` date; the other
+  three are **Class A**. Implemented in `lib/idcrit-v99.js` (in the
+  [spec-v59](docs/spec-v59.md) fuzz harness — zero non-finite leaks, SAPS II
+  logistic explicitly fuzzed) with `views/group-v25.js` renderers; each ships an
+  inline primary citation, ≥ 3 boundary unit tests, and a
+  [spec-v11](docs/spec-v11.md) audit log.
+- **Program complete:** the [spec-v85](docs/spec-v85.md) Advanced Clinical
+  Calculators program closes at **432** tiles (+66 across the ten feature specs
+  v86 through v99).
+
+### Added (spec-v98: pediatric decision rules & prognostic scores, +4)
+
+- **Ninth feature spec of Wave 2** of the [spec-v85](docs/spec-v85.md) Advanced
+  Clinical Calculators program. Four deterministic **pediatric decision rules and
+  prognostic scores** that fill confirmed gaps after a full sweep of Group N
+  (neonatal/procedural) and the existing Group-G pediatric scores (catalog
+  **423 → 427**, all Group G):
+  - **`kawasaki-criteria`** — **Kawasaki disease diagnostic criteria** (AHA,
+    McCrindle BW et al, *Circulation* 2017): classic KD (fever ≥ 5 days + ≥ 4 of 5
+    principal features) and the AHA **incomplete-Kawasaki algorithm** (prolonged
+    fever + 2–3 features → CRP/ESR gate → ≥ 3 supplementary lab criteria or a
+    positive echo). **Class B**.
+  - **`kocher-criteria`** — the **Kocher criteria** (Kocher MS et al, *J Bone
+    Joint Surg Am* 1999): the four predictors (non-weight-bearing, temp > 38.5 °C,
+    ESR > 40, WBC > 12,000) → predicted septic-arthritis probability (0 → < 0.2% …
+    4 → 99.6%). **Class A**.
+  - **`pim3`** — the **Paediatric Index of Mortality 3** (Straney L et al,
+    *Pediatr Crit Care Med* 2013): the fixed logistic equation → predicted
+    probability of death, overflow-guarded. The published Straney 2013
+    coefficients (not the PIM3-anz13 recalibration), cross-verified against two
+    reproductions. The admission *mortality* companion to `pelod2`/`psofa`.
+    **Class A**.
+  - **`catch-head`** — the **CATCH rule** for CT in childhood minor head injury
+    (Osmond MH et al, PERC, *CMAJ* 2010): any high- or medium-risk factor → CT
+    indicated, naming the factor that fired. The validated alternative to
+    `pecarn-head`. **Class A**.
+- `kawasaki-criteria` is **Class B** (AHA statement) → `docs/citation-staleness.md`
+  row + `accessed`; the other three are **Class A**. Implemented in
+  `lib/peds-v98.js` (in the [spec-v59](docs/spec-v59.md) fuzz harness — zero
+  non-finite leaks) with `views/group-v24.js` renderers; each ships an inline
+  primary citation, ≥ 3 boundary unit tests, and a [spec-v11](docs/spec-v11.md)
+  audit log.
+
 ### Added (spec-v97: perioperative risk instruments, +5)
 
 - **Eighth feature spec of Wave 2** of the [spec-v85](docs/spec-v85.md) Advanced

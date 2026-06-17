@@ -29,6 +29,8 @@ import { renderers as RV20 } from './views/group-v20.js';
 import { renderers as RV21 } from './views/group-v21.js';
 import { renderers as RV22 } from './views/group-v22.js';
 import { renderers as RV23 } from './views/group-v23.js';
+import { renderers as RV24 } from './views/group-v24.js';
+import { renderers as RV25 } from './views/group-v25.js';
 import { renderers as RV63 } from './views/group-v63.js';
 import { renderers as RB } from './views/group-b.js';
 import { renderers as RPALINT } from './views/pa-lint.js';
@@ -47,7 +49,7 @@ import { resolvePrompt } from './lib/prompt.js';
 // artifact-detect / artifact-route / artifact-handoff helpers were
 // deleted in spec-v29 wave 29-2 (Group C/L).
 
-const RENDERERS = { ...RA, ...RB, ...RC, ...RE, ...RF, ...RG, ...RH, ...RI, ...RJ, ...RKLMNO, ...RV5, ...RV6, ...RV7, ...RV8, ...RV9, ...RV10, ...RV11, ...RV12, ...RV13, ...RV14, ...RV15, ...RV16, ...RV17, ...RV18, ...RV19, ...RV20, ...RV21, ...RV22, ...RV23, ...RV63, ...RPALINT };
+const RENDERERS = { ...RA, ...RB, ...RC, ...RE, ...RF, ...RG, ...RH, ...RI, ...RJ, ...RKLMNO, ...RV5, ...RV6, ...RV7, ...RV8, ...RV9, ...RV10, ...RV11, ...RV12, ...RV13, ...RV14, ...RV15, ...RV16, ...RV17, ...RV18, ...RV19, ...RV20, ...RV21, ...RV22, ...RV23, ...RV24, ...RV25, ...RV63, ...RPALINT };
 
 // ----- Utility registry ----------------------------------------------------
 // Source of truth for routes, names, group, audiences, and clinical flag.
@@ -596,6 +598,25 @@ const UTILITIES = [
   { id: 'arozullah-pneumonia',    name: 'Arozullah Postoperative Pneumonia Risk Index',     group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'el-ganzouri',            name: 'El-Ganzouri Risk Index (difficult intubation)',    group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'pospom',                 name: 'POSPOM (preoperative postoperative-mortality score)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+
+  // spec-v98 (Wave 2 of spec-v85): four deterministic pediatric decision rules
+  // and prognostic scores that fill confirmed gaps after a full sweep of Group N
+  // (neonatal/procedural) and the pediatric scores in Group G. views/group-v24.js,
+  // lib/peds-v98.js.
+  { id: 'kawasaki-criteria',      name: 'Kawasaki Disease Diagnostic Criteria (classic + incomplete)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'kocher-criteria',        name: 'Kocher Criteria (septic arthritis vs transient synovitis)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'pim3',                   name: 'PIM3 (Paediatric Index of Mortality 3)',           group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'catch-head',             name: 'CATCH Rule (CT for childhood minor head injury)',  group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+
+  // spec-v99 (Wave 2 of spec-v85, program-closing): five deterministic
+  // infectious-disease, critical-care, and burns decision rules beside the acute
+  // triage tools (curb-65, sirs, qsofa-sofa, apache2) and burn-fluid.
+  // views/group-v25.js, lib/idcrit-v99.js.
+  { id: 'duke-endocarditis',      name: 'Modified Duke Criteria for Infective Endocarditis (2023 Duke-ISCVID)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'pitt-bacteremia',        name: 'Pitt Bacteremia Score',                            group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'saps-ii',                name: 'SAPS II (Simplified Acute Physiology Score II)',    group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'lund-browder',           name: 'Lund-Browder Chart + Rule of Nines (%TBSA burn)',   group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'refeeding-risk',         name: 'Refeeding Syndrome Risk (NICE CG32)',              group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
 
   // spec-v6 §3.3: lab result interpreter. Patient-decoder category.
   { id: 'lab-interpret',       name: 'Lab Result Interpreter',                           group: 'C', audiences: ['patients', 'clinicians', 'educators'], clinical: true },

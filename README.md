@@ -5,7 +5,7 @@
 <h1 align="center">sophiewell.com</h1>
 
 <p align="center">
-  <strong>423 deterministic healthcare calculators tuned to the nurse on shift.</strong><br>
+  <strong>432 deterministic healthcare calculators tuned to the nurse on shift.</strong><br>
   Free forever. No servers, no accounts, no telemetry, no AI, no network call after first paint.
 </p>
 
@@ -36,7 +36,7 @@ output; "searchable lookup of static facts" does not qualify. See
 [docs/spec-v10.md](docs/spec-v10.md) for the audience and
 dependency-budget commitments and
 [docs/spec-v29.md](docs/spec-v29.md) for the nurse-first pivot
-and the v29 catalog ledger. At v97 close the catalog is 423
+and the v29 catalog ledger. At v99 close the catalog is 432
 deterministic tiles — every one of them computes from at least
 one user input. The catalog reached its present size on two tracks.
 **New tiles:** spec-v63 added the operations counterpart to the bedside
@@ -186,7 +186,7 @@ production security headers. Any static file server will also work.
 ## How it works and how to use it
 
 Since the spec-v29 nurse-first prune the catalog has grown one
-reviewable spec at a time to **423** deterministic calculators
+reviewable spec at a time to **432** deterministic calculators
 (the full per-version history is in [CHANGELOG.md](CHANGELOG.md)
 and `docs/spec-v*.md`; the most recent bedside additions are
 summarized in the cheat sheets below). They organize across the
@@ -964,6 +964,65 @@ Digital Content 3 and spot-verified against the source. All five are **Class A**
 universal Surgical Risk Calculator is **excluded** — it is a hosted model, not a
 fixed published equation. See [docs/spec-v97.md](docs/spec-v97.md).
 
+### Pediatrics: the four standard rules the deep neonatal surface still lacked (spec-v98, +4 → 427)
+
+The catalog's pediatric surface was already broad — Group N carries the neonatal
+and procedural tiles (`ballard`, `finnegan`, `bhutani-bilirubin`, `downes`,
+`neo-phototherapy`, `pecarn-head`, `pecarn-cspine`, `pecarn-iai`), and Group G the
+pediatric clinical scores (`pews`, `peds-gcs`, `alvarado-pas`, `nigrovic`, the
+febrile-infant rules, `westley`, `pram-asthma`, `pelod2`, `psofa`). A full-catalog
+sweep (the first draft proposed five tiles that turned out **already shipped**)
+left exactly four genuinely-absent standard instruments. [spec-v98](docs/spec-v98.md)
+ships them, all Group G, pure `lib/peds-v98.js` functions fuzz-covered by the
+spec-v59 harness.
+
+| id | Shape | Rule | Output | Companion to |
+|---|---|---|---|---|
+| `kawasaki-criteria` | criteria + algorithm | classic = fever ≥ 5 d + ≥ 4 of 5 principal features; the AHA **incomplete-KD** algorithm gates on CRP/ESR then ≥ 3 supplementary lab criteria or a positive echo (Circulation 2017) | classic / incomplete / not-met, naming the features met | `pews` |
+| `kocher-criteria` | 4 predictors → probability | non-weight-bearing, temp > 38.5 °C, ESR > 40, WBC > 12,000 (J Bone Joint Surg Am 1999) | count 0–4 → predicted septic-arthritis probability (< 0.2% … 99.6%) | `pews` |
+| `pim3` | logistic probability | the fixed Straney 2013 equation (SBP linear **and** squared term, pupils, FiO₂·PaO₂, base excess, ventilation, recovery, diagnosis risk) | predicted % death + the logit derivation, overflow-guarded | `pelod2`, `psofa` |
+| `catch-head` | high/medium-risk factors | any high-risk (GCS < 15 at 2 h, open/depressed fracture, worsening headache, irritability) or medium-risk (basal-fracture signs, boggy hematoma, dangerous mechanism) factor (CMAJ 2010) | CT indicated / may be deferred, naming the factor that fired | `pecarn-head` (the alternative rule) |
+
+`pim3` uses the **published Straney 2013 coefficients — not the PIM3-anz13 registry
+recalibration** that also circulates — cross-verified against two independent
+reproductions; its logistic is clamped before `e^−x` so a fuzzed `1e9` input still
+returns a finite probability in `[0, 100]`. `kawasaki-criteria` is **Class B** (the
+AHA statement is revisable → a [citation-staleness](docs/citation-staleness.md)
+row); the other three are **Class A**. No growth-percentile chart tile (a dataset,
+out per [spec-v29](docs/spec-v29.md) §3); no auto-CT / auto-aspiration order.
+See [docs/spec-v98.md](docs/spec-v98.md).
+
+### ID, critical care & burns: closing the spec-v85 program (spec-v99, +5 → 432)
+
+The catalog had the acute-infection and critical-care *triage* tools (`curb-65`,
+`sirs`, `qsofa-sofa`, `smart-cop`, `apache2`) and the burn-*resuscitation*
+calculator (`burn-fluid`, which *takes* %TBSA as an input), but five standard
+ID/critical-care/burns instruments were absent. [spec-v99](docs/spec-v99.md) ships
+them — the **tenth and final feature spec of Wave 2** — all Group G, pure
+`lib/idcrit-v99.js` functions fuzz-covered by the spec-v59 harness, **closing the
+spec-v85 Advanced Clinical Calculators program at 432 tiles (+66 across the ten
+feature specs v86 through v99).**
+
+| id | Shape | Rule | Output | Companion to |
+|---|---|---|---|---|
+| `duke-endocarditis` | major/minor criteria | definite = 2 major / 1 major + 3 minor / 5 minor; possible = 1 major + 1 minor / 3 minor (2023 Duke-ISCVID) | definite / possible / rejected, with the counts | `qsofa-sofa` |
+| `pitt-bacteremia` | weighted score | temperature band + hypotension (2) + ventilation (2) + cardiac arrest (4) + mental status (0/1/2/4) (Ann Intern Med 2004) | total 0–14, **≥ 4** high-mortality-risk | `qsofa-sofa`, `apache2` |
+| `saps-ii` | 17-variable score → mortality | banded points → `logit = −7.7631 + 0.0737·SAPS + 0.9971·ln(SAPS+1)` (JAMA 1993) | SAPS II points + predicted hospital mortality % | `apache2` |
+| `lund-browder` | age-adjusted area sum | per-region burned fraction × the age-adjusted %TBSA; adult Rule of Nines computed independently | %TBSA + the Rule-of-Nines cross-check | `burn-fluid` (consumes the %TBSA) |
+| `refeeding-risk` | NICE major/minor criteria | high risk if 1 major (BMI < 16, loss > 15%, > 10 d negligible intake, low K/Mg/PO₄) or 2 minor (CG32) | high risk / not high risk, naming the criteria | `icu-nutrition-target` |
+
+Two correctness anchors. **`saps-ii` is transcribed and calibration-checked**: the
+17-variable point bands were cross-verified against MDCalc and ClinCalc (a corrupted
+"+1" urine-output band in one reproduction was rejected in favor of the correct
+"+4"), and the worked 64-point case → **75.3%** matches the published ClinCalc
+calibration; the mortality logistic and `ln(SAPS+1)` are domain-guarded.
+**`lund-browder` sums to exactly 100% at every age band** (cross-verified against
+the Joint Trauma System adult/pediatric charts); region fractions clamp to `[0, 1]`
+and a > 100% total is **flagged, not silently capped**. `duke-endocarditis` (2023
+Duke-ISCVID) and `refeeding-risk` (NICE CG32) are **Class B** with
+[citation-staleness](docs/citation-staleness.md) rows; the other three are
+**Class A**. See [docs/spec-v99.md](docs/spec-v99.md).
+
 ### Billing & reimbursement: what Medicare pays, whether the line survives, how the visit codes, what the drug bills, what the patient owes, and whether the claim is clean (spec-v77 → spec-v83, program complete)
 
 The catalog has always been strong on the clinician at the bedside and competent
@@ -1287,7 +1346,7 @@ long version, see [docs/architecture.md](docs/architecture.md).
  │  manifests (data/)            │  static │        ▼                     ▼             │
  │        │  scripts/build       │  files  │   lazy-load data shard   pure compute      │
  │        ▼                      │         │   (verified vs manifest)  (lib/*.js)       │
- │  dist/  (423 tool pages,      │         │        │                     │             │
+ │  dist/  (432 tool pages,      │         │        │                     │             │
  │  OG cards, sitemap, SBOM)     │         │        ▼                     ▼             │
  └───────────────────────────────┘         │   service worker cache    result + cite   │
                                             │   (keyed to build hash)                    │
@@ -1307,7 +1366,7 @@ session, and nothing to log.
 index.html          single-page shell (hero-search combobox + static browse-by-category nav, tile mount)
 styles.css          one stylesheet (responsive; no horizontal scroll — enforced catalog-wide at 320px in CI)
 app.js              router, hero-search wiring, view wiring, the UTILITIES catalog
-                    (423 tiles — the single source of truth; zero runtime deps)
+                    (432 tiles — the single source of truth; zero runtime deps)
 sw.js               service worker — precache shell, cache shards by build hash
 theme.js            light/dark theme toggle (writes only sw-theme, allowlisted)
 lib/input-persist.js opt-in "remember my inputs" (off by default; numbers only)
@@ -1325,12 +1384,12 @@ docs/               specs (spec-v4 … spec-v84) + per-tile v11/v12 audit logs +
                     citation-staleness ledger +
                     architecture / threat-model / …
 test/               unit/ (node:test) · integration/ (Playwright) · fixtures/
-dist/               build output (423 tool pages, OG cards, sitemap, SBOM)
+dist/               build output (432 tool pages, OG cards, sitemap, SBOM)
 ```
 
-### Discovery: how a query finds the right tool among 423
+### Discovery: how a query finds the right tool among 432
 
-With 423 tiles, search quality *is* the product — a tool you cannot find does
+With 432 tiles, search quality *is* the product — a tool you cannot find does
 not exist. Discovery is deterministic and offline (no fuzzy-match service, no
 embedding model, no AI). The home `#hero-search` combobox builds its dropdown
 from two complementary rankers, both pure functions of the typed query:
@@ -1403,10 +1462,10 @@ A login-less, AI-free calculator earns trust only if the nurse can see, on the
 tile, exactly which published source produced the number — and tell whether that
 source is current. spec-v54 defined the invariants; spec-v60 built the machinery
 (the gate, the ledger, and the `citationAccessed` convention) and extended it
-across the full 423-tile catalog, pinning the last three unpinned "current
+across the full 432-tile catalog, pinning the last three unpinned "current
 edition" phrases and re-verifying every guideline tile against its latest known
 edition. Three invariants make that auditable, each enforced by the
-`check-citations.mjs` lint gate (in the `npm run lint` chain) over all 423 tiles:
+`check-citations.mjs` lint gate (in the `npm run lint` chain) over all 432 tiles:
 
 | Invariant | Rule | Enforcement |
 |---|---|---|
@@ -1863,7 +1922,7 @@ rules, not soft preferences.
 | `npm run build`          | Copy static files into `dist/` for deployment                     |
 | `npm test`               | Run the full test suite (unit, a11y, grep, data integrity)        |
 | `npm run test:unit`      | Run Node's built-in unit tests (3,613 tests)                      |
-| `npm run test:e2e`       | Build `dist/`, then run Playwright integration tests against real browsers — incl. a full-catalog 320px no-horizontal-scroll sweep over both the SPA routes and the 423 pre-rendered static tool pages, the hub/topic/commitments pages, and the citation-wrap pin |
+| `npm run test:e2e`       | Build `dist/`, then run Playwright integration tests against real browsers — incl. a full-catalog 320px no-horizontal-scroll sweep over both the SPA routes and the 432 pre-rendered static tool pages, the hub/topic/commitments pages, and the citation-wrap pin |
 | `npm run test:a11y`      | Run accessibility checks on every utility view                    |
 | `npm run lint`           | ESLint + the CI gate chain: grep-check, output-safety, citation-integrity, catalog-truth, commitments, PA staleness, PA audit |
 | `npm run data:refresh`   | Re-fetch and re-shard every public dataset                        |
@@ -1947,7 +2006,7 @@ build, integrity-verified data shards) are documented in
 - [docs/spec-v11.md](docs/spec-v11.md) — correctness-floor spec:
   per-tile audit protocol, specialty-named groups, optional
   source-quoted `interpretation` field. Audit coverage is **complete
-  — 423/423 tiles** carry a committed per-tile audit log
+  — 432/432 tiles** carry a committed per-tile audit log
   (`docs/audits/v11/<id>.md` for the pre-v78 catalog;
   `docs/audits/v12/<id>.md` for the twenty-nine spec-v78–v83 billing &
   coding program tiles)

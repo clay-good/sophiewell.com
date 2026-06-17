@@ -254,3 +254,37 @@ CKD edition publishes.
 | tile id | instrument | edition shipped | latest known edition | accessed | justification if behind |
 |---|---|---|---|---|---|
 | ckd-staging | KDIGO CKD G x A risk classification (GFR G1-G5 x albuminuria A1-A3 heat-map cells) | KDIGO 2024 CKD guideline (Kidney Int 105(4S)) | same | 2026-06-16 | current -- the 2024 edition is the latest; Class B, review on-publication of the next KDIGO CKD guideline. The G/A category cut-points are stable across the 2012 and 2024 editions |
+
+## spec-v98 pediatrics (added 2026-06-17)
+
+Wave 2 of the spec-v85 Advanced Clinical Calculators program adds four pediatric
+decision rules. Three are Class A fixed instruments whose citations do not match
+the check-citations issuer pattern and carry no row: `kocher-criteria` (the Kocher
+1999 four-predictor probabilities), `pim3` (the Straney 2013 logistic
+coefficients), and `catch-head` (the CATCH high/medium-risk factor lists). One is
+Class B and carries the row below for the §6.3 cadence job
+(`scripts/check-citation-cadence.mjs`), which warns -- never blocks -- when an
+`accessed` date ages past the stated cadence. `kawasaki-criteria` cites the AHA
+scientific statement; cadence is on-publication: re-verify when the next AHA
+Kawasaki statement publishes.
+
+| tile id | instrument | edition shipped | latest known edition | accessed | justification if behind |
+|---|---|---|---|---|---|
+| kawasaki-criteria | Kawasaki disease diagnostic criteria (classic + incomplete-Kawasaki algorithm) | AHA scientific statement (McCrindle 2017, Circulation 135(17)) | same | 2026-06-17 | current -- the 2017 AHA statement is the latest; Class B, review on-publication of the next AHA Kawasaki statement. The classic 5-feature criteria and the incomplete-KD algorithm branches are stable |
+
+## spec-v99 ID, critical-care & burns (added 2026-06-17)
+
+Final feature spec of Wave 2 of the spec-v85 Advanced Clinical Calculators
+program. Three are Class A fixed instruments whose citations do not match the
+check-citations issuer pattern and carry no row: `pitt-bacteremia` (the Paterson
+2004 point form), `saps-ii` (the Le Gall 1993 band table and logistic constants),
+and `lund-browder` (the 1944 age-adjusted region table). Two are Class B and carry
+the rows below for the §6.3 cadence job. `duke-endocarditis` cites the 2023
+Duke-ISCVID criteria; `refeeding-risk` cites NICE CG32, whose citation also matches
+the gate-required issuer pattern (NICE), so that row is gate-required. Both cadences
+are on-publication.
+
+| tile id | instrument | edition shipped | latest known edition | accessed | justification if behind |
+|---|---|---|---|---|---|
+| duke-endocarditis | Modified Duke criteria for infective endocarditis (definite/possible/rejected thresholds) | 2023 Duke-ISCVID (Fowler 2023, Clin Infect Dis 77(4)) | same | 2026-06-17 | current -- the 2023 Duke-ISCVID revision is the latest; Class B, review on-publication of the next Duke-ISCVID update. The major/minor counting thresholds are stable |
+| refeeding-risk | NICE refeeding-syndrome risk stratification (major/minor criteria) | NICE CG32 (2006, updated 2017) | same | 2026-06-17 | current -- CG32 with the 2017 update is the latest; Class B, review on-publication of the next NICE nutrition-support update. The BMI / weight-loss / intake / electrolyte criteria are stable |
