@@ -28,6 +28,7 @@ import { renderers as RV19 } from './views/group-v19.js';
 import { renderers as RV20 } from './views/group-v20.js';
 import { renderers as RV21 } from './views/group-v21.js';
 import { renderers as RV22 } from './views/group-v22.js';
+import { renderers as RV23 } from './views/group-v23.js';
 import { renderers as RV63 } from './views/group-v63.js';
 import { renderers as RB } from './views/group-b.js';
 import { renderers as RPALINT } from './views/pa-lint.js';
@@ -46,7 +47,7 @@ import { resolvePrompt } from './lib/prompt.js';
 // artifact-detect / artifact-route / artifact-handoff helpers were
 // deleted in spec-v29 wave 29-2 (Group C/L).
 
-const RENDERERS = { ...RA, ...RB, ...RC, ...RE, ...RF, ...RG, ...RH, ...RI, ...RJ, ...RKLMNO, ...RV5, ...RV6, ...RV7, ...RV8, ...RV9, ...RV10, ...RV11, ...RV12, ...RV13, ...RV14, ...RV15, ...RV16, ...RV17, ...RV18, ...RV19, ...RV20, ...RV21, ...RV22, ...RV63, ...RPALINT };
+const RENDERERS = { ...RA, ...RB, ...RC, ...RE, ...RF, ...RG, ...RH, ...RI, ...RJ, ...RKLMNO, ...RV5, ...RV6, ...RV7, ...RV8, ...RV9, ...RV10, ...RV11, ...RV12, ...RV13, ...RV14, ...RV15, ...RV16, ...RV17, ...RV18, ...RV19, ...RV20, ...RV21, ...RV22, ...RV23, ...RV63, ...RPALINT };
 
 // ----- Utility registry ----------------------------------------------------
 // Source of truth for routes, names, group, audiences, and clinical flag.
@@ -583,6 +584,18 @@ const UTILITIES = [
   { id: 'mdq',                    name: 'Mood Disorder Questionnaire (bipolar screen)',     group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'ybocs',                  name: 'Yale-Brown Obsessive Compulsive Scale (Y-BOCS)',   group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'pcl5',                   name: 'PTSD Checklist for DSM-5 (PCL-5, 20-item)',        group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+
+  // spec-v97 (Wave 2 of spec-v85): five perioperative risk instruments one rung
+  // above the screening indices already in the catalog (rcri, ariscat, lemon,
+  // apfel, asa-ps, surgical-apgar). Two are published logistic PROBABILITY models
+  // (Gupta MICA cardiac, Gupta respiratory failure), two are validated weighted
+  // INDICES (Arozullah pneumonia, El-Ganzouri airway), and one is a preoperative
+  // point-score MORTALITY model (POSPOM). views/group-v23.js, lib/periop-v97.js.
+  { id: 'gupta-mica',             name: 'Gupta Perioperative Cardiac Risk (MICA)',          group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'gupta-respiratory-failure', name: 'Gupta Postoperative Respiratory Failure Risk',  group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'arozullah-pneumonia',    name: 'Arozullah Postoperative Pneumonia Risk Index',     group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'el-ganzouri',            name: 'El-Ganzouri Risk Index (difficult intubation)',    group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'pospom',                 name: 'POSPOM (preoperative postoperative-mortality score)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
 
   // spec-v6 §3.3: lab result interpreter. Patient-decoder category.
   { id: 'lab-interpret',       name: 'Lab Result Interpreter',                           group: 'C', audiences: ['patients', 'clinicians', 'educators'], clinical: true },

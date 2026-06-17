@@ -96,6 +96,7 @@ import * as hepgiV93 from '../../lib/hepgi-v93.js';
 import * as hemoncV94 from '../../lib/hemonc-v94.js';
 import * as neuroV95 from '../../lib/neuro-v95.js';
 import * as psychV96 from '../../lib/psych-v96.js';
+import * as periopV97 from '../../lib/periop-v97.js';
 
 const MODULES = {
   'clinical.js': clinical,
@@ -136,6 +137,7 @@ const MODULES = {
   'hemonc-v94.js': hemoncV94,
   'neuro-v95.js': neuroV95,
   'psych-v96.js': psychV96,
+  'periop-v97.js': periopV97,
 };
 
 const MATRIX = [0, -1, 1e9, NaN, Infinity, -Infinity, '', undefined, null];

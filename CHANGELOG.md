@@ -6,6 +6,50 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v97: perioperative risk instruments, +5)
+
+- **Eighth feature spec of Wave 2** of the [spec-v85](docs/spec-v85.md) Advanced
+  Clinical Calculators program. Five deterministic **perioperative risk
+  instruments** one rung above the screening indices already in the catalog
+  (`rcri`, `ariscat`, `lemon`, `apfel`, `asa-ps`, `surgical-apgar`) — two
+  published **logistic-regression probability** models, two validated **weighted
+  indices**, and a preoperative **point-score mortality** model (catalog
+  **418 → 423**, all Group G):
+  - **`gupta-mica`** — the **Gupta Perioperative Cardiac Risk** model (MICA;
+    Gupta PK et al, *Circulation* 2011): the predicted probability of
+    perioperative MI or cardiac arrest from the fixed logistic equation
+    `risk = 1 / (1 + e^−x)`, `x = −5.25 + 0.02·age + ASA + functional status +
+    creatinine + procedure type` — the *probability* where `rcri` returns only a
+    Lee risk class. The linear predictor is clamped before exponentiation so the
+    result is always finite and in [0, 100]. **Class A**. Cross-links `rcri`,
+    `asa-ps`.
+  - **`gupta-respiratory-failure`** — the **Gupta Postoperative Respiratory
+    Failure** model (Gupta H et al, *Chest* 2011): the predicted probability of
+    mechanical ventilation > 48 h or unplanned reintubation, same logistic shape
+    with `x = −1.7397 + ASA + sepsis + functional status + emergency + procedure
+    type`. The respiratory companion to `ariscat`. **Class A**.
+  - **`arozullah-pneumonia`** — the **Arozullah Postoperative Pneumonia Risk
+    Index** (*Ann Intern Med* 2001): the weighted point total mapped to one of
+    five risk classes with the cited pneumonia rate (class 1 0.2% … class 5
+    15.3%); the BUN contribution is **U-shaped**. The pneumonia companion to
+    `ariscat`. **Class A**.
+  - **`el-ganzouri`** — the **El-Ganzouri Risk Index** for difficult intubation
+    (*Anesth Analg* 1996): the seven-factor weighted index (each 0/1/2; mouth
+    opening and prognathism cap at 1), total 0–12, with the commonly cited
+    **≥ 4** difficult-laryngoscopy threshold flagged. The quantitative companion
+    to the `lemon` bedside screen. **Class A**.
+  - **`pospom`** — the **Preoperative Score to Predict Postoperative Mortality**
+    (Le Manach et al, *Anesthesiology* 2016): age-band + 15-comorbidity +
+    procedure-category points mapped to the published predicted in-hospital
+    mortality (Supplemental Digital Content 3, transcribed verbatim). Derived
+    from > 5.5 million procedures (c-statistic 0.944 / 0.929). **Class A**.
+- All five are **Class A** (fixed regression coefficients / published point
+  tables), so they carry **no** `citation-staleness.md` or `pa-staleness-ledger`
+  rows. Implemented in `lib/periop-v97.js` (in the [spec-v59](docs/spec-v59.md)
+  fuzz harness — zero non-finite leaks) with `views/group-v23.js` renderers; each
+  ships an inline primary citation, ≥ 3 boundary unit tests, and a
+  [spec-v11](docs/spec-v11.md) audit log.
+
 ### Added (spec-v96: psychiatry rating scales, +6)
 
 - **Seventh feature spec of Wave 2** of the [spec-v85](docs/spec-v85.md) Advanced

@@ -982,3 +982,62 @@ above the commonly cited provisional cutoff (>= 31-33) suggests probable PTSD; t
 optimal cutpoint varies by population. A blank item withholds the result.
 Worked example: every item rated 2 -> total 40, at or above the provisional
 cutoff; clusters B 5/5, C 2/2, D 7/7, E 6/6.
+
+### Gupta Perioperative Cardiac Risk (MICA)
+Citation: Gupta PK, Gupta H, Sundaram A, et al. Development and validation of a
+risk calculator for prediction of cardiac risk after surgery. Circulation.
+2011;124(4):381-387.
+Rule: predicted probability of perioperative MI or cardiac arrest from a fixed
+logistic equation, risk = 1 / (1 + e^-x), with the linear predictor
+x = -5.25 + 0.02*age + ASA class + functional status + creatinine + procedure
+type. Reference categories (coefficient 0): ASA V, independent, normal creatinine,
+hernia. The linear predictor is clamped before exponentiation so the probability
+is always finite and in [0, 100].
+Worked example: age 65, ASA III, partially dependent, normal creatinine,
+intestinal surgery -> x = -4.08 -> predicted risk 1.66%.
+
+### Gupta Postoperative Respiratory Failure
+Citation: Gupta H, Gupta PK, Fang X, et al. Development and validation of a risk
+calculator predicting postoperative respiratory failure. Chest.
+2011;140(5):1207-1215.
+Rule: predicted probability of postoperative respiratory failure (mechanical
+ventilation > 48 h or unplanned reintubation), risk = 1 / (1 + e^-x), with
+x = -1.7397 + ASA class + sepsis status + functional status + emergency +
+procedure type. Reference categories (0): ASA V, SIRS, independent, emergency =
+yes, hernia.
+Worked example: ASA III, no sepsis, independent, elective, intestinal surgery ->
+x = -3.144 -> predicted risk 4.13%.
+
+### Arozullah Postoperative Pneumonia Risk Index
+Citation: Arozullah AM, Khuri SF, Henderson WG, Daley J. Development and
+validation of a multifactorial risk index for predicting postoperative pneumonia
+after major noncardiac surgery. Ann Intern Med. 2001;135(10):847-857.
+Rule: a weighted point total mapped to one of five risk classes with the cited
+development-cohort pneumonia rate -- class 1 (0-15) 0.2%, class 2 (16-25) 1.2%,
+class 3 (26-40) 4.0%, class 4 (41-55) 9.4%, class 5 (> 55) 15.3%. The BUN
+contribution is U-shaped: < 8 mg/dL and >= 30 mg/dL both add points, the normal
+band adds none.
+Worked example: thoracic surgery (14) + age 60-69 (9) + COPD (5) -> 28 points ->
+class 3, predicted pneumonia risk 4.0%.
+
+### El-Ganzouri Risk Index (difficult intubation)
+Citation: el-Ganzouri AR, McCarthy RJ, Tuman KJ, et al. Preoperative airway
+assessment: predictive value of a multivariate risk index. Anesth Analg.
+1996;82(6):1197-1204.
+Rule: seven airway factors -- mouth opening, thyromental distance, Mallampati
+class, neck movement, ability to prognath, body weight, and prior difficult
+intubation -- each scored 0/1/2 (mouth opening and prognathism cap at 1). Total
+0-12; a score >= 4 is the commonly cited threshold for difficult laryngoscopy.
+Worked example: mouth opening < 4 cm (1) + thyromental 6.0-6.5 cm (1) + Mallampati
+III (1) + neck 80-90 deg (1) -> total 4, at or above the >= 4 threshold.
+
+### POSPOM (Preoperative Score to Predict Postoperative Mortality)
+Citation: Le Manach Y, Collins G, Rodseth R, et al. Preoperative Score to Predict
+Postoperative Mortality (POSPOM): derivation and validation. Anesthesiology.
+2016;124(3):570-579.
+Rule: total = age-band points + comorbidity points (15 named comorbidities) +
+procedure-category points, mapped to the published predicted in-hospital mortality
+(Supplemental Digital Content 3). Derived from over 5.5 million procedures;
+c-statistic 0.944 derivation, 0.929 validation.
+Worked example: age 70 (10) + cancer (4) + major gastrointestinal surgery (16) ->
+30 points -> predicted in-hospital mortality 7.403%.

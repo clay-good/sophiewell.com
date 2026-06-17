@@ -5,7 +5,7 @@
 <h1 align="center">sophiewell.com</h1>
 
 <p align="center">
-  <strong>418 deterministic healthcare calculators tuned to the nurse on shift.</strong><br>
+  <strong>423 deterministic healthcare calculators tuned to the nurse on shift.</strong><br>
   Free forever. No servers, no accounts, no telemetry, no AI, no network call after first paint.
 </p>
 
@@ -36,7 +36,7 @@ output; "searchable lookup of static facts" does not qualify. See
 [docs/spec-v10.md](docs/spec-v10.md) for the audience and
 dependency-budget commitments and
 [docs/spec-v29.md](docs/spec-v29.md) for the nurse-first pivot
-and the v29 catalog ledger. At v96 close the catalog is 418
+and the v29 catalog ledger. At v97 close the catalog is 423
 deterministic tiles — every one of them computes from at least
 one user input. The catalog reached its present size on two tracks.
 **New tiles:** spec-v63 added the operations counterpart to the bedside
@@ -186,7 +186,7 @@ production security headers. Any static file server will also work.
 ## How it works and how to use it
 
 Since the spec-v29 nurse-first prune the catalog has grown one
-reviewable spec at a time to **418** deterministic calculators
+reviewable spec at a time to **423** deterministic calculators
 (the full per-version history is in [CHANGELOG.md](CHANGELOG.md)
 and `docs/spec-v*.md`; the most recent bedside additions are
 summarized in the cheat sheets below). They organize across the
@@ -929,6 +929,41 @@ Blevins 2015), so **none carries a
 instruments (MoCA, SLUMS, BDI-II) are **excluded** for licensing. See
 [docs/spec-v96.md](docs/spec-v96.md).
 
+### Perioperative risk: the probability and the score, one rung above the screen (spec-v97, +5 → 423)
+
+The catalog's pre-op surface was strong on the **screening indices** a clinician
+runs in clinic — `rcri` (a Lee *class*), `ariscat` (pulmonary-complication risk),
+`lemon` (a difficult-airway *screen*), `apfel` (PONV), plus the spec-v89 `asa-ps`
+and `surgical-apgar`. What it lacked is the layer above: the **published
+regression equations** that return an actual *predicted probability* rather than a
+risk class, and the **validated weighted indices** an anesthesiologist reaches for
+on a high-stakes case. [spec-v97](docs/spec-v97.md) ships five, all Group G, pure
+`lib/periop-v97.js` functions fuzz-covered by the spec-v59 harness.
+
+| id | Shape | Formula / rule | Output | Companion to |
+|---|---|---|---|---|
+| `gupta-mica` | logistic probability | `risk = 1/(1+e^−x)`, `x = −5.25 + 0.02·age + ASA + functional + creatinine + procedure` (Circulation 2011) | predicted % MI / cardiac arrest + the linear-predictor derivation | the `rcri` Lee *class* |
+| `gupta-respiratory-failure` | logistic probability | `x = −1.7397 + ASA + sepsis + functional + emergency + procedure` (Chest 2011); endpoint = vent > 48 h or reintubation | predicted % respiratory failure + derivation | `ariscat` |
+| `arozullah-pneumonia` | weighted index → class | sum of fixed point weights; BUN is **U-shaped** (low *and* high add points) | total → class 1–5 with the cited pneumonia rate (0.2% … 15.3%) | `ariscat` |
+| `el-ganzouri` | weighted index → threshold | 7 airway factors, each 0/1/2 (mouth opening & prognathism cap at 1) | total 0–12, **≥ 4** difficult-laryngoscopy flag | the `lemon` screen |
+| `pospom` | point score → mortality | age band + 15 comorbidities + procedure category | total → published predicted in-hospital mortality (SDC 3, verbatim) | `rcri`, `asa-ps`, `surgical-apgar` |
+
+Two design points keep these honest. **The Gupta logistic link is
+overflow-guarded**: the linear predictor `x` is clamped to `[−40, 40]` before
+`e^−x`, so even a fuzzed `1e9` age returns a finite probability in `[0, 100]`,
+never `NaN`/`Infinity` — and every categorical input is validated against its
+fixed enum (an out-of-enum value surfaces `valid:false`, never a silent `NaN`).
+**The point tables are transcribed, not approximated**: the Gupta coefficients
+were cross-checked against two independent reproductions of the source models, and
+the entire POSPOM age / 15-comorbidity / 24-procedure point system *and* its
+points→mortality lookup were transcribed verbatim from the paper's Supplemental
+Digital Content 3 and spot-verified against the source. All five are **Class A**
+(fixed regression coefficients / published point tables: Gupta 2011 ×2, Arozullah
+2001, el-Ganzouri 1996, Le Manach 2016), so **none carries a
+[citation-staleness](docs/citation-staleness.md) row**. The proprietary ACS-NSQIP
+universal Surgical Risk Calculator is **excluded** — it is a hosted model, not a
+fixed published equation. See [docs/spec-v97.md](docs/spec-v97.md).
+
 ### Billing & reimbursement: what Medicare pays, whether the line survives, how the visit codes, what the drug bills, what the patient owes, and whether the claim is clean (spec-v77 → spec-v83, program complete)
 
 The catalog has always been strong on the clinician at the bedside and competent
@@ -1252,7 +1287,7 @@ long version, see [docs/architecture.md](docs/architecture.md).
  │  manifests (data/)            │  static │        ▼                     ▼             │
  │        │  scripts/build       │  files  │   lazy-load data shard   pure compute      │
  │        ▼                      │         │   (verified vs manifest)  (lib/*.js)       │
- │  dist/  (418 tool pages,      │         │        │                     │             │
+ │  dist/  (423 tool pages,      │         │        │                     │             │
  │  OG cards, sitemap, SBOM)     │         │        ▼                     ▼             │
  └───────────────────────────────┘         │   service worker cache    result + cite   │
                                             │   (keyed to build hash)                    │
@@ -1272,7 +1307,7 @@ session, and nothing to log.
 index.html          single-page shell (hero-search combobox + static browse-by-category nav, tile mount)
 styles.css          one stylesheet (responsive; no horizontal scroll — enforced catalog-wide at 320px in CI)
 app.js              router, hero-search wiring, view wiring, the UTILITIES catalog
-                    (418 tiles — the single source of truth; zero runtime deps)
+                    (423 tiles — the single source of truth; zero runtime deps)
 sw.js               service worker — precache shell, cache shards by build hash
 theme.js            light/dark theme toggle (writes only sw-theme, allowlisted)
 lib/input-persist.js opt-in "remember my inputs" (off by default; numbers only)
@@ -1290,12 +1325,12 @@ docs/               specs (spec-v4 … spec-v84) + per-tile v11/v12 audit logs +
                     citation-staleness ledger +
                     architecture / threat-model / …
 test/               unit/ (node:test) · integration/ (Playwright) · fixtures/
-dist/               build output (418 tool pages, OG cards, sitemap, SBOM)
+dist/               build output (423 tool pages, OG cards, sitemap, SBOM)
 ```
 
-### Discovery: how a query finds the right tool among 418
+### Discovery: how a query finds the right tool among 423
 
-With 418 tiles, search quality *is* the product — a tool you cannot find does
+With 423 tiles, search quality *is* the product — a tool you cannot find does
 not exist. Discovery is deterministic and offline (no fuzzy-match service, no
 embedding model, no AI). The home `#hero-search` combobox builds its dropdown
 from two complementary rankers, both pure functions of the typed query:
@@ -1368,10 +1403,10 @@ A login-less, AI-free calculator earns trust only if the nurse can see, on the
 tile, exactly which published source produced the number — and tell whether that
 source is current. spec-v54 defined the invariants; spec-v60 built the machinery
 (the gate, the ledger, and the `citationAccessed` convention) and extended it
-across the full 418-tile catalog, pinning the last three unpinned "current
+across the full 423-tile catalog, pinning the last three unpinned "current
 edition" phrases and re-verifying every guideline tile against its latest known
 edition. Three invariants make that auditable, each enforced by the
-`check-citations.mjs` lint gate (in the `npm run lint` chain) over all 418 tiles:
+`check-citations.mjs` lint gate (in the `npm run lint` chain) over all 423 tiles:
 
 | Invariant | Rule | Enforcement |
 |---|---|---|
@@ -1828,7 +1863,7 @@ rules, not soft preferences.
 | `npm run build`          | Copy static files into `dist/` for deployment                     |
 | `npm test`               | Run the full test suite (unit, a11y, grep, data integrity)        |
 | `npm run test:unit`      | Run Node's built-in unit tests (3,613 tests)                      |
-| `npm run test:e2e`       | Build `dist/`, then run Playwright integration tests against real browsers — incl. a full-catalog 320px no-horizontal-scroll sweep over both the SPA routes and the 418 pre-rendered static tool pages, the hub/topic/commitments pages, and the citation-wrap pin |
+| `npm run test:e2e`       | Build `dist/`, then run Playwright integration tests against real browsers — incl. a full-catalog 320px no-horizontal-scroll sweep over both the SPA routes and the 423 pre-rendered static tool pages, the hub/topic/commitments pages, and the citation-wrap pin |
 | `npm run test:a11y`      | Run accessibility checks on every utility view                    |
 | `npm run lint`           | ESLint + the CI gate chain: grep-check, output-safety, citation-integrity, catalog-truth, commitments, PA staleness, PA audit |
 | `npm run data:refresh`   | Re-fetch and re-shard every public dataset                        |
@@ -1912,7 +1947,7 @@ build, integrity-verified data shards) are documented in
 - [docs/spec-v11.md](docs/spec-v11.md) — correctness-floor spec:
   per-tile audit protocol, specialty-named groups, optional
   source-quoted `interpretation` field. Audit coverage is **complete
-  — 418/418 tiles** carry a committed per-tile audit log
+  — 423/423 tiles** carry a committed per-tile audit log
   (`docs/audits/v11/<id>.md` for the pre-v78 catalog;
   `docs/audits/v12/<id>.md` for the twenty-nine spec-v78–v83 billing &
   coding program tiles)
