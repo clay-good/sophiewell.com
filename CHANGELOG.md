@@ -6,6 +6,54 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v96: psychiatry rating scales, +6)
+
+- **Seventh feature spec of Wave 2** of the [spec-v85](docs/spec-v85.md) Advanced
+  Clinical Calculators program. Six deterministic **psychiatry rating scales** —
+  the clinician-rated severity scales and the bipolar/PTSD screens that sit one
+  rung above the brief self-report screeners already in the catalog (`phq9`,
+  `gad7`, `cssrs`, `gds15`, `epds`, `auditc`). A `phq9` is what the patient says;
+  the HAM-D is what the clinician rates (catalog **412 → 418**, all Group G):
+  - **`hamd`** — the **Hamilton Depression Rating Scale** (HAM-D / HDRS, Hamilton
+    1960): the 17 clinician-rated items under Hamilton's **mixed anchors** (items
+    1–3, 7–11, 15 score 0–4; items 4–6, 12–14, 16–17 score 0–2), total 0–52, with
+    severity bands no/none 0–7, mild 8–16, moderate 17–23, severe ≥ 24. **Class
+    A**. Cross-links `phq9`.
+  - **`hama`** — the **Hamilton Anxiety Rating Scale** (HAM-A, Hamilton 1959): 14
+    items each 0–4, total 0–56, with the source's mild ≤ 17 / mild-to-moderate
+    18–24 / moderate-to-severe 25–30 / severe ≥ 31 structure. **Class A**.
+    Cross-links `gad7`.
+  - **`madrs`** — the **Montgomery-Åsberg Depression Rating Scale** (Montgomery &
+    Åsberg 1979): 10 items each 0–6, total 0–60, designed to be **sensitive to
+    change** with treatment; bands normal 0–6, mild 7–19, moderate 20–34, severe
+    ≥ 35. **Class A**. Cross-links `phq9`, `hamd`.
+  - **`mdq`** — the **Mood Disorder Questionnaire** (Hirschfeld 2000): the
+    bipolar-spectrum screen as a **fixed three-gate boolean rule** — a positive
+    screen requires **≥ 7 of 13** symptoms YES **AND** co-occurrence YES **AND**
+    moderate/serious impairment; a negative screen **names the failing gate(s)**
+    so a near-miss is auditable. **Class A**. Cross-links `phq9`, `cssrs`.
+  - **`ybocs`** — the **Yale-Brown Obsessive Compulsive Scale** (Y-BOCS, Goodman
+    1989): 10 items each 0–4 (items 1–5 obsessions, 6–10 compulsions), total 0–40
+    with the obsession/compulsion subtotals surfaced; bands subclinical 0–7, mild
+    8–15, moderate 16–23, severe 24–31, extreme 32–40. **Class A**. Cross-links
+    `cssrs`.
+  - **`pcl5`** — the **PTSD Checklist for DSM-5** (PCL-5, Blevins 2015; US-
+    government public domain): 20 items each 0–4, total 0–80; the provisional-PTSD
+    screen framed as the **source's cutoff range (≥ 31–33)**, not a single hard
+    threshold; and the DSM-5 **B/C/D/E cluster tallies** (item endorsed at a
+    rating ≥ 2). **Class A**. Cross-links `phq9`, `cssrs`.
+- The summed scales **refuse a severity band from a partially-completed
+  instrument** (spec-v57): a blank item renders "(complete all N items)" and no
+  band — an unanswered item is not a zero. All six are **Class A** (fixed
+  published item weights and author-defined bands) — no
+  `docs/citation-staleness.md` row. New module `lib/psych-v96.js`, renderers in
+  `views/group-v22.js`, six `META` entries with inline citations + worked
+  examples, six `test/unit/` boundary suites, six `docs/audits/v12/` logs, and
+  `lib/psych-v96.js` added to the `fuzz-tools` `MODULES`. New closed-vocabulary
+  specialties: `primary-care`, `nursing-psych`. Licensed/copyrighted instruments
+  (MoCA, SLUMS, BDI-II) are **excluded** for licensing per
+  [scope-mdcalc-parity §4](docs/scope-mdcalc-parity.md).
+
 ### Added (spec-v95: neurology outcome scales & structural grading, +6)
 
 - **Sixth feature spec of Wave 2** of the [spec-v85](docs/spec-v85.md) Advanced

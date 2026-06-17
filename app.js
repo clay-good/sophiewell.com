@@ -27,6 +27,7 @@ import { renderers as RV18 } from './views/group-v18.js';
 import { renderers as RV19 } from './views/group-v19.js';
 import { renderers as RV20 } from './views/group-v20.js';
 import { renderers as RV21 } from './views/group-v21.js';
+import { renderers as RV22 } from './views/group-v22.js';
 import { renderers as RV63 } from './views/group-v63.js';
 import { renderers as RB } from './views/group-b.js';
 import { renderers as RPALINT } from './views/pa-lint.js';
@@ -45,7 +46,7 @@ import { resolvePrompt } from './lib/prompt.js';
 // artifact-detect / artifact-route / artifact-handoff helpers were
 // deleted in spec-v29 wave 29-2 (Group C/L).
 
-const RENDERERS = { ...RA, ...RB, ...RC, ...RE, ...RF, ...RG, ...RH, ...RI, ...RJ, ...RKLMNO, ...RV5, ...RV6, ...RV7, ...RV8, ...RV9, ...RV10, ...RV11, ...RV12, ...RV13, ...RV14, ...RV15, ...RV16, ...RV17, ...RV18, ...RV19, ...RV20, ...RV21, ...RV63, ...RPALINT };
+const RENDERERS = { ...RA, ...RB, ...RC, ...RE, ...RF, ...RG, ...RH, ...RI, ...RJ, ...RKLMNO, ...RV5, ...RV6, ...RV7, ...RV8, ...RV9, ...RV10, ...RV11, ...RV12, ...RV13, ...RV14, ...RV15, ...RV16, ...RV17, ...RV18, ...RV19, ...RV20, ...RV21, ...RV22, ...RV63, ...RPALINT };
 
 // ----- Utility registry ----------------------------------------------------
 // Source of truth for routes, names, group, audiences, and clinical flag.
@@ -569,6 +570,19 @@ const UTILITIES = [
   { id: 'spetzler-martin',        name: 'Spetzler-Martin AVM Grade (+ Lawton-Young)',       group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'house-brackmann',        name: 'House-Brackmann Facial Nerve Grading',             group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'midas',                  name: 'MIDAS (Migraine Disability Assessment)',           group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+
+  // spec-v96 (Wave 2 of spec-v85): six clinician-rated psychiatry rating scales
+  // that sit one rung above the brief self-report screeners (phq9, gad7, cssrs,
+  // gds15, epds, auditc) -- the instruments a psychiatrist uses to MEASURE
+  // depression / anxiety / OCD / PTSD severity and track treatment response, plus
+  // the bipolar-spectrum (mdq) and PTSD (pcl5) screens the catalog was missing.
+  // views/group-v22.js, lib/psych-v96.js.
+  { id: 'hamd',                   name: 'Hamilton Depression Rating Scale (HAM-D, 17-item)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'hama',                   name: 'Hamilton Anxiety Rating Scale (HAM-A, 14-item)',   group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'madrs',                  name: 'Montgomery-Asberg Depression Rating Scale (MADRS)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'mdq',                    name: 'Mood Disorder Questionnaire (bipolar screen)',     group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'ybocs',                  name: 'Yale-Brown Obsessive Compulsive Scale (Y-BOCS)',   group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'pcl5',                   name: 'PTSD Checklist for DSM-5 (PCL-5, 20-item)',        group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
 
   // spec-v6 §3.3: lab result interpreter. Patient-decoder category.
   { id: 'lab-interpret',       name: 'Lab Result Interpreter',                           group: 'C', audiences: ['patients', 'clinicians', 'educators'], clinical: true },

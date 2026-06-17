@@ -924,3 +924,61 @@ Rule: sum of five prior-3-month disability questions -> grade I (0-5, little or
 none), II (6-10, mild), III (11-20, moderate), IV (>= 21, severe). Items A
 (headache days) and B (pain intensity 0-10) are reported but not scored.
 Worked example: 2 + 4 + 1 + 3 + 1 = 11 -> grade III, moderate disability.
+
+## spec-v96 psychiatry rating scales (clinician-rated severity + screens)
+
+### Hamilton Depression Rating Scale (HAM-D, 17-item)
+Citation: Hamilton M. A rating scale for depression. J Neurol Neurosurg
+Psychiatry. 1960;23(1):56-62.
+Rule: 17 clinician-rated items with mixed anchors -- items 1-3, 7-11 and 15
+score 0-4; items 4-6, 12-14 and 16-17 score 0-2. Total 0-52. Severity: no/none
+0-7, mild 8-16, moderate 17-23, severe >= 24. A blank item withholds the band.
+Worked example: every item rated 1 -> total 17 -> moderate depression.
+
+### Hamilton Anxiety Rating Scale (HAM-A, 14-item)
+Citation: Hamilton M. The assessment of anxiety states by rating. Br J Med
+Psychol. 1959;32(1):50-55.
+Rule: 14 clinician-rated items, each 0-4. Total 0-56. Severity: mild <= 17, mild
+to moderate 18-24, moderate to severe 25-30, severe >= 31. A blank item withholds
+the band.
+Worked example: every item rated 2 -> total 28 -> moderate to severe anxiety.
+
+### Montgomery-Asberg Depression Rating Scale (MADRS, 10-item)
+Citation: Montgomery SA, Asberg M. A new depression scale designed to be
+sensitive to change. Br J Psychiatry. 1979;134:382-389.
+Rule: 10 items, each 0-6, designed to be sensitive to treatment change. Total
+0-60. Severity: normal 0-6, mild 7-19, moderate 20-34, severe >= 35. A blank item
+withholds the band.
+Worked example: every item rated 2 -> total 20 -> moderate.
+
+### Mood Disorder Questionnaire (bipolar-spectrum screen)
+Citation: Hirschfeld RM, Williams JB, Spitzer RL, et al. Development and
+validation of a screening instrument for bipolar spectrum disorder: the Mood
+Disorder Questionnaire. Am J Psychiatry. 2000;157(11):1873-1875.
+Rule: a positive screen requires all three gates -- >= 7 of 13 symptom items YES,
+AND co-occurrence YES, AND moderate or serious functional impairment. A negative
+screen names the failing gate(s). A positive screen prompts a structured
+interview; it is not a diagnosis.
+Worked example: 7 of 13 symptoms YES, co-occurring, moderate impairment ->
+positive screen (all three gates met).
+
+### Yale-Brown Obsessive Compulsive Scale (Y-BOCS, 10-item)
+Citation: Goodman WK, Price LH, Rasmussen SA, et al. The Yale-Brown Obsessive
+Compulsive Scale. I. Development, use, and reliability. Arch Gen Psychiatry.
+1989;46(11):1006-1011.
+Rule: 10 items, each 0-4 -- items 1-5 grade obsessions, 6-10 grade compulsions.
+Total 0-40 (each subtotal 0-20). Severity: subclinical 0-7, mild 8-15, moderate
+16-23, severe 24-31, extreme 32-40. A blank item withholds the band.
+Worked example: every item rated 2 -> total 20 -> moderate (obsessions 10/20,
+compulsions 10/20).
+
+### PTSD Checklist for DSM-5 (PCL-5, 20-item)
+Citation: Blevins CA, Weathers FW, Davis MT, et al. The PTSD Checklist for DSM-5
+(PCL-5): development and initial psychometric evaluation. J Trauma Stress.
+2015;28(6):489-498.
+Rule: 20 items, each 0-4. Total 0-80. DSM-5 clusters: items 1-5 B, 6-7 C, 8-14 D,
+15-20 E (an item counts toward its cluster tally at a rating >= 2). A total at or
+above the commonly cited provisional cutoff (>= 31-33) suggests probable PTSD; the
+optimal cutpoint varies by population. A blank item withholds the result.
+Worked example: every item rated 2 -> total 40, at or above the provisional
+cutoff; clusters B 5/5, C 2/2, D 7/7, E 6/6.

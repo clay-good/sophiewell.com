@@ -5,7 +5,7 @@
 <h1 align="center">sophiewell.com</h1>
 
 <p align="center">
-  <strong>412 deterministic healthcare calculators tuned to the nurse on shift.</strong><br>
+  <strong>418 deterministic healthcare calculators tuned to the nurse on shift.</strong><br>
   Free forever. No servers, no accounts, no telemetry, no AI, no network call after first paint.
 </p>
 
@@ -36,7 +36,7 @@ output; "searchable lookup of static facts" does not qualify. See
 [docs/spec-v10.md](docs/spec-v10.md) for the audience and
 dependency-budget commitments and
 [docs/spec-v29.md](docs/spec-v29.md) for the nurse-first pivot
-and the v29 catalog ledger. At v95 close the catalog is 412
+and the v29 catalog ledger. At v96 close the catalog is 418
 deterministic tiles — every one of them computes from at least
 one user input. The catalog reached its present size on two tracks.
 **New tiles:** spec-v63 added the operations counterpart to the bedside
@@ -186,7 +186,7 @@ production security headers. Any static file server will also work.
 ## How it works and how to use it
 
 Since the spec-v29 nurse-first prune the catalog has grown one
-reviewable spec at a time to **412** deterministic calculators
+reviewable spec at a time to **418** deterministic calculators
 (the full per-version history is in [CHANGELOG.md](CHANGELOG.md)
 and `docs/spec-v*.md`; the most recent bedside additions are
 summarized in the cheat sheets below). They organize across the
@@ -874,8 +874,7 @@ endpoint, the TBI outcome at six months, the Parkinson stage at clinic, the AVM
 surgical-risk grade, the facial-nerve recovery grade, and the migraine-disability
 band. They are ordinal selectors and bounded-integer sums (no division, root, or
 log except none at all), pure `lib/neuro-v95.js` functions fuzz-covered by the
-spec-v59 harness, each quoting the cited source's own descriptor and band. This
-takes the catalog to 412.
+spec-v59 harness, each quoting the cited source's own descriptor and band.
 
 | id | Formula / rule | Output | Reaches for it |
 |---|---|---|---|
@@ -897,6 +896,38 @@ sum. All six are **Class A** fixed ordinal definitions (van Swieten 1988, Wilson
 1985, Stewart 2001), so **none carries a
 [citation-staleness](docs/citation-staleness.md) row**. See
 [docs/spec-v95.md](docs/spec-v95.md).
+
+### Psychiatry: the clinician-rated severity scales one rung above the screeners (spec-v96, +6 → 418)
+
+The catalog already carried the brief, validated **self-report screeners** a nurse
+or primary-care clinician hands a patient: `phq9` and `gad7`, `cssrs` for suicide
+risk, `gds15`, `epds`, and `auditc`. What it had **no** tile for is the layer
+above the screen — the **clinician-rated rating scales** that *measure* severity
+and track change on treatment. A `phq9` is what the patient says; the HAM-D is
+what the clinician rates. [spec-v96](docs/spec-v96.md) ships six, all Group G,
+pure `lib/psych-v96.js` functions fuzz-covered by the spec-v59 harness.
+
+| id | Formula / rule | Output | Reaches for it |
+|---|---|---|---|
+| `hamd` | 17 clinician-rated items, mixed anchors (items 1–3, 7–11, 15: 0–4; 4–6, 12–14, 16–17: 0–2) | total 0–52 + band (none 0–7 / mild 8–16 / moderate 17–23 / severe ≥ 24) | rating depression severity at intake and at week 6 |
+| `hama` | 14 items, each 0–4 | total 0–56 + band (mild ≤ 17 / mild-mod 18–24 / mod-severe 25–30 / severe ≥ 31) | the clinician-rated anxiety standard beside `gad7` |
+| `madrs` | 10 items, each 0–6 (sensitive to change) | total 0–60 + band (normal 0–6 / mild 7–19 / moderate 20–34 / severe ≥ 35) | deciding whether an antidepressant is working |
+| `mdq` | three-gate boolean: ≥ 7 of 13 symptoms YES **and** co-occurrence **and** moderate/serious impairment | positive/negative screen, **naming the failing gate** on a near-miss | bipolar-spectrum screen the catalog was missing |
+| `ybocs` | 10 items, each 0–4 (1–5 obsessions, 6–10 compulsions) | total 0–40 + subtotals + band (subclinical 0–7 … extreme 32–40) | the OCD severity standard, intake and follow-up |
+| `pcl5` | 20 items, each 0–4, DSM-5 clusters B/C/D/E | total 0–80, provisional screen framed as the **source's range (≥ 31–33)**, B/C/D/E tallies (item ≥ 2) | patient-rated PTSD severity + provisional screen |
+
+The summed scales (`hamd`/`hama`/`madrs`/`ybocs`/`pcl5`) **refuse a band from a
+partially-completed instrument** (spec-v57): a blank item renders "(complete all N
+items)" and no band — an unanswered item is not a zero — and an out-of-range item
+yields a labeled `valid:false` rather than a silently-wrong sum. `mdq` is a fixed
+three-gate rule, never positive on the symptom count alone, and the `pcl5` cutoff
+is quoted as the published **range**, not a single hard threshold the catalog
+invents. All six are **Class A** (fixed published item weights and author-defined
+bands: Hamilton 1959/1960, Montgomery-Åsberg 1979, Hirschfeld 2000, Goodman 1989,
+Blevins 2015), so **none carries a
+[citation-staleness](docs/citation-staleness.md) row**. The copyrighted/licensed
+instruments (MoCA, SLUMS, BDI-II) are **excluded** for licensing. See
+[docs/spec-v96.md](docs/spec-v96.md).
 
 ### Billing & reimbursement: what Medicare pays, whether the line survives, how the visit codes, what the drug bills, what the patient owes, and whether the claim is clean (spec-v77 → spec-v83, program complete)
 
@@ -1221,7 +1252,7 @@ long version, see [docs/architecture.md](docs/architecture.md).
  │  manifests (data/)            │  static │        ▼                     ▼             │
  │        │  scripts/build       │  files  │   lazy-load data shard   pure compute      │
  │        ▼                      │         │   (verified vs manifest)  (lib/*.js)       │
- │  dist/  (412 tool pages,      │         │        │                     │             │
+ │  dist/  (418 tool pages,      │         │        │                     │             │
  │  OG cards, sitemap, SBOM)     │         │        ▼                     ▼             │
  └───────────────────────────────┘         │   service worker cache    result + cite   │
                                             │   (keyed to build hash)                    │
@@ -1241,7 +1272,7 @@ session, and nothing to log.
 index.html          single-page shell (hero-search combobox + static browse-by-category nav, tile mount)
 styles.css          one stylesheet (responsive; no horizontal scroll — enforced catalog-wide at 320px in CI)
 app.js              router, hero-search wiring, view wiring, the UTILITIES catalog
-                    (412 tiles — the single source of truth; zero runtime deps)
+                    (418 tiles — the single source of truth; zero runtime deps)
 sw.js               service worker — precache shell, cache shards by build hash
 theme.js            light/dark theme toggle (writes only sw-theme, allowlisted)
 lib/input-persist.js opt-in "remember my inputs" (off by default; numbers only)
@@ -1259,12 +1290,12 @@ docs/               specs (spec-v4 … spec-v84) + per-tile v11/v12 audit logs +
                     citation-staleness ledger +
                     architecture / threat-model / …
 test/               unit/ (node:test) · integration/ (Playwright) · fixtures/
-dist/               build output (412 tool pages, OG cards, sitemap, SBOM)
+dist/               build output (418 tool pages, OG cards, sitemap, SBOM)
 ```
 
-### Discovery: how a query finds the right tool among 412
+### Discovery: how a query finds the right tool among 418
 
-With 412 tiles, search quality *is* the product — a tool you cannot find does
+With 418 tiles, search quality *is* the product — a tool you cannot find does
 not exist. Discovery is deterministic and offline (no fuzzy-match service, no
 embedding model, no AI). The home `#hero-search` combobox builds its dropdown
 from two complementary rankers, both pure functions of the typed query:
@@ -1337,10 +1368,10 @@ A login-less, AI-free calculator earns trust only if the nurse can see, on the
 tile, exactly which published source produced the number — and tell whether that
 source is current. spec-v54 defined the invariants; spec-v60 built the machinery
 (the gate, the ledger, and the `citationAccessed` convention) and extended it
-across the full 412-tile catalog, pinning the last three unpinned "current
+across the full 418-tile catalog, pinning the last three unpinned "current
 edition" phrases and re-verifying every guideline tile against its latest known
 edition. Three invariants make that auditable, each enforced by the
-`check-citations.mjs` lint gate (in the `npm run lint` chain) over all 412 tiles:
+`check-citations.mjs` lint gate (in the `npm run lint` chain) over all 418 tiles:
 
 | Invariant | Rule | Enforcement |
 |---|---|---|
@@ -1797,7 +1828,7 @@ rules, not soft preferences.
 | `npm run build`          | Copy static files into `dist/` for deployment                     |
 | `npm test`               | Run the full test suite (unit, a11y, grep, data integrity)        |
 | `npm run test:unit`      | Run Node's built-in unit tests (3,613 tests)                      |
-| `npm run test:e2e`       | Build `dist/`, then run Playwright integration tests against real browsers — incl. a full-catalog 320px no-horizontal-scroll sweep over both the SPA routes and the 412 pre-rendered static tool pages, the hub/topic/commitments pages, and the citation-wrap pin |
+| `npm run test:e2e`       | Build `dist/`, then run Playwright integration tests against real browsers — incl. a full-catalog 320px no-horizontal-scroll sweep over both the SPA routes and the 418 pre-rendered static tool pages, the hub/topic/commitments pages, and the citation-wrap pin |
 | `npm run test:a11y`      | Run accessibility checks on every utility view                    |
 | `npm run lint`           | ESLint + the CI gate chain: grep-check, output-safety, citation-integrity, catalog-truth, commitments, PA staleness, PA audit |
 | `npm run data:refresh`   | Re-fetch and re-shard every public dataset                        |
@@ -1881,7 +1912,7 @@ build, integrity-verified data shards) are documented in
 - [docs/spec-v11.md](docs/spec-v11.md) — correctness-floor spec:
   per-tile audit protocol, specialty-named groups, optional
   source-quoted `interpretation` field. Audit coverage is **complete
-  — 412/412 tiles** carry a committed per-tile audit log
+  — 418/418 tiles** carry a committed per-tile audit log
   (`docs/audits/v11/<id>.md` for the pre-v78 catalog;
   `docs/audits/v12/<id>.md` for the twenty-nine spec-v78–v83 billing &
   coding program tiles)
