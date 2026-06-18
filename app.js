@@ -36,6 +36,7 @@ import { renderers as RV27 } from './views/group-v27.js';
 import { renderers as RV28 } from './views/group-v28.js';
 import { renderers as RV29 } from './views/group-v29.js';
 import { renderers as RV30 } from './views/group-v30.js';
+import { renderers as RV31 } from './views/group-v31.js';
 import { renderers as RV63 } from './views/group-v63.js';
 import { renderers as RB } from './views/group-b.js';
 import { renderers as RPALINT } from './views/pa-lint.js';
@@ -54,7 +55,7 @@ import { resolvePrompt } from './lib/prompt.js';
 // artifact-detect / artifact-route / artifact-handoff helpers were
 // deleted in spec-v29 wave 29-2 (Group C/L).
 
-const RENDERERS = { ...RA, ...RB, ...RC, ...RE, ...RF, ...RG, ...RH, ...RI, ...RJ, ...RKLMNO, ...RV5, ...RV6, ...RV7, ...RV8, ...RV9, ...RV10, ...RV11, ...RV12, ...RV13, ...RV14, ...RV15, ...RV16, ...RV17, ...RV18, ...RV19, ...RV20, ...RV21, ...RV22, ...RV23, ...RV24, ...RV25, ...RV26, ...RV27, ...RV28, ...RV29, ...RV30, ...RV63, ...RPALINT };
+const RENDERERS = { ...RA, ...RB, ...RC, ...RE, ...RF, ...RG, ...RH, ...RI, ...RJ, ...RKLMNO, ...RV5, ...RV6, ...RV7, ...RV8, ...RV9, ...RV10, ...RV11, ...RV12, ...RV13, ...RV14, ...RV15, ...RV16, ...RV17, ...RV18, ...RV19, ...RV20, ...RV21, ...RV22, ...RV23, ...RV24, ...RV25, ...RV26, ...RV27, ...RV28, ...RV29, ...RV30, ...RV31, ...RV63, ...RPALINT };
 
 // ----- Utility registry ----------------------------------------------------
 // Source of truth for routes, names, group, audiences, and clinical flag.
@@ -675,6 +676,15 @@ const UTILITIES = [
   { id: 'rutherford-fontaine',    name: 'Rutherford Category / Fontaine Stage (PAD)',       group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'wifi',                   name: 'SVS WIfI Limb-Threat Classification',              group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'euroscore2',             name: 'EuroSCORE II (cardiac-surgery mortality)',         group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+
+  // spec-v106 (first spec of Wave 2 of spec-v100): six venous-thromboembolism
+  // workup instruments. All in Group G. views/group-v31.js, lib/vte-v106.js.
+  { id: 'peged',                  name: 'PEGeD (graduated D-dimer rule)',                   group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: '4peps',                  name: '4PEPS (4-level PE probability score)',             group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'bova-pe',                name: 'Bova Score (PE complications)',                    group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'hestia',                 name: 'Hestia Criteria (outpatient PE)',                  group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'geneva-original',        name: 'Geneva Score (original)',                          group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'constans-uedvt',         name: 'Constans Score (upper-extremity DVT)',             group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
 
   // spec-v6 §3.3: lab result interpreter. Patient-decoder category.
   { id: 'lab-interpret',       name: 'Lab Result Interpreter',                           group: 'C', audiences: ['patients', 'clinicians', 'educators'], clinical: true },

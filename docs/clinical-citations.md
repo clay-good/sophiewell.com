@@ -1430,3 +1430,67 @@ Worked example: a 70-year-old woman on dialysis with insulin-dependent diabetes,
 chronic pulmonary dysfunction, NYHA III, CCS class 4 angina, poor LV function, and
 a recent MI for an isolated elective CABG gives y of minus 2.126358 and a predicted
 mortality of 10.66 percent.
+
+## spec-v106 venous-thromboembolism workup instruments
+
+### PEGeD (graduated D-dimer rule)
+Citation: Kearon C, de Wit K, Parpia S, et al. Diagnosis of pulmonary embolism with
+d-dimer adjusted to clinical probability. N Engl J Med. 2019;381(22):2125-2134.
+Rule: set the clinical pretest probability by the three-tier Wells categorization,
+then apply a probability-graduated D-dimer threshold in nanograms per milliliter
+FEU. Low pretest probability excludes PE if the D-dimer is under 1000; moderate
+excludes if under 500; high pretest probability proceeds directly to CT pulmonary
+angiography with no D-dimer rule-out.
+Worked example: a D-dimer of 600 at low pretest probability is under the 1000 cut,
+so PE is excluded and imaging can be avoided.
+
+### 4PEPS (4-level PE clinical probability score)
+Citation: Roy PM, Friou E, Germeau B, et al. Derivation and validation of a 4-level
+clinical pretest probability score for suspected pulmonary embolism to safely
+decrease imaging testing. JAMA Cardiol. 2021;6(6):669-677.
+Rule: thirteen weighted items sum to a total from minus 5 to plus 21. Under 0 is
+very low (no testing), 0 to 5 is low (rule out if D-dimer under 1000), 6 to 12 is
+moderate (age-adjusted cutoff), 13 or more is high (direct imaging).
+Worked example: a 70-year-old man with prior VTE, syncope, and calf pain or edema
+totals plus 14, a high-probability result calling for direct imaging.
+
+### Bova Score (PE complications)
+Citation: Bova C, Sanchez O, Prandoni P, et al. Identification of intermediate-risk
+patients with acute symptomatic pulmonary embolism. Eur Respir J. 2014;44(3):694-703.
+Rule: for normotensive, confirmed PE, systolic blood pressure 90 to 100 adds 2,
+elevated troponin adds 2, right-ventricular dysfunction adds 2, and a heart rate of
+110 or more adds 1, summing 0 to 7. Stage I is 0 to 2, Stage II is 3 to 4, Stage III
+is over 4.
+Worked example: systolic pressure 90 to 100 with elevated troponin and RV
+dysfunction totals 6, Stage III, with roughly 42 percent 30-day complications.
+
+### Hestia Criteria (outpatient PE)
+Citation: Zondag W, Mos ICM, Creemers-Schild D, et al. Outpatient treatment in
+patients with acute pulmonary embolism: the Hestia Study. J Thromb Haemost.
+2011;9(8):1500-1507.
+Rule: eleven yes-or-no exclusion items. Any single positive item means the patient
+is not a home-treatment candidate; all-negative means eligible per the rule.
+Worked example: pregnancy alone is one positive item, so the patient is not a
+home-treatment candidate.
+
+### Geneva Score (original)
+Citation: Wicki J, Perneger TV, Junod AF, Bounameaux H, Perrier A. Assessing clinical
+probability of pulmonary embolism in the emergency ward: a simple score. Arch Intern
+Med. 2001;161(1):92-97.
+Rule: a fully objective pre-Wells model. Age 60 to 79 adds 1 and 80 or more adds 2;
+prior DVT or PE adds 2; surgery within four weeks adds 3; heart rate over 100 adds 1;
+the arterial PaCO2 and PaO2 bands and the chest-film findings (band atelectasis,
+elevated hemidiaphragm) add their weights, summing 0 to 16. Low is 0 to 4 (about 10
+percent PE), intermediate 5 to 8 (about 38 percent), high 9 or more (about 81 percent).
+Worked example: an 80-year-old with prior VTE, recent surgery, a fast heart rate, a
+low PaCO2, and a low PaO2 scores 14, a high-probability result.
+
+### Constans Score (upper-extremity DVT)
+Citation: Constans J, Salmi LR, Sevestre-Pietri MA, et al. A clinical prediction
+score for upper extremity deep venous thrombosis. Thromb Haemost. 2008;99(1):202-207.
+Rule: venous material in the limb (central line or pacemaker) adds 1, localized pain
+adds 1, unilateral pitting edema adds 1, and an alternative diagnosis at least as
+plausible subtracts 1, giving a signed total from minus 1 to plus 3. Low is 0 or
+below, intermediate is 1, high is 2 to 3.
+Worked example: venous material with localized pain and unilateral edema totals plus
+3, a high-probability result.

@@ -6,6 +6,42 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v106: VTE workup algorithms, +6 — opens spec-v100 Wave 2)
+
+- **First feature spec of Wave 2** of the [spec-v100](docs/spec-v100.md) MDCalc
+  Parity Completion program. Six deterministic **venous-thromboembolism workup**
+  instruments (catalog **457 → 463**), all in Group G, via `lib/vte-v106.js` +
+  `views/group-v31.js` (`RV31`). None duplicates a live tile; each fills a confirmed
+  gap in the VTE pathway beside the existing `wells-pe` / `wells-dvt` / `perc` /
+  `years-pe` pretest set and the `pesi` / `spesi` prognostic spine. No new specialty
+  tag. All six **Class A** (journal + author citations → no citation-staleness rows):
+  - **`peged`** — the **PEGeD graduated D-dimer rule** (Kearon C, de Wit K, Parpia
+    S, et al, *N Engl J Med* 2019): the three-tier Wells C-PTP crossed with a
+    probability-graduated D-dimer threshold (ng/mL FEU) — low excluded if < 1000,
+    moderate if < 500, high always images. A strategy selector: a missing tier or
+    D-dimer renders a complete-the-fields fallback.
+  - **`4peps`** — the **4-Level PE Clinical Probability Score** (Roy PM, Friou E,
+    Germeau B, et al, *JAMA Cardiol* 2021): 13 weighted items (−5…+21) → four tiers,
+    each selecting a D-dimer strategy (no test / < 1000 / age-adjusted / imaging).
+  - **`bova-pe`** — the **Bova Score** (Bova C, Sanchez O, Prandoni P, et al, *Eur
+    Respir J* 2014) for normotensive confirmed PE: sBP 90–100 (2), troponin (2), RV
+    dysfunction (2), HR ≥ 110 (1) → total 0–7 mapped to Stage I/II/III with the
+    published 30-day complication and PE-mortality framing.
+  - **`hestia`** — the **Hestia criteria** (Zondag W, Mos ICM, Creemers-Schild D, et
+    al, *J Thromb Haemost* 2011): 11 yes/no exclusion items; any single positive item
+    excludes outpatient PE treatment, all-negative is eligible per the rule.
+  - **`geneva-original`** — the **original Geneva score** (Wicki J, Perneger TV,
+    Junod AF, Bounameaux H, Perrier A, *Arch Intern Med* 2001): the fully objective
+    pre-Wells model (clinical + ABG + chest film), total 0–16 → low 0–4 / intermediate
+    5–8 / high ≥ 9. ABG bands encoded in both kPa and the rounded mmHg conversions.
+  - **`constans-uedvt`** — the **Constans score** (Constans J, Salmi LR,
+    Sevestre-Pietri MA, et al, *Thromb Haemost* 2008) for upper-extremity DVT: three
+    +1 items and one signed −1 term → total −1…+3, band keyed on the signed sum.
+  - Coefficients **re-fetched, never recalled** (the spec-v97 rule), each
+    cross-verified across the primary paper + MDCalc / a clinical reference. Every
+    total is clamped to its published range and the band is read off the clamped
+    value, so the spec-v59 fuzz harness sees zero non-finite leaks.
+
 ### Added (spec-v105: vascular & cardiac surgery, +4 — closes spec-v100 Wave 1)
 
 - **Fifth and closing feature spec of Wave 1** of the [spec-v100](docs/spec-v100.md)

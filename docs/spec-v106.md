@@ -1,6 +1,6 @@
 # spec-v106.md — VTE workup algorithms: PEGeD, 4PEPS, Bova, Hestia, original Geneva, and the Constans UE-DVT score (+6 tiles)
 
-> Status: **PROPOSED (2026-06-17).** Feature spec of the [spec-v100](spec-v100.md)
+> Status: **SHIPPED (2026-06-18).** Feature spec of the [spec-v100](spec-v100.md)
 > MDCalc Parity Completion program, **Wave 2 — Emergency / trauma / toxicology /
 > environmental** ([spec-v106](spec-v106.md)–[spec-v111](spec-v111.md)). Adds **6**
 > deterministic venous-thromboembolism workup instruments that fill confirmed gaps.
