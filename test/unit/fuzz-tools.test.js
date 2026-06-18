@@ -105,6 +105,7 @@ import * as cvriskV103 from '../../lib/cvrisk-v103.js';
 import * as cardioV104 from '../../lib/cardio-v104.js';
 import * as vascularV105 from '../../lib/vascular-v105.js';
 import * as vteV106 from '../../lib/vte-v106.js';
+import * as eddecisionV107 from '../../lib/eddecision-v107.js';
 
 const MODULES = {
   'clinical.js': clinical,
@@ -154,6 +155,7 @@ const MODULES = {
   'cardio-v104.js': cardioV104,
   'vascular-v105.js': vascularV105,
   'vte-v106.js': vteV106,
+  'eddecision-v107.js': eddecisionV107,
 };
 
 const MATRIX = [0, -1, 1e9, NaN, Infinity, -Infinity, '', undefined, null];

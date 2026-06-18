@@ -5,7 +5,7 @@
 <h1 align="center">sophiewell.com</h1>
 
 <p align="center">
-  <strong>463 deterministic healthcare calculators tuned to the nurse on shift.</strong><br>
+  <strong>467 deterministic healthcare calculators tuned to the nurse on shift.</strong><br>
   Free forever. No servers, no accounts, no telemetry, no AI, no network call after first paint.
 </p>
 
@@ -36,7 +36,7 @@ output; "searchable lookup of static facts" does not qualify. See
 [docs/spec-v10.md](docs/spec-v10.md) for the audience and
 dependency-budget commitments and
 [docs/spec-v29.md](docs/spec-v29.md) for the nurse-first pivot
-and the v29 catalog ledger. At v106 close the catalog is 463
+and the v29 catalog ledger. At v107 close the catalog is 467
 deterministic tiles — every one of them computes from at least
 one user input. The catalog reached its present size on two tracks.
 **New tiles:** spec-v63 added the operations counterpart to the bedside
@@ -186,7 +186,7 @@ production security headers. Any static file server will also work.
 ## How it works and how to use it
 
 Since the spec-v29 nurse-first prune the catalog has grown one
-reviewable spec at a time to **463** deterministic calculators
+reviewable spec at a time to **467** deterministic calculators
 (the full per-version history is in [CHANGELOG.md](CHANGELOG.md)
 and `docs/spec-v*.md`; the most recent bedside additions are
 summarized in the cheat sheets below). They organize across the
@@ -1023,7 +1023,7 @@ Duke-ISCVID) and `refeeding-risk` (NICE CG32) are **Class B** with
 [citation-staleness](docs/citation-staleness.md) rows; the other three are
 **Class A**. See [docs/spec-v99.md](docs/spec-v99.md).
 
-### MDCalc parity completion: the cardiology / vascular / lipid surface (spec-v100 program, Wave 1: spec-v101 → spec-v105, +25 → 457, **complete**; Wave 2 open: spec-v106 → 463)
+### MDCalc parity completion: the cardiology / vascular / lipid surface (spec-v100 program, Wave 1: spec-v101 → spec-v105, +25 → 457, **complete**; Wave 2 open: spec-v106 → 463, spec-v107 → 467)
 
 With the spec-v85 program complete, [spec-v100](docs/spec-v100.md) charters the
 **MDCalc Parity Completion** program — a roadmap that closes the remaining gaps
@@ -1186,6 +1186,37 @@ so the spec-v59 fuzz harness sees zero non-finite leaks. All six citations name 
 journal + authors (NEJM, JAMA Cardiol, Eur Respir J, J Thromb Haemost, Arch Intern
 Med, Thromb Haemost) — none trips the issuer pattern, so all six are **Class A**
 with no citation-staleness rows. `lib/vte-v106.js` + `views/group-v31.js`.
+
+#### spec-v107 — ED decision rules & resuscitation (+4 → 467)
+
+Wave 2 continues with four standard **emergency-department decision rules and
+resuscitation-risk scores** that sit in the gaps between the chest-pain
+(`heart`, `edacs`), head-CT (`pecarn-head`, `catch-head`), and ICU-physiology
+(`apache2`, `qsofa-sofa`) clusters already in the catalog. spec-v107 adds them,
+all in Group G:
+
+| id | Group | Rule | Output | Class |
+|---|---|---|---|---|
+| `hear` | G | Moumneh 2021 HEAR — the troponin-free HEART subset: History + ECG + Age + Risk factors, each 0/1/2 | total 0–8; **HEAR ≤ 1** is the very-low-risk pre-troponin band (~0.4% 30-day MACE) | A |
+| `new-orleans-head` | G | Haydel 2000 New Orleans Criteria: 7 items in GCS-15 minor blunt head injury | **any single positive ⇒ head CT**; 100% sensitive, low specificity (flags any CT finding) | A |
+| `go-far` | G | Ebell 2013 GO-FAR: pre-arrest CPC-1 good-outcome probability after in-hospital arrest; neuro-intact −15, comorbidity/age add | total −15…+76 → ≤ −6 above average (> 15%) / −5…13 average (3–15%) / 14–23 low (1–3%) / ≥ 24 very low (< 1%) | A |
+| `macocha` | G | De Jong 2013 MACOCHA: ICU difficult-intubation factors — Mallampati III/IV (5), OSA (2), cervical (1), mouth < 3 cm (1), coma (1), SpO₂ < 80% (1), non-anesthesiologist (1) | total 0–12; **≥ 3** flags elevated risk (sens 73%, NPV 98%) | A |
+
+**Coefficients re-fetched, never recalled (the spec-v97 rule), each cross-verified
+against the primary paper + MDCalc.** The notable catch was GO-FAR: the "−15 to 11"
+figure quoted by some secondary sources is the **per-variable point spread, not the
+total-score range** (−15…+76), and the `≥ 24` "very low" band is reachable only
+because MDCalc treats the admission/comorbidity items as **independent additive
+rows** (no mutual-exclusivity enforcement) — shipping the category cut-points
+without reconciling that contradiction would have mis-banded high scores. `hear` and
+`go-far` require the numeric age and render a complete-the-fields fallback when it is
+missing; every total is clamped to its published range and the band is read off the
+clamped value, so the spec-v59 fuzz harness sees zero non-finite leaks. All four
+citations name a journal + authors (Eur J Emerg Med, NEJM, JAMA Intern Med, AJRCCM)
+— none trips the issuer pattern, so all four are **Class A** with no
+citation-staleness rows. `go-far` carries the explicit posture that the score
+informs, never decides, a goals-of-care discussion. `lib/eddecision-v107.js` +
+`views/group-v32.js`.
 
 ### Billing & reimbursement: what Medicare pays, whether the line survives, how the visit codes, what the drug bills, what the patient owes, and whether the claim is clean (spec-v77 → spec-v83, program complete)
 
@@ -1510,7 +1541,7 @@ long version, see [docs/architecture.md](docs/architecture.md).
  │  manifests (data/)            │  static │        ▼                     ▼             │
  │        │  scripts/build       │  files  │   lazy-load data shard   pure compute      │
  │        ▼                      │         │   (verified vs manifest)  (lib/*.js)       │
- │  dist/  (463 tool pages,      │         │        │                     │             │
+ │  dist/  (467 tool pages,      │         │        │                     │             │
  │  OG cards, sitemap, SBOM)     │         │        ▼                     ▼             │
  └───────────────────────────────┘         │   service worker cache    result + cite   │
                                             │   (keyed to build hash)                    │
@@ -1532,7 +1563,7 @@ assets:
 
 | Output | Count | Source |
 |--------|------:|--------|
-| Pre-rendered tool pages (`dist/tools/<id>/`) | 463 | `scripts/build-tool-pages.mjs` |
+| Pre-rendered tool pages (`dist/tools/<id>/`) | 467 | `scripts/build-tool-pages.mjs` |
 | Audience hub pages (`dist/for/<audience>/`) | 6 | `scripts/build-hub-pages.mjs` |
 | Topic pages + `/topics/` index | 8 + 1 | `scripts/build-topic-pages.mjs` |
 | `/commitments/` | 1 | `scripts/build-commitments-page.mjs` |
@@ -1567,7 +1598,7 @@ static pages, so a tile can never ship mobile overflow undetected.
 index.html          single-page shell (hero-search combobox + static browse-by-category nav, tile mount)
 styles.css          one stylesheet (responsive; no horizontal scroll — enforced catalog-wide at 320px in CI)
 app.js              router, hero-search wiring, view wiring, the UTILITIES catalog
-                    (463 tiles — the single source of truth; zero runtime deps)
+                    (467 tiles — the single source of truth; zero runtime deps)
 sw.js               service worker — precache shell, cache shards by build hash
 theme.js            light/dark theme toggle (writes only sw-theme, allowlisted)
 lib/input-persist.js opt-in "remember my inputs" (off by default; numbers only)
@@ -1585,12 +1616,12 @@ docs/               specs (spec-v4 onward) + per-tile v11/v12 audit logs +
                     citation-staleness ledger +
                     architecture / threat-model / …
 test/               unit/ (node:test) · integration/ (Playwright) · fixtures/
-dist/               build output (463 tool pages, OG cards, sitemap, SBOM)
+dist/               build output (467 tool pages, OG cards, sitemap, SBOM)
 ```
 
-### Discovery: how a query finds the right tool among 463
+### Discovery: how a query finds the right tool among 467
 
-With 463 tiles, search quality *is* the product — a tool you cannot find does
+With 467 tiles, search quality *is* the product — a tool you cannot find does
 not exist. Discovery is deterministic and offline (no fuzzy-match service, no
 embedding model, no AI). The home `#hero-search` combobox builds its dropdown
 from two complementary rankers, both pure functions of the typed query:
@@ -1663,10 +1694,10 @@ A login-less, AI-free calculator earns trust only if the nurse can see, on the
 tile, exactly which published source produced the number — and tell whether that
 source is current. spec-v54 defined the invariants; spec-v60 built the machinery
 (the gate, the ledger, and the `citationAccessed` convention) and extended it
-across the full 463-tile catalog, pinning the last three unpinned "current
+across the full 467-tile catalog, pinning the last three unpinned "current
 edition" phrases and re-verifying every guideline tile against its latest known
 edition. Three invariants make that auditable, each enforced by the
-`check-citations.mjs` lint gate (in the `npm run lint` chain) over all 463 tiles:
+`check-citations.mjs` lint gate (in the `npm run lint` chain) over all 467 tiles:
 
 | Invariant | Rule | Enforcement |
 |---|---|---|
@@ -2123,7 +2154,7 @@ rules, not soft preferences.
 | `npm run build`          | Copy static files into `dist/` for deployment                     |
 | `npm test`               | Run the full test suite (unit, a11y, grep, data integrity)        |
 | `npm run test:unit`      | Run Node's built-in unit tests (3,984 tests)                      |
-| `npm run test:e2e`       | Build `dist/`, then run Playwright integration tests against real browsers — incl. a full-catalog 320px no-horizontal-scroll sweep over both the SPA routes and the 463 pre-rendered static tool pages, the hub/topic/commitments pages, and the citation-wrap pin |
+| `npm run test:e2e`       | Build `dist/`, then run Playwright integration tests against real browsers — incl. a full-catalog 320px no-horizontal-scroll sweep over both the SPA routes and the 467 pre-rendered static tool pages, the hub/topic/commitments pages, and the citation-wrap pin |
 | `npm run test:a11y`      | Run accessibility checks on every utility view                    |
 | `npm run lint`           | ESLint + the CI gate chain: grep-check, output-safety, citation-integrity, catalog-truth, commitments, PA staleness, PA audit |
 | `npm run data:refresh`   | Re-fetch and re-shard every public dataset                        |
@@ -2207,11 +2238,12 @@ build, integrity-verified data shards) are documented in
 - [docs/spec-v11.md](docs/spec-v11.md) — correctness-floor spec:
   per-tile audit protocol, specialty-named groups, optional
   source-quoted `interpretation` field. Audit coverage is **complete
-  — 463/463 tiles** carry a committed per-tile audit log
+  — 467/467 tiles** carry a committed per-tile audit log
   (`docs/audits/v11/<id>.md` for the pre-v78 catalog;
-  `docs/audits/v12/<id>.md` for the 95 tiles added since — the
-  spec-v78–v83 billing & coding program and the spec-v85
-  advanced-clinical-calculators program, v86–v99)
+  `docs/audits/v12/<id>.md` for the tiles added since — the
+  spec-v78–v83 billing & coding program, the spec-v85
+  advanced-clinical-calculators program (v86–v99), and the
+  spec-v100 MDCalc parity-completion program (v101–v107))
   (`node scripts/audit-coverage.mjs`)
 - [docs/scope-mdcalc-parity.md](docs/scope-mdcalc-parity.md) —
   long-horizon scope: every actionable clinical calculator a

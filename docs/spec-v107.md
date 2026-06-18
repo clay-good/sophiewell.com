@@ -1,12 +1,17 @@
 # spec-v107.md — ED decision rules & resuscitation: HEAR, New Orleans head, GO-FAR, and MACOCHA (+4 tiles)
 
-> Status: **PROPOSED (2026-06-17).** Feature spec of the [spec-v100](spec-v100.md)
+> Status: **SHIPPED (2026-06-18).** Feature spec of the [spec-v100](spec-v100.md)
 > MDCalc Parity Completion program, **Wave 2 — Emergency / trauma / toxicology /
 > environmental** ([spec-v106](spec-v106.md)–[spec-v111](spec-v111.md)). Adds **4**
 > deterministic emergency-department decision rules and resuscitation-risk scores
 > that fill confirmed gaps. None duplicates a live tile.
 >
-> Catalog effect at v107 close: **464 + 4 = 468 tiles** (v106 closed at 464).
+> Catalog effect at v107 close: **463 + 4 = 467 tiles** (v106 closed at 463, not the
+> 464 originally projected — spec-v102 deferred `gwtg-hf`, leaving the running count
+> one below the program projection; the §6 acceptance "live count + 4" governs).
+> Shipped via `lib/eddecision-v107.js` + `views/group-v32.js` (`RV32`); cross-links
+> resolved to live ids (`heart`/`edacs`/`timi`, `pecarn-head`/`catch-head`,
+> `apache2`/`qsofa-sofa`) since `canadian-ct-head`/`timi-nstemi` are not in the catalog.
 >
 > Every prior spec (v4 through v106) remains in force. v107 adds no runtime network
 > call and no AI; each tile obeys the [spec-v100](spec-v100.md) §2 doctrine (which

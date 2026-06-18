@@ -1494,3 +1494,51 @@ plausible subtracts 1, giving a signed total from minus 1 to plus 3. Low is 0 or
 below, intermediate is 1, high is 2 to 3.
 Worked example: venous material with localized pain and unilateral edema totals plus
 3, a high-probability result.
+
+### HEAR Score (HEART minus troponin)
+Citation: Moumneh T, Sun BC, Baecker A, et al. Identifying patients with low risk of
+acute coronary syndrome without troponin testing: validation of the HEAR score. Eur J
+Emerg Med. 2021;28(4):292-298.
+Rule: the four HEART domains minus troponin -- History, ECG, Age, and Risk factors,
+each scored 0, 1, or 2 -- sum to a total of 0 to 8. A score of 1 or below marks the
+very-low-risk band (about 0.4 percent 30-day major adverse cardiac events) used as a
+pre-troponin gate.
+Worked example: a moderately suspicious history, a non-specific repolarization ECG, an
+age of 58, and one or two risk factors total 4, above the very-low-risk band.
+
+### New Orleans Head Trauma Criteria
+Citation: Haydel MJ, Preston CA, Mills TJ, Luber S, Blaudeau E, DeBlieux PMC.
+Indications for computed tomography in patients with minor head injury. N Engl J Med.
+2000;343(2):100-105.
+Rule: in minor blunt head injury with GCS 15, any one of seven criteria -- headache,
+vomiting, age over 60, drug or alcohol intoxication, persistent anterograde amnesia,
+physical evidence of trauma above the clavicles, and seizure -- indicates a head CT.
+The rule is fully sensitive for intracranial injury on CT but has low specificity.
+Worked example: vomiting with an age over 60 gives two positive criteria, so a head CT
+is indicated.
+
+### GO-FAR Score (good-outcome survival after in-hospital arrest)
+Citation: Ebell MH, Jang W, Shen Y, Geocadin RG. Development and validation of the Good
+Outcome Following Attempted Resuscitation (GO-FAR) score. JAMA Intern Med.
+2013;173(20):1872-1878.
+Rule: pre-arrest variables sum to a total from minus 15 to plus 76. Neurologically
+intact or minimal deficit at admission subtracts 15 (the only negative term);
+comorbidity and admission diagnoses add 1 to 10; age bands add 0 to 11. The total maps
+to four categories of survival to discharge with good neurologic outcome: at or below
+minus 6 is above average (over 15 percent), minus 5 to 13 is average (3 to 15 percent),
+14 to 23 is low (1 to 3 percent), and 24 or more is very low (under 1 percent).
+Worked example: age 82 with septicemia and respiratory insufficiency totals plus 17, a
+low-probability category.
+
+### MACOCHA Score (ICU difficult intubation)
+Citation: De Jong A, Molinari N, Terzi N, et al. Early identification of patients at
+risk for difficult intubation in the intensive care unit: development and validation of
+the MACOCHA score in a multicenter cohort study. Am J Respir Crit Care Med.
+2013;187(8):832-839.
+Rule: Mallampati III or IV adds 5, obstructive sleep apnea adds 2, and reduced cervical
+mobility, mouth opening under 3 centimeters, coma, severe hypoxemia, and a
+non-anesthesiologist operator each add 1, summing 0 to 12. A score of 3 or more flags
+elevated difficult-intubation risk (sensitivity 73 percent, negative predictive value
+98 percent).
+Worked example: Mallampati III or IV with obstructive sleep apnea totals 7, an
+elevated-risk result.

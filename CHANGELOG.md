@@ -6,6 +6,42 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v107: ED decision rules & resuscitation, +4 — spec-v100 Wave 2)
+
+- **Second feature spec of Wave 2** of the [spec-v100](docs/spec-v100.md) MDCalc
+  Parity Completion program. Four deterministic **emergency-department decision
+  rules and resuscitation-risk scores** (catalog **463 → 467**), all in Group G, via
+  `lib/eddecision-v107.js` + `views/group-v32.js` (`RV32`). None duplicates a live
+  tile; each fills a confirmed gap beside the existing `heart` / `edacs` chest-pain,
+  `pecarn-head` / `catch-head` head-CT, and `apache2` / `qsofa-sofa` ICU clusters.
+  No new specialty tag. All four **Class A** (journal + author citations → no
+  citation-staleness rows):
+  - **`hear`** — the **HEAR Score** (Moumneh T, Sun BC, Baecker A, et al, *Eur J
+    Emerg Med* 2021): the troponin-free subset of HEART — History + ECG + Age + Risk
+    factors, each 0/1/2 (total 0–8). HEAR ≤ 1 is the very-low-risk pre-troponin gate
+    (~0.4% 30-day MACE). Cross-links the troponin-inclusive `heart` tile.
+  - **`new-orleans-head`** — the **New Orleans Head Trauma Criteria** (Haydel MJ, et
+    al, *N Engl J Med* 2000): 7 criteria in GCS-15 minor blunt head injury; any
+    single positive criterion indicates a head CT. 100% sensitive, low specificity.
+  - **`go-far`** — the **GO-FAR Score** (Ebell MH, Jang W, Shen Y, Geocadin RG,
+    *JAMA Intern Med* 2013): pre-arrest probability of survival to discharge with CPC-1
+    good neurologic outcome after in-hospital arrest. Neurologically intact −15 (only
+    negative term), comorbidity/age items add; total −15…+76 → four categories (≤−6
+    above average >15%, −5…13 average 3–15%, 14–23 low 1–3%, ≥24 very low <1%). The
+    score informs, never decides, a goals-of-care discussion.
+  - **`macocha`** — the **MACOCHA Score** (De Jong A, Molinari N, Terzi N, et al,
+    *Am J Respir Crit Care Med* 2013): ICU difficult-intubation risk. Mallampati III/IV
+    (5), OSA (2), reduced cervical mobility (1), mouth opening < 3 cm (1), coma (1),
+    SpO₂ < 80% (1), non-anesthesiologist (1) → total 0–12; ≥ 3 flags elevated risk
+    (sensitivity 73%, NPV 98%).
+- **Coefficients re-fetched, never recalled** (spec-v97 lesson): each score's point
+  table and category cut-points were re-verified against ≥ 2 independent sources
+  (original paper + MDCalc). Notably, GO-FAR's published "−15 to 11" figure is the
+  per-variable point spread, **not** the total-score range (−15…+76); the ≥ 24 "very
+  low" band is reachable because the admission/comorbidity items are independent
+  additive rows. Each tile flows through the spec-v59 fuzz harness with zero
+  non-finite leaks and renders the spec-v50 §3 clinical posture note.
+
 ### Added (spec-v106: VTE workup algorithms, +6 — opens spec-v100 Wave 2)
 
 - **First feature spec of Wave 2** of the [spec-v100](docs/spec-v100.md) MDCalc
