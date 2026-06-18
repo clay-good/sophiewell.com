@@ -6,6 +6,41 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v101: AF stroke-risk & QT, +5 — spec-v100 program Wave 1 opens)
+
+- **First feature spec of Wave 1** of the [spec-v100](docs/spec-v100.md) **MDCalc
+  Parity Completion program.** Five deterministic **atrial-fibrillation
+  stroke-risk and QT-prolongation** instruments beside the existing combined
+  `chads` view and the `qtc-suite` corrected-interval tile (catalog
+  **432 → 437**, all Group G):
+  - **`chads2`** — the original **CHADS₂ score** (Gage BF et al, *JAMA* 2001):
+    CHF (1), hypertension (1), age ≥ 75 (1), diabetes (1), prior stroke/TIA (2),
+    total 0–6 with the NRAF adjusted annual-stroke-rate table (0 = 1.9%/yr to
+    6 = 18.2%/yr). **Class A**. Cross-links `chads`, `cha2ds2-va`, `chads-65`.
+  - **`cha2ds2-va`** — the **2024 ESC CHA₂DS₂-VA** (Van Gelder IC et al, *Eur
+    Heart J* 2024) with the **sex point removed** vs CHA₂DS₂-VASc; total 0–8,
+    the ESC frames ≥ 2 as favoring oral anticoagulation. **Class B**.
+  - **`chads-65`** — the **2020 CCS/CHRS CHADS-65** Canadian anticoagulation
+    pathway (Andrade JG et al, *Can J Cardiol* 2020): sequential age-65 →
+    CHADS₂-factor → vascular-disease gates returning the pathway verdict and the
+    gate that fired. **Class B**.
+  - **`atria-stroke`** — the **ATRIA Stroke Risk Score** (Singer DE et al, *J Am
+    Heart Assoc* 2013) with its **dual age-by-prior-stroke column** (with a prior
+    stroke the < 65 band scores above the 65–84 bands — the published
+    interaction); total 0–15: low 0–5, intermediate 6, high 7–15. **Class A**.
+  - **`tisdale-qtc`** — the **Tisdale QT-prolongation risk score** (Tisdale JE
+    et al, *Circ Cardiovasc Qual Outcomes* 2013): age ≥ 68, female, loop
+    diuretic, K ≤ 3.5, QTc ≥ 450, acute MI, sepsis, heart failure, QT-prolonging
+    drugs (one 3, ≥ two 6); total 0–21: low ≤ 6, moderate 7–10, high ≥ 11.
+    **Class A**. Cross-links `qtc-suite`.
+- `cha2ds2-va` and `chads-65` are **Class B** (revisable guidance) → each carries
+  an `accessed` date and a `docs/citation-staleness.md` row; the `chads2` /
+  `atria-stroke` / `tisdale-qtc` trio are **Class A** (journal-named citations,
+  no issuer-pattern match) and carry none.
+- New module `lib/cardio-v101.js` (fuzz-covered by the spec-v59 harness, zero
+  non-finite leaks) + renderer `views/group-v26.js` (`RV26`); per-tile
+  spec-v11 audit logs under `docs/audits/v12/`. No new specialty vocabulary.
+
 ### Added (spec-v99: ID, critical-care & burns, +5 — spec-v85 program complete)
 
 - **Tenth and final feature spec of Wave 2** and the **closing spec of the

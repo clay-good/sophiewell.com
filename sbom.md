@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `9394e598b9c16fab`
-Generated: 2026-06-17T14:53:13.923Z
+Build ID: `cbecbdfa6927b4bc`
+Generated: 2026-06-18T13:48:37.665Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=20.18.1 <21, npm >=10.0.0
@@ -24,13 +24,13 @@ downloads is committed in this repository and is hashed below.
 
 | Path | Bytes | SHA-256 |
 |---|---:|---|
-| `index.html` | 41493 | `2344ce6d0df4bf13ad7932f25844b9477a223556bf5833654ece258d7c910651` |
+| `index.html` | 41762 | `ccc29d72846e997b62b2d8fcec943001c21c79b815c1ee1a428cf4d15efaa430` |
 | `styles.css` | 42819 | `bea421c79d390a364eb571c3a9599cdf28264128d4ac02d7abb00f31000c7cda` |
-| `app.js` | 123597 | `1b6969ca10327b7aed86737b4276183fdc2fdcfb86ed5907e53a2579f8ea0839` |
+| `app.js` | 124757 | `7eba81f31dd8ab1589f96d6f06bec35020998aebfc6ace9f1d693d26c7222011` |
 | `sw.js` | 4622 | `b891d4344f8e04403b7f1d307fd446cc224bddc6f0c4397438a17d197351171e` |
 | `site.webmanifest` | 709 | `0e0de4da60590a12e8b27a0ae2a2f5ffdb6500b7d2b78f93631ec2f64ed3d5ce` |
 | `robots.txt` | 127 | `38fbf9c1854e72abb20e01e81dd5a31d4ea96f154c12d5db1ec3af05524dd1a1` |
-| `sitemap.xml` | 67381 | `e78c9c7b8d74fbf4172a4972d0f5aadd774bca699162b30556dc25437149fe7f` |
+| `sitemap.xml` | 68128 | `501a689b84814391c1186ceacdaa52978491589b24d41c34b5dd3eabee4af266` |
 | `_headers` | 1316 | `2f39986457d2feff7e73e491a7d09ee871e8f2f4cc2bc437f86bd86a42554ec6` |
 | `logo.png` | 63440 | `11afaf1b0d3ca68393d202e4810bf766b5b6d591b4e3ec52f41d3cacaa4616ec` |
 | `favicon.ico` | 7411 | `407fde0ca2788409e87e11f596fa02e6a0b121817fcea7fd995beec1801e287b` |
@@ -49,6 +49,7 @@ downloads is committed in this repository and is hashed below.
 | `lib/billing-v82.js` | 20705 | `886399d32bb333435752f44b11daa4a34c6fcc46862658975db30b3af55fda92` |
 | `lib/billing-v83.js` | 20694 | `5eabcbce52f58f03f426b5c4fdb925a23fc9f7f5f11faa7e591b6d3d376d00f2` |
 | `lib/bounds.js` | 6360 | `2417098c7e9bd78ba92156465958ea89ef0a4dfac937621ae6141d4607fbf468` |
+| `lib/cardio-v101.js` | 12757 | `cec8eb5df6b0c22e713f0b2b43eb097ec0588217f12aa31e1d1a519e4dc263ab` |
 | `lib/cardio-v90.js` | 15782 | `d04541970b3cbdaf761063b7bbbfdfcd7073e3624dbe187adeda4a2e9b678f90` |
 | `lib/clinical-v4.js` | 13481 | `2434fa8ccf04a471d1d7ecf0075e6c279a2025b1eac834c06efb70c923a62e5e` |
 | `lib/clinical-v5.js` | 25042 | `1da466fb812401a08c4a1419f8b5eb579943d80e3626c00749a1b3bc87ac57cc` |
@@ -77,7 +78,7 @@ downloads is committed in this repository and is hashed below.
 | `lib/live.js` | 1138 | `304978d3c170b6eb06cade7702e5f99d868e9b3e1f5651aa9a28da15e62a6a9c` |
 | `lib/medication-v4.js` | 18192 | `467f9576c50da696cc56094eb022d0a5ed1e88de0c7618448554ede8067270b0` |
 | `lib/medication-v5.js` | 18863 | `ce81d9f8954abbd412892c13af9936f992239164f26fd2b999eaea7902787ab7` |
-| `lib/meta.js` | 762958 | `a8ee2fa04b61823ec4119b29a27125e8e72213c65266f86cec3ff65f4d11d3d5` |
+| `lib/meta.js` | 768492 | `74ab6aebd5c6a48da68deda68dcee2c36b0091c453966a3b63d4f410758ff8e7` |
 | `lib/metabolic-onc-v88.js` | 12659 | `1553b641668c121661a66647da71a4aaaa023e9f3a6b7a753efbcdab27cdba81` |
 | `lib/nephro-v92.js` | 15980 | `64bbc05482eed2ab88816f676ab5e56aefae9d4f5d85d223217a03160d1cc082` |
 | `lib/neuro-v95.js` | 14709 | `7f7e4f5a0877afa8efbf6cc69f8b0549370bcdbcb5d7ed1dfcea1a5ee7266e85` |
@@ -144,6 +145,7 @@ downloads is committed in this repository and is hashed below.
 | `views/group-v23.js` | 14725 | `5b5270fee62e0915f4596e11ea46831f7055ad3bb5039a2c4fe96af83382d305` |
 | `views/group-v24.js` | 10751 | `a856aff3a39f3627d732c22bb2b55dcab114b69d989331f852456896d17baa5d` |
 | `views/group-v25.js` | 13326 | `eb7233039917eb9ea67c7d0de5d21985c9a4f40863509d4b61e155f3718a8870` |
+| `views/group-v26.js` | 10635 | `8637ca713172fc27943a32262d80842f7a4b7861fc249ff0cc0fc5976d0cc3a8` |
 | `views/group-v5.js` | 32719 | `d73b5c41e36fc3d6ecdfd1803787adbcee86ff16b8e1cd387d36d3db0f2a3248` |
 | `views/group-v6.js` | 5707 | `425918decb48cd9efac9fc5590ac8970a54c03c3b0df056fb99c9a22ff8dd1b2` |
 | `views/group-v63.js` | 14377 | `962d84b97e82bc39635801da79ecaa93fc0b501b5988b7d321b0f1f630497fab` |

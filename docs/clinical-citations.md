@@ -1138,3 +1138,54 @@ pre-feeding potassium/magnesium/phosphate) or two minor criteria (BMI < 18.5,
 weight loss > 10%, > 5 days little/no intake, or alcohol/drug history). Class B
 (NICE guidance); see docs/citation-staleness.md.
 Worked example: BMI 15 (one major criterion) -> high risk of refeeding syndrome.
+
+### CHADS2 stroke-risk score
+Citation: Gage BF, Waterman AD, Shannon W, et al. Validation of clinical
+classification schemes for predicting stroke: results from the National Registry
+of Atrial Fibrillation. JAMA. 2001;285(22):2864-2870.
+Rule: congestive heart failure (1), hypertension (1), age >= 75 (1), diabetes (1),
+prior stroke/TIA (2); total 0-6 maps to the adjusted annual ischemic-stroke rate
+from the derivation cohort (0 = 1.9%/yr to 6 = 18.2%/yr). Superseded for routine
+use by CHA2DS2-VASc / CHA2DS2-VA, which are cross-linked.
+Worked example: hypertension alone -> CHADS2 1, adjusted annual stroke rate 2.8%.
+
+### CHA2DS2-VA (2024 ESC, sex point removed)
+Citation: Van Gelder IC, Rienstra M, Bunting KV, et al. 2024 ESC Guidelines for
+the management of atrial fibrillation. Eur Heart J. 2024;45(36):3314-3414.
+Rule: CHF/LV dysfunction (1), hypertension (1), age >= 75 (2), diabetes (1), prior
+stroke/TIA/thromboembolism (2), vascular disease (1), age 65-74 (1); no sex point.
+Total 0-8; the 2024 ESC form frames a score >= 2 as favoring oral anticoagulation.
+Class B (ESC AF guideline); see docs/citation-staleness.md.
+Worked example: age 70 with hypertension -> CHA2DS2-VA 2, at/above the ESC OAC
+threshold.
+
+### CHADS-65 Canadian anticoagulation pathway
+Citation: Andrade JG, Aguilar M, Atzema C, et al. The 2020 CCS/CHRS Comprehensive
+Guidelines for the Management of Atrial Fibrillation. Can J Cardiol.
+2020;36(12):1847-1948.
+Rule: sequential gates -- age >= 65 -> oral anticoagulant; otherwise any CHADS2
+risk factor (CHF, hypertension, diabetes, prior stroke/TIA) -> oral anticoagulant;
+otherwise coronary or peripheral arterial disease -> antiplatelet; otherwise no
+antithrombotic therapy. Class B (CCS guidance); see docs/citation-staleness.md.
+Worked example: age 50 with hypertension -> oral anticoagulant via the
+CHADS2-factor gate.
+
+### ATRIA Stroke Risk Score
+Citation: Singer DE, Chang Y, Borowsky LH, et al. A new risk scheme to predict
+ischemic stroke and other thromboembolism in atrial fibrillation: the ATRIA study
+stroke risk score. J Am Heart Assoc. 2013;2(3):e000250.
+Rule: age is scored from one of two columns by prior stroke (the age x
+prior-stroke interaction; with a prior stroke the < 65 band scores higher than the
+65-84 bands), plus female sex, diabetes, CHF, hypertension, proteinuria, and
+eGFR < 45 mL/min or ESRD (1 each). Total 0-15: low 0-5, intermediate 6, high 7-15.
+Worked example: age 60 with a prior stroke -> ATRIA 8 (high-risk band).
+
+### Tisdale QT-prolongation risk score
+Citation: Tisdale JE, Jaynes HA, Kingery JR, et al. Development and validation of a
+risk score to predict QT interval prolongation in hospitalized patients. Circ
+Cardiovasc Qual Outcomes. 2013;6(4):479-487.
+Rule: age >= 68 (1), female sex (1), loop diuretic (1), serum potassium <= 3.5 (2),
+admission QTc >= 450 ms (2), acute MI (2), sepsis (3), heart failure (3), and
+QT-prolonging drugs (one 3, two or more 6). Total 0-21: low <= 6, moderate 7-10,
+high >= 11 risk of drug-associated QTc prolongation.
+Worked example: sepsis, heart failure, and age >= 68 -> Tisdale 7 (moderate risk).

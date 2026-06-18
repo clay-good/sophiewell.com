@@ -288,3 +288,21 @@ are on-publication.
 |---|---|---|---|---|---|
 | duke-endocarditis | Modified Duke criteria for infective endocarditis (definite/possible/rejected thresholds) | 2023 Duke-ISCVID (Fowler 2023, Clin Infect Dis 77(4)) | same | 2026-06-17 | current -- the 2023 Duke-ISCVID revision is the latest; Class B, review on-publication of the next Duke-ISCVID update. The major/minor counting thresholds are stable |
 | refeeding-risk | NICE refeeding-syndrome risk stratification (major/minor criteria) | NICE CG32 (2006, updated 2017) | same | 2026-06-17 | current -- CG32 with the 2017 update is the latest; Class B, review on-publication of the next NICE nutrition-support update. The BMI / weight-loss / intake / electrolyte criteria are stable |
+
+## spec-v101 AF stroke-risk & QT-prolongation (added 2026-06-18)
+
+First feature spec of Wave 1 of the spec-v100 MDCalc Parity Completion program.
+Three are Class A fixed instruments whose citations name the journal and authors
+(not a society) and do not match the check-citations issuer pattern, so they carry
+no row: `chads2` (the Gage 2001 point weights and NRAF stroke-rate table),
+`atria-stroke` (the Singer 2013 dual age-column point table), and `tisdale-qtc`
+(the Tisdale 2013 risk-factor weights). Two are Class B and carry the rows below
+for the §6.3 cadence job (`scripts/check-citation-cadence.mjs`). `cha2ds2-va` cites
+the 2024 ESC AF guideline, whose citation also matches the gate-required issuer
+pattern (ESC), so that row is gate-required; `chads-65` cites the 2020 CCS/CHRS AF
+guideline. Both cadences are on-publication.
+
+| tile id | instrument | edition shipped | latest known edition | accessed | justification if behind |
+|---|---|---|---|---|---|
+| cha2ds2-va | CHA2DS2-VA atrial-fibrillation stroke-risk score (sex point removed) | 2024 ESC AF guideline (Van Gelder 2024, Eur Heart J 45(36)) | same | 2026-06-18 | current -- the 2024 ESC AF guideline is the latest; Class B, review on-publication of the next ESC AF guideline. The component weights and the score >= 2 anticoagulation framing are stable |
+| chads-65 | CHADS-65 Canadian anticoagulation pathway (sequential age-65 gate) | 2020 CCS/CHRS AF guideline (Andrade 2020, Can J Cardiol 36(12)) | same | 2026-06-18 | current -- the 2020 CCS comprehensive AF guideline is the latest; Class B, review on-publication of the next CCS AF guideline update. The age-65 and CHADS2-factor gate sequence is stable |

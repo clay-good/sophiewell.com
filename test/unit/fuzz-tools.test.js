@@ -99,6 +99,7 @@ import * as psychV96 from '../../lib/psych-v96.js';
 import * as periopV97 from '../../lib/periop-v97.js';
 import * as pedsV98 from '../../lib/peds-v98.js';
 import * as idcritV99 from '../../lib/idcrit-v99.js';
+import * as cardioV101 from '../../lib/cardio-v101.js';
 
 const MODULES = {
   'clinical.js': clinical,
@@ -142,6 +143,7 @@ const MODULES = {
   'periop-v97.js': periopV97,
   'peds-v98.js': pedsV98,
   'idcrit-v99.js': idcritV99,
+  'cardio-v101.js': cardioV101,
 };
 
 const MATRIX = [0, -1, 1e9, NaN, Infinity, -Infinity, '', undefined, null];
