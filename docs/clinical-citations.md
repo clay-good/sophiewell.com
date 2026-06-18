@@ -1379,3 +1379,54 @@ mortality is 0 percent at 0, 0.8 percent at 1, 19.6 percent at 2, 34.7 percent a
 and 57.1 percent at 4, rising sharply at a score of 2 or more.
 Worked example: age over 65 with a cardiovascular history scores 2 (12-month
 mortality 19.6 percent).
+
+## spec-v105 vascular & cardiac-surgery instruments
+
+### Ankle-Brachial Index (ABI)
+Citation: Aboyans V, Criqui MH, Abraham P, et al. Measurement and interpretation
+of the ankle-brachial index. Circulation. 2012;126(24):2890-2909.
+Rule: for each leg, divide the higher ankle systolic pressure (dorsalis pedis or
+posterior tibial) by the higher of the two brachial systolic pressures; the lower
+of the two leg indices governs. Bands: over 1.40 non-compressible, 1.00 to 1.40
+normal, 0.91 to 0.99 borderline, 0.41 to 0.90 mild-to-moderate peripheral artery
+disease, 0.40 or less severe disease.
+Worked example: a right ankle of 90 over a brachial of 100 gives an index of 0.90
+(mild-to-moderate peripheral artery disease); at 91 over 100 the index of 0.91 is
+borderline.
+
+### Rutherford Category / Fontaine Stage (PAD)
+Citation: Rutherford RB, Baker JD, Ernst C, et al. Recommended standards for
+reports dealing with lower extremity ischemia: revised version. J Vasc Surg.
+1997;26(3):517-538.
+Rule: two parallel chronic-limb-ischemia classifications. Rutherford 0
+asymptomatic, 1 mild / 2 moderate / 3 severe claudication, 4 ischemic rest pain,
+5 minor tissue loss, 6 major tissue loss. Fontaine I asymptomatic, IIa mild / IIb
+disabling claudication, III rest pain, IV ulceration or gangrene. Rutherford 4 to
+6 (Fontaine III to IV) is chronic limb-threatening ischemia.
+Worked example: severe claudication is Rutherford category 3 and Fontaine stage IIb.
+
+### SVS WIfI Limb-Threat Classification
+Citation: Mills JL Sr, Conte MS, Armstrong DG, et al. The Society for Vascular
+Surgery Lower Extremity Threatened Limb Classification System: risk stratification
+based on Wound, Ischemia, and foot Infection (WIfI). J Vasc Surg.
+2014;59(1):220-234.
+Rule: grade Wound, Ischemia, and foot Infection each from 0 to 3, then read the
+clinical stage from 1 to 4 off the expert-panel amputation-risk table (stage 1 very
+low, 2 low, 3 moderate, 4 high estimated one-year amputation risk).
+Worked example: Wound 2, Ischemia 3, foot Infection 1 maps to clinical stage 4
+(high one-year amputation risk).
+
+### EuroSCORE II
+Citation: Nashef SAM, Roques F, Sharples LD, et al. EuroSCORE II. Eur J
+Cardiothorac Surg. 2012;41(4):734-744.
+Rule: predicted in-hospital mortality after cardiac surgery via the logistic model
+e^y over (1 plus e^y), where y is minus 5.324537 plus the sum of the published
+patient, cardiac, and operative coefficients; the age term adds 0.0285181 per year
+above 60. The on-dialysis coefficient is lower than that for a creatinine clearance
+of 50 or less without dialysis, a published feature reproduced verbatim. (Note the
+age coefficient is the EuroSCORE II multivariate value 0.0285181, not the legacy
+EuroSCORE I value.)
+Worked example: a 70-year-old woman on dialysis with insulin-dependent diabetes,
+chronic pulmonary dysfunction, NYHA III, CCS class 4 angina, poor LV function, and
+a recent MI for an isolated elective CABG gives y of minus 2.126358 and a predicted
+mortality of 10.66 percent.

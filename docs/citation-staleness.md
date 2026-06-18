@@ -344,3 +344,21 @@ pattern (ESC). Cadence is on-publication (region recalibration).
 |---|---|---|---|---|---|
 | score2 | SCORE2 10-year cardiovascular-risk algorithm (age 40-69, four European risk regions) | 2021 ESC SCORE2 (SCORE2 working group, Eur Heart J 42(25):2439) | same | 2026-06-18 | current -- the 2021 ESC SCORE2 algorithm is the latest; Class B, review on-publication of the next ESC region recalibration. The sex-specific betas, baseline survivals, and per-region scale1/scale2 pairs are the published values |
 | score2-op | SCORE2-OP 10-year cardiovascular-risk algorithm (age >= 70, four European risk regions) | 2021 ESC SCORE2-OP (SCORE2-OP working group, Eur Heart J 42(25):2455) | same | 2026-06-18 | current -- the 2021 ESC SCORE2-OP algorithm is the latest; Class B, review on-publication of the next ESC region recalibration. The sex-specific betas, baseline survivals/means, and per-region scale1/scale2 pairs are the published values |
+
+## spec-v105 vascular & cardiac-surgery instruments (added 2026-06-18)
+
+Closing Wave-1 feature spec of the spec-v100 MDCalc Parity Completion program.
+Two of the four tiles are Class A fixed-coefficient instruments whose citations
+name the journal and authors (not a society) and do not match the check-citations
+issuer pattern, so they carry no row: `abi` (the Aboyans 2012 ratio + fixed PAD
+bands) and `euroscore2` (the Nashef 2012 EJCTS Table 6 multivariate logistic
+coefficients). The two below are Class B reporting/classification standards from
+the Society for Vascular Surgery; neither citation matches the issuer acronym set,
+so the rows are documentation only, but both are cadence-tracked (on-publication)
+for the §6.3 job. They record that the edition in force was reviewed and
+deliberately retained, not missed.
+
+| tile id | instrument | edition shipped | latest known edition | accessed | justification if behind |
+|---|---|---|---|---|---|
+| rutherford-fontaine | Rutherford category / Fontaine stage PAD classification | Rutherford 1997 revised reporting standards (J Vasc Surg 26(3):517-538) | same | 2026-06-18 | current -- the 1997 revised reporting standards are the canonical Rutherford/Fontaine mapping; Class B, review on-publication of the next SVS reporting-standards revision. The category 0-6 and stage I-IV definitions are stable (documentation only -- does not match the issuer pattern) |
+| wifi | SVS WIfI lower-extremity threatened-limb classification (Wound / Ischemia / foot Infection) | Mills 2014 expert-panel amputation-risk table (J Vasc Surg 59(1):220-234) | same | 2026-06-18 | current -- the 2014 Mills WIfI consensus is the latest; Class B, review on-publication of the next SVS WIfI update. The 64-cell amputation-risk stage grid is the published expert-panel table (documentation only -- does not match the issuer pattern) |

@@ -1,12 +1,22 @@
 # spec-v105.md — Vascular & cardiac surgery: ABI, Rutherford/Fontaine, SVS WIfI, and EuroSCORE II (+4 tiles)
 
-> Status: **PROPOSED (2026-06-17).** Feature spec of the [spec-v100](spec-v100.md)
+> Status: **SHIPPED (2026-06-18).** Feature spec of the [spec-v100](spec-v100.md)
 > MDCalc Parity Completion program, **Wave 1** (Cardiology / EP / vascular / lipids) —
 > the **closing spec of Wave 1**. Adds **4** deterministic peripheral-artery and
 > cardiac-surgery-risk instruments that fill confirmed gaps. None duplicates a live
 > tile.
 >
-> Catalog effect: **454 + 4 = 458 tiles** — the Wave 1 end state (432 → 458, +26).
+> Catalog effect: **453 + 4 = 457 tiles** — the Wave 1 end state (432 → 457, +25).
+> (The roster projected 454 → 458, +26; the running total is one lower because
+> spec-v102 deferred `gwtg-hf`.) Two implementation corrections were applied per the
+> spec-v97 "source governs over recall" rule: (1) the **EuroSCORE II age coefficient
+> is 0.0285181** (the Nashef 2012 EJCTS Table 6 multivariate value), NOT the
+> 0.0666354 figure in §2.4 — that value is the legacy logistic *EuroSCORE I* age
+> coefficient and would materially over-estimate every prediction; the implemented
+> model reproduces the published worked example (y = −2.126358 → 10.66%) exactly.
+> (2) The SVS WIfI clinical-stage grid was re-fetched as the Mills 2014 expert-panel
+> **amputation-risk** table (the separate revascularization-benefit table has
+> different cells). See `docs/audits/v12/euroscore2.md` and `wifi.md`.
 >
 > Every prior spec (v4 through v100) remains in force. v105 adds no runtime network
 > call and no AI; each tile obeys the [spec-v100](spec-v100.md) §2 doctrine (which

@@ -43,7 +43,7 @@ const ALLOWED_SPECIALTIES = new Set([
   'speech-language-pathology', 'sports-medicine', 'stroke', 'surgery', 'surgery-general',
   'toxicology', 'transfusion-medicine', 'transplant', 'trauma-surgery',
   'urgent-care',
-  'urology', 'wilderness-medicine', 'wound-care',
+  'urology', 'vascular-surgery', 'wilderness-medicine', 'wound-care',
 ]);
 
 function clinicalIds() {

@@ -6,6 +6,36 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v105: vascular & cardiac surgery, +4 — closes spec-v100 Wave 1)
+
+- **Fifth and closing feature spec of Wave 1** of the [spec-v100](docs/spec-v100.md)
+  MDCalc Parity Completion program. Four deterministic **peripheral-artery and
+  cardiac-surgery-risk** instruments (catalog **453 → 457**), via
+  `lib/vascular-v105.js` + `views/group-v30.js`. Wave 1 closes at **432 → 457, +25**
+  (one below the projected +26 because spec-v102 deferred `gwtg-hf`). New specialty
+  tag `vascular-surgery`:
+  - **`abi`** — the **Ankle-Brachial Index** (Aboyans V, Criqui MH, Abraham P, et
+    al, *Circulation* 2012), in Group E: per leg, the higher ankle systolic over the
+    higher brachial systolic, with the five published PAD severity bands (> 1.40
+    non-compressible, 1.00–1.40 normal, 0.91–0.99 borderline, 0.41–0.90
+    mild-to-moderate PAD, ≤ 0.40 severe). The lower leg index governs; the brachial
+    divisor is guarded for > 0. **Class A**.
+  - **`rutherford-fontaine`** — the **Rutherford category (0–6) ↔ Fontaine stage
+    (I–IV)** PAD classification mapping (Rutherford RB, Baker JD, Ernst C, et al, *J
+    Vasc Surg* 1997). **Class B** (society reporting standard → staleness row).
+  - **`wifi`** — the **SVS WIfI** limb-threat classification (Mills JL Sr, Conte MS,
+    Armstrong DG, et al, *J Vasc Surg* 2014): the Wound / Ischemia / foot-Infection
+    grade triple read against the 64-cell expert-panel amputation-risk grid to a
+    clinical stage 1–4. **Class B** (society classification → staleness row).
+  - **`euroscore2`** — **EuroSCORE II** (Nashef SAM, Roques F, Sharples LD, et al,
+    *Eur J Cardiothorac Surg* 2012): predicted in-hospital cardiac-surgery mortality
+    via the logistic `e^y / (1 + e^y)`, the Table 6 multivariate coefficients
+    transcribed verbatim and cross-verified (reproduces the published worked example
+    y = −2.126358 → 10.66%). The exponent is clamped [−40, 40] against overflow.
+    **Class A**. (Implementation note: the age coefficient is the EuroSCORE II
+    multivariate value **0.0285181**, not the legacy EuroSCORE I 0.0666354 figure
+    quoted in the spec draft — see `docs/audits/v12/euroscore2.md`.)
+
 ### Added (spec-v104: ECG arrhythmia, aortic & syncope, +6 — spec-v100 Wave 1)
 
 - **Fourth feature spec of Wave 1** of the [spec-v100](docs/spec-v100.md) MDCalc
