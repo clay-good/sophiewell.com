@@ -33,6 +33,7 @@ import { renderers as RV24 } from './views/group-v24.js';
 import { renderers as RV25 } from './views/group-v25.js';
 import { renderers as RV26 } from './views/group-v26.js';
 import { renderers as RV27 } from './views/group-v27.js';
+import { renderers as RV28 } from './views/group-v28.js';
 import { renderers as RV63 } from './views/group-v63.js';
 import { renderers as RB } from './views/group-b.js';
 import { renderers as RPALINT } from './views/pa-lint.js';
@@ -51,7 +52,7 @@ import { resolvePrompt } from './lib/prompt.js';
 // artifact-detect / artifact-route / artifact-handoff helpers were
 // deleted in spec-v29 wave 29-2 (Group C/L).
 
-const RENDERERS = { ...RA, ...RB, ...RC, ...RE, ...RF, ...RG, ...RH, ...RI, ...RJ, ...RKLMNO, ...RV5, ...RV6, ...RV7, ...RV8, ...RV9, ...RV10, ...RV11, ...RV12, ...RV13, ...RV14, ...RV15, ...RV16, ...RV17, ...RV18, ...RV19, ...RV20, ...RV21, ...RV22, ...RV23, ...RV24, ...RV25, ...RV26, ...RV27, ...RV63, ...RPALINT };
+const RENDERERS = { ...RA, ...RB, ...RC, ...RE, ...RF, ...RG, ...RH, ...RI, ...RJ, ...RKLMNO, ...RV5, ...RV6, ...RV7, ...RV8, ...RV9, ...RV10, ...RV11, ...RV12, ...RV13, ...RV14, ...RV15, ...RV16, ...RV17, ...RV18, ...RV19, ...RV20, ...RV21, ...RV22, ...RV23, ...RV24, ...RV25, ...RV26, ...RV27, ...RV28, ...RV63, ...RPALINT };
 
 // ----- Utility registry ----------------------------------------------------
 // Source of truth for routes, names, group, audiences, and clinical flag.
@@ -638,6 +639,18 @@ const UTILITIES = [
   { id: 'h2fpef',                 name: 'H2FPEF Score (HFpEF probability)',                 group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'hfa-peff',               name: 'HFA-PEFF Diagnostic Score (ESC HFpEF algorithm)',  group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'cardshock-score',        name: 'CardShock Risk Score (cardiogenic shock mortality)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+
+  // spec-v103 (Wave 1 of spec-v100): cardiovascular-risk & atherogenic-lipid
+  // engines that complement (never replace) the existing ascvd / prevent tiles.
+  // SCORE2 / SCORE2-OP (European, region-calibrated), MESA CHD with coronary
+  // calcium, Framingham general CVD + vascular age, and Reynolds in Group G; the
+  // non-HDL / remnant fractions in Group E. views/group-v28.js, lib/cvrisk-v103.js.
+  { id: 'score2',                 name: 'SCORE2 (ESC 2021, 10-year CVD risk, age 40-69)',   group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'score2-op',              name: 'SCORE2-OP (ESC 2021, 10-year CVD risk, age >= 70)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'mesa-chd',               name: 'MESA 10-Year CHD Risk (with coronary-artery calcium)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'framingham-cvd',         name: 'Framingham General CVD Risk + Vascular Age (2008)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'reynolds-risk',          name: 'Reynolds Risk Score (hsCRP + family history)',     group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'non-hdl-remnant',        name: 'Non-HDL & Remnant Cholesterol',                    group: 'E', audiences: ['clinicians', 'educators', 'patients'], clinical: true },
 
   // spec-v6 §3.3: lab result interpreter. Patient-decoder category.
   { id: 'lab-interpret',       name: 'Lab Result Interpreter',                           group: 'C', audiences: ['patients', 'clinicians', 'educators'], clinical: true },

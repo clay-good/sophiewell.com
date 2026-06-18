@@ -1,11 +1,15 @@
 # spec-v103.md — CV risk & prevention engines: SCORE2, SCORE2-OP, MESA-CHD, Framingham CVD, Reynolds, and non-HDL/remnant cholesterol (+6 tiles)
 
-> Status: **PROPOSED (2026-06-17).** Feature spec of the [spec-v100](spec-v100.md)
+> Status: **SHIPPED (2026-06-18).** Feature spec of the [spec-v100](spec-v100.md)
 > MDCalc Parity Completion program, **Wave 1** (Cardiology / EP / vascular / lipids).
 > Adds **6** deterministic 10-year cardiovascular-risk engines and atherogenic-lipid
 > fractions that fill confirmed gaps. None duplicates a live tile.
 >
-> Catalog effect: **442 + 6 = 448 tiles.**
+> Catalog effect: **441 + 6 = 447 tiles.** (The roster pre-assumed a 442 start;
+> spec-v102 shipped +4 not +5 because `gwtg-hf` was deferred, so the actual base was
+> 441. Shipped via `lib/cvrisk-v103.js` + `views/group-v28.js` (`RV28`); coefficients
+> re-fetched verbatim from the published supplements/papers and cross-verified against
+> the ESC worked examples and the CVrisk / RiskScorescvd open-source implementations.)
 >
 > Every prior spec (v4 through v100) remains in force. v103 adds no runtime network
 > call and no AI; each tile obeys the [spec-v100](spec-v100.md) §2 doctrine (which
@@ -191,9 +195,9 @@ docs/clinical-citations.md               (+ rows for the six sources)
 test/unit/score2.test.js, score2-op.test.js, mesa-chd.test.js, framingham-cvd.test.js, reynolds-risk.test.js, non-hdl-remnant.test.js  (≥3 boundary worked examples each)
 test/unit/fuzz-tools.test.js             (add lib/cvrisk-v103.js to MODULES)
 docs/audits/v12/score2.md, score2-op.md, mesa-chd.md, framingham-cvd.md, reynolds-risk.md, non-hdl-remnant.md  (spec-v11 audit logs)
-docs/scope-mdcalc-parity.md              (catalog count 442 -> 448; Wave 1 progress)
+docs/scope-mdcalc-parity.md              (catalog count 441 -> 447; Wave 1 progress)
 CHANGELOG.md                             (Unreleased: v103 entry, +6)
-README.md, package.json                  (catalog count 442 -> 448; spec-progression line -> v103)
+README.md, package.json                  (catalog count 441 -> 447; spec-progression line -> v103)
 ```
 
 ## 6. Acceptance criteria
@@ -217,7 +221,7 @@ v103 is fully shipped when:
   [spec-v59](spec-v59.md) fuzz harness with **zero non-finite leaks**.
 - `score2` and `score2-op` carry `accessed` + a `docs/citation-staleness.md` row; the
   Class-A four carry none.
-- `UTILITIES.length` is **448** (or the then-current count + 6 if specs land out of
+- `UTILITIES.length` is **447** (or the then-current count + 6 if specs land out of
   order) and all catalog-truth surfaces ([spec-v46](spec-v46.md)) agree.
 - `npm run lint`, `npm run test`, `npm run sbom`, and `npm run build` all pass.
 - The CHANGELOG records v103 with the +6 catalog delta.

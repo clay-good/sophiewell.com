@@ -101,6 +101,7 @@ import * as pedsV98 from '../../lib/peds-v98.js';
 import * as idcritV99 from '../../lib/idcrit-v99.js';
 import * as cardioV101 from '../../lib/cardio-v101.js';
 import * as cardioV102 from '../../lib/cardio-v102.js';
+import * as cvriskV103 from '../../lib/cvrisk-v103.js';
 
 const MODULES = {
   'clinical.js': clinical,
@@ -146,6 +147,7 @@ const MODULES = {
   'idcrit-v99.js': idcritV99,
   'cardio-v101.js': cardioV101,
   'cardio-v102.js': cardioV102,
+  'cvrisk-v103.js': cvriskV103,
 };
 
 const MATRIX = [0, -1, 1e9, NaN, Infinity, -Infinity, '', undefined, null];

@@ -324,3 +324,23 @@ see docs/spec-v102.md -- so it carries neither a tile nor a row yet.)
 | tile id | instrument | edition shipped | latest known edition | accessed | justification if behind |
 |---|---|---|---|---|---|
 | hfa-peff | HFA-PEFF diagnostic score for HFpEF (functional / morphological / biomarker domains) | 2019 ESC HFA algorithm (Pieske 2019, Eur Heart J 40(40)) | same | 2026-06-18 | current -- the 2019 HFA-PEFF consensus is the latest; Class B, review on-publication of the next ESC Heart Failure Association HFpEF-diagnosis update. The domain criteria and the 5/2-4/1 verdict thresholds are stable |
+
+## spec-v103 CV risk & prevention engines (added 2026-06-18)
+
+First Wave-1 cardiovascular-risk feature spec of the spec-v100 MDCalc Parity
+Completion program. Four are Class A fixed-coefficient / fixed-identity
+instruments whose citations name the journal and authors (not a society) and do
+not match the check-citations issuer pattern, so they carry no row: `mesa-chd`
+(the McClelland 2015 penalized-Cox betas and baseline survivals), `framingham-cvd`
+(the D'Agostino 2008 sex-specific Cox coefficients + vascular-age reference
+profile), `reynolds-risk` (the Ridker 2007/2008 women's and men's coefficients),
+and `non-hdl-remnant` (the Varbo 2013 arithmetic identity). Two are Class B and
+carry the rows below for the §6.3 cadence job: `score2` and `score2-op` cite the
+2021 ESC SCORE2 / SCORE2-OP algorithms, whose region calibration tables are
+recalibrated on a calendar and whose citations match the gate-required issuer
+pattern (ESC). Cadence is on-publication (region recalibration).
+
+| tile id | instrument | edition shipped | latest known edition | accessed | justification if behind |
+|---|---|---|---|---|---|
+| score2 | SCORE2 10-year cardiovascular-risk algorithm (age 40-69, four European risk regions) | 2021 ESC SCORE2 (SCORE2 working group, Eur Heart J 42(25):2439) | same | 2026-06-18 | current -- the 2021 ESC SCORE2 algorithm is the latest; Class B, review on-publication of the next ESC region recalibration. The sex-specific betas, baseline survivals, and per-region scale1/scale2 pairs are the published values |
+| score2-op | SCORE2-OP 10-year cardiovascular-risk algorithm (age >= 70, four European risk regions) | 2021 ESC SCORE2-OP (SCORE2-OP working group, Eur Heart J 42(25):2455) | same | 2026-06-18 | current -- the 2021 ESC SCORE2-OP algorithm is the latest; Class B, review on-publication of the next ESC region recalibration. The sex-specific betas, baseline survivals/means, and per-region scale1/scale2 pairs are the published values |

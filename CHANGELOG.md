@@ -6,6 +6,50 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v103: CV risk & prevention engines, +6 — spec-v100 Wave 1)
+
+- **Third feature spec of Wave 1** of the [spec-v100](docs/spec-v100.md) MDCalc
+  Parity Completion program. Six deterministic **cardiovascular-risk and
+  atherogenic-lipid** engines that **complement, never replace,** the existing
+  `ascvd` (Pooled Cohort) and `prevent` tiles — each cross-links them and states
+  its derivation population (catalog **441 → 447**):
+  - **`score2`** — the **SCORE2** algorithm (SCORE2 working group & ESC, *Eur
+    Heart J* 2021; ages 40–69): a sex-specific linear predictor on centered age,
+    SBP, total/HDL cholesterol (mmol/L) and smoking → `1 − S0^exp(LP)`, then the
+    published per-region cloglog recalibration (low / moderate / high / very-high
+    European risk region) and the ESC age-banded category. Reproduces the two ESC
+    worked examples exactly (50yo smoker: low-region 5.9% … very-high 14.0% for
+    men, 4.2% … 13.7% for women). **Class B** (staleness row + accessed). Group G.
+  - **`score2-op`** — the **SCORE2-OP** older-persons companion (ESC, *Eur Heart
+    J* 2021; ages ≥ 70): adds diabetes, centers at age 73 / SBP 150 / TC 6 / HDL
+    1.4, `1 − S0^exp(LP − mean)` + the per-region recalibration. **Class B**.
+    Cross-links `score2`. Group G.
+  - **`mesa-chd`** — the **MESA** 10-year CHD risk **with and without coronary
+    calcium** (McClelland RL et al, *J Am Coll Cardiol* 2015): a penalized Cox on
+    raw mg/dL factors; the with-CAC model adds `0.2743 × ln(Agatston + 1)`,
+    reported beside the no-CAC figure so the calcium refinement is visible. White
+    is the reference race. **Class A**. Group G.
+  - **`framingham-cvd`** — the **Framingham general-CVD** sex-specific Cox model
+    (D'Agostino RB Sr et al, *Circulation* 2008) with the published **vascular
+    age** companion (the age at which a normal-risk reference profile carries the
+    same risk). Reproduces the paper's worked example (61yo woman → 8.4%, vascular
+    age 67.7). **Class A**. Group G.
+  - **`reynolds-risk`** — the **Reynolds Risk Score** (Ridker PM et al, *JAMA*
+    2007 women / *Circulation* 2008 men): adds hsCRP and parental history of
+    premature MI; women use linear age + an HbA1c term for diabetics, the men's
+    model was derived in non-diabetics (a diabetic man is flagged). **Class A**.
+    Group G.
+  - **`non-hdl-remnant`** — **non-HDL = TC − HDL** and **remnant = TC − HDL − LDL**
+    (Varbo A et al, *J Am Coll Cardiol* 2013), unit preserved (mg/dL or mmol/L),
+    with the guideline non-HDL target context; an implausible negative remnant
+    (LDL + HDL > TC) is flagged, not printed. **Class A**. Group E.
+- New module `lib/cvrisk-v103.js` (fuzz-covered; the SCORE2 region coefficients are
+  a **compiled constant** re-fetched verbatim from the published EHJ supplement per
+  the spec-v97 "re-fetch, never recall" rule; every logistic/Cox exponent is clamped
+  for overflow and every `ln()` term is domain-guarded — zero non-finite leaks) +
+  renderer `views/group-v28.js` (`RV28`); per-tile spec-v11 audit logs;
+  `score2`/`score2-op` staleness-ledger rows. No new specialty vocabulary.
+
 ### Added (spec-v102: heart failure & cardiogenic shock, +4 — spec-v100 Wave 1)
 
 - **Second feature spec of Wave 1** of the [spec-v100](docs/spec-v100.md) MDCalc

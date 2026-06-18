@@ -1235,3 +1235,79 @@ high (~77%) in-hospital mortality. The deterministic substitute for the gestalt
 SCAI shock staging.
 Worked example: all five clinical factors with lactate > 4 and eGFR < 30 gives 9,
 the high-mortality band.
+
+## spec-v103 cardiovascular-risk & atherogenic-lipid engines
+
+These six complement, never replace, the existing ascvd (Pooled Cohort) and
+prevent engines. Each states its derivation population so the clinician picks the
+right engine. SCORE2 / SCORE2-OP are Class B (ESC region recalibration); the other
+four are Class A fixed-coefficient or fixed-identity models.
+
+### SCORE2 (ESC 2021, age 40-69)
+Citation: SCORE2 working group and ESC Cardiovascular Risk Collaboration. SCORE2
+risk prediction algorithms: new models to estimate 10-year risk of cardiovascular
+disease in Europe. Eur Heart J. 2021;42(25):2439-2454.
+Rule: sex-specific linear predictor on centered age, systolic BP, total and HDL
+cholesterol (mmol/L), and smoking; uncalibrated risk = 1 - S0^exp(LP), then the
+published per-region cloglog recalibration (low / moderate / high / very-high
+European risk region). Class B (ESC); see docs/citation-staleness.md.
+Worked example: a 50-year-old male smoker, SBP 140, total cholesterol 5.5, HDL 1.3
+mmol/L scores 5.9% in a low-risk region and 14.0% in a very-high-risk region; the
+matching woman scores 4.2% and 13.7% (the published ESC worked example).
+
+### SCORE2-OP (ESC 2021, age >= 70)
+Citation: SCORE2-OP working group and ESC Cardiovascular Risk Collaboration.
+SCORE2-OP risk prediction algorithms: estimating incident cardiovascular event
+risk in older persons. Eur Heart J. 2021;42(25):2455-2467.
+Rule: the older-persons companion to SCORE2; adds diabetes as a predictor, centered
+at age 73 / SBP 150 / TC 6 / HDL 1.4 mmol/L; uncalibrated risk = 1 - S0^exp(LP -
+mean), then the per-region cloglog recalibration. Class B (ESC); see
+docs/citation-staleness.md.
+Worked example: a 75-year-old woman in a high-risk region, non-smoker, SBP 150,
+total cholesterol 5.5, HDL 1.4 mmol/L scores a 10-year cardiovascular risk of
+21.6%.
+
+### MESA 10-Year CHD Risk (with coronary-artery calcium)
+Citation: McClelland RL, Jorgensen NW, Budoff M, et al. 10-year coronary heart
+disease risk prediction using coronary artery calcium and traditional risk factors:
+derivation in the Multi-Ethnic Study of Atherosclerosis. J Am Coll Cardiol.
+2015;66(15):1643-1653.
+Rule: penalized Cox on raw traditional factors (mg/dL cholesterol); the with-CAC
+model adds 0.2743 x ln(Agatston + 1). White is the reference race. Risk = 1 -
+S0^exp(sum of beta x value), with S0 of 0.99963 (no CAC) or 0.99833 (with CAC).
+Worked example: a 60-year-old White man, total cholesterol 200, HDL 50 mg/dL, SBP
+125, no other factors scores 4.86% without calcium and 7.34% with an Agatston of
+100 - the calcium refinement is visible.
+
+### Framingham General CVD Risk + Vascular Age (2008)
+Citation: D'Agostino RB Sr, Vasan RS, Pencina MJ, et al. General cardiovascular
+risk profile for use in primary care: the Framingham Heart Study. Circulation.
+2008;117(6):743-753.
+Rule: sex-specific Cox on ln-transformed age, total and HDL cholesterol (mg/dL),
+and systolic BP (treated coefficient when on antihypertensives), plus smoking and
+diabetes. Vascular age is the age at which an otherwise-normal-risk person (TC 180,
+HDL 45, SBP 125 untreated, non-smoker, non-diabetic) carries the same risk.
+Worked example: a 61-year-old woman, total cholesterol 230, HDL 47 mg/dL, SBP 124
+untreated, non-smoker, non-diabetic scores 8.4% with a vascular age of 67.7 years
+(the published paper example).
+
+### Reynolds Risk Score
+Citation: Ridker PM, Buring JE, Rifai N, Cook NR. Development and validation of
+improved algorithms for global cardiovascular risk assessment in women: the
+Reynolds Risk Score. JAMA. 2007;297(6):611-619; Ridker PM, et al. Circulation.
+2008;118(22):2243-2251 (men).
+Rule: adds high-sensitivity CRP (mg/L) and parental history of premature MI to the
+traditional factors (mg/dL cholesterol). Women use linear age plus an HbA1c term
+for diabetics; the men's model was derived in non-diabetics (no HbA1c term).
+Worked example: a 60-year-old woman, SBP 140, total cholesterol 260, HDL 45 mg/dL,
+hsCRP 4.5 mg/L, smoker, family history positive scores a 10-year risk of 18.9%.
+
+### Non-HDL & Remnant Cholesterol
+Citation: Varbo A, Benn M, Tybjaerg-Hansen A, et al. Remnant cholesterol as a
+causal risk factor for ischemic heart disease. J Am Coll Cardiol. 2013;61(4):427-436.
+Rule: non-HDL = total cholesterol - HDL (all apoB-containing atherogenic
+lipoproteins); remnant = total - HDL - LDL (triglyceride-rich-remnant cholesterol).
+The entered unit (mg/dL or mmol/L) is preserved; a negative remnant (LDL + HDL
+exceeding total) is flagged as a data-entry error rather than printed.
+Worked example: total cholesterol 200, HDL 50, LDL 120 mg/dL gives a non-HDL of
+150 mg/dL (at or above the 130 mg/dL guideline target) and a remnant of 30 mg/dL.
