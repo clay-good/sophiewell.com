@@ -1311,3 +1311,71 @@ The entered unit (mg/dL or mmol/L) is preserved; a negative remnant (LDL + HDL
 exceeding total) is flagged as a data-entry error rather than printed.
 Worked example: total cholesterol 200, HDL 50, LDL 120 mg/dL gives a non-HDL of
 150 mg/dL (at or above the 130 mg/dL guideline target) and a remnant of 30 mg/dL.
+
+### Brugada Criteria (VT vs SVT)
+Citation: Brugada P, Brugada J, Mont L, et al. A new approach to the differential
+diagnosis of a regular tachycardia with a wide QRS complex. Circulation.
+1991;83(5):1649-1659.
+Rule: four sequential steps -- (1) absence of an RS complex in all precordial
+leads, (2) R-to-S interval over 100 ms in any precordial lead, (3) AV
+dissociation, (4) morphologic VT criteria in both V1-V2 and V6. A positive answer
+at any step diagnoses ventricular tachycardia and stops the algorithm; all four
+negative is supraventricular tachycardia with aberrant conduction.
+Worked example: step 1 positive (no RS in any precordial lead) returns VT and
+names step 1 as the first positive step.
+
+### Vereckei aVR Algorithm
+Citation: Vereckei A, Duray G, Szenasi G, et al. New algorithm using only lead aVR
+for differential diagnosis of wide QRS complex tachycardia. Heart Rhythm.
+2008;5(1):89-98.
+Rule: four sequential steps in lead aVR -- (1) initial dominant R wave, (2) initial
+r or q wave over 40 ms, (3) notch on the descending limb of a negative-onset QRS,
+(4) ventricular activation-velocity ratio vi/vt at or below 1. A positive answer at
+any step diagnoses VT; all four negative is supraventricular.
+Worked example: an initial dominant R wave in aVR (step 1) returns VT.
+
+### Aortic Dissection Detection Risk Score (ADD-RS)
+Citation: Rogers AM, Hermann LK, Booher AM, et al. Sensitivity of the aortic
+dissection detection risk score, a novel guideline-based tool for identification of
+acute aortic dissection at initial presentation. Circulation. 2011;123(20):2213-2218.
+Rule: three categories (predisposing conditions, pain features, exam findings); each
+category scores 1 point if any feature within it is present, total 0-3. ADD-RS 0 low,
+1 intermediate, 2 or more high risk. The optional D-dimer is a pathway note only:
+in the ADD-RS 1-or-below group a D-dimer under 500 ng/mL is the published rule-out
+adjunct (ADD-RS-D); ADD-RS 2 or more goes directly to imaging.
+Worked example: high-risk predisposing condition plus high-risk pain feature scores
+2 (high risk).
+
+### ROSE Rule (syncope)
+Citation: Reed MJ, Newby DE, Coull AJ, et al. The ROSE (Risk Stratification of
+Syncope in the Emergency Department) study. J Am Coll Cardiol. 2010;55(8):713-721.
+Rule: BRACES plus bradycardia -- BNP at or above 300 pg/mL, bradycardia at or below
+50 bpm, rectal exam fecal-occult-blood positive, anemia (hemoglobin at or below
+90 g/L), chest pain with syncope, ECG Q wave (not lead III), oxygen saturation at or
+below 94%. Any single positive criterion predicts a 1-month serious outcome or death;
+all-negative is low risk.
+Worked example: a BNP at or above 300 pg/mL alone returns high risk.
+
+### EGSYS Score (cardiac-syncope probability)
+Citation: Del Rosso A, Ungar A, Maggi R, et al. Clinical predictors of cardiac
+syncope at initial evaluation in patients referred urgently to a general hospital:
+the EGSYS score. Heart. 2008;94(12):1620-1626.
+Rule: abnormal ECG and/or heart disease (+3), palpitations before syncope (+4),
+syncope during effort (+3), syncope in the supine position (+2), and -- scored when
+PRESENT -- precipitating/predisposing factors (-1) and autonomic prodromes (-1).
+Effort and supine are separate items with distinct weights (verified against the
+primary paper and MDCalc); total range -2 to +12, with a score of 3 or more
+suggesting cardiac syncope.
+Worked example: palpitations (+4) with autonomic prodromes present (-1) scores 3,
+which suggests cardiac syncope.
+
+### OESIL Risk Score (syncope)
+Citation: Colivicchi F, Ammirati F, Melina D, et al. Development and prospective
+validation of a risk stratification system for patients with syncope in the
+emergency department: the OESIL risk score. Eur Heart J. 2003;24(9):811-819.
+Rule: one point each for age over 65, cardiovascular disease in clinical history,
+syncope without prodrome, and an abnormal ECG. Total 0-4; published 12-month total
+mortality is 0 percent at 0, 0.8 percent at 1, 19.6 percent at 2, 34.7 percent at 3,
+and 57.1 percent at 4, rising sharply at a score of 2 or more.
+Worked example: age over 65 with a cardiovascular history scores 2 (12-month
+mortality 19.6 percent).

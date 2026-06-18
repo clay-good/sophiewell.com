@@ -34,6 +34,7 @@ import { renderers as RV25 } from './views/group-v25.js';
 import { renderers as RV26 } from './views/group-v26.js';
 import { renderers as RV27 } from './views/group-v27.js';
 import { renderers as RV28 } from './views/group-v28.js';
+import { renderers as RV29 } from './views/group-v29.js';
 import { renderers as RV63 } from './views/group-v63.js';
 import { renderers as RB } from './views/group-b.js';
 import { renderers as RPALINT } from './views/pa-lint.js';
@@ -52,7 +53,7 @@ import { resolvePrompt } from './lib/prompt.js';
 // artifact-detect / artifact-route / artifact-handoff helpers were
 // deleted in spec-v29 wave 29-2 (Group C/L).
 
-const RENDERERS = { ...RA, ...RB, ...RC, ...RE, ...RF, ...RG, ...RH, ...RI, ...RJ, ...RKLMNO, ...RV5, ...RV6, ...RV7, ...RV8, ...RV9, ...RV10, ...RV11, ...RV12, ...RV13, ...RV14, ...RV15, ...RV16, ...RV17, ...RV18, ...RV19, ...RV20, ...RV21, ...RV22, ...RV23, ...RV24, ...RV25, ...RV26, ...RV27, ...RV28, ...RV63, ...RPALINT };
+const RENDERERS = { ...RA, ...RB, ...RC, ...RE, ...RF, ...RG, ...RH, ...RI, ...RJ, ...RKLMNO, ...RV5, ...RV6, ...RV7, ...RV8, ...RV9, ...RV10, ...RV11, ...RV12, ...RV13, ...RV14, ...RV15, ...RV16, ...RV17, ...RV18, ...RV19, ...RV20, ...RV21, ...RV22, ...RV23, ...RV24, ...RV25, ...RV26, ...RV27, ...RV28, ...RV29, ...RV63, ...RPALINT };
 
 // ----- Utility registry ----------------------------------------------------
 // Source of truth for routes, names, group, audiences, and clinical flag.
@@ -651,6 +652,18 @@ const UTILITIES = [
   { id: 'framingham-cvd',         name: 'Framingham General CVD Risk + Vascular Age (2008)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'reynolds-risk',          name: 'Reynolds Risk Score (hsCRP + family history)',     group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'non-hdl-remnant',        name: 'Non-HDL & Remnant Cholesterol',                    group: 'E', audiences: ['clinicians', 'educators', 'patients'], clinical: true },
+
+  // spec-v104 (Wave 1 of spec-v100): ECG arrhythmia, aortic & syncope decision
+  // rules beside the existing ecg-axis / lvh tiles. Brugada & Vereckei wide-
+  // complex-tachycardia step algorithms, the ADD-RS aortic-dissection pretest
+  // score, and the ROSE / EGSYS / OESIL ED syncope instruments.
+  // views/group-v29.js, lib/cardio-v104.js.
+  { id: 'brugada-vt',             name: 'Brugada Criteria (VT vs SVT, wide-complex tachycardia)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'vereckei-avr',           name: 'Vereckei aVR Algorithm (VT vs SVT)',               group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'add-rs',                 name: 'Aortic Dissection Detection Risk Score (ADD-RS)',  group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'rose-syncope',           name: 'ROSE Rule (syncope 1-month serious outcome)',      group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'egsys',                  name: 'EGSYS Score (cardiac-syncope probability)',        group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'oesil',                  name: 'OESIL Risk Score (syncope 12-month mortality)',    group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
 
   // spec-v6 §3.3: lab result interpreter. Patient-decoder category.
   { id: 'lab-interpret',       name: 'Lab Result Interpreter',                           group: 'C', audiences: ['patients', 'clinicians', 'educators'], clinical: true },

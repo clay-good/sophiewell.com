@@ -5,7 +5,7 @@
 <h1 align="center">sophiewell.com</h1>
 
 <p align="center">
-  <strong>447 deterministic healthcare calculators tuned to the nurse on shift.</strong><br>
+  <strong>453 deterministic healthcare calculators tuned to the nurse on shift.</strong><br>
   Free forever. No servers, no accounts, no telemetry, no AI, no network call after first paint.
 </p>
 
@@ -36,7 +36,7 @@ output; "searchable lookup of static facts" does not qualify. See
 [docs/spec-v10.md](docs/spec-v10.md) for the audience and
 dependency-budget commitments and
 [docs/spec-v29.md](docs/spec-v29.md) for the nurse-first pivot
-and the v29 catalog ledger. At v103 close the catalog is 447
+and the v29 catalog ledger. At v104 close the catalog is 453
 deterministic tiles — every one of them computes from at least
 one user input. The catalog reached its present size on two tracks.
 **New tiles:** spec-v63 added the operations counterpart to the bedside
@@ -186,7 +186,7 @@ production security headers. Any static file server will also work.
 ## How it works and how to use it
 
 Since the spec-v29 nurse-first prune the catalog has grown one
-reviewable spec at a time to **447** deterministic calculators
+reviewable spec at a time to **453** deterministic calculators
 (the full per-version history is in [CHANGELOG.md](CHANGELOG.md)
 and `docs/spec-v*.md`; the most recent bedside additions are
 summarized in the cheat sheets below). They organize across the
@@ -1023,12 +1023,12 @@ Duke-ISCVID) and `refeeding-risk` (NICE CG32) are **Class B** with
 [citation-staleness](docs/citation-staleness.md) rows; the other three are
 **Class A**. See [docs/spec-v99.md](docs/spec-v99.md).
 
-### MDCalc parity completion: the cardiology / lipid surface (spec-v100 program, Wave 1: spec-v101 → spec-v103, +15 → 447)
+### MDCalc parity completion: the cardiology / lipid surface (spec-v100 program, Wave 1: spec-v101 → spec-v104, +21 → 453)
 
 With the spec-v85 program complete, [spec-v100](docs/spec-v100.md) charters the
 **MDCalc Parity Completion** program — a roadmap that closes the remaining gaps
 against the instruments a clinician expects to find — and opens **Wave 1**
-(cardiology / electrophysiology / vascular / lipids). Three feature specs have
+(cardiology / electrophysiology / vascular / lipids). Four feature specs have
 shipped, all under the same determinism / primary-source-citation / output-safety
 doctrine, each tile fuzz-covered by the spec-v59 harness:
 
@@ -1049,6 +1049,12 @@ doctrine, each tile fuzz-covered by the spec-v59 harness:
   (Pooled Cohort) and `prevent` tiles. Each cross-links them and states its
   derivation population so the clinician picks the right engine for the patient.
   `lib/cvrisk-v103.js` + `views/group-v28.js`.
+- **[spec-v104](docs/spec-v104.md) (+6 → 453)** — **ECG arrhythmia, aortic &
+  syncope decision rules** beside the existing `ecg-axis` / `lvh-criteria` tiles:
+  the two wide-complex-tachycardia step algorithms (`brugada-vt`, `vereckei-avr`),
+  the `add-rs` aortic-dissection pretest score with the optional D-dimer rule-out
+  note, and the three ED syncope instruments (`rose-syncope`, `egsys`, `oesil`).
+  All six **Class A**. `lib/cardio-v104.js` + `views/group-v29.js`. Detailed below.
 
 | id | Group | Model | Output | Class |
 |---|---|---|---|---|
@@ -1073,6 +1079,38 @@ fallback rather than reading `undefined` coefficients, and an implausible negati
 remnant (LDL + HDL > TC) is flagged rather than printed. `score2` / `score2-op` are
 **Class B** with [citation-staleness](docs/citation-staleness.md) rows (ESC region
 recalibration); the other four are **Class A**.
+
+#### spec-v104 — ECG arrhythmia, aortic & syncope (+6 → 453)
+
+The catalog had the `ecg-axis` and `lvh-criteria` ECG tiles but none of the
+bedside criteria an ED physician uses to *call* a wide-complex tachycardia, screen
+for aortic dissection, or risk-stratify syncope. spec-v104 fills that gap with six
+published, deterministic instruments — two boolean step algorithms, one category
+count, and three point/criterion scores:
+
+| id | Group | Rule | Output |
+|---|---|---|---|
+| `brugada-vt` | G | Brugada 1991 four-step VT-vs-SVT algorithm | first positive of (no RS in any precordial lead → R-S > 100 ms → AV dissociation → V1-2 & V6 morphology) ⇒ **VT**; all-negative ⇒ SVT with aberrancy |
+| `vereckei-avr` | G | Vereckei 2008 lead-aVR four-step algorithm | first positive of (initial R → initial r/q > 40 ms → notch on negative-onset downstroke → vi/vt ≤ 1) ⇒ **VT**; all-negative ⇒ supraventricular |
+| `add-rs` | G | Rogers 2011 Aortic Dissection Detection Risk Score | category count 0–3 (predisposing / pain / exam) → low / intermediate / high, **+ optional ADD-RS-D D-dimer < 500 ng/mL rule-out note** for ADD-RS ≤ 1 |
+| `rose-syncope` | G | Reed 2010 ROSE rule (BRACES + bradycardia) | **any** of 7 criteria positive ⇒ high risk (1-month serious outcome / death) |
+| `egsys` | G | Del Rosso 2008 EGSYS cardiac-syncope probability | signed-weight sum −2 to +12; **score ≥ 3 suggests cardiac syncope** |
+| `oesil` | G | Colivicchi 2003 OESIL risk score | point sum 0–4 → published 12-month mortality (0 / 0.8 / 19.6 / 34.7 / 57.1 %) |
+
+**Source-governs correction (the spec-v97 rule, applied to the prose this time).**
+The spec-v104 draft described EGSYS with "syncope during effort *or* supine (3)" as
+one item and the two −1 terms as scored on *absence*. Verification against the
+primary Del Rosso 2008 paper **and** MDCalc found both wrong: effort (+3) and
+supine (+2) are **separate items with distinct weights**, and the precipitating-
+factors / autonomic-prodrome terms score −1 when **present** (they argue toward
+reflex syncope). The implementation follows the source — true range **−2 to +12**
+(the positive weights sum to the universally-cited maximum of 12), not the draft's
+−2 to +10 — and the deviation is logged in `docs/audits/v12/egsys.md`. The boolean
+step rules return a defined verdict on a fully-negative input; `egsys` bounds its
+signed sum and `oesil` / `add-rs` index fixed lookups by a clamped total, so the
+spec-v59 fuzz harness sees zero non-finite leaks. All six citations name a journal
++ authors (the ADD-RS title's "guideline-based" phrasing names no society acronym),
+so all six are **Class A** — no citation-staleness rows.
 
 ### Billing & reimbursement: what Medicare pays, whether the line survives, how the visit codes, what the drug bills, what the patient owes, and whether the claim is clean (spec-v77 → spec-v83, program complete)
 
@@ -1397,7 +1435,7 @@ long version, see [docs/architecture.md](docs/architecture.md).
  │  manifests (data/)            │  static │        ▼                     ▼             │
  │        │  scripts/build       │  files  │   lazy-load data shard   pure compute      │
  │        ▼                      │         │   (verified vs manifest)  (lib/*.js)       │
- │  dist/  (447 tool pages,      │         │        │                     │             │
+ │  dist/  (453 tool pages,      │         │        │                     │             │
  │  OG cards, sitemap, SBOM)     │         │        ▼                     ▼             │
  └───────────────────────────────┘         │   service worker cache    result + cite   │
                                             │   (keyed to build hash)                    │
@@ -1419,14 +1457,14 @@ assets:
 
 | Output | Count | Source |
 |--------|------:|--------|
-| Pre-rendered tool pages (`dist/tools/<id>/`) | 447 | `scripts/build-tool-pages.mjs` |
+| Pre-rendered tool pages (`dist/tools/<id>/`) | 453 | `scripts/build-tool-pages.mjs` |
 | Audience hub pages (`dist/for/<audience>/`) | 6 | `scripts/build-hub-pages.mjs` |
 | Topic pages + `/topics/` index | 8 + 1 | `scripts/build-topic-pages.mjs` |
 | `/commitments/` | 1 | `scripts/build-commitments-page.mjs` |
 | SPA shell (`dist/index.html`) | 1 | copied + LD-stamped |
 | **Total HTML** | **449** | — |
 | OG card PNGs (`dist/og/`) | 446 | `scripts/build-og-images.mjs` |
-| Sitemap URLs (`sitemap.xml`) | 448 | `scripts/build-sitemap.mjs` |
+| Sitemap URLs (`sitemap.xml`) | 454 | `scripts/build-sitemap.mjs` |
 
 Nothing ships unless it survives the gate chain. `npm run lint` is ESLint
 followed by seven custom static checks, each enforcing one invariant; any
@@ -1437,7 +1475,7 @@ failure is a non-zero exit that blocks the merge:
 | `grep-check.mjs` | no banned tokens (em-dashes in tests, stale counts, AI/telemetry strings) |
 | `check-output-safety.mjs` | no view interpolates unescaped user input into the DOM |
 | `check-citations.mjs` | every tile is cited; guideline-issuer tiles carry an accessed-date + a staleness-ledger row |
-| `check-catalog-truth.mjs` | the catalog count (447) is identical across all 13 surfaces; no orphan/removed-tile ids |
+| `check-catalog-truth.mjs` | the catalog count (453) is identical across all 13 surfaces; no orphan/removed-tile ids |
 | `check-commitments.mjs` | storage allowlist + AI/auth deny + license + CSP are intact |
 | `check-pa-staleness.mjs` | every PA rule is source-anchored and within its freshness window |
 | `audit-pa.mjs` | the 46 PA-linter fixtures still reproduce their committed golden reports |
@@ -1445,7 +1483,7 @@ failure is a non-zero exit that blocks the merge:
 `npm run test` adds the 3,984-test unit suite, the a11y check, and dataset
 integrity verification; `npm run test:e2e` runs the Playwright suite against
 real Chromium/Firefox/WebKit — including a full-catalog 320 px no-horizontal-
-scroll sweep over every SPA route **and** every one of the 447 pre-rendered
+scroll sweep over every SPA route **and** every one of the 453 pre-rendered
 static pages, so a tile can never ship mobile overflow undetected.
 
 ### Repository layout
@@ -1454,7 +1492,7 @@ static pages, so a tile can never ship mobile overflow undetected.
 index.html          single-page shell (hero-search combobox + static browse-by-category nav, tile mount)
 styles.css          one stylesheet (responsive; no horizontal scroll — enforced catalog-wide at 320px in CI)
 app.js              router, hero-search wiring, view wiring, the UTILITIES catalog
-                    (447 tiles — the single source of truth; zero runtime deps)
+                    (453 tiles — the single source of truth; zero runtime deps)
 sw.js               service worker — precache shell, cache shards by build hash
 theme.js            light/dark theme toggle (writes only sw-theme, allowlisted)
 lib/input-persist.js opt-in "remember my inputs" (off by default; numbers only)
@@ -1472,12 +1510,12 @@ docs/               specs (spec-v4 onward) + per-tile v11/v12 audit logs +
                     citation-staleness ledger +
                     architecture / threat-model / …
 test/               unit/ (node:test) · integration/ (Playwright) · fixtures/
-dist/               build output (447 tool pages, OG cards, sitemap, SBOM)
+dist/               build output (453 tool pages, OG cards, sitemap, SBOM)
 ```
 
-### Discovery: how a query finds the right tool among 447
+### Discovery: how a query finds the right tool among 453
 
-With 447 tiles, search quality *is* the product — a tool you cannot find does
+With 453 tiles, search quality *is* the product — a tool you cannot find does
 not exist. Discovery is deterministic and offline (no fuzzy-match service, no
 embedding model, no AI). The home `#hero-search` combobox builds its dropdown
 from two complementary rankers, both pure functions of the typed query:
@@ -1550,10 +1588,10 @@ A login-less, AI-free calculator earns trust only if the nurse can see, on the
 tile, exactly which published source produced the number — and tell whether that
 source is current. spec-v54 defined the invariants; spec-v60 built the machinery
 (the gate, the ledger, and the `citationAccessed` convention) and extended it
-across the full 447-tile catalog, pinning the last three unpinned "current
+across the full 453-tile catalog, pinning the last three unpinned "current
 edition" phrases and re-verifying every guideline tile against its latest known
 edition. Three invariants make that auditable, each enforced by the
-`check-citations.mjs` lint gate (in the `npm run lint` chain) over all 447 tiles:
+`check-citations.mjs` lint gate (in the `npm run lint` chain) over all 453 tiles:
 
 | Invariant | Rule | Enforcement |
 |---|---|---|
@@ -2010,7 +2048,7 @@ rules, not soft preferences.
 | `npm run build`          | Copy static files into `dist/` for deployment                     |
 | `npm test`               | Run the full test suite (unit, a11y, grep, data integrity)        |
 | `npm run test:unit`      | Run Node's built-in unit tests (3,984 tests)                      |
-| `npm run test:e2e`       | Build `dist/`, then run Playwright integration tests against real browsers — incl. a full-catalog 320px no-horizontal-scroll sweep over both the SPA routes and the 447 pre-rendered static tool pages, the hub/topic/commitments pages, and the citation-wrap pin |
+| `npm run test:e2e`       | Build `dist/`, then run Playwright integration tests against real browsers — incl. a full-catalog 320px no-horizontal-scroll sweep over both the SPA routes and the 453 pre-rendered static tool pages, the hub/topic/commitments pages, and the citation-wrap pin |
 | `npm run test:a11y`      | Run accessibility checks on every utility view                    |
 | `npm run lint`           | ESLint + the CI gate chain: grep-check, output-safety, citation-integrity, catalog-truth, commitments, PA staleness, PA audit |
 | `npm run data:refresh`   | Re-fetch and re-shard every public dataset                        |
@@ -2094,7 +2132,7 @@ build, integrity-verified data shards) are documented in
 - [docs/spec-v11.md](docs/spec-v11.md) — correctness-floor spec:
   per-tile audit protocol, specialty-named groups, optional
   source-quoted `interpretation` field. Audit coverage is **complete
-  — 447/447 tiles** carry a committed per-tile audit log
+  — 453/453 tiles** carry a committed per-tile audit log
   (`docs/audits/v11/<id>.md` for the pre-v78 catalog;
   `docs/audits/v12/<id>.md` for the 95 tiles added since — the
   spec-v78–v83 billing & coding program and the spec-v85

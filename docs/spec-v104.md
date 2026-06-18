@@ -1,11 +1,16 @@
 # spec-v104.md — ECG arrhythmia, aortic & syncope: Brugada VT, Vereckei aVR, ADD-RS, ROSE, EGSYS, and OESIL (+6 tiles)
 
-> Status: **PROPOSED (2026-06-17).** Feature spec of the [spec-v100](spec-v100.md)
+> Status: **SHIPPED (2026-06-18).** Feature spec of the [spec-v100](spec-v100.md)
 > MDCalc Parity Completion program, **Wave 1** (Cardiology / EP / vascular / lipids).
 > Adds **6** deterministic wide-complex-tachycardia, aortic-dissection, and
 > syncope-risk decision rules that fill confirmed gaps. None duplicates a live tile.
 >
-> Catalog effect: **448 + 6 = 454 tiles.**
+> Catalog effect: **447 + 6 = 453 tiles.** (The roster projected 448 → 454; the
+> running total is one lower because spec-v102 deferred `gwtg-hf`. Two prose
+> corrections were applied during implementation per the spec-v97 "source governs"
+> rule — see §2.5 / `docs/audits/v12/egsys.md`: EGSYS scores syncope-during-effort
+> (+3) and supine-syncope (+2) as separate items, and the two −1 terms score when
+> the feature is PRESENT, giving the canonical −2 to +12 range.)
 >
 > Every prior spec (v4 through v100) remains in force. v104 adds no runtime network
 > call and no AI; each tile obeys the [spec-v100](spec-v100.md) §2 doctrine (which

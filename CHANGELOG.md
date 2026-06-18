@@ -6,6 +6,55 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v104: ECG arrhythmia, aortic & syncope, +6 — spec-v100 Wave 1)
+
+- **Fourth feature spec of Wave 1** of the [spec-v100](docs/spec-v100.md) MDCalc
+  Parity Completion program. Six deterministic **wide-complex-tachycardia,
+  aortic-dissection, and emergency-department syncope** decision rules beside the
+  existing `ecg-axis` / `lvh-criteria` ECG tiles (catalog **447 → 453**), all in
+  Group G via `lib/cardio-v104.js` + `views/group-v29.js`:
+  - **`brugada-vt`** — the **Brugada Criteria** four-step VT-vs-SVT algorithm
+    (Brugada P, Brugada J, Mont L, et al, *Circulation* 1991): a "yes" at any of
+    (absent RS in all precordial leads → R-to-S interval > 100 ms → AV
+    dissociation → V1-2 & V6 morphology) diagnoses ventricular tachycardia and
+    names the first positive step; all-negative is SVT with aberrancy. Takes the
+    read morphologic findings, not a raw tracing. **Class A**.
+  - **`vereckei-avr`** — the **Vereckei aVR algorithm** four-step rule using lead
+    aVR only (Vereckei A, Duray G, Szenasi G, et al, *Heart Rhythm* 2008): initial
+    dominant R → initial r/q > 40 ms → notch on a negative-onset downstroke →
+    vi/vt ≤ 1. First positive ⇒ VT; all-negative ⇒ supraventricular. Cross-links
+    `brugada-vt`. **Class A**.
+  - **`add-rs`** — the **Aortic Dissection Detection Risk Score** (Rogers AM,
+    Hermann LK, Booher AM, et al, *Circulation* 2011): a 0–3 count of the three
+    high-risk categories (predisposing conditions / pain features / exam findings)
+    → low / intermediate / high, plus an **optional ADD-RS-D D-dimer pathway
+    note** (a D-dimer < 500 ng/mL is the published rule-out adjunct for ADD-RS ≤ 1;
+    ADD-RS ≥ 2 goes directly to imaging). The D-dimer is a note, never a score
+    input. **Class A**.
+  - **`rose-syncope`** — the **ROSE rule** (Reed MJ, Newby DE, Coull AJ, et al, *J
+    Am Coll Cardiol* 2010): any one of the seven BRACES-plus-bradycardia criteria
+    (BNP ≥ 300, bradycardia ≤ 50, rectal FOB+, Hgb ≤ 90 g/L, chest pain, Q wave not
+    lead III, SaO2 ≤ 94%) ⇒ high risk of a 1-month serious outcome / death. Cross-
+    links `egsys` / `oesil`. **Class A**.
+  - **`egsys`** — the **EGSYS** cardiac-syncope-probability score (Del Rosso A,
+    Ungar A, Maggi R, et al, *Heart* 2008): a signed-weight sum (ECG/heart disease
+    +3, palpitations +4, effort +3, supine +2, precipitating factors −1 and
+    autonomic prodromes −1 when present), bounded to **−2 to +12**; a score ≥ 3
+    suggests cardiac syncope. **Source-governs correction:** the spec draft
+    combined effort/supine into one item and inverted the −1 sign; the primary
+    paper and MDCalc define them as separate items (+3 / +2) scored on *presence*,
+    giving the canonical −2…+12 range (positive weights sum to 12). **Class A**.
+  - **`oesil`** — the **OESIL risk score** (Colivicchi F, Ammirati F, Melina D, et
+    al, *Eur Heart J* 2003): one point each for age > 65, cardiovascular history,
+    syncope without prodrome, and an abnormal ECG → the published 12-month
+    mortality (0 = 0%, 1 = 0.8%, 2 = 19.6%, 3 = 34.7%, 4 = 57.1%). Cross-links
+    `rose-syncope` / `egsys`. **Class A**.
+- All six are **Class A** (each citation names a journal + authors; the ADD-RS
+  title's "guideline-based" phrasing names no society acronym), so none carries a
+  `docs/citation-staleness.md` row. Each runs the spec-v59 fuzz harness with zero
+  non-finite leaks, ships an inline primary citation + `citationUrl` + ≥ 3
+  boundary worked examples, and carries a `docs/audits/v12/<id>.md` audit log.
+
 ### Added (spec-v103: CV risk & prevention engines, +6 — spec-v100 Wave 1)
 
 - **Third feature spec of Wave 1** of the [spec-v100](docs/spec-v100.md) MDCalc
