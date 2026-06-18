@@ -1189,3 +1189,49 @@ admission QTc >= 450 ms (2), acute MI (2), sepsis (3), heart failure (3), and
 QT-prolonging drugs (one 3, two or more 6). Total 0-21: low <= 6, moderate 7-10,
 high >= 11 risk of drug-associated QTc prolongation.
 Worked example: sepsis, heart failure, and age >= 68 -> Tisdale 7 (moderate risk).
+
+### MAGGIC Heart Failure Risk Score
+Citation: Pocock SJ, Ariti CA, McMurray JJV, et al. Predicting survival in heart
+failure: a risk score based on 39,372 patients from 30 studies. Eur Heart J.
+2013;34(19):1404-1413.
+Rule: an integer-point model in which age and systolic BP are scored from one of
+three columns by ejection-fraction tier (the published age and BP interactions
+with EF), plus EF, NYHA class, BMI, creatinine, diabetes, COPD, smoking, HF
+duration, sex, and beta-blocker / ACE-inhibitor use. The integer total maps to the
+published 1-year and 3-year mortality lookup (clamped to the 0-50 table).
+Worked example: a worked case scoring 28 points maps to 20.9% one-year and 45.8%
+three-year mortality.
+
+### H2FPEF Score
+Citation: Reddy YNV, Carter RE, Obokata M, et al. A simple, evidence-based approach
+to help guide diagnosis of heart failure with preserved ejection fraction.
+Circulation. 2018;138(9):861-870.
+Rule: BMI > 30 (2), >= 2 antihypertensive medications (1), atrial fibrillation (3),
+echo pulmonary hypertension PASP > 35 mmHg (1), age > 60 (1), echo E/e′ > 9 (1).
+Total 0-9: 0-1 low, 2-5 intermediate, 6-9 high probability of HFpEF.
+Worked example: atrial fibrillation plus obesity gives a score of 5, an
+intermediate probability of HFpEF.
+
+### HFA-PEFF Diagnostic Score
+Citation: Pieske B, Tschope C, de Boer RA, et al. How to diagnose heart failure
+with preserved ejection fraction: the HFA-PEFF diagnostic algorithm. Eur Heart J.
+2019;40(40):3297-3317.
+Rule: three domains (functional, morphological, biomarker), each scored on its
+highest criterion as major (2) or minor (1) and capped at 2 per domain. Total 0-6:
+>= 5 confirms HFpEF, 2-4 is indeterminate (proceed to diastolic stress or invasive
+testing), <= 1 makes HFpEF unlikely. Class B (ESC HFA algorithm); see
+docs/citation-staleness.md.
+Worked example: a major functional, major morphological, and minor biomarker
+domain gives 5, which confirms HFpEF.
+
+### CardShock Risk Score
+Citation: Harjola VP, Lassus J, Sionis A, et al. Clinical picture and risk
+prediction of short-term mortality in cardiogenic shock. Eur J Heart Fail.
+2015;17(5):501-509.
+Rule: age > 75 (1), confusion at presentation (1), previous MI or CABG (1), ACS
+etiology (1), LVEF < 40% (1), blood lactate (2-4 mmol/L = 1, > 4 = 2), eGFR
+(30-60 = 1, < 30 = 2). Total 0-9: 0-3 low (~8.7%), 4-5 intermediate (~36%), 6-9
+high (~77%) in-hospital mortality. The deterministic substitute for the gestalt
+SCAI shock staging.
+Worked example: all five clinical factors with lactate > 4 and eGFR < 30 gives 9,
+the high-mortality band.

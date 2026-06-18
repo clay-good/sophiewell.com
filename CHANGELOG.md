@@ -6,6 +6,42 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v102: heart failure & cardiogenic shock, +4 — spec-v100 Wave 1)
+
+- **Second feature spec of Wave 1** of the [spec-v100](docs/spec-v100.md) MDCalc
+  Parity Completion program. Four deterministic **heart-failure prognosis,
+  HFpEF-likelihood, and cardiogenic-shock mortality** instruments (catalog
+  **437 → 441**, all Group G):
+  - **`maggic`** — the **MAGGIC** HF risk score (Pocock SJ et al, *Eur Heart J*
+    2013; 39,372 patients): an integer-point model where age and systolic BP are
+    scored from one of three columns by EF tier (the published **age × EF** and
+    **SBP × EF** interactions); the integer total maps to the published 1- and
+    3-year mortality lookup (clamped to the 0–50 table). **Class A**.
+  - **`h2fpef`** — the **H₂FPEF** score (Reddy YNV et al, *Circulation* 2018):
+    BMI > 30 (2), ≥ 2 antihypertensives (1), AF (3), PASP > 35 (1), age > 60 (1),
+    E/e′ > 9 (1); 0–9 → low (0–1) / intermediate (2–5) / high (6–9) HFpEF
+    probability. **Class A**. Cross-links `hfa-peff`.
+  - **`hfa-peff`** — the **HFA-PEFF** diagnostic score (Pieske B et al, *Eur
+    Heart J* 2019, ESC HFA): three domains scored major (2) / minor (1), capped
+    at 2 each; 0–6 → ≥ 5 confirmed, 2–4 indeterminate (proceed to stress/invasive
+    testing), ≤ 1 unlikely. **Class B** (staleness row + accessed).
+  - **`cardshock-score`** — the **CardShock** risk score (Harjola VP et al, *Eur
+    J Heart Fail* 2015): five binaries + banded lactate + banded eGFR, 0–9 →
+    low (~8.7%) / intermediate (~36%) / high (~77%) in-hospital mortality. The
+    deterministic substitute for the excluded gestalt SCAI shock staging.
+    **Class A**.
+- **`gwtg-hf` is DEFERRED, not shipped (+4, not +5).** Its per-variable integer
+  point table could not be verified from any reachable primary or high-quality
+  secondary source (Peterson 2010 / medRxiv 403; MDCalc/ClinCalc implement it as a
+  continuous nomogram; mdapp's table 404s; a sub-agent's grid was flagged as
+  fabricated). This catalog does not ship fabricated medical scoring weights — see
+  [docs/spec-v102.md](docs/spec-v102.md). The id stays reserved for a session with
+  primary-source access.
+- New module `lib/cardio-v102.js` (fuzz-covered; the MAGGIC score→mortality lookup
+  is clamped to [0, 50] so an out-of-table index can never read `undefined`) +
+  renderer `views/group-v27.js` (`RV27`); per-tile spec-v11 audit logs. No new
+  specialty vocabulary.
+
 ### Added (spec-v101: AF stroke-risk & QT, +5 — spec-v100 program Wave 1 opens)
 
 - **First feature spec of Wave 1** of the [spec-v100](docs/spec-v100.md) **MDCalc

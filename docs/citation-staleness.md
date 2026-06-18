@@ -306,3 +306,21 @@ guideline. Both cadences are on-publication.
 |---|---|---|---|---|---|
 | cha2ds2-va | CHA2DS2-VA atrial-fibrillation stroke-risk score (sex point removed) | 2024 ESC AF guideline (Van Gelder 2024, Eur Heart J 45(36)) | same | 2026-06-18 | current -- the 2024 ESC AF guideline is the latest; Class B, review on-publication of the next ESC AF guideline. The component weights and the score >= 2 anticoagulation framing are stable |
 | chads-65 | CHADS-65 Canadian anticoagulation pathway (sequential age-65 gate) | 2020 CCS/CHRS AF guideline (Andrade 2020, Can J Cardiol 36(12)) | same | 2026-06-18 | current -- the 2020 CCS comprehensive AF guideline is the latest; Class B, review on-publication of the next CCS AF guideline update. The age-65 and CHADS2-factor gate sequence is stable |
+
+## spec-v102 heart failure & cardiogenic shock (added 2026-06-18)
+
+First Wave-1 HF feature spec of the spec-v100 MDCalc Parity Completion program.
+Three are Class A fixed instruments whose citations name the journal and authors
+(not a society) and do not match the check-citations issuer pattern, so they carry
+no row: `maggic` (the Pocock 2013 integer-point tables and 0-50 mortality lookup),
+`h2fpef` (the Reddy 2018 six-item point model), and `cardshock-score` (the Harjola
+2015 nine-point model and band mortality rates). One is Class B and carries the row
+below for the §6.3 cadence job: `hfa-peff` cites the 2019 ESC Heart Failure
+Association HFA-PEFF algorithm, whose citation also matches the gate-required issuer
+pattern (ESC). Cadence is on-publication. (The fifth proposed tile, `gwtg-hf`, is
+DEFERRED -- its per-band point table could not be verified from a primary source;
+see docs/spec-v102.md -- so it carries neither a tile nor a row yet.)
+
+| tile id | instrument | edition shipped | latest known edition | accessed | justification if behind |
+|---|---|---|---|---|---|
+| hfa-peff | HFA-PEFF diagnostic score for HFpEF (functional / morphological / biomarker domains) | 2019 ESC HFA algorithm (Pieske 2019, Eur Heart J 40(40)) | same | 2026-06-18 | current -- the 2019 HFA-PEFF consensus is the latest; Class B, review on-publication of the next ESC Heart Failure Association HFpEF-diagnosis update. The domain criteria and the 5/2-4/1 verdict thresholds are stable |

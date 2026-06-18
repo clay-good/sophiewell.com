@@ -32,6 +32,7 @@ import { renderers as RV23 } from './views/group-v23.js';
 import { renderers as RV24 } from './views/group-v24.js';
 import { renderers as RV25 } from './views/group-v25.js';
 import { renderers as RV26 } from './views/group-v26.js';
+import { renderers as RV27 } from './views/group-v27.js';
 import { renderers as RV63 } from './views/group-v63.js';
 import { renderers as RB } from './views/group-b.js';
 import { renderers as RPALINT } from './views/pa-lint.js';
@@ -50,7 +51,7 @@ import { resolvePrompt } from './lib/prompt.js';
 // artifact-detect / artifact-route / artifact-handoff helpers were
 // deleted in spec-v29 wave 29-2 (Group C/L).
 
-const RENDERERS = { ...RA, ...RB, ...RC, ...RE, ...RF, ...RG, ...RH, ...RI, ...RJ, ...RKLMNO, ...RV5, ...RV6, ...RV7, ...RV8, ...RV9, ...RV10, ...RV11, ...RV12, ...RV13, ...RV14, ...RV15, ...RV16, ...RV17, ...RV18, ...RV19, ...RV20, ...RV21, ...RV22, ...RV23, ...RV24, ...RV25, ...RV26, ...RV63, ...RPALINT };
+const RENDERERS = { ...RA, ...RB, ...RC, ...RE, ...RF, ...RG, ...RH, ...RI, ...RJ, ...RKLMNO, ...RV5, ...RV6, ...RV7, ...RV8, ...RV9, ...RV10, ...RV11, ...RV12, ...RV13, ...RV14, ...RV15, ...RV16, ...RV17, ...RV18, ...RV19, ...RV20, ...RV21, ...RV22, ...RV23, ...RV24, ...RV25, ...RV26, ...RV27, ...RV63, ...RPALINT };
 
 // ----- Utility registry ----------------------------------------------------
 // Source of truth for routes, names, group, audiences, and clinical flag.
@@ -628,6 +629,15 @@ const UTILITIES = [
   { id: 'chads-65',               name: 'CHADS-65 Canadian AF Anticoagulation Pathway (CCS)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'atria-stroke',           name: 'ATRIA Stroke Risk Score',                          group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'tisdale-qtc',            name: 'Tisdale Risk Score for QT Prolongation',           group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+
+  // spec-v102 (Wave 1 of spec-v100): heart-failure prognosis, HFpEF likelihood,
+  // and cardiogenic-shock mortality. (gwtg-hf is DEFERRED -- see docs/spec-v102.md;
+  // its per-band point table could not be verified from a primary source.)
+  // views/group-v27.js, lib/cardio-v102.js.
+  { id: 'maggic',                 name: 'MAGGIC Heart Failure Risk Score (1- & 3-year mortality)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'h2fpef',                 name: 'H2FPEF Score (HFpEF probability)',                 group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'hfa-peff',               name: 'HFA-PEFF Diagnostic Score (ESC HFpEF algorithm)',  group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'cardshock-score',        name: 'CardShock Risk Score (cardiogenic shock mortality)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
 
   // spec-v6 §3.3: lab result interpreter. Patient-decoder category.
   { id: 'lab-interpret',       name: 'Lab Result Interpreter',                           group: 'C', audiences: ['patients', 'clinicians', 'educators'], clinical: true },

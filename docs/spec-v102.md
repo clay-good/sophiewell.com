@@ -1,12 +1,28 @@
 # spec-v102.md — Heart failure & cardiogenic shock: MAGGIC, GWTG-HF, H₂FPEF, HFA-PEFF, and CardShock (+5 tiles)
 
-> Status: **PROPOSED (2026-06-17).** Feature spec of the [spec-v100](spec-v100.md)
-> MDCalc Parity Completion program, **Wave 1** (Cardiology / EP / vascular / lipids).
-> Adds **5** deterministic heart-failure prognosis, HFpEF-likelihood, and
-> cardiogenic-shock mortality instruments that fill confirmed gaps. None duplicates a
-> live tile.
+> Status: **SHIPPED (2026-06-18), partial — 4 of 5.** Feature spec of the
+> [spec-v100](spec-v100.md) MDCalc Parity Completion program, **Wave 1** (Cardiology /
+> EP / vascular / lipids). Adds **4** deterministic heart-failure prognosis,
+> HFpEF-likelihood, and cardiogenic-shock mortality instruments that fill confirmed
+> gaps. None duplicates a live tile.
 >
-> Catalog effect: **437 + 5 = 442 tiles.**
+> Catalog effect: **437 + 4 = 441 tiles.**
+>
+> **Implementation note (2026-06-18): `gwtg-hf` (§2.2) is DEFERRED, not shipped.**
+> The four other tiles' coefficients were re-fetched and cross-verified from ≥ 2
+> independent sources each (the [spec-v97](spec-v97.md) "re-fetch, never recall"
+> rule). `gwtg-hf`'s **per-variable integer point table** (the discrete band points
+> for systolic BP, BUN, sodium, age, and heart rate) could **not** be verified from
+> any reachable primary or high-quality secondary source this session: the Peterson
+> 2010 paper and the medRxiv reproduction return HTTP 403, MDCalc/ClinCalc implement
+> the score as a **continuous nomogram** (free numeric inputs, no published discrete
+> bands), `mdapp`'s table page now 404s, and a sub-agent's fully-populated grid was
+> flagged as fabricated. Only the variable *ranges/maxima* (age/SBP/BUN 0–28, HR 0–8,
+> sodium 0–4, COPD +2, non-Black race +3, total 0–100) and the score→mortality band
+> table (9 groups, 0–33 → < 1% up to ≥ 79 → > 50%) are corroborated. Shipping the
+> point assignments would mean fabricating medical scoring weights, which this catalog
+> does not do. A future session with institutional access to Peterson 2010 Figure 2
+> (or its supplement) should add `gwtg-hf` as a standalone +1; the id stays reserved.
 >
 > Every prior spec (v4 through v100) remains in force. v102 adds no runtime network
 > call and no AI; each tile obeys the [spec-v100](spec-v100.md) §2 doctrine (which
@@ -52,7 +68,7 @@ them onto the page.
 - **Output:** the **integer MAGGIC point total** and the published **1-year and
   3-year mortality (%)** lookup. Class A (fixed 2013 integer-point model).
 
-### 2.2 `gwtg-hf` — Get With The Guidelines Heart Failure Risk Score
+### 2.2 `gwtg-hf` — Get With The Guidelines Heart Failure Risk Score — **DEFERRED (see implementation note above)**
 
 - **Citation:** Peterson PN, Rumsfeld JS, Liang L, et al. A validated risk score for
   in-hospital mortality in patients with heart failure from the American Heart
