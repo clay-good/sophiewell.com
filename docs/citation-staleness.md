@@ -380,3 +380,22 @@ deliberately retained, not missed.
 |---|---|---|---|---|---|
 | denver-bcvi | Expanded Denver Criteria for blunt-cerebrovascular-injury (BCVI) CT-angiography screening | Burlew 2012 expanded screening criteria (J Trauma Acute Care Surg 72(2):330-337) | same | 2026-06-18 | current -- the 2012 Burlew expanded Denver criteria are the canonical BCVI screening set; Class B, review on-publication of the next EAST/society screening-criteria revision. The six signs/symptoms and six high-energy-mechanism risk factors are the published items (documentation only -- does not match the issuer pattern) |
 | aast-organ-injury | AAST solid-organ injury scale (spleen / liver / kidney), 2018 revision | Kozar 2018 OIS update (J Trauma Acute Care Surg 85(6):1119-1122) | same | 2026-06-18 | current -- the 2018 AAST update is the latest spleen/liver/kidney OIS; Class B, review on-publication of the next AAST revision. The grade I-V thresholds and the 2018 contained-vs-extending vascular rule are the published Tables 1-3 values (documentation only -- does not match the issuer pattern) |
+
+## spec-v110 toxicology dosing & dialysis-decision tools (added 2026-06-18)
+
+Fifth Wave-2 feature spec of the spec-v100 MDCalc Parity Completion program.
+Four of the five tiles are Class A fixed-formula dosing instruments whose
+citations name the journal and authors and do not match the check-citations
+issuer pattern, so they carry no row: `digifab-dosing` (the Smith 1982 /
+product-label body-burden vial formulas), `nac-dosing` (the Prescott 1979 /
+Bateman 2014 weight-based bag doses), `hiet-dosing` (the Engebretsen 2011
+bolus + infusion), and `tca-bicarbonate` (the Boehnert 1985 QRS thresholds and
+the 1-2 mEq/kg bicarbonate target). The tile below is Class B: the EXTRIP
+workgroup recommendations are revisable, so the row records the edition in force
+and an on-publication review cadence for the check-citation-cadence warn-job.
+The citation names the journal and authors and does not match the issuer
+acronym set, so the row is documentation only, not gate-forced.
+
+| tile id | instrument | edition shipped | latest known edition | accessed | justification if behind |
+|---|---|---|---|---|---|
+| lithium-extrip | Lithium extracorporeal-treatment (ECTR / dialysis) decision tree | Decker 2015 EXTRIP workgroup recommendations (Clin J Am Soc Nephrol 10(5):875-887) | same | 2026-06-18 | current -- the 2015 EXTRIP lithium recommendations are the latest workgroup consensus; Class B, review on-publication of the next EXTRIP update. The recommended / suggested decision limbs (life-threatening features, renal impairment with level above 4.0, level above 5.0, confusion, slow clearance) are the published recommendations (documentation only -- does not match the issuer pattern) |

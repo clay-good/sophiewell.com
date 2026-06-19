@@ -1,12 +1,19 @@
 # spec-v110.md — Toxicology dosing & dialysis decisions: DigiFab, NAC, HIET, TCA bicarbonate, and lithium EXTRIP (+5 tiles)
 
-> Status: **PROPOSED (2026-06-17).** Feature spec of the [spec-v100](spec-v100.md)
+> Status: **SHIPPED (2026-06-18).** Feature spec of the [spec-v100](spec-v100.md)
 > MDCalc Parity Completion program, **Wave 2 — Emergency / trauma / toxicology /
 > environmental** ([spec-v106](spec-v106.md)–[spec-v111](spec-v111.md)). Adds **5**
 > deterministic toxicology dosing and dialysis-decision tools that fill confirmed
 > gaps. None duplicates a live tile.
 >
-> Catalog effect at v110 close: **479 + 5 = 484 tiles** (v109 closed at 479).
+> Catalog effect at v110 close: **478 + 5 = 483 tiles** (v109 closed at 478, one
+> below the spec's projected 479 — the program's running count was off by one at
+> authoring time; the acceptance criteria's "then-current live count + 5" governs).
+> Implemented in `lib/tox-v110.js` (`digifabDosing`, `nacDosing`, `hietDosing`,
+> `tcaBicarbonate`, `lithiumExtrip`) + `views/group-v35.js` (`RV35`). The four
+> dosing tiles are Group F; `lithium-extrip` is Group G. lithium-extrip follows
+> the EXTRIP **source** over the §2.5 prose: the "expected time > 36 h" limb is a
+> **suggested** limb (with level > 5.0 and confusion), not a recommended one.
 >
 > Every prior spec (v4 through v109) remains in force. v110 adds no runtime network
 > call and no AI; each tile obeys the [spec-v100](spec-v100.md) §2 doctrine (which

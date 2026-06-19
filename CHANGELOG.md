@@ -6,6 +6,43 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v110: toxicology dosing & dialysis decisions, +5 — spec-v100 Wave 2)
+
+- **Fifth feature spec of Wave 2** of the [spec-v100](docs/spec-v100.md) MDCalc
+  Parity Completion program. Five deterministic **toxicology dosing and
+  dialysis-decision tools** (catalog **478 → 483**), via `lib/tox-v110.js` +
+  `views/group-v35.js` (`RV35`). The four dosing tiles are Group F (Medication &
+  Infusion); `lithium-extrip` is a Group G decision tree. Each dosing tile
+  renders the spec-v100 §2 clause-5 high-stakes second-check caveat in its
+  output. None duplicates a live tile; each fills a confirmed gap beside the
+  existing `acetaminophen-nomogram` / `serotonin-toxicity` / `salicylate-toxicity`
+  / `toxic-alcohol` poisoning surface. No new specialty tag.
+  - **`digifab-dosing`** — Digoxin immune Fab (DigiFab) vial count (Smith TW,
+    et al, *N Engl J Med* 1982; product label): by amount ingested
+    (vials = mg × 0.8 / 0.5, rounded up), by steady-state serum level
+    (vials = level × weight / 100, rounded up), or empiric (acute 10–20, chronic
+    3–6 vials). **Class A**.
+  - **`nac-dosing`** — weight-based IV N-acetylcysteine (Prescott LF, et al,
+    *BMJ* 1979 three-bag; Bateman DN, et al, *Lancet* 2014 two-bag SNAP): the
+    three-bag 21-hour or two-bag SNAP per-bag mg doses with the 110-kg dosing-
+    weight cap applied and shown. **Class A**. Cross-links `acetaminophen-nomogram`.
+  - **`hiet-dosing`** — high-dose insulin euglycemia therapy (Engebretsen KM,
+    et al, *Clin Toxicol* 2011): regular-insulin bolus 1 unit/kg, infusion start
+    1 unit/kg/hr titratable to a 10 unit/kg/hr ceiling (the entered rate is
+    clamped to the ceiling), paired with a dextrose infusion. **Class A**.
+  - **`tca-bicarbonate`** — TCA-toxicity QRS risk band and sodium-bicarbonate
+    target (Boehnert MT, Lovejoy FH, *N Engl J Med* 1985): QRS ≥ 100 ms predicts
+    seizures, ≥ 160 ms predicts ventricular arrhythmias; bolus 1–2 mEq/kg from
+    weight, target serum pH 7.45–7.55. **Class A**.
+  - **`lithium-extrip`** — lithium extracorporeal-treatment decision (Decker BS,
+    et al; EXTRIP Workgroup, *Clin J Am Soc Nephrol* 2015): ECTR recommended for
+    life-threatening features (any level) or impaired renal function with level
+    > 4.0 mmol/L; suggested for level > 5.0 mmol/L, confusion, or slow clearance.
+    Names the firing limb. **Class B** ([docs/citation-staleness.md](docs/citation-staleness.md)
+    row). NOTE: the spec draft conflated the "expected time > 36 h" limb into the
+    recommended set; the implementation follows the EXTRIP source, which places it
+    (with level > 5.0 and confusion) in the **suggested** set.
+
 ### Added (spec-v109: trauma classification & soft-tissue infection, +5 — spec-v100 Wave 2)
 
 - **Fourth feature spec of Wave 2** of the [spec-v100](docs/spec-v100.md) MDCalc

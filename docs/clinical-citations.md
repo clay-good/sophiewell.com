@@ -1665,3 +1665,59 @@ A total of 2 or below means cellulitis is unlikely, 3-4 is indeterminate, and 5 
 above means cellulitis is likely.
 Worked example: asymmetry plus leukocytosis plus tachycardia gives a score of 5,
 cellulitis likely.
+
+### Digoxin immune Fab (DigiFab) dosing
+Citation: Smith TW, Butler VP Jr, Haber E, et al. Treatment of life-threatening
+digitalis intoxication with digoxin-specific Fab antibody fragments: experience
+in 26 cases. N Engl J Med. 1982;307(22):1357-1362.
+Rule: by amount ingested, vials = amount (mg) times 0.8 bioavailability divided
+by 0.5 mg digoxin bound per vial; by steady-state serum level, vials = level
+(ng/mL) times weight (kg) divided by 100; empiric is 10-20 vials for an acute
+ingestion and 3-6 vials for chronic toxicity. Vials are rounded up to the next
+whole vial.
+Worked example: a steady-state level of 4.5 ng/mL at 70 kg gives 3.15, rounded
+up to 4 vials.
+
+### Acetaminophen N-acetylcysteine (NAC) IV dosing
+Citation: Prescott LF, Illingworth RN, Critchley JA, Stewart MJ, Adam RD,
+Proudfoot AT. Intravenous N-acetylcysteine: the treatment of choice for
+paracetamol poisoning. BMJ. 1979;2(6198):1097-1100; two-bag SNAP regimen per
+Bateman DN, et al. Lancet. 2014;383:697-704.
+Rule: the three-bag 21-hour regimen is 150 mg/kg over 1 h, then 50 mg/kg over
+4 h, then 100 mg/kg over 16 h; the two-bag SNAP regimen is 200 mg/kg over 4 h,
+then 100 mg/kg over 16 h. The dosing weight is capped at 110 kg.
+Worked example: a 120 kg patient on the three-bag regimen is dosed at 110 kg,
+giving bag doses of 16500, 5500, and 11000 mg.
+
+### High-dose insulin euglycemia therapy (HIET) dosing
+Citation: Engebretsen KM, Kaczmarek KM, Morgan J, Holger JS. High-dose insulin
+therapy in beta-blocker and calcium channel-blocker poisoning. Clin Toxicol
+(Phila). 2011;49(4):277-283.
+Rule: a regular-insulin bolus of 1 unit/kg, then an infusion starting at
+1 unit/kg/hr titratable to a 10 unit/kg/hr ceiling, paired with a dextrose
+infusion to maintain euglycemia.
+Worked example: an 80 kg patient receives an 80-unit bolus, an 80 units/hr
+starting infusion, and an 800 units/hr titration ceiling.
+
+### TCA toxicity: QRS risk and sodium-bicarbonate target
+Citation: Boehnert MT, Lovejoy FH Jr. Value of the QRS duration versus the serum
+drug level in predicting seizures and ventricular arrhythmias after an acute
+overdose of tricyclic antidepressants. N Engl J Med. 1985;313(8):474-479.
+Rule: a maximal limb-lead QRS at or above 100 ms predicts seizures and a QRS at
+or above 160 ms predicts ventricular arrhythmias; treat QRS widening with a
+sodium-bicarbonate bolus of 1-2 mEq/kg targeting a serum pH of 7.45-7.55.
+Worked example: a QRS of 120 ms at 70 kg falls in the seizure-risk band with a
+70-140 mEq bicarbonate bolus.
+
+### Lithium dialysis decision (EXTRIP)
+Citation: Decker BS, Goldfarb DS, Dargan PI, et al; EXTRIP Workgroup.
+Extracorporeal treatment for lithium poisoning: systematic review and
+recommendations from the EXTRIP workgroup. Clin J Am Soc Nephrol.
+2015;10(5):875-887.
+Rule: extracorporeal treatment is recommended for decreased consciousness,
+seizures, or life-threatening dysrhythmias at any level, or for impaired kidney
+function with a level above 4.0 mmol/L; it is suggested for a level above
+5.0 mmol/L, significant confusion, or an expected time to a level below
+1.0 mmol/L beyond 36 hours.
+Worked example: a level of 4.5 mmol/L with impaired kidney function is a
+recommended indication.

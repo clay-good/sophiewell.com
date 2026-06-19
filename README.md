@@ -5,7 +5,7 @@
 <h1 align="center">sophiewell.com</h1>
 
 <p align="center">
-  <strong>478 deterministic healthcare calculators tuned to the nurse on shift.</strong><br>
+  <strong>483 deterministic healthcare calculators tuned to the nurse on shift.</strong><br>
   Free forever. No servers, no accounts, no telemetry, no AI, no network call after first paint.
 </p>
 
@@ -36,7 +36,7 @@ output; "searchable lookup of static facts" does not qualify. See
 [docs/spec-v10.md](docs/spec-v10.md) for the audience and
 dependency-budget commitments and
 [docs/spec-v29.md](docs/spec-v29.md) for the nurse-first pivot
-and the v29 catalog ledger. At v109 close the catalog is 478
+and the v29 catalog ledger. At v110 close the catalog is 483
 deterministic tiles — every one of them computes from at least
 one user input. The catalog reached its present size on two tracks.
 **New tiles:** spec-v63 added the operations counterpart to the bedside
@@ -186,7 +186,7 @@ production security headers. Any static file server will also work.
 ## How it works and how to use it
 
 Since the spec-v29 nurse-first prune the catalog has grown one
-reviewable spec at a time to **478** deterministic calculators
+reviewable spec at a time to **483** deterministic calculators
 (the full per-version history is in [CHANGELOG.md](CHANGELOG.md)
 and `docs/spec-v*.md`; the most recent bedside additions are
 summarized in the cheat sheets below). They organize across the
@@ -1023,7 +1023,7 @@ Duke-ISCVID) and `refeeding-risk` (NICE CG32) are **Class B** with
 [citation-staleness](docs/citation-staleness.md) rows; the other three are
 **Class A**. See [docs/spec-v99.md](docs/spec-v99.md).
 
-### MDCalc parity completion: the cardiology / vascular / lipid surface (spec-v100 program, Wave 1: spec-v101 → spec-v105, +25 → 457, **complete**; Wave 2 open: spec-v106 → 463, spec-v107 → 467, spec-v108 → 473, spec-v109 → 478)
+### MDCalc parity completion: the cardiology / vascular / lipid surface (spec-v100 program, Wave 1: spec-v101 → spec-v105, +25 → 457, **complete**; Wave 2 open: spec-v106 → 463, spec-v107 → 467, spec-v108 → 473, spec-v109 → 478, spec-v110 → 483)
 
 With the spec-v85 program complete, [spec-v100](docs/spec-v100.md) charters the
 **MDCalc Parity Completion** program — a roadmap that closes the remaining gaps
@@ -1285,6 +1285,37 @@ edition in force); the other three are **Class A**. None authors a CTA,
 debridement, antibiotic, or amputation order — the `mangled-extremity` posture note
 states explicitly that the score informs, never dictates, the salvage decision.
 `lib/traumaclass-v109.js` + `views/group-v34.js`.
+
+#### spec-v110 — Toxicology dosing & dialysis decisions (+5 → 483)
+
+Wave 2 continues with five standard **poison-center / ED toxicology dosing and
+dialysis-decision tools**. The catalog carried the `acetaminophen-nomogram`
+treatment line and the `serotonin-toxicity` / `salicylate-toxicity` /
+`toxic-alcohol` decision rules, but the high-frequency *dosing* math a clinician
+does by hand at the bedside was absent. spec-v110 adds it — the four dosing
+instruments in Group F (Medication & Infusion), the dialysis decision in Group G:
+
+| id | Group | Rule | Output | Class |
+|---|---|---|---|---|
+| `digifab-dosing` | F | Smith 1982 / product label: vials by amount ingested (mg × 0.8 / 0.5), steady-state level (level × weight / 100), or empiric | **whole vials, rounded up**, formula shown | A |
+| `nac-dosing` | F | Prescott 1979 three-bag (150/50/100 mg/kg) or Bateman 2014 two-bag SNAP (200/100 mg/kg), dosing weight capped at 110 kg | **per-bag mg + durations**, cap applied & shown | A |
+| `hiet-dosing` | F | Engebretsen 2011: bolus 1 unit/kg, infusion 1 unit/kg/hr → **10 unit/kg/hr ceiling** | **bolus + infusion units**, entered rate clamped to the ceiling | A |
+| `tca-bicarbonate` | F | Boehnert 1985: QRS ≥ 100 ms seizures, ≥ 160 ms ventricular arrhythmias | **risk band + 1–2 mEq/kg bolus**, target pH 7.45–7.55 | A |
+| `lithium-extrip` | G | Decker 2015 EXTRIP: life-threatening features / renal + level > 4.0 / level > 5.0 / confusion / slow clearance | **ECTR recommended / suggested / not indicated**, firing limb named | B |
+
+**Every dosing tile renders the high-stakes second-check caveat** (the spec-v100
+§2 clause-5 requirement): the tile computes the figure, but the indication,
+timing, and route stay with the clinician, poison center, and local protocol.
+**Formulas re-fetched, never recalled (the spec-v97 rule).** Two source-governance
+catches: (1) the NAC **110-kg dosing-weight cap** is a `Math.min` that clamps a
+120-kg patient's bag doses to the 110-kg values (16500 / 5500 / 11000 mg on the
+three-bag regimen) and the band says so; (2) `lithium-extrip` follows the EXTRIP
+**source over the spec prose** — the spec draft put the "expected time to a level
+< 1.0 mmol/L exceeds 36 h" limb in the *recommended* set, but Decker 2015 places
+it (with level > 5.0 and confusion) in the **suggested** set, so the tile does
+too. `lithium-extrip` is **Class B** (a `docs/citation-staleness.md` row records
+the EXTRIP 2015 edition in force); the four dosing tiles are **Class A**.
+`lib/tox-v110.js` + `views/group-v35.js`.
 
 ### Billing & reimbursement: what Medicare pays, whether the line survives, how the visit codes, what the drug bills, what the patient owes, and whether the claim is clean (spec-v77 → spec-v83, program complete)
 
@@ -1609,7 +1640,7 @@ long version, see [docs/architecture.md](docs/architecture.md).
  │  manifests (data/)            │  static │        ▼                     ▼             │
  │        │  scripts/build       │  files  │   lazy-load data shard   pure compute      │
  │        ▼                      │         │   (verified vs manifest)  (lib/*.js)       │
- │  dist/  (478 tool pages,      │         │        │                     │             │
+ │  dist/  (483 tool pages,      │         │        │                     │             │
  │  OG cards, sitemap, SBOM)     │         │        ▼                     ▼             │
  └───────────────────────────────┘         │   service worker cache    result + cite   │
                                             │   (keyed to build hash)                    │
@@ -1631,7 +1662,7 @@ assets:
 
 | Output | Count | Source |
 |--------|------:|--------|
-| Pre-rendered tool pages (`dist/tools/<id>/`) | 478 | `scripts/build-tool-pages.mjs` |
+| Pre-rendered tool pages (`dist/tools/<id>/`) | 483 | `scripts/build-tool-pages.mjs` |
 | Audience hub pages (`dist/for/<audience>/`) | 6 | `scripts/build-hub-pages.mjs` |
 | Topic pages + `/topics/` index | 8 + 1 | `scripts/build-topic-pages.mjs` |
 | `/commitments/` | 1 | `scripts/build-commitments-page.mjs` |
@@ -1666,7 +1697,7 @@ static pages, so a tile can never ship mobile overflow undetected.
 index.html          single-page shell (hero-search combobox + static browse-by-category nav, tile mount)
 styles.css          one stylesheet (responsive; no horizontal scroll — enforced catalog-wide at 320px in CI)
 app.js              router, hero-search wiring, view wiring, the UTILITIES catalog
-                    (478 tiles — the single source of truth; zero runtime deps)
+                    (483 tiles — the single source of truth; zero runtime deps)
 sw.js               service worker — precache shell, cache shards by build hash
 theme.js            light/dark theme toggle (writes only sw-theme, allowlisted)
 lib/input-persist.js opt-in "remember my inputs" (off by default; numbers only)
@@ -1684,12 +1715,12 @@ docs/               specs (spec-v4 onward) + per-tile v11/v12 audit logs +
                     citation-staleness ledger +
                     architecture / threat-model / …
 test/               unit/ (node:test) · integration/ (Playwright) · fixtures/
-dist/               build output (478 tool pages, OG cards, sitemap, SBOM)
+dist/               build output (483 tool pages, OG cards, sitemap, SBOM)
 ```
 
-### Discovery: how a query finds the right tool among 478
+### Discovery: how a query finds the right tool among 483
 
-With 478 tiles, search quality *is* the product — a tool you cannot find does
+With 483 tiles, search quality *is* the product — a tool you cannot find does
 not exist. Discovery is deterministic and offline (no fuzzy-match service, no
 embedding model, no AI). The home `#hero-search` combobox builds its dropdown
 from two complementary rankers, both pure functions of the typed query:
@@ -1762,10 +1793,10 @@ A login-less, AI-free calculator earns trust only if the nurse can see, on the
 tile, exactly which published source produced the number — and tell whether that
 source is current. spec-v54 defined the invariants; spec-v60 built the machinery
 (the gate, the ledger, and the `citationAccessed` convention) and extended it
-across the full 478-tile catalog, pinning the last three unpinned "current
+across the full 483-tile catalog, pinning the last three unpinned "current
 edition" phrases and re-verifying every guideline tile against its latest known
 edition. Three invariants make that auditable, each enforced by the
-`check-citations.mjs` lint gate (in the `npm run lint` chain) over all 478 tiles:
+`check-citations.mjs` lint gate (in the `npm run lint` chain) over all 483 tiles:
 
 | Invariant | Rule | Enforcement |
 |---|---|---|
@@ -2222,7 +2253,7 @@ rules, not soft preferences.
 | `npm run build`          | Copy static files into `dist/` for deployment                     |
 | `npm test`               | Run the full test suite (unit, a11y, grep, data integrity)        |
 | `npm run test:unit`      | Run Node's built-in unit tests (3,984 tests)                      |
-| `npm run test:e2e`       | Build `dist/`, then run Playwright integration tests against real browsers — incl. a full-catalog 320px no-horizontal-scroll sweep over both the SPA routes and the 478 pre-rendered static tool pages, the hub/topic/commitments pages, and the citation-wrap pin |
+| `npm run test:e2e`       | Build `dist/`, then run Playwright integration tests against real browsers — incl. a full-catalog 320px no-horizontal-scroll sweep over both the SPA routes and the 483 pre-rendered static tool pages, the hub/topic/commitments pages, and the citation-wrap pin |
 | `npm run test:a11y`      | Run accessibility checks on every utility view                    |
 | `npm run lint`           | ESLint + the CI gate chain: grep-check, output-safety, citation-integrity, catalog-truth, commitments, PA staleness, PA audit |
 | `npm run data:refresh`   | Re-fetch and re-shard every public dataset                        |
@@ -2306,7 +2337,7 @@ build, integrity-verified data shards) are documented in
 - [docs/spec-v11.md](docs/spec-v11.md) — correctness-floor spec:
   per-tile audit protocol, specialty-named groups, optional
   source-quoted `interpretation` field. Audit coverage is **complete
-  — 478/478 tiles** carry a committed per-tile audit log
+  — 483/483 tiles** carry a committed per-tile audit log
   (`docs/audits/v11/<id>.md` for the pre-v78 catalog;
   `docs/audits/v12/<id>.md` for the tiles added since — the
   spec-v78–v83 billing & coding program, the spec-v85
