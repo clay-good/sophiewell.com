@@ -2029,3 +2029,87 @@ medium three to four, and high five to seven, with derivation-cohort three-month
 mortality of about one and a half, seventeen, and forty-seven percent.
 Worked example: urea above eight, age seventy-four, non-purulent fluid,
 hospital-acquired, and albumin twenty-four sum to seven, the high band.
+
+### ASPECTS (Alberta Stroke Program Early CT Score)
+Citation: Barber PA, Demchuk AM, Zhang J, Buchan AM. Validity and reliability of
+a quantitative computed tomography score in predicting outcome of hyperacute
+stroke before thrombolytic therapy. Lancet. 2000;355(9216):1670-1674.
+Rule: ten middle-cerebral-artery-territory regions are graded on the baseline
+non-contrast CT -- caudate, lentiform nucleus, internal capsule, insular ribbon,
+and the cortical regions M1 through M6 -- and one point is subtracted from ten
+for each region with early ischemic change, so ten is a normal scan and zero is
+diffuse ischemia across the territory. The source dichotomizes at seven or below,
+where lower scores predict worse functional outcome and a higher risk of
+symptomatic hemorrhage after thrombolysis.
+Worked example: caudate, lentiform, and insula affected subtract three points for
+a score of seven, the worse-outcome band.
+
+### ICH Volume (ABC/2)
+Citation: Kothari RU, Brott T, Broderick JP, et al. The ABCs of measuring
+intracerebral hemorrhage volumes. Stroke. 1996;27(8):1304-1305.
+Rule: the hematoma volume in milliliters equals A times B times C divided by two,
+where A is the greatest diameter on the slice with the largest hemorrhage, B is
+the perpendicular diameter on that same slice, and C is the vertical extent (a
+measured craniocaudal diameter, or the number of slices with hemorrhage times the
+slice thickness), all measured in centimeters. A volume of thirty milliliters or
+more is the threshold the ICH Score counts as a point.
+Worked example: five by four by three centimeters gives thirty milliliters,
+meeting the thirty-milliliter ICH-score threshold.
+
+### DRAGON Score (post-tPA outcome)
+Citation: Strbian D, Meretoja A, Ahlhelm FJ, et al. Predicting outcome of IV
+thrombolysis-treated ischemic stroke patients: the DRAGON score. Neurology.
+2012;78(6):427-432.
+Rule: six items sum to a zero-to-ten total -- a hyperdense cerebral artery sign
+or early infarct signs on the baseline CT (neither zero, either plus one, both
+plus two), prestroke modified Rankin above one (plus one), age (under sixty-five
+scores zero, sixty-five to seventy-nine plus one, eighty or older plus two),
+baseline glucose above eight (plus one), onset-to-treatment time above ninety
+minutes (plus one), and baseline NIHSS (zero to four scores zero, five to nine
+plus one, ten to fifteen plus two, sixteen or more plus three). The derivation
+reports good outcome at about ninety-six percent for the lowest scores and zero
+at the highest, with miserable outcome dominating at eight and above.
+Worked example: both CT signs, prestroke Rankin above one, age eighty-two, high
+glucose, late treatment, and a high NIHSS sum to ten, the miserable band.
+
+### HAT Score (hemorrhage after thrombolysis)
+Citation: Lou M, Safdar A, Mehdiratta M, et al. The HAT Score: a simple grading
+scale for predicting hemorrhage after thrombolysis. Neurology.
+2008;71(18):1417-1423.
+Rule: three items sum to a zero-to-five total -- baseline NIHSS (under fifteen
+scores zero, fifteen to twenty plus one, above twenty plus two), hypodensity on
+the initial CT (none zero, up to one third of the MCA territory plus one, more
+than one third plus two), and a history of diabetes or admission glucose above
+two hundred (plus one). The derivation reports the symptomatic-hemorrhage rate as
+two percent at zero points, five at one, ten at two, fifteen at three, and
+forty-four above three.
+Worked example: a high NIHSS, hypodensity over one third of the MCA territory, and
+diabetes sum to five, a symptomatic-hemorrhage risk of about forty-four percent.
+
+### SEDAN Score (post-tPA symptomatic ICH)
+Citation: Strbian D, Engelter S, Michel P, et al. Symptomatic intracranial
+hemorrhage after stroke thrombolysis: the SEDAN score. Ann Neurol.
+2012;71(5):634-641.
+Rule: five items sum to a zero-to-six total -- baseline blood glucose (eight or
+below scores zero, just above eight to twelve plus one, above twelve plus two,
+in millimoles per liter), early infarct signs on the admission CT (plus one), a
+hyperdense cerebral artery sign (plus one), age above seventy-five (plus one),
+and baseline NIHSS of ten or more (plus one). The derivation reports the
+symptomatic-hemorrhage rate rising across the scale from about one and a half
+percent at zero to about thirty-three percent at the top stratum of five.
+Worked example: very high glucose, early infarct signs, a dense artery sign, age
+eighty, and a NIHSS of ten or more sum to six, the highest-risk band.
+
+### THRIVE Score (stroke outcome)
+Citation: Flint AC, Cullen SP, Faigeles BS, Rao VA. Predicting long-term outcome
+after endovascular stroke treatment: the totaled health risks in vascular events
+(THRIVE) score. AJNR Am J Neuroradiol. 2010;31(7):1192-1196.
+Rule: the score sums baseline NIHSS (ten or below scores zero, eleven to twenty
+plus two, twenty-one or more plus four), age (fifty-nine or below scores zero,
+sixty to seventy-nine plus one, eighty or more plus two), and a chronic-disease
+count of hypertension, diabetes, and atrial fibrillation (plus one each), for a
+zero-to-nine total. The derivation reports good outcome of about sixty-five
+percent with low mortality in the low band and about eleven percent with high
+mortality in the high band; the middle band is intermediate.
+Worked example: a high NIHSS, age eighty-two, and all three chronic diseases sum
+to nine, the high-risk band.

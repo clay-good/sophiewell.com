@@ -6,6 +6,57 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v117: stroke imaging & thrombolysis prognosis, +6 — opens spec-v100 Wave 4)
+
+- **Wave 4 (Neurology / neurosurgery / psychiatry)** of the
+  [spec-v100](docs/spec-v100.md) MDCalc Parity Completion program **opens**. Six
+  deterministic **acute-stroke imaging-prognosis and thrombolysis-risk
+  instruments** (catalog **506 → 512**), via `lib/neuro-v117.js` +
+  `views/group-v117.js` (`RV117`). Five home in **Clinical Scoring & Risk
+  (Group G)**; `ich-volume-abc2` is **Clinical Math & Conversions (Group E)**.
+  Each takes the clinician's imaging *read* (regions affected, diameters
+  measured, hyperdensity/hypodensity present) — v117 parses no DICOM, no pixels,
+  no radiology report — and renders the spec-v50 §3 clinical-posture note (the
+  tile reports the score / volume and the source's risk framing; the
+  thrombolysis / thrombectomy / surveillance / surgical decision stays with the
+  stroke team). None duplicates a live tile. No new specialty tag. The four
+  point-sum scores **re-fetch the published point tables and outcome bands
+  verbatim** and cross-verify them across the derivation papers, MDCalc, and PMC
+  reproductions (spec-v97 discipline).
+  - **`aspects`** — Alberta Stroke Program Early CT Score (Barber PA, et al,
+    *Lancet* 2000): 10 minus one point per affected MCA-territory region (caudate,
+    lentiform, internal capsule, insula, M1–M6), clamped 0–10; the source
+    dichotomizes at ≤ 7 (worse outcome, higher symptomatic-hemorrhage risk).
+    **Class B** — an imaging-read convention applied through evolving reperfusion
+    guidelines, so it carries a documentation-only
+    [docs/citation-staleness.md](docs/citation-staleness.md) row.
+  - **`ich-volume-abc2`** — ABC/2 hematoma volume (Kothari RU, et al, *Stroke*
+    1996): volume (mL) = A × B × C / 2 with the three orthogonal CT diameters in
+    cm; ≥ 30 mL is flagged as the `ich-score` threshold. Diameters non-negative,
+    finite-guarded. Class A.
+  - **`dragon-stroke`** — DRAGON score (Strbian D, et al, *Neurology* 2012): CT
+    dense-artery/early-infarct (0/+1/+2) + prestroke mRS > 1 (+1) + age
+    (0/+1/+2) + glucose > 8 mmol/L (+1) + onset-to-treatment > 90 min (+1) +
+    NIHSS (0/+1/+2/+3), total 0–10. **NO-FABRICATION:** the derivation publishes
+    outcome only for the grouped extremes (0–1 ~96% good, 8–10 0% good /
+    ~89–97% miserable), so the tile bands 0–3 favorable / 4–7 intermediate /
+    8–10 miserable and invents no middle-band rate. Class A.
+  - **`hat-score`** — Hemorrhage After Thrombolysis (Lou M, et al, *Neurology*
+    2008): NIHSS (<15/15–20/>20 = 0/+1/+2) + CT hypodensity (none/≤1/3/>1/3 MCA =
+    0/+1/+2) + diabetes or glucose > 200 mg/dL (+1), total 0–5. Symptomatic-ICH
+    series **verbatim**: 2% / 5% / 10% / 15% / 44%. Class A.
+  - **`sedan-score`** — SEDAN score (Strbian D, et al, *Ann Neurol* 2012):
+    glucose (≤8.0/8.1–12.0/>12.0 mmol/L = 0/+1/+2) + early infarct (+1) + dense
+    artery (+1) + age > 75 (+1) + NIHSS ≥ 10 (+1), total 0–6. sICH series
+    **verbatim**: 1.4% / 2.9% / 8.5% / 12.2% / 21.7% / 33.3%. Class A.
+  - **`thrive-stroke`** — THRIVE score (Flint AC, et al, *AJNR* 2010): NIHSS
+    (≤10/11–20/≥21 = 0/+2/+4) + age (≤59/60–79/≥80 = 0/+1/+2) + 1 each for
+    hypertension, diabetes, atrial fibrillation, total 0–9. Published extreme
+    bands (0–2: 64.7% good / 5.9% mortality; 6–9: 10.6% / 56.4%); the middle
+    band (3–5) is intermediate with no fabricated percentage. Class A.
+  - **Wave 4 opens:** with v117 the program reaches **512** tiles (506 → 512,
+    +6). v116 stays reserved.
+
 ### Added (spec-v115: pulmonary nodule, PH & pleural infection, +5 — closes spec-v100 Wave 3)
 
 - **Wave 3 (Critical care & pulmonary)** of the [spec-v100](docs/spec-v100.md)

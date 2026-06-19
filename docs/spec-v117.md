@@ -1,11 +1,19 @@
 # spec-v117.md — Stroke imaging & thrombolysis prognosis: ASPECTS, ICH volume (ABC/2), DRAGON, HAT, SEDAN, and THRIVE (+6 tiles)
 
-> Status: **PROPOSED (2026-06-17).** Feature spec of the [spec-v100](spec-v100.md)
+> Status: **SHIPPED (2026-06-19).** Feature spec of the [spec-v100](spec-v100.md)
 > MDCalc Parity Completion program, **Wave 4 (Neurology / neurosurgery / psychiatry)**.
 > Opens the wave with **6** deterministic acute-stroke imaging-prognosis and
 > thrombolysis-risk instruments that fill confirmed gaps. None duplicates a live tile.
+> Implemented in `lib/neuro-v117.js` + `views/group-v117.js` (`RV117`), with the
+> DRAGON / HAT / SEDAN / THRIVE point tables and outcome bands re-fetched and
+> cross-verified at implementation (the §2 estimates held; DRAGON's 4–7 and
+> THRIVE's 3–5 middle bands are reported as *intermediate* with no fabricated
+> per-score rate, since the derivations do not publish those values).
 >
-> Catalog effect at v117 close: **507 + 6 = 513 tiles.**
+> Catalog effect at v117 close: the running catalog count was one below the spec
+> draft's projection (the program count carries the known off-by-one; the
+> catalog-truth gate governs), so v117 ships **506 → 512**, not the draft's
+> 507 → 513.
 >
 > Every prior spec (v4 through v116) remains in force. v117 adds no runtime network
 > call and no AI; each tile obeys the [spec-v100](spec-v100.md) §2 doctrine (which

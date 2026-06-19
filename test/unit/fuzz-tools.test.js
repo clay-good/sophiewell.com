@@ -114,6 +114,7 @@ import * as critcareV112 from '../../lib/critcare-v112.js';
 import * as fluidrespV113 from '../../lib/fluidresp-v113.js';
 import * as pulmV114 from '../../lib/pulm-v114.js';
 import * as pulmnodV115 from '../../lib/pulmnod-v115.js';
+import * as neuroV117 from '../../lib/neuro-v117.js';
 
 const MODULES = {
   'clinical.js': clinical,
@@ -172,6 +173,7 @@ const MODULES = {
   'fluidresp-v113.js': fluidrespV113,
   'pulm-v114.js': pulmV114,
   'pulmnod-v115.js': pulmnodV115,
+  'neuro-v117.js': neuroV117,
 };
 
 const MATRIX = [0, -1, 1e9, NaN, Infinity, -Infinity, '', undefined, null];

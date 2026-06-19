@@ -46,6 +46,7 @@ import { renderers as RV37 } from './views/group-v37.js';
 import { renderers as RV38 } from './views/group-v38.js';
 import { renderers as RV39 } from './views/group-v39.js';
 import { renderers as RV40 } from './views/group-v40.js';
+import { renderers as RV117 } from './views/group-v117.js';
 import { renderers as RV63 } from './views/group-v63.js';
 import { renderers as RB } from './views/group-b.js';
 import { renderers as RPALINT } from './views/pa-lint.js';
@@ -64,7 +65,7 @@ import { resolvePrompt } from './lib/prompt.js';
 // artifact-detect / artifact-route / artifact-handoff helpers were
 // deleted in spec-v29 wave 29-2 (Group C/L).
 
-const RENDERERS = { ...RA, ...RB, ...RC, ...RE, ...RF, ...RG, ...RH, ...RI, ...RJ, ...RKLMNO, ...RV5, ...RV6, ...RV7, ...RV8, ...RV9, ...RV10, ...RV11, ...RV12, ...RV13, ...RV14, ...RV15, ...RV16, ...RV17, ...RV18, ...RV19, ...RV20, ...RV21, ...RV22, ...RV23, ...RV24, ...RV25, ...RV26, ...RV27, ...RV28, ...RV29, ...RV30, ...RV31, ...RV32, ...RV33, ...RV34, ...RV35, ...RV36, ...RV37, ...RV38, ...RV39, ...RV40, ...RV63, ...RPALINT };
+const RENDERERS = { ...RA, ...RB, ...RC, ...RE, ...RF, ...RG, ...RH, ...RI, ...RJ, ...RKLMNO, ...RV5, ...RV6, ...RV7, ...RV8, ...RV9, ...RV10, ...RV11, ...RV12, ...RV13, ...RV14, ...RV15, ...RV16, ...RV17, ...RV18, ...RV19, ...RV20, ...RV21, ...RV22, ...RV23, ...RV24, ...RV25, ...RV26, ...RV27, ...RV28, ...RV29, ...RV30, ...RV31, ...RV32, ...RV33, ...RV34, ...RV35, ...RV36, ...RV37, ...RV38, ...RV39, ...RV40, ...RV117, ...RV63, ...RPALINT };
 
 // ----- Utility registry ----------------------------------------------------
 // Source of truth for routes, names, group, audiences, and clinical flag.
@@ -796,6 +797,23 @@ const UTILITIES = [
   { id: 'fleischner-2017',        name: 'Fleischner 2017 Nodule Follow-up',                 group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'reveal-lite-2',          name: 'REVEAL Lite 2 (PAH risk)',                         group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'rapid-pleural',          name: 'RAPID Score (pleural infection)',                  group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+
+  // spec-v117 (Wave 4 of spec-v100, opens Wave 4): six acute-stroke imaging-
+  // prognosis and thrombolysis-risk instruments the stroke team computes at the
+  // scanner -- the ASPECTS topographic NCCT score, the ABC/2 hematoma volume
+  // (Group E -- the volume the ich-score consumes), and the DRAGON / HAT /
+  // SEDAN / THRIVE post-tPA outcome and hemorrhage-risk scores. dragon-stroke,
+  // hat-score, sedan-score, thrive-stroke, and ich-volume-abc2 are Class A
+  // (fixed point weights / geometric formula, journal+author citations -- no
+  // staleness row); aspects is Class B (an imaging-read convention applied
+  // through evolving reperfusion guidelines, docs/citation-staleness.md row).
+  // views/group-v117.js, lib/neuro-v117.js.
+  { id: 'aspects',                name: 'ASPECTS (Alberta Stroke Program Early CT Score)',  group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'ich-volume-abc2',        name: 'ICH Volume (ABC/2)',                               group: 'E', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'dragon-stroke',          name: 'DRAGON Score (post-tPA outcome)',                  group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'hat-score',              name: 'HAT Score (hemorrhage after thrombolysis)',        group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'sedan-score',            name: 'SEDAN Score (post-tPA symptomatic ICH)',           group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'thrive-stroke',          name: 'THRIVE Score (stroke outcome)',                    group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
 
   // spec-v6 §3.3: lab result interpreter. Patient-decoder category.
   { id: 'lab-interpret',       name: 'Lab Result Interpreter',                           group: 'C', audiences: ['patients', 'clinicians', 'educators'], clinical: true },
