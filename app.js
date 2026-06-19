@@ -44,6 +44,7 @@ import { renderers as RV35 } from './views/group-v35.js';
 import { renderers as RV36 } from './views/group-v36.js';
 import { renderers as RV37 } from './views/group-v37.js';
 import { renderers as RV38 } from './views/group-v38.js';
+import { renderers as RV39 } from './views/group-v39.js';
 import { renderers as RV63 } from './views/group-v63.js';
 import { renderers as RB } from './views/group-b.js';
 import { renderers as RPALINT } from './views/pa-lint.js';
@@ -62,7 +63,7 @@ import { resolvePrompt } from './lib/prompt.js';
 // artifact-detect / artifact-route / artifact-handoff helpers were
 // deleted in spec-v29 wave 29-2 (Group C/L).
 
-const RENDERERS = { ...RA, ...RB, ...RC, ...RE, ...RF, ...RG, ...RH, ...RI, ...RJ, ...RKLMNO, ...RV5, ...RV6, ...RV7, ...RV8, ...RV9, ...RV10, ...RV11, ...RV12, ...RV13, ...RV14, ...RV15, ...RV16, ...RV17, ...RV18, ...RV19, ...RV20, ...RV21, ...RV22, ...RV23, ...RV24, ...RV25, ...RV26, ...RV27, ...RV28, ...RV29, ...RV30, ...RV31, ...RV32, ...RV33, ...RV34, ...RV35, ...RV36, ...RV37, ...RV38, ...RV63, ...RPALINT };
+const RENDERERS = { ...RA, ...RB, ...RC, ...RE, ...RF, ...RG, ...RH, ...RI, ...RJ, ...RKLMNO, ...RV5, ...RV6, ...RV7, ...RV8, ...RV9, ...RV10, ...RV11, ...RV12, ...RV13, ...RV14, ...RV15, ...RV16, ...RV17, ...RV18, ...RV19, ...RV20, ...RV21, ...RV22, ...RV23, ...RV24, ...RV25, ...RV26, ...RV27, ...RV28, ...RV29, ...RV30, ...RV31, ...RV32, ...RV33, ...RV34, ...RV35, ...RV36, ...RV37, ...RV38, ...RV39, ...RV63, ...RPALINT };
 
 // ----- Utility registry ----------------------------------------------------
 // Source of truth for routes, names, group, audiences, and clinical flag.
@@ -764,6 +765,21 @@ const UTILITIES = [
   { id: 'ivc-fluid-responsiveness', name: 'IVC Collapsibility / Distensibility Index',       group: 'E', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'ppv-svv',                name: 'Pulse-Pressure / Stroke-Volume Variation',         group: 'E', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'passive-leg-raise',      name: 'Passive Leg Raise Stroke-Volume Response',         group: 'E', audiences: ['clinicians', 'educators'], clinical: true },
+
+  // spec-v114 (Wave 3 of spec-v100): six pulmonary / sleep-medicine decision
+  // rules -- acute COPD-exacerbation prognosis, bronchiectasis severity, and
+  // sleep-disordered-breathing classification. All home in Clinical Scoring &
+  // Risk (Group G). decaf/bap-65/bronchiectasis-bsi/faced/nosas are Class A
+  // (fixed derivation-paper point weights, journal+author citations -- no
+  // staleness row); ahi-odi-severity is Class B (revisable AASM scoring
+  // criteria, docs/citation-staleness.md row). views/group-v39.js,
+  // lib/pulm-v114.js.
+  { id: 'decaf-score',            name: 'DECAF Score (acute COPD exacerbation)',            group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'bap-65',                 name: 'BAP-65 Score (acute COPD exacerbation)',           group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'bronchiectasis-bsi',     name: 'Bronchiectasis Severity Index (BSI)',              group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'faced-bronchiectasis',   name: 'FACED Score (bronchiectasis)',                     group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'nosas-score',            name: 'NoSAS Score (OSA screen)',                         group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'ahi-odi-severity',       name: 'AHI / ODI Severity Classifier',                    group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
 
   // spec-v6 §3.3: lab result interpreter. Patient-decoder category.
   { id: 'lab-interpret',       name: 'Lab Result Interpreter',                           group: 'C', audiences: ['patients', 'clinicians', 'educators'], clinical: true },

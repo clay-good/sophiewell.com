@@ -400,3 +400,23 @@ acronym set, so the row is documentation only, not gate-forced.
 |---|---|---|---|---|---|
 | lithium-extrip | Lithium extracorporeal-treatment (ECTR / dialysis) decision tree | Decker 2015 EXTRIP workgroup recommendations (Clin J Am Soc Nephrol 10(5):875-887) | same | 2026-06-18 | current -- the 2015 EXTRIP lithium recommendations are the latest workgroup consensus; Class B, review on-publication of the next EXTRIP update. The recommended / suggested decision limbs (life-threatening features, renal impairment with level above 4.0, level above 5.0, confusion, slow clearance) are the published recommendations (documentation only -- does not match the issuer pattern) |
 | szpilman-drowning | Szpilman drowning severity classification (grades 1-6 plus rescue / dead) | Szpilman 1997 classification (Chest 112(3):660-665, from 1,831 cases) | same | 2026-06-19 | current -- the 1997 Szpilman classification remains the reference drowning-severity grading; Class B, review on-publication of the next revision. The grade decision limbs (cough, auscultation, pulmonary edema, hypotension, respiratory / cardiac arrest) and the original-series mortality are the published classification (documentation only -- does not match the issuer pattern) |
+
+## spec-v114 COPD/bronchiectasis exacerbation & sleep (added 2026-06-19)
+
+Third feature spec of Wave 3 of the spec-v100 MDCalc Parity Completion program.
+Five of the six tiles are Class A fixed-point-weight instruments whose citations
+name the journal and authors (not a society) and do not match the check-citations
+issuer pattern, so they carry no row: `decaf-score` (the Steer 2012 five-item
+table and band mortality), `bap-65` (the Tabak 2009 class-from-count structure
+and per-class outcomes), `bronchiectasis-bsi` (the Chalmers 2014 nine-item
+weighted table), `faced-bronchiectasis` (the Martinez-Garcia 2014 five-item
+score), and `nosas-score` (the Marti-Soler 2016 point table). The tile below is
+Class B: the AASM apnea-hypopnea severity criteria are revisable, so the row
+records the edition in force and an on-publication review cadence for the
+check-citation-cadence warn-job. The citation names the society and the journal
+but does not match the issuer acronym set (AASM is not in the pattern), so the
+row is documentation only, not gate-forced.
+
+| tile id | instrument | edition shipped | latest known edition | accessed | justification if behind |
+|---|---|---|---|---|---|
+| ahi-odi-severity | AASM apnea-hypopnea-index obstructive-sleep-apnea severity bands (normal/mild/moderate/severe) + 3%-vs-4% ODI desaturation criterion | 1999 AASM Task Force "Chicago Criteria" (Sleep 22(5):667-689); AASM scoring-manual v2.0 (2012) recommended-hypopnea revision | same | 2026-06-19 | current -- the 1999 AASM severity bands remain the reference OSA classification and the 2012 v2.0 manual's 3%-or-arousal recommended hypopnea rule (vs the 4% CMS-acceptable rule) is the latest scoring revision; Class B, review on-publication of the next AASM scoring-manual update. The < 5 / 5-15 / 15-30 / >= 30 events-per-hour cut-points are stable (documentation only -- does not match the issuer pattern) |

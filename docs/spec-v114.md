@@ -1,12 +1,20 @@
 # spec-v114.md — COPD/bronchiectasis exacerbation & sleep: DECAF, BAP-65, BSI, FACED, NoSAS, and AHI/ODI severity (+6 tiles)
 
-> Status: **PROPOSED (2026-06-17).** Feature spec of the
+> Status: **SHIPPED (2026-06-19).** Feature spec of the
 > [spec-v100](spec-v100.md) **MDCalc Parity Completion** program, **Wave 3 —
 > Critical care & pulmonary** ([spec-v100 §4](spec-v100.md)). Adds **6**
 > deterministic pulmonary and sleep-medicine decision rules that fill confirmed
 > gaps. None duplicates a live tile.
 >
-> Catalog effect at v114 close: **496 + 6 = 502 tiles.**
+> Catalog effect at v114 close: **495 + 6 = 501 tiles.** (The live count at
+> implementation was 495, one below the 496 the spec drafts assumed — the
+> program's running narrative carried a known off-by-one; the catalog-truth gate
+> enforces the live `UTILITIES.length + 6`.)
+>
+> Implementation note: the source re-fetch corrected three spec-draft values
+> (FACED Extension scores at ≥ 3 lobes not ≥ 2; FACED Dyspnea at mMRC ≥ 3 not
+> ≥ 2; BSI uses the prior-2-year admission window and the MRC 1–5 dyspnea scale).
+> The shipped tiles follow the source.
 >
 > Every prior spec (v4 through v113) remains in force. v114 adds no runtime
 > network call and no AI; each tile obeys the [spec-v100 §2](spec-v100.md)

@@ -1874,3 +1874,85 @@ fluid responsiveness regardless of rhythm or ventilation mode. The baseline
 denominator is guarded above zero.
 Worked example: a baseline stroke volume of sixty rising to a peak of seventy-two
 is a twenty percent change, above the threshold.
+
+### DECAF Score (acute COPD exacerbation)
+Citation: Steer J, Gibson J, Bourke SC. The DECAF Score: predicting hospital
+mortality in exacerbations of chronic obstructive pulmonary disease. Thorax.
+2012;67(11):970-976.
+Rule: five items predict in-hospital mortality in a hospitalised acute COPD
+exacerbation -- extended MRC dyspnea grade (eMRCD 1 to 4 scores 0, 5a scores 1,
+5b scores 2), eosinopenia below 0.05 1, consolidation 1, acidemia pH below 7.30 1,
+and atrial fibrillation 1 -- for a total of 0-6. Derivation-cohort in-hospital
+mortality is low at 0-1 (1.4%), intermediate at 2 (8.4%), and high at 3-6 (34.6%).
+Worked example: eMRCD 5b with eosinopenia and acidemia sums to four, the high
+band.
+
+### BAP-65 Score (acute COPD exacerbation)
+Citation: Tabak YP, Sun X, Johannes RS, Gupta V, Shorr AF. Mortality and need for
+mechanical ventilation in acute exacerbations of chronic obstructive pulmonary
+disease: development and validation of a simple risk score. Arch Intern Med.
+2009;169(17):1595-1602.
+Rule: the class is built from the count of three acute variables -- BUN at or
+above 25, altered mental status, and pulse at or above 109 -- with age above 65
+splitting class I from II only when no acute variable is present. Class I is zero
+acute variables and age at or below 65; II is zero and age above 65; III is one;
+IV is two; V is all three. Derivation-cohort in-hospital mortality rises across
+the classes (0.3, 0.9, 2.1, 6.3, and 13.8 percent), and the need for mechanical
+ventilation climbs steeply at classes four and five.
+Worked example: an elevated BUN and altered mental status in a patient above 65
+is class four, about a six percent mortality.
+
+### Bronchiectasis Severity Index (BSI)
+Citation: Chalmers JD, Goeminne P, Aliberti S, et al. The bronchiectasis severity
+index. An international derivation and validation study. Am J Respir Crit Care Med.
+2014;189(5):576-585.
+Rule: nine weighted items -- age (below 50 scores 0, 50 to 69 scores 2, 70 to 79
+scores 4, at or above 80 scores 6), BMI (below 18.5 scores 2), FEV1 percent
+predicted (above 80 scores 0, 50 to 80 scores 1, 30 to 49 scores 2, below 30
+scores 3), a hospital admission in the prior two years (5), three or more
+exacerbations in the prior year (2), MRC dyspnea (4 scores 2, 5 scores 3),
+Pseudomonas colonization (3), other-organism colonization (1), and radiology
+(three or more lobes scores 1, cystic scores 1). Bands are low 0-4, intermediate
+5-8, and high at or above 9, with mortality and hospitalization risk rising across
+the bands.
+Worked example: an elderly underweight patient with reduced FEV1, frequent
+exacerbations, a recent admission, and Pseudomonas scores well into the high band.
+
+### FACED Score (bronchiectasis)
+Citation: Martinez-Garcia MA, de Gracia J, Vendrell Relat M, et al.
+Multidimensional approach to non-cystic-fibrosis bronchiectasis: the FACED score.
+Eur Respir J. 2014;43(5):1357-1367.
+Rule: five items -- FEV1 below 50 percent predicted (2), Age at or above 70 (2),
+chronic Pseudomonas Colonization (1), radiological Extension of three or more
+lobes (1), and Dyspnea mMRC at or above 3 (1) -- for a total of 0-7. The extension
+and dyspnea thresholds follow the source (three or more lobes, mMRC at or above
+three), not the looser values some summaries quote. Bands are mild 0-2, moderate
+3-4, and severe 5-7, with derivation-cohort five-year mortality of about four,
+twenty-five, and sixty-nine percent respectively.
+Worked example: reduced FEV1, age at or above seventy, and Pseudomonas sums to
+five, the severe band.
+
+### NoSAS Score (OSA screen)
+Citation: Marti-Soler H, Hirotsu C, Marques-Vidal P, et al. The NoSAS score for
+screening of sleep-disordered breathing: a derivation and validation study. Lancet
+Respir Med. 2016;4(9):742-748.
+Rule: neck circumference above 40 cm (4), BMI 25 to below 30 (3) or at or above 30
+(5, a single mutually-exclusive item), snoring (2), age above 55 (4), and male sex
+(2), for a total of 0-17. A score at or above eight indicates a high probability of
+clinically significant sleep-disordered breathing and warrants further evaluation;
+it complements STOP-BANG.
+Worked example: a thick-necked, obese, older man scores fifteen, well above the
+threshold.
+
+### AHI / ODI Severity Classifier
+Citation: American Academy of Sleep Medicine Task Force. Sleep-related breathing
+disorders in adults: recommendations for syndrome definition and measurement
+techniques in clinical research. Sleep. 1999;22(5):667-689.
+Rule: the apnea-hypopnea index bands obstructive sleep apnea severity as normal
+below 5, mild 5 to below 15, moderate 15 to below 30, and severe at or above 30
+events per hour. The oxygen desaturation index is shown alongside with the
+desaturation criterion stated -- the four-percent rule (no arousal-only events,
+still required by CMS) scores fewer events than the recommended three-percent or
+arousal rule from the 2012 scoring manual, so the same patient can cross a band by
+which rule is applied. A negative or non-finite index is guarded.
+Worked example: an index of twenty-two falls in the moderate band.

@@ -6,6 +6,50 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v114: COPD/bronchiectasis exacerbation & sleep, +6 — spec-v100 Wave 3)
+
+- **Wave 3 (Critical care & pulmonary)** of the [spec-v100](docs/spec-v100.md)
+  MDCalc Parity Completion program continues. Six deterministic **pulmonary and
+  sleep-medicine decision rules** (catalog **495 → 501**), via `lib/pulm-v114.js`
+  + `views/group-v39.js` (`RV39`). All six home in **Clinical Scoring & Risk
+  (Group G)**, beside the existing `gold-spirometry` / `bode-index` /
+  `predicted-spirometry` staging tools and the `stop-bang` sleep screen. Each
+  renders the spec-v50 §3 clinical-posture note (the tile reports the
+  score/class/band and the source's interpretation; the admit / ventilate /
+  refer-for-sleep-study decision stays with the clinician). None duplicates a live
+  tile. No new specialty tag. Point tables were **re-fetched and cross-verified**,
+  which **corrected three spec-draft errors** (SOURCE governs).
+  - **`decaf-score`** — DECAF score (Steer J, et al, *Thorax* 2012): eMRCD dyspnea
+    (5a +1, 5b +2) + eosinopenia < 0.05 + consolidation + acidemia pH < 7.30 +
+    atrial fibrillation, total 0–6; in-hospital mortality low 0–1 (1.4%),
+    intermediate 2 (8.4%), high 3–6 (34.6%). Class A.
+  - **`bap-65`** — BAP-65 class (Tabak YP, et al, *Arch Intern Med* 2009): the
+    class is built from the **count** of three acute variables (BUN ≥ 25, altered
+    mental status, pulse ≥ 109); age > 65 splits class I from II only at zero
+    acute variables. Per-class mortality 0.3 / 0.9 / 2.1 / 6.3 / 13.8%; ventilation
+    need rises steeply at IV (~30%) and V (~55%). Class A.
+  - **`bronchiectasis-bsi`** — Bronchiectasis Severity Index (Chalmers JD, et al,
+    *Am J Respir Crit Care Med* 2014): nine weighted items; bands low 0–4,
+    intermediate 5–8, high ≥ 9. **Corrected:** the admission window is the prior
+    **2 years** and dyspnea uses the **MRC 1–5** scale (4 = +2, 5 = +3), not mMRC.
+    Class A.
+  - **`faced-bronchiectasis`** — FACED score (Martínez-García MÁ, et al, *Eur
+    Respir J* 2014): FEV1 < 50% (2) + Age ≥ 70 (2) + Pseudomonas (1) + Extension
+    (1) + Dyspnea (1), total 0–7; mild 0–2, moderate 3–4, severe 5–7.
+    **Corrected:** Extension scores at **≥ 3 lobes** (not ≥ 2) and Dyspnea at
+    **mMRC ≥ 3** (not ≥ 2). Class A.
+  - **`nosas-score`** — NoSAS score (Marti-Soler H, et al, *Lancet Respir Med*
+    2016): neck > 40 cm (4), BMI 25–<30 (3) or ≥ 30 (5, single-select), snoring
+    (2), age > 55 (4), male (2), total 0–17; **≥ 8 high risk**. Class A.
+  - **`ahi-odi-severity`** — AHI / ODI severity (AASM Task Force, *Sleep* 1999;
+    AASM v2.0 2012): AHI normal < 5, mild 5–<15, moderate 15–<30, severe ≥ 30
+    events/hr, with the ODI shown alongside and a 3%-vs-4% desaturation-criterion
+    toggle. A negative / non-finite AHI is guarded. **Class B** — the AASM
+    criteria are revisable, so it carries a documentation-only
+    [docs/citation-staleness.md](docs/citation-staleness.md) row.
+  - **Wave 3 continues:** with v114 the program reaches **501** tiles (495 → 501,
+    +6).
+
 ### Added (spec-v113: dynamic fluid-responsiveness indices, +3 — spec-v100 Wave 3)
 
 - **Wave 3 (Critical care & pulmonary)** of the [spec-v100](docs/spec-v100.md)
