@@ -5,7 +5,7 @@
 <h1 align="center">sophiewell.com</h1>
 
 <p align="center">
-  <strong>501 deterministic healthcare calculators tuned to the nurse on shift.</strong><br>
+  <strong>506 deterministic healthcare calculators tuned to the nurse on shift.</strong><br>
   Free forever. No servers, no accounts, no telemetry, no AI, no network call after first paint.
 </p>
 
@@ -36,7 +36,7 @@ output; "searchable lookup of static facts" does not qualify. See
 [docs/spec-v10.md](docs/spec-v10.md) for the audience and
 dependency-budget commitments and
 [docs/spec-v29.md](docs/spec-v29.md) for the nurse-first pivot
-and the v29 catalog ledger. At v114 close the catalog is 501
+and the v29 catalog ledger. At v115 close the catalog is 506
 deterministic tiles — every one of them computes from at least
 one user input. The catalog reached its present size on two tracks.
 **New tiles:** spec-v63 added the operations counterpart to the bedside
@@ -186,7 +186,7 @@ production security headers. Any static file server will also work.
 ## How it works and how to use it
 
 Since the spec-v29 nurse-first prune the catalog has grown one
-reviewable spec at a time to **501** deterministic calculators
+reviewable spec at a time to **506** deterministic calculators
 (the full per-version history is in [CHANGELOG.md](CHANGELOG.md)
 and `docs/spec-v*.md`; the most recent bedside additions are
 summarized in the cheat sheets below). They organize across the
@@ -1023,7 +1023,7 @@ Duke-ISCVID) and `refeeding-risk` (NICE CG32) are **Class B** with
 [citation-staleness](docs/citation-staleness.md) rows; the other three are
 **Class A**. See [docs/spec-v99.md](docs/spec-v99.md).
 
-### MDCalc parity completion: the cardiology / vascular / lipid surface (spec-v100 program, Wave 1: spec-v101 → spec-v105, +25 → 457, **complete**; Wave 2 complete: spec-v106 → 463, spec-v107 → 467, spec-v108 → 473, spec-v109 → 478, spec-v110 → 483, spec-v111 → 487, **+30 → 487**; Wave 3 (Critical care & pulmonary): spec-v112 → 492, spec-v113 → 495, spec-v114 → 501, **+14 so far**)
+### MDCalc parity completion: the cardiology / vascular / lipid surface (spec-v100 program, Wave 1: spec-v101 → spec-v105, +25 → 457, **complete**; Wave 2 complete: spec-v106 → 463, spec-v107 → 467, spec-v108 → 473, spec-v109 → 478, spec-v110 → 483, spec-v111 → 487, **+30 → 487**; Wave 3 complete (Critical care & pulmonary): spec-v112 → 492, spec-v113 → 495, spec-v114 → 501, spec-v115 → 506, **+19 → 506**)
 
 With the spec-v85 program complete, [spec-v100](docs/spec-v100.md) charters the
 **MDCalc Parity Completion** program — a roadmap that closes the remaining gaps
@@ -1350,6 +1350,38 @@ frames mortality / amputation risk to inform triage and transport, it does not
 author a descent, antivenom, debridement, or amputation order.
 `lib/enviro-v111.js` + `views/group-v36.js`. **This closes Wave 2 of the
 spec-v100 program (457 → 487, +30).**
+
+#### spec-v115 — pulmonary nodule, PH & pleural infection (+5 → 506, closes Wave 3)
+
+Wave 3 closes with five **pulmonary** decision rules a pulmonologist reaches for
+routinely. The catalog had the chronic-airways and acute-PE tools but lacked the
+incidental/screen-detected nodule malignancy models, the nodule-surveillance
+matrix, the PAH prognosis score, and the pleural-infection mortality score. All
+five home in **Clinical Scoring & Risk (Group G)**:
+
+| id | Rule | Output | Class |
+|---|---|---|---|
+| `mayo-spn` | Swensen 1997 Mayo Clinic SPN logistic — age + smoking + prior cancer + diameter + spiculation + upper lobe | **malignancy probability %, pretest low < 5% / intermediate 5–65% / high > 65%** | A |
+| `brock-nodule` | McWilliams 2013 Brock/PanCan logistic — centered age/count, (size/10)^−0.5 transform, type/sex/family-history/emphysema/upper-lobe/spiculation | **malignancy probability %, same pretest framing** | A |
+| `fleischner-2017` | MacMahon 2017 Fleischner Society follow-up matrix — type × size × single-or-multiple × risk | **the recommended CT-surveillance interval (or no follow-up / consider PET-CT or tissue sampling)** | B |
+| `reveal-lite-2` | Benza 2021 REVEAL Lite 2 — base 6 + eGFR/WHO-class/SBP/HR/6MWD/natriuretic-peptide | **total 1–14, low 1–5 (2.9%) / intermediate 6–7 (7.1%) / high ≥ 8 (25.1%) 1-year mortality** | A |
+| `rapid-pleural` | Rahman 2014 RAPID — Renal (urea) + Age + Purulence + Infection source + Dietary albumin | **0–7, low 0–2 / medium 3–4 / high 5–7; derivation 3-month mortality ~1.5 / 17 / 47%** | A |
+
+Both nodule logistics **re-fetch the published coefficients verbatim** (the
+spec-v97 discipline) — the seven Mayo coefficients confirmed against the spec
+draft, and the full Brock equation cross-verified across the original NEJM
+appendix, Radiopaedia, and MDCalc, including the `(size/10)^−0.5 − 1.58113883`
+power transform (the centering constant is `0.4^−0.5`) and the age/count
+centering at 62 and 4. Both **clamp the logistic exponent to [−40, 40]** so a
+fuzzed extreme (a 1e9 mm diameter) yields 100%, never `NaN`/`Infinity`; Brock
+domain-guards `size > 0`. Each tile **reports the probability/interval/score, not
+the order** (spec-v11 §5.3): the surveillance, PET, biopsy, escalate-care, or
+drainage decision stays with the clinician and local protocol. Four are **Class
+A** (fixed coefficients/weights, journal+author citations — no staleness row);
+`fleischner-2017` is **Class B** (revisable Fleischner Society 2017 guidance → a
+documentation-only `docs/citation-staleness.md` row). `lib/pulmnod-v115.js` +
+`views/group-v40.js`. **This closes Wave 3 of the spec-v100 program (487 → 506,
++19).**
 
 #### spec-v114 — COPD/bronchiectasis exacerbation & sleep (+6 → 501, Wave 3)
 
@@ -1770,7 +1802,7 @@ long version, see [docs/architecture.md](docs/architecture.md).
  │  manifests (data/)            │  static │        ▼                     ▼             │
  │        │  scripts/build       │  files  │   lazy-load data shard   pure compute      │
  │        ▼                      │         │   (verified vs manifest)  (lib/*.js)       │
- │  dist/  (501 tool pages,      │         │        │                     │             │
+ │  dist/  (506 tool pages,      │         │        │                     │             │
  │  OG cards, sitemap, SBOM)     │         │        ▼                     ▼             │
  └───────────────────────────────┘         │   service worker cache    result + cite   │
                                             │   (keyed to build hash)                    │
@@ -1792,7 +1824,7 @@ assets:
 
 | Output | Count | Source |
 |--------|------:|--------|
-| Pre-rendered tool pages (`dist/tools/<id>/`) | 501 | `scripts/build-tool-pages.mjs` |
+| Pre-rendered tool pages (`dist/tools/<id>/`) | 506 | `scripts/build-tool-pages.mjs` |
 | Audience hub pages (`dist/for/<audience>/`) | 6 | `scripts/build-hub-pages.mjs` |
 | Topic pages + `/topics/` index | 8 + 1 | `scripts/build-topic-pages.mjs` |
 | `/commitments/` | 1 | `scripts/build-commitments-page.mjs` |
@@ -1815,7 +1847,7 @@ failure is a non-zero exit that blocks the merge:
 | `check-pa-staleness.mjs` | every PA rule is source-anchored and within its freshness window |
 | `audit-pa.mjs` | the 46 PA-linter fixtures still reproduce their committed golden reports |
 
-`npm run test` adds the 4,418-test unit suite, the a11y check, and dataset
+`npm run test` adds the 4,450-test unit suite, the a11y check, and dataset
 integrity verification; `npm run test:e2e` runs the Playwright suite against
 real Chromium/Firefox/WebKit — including a full-catalog 320 px no-horizontal-
 scroll sweep over every SPA route **and** every one of the 463 pre-rendered
@@ -1827,7 +1859,7 @@ static pages, so a tile can never ship mobile overflow undetected.
 index.html          single-page shell (hero-search combobox + static browse-by-category nav, tile mount)
 styles.css          one stylesheet (responsive; no horizontal scroll — enforced catalog-wide at 320px in CI)
 app.js              router, hero-search wiring, view wiring, the UTILITIES catalog
-                    (501 tiles — the single source of truth; zero runtime deps)
+                    (506 tiles — the single source of truth; zero runtime deps)
 sw.js               service worker — precache shell, cache shards by build hash
 theme.js            light/dark theme toggle (writes only sw-theme, allowlisted)
 lib/input-persist.js opt-in "remember my inputs" (off by default; numbers only)
@@ -1845,12 +1877,12 @@ docs/               specs (spec-v4 onward) + per-tile v11/v12 audit logs +
                     citation-staleness ledger +
                     architecture / threat-model / …
 test/               unit/ (node:test) · integration/ (Playwright) · fixtures/
-dist/               build output (501 tool pages, OG cards, sitemap, SBOM)
+dist/               build output (506 tool pages, OG cards, sitemap, SBOM)
 ```
 
-### Discovery: how a query finds the right tool among 501
+### Discovery: how a query finds the right tool among 506
 
-With 501 tiles, search quality *is* the product — a tool you cannot find does
+With 506 tiles, search quality *is* the product — a tool you cannot find does
 not exist. Discovery is deterministic and offline (no fuzzy-match service, no
 embedding model, no AI). The home `#hero-search` combobox builds its dropdown
 from two complementary rankers, both pure functions of the typed query:
@@ -1923,10 +1955,10 @@ A login-less, AI-free calculator earns trust only if the nurse can see, on the
 tile, exactly which published source produced the number — and tell whether that
 source is current. spec-v54 defined the invariants; spec-v60 built the machinery
 (the gate, the ledger, and the `citationAccessed` convention) and extended it
-across the full 501-tile catalog, pinning the last three unpinned "current
+across the full 506-tile catalog, pinning the last three unpinned "current
 edition" phrases and re-verifying every guideline tile against its latest known
 edition. Three invariants make that auditable, each enforced by the
-`check-citations.mjs` lint gate (in the `npm run lint` chain) over all 501 tiles:
+`check-citations.mjs` lint gate (in the `npm run lint` chain) over all 506 tiles:
 
 | Invariant | Rule | Enforcement |
 |---|---|---|
@@ -2382,8 +2414,8 @@ rules, not soft preferences.
 | `npm run dev`            | Serve the directory locally on http://localhost:4173 (set `SERVE_ROOT=dist` to preview the pre-rendered hubs/topics/tool pages as production serves them) |
 | `npm run build`          | Copy static files into `dist/` for deployment                     |
 | `npm test`               | Run the full test suite (unit, a11y, grep, data integrity)        |
-| `npm run test:unit`      | Run Node's built-in unit tests (4,418 tests)                      |
-| `npm run test:e2e`       | Build `dist/`, then run Playwright integration tests against real browsers — incl. a full-catalog 320px no-horizontal-scroll sweep over both the SPA routes and the 501 pre-rendered static tool pages, the hub/topic/commitments pages, and the citation-wrap pin |
+| `npm run test:unit`      | Run Node's built-in unit tests (4,450 tests)                      |
+| `npm run test:e2e`       | Build `dist/`, then run Playwright integration tests against real browsers — incl. a full-catalog 320px no-horizontal-scroll sweep over both the SPA routes and the 506 pre-rendered static tool pages, the hub/topic/commitments pages, and the citation-wrap pin |
 | `npm run test:a11y`      | Run accessibility checks on every utility view                    |
 | `npm run lint`           | ESLint + the CI gate chain: grep-check, output-safety, citation-integrity, catalog-truth, commitments, PA staleness, PA audit |
 | `npm run data:refresh`   | Re-fetch and re-shard every public dataset                        |
@@ -2467,7 +2499,7 @@ build, integrity-verified data shards) are documented in
 - [docs/spec-v11.md](docs/spec-v11.md) — correctness-floor spec:
   per-tile audit protocol, specialty-named groups, optional
   source-quoted `interpretation` field. Audit coverage is **complete
-  — 501/501 tiles** carry a committed per-tile audit log
+  — 506/506 tiles** carry a committed per-tile audit log
   (`docs/audits/v11/<id>.md` for the pre-v78 catalog;
   `docs/audits/v12/<id>.md` for the tiles added since — the
   spec-v78–v83 billing & coding program, the spec-v85

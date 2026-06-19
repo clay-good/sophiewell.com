@@ -45,6 +45,7 @@ import { renderers as RV36 } from './views/group-v36.js';
 import { renderers as RV37 } from './views/group-v37.js';
 import { renderers as RV38 } from './views/group-v38.js';
 import { renderers as RV39 } from './views/group-v39.js';
+import { renderers as RV40 } from './views/group-v40.js';
 import { renderers as RV63 } from './views/group-v63.js';
 import { renderers as RB } from './views/group-b.js';
 import { renderers as RPALINT } from './views/pa-lint.js';
@@ -63,7 +64,7 @@ import { resolvePrompt } from './lib/prompt.js';
 // artifact-detect / artifact-route / artifact-handoff helpers were
 // deleted in spec-v29 wave 29-2 (Group C/L).
 
-const RENDERERS = { ...RA, ...RB, ...RC, ...RE, ...RF, ...RG, ...RH, ...RI, ...RJ, ...RKLMNO, ...RV5, ...RV6, ...RV7, ...RV8, ...RV9, ...RV10, ...RV11, ...RV12, ...RV13, ...RV14, ...RV15, ...RV16, ...RV17, ...RV18, ...RV19, ...RV20, ...RV21, ...RV22, ...RV23, ...RV24, ...RV25, ...RV26, ...RV27, ...RV28, ...RV29, ...RV30, ...RV31, ...RV32, ...RV33, ...RV34, ...RV35, ...RV36, ...RV37, ...RV38, ...RV39, ...RV63, ...RPALINT };
+const RENDERERS = { ...RA, ...RB, ...RC, ...RE, ...RF, ...RG, ...RH, ...RI, ...RJ, ...RKLMNO, ...RV5, ...RV6, ...RV7, ...RV8, ...RV9, ...RV10, ...RV11, ...RV12, ...RV13, ...RV14, ...RV15, ...RV16, ...RV17, ...RV18, ...RV19, ...RV20, ...RV21, ...RV22, ...RV23, ...RV24, ...RV25, ...RV26, ...RV27, ...RV28, ...RV29, ...RV30, ...RV31, ...RV32, ...RV33, ...RV34, ...RV35, ...RV36, ...RV37, ...RV38, ...RV39, ...RV40, ...RV63, ...RPALINT };
 
 // ----- Utility registry ----------------------------------------------------
 // Source of truth for routes, names, group, audiences, and clinical flag.
@@ -780,6 +781,21 @@ const UTILITIES = [
   { id: 'faced-bronchiectasis',   name: 'FACED Score (bronchiectasis)',                     group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'nosas-score',            name: 'NoSAS Score (OSA screen)',                         group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'ahi-odi-severity',       name: 'AHI / ODI Severity Classifier',                    group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+
+  // spec-v115 (Wave 3 of spec-v100, closes Wave 3): five pulmonary decision
+  // rules -- the incidental (Mayo) and screen-detected (Brock/PanCan) nodule
+  // malignancy models, the Fleischner 2017 follow-up matrix, the PAH REVEAL
+  // Lite 2 risk score, and the pleural-infection RAPID score. All home in
+  // Clinical Scoring & Risk (Group G). mayo-spn/brock-nodule/reveal-lite-2/
+  // rapid-pleural are Class A (fixed coefficients / point weights,
+  // journal+author citations -- no staleness row); fleischner-2017 is Class B
+  // (revisable Fleischner Society 2017 guidance, docs/citation-staleness.md
+  // row). views/group-v40.js, lib/pulmnod-v115.js.
+  { id: 'mayo-spn',               name: 'Mayo Clinic SPN Malignancy Risk',                  group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'brock-nodule',           name: 'Brock / PanCan Nodule Malignancy Risk',            group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'fleischner-2017',        name: 'Fleischner 2017 Nodule Follow-up',                 group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'reveal-lite-2',          name: 'REVEAL Lite 2 (PAH risk)',                         group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'rapid-pleural',          name: 'RAPID Score (pleural infection)',                  group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
 
   // spec-v6 §3.3: lab result interpreter. Patient-decoder category.
   { id: 'lab-interpret',       name: 'Lab Result Interpreter',                           group: 'C', audiences: ['patients', 'clinicians', 'educators'], clinical: true },

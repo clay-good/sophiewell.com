@@ -1956,3 +1956,76 @@ still required by CMS) scores fewer events than the recommended three-percent or
 arousal rule from the 2012 scoring manual, so the same patient can cross a band by
 which rule is applied. A negative or non-finite index is guarded.
 Worked example: an index of twenty-two falls in the moderate band.
+
+### Mayo Clinic SPN Malignancy Risk
+Citation: Swensen SJ, Silverstein MD, Ilstrup DM, Schleck CD, Edell ES. The
+probability of malignancy in solitary pulmonary nodules. Application to small
+radiologically indeterminate nodules. Arch Intern Med. 1997;157(8):849-855.
+Rule: a logistic model estimates the probability of malignancy in an incidental,
+radiologically indeterminate solitary pulmonary nodule from age, current or
+former smoking, a prior extrathoracic cancer diagnosed more than five years ago,
+nodule diameter, spiculation, and upper-lobe location, as probability equal to
+e^x over one plus e^x. A pragmatic pretest framing reads below five percent as
+low, five to sixty-five percent as intermediate, and above sixty-five percent as
+high probability of malignancy. The logistic exponent is clamped to guard
+overflow.
+Worked example: a fifty-one-year-old smoker with a twelve-millimeter spiculated
+upper-lobe nodule yields about thirty-three percent, the intermediate band.
+
+### Brock / PanCan Nodule Malignancy Risk
+Citation: McWilliams A, Tammemagi MC, Mayo JR, et al. Probability of cancer in
+pulmonary nodules detected on first screening CT. N Engl J Med.
+2013;369(10):910-919.
+Rule: a logistic model validated on lung-screening cohorts estimates the
+probability of cancer from age (centered), female sex, family history of lung
+cancer, emphysema, a power transform of nodule size, nodule type (solid,
+part-solid, or non-solid), upper-lobe location, nodule count (centered), and
+spiculation, as probability equal to e^x over one plus e^x. The same pretest
+framing applies. The size power transform is domain-guarded and the exponent is
+clamped.
+Worked example: a seventy-year-old woman with a twenty-millimeter part-solid
+upper-lobe nodule, family history, emphysema, and spiculation yields about
+eighty percent, the high band.
+
+### Fleischner 2017 Nodule Follow-up
+Citation: MacMahon H, Naidich DP, Goo JM, et al. Guidelines for management of
+incidental pulmonary nodules detected on CT images: from the Fleischner Society
+2017. Radiology. 2017;284(1):228-243.
+Rule: the recommended CT-surveillance interval for an incidental pulmonary nodule
+is keyed on nodule type (solid, part-solid, or pure ground-glass), size, single
+versus multiple, and patient risk (which changes only the solid cells). It
+applies to incidental nodules in patients at or above thirty-five years and not
+to screening, a known primary cancer, or immunosuppression; subsolid
+recommendations assume a persistent nodule. Class B; a citation-staleness row
+names the in-force edition.
+Worked example: a single solid nodule larger than eight millimeters prompts
+consideration of CT at three months, PET/CT, or tissue sampling.
+
+### REVEAL Lite 2 (PAH risk)
+Citation: Benza RL, Kanwar MK, Raina A, et al. Development and validation of an
+abridged version of the REVEAL 2.0 risk score calculator, REVEAL Lite 2, for use
+in patients with pulmonary arterial hypertension. Chest. 2021;159(1):337-346.
+Rule: starting from a base of six, the score adjusts for renal insufficiency
+(eGFR below sixty), WHO functional class (class one subtracts one, class three
+adds one, class four adds two), systolic blood pressure below one hundred ten,
+heart rate above ninety-six, six-minute walk distance, and a BNP or
+NT-proBNP band, for a one-to-fourteen total. Bands are low one to five (about
+three percent one-year mortality), intermediate six to seven (about seven
+percent), and high at or above eight (about twenty-five percent).
+Worked example: eGFR seventy-two, class three, systolic blood pressure one
+hundred four, heart rate eighty-eight, walk distance three hundred meters, and a
+high natriuretic-peptide band sum to ten, the high band.
+
+### RAPID Score (pleural infection)
+Citation: Rahman NM, Kahan BC, Miller RF, Gleeson FV, Nunn AJ, Maskell NA. A
+clinical score (RAPID) to identify those at risk for poor outcome at presentation
+in patients with pleural infection. Chest. 2014;145(4):848-855.
+Rule: five items sum to a zero-to-seven total -- Renal (serum urea below five
+scores zero, five to eight scores one, above eight scores two), Age (below fifty
+scores zero, fifty to seventy scores one, above seventy scores two), Purulence
+(non-purulent fluid scores one), Infection source (hospital-acquired scores one),
+and Dietary albumin (below twenty-seven scores one). Bands are low zero to two,
+medium three to four, and high five to seven, with derivation-cohort three-month
+mortality of about one and a half, seventeen, and forty-seven percent.
+Worked example: urea above eight, age seventy-four, non-purulent fluid,
+hospital-acquired, and albumin twenty-four sum to seven, the high band.

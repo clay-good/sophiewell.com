@@ -1,14 +1,18 @@
 # spec-v115.md — Pulmonary nodule, PH & pleural infection: Mayo SPN, Brock/PanCan, Fleischner 2017, REVEAL Lite 2, and RAPID (+5 tiles)
 
-> Status: **PROPOSED (2026-06-17).** Feature spec of the
+> Status: **SHIPPED (2026-06-19).** Feature spec of the
 > [spec-v100](spec-v100.md) **MDCalc Parity Completion** program, **Wave 3 —
 > Critical care & pulmonary** ([spec-v100 §4](spec-v100.md)). Adds **5**
 > deterministic pulmonary decision rules that fill confirmed gaps. None duplicates
-> a live tile.
+> a live tile. Implemented in `lib/pulmnod-v115.js` + `views/group-v40.js`
+> (`RV40`), with the Mayo and Brock logistic coefficients re-fetched and
+> cross-verified at implementation (the §2 estimates held).
 >
-> Catalog effect at v115 close: **502 + 5 = 507 tiles** — the Wave 3 end state.
-> Wave 3 ([spec-v112](spec-v112.md)–v115) takes the catalog **488 → 507 (+19)**;
-> v116 is reserved/empty ([spec-v100 §4](spec-v100.md)).
+> Catalog effect at v115 close: the running catalog count was one below the spec
+> draft's projection (the program count had drifted by one; the catalog-truth gate
+> governs), so v115 ships **501 → 506 (+5)** — the Wave 3 end state. Wave 3
+> ([spec-v112](spec-v112.md)–v115) took the catalog **487 → 506 (+19)**; v116 is
+> reserved/empty ([spec-v100 §4](spec-v100.md)).
 >
 > Every prior spec (v4 through v114) remains in force. v115 adds no runtime
 > network call and no AI; each tile obeys the [spec-v100 §2](spec-v100.md)

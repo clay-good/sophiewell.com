@@ -6,6 +6,48 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v115: pulmonary nodule, PH & pleural infection, +5 — closes spec-v100 Wave 3)
+
+- **Wave 3 (Critical care & pulmonary)** of the [spec-v100](docs/spec-v100.md)
+  MDCalc Parity Completion program **closes**. Five deterministic **pulmonary
+  decision rules** (catalog **501 → 506**), via `lib/pulmnod-v115.js` +
+  `views/group-v40.js` (`RV40`). All five home in **Clinical Scoring & Risk
+  (Group G)**, beside the existing chronic-airways staging tools and the acute-PE
+  cluster. Each renders the spec-v50 §3 clinical-posture note (the tile reports
+  the probability / interval / score and the source's interpretation; the
+  surveillance / PET / biopsy / drainage decision stays with the clinician). None
+  duplicates a live tile. No new specialty tag. The two nodule logistics
+  **re-fetch the published coefficients verbatim** and cross-verify them across
+  the original papers, MDCalc, and Radiopaedia (spec-v97 discipline).
+  - **`mayo-spn`** — Mayo Clinic SPN malignancy model (Swensen SJ, et al, *Arch
+    Intern Med* 1997): a logistic, x = −6.8272 + 0.0391·age + 0.7917·smoke +
+    1.3388·cancer + 0.1274·diameter + 1.0407·spiculation + 0.7838·upperlobe;
+    probability = e^x/(1+e^x); pretest low < 5% / intermediate 5–65% / high > 65%.
+    The exponent is clamped to [−40, 40]. Class A.
+  - **`brock-nodule`** — Brock / PanCan model (McWilliams A, et al, *N Engl J Med*
+    2013): the full logistic with the centered age (−62) and count (−4) terms, the
+    `(size/10)^−0.5 − 1.58113883` power transform (coefficient −5.3854), and the
+    solid / part-solid (+0.377) / non-solid (−0.1276) type coefficients. Clamped
+    and `size > 0` domain-guarded. Class A.
+  - **`fleischner-2017`** — Fleischner Society 2017 follow-up matrix (MacMahon H,
+    et al, *Radiology* 2017): the recommended CT-surveillance interval keyed on
+    nodule type (solid / part-solid / ground-glass), size, single vs multiple, and
+    patient risk (which changes only the solid cells). **Class B** — the guidance
+    is revisable, so it carries a documentation-only
+    [docs/citation-staleness.md](docs/citation-staleness.md) row.
+  - **`reveal-lite-2`** — REVEAL Lite 2 (Benza RL, et al, *Chest* 2021): the
+    abridged all-noninvasive PAH score, base 6 + eGFR < 60 (+1) + WHO class
+    (I −1 / III +1 / IV +2) + SBP < 110 (+1) + HR > 96 (+1) + 6MWD band +
+    BNP/NT-proBNP band, total 1–14; low 1–5 (2.9%) / intermediate 6–7 (7.1%) /
+    high ≥ 8 (25.1%) 1-year mortality. Class A.
+  - **`rapid-pleural`** — RAPID score (Rahman NM, et al, *Chest* 2014): Renal
+    (urea < 5 / 5–8 / > 8 mmol/L = 0/1/2) + Age (< 50 / 50–70 / > 70 = 0/1/2) +
+    Purulence (non-purulent +1) + Infection source (hospital-acquired +1) +
+    Dietary albumin (< 27 g/L +1), total 0–7; low 0–2, medium 3–4, high 5–7, with
+    derivation-cohort 3-month mortality ~1.5 / 17 / 47%. Class A.
+  - **Wave 3 closes:** with v115 the program reaches **506** tiles (501 → 506,
+    +5); Wave 3 totals 487 → 506 (+19). v116 stays reserved.
+
 ### Added (spec-v114: COPD/bronchiectasis exacerbation & sleep, +6 — spec-v100 Wave 3)
 
 - **Wave 3 (Critical care & pulmonary)** of the [spec-v100](docs/spec-v100.md)
