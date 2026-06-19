@@ -1,13 +1,18 @@
 # spec-v111.md — Environmental & wilderness medicine: Lake Louise AMS, Szpilman drowning, snakebite severity, and Cauchy frostbite (+4 tiles)
 
-> Status: **PROPOSED (2026-06-17).** Feature spec of the [spec-v100](spec-v100.md)
+> Status: **SHIPPED (2026-06-19).** Feature spec of the [spec-v100](spec-v100.md)
 > MDCalc Parity Completion program, **closing spec of Wave 2 — Emergency / trauma /
 > toxicology / environmental** ([spec-v106](spec-v106.md)–[spec-v111](spec-v111.md)).
 > Adds **4** deterministic environmental and wilderness-medicine classification
 > scores that fill confirmed gaps. None duplicates a live tile.
 >
-> Catalog effect at v111 close: **484 + 4 = 488 tiles** — the Wave-2 end state
-> (458 → 488, +30).
+> Catalog effect at v111 close: **483 + 4 = 487 tiles** — the Wave-2 end state
+> (457 → 487, +30). (The spec draft projected 484 + 4 = 488; the program's
+> running count was off by one from v109 onward — v109 closed at 478, not 479 — so
+> the acceptance criteria's "then-current live count + 4" governs and v111 closed
+> at 487.) Implemented in `lib/enviro-v111.js` (`lakeLouiseAms`,
+> `szpilmanDrowning`, `snakebiteSeverity`, `cauchyFrostbite`) and
+> `views/group-v36.js` (`RV36`).
 >
 > Every prior spec (v4 through v110) remains in force. v111 adds no runtime network
 > call and no AI; each tile obeys the [spec-v100](spec-v100.md) §2 doctrine (which
@@ -143,8 +148,9 @@ Per the [spec-v100](spec-v100.md) §6 contract (re-binding [spec-v85](spec-v85.m
   surfaces**; a11y, `mobile-no-hscroll`, and 44px touch-target checks pass for
   `views/group-v36.js`.
 - **Wave-2-close note:** with v111 the [spec-v100](spec-v100.md) program Wave 2 is
-  complete at **488** tiles (458 → 488, +30). `scope-mdcalc-parity.md` records the
-  Wave-2 progress in the running ledger; the program continues with Wave 3
+  complete at **487** tiles (457 → 487, +30; the draft projected 488 before the
+  v109 off-by-one was reconciled). `scope-mdcalc-parity.md` records the Wave-2
+  progress in the running ledger; the program continues with Wave 3
   ([spec-v112](spec-v112.md)+).
 
 ## 5. Files touched
@@ -160,9 +166,9 @@ docs/clinical-citations.md               (+4 rows for the four sources)
 test/unit/lake-louise-ams.test.js, szpilman-drowning.test.js, snakebite-severity.test.js, cauchy-frostbite.test.js  (≥3 boundary worked examples each)
 test/unit/fuzz-tools.test.js             (add lib/enviro-v111.js to MODULES)
 docs/audits/v12/lake-louise-ams.md, szpilman-drowning.md, snakebite-severity.md, cauchy-frostbite.md  (spec-v11 audit logs)
-docs/scope-mdcalc-parity.md              (catalog count 484 -> 488; record Wave 2 complete 458 -> 488, +30)
+docs/scope-mdcalc-parity.md              (catalog count 483 -> 487; record Wave 2 complete 457 -> 487, +30)
 CHANGELOG.md                             (Unreleased: v111 entry, +4; Wave-2-complete note)
-README.md, package.json                  (catalog count 484 -> 488; spec-progression line -> v111)
+README.md, package.json                  (catalog count 483 -> 487; spec-progression line -> v111)
 ```
 
 ## 6. Acceptance criteria
@@ -187,9 +193,10 @@ v111 is fully shipped when:
   [spec-v59](spec-v59.md) fuzz harness with zero non-finite leaks.
 - `szpilman-drowning` carries `accessed` + a `docs/citation-staleness.md` row; the
   other three carry no row (Class A instruments).
-- `UTILITIES.length` is **488** (or the then-current live count + 4 if specs land
-  out of order) and all catalog-truth surfaces ([spec-v46](spec-v46.md)) agree;
-  `scope-mdcalc-parity.md` records Wave 2 complete (458 → 488, +30).
+- `UTILITIES.length` is **487** (the then-current live count + 4; the draft's 488
+  assumed a v109 close of 479, but it closed at 478) and all catalog-truth surfaces
+  ([spec-v46](spec-v46.md)) agree; `scope-mdcalc-parity.md` records Wave 2 complete
+  (457 → 487, +30).
 - `npm run lint`, `npm run test`, `npm run sbom`, and `npm run build` all pass.
 - The CHANGELOG records v111 with the +4 catalog delta and the Wave-2-complete
   note.

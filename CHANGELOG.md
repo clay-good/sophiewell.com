@@ -6,6 +6,45 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v111: environmental & wilderness medicine, +4 — spec-v100 Wave 2 **complete**)
+
+- **Sixth feature spec and the closing spec of Wave 2** of the
+  [spec-v100](docs/spec-v100.md) MDCalc Parity Completion program. Four
+  deterministic **environmental / wilderness-medicine severity scores and
+  classifications** (catalog **483 → 487**), via `lib/enviro-v111.js` +
+  `views/group-v36.js` (`RV36`). All four home in **Group I (EMS & Field)**,
+  cross-linked from Clinical Scoring (Group G). Each renders the spec-v50 §3
+  field-posture note (the score informs triage and transport, it does not author
+  a descent, antivenom, debridement, or amputation order). None duplicates a live
+  tile; each fills a confirmed gap beside the existing `hypothermia-rewarm`
+  Swiss-staging tile. No new specialty tag.
+  - **`lake-louise-ams`** — 2018 Lake Louise Acute Mountain Sickness score (Roach
+    RC, et al; Lake Louise AMS Score Consensus Committee, *High Alt Med Biol*
+    2018): four symptoms each 0–3 (total 0–12) with the **headache-required
+    diagnostic gate** (a total ≥ 3 without a headache does not diagnose AMS) and
+    the mild 3–5 / moderate 6–9 / severe 10–12 bands. The 2018 revision dropped
+    the sleep item. **Class A**.
+  - **`szpilman-drowning`** — Szpilman drowning classification (Szpilman D,
+    *Chest* 1997, from 1,831 cases): a decision tree on cough / auscultation /
+    pulmonary edema / hypotension / arrest returning Rescue, grade 1–6, or Dead
+    with the original-series mortality (0 → 93%). **Class B**
+    ([docs/citation-staleness.md](docs/citation-staleness.md) row).
+  - **`snakebite-severity`** — Snakebite Severity Score (Dart RC, et al, *Ann
+    Emerg Med* 1996): six body-system subscores (pulmonary, cardiovascular, local
+    wound, GI, hematologic, CNS) summed to 0–20. **Class A**. SOURCE-GOVERNANCE:
+    Dart 1996 validated the SSS as a **continuous** index and defines no fixed
+    severity cutoffs (the 0–3/4–7/≥8 bands online belong to a different modified
+    7-system instrument); the tile reports the continuous total and labels its
+    descriptor as a relative reading of the 0–20 range.
+  - **`cauchy-frostbite`** — Cauchy frostbite classification (Cauchy E, et al,
+    *Wilderness Environ Med* 2001): grade 1–4 set by the day-0 lesion topography,
+    day-2 bone scan, and day-2 blisters (the most severe finding governs), with
+    the published amputation-level + sequelae prognosis. **Class A**. Grade-4
+    sequelae are "functional" per the NEJM 2022 reproduction, not the unverified
+    "general/systemic" paraphrase.
+  - **Wave 2 complete:** with v111 the spec-v100 program Wave 2 closes at **487**
+    tiles (457 → 487, +30). The program continues with Wave 3 (spec-v112+).
+
 ### Added (spec-v110: toxicology dosing & dialysis decisions, +5 — spec-v100 Wave 2)
 
 - **Fifth feature spec of Wave 2** of the [spec-v100](docs/spec-v100.md) MDCalc

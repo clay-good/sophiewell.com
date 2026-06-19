@@ -1721,3 +1721,53 @@ function with a level above 4.0 mmol/L; it is suggested for a level above
 1.0 mmol/L beyond 36 hours.
 Worked example: a level of 4.5 mmol/L with impaired kidney function is a
 recommended indication.
+
+### 2018 Lake Louise Acute Mountain Sickness (AMS) Score
+Citation: Roach RC, Hackett PH, Oelz O, et al; Lake Louise AMS Score Consensus
+Committee. The 2018 Lake Louise Acute Mountain Sickness Score. High Alt Med Biol.
+2018;19(1):4-6.
+Rule: four self-reported symptoms (headache, gastrointestinal, fatigue/weakness,
+dizziness/lightheadedness) each scored 0-3, total 0-12. AMS is diagnosed only
+when the total is 3 or more in the presence of a headache, after a recent gain
+in altitude; severity is then mild 3-5, moderate 6-9, severe 10-12. The 2018
+revision dropped the sleep item.
+Worked example: a headache, GI, and fatigue each scored 1 (total 3) with a
+headache present is AMS, mild. The same three points without a headache fails
+the headache-required gate.
+
+### Szpilman drowning classification
+Citation: Szpilman D. Near-drowning and drowning classification: a proposal to
+stratify mortality based on the analysis of 1,831 cases. Chest.
+1997;112(3):660-665.
+Rule: a decision tree on cough, auscultation, pulmonary edema, hypotension, and
+respiratory/cardiac arrest. Rescue (normal auscultation, no cough) and grade 1
+(normal auscultation with cough) carry about 0% mortality; grade 2 (rales in
+some fields) 0.6%; grade 3 (pulmonary edema, normotensive) 5.2%; grade 4
+(pulmonary edema with hypotension) 19.4%; grade 5 (isolated respiratory arrest)
+44%; grade 6 (cardiopulmonary arrest) 93%.
+Worked example: a breathing victim with rales in some lung fields is grade 2,
+about 0.6% mortality.
+
+### Snakebite Severity Score (SSS)
+Citation: Dart RC, Hurlbut KM, Garcia R, Boren J. Validation of a severity score
+for the assessment of crotalid snakebite. Ann Emerg Med. 1996;27(3):321-326.
+Rule: six body-system subscores summed -- pulmonary 0-3, cardiovascular 0-3,
+local wound 0-4, gastrointestinal 0-3, hematologic 0-4, and central nervous
+system 0-3, for a total of 0-20. Dart 1996 validated the SSS as a continuous
+severity index and does not define fixed total-score severity cutoffs.
+Worked example: subscores of pulmonary 3, cardiovascular 3, local 4, GI 2,
+hematologic 1, and CNS 1 sum to 14 of a maximum 20.
+
+### Cauchy frostbite classification
+Citation: Cauchy E, Chetaille E, Marchand V, Marsigny B. Retrospective study of
+70 cases of severe frostbite lesions: a proposed new classification scheme.
+Wilderness Environ Med. 2001;12(4):248-255.
+Rule: four grades set by the day-0 lesion topography, the day-2 bone-scan uptake,
+and the day-2 blisters; the grade is the most severe of the three findings.
+Grade 1 (no lesion) predicts no amputation and no sequela; grade 2 (distal
+phalanx, clear blisters) soft-tissue/nail amputation; grade 3
+(intermediate-proximal phalanx, hemorrhagic blisters, absent digit uptake) bone
+amputation of the digit with functional sequelae; grade 4 (carpal-tarsal area)
+bone amputation of the limb with functional sequelae.
+Worked example: a distal-phalanx lesion (grade 2 by topography) with absent
+bone-scan uptake in the carpal-tarsal area is upgraded to grade 4.

@@ -41,6 +41,7 @@ import { renderers as RV32 } from './views/group-v32.js';
 import { renderers as RV33 } from './views/group-v33.js';
 import { renderers as RV34 } from './views/group-v34.js';
 import { renderers as RV35 } from './views/group-v35.js';
+import { renderers as RV36 } from './views/group-v36.js';
 import { renderers as RV63 } from './views/group-v63.js';
 import { renderers as RB } from './views/group-b.js';
 import { renderers as RPALINT } from './views/pa-lint.js';
@@ -59,7 +60,7 @@ import { resolvePrompt } from './lib/prompt.js';
 // artifact-detect / artifact-route / artifact-handoff helpers were
 // deleted in spec-v29 wave 29-2 (Group C/L).
 
-const RENDERERS = { ...RA, ...RB, ...RC, ...RE, ...RF, ...RG, ...RH, ...RI, ...RJ, ...RKLMNO, ...RV5, ...RV6, ...RV7, ...RV8, ...RV9, ...RV10, ...RV11, ...RV12, ...RV13, ...RV14, ...RV15, ...RV16, ...RV17, ...RV18, ...RV19, ...RV20, ...RV21, ...RV22, ...RV23, ...RV24, ...RV25, ...RV26, ...RV27, ...RV28, ...RV29, ...RV30, ...RV31, ...RV32, ...RV33, ...RV34, ...RV35, ...RV63, ...RPALINT };
+const RENDERERS = { ...RA, ...RB, ...RC, ...RE, ...RF, ...RG, ...RH, ...RI, ...RJ, ...RKLMNO, ...RV5, ...RV6, ...RV7, ...RV8, ...RV9, ...RV10, ...RV11, ...RV12, ...RV13, ...RV14, ...RV15, ...RV16, ...RV17, ...RV18, ...RV19, ...RV20, ...RV21, ...RV22, ...RV23, ...RV24, ...RV25, ...RV26, ...RV27, ...RV28, ...RV29, ...RV30, ...RV31, ...RV32, ...RV33, ...RV34, ...RV35, ...RV36, ...RV63, ...RPALINT };
 
 // ----- Utility registry ----------------------------------------------------
 // Source of truth for routes, names, group, audiences, and clinical flag.
@@ -731,6 +732,17 @@ const UTILITIES = [
   { id: 'hiet-dosing',            name: 'High-Dose Insulin Euglycemia (HIET) Dosing',       group: 'F', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'tca-bicarbonate',        name: 'TCA Toxicity: QRS Risk & Bicarbonate Target',      group: 'F', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'lithium-extrip',         name: 'Lithium Dialysis Decision (EXTRIP)',               group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+
+  // spec-v111 (closing spec of Wave 2 of spec-v100): four environmental /
+  // wilderness-medicine severity scores and classifications. All home in
+  // Group I (EMS & Field), cross-linked from Clinical Scoring (Group G).
+  // lake-louise-ams / snakebite-severity / cauchy-frostbite are Class A (fixed
+  // scoring instruments); szpilman-drowning is Class B (revisable decision
+  // tree, docs/citation-staleness.md row). views/group-v36.js, lib/enviro-v111.js.
+  { id: 'lake-louise-ams',        name: 'Lake Louise Acute Mountain Sickness (AMS) Score',  group: 'I', audiences: ['clinicians', 'educators', 'field'], clinical: true },
+  { id: 'szpilman-drowning',      name: 'Szpilman Drowning Classification',                 group: 'I', audiences: ['clinicians', 'educators', 'field'], clinical: true },
+  { id: 'snakebite-severity',     name: 'Snakebite Severity Score (SSS)',                   group: 'I', audiences: ['clinicians', 'educators', 'field'], clinical: true },
+  { id: 'cauchy-frostbite',       name: 'Cauchy Frostbite Classification',                  group: 'I', audiences: ['clinicians', 'educators', 'field'], clinical: true },
 
   // spec-v6 §3.3: lab result interpreter. Patient-decoder category.
   { id: 'lab-interpret',       name: 'Lab Result Interpreter',                           group: 'C', audiences: ['patients', 'clinicians', 'educators'], clinical: true },
