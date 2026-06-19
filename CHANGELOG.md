@@ -6,6 +6,50 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v118: hemorrhagic stroke, SAH, IVH & aneurysm, +5 — spec-v100 Wave 4)
+
+- **Wave 4 (Neurology / neurosurgery / psychiatry)** of the
+  [spec-v100](docs/spec-v100.md) MDCalc Parity Completion program continues. Five
+  deterministic **hemorrhagic-stroke / SAH / IVH / unruptured-aneurysm
+  instruments** (catalog **512 → 517**), all in **Clinical Scoring & Risk
+  (Group G)**, via `lib/neuro-v118.js` + `views/group-v118.js` (`RV118`). v117
+  covered the ischemic-stroke imaging-prognosis side; v118 covers the
+  hemorrhagic side the neuro-ICU and neurosurgery teams grade. Each takes the
+  clinician's imaging *read* (blood thickness, per-compartment grades, NCCT
+  markers, aneurysm measurements) — v118 parses no DICOM, no pixels, no
+  radiology report — and renders the spec-v50 §3 clinical-posture note (the tile
+  reports the grade / score and the source's risk framing; the coiling /
+  clipping / surveillance / surgical decision stays with the neurosurgery team).
+  None duplicates a live tile. No new specialty tag. All five **re-fetch the
+  published point tables and outcome bands verbatim** and cross-verify them
+  across the derivation papers and PMC / validation-cohort reproductions
+  (spec-v97 discipline).
+  - **`modified-fisher`** — Modified Fisher Scale (Frontera JA, et al,
+    *Neurosurgery* 2006): grade 0–4 from cisternal SAH thickness (none/thin/thick)
+    × IVH (present/absent); symptomatic-vasospasm incidence ~24% (grade 1), ~33%
+    (grades 2 and 3), ~40% (grade 4). Cross-links `hunt-hess-wfns`.
+  - **`graeb-ivh`** — Modified Graeb Score (Morgan TC, et al, *Stroke* 2013):
+    eight compartments — four large (right + left lateral ventricle, third,
+    fourth) carrying fill 0–4 plus a separate +1 expansion bonus, four horns
+    (right + left occipital, right + left temporal) carrying fill 0–2 plus the
+    same +1 — summed to a maximum of 32 (the +1 expansion is an independent
+    additive modifier, not the top fill step). Cross-links `ich-volume-abc2`.
+  - **`bat-score`** — BAT Score (Morotti A, et al, *Stroke* 2018): Blend sign
+    (+1), Any intrahematoma hypodensity (+2), Timing onset-to-NCCT < 2.5 h (+2),
+    summed 0–5; ≥ 3 predicts hematoma expansion (sensitivity ~0.50, specificity
+    ~0.89). Cross-links `ich-volume-abc2`.
+  - **`phases`** — PHASES Score (Greving JP, et al, *Lancet Neurol* 2014):
+    Population / Hypertension / Age ≥ 70 / Size / Earlier SAH / Site summed 0–22,
+    mapped to the published 5-year cumulative rupture risk (~0.4% at ≤ 2 to
+    ~17.8% at ≥ 12). Cross-links `elapss`.
+  - **`elapss`** — ELAPSS Score (Backes D, et al, *Neurology* 2017): Earlier SAH
+    (no +1, yes 0) / Location / Age / Population / Size / Shape, published range
+    0–40, mapped to the 3-/5-year cumulative growth risk (~5.0%/8.4% below 5 to
+    ~42.7%/60.8% at ≥ 25). Cross-links `phases`.
+- All five are **Class A** (fixed grading rules / point weights; each citation
+  names the journal + authors, so none trips the `ISSUER_PATTERN` gotcha) — **no**
+  `docs/citation-staleness.md` row.
+
 ### Added (spec-v117: stroke imaging & thrombolysis prognosis, +6 — opens spec-v100 Wave 4)
 
 - **Wave 4 (Neurology / neurosurgery / psychiatry)** of the

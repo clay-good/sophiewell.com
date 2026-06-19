@@ -2113,3 +2113,83 @@ percent with low mortality in the low band and about eleven percent with high
 mortality in the high band; the middle band is intermediate.
 Worked example: a high NIHSS, age eighty-two, and all three chronic diseases sum
 to nine, the high-risk band.
+
+### Modified Fisher Scale (SAH vasospasm risk)
+Citation: Frontera JA, Claassen J, Schmidt JM, et al. Prediction of symptomatic
+vasospasm after subarachnoid hemorrhage: the modified Fisher scale.
+Neurosurgery. 2006;59(1):21-27.
+Rule: the scale grades the radiographic blood burden after aneurysmal
+subarachnoid hemorrhage from the cisternal blood thickness and the presence of
+intraventricular hemorrhage. Grade zero is no subarachnoid or intraventricular
+blood; grade one is thin subarachnoid blood without intraventricular hemorrhage;
+grade two is thin subarachnoid blood with intraventricular hemorrhage; grade
+three is thick subarachnoid blood without intraventricular hemorrhage; and grade
+four is thick subarachnoid blood with intraventricular hemorrhage. The derivation
+reports symptomatic-vasospasm incidence of about a quarter at grade one, about a
+third at grades two and three, and about two fifths at grade four. Frontera used
+a subjective thin-versus-thick read and applied no measured cutoff.
+Worked example: thick subarachnoid blood with intraventricular hemorrhage is
+grade four, the highest-vasospasm-risk grade.
+
+### Modified Graeb Score (IVH burden)
+Citation: Morgan TC, Dawson J, Spengler D, et al. The Modified Graeb Score: an
+enhanced tool for intraventricular hemorrhage measurement and prediction of
+functional outcome. Stroke. 2013;44(3):635-641.
+Rule: the score sums eight compartments. Each of the four large compartments (the
+right and left lateral ventricles, the third ventricle, and the fourth ventricle)
+carries a fill grade from none through filled, plus one more point if that
+compartment is expanded beyond its normal anatomic limits by clot, for up to five
+points each. Each of the four horns (the right and left occipital and the right
+and left temporal horns) carries a fill grade from none through completely filled,
+plus the same expansion point, for up to three points each. The maximum is
+therefore thirty-two. The total correlates with intraventricular-hemorrhage
+volume, and each one-point rise raises the odds of poor functional outcome by
+about an eighth; the derivation publishes no fixed cutoff.
+Worked example: every compartment filled and expanded sums to the maximum.
+
+### BAT Score (hematoma expansion)
+Citation: Morotti A, Dowlatshahi D, Boulouis G, et al. Predicting intracerebral
+hemorrhage expansion with noncontrast computed tomography: the BAT score.
+Stroke. 2018;49(5):1163-1169.
+Rule: the score sums three non-contrast CT markers: the blend sign (plus one),
+any intrahematoma hypodensity (plus two), and an onset-to-baseline-imaging time
+under two and a half hours (plus two), for a zero-to-five total. The derivation
+dichotomizes at three or more, which predicts hematoma expansion with a
+sensitivity of about half and a specificity of about nine tenths.
+Worked example: all three markers present sum to the maximum, above the
+expansion-prediction threshold.
+
+### PHASES Score (aneurysm rupture risk)
+Citation: Greving JP, Wermer MJH, Brown RD Jr, et al. Development of the PHASES
+score for prediction of risk of rupture of intracranial aneurysms: a pooled
+analysis of six prospective cohort studies. Lancet Neurol. 2014;13(1):59-66.
+Rule: the score sums population (North American or European none, Japanese plus
+three, Finnish plus five), hypertension (plus one), age seventy or older (plus
+one), aneurysm size (under seven millimeters none, seven to just under ten plus
+three, ten to just under twenty plus six, twenty or more plus ten), earlier
+subarachnoid hemorrhage from a different aneurysm (plus one), and site (internal
+carotid none, middle cerebral plus two, anterior or posterior circulation plus
+four). The derivation maps the total to a five-year cumulative rupture risk
+rising from under half a percent at the low end to about eighteen percent at the
+high end.
+Worked example: a Finnish patient with hypertension, age over seventy, a
+medium-large aneurysm, an earlier subarachnoid hemorrhage, and a posterior-
+circulation site lands in the highest-risk band.
+
+### ELAPSS Score (aneurysm growth risk)
+Citation: Backes D, Rinkel GJE, Greving JP, et al. ELAPSS score for prediction of
+risk of growth of unruptured intracranial aneurysms. Neurology.
+2017;88(17):1600-1606.
+Rule: the score sums earlier subarachnoid hemorrhage (no adds a point, yes adds
+none, reflecting that a prior treated bleed associates with lower growth risk of
+the remaining aneurysm), location (internal carotid or anterior circulation none,
+middle cerebral plus three, posterior communicating or posterior circulation plus
+five), age (none up to sixty, then a point per five-year band above sixty),
+population (North America, China, or Europe none, Japan plus one, Finland plus
+seven), size (smallest none, then rising bands), and shape (regular none,
+irregular plus four), for a published range up to forty. The derivation maps the
+total to a three- and five-year cumulative growth risk rising from a few percent
+at the low end to roughly half or more at the high end.
+Worked example: no earlier subarachnoid hemorrhage, a posterior site, an older
+Finnish patient, a large irregular aneurysm lands at the published ceiling, the
+highest-growth-risk band.

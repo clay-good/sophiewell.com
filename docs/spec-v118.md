@@ -1,7 +1,13 @@
 # spec-v118.md — Hemorrhagic stroke, SAH, IVH & aneurysm: modified Fisher, modified Graeb, BAT, PHASES, and ELAPSS (+5 tiles)
 
-> Status: **PROPOSED (2026-06-17).** Feature spec of the [spec-v100](spec-v100.md)
+> Status: **SHIPPED (2026-06-19).** Feature spec of the [spec-v100](spec-v100.md)
 > MDCalc Parity Completion program, **Wave 4 (Neurology / neurosurgery / psychiatry)**.
+> Shipped as catalog **512 → 517** (the live count at implementation; the 513/518
+> figures below reflect the spec-draft estimate, which ran one ahead of the
+> running catalog count — the program's known off-by-one). `graeb-ivh` ships with
+> the **+1 expansion bonus as an independent additive modifier on each of the
+> eight compartments** (max 32; a naive fill-only reading sums to 24); `elapss`
+> ships with **no earlier SAH = +1** (the inverted source term).
 > Adds **5** deterministic hemorrhagic-stroke, subarachnoid-hemorrhage, intraventricular-
 > hemorrhage, and unruptured-aneurysm instruments that fill confirmed gaps. None
 > duplicates a live tile.

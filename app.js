@@ -47,6 +47,7 @@ import { renderers as RV38 } from './views/group-v38.js';
 import { renderers as RV39 } from './views/group-v39.js';
 import { renderers as RV40 } from './views/group-v40.js';
 import { renderers as RV117 } from './views/group-v117.js';
+import { renderers as RV118 } from './views/group-v118.js';
 import { renderers as RV63 } from './views/group-v63.js';
 import { renderers as RB } from './views/group-b.js';
 import { renderers as RPALINT } from './views/pa-lint.js';
@@ -65,7 +66,7 @@ import { resolvePrompt } from './lib/prompt.js';
 // artifact-detect / artifact-route / artifact-handoff helpers were
 // deleted in spec-v29 wave 29-2 (Group C/L).
 
-const RENDERERS = { ...RA, ...RB, ...RC, ...RE, ...RF, ...RG, ...RH, ...RI, ...RJ, ...RKLMNO, ...RV5, ...RV6, ...RV7, ...RV8, ...RV9, ...RV10, ...RV11, ...RV12, ...RV13, ...RV14, ...RV15, ...RV16, ...RV17, ...RV18, ...RV19, ...RV20, ...RV21, ...RV22, ...RV23, ...RV24, ...RV25, ...RV26, ...RV27, ...RV28, ...RV29, ...RV30, ...RV31, ...RV32, ...RV33, ...RV34, ...RV35, ...RV36, ...RV37, ...RV38, ...RV39, ...RV40, ...RV117, ...RV63, ...RPALINT };
+const RENDERERS = { ...RA, ...RB, ...RC, ...RE, ...RF, ...RG, ...RH, ...RI, ...RJ, ...RKLMNO, ...RV5, ...RV6, ...RV7, ...RV8, ...RV9, ...RV10, ...RV11, ...RV12, ...RV13, ...RV14, ...RV15, ...RV16, ...RV17, ...RV18, ...RV19, ...RV20, ...RV21, ...RV22, ...RV23, ...RV24, ...RV25, ...RV26, ...RV27, ...RV28, ...RV29, ...RV30, ...RV31, ...RV32, ...RV33, ...RV34, ...RV35, ...RV36, ...RV37, ...RV38, ...RV39, ...RV40, ...RV117, ...RV118, ...RV63, ...RPALINT };
 
 // ----- Utility registry ----------------------------------------------------
 // Source of truth for routes, names, group, audiences, and clinical flag.
@@ -814,6 +815,19 @@ const UTILITIES = [
   { id: 'hat-score',              name: 'HAT Score (hemorrhage after thrombolysis)',        group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'sedan-score',            name: 'SEDAN Score (post-tPA symptomatic ICH)',           group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'thrive-stroke',          name: 'THRIVE Score (stroke outcome)',                    group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+
+  // spec-v118 (Wave 4 of spec-v100): five hemorrhagic-stroke / SAH / IVH /
+  // unruptured-aneurysm instruments the neuro-ICU and neurosurgery teams grade
+  // from the NCCT/CTA read -- the modified Fisher SAH-blood grade, the modified
+  // Graeb IVH burden, the BAT hematoma-expansion score, and the PHASES / ELAPSS
+  // aneurysm rupture- and growth-risk scores. All five are Class A (fixed
+  // grading rules / point weights, journal+author citations -- no staleness
+  // row). views/group-v118.js, lib/neuro-v118.js.
+  { id: 'modified-fisher',        name: 'Modified Fisher Scale (SAH vasospasm risk)',       group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'graeb-ivh',              name: 'Modified Graeb Score (IVH burden)',                group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'bat-score',              name: 'BAT Score (hematoma expansion)',                   group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'phases',                 name: 'PHASES Score (aneurysm rupture risk)',             group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'elapss',                 name: 'ELAPSS Score (aneurysm growth risk)',              group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
 
   // spec-v6 §3.3: lab result interpreter. Patient-decoder category.
   { id: 'lab-interpret',       name: 'Lab Result Interpreter',                           group: 'C', audiences: ['patients', 'clinicians', 'educators'], clinical: true },
