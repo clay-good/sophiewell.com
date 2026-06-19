@@ -110,6 +110,7 @@ import * as traumaV108 from '../../lib/trauma-v108.js';
 import * as traumaclassV109 from '../../lib/traumaclass-v109.js';
 import * as toxV110 from '../../lib/tox-v110.js';
 import * as enviroV111 from '../../lib/enviro-v111.js';
+import * as critcareV112 from '../../lib/critcare-v112.js';
 
 const MODULES = {
   'clinical.js': clinical,
@@ -164,6 +165,7 @@ const MODULES = {
   'traumaclass-v109.js': traumaclassV109,
   'tox-v110.js': toxV110,
   'enviro-v111.js': enviroV111,
+  'critcare-v112.js': critcareV112,
 };
 
 const MATRIX = [0, -1, 1e9, NaN, Infinity, -Infinity, '', undefined, null];

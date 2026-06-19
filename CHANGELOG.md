@@ -6,6 +6,50 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v112: ICU mortality & sepsis-coagulopathy, +5 — spec-v100 Wave 3 **opens**)
+
+- **First feature spec of Wave 3 (Critical care & pulmonary)** of the
+  [spec-v100](docs/spec-v100.md) MDCalc Parity Completion program. Five
+  deterministic **critical-care decision rules** (catalog **487 → 492**), via
+  `lib/critcare-v112.js` + `views/group-v37.js` (`RV37`). Four home in **Clinical
+  Scoring & Risk (Group G)**; `lactate-clearance` is a **Group E** clinical-math
+  tile. Each renders the spec-v50 §3 clinical-posture note (the score frames risk
+  or likelihood, it does not author a resuscitation, anticoagulation, ventilator,
+  sedation, or weaning order). None duplicates a live tile; each fills a confirmed
+  gap beside the existing `apache2` / `saps-ii` ICU-admission models and the
+  `sirs` / `qsofa-sofa` / `curb-65` triage tools. No new specialty tag. All
+  **Class A** — fixed point weights / thresholds / arithmetic — so no
+  [docs/citation-staleness.md](docs/citation-staleness.md) row.
+  - **`meds-score`** — Mortality in Emergency Department Sepsis score (Shapiro NI,
+    et al, *Crit Care Med* 2003): nine weighted items summed 0–27 (terminal
+    illness 6; tachypnea/hypoxia, septic shock, platelets < 150k, bands > 5%, age
+    > 65 each 3; lower respiratory infection, nursing-home resident, altered mental
+    status each 2) with the 28-day mortality bands very low 0–4 (~0.9%), low 5–7
+    (~2.0%), moderate 8–12 (~7.8%), high 13–15 (~20%), very high ≥ 16 (~50%).
+  - **`sic-score`** — Sepsis-Induced Coagulopathy score (Iba T, et al, *J Thromb
+    Haemost* 2019; ISTH criteria): platelet (≥ 150 = 0 / 100–<150 = 1 / < 100 = 2),
+    PT-INR (≤ 1.2 = 0 / >1.2–1.4 = 1 / > 1.4 = 2), and the total SOFA capped at 2,
+    total 0–6. SOURCE-GOVERNANCE: SIC is met when the total is ≥ 4 **and** the
+    platelet + PT-INR subscore is **≥ 3** (re-fetch corrected a ≥ 2 first reading);
+    the SOFA item alone can never diagnose SIC.
+  - **`cpis-vap`** — Clinical Pulmonary Infection Score (Pugin J, et al, *Am Rev
+    Respir Dis* 1991; modified culture-inclusive form): six components 0/1/2
+    (temperature, leukocytes with a +1 band-forms ≥ 50% bonus, secretions,
+    oxygenation with the ARDS exclusion, radiograph, culture with a +1
+    same-organism bonus) summed 0–12; **> 6 suggests VAP**. The leukocyte bonus
+    uses the Pugin band-forms ≥ 50% form (not MDCalc's absolute ≥ 500 rendering).
+  - **`lactate-clearance`** (Group E) — lactate clearance (Nguyen HB, et al, *Crit
+    Care Med* 2004): (initial − repeat) / initial × 100; **≥ 10%** is the cited
+    favorable early range. **Division by zero is guarded** (initial must be > 0); a
+    repeat above the initial reports a correctly-signed negative clearance (rising
+    lactate), never NaN/Infinity.
+  - **`mrc-sum-score`** — MRC sum score (De Jonghe B, et al, *JAMA* 2002): six
+    movements graded bilaterally (12 muscle groups), each 0–5, sum 0–60; **< 48**
+    defines ICU-acquired weakness, < 36 severe. The upper-limb movement is elbow
+    **flexion** (two secondary sources transcribe "extension" in error).
+  - **Wave 3 opens:** with v112 the spec-v100 program enters Wave 3 at **492**
+    tiles (487 → 492, +5).
+
 ### Added (spec-v111: environmental & wilderness medicine, +4 — spec-v100 Wave 2 **complete**)
 
 - **Sixth feature spec and the closing spec of Wave 2** of the

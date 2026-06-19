@@ -1771,3 +1771,62 @@ amputation of the digit with functional sequelae; grade 4 (carpal-tarsal area)
 bone amputation of the limb with functional sequelae.
 Worked example: a distal-phalanx lesion (grade 2 by topography) with absent
 bone-scan uptake in the carpal-tarsal area is upgraded to grade 4.
+
+### MEDS Score (Mortality in Emergency Department Sepsis)
+Citation: Shapiro NI, Wolfe RE, Moore RB, Smith E, Burdick E, Bates DW. Mortality
+in Emergency Department Sepsis (MEDS) score: a prospectively derived and validated
+clinical prediction rule. Crit Care Med. 2003;31(3):670-675.
+Rule: nine weighted items summed to a total of 0-27 -- terminal illness 6,
+tachypnea or hypoxia 3, septic shock 3, platelets below 150k 3, bands above 5% 3,
+age above 65 3, lower respiratory infection 2, nursing-home resident 2, and
+altered mental status 2. The 28-day mortality bands are very low 0-4 (~0.9%), low
+5-7 (~2.0%), moderate 8-12 (~7.8%), high 13-15 (~20%), and very high at or above
+16 (~50%).
+Worked example: terminal illness, septic shock, and age above 65 sum to a total
+of twelve, the moderate band.
+
+### Sepsis-Induced Coagulopathy (SIC) Score
+Citation: Iba T, Levy JH, Warkentin TE, Thachil J, van der Poll T, Levi M.
+Diagnosis and management of sepsis-induced coagulopathy and disseminated
+intravascular coagulation. J Thromb Haemost. 2019;17(11):1989-1994.
+Rule: three items -- platelet count (at or above 150 scores 0, 100 to below 150
+scores 1, below 100 scores 2), PT-INR (at or below 1.2 scores 0, above 1.2 to 1.4
+scores 1, above 1.4 scores 2), and the total SOFA capped at 2 -- for a total of
+0-6. SIC is met when the total is at or above 4 and the platelet plus PT-INR
+subscore is at or above 3, so the SOFA item alone cannot diagnose SIC.
+Worked example: a platelet count of eighty, a PT-INR of 1.6, and a SOFA of zero
+sum to a total of four with a coag subscore of four, meeting the SIC criteria.
+
+### Clinical Pulmonary Infection Score (CPIS)
+Citation: Pugin J, Auckenthaler R, Mili N, Janssens JP, Lew PD, Suter PM.
+Diagnosis of ventilator-associated pneumonia by bacteriologic analysis of
+bronchoscopic and nonbronchoscopic blind bronchoalveolar lavage fluid. Am Rev
+Respir Dis. 1991;143(5 Pt 1):1121-1129.
+Rule: six components scored zero, one, or two -- temperature, leukocytes (with a
+bonus point for band forms at or above 50%), tracheal secretions, oxygenation by
+the PaO2 over FiO2 ratio with the ARDS exclusion, chest radiograph, and culture
+(with a bonus point for the same organism on Gram stain) -- for a total of 0-12.
+A score above six suggests ventilator-associated pneumonia.
+Worked example: a febrile patient with abnormal leukocytes, purulent secretions,
+a low oxygenation ratio, and a diffuse infiltrate scores in the VAP-likely range.
+
+### Lactate Clearance
+Citation: Nguyen HB, Rivers EP, Knoblich BP, Jacobsen G, Muzzin A, Ressler JA,
+Tomlanovich MC. Early lactate clearance is associated with improved outcome in
+severe sepsis and septic shock. Crit Care Med. 2004;32(8):1637-1642.
+Rule: the percentage fall between two draws, the initial minus the repeat, divided
+by the initial, times one hundred. A clearance at or above ten percent over the
+early hours was associated with improved outcome; a negative value means the
+lactate rose. The initial lactate must be above zero.
+Worked example: an initial lactate of four falling to a repeat of two is a fifty
+percent clearance, in the favorable range.
+
+### MRC Sum Score (ICU-Acquired Weakness)
+Citation: De Jonghe B, Sharshar T, Lefaucheur JP, et al. Paresis acquired in the
+intensive care unit: a prospective multicenter study. JAMA. 2002;288(22):2859-2867.
+Rule: six movements graded bilaterally (shoulder abduction, elbow flexion, wrist
+extension, hip flexion, knee extension, and ankle dorsiflexion -- twelve muscle
+groups), each zero to five on the MRC scale, for a sum of 0-60. A sum below
+forty-eight defines ICU-acquired weakness; below thirty-six is severe.
+Worked example: every group graded four sums to forty-eight, at the threshold, so
+ICU-acquired weakness is not met; one group dropping to three flips it.

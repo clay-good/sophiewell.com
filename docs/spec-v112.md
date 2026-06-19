@@ -1,12 +1,15 @@
 # spec-v112.md — ICU mortality & sepsis-coagulopathy: MEDS, SIC, CPIS-VAP, lactate clearance, and MRC sum score (+5 tiles)
 
-> Status: **PROPOSED (2026-06-17).** Feature spec of the
+> Status: **SHIPPED (2026-06-19).** Feature spec of the
 > [spec-v100](spec-v100.md) **MDCalc Parity Completion** program, **Wave 3 —
 > Critical care & pulmonary** ([spec-v100 §4](spec-v100.md)). Adds **5**
 > deterministic critical-care decision rules that fill confirmed gaps. None
 > duplicates a live tile.
 >
-> Catalog effect at v112 close: **488 + 5 = 493 tiles.**
+> Catalog effect at v112 close: **487 + 5 = 492 tiles** (the program's running
+> count carried a one-tile drift from the v109 reconciliation — see
+> [spec-v111](spec-v111.md) — so v112 lands at 492, not the draft's 493; the
+> catalog-truth gate enforces the live count + 5).
 >
 > Every prior spec (v4 through v111) remains in force. v112 adds no runtime
 > network call and no AI; each tile obeys the [spec-v100 §2](spec-v100.md)
