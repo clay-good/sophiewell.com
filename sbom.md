@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `9d866e5628d38e3c`
-Generated: 2026-06-19T14:14:31.762Z
+Build ID: `7f724be163ea87ee`
+Generated: 2026-06-19T14:46:24.107Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=20.18.1 <21, npm >=10.0.0
@@ -24,13 +24,13 @@ downloads is committed in this repository and is hashed below.
 
 | Path | Bytes | SHA-256 |
 |---|---:|---|
-| `index.html` | 44729 | `480ca73065d813f2bf4fb9e56cf375ce6c36f1c2b86e461bd52f109816ddf175` |
+| `index.html` | 44898 | `a3779ccebfcf37cc7a21d3ad06c2916838b2acca009df4731914e26313879730` |
 | `styles.css` | 42819 | `bea421c79d390a364eb571c3a9599cdf28264128d4ac02d7abb00f31000c7cda` |
-| `app.js` | 138135 | `afbe1d02a8a9ddb9dd37643238cfc8e5fb63fe60545969591555f5245e5523a7` |
+| `app.js` | 138998 | `b2493d2a54796ef87b379b87ffb1ace20eef31bfcd04055d02abf0a15b36fd6a` |
 | `sw.js` | 4622 | `b891d4344f8e04403b7f1d307fd446cc224bddc6f0c4397438a17d197351171e` |
 | `site.webmanifest` | 709 | `0e0de4da60590a12e8b27a0ae2a2f5ffdb6500b7d2b78f93631ec2f64ed3d5ce` |
 | `robots.txt` | 127 | `38fbf9c1854e72abb20e01e81dd5a31d4ea96f154c12d5db1ec3af05524dd1a1` |
-| `sitemap.xml` | 76396 | `89ed3c48faf485293a1857f8100136e78a045ba90fde4fee2ebfd8ef7475c5c0` |
+| `sitemap.xml` | 76864 | `8e099b718086689f77b4ede2211eb818da02eb41a5fa13cd5b68d7a4f6005af4` |
 | `_headers` | 1316 | `2f39986457d2feff7e73e491a7d09ee871e8f2f4cc2bc437f86bd86a42554ec6` |
 | `logo.png` | 63440 | `11afaf1b0d3ca68393d202e4810bf766b5b6d591b4e3ec52f41d3cacaa4616ec` |
 | `favicon.ico` | 7411 | `407fde0ca2788409e87e11f596fa02e6a0b121817fcea7fd995beec1801e287b` |
@@ -71,6 +71,7 @@ downloads is committed in this repository and is hashed below.
 | `lib/enviro-v111.js` | 14119 | `77ba090d075f4f9fd608f9afc6f30b68fd3612f5c6719addbe75658a7e6a12ae` |
 | `lib/field-units.js` | 4669 | `953f803a1f251fe4945f4b98659bfbdd76f45386006c9a298fc931db6a2a8c2f` |
 | `lib/field.js` | 12156 | `6a6b07f76a519a8f873a37a9b57c52909e9088c3a09bd256e0ac60240e16d2ea` |
+| `lib/fluidresp-v113.js` | 8525 | `c40f34894d85e2aa6bbe92e153e89e922b8331cd6b6882660f771a3fe9106e1d` |
 | `lib/gli-2012-data.js` | 41979 | `0fa7440b8d9ab03028185d56c7a6bc9e1e753fe3ac396c208eb06f80991ba125` |
 | `lib/hash.js` | 4585 | `de41dadb11142ea86f1536176e94408ac124ca90305161fe04f1956355512403` |
 | `lib/hemodynamics-v87.js` | 8607 | `1bc8bc1408afb3fbc602d2748bfa1c8c68eb89fafabb18dd5e9c1a2589ff0276` |
@@ -84,7 +85,7 @@ downloads is committed in this repository and is hashed below.
 | `lib/live.js` | 1138 | `304978d3c170b6eb06cade7702e5f99d868e9b3e1f5651aa9a28da15e62a6a9c` |
 | `lib/medication-v4.js` | 18192 | `467f9576c50da696cc56094eb022d0a5ed1e88de0c7618448554ede8067270b0` |
 | `lib/medication-v5.js` | 18863 | `ce81d9f8954abbd412892c13af9936f992239164f26fd2b999eaea7902787ab7` |
-| `lib/meta.js` | 833789 | `47a99d5b2d2a9c5ce6570a6e92d101d22af70d07c8178e18e54e94879815bae1` |
+| `lib/meta.js` | 837510 | `5d6cd4190ac2b396be82819d98b0efa365710eec0562e0e3d98df45ae702d65c` |
 | `lib/metabolic-onc-v88.js` | 12659 | `1553b641668c121661a66647da71a4aaaa023e9f3a6b7a753efbcdab27cdba81` |
 | `lib/nephro-v92.js` | 15980 | `64bbc05482eed2ab88816f676ab5e56aefae9d4f5d85d223217a03160d1cc082` |
 | `lib/neuro-v95.js` | 14709 | `7f7e4f5a0877afa8efbf6cc69f8b0549370bcdbcb5d7ed1dfcea1a5ee7266e85` |
@@ -168,6 +169,7 @@ downloads is committed in this repository and is hashed below.
 | `views/group-v35.js` | 10362 | `345646cf73716e4125cf18cf2a1a1c6ae16ee526ea0b0ee418fc2ea7ffd47bea` |
 | `views/group-v36.js` | 9701 | `27235c5bd11c79ea046d75fe20f455c2648c6cbc31a1e1f2a9c1fccbcd41c693` |
 | `views/group-v37.js` | 11617 | `226c257859dce67a7cb4a140f1467dde712f40f67ee9d08cd93707c69e83107a` |
+| `views/group-v38.js` | 6650 | `ebbf67a8d2bd2502456700ecd417d63e899e4493bb740138bc07b1f87c34aff5` |
 | `views/group-v5.js` | 32719 | `d73b5c41e36fc3d6ecdfd1803787adbcee86ff16b8e1cd387d36d3db0f2a3248` |
 | `views/group-v6.js` | 5707 | `425918decb48cd9efac9fc5590ac8970a54c03c3b0df056fb99c9a22ff8dd1b2` |
 | `views/group-v63.js` | 14377 | `962d84b97e82bc39635801da79ecaa93fc0b501b5988b7d321b0f1f630497fab` |

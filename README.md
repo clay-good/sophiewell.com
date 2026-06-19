@@ -5,7 +5,7 @@
 <h1 align="center">sophiewell.com</h1>
 
 <p align="center">
-  <strong>492 deterministic healthcare calculators tuned to the nurse on shift.</strong><br>
+  <strong>495 deterministic healthcare calculators tuned to the nurse on shift.</strong><br>
   Free forever. No servers, no accounts, no telemetry, no AI, no network call after first paint.
 </p>
 
@@ -36,7 +36,7 @@ output; "searchable lookup of static facts" does not qualify. See
 [docs/spec-v10.md](docs/spec-v10.md) for the audience and
 dependency-budget commitments and
 [docs/spec-v29.md](docs/spec-v29.md) for the nurse-first pivot
-and the v29 catalog ledger. At v112 close the catalog is 492
+and the v29 catalog ledger. At v113 close the catalog is 495
 deterministic tiles — every one of them computes from at least
 one user input. The catalog reached its present size on two tracks.
 **New tiles:** spec-v63 added the operations counterpart to the bedside
@@ -186,7 +186,7 @@ production security headers. Any static file server will also work.
 ## How it works and how to use it
 
 Since the spec-v29 nurse-first prune the catalog has grown one
-reviewable spec at a time to **492** deterministic calculators
+reviewable spec at a time to **495** deterministic calculators
 (the full per-version history is in [CHANGELOG.md](CHANGELOG.md)
 and `docs/spec-v*.md`; the most recent bedside additions are
 summarized in the cheat sheets below). They organize across the
@@ -1023,7 +1023,7 @@ Duke-ISCVID) and `refeeding-risk` (NICE CG32) are **Class B** with
 [citation-staleness](docs/citation-staleness.md) rows; the other three are
 **Class A**. See [docs/spec-v99.md](docs/spec-v99.md).
 
-### MDCalc parity completion: the cardiology / vascular / lipid surface (spec-v100 program, Wave 1: spec-v101 → spec-v105, +25 → 457, **complete**; Wave 2 complete: spec-v106 → 463, spec-v107 → 467, spec-v108 → 473, spec-v109 → 478, spec-v110 → 483, spec-v111 → 487, **+30 → 487**; Wave 3 (Critical care & pulmonary): spec-v112 → 492, **+5 so far**)
+### MDCalc parity completion: the cardiology / vascular / lipid surface (spec-v100 program, Wave 1: spec-v101 → spec-v105, +25 → 457, **complete**; Wave 2 complete: spec-v106 → 463, spec-v107 → 467, spec-v108 → 473, spec-v109 → 478, spec-v110 → 483, spec-v111 → 487, **+30 → 487**; Wave 3 (Critical care & pulmonary): spec-v112 → 492, spec-v113 → 495, **+8 so far**)
 
 With the spec-v85 program complete, [spec-v100](docs/spec-v100.md) charters the
 **MDCalc Parity Completion** program — a roadmap that closes the remaining gaps
@@ -1350,6 +1350,34 @@ frames mortality / amputation risk to inform triage and transport, it does not
 author a descent, antivenom, debridement, or amputation order.
 `lib/enviro-v111.js` + `views/group-v36.js`. **This closes Wave 2 of the
 spec-v100 program (457 → 487, +30).**
+
+#### spec-v113 — dynamic fluid-responsiveness indices (+3 → 495, Wave 3)
+
+Wave 3 continues with the three **dynamic preload-responsiveness** indices an
+intensivist uses at the bedside to decide whether a fluid bolus will help. The
+catalog computed *static* hemodynamics (`hemodynamic-suite`, MAP, shock index,
+cardiac-output math) but none of the dynamic indices. All three home in **Clinical
+Math & Conversions (Group E)**:
+
+| id | Rule | Output | Class |
+|---|---|---|---|
+| `ivc-fluid-responsiveness` | Barbier 2004 IVC index — spontaneous **collapsibility** (Dmax − Dmin)/Dmax × 100, mechanical **distensibility** (Dmax − Dmin)/Dmin × 100 | **index %, dIVC ≥ ~18% predicts a response**, per-mode denominator guard | A |
+| `ppv-svv` | Michard 2000 — variation = (max − min)/([max + min]/2) × 100 | **% variation, PPV > ~13% / SVV > ~12%**, guarded mean denominator | A |
+| `passive-leg-raise` | Monnet 2006 — %ΔSV = (peak − baseline)/baseline × 100 | **% change, ≥ 10–15% predicts a response**, guarded baseline | A |
+
+Each tile **reports the index, not the fluid order** (spec-v11 §5.3): the
+give-fluid / withhold / start-pressor decision stays with the clinician and local
+protocol. The applicability caveats are rendered as a spec-v50 §3 posture note,
+not enforced as a refusal — PPV/SVV require a regular rhythm, controlled
+ventilation, and an adequate tidal volume; the IVC index mode must match the
+breathing mode; the PLR technique (semi-recumbent baseline, measure within ~1 min)
+is stated. Every ratio **guards its denominator** strictly positive, and a min
+above max (IVC/PPV) or a peak below baseline (PLR) is surfaced as a
+correctly-signed negative value in words, never clamped or leaked as
+`NaN`/`Infinity`. All three are **Class A** (fixed ratio arithmetic with cited
+thresholds), so none forces a `docs/citation-staleness.md` row.
+`lib/fluidresp-v113.js` + `views/group-v38.js`. **Wave 3 reaches 495 (492 → 495,
++3).**
 
 #### spec-v112 — ICU mortality & sepsis-coagulopathy (+5 → 492, **Wave 3 opens**)
 
@@ -1709,7 +1737,7 @@ long version, see [docs/architecture.md](docs/architecture.md).
  │  manifests (data/)            │  static │        ▼                     ▼             │
  │        │  scripts/build       │  files  │   lazy-load data shard   pure compute      │
  │        ▼                      │         │   (verified vs manifest)  (lib/*.js)       │
- │  dist/  (492 tool pages,      │         │        │                     │             │
+ │  dist/  (495 tool pages,      │         │        │                     │             │
  │  OG cards, sitemap, SBOM)     │         │        ▼                     ▼             │
  └───────────────────────────────┘         │   service worker cache    result + cite   │
                                             │   (keyed to build hash)                    │
@@ -1731,7 +1759,7 @@ assets:
 
 | Output | Count | Source |
 |--------|------:|--------|
-| Pre-rendered tool pages (`dist/tools/<id>/`) | 492 | `scripts/build-tool-pages.mjs` |
+| Pre-rendered tool pages (`dist/tools/<id>/`) | 495 | `scripts/build-tool-pages.mjs` |
 | Audience hub pages (`dist/for/<audience>/`) | 6 | `scripts/build-hub-pages.mjs` |
 | Topic pages + `/topics/` index | 8 + 1 | `scripts/build-topic-pages.mjs` |
 | `/commitments/` | 1 | `scripts/build-commitments-page.mjs` |
@@ -1766,7 +1794,7 @@ static pages, so a tile can never ship mobile overflow undetected.
 index.html          single-page shell (hero-search combobox + static browse-by-category nav, tile mount)
 styles.css          one stylesheet (responsive; no horizontal scroll — enforced catalog-wide at 320px in CI)
 app.js              router, hero-search wiring, view wiring, the UTILITIES catalog
-                    (492 tiles — the single source of truth; zero runtime deps)
+                    (495 tiles — the single source of truth; zero runtime deps)
 sw.js               service worker — precache shell, cache shards by build hash
 theme.js            light/dark theme toggle (writes only sw-theme, allowlisted)
 lib/input-persist.js opt-in "remember my inputs" (off by default; numbers only)
@@ -1784,12 +1812,12 @@ docs/               specs (spec-v4 onward) + per-tile v11/v12 audit logs +
                     citation-staleness ledger +
                     architecture / threat-model / …
 test/               unit/ (node:test) · integration/ (Playwright) · fixtures/
-dist/               build output (492 tool pages, OG cards, sitemap, SBOM)
+dist/               build output (495 tool pages, OG cards, sitemap, SBOM)
 ```
 
-### Discovery: how a query finds the right tool among 492
+### Discovery: how a query finds the right tool among 495
 
-With 492 tiles, search quality *is* the product — a tool you cannot find does
+With 495 tiles, search quality *is* the product — a tool you cannot find does
 not exist. Discovery is deterministic and offline (no fuzzy-match service, no
 embedding model, no AI). The home `#hero-search` combobox builds its dropdown
 from two complementary rankers, both pure functions of the typed query:
@@ -1862,10 +1890,10 @@ A login-less, AI-free calculator earns trust only if the nurse can see, on the
 tile, exactly which published source produced the number — and tell whether that
 source is current. spec-v54 defined the invariants; spec-v60 built the machinery
 (the gate, the ledger, and the `citationAccessed` convention) and extended it
-across the full 492-tile catalog, pinning the last three unpinned "current
+across the full 495-tile catalog, pinning the last three unpinned "current
 edition" phrases and re-verifying every guideline tile against its latest known
 edition. Three invariants make that auditable, each enforced by the
-`check-citations.mjs` lint gate (in the `npm run lint` chain) over all 492 tiles:
+`check-citations.mjs` lint gate (in the `npm run lint` chain) over all 495 tiles:
 
 | Invariant | Rule | Enforcement |
 |---|---|---|
@@ -2322,7 +2350,7 @@ rules, not soft preferences.
 | `npm run build`          | Copy static files into `dist/` for deployment                     |
 | `npm test`               | Run the full test suite (unit, a11y, grep, data integrity)        |
 | `npm run test:unit`      | Run Node's built-in unit tests (4,332 tests)                      |
-| `npm run test:e2e`       | Build `dist/`, then run Playwright integration tests against real browsers — incl. a full-catalog 320px no-horizontal-scroll sweep over both the SPA routes and the 492 pre-rendered static tool pages, the hub/topic/commitments pages, and the citation-wrap pin |
+| `npm run test:e2e`       | Build `dist/`, then run Playwright integration tests against real browsers — incl. a full-catalog 320px no-horizontal-scroll sweep over both the SPA routes and the 495 pre-rendered static tool pages, the hub/topic/commitments pages, and the citation-wrap pin |
 | `npm run test:a11y`      | Run accessibility checks on every utility view                    |
 | `npm run lint`           | ESLint + the CI gate chain: grep-check, output-safety, citation-integrity, catalog-truth, commitments, PA staleness, PA audit |
 | `npm run data:refresh`   | Re-fetch and re-shard every public dataset                        |
@@ -2406,7 +2434,7 @@ build, integrity-verified data shards) are documented in
 - [docs/spec-v11.md](docs/spec-v11.md) — correctness-floor spec:
   per-tile audit protocol, specialty-named groups, optional
   source-quoted `interpretation` field. Audit coverage is **complete
-  — 492/492 tiles** carry a committed per-tile audit log
+  — 495/495 tiles** carry a committed per-tile audit log
   (`docs/audits/v11/<id>.md` for the pre-v78 catalog;
   `docs/audits/v12/<id>.md` for the tiles added since — the
   spec-v78–v83 billing & coding program, the spec-v85

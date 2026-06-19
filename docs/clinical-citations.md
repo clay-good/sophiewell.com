@@ -1830,3 +1830,47 @@ groups), each zero to five on the MRC scale, for a sum of 0-60. A sum below
 forty-eight defines ICU-acquired weakness; below thirty-six is severe.
 Worked example: every group graded four sums to forty-eight, at the threshold, so
 ICU-acquired weakness is not met; one group dropping to three flips it.
+
+### IVC Collapsibility / Distensibility Index
+Citation: Barbier C, Loubieres Y, Schmit C, Hayon J, Ricome JL, Jardin F,
+Vieillard-Baron A. Respiratory changes in inferior vena cava diameter are helpful
+in predicting fluid responsiveness in ventilated septic patients. Intensive Care
+Med. 2004;30(9):1740-1746.
+Rule: in the mechanically ventilated patient the distensibility index is the
+maximum minus the minimum IVC diameter, divided by the minimum, times one hundred,
+with a cutoff of about eighteen percent predicting a fluid response; in the
+spontaneously breathing patient the collapsibility (caval) index divides the same
+difference by the maximum, with a high value (about forty to fifty percent)
+suggesting responsiveness. The index mode must match the breathing mode; each
+denominator is guarded above zero.
+Worked example: a ventilated patient with a maximum IVC of two and a minimum of
+one-point-six gives a distensibility of twenty-five percent, above the cited
+threshold.
+
+### Pulse-Pressure / Stroke-Volume Variation
+Citation: Michard F, Boussat S, Chemla D, Anguel N, Mercat A, Lecarpentier Y,
+Richard C, Pinsky MR, Teboul JL. Relation between respiratory changes in arterial
+pulse pressure and fluid responsiveness in septic patients with acute circulatory
+failure. Am J Respir Crit Care Med. 2000;162(1):134-138.
+Rule: the variation is the maximum minus the minimum over a respiratory cycle,
+divided by their mean, times one hundred. A pulse-pressure variation above about
+thirteen percent (and the commonly-cited stroke-volume variation above about
+twelve percent) predicts fluid responsiveness, but only in a patient with a
+regular rhythm, controlled ventilation, and an adequate tidal volume; arrhythmia,
+spontaneous effort, or low tidal volume invalidate it. The mean denominator is
+guarded above zero.
+Worked example: a maximum pulse pressure of fifty and a minimum of forty is a
+variation of about twenty-two percent, above the threshold.
+
+### Passive Leg Raise Stroke-Volume Response
+Citation: Monnet X, Rienzo M, Osman D, Anguel N, Richard C, Pinsky MR, Teboul JL.
+Passive leg raising predicts fluid responsiveness in the critically ill. Crit Care
+Med. 2006;34(5):1402-1407.
+Rule: the percentage change is the peak minus the baseline, divided by the
+baseline, times one hundred. Starting semi-recumbent, tilting the trunk down and
+the legs up autotransfuses venous blood; a real-time stroke-volume surrogate rise
+of at least ten to fifteen percent, measured within about one minute, predicts
+fluid responsiveness regardless of rhythm or ventilation mode. The baseline
+denominator is guarded above zero.
+Worked example: a baseline stroke volume of sixty rising to a peak of seventy-two
+is a twenty percent change, above the threshold.

@@ -5,7 +5,7 @@
 sophiewell.com is a single-page static web application. There is no backend. The
 browser receives `index.html`, `styles.css`, and `app.js` from the same origin,
 boots a vanilla JavaScript application, and renders the home view (a
-hero-search combobox over all 492 utilities plus a static browse-by-category
+hero-search combobox over all 495 utilities plus a static browse-by-category
 nav). Each utility runs entirely client side and operates either on user-supplied
 input or on bundled reference data served from the same origin.
 

@@ -6,6 +6,39 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v113: dynamic fluid-responsiveness indices, +3 — spec-v100 Wave 3)
+
+- **Wave 3 (Critical care & pulmonary)** of the [spec-v100](docs/spec-v100.md)
+  MDCalc Parity Completion program continues. Three deterministic **dynamic
+  preload-responsiveness indices** (catalog **492 → 495**), via
+  `lib/fluidresp-v113.js` + `views/group-v38.js` (`RV38`). All three home in
+  **Clinical Math & Conversions (Group E)**, beside the static `hemodynamic-suite`
+  / `shock-index` tiles. Each renders the spec-v50 §3 applicability/technique
+  posture note (the tile reports the index and the source's responsiveness
+  threshold; the give-fluid / withhold / start-pressor decision stays with the
+  clinician). None duplicates a live tile. No new specialty tag. All **Class A** —
+  fixed ratio arithmetic with cited thresholds — so no
+  [docs/citation-staleness.md](docs/citation-staleness.md) row.
+  - **`ivc-fluid-responsiveness`** — IVC collapsibility / distensibility index
+    (Barbier C, et al, *Intensive Care Med* 2004): mechanically ventilated
+    distensibility dIVC = (Dmax − Dmin) / Dmin × 100, with the cited **~18%**
+    fluid-response cutoff; spontaneous-breathing collapsibility (caval) index =
+    (Dmax − Dmin) / Dmax × 100, with the widely-taught ~40–50% suggestive range.
+    The denominator is guarded per mode (Dmax > 0 collapsibility, Dmin > 0
+    distensibility).
+  - **`ppv-svv`** — pulse-pressure / stroke-volume variation (Michard F, et al,
+    *Am J Respir Crit Care Med* 2000): variation = (max − min) / ([max + min] / 2)
+    × 100; **PPV > ~13%** (and the commonly-cited **SVV > ~12%**) predicts
+    responsiveness — only in a regular-rhythm, controlled-ventilation patient with
+    an adequate tidal volume. The (max + min)/2 mean denominator is guarded > 0.
+  - **`passive-leg-raise`** — passive leg raise stroke-volume response (Monnet X,
+    et al, *Crit Care Med* 2006): %ΔSV = (peak − baseline) / baseline × 100; a rise
+    of **≥ 10–15%** predicts responsiveness regardless of rhythm or ventilation
+    mode. The baseline denominator is guarded > 0; a fall reports a
+    correctly-signed negative change, never NaN/Infinity.
+  - **Wave 3 continues:** with v113 the program reaches **495** tiles (492 → 495,
+    +3).
+
 ### Added (spec-v112: ICU mortality & sepsis-coagulopathy, +5 — spec-v100 Wave 3 **opens**)
 
 - **First feature spec of Wave 3 (Critical care & pulmonary)** of the

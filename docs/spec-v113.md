@@ -1,12 +1,15 @@
 # spec-v113.md — Dynamic fluid-responsiveness indices: IVC collapsibility/distensibility, PPV/SVV, and passive leg raise (+3 tiles)
 
-> Status: **PROPOSED (2026-06-17).** Feature spec of the
+> Status: **SHIPPED (2026-06-19).** Feature spec of the
 > [spec-v100](spec-v100.md) **MDCalc Parity Completion** program, **Wave 3 —
 > Critical care & pulmonary** ([spec-v100 §4](spec-v100.md)). Adds **3**
 > deterministic preload-responsiveness math tiles that fill confirmed gaps. None
 > duplicates a live tile.
 >
-> Catalog effect at v113 close: **493 + 3 = 496 tiles.**
+> Catalog effect at v113 close: **492 + 3 = 495 tiles.** (The live count at
+> implementation was 492, one below the 493 the spec drafts assumed — the
+> program's running narrative carried a known off-by-one; the catalog-truth gate
+> enforces the live `UTILITIES.length + 3`.)
 >
 > Every prior spec (v4 through v112) remains in force. v113 adds no runtime
 > network call and no AI; each tile obeys the [spec-v100 §2](spec-v100.md)
