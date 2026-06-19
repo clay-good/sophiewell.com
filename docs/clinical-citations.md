@@ -1605,3 +1605,63 @@ chest-wall tenderness, a rapid-deceleration mechanism, age over 60, intoxication
 abnormal alertness each flag the patient. If all are negative, chest CT can be
 deferred; any positive criterion means chest CT may be indicated.
 Worked example: an age over 60 alone flags the patient, so chest CT may be indicated.
+
+### Expanded Denver Criteria for blunt cerebrovascular injury (BCVI)
+Citation: Burlew CC, Biffl WL, Moore EE, Barnett CC, Johnson JL, Bensard DD. Blunt
+cerebrovascular injuries: redefining screening criteria in the era of noninvasive
+diagnosis. J Trauma Acute Care Surg. 2012;72(2):330-337.
+Rule: CT angiography screening for BCVI is indicated if any sign/symptom (arterial
+hemorrhage from neck/nose/mouth, cervical bruit under age 50, expanding hematoma,
+focal neurologic deficit, exam incongruous with head CT, or stroke on secondary CT)
+or any high-energy-mechanism risk factor (LeFort II/III, a cervical-spine fracture
+pattern, basilar skull fracture with carotid-canal involvement, diffuse axonal
+injury with GCS below 6, near-hanging with anoxia, or a seatbelt/clothesline injury
+with cervical swelling, pain, or altered mental status) is present.
+Worked example: an expanding cervical hematoma alone indicates CTA screening.
+
+### AAST Organ Injury Scale (spleen, liver, kidney) -- 2018 revision
+Citation: Kozar RA, Crandall M, Shanmuganathan K, et al; AAST Patient Assessment
+Committee. Organ injury scaling 2018 update: spleen, liver, and kidney. J Trauma
+Acute Care Surg. 2018;85(6):1119-1122.
+Rule: grades spleen, liver, and kidney trauma I through V from the worst anatomic
+finding (hematoma extent, intraparenchymal size, laceration depth). The 2018
+revision added the vascular rule: a vascular injury or active bleeding contained
+within the organ raises the grade, and active bleeding extending beyond the organ
+raises it one grade higher. The final grade is the higher of the anatomic and the
+vascular grade.
+Worked example: a spleen grade II laceration with a contained vascular injury is
+upgraded to grade IV by the 2018 vascular rule.
+
+### Mangled Extremity Severity Score (MESS)
+Citation: Johansen K, Daines M, Howey T, Helfet D, Hansen ST Jr. Objective criteria
+accurately predict amputation following lower extremity trauma. J Trauma.
+1990;30(5):568-573.
+Rule: sums skeletal/soft-tissue injury energy (1-4), limb ischemia (1-3, doubled
+when ischemia time exceeds 6 hours), shock (0-2 by systolic BP), and an age band
+(0-2). A total at or above 7 was historically associated with amputation; the score
+informs, never dictates, the salvage-vs-amputation decision.
+Worked example: skeletal energy 3 plus a doubled ischemia subscore of 4 reaches a
+total of 7, at the amputation-associated threshold.
+
+### LRINEC score (Laboratory Risk Indicator for Necrotizing Fasciitis)
+Citation: Wong CH, Khin LW, Heng KS, Tan KC, Low CO. The LRINEC (Laboratory Risk
+Indicator for Necrotizing Fasciitis) score: a tool for distinguishing necrotizing
+fasciitis from other soft tissue infections. Crit Care Med. 2004;32(7):1535-1541.
+Rule: bands six routine labs -- CRP at or above 150 mg/L scores 4; WBC 15-25 or
+above 25 scores 1 or 2; hemoglobin 11-13.5 or below 11 scores 1 or 2; sodium below
+135 scores 2; creatinine above 1.6 mg/dL scores 2; glucose above 180 mg/dL scores 1
+(range 0-13). Low risk is 5 or below, intermediate 6-7, high 8 or above; a score of
+6 or above should raise suspicion. A low score does not rule out necrotizing
+fasciitis.
+Worked example: CRP 180, WBC 26, and hemoglobin 10 give a score of 8, the high band.
+
+### ALT-70 cellulitis score
+Citation: Raff AB, Weng QY, Cohen JM, et al. A predictive model for diagnosis of
+lower extremity cellulitis: a risk score based on clinical and patient
+characteristics. J Am Acad Dermatol. 2017;76(4):618-625.
+Rule: Asymmetry scores 3, leukocytosis (WBC at or above 10) scores 1, tachycardia
+(heart rate at or above 90) scores 1, and age at or above 70 scores 2 (range 0-7).
+A total of 2 or below means cellulitis is unlikely, 3-4 is indeterminate, and 5 or
+above means cellulitis is likely.
+Worked example: asymmetry plus leukocytosis plus tachycardia gives a score of 5,
+cellulitis likely.

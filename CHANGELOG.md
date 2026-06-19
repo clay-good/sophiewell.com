@@ -6,6 +6,48 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v109: trauma classification & soft-tissue infection, +5 — spec-v100 Wave 2)
+
+- **Fourth feature spec of Wave 2** of the [spec-v100](docs/spec-v100.md) MDCalc
+  Parity Completion program. Five deterministic **trauma-classification and
+  soft-tissue-infection decision rules** (catalog **473 → 478**), via
+  `lib/traumaclass-v109.js` + `views/group-v34.js` (`RV34`), all in Group G. None
+  duplicates a live tile; each fills a confirmed gap beside the existing `iss-rts`,
+  `triss`, and `abc-mtp` trauma tiles. No new specialty tag.
+  - **`denver-bcvi`** — the **Expanded Denver Criteria** (Burlew CC, Biffl WL,
+    Moore EE, et al, *J Trauma Acute Care Surg* 2012): CT-angiography screening for
+    blunt cerebrovascular injury is indicated if any of the six signs/symptoms or
+    six high-energy-mechanism risk factors is present. **Class B**.
+  - **`aast-organ-injury`** — the **AAST 2018 Organ Injury Scale** (Kozar RA,
+    Crandall M, Shanmuganathan K, et al, *J Trauma Acute Care Surg* 2018): a
+    per-organ decision tree (spleen/liver/kidney) returning grade I–V as the higher
+    of the worst anatomic finding and the 2018 contained-vs-extending vascular rule
+    (spleen contained IV / beyond V; liver and kidney contained III / beyond IV).
+    The anatomic-finding select rebuilds when the organ changes. **Class B**.
+  - **`mangled-extremity`** — the **Mangled Extremity Severity Score** (Johansen K,
+    et al, *J Trauma* 1990): skeletal energy (1–4) + limb ischemia (1–3, **doubled
+    if ischemia time > 6 h**) + shock (0–2) + age (0–2); total ~2–14, with **≥ 7**
+    historically associated with amputation. **Class A**.
+  - **`lrinec`** — the **LRINEC score** (Wong CH, et al, *Crit Care Med* 2004):
+    CRP/WBC/Hb/Na/creatinine/glucose banded to a 0–13 total → low ≤ 5 /
+    intermediate 6–7 / high ≥ 8 suspicion of necrotizing fasciitis. **Class A**.
+  - **`alt-70`** — the **ALT-70 cellulitis score** (Raff AB, et al, *J Am Acad
+    Dermatol* 2017): Asymmetry 3, Leukocytosis 1, Tachycardia 1, age ≥ 70 = 2
+    (0–7) → ≤ 2 unlikely / 3–4 indeterminate / ≥ 5 cellulitis likely. **Class A**.
+- **Criteria re-fetched, never recalled** (spec-v97 rule), each cross-verified
+  across ≥ 2 sources (primary paper + MDCalc / RadioGraphics / EAST guideline). The
+  AAST 2018 vascular rule is grade-specific per organ; the MESS ischemia-time
+  doubling raises the ceiling from 11 to 14 and is applied before summing; the
+  LRINEC CRP threshold is 150 mg/L = 15 mg/dL (the common unit-confusion error),
+  with the probability bands kept distinct from the ≥ 6 suspicion cutoff.
+- **Class B rows** for `denver-bcvi` and `aast-organ-injury` in
+  `docs/citation-staleness.md` (documentation-only — the citations name a journal +
+  authors, not an issuer acronym, so the rows are not gate-forced but record the
+  edition in force); the other three are Class A with no row. Five
+  `docs/clinical-citations.md` entries, five `docs/audits/v12/` audit logs, and the
+  catalog count moved on all 13 catalog-truth surfaces. Fixed a pre-existing README
+  typo where the spec-v107 section header read “→ 473” (should be 467).
+
 ### Added (spec-v108: trauma severity scores & decision rules, +6 — spec-v100 Wave 2)
 
 - **Third feature spec of Wave 2** of the [spec-v100](docs/spec-v100.md) MDCalc

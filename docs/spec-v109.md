@@ -1,12 +1,13 @@
 # spec-v109.md — Trauma classification & soft-tissue infection: Denver BCVI, AAST organ injury, MESS, LRINEC, and ALT-70 (+5 tiles)
 
-> Status: **PROPOSED (2026-06-17).** Feature spec of the [spec-v100](spec-v100.md)
+> Status: **SHIPPED (2026-06-18).** Feature spec of the [spec-v100](spec-v100.md)
 > MDCalc Parity Completion program, **Wave 2 — Emergency / trauma / toxicology /
 > environmental** ([spec-v106](spec-v106.md)–[spec-v111](spec-v111.md)). Adds **5**
 > deterministic trauma-classification and soft-tissue-infection decision rules that
 > fill confirmed gaps. None duplicates a live tile.
 >
-> Catalog effect at v109 close: **474 + 5 = 479 tiles** (v108 closed at 474).
+> Catalog effect at v109 close: **473 + 5 = 478 tiles** (v108 closed at 473; the
+> roster's 474/479 projection ran one high because spec-v102 deferred `gwtg-hf`).
 >
 > Every prior spec (v4 through v108) remains in force. v109 adds no runtime network
 > call and no AI; each tile obeys the [spec-v100](spec-v100.md) §2 doctrine (which

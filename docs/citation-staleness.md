@@ -362,3 +362,21 @@ deliberately retained, not missed.
 |---|---|---|---|---|---|
 | rutherford-fontaine | Rutherford category / Fontaine stage PAD classification | Rutherford 1997 revised reporting standards (J Vasc Surg 26(3):517-538) | same | 2026-06-18 | current -- the 1997 revised reporting standards are the canonical Rutherford/Fontaine mapping; Class B, review on-publication of the next SVS reporting-standards revision. The category 0-6 and stage I-IV definitions are stable (documentation only -- does not match the issuer pattern) |
 | wifi | SVS WIfI lower-extremity threatened-limb classification (Wound / Ischemia / foot Infection) | Mills 2014 expert-panel amputation-risk table (J Vasc Surg 59(1):220-234) | same | 2026-06-18 | current -- the 2014 Mills WIfI consensus is the latest; Class B, review on-publication of the next SVS WIfI update. The 64-cell amputation-risk stage grid is the published expert-panel table (documentation only -- does not match the issuer pattern) |
+
+## spec-v109 trauma-classification & soft-tissue-infection instruments (added 2026-06-18)
+
+Fourth Wave-2 feature spec of the spec-v100 MDCalc Parity Completion program.
+Three of the five tiles are Class A fixed-criteria instruments whose citations
+name the journal and authors and do not match the check-citations issuer pattern,
+so they carry no row: `mangled-extremity` (the Johansen 1990 MESS point set),
+`lrinec` (the Wong 2004 6-lab bands), and `alt-70` (the Raff 2017 4-item score).
+The two below are Class B classification standards. Neither citation matches the
+issuer acronym set (J Trauma Acute Care Surg, named authors / the AAST committee),
+so the rows are documentation only, but both are cadence-tracked (on-publication)
+for the §6.3 job. They record that the edition in force was reviewed and
+deliberately retained, not missed.
+
+| tile id | instrument | edition shipped | latest known edition | accessed | justification if behind |
+|---|---|---|---|---|---|
+| denver-bcvi | Expanded Denver Criteria for blunt-cerebrovascular-injury (BCVI) CT-angiography screening | Burlew 2012 expanded screening criteria (J Trauma Acute Care Surg 72(2):330-337) | same | 2026-06-18 | current -- the 2012 Burlew expanded Denver criteria are the canonical BCVI screening set; Class B, review on-publication of the next EAST/society screening-criteria revision. The six signs/symptoms and six high-energy-mechanism risk factors are the published items (documentation only -- does not match the issuer pattern) |
+| aast-organ-injury | AAST solid-organ injury scale (spleen / liver / kidney), 2018 revision | Kozar 2018 OIS update (J Trauma Acute Care Surg 85(6):1119-1122) | same | 2026-06-18 | current -- the 2018 AAST update is the latest spleen/liver/kidney OIS; Class B, review on-publication of the next AAST revision. The grade I-V thresholds and the 2018 contained-vs-extending vascular rule are the published Tables 1-3 values (documentation only -- does not match the issuer pattern) |
