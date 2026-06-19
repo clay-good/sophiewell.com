@@ -6,6 +6,41 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v108: trauma severity scores & decision rules, +6 — spec-v100 Wave 2)
+
+- **Third feature spec of Wave 2** of the [spec-v100](docs/spec-v100.md) MDCalc
+  Parity Completion program. Six deterministic **trauma severity scores and
+  decision rules** (catalog **467 → 473**), via `lib/trauma-v108.js` +
+  `views/group-v33.js` (`RV33`). `triss` and `niss` home in Group E (a probability /
+  severity computation); `tash-score`, `rabt-score`, `gcs-pupils`, and
+  `nexus-chest-ct` in Group G. None duplicates a live tile; each fills a confirmed
+  gap beside the existing `iss-rts` (ISS + Revised Trauma Score) and `abc-mtp` (ABC
+  massive-transfusion rule). No new specialty tag. All six **Class A** (journal +
+  author citations → no citation-staleness rows):
+  - **`triss`** — the **TRISS method** (Boyd CR, Tolson MA, Copes WS, *J Trauma*
+    1987; MTOS-1995 coefficient set): probability of survival Ps = 1/(1+e^−b),
+    b from the coded RTS, ISS, and an age index, with separate blunt and penetrating
+    coefficient sets. Consumes the ISS and coded RTS the live `iss-rts` tile produces.
+  - **`niss`** — the **New Injury Severity Score** (Osler T, Baker SP, Long W,
+    *J Trauma* 1997): sum of squares of the three worst AIS regardless of body
+    region; any AIS 6 forces the maximal 75. NISS ≥ 16 marks major trauma.
+  - **`tash-score`** — the **TASH Score** (Yücel N, Lefering R, Maegele M, et al,
+    *J Trauma* 2006): weighted Hb/base-excess/SBP bands plus HR > 120, FAST, pelvis,
+    femur, and sex (total 0–31) → logistic P(mass transfusion) = 1/(1+e^−(−4.9+0.3·TASH)).
+  - **`rabt-score`** — the **RABT Score** (Joseph B, Khan M, Truitt M, et al,
+    *World J Surg* 2018): shock index > 1, pelvic fracture, penetrating mechanism,
+    and positive FAST, each +1 (0–4); ≥ 2 predicts massive transfusion.
+  - **`gcs-pupils`** — the **GCS-Pupils score** (Brennan PM, Murray GD, Teasdale GM,
+    *J Neurosurg* 2018): GCS total − pupil reactivity penalty (0/1/2), index 1–15.
+  - **`nexus-chest-ct`** — the **NEXUS Chest CT** instrument (Rodriguez RM, Langdorf
+    MI, Nishijima D, et al, *PLoS Med* 2015): 7 criteria in blunt thoracic trauma;
+    all negative ⇒ chest CT can be deferred, any positive ⇒ CT may be indicated.
+- **Coefficients re-fetched, never recalled** (spec-v97 rule): TRISS ships the
+  MTOS-1995 blunt/penetrating sets MDCalc serves (citation names both the 1987 paper
+  and the revision); TASH uses the `−4.9 + 0.3·TASH` sign and a max of 31. `triss`
+  and `tash-score` clamp their logistic exponent finite; `niss` clamps AIS and
+  applies the AIS-6 → 75 convention; `gcs-pupils` bounds the index to 1–15.
+
 ### Added (spec-v107: ED decision rules & resuscitation, +4 — spec-v100 Wave 2)
 
 - **Second feature spec of Wave 2** of the [spec-v100](docs/spec-v100.md) MDCalc

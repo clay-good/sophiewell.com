@@ -38,6 +38,7 @@ import { renderers as RV29 } from './views/group-v29.js';
 import { renderers as RV30 } from './views/group-v30.js';
 import { renderers as RV31 } from './views/group-v31.js';
 import { renderers as RV32 } from './views/group-v32.js';
+import { renderers as RV33 } from './views/group-v33.js';
 import { renderers as RV63 } from './views/group-v63.js';
 import { renderers as RB } from './views/group-b.js';
 import { renderers as RPALINT } from './views/pa-lint.js';
@@ -56,7 +57,7 @@ import { resolvePrompt } from './lib/prompt.js';
 // artifact-detect / artifact-route / artifact-handoff helpers were
 // deleted in spec-v29 wave 29-2 (Group C/L).
 
-const RENDERERS = { ...RA, ...RB, ...RC, ...RE, ...RF, ...RG, ...RH, ...RI, ...RJ, ...RKLMNO, ...RV5, ...RV6, ...RV7, ...RV8, ...RV9, ...RV10, ...RV11, ...RV12, ...RV13, ...RV14, ...RV15, ...RV16, ...RV17, ...RV18, ...RV19, ...RV20, ...RV21, ...RV22, ...RV23, ...RV24, ...RV25, ...RV26, ...RV27, ...RV28, ...RV29, ...RV30, ...RV31, ...RV32, ...RV63, ...RPALINT };
+const RENDERERS = { ...RA, ...RB, ...RC, ...RE, ...RF, ...RG, ...RH, ...RI, ...RJ, ...RKLMNO, ...RV5, ...RV6, ...RV7, ...RV8, ...RV9, ...RV10, ...RV11, ...RV12, ...RV13, ...RV14, ...RV15, ...RV16, ...RV17, ...RV18, ...RV19, ...RV20, ...RV21, ...RV22, ...RV23, ...RV24, ...RV25, ...RV26, ...RV27, ...RV28, ...RV29, ...RV30, ...RV31, ...RV32, ...RV33, ...RV63, ...RPALINT };
 
 // ----- Utility registry ----------------------------------------------------
 // Source of truth for routes, names, group, audiences, and clinical flag.
@@ -694,6 +695,17 @@ const UTILITIES = [
   { id: 'new-orleans-head',       name: 'New Orleans Head Trauma Criteria',                 group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'go-far',                 name: 'GO-FAR Score (good-outcome survival after IHCA)',   group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'macocha',                name: 'MACOCHA Score (ICU difficult intubation)',         group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+
+  // spec-v108 (third spec of Wave 2 of spec-v100): six trauma severity scores
+  // and decision rules. triss and niss home in Group E (probability / severity
+  // computations); tash-score, rabt-score, gcs-pupils, nexus-chest-ct in Group G.
+  // views/group-v33.js, lib/trauma-v108.js.
+  { id: 'triss',                  name: 'TRISS (Trauma & Injury Severity Score)',            group: 'E', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'niss',                   name: 'New Injury Severity Score (NISS)',                  group: 'E', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'tash-score',             name: 'TASH Score (massive transfusion probability)',     group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'rabt-score',             name: 'RABT Score (massive transfusion 0-4 rule)',        group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'gcs-pupils',             name: 'Glasgow Coma Scale - Pupils (GCS-P)',              group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'nexus-chest-ct',         name: 'NEXUS Chest CT (blunt trauma)',                    group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
 
   // spec-v6 §3.3: lab result interpreter. Patient-decoder category.
   { id: 'lab-interpret',       name: 'Lab Result Interpreter',                           group: 'C', audiences: ['patients', 'clinicians', 'educators'], clinical: true },

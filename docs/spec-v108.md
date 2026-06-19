@@ -1,12 +1,18 @@
 # spec-v108.md — Trauma severity scores: TRISS, NISS, TASH, RABT, GCS-Pupils, and NEXUS Chest CT (+6 tiles)
 
-> Status: **PROPOSED (2026-06-17).** Feature spec of the [spec-v100](spec-v100.md)
+> Status: **SHIPPED (2026-06-18).** Feature spec of the [spec-v100](spec-v100.md)
 > MDCalc Parity Completion program, **Wave 2 — Emergency / trauma / toxicology /
 > environmental** ([spec-v106](spec-v106.md)–[spec-v111](spec-v111.md)). Adds **6**
 > deterministic trauma severity scores and decision rules that fill confirmed gaps.
 > None duplicates a live tile.
 >
-> Catalog effect at v108 close: **468 + 6 = 474 tiles** (v107 closed at 468).
+> Catalog effect at v108 close: **467 + 6 = 473 tiles** (v107 closed at 467, not the
+> 468 originally projected — spec-v102 deferred `gwtg-hf`, leaving the running count
+> one below the program projection; the §6 acceptance "live count + 6" governs).
+> Shipped via `lib/trauma-v108.js` + `views/group-v33.js` (`RV33`); `triss` and
+> `niss` home in Group E, the other four in Group G. TRISS ships the MTOS-1995
+> coefficient set MDCalc serves (the literal 1987 paper's first set differs); the
+> citation names both.
 >
 > Every prior spec (v4 through v107) remains in force. v108 adds no runtime network
 > call and no AI; each tile obeys the [spec-v100](spec-v100.md) §2 doctrine (which

@@ -1542,3 +1542,66 @@ elevated difficult-intubation risk (sensitivity 73 percent, negative predictive 
 98 percent).
 Worked example: Mallampati III or IV with obstructive sleep apnea totals 7, an
 elevated-risk result.
+
+### TRISS (Trauma and Injury Severity Score)
+Citation: Boyd CR, Tolson MA, Copes WS. Evaluating trauma care: the TRISS method.
+Trauma Score and the Injury Severity Score. J Trauma. 1987;27(4):370-378.
+Coefficients per the Major Trauma Outcome Study revision (Champion HR, et al).
+Rule: probability of survival Ps = 1 / (1 + e^-b), where b is the intercept plus
+weighted contributions from the coded Revised Trauma Score, the Injury Severity Score,
+and an age index (0 under age 55, 1 at or over 55). Blunt and penetrating mechanisms
+use separate coefficient sets.
+Worked example: a blunt injury with a coded Revised Trauma Score of 6, an Injury
+Severity Score of 25, and an age >= 55 gives a probability of survival near 65.8
+percent; the penetrating set on the same inputs gives about 45 percent.
+
+### New Injury Severity Score (NISS)
+Citation: Osler T, Baker SP, Long W. A modification of the injury severity score that
+both improves accuracy and simplifies scoring. J Trauma. 1997;43(6):922-925.
+Rule: the sum of the squares of the three highest Abbreviated Injury Scale severities
+regardless of body region, ranging up to 75; any severity of 6 forces the maximal
+score. Unlike the Injury Severity Score, the three worst injuries need not be in three
+different regions.
+Worked example: severities of 5, 4, and 3 sum of squares to 50; a severity of 6 forces
+75.
+
+### TASH Score (Trauma-Associated Severe Hemorrhage)
+Citation: Yucel N, Lefering R, Maegele M, et al. Trauma Associated Severe Hemorrhage
+(TASH)-Score: probability of mass transfusion as surrogate for life threatening
+hemorrhage after multiple trauma. J Trauma. 2006;60(6):1228-1236.
+Rule: hemoglobin, base excess, systolic blood pressure, heart rate over 120, a positive
+focused assessment, an unstable pelvic fracture, an open or dislocated femur fracture,
+and male sex each add weighted points to a total of 0 to 31. The total maps to a
+logistic probability of mass transfusion, near one half at a total of 16.
+Worked example: a hemoglobin under 10, a base excess under -6, a systolic blood
+pressure under 100, a heart rate over 120, and a positive focused assessment total 16,
+about a 47.5 percent probability.
+
+### RABT Score (Revised Assessment of Bleeding and Transfusion)
+Citation: Joseph B, Khan M, Truitt M, et al. Massive transfusion: the revised
+assessment of bleeding and transfusion (RABT) score. World J Surg.
+2018;42(11):3702-3708.
+Rule: a shock index over 1, a pelvic fracture, a penetrating mechanism, and a positive
+focused assessment each add 1 point, giving a total of 0 to 4. A total of 2 or more
+predicts massive transfusion.
+Worked example: a shock index over 1 with a pelvic fracture totals 2, predicting
+massive transfusion.
+
+### Glasgow Coma Scale-Pupils Score (GCS-P)
+Citation: Brennan PM, Murray GD, Teasdale GM. Simplifying the use of prognostic
+information in traumatic brain injury. Part 1: the GCS-Pupils score. J Neurosurg.
+2018;128(6):1612-1620.
+Rule: the Glasgow Coma Scale total minus the pupil reactivity penalty (the number of
+pupils unreactive to light), giving an index from 1 to 15. The penalty cannot drive the
+index below 1.
+Worked example: a Glasgow Coma Scale of 6 with 1 unreactive pupil gives an index of 5.
+
+### NEXUS Chest CT decision instrument
+Citation: Rodriguez RM, Langdorf MI, Nishijima D, et al. Derivation and validation of
+two decision instruments for selective chest CT in blunt trauma: a multicenter
+prospective observational study (NEXUS Chest CT). PLoS Med. 2015;12(10):e1001883.
+Rule: in blunt thoracic trauma, an abnormal chest x-ray, a distracting injury,
+chest-wall tenderness, a rapid-deceleration mechanism, age over 60, intoxication, or
+abnormal alertness each flag the patient. If all are negative, chest CT can be
+deferred; any positive criterion means chest CT may be indicated.
+Worked example: an age over 60 alone flags the patient, so chest CT may be indicated.
