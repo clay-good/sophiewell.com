@@ -62,6 +62,7 @@ import { renderers as RV129 } from './views/group-v129.js';
 import { renderers as RV130 } from './views/group-v130.js';
 import { renderers as RV131 } from './views/group-v131.js';
 import { renderers as RV132 } from './views/group-v132.js';
+import { renderers as RV133 } from './views/group-v133.js';
 import { renderers as RV149 } from './views/group-v149.js';
 import { renderers as RV63 } from './views/group-v63.js';
 import { renderers as RB } from './views/group-b.js';
@@ -81,7 +82,7 @@ import { resolvePrompt } from './lib/prompt.js';
 // artifact-detect / artifact-route / artifact-handoff helpers were
 // deleted in spec-v29 wave 29-2 (Group C/L).
 
-const RENDERERS = { ...RA, ...RB, ...RC, ...RE, ...RF, ...RG, ...RH, ...RI, ...RJ, ...RKLMNO, ...RV5, ...RV6, ...RV7, ...RV8, ...RV9, ...RV10, ...RV11, ...RV12, ...RV13, ...RV14, ...RV15, ...RV16, ...RV17, ...RV18, ...RV19, ...RV20, ...RV21, ...RV22, ...RV23, ...RV24, ...RV25, ...RV26, ...RV27, ...RV28, ...RV29, ...RV30, ...RV31, ...RV32, ...RV33, ...RV34, ...RV35, ...RV36, ...RV37, ...RV38, ...RV39, ...RV40, ...RV117, ...RV118, ...RV119, ...RV120, ...RV121, ...RV122, ...RV123, ...RV124, ...RV125, ...RV126, ...RV127, ...RV128, ...RV129, ...RV130, ...RV131, ...RV132, ...RV149, ...RV63, ...RPALINT };
+const RENDERERS = { ...RA, ...RB, ...RC, ...RE, ...RF, ...RG, ...RH, ...RI, ...RJ, ...RKLMNO, ...RV5, ...RV6, ...RV7, ...RV8, ...RV9, ...RV10, ...RV11, ...RV12, ...RV13, ...RV14, ...RV15, ...RV16, ...RV17, ...RV18, ...RV19, ...RV20, ...RV21, ...RV22, ...RV23, ...RV24, ...RV25, ...RV26, ...RV27, ...RV28, ...RV29, ...RV30, ...RV31, ...RV32, ...RV33, ...RV34, ...RV35, ...RV36, ...RV37, ...RV38, ...RV39, ...RV40, ...RV117, ...RV118, ...RV119, ...RV120, ...RV121, ...RV122, ...RV123, ...RV124, ...RV125, ...RV126, ...RV127, ...RV128, ...RV129, ...RV130, ...RV131, ...RV132, ...RV133, ...RV149, ...RV63, ...RPALINT };
 
 // ----- Utility registry ----------------------------------------------------
 // Source of truth for routes, names, group, audiences, and clinical flag.
@@ -1064,6 +1065,15 @@ const UTILITIES = [
   { id: 'schwartz-egfr',       name: 'Bedside Schwartz eGFR (pediatric)',                group: 'E', audiences: ['clinicians', 'educators'], clinical: true },
   // spec-v56: weight-based dosing, infusion titration, and bedside toxicology (13 tiles).
   { id: 'heparin-nomogram',     name: 'Weight-based heparin infusion nomogram',           group: 'F', audiences: ['clinicians', 'educators'], clinical: true },
+  // spec-v133 (Wave 6): warfarin start-up beside heparin-nomogram -- the IWPC
+  // and Gage pharmacogenetic maintenance-dose models and the Kovacs 10 mg /
+  // Crowther 5 mg initiation nomograms. lib/warfarin-v133.js, views/group-v133.js
+  // (RV133). All four coefficient blocks / nomogram tables re-fetched and
+  // cross-verified against the primary source (spec-v97 discipline).
+  { id: 'warfarin-iwpc',        name: 'IWPC pharmacogenetic warfarin dose',               group: 'F', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'warfarin-gage',        name: 'Gage pharmacogenomic warfarin dose',               group: 'F', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'warfarin-init-10mg',   name: 'Warfarin 10 mg initiation nomogram (Kovacs)',      group: 'F', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'warfarin-init-5mg',    name: 'Warfarin 5 mg initiation nomogram (Crowther)',     group: 'F', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'vanc-auc',             name: 'Vancomycin AUC24/MIC (first-order, two-level)',    group: 'F', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'aminoglycoside',       name: 'Extended-interval aminoglycoside (Hartford)',      group: 'F', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'acetaminophen-nomogram', name: 'Acetaminophen (Rumack-Matthew) nomogram',        group: 'F', audiences: ['clinicians', 'educators'], clinical: true },

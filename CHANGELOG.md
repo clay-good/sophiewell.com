@@ -6,6 +6,51 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v133: warfarin start-up — IWPC + Gage pharmacogenetic dose, Kovacs 10 mg + Crowther 5 mg initiation nomograms, +4 — spec-v100 Wave 6)
+
+- **Warfarin start-up comes onto the page beside `heparin-nomogram`** — the
+  catalog's only other "compute the next dose from inputs" tool. Four deterministic
+  **Medication & Infusion (Group F)** tiles (catalog **589 → 593**) via
+  `lib/warfarin-v133.js` + `views/group-v133.js` (`RV133`); each renders the
+  spec-v100 §2 clause-5 high-stakes second-check caveat in its output. Every
+  coefficient block and nomogram cell was re-fetched and cross-verified against
+  ≥ 2 independent sources before shipping (the spec-v97 discipline), never recalled.
+  - **`warfarin-iwpc`** — IWPC pharmacogenetic warfarin dose (Klein 2009, *NEJM*).
+    Predicts the stable weekly maintenance dose from age, height, weight, race,
+    enzyme-inducer and amiodarone use, and the entered VKORC1 (−1639 G>A) + CYP2C9
+    genotypes. The model regresses √(weekly dose), so the tile **squares** the root
+    for mg/week. The coefficient block was extracted from the *NEJM* 2009
+    supplementary appendix S1e itself; the height coefficient is `0.0087` (the
+    pharmacogenetic model) **not** `0.0118` (the clinical model — the classic
+    cross-wire), and the unknown-genotype imputation terms are retained. A
+    non-positive root surfaces the fallback rather than squaring into a spurious
+    dose.
+  - **`warfarin-gage`** — Gage pharmacogenomic warfarin dose (Gage 2008, *Clin
+    Pharmacol Ther*). An exponential model predicting therapeutic mg/day from BSA,
+    age, target INR, smoking, amiodarone, race, the DVT/PE indication, and the
+    CYP2C9 + VKORC1 genotypes. All 12 log-linear coefficients were confirmed
+    verbatim against the Shin & Cao validation reprint and reconciled to the
+    original Gage Table-3 percentages. BSA uses the **DuBois** formula the paper
+    cites; the original 2008 model carries **no CYP4F2 term** (added later to the
+    IWPC model by Sagreiya 2010 — this corrects the spec draft, which wrongly said
+    "Gage adds CYP4F2"). A non-positive exponent surfaces the fallback.
+  - **`warfarin-init-10mg`** — Kovacs 10 mg initiation nomogram (Kovacs 2003, *Ann
+    Intern Med*). Day 1–2 fixed 10 mg; the day-3 INR sets days 3 and 4 (which can
+    differ); the day-5 INR sets days 5/6/7 via one of four sub-tables chosen by the
+    day-3 band. The full Figure-1 structure was reconstructed from two independent
+    reproductions (AAFP 2005 + the RxFiles table), including the **split** of the
+    1.5–1.9 day-3 range at 1.6/1.7. The `63.835/INR` maintenance formula (Kovacs
+    *Blood* 2007) and the AAFP day-5 maintenance table (Pengo 2001) are different
+    instruments and are deliberately excluded.
+  - **`warfarin-init-5mg`** — Crowther 5 mg initiation nomogram (Crowther 1999,
+    *Arch Intern Med*). Day 1–2 fixed 5 mg; days 3–6 INR-banded. The day-5 low band
+    is `INR < 2.0` (not `< 1.5` like days 3–4) — the easy-to-mis-transcribe row,
+    locked by a dedicated test.
+  - All four are **Class A** (journal + author citations — no `docs/citation-staleness.md`
+    row) and flow through the spec-v59 fuzz harness with zero non-finite leaks.
+    Catalog **589 → 593** (the spec's full proposed +4) across all 13 catalog-truth
+    surfaces.
+
 ### Added (spec-v132: thrombotic microangiopathy & coagulopathy — PLASMIC, French TTP, JAAM DIC, IPSET-thrombosis, CISNE, +5 — spec-v100 Wave 6 open)
 
 - **Wave 6 of the [spec-v100](docs/spec-v100.md) MDCalc Parity Completion program

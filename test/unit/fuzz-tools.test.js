@@ -130,6 +130,7 @@ import * as acidbaseV129 from '../../lib/acidbase-v129.js';
 import * as uroV130 from '../../lib/uro-v130.js';
 import * as uroV131 from '../../lib/uro-v131.js';
 import * as hemeV132 from '../../lib/heme-v132.js';
+import * as warfarinV133 from '../../lib/warfarin-v133.js';
 import * as emsV149 from '../../lib/ems-v149.js';
 
 const MODULES = {
@@ -205,6 +206,7 @@ const MODULES = {
   'uro-v130.js': uroV130,
   'uro-v131.js': uroV131,
   'heme-v132.js': hemeV132,
+  'warfarin-v133.js': warfarinV133,
   'ems-v149.js': emsV149,
 };
 

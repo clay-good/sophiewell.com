@@ -2914,3 +2914,49 @@ the stock concentration in milligrams per milliliter; the ordered dose may be de
 from weight times a per-kilogram dose.
 Worked example: twenty-five milligrams from a fifty milligrams per milliliter vial is
 a draw of half a milliliter.
+
+### IWPC Pharmacogenetic Warfarin Dose
+Citation: International Warfarin Pharmacogenetics Consortium; Klein TE, et al.
+Estimation of the warfarin dose with clinical and pharmacogenetic data. N Engl J
+Med. 2009.
+Rule: the published linear model regresses the square root of the weekly maintenance
+dose on age in decades, height, weight, race, enzyme-inducer and amiodarone use, and
+the entered VKORC1 and CYP2C9 genotypes; the square root is then squared to give the
+weekly dose, divided by seven for the daily dose.
+Worked example: a sixty-five-year-old, one hundred seventy centimetres and seventy
+kilograms, VKORC1 G/G and CYP2C9 wild-type, white, on no inducer and no amiodarone,
+has a square root of about six and four-tenths and a predicted dose of about
+forty-one milligrams per week, near six milligrams per day.
+
+### Warfarin 5 mg Initiation Nomogram (Crowther)
+Citation: Crowther MA, et al. A randomized trial comparing 5-mg and 10-mg warfarin
+loading doses. Arch Intern Med. 1999.
+Rule: day one and day two are a fixed five milligrams; from day three the dose is set
+by that morning's INR band. The day-five low band starts below an INR of two, unlike
+the below-one-and-a-half low band on days three and four.
+Worked example: on day three an INR in the one-and-a-half to one-point-nine band gives
+five milligrams; an INR above three on any day holds the dose at zero and prompts a
+recheck.
+
+### Gage Pharmacogenomic Warfarin Dose
+Citation: Gage BF, et al. Use of pharmacogenetic and clinical factors to predict the
+therapeutic dose of warfarin. Clin Pharmacol Ther. 2008.
+Rule: the daily dose is the exponential of a weighted sum of body-surface area (DuBois),
+age, target INR, smoking, amiodarone use, African-American race, the venous-thrombosis
+indication, and the entered CYP2C9 and VKORC1 genotypes; multiply by seven for the
+weekly dose. The original model carries no CYP4F2 term.
+Worked example: a sixty-year-old, one hundred seventy-five centimetres and seventy
+kilograms, VKORC1 G/G and CYP2C9 wild-type, target INR of two-and-a-half, non-smoker,
+no amiodarone, atrial fibrillation, has a predicted dose near six-and-a-third milligrams
+per day.
+
+### Warfarin 10 mg Initiation Nomogram (Kovacs)
+Citation: Kovacs MJ, et al. Comparison of 10-mg and 5-mg warfarin initiation nomograms
+together with low-molecular-weight heparin for outpatient treatment of acute venous
+thromboembolism. Ann Intern Med. 2003.
+Rule: day one and day two are a fixed ten milligrams; the day-three INR sets the
+day-three and day-four doses, and the day-five INR sets days five, six and seven through
+one of four sub-tables chosen by the day-three band. INR is checked on days three and
+five only.
+Worked example: a day-three INR below one-point-three gives fifteen milligrams on days
+three and four.

@@ -1,14 +1,48 @@
-# spec-v133.md — Warfarin dosing & pharmacogenomics: IWPC, Gage, and the 10 mg / 5 mg initiation nomograms (+4 tiles)
+# spec-v133.md — Warfarin dosing & pharmacogenomics: IWPC, Gage, and the 10 mg / 5 mg initiation nomograms (+4, SHIPPED)
 
-> Status: **PROPOSED (2026-06-17).** Feature spec of the [spec-v100](spec-v100.md)
-> **MDCalc Parity Completion** program, **Wave 6 — Heme / onc / endocrine / ID.**
-> Adds **4** deterministic warfarin-dosing instruments — two pharmacogenetic dose
-> models and two initiation nomograms — that fill confirmed catalog gaps. None
-> duplicates a live tile.
+> Status: **SHIPPED (2026-06-20).** Feature spec of the
+> [spec-v100](spec-v100.md) **MDCalc Parity Completion** program, **Wave 6 —
+> Heme / onc / endocrine / ID.** Adds **4** deterministic warfarin-dosing
+> instruments — two pharmacogenetic dose models and two initiation nomograms —
+> that fill confirmed catalog gaps. None duplicates a live tile.
 >
-> Catalog effect at v133 close: **588 + 4 = 592 tiles.** (If specs land out of
-> order, the implementing session uses the then-current `UTILITIES.length` plus
-> this spec's +4, and the catalog-truth gate enforces agreement.)
+> **Shipped (+4, 589 → 593):** `warfarin-iwpc` (IWPC pharmacogenetic model,
+> Klein 2009), `warfarin-gage` (Gage pharmacogenomic model, Gage 2008),
+> `warfarin-init-10mg` (Kovacs 2003 10 mg nomogram), and `warfarin-init-5mg`
+> (Crowther 1999 5 mg nomogram), all Group F, all Class A, all through the
+> spec-v59 fuzz harness.
+>
+> **Source-governance (spec-v97: re-fetch, never recall).** Every coefficient
+> block and nomogram cell was re-fetched and cross-verified against ≥ 2
+> independent sources before shipping:
+> - **`warfarin-iwpc`:** the pharmacogenetic equation read from the NEJM 2009
+>   supplementary appendix S1e itself; height coefficient `0.0087` (the
+>   pharmacogenetic model, not the clinical model's `0.0118`); unknown-genotype
+>   imputation terms retained; the √dose is squared for mg/week.
+> - **`warfarin-gage`:** all 12 log-linear coefficients confirmed verbatim
+>   against the Shin & Cao 2009 validation reprint and reconciled to the original
+>   Gage Table-3 percentages (VKORC1 −28%/allele = e^−0.3238 − 1, etc.). BSA uses
+>   the **DuBois** formula the Gage paper itself cites (DuBois & DuBois 1916). The
+>   original 2008 model carries **no CYP4F2 term** — the spec draft's claim that
+>   "Gage adds CYP4F2" was *wrong* (CYP4F2 was added later by Sagreiya 2010 to the
+>   IWPC model, not Gage); corrected here.
+> - **`warfarin-init-10mg`:** the full Kovacs Figure-1 structure reconstructed
+>   from two independent reproductions (AAFP 2005 + the RxFiles table): the day-3
+>   INR sets days 3 and 4 (which differ); the day-5 INR sets days 5/6/7 via one of
+>   four sub-tables selected *by the day-3 band*; the 1.5–1.9 day-3 range is
+>   correctly **split** at 1.6/1.7. The `63.835/INR` maintenance formula (Kovacs
+>   *Blood* 2007) and the AAFP day-5 maintenance table (Pengo 2001) are different
+>   instruments and are excluded.
+> - **`warfarin-init-5mg`:** Crowther Table 1; the day-5 low band is `INR < 2.0`
+>   (not `< 1.5` like days 3–4).
+>
+> Catalog effect: **589 + 4 = 593 tiles** (the implementing session uses the
+> then-current `UTILITIES.length` plus this spec's +4; the catalog-truth gate
+> enforces agreement).
+>
+> *Authoring note:* this spec's draft (below) assumed the Gage and Kovacs tables
+> might be unverifiable and reserved the option to ship partially. An adversarial
+> re-fetch cleared both to publication fidelity, so all four shipped together.
 >
 > Every prior spec (v4 through v132) remains in force. v133 adds no runtime network
 > call and no AI; each tile obeys the [spec-v100](spec-v100.md) §2 doctrine
