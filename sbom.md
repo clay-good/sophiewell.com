@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `2964bef83ceb6942`
-Generated: 2026-06-20T15:54:30.660Z
+Build ID: `0fcc8820afc73cbc`
+Generated: 2026-06-20T18:33:40.757Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=20.18.1 <21, npm >=10.0.0
@@ -24,13 +24,13 @@ downloads is committed in this repository and is hashed below.
 
 | Path | Bytes | SHA-256 |
 |---|---:|---|
-| `index.html` | 48354 | `5c58607ce1b038106a38de5a79ea683fe7aba792dd22e26b112dc17a7507fecc` |
+| `index.html` | 48672 | `dd190334669764c34d6ab9d29d60659fee92b4d8d7859373bc243e0af421a4d5` |
 | `styles.css` | 42819 | `bea421c79d390a364eb571c3a9599cdf28264128d4ac02d7abb00f31000c7cda` |
-| `app.js` | 159190 | `e8d01d9b88a663472b9fb083c708cd472cf5a7c60daecfd51f3f32062ad6271a` |
+| `app.js` | 160651 | `54818189d19a08a30efee2ff57cb9bc9e36879ee794940ebda253c45472994ea` |
 | `sw.js` | 4622 | `b891d4344f8e04403b7f1d307fd446cc224bddc6f0c4397438a17d197351171e` |
 | `site.webmanifest` | 709 | `0e0de4da60590a12e8b27a0ae2a2f5ffdb6500b7d2b78f93631ec2f64ed3d5ce` |
 | `robots.txt` | 127 | `38fbf9c1854e72abb20e01e81dd5a31d4ea96f154c12d5db1ec3af05524dd1a1` |
-| `sitemap.xml` | 87206 | `c092a6df17a351b1d0b5e8d603da4384956b6076b68d188bb319060a537cf23c` |
+| `sitemap.xml` | 88168 | `ddbef5cf824e4c67a399e8fdc794462f5400cbb78f3b18c31c5aa11f4b8d6172` |
 | `_headers` | 1316 | `2f39986457d2feff7e73e491a7d09ee871e8f2f4cc2bc437f86bd86a42554ec6` |
 | `logo.png` | 63440 | `11afaf1b0d3ca68393d202e4810bf766b5b6d591b4e3ec52f41d3cacaa4616ec` |
 | `favicon.ico` | 7411 | `407fde0ca2788409e87e11f596fa02e6a0b121817fcea7fd995beec1801e287b` |
@@ -42,6 +42,7 @@ downloads is committed in this repository and is hashed below.
 
 | Path | Bytes | SHA-256 |
 |---|---:|---|
+| `lib/acidbase-v129.js` | 15449 | `7356c25e7883a3b36053121ef8fcb53dd59b0ecb90dc68039083aa3c69028934` |
 | `lib/billing-v78.js` | 11570 | `a83c4af7e754d690ca949b7015a66b0c42aa77346c5c67142ccb2e8fa16849a2` |
 | `lib/billing-v79.js` | 23588 | `d97e1e4dc9c6e358df2d79a93bc79a1960a13cdb75ad33e84403d278938b3f4f` |
 | `lib/billing-v80.js` | 22076 | `85885aeab655b38f4ecaf3b549711fb298c074e1366ba65e9a82d02fdd4e9c11` |
@@ -88,7 +89,7 @@ downloads is committed in this repository and is hashed below.
 | `lib/live.js` | 1138 | `304978d3c170b6eb06cade7702e5f99d868e9b3e1f5651aa9a28da15e62a6a9c` |
 | `lib/medication-v4.js` | 18192 | `467f9576c50da696cc56094eb022d0a5ed1e88de0c7618448554ede8067270b0` |
 | `lib/medication-v5.js` | 18863 | `ce81d9f8954abbd412892c13af9936f992239164f26fd2b999eaea7902787ab7` |
-| `lib/meta.js` | 916028 | `05ce1168e82bebab2f0153798ffab37f4544afa5fa932bf912b9b15d16e7e56d` |
+| `lib/meta.js` | 923168 | `c491b4af1441c3c92da67c547b1330d5520a24892204da0a3d899a2c59ecd88d` |
 | `lib/metabolic-onc-v88.js` | 12659 | `1553b641668c121661a66647da71a4aaaa023e9f3a6b7a753efbcdab27cdba81` |
 | `lib/nephro-v127.js` | 10884 | `c86865e98fced63ac9510fbebe0de77a88e305366c080a83c9beb8542371932a` |
 | `lib/nephro-v92.js` | 15980 | `64bbc05482eed2ab88816f676ab5e56aefae9d4f5d85d223217a03160d1cc082` |
@@ -170,6 +171,7 @@ downloads is committed in this repository and is hashed below.
 | `views/group-v126.js` | 12450 | `a0cb449e3ab0e11abb0d18b1563c0b79af1f7be25f09f398c32f3c438e3aeb2a` |
 | `views/group-v127.js` | 9322 | `5d7150d28914064c9465e832f4ea1f42302b47fc8e67118a4c597b51210c8257` |
 | `views/group-v128.js` | 9013 | `793fb727b8c601c6cd66faec9e8270288aa6b32009ce0ef8cbefaafc5b33f0f2` |
+| `views/group-v129.js` | 11568 | `dc0ac7203888de524d59ee537c7009a1eee0c889d9901def411fd2983872ba46` |
 | `views/group-v13.js` | 7695 | `8ab66626c703d5e09e0d88c008f1e37b56fa1b36a8f95cc4cc989782f2dfe544` |
 | `views/group-v14.js` | 9817 | `0bda19d811249004152993e204f4139a070c21368eb8dbffff7cad9ca139a70b` |
 | `views/group-v15.js` | 9388 | `01c28613e794ec8bed2941659514ad8b75c18c1cb1256d2907644873fcbc53e4` |

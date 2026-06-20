@@ -5,7 +5,7 @@
 <h1 align="center">sophiewell.com</h1>
 
 <p align="center">
-  <strong>564 deterministic healthcare calculators tuned to the nurse on shift.</strong><br>
+  <strong>570 deterministic healthcare calculators tuned to the nurse on shift.</strong><br>
   Free forever. No servers, no accounts, no telemetry, no AI, no network call after first paint.
 </p>
 
@@ -36,7 +36,7 @@ output; "searchable lookup of static facts" does not qualify. See
 [docs/spec-v10.md](docs/spec-v10.md) for the audience and
 dependency-budget commitments and
 [docs/spec-v29.md](docs/spec-v29.md) for the nurse-first pivot
-and the v29 catalog ledger. At v128 close the catalog is 564
+and the v29 catalog ledger. At v129 close the catalog is 570
 deterministic tiles — every one of them computes from at least
 one user input. The catalog reached its present size on two tracks.
 **New tiles:** spec-v63 added the operations counterpart to the bedside
@@ -186,7 +186,7 @@ production security headers. Any static file server will also work.
 ## How it works and how to use it
 
 Since the spec-v29 nurse-first prune the catalog has grown one
-reviewable spec at a time to **564** deterministic calculators
+reviewable spec at a time to **570** deterministic calculators
 (the full per-version history is in [CHANGELOG.md](CHANGELOG.md)
 and `docs/spec-v*.md`; the most recent bedside additions are
 summarized in the cheat sheets below). They organize across the
@@ -1023,7 +1023,7 @@ Duke-ISCVID) and `refeeding-risk` (NICE CG32) are **Class B** with
 [citation-staleness](docs/citation-staleness.md) rows; the other three are
 **Class A**. See [docs/spec-v99.md](docs/spec-v99.md).
 
-### MDCalc parity completion: the cardiology / vascular / lipid surface (spec-v100 program, Wave 1: spec-v101 → spec-v105, +25 → 457, **complete**; Wave 2 complete: spec-v106 → 463, spec-v107 → 467, spec-v108 → 473, spec-v109 → 478, spec-v110 → 483, spec-v111 → 487, **+30 → 487**; Wave 3 complete (Critical care & pulmonary): spec-v112 → 492, spec-v113 → 495, spec-v114 → 501, spec-v115 → 506, **+19 → 506**; Wave 4 underway (Neurology / neurosurgery / psychiatry): spec-v117 → 512, spec-v118 → 517, spec-v119 → 521, spec-v120 → 526, spec-v121 → 530, spec-v122 → 533, spec-v123 → 538 (**Wave 4 complete**), **+32 → 538**; Wave 5 underway (GI / hepatology / nephrology / acid-base / urology): spec-v124 → 544, spec-v125 → 549, spec-v126 → 555, spec-v127 → 559, spec-v128 → 564, **+26 → 564**)
+### MDCalc parity completion: the cardiology / vascular / lipid surface (spec-v100 program, Wave 1: spec-v101 → spec-v105, +25 → 457, **complete**; Wave 2 complete: spec-v106 → 463, spec-v107 → 467, spec-v108 → 473, spec-v109 → 478, spec-v110 → 483, spec-v111 → 487, **+30 → 487**; Wave 3 complete (Critical care & pulmonary): spec-v112 → 492, spec-v113 → 495, spec-v114 → 501, spec-v115 → 506, **+19 → 506**; Wave 4 underway (Neurology / neurosurgery / psychiatry): spec-v117 → 512, spec-v118 → 517, spec-v119 → 521, spec-v120 → 526, spec-v121 → 530, spec-v122 → 533, spec-v123 → 538 (**Wave 4 complete**), **+32 → 538**; Wave 5 underway (GI / hepatology / nephrology / acid-base / urology): spec-v124 → 544, spec-v125 → 549, spec-v126 → 555, spec-v127 → 559, spec-v128 → 564, spec-v129 → 570, **+32 → 570**)
 
 With the spec-v85 program complete, [spec-v100](docs/spec-v100.md) charters the
 **MDCalc Parity Completion** program — a roadmap that closes the remaining gaps
@@ -1412,6 +1412,40 @@ weight/hours denominators. Each tile reports the probability / class / rate, **n
 management (spec-v11 §5.3). All four are **Class A** (journal + author citations — KDIGO
 / ADQI / AKIN acronyms deliberately kept off the strings — no staleness row).
 `lib/nephro-v127.js` + `views/group-v127.js`. **Catalog 555 → 559, +4.**
+
+#### spec-v129 — acid-base compensation & gaps: Stewart SID/SIG, base excess, the three compensation formulas, urine osmolal gap (+6 → 570, Wave 5)
+
+Wave 5 closes the acid-base surface: the catalog already had the anion gap (`anion-gap-dd`)
+and Winter's formula (`winters`), and v129 completes the compensation set, adds the
+physicochemical (Stewart) view, the hemoglobin-corrected base excess, and the urine
+osmolal gap. All six home in **Clinical Math & Conversions (Group E)**:
+
+| id | Rule | Output |
+|---|---|---|
+| `stewart-sid-sig` | Stewart 1983 / Figge 1992 — SIDa = (Na+K+Ca+Mg) − (Cl+lactate); SIDe = HCO₃ + 2.8·alb + 0.59·PO₄ (charges at pH 7.4) | **SIG mEq/L; > 2 = unmeasured strong anions** |
+| `base-excess` | Siggaard-Andersen Van Slyke (NCCLS) — (1 − 0.0143·Hb)·(HCO₃ − 24.8 + (9.5 + 1.63·Hb)·(pH − 7.4)) | **BE mEq/L; signed (deficit / excess)** |
+| `resp-acidosis-compensation` | Brackett 1965 / Schwartz — 24 + k·(PaCO₂ − 40)/10, k = 1 acute / 4 chronic | **expected HCO₃; flags added metabolic disorder** |
+| `resp-alkalosis-compensation` | Gennari 1972 — 24 − k·(40 − PaCO₂)/10, k = 2 acute / 4 chronic, floored | **expected HCO₃; flags added metabolic disorder** |
+| `met-alkalosis-compensation` | Narins-Emmett 1980 — 0.7·(HCO₃ − 24) + 40 (± 5) | **expected PaCO₂; flags added respiratory disorder** |
+| `urine-osmolal-gap` | Halperin 1988 — measured − [2·(Na+K) + urea-N/2.8 + glucose/18] | **gap mOsm/kg; half ≈ urinary NH₄⁺** |
+
+All six **re-fetch the formulas/coefficients verbatim** (the spec-v97 discipline,
+dispatched as two independent research passes), cross-verified across ≥ 2 sources, and
+four source-governance calls were made: (1) `stewart-sid-sig` — the published Figge SIDe
+is **pH-dependent**, but the spec input set omits pH, so the weak-acid charges are fixed
+at the physiologic **pH 7.4** (yielding albumin 2.8 mEq/L per g/dL and phosphate 0.59
+mEq/L per mg/dL, both derived from the Figge coefficients); the assumption is stated to
+the user. (2) `base-excess` — the Van Slyke constants are kept as one **matched NCCLS
+C12-T2 pair** (24.8 ↔ 9.5/1.63, factor 0.0143; Lang & Zander 2002 warn against crossing
+editions), reproducing the published −13.0 mEq/L worked case. (3) the three compensation
+formulas use an **explicit acute-vs-chronic selector** (never inferred) and clamp every
+prediction to a physiologic range, comparing expected vs measured to flag a superimposed
+disorder. (4) `urine-osmolal-gap` uses the standard US-unit calculated-osmolality
+identity (urea-N ÷ 2.8, glucose ÷ 18). The SIG / base-excess / urine-gap tiles report
+**signed** results; every denominator is guarded. Each tile reports the acid-base
+quantity or the expected-vs-measured comparison, **not** management (spec-v11 §5.3). All
+six are **Class A** (journal + author citations — no staleness row). `lib/acidbase-v129.js`
++ `views/group-v129.js`. **Catalog 564 → 570, +6.**
 
 #### spec-v128 — renal excretion & dialysis math: FE-phosphate, FE-magnesium, nPCR/nPNA, standard Kt/V, electrolyte-free water clearance (+5 → 564, Wave 5)
 
@@ -2172,7 +2206,7 @@ long version, see [docs/architecture.md](docs/architecture.md).
  │  manifests (data/)            │  static │        ▼                     ▼             │
  │        │  scripts/build       │  files  │   lazy-load data shard   pure compute      │
  │        ▼                      │         │   (verified vs manifest)  (lib/*.js)       │
- │  dist/  (564 tool pages,      │         │        │                     │             │
+ │  dist/  (570 tool pages,      │         │        │                     │             │
  │  OG cards, sitemap, SBOM)     │         │        ▼                     ▼             │
  └───────────────────────────────┘         │   service worker cache    result + cite   │
                                             │   (keyed to build hash)                    │
@@ -2194,7 +2228,7 @@ assets:
 
 | Output | Count | Source |
 |--------|------:|--------|
-| Pre-rendered tool pages (`dist/tools/<id>/`) | 564 | `scripts/build-tool-pages.mjs` |
+| Pre-rendered tool pages (`dist/tools/<id>/`) | 570 | `scripts/build-tool-pages.mjs` |
 | Audience hub pages (`dist/for/<audience>/`) | 6 | `scripts/build-hub-pages.mjs` |
 | Topic pages + `/topics/` index | 8 + 1 | `scripts/build-topic-pages.mjs` |
 | `/commitments/` | 1 | `scripts/build-commitments-page.mjs` |
@@ -2217,7 +2251,7 @@ failure is a non-zero exit that blocks the merge:
 | `check-pa-staleness.mjs` | every PA rule is source-anchored and within its freshness window |
 | `audit-pa.mjs` | the 46 PA-linter fixtures still reproduce their committed golden reports |
 
-`npm run test` adds the 4,562-test unit suite, the a11y check, and dataset
+`npm run test` adds the 4,849-test unit suite, the a11y check, and dataset
 integrity verification; `npm run test:e2e` runs the Playwright suite against
 real Chromium/Firefox/WebKit — including a full-catalog 320 px no-horizontal-
 scroll sweep over every SPA route **and** every one of the 463 pre-rendered
@@ -2229,7 +2263,7 @@ static pages, so a tile can never ship mobile overflow undetected.
 index.html          single-page shell (hero-search combobox + static browse-by-category nav, tile mount)
 styles.css          one stylesheet (responsive; no horizontal scroll — enforced catalog-wide at 320px in CI)
 app.js              router, hero-search wiring, view wiring, the UTILITIES catalog
-                    (564 tiles — the single source of truth; zero runtime deps)
+                    (570 tiles — the single source of truth; zero runtime deps)
 sw.js               service worker — precache shell, cache shards by build hash
 theme.js            light/dark theme toggle (writes only sw-theme, allowlisted)
 lib/input-persist.js opt-in "remember my inputs" (off by default; numbers only)
@@ -2247,12 +2281,12 @@ docs/               specs (spec-v4 onward) + per-tile v11/v12 audit logs +
                     citation-staleness ledger +
                     architecture / threat-model / …
 test/               unit/ (node:test) · integration/ (Playwright) · fixtures/
-dist/               build output (564 tool pages, OG cards, sitemap, SBOM)
+dist/               build output (570 tool pages, OG cards, sitemap, SBOM)
 ```
 
-### Discovery: how a query finds the right tool among 564
+### Discovery: how a query finds the right tool among 570
 
-With 564 tiles, search quality *is* the product — a tool you cannot find does
+With 570 tiles, search quality *is* the product — a tool you cannot find does
 not exist. Discovery is deterministic and offline (no fuzzy-match service, no
 embedding model, no AI). The home `#hero-search` combobox builds its dropdown
 from two complementary rankers, both pure functions of the typed query:
@@ -2325,10 +2359,10 @@ A login-less, AI-free calculator earns trust only if the nurse can see, on the
 tile, exactly which published source produced the number — and tell whether that
 source is current. spec-v54 defined the invariants; spec-v60 built the machinery
 (the gate, the ledger, and the `citationAccessed` convention) and extended it
-across the full 564-tile catalog, pinning the last three unpinned "current
+across the full 570-tile catalog, pinning the last three unpinned "current
 edition" phrases and re-verifying every guideline tile against its latest known
 edition. Three invariants make that auditable, each enforced by the
-`check-citations.mjs` lint gate (in the `npm run lint` chain) over all 564 tiles:
+`check-citations.mjs` lint gate (in the `npm run lint` chain) over all 570 tiles:
 
 | Invariant | Rule | Enforcement |
 |---|---|---|
@@ -2784,8 +2818,8 @@ rules, not soft preferences.
 | `npm run dev`            | Serve the directory locally on http://localhost:4173 (set `SERVE_ROOT=dist` to preview the pre-rendered hubs/topics/tool pages as production serves them) |
 | `npm run build`          | Copy static files into `dist/` for deployment                     |
 | `npm test`               | Run the full test suite (unit, a11y, grep, data integrity)        |
-| `npm run test:unit`      | Run Node's built-in unit tests (4,816 tests)                      |
-| `npm run test:e2e`       | Build `dist/`, then run Playwright integration tests against real browsers — incl. a full-catalog 320px no-horizontal-scroll sweep over both the SPA routes and the 564 pre-rendered static tool pages, the hub/topic/commitments pages, and the citation-wrap pin |
+| `npm run test:unit`      | Run Node's built-in unit tests (4,849 tests)                      |
+| `npm run test:e2e`       | Build `dist/`, then run Playwright integration tests against real browsers — incl. a full-catalog 320px no-horizontal-scroll sweep over both the SPA routes and the 570 pre-rendered static tool pages, the hub/topic/commitments pages, and the citation-wrap pin |
 | `npm run test:a11y`      | Run accessibility checks on every utility view                    |
 | `npm run lint`           | ESLint + the CI gate chain: grep-check, output-safety, citation-integrity, catalog-truth, commitments, PA staleness, PA audit |
 | `npm run data:refresh`   | Re-fetch and re-shard every public dataset                        |
@@ -2869,7 +2903,7 @@ build, integrity-verified data shards) are documented in
 - [docs/spec-v11.md](docs/spec-v11.md) — correctness-floor spec:
   per-tile audit protocol, specialty-named groups, optional
   source-quoted `interpretation` field. Audit coverage is **complete
-  — 564/564 tiles** carry a committed per-tile audit log
+  — 570/570 tiles** carry a committed per-tile audit log
   (`docs/audits/v11/<id>.md` for the pre-v78 catalog;
   `docs/audits/v12/<id>.md` for the tiles added since — the
   spec-v78–v83 billing & coding program, the spec-v85

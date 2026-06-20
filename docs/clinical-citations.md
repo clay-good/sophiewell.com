@@ -2755,3 +2755,67 @@ retention that lowers it and drives hyponatremia. The sign flips as the urine so
 plus potassium sum crosses plasma sodium.
 Worked example: a dilute urine yields a positive clearance, while a hypertonic urine
 yields a negative one.
+
+### Stewart SID / strong ion gap (SIG)
+Citation: Stewart PA. Modern quantitative acid-base chemistry. Can J Physiol Pharmacol.
+1983;61(12):1444-1461; albumin and phosphate charge per Figge J, Mydosh T, Fencl V. J
+Lab Clin Med. 1992;120(5):713-719.
+Rule: the apparent strong ion difference equals sodium plus potassium plus calcium plus
+magnesium, less chloride and lactate, all in milliequivalents per liter; the effective
+strong ion difference equals bicarbonate plus the albumin charge plus the phosphate
+charge, with the Figge weak-acid charges evaluated at the physiologic pH of seven point
+four. The strong ion gap is the apparent less the effective difference; a value above
+about two suggests unmeasured strong anions.
+Worked example: a wide gap in a high-anion-gap acidosis points to ketoacids, sulfate,
+citrate, or salicylate.
+
+### Base excess (Van Slyke, Hgb-corrected)
+Citation: Siggaard-Andersen O. The Van Slyke equation. Scand J Clin Lab Invest Suppl.
+1977;146:15-20.
+Rule: the hemoglobin-corrected base excess is read off the blood gas from the
+bicarbonate and the pH deviation from seven point four, scaled by the buffering term in
+hemoglobin. A negative value is a base deficit consistent with metabolic acidosis; a
+positive value is a base excess consistent with metabolic alkalosis. The sign flips at
+zero.
+Worked example: a low pH against a low bicarbonate gives a negative base deficit.
+
+### Expected HCO3 - respiratory acidosis
+Citation: Brackett NC Jr, Cohen JJ, Schwartz WB. Carbon dioxide titration curve of
+normal man. N Engl J Med. 1965;272:6-12; chronic adaptation per Schwartz WB, et al.
+Rule: the kidney raises bicarbonate by about one milliequivalent per liter for every ten
+millimeters of mercury that the arterial carbon dioxide tension rises above forty
+acutely, and by about four chronically. A measured bicarbonate below the expected band
+suggests an added metabolic acidosis, and above it an added metabolic alkalosis. The
+acute-versus-chronic choice is the clinician's.
+Worked example: an acute tension of sixty predicts a bicarbonate near twenty-six.
+
+### Expected HCO3 - respiratory alkalosis
+Citation: Gennari FJ, Goldstein MB, Schwartz WB. The nature of the renal adaptation to
+chronic hypocapnia. J Clin Invest. 1972;51(7):1722-1730.
+Rule: the kidney lowers bicarbonate by about two milliequivalents per liter for every
+ten millimeters of mercury that the arterial carbon dioxide tension falls below forty
+acutely, and by about four chronically, and not below a physiologic floor. A measured
+bicarbonate below the expected band suggests an added metabolic acidosis, and above it
+an added metabolic alkalosis.
+Worked example: an acute tension of twenty-five predicts a bicarbonate near twenty-one.
+
+### Expected PaCO2 - metabolic alkalosis
+Citation: Narins RG, Emmett M. Simple and mixed acid-base disorders: a practical
+approach. Medicine (Baltimore). 1980;59(3):161-187.
+Rule: respiratory compensation raises the arterial carbon dioxide tension by about
+seven tenths of a millimeter of mercury for every milliequivalent per liter that
+bicarbonate rises above twenty-four, plus forty, within a small band. A measured tension
+above the expected band suggests an added respiratory acidosis, and below it an added
+respiratory alkalosis. This is the metabolic-alkalosis complement of the Winter's rule.
+Worked example: a bicarbonate of forty predicts a tension near fifty-one.
+
+### Urine osmolal gap (urinary NH4+ estimate)
+Citation: Halperin ML, Goldstein MB, Stinebaugh BJ, Jungas RL. The urine osmolal gap: a
+clue to estimate urine ammonium in hybrid types of metabolic acidosis. Clin Invest Med.
+1988;11(3):198-202.
+Rule: the calculated urine osmolality equals twice the sum of urine sodium and potassium
+plus the urine urea nitrogen over two point eight plus the urine glucose over eighteen;
+the gap is the measured less the calculated osmolality, and half the gap approximates
+urinary ammonium. In a normal-anion-gap acidosis a wide gap points to an extrarenal
+cause such as diarrhea, while a narrow gap points to renal tubular acidosis.
+Worked example: a wide gap reflects an intact ammonium response to the acid load.

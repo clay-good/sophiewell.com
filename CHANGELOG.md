@@ -6,6 +6,51 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v129: acid-base compensation & gaps — Stewart SID/SIG, base excess, the three compensation formulas, urine osmolal gap, +6 — spec-v100 Wave 5)
+
+- **Wave 5 of the [spec-v100](docs/spec-v100.md) MDCalc Parity Completion program
+  continues.** Six deterministic **acid-base** tiles (catalog **564 → 570**) that
+  complete the compensation set `winters` opened and add the physicochemical (Stewart)
+  and urine-gap views beside `anion-gap-dd`, all in **Clinical Math & Conversions
+  (Group E)**, via `lib/acidbase-v129.js` + `views/group-v129.js` (`RV129`). Each takes
+  clinician-entered gas/electrolyte values as input — no AI, no network — and renders
+  the spec-v50 §3 clinical-posture note. None duplicates a live tile. All six
+  **re-fetch the formulas/coefficients verbatim** and cross-verify across ≥ 2
+  independent sources (spec-v97 discipline).
+  - **`stewart-sid-sig`** — Stewart strong ion difference / strong ion gap (Stewart PA,
+    *Can J Physiol Pharmacol* 1983; Figge J, et al, *J Lab Clin Med* 1992): apparent SID
+    = (Na + K + Ca + Mg) − (Cl + lactate); effective SID = HCO₃ + albumin charge +
+    phosphate charge. **Source-governance:** the spec input set omits pH, so the Figge
+    weak-acid charges are fixed at the physiologic **pH 7.4** (albumin 2.8 mEq/L per
+    g/dL, phosphate 0.59 mEq/L per mg/dL) — stated to the user. SIG > 2 mEq/L flags
+    unmeasured strong anions. Cross-links `anion-gap-dd`.
+  - **`base-excess`** — Standard base excess (Siggaard-Andersen O, the Van Slyke
+    equation, *Scand J Clin Lab Invest* 1977; **NCCLS C12-T2** constants): BE = (1 −
+    0.0143·Hb)·(HCO₃ − 24.8 + (9.5 + 1.63·Hb)·(pH − 7.4)). Reproduces the published
+    −13.0 mEq/L worked case. Negative = base deficit, positive = base excess; the
+    **constant pair is kept intact** (Lang & Zander 2002 warn against crossing editions).
+  - **`resp-acidosis-compensation`** — Expected HCO₃ in respiratory acidosis (Brackett
+    NC, et al, *NEJM* 1965 acute; Schwartz chronic): 24 + k·(PaCO₂ − 40)/10, k = 1 acute
+    / 4 chronic. Flags an added metabolic disorder when measured ≠ expected (± 2).
+  - **`resp-alkalosis-compensation`** — Expected HCO₃ in respiratory alkalosis (Gennari
+    FJ, et al, *J Clin Invest* 1972): 24 − k·(40 − PaCO₂)/10, k = 2 acute / 4 chronic,
+    clamped to a physiologic floor (~18 acute, ~12 chronic).
+  - **`met-alkalosis-compensation`** — Expected PaCO₂ in metabolic alkalosis (Narins RG,
+    Emmett M, *Medicine* 1980): 0.7·(HCO₃ − 24) + 40 (± 5) — the metabolic-alkalosis
+    complement of Winter's formula. Flags an added respiratory disorder.
+  - **`urine-osmolal-gap`** — Urine osmolal gap (Halperin ML, et al, *Clin Invest Med*
+    1988): measured − [2·(Na + K) + urea-N/2.8 + glucose/18]; half the gap ≈ urinary
+    NH₄⁺. A wide gap points to an extrarenal non-anion-gap acidosis; a narrow gap to
+    renal tubular acidosis. Cross-links `anion-gap-dd`.
+  - The acute-vs-chronic selector is **explicit, never inferred**; every compensation
+    prediction is clamped to a physiologic range; the SIG/base-excess/urine-gap tiles
+    report **signed** results. All six are **Class A** (journal + author citations — no
+    `docs/citation-staleness.md` row). Every denominator is guarded; the fuzz harness
+    shows zero non-finite leaks. ≥ 3 boundary worked examples per tile (a SIG
+    unmeasured-anion flip, a base-excess sign flip at 0, acute/chronic boundary cases
+    with an added-disorder flag, and a urine osmolal gap whose half estimates NH₄⁺);
+    a spec-v11 audit log each under `docs/audits/v12/`.
+
 ### Added (spec-v128: renal excretion & dialysis math — FE-phosphate, FE-magnesium, nPCR/nPNA, standard Kt/V, electrolyte-free water clearance, +5 — spec-v100 Wave 5)
 
 - **Wave 5 of the [spec-v100](docs/spec-v100.md) MDCalc Parity Completion program
