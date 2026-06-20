@@ -1,14 +1,18 @@
 # spec-v132.md — Thrombotic microangiopathy & coagulopathy: PLASMIC, French TTP, JAAM DIC, IPSET-thrombosis, and CISNE (+5 tiles)
 
-> Status: **PROPOSED (2026-06-17).** Feature spec of the [spec-v100](spec-v100.md)
-> **MDCalc Parity Completion** program, **Wave 6 — Heme / onc / endocrine / ID.**
-> Adds **5** deterministic thrombotic-microangiopathy, coagulopathy, and
-> febrile-neutropenia decision rules that fill confirmed catalog gaps. None
-> duplicates a live tile.
+> Status: **SHIPPED (2026-06-20).** Feature spec of the [spec-v100](spec-v100.md)
+> **MDCalc Parity Completion** program, **Wave 6 — Heme / onc / endocrine / ID**
+> (opens the wave). Adds **5** deterministic thrombotic-microangiopathy,
+> coagulopathy, and febrile-neutropenia decision rules that fill confirmed catalog
+> gaps. None duplicates a live tile.
 >
-> Catalog effect at v132 close: **583 + 5 = 588 tiles.** (If specs land out of
-> order, the implementing session uses the then-current `UTILITIES.length` plus
-> this spec's +5, and the catalog-truth gate enforces agreement.)
+> Catalog effect (as shipped): **584 + 5 = 589 tiles.** (The roster authored this
+> spec at a projected 583 → 588; the standalone spec-v149 EMS parity interleaved
+> first, so v132 landed at the then-current `UTILITIES.length` of 584 plus +5 =
+> 589, and the catalog-truth gate enforces agreement.) Source-governance note:
+> the French TTP creatinine threshold ships **inclusive** (≤ 2.26 mg/dL /
+> ≤ 200 µmol/L) per Coppo 2010, governing over §2.2's strict `<`; JAAM DIC is the
+> 2006 revised max-8 form (fibrinogen removed).
 >
 > Every prior spec (v4 through v131) remains in force. v132 adds no runtime network
 > call and no AI; each tile obeys the [spec-v100](spec-v100.md) §2 doctrine

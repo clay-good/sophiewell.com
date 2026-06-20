@@ -6,6 +6,43 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v132: thrombotic microangiopathy & coagulopathy — PLASMIC, French TTP, JAAM DIC, IPSET-thrombosis, CISNE, +5 — spec-v100 Wave 6 open)
+
+- **Wave 6 of the [spec-v100](docs/spec-v100.md) MDCalc Parity Completion program
+  opens.** Five deterministic **hematology / critical-care** scoring tiles
+  (catalog **584 → 589**) in **Clinical Scoring & Risk (Group G)** add the
+  thrombotic-microangiopathy / coagulopathy cluster that sits beside the existing
+  `four-ts` (HIT probability) and `khorana` (cancer-VTE) tiles, via
+  `lib/heme-v132.js` + `views/group-v132.js` (`RV132`). Every point table was
+  re-fetched and cross-verified against ≥ 2 independent sources (spec-v97 lesson),
+  never recalled.
+  - **`plasmic-ttp`** — PLASMIC score 0–7 (Bendapudi 2017): pretest probability of
+    severe ADAMTS13 deficiency (acquired TTP) before the assay returns. The active-
+    cancer and transplant points score for the **absence** of the condition (the
+    common coding bug, guarded by a dedicated inversion test). 0–4 low / 5
+    intermediate / 6–7 high.
+  - **`french-ttp`** — French TTP score 0–3 (Coppo 2010). The creatinine threshold
+    is **inclusive** (≤ 2.26 mg/dL / ≤ 200 µmol/L) per the source, governing over
+    the spec draft's strict `<`. 0 very unlikely / 2–3 highly likely.
+  - **`jaam-dic`** — JAAM acute-DIC score 0–8 (Gando 2006), the **2006 revised**
+    criteria (fibrinogen removed, max 8 — **not** the older max-10 form). The
+    platelet limb takes the max of the absolute-count band and the optional 24-h
+    relative-fall band. DIC at ≥ 4.
+  - **`ipset-thrombosis`** — revised IPSET-thrombosis (Barbui 2015): a four-tier
+    decision tree over age > 60, prior thrombosis, and JAK2 V617F in essential
+    thrombocythemia. Cardiovascular risk factors modulate the rate **within** a
+    tier but do not change the category (confirmed, deliberately excluded).
+  - **`cisne`** — CISNE 0–8 (Carmona-Bayonas 2015): serious-complication risk in
+    **clinically stable** febrile-neutropenia outpatients (the subgroup MASCC does
+    not refine). 0 low (~1.1%) / 1–2 intermediate (~6.2%) / ≥ 3 high (~36%).
+- All five are **Class A** (journal + author citations; no
+  `docs/citation-staleness.md` row), pass the [spec-v59](docs/spec-v59.md) fuzz
+  harness with zero non-finite leaks, render the [spec-v50](docs/spec-v50.md) §3
+  posture note, and carry ≥ 3 boundary worked examples each (PLASMIC 6 high-band,
+  French TTP 0-vs-2 flip, JAAM crossing the ≥ 4 DIC threshold, IPSET high vs
+  very-low, CISNE crossing ≥ 3). Catalog **584 → 589** across all 13 catalog-truth
+  surfaces.
+
 ### Added (spec-v131: urology renal-mass, kidney-stone & torsion scores — CAPRA, R.E.N.A.L., PADUA renal, S.T.O.N.E., TWIST, +5 — spec-v100 Wave 5 close)
 
 - **Wave 5 of the [spec-v100](docs/spec-v100.md) MDCalc Parity Completion program

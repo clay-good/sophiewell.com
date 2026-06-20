@@ -61,6 +61,7 @@ import { renderers as RV128 } from './views/group-v128.js';
 import { renderers as RV129 } from './views/group-v129.js';
 import { renderers as RV130 } from './views/group-v130.js';
 import { renderers as RV131 } from './views/group-v131.js';
+import { renderers as RV132 } from './views/group-v132.js';
 import { renderers as RV149 } from './views/group-v149.js';
 import { renderers as RV63 } from './views/group-v63.js';
 import { renderers as RB } from './views/group-b.js';
@@ -80,7 +81,7 @@ import { resolvePrompt } from './lib/prompt.js';
 // artifact-detect / artifact-route / artifact-handoff helpers were
 // deleted in spec-v29 wave 29-2 (Group C/L).
 
-const RENDERERS = { ...RA, ...RB, ...RC, ...RE, ...RF, ...RG, ...RH, ...RI, ...RJ, ...RKLMNO, ...RV5, ...RV6, ...RV7, ...RV8, ...RV9, ...RV10, ...RV11, ...RV12, ...RV13, ...RV14, ...RV15, ...RV16, ...RV17, ...RV18, ...RV19, ...RV20, ...RV21, ...RV22, ...RV23, ...RV24, ...RV25, ...RV26, ...RV27, ...RV28, ...RV29, ...RV30, ...RV31, ...RV32, ...RV33, ...RV34, ...RV35, ...RV36, ...RV37, ...RV38, ...RV39, ...RV40, ...RV117, ...RV118, ...RV119, ...RV120, ...RV121, ...RV122, ...RV123, ...RV124, ...RV125, ...RV126, ...RV127, ...RV128, ...RV129, ...RV130, ...RV131, ...RV149, ...RV63, ...RPALINT };
+const RENDERERS = { ...RA, ...RB, ...RC, ...RE, ...RF, ...RG, ...RH, ...RI, ...RJ, ...RKLMNO, ...RV5, ...RV6, ...RV7, ...RV8, ...RV9, ...RV10, ...RV11, ...RV12, ...RV13, ...RV14, ...RV15, ...RV16, ...RV17, ...RV18, ...RV19, ...RV20, ...RV21, ...RV22, ...RV23, ...RV24, ...RV25, ...RV26, ...RV27, ...RV28, ...RV29, ...RV30, ...RV31, ...RV32, ...RV33, ...RV34, ...RV35, ...RV36, ...RV37, ...RV38, ...RV39, ...RV40, ...RV117, ...RV118, ...RV119, ...RV120, ...RV121, ...RV122, ...RV123, ...RV124, ...RV125, ...RV126, ...RV127, ...RV128, ...RV129, ...RV130, ...RV131, ...RV132, ...RV149, ...RV63, ...RPALINT };
 
 // ----- Utility registry ----------------------------------------------------
 // Source of truth for routes, names, group, audiences, and clinical flag.
@@ -1017,6 +1018,15 @@ const UTILITIES = [
   { id: 'padua-renal',            name: 'PADUA renal-tumour complexity score',             group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'stone-nephrolithometry', name: 'S.T.O.N.E. nephrolithometry (PCNL complexity)',   group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'twist-score',            name: 'TWIST score (testicular torsion)',                group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+
+  // spec-v132 (Wave 6 of the spec-v100 program): the thrombotic-microangiopathy /
+  // coagulopathy cluster beside four-ts and khorana. views/group-v132.js,
+  // lib/heme-v132.js. All Group G, Class A (journal+author citations).
+  { id: 'plasmic-ttp',            name: 'PLASMIC score (TTP / ADAMTS13 probability)',      group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'french-ttp',             name: 'French TTP score (ADAMTS13 probability)',         group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'jaam-dic',               name: 'JAAM DIC score (acute disseminated intravascular coagulation)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'ipset-thrombosis',       name: 'Revised IPSET-thrombosis (essential thrombocythemia)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'cisne',                  name: 'CISNE (stable febrile-neutropenia complication risk)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
 
   // spec-v6 §3.3: lab result interpreter. Patient-decoder category.
   { id: 'lab-interpret',       name: 'Lab Result Interpreter',                           group: 'C', audiences: ['patients', 'clinicians', 'educators'], clinical: true },
