@@ -125,6 +125,7 @@ import * as hepV124 from '../../lib/hep-v124.js';
 import * as hepV125 from '../../lib/hep-v125.js';
 import * as giV126 from '../../lib/gi-v126.js';
 import * as nephroV127 from '../../lib/nephro-v127.js';
+import * as renalV128 from '../../lib/renal-v128.js';
 
 const MODULES = {
   'clinical.js': clinical,
@@ -194,6 +195,7 @@ const MODULES = {
   'hep-v125.js': hepV125,
   'gi-v126.js': giV126,
   'nephro-v127.js': nephroV127,
+  'renal-v128.js': renalV128,
 };
 
 const MATRIX = [0, -1, 1e9, NaN, Infinity, -Infinity, '', undefined, null];

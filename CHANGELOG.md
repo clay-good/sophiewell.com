@@ -6,6 +6,41 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v128: renal excretion & dialysis math — FE-phosphate, FE-magnesium, nPCR/nPNA, standard Kt/V, electrolyte-free water clearance, +5 — spec-v100 Wave 5)
+
+- **Wave 5 of the [spec-v100](docs/spec-v100.md) MDCalc Parity Completion program
+  continues.** Five deterministic **renal-excretion and dialysis-math** tiles (catalog
+  **559 → 564**) beside `fena-feurea` and `ktv-urr`, all in **Clinical Math &
+  Conversions (Group E)**, via `lib/renal-v128.js` + `views/group-v128.js` (`RV128`).
+  Each takes lab values or dialysis settings as input — no AI, no network — and renders
+  the spec-v50 §3 clinical-posture note. None duplicates a live tile. All five
+  **re-fetch the formulas verbatim** and cross-verify across ≥ 2 independent sources
+  (spec-v97 discipline).
+  - **`fepo4`** — Fractional excretion of phosphate (Walton RJ, Bijvoet OL, *Lancet*
+    1975): (U·PO₄ × P·Cr) / (P·PO₄ × U·Cr) × 100. In hypophosphatemia, > ~5% suggests
+    renal phosphate wasting. Cross-links `fena-feurea`.
+  - **`femg`** — Fractional excretion of magnesium (Elisaf M, et al, *Miner Electrolyte
+    Metab* 1998): (U·Mg × P·Cr) / (0.7 × P·Mg × U·Cr) × 100; the **0.7** corrects for
+    the protein-bound, non-filterable fraction. In hypomagnesemia, > ~2–4% suggests
+    renal magnesium wasting.
+  - **`npcr-pna`** — Normalized protein catabolic rate (Depner TA, Daugirdas JT, *JASN*
+    1996): 0.22 + 0.864 × (pre-BUN − post-BUN) / interdialytic hours (the two-point
+    anuric form, reproducing the published 1.24 g/kg/day example). Target ~1.0–1.2
+    g/kg/day. The Kt/V-coefficient form is **deliberately not shipped** — its
+    non-midweek coefficients are unverifiable from open sources (no-fabrication).
+  - **`std-ktv`** — Standard Kt/V (Leypoldt JK, et al, *Hemodial Int* 2003; FHN
+    fixed-volume form): eKt/V = spKt/V × t/(t+35), then the weekly frequency-normalized
+    stdKt/V (10080 min/week). KDOQI 2015 target ≥ 2.1/week. Overflow-safe.
+  - **`efwc`** — Electrolyte-free water clearance (Rose BD, *Am J Med* 1986): V × [1 −
+    (U·Na + U·K) / P·Na]. **Source-governance:** the spec prose inverted the sign — the
+    tile implements the verified convention (positive = free-water excretion, raises
+    plasma Na; negative = retention, drives hyponatremia) and reports the **signed**
+    result.
+  - All five are **Class A** (journal + author citations; KDOQI / FHN never reach
+    `ISSUER_PATTERN` — no `docs/citation-staleness.md` row). Every denominator is
+    guarded; the fuzz harness shows zero non-finite leaks. ≥ 3 boundary worked examples
+    per tile; a spec-v11 audit log each under `docs/audits/v12/`.
+
 ### Added (spec-v127: nephrology prognosis & AKI staging — KFRE, RIFLE, AKIN, ultrafiltration rate, +4 — spec-v100 Wave 5)
 
 - **Wave 5 (GI / hepatology / nephrology / acid-base / urology) of the

@@ -2699,3 +2699,59 @@ kilogram per hour. A rate above thirteen is associated with higher cardiovascula
 morbidity and mortality.
 Worked example: removing three and a half liters over three hours at seventy kilograms
 exceeds the threshold.
+
+### Fractional excretion of phosphate (FEPO4)
+Citation: Walton RJ, Bijvoet OL. Nomogram for derivation of renal threshold phosphate
+concentration. Lancet. 1975;2(7929):309-310.
+Rule: the fractional excretion of phosphate equals urine phosphate times plasma
+creatinine, divided by plasma phosphate times urine creatinine, times one hundred. In
+the workup of hypophosphatemia a value above about five percent suggests renal
+phosphate wasting, while a value at or below that points to an extra-renal or
+redistributive cause.
+Worked example: a urine phosphate of thirty against a plasma phosphate of one and a
+half, at matched creatinines, gives a fraction in the renal-wasting range.
+
+### Fractional excretion of magnesium (FEMg)
+Citation: Elisaf M, Panteli K, Theodorou J, Siamopoulos KC. Fractional excretion of
+magnesium in normal subjects and in patients with hypomagnesemia. Miner Electrolyte
+Metab. 1998;24(2-3):315-318.
+Rule: the fractional excretion of magnesium equals urine magnesium times plasma
+creatinine, divided by the product of zero point seven, plasma magnesium, and urine
+creatinine, times one hundred. The zero-point-seven factor corrects for the
+protein-bound, non-filterable fraction of plasma magnesium. In hypomagnesemia a value
+above roughly two to four percent suggests renal magnesium wasting.
+Worked example: a urine magnesium of two against a plasma magnesium of one point two,
+at matched creatinines, exceeds the wasting threshold.
+
+### Standard Kt/V (weekly dialysis dose)
+Citation: Leypoldt JK, Jaber BL, Zimmerman DL. Predicting treatment dose for novel
+therapies using urea standard Kt/V. Hemodial Int. 2003;7(2):138-143.
+Rule: the equilibrated single-session dose is converted to a weekly, frequency-
+normalized standard Kt/V using the fixed-volume form, so thrice-weekly, short-daily,
+and nocturnal schedules can be compared on one axis. The weekly adequacy target is at
+least two point one.
+Worked example: a single-pool Kt/V of one point four over four hours, three times a
+week, gives a weekly standard Kt/V just above the target.
+
+### nPCR / nPNA (dialysis protein catabolic rate)
+Citation: Depner TA, Daugirdas JT. Equations for normalized protein catabolic rate
+based on two-point modeling of hemodialysis urea kinetics. J Am Soc Nephrol.
+1996;7(5):780-785.
+Rule: the normalized protein catabolic rate is derived from the interdialytic rise in
+blood urea nitrogen between the post-dialysis value of one session and the pre-dialysis
+value of the next, divided by the interval, in grams per kilogram per day. The
+nutrition target is roughly one to one point two; below about zero point eight suggests
+inadequate protein intake.
+Worked example: a rise from eighteen to seventy over forty-four hours gives a rate near
+one and a quarter.
+
+### Electrolyte-free water clearance (EFWC)
+Citation: Rose BD. New approach to disturbances in the plasma sodium concentration. Am
+J Med. 1986;81(6):1033-1040.
+Rule: the electrolyte-free water clearance equals urine volume times one minus the
+quotient of urine sodium plus potassium over plasma sodium. A positive value is net
+free-water excretion that raises plasma sodium; a negative value is net free-water
+retention that lowers it and drives hyponatremia. The sign flips as the urine sodium
+plus potassium sum crosses plasma sodium.
+Worked example: a dilute urine yields a positive clearance, while a hypertonic urine
+yields a negative one.
