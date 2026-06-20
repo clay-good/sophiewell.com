@@ -2471,3 +2471,67 @@ or more commonly flags clinically significant depressive symptoms warranting fur
 evaluation.
 Worked example: depressed mood, feeling life is a failure, loneliness, and sadness
 together cross the sixteen-point threshold.
+
+### ALBI grade (albumin-bilirubin liver function)
+Citation: Johnson PJ, Berhane S, Kagebayashi C, et al. Assessment of liver function in
+patients with hepatocellular carcinoma: a new evidence-based approach -- the ALBI
+grade. J Clin Oncol. 2015;33(6):550-558.
+Rule: an objective liver-function grade from albumin and bilirubin alone, with no
+subjective ascites or encephalopathy terms. The score is the base-ten logarithm of
+bilirubin in micromoles per liter times zero point six six, plus albumin in grams per
+liter times minus zero point zero eight five. Grade one is the best liver function,
+grade two intermediate, and grade three the worst.
+Worked example: an albumin of three point five and a bilirubin of one give a grade-two
+score.
+
+### MELD-XI (MELD excluding INR)
+Citation: Heuman DM, Mihas AA, Habib A, et al. MELD-XI: a rational approach to patients
+with end-stage liver disease requiring anticoagulation. Liver Transpl. 2007;13(1):30-37.
+Rule: the INR-independent MELD for the anticoagulated patient whose INR is
+uninterpretable. The score is five point one one times the natural log of bilirubin
+plus eleven point seven six times the natural log of creatinine plus nine point four
+four, both labs in milligrams per deciliter, each floored at one before the log so the
+score cannot go negative.
+Worked example: a bilirubin of two and a creatinine of one point five give a score in
+the high teens.
+
+### Forns Index (HCV fibrosis)
+Citation: Forns X, Ampurdanes S, Llovet JM, et al. Identification of chronic hepatitis
+C patients without hepatic fibrosis by a simple predictive model. Hepatology.
+2002;36(4 Pt 1):986-992.
+Rule: a four-variable serum estimate from age, gamma-glutamyl transferase, platelet
+count, and total cholesterol in milligrams per deciliter. A value below four point two
+rules out significant fibrosis with a high negative predictive value, above six point
+nine rules it in, and between is indeterminate. The cholesterol coefficient is
+calibrated to milligrams per deciliter, not millimoles per liter.
+Worked example: a young patient with a high platelet count and normal enzymes scores
+below the rule-out threshold.
+
+### BARD Score (NAFLD advanced fibrosis)
+Citation: Harrison SA, Oliver D, Arnold HL, et al. Development and validation of a
+simple NAFLD clinical scoring system for identifying patients without advanced disease.
+Gut. 2008;57(10):1441-1447.
+Rule: three weighted items -- a body mass index of twenty-eight or higher adds one, an
+AST-to-ALT ratio of zero point eight or higher adds two, and diabetes adds one. A total
+of two to four leaves advanced fibrosis in play, while zero to one robustly rules it out.
+Worked example: an obese diabetic patient with a high enzyme ratio reaches the top of
+the range.
+
+### Fatty Liver Index (steatosis probability)
+Citation: Bedogni G, Bellentani S, Miglioli L, et al. The Fatty Liver Index: a simple
+and accurate predictor of hepatic steatosis in the general population. BMC
+Gastroenterol. 2006;6:33.
+Rule: a logistic steatosis-probability index from triglycerides, body mass index,
+gamma-glutamyl transferase, and waist circumference. A value below thirty rules
+steatosis out, sixty or above rules it in, and between is indeterminate.
+Worked example: a metabolic-syndrome profile reaches the rule-in band.
+
+### Lok Index (cirrhosis probability)
+Citation: Lok AS, Ghany MG, Goodman ZD, et al. Predicting cirrhosis in patients with
+hepatitis C based on standard laboratory tests: results of the HALT-C cohort.
+Hepatology. 2005;42(2):282-292.
+Rule: a logistic probability of cirrhosis from the platelet count, the AST-to-ALT
+ratio, and the INR. A probability below zero point two rules cirrhosis out, above zero
+point five rules it in, and between is indeterminate.
+Worked example: a low platelet count with a raised enzyme ratio and INR crosses the
+rule-in threshold.

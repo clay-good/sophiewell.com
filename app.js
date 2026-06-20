@@ -53,6 +53,7 @@ import { renderers as RV120 } from './views/group-v120.js';
 import { renderers as RV121 } from './views/group-v121.js';
 import { renderers as RV122 } from './views/group-v122.js';
 import { renderers as RV123 } from './views/group-v123.js';
+import { renderers as RV124 } from './views/group-v124.js';
 import { renderers as RV63 } from './views/group-v63.js';
 import { renderers as RB } from './views/group-b.js';
 import { renderers as RPALINT } from './views/pa-lint.js';
@@ -71,7 +72,7 @@ import { resolvePrompt } from './lib/prompt.js';
 // artifact-detect / artifact-route / artifact-handoff helpers were
 // deleted in spec-v29 wave 29-2 (Group C/L).
 
-const RENDERERS = { ...RA, ...RB, ...RC, ...RE, ...RF, ...RG, ...RH, ...RI, ...RJ, ...RKLMNO, ...RV5, ...RV6, ...RV7, ...RV8, ...RV9, ...RV10, ...RV11, ...RV12, ...RV13, ...RV14, ...RV15, ...RV16, ...RV17, ...RV18, ...RV19, ...RV20, ...RV21, ...RV22, ...RV23, ...RV24, ...RV25, ...RV26, ...RV27, ...RV28, ...RV29, ...RV30, ...RV31, ...RV32, ...RV33, ...RV34, ...RV35, ...RV36, ...RV37, ...RV38, ...RV39, ...RV40, ...RV117, ...RV118, ...RV119, ...RV120, ...RV121, ...RV122, ...RV123, ...RV63, ...RPALINT };
+const RENDERERS = { ...RA, ...RB, ...RC, ...RE, ...RF, ...RG, ...RH, ...RI, ...RJ, ...RKLMNO, ...RV5, ...RV6, ...RV7, ...RV8, ...RV9, ...RV10, ...RV11, ...RV12, ...RV13, ...RV14, ...RV15, ...RV16, ...RV17, ...RV18, ...RV19, ...RV20, ...RV21, ...RV22, ...RV23, ...RV24, ...RV25, ...RV26, ...RV27, ...RV28, ...RV29, ...RV30, ...RV31, ...RV32, ...RV33, ...RV34, ...RV35, ...RV36, ...RV37, ...RV38, ...RV39, ...RV40, ...RV117, ...RV118, ...RV119, ...RV120, ...RV121, ...RV122, ...RV123, ...RV124, ...RV63, ...RPALINT };
 
 // ----- Utility registry ----------------------------------------------------
 // Source of truth for routes, names, group, audiences, and clinical flag.
@@ -900,6 +901,20 @@ const UTILITIES = [
   { id: 'bars-akathisia',         name: 'Barnes Akathisia Rating Scale',                    group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'scoff',                  name: 'SCOFF (eating-disorder screen)',                   group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'ces-d',                  name: 'CES-D (depression scale)',                         group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+
+  // spec-v124 (Wave 5 opener of the spec-v100 program): six hepatology
+  // function-and-fibrosis instruments read beside meld-childpugh and fib4 -- the
+  // ALBI objective liver-function grade, MELD-XI (INR-excluding MELD), the Forns
+  // HCV-fibrosis index, the BARD NAFLD advanced-fibrosis rule-out, the Fatty Liver
+  // Index steatosis probability, and the Lok cirrhosis-probability model. All six
+  // are Class A (fixed derivation coefficients; journal+author citations -- no
+  // staleness row). views/group-v124.js, lib/hep-v124.js.
+  { id: 'albi-grade',             name: 'ALBI grade (albumin-bilirubin liver function)',    group: 'E', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'meld-xi',                name: 'MELD-XI (MELD excluding INR)',                     group: 'E', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'forns-index',            name: 'Forns Index (HCV fibrosis)',                       group: 'E', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'bard-score',             name: 'BARD Score (NAFLD advanced fibrosis)',             group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'fatty-liver-index',      name: 'Fatty Liver Index (steatosis probability)',        group: 'E', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'lok-index',              name: 'Lok Index (cirrhosis probability)',                group: 'E', audiences: ['clinicians', 'educators'], clinical: true },
 
   // spec-v6 §3.3: lab result interpreter. Patient-decoder category.
   { id: 'lab-interpret',       name: 'Lab Result Interpreter',                           group: 'C', audiences: ['patients', 'clinicians', 'educators'], clinical: true },

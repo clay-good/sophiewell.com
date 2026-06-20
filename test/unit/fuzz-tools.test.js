@@ -121,6 +121,7 @@ import * as neuroV120 from '../../lib/neuro-v120.js';
 import * as neuroV121 from '../../lib/neuro-v121.js';
 import * as neuroV122 from '../../lib/neuro-v122.js';
 import * as psychV123 from '../../lib/psych-v123.js';
+import * as hepV124 from '../../lib/hep-v124.js';
 
 const MODULES = {
   'clinical.js': clinical,
@@ -186,6 +187,7 @@ const MODULES = {
   'neuro-v121.js': neuroV121,
   'neuro-v122.js': neuroV122,
   'psych-v123.js': psychV123,
+  'hep-v124.js': hepV124,
 };
 
 const MATRIX = [0, -1, 1e9, NaN, Infinity, -Infinity, '', undefined, null];

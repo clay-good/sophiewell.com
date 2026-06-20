@@ -6,6 +6,46 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v124: hepatology function & fibrosis — ALBI, MELD-XI, Forns, BARD, FLI, Lok, +6 — opens spec-v100 Wave 5)
+
+- **Wave 5 (GI / hepatology / nephrology / acid-base / urology) of the
+  [spec-v100](docs/spec-v100.md) MDCalc Parity Completion program opens.** Six
+  deterministic **hepatology function-and-fibrosis instruments** (catalog **538 →
+  544**) read beside the existing `meld-childpugh` and `fib4` tiles, via
+  `lib/hep-v124.js` + `views/group-v124.js` (`RV124`). `albi-grade` and `bard-score`
+  are in **Clinical Scoring & Risk (Group G)**; `meld-xi`, `forns-index`,
+  `fatty-liver-index`, and `lok-index` are in **Clinical Math & Conversions (Group
+  E)**. Each takes lab values as input — no AI, no network — and renders the spec-v50
+  §3 clinical-posture note (the tile reports the grade / score / probability and the
+  source's framing; the diagnosis and management decision stay with the clinician).
+  None duplicates a live tile. All six **re-fetch the published coefficients
+  verbatim** and cross-verify across ≥ 2 independent sources (spec-v97 discipline) —
+  which **caught a real spec error**: the Forns cholesterol term is **mg/dL**, not the
+  spec draft's "mmol/L" (the −0.014 coefficient is calibrated to mg/dL magnitudes).
+  - **`albi-grade`** — Albumin-Bilirubin grade (Johnson PJ, et al, *J Clin Oncol*
+    2015): log₁₀(bilirubin µmol/L)·0.66 + albumin g/L·−0.085 (the primary-paper
+    −0.085, not −0.0852); grade 1 (≤ −2.60) / 2 / 3 (> −1.39). Entered in g/dL and
+    mg/dL, converted internally. Cross-links `meld-childpugh`.
+  - **`meld-xi`** — MELD excluding INR (Heuman DM, et al, *Liver Transpl* 2007):
+    5.11·ln(bilirubin) + 11.76·ln(creatinine) + 9.44 (mg/dL), each lab floored at 1.0
+    before the log (the standard-MELD convention, so the score can't go negative; no
+    rescaling, no creatinine cap). For the anticoagulated / uninterpretable-INR case.
+  - **`forns-index`** — Forns HCV-fibrosis model (Forns X, et al, *Hepatology* 2002):
+    7.811 − 3.131·ln(platelets) + 0.781·ln(GGT) + 3.467·ln(age) − 0.014·cholesterol
+    (**mg/dL**); < 4.2 rules out significant fibrosis, > 6.9 rules it in.
+  - **`bard-score`** — BARD NAFLD advanced-fibrosis rule-out (Harrison SA, et al,
+    *Gut* 2008): BMI ≥ 28 (+1), AST/ALT ≥ 0.8 (+2), diabetes (+1); 2–4 leaves advanced
+    fibrosis in play (OR ~17), 0–1 rules it out (NPV ~96%).
+  - **`fatty-liver-index`** — FLI steatosis probability (Bedogni G, et al, *BMC
+    Gastroenterol* 2006): logistic of TG/BMI/GGT/waist → 0–100; < 30 out, ≥ 60 in.
+  - **`lok-index`** — Lok cirrhosis probability (Lok AS, et al, *Hepatology* 2005,
+    HALT-C): logistic of platelets/(AST/ALT)/INR; < 0.2 out, > 0.5 in.
+  - The logistic tiles (FLI, Lok) use an overflow-safe `1/(1+e^−x)` (extreme inputs →
+    0 or 100/1, never `Infinity`); every `ln`/`log₁₀` argument is domain-guarded
+    (blank/non-positive → complete-the-fields fallback, never `ln(0)`). All six are
+    **Class A** (journal + author citations, no `ISSUER_PATTERN` trip) — no
+    `docs/citation-staleness.md` row.
+
 ### Added (spec-v123: psychiatry public-domain instruments — AIMS, Bush-Francis, Barnes, SCOFF, CES-D, +5 — closes spec-v100 Wave 4)
 
 - **Wave 4 (Neurology / neurosurgery / psychiatry) of the
