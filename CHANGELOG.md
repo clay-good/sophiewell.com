@@ -6,6 +6,55 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v119: prehospital LVO triage & cerebrovascular diagnosis, +4 — spec-v100 Wave 4)
+
+- **Wave 4 (Neurology / neurosurgery / psychiatry)** of the
+  [spec-v100](docs/spec-v100.md) MDCalc Parity Completion program continues. Four
+  deterministic **prehospital large-vessel-occlusion (LVO) triage and
+  cerebrovascular-diagnosis instruments** (catalog **517 → 521**), all in
+  **Clinical Scoring & Risk (Group G)**, via `lib/neuro-v119.js` +
+  `views/group-v119.js` (`RV119`). v118 covered the in-hospital hemorrhagic
+  grading; v119 covers the field LVO-severity screens the EMS crew runs and two
+  cerebrovascular-diagnosis rules. Each takes the field exam or imaging *read*
+  (the NIHSS-derived field items, the microbleed / siderosis / white-matter
+  reads) — v119 parses no DICOM, no pixels, no radiology report — and renders the
+  spec-v50 §3 clinical-posture note (the tile reports the score / category and the
+  source's framing; the destination / bypass / treatment decision stays with the
+  EMS crew, stroke team, and local protocol). None duplicates a live tile. No new
+  specialty tag. All four **re-fetch the published point weights / diagnostic
+  logic verbatim** and cross-verify them across the derivation papers and
+  MDCalc / PMC / validation-cohort reproductions (spec-v97 discipline).
+  - **`cpsss`** — Cincinnati Prehospital Stroke Severity Scale / C-STAT (Katz BS,
+    et al, *Stroke* 2015): conjugate gaze deviation (+2), LOC questions/commands
+    incorrect (+1), severe arm weakness (+1), summed 0–4; ≥ 2 predicts a
+    large-vessel occlusion. Cross-links `nihss`, `fast-ed`.
+  - **`fast-ed`** — Field Assessment Stroke Triage for Emergency Destination
+    (Lima FO, et al, *Stroke* 2016): Facial palsy (0–1), Arm weakness (0–2),
+    Speech changes (0–2), Eye deviation (0–2), Denial/Neglect (0–2), summed 0–9
+    (the item maxima sum to 9; MDCalc's "0–10" is a sum-of-fives UI artifact); ≥ 4
+    predicts LVO and supports comprehensive-center triage. Cross-links `cpsss`,
+    `nihss`.
+  - **`boston-caa`** — Boston Criteria v2.0 for cerebral amyloid angiopathy
+    (Charidimou A, et al, *Lancet Neurol* 2022): grades diagnostic certainty
+    (definite / probable with supporting pathology / probable / possible). The
+    in-vivo categories need age ≥ 50, a compatible presentation, and no deep
+    hemorrhagic lesion; v2.0 adds the non-hemorrhagic white-matter feature
+    (centrum-semiovale perivascular spaces > 20, or WMH multispot). Probable = ≥ 2
+    strictly lobar hemorrhagic lesions OR 1 lobar lesion + 1 white-matter feature;
+    Possible = 1 lobar lesion OR 1 white-matter feature. Cross-links
+    `ich-volume-abc2`.
+  - **`cvt-risk`** — Cerebral venous thrombosis outcome risk score (Ferro JM, et
+    al, *Cerebrovasc Dis* 2009, ISCVT): Malignancy (+2), Coma/GCS < 9 (+2), Deep
+    venous thrombosis (+2), Mental-status disturbance (+1), Male sex (+1),
+    Intracranial hemorrhage (+1), summed 0–9; ≥ 3 predicts a poor outcome
+    (mRS > 2; sensitivity ~96%, specificity ~14%). Cross-links `cha2ds2-va`.
+- **`cpsss`, `fast-ed`, `cvt-risk` are Class A** (fixed point weights; each
+  citation names the journal + authors, so none trips the `ISSUER_PATTERN`
+  gotcha) — **no** `docs/citation-staleness.md` row. **`boston-caa` is Class B**
+  (a revisable consensus diagnostic definition) — it carries a documentation-only
+  `docs/citation-staleness.md` row naming version 2.0 (2022) and an
+  on-publication review cadence.
+
 ### Added (spec-v118: hemorrhagic stroke, SAH, IVH & aneurysm, +5 — spec-v100 Wave 4)
 
 - **Wave 4 (Neurology / neurosurgery / psychiatry)** of the

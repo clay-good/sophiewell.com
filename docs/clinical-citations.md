@@ -2193,3 +2193,55 @@ at the low end to roughly half or more at the high end.
 Worked example: no earlier subarachnoid hemorrhage, a posterior site, an older
 Finnish patient, a large irregular aneurysm lands at the published ceiling, the
 highest-growth-risk band.
+
+### C-STAT / CPSSS (prehospital LVO severity)
+Citation: Katz BS, McMullan JT, Sucharew H, Adeoye O, Broderick JP. Design and
+validation of a prehospital scale to predict stroke severity: Cincinnati
+Prehospital Stroke Severity Scale. Stroke. 2015;46(6):1508-1512.
+Rule: a field screen from three items drawn from the stroke scale. Conjugate gaze
+deviation adds two points; answering the level-of-consciousness questions or
+following the commands incorrectly adds one; and severe arm weakness, where the
+arm cannot be held against gravity, adds one. The total runs from none to four. A
+total of two or more predicts a large-vessel occlusion.
+Worked example: conjugate gaze deviation alone reaches the two-point threshold,
+the occlusion-prediction band.
+
+### FAST-ED (field LVO triage)
+Citation: Lima FO, Silva GS, Furie KL, et al. Field Assessment Stroke Triage for
+Emergency Destination: a simple and accurate prehospital scale to detect large
+vessel occlusion strokes. Stroke. 2016;47(8):1997-2002.
+Rule: a field large-vessel-occlusion screen from five items drawn from the stroke
+scale. Facial palsy scores up to one; arm weakness, speech changes, eye deviation,
+and denial or neglect each score up to two. The total runs from none to nine. A
+total of four or more predicts a large-vessel occlusion and supports routing to a
+comprehensive stroke center.
+Worked example: facial palsy with severe arm weakness and severe speech change
+sums to five, above the occlusion-prediction threshold.
+
+### Boston Criteria v2.0 (cerebral amyloid angiopathy)
+Citation: Charidimou A, Boulouis G, Frosch MP, et al. The Boston criteria version
+2.0 for cerebral amyloid angiopathy: a multicentre, retrospective,
+MRI-neuropathology diagnostic accuracy study. Lancet Neurol. 2022;21(8):714-725.
+Rule: grades diagnostic certainty as definite, probable with supporting pathology,
+probable, or possible. The in-vivo categories require an older patient, a
+compatible presentation (spontaneous lobar hemorrhage, transient focal episodes,
+or cognitive impairment), and the absence of any deep hemorrhagic lesion. Version
+two adds the non-hemorrhagic white-matter feature: severe centrum-semiovale
+perivascular spaces or a white-matter-hyperintensity multispot pattern. Probable
+needs two or more strictly lobar hemorrhagic lesions, or one lobar lesion plus one
+white-matter feature; possible needs one lobar lesion or one white-matter feature.
+Worked example: two strictly lobar hemorrhagic lesions in an older patient with a
+compatible presentation and no deep lesion is probable cerebral amyloid
+angiopathy.
+
+### CVT Outcome Risk Score
+Citation: Ferro JM, Bacelar-Nicolau H, Rodrigues T, et al. Risk score to predict
+the outcome of patients with cerebral vein and dural sinus thrombosis. Cerebrovasc
+Dis. 2009;28(1):39-44.
+Rule: predicts a poor outcome (dependency or death) after cerebral venous
+thrombosis. Malignancy, coma, and deep venous system thrombosis each add two
+points; mental-status disturbance, male sex, and intracranial hemorrhage each add
+one. The total runs from none to nine. A total of three or more predicts a poor
+outcome, a high-sensitivity screen.
+Worked example: malignancy with coma sums to four, above the poor-outcome
+threshold.

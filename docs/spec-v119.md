@@ -1,7 +1,15 @@
 # spec-v119.md — Prehospital LVO severity & cerebrovascular diagnosis: C-STAT/CPSSS, FAST-ED, Boston Criteria v2.0, and CVT outcome (+4 tiles)
 
-> Status: **PROPOSED (2026-06-17).** Feature spec of the [spec-v100](spec-v100.md)
+> Status: **SHIPPED (2026-06-19).** Feature spec of the [spec-v100](spec-v100.md)
 > MDCalc Parity Completion program, **Wave 4 (Neurology / neurosurgery / psychiatry)**.
+> Shipped as catalog **517 → 521** (the live count at implementation; the 518/522
+> figures below reflect the spec-draft estimate, which ran one ahead of the
+> running catalog count — the program's known off-by-one). `fast-ed` ships with the
+> **arithmetic-correct 0–9 range** (the item maxima sum to 9; MDCalc's "0–10" UI is
+> a sum-of-fives artifact); `cvt-risk` ships **coma = +2** (the stray "+5" reading
+> is wrong); `boston-caa` ships the **v2.0 four-category logic** and reports
+> "Criteria not met" rather than inventing a category when a deep lesion, a missing
+> age/presentation, or no qualifying marker is present.
 > Adds **4** deterministic prehospital large-vessel-occlusion triage and cerebrovascular-
 > diagnosis instruments that fill confirmed gaps. None duplicates a live tile.
 >

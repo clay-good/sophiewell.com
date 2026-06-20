@@ -48,6 +48,7 @@ import { renderers as RV39 } from './views/group-v39.js';
 import { renderers as RV40 } from './views/group-v40.js';
 import { renderers as RV117 } from './views/group-v117.js';
 import { renderers as RV118 } from './views/group-v118.js';
+import { renderers as RV119 } from './views/group-v119.js';
 import { renderers as RV63 } from './views/group-v63.js';
 import { renderers as RB } from './views/group-b.js';
 import { renderers as RPALINT } from './views/pa-lint.js';
@@ -66,7 +67,7 @@ import { resolvePrompt } from './lib/prompt.js';
 // artifact-detect / artifact-route / artifact-handoff helpers were
 // deleted in spec-v29 wave 29-2 (Group C/L).
 
-const RENDERERS = { ...RA, ...RB, ...RC, ...RE, ...RF, ...RG, ...RH, ...RI, ...RJ, ...RKLMNO, ...RV5, ...RV6, ...RV7, ...RV8, ...RV9, ...RV10, ...RV11, ...RV12, ...RV13, ...RV14, ...RV15, ...RV16, ...RV17, ...RV18, ...RV19, ...RV20, ...RV21, ...RV22, ...RV23, ...RV24, ...RV25, ...RV26, ...RV27, ...RV28, ...RV29, ...RV30, ...RV31, ...RV32, ...RV33, ...RV34, ...RV35, ...RV36, ...RV37, ...RV38, ...RV39, ...RV40, ...RV117, ...RV118, ...RV63, ...RPALINT };
+const RENDERERS = { ...RA, ...RB, ...RC, ...RE, ...RF, ...RG, ...RH, ...RI, ...RJ, ...RKLMNO, ...RV5, ...RV6, ...RV7, ...RV8, ...RV9, ...RV10, ...RV11, ...RV12, ...RV13, ...RV14, ...RV15, ...RV16, ...RV17, ...RV18, ...RV19, ...RV20, ...RV21, ...RV22, ...RV23, ...RV24, ...RV25, ...RV26, ...RV27, ...RV28, ...RV29, ...RV30, ...RV31, ...RV32, ...RV33, ...RV34, ...RV35, ...RV36, ...RV37, ...RV38, ...RV39, ...RV40, ...RV117, ...RV118, ...RV119, ...RV63, ...RPALINT };
 
 // ----- Utility registry ----------------------------------------------------
 // Source of truth for routes, names, group, audiences, and clinical flag.
@@ -828,6 +829,19 @@ const UTILITIES = [
   { id: 'bat-score',              name: 'BAT Score (hematoma expansion)',                   group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'phases',                 name: 'PHASES Score (aneurysm rupture risk)',             group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'elapss',                 name: 'ELAPSS Score (aneurysm growth risk)',              group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+
+  // spec-v119 (Wave 4 of spec-v100): four prehospital large-vessel-occlusion
+  // triage and cerebrovascular-diagnosis instruments the EMS crew and stroke
+  // team run -- the C-STAT/CPSSS and FAST-ED field LVO-severity screens, the
+  // Boston Criteria v2.0 cerebral-amyloid-angiopathy certainty, and the CVT
+  // outcome risk score. cpsss, fast-ed, and cvt-risk are Class A (fixed point
+  // weights, journal+author citations -- no staleness row); boston-caa is
+  // Class B (a revisable consensus diagnostic definition, docs/citation-
+  // staleness.md row). views/group-v119.js, lib/neuro-v119.js.
+  { id: 'cpsss',                  name: 'C-STAT / CPSSS (prehospital LVO severity)',        group: 'G', audiences: ['clinicians', 'field', 'educators'], clinical: true },
+  { id: 'fast-ed',                name: 'FAST-ED (field LVO triage)',                       group: 'G', audiences: ['clinicians', 'field', 'educators'], clinical: true },
+  { id: 'boston-caa',             name: 'Boston Criteria v2.0 (cerebral amyloid angiopathy)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'cvt-risk',               name: 'CVT Outcome Risk Score',                           group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
 
   // spec-v6 §3.3: lab result interpreter. Patient-decoder category.
   { id: 'lab-interpret',       name: 'Lab Result Interpreter',                           group: 'C', audiences: ['patients', 'clinicians', 'educators'], clinical: true },

@@ -5,7 +5,7 @@
 <h1 align="center">sophiewell.com</h1>
 
 <p align="center">
-  <strong>517 deterministic healthcare calculators tuned to the nurse on shift.</strong><br>
+  <strong>521 deterministic healthcare calculators tuned to the nurse on shift.</strong><br>
   Free forever. No servers, no accounts, no telemetry, no AI, no network call after first paint.
 </p>
 
@@ -36,7 +36,7 @@ output; "searchable lookup of static facts" does not qualify. See
 [docs/spec-v10.md](docs/spec-v10.md) for the audience and
 dependency-budget commitments and
 [docs/spec-v29.md](docs/spec-v29.md) for the nurse-first pivot
-and the v29 catalog ledger. At v118 close the catalog is 517
+and the v29 catalog ledger. At v119 close the catalog is 521
 deterministic tiles — every one of them computes from at least
 one user input. The catalog reached its present size on two tracks.
 **New tiles:** spec-v63 added the operations counterpart to the bedside
@@ -186,7 +186,7 @@ production security headers. Any static file server will also work.
 ## How it works and how to use it
 
 Since the spec-v29 nurse-first prune the catalog has grown one
-reviewable spec at a time to **517** deterministic calculators
+reviewable spec at a time to **521** deterministic calculators
 (the full per-version history is in [CHANGELOG.md](CHANGELOG.md)
 and `docs/spec-v*.md`; the most recent bedside additions are
 summarized in the cheat sheets below). They organize across the
@@ -1023,7 +1023,7 @@ Duke-ISCVID) and `refeeding-risk` (NICE CG32) are **Class B** with
 [citation-staleness](docs/citation-staleness.md) rows; the other three are
 **Class A**. See [docs/spec-v99.md](docs/spec-v99.md).
 
-### MDCalc parity completion: the cardiology / vascular / lipid surface (spec-v100 program, Wave 1: spec-v101 → spec-v105, +25 → 457, **complete**; Wave 2 complete: spec-v106 → 463, spec-v107 → 467, spec-v108 → 473, spec-v109 → 478, spec-v110 → 483, spec-v111 → 487, **+30 → 487**; Wave 3 complete (Critical care & pulmonary): spec-v112 → 492, spec-v113 → 495, spec-v114 → 501, spec-v115 → 506, **+19 → 506**; Wave 4 underway (Neurology / neurosurgery / psychiatry): spec-v117 → 512, spec-v118 → 517, **+11 → 517**)
+### MDCalc parity completion: the cardiology / vascular / lipid surface (spec-v100 program, Wave 1: spec-v101 → spec-v105, +25 → 457, **complete**; Wave 2 complete: spec-v106 → 463, spec-v107 → 467, spec-v108 → 473, spec-v109 → 478, spec-v110 → 483, spec-v111 → 487, **+30 → 487**; Wave 3 complete (Critical care & pulmonary): spec-v112 → 492, spec-v113 → 495, spec-v114 → 501, spec-v115 → 506, **+19 → 506**; Wave 4 underway (Neurology / neurosurgery / psychiatry): spec-v117 → 512, spec-v118 → 517, spec-v119 → 521, **+15 → 521**)
 
 With the spec-v85 program complete, [spec-v100](docs/spec-v100.md) charters the
 **MDCalc Parity Completion** program — a roadmap that closes the remaining gaps
@@ -1384,6 +1384,39 @@ decisions stay with the stroke team and local protocol. Five are **Class A**;
 reperfusion guidelines → a documentation-only `docs/citation-staleness.md` row).
 `lib/neuro-v117.js` + `views/group-v117.js`. **This opens Wave 4 of the
 spec-v100 program (506 → 512, +6).**
+
+#### spec-v119 — prehospital LVO triage & cerebrovascular diagnosis (+4 → 521, Wave 4)
+
+Wave 4 continues from the in-hospital hemorrhagic grading out to the **field**.
+The catalog had the in-hospital stroke scales (`nihss`, `ich-score`) but not the
+prehospital LVO-triage tools the EMS crew runs, nor two cerebrovascular-diagnosis
+rules. All four home in **Clinical Scoring & Risk (Group G)**:
+
+| id | Rule | Output | Class |
+|---|---|---|---|
+| `cpsss` | Katz 2015 Cincinnati Prehospital Stroke Severity Scale / C-STAT — conjugate gaze (+2) + LOC questions/commands (+1) + severe arm weakness (+1) | **0–4; ≥ 2 predicts a large-vessel occlusion** | A |
+| `fast-ed` | Lima 2016 Field Assessment Stroke Triage — Facial (0–1) + Arm (0–2) + Speech (0–2) + Eye (0–2) + Neglect (0–2) | **0–9; ≥ 4 predicts LVO, supports comprehensive-center triage** | A |
+| `boston-caa` | Charidimou 2022 Boston Criteria v2.0 — age ≥ 50 + presentation + lobar hemorrhagic lesions + v2.0 white-matter feature − deep lesions | **definite / probable-with-pathology / probable / possible CAA** | B |
+| `cvt-risk` | Ferro 2009 (ISCVT) CVT outcome score — Malignancy (+2) + Coma (+2) + Deep-CVT (+2) + Mental status (+1) + Male (+1) + ICH (+1) | **0–9; ≥ 3 predicts poor outcome (mRS > 2)** | A |
+
+All four **re-fetch the published point weights / diagnostic logic verbatim** (the
+spec-v97 discipline), cross-verified across the derivation papers and MDCalc / PMC
+/ validation-cohort reproductions. Two source-governance catches resolved at
+implementation: **FAST-ED totals 0–9, not the "0–10"** MDCalc's UI labels (the
+item maxima — facial palsy caps at 1 — sum to 9; the "0–10" is a sum-of-fives
+artifact); and the **CVT coma item is +2, not the stray "+5"** that circulates
+(it reflects the published hazard ranking, where malignancy, coma, and deep-CVT
+carry the three highest hazard ratios → 2 points each). The Boston v2.0 logic is
+verbatim-confirmed across two independent reproductions of the Lancet Neurology
+source; `boston-caa` reports "Criteria not met" rather than inventing a category
+when a deep lesion, a missing age/presentation, or no qualifying marker is
+present. Each tile **reports the score/category, not the order** (spec-v11 §5.3):
+the destination, bypass, anticoagulation, and treatment decisions stay with the
+EMS crew, stroke team, and local protocol. `cpsss`/`fast-ed`/`cvt-risk` are
+**Class A** (journal+author citations, no `ISSUER_PATTERN` trip → no staleness
+row); `boston-caa` is **Class B** (a revisable consensus diagnostic definition →
+a documentation-only `docs/citation-staleness.md` row). `lib/neuro-v119.js` +
+`views/group-v119.js`. **Catalog 517 → 521, +4.**
 
 #### spec-v118 — hemorrhagic stroke, SAH, IVH & aneurysm (+5 → 517, Wave 4)
 
@@ -1864,7 +1897,7 @@ long version, see [docs/architecture.md](docs/architecture.md).
  │  manifests (data/)            │  static │        ▼                     ▼             │
  │        │  scripts/build       │  files  │   lazy-load data shard   pure compute      │
  │        ▼                      │         │   (verified vs manifest)  (lib/*.js)       │
- │  dist/  (517 tool pages,      │         │        │                     │             │
+ │  dist/  (521 tool pages,      │         │        │                     │             │
  │  OG cards, sitemap, SBOM)     │         │        ▼                     ▼             │
  └───────────────────────────────┘         │   service worker cache    result + cite   │
                                             │   (keyed to build hash)                    │
@@ -1886,7 +1919,7 @@ assets:
 
 | Output | Count | Source |
 |--------|------:|--------|
-| Pre-rendered tool pages (`dist/tools/<id>/`) | 517 | `scripts/build-tool-pages.mjs` |
+| Pre-rendered tool pages (`dist/tools/<id>/`) | 521 | `scripts/build-tool-pages.mjs` |
 | Audience hub pages (`dist/for/<audience>/`) | 6 | `scripts/build-hub-pages.mjs` |
 | Topic pages + `/topics/` index | 8 + 1 | `scripts/build-topic-pages.mjs` |
 | `/commitments/` | 1 | `scripts/build-commitments-page.mjs` |
@@ -1909,7 +1942,7 @@ failure is a non-zero exit that blocks the merge:
 | `check-pa-staleness.mjs` | every PA rule is source-anchored and within its freshness window |
 | `audit-pa.mjs` | the 46 PA-linter fixtures still reproduce their committed golden reports |
 
-`npm run test` adds the 4,486-test unit suite, the a11y check, and dataset
+`npm run test` adds the 4,562-test unit suite, the a11y check, and dataset
 integrity verification; `npm run test:e2e` runs the Playwright suite against
 real Chromium/Firefox/WebKit — including a full-catalog 320 px no-horizontal-
 scroll sweep over every SPA route **and** every one of the 463 pre-rendered
@@ -1921,7 +1954,7 @@ static pages, so a tile can never ship mobile overflow undetected.
 index.html          single-page shell (hero-search combobox + static browse-by-category nav, tile mount)
 styles.css          one stylesheet (responsive; no horizontal scroll — enforced catalog-wide at 320px in CI)
 app.js              router, hero-search wiring, view wiring, the UTILITIES catalog
-                    (517 tiles — the single source of truth; zero runtime deps)
+                    (521 tiles — the single source of truth; zero runtime deps)
 sw.js               service worker — precache shell, cache shards by build hash
 theme.js            light/dark theme toggle (writes only sw-theme, allowlisted)
 lib/input-persist.js opt-in "remember my inputs" (off by default; numbers only)
@@ -1939,12 +1972,12 @@ docs/               specs (spec-v4 onward) + per-tile v11/v12 audit logs +
                     citation-staleness ledger +
                     architecture / threat-model / …
 test/               unit/ (node:test) · integration/ (Playwright) · fixtures/
-dist/               build output (517 tool pages, OG cards, sitemap, SBOM)
+dist/               build output (521 tool pages, OG cards, sitemap, SBOM)
 ```
 
-### Discovery: how a query finds the right tool among 517
+### Discovery: how a query finds the right tool among 521
 
-With 517 tiles, search quality *is* the product — a tool you cannot find does
+With 521 tiles, search quality *is* the product — a tool you cannot find does
 not exist. Discovery is deterministic and offline (no fuzzy-match service, no
 embedding model, no AI). The home `#hero-search` combobox builds its dropdown
 from two complementary rankers, both pure functions of the typed query:
@@ -2017,10 +2050,10 @@ A login-less, AI-free calculator earns trust only if the nurse can see, on the
 tile, exactly which published source produced the number — and tell whether that
 source is current. spec-v54 defined the invariants; spec-v60 built the machinery
 (the gate, the ledger, and the `citationAccessed` convention) and extended it
-across the full 517-tile catalog, pinning the last three unpinned "current
+across the full 521-tile catalog, pinning the last three unpinned "current
 edition" phrases and re-verifying every guideline tile against its latest known
 edition. Three invariants make that auditable, each enforced by the
-`check-citations.mjs` lint gate (in the `npm run lint` chain) over all 517 tiles:
+`check-citations.mjs` lint gate (in the `npm run lint` chain) over all 521 tiles:
 
 | Invariant | Rule | Enforcement |
 |---|---|---|
@@ -2476,8 +2509,8 @@ rules, not soft preferences.
 | `npm run dev`            | Serve the directory locally on http://localhost:4173 (set `SERVE_ROOT=dist` to preview the pre-rendered hubs/topics/tool pages as production serves them) |
 | `npm run build`          | Copy static files into `dist/` for deployment                     |
 | `npm test`               | Run the full test suite (unit, a11y, grep, data integrity)        |
-| `npm run test:unit`      | Run Node's built-in unit tests (4,529 tests)                      |
-| `npm run test:e2e`       | Build `dist/`, then run Playwright integration tests against real browsers — incl. a full-catalog 320px no-horizontal-scroll sweep over both the SPA routes and the 517 pre-rendered static tool pages, the hub/topic/commitments pages, and the citation-wrap pin |
+| `npm run test:unit`      | Run Node's built-in unit tests (4,562 tests)                      |
+| `npm run test:e2e`       | Build `dist/`, then run Playwright integration tests against real browsers — incl. a full-catalog 320px no-horizontal-scroll sweep over both the SPA routes and the 521 pre-rendered static tool pages, the hub/topic/commitments pages, and the citation-wrap pin |
 | `npm run test:a11y`      | Run accessibility checks on every utility view                    |
 | `npm run lint`           | ESLint + the CI gate chain: grep-check, output-safety, citation-integrity, catalog-truth, commitments, PA staleness, PA audit |
 | `npm run data:refresh`   | Re-fetch and re-shard every public dataset                        |
@@ -2561,7 +2594,7 @@ build, integrity-verified data shards) are documented in
 - [docs/spec-v11.md](docs/spec-v11.md) — correctness-floor spec:
   per-tile audit protocol, specialty-named groups, optional
   source-quoted `interpretation` field. Audit coverage is **complete
-  — 517/517 tiles** carry a committed per-tile audit log
+  — 521/521 tiles** carry a committed per-tile audit log
   (`docs/audits/v11/<id>.md` for the pre-v78 catalog;
   `docs/audits/v12/<id>.md` for the tiles added since — the
   spec-v78–v83 billing & coding program, the spec-v85
