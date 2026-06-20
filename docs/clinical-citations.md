@@ -2420,3 +2420,54 @@ diagnosis but are never required, since seronegative cases are recognized. It si
 a continuous spectrum with Miller Fisher syndrome and Guillain-Barre syndrome.
 Worked example: external ophthalmoplegia and ataxia with altered consciousness meet
 the required core.
+
+### AIMS (tardive dyskinesia severity)
+Citation: Guy W. ECDEU Assessment Manual for Psychopharmacology: Abnormal Involuntary
+Movement Scale (AIMS). Rockville, MD: US DHEW, NIMH; 1976. Provenance: a
+US-government NIMH instrument in the public domain, free to reproduce.
+Rule: a movement-severity scale for tardive dyskinesia. Seven movement items -- four
+facial or oral, two extremity, and one trunk -- are each rated from none to severe and
+summed, with a separate global-severity judgment. Moderate movements in two or more
+body areas, or severe in any one area, are a commonly cited threshold for probable
+tardive dyskinesia.
+Worked example: moderate movements of the face and jaw meet the probable tardive
+dyskinesia threshold.
+
+### Bush-Francis Catatonia Rating Scale
+Citation: Bush G, Fink M, Petrides G, Dowling F, Francis A. Catatonia. I. Rating scale
+and standardized examination. Acta Psychiatr Scand. 1996;93(2):129-136.
+Rule: the first fourteen of the twenty-three items form the screening instrument,
+scored present or absent; two or more positive screen items suggest catatonia. The
+full twenty-three-item severity scale rates each item from absent to severe, where six
+items are scored absent or present only.
+Worked example: immobility with mutism and staring gives a positive screen, suggesting
+catatonia.
+
+### Barnes Akathisia Rating Scale
+Citation: Barnes TRE. A rating scale for drug-induced akathisia. Br J Psychiatry.
+1989;154:672-676.
+Rule: rates drug-induced akathisia from objective restlessness, subjective awareness,
+and subjective distress, plus a global clinical assessment that runs from absent
+through questionable, mild, moderate, and marked to severe.
+Worked example: moderate objective and subjective restlessness with a global rating of
+moderate akathisia.
+
+### SCOFF (eating-disorder screen)
+Citation: Morgan JF, Reid F, Lacey JH. The SCOFF questionnaire: assessment of a new
+screening tool for eating disorders.
+BMJ. 1999;319(7223):1467-1468. Provenance: reproduced in full in the open source
+paper and free to use.
+Rule: a five-item yes or no screen -- Sick, Control, One stone, Fat, and Food. Two or
+more positive answers flag a likely eating disorder warranting further assessment.
+Worked example: positive Sick and Control answers reach the two-positive threshold.
+
+### CES-D (depression scale)
+Citation: Radloff LS. The CES-D Scale: a self-report depression scale for research in
+the general population. Appl Psychol Meas. 1977;1(3):385-401. Provenance: developed at
+NIMH and in the public domain, free to reproduce.
+Rule: a twenty-item self-report scale rated over the past week, where the four
+positively-worded items are reverse-scored per the published key. A total of sixteen
+or more commonly flags clinically significant depressive symptoms warranting further
+evaluation.
+Worked example: depressed mood, feeling life is a failure, loneliness, and sadness
+together cross the sixteen-point threshold.

@@ -6,6 +6,46 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v123: psychiatry public-domain instruments — AIMS, Bush-Francis, Barnes, SCOFF, CES-D, +5 — closes spec-v100 Wave 4)
+
+- **Wave 4 (Neurology / neurosurgery / psychiatry) of the
+  [spec-v100](docs/spec-v100.md) MDCalc Parity Completion program is now complete.**
+  Five deterministic, **confirmed public-domain / free-to-use psychiatry
+  instruments** (catalog **533 → 538**), all in **Clinical Scoring & Risk (Group
+  G)**, via `lib/psych-v123.js` + `views/group-v123.js` (`RV123`). The catalog had
+  the free mood/risk screens (`phq9`, `cssrs`) but not these movement-side-effect,
+  catatonia, eating-disorder, and depression instruments. Each takes the clinician's
+  / patient's item ratings as input — no AI, no network — and renders the spec-v50 §3
+  clinical-posture note (each is a screen or severity scale, **not a diagnosis**; the
+  assessment and treatment decision stay with the clinician). None duplicates a live
+  tile; the **copyrighted psychiatry instruments (BDI, PANSS, MoCA, EAT-26, …) stay
+  on the spec-v100 §8 permanent-exclusion list.** All five **re-fetch the item lists
+  / scoring keys verbatim** and cross-verify across ≥ 2 independent sources (spec-v97
+  discipline), and each instrument's license status is re-confirmed per §8 in
+  `docs/clinical-citations.md`.
+  - **`aims-tardive`** — Abnormal Involuntary Movement Scale (Guy W, ECDEU/NIMH
+    1976): seven movement items (0–4) summed to a movement total 0–28 plus a global
+    severity 0–4; ≥ 2 in two or more areas or ≥ 3 in one flags probable tardive
+    dyskinesia. **NIMH public domain.** Cross-links `bars-akathisia`.
+  - **`bfcrs`** — Bush-Francis Catatonia Rating Scale (Bush G, et al, *Acta
+    Psychiatr Scand* 1996): the first 14 of 23 items form the screen (≥ 2 positive
+    suggests catatonia); all 23 score 0–3 (six are 0/3 binary), severity max 69.
+    Source-order correction: Immobility/stupor is item 1, Excitement item 14.
+  - **`bars-akathisia`** — Barnes Akathisia Rating Scale (Barnes TRE, *Br J
+    Psychiatry* 1989): objective / subjective-awareness / subjective-distress each
+    0–3 (subtotal 0–9) plus the global clinical assessment 0–5 (absent → severe).
+  - **`scoff`** — SCOFF questionnaire (Morgan JF, et al, *BMJ* 1999): five yes/no
+    items; ≥ 2 positive flags a likely eating disorder. **Free to use** (reproduced
+    in the open BMJ paper).
+  - **`ces-d`** — Center for Epidemiologic Studies Depression Scale (Radloff LS,
+    *Appl Psychol Meas* 1977): 20 items (0–3), total 0–60, with the four
+    positively-worded items (4, 8, 12, 16) reverse-scored in-compute; ≥ 16 flags
+    clinically significant depressive symptoms (the adult cutoff, not the child
+    CES-DC's ≥ 15). **NIMH public domain.** Cross-links `phq9`.
+  - All five are **Class A** (fixed ordinal scales / item sets; journal/manual +
+    author citations, no `ISSUER_PATTERN` trip) — no `docs/citation-staleness.md`
+    row. **This closes spec-v100 Wave 4 at 538 tiles (506 → 538, +32).**
+
 ### Added (spec-v122: general neurology & rehab — dementia type, spasticity, brainstem encephalitis, +3 — spec-v100 Wave 4)
 
 - **Wave 4 (Neurology / neurosurgery / psychiatry)** of the

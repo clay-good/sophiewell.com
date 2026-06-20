@@ -52,6 +52,7 @@ import { renderers as RV119 } from './views/group-v119.js';
 import { renderers as RV120 } from './views/group-v120.js';
 import { renderers as RV121 } from './views/group-v121.js';
 import { renderers as RV122 } from './views/group-v122.js';
+import { renderers as RV123 } from './views/group-v123.js';
 import { renderers as RV63 } from './views/group-v63.js';
 import { renderers as RB } from './views/group-b.js';
 import { renderers as RPALINT } from './views/pa-lint.js';
@@ -70,7 +71,7 @@ import { resolvePrompt } from './lib/prompt.js';
 // artifact-detect / artifact-route / artifact-handoff helpers were
 // deleted in spec-v29 wave 29-2 (Group C/L).
 
-const RENDERERS = { ...RA, ...RB, ...RC, ...RE, ...RF, ...RG, ...RH, ...RI, ...RJ, ...RKLMNO, ...RV5, ...RV6, ...RV7, ...RV8, ...RV9, ...RV10, ...RV11, ...RV12, ...RV13, ...RV14, ...RV15, ...RV16, ...RV17, ...RV18, ...RV19, ...RV20, ...RV21, ...RV22, ...RV23, ...RV24, ...RV25, ...RV26, ...RV27, ...RV28, ...RV29, ...RV30, ...RV31, ...RV32, ...RV33, ...RV34, ...RV35, ...RV36, ...RV37, ...RV38, ...RV39, ...RV40, ...RV117, ...RV118, ...RV119, ...RV120, ...RV121, ...RV122, ...RV63, ...RPALINT };
+const RENDERERS = { ...RA, ...RB, ...RC, ...RE, ...RF, ...RG, ...RH, ...RI, ...RJ, ...RKLMNO, ...RV5, ...RV6, ...RV7, ...RV8, ...RV9, ...RV10, ...RV11, ...RV12, ...RV13, ...RV14, ...RV15, ...RV16, ...RV17, ...RV18, ...RV19, ...RV20, ...RV21, ...RV22, ...RV23, ...RV24, ...RV25, ...RV26, ...RV27, ...RV28, ...RV29, ...RV30, ...RV31, ...RV32, ...RV33, ...RV34, ...RV35, ...RV36, ...RV37, ...RV38, ...RV39, ...RV40, ...RV117, ...RV118, ...RV119, ...RV120, ...RV121, ...RV122, ...RV123, ...RV63, ...RPALINT };
 
 // ----- Utility registry ----------------------------------------------------
 // Source of truth for routes, names, group, audiences, and clinical flag.
@@ -885,6 +886,20 @@ const UTILITIES = [
   { id: 'hachinski',              name: 'Hachinski Ischemic Score (dementia type)',         group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'modified-ashworth',      name: 'Modified Ashworth Scale (spasticity grade)',       group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'bickerstaff',            name: 'Bickerstaff Brainstem Encephalitis Criteria',      group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+
+  // spec-v123 (Wave 4 closer of the spec-v100 program): five public-domain /
+  // free-to-use psychiatry instruments -- the AIMS tardive-dyskinesia movement
+  // scale (NIMH public domain), the Bush-Francis Catatonia Rating Scale, the
+  // Barnes Akathisia Rating Scale, the SCOFF eating-disorder screen (free in the
+  // BMJ source), and the CES-D depression scale (NIMH public domain). All five are
+  // Class A (fixed ordinal scales / item sets, journal+manual citations -- no
+  // staleness row); the copyrighted psychiatry instruments (BDI, PANSS, MoCA, ...)
+  // stay on the spec-v100 §8 exclusion list. views/group-v123.js, lib/psych-v123.js.
+  { id: 'aims-tardive',           name: 'AIMS (tardive dyskinesia severity)',               group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'bfcrs',                  name: 'Bush-Francis Catatonia Rating Scale',              group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'bars-akathisia',         name: 'Barnes Akathisia Rating Scale',                    group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'scoff',                  name: 'SCOFF (eating-disorder screen)',                   group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'ces-d',                  name: 'CES-D (depression scale)',                         group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
 
   // spec-v6 §3.3: lab result interpreter. Patient-decoder category.
   { id: 'lab-interpret',       name: 'Lab Result Interpreter',                           group: 'C', audiences: ['patients', 'clinicians', 'educators'], clinical: true },
