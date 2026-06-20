@@ -36,6 +36,7 @@ the quarterly source pull. No clinical formula or threshold changes here.
 | tb-testing | CDC TST / IGRA interpretation | CDC TST cutoffs + 2017 ATS/IDSA/CDC LTBI guideline | same | 2026-06-05 | current |
 | sti-screening | CDC STI Treatment Guidelines | CDC STI Guidelines 2021 (MMWR 2021;70(4)) | same | 2026-06-05 | current |
 | peds-weight-conv | AAP infant weight bands + lb↔kg constant | AAP bands (stable) | same | 2026-06-05 | current — physical constant plus stable reference bands |
+| peds-vitals | AHA PALS age-banded normal vitals + hypotension SBP | AHA PALS Provider Manual 2020 | same | 2026-06-20 | current — the 2020 PALS normal ranges and the < 70 + 2×age hypotension definition are unchanged; tracked on the next PALS guideline revision |
 | kdigo-aki | KDIGO AKI staging | KDIGO AKI 2012 (Kidney Int Suppl 2012;2) | 2024 KDIGO CKD guideline | 2026-06-05 | behind on the org's newest document, justified — AKI staging is unchanged from KDIGO AKI 2012; the 2024 update governs CKD evaluation, not AKI staging |
 | acog-severe-pre | ACOG severe-feature preeclampsia criteria | ACOG 2013, reaffirmed PB 222 (2020) | same | 2026-06-05 | current |
 | crrt-dose | KDIGO CRRT effluent dose | KDIGO AKI 2012 (§5.8, 20-25 mL/kg/h) | 2024 KDIGO CKD guideline | 2026-06-05 | behind on the org's newest document, justified — the CRRT effluent-dose target is unchanged from KDIGO AKI 2012; the 2024 update does not revise CRRT dosing |

@@ -6,6 +6,36 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v149: roughlogic.com EMS-group parity — pediatric weight estimate, PALS vital-sign reference, drug-concentration draw-up volume, +3)
+
+- **roughlogic.com EMS parity.** A cross-catalog audit of roughlogic.com's EMS group
+  (`/groups/ems/`, 27 tools) against sophiewell found 24 of 27 already covered; this
+  spec ports the **3** genuinely-missing pre-hospital / field calculators (catalog
+  **576 → 579**), all in **EMS & Field (Group I)** with the `field` audience, via
+  `lib/ems-v149.js` + `views/group-v149.js` (`RV149`). Each is re-implemented verbatim
+  from roughlogic's `calc-ems.js` and re-grounded in its primary clinical source; none
+  duplicates a live tile. Standalone — not part of the spec-v100 program (which reserves
+  v101–v148).
+  - **`peds-weight-est`** — Pediatric Weight Estimate (APLS, *Advanced Paediatric Life
+    Support* 6th ed.): age → weight when no scale is available. 0–12 mo (months/2)+4 kg;
+    1–5 yr (2×years)+8 kg; 6–12 yr (3×years)+7 kg; > 12 yr flags adult-weight dosing.
+    Class A (no `ISSUER_PATTERN` trip). Closes the gap that `peds-weight-conv` (lb↔kg
+    only) and the weight-input-requiring dose tiles left open.
+  - **`peds-vitals`** — Pediatric Vital Signs Reference (AHA PALS Provider Manual 2020):
+    age → age-band normal HR/RR/SBP **plus the computed PALS hypotension threshold**
+    (SBP < 60 neonate, < 70 infant, < 70 + 2×age for ages 1–10, < 90 at ≥ 10 yr). The
+    band-specific cutoff is the calculated element (a calculator, not a static table).
+    **Class B** — the "AHA" citation trips `ISSUER_PATTERN`, so it carries a
+    `docs/citation-staleness.md` row + accessed date.
+  - **`dose-volume`** — Drug Concentration to Volume (draw-up): bolus volume (mL) =
+    ordered dose (mg) ÷ stock concentration (mg/mL), with an optional weight × per-kg-dose
+    derivation and the > 50 mL / < 0.05 mL verification flags. Class A. Distinct from
+    `conc-rate`, which solves an infusion **rate** (mL/hr), not a draw-up volume.
+  - Each flows through the spec-v59 fuzz harness (zero non-finite leaks), renders the
+    spec-v50 §3 posture note, ships ≥ 3 boundary worked examples, a spec-v11 audit log,
+    and passes the spec-v29 §3 one-line test. New specialty tags: none (all reuse the
+    existing closed vocabulary). See [docs/spec-v149.md](docs/spec-v149.md).
+
 ### Added (spec-v130: urology prostate metrics & risk — prostate volume, PSA density/velocity/doubling-time, D'Amico, Gleason Grade Group, +6 — spec-v100 Wave 5)
 
 - **Wave 5 of the [spec-v100](docs/spec-v100.md) MDCalc Parity Completion program

@@ -2887,3 +2887,30 @@ four plus three equals seven; group four is Gleason eight; group five is Gleason
 ten. The primary pattern governs the split between group two and group three.
 Worked example: a Gleason three plus four equals seven is Grade Group two, a favorable
 intermediate grade.
+
+### Pediatric Weight Estimate (APLS)
+Citation: Advanced Paediatric Life Support: The Practical Approach, 6th ed.
+(Advanced Life Support Group). Wiley-Blackwell, 2016.
+Rule: estimate body weight from age when no scale is available. Zero to twelve
+months uses months divided by two plus four kilograms; one to five years uses two
+times years plus eight; six to twelve years uses three times years plus seven.
+Worked example: a five-year-old is two times five plus eight, eighteen kilograms
+(about 39.7 lb).
+
+### Pediatric Vital Signs Reference (PALS)
+Citation: American Heart Association. Pediatric Advanced Life Support (PALS)
+Provider Manual, 2020.
+Rule: age-banded normal heart rate, respiratory rate, and systolic-BP ranges, with
+the PALS hypotensive systolic-BP definition computed for the entered age — below
+sixty in the neonate, below seventy in the infant, below seventy plus two times age
+in years from one to ten years, and below ninety at ten years and older.
+Worked example: a five-year-old has a PALS hypotension threshold of seventy plus two
+times five, a systolic BP below eighty mmHg.
+
+### Drug Concentration to Volume (draw-up)
+Citation: First-principles dosing arithmetic over the drug-concentration label.
+Rule: volume to draw in milliliters equals the ordered dose in milligrams divided by
+the stock concentration in milligrams per milliliter; the ordered dose may be derived
+from weight times a per-kilogram dose.
+Worked example: twenty-five milligrams from a fifty milligrams per milliliter vial is
+a draw of half a milliliter.
