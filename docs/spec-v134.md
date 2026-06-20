@@ -1,13 +1,20 @@
 # spec-v134.md — Plasma-cell & myeloid neoplasm staging: ISS, R-ISS, R2-ISS, Mayo MGUS risk, and DIPSS / DIPSS-Plus (+6 tiles)
 
-> Status: **PROPOSED (2026-06-17).** Feature spec of the [spec-v100](spec-v100.md)
+> Status: **SHIPPED (2026-06-20).** Feature spec of the [spec-v100](spec-v100.md)
 > **MDCalc Parity Completion** program, **Wave 6 — Heme / onc / endocrine / ID.**
 > Adds **6** deterministic plasma-cell and myeloid-neoplasm staging/prognosis rules
 > that fill confirmed catalog gaps. None duplicates a live tile.
 >
-> Catalog effect at v134 close: **592 + 6 = 598 tiles.** (If specs land out of
-> order, the implementing session uses the then-current `UTILITIES.length` plus
-> this spec's +6, and the catalog-truth gate enforces agreement.)
+> Catalog effect at v134 close: **593 + 6 = 599 tiles.** (Specs landed out of
+> order — v133 closed the live catalog at 593 — so the implementing session used the
+> then-current `UTILITIES.length` (593) plus this spec's +6, and the catalog-truth
+> gate enforces agreement at 599.)
+>
+> **Source-governance correction shipped:** the R2-ISS additive total runs **0–5**,
+> not the §2.3 draft's "0–3.0" — the draft conflated the IV-stratum threshold (which
+> opens at 3.0) with the score ceiling (ISS-III 1.5 + LDH 1.0 + del(17p) 1.0 +
+> t(4;14) 1.0 + 1q21 0.5 = 5.0). The shipped `myelomaR2Iss` uses the 0–5 range and a
+> max-score test pins it.
 >
 > Every prior spec (v4 through v133) remains in force. v134 adds no runtime network
 > call and no AI; each tile obeys the [spec-v100](spec-v100.md) §2 doctrine

@@ -2960,3 +2960,65 @@ one of four sub-tables chosen by the day-three band. INR is checked on days thre
 five only.
 Worked example: a day-three INR below one-point-three gives fifteen milligrams on days
 three and four.
+
+### Multiple Myeloma ISS Stage
+Citation: Greipp PR, San Miguel J, Durie BGM, et al. International staging system for
+multiple myeloma. J Clin Oncol. 2005;23(15):3412-3420.
+Rule: Stage I = serum beta2-microglobulin below three-point-five milligrams per litre
+AND albumin at least three-point-five grams per decilitre; Stage III = beta2-microglobulin
+at least five-point-five, whatever the albumin; Stage II = neither.
+Worked example: beta2-microglobulin three-point-two with albumin four is Stage I, median
+overall survival about sixty-two months in the 2005 derivation cohort.
+
+### Revised ISS (R-ISS) for Multiple Myeloma
+Citation: Palumbo A, Avet-Loiseau H, Oliva S, et al. Revised International Staging System
+for multiple myeloma: a report from International Myeloma Working Group. J Clin Oncol.
+2015;33(26):2863-2869.
+Rule: recompute the ISS, then Stage I = ISS I with normal LDH and no high-risk iFISH
+(del(17p), t(4;14), or t(14;16)); Stage III = ISS III with high LDH or high-risk iFISH;
+Stage II = all others.
+Worked example: ISS III with a high LDH is R-ISS III, five-year overall survival about
+forty per cent.
+
+### Second-Revision ISS (R2-ISS) for Multiple Myeloma
+Citation: D'Agostino M, Cairns DA, Lahuerta JJ, et al. Second revision of the
+International Staging System (R2-ISS) for overall survival in multiple myeloma: a
+European Myeloma Network report within HARMONY. J Clin Oncol. 2022;40(29):3406-3418.
+Rule: an additive model - ISS II adds one, ISS III adds one-and-a-half; high LDH,
+del(17p) and t(4;14) add one each; gain or amplification of 1q21 adds one-half. The total
+runs zero to five and maps to strata I (zero), II (one-half to one), III (one-and-a-half
+to two-and-a-half) and IV (three to five).
+Worked example: ISS III with a high LDH and a 1q21 gain totals three, stratum IV,
+median overall survival about thirty-eight months.
+
+### Mayo MGUS Progression-Risk Stratification
+Citation: Rajkumar SV, Kyle RA, Therneau TM, et al. Serum free light chain ratio is an
+independent risk factor for progression in monoclonal gammopathy of undetermined
+significance. Blood. 2005;106(3):812-817.
+Rule: one point each for a serum M-protein at least one-and-a-half grams per decilitre,
+a non-IgG isotype (IgA or IgM), and an abnormal serum free-light-chain ratio (outside
+zero-point-two-six to one-point-six-five). The zero-to-three count maps to a twenty-year
+progression risk of five, twenty-one, thirty-seven and fifty-eight per cent.
+Worked example: a one-point-two M-protein of IgA isotype with a free-light-chain ratio of
+five scores two factors, intermediate risk.
+
+### DIPSS (Myelofibrosis Survival Score)
+Citation: Passamonti F, Cervantes F, Vannucchi AM, et al. A dynamic prognostic model to
+predict survival in primary myelofibrosis (IWG-MRT). Blood. 2010;115(9):1703-1708.
+Rule: age over sixty-five, white-cell count over twenty-five, peripheral blasts at least
+one per cent and constitutional symptoms each add one; haemoglobin under ten adds two.
+The zero-to-six total maps to low (zero), intermediate-one (one to two), intermediate-two
+(three to four) and high (five to six).
+Worked example: age sixty-eight with haemoglobin nine-point-five and one per cent blasts
+totals four, intermediate-two, median survival about four years.
+
+### DIPSS-Plus (Myelofibrosis Survival Score)
+Citation: Gangat N, Caramazza D, Vaidya R, et al. DIPSS Plus: a refined Dynamic
+International Prognostic Scoring System for primary myelofibrosis. J Clin Oncol.
+2011;29(4):392-397.
+Rule: carry the DIPSS group forward (intermediate-one one, intermediate-two two, high
+three), then add one each for a platelet count under one hundred, a red-cell transfusion
+need and an unfavorable karyotype. The zero-to-six total maps to low (zero),
+intermediate-one (one), intermediate-two (two to three) and high (four to six).
+Worked example: a DIPSS intermediate-two group with a platelet count of ninety totals
+three, intermediate-two, median survival about two-point-nine years.

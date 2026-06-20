@@ -6,6 +6,48 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v134: plasma-cell & myeloid-neoplasm staging — ISS, R-ISS, R2-ISS, Mayo MGUS, DIPSS, DIPSS-Plus, +6 — spec-v100 Wave 6)
+
+- **The plasma-cell and myelofibrosis staging cluster comes onto the page beside
+  `ipss-r-mds` and `flipi`.** Six deterministic **Clinical Scoring & Risk (Group G)**
+  tiles (catalog **593 → 599**) via `lib/onc-v134.js` + `views/group-v134.js`
+  (`RV134`); each quotes the source's survival framing and leaves the management
+  decision with the clinician (spec-v11 §5.3). Every threshold and weight was
+  re-fetched from a primary source and cross-verified, never recalled (the spec-v97
+  discipline).
+  - **`myeloma-iss`** — Multiple myeloma International Staging System (Greipp 2005,
+    *J Clin Oncol*). Stage I = β2-microglobulin < 3.5 mg/L **and** albumin ≥ 3.5
+    g/dL; Stage III = β2-microglobulin ≥ 5.5 mg/L (governs over albumin); Stage II =
+    neither. Median OS ~62/44/29 months. Class A.
+  - **`myeloma-r-iss`** — Revised ISS (Palumbo 2015, IMWG, *J Clin Oncol*).
+    **Recomputes the ISS internally** from β2M + albumin so the chain cannot desync,
+    then folds in serum LDH and high-risk iFISH (del(17p), t(4;14), t(14;16)). 5-yr
+    OS ~82/62/40%. **Class B** (IMWG working-group definition) — carries a
+    `docs/citation-staleness.md` row (documentation-only; the spelled-out
+    "International Myeloma Working Group" does not match the issuer acronym set).
+  - **`myeloma-r2-iss`** — Second-Revision ISS (D'Agostino 2022, EMN/HARMONY, *J Clin
+    Oncol*). Additive model: ISS II 1.0 / III 1.5; high LDH 1.0; del(17p) 1.0;
+    t(4;14) 1.0; gain/amp 1q21 0.5. **The total runs 0–5, not the spec draft's
+    "0–3.0"** — the draft conflated the IV-stratum threshold (opens at 3.0) with the
+    score ceiling (5.0); corrected and pinned by a max-score test. Strata I–IV. Class A.
+  - **`mgus-risk`** — Mayo MGUS risk stratification (Rajkumar 2005, *Blood*). One
+    point each for M-protein ≥ 1.5 g/dL, a non-IgG isotype (IgA/IgM), and an abnormal
+    FLC ratio (outside 0.26–1.65). Count 0–3 → 20-year progression 5/21/37/58%. Class A.
+  - **`dipss-mf`** — DIPSS for primary myelofibrosis (Passamonti 2010, *Blood*). Age
+    > 65, WBC > 25, blasts ≥ 1%, constitutional symptoms each +1; **hemoglobin < 10
+    g/dL +2** (the only weighted-2 term, guarded by a dedicated test). Total 0–6 →
+    low/int-1/int-2/high; median survival NR/14.2/4/1.5 yr. Class A.
+  - **`dipss-plus-mf`** — DIPSS-Plus (Gangat 2011, *J Clin Oncol*). Carries the DIPSS
+    group forward (int-1 1, int-2 2, high 3), then platelet < 100, transfusion need,
+    and unfavorable karyotype each +1. Total 0–6 → low/int-1/int-2/high; median
+    survival 15.4/6.5/2.9/1.3 yr. Class A.
+- `lib/onc-v134.js` joins the spec-v59 fuzz harness (`test/unit/fuzz-tools.test.js`
+  `MODULES`); each of the six functions surfaces a complete-the-fields fallback
+  rather than a partial stage, with zero non-finite leaks. Six unit-test files with
+  boundary worked examples (the ISS 3.5/5.5 edges, an R-ISS stage flip, the R2-ISS
+  0.5/3.0 strata boundaries and 5.0 maximum, the MGUS 0-vs-3 flip and FLC edges, the
+  DIPSS hemoglobin-weighted-2 term, and the DIPSS-Plus group carry-forward).
+
 ### Added (spec-v133: warfarin start-up — IWPC + Gage pharmacogenetic dose, Kovacs 10 mg + Crowther 5 mg initiation nomograms, +4 — spec-v100 Wave 6)
 
 - **Warfarin start-up comes onto the page beside `heparin-nomogram`** — the
