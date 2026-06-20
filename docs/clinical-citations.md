@@ -2657,3 +2657,45 @@ Organ failure is a score of two or more in any system, the Revised Atlanta thres
 that separates moderately severe from severe acute pancreatitis.
 Worked example: a low oxygen ratio with a raised creatinine meets the organ-failure
 threshold.
+
+### KFRE (kidney failure risk equation)
+Citation: Tangri N, Stevens LA, Griffith J, et al. A predictive model for progression
+of chronic kidney disease to kidney failure. JAMA. 2011;305(15):1553-1559.
+Rule: the probability of treated kidney failure at two and five years in chronic kidney
+disease stages three to five. The risk equals one minus the baseline survival raised to
+the exponential of the centered terms. The four-variable model uses age, sex, the
+estimated GFR, and the urine albumin-to-creatinine ratio; the eight-variable model adds
+calcium, phosphate, bicarbonate, and albumin. The ratio is entered in milligrams per
+gram and converted to milligrams per millimole.
+Worked example: an older man with a low GFR and heavy albuminuria reaches a five-year
+risk in the low double digits.
+
+### RIFLE criteria (AKI staging)
+Citation: Bellomo R, Ronco C, Kellum JA, et al; Acute Dialysis Quality Initiative.
+Acute renal failure definition and outcome measures. Crit Care. 2004;8(4):R204-R212.
+Rule: the class is the worst of the creatinine-or-GFR criterion and the urine-output
+criterion. Risk is a creatinine rise of one and a half times or a GFR fall over a
+quarter, Injury twice or over half, and Failure three times or over three quarters, or
+a creatinine at or above four with an acute rise. The urine-output limbs use
+progressively lower thresholds over longer windows.
+Worked example: a doubling of creatinine reaches the Injury class.
+
+### AKIN criteria (AKI staging)
+Citation: Mehta RL, Kellum JA, Shah SV, et al; Acute Kidney Injury Network. Report of
+an initiative to improve outcomes in acute kidney injury. Crit Care. 2007;11(2):R31.
+Rule: within a forty-eight-hour window the stage is the worse of the creatinine and
+urine-output criteria. Stage one is a small absolute rise or a one-and-a-half-fold
+increase, stage two a two-fold increase, and stage three a three-fold increase or a
+high absolute creatinine with an acute rise or the start of renal replacement therapy,
+which forces stage three.
+Worked example: a tripling of creatinine reaches stage three.
+
+### Ultrafiltration rate (dialysis)
+Citation: Flythe JE, Kimmel SE, Brunelli SM. Rapid fluid removal during dialysis is
+associated with cardiovascular morbidity and mortality. Kidney Int. 2011;79(2):250-257.
+Rule: the fluid-removal rate during hemodialysis equals the ultrafiltration volume
+divided by the product of post-dialysis weight and session hours, in milliliters per
+kilogram per hour. A rate above thirteen is associated with higher cardiovascular
+morbidity and mortality.
+Worked example: removing three and a half liters over three hours at seventy kilograms
+exceeds the threshold.

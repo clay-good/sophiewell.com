@@ -6,6 +6,38 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v127: nephrology prognosis & AKI staging — KFRE, RIFLE, AKIN, ultrafiltration rate, +4 — spec-v100 Wave 5)
+
+- **Wave 5 (GI / hepatology / nephrology / acid-base / urology) of the
+  [spec-v100](docs/spec-v100.md) MDCalc Parity Completion program continues.** Four
+  deterministic **nephrology-prognosis and AKI-staging instruments** (catalog **555 →
+  559**) beside `egfr-suite` / `ckd-staging` / `ktv-urr` / `kdigo-aki`, via
+  `lib/nephro-v127.js` + `views/group-v127.js` (`RV127`). `kfre`, `rifle-aki`, and
+  `akin-aki` are in **Group G**; `ufr-dialysis` is in **Group E**. Each takes lab
+  values or the bedside read as input — no AI, no network — and renders the spec-v50 §3
+  clinical-posture note. None duplicates a live tile. All four **re-fetch the
+  coefficients / criteria verbatim** and cross-verify across ≥ 2 independent sources
+  (spec-v97 discipline).
+  - **`kfre`** — Kidney Failure Risk Equation (Tangri N, et al, *JAMA* 2011): risk =
+    1 − S₀^exp(Σ centered terms), 4-variable (age, sex, eGFR, ACR) or 8-variable (+ Ca,
+    PO₄, HCO₃, albumin). Uses the **North American baseline survivals** (4-var S₀ =
+    0.9750 / 0.9240 at 2 / 5 years — not the 0.9365 non-NA value) and converts the **ACR
+    from mg/g to mg/mmol** (÷ 8.84) before the log. Overflow-safe (probability clamped
+    0–1). Cross-links `ckd-staging`.
+  - **`rifle-aki`** — RIFLE criteria (Bellomo R, et al; ADQI, *Crit Care* 2004): worst
+    of the creatinine/GFR criterion (×1.5/×2/×3 or GFR drop > 25/50/75%) and the
+    urine-output criterion → Risk / Injury / Failure. Failure acute-rise limb is strict
+    `> 0.5` (distinct from AKIN).
+  - **`akin-aki`** — AKIN criteria (Mehta RL, et al; AKIN, *Crit Care* 2007): 48-h
+    window; stage 1 (rise ≥ 0.3 mg/dL or ×1.5–2), 2 (×2–3), 3 (×3, or creatinine ≥ 4.0
+    with rise ≥ 0.5, or RRT). RRT forces stage 3; the stage is the worse of creatinine
+    and urine output.
+  - **`ufr-dialysis`** — Ultrafiltration rate (Flythe JE, et al, *Kidney Int* 2011):
+    volume / (post-dialysis weight × hours), in mL/kg/hr; > 13 mL/kg/hr flags the
+    cardiovascular-risk threshold. Denominators guarded.
+  - All four are **Class A** (journal + author citations — KDIGO / ADQI / AKIN acronyms
+    kept off the strings — no `docs/citation-staleness.md` row).
+
 ### Added (spec-v126: GI disease activity & pancreatitis severity — CDAI, UCEIS, SES-CD, HAPS, Balthazar CTSI, modified Marshall, +6 — spec-v100 Wave 5)
 
 - **Wave 5 (GI / hepatology / nephrology / acid-base / urology) of the
