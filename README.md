@@ -5,7 +5,7 @@
 <h1 align="center">sophiewell.com</h1>
 
 <p align="center">
-  <strong>570 deterministic healthcare calculators tuned to the nurse on shift.</strong><br>
+  <strong>576 deterministic healthcare calculators tuned to the nurse on shift.</strong><br>
   Free forever. No servers, no accounts, no telemetry, no AI, no network call after first paint.
 </p>
 
@@ -36,7 +36,7 @@ output; "searchable lookup of static facts" does not qualify. See
 [docs/spec-v10.md](docs/spec-v10.md) for the audience and
 dependency-budget commitments and
 [docs/spec-v29.md](docs/spec-v29.md) for the nurse-first pivot
-and the v29 catalog ledger. At v129 close the catalog is 570
+and the v29 catalog ledger. At v130 close the catalog is 576
 deterministic tiles — every one of them computes from at least
 one user input. The catalog reached its present size on two tracks.
 **New tiles:** spec-v63 added the operations counterpart to the bedside
@@ -186,7 +186,7 @@ production security headers. Any static file server will also work.
 ## How it works and how to use it
 
 Since the spec-v29 nurse-first prune the catalog has grown one
-reviewable spec at a time to **570** deterministic calculators
+reviewable spec at a time to **576** deterministic calculators
 (the full per-version history is in [CHANGELOG.md](CHANGELOG.md)
 and `docs/spec-v*.md`; the most recent bedside additions are
 summarized in the cheat sheets below). They organize across the
@@ -1023,7 +1023,7 @@ Duke-ISCVID) and `refeeding-risk` (NICE CG32) are **Class B** with
 [citation-staleness](docs/citation-staleness.md) rows; the other three are
 **Class A**. See [docs/spec-v99.md](docs/spec-v99.md).
 
-### MDCalc parity completion: the cardiology / vascular / lipid surface (spec-v100 program, Wave 1: spec-v101 → spec-v105, +25 → 457, **complete**; Wave 2 complete: spec-v106 → 463, spec-v107 → 467, spec-v108 → 473, spec-v109 → 478, spec-v110 → 483, spec-v111 → 487, **+30 → 487**; Wave 3 complete (Critical care & pulmonary): spec-v112 → 492, spec-v113 → 495, spec-v114 → 501, spec-v115 → 506, **+19 → 506**; Wave 4 underway (Neurology / neurosurgery / psychiatry): spec-v117 → 512, spec-v118 → 517, spec-v119 → 521, spec-v120 → 526, spec-v121 → 530, spec-v122 → 533, spec-v123 → 538 (**Wave 4 complete**), **+32 → 538**; Wave 5 underway (GI / hepatology / nephrology / acid-base / urology): spec-v124 → 544, spec-v125 → 549, spec-v126 → 555, spec-v127 → 559, spec-v128 → 564, spec-v129 → 570, **+32 → 570**)
+### MDCalc parity completion: the cardiology / vascular / lipid surface (spec-v100 program, Wave 1: spec-v101 → spec-v105, +25 → 457, **complete**; Wave 2 complete: spec-v106 → 463, spec-v107 → 467, spec-v108 → 473, spec-v109 → 478, spec-v110 → 483, spec-v111 → 487, **+30 → 487**; Wave 3 complete (Critical care & pulmonary): spec-v112 → 492, spec-v113 → 495, spec-v114 → 501, spec-v115 → 506, **+19 → 506**; Wave 4 underway (Neurology / neurosurgery / psychiatry): spec-v117 → 512, spec-v118 → 517, spec-v119 → 521, spec-v120 → 526, spec-v121 → 530, spec-v122 → 533, spec-v123 → 538 (**Wave 4 complete**), **+32 → 538**; Wave 5 underway (GI / hepatology / nephrology / acid-base / urology): spec-v124 → 544, spec-v125 → 549, spec-v126 → 555, spec-v127 → 559, spec-v128 → 564, spec-v129 → 570, spec-v130 → 576, **+38 → 576**)
 
 With the spec-v85 program complete, [spec-v100](docs/spec-v100.md) charters the
 **MDCalc Parity Completion** program — a roadmap that closes the remaining gaps
@@ -1412,6 +1412,38 @@ weight/hours denominators. Each tile reports the probability / class / rate, **n
 management (spec-v11 §5.3). All four are **Class A** (journal + author citations — KDIGO
 / ADQI / AKIN acronyms deliberately kept off the strings — no staleness row).
 `lib/nephro-v127.js` + `views/group-v127.js`. **Catalog 555 → 559, +4.**
+
+#### spec-v130 — urology prostate metrics & risk: prostate volume, PSA density/velocity/doubling-time, D'Amico, Gleason Grade Group (+6 → 576, Wave 5)
+
+Wave 5 opens the urology surface. v130 adds the prostate-volumetry and PSA-kinetics math
+a urologist runs at the bedside plus the two canonical prostate-cancer-risk
+classifications. Four home in **Clinical Math & Conversions (Group E)** and two in
+**Clinical Scoring & Risk (Group G)**:
+
+| id | Group | Rule | Output |
+|---|---|---|---|
+| `prostate-volume` | E | Terris-Stamey 1991 — AP × TR × CC × 0.52 (π/6 rounded) | **volume cc; > 30 = enlarged/BPH** |
+| `psa-density` | E | Benson 1992 — serum PSA ÷ prostate volume | **density ng/mL/cc; > 0.15 = suspicious** |
+| `psa-velocity` | E | Carter 1992 — two-point (later − earlier PSA) ÷ years | **ng/mL/yr; > 0.75 = suspicious** |
+| `psa-doubling-time` | E | Pound 1999 — ln(2)·T ÷ (ln PSA₂ − ln PSA₁), rising only | **months; < 12 = aggressive** |
+| `damico-prostate-risk` | G | D'Amico 1998 — worst of stage / PSA / Gleason | **Low / Intermediate / High BCR risk** |
+| `gleason-grade-group` | G | Epstein 2016 / ISUP 2014 — primary + secondary patterns | **Grade Group 1–5** |
+
+All six **re-fetch the formulas/coefficients verbatim** (the spec-v97 discipline,
+dispatched as an independent research pass), cross-verified across ≥ 2 sources, and four
+source-governance calls were made: (1) `prostate-volume` — the ellipsoid coefficient is
+fixed at **0.52** (π/6 rounded to the dominant clinical/MDCalc convention; the alternate
+exact 0.5236 differs by ~0.7%), stated to the user. (2) `damico-prostate-risk` — the PSA
+boundary is **strict** (> 10), so a PSA of exactly 10 is **Low**, and the high-risk T-stage
+cut is **T2c** per the original paper, with the **worst single feature** governing the
+group. (3) `psa-doubling-time` — the doubling time is undefined for a stable or falling
+PSA, so the tile detects a non-rising PSA and returns "not rising" rather than a
+NaN / negative time. (4) `psa-velocity` — the validated method averages consecutive yearly
+rates over ≥ 3 measurements spanning ≥ 18 months, so the **two-point** rate is labeled the
+bedside approximation. The PSA-kinetics tiles report **signed** results; every denominator
+is guarded. Each tile reports the urologic quantity or risk class, **not** management
+(spec-v11 §5.3). All six are **Class A** (journal + author citations — no staleness row).
+`lib/uro-v130.js` + `views/group-v130.js`. **Catalog 570 → 576, +6.**
 
 #### spec-v129 — acid-base compensation & gaps: Stewart SID/SIG, base excess, the three compensation formulas, urine osmolal gap (+6 → 570, Wave 5)
 
@@ -2206,7 +2238,7 @@ long version, see [docs/architecture.md](docs/architecture.md).
  │  manifests (data/)            │  static │        ▼                     ▼             │
  │        │  scripts/build       │  files  │   lazy-load data shard   pure compute      │
  │        ▼                      │         │   (verified vs manifest)  (lib/*.js)       │
- │  dist/  (570 tool pages,      │         │        │                     │             │
+ │  dist/  (576 tool pages,      │         │        │                     │             │
  │  OG cards, sitemap, SBOM)     │         │        ▼                     ▼             │
  └───────────────────────────────┘         │   service worker cache    result + cite   │
                                             │   (keyed to build hash)                    │
@@ -2228,7 +2260,7 @@ assets:
 
 | Output | Count | Source |
 |--------|------:|--------|
-| Pre-rendered tool pages (`dist/tools/<id>/`) | 570 | `scripts/build-tool-pages.mjs` |
+| Pre-rendered tool pages (`dist/tools/<id>/`) | 576 | `scripts/build-tool-pages.mjs` |
 | Audience hub pages (`dist/for/<audience>/`) | 6 | `scripts/build-hub-pages.mjs` |
 | Topic pages + `/topics/` index | 8 + 1 | `scripts/build-topic-pages.mjs` |
 | `/commitments/` | 1 | `scripts/build-commitments-page.mjs` |
@@ -2263,7 +2295,7 @@ static pages, so a tile can never ship mobile overflow undetected.
 index.html          single-page shell (hero-search combobox + static browse-by-category nav, tile mount)
 styles.css          one stylesheet (responsive; no horizontal scroll — enforced catalog-wide at 320px in CI)
 app.js              router, hero-search wiring, view wiring, the UTILITIES catalog
-                    (570 tiles — the single source of truth; zero runtime deps)
+                    (576 tiles — the single source of truth; zero runtime deps)
 sw.js               service worker — precache shell, cache shards by build hash
 theme.js            light/dark theme toggle (writes only sw-theme, allowlisted)
 lib/input-persist.js opt-in "remember my inputs" (off by default; numbers only)
@@ -2281,12 +2313,12 @@ docs/               specs (spec-v4 onward) + per-tile v11/v12 audit logs +
                     citation-staleness ledger +
                     architecture / threat-model / …
 test/               unit/ (node:test) · integration/ (Playwright) · fixtures/
-dist/               build output (570 tool pages, OG cards, sitemap, SBOM)
+dist/               build output (576 tool pages, OG cards, sitemap, SBOM)
 ```
 
-### Discovery: how a query finds the right tool among 570
+### Discovery: how a query finds the right tool among 576
 
-With 570 tiles, search quality *is* the product — a tool you cannot find does
+With 576 tiles, search quality *is* the product — a tool you cannot find does
 not exist. Discovery is deterministic and offline (no fuzzy-match service, no
 embedding model, no AI). The home `#hero-search` combobox builds its dropdown
 from two complementary rankers, both pure functions of the typed query:
@@ -2359,10 +2391,10 @@ A login-less, AI-free calculator earns trust only if the nurse can see, on the
 tile, exactly which published source produced the number — and tell whether that
 source is current. spec-v54 defined the invariants; spec-v60 built the machinery
 (the gate, the ledger, and the `citationAccessed` convention) and extended it
-across the full 570-tile catalog, pinning the last three unpinned "current
+across the full 576-tile catalog, pinning the last three unpinned "current
 edition" phrases and re-verifying every guideline tile against its latest known
 edition. Three invariants make that auditable, each enforced by the
-`check-citations.mjs` lint gate (in the `npm run lint` chain) over all 570 tiles:
+`check-citations.mjs` lint gate (in the `npm run lint` chain) over all 576 tiles:
 
 | Invariant | Rule | Enforcement |
 |---|---|---|
@@ -2819,7 +2851,7 @@ rules, not soft preferences.
 | `npm run build`          | Copy static files into `dist/` for deployment                     |
 | `npm test`               | Run the full test suite (unit, a11y, grep, data integrity)        |
 | `npm run test:unit`      | Run Node's built-in unit tests (4,849 tests)                      |
-| `npm run test:e2e`       | Build `dist/`, then run Playwright integration tests against real browsers — incl. a full-catalog 320px no-horizontal-scroll sweep over both the SPA routes and the 570 pre-rendered static tool pages, the hub/topic/commitments pages, and the citation-wrap pin |
+| `npm run test:e2e`       | Build `dist/`, then run Playwright integration tests against real browsers — incl. a full-catalog 320px no-horizontal-scroll sweep over both the SPA routes and the 576 pre-rendered static tool pages, the hub/topic/commitments pages, and the citation-wrap pin |
 | `npm run test:a11y`      | Run accessibility checks on every utility view                    |
 | `npm run lint`           | ESLint + the CI gate chain: grep-check, output-safety, citation-integrity, catalog-truth, commitments, PA staleness, PA audit |
 | `npm run data:refresh`   | Re-fetch and re-shard every public dataset                        |
@@ -2903,7 +2935,7 @@ build, integrity-verified data shards) are documented in
 - [docs/spec-v11.md](docs/spec-v11.md) — correctness-floor spec:
   per-tile audit protocol, specialty-named groups, optional
   source-quoted `interpretation` field. Audit coverage is **complete
-  — 570/570 tiles** carry a committed per-tile audit log
+  — 576/576 tiles** carry a committed per-tile audit log
   (`docs/audits/v11/<id>.md` for the pre-v78 catalog;
   `docs/audits/v12/<id>.md` for the tiles added since — the
   spec-v78–v83 billing & coding program, the spec-v85

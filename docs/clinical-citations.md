@@ -2819,3 +2819,71 @@ the gap is the measured less the calculated osmolality, and half the gap approxi
 urinary ammonium. In a normal-anion-gap acidosis a wide gap points to an extrarenal
 cause such as diarrhea, while a narrow gap points to renal tubular acidosis.
 Worked example: a wide gap reflects an intact ammonium response to the acid load.
+
+### Prostate volume (ellipsoid)
+Citation: Terris MK, Stamey TA. Determination of prostate volume by transrectal
+ultrasound. J Urol. 1991;145(5):984-987.
+Rule: the prolate-ellipsoid volume equals the anteroposterior diameter times the
+transverse diameter times the craniocaudal diameter times zero point five two, with
+all three dimensions in centimeters and the volume in cubic centimeters. The
+coefficient is pi over six rounded to the dominant clinical convention; a volume above
+about thirty is the conventional enlarged or benign-prostatic-hyperplasia range.
+Worked example: a gland measuring four by five by four centimeters is about forty-two
+cubic centimeters, an enlarged gland.
+
+### PSA density
+Citation: Benson MC, Whang IS, Pantuck A, et al. Prostate specific antigen density: a
+means of distinguishing benign prostatic hypertrophy and prostate cancer. J Urol.
+1992;147(3 Pt 2):815-816.
+Rule: the prostate-specific-antigen density equals the serum antigen in nanograms per
+milliliter divided by the prostate volume in cubic centimeters. A density above zero
+point one five raises suspicion for clinically significant cancer and helps refine
+biopsy decisions when the antigen sits in the gray zone.
+Worked example: an antigen of six against a volume of thirty gives a density of zero
+point two, above the threshold.
+
+### PSA velocity
+Citation: Carter HB, Pearson JD, Metter EJ, et al. Longitudinal evaluation of
+prostate-specific antigen levels in men with and without prostate disease. JAMA.
+1992;267(16):2215-2220.
+Rule: the two-point velocity equals the later antigen less the earlier antigen divided
+by the interval in years. A velocity above zero point seven five nanograms per
+milliliter per year raises suspicion for cancer; a lower threshold near zero point
+four applies when the baseline antigen is below four. The validated method averages
+consecutive yearly rates over at least three measurements spanning at least eighteen
+months.
+Worked example: a rise from three to four and a half over a year is one and a half per
+year, above the threshold.
+
+### PSA doubling time
+Citation: Pound CR, Partin AW, Eisenberger MA, et al. Natural history of progression
+after PSA elevation following radical prostatectomy. JAMA. 1999;281(17):1591-1597.
+Rule: the doubling time equals the natural logarithm of two times the interval in
+months, divided by the difference between the natural logarithm of the later antigen
+and the natural logarithm of the earlier antigen. It requires a rising antigen; a
+stable or falling antigen has no doubling time. Under about twelve months signals more
+aggressive disease, and under about three months very aggressive disease.
+Worked example: a doubling from four to eight over six months is a doubling time of six
+months.
+
+### D'Amico prostate-cancer risk classification
+Citation: D'Amico AV, Whittington R, Malkowicz SB, et al. Biochemical outcome after
+radical prostatectomy, external beam radiation therapy, or interstitial radiation
+therapy for clinically localized prostate cancer. JAMA. 1998;280(11):969-974.
+Rule: the worst single feature governs the group. Low risk is clinical stage T2a or
+below and antigen ten or below and Gleason six or below; intermediate risk is stage
+T2b or antigen above ten and up to twenty or Gleason seven; high risk is stage T2c or
+antigen above twenty or Gleason eight or above. The antigen boundary is strict, so an
+antigen of exactly ten is low risk.
+Worked example: a man with antigen six, Gleason seven, stage T1c is intermediate risk,
+driven by the Gleason score.
+
+### Gleason Grade Group (ISUP)
+Citation: Epstein JI, Egevad L, Amin MB, et al. The 2014 ISUP consensus conference on
+Gleason grading of prostatic carcinoma. Am J Surg Pathol. 2016;40(2):244-252.
+Rule: the primary and secondary Gleason patterns map to a prognostic Grade Group. Group
+one is Gleason six or below; group two is three plus four equals seven; group three is
+four plus three equals seven; group four is Gleason eight; group five is Gleason nine to
+ten. The primary pattern governs the split between group two and group three.
+Worked example: a Gleason three plus four equals seven is Grade Group two, a favorable
+intermediate grade.

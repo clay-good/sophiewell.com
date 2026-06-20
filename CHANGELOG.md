@@ -6,6 +6,46 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v130: urology prostate metrics & risk — prostate volume, PSA density/velocity/doubling-time, D'Amico, Gleason Grade Group, +6 — spec-v100 Wave 5)
+
+- **Wave 5 of the [spec-v100](docs/spec-v100.md) MDCalc Parity Completion program
+  continues.** Six deterministic **urology** tiles (catalog **570 → 576**) opening the
+  prostate-cancer surface: four prostate-volumetry / PSA-kinetics tiles in **Clinical
+  Math & Conversions (Group E)** and two prostate-cancer-risk classifications in
+  **Clinical Scoring & Risk (Group G)**, via `lib/uro-v130.js` + `views/group-v130.js`
+  (`RV130`). Each takes clinician-entered measurements or lab values as input — no AI,
+  no network — and renders the spec-v50 §3 clinical-posture note. None duplicates a live
+  tile. All six **re-fetch the formulas/coefficients verbatim** and cross-verify across
+  ≥ 2 independent sources (spec-v97 discipline).
+  - **`prostate-volume`** — prolate-ellipsoid prostate volume (Terris MK, Stamey TA,
+    *J Urol* 1991): volume = AP × TR × CC × **0.52** (π/6 rounded to the dominant
+    clinical/MDCalc convention, stated to the user), dimensions in cm, volume in cc.
+    Above ~30 cc flags the enlarged/BPH range; cross-links `psa-density`.
+  - **`psa-density`** — PSA density (Benson MC, et al, *J Urol* 1992): serum PSA ÷
+    prostate volume; **> 0.15 ng/mL/cc** raises suspicion for clinically significant
+    cancer. Denominator guarded.
+  - **`psa-velocity`** — PSA velocity (Carter HB, et al, *JAMA* 1992): the **two-point**
+    rate (later − earlier PSA) ÷ interval-in-years, **stated as the bedside
+    approximation** of the validated ≥ 3-measurement / ≥ 18-month method. Above
+    **0.75 ng/mL/yr** raises suspicion (≈ 0.35–0.4 when baseline PSA < 4). Signed result.
+  - **`psa-doubling-time`** — PSA doubling time (Pound CR, et al, *JAMA* 1999): PSADT =
+    ln(2) × T ÷ (ln(later PSA) − ln(earlier PSA)), T in months. **Source-governance:**
+    requires a **rising** PSA — a stable or falling PSA returns "not rising"/undefined,
+    never a NaN/negative time. Under ~12 months flags more aggressive disease.
+  - **`damico-prostate-risk`** — D'Amico risk classification (D'Amico AV, et al, *JAMA*
+    1998): the **worst single feature governs**. **Source-governance:** the PSA boundary
+    is strict (> 10), so PSA = 10 is **Low**; the high-stage cut is **T2c** per the
+    original. Low = ≤ T2a AND PSA ≤ 10 AND Gleason ≤ 6; Intermediate = T2b OR PSA > 10–20
+    OR Gleason 7; High = ≥ T2c OR PSA > 20 OR Gleason ≥ 8.
+  - **`gleason-grade-group`** — Gleason Grade Group (Epstein JI, et al, *Am J Surg
+    Pathol* 2016; ISUP 2014): GG1 = ≤ 6; GG2 = 3+4; GG3 = 4+3; GG4 = 8; GG5 = 9–10. The
+    **primary pattern governs** the 3+4 (GG2) vs 4+3 (GG3) split.
+  - All six are **Class A** (journal + author citations — no `docs/citation-staleness.md`
+    row). Every denominator/guard is exercised; the fuzz harness shows zero non-finite
+    leaks. ≥ 3 boundary worked examples per tile (the 3+4 vs 4+3 primary-pattern split,
+    the strict PSA = 10 D'Amico boundary, the non-rising-PSA doubling-time guard, the
+    0.15 PSA-density threshold flip); a spec-v11 audit log each under `docs/audits/v12/`.
+
 ### Added (spec-v129: acid-base compensation & gaps — Stewart SID/SIG, base excess, the three compensation formulas, urine osmolal gap, +6 — spec-v100 Wave 5)
 
 - **Wave 5 of the [spec-v100](docs/spec-v100.md) MDCalc Parity Completion program
