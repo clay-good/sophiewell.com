@@ -2245,3 +2245,78 @@ one. The total runs from none to nine. A total of three or more predicts a poor
 outcome, a high-sensitivity screen.
 Worked example: malignancy with coma sums to four, above the poor-outcome
 threshold.
+
+### STESS (Status Epilepticus Severity Score)
+Citation: Rossetti AO, Logroscino G, Bromfield EB. A clinical score for prognosis
+of status epilepticus in adults. J Neurol. 2008;255(10):1561-1566.
+Rule: a four-item prognostic score for status epilepticus. Level of consciousness
+scores up to one (stuporous or comatose), worst seizure type up to two
+(nonconvulsive status epilepticus in coma), age sixty-five or older adds two, and
+no or unknown history of prior seizures adds one. The total runs from none to six.
+A total of three or more is unfavorable and is associated with higher in-hospital
+mortality and a lower likelihood of return to baseline; the score's strength is a
+high negative predictive value, about ninety-seven percent, for survival at the
+zero-to-two versus three-or-more split.
+Worked example: a comatose patient in nonconvulsive status epilepticus sums to
+three, crossing the unfavorable threshold.
+
+### 2HELPS2B (cEEG seizure risk)
+Citation: Struck AF, Ustun B, Ruiz AR, et al. Association of an
+electroencephalography-based risk score with seizure probability in hospitalized
+patients. JAMA Neurol. 2017;74(12):1419-1424.
+Rule: a continuous-EEG seizure-risk score from six clinician-read items. Brief
+potentially-ictal rhythmic discharges add two; lateralized or bilateral
+independent periodic discharges, sporadic epileptiform discharges, any pattern
+faster than two hertz, superimposed plus features, and a prior seizure history
+each add one. The total runs from none to seven and maps through a published fixed
+lookup of calibrated seventy-two-hour seizure probabilities (about five, twelve,
+twenty-seven, fifty, seventy-three, and eighty-eight percent for totals zero
+through five, and above ninety-five percent for six or seven). The score was
+derived by a machine-learning method but ships as a fixed lookup computed once; no
+model runs on the page.
+Worked example: brief potentially-ictal rhythmic discharges with sporadic
+discharges sums to three, about a fifty percent calibrated risk.
+
+### MESS (first-seizure recurrence risk)
+Citation: Kim LG, Johnson TL, Marson AG, Chadwick DW; MRC MESS Study Group.
+Prediction of risk of seizure recurrence after a single seizure and early
+epilepsy. Lancet Neurol. 2006;5(4):317-322.
+Rule: groups seizure-recurrence risk after a single or early seizure. The number
+of seizures at presentation scores zero (one seizure), one (two to three), or two
+(four or more); a neurological disorder and an abnormal EEG each add one. The total
+runs from none to four and maps to a low (zero), medium (one), or high (two or
+more) risk group. The full per-year treated-versus-deferred recurrence grid is
+published only in the source's paywalled table, so the tile reports the risk-group
+ranges over a three-to-five-year window.
+Worked example: a patient with four or more seizures at presentation scores two,
+the high-risk group.
+
+### POUND (migraine likelihood)
+Citation: Detsky ME, McDonald DR, Baerlocher MO, Tomlinson GA, McCrory DC, Booth
+CM. Does this patient with headache have a migraine or need neuroimaging? JAMA.
+2006;296(10):1274-1283.
+Rule: counts five bedside headache features, namely a pulsatile or throbbing
+quality, an hours-long duration of four to seventy-two hours, a unilateral
+location, nausea or vomiting, and a disabling intensity. The count runs from none
+to five. The likelihood ratio for definite or possible migraine is about
+twenty-four when four or more features are present, about three and a half when
+exactly three are present, and about zero point four one when two or fewer are
+present.
+Worked example: four POUND features strongly favor migraine, a likelihood ratio of
+about twenty-four.
+
+### HINTS / HINTS-plus (vestibular exam)
+Citation: Kattah JC, Talkad AV, Wang DZ, Hsieh YH, Newman-Toker DE. HINTS to
+diagnose stroke in the acute vestibular syndrome: three-step bedside oculomotor
+examination more sensitive than early MRI DWI. Stroke. 2009;40(11):3504-3510.
+Rule: a three-step bedside oculomotor exam for acute vestibular syndrome. An
+abnormal head-impulse test with a corrective saccade, direction-fixed nystagmus,
+and an absent skew are reassuring (peripheral). A normal head-impulse test,
+direction-changing nystagmus, or a present skew is concerning (central). A benign
+peripheral pattern requires all three reassuring together; any one central feature
+flags a central, or stroke, cause. HINTS-plus adds new unilateral hearing loss as a
+fourth central feature. In the derivation the exam was about one hundred percent
+sensitive and ninety-six percent specific for a central cause with an expert
+examiner.
+Worked example: a normal head-impulse test, even with otherwise benign findings,
+flags a central pattern.

@@ -1,11 +1,19 @@
 # spec-v120.md — Epilepsy, headache & vertigo: STESS, 2HELPS2B, MESS first-seizure, POUND, and HINTS (+5 tiles)
 
-> Status: **PROPOSED (2026-06-17).** Feature spec of the [spec-v100](spec-v100.md)
+> Status: **SHIPPED (2026-06-19).** Feature spec of the [spec-v100](spec-v100.md)
 > MDCalc Parity Completion program, **Wave 4 (Neurology / neurosurgery / psychiatry)**.
 > Adds **5** deterministic epilepsy, headache, and vertigo decision rules that fill
 > confirmed gaps. None duplicates a live tile.
 >
-> Catalog effect at v120 close: **522 + 5 = 527 tiles.**
+> Catalog effect at v120 close: **521 + 5 = 526 tiles** (the running program
+> narrative carries a known off-by-one; the live `UTILITIES.length` was 521 at
+> v119 close, so v120 lands at 526 — the catalog-truth gate enforces the live
+> count). Shipped via new `lib/neuro-v120.js` + `views/group-v120.js` (RV120);
+> the MESS per-year recurrence grid is paywalled so the tile reports the
+> confirmable risk-group ranges over a 3–5 year window (no fabricated annual
+> cells), and 2HELPS2B ships its integer→risk lookup as a compiled constant
+> (no render-time model). All five are Class A (no `docs/citation-staleness.md`
+> row).
 >
 > Every prior spec (v4 through v119) remains in force. v120 adds no runtime network
 > call and no AI; each tile obeys the [spec-v100](spec-v100.md) §2 doctrine (which

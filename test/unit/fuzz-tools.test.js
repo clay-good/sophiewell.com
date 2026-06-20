@@ -117,6 +117,7 @@ import * as pulmnodV115 from '../../lib/pulmnod-v115.js';
 import * as neuroV117 from '../../lib/neuro-v117.js';
 import * as neuroV118 from '../../lib/neuro-v118.js';
 import * as neuroV119 from '../../lib/neuro-v119.js';
+import * as neuroV120 from '../../lib/neuro-v120.js';
 
 const MODULES = {
   'clinical.js': clinical,
@@ -178,6 +179,7 @@ const MODULES = {
   'neuro-v117.js': neuroV117,
   'neuro-v118.js': neuroV118,
   'neuro-v119.js': neuroV119,
+  'neuro-v120.js': neuroV120,
 };
 
 const MATRIX = [0, -1, 1e9, NaN, Infinity, -Infinity, '', undefined, null];

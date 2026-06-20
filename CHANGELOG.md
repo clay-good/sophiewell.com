@@ -6,6 +6,59 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v120: epilepsy, headache & vertigo, +5 — spec-v100 Wave 4)
+
+- **Wave 4 (Neurology / neurosurgery / psychiatry)** of the
+  [spec-v100](docs/spec-v100.md) MDCalc Parity Completion program continues. Five
+  deterministic **epilepsy-prognosis, headache-likelihood, and vertigo-
+  localization instruments** (catalog **521 → 526**), all in **Clinical Scoring &
+  Risk (Group G)**, via `lib/neuro-v120.js` + `views/group-v120.js` (`RV120`).
+  v117–v119 covered stroke imaging, hemorrhagic grading, and prehospital LVO
+  triage; v120 fills the epilepsy / headache / vertigo gap a neurology or ED
+  clinician hits daily. Each takes the bedside exam or cEEG *read* as input —
+  v120 parses no EEG waveform, no DICOM, no report — and renders the spec-v50 §3
+  clinical-posture note (the tile reports the score / risk band / localization and
+  the source's framing; the treat / admit / monitor / image decision stays with
+  the clinician and local protocol). None duplicates a live tile. No new specialty
+  tag. All five **re-fetch the published point weights / lookup verbatim** and
+  cross-verify across the derivation papers and the JAMA / MDCalc / PMC
+  reproductions (spec-v97 discipline).
+  - **`stess`** — Status Epilepticus Severity Score (Rossetti AO, et al, *J
+    Neurol* 2008): consciousness (0–1), worst seizure type (0–2), age ≥ 65 (+2),
+    no/unknown prior seizures (+1), summed 0–6; ≥ 3 is unfavorable. The paper
+    publishes no per-score mortality table, so the tile frames the favorable
+    (0–2) / unfavorable (≥ 3) dichotomy and the high negative predictive value
+    (~0.97) and invents no per-band percentage. Cross-links `helps2b`.
+  - **`helps2b`** — 2HELPS2B continuous-EEG seizure-risk score (Struck AF, et al,
+    *JAMA Neurol* 2017): B(I)RDs (+2); LPDs/LRDA/BIPDs, sporadic discharges,
+    frequency > 2 Hz, plus features, prior seizures (+1 each), summed 0–7, mapped
+    through the **published fixed integer→risk lookup** of calibrated 72-hour
+    seizure probabilities (0 ~5%, 1 ~12%, 2 ~27%, 3 ~50%, 4 ~73%, 5 ~88%, 6 or 7
+    above 95%; scores 6 and 7 fold into one ">95%" stratum). **ML-derived but
+    ships as a compiled lookup — no model runs at render time** (spec-v100 §11).
+    Cross-links `stess`.
+  - **`mess-first-seizure`** — MESS first-seizure recurrence rule (Kim LG, et al,
+    *Lancet Neurol* 2006, MRC MESS): seizures at presentation (1 = 0, 2–3 = +1,
+    ≥ 4 = +2), neurological disorder (+1), abnormal EEG (+1), summed 0–4 → low (0)
+    / medium (1) / high (≥ 2). **Id distinct from the v109 `mangled-extremity`
+    MESS.** The per-year treated/deferred recurrence grid is paywalled, so the
+    tile reports the confirmable **risk-group ranges over a 3–5 year window** (no
+    fabricated annual cells). Cross-links `stess`, `helps2b`.
+  - **`pound-migraine`** — POUND mnemonic (Detsky ME, et al, *JAMA* 2006):
+    Pulsatile, hOurs (4–72 h), Unilateral, Nausea/vomiting, Disabling, counted
+    0–5; likelihood ratio for migraine ~24 (≥ 4), ~3.5 (exactly 3), ~0.41 (≤ 2).
+    Cross-links `midas`, `hints`.
+  - **`hints`** — HINTS / HINTS-plus exam (Kattah JC, et al, *Stroke* 2009): the
+    three-step bedside oculomotor exam — Head-Impulse (normal = central),
+    Nystagmus (direction-changing = central), Test of Skew (present = central),
+    plus new hearing loss (HINTS-plus). A benign **peripheral** pattern needs all
+    three reassuring; **any one central feature** (including the counter-intuitive
+    normal head impulse, the INFARCT rule) flags a **central (stroke)** cause.
+    Cross-links `nihss`, `cpsss`.
+- **All five are Class A** (fixed point weights / mnemonic / classification rule /
+  compiled lookup; each citation names the journal + authors, so none trips the
+  `ISSUER_PATTERN` gotcha) — **no** `docs/citation-staleness.md` row.
+
 ### Added (spec-v119: prehospital LVO triage & cerebrovascular diagnosis, +4 — spec-v100 Wave 4)
 
 - **Wave 4 (Neurology / neurosurgery / psychiatry)** of the

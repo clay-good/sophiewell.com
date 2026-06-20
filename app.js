@@ -49,6 +49,7 @@ import { renderers as RV40 } from './views/group-v40.js';
 import { renderers as RV117 } from './views/group-v117.js';
 import { renderers as RV118 } from './views/group-v118.js';
 import { renderers as RV119 } from './views/group-v119.js';
+import { renderers as RV120 } from './views/group-v120.js';
 import { renderers as RV63 } from './views/group-v63.js';
 import { renderers as RB } from './views/group-b.js';
 import { renderers as RPALINT } from './views/pa-lint.js';
@@ -67,7 +68,7 @@ import { resolvePrompt } from './lib/prompt.js';
 // artifact-detect / artifact-route / artifact-handoff helpers were
 // deleted in spec-v29 wave 29-2 (Group C/L).
 
-const RENDERERS = { ...RA, ...RB, ...RC, ...RE, ...RF, ...RG, ...RH, ...RI, ...RJ, ...RKLMNO, ...RV5, ...RV6, ...RV7, ...RV8, ...RV9, ...RV10, ...RV11, ...RV12, ...RV13, ...RV14, ...RV15, ...RV16, ...RV17, ...RV18, ...RV19, ...RV20, ...RV21, ...RV22, ...RV23, ...RV24, ...RV25, ...RV26, ...RV27, ...RV28, ...RV29, ...RV30, ...RV31, ...RV32, ...RV33, ...RV34, ...RV35, ...RV36, ...RV37, ...RV38, ...RV39, ...RV40, ...RV117, ...RV118, ...RV119, ...RV63, ...RPALINT };
+const RENDERERS = { ...RA, ...RB, ...RC, ...RE, ...RF, ...RG, ...RH, ...RI, ...RJ, ...RKLMNO, ...RV5, ...RV6, ...RV7, ...RV8, ...RV9, ...RV10, ...RV11, ...RV12, ...RV13, ...RV14, ...RV15, ...RV16, ...RV17, ...RV18, ...RV19, ...RV20, ...RV21, ...RV22, ...RV23, ...RV24, ...RV25, ...RV26, ...RV27, ...RV28, ...RV29, ...RV30, ...RV31, ...RV32, ...RV33, ...RV34, ...RV35, ...RV36, ...RV37, ...RV38, ...RV39, ...RV40, ...RV117, ...RV118, ...RV119, ...RV120, ...RV63, ...RPALINT };
 
 // ----- Utility registry ----------------------------------------------------
 // Source of truth for routes, names, group, audiences, and clinical flag.
@@ -842,6 +843,21 @@ const UTILITIES = [
   { id: 'fast-ed',                name: 'FAST-ED (field LVO triage)',                       group: 'G', audiences: ['clinicians', 'field', 'educators'], clinical: true },
   { id: 'boston-caa',             name: 'Boston Criteria v2.0 (cerebral amyloid angiopathy)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'cvt-risk',               name: 'CVT Outcome Risk Score',                           group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+
+  // spec-v120 (Wave 4 of spec-v100): five epilepsy-prognosis, headache-
+  // likelihood, and vertigo-localization instruments the neurology / ED team
+  // runs daily -- the STESS status-epilepticus prognosis, the 2HELPS2B cEEG
+  // seizure-risk lookup, the MESS first-seizure recurrence rule (id distinct
+  // from the v109 mangled-extremity MESS), the POUND migraine mnemonic, and the
+  // HINTS / HINTS-plus central-vs-peripheral vestibular exam. All five are
+  // Class A (fixed point weights / mnemonic / classification / compiled lookup,
+  // journal+author citations -- no staleness row). views/group-v120.js,
+  // lib/neuro-v120.js.
+  { id: 'stess',                  name: 'STESS (status epilepticus severity)',             group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'helps2b',                name: '2HELPS2B (cEEG seizure risk)',                     group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'mess-first-seizure',     name: 'MESS (first-seizure recurrence risk)',             group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'pound-migraine',         name: 'POUND (migraine likelihood)',                      group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'hints',                  name: 'HINTS / HINTS-plus (vestibular exam)',             group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
 
   // spec-v6 §3.3: lab result interpreter. Patient-decoder category.
   { id: 'lab-interpret',       name: 'Lab Result Interpreter',                           group: 'C', audiences: ['patients', 'clinicians', 'educators'], clinical: true },
