@@ -2594,3 +2594,66 @@ adding two for female sex and two for diabetes. A value below thirty rules nonal
 fatty liver disease out, above thirty-six rules it in, and between is indeterminate.
 Worked example: a raised enzyme ratio with obesity, female sex, and diabetes reaches
 the rule-in band.
+
+### CDAI (Crohn's Disease Activity Index)
+Citation: Best WR, Becktel JM, Singleton JW, Kern F Jr. Development of a Crohn's
+disease activity index. National Cooperative Crohn's Disease Study. Gastroenterology.
+1976;70(3):439-444.
+Rule: the trial-standard eight-item weighted activity score. It sums liquid stools
+times two, abdominal pain times five, general well-being times seven, complications
+times twenty, antidiarrheal use times thirty, abdominal mass times ten, hematocrit
+deficit times six, and percent below standard body weight. A total below one hundred
+fifty is remission, up to two hundred twenty mild, up to four hundred fifty moderate,
+and above that severe.
+Worked example: a week of frequent stools with pain and a low hematocrit reaches the
+moderate band.
+
+### UCEIS (UC endoscopic severity)
+Citation: Travis SP, Schnell D, Krzeski P, et al. Developing an instrument to assess
+the endoscopic severity of ulcerative colitis: the UCEIS. Gut. 2012;61(4):535-542.
+Rule: three endoscopic descriptors at the worst-affected area -- vascular pattern,
+bleeding, and erosions or ulcers -- summed on a zero-to-eight scale. The modern
+zero-based scale is used; the original was one-based. Remission is near zero to one
+and higher totals are progressively more severe.
+Worked example: obliterated vessels with luminal bleeding and a superficial ulcer
+reach the severe band.
+
+### SES-CD (Crohn's endoscopic score)
+Citation: Daperno M, D'Haens G, Van Assche G, et al. Development and validation of a
+new, simplified endoscopic activity score for Crohn's disease: the SES-CD.
+Gastrointest Endosc. 2004;60(4):505-512.
+Rule: four variables -- ulcer size, ulcerated surface, affected surface, and stenosis
+-- each scored across five ileocolonic segments. The stenosis sub-total is capped, so
+the maximum is fifty-six. Remission is a low total and higher totals indicate more
+severe endoscopic disease.
+Worked example: ileal and right-colon ulceration with a passable stenosis reaches the
+moderate band.
+
+### HAPS (harmless acute pancreatitis)
+Citation: Lankisch PG, Weber-Dany B, Hebel K, et al. The harmless acute pancreatitis
+score. Clin Gastroenterol Hepatol. 2009;7(6):702-705.
+Rule: a three-criterion admission gate -- absence of rebound tenderness or guarding, a
+normal hematocrit, and a normal serum creatinine. When all three are normal the course
+is predicted to be harmless; any abnormal value does not rule severity in.
+Worked example: a soft abdomen with a normal hematocrit and creatinine predicts a
+harmless course.
+
+### CT Severity Index (Balthazar, pancreatitis)
+Citation: Balthazar EJ, Robinson DL, Megibow AJ, Ranson JH. Acute pancreatitis: value
+of CT in establishing prognosis. Radiology. 1990;174(2):331-336.
+Rule: the contrast-CT grade from A to E plus the percent of pancreatic necrosis,
+summed on a zero-to-ten scale. A low total is mild, the middle band moderate, and a
+high total severe.
+Worked example: multiple fluid collections with extensive necrosis reach the severe
+band.
+
+### Modified Marshall organ-dysfunction score
+Citation: Banks PA, Bollen TL, Dervenis C, et al; Acute Pancreatitis Classification
+Working Group. Classification of acute pancreatitis 2012: revision of the Atlanta
+classification by international consensus. Gut. 2013;62(1):102-111.
+Rule: scores three organ systems -- respiratory by the oxygen ratio, renal by
+creatinine, and cardiovascular by blood pressure with fluid responsiveness and pH.
+Organ failure is a score of two or more in any system, the Revised Atlanta threshold
+that separates moderately severe from severe acute pancreatitis.
+Worked example: a low oxygen ratio with a raised creatinine meets the organ-failure
+threshold.

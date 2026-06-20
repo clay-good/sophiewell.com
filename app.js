@@ -55,6 +55,7 @@ import { renderers as RV122 } from './views/group-v122.js';
 import { renderers as RV123 } from './views/group-v123.js';
 import { renderers as RV124 } from './views/group-v124.js';
 import { renderers as RV125 } from './views/group-v125.js';
+import { renderers as RV126 } from './views/group-v126.js';
 import { renderers as RV63 } from './views/group-v63.js';
 import { renderers as RB } from './views/group-b.js';
 import { renderers as RPALINT } from './views/pa-lint.js';
@@ -73,7 +74,7 @@ import { resolvePrompt } from './lib/prompt.js';
 // artifact-detect / artifact-route / artifact-handoff helpers were
 // deleted in spec-v29 wave 29-2 (Group C/L).
 
-const RENDERERS = { ...RA, ...RB, ...RC, ...RE, ...RF, ...RG, ...RH, ...RI, ...RJ, ...RKLMNO, ...RV5, ...RV6, ...RV7, ...RV8, ...RV9, ...RV10, ...RV11, ...RV12, ...RV13, ...RV14, ...RV15, ...RV16, ...RV17, ...RV18, ...RV19, ...RV20, ...RV21, ...RV22, ...RV23, ...RV24, ...RV25, ...RV26, ...RV27, ...RV28, ...RV29, ...RV30, ...RV31, ...RV32, ...RV33, ...RV34, ...RV35, ...RV36, ...RV37, ...RV38, ...RV39, ...RV40, ...RV117, ...RV118, ...RV119, ...RV120, ...RV121, ...RV122, ...RV123, ...RV124, ...RV125, ...RV63, ...RPALINT };
+const RENDERERS = { ...RA, ...RB, ...RC, ...RE, ...RF, ...RG, ...RH, ...RI, ...RJ, ...RKLMNO, ...RV5, ...RV6, ...RV7, ...RV8, ...RV9, ...RV10, ...RV11, ...RV12, ...RV13, ...RV14, ...RV15, ...RV16, ...RV17, ...RV18, ...RV19, ...RV20, ...RV21, ...RV22, ...RV23, ...RV24, ...RV25, ...RV26, ...RV27, ...RV28, ...RV29, ...RV30, ...RV31, ...RV32, ...RV33, ...RV34, ...RV35, ...RV36, ...RV37, ...RV38, ...RV39, ...RV40, ...RV117, ...RV118, ...RV119, ...RV120, ...RV121, ...RV122, ...RV123, ...RV124, ...RV125, ...RV126, ...RV63, ...RPALINT };
 
 // ----- Utility registry ----------------------------------------------------
 // Source of truth for routes, names, group, audiences, and clinical flag.
@@ -929,6 +930,20 @@ const UTILITIES = [
   { id: 'gahs',                   name: 'Glasgow Alcoholic Hepatitis Score',                group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'west-haven-he',          name: 'West Haven HE grade (hepatic encephalopathy)',     group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'hepatic-steatosis-index', name: 'Hepatic Steatosis Index (NAFLD screen)',          group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+
+  // spec-v126 (Wave 5 of the spec-v100 program): six GI disease-activity and
+  // pancreatitis-severity instruments -- the CDAI Crohn's activity index, the
+  // UCEIS UC endoscopic index, the SES-CD Crohn's endoscopic score, the HAPS
+  // harmless-pancreatitis gate, the Balthazar CT severity index, and the modified
+  // Marshall organ-dysfunction score. Five are Class A; modified-marshall is Class
+  // B (revisable Revised-Atlanta definition -> documentation-only citation-staleness
+  // row, on-publication cadence). views/group-v126.js, lib/gi-v126.js.
+  { id: 'cdai-crohns',            name: 'CDAI (Crohn\'s Disease Activity Index)',            group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'uceis',                  name: 'UCEIS (UC endoscopic severity)',                   group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'ses-cd',                 name: 'SES-CD (Crohn\'s endoscopic score)',               group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'haps',                   name: 'HAPS (harmless acute pancreatitis)',               group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'ctsi-balthazar',         name: 'CT Severity Index (Balthazar, pancreatitis)',      group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'modified-marshall',      name: 'Modified Marshall organ-dysfunction score',        group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
 
   // spec-v6 §3.3: lab result interpreter. Patient-decoder category.
   { id: 'lab-interpret',       name: 'Lab Result Interpreter',                           group: 'C', audiences: ['patients', 'clinicians', 'educators'], clinical: true },

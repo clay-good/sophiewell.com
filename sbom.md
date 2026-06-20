@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `9be6d3c9a0962333`
-Generated: 2026-06-20T14:05:15.249Z
+Build ID: `a03966b02400cf06`
+Generated: 2026-06-20T14:28:26.067Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=20.18.1 <21, npm >=10.0.0
@@ -24,13 +24,13 @@ downloads is committed in this repository and is hashed below.
 
 | Path | Bytes | SHA-256 |
 |---|---:|---|
-| `index.html` | 47623 | `d95a011259baffdda3ba778f7f99e814d5a768d81b34a8dc4f20af8631d1d78f` |
+| `index.html` | 47895 | `318a62e9cf79d79dcc13c1bd23a999470d7af6623a18f6775618caa74297addd` |
 | `styles.css` | 42819 | `bea421c79d390a364eb571c3a9599cdf28264128d4ac02d7abb00f31000c7cda` |
-| `app.js` | 155174 | `81262439069059dfe5a6445fb33bc26f6d9cee4fb7ac9100f43a0c0ab72bd01d` |
+| `app.js` | 156778 | `00d10d92ffdc73f961a728fa969fde6b887e499c91894c1a8efe8afb3ab26db7` |
 | `sw.js` | 4622 | `b891d4344f8e04403b7f1d307fd446cc224bddc6f0c4397438a17d197351171e` |
 | `site.webmanifest` | 709 | `0e0de4da60590a12e8b27a0ae2a2f5ffdb6500b7d2b78f93631ec2f64ed3d5ce` |
 | `robots.txt` | 127 | `38fbf9c1854e72abb20e01e81dd5a31d4ea96f154c12d5db1ec3af05524dd1a1` |
-| `sitemap.xml` | 84988 | `34e77124ff5e61fa7d83193adbe4f202743a2a60708e47c933e60734addc95e0` |
+| `sitemap.xml` | 85885 | `8fcc50ab88751e480b5d5a1ddf544e2d1e76526b66b578c321257b73ce2c5f17` |
 | `_headers` | 1316 | `2f39986457d2feff7e73e491a7d09ee871e8f2f4cc2bc437f86bd86a42554ec6` |
 | `logo.png` | 63440 | `11afaf1b0d3ca68393d202e4810bf766b5b6d591b4e3ec52f41d3cacaa4616ec` |
 | `favicon.ico` | 7411 | `407fde0ca2788409e87e11f596fa02e6a0b121817fcea7fd995beec1801e287b` |
@@ -72,6 +72,7 @@ downloads is committed in this repository and is hashed below.
 | `lib/field-units.js` | 4669 | `953f803a1f251fe4945f4b98659bfbdd76f45386006c9a298fc931db6a2a8c2f` |
 | `lib/field.js` | 12156 | `6a6b07f76a519a8f873a37a9b57c52909e9088c3a09bd256e0ac60240e16d2ea` |
 | `lib/fluidresp-v113.js` | 8525 | `c40f34894d85e2aa6bbe92e153e89e922b8331cd6b6882660f771a3fe9106e1d` |
+| `lib/gi-v126.js` | 15336 | `4f3d35f89a4321f167170e7916646aedf7472b01315e9df2bcc9bc1afa6b3558` |
 | `lib/gli-2012-data.js` | 41979 | `0fa7440b8d9ab03028185d56c7a6bc9e1e753fe3ac396c208eb06f80991ba125` |
 | `lib/hash.js` | 4585 | `de41dadb11142ea86f1536176e94408ac124ca90305161fe04f1956355512403` |
 | `lib/hemodynamics-v87.js` | 8607 | `1bc8bc1408afb3fbc602d2748bfa1c8c68eb89fafabb18dd5e9c1a2589ff0276` |
@@ -87,7 +88,7 @@ downloads is committed in this repository and is hashed below.
 | `lib/live.js` | 1138 | `304978d3c170b6eb06cade7702e5f99d868e9b3e1f5651aa9a28da15e62a6a9c` |
 | `lib/medication-v4.js` | 18192 | `467f9576c50da696cc56094eb022d0a5ed1e88de0c7618448554ede8067270b0` |
 | `lib/medication-v5.js` | 18863 | `ce81d9f8954abbd412892c13af9936f992239164f26fd2b999eaea7902787ab7` |
-| `lib/meta.js` | 899803 | `e7193345ad8bd45404e69cc92d6ddd8c66364c328334b12c270559af52a0bfd8` |
+| `lib/meta.js` | 906334 | `d2c41cb4259480e67c8dd7b3f122a99e27bd615baed10b4aff9c351d2ec93622` |
 | `lib/metabolic-onc-v88.js` | 12659 | `1553b641668c121661a66647da71a4aaaa023e9f3a6b7a753efbcdab27cdba81` |
 | `lib/nephro-v92.js` | 15980 | `64bbc05482eed2ab88816f676ab5e56aefae9d4f5d85d223217a03160d1cc082` |
 | `lib/neuro-v117.js` | 18177 | `c1fc05fe1f5862f898ffc599a3d4146ad993fe2e28d9cc2467a9a0f9a7b7006b` |
@@ -164,6 +165,7 @@ downloads is committed in this repository and is hashed below.
 | `views/group-v123.js` | 12085 | `e2c8ec39530eb4edf7b4727fe8abb440f30cf7af3ea35ba3797f02c99543989e` |
 | `views/group-v124.js` | 9985 | `6d653f39d752fbb93efbf713d35b0c4826677805fa562e806e7543a056667c8c` |
 | `views/group-v125.js` | 10741 | `5e1f00169be63922b596dbba743782ec51e0e3aee4b2c4b1ee68918e3f680cfc` |
+| `views/group-v126.js` | 12450 | `a0cb449e3ab0e11abb0d18b1563c0b79af1f7be25f09f398c32f3c438e3aeb2a` |
 | `views/group-v13.js` | 7695 | `8ab66626c703d5e09e0d88c008f1e37b56fa1b36a8f95cc4cc989782f2dfe544` |
 | `views/group-v14.js` | 9817 | `0bda19d811249004152993e204f4139a070c21368eb8dbffff7cad9ca139a70b` |
 | `views/group-v15.js` | 9388 | `01c28613e794ec8bed2941659514ad8b75c18c1cb1256d2907644873fcbc53e4` |

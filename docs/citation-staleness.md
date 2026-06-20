@@ -437,3 +437,20 @@ not in the pattern), so the row is documentation only, not gate-forced.
 | tile id | instrument | edition shipped | latest known edition | accessed | justification if behind |
 |---|---|---|---|---|---|
 | boston-caa | Boston Criteria for cerebral amyloid angiopathy diagnostic certainty (definite / probable-with-pathology / probable / possible), with the v2.0 non-hemorrhagic white-matter features (centrum-semiovale enlarged perivascular spaces, white-matter-hyperintensity multispot) | version 2.0 (Charidimou A, et al, Lancet Neurol 2022;21(8):714-725) | same | 2026-06-19 | current -- version 2.0 is the in-force Boston criteria edition and the first to add the non-hemorrhagic white-matter features; Class B, review on-publication of the next Boston-criteria revision. The citation names the journal and authors but does not match the issuer acronym set, so the row is documentation only, not gate-forced |
+
+## spec-v126 GI disease activity & pancreatitis severity (added 2026-06-20)
+
+The five activity/severity instruments (cdai-crohns, uceis, ses-cd, haps,
+ctsi-balthazar) are Class A fixed published weights/scales and are documentation
+only via their own audit logs (their citations name journals + authors, not an
+issuer acronym). The one Class B tile is `modified-marshall`: the Revised Atlanta
+organ-failure definition is a revisable international-consensus standard, so it
+records the version in force (2012 Revised Atlanta), the accessed date, and an
+on-publication review cadence for the check-citation-cadence warn-job. The citation
+names the working group and journal but does not match the issuer acronym set
+(Atlanta Working Group is not in the pattern), so the row is documentation only, not
+gate-forced.
+
+| tile id | instrument | edition shipped | latest known edition | accessed | justification if behind |
+|---|---|---|---|---|---|
+| modified-marshall | Modified Marshall organ-dysfunction score (respiratory / renal / cardiovascular, each 0-4; organ failure at >= 2) used in the Revised Atlanta acute-pancreatitis severity classification | 2012 Revised Atlanta (Banks PA, et al, Gut 2013;62(1):102-111) | same | 2026-06-20 | current -- the 2012 Revised Atlanta classification is the in-force definition of organ failure in acute pancreatitis; Class B, review on-publication of the next Atlanta-classification revision. The per-organ thresholds (PaO2/FiO2, creatinine, SBP/fluid/pH) are stable; the citation names the working group and journal but does not match the issuer acronym set, so the row is documentation only, not gate-forced |

@@ -6,6 +6,48 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v126: GI disease activity & pancreatitis severity — CDAI, UCEIS, SES-CD, HAPS, Balthazar CTSI, modified Marshall, +6 — spec-v100 Wave 5)
+
+- **Wave 5 (GI / hepatology / nephrology / acid-base / urology) of the
+  [spec-v100](docs/spec-v100.md) MDCalc Parity Completion program continues.** Six
+  deterministic **GI disease-activity and pancreatitis-severity instruments** (catalog
+  **549 → 555**), all in **Clinical Scoring & Risk (Group G)**, via `lib/gi-v126.js` +
+  `views/group-v126.js` (`RV126`), bringing the IBD and pancreatitis clusters to
+  clinical-trial parity beside the v93 `harvey-bradshaw` / `truelove-witts` / `mayo-uc`
+  and the `glasgow-imrie` / `ranson` tiles. Each takes the clinician's diary,
+  endoscopic read, exam, or imaging read as input — no AI, no network — and renders the
+  spec-v50 §3 clinical-posture note. None duplicates a live tile. All six **re-fetch the
+  published weights / scales / thresholds verbatim** and cross-verify across ≥ 2
+  independent sources (spec-v97 discipline), resolving three genuine literature
+  conflicts.
+  - **`cdai-crohns`** — Crohn's Disease Activity Index (Best WR, et al,
+    *Gastroenterology* 1976): 8 weighted 7-day items (stools ×2, pain ×5, well-being
+    ×7, complications ×20, antidiarrheal ×30, mass ×10, hematocrit deficit ×6, percent
+    below standard weight ×1); < 150 remission, 150–220 mild, 221–450 moderate, > 450
+    severe.
+  - **`uceis`** — UC Endoscopic Index of Severity (Travis SP, et al, *Gut* 2012):
+    vascular (0–2) + bleeding (0–3) + erosions/ulcers (0–3) = 0–8. Ships the **0-based
+    0–8 scale** (the original 2012 paper was 1-based 3–11, later rebased to zero).
+  - **`ses-cd`** — Simple Endoscopic Score for Crohn's Disease (Daperno M, et al,
+    *Gastrointest Endosc* 2004): 4 variables × 0–3 across 5 segments; the **stenosis
+    sub-total is capped at 11** (a non-passable stenosis ends the exam), so the true
+    maximum is **56**, not the naive 60.
+  - **`haps`** — Harmless Acute Pancreatitis Score (Lankisch PG, et al, *Clin
+    Gastroenterol Hepatol* 2009): no peritonitis + normal Hct (< 43 M / < 39.6 F) +
+    creatinine < 2 mg/dL → harmless (non-severe); **strict `<`** (the cutoff itself is
+    abnormal).
+  - **`ctsi-balthazar`** — CT Severity Index (Balthazar EJ, et al, *Radiology* 1990):
+    CT grade A–E (0–4) + necrosis (0/2/4/6) = 0–10; 0–3 mild, 4–6 moderate, 7–10 severe.
+  - **`modified-marshall`** — Modified Marshall organ-dysfunction score (Banks PA, et
+    al, *Gut* 2013, Revised Atlanta): respiratory / renal / cardiovascular each 0–4;
+    organ failure at any system ≥ 2. **Class B** — the revisable Revised-Atlanta
+    definition carries a documentation-only `docs/citation-staleness.md` row
+    (on-publication cadence; the citation names the working group, not an issuer
+    acronym, so it is not gate-forced).
+  - `cdai-crohns` guards the standard-weight divisor; `modified-marshall` guards the
+    PaO₂/FiO₂ denominator and reports a blank system as not-assessed. Five are **Class
+    A** (no staleness row).
+
 ### Added (spec-v125: hepatology severity & encephalopathy — PELD, CLIF-C ACLF, GAHS, West Haven, HSI, +5 — spec-v100 Wave 5)
 
 - **Wave 5 (GI / hepatology / nephrology / acid-base / urology) of the
