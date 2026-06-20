@@ -6,6 +6,43 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v125: hepatology severity & encephalopathy — PELD, CLIF-C ACLF, GAHS, West Haven, HSI, +5 — spec-v100 Wave 5)
+
+- **Wave 5 (GI / hepatology / nephrology / acid-base / urology) of the
+  [spec-v100](docs/spec-v100.md) MDCalc Parity Completion program continues.** Five
+  deterministic **hepatology severity and encephalopathy instruments** (catalog **544
+  → 549**), all in **Clinical Scoring & Risk (Group G)**, via `lib/hep-v125.js` +
+  `views/group-v125.js` (`RV125`), completing the acute-hepatology cluster beside
+  `meld-childpugh`, `albi-grade`, and `fib4`. Each takes lab values or the bedside
+  exam as input — no AI, no network — and renders the spec-v50 §3 clinical-posture
+  note (the tile reports the score/grade and the source's framing; the listing,
+  steroid, and management decisions stay with the clinician). None duplicates a live
+  tile. All five **re-fetch the published coefficients / bands / criteria verbatim**
+  and cross-verify across ≥ 2 independent sources (spec-v97 discipline).
+  - **`peld-score`** — Pediatric End-Stage Liver Disease (McDiarmid SV, et al,
+    *Transplantation* 2002): 4.80·ln(bili) + 18.57·ln(INR) − 6.87·ln(albumin) + 4.36
+    (age < 1 yr) + 6.67 (growth failure), labs floored at 1.0; the **raw McDiarmid
+    form** (no ×10 — that is the UNOS allocation presentation). Cross-links
+    `meld-childpugh`.
+  - **`clif-c-aclf`** — CLIF-C ACLF mortality model (Jalan R, et al, *J Hepatol*
+    2014): 10·[0.33·CLIF-OF + 0.04·age + 0.63·ln(WBC) − 2] on the 6-organ CLIF-OF
+    sub-score (6–18). **CLIF-OF circulation scores 3 for vasopressor use** (canonical
+    Jalan 2014, not the MAP < 65 of CLIF-SOFA). Reported 0–100.
+  - **`gahs`** — Glasgow Alcoholic Hepatitis Score (Forrest EH, et al, *Gut* 2005):
+    five banded items (age/WBC/urea/INR/bilirubin), total 5–12; ≥ 9 marks higher
+    28/84-day mortality and the corticosteroid-benefit cohort. **SI units** — urea in
+    mmol/L, bilirubin in µmol/L (not BUN or mg/dL).
+  - **`west-haven-he`** — West Haven (Conn) HE grade (Conn HO, et al,
+    *Gastroenterology* 1977): the canonical 0–4 ordinal grade; ≥ 2 is overt
+    encephalopathy.
+  - **`hepatic-steatosis-index`** — HSI NAFLD screen (Lee JH, et al, *Dig Liver Dis*
+    2010): 8·(ALT/AST) + BMI + 2 (female) + 2 (diabetes); < 30 rules NAFLD out, > 36
+    rules it in. Cross-links the v124 `fatty-liver-index`.
+  - The log tiles (PELD, CLIF-C ACLF, HSI) domain-guard every `ln`/ratio
+    (blank/non-positive → complete-the-fields fallback, never `ln(0)` or
+    divide-by-zero). All five are **Class A** (journal + author citations, no
+    `ISSUER_PATTERN` trip) — no `docs/citation-staleness.md` row.
+
 ### Added (spec-v124: hepatology function & fibrosis — ALBI, MELD-XI, Forns, BARD, FLI, Lok, +6 — opens spec-v100 Wave 5)
 
 - **Wave 5 (GI / hepatology / nephrology / acid-base / urology) of the

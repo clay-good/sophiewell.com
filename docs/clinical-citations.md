@@ -2535,3 +2535,62 @@ ratio, and the INR. A probability below zero point two rules cirrhosis out, abov
 point five rules it in, and between is indeterminate.
 Worked example: a low platelet count with a raised enzyme ratio and INR crosses the
 rule-in threshold.
+
+### PELD (pediatric end-stage liver disease)
+Citation: McDiarmid SV, Anand R, Lindblad AS; SPLIT Research Group. Development of a
+pediatric end-stage liver disease score to predict outcomes in children awaiting liver
+transplantation. Transplantation. 2002;74(2):173-181.
+Rule: the under-twelve transplant-listing score, since the adult model does not apply
+to small children. It sums four point eight times the natural log of bilirubin, plus
+eighteen point five seven times the natural log of the INR, minus six point eight seven
+times the natural log of albumin, plus a bonus for age under one year and a bonus for
+growth failure, with albumin and bilirubin in conventional units and each lab floored
+at one before the log. A higher value means greater severity and waitlist priority.
+Worked example: a low albumin with a raised bilirubin and INR in an infant gives a
+score in the low teens.
+
+### CLIF-C ACLF (acute-on-chronic liver failure)
+Citation: Jalan R, Saliba F, Pavesi M, et al. Development and validation of a
+prognostic score to predict mortality in patients with acute-on-chronic liver failure.
+J Hepatol. 2014;61(5):1038-1047.
+Rule: a mortality model for acute-on-chronic liver failure built on the organ-failure
+sub-score, which rates six organ systems from one to three. The score is ten times the
+quantity zero point three three times the organ-failure sub-score plus zero point zero
+four times age plus zero point six three times the natural log of the white-cell count
+minus two, reported on a zero-to-one-hundred scale. The circulation organ scores its
+maximum for vasopressor use. A higher value means higher short-term mortality.
+Worked example: multi-organ failure in an older patient gives a score above the
+midpoint of the range.
+
+### Glasgow Alcoholic Hepatitis Score
+Citation: Forrest EH, Evans CD, Stewart S, et al. Analysis of factors predictive of
+mortality in alcoholic hepatitis and derivation and validation of the Glasgow alcoholic
+hepatitis score. Gut. 2005;54(8):1174-1179.
+Rule: five banded items -- age, white-cell count, blood urea in millimoles per liter,
+the INR, and bilirubin in micromoles per liter. The blood urea and bilirubin use SI
+units, not the conventional equivalents. A total of nine or more marks higher
+twenty-eight and eighty-four-day mortality and the group in which corticosteroids
+showed benefit.
+Worked example: an older patient with a raised white count, urea, INR, and bilirubin
+reaches the top of the range.
+
+### West Haven HE grade (hepatic encephalopathy)
+Citation: Conn HO, Leevy CM, Vlahcevic ZR, et al. Comparison of lactulose and neomycin
+in the treatment of chronic portal-systemic encephalopathy. Gastroenterology.
+1977;72(4 Pt 1):573-583.
+Rule: the canonical hepatic-encephalopathy grade. Grade zero is minimal with no
+detectable change, grade one a trivial lack of awareness with impaired addition, grade
+two lethargy with disorientation to time and asterixis, grade three somnolence to
+semi-stupor with gross disorientation, and grade four coma. Grades two and above are
+overt encephalopathy.
+Worked example: lethargy with disorientation to time and asterixis is a grade-two,
+overt encephalopathy.
+
+### Hepatic Steatosis Index (NAFLD screen)
+Citation: Lee JH, Kim D, Kim HJ, et al. Hepatic steatosis index: a simple screening
+tool reflecting nonalcoholic fatty liver disease. Dig Liver Dis. 2010;42(7):503-508.
+Rule: a screen equal to eight times the ALT-to-AST ratio plus the body mass index,
+adding two for female sex and two for diabetes. A value below thirty rules nonalcoholic
+fatty liver disease out, above thirty-six rules it in, and between is indeterminate.
+Worked example: a raised enzyme ratio with obesity, female sex, and diabetes reaches
+the rule-in band.
