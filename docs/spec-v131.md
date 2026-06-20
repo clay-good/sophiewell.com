@@ -1,12 +1,29 @@
 # spec-v131.md — Urology: renal mass, stones, torsion: CAPRA, R.E.N.A.L. nephrometry, PADUA renal, S.T.O.N.E., ROKS, and TWIST (+6 tiles)
 
-> Status: **PROPOSED (2026-06-17).** Feature spec of the [spec-v100](spec-v100.md)
-> MDCalc Parity Completion program, **Wave 5** (GI / hepatology / nephrology /
-> acid-base / urology). Adds **6** deterministic renal-mass, kidney-stone, and
-> testicular-torsion instruments that complete the urology cluster begun in v130.
-> None duplicates a live tile.
+> Status: **SHIPPED PARTIAL (2026-06-20).** Feature spec of the
+> [spec-v100](spec-v100.md) MDCalc Parity Completion program, **Wave 5** (GI /
+> hepatology / nephrology / acid-base / urology). Scoped **6** deterministic
+> renal-mass, kidney-stone, and testicular-torsion instruments that complete the
+> urology cluster begun in v130; **5 shipped, 1 (`roks-stone-recurrence`)
+> DEFERRED** — see the amendment below. None duplicates a live tile.
 >
-> Catalog effect: **577 + 6 = 583 tiles** — the Wave 5 end state (539 → 583, +44).
+> Catalog effect (as shipped): **579 + 5 = 584 tiles** — the Wave 5 end state.
+> (The original draft assumed 577 + 6 = 583, written before the standalone
+> spec-v149 EMS parity landed 3 tiles ahead of v131; the live count was 579 at
+> v131 start. The program's running count carries a known off-by-one, so the
+> catalog-truth gate is the source of truth: live `UTILITIES.length` + delta.)
+>
+> **Amendment (2026-06-20) — ROKS deferred.** `roks-stone-recurrence` is **not
+> shipped**. Its 2-/5-/10-year probability formula is published, but the
+> per-variable **points** that feed it exist only in a graphical nomogram (Figure
+> 2A of Rule 2014, JASN 25:2878, and the revised Rule 2019, Mayo Clin Proc
+> 94:248); the papers publish hazard ratios, **not** a numeric point table or the
+> points-scaling constant. The points cannot be transcribed exactly from open
+> sources without measuring pixel positions off the figure. Shipping
+> reverse-engineered coefficients in a clinical tool is the failure mode this
+> program already refused once (`gwtg-hf`, [spec-v102](spec-v102.md)). The id is
+> **reserved**; ROKS ships only when an institutional source for the coefficient
+> appendix becomes available. v131 therefore closes **Wave 5 at +5** (579 → 584).
 >
 > Every prior spec (v4 through v130) remains in force. v131 adds no runtime network
 > call and no AI; each tile obeys the [spec-v100](spec-v100.md) §2 doctrine
@@ -101,7 +118,13 @@ and the wave.
   reading (higher = lower stone-free probability). Class A. Cross-links the existing
   `stone-score` and (v131) `roks-stone-recurrence`.
 
-### 2.5 `roks-stone-recurrence` — ROKS (recurrence of kidney stone)
+### 2.5 `roks-stone-recurrence` — ROKS (recurrence of kidney stone) — **DEFERRED, NOT SHIPPED**
+
+> **Deferred (2026-06-20).** See the amendment in the status block. The nomogram
+> points are not recoverable from open sources; only hazard ratios are published.
+> Implementing this would require fabricating the points-scaling, which the
+> program refuses (the `gwtg-hf` precedent). The id is reserved.
+
 
 - **Citation:** Rule AD, Lieske JC, Li X, et al. The ROKS nomogram for predicting a
   second symptomatic stone episode. *J Am Soc Nephrol.* 2014;25(12):2878-2886.

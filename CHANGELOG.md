@@ -6,6 +6,44 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v131: urology renal-mass, kidney-stone & torsion scores — CAPRA, R.E.N.A.L., PADUA renal, S.T.O.N.E., TWIST, +5 — spec-v100 Wave 5 close)
+
+- **Wave 5 of the [spec-v100](docs/spec-v100.md) MDCalc Parity Completion program
+  closes.** Five deterministic **urology** scoring tiles (catalog **579 → 584**) in
+  **Clinical Scoring & Risk (Group G)** complete the renal-mass / kidney-stone /
+  testicular-torsion cluster begun by v130's prostate surface, via
+  `lib/uro-v131.js` + `views/group-v131.js` (`RV131`). Every point table was
+  re-fetched and cross-verified against ≥ 2 independent sources (spec-v97 lesson),
+  never recalled.
+  - **`capra-score`** — UCSF CAPRA biochemical-recurrence score 0–10 (Cooperberg
+    2005). Age, PSA bands, the Gleason axis (primary 4/5 = +3, else secondary 4/5
+    = +1; no +2 level), clinical T3a and ≥ 34% positive cores. 0–2 low / 3–5
+    intermediate / 6–10 high.
+  - **`renal-nephrometry`** — R.E.N.A.L. nephrometry score 4–12 (Kutikov & Uzzo
+    2009) with the non-scoring a/p/x face suffix and the h hilar marker. 4–6 low /
+    7–9 moderate / 10–12 high.
+  - **`padua-renal`** — PADUA renal-tumour complexity score 6–14 (Ficarra 2009).
+    **Renamed** from `padua` to avoid colliding with the unrelated VTE Padua
+    Prediction Score, which is untouched. 6–7 low / 8–9 intermediate / ≥ 10 high.
+  - **`stone-nephrolithometry`** — S.T.O.N.E. nephrolithometry 5–13 (Okhunov 2013),
+    the **original PCNL area version** (stone area = length × width mm²), not the
+    later URS diameter adaptation. Higher score = lower stone-free likelihood.
+  - **`twist-score`** — TWIST testicular-torsion triage score 0–7 (Barbosa 2013).
+    0–2 low (≈ 2% torsion) / 3–4 intermediate (ultrasound) / 5–7 high (≈ 87%,
+    consider exploration).
+  - **`roks-stone-recurrence` was scoped but DEFERRED** (catalog +5, not +6): the
+    ROKS recurrence nomogram's per-variable points feed only a graphical nomogram
+    and are not recoverable from open sources (only hazard ratios are published).
+    Shipping reverse-engineered coefficients in a clinical tool is the failure mode
+    the program already refused for `gwtg-hf` (spec-v102). The id is reserved. See
+    [docs/spec-v131.md](docs/spec-v131.md) §2.5 (amended).
+  - All five are **Class A** (fixed published point tables; journal+author
+    citations, no `ISSUER_PATTERN` trip → no `docs/citation-staleness.md` row).
+    Each flows through the spec-v59 fuzz harness (zero non-finite leaks), renders
+    the spec-v50 §3 posture note, ships ≥ 3 boundary worked examples (incl. a CAPRA
+    2→3, R.E.N.A.L. 6→7, PADUA 7→8 and TWIST 4→5 band flip), a spec-v11 audit log,
+    and passes the spec-v29 §3 one-line test. New specialty tags: none.
+
 ### Added (spec-v149: roughlogic.com EMS-group parity — pediatric weight estimate, PALS vital-sign reference, drug-concentration draw-up volume, +3)
 
 - **roughlogic.com EMS parity.** A cross-catalog audit of roughlogic.com's EMS group

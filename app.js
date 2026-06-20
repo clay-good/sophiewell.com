@@ -60,6 +60,7 @@ import { renderers as RV127 } from './views/group-v127.js';
 import { renderers as RV128 } from './views/group-v128.js';
 import { renderers as RV129 } from './views/group-v129.js';
 import { renderers as RV130 } from './views/group-v130.js';
+import { renderers as RV131 } from './views/group-v131.js';
 import { renderers as RV149 } from './views/group-v149.js';
 import { renderers as RV63 } from './views/group-v63.js';
 import { renderers as RB } from './views/group-b.js';
@@ -79,7 +80,7 @@ import { resolvePrompt } from './lib/prompt.js';
 // artifact-detect / artifact-route / artifact-handoff helpers were
 // deleted in spec-v29 wave 29-2 (Group C/L).
 
-const RENDERERS = { ...RA, ...RB, ...RC, ...RE, ...RF, ...RG, ...RH, ...RI, ...RJ, ...RKLMNO, ...RV5, ...RV6, ...RV7, ...RV8, ...RV9, ...RV10, ...RV11, ...RV12, ...RV13, ...RV14, ...RV15, ...RV16, ...RV17, ...RV18, ...RV19, ...RV20, ...RV21, ...RV22, ...RV23, ...RV24, ...RV25, ...RV26, ...RV27, ...RV28, ...RV29, ...RV30, ...RV31, ...RV32, ...RV33, ...RV34, ...RV35, ...RV36, ...RV37, ...RV38, ...RV39, ...RV40, ...RV117, ...RV118, ...RV119, ...RV120, ...RV121, ...RV122, ...RV123, ...RV124, ...RV125, ...RV126, ...RV127, ...RV128, ...RV129, ...RV130, ...RV149, ...RV63, ...RPALINT };
+const RENDERERS = { ...RA, ...RB, ...RC, ...RE, ...RF, ...RG, ...RH, ...RI, ...RJ, ...RKLMNO, ...RV5, ...RV6, ...RV7, ...RV8, ...RV9, ...RV10, ...RV11, ...RV12, ...RV13, ...RV14, ...RV15, ...RV16, ...RV17, ...RV18, ...RV19, ...RV20, ...RV21, ...RV22, ...RV23, ...RV24, ...RV25, ...RV26, ...RV27, ...RV28, ...RV29, ...RV30, ...RV31, ...RV32, ...RV33, ...RV34, ...RV35, ...RV36, ...RV37, ...RV38, ...RV39, ...RV40, ...RV117, ...RV118, ...RV119, ...RV120, ...RV121, ...RV122, ...RV123, ...RV124, ...RV125, ...RV126, ...RV127, ...RV128, ...RV129, ...RV130, ...RV131, ...RV149, ...RV63, ...RPALINT };
 
 // ----- Utility registry ----------------------------------------------------
 // Source of truth for routes, names, group, audiences, and clinical flag.
@@ -1003,6 +1004,19 @@ const UTILITIES = [
   { id: 'psa-doubling-time',      name: 'PSA doubling time',                               group: 'E', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'damico-prostate-risk',   name: 'D’Amico prostate-cancer risk classification',     group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'gleason-grade-group',    name: 'Gleason Grade Group (ISUP)',                      group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+
+  // spec-v131: urology renal-mass, kidney-stone & torsion scores (Wave 5
+  // close). Five Group G ordinal/threshold instruments closing the urology
+  // cluster begun in v130. All Class A (fixed published point tables;
+  // journal+author citations, no ISSUER_PATTERN trip -> no citation-staleness
+  // row). roks-stone-recurrence was scoped but is DEFERRED (its nomogram points
+  // are not recoverable from open sources; see lib/uro-v131.js + docs/spec-v131.md).
+  // views/group-v131.js, lib/uro-v131.js.
+  { id: 'capra-score',            name: 'CAPRA prostate-cancer risk score (UCSF)',         group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'renal-nephrometry',      name: 'R.E.N.A.L. nephrometry score (renal mass)',       group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'padua-renal',            name: 'PADUA renal-tumour complexity score',             group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'stone-nephrolithometry', name: 'S.T.O.N.E. nephrolithometry (PCNL complexity)',   group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'twist-score',            name: 'TWIST score (testicular torsion)',                group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
 
   // spec-v6 §3.3: lab result interpreter. Patient-decoder category.
   { id: 'lab-interpret',       name: 'Lab Result Interpreter',                           group: 'C', audiences: ['patients', 'clinicians', 'educators'], clinical: true },

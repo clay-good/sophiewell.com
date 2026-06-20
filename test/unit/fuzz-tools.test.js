@@ -128,6 +128,7 @@ import * as nephroV127 from '../../lib/nephro-v127.js';
 import * as renalV128 from '../../lib/renal-v128.js';
 import * as acidbaseV129 from '../../lib/acidbase-v129.js';
 import * as uroV130 from '../../lib/uro-v130.js';
+import * as uroV131 from '../../lib/uro-v131.js';
 import * as emsV149 from '../../lib/ems-v149.js';
 
 const MODULES = {
@@ -201,6 +202,7 @@ const MODULES = {
   'renal-v128.js': renalV128,
   'acidbase-v129.js': acidbaseV129,
   'uro-v130.js': uroV130,
+  'uro-v131.js': uroV131,
   'ems-v149.js': emsV149,
 };
 
