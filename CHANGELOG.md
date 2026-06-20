@@ -6,6 +6,48 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v122: general neurology & rehab — dementia type, spasticity, brainstem encephalitis, +3 — spec-v100 Wave 4)
+
+- **Wave 4 (Neurology / neurosurgery / psychiatry)** of the
+  [spec-v100](docs/spec-v100.md) MDCalc Parity Completion program continues. Three
+  deterministic **general-neurology and rehabilitation instruments** that cross
+  specialty lines (catalog **530 → 533**), all in **Clinical Scoring & Risk (Group
+  G)**, via `lib/neuro-v122.js` + `views/group-v122.js` (`RV122`). v117–v121 covered
+  stroke imaging, hemorrhagic grading, prehospital LVO triage, the epilepsy /
+  headache / vertigo gap, and the GBS / myasthenia gap; v122 fills the
+  general-neurology / rehab gap (dementia type, spasticity grading,
+  brainstem-encephalitis diagnosis). Each takes the clinician's exam and history
+  findings as input — v122 parses no imaging and no EMG feed — and renders the
+  spec-v50 §3 clinical-posture note (the tile reports the score / grade /
+  determination and the source's framing; the diagnosis and management decision stay
+  with the clinician and local protocol). None duplicates a live tile. No new
+  specialty tag. All three **re-fetch the published weights / ordinal wording /
+  criteria verbatim** and cross-verify across ≥ 2 independent sources (spec-v97
+  discipline).
+  - **`hachinski`** — Hachinski Ischemic Score (Hachinski VC, et al, *Arch Neurol*
+    1975): 13 weighted features — five score 2 (abrupt onset, fluctuating course,
+    history of strokes, focal symptoms, focal signs), eight score 1 — summed 0–18;
+    ≤ 4 favors a primary degenerative (Alzheimer-type) dementia, 5–6 indeterminate,
+    ≥ 7 vascular (multi-infarct). **Source correction: stepwise deterioration is 1
+    point, not 2** (a common mis-recall; the official ARIC/NIH form and every
+    reproduction agree on 1, max 18). Cross-links `bickerstaff`.
+  - **`modified-ashworth`** — Modified Ashworth Scale (Bohannon RW, Smith MB, *Phys
+    Ther* 1987): the bedside ordinal spasticity grade 0 / 1 / 1+ / 2 / 3 / 4. The
+    "1+" level (the 1987 modification of the 1964 five-point scale) is rendered as a
+    **distinct ordinal step via string keys**, never averaged or summed into a
+    fractional grade.
+  - **`bickerstaff`** — Bickerstaff brainstem encephalitis checklist (Odaka M, et
+    al, *Brain* 2003; spectrum framework Wakerley BR, et al, *Nat Rev Neurol* 2014):
+    required core = progressive symmetric external ophthalmoplegia + ataxia (within
+    ~4 weeks) + altered consciousness OR hyperreflexia; the anti-GQ1b IgG antibody, a
+    brainstem MRI lesion, and CSF albuminocytologic dissociation are **supportive
+    only, never required** (seronegative cases are recognized). Framed as a
+    research/classification reading, not a validated gold standard. Cross-links
+    `brighton-gbs`.
+  - All three are **Class A** (fixed point weights / ordinal scale / diagnostic
+    checklist; journal+author citations, no `ISSUER_PATTERN` trip) — no
+    `docs/citation-staleness.md` row.
+
 ### Added (spec-v121: neuromuscular emergencies — GBS & myasthenia, +4 — spec-v100 Wave 4)
 
 - **Wave 4 (Neurology / neurosurgery / psychiatry)** of the

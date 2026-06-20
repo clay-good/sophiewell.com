@@ -51,6 +51,7 @@ import { renderers as RV118 } from './views/group-v118.js';
 import { renderers as RV119 } from './views/group-v119.js';
 import { renderers as RV120 } from './views/group-v120.js';
 import { renderers as RV121 } from './views/group-v121.js';
+import { renderers as RV122 } from './views/group-v122.js';
 import { renderers as RV63 } from './views/group-v63.js';
 import { renderers as RB } from './views/group-b.js';
 import { renderers as RPALINT } from './views/pa-lint.js';
@@ -69,7 +70,7 @@ import { resolvePrompt } from './lib/prompt.js';
 // artifact-detect / artifact-route / artifact-handoff helpers were
 // deleted in spec-v29 wave 29-2 (Group C/L).
 
-const RENDERERS = { ...RA, ...RB, ...RC, ...RE, ...RF, ...RG, ...RH, ...RI, ...RJ, ...RKLMNO, ...RV5, ...RV6, ...RV7, ...RV8, ...RV9, ...RV10, ...RV11, ...RV12, ...RV13, ...RV14, ...RV15, ...RV16, ...RV17, ...RV18, ...RV19, ...RV20, ...RV21, ...RV22, ...RV23, ...RV24, ...RV25, ...RV26, ...RV27, ...RV28, ...RV29, ...RV30, ...RV31, ...RV32, ...RV33, ...RV34, ...RV35, ...RV36, ...RV37, ...RV38, ...RV39, ...RV40, ...RV117, ...RV118, ...RV119, ...RV120, ...RV121, ...RV63, ...RPALINT };
+const RENDERERS = { ...RA, ...RB, ...RC, ...RE, ...RF, ...RG, ...RH, ...RI, ...RJ, ...RKLMNO, ...RV5, ...RV6, ...RV7, ...RV8, ...RV9, ...RV10, ...RV11, ...RV12, ...RV13, ...RV14, ...RV15, ...RV16, ...RV17, ...RV18, ...RV19, ...RV20, ...RV21, ...RV22, ...RV23, ...RV24, ...RV25, ...RV26, ...RV27, ...RV28, ...RV29, ...RV30, ...RV31, ...RV32, ...RV33, ...RV34, ...RV35, ...RV36, ...RV37, ...RV38, ...RV39, ...RV40, ...RV117, ...RV118, ...RV119, ...RV120, ...RV121, ...RV122, ...RV63, ...RPALINT };
 
 // ----- Utility registry ----------------------------------------------------
 // Source of truth for routes, names, group, audiences, and clinical flag.
@@ -872,6 +873,18 @@ const UTILITIES = [
   { id: 'megos',                  name: 'mEGOS (GBS walking-outcome score)',                group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'brighton-gbs',           name: 'Brighton GBS Criteria (certainty level)',          group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'mgfa',                   name: 'MGFA class + MG-ADL (myasthenia severity)',        group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+
+  // spec-v122 (Wave 4 of the spec-v100 program): three general-neurology and
+  // rehabilitation instruments that cross specialty lines -- the Hachinski
+  // Ischemic Score (vascular vs Alzheimer-type dementia), the Modified Ashworth
+  // Scale (spasticity grade, the PM&R / physical-therapy bedside standard), and
+  // the Bickerstaff brainstem-encephalitis diagnostic checklist. All three are
+  // Class A (fixed point weights / ordinal scale / diagnostic checklist,
+  // journal+author citations -- no staleness row). views/group-v122.js,
+  // lib/neuro-v122.js.
+  { id: 'hachinski',              name: 'Hachinski Ischemic Score (dementia type)',         group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'modified-ashworth',      name: 'Modified Ashworth Scale (spasticity grade)',       group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'bickerstaff',            name: 'Bickerstaff Brainstem Encephalitis Criteria',      group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
 
   // spec-v6 §3.3: lab result interpreter. Patient-decoder category.
   { id: 'lab-interpret',       name: 'Lab Result Interpreter',                           group: 'C', audiences: ['patients', 'clinicians', 'educators'], clinical: true },

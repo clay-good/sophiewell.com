@@ -5,7 +5,7 @@
 <h1 align="center">sophiewell.com</h1>
 
 <p align="center">
-  <strong>530 deterministic healthcare calculators tuned to the nurse on shift.</strong><br>
+  <strong>533 deterministic healthcare calculators tuned to the nurse on shift.</strong><br>
   Free forever. No servers, no accounts, no telemetry, no AI, no network call after first paint.
 </p>
 
@@ -36,7 +36,7 @@ output; "searchable lookup of static facts" does not qualify. See
 [docs/spec-v10.md](docs/spec-v10.md) for the audience and
 dependency-budget commitments and
 [docs/spec-v29.md](docs/spec-v29.md) for the nurse-first pivot
-and the v29 catalog ledger. At v121 close the catalog is 530
+and the v29 catalog ledger. At v122 close the catalog is 533
 deterministic tiles — every one of them computes from at least
 one user input. The catalog reached its present size on two tracks.
 **New tiles:** spec-v63 added the operations counterpart to the bedside
@@ -186,7 +186,7 @@ production security headers. Any static file server will also work.
 ## How it works and how to use it
 
 Since the spec-v29 nurse-first prune the catalog has grown one
-reviewable spec at a time to **530** deterministic calculators
+reviewable spec at a time to **533** deterministic calculators
 (the full per-version history is in [CHANGELOG.md](CHANGELOG.md)
 and `docs/spec-v*.md`; the most recent bedside additions are
 summarized in the cheat sheets below). They organize across the
@@ -1023,7 +1023,7 @@ Duke-ISCVID) and `refeeding-risk` (NICE CG32) are **Class B** with
 [citation-staleness](docs/citation-staleness.md) rows; the other three are
 **Class A**. See [docs/spec-v99.md](docs/spec-v99.md).
 
-### MDCalc parity completion: the cardiology / vascular / lipid surface (spec-v100 program, Wave 1: spec-v101 → spec-v105, +25 → 457, **complete**; Wave 2 complete: spec-v106 → 463, spec-v107 → 467, spec-v108 → 473, spec-v109 → 478, spec-v110 → 483, spec-v111 → 487, **+30 → 487**; Wave 3 complete (Critical care & pulmonary): spec-v112 → 492, spec-v113 → 495, spec-v114 → 501, spec-v115 → 506, **+19 → 506**; Wave 4 underway (Neurology / neurosurgery / psychiatry): spec-v117 → 512, spec-v118 → 517, spec-v119 → 521, spec-v120 → 526, spec-v121 → 530, **+24 → 530**)
+### MDCalc parity completion: the cardiology / vascular / lipid surface (spec-v100 program, Wave 1: spec-v101 → spec-v105, +25 → 457, **complete**; Wave 2 complete: spec-v106 → 463, spec-v107 → 467, spec-v108 → 473, spec-v109 → 478, spec-v110 → 483, spec-v111 → 487, **+30 → 487**; Wave 3 complete (Critical care & pulmonary): spec-v112 → 492, spec-v113 → 495, spec-v114 → 501, spec-v115 → 506, **+19 → 506**; Wave 4 underway (Neurology / neurosurgery / psychiatry): spec-v117 → 512, spec-v118 → 517, spec-v119 → 521, spec-v120 → 526, spec-v121 → 530, spec-v122 → 533, **+27 → 533**)
 
 With the spec-v85 program complete, [spec-v100](docs/spec-v100.md) charters the
 **MDCalc Parity Completion** program — a roadmap that closes the remaining gaps
@@ -1384,6 +1384,35 @@ decisions stay with the stroke team and local protocol. Five are **Class A**;
 reperfusion guidelines → a documentation-only `docs/citation-staleness.md` row).
 `lib/neuro-v117.js` + `views/group-v117.js`. **This opens Wave 4 of the
 spec-v100 program (506 → 512, +6).**
+
+#### spec-v122 — general neurology & rehab: dementia type, spasticity, brainstem encephalitis (+3 → 533, Wave 4)
+
+Wave 4 widens from the neuromuscular emergencies into three **general-neurology and
+rehabilitation** instruments that cross specialty lines. All three home in **Clinical
+Scoring & Risk (Group G)**:
+
+| id | Rule | Output | Class |
+|---|---|---|---|
+| `hachinski` | Hachinski 1975 Ischemic Score — 13 weighted features (5 score 2 pts: abrupt onset, fluctuating course, stroke history, focal symptoms, focal signs; 8 score 1 pt) | **0–18; ≤ 4 degenerative / 5–6 indeterminate / ≥ 7 vascular dementia** | A |
+| `modified-ashworth` | Bohannon & Smith 1987 Modified Ashworth Scale — ordinal resistance to passive movement | **grade 0 / 1 / 1+ / 2 / 3 / 4 (distinct ordinal steps, "1+" not summed)** | A |
+| `bickerstaff` | Odaka 2003 (spectrum: Wakerley 2014) — ophthalmoplegia + ataxia + (altered consciousness OR hyperreflexia); GQ1b / MRI / CSF supportive only | **core-met vs not-met diagnostic determination** | A |
+
+All three **re-fetch the published weights / ordinal wording / criteria verbatim**
+(the spec-v97 discipline), cross-verified across ≥ 2 independent sources. Three
+source-governance choices: (1) the **`hachinski` weights were re-fetched, not
+recalled** — stepwise deterioration is **1 point, not 2** (a common mis-recall the
+official ARIC/NIH form and every reproduction contradict; max 18, not the inflated
+value the wrong assumption gives); (2) **`modified-ashworth` renders "1+" as a
+distinct ordinal step** via string keys, never averaged or summed into a fractional
+grade; (3) **`bickerstaff` does not gate the verdict on the anti-GQ1b antibody** —
+it, the MRI lesion, and the CSF dissociation are supportive only (seronegative cases
+are recognized), and the tile frames the determination as a research/classification
+reading, not a validated gold standard, naming the GQ1b spectrum link to Miller
+Fisher syndrome and GBS. Each tile **reports the score / grade / determination, not
+the order** (spec-v11 §5.3): the diagnosis and management decision stay with the
+clinician and local protocol. All three are **Class A** (journal+author citations,
+no `ISSUER_PATTERN` trip → no staleness row). `lib/neuro-v122.js` +
+`views/group-v122.js`. **Catalog 530 → 533, +3.**
 
 #### spec-v121 — neuromuscular emergencies: GBS & myasthenia (+4 → 530, Wave 4)
 
@@ -1963,7 +1992,7 @@ long version, see [docs/architecture.md](docs/architecture.md).
  │  manifests (data/)            │  static │        ▼                     ▼             │
  │        │  scripts/build       │  files  │   lazy-load data shard   pure compute      │
  │        ▼                      │         │   (verified vs manifest)  (lib/*.js)       │
- │  dist/  (530 tool pages,      │         │        │                     │             │
+ │  dist/  (533 tool pages,      │         │        │                     │             │
  │  OG cards, sitemap, SBOM)     │         │        ▼                     ▼             │
  └───────────────────────────────┘         │   service worker cache    result + cite   │
                                             │   (keyed to build hash)                    │
@@ -1985,7 +2014,7 @@ assets:
 
 | Output | Count | Source |
 |--------|------:|--------|
-| Pre-rendered tool pages (`dist/tools/<id>/`) | 530 | `scripts/build-tool-pages.mjs` |
+| Pre-rendered tool pages (`dist/tools/<id>/`) | 533 | `scripts/build-tool-pages.mjs` |
 | Audience hub pages (`dist/for/<audience>/`) | 6 | `scripts/build-hub-pages.mjs` |
 | Topic pages + `/topics/` index | 8 + 1 | `scripts/build-topic-pages.mjs` |
 | `/commitments/` | 1 | `scripts/build-commitments-page.mjs` |
@@ -2020,7 +2049,7 @@ static pages, so a tile can never ship mobile overflow undetected.
 index.html          single-page shell (hero-search combobox + static browse-by-category nav, tile mount)
 styles.css          one stylesheet (responsive; no horizontal scroll — enforced catalog-wide at 320px in CI)
 app.js              router, hero-search wiring, view wiring, the UTILITIES catalog
-                    (530 tiles — the single source of truth; zero runtime deps)
+                    (533 tiles — the single source of truth; zero runtime deps)
 sw.js               service worker — precache shell, cache shards by build hash
 theme.js            light/dark theme toggle (writes only sw-theme, allowlisted)
 lib/input-persist.js opt-in "remember my inputs" (off by default; numbers only)
@@ -2038,12 +2067,12 @@ docs/               specs (spec-v4 onward) + per-tile v11/v12 audit logs +
                     citation-staleness ledger +
                     architecture / threat-model / …
 test/               unit/ (node:test) · integration/ (Playwright) · fixtures/
-dist/               build output (530 tool pages, OG cards, sitemap, SBOM)
+dist/               build output (533 tool pages, OG cards, sitemap, SBOM)
 ```
 
-### Discovery: how a query finds the right tool among 530
+### Discovery: how a query finds the right tool among 533
 
-With 530 tiles, search quality *is* the product — a tool you cannot find does
+With 533 tiles, search quality *is* the product — a tool you cannot find does
 not exist. Discovery is deterministic and offline (no fuzzy-match service, no
 embedding model, no AI). The home `#hero-search` combobox builds its dropdown
 from two complementary rankers, both pure functions of the typed query:
@@ -2116,10 +2145,10 @@ A login-less, AI-free calculator earns trust only if the nurse can see, on the
 tile, exactly which published source produced the number — and tell whether that
 source is current. spec-v54 defined the invariants; spec-v60 built the machinery
 (the gate, the ledger, and the `citationAccessed` convention) and extended it
-across the full 530-tile catalog, pinning the last three unpinned "current
+across the full 533-tile catalog, pinning the last three unpinned "current
 edition" phrases and re-verifying every guideline tile against its latest known
 edition. Three invariants make that auditable, each enforced by the
-`check-citations.mjs` lint gate (in the `npm run lint` chain) over all 530 tiles:
+`check-citations.mjs` lint gate (in the `npm run lint` chain) over all 533 tiles:
 
 | Invariant | Rule | Enforcement |
 |---|---|---|
@@ -2576,7 +2605,7 @@ rules, not soft preferences.
 | `npm run build`          | Copy static files into `dist/` for deployment                     |
 | `npm test`               | Run the full test suite (unit, a11y, grep, data integrity)        |
 | `npm run test:unit`      | Run Node's built-in unit tests (4,562 tests)                      |
-| `npm run test:e2e`       | Build `dist/`, then run Playwright integration tests against real browsers — incl. a full-catalog 320px no-horizontal-scroll sweep over both the SPA routes and the 530 pre-rendered static tool pages, the hub/topic/commitments pages, and the citation-wrap pin |
+| `npm run test:e2e`       | Build `dist/`, then run Playwright integration tests against real browsers — incl. a full-catalog 320px no-horizontal-scroll sweep over both the SPA routes and the 533 pre-rendered static tool pages, the hub/topic/commitments pages, and the citation-wrap pin |
 | `npm run test:a11y`      | Run accessibility checks on every utility view                    |
 | `npm run lint`           | ESLint + the CI gate chain: grep-check, output-safety, citation-integrity, catalog-truth, commitments, PA staleness, PA audit |
 | `npm run data:refresh`   | Re-fetch and re-shard every public dataset                        |
@@ -2660,7 +2689,7 @@ build, integrity-verified data shards) are documented in
 - [docs/spec-v11.md](docs/spec-v11.md) — correctness-floor spec:
   per-tile audit protocol, specialty-named groups, optional
   source-quoted `interpretation` field. Audit coverage is **complete
-  — 530/530 tiles** carry a committed per-tile audit log
+  — 533/533 tiles** carry a committed per-tile audit log
   (`docs/audits/v11/<id>.md` for the pre-v78 catalog;
   `docs/audits/v12/<id>.md` for the tiles added since — the
   spec-v78–v83 billing & coding program, the spec-v85

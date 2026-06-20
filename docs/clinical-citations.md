@@ -2379,3 +2379,44 @@ teeth or combing hair, rising from a chair, double vision, and eyelid droop -- e
 scored from normal to most severe, where a higher total means more severe symptoms.
 Worked example: a severe generalized, oropharyngeal-predominant pattern with
 bulbar-weighted MG-ADL items reaches Class IV-b.
+
+### Hachinski Ischemic Score (dementia type)
+Citation: Hachinski VC, Iliff LD, Zilhka E, et al. Cerebral blood flow in dementia.
+Arch Neurol. 1975;32(9):632-637.
+Rule: a thirteen-item weighted score distinguishing a vascular from a primary
+degenerative dementia. Five features score two points each -- abrupt onset,
+fluctuating course, a history of strokes, focal neurological symptoms, and focal
+neurological signs -- and eight score one point each -- stepwise deterioration,
+nocturnal confusion, relative preservation of personality, depression, somatic
+complaints, emotional incontinence, hypertension, and associated atherosclerosis --
+for a maximum of eighteen. A total of four or below favors a primary degenerative
+(Alzheimer-type) dementia, five to six is indeterminate, and seven or above favors a
+vascular (multi-infarct) cause.
+Worked example: abrupt onset with a fluctuating course, a history of strokes, and
+focal symptoms reaches the vascular band.
+
+### Modified Ashworth Scale (spasticity grade)
+Citation: Bohannon RW, Smith MB. Interrater reliability of a modified Ashworth scale
+of muscle spasticity. Phys Ther. 1987;67(2):206-207.
+Rule: a bedside ordinal grade of muscle spasticity, scored per muscle group on
+resistance to passive movement, with six levels -- none, slight (a catch and
+release), the intermediate level (a catch then minimal resistance through less than
+half the range), more marked through most of the range, considerable with difficult
+passive movement, and rigid. The intermediate level is the modification of the
+original five-point scale and is a distinct ordinal step, not an average.
+Worked example: the intermediate level reads as a catch followed by minimal
+resistance through less than half of the range.
+
+### Bickerstaff Brainstem Encephalitis Criteria
+Citation: Odaka M, Yuki N, Yamada M, et al. Bickerstaff's brainstem encephalitis:
+clinical features and a subgroup associated with Guillain-Barre syndrome. Brain.
+2003;126(Pt 10):2279-2290.
+Rule: a diagnostic checklist for brainstem encephalitis. The required core is
+progressive, relatively symmetric external ophthalmoplegia and ataxia developing
+within about four weeks, plus altered consciousness or hyperreflexia, where one of
+the two central features suffices. A positive anti-GQ1b antibody, a brainstem lesion
+on imaging, and an albuminocytologic dissociation in the spinal fluid support the
+diagnosis but are never required, since seronegative cases are recognized. It sits on
+a continuous spectrum with Miller Fisher syndrome and Guillain-Barre syndrome.
+Worked example: external ophthalmoplegia and ataxia with altered consciousness meet
+the required core.
