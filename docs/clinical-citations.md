@@ -2320,3 +2320,62 @@ sensitive and ninety-six percent specific for a central cause with an expert
 examiner.
 Worked example: a normal head-impulse test, even with otherwise benign findings,
 flags a central pattern.
+
+### EGRIS (GBS respiratory-failure risk)
+Citation: Walgaard C, Lingsma HF, Ruts L, et al. Prediction of respiratory
+insufficiency in Guillain-Barre syndrome. Ann Neurol. 2010;67(6):781-787.
+Rule: a three-item score for the risk of mechanical ventilation in the first week
+of Guillain-Barre syndrome. The interval from onset of weakness to admission scores
+zero (more than seven days), one (four to seven days), or two (three days or
+fewer); facial and/or bulbar weakness adds one; and the MRC sum-score band at
+admission adds zero (sixty to fifty-one) up to four (twenty or below). The total
+runs from none to seven. The published mechanical-ventilation rates are about four
+percent with a low score, about twenty-four percent with an intermediate score, and
+about sixty-five percent with a high score; the paper reports a continuous curve and
+no per-score table.
+Worked example: a rapid onset with facial weakness and a low MRC band reaches the
+high band, about a sixty-five percent ventilation risk.
+
+### mEGOS (GBS walking-outcome score)
+Citation: Walgaard C, Lingsma HF, Ruts L, van Doorn PA, Steyerberg EW, Jacobs BC.
+Early recognition of poor prognosis in Guillain-Barre syndrome. Neurology.
+2011;76(11):968-975.
+Rule: predicts the probability of being unable to walk unaided at four and
+twenty-six weeks in Guillain-Barre syndrome from age (forty or younger zero, forty-
+one to sixty one, over sixty two), preceding diarrhea (adds one), and the MRC sum-
+score band, weighted by timing -- at admission zero to six, at day seven zero to
+nine. The per-score probability is published only as figure curves, so the tile
+reports the total and a relative reading of the published range, where a higher
+score means a higher probability of being unable to walk.
+Worked example: an older patient with preceding diarrhea and a low MRC band at day
+seven reaches the top of the range.
+
+### Brighton GBS Criteria (certainty level)
+Citation: Sejvar JJ, Kohl KS, Gidudu J, et al. Guillain-Barre syndrome and Fisher
+syndrome: case definitions and guidelines for collection, analysis, and
+presentation of immunization safety data. Vaccine. 2011;29(3):599-612.
+Rule: grades diagnostic certainty from the features met -- three core clinical
+features (bilateral and flaccid limb weakness, decreased or absent deep tendon
+reflexes in weak limbs, and a monophasic course with onset to nadir twelve hours to
+twenty-eight days), the absence of an identified alternative diagnosis, and two
+paraclinical supports (CSF albuminocytologic dissociation and nerve-conduction
+studies consistent with a GBS subtype). The highest level needs the core plus both
+CSF dissociation and consistent nerve-conduction studies; the next needs the core
+plus either; the third needs only the core with the paraclinical studies not done;
+the lowest means a reported case with insufficient evidence.
+Worked example: the core features with CSF dissociation and consistent nerve-
+conduction studies meet the highest certainty level.
+
+### MGFA class + MG-ADL (myasthenia severity)
+Citation: Jaretzki A 3rd, Barohn RJ, Ernstoff RM, et al. Myasthenia gravis:
+recommendations for clinical research standards. Neurology. 2000;55(1):16-23; with
+the MG-ADL of Wolfe GI, Herbelin L, Statland JM, et al. Neurology. 1999;52:1487-1489.
+Rule: the MGFA clinical classification maps the predominant weakness pattern and
+severity to Class I (ocular only), II (mild generalized), III (moderate), IV
+(severe), or V (intubation), with an "a" (limb or axial predominant) or "b"
+(oropharyngeal or respiratory predominant) subtype on Classes II through IV. The
+MG-ADL is an eight-item scale -- talking, chewing, swallowing, breathing, brushing
+teeth or combing hair, rising from a chair, double vision, and eyelid droop -- each
+scored from normal to most severe, where a higher total means more severe symptoms.
+Worked example: a severe generalized, oropharyngeal-predominant pattern with
+bulbar-weighted MG-ADL items reaches Class IV-b.

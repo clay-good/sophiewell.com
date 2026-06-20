@@ -5,7 +5,7 @@
 <h1 align="center">sophiewell.com</h1>
 
 <p align="center">
-  <strong>526 deterministic healthcare calculators tuned to the nurse on shift.</strong><br>
+  <strong>530 deterministic healthcare calculators tuned to the nurse on shift.</strong><br>
   Free forever. No servers, no accounts, no telemetry, no AI, no network call after first paint.
 </p>
 
@@ -36,7 +36,7 @@ output; "searchable lookup of static facts" does not qualify. See
 [docs/spec-v10.md](docs/spec-v10.md) for the audience and
 dependency-budget commitments and
 [docs/spec-v29.md](docs/spec-v29.md) for the nurse-first pivot
-and the v29 catalog ledger. At v120 close the catalog is 526
+and the v29 catalog ledger. At v121 close the catalog is 530
 deterministic tiles — every one of them computes from at least
 one user input. The catalog reached its present size on two tracks.
 **New tiles:** spec-v63 added the operations counterpart to the bedside
@@ -186,7 +186,7 @@ production security headers. Any static file server will also work.
 ## How it works and how to use it
 
 Since the spec-v29 nurse-first prune the catalog has grown one
-reviewable spec at a time to **526** deterministic calculators
+reviewable spec at a time to **530** deterministic calculators
 (the full per-version history is in [CHANGELOG.md](CHANGELOG.md)
 and `docs/spec-v*.md`; the most recent bedside additions are
 summarized in the cheat sheets below). They organize across the
@@ -1023,7 +1023,7 @@ Duke-ISCVID) and `refeeding-risk` (NICE CG32) are **Class B** with
 [citation-staleness](docs/citation-staleness.md) rows; the other three are
 **Class A**. See [docs/spec-v99.md](docs/spec-v99.md).
 
-### MDCalc parity completion: the cardiology / vascular / lipid surface (spec-v100 program, Wave 1: spec-v101 → spec-v105, +25 → 457, **complete**; Wave 2 complete: spec-v106 → 463, spec-v107 → 467, spec-v108 → 473, spec-v109 → 478, spec-v110 → 483, spec-v111 → 487, **+30 → 487**; Wave 3 complete (Critical care & pulmonary): spec-v112 → 492, spec-v113 → 495, spec-v114 → 501, spec-v115 → 506, **+19 → 506**; Wave 4 underway (Neurology / neurosurgery / psychiatry): spec-v117 → 512, spec-v118 → 517, spec-v119 → 521, spec-v120 → 526, **+20 → 526**)
+### MDCalc parity completion: the cardiology / vascular / lipid surface (spec-v100 program, Wave 1: spec-v101 → spec-v105, +25 → 457, **complete**; Wave 2 complete: spec-v106 → 463, spec-v107 → 467, spec-v108 → 473, spec-v109 → 478, spec-v110 → 483, spec-v111 → 487, **+30 → 487**; Wave 3 complete (Critical care & pulmonary): spec-v112 → 492, spec-v113 → 495, spec-v114 → 501, spec-v115 → 506, **+19 → 506**; Wave 4 underway (Neurology / neurosurgery / psychiatry): spec-v117 → 512, spec-v118 → 517, spec-v119 → 521, spec-v120 → 526, spec-v121 → 530, **+24 → 530**)
 
 With the spec-v85 program complete, [spec-v100](docs/spec-v100.md) charters the
 **MDCalc Parity Completion** program — a roadmap that closes the remaining gaps
@@ -1384,6 +1384,38 @@ decisions stay with the stroke team and local protocol. Five are **Class A**;
 reperfusion guidelines → a documentation-only `docs/citation-staleness.md` row).
 `lib/neuro-v117.js` + `views/group-v117.js`. **This opens Wave 4 of the
 spec-v100 program (506 → 512, +6).**
+
+#### spec-v121 — neuromuscular emergencies: GBS & myasthenia (+4 → 530, Wave 4)
+
+Wave 4 moves from epilepsy/headache/vertigo into the **neuromuscular-emergency**
+instruments a neurology and neurocritical-care service uses to predict respiratory
+failure and grade disease. The catalog had no GBS or myasthenia tools. All four
+home in **Clinical Scoring & Risk (Group G)**:
+
+| id | Rule | Output | Class |
+|---|---|---|---|
+| `egris` | Walgaard 2010 Erasmus GBS Respiratory Insufficiency Score — days onset→admission (0–2) + facial/bulbar weakness (+1) + MRC sum-score band (0–4) | **0–7; mechanical-ventilation risk low (0–2) ~4% / intermediate (3–4) ~24% / high (≥ 5) ~65%** | A |
+| `megos` | Walgaard 2011 modified Erasmus GBS Outcome Score — age (0–2) + preceding diarrhea (+1) + MRC band weighted by timing (admission 0/2/4/6, day 7 0/3/6/9) | **0–9 (admission) / 0–12 (day 7); higher → higher probability of inability to walk at 4 & 26 wk** | A |
+| `brighton-gbs` | Sejvar 2011 Brighton Collaboration case definition — 3 core clinical features + absence of alternative dx + CSF dissociation + consistent NCS | **diagnostic-certainty Level 1 (highest) – 4 (insufficient)** | A |
+| `mgfa` | Jaretzki 2000 MGFA classification + Wolfe 1999 MG-ADL — predominant pattern/severity → Class I–V (a/b subtype) + 8-item ADL each 0–3 | **Class I–V with a/b subtype; MG-ADL 0–24** | A |
+
+All four **re-fetch the published point weights / case definition verbatim** (the
+spec-v97 discipline), cross-verified across the derivation papers and open-access
+reproductions (the PMC "Ten Steps" GBS review Box 3, the Bangladesh & Frontiers
+mEGOS validations, the Fokke 2014 *Brain* Brighton-table reprint, and the official
+MGFA Foundation classification PDF). Two source-governance choices, consistent with
+the project **no-fabrication** doctrine: (1) **EGRIS publishes only the three
+banded category rates** (4% / 24% / 65%) over a continuous logistic curve with no
+per-integer-score table, so the tile quotes the category rates; (2) **mEGOS's
+per-score probability of inability to walk is published only as figure curves**
+whose coefficients are not reported and which diverge by region, so the tile reports
+the total and a relative reading of the published range (the v111
+`snakebite-severity` relative-range pattern), inventing no per-score percentage.
+Each tile **reports the score / level / class, not the order** (spec-v11 §5.3): the
+IVIG / PLEX / intubation / monitoring decision stays with the clinician and local
+protocol. All four are **Class A** (journal+author citations, no `ISSUER_PATTERN`
+trip → no staleness row). `lib/neuro-v121.js` + `views/group-v121.js`. **Catalog
+526 → 530, +4.**
 
 #### spec-v120 — epilepsy, headache & vertigo (+5 → 526, Wave 4)
 
@@ -1931,7 +1963,7 @@ long version, see [docs/architecture.md](docs/architecture.md).
  │  manifests (data/)            │  static │        ▼                     ▼             │
  │        │  scripts/build       │  files  │   lazy-load data shard   pure compute      │
  │        ▼                      │         │   (verified vs manifest)  (lib/*.js)       │
- │  dist/  (526 tool pages,      │         │        │                     │             │
+ │  dist/  (530 tool pages,      │         │        │                     │             │
  │  OG cards, sitemap, SBOM)     │         │        ▼                     ▼             │
  └───────────────────────────────┘         │   service worker cache    result + cite   │
                                             │   (keyed to build hash)                    │
@@ -1953,7 +1985,7 @@ assets:
 
 | Output | Count | Source |
 |--------|------:|--------|
-| Pre-rendered tool pages (`dist/tools/<id>/`) | 526 | `scripts/build-tool-pages.mjs` |
+| Pre-rendered tool pages (`dist/tools/<id>/`) | 530 | `scripts/build-tool-pages.mjs` |
 | Audience hub pages (`dist/for/<audience>/`) | 6 | `scripts/build-hub-pages.mjs` |
 | Topic pages + `/topics/` index | 8 + 1 | `scripts/build-topic-pages.mjs` |
 | `/commitments/` | 1 | `scripts/build-commitments-page.mjs` |
@@ -1988,7 +2020,7 @@ static pages, so a tile can never ship mobile overflow undetected.
 index.html          single-page shell (hero-search combobox + static browse-by-category nav, tile mount)
 styles.css          one stylesheet (responsive; no horizontal scroll — enforced catalog-wide at 320px in CI)
 app.js              router, hero-search wiring, view wiring, the UTILITIES catalog
-                    (526 tiles — the single source of truth; zero runtime deps)
+                    (530 tiles — the single source of truth; zero runtime deps)
 sw.js               service worker — precache shell, cache shards by build hash
 theme.js            light/dark theme toggle (writes only sw-theme, allowlisted)
 lib/input-persist.js opt-in "remember my inputs" (off by default; numbers only)
@@ -2006,12 +2038,12 @@ docs/               specs (spec-v4 onward) + per-tile v11/v12 audit logs +
                     citation-staleness ledger +
                     architecture / threat-model / …
 test/               unit/ (node:test) · integration/ (Playwright) · fixtures/
-dist/               build output (526 tool pages, OG cards, sitemap, SBOM)
+dist/               build output (530 tool pages, OG cards, sitemap, SBOM)
 ```
 
-### Discovery: how a query finds the right tool among 526
+### Discovery: how a query finds the right tool among 530
 
-With 526 tiles, search quality *is* the product — a tool you cannot find does
+With 530 tiles, search quality *is* the product — a tool you cannot find does
 not exist. Discovery is deterministic and offline (no fuzzy-match service, no
 embedding model, no AI). The home `#hero-search` combobox builds its dropdown
 from two complementary rankers, both pure functions of the typed query:
@@ -2084,10 +2116,10 @@ A login-less, AI-free calculator earns trust only if the nurse can see, on the
 tile, exactly which published source produced the number — and tell whether that
 source is current. spec-v54 defined the invariants; spec-v60 built the machinery
 (the gate, the ledger, and the `citationAccessed` convention) and extended it
-across the full 526-tile catalog, pinning the last three unpinned "current
+across the full 530-tile catalog, pinning the last three unpinned "current
 edition" phrases and re-verifying every guideline tile against its latest known
 edition. Three invariants make that auditable, each enforced by the
-`check-citations.mjs` lint gate (in the `npm run lint` chain) over all 526 tiles:
+`check-citations.mjs` lint gate (in the `npm run lint` chain) over all 530 tiles:
 
 | Invariant | Rule | Enforcement |
 |---|---|---|
@@ -2544,7 +2576,7 @@ rules, not soft preferences.
 | `npm run build`          | Copy static files into `dist/` for deployment                     |
 | `npm test`               | Run the full test suite (unit, a11y, grep, data integrity)        |
 | `npm run test:unit`      | Run Node's built-in unit tests (4,562 tests)                      |
-| `npm run test:e2e`       | Build `dist/`, then run Playwright integration tests against real browsers — incl. a full-catalog 320px no-horizontal-scroll sweep over both the SPA routes and the 526 pre-rendered static tool pages, the hub/topic/commitments pages, and the citation-wrap pin |
+| `npm run test:e2e`       | Build `dist/`, then run Playwright integration tests against real browsers — incl. a full-catalog 320px no-horizontal-scroll sweep over both the SPA routes and the 530 pre-rendered static tool pages, the hub/topic/commitments pages, and the citation-wrap pin |
 | `npm run test:a11y`      | Run accessibility checks on every utility view                    |
 | `npm run lint`           | ESLint + the CI gate chain: grep-check, output-safety, citation-integrity, catalog-truth, commitments, PA staleness, PA audit |
 | `npm run data:refresh`   | Re-fetch and re-shard every public dataset                        |
@@ -2628,7 +2660,7 @@ build, integrity-verified data shards) are documented in
 - [docs/spec-v11.md](docs/spec-v11.md) — correctness-floor spec:
   per-tile audit protocol, specialty-named groups, optional
   source-quoted `interpretation` field. Audit coverage is **complete
-  — 526/526 tiles** carry a committed per-tile audit log
+  — 530/530 tiles** carry a committed per-tile audit log
   (`docs/audits/v11/<id>.md` for the pre-v78 catalog;
   `docs/audits/v12/<id>.md` for the tiles added since — the
   spec-v78–v83 billing & coding program, the spec-v85

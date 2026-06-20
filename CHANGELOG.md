@@ -6,6 +6,55 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v121: neuromuscular emergencies — GBS & myasthenia, +4 — spec-v100 Wave 4)
+
+- **Wave 4 (Neurology / neurosurgery / psychiatry)** of the
+  [spec-v100](docs/spec-v100.md) MDCalc Parity Completion program continues. Four
+  deterministic **Guillain-Barre-syndrome and myasthenia-gravis instruments**
+  (catalog **526 → 530**), all in **Clinical Scoring & Risk (Group G)**, via
+  `lib/neuro-v121.js` + `views/group-v121.js` (`RV121`). v117–v120 covered stroke
+  imaging, hemorrhagic grading, prehospital LVO triage, and the epilepsy / headache
+  / vertigo gap; v121 fills the neuromuscular-emergency gap a neurology and
+  neurocritical-care service hits when predicting respiratory failure and grading
+  disease. Each takes the bedside exam, MRC sum-score read, or paraclinical
+  determination as input — v121 parses no nerve-conduction waveform and no CSF assay
+  feed — and renders the spec-v50 §3 clinical-posture note (the tile reports the
+  score / risk band / certainty level / class and the source's framing; the IVIG /
+  PLEX / intubation / monitoring decision stays with the clinician and local
+  protocol). None duplicates a live tile. No new specialty tag. All four
+  **re-fetch the published point weights / case definition verbatim** and
+  cross-verify across the derivation papers and open-access reproductions (the PMC
+  "Ten Steps" GBS review, the Bangladesh / Frontiers mEGOS validations, the Fokke
+  2014 *Brain* Brighton-table reprint, and the official MGFA Foundation PDF)
+  (spec-v97 discipline).
+  - **`egris`** — Erasmus GBS Respiratory Insufficiency Score (Walgaard C, et al,
+    *Ann Neurol* 2010): days from onset to admission (> 7 d 0, 4–7 d 1, ≤ 3 d 2) +
+    facial/bulbar weakness (+1) + MRC sum-score band (60–51 0 … ≤ 20 4), summed
+    0–7. Mechanical-ventilation risk in week 1 is reported as the three published
+    category rates — low (0–2) ~4%, intermediate (3–4) ~24%, high (≥ 5) ~65% — with
+    no per-score table fabricated. Cross-links `megos`, `mrc-sum-score`.
+  - **`megos`** — modified Erasmus GBS Outcome Score (Walgaard C, et al,
+    *Neurology* 2011): age (≤ 40 0, 41–60 1, > 60 2) + preceding diarrhea (+1) + MRC
+    sum-score band weighted by timing (admission 0/2/4/6 → 0–9; day 7 0/3/6/9 →
+    0–12). The per-score probability of inability to walk at 4 and 26 weeks is
+    published only as figure curves, so the tile reports the total and a **relative
+    reading of the published range** (higher score → higher probability), inventing
+    no per-score percentage. Cross-links `egris`, `mrc-sum-score`.
+  - **`brighton-gbs`** — Brighton Collaboration GBS case definition (Sejvar JJ, et
+    al, *Vaccine* 2011; reproduced in Fokke C, et al, *Brain* 2014): three core
+    clinical features + absence of an alternative diagnosis, plus CSF
+    albuminocytologic dissociation and consistent nerve-conduction studies. Level 1
+    needs both paraclinical supports; Level 2 either; Level 3 the core only; Level 4
+    = insufficient evidence. Reports the diagnostic-certainty level and names the
+    features met.
+  - **`mgfa`** — MGFA clinical classification (Jaretzki A, et al, *Neurology* 2000)
+    + MG-ADL (Wolfe GI, et al, *Neurology* 1999): predominant weakness pattern and
+    severity → Class I (ocular) / II–IV (mild/moderate/severe, a or b subtype) / V
+    (intubation); plus the 8-item MG-ADL each clamped 0–3 → total 0–24.
+  - All four are **Class A** (fixed point weights / case definition / classification
+    + ordinal sum; journal+author citations, no `ISSUER_PATTERN` trip) — no
+    `docs/citation-staleness.md` row.
+
 ### Added (spec-v120: epilepsy, headache & vertigo, +5 — spec-v100 Wave 4)
 
 - **Wave 4 (Neurology / neurosurgery / psychiatry)** of the
