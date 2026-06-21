@@ -132,6 +132,7 @@ import * as uroV131 from '../../lib/uro-v131.js';
 import * as hemeV132 from '../../lib/heme-v132.js';
 import * as warfarinV133 from '../../lib/warfarin-v133.js';
 import * as oncV134 from '../../lib/onc-v134.js';
+import * as lymphomaV135 from '../../lib/lymphoma-v135.js';
 import * as emsV149 from '../../lib/ems-v149.js';
 
 const MODULES = {
@@ -209,6 +210,7 @@ const MODULES = {
   'heme-v132.js': hemeV132,
   'warfarin-v133.js': warfarinV133,
   'onc-v134.js': oncV134,
+  'lymphoma-v135.js': lymphomaV135,
   'ems-v149.js': emsV149,
 };
 

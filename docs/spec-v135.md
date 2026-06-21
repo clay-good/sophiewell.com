@@ -1,13 +1,14 @@
 # spec-v135.md — Lymphoma prognostic indices: R-IPI, NCCN-IPI, GELF, Hodgkin IPS, and CLL-IPI (+5 tiles)
 
-> Status: **PROPOSED (2026-06-17).** Feature spec of the [spec-v100](spec-v100.md)
+> Status: **SHIPPED (2026-06-20).** Feature spec of the [spec-v100](spec-v100.md)
 > **MDCalc Parity Completion** program, **Wave 6 — Heme / onc / endocrine / ID.**
 > Adds **5** deterministic lymphoma and CLL prognostic indices that fill confirmed
 > catalog gaps. None duplicates a live tile.
 >
-> Catalog effect at v135 close: **598 + 5 = 603 tiles.** (If specs land out of
-> order, the implementing session uses the then-current `UTILITIES.length` plus
-> this spec's +5, and the catalog-truth gate enforces agreement.)
+> Catalog effect at v135 close: **599 + 5 = 604 tiles.** (Specs landed out of
+> order — v134 closed the live catalog at 599 — so the implementing session used
+> the then-current `UTILITIES.length` (599) plus this spec's +5, and the
+> catalog-truth gate enforces agreement at 604.)
 >
 > Every prior spec (v4 through v134) remains in force. v135 adds no runtime network
 > call and no AI; each tile obeys the [spec-v100](spec-v100.md) §2 doctrine

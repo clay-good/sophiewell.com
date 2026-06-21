@@ -64,6 +64,7 @@ import { renderers as RV131 } from './views/group-v131.js';
 import { renderers as RV132 } from './views/group-v132.js';
 import { renderers as RV133 } from './views/group-v133.js';
 import { renderers as RV134 } from './views/group-v134.js';
+import { renderers as RV135 } from './views/group-v135.js';
 import { renderers as RV149 } from './views/group-v149.js';
 import { renderers as RV63 } from './views/group-v63.js';
 import { renderers as RB } from './views/group-b.js';
@@ -83,7 +84,7 @@ import { resolvePrompt } from './lib/prompt.js';
 // artifact-detect / artifact-route / artifact-handoff helpers were
 // deleted in spec-v29 wave 29-2 (Group C/L).
 
-const RENDERERS = { ...RA, ...RB, ...RC, ...RE, ...RF, ...RG, ...RH, ...RI, ...RJ, ...RKLMNO, ...RV5, ...RV6, ...RV7, ...RV8, ...RV9, ...RV10, ...RV11, ...RV12, ...RV13, ...RV14, ...RV15, ...RV16, ...RV17, ...RV18, ...RV19, ...RV20, ...RV21, ...RV22, ...RV23, ...RV24, ...RV25, ...RV26, ...RV27, ...RV28, ...RV29, ...RV30, ...RV31, ...RV32, ...RV33, ...RV34, ...RV35, ...RV36, ...RV37, ...RV38, ...RV39, ...RV40, ...RV117, ...RV118, ...RV119, ...RV120, ...RV121, ...RV122, ...RV123, ...RV124, ...RV125, ...RV126, ...RV127, ...RV128, ...RV129, ...RV130, ...RV131, ...RV132, ...RV133, ...RV134, ...RV149, ...RV63, ...RPALINT };
+const RENDERERS = { ...RA, ...RB, ...RC, ...RE, ...RF, ...RG, ...RH, ...RI, ...RJ, ...RKLMNO, ...RV5, ...RV6, ...RV7, ...RV8, ...RV9, ...RV10, ...RV11, ...RV12, ...RV13, ...RV14, ...RV15, ...RV16, ...RV17, ...RV18, ...RV19, ...RV20, ...RV21, ...RV22, ...RV23, ...RV24, ...RV25, ...RV26, ...RV27, ...RV28, ...RV29, ...RV30, ...RV31, ...RV32, ...RV33, ...RV34, ...RV35, ...RV36, ...RV37, ...RV38, ...RV39, ...RV40, ...RV117, ...RV118, ...RV119, ...RV120, ...RV121, ...RV122, ...RV123, ...RV124, ...RV125, ...RV126, ...RV127, ...RV128, ...RV129, ...RV130, ...RV131, ...RV132, ...RV133, ...RV134, ...RV135, ...RV149, ...RV63, ...RPALINT };
 
 // ----- Utility registry ----------------------------------------------------
 // Source of truth for routes, names, group, audiences, and clinical flag.
@@ -1040,6 +1041,16 @@ const UTILITIES = [
   { id: 'mgus-risk',              name: 'Mayo MGUS progression-risk stratification',       group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'dipss-mf',               name: 'DIPSS (myelofibrosis survival score)',            group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'dipss-plus-mf',          name: 'DIPSS-Plus (myelofibrosis survival score)',       group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+
+  // spec-v135 (Wave 6 of the spec-v100 program): the lymphoma / CLL prognostic-
+  // index cluster beside flipi and ipss-r-mds. views/group-v135.js,
+  // lib/lymphoma-v135.js (RV135). All Group G, all Class A (journal+author
+  // citations -- no ISSUER_PATTERN trip, no citation-staleness row).
+  { id: 'r-ipi',                  name: 'Revised IPI (R-IPI) for DLBCL',                   group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'nccn-ipi',               name: 'NCCN-IPI for DLBCL',                              group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'gelf-criteria',          name: 'GELF high-tumor-burden criteria (follicular lymphoma)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'hodgkin-ips',            name: 'Hasenclever IPS (advanced Hodgkin lymphoma)',     group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'cll-ipi',                name: 'CLL International Prognostic Index (CLL-IPI)',     group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
 
   // spec-v6 §3.3: lab result interpreter. Patient-decoder category.
   { id: 'lab-interpret',       name: 'Lab Result Interpreter',                           group: 'C', audiences: ['patients', 'clinicians', 'educators'], clinical: true },

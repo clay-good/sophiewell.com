@@ -3022,3 +3022,62 @@ need and an unfavorable karyotype. The zero-to-six total maps to low (zero),
 intermediate-one (one), intermediate-two (two to three) and high (four to six).
 Worked example: a DIPSS intermediate-two group with a platelet count of ninety totals
 three, intermediate-two, median survival about two-point-nine years.
+
+### Revised IPI (R-IPI) for DLBCL
+Citation: Sehn LH, Berry B, Chhanabhai M, et al. The revised International Prognostic Index
+(R-IPI) is a better predictor of outcome than the standard IPI for diffuse large B-cell
+lymphoma treated with R-CHOP. Blood. 2007;109(5):1857-1861.
+Rule: count the five standard IPI factors - age over sixty, LDH above normal, Ann Arbor
+stage three-four, two or more extranodal sites, and ECOG at least two - then collapse the
+zero-to-five count to three groups: very good (zero), good (one to two) and poor (three to
+five).
+Worked example: age over sixty with a high LDH and advanced stage scores three factors,
+the poor group, four-year progression-free survival about fifty-three per cent.
+
+### NCCN-IPI for DLBCL
+Citation: Zhou Z, Sehn LH, Rademaker AW, et al. An enhanced International Prognostic Index
+(NCCN-IPI) for diffuse large B-cell lymphoma treated in the rituximab era. Blood.
+2014;123(6):837-842.
+Rule: a banded IPI - age over forty to sixty adds one, over sixty to seventy-five adds two,
+over seventy-five adds three; the LDH normalized ratio over one to three adds one, over
+three adds two; Ann Arbor stage three-four, ECOG at least two, and major-site extranodal
+disease (marrow, central nervous system, liver or gastrointestinal tract, or lung) each add
+one. The zero-to-eight total maps to low (zero to one), low-intermediate (two to three),
+high-intermediate (four to five) and high (six to eight).
+Worked example: age seventy with an LDH ratio of two-and-a-half and advanced stage totals
+four, high-intermediate, five-year overall survival about sixty-four per cent.
+
+### GELF High-Tumor-Burden Criteria (Follicular Lymphoma)
+Citation: Brice P, Bastion Y, Lepage E, et al. Comparison in low-tumor-burden follicular
+lymphomas between an initial no-treatment policy, prednimustine, or interferon alfa
+(Groupe d'Etude des Lymphomes Folliculaires). J Clin Oncol. 1997;15(3):1110-1117.
+Rule: high tumor burden is met if any one criterion is present - a mass over seven
+centimetres, three or more nodal sites each over three centimetres, systemic (B) symptoms,
+symptomatic splenomegaly, a pleural or peritoneal effusion, a cytopenia (haemoglobin under
+ten or platelets under one hundred), or a leukemic phase (over five circulating malignant
+cells). Met suggests treatment; not met means observation remains an option.
+Worked example: a single nodal mass of eight centimetres meets the criteria, high tumor
+burden, treatment indicated.
+
+### Hasenclever International Prognostic Score (Advanced Hodgkin Lymphoma)
+Citation: Hasenclever D, Diehl V. A prognostic score for advanced Hodgkin's disease.
+N Engl J Med. 1998;339(21):1506-1514.
+Rule: count seven adverse factors, one each - serum albumin under four, haemoglobin under
+ten-point-five, male sex, age at least forty-five, Ann Arbor stage four, white-cell count at
+least fifteen, and lymphocytopenia (lymphocytes under six hundred per microlitre or under
+eight per cent of the white-cell count). Each factor lowers five-year freedom from
+progression by roughly seven to eight per cent.
+Worked example: a man of forty-eight with albumin three-point-five and haemoglobin ten
+scores four factors, five-year freedom from progression about fifty-one per cent.
+
+### CLL International Prognostic Index (CLL-IPI)
+Citation: International CLL-IPI Working Group. An international prognostic index for patients
+with chronic lymphocytic leukaemia (CLL-IPI): a meta-analysis of individual patient data.
+Lancet Oncol. 2016;17(6):779-790.
+Rule: a weighted score - TP53 deletion or mutation adds four; unmutated IGHV adds two;
+beta2-microglobulin over three-point-five adds two; advanced clinical stage (Rai one to
+four or Binet B-C) adds one; age over sixty-five adds one. The zero-to-ten total maps to
+low (zero to one), intermediate (two to three), high (four to six) and very high (seven to
+ten).
+Worked example: a TP53 abnormality with unmutated IGHV and advanced stage totals seven,
+the very-high group, five-year overall survival about twenty-three per cent.

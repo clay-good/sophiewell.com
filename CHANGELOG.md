@@ -6,6 +6,49 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v135: lymphoma / CLL prognostic indices — R-IPI, NCCN-IPI, GELF, Hasenclever IPS, CLL-IPI, +5 — spec-v100 Wave 6)
+
+- **The lymphoma and CLL prognostic-index cluster comes onto the page beside
+  `flipi` and `ipss-r-mds`.** Five deterministic **Clinical Scoring & Risk (Group G)**
+  tiles (catalog **599 → 604**) via `lib/lymphoma-v135.js` + `views/group-v135.js`
+  (`RV135`); each quotes the source's outcome framing and leaves the treat-versus-
+  observe decision with the clinician (spec-v11 §5.3). Every weight and threshold was
+  re-fetched from a primary source and cross-verified, never recalled (the spec-v97
+  discipline). All five are Class A (journal + author citations — no staleness row).
+  - **`r-ipi`** — Revised IPI for DLBCL (Sehn 2007, *Blood*). The five standard IPI
+    factors (age > 60, LDH above normal, Ann Arbor stage III–IV, ≥ 2 extranodal
+    sites, ECOG ≥ 2) collapsed to three R-CHOP-era groups: very good (0), good (1–2),
+    poor (3–5). 4-year PFS ~94/80/53%.
+  - **`nccn-ipi`** — NCCN-IPI for DLBCL (Zhou 2014, *Blood*). **Banded, not a simple
+    count**: age > 40–60/> 60–75/> 75 = 1/2/3; LDH normalized ratio > 1–3×/> 3× = 1/2;
+    stage III–IV, ECOG ≥ 2, and major-site extranodal (marrow, CNS, liver/GI, lung)
+    each +1. Total 0–8 → low/low-int/high-int/high; 5-year OS ~96/82/64/33%. The
+    "NCCN" in the name is not an issuer acronym in the citation string (Zhou et al,
+    *Blood*) → `ISSUER_PATTERN` does not fire.
+  - **`gelf-criteria`** — GELF high-tumor-burden criteria for follicular lymphoma
+    (Brice 1997, *J Clin Oncol*). **Any-one-positive flag**: mass > 7 cm, ≥ 3 nodal
+    sites > 3 cm, B symptoms, symptomatic splenomegaly, pleural/peritoneal effusion,
+    cytopenia (Hgb < 10 or platelets < 100), or leukemic phase (> 5.0). Reports the
+    criteria status (treat vs observe), never a chemotherapy order.
+  - **`hodgkin-ips`** — Hasenclever International Prognostic Score for advanced
+    Hodgkin lymphoma (Hasenclever & Diehl 1998, *NEJM*). Seven adverse factors, one
+    each: albumin < 4 g/dL, Hgb < 10.5 g/dL, male sex, age ≥ 45, stage IV, WBC ≥ 15,
+    lymphocytopenia (< 600/µL **or** < 8% of WBC). 5-year freedom from progression
+    ~84% (0) → ~42% (≥ 5).
+  - **`cll-ipi`** — CLL International Prognostic Index (International CLL-IPI Working
+    Group 2016, *Lancet Oncol*). Weighted: TP53 del(17p)/mutation 4; IGHV unmutated 2;
+    β2-microglobulin > 3.5 mg/L 2; advanced stage (Rai I–IV / Binet B–C) 1; age > 65 1.
+    Total 0–10 → low (0–1)/intermediate (2–3)/high (4–6)/very high (7–10); 5-year OS
+    ~93/79/63/23%. The high → very-high flip falls at 6 → 7 (boundary test).
+- **Verification.** Five new unit-test files (≥ 3 boundary worked examples each,
+  including the R-IPI very-good/good/poor flips, the NCCN-IPI band edges and
+  risk-group flips, the GELF any-one met-vs-not flip, the Hodgkin IPS thresholds, and
+  the CLL-IPI 6-vs-7 high/very-high boundary); `lib/lymphoma-v135.js` joins the
+  spec-v59 fuzz harness `MODULES` (zero non-finite leaks); each `META` example is
+  pinned by the chromium `example-correctness` sweep; catalog count moves on all 13
+  catalog-truth surfaces; a11y, `mobile-no-hscroll`, and 44px touch-target checks pass
+  for `views/group-v135.js`.
+
 ### Added (spec-v134: plasma-cell & myeloid-neoplasm staging — ISS, R-ISS, R2-ISS, Mayo MGUS, DIPSS, DIPSS-Plus, +6 — spec-v100 Wave 6)
 
 - **The plasma-cell and myelofibrosis staging cluster comes onto the page beside
