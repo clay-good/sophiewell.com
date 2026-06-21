@@ -6,6 +6,46 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v136: endocrine / metabolic indices — HOMA-IR, QUICKI, TyG index, metabolic syndrome, OST/ORAI DXA pre-screen, +5 — spec-v100 Wave 6)
+
+- **The endocrine / metabolic index cluster comes onto the page beside `eag-a1c`.**
+  Five deterministic tiles (catalog **604 → 609**) via `lib/endo-v136.js` +
+  `views/group-v136.js` (`RV136`): the three insulin-resistance surrogates in
+  **Clinical Math & Conversions (Group E)**, and the metabolic-syndrome rule and the
+  bone pre-screen in **Clinical Scoring & Risk (Group G)**. Each reports the index or
+  verdict and the source's framing and leaves the diagnosis / management decision with
+  the clinician (spec-v11 §5.3). Every formula and threshold was re-fetched from a
+  primary source and cross-verified across ≥2 independent sources, never recalled (the
+  spec-v97 discipline). Only `metabolic-syndrome` is Class B (a revisable consensus
+  definition → a documentation-only `docs/citation-staleness.md` row); the other four
+  are Class A (fixed formulas, journal + author citations).
+  - **`homa-ir`** — HOMA-IR (Matthews 1985, *Diabetologia*). Insulin-resistance
+    surrogate = (fasting insulin µU/mL × fasting glucose) ÷ 405 (mg/dL) or ÷ 22.5
+    (mmol/L). Higher = greater insulin resistance; no universal diagnostic cut-point.
+    Also reports the linear **HOMA-%B** β-cell estimate = (20 × insulin) ÷ (glucose
+    mmol/L − 3.5) when glucose > 3.5 mmol/L. The proprietary nonlinear HOMA2 model is
+    excluded (spec-v100 §8).
+  - **`quicki`** — QUICKI (Katz 2000, *JCEM*). Insulin-sensitivity index = 1 ÷
+    [log₁₀(fasting insulin) + log₁₀(fasting glucose mg/dL)]. Lower = lower sensitivity
+    (~0.45 healthy → ~0.30–0.35 in T2DM). The denominator is zero exactly when
+    insulin × glucose = 1 → guarded with a surfaced fallback.
+  - **`tyg-index`** — Triglyceride-Glucose index (Simental-Mendía 2008, *Metab Syndr
+    Relat Disord*). The fasting-insulin-free surrogate = ln[(fasting TG × fasting
+    glucose) ÷ 2], both mg/dL. Higher = more resistance.
+  - **`metabolic-syndrome`** — Metabolic syndrome (Alberti 2009 Harmonized,
+    *Circulation*; IDF 2006). Five criteria — waist (sex/population cut-point: US/ATP
+    III M 102/F 88 cm, IDF Europid M 94/F 80, Asian M 90/F 80), TG ≥ 150, HDL < 40
+    (M)/< 50 (F), BP ≥ 130/85, glucose ≥ 100, each with an "or on treatment" override.
+    **Harmonized = any 3 of 5** (waist not mandatory); **IDF = central obesity + any 2
+    of the other 4.** Class B.
+  - **`osteoporosis-prescreen`** — OST / ORAI DXA pre-screen (Koh 2001 OST/OSTA,
+    *Osteoporos Int*; Cadarette 2000 ORAI, *CMAJ*). OST index = trunc((weight kg − age
+    yr) × 0.2), **truncated toward zero** (the −3.6 → −3 worked example disambiguates
+    `Math.trunc` from `Math.floor`); index < 2 flags increased risk (Caucasian cutoff).
+    ORAI = age (45–54/55–64/65–74/≥75 = 0/5/9/15) + weight (≥70/60–69/<60 = 0/3/9) +
+    no-estrogen (+2); score ≥ 9 selects for DXA. The licensed FRAX is excluded
+    (spec-v100 §8); this is the free substitute.
+
 ### Added (spec-v135: lymphoma / CLL prognostic indices — R-IPI, NCCN-IPI, GELF, Hasenclever IPS, CLL-IPI, +5 — spec-v100 Wave 6)
 
 - **The lymphoma and CLL prognostic-index cluster comes onto the page beside

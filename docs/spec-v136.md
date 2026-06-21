@@ -1,13 +1,23 @@
 # spec-v136.md — Endocrine & metabolic indices: HOMA-IR, QUICKI, TyG index, metabolic syndrome, and OST/ORAI DXA pre-screen (+5 tiles)
 
-> Status: **PROPOSED (2026-06-17).** Feature spec of the [spec-v100](spec-v100.md)
+> Status: **SHIPPED (2026-06-21).** Feature spec of the [spec-v100](spec-v100.md)
 > **MDCalc Parity Completion** program, **Wave 6 — Heme / onc / endocrine / ID.**
 > Adds **5** deterministic insulin-resistance, metabolic-syndrome, and bone-screening
 > indices that fill confirmed catalog gaps. None duplicates a live tile.
 >
-> Catalog effect at v136 close: **603 + 5 = 608 tiles.** (If specs land out of
-> order, the implementing session uses the then-current `UTILITIES.length` plus
-> this spec's +5, and the catalog-truth gate enforces agreement.)
+> Catalog effect at v136 close: **604 + 5 = 609 tiles.** (Specs landed out of
+> order — v135 closed the live catalog at 604 — so the implementing session used the
+> then-current `UTILITIES.length` (604) plus this spec's +5, and the catalog-truth
+> gate enforces agreement at 609.)
+>
+> **Source-governance verified on ship:** the OST index truncates **toward zero**
+> (`Math.trunc`, not `Math.floor` — the −3.6 → −3 published worked example
+> disambiguates); the ORAI point table and the metabolic-syndrome waist cut-points
+> were cross-verified across ≥ 2 independent sources. The ISSUER_PATTERN carries
+> `IDSA`, **not** `IDF`, so `metabolic-syndrome` does **not** trip
+> `check-citations.mjs`; its Class-B `docs/citation-staleness.md` row is
+> documentation-only (the v134 `myeloma-r-iss` precedent), added per the §4
+> maintenance-class designation rather than to satisfy a gate.
 >
 > Every prior spec (v4 through v135) remains in force. v136 adds no runtime network
 > call and no AI; each tile obeys the [spec-v100](spec-v100.md) §2 doctrine

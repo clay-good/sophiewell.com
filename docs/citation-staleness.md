@@ -456,3 +456,20 @@ gate-forced.
 |---|---|---|---|---|---|
 | modified-marshall | Modified Marshall organ-dysfunction score (respiratory / renal / cardiovascular, each 0-4; organ failure at >= 2) used in the Revised Atlanta acute-pancreatitis severity classification | 2012 Revised Atlanta (Banks PA, et al, Gut 2013;62(1):102-111) | same | 2026-06-20 | current -- the 2012 Revised Atlanta classification is the in-force definition of organ failure in acute pancreatitis; Class B, review on-publication of the next Atlanta-classification revision. The per-organ thresholds (PaO2/FiO2, creatinine, SBP/fluid/pH) are stable; the citation names the working group and journal but does not match the issuer acronym set, so the row is documentation only, not gate-forced |
 | myeloma-r-iss | Revised International Staging System (R-ISS) for multiple myeloma — ISS stage + serum LDH + high-risk iFISH (del(17p), t(4;14), t(14;16)) → stage I-III | 2015 R-ISS (Palumbo A, et al; International Myeloma Working Group, J Clin Oncol 2015;33(26):2863-2869) | same | 2026-06-20 | current — the 2015 R-ISS is the in-force IMWG staging definition; Class B, review on-publication of the next IMWG staging revision (e.g. wider R2-ISS adoption). The citation names the working group and journal but does not match the issuer acronym set, so the row is documentation only, not gate-forced |
+
+## spec-v136 endocrine & metabolic indices (added 2026-06-21)
+
+The three insulin-resistance surrogates (homa-ir, quicki, tyg-index) and the
+osteoporosis DXA pre-screen (osteoporosis-prescreen) are Class A fixed published
+formulas / point tables, documentation only via their own audit logs (their
+citations name journals + authors, not an issuer acronym). The one Class B tile is
+`metabolic-syndrome`: the Harmonized 2009 / IDF 2006 definitions are revisable
+international-consensus statements, so it records the editions in force, the accessed
+date, and an on-publication review cadence for the check-citation-cadence warn-job.
+The citation names *Circulation* + authors and the IDF; "IDF" is not in the
+check-citations issuer acronym set (which carries IDSA, not IDF), so the row is
+documentation only, not gate-forced.
+
+| tile id | instrument | edition shipped | latest known edition | accessed | justification if behind |
+|---|---|---|---|---|---|
+| metabolic-syndrome | Metabolic syndrome diagnostic criteria — elevated waist (population/sex cut-point), TG >= 150, HDL < 40 (M)/< 50 (F), BP >= 130/85, glucose >= 100 (each or-on-treatment); Harmonized = any 3 of 5, IDF = central obesity + any 2 | 2009 Harmonized joint interim statement (Alberti KGMM, et al, Circulation 2009;120(16):1640-1645) + IDF 2006 | same | 2026-06-21 | current — the 2009 Harmonized statement reconciling ATP III / IDF / AHA-NHLBI is the in-force consensus definition; Class B, review on-publication of the next harmonizing statement or IDF revision. The five thresholds and the any-3-of-5 / central-obesity-required rules are stable; the citation names the journal + authors and the IDF, which is not in the issuer acronym set, so the row is documentation only, not gate-forced |

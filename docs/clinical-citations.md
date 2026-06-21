@@ -3081,3 +3081,66 @@ low (zero to one), intermediate (two to three), high (four to six) and very high
 ten).
 Worked example: a TP53 abnormality with unmutated IGHV and advanced stage totals seven,
 the very-high group, five-year overall survival about twenty-three per cent.
+
+### HOMA-IR (Homeostatic Model Assessment of Insulin Resistance)
+Citation: Matthews DR, Hosker JP, Rudenski AS, et al. Homeostasis model assessment: insulin
+resistance and beta-cell function from fasting plasma glucose and insulin concentrations in
+man. Diabetologia. 1985;28(7):412-419.
+Rule: HOMA-IR equals fasting insulin in micro-units per millilitre times fasting glucose,
+divided by four hundred and five when glucose is in milligrams per decilitre (or by
+twenty-two-and-a-half when glucose is in millimoles per litre). Higher values indicate
+greater insulin resistance; there is no single universal diagnostic cut-point. The linear
+HOMA-beta-cell estimate equals twenty times insulin divided by glucose in millimoles per
+litre minus three-and-a-half.
+Worked example: insulin twelve and glucose one hundred give a HOMA-IR of about three.
+
+### QUICKI (Quantitative Insulin Sensitivity Check Index)
+Citation: Katz A, Nambi SS, Mather K, et al. Quantitative insulin sensitivity check index: a
+simple, accurate method for assessing insulin sensitivity in humans. J Clin Endocrinol
+Metab. 2000;85(7):2402-2410.
+Rule: QUICKI equals one divided by the sum of the base-ten logarithm of fasting insulin and
+the base-ten logarithm of fasting glucose in milligrams per decilitre. Lower values indicate
+lower insulin sensitivity, running from about zero-point-four-five in healthy adults to about
+zero-point-three in type-two diabetes; there is no universal diagnostic cut-point.
+Worked example: insulin twelve and glucose one hundred give a QUICKI of about
+zero-point-three-two.
+
+### TyG (Triglyceride-Glucose) Index
+Citation: Simental-Mendia LE, Rodriguez-Moran M, Guerrero-Romero F. The product of fasting
+glucose and triglycerides as surrogate for identifying insulin resistance in apparently
+healthy subjects. Metab Syndr Relat Disord. 2008;6(4):299-304.
+Rule: the TyG index equals the natural logarithm of fasting triglycerides times fasting
+glucose, both in milligrams per decilitre, divided by two. Higher values indicate greater
+insulin resistance; the fasting-insulin-free surrogate has no universal diagnostic cut-point.
+Worked example: triglycerides one hundred and fifty with glucose one hundred give a TyG index
+of about eight-point-nine.
+
+### Metabolic Syndrome (Harmonized / IDF)
+Citation: Alberti KGMM, Eckel RH, Grundy SM, et al. Harmonizing the metabolic syndrome: a
+joint interim statement. Circulation. 2009;120(16):1640-1645; with the International Diabetes
+Federation 2006 definition.
+Rule: five criteria - elevated waist circumference at a population- and sex-specific
+cut-point; triglycerides at least one hundred and fifty milligrams per decilitre or on
+treatment; HDL under forty in men or under fifty in women or on treatment; blood pressure at
+least one hundred and thirty over eighty-five or on treatment; and fasting glucose at least
+one hundred or on treatment. The Harmonized definition diagnoses metabolic syndrome when any
+three of the five are met; the IDF definition requires central obesity plus any two of the
+other four.
+Worked example: a man with a waist over one hundred and two centimetres, triglycerides one
+hundred and sixty, and glucose one hundred and five meets three criteria, metabolic syndrome
+present under the Harmonized definition.
+
+### OST / ORAI Osteoporosis DXA Pre-Screen
+Citation: Koh LKH, Sedrine WB, Torralba TP, et al. A simple tool to identify Asian women at
+increased risk of osteoporosis (OST). Osteoporos Int. 2001;12(8):699-705; and Cadarette SM,
+Jaglal SB, Kreiger N, et al. Development and validation of the Osteoporosis Risk Assessment
+Instrument (ORAI). CMAJ. 2000;162(9):1289-1294.
+Rule: the OST index equals weight in kilograms minus age in years, times zero-point-two,
+truncated toward zero; an index below two flags increased risk in Caucasian populations. The
+ORAI sums age (forty-five to fifty-four scores zero, fifty-five to sixty-four scores five,
+sixty-five to seventy-four scores nine, seventy-five or more scores fifteen), weight (seventy
+or more scores zero, sixty to sixty-nine scores three, under sixty scores nine), and current
+estrogen use (no scores two, yes scores zero); a score of nine or more selects for bone
+densitometry.
+Worked example: a woman of sixty weighing seventy-two kilograms not on estrogen has an OST
+index of two (lower risk) and an ORAI of seven (below the referral threshold).
