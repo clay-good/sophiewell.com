@@ -5,7 +5,7 @@
 <h1 align="center">sophiewell.com</h1>
 
 <p align="center">
-  <strong>609 deterministic healthcare calculators tuned to the nurse on shift.</strong><br>
+  <strong>614 deterministic healthcare calculators tuned to the nurse on shift.</strong><br>
   Free forever. No servers, no accounts, no telemetry, no AI, no network call after first paint.
 </p>
 
@@ -36,7 +36,7 @@ output; "searchable lookup of static facts" does not qualify. See
 [docs/spec-v10.md](docs/spec-v10.md) for the audience and
 dependency-budget commitments and
 [docs/spec-v29.md](docs/spec-v29.md) for the nurse-first pivot
-and the v29 catalog ledger. At v136 close the catalog is 609
+and the v29 catalog ledger. At v137 close the catalog is 614
 deterministic tiles — every one of them computes from at least
 one user input. The catalog reached its present size on two tracks.
 **New tiles:** spec-v63 added the operations counterpart to the bedside
@@ -186,7 +186,7 @@ production security headers. Any static file server will also work.
 ## How it works and how to use it
 
 Since the spec-v29 nurse-first prune the catalog has grown one
-reviewable spec at a time to **609** deterministic calculators
+reviewable spec at a time to **614** deterministic calculators
 (the full per-version history is in [CHANGELOG.md](CHANGELOG.md)
 and `docs/spec-v*.md`; the most recent bedside additions are
 summarized in the cheat sheets below). They organize across the
@@ -1023,7 +1023,7 @@ Duke-ISCVID) and `refeeding-risk` (NICE CG32) are **Class B** with
 [citation-staleness](docs/citation-staleness.md) rows; the other three are
 **Class A**. See [docs/spec-v99.md](docs/spec-v99.md).
 
-### MDCalc parity completion: the cardiology / vascular / lipid surface (spec-v100 program, Wave 1: spec-v101 → spec-v105, +25 → 457, **complete**; Wave 2 complete: spec-v106 → 463, spec-v107 → 467, spec-v108 → 473, spec-v109 → 478, spec-v110 → 483, spec-v111 → 487, **+30 → 487**; Wave 3 complete (Critical care & pulmonary): spec-v112 → 492, spec-v113 → 495, spec-v114 → 501, spec-v115 → 506, **+19 → 506**; Wave 4 underway (Neurology / neurosurgery / psychiatry): spec-v117 → 512, spec-v118 → 517, spec-v119 → 521, spec-v120 → 526, spec-v121 → 530, spec-v122 → 533, spec-v123 → 538 (**Wave 4 complete**), **+32 → 538**; Wave 5 complete (GI / hepatology / nephrology / acid-base / urology): spec-v124 → 544, spec-v125 → 549, spec-v126 → 555, spec-v127 → 559, spec-v128 → 564, spec-v129 → 570, spec-v130 → 576, spec-v131 → 584 (closes the wave at +5; ROKS deferred), **+43 → 581 from the wave; live catalog 584 incl. the standalone spec-v149 EMS parity, +3**; Wave 6 underway (Heme / onc / endocrine / ID): spec-v132 → 589 (thrombotic microangiopathy & coagulopathy, +5), spec-v133 → 593 (warfarin start-up — IWPC + Gage PGx dose, Kovacs 10 mg + Crowther 5 mg nomograms, +4, all four shipped after an adversarial re-fetch confirmed the Gage and Kovacs tables), spec-v134 → 599 (plasma-cell & myeloid-neoplasm staging — ISS, R-ISS, R2-ISS, Mayo MGUS, DIPSS, DIPSS-Plus, +6), spec-v135 → 604 (lymphoma / CLL prognostic indices — R-IPI, NCCN-IPI, GELF, Hasenclever IPS, CLL-IPI, +5), spec-v136 → 609 (endocrine / metabolic indices — HOMA-IR, QUICKI, TyG index, metabolic syndrome, OST/ORAI DXA pre-screen, +5), **+25 → 609**)
+### MDCalc parity completion: the cardiology / vascular / lipid surface (spec-v100 program, Wave 1: spec-v101 → spec-v105, +25 → 457, **complete**; Wave 2 complete: spec-v106 → 463, spec-v107 → 467, spec-v108 → 473, spec-v109 → 478, spec-v110 → 483, spec-v111 → 487, **+30 → 487**; Wave 3 complete (Critical care & pulmonary): spec-v112 → 492, spec-v113 → 495, spec-v114 → 501, spec-v115 → 506, **+19 → 506**; Wave 4 underway (Neurology / neurosurgery / psychiatry): spec-v117 → 512, spec-v118 → 517, spec-v119 → 521, spec-v120 → 526, spec-v121 → 530, spec-v122 → 533, spec-v123 → 538 (**Wave 4 complete**), **+32 → 538**; Wave 5 complete (GI / hepatology / nephrology / acid-base / urology): spec-v124 → 544, spec-v125 → 549, spec-v126 → 555, spec-v127 → 559, spec-v128 → 564, spec-v129 → 570, spec-v130 → 576, spec-v131 → 584 (closes the wave at +5; ROKS deferred), **+43 → 581 from the wave; live catalog 584 incl. the standalone spec-v149 EMS parity, +3**; Wave 6 underway (Heme / onc / endocrine / ID): spec-v132 → 589 (thrombotic microangiopathy & coagulopathy, +5), spec-v133 → 593 (warfarin start-up — IWPC + Gage PGx dose, Kovacs 10 mg + Crowther 5 mg nomograms, +4, all four shipped after an adversarial re-fetch confirmed the Gage and Kovacs tables), spec-v134 → 599 (plasma-cell & myeloid-neoplasm staging — ISS, R-ISS, R2-ISS, Mayo MGUS, DIPSS, DIPSS-Plus, +6), spec-v135 → 604 (lymphoma / CLL prognostic indices — R-IPI, NCCN-IPI, GELF, Hasenclever IPS, CLL-IPI, +5), spec-v136 → 609 (endocrine / metabolic indices — HOMA-IR, QUICKI, TyG index, metabolic syndrome, OST/ORAI DXA pre-screen, +5), spec-v137 → 614 (infectious-disease scores — ISARIC 4C mortality, COVID-GRAM, Candida score, VACS index, RegiSCAR DRESS, +5, **Wave 6 complete**), **+30 → 614**)
 
 With the spec-v85 program complete, [spec-v100](docs/spec-v100.md) charters the
 **MDCalc Parity Completion** program — a roadmap that closes the remaining gaps
@@ -1430,6 +1430,42 @@ primary clinical sources:
 `peds-vitals` is **Class B** (the "AHA" citation trips `ISSUER_PATTERN`, so it
 carries a `docs/citation-staleness.md` row); the other two are Class A.
 `lib/ems-v149.js` + `views/group-v149.js`. **Catalog 576 → 579, +3.**
+
+#### spec-v137 — infectious-disease scores: ISARIC 4C, COVID-GRAM, Candida score, VACS index, RegiSCAR DRESS (+5 → 614, **Wave 6 close**)
+
+v137 closes **Wave 6** by bringing the infectious-disease risk-score cluster onto
+the page beside the community-acquired-pneumonia severity tools (`curb-65`, `psi`,
+`smart-cop`). All five land in **Clinical Scoring & Risk (Group G)** and report the
+score / probability and the source's framing without authoring an admit / start-
+antifungal / diagnose directive in Sophie's voice (spec-v11 §5.3):
+
+| id | Source | Output |
+|---|---|---|
+| `isaric-4c-mortality` | Knight 2020 (*BMJ* m3339) | **Additive 0–21** (age, sex, comorbidity count, RR, SpO₂, GCS, urea, CRP) → low 0–3 (1.2%) / intermediate 4–8 (9.9%) / high 9–14 (31.4%) / very high ≥15 (61.5%) in-hospital mortality |
+| `covid-gram` | Liang 2020 (*JAMA Intern Med*) | **Logistic probability** of critical illness — `p = 1/(1+e^-x)` over 10 predictors; **betas = ln(published odds ratios), intercept = ln(0.001)** → reported as approximate, with **no invented risk tiers** (the authors define none) |
+| `candida-score` | León 2006 (*Crit Care Med*) | **0–5** (TPN 1, surgery 1, multifocal colonization 1, severe sepsis 2); **≥ 3** → invasive candidiasis likely (< 3 ≈ 2.3% in validation) |
+| `vacs-index` | Tate / Justice 2013 (*AIDS*) | **0–164** (age, CD4, HIV-1 RNA, hemoglobin, **FIB-4**, eGFR, HCV); reports the two published mortality anchors (0 ≈ 1.8%, 164 ≈ >85.8%) over a continuous curve — **no fabricated per-band lookup** |
+| `regiscar-dress` | Kardaun 2013 (*Br J Dermatol*) | **−4 to +9** DRESS certainty (eosinophilia count/% are alternatives, max +2; rash-suggestive and biopsy can score −1) → <2 no case / 2–3 possible / 4–5 probable / >5 definite |
+
+**Every point table, coefficient block, and threshold was re-fetched from a primary
+source and cross-verified across ≥2 independent sources, never recalled** (the
+spec-v97 discipline). Four source-governance decisions follow the source over the
+spec draft where they diverged: (1) **`covid-gram` invents no risk tiers** — the
+paper deliberately defines none — and **discloses that its betas are ln of the
+published odds ratios** and its intercept derives from the paper's 1-significant-
+figure constant (OR 0.001), so the absolute probability is framed as approximate;
+the logistic exponent is clamped to `[−40, 40]` so an extreme fuzzed predictor
+returns a probability in `[0, 1]`, never `Infinity`. (2) **`vacs-index` quotes only
+the two published mortality anchors** over a continuous calibration curve — no
+intermediate per-band percentage is fabricated (the gwtg-hf / ROKS precedent) — and
+its **FIB-4 sub-computation guards the platelet and √ALT denominators** with `pos()`.
+(3) **`isaric-4c-mortality` applies the corrected Table 2** (urea `< 7` mmol/L, CRP
+in mg/L) and exposes a **urea/BUN unit selector** (BUN mg/dL = urea mmol/L × 2.8).
+(4) **`candida-score`** renders the original `> 2.5` cut-off as the integer **≥ 3**
+threshold. All five are **Class A** (journal + author citations — no `ISSUER_PATTERN`
+trip, no citation-staleness row) and flow through the spec-v59 fuzz harness with zero
+non-finite leaks. `lib/id-v137.js` + `views/group-v137.js` (`RV137`). **Catalog 609
+→ 614, +5; Wave 6 complete (584 → 614, +30).**
 
 #### spec-v136 — endocrine / metabolic indices: HOMA-IR, QUICKI, TyG index, metabolic syndrome, OST/ORAI DXA pre-screen (+5 → 609, Wave 6)
 
@@ -2484,7 +2520,7 @@ long version, see [docs/architecture.md](docs/architecture.md).
  │  manifests (data/)            │  static │        ▼                     ▼             │
  │        │  scripts/build       │  files  │   lazy-load data shard   pure compute      │
  │        ▼                      │         │   (verified vs manifest)  (lib/*.js)       │
- │  dist/  (609 tool pages,      │         │        │                     │             │
+ │  dist/  (614 tool pages,      │         │        │                     │             │
  │  OG cards, sitemap, SBOM)     │         │        ▼                     ▼             │
  └───────────────────────────────┘         │   service worker cache    result + cite   │
                                             │   (keyed to build hash)                    │
@@ -2506,7 +2542,7 @@ assets:
 
 | Output | Count | Source |
 |--------|------:|--------|
-| Pre-rendered tool pages (`dist/tools/<id>/`) | 609 | `scripts/build-tool-pages.mjs` |
+| Pre-rendered tool pages (`dist/tools/<id>/`) | 614 | `scripts/build-tool-pages.mjs` |
 | Audience hub pages (`dist/for/<audience>/`) | 6 | `scripts/build-hub-pages.mjs` |
 | Topic pages + `/topics/` index | 8 + 1 | `scripts/build-topic-pages.mjs` |
 | `/commitments/` | 1 | `scripts/build-commitments-page.mjs` |
@@ -2541,7 +2577,7 @@ static pages, so a tile can never ship mobile overflow undetected.
 index.html          single-page shell (hero-search combobox + static browse-by-category nav, tile mount)
 styles.css          one stylesheet (responsive; no horizontal scroll — enforced catalog-wide at 320px in CI)
 app.js              router, hero-search wiring, view wiring, the UTILITIES catalog
-                    (609 tiles — the single source of truth; zero runtime deps)
+                    (614 tiles — the single source of truth; zero runtime deps)
 sw.js               service worker — precache shell, cache shards by build hash
 theme.js            light/dark theme toggle (writes only sw-theme, allowlisted)
 lib/input-persist.js opt-in "remember my inputs" (off by default; numbers only)
@@ -2559,12 +2595,12 @@ docs/               specs (spec-v4 onward) + per-tile v11/v12 audit logs +
                     citation-staleness ledger +
                     architecture / threat-model / …
 test/               unit/ (node:test) · integration/ (Playwright) · fixtures/
-dist/               build output (609 tool pages, OG cards, sitemap, SBOM)
+dist/               build output (614 tool pages, OG cards, sitemap, SBOM)
 ```
 
-### Discovery: how a query finds the right tool among 609
+### Discovery: how a query finds the right tool among 614
 
-With 609 tiles, search quality *is* the product — a tool you cannot find does
+With 614 tiles, search quality *is* the product — a tool you cannot find does
 not exist. Discovery is deterministic and offline (no fuzzy-match service, no
 embedding model, no AI). The home `#hero-search` combobox builds its dropdown
 from two complementary rankers, both pure functions of the typed query:
@@ -2637,10 +2673,10 @@ A login-less, AI-free calculator earns trust only if the nurse can see, on the
 tile, exactly which published source produced the number — and tell whether that
 source is current. spec-v54 defined the invariants; spec-v60 built the machinery
 (the gate, the ledger, and the `citationAccessed` convention) and extended it
-across the full 609-tile catalog, pinning the last three unpinned "current
+across the full 614-tile catalog, pinning the last three unpinned "current
 edition" phrases and re-verifying every guideline tile against its latest known
 edition. Three invariants make that auditable, each enforced by the
-`check-citations.mjs` lint gate (in the `npm run lint` chain) over all 609 tiles:
+`check-citations.mjs` lint gate (in the `npm run lint` chain) over all 614 tiles:
 
 | Invariant | Rule | Enforcement |
 |---|---|---|
@@ -3097,7 +3133,7 @@ rules, not soft preferences.
 | `npm run build`          | Copy static files into `dist/` for deployment                     |
 | `npm test`               | Run the full test suite (unit, a11y, grep, data integrity)        |
 | `npm run test:unit`      | Run Node's built-in unit tests (4,849 tests)                      |
-| `npm run test:e2e`       | Build `dist/`, then run Playwright integration tests against real browsers — incl. a full-catalog 320px no-horizontal-scroll sweep over both the SPA routes and the 609 pre-rendered static tool pages, the hub/topic/commitments pages, and the citation-wrap pin |
+| `npm run test:e2e`       | Build `dist/`, then run Playwright integration tests against real browsers — incl. a full-catalog 320px no-horizontal-scroll sweep over both the SPA routes and the 614 pre-rendered static tool pages, the hub/topic/commitments pages, and the citation-wrap pin |
 | `npm run test:a11y`      | Run accessibility checks on every utility view                    |
 | `npm run lint`           | ESLint + the CI gate chain: grep-check, output-safety, citation-integrity, catalog-truth, commitments, PA staleness, PA audit |
 | `npm run data:refresh`   | Re-fetch and re-shard every public dataset                        |
@@ -3181,7 +3217,7 @@ build, integrity-verified data shards) are documented in
 - [docs/spec-v11.md](docs/spec-v11.md) — correctness-floor spec:
   per-tile audit protocol, specialty-named groups, optional
   source-quoted `interpretation` field. Audit coverage is **complete
-  — 609/609 tiles** carry a committed per-tile audit log
+  — 614/614 tiles** carry a committed per-tile audit log
   (`docs/audits/v11/<id>.md` for the pre-v78 catalog;
   `docs/audits/v12/<id>.md` for the tiles added since — the
   spec-v78–v83 billing & coding program, the spec-v85

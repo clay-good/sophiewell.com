@@ -6,6 +6,47 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v137: infectious-disease scores — ISARIC 4C, COVID-GRAM, Candida score, VACS index, RegiSCAR DRESS, +5 — spec-v100 Wave 6 **complete**)
+
+- **The infectious-disease risk-score cluster comes onto the page beside the
+  community-acquired-pneumonia tools (`curb-65`, `psi`, `smart-cop`), closing
+  Wave 6 of the spec-v100 program (584 → 614, +30).** Five deterministic tiles
+  (catalog **609 → 614**), all in **Clinical Scoring & Risk (Group G)**, via
+  `lib/id-v137.js` + `views/group-v137.js` (`RV137`). Each reports the score /
+  probability and the source's framing and leaves the admit / start-antifungal /
+  diagnose decision with the clinician (spec-v11 §5.3). Every point table,
+  coefficient block, and threshold was re-fetched from a primary source and
+  cross-verified across ≥2 independent sources, never recalled (the spec-v97
+  discipline). All five are Class A (journal + author citations — no
+  `ISSUER_PATTERN` trip, no citation-staleness row).
+  - **`isaric-4c-mortality`** — ISARIC 4C Mortality Score (Knight 2020, *BMJ*
+    m3339). Additive **0–21** across age, sex, comorbidity count, respiratory rate,
+    SpO₂ on room air, GCS, urea, and CRP → low 0–3 (1.2%), intermediate 4–8 (9.9%),
+    high 9–14 (31.4%), very high ≥15 (61.5%) in-hospital mortality (derivation
+    cohort). Applies the published Table-2 correction (urea `< 7` mmol/L, CRP in
+    mg/L) and exposes a urea/BUN unit selector (BUN mg/dL = urea mmol/L × 2.8).
+  - **`covid-gram`** — COVID-GRAM Critical Illness Risk Score (Liang 2020, *JAMA
+    Intern Med*). A logistic model `p = 1/(1+e^-x)` over 10 predictors. The paper
+    publishes **odds ratios, not betas**, so each beta is derived as `ln(OR)` and
+    the intercept as `ln(0.001)`; the tile **discloses that the absolute probability
+    is approximate** and the authors deliberately defined **no risk tiers** (none is
+    invented — source over the spec draft). The logistic exponent is clamped to
+    `[−40, 40]` so an extreme fuzzed predictor returns a probability in `[0, 1]`.
+  - **`candida-score`** — Candida Score (León 2006, *Crit Care Med*). Integer
+    **0–5** (TPN 1, surgery on ICU admission 1, multifocal colonization 1, severe
+    sepsis 2); a score **≥ 3** (original `> 2.5` cut-off) flags likely invasive
+    candidiasis (< 3 ≈ 2.3% probability of proven IC in the 2009 validation).
+  - **`vacs-index`** — VACS Index 1.0 (Tate / Justice 2013, *AIDS*). Additive
+    **0–164** across age, CD4, HIV-1 RNA, hemoglobin, FIB-4 (computed from age, AST,
+    ALT, platelets — the platelet and √ALT denominators guarded), eGFR, and HCV.
+    Reports only the two published mortality anchors (score 0 ≈ 1.8%, score 164 ≈
+    >85.8%) over a continuous curve — **no per-band lookup is fabricated** (the
+    gwtg-hf / ROKS precedent).
+  - **`regiscar-dress`** — RegiSCAR Score for DRESS (Kardaun 2013, *Br J Dermatol*).
+    Weighted **−4 to +9** diagnostic certainty; eosinophilia count/percentage paths
+    are alternatives (max +2), and the rash-suggestive and biopsy items can score −1.
+    Bands: < 2 no case, 2–3 possible, 4–5 probable, > 5 definite DRESS.
+
 ### Added (spec-v136: endocrine / metabolic indices — HOMA-IR, QUICKI, TyG index, metabolic syndrome, OST/ORAI DXA pre-screen, +5 — spec-v100 Wave 6)
 
 - **The endocrine / metabolic index cluster comes onto the page beside `eag-a1c`.**

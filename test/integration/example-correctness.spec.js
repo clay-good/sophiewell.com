@@ -19,12 +19,14 @@ test.skip(({ browserName }) => browserName !== 'chromium', 'numeric sweep is chr
 test('every example payload produces the documented numeric output', async ({ page }) => {
   // This is a serial, full-catalog numeric sweep (one navigation + reset-click
   // per tile). Its wall-clock grows linearly with the catalog and contends for
-  // CPU with the other browser projects under `npm run test:e2e`. At the
-  // current catalog size a clean run is ~5 min in isolation, so the budget is
-  // generous headroom above
-  // that to absorb CI worker contention without a timeout flake; a real numeric
-  // mismatch still fails fast (per-tile), never via this timeout.
-  test.setTimeout(600_000);
+  // CPU with the other browser projects under `npm run test:e2e`. At 614 tiles
+  // a clean run is ~8 min, and it slows further under CI-worker / local CPU
+  // contention, so the budget is set well above that to absorb the contention
+  // without a timeout flake as the catalog grows; a real numeric mismatch still
+  // fails fast (per-tile), never via this timeout. (Bumped 600s -> 900s at the
+  // spec-v137 close: 600s was within ~2 min of a clean run and tipping over
+  // locally.)
+  test.setTimeout(900_000);
 
   // Pull META.example payloads out of the live module so the test stays in
   // sync with whatever lib/meta.js currently declares -- no duplication.

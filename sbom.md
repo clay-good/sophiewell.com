@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `26925e8fc5acd3d9`
-Generated: 2026-06-21T12:34:26.835Z
+Build ID: `840cddd3e9363828`
+Generated: 2026-06-21T13:20:24.910Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=20.18.1 <21, npm >=10.0.0
@@ -24,13 +24,13 @@ downloads is committed in this repository and is hashed below.
 
 | Path | Bytes | SHA-256 |
 |---|---:|---|
-| `index.html` | 50734 | `9403af201961464abc736aa4e15d4e03ee32f1214e60db4104a4366f085cc60a` |
+| `index.html` | 50985 | `7e93703ecb785641ae72a4cc05a67d321787c2745e0294f21c302eba084ddd6b` |
 | `styles.css` | 42819 | `bea421c79d390a364eb571c3a9599cdf28264128d4ac02d7abb00f31000c7cda` |
-| `app.js` | 170443 | `f33d680bf50cc2eb14a6312e8a1fb05d31269222729531eeb59fc2913bdc7e9b` |
+| `app.js` | 172034 | `edba7b1b1c5da56499329c9fa8a3cdd25a9783e7c428725e51dbb30d855cf347` |
 | `sw.js` | 4622 | `b891d4344f8e04403b7f1d307fd446cc224bddc6f0c4397438a17d197351171e` |
 | `site.webmanifest` | 709 | `0e0de4da60590a12e8b27a0ae2a2f5ffdb6500b7d2b78f93631ec2f64ed3d5ce` |
 | `robots.txt` | 127 | `38fbf9c1854e72abb20e01e81dd5a31d4ea96f154c12d5db1ec3af05524dd1a1` |
-| `sitemap.xml` | 94116 | `03cc5b456ed35b9291ffdbe3190802bff6a9fde2900820ef5362c199a0ec0005` |
+| `sitemap.xml` | 94882 | `f3e70dd6a0a189275a90f2ee4be8569e48f2eb1d13db58a4d1c1f65899c6a429` |
 | `_headers` | 1316 | `2f39986457d2feff7e73e491a7d09ee871e8f2f4cc2bc437f86bd86a42554ec6` |
 | `logo.png` | 63440 | `11afaf1b0d3ca68393d202e4810bf766b5b6d591b4e3ec52f41d3cacaa4616ec` |
 | `favicon.ico` | 7411 | `407fde0ca2788409e87e11f596fa02e6a0b121817fcea7fd995beec1801e287b` |
@@ -84,6 +84,7 @@ downloads is committed in this repository and is hashed below.
 | `lib/hep-v124.js` | 12530 | `9ab4bc19416297163fc8917ebd848a65105f65004f680219067e9c838c8ae9b9` |
 | `lib/hep-v125.js` | 11783 | `6b9383681fba0eb6b3576be4537ee3e10308b92b4f5e8729d461fa987e7a7391` |
 | `lib/hepgi-v93.js` | 16557 | `da0b9334402347bc6df213ea918b786cdbdc0111529197212bd12ad77626c591` |
+| `lib/id-v137.js` | 21838 | `0cd0ceb5e54d477d240cbfdc819b217ce26539bf22ae5b0b4da4ec04ae12dd17` |
 | `lib/idcrit-v99.js` | 18008 | `283d5956e3cd398cd58dec7c57de5eff5000a0b63d6277ead2caeb9c8d5ac345` |
 | `lib/input-persist.js` | 4716 | `aa35b830df15bd1410a5f80c3829b6092122f0118d72d3f581c64d5678e94427` |
 | `lib/keyboard.js` | 4876 | `631f85b7b49a68ca7aa8e3c3d31cfbfbefb44360a5aace83305ed27d5e0d8ee0` |
@@ -93,7 +94,7 @@ downloads is committed in this repository and is hashed below.
 | `lib/lymphoma-v135.js` | 16162 | `e29896a6de224445f46839cd06518817bd25d1235a91ede76f77ccb4996a934f` |
 | `lib/medication-v4.js` | 18192 | `467f9576c50da696cc56094eb022d0a5ed1e88de0c7618448554ede8067270b0` |
 | `lib/medication-v5.js` | 18863 | `ce81d9f8954abbd412892c13af9936f992239164f26fd2b999eaea7902787ab7` |
-| `lib/meta.js` | 964900 | `9f1e75360503cf8f10fa15c828e7ed1b28d86721804fc459dd9957e36e711e38` |
+| `lib/meta.js` | 972000 | `5148f17a05b30254e2658ca682a25215f5a51dfdf8046d4032da72bed1e3d843` |
 | `lib/metabolic-onc-v88.js` | 12659 | `1553b641668c121661a66647da71a4aaaa023e9f3a6b7a753efbcdab27cdba81` |
 | `lib/nephro-v127.js` | 10884 | `c86865e98fced63ac9510fbebe0de77a88e305366c080a83c9beb8542371932a` |
 | `lib/nephro-v92.js` | 15980 | `64bbc05482eed2ab88816f676ab5e56aefae9d4f5d85d223217a03160d1cc082` |
@@ -188,6 +189,7 @@ downloads is committed in this repository and is hashed below.
 | `views/group-v134.js` | 11616 | `2c7bac75555c42a8844809b36e42f7126960a3b380c984d7a0e29a4936f45537` |
 | `views/group-v135.js` | 11699 | `f6963e2fb7847cce8822474a873530d8b93e2b6d904230e0c8ab97ef3d329fe3` |
 | `views/group-v136.js` | 10944 | `acb24fef721a643833ea92a76ed5eb1b276600902bed2eefdd41bd85e70dc262` |
+| `views/group-v137.js` | 13706 | `60b5442195e7839a453bce4ce963bcd96295e26ccde1d065e21fce1e3fa8b657` |
 | `views/group-v14.js` | 9817 | `0bda19d811249004152993e204f4139a070c21368eb8dbffff7cad9ca139a70b` |
 | `views/group-v149.js` | 6243 | `1c2ecbbd4a0509a321f03eee88171ecb5e477bf29e253f127a4ffdcaae469117` |
 | `views/group-v15.js` | 9388 | `01c28613e794ec8bed2941659514ad8b75c18c1cb1256d2907644873fcbc53e4` |

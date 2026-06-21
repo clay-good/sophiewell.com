@@ -1,14 +1,30 @@
 # spec-v137.md — Infectious-disease scores: ISARIC 4C mortality, COVID-GRAM, Candida score, VACS index, and RegiSCAR DRESS (+5 tiles)
 
-> Status: **PROPOSED (2026-06-17).** Feature spec of the [spec-v100](spec-v100.md)
+> Status: **SHIPPED (2026-06-21).** Feature spec of the [spec-v100](spec-v100.md)
 > **MDCalc Parity Completion** program, **Wave 6 — Heme / onc / endocrine / ID** —
 > the **closing spec of Wave 6.** Adds **5** deterministic infectious-disease risk
 > scores that fill confirmed catalog gaps. None duplicates a live tile.
 >
-> Catalog effect at v137 close: **608 + 5 = 613 tiles** — the Wave 6 end state
-> (583 → 613, +30). (If specs land out of order, the implementing session uses the
-> then-current `UTILITIES.length` plus this spec's +5, and the catalog-truth gate
-> enforces agreement.)
+> Catalog effect at v137 close: **609 + 5 = 614 tiles** — the Wave 6 end state
+> (584 → 614, +30). (Specs landed out of order — v136 closed the live catalog at
+> 609 — so the implementing session used the then-current `UTILITIES.length` (609)
+> plus this spec's +5, and the catalog-truth gate enforces agreement at 614.)
+>
+> **Source-governance corrections shipped (no-fabrication doctrine, source over the
+> §2 draft):** (1) **`covid-gram` reports no risk tiers.** The Liang 2020 authors
+> *deliberately* defined no low/medium/high cut-points, so none is invented (the
+> §2.2 draft's "mapped to the low/medium/high risk tiers" is dropped). The paper
+> publishes **odds ratios, not betas**, and the constant is reported to one
+> significant figure (OR 0.001), so the shipped `covidGram` derives each beta as
+> `ln(OR)` and the intercept as `ln(0.001) = −6.9078`, and the tile **discloses
+> that the absolute probability is approximate.** The §3 exponent clamp is applied.
+> (2) **`vacs-index` quotes only the two published mortality anchors** (score 0
+> ≈ 1.8%, score 164 ≈ >85.8%) over a continuous calibration curve — there is **no
+> published per-band lookup**, so none is fabricated (the gwtg-hf / ROKS precedent).
+> (3) **`isaric-4c-mortality` applies the published Table-2 correction** (urea
+> `< 7` mmol/L, not `≤ 7`; CRP in mg/L, not mg/dL) and exposes a **urea/BUN unit
+> selector** (BUN mg/dL = urea mmol/L × 2.8). The derivation-cohort mortality
+> figures (1.2 / 9.9 / 31.4 / 61.5%) are used, **not** the validation-cohort set.
 >
 > Every prior spec (v4 through v136) remains in force. v137 adds no runtime network
 > call and no AI; each tile obeys the [spec-v100](spec-v100.md) §2 doctrine

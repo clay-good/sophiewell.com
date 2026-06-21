@@ -3144,3 +3144,74 @@ estrogen use (no scores two, yes scores zero); a score of nine or more selects f
 densitometry.
 Worked example: a woman of sixty weighing seventy-two kilograms not on estrogen has an OST
 index of two (lower risk) and an ORAI of seven (below the referral threshold).
+
+### ISARIC 4C Mortality Score (COVID-19)
+Citation: Knight SR, Ho A, Pius R, et al. Risk stratification of patients admitted to hospital
+with covid-19 using the ISARIC WHO Clinical Characterisation Protocol: development and
+validation of the 4C Mortality Score. BMJ. 2020;370:m3339.
+Rule: an additive score from zero to twenty-one summing age band, male sex, number of
+comorbidities, respiratory-rate band, peripheral oxygen saturation under ninety-two per cent
+on room air, Glasgow Coma Scale under fifteen, urea band, and C-reactive-protein band. The
+corrected source table uses urea under seven millimoles per litre and C-reactive protein in
+milligrams per litre. The derivation-cohort in-hospital mortality runs low zero to three
+(about one per cent), intermediate four to eight (about ten per cent), high nine to fourteen
+(about thirty-one per cent), and very high fifteen or more (about sixty-two per cent).
+Worked example: a sixty-two-year-old man with two comorbidities, respiratory rate twenty-two,
+and otherwise normal values scores eight, the upper edge of the intermediate group.
+
+### COVID-GRAM Critical Illness Risk Score
+Citation: Liang W, Liang H, Ou L, et al. Development and validation of a clinical risk score
+to predict the occurrence of critical illness in hospitalized patients with COVID-19. JAMA
+Intern Med. 2020;180(8):1081-1089.
+Rule: a logistic model giving the probability of critical illness as one over one plus e to
+the minus x, where x sums the products of each predictor and its coefficient over chest-
+imaging abnormality, age, hemoptysis, dyspnea, unconsciousness, number of comorbidities,
+cancer history, neutrophil-to-lymphocyte ratio, lactate dehydrogenase, and direct bilirubin.
+The paper publishes odds ratios rather than coefficients, so each coefficient is the natural
+logarithm of the published odds ratio and the intercept is the logarithm of the constant odds
+ratio of zero-point-zero-zero-one; the absolute probability is therefore approximate. The
+authors deliberately defined no low, medium, or high cut-points.
+Worked example: a fifty-year-old with no abnormal findings, a neutrophil-to-lymphocyte ratio
+of three, lactate dehydrogenase three hundred, and direct bilirubin five gives a probability
+of about two per cent.
+
+### Candida Score (León)
+Citation: León C, Ruiz-Santana S, Saavedra P, et al. A bedside scoring system ("Candida
+score") for early antifungal treatment in nonneutropenic critically ill patients with Candida
+colonization. Crit Care Med. 2006;34(3):730-737.
+Rule: total parenteral nutrition scores one, surgery on intensive-care admission scores one,
+multifocal Candida colonization scores one, and severe sepsis scores two, for a total of zero
+to five. A score of three or more (the original cut-off above two-and-a-half) identifies
+patients in whom invasive candidiasis is likely and empiric antifungal therapy should be
+considered; the 2009 validation found that a score under three carried only about a two-per-
+cent probability of proven invasive candidiasis.
+Worked example: parenteral nutrition, surgery, and multifocal colonization without severe
+sepsis score three, at the treat-consideration threshold.
+
+### VACS Index 1.0 (HIV mortality)
+Citation: Tate JP, Justice AC, Hughes MD, et al. An internationally generalizable risk index
+for mortality after one year of antiretroviral therapy. AIDS. 2013;27(4):563-572.
+Rule: an additive index from zero to one hundred and sixty-four summing component points for
+age, CD4 count, HIV-1 RNA, hemoglobin, FIB-4 (computed as age times AST divided by platelets
+times the square root of ALT), estimated glomerular filtration rate, and hepatitis-C co-
+infection. Higher totals indicate greater five-year all-cause mortality along a continuous
+calibration curve; the published anchors are a score of zero (about two per cent) and a score
+of one hundred and sixty-four (about eighty-six per cent), with no per-band lookup table.
+Worked example: a fifty-five-year-old with CD4 two hundred and fifty, viral load one thousand,
+hemoglobin eleven, FIB-4 about two-point-seven, eGFR seventy, and no hepatitis C scores
+fifty-three.
+
+### RegiSCAR Score for DRESS
+Citation: Kardaun SH, Sekula P, Valeyrie-Allanore L, et al. Drug reaction with eosinophilia
+and systemic symptoms (DRESS): an original multisystem adverse drug reaction. Results from the
+prospective RegiSCAR study. Br J Dermatol. 2013;169(5):1071-1080.
+Rule: a weighted score from minus four to plus nine summing fever at least thirty-eight-and-a-
+half degrees, enlarged lymph nodes at two or more sites, eosinophilia (the absolute count or,
+when leukopenic, the percentage - alternatives, maximum two points), atypical lymphocytes,
+skin rash over half the body surface, rash suggestive of DRESS (yes plus one, unknown zero, no
+minus one), skin biopsy (compatible or unknown zero, against minus one), internal-organ
+involvement (one organ plus one, two or more plus two), resolution beyond fifteen days, and
+evaluation of other causes. The total maps to under two no case, two to three possible, four
+to five probable, and over five definite DRESS.
+Worked example: fever, lymph nodes, eosinophilia of one point, atypical lymphocytes, and one
+organ involved score five, a probable DRESS case.

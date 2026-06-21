@@ -66,6 +66,7 @@ import { renderers as RV133 } from './views/group-v133.js';
 import { renderers as RV134 } from './views/group-v134.js';
 import { renderers as RV135 } from './views/group-v135.js';
 import { renderers as RV136 } from './views/group-v136.js';
+import { renderers as RV137 } from './views/group-v137.js';
 import { renderers as RV149 } from './views/group-v149.js';
 import { renderers as RV63 } from './views/group-v63.js';
 import { renderers as RB } from './views/group-b.js';
@@ -85,7 +86,7 @@ import { resolvePrompt } from './lib/prompt.js';
 // artifact-detect / artifact-route / artifact-handoff helpers were
 // deleted in spec-v29 wave 29-2 (Group C/L).
 
-const RENDERERS = { ...RA, ...RB, ...RC, ...RE, ...RF, ...RG, ...RH, ...RI, ...RJ, ...RKLMNO, ...RV5, ...RV6, ...RV7, ...RV8, ...RV9, ...RV10, ...RV11, ...RV12, ...RV13, ...RV14, ...RV15, ...RV16, ...RV17, ...RV18, ...RV19, ...RV20, ...RV21, ...RV22, ...RV23, ...RV24, ...RV25, ...RV26, ...RV27, ...RV28, ...RV29, ...RV30, ...RV31, ...RV32, ...RV33, ...RV34, ...RV35, ...RV36, ...RV37, ...RV38, ...RV39, ...RV40, ...RV117, ...RV118, ...RV119, ...RV120, ...RV121, ...RV122, ...RV123, ...RV124, ...RV125, ...RV126, ...RV127, ...RV128, ...RV129, ...RV130, ...RV131, ...RV132, ...RV133, ...RV134, ...RV135, ...RV136, ...RV149, ...RV63, ...RPALINT };
+const RENDERERS = { ...RA, ...RB, ...RC, ...RE, ...RF, ...RG, ...RH, ...RI, ...RJ, ...RKLMNO, ...RV5, ...RV6, ...RV7, ...RV8, ...RV9, ...RV10, ...RV11, ...RV12, ...RV13, ...RV14, ...RV15, ...RV16, ...RV17, ...RV18, ...RV19, ...RV20, ...RV21, ...RV22, ...RV23, ...RV24, ...RV25, ...RV26, ...RV27, ...RV28, ...RV29, ...RV30, ...RV31, ...RV32, ...RV33, ...RV34, ...RV35, ...RV36, ...RV37, ...RV38, ...RV39, ...RV40, ...RV117, ...RV118, ...RV119, ...RV120, ...RV121, ...RV122, ...RV123, ...RV124, ...RV125, ...RV126, ...RV127, ...RV128, ...RV129, ...RV130, ...RV131, ...RV132, ...RV133, ...RV134, ...RV135, ...RV136, ...RV137, ...RV149, ...RV63, ...RPALINT };
 
 // ----- Utility registry ----------------------------------------------------
 // Source of truth for routes, names, group, audiences, and clinical flag.
@@ -1064,6 +1065,21 @@ const UTILITIES = [
   { id: 'tyg-index',              name: 'Triglyceride-Glucose (TyG) index',                group: 'E', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'metabolic-syndrome',     name: 'Metabolic Syndrome (Harmonized / IDF)',           group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'osteoporosis-prescreen', name: 'OST / ORAI Osteoporosis DXA Pre-Screen',          group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+
+  // spec-v137 (Wave 6 of the spec-v100 program, CLOSING spec): the infectious-
+  // disease risk-score cluster beside the CAP severity tools (curb-65, psi,
+  // smart-cop). views/group-v137.js, lib/id-v137.js (RV137). All Group G, all
+  // Class A (journal+author citations -- no ISSUER_PATTERN trip, no citation-
+  // staleness row). SOURCE-GOVERNANCE: covid-gram reports the published logistic
+  // probability with NO invented risk tiers (the authors define none) and a
+  // calibration caveat (betas = ln of the published odds ratios; intercept from
+  // the paper's 1-sig-fig constant); vacs-index quotes only the two published
+  // mortality anchors over a continuous curve (no fabricated per-band lookup).
+  { id: 'isaric-4c-mortality',    name: 'ISARIC 4C Mortality Score (COVID-19)',            group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'covid-gram',             name: 'COVID-GRAM Critical Illness Risk Score',          group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'candida-score',          name: 'Candida Score (León, invasive candidiasis)',      group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'vacs-index',             name: 'VACS Index 1.0 (HIV mortality)',                  group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'regiscar-dress',         name: 'RegiSCAR Score for DRESS',                        group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
 
   // spec-v6 §3.3: lab result interpreter. Patient-decoder category.
   { id: 'lab-interpret',       name: 'Lab Result Interpreter',                           group: 'C', audiences: ['patients', 'clinicians', 'educators'], clinical: true },
