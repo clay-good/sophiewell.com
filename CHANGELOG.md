@@ -6,6 +6,61 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v138: obstetrics & maternal-fetal medicine — Hadlock EFW, fullPIERS, miniPIERS, AFI, Barnhart hCG rise, IOM weight gain, +6 — spec-v100 Wave 7 **opens**)
+
+- **The obstetrics / maternal-fetal-medicine cluster comes onto the page beside
+  the dating and induction tiles (`due-date`, `preg-dating`, `bishop`, `bpp`),
+  opening Wave 7 of the spec-v100 program (614 → 620, +6).** Six deterministic
+  tiles (catalog **614 → 620**) via `lib/ob-v138.js` + `views/group-v138.js`
+  (`RV138`). `hadlock-efw`, `afi`, `barnhart-hcg`, and `iom-gwg` read in
+  **Clinical Math & Conversions (Group E)**; `fullpiers` and `minipiers` in
+  **Clinical Scoring & Risk (Group G)**. Each reports the estimate / probability /
+  range and the source's framing and leaves the image / deliver / transfer /
+  counsel decision with the clinician (spec-v11 §5.3). Every coefficient block and
+  threshold was re-fetched from a primary source and cross-verified across ≥2
+  independent sources, never recalled (the spec-v97 discipline).
+  - **`hadlock-efw`** — Hadlock four-parameter estimated fetal weight (Hadlock
+    1985, *Am J Obstet Gynecol*). `log10(EFW g) = 1.3596 − 0.00386·AC·FL +
+    0.0064·HC + 0.00061·BPD·AC + 0.0424·AC + 0.174·FL`, biometry in cm; the
+    `BPD·AC` term is the fingerprint distinguishing the four-parameter model from
+    the three-parameter `HC²` form. Worked: BPD 9 / HC 33 / AC 30 / FL 7 →
+    log₁₀ 3.4149 → **2600 g**. Class A. The log₁₀ is range-checked before `10^x`
+    so the gram value is always finite.
+  - **`fullpiers`** — fullPIERS adverse-maternal-outcome probability in
+    pre-eclampsia (von Dadelszen 2011, *Lancet*). Logistic model over gestational
+    age, chest pain/dyspnea, SpO₂, platelets, creatinine (µmol/L), and AST.
+    **SpO₂ has no main effect — it enters only via the platelet×SpO₂ interaction**;
+    creatinine has no quadratic term (a common mis-recall assigns the −0.0271
+    coefficient to SpO₂ — it is creatinine's). Bands `< 10%` low / `10–30%`
+    intermediate / `≥ 30%` high-risk rule-in (LR⁺ ≈ 17.5). Class A. Logistic
+    exponent clamped to `[−40, 40]`.
+  - **`minipiers`** — bedside-only pre-eclampsia risk, no labs (Payne 2014, *PLoS
+    Med*). Logistic model where **gestational age and systolic BP enter as natural
+    logs** and **dipstick proteinuria is three categorical indicators** (2+ carries
+    the published **negative** weight −0.218, 3+ +0.424, 4+ +0.512). High-risk
+    rule-in at `≥ 25%` (LR⁺ ≈ 5), increased surveillance over 15%. Class A.
+  - **`afi`** — Amniotic Fluid Index (Moore & Cayle 1990). Sum of the four-quadrant
+    deepest vertical pockets (cm); **oligohydramnios < 5 cm, polyhydramnios > 24 cm**
+    (some references use > 25, noted), 5–8 cm low-normal. **Class B** (ACOG
+    thresholds revisable → gate-forced `docs/citation-staleness.md` row).
+  - **`barnhart-hcg`** — minimal serial-hCG rise for a potentially viable IUP
+    (Barnhart 2004, *Obstet Gynecol*). Observed rise `(repeat − initial)/initial`
+    vs the **53%/48 h** minimum (the 99% lower bound; a conservative 35% from the
+    2012 re-analysis is noted), scaled log-linearly as `1.53^(hours/48)`. A
+    sub-minimal rise is flagged abnormal but not by itself diagnostic. Class A;
+    the initial value is guarded against divide-by-zero.
+  - **`iom-gwg`** — IOM gestational weight gain (IOM 2009 / ACOG CO 548). Maps
+    pre-pregnancy BMI (`703·lb/in²`) to the recommended total gain and weekly rate:
+    underweight 28–40, normal 25–35, overweight 15–25, obese 11–20 lb (singleton),
+    with provisional twin ranges and **no recommendation for an underweight twin
+    pregnancy** (reported, not invented). **Class B** (gate-forced staleness row).
+  - **Gates:** `lib/ob-v138.js` added to the `fuzz-tools` harness (zero non-finite
+    leaks across the two PIERS logistics and the Hadlock log₁₀); six new unit
+    files with boundary worked examples; six `META` examples pinned by the chromium
+    `example-correctness` sweep; six spec-v11 audit logs under `docs/audits/v12/`;
+    catalog count moved across all 13 catalog-truth surfaces; a11y, mobile
+    no-hscroll, and 44px touch-target checks pass for `views/group-v138.js`.
+
 ### Added (spec-v137: infectious-disease scores — ISARIC 4C, COVID-GRAM, Candida score, VACS index, RegiSCAR DRESS, +5 — spec-v100 Wave 6 **complete**)
 
 - **The infectious-disease risk-score cluster comes onto the page beside the

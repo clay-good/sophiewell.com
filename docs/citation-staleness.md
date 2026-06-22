@@ -473,3 +473,21 @@ documentation only, not gate-forced.
 | tile id | instrument | edition shipped | latest known edition | accessed | justification if behind |
 |---|---|---|---|---|---|
 | metabolic-syndrome | Metabolic syndrome diagnostic criteria — elevated waist (population/sex cut-point), TG >= 150, HDL < 40 (M)/< 50 (F), BP >= 130/85, glucose >= 100 (each or-on-treatment); Harmonized = any 3 of 5, IDF = central obesity + any 2 | 2009 Harmonized joint interim statement (Alberti KGMM, et al, Circulation 2009;120(16):1640-1645) + IDF 2006 | same | 2026-06-21 | current — the 2009 Harmonized statement reconciling ATP III / IDF / AHA-NHLBI is the in-force consensus definition; Class B, review on-publication of the next harmonizing statement or IDF revision. The five thresholds and the any-3-of-5 / central-obesity-required rules are stable; the citation names the journal + authors and the IDF, which is not in the issuer acronym set, so the row is documentation only, not gate-forced |
+
+## spec-v138 obstetrics & maternal-fetal medicine (added 2026-06-22)
+
+Four of the six Wave-7-opener tiles are Class A fixed published models /
+coefficients, documentation only via their own audit logs (their citations name
+journals + authors, not an issuer acronym): `hadlock-efw` (Hadlock 1985 four-
+parameter regression), `fullpiers` (von Dadelszen 2011 logistic model),
+`minipiers` (Payne 2014 logistic model), and `barnhart-hcg` (Barnhart 2004
+minimal-rise threshold). The two Class B tiles are `afi` and `iom-gwg`: their
+clinical thresholds / ranges are ACOG-aligned and revisable, so each records the
+edition in force, the accessed date, and an on-publication review cadence for the
+check-citation-cadence warn-job. Both citations name ACOG, which is in the
+check-citations issuer acronym set, so these rows are gate-forced.
+
+| tile id | instrument | edition shipped | latest known edition | accessed | justification if behind |
+|---|---|---|---|---|---|
+| afi | Amniotic Fluid Index oligo/poly thresholds — oligohydramnios < 5 cm, polyhydramnios > 24 cm over the four-quadrant deepest-vertical-pocket sum | Moore & Cayle 1990 method (Am J Obstet Gynecol 162(5):1168-1173) + current ACOG oligo/poly cut-points | same | 2026-06-22 | current — the < 5 cm oligohydramnios and > 24 cm polyhydramnios cut-points are the in-force ACOG-aligned thresholds (some references use > 25 cm for polyhydramnios, noted in the tile); Class B, review on-publication of the next ACOG antenatal-surveillance update. The four-quadrant summation method is fixed |
+| iom-gwg | IOM gestational weight-gain ranges by pre-pregnancy BMI category (singleton + provisional twin) and 2nd/3rd-trimester weekly rates | IOM 2009 "Weight Gain During Pregnancy: Reexamining the Guidelines" (carried in ACOG Committee Opinion 548) | same | 2026-06-22 | current — the 2009 IOM ranges (underweight 28-40, normal 25-35, overweight 15-25, obese 11-20 lb singleton) remain the in-force recommendation carried by ACOG CO 548; Class B, review on-publication of the next IOM/ACOG revision |

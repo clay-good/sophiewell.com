@@ -67,6 +67,7 @@ import { renderers as RV134 } from './views/group-v134.js';
 import { renderers as RV135 } from './views/group-v135.js';
 import { renderers as RV136 } from './views/group-v136.js';
 import { renderers as RV137 } from './views/group-v137.js';
+import { renderers as RV138 } from './views/group-v138.js';
 import { renderers as RV149 } from './views/group-v149.js';
 import { renderers as RV63 } from './views/group-v63.js';
 import { renderers as RB } from './views/group-b.js';
@@ -86,7 +87,7 @@ import { resolvePrompt } from './lib/prompt.js';
 // artifact-detect / artifact-route / artifact-handoff helpers were
 // deleted in spec-v29 wave 29-2 (Group C/L).
 
-const RENDERERS = { ...RA, ...RB, ...RC, ...RE, ...RF, ...RG, ...RH, ...RI, ...RJ, ...RKLMNO, ...RV5, ...RV6, ...RV7, ...RV8, ...RV9, ...RV10, ...RV11, ...RV12, ...RV13, ...RV14, ...RV15, ...RV16, ...RV17, ...RV18, ...RV19, ...RV20, ...RV21, ...RV22, ...RV23, ...RV24, ...RV25, ...RV26, ...RV27, ...RV28, ...RV29, ...RV30, ...RV31, ...RV32, ...RV33, ...RV34, ...RV35, ...RV36, ...RV37, ...RV38, ...RV39, ...RV40, ...RV117, ...RV118, ...RV119, ...RV120, ...RV121, ...RV122, ...RV123, ...RV124, ...RV125, ...RV126, ...RV127, ...RV128, ...RV129, ...RV130, ...RV131, ...RV132, ...RV133, ...RV134, ...RV135, ...RV136, ...RV137, ...RV149, ...RV63, ...RPALINT };
+const RENDERERS = { ...RA, ...RB, ...RC, ...RE, ...RF, ...RG, ...RH, ...RI, ...RJ, ...RKLMNO, ...RV5, ...RV6, ...RV7, ...RV8, ...RV9, ...RV10, ...RV11, ...RV12, ...RV13, ...RV14, ...RV15, ...RV16, ...RV17, ...RV18, ...RV19, ...RV20, ...RV21, ...RV22, ...RV23, ...RV24, ...RV25, ...RV26, ...RV27, ...RV28, ...RV29, ...RV30, ...RV31, ...RV32, ...RV33, ...RV34, ...RV35, ...RV36, ...RV37, ...RV38, ...RV39, ...RV40, ...RV117, ...RV118, ...RV119, ...RV120, ...RV121, ...RV122, ...RV123, ...RV124, ...RV125, ...RV126, ...RV127, ...RV128, ...RV129, ...RV130, ...RV131, ...RV132, ...RV133, ...RV134, ...RV135, ...RV136, ...RV137, ...RV138, ...RV149, ...RV63, ...RPALINT };
 
 // ----- Utility registry ----------------------------------------------------
 // Source of truth for routes, names, group, audiences, and clinical flag.
@@ -1080,6 +1081,24 @@ const UTILITIES = [
   { id: 'candida-score',          name: 'Candida Score (León, invasive candidiasis)',      group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'vacs-index',             name: 'VACS Index 1.0 (HIV mortality)',                  group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'regiscar-dress',         name: 'RegiSCAR Score for DRESS',                        group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+
+  // spec-v138 (Wave 7 OPENER of the spec-v100 program): the obstetrics /
+  // maternal-fetal-medicine cluster beside the dating / induction tiles
+  // (due-date, preg-dating, bishop, bpp). views/group-v138.js, lib/ob-v138.js
+  // (RV138). hadlock-efw, afi, barnhart-hcg, iom-gwg sit in Clinical Math &
+  // Conversions (Group E); fullpiers and minipiers in Clinical Scoring & Risk
+  // (Group G). afi and iom-gwg are Class B (ACOG oligo/poly thresholds and the
+  // IOM/ACOG-CO-548 gain ranges are revisable -> citation-staleness rows); the
+  // other four are Class A. COEFFICIENTS RE-FETCHED, never recalled (spec-v97):
+  // the Hadlock four-parameter log10 model, the fullPIERS / miniPIERS logistic
+  // coefficients (SpO2 enters fullPIERS only via the platelet interaction; GA and
+  // SBP enter miniPIERS as natural logs), and the Barnhart 53%/48h minimal rise.
+  { id: 'hadlock-efw',            name: 'Hadlock Estimated Fetal Weight (BPD/HC/AC/FL)',    group: 'E', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'fullpiers',              name: 'fullPIERS (pre-eclampsia adverse-outcome risk)',   group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'minipiers',              name: 'miniPIERS (bedside pre-eclampsia risk)',           group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'afi',                    name: 'Amniotic Fluid Index (AFI)',                       group: 'E', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'barnhart-hcg',           name: 'Barnhart Minimal hCG Rise (viable IUP)',           group: 'E', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'iom-gwg',                name: 'IOM Gestational Weight Gain',                      group: 'E', audiences: ['clinicians', 'educators'], clinical: true },
 
   // spec-v6 §3.3: lab result interpreter. Patient-decoder category.
   { id: 'lab-interpret',       name: 'Lab Result Interpreter',                           group: 'C', audiences: ['patients', 'clinicians', 'educators'], clinical: true },

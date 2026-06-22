@@ -3215,3 +3215,90 @@ evaluation of other causes. The total maps to under two no case, two to three po
 to five probable, and over five definite DRESS.
 Worked example: fever, lymph nodes, eosinophilia of one point, atypical lymphocytes, and one
 organ involved score five, a probable DRESS case.
+
+### Hadlock Estimated Fetal Weight (BPD/HC/AC/FL)
+Citation: Hadlock FP, Harrist RB, Sharman RS, Deter RL, Park SK. Estimation of fetal weight
+with the use of head, body, and femur measurements -- a prospective study. Am J Obstet Gynecol.
+1985;151:333-337.
+Rule: the four-parameter regression returns the base-ten logarithm of the estimated fetal
+weight in grams as one-point-three-five-nine-six, minus zero-point-zero-zero-three-eight-six
+times abdominal circumference times femur length, plus zero-point-zero-zero-six-four times
+head circumference, plus zero-point-zero-zero-zero-six-one times biparietal diameter times
+abdominal circumference, plus zero-point-zero-four-two-four times abdominal circumference, plus
+zero-point-one-seven-four times femur length, with every biometry measurement entered in
+centimeters. The presence of the biparietal-diameter-by-abdominal-circumference term is the
+fingerprint distinguishing this four-parameter model from the three-parameter form.
+Worked example: a biparietal diameter of nine, head circumference of thirty-three, abdominal
+circumference of thirty, and femur length of seven centimeters give a base-ten logarithm of
+three-point-four-one-five and an estimated fetal weight of about two thousand six hundred grams.
+
+### fullPIERS (pre-eclampsia adverse-outcome risk)
+Citation: von Dadelszen P, Payne B, Li J, et al. Prediction of adverse maternal outcomes in
+pre-eclampsia: development and validation of the fullPIERS model. Lancet. 2011;377:219-227.
+Rule: a logistic model whose log-odds is two-point-six-eight, minus zero-point-zero-five-four-
+one times gestational age in weeks, plus one-point-two-three for chest pain or dyspnea, minus
+zero-point-zero-two-seven-one times creatinine in micromoles per liter, plus zero-point-two-
+zero-seven times platelets in ten-to-the-ninth per liter, plus a platelet-squared term, plus
+zero-point-zero-one-zero-one times AST, minus an AST-squared term, plus a creatinine-by-platelet
+term, minus a platelet-by-AST term, and minus a platelet-by-oxygen-saturation term -- oxygen
+saturation has no main effect of its own. The probability is one over one plus the exponential
+of the negative log-odds. A predicted probability of thirty per cent or more is the high-risk
+rule-in cut-point (positive likelihood ratio about seventeen-and-a-half); ten to thirty is
+intermediate and under ten is low.
+Worked example: a woman at thirty-two weeks with chest pain, oxygen saturation of ninety-six,
+platelets of one hundred twenty, creatinine of ninety, and AST of sixty has a predicted
+probability of about eighteen per cent, in the intermediate band.
+
+### miniPIERS (bedside pre-eclampsia risk)
+Citation: Payne BA, Hutcheon JA, Ansermino JM, et al. A risk prediction model for the assessment
+and triage of women with hypertensive disorders of pregnancy in low-resourced settings: the
+miniPIERS model. PLoS Med. 2014;11:e1001589.
+Rule: a bedside logistic model using no laboratory tests whose log-odds is minus five-point-
+seven-seven, minus zero-point-two-nine-eight for multiparity, minus one-point-zero-seven times
+the natural log of gestational age in weeks, plus one-point-three-four times the natural log of
+systolic blood pressure in millimeters of mercury, plus a categorical dipstick-proteinuria term
+(two-plus carries the published negative weight of minus zero-point-two-one-eight, three-plus
+plus zero-point-four-two-four, four-plus plus zero-point-five-one-two), plus one-point-one-eight
+for vaginal bleeding with abdominal pain, plus zero-point-four-two-two for headache or visual
+changes, and plus zero-point-eight-four-seven for chest pain or dyspnea. A predicted probability
+of twenty-five per cent or more is the high-risk rule-in cut-point (positive likelihood ratio
+about five), and over fifteen prompts increased surveillance.
+Worked example: a multiparous woman at thirty-four weeks, systolic pressure one hundred sixty,
+three-plus dipstick proteinuria, and headache has a predicted probability of about ten per cent,
+below the surveillance threshold.
+
+### Amniotic Fluid Index (AFI)
+Citation: Moore TR, Cayle JE. The amniotic fluid index in normal human pregnancy. Am J Obstet
+Gynecol. 1990;162:1168-1173.
+Rule: the sum, in centimeters, of the deepest vertical pocket of clear fluid in each of the four
+uterine quadrants. Against the ACOG thresholds an index under five centimeters is
+oligohydramnios and over twenty-four is polyhydramnios (some references use over twenty-five);
+five to eight centimeters is often called low-normal.
+Worked example: four quadrant pockets of one centimeter each sum to four, flagging
+oligohydramnios.
+
+### Barnhart Minimal hCG Rise (viable IUP)
+Citation: Barnhart KT, Sammel MD, Rinaudo PF, Zhou L, Hummel AC, Guo W. Symptomatic patients with
+an early viable intrauterine pregnancy: HCG curves redefined. Obstet Gynecol. 2004;104:50-55.
+Rule: for a symptomatic patient with a potentially viable intrauterine pregnancy the slowest
+normal rise is fifty-three per cent over forty-eight hours (the ninety-nine per cent lower
+bound; a more conservative thirty-five per cent from the two-thousand-twelve re-analysis is
+sometimes used). The observed rise is repeat minus initial over initial; the expected minimum
+is scaled log-linearly from the forty-eight-hour anchor. A sub-minimal rise is abnormal but not
+by itself diagnostic of an ectopic or non-viable pregnancy.
+Worked example: an initial value of one thousand rising to one thousand four hundred over
+forty-eight hours is a forty per cent rise, below the fifty-three per cent minimum and therefore
+sub-minimal.
+
+### IOM Gestational Weight Gain
+Citation: Institute of Medicine and National Research Council. Weight Gain During Pregnancy:
+Reexamining the Guidelines. Washington, DC: National Academies Press; 2009; carried in ACOG
+Committee Opinion five hundred forty-eight.
+Rule: the recommended total weight gain and second-and-third-trimester weekly rate by
+pre-pregnancy body-mass-index category -- underweight twenty-eight to forty pounds, normal
+weight twenty-five to thirty-five, overweight fifteen to twenty-five, and obese eleven to twenty
+pounds for a singleton, with provisional twin ranges (no recommendation exists for an
+underweight twin pregnancy).
+Worked example: a pre-pregnancy weight of two hundred pounds at sixty-four inches gives a
+body-mass index of about thirty-four, in the obese category, with a recommended total gain of
+eleven to twenty pounds for a singleton.

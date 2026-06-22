@@ -5,7 +5,7 @@
 <h1 align="center">sophiewell.com</h1>
 
 <p align="center">
-  <strong>614 deterministic healthcare calculators tuned to the nurse on shift.</strong><br>
+  <strong>620 deterministic healthcare calculators tuned to the nurse on shift.</strong><br>
   Free forever. No servers, no accounts, no telemetry, no AI, no network call after first paint.
 </p>
 
@@ -36,7 +36,7 @@ output; "searchable lookup of static facts" does not qualify. See
 [docs/spec-v10.md](docs/spec-v10.md) for the audience and
 dependency-budget commitments and
 [docs/spec-v29.md](docs/spec-v29.md) for the nurse-first pivot
-and the v29 catalog ledger. At v137 close the catalog is 614
+and the v29 catalog ledger. At v138 close the catalog is 620
 deterministic tiles — every one of them computes from at least
 one user input. The catalog reached its present size on two tracks.
 **New tiles:** spec-v63 added the operations counterpart to the bedside
@@ -186,7 +186,7 @@ production security headers. Any static file server will also work.
 ## How it works and how to use it
 
 Since the spec-v29 nurse-first prune the catalog has grown one
-reviewable spec at a time to **614** deterministic calculators
+reviewable spec at a time to **620** deterministic calculators
 (the full per-version history is in [CHANGELOG.md](CHANGELOG.md)
 and `docs/spec-v*.md`; the most recent bedside additions are
 summarized in the cheat sheets below). They organize across the
@@ -1023,7 +1023,7 @@ Duke-ISCVID) and `refeeding-risk` (NICE CG32) are **Class B** with
 [citation-staleness](docs/citation-staleness.md) rows; the other three are
 **Class A**. See [docs/spec-v99.md](docs/spec-v99.md).
 
-### MDCalc parity completion: the cardiology / vascular / lipid surface (spec-v100 program, Wave 1: spec-v101 → spec-v105, +25 → 457, **complete**; Wave 2 complete: spec-v106 → 463, spec-v107 → 467, spec-v108 → 473, spec-v109 → 478, spec-v110 → 483, spec-v111 → 487, **+30 → 487**; Wave 3 complete (Critical care & pulmonary): spec-v112 → 492, spec-v113 → 495, spec-v114 → 501, spec-v115 → 506, **+19 → 506**; Wave 4 underway (Neurology / neurosurgery / psychiatry): spec-v117 → 512, spec-v118 → 517, spec-v119 → 521, spec-v120 → 526, spec-v121 → 530, spec-v122 → 533, spec-v123 → 538 (**Wave 4 complete**), **+32 → 538**; Wave 5 complete (GI / hepatology / nephrology / acid-base / urology): spec-v124 → 544, spec-v125 → 549, spec-v126 → 555, spec-v127 → 559, spec-v128 → 564, spec-v129 → 570, spec-v130 → 576, spec-v131 → 584 (closes the wave at +5; ROKS deferred), **+43 → 581 from the wave; live catalog 584 incl. the standalone spec-v149 EMS parity, +3**; Wave 6 underway (Heme / onc / endocrine / ID): spec-v132 → 589 (thrombotic microangiopathy & coagulopathy, +5), spec-v133 → 593 (warfarin start-up — IWPC + Gage PGx dose, Kovacs 10 mg + Crowther 5 mg nomograms, +4, all four shipped after an adversarial re-fetch confirmed the Gage and Kovacs tables), spec-v134 → 599 (plasma-cell & myeloid-neoplasm staging — ISS, R-ISS, R2-ISS, Mayo MGUS, DIPSS, DIPSS-Plus, +6), spec-v135 → 604 (lymphoma / CLL prognostic indices — R-IPI, NCCN-IPI, GELF, Hasenclever IPS, CLL-IPI, +5), spec-v136 → 609 (endocrine / metabolic indices — HOMA-IR, QUICKI, TyG index, metabolic syndrome, OST/ORAI DXA pre-screen, +5), spec-v137 → 614 (infectious-disease scores — ISARIC 4C mortality, COVID-GRAM, Candida score, VACS index, RegiSCAR DRESS, +5, **Wave 6 complete**), **+30 → 614**)
+### MDCalc parity completion: the cardiology / vascular / lipid surface (spec-v100 program, Wave 1: spec-v101 → spec-v105, +25 → 457, **complete**; Wave 2 complete: spec-v106 → 463, spec-v107 → 467, spec-v108 → 473, spec-v109 → 478, spec-v110 → 483, spec-v111 → 487, **+30 → 487**; Wave 3 complete (Critical care & pulmonary): spec-v112 → 492, spec-v113 → 495, spec-v114 → 501, spec-v115 → 506, **+19 → 506**; Wave 4 underway (Neurology / neurosurgery / psychiatry): spec-v117 → 512, spec-v118 → 517, spec-v119 → 521, spec-v120 → 526, spec-v121 → 530, spec-v122 → 533, spec-v123 → 538 (**Wave 4 complete**), **+32 → 538**; Wave 5 complete (GI / hepatology / nephrology / acid-base / urology): spec-v124 → 544, spec-v125 → 549, spec-v126 → 555, spec-v127 → 559, spec-v128 → 564, spec-v129 → 570, spec-v130 → 576, spec-v131 → 584 (closes the wave at +5; ROKS deferred), **+43 → 581 from the wave; live catalog 584 incl. the standalone spec-v149 EMS parity, +3**; Wave 6 underway (Heme / onc / endocrine / ID): spec-v132 → 589 (thrombotic microangiopathy & coagulopathy, +5), spec-v133 → 593 (warfarin start-up — IWPC + Gage PGx dose, Kovacs 10 mg + Crowther 5 mg nomograms, +4, all four shipped after an adversarial re-fetch confirmed the Gage and Kovacs tables), spec-v134 → 599 (plasma-cell & myeloid-neoplasm staging — ISS, R-ISS, R2-ISS, Mayo MGUS, DIPSS, DIPSS-Plus, +6), spec-v135 → 604 (lymphoma / CLL prognostic indices — R-IPI, NCCN-IPI, GELF, Hasenclever IPS, CLL-IPI, +5), spec-v136 → 609 (endocrine / metabolic indices — HOMA-IR, QUICKI, TyG index, metabolic syndrome, OST/ORAI DXA pre-screen, +5), spec-v137 → 614 (infectious-disease scores — ISARIC 4C mortality, COVID-GRAM, Candida score, VACS index, RegiSCAR DRESS, +5, **Wave 6 complete**), **+30 → 614**; Wave 7 underway (Obstetrics / pediatrics / neonatal): spec-v138 → 620 (obstetrics & maternal-fetal medicine — Hadlock EFW, fullPIERS, miniPIERS, AFI, Barnhart hCG rise, IOM weight gain, +6, **Wave 7 opens**), **+6 → 620 so far**)
 
 With the spec-v85 program complete, [spec-v100](docs/spec-v100.md) charters the
 **MDCalc Parity Completion** program — a roadmap that closes the remaining gaps
@@ -1430,6 +1430,46 @@ primary clinical sources:
 `peds-vitals` is **Class B** (the "AHA" citation trips `ISSUER_PATTERN`, so it
 carries a `docs/citation-staleness.md` row); the other two are Class A.
 `lib/ems-v149.js` + `views/group-v149.js`. **Catalog 576 → 579, +3.**
+
+#### spec-v138 — obstetrics & maternal-fetal medicine: Hadlock EFW, fullPIERS, miniPIERS, AFI, Barnhart hCG rise, IOM weight gain (+6 → 620, **Wave 7 opens**)
+
+v138 opens **Wave 7** (obstetrics / pediatrics / neonatal) by bringing the
+obstetrics and maternal-fetal-medicine cluster onto the page beside the dating and
+induction tiles (`due-date`, `preg-dating`, `bishop`, `bpp`). `hadlock-efw`, `afi`,
+`barnhart-hcg`, and `iom-gwg` read in **Clinical Math & Conversions (Group E)**;
+`fullpiers` and `minipiers` in **Clinical Scoring & Risk (Group G)**. Each reports
+the estimate / probability / range and the source's framing without authoring an
+image / deliver / transfer / counsel directive in Sophie's voice (spec-v11 §5.3):
+
+| id | Source | Output |
+|---|---|---|
+| `hadlock-efw` | Hadlock 1985 (*Am J Obstet Gynecol*) | **Four-parameter EFW** — `log10(EFW g) = 1.3596 − 0.00386·AC·FL + 0.0064·HC + 0.00061·BPD·AC + 0.0424·AC + 0.174·FL`, biometry in cm. Worked: BPD 9 / HC 33 / AC 30 / FL 7 → **2600 g** |
+| `fullpiers` | von Dadelszen 2011 (*Lancet*) | **Logistic probability** of adverse maternal outcome ≤ 48 h in pre-eclampsia → `< 10%` low / `10–30%` intermediate / `≥ 30%` high-risk rule-in (LR⁺ ≈ 17.5). **SpO₂ enters only via the platelet interaction** |
+| `minipiers` | Payne 2014 (*PLoS Med*) | **Bedside logistic probability**, no labs → `≥ 25%` high-risk rule-in (LR⁺ ≈ 5), > 15% surveillance. GA and SBP enter as **natural logs**; dipstick proteinuria is **three categorical indicators** (2+ negative) |
+| `afi` | Moore & Cayle 1990 | **Four-quadrant deepest-pocket sum (cm)** → oligohydramnios `< 5`, polyhydramnios `> 24` (some references > 25), 5–8 low-normal. **Class B** |
+| `barnhart-hcg` | Barnhart 2004 (*Obstet Gynecol*) | **Observed serial-hCG rise vs the 53%/48 h minimum** for a potentially viable IUP (scaled log-linearly as `1.53^(hours/48)`); a sub-minimal rise is flagged but not by itself diagnostic |
+| `iom-gwg` | IOM 2009 / ACOG CO 548 | **Pre-pregnancy-BMI → total gain + weekly rate** (underweight 28–40 / normal 25–35 / overweight 15–25 / obese 11–20 lb singleton; provisional twin ranges). **Class B** |
+
+**Every coefficient block and threshold was re-fetched from a primary source and
+cross-verified across ≥2 independent sources, never recalled** (the spec-v97
+discipline). Three source-governance catches matter: (1) in **`fullpiers`, SpO₂ has
+no main effect** — it enters only through the platelet×SpO₂ interaction, and the
+`−0.0271` coefficient belongs to creatinine (a common mis-recall assigns it to
+SpO₂); creatinine has no quadratic term. (2) **`minipiers` takes the natural log of
+gestational age and systolic BP** and codes dipstick proteinuria as three
+categorical indicators, with the **2+ level carrying the published negative weight
+−0.218** (non-monotonic, as published). (3) The optional `iom-gwg` current-gain
+comparison (spec §2.6) is **deliberately not shipped** — the IOM publishes no
+cumulative point target at an arbitrary gestational age, so a deterministic "on
+track" verdict would require fabricating a value the source does not state; for an
+underweight twin pregnancy the tile **reports that no IOM recommendation exists**
+rather than inventing one. The two logistic models clamp their exponent to
+`[−40, 40]` and the Hadlock log₁₀ is range-checked before `10^x`, so every output is
+finite; all six flow through the spec-v59 fuzz harness with zero non-finite leaks.
+`hadlock-efw`, `fullpiers`, `minipiers`, and `barnhart-hcg` are **Class A**; `afi`
+and `iom-gwg` are **Class B** (ACOG-aligned revisable thresholds → gate-forced
+citation-staleness rows). `lib/ob-v138.js` + `views/group-v138.js` (`RV138`).
+**Catalog 614 → 620, +6; Wave 7 opens.**
 
 #### spec-v137 — infectious-disease scores: ISARIC 4C, COVID-GRAM, Candida score, VACS index, RegiSCAR DRESS (+5 → 614, **Wave 6 close**)
 
@@ -2520,7 +2560,7 @@ long version, see [docs/architecture.md](docs/architecture.md).
  │  manifests (data/)            │  static │        ▼                     ▼             │
  │        │  scripts/build       │  files  │   lazy-load data shard   pure compute      │
  │        ▼                      │         │   (verified vs manifest)  (lib/*.js)       │
- │  dist/  (614 tool pages,      │         │        │                     │             │
+ │  dist/  (620 tool pages,      │         │        │                     │             │
  │  OG cards, sitemap, SBOM)     │         │        ▼                     ▼             │
  └───────────────────────────────┘         │   service worker cache    result + cite   │
                                             │   (keyed to build hash)                    │
@@ -2542,7 +2582,7 @@ assets:
 
 | Output | Count | Source |
 |--------|------:|--------|
-| Pre-rendered tool pages (`dist/tools/<id>/`) | 614 | `scripts/build-tool-pages.mjs` |
+| Pre-rendered tool pages (`dist/tools/<id>/`) | 620 | `scripts/build-tool-pages.mjs` |
 | Audience hub pages (`dist/for/<audience>/`) | 6 | `scripts/build-hub-pages.mjs` |
 | Topic pages + `/topics/` index | 8 + 1 | `scripts/build-topic-pages.mjs` |
 | `/commitments/` | 1 | `scripts/build-commitments-page.mjs` |
@@ -2577,7 +2617,7 @@ static pages, so a tile can never ship mobile overflow undetected.
 index.html          single-page shell (hero-search combobox + static browse-by-category nav, tile mount)
 styles.css          one stylesheet (responsive; no horizontal scroll — enforced catalog-wide at 320px in CI)
 app.js              router, hero-search wiring, view wiring, the UTILITIES catalog
-                    (614 tiles — the single source of truth; zero runtime deps)
+                    (620 tiles — the single source of truth; zero runtime deps)
 sw.js               service worker — precache shell, cache shards by build hash
 theme.js            light/dark theme toggle (writes only sw-theme, allowlisted)
 lib/input-persist.js opt-in "remember my inputs" (off by default; numbers only)
@@ -2595,12 +2635,12 @@ docs/               specs (spec-v4 onward) + per-tile v11/v12 audit logs +
                     citation-staleness ledger +
                     architecture / threat-model / …
 test/               unit/ (node:test) · integration/ (Playwright) · fixtures/
-dist/               build output (614 tool pages, OG cards, sitemap, SBOM)
+dist/               build output (620 tool pages, OG cards, sitemap, SBOM)
 ```
 
-### Discovery: how a query finds the right tool among 614
+### Discovery: how a query finds the right tool among 620
 
-With 614 tiles, search quality *is* the product — a tool you cannot find does
+With 620 tiles, search quality *is* the product — a tool you cannot find does
 not exist. Discovery is deterministic and offline (no fuzzy-match service, no
 embedding model, no AI). The home `#hero-search` combobox builds its dropdown
 from two complementary rankers, both pure functions of the typed query:
@@ -2673,10 +2713,10 @@ A login-less, AI-free calculator earns trust only if the nurse can see, on the
 tile, exactly which published source produced the number — and tell whether that
 source is current. spec-v54 defined the invariants; spec-v60 built the machinery
 (the gate, the ledger, and the `citationAccessed` convention) and extended it
-across the full 614-tile catalog, pinning the last three unpinned "current
+across the full 620-tile catalog, pinning the last three unpinned "current
 edition" phrases and re-verifying every guideline tile against its latest known
 edition. Three invariants make that auditable, each enforced by the
-`check-citations.mjs` lint gate (in the `npm run lint` chain) over all 614 tiles:
+`check-citations.mjs` lint gate (in the `npm run lint` chain) over all 620 tiles:
 
 | Invariant | Rule | Enforcement |
 |---|---|---|
@@ -3132,8 +3172,8 @@ rules, not soft preferences.
 | `npm run dev`            | Serve the directory locally on http://localhost:4173 (set `SERVE_ROOT=dist` to preview the pre-rendered hubs/topics/tool pages as production serves them) |
 | `npm run build`          | Copy static files into `dist/` for deployment                     |
 | `npm test`               | Run the full test suite (unit, a11y, grep, data integrity)        |
-| `npm run test:unit`      | Run Node's built-in unit tests (4,849 tests)                      |
-| `npm run test:e2e`       | Build `dist/`, then run Playwright integration tests against real browsers — incl. a full-catalog 320px no-horizontal-scroll sweep over both the SPA routes and the 614 pre-rendered static tool pages, the hub/topic/commitments pages, and the citation-wrap pin |
+| `npm run test:unit`      | Run Node's built-in unit tests (5,156 tests)                      |
+| `npm run test:e2e`       | Build `dist/`, then run Playwright integration tests against real browsers — incl. a full-catalog 320px no-horizontal-scroll sweep over both the SPA routes and the 620 pre-rendered static tool pages, the hub/topic/commitments pages, and the citation-wrap pin |
 | `npm run test:a11y`      | Run accessibility checks on every utility view                    |
 | `npm run lint`           | ESLint + the CI gate chain: grep-check, output-safety, citation-integrity, catalog-truth, commitments, PA staleness, PA audit |
 | `npm run data:refresh`   | Re-fetch and re-shard every public dataset                        |
@@ -3217,7 +3257,7 @@ build, integrity-verified data shards) are documented in
 - [docs/spec-v11.md](docs/spec-v11.md) — correctness-floor spec:
   per-tile audit protocol, specialty-named groups, optional
   source-quoted `interpretation` field. Audit coverage is **complete
-  — 614/614 tiles** carry a committed per-tile audit log
+  — 620/620 tiles** carry a committed per-tile audit log
   (`docs/audits/v11/<id>.md` for the pre-v78 catalog;
   `docs/audits/v12/<id>.md` for the tiles added since — the
   spec-v78–v83 billing & coding program, the spec-v85

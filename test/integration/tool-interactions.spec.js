@@ -25,7 +25,9 @@ test('every tool tolerates indiscriminate interaction without crashing', async (
   // generous headroom above that to absorb CI worker contention without a
   // timeout flake (same rationale as example-correctness.spec.js). A real crash
   // still fails fast per-tile, never via this timeout. Raise as the catalog grows.
-  test.setTimeout(600_000);
+  // (Bumped 600s -> 900s at the spec-v138 close: at 620 tiles a contended run
+  // running concurrently with the example-correctness sweep tipped past 600s.)
+  test.setTimeout(900_000);
   const errors = [];
   page.on('pageerror', (e) => errors.push(`pageerror: ${e}`));
   page.on('console', (m) => { if (m.type() === 'error') errors.push(`console: ${m.text()}`); });

@@ -1,11 +1,23 @@
 # spec-v138.md — Obstetrics & MFM: Hadlock EFW, fullPIERS, miniPIERS, AFI, Barnhart minimal hCG rise, and IOM gestational weight gain (+6 tiles)
 
-> Status: **PROPOSED (2026-06-17).** First feature spec of **Wave 7** of the
+> Status: **SHIPPED (2026-06-22).** First feature spec of **Wave 7** of the
 > [spec-v100](spec-v100.md) MDCalc Parity Completion program. Adds **6**
 > deterministic obstetrics and maternal-fetal-medicine instruments that fill
 > confirmed gaps. None duplicates a live tile.
 >
-> Catalog effect at v138 close: **613 + 6 = 619 tiles.**
+> Catalog effect at v138 close: **614 + 6 = 620 tiles** (the spec draft projected
+> 613 → 619; the program running-count carries the documented off-by-one, so the
+> live `UTILITIES.length` of 614 governed — catalog-truth gate enforces). Shipped
+> via `lib/ob-v138.js` + `views/group-v138.js` (`RV138`). All coefficients were
+> re-fetched and cross-verified across ≥2 independent sources (the spec-v97
+> discipline): fullPIERS's SpO₂ enters only through the platelet interaction (no
+> main effect), miniPIERS takes the natural log of gestational age and systolic
+> BP with dipstick proteinuria as three categorical indicators (2+ negative), and
+> the Barnhart minimal rise is the 53%/48 h 2004 anchor. The optional iom-gwg
+> current-gain comparison (spec §2.6) was deliberately not shipped — the IOM
+> publishes no cumulative point target at an arbitrary gestational age, so a
+> deterministic "on track" verdict would require fabricating a value the source
+> does not state.
 >
 > Every prior spec (v4 through v137) remains in force. v138 adds no runtime
 > network call and no AI; each tile obeys the [spec-v100](spec-v100.md) §2
