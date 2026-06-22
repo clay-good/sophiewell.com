@@ -69,6 +69,7 @@ import { renderers as RV136 } from './views/group-v136.js';
 import { renderers as RV137 } from './views/group-v137.js';
 import { renderers as RV138 } from './views/group-v138.js';
 import { renderers as RV139 } from './views/group-v139.js';
+import { renderers as RV140 } from './views/group-v140.js';
 import { renderers as RV149 } from './views/group-v149.js';
 import { renderers as RV63 } from './views/group-v63.js';
 import { renderers as RB } from './views/group-b.js';
@@ -88,7 +89,7 @@ import { resolvePrompt } from './lib/prompt.js';
 // artifact-detect / artifact-route / artifact-handoff helpers were
 // deleted in spec-v29 wave 29-2 (Group C/L).
 
-const RENDERERS = { ...RA, ...RB, ...RC, ...RE, ...RF, ...RG, ...RH, ...RI, ...RJ, ...RKLMNO, ...RV5, ...RV6, ...RV7, ...RV8, ...RV9, ...RV10, ...RV11, ...RV12, ...RV13, ...RV14, ...RV15, ...RV16, ...RV17, ...RV18, ...RV19, ...RV20, ...RV21, ...RV22, ...RV23, ...RV24, ...RV25, ...RV26, ...RV27, ...RV28, ...RV29, ...RV30, ...RV31, ...RV32, ...RV33, ...RV34, ...RV35, ...RV36, ...RV37, ...RV38, ...RV39, ...RV40, ...RV117, ...RV118, ...RV119, ...RV120, ...RV121, ...RV122, ...RV123, ...RV124, ...RV125, ...RV126, ...RV127, ...RV128, ...RV129, ...RV130, ...RV131, ...RV132, ...RV133, ...RV134, ...RV135, ...RV136, ...RV137, ...RV138, ...RV139, ...RV149, ...RV63, ...RPALINT };
+const RENDERERS = { ...RA, ...RB, ...RC, ...RE, ...RF, ...RG, ...RH, ...RI, ...RJ, ...RKLMNO, ...RV5, ...RV6, ...RV7, ...RV8, ...RV9, ...RV10, ...RV11, ...RV12, ...RV13, ...RV14, ...RV15, ...RV16, ...RV17, ...RV18, ...RV19, ...RV20, ...RV21, ...RV22, ...RV23, ...RV24, ...RV25, ...RV26, ...RV27, ...RV28, ...RV29, ...RV30, ...RV31, ...RV32, ...RV33, ...RV34, ...RV35, ...RV36, ...RV37, ...RV38, ...RV39, ...RV40, ...RV117, ...RV118, ...RV119, ...RV120, ...RV121, ...RV122, ...RV123, ...RV124, ...RV125, ...RV126, ...RV127, ...RV128, ...RV129, ...RV130, ...RV131, ...RV132, ...RV133, ...RV134, ...RV135, ...RV136, ...RV137, ...RV138, ...RV139, ...RV140, ...RV149, ...RV63, ...RPALINT };
 
 // ----- Utility registry ----------------------------------------------------
 // Source of truth for routes, names, group, audiences, and clinical flag.
@@ -1117,6 +1118,26 @@ const UTILITIES = [
   { id: 'iota-simple-rules',      name: 'IOTA Simple Rules',                                group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'rotterdam-pcos',         name: 'Rotterdam PCOS Criteria',                          group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'popq-staging',           name: 'POP-Q Staging',                                    group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+
+  // spec-v140 (Wave 7, third feature spec): the pediatric / neonatal severity
+  // cluster -- the newborn-nursery sepsis decision, the NICU illness score, the
+  // bronchiolitis bay, the gastroenteritis room, and the pediatric-urology
+  // exam. views/group-v140.js, lib/peds-v140.js (RV140). eos-calculator,
+  // snappe-ii, rdai-tal, and clinical-dehydration-scale are Clinical Scoring &
+  // Risk (Group G); koff-bladder-capacity is Clinical Math & Conversions
+  // (Group E). All five are Class A. COEFFICIENTS RE-FETCHED, never recalled
+  // (spec-v97): the Kaiser EOS prior logistic (GA quadratic, raw-°F temperature,
+  // ROM fractional-power transform, incidence-specific intercept) and the
+  // upper-CI exam likelihood ratios (0.41 / 5.0 / 21.2); the SNAPPE-II nine-band
+  // table with the PaO2(mmHg)/FiO2(%) ratio; the RDAI/Tal sub-scores. (crib-ii,
+  // the sixth proposed tile, is DEFERRED -- its Parry 2003 birth-weight x
+  // gestational-age x sex matrix could be sourced from only one reproduction;
+  // see docs/spec-v140.md §2.3 and lib/peds-v140.js.)
+  { id: 'eos-calculator',         name: 'Neonatal Early-Onset Sepsis Calculator (Kaiser)',  group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'snappe-ii',              name: 'SNAPPE-II',                                        group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'rdai-tal',               name: 'RDAI / Tal Bronchiolitis Severity',                group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'clinical-dehydration-scale', name: 'Clinical Dehydration Scale (CDS)',             group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'koff-bladder-capacity',  name: 'Koff Expected Bladder Capacity',                   group: 'E', audiences: ['clinicians', 'educators'], clinical: true },
 
   // spec-v6 §3.3: lab result interpreter. Patient-decoder category.
   { id: 'lab-interpret',       name: 'Lab Result Interpreter',                           group: 'C', audiences: ['patients', 'clinicians', 'educators'], clinical: true },

@@ -1,11 +1,26 @@
 # spec-v140.md — Pediatric & neonatal severity: Kaiser EOS, SNAPPE-II, CRIB-II, RDAI/Tal, Clinical Dehydration Scale, and Koff bladder capacity (+6 tiles)
 
-> Status: **PROPOSED (2026-06-17).** Third feature spec of **Wave 7** of the
-> [spec-v100](spec-v100.md) MDCalc Parity Completion program. Adds **6**
-> deterministic pediatric and neonatal severity instruments that fill confirmed
-> gaps. None duplicates a live tile.
+> Status: **SHIPPED (2026-06-22) — 5 of 6 tiles; `crib-ii` deferred.** Third
+> feature spec of **Wave 7** of the [spec-v100](spec-v100.md) MDCalc Parity
+> Completion program. Adds **5** deterministic pediatric and neonatal severity
+> instruments that fill confirmed gaps. None duplicates a live tile.
 >
-> Catalog effect at v140 close: **625 + 6 = 631 tiles.**
+> Catalog effect at v140 close: **live 626 + 5 = 631 tiles** (the live count was
+> 626 after v139, not the 625 projected when this spec was drafted; the +5 delta
+> holds).
+>
+> **`crib-ii` is DEFERRED.** Of the six tiles proposed below, only `crib-ii` did
+> not ship. Its Parry 2003 score is a birth-weight × gestational-age × sex point
+> matrix (~150 cells, sex selecting between a male and a female grid) plus
+> temperature and base-excess bands. At implementation the temperature and
+> base-excess bands cross-verified cleanly, but the BW×GA×sex matrix could be
+> sourced from **only one** reproduction (sfar.org), and the primary Lancet
+> table and that reproduction were both access-blocked (HTTP 403). Shipping ~150
+> unverifiable cell values that drive a neonatal mortality estimate would violate
+> the [spec-v97](spec-v97.md) "re-fetch and cross-verify across ≥ 2 independent
+> sources" discipline, so `crib-ii` is parked alongside the other deferred ids
+> (`gwtg-hf`, the ROKS stone-recurrence nomogram) until a second independent
+> source for the matrix is in hand. The other five tiles are unaffected.
 >
 > Every prior spec (v4 through v139) remains in force. v140 adds no runtime
 > network call and no AI; each tile obeys the [spec-v100](spec-v100.md) §2

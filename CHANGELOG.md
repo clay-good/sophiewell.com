@@ -6,6 +6,64 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v140: pediatric & neonatal severity — Kaiser EOS, SNAPPE-II, RDAI/Tal, Clinical Dehydration Scale, Koff bladder capacity, +5 — spec-v100 Wave 7)
+
+- **The pediatric / neonatal severity cluster comes onto the page, continuing
+  Wave 7 of the spec-v100 program (626 → 631, +5).** Five deterministic tiles
+  (catalog **626 → 631**) via `lib/peds-v140.js` + `views/group-v140.js`
+  (`RV140`). Four land in **Clinical Scoring & Risk (Group G)** and one
+  (`koff-bladder-capacity`) in **Clinical Math & Conversions (Group E)**. Each
+  reports the probability / score / band and the source's framing and leaves the
+  observe / culture / treat / rehydrate decision with the clinician (spec-v11
+  §5.3). Every coefficient, band table, and threshold was re-fetched from a
+  primary source and cross-verified across ≥2 independent sources, never recalled
+  (the spec-v97 discipline).
+  - **`eos-calculator`** — Kaiser Neonatal Early-Onset Sepsis Calculator
+    (Kuzniewicz MW, Puopolo KM, et al, *JAMA Pediatr* 2017; on the Puopolo 2011
+    model). A maternal/prenatal logistic prior — `bx = intercept + 0.8680·tempF −
+    6.9325·GA + 0.0877·GA² + 1.2256·(ROMh+0.05)^0.2 − 1.0488·approptx1 −
+    1.1861·approptx2 + 0.5771·GBS⁺ + 0.0427·GBSᵘ`, incidence-specific intercept
+    {0.5 → 40.5656, …} — is converted to odds, multiplied by the exam likelihood
+    ratio (well 0.41 / equivocal 5.0 / clinical illness 21.2), and reported as the
+    posterior EOS probability per 1,000. Worked: GA 39, 100.4 °F, ROM 18 h, GBS⁺,
+    no abx, well-appearing → risk at birth **1.50/1,000**, posterior **0.62/1,000**
+    → enhanced observation. The temperature enters raw in °F, GA is a quadratic
+    (not a spline), the GBS-unknown term is the Kaiser-corrected `+0.0427`, and the
+    logistic works in odds space clamped so it never reports a probability from a
+    non-finite value. Class A. Management bands per Kuzniewicz 2017.
+  - **`snappe-ii`** — Score for Neonatal Acute Physiology with Perinatal
+    Extension-II (Richardson DK, et al, *J Pediatr* 2001). Nine banded variables
+    sum to 0–162; the oxygenation item is the PaO₂(mmHg)/FiO₂(%) ratio, a zero
+    FiO₂ guarded. Worked: mean BP 25, temp 34.5 °C, PaO₂ 50/FiO₂ 80, pH 7.05,
+    urine 0.5, BW 800 g, Apgar 5 → **89/162** (high severity). Unmeasured items
+    score their 0 band (the SNAP convention). Class A.
+  - **`rdai-tal`** — RDAI bronchiolitis severity (Lowell DI, et al, *Pediatrics*
+    1987) summing six wheeze/retraction sub-scores to 0–17, plus the optional Tal
+    respiratory score (Tal A, et al, *Pediatrics* 1983) 0–12. Worked: RDAI **12/17**
+    with a moderate Tal **7/12**. Class A.
+  - **`clinical-dehydration-scale`** — Goldman CDS (Goldman RD, et al,
+    *Pediatrics* 2008): four items each 0–2 → 0 none / 1–4 some / 5–8 moderate-
+    severe. Worked: appearance 1, eyes 1, mucous 2, tears 1 → **5/8** (moderate to
+    severe). Class A.
+  - **`koff-bladder-capacity`** — Koff expected bladder capacity (Koff SA,
+    *Urology* 1983): EBC (mL) = (age + 2) × 30. Worked: age 4 → **180 mL**. Guards
+    a negative age. Class A, Group E.
+- **`crib-ii` deferred (5 of 6 shipped).** The sixth tile proposed in
+  `docs/spec-v140.md` did not ship: the Parry 2003 CRIB-II birth-weight ×
+  gestational-age × sex point matrix (~150 cells) could be sourced from only one
+  reproduction, and the primary Lancet table and that reproduction were both
+  access-blocked at implementation. Per the spec-v97 re-fetch-and-cross-verify
+  discipline, it is parked with the other deferred ids (`gwtg-hf`, ROKS) until a
+  second independent source for the matrix is in hand.
+- **Tests / docs:** five unit suites (`eos-calculator`, `snappe-ii`, `rdai-tal`,
+  `clinical-dehydration-scale`, `koff-bladder-capacity`) with ≥3 boundary worked
+  examples each and an explicit EOS logistic-overflow case; `lib/peds-v140.js`
+  added to the fuzz harness `MODULES` (zero non-finite leaks); five spec-v11 audit
+  logs; `META` entries with inline citations + `citationUrl` + `accessed`;
+  `docs/clinical-citations.md` rows; the catalog count moves to **631** across all
+  13 catalog-truth surfaces. All five citations name journals/authors (no
+  `ISSUER_PATTERN` trip → all Class A, no staleness rows).
+
 ### Added (spec-v139: gynecology decision rules — Flamm VBAC, ROMA, RMI, IOTA Simple Rules, Rotterdam PCOS, POP-Q, +6 — spec-v100 Wave 7)
 
 - **The general-gynecology decision-rule cluster comes onto the page, continuing

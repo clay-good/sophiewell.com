@@ -3383,3 +3383,67 @@ stage two is within one centimeter of the hymen; stage three is more than one ce
 but not fully everted; stage four is essentially complete eversion.
 Worked example: with the anterior points at plus two and plus three and total vaginal length of
 nine, the leading edge is plus three at Ba, a stage-three prolapse.
+
+### Neonatal Early-Onset Sepsis Calculator (Kaiser)
+Citation: Kuzniewicz MW, Puopolo KM, Fischer A, et al. A quantitative, risk-based approach to the
+management of neonatal early-onset sepsis. JAMA Pediatr. 2017;171(4):365-371; on the model of
+Puopolo KM, et al. Pediatrics. 2011;128(5):e1155.
+Rule: a maternal and prenatal logistic model estimates the early-onset-sepsis risk at birth from
+gestational age, the highest intrapartum temperature in degrees Fahrenheit, the rupture-of-
+membrane duration, group-B streptococcus status, and the type and timing of intrapartum
+antibiotics; that prior probability is converted to odds, multiplied by the newborn examination
+likelihood ratio (well-appearing, equivocal, or clinical illness), and converted back to the
+posterior probability of sepsis per one thousand live births. The source frames management by the
+posterior risk: routine care below one, blood culture from one to under three, and empiric
+antibiotics at or above three per thousand, with enhanced observation when the risk at birth is
+one per thousand or higher. The logistic is overflow-clamped so it never reports a probability
+from a non-finite value.
+Worked example: a well-appearing newborn at thirty-nine weeks with a peak maternal temperature of
+one hundred point four, eighteen hours of ruptured membranes, a positive group-B streptococcus
+screen, and no adequate antibiotics has a risk at birth above one per thousand but a posterior
+risk below one after the reassuring exam, so the tool reports enhanced observation rather than a
+culture.
+
+### SNAPPE-II
+Citation: Richardson DK, Corcoran JD, Escobar GJ, Lee SK. SNAP-II and SNAPPE-II: simplified
+newborn illness severity and mortality risk scores. J Pediatr. 2001;138(1):92-100.
+Rule: nine variables from the first hours of life are each mapped to a banded point value and
+summed to an illness-severity score. The physiology block scores mean blood pressure, the lowest
+temperature, the ratio of arterial oxygen tension in millimeters of mercury to the inspired oxygen
+fraction as a percentage, the lowest serum pH, multiple seizures, and urine output; the perinatal
+extension adds birth weight, small-for-gestational-age below the third percentile, and a five-
+minute Apgar under seven. Higher totals carry a higher neonatal mortality risk; an item left blank
+scores its normal band.
+Worked example: a mean pressure in the twenties, a temperature below thirty-five, an oxygen ratio
+near six-tenths, a pH below seven point one, urine output below one, a birth weight between seven
+hundred fifty and one thousand grams, and a five-minute Apgar under seven sum to a high-severity
+total.
+
+### RDAI / Tal Bronchiolitis Severity
+Citation: Lowell DI, Lister G, Von Koss H, McCarthy P. Wheezing in infants: the respiratory
+distress assessment instrument. Pediatrics. 1987;79(6):939-945; with the Tal respiratory score
+(Tal A, et al. Pediatrics. 1983;71(1):13-18).
+Rule: the Respiratory Distress Assessment Instrument grades bronchiolitis from six observations --
+wheezing on expiration, wheezing on inspiration, the location of wheezing, and supraclavicular,
+intercostal, and subcostal retractions -- summing to a respiratory-distress total. The optional
+Tal score sums respiratory rate, wheezing, cyanosis, and accessory-muscle use. Both grade severity
+for trend; neither sets a treatment threshold.
+Worked example: marked expiratory and inspiratory wheeze across most lung fields with moderate
+retractions yields a high RDAI total, and a moderate Tal score alongside it.
+
+### Clinical Dehydration Scale (CDS)
+Citation: Goldman RD, Friedman JN, Parkin PC. Validation of the clinical dehydration scale for
+children with acute gastroenteritis. Pediatrics. 2008;122(3):545-549.
+Rule: four items -- general appearance, eyes, mucous membranes, and tears -- are each scored zero,
+one, or two and summed. A total of zero is no dehydration, one to four is some dehydration, and
+five to eight is moderate to severe dehydration. It is validated in children roughly one to thirty-
+six months with acute gastroenteritis.
+Worked example: a restless child with slightly sunken eyes, dry mucous membranes, and decreased
+tears scores in the moderate-to-severe band.
+
+### Koff Expected Bladder Capacity
+Citation: Koff SA. Estimating bladder capacity in children. Urology. 1983;21(3):248.
+Rule: the expected bladder capacity in millilitres equals the age in years plus two, multiplied by
+thirty. It is the standard reference estimate for children roughly one to twelve years; the
+formula guards a negative age.
+Worked example: a four-year-old has an expected bladder capacity of one hundred eighty millilitres.
