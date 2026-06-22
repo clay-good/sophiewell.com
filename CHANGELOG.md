@@ -6,6 +6,67 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v139: gynecology decision rules — Flamm VBAC, ROMA, RMI, IOTA Simple Rules, Rotterdam PCOS, POP-Q, +6 — spec-v100 Wave 7)
+
+- **The general-gynecology decision-rule cluster comes onto the page, continuing
+  Wave 7 of the spec-v100 program (620 → 626, +6).** Six deterministic tiles
+  (catalog **620 → 626**) via `lib/gyn-v139.js` + `views/group-v139.js` (`RV139`),
+  all in **Clinical Scoring & Risk (Group G)**. Each reports the score / index /
+  verdict and the source's framing and leaves the counsel / refer / image / treat
+  decision with the clinician (spec-v11 §5.3). Every coefficient block, point
+  weight, and threshold was re-fetched from a primary source and cross-verified
+  across ≥2 independent sources, never recalled (the spec-v97 discipline).
+  - **`flamm-vbac`** — Flamm & Geiger admission VBAC-success score (Flamm BL,
+    Geiger AM, *Obstet Gynecol* 1997). Five admission factors — maternal age < 40
+    (2), prior vaginal birth (before & after 4 / after 2 / before 1 / none 0),
+    prior cesarean not for failure to progress (1), effacement (> 75% 2 / 25–75% 1
+    / < 25% 0), dilation ≥ 4 cm (1) — sum 0–10 → predicted success 49% (0–2), 60%
+    (3), 67% (4), 77% (5), 89% (6), 93% (7), 95% (8–10). Class A. The free
+    substitute for the paywalled Grobman MFMU calculator (spec-v100 §8).
+  - **`roma-ovarian`** — Risk of Ovarian Malignancy Algorithm (Moore RG, et al,
+    *Gynecol Oncol* 2009). Logistic predictive index with **natural-log marker
+    terms** (premenopausal `PI = −12.0 + 2.38·ln(HE4) + 0.0626·ln(CA125)`;
+    postmenopausal `PI = −8.09 + 1.04·ln(HE4) + 0.732·ln(CA125)`),
+    `ROMA% = 100·exp(PI)/(1+exp(PI))`; high-risk cut-point ≈ 13.1% premenopausal /
+    27.7% postmenopausal (Moore 2009, Architect platform). Worked: postmenopausal
+    HE4 150 / CA-125 100 → **62.1%**, above the 27.7% cutoff. **Class B** (the
+    cut-point is assay-platform-dependent → citation-staleness row). The `ln`
+    domains are guarded and the logistic exponent is clamped to `[−40, 40]`.
+  - **`rmi-ovarian`** — Risk of Malignancy Index I/II/III (Jacobs I, et al, *BJOG*
+    1990; Tingulstad 1996/1999 for II/III). `RMI = U × M × CA-125` over five
+    ultrasound features (multilocular cyst, solid areas, bilateral, ascites,
+    metastases). U/M scaling: **I** U {0/1/3} M {1/3}; **II** U {1/4} M {1/4};
+    **III** U {1/3} M {1/3}. > 200 the conventional gyn-onc-referral threshold.
+    Worked: RMI I, 3 features, postmenopausal, CA-125 80 → **720**. Class A.
+  - **`iota-simple-rules`** — IOTA Simple Rules (Timmerman D, et al, *Ultrasound
+    Obstet Gynecol* 2008). Five B (benign) and five M (malignant) descriptors →
+    benign (≥ 1 B & no M), malignant (≥ 1 M & no B), or inconclusive (both /
+    neither, second-stage test advised). Class A. The free substitute for the IOTA
+    ADNEX model (spec-v100 §8).
+  - **`rotterdam-pcos`** — Rotterdam PCOS criteria (ESHRE/ASRM 2003, *Hum Reprod*
+    2004). At least **two of three** features (oligo/anovulation, hyperandrogenism,
+    polycystic ovarian morphology) **after exclusion of mimics** (thyroid,
+    prolactin, non-classic CAH, androgen-secreting tumor), naming the phenotype
+    A–D. **Class B** (revisable consensus → citation-staleness row).
+  - **`popq-staging`** — POP-Q staging (Bump RC, et al, *Am J Obstet Gynecol*
+    1996). The leading edge — the most positive of points Aa, Ba, C, D, Ap, Bp
+    (cm vs the hymen at 0) — drives the stage: 0 (no descent), I (< −1), II (−1 to
+    +1), III (> +1 but < +(TVL−2)), IV (≥ +(TVL−2)). Point D optional after
+    hysterectomy. Class A. The catalog vocab has no `urogynecology` term, so the
+    tile is tagged `obstetrics-gynecology` (flagged in the spec + audit).
+- **Source-governance / fabrication-resistance.** `roma-ovarian` and
+  `rotterdam-pcos` carry `citationAccessed` + a `docs/citation-staleness.md` row;
+  their citations name a journal/authors and the ESHRE/ASRM group, none in the
+  `check-citations` issuer-acronym set, so the rows are documentation-only, not
+  gate-forced (unlike v138's ACOG-named `afi` / `iom-gwg`). The `roma-ovarian`
+  cutoff is shipped with the explicit "assay-platform dependent — read it against
+  your laboratory threshold" caveat rather than as a universal constant.
+- **Gates.** `lib/gyn-v139.js` added to the spec-v59 fuzz harness `MODULES` (zero
+  non-finite leaks); six unit-test files (≥ 3 boundary worked examples each); six
+  spec-v11 audit logs (`docs/audits/v12/`); the catalog count moves on all
+  catalog-truth surfaces (620 → 626); a11y, mobile-no-hscroll, and 44px
+  touch-target checks pass for `views/group-v139.js`.
+
 ### Added (spec-v138: obstetrics & maternal-fetal medicine — Hadlock EFW, fullPIERS, miniPIERS, AFI, Barnhart hCG rise, IOM weight gain, +6 — spec-v100 Wave 7 **opens**)
 
 - **The obstetrics / maternal-fetal-medicine cluster comes onto the page beside

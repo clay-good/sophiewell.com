@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `70f5fb73c440844c`
-Generated: 2026-06-22T12:12:45.084Z
+Build ID: `1bfcfd83b359dad0`
+Generated: 2026-06-22T15:11:21.001Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=20.18.1 <21, npm >=10.0.0
@@ -24,13 +24,13 @@ downloads is committed in this repository and is hashed below.
 
 | Path | Bytes | SHA-256 |
 |---|---:|---|
-| `index.html` | 51301 | `ba09679f59a1650f416c2915f262a12972ad73058f7072ed996984092fb069e8` |
+| `index.html` | 51548 | `df1b957da51e1780c82f9b2bc1fdd8e367a8c2219052b07b3d861de5370971f4` |
 | `styles.css` | 42819 | `bea421c79d390a364eb571c3a9599cdf28264128d4ac02d7abb00f31000c7cda` |
-| `app.js` | 173945 | `065e18d839e6a14e277f1ef5667dc77fdeb1665b75103d4dc22e0bc723bd5c11` |
+| `app.js` | 175789 | `913234762d9f001c63397126f4f7effe0cdfe4c45f6fde966be2323d19d466fc` |
 | `sw.js` | 4622 | `b891d4344f8e04403b7f1d307fd446cc224bddc6f0c4397438a17d197351171e` |
 | `site.webmanifest` | 709 | `0e0de4da60590a12e8b27a0ae2a2f5ffdb6500b7d2b78f93631ec2f64ed3d5ce` |
 | `robots.txt` | 127 | `38fbf9c1854e72abb20e01e81dd5a31d4ea96f154c12d5db1ec3af05524dd1a1` |
-| `sitemap.xml` | 95773 | `eb6a2ced7dbe5b5e38d30bb40c41adc43fd4a8d332a72f67e2eb61fba6d33206` |
+| `sitemap.xml` | 96689 | `b41d268ebfaea8450fb4b38fae9a6b0787fb28fec1a2ed1d2b407d28e807c77a` |
 | `_headers` | 1316 | `2f39986457d2feff7e73e491a7d09ee871e8f2f4cc2bc437f86bd86a42554ec6` |
 | `logo.png` | 63440 | `11afaf1b0d3ca68393d202e4810bf766b5b6d591b4e3ec52f41d3cacaa4616ec` |
 | `favicon.ico` | 7411 | `407fde0ca2788409e87e11f596fa02e6a0b121817fcea7fd995beec1801e287b` |
@@ -77,6 +77,7 @@ downloads is committed in this repository and is hashed below.
 | `lib/fluidresp-v113.js` | 8525 | `c40f34894d85e2aa6bbe92e153e89e922b8331cd6b6882660f771a3fe9106e1d` |
 | `lib/gi-v126.js` | 15336 | `4f3d35f89a4321f167170e7916646aedf7472b01315e9df2bcc9bc1afa6b3558` |
 | `lib/gli-2012-data.js` | 41979 | `0fa7440b8d9ab03028185d56c7a6bc9e1e753fe3ac396c208eb06f80991ba125` |
+| `lib/gyn-v139.js` | 16713 | `48b43ee6adf613155f263495dbded3c7fc5929d6373190b47bcb2fa2ff47fa69` |
 | `lib/hash.js` | 4585 | `de41dadb11142ea86f1536176e94408ac124ca90305161fe04f1956355512403` |
 | `lib/heme-v132.js` | 15633 | `cdb763411d4705accb2c5f025ac5bb45589d63aa1b7e05411411578d19a615c7` |
 | `lib/hemodynamics-v87.js` | 8607 | `1bc8bc1408afb3fbc602d2748bfa1c8c68eb89fafabb18dd5e9c1a2589ff0276` |
@@ -94,7 +95,7 @@ downloads is committed in this repository and is hashed below.
 | `lib/lymphoma-v135.js` | 16162 | `e29896a6de224445f46839cd06518817bd25d1235a91ede76f77ccb4996a934f` |
 | `lib/medication-v4.js` | 18192 | `467f9576c50da696cc56094eb022d0a5ed1e88de0c7618448554ede8067270b0` |
 | `lib/medication-v5.js` | 18863 | `ce81d9f8954abbd412892c13af9936f992239164f26fd2b999eaea7902787ab7` |
-| `lib/meta.js` | 978646 | `342c48e6505f5031053d90fdaa19ad8104974875496483c4b482b21bf66a7978` |
+| `lib/meta.js` | 985941 | `2bdc94f9f4bbb07614001c25acac87186510b2504aeb4cff32031a3f2e64f4c1` |
 | `lib/metabolic-onc-v88.js` | 12659 | `1553b641668c121661a66647da71a4aaaa023e9f3a6b7a753efbcdab27cdba81` |
 | `lib/nephro-v127.js` | 10884 | `c86865e98fced63ac9510fbebe0de77a88e305366c080a83c9beb8542371932a` |
 | `lib/nephro-v92.js` | 15980 | `64bbc05482eed2ab88816f676ab5e56aefae9d4f5d85d223217a03160d1cc082` |
@@ -192,6 +193,7 @@ downloads is committed in this repository and is hashed below.
 | `views/group-v136.js` | 10944 | `acb24fef721a643833ea92a76ed5eb1b276600902bed2eefdd41bd85e70dc262` |
 | `views/group-v137.js` | 13706 | `60b5442195e7839a453bce4ce963bcd96295e26ccde1d065e21fce1e3fa8b657` |
 | `views/group-v138.js` | 11609 | `18da1d001f259b8b8e3ac1e4132b5a9a7e554a2b91ccf149677add3717451df7` |
+| `views/group-v139.js` | 12885 | `bddb5ec1584cc06108ae4e4480438d4afc51e70cfe3aa30bf458e7fcf13dd1e7` |
 | `views/group-v14.js` | 9817 | `0bda19d811249004152993e204f4139a070c21368eb8dbffff7cad9ca139a70b` |
 | `views/group-v149.js` | 6243 | `1c2ecbbd4a0509a321f03eee88171ecb5e477bf29e253f127a4ffdcaae469117` |
 | `views/group-v15.js` | 9388 | `01c28613e794ec8bed2941659514ad8b75c18c1cb1256d2907644873fcbc53e4` |

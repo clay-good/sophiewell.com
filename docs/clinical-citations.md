@@ -3302,3 +3302,84 @@ underweight twin pregnancy).
 Worked example: a pre-pregnancy weight of two hundred pounds at sixty-four inches gives a
 body-mass index of about thirty-four, in the obese category, with a recommended total gain of
 eleven to twenty pounds for a singleton.
+
+### Flamm VBAC Score
+Citation: Flamm BL, Geiger AM. Vaginal birth after cesarean delivery: an admission scoring
+system. Obstet Gynecol. 1997;90:907-910.
+Rule: an admission scoring system summing five factors known at the start of a trial of labor
+after cesarean -- maternal age under forty scores two, prior vaginal birth scores four when it
+occurred both before and after the first cesarean, two when only after, one when only before,
+and zero when never, the prior cesarean being for a reason other than failure to progress scores
+one, cervical effacement scores two over seventy-five per cent, one from twenty-five to
+seventy-five, and zero under twenty-five, and cervical dilation of four centimeters or more
+scores one. The total of zero to ten maps to a predicted likelihood of a successful vaginal
+birth of about forty-nine per cent at zero to two, sixty at three, sixty-seven at four,
+seventy-seven at five, eighty-nine at six, ninety-three at seven, and ninety-five at eight or
+more. It is the free substitute for the paywalled Grobman MFMU calculator.
+Worked example: a woman under forty with a prior vaginal birth after the first cesarean and
+twenty-five to seventy-five per cent effacement scores five, an estimated success of about
+seventy-seven per cent.
+
+### ROMA (Risk of Ovarian Malignancy Algorithm)
+Citation: Moore RG, McMeekin DS, Brown AK, et al. A novel multiple marker bioassay utilizing HE4
+and CA125 to predict epithelial ovarian cancer in patients with a pelvic mass. Gynecol Oncol.
+2009;112:40-46.
+Rule: a logistic predictive index with natural-log marker terms. Premenopausal the index is
+minus twelve plus two-point-three-eight times the natural log of HE4 plus zero-point-zero-six-
+two-six times the natural log of CA-125; postmenopausal it is minus eight-point-zero-nine plus
+one-point-zero-four times the natural log of HE4 plus zero-point-seven-three-two times the
+natural log of CA-125. ROMA per cent is one hundred times the exponential of the index over one
+plus that exponential. The high-risk cut-point is about thirteen per cent premenopausal and
+twenty-eight per cent postmenopausal, but is assay-platform dependent.
+Worked example: a postmenopausal woman with HE4 of one hundred fifty and CA-125 of one hundred
+has a ROMA of about sixty-two per cent, above the postmenopausal cut-point.
+
+### Risk of Malignancy Index (RMI I/II/III)
+Citation: Jacobs I, Oram D, Fairbanks J, et al. A risk of malignancy index incorporating CA 125,
+ultrasound and menopausal status for the accurate preoperative diagnosis of ovarian cancer. Br J
+Obstet Gynaecol. 1990;97:922-929; Tingulstad 1996/1999 for II and III.
+Rule: the index is the ultrasound score times the menopausal score times CA-125 in units per
+milliliter. The ultrasound features are multilocular cyst, solid areas, bilateral lesions,
+ascites, and intra-abdominal metastases. In RMI one the ultrasound score is zero for no
+features, one for one feature, and three for two to five, and the menopausal score is one
+premenopausal and three postmenopausal. In RMI two the ultrasound score is one for zero or one
+feature and four for two or more, and the menopausal score is one and four. In RMI three the
+ultrasound score is one and three and the menopausal score is one and three. An index over two
+hundred is the conventional high-risk threshold.
+Worked example: RMI one with three features, postmenopausal, and CA-125 of eighty gives three
+times three times eighty, an index of seven hundred twenty, above the threshold.
+
+### IOTA Simple Rules
+Citation: Timmerman D, Testa AC, Bourne T, et al. Simple ultrasound-based rules for the diagnosis
+of ovarian cancer. Ultrasound Obstet Gynecol. 2008;31:681-690.
+Rule: five benign features (unilocular cyst; a solid component under seven millimeters; acoustic
+shadows; a smooth multilocular tumor under one hundred millimeters; no blood flow) and five
+malignant features (irregular solid tumor; ascites; at least four papillary structures; an
+irregular multilocular solid tumor of one hundred millimeters or more; very strong blood flow).
+If one or more benign features apply and no malignant feature, the mass is benign; if one or more
+malignant and no benign, malignant; if both or neither apply it is inconclusive and a second-
+stage test is advised. It is the free substitute for the IOTA ADNEX model.
+Worked example: one benign and one malignant feature both apply, so the mass is inconclusive.
+
+### Rotterdam PCOS Criteria
+Citation: Rotterdam ESHRE/ASRM-Sponsored PCOS Consensus Workshop Group. Revised 2003 consensus on
+diagnostic criteria and long-term health risks related to polycystic ovary syndrome. Hum Reprod.
+2004;19:41-47.
+Rule: polycystic ovary syndrome requires at least two of three features -- oligo- or anovulation,
+clinical or biochemical hyperandrogenism, and polycystic ovarian morphology on ultrasound --
+after the exclusion of mimics such as thyroid disease, hyperprolactinemia, non-classic congenital
+adrenal hyperplasia, and androgen-secreting tumors.
+Worked example: hyperandrogenism and oligo-ovulation in a woman whose mimics have been excluded
+meet the criteria as the phenotype with hyperandrogenism and ovulatory dysfunction.
+
+### POP-Q Staging
+Citation: Bump RC, Mattiasson A, Bø K, et al. The standardization of terminology of female pelvic
+organ prolapse and pelvic floor dysfunction. Am J Obstet Gynecol. 1996;175:10-17.
+Rule: the leading edge, the most positive of points Aa, Ba, C, D, Ap, and Bp measured in
+centimeters relative to the hymen at zero, drives the stage. Stage zero is no descent (the four
+vaginal-wall points at minus three and the cervix or cuff at or above the negative of total
+vaginal length minus two); stage one is a leading edge more than one centimeter above the hymen;
+stage two is within one centimeter of the hymen; stage three is more than one centimeter below
+but not fully everted; stage four is essentially complete eversion.
+Worked example: with the anterior points at plus two and plus three and total vaginal length of
+nine, the leading edge is plus three at Ba, a stage-three prolapse.

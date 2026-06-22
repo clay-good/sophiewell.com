@@ -491,3 +491,22 @@ check-citations issuer acronym set, so these rows are gate-forced.
 |---|---|---|---|---|---|
 | afi | Amniotic Fluid Index oligo/poly thresholds — oligohydramnios < 5 cm, polyhydramnios > 24 cm over the four-quadrant deepest-vertical-pocket sum | Moore & Cayle 1990 method (Am J Obstet Gynecol 162(5):1168-1173) + current ACOG oligo/poly cut-points | same | 2026-06-22 | current — the < 5 cm oligohydramnios and > 24 cm polyhydramnios cut-points are the in-force ACOG-aligned thresholds (some references use > 25 cm for polyhydramnios, noted in the tile); Class B, review on-publication of the next ACOG antenatal-surveillance update. The four-quadrant summation method is fixed |
 | iom-gwg | IOM gestational weight-gain ranges by pre-pregnancy BMI category (singleton + provisional twin) and 2nd/3rd-trimester weekly rates | IOM 2009 "Weight Gain During Pregnancy: Reexamining the Guidelines" (carried in ACOG Committee Opinion 548) | same | 2026-06-22 | current — the 2009 IOM ranges (underweight 28-40, normal 25-35, overweight 15-25, obese 11-20 lb singleton) remain the in-force recommendation carried by ACOG CO 548; Class B, review on-publication of the next IOM/ACOG revision |
+
+## spec-v139 gynecology decision rules (added 2026-06-22)
+
+Four of the six Wave-7 gynecology tiles are Class A fixed published models /
+coefficients, documentation only via their own audit logs: `flamm-vbac` (Flamm &
+Geiger 1997 admission point weights and success bands), `rmi-ovarian` (the Jacobs
+1990 / Tingulstad U×M×CA-125 scaling), `iota-simple-rules` (the Timmerman 2008
+B/M descriptor set), and `popq-staging` (the Bump 1996 leading-edge stage rule).
+The two Class B tiles are `roma-ovarian` and `rotterdam-pcos`: their cut-point /
+diagnostic-criteria definitions are revisable, so each records the edition in
+force, the accessed date, and an on-publication review cadence for the
+check-citation-cadence warn-job. Their citations name a journal + authors and the
+ESHRE/ASRM consensus group, none of which is in the check-citations issuer
+acronym set, so these two rows are documentation only, not gate-forced.
+
+| tile id | instrument | edition shipped | latest known edition | accessed | justification if behind |
+|---|---|---|---|---|---|
+| roma-ovarian | ROMA high-risk cut-points — about 13.1% premenopausal and 27.7% postmenopausal — over the Moore 2009 logistic predictive index (PI with ln(HE4) + ln(CA-125) terms) | Moore 2009 (Gynecol Oncol 112(1):40-46), Architect-platform cut-points | same | 2026-06-22 | current — the predictive-index coefficients are fixed (Moore 2009); the high-risk cut-point is assay-platform dependent and the tile says so, so Class B, review on-publication of the next platform-specific cut-point validation. The logistic form is fixed |
+| rotterdam-pcos | Rotterdam two-of-three PCOS criteria — oligo/anovulation, hyperandrogenism, polycystic ovarian morphology — after exclusion of mimics | 2003 Rotterdam ESHRE/ASRM consensus (Hum Reprod 2004;19(1):41-47) | same | 2026-06-22 | current — the revised 2003 Rotterdam criteria remain the in-force consensus definition carried by ESHRE/ASRM; Class B, review on-publication of the next ESHRE/ASRM PCOS consensus revision. The two-of-three rule and the three features are stable |

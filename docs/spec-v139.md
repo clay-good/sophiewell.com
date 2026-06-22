@@ -1,11 +1,14 @@
 # spec-v139.md — Gynecology: Flamm VBAC, ROMA, RMI, IOTA Simple Rules, Rotterdam PCOS, and POP-Q staging (+6 tiles)
 
-> Status: **PROPOSED (2026-06-17).** Second feature spec of **Wave 7** of the
+> Status: **SHIPPED 2026-06-22.** Second feature spec of **Wave 7** of the
 > [spec-v100](spec-v100.md) MDCalc Parity Completion program. Adds **6**
 > deterministic gynecology decision rules that fill confirmed gaps. None
 > duplicates a live tile.
 >
-> Catalog effect at v139 close: **619 + 6 = 625 tiles.**
+> Catalog effect at v139 close: **620 + 6 = 626 tiles** live (the spec was drafted
+> against a projected 619 baseline; the live catalog stood at 620 when v139
+> shipped, so the per-spec delta of +6 lands the catalog at 626, per the
+> live-count + delta convention).
 >
 > Every prior spec (v4 through v138) remains in force. v139 adds no runtime
 > network call and no AI; each tile obeys the [spec-v100](spec-v100.md) §2

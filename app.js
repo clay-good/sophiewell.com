@@ -68,6 +68,7 @@ import { renderers as RV135 } from './views/group-v135.js';
 import { renderers as RV136 } from './views/group-v136.js';
 import { renderers as RV137 } from './views/group-v137.js';
 import { renderers as RV138 } from './views/group-v138.js';
+import { renderers as RV139 } from './views/group-v139.js';
 import { renderers as RV149 } from './views/group-v149.js';
 import { renderers as RV63 } from './views/group-v63.js';
 import { renderers as RB } from './views/group-b.js';
@@ -87,7 +88,7 @@ import { resolvePrompt } from './lib/prompt.js';
 // artifact-detect / artifact-route / artifact-handoff helpers were
 // deleted in spec-v29 wave 29-2 (Group C/L).
 
-const RENDERERS = { ...RA, ...RB, ...RC, ...RE, ...RF, ...RG, ...RH, ...RI, ...RJ, ...RKLMNO, ...RV5, ...RV6, ...RV7, ...RV8, ...RV9, ...RV10, ...RV11, ...RV12, ...RV13, ...RV14, ...RV15, ...RV16, ...RV17, ...RV18, ...RV19, ...RV20, ...RV21, ...RV22, ...RV23, ...RV24, ...RV25, ...RV26, ...RV27, ...RV28, ...RV29, ...RV30, ...RV31, ...RV32, ...RV33, ...RV34, ...RV35, ...RV36, ...RV37, ...RV38, ...RV39, ...RV40, ...RV117, ...RV118, ...RV119, ...RV120, ...RV121, ...RV122, ...RV123, ...RV124, ...RV125, ...RV126, ...RV127, ...RV128, ...RV129, ...RV130, ...RV131, ...RV132, ...RV133, ...RV134, ...RV135, ...RV136, ...RV137, ...RV138, ...RV149, ...RV63, ...RPALINT };
+const RENDERERS = { ...RA, ...RB, ...RC, ...RE, ...RF, ...RG, ...RH, ...RI, ...RJ, ...RKLMNO, ...RV5, ...RV6, ...RV7, ...RV8, ...RV9, ...RV10, ...RV11, ...RV12, ...RV13, ...RV14, ...RV15, ...RV16, ...RV17, ...RV18, ...RV19, ...RV20, ...RV21, ...RV22, ...RV23, ...RV24, ...RV25, ...RV26, ...RV27, ...RV28, ...RV29, ...RV30, ...RV31, ...RV32, ...RV33, ...RV34, ...RV35, ...RV36, ...RV37, ...RV38, ...RV39, ...RV40, ...RV117, ...RV118, ...RV119, ...RV120, ...RV121, ...RV122, ...RV123, ...RV124, ...RV125, ...RV126, ...RV127, ...RV128, ...RV129, ...RV130, ...RV131, ...RV132, ...RV133, ...RV134, ...RV135, ...RV136, ...RV137, ...RV138, ...RV139, ...RV149, ...RV63, ...RPALINT };
 
 // ----- Utility registry ----------------------------------------------------
 // Source of truth for routes, names, group, audiences, and clinical flag.
@@ -1099,6 +1100,23 @@ const UTILITIES = [
   { id: 'afi',                    name: 'Amniotic Fluid Index (AFI)',                       group: 'E', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'barnhart-hcg',           name: 'Barnhart Minimal hCG Rise (viable IUP)',           group: 'E', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'iom-gwg',                name: 'IOM Gestational Weight Gain',                      group: 'E', audiences: ['clinicians', 'educators'], clinical: true },
+
+  // spec-v139 (Wave 7, second feature spec): the gynecology decision-rule
+  // cluster -- VBAC counseling, adnexal-mass malignancy triage, PCOS, and POP-Q
+  // staging. views/group-v139.js, lib/gyn-v139.js (RV139). All six are Clinical
+  // Scoring & Risk (Group G). flamm-vbac substitutes for the excluded paywalled
+  // Grobman MFMU calculator and iota-simple-rules for the excluded IOTA ADNEX
+  // model (spec-v100 §8). roma-ovarian and rotterdam-pcos are Class B (the assay
+  // cutoff and the ESHRE/ASRM consensus are revisable -> citation-staleness rows);
+  // the other four are Class A. COEFFICIENTS RE-FETCHED, never recalled (spec-v97):
+  // the ROMA pre/post-menopausal logistic with natural-log marker terms, the
+  // RMI I/II/III U and M scaling, and the Flamm admission point weights.
+  { id: 'flamm-vbac',             name: 'Flamm VBAC Score',                                 group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'roma-ovarian',           name: 'ROMA (Risk of Ovarian Malignancy Algorithm)',      group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'rmi-ovarian',            name: 'Risk of Malignancy Index (RMI I/II/III)',          group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'iota-simple-rules',      name: 'IOTA Simple Rules',                                group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'rotterdam-pcos',         name: 'Rotterdam PCOS Criteria',                          group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'popq-staging',           name: 'POP-Q Staging',                                    group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
 
   // spec-v6 §3.3: lab result interpreter. Patient-decoder category.
   { id: 'lab-interpret',       name: 'Lab Result Interpreter',                           group: 'C', audiences: ['patients', 'clinicians', 'educators'], clinical: true },

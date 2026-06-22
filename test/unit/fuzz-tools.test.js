@@ -136,6 +136,7 @@ import * as lymphomaV135 from '../../lib/lymphoma-v135.js';
 import * as endoV136 from '../../lib/endo-v136.js';
 import * as idV137 from '../../lib/id-v137.js';
 import * as obV138 from '../../lib/ob-v138.js';
+import * as gynV139 from '../../lib/gyn-v139.js';
 import * as emsV149 from '../../lib/ems-v149.js';
 
 const MODULES = {
@@ -217,6 +218,7 @@ const MODULES = {
   'endo-v136.js': endoV136,
   'id-v137.js': idV137,
   'ob-v138.js': obV138,
+  'gyn-v139.js': gynV139,
   'ems-v149.js': emsV149,
 };
 
