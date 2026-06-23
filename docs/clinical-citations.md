@@ -3553,3 +3553,54 @@ total from three to fourteen.
 Worked example: an emergency operation (four) in an ASA-four patient for a complex-major procedure
 (five) totals thirteen; higher scores carry a higher in-hospital mortality, with eight or more a
 common high-risk threshold.
+
+### Modified 5-Item Frailty Index (mFI-5)
+Citation: Subramaniam S, Aalberg JJ, Soriano RP, Divino CM. New 5-Factor Modified Frailty Index Using
+American College of Surgeons NSQIP Data. J Am Coll Surg. 2018;226(2):173-181.
+Formula: five accumulated deficits -- diabetes mellitus, hypertension requiring medication, a history
+of COPD or pneumonia, congestive heart failure, and partially or totally dependent functional status
+-- are each counted one point, giving a total from zero to five.
+Worked example: a patient with diabetes and congestive heart failure scores two of five, at or above
+the commonly-cited frailty threshold for elevated postoperative morbidity and mortality; the index
+performs comparably to the original eleven-item version.
+
+### Modified 11-Item Frailty Index (mFI-11)
+Citation: Velanovich V, Antoine H, Swartz A, et al. Accumulating deficits to the point of frailty: a
+national surgical quality improvement program study. J Surg Res. 2013;183(1):104-110.
+Formula: eleven comorbidity and functional deficits are each counted one point and reported as a
+fraction of eleven; a higher accumulated-deficit fraction tracks rising postoperative risk.
+Worked example: a patient with diabetes, congestive heart failure, and a prior myocardial infarction
+scores three of eleven, a frailty index of about twenty-seven per cent. The validated five-item index
+performs comparably.
+
+### FRAIL Scale
+Citation: Morley JE, Malmstrom TK, Miller DK. A simple frailty questionnaire (FRAIL) predicts outcomes
+in middle aged African Americans. J Nutr Health Aging. 2012;16(7):601-608.
+Formula: five items -- Fatigue, Resistance (climbing one flight of stairs), Ambulation (walking one
+block), Illnesses (five or more of eleven listed conditions), and Loss of weight (over five per cent)
+-- are each counted one point, giving a total from zero to five.
+Worked example: fatigue plus difficulty with stairs and walking a block totals three of five, which
+crosses from pre-frail into the frail band (zero robust, one to two pre-frail, three or more frail).
+
+### Vulnerable Elders Survey-13 (VES-13)
+Citation: Saliba D, Elliott M, Rubenstein LZ, et al. The Vulnerable Elders Survey: a tool for
+identifying vulnerable older people in the community. J Am Geriatr Soc. 2001;49(12):1691-1699.
+Formula: a total from zero to ten combines an age band (seventy-five to eighty-four scores one,
+eighty-five or older scores three), fair or poor self-rated health (one), physical-function
+difficulty (one point for each of six tasks rated "a lot" or "unable", capped at two), and a single
+four-point block for any of five activity-of-daily-living disabilities.
+Worked example: an eighty-year-old (one) with fair health (one) and a lot of difficulty walking a
+quarter mile (one) totals three, at the threshold of three or more that flags vulnerability -- about
+a four-fold two-year risk of functional decline or death.
+
+### CARG Chemotherapy Toxicity Tool
+Citation: Hurria A, Togawa K, Mohile SG, et al. Predicting chemotherapy toxicity in older adults with
+cancer: a prospective multicenter study. J Clin Oncol. 2011;29(25):3457-3465.
+Formula: eleven weighted predictors -- age seventy-two or older (two), gastrointestinal or
+genitourinary cancer (two), standard-dose chemotherapy (two), polychemotherapy (two), low haemoglobin
+for sex (three), creatinine clearance below thirty-four (three), hearing fair or worse (two), one or
+more falls in six months (three), needing help with medications (one), walking-one-block limitation
+(two), and decreased social activity (one) -- sum to a score banded low, intermediate, or high.
+Worked example: age seventy-two or older with a gastrointestinal cancer on standard-dose chemotherapy
+totals six, the lower edge of the intermediate band (low zero to five, intermediate six to nine, high
+ten or more), corresponding to about fifty-two per cent grade three to five toxicity.

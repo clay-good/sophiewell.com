@@ -6,6 +6,54 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v143: frailty & geriatric-oncology screening — mFI-5, mFI-11, FRAIL Scale, VES-13, CARG chemo-toxicity, +5 — spec-v100 Wave 8 continues)
+
+- **Five frailty and geriatric-oncology screening instruments continue Wave 8 of
+  the spec-v100 program (641 → 646, +5)**, deepening the `charlson` / `cfs`
+  frailty-comorbidity panel and the `ecog-karnofsky` oncology cluster. All five
+  are in **Clinical Scoring & Risk (Group G)** and all **Class A**, via
+  `lib/frailty-v143.js` + `views/group-v143.js` (`RV143`). Each tile reports the
+  score / risk band and the source's framing and leaves the treat / withhold /
+  optimize decision with the care team and local protocol (spec-v11 §5.3). Every
+  point weight and band cutoff was **re-fetched and cross-verified across ≥ 2
+  independent sources** (the spec-v97 discipline).
+  - **`mfi-5`** — Modified 5-Item Frailty Index (Subramaniam S, Aalberg JJ,
+    Soriano RP, Divino CM, *J Am Coll Surg* 2018): five accumulated deficits
+    (diabetes, hypertension on medication, COPD/pneumonia, CHF, dependent status),
+    one point each, 0–5. A count of **2 or more** is the frailty threshold. The
+    free, published surrogate for the proprietary ACS-NSQIP risk calculator.
+  - **`mfi-11`** — Modified 11-Item Frailty Index (Velanovich V, Antoine H, Swartz
+    A, et al, *J Surg Res* 2013): the original eleven deficits reported as a
+    fraction of 11 (divisor is the fixed constant 11 — no division-by-zero path).
+    Worked: 3 deficits → **3/11, index 27.3%**.
+  - **`frail-scale`** — FRAIL Scale (Morley JE, Malmstrom TK, Miller DK, *J Nutr
+    Health Aging* 2012): Fatigue, Resistance, Ambulation, Illnesses (≥ 5 of 11),
+    Loss of weight (> 5%), one point each → **0 robust, 1–2 pre-frail, ≥ 3 frail**.
+  - **`ves-13`** — Vulnerable Elders Survey-13 (Saliba D, Elliott M, Rubenstein LZ,
+    et al, *J Am Geriatr Soc* 2001): total 0–10 = age (75–84 = 1, ≥ 85 = 3) +
+    fair/poor self-rated health (1) + physical function (1 per task rated "a lot"/
+    "unable", **capped at 2**) + a single **4-point all-or-nothing** block for any
+    of five ADL/IADL disabilities. **≥ 3 = vulnerable** (~4.2-fold two-year risk of
+    decline/death). The 4-point disability rule (not the 1 point printed by two
+    online reproductions) and the 75–84 age band (not "73–84") were restored from
+    the original Saliba definition — the only allocation that yields the canonical
+    0–10 range. Worked: age 80 + fair health + one "a lot" task → **3, vulnerable**.
+  - **`carg-toxicity`** — CARG Chemotherapy Toxicity Tool (Hurria A, Togawa K,
+    Mohile SG, et al, *J Clin Oncol* 2011, Table 4): eleven weighted predictors —
+    haemoglobin, creatinine clearance < 34, and falls are each **3 points**; age
+    ≥ 72, GI/GU cancer, standard-dose chemo, polychemotherapy, hearing, and walking
+    limitation each **2**; medication help and decreased social activity each **1**
+    — banded **low 0–5 (~30%), intermediate 6–9 (~52%), high ≥ 10 (~83%)** grade
+    3–5 toxicity. CrCl is a banded yes/no (does not shadow `cockcroft-gault`, which
+    is cross-linked). Worked: age ≥ 72 + GI cancer + standard-dose → **6,
+    intermediate**.
+- **Tests / gates.** Five unit suites (`mfi-5`, `mfi-11`, `frail-scale`, `ves-13`,
+  `carg-toxicity`) with ≥ 3 boundary worked examples each (mFI-5 ≥ 2 frail flip,
+  FRAIL 2→3 boundary, VES-13 ≥ 3 vulnerable flip, CARG low→intermediate band
+  change); `lib/frailty-v143.js` added to the `fuzz-tools` MODULES list (zero
+  non-finite leaks). The catalog count moves on all 13 catalog-truth surfaces.
+  spec-v11 audit logs under `docs/audits/v12/`.
+
 ### Added (spec-v142: surgical & anesthetic risk — POSSUM, P-POSSUM, SORT, Goldman, Wilson airway, Surgical Risk Scale, +6 — spec-v100 Wave 8 **opens**)
 
 - **Six classic surgical / anesthetic risk instruments open Wave 8 of the

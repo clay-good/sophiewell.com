@@ -1,6 +1,6 @@
 # spec-v143.md — Frailty & geriatric-oncology screening: mFI-5, mFI-11, FRAIL Scale, VES-13, and CARG chemo-toxicity (+5 tiles)
 
-> Status: **PROPOSED (2026-06-17).** Feature spec of the
+> Status: **SHIPPED (2026-06-23, 641 → 646).** Feature spec of the
 > [spec-v100](spec-v100.md) **MDCalc Parity Completion** program, **Wave 8**
 > (Surgery / anesthesia / ortho / rheum / geriatrics / pharmacy). Adds **5**
 > deterministic frailty and geriatric-oncology screening instruments that fill
