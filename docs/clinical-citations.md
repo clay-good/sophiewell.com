@@ -3447,3 +3447,46 @@ Rule: the expected bladder capacity in millilitres equals the age in years plus 
 thirty. It is the standard reference estimate for children roughly one to twelve years; the
 formula guards a negative age.
 Worked example: a four-year-old has an expected bladder capacity of one hundred eighty millilitres.
+
+### Pediatric BMI-for-Age Percentile and z-score (CDC 2000)
+Citation: Kuczmarski RJ, Ogden CL, Guo SS, et al. 2000 CDC growth charts for the United States:
+methods and development. Vital Health Stat 11. 2002;(246):1-190. LMS coefficients transcribed
+verbatim from the CDC NCHS published percentile data files (bmiagerev), cross-verified against the
+CDC published percentile columns.
+Formula: z = ((BMI/M)^L - 1) / (L*S), with the L -> 0 limit z = ln(BMI/M)/S; the percentile is the
+standard-normal CDF of z. L, M, and S are the age- and sex-specific CDC LMS values, interpolated
+between tabulated single-month ages (24 to 240.5 months). Bands per the CDC cutoffs: under the
+fifth percentile underweight, fifth to under the eighty-fifth healthy weight, eighty-fifth to
+under the ninety-fifth overweight, ninety-fifth percentile or above obese.
+Worked example: a sixteen-year-old boy with a BMI of thirty is at the ninety-eighth percentile
+(z 1.97), obese.
+
+### WHO Growth z-score, weight/length-for-age (WHO 2006)
+Citation: WHO Multicentre Growth Reference Study Group. WHO Child Growth Standards based on
+length/height, weight and age. Acta Paediatr Suppl. 2006;450:76-85. LMS tables transcribed verbatim
+from the WHO 2006 standard as redistributed in the CDC NCHS WHO growth-chart data files (weight-for-
+age and length-for-age, birth to twenty-four months), cross-verified against the WHO indicator
+tables.
+Formula: z = ((X/M)^L - 1) / (L*S); length-for-age uses L = 1. The WHO flags a z-score below minus
+two as low (underweight for weight-for-age, stunted for length-for-age) and below minus three as
+severely low; above plus two is high.
+Worked example: a six-month-old boy weighing five and a half kilograms is at z minus 3.27, severely
+low.
+
+### Mid-Parental Target Height (Tanner)
+Citation: Tanner JM, Goldstein H, Whitehouse RH. Standards for children's height at ages 2-9 years
+allowing for height of parents. Arch Dis Child. 1970;45(244):755-762.
+Formula: for a boy, predicted adult height = (father + mother + 13) / 2 cm; for a girl,
+(father + mother - 13) / 2 cm; the child's adult height is expected within about plus or minus 8.5
+cm (roughly the third to ninety-seventh percentile target range).
+Worked example: a boy with a mother of one hundred sixty-five centimetres and a father of one
+hundred eighty has a target height of one hundred seventy-nine centimetres (range 170.5 to 187.5).
+
+### Corrected Gestational Age (AAP)
+Citation: Engle WA; American Academy of Pediatrics Committee on Fetus and Newborn. Age terminology
+during the perinatal period. Pediatrics. 2004;114(5):1362-1364.
+Formula: corrected age = chronological age - (40 - gestational age at birth in weeks). It aligns
+developmental expectations with a forty-week term reference and is conventionally applied through
+about twenty-four months.
+Worked example: a twenty-eight-week preemie at six months chronological age has a corrected age of
+3.2 months (twelve weeks of prematurity subtracted).

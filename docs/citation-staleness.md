@@ -510,3 +510,22 @@ acronym set, so these two rows are documentation only, not gate-forced.
 |---|---|---|---|---|---|
 | roma-ovarian | ROMA high-risk cut-points — about 13.1% premenopausal and 27.7% postmenopausal — over the Moore 2009 logistic predictive index (PI with ln(HE4) + ln(CA-125) terms) | Moore 2009 (Gynecol Oncol 112(1):40-46), Architect-platform cut-points | same | 2026-06-22 | current — the predictive-index coefficients are fixed (Moore 2009); the high-risk cut-point is assay-platform dependent and the tile says so, so Class B, review on-publication of the next platform-specific cut-point validation. The logistic form is fixed |
 | rotterdam-pcos | Rotterdam two-of-three PCOS criteria — oligo/anovulation, hyperandrogenism, polycystic ovarian morphology — after exclusion of mimics | 2003 Rotterdam ESHRE/ASRM consensus (Hum Reprod 2004;19(1):41-47) | same | 2026-06-22 | current — the revised 2003 Rotterdam criteria remain the in-force consensus definition carried by ESHRE/ASRM; Class B, review on-publication of the next ESHRE/ASRM PCOS consensus revision. The two-of-three rule and the three features are stable |
+
+## spec-v141 pediatric growth z-scores (added 2026-06-23)
+
+Both growth-percentile instruments added this wave are **Class A** — their L/M/S tables are
+**fixed, frozen historical reference standards** (the CDC 2000 growth charts and
+the WHO 2006 Child Growth Standards), transcribed verbatim into
+`lib/growth-lms-data.js`. No revision is expected: the CDC 2000 set is the
+published U.S. reference and the WHO 2006 standard is the published international
+standard; neither is reissued on a cadence. These rows exist only because the
+citations name "CDC" / "WHO", which the check-citations issuer-acronym set
+matches (gate-forced, like the v138 ACOG rows) — they are documentation, not a
+signal that the coefficients drift. The other two v141 instruments, `mid-parental-height`
+(Tanner 1970) and `corrected-age` (AAP/Engle 2004), carry no issuer acronym and
+need no row.
+
+| tile id | instrument | edition shipped | latest known edition | accessed | justification if behind |
+|---|---|---|---|---|---|
+| peds-bmi-percentile | CDC BMI-for-age L/M/S table (ages 24-240.5 mo, by sex) feeding the z = ((BMI/M)^L − 1)/(L·S) transform | 2000 CDC growth charts (Kuczmarski 2002, Vital Health Stat 11(246)), CDC NCHS LMS data files | same | 2026-06-23 | current — the 2000 CDC LMS coefficients are a fixed historical reference standard, not reissued on a cadence; Class A, no update expected. Row is gate-forced by the "CDC" acronym in the citation, not by any drift risk |
+| who-growth-zscore | WHO weight-for-age and length-for-age L/M/S tables (birth-24 mo, by sex) feeding the LMS z-transform (length uses L = 1) | WHO 2006 Child Growth Standards (WHO MGRS, Acta Paediatr Suppl 2006;450), CDC NCHS WHO data files | same | 2026-06-23 | current — the WHO 2006 LMS coefficients are a fixed international reference standard, not reissued on a cadence; Class A, no update expected. Row is gate-forced by the "WHO" acronym in the citation, not by any drift risk |

@@ -1,11 +1,31 @@
 # spec-v141.md — Pediatric growth & dosing: CDC BMI-for-age percentile, WHO growth z-score, mid-parental height, corrected age, APLS weight estimation, and the Gail/BCRAT model (+6 tiles)
 
-> Status: **PROPOSED (2026-06-17).** Fourth and final feature spec of **Wave 7**
-> of the [spec-v100](spec-v100.md) MDCalc Parity Completion program. Adds **6**
-> deterministic pediatric growth, dosing, and risk instruments that fill confirmed
-> gaps. None duplicates a live tile.
+> Status: **SHIPPED (2026-06-23) — 4 of the 6 proposed tiles.** Fourth and final
+> feature spec of **Wave 7** of the [spec-v100](spec-v100.md) MDCalc Parity
+> Completion program.
 >
-> Catalog effect at v141 close: **631 + 6 = 637 tiles** — the Wave 7 end state.
+> **What shipped (+4, catalog 631 → 635):** `peds-bmi-percentile`,
+> `who-growth-zscore`, `mid-parental-height`, `corrected-age` — all Group E, all
+> Class A, via `lib/peds-growth-v141.js` + `views/group-v141.js` (`RV141`) reading
+> the verbatim CDC 2000 / WHO 2006 LMS tables compiled into
+> `lib/growth-lms-data.js`.
+>
+> **What did NOT ship.** §2.5 **`peds-weight-est` is SKIPPED** — the
+> spec-v85 §6.2 collision check at implementation found it **already live** from
+> spec-v149 (Group I, the APLS age-based weight estimate). Re-adding it would
+> duplicate a live tile, which the spec-v100 "none duplicates a live tile"
+> doctrine forbids. §2.6 **`gail-bcrat` is DEFERRED** on source-governance +
+> safety grounds: the NCI Gail/BCRAT model's race-specific composite-incidence
+> (λ1) and competing-mortality (λ2) tables ship only as binary `.rda` objects in
+> the public-domain NCI BCRA package — not verbatim-fetchable to cross-verify per
+> the spec-v97 ≥2-source rule — and its recode / relative-risk / attributable-risk
+> pipeline is intricate enough that a subtly-wrong cancer-risk percentage is a real
+> harm. Parked alongside `crib-ii` / `gwtg-hf` / ROKS until the coefficient block
+> can be sourced and cross-verified verbatim.
+>
+> Catalog effect at v141 close: **631 + 4 = 635 tiles** — the Wave 7 end state.
+> (The original projection of 637 assumed all six; the two unshipped tiles above
+> account for the difference.)
 >
 > Every prior spec (v4 through v140) remains in force. v141 adds no runtime
 > network call and no AI; each tile obeys the [spec-v100](spec-v100.md) §2

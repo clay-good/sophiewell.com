@@ -6,6 +6,52 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v141: pediatric growth & developmental-age — CDC BMI-for-age percentile, WHO growth z-score, mid-parental height, corrected age, +4 — spec-v100 Wave 7 **complete**)
+
+- **The pediatric growth / developmental-age cluster closes Wave 7 of the
+  spec-v100 program (631 → 635, +4).** Four deterministic tiles via
+  `lib/peds-growth-v141.js` + `views/group-v141.js` (`RV141`), all in **Clinical
+  Math & Conversions (Group E)** and all **Class A**. The CDC 2000 and WHO 2006
+  LMS (λ-μ-σ) tables are compiled constants in a new module
+  `lib/growth-lms-data.js`, transcribed **byte-for-byte** from the published CDC
+  NCHS / WHO MGRS data files (re-fetched, never recalled — the spec-v97
+  discipline; the data module header records the per-table source and accessed
+  date). Each tile reports the percentile / z-score / target / corrected age and
+  the source's framing and leaves the growth, feeding, and referral decision with
+  the clinician (spec-v11 §5.3).
+  - **`peds-bmi-percentile`** — Pediatric BMI-for-age percentile & z-score (2000
+    CDC growth charts; Kuczmarski RJ, Ogden CL, Guo SS, et al, *Vital Health Stat
+    11* 2002). The measured BMI (entered directly, or computed from weight +
+    height) is converted to an age- and sex-specific z-score by the CDC LMS
+    transform `z = ((BMI/M)^L − 1) / (L·S)`; the percentile is the standard-normal
+    CDF of z. Bands per the CDC cutoffs (under 5th underweight, 5th–<85th healthy,
+    85th–<95th overweight, ≥95th obese). Worked: 16 y boy, BMI 30 → **98th
+    percentile (z 1.97), obese**. Ages 2–20 y.
+  - **`who-growth-zscore`** — WHO weight/length-for-age z-score (WHO Child Growth
+    Standards; WHO MGRS, *Acta Paediatr Suppl* 2006). The WHO LMS transform
+    (length-for-age uses L = 1) returns the z-score and percentile with the WHO
+    low (z < −2) / severely-low (z < −3) bands. Worked: 6 mo boy, 5.5 kg → **z
+    −3.27, severely low**. Ages 0–24 mo.
+  - **`mid-parental-height`** — Mid-parental target height (Tanner JM, Goldstein H,
+    Whitehouse RH, *Arch Dis Child* 1970): boy `(father + mother + 13)/2`, girl
+    `(father + mother − 13)/2`, with the **± 8.5 cm** target range (the spec
+    draft's "± 6.5 cm" was corrected to the source value). Worked: boy, mother
+    165 + father 180 → **179 cm (170.5–187.5)**.
+  - **`corrected-age`** — Corrected gestational age (Engle WA; AAP Committee on
+    Fetus and Newborn, *Pediatrics* 2004): corrected age = chronological age −
+    (40 − GA at birth). Worked: 28-week preemie at 6 mo → **3.2 mo corrected**.
+    Conventionally applied through ~24 months.
+  - **Scope — 4 of the 6 proposed tiles shipped.** `peds-weight-est` (the APLS
+    age-based weight estimate) is **skipped**: it is already live from spec-v149
+    (Group I), so re-adding it would duplicate a live tile (the spec-v85 §6.2
+    collision check). `gail-bcrat` (the NCI Gail/BCRAT 5-year breast-cancer risk
+    model) is **deferred**: its race-specific composite-incidence and
+    competing-mortality tables ship only as binary `.rda` objects in the
+    public-domain NCI BCRA package — not verbatim-fetchable to cross-verify per
+    spec-v97 — and a subtly-wrong cancer-risk percentage is a real harm. Parked
+    alongside `crib-ii` / `gwtg-hf` / ROKS until the coefficient block can be
+    sourced and cross-verified verbatim.
+
 ### Added (spec-v140: pediatric & neonatal severity — Kaiser EOS, SNAPPE-II, RDAI/Tal, Clinical Dehydration Scale, Koff bladder capacity, +5 — spec-v100 Wave 7)
 
 - **The pediatric / neonatal severity cluster comes onto the page, continuing

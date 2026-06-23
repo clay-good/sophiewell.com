@@ -70,6 +70,7 @@ import { renderers as RV137 } from './views/group-v137.js';
 import { renderers as RV138 } from './views/group-v138.js';
 import { renderers as RV139 } from './views/group-v139.js';
 import { renderers as RV140 } from './views/group-v140.js';
+import { renderers as RV141 } from './views/group-v141.js';
 import { renderers as RV149 } from './views/group-v149.js';
 import { renderers as RV63 } from './views/group-v63.js';
 import { renderers as RB } from './views/group-b.js';
@@ -89,7 +90,7 @@ import { resolvePrompt } from './lib/prompt.js';
 // artifact-detect / artifact-route / artifact-handoff helpers were
 // deleted in spec-v29 wave 29-2 (Group C/L).
 
-const RENDERERS = { ...RA, ...RB, ...RC, ...RE, ...RF, ...RG, ...RH, ...RI, ...RJ, ...RKLMNO, ...RV5, ...RV6, ...RV7, ...RV8, ...RV9, ...RV10, ...RV11, ...RV12, ...RV13, ...RV14, ...RV15, ...RV16, ...RV17, ...RV18, ...RV19, ...RV20, ...RV21, ...RV22, ...RV23, ...RV24, ...RV25, ...RV26, ...RV27, ...RV28, ...RV29, ...RV30, ...RV31, ...RV32, ...RV33, ...RV34, ...RV35, ...RV36, ...RV37, ...RV38, ...RV39, ...RV40, ...RV117, ...RV118, ...RV119, ...RV120, ...RV121, ...RV122, ...RV123, ...RV124, ...RV125, ...RV126, ...RV127, ...RV128, ...RV129, ...RV130, ...RV131, ...RV132, ...RV133, ...RV134, ...RV135, ...RV136, ...RV137, ...RV138, ...RV139, ...RV140, ...RV149, ...RV63, ...RPALINT };
+const RENDERERS = { ...RA, ...RB, ...RC, ...RE, ...RF, ...RG, ...RH, ...RI, ...RJ, ...RKLMNO, ...RV5, ...RV6, ...RV7, ...RV8, ...RV9, ...RV10, ...RV11, ...RV12, ...RV13, ...RV14, ...RV15, ...RV16, ...RV17, ...RV18, ...RV19, ...RV20, ...RV21, ...RV22, ...RV23, ...RV24, ...RV25, ...RV26, ...RV27, ...RV28, ...RV29, ...RV30, ...RV31, ...RV32, ...RV33, ...RV34, ...RV35, ...RV36, ...RV37, ...RV38, ...RV39, ...RV40, ...RV117, ...RV118, ...RV119, ...RV120, ...RV121, ...RV122, ...RV123, ...RV124, ...RV125, ...RV126, ...RV127, ...RV128, ...RV129, ...RV130, ...RV131, ...RV132, ...RV133, ...RV134, ...RV135, ...RV136, ...RV137, ...RV138, ...RV139, ...RV140, ...RV141, ...RV149, ...RV63, ...RPALINT };
 
 // ----- Utility registry ----------------------------------------------------
 // Source of truth for routes, names, group, audiences, and clinical flag.
@@ -1138,6 +1139,25 @@ const UTILITIES = [
   { id: 'rdai-tal',               name: 'RDAI / Tal Bronchiolitis Severity',                group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'clinical-dehydration-scale', name: 'Clinical Dehydration Scale (CDS)',             group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'koff-bladder-capacity',  name: 'Koff Expected Bladder Capacity',                   group: 'E', audiences: ['clinicians', 'educators'], clinical: true },
+
+  // spec-v141 (Wave 7, fourth and final feature spec): pediatric growth and
+  // developmental-age instruments. views/group-v141.js, lib/peds-growth-v141.js
+  // (RV141), reading the verbatim CDC 2000 / WHO 2006 LMS tables compiled into
+  // lib/growth-lms-data.js. All four are Clinical Math & Conversions (Group E),
+  // all Class A. The LMS coefficients are re-fetched, never recalled (spec-v97):
+  // transcribed byte-for-byte from the published CDC NCHS / WHO MGRS data files.
+  // SCOPE: spec-v141 proposed six tiles; two are not shipped here. peds-weight-est
+  // (APLS) is ALREADY LIVE from spec-v149 (Group I) -- re-adding it would
+  // duplicate a live tile (spec-v85 §6.2 collision check), so it is skipped.
+  // gail-bcrat (NCI Gail/BCRAT) is DEFERRED: its race-specific incidence and
+  // competing-mortality tables ship only as binary .rda in the NCI BCRA package
+  // (not verbatim-fetchable to cross-verify per spec-v97) and a subtly-wrong
+  // cancer-risk percentage is a real harm -- parked with crib-ii. See
+  // lib/peds-growth-v141.js header and docs/spec-v141.md.
+  { id: 'peds-bmi-percentile',    name: 'Pediatric BMI-for-Age Percentile (CDC)',           group: 'E', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'who-growth-zscore',      name: 'WHO Growth z-Score (0-2 yr)',                      group: 'E', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'mid-parental-height',    name: 'Mid-Parental Target Height',                       group: 'E', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'corrected-age',          name: 'Corrected Gestational Age',                        group: 'E', audiences: ['clinicians', 'educators'], clinical: true },
 
   // spec-v6 §3.3: lab result interpreter. Patient-decoder category.
   { id: 'lab-interpret',       name: 'Lab Result Interpreter',                           group: 'C', audiences: ['patients', 'clinicians', 'educators'], clinical: true },
