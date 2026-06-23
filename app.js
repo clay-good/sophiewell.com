@@ -71,6 +71,7 @@ import { renderers as RV138 } from './views/group-v138.js';
 import { renderers as RV139 } from './views/group-v139.js';
 import { renderers as RV140 } from './views/group-v140.js';
 import { renderers as RV141 } from './views/group-v141.js';
+import { renderers as RV142 } from './views/group-v142.js';
 import { renderers as RV149 } from './views/group-v149.js';
 import { renderers as RV63 } from './views/group-v63.js';
 import { renderers as RB } from './views/group-b.js';
@@ -90,7 +91,7 @@ import { resolvePrompt } from './lib/prompt.js';
 // artifact-detect / artifact-route / artifact-handoff helpers were
 // deleted in spec-v29 wave 29-2 (Group C/L).
 
-const RENDERERS = { ...RA, ...RB, ...RC, ...RE, ...RF, ...RG, ...RH, ...RI, ...RJ, ...RKLMNO, ...RV5, ...RV6, ...RV7, ...RV8, ...RV9, ...RV10, ...RV11, ...RV12, ...RV13, ...RV14, ...RV15, ...RV16, ...RV17, ...RV18, ...RV19, ...RV20, ...RV21, ...RV22, ...RV23, ...RV24, ...RV25, ...RV26, ...RV27, ...RV28, ...RV29, ...RV30, ...RV31, ...RV32, ...RV33, ...RV34, ...RV35, ...RV36, ...RV37, ...RV38, ...RV39, ...RV40, ...RV117, ...RV118, ...RV119, ...RV120, ...RV121, ...RV122, ...RV123, ...RV124, ...RV125, ...RV126, ...RV127, ...RV128, ...RV129, ...RV130, ...RV131, ...RV132, ...RV133, ...RV134, ...RV135, ...RV136, ...RV137, ...RV138, ...RV139, ...RV140, ...RV141, ...RV149, ...RV63, ...RPALINT };
+const RENDERERS = { ...RA, ...RB, ...RC, ...RE, ...RF, ...RG, ...RH, ...RI, ...RJ, ...RKLMNO, ...RV5, ...RV6, ...RV7, ...RV8, ...RV9, ...RV10, ...RV11, ...RV12, ...RV13, ...RV14, ...RV15, ...RV16, ...RV17, ...RV18, ...RV19, ...RV20, ...RV21, ...RV22, ...RV23, ...RV24, ...RV25, ...RV26, ...RV27, ...RV28, ...RV29, ...RV30, ...RV31, ...RV32, ...RV33, ...RV34, ...RV35, ...RV36, ...RV37, ...RV38, ...RV39, ...RV40, ...RV117, ...RV118, ...RV119, ...RV120, ...RV121, ...RV122, ...RV123, ...RV124, ...RV125, ...RV126, ...RV127, ...RV128, ...RV129, ...RV130, ...RV131, ...RV132, ...RV133, ...RV134, ...RV135, ...RV136, ...RV137, ...RV138, ...RV139, ...RV140, ...RV141, ...RV142, ...RV149, ...RV63, ...RPALINT };
 
 // ----- Utility registry ----------------------------------------------------
 // Source of truth for routes, names, group, audiences, and clinical flag.
@@ -646,6 +647,20 @@ const UTILITIES = [
   { id: 'arozullah-pneumonia',    name: 'Arozullah Postoperative Pneumonia Risk Index',     group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'el-ganzouri',            name: 'El-Ganzouri Risk Index (difficult intubation)',    group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'pospom',                 name: 'POSPOM (preoperative postoperative-mortality score)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+
+  // spec-v142 (Wave 8 of spec-v100, program-opening): six classic surgical /
+  // anesthetic risk instruments beside the modern periop cluster above. POSSUM
+  // and its Portsmouth recalibration drive logistic morbidity/mortality
+  // equations; SORT is the modern six-variable bedside mortality estimate;
+  // Goldman is the 1977 ancestor of rcri; Wilson is an anatomic difficult-airway
+  // predictor distinct from el-ganzouri; the Surgical Risk Scale is the
+  // CEPOD+ASA+BUPA audit score. views/group-v142.js, lib/surg-v142.js (RV142).
+  { id: 'possum',                 name: 'POSSUM (operative morbidity & mortality)',          group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'p-possum',               name: 'P-POSSUM (Portsmouth-recalibrated mortality)',      group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'sort',                   name: 'Surgical Outcome Risk Tool (SORT)',                 group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'goldman-cardiac-risk',   name: 'Goldman Cardiac Risk Index',                        group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'wilson-airway',          name: 'Wilson Risk Sum Score (difficult intubation)',      group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'surgical-risk-scale',    name: 'Surgical Risk Scale (Sutton)',                      group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
 
   // spec-v98 (Wave 2 of spec-v85): four deterministic pediatric decision rules
   // and prognostic scores that fill confirmed gaps after a full sweep of Group N

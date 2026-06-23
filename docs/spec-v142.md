@@ -1,6 +1,6 @@
 # spec-v142.md — Surgical & anesthetic risk: POSSUM, P-POSSUM, SORT, Goldman cardiac risk, Wilson airway, and Surgical Risk Scale (+6 tiles)
 
-> Status: **PROPOSED (2026-06-17).** Feature spec of the
+> Status: **SHIPPED (2026-06-23, 635 → 641).** Feature spec of the
 > [spec-v100](spec-v100.md) **MDCalc Parity Completion** program, **Wave 8**
 > (Surgery / anesthesia / ortho / rheum / geriatrics / pharmacy). Adds **6**
 > deterministic perioperative risk instruments that fill confirmed gaps. None

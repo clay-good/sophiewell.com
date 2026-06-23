@@ -6,6 +6,49 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v142: surgical & anesthetic risk — POSSUM, P-POSSUM, SORT, Goldman, Wilson airway, Surgical Risk Scale, +6 — spec-v100 Wave 8 **opens**)
+
+- **Six classic surgical / anesthetic risk instruments open Wave 8 of the
+  spec-v100 program (635 → 641, +6)**, beside the modern perioperative cluster
+  (`rcri` / `gupta-mica` / `ariscat` / `pospom` / `asa-ps` / `el-ganzouri`). All
+  six are in **Clinical Scoring & Risk (Group G)** and all **Class A**, via
+  `lib/surg-v142.js` + `views/group-v142.js` (`RV142`). Every coefficient and
+  point-band was **re-fetched and cross-verified across ≥ 2 independent sources**
+  (the spec-v97 discipline). Each tile reports the score / predicted risk and the
+  source's framing and leaves the operative proceed / optimize / cancel decision
+  with the surgeon, anesthetist, and local protocol (spec-v11 §5.3).
+  - **`possum`** — POSSUM (Copeland GP, Jones D, Walters M, *Br J Surg* 1991). The
+    12 physiological + 6 operative variables (each graded 1/2/4/8) give a
+    physiological score (12–88) and operative score (6–48) that drive **two**
+    logistic equations — morbidity `ln[R/(1−R)] = −5.91 + 0.16·phys + 0.19·op` and
+    mortality `ln[R/(1−R)] = −7.04 + 0.13·phys + 0.16·op`. Worked: phys 32 / op 18
+    (mortality logit exactly 0) → **morbidity 93.3%, mortality 50.0%**.
+  - **`p-possum`** — Portsmouth POSSUM (Prytherch DR, Whiteley MS, Higgins B, et
+    al, *Br J Surg* 1998): the recalibrated mortality `ln[R/(1−R)] = −9.065 +
+    0.1692·phys + 0.1550·op` on the identical 18 variables, shown beside the
+    original POSSUM mortality so the low-risk over-prediction is visible. Worked:
+    minimum 12 / 6 scores → **P-POSSUM 0.2% vs POSSUM 1.1%**.
+  - **`sort`** — Surgical Outcome Risk Tool (Protopapa KL, Simpson JC, Smith NCE,
+    Moonesinghe SR, *Br J Surg* 2014): a six-variable logistic 30-day-mortality
+    estimate, `logit = −7.366 + ASA + urgency + 0.712 high-risk specialty + 0.381
+    Xmajor/complex + 0.667 cancer + age`. **ASA I and II share the reference** (no
+    ASA-II coefficient) and the **age bands are mutually exclusive** (corrections
+    to the spec draft). Worked: ASA III, urgent, high-risk, Xmajor, cancer, 65–79
+    → **14.67%**.
+  - **`goldman-cardiac-risk`** — Goldman Cardiac Risk Index (Goldman L, Caldera DL,
+    Nussbaum SR, et al, *N Engl J Med* 1977), the ancestor of the RCRI: nine
+    weighted factors → 0–53 → Class I (0–5) / II (6–12) / III (13–25) / IV (≥26).
+    Worked: MI < 6 mo (10) + intraperitoneal op (3) = **13 → Class III (~14%)**.
+  - **`wilson-airway`** — Wilson Risk Sum Score (Wilson ME, Spiegelhalter D,
+    Robertson JA, Lesser P, *Br J Anaesth* 1988): five anatomic factors each 0–2 →
+    0–10; the derivation's score-above-2 cut identified ~75% of difficult
+    intubations. Distinct from `el-ganzouri`. Worked: weight > 110 kg → **2/10**.
+  - **`surgical-risk-scale`** — Surgical Risk Scale (Sutton R, Bann S, Brooks M,
+    Sarin S, *Br J Surg* 2002): CEPOD urgency (1–4) + ASA grade (1–5) + BUPA
+    operative magnitude (1–5) → **3–14** (the spec draft's "3–17" corrected to the
+    source value); ≥ 8 is a common high-risk threshold. No mortality probability is
+    shipped — the only published full equation carries a single-source intercept.
+
 ### Added (spec-v141: pediatric growth & developmental-age — CDC BMI-for-age percentile, WHO growth z-score, mid-parental height, corrected age, +4 — spec-v100 Wave 7 **complete**)
 
 - **The pediatric growth / developmental-age cluster closes Wave 7 of the

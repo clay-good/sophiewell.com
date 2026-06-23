@@ -3490,3 +3490,66 @@ developmental expectations with a forty-week term reference and is conventionall
 about twenty-four months.
 Worked example: a twenty-eight-week preemie at six months chronological age has a corrected age of
 3.2 months (twelve weeks of prematurity subtracted).
+
+### POSSUM (Physiological and Operative Severity Score)
+Citation: Copeland GP, Jones D, Walters M. POSSUM: a scoring system for surgical audit. Br J
+Surg. 1991;78(3):355-360.
+Formula: twelve physiological and six operative variables are each graded one, two, four, or
+eight points; the physiological score and operative score drive two logistic equations -- predicted
+morbidity ln[R/(1-R)] = minus five point nine one + zero point one six times physiological + zero
+point one nine times operative, and predicted mortality ln[R/(1-R)] = minus seven point zero four +
+zero point one three times physiological + zero point one six times operative.
+Worked example: a physiological score of thirty-two and an operative score of eighteen give a
+mortality logit of exactly zero -- predicted thirty-day morbidity ninety-three point three per cent
+and mortality fifty per cent.
+
+### P-POSSUM (Portsmouth POSSUM)
+Citation: Prytherch DR, Whiteley MS, Higgins B, et al. POSSUM and Portsmouth POSSUM for predicting
+mortality. Br J Surg. 1998;85(9):1217-1220.
+Formula: the identical eighteen POSSUM variables drive a recalibrated mortality equation,
+ln[R/(1-R)] = minus nine point zero six five + zero point one six nine two times physiological + zero
+point one five five zero times operative; there is no separate morbidity equation.
+Worked example: at the minimum physiological score of twelve and operative score of six, P-POSSUM
+predicts about zero point two per cent mortality where the original POSSUM predicts about one point
+one -- the low-risk over-prediction P-POSSUM corrects.
+
+### SORT (Surgical Outcome Risk Tool)
+Citation: Protopapa KL, Simpson JC, Smith NCE, Moonesinghe SR. Development and validation of the
+Surgical Outcome Risk Tool (SORT).
+Br J Surg. 2014;101(13):1774-1783.
+Formula: thirty-day mortality is one over one plus e to the minus logit, where the logit is minus
+seven point three six six plus the ASA term (ASA three, four, and five only -- ASA one and two are
+the reference), plus the urgency term, plus a high-risk-specialty term, plus a high-severity term,
+plus a cancer term, plus a mutually-exclusive age term.
+Worked example: an ASA-three urgent operation in a high-risk specialty of high severity with cancer
+in a sixty-five-to-seventy-nine-year-old gives a predicted thirty-day mortality of fourteen point
+six seven per cent.
+
+### Goldman Cardiac Risk Index
+Citation: Goldman L, Caldera DL, Nussbaum SR, et al. Multifactorial index of cardiac risk in
+noncardiac surgical procedures. N Engl J Med. 1977;297(16):845-850.
+Formula: nine weighted clinical factors sum to a total out of fifty-three and map to Class one
+(none to five points), two (six to twelve), three (thirteen to twenty-five), and four (twenty-six or
+more), each with the source's cardiac-complication rate.
+Worked example: a myocardial infarction within six months (ten points) plus an intraperitoneal
+operation (three points) totals thirteen -- Class three, about fourteen per cent major cardiac
+complications or death; twelve points would be Class two.
+
+### Wilson Risk Sum Score (difficult intubation)
+Citation: Wilson ME, Spiegelhalter D, Robertson JA, Lesser P. Predicting difficult intubation. Br J
+Anaesth. 1988;61(2):211-216.
+Formula: five anatomic factors -- body weight, head and neck movement, jaw movement, a receding
+mandible, and buck teeth -- are each scored zero, one, or two and summed to a maximum of ten.
+Worked example: a body weight over one hundred ten kilograms alone scores two of ten, at or above
+the common sensitive screen; the derivation's optimum cut was a score above two, which identified
+about seventy-five per cent of difficult intubations.
+
+### Surgical Risk Scale (Sutton)
+Citation: Sutton R, Bann S, Brooks M, Sarin S. The Surgical Risk Scale as an improved tool for
+risk-adjusted analysis in comparative surgical audit. Br J Surg. 2002;89(6):763-768.
+Formula: the sum of CEPOD operative urgency (elective one to emergency four), ASA physical-status
+grade (one to five), and BUPA operative-magnitude grade (minor one to complex-major five), giving a
+total from three to fourteen.
+Worked example: an emergency operation (four) in an ASA-four patient for a complex-major procedure
+(five) totals thirteen; higher scores carry a higher in-hospital mortality, with eight or more a
+common high-risk threshold.
