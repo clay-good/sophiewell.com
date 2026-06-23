@@ -6,6 +6,51 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v145: orthopedic risk & osteoarthritis — Frykman, Mirels, Kellgren-Lawrence, Pittsburgh knee rule, compartment delta pressure, +5 — spec-v100 Wave 8 continues)
+
+- **Five orthopedic risk / osteoarthritis instruments continue Wave 8 of the
+  spec-v100 program (652 → 657, +5)**, completing the orthopedic cluster beside
+  the v144 fracture-classification tiles and the existing `ottawa-knee` /
+  `ottawa-ankle` ED rules. Four are in **Clinical Scoring & Risk (Group G)** and
+  `compartment-delta-pressure` is in **Clinical Math & Conversions (Group E)**,
+  via `lib/ortho-v145.js` + `views/group-v145.js` (`RV145`). Per the spec-v100 §2
+  classification clarification the Frykman / Mirels / Kellgren-Lawrence tiles
+  **consume the clinician's read of the film** (joint involvement, lesion factors,
+  radiographic grade) and **compute a class/score** — none is a no-input reference
+  table. Every definition/threshold was **re-fetched and cross-verified across
+  ≥ 2 independent authoritative sources** (the original papers, the CORR
+  "Classifications in Brief" reviews, Wheeless, UW Emergency Radiology,
+  Radiopaedia, StatPearls, the Seaberg 1994/1998 PubMed abstracts; the spec-v97
+  discipline). All five are **Class A**. Each reports the class/score/decision and
+  the source's interpretation and leaves fixation/imaging/decompression with the
+  care team (spec-v11 §5.3).
+  - **`frykman-classification`** — Frykman distal-radius classification (Frykman G,
+    *Acta Orthop Scand* 1967;Suppl 108): type **I–VIII** on two axes — joint
+    involvement (extra-articular / radiocarpal / distal radioulnar / both) and an
+    associated distal-ulna (ulnar styloid) fracture. **Odd types have no ulnar
+    fracture, even types add one**, so I/II extra-articular, III/IV radiocarpal,
+    V/VI radioulnar, VII/VIII both joints. **Class A.**
+  - **`mirels-score`** — Mirels impending-pathologic-fracture score (Mirels H,
+    *Clin Orthop Relat Res* 1989): four factors each 1–3 (site, pain, radiographic
+    nature, size vs cortex), total **4–12**. ≤ 7 low (~0–4%, irradiate/observe),
+    8 borderline (~15%), **≥ 9 high (> 33%) → prophylactic fixation**. **Class A.**
+  - **`kellgren-lawrence`** — Kellgren-Lawrence osteoarthritis grade (Kellgren JH,
+    Lawrence JS, *Ann Rheum Dis* 1957): grade **0–4**; **grade ≥ 2** (definite
+    osteophyte plus possible narrowing) is the accepted threshold for definite
+    radiographic OA. Subchondral cysts are deliberately **not** listed — not a KL
+    feature. **Class A.**
+  - **`pittsburgh-knee-rule`** — Pittsburgh knee rules (Seaberg DC, Jackson R,
+    *Am J Emerg Med* 1994; validated 1998): the **entry gate is a blunt-trauma or
+    fall mechanism** — without it the rule does not apply. Given the gate, a knee
+    radiograph is indicated if age **< 12 or > 50** (strict) or inability to take
+    **4 weight-bearing steps**. ~99% sensitive, ~60% specific. Cross-linked to the
+    near-neighbor `ottawa-knee`; both kept. **Class A.**
+  - **`compartment-delta-pressure`** — compartment delta pressure (McQueen MM,
+    Court-Brown CM, *J Bone Joint Surg Br* 1996): **ΔP = diastolic BP − measured
+    compartment pressure** (mmHg); **ΔP < 30 mmHg** (strictly, per the primary
+    paper) is the published fasciotomy threshold. A guarded subtraction — blank or
+    non-finite inputs surface a `valid:false` fallback, never `NaN`. **Class A.**
+
 ### Added (spec-v144: orthopedic fracture classification — Gustilo-Anderson, Garden, Danis-Weber, Schatzker, Salter-Harris, Neer, +6 — spec-v100 Wave 8 continues)
 
 - **Six orthopedic fracture-classification decision rules continue Wave 8 of the

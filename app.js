@@ -74,6 +74,7 @@ import { renderers as RV141 } from './views/group-v141.js';
 import { renderers as RV142 } from './views/group-v142.js';
 import { renderers as RV143 } from './views/group-v143.js';
 import { renderers as RV144 } from './views/group-v144.js';
+import { renderers as RV145 } from './views/group-v145.js';
 import { renderers as RV149 } from './views/group-v149.js';
 import { renderers as RV63 } from './views/group-v63.js';
 import { renderers as RB } from './views/group-b.js';
@@ -93,7 +94,7 @@ import { resolvePrompt } from './lib/prompt.js';
 // artifact-detect / artifact-route / artifact-handoff helpers were
 // deleted in spec-v29 wave 29-2 (Group C/L).
 
-const RENDERERS = { ...RA, ...RB, ...RC, ...RE, ...RF, ...RG, ...RH, ...RI, ...RJ, ...RKLMNO, ...RV5, ...RV6, ...RV7, ...RV8, ...RV9, ...RV10, ...RV11, ...RV12, ...RV13, ...RV14, ...RV15, ...RV16, ...RV17, ...RV18, ...RV19, ...RV20, ...RV21, ...RV22, ...RV23, ...RV24, ...RV25, ...RV26, ...RV27, ...RV28, ...RV29, ...RV30, ...RV31, ...RV32, ...RV33, ...RV34, ...RV35, ...RV36, ...RV37, ...RV38, ...RV39, ...RV40, ...RV117, ...RV118, ...RV119, ...RV120, ...RV121, ...RV122, ...RV123, ...RV124, ...RV125, ...RV126, ...RV127, ...RV128, ...RV129, ...RV130, ...RV131, ...RV132, ...RV133, ...RV134, ...RV135, ...RV136, ...RV137, ...RV138, ...RV139, ...RV140, ...RV141, ...RV142, ...RV143, ...RV144, ...RV149, ...RV63, ...RPALINT };
+const RENDERERS = { ...RA, ...RB, ...RC, ...RE, ...RF, ...RG, ...RH, ...RI, ...RJ, ...RKLMNO, ...RV5, ...RV6, ...RV7, ...RV8, ...RV9, ...RV10, ...RV11, ...RV12, ...RV13, ...RV14, ...RV15, ...RV16, ...RV17, ...RV18, ...RV19, ...RV20, ...RV21, ...RV22, ...RV23, ...RV24, ...RV25, ...RV26, ...RV27, ...RV28, ...RV29, ...RV30, ...RV31, ...RV32, ...RV33, ...RV34, ...RV35, ...RV36, ...RV37, ...RV38, ...RV39, ...RV40, ...RV117, ...RV118, ...RV119, ...RV120, ...RV121, ...RV122, ...RV123, ...RV124, ...RV125, ...RV126, ...RV127, ...RV128, ...RV129, ...RV130, ...RV131, ...RV132, ...RV133, ...RV134, ...RV135, ...RV136, ...RV137, ...RV138, ...RV139, ...RV140, ...RV141, ...RV142, ...RV143, ...RV144, ...RV145, ...RV149, ...RV63, ...RPALINT };
 
 // ----- Utility registry ----------------------------------------------------
 // Source of truth for routes, names, group, audiences, and clinical flag.
@@ -689,6 +690,20 @@ const UTILITIES = [
   { id: 'schatzker-classification', name: 'Schatzker Classification (tibial plateau)',       group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'salter-harris',          name: 'Salter-Harris Classification (physeal fracture)',   group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'neer-classification',    name: 'Neer Classification (proximal humerus)',            group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+
+  // spec-v145 (Wave 8 of spec-v100): five orthopedic risk / osteoarthritis
+  // instruments beside the v144 fracture-classification cluster and the existing
+  // ottawa-knee / ottawa-ankle ED rules. Per the spec-v100 §2 classification
+  // clarification the Frykman/Mirels/Kellgren-Lawrence tiles consume the
+  // clinician's read of the film (joint involvement, lesion factors, grade) and
+  // compute a class/score; pittsburgh-knee-rule is entry-gated boolean logic;
+  // compartment-delta-pressure (Group E) is a guarded subtraction with the
+  // < 30 mmHg fasciotomy flag. views/group-v145.js, lib/ortho-v145.js (RV145).
+  { id: 'frykman-classification', name: 'Frykman Classification (distal radius)',             group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'mirels-score',           name: 'Mirels Score (impending pathologic fracture)',       group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'kellgren-lawrence',      name: 'Kellgren-Lawrence Osteoarthritis Grade',            group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'pittsburgh-knee-rule',   name: 'Pittsburgh Knee Rules (knee-radiograph indication)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'compartment-delta-pressure', name: 'Compartment Delta Pressure (fasciotomy threshold)', group: 'E', audiences: ['clinicians', 'educators'], clinical: true },
 
   // spec-v98 (Wave 2 of spec-v85): four deterministic pediatric decision rules
   // and prognostic scores that fill confirmed gaps after a full sweep of Group N

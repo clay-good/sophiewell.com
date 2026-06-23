@@ -3665,3 +3665,53 @@ degrees; the part count is one plus the number of displaced segments, so an undi
 one-part however many fracture lines it has.
 Worked example: a displaced greater tuberosity plus a displaced surgical neck is a three-part fracture
 (two displaced segments), an unstable pattern carried into operative planning.
+
+### Frykman Classification (Distal Radius)
+Citation: Frykman G. Fracture of the distal radius including sequelae. Acta Orthop Scand.
+1967;Suppl 108:3-153.
+Formula: two axes — joint involvement (extra-articular; radiocarpal joint; distal radioulnar joint;
+or both joints) and an associated distal-ulna (ulnar styloid) fracture. Odd types have no ulnar-styloid
+fracture and even types add one, so type I/II are extra-articular, III/IV involve the radiocarpal joint,
+V/VI the distal radioulnar joint, and VII/VIII both joints. Higher type means more articular involvement.
+Worked example: both joints involved with an ulnar-styloid fracture is Type VIII; an extra-articular
+fracture with no ulnar-styloid fracture is Type I.
+
+### Mirels Score (Impending Pathologic Fracture)
+Citation: Mirels H. Metastatic disease in long bones: a proposed scoring system for diagnosing impending
+pathologic fractures. Clin Orthop Relat Res. 1989;(249):256-264.
+Formula: four factors each scored one to three — site (upper limb 1, lower limb 2, peritrochanteric 3),
+pain (mild 1, moderate 2, functional 3), radiographic nature (blastic 1, mixed 2, lytic 3), and size
+relative to the cortex (under a third 1, a third to two thirds 2, over two thirds 3). Total four to
+twelve: seven or less is low risk (about 0 to 4 percent fracture risk, irradiate and observe), eight is
+borderline (about 15 percent), and nine or more is high risk (over 33 percent, prophylactic fixation).
+Worked example: a lower-limb lesion (2) with functional pain (3), a lytic appearance (3), and a small
+under-a-third size (1) totals nine — high risk, prophylactic fixation recommended.
+
+### Kellgren-Lawrence Osteoarthritis Grade
+Citation: Kellgren JH, Lawrence JS. Radiological assessment of osteo-arthrosis. Ann Rheum Dis.
+1957;16(4):494-502.
+Formula: radiographic grade zero to four — 0 none; 1 doubtful narrowing with possible osteophytic
+lipping; 2 definite osteophytes with possible narrowing; 3 moderate osteophytes, definite narrowing,
+some sclerosis, possible bone-end deformity; 4 large osteophytes, marked narrowing, severe sclerosis,
+definite deformity. Grade two or higher is the accepted threshold for definite radiographic osteoarthritis.
+Worked example: definite osteophytes with possible joint-space narrowing is grade 2 — the threshold for
+definite radiographic osteoarthritis.
+
+### Pittsburgh Knee Rules
+Citation: Seaberg DC, Jackson R. Clinical decision rule for knee radiographs. Am J Emerg Med.
+1994;12(5):541-543. Validated: Seaberg DC, et al. Ann Emerg Med. 1998;32(1):8-13.
+Formula: the entry gate is a blunt-trauma or fall mechanism; without it the rule does not apply. Given
+the gate, a knee radiograph is indicated if the patient is younger than twelve or older than fifty, or
+is unable to take four weight-bearing steps in the emergency department. About 99 percent sensitive and
+60 percent specific; unlike the Ottawa knee rule it applies to children.
+Worked example: a fall mechanism in a patient older than fifty meets the rule — a knee radiograph is
+indicated.
+
+### Compartment Delta Pressure
+Citation: McQueen MM, Court-Brown CM. Compartment monitoring in tibial fractures: the pressure threshold
+for decompression. J Bone Joint Surg Br. 1996;78(1):99-104.
+Formula: delta pressure equals the diastolic blood pressure minus the measured intracompartmental
+pressure, in millimeters of mercury. A delta pressure under thirty is the published threshold for
+fasciotomy; the differential is more reliable than an absolute-pressure threshold.
+Worked example: a diastolic pressure of seventy with a measured compartment pressure of forty-five gives
+a delta of twenty-five — below thirty, the fasciotomy threshold.
