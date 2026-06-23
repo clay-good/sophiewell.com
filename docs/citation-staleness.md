@@ -529,3 +529,19 @@ need no row.
 |---|---|---|---|---|---|
 | peds-bmi-percentile | CDC BMI-for-age L/M/S table (ages 24-240.5 mo, by sex) feeding the z = ((BMI/M)^L − 1)/(L·S) transform | 2000 CDC growth charts (Kuczmarski 2002, Vital Health Stat 11(246)), CDC NCHS LMS data files | same | 2026-06-23 | current — the 2000 CDC LMS coefficients are a fixed historical reference standard, not reissued on a cadence; Class A, no update expected. Row is gate-forced by the "CDC" acronym in the citation, not by any drift risk |
 | who-growth-zscore | WHO weight-for-age and length-for-age L/M/S tables (birth-24 mo, by sex) feeding the LMS z-transform (length uses L = 1) | WHO 2006 Child Growth Standards (WHO MGRS, Acta Paediatr Suppl 2006;450), CDC NCHS WHO data files | same | 2026-06-23 | current — the WHO 2006 LMS coefficients are a fixed international reference standard, not reissued on a cadence; Class A, no update expected. Row is gate-forced by the "WHO" acronym in the citation, not by any drift risk |
+
+## spec-v144 orthopedic fracture classifications (added 2026-06-23)
+
+Five of the six fracture-classification instruments added this wave are **Class A** —
+fixed published classifications cited by journal and authors (Gustilo-Anderson,
+Garden, Schatzker, Salter-Harris, Neer), with no calendar revision and no issuer
+acronym, so they need no row. The sixth, `weber-ankle`, is **Class B**: its source
+is a textbook/monograph (Weber 1972, AO-adopted) rather than a fixed journal
+derivation, so it carries an `accessed` date and the row below. The citation does
+not match the check-citations issuer-acronym set ("AO" is not in it), so the row is
+documentation-only — it records that the monograph edition in force was reviewed and
+the classification (fibular level A/B/C relative to the syndesmosis) is unchanged.
+
+| tile id | instrument | edition shipped | latest known edition | accessed | justification if behind |
+|---|---|---|---|---|---|
+| weber-ankle | Danis-Weber ankle classification — distal-fibula fracture level relative to the syndesmosis (A below / B at / C above) | Weber BG, Die Verletzungen des oberen Sprunggelenkes (Hans Huber, 1972); AO-adopted | same | 2026-06-23 | current — the Danis-Weber A/B/C scheme is unchanged and remains the AO-adopted basis (44-A/B/C); Class B, review on-publication of the next AO Foundation ankle-classification update. Documentation only — the citation does not match the issuer acronym set |

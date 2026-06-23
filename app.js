@@ -73,6 +73,7 @@ import { renderers as RV140 } from './views/group-v140.js';
 import { renderers as RV141 } from './views/group-v141.js';
 import { renderers as RV142 } from './views/group-v142.js';
 import { renderers as RV143 } from './views/group-v143.js';
+import { renderers as RV144 } from './views/group-v144.js';
 import { renderers as RV149 } from './views/group-v149.js';
 import { renderers as RV63 } from './views/group-v63.js';
 import { renderers as RB } from './views/group-b.js';
@@ -92,7 +93,7 @@ import { resolvePrompt } from './lib/prompt.js';
 // artifact-detect / artifact-route / artifact-handoff helpers were
 // deleted in spec-v29 wave 29-2 (Group C/L).
 
-const RENDERERS = { ...RA, ...RB, ...RC, ...RE, ...RF, ...RG, ...RH, ...RI, ...RJ, ...RKLMNO, ...RV5, ...RV6, ...RV7, ...RV8, ...RV9, ...RV10, ...RV11, ...RV12, ...RV13, ...RV14, ...RV15, ...RV16, ...RV17, ...RV18, ...RV19, ...RV20, ...RV21, ...RV22, ...RV23, ...RV24, ...RV25, ...RV26, ...RV27, ...RV28, ...RV29, ...RV30, ...RV31, ...RV32, ...RV33, ...RV34, ...RV35, ...RV36, ...RV37, ...RV38, ...RV39, ...RV40, ...RV117, ...RV118, ...RV119, ...RV120, ...RV121, ...RV122, ...RV123, ...RV124, ...RV125, ...RV126, ...RV127, ...RV128, ...RV129, ...RV130, ...RV131, ...RV132, ...RV133, ...RV134, ...RV135, ...RV136, ...RV137, ...RV138, ...RV139, ...RV140, ...RV141, ...RV142, ...RV143, ...RV149, ...RV63, ...RPALINT };
+const RENDERERS = { ...RA, ...RB, ...RC, ...RE, ...RF, ...RG, ...RH, ...RI, ...RJ, ...RKLMNO, ...RV5, ...RV6, ...RV7, ...RV8, ...RV9, ...RV10, ...RV11, ...RV12, ...RV13, ...RV14, ...RV15, ...RV16, ...RV17, ...RV18, ...RV19, ...RV20, ...RV21, ...RV22, ...RV23, ...RV24, ...RV25, ...RV26, ...RV27, ...RV28, ...RV29, ...RV30, ...RV31, ...RV32, ...RV33, ...RV34, ...RV35, ...RV36, ...RV37, ...RV38, ...RV39, ...RV40, ...RV117, ...RV118, ...RV119, ...RV120, ...RV121, ...RV122, ...RV123, ...RV124, ...RV125, ...RV126, ...RV127, ...RV128, ...RV129, ...RV130, ...RV131, ...RV132, ...RV133, ...RV134, ...RV135, ...RV136, ...RV137, ...RV138, ...RV139, ...RV140, ...RV141, ...RV142, ...RV143, ...RV144, ...RV149, ...RV63, ...RPALINT };
 
 // ----- Utility registry ----------------------------------------------------
 // Source of truth for routes, names, group, audiences, and clinical flag.
@@ -674,6 +675,20 @@ const UTILITIES = [
   { id: 'frail-scale',            name: 'FRAIL Scale (frailty screen)',                      group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'ves-13',                 name: 'Vulnerable Elders Survey-13 (VES-13)',              group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'carg-toxicity',          name: 'CARG Chemotherapy Toxicity Tool',                   group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+
+  // spec-v144 (Wave 8 of spec-v100): six orthopedic fracture-classification
+  // decision rules beside the orthopedic triage/risk cluster (ottawa-ankle,
+  // ottawa-knee, nexus-cspine, canadian-c-spine). Per the spec-v100 §2
+  // classification clarification, each consumes the clinician's read of the film
+  // (wound size, displacement, fibula level, plateau geometry, physeal pattern,
+  // displaced-part count) and computes a class -- not a no-input reference table.
+  // views/group-v144.js, lib/ortho-v144.js (RV144).
+  { id: 'gustilo-anderson',       name: 'Gustilo-Anderson Open Fracture Classification',     group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'garden-classification',  name: 'Garden Classification (femoral neck)',              group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'weber-ankle',            name: 'Danis-Weber Ankle Classification',                  group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'schatzker-classification', name: 'Schatzker Classification (tibial plateau)',       group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'salter-harris',          name: 'Salter-Harris Classification (physeal fracture)',   group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'neer-classification',    name: 'Neer Classification (proximal humerus)',            group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
 
   // spec-v98 (Wave 2 of spec-v85): four deterministic pediatric decision rules
   // and prognostic scores that fill confirmed gaps after a full sweep of Group N

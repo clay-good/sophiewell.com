@@ -1,6 +1,6 @@
 # spec-v144.md — Orthopedic fracture classification: Gustilo-Anderson, Garden, Danis-Weber, Schatzker, Salter-Harris, and Neer (+6 tiles)
 
-> Status: **PROPOSED (2026-06-17).** Feature spec of the
+> Status: **SHIPPED (2026-06-23, 646 → 652).** Feature spec of the
 > [spec-v100](spec-v100.md) **MDCalc Parity Completion** program, **Wave 8**
 > (Surgery / anesthesia / ortho / rheum / geriatrics / pharmacy). Adds **6**
 > deterministic orthopedic fracture-classification decision rules that fill

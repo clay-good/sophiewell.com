@@ -3604,3 +3604,64 @@ more falls in six months (three), needing help with medications (one), walking-o
 Worked example: age seventy-two or older with a gastrointestinal cancer on standard-dose chemotherapy
 totals six, the lower edge of the intermediate band (low zero to five, intermediate six to nine, high
 ten or more), corresponding to about fifty-two per cent grade three to five toxicity.
+
+### Gustilo-Anderson Open Fracture Classification
+Citation: Gustilo RB, Anderson JT. Prevention of infection in the treatment of one thousand and
+twenty-five open fractures of long bones. J Bone Joint Surg Am. 1976;58(4):453-458. Type III subtypes:
+Gustilo, Mendoza, Williams. J Trauma. 1984;24(8):742-746.
+Formula: the clinician's read of the open fracture (wound size, an extensive-soft-tissue or high-energy
+qualifier, whether coverage needs a flap, and whether an arterial injury needs repair) maps to a class
+of one, two, three-A, three-B, or three-C. The Type III subtype is set by coverage and perfusion, not
+wound size: arterial repair forces three-C; inadequate coverage requiring a flap forces three-B; a
+high-energy or extensive-soft-tissue mechanism or a wound over ten centimeters forces at least Type
+three.
+Worked example: a one-to-ten-centimeter wound with an arterial injury requiring repair is Type three-C
+regardless of wound size; the headline coverage-and-perfusion precedence over wound size.
+
+### Garden Classification (Femoral Neck)
+Citation: Garden RS. Low-angle fixation in fractures of the femoral neck. J Bone Joint Surg Br.
+1961;43-B(4):647-663.
+Formula: the femoral-neck displacement pattern maps to grade one (incomplete, valgus-impacted), two
+(complete, nondisplaced), three (complete, partially displaced), or four (complete, fully displaced).
+Grades one and two are stable/nondisplaced; three and four are unstable/displaced.
+Worked example: a complete, partially displaced fracture is Grade three, crossing from the stable
+(one-to-two) into the unstable (three-to-four) group that drives internal fixation versus arthroplasty.
+
+### Danis-Weber Ankle Classification
+Citation: Weber BG. Die Verletzungen des oberen Sprunggelenkes. Bern: Hans Huber; 1972 (Danis-Weber
+classification; pathologic-anatomic basis Danis 1949; adopted by the AO Foundation).
+Formula: the distal-fibula fracture level relative to the syndesmosis maps to Type A (below,
+infrasyndesmotic, stable), Type B (at the level, transsyndesmotic, variably injured), or Type C (above,
+suprasyndesmotic, disrupted and unstable).
+Worked example: a fracture above the syndesmosis is Type C, a suprasyndesmotic injury with a disrupted
+syndesmosis that usually needs fixation -- the B-to-C instability flip.
+
+### Schatzker Classification (Tibial Plateau)
+Citation: Schatzker J, McBroom R, Bruce D. The tibial plateau fracture: the Toronto experience
+1968-1975. Clin Orthop Relat Res. 1979;(138):94-104.
+Formula: the plateau-fracture pattern maps to Type one (lateral split), two (lateral split-depression),
+three (lateral pure depression), four (medial plateau), five (bicondylar), or six (plateau fracture
+with metaphyseal-diaphyseal dissociation). Types one to three are low-energy; four to six are
+high-energy.
+Worked example: a medial plateau fracture is Type four, the high-energy group with the worst prognosis,
+prompting assessment for peroneal-nerve and popliteal-vessel injury.
+
+### Salter-Harris Classification (Physeal Fracture)
+Citation: Salter RB, Harris WR. Injuries involving the epiphyseal plate. J Bone Joint Surg Am.
+1963;45(3):587-622.
+Formula: the SALTR mnemonic maps the fracture line to Type one (Slipped, through the physis only), two
+(Above, physis into metaphysis -- the most common), three (Lower, physis into epiphysis), four
+(Through, across metaphysis, physis, and epiphysis), or five (cRush, physeal compression). Growth-
+disturbance risk rises ascending one to five.
+Worked example: a fracture through the physis and into the epiphysis is Type three -- intra-articular,
+usually needing anatomic reduction, the boundary above the common Type-two metaphyseal pattern.
+
+### Neer Classification (Proximal Humerus)
+Citation: Neer CS 2nd. Displaced proximal humeral fractures. I. Classification and evaluation. J Bone
+Joint Surg Am. 1970;52(6):1077-1089.
+Formula: a segment of the four (articular surface, greater tuberosity, lesser tuberosity, surgical neck
+or shaft) is displaced when separated more than one centimeter or angulated more than forty-five
+degrees; the part count is one plus the number of displaced segments, so an undisplaced fracture is
+one-part however many fracture lines it has.
+Worked example: a displaced greater tuberosity plus a displaced surgical neck is a three-part fracture
+(two displaced segments), an unstable pattern carried into operative planning.

@@ -6,6 +6,60 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v144: orthopedic fracture classification — Gustilo-Anderson, Garden, Danis-Weber, Schatzker, Salter-Harris, Neer, +6 — spec-v100 Wave 8 continues)
+
+- **Six orthopedic fracture-classification decision rules continue Wave 8 of the
+  spec-v100 program (646 → 652, +6)**, sitting beside the orthopedic triage/risk
+  cluster (`ottawa-ankle` / `ottawa-knee` / `nexus-cspine` / `canadian-c-spine`).
+  All six are in **Clinical Scoring & Risk (Group G)**, via `lib/ortho-v144.js` +
+  `views/group-v144.js` (`RV144`). Per the spec-v100 §2 classification
+  clarification, each tile **consumes the clinician's read of the film** (wound
+  size, displacement, fibula level, plateau geometry, physeal pattern, displaced-
+  part count) and **computes a class** — it is not a no-input reference table.
+  Every category definition and precedence rule was **re-fetched and cross-verified
+  across ≥ 2 independent authoritative sources** (AO Foundation, Orthobullets,
+  Radiopaedia, the original / CORR papers; the spec-v97 discipline). Each tile
+  reports the class and the source's management-relevant interpretation and leaves
+  the fixation/operative decision with the care team (spec-v11 §5.3).
+  - **`gustilo-anderson`** — Gustilo-Anderson open fracture (Gustilo RB, Anderson
+    JT, *J Bone Joint Surg Am* 1976; Type III subtypes Gustilo, Mendoza, Williams,
+    *J Trauma* 1984): class I / II / IIIA / IIIB / IIIC. The Type III subtype is
+    set by **coverage and perfusion, not wound size** — an arterial injury
+    requiring repair forces IIIC, inadequate coverage requiring a flap forces IIIB,
+    and a high-energy/extensive-soft-tissue mechanism or a wound over 10 cm forces
+    at least Type III. The unverifiable mnemonic triggers (">8 h", "war wounds",
+    "mass casualty") were deliberately **not** encoded — absent from the canonical
+    definition. **Class A.**
+  - **`garden-classification`** — Garden femoral-neck classification (Garden RS,
+    *J Bone Joint Surg Br* 1961): grade I–IV, with the stable I–II vs unstable
+    III–IV grouping that drives internal fixation vs arthroplasty. **Class A.**
+  - **`weber-ankle`** — Danis-Weber ankle classification (Weber BG, *Die
+    Verletzungen des oberen Sprunggelenkes*, 1972, AO-adopted): type A/B/C by the
+    distal-fibula level relative to the syndesmosis. The source date is **1972**
+    (a common reproduction prints 1966); Danis (1949) gave the anatomic basis.
+    **Class B** — textbook/monograph source; carries `accessed` + a
+    `docs/citation-staleness.md` row.
+  - **`schatzker-classification`** — Schatzker tibial-plateau classification
+    (Schatzker J, McBroom R, Bruce D, *Clin Orthop Relat Res* 1979): type I–VI,
+    low-energy I–III vs high-energy IV–VI (worst prognosis). **Class A.**
+  - **`salter-harris`** — Salter-Harris physeal classification (Salter RB, Harris
+    WR, *J Bone Joint Surg Am* 1963): SALTR types I–V, growth-disturbance risk
+    rising ascending I → V; II is the most common, III/IV intra-articular. **Class
+    A.**
+  - **`neer-classification`** — Neer proximal-humerus classification (Neer CS 2nd,
+    *J Bone Joint Surg Am* 1970): one- to four-part by displaced-segment count (a
+    segment is displaced when separated > 1 cm or angulated > 45°); the part count
+    is 1 + displaced segments, clamped to the published 1–4 range, so an
+    undisplaced fracture is one-part regardless of fracture lines. **Class A.**
+- **Tests / gates.** Six unit suites (`gustilo-anderson`, `garden-classification`,
+  `weber-ankle`, `schatzker-classification`, `salter-harris`, `neer-classification`)
+  with ≥ 3 boundary worked examples each (the Gustilo IIIA→IIIB→IIIC distinction,
+  the Garden II→III stable→unstable boundary, the Weber B→C suprasyndesmotic flip,
+  and the Salter-Harris II→III case); `lib/ortho-v144.js` added to the `fuzz-tools`
+  MODULES list (every input combination resolves to exactly one defined class, zero
+  `undefined`/`NaN` bands). The catalog count moves on all 13 catalog-truth
+  surfaces. spec-v11 audit logs under `docs/audits/v12/`.
+
 ### Added (spec-v143: frailty & geriatric-oncology screening — mFI-5, mFI-11, FRAIL Scale, VES-13, CARG chemo-toxicity, +5 — spec-v100 Wave 8 continues)
 
 - **Five frailty and geriatric-oncology screening instruments continue Wave 8 of
