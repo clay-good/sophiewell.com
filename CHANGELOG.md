@@ -6,6 +6,71 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v148: rheumatology / palliative / pharmacy — ASDAS, FFS-2011, 2022 ACR/EULAR GCA, PPI, PaP, opioid conversion, Naranjo, +7 — spec-v100 program CLOSES)
+
+- **Seven rheumatology, palliative, and pharmacy instruments close Wave 8 and the
+  entire spec-v100 MDCalc Parity Completion program (669 → 676, +7; program total
+  432 → 676).** Six are in **Clinical Scoring & Risk (Group G)** and one
+  (`opioid-conversion`) in **Medication & Infusion (Group F)**, via
+  `lib/rheum-v148.js` + `views/group-v148.js` (`RV148`). Per the spec-v100 §2
+  classification clarification each tile **consumes the clinician's bounded
+  inputs** (the joint/symptom exam, labs, performance status, the source opioid
+  regimen, the ADR-causality answers) and **computes a score / classification /
+  converted dose** plus the source's interpretation — none is a no-input reference
+  table. Every coefficient, weight, band cutoff, and equianalgesic constant was
+  **re-fetched and cross-verified across ≥ 2 independent authoritative sources**
+  (the original papers, the ASAS calculator, RheumNow/RheumCalc, the CDC MME
+  factor file, the University of Iowa equianalgesic chart, the Palliative Care
+  Network of Wisconsin, MDApp, and the NCBI LiverTox Naranjo worksheet; the
+  spec-v97 discipline). Each leaves the treat/prescribe decision with the
+  clinician (spec-v11 §5.3); the high-stakes opioid conversion additionally
+  surfaces the mandatory independent-second-check caveat.
+  - **`asdas`** — Ankylosing Spondylitis Disease Activity Score (Lukas C, et al,
+    *Ann Rheum Dis* 2009): ASDAS-CRP = 0.12·back pain + 0.06·morning stiffness +
+    0.11·patient global + 0.07·peripheral pain + 0.58·ln(CRP+1) (CRP mg/L floored
+    to 2); ASDAS-ESR uses **different** item weights (0.08/0.07/0.11/0.09) +
+    0.29·√ESR. Cutoffs **inactive < 1.3, low < 2.1, high ≤ 3.5, very high > 3.5**.
+    **Class A.**
+  - **`ffs-2011`** — Five-Factor Score, 2011 revision (Guillevin L, et al,
+    *Medicine* 2011): four poor-prognosis factors + the favorable absence-of-ENT,
+    total **0–5**; 5-year mortality **≈ 9% / 21% / 40%** at FFS **0 / 1 / ≥ 2**.
+    **Class A.**
+  - **`gca-acr-eular-2022`** — 2022 ACR/EULAR Giant Cell Arteritis classification
+    (Ponte C, et al, *Ann Rheum Dis* 2022): age ≥ 50 entry, then weighted items
+    (biopsy/halo +5, ESR/CRP +3, sudden visual loss +3, seven +2 items) sum
+    **0–25**; **≥ 6 = GCA**. **Class B** (documentation-only staleness row — ACR/
+    EULAR is not in the issuer-acronym set).
+  - **`palliative-prognostic-index`** (PPI) — Morita T, et al, *Support Care
+    Cancer* 1999: PPS + oral intake + edema + dyspnea + delirium, total **0–15**;
+    **> 6 → < 3 weeks, > 4 → < 6 weeks**. **Class A.**
+  - **`palliative-prognostic-score`** (PaP) — Pirovano M, Maltoni M, et al, *J Pain
+    Symptom Manage* 1999: dyspnea + anorexia + Karnofsky + clinical prediction of
+    survival + WBC + lymphocyte %, total **0–17.5**; 30-day-survival groups **A
+    (> 70%) / B (30–70%) / C (< 30%)**. **Class A.**
+  - **`opioid-conversion`** — equianalgesic / rotation converter (McPherson, ASHP
+    2018; CDC MME factors): source dose → oral morphine equivalents → target, then
+    a 25–50% incomplete-cross-tolerance reduction, with transdermal-fentanyl
+    sizing. **Methadone and buprenorphine are excluded** (non-linear/ceiling
+    ratios). Distinct from the surveillance `opioid-mme`; both kept and
+    cross-linked. **Class A** with the mandatory second-check caveat.
+  - **`naranjo`** — ADR Probability Scale (Naranjo CA, et al, *Clin Pharmacol Ther*
+    1981): ten weighted yes/no/don't-know questions, **−4 to +13** → doubtful
+    (≤ 0) / possible (1–4) / probable (5–8) / definite (≥ 9). **Class A.**
+- **Deferred — `valproate-correction`.** The proposed eighth tile (Hermida-Tutor
+  albumin normalization of total valproate) was **not shipped**. Source governance
+  (spec-v97) blocked it: the spec draft's citation was wrong (the paper is *J
+  Pharmacol Sci* 2005;97(4):489-493, not *Ther Drug Monit*); the method needs a
+  free-fraction lookup table that could be located in only **one** reproducible
+  source, failing the ≥ 2-independent-source rule (the same block that parked
+  `crib-ii` / `gail-bcrat`); and a 2018 validation (*Neurocrit Care* 30(2):320-327)
+  found the equation clinically inaccurate against measured free valproate. Parked
+  rather than ship an under-sourced, high-stakes drug-level correction.
+- CI: `lib/rheum-v148.js` added to the `test/unit/fuzz-tools.test.js` `MODULES`
+  list (zero non-finite leaks); ≥ 5 boundary worked examples per tile; the catalog
+  count moves on all **13 catalog-truth surfaces** (669 → 676); a11y,
+  `mobile-no-hscroll`, `mobile-touch-targets`, and the chromium
+  `example-correctness` sweep pass for `views/group-v148.js`.
+
 ### Added (spec-v147: rheumatology activity & classification — CDAI, SDAI, 2010 ACR/EULAR RA, SLEDAI-2K, 2015 gout, CASPAR, 2016 fibromyalgia, +7 — spec-v100 Wave 8 continues)
 
 - **Seven rheumatology disease-activity and classification instruments continue

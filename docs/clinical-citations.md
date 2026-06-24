@@ -3844,3 +3844,77 @@ seven and SSS at least five, or WPI four to six and SSS at least nine; and gener
 of five regions); and symptoms at least three months. Valid irrespective of other diagnoses.
 Worked example: WPI 8, SSS 6 (fatigue 2, waking 2, cognitive 1, one somatic), generalized pain in four
 regions, symptoms over three months — criteria met.
+
+### ASDAS — Ankylosing Spondylitis Disease Activity Score
+Citation: Lukas C, Landewe R, Sieper J, et al. Development of an ASAS-endorsed disease activity score
+(ASDAS) in patients with ankylosing spondylitis. Ann Rheum Dis. 2009;68(1):18-24.
+Formula: ASDAS-CRP = 0.12 x back pain + 0.06 x morning stiffness + 0.11 x patient global + 0.07 x
+peripheral pain + 0.58 x ln(CRP+1), with CRP in mg/L floored to two. ASDAS-ESR uses item weights
+0.08/0.07/0.11/0.09 plus 0.29 x sqrt(ESR). Cutoffs: inactive below 1.3, low 1.3 to under 2.1, high 2.1 to
+3.5, very high above 3.5.
+Worked example: back pain 4, morning stiffness 3, patient global 5, peripheral pain 2, CRP 10 mg/L gives
+ASDAS-CRP 2.74 — high disease activity.
+
+### Five-Factor Score (FFS-2011)
+Citation: Guillevin L, Pagnoux C, Seror R, et al. The Five-Factor Score revisited. Medicine (Baltimore).
+2011;90(1):19-27.
+Formula: four poor-prognosis factors each one point — age over 65, cardiac insufficiency, gastrointestinal
+involvement, renal insufficiency (stabilized peak creatinine at least 150 micromol/L) — plus the favorable
+factor, absence of ENT manifestations (one point, for GPA/EGPA). Five-year mortality about nine percent at
+zero, twenty-one percent at one, forty percent at two or more.
+Worked example: age over 65 (1) and gastrointestinal involvement (1) gives FFS 2 — about forty percent
+five-year mortality.
+
+### 2022 ACR/EULAR Giant Cell Arteritis Classification Criteria
+Citation: Ponte C, Grayson PC, Robson JC, et al. 2022 American College of Rheumatology/EULAR
+classification criteria for giant cell arteritis. Ann Rheum Dis. 2022;81(12):1647-1653.
+Formula: applied with age at least fifty at diagnosis. Items — positive temporal-artery biopsy or halo
+sign on ultrasound (5), ESR at least 50 or CRP at least 10 mg/L (3), sudden visual loss (3), and two
+points each for morning stiffness, jaw or tongue claudication, new temporal headache, scalp tenderness,
+abnormal temporal artery on exam, bilateral axillary involvement, and FDG-PET activity throughout the
+aorta — sum to a maximum of twenty-five; six or more classifies as giant cell arteritis.
+Worked example: ESR at least 50 (3) and sudden visual loss (3), after the age entry, sums to six —
+classify as giant cell arteritis.
+
+### Palliative Prognostic Index (PPI)
+Citation: Morita T, Tsunoda J, Inoue S, Chihara S. The Palliative Prognostic Index. Support Care Cancer.
+1999;7(3):128-133.
+Formula: sum of the Palliative Performance Scale band (at least sixty zero, thirty to fifty 2.5, ten to
+twenty 4), oral intake (normal zero, moderately reduced one, mouthfuls or less 2.5), edema (1), dyspnea at
+rest (3.5), and delirium (4, excluding single-medication delirium). Over six predicts survival under three
+weeks; over four predicts under six weeks.
+Worked example: PPS ten to twenty (4), mouthfuls or less (2.5), delirium (4) gives 10.5 — survival under
+three weeks.
+
+### Palliative Prognostic Score (PaP)
+Citation: Pirovano M, Maltoni M, Nanni O, et al. A new palliative prognostic score. J Pain Symptom Manage.
+1999;17(4):231-239.
+Formula: sum of dyspnea (1), anorexia (1.5), Karnofsky (at least thirty zero, ten to twenty 2.5), clinical
+prediction of survival in weeks (over twelve zero, eleven to twelve 2, seven to ten 2.5, five to six 4.5,
+three to four 6, one to two 8.5), total WBC (normal zero, high 0.5, very high 1.5), and lymphocyte percent
+(twenty to forty zero, twelve to under twenty one, under twelve 2.5). Risk groups A 0 to 5.5 (over seventy
+percent thirty-day survival), B 5.6 to 11 (thirty to seventy percent), C 11.1 to 17.5 (under thirty
+percent).
+Worked example: dyspnea (1), anorexia (1.5), Karnofsky ten to twenty (2.5), survival three to four weeks
+(6), very high WBC (1.5), very low lymphocytes (2.5) gives 15 — group C.
+
+### Opioid Equianalgesic / Rotation Conversion
+Citation: McPherson ML. Demystifying Opioid Conversion Calculations: A Guide for Effective Dosing. 2nd ed.
+Bethesda, MD: ASHP; 2018 (standard equianalgesic table; oral morphine-equivalent factors cross-checked
+against the CDC MME conversion-factor file and the University of Iowa equianalgesic chart).
+Formula: convert the source daily dose to oral morphine equivalents (OME) using the factor table, convert
+to the target opioid, then reduce twenty-five to fifty percent for incomplete cross-tolerance. Methadone
+and buprenorphine are excluded (non-linear and ceiling pharmacology). A planning aid — confirm against the
+institutional protocol and an independent second check.
+Worked example: oral morphine 60 mg/day is 60 OME; oral oxycodone equianalgesic 40 mg/day; with a fifty
+percent reduction, start 20 mg/day.
+
+### Naranjo Adverse Drug Reaction Probability Scale
+Citation: Naranjo CA, Busto U, Sellers EM, et al. A method for estimating the probability of adverse drug
+reactions. Clin Pharmacol Ther. 1981;30(2):239-245.
+Formula: ten weighted yes/no/do-not-know questions; the event appearing after the drug is plus two but a
+No is minus one, a No on rechallenge is minus one, an alternative cause present is minus one, and a placebo
+reaction is plus one or minus one. Total from minus four to plus thirteen — at most zero doubtful, one to
+four possible, five to eight probable, nine or more definite.
+Worked example: previous reports (1), event after the drug (2), improved on dechallenge (1), and no
+alternative cause (2) sums to six — probable.

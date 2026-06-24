@@ -77,6 +77,7 @@ import { renderers as RV144 } from './views/group-v144.js';
 import { renderers as RV145 } from './views/group-v145.js';
 import { renderers as RV146 } from './views/group-v146.js';
 import { renderers as RV147 } from './views/group-v147.js';
+import { renderers as RV148 } from './views/group-v148.js';
 import { renderers as RV149 } from './views/group-v149.js';
 import { renderers as RV63 } from './views/group-v63.js';
 import { renderers as RB } from './views/group-b.js';
@@ -96,7 +97,7 @@ import { resolvePrompt } from './lib/prompt.js';
 // artifact-detect / artifact-route / artifact-handoff helpers were
 // deleted in spec-v29 wave 29-2 (Group C/L).
 
-const RENDERERS = { ...RA, ...RB, ...RC, ...RE, ...RF, ...RG, ...RH, ...RI, ...RJ, ...RKLMNO, ...RV5, ...RV6, ...RV7, ...RV8, ...RV9, ...RV10, ...RV11, ...RV12, ...RV13, ...RV14, ...RV15, ...RV16, ...RV17, ...RV18, ...RV19, ...RV20, ...RV21, ...RV22, ...RV23, ...RV24, ...RV25, ...RV26, ...RV27, ...RV28, ...RV29, ...RV30, ...RV31, ...RV32, ...RV33, ...RV34, ...RV35, ...RV36, ...RV37, ...RV38, ...RV39, ...RV40, ...RV117, ...RV118, ...RV119, ...RV120, ...RV121, ...RV122, ...RV123, ...RV124, ...RV125, ...RV126, ...RV127, ...RV128, ...RV129, ...RV130, ...RV131, ...RV132, ...RV133, ...RV134, ...RV135, ...RV136, ...RV137, ...RV138, ...RV139, ...RV140, ...RV141, ...RV142, ...RV143, ...RV144, ...RV145, ...RV146, ...RV147, ...RV149, ...RV63, ...RPALINT };
+const RENDERERS = { ...RA, ...RB, ...RC, ...RE, ...RF, ...RG, ...RH, ...RI, ...RJ, ...RKLMNO, ...RV5, ...RV6, ...RV7, ...RV8, ...RV9, ...RV10, ...RV11, ...RV12, ...RV13, ...RV14, ...RV15, ...RV16, ...RV17, ...RV18, ...RV19, ...RV20, ...RV21, ...RV22, ...RV23, ...RV24, ...RV25, ...RV26, ...RV27, ...RV28, ...RV29, ...RV30, ...RV31, ...RV32, ...RV33, ...RV34, ...RV35, ...RV36, ...RV37, ...RV38, ...RV39, ...RV40, ...RV117, ...RV118, ...RV119, ...RV120, ...RV121, ...RV122, ...RV123, ...RV124, ...RV125, ...RV126, ...RV127, ...RV128, ...RV129, ...RV130, ...RV131, ...RV132, ...RV133, ...RV134, ...RV135, ...RV136, ...RV137, ...RV138, ...RV139, ...RV140, ...RV141, ...RV142, ...RV143, ...RV144, ...RV145, ...RV146, ...RV147, ...RV148, ...RV149, ...RV63, ...RPALINT };
 
 // ----- Utility registry ----------------------------------------------------
 // Source of truth for routes, names, group, audiences, and clinical flag.
@@ -737,6 +738,27 @@ const UTILITIES = [
   { id: 'gout-acr-eular-2015', name: '2015 ACR/EULAR Gout Classification Criteria',      group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'caspar',             name: 'CASPAR Criteria for Psoriatic Arthritis',           group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'fibromyalgia-acr-2016', name: '2016 Revised ACR Fibromyalgia Criteria',         group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+
+  // spec-v148 (Wave 8 of spec-v100, the CLOSING spec): seven deterministic
+  // rheumatology, palliative, and pharmacy instruments. ASDAS is the
+  // spondyloarthritis activity score; FFS-2011 the vasculitis prognosis; the
+  // 2022 ACR/EULAR GCA criteria the giant-cell-arteritis classification; PPI and
+  // PaP the free palliative-prognosis substitutes; the opioid converter an
+  // equianalgesic rotation calculator (distinct from the surveillance opioid-mme);
+  // Naranjo the ADR causality scale. Per the spec-v100 §2 classification
+  // clarification each tile consumes the clinician's bounded inputs and computes a
+  // score / classification / converted dose; none is a no-input reference table.
+  // The proposed eighth tile (valproate-correction) is DEFERRED (docs/spec-v148.md
+  // §7.1: spec citation error + free-fraction table not cross-verifiable to >=2
+  // sources + documented clinical inaccuracy). views/group-v148.js,
+  // lib/rheum-v148.js (RV148).
+  { id: 'asdas',              name: 'ASDAS (Ankylosing Spondylitis Disease Activity Score)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'ffs-2011',           name: 'Five-Factor Score (FFS-2011, systemic vasculitis prognosis)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'gca-acr-eular-2022', name: '2022 ACR/EULAR Giant Cell Arteritis Classification Criteria', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'palliative-prognostic-index', name: 'Palliative Prognostic Index (PPI)',          group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'palliative-prognostic-score', name: 'Palliative Prognostic Score (PaP)',          group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'opioid-conversion',  name: 'Opioid Equianalgesic Conversion (rotation calculator)', group: 'F', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'naranjo',            name: 'Naranjo Adverse Drug Reaction Probability Scale',    group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
 
   // spec-v98 (Wave 2 of spec-v85): four deterministic pediatric decision rules
   // and prognostic scores that fill confirmed gaps after a full sweep of Group N

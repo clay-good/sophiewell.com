@@ -5,7 +5,7 @@
 <h1 align="center">sophiewell.com</h1>
 
 <p align="center">
-  <strong>669 deterministic healthcare calculators tuned to the nurse on shift.</strong><br>
+  <strong>676 deterministic healthcare calculators tuned to the nurse on shift.</strong><br>
   Free forever. No servers, no accounts, no telemetry, no AI, no network call after first paint.
 </p>
 
@@ -36,7 +36,7 @@ output; "searchable lookup of static facts" does not qualify. See
 [docs/spec-v10.md](docs/spec-v10.md) for the audience and
 dependency-budget commitments and
 [docs/spec-v29.md](docs/spec-v29.md) for the nurse-first pivot
-and the v29 catalog ledger. At v147 close the catalog is 669
+and the v29 catalog ledger. At v148 close the catalog is 676
 deterministic tiles — every one of them computes from at least
 one user input. The catalog reached its present size on two tracks.
 **New tiles:** spec-v63 added the operations counterpart to the bedside
@@ -186,7 +186,7 @@ production security headers. Any static file server will also work.
 ## How it works and how to use it
 
 Since the spec-v29 nurse-first prune the catalog has grown one
-reviewable spec at a time to **669** deterministic calculators
+reviewable spec at a time to **676** deterministic calculators
 (the full per-version history is in [CHANGELOG.md](CHANGELOG.md)
 and `docs/spec-v*.md`; the most recent bedside additions are
 summarized in the cheat sheets below). They organize across the
@@ -1023,7 +1023,45 @@ Duke-ISCVID) and `refeeding-risk` (NICE CG32) are **Class B** with
 [citation-staleness](docs/citation-staleness.md) rows; the other three are
 **Class A**. See [docs/spec-v99.md](docs/spec-v99.md).
 
-### MDCalc parity completion: the cardiology / vascular / lipid surface (spec-v100 program, Wave 1: spec-v101 → spec-v105, +25 → 457, **complete**; Wave 2 complete: spec-v106 → 463, spec-v107 → 467, spec-v108 → 473, spec-v109 → 478, spec-v110 → 483, spec-v111 → 487, **+30 → 487**; Wave 3 complete (Critical care & pulmonary): spec-v112 → 492, spec-v113 → 495, spec-v114 → 501, spec-v115 → 506, **+19 → 506**; Wave 4 underway (Neurology / neurosurgery / psychiatry): spec-v117 → 512, spec-v118 → 517, spec-v119 → 521, spec-v120 → 526, spec-v121 → 530, spec-v122 → 533, spec-v123 → 538 (**Wave 4 complete**), **+32 → 538**; Wave 5 complete (GI / hepatology / nephrology / acid-base / urology): spec-v124 → 544, spec-v125 → 549, spec-v126 → 555, spec-v127 → 559, spec-v128 → 564, spec-v129 → 570, spec-v130 → 576, spec-v131 → 584 (closes the wave at +5; ROKS deferred), **+43 → 581 from the wave; live catalog 584 incl. the standalone spec-v149 EMS parity, +3**; Wave 6 underway (Heme / onc / endocrine / ID): spec-v132 → 589 (thrombotic microangiopathy & coagulopathy, +5), spec-v133 → 593 (warfarin start-up — IWPC + Gage PGx dose, Kovacs 10 mg + Crowther 5 mg nomograms, +4, all four shipped after an adversarial re-fetch confirmed the Gage and Kovacs tables), spec-v134 → 599 (plasma-cell & myeloid-neoplasm staging — ISS, R-ISS, R2-ISS, Mayo MGUS, DIPSS, DIPSS-Plus, +6), spec-v135 → 604 (lymphoma / CLL prognostic indices — R-IPI, NCCN-IPI, GELF, Hasenclever IPS, CLL-IPI, +5), spec-v136 → 609 (endocrine / metabolic indices — HOMA-IR, QUICKI, TyG index, metabolic syndrome, OST/ORAI DXA pre-screen, +5), spec-v137 → 614 (infectious-disease scores — ISARIC 4C mortality, COVID-GRAM, Candida score, VACS index, RegiSCAR DRESS, +5, **Wave 6 complete**), **+30 → 614**; Wave 7 underway (Obstetrics / pediatrics / neonatal): spec-v138 → 620 (obstetrics & maternal-fetal medicine — Hadlock EFW, fullPIERS, miniPIERS, AFI, Barnhart hCG rise, IOM weight gain, +6, **Wave 7 opens**), spec-v139 → 626 (gynecology decision rules — Flamm VBAC, ROMA, RMI I/II/III, IOTA Simple Rules, Rotterdam PCOS, POP-Q staging, +6), spec-v140 → 631 (pediatric & neonatal severity — Kaiser EOS, SNAPPE-II, RDAI/Tal, Clinical Dehydration Scale, Koff bladder capacity, +5; CRIB-II deferred pending a second independent source for the Parry 2003 matrix), spec-v141 → 635 (pediatric growth / developmental-age — CDC 2000 BMI-for-age percentile, WHO 2006 growth z-score, Tanner mid-parental height, AAP corrected gestational age, +4 of 6: `peds-weight-est` skipped as a live spec-v149 duplicate, `gail-bcrat` deferred — its NCI BCRA incidence/competing-hazard tables ship only as binary `.rda`, not verbatim-fetchable to cross-verify per spec-v97), **Wave 7 complete, +21 → 635**; Wave 8 underway (Surgery / anesthesia / ortho / rheum / geriatrics / pharmacy): spec-v142 → 641 (surgical & anesthetic risk — POSSUM + P-POSSUM logistic morbidity/mortality, SORT 30-day-mortality logistic, Goldman 1977 cardiac index, Wilson difficult-airway sum, Sutton Surgical Risk Scale, +6, **Wave 8 opens**; SORT corrected to no-ASA-II-coefficient + mutually-exclusive age bands, Surgical Risk Scale range corrected to 3–14 from the draft's 3–17), spec-v143 → 646 (frailty & geriatric-oncology screening — mFI-5, mFI-11, FRAIL Scale, VES-13, CARG chemo-toxicity, +5; VES-13's 4-point all-or-nothing disability rule and 75–84 age band restored over two mis-printed online reproductions), spec-v144 → 652 (orthopedic fracture classification — Gustilo-Anderson open fracture I/II/IIIA–C, Garden femoral-neck I–IV, Danis-Weber ankle A/B/C, Schatzker tibial-plateau I–VI, Salter-Harris physeal I–V, Neer proximal-humerus one- to four-part, +6; the Gustilo Type III subtype keyed to coverage/perfusion not wound size, Weber dated to the 1972 monograph over a common 1966 mis-citation), spec-v145 → 657 (orthopedic risk & osteoarthritis — Frykman distal-radius I–VIII, Mirels impending-fracture 4–12, Kellgren-Lawrence OA grade 0–4, Pittsburgh knee rule, compartment delta pressure, +5; the Frykman even/odd ulnar-styloid axis, the Mirels ≥9 prophylactic-fixation flip, KL grade ≥2 as the definite-OA threshold, the entry-gated Pittsburgh mechanism, and the strict ΔP<30 mmHg fasciotomy threshold all cross-verified against ≥2 sources), spec-v146 → 662 (spinal tumor & trauma classification — SINS oncologic-instability 0–18, Revised Tokuhashi metastatic-spine prognosis 0–15, Tomita surgical-strategy 2–10, TLICS thoracolumbar triage 0–10, SLIC subaxial-cervical triage 0–10, +5; fills the spinal-scoring gap beside the existing brain/cerebrovascular neurosurgical cluster, TLICS/SLIC incomplete-cord > complete-cord and the SLIC +1 continuous-compression modifier cross-verified against ≥2 sources), spec-v147 → 669 (rheumatology activity & classification — CDAI lab-free RA activity 0–76, SDAI CRP-adding RA activity 0–86, 2010 ACR/EULAR RA classification 0–10 with the ≥6 definite flip, SLEDAI-2K SLE activity 0–105, 2015 ACR/EULAR gout with the MSU-crystal sufficient bypass and ≥8 threshold, CASPAR psoriatic-arthritis entry + ≥3 points, 2016 revised ACR fibromyalgia WPI/SSS dual-threshold, +7; the SDAI CRP mg/dL-vs-mg/L unit trap, the two negative gout items serum-urate <4 = −4 and MSU-negative synovial = −2, the SLEDAI-2K ongoing-activity credit, and the 2016 fibromyalgia somatic-count-not-severity simplification all cross-verified against ≥2 sources), **+34 → 669**)
+### Rheumatology, palliative & pharmacy: closing the spec-v100 program (spec-v148, +7 → 676, **program complete**)
+
+[spec-v148](docs/spec-v148.md) is the **closing feature spec of the entire
+spec-v100 MDCalc Parity Completion program**. It adds the spondyloarthritis
+activity score, the vasculitis prognosis score, and the giant-cell-arteritis
+classification the rheumatology surface still lacked beside `das28`; the two free
+palliative-prognosis substitutes; an opioid equianalgesic *rotation* converter
+(distinct from the surveillance `opioid-mme`); and the Naranjo ADR causality
+scale. All seven live in `lib/rheum-v148.js` + `views/group-v148.js` (`RV148`),
+fuzz-covered by the spec-v59 harness. Every coefficient, weight, cutoff, and
+equianalgesic constant was re-fetched and cross-verified against ≥ 2 independent
+authoritative sources (the spec-v97 discipline).
+
+| id | Group | Rule | Output | Companion to |
+|---|---|---|---|---|
+| `asdas` | G | ASDAS-CRP = 0.12·back pain + 0.06·morning stiffness + 0.11·patient global + 0.07·peripheral pain + 0.58·ln(CRP+1), CRP mg/L floored to 2; ASDAS-ESR uses **different** weights + 0.29·√ESR (Lukas 2009) | ASDAS value + band (inactive < 1.3, low < 2.1, high ≤ 3.5, very high > 3.5) | `das28` |
+| `ffs-2011` | G | four poor-prognosis factors + the favorable absence-of-ENT, each +1 (Guillevin 2011) | total 0–5 + 5-year mortality ≈ 9% / 21% / 40% at 0 / 1 / ≥ 2 | `das28` |
+| `gca-acr-eular-2022` | G | age ≥ 50 entry, then biopsy/halo +5, ESR/CRP +3, visual loss +3, seven +2 items (Ponte 2022) | total 0–25, **≥ 6** classifies as GCA; **Class B** | `cdai-ra` |
+| `palliative-prognostic-index` | G | PPS + oral intake + edema + dyspnea at rest + delirium (Morita 1999) | total 0–15, **> 6 → < 3 weeks**, > 4 → < 6 weeks | `ecog-karnofsky`, `palliative-prognostic-score` |
+| `palliative-prognostic-score` | G | dyspnea + anorexia + Karnofsky + clinical prediction of survival + WBC + lymphocyte % (Pirovano/Maltoni 1999) | total 0–17.5, group **A > 70% / B 30–70% / C < 30%** | `ecog-karnofsky`, `palliative-prognostic-index` |
+| `opioid-conversion` | F | source dose → oral morphine equivalents → target, then a 25–50% cross-tolerance reduction; methadone/buprenorphine **excluded** (McPherson 2018) | equianalgesic + reduced starting dose, with the **independent-second-check** caveat | `opioid-mme` (surveillance MME) |
+| `naranjo` | G | ten weighted yes/no/don't-know questions, including four negatives (Naranjo 1981) | total −4 to +13 → doubtful / possible / probable / definite | `opioid-mme` |
+
+Three correctness anchors. **The ASDAS-CRP and ASDAS-ESR variants do not share
+their four NRS coefficients** (0.12/0.06/0.11/0.07 vs 0.08/0.07/0.11/0.09) — a
+common transcription trap; both are computed and reported when both inputs are
+present, and a CRP < 2 mg/L is floored to 2 before the log term. **The 2022 GCA
+biopsy and ultrasound-halo findings are one combined +5 item**, not two, and the
+age-≥ 50 entry is enforced first. **`opioid-conversion` is domain-guarded**: the
+equianalgesic factors are fixed positive constants, a zero/blank/negative dose
+surfaces a complete-the-fields fallback rather than `Infinity`/`NaN`, and the
+high-stakes rotation carries the spec-v11 §5.3 second-check note. The **proposed
+eighth tile `valproate-correction` was deferred** — the spec's citation was wrong,
+the Hermida-Tutor free-fraction table could not be cross-verified to ≥ 2 sources,
+and a 2018 validation found it clinically inaccurate (parked with `crib-ii` /
+`gail-bcrat` / `gwtg-hf` / ROKS). With v148 the **spec-v100 program is complete:
+432 → 676**. See [docs/spec-v148.md](docs/spec-v148.md).
+
+### MDCalc parity completion: the cardiology / vascular / lipid surface (spec-v100 program, Wave 1: spec-v101 → spec-v105, +25 → 457, **complete**; Wave 2 complete: spec-v106 → 463, spec-v107 → 467, spec-v108 → 473, spec-v109 → 478, spec-v110 → 483, spec-v111 → 487, **+30 → 487**; Wave 3 complete (Critical care & pulmonary): spec-v112 → 492, spec-v113 → 495, spec-v114 → 501, spec-v115 → 506, **+19 → 506**; Wave 4 underway (Neurology / neurosurgery / psychiatry): spec-v117 → 512, spec-v118 → 517, spec-v119 → 521, spec-v120 → 526, spec-v121 → 530, spec-v122 → 533, spec-v123 → 538 (**Wave 4 complete**), **+32 → 538**; Wave 5 complete (GI / hepatology / nephrology / acid-base / urology): spec-v124 → 544, spec-v125 → 549, spec-v126 → 555, spec-v127 → 559, spec-v128 → 564, spec-v129 → 570, spec-v130 → 576, spec-v131 → 584 (closes the wave at +5; ROKS deferred), **+43 → 581 from the wave; live catalog 584 incl. the standalone spec-v149 EMS parity, +3**; Wave 6 underway (Heme / onc / endocrine / ID): spec-v132 → 589 (thrombotic microangiopathy & coagulopathy, +5), spec-v133 → 593 (warfarin start-up — IWPC + Gage PGx dose, Kovacs 10 mg + Crowther 5 mg nomograms, +4, all four shipped after an adversarial re-fetch confirmed the Gage and Kovacs tables), spec-v134 → 599 (plasma-cell & myeloid-neoplasm staging — ISS, R-ISS, R2-ISS, Mayo MGUS, DIPSS, DIPSS-Plus, +6), spec-v135 → 604 (lymphoma / CLL prognostic indices — R-IPI, NCCN-IPI, GELF, Hasenclever IPS, CLL-IPI, +5), spec-v136 → 609 (endocrine / metabolic indices — HOMA-IR, QUICKI, TyG index, metabolic syndrome, OST/ORAI DXA pre-screen, +5), spec-v137 → 614 (infectious-disease scores — ISARIC 4C mortality, COVID-GRAM, Candida score, VACS index, RegiSCAR DRESS, +5, **Wave 6 complete**), **+30 → 614**; Wave 7 underway (Obstetrics / pediatrics / neonatal): spec-v138 → 620 (obstetrics & maternal-fetal medicine — Hadlock EFW, fullPIERS, miniPIERS, AFI, Barnhart hCG rise, IOM weight gain, +6, **Wave 7 opens**), spec-v139 → 626 (gynecology decision rules — Flamm VBAC, ROMA, RMI I/II/III, IOTA Simple Rules, Rotterdam PCOS, POP-Q staging, +6), spec-v140 → 631 (pediatric & neonatal severity — Kaiser EOS, SNAPPE-II, RDAI/Tal, Clinical Dehydration Scale, Koff bladder capacity, +5; CRIB-II deferred pending a second independent source for the Parry 2003 matrix), spec-v141 → 635 (pediatric growth / developmental-age — CDC 2000 BMI-for-age percentile, WHO 2006 growth z-score, Tanner mid-parental height, AAP corrected gestational age, +4 of 6: `peds-weight-est` skipped as a live spec-v149 duplicate, `gail-bcrat` deferred — its NCI BCRA incidence/competing-hazard tables ship only as binary `.rda`, not verbatim-fetchable to cross-verify per spec-v97), **Wave 7 complete, +21 → 635**; Wave 8 underway (Surgery / anesthesia / ortho / rheum / geriatrics / pharmacy): spec-v142 → 641 (surgical & anesthetic risk — POSSUM + P-POSSUM logistic morbidity/mortality, SORT 30-day-mortality logistic, Goldman 1977 cardiac index, Wilson difficult-airway sum, Sutton Surgical Risk Scale, +6, **Wave 8 opens**; SORT corrected to no-ASA-II-coefficient + mutually-exclusive age bands, Surgical Risk Scale range corrected to 3–14 from the draft's 3–17), spec-v143 → 646 (frailty & geriatric-oncology screening — mFI-5, mFI-11, FRAIL Scale, VES-13, CARG chemo-toxicity, +5; VES-13's 4-point all-or-nothing disability rule and 75–84 age band restored over two mis-printed online reproductions), spec-v144 → 652 (orthopedic fracture classification — Gustilo-Anderson open fracture I/II/IIIA–C, Garden femoral-neck I–IV, Danis-Weber ankle A/B/C, Schatzker tibial-plateau I–VI, Salter-Harris physeal I–V, Neer proximal-humerus one- to four-part, +6; the Gustilo Type III subtype keyed to coverage/perfusion not wound size, Weber dated to the 1972 monograph over a common 1966 mis-citation), spec-v145 → 657 (orthopedic risk & osteoarthritis — Frykman distal-radius I–VIII, Mirels impending-fracture 4–12, Kellgren-Lawrence OA grade 0–4, Pittsburgh knee rule, compartment delta pressure, +5; the Frykman even/odd ulnar-styloid axis, the Mirels ≥9 prophylactic-fixation flip, KL grade ≥2 as the definite-OA threshold, the entry-gated Pittsburgh mechanism, and the strict ΔP<30 mmHg fasciotomy threshold all cross-verified against ≥2 sources), spec-v146 → 662 (spinal tumor & trauma classification — SINS oncologic-instability 0–18, Revised Tokuhashi metastatic-spine prognosis 0–15, Tomita surgical-strategy 2–10, TLICS thoracolumbar triage 0–10, SLIC subaxial-cervical triage 0–10, +5; fills the spinal-scoring gap beside the existing brain/cerebrovascular neurosurgical cluster, TLICS/SLIC incomplete-cord > complete-cord and the SLIC +1 continuous-compression modifier cross-verified against ≥2 sources), spec-v147 → 669 (rheumatology activity & classification — CDAI lab-free RA activity 0–76, SDAI CRP-adding RA activity 0–86, 2010 ACR/EULAR RA classification 0–10 with the ≥6 definite flip, SLEDAI-2K SLE activity 0–105, 2015 ACR/EULAR gout with the MSU-crystal sufficient bypass and ≥8 threshold, CASPAR psoriatic-arthritis entry + ≥3 points, 2016 revised ACR fibromyalgia WPI/SSS dual-threshold, +7; the SDAI CRP mg/dL-vs-mg/L unit trap, the two negative gout items serum-urate <4 = −4 and MSU-negative synovial = −2, the SLEDAI-2K ongoing-activity credit, and the 2016 fibromyalgia somatic-count-not-severity simplification all cross-verified against ≥2 sources), spec-v148 → 676 (rheumatology / palliative / pharmacy, the **program-closing** spec — ASDAS spondyloarthritis activity, FFS-2011 vasculitis prognosis, 2022 ACR/EULAR giant-cell-arteritis classification, PPI and PaP palliative-prognosis, an opioid equianalgesic rotation converter, and the Naranjo ADR causality scale, +7; the proposed eighth tile valproate-correction was **deferred** — the spec's citation was wrong, the Hermida-Tutor free-fraction table could not be cross-verified to ≥2 sources, and a 2018 validation found it clinically inaccurate), **+41 → 676, spec-v100 program complete**)
 
 With the spec-v85 program complete, [spec-v100](docs/spec-v100.md) charters the
 **MDCalc Parity Completion** program — a roadmap that closes the remaining gaps
@@ -2590,7 +2628,7 @@ long version, see [docs/architecture.md](docs/architecture.md).
  │  manifests (data/)            │  static │        ▼                     ▼             │
  │        │  scripts/build       │  files  │   lazy-load data shard   pure compute      │
  │        ▼                      │         │   (verified vs manifest)  (lib/*.js)       │
- │  dist/  (669 tool pages,      │         │        │                     │             │
+ │  dist/  (676 tool pages,      │         │        │                     │             │
  │  OG cards, sitemap, SBOM)     │         │        ▼                     ▼             │
  └───────────────────────────────┘         │   service worker cache    result + cite   │
                                             │   (keyed to build hash)                    │
@@ -2612,7 +2650,7 @@ assets:
 
 | Output | Count | Source |
 |--------|------:|--------|
-| Pre-rendered tool pages (`dist/tools/<id>/`) | 669 | `scripts/build-tool-pages.mjs` |
+| Pre-rendered tool pages (`dist/tools/<id>/`) | 676 | `scripts/build-tool-pages.mjs` |
 | Audience hub pages (`dist/for/<audience>/`) | 6 | `scripts/build-hub-pages.mjs` |
 | Topic pages + `/topics/` index | 8 + 1 | `scripts/build-topic-pages.mjs` |
 | `/commitments/` | 1 | `scripts/build-commitments-page.mjs` |
@@ -2647,7 +2685,7 @@ static pages, so a tile can never ship mobile overflow undetected.
 index.html          single-page shell (hero-search combobox + static browse-by-category nav, tile mount)
 styles.css          one stylesheet (responsive; no horizontal scroll — enforced catalog-wide at 320px in CI)
 app.js              router, hero-search wiring, view wiring, the UTILITIES catalog
-                    (669 tiles — the single source of truth; zero runtime deps)
+                    (676 tiles — the single source of truth; zero runtime deps)
 sw.js               service worker — precache shell, cache shards by build hash
 theme.js            light/dark theme toggle (writes only sw-theme, allowlisted)
 lib/input-persist.js opt-in "remember my inputs" (off by default; numbers only)
@@ -2665,12 +2703,12 @@ docs/               specs (spec-v4 onward) + per-tile v11/v12 audit logs +
                     citation-staleness ledger +
                     architecture / threat-model / …
 test/               unit/ (node:test) · integration/ (Playwright) · fixtures/
-dist/               build output (669 tool pages, OG cards, sitemap, SBOM)
+dist/               build output (676 tool pages, OG cards, sitemap, SBOM)
 ```
 
-### Discovery: how a query finds the right tool among 669
+### Discovery: how a query finds the right tool among 676
 
-With 669 tiles, search quality *is* the product — a tool you cannot find does
+With 676 tiles, search quality *is* the product — a tool you cannot find does
 not exist. Discovery is deterministic and offline (no fuzzy-match service, no
 embedding model, no AI). The home `#hero-search` combobox builds its dropdown
 from two complementary rankers, both pure functions of the typed query:
@@ -2743,10 +2781,10 @@ A login-less, AI-free calculator earns trust only if the nurse can see, on the
 tile, exactly which published source produced the number — and tell whether that
 source is current. spec-v54 defined the invariants; spec-v60 built the machinery
 (the gate, the ledger, and the `citationAccessed` convention) and extended it
-across the full 669-tile catalog, pinning the last three unpinned "current
+across the full 676-tile catalog, pinning the last three unpinned "current
 edition" phrases and re-verifying every guideline tile against its latest known
 edition. Three invariants make that auditable, each enforced by the
-`check-citations.mjs` lint gate (in the `npm run lint` chain) over all 669 tiles:
+`check-citations.mjs` lint gate (in the `npm run lint` chain) over all 676 tiles:
 
 | Invariant | Rule | Enforcement |
 |---|---|---|
@@ -3203,7 +3241,7 @@ rules, not soft preferences.
 | `npm run build`          | Copy static files into `dist/` for deployment                     |
 | `npm test`               | Run the full test suite (unit, a11y, grep, data integrity)        |
 | `npm run test:unit`      | Run Node's built-in unit tests (5,156 tests)                      |
-| `npm run test:e2e`       | Build `dist/`, then run Playwright integration tests against real browsers — incl. a full-catalog 320px no-horizontal-scroll sweep over both the SPA routes and the 669 pre-rendered static tool pages, the hub/topic/commitments pages, and the citation-wrap pin |
+| `npm run test:e2e`       | Build `dist/`, then run Playwright integration tests against real browsers — incl. a full-catalog 320px no-horizontal-scroll sweep over both the SPA routes and the 676 pre-rendered static tool pages, the hub/topic/commitments pages, and the citation-wrap pin |
 | `npm run test:a11y`      | Run accessibility checks on every utility view                    |
 | `npm run lint`           | ESLint + the CI gate chain: grep-check, output-safety, citation-integrity, catalog-truth, commitments, PA staleness, PA audit |
 | `npm run data:refresh`   | Re-fetch and re-shard every public dataset                        |
@@ -3287,7 +3325,7 @@ build, integrity-verified data shards) are documented in
 - [docs/spec-v11.md](docs/spec-v11.md) — correctness-floor spec:
   per-tile audit protocol, specialty-named groups, optional
   source-quoted `interpretation` field. Audit coverage is **complete
-  — 669/669 tiles** carry a committed per-tile audit log
+  — 676/676 tiles** carry a committed per-tile audit log
   (`docs/audits/v11/<id>.md` for the pre-v78 catalog;
   `docs/audits/v12/<id>.md` for the tiles added since — the
   spec-v78–v83 billing & coding program, the spec-v85

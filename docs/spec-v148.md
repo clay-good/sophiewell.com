@@ -1,6 +1,9 @@
 # spec-v148.md — Rheumatology (vasculitis/SpA), palliative & pharmacy: ASDAS, FFS-2011, 2022 ACR/EULAR GCA, PPI, PaP, opioid conversion, Naranjo, and valproate correction (+8 tiles)
 
-> Status: **PROPOSED (2026-06-17).** Feature spec of the
+> Status: **SHIPPED (2026-06-23), +7 of the 8 proposed tiles.** The eighth tile,
+> `valproate-correction`, was **DEFERRED** during implementation — see **§7.1**.
+> The catalog moved **669 → 676**, closing the [spec-v100](spec-v100.md) program
+> at **676** (432 → 676). Feature spec of the
 > [spec-v100](spec-v100.md) **MDCalc Parity Completion** program, **Wave 8**
 > (Surgery / anesthesia / ortho / rheum / geriatrics / pharmacy), and the
 > **CLOSING spec of the entire spec-v100 program.** Adds **8** deterministic
@@ -279,6 +282,35 @@ v148 is fully shipped when:
   **spec-v100 program complete (432 → 679, +247)**.
 - `npm run lint`, `npm run test`, `npm run sbom`, and `npm run build` all pass.
 - The CHANGELOG records v148 with the +8 catalog delta and the program-complete note.
+
+## 7.1 Deferred during implementation — `valproate-correction`
+
+The proposed §2.8 `valproate-correction` tile was **not shipped**. Three
+source-governance findings, surfaced during the spec-v97 re-fetch-and-cross-verify
+pass, block it:
+
+1. **The draft citation is wrong.** §2.8 cites *Ther Drug Monit* 2005;27(5):
+   619-625; that locator is a different (scopolamine) article. The actual paper is
+   **Hermida J, Tutor JC. A theoretical method for normalizing total serum
+   valproic acid concentration in hypoalbuminemic patients. *J Pharmacol Sci.*
+   2005;97(4):489-493** (PMID 15840952).
+2. **The method is not a closed form, and its table is single-sourced.** Unlike
+   the `corrected-phenytoin` Sheiner-Tozer parallel the spec assumed, the
+   Hermida-Tutor method is `C_normalized = α_H · C_measured / 6.5`, where `α_H`
+   (the VPA free fraction at the patient's albumin) is read from a **published
+   lookup table**. That table could be located in only **one** reproducible source
+   — failing the ≥ 2-independent-source rule that already parked `crib-ii`,
+   `gail-bcrat`, `gwtg-hf`, and the ROKS nomogram.
+3. **A validation found it clinically inaccurate.** Hanley et al (*Neurocrit Care*
+   2018;30(2):320-327) found the equation discordant with measured free valproate,
+   and the method is valid only for total VPA < 75 µg/mL.
+
+Shipping an under-sourced, narrow-validity, high-stakes drug-level correction
+fails the [spec-v100](spec-v100.md) §2 doctrine and the [spec-v11](spec-v11.md)
+§5.3 posture. `valproate-correction` is therefore **deferred with `crib-ii` /
+`gail-bcrat` / `gwtg-hf` / ROKS** until a closed-form or ≥ 2-source-verifiable
+method that also survives validation is available. With this deferral v148 ships
+**+7**, closing the spec-v100 program at **676** (432 → 676, +244).
 
 ## 7. Out of scope for v148
 
