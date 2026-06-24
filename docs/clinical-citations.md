@@ -3773,3 +3773,74 @@ continuous cord compression with an ongoing deficit. Triage: three or less nonop
 indeterminate, five or more operative.
 Worked example: a compression injury (1) with an indeterminate disco-ligamentous complex (1), a root
 deficit (1), and ongoing cord compression (plus one) totals four — indeterminate.
+
+### CDAI — Clinical Disease Activity Index (Rheumatoid Arthritis)
+Citation: Aletaha D, Nell VPK, Stamm T, et al. Acute phase reactants add little to composite disease
+activity indices for rheumatoid arthritis: validation of a clinical activity score. Arthritis Res Ther.
+2005;7(4):R796-R806.
+Formula: CDAI = swollen-joint count (0 to 28) + tender-joint count (0 to 28) + patient global (0 to 10 cm)
++ physician global (0 to 10 cm), with no acute-phase reactant. Bands: remission at or below 2.8, low at or
+below 10, moderate at or below 22, high above 22.
+Worked example: 6 swollen + 8 tender + 3 patient + 2 physician sums to 19 — moderate disease activity.
+
+### SDAI — Simplified Disease Activity Index (Rheumatoid Arthritis)
+Citation: Smolen JS, Breedveld FC, Schiff MH, et al. A simplified disease activity index for rheumatoid
+arthritis for use in clinical practice. Rheumatology (Oxford). 2003;42(2):244-257.
+Formula: SDAI = the CDAI inputs plus CRP in mg per dL (a value reported in mg per L is ten times larger).
+Bands: remission at or below 3.3, low at or below 11, moderate at or below 26, high above 26.
+Worked example: 6 swollen + 8 tender + 3 patient + 2 physician + 1.5 CRP sums to 20.5 — moderate activity.
+
+### 2010 ACR/EULAR Rheumatoid Arthritis Classification Criteria
+Citation: Aletaha D, Neogi T, Silman AJ, et al. 2010 Rheumatoid arthritis classification criteria: an
+American College of Rheumatology/European League Against Rheumatism collaborative initiative. Arthritis
+Rheum. 2010;62(9):2569-2581.
+Formula: applied after the entry condition (at least one joint with definite clinical synovitis not better
+explained otherwise). The single highest level per domain — joints (0 to 5), serology (0 to 3),
+acute-phase reactants (0 to 1), symptom duration (0 to 1) — sums to a maximum of ten; a score of six or
+more classifies as definite rheumatoid arthritis.
+Worked example: more than ten joints with at least one small (5) and symptoms at least six weeks (1) sums
+to six — classify as definite rheumatoid arthritis.
+
+### SLEDAI-2K — SLE Disease Activity Index 2000
+Citation: Gladman DD, Ibanez D, Urowitz MB. Systemic lupus erythematosus disease activity index 2000.
+J Rheumatol. 2002;29(2):288-291.
+Formula: a weighted sum of twenty-four descriptors present in the prior ten days, weighted 8, 4, 2, and 1,
+to a maximum of one hundred five. A score of six or more denotes clinically important active disease, and
+a fall of four or more a meaningful improvement. SLEDAI-2K credits ongoing (not only new) rash, alopecia,
+mucosal ulcers, and proteinuria.
+Worked example: arthritis (4), low complement (2), and increased DNA binding (2) sums to eight — moderate
+activity.
+
+### 2015 ACR/EULAR Gout Classification Criteria
+Citation: Neogi T, Jansen TLTA, Dalbeth N, et al. 2015 Gout classification criteria: an American College
+of Rheumatology/European League Against Rheumatism collaborative initiative. Arthritis Rheumatol.
+2015;67(10):2557-2568.
+Formula: an entry criterion (at least one episode of peripheral joint or bursa swelling, pain, or
+tenderness) gates the rule; monosodium-urate crystals in a symptomatic joint, bursa, or tophus classify
+directly. Otherwise weighted domains — pattern (0 to 2), episode characteristics (0 to 3), time-course
+(0 to 2), tophus (4), serum urate (less than 4 mg per dL is minus four, then 0, 2, 3, 4), synovial fluid
+(not done 0, negative minus two), imaging urate deposition (4), imaging erosion (4) — sum to a maximum of
+twenty-three; a total of eight or more classifies as gout.
+Worked example: first-MTP pattern (2), two characteristics (2), recurrent episodes (2), and serum urate
+8 to less than 10 mg per dL (3) sums to nine — classify as gout.
+
+### CASPAR — Classification Criteria for Psoriatic Arthritis
+Citation: Taylor W, Gladman D, Helliwell P, et al. Classification criteria for psoriatic arthritis:
+development of new criteria from a large international study. Arthritis Rheum. 2006;54(8):2665-2670.
+Formula: applied to a patient with established inflammatory articular disease (joint, spine, or
+entheseal). Items — psoriasis (current 2, or personal or family history 1), nail dystrophy (1), negative
+rheumatoid factor (1), dactylitis (1), juxta-articular new bone formation (1) — sum to a maximum of six;
+the entry condition plus three or more points classifies as psoriatic arthritis.
+Worked example: current psoriasis (2) and nail dystrophy (1) sums to three — classify as psoriatic
+arthritis.
+
+### 2016 Revised ACR Fibromyalgia Criteria
+Citation: Wolfe F, Clauw DJ, Fitzcharles MA, et al. 2016 Revisions to the 2010/2011 fibromyalgia
+diagnostic criteria. Semin Arthritis Rheum. 2016;46(3):319-329.
+Formula: from the Widespread Pain Index (count of zero to nineteen painful regions) and the Symptom
+Severity Scale (zero to twelve — fatigue, waking unrefreshed, and cognitive symptoms each zero to three,
+plus a zero-to-three count of headaches, lower-abdominal pain, and depression). Met when WPI at least
+seven and SSS at least five, or WPI four to six and SSS at least nine; and generalized pain (at least four
+of five regions); and symptoms at least three months. Valid irrespective of other diagnoses.
+Worked example: WPI 8, SSS 6 (fatigue 2, waking 2, cognitive 1, one somatic), generalized pain in four
+regions, symptoms over three months — criteria met.

@@ -76,6 +76,7 @@ import { renderers as RV143 } from './views/group-v143.js';
 import { renderers as RV144 } from './views/group-v144.js';
 import { renderers as RV145 } from './views/group-v145.js';
 import { renderers as RV146 } from './views/group-v146.js';
+import { renderers as RV147 } from './views/group-v147.js';
 import { renderers as RV149 } from './views/group-v149.js';
 import { renderers as RV63 } from './views/group-v63.js';
 import { renderers as RB } from './views/group-b.js';
@@ -95,7 +96,7 @@ import { resolvePrompt } from './lib/prompt.js';
 // artifact-detect / artifact-route / artifact-handoff helpers were
 // deleted in spec-v29 wave 29-2 (Group C/L).
 
-const RENDERERS = { ...RA, ...RB, ...RC, ...RE, ...RF, ...RG, ...RH, ...RI, ...RJ, ...RKLMNO, ...RV5, ...RV6, ...RV7, ...RV8, ...RV9, ...RV10, ...RV11, ...RV12, ...RV13, ...RV14, ...RV15, ...RV16, ...RV17, ...RV18, ...RV19, ...RV20, ...RV21, ...RV22, ...RV23, ...RV24, ...RV25, ...RV26, ...RV27, ...RV28, ...RV29, ...RV30, ...RV31, ...RV32, ...RV33, ...RV34, ...RV35, ...RV36, ...RV37, ...RV38, ...RV39, ...RV40, ...RV117, ...RV118, ...RV119, ...RV120, ...RV121, ...RV122, ...RV123, ...RV124, ...RV125, ...RV126, ...RV127, ...RV128, ...RV129, ...RV130, ...RV131, ...RV132, ...RV133, ...RV134, ...RV135, ...RV136, ...RV137, ...RV138, ...RV139, ...RV140, ...RV141, ...RV142, ...RV143, ...RV144, ...RV145, ...RV146, ...RV149, ...RV63, ...RPALINT };
+const RENDERERS = { ...RA, ...RB, ...RC, ...RE, ...RF, ...RG, ...RH, ...RI, ...RJ, ...RKLMNO, ...RV5, ...RV6, ...RV7, ...RV8, ...RV9, ...RV10, ...RV11, ...RV12, ...RV13, ...RV14, ...RV15, ...RV16, ...RV17, ...RV18, ...RV19, ...RV20, ...RV21, ...RV22, ...RV23, ...RV24, ...RV25, ...RV26, ...RV27, ...RV28, ...RV29, ...RV30, ...RV31, ...RV32, ...RV33, ...RV34, ...RV35, ...RV36, ...RV37, ...RV38, ...RV39, ...RV40, ...RV117, ...RV118, ...RV119, ...RV120, ...RV121, ...RV122, ...RV123, ...RV124, ...RV125, ...RV126, ...RV127, ...RV128, ...RV129, ...RV130, ...RV131, ...RV132, ...RV133, ...RV134, ...RV135, ...RV136, ...RV137, ...RV138, ...RV139, ...RV140, ...RV141, ...RV142, ...RV143, ...RV144, ...RV145, ...RV146, ...RV147, ...RV149, ...RV63, ...RPALINT };
 
 // ----- Utility registry ----------------------------------------------------
 // Source of truth for routes, names, group, audiences, and clinical flag.
@@ -719,6 +720,23 @@ const UTILITIES = [
   { id: 'tomita-score',       name: 'Tomita Score (spinal-metastasis surgical strategy)',   group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'tlics-score',        name: 'Thoracolumbar Injury Classification & Severity (TLICS)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'slic-score',         name: 'Subaxial Cervical Spine Injury Classification (SLIC)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+
+  // spec-v147 (Wave 8 of spec-v100): seven rheumatology disease-activity and
+  // classification instruments that fill confirmed gaps beside the das28 anchor.
+  // CDAI/SDAI are the lab-light/CRP DAS28 companions; the 2010 ACR/EULAR RA,
+  // 2015 gout, CASPAR, and 2016 fibromyalgia criteria are the standard
+  // classification rules; SLEDAI-2K is the SLE activity index. Per the spec-v100
+  // §2 classification clarification each tile consumes the clinician's read of
+  // the joint exam, serology, synovial fluid, and imaging and computes a score /
+  // classification; none is a no-input reference table. views/group-v147.js,
+  // lib/rheum-v147.js (RV147).
+  { id: 'cdai-ra',            name: 'CDAI (Clinical Disease Activity Index, rheumatoid arthritis)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'sdai-ra',            name: 'SDAI (Simplified Disease Activity Index, rheumatoid arthritis)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'acr-eular-2010-ra',  name: '2010 ACR/EULAR Rheumatoid Arthritis Classification Criteria', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'sledai-2k',          name: 'SLEDAI-2K (SLE Disease Activity Index 2000)',       group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'gout-acr-eular-2015', name: '2015 ACR/EULAR Gout Classification Criteria',      group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'caspar',             name: 'CASPAR Criteria for Psoriatic Arthritis',           group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'fibromyalgia-acr-2016', name: '2016 Revised ACR Fibromyalgia Criteria',         group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
 
   // spec-v98 (Wave 2 of spec-v85): four deterministic pediatric decision rules
   // and prognostic scores that fill confirmed gaps after a full sweep of Group N

@@ -6,6 +6,73 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v147: rheumatology activity & classification — CDAI, SDAI, 2010 ACR/EULAR RA, SLEDAI-2K, 2015 gout, CASPAR, 2016 fibromyalgia, +7 — spec-v100 Wave 8 continues)
+
+- **Seven rheumatology disease-activity and classification instruments continue
+  Wave 8 of the spec-v100 program (662 → 669, +7)**, filling a confirmed gap: the
+  catalog had `das28` as the lone rheumatology anchor but **none of the standard
+  activity/classification surface beside it**. All seven are in **Clinical
+  Scoring & Risk (Group G)** via `lib/rheum-v147.js` + `views/group-v147.js`
+  (`RV147`), each cross-linking `das28`. Per the spec-v100 §2 classification
+  clarification each tile **consumes the clinician's read of the joint exam,
+  serology, synovial fluid, and imaging** and **computes a score / classification**
+  plus the source's interpretation — none is a no-input reference table. Every
+  weight, band cutoff, and threshold was **re-fetched and cross-verified across
+  ≥ 2 independent authoritative sources** (the original papers, MDCalc, the
+  official ACR/EULAR gout-classification web calculator, StatPearls, the Bateman
+  Horne Center fibromyalgia form, published SLEDAI-2K/CDAI/SDAI forms; the
+  spec-v97 discipline). Each leaves the treat/escalate/DMARD decision with the
+  rheumatologist (spec-v11 §5.3).
+  - **`cdai-ra`** — Clinical Disease Activity Index (Aletaha D, et al, *Arthritis
+    Res Ther* 2005): the lab-free linear sum SJC28 + TJC28 + patient + physician
+    global, total **0–76**; **remission ≤ 2.8, low ≤ 10, moderate ≤ 22, high > 22**.
+    **Class A.**
+  - **`sdai-ra`** — Simplified Disease Activity Index (Smolen JS, et al,
+    *Rheumatology* 2003): the CDAI inputs **plus CRP in mg/dL**, total **0–86**;
+    **remission ≤ 3.3, low ≤ 11, moderate ≤ 26, high > 26**. The CRP addend is
+    guarded finite/non-negative (mg/L is 10× mg/dL — the common transcription
+    trap). **Class A.**
+  - **`acr-eular-2010-ra`** — 2010 ACR/EULAR RA classification (Aletaha D, et al,
+    *Arthritis Rheum* 2010): applied after the synovitis entry condition, four
+    domains (joints 0–5, serology 0–3, acute-phase 0–1, duration 0–1) sum **0–10**;
+    **≥ 6 = definite RA**. **Class B.**
+  - **`sledai-2k`** — SLEDAI-2K SLE Disease Activity Index 2000 (Gladman DD, et al,
+    *J Rheumatol* 2002): 24 weighted descriptors (8/4/2/1) sum **0–105**; **≥ 6**
+    denotes clinically important active disease. SLEDAI-2K credits **ongoing** (not
+    only new) rash, alopecia, mucosal ulcers, and proteinuria. **Class A.**
+  - **`gout-acr-eular-2015`** — 2015 ACR/EULAR gout classification (Neogi T, et al,
+    *Arthritis Rheumatol* 2015): an entry criterion gates the rule; **MSU crystals
+    classify directly** (sufficient-criterion bypass); otherwise weighted domains
+    sum **0–23** with **≥ 8 = gout**. Two **negative** items (serum urate < 4 mg/dL
+    = **−4**, MSU-negative synovial fluid = **−2**) are confirmed with sign, distinct
+    from "not done" (0). **Class B.**
+  - **`caspar`** — CASPAR psoriatic-arthritis criteria (Taylor W, et al, *Arthritis
+    Rheum* 2006): the inflammatory-articular-disease entry **plus ≥ 3 of 6 points**
+    (psoriasis current 2 / history 1, nail dystrophy 1, negative RF 1, dactylitis 1,
+    juxta-articular new bone 1). Current psoriasis is the only 2-point item.
+    **Class B.**
+  - **`fibromyalgia-acr-2016`** — 2016 revised ACR fibromyalgia criteria (Wolfe F,
+    et al, *Semin Arthritis Rheum* 2016): met when **(WPI ≥ 7 and SSS ≥ 5) OR
+    (WPI 4–6 and SSS ≥ 9)**, AND generalized pain (≥ 4 of 5 regions), AND symptoms
+    ≥ 3 months. The 2016 somatic item is a **0–3 count** of headaches / lower-
+    abdominal pain / depression, not a severity scale. **Class A.**
+- **`acr-eular-2010-ra`, `gout-acr-eular-2015`, and `caspar` are Class B** by
+  maintenance class (revisable society classification criteria), so each carries a
+  `docs/citation-staleness.md` row naming the edition in force (2010 RA, 2015 gout,
+  2006 CASPAR), the `accessed` date, and an on-publication review cadence. Their
+  citations name ACR/EULAR, which is **not** in the `check-citations.mjs`
+  issuer-acronym set, so the rows are **documentation-only** (like the existing
+  `das28` row), not gate-forced. The underlying arithmetic is stable (Class A).
+- **Catalog count moves 662 → 669** across all 13 catalog-truth surfaces
+  (`<title>`, meta/OG/Twitter tags, JSON-LD, hero label, README blurb,
+  `package.json`, the `scope-mdcalc-parity.md` ledger). Seven `META` entries
+  (inline citation + `citationUrl` + `accessed` + worked example +
+  interpretation), seven `docs/audits/v12/` audit logs, seven
+  `docs/clinical-citations.md` rows, three `docs/citation-staleness.md` rows, and
+  seven unit-test files (every band boundary and entry/sufficient gate covered,
+  plus the `lib/rheum-v147.js` module added to the fuzz harness `MODULES` list
+  with zero non-finite leaks).
+
 ### Added (spec-v146: spinal tumor & trauma classification — SINS, Revised Tokuhashi, Tomita, TLICS, SLIC, +5 — spec-v100 Wave 8 continues)
 
 - **Five spinal tumor / trauma classification instruments continue Wave 8 of the

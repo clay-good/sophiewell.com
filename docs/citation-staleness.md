@@ -545,3 +545,23 @@ the classification (fibular level A/B/C relative to the syndesmosis) is unchange
 | tile id | instrument | edition shipped | latest known edition | accessed | justification if behind |
 |---|---|---|---|---|---|
 | weber-ankle | Danis-Weber ankle classification — distal-fibula fracture level relative to the syndesmosis (A below / B at / C above) | Weber BG, Die Verletzungen des oberen Sprunggelenkes (Hans Huber, 1972); AO-adopted | same | 2026-06-23 | current — the Danis-Weber A/B/C scheme is unchanged and remains the AO-adopted basis (44-A/B/C); Class B, review on-publication of the next AO Foundation ankle-classification update. Documentation only — the citation does not match the issuer acronym set |
+
+## spec-v147 rheumatology classification criteria (added 2026-06-24)
+
+Three of the seven rheumatology instruments added this wave are revisable society
+classification criteria — **Class B** per spec-v85 §6.3: `acr-eular-2010-ra`
+(2010 ACR/EULAR RA), `gout-acr-eular-2015` (2015 ACR/EULAR gout), and `caspar`
+(2006 CASPAR). The other four — `cdai-ra`, `sdai-ra`, `sledai-2k`, and
+`fibromyalgia-acr-2016` — are fixed published indices/criteria cited by journal
+and authors (Class A) and need no row. None of the three Class B citations names
+an acronym in the `check-citations.mjs` issuer pattern (ACR/EULAR are not in the
+set), so all three rows below are **documentation-only** — they record that the
+edition in force was reviewed and the criteria are unchanged, on the same footing
+as the existing `das28` row. The underlying arithmetic (the weighted point sums
+and thresholds) is a stable rule in every case (Class A).
+
+| tile id | instrument | edition shipped | latest known edition | accessed | justification if behind |
+|---|---|---|---|---|---|
+| acr-eular-2010-ra | 2010 ACR/EULAR Rheumatoid Arthritis classification criteria — four weighted domains, ≥6/10 classifies | Aletaha 2010 (Arthritis Rheum 62(9):2569-2581) | same | 2026-06-24 | current — the 2010 criteria are the standard RA classification rule and unchanged; Class B, review on-publication of the next ACR/EULAR RA classification update. Documentation only — the citation does not match the issuer acronym set |
+| gout-acr-eular-2015 | 2015 ACR/EULAR Gout classification criteria — entry + MSU-crystal sufficient bypass + weighted domains, ≥8 classifies | Neogi 2015 (Arthritis Rheumatol 67(10):2557-2568) | same | 2026-06-24 | current — the 2015 criteria are the standard gout classification rule and unchanged; Class B, review on-publication of the next ACR/EULAR gout classification update. Documentation only — the citation does not match the issuer acronym set |
+| caspar | CASPAR Criteria for Psoriatic Arthritis — entry + ≥3 weighted points | Taylor 2006 (Arthritis Rheum 54(8):2665-2670) | same | 2026-06-24 | current — the CASPAR criteria remain the standard psoriatic-arthritis classification rule and are unchanged; Class B, review on-publication of the next psoriatic-arthritis classification update. Documentation only — the citation does not match the issuer acronym set |
