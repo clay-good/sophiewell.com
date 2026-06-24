@@ -3715,3 +3715,61 @@ pressure, in millimeters of mercury. A delta pressure under thirty is the publis
 fasciotomy; the differential is more reliable than an absolute-pressure threshold.
 Worked example: a diastolic pressure of seventy with a measured compartment pressure of forty-five gives
 a delta of twenty-five — below thirty, the fasciotomy threshold.
+
+### SINS — Spinal Instability Neoplastic Score
+Citation: Fisher CG, DiPaola CP, Ryken TC, et al. A novel classification system for spinal instability in
+neoplastic disease: an evidence-based approach and expert consensus from the Spine Oncology Study Group.
+Spine. 2010;35(22):E1221-E1229.
+Formula: six components sum zero to eighteen — spinal location (junctional 3, mobile 2, semirigid 1,
+rigid 0), mechanical pain (3, occasional 1, none 0), bone lesion (lytic 2, mixed 1, blastic 0), alignment
+(subluxation 4, de novo deformity 2, normal 0), vertebral-body collapse (over half 3, under half 2,
+no collapse but over half involved 1, none 0), and posterolateral element involvement (bilateral 3,
+unilateral 1, none 0). Bands: zero to six stable, seven to twelve indeterminate, thirteen to eighteen
+unstable; a seven-or-higher score warrants a surgical consult.
+Worked example: a junctional lesion (3) with mechanical pain (3) and a lytic appearance (2) totals eight —
+indeterminate, surgical consultation recommended.
+
+### Revised Tokuhashi Score
+Citation: Tokuhashi Y, Matsuzaki H, Oda H, Oshima M, Ryu J. A revised scoring system for preoperative
+evaluation of metastatic spine tumor prognosis. Spine. 2005;30(19):2186-2191.
+Formula: six parameters sum zero to fifteen — general condition (Karnofsky, zero to two), extraspinal
+bone-metastasis foci (zero to two), vertebral-body metastases (zero to two), major-organ metastases
+(zero to two), primary site (zero to five), and palsy (Frankel, zero to two). A lower total is the worse
+prognosis: zero to eight predicts under six months, nine to eleven at least six months, twelve to fifteen
+at least one year.
+Worked example: a total of nine predicts an expected survival of at least six months — palliative surgery
+may be appropriate.
+
+### Tomita Surgical Strategy Score
+Citation: Tomita K, Kawahara N, Kobayashi T, Yoshida A, Murakami H, Akamaru T. Surgical strategy for
+spinal metastases. Spine. 2001;26(3):298-306.
+Formula: three factors sum two to ten — primary-tumor grade (slow growth 1, moderate 2, rapid or unknown
+4), visceral metastases (none 0, treatable 2, untreatable 4), and bone metastases (solitary 1, multiple
+2). Strategy bands: two to three wide or marginal excision, four to five marginal or intralesional, six
+to seven palliative surgery, eight to ten supportive or terminal care.
+Worked example: a moderate-growth primary (2) with treatable visceral metastases (2) and multiple bone
+metastases (2) totals six — palliative surgery for short-term palliation.
+
+### TLICS — Thoracolumbar Injury Classification and Severity Score
+Citation: Vaccaro AR, Lehman RA Jr, Hurlbert RJ, et al. A new classification of thoracolumbar injuries:
+the importance of injury morphology, the integrity of the posterior ligamentous complex, and neurologic
+status. Spine. 2005;30(20):2325-2333.
+Formula: morphology (compression 1, burst 2, translational or rotational 3, distraction 4), neurologic
+status (intact 0, nerve root 2, complete cord 2, incomplete cord 3, cauda equina 3), and posterior
+ligamentous complex (intact 0, indeterminate 2, disrupted 3) sum to zero to ten. Triage: three or less
+nonoperative, four indeterminate, five or more operative. Incomplete cord injury scores higher than
+complete because it benefits more from decompression.
+Worked example: a compression injury (1) with nerve-root deficit (2) and an indeterminate posterior
+ligamentous complex (2) totals five — operative management.
+
+### SLIC — Subaxial Cervical Spine Injury Classification
+Citation: Vaccaro AR, Hulbert RJ, Patel AA, et al. The subaxial cervical spine injury classification
+system: a novel approach to recognize the importance of morphology, neurology, and integrity of the
+disco-ligamentous complex. Spine. 2007;32(21):2365-2374.
+Formula: morphology (none 0, compression 1, burst 2, distraction 3, rotation or translation 4),
+disco-ligamentous complex (intact 0, indeterminate 1, disrupted 2), and neurologic status (intact 0,
+root 1, complete cord 2, incomplete cord 3) sum to zero to ten, plus a separate plus-one modifier for
+continuous cord compression with an ongoing deficit. Triage: three or less nonoperative, four
+indeterminate, five or more operative.
+Worked example: a compression injury (1) with an indeterminate disco-ligamentous complex (1), a root
+deficit (1), and ongoing cord compression (plus one) totals four — indeterminate.

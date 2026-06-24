@@ -143,6 +143,7 @@ import * as surgV142 from '../../lib/surg-v142.js';
 import * as frailtyV143 from '../../lib/frailty-v143.js';
 import * as orthoV144 from '../../lib/ortho-v144.js';
 import * as orthoV145 from '../../lib/ortho-v145.js';
+import * as spineV146 from '../../lib/spine-v146.js';
 import * as growthLmsData from '../../lib/growth-lms-data.js';
 import * as emsV149 from '../../lib/ems-v149.js';
 
@@ -232,6 +233,7 @@ const MODULES = {
   'frailty-v143.js': frailtyV143,
   'ortho-v144.js': orthoV144,
   'ortho-v145.js': orthoV145,
+  'spine-v146.js': spineV146,
   'growth-lms-data.js': growthLmsData,
   'ems-v149.js': emsV149,
 };

@@ -6,6 +6,57 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v146: spinal tumor & trauma classification — SINS, Revised Tokuhashi, Tomita, TLICS, SLIC, +5 — spec-v100 Wave 8 continues)
+
+- **Five spinal tumor / trauma classification instruments continue Wave 8 of the
+  spec-v100 program (657 → 662, +5)**, filling a confirmed gap: the catalog had
+  the brain/cerebrovascular neurosurgical scores (`ich-score`, `hunt-hess-wfns`,
+  `nihss`) but **no spinal instability, spinal-metastasis, or spinal-trauma
+  scores**. All five are in **Clinical Scoring & Risk (Group G)** via
+  `lib/spine-v146.js` + `views/group-v146.js` (`RV146`). Per the spec-v100 §2
+  classification clarification each tile **consumes the clinician's read of the
+  CT/MRI/radiograph and the neurologic exam** as bounded selects and **computes a
+  weighted-sum score** plus the source's management interpretation — none is a
+  no-input reference table. Every point value, component option, and band cutoff
+  was **re-fetched and cross-verified across ≥ 2 independent authoritative
+  sources** (the original papers, the CORR "Classifications in Brief" reviews,
+  Radiopaedia, AO Spine, UW Emergency Radiology, MDCalc, StatPearls; the spec-v97
+  discipline). All five are **Class A**. Each leaves the operate/radiate/brace
+  decision with the clinician and a multidisciplinary spine/oncology team
+  (spec-v11 §5.3).
+  - **`sins-score`** — Spinal Instability Neoplastic Score (Fisher CG, et al,
+    *Spine* 2010): six components (location, mechanical pain, bone lesion,
+    alignment, vertebral-body collapse, posterolateral involvement) sum **0–18**;
+    **0–6 stable, 7–12 indeterminate, 13–18 unstable** (7–18 warrants a surgical
+    consult). **Class A.**
+  - **`tokuhashi-revised`** — Revised Tokuhashi metastatic-spine prognostic score
+    (Tokuhashi Y, et al, *Spine* 2005): six parameters sum **0–15**; a lower total
+    is the worse prognosis — **0–8 < 6 months, 9–11 ≥ 6 months, 12–15 ≥ 1 year**.
+    **Class A.**
+  - **`tomita-score`** — Tomita surgical-strategy score (Tomita K, et al, *Spine*
+    2001): three factors sum **2–10** with the **non-overlapping** strategy bands
+    2–3 wide/marginal excision, 4–5 marginal/intralesional, 6–7 palliative, 8–10
+    supportive/terminal (not the overlapping survival windows some reviews cite).
+    **Class A.**
+  - **`tlics-score`** — Thoracolumbar Injury Classification & Severity (Vaccaro AR,
+    et al, *Spine* 2005): morphology + neurology + posterior-ligamentous-complex
+    integrity sum **0–10**; **≤ 3 nonoperative, 4 indeterminate, ≥ 5 operative**.
+    **Incomplete cord (3) scores higher than complete cord (2) by design.**
+    **Class A.**
+  - **`slic-score`** — Subaxial Cervical Spine Injury Classification (Vaccaro AR,
+    et al, *Spine* 2007): morphology + disco-ligamentous complex + neurology sum
+    **0–10**, with a **separate additive +1 modifier** for continuous cord
+    compression with an ongoing deficit (not a fifth neuro option). **≤ 3
+    nonoperative, 4 indeterminate, ≥ 5 operative.** **Class A.**
+- **Catalog count moves 657 → 662** across all catalog-truth surfaces
+  (`<title>`, meta/OG/Twitter tags, JSON-LD, hero label, README blurb,
+  `package.json`, the `scope-mdcalc-parity.md` ledger). Five `META` entries
+  (inline citation + `citationUrl` + `accessed` + worked example +
+  interpretation), five `docs/audits/v12/` audit logs, five
+  `docs/clinical-citations.md` rows, and five unit-test files (every band
+  boundary covered, plus the `lib/spine-v146.js` module added to the fuzz
+  harness `MODULES` list with zero non-finite leaks).
+
 ### Added (spec-v145: orthopedic risk & osteoarthritis — Frykman, Mirels, Kellgren-Lawrence, Pittsburgh knee rule, compartment delta pressure, +5 — spec-v100 Wave 8 continues)
 
 - **Five orthopedic risk / osteoarthritis instruments continue Wave 8 of the

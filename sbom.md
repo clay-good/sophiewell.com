@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `2bc6e06082738dac`
-Generated: 2026-06-23T23:12:44.494Z
+Build ID: `992bd44b7f603751`
+Generated: 2026-06-23T23:58:47.535Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=20.18.1 <21, npm >=10.0.0
@@ -24,13 +24,13 @@ downloads is committed in this repository and is hashed below.
 
 | Path | Bytes | SHA-256 |
 |---|---:|---|
-| `index.html` | 53155 | `cb22164f9111baeb9c32017a8d84b5796226aa972b3a97c1b562f580e5d40296` |
+| `index.html` | 53485 | `c8cc71383070e139db9cf44f5173b2054e3c024538516965bd02d56682cccaab` |
 | `styles.css` | 42819 | `bea421c79d390a364eb571c3a9599cdf28264128d4ac02d7abb00f31000c7cda` |
-| `app.js` | 185607 | `58dd81387b880b81fb843a5e619156dd90f1c13f2773151fd4bf8eca3e80fc2a` |
+| `app.js` | 187076 | `bb5d98e02fa9f0873a702ce7f6c4ba53082e46fa6a8575e9a14c4a8027a9d7ff` |
 | `sw.js` | 4622 | `b891d4344f8e04403b7f1d307fd446cc224bddc6f0c4397438a17d197351171e` |
 | `site.webmanifest` | 709 | `0e0de4da60590a12e8b27a0ae2a2f5ffdb6500b7d2b78f93631ec2f64ed3d5ce` |
 | `robots.txt` | 127 | `38fbf9c1854e72abb20e01e81dd5a31d4ea96f154c12d5db1ec3af05524dd1a1` |
-| `sitemap.xml` | 101487 | `e3998642dff163c79cd54dd529074bab11f47036eb60e680d479ccb8cc11d4d9` |
+| `sitemap.xml` | 102247 | `810324d5a9e45f355585b9ce24ffd29a10d6832bd37a1e3f91b39d7617b09018` |
 | `_headers` | 1316 | `2f39986457d2feff7e73e491a7d09ee871e8f2f4cc2bc437f86bd86a42554ec6` |
 | `logo.png` | 63440 | `11afaf1b0d3ca68393d202e4810bf766b5b6d591b4e3ec52f41d3cacaa4616ec` |
 | `favicon.ico` | 7411 | `407fde0ca2788409e87e11f596fa02e6a0b121817fcea7fd995beec1801e287b` |
@@ -97,7 +97,7 @@ downloads is committed in this repository and is hashed below.
 | `lib/lymphoma-v135.js` | 16162 | `e29896a6de224445f46839cd06518817bd25d1235a91ede76f77ccb4996a934f` |
 | `lib/medication-v4.js` | 18192 | `467f9576c50da696cc56094eb022d0a5ed1e88de0c7618448554ede8067270b0` |
 | `lib/medication-v5.js` | 18863 | `ce81d9f8954abbd412892c13af9936f992239164f26fd2b999eaea7902787ab7` |
-| `lib/meta.js` | 1024204 | `48837d7568ebfa0ec434b40ccdc894ba235d17914df9a2eea294fee26151a312` |
+| `lib/meta.js` | 1030774 | `ff629548045098b3b2b9d51801a87339b51b15273850de3eb016a5cd0f3352e0` |
 | `lib/metabolic-onc-v88.js` | 12659 | `1553b641668c121661a66647da71a4aaaa023e9f3a6b7a753efbcdab27cdba81` |
 | `lib/nephro-v127.js` | 10884 | `c86865e98fced63ac9510fbebe0de77a88e305366c080a83c9beb8542371932a` |
 | `lib/nephro-v92.js` | 15980 | `64bbc05482eed2ab88816f676ab5e56aefae9d4f5d85d223217a03160d1cc082` |
@@ -148,6 +148,7 @@ downloads is committed in this repository and is hashed below.
 | `lib/scoring-v6.js` | 26559 | `4f2d7d77c536dce8d356539e2c69f941feb34146d251ac96b882c590399ce562` |
 | `lib/screener.js` | 6613 | `e017903130ae2d23cb1560f6ad55990ef3dda443a5ac1e9c289b283e3dcd930b` |
 | `lib/search.js` | 1726 | `eb447d039ac1ea7b459743b6aeeffea114f90f07d45a6bd53dbe60eb1c8fdd9b` |
+| `lib/spine-v146.js` | 21128 | `d3cb6a1d1e2c3cc1235cc2336a0385a1ae6e0a1ea65b741a2d6c25e5cb527917` |
 | `lib/surg-v142.js` | 16902 | `8bc28c3385b76d1fc0d11a3171f3459e09fd4c91e3b9548516cfd8c5692e39d2` |
 | `lib/synonyms.js` | 3339 | `f28e834e5b603c1564099976489ad33f05109a0b74f130f9153aa2a90518bc16` |
 | `lib/table.js` | 5372 | `c1c9b7f8ad0cd087d76e3e1aac879feb9837373b11f067b0f910fa8e5a7974d1` |
@@ -208,6 +209,7 @@ downloads is committed in this repository and is hashed below.
 | `views/group-v143.js` | 11847 | `72c03a56ea3c9de1d171a8218eaae9c2b3a79a60d2d6a7f6ee54a2ff42c19f2b` |
 | `views/group-v144.js` | 10666 | `ee54b2c68e4fc925bae8eaecc5ffa59fa00dbcd7bac8d2adf6720e2f200d5bae` |
 | `views/group-v145.js` | 11082 | `0b0ed11b221c579d82117e8dbd48895c52322789405d1beea912d57bff5da997` |
+| `views/group-v146.js` | 14527 | `5e5e818237bff16f26a4ba1ccc32335f11229d5c41cac89f12975970cca4b48b` |
 | `views/group-v149.js` | 6243 | `1c2ecbbd4a0509a321f03eee88171ecb5e477bf29e253f127a4ffdcaae469117` |
 | `views/group-v15.js` | 9388 | `01c28613e794ec8bed2941659514ad8b75c18c1cb1256d2907644873fcbc53e4` |
 | `views/group-v16.js` | 10601 | `e85099483cb9c09f775b714358035dd890eba3c3022e1adbe7c5d4b338518fdd` |
