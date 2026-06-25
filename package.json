@@ -2,7 +2,7 @@
   "name": "sophiewell.com",
   "version": "1.0.0",
   "private": true,
-  "description": "Sophie Well - 676 deterministic healthcare calculators tuned to the nurse on shift. Free, client-side, no servers, no telemetry, no AI.",
+  "description": "Sophie Well - 676 deterministic healthcare calculators. Free, client-side, no servers, no telemetry, no AI.",
   "homepage": "https://sophiewell.com",
   "repository": {
     "type": "git",
@@ -38,7 +38,7 @@
   "devDependencies": {
     "@playwright/test": "1.59.1",
     "eslint": "9.39.4",
-    "openlore": "2.0.18"
+    "openlore": "2.1.3"
   },
   "overrides": {
     "hono": ">=4.12.25",

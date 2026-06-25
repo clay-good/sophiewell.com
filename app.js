@@ -1397,7 +1397,7 @@ const REMOVED_V29_IDS = new Map([
     'revenue-codes', 'carc', 'rarc', 'hcpcs-mod', 'pos-lookup',
     'tob-decode', 'rev-table', 'nubc-codes', 'drg-lookup', 'apc-lookup',
     'pcs-lookup', 'rxnorm-lookup', 'ndc-rxnorm',
-  ].map((id) => [id, 'Removed in spec-v29 wave 29-2 (code-reference lookup): this tile is no longer hosted by Sophie. Use the upstream code source (CMS, FDA, NUBC, AMA, X12) or your EHR\'s lookup. See docs/spec-v29.md for the rationale.']),
+  ].map((id) => [id, 'This tool is no longer available. Use the upstream code source (CMS, FDA, NUBC, AMA, X12) or your EHR\'s lookup.']),
   // Group C / L (wave 29-2 Group C/L PR): 15 patient-literacy and
   // form-locator / glossary tiles.
   ...[
@@ -1405,25 +1405,25 @@ const REMOVED_V29_IDS = new Map([
     'insurance-card', 'abn-explainer', 'msn-decoder', 'idr-eligibility',
     'birthday-rule', 'cobra-timeline', 'medicare-enrollment', 'aca-sep',
     'cms1500', 'ub04', 'eob-glossary',
-  ].map((id) => [id, 'Removed in spec-v29 wave 29-2 (patient-literacy / form-locator reference): this tile is no longer hosted by Sophie. The workflow generators (appeal letter, HIPAA Right of Access) remain; the static decoders and eligibility infographics are out. See docs/spec-v29.md for the rationale.']),
+  ].map((id) => [id, 'This tool is no longer available. The workflow generators (appeal letter, HIPAA Right of Access) remain; the static decoders and eligibility infographics are out.']),
   // Group I (wave 29-2 Group I PR): 10 field-medicine reference cards.
   ...[
     'adult-arrest-ref', 'peds-arrest-ref', 'defib', 'toxidromes',
     'dot-erg', 'niosh-pg', 'cpr-numeric', 'tccc', 'hypothermia',
     'heat-illness',
-  ].map((id) => [id, 'Removed in spec-v29 wave 29-2 (field-medicine reference card): this tile is no longer hosted by Sophie. Use the AHA wallet card, PHMSA ERG, NIOSH Pocket Guide, or your protocol app. The field-medicine calculators (peds-weight-dose, burn-fluid, naloxone, NEXUS, START triage, etc.) remain. See docs/spec-v29.md for the rationale.']),
+  ].map((id) => [id, 'This tool is no longer available. Use the AHA wallet card, PHMSA ERG, NIOSH Pocket Guide, or your protocol app. The field-medicine calculators (peds-weight-dose, burn-fluid, naloxone, NEXUS, START triage, etc.) remain.']),
   // Group K / O (wave 29-2 Group K/O PR): 8 reference-range and
   // wallet-card tiles.
   ...[
     'lab-ranges', 'lab-adult', 'lab-peds', 'tdm-levels', 'tox-levels',
     'high-alert', 'high-alert-card', 'iv-to-po',
-  ].map((id) => [id, 'Removed in spec-v29 wave 29-2 (reference-range / wallet-card table): this tile is no longer hosted by Sophie. Use your institution\'s lab reference ranges, the ISMP high-alert list, or your formulary. The calculators that consume these thresholds inside their math (e.g. lab-interpret, NEWS2, abx-renal) remain. See docs/spec-v29.md for the rationale.']),
+  ].map((id) => [id, 'This tool is no longer available. Use your institution\'s lab reference ranges, the ISMP high-alert list, or your formulary. The calculators that consume these thresholds inside their math (e.g. lab-interpret, NEWS2, abx-renal) remain.']),
   // Group G non-scores (wave 29-2 Group G PR): 5 single-class clinical
   // reference tiles (Beers, peds-vitals, ASA, Mallampati, mRS). The
   // scoring tiles in Group G (NIHSS, CHA2DS2-VASc, Wells, etc.) remain.
   ...[
     'beers', 'peds-vitals', 'asa', 'mallampati', 'mrs',
-  ].map((id) => [id, 'Removed in spec-v29 wave 29-2 (Group G single-class clinical reference): this tile is no longer hosted by Sophie. Use the upstream source (AGS Beers Criteria, PALS reference table, ASA Physical Status statement, the original Mallampati or Modified Rankin Scale publication) or your protocol. The Group G scoring calculators (NIHSS, CHA2DS2-VASc, Wells, GRACE, HEART, etc.) remain. See docs/spec-v29.md for the rationale.']),
+  ].map((id) => [id, 'This tool is no longer available. Use the upstream source (AGS Beers Criteria, PALS reference table, ASA Physical Status statement, the original Mallampati or Modified Rankin Scale publication) or your protocol. The scoring calculators (NIHSS, CHA2DS2-VASc, Wells, GRACE, HEART, etc.) remain.']),
 ]);
 
 // ----- DOM helpers ---------------------------------------------------------
@@ -1991,13 +1991,6 @@ function route() {
     restoreHome();
     return;
   }
-  if (id === 'changelog' || id === 'stability') {
-    if (currentRouteId !== id) {
-      currentRouteId = id;
-      renderDocView(id);
-    }
-    return;
-  }
   const util = UTIL_BY_ID.get(id);
   if (util) {
     if (currentRouteId !== id) {
@@ -2023,53 +2016,6 @@ function route() {
       }
     }
   }
-}
-
-function renderDocView(id) {
-  const main = getMain();
-  if (!main) return;
-  const path = id === 'changelog' ? 'CHANGELOG.md' : 'docs/stability.md';
-  const title = id === 'changelog' ? 'Changelog' : 'Stability commitments';
-  clear(main);
-  const back = el('button', { type: 'button', class: 'breadcrumb-back', 'aria-label': 'Back to all tools', text: '← All tools' });
-  back.addEventListener('click', (e) => { e.preventDefault(); location.hash = '#/'; });
-  main.appendChild(el('div', { class: 'breadcrumb' }, [
-    back,
-    el('span', { class: 'breadcrumb-trail' }, [
-      el('span', { class: 'bc-current', text: title }),
-    ]),
-  ]));
-  const content = el('section', { class: 'content', 'aria-label': title });
-  content.appendChild(el('h1', { text: title }));
-  const body = el('article', { class: 'doc-body' });
-  content.appendChild(body);
-  main.appendChild(content);
-  document.title = `${title} | Sophie Well`;
-  window.scrollTo({ top: 0, behavior: 'auto' });
-
-  fetch(path).then((r) => r.ok ? r.text() : Promise.reject(new Error(`HTTP ${r.status}`))).then((md) => {
-    // Minimal markdown rendering: split paragraphs on blank lines; render
-    // headings (# / ## / ###) as h2 / h3 / h4; bullet lines as <ul><li>.
-    const blocks = md.replace(/\r\n/g, '\n').split(/\n\n+/);
-    for (const blk of blocks) {
-      const trimmed = blk.trim();
-      if (!trimmed) continue;
-      if (trimmed.startsWith('### ')) body.appendChild(el('h4', { text: trimmed.slice(4) }));
-      else if (trimmed.startsWith('## ')) body.appendChild(el('h3', { text: trimmed.slice(3) }));
-      else if (trimmed.startsWith('# ')) body.appendChild(el('h2', { text: trimmed.slice(2) }));
-      else if (/^[-*] /.test(trimmed)) {
-        const ul = el('ul');
-        for (const line of trimmed.split('\n')) {
-          if (/^[-*] /.test(line.trim())) ul.appendChild(el('li', { text: line.trim().slice(2) }));
-        }
-        body.appendChild(ul);
-      } else {
-        body.appendChild(el('p', { text: trimmed }));
-      }
-    }
-  }).catch((err) => {
-    body.appendChild(el('p', { class: 'muted', text: `Could not load: ${err.message}` }));
-  });
 }
 
 // ----- Topbar search (typeahead → direct navigation) ---------------------

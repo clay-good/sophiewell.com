@@ -22,11 +22,6 @@
     <meta name="referrer" content="no-referrer" />
     <meta name="color-scheme" content="dark light" />
 
-    <!-- SEO. spec-seo §6: title leads with the search keyword and the
-         differentiator; the brand goes last. Description stays inside the
-         140-158 char SERP-snippet window. The retired <meta keywords> tag
-         (ignored by Google since ~2009; signals amateur SEO) is removed
-         per spec-seo §3. -->
     <title>Free Healthcare Toolbox - 676 Tools, No Signup · Sophie Well</title>
     <meta name="description" content="Free deterministic healthcare tools that run entirely in your browser. 676 calculators, scoring tools, code lookups, and references. No signup, no tracking, no AI." />
     <meta name="author" content="Clay Good" />
@@ -933,33 +928,18 @@
 
     <div class="container">
       <main id="main">
-        <!-- spec-seo §9.1: a visible h1 leads the home view. The prior
-             visually-hidden h1 fed Google a topic signal but left
-             human visitors with the hero search label as the first
-             visible heading. -->
-
-        <h1 id="intro-heading" class="home-h1">Free clinical calculators, built for the nurse on shift</h1>
+        <h1 id="intro-heading" class="home-h1">Healthcare calculators, one search away</h1>
         <p class="home-lede">
-          676 deterministic scoring tools, drug-dose calculators, and clinical
-          references tuned to the nurse on shift, from Wells and CHA2DS2-VASc to
-          GCS, drip rates, and electrolyte replacement. Every tool runs instantly
-          in your browser and stays on your device. No signup, no accounts, no
-          tracking, no ads, no AI guesswork, just the exact math you would do by
-          hand, finished in seconds.
+          Search 676 calculators, scores, and clinical references, from Wells
+          and CHA2DS2-VASc to GCS, drip rates, and electrolyte replacement.
+          Each one runs instantly in your browser and stays on your device.
+          No signup, no tracking, no AI. Find what you need, use it, and get
+          on with your day.
         </p>
 
         <section id="home-view" class="home-view view active" aria-labelledby="tools-heading">
           <h2 id="tools-heading" class="visually-hidden">Tools</h2>
 
-          <!-- spec-v53: the home view is a single search combobox. Focusing
-               the input opens a listbox of the full catalog A-Z; typing
-               filters it; the results dropdown routes to the tile on click
-               or Enter (app.js bindHeroSearch). The v52 tool-picker select
-               and the v7 synonym-hint breadcrumb were both retired in favor
-               of this one bar. The catalog stays indexable through the
-               FAQPage / WebApplication JSON-LD in head, the per-tool pages
-               at /tools/<id>/, the audience hubs at /for/<slug>/, and the
-               /commitments/ page. -->
           <div class="task-hero" role="search">
             <label for="hero-search" class="hero-label">Search 676 tools</label>
             <input
@@ -977,14 +957,6 @@
             <ul id="hero-search-results" class="hero-search-results" role="listbox" aria-label="Tools" hidden></ul>
           </div>
 
-          <!-- spec-seo §10: a static, crawlable index of the curated topic
-               clusters (/topics/<slug>/) and audience hubs (/for/<slug>/).
-               This is the "browse by category" half of the home page: a
-               crawler that reads the home document finds real navigable
-               internal links to the indexable landing pages, not only the
-               hero copy, and a human who would rather skim than search has
-               an entry point into every specialty. Present for JS and no-JS
-               alike (plain anchors, no script needed). -->
           <nav class="home-browse" aria-label="Browse tools by category">
             <div class="home-browse-group">
               <h2 class="home-browse-h2">Browse by specialty</h2>

@@ -12,8 +12,8 @@ const ROOT = resolve(__dirname, '..');
 const DIST = join(ROOT, 'dist');
 const SITE = 'https://sophiewell.com';
 const CANONICAL = `${SITE}/commitments/`;
-const TITLE = 'Sophie Well commitments - what we promise, enforced in CI';
-const DESCRIPTION = 'Eight machine-checked commitments: no ads, no login, no telemetry, no third-party fetch, no AI, no cookies, no paid tier, MIT-licensed forever. Each is enforced by an automated check on every commit.';
+const TITLE = 'Sophie Well commitments - what we promise, and how it stays true';
+const DESCRIPTION = 'Eight commitments: no ads, no login, no telemetry, no third-party fetch, no AI, no cookies, no paid tier, MIT-licensed forever. Each one is enforced by an automated check on every release.';
 
 const COMMITMENTS = [
   {
@@ -22,7 +22,6 @@ const COMMITMENTS = [
     body: 'Sophie does not call any server, ever. Every calculation runs in your browser. Closing the page or going offline does not change what Sophie can do.',
     enforcement: "_headers pins Content-Security-Policy connect-src 'self'. scripts/check-commitments.mjs asserts that shape on every build.",
     checkPath: 'scripts/check-commitments.mjs',
-    spec: 'spec-v50 §3.1',
   },
   {
     n: '2',
@@ -30,7 +29,6 @@ const COMMITMENTS = [
     body: "Sophie loads no code from anyone else's servers. All JavaScript (and the optional on-device OCR engine's WebAssembly) is part of the page you downloaded, served from this origin.",
     enforcement: "_headers pins script-src to 'self' plus 'wasm-unsafe-eval' (which permits only same-origin WebAssembly compilation for the vendored on-device OCR engine, not general eval and not any third-party origin). The grep-check rule and the commitments check both deny any third-party script vendor and forbid 'unsafe-inline', wildcards, and off-origin script sources.",
     checkPath: 'scripts/grep-check.mjs',
-    spec: 'spec-v50 §3.2',
   },
   {
     n: '3',
@@ -38,7 +36,6 @@ const COMMITMENTS = [
     body: 'Sophie sets no cookies, ever. There is no cookie banner because there is nothing to consent to.',
     enforcement: 'grep-check denies any cookie-writing API call in source files outside the test suite.',
     checkPath: 'scripts/grep-check.mjs',
-    spec: 'spec-v50 §3.3',
   },
   {
     n: '4',
@@ -46,7 +43,6 @@ const COMMITMENTS = [
     body: "Sophie remembers your theme and your offline cache, and nothing else. No identifiers, no usage data, no 'recently used' list, no preferences sync.",
     enforcement: 'check-commitments.mjs reads scripts/storage-allowlist.json and asserts every localStorage.setItem / sessionStorage.setItem / caches.open uses a key on the allowlist.',
     checkPath: 'scripts/check-commitments.mjs',
-    spec: 'spec-v50 §3.4',
   },
   {
     n: '5',
@@ -54,7 +50,6 @@ const COMMITMENTS = [
     body: "Sophie does not measure you. No analytics, no session recording, no error reporting to anyone else's server, no 'anonymous usage data.'",
     enforcement: 'grep-check denies a list of analytics / RUM / error-reporting vendor identifiers in any source file. The CSP connect-src self also blocks the network half at runtime.',
     checkPath: 'scripts/grep-check.mjs',
-    spec: 'spec-v50 §3.5',
   },
   {
     n: '6',
@@ -62,7 +57,6 @@ const COMMITMENTS = [
     body: "Sophie has no AI. Every number Sophie shows you is the output of a deterministic formula with a peer-reviewed citation. There is no model, no embedding, no 'AI-assisted' anything. Sophie will never add AI; if it does, it is a fork, not Sophie.",
     enforcement: 'check-commitments.mjs scans source for AI-vendor substrings in import / require / string-literal contexts, and asserts no AI-vendor package appears in package.json dependencies.',
     checkPath: 'scripts/check-commitments.mjs',
-    spec: 'spec-v50 §3.6',
   },
   {
     n: '7',
@@ -70,15 +64,13 @@ const COMMITMENTS = [
     body: 'Sophie has no login, no account, and no paid features. The site has one tier. It is free. It will stay free.',
     enforcement: 'grep-check denies auth and paywall vendor identifiers. check-commitments.mjs asserts no auth / paywall package appears in package.json dependencies.',
     checkPath: 'scripts/check-commitments.mjs',
-    spec: 'spec-v50 §3.7',
   },
   {
     n: '8',
     heading: 'MIT-licensed forever; SBOM published every build',
     body: 'Sophie is MIT-licensed. The license never changes. Every build publishes a Software Bill of Materials listing every runtime file, every source file, and every development dependency. A small number of vendored third-party libraries under /vendored/ carry their own permissive licenses (Apache-2.0, BSD-2, MIT) and ship from the same origin as the rest of the site.',
-    enforcement: 'check-commitments.mjs asserts package.json license === "MIT" and LICENSE first line begins with "MIT License". scripts/build-sbom.mjs runs on every build. Vendored components live under /vendored/<name>/ with their upstream LICENSE and a _vendored.md provenance ledger (spec-v52 §5.2).',
+    enforcement: 'check-commitments.mjs asserts package.json license === "MIT" and LICENSE first line begins with "MIT License". scripts/build-sbom.mjs runs on every build. Vendored components live under /vendored/<name>/ with their upstream LICENSE and a _vendored.md provenance ledger.',
     checkPath: 'scripts/check-commitments.mjs',
-    spec: 'spec-v50 §3.8',
   },
 ];
 
@@ -94,7 +86,7 @@ const VENDORED = [
     upstream: 'https://github.com/mozilla/pdf.js',
     version: 'v5.7.284',
     license: 'Apache-2.0',
-    purpose: 'PDF text extraction for the Prior-Auth Packet Linter (spec-v52 §4.3).',
+    purpose: 'PDF text extraction for the Prior-Auth Packet Linter.',
   },
   {
     name: 'mammoth.js',
@@ -102,7 +94,7 @@ const VENDORED = [
     upstream: 'https://github.com/mwilliamson/mammoth.js',
     version: '1.2.5',
     license: 'BSD-2-Clause',
-    purpose: 'DOCX text extraction for the Prior-Auth Packet Linter (spec-v52 §4.3).',
+    purpose: 'DOCX text extraction for the Prior-Auth Packet Linter.',
   },
   {
     name: 'tesseract.js',
@@ -110,7 +102,7 @@ const VENDORED = [
     upstream: 'https://github.com/naptha/tesseract.js',
     version: '5.1.1 (+ tesseract.js-core 5.1.0, tessdata_fast eng)',
     license: 'Apache-2.0',
-    purpose: 'Optional, user-triggered, fully on-device OCR for scanned PDFs and images in the Prior-Auth Packet Linter (spec-v52 §4.3.1). Loads on demand; runs entirely in the tab; no network, no AI service. Same-origin WebAssembly requires the narrow CSP token script-src \'wasm-unsafe-eval\' (no general eval, no third-party origin; connect-src \'self\' is unchanged).',
+    purpose: 'Optional, user-triggered, fully on-device OCR for scanned PDFs and images in the Prior-Auth Packet Linter. Loads on demand; runs entirely in the tab; no network, no AI service. Same-origin WebAssembly requires the narrow CSP token script-src \'wasm-unsafe-eval\' (no general eval, no third-party origin; connect-src \'self\' is unchanged).',
   },
 ];
 
@@ -127,7 +119,7 @@ function commitmentHtml(c) {
   return `        <section class="commitments-item" id="c-${c.n}" aria-labelledby="c-${c.n}-h">
           <h2 id="c-${c.n}-h"><span class="commitments-num">${c.n}.</span> ${esc(c.heading)}</h2>
           <p class="commitments-body">${esc(c.body)}</p>
-          <p class="commitments-enforcement"><strong>How it is enforced:</strong> ${esc(c.enforcement)} <a href="https://github.com/clay-good/sophiewell.com/blob/main/${esc(c.checkPath)}" rel="noopener" target="_blank">View the check &rarr;</a> (${esc(c.spec)})</p>
+          <p class="commitments-enforcement"><strong>How it is enforced:</strong> ${esc(c.enforcement)} <a href="https://github.com/clay-good/sophiewell.com/blob/main/${esc(c.checkPath)}" rel="noopener" target="_blank">View the check &rarr;</a></p>
         </section>`;
 }
 
@@ -197,8 +189,7 @@ function pageHtml() {
           every commit if the rule is violated.
         </p>
         <p class="commitments-meta">
-          Defined in <a href="https://github.com/clay-good/sophiewell.com/blob/main/docs/spec-v50.md" rel="noopener" target="_blank">spec-v50</a>.
-          Source of the checks: <a href="https://github.com/clay-good/sophiewell.com/tree/main/scripts" rel="noopener" target="_blank">scripts/</a>.
+          Every check that backs these promises is open source: <a href="https://github.com/clay-good/sophiewell.com/tree/main/scripts" rel="noopener" target="_blank">read them on GitHub</a>.
         </p>
 
 ${COMMITMENTS.map(commitmentHtml).join('\n\n')}
@@ -227,9 +218,9 @@ ${VENDORED.map((v) => `            <li>
         <section class="commitments-footnote">
           <h2>Change process</h2>
           <p>
-            Changing any commitment requires amending spec-v50 by name in a
-            pull request, alongside the corresponding change to the
-            automated check. The process is documented in
+            Changing any commitment requires a pull request that updates this
+            page alongside the corresponding automated check. The process is
+            documented in
             <a href="https://github.com/clay-good/sophiewell.com/blob/main/CONTRIBUTING.md" rel="noopener" target="_blank">CONTRIBUTING.md</a>.
             Found a way to bypass one of these checks? File an issue at
             <a href="https://github.com/clay-good/sophiewell.com/issues" rel="noopener" target="_blank">github.com/clay-good/sophiewell.com/issues</a>.

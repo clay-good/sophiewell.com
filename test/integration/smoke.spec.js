@@ -74,9 +74,9 @@ const RETIRED_TILE_HASHES = [
   'high-alert-card', // Group O
 ];
 for (const id of RETIRED_TILE_HASHES) {
-  test(`retired tile #${id} shows the v29 removed-note`, async ({ page }) => {
+  test(`retired tile #${id} shows the removed-note`, async ({ page }) => {
     await page.goto('/#' + id);
-    await expect(page.locator('.deprecation-notice')).toContainText('Removed in spec-v29');
+    await expect(page.locator('.deprecation-notice')).toContainText('This tool is no longer available');
   });
 }
 
@@ -238,14 +238,6 @@ test('spec-v2: leader G then B navigates to BMI', async ({ page }) => {
   await page.keyboard.press('g');
   await page.keyboard.press('b');
   await expect(page).toHaveURL(/#bmi/);
-});
-
-test('spec-v2: changelog and stability docs render via in-site routes', async ({ page }) => {
-  await page.goto('/#changelog');
-  await expect(page.locator('.content h1')).toHaveText('Changelog');
-  await expect(page.locator('.doc-body h2').first()).toBeVisible();
-  await page.goto('/#stability');
-  await expect(page.locator('.content h1')).toHaveText('Stability commitments');
 });
 
 // ---- spec-v3 layer ----
