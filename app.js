@@ -79,6 +79,7 @@ import { renderers as RV146 } from './views/group-v146.js';
 import { renderers as RV147 } from './views/group-v147.js';
 import { renderers as RV148 } from './views/group-v148.js';
 import { renderers as RV151 } from './views/group-v151.js';
+import { renderers as RV152 } from './views/group-v152.js';
 import { renderers as RV149 } from './views/group-v149.js';
 import { renderers as RV63 } from './views/group-v63.js';
 import { renderers as RB } from './views/group-b.js';
@@ -98,7 +99,7 @@ import { resolvePrompt } from './lib/prompt.js';
 // artifact-detect / artifact-route / artifact-handoff helpers were
 // deleted in spec-v29 wave 29-2 (Group C/L).
 
-const RENDERERS = { ...RA, ...RB, ...RC, ...RE, ...RF, ...RG, ...RH, ...RI, ...RJ, ...RKLMNO, ...RV5, ...RV6, ...RV7, ...RV8, ...RV9, ...RV10, ...RV11, ...RV12, ...RV13, ...RV14, ...RV15, ...RV16, ...RV17, ...RV18, ...RV19, ...RV20, ...RV21, ...RV22, ...RV23, ...RV24, ...RV25, ...RV26, ...RV27, ...RV28, ...RV29, ...RV30, ...RV31, ...RV32, ...RV33, ...RV34, ...RV35, ...RV36, ...RV37, ...RV38, ...RV39, ...RV40, ...RV117, ...RV118, ...RV119, ...RV120, ...RV121, ...RV122, ...RV123, ...RV124, ...RV125, ...RV126, ...RV127, ...RV128, ...RV129, ...RV130, ...RV131, ...RV132, ...RV133, ...RV134, ...RV135, ...RV136, ...RV137, ...RV138, ...RV139, ...RV140, ...RV141, ...RV142, ...RV143, ...RV144, ...RV145, ...RV146, ...RV147, ...RV148, ...RV149, ...RV151, ...RV63, ...RPALINT };
+const RENDERERS = { ...RA, ...RB, ...RC, ...RE, ...RF, ...RG, ...RH, ...RI, ...RJ, ...RKLMNO, ...RV5, ...RV6, ...RV7, ...RV8, ...RV9, ...RV10, ...RV11, ...RV12, ...RV13, ...RV14, ...RV15, ...RV16, ...RV17, ...RV18, ...RV19, ...RV20, ...RV21, ...RV22, ...RV23, ...RV24, ...RV25, ...RV26, ...RV27, ...RV28, ...RV29, ...RV30, ...RV31, ...RV32, ...RV33, ...RV34, ...RV35, ...RV36, ...RV37, ...RV38, ...RV39, ...RV40, ...RV117, ...RV118, ...RV119, ...RV120, ...RV121, ...RV122, ...RV123, ...RV124, ...RV125, ...RV126, ...RV127, ...RV128, ...RV129, ...RV130, ...RV131, ...RV132, ...RV133, ...RV134, ...RV135, ...RV136, ...RV137, ...RV138, ...RV139, ...RV140, ...RV141, ...RV142, ...RV143, ...RV144, ...RV145, ...RV146, ...RV147, ...RV148, ...RV149, ...RV151, ...RV152, ...RV63, ...RPALINT };
 
 // ----- Utility registry ----------------------------------------------------
 // Source of truth for routes, names, group, audiences, and clinical flag.
@@ -774,6 +775,22 @@ const UTILITIES = [
   { id: 'easi',               name: 'EASI (Eczema Area and Severity Index)',             group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'scorad',             name: 'SCORAD (SCORing Atopic Dermatitis)',                group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'dlqi',               name: 'DLQI (Dermatology Life Quality Index)',             group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+
+  // spec-v152 (the second implementation spec of the spec-v150 Post-Parity
+  // Coverage program): five predictive energy-expenditure equations - the
+  // catalog had nutrition screening (must/nrs2002/nutric) and a weight-based
+  // icu-nutrition-target, but no predictive resting/total energy-expenditure
+  // regression (the number a dietitian starts from). Mifflin-St Jeor (the
+  // ambulatory standard), Harris-Benedict (the classic comparator), and
+  // Katch-McArdle (lean-mass) are Group E math; Penn State and Ireton-Jones are
+  // the ventilated-ICU equations in Group F (nutrition-support context). Each
+  // consumes the bounded anthropometrics and computes a predicted kcal/day; none
+  // is a no-input reference table. views/group-v152.js, lib/nutrition-energy-v152.js (RV152).
+  { id: 'mifflin-st-jeor',    name: 'Mifflin-St Jeor Resting Energy Expenditure',       group: 'E', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'harris-benedict',    name: 'Harris-Benedict Basal Energy Expenditure (revised)', group: 'E', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'katch-mcardle',      name: 'Katch-McArdle Basal Metabolic Rate (lean-mass)',   group: 'E', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'penn-state-ree',     name: 'Penn State Equation (ventilated REE)',              group: 'F', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'ireton-jones',       name: 'Ireton-Jones Energy Equation',                     group: 'F', audiences: ['clinicians', 'educators'], clinical: true },
 
   // spec-v98 (Wave 2 of spec-v85): four deterministic pediatric decision rules
   // and prognostic scores that fill confirmed gaps after a full sweep of Group N

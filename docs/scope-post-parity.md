@@ -25,7 +25,17 @@ live value, never copied as a literal.
   Index, Hanifin 2001, age-branched region weights, six-band Leshem 2015 strata),
   `scorad` (SCORing Atopic Dermatitis, European Task Force 1993, with the objective
   oSCORAD), and `dlqi` (Dermatology Life Quality Index, Finlay 1994). All four are
-  Group G and Class A. +4. The live catalog is **680** deterministic tiles.
+  Group G and Class A. +4 (the catalog reached 680 at the v151 close).
+- **spec-v152** — [spec-v152](spec-v152.md), the second feature spec, adds the
+  five predictive energy-expenditure equations that fill the missing resting/total
+  energy-expenditure surface beside the existing nutrition screeners:
+  `mifflin-st-jeor` (the ambulatory standard, Mifflin 1990), `harris-benedict`
+  (the classic comparator, revised Roza 1984), `katch-mcardle` (lean-mass BMR),
+  `penn-state-ree` (ventilated ICU REE, Frankenfield 2004/2009, with the three-way
+  2003b/modified branch), and `ireton-jones` (1997-revised energy equation,
+  ventilated + spontaneous). Mifflin/Harris-Benedict/Katch-McArdle are Group E;
+  Penn State and Ireton-Jones are Group F. All five are Class A. +5. The live
+  catalog is **685** deterministic tiles.
 
 ## Program roadmap (proposed, not all shipped)
 

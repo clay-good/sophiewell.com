@@ -6,6 +6,47 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v152: nutrition & energy expenditure — Mifflin-St Jeor, Harris-Benedict, Katch-McArdle, Penn State, Ireton-Jones, +5 — spec-v150 Post-Parity Coverage program)
+
+- **Five predictive energy-expenditure equations continue the spec-v150
+  Post-Parity Coverage program (680 → 685, +5).** The catalog had nutrition
+  *screening* (`must-nutrition`, `nrs2002`, `nutric`, `mnutric`, `refeeding-risk`)
+  and a weight-based `icu-nutrition-target`, but no predictive resting/total
+  energy-expenditure regression — the number a dietitian starts from. The three
+  ambulatory equations are **Group E**; the two ventilated-ICU equations are
+  **Group F**. All five are **Class A**, live in `lib/nutrition-energy-v152.js` +
+  `views/group-v152.js` (`RV152`), and are covered by the spec-v59 fuzz harness
+  with zero non-finite leaks.
+  - `mifflin-st-jeor` — Mifflin-St Jeor resting energy expenditure (1990), the
+    first-line ambulatory equation. REE = 10 × wt(kg) + 6.25 × ht(cm) − 5 × age +
+    s, s = +5 (male) / −161 (female); optional TDEE = REE × activity factor. A unit
+    test pins the male-vs-female ±constant pair on identical anthropometrics.
+  - `harris-benedict` — Harris-Benedict basal energy expenditure, **revised
+    (Roza 1984)** constants — male BEE = 88.362 + 13.397 × wt + 4.799 × ht − 5.677
+    × age, female BEE = 447.593 + 9.247 × wt + 3.098 × ht − 4.330 × age. Runs ~5%
+    above Mifflin, the preferred contemporary equation.
+  - `katch-mcardle` — Katch-McArdle BMR = 370 + 21.6 × lean body mass(kg); LBM
+    entered directly or derived as weight × (1 − body-fat%/100), the derivation
+    range-guarded 0 < fat% < 100.
+  - `penn-state-ree` — Penn State ventilated REE (Frankenfield 2004/2009). Standard
+    (2003b) RMR = Mifflin × 0.96 + Tmax × 167 + Ve × 31 − 6212; the modified (2010)
+    form (× 0.71 / × 85 / × 64 / − 3085) applies **only** when BMI ≥ 30 **and** age
+    ≥ 60 — a three-way branch where obese-but-young patients still use the standard
+    form (a routing trap a unit test pins).
+  - `ireton-jones` — Ireton-Jones energy equation, **1997-revised** constants.
+    Ventilated EEE = 1784 − 11 × age + 5 × wt + 244 × (male) + 239 × (trauma) + 804
+    × (burn); spontaneous EEE = 629 − 11 × age + 25 × wt − 609 × (obese, BMI > 27).
+    The 1992 set (1925/281/292/851) is distinct and was confirmed not the shipped
+    one.
+- Every coefficient, constant, and sign was re-fetched and cross-verified against
+  ≥ 2 independent authoritative sources (the spec-v97 discipline); nothing was
+  implemented from recall.
+- The catalog count moves on all **13 catalog-truth surfaces** (680 → 685); a11y,
+  `mobile-no-hscroll`, `mobile-touch-targets`, and the chromium
+  `example-correctness` sweep pass for `views/group-v152.js`. See
+  [docs/spec-v152.md](docs/spec-v152.md) and the
+  [docs/scope-post-parity.md](docs/scope-post-parity.md) ledger.
+
 ### Added (spec-v151: dermatology severity indices — PASI, EASI, SCORAD, DLQI, +4 — spec-v150 Post-Parity Coverage program OPENS)
 
 - **Four dermatology severity instruments open the spec-v150 Post-Parity Coverage

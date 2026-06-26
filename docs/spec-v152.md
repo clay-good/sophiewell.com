@@ -1,6 +1,6 @@
 # spec-v152.md — Nutrition & energy expenditure: Mifflin-St Jeor, Harris-Benedict, Katch-McArdle, Penn State, and Ireton-Jones (+5 tiles)
 
-> Status: **PROPOSED (2026-06-23).** Feature spec of the
+> Status: **SHIPPED 2026-06-26 (680 → 685, +5).** Feature spec of the
 > [spec-v150](spec-v150.md) **Post-Parity Coverage** program. Adds **5**
 > deterministic predictive energy-expenditure equations that fill a confirmed
 > gap — the catalog has nutrition *screening* (`must-nutrition`, `nrs2002`,

@@ -3958,3 +3958,42 @@ Question 7 first asks whether the skin prevented work or study (Yes = 3); only o
 how-much-a-problem follow-up scored. Total 0-30: no effect 0-1, small 2-5, moderate 6-10, very large
 11-20, extremely large 21-30.
 Worked example: answers 2,1,1,1,1,0,0,0,0,0 sum to six — moderate effect on quality of life.
+
+### Mifflin-St Jeor — Resting Energy Expenditure
+Citation: Mifflin MD, St Jeor ST, Hill LA, et al. A new predictive equation for resting energy expenditure
+in healthy individuals. Am J Clin Nutr. 1990;51(2):241-247.
+Formula: REE (kcal/day) = 10 × weight(kg) + 6.25 × height(cm) − 5 × age(yr) + s, where s = +5 for males
+and −161 for females. Total daily energy expenditure = REE × activity factor (sedentary 1.2, light 1.375,
+moderate 1.55, very 1.725, extra 1.9).
+Worked example: a 40-year-old male, 70 kg, 175 cm gives REE = 700 + 1093.75 − 200 + 5 = 1599 kcal/day.
+
+### Harris-Benedict — Basal Energy Expenditure (revised, Roza 1984)
+Citation: Harris JA, Benedict FG. A biometric study of basal metabolism in man. Proc Natl Acad Sci USA.
+1918;4(12):370-373. Revised constants: Roza AM, Shizgal HM. Am J Clin Nutr. 1984;40(1):168-182.
+Formula: male BEE = 88.362 + 13.397 × weight(kg) + 4.799 × height(cm) − 5.677 × age(yr); female BEE =
+447.593 + 9.247 × weight + 3.098 × height − 4.330 × age. The revised Roza constants are used, not the
+original 1919 form; TDEE = BEE × activity factor.
+Worked example: a 40-year-old male, 70 kg, 175 cm gives BEE = 88.362 + 937.79 + 839.825 − 227.08 = 1639.
+
+### Katch-McArdle — Basal Metabolic Rate (lean-mass)
+Citation: Katch FI, McArdle WD. Nutrition, Weight Control, and Exercise. Philadelphia: Lea & Febiger.
+Formula: BMR (kcal/day) = 370 + 21.6 × lean body mass(kg). Lean body mass is entered directly or derived
+as weight × (1 − body-fat%/100). TDEE = BMR × activity factor.
+Worked example: 80 kg at 20 percent body fat gives LBM 64 kg, BMR = 370 + 1382.4 = 1752 kcal/day.
+
+### Penn State — Equation (ventilated REE)
+Citation: Frankenfield D, Smith JS, Cooney RN. Validation of 2 approaches to predicting resting metabolic
+rate in critically ill patients. JPEN J Parenter Enteral Nutr. 2004;28(4):259-264. Modified: Frankenfield
+DC, et al. J Am Diet Assoc. 2009;109(9):1564-1569.
+Formula: standard (2003b) RMR = Mifflin × 0.96 + Tmax(°C) × 167 + Ve(L/min) × 31 − 6212. The modified
+(2010) form RMR = Mifflin × 0.71 + Tmax × 85 + Ve × 64 − 3085 applies only when BMI is at least 30 and age
+at least 60; obese patients under 60 use the standard form. Mifflin uses actual body weight.
+Worked example: Mifflin 1599, Tmax 38.5, Ve 9 gives 1534.8 + 6429.5 + 279 − 6212 = 2031 kcal/day (standard).
+
+### Ireton-Jones — Energy Equation (1997 revised)
+Citation: Ireton-Jones C, Jones JD. Improved equations for predicting energy expenditure in patients: the
+Ireton-Jones equations. Nutr Clin Pract. 2002;17(1):29-31.
+Formula: ventilator-dependent EEE = 1784 − 11 × age(yr) + 5 × weight(kg) + 244 × (male) + 239 × (trauma) +
+804 × (burn). Spontaneously-breathing EEE = 629 − 11 × age + 25 × weight − 609 × (obese, BMI over 27). The
+1997-revised constants are used, not the distinct 1992 set.
+Worked example: a ventilated 55-year-old male, 80 kg gives 1784 − 605 + 400 + 244 = 1823 kcal/day.

@@ -1,6 +1,6 @@
 # spec-v150.md — Post-Parity Coverage program: closing the last deterministic-calculator gaps after MDCalc parity (program-of-record)
 
-> Status: **IN PROGRESS (v151 SHIPPED 2026-06-26, 676 → 680).** Program-of-record for the **Post-Parity
+> Status: **IN PROGRESS (v151 SHIPPED 2026-06-26, 676 → 680; v152 SHIPPED 2026-06-26, 680 → 685).** Program-of-record for the **Post-Parity
 > Coverage** initiative — the successor to the [spec-v100](spec-v100.md)
 > **MDCalc Parity Completion** program, which closes at v148 (679 tiles). This
 > spec answers a single clinical question — *"have we included every calculator
