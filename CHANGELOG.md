@@ -6,6 +6,39 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v153: urology & men's-health patient-reported scores — IPSS / AUA-SI, IIEF-5 / SHIM, OABSS, +3 — spec-v150 Post-Parity Coverage program)
+
+- **Three urology / men's-health symptom-score PROs continue the spec-v150
+  Post-Parity Coverage program (685 → 688, +3).** The catalog carried the urologic
+  *oncology* math (`psa-density`, `psa-velocity`, `psa-doubling-time`,
+  `prostate-volume`, `gleason-grade-group`, `damico-prostate-risk`, `capra-score`)
+  and the stone scores, but none of the validated symptom-score instruments that
+  drive benign-disease management. All three are **Group G** and **Class A**, live
+  in `lib/urology-v153.js` + `views/group-v153.js` (`RV153`), and are covered by the
+  spec-v59 fuzz harness with zero non-finite leaks.
+  - `ipss` — International Prostate Symptom Score / AUA Symptom Index (Barry 1992).
+    Seven symptom questions each 0–5 summed 0–35 (0–7 mild, 8–19 moderate, 20–35
+    severe). The separate quality-of-life item (0 delighted → 6 terrible) is
+    reported alongside and is **never** summed into the 0–35 total — a unit test
+    asserts the symptom total is invariant to the QoL value.
+  - `iief5` — IIEF-5 / Sexual Health Inventory for Men (Rosen 1999). Five items;
+    item 1 scored 1–5, items 2–5 carry the "0 = no sexual activity / did not attempt
+    intercourse" option (0–5). Banded 22–25 no ED, 17–21 mild, 12–16 mild-to-
+    moderate, 8–11 moderate, 5–7 severe; ≤21 meets the diagnostic threshold for ED.
+  - `oabss` — Overactive Bladder Symptom Score (Homma 2006). Four items — daytime
+    frequency 0–2, nocturia 0–3, urgency 0–5, urgency incontinence 0–5 — summed 0–15
+    (≤5 mild, 6–11 moderate, ≥12 severe). The OAB diagnostic gate (urgency ≥ 2 **and**
+    total ≥ 3) is surfaced: a high total driven by frequency alone is flagged as not
+    meeting the symptom definition.
+- Every item range, band cutoff, and gating rule was re-fetched and cross-verified
+  against ≥ 2 independent authoritative sources (the spec-v97 discipline); nothing
+  was implemented from recall.
+- The catalog count moves on all **13 catalog-truth surfaces** (685 → 688); a11y,
+  `mobile-no-hscroll`, `mobile-touch-targets`, and the chromium
+  `example-correctness` sweep pass for `views/group-v153.js`. See
+  [docs/spec-v153.md](docs/spec-v153.md) and the
+  [docs/scope-post-parity.md](docs/scope-post-parity.md) ledger.
+
 ### Added (spec-v152: nutrition & energy expenditure — Mifflin-St Jeor, Harris-Benedict, Katch-McArdle, Penn State, Ireton-Jones, +5 — spec-v150 Post-Parity Coverage program)
 
 - **Five predictive energy-expenditure equations continue the spec-v150

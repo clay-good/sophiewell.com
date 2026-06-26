@@ -1,6 +1,6 @@
 # spec-v153.md — Urology & men's-health patient-reported scores: IPSS/AUA-SI, IIEF-5 (SHIM), and OABSS (+3 tiles)
 
-> Status: **PROPOSED (2026-06-23).** Feature spec of the
+> Status: **SHIPPED (2026-06-26, 685 → 688).** Feature spec of the
 > [spec-v150](spec-v150.md) **Post-Parity Coverage** program. Adds **3**
 > deterministic urology symptom-score PROs that fill a confirmed gap — the
 > catalog has the urologic oncology math (`psa-density`, `psa-velocity`,

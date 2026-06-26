@@ -5,7 +5,7 @@
 <h1 align="center">sophiewell.com</h1>
 
 <p align="center">
-  <strong>685 deterministic healthcare calculators that run entirely in your browser.</strong><br>
+  <strong>688 deterministic healthcare calculators that run entirely in your browser.</strong><br>
   Free forever. No servers, no accounts, no telemetry, no AI, no network call after first paint.
 </p>
 
@@ -36,7 +36,7 @@ output; "searchable lookup of static facts" does not qualify. See
 [docs/spec-v10.md](docs/spec-v10.md) for the audience and
 dependency-budget commitments and
 [docs/spec-v29.md](docs/spec-v29.md) for the nurse-first pivot
-and the v29 catalog ledger. At v152 close the catalog is 685
+and the v29 catalog ledger. At v153 close the catalog is 688
 deterministic tiles — every one of them computes from at least
 one user input. The catalog reached its present size on two tracks.
 **New tiles:** spec-v63 added the operations counterpart to the bedside
@@ -186,7 +186,7 @@ production security headers. Any static file server will also work.
 ## How it works and how to use it
 
 Since the spec-v29 nurse-first prune the catalog has grown one
-reviewable spec at a time to **685** deterministic calculators
+reviewable spec at a time to **688** deterministic calculators
 (the full per-version history is in [CHANGELOG.md](CHANGELOG.md)
 and `docs/spec-v*.md`; the most recent bedside additions are
 summarized in the cheat sheets below). They organize across the
@@ -1022,6 +1022,35 @@ and a > 100% total is **flagged, not silently capped**. `duke-endocarditis` (202
 Duke-ISCVID) and `refeeding-risk` (NICE CG32) are **Class B** with
 [citation-staleness](docs/citation-staleness.md) rows; the other three are
 **Class A**. See [docs/spec-v99.md](docs/spec-v99.md).
+
+### Urology & men's-health symptom scores: IPSS, IIEF-5/SHIM, OABSS (spec-v153, +3 → 688)
+
+[spec-v153](docs/spec-v153.md) is the third feature spec of the Post-Parity
+Coverage program. The catalog already carried the urologic *oncology* math
+(`psa-density`, `psa-velocity`, `psa-doubling-time`, `prostate-volume`,
+`gleason-grade-group`, `damico-prostate-risk`, `capra-score`) and the stone
+scores, but **none of the validated symptom-score instruments** that drive
+benign-disease management — BPH/LUTS, erectile dysfunction, overactive bladder.
+These three are the standard, free, self-administered questionnaires. Each is a
+bounded item sum over fixed-range selects; an unanswered item surfaces a
+complete-the-fields fallback rather than an undercounted total. They live in
+`lib/urology-v153.js` + `views/group-v153.js` (`RV153`), Group G, Class A,
+fuzz-covered by the spec-v59 harness. Every item range, band cutoff, and gating
+rule was re-fetched and cross-verified against ≥ 2 independent sources (the
+spec-v97 discipline).
+
+| id | Group | Items | Output | Companion to |
+|---|---|---|---|---|
+| `ipss` | G | 7 symptom Qs each 0–5 (+ separate 0–6 QoL item) (Barry 1992) | IPSS 0–35: 0–7 mild, 8–19 moderate, 20–35 severe; QoL reported but **not** summed | `prostate-volume`, `oabss` |
+| `iief5` | G | 5 items; Q1 1–5, Q2–Q5 0–5 (Rosen 1999) | IIEF-5 5–25: 22–25 no ED, 17–21 mild, 12–16 mild-moderate, 8–11 moderate, 5–7 severe; ≤21 = ED | `ipss` |
+| `oabss` | G | daytime 0–2, nocturia 0–3, urgency 0–5, incontinence 0–5 (Homma 2006) | OABSS 0–15: ≤5 mild, 6–11 moderate, ≥12 severe; OAB gate = urgency ≥ 2 **and** total ≥ 3 | `ipss` |
+
+Two correctness anchors. **The IPSS quality-of-life item is never added into the
+0–35 symptom total** (a common scoring error) — a unit test asserts the total is
+invariant to the QoL value. And the **OABSS surfaces its diagnostic gate**: a high
+total driven by frequency alone (urgency item < 2) is flagged as *not* meeting the
+overactive-bladder symptom definition, rather than implying OAB from the total.
+See [docs/spec-v153.md](docs/spec-v153.md).
 
 ### Nutrition & energy expenditure: predictive REE/BEE equations (spec-v152, +5 → 685)
 
@@ -2687,7 +2716,7 @@ long version, see [docs/architecture.md](docs/architecture.md).
  │  manifests (data/)            │  static │        ▼                     ▼             │
  │        │  scripts/build       │  files  │   lazy-load data shard   pure compute      │
  │        ▼                      │         │   (verified vs manifest)  (lib/*.js)       │
- │  dist/  (685 tool pages,      │         │        │                     │             │
+ │  dist/  (688 tool pages,      │         │        │                     │             │
  │  OG cards, sitemap, SBOM)     │         │        ▼                     ▼             │
  └───────────────────────────────┘         │   service worker cache    result + cite   │
                                             │   (keyed to build hash)                    │
@@ -2709,7 +2738,7 @@ assets:
 
 | Output | Count | Source |
 |--------|------:|--------|
-| Pre-rendered tool pages (`dist/tools/<id>/`) | 685 | `scripts/build-tool-pages.mjs` |
+| Pre-rendered tool pages (`dist/tools/<id>/`) | 688 | `scripts/build-tool-pages.mjs` |
 | Audience hub pages (`dist/for/<audience>/`) | 6 | `scripts/build-hub-pages.mjs` |
 | Topic pages + `/topics/` index | 8 + 1 | `scripts/build-topic-pages.mjs` |
 | `/commitments/` | 1 | `scripts/build-commitments-page.mjs` |
@@ -2744,7 +2773,7 @@ static pages, so a tile can never ship mobile overflow undetected.
 index.html          single-page shell (hero-search combobox + static browse-by-category nav, tile mount)
 styles.css          one stylesheet (responsive; no horizontal scroll — enforced catalog-wide at 320px in CI)
 app.js              router, hero-search wiring, view wiring, the UTILITIES catalog
-                    (685 tiles — the single source of truth; zero runtime deps)
+                    (688 tiles — the single source of truth; zero runtime deps)
 sw.js               service worker — precache shell, cache shards by build hash
 theme.js            light/dark theme toggle (writes only sw-theme, allowlisted)
 lib/input-persist.js opt-in "remember my inputs" (off by default; numbers only)
@@ -2762,12 +2791,12 @@ docs/               specs (spec-v4 onward) + per-tile v11/v12 audit logs +
                     citation-staleness ledger +
                     architecture / threat-model / …
 test/               unit/ (node:test) · integration/ (Playwright) · fixtures/
-dist/               build output (685 tool pages, OG cards, sitemap, SBOM)
+dist/               build output (688 tool pages, OG cards, sitemap, SBOM)
 ```
 
-### Discovery: how a query finds the right tool among 685
+### Discovery: how a query finds the right tool among 688
 
-With 685 tiles, search quality *is* the product — a tool you cannot find does
+With 688 tiles, search quality *is* the product — a tool you cannot find does
 not exist. Discovery is deterministic and offline (no fuzzy-match service, no
 embedding model, no AI). The home `#hero-search` combobox builds its dropdown
 from two complementary rankers, both pure functions of the typed query:
@@ -2840,10 +2869,10 @@ A login-less, AI-free calculator earns trust only if the nurse can see, on the
 tile, exactly which published source produced the number — and tell whether that
 source is current. spec-v54 defined the invariants; spec-v60 built the machinery
 (the gate, the ledger, and the `citationAccessed` convention) and extended it
-across the full 685-tile catalog, pinning the last three unpinned "current
+across the full 688-tile catalog, pinning the last three unpinned "current
 edition" phrases and re-verifying every guideline tile against its latest known
 edition. Three invariants make that auditable, each enforced by the
-`check-citations.mjs` lint gate (in the `npm run lint` chain) over all 685 tiles:
+`check-citations.mjs` lint gate (in the `npm run lint` chain) over all 688 tiles:
 
 | Invariant | Rule | Enforcement |
 |---|---|---|
@@ -3300,7 +3329,7 @@ rules, not soft preferences.
 | `npm run build`          | Copy static files into `dist/` for deployment                     |
 | `npm test`               | Run the full test suite (unit, a11y, grep, data integrity)        |
 | `npm run test:unit`      | Run Node's built-in unit tests (5,156 tests)                      |
-| `npm run test:e2e`       | Build `dist/`, then run Playwright integration tests against real browsers — incl. a full-catalog 320px no-horizontal-scroll sweep over both the SPA routes and the 685 pre-rendered static tool pages, the hub/topic/commitments pages, and the citation-wrap pin |
+| `npm run test:e2e`       | Build `dist/`, then run Playwright integration tests against real browsers — incl. a full-catalog 320px no-horizontal-scroll sweep over both the SPA routes and the 688 pre-rendered static tool pages, the hub/topic/commitments pages, and the citation-wrap pin |
 | `npm run test:a11y`      | Run accessibility checks on every utility view                    |
 | `npm run lint`           | ESLint + the CI gate chain: grep-check, output-safety, citation-integrity, catalog-truth, commitments, PA staleness, PA audit |
 | `npm run data:refresh`   | Re-fetch and re-shard every public dataset                        |
@@ -3384,7 +3413,7 @@ build, integrity-verified data shards) are documented in
 - [docs/spec-v11.md](docs/spec-v11.md) — correctness-floor spec:
   per-tile audit protocol, specialty-named groups, optional
   source-quoted `interpretation` field. Audit coverage is **complete
-  — 685/685 tiles** carry a committed per-tile audit log
+  — 688/688 tiles** carry a committed per-tile audit log
   (`docs/audits/v11/<id>.md` for the pre-v78 catalog;
   `docs/audits/v12/<id>.md` for the tiles added since — the
   spec-v78–v83 billing & coding program, the spec-v85

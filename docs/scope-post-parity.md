@@ -34,14 +34,23 @@ live value, never copied as a literal.
   `penn-state-ree` (ventilated ICU REE, Frankenfield 2004/2009, with the three-way
   2003b/modified branch), and `ireton-jones` (1997-revised energy equation,
   ventilated + spontaneous). Mifflin/Harris-Benedict/Katch-McArdle are Group E;
-  Penn State and Ireton-Jones are Group F. All five are Class A. +5. The live
-  catalog is **685** deterministic tiles.
+  Penn State and Ireton-Jones are Group F. All five are Class A. +5 (the catalog
+  reached 685 at the v152 close).
+- **spec-v153** — [spec-v153](spec-v153.md), the third feature spec, adds the three
+  urology / men's-health patient-reported symptom scores that fill the previously
+  empty benign-disease symptom-score surface beside the existing urologic oncology
+  math (`psa-density`, `prostate-volume`, `gleason-grade-group`, `capra-score`):
+  `ipss` (International Prostate Symptom Score / AUA-SI for BPH/LUTS), `iief5`
+  (IIEF-5 / Sexual Health Inventory for Men for erectile dysfunction), and `oabss`
+  (Overactive Bladder Symptom Score, with the urgency ≥ 2 diagnostic gate surfaced).
+  All three are Group G and Class A. +3. The live catalog is **688** deterministic
+  tiles.
 
 ## Program roadmap (proposed, not all shipped)
 
 The [spec-v150](spec-v150.md) umbrella reserves the band v151–v156 for six feature
 specs (nominal +25): v151 dermatology severity (shipped), v152 nutrition & energy
-expenditure, v153 urology & men's-health PROs, v154 function/falls/palliative
+expenditure (shipped), v153 urology & men's-health PROs (shipped), v154 function/falls/palliative
 performance, v155 suite completions, v156 rheumatology PRO & obstetric
 classification. Each ships only after its own ≥ 2-source re-verification; a tile
 whose published form cannot be cross-verified is deferred with the

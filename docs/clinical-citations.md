@@ -3997,3 +3997,31 @@ Formula: ventilator-dependent EEE = 1784 − 11 × age(yr) + 5 × weight(kg) + 2
 804 × (burn). Spontaneously-breathing EEE = 629 − 11 × age + 25 × weight − 609 × (obese, BMI over 27). The
 1997-revised constants are used, not the distinct 1992 set.
 Worked example: a ventilated 55-year-old male, 80 kg gives 1784 − 605 + 400 + 244 = 1823 kcal/day.
+
+### IPSS — International Prostate Symptom Score / AUA Symptom Index
+Citation: Barry MJ, Fowler FJ Jr, O'Leary MP, et al. The American Urological Association symptom index for
+benign prostatic hyperplasia. J Urol. 1992;148(5):1549-1557.
+Formula: seven symptom questions (incomplete emptying, frequency, intermittency, urgency, weak stream,
+straining, nocturia) each 0-5, summed 0-35: mild 0-7, moderate 8-19, severe 20-35. The separate quality-of-
+life item (0 delighted to 6 terrible) is reported alongside and is not added into the symptom total.
+Worked example: six items at 1 plus nocturia 1 gives 7 (mild); raising the first item to 2 gives 8 (moderate)
+regardless of the quality-of-life value.
+
+### IIEF-5 — Sexual Health Inventory for Men (SHIM)
+Citation: Rosen RC, Cappelleri JC, Smith MD, et al. Development and evaluation of an abridged 5-item version
+of the International Index of Erectile Function (IIEF-5) as a diagnostic tool for erectile dysfunction. Int J
+Impot Res. 1999;11(6):319-326.
+Formula: five items; item 1 scored 1-5, items 2-5 scored 0-5 (0 = no sexual activity / did not attempt
+intercourse). Total banded 22-25 no erectile dysfunction, 17-21 mild, 12-16 mild-to-moderate, 8-11 moderate,
+5-7 severe; a score of 21 or below meets the diagnostic threshold for erectile dysfunction.
+Worked example: 4 + 4 + 4 + 4 + 3 = 19 (mild); 5 + 4 + 4 + 4 + 4 = 21 (mild, meets the ED threshold) while
+5 + 5 + 4 + 4 + 4 = 22 (no erectile dysfunction).
+
+### OABSS — Overactive Bladder Symptom Score
+Citation: Homma Y, Yoshida M, Seki N, et al. Symptom assessment tool for overactive bladder syndrome —
+overactive bladder symptom score. Urology. 2006;68(2):318-323.
+Formula: four items — daytime frequency 0-2, nighttime frequency (nocturia) 0-3, urgency 0-5, urgency
+incontinence 0-5 — summed 0-15: mild 5 or below, moderate 6-11, severe 12 or above. The overactive-bladder
+definition requires the urgency item to be 2 or more and the total to be 3 or more.
+Worked example: daytime 1 + nocturia 2 + urgency 3 + incontinence 2 = 8 (moderate, definition met); a total
+of 6 driven by frequency with urgency 1 does not meet the definition.
