@@ -1,6 +1,6 @@
 # spec-v151.md — Dermatology severity indices: PASI, EASI, SCORAD, and DLQI (+4 tiles)
 
-> Status: **PROPOSED (2026-06-23).** Feature spec of the
+> Status: **SHIPPED (2026-06-26, 676 → 680, +4).** Feature spec of the
 > [spec-v150](spec-v150.md) **Post-Parity Coverage** program. Adds **4**
 > deterministic dermatology severity instruments that fill a confirmed gap —
 > dermatology has **no** scored-severity tile in the live catalog. None

@@ -3918,3 +3918,43 @@ reaction is plus one or minus one. Total from minus four to plus thirteen — at
 four possible, five to eight probable, nine or more definite.
 Worked example: previous reports (1), event after the drug (2), improved on dechallenge (1), and no
 alternative cause (2) sums to six — probable.
+
+### PASI — Psoriasis Area and Severity Index
+Citation: Fredriksson T, Pettersson U. Severe psoriasis — oral therapy with a new retinoid.
+Dermatologica. 1978;157(4):238-244.
+Formula: PASI = sum over four body regions of (erythema + induration + desquamation, each 0-4) times the
+area grade 0-6 times the region weight (head 0.1, upper limbs 0.2, trunk 0.3, lower limbs 0.4). The area
+grade maps the percent involved: 0 percent = 0, 1-9 = 1, 10-29 = 2, 30-49 = 3, 50-69 = 4, 70-89 = 5,
+90-100 = 6. Range 0-72; bands mild below 10, moderate 10-20, severe above 20.
+Worked example: head 2/2/2 at 25 percent (1.2), upper 1/1/1 at 5 percent (0.6), lower 3/3/3 at 60 percent
+(14.4) gives PASI 16.2 — moderate.
+
+### EASI — Eczema Area and Severity Index
+Citation: Hanifin JM, Thurston M, Omoto M, et al. The Eczema Area and Severity Index (EASI): assessment
+of reliability in atopic dermatitis. Exp Dermatol. 2001;10(1):11-18.
+Formula: EASI = sum over four regions of (erythema + edema/papulation + excoriation + lichenification,
+each 0-3) times the area grade 0-6 times the age-dependent region weight. Adults (8 years and older):
+head 0.1, upper 0.2, trunk 0.3, lower 0.4. Children (under 8): head 0.2, upper 0.2, trunk 0.3, lower 0.3.
+Range 0-72. Leshem 2015 severity strata: clear 0, almost clear 0.1-1.0, mild 1.1-7.0, moderate 7.1-21.0,
+severe 21.1-50.0, very severe 50.1-72.0.
+Worked example: identical intensities (head sum 3 at 25 percent, lower sum 8 at 60 percent) give EASI 13.4
+with adult weights but 10.8 with child weights — the age branch matters.
+
+### SCORAD — SCORing Atopic Dermatitis
+Citation: European Task Force on Atopic Dermatitis. Severity scoring of atopic dermatitis: the SCORAD
+index. Dermatology. 1993;186(1):23-31.
+Formula: SCORAD = A/5 + 7B/2 + C. A is the percent body surface affected (0-100). B is six intensity
+items (erythema, edema/papulation, oozing/crusting, excoriation, lichenification, dryness — dryness scored
+on uninvolved skin) each 0-3, total 0-18. C is two 0-10 visual-analogue scores (pruritus, sleeplessness),
+total 0-20. Range 0-103; the objective oSCORAD = A/5 + 7B/2 drops the subjective items. Bands mild below
+25, moderate 25-50, severe above 50.
+Worked example: A 30 (6), B 8 (28), C 8 gives SCORAD 42 — moderate; oSCORAD 34.
+
+### DLQI — Dermatology Life Quality Index
+Citation: Finlay AY, Khan GK. Dermatology Life Quality Index (DLQI) — a simple practical measure for
+routine clinical use. Clin Exp Dermatol. 1994;19(3):210-216.
+Formula: sum of ten questions each scored Very much 3, A lot 2, A little 1, Not at all or Not relevant 0.
+Question 7 first asks whether the skin prevented work or study (Yes = 3); only otherwise is the
+how-much-a-problem follow-up scored. Total 0-30: no effect 0-1, small 2-5, moderate 6-10, very large
+11-20, extremely large 21-30.
+Worked example: answers 2,1,1,1,1,0,0,0,0,0 sum to six — moderate effect on quality of life.

@@ -6,6 +6,45 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v151: dermatology severity indices — PASI, EASI, SCORAD, DLQI, +4 — spec-v150 Post-Parity Coverage program OPENS)
+
+- **Four dermatology severity instruments open the spec-v150 Post-Parity Coverage
+  program (676 → 680, +4).** Dermatology previously had no scored-severity tile;
+  these are the field's daily quantitative instruments. All four are **Group G**
+  and **Class A**, live in `lib/derm-v151.js` + `views/group-v151.js` (`RV151`),
+  and are covered by the spec-v59 fuzz harness with zero non-finite leaks.
+  - `pasi` — Psoriasis Area and Severity Index (Fredriksson & Pettersson 1978).
+    PASI = Σ over four regions of (erythema + induration + desquamation, each 0–4)
+    × area grade 0–6 × region weight (head 0.1, upper 0.2, trunk 0.3, lower 0.4),
+    range 0–72; bands mild < 10, moderate 10–20, severe > 20. The % involvement is
+    mapped to the 0–6 area grade internally (the spec-v59 fuzz exercises the
+    mapping).
+  - `easi` — Eczema Area and Severity Index (Hanifin 2001). EASI = Σ (erythema +
+    edema/papulation + excoriation + lichenification, each 0–3) × area 0–6 ×
+    **age-branched** weight — adults (≥ 8 yr) head 0.1/lower 0.4, children (< 8 yr)
+    head 0.2/lower 0.3 — range 0–72. The published **six-band Leshem 2015** strata
+    (clear / almost clear / mild / moderate / severe / very severe) are used; the
+    spec-v151 draft's unverified four-band cut-set is corrected (cross-verified
+    against DermNet + the Hanifin 2022 practical guide). A unit test pins the
+    adult-vs-child divergence on identical intensities.
+  - `scorad` — SCORing Atopic Dermatitis (European Task Force 1993). SCORAD =
+    A/5 + 7B/2 + C (extent %, six 0–3 intensity items with dryness on uninvolved
+    skin, two 0–10 VAS), range 0–103; also reports the objective oSCORAD = A/5 +
+    7B/2. Bands mild < 25, moderate 25–50, severe > 50.
+  - `dlqi` — Dermatology Life Quality Index (Finlay 1994). Sum of ten 0–3
+    quality-of-life answers (Q7 yes-prevented-work scores 3), range 0–30; bands
+    no / small / moderate / very large / extremely large effect. A partially
+    answered form surfaces a complete-the-fields fallback rather than scoring an
+    undercounted total.
+- Every region weight, item value, and band was re-fetched and cross-verified
+  against ≥ 2 independent authoritative sources (the spec-v97 discipline); nothing
+  was implemented from recall.
+- The catalog count moves on all **13 catalog-truth surfaces** (676 → 680); a11y,
+  `mobile-no-hscroll`, `mobile-touch-targets`, and the chromium
+  `example-correctness` sweep pass for `views/group-v151.js`. See
+  [docs/spec-v151.md](docs/spec-v151.md) and the new
+  [docs/scope-post-parity.md](docs/scope-post-parity.md) ledger.
+
 ### Added (spec-v148: rheumatology / palliative / pharmacy — ASDAS, FFS-2011, 2022 ACR/EULAR GCA, PPI, PaP, opioid conversion, Naranjo, +7 — spec-v100 program CLOSES)
 
 - **Seven rheumatology, palliative, and pharmacy instruments close Wave 8 and the

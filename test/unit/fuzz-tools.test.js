@@ -148,6 +148,7 @@ import * as rheumV147 from '../../lib/rheum-v147.js';
 import * as rheumV148 from '../../lib/rheum-v148.js';
 import * as growthLmsData from '../../lib/growth-lms-data.js';
 import * as emsV149 from '../../lib/ems-v149.js';
+import * as dermV151 from '../../lib/derm-v151.js';
 
 const MODULES = {
   'clinical.js': clinical,
@@ -240,6 +241,7 @@ const MODULES = {
   'rheum-v148.js': rheumV148,
   'growth-lms-data.js': growthLmsData,
   'ems-v149.js': emsV149,
+  'derm-v151.js': dermV151,
 };
 
 const MATRIX = [0, -1, 1e9, NaN, Infinity, -Infinity, '', undefined, null];

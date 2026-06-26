@@ -78,6 +78,7 @@ import { renderers as RV145 } from './views/group-v145.js';
 import { renderers as RV146 } from './views/group-v146.js';
 import { renderers as RV147 } from './views/group-v147.js';
 import { renderers as RV148 } from './views/group-v148.js';
+import { renderers as RV151 } from './views/group-v151.js';
 import { renderers as RV149 } from './views/group-v149.js';
 import { renderers as RV63 } from './views/group-v63.js';
 import { renderers as RB } from './views/group-b.js';
@@ -97,7 +98,7 @@ import { resolvePrompt } from './lib/prompt.js';
 // artifact-detect / artifact-route / artifact-handoff helpers were
 // deleted in spec-v29 wave 29-2 (Group C/L).
 
-const RENDERERS = { ...RA, ...RB, ...RC, ...RE, ...RF, ...RG, ...RH, ...RI, ...RJ, ...RKLMNO, ...RV5, ...RV6, ...RV7, ...RV8, ...RV9, ...RV10, ...RV11, ...RV12, ...RV13, ...RV14, ...RV15, ...RV16, ...RV17, ...RV18, ...RV19, ...RV20, ...RV21, ...RV22, ...RV23, ...RV24, ...RV25, ...RV26, ...RV27, ...RV28, ...RV29, ...RV30, ...RV31, ...RV32, ...RV33, ...RV34, ...RV35, ...RV36, ...RV37, ...RV38, ...RV39, ...RV40, ...RV117, ...RV118, ...RV119, ...RV120, ...RV121, ...RV122, ...RV123, ...RV124, ...RV125, ...RV126, ...RV127, ...RV128, ...RV129, ...RV130, ...RV131, ...RV132, ...RV133, ...RV134, ...RV135, ...RV136, ...RV137, ...RV138, ...RV139, ...RV140, ...RV141, ...RV142, ...RV143, ...RV144, ...RV145, ...RV146, ...RV147, ...RV148, ...RV149, ...RV63, ...RPALINT };
+const RENDERERS = { ...RA, ...RB, ...RC, ...RE, ...RF, ...RG, ...RH, ...RI, ...RJ, ...RKLMNO, ...RV5, ...RV6, ...RV7, ...RV8, ...RV9, ...RV10, ...RV11, ...RV12, ...RV13, ...RV14, ...RV15, ...RV16, ...RV17, ...RV18, ...RV19, ...RV20, ...RV21, ...RV22, ...RV23, ...RV24, ...RV25, ...RV26, ...RV27, ...RV28, ...RV29, ...RV30, ...RV31, ...RV32, ...RV33, ...RV34, ...RV35, ...RV36, ...RV37, ...RV38, ...RV39, ...RV40, ...RV117, ...RV118, ...RV119, ...RV120, ...RV121, ...RV122, ...RV123, ...RV124, ...RV125, ...RV126, ...RV127, ...RV128, ...RV129, ...RV130, ...RV131, ...RV132, ...RV133, ...RV134, ...RV135, ...RV136, ...RV137, ...RV138, ...RV139, ...RV140, ...RV141, ...RV142, ...RV143, ...RV144, ...RV145, ...RV146, ...RV147, ...RV148, ...RV149, ...RV151, ...RV63, ...RPALINT };
 
 // ----- Utility registry ----------------------------------------------------
 // Source of truth for routes, names, group, audiences, and clinical flag.
@@ -759,6 +760,20 @@ const UTILITIES = [
   { id: 'palliative-prognostic-score', name: 'Palliative Prognostic Score (PaP)',          group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'opioid-conversion',  name: 'Opioid Equianalgesic Conversion (rotation calculator)', group: 'F', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'naranjo',            name: 'Naranjo Adverse Drug Reaction Probability Scale',    group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+
+  // spec-v151 (the first implementation spec of the spec-v150 Post-Parity
+  // Coverage program): four deterministic dermatology severity instruments -
+  // dermatology had no scored-severity tile in the live catalog. PASI is the
+  // psoriasis index that gates biologics; EASI and SCORAD are the two competing
+  // atopic-dermatitis indices (EASI's region weights are age-branched); DLQI is
+  // the universal skin quality-of-life score. Per the spec-v100 §2 classification
+  // clarification each tile consumes the clinician's / patient's bounded read of
+  // the exam and computes a region/item-weighted score + band; none is a no-input
+  // reference table. views/group-v151.js, lib/derm-v151.js (RV151).
+  { id: 'pasi',               name: 'PASI (Psoriasis Area and Severity Index)',          group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'easi',               name: 'EASI (Eczema Area and Severity Index)',             group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'scorad',             name: 'SCORAD (SCORing Atopic Dermatitis)',                group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'dlqi',               name: 'DLQI (Dermatology Life Quality Index)',             group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
 
   // spec-v98 (Wave 2 of spec-v85): four deterministic pediatric decision rules
   // and prognostic scores that fill confirmed gaps after a full sweep of Group N
@@ -1915,8 +1930,8 @@ function renderToolView(util) {
     );
   }
 
-  // spec-v9 §3.2: tile regions render in the order title → description →
-  // inputs → references. The meta block (References) is appended *after*
+  // spec-v9 §3.2: tile regions render in the order title -> description ->
+  // inputs -> references. The meta block (References) is appended *after*
   // the tool body, not above it.
   const body = el('div', { id: 'tool-body', class: 'tool-body' });
   content.appendChild(body);
@@ -2018,7 +2033,7 @@ function route() {
   }
 }
 
-// ----- Topbar search (typeahead → direct navigation) ---------------------
+// ----- Topbar search (typeahead -> direct navigation) ---------------------
 
 function scoreUtility(util, tokens) {
   const name = util.name.toLowerCase();
