@@ -5,7 +5,7 @@
 <h1 align="center">sophiewell.com</h1>
 
 <p align="center">
-  <strong>692 deterministic healthcare calculators that run entirely in your browser.</strong><br>
+  <strong>696 deterministic healthcare calculators that run entirely in your browser.</strong><br>
   Free forever. No servers, no accounts, no telemetry, no AI, no network call after first paint.
 </p>
 
@@ -36,7 +36,7 @@ output; "searchable lookup of static facts" does not qualify. See
 [docs/spec-v10.md](docs/spec-v10.md) for the audience and
 dependency-budget commitments and
 [docs/spec-v29.md](docs/spec-v29.md) for the nurse-first pivot
-and the v29 catalog ledger. At v153 close the catalog is 692
+and the v29 catalog ledger. At v155 close the catalog is 696
 deterministic tiles — every one of them computes from at least
 one user input. The catalog reached its present size on two tracks.
 **New tiles:** spec-v63 added the operations counterpart to the bedside
@@ -186,7 +186,7 @@ production security headers. Any static file server will also work.
 ## How it works and how to use it
 
 Since the spec-v29 nurse-first prune the catalog has grown one
-reviewable spec at a time to **692** deterministic calculators
+reviewable spec at a time to **696** deterministic calculators
 (the full per-version history is in [CHANGELOG.md](CHANGELOG.md)
 and `docs/spec-v*.md`; the most recent bedside additions are
 summarized in the cheat sheets below). They organize across the
@@ -1022,6 +1022,36 @@ and a > 100% total is **flagged, not silently capped**. `duke-endocarditis` (202
 Duke-ISCVID) and `refeeding-risk` (NICE CG32) are **Class B** with
 [citation-staleness](docs/citation-staleness.md) rows; the other three are
 **Class A**. See [docs/spec-v99.md](docs/spec-v99.md).
+
+### Suite completions: MIPI, Forrest, Wagner DFU, University of Texas DFU (spec-v155, +4 → 696)
+
+[spec-v155](docs/spec-v155.md) is the fifth feature spec of the Post-Parity
+Coverage program. Five suites were complete except for one well-known member
+each: the lymphoma-index suite (`nccn-ipi`, `r-ipi`, `flipi`) had **no
+mantle-cell index**, the upper-GI-bleed suite (`gbs`, `rockall`, `aims65`,
+`oakland`) had **no endoscopic-stigmata anchor**, and `wifi` graded limb threat
+but the **diabetic-foot wound-grading systems were absent**. The four tiles live
+in `lib/suites-v155.js` + `views/group-v155.js` (`RV155`), fuzz-covered by the
+spec-v59 harness, every coefficient and class re-fetched and cross-verified
+against ≥ 2 independent sources (the spec-v97 discipline).
+
+| id | Group | Inputs | Output | Companion to |
+|---|---|---|---|---|
+| `mipi` | G | age, ECOG, LDH + ULN, WBC (Hoster 2008) | continuous index `0.03535·age + 0.6978·(ECOG 2–4) + 1.367·log₁₀(LDH/ULN) + 0.9393·log₁₀(WBC)`; low < 5.7, intermediate to < 6.2, high ≥ 6.2 | `nccn-ipi`, `r-ipi`, `flipi` |
+| `forrest` | G | endoscopic finding (Forrest 1974) | Ia/Ib/IIa high-risk → endoscopic therapy; IIb intermediate; IIc/III low-risk, with approximate rebleed-risk ranges | `rockall`, `gbs`, `aims65` |
+| `wagner-dfu` | G | lesion depth/extent (Wagner 1981) | grade 0–5; grade ≥ 3 (deep abscess/osteomyelitis, gangrene) flagged | `wifi`, `university-texas-dfu` |
+| `university-texas-dfu` | G | grade (depth) 0–3 × stage A–D (Lavery/Armstrong 1996/1998) | the grade × stage cell (e.g. IIB); worsening prognosis with each axis | `wagner-dfu`, `wifi` |
+
+Two correctness anchors. **MIPI's WBC is the absolute count per microliter inside
+the log** — the Hoster erratum explicitly warns that inserting WBC as thousands/µL
+gives the wrong result (for 8000/µL use `log₁₀(8000)=3.903`, not `log₁₀(8)`), so
+the field is labelled "per µL, absolute" and a unit test locks the contract; the
+`log₁₀` domain (LDH/ULN/WBC/age must be > 0) is the chief `NaN` path and returns a
+surfaced complete-the-fields fallback. And **PRECISE-DAPT was deferred, not
+shipped**: its published bleeding score is a restricted-cubic-spline continuous
+nomogram with no verbatim per-variable point table reproducible across ≥ 2 sources,
+so it is parked with `crib-ii`/`gail-bcrat` rather than approximated — the delta is
+**+4, not the proposed +5**. See [docs/spec-v155.md](docs/spec-v155.md).
 
 ### Function, falls & palliative performance: Berg, TUG, Tinetti POMA, PPSv2 (spec-v154, +4 → 692)
 
@@ -2745,7 +2775,7 @@ long version, see [docs/architecture.md](docs/architecture.md).
  │  manifests (data/)            │  static │        ▼                     ▼             │
  │        │  scripts/build       │  files  │   lazy-load data shard   pure compute      │
  │        ▼                      │         │   (verified vs manifest)  (lib/*.js)       │
- │  dist/  (692 tool pages,      │         │        │                     │             │
+ │  dist/  (696 tool pages,      │         │        │                     │             │
  │  OG cards, sitemap, SBOM)     │         │        ▼                     ▼             │
  └───────────────────────────────┘         │   service worker cache    result + cite   │
                                             │   (keyed to build hash)                    │
@@ -2767,7 +2797,7 @@ assets:
 
 | Output | Count | Source |
 |--------|------:|--------|
-| Pre-rendered tool pages (`dist/tools/<id>/`) | 692 | `scripts/build-tool-pages.mjs` |
+| Pre-rendered tool pages (`dist/tools/<id>/`) | 696 | `scripts/build-tool-pages.mjs` |
 | Audience hub pages (`dist/for/<audience>/`) | 6 | `scripts/build-hub-pages.mjs` |
 | Topic pages + `/topics/` index | 8 + 1 | `scripts/build-topic-pages.mjs` |
 | `/commitments/` | 1 | `scripts/build-commitments-page.mjs` |
@@ -2802,7 +2832,7 @@ static pages, so a tile can never ship mobile overflow undetected.
 index.html          single-page shell (hero-search combobox + static browse-by-category nav, tile mount)
 styles.css          one stylesheet (responsive; no horizontal scroll — enforced catalog-wide at 320px in CI)
 app.js              router, hero-search wiring, view wiring, the UTILITIES catalog
-                    (692 tiles — the single source of truth; zero runtime deps)
+                    (696 tiles — the single source of truth; zero runtime deps)
 sw.js               service worker — precache shell, cache shards by build hash
 theme.js            light/dark theme toggle (writes only sw-theme, allowlisted)
 lib/input-persist.js opt-in "remember my inputs" (off by default; numbers only)
@@ -2820,12 +2850,12 @@ docs/               specs (spec-v4 onward) + per-tile v11/v12 audit logs +
                     citation-staleness ledger +
                     architecture / threat-model / …
 test/               unit/ (node:test) · integration/ (Playwright) · fixtures/
-dist/               build output (692 tool pages, OG cards, sitemap, SBOM)
+dist/               build output (696 tool pages, OG cards, sitemap, SBOM)
 ```
 
-### Discovery: how a query finds the right tool among 692
+### Discovery: how a query finds the right tool among 696
 
-With 692 tiles, search quality *is* the product — a tool you cannot find does
+With 696 tiles, search quality *is* the product — a tool you cannot find does
 not exist. Discovery is deterministic and offline (no fuzzy-match service, no
 embedding model, no AI). The home `#hero-search` combobox builds its dropdown
 from two complementary rankers, both pure functions of the typed query:
@@ -2898,10 +2928,10 @@ A login-less, AI-free calculator earns trust only if the nurse can see, on the
 tile, exactly which published source produced the number — and tell whether that
 source is current. spec-v54 defined the invariants; spec-v60 built the machinery
 (the gate, the ledger, and the `citationAccessed` convention) and extended it
-across the full 692-tile catalog, pinning the last three unpinned "current
+across the full 696-tile catalog, pinning the last three unpinned "current
 edition" phrases and re-verifying every guideline tile against its latest known
 edition. Three invariants make that auditable, each enforced by the
-`check-citations.mjs` lint gate (in the `npm run lint` chain) over all 692 tiles:
+`check-citations.mjs` lint gate (in the `npm run lint` chain) over all 696 tiles:
 
 | Invariant | Rule | Enforcement |
 |---|---|---|
@@ -3357,8 +3387,8 @@ rules, not soft preferences.
 | `npm run dev`            | Serve the directory locally on http://localhost:4173 (set `SERVE_ROOT=dist` to preview the pre-rendered hubs/topics/tool pages as production serves them) |
 | `npm run build`          | Copy static files into `dist/` for deployment                     |
 | `npm test`               | Run the full test suite (unit, a11y, grep, data integrity)        |
-| `npm run test:unit`      | Run Node's built-in unit tests (5,156 tests)                      |
-| `npm run test:e2e`       | Build `dist/`, then run Playwright integration tests against real browsers — incl. a full-catalog 320px no-horizontal-scroll sweep over both the SPA routes and the 692 pre-rendered static tool pages, the hub/topic/commitments pages, and the citation-wrap pin |
+| `npm run test:unit`      | Run Node's built-in unit tests (5,627 tests)                      |
+| `npm run test:e2e`       | Build `dist/`, then run Playwright integration tests against real browsers — incl. a full-catalog 320px no-horizontal-scroll sweep over both the SPA routes and the 696 pre-rendered static tool pages, the hub/topic/commitments pages, and the citation-wrap pin |
 | `npm run test:a11y`      | Run accessibility checks on every utility view                    |
 | `npm run lint`           | ESLint + the CI gate chain: grep-check, output-safety, citation-integrity, catalog-truth, commitments, PA staleness, PA audit |
 | `npm run data:refresh`   | Re-fetch and re-shard every public dataset                        |
@@ -3442,7 +3472,7 @@ build, integrity-verified data shards) are documented in
 - [docs/spec-v11.md](docs/spec-v11.md) — correctness-floor spec:
   per-tile audit protocol, specialty-named groups, optional
   source-quoted `interpretation` field. Audit coverage is **complete
-  — 692/692 tiles** carry a committed per-tile audit log
+  — 696/696 tiles** carry a committed per-tile audit log
   (`docs/audits/v11/<id>.md` for the pre-v78 catalog;
   `docs/audits/v12/<id>.md` for the tiles added since — the
   spec-v78–v83 billing & coding program, the spec-v85

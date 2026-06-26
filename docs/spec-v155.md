@@ -1,14 +1,18 @@
 # spec-v155.md — Suite completions: PRECISE-DAPT, MIPI, Forrest, Wagner DFU, and University-of-Texas DFU (+5 tiles)
 
-> Status: **PROPOSED (2026-06-23).** Feature spec of the
-> [spec-v150](spec-v150.md) **Post-Parity Coverage** program. Adds up to **5**
-> deterministic instruments, each plugging a named hole in an otherwise-complete
-> suite. None duplicates a live tile. **PRECISE-DAPT carries an explicit
-> sourcing caveat** (§2.1) and may be deferred under the
-> [spec-v97](spec-v97.md) ≥2-source rule.
+> Status: **SHIPPED 2026-06-26 (692 → 696, +4).** Feature spec of the
+> [spec-v150](spec-v150.md) **Post-Parity Coverage** program. Shipped **4** of
+> the proposed 5 deterministic instruments, each plugging a named hole in an
+> otherwise-complete suite. None duplicates a live tile. **PRECISE-DAPT was
+> DEFERRED** under the [spec-v97](spec-v97.md) ≥2-source rule (§2.1): its
+> published score is a restricted-cubic-spline continuous nomogram and no
+> independent source publishes a verbatim per-variable point table across the
+> full input ranges, so it is parked with `crib-ii` / `gail-bcrat` rather than
+> approximated. The four shipped tiles are `mipi`, `forrest`, `wagner-dfu`, and
+> `university-texas-dfu` (all Group G, Class A).
 >
-> Catalog effect at v155 close: **live count + (3 to 5)** depending on the
-> PRECISE-DAPT sourcing outcome (catalog-truth gate enforces the actual delta).
+> Catalog effect at v155 close: **692 → 696 (+4)** (PRECISE-DAPT deferred; the
+> catalog-truth gate enforces the actual delta).
 >
 > Every prior spec (v4 through v154) remains in force. v155 adds no runtime
 > network call and no AI; each tile obeys the [spec-v100](spec-v100.md) §2

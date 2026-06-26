@@ -6,6 +6,51 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v155: suite completions — MIPI, Forrest, Wagner DFU, University of Texas DFU, +4 — spec-v150 Post-Parity Coverage program)
+
+- **Four suite-completion instruments continue the spec-v150 Post-Parity Coverage
+  program (692 → 696, +4).** Each plugs a named hole in a suite that was otherwise
+  complete: the lymphoma-index suite (`nccn-ipi`, `r-ipi`, `flipi`) had no
+  mantle-cell index, the UGI-bleed suite (`gbs`, `rockall`, `aims65`, `oakland`)
+  had no endoscopic-stigmata anchor, and `wifi` graded limb threat but the
+  diabetic-foot wound-grading systems were absent. They live in
+  `lib/suites-v155.js` + `views/group-v155.js` (`RV155`) and are covered by the
+  spec-v59 fuzz harness with zero non-finite leaks.
+  - `mipi` — Mantle Cell Lymphoma International Prognostic Index (Hoster 2008),
+    **Group G**, **Class A**. The continuous biologic index
+    `0.03535·age + 0.6978·(ECOG 2–4) + 1.367·log₁₀(LDH/ULN) + 0.9393·log₁₀(WBC)`,
+    banded low < 5.7, intermediate 5.7 to < 6.2, high ≥ 6.2. **WBC is the absolute
+    count per microliter inside the log** — the Hoster erratum warns that using
+    thousands/µL gives the wrong result; the field is labelled "per µL, absolute"
+    and a unit test locks the contract. The log domain (LDH/ULN/WBC/age must be
+    > 0) is guarded with a surfaced complete-the-fields fallback. The
+    simplified-MIPI point table is a distinct variant, not the shipped headline.
+  - `forrest` — Forrest classification of UGI-bleeding endoscopic stigmata
+    (Forrest 1974), **Group G**, **Class A**. A deterministic finding → class
+    mapping: Ia spurting, Ib oozing, IIa visible vessel (high-risk stigmata →
+    endoscopic therapy), IIb adherent clot (intermediate), IIc flat spot, III
+    clean base (low-risk). Untreated rebleed risk is surfaced as approximate
+    ranges. Cross-linked to `rockall`, `gbs`, `aims65`.
+  - `wagner-dfu` — Wagner (Meggitt-Wagner) diabetic foot ulcer grade (Wagner
+    1981), **Group G**, **Class A**. Grade 0 (intact / at-risk) through 5
+    (whole-foot gangrene); grade ≥ 3 (deep abscess/osteomyelitis or gangrene) is
+    flagged for surgical / vascular evaluation. Cross-linked to `wifi`,
+    `university-texas-dfu`.
+  - `university-texas-dfu` — University of Texas diabetic foot ulcer
+    classification (Lavery/Armstrong 1996/1998), **Group G**, **Class A**. A
+    two-axis grade (depth 0–3) × stage (A clean / B infection / C ischemia / D
+    infection + ischemia) grid; every one of the 16 cells resolves to a defined
+    value rendered with the roman-numeral grade and stage letter (e.g. IIB).
+    Higher grade and stage flag worsening healing/amputation odds. Cross-linked
+    to `wagner-dfu`, `wifi`.
+- **PRECISE-DAPT was DEFERRED** under the spec-v97 ≥ 2-source rule. Its published
+  bleeding score is a restricted-cubic-spline continuous nomogram, not a
+  per-variable integer point table, and no independent source publishes a verbatim
+  per-value lookup across the full input ranges (MDCalc computes the spline
+  internally; only the graphical nomogram and anchor maxima are reproducible). It
+  is parked with `crib-ii` / `gail-bcrat` rather than approximated (spec-v155
+  §2.1 / §7); the v155 delta is therefore **+4, not the nominal +5**.
+
 ### Added (spec-v154: function, falls & palliative performance — Berg Balance, Timed Up & Go, Tinetti POMA, Palliative Performance Scale, +4 — spec-v150 Post-Parity Coverage program)
 
 - **Four performance-based function / falls / palliative instruments continue the

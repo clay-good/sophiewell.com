@@ -53,15 +53,28 @@ live value, never copied as a literal.
   (Tinetti POMA, balance 0–16 + gait 0–12, total 0–28), and `pps` (Palliative
   Performance Scale v2, the read-leftward 0–100% hospice-eligibility anchor distinct
   from `ecog-karnofsky`). `berg-balance`, `tinetti-poma`, and `pps` are Group G;
-  `tug` is Group E; all four are Class A. +4. The live catalog is **692** deterministic
-  tiles.
+  `tug` is Group E; all four are Class A. +4. The catalog reached 692 at the v154 close.
+- **spec-v155** — [spec-v155](spec-v155.md), the fifth feature spec, adds the four
+  suite-completion tiles that each plug a named hole in an otherwise-complete suite:
+  `mipi` (Mantle Cell Lymphoma International Prognostic Index — the lymphoma-index
+  suite had `nccn-ipi`/`r-ipi`/`flipi` but no mantle-cell index), `forrest` (the
+  UGI-bleeding endoscopic-stigmata anchor beside `gbs`/`rockall`/`aims65`/`oakland`),
+  `wagner-dfu` (Wagner diabetic-foot-ulcer grade), and `university-texas-dfu` (the UT
+  grade × stage grid — `wifi` grades limb threat but the wound-care grading systems
+  were absent). All four are Group G and Class A. **PRECISE-DAPT was deferred** under
+  the [spec-v97](spec-v97.md) ≥ 2-source rule: its published score is a
+  restricted-cubic-spline continuous nomogram with no verbatim per-variable point
+  table reproducible across ≥ 2 independent sources, so it is parked with `crib-ii` /
+  `gail-bcrat` rather than approximated. +4 (not the nominal +5). The live catalog is
+  **696** deterministic tiles.
 
 ## Program roadmap (proposed, not all shipped)
 
 The [spec-v150](spec-v150.md) umbrella reserves the band v151–v156 for six feature
 specs (nominal +25): v151 dermatology severity (shipped), v152 nutrition & energy
 expenditure (shipped), v153 urology & men's-health PROs (shipped), v154 function/falls/palliative
-performance (shipped), v155 suite completions, v156 rheumatology PRO & obstetric
-classification. Each ships only after its own ≥ 2-source re-verification; a tile
+performance (shipped), v155 suite completions (shipped, +4 — PRECISE-DAPT deferred),
+v156 rheumatology PRO & obstetric classification. Each ships only after its own
+≥ 2-source re-verification; a tile
 whose published form cannot be cross-verified is deferred with the
 [spec-v97](spec-v97.md) rationale recorded, not shipped from an approximation.

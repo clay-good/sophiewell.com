@@ -4069,3 +4069,50 @@ forcing an empty result.
 Worked example: reduced ambulation + unable-normal-job + full self-care + reduced intake + full consciousness
 converges to 70%; mainly-in-bed + unable-most-activity (both 40%) with full self-care (which alone would be
 70% or higher) resolves to 40% by leftward precedence, flagging the self-care conflict.
+
+### MIPI — Mantle Cell Lymphoma International Prognostic Index
+Citation: Hoster E, Dreyling M, Klapper W, et al. A new prognostic index (MIPI) for patients with advanced-
+stage mantle cell lymphoma. Blood. 2008;111(2):558-565. (Cross-verified against the Hoster 2008 erratum,
+MDApp, and Omnicalculator; 2 or more sources, spec-v97.)
+Formula: index = 0.03535 x age(yr) + 0.6978 x (1 if ECOG 2-4) + 1.367 x log10(LDH/upper-limit-of-normal) +
+0.9393 x log10(WBC per microliter), banded low below 5.7, intermediate 5.7 to below 6.2, high 6.2 or above.
+The WBC is the absolute count per microliter inside the log (the erratum warns that using thousands per
+microliter gives the wrong result). The simplified-MIPI point table is a distinct variant; this is the
+continuous biologic index.
+Worked example: age 65, ECOG 0-1, LDH 300 with ULN 250 (ratio 1.2), WBC 8000 gives 2.298 + 0 + 0.108 + 3.666
+= 6.07 (intermediate).
+
+### Forrest Classification — UGI bleeding endoscopic stigmata
+Citation: Forrest JA, Finlayson ND, Shearman DJ. Endoscopy in gastrointestinal bleeding. Lancet.
+1974;2(7877):394-397. (Cross-verified against the Forrest-classification review PMC9139956 and GrepMed;
+2 or more sources, spec-v97.)
+Formula: a deterministic mapping of the endoscopic finding to a class and rebleed-risk tier — Ia active
+spurting, Ib active oozing, IIa non-bleeding visible vessel (all high-risk stigmata that warrant endoscopic
+therapy), IIb adherent clot (intermediate), IIc flat pigmented spot, III clean ulcer base (low-risk).
+Approximate untreated rebleeding falls across the classes (Ia/Ib about 55%, IIa about 43%, IIb about 22%,
+IIc about 10%, III about 5%; reported as ranges in the literature).
+Worked example: IIa is a non-bleeding visible vessel, a high-risk stigma warranting endoscopic therapy, while
+IIc (a flat pigmented spot) is low-risk — the IIa-to-IIc step is the rebleed-risk-tier flip.
+
+### Wagner (Meggitt-Wagner) Diabetic Foot Ulcer Grade
+Citation: Wagner FW Jr. The dysvascular foot: a system for diagnosis and treatment. Foot Ankle.
+1981;2(2):64-122. (Cross-verified against WoundSource and the Wound Care Education Institute reproduction;
+2 or more sources, spec-v97.)
+Formula: a deterministic grade by depth/extent — 0 intact skin / at-risk foot (no open lesion), 1 superficial
+ulcer, 2 deep ulcer to tendon, capsule, or bone (no abscess or osteomyelitis), 3 deep ulcer with abscess or
+osteomyelitis, 4 localized (forefoot or heel) gangrene, 5 gangrene of the whole foot. Higher grades carry
+poorer healing and higher amputation odds.
+Worked example: a deep ulcer with osteomyelitis is grade 3, which the tile flags for surgical and vascular
+evaluation, while a superficial ulcer is grade 1.
+
+### University of Texas Diabetic Foot Ulcer Classification
+Citation: Lavery LA, Armstrong DG, Harkless LB. Classification of diabetic foot wounds. J Foot Ankle Surg.
+1996;35(6):528-531. Validation: Armstrong DG, Lavery LA, Harkless LB. Diabetes Care. 1998;21(5):855-859.
+(Cross-verified against the PubMed 9589255 abstract and the University of Arizona record; 2 or more sources,
+spec-v97.)
+Formula: a two-axis grade x stage grid — grade (depth) 0 epithelialized, 1 superficial (not to tendon,
+capsule, or bone), 2 to tendon or capsule, 3 to bone or joint; stage A clean, B infection, C ischemia,
+D infection plus ischemia. The cell is the roman-numeral grade with the stage letter (e.g. IIB). Healing odds
+fall and amputation odds rise as both axes increase (in the validation, Stage D had about 76.5% midfoot-or-
+higher amputation vs about 3.5% in less advanced stages).
+Worked example: a wound penetrating to tendon with infection is grade 2, stage B, i.e. cell IIB.

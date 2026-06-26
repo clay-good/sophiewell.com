@@ -82,6 +82,7 @@ import { renderers as RV151 } from './views/group-v151.js';
 import { renderers as RV152 } from './views/group-v152.js';
 import { renderers as RV153 } from './views/group-v153.js';
 import { renderers as RV154 } from './views/group-v154.js';
+import { renderers as RV155 } from './views/group-v155.js';
 import { renderers as RV149 } from './views/group-v149.js';
 import { renderers as RV63 } from './views/group-v63.js';
 import { renderers as RB } from './views/group-b.js';
@@ -101,7 +102,7 @@ import { resolvePrompt } from './lib/prompt.js';
 // artifact-detect / artifact-route / artifact-handoff helpers were
 // deleted in spec-v29 wave 29-2 (Group C/L).
 
-const RENDERERS = { ...RA, ...RB, ...RC, ...RE, ...RF, ...RG, ...RH, ...RI, ...RJ, ...RKLMNO, ...RV5, ...RV6, ...RV7, ...RV8, ...RV9, ...RV10, ...RV11, ...RV12, ...RV13, ...RV14, ...RV15, ...RV16, ...RV17, ...RV18, ...RV19, ...RV20, ...RV21, ...RV22, ...RV23, ...RV24, ...RV25, ...RV26, ...RV27, ...RV28, ...RV29, ...RV30, ...RV31, ...RV32, ...RV33, ...RV34, ...RV35, ...RV36, ...RV37, ...RV38, ...RV39, ...RV40, ...RV117, ...RV118, ...RV119, ...RV120, ...RV121, ...RV122, ...RV123, ...RV124, ...RV125, ...RV126, ...RV127, ...RV128, ...RV129, ...RV130, ...RV131, ...RV132, ...RV133, ...RV134, ...RV135, ...RV136, ...RV137, ...RV138, ...RV139, ...RV140, ...RV141, ...RV142, ...RV143, ...RV144, ...RV145, ...RV146, ...RV147, ...RV148, ...RV149, ...RV151, ...RV152, ...RV153, ...RV154, ...RV63, ...RPALINT };
+const RENDERERS = { ...RA, ...RB, ...RC, ...RE, ...RF, ...RG, ...RH, ...RI, ...RJ, ...RKLMNO, ...RV5, ...RV6, ...RV7, ...RV8, ...RV9, ...RV10, ...RV11, ...RV12, ...RV13, ...RV14, ...RV15, ...RV16, ...RV17, ...RV18, ...RV19, ...RV20, ...RV21, ...RV22, ...RV23, ...RV24, ...RV25, ...RV26, ...RV27, ...RV28, ...RV29, ...RV30, ...RV31, ...RV32, ...RV33, ...RV34, ...RV35, ...RV36, ...RV37, ...RV38, ...RV39, ...RV40, ...RV117, ...RV118, ...RV119, ...RV120, ...RV121, ...RV122, ...RV123, ...RV124, ...RV125, ...RV126, ...RV127, ...RV128, ...RV129, ...RV130, ...RV131, ...RV132, ...RV133, ...RV134, ...RV135, ...RV136, ...RV137, ...RV138, ...RV139, ...RV140, ...RV141, ...RV142, ...RV143, ...RV144, ...RV145, ...RV146, ...RV147, ...RV148, ...RV149, ...RV151, ...RV152, ...RV153, ...RV154, ...RV155, ...RV63, ...RPALINT };
 
 // ----- Utility registry ----------------------------------------------------
 // Source of truth for routes, names, group, audiences, and clinical flag.
@@ -826,6 +827,23 @@ const UTILITIES = [
   { id: 'tug',                name: 'Timed Up & Go (TUG)',                              group: 'E', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'tinetti-poma',       name: 'Tinetti POMA (mobility & gait)',                   group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'pps',                name: 'Palliative Performance Scale (PPSv2)',             group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+
+  // spec-v155 (the fifth implementation spec of the spec-v150 Post-Parity
+  // Coverage program): four suite-completion tiles, each plugging a named hole
+  // in an otherwise-complete suite. The lymphoma-index suite (nccn-ipi, r-ipi,
+  // flipi) had no mantle-cell index; the UGI-bleed suite (gbs, rockall, aims65,
+  // oakland) had no endoscopic-stigmata anchor; wifi grades limb threat but the
+  // diabetic-foot wound-grading systems were absent. mipi is a closed-form
+  // continuous index (log domain guarded); forrest / wagner-dfu /
+  // university-texas-dfu are deterministic input -> class mappings (spec-v100 §2
+  // classification clarification). PRECISE-DAPT is DEFERRED under the spec-v97
+  // >= 2-source rule (a non-transcribable restricted-cubic-spline nomogram),
+  // parked with crib-ii / gail-bcrat. views/group-v155.js, lib/suites-v155.js
+  // (RV155).
+  { id: 'mipi',               name: 'MIPI (Mantle Cell Lymphoma Prognostic Index)',     group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'forrest',            name: 'Forrest Classification (UGI bleeding stigmata)',   group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'wagner-dfu',         name: 'Wagner Diabetic Foot Ulcer Grade',                group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'university-texas-dfu', name: 'University of Texas Diabetic Foot Ulcer Class',  group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
 
   // spec-v98 (Wave 2 of spec-v85): four deterministic pediatric decision rules
   // and prognostic scores that fill confirmed gaps after a full sweep of Group N
