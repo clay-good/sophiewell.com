@@ -43,7 +43,17 @@ live value, never copied as a literal.
   `ipss` (International Prostate Symptom Score / AUA-SI for BPH/LUTS), `iief5`
   (IIEF-5 / Sexual Health Inventory for Men for erectile dysfunction), and `oabss`
   (Overactive Bladder Symptom Score, with the urgency ≥ 2 diagnostic gate surfaced).
-  All three are Group G and Class A. +3. The live catalog is **688** deterministic
+  All three are Group G and Class A. +3. The catalog reached 688 at the v153 close.
+- **spec-v154** — [spec-v154](spec-v154.md), the fourth feature spec, adds the four
+  performance-based function / falls / palliative instruments that fill the
+  previously empty performance-based mobility/balance and hospice-functional
+  surface beside the fall-*risk* scores (`morse-falls`, `hendrich-ii`) and the
+  frailty screens: `berg-balance` (Berg Balance Scale, 14 tasks 0–4, total 0–56),
+  `tug` (Timed Up & Go, the CDC STEADI ≥ 12 s bedside mobility screen), `tinetti-poma`
+  (Tinetti POMA, balance 0–16 + gait 0–12, total 0–28), and `pps` (Palliative
+  Performance Scale v2, the read-leftward 0–100% hospice-eligibility anchor distinct
+  from `ecog-karnofsky`). `berg-balance`, `tinetti-poma`, and `pps` are Group G;
+  `tug` is Group E; all four are Class A. +4. The live catalog is **692** deterministic
   tiles.
 
 ## Program roadmap (proposed, not all shipped)
@@ -51,7 +61,7 @@ live value, never copied as a literal.
 The [spec-v150](spec-v150.md) umbrella reserves the band v151–v156 for six feature
 specs (nominal +25): v151 dermatology severity (shipped), v152 nutrition & energy
 expenditure (shipped), v153 urology & men's-health PROs (shipped), v154 function/falls/palliative
-performance, v155 suite completions, v156 rheumatology PRO & obstetric
+performance (shipped), v155 suite completions, v156 rheumatology PRO & obstetric
 classification. Each ships only after its own ≥ 2-source re-verification; a tile
 whose published form cannot be cross-verified is deferred with the
 [spec-v97](spec-v97.md) rationale recorded, not shipped from an approximation.

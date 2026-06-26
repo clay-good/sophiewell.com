@@ -6,6 +6,49 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v154: function, falls & palliative performance — Berg Balance, Timed Up & Go, Tinetti POMA, Palliative Performance Scale, +4 — spec-v150 Post-Parity Coverage program)
+
+- **Four performance-based function / falls / palliative instruments continue the
+  spec-v150 Post-Parity Coverage program (688 → 692, +4).** The catalog carried
+  fall-*risk* prediction (`morse-falls`, `hendrich-ii`) and frailty screens but no
+  performance-based mobility/balance measure, and palliative care had
+  `ecog-karnofsky` but not the Palliative Performance Scale that anchors hospice
+  eligibility. They live in `lib/function-v154.js` + `views/group-v154.js`
+  (`RV154`) and are covered by the spec-v59 fuzz harness with zero non-finite leaks.
+  - `berg-balance` — Berg Balance Scale (Berg 1992), **Group G**, **Class A**.
+    Fourteen performance tasks each 0 (unable) to 4 (independent and safe), summed
+    0–56: 0–20 wheelchair-bound / high fall risk, 21–40 walking with assistance,
+    41–56 independent. A total **below 45 (strict)** flags increased fall risk — a
+    score of exactly 45 sits on the lower-risk side, asserted by a 44/45 boundary
+    test.
+  - `tug` — Timed Up & Go (Podsiadlo & Richardson 1991), **Group E**, **Class A**.
+    The measured time in seconds to rise, walk 3 m, turn, return, and sit. CDC
+    STEADI flags increased fall risk at ≥ 12 s; the community-dwelling cut-off is
+    ≥ 13.5 s; ≥ 30 s rates as dependent in transfers/ADLs. A blank or non-finite
+    time renders a complete-the-fields fallback rather than a spurious flag.
+  - `tinetti-poma` — Tinetti Performance-Oriented Mobility Assessment (Tinetti
+    1986), **Group G**, **Class A**. The 28-point version: balance subscale 0–16
+    plus gait subscale 0–12, total 0–28. Bands ≤ 18 high, 19–23 moderate, ≥ 24 low
+    (MDCalc / StatPearls; a score of 24 is classed low).
+  - `pps` — Palliative Performance Scale v2 (Anderson 1996; © Victoria Hospice
+    Society), **Group G**, **Class A**. Five columns (ambulation; activity &
+    evidence of disease; self-care; intake; conscious level) read left-to-right
+    with **leftward precedence**, resolving to a level 0%–100% in 10% steps (0% =
+    death). Each column descriptor maps to a *set* of consistent levels, so the
+    level is the best horizontal fit computed by intersecting the candidate-sets
+    from the left; a conflicting rightward column is overridden by leftward
+    precedence and flagged. A lower PPS frames a shorter expected survival and the
+    hospice-eligibility discussion; distinct from `ecog-karnofsky`.
+- Every range, threshold, and band was re-fetched and cross-verified against ≥ 2
+  independent authoritative sources (the spec-v97 discipline); nothing was
+  implemented from recall. None trips `ISSUER_PATTERN`, so all four are Class A
+  with no `citation-staleness.md` row.
+- The catalog count moves on all **13 catalog-truth surfaces** (688 → 692); a11y,
+  `mobile-no-hscroll`, `mobile-touch-targets`, and the chromium
+  `example-correctness` sweep pass for `views/group-v154.js`. See
+  [docs/spec-v154.md](docs/spec-v154.md) and the
+  [docs/scope-post-parity.md](docs/scope-post-parity.md) ledger.
+
 ### Added (spec-v153: urology & men's-health patient-reported scores — IPSS / AUA-SI, IIEF-5 / SHIM, OABSS, +3 — spec-v150 Post-Parity Coverage program)
 
 - **Three urology / men's-health symptom-score PROs continue the spec-v150

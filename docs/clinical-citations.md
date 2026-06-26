@@ -4025,3 +4025,47 @@ incontinence 0-5 — summed 0-15: mild 5 or below, moderate 6-11, severe 12 or a
 definition requires the urgency item to be 2 or more and the total to be 3 or more.
 Worked example: daytime 1 + nocturia 2 + urgency 3 + incontinence 2 = 8 (moderate, definition met); a total
 of 6 driven by frequency with urgency 1 does not meet the definition.
+
+### Berg Balance Scale (BBS)
+Citation: Berg K, Wood-Dauphinee S, Williams JI, Maki B. Measuring balance in the elderly: validation of an
+instrument. Can J Public Health. 1992;83 Suppl 2:S7-11. (Cross-verified against the Shirley Ryan AbilityLab
+Rehab Measures database and StatPearls; 2 or more sources, spec-v97.)
+Formula: fourteen performance tasks each scored 0 (unable) to 4 (independent and safe), summed 0-56: 0-20
+wheelchair-bound / high fall risk, 21-40 walking with assistance, 41-56 independent. A total below 45 (strict)
+flags increased fall risk; a score of exactly 45 sits on the lower-risk side.
+Worked example: all fourteen tasks at 3 gives 42/56 (independent stratum) yet below 45, so increased fall
+risk; 11 tasks at 4 gives 44 (increased risk) and one further point gives 45 (lower-risk band).
+
+### Timed Up & Go (TUG)
+Citation: Podsiadlo D, Richardson S. The Timed "Up & Go": a test of basic functional mobility for frail
+elderly persons. J Am Geriatr Soc. 1991;39(2):142-148. (Cross-verified against the CDC STEADI materials and
+the Shirley Ryan AbilityLab database; 2 or more sources, spec-v97.)
+Formula: the measured time in seconds to rise from a chair, walk 3 m, turn, return, and sit. The CDC STEADI
+program flags increased fall risk at 12 s or more; the community-dwelling cut-off is 13.5 s or more
+(Shumway-Cook 2000); the original functional band rates 30 s or more as dependent in transfers/ADLs.
+Worked example: 12.5 s is at or above the 12 s STEADI threshold (increased risk) but below the 13.5 s
+community cut-off; 11.9 s is below the STEADI threshold and is not flagged.
+
+### Tinetti POMA — Performance-Oriented Mobility Assessment
+Citation: Tinetti ME. Performance-oriented assessment of mobility problems in elderly patients. J Am Geriatr
+Soc. 1986;34(2):119-126. (28-point version; cross-verified against MDCalc and StatPearls; 2 or more sources,
+spec-v97.)
+Formula: a balance subscale 0-16 plus a gait subscale 0-12, summed 0-28: 18 or below high fall risk, 19-23
+moderate, 24 or above low (a score of 24 is classed low per MDCalc/StatPearls). A 30-point balance variant
+exists; this is the 28-point total.
+Worked example: balance 12 + gait 8 = 20 (moderate); balance 10 + gait 8 = 18 (high) while balance 11 + gait
+8 = 19 (moderate); balance 14 + gait 10 = 24 (low).
+
+### Palliative Performance Scale, version 2 (PPSv2)
+Citation: Anderson F, Downing GM, Hill J, et al. Palliative Performance Scale (PPS): a new tool. J Palliat
+Care. 1996;12(1):5-11. (PPSv2 (c) Victoria Hospice Society, 2001; cross-verified against the Victoria Hospice
+sample and the HIGN "Try This" reproduction; 2 or more sources, spec-v97.)
+Formula: five columns (ambulation; activity & evidence of disease; self-care; intake; conscious level) read
+left-to-right with leftward precedence, giving a level from 100% down to 0% in 10% decrements (0% = death).
+Each column descriptor is consistent with a set of levels (ambulation "Full" spans 100/90/80%), so the level
+is the best horizontal fit: the running candidate set is intersected column-by-column from the left, and a
+rightward column that conflicts with the leftward-established set is overridden (and flagged) rather than
+forcing an empty result.
+Worked example: reduced ambulation + unable-normal-job + full self-care + reduced intake + full consciousness
+converges to 70%; mainly-in-bed + unable-most-activity (both 40%) with full self-care (which alone would be
+70% or higher) resolves to 40% by leftward precedence, flagging the self-care conflict.

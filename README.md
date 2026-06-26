@@ -5,7 +5,7 @@
 <h1 align="center">sophiewell.com</h1>
 
 <p align="center">
-  <strong>688 deterministic healthcare calculators that run entirely in your browser.</strong><br>
+  <strong>692 deterministic healthcare calculators that run entirely in your browser.</strong><br>
   Free forever. No servers, no accounts, no telemetry, no AI, no network call after first paint.
 </p>
 
@@ -36,7 +36,7 @@ output; "searchable lookup of static facts" does not qualify. See
 [docs/spec-v10.md](docs/spec-v10.md) for the audience and
 dependency-budget commitments and
 [docs/spec-v29.md](docs/spec-v29.md) for the nurse-first pivot
-and the v29 catalog ledger. At v153 close the catalog is 688
+and the v29 catalog ledger. At v153 close the catalog is 692
 deterministic tiles — every one of them computes from at least
 one user input. The catalog reached its present size on two tracks.
 **New tiles:** spec-v63 added the operations counterpart to the bedside
@@ -186,7 +186,7 @@ production security headers. Any static file server will also work.
 ## How it works and how to use it
 
 Since the spec-v29 nurse-first prune the catalog has grown one
-reviewable spec at a time to **688** deterministic calculators
+reviewable spec at a time to **692** deterministic calculators
 (the full per-version history is in [CHANGELOG.md](CHANGELOG.md)
 and `docs/spec-v*.md`; the most recent bedside additions are
 summarized in the cheat sheets below). They organize across the
@@ -1022,6 +1022,35 @@ and a > 100% total is **flagged, not silently capped**. `duke-endocarditis` (202
 Duke-ISCVID) and `refeeding-risk` (NICE CG32) are **Class B** with
 [citation-staleness](docs/citation-staleness.md) rows; the other three are
 **Class A**. See [docs/spec-v99.md](docs/spec-v99.md).
+
+### Function, falls & palliative performance: Berg, TUG, Tinetti POMA, PPSv2 (spec-v154, +4 → 692)
+
+[spec-v154](docs/spec-v154.md) is the fourth feature spec of the Post-Parity
+Coverage program. The catalog already carried fall-*risk* prediction
+(`morse-falls`, `hendrich-ii`) and frailty screens, but **no performance-based
+mobility/balance measure**, and palliative care had `ecog-karnofsky` but **not the
+Palliative Performance Scale** that anchors hospice eligibility. These four
+complete that axis: the two standard balance/gait batteries, the single most-used
+bedside mobility screen, and the hospice functional anchor. They live in
+`lib/function-v154.js` + `views/group-v154.js` (`RV154`), fuzz-covered by the
+spec-v59 harness, with every range, threshold, and band re-fetched and
+cross-verified against ≥ 2 independent sources (the spec-v97 discipline).
+
+| id | Group | Inputs | Output | Companion to |
+|---|---|---|---|---|
+| `berg-balance` | G | 14 tasks each 0–4 (Berg 1992) | BBS 0–56: 0–20 wheelchair-bound, 21–40 walking with assistance, 41–56 independent; **< 45 = increased fall risk** (strict) | `tinetti-poma`, `tug`, `morse-falls` |
+| `tug` | E | measured time in seconds (Podsiadlo 1991) | ≥ 12 s CDC STEADI flag; ≥ 13.5 s community cut-off; ≥ 30 s dependent; blank/non-finite → complete-the-fields | `berg-balance`, `tinetti-poma` |
+| `tinetti-poma` | G | balance 0–16 + gait 0–12 (Tinetti 1986) | POMA 0–28: ≤ 18 high, 19–23 moderate, ≥ 24 low (24 classed low per MDCalc/StatPearls) | `berg-balance`, `tug` |
+| `pps` | G | 5 columns, read-leftward (PPSv2, Victoria Hospice) | PPS 0–100% in 10% steps; lower → shorter survival; hospice-eligibility framing | `ecog-karnofsky` |
+
+Two correctness anchors. **The Berg `< 45` cutoff is strict** — a score of exactly
+45 sits on the lower-risk side, exercised by a 44/45 boundary test. And **PPS is
+not a single dropdown**: each column descriptor maps to a *set* of consistent
+levels (ambulation "Full" spans 100/90/80%), so the level is the best horizontal
+fit computed by intersecting the column candidate-sets left-to-right; a rightward
+column that conflicts with the leftward-established set is **overridden by leftward
+precedence and flagged**, never forced into an empty result. A unit test drives the
+read-leftward case where two columns disagree. See [docs/spec-v154.md](docs/spec-v154.md).
 
 ### Urology & men's-health symptom scores: IPSS, IIEF-5/SHIM, OABSS (spec-v153, +3 → 688)
 
@@ -2716,7 +2745,7 @@ long version, see [docs/architecture.md](docs/architecture.md).
  │  manifests (data/)            │  static │        ▼                     ▼             │
  │        │  scripts/build       │  files  │   lazy-load data shard   pure compute      │
  │        ▼                      │         │   (verified vs manifest)  (lib/*.js)       │
- │  dist/  (688 tool pages,      │         │        │                     │             │
+ │  dist/  (692 tool pages,      │         │        │                     │             │
  │  OG cards, sitemap, SBOM)     │         │        ▼                     ▼             │
  └───────────────────────────────┘         │   service worker cache    result + cite   │
                                             │   (keyed to build hash)                    │
@@ -2738,7 +2767,7 @@ assets:
 
 | Output | Count | Source |
 |--------|------:|--------|
-| Pre-rendered tool pages (`dist/tools/<id>/`) | 688 | `scripts/build-tool-pages.mjs` |
+| Pre-rendered tool pages (`dist/tools/<id>/`) | 692 | `scripts/build-tool-pages.mjs` |
 | Audience hub pages (`dist/for/<audience>/`) | 6 | `scripts/build-hub-pages.mjs` |
 | Topic pages + `/topics/` index | 8 + 1 | `scripts/build-topic-pages.mjs` |
 | `/commitments/` | 1 | `scripts/build-commitments-page.mjs` |
@@ -2773,7 +2802,7 @@ static pages, so a tile can never ship mobile overflow undetected.
 index.html          single-page shell (hero-search combobox + static browse-by-category nav, tile mount)
 styles.css          one stylesheet (responsive; no horizontal scroll — enforced catalog-wide at 320px in CI)
 app.js              router, hero-search wiring, view wiring, the UTILITIES catalog
-                    (688 tiles — the single source of truth; zero runtime deps)
+                    (692 tiles — the single source of truth; zero runtime deps)
 sw.js               service worker — precache shell, cache shards by build hash
 theme.js            light/dark theme toggle (writes only sw-theme, allowlisted)
 lib/input-persist.js opt-in "remember my inputs" (off by default; numbers only)
@@ -2791,12 +2820,12 @@ docs/               specs (spec-v4 onward) + per-tile v11/v12 audit logs +
                     citation-staleness ledger +
                     architecture / threat-model / …
 test/               unit/ (node:test) · integration/ (Playwright) · fixtures/
-dist/               build output (688 tool pages, OG cards, sitemap, SBOM)
+dist/               build output (692 tool pages, OG cards, sitemap, SBOM)
 ```
 
-### Discovery: how a query finds the right tool among 688
+### Discovery: how a query finds the right tool among 692
 
-With 688 tiles, search quality *is* the product — a tool you cannot find does
+With 692 tiles, search quality *is* the product — a tool you cannot find does
 not exist. Discovery is deterministic and offline (no fuzzy-match service, no
 embedding model, no AI). The home `#hero-search` combobox builds its dropdown
 from two complementary rankers, both pure functions of the typed query:
@@ -2869,10 +2898,10 @@ A login-less, AI-free calculator earns trust only if the nurse can see, on the
 tile, exactly which published source produced the number — and tell whether that
 source is current. spec-v54 defined the invariants; spec-v60 built the machinery
 (the gate, the ledger, and the `citationAccessed` convention) and extended it
-across the full 688-tile catalog, pinning the last three unpinned "current
+across the full 692-tile catalog, pinning the last three unpinned "current
 edition" phrases and re-verifying every guideline tile against its latest known
 edition. Three invariants make that auditable, each enforced by the
-`check-citations.mjs` lint gate (in the `npm run lint` chain) over all 688 tiles:
+`check-citations.mjs` lint gate (in the `npm run lint` chain) over all 692 tiles:
 
 | Invariant | Rule | Enforcement |
 |---|---|---|
@@ -3329,7 +3358,7 @@ rules, not soft preferences.
 | `npm run build`          | Copy static files into `dist/` for deployment                     |
 | `npm test`               | Run the full test suite (unit, a11y, grep, data integrity)        |
 | `npm run test:unit`      | Run Node's built-in unit tests (5,156 tests)                      |
-| `npm run test:e2e`       | Build `dist/`, then run Playwright integration tests against real browsers — incl. a full-catalog 320px no-horizontal-scroll sweep over both the SPA routes and the 688 pre-rendered static tool pages, the hub/topic/commitments pages, and the citation-wrap pin |
+| `npm run test:e2e`       | Build `dist/`, then run Playwright integration tests against real browsers — incl. a full-catalog 320px no-horizontal-scroll sweep over both the SPA routes and the 692 pre-rendered static tool pages, the hub/topic/commitments pages, and the citation-wrap pin |
 | `npm run test:a11y`      | Run accessibility checks on every utility view                    |
 | `npm run lint`           | ESLint + the CI gate chain: grep-check, output-safety, citation-integrity, catalog-truth, commitments, PA staleness, PA audit |
 | `npm run data:refresh`   | Re-fetch and re-shard every public dataset                        |
@@ -3413,7 +3442,7 @@ build, integrity-verified data shards) are documented in
 - [docs/spec-v11.md](docs/spec-v11.md) — correctness-floor spec:
   per-tile audit protocol, specialty-named groups, optional
   source-quoted `interpretation` field. Audit coverage is **complete
-  — 688/688 tiles** carry a committed per-tile audit log
+  — 692/692 tiles** carry a committed per-tile audit log
   (`docs/audits/v11/<id>.md` for the pre-v78 catalog;
   `docs/audits/v12/<id>.md` for the tiles added since — the
   spec-v78–v83 billing & coding program, the spec-v85

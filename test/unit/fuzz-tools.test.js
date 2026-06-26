@@ -151,6 +151,7 @@ import * as emsV149 from '../../lib/ems-v149.js';
 import * as dermV151 from '../../lib/derm-v151.js';
 import * as nutritionEnergyV152 from '../../lib/nutrition-energy-v152.js';
 import * as urologyV153 from '../../lib/urology-v153.js';
+import * as functionV154 from '../../lib/function-v154.js';
 
 const MODULES = {
   'clinical.js': clinical,
@@ -246,6 +247,7 @@ const MODULES = {
   'derm-v151.js': dermV151,
   'nutrition-energy-v152.js': nutritionEnergyV152,
   'urology-v153.js': urologyV153,
+  'function-v154.js': functionV154,
 };
 
 const MATRIX = [0, -1, 1e9, NaN, Infinity, -Infinity, '', undefined, null];

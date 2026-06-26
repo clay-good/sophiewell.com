@@ -1,6 +1,6 @@
 # spec-v154.md — Function, falls & palliative performance: Berg Balance, Timed Up & Go, Tinetti POMA, and Palliative Performance Scale (+4 tiles)
 
-> Status: **PROPOSED (2026-06-23).** Feature spec of the
+> Status: **SHIPPED (2026-06-26).** Feature spec of the
 > [spec-v150](spec-v150.md) **Post-Parity Coverage** program. Adds **4**
 > deterministic performance/function instruments that fill a confirmed gap — the
 > catalog has fall-*risk* prediction (`morse-falls`, `hendrich-ii`) and frailty

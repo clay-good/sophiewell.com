@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `93210aa3b9ff97cf`
-Generated: 2026-06-26T21:25:18.679Z
+Build ID: `4a392f2e0270ea30`
+Generated: 2026-06-26T22:09:03.508Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=20.18.1 <21, npm >=10.0.0
@@ -24,13 +24,13 @@ downloads is committed in this repository and is hashed below.
 
 | Path | Bytes | SHA-256 |
 |---|---:|---|
-| `index.html` | 53133 | `e42710e6252a073395d8e7033a8fcca0c6e8122edf2b91ab105bd45aaf4c4cab` |
+| `index.html` | 53306 | `fed129ab1966add47ae3ddbd4bbe0a91266ca86c3843e8643fb989570a32601b` |
 | `styles.css` | 42819 | `bea421c79d390a364eb571c3a9599cdf28264128d4ac02d7abb00f31000c7cda` |
-| `app.js` | 192770 | `033898978c9a43d02430dbe0191b44d31de9baa77caadfb61a79c624cfda576f` |
+| `app.js` | 194387 | `9078e84660242a90aec0afbc6b7eebf4550f6e715f5f39d99900cdeafd753419` |
 | `sw.js` | 4622 | `b891d4344f8e04403b7f1d307fd446cc224bddc6f0c4397438a17d197351171e` |
 | `site.webmanifest` | 709 | `0e0de4da60590a12e8b27a0ae2a2f5ffdb6500b7d2b78f93631ec2f64ed3d5ce` |
 | `robots.txt` | 127 | `38fbf9c1854e72abb20e01e81dd5a31d4ea96f154c12d5db1ec3af05524dd1a1` |
-| `sitemap.xml` | 106183 | `3b5e951572966370806463e6e0b8372112a035ffec7be88c347ea015767f6439` |
+| `sitemap.xml` | 106773 | `40a1434711f689d4e5e50eac24f6d29a90c851b3533f552a3e1a2acaecc68757` |
 | `_headers` | 1316 | `2f39986457d2feff7e73e491a7d09ee871e8f2f4cc2bc437f86bd86a42554ec6` |
 | `logo.png` | 63440 | `11afaf1b0d3ca68393d202e4810bf766b5b6d591b4e3ec52f41d3cacaa4616ec` |
 | `favicon.ico` | 7411 | `407fde0ca2788409e87e11f596fa02e6a0b121817fcea7fd995beec1801e287b` |
@@ -77,6 +77,7 @@ downloads is committed in this repository and is hashed below.
 | `lib/field.js` | 12156 | `6a6b07f76a519a8f873a37a9b57c52909e9088c3a09bd256e0ac60240e16d2ea` |
 | `lib/fluidresp-v113.js` | 8525 | `c40f34894d85e2aa6bbe92e153e89e922b8331cd6b6882660f771a3fe9106e1d` |
 | `lib/frailty-v143.js` | 13624 | `d4a26cba6d790181a8329c69b4d6d55f5e3b626e2d89977d02b2f75fdba56858` |
+| `lib/function-v154.js` | 15012 | `ce6634d2acc5d69d16bf00e0c4d0fb85294e49102bfce1883190ff7526458870` |
 | `lib/gi-v126.js` | 15336 | `4f3d35f89a4321f167170e7916646aedf7472b01315e9df2bcc9bc1afa6b3558` |
 | `lib/gli-2012-data.js` | 41979 | `0fa7440b8d9ab03028185d56c7a6bc9e1e753fe3ac396c208eb06f80991ba125` |
 | `lib/growth-lms-data.js` | 24417 | `4ea0051f9a2a5f9c3be7f0504f7cacc3c484c00b11a36fa905ba7546efad6a6b` |
@@ -98,7 +99,7 @@ downloads is committed in this repository and is hashed below.
 | `lib/lymphoma-v135.js` | 16162 | `e29896a6de224445f46839cd06518817bd25d1235a91ede76f77ccb4996a934f` |
 | `lib/medication-v4.js` | 18192 | `467f9576c50da696cc56094eb022d0a5ed1e88de0c7618448554ede8067270b0` |
 | `lib/medication-v5.js` | 18863 | `ce81d9f8954abbd412892c13af9936f992239164f26fd2b999eaea7902787ab7` |
-| `lib/meta.js` | 1061410 | `91509b24eb9554eeeb6184b264945db4174a6e6ac08eb88369459db4d576251e` |
+| `lib/meta.js` | 1065782 | `097130a29271c223bf27942a6a9adeaa4862948fc7c0ca59b5e3e72017a04695` |
 | `lib/metabolic-onc-v88.js` | 12659 | `1553b641668c121661a66647da71a4aaaa023e9f3a6b7a753efbcdab27cdba81` |
 | `lib/nephro-v127.js` | 10884 | `c86865e98fced63ac9510fbebe0de77a88e305366c080a83c9beb8542371932a` |
 | `lib/nephro-v92.js` | 15980 | `64bbc05482eed2ab88816f676ab5e56aefae9d4f5d85d223217a03160d1cc082` |
@@ -222,6 +223,7 @@ downloads is committed in this repository and is hashed below.
 | `views/group-v151.js` | 12911 | `a4714b9e37739fcaf32669b3f1af04414babcaba8eb9df2078ecba47ba01e367` |
 | `views/group-v152.js` | 12138 | `c47064551725779e229d79656dd202a06fbd4bc25dd39dfc86efd559fe424c74` |
 | `views/group-v153.js` | 11361 | `f5224aae77498ed9681a5493cea92a6983da60d7d1970a48549635a6e55ccf12` |
+| `views/group-v154.js` | 11517 | `a57e53e96d380ecdeb00114ea2fab7d73148183237dcd086222c11b64436a1d0` |
 | `views/group-v16.js` | 10601 | `e85099483cb9c09f775b714358035dd890eba3c3022e1adbe7c5d4b338518fdd` |
 | `views/group-v17.js` | 10867 | `e27c79eed69650e9f53b6ba6831a13e40e21f84a87094726892cea0970af3986` |
 | `views/group-v18.js` | 10455 | `90a5482884a16c0d8883b7e7de1ed1d1cbbbbcc6dcd45bc1f6d28d78e6547965` |
