@@ -1,6 +1,6 @@
 # spec-v158.md — Echocardiography quantification: LV mass index & geometry, LA volume index, Teichholz LVEF/FS, RVSP/PASP, and E/e′ (+5 tiles)
 
-> Status: **PROPOSED (2026-06-23).** Feature spec of the
+> Status: **SHIPPED (2026-06-26).** (was PROPOSED 2026-06-23.) Feature spec of the
 > [spec-v157](spec-v157.md) **Subspecialty Depth** program. Adds **5**
 > deterministic echocardiographic quantification computes that fill the program's
 > headline gap — echocardiography has only `aortic-valve-area` in the live

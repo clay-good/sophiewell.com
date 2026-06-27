@@ -154,6 +154,10 @@ import * as urologyV153 from '../../lib/urology-v153.js';
 import * as functionV154 from '../../lib/function-v154.js';
 import * as suitesV155 from '../../lib/suites-v155.js';
 import * as rheumObV156 from '../../lib/rheum-ob-v156.js';
+import * as echoV158 from '../../lib/echo-v158.js';
+import * as neuroDisabilityV159 from '../../lib/neuro-disability-v159.js';
+import * as rheumV160 from '../../lib/rheum-v160.js';
+import * as endoMetabV161 from '../../lib/endo-metab-v161.js';
 
 const MODULES = {
   'clinical.js': clinical,
@@ -252,6 +256,10 @@ const MODULES = {
   'function-v154.js': functionV154,
   'suites-v155.js': suitesV155,
   'rheum-ob-v156.js': rheumObV156,
+  'echo-v158.js': echoV158,
+  'neuro-disability-v159.js': neuroDisabilityV159,
+  'rheum-v160.js': rheumV160,
+  'endo-metab-v161.js': endoMetabV161,
 };
 
 const MATRIX = [0, -1, 1e9, NaN, Infinity, -Infinity, '', undefined, null];

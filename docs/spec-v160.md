@@ -1,6 +1,6 @@
 # spec-v160.md — Rheumatology activity & classification completion: RAPID3, DAPSA, SLICC 2012 SLE, and 2019 EULAR/ACR SLE (+4 tiles)
 
-> Status: **PROPOSED (2026-06-23).** Feature spec of the
+> Status: **SHIPPED (2026-06-26).** (was PROPOSED 2026-06-23.) Feature spec of the
 > [spec-v157](spec-v157.md) **Subspecialty Depth** program. Adds **4**
 > deterministic rheumatology activity/classification instruments that complete the
 > surface begun by v147/v148/v156 — the routine US RA patient-reported index, the

@@ -84,6 +84,10 @@ import { renderers as RV153 } from './views/group-v153.js';
 import { renderers as RV154 } from './views/group-v154.js';
 import { renderers as RV155 } from './views/group-v155.js';
 import { renderers as RV156 } from './views/group-v156.js';
+import { renderers as RV158 } from './views/group-v158.js';
+import { renderers as RV159 } from './views/group-v159.js';
+import { renderers as RV160 } from './views/group-v160.js';
+import { renderers as RV161 } from './views/group-v161.js';
 import { renderers as RV149 } from './views/group-v149.js';
 import { renderers as RV63 } from './views/group-v63.js';
 import { renderers as RB } from './views/group-b.js';
@@ -103,7 +107,7 @@ import { resolvePrompt } from './lib/prompt.js';
 // artifact-detect / artifact-route / artifact-handoff helpers were
 // deleted in spec-v29 wave 29-2 (Group C/L).
 
-const RENDERERS = { ...RA, ...RB, ...RC, ...RE, ...RF, ...RG, ...RH, ...RI, ...RJ, ...RKLMNO, ...RV5, ...RV6, ...RV7, ...RV8, ...RV9, ...RV10, ...RV11, ...RV12, ...RV13, ...RV14, ...RV15, ...RV16, ...RV17, ...RV18, ...RV19, ...RV20, ...RV21, ...RV22, ...RV23, ...RV24, ...RV25, ...RV26, ...RV27, ...RV28, ...RV29, ...RV30, ...RV31, ...RV32, ...RV33, ...RV34, ...RV35, ...RV36, ...RV37, ...RV38, ...RV39, ...RV40, ...RV117, ...RV118, ...RV119, ...RV120, ...RV121, ...RV122, ...RV123, ...RV124, ...RV125, ...RV126, ...RV127, ...RV128, ...RV129, ...RV130, ...RV131, ...RV132, ...RV133, ...RV134, ...RV135, ...RV136, ...RV137, ...RV138, ...RV139, ...RV140, ...RV141, ...RV142, ...RV143, ...RV144, ...RV145, ...RV146, ...RV147, ...RV148, ...RV149, ...RV151, ...RV152, ...RV153, ...RV154, ...RV155, ...RV156, ...RV63, ...RPALINT };
+const RENDERERS = { ...RA, ...RB, ...RC, ...RE, ...RF, ...RG, ...RH, ...RI, ...RJ, ...RKLMNO, ...RV5, ...RV6, ...RV7, ...RV8, ...RV9, ...RV10, ...RV11, ...RV12, ...RV13, ...RV14, ...RV15, ...RV16, ...RV17, ...RV18, ...RV19, ...RV20, ...RV21, ...RV22, ...RV23, ...RV24, ...RV25, ...RV26, ...RV27, ...RV28, ...RV29, ...RV30, ...RV31, ...RV32, ...RV33, ...RV34, ...RV35, ...RV36, ...RV37, ...RV38, ...RV39, ...RV40, ...RV117, ...RV118, ...RV119, ...RV120, ...RV121, ...RV122, ...RV123, ...RV124, ...RV125, ...RV126, ...RV127, ...RV128, ...RV129, ...RV130, ...RV131, ...RV132, ...RV133, ...RV134, ...RV135, ...RV136, ...RV137, ...RV138, ...RV139, ...RV140, ...RV141, ...RV142, ...RV143, ...RV144, ...RV145, ...RV146, ...RV147, ...RV148, ...RV149, ...RV151, ...RV152, ...RV153, ...RV154, ...RV155, ...RV156, ...RV158, ...RV159, ...RV160, ...RV161, ...RV63, ...RPALINT };
 
 // ----- Utility registry ----------------------------------------------------
 // Source of truth for routes, names, group, audiences, and clinical flag.
@@ -862,6 +866,55 @@ const UTILITIES = [
   { id: 'basfi',              name: 'BASFI (Ankylosing Spondylitis Functional Index)',   group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'essdai',             name: 'ESSDAI (Sjögren Disease Activity Index)',           group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'robson',             name: 'Robson Ten-Group Classification (cesarean audit)',  group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+
+  // spec-v158 (first feature spec of the spec-v157 Subspecialty Depth program):
+  // five echocardiography quantification computes that fill the program headline
+  // gap - echo had only aortic-valve-area despite being one of the most-performed
+  // studies in medicine. Each is closed-form arithmetic over the operator's 2D /
+  // Doppler measurements with published severity partitions (spec-v100 §2). All
+  // Clinical Math & Conversions (Group E). views/group-v158.js, lib/echo-v158.js
+  // (RV158). Formulas/partitions cross-verified vs ASE/EACVI (Lang 2015) + the
+  // cited primary papers (spec-v97).
+  { id: 'lv-mass-index',      name: 'LV Mass Index & Geometry (Devereux)',              group: 'E', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'la-volume-index',    name: 'Left Atrial Volume Index (LAVI)',                  group: 'E', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'teichholz-lvef',     name: 'Teichholz LVEF & Fractional Shortening',           group: 'E', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'rvsp-pasp',          name: 'RV Systolic Pressure / PASP (TR jet)',             group: 'E', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'mitral-e-e-prime',   name: 'E/e′ (LV Filling-Pressure Estimate)',              group: 'E', audiences: ['clinicians', 'educators'], clinical: true },
+
+  // spec-v159 (second feature spec of the spec-v157 Subspecialty Depth program):
+  // four neurology / spine disability classification scales used in MS,
+  // spinal-cord-injury, and cervical-myelopathy clinics - none was in the
+  // catalog. Each is a deterministic input -> grade/step mapping (spec-v100 §2
+  // classification clarification). All Clinical Scoring & Risk (Group G).
+  // views/group-v159.js, lib/neuro-disability-v159.js (RV159).
+  { id: 'edss',               name: 'EDSS (Expanded Disability Status Scale, MS)',      group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'asia-impairment',    name: 'ASIA Impairment Scale (spinal-cord injury)',       group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'mjoa',               name: 'mJOA (cervical myelopathy)',                       group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'nurick',             name: 'Nurick Grade (cervical spondylotic myelopathy)',   group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+
+  // spec-v160 (third feature spec of the spec-v157 Subspecialty Depth program):
+  // four rheumatology activity / classification instruments - the routine US RA
+  // PRO (RAPID3), the PsA activity index (DAPSA), and the two SLE classification
+  // criteria (SLICC 2012 and 2019 EULAR/ACR). rapid3/dapsa are bounded weighted
+  // sums; slicc-sle / sle-2019-eular-acr are deterministic classification rules
+  // (spec-v100 §2). All Clinical Scoring & Risk (Group G). views/group-v160.js,
+  // lib/rheum-v160.js (RV160). Weights cross-verified (spec-v97).
+  { id: 'rapid3',             name: 'RAPID3 (RA patient-reported activity)',            group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'dapsa',              name: 'DAPSA (Psoriatic Arthritis Disease Activity)',     group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'slicc-sle',          name: 'SLICC 2012 SLE Classification Criteria',           group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'sle-2019-eular-acr', name: '2019 EULAR/ACR SLE Classification Criteria',       group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+
+  // spec-v161 (fourth and CLOSING feature spec of the spec-v157 Subspecialty
+  // Depth program): four endocrine / metabolic / nutrition-support arithmetic
+  // computes that fill the absent screening math. arr / calcium-phosphate-product
+  // / free-thyroxine-index are Clinical Math & Conversions (Group E);
+  // nitrogen-balance is Medication & Infusion (Group F, nutrition-support
+  // context). views/group-v161.js, lib/endo-metab-v161.js (RV161).
+  // calcium-phosphate-product cites KDIGO -> documentation-only staleness row.
+  { id: 'arr',                    name: 'Aldosterone-Renin Ratio (primary-aldosteronism screen)', group: 'E', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'calcium-phosphate-product', name: 'Calcium-Phosphate Product (CKD-MBD)',          group: 'E', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'free-thyroxine-index',   name: 'Free Thyroxine Index (FTI / T7)',                  group: 'E', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'nitrogen-balance',       name: 'Nitrogen Balance (nutrition support)',             group: 'F', audiences: ['clinicians', 'educators'], clinical: true },
 
   // spec-v98 (Wave 2 of spec-v85): four deterministic pediatric decision rules
   // and prognostic scores that fill confirmed gaps after a full sweep of Group N

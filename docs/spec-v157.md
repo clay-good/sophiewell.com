@@ -1,6 +1,6 @@
 # spec-v157.md — Subspecialty Depth program: echocardiography, neuro/spine disability, rheumatology PRO, and endocrine/metabolic math (program-of-record)
 
-> Status: **PROPOSED (2026-06-23).** Program-of-record for the **Subspecialty
+> Status: **SHIPPED (2026-06-26).** (was PROPOSED 2026-06-23.) Program-of-record for the **Subspecialty
 > Depth** initiative — the *second pass* after the [spec-v150](spec-v150.md)
 > **Post-Parity Coverage** program (v151–v156). v150 closed the
 > under-represented-*specialty* gaps; this program closes the deeper

@@ -6,6 +6,73 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v157 Subspecialty Depth program: v158–v161, +17 — echocardiography, neuro/spine disability, rheumatology PRO & SLE, endocrine/metabolic math; 700 → 717)
+
+- **The spec-v157 Subspecialty Depth program ships its four feature specs (700 →
+  717, +17).** After v150 closed the whole-*specialty* gaps, this second pass
+  closes the deeper *subspecialty quantification* gaps — most notably that
+  echocardiography, one of the most-performed studies in medicine, had a single
+  quantification tile. Every formula, weight, and partition was re-fetched and
+  cross-verified against ≥ 2 independent sources at implementation (spec-v97);
+  all four modules are covered by the spec-v59 fuzz harness with zero non-finite
+  leaks. (Actual delta is +17, not the draft's nominal +18 — the v157 draft
+  carried a known running-count off-by-one; `UTILITIES.length` is the source of
+  truth and the 13 catalog-truth surfaces agree at 717.)
+- **spec-v158 — echocardiography quantification (+5, Group E).** `lib/echo-v158.js`
+  + `views/group-v158.js` (`RV158`), cross-verified vs the ASE/EACVI Lang 2015
+  chamber-quantification guideline. ASE/EACVI is **not** in the `check-citations`
+  issuer pattern, so all five are **Class A** with no staleness row.
+  - `lv-mass-index` — LV mass (Devereux 1986), LVMI, relative wall thickness, and
+    the four-pattern geometry classification (RWT 0.42 × sex-specific LVMI limit).
+  - `la-volume-index` — biplane area-length LA volume and LAVI (bands 34/41/48).
+  - `teichholz-lvef` — Teichholz LVEF & fractional shortening with the
+    dimension-derived/Simpson-preferred caveat and sex-specific EF cutoffs.
+  - `rvsp-pasp` — RVSP = 4·(TR Vmax)² + RAP from the IVC (3/8/15 mmHg).
+  - `mitral-e-e-prime` — E/e′ filling-pressure estimate (average < 9 / 9–14 / > 14;
+    septal > 15, lateral > 13). The published normal boundary is < 9, corrected
+    from the draft's < 8 at implementation.
+- **spec-v159 — neuro & spine disability classification (+4, Group G).**
+  `lib/neuro-disability-v159.js` + `views/group-v159.js` (`RV159`). All **Class A**.
+  - `edss` — Expanded Disability Status Scale (Kurtzke 1983), 0–10 in 0.5 steps.
+    The low range follows the simplified FS-count table; the 4.0–9.5 range follows
+    the authoritative ambulation anchors; the reported step is the **higher of the
+    two** (published precedence). The renderer points to a trained Neurostatus
+    rating for a definitive score.
+  - `asia-impairment` — ASIA Impairment Scale A–E (ISNCSCI, Kirshblum 2011); sacral
+    sparing is the complete-vs-incomplete gate, the half-of-key-muscles proportion
+    the C-vs-D gate.
+  - `mjoa` — modified Japanese Orthopaedic Association score (Benzel 1991), 0–18,
+    **higher is better** (surfaced); mild ≥ 15, moderate 12–14, severe ≤ 11.
+  - `nurick` — Nurick grade 0–5 (Nurick 1972), gait-focused cervical myelopathy.
+- **spec-v160 — rheumatology activity & SLE classification (+4, Group G).**
+  `lib/rheum-v160.js` + `views/group-v160.js` (`RV160`). EULAR/ACR are spelled out,
+  so none trips the issuer pattern → all **Class A**.
+  - `rapid3` — Routine Assessment of Patient Index Data 3 (Pincus 2009), 0–30; the
+    MDHAQ ÷3 function transform is surfaced.
+  - `dapsa` — Disease Activity in Psoriatic Arthritis (Schoels 2016); **CRP in
+    mg/dL** (not mg/L) is the unit trap, unit-tested.
+  - `slicc-sle` — SLICC 2012 criteria; both pathways evaluated (≥ 4 with
+    distribution, or the biopsy-nephritis shortcut that can classify with < 4).
+  - `sle-2019-eular-acr` — 2019 EULAR/ACR criteria; the ANA entry gate, the
+    within-domain max-weight rule, and the ≥ 10 + ≥ 1-clinical threshold are each
+    unit-tested. Every weight cross-verified, zero discrepancies.
+- **spec-v161 — endocrine/metabolic/nutrition math (+4; Groups E/F) — CLOSES the
+  program.** `lib/endo-metab-v161.js` + `views/group-v161.js` (`RV161`).
+  - `arr` — Aldosterone-Renin Ratio (Endocrine Society 2016); the cutoff differs
+    by renin unit (PRA vs DRC) and is never compared across unit systems. Endocrine
+    Society is not in the issuer pattern → **Class A**.
+  - `calcium-phosphate-product` — Ca × PO₄ (CKD-MBD) with the historical > 55
+    caution and the contemporary "track individually" KDIGO posture. **KDIGO trips
+    the issuer pattern → a documentation-only `docs/citation-staleness.md` row.**
+  - `free-thyroxine-index` — FTI / T7 (Clark & Horn 1965), T4 × (T3RU ÷ reference).
+  - `nitrogen-balance` — (protein ÷ 6.25) − (UUN + insensible), nutrition support.
+- **Housekeeping.** Catalog count moves on all 13 catalog-truth surfaces
+  (700 → 717); four new `lib/*` modules added to the `fuzz-tools` `MODULES`; 17
+  per-tile audit logs under `docs/audits/v12/`; clinical-citations rows added; the
+  `docs/scope-subspecialty-depth.md` ledger records the Subspecialty Depth program
+  complete; one documentation-only staleness row (`calcium-phosphate-product`).
+  README unit-test count 5,650 → 5,740.
+
 ### Added (spec-v156: rheumatology PRO & obstetric classification — BASDAI, BASFI, ESSDAI, Robson, +4 — spec-v150 Post-Parity Coverage program COMPLETE)
 
 - **Four instruments close the spec-v150 Post-Parity Coverage program (696 → 700,

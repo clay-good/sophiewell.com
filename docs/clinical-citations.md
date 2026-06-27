@@ -4173,3 +4173,238 @@ and preterm single cephalic deliveries, each including cases with a previous ces
 classification, not an individual risk prediction.
 Worked example: a nulliparous woman with a single cephalic fetus at term whose labor was induced, with no
 previous cesarean, maps to group 2a (the induced-labor sub-split of group two).
+
+## spec-v158 — echocardiography quantification (Subspecialty Depth program)
+
+### LV Mass Index & Geometry (Devereux)
+Citation: Devereux RB, Alonso DR, Lutas EM, et al. Echocardiographic assessment of left ventricular
+hypertrophy: comparison to necropsy findings. Am J Cardiol. 1986;57(6):450-458. Geometry partitions: Lang RM,
+Badano LP, Mor-Avi V, et al. Recommendations for cardiac chamber quantification by echocardiography in adults.
+J Am Soc Echocardiogr. 2015;28(1):1-39. (Cross-verified against the ASE 2015 chamber-quantification guideline
+and the Cardioserv LVH reference; 2 or more sources, spec-v97.) The American Society of Echocardiography is not
+in the citation-issuer pattern, so no documentation-only staleness row is forced; the primary citation is the
+Devereux 1986 formula.
+Formula: LV mass in grams is zero-point-eight multiplied by the quantity one-point-zero-four multiplied by the
+difference of the cube of the sum of LVIDd, PWTd, and IVSd minus the cube of LVIDd, plus zero-point-six, with
+all linear dimensions in centimetres. The LV mass index is mass divided by body surface area. Relative wall
+thickness is two multiplied by PWTd divided by LVIDd. Geometry combines the relative-wall-thickness cutoff of
+zero-point-four-two with the sex-specific LV-mass-index upper-normal limit (men above 115, women above 95
+grams per square metre) into four patterns: normal, concentric remodeling, eccentric hypertrophy, and
+concentric hypertrophy.
+Worked example: LVIDd 5.2, PWTd 1.2, IVSd 1.2, BSA 2.0, male gives LV mass 248.8 grams, index 124.4, relative
+wall thickness 0.46 — an elevated index with high relative wall thickness is concentric hypertrophy.
+
+### Left Atrial Volume Index (LAVI)
+Citation: Lang RM, Badano LP, Mor-Avi V, et al. Recommendations for cardiac chamber quantification by
+echocardiography in adults. J Am Soc Echocardiogr. 2015;28(1):1-39. (Cross-verified against the ASE 2015
+guideline and the BioMed Central cardiovascular-ultrasound LAVI reference; 2 or more sources, spec-v97.)
+Formula: by the biplane area-length method, left-atrial volume is zero-point-eight-five multiplied by the
+product of the apical four-chamber and apical two-chamber LA areas divided by the shorter of the two LA
+lengths; the volume index is volume divided by body surface area. Severity bands in millilitres per square
+metre: normal at or below 34, mild 35 to 41, moderate 42 to 48, severe above 48.
+Worked example: areas 21 and 21 square centimetres with length 5.0 centimetres and BSA 2.0 give a volume of 75
+millilitres and an index of 37.5 — mildly enlarged.
+
+### Teichholz LVEF & Fractional Shortening
+Citation: Teichholz LE, Kreulen T, Herman MV, Gorlin R. Problems in echocardiographic volume determinations:
+echocardiographic-angiographic correlations in the presence or absence of asynergy. Am J Cardiol.
+1976;37(1):7-11. Severity bands: Lang RM, et al. J Am Soc Echocardiogr. 2015;28(1):1-39. (Cross-verified
+against the ASE 2015 guideline and the e-echocardiography ejection-fraction reference; 2 or more sources,
+spec-v97.)
+Formula: volume is seven multiplied by the cube of the dimension divided by the sum of two-point-four and the
+dimension, in centimetres; end-diastolic volume uses LVIDd and end-systolic volume uses LVIDs. Ejection
+fraction is end-diastolic minus end-systolic volume divided by end-diastolic volume. Fractional shortening is
+LVIDd minus LVIDs divided by LVIDd. Sex-specific normal lower limits for ejection fraction are 52 percent for
+men and 54 percent for women. Teichholz is dimension-derived; biplane Simpson is preferred when wall motion is
+regional.
+Worked example: LVIDd 5.0 and LVIDs 3.5 in a man give ejection fraction 57 percent and fractional shortening 30
+percent — normal.
+
+### RV Systolic Pressure / PASP (TR jet)
+Citation: Yock PG, Popp RL. Noninvasive estimation of right ventricular systolic pressure by Doppler
+ultrasound in patients with tricuspid regurgitation. Circulation. 1984;70(4):657-662. (Cross-verified against
+the ASE 2015 right-atrial-pressure estimation table and the POCUS101 right-ventricle reference; 2 or more
+sources, spec-v97.)
+Formula: right ventricular systolic pressure is four multiplied by the square of the peak tricuspid
+regurgitation velocity in metres per second, plus the right-atrial pressure; it equals the pulmonary-artery
+systolic pressure in the absence of pulmonic stenosis or right-ventricular-outflow-tract obstruction.
+Right-atrial pressure is estimated from the inferior vena cava: a small or collapsing vena cava 3, intermediate
+8, dilated or non-collapsing 15 millimetres of mercury.
+Worked example: a peak velocity of 2.8 metres per second with a right-atrial pressure of 8 gives a pressure of
+39.4 millimetres of mercury.
+
+### E/e′ (LV Filling-Pressure Estimate)
+Citation: Nagueh SF, Smiseth OA, Appleton CP, et al. Recommendations for the evaluation of left ventricular
+diastolic function by echocardiography. J Am Soc Echocardiogr. 2016;29(4):277-314. (Cross-verified against the
+ASE 2016 diastolic-function summary and the JAHA validation study PMC8649534; 2 or more sources, spec-v97.)
+Formula: the ratio of mitral-inflow early-diastolic velocity to the tissue-Doppler e-prime velocity, both in
+centimetres per second. For the average of septal and lateral e-prime, a ratio below 9 is normal, 9 to 14 is
+indeterminate, and above 14 indicates elevated left-ventricular filling pressure. Single-site cutoffs for
+elevated filling pressure are septal above 15 and lateral above 13. The average is preferred when both walls
+are sampled.
+Worked example: a mitral E of 90 and an averaged e-prime of 6 give a ratio of 15 — above 14, so elevated left
+ventricular filling pressure.
+
+## spec-v159 — neuro & spine disability classification (Subspecialty Depth program)
+
+### EDSS — Expanded Disability Status Scale
+Citation: Kurtzke JF. Rating neurologic impairment in multiple sclerosis: an expanded disability status scale
+(EDSS). Neurology. 1983;33(11):1444-1452. (Cross-verified against the Neurostatus definitions and the National
+MS Society EDSS form; 2 or more sources, spec-v97.)
+Formula: a zero-to-ten scale in half-point steps. The low range follows the eight Functional-System grades
+(pyramidal, cerebellar, brainstem, sensory, bowel and bladder, visual, cerebral, other); the four-to-nine-point-five
+range follows ambulation. Because a precise grade-to-step rating is not fully algorithmic, the tile uses the
+standard simplified Functional-System count table for the low range and the authoritative ambulation anchors
+above, reporting the higher of the two. Ambulation anchors: four points is five hundred metres without aid; six
+points is unilateral assistance for one hundred metres; six-point-five is bilateral assistance for twenty
+metres; seven points is wheelchair; eight points is restricted to bed or chair; nine points is bed-bound; ten
+is death. A definitive rating uses a trained Neurostatus assessment.
+Worked example: unilateral assistance to walk one hundred metres pins the score at six points regardless of a
+low Functional-System total.
+
+### ASIA Impairment Scale
+Citation: Kirshblum SC, Burns SP, Biering-Sorensen F, et al. International Standards for Neurological
+Classification of Spinal Cord Injury (revised 2011). J Spinal Cord Med. 2011;34(6):535-546. (Cross-verified
+against the Classifications in Brief review PMC5384910 and the SCIRE Project reference; 2 or more sources,
+spec-v97.)
+Formula: grade A is complete with no sensory or motor function in the sacral segments; grade B is sensory
+incomplete with sacral sparing but no motor function below the level; grade C is motor incomplete with fewer
+than half of the key muscles below the level at grade three or above; grade D is motor incomplete with at least
+half at grade three or above; grade E is normal in a patient with a prior documented deficit. Sacral sparing is
+the complete-versus-incomplete gate; the proportion of key muscles is the C-versus-D gate. The tile reports the
+grade from the exam findings and does not re-derive the full dermatome and myotome worksheet.
+Worked example: sacral sparing with motor function preserved below the level but fewer than half of the key
+muscles at grade three gives grade C.
+
+### mJOA — modified Japanese Orthopaedic Association score
+Citation: Benzel EC, Lancon J, Kesterson L, Hadden T. Cervical laminectomy and dentate ligament section for
+cervical spondylotic myelopathy. J Spinal Disord. 1991;4(3):286-295. (Eighteen-point form; severity bands per
+Kato and Tetreault; cross-verified against the Edge Mobility point text and the PMC8208946 validation; 2 or
+more sources, spec-v97.)
+Formula: four domains — motor upper extremity zero to five, motor lower extremity zero to seven, sensory upper
+extremity zero to three, sphincter zero to three — summed to zero to eighteen. Higher is better (eighteen is no
+dysfunction), the opposite of most scores. Severity: mild fifteen or above, moderate twelve to fourteen, severe
+eleven or below.
+Worked example: motor upper four, motor lower five, sensory two, sphincter two sum to thirteen — moderate
+cervical myelopathy.
+
+### Nurick Grade
+Citation: Nurick S. The pathogenesis of the spinal cord disorder associated with cervical spondylosis. Brain.
+1972;95(1):87-100. (Cross-verified against Physiopedia's Nurick classification and the StatPearls
+cervical-myelopathy reference; 2 or more sources, spec-v97.)
+Formula: a gait-focused zero-to-five ordinal scale — zero root signs with no cord involvement; one cord signs
+with normal gait; two mild gait difficulty, fully employed; three gait difficulty preventing employment; four
+walks only with assistance; five chairbound or bedridden.
+Worked example: gait difficulty that prevents full-time employment but still allows unaided walking is grade
+three.
+
+## spec-v160 — rheumatology activity & SLE classification (Subspecialty Depth program)
+
+### RAPID3 — Routine Assessment of Patient Index Data 3
+Citation: Pincus T, Swearingen CJ, Bergman M, Yazici Y. RAPID3, an index of physical function, pain, and
+global status as vital signs, compared to ACR20 and DAS28. Bull NYU Hosp Jt Dis. 2009;67(2):211-225. (Scale
+form Pincus, J Rheumatol 2008;35(11):2136-2147; cross-verified against The Rheumatologist MDHAQ review; 2 or
+more sources, spec-v97.)
+Formula: three patient-reported components, each on a zero-to-ten scale — physical function from the ten-item
+MDHAQ (each item zero to three, summed zero to thirty, then divided by three), pain, and patient global —
+summed to a zero-to-thirty index. Categories: near-remission at or below three, low three-point-one to six,
+moderate six-point-one to twelve, high above twelve.
+Worked example: a function sum of eighteen (so six after dividing by three) plus pain four plus global five is
+fifteen — high severity.
+
+### DAPSA — Disease Activity in Psoriatic Arthritis
+Citation: Schoels MM, Aletaha D, Alasti F, Smolen JS. Disease activity in psoriatic arthritis (DAPSA):
+defining remission and treatment success. Ann Rheum Dis. 2016;75(5):811-818. (Cutoffs Schoels 2010;
+cross-verified against the Q-DAPSA validation and Medscape psoriatic-arthritis cutoffs; 2 or more sources,
+spec-v97.)
+Formula: the sixty-eight-joint tender count plus the sixty-six-joint swollen count plus patient global on a
+zero-to-ten scale plus pain on a zero-to-ten scale plus C-reactive protein in milligrams per decilitre. The
+protein is in milligrams per decilitre, not milligrams per litre — a per-litre value would inflate the index
+roughly tenfold. Cutoffs: remission at or below four, low five to fourteen, moderate fifteen to twenty-eight,
+high above twenty-eight.
+Worked example: tender five, swollen three, global four, pain four, protein one-point-two give an index of
+seventeen-point-two — moderate disease activity.
+
+### SLICC 2012 SLE Classification Criteria
+Citation: Petri M, Orbai AM, Alarcon GS, et al. Derivation and validation of the Systemic Lupus International
+Collaborating Clinics classification criteria for systemic lupus erythematosus. Arthritis Rheum.
+2012;64(8):2677-2686. (Cross-verified against MDCalc and the Frontiers in Immunology 2022 review; 2 or more
+sources, spec-v97.)
+Formula: eleven clinical and six immunologic criteria. The patient is classified as having lupus when at least
+four criteria are met with at least one clinical and at least one immunologic, or when biopsy-proven lupus
+nephritis is present together with a positive antinuclear or anti-double-stranded-DNA antibody (the shortcut
+pathway, which can classify with fewer than four total criteria).
+Worked example: three clinical criteria plus one immunologic criterion meets the count pathway.
+
+### 2019 EULAR/ACR SLE Classification Criteria
+Citation: Aringer M, Costenbader K, Daikh D, et al. 2019 European League Against Rheumatism / American College
+of Rheumatology classification criteria for systemic lupus erythematosus. Arthritis Rheumatol.
+2019;71(9):1400-1412. (Every weight cross-verified against the Merck Manual professional table and the Aringer
+full text; 2 or more sources, spec-v97; zero discrepancies. The issuing societies are spelled out so the
+machine-read citation does not force a staleness row.)
+Formula: a positive antinuclear antibody at one-to-eighty or higher, ever, is a hard entry gate. Across seven
+clinical and three immunologic domains, only the single highest-weighted item per domain counts. The patient
+is classified as having lupus when the entry criterion is met, the weighted total is at least ten, and at least
+one clinical criterion is present. Weights: fever two; leukopenia three, thrombocytopenia four, autoimmune
+hemolysis four; delirium two, psychosis three, seizure five; non-scarring alopecia two, oral ulcers two,
+subacute cutaneous or discoid four, acute cutaneous six; serous effusion five, acute pericarditis six; joint
+involvement six; proteinuria four, renal biopsy class two or five is eight, renal biopsy class three or four is
+ten; antiphospholipid antibodies two; low C3 or C4 three, low C3 and C4 four; anti-double-stranded-DNA or
+anti-Smith antibody six.
+Worked example: the entry criterion plus joint involvement (six) plus an anti-double-stranded-DNA antibody
+(six) gives a weighted total of twelve, which classifies.
+
+## spec-v161 — endocrine, metabolic & nutrition-support math (Subspecialty Depth program)
+
+### Aldosterone-Renin Ratio (primary-aldosteronism screen)
+Citation: Funder JW, Carey RM, Mantero F, et al. The management of primary aldosteronism: case detection,
+diagnosis, and treatment — an Endocrine Society clinical practice guideline. J Clin Endocrinol Metab.
+2016;101(5):1889-1916. (Cross-verified against the aldosterone-to-renin meta-analysis and ARUP Consult; 2 or
+more sources, spec-v97. The Endocrine Society is not in the machine-read issuer pattern, so no staleness row is
+forced.)
+Formula: the ratio of plasma aldosterone concentration in nanograms per decilitre to renin. Renin is reported
+either as plasma renin activity in nanograms per millilitre per hour or as a direct renin concentration in
+milli-international units per litre. The screening cutoff differs by renin unit and is never compared across
+unit systems: with plasma renin activity the cutoff is roughly twenty to forty (a representative thirty) with
+aldosterone at or above fifteen nanograms per decilitre, and with direct renin concentration the cutoff is
+about three-point-seven. A positive screen warrants confirmatory testing, not a diagnosis.
+Worked example: aldosterone twenty-two divided by a plasma renin activity of zero-point-five gives a ratio of
+forty-four, which with adequate aldosterone is a positive screen.
+
+### Calcium-Phosphate Product (CKD-MBD)
+Citation: Kidney Disease: Improving Global Outcomes (KDIGO) CKD-MBD Work Group. KDIGO clinical practice
+guideline for CKD-MBD. Kidney Int Suppl. 2009;(113):S1-130 (updated 2017). (Historical target from KDOQI 2003;
+cross-verified against the KDIGO 2017 summary and the KDOQI targets review; 2 or more sources, spec-v97. KDIGO
+matches the issuer pattern, so a documentation-only staleness row is recorded.)
+Formula: serum calcium in milligrams per decilitre multiplied by serum phosphate in milligrams per decilitre,
+in squared milligrams per squared decilitre. A product above fifty-five was a historical caution threshold.
+Contemporary KDIGO guidance favors tracking calcium and phosphate individually over the product, so the product
+is context rather than a target. SI conversion: calcium milligrams per decilitre equals millimoles per litre
+times four-point-zero-zero-eight; phosphate equals millimoles per litre times three-point-zero-nine-seven.
+Worked example: calcium nine-point-five times phosphate six-point-zero gives fifty-seven, above the historical
+fifty-five caution threshold.
+
+### Free Thyroxine Index (FTI / T7)
+Citation: Clark F, Horn DB. Assessment of thyroid function by the combined use of the serum protein-bound
+iodine and resin uptake of triiodothyronine. J Clin Endocrinol Metab. 1965;25(1):39-45. (Cross-verified
+against the ScienceDirect Free Thyroxine Index overview and the LOINC FTI-variants brief; 2 or more sources,
+spec-v97.)
+Formula: total thyroxine multiplied by the ratio of the patient's T3-resin uptake percentage to the
+reference-mean T3-resin uptake percentage, the latter defaulting to thirty percent (normal uptake is about
+twenty-five to thirty-five percent). The index corrects total thyroxine for thyroid-binding-globulin changes:
+pregnancy and estrogen raise the binding globulin and total thyroxine, but the index stays normal. It is a
+legacy measure used where a direct free-thyroxine immunoassay is unavailable.
+Worked example: total thyroxine twelve times the ratio of a twenty-five percent uptake to a thirty percent
+reference gives an index of ten.
+
+### Nitrogen Balance (nutrition support)
+Citation: American Society for Parenteral and Enteral Nutrition (ASPEN) nutrition-support core curriculum.
+(Cross-verified against the Practical Gastroenterology nitrogen-balance review and the Harvard MEEI
+nitrogen-balance reference; 2 or more sources, spec-v97.)
+Formula: the twenty-four-hour protein intake in grams divided by six-point-two-five, minus the sum of the
+twenty-four-hour urine urea nitrogen in grams and an insensible-loss constant defaulting to four grams per day.
+The six-point-two-five factor reflects protein being about sixteen percent nitrogen, so that amount of protein
+carries one gram of nitrogen. A positive balance is anabolic, a negative balance catabolic. The calculation
+needs a complete twenty-four-hour urine collection and is unreliable in significant renal impairment.
+Worked example: a protein intake of one hundred grams (sixteen grams of nitrogen) minus a urine urea nitrogen
+of eight plus an insensible four gives a balance of plus four grams per day, which is anabolic.

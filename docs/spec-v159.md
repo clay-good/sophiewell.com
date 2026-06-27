@@ -1,6 +1,6 @@
 # spec-v159.md — Neuro & spine disability classification: EDSS, ASIA Impairment Scale, mJOA, and Nurick (+4 tiles)
 
-> Status: **PROPOSED (2026-06-23).** Feature spec of the
+> Status: **SHIPPED (2026-06-26).** (was PROPOSED 2026-06-23.) Feature spec of the
 > [spec-v157](spec-v157.md) **Subspecialty Depth** program. Adds **4**
 > deterministic neurological/spinal disability classification instruments that
 > fill a confirmed gap — the catalog has acute stroke/SAH/ICH scores and `mrs`

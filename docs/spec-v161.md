@@ -1,6 +1,6 @@
 # spec-v161.md — Endocrine, metabolic & nutrition-support math: Aldosterone-Renin Ratio, calcium-phosphate product, free thyroxine index, and nitrogen balance (+4 tiles)
 
-> Status: **PROPOSED (2026-06-23).** **Closing spec** of the
+> Status: **SHIPPED (2026-06-26).** (was PROPOSED 2026-06-23.) **Closing spec** of the
 > [spec-v157](spec-v157.md) **Subspecialty Depth** program. Adds **4**
 > deterministic endocrine/metabolic/nutrition-support computes that fill confirmed
 > gaps — the primary-aldosteronism screening ratio, the CKD-MBD calcium-phosphate
