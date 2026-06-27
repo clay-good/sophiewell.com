@@ -158,6 +158,11 @@ import * as echoV158 from '../../lib/echo-v158.js';
 import * as neuroDisabilityV159 from '../../lib/neuro-disability-v159.js';
 import * as rheumV160 from '../../lib/rheum-v160.js';
 import * as endoMetabV161 from '../../lib/endo-metab-v161.js';
+import * as ebmV163 from '../../lib/ebm-v163.js';
+import * as ophthoV164 from '../../lib/ophtho-v164.js';
+import * as radiologyV165 from '../../lib/radiology-v165.js';
+import * as pkV166 from '../../lib/pk-v166.js';
+import * as oneformulaV167 from '../../lib/oneformula-v167.js';
 
 const MODULES = {
   'clinical.js': clinical,
@@ -260,6 +265,11 @@ const MODULES = {
   'neuro-disability-v159.js': neuroDisabilityV159,
   'rheum-v160.js': rheumV160,
   'endo-metab-v161.js': endoMetabV161,
+  'ebm-v163.js': ebmV163,
+  'ophtho-v164.js': ophthoV164,
+  'radiology-v165.js': radiologyV165,
+  'pk-v166.js': pkV166,
+  'oneformula-v167.js': oneformulaV167,
 };
 
 const MATRIX = [0, -1, 1e9, NaN, Infinity, -Infinity, '', undefined, null];

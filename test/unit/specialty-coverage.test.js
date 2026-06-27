@@ -15,11 +15,12 @@ import { META } from '../../lib/meta.js';
 // The closed specialty vocabulary (spec-v11 §4.3). A new specialty must be
 // added here deliberately -- this is the enforcement point that was missing.
 const ALLOWED_SPECIALTIES = new Set([
-  'addiction-medicine', 'anesthesia', 'anesthesiology', 'blood-bank', 'burn',
-  'cardiac-surgery', 'cardiology', 'case-management', 'critical-care',
+  'addiction-medicine', 'anesthesia', 'anesthesiology', 'audiology', 'blood-bank', 'burn',
+  'cardiac-surgery', 'cardiology', 'case-management', 'clinical-epidemiology', 'critical-care',
   'dermatology', 'dialysis-nursing', 'diabetes-education', 'echocardiography', 'emergency-medicine', 'ems',
   'endocrinology', 'family-medicine', 'gastroenterology', 'geriatrics',
-  'headache', 'interventional-radiology',
+  'headache', 'interventional-radiology', 'medical-physics',
+  'ophthalmology', 'optometry', 'radiology',
   'hematology', 'hepatology', 'infectious-disease', 'internal-medicine',
   'maternal-fetal-medicine', 'movement-disorders', 'neonatology', 'nephrology', 'neurocritical-care',
   'neurology', 'otolaryngology',

@@ -4408,3 +4408,93 @@ carries one gram of nitrogen. A positive balance is anabolic, a negative balance
 needs a complete twenty-four-hour urine collection and is unreliable in significant renal impairment.
 Worked example: a protein intake of one hundred grams (sixteen grams of nitrogen) minus a urine urea nitrogen
 of eight plus an insensible four gives a balance of plus four grams per day, which is anabolic.
+
+### Fagan Post-Test Probability (likelihood ratio)
+Citation: Fagan TJ. Nomogram for Bayes theorem. N Engl J Med. 1975;293(5):257. (Cross-verified against standard evidence-based-medicine texts and the odds-form derivation; 2 or more sources, spec-v97.)
+Formula: Pre-test odds equal the pre-test probability divided by one minus that probability; post-test odds equal the pre-test odds multiplied by the likelihood ratio; the post-test probability is the post-test odds divided by one plus the post-test odds. It is computed in odds space so that extreme pre-test probabilities with a large likelihood ratio cannot leak a non-finite value. Entering sensitivity and specificity instead derives the positive likelihood ratio as sensitivity over one minus specificity and the negative as one minus sensitivity over specificity.
+Worked example: A pre-test probability of twenty percent with a positive likelihood ratio of ten gives a post-test probability of about seventy-one percent.
+
+### Diagnostic Test 2x2 (sensitivity, specificity, predictive values, likelihood ratios)
+Citation: Altman DG, Bland JM. Diagnostic tests 1: sensitivity and specificity; 2: predictive values. BMJ. 1994;308:1552; 309:102. (Cross-verified against standard biostatistics references; 2 or more sources, spec-v97.)
+Formula: From the four cells of a two-by-two table: sensitivity is true positives over diseased, specificity is true negatives over non-diseased, positive predictive value is true positives over test-positives, negative predictive value is true negatives over test-negatives, and the likelihood ratios follow from sensitivity and specificity. The sample predictive values reflect the study prevalence; an optional target prevalence recomputes them by Bayes so they are not assumed to transfer to a different population.
+Worked example: Ninety true positives, ten false positives, ten false negatives, and ninety true negatives give a sensitivity and specificity of ninety percent each and a positive likelihood ratio of nine; at a target prevalence of five percent the positive predictive value recomputes to about thirty-two percent.
+
+### Number Needed to Treat / Absolute Risk Reduction
+Citation: Laupacis A, Sackett DL, Roberts RS. An assessment of clinically useful measures of the consequences of treatment. N Engl J Med. 1988;318(26):1728-1733. (Cross-verified against standard evidence-based-medicine references; 2 or more sources, spec-v97.)
+Formula: Absolute risk reduction is the control event rate minus the experimental event rate; relative risk reduction is the absolute risk reduction over the control rate; relative risk is the experimental over the control rate; the number needed to treat is the reciprocal of the absolute risk reduction, rounded up to whole patients. When the experimental rate exceeds the control rate the result is a number needed to harm, and an absolute risk reduction of zero is reported as no measurable difference.
+Worked example: A control event rate of twenty percent and an experimental rate of fifteen percent give an absolute risk reduction of five percent and a number needed to treat of twenty.
+
+### IOL Power (SRK II)
+Citation: Sanders DR, Retzlaff J, Kraff MC. Comparison of the SRK II formula and other second-generation formulas. J Cataract Refract Surg. 1988;14(2):136-141. (Base coefficients and the axial-length adjustment cross-verified against StatPearls, the American Academy of Ophthalmology, and Wikipedia; 2 or more sources, spec-v97.)
+Formula: The intraocular-lens power equals the adjusted A-constant minus nine-tenths of the average keratometry minus two and one-half times the axial length. The A-constant is adjusted for axial length: plus three below twenty millimetres, plus two from twenty to twenty-one, plus one from twenty-one to twenty-two, zero from twenty-two to twenty-four and a half, and minus one-half at or above twenty-four and a half. A regression formula superseded by optical formulas; it does not replace device biometry.
+Worked example: An A-constant of one hundred eighteen and four-tenths with an axial length of twenty-three and a half millimetres and average keratometry of forty-four dioptres gives an emmetropic power of about twenty dioptres.
+
+### Visual Acuity Converter (Snellen / logMAR / decimal)
+Citation: Holladay JT. Visual acuity measurements. J Cataract Refract Surg. 2004;30(2):287-290. (Cross-verified against standard optometric references; 2 or more sources, spec-v97.)
+Formula: The logMAR value is the base-ten logarithm of the Snellen denominator over twenty, equivalently the negative base-ten logarithm of the decimal acuity; the decimal acuity is twenty over the denominator. The imperial twenty-over and metric six-over notations express the same ratio. Normal acuity of twenty-over-twenty is a decimal of one and a logMAR of zero.
+Worked example: Snellen twenty-over-forty equals a decimal of one-half and a logMAR of three-tenths, the same as metric six-over-twelve.
+
+### Ocular Perfusion Pressure (OPP)
+Citation: Costa VP, Harris A, Anderson D, et al. Ocular perfusion pressure in glaucoma. Acta Ophthalmol. 2014;92(4):e252-266. (Cross-verified against glaucoma-physiology references; 2 or more sources, spec-v97.)
+Formula: The mean arterial pressure is the diastolic pressure plus one-third of the pulse pressure; the mean ocular perfusion pressure is two-thirds of the mean arterial pressure minus the intraocular pressure; the systolic and diastolic ocular perfusion pressures are the respective blood pressures minus the intraocular pressure. A low mean value is one of several vascular associations with glaucoma risk.
+Worked example: A blood pressure of one-twenty over eighty with an intraocular pressure of fifteen gives a mean ocular perfusion pressure of about forty-seven, which is low.
+
+### ACR TI-RADS (Thyroid Nodule)
+Citation: Tessler FN, Middleton WD, Grant EG, et al. ACR Thyroid Imaging, Reporting and Data System. J Am Coll Radiol. 2017;14(5):587-595. (Point table, level bands, and biopsy size rules cross-verified against the Radiology Assistant TI-RADS guide and the RSNA User Guide; 2 or more sources, spec-v97.)
+Formula: Points sum across composition, echogenicity, shape, margin, and echogenic foci, where the foci points are additive rather than a maximum. A total of zero is level one, one to two is level two, three is level three, four to six is level four, and seven or more is level five. The biopsy and follow-up size thresholds fall as the level rises.
+Worked example: A solid, very hypoechoic nodule with punctate echogenic foci scores eight points, placing it at the highest level, and a maximum diameter of one and a half centimetres meets the biopsy threshold.
+
+### Adrenal CT Washout (adenoma vs non-adenoma)
+Citation: Caoili EM, Korobkin M, Francis IR, et al. Adrenal masses: characterization with combined unenhanced and delayed enhanced CT. Radiology. 2002;222(3):629-633. (Cross-verified against standard adrenal-imaging references; 2 or more sources, spec-v97.)
+Formula: The absolute washout is the enhanced minus delayed attenuation over the enhanced minus unenhanced attenuation, as a percentage; sixty percent or more indicates a lipid-poor adenoma. The relative washout is the enhanced minus delayed over the enhanced attenuation; forty percent or more indicates an adenoma when no unenhanced scan is available. An unenhanced attenuation of ten Hounsfield units or less already indicates a lipid-rich adenoma.
+Worked example: Enhanced eighty, delayed thirty-five, and unenhanced fifteen Hounsfield units give an absolute washout of about sixty-nine percent, a lipid-poor adenoma.
+
+### Bosniak Classification (renal cyst, 2019)
+Citation: Silverman SG, Pedrosa I, Ellis JH, et al. Bosniak classification of cystic renal masses, version 2019. Radiology. 2019;292(2):475-488. (Cross-verified against the Radiology Assistant Bosniak-2019 page and a peer-reviewed update; 2 or more sources, spec-v97.)
+Formula: The class is set by the most significant feature: an enhancing nodule gives class four; thick wall or septa or a small obtuse protrusion gives class three; minimal three-millimetre thickening or four or more thin enhancing septa gives class two-F; one to three thin septa or any calcification gives class two; and a thin smooth wall gives class one. Calcification never upgrades the class in the 2019 version.
+Worked example: A thick enhancing wall places a cystic renal mass at class three, with an approximate malignancy likelihood of one-half.
+
+### CT Effective Dose (DLP times k)
+Citation: AAPM Report 96 / EUR 16262 conversion coefficients. (Adult region factors cross-verified across two independent CT-dose references citing AAPM Report 96; 2 or more sources, spec-v97.)
+Formula: The effective dose in millisieverts is the dose-length product in milligray-centimetres multiplied by a region conversion factor. The adult factors are about two-thousandths for head, three-thousandths for head and neck, six-thousandths for neck, fourteen-thousandths for chest, and fifteen-thousandths for abdomen and for pelvis. It is a population estimate, not patient-specific organ dosimetry.
+Worked example: A chest study with a dose-length product of four hundred milligray-centimetres gives an effective dose of about five and six-tenths millisieverts.
+
+### Pharmacokinetics Suite (loading / maintenance / half-life)
+Citation: Rowland M, Tozer TN. Clinical Pharmacokinetics and Pharmacodynamics. 4th ed. (First-order relations cross-verified against standard pharmacokinetic references; 2 or more sources, spec-v97.)
+Formula: The loading dose is the volume of distribution times the target concentration over bioavailability; the maintenance dose per interval is clearance times the steady-state concentration times the interval over bioavailability; the elimination rate constant is clearance over volume of distribution; the half-life is point-six-nine-three times volume over clearance; the time to steady state is about five half-lives. Each relation is computed only when its inputs are supplied.
+Worked example: A volume of distribution of fifty litres and a clearance of five litres per hour give a half-life of about seven hours and a time to steady state of about thirty-five hours.
+
+### Antipsychotic Chlorpromazine Equivalents
+Citation: Woods SW. Chlorpromazine equivalent doses for the newer atypical antipsychotics. J Clin Psychiatry. 2003;64(6):663-667. (Each agent factor confirmed across the Woods abstract, the chlorpromazineR package encoding, and the Andreasen comparison; 2 or more sources, spec-v97.)
+Formula: The chlorpromazine-equivalent dose is the daily dose times one hundred over the agent factor, where the factor is the daily milligram dose equivalent to one hundred milligrams of chlorpromazine: chlorpromazine one hundred, haloperidol two, risperidone two, olanzapine five, quetiapine seventy-five, ziprasidone sixty, aripiprazole seven and a half. Equivalence methods differ, so the method is named and the result is an approximation.
+Worked example: Haloperidol ten milligrams per day is approximately five hundred milligrams of chlorpromazine equivalent.
+
+### Mean Airway Pressure (Pmaw)
+Citation: Marini JJ, Ravenscraft SA. Mean airway pressure: physiologic determinants and clinical importance. Crit Care Med. 1992;20(11):1604-1616. (Cross-verified against standard mechanical-ventilation references; 2 or more sources, spec-v97.)
+Formula: The mean airway pressure is the peak inspiratory pressure times the inspiratory time plus the positive end-expiratory pressure times the expiratory time, divided by the sum of the two times. It is the square-wave approximation and is a determinant of oxygenation that feeds the oxygenation index.
+Worked example: A peak pressure of thirty, end-expiratory pressure of five, inspiratory time of one second, and expiratory time of two seconds give a mean airway pressure of about thirteen.
+
+### Cerebroplacental Ratio (CPR)
+Citation: Gramellini D, Folli MC, Raboni S, et al. Cerebral-umbilical Doppler ratio as a predictor of adverse perinatal outcome. Obstet Gynecol. 1992;79(3):416-420. (Cross-verified against fetal-Doppler references; 2 or more sources, spec-v97.)
+Formula: The cerebroplacental ratio is the middle-cerebral-artery pulsatility index over the umbilical-artery pulsatility index. A ratio below one, or below the gestational-age centile, indicates cerebral redistribution, or brain-sparing, and is associated with adverse perinatal outcome.
+Worked example: A middle-cerebral-artery index of one and two-tenths over an umbilical index of one and one-half gives a ratio of eight-tenths, indicating redistribution.
+
+### Toe-Brachial Index (TBI)
+Citation: Aboyans V, Criqui MH, Abraham P, et al. Measurement and interpretation of the ankle-brachial index. Circulation. 2012;126(24):2890-2909. (Cross-verified against vascular-medicine references; 2 or more sources, spec-v97.)
+Formula: The toe-brachial index is the toe systolic pressure over the higher brachial systolic pressure. A value below seven-tenths is abnormal and supports peripheral arterial disease; it is the test of choice when the ankle-brachial index is non-compressible above one and four-tenths.
+Worked example: A toe pressure of fifty over a brachial pressure of one-twenty gives an index of about four-tenths, which is abnormal.
+
+### Stool Osmotic Gap
+Citation: Eherer AJ, Fordtran JS. Fecal osmotic gap and pH in experimental diarrhea of various causes. Gastroenterology. 1992;103(2):545-551. (Cross-verified against standard gastroenterology references; 2 or more sources, spec-v97.)
+Formula: The stool osmotic gap is two hundred ninety minus twice the sum of stool sodium and potassium, using a fixed fecal osmolality of two hundred ninety milliosmoles per kilogram. A gap above one hundred indicates osmotic diarrhea, below fifty secretory, and in between indeterminate.
+Worked example: A stool sodium of thirty and potassium of fifteen give a gap of two hundred, indicating osmotic diarrhea.
+
+### Pure Tone Average (PTA)
+Citation: Standard four-frequency pure-tone average (AAO-HNS / ASHA hearing-loss grading). (Severity bands cross-verified across audiometric references; 2 or more sources, spec-v97.)
+Formula: The three-frequency average is the mean of the air-conduction thresholds at five hundred, one thousand, and two thousand hertz; the four-frequency average adds four thousand hertz. Severity in decibels of hearing level is normal at twenty-five or less, mild to forty, moderate to fifty-five, moderately severe to seventy, severe to ninety, and profound above ninety.
+Worked example: Thresholds of forty, forty-five, fifty, and sixty-five give a four-frequency average of fifty, a moderate hearing loss.
+
+### Rutgeerts Score (post-op Crohn endoscopic recurrence)
+Citation: Rutgeerts P, Geboes K, Vantrappen G, et al. Predictability of the postoperative course of Crohn disease. Gastroenterology. 1990;99(4):956-963. (Grade definitions and the recurrence threshold cross-verified against IBD-endoscopy references; 2 or more sources, spec-v97.)
+Formula: The neoterminal-ileum endoscopic grade runs from i-zero, no lesions, through i-one, five or fewer aphthous lesions, i-two, more than five aphthous lesions with normal mucosa between or lesions confined to the anastomosis, i-three, diffuse aphthous ileitis, to i-four, diffuse inflammation with large ulcers, nodules, or stenosis. A grade of i-two or higher predicts clinical recurrence.
+Worked example: A grade of i-two predicts clinical recurrence, whereas i-one is low risk.

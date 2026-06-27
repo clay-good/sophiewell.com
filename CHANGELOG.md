@@ -6,6 +6,61 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v162 Cross-Discipline Completion program: v163–v167, +18 — EBM bedside math, ophthalmology, radiology classification, pharmacokinetics & one-formula gaps; 717 → 735)
+
+- **The spec-v162 Cross-Discipline Completion program ships its five feature specs
+  (717 → 735, +18).** This third pass reaches the deterministic, free tools a
+  clinician uses that a calculator catalog rarely indexes — the disciplines
+  outside the usual "clinical score" framing. Every formula, point table, and
+  threshold was re-fetched and cross-verified against ≥ 2 independent sources at
+  implementation (spec-v97); all five modules are covered by the spec-v59 fuzz
+  harness with zero non-finite leaks. Six specialty tags were added to the closed
+  vocabulary (`clinical-epidemiology`, `ophthalmology`, `optometry`, `radiology`,
+  `medical-physics`, `audiology`). None of the 18 trips the `check-citations`
+  issuer pattern, so every tile is **Class A**. (Actual delta is +18, not the
+  nominal +19 — `lithium-maintenance` was deferred at implementation because the
+  Cooper 1973 band table cannot be cross-verified to two independent sources;
+  parked with `crib-ii` / `gail-bcrat`.)
+- **spec-v163 — EBM bedside math (+3, Group E).** `lib/ebm-v163.js` +
+  `views/group-v163.js` (`RV163`). All **Class A**.
+  - `fagan-post-test` — Fagan post-test probability from a pre-test probability
+    and a likelihood ratio (or sens/spec), computed in **odds space** so p→0/1
+    with a large LR cannot leak a non-finite value.
+  - `diagnostic-2x2` — sensitivity/specificity/PPV/NPV/accuracy/LR± from a 2×2
+    table, with optional Bayes PPV/NPV at a user-supplied target prevalence.
+  - `nnt-arr` — ARR/RRR/relative risk and NNT, with the NNH sign-flip when the
+    experimental event rate exceeds control (harm never reported as benefit) and
+    ARR = 0 surfaced as "no measurable difference".
+- **spec-v164 — ophthalmology (+3, Group E).** `lib/ophtho-v164.js` +
+  `views/group-v164.js` (`RV164`). All **Class A**.
+  - `iol-power` — SRK II IOL power with the axial-length A-constant band table;
+    the refraction correction ships the documented single 1.25 factor with an
+    explicit caveat (the per-power breakpoint is not uniformly published).
+  - `visual-acuity-converter` — Snellen (20/x and 6/x) ↔ decimal ↔ logMAR.
+  - `ocular-perfusion-pressure` — mean/systolic/diastolic OPP from BP and IOP.
+- **spec-v165 — radiology classification & quantification (+4, Groups G/E).**
+  `lib/radiology-v165.js` + `views/group-v165.js` (`RV165`). All **Class A** (ACR,
+  AAPM, ICRP are not in the issuer pattern).
+  - `acr-tirads` — TI-RADS points → TR level + FNA/follow size rule; echogenic
+    foci are **additive, not max**.
+  - `adrenal-ct-washout` — absolute and relative washout (adenoma vs non-adenoma).
+  - `bosniak` — Bosniak 2019 renal-cyst class I/II/IIF/III/IV (calcification never
+    upgrades class in v2019).
+  - `ct-effective-dose` — effective dose = DLP × region k (AAPM Report 96).
+- **spec-v166 — pharmacokinetics & psych dosing (+2, Group F).** `lib/pk-v166.js`
+  + `views/group-v166.js` (`RV166`). All **Class A**.
+  - `pk-suite` — loading/maintenance dose, k, half-life, time to steady state
+    (first-order relations), each computed only from the inputs supplied.
+  - `chlorpromazine-equivalents` — antipsychotic CPZ-equivalent dose (Woods 2003
+    anchor, 7 agents; method named). `lithium-maintenance` **deferred** (spec-v97).
+- **spec-v167 — one-formula subspecialty gaps (+6, Groups E/G).**
+  `lib/oneformula-v167.js` + `views/group-v167.js` (`RV167`). All **Class A**.
+  - `mean-airway-pressure`, `cerebroplacental-ratio`, `toe-brachial-index`,
+    `stool-osmotic-gap`, `pure-tone-average` (Group E); `rutgeerts` (Group G).
+  - Each fills a single named hole (ventilation, fetal Doppler, vascular, GI,
+    audiology, IBD endoscopy); every division is guarded and `rutgeerts` resolves
+    every finding to one i-grade.
+
 ### Added (spec-v157 Subspecialty Depth program: v158–v161, +17 — echocardiography, neuro/spine disability, rheumatology PRO & SLE, endocrine/metabolic math; 700 → 717)
 
 - **The spec-v157 Subspecialty Depth program ships its four feature specs (700 →

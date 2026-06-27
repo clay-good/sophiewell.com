@@ -88,6 +88,11 @@ import { renderers as RV158 } from './views/group-v158.js';
 import { renderers as RV159 } from './views/group-v159.js';
 import { renderers as RV160 } from './views/group-v160.js';
 import { renderers as RV161 } from './views/group-v161.js';
+import { renderers as RV163 } from './views/group-v163.js';
+import { renderers as RV164 } from './views/group-v164.js';
+import { renderers as RV165 } from './views/group-v165.js';
+import { renderers as RV166 } from './views/group-v166.js';
+import { renderers as RV167 } from './views/group-v167.js';
 import { renderers as RV149 } from './views/group-v149.js';
 import { renderers as RV63 } from './views/group-v63.js';
 import { renderers as RB } from './views/group-b.js';
@@ -107,7 +112,7 @@ import { resolvePrompt } from './lib/prompt.js';
 // artifact-detect / artifact-route / artifact-handoff helpers were
 // deleted in spec-v29 wave 29-2 (Group C/L).
 
-const RENDERERS = { ...RA, ...RB, ...RC, ...RE, ...RF, ...RG, ...RH, ...RI, ...RJ, ...RKLMNO, ...RV5, ...RV6, ...RV7, ...RV8, ...RV9, ...RV10, ...RV11, ...RV12, ...RV13, ...RV14, ...RV15, ...RV16, ...RV17, ...RV18, ...RV19, ...RV20, ...RV21, ...RV22, ...RV23, ...RV24, ...RV25, ...RV26, ...RV27, ...RV28, ...RV29, ...RV30, ...RV31, ...RV32, ...RV33, ...RV34, ...RV35, ...RV36, ...RV37, ...RV38, ...RV39, ...RV40, ...RV117, ...RV118, ...RV119, ...RV120, ...RV121, ...RV122, ...RV123, ...RV124, ...RV125, ...RV126, ...RV127, ...RV128, ...RV129, ...RV130, ...RV131, ...RV132, ...RV133, ...RV134, ...RV135, ...RV136, ...RV137, ...RV138, ...RV139, ...RV140, ...RV141, ...RV142, ...RV143, ...RV144, ...RV145, ...RV146, ...RV147, ...RV148, ...RV149, ...RV151, ...RV152, ...RV153, ...RV154, ...RV155, ...RV156, ...RV158, ...RV159, ...RV160, ...RV161, ...RV63, ...RPALINT };
+const RENDERERS = { ...RA, ...RB, ...RC, ...RE, ...RF, ...RG, ...RH, ...RI, ...RJ, ...RKLMNO, ...RV5, ...RV6, ...RV7, ...RV8, ...RV9, ...RV10, ...RV11, ...RV12, ...RV13, ...RV14, ...RV15, ...RV16, ...RV17, ...RV18, ...RV19, ...RV20, ...RV21, ...RV22, ...RV23, ...RV24, ...RV25, ...RV26, ...RV27, ...RV28, ...RV29, ...RV30, ...RV31, ...RV32, ...RV33, ...RV34, ...RV35, ...RV36, ...RV37, ...RV38, ...RV39, ...RV40, ...RV117, ...RV118, ...RV119, ...RV120, ...RV121, ...RV122, ...RV123, ...RV124, ...RV125, ...RV126, ...RV127, ...RV128, ...RV129, ...RV130, ...RV131, ...RV132, ...RV133, ...RV134, ...RV135, ...RV136, ...RV137, ...RV138, ...RV139, ...RV140, ...RV141, ...RV142, ...RV143, ...RV144, ...RV145, ...RV146, ...RV147, ...RV148, ...RV149, ...RV151, ...RV152, ...RV153, ...RV154, ...RV155, ...RV156, ...RV158, ...RV159, ...RV160, ...RV161, ...RV163, ...RV164, ...RV165, ...RV166, ...RV167, ...RV63, ...RPALINT };
 
 // ----- Utility registry ----------------------------------------------------
 // Source of truth for routes, names, group, audiences, and clinical flag.
@@ -915,6 +920,69 @@ const UTILITIES = [
   { id: 'calcium-phosphate-product', name: 'Calcium-Phosphate Product (CKD-MBD)',          group: 'E', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'free-thyroxine-index',   name: 'Free Thyroxine Index (FTI / T7)',                  group: 'E', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'nitrogen-balance',       name: 'Nitrogen Balance (nutrition support)',             group: 'F', audiences: ['clinicians', 'educators'], clinical: true },
+
+  // spec-v163 (first feature spec of the spec-v162 Cross-Discipline Completion
+  // program): three evidence-based-medicine bedside-math computes that fill a
+  // confirmed gap - the catalog cites sensitivity / likelihood-ratios but had no
+  // tool to compute post-test probability, predictive values, or NNT. Each is
+  // closed-form arithmetic over the entered values (spec-v100 §2). All Clinical
+  // Math & Conversions (Group E). views/group-v163.js, lib/ebm-v163.js (RV163).
+  // Textbook-standard formulas cross-verified to >= 2 sources (spec-v97).
+  { id: 'fagan-post-test',    name: 'Fagan Post-Test Probability (likelihood ratio)',    group: 'E', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'diagnostic-2x2',     name: 'Diagnostic Test 2×2 (sens / spec / PV / LR)',       group: 'E', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'nnt-arr',            name: 'Number Needed to Treat / Absolute Risk Reduction',  group: 'E', audiences: ['clinicians', 'educators'], clinical: true },
+
+  // spec-v164 (second feature spec of the spec-v162 program): three
+  // ophthalmology computes filling a zero-tile gap. iol-power (SRK II) and
+  // ocular-perfusion-pressure are arithmetic; visual-acuity-converter is a
+  // notation conversion. All Clinical Math & Conversions (Group E).
+  // views/group-v164.js, lib/ophtho-v164.js (RV164). Cross-verified (spec-v97);
+  // SRK II base formula + axial-length band confirmed, refraction correction
+  // ships the documented single 1.25 factor with a caveat.
+  { id: 'iol-power',                name: 'IOL Power (SRK II)',                            group: 'E', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'visual-acuity-converter',  name: 'Visual Acuity Converter (Snellen / logMAR / decimal)', group: 'E', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'ocular-perfusion-pressure', name: 'Ocular Perfusion Pressure (OPP)',              group: 'E', audiences: ['clinicians', 'educators'], clinical: true },
+
+  // spec-v165 (third feature spec of the spec-v162 program): four diagnostic-
+  // radiology classification / quantification instruments filling a zero
+  // structured-reporting gap. acr-tirads / bosniak are deterministic
+  // input->class mappings (Group G, spec-v100 §2); adrenal-ct-washout /
+  // ct-effective-dose are guarded arithmetic (Group E). views/group-v165.js,
+  // lib/radiology-v165.js (RV165). Point tables cross-verified to >= 2 sources
+  // (spec-v97); acr-tirads (ACR) and ct-effective-dose (AAPM/ICRP) cite issuers
+  // -> documentation-only citation-staleness rows.
+  { id: 'acr-tirads',         name: 'ACR TI-RADS (Thyroid Nodule)',                      group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'adrenal-ct-washout', name: 'Adrenal CT Washout (adenoma vs non-adenoma)',       group: 'E', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'bosniak',            name: 'Bosniak Classification (renal cyst, 2019)',         group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'ct-effective-dose',  name: 'CT Effective Dose (DLP × k)',                       group: 'E', audiences: ['clinicians', 'educators'], clinical: true },
+
+  // spec-v166 (fourth feature spec of the spec-v162 program): generic
+  // pharmacokinetics + the antipsychotic chlorpromazine-equivalent converter -
+  // filling the generic-PK and psych-equivalence gaps beside the live drug-
+  // specific PK and the opioid/benzo/steroid converters. Both Medication &
+  // Infusion (Group F). views/group-v166.js, lib/pk-v166.js (RV166).
+  // chlorpromazine-equivalents ships the Woods 2003 anchor table (7 agents,
+  // >= 2-source-confirmed; method named). lithium-maintenance DEFERRED: the
+  // Cooper 1973 band table is single-sourced (primary paywalled, secondary
+  // image-only) and the published equation does not cleanly reproduce it ->
+  // fails the spec-v97 >= 2-source rule (parked with crib-ii / gail-bcrat).
+  { id: 'pk-suite',                 name: 'Pharmacokinetics Suite (loading / maintenance / half-life)', group: 'F', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'chlorpromazine-equivalents', name: 'Antipsychotic Chlorpromazine Equivalents',   group: 'F', audiences: ['clinicians', 'educators'], clinical: true },
+
+  // spec-v167 (closing feature spec of the spec-v162 program): six single-
+  // formula subspecialty computes, each filling a named one-tile gap
+  // (ventilation, fetal Doppler, vascular, GI, audiology, IBD endoscopy).
+  // rutgeerts is a deterministic input->grade mapping (Group G, spec-v100 §2);
+  // the other five are guarded arithmetic (Group E). views/group-v167.js,
+  // lib/oneformula-v167.js (RV167). Cross-verified to >= 2 sources (spec-v97);
+  // toe-brachial-index (AHA) and pure-tone-average (ASHA/AAO-HNS) cite issuers
+  // -> documentation-only citation-staleness rows.
+  { id: 'mean-airway-pressure',  name: 'Mean Airway Pressure (Pₘₐw)',                     group: 'E', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'cerebroplacental-ratio', name: 'Cerebroplacental Ratio (CPR)',                   group: 'E', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'toe-brachial-index',    name: 'Toe-Brachial Index (TBI)',                        group: 'E', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'stool-osmotic-gap',     name: 'Stool Osmotic Gap',                               group: 'E', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'pure-tone-average',     name: 'Pure Tone Average (PTA)',                         group: 'E', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'rutgeerts',             name: 'Rutgeerts Score (post-op Crohn’s recurrence)',    group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
 
   // spec-v98 (Wave 2 of spec-v85): four deterministic pediatric decision rules
   // and prognostic scores that fill confirmed gaps after a full sweep of Group N

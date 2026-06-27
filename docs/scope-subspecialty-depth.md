@@ -46,6 +46,7 @@ live value, never copied as a literal.
   and `nitrogen-balance` (ASPEN nutrition support). Groups E/F, Class A;
   `calcium-phosphate-product` carries a documentation-only KDIGO staleness row. +4.
 
+<!-- catalog-truth:historical -->
 **Subspecialty Depth program COMPLETE at 717 tiles** (a net +17 from the prior close of 700). The
 program's nominal target in the [spec-v157](spec-v157.md) umbrella was +18; the
 actual delta is +17 because the draft carried a known running-count off-by-one.
