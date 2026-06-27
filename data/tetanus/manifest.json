@@ -5,10 +5,9 @@
   "agency": "CDC",
   "status": "public-domain",
   "cadence": "annual",
-  "fetchDate": "2026-05-07",
-  "offlineSeed": true,
+  "fetchDate": "2026-06-26",
+  "offlineSeed": false,
   "recordCount": 2,
-  "shardLayout": "root",
   "shards": [
     {
       "name": "tetanus.json",

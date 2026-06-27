@@ -5,8 +5,8 @@
   "agency": "NLM DailyMed / FDA",
   "status": "public-domain",
   "cadence": "quarterly",
-  "fetchDate": "2026-05-29",
-  "offlineSeed": true,
+  "fetchDate": "2026-06-26",
+  "offlineSeed": false,
   "recordCount": 10,
   "shards": [
     {

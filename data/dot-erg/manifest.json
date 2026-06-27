@@ -5,8 +5,8 @@
   "agency": "PHMSA / DOT",
   "status": "public-domain",
   "cadence": "per-edition",
-  "fetchDate": "2026-05-29",
-  "offlineSeed": true,
+  "fetchDate": "2026-06-26",
+  "offlineSeed": false,
   "recordCount": 5,
   "shards": [
     {

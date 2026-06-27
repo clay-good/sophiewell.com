@@ -5,10 +5,9 @@
   "agency": "sophiewell.com",
   "status": "mit-original",
   "cadence": "static",
-  "fetchDate": "2026-05-07",
-  "offlineSeed": true,
+  "fetchDate": "2026-06-26",
+  "offlineSeed": false,
   "recordCount": 8,
-  "shardLayout": "root",
   "shards": [
     {
       "name": "steroid.json",
