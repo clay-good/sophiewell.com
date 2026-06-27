@@ -83,6 +83,7 @@ import { renderers as RV152 } from './views/group-v152.js';
 import { renderers as RV153 } from './views/group-v153.js';
 import { renderers as RV154 } from './views/group-v154.js';
 import { renderers as RV155 } from './views/group-v155.js';
+import { renderers as RV156 } from './views/group-v156.js';
 import { renderers as RV149 } from './views/group-v149.js';
 import { renderers as RV63 } from './views/group-v63.js';
 import { renderers as RB } from './views/group-b.js';
@@ -102,7 +103,7 @@ import { resolvePrompt } from './lib/prompt.js';
 // artifact-detect / artifact-route / artifact-handoff helpers were
 // deleted in spec-v29 wave 29-2 (Group C/L).
 
-const RENDERERS = { ...RA, ...RB, ...RC, ...RE, ...RF, ...RG, ...RH, ...RI, ...RJ, ...RKLMNO, ...RV5, ...RV6, ...RV7, ...RV8, ...RV9, ...RV10, ...RV11, ...RV12, ...RV13, ...RV14, ...RV15, ...RV16, ...RV17, ...RV18, ...RV19, ...RV20, ...RV21, ...RV22, ...RV23, ...RV24, ...RV25, ...RV26, ...RV27, ...RV28, ...RV29, ...RV30, ...RV31, ...RV32, ...RV33, ...RV34, ...RV35, ...RV36, ...RV37, ...RV38, ...RV39, ...RV40, ...RV117, ...RV118, ...RV119, ...RV120, ...RV121, ...RV122, ...RV123, ...RV124, ...RV125, ...RV126, ...RV127, ...RV128, ...RV129, ...RV130, ...RV131, ...RV132, ...RV133, ...RV134, ...RV135, ...RV136, ...RV137, ...RV138, ...RV139, ...RV140, ...RV141, ...RV142, ...RV143, ...RV144, ...RV145, ...RV146, ...RV147, ...RV148, ...RV149, ...RV151, ...RV152, ...RV153, ...RV154, ...RV155, ...RV63, ...RPALINT };
+const RENDERERS = { ...RA, ...RB, ...RC, ...RE, ...RF, ...RG, ...RH, ...RI, ...RJ, ...RKLMNO, ...RV5, ...RV6, ...RV7, ...RV8, ...RV9, ...RV10, ...RV11, ...RV12, ...RV13, ...RV14, ...RV15, ...RV16, ...RV17, ...RV18, ...RV19, ...RV20, ...RV21, ...RV22, ...RV23, ...RV24, ...RV25, ...RV26, ...RV27, ...RV28, ...RV29, ...RV30, ...RV31, ...RV32, ...RV33, ...RV34, ...RV35, ...RV36, ...RV37, ...RV38, ...RV39, ...RV40, ...RV117, ...RV118, ...RV119, ...RV120, ...RV121, ...RV122, ...RV123, ...RV124, ...RV125, ...RV126, ...RV127, ...RV128, ...RV129, ...RV130, ...RV131, ...RV132, ...RV133, ...RV134, ...RV135, ...RV136, ...RV137, ...RV138, ...RV139, ...RV140, ...RV141, ...RV142, ...RV143, ...RV144, ...RV145, ...RV146, ...RV147, ...RV148, ...RV149, ...RV151, ...RV152, ...RV153, ...RV154, ...RV155, ...RV156, ...RV63, ...RPALINT };
 
 // ----- Utility registry ----------------------------------------------------
 // Source of truth for routes, names, group, audiences, and clinical flag.
@@ -844,6 +845,23 @@ const UTILITIES = [
   { id: 'forrest',            name: 'Forrest Classification (UGI bleeding stigmata)',   group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'wagner-dfu',         name: 'Wagner Diabetic Foot Ulcer Grade',                group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'university-texas-dfu', name: 'University of Texas Diabetic Foot Ulcer Class',  group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+
+  // spec-v156 (the sixth and CLOSING implementation spec of the spec-v150
+  // Post-Parity Coverage program): four tiles that complete the rheumatology
+  // patient-reported axis and the obstetric cesarean-audit standard. v147/v148
+  // shipped the physician-derived rheumatology activity scores (cdai-ra,
+  // sdai-ra, sledai-2k, asdas, ffs-2011); v156 completes the PATIENT-reported
+  // axial-SpA axis (basdai activity, basfi function) and adds the standard
+  // Sjögren systemic-activity index (essdai); robson is the WHO-endorsed
+  // cesarean-audit classifier beside meows / bishop. basdai/basfi/essdai are
+  // bounded means / weighted sums; robson is a deterministic input -> group
+  // mapping where every valid combination resolves to exactly one of the ten
+  // groups (spec-v100 §2 classification clarification). views/group-v156.js,
+  // lib/rheum-ob-v156.js (RV156). Closes the Post-Parity Coverage program.
+  { id: 'basdai',             name: 'BASDAI (Ankylosing Spondylitis Disease Activity)',  group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'basfi',              name: 'BASFI (Ankylosing Spondylitis Functional Index)',   group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'essdai',             name: 'ESSDAI (Sjögren Disease Activity Index)',           group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'robson',             name: 'Robson Ten-Group Classification (cesarean audit)',  group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
 
   // spec-v98 (Wave 2 of spec-v85): four deterministic pediatric decision rules
   // and prognostic scores that fill confirmed gaps after a full sweep of Group N

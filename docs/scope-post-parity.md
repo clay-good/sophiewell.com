@@ -65,16 +65,34 @@ live value, never copied as a literal.
   the [spec-v97](spec-v97.md) ≥ 2-source rule: its published score is a
   restricted-cubic-spline continuous nomogram with no verbatim per-variable point
   table reproducible across ≥ 2 independent sources, so it is parked with `crib-ii` /
-  `gail-bcrat` rather than approximated. +4 (not the nominal +5). The live catalog is
-  **696** deterministic tiles.
+  `gail-bcrat` rather than approximated. +4 (not the nominal +5). The catalog reached
+  **696** at the v155 close.
+- **spec-v156** — [spec-v156](spec-v156.md), the sixth and **closing** feature spec,
+  completes the rheumatology patient-reported axis and the obstetric cesarean-audit
+  standard: `basdai` (Bath AS Disease Activity Index — the patient-reported axial-SpA
+  activity index, with the morning-stiffness pair averaged), `basfi` (Bath AS
+  Functional Index — the mean of ten 0–10 items), `essdai` (EULAR Sjögren's Syndrome
+  Disease Activity Index — twelve weighted systemic domains, max 123, strata low < 5 /
+  moderate 5–13 / high ≥ 14), and `robson` (the WHO-endorsed Robson Ten-Group cesarean
+  classification — a deterministic input → group mapping asserted mutually-exclusive
+  and total). v147/v148 shipped the physician-derived rheumatology activity scores
+  (`cdai-ra`, `sdai-ra`, `sledai-2k`, `asdas`, `ffs-2011`); v156 adds the
+  patient-reported axial-SpA and Sjögren instruments still absent. All four are Group G
+  and Class A — `essdai`'s EULAR citation and `robson`'s WHO endorsement are NOT in the
+  `check-citations` issuer pattern (the spec-v156 §4 claim that EULAR trips it is
+  incorrect against the live regex; same treatment as the v147/v148 ACR/EULAR scores),
+  so no documentation-only staleness row is forced. +4. **The spec-v150 Post-Parity
+  Coverage program is now COMPLETE** (679 → 700, +21 shipped; PRECISE-DAPT the sole
+  deferral against the nominal +25). The live catalog is **700** deterministic tiles.
 
-## Program roadmap (proposed, not all shipped)
+## Program roadmap (complete)
 
-The [spec-v150](spec-v150.md) umbrella reserves the band v151–v156 for six feature
-specs (nominal +25): v151 dermatology severity (shipped), v152 nutrition & energy
-expenditure (shipped), v153 urology & men's-health PROs (shipped), v154 function/falls/palliative
-performance (shipped), v155 suite completions (shipped, +4 — PRECISE-DAPT deferred),
-v156 rheumatology PRO & obstetric classification. Each ships only after its own
-≥ 2-source re-verification; a tile
-whose published form cannot be cross-verified is deferred with the
+The [spec-v150](spec-v150.md) umbrella reserved the band v151–v156 for six feature
+specs (nominal +25): v151 dermatology severity (shipped, +4), v152 nutrition & energy
+expenditure (shipped, +5), v153 urology & men's-health PROs (shipped, +3), v154
+function/falls/palliative performance (shipped, +4), v155 suite completions (shipped,
++4 — PRECISE-DAPT deferred), v156 rheumatology PRO & obstetric classification (shipped,
++4). **All six are shipped; the program is closed at 700.** Each shipped only after its
+own ≥ 2-source re-verification; the lone tile whose published form could not be
+cross-verified (PRECISE-DAPT, a restricted-cubic-spline nomogram) was deferred with the
 [spec-v97](spec-v97.md) rationale recorded, not shipped from an approximation.

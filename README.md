@@ -5,7 +5,7 @@
 <h1 align="center">sophiewell.com</h1>
 
 <p align="center">
-  <strong>696 deterministic healthcare calculators that run entirely in your browser.</strong><br>
+  <strong>700 deterministic healthcare calculators that run entirely in your browser.</strong><br>
   Free forever. No servers, no accounts, no telemetry, no AI, no network call after first paint.
 </p>
 
@@ -36,7 +36,7 @@ output; "searchable lookup of static facts" does not qualify. See
 [docs/spec-v10.md](docs/spec-v10.md) for the audience and
 dependency-budget commitments and
 [docs/spec-v29.md](docs/spec-v29.md) for the nurse-first pivot
-and the v29 catalog ledger. At v155 close the catalog is 696
+and the v29 catalog ledger. At v156 close the catalog is 700
 deterministic tiles — every one of them computes from at least
 one user input. The catalog reached its present size on two tracks.
 **New tiles:** spec-v63 added the operations counterpart to the bedside
@@ -186,7 +186,7 @@ production security headers. Any static file server will also work.
 ## How it works and how to use it
 
 Since the spec-v29 nurse-first prune the catalog has grown one
-reviewable spec at a time to **696** deterministic calculators
+reviewable spec at a time to **700** deterministic calculators
 (the full per-version history is in [CHANGELOG.md](CHANGELOG.md)
 and `docs/spec-v*.md`; the most recent bedside additions are
 summarized in the cheat sheets below). They organize across the
@@ -1022,6 +1022,40 @@ and a > 100% total is **flagged, not silently capped**. `duke-endocarditis` (202
 Duke-ISCVID) and `refeeding-risk` (NICE CG32) are **Class B** with
 [citation-staleness](docs/citation-staleness.md) rows; the other three are
 **Class A**. See [docs/spec-v99.md](docs/spec-v99.md).
+
+### Rheumatology PRO & obstetric classification: BASDAI, BASFI, ESSDAI, Robson (spec-v156, +4 → 700) — Post-Parity Coverage program complete
+
+[spec-v156](docs/spec-v156.md) is the **sixth and closing** feature spec of the
+[Post-Parity Coverage](docs/scope-post-parity.md) program (spec-v150). v147/v148
+shipped the *physician-derived* rheumatology activity scores (`cdai-ra`,
+`sdai-ra`, `sledai-2k`, `asdas`, `ffs-2011`); v156 completes the **patient-reported**
+axial-spondyloarthritis axis (`basdai` activity, `basfi` function), adds the
+standard Sjögren systemic-activity index (`essdai`), and ships the WHO-endorsed
+**Robson Ten-Group** cesarean-audit classifier alongside `meows`/`bishop`. The
+four computes live in `lib/rheum-ob-v156.js` + `views/group-v156.js` (`RV156`),
+fuzz-covered by the spec-v59 harness, every weight and decision rule re-fetched
+and cross-verified against ≥ 2 independent sources (the spec-v97 discipline).
+
+| id | Group | Inputs | Output | Companion to |
+|---|---|---|---|---|
+| `basdai` | G | six 0–10 items (Garrett 1994) | `[Q1 + Q2 + Q3 + Q4 + (Q5 + Q6)/2] / 5`, 0–10; ≥ 4 = active disease | `basfi`, `asdas`, `das28` |
+| `basfi` | G | ten 0–10 items (Calin 1994) | the **mean** of the 10 items, 0–10 (higher = poorer function) | `basdai`, `asdas` |
+| `essdai` | G | 12 weighted domains (Seror 2010/2015) | weighted **direct sum** (max 123); low < 5, moderate 5–13, high ≥ 14 | `sledai-2k`, `cdai-ra` |
+| `robson` | G | parity, prev. cesarean, onset, presentation, plurality, gestation (Robson 2001) | exactly one of ten mutually-exclusive groups (1, 2a/2b, 3, 4a/4b, 5–10) | `bishop`, `meows` |
+
+Three correctness anchors. **BASDAI averages the two morning-stiffness items
+(Q5, Q6) before adding them** — a unit test asserts the pair is not summed flat.
+**ESSDAI's per-level printed value is already weight × level**, so the total is a
+direct sum (max 123); the table preserves the structural quirks that secondary
+sources routinely flatten — constitutional/glandular/biological have *no high
+level*, and CNS has *no low level*. And **Robson is asserted mutually-exclusive
+and total**: a unit test enumerates all 144 input combinations and checks each
+maps to exactly one of the ten groups. On citations, `essdai`'s **EULAR** and
+`robson`'s **WHO** endorsement are documentation-only — EULAR is not in the
+`check-citations` issuer pattern (so no staleness row, matching the v147/v148
+ACR/EULAR precedent), and Robson's WHO endorsement is kept out of the machine-read
+`citation` field. With v156 the Post-Parity Coverage program is **complete
+(679 → 700)**. See [docs/spec-v156.md](docs/spec-v156.md).
 
 ### Suite completions: MIPI, Forrest, Wagner DFU, University of Texas DFU (spec-v155, +4 → 696)
 
@@ -2775,7 +2809,7 @@ long version, see [docs/architecture.md](docs/architecture.md).
  │  manifests (data/)            │  static │        ▼                     ▼             │
  │        │  scripts/build       │  files  │   lazy-load data shard   pure compute      │
  │        ▼                      │         │   (verified vs manifest)  (lib/*.js)       │
- │  dist/  (696 tool pages,      │         │        │                     │             │
+ │  dist/  (700 tool pages,      │         │        │                     │             │
  │  OG cards, sitemap, SBOM)     │         │        ▼                     ▼             │
  └───────────────────────────────┘         │   service worker cache    result + cite   │
                                             │   (keyed to build hash)                    │
@@ -2797,7 +2831,7 @@ assets:
 
 | Output | Count | Source |
 |--------|------:|--------|
-| Pre-rendered tool pages (`dist/tools/<id>/`) | 696 | `scripts/build-tool-pages.mjs` |
+| Pre-rendered tool pages (`dist/tools/<id>/`) | 700 | `scripts/build-tool-pages.mjs` |
 | Audience hub pages (`dist/for/<audience>/`) | 6 | `scripts/build-hub-pages.mjs` |
 | Topic pages + `/topics/` index | 8 + 1 | `scripts/build-topic-pages.mjs` |
 | `/commitments/` | 1 | `scripts/build-commitments-page.mjs` |
@@ -2832,7 +2866,7 @@ static pages, so a tile can never ship mobile overflow undetected.
 index.html          single-page shell (hero-search combobox + static browse-by-category nav, tile mount)
 styles.css          one stylesheet (responsive; no horizontal scroll — enforced catalog-wide at 320px in CI)
 app.js              router, hero-search wiring, view wiring, the UTILITIES catalog
-                    (696 tiles — the single source of truth; zero runtime deps)
+                    (700 tiles — the single source of truth; zero runtime deps)
 sw.js               service worker — precache shell, cache shards by build hash
 theme.js            light/dark theme toggle (writes only sw-theme, allowlisted)
 lib/input-persist.js opt-in "remember my inputs" (off by default; numbers only)
@@ -2850,12 +2884,12 @@ docs/               specs (spec-v4 onward) + per-tile v11/v12 audit logs +
                     citation-staleness ledger +
                     architecture / threat-model / …
 test/               unit/ (node:test) · integration/ (Playwright) · fixtures/
-dist/               build output (696 tool pages, OG cards, sitemap, SBOM)
+dist/               build output (700 tool pages, OG cards, sitemap, SBOM)
 ```
 
-### Discovery: how a query finds the right tool among 696
+### Discovery: how a query finds the right tool among 700
 
-With 696 tiles, search quality *is* the product — a tool you cannot find does
+With 700 tiles, search quality *is* the product — a tool you cannot find does
 not exist. Discovery is deterministic and offline (no fuzzy-match service, no
 embedding model, no AI). The home `#hero-search` combobox builds its dropdown
 from two complementary rankers, both pure functions of the typed query:
@@ -2928,10 +2962,10 @@ A login-less, AI-free calculator earns trust only if the nurse can see, on the
 tile, exactly which published source produced the number — and tell whether that
 source is current. spec-v54 defined the invariants; spec-v60 built the machinery
 (the gate, the ledger, and the `citationAccessed` convention) and extended it
-across the full 696-tile catalog, pinning the last three unpinned "current
+across the full 700-tile catalog, pinning the last three unpinned "current
 edition" phrases and re-verifying every guideline tile against its latest known
 edition. Three invariants make that auditable, each enforced by the
-`check-citations.mjs` lint gate (in the `npm run lint` chain) over all 696 tiles:
+`check-citations.mjs` lint gate (in the `npm run lint` chain) over all 700 tiles:
 
 | Invariant | Rule | Enforcement |
 |---|---|---|
@@ -3387,8 +3421,8 @@ rules, not soft preferences.
 | `npm run dev`            | Serve the directory locally on http://localhost:4173 (set `SERVE_ROOT=dist` to preview the pre-rendered hubs/topics/tool pages as production serves them) |
 | `npm run build`          | Copy static files into `dist/` for deployment                     |
 | `npm test`               | Run the full test suite (unit, a11y, grep, data integrity)        |
-| `npm run test:unit`      | Run Node's built-in unit tests (5,627 tests)                      |
-| `npm run test:e2e`       | Build `dist/`, then run Playwright integration tests against real browsers — incl. a full-catalog 320px no-horizontal-scroll sweep over both the SPA routes and the 696 pre-rendered static tool pages, the hub/topic/commitments pages, and the citation-wrap pin |
+| `npm run test:unit`      | Run Node's built-in unit tests (5,650 tests)                      |
+| `npm run test:e2e`       | Build `dist/`, then run Playwright integration tests against real browsers — incl. a full-catalog 320px no-horizontal-scroll sweep over both the SPA routes and the 700 pre-rendered static tool pages, the hub/topic/commitments pages, and the citation-wrap pin |
 | `npm run test:a11y`      | Run accessibility checks on every utility view                    |
 | `npm run lint`           | ESLint + the CI gate chain: grep-check, output-safety, citation-integrity, catalog-truth, commitments, PA staleness, PA audit |
 | `npm run data:refresh`   | Re-fetch and re-shard every public dataset                        |
@@ -3472,7 +3506,7 @@ build, integrity-verified data shards) are documented in
 - [docs/spec-v11.md](docs/spec-v11.md) — correctness-floor spec:
   per-tile audit protocol, specialty-named groups, optional
   source-quoted `interpretation` field. Audit coverage is **complete
-  — 696/696 tiles** carry a committed per-tile audit log
+  — 700/700 tiles** carry a committed per-tile audit log
   (`docs/audits/v11/<id>.md` for the pre-v78 catalog;
   `docs/audits/v12/<id>.md` for the tiles added since — the
   spec-v78–v83 billing & coding program, the spec-v85

@@ -1,11 +1,17 @@
 # spec-v156.md — Rheumatology PRO & obstetric classification: BASDAI, BASFI, ESSDAI, and Robson Ten-Group (+4 tiles)
 
-> Status: **PROPOSED (2026-06-23).** **Closing spec** of the
-> [spec-v150](spec-v150.md) **Post-Parity Coverage** program. Adds **4**
+> Status: **SHIPPED 2026-06-26 (696 → 700, +4).** **Closing spec** of the
+> [spec-v150](spec-v150.md) **Post-Parity Coverage** program. Added **4**
 > deterministic instruments that complete the rheumatology patient-reported axis
 > and the obstetric cesarean-audit standard. None duplicates a live tile. With
-> v156 the Post-Parity Coverage program is **complete: nominal 679 → 704
-> (+25)** (or the actual shipped sum if PRECISE-DAPT deferred in v155).
+> v156 the Post-Parity Coverage program is **complete: 679 → 700 (+21 shipped;
+> PRECISE-DAPT the sole deferral against the nominal +25)**. The four shipped
+> tiles are `basdai`, `basfi`, `essdai`, and `robson`, in `lib/rheum-ob-v156.js`
+> + `views/group-v156.js` (`RV156`). **Implementation note:** the §4 claim that
+> `essdai`'s EULAR citation trips `check-citations` `ISSUER_PATTERN` is incorrect
+> against the live regex (EULAR is not in it) — `essdai` is Class A with no
+> staleness row, matching the v147/v148 ACR/EULAR precedent; `robson` keeps its
+> WHO endorsement out of the machine-read `citation` field for the same reason.
 >
 > Catalog effect at v156 close: **live count + 4** (catalog-truth gate enforces).
 >

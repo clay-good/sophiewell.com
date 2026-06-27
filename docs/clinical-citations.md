@@ -4116,3 +4116,60 @@ D infection plus ischemia. The cell is the roman-numeral grade with the stage le
 fall and amputation odds rise as both axes increase (in the validation, Stage D had about 76.5% midfoot-or-
 higher amputation vs about 3.5% in less advanced stages).
 Worked example: a wound penetrating to tendon with infection is grade 2, stage B, i.e. cell IIB.
+
+### BASDAI — Bath Ankylosing Spondylitis Disease Activity Index
+Citation: Garrett S, Jenkinson T, Kennedy LG, Whitelock H, Gaisford P, Calin A. A new approach to defining
+disease status in ankylosing spondylitis: the Bath Ankylosing Spondylitis Disease Activity Index. J Rheumatol.
+1994;21(12):2286-2291. (Cross-verified against Omnicalculator, MDApp, and RheumInfo; 2 or more sources,
+spec-v97.)
+Formula: six patient-reported items each on a zero-to-ten scale (fatigue, spinal pain, peripheral joint
+pain/swelling, enthesitis, morning-stiffness severity, morning-stiffness duration); the index is
+[Q1 + Q2 + Q3 + Q4 + (Q5 + Q6)/2] divided by five, scored zero to ten. The two morning-stiffness items are
+averaged before being added — not summed flat. An index of four or greater suggests active or suboptimally
+controlled disease.
+Worked example: items 4, 6, 2, 3 with morning-stiffness severity 5 and duration 7 give a stiffness average of
+6, so [4 + 6 + 2 + 3 + 6] divided by five is 4.2, which is at or above the active-disease threshold.
+
+### BASFI — Bath Ankylosing Spondylitis Functional Index
+Citation: Calin A, Garrett S, Whitelock H, Kennedy LG, O'Hea J, Mallorie P, Jenkinson T. A new approach to
+defining functional ability in ankylosing spondylitis: the development of the Bath Ankylosing Spondylitis
+Functional Index. J Rheumatol. 1994;21(12):2281-2285. (Cross-verified against MDApp and the achawaqat scales
+reference; 2 or more sources, spec-v97.)
+Formula: ten items each on a zero-to-ten scale (eight daily-living tasks plus two coping items, with zero easy
+and ten impossible); the index is the mean of the ten items, scored zero to ten. A higher index means poorer
+function; the index has no fixed cut-point and is used to track change over time.
+Worked example: items 2, 3, 4, 5, 6, 1, 2, 3, 4, 5 sum to 35, so the mean over ten items is 3.5.
+
+### ESSDAI — EULAR Sjögren's Syndrome Disease Activity Index
+Citation: Seror R, Ravaud P, Bowman SJ, et al. EULAR Sjögren's syndrome disease activity index: development of
+a consensus systemic disease activity index for primary Sjögren's syndrome. Ann Rheum Dis. 2010;69(6):
+1103-1109. Domain weights re-fetched from Seror R, et al. RMD Open. 2015;1:e000022 (the ESSDAI user guide) and
+cross-checked against the PMC4613159 reproduction; 2 or more sources, spec-v97.
+Formula: twelve systemic domains, each scored at an activity level whose printed value is already the weight
+multiplied by the level, so the weighted total is the direct sum (theoretical maximum 123). Domain weights:
+constitutional three, lymphadenopathy four, glandular two, articular two, cutaneous three, pulmonary five,
+renal five, muscular six, peripheral nervous system five, central nervous system five, haematological two,
+biological one. Structural facts that must not be normalized away: constitutional, glandular, and biological
+have no high level (they top out at moderate); the central-nervous-system domain has no low level (it jumps
+from none to moderate). Activity strata: low below five, moderate five to thirteen, high fourteen or above.
+EULAR is not in the citation-issuer pattern, so no documentation-only staleness row is forced (the same
+treatment as the spec-v147 and spec-v148 ACR/EULAR scores).
+Worked example: the articular domain at moderate activity contributes four and the biological domain at low
+activity contributes one, for a total of five — exactly at the low-to-moderate boundary, so it reports as
+moderate systemic activity.
+
+### Robson Ten-Group Classification System — cesarean audit
+Citation: Robson MS. Classification of caesarean sections. Fetal Matern Med Rev. 2001;12(1):23-39. Endorsed by
+the World Health Organization statement on caesarean section rates, 2015. (Cross-verified against the Robson
+classification reference and the PMC7487109 subgroup study; 2 or more sources, spec-v97.) The World Health
+Organization endorsement is recorded here, not in the tile's machine-read citation field, so the issuer
+acronym does not force a staleness row; the primary citation is Robson 2001.
+Formula: a deterministic mapping of parity, previous cesarean, onset of labor, fetal presentation, plurality,
+and gestational age to exactly one of ten mutually-exclusive groups. Groups one through four are single
+cephalic term with no previous cesarean, split by parity then onset (with the a/b sub-splits separating
+induced labor from cesarean before labor); group five is single cephalic term with a previous cesarean; groups
+six through ten capture nulliparous breech, multiparous breech, multiple pregnancy, transverse or oblique lie,
+and preterm single cephalic deliveries, each including cases with a previous cesarean. An audit
+classification, not an individual risk prediction.
+Worked example: a nulliparous woman with a single cephalic fetus at term whose labor was induced, with no
+previous cesarean, maps to group 2a (the induced-labor sub-split of group two).

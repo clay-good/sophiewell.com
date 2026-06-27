@@ -6,6 +6,48 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v156: rheumatology PRO & obstetric classification — BASDAI, BASFI, ESSDAI, Robson, +4 — spec-v150 Post-Parity Coverage program COMPLETE)
+
+- **Four instruments close the spec-v150 Post-Parity Coverage program (696 → 700,
+  +4; program total 679 → 700).** v147/v148 shipped the physician-derived
+  rheumatology activity scores (`cdai-ra`, `sdai-ra`, `sledai-2k`, `asdas`,
+  `ffs-2011`); v156 completes the patient-reported axial-spondyloarthritis axis
+  and the Sjögren systemic-activity index, and adds the obstetric cesarean-audit
+  standard. They live in `lib/rheum-ob-v156.js` + `views/group-v156.js` (`RV156`)
+  and are covered by the spec-v59 fuzz harness with zero non-finite leaks.
+  - `basdai` — Bath Ankylosing Spondylitis Disease Activity Index (Garrett 1994),
+    **Group G**, **Class A**. Six 0–10 patient-reported items;
+    `BASDAI = [Q1 + Q2 + Q3 + Q4 + (Q5 + Q6)/2] / 5`, scored 0–10, with ≥ 4
+    suggesting active disease. **The two morning-stiffness items (Q5, Q6) are
+    averaged before being added** — a unit test asserts they are not summed flat.
+    Cross-linked to `basfi`, `asdas`, `das28`.
+  - `basfi` — Bath Ankylosing Spondylitis Functional Index (Calin 1994),
+    **Group G**, **Class A**. Ten 0–10 items (eight daily-living tasks + two
+    coping items); the index is the **mean** of the 10 items, 0–10. A higher
+    index means poorer function. Cross-linked to `basdai`, `asdas`.
+  - `essdai` — EULAR Sjögren's Syndrome Disease Activity Index (Seror 2010;
+    weights Seror 2015), **Group G**, **Class A**. Twelve weighted systemic
+    domains; each level's printed value is already weight × level, so the total is
+    a **direct sum** (theoretical max 123); strata low < 5, moderate 5–13, high
+    ≥ 14. The table preserves the structural quirks secondary sources flatten —
+    constitutional/glandular/biological have no high level and CNS has no low
+    level. EULAR is **not** in the `check-citations` issuer pattern, so no
+    documentation-only staleness row is forced (the v147/v148 ACR/EULAR
+    precedent). Cross-linked to `sledai-2k`, `cdai-ra`.
+  - `robson` — Robson Ten-Group Classification System (Robson 2001; WHO-endorsed
+    2015), **Group G**, **Class A**. A deterministic mapping of parity, previous
+    cesarean, onset, presentation, plurality, and gestation to exactly one of ten
+    mutually-exclusive groups (1, 2a/2b, 3, 4a/4b, 5–10). **A unit test enumerates
+    all 144 input combinations and asserts the mapping is mutually exclusive and
+    total.** The WHO endorsement is kept out of the machine-read `citation` field
+    so it does not force a staleness row. An audit classification, not an
+    individual risk. Cross-linked to `bishop`, `meows`.
+- **Housekeeping.** Catalog count moves on all 13 catalog-truth surfaces
+  (696 → 700); `lib/rheum-ob-v156.js` added to the `fuzz-tools` `MODULES`; four
+  per-tile audit logs under `docs/audits/v12/`; clinical-citations rows added; the
+  `docs/scope-post-parity.md` ledger records the **Post-Parity Coverage program
+  complete**. README unit-test count 5,627 → 5,650.
+
 ### Added (spec-v155: suite completions — MIPI, Forrest, Wagner DFU, University of Texas DFU, +4 — spec-v150 Post-Parity Coverage program)
 
 - **Four suite-completion instruments continue the spec-v150 Post-Parity Coverage
