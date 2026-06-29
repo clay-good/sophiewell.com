@@ -4603,3 +4603,33 @@ Worked example: Age over eighty-five, male, and activity-limiting health problem
 Citation: Ensrud KE, Ewing SK, Taylor BC, et al. Comparison of 2 frailty indexes for prediction of falls, disability, fractures, and death in older women. Arch Intern Med. 2008. (Cross-verified across two or more sources, spec-v97.)
 Formula: Three items each score one point: weight loss of five percent or more over the prior year; inability to rise from a chair five times without using the arms; and reduced energy (a "no" to "do you feel full of energy?"). The total runs zero to three: zero is robust, one is pre-frail, and two or more is frail.
 Worked example: Weight loss and inability to rise give a total of two, the frail band, whereas a single item is pre-frail.
+
+### GNRI (Geriatric Nutritional Risk Index)
+Citation: Bouillanne O, Morineau G, Dupont C, et al. Geriatric Nutritional Risk Index: a new index for evaluating at-risk elderly medical patients. Am J Clin Nutr. 2005. (Cross-verified across two or more sources, spec-v97.)
+Formula: GNRI equals one point four eight nine times serum albumin in grams per liter plus forty-one point seven times the ratio of body weight to ideal body weight, with the ratio capped at one and ideal body weight from the Lorentz equations (men: zero point seven five times height in centimeters minus sixty-two point five; women: zero point six times height minus forty). Bands: above ninety-eight no risk, ninety-two to ninety-eight low, eighty-two to below ninety-two moderate, below eighty-two major risk.
+Worked example: Albumin thirty-five grams per liter at sixty kilograms and one hundred sixty-five centimeters for a woman gives an ideal weight of fifty-nine kilograms, a capped ratio of one, and a GNRI of about ninety-three point eight, the low-risk band.
+
+### Onodera Prognostic Nutritional Index (PNI)
+Citation: Onodera T, Goseki N, Kosaki G. Prognostic nutritional index in gastrointestinal surgery of malnourished cancer patients. Nihon Geka Gakkai Zasshi. 1984. (Cross-verified across two or more sources, spec-v97.)
+Formula: PNI equals ten times serum albumin in grams per deciliter plus zero point zero zero five times the total lymphocyte count per cubic millimeter. Forty-five or more is no increased risk, forty to below forty-five borderline, and below forty high nutritional and surgical risk.
+Worked example: Albumin four point zero grams per deciliter with a lymphocyte count of fifteen hundred gives a PNI of forty-seven point five, no increased risk.
+
+### CONUT (Controlling Nutritional Status score)
+Citation: Ignacio de Ulibarri J, Gonzalez-Madrono A, de Villar NGP, et al. CONUT: a tool for controlling nutritional status. Nutr Hosp. 2005. (Cross-verified across two or more sources, spec-v97.)
+Formula: Points come from serum albumin (at least three point five gives zero, three point zero to three point four nine gives two, two point five to two point nine nine gives four, below two point five gives six), total cholesterol (at least one hundred eighty gives zero, one hundred forty to one hundred seventy-nine gives one, one hundred to one hundred thirty-nine gives two, below one hundred gives three), and total lymphocytes (at least sixteen hundred gives zero, twelve hundred to fifteen ninety-nine gives one, eight hundred to eleven ninety-nine gives two, below eight hundred gives three). The total runs zero to twelve: zero to one normal, two to four mild, five to eight moderate, nine to twelve severe.
+Worked example: Albumin three point two (two points), cholesterol one hundred fifty (one point), and lymphocytes one thousand (two points) sum to five, the moderate band.
+
+### SNAQ (Simplified Nutritional Appetite Questionnaire)
+Citation: Wilson MM, Thomas DR, Rubenstein LZ, et al. Appetite assessment: simple appetite questionnaire predicts weight loss. Am J Clin Nutr. 2005. (Cross-verified across two or more sources, spec-v97.)
+Formula: Four appetite items (appetite, feeling full, how food tastes, number of meals per day) are each rated one to five, summing to a total of four to twenty. A score of fourteen or less predicts clinically significant (five percent or more) weight loss within six months. This is the Simplified Nutritional Appetite Questionnaire, not the Short Nutritional Assessment Questionnaire.
+Worked example: All four items rated three give a total of twelve, which predicts weight loss, whereas fifteen does not.
+
+### EAT-10 (Eating Assessment Tool)
+Citation: Belafsky PC, Mwamba D, Rees CJ, et al. Validity and reliability of the Eating Assessment Tool (EAT-10). Ann Otol Rhinol Laryngol. 2008. (Cross-verified across two or more sources, spec-v97.)
+Formula: Ten patient self-report swallowing items are each rated zero (no problem) to four (severe problem), summing to a total of zero to forty. A score of three or more indicates abnormal swallowing and possible aspiration risk.
+Worked example: Three items rated one give a total of three, the abnormal-swallowing cutoff, whereas two is within normal limits.
+
+### DETERMINE Nutritional Health Checklist
+Citation: Posner BM, Jette AM, Smith KW, Miller DR. Nutrition and health risks in the elderly: the nutrition screening initiative. Am J Public Health. 1993. (Item weights re-fetched verbatim from the ACL Nutrition Screening Initiative checklist; two or more sources, spec-v97.)
+Formula: Ten yes-or-no items carry published weights: illness changing food two, fewer than two meals a day three, few fruits or vegetables or milk two, three or more alcoholic drinks most days two, tooth or mouth problems two, not enough money for food four, eating alone most of the time one, three or more medications a day one, an unintended ten-pound weight change in six months two, and being unable to shop or cook or feed oneself two, for a maximum of twenty-one. Zero to two is good, three to five is moderate, and six or more is high nutritional risk.
+Worked example: Illness, fewer than two meals a day, and eating alone sum to six, the high-risk band.

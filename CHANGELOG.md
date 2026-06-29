@@ -6,6 +6,40 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v178 LTC-GA geriatric nutrition & dysphagia: GNRI, Onodera PNI, CONUT, SNAQ, EAT-10, DETERMINE, +6 — 758 → 764)
+
+- **The spec-v172 Long-Term Care & Geriatric Assessment program continues with
+  spec-v178 (cluster §3.6), shipping all 6 of its proposed geriatric-nutrition /
+  dysphagia instruments (758 → 764, +6).** The live nutrition screens
+  (`must-nutrition`, `nrs2002`, `mnutric`) are admission/ICU triage tools; v178
+  adds the **lab-based geriatric indices**, the **appetite screen**, the **patient
+  dysphagia self-report**, and the **community-elder checklist**. Every
+  coefficient, cut-point, and band was re-fetched and cross-verified against ≥ 2
+  sources (spec-v97); all six are Class A (no `ISSUER_PATTERN` trip — “NSI” is not
+  in the pattern).
+- **`gnri` (Group E)** — GNRI = 1.489 × albumin (g/L) + 41.7 × (weight ÷ ideal
+  weight, ratio capped at 1), ideal weight by the Lorentz equations; > 98 no risk /
+  92–98 low / 82–<92 moderate / < 82 major. **The IBW denominator is
+  positive-guarded** (Bouillanne *AJCN* 2005).
+- **`pni-onodera` (Group E)** — PNI = 10 × albumin (g/dL) + 0.005 × lymphocytes;
+  ≥ 45 / 40–<45 / < 40 (Onodera 1984).
+- **`conut` (Group E)** — points from albumin, total cholesterol, and lymphocytes
+  → 0–12; 0–1 normal / 2–4 mild / 5–8 moderate / 9–12 severe (Ignacio de Ulíbarri
+  *Nutr Hosp* 2005).
+- **`snaq` (Group G)** — the 4-item appetite questionnaire (each 1–5); ≤ 14
+  predicts ≥ 5% weight loss (Wilson *AJCN* 2005). Disambiguated from the Short
+  Nutritional Assessment Questionnaire.
+- **`eat-10` (Group G)** — the 10-item dysphagia self-screen (each 0–4); ≥ 3
+  abnormal (Belafsky 2008). The patient self-report complement to the live `guss`.
+- **`determine` (Group G)** — the 10-item Nutrition Screening Initiative checklist;
+  **item weights (2,3,2,2,2,4,1,1,2,2 = 21) re-fetched verbatim from the ACL/NSI
+  checklist**; 0–2 good / 3–5 moderate / ≥ 6 high (Posner *AJPH* 1993).
+- New `lib/ltcga-v178.js` (six named exports; in the fuzz `MODULES` list, **zero
+  non-finite leaks**, the GNRI division path fuzzed) and `views/group-v178.js`
+  (`RV178`). +6 META with band-flip / boundary worked examples; +6 unit-test files;
+  +6 audit logs; +6 `docs/clinical-citations.md` rows. Catalog moved on all 13
+  catalog-truth surfaces via the live count + 6.
+
 ### Added (spec-v177 LTC-GA frailty & sarcopenia case-finders: SARC-F, SARC-CalF, PRISMA-7, SOF Frailty Index, +4 — 754 → 758; 3 deferred)
 
 - **The spec-v172 Long-Term Care & Geriatric Assessment program continues with

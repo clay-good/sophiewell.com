@@ -169,6 +169,7 @@ import * as ltcgaV174 from '../../lib/ltcga-v174.js';
 import * as ltcgaV175 from '../../lib/ltcga-v175.js';
 import * as ltcgaV176 from '../../lib/ltcga-v176.js';
 import * as ltcgaV177 from '../../lib/ltcga-v177.js';
+import * as ltcgaV178 from '../../lib/ltcga-v178.js';
 
 const MODULES = {
   'clinical.js': clinical,
@@ -282,6 +283,7 @@ const MODULES = {
   'ltcga-v175.js': ltcgaV175,
   'ltcga-v176.js': ltcgaV176,
   'ltcga-v177.js': ltcgaV177,
+  'ltcga-v178.js': ltcgaV178,
 };
 
 const MATRIX = [0, -1, 1e9, NaN, Infinity, -Infinity, '', undefined, null];

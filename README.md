@@ -5,7 +5,7 @@
 <h1 align="center">sophiewell.com</h1>
 
 <p align="center">
-  <strong>758 deterministic healthcare calculators that run entirely in your browser.</strong><br>
+  <strong>764 deterministic healthcare calculators that run entirely in your browser.</strong><br>
   Free forever. No servers, no accounts, no telemetry, no AI, no network call after first paint.
 </p>
 
@@ -36,7 +36,7 @@ output; "searchable lookup of static facts" does not qualify. See
 [docs/spec-v10.md](docs/spec-v10.md) for the audience and
 dependency-budget commitments and
 [docs/spec-v29.md](docs/spec-v29.md) for the nurse-first pivot
-and the v29 catalog ledger. At v177 close the catalog is 758
+and the v29 catalog ledger. At v178 close the catalog is 764
 deterministic tiles — every one of them computes from at least
 one user input. The catalog reached its present size on two tracks.
 **New tiles:** spec-v63 added the operations counterpart to the bedside
@@ -186,7 +186,7 @@ production security headers. Any static file server will also work.
 ## How it works and how to use it
 
 Since the spec-v29 nurse-first prune the catalog has grown one
-reviewable spec at a time to **758** deterministic calculators
+reviewable spec at a time to **764** deterministic calculators
 (the full per-version history is in [CHANGELOG.md](CHANGELOG.md)
 and `docs/spec-v*.md`; the most recent bedside additions are
 summarized in the cheat sheets below). They organize across the
@@ -1051,6 +1051,34 @@ method and journal issuers are not in it), and carry ≥ 3 boundary worked examp
 with band-flips (BIMS 7→8, AD8 1→2, CDR-SOB 4.0→4.5 and 9.0→9.5). The compute
 lives in `lib/ltcga-v173.js` (fuzzed, zero non-finite leaks); the deferrals are
 recorded in [spec-v173](docs/spec-v173.md) and the parity ledger.
+
+### Long-Term Care & Geriatric Assessment program: geriatric nutrition & dysphagia (spec-v172, v178, +6 → 764)
+
+[spec-v178](docs/spec-v178.md) is the program's sixth feature spec (cluster §3.6).
+The live nutrition screens (`must-nutrition`, `nrs2002`, `mnutric`) are admission /
+ICU triage tools; the long-term-care home runs on a different set — the lab-based
+geriatric indices, an appetite screen, a patient dysphagia self-report, and the
+community-elder checklist. v178 ships **all six**:
+
+| tile | source (cross-verified) | scoring | group |
+|---|---|---|---|
+| `gnri` | Bouillanne *AJCN* 2005 | 1.489·albumin(g/L) + 41.7·(wt/IBW, capped 1); > 98 / 92–98 / 82–<92 / < 82 | E |
+| `pni-onodera` | Onodera 1984 | 10·albumin(g/dL) + 0.005·lymphocytes; ≥ 45 / 40–<45 / < 40 | E |
+| `conut` | Ignacio de Ulíbarri *Nutr Hosp* 2005 | albumin + cholesterol + lymphocyte points → 0–12 | E |
+| `snaq` | Wilson *AJCN* 2005 | 4 items 1–5; ≤ 14 predicts ≥ 5% weight loss | G |
+| `eat-10` | Belafsky 2008 | 10 items 0–4; ≥ 3 abnormal swallowing | G |
+| `determine` | Posner *AJPH* 1993 | 10 weighted items → 0–21; 0–2 / 3–5 / ≥ 6 | G |
+
+The three lab indices are **guarded formulas** in Group E: `gnri` divides body
+weight by Lorentz ideal body weight, and that denominator is positive-checked so a
+degenerate height returns a surfaced `valid:false` rather than `Infinity` (the
+division path is fuzzed). The `determine` weights were not taken from memory — they
+were **pulled verbatim from the ACL Nutrition Screening Initiative checklist**
+(`pdftotext` over the official PDF) and they sum to exactly 21, the published
+maximum. `eat-10` is cross-linked to the live `guss` clinician swallow test as its
+patient self-report complement; `snaq` carries an inline disambiguation from the
+similarly named Short Nutritional Assessment Questionnaire. The compute lives in
+`lib/ltcga-v178.js` (fuzzed, zero non-finite leaks).
 
 ### Long-Term Care & Geriatric Assessment program: frailty & sarcopenia case-finders (spec-v172, v177, +4 → 758; 3 deferred)
 
@@ -3086,7 +3114,7 @@ long version, see [docs/architecture.md](docs/architecture.md).
  │  manifests (data/)            │  static │        ▼                     ▼             │
  │        │  scripts/build       │  files  │   lazy-load data shard   pure compute      │
  │        ▼                      │         │   (verified vs manifest)  (lib/*.js)       │
- │  dist/  (758 tool pages,      │         │        │                     │             │
+ │  dist/  (764 tool pages,      │         │        │                     │             │
  │  OG cards, sitemap, SBOM)     │         │        ▼                     ▼             │
  └───────────────────────────────┘         │   service worker cache    result + cite   │
                                             │   (keyed to build hash)                    │
@@ -3108,7 +3136,7 @@ assets:
 
 | Output | Count | Source |
 |--------|------:|--------|
-| Pre-rendered tool pages (`dist/tools/<id>/`) | 758 | `scripts/build-tool-pages.mjs` |
+| Pre-rendered tool pages (`dist/tools/<id>/`) | 764 | `scripts/build-tool-pages.mjs` |
 | Audience hub pages (`dist/for/<audience>/`) | 6 | `scripts/build-hub-pages.mjs` |
 | Topic pages + `/topics/` index | 8 + 1 | `scripts/build-topic-pages.mjs` |
 | `/commitments/` | 1 | `scripts/build-commitments-page.mjs` |
@@ -3144,7 +3172,7 @@ static tool pages, so a tile can never ship mobile overflow undetected.
 index.html          single-page shell (hero-search combobox + static browse-by-category nav, tile mount)
 styles.css          one stylesheet (responsive; no horizontal scroll — enforced catalog-wide at 320px in CI)
 app.js              router, hero-search wiring, view wiring, the UTILITIES catalog
-                    (758 tiles — the single source of truth; zero runtime deps)
+                    (764 tiles — the single source of truth; zero runtime deps)
 sw.js               service worker — precache shell, cache shards by build hash
 theme.js            light/dark theme toggle (writes only sw-theme, allowlisted)
 lib/input-persist.js opt-in "remember my inputs" (off by default; numbers only)
@@ -3162,12 +3190,12 @@ docs/               specs (spec-v4 onward) + per-tile v11/v12 audit logs +
                     citation-staleness ledger +
                     architecture / threat-model / …
 test/               unit/ (node:test) · integration/ (Playwright) · fixtures/
-dist/               build output (758 tool pages, OG cards, sitemap, SBOM)
+dist/               build output (764 tool pages, OG cards, sitemap, SBOM)
 ```
 
-### Discovery: how a query finds the right tool among 758
+### Discovery: how a query finds the right tool among 764
 
-With 758 tiles, search quality *is* the product — a tool you cannot find does
+With 764 tiles, search quality *is* the product — a tool you cannot find does
 not exist. Discovery is deterministic and offline (no fuzzy-match service, no
 embedding model, no AI). The home `#hero-search` combobox builds its dropdown
 from two complementary rankers, both pure functions of the typed query:
@@ -3240,10 +3268,10 @@ A login-less, AI-free calculator earns trust only if the nurse can see, on the
 tile, exactly which published source produced the number — and tell whether that
 source is current. spec-v54 defined the invariants; spec-v60 built the machinery
 (the gate, the ledger, and the `citationAccessed` convention) and extended it
-across the full 758-tile catalog, pinning the last three unpinned "current
+across the full 764-tile catalog, pinning the last three unpinned "current
 edition" phrases and re-verifying every guideline tile against its latest known
 edition. Three invariants make that auditable, each enforced by the
-`check-citations.mjs` lint gate (in the `npm run lint` chain) over all 758 tiles:
+`check-citations.mjs` lint gate (in the `npm run lint` chain) over all 764 tiles:
 
 | Invariant | Rule | Enforcement |
 |---|---|---|
@@ -3700,7 +3728,7 @@ rules, not soft preferences.
 | `npm run build`          | Copy static files into `dist/` for deployment                     |
 | `npm test`               | Run the full test suite (unit, a11y, grep, data integrity)        |
 | `npm run test:unit`      | Run Node's built-in unit tests (5,869 tests)                      |
-| `npm run test:e2e`       | Build `dist/`, then run Playwright integration tests against real browsers — incl. a full-catalog 320px no-horizontal-scroll sweep over both the SPA routes and the 758 pre-rendered static tool pages, the hub/topic/commitments pages, and the citation-wrap pin |
+| `npm run test:e2e`       | Build `dist/`, then run Playwright integration tests against real browsers — incl. a full-catalog 320px no-horizontal-scroll sweep over both the SPA routes and the 764 pre-rendered static tool pages, the hub/topic/commitments pages, and the citation-wrap pin |
 | `npm run test:a11y`      | Run accessibility checks on every utility view                    |
 | `npm run lint`           | ESLint + the CI gate chain: grep-check, output-safety, citation-integrity, catalog-truth, commitments, PA staleness, PA audit |
 | `npm run data:refresh`   | Re-fetch and re-shard every public dataset                        |
@@ -3784,7 +3812,7 @@ build, integrity-verified data shards) are documented in
 - [docs/spec-v11.md](docs/spec-v11.md) — correctness-floor spec:
   per-tile audit protocol, specialty-named groups, optional
   source-quoted `interpretation` field. Audit coverage is **complete
-  — 758/758 tiles** carry a committed per-tile audit log
+  — 764/764 tiles** carry a committed per-tile audit log
   (`docs/audits/v11/<id>.md` for the pre-v78 catalog;
   `docs/audits/v12/<id>.md` for the tiles added since — the
   spec-v78–v83 billing & coding program, the spec-v85

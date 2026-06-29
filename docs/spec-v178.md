@@ -1,6 +1,14 @@
 # spec-v178.md — Geriatric nutrition & dysphagia: GNRI, Onodera PNI, CONUT, SNAQ, EAT-10, and the DETERMINE checklist (+6 tiles)
 
-> Status: **PROPOSED (2026-06-24).** Feature spec of the
+> Status: **SHIPPED 6 of 6 (2026-06-29).** Sixth implementation spec of the
+> spec-v172 LTC-GA program; all six tiles (`gnri`, `pni-onodera`, `conut` in
+> Group E; `snaq`, `eat-10`, `determine` in Group G) are live. Every coefficient,
+> cut-point, and band was re-fetched and cross-verified against ≥ 2 sources
+> (spec-v97); the GNRI ideal-body-weight denominator is positive-guarded and the
+> DETERMINE item weights are verbatim from the ACL/NSI checklist. Original draft
+> below.
+>
+> **PROPOSED (2026-06-24).** Feature spec of the
 > [spec-v172](spec-v172.md) **Long-Term Care & Geriatric Assessment (LTC-GA)**
 > program (§3.6) — the geriatric nutrition & dysphagia cluster. Adds **6**
 > deterministic nutrition and swallow-screen instruments that fill confirmed gaps
