@@ -167,6 +167,7 @@ import * as oneformulaV167 from '../../lib/oneformula-v167.js';
 import * as ltcgaV173 from '../../lib/ltcga-v173.js';
 import * as ltcgaV174 from '../../lib/ltcga-v174.js';
 import * as ltcgaV175 from '../../lib/ltcga-v175.js';
+import * as ltcgaV176 from '../../lib/ltcga-v176.js';
 
 const MODULES = {
   'clinical.js': clinical,
@@ -278,6 +279,7 @@ const MODULES = {
   'ltcga-v173.js': ltcgaV173,
   'ltcga-v174.js': ltcgaV174,
   'ltcga-v175.js': ltcgaV175,
+  'ltcga-v176.js': ltcgaV176,
 };
 
 const MATRIX = [0, -1, 1e9, NaN, Infinity, -Infinity, '', undefined, null];

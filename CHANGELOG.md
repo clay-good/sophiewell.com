@@ -6,6 +6,49 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v176 LTC-GA falls-risk, balance & gait: STRATIFY, 30-Second Chair Stand, 4-Stage Balance, Functional Reach, Gait Speed, CDC STEADI algorithm, +6 — 748 → 754)
+
+- **The spec-v172 Long-Term Care & Geriatric Assessment program continues with
+  spec-v176 (cluster §3.4), shipping all 6 of its proposed falls-risk, balance,
+  and gait instruments (748 → 754, +6).** The catalog carried the inpatient
+  `morse-falls` and `hendrich-ii` screens; v176 adds the **performance-based
+  battery** and the **community / LTC screening algorithm** a nursing home,
+  geriatric clinic, or outpatient PT uses. **Every norm, band, and cut-point was
+  re-fetched and cross-verified against ≥ 2 independent sources** (spec-v97).
+- **`stratify` — St Thomas’s Risk Assessment Tool (STRATIFY).** Five factors,
+  each 1 point (recent fall, agitation, visual impairment, frequent toileting,
+  and a combined transfer + mobility Barthel score of 3 or 4); total 0–5, ≥ 2 high
+  fall risk (Oliver *BMJ* 1997). Class A.
+- **`chair-stand-30s` — 30-Second Chair Stand.** The stand count vs the CDC STEADI
+  below-average age/sex cut-point (ages 60–94, by sex); a count below the cut-point
+  flags increased fall risk. Outside the normed ages → `valid:false`, never a
+  guessed band (Jones *Res Q Exerc Sport* 1999; CDC STEADI). **Class B** (CDC →
+  `docs/citation-staleness.md` row).
+- **`four-stage-balance` — 4-Stage Balance Test.** The full-tandem hold time vs
+  the 10 s cut-point; held < 10 s flags increased fall risk (CDC STEADI). **Class
+  B**.
+- **`functional-reach` — Functional Reach Test.** The forward reach (cm/in unit
+  toggle) classified by the Weiner cut-points (< 15.24 cm markedly increased,
+  15.24–25.40 cm increased, > 25.40 cm lower), with the Duncan age/sex normative
+  mean for context (Duncan *J Gerontol* 1990). Class A.
+- **`gait-speed` — 4-meter / habitual gait speed (Group E).** Distance ÷ time in
+  m/s, mapped to < 0.6 high risk, < 0.8 limited community ambulation, ≥ 1.0 healthy
+  (Studenski *JAMA* 2011; “the sixth vital sign”). The **time denominator is
+  finite/positive-guarded** — a zero/blank/non-finite time returns `valid:false`,
+  never `Infinity`/`NaN` (the division path is explicitly fuzzed). Class A.
+- **`steadi-algorithm` — CDC STEADI fall-risk screening pathway.** The three key
+  questions plus a gait/strength/balance result route to low / moderate / high: a
+  negative screen is low; a positive screen is high on a recurrent/injurious fall
+  or a gait-balance problem, else moderate (Stevens & Phelan *Health Promot Pract*
+  2013). **Class B**.
+- New `lib/ltcga-v176.js` (six named exports; added to the fuzz `MODULES` list,
+  **zero non-finite leaks**, `gait-speed` fuzzed on the division path) and
+  `views/group-v176.js` (`RV176`). +6 META entries with band-flip worked examples
+  (STRATIFY 1→2, chair-stand below-norm edge, gait-speed 0.8 boundary); +6
+  unit-test files; +6 spec-v11 audit logs; +6 `docs/clinical-citations.md` rows;
+  **+3 `docs/citation-staleness.md` rows** for the CDC STEADI tiles. Catalog count
+  moved on all 13 catalog-truth surfaces via the live `UTILITIES.length` + 6.
+
 ### Added (spec-v175 LTC-GA observational pain in the cognitively impaired elder: Abbey Pain Scale, CNPI, DOLOPLUS-2, +3 — 745 → 748)
 
 - **The spec-v172 Long-Term Care & Geriatric Assessment program continues with

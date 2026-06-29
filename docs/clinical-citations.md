@@ -4553,3 +4553,33 @@ Worked example: No indicators at rest and three with movement give a rest score 
 Citation: Wary B, Doloplus collective; Lefebvre-Chapiro S. The Doloplus-2 scale, evaluating pain in the elderly. Eur J Palliat Care. 2001. (Cross-verified against doloplus.fr and the BMC Geriatrics systematic review; two or more sources, spec-v97.)
 Formula: Ten items across three reaction domains (somatic with five items, psychomotor with two, and psychosocial with three) are each rated zero to three, summing to a total of zero to thirty (somatic zero to fifteen, psychomotor zero to six, psychosocial zero to nine). A score of five or more out of thirty indicates the presence of pain.
 Worked example: A somatic complaint rated two with three further somatic items rated one give a total of five, at the threshold that indicates pain, whereas a total of four is below it.
+
+### STRATIFY (inpatient falls-risk tool)
+Citation: Oliver D, Britton M, Seed P, Martin FC, Hopper AH. Development and evaluation of evidence based risk assessment tool (STRATIFY) to predict which elderly inpatients will fall. BMJ. 1997. (Cross-verified across two or more sources, spec-v97.)
+Formula: Five factors each score one point when present: a fall as the presenting complaint or since admission; agitation; visual impairment affecting everyday function; especially frequent toileting; and a combined transfer and mobility score (each rated zero to three on the Barthel system) of three or four. The total runs zero to five; a score of two or more is high fall risk.
+Worked example: A recent fall and agitation, with a transfer and mobility sum outside three or four, give a total of two, the high-risk band.
+
+### 30-Second Chair Stand (CDC STEADI)
+Citation: Jones CJ, Rikli RE, Beam WC. A 30-s chair-stand test as a measure of lower body strength in community-residing older adults. Res Q Exerc Sport. 1999; CDC STEADI below-average age and sex norms. (Cross-verified across two or more sources, spec-v97.)
+Formula: The number of full sit-to-stands completed in thirty seconds is compared with the CDC STEADI below-average cut-point for the person's age band and sex; a count below the cut-point is below average and indicates increased fall risk. Norm bands span ages sixty to ninety-four; outside that range there is no stratum.
+Worked example: Nine stands for a woman aged seventy-five, whose below-average cut-point is ten, is below average and indicates increased fall risk, whereas ten is not.
+
+### 4-Stage Balance Test (CDC STEADI)
+Citation: CDC STEADI Assessment: 4-Stage Balance Test (Stopping Elderly Accidents, Deaths and Injuries toolkit). (Cross-verified across two or more sources, spec-v97.)
+Formula: The patient holds four progressively harder stances for up to ten seconds each, advancing only after holding the prior stance. Inability to hold the full tandem stance for ten seconds indicates increased fall risk; the value compared is the full-tandem hold time against the ten-second cut-point.
+Worked example: A full tandem held for eight seconds is under ten seconds and indicates increased fall risk, whereas ten seconds or more is not flagged by this test.
+
+### Functional Reach Test
+Citation: Duncan PW, Weiner DK, Chandler J, Studenski S. Functional reach: a new clinical measure of balance. J Gerontol. 1990. (Cross-verified across two or more sources, spec-v97.)
+Formula: The maximum forward reach with a fixed base of support is classified against the published cut-points: under fifteen point two four centimeters (six inches) is a markedly increased (about four times) fall risk, fifteen point two four to twenty-five point four centimeters (six to ten inches) an increased (about two times) risk, and over twenty-five point four centimeters a lower risk. The age and sex normative mean is shown for context.
+Worked example: A reach of eighteen centimeters for a woman aged seventy-five falls in the six-to-ten-inch band, an increased fall risk, against a normative mean near twenty-six point six centimeters.
+
+### Gait Speed (4-meter / habitual)
+Citation: Studenski S, Perera S, Patel K, et al. Gait speed and survival in older adults. JAMA. 2011; Fritz S, Lusardi M. Walking speed: the sixth vital sign. J Geriatr Phys Ther. 2009. (Cross-verified across two or more sources, spec-v97.)
+Formula: Gait speed equals distance divided by time, in meters per second, commonly over a four-meter walk. Under zero point six is a high risk of adverse outcomes, under zero point eight is limited community ambulation, and one point zero or more is healthy or well-functioning. The time denominator is guarded so a zero or blank time never produces an infinite or undefined value.
+Worked example: Four meters walked in five seconds gives a gait speed of zero point eight meters per second, reduced but just above the limited-community-ambulation cut-point.
+
+### CDC STEADI Fall-Risk Screening Algorithm
+Citation: Stevens JA, Phelan EA. Development of STEADI: a fall prevention resource for health care providers. Health Promot Pract. 2013; CDC STEADI fall-risk algorithm. (Cross-verified against the Lohman operationalization; two or more sources, spec-v97.)
+Formula: The three key questions (a fall in the past year, feeling unsteady, worrying about falling) screen for increased risk. A negative screen is low risk. A positive screen is high risk when there is a recurrent (two or more) or injurious fall or a gait, strength, or balance problem, and moderate risk otherwise.
+Worked example: A person reporting two or more falls in the past year is high risk, driven by the recurrent falls, whereas someone who only feels unsteady, with no falls and no gait or balance problem, is moderate risk.

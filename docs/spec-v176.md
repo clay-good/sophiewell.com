@@ -1,6 +1,14 @@
 # spec-v176.md — Falls risk, balance & gait: STRATIFY, 30-second chair stand, 4-stage balance, functional reach, gait speed, and the CDC STEADI algorithm (+6 tiles)
 
-> Status: **PROPOSED (2026-06-24).** Feature spec of the
+> Status: **SHIPPED 6 of 6 (2026-06-29).** Fourth implementation spec of the
+> spec-v172 LTC-GA program; all six tiles (`stratify`, `chair-stand-30s`,
+> `four-stage-balance`, `functional-reach`, `gait-speed` in Group E, and
+> `steadi-algorithm`) are live. The CDC STEADI norm tables and the gait-speed /
+> reach cut-points were re-fetched and cross-verified against ≥ 2 independent
+> sources (spec-v97); the three CDC-citing tiles are Class B with
+> `docs/citation-staleness.md` rows. Original draft below.
+>
+> Feature spec of the
 > [spec-v172](spec-v172.md) **Long-Term Care & Geriatric Assessment (LTC-GA)**
 > program, cluster **§3.4 — Falls risk, balance & gait**. Adds **6**
 > deterministic falls-risk, balance, and gait instruments that fill the

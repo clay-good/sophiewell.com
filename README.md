@@ -5,7 +5,7 @@
 <h1 align="center">sophiewell.com</h1>
 
 <p align="center">
-  <strong>748 deterministic healthcare calculators that run entirely in your browser.</strong><br>
+  <strong>754 deterministic healthcare calculators that run entirely in your browser.</strong><br>
   Free forever. No servers, no accounts, no telemetry, no AI, no network call after first paint.
 </p>
 
@@ -36,7 +36,7 @@ output; "searchable lookup of static facts" does not qualify. See
 [docs/spec-v10.md](docs/spec-v10.md) for the audience and
 dependency-budget commitments and
 [docs/spec-v29.md](docs/spec-v29.md) for the nurse-first pivot
-and the v29 catalog ledger. At v175 close the catalog is 748
+and the v29 catalog ledger. At v176 close the catalog is 754
 deterministic tiles — every one of them computes from at least
 one user input. The catalog reached its present size on two tracks.
 **New tiles:** spec-v63 added the operations counterpart to the bedside
@@ -186,7 +186,7 @@ production security headers. Any static file server will also work.
 ## How it works and how to use it
 
 Since the spec-v29 nurse-first prune the catalog has grown one
-reviewable spec at a time to **748** deterministic calculators
+reviewable spec at a time to **754** deterministic calculators
 (the full per-version history is in [CHANGELOG.md](CHANGELOG.md)
 and `docs/spec-v*.md`; the most recent bedside additions are
 summarized in the cheat sheets below). They organize across the
@@ -1051,6 +1051,35 @@ method and journal issuers are not in it), and carry ≥ 3 boundary worked examp
 with band-flips (BIMS 7→8, AD8 1→2, CDR-SOB 4.0→4.5 and 9.0→9.5). The compute
 lives in `lib/ltcga-v173.js` (fuzzed, zero non-finite leaks); the deferrals are
 recorded in [spec-v173](docs/spec-v173.md) and the parity ledger.
+
+### Long-Term Care & Geriatric Assessment program: falls-risk, balance & gait (spec-v172, v176, +6 → 754)
+
+[spec-v176](docs/spec-v176.md) is the program's fourth feature spec (cluster §3.4).
+The catalog carried the two inpatient falls-risk screens (`morse-falls`,
+`hendrich-ii`); it lacked the **performance-based battery** and the **community /
+LTC screening algorithm** a nursing home, geriatric clinic, or outpatient PT uses.
+v176 ships **all six**, every norm and cut-point re-fetched and cross-verified
+against ≥ 2 independent sources (spec-v97):
+
+| tile | source (cross-verified) | scoring | class |
+|---|---|---|---|
+| `stratify` | Oliver *BMJ* 1997 | 5 factors 0–5; ≥ 2 high fall risk | A |
+| `chair-stand-30s` | Jones 1999 + CDC STEADI norms | stand count vs the below-average age/sex cut-point (ages 60–94) | B (CDC) |
+| `four-stage-balance` | CDC STEADI | full-tandem hold time vs the 10 s cut-point | B (CDC) |
+| `functional-reach` | Duncan *J Gerontol* 1990 | reach vs < 15.24 / 15.24–25.40 / > 25.40 cm cut-points + age/sex norm | A |
+| `gait-speed` | Studenski *JAMA* 2011 | distance ÷ time → m/s; < 0.6 / < 0.8 / ≥ 1.0 (Group E) | A |
+| `steadi-algorithm` | Stevens & Phelan 2013 | CDC STEADI screen → low / moderate / high pathway | B (CDC) |
+
+Two engineering points are worth recording. `gait-speed` is a **guarded ratio**:
+the time denominator is finite/positive-checked, so a zero or blank time returns a
+surfaced `valid:false` rather than `Infinity` — and the division path is explicitly
+fuzzed (spec-v59). And `chair-stand-30s` / `functional-reach` **refuse to guess**:
+an age outside the normed strata returns `valid:false`, never a fabricated band. The
+three CDC-STEADI-derived tiles trip the `ISSUER_PATTERN` on “CDC” and so are **Class
+B**, each carrying a `docs/citation-staleness.md` row. `gait-speed` is the only tile
+here in **Group E** (it returns a value, m/s). The compute lives in
+`lib/ltcga-v176.js` (fuzzed, zero non-finite leaks). `berg-balance`, `tinetti-poma`,
+and `tug` are reserved to other specs and are not shipped here.
 
 ### Long-Term Care & Geriatric Assessment program: observational pain in the cognitively impaired elder (spec-v172, v175, +3 → 748)
 
@@ -3028,7 +3057,7 @@ long version, see [docs/architecture.md](docs/architecture.md).
  │  manifests (data/)            │  static │        ▼                     ▼             │
  │        │  scripts/build       │  files  │   lazy-load data shard   pure compute      │
  │        ▼                      │         │   (verified vs manifest)  (lib/*.js)       │
- │  dist/  (748 tool pages,      │         │        │                     │             │
+ │  dist/  (754 tool pages,      │         │        │                     │             │
  │  OG cards, sitemap, SBOM)     │         │        ▼                     ▼             │
  └───────────────────────────────┘         │   service worker cache    result + cite   │
                                             │   (keyed to build hash)                    │
@@ -3050,7 +3079,7 @@ assets:
 
 | Output | Count | Source |
 |--------|------:|--------|
-| Pre-rendered tool pages (`dist/tools/<id>/`) | 748 | `scripts/build-tool-pages.mjs` |
+| Pre-rendered tool pages (`dist/tools/<id>/`) | 754 | `scripts/build-tool-pages.mjs` |
 | Audience hub pages (`dist/for/<audience>/`) | 6 | `scripts/build-hub-pages.mjs` |
 | Topic pages + `/topics/` index | 8 + 1 | `scripts/build-topic-pages.mjs` |
 | `/commitments/` | 1 | `scripts/build-commitments-page.mjs` |
@@ -3086,7 +3115,7 @@ static tool pages, so a tile can never ship mobile overflow undetected.
 index.html          single-page shell (hero-search combobox + static browse-by-category nav, tile mount)
 styles.css          one stylesheet (responsive; no horizontal scroll — enforced catalog-wide at 320px in CI)
 app.js              router, hero-search wiring, view wiring, the UTILITIES catalog
-                    (748 tiles — the single source of truth; zero runtime deps)
+                    (754 tiles — the single source of truth; zero runtime deps)
 sw.js               service worker — precache shell, cache shards by build hash
 theme.js            light/dark theme toggle (writes only sw-theme, allowlisted)
 lib/input-persist.js opt-in "remember my inputs" (off by default; numbers only)
@@ -3104,12 +3133,12 @@ docs/               specs (spec-v4 onward) + per-tile v11/v12 audit logs +
                     citation-staleness ledger +
                     architecture / threat-model / …
 test/               unit/ (node:test) · integration/ (Playwright) · fixtures/
-dist/               build output (748 tool pages, OG cards, sitemap, SBOM)
+dist/               build output (754 tool pages, OG cards, sitemap, SBOM)
 ```
 
-### Discovery: how a query finds the right tool among 748
+### Discovery: how a query finds the right tool among 754
 
-With 748 tiles, search quality *is* the product — a tool you cannot find does
+With 754 tiles, search quality *is* the product — a tool you cannot find does
 not exist. Discovery is deterministic and offline (no fuzzy-match service, no
 embedding model, no AI). The home `#hero-search` combobox builds its dropdown
 from two complementary rankers, both pure functions of the typed query:
@@ -3182,10 +3211,10 @@ A login-less, AI-free calculator earns trust only if the nurse can see, on the
 tile, exactly which published source produced the number — and tell whether that
 source is current. spec-v54 defined the invariants; spec-v60 built the machinery
 (the gate, the ledger, and the `citationAccessed` convention) and extended it
-across the full 748-tile catalog, pinning the last three unpinned "current
+across the full 754-tile catalog, pinning the last three unpinned "current
 edition" phrases and re-verifying every guideline tile against its latest known
 edition. Three invariants make that auditable, each enforced by the
-`check-citations.mjs` lint gate (in the `npm run lint` chain) over all 748 tiles:
+`check-citations.mjs` lint gate (in the `npm run lint` chain) over all 754 tiles:
 
 | Invariant | Rule | Enforcement |
 |---|---|---|
@@ -3642,7 +3671,7 @@ rules, not soft preferences.
 | `npm run build`          | Copy static files into `dist/` for deployment                     |
 | `npm test`               | Run the full test suite (unit, a11y, grep, data integrity)        |
 | `npm run test:unit`      | Run Node's built-in unit tests (5,869 tests)                      |
-| `npm run test:e2e`       | Build `dist/`, then run Playwright integration tests against real browsers — incl. a full-catalog 320px no-horizontal-scroll sweep over both the SPA routes and the 748 pre-rendered static tool pages, the hub/topic/commitments pages, and the citation-wrap pin |
+| `npm run test:e2e`       | Build `dist/`, then run Playwright integration tests against real browsers — incl. a full-catalog 320px no-horizontal-scroll sweep over both the SPA routes and the 754 pre-rendered static tool pages, the hub/topic/commitments pages, and the citation-wrap pin |
 | `npm run test:a11y`      | Run accessibility checks on every utility view                    |
 | `npm run lint`           | ESLint + the CI gate chain: grep-check, output-safety, citation-integrity, catalog-truth, commitments, PA staleness, PA audit |
 | `npm run data:refresh`   | Re-fetch and re-shard every public dataset                        |
@@ -3726,7 +3755,7 @@ build, integrity-verified data shards) are documented in
 - [docs/spec-v11.md](docs/spec-v11.md) — correctness-floor spec:
   per-tile audit protocol, specialty-named groups, optional
   source-quoted `interpretation` field. Audit coverage is **complete
-  — 748/748 tiles** carry a committed per-tile audit log
+  — 754/754 tiles** carry a committed per-tile audit log
   (`docs/audits/v11/<id>.md` for the pre-v78 catalog;
   `docs/audits/v12/<id>.md` for the tiles added since — the
   spec-v78–v83 billing & coding program, the spec-v85
