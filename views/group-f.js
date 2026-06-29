@@ -93,7 +93,7 @@ export const renderers = {
       { value: 'mg/mL', text: 'mg/mL' }, { value: 'units/mL', text: 'units/mL' },
     ]));
     const presets = el('p', { class: 'muted', text:
-      'Common presets (per institution policy): noradrenaline 16 mg / 250 mL = 64 mcg/mL; epinephrine 4 mg / 250 mL = 16 mcg/mL; ' +
+      'Common presets (per institution policy): norepinephrine 16 mg / 250 mL = 64 mcg/mL; epinephrine 4 mg / 250 mL = 16 mcg/mL; ' +
       'dopamine 400 mg / 250 mL = 1600 mcg/mL; dobutamine 250 mg / 250 mL = 1000 mcg/mL; propofol 10 mg/mL; ' +
       'fentanyl 50 mcg/mL; heparin 25,000 units / 500 mL = 50 units/mL.' });
     root.appendChild(presets);
@@ -711,8 +711,8 @@ export const renderers = {
     // compute/canonical unit (Davenport 2009 targets are mmol/L), so mmol/L is
     // the default option and the mg/dL alternate converts up via the calcium
     // factor; empty stays 0 -> treated as not provided, identical to before.
-    root.appendChild(unitField('Systemic ionised Ca (optional)', 'cr-sca', CALCIUM_MMOL_UNITS));
-    root.appendChild(unitField('Post-filter ionised Ca (optional)', 'cr-pca', CALCIUM_MMOL_UNITS));
+    root.appendChild(unitField('Systemic ionized Ca (optional)', 'cr-sca', CALCIUM_MMOL_UNITS));
+    root.appendChild(unitField('Post-filter ionized Ca (optional)', 'cr-pca', CALCIUM_MMOL_UNITS));
     root.appendChild(unitField('Total Ca (optional)', 'cr-tca', CALCIUM_MMOL_UNITS));
     const o = out(); root.appendChild(o);
     const run = () => safe(o, () => {
@@ -727,7 +727,7 @@ export const renderers = {
       });
       o.appendChild(el('h2', { text: `${r.effluentDoseMlPerKgPerHr} mL/kg/h` }));
       o.appendChild(el('p', { text: r.text }));
-      if (r.totalIonisedRatio !== null) o.appendChild(el('p', { text: `Total/ionised Ca ratio: ${r.totalIonisedRatio}` }));
+      if (r.totalIonisedRatio !== null) o.appendChild(el('p', { text: `Total/ionized Ca ratio: ${r.totalIonisedRatio}` }));
       for (const b of r.banners) o.appendChild(el('p', { class: 'clinical-notice', text: b }));
     });
     ['cr-w', 'cr-r', 'cr-uf', 'cr-sca', 'cr-pca', 'cr-tca'].forEach((id) => document.getElementById(id).addEventListener('input', run));

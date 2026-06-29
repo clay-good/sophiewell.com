@@ -18,9 +18,9 @@ test('Bristol 5 -> soft', () => {
   assert.equal(r.category, 'soft');
 });
 
-test('Bristol 7 -> diarrhoea', () => {
+test('Bristol 7 -> diarrhea', () => {
   const r = bristolGirth({ bristolType: 7 });
-  assert.equal(r.category, 'diarrhoea');
+  assert.equal(r.category, 'diarrhea');
 });
 
 test('Girth trend computed when both measurements and timestamps present', () => {

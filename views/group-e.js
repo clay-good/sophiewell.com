@@ -4,7 +4,7 @@
 // rendered by the router for any utility flagged clinical.
 
 import { el, clear } from '../lib/dom.js';
-import { fmt } from '../lib/num.js';
+import { fmt, usDate } from '../lib/num.js';
 import { boundsAdvisory } from '../lib/bounds.js';
 import * as C from '../lib/clinical.js';
 import * as C8 from '../lib/clinical-v8.js';
@@ -318,7 +318,7 @@ export const renderers = {
     const run = () => safe(o, () => {
       const r = C.naegele({ lmpIso: document.getElementById('lmp').value });
       o.appendChild(el('ul', {}, [
-        el('li', { text: `Estimated due date: ${r.dueDate}` }),
+        el('li', { text: `Estimated due date: ${usDate(r.dueDate)} (${r.dueDate})` }),
         el('li', { text: `Current gestational age: ${r.gestationalWeeks} weeks ${r.gestationalDays} days` }),
       ]));
     });

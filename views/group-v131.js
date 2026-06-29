@@ -77,13 +77,13 @@ export const renderers = {
 
   // ----- 2.2 renal-nephrometry ------------------------------------------
   'renal-nephrometry'(root) {
-    note(root, 'R.E.N.A.L. nephrometry score (Kutikov & Uzzo 2009): a 4–12 anatomic-complexity score for a renal mass facing nephron-sparing surgery. Radius, Exophytic/endophytic, Nearness to the collecting system and Location score 1–3 each; Anterior/posterior is a non-scoring a/p/x suffix, and h marks a hilar tumour. 4–6 low, 7–9 moderate, 10–12 high.');
+    note(root, 'R.E.N.A.L. nephrometry score (Kutikov & Uzzo 2009): a 4–12 anatomic-complexity score for a renal mass facing nephron-sparing surgery. Radius, Exophytic/endophytic, Nearness to the collecting system and Location score 1–3 each; Anterior/posterior is a non-scoring a/p/x suffix, and h marks a hilar tumor. 4–6 low, 7–9 moderate, 10–12 high.');
     root.appendChild(selectField('(R) Radius / maximal diameter', 'ren-radius', [BLANK, { value: '1', text: '≤4 cm (1)' }, { value: '2', text: '>4 to <7 cm (2)' }, { value: '3', text: '≥7 cm (3)' }]));
     root.appendChild(selectField('(E) Exophytic / endophytic', 'ren-exo', [BLANK, { value: '1', text: '≥50% exophytic (1)' }, { value: '2', text: '<50% exophytic (2)' }, { value: '3', text: 'Entirely endophytic (3)' }]));
     root.appendChild(selectField('(N) Nearness to collecting system / sinus', 'ren-near', [BLANK, { value: '1', text: '≥7 mm (1)' }, { value: '2', text: '>4 to <7 mm (2)' }, { value: '3', text: '≤4 mm (3)' }]));
     root.appendChild(selectField('(L) Location relative to polar lines', 'ren-loc', [BLANK, { value: '1', text: 'Above upper or below lower polar line (1)' }, { value: '2', text: 'Crosses a polar line (2)' }, { value: '3', text: '>50% across / between lines / crosses midline (3)' }]));
     root.appendChild(selectField('(A) Anterior / posterior', 'ren-ap', [BLANK, { value: 'a', text: 'Anterior (a)' }, { value: 'p', text: 'Posterior (p)' }, { value: 'x', text: 'Indeterminate (x)' }]));
-    root.appendChild(selectField('Hilar tumour?', 'ren-hilar', [{ value: '', text: 'No' }, { value: 'h', text: 'Yes (h suffix)' }]));
+    root.appendChild(selectField('Hilar tumor?', 'ren-hilar', [{ value: '', text: 'No' }, { value: 'h', text: 'Yes (h suffix)' }]));
     const o = out(); root.appendChild(o);
     wire(['ren-radius', 'ren-exo', 'ren-near', 'ren-loc', 'ren-ap', 'ren-hilar'], () => safe(o, () => {
       const r = M.renalNephrometry({ radius: Number(selVal('ren-radius')), exophytic: Number(selVal('ren-exo')), nearness: Number(selVal('ren-near')), location: Number(selVal('ren-loc')), ap: selVal('ren-ap'), hilar: selVal('ren-hilar') === 'h' });
@@ -96,13 +96,13 @@ export const renderers = {
 
   // ----- 2.3 padua-renal ------------------------------------------------
   'padua-renal'(root) {
-    note(root, 'PADUA score (Ficarra 2009) for a renal tumour: a 6–14 complexity score. Longitudinal location (polar 1 / middle 2), exophytic rate (1–3), renal rim (lateral 1 / medial 2), sinus involvement (1–2), urinary-collecting-system involvement (1–2) and tumour size (1–3) score; the anterior/posterior face is a non-scoring descriptor. 6–7 low, 8–9 intermediate, ≥10 high. (Distinct from the VTE Padua score.)');
+    note(root, 'PADUA score (Ficarra 2009) for a renal tumor: a 6–14 complexity score. Longitudinal location (polar 1 / middle 2), exophytic rate (1–3), renal rim (lateral 1 / medial 2), sinus involvement (1–2), urinary-collecting-system involvement (1–2) and tumor size (1–3) score; the anterior/posterior face is a non-scoring descriptor. 6–7 low, 8–9 intermediate, ≥10 high. (Distinct from the VTE Padua score.)');
     root.appendChild(selectField('Longitudinal (polar) location', 'pad-long', [BLANK, { value: '1', text: 'Superior / inferior polar (1)' }, { value: '2', text: 'Middle (2)' }]));
     root.appendChild(selectField('Exophytic rate', 'pad-exo', [BLANK, { value: '1', text: '≥50% exophytic (1)' }, { value: '2', text: '<50% exophytic (2)' }, { value: '3', text: 'Entirely endophytic (3)' }]));
     root.appendChild(selectField('Renal rim', 'pad-rim', [BLANK, { value: '1', text: 'Lateral (1)' }, { value: '2', text: 'Medial (2)' }]));
     root.appendChild(selectField('Renal sinus involvement', 'pad-sinus', [BLANK, { value: '1', text: 'Not involved (1)' }, { value: '2', text: 'Involved (2)' }]));
     root.appendChild(selectField('Urinary collecting system involvement', 'pad-ucs', [BLANK, { value: '1', text: 'Not involved (1)' }, { value: '2', text: 'Involved (2)' }]));
-    root.appendChild(selectField('Tumour size', 'pad-size', [BLANK, { value: '1', text: '≤4 cm (1)' }, { value: '2', text: '>4 to 7 cm (2)' }, { value: '3', text: '>7 cm (3)' }]));
+    root.appendChild(selectField('Tumor size', 'pad-size', [BLANK, { value: '1', text: '≤4 cm (1)' }, { value: '2', text: '>4 to 7 cm (2)' }, { value: '3', text: '>7 cm (3)' }]));
     root.appendChild(selectField('Anterior / posterior face', 'pad-face', [BLANK, { value: 'a', text: 'Anterior (a)' }, { value: 'p', text: 'Posterior (p)' }]));
     const o = out(); root.appendChild(o);
     wire(['pad-long', 'pad-exo', 'pad-rim', 'pad-sinus', 'pad-ucs', 'pad-size', 'pad-face'], () => safe(o, () => {

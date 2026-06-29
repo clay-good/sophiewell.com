@@ -1,7 +1,21 @@
 # spec-v184.md — US-defaults & localization audit: locale tag, °F/lb/inch toggles, US date format, and American-English copy
 
-> Status: **PROPOSED (2026-06-26).** Remediation spec — **no tiles added, no
-> catalog-count change.** Authored from a full clinician-perspective QA pass of
+> Status: **SHIPPED (2026-06-29).** Remediation spec — **no tiles added, no
+> catalog-count change** (`UTILITIES.length` stays 737). §4.1 locale (`en-US`),
+> §4.2 American-English copy (the §4.2 table plus the user-facing British
+> spellings the audit's limited Playwright pass missed — Forrest `haemorrhage`
+> bands, the Bristol `Diarrhoea` band/`diarrhea` category, PEWS `grey`),
+> §4.5 US date display (`usDate`/`usDateLong`), and §5.3 the
+> `scripts/check-us-english.mjs` guard + `test/unit/us-english-guard.test.js`
+> are **fully implemented**. §4.3 `TEMP_UNITS` and §4.4 `HEIGHT_UNITS` exports
+> ship with a blank-safe `unitNumOpt` reader and are applied to the three named
+> energy tiles (`mifflin-st-jeor`, `harris-benedict`, `penn-state-ree`: weight
+> kg|lb, height cm|in, Tmax °C|°F); the broader §4.3 threshold-label °F
+> annotations and the §4.4 sweep across every remaining height/temperature site
+> are the spec-sanctioned follow-on wave ("§4.4 … may land in waves"). The
+> official-name "(Japanese) Orthopaedic Association" (mJOA) and all
+> citation/journal strings are left untouched (§3.7), enforced by the guard's
+> allowlist. Authored from a full clinician-perspective QA pass of
 > the live site (built `dist/` + the SPA at `index.html`, driven with Playwright
 > against `localhost:4173`). The audit role: a **US-based bedside nurse /
 > clinician**, checking that the product behaves with **US defaults** end to end

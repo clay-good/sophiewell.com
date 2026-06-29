@@ -6,6 +6,48 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Changed (spec-v184 US-defaults & localization: en-US locale, American-English copy, US date display, °F/lb/inch affordances — no tile delta, 737 → 737)
+
+- **The site now presents US defaults to a US clinician end to end, with zero
+  change to canonical compute units, citations, or the catalog count.** A
+  clinician-perspective QA pass found three defect classes; this spec fixes them
+  as a presentation/localization remediation (`UTILITIES.length` unchanged).
+- **Locale → `en-US` (§4.1).** `index.html` `<html lang>` and JSON-LD
+  `inLanguage` now declare `en-US` (matching the already-correct `og:locale`);
+  the four static-page builders (`build-tool-pages`, `build-topic-pages`,
+  `build-hub-pages`, `build-commitments-page`) emit `lang="en-US"`, and
+  `scripts/a11y-check.mjs` asserts it.
+- **American-English copy (§4.2).** 41 user-facing British spellings / non-US
+  drug names in rendered strings (interpretation bands, field labels, result
+  banners, category values) were Americanized — `oedema`→`edema`,
+  `haemoglobin`→`hemoglobin`, `haemorrhage`→`hemorrhage`, `colour`→`color`,
+  `behaviour`→`behavior`, `tumour`→`tumor`, `ionised`→`ionized`,
+  `fibre`→`fiber`, `diarrhoea`→`diarrhea`, `grey`→`gray`,
+  `noradrenaline`→`norepinephrine`, plus the `bristol-girth` `category` return
+  value (`diarrhoea`→`diarrhea`, test updated). **Citations, journal
+  abbreviations, article titles, and official instrument names are untouched**
+  (e.g. the Robson "caesarean" title, the BMJ "paracetamol" title, the GI-bleed
+  "haemorrhage" citations, the mJOA "Japanese Orthopaedic Association" name),
+  enforced by the new guard's allowlist.
+- **New CI guard `scripts/check-us-english.mjs` (§5.3),** wired into the
+  `npm run lint` chain, fails on any British spelling / non-US drug name in a
+  user-facing surface (`lib/`, `views/`, `app.js`, `index.html`) while exempting
+  comments, citation/source fields, journal tokens, and the §3.7 official names.
+  `test/unit/us-english-guard.test.js` pins the allowlist behavior.
+- **US date display (§4.5).** New `usDate`/`usDateLong` formatters in
+  `lib/num.js` (pure, no `Date` round-trip); the `due-date` EDD now renders
+  `MM/DD/YYYY (ISO)` and the appeal-letter / HIPAA-request templates stamp
+  `Mon D, YYYY`. The `naegele()` ISO return value and the LMP input contract are
+  unchanged, so every `META.example` and deep-link hash reproduces byte-identically.
+- **US-customary unit affordances (§4.3/§4.4).** New `TEMP_UNITS` (°C|°F) and
+  `HEIGHT_UNITS` (cm|in) exports in `lib/field-units.js` (canonical unit first),
+  plus a blank-safe `unitNumOpt` reader. Applied to the three named energy tiles
+  — `mifflin-st-jeor`, `harris-benedict`, `penn-state-ree` now offer weight
+  kg|lb, height cm|in, and (Penn State) Tmax °C|°F. `unitNum`/`unitNumOpt` still
+  return the canonical unit to the compute path, so examples are byte-identical.
+  The broader threshold-label °F annotations and the full height/temperature
+  sweep are the spec-sanctioned follow-on wave.
+
 ### Added (spec-v169 Data-Sourced Reference-Table program: CDC growth percentiles, +2 — 735 → 737; remaining 5 tiles deferred on sourcing grounds)
 
 - **The spec-v168 Data-Sourced Reference-Table program ships 2 of its proposed 7

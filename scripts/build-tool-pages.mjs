@@ -316,7 +316,7 @@ ${related.map((r) => `          <li><a href="${SITE}/tools/${r.id}/">${esc(r.nam
     || `Use this tool when you need a quick, citable reference. Every calculation runs entirely in your browser - no inputs leave your device, no account is required, no AI is involved. The site enforces a strict Content Security Policy and ships no analytics or third-party CDN.`;
 
   return `<!doctype html>
-<html lang="en">
+<html lang="en-US">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />

@@ -9,7 +9,7 @@
 // remain per spec-v29 sec 10 open question 1.
 
 import { el, clear } from '../lib/dom.js';
-import { fmt } from '../lib/num.js';
+import { fmt, usDateLong } from '../lib/num.js';
 import { renderPrintable, renderCompleteness } from '../lib/print.js';
 import { lintGenerator } from '../lib/regulatory.js';
 import * as Pat from '../lib/billing-v82.js';
@@ -114,7 +114,7 @@ export const renderers = {
         warnings: ['Educational template. Verify your plan\'s specific appeal address, deadline, and required attachments.'],
         sections: [
           { heading: 'Heading', paragraphs: [
-            `Date: ${new Date().toISOString().slice(0, 10)}`,
+            `Date: ${usDateLong(new Date().toISOString().slice(0, 10))}`,
             `${v('al-plan')} - Appeals Department`,
             `Re: ${v('al-pt')}, Member ID ${v('al-id')}`,
             `Date of service: ${v('al-dos')}; Provider: ${v('al-prov')}`,
@@ -169,7 +169,7 @@ export const renderers = {
         warnings: ['Fee cap reminder: covered entities may only charge a reasonable, cost-based fee (labor, supplies, postage). Per-page or flat "search" fees are generally not allowed.'],
         sections: [
           { heading: 'Header', paragraphs: [
-            `Date: ${new Date().toISOString().slice(0, 10)}`,
+            `Date: ${usDateLong(new Date().toISOString().slice(0, 10))}`,
             `${v('roa-fac')} - Health Information Management / Privacy Officer`,
           ] },
           { heading: 'Request', paragraphs: [

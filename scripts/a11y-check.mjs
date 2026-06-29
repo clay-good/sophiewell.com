@@ -40,6 +40,7 @@ async function checkIndex() {
   const html = await readFile(join(ROOT, file), 'utf8');
 
   if (!/<html\s[^>]*\blang=/.test(html)) fail(file, 1, '<html> missing lang attribute');
+  if (!/<html\s[^>]*\blang="en-US"/.test(html)) fail(file, 1, '<html> lang must be "en-US" (US-default locale, spec-v184 §4.1)');
 
   const h1s = findAll(/<h1\b/gi, html);
   if (h1s.length !== 1) fail(file, h1s[0] ? lineOf(html, h1s[0].index) : 1, `expected exactly one <h1>, found ${h1s.length}`);

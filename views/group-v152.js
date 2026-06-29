@@ -15,6 +15,7 @@
 import { el, clear } from '../lib/dom.js';
 import * as M from '../lib/nutrition-energy-v152.js';
 import { resultRow } from '../lib/result-copy.js';
+import { unitField, unitNumOpt, WEIGHT_UNITS, HEIGHT_UNITS, TEMP_UNITS } from '../lib/field-units.js';
 
 function selectField(label, id, options) {
   const wrap = el('p');
@@ -74,8 +75,11 @@ const ACTIVITY = [
 ];
 
 function anthroFields(root, prefix) {
-  root.appendChild(numField('Weight (kg)', `${prefix}-wt`, { min: 0, max: 400, step: '0.1', placeholder: 'e.g. 70' }));
-  root.appendChild(numField('Height (cm)', `${prefix}-ht`, { min: 0, max: 260, step: '0.1', placeholder: 'e.g. 175' }));
+  // spec-v184 §4.4: weight kg|lb and height cm|in toggles (canonical first, so
+  // the documented example reproduces byte-identically). unitNumOpt returns the
+  // canonical unit; a blank field still falls back rather than computing zero.
+  root.appendChild(unitField('Weight', `${prefix}-wt`, WEIGHT_UNITS, { placeholder: 'e.g. 70' }));
+  root.appendChild(unitField('Height', `${prefix}-ht`, HEIGHT_UNITS, { placeholder: 'e.g. 175' }));
   root.appendChild(numField('Age (years)', `${prefix}-age`, { min: 0, max: 120, placeholder: 'e.g. 40' }));
   root.appendChild(selectField('Sex', `${prefix}-sex`, SEX));
 }
@@ -87,8 +91,8 @@ export const renderers = {
     anthroFields(root, 'msj');
     root.appendChild(selectField('Activity factor (optional — for TDEE)', 'msj-act', ACTIVITY));
     const o = out(); root.appendChild(o);
-    wire(['msj-wt', 'msj-ht', 'msj-age', 'msj-sex', 'msj-act'], () => safe(o, () => {
-      const r = M.mifflinStJeor({ weight: optNum('msj-wt'), height: optNum('msj-ht'), age: optNum('msj-age'), sex: selVal('msj-sex'), activity: selVal('msj-act') });
+    wire(['msj-wt', 'msj-wt-unit', 'msj-ht', 'msj-ht-unit', 'msj-age', 'msj-sex', 'msj-act'], () => safe(o, () => {
+      const r = M.mifflinStJeor({ weight: unitNumOpt('msj-wt'), height: unitNumOpt('msj-ht'), age: optNum('msj-age'), sex: selVal('msj-sex'), activity: selVal('msj-act') });
       if (!r.valid) { showInvalid(o, r); return; }
       const rows = [{ text: r.band }, { label: 'REE', value: `${r.base} kcal/day` }];
       if (r.tdee != null) rows.push({ label: 'TDEE', value: `${r.tdee} kcal/day` });
@@ -104,8 +108,8 @@ export const renderers = {
     anthroFields(root, 'hb');
     root.appendChild(selectField('Activity factor (optional — for TDEE)', 'hb-act', ACTIVITY));
     const o = out(); root.appendChild(o);
-    wire(['hb-wt', 'hb-ht', 'hb-age', 'hb-sex', 'hb-act'], () => safe(o, () => {
-      const r = M.harrisBenedict({ weight: optNum('hb-wt'), height: optNum('hb-ht'), age: optNum('hb-age'), sex: selVal('hb-sex'), activity: selVal('hb-act') });
+    wire(['hb-wt', 'hb-wt-unit', 'hb-ht', 'hb-ht-unit', 'hb-age', 'hb-sex', 'hb-act'], () => safe(o, () => {
+      const r = M.harrisBenedict({ weight: unitNumOpt('hb-wt'), height: unitNumOpt('hb-ht'), age: optNum('hb-age'), sex: selVal('hb-sex'), activity: selVal('hb-act') });
       if (!r.valid) { showInvalid(o, r); return; }
       const rows = [{ text: r.band }, { label: 'BEE', value: `${r.base} kcal/day` }];
       if (r.tdee != null) rows.push({ label: 'TDEE', value: `${r.tdee} kcal/day` });
@@ -139,11 +143,11 @@ export const renderers = {
   'penn-state-ree'(root) {
     note(root, 'Penn State equation (2004): predicts resting metabolic rate in mechanically ventilated ICU adults. RMR = Mifflin × 0.96 + Tmax × 167 + Ve × 31 − 6212 (standard 2003b). When BMI ≥ 30 AND age ≥ 60 the modified (2010) form RMR = Mifflin × 0.71 + Tmax × 85 + Ve × 64 − 3085 is used. Tmax = max temperature in the prior 24 h; Ve = ventilator minute ventilation. Near-neighbors: icu-nutrition-target, mifflin-st-jeor.');
     anthroFields(root, 'ps');
-    root.appendChild(numField('Tmax — max temperature prior 24 h (°C)', 'ps-tmax', { min: 30, max: 45, step: '0.1', placeholder: 'e.g. 38.5' }));
+    root.appendChild(unitField('Tmax — max temperature prior 24 h', 'ps-tmax', TEMP_UNITS, { placeholder: 'e.g. 38.5' }));
     root.appendChild(numField('Minute ventilation Ve (L/min, ventilator)', 'ps-ve', { min: 0, max: 40, step: '0.1', placeholder: 'e.g. 9' }));
     const o = out(); root.appendChild(o);
-    wire(['ps-wt', 'ps-ht', 'ps-age', 'ps-sex', 'ps-tmax', 'ps-ve'], () => safe(o, () => {
-      const r = M.pennStateRee({ weight: optNum('ps-wt'), height: optNum('ps-ht'), age: optNum('ps-age'), sex: selVal('ps-sex'), tmax: optNum('ps-tmax'), ve: optNum('ps-ve') });
+    wire(['ps-wt', 'ps-wt-unit', 'ps-ht', 'ps-ht-unit', 'ps-age', 'ps-sex', 'ps-tmax', 'ps-tmax-unit', 'ps-ve'], () => safe(o, () => {
+      const r = M.pennStateRee({ weight: unitNumOpt('ps-wt'), height: unitNumOpt('ps-ht'), age: optNum('ps-age'), sex: selVal('ps-sex'), tmax: unitNumOpt('ps-tmax'), ve: optNum('ps-ve') });
       if (!r.valid) { showInvalid(o, r); return; }
       resultRow(o, [
         { text: r.band },

@@ -127,7 +127,7 @@ export const renderers = {
 
   // ----- 2.5 cisne ------------------------------------------------------
   'cisne'(root) {
-    note(root, 'CISNE (Carmona-Bayonas 2015): predicts serious complications in solid-tumour outpatients with febrile neutropenia who appear clinically stable. ECOG ≥2 = 2, stress-induced hyperglycemia = 2, COPD = 1, chronic cardiovascular disease = 1, NCI mucositis grade ≥2 = 1, monocytes <200/µL = 1. 0 low (~1.1%), 1–2 intermediate (~6.2%), ≥3 high (~36%).');
+    note(root, 'CISNE (Carmona-Bayonas 2015): predicts serious complications in solid-tumor outpatients with febrile neutropenia who appear clinically stable. ECOG ≥2 = 2, stress-induced hyperglycemia = 2, COPD = 1, chronic cardiovascular disease = 1, NCI mucositis grade ≥2 = 1, monocytes <200/µL = 1. 0 low (~1.1%), 1–2 intermediate (~6.2%), ≥3 high (~36%).');
     root.appendChild(selectField('ECOG performance status', 'ci-ecog', GRADE_OPTS));
     root.appendChild(selectField('Stress-induced hyperglycemia?', 'ci-glu', YN));
     root.appendChild(selectField('COPD?', 'ci-copd', YN));

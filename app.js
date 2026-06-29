@@ -1362,7 +1362,7 @@ const UTILITIES = [
   // views/group-v131.js, lib/uro-v131.js.
   { id: 'capra-score',            name: 'CAPRA prostate-cancer risk score (UCSF)',         group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'renal-nephrometry',      name: 'R.E.N.A.L. nephrometry score (renal mass)',       group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
-  { id: 'padua-renal',            name: 'PADUA renal-tumour complexity score',             group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'padua-renal',            name: 'PADUA renal-tumor complexity score',             group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'stone-nephrolithometry', name: 'S.T.O.N.E. nephrolithometry (PCNL complexity)',   group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'twist-score',            name: 'TWIST score (testicular torsion)',                group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
 

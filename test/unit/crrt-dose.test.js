@@ -22,12 +22,12 @@ test('crrt-dose: above target -> banner suggests reduce', () => {
 
 test('crrt-dose: post-filter iCa outside 0.25-0.35 triggers banner', () => {
   const r = crrtDose({ weightKg: 80, effluentRateMlPerHr: 1800, postFilterIonisedCa: 0.5 });
-  assert.ok(r.banners.some((b) => b.includes('Post-filter ionised Ca')));
+  assert.ok(r.banners.some((b) => b.includes('Post-filter ionized Ca')));
 });
 
 test('crrt-dose: systemic iCa outside 1.1-1.2 triggers banner', () => {
   const r = crrtDose({ weightKg: 80, effluentRateMlPerHr: 1800, systemicIonisedCa: 1.0 });
-  assert.ok(r.banners.some((b) => b.includes('Systemic ionised Ca')));
+  assert.ok(r.banners.some((b) => b.includes('Systemic ionized Ca')));
 });
 
 test('crrt-dose: total/iCa ratio >=2.5 flags citrate accumulation (Davenport)', () => {

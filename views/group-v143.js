@@ -197,7 +197,7 @@ export const renderers = {
       ['carg-cancer', 'Gastrointestinal or genitourinary cancer (2)'],
       ['carg-dose', 'Standard-dose chemotherapy (not dose-reduced) (2)'],
       ['carg-poly', 'Polychemotherapy — more than one agent (2)'],
-      ['carg-hgb', 'Haemoglobin < 11 g/dL (male) or < 10 g/dL (female) (3)'],
+      ['carg-hgb', 'Hemoglobin < 11 g/dL (male) or < 10 g/dL (female) (3)'],
       ['carg-crcl', 'Creatinine clearance < 34 mL/min (3)'],
       ['carg-hear', 'Hearing fair or worse (2)'],
       ['carg-falls', 'One or more falls in the last 6 months (3)'],

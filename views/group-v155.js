@@ -56,8 +56,8 @@ const ECOG_OPTS = [
   { value: '1', text: 'ECOG 2–4 (limited self-care or worse)' },
 ];
 const FORREST_OPTS = [
-  { value: 'Ia', text: 'Ia — active spurting haemorrhage' },
-  { value: 'Ib', text: 'Ib — active oozing haemorrhage' },
+  { value: 'Ia', text: 'Ia — active spurting hemorrhage' },
+  { value: 'Ib', text: 'Ib — active oozing hemorrhage' },
   { value: 'IIa', text: 'IIa — non-bleeding visible vessel' },
   { value: 'IIb', text: 'IIb — adherent clot' },
   { value: 'IIc', text: 'IIc — flat pigmented spot' },

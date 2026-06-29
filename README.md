@@ -1050,6 +1050,32 @@ clinically load-bearing calculator from a source it cannot fetch and verify.
 The two shipped tiles are the percentile companions to the already-live
 `peds-bmi-percentile` (CDC BMI-for-age) and `who-growth-zscore` (WHO 0–2 yr),
 reusing the same `interpLMS`/`lmsToZ` infrastructure fuzzed since spec-v141.
+
+### US-defaults & localization (spec-v184)
+
+A clinician-perspective QA pass found the product was clinically strong but did
+not consistently present **US defaults**. [spec-v184](docs/spec-v184.md) fixed
+that as a presentation-only remediation (no tile added, no compute unit
+changed, every `META.example` and deep-link hash byte-identical):
+
+- **`en-US` locale** declared consistently (`<html lang>`, JSON-LD
+  `inLanguage`, every built page, the a11y assertion) to match `og:locale`.
+- **American-English copy** across rendered bands, labels, banners, and
+  category values (`oedema`→`edema`, `haemoglobin`→`hemoglobin`, `tumour`→`tumor`,
+  `ionised`→`ionized`, `noradrenaline`→`norepinephrine`, …). A new lint gate,
+  `scripts/check-us-english.mjs`, makes a British spelling in a user-facing
+  string a build failure while leaving citations, journal abbreviations, and
+  official instrument names (e.g. the mJOA "Japanese Orthopaedic Association")
+  untouched.
+- **US date display** — the Naegele due date renders `MM/DD/YYYY (ISO)` and the
+  appeal-letter / HIPAA-request templates stamp `Mon D, YYYY`, via pure
+  `usDate`/`usDateLong` formatters; the canonical ISO return value is unchanged.
+- **US-customary unit affordances** — `TEMP_UNITS` (°C|°F) and `HEIGHT_UNITS`
+  (cm|in) join the existing `WEIGHT_UNITS` (kg|lb); the canonical unit is always
+  the default option, so `unitNum` still feeds the compute path metric and the
+  documented examples reproduce exactly. The energy tiles (`mifflin-st-jeor`,
+  `harris-benedict`, `penn-state-ree`) now carry these toggles; the full sweep
+  across the remaining sites is a follow-on wave.
 Both are **Class A** with gate-forced [citation-staleness](docs/citation-staleness.md)
 rows (the "CDC" acronym trips the issuer pattern; the 2000 standard is fixed and
 does not drift). The deferrals are tracked, with their re-open condition, in
@@ -2952,6 +2978,7 @@ failure is a non-zero exit that blocks the merge:
 | Gate (`scripts/`) | Invariant it enforces |
 |-------------------|-----------------------|
 | `grep-check.mjs` | no banned tokens (em-dashes in tests, stale counts, AI/telemetry strings) |
+| `check-us-english.mjs` | no British spelling / non-US drug name in a user-facing surface (`lib/`, `views/`, `app.js`, `index.html`); citations, journal abbreviations, and official instrument names are exempt (spec-v184) |
 | `check-output-safety.mjs` | no view interpolates unescaped user input into the DOM |
 | `check-citations.mjs` | every tile is cited; guideline-issuer tiles carry an accessed-date + a staleness-ledger row |
 | `check-catalog-truth.mjs` | the catalog count (463) is identical across all 13 surfaces; no orphan/removed-tile ids |
@@ -2959,7 +2986,7 @@ failure is a non-zero exit that blocks the merge:
 | `check-pa-staleness.mjs` | every PA rule is source-anchored and within its freshness window |
 | `audit-pa.mjs` | the 46 PA-linter fixtures still reproduce their committed golden reports |
 
-`npm run test` adds the 4,849-test unit suite, the a11y check, and dataset
+`npm run test` adds the 5,852-test unit suite, the a11y check, and dataset
 integrity verification; `npm run test:e2e` runs the Playwright suite against
 real Chromium/Firefox/WebKit — including a full-catalog 320 px no-horizontal-
 scroll sweep over every SPA route **and** every one of the 463 pre-rendered

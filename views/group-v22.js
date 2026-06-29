@@ -83,7 +83,7 @@ const HAMA_LABELS = [
   'Anxious mood', 'Tension', 'Fears', 'Insomnia', 'Intellectual (cognitive)',
   'Depressed mood', 'Somatic (muscular)', 'Somatic (sensory)',
   'Cardiovascular symptoms', 'Respiratory symptoms', 'Gastrointestinal symptoms',
-  'Genitourinary symptoms', 'Autonomic symptoms', 'Behaviour at interview',
+  'Genitourinary symptoms', 'Autonomic symptoms', 'Behavior at interview',
 ];
 const MADRS_LABELS = [
   'Apparent sadness', 'Reported sadness', 'Inner tension', 'Reduced sleep',
@@ -105,7 +105,7 @@ const PCL5_LABELS = [
   'Negative beliefs about self/others/world', 'Blaming self or others',
   'Strong negative feelings', 'Loss of interest in activities',
   'Feeling distant or cut off', 'Trouble feeling positive emotions',
-  'Irritability or angry outbursts', 'Risky or self-destructive behaviour',
+  'Irritability or angry outbursts', 'Risky or self-destructive behavior',
   'Being superalert or watchful', 'Feeling jumpy or easily startled',
   'Difficulty concentrating', 'Trouble falling or staying asleep',
 ];
