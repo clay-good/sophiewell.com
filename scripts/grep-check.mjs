@@ -185,6 +185,14 @@ function catalogScanRanges(rel, text) {
     //   here exactly because the current value is checked separately.
     if (rel === 'docs/spec-seo.md') return [];
     if (rel === 'docs/scope-mdcalc-parity.md') return [];
+    // spec-v168 §5: docs/scope-data-sourced.md is the Data-Sourced
+    // Reference-Table program ledger. It is dense with spec version numbers
+    // (v168-v171) and HTTP status codes (200, 403) sitting next to catalog
+    // words in the shipped/deferred tables, which the 3-digit drift heuristic
+    // would mis-read as putative counts. Its single live-count figure is stated
+    // once in prose and maintained by hand, exactly like the scope ledgers
+    // above; excluded for the same reason.
+    if (rel === 'docs/scope-data-sourced.md') return [];
     return [[1, lines.length]];
   }
   return [];

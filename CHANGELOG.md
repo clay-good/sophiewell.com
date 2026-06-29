@@ -6,6 +6,42 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v169 Data-Sourced Reference-Table program: CDC growth percentiles, +2 — 735 → 737; remaining 5 tiles deferred on sourcing grounds)
+
+- **The spec-v168 Data-Sourced Reference-Table program ships 2 of its proposed 7
+  tiles (735 → 737, +2); the other 5 are deferred per the spec-v97 sourcing
+  gate.** This fourth coverage pass targets the table-driven instruments earlier
+  passes deferred on purpose — the ones defined by a published reference table
+  rather than a closed-form formula. Its governing rule is the spec-v141
+  verbatim-fetch pattern hardened by the spec-v97 ≥ 2-independent-source rule: a
+  table is fetched to disk, parsed programmatically, and cross-verified, or it is
+  **deferred (the `crib-ii` precedent), never hand-transcribed or approximated**.
+- **spec-v169 — CDC growth percentiles (+2, Group E).**
+  `lib/peds-percentile-v169.js` + `views/group-v169.js` (`RV169`), reading new
+  CDC stature/weight LMS strata parsed verbatim into `lib/growth-lms-data.js`.
+  Both **Class A** (gate-forced staleness rows by the "CDC" acronym; the 2000
+  standard is fixed). They are the percentile companions to the live
+  `peds-bmi-percentile` and `who-growth-zscore`.
+  - `cdc-stature-for-age` — CDC 2000 stature-for-age z-score & percentile
+    (2–20 yr), via the LMS transform `z = ((height/M)^L − 1)/(L·S)`.
+  - `cdc-weight-for-age` — CDC 2000 weight-for-age z-score & percentile (2–20 yr),
+    same transform.
+  - **Sourcing:** `statage.csv` / `wtage.csv` fetched from CDC NCHS (2026-06-29,
+    HTTP 200). Cross-verified against each file's **own published percentile
+    columns** (P3..P97): the LMS-reconstructed percentiles match the printed
+    columns to a max relative error of < 4e-9 over 3,924 checks per file — the
+    two sources (coefficients and percentiles) agree to machine precision within
+    one verbatim file (spec-v97 satisfied).
+- **Deferred (sourcing gate failed — re-checked, not re-specced; see
+  `docs/scope-data-sourced.md`).** `pediatric-bp-percentile` (AAP/NHLBI BP
+  regression coefficients are PDF-locked, not verbatim/cross-verifiable; a wrong
+  BP percentile mis-stages hypertension), `kdpi` and `epts` (the whole
+  `optn.transplant.hrsa.gov` domain returned HTTP 403, so the annual mapping
+  tables cannot be fetched verbatim — spec-v170 §6 sourcing gate),
+  `fenton-preterm-growth` (Springer supplementary objects returned HTTP 403),
+  and `intergrowth-efw-percentile` (Wiley publisher returned HTTP 403). Each
+  re-opens the moment a reachable verbatim source appears.
+
 ### Added (spec-v162 Cross-Discipline Completion program: v163–v167, +18 — EBM bedside math, ophthalmology, radiology classification, pharmacokinetics & one-formula gaps; 717 → 735)
 
 - **The spec-v162 Cross-Discipline Completion program ships its five feature specs

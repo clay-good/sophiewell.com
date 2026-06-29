@@ -139,6 +139,7 @@ import * as obV138 from '../../lib/ob-v138.js';
 import * as gynV139 from '../../lib/gyn-v139.js';
 import * as pedsV140 from '../../lib/peds-v140.js';
 import * as pedsGrowthV141 from '../../lib/peds-growth-v141.js';
+import * as pedsPercentileV169 from '../../lib/peds-percentile-v169.js';
 import * as surgV142 from '../../lib/surg-v142.js';
 import * as frailtyV143 from '../../lib/frailty-v143.js';
 import * as orthoV144 from '../../lib/ortho-v144.js';
@@ -246,6 +247,7 @@ const MODULES = {
   'gyn-v139.js': gynV139,
   'peds-v140.js': pedsV140,
   'peds-growth-v141.js': pedsGrowthV141,
+  'peds-percentile-v169.js': pedsPercentileV169,
   'surg-v142.js': surgV142,
   'frailty-v143.js': frailtyV143,
   'ortho-v144.js': orthoV144,

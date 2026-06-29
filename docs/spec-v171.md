@@ -1,5 +1,14 @@
 # spec-v171.md — Preterm & fetal growth percentiles: Fenton 2013 and INTERGROWTH-21st EFW (+2 tiles)
 
+> Status: **DEFERRED (2026-06-29) — sourcing gate failed.** The Fenton 2013 LMS
+> tables ship as Springer supplementary objects (`static-content.springer.com`,
+> HTTP 403) and the INTERGROWTH-21st EFW standard sits behind the Wiley publisher
+> (`uog`, HTTP 403); neither could be fetched verbatim or cross-verified in the
+> build environment. Per the spec-v97 ≥2-source rule, `fenton-preterm-growth` and
+> `intergrowth-efw-percentile` are parked (the `crib-ii` precedent), not
+> hand-transcribed. Re-opens when a verbatim LMS/standard file is reachable.
+> Original status below.
+>
 > Status: **PROPOSED (2026-06-23).** **Closing spec** of the
 > [spec-v168](spec-v168.md) **Data-Sourced Reference-Table** program — and, on the
 > clinician's honest read, the closing spec of the entire four-pass

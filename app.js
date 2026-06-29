@@ -93,6 +93,7 @@ import { renderers as RV164 } from './views/group-v164.js';
 import { renderers as RV165 } from './views/group-v165.js';
 import { renderers as RV166 } from './views/group-v166.js';
 import { renderers as RV167 } from './views/group-v167.js';
+import { renderers as RV169 } from './views/group-v169.js';
 import { renderers as RV149 } from './views/group-v149.js';
 import { renderers as RV63 } from './views/group-v63.js';
 import { renderers as RB } from './views/group-b.js';
@@ -112,7 +113,7 @@ import { resolvePrompt } from './lib/prompt.js';
 // artifact-detect / artifact-route / artifact-handoff helpers were
 // deleted in spec-v29 wave 29-2 (Group C/L).
 
-const RENDERERS = { ...RA, ...RB, ...RC, ...RE, ...RF, ...RG, ...RH, ...RI, ...RJ, ...RKLMNO, ...RV5, ...RV6, ...RV7, ...RV8, ...RV9, ...RV10, ...RV11, ...RV12, ...RV13, ...RV14, ...RV15, ...RV16, ...RV17, ...RV18, ...RV19, ...RV20, ...RV21, ...RV22, ...RV23, ...RV24, ...RV25, ...RV26, ...RV27, ...RV28, ...RV29, ...RV30, ...RV31, ...RV32, ...RV33, ...RV34, ...RV35, ...RV36, ...RV37, ...RV38, ...RV39, ...RV40, ...RV117, ...RV118, ...RV119, ...RV120, ...RV121, ...RV122, ...RV123, ...RV124, ...RV125, ...RV126, ...RV127, ...RV128, ...RV129, ...RV130, ...RV131, ...RV132, ...RV133, ...RV134, ...RV135, ...RV136, ...RV137, ...RV138, ...RV139, ...RV140, ...RV141, ...RV142, ...RV143, ...RV144, ...RV145, ...RV146, ...RV147, ...RV148, ...RV149, ...RV151, ...RV152, ...RV153, ...RV154, ...RV155, ...RV156, ...RV158, ...RV159, ...RV160, ...RV161, ...RV163, ...RV164, ...RV165, ...RV166, ...RV167, ...RV63, ...RPALINT };
+const RENDERERS = { ...RA, ...RB, ...RC, ...RE, ...RF, ...RG, ...RH, ...RI, ...RJ, ...RKLMNO, ...RV5, ...RV6, ...RV7, ...RV8, ...RV9, ...RV10, ...RV11, ...RV12, ...RV13, ...RV14, ...RV15, ...RV16, ...RV17, ...RV18, ...RV19, ...RV20, ...RV21, ...RV22, ...RV23, ...RV24, ...RV25, ...RV26, ...RV27, ...RV28, ...RV29, ...RV30, ...RV31, ...RV32, ...RV33, ...RV34, ...RV35, ...RV36, ...RV37, ...RV38, ...RV39, ...RV40, ...RV117, ...RV118, ...RV119, ...RV120, ...RV121, ...RV122, ...RV123, ...RV124, ...RV125, ...RV126, ...RV127, ...RV128, ...RV129, ...RV130, ...RV131, ...RV132, ...RV133, ...RV134, ...RV135, ...RV136, ...RV137, ...RV138, ...RV139, ...RV140, ...RV141, ...RV142, ...RV143, ...RV144, ...RV145, ...RV146, ...RV147, ...RV148, ...RV149, ...RV151, ...RV152, ...RV153, ...RV154, ...RV155, ...RV156, ...RV158, ...RV159, ...RV160, ...RV161, ...RV163, ...RV164, ...RV165, ...RV166, ...RV167, ...RV169, ...RV63, ...RPALINT };
 
 // ----- Utility registry ----------------------------------------------------
 // Source of truth for routes, names, group, audiences, and clinical flag.
@@ -1492,6 +1493,19 @@ const UTILITIES = [
   // cancer-risk percentage is a real harm -- parked with crib-ii. See
   // lib/peds-growth-v141.js header and docs/spec-v141.md.
   { id: 'peds-bmi-percentile',    name: 'Pediatric BMI-for-Age Percentile (CDC)',           group: 'E', audiences: ['clinicians', 'educators'], clinical: true },
+  // spec-v169 (Data-Sourced Reference-Table program, spec-v168): the CDC 2000
+  // stature-for-age and weight-for-age percentile companions to the BMI-for-age
+  // tile above. views/group-v169.js, lib/peds-percentile-v169.js (RV169), reading
+  // the CDC stature/weight LMS strata parsed verbatim into lib/growth-lms-data.js
+  // and cross-verified against the source files' own published percentile columns
+  // (spec-v97). Both Class A (Group E), kept beside their growth-percentile
+  // siblings. SCOPE: spec-v169 proposed a third tile (pediatric-bp-percentile);
+  // it is DEFERRED on sourcing grounds -- the AAP/NHLBI BP regression
+  // coefficients are PDF-locked and not verbatim/cross-verifiable in the build
+  // environment, and a wrong BP percentile mis-stages hypertension. See
+  // lib/peds-percentile-v169.js header and docs/spec-v169.md.
+  { id: 'cdc-stature-for-age',    name: 'CDC Stature-for-Age Percentile (2-20 yr)',         group: 'E', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'cdc-weight-for-age',     name: 'CDC Weight-for-Age Percentile (2-20 yr)',          group: 'E', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'who-growth-zscore',      name: 'WHO Growth z-Score (0-2 yr)',                      group: 'E', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'mid-parental-height',    name: 'Mid-Parental Target Height',                       group: 'E', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'corrected-age',          name: 'Corrected Gestational Age',                        group: 'E', audiences: ['clinicians', 'educators'], clinical: true },

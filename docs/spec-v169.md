@@ -1,5 +1,14 @@
 # spec-v169.md — Pediatric percentile completion: pediatric BP percentile, CDC stature-for-age, and CDC weight-for-age (+3 tiles)
 
+> Status: **SHIPPED 2 of 3 (2026-06-29).** `cdc-stature-for-age` and
+> `cdc-weight-for-age` shipped (Group E, beside their growth-percentile
+> siblings); `pediatric-bp-percentile` is **deferred** — the AAP 2017 / NHLBI
+> Fourth Report BP regression coefficients are published only in PDF appendices
+> that could not be fetched verbatim and cross-verified in the build environment,
+> and a wrong BP percentile mis-stages hypertension (spec-v97 sourcing gate, the
+> `crib-ii` precedent). It re-opens the moment a verbatim coefficient source is
+> reachable. Original status below.
+>
 > Status: **PROPOSED (2026-06-23).** Feature spec of the
 > [spec-v168](spec-v168.md) **Data-Sourced Reference-Table** program. Adds **3**
 > deterministic pediatric percentile instruments built on **verbatim-fetched

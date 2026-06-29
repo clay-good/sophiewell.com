@@ -1,5 +1,15 @@
 # spec-v168.md — Data-Sourced Reference-Table program: the last high-value frontier — pediatric BP percentiles, transplant allocation, and preterm/fetal growth (program-of-record)
 
+> Status: **PARTIALLY SHIPPED (2026-06-29) — +2 of 7; remaining 5 deferred on
+> sourcing grounds.** v169 shipped its two CDC growth-percentile tiles
+> (`cdc-stature-for-age`, `cdc-weight-for-age`); `pediatric-bp-percentile`,
+> `kdpi`, `epts`, `fenton-preterm-growth`, and `intergrowth-efw-percentile` are
+> deferred per the spec-v97 sourcing gate (the OPTN/Springer/Wiley sources
+> returned HTTP 403 and the BP regression coefficients are PDF-locked; none could
+> be fetched verbatim and cross-verified in the build environment). This is the
+> §5-sanctioned outcome, not an oversight. See `docs/scope-data-sourced.md` for
+> the per-tile ledger. Original status below.
+>
 > Status: **PROPOSED (2026-06-23).** Program-of-record for the **Data-Sourced
 > Reference-Table** initiative — the *fourth pass* after
 > [spec-v150](spec-v150.md) (specialties), [spec-v157](spec-v157.md)

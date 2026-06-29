@@ -1,5 +1,13 @@
 # spec-v170.md — Transplant allocation: KDPI (via KDRI) and EPTS (+2 tiles)
 
+> Status: **DEFERRED (2026-06-29) — sourcing gate failed.** The entire
+> `optn.transplant.hrsa.gov` domain returned HTTP 403 in the build environment,
+> so the annual KDPI and EPTS raw→percentile mapping tables could not be fetched
+> verbatim or cross-verified. Per §6's explicit sourcing gate and the spec-v97
+> ≥2-source rule, both `kdpi` and `epts` are parked (the `crib-ii` precedent),
+> not approximated — an allocation index computed from an unverified mapping is a
+> real harm. Re-opens when the OPTN guides become fetchable. Original status below.
+>
 > Status: **PROPOSED (2026-06-23).** Feature spec of the
 > [spec-v168](spec-v168.md) **Data-Sourced Reference-Table** program. Adds **2**
 > deterministic kidney-transplant allocation indices built on **verbatim-fetched

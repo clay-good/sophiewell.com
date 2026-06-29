@@ -5,7 +5,7 @@
 <h1 align="center">sophiewell.com</h1>
 
 <p align="center">
-  <strong>735 deterministic healthcare calculators that run entirely in your browser.</strong><br>
+  <strong>737 deterministic healthcare calculators that run entirely in your browser.</strong><br>
   Free forever. No servers, no accounts, no telemetry, no AI, no network call after first paint.
 </p>
 
@@ -36,7 +36,7 @@ output; "searchable lookup of static facts" does not qualify. See
 [docs/spec-v10.md](docs/spec-v10.md) for the audience and
 dependency-budget commitments and
 [docs/spec-v29.md](docs/spec-v29.md) for the nurse-first pivot
-and the v29 catalog ledger. At v167 close the catalog is 735
+and the v29 catalog ledger. At v169 close the catalog is 737
 deterministic tiles — every one of them computes from at least
 one user input. The catalog reached its present size on two tracks.
 **New tiles:** spec-v63 added the operations counterpart to the bedside
@@ -186,7 +186,7 @@ production security headers. Any static file server will also work.
 ## How it works and how to use it
 
 Since the spec-v29 nurse-first prune the catalog has grown one
-reviewable spec at a time to **735** deterministic calculators
+reviewable spec at a time to **737** deterministic calculators
 (the full per-version history is in [CHANGELOG.md](CHANGELOG.md)
 and `docs/spec-v*.md`; the most recent bedside additions are
 summarized in the cheat sheets below). They organize across the
@@ -1022,6 +1022,42 @@ and a > 100% total is **flagged, not silently capped**. `duke-endocarditis` (202
 Duke-ISCVID) and `refeeding-risk` (NICE CG32) are **Class B** with
 [citation-staleness](docs/citation-staleness.md) rows; the other three are
 **Class A**. See [docs/spec-v99.md](docs/spec-v99.md).
+
+### Data-Sourced Reference-Table program: CDC growth charts, and a principled deferral (spec-v168, v169, +2 → 737)
+
+[spec-v168](docs/spec-v168.md) is the **fourth-pass** program. The first three
+passes saturated the *formula-shaped* surface — closed-form scores a clinician
+could carry in their head. What remained were the instruments defined by a
+**published reference table** rather than an equation: pediatric BP percentiles,
+the transplant allocation indices, and the preterm/fetal growth standards. These
+were deferred *on purpose* by earlier passes, because shipping them safely
+requires the [spec-v141](docs/spec-v141.md) **verbatim-fetch** discipline —
+fetch the source bytes to disk, parse them programmatically, cross-verify against
+a second independent reproduction, and **never hand-transcribe**.
+
+This pass shipped the two tiles whose source met that bar and **deferred the
+other five that did not** — the project's safety doctrine forbids shipping a
+clinically load-bearing calculator from a source it cannot fetch and verify.
+
+| spec | tile | source (verbatim) | cross-verification | status |
+|---|---|---|---|---|
+| [v169](docs/spec-v169.md) | `cdc-stature-for-age` | CDC NCHS `statage.csv` (HTTP 200) | the file's own published P3..P97 columns, reconstructed from the LMS set: **max rel. error 1.8e-9 over 3,924 checks** | **shipped** |
+| [v169](docs/spec-v169.md) | `cdc-weight-for-age` | CDC NCHS `wtage.csv` (HTTP 200) | same self-cross-verification: **3.9e-9 over 3,924 checks** | **shipped** |
+| [v169](docs/spec-v169.md) | `pediatric-bp-percentile` | AAP/NHLBI BP regression coefficients | PDF-locked, no verbatim/cross-verifiable fetch | deferred |
+| [v170](docs/spec-v170.md) | `kdpi`, `epts` | OPTN annual mapping guides | `optn.transplant.hrsa.gov` → HTTP 403 (whole domain) | deferred |
+| [v171](docs/spec-v171.md) | `fenton-preterm-growth`, `intergrowth-efw-percentile` | Springer / Wiley supplementary | both → HTTP 403 | deferred |
+
+The two shipped tiles are the percentile companions to the already-live
+`peds-bmi-percentile` (CDC BMI-for-age) and `who-growth-zscore` (WHO 0–2 yr),
+reusing the same `interpLMS`/`lmsToZ` infrastructure fuzzed since spec-v141.
+Both are **Class A** with gate-forced [citation-staleness](docs/citation-staleness.md)
+rows (the "CDC" acronym trips the issuer pattern; the 2000 standard is fixed and
+does not drift). The deferrals are tracked, with their re-open condition, in
+[docs/scope-data-sourced.md](docs/scope-data-sourced.md). The cross-verification
+is the point worth dwelling on: because the CDC files carry **both** the LMS
+coefficients and the printed percentiles, a single verbatim file is its own
+second source — the compute is correct iff it reproduces the publisher's own
+percentile columns, which it does to machine precision.
 
 ### Cross-Discipline Completion program: EBM bedside math, ophthalmology, radiology classification, PK & one-formula gaps (spec-v162, v163–v167, +18 → 735)
 
@@ -2878,7 +2914,7 @@ long version, see [docs/architecture.md](docs/architecture.md).
  │  manifests (data/)            │  static │        ▼                     ▼             │
  │        │  scripts/build       │  files  │   lazy-load data shard   pure compute      │
  │        ▼                      │         │   (verified vs manifest)  (lib/*.js)       │
- │  dist/  (735 tool pages,      │         │        │                     │             │
+ │  dist/  (737 tool pages,      │         │        │                     │             │
  │  OG cards, sitemap, SBOM)     │         │        ▼                     ▼             │
  └───────────────────────────────┘         │   service worker cache    result + cite   │
                                             │   (keyed to build hash)                    │
@@ -2900,7 +2936,7 @@ assets:
 
 | Output | Count | Source |
 |--------|------:|--------|
-| Pre-rendered tool pages (`dist/tools/<id>/`) | 735 | `scripts/build-tool-pages.mjs` |
+| Pre-rendered tool pages (`dist/tools/<id>/`) | 737 | `scripts/build-tool-pages.mjs` |
 | Audience hub pages (`dist/for/<audience>/`) | 6 | `scripts/build-hub-pages.mjs` |
 | Topic pages + `/topics/` index | 8 + 1 | `scripts/build-topic-pages.mjs` |
 | `/commitments/` | 1 | `scripts/build-commitments-page.mjs` |
@@ -2935,7 +2971,7 @@ static pages, so a tile can never ship mobile overflow undetected.
 index.html          single-page shell (hero-search combobox + static browse-by-category nav, tile mount)
 styles.css          one stylesheet (responsive; no horizontal scroll — enforced catalog-wide at 320px in CI)
 app.js              router, hero-search wiring, view wiring, the UTILITIES catalog
-                    (735 tiles — the single source of truth; zero runtime deps)
+                    (737 tiles — the single source of truth; zero runtime deps)
 sw.js               service worker — precache shell, cache shards by build hash
 theme.js            light/dark theme toggle (writes only sw-theme, allowlisted)
 lib/input-persist.js opt-in "remember my inputs" (off by default; numbers only)
@@ -2953,12 +2989,12 @@ docs/               specs (spec-v4 onward) + per-tile v11/v12 audit logs +
                     citation-staleness ledger +
                     architecture / threat-model / …
 test/               unit/ (node:test) · integration/ (Playwright) · fixtures/
-dist/               build output (735 tool pages, OG cards, sitemap, SBOM)
+dist/               build output (737 tool pages, OG cards, sitemap, SBOM)
 ```
 
-### Discovery: how a query finds the right tool among 735
+### Discovery: how a query finds the right tool among 737
 
-With 735 tiles, search quality *is* the product — a tool you cannot find does
+With 737 tiles, search quality *is* the product — a tool you cannot find does
 not exist. Discovery is deterministic and offline (no fuzzy-match service, no
 embedding model, no AI). The home `#hero-search` combobox builds its dropdown
 from two complementary rankers, both pure functions of the typed query:
@@ -3031,10 +3067,10 @@ A login-less, AI-free calculator earns trust only if the nurse can see, on the
 tile, exactly which published source produced the number — and tell whether that
 source is current. spec-v54 defined the invariants; spec-v60 built the machinery
 (the gate, the ledger, and the `citationAccessed` convention) and extended it
-across the full 735-tile catalog, pinning the last three unpinned "current
+across the full 737-tile catalog, pinning the last three unpinned "current
 edition" phrases and re-verifying every guideline tile against its latest known
 edition. Three invariants make that auditable, each enforced by the
-`check-citations.mjs` lint gate (in the `npm run lint` chain) over all 735 tiles:
+`check-citations.mjs` lint gate (in the `npm run lint` chain) over all 737 tiles:
 
 | Invariant | Rule | Enforcement |
 |---|---|---|
@@ -3491,7 +3527,7 @@ rules, not soft preferences.
 | `npm run build`          | Copy static files into `dist/` for deployment                     |
 | `npm test`               | Run the full test suite (unit, a11y, grep, data integrity)        |
 | `npm run test:unit`      | Run Node's built-in unit tests (5,740 tests)                      |
-| `npm run test:e2e`       | Build `dist/`, then run Playwright integration tests against real browsers — incl. a full-catalog 320px no-horizontal-scroll sweep over both the SPA routes and the 735 pre-rendered static tool pages, the hub/topic/commitments pages, and the citation-wrap pin |
+| `npm run test:e2e`       | Build `dist/`, then run Playwright integration tests against real browsers — incl. a full-catalog 320px no-horizontal-scroll sweep over both the SPA routes and the 737 pre-rendered static tool pages, the hub/topic/commitments pages, and the citation-wrap pin |
 | `npm run test:a11y`      | Run accessibility checks on every utility view                    |
 | `npm run lint`           | ESLint + the CI gate chain: grep-check, output-safety, citation-integrity, catalog-truth, commitments, PA staleness, PA audit |
 | `npm run data:refresh`   | Re-fetch and re-shard every public dataset                        |
@@ -3575,7 +3611,7 @@ build, integrity-verified data shards) are documented in
 - [docs/spec-v11.md](docs/spec-v11.md) — correctness-floor spec:
   per-tile audit protocol, specialty-named groups, optional
   source-quoted `interpretation` field. Audit coverage is **complete
-  — 735/735 tiles** carry a committed per-tile audit log
+  — 737/737 tiles** carry a committed per-tile audit log
   (`docs/audits/v11/<id>.md` for the pre-v78 catalog;
   `docs/audits/v12/<id>.md` for the tiles added since — the
   spec-v78–v83 billing & coding program, the spec-v85
