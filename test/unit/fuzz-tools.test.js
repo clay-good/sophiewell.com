@@ -164,6 +164,7 @@ import * as ophthoV164 from '../../lib/ophtho-v164.js';
 import * as radiologyV165 from '../../lib/radiology-v165.js';
 import * as pkV166 from '../../lib/pk-v166.js';
 import * as oneformulaV167 from '../../lib/oneformula-v167.js';
+import * as ltcgaV173 from '../../lib/ltcga-v173.js';
 
 const MODULES = {
   'clinical.js': clinical,
@@ -272,6 +273,7 @@ const MODULES = {
   'radiology-v165.js': radiologyV165,
   'pk-v166.js': pkV166,
   'oneformula-v167.js': oneformulaV167,
+  'ltcga-v173.js': ltcgaV173,
 };
 
 const MATRIX = [0, -1, 1e9, NaN, Infinity, -Infinity, '', undefined, null];

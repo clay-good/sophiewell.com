@@ -4498,3 +4498,18 @@ Worked example: Thresholds of forty, forty-five, fifty, and sixty-five give a fo
 Citation: Rutgeerts P, Geboes K, Vantrappen G, et al. Predictability of the postoperative course of Crohn disease. Gastroenterology. 1990;99(4):956-963. (Grade definitions and the recurrence threshold cross-verified against IBD-endoscopy references; 2 or more sources, spec-v97.)
 Formula: The neoterminal-ileum endoscopic grade runs from i-zero, no lesions, through i-one, five or fewer aphthous lesions, i-two, more than five aphthous lesions with normal mucosa between or lesions confined to the anastomosis, i-three, diffuse aphthous ileitis, to i-four, diffuse inflammation with large ulcers, nodules, or stenosis. A grade of i-two or higher predicts clinical recurrence.
 Worked example: A grade of i-two predicts clinical recurrence, whereas i-one is low risk.
+
+### BIMS (Brief Interview for Mental Status, MDS 3.0)
+Citation: Saliba D, Buchanan J, Edelen MO, et al. MDS 3.0: brief interview for mental status. J Am Med Dir Assoc. 2012. (Item scoring per the CMS MDS 3.0 Section C form; cross-verified across two or more sources, spec-v97.)
+Formula: The summary score, from zero to fifteen, sums word repetition (zero to three), temporal orientation for year (zero to three), month (zero to two), and day of week (zero to one), and delayed recall of three words with partial credit (two spontaneous, one after a category cue, zero not recalled). Thirteen to fifteen is cognitively intact, eight to twelve moderately impaired, and zero to seven severely impaired.
+Worked example: Repetition three, year three, month two, day one, and recall two, two, and zero give a summary of thirteen, cognitively intact.
+
+### AD8 Dementia Screening Interview
+Citation: Galvin JE, Roe CM, Powlishta KK, et al. The AD8: a brief informant interview to detect dementia. Neurology. 2005. (Washington University Knight ADRC; cross-verified across two or more sources, spec-v97.)
+Formula: The total, from zero to eight, counts the informant items endorsed as a change due to thinking or memory problems. Zero to one is normal; two or more suggests cognitive impairment warranting further evaluation.
+Worked example: Two endorsed items give a total of two, which suggests cognitive impairment, whereas one is normal.
+
+### CDR Sum of Boxes (dementia staging)
+Citation: Morris JC. The Clinical Dementia Rating (CDR): current version and scoring rules. Neurology. 1993. Staging ranges: O'Bryant SE, et al. Arch Neurol. 2008. (Cross-verified against the WashU CDR scoring rules; two or more sources, spec-v97.)
+Formula: The sum of boxes, from zero to eighteen, adds the six CDR boxes: memory, orientation, judgment and problem-solving, community affairs, and home and hobbies (each zero, one-half, one, two, or three) and personal care (zero, one, two, or three, with no one-half level). A sum of zero is no dementia; one-half to four is questionable to very mild; four and one-half to nine is mild; nine and one-half to fifteen and one-half is moderate; sixteen to eighteen is severe.
+Worked example: Memory one, orientation one, judgment one-half, community one, home and hobbies one, and personal care zero give a sum of four and one-half, mild dementia.

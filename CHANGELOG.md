@@ -6,6 +6,43 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v173 LTC-GA cognition & dementia staging: BIMS, AD8, CDR-SOB, +3 — 737 → 740; 5 of 8 proposed tiles deferred on sourcing grounds)
+
+- **The spec-v172 Long-Term Care & Geriatric Assessment program opens with
+  spec-v173, shipping 3 of its 8 proposed cognition / dementia-staging tiles
+  (737 → 740, +3).** Each ships only because its **exact item-level scoring was
+  re-fetched and cross-verified against ≥ 2 independent sources** (spec-v97); the
+  other five are deferred pending a clean verbatim verification (the spec-v148
+  §7.1 deferral pattern). All three are Group G, Class A, and **trip no
+  `ISSUER_PATTERN`** (CMS/MDS method and journal issuers are not in it), so v173
+  adds **no `docs/citation-staleness.md` row**.
+- **`bims` — Brief Interview for Mental Status (MDS 3.0 §C).** Item scoring taken
+  from the verbatim CMS MDS 3.0 Section C form (C0200 repetition 0–3; C0300A year
+  0–3, C0300B month 0–2, C0300C day 0–1; C0400A/B/C recall 0–2 each with the
+  published category-cue partial credit) and Saliba JAMDA 2012; summary 0–15 with
+  bands 13–15 cognitively intact / 8–12 moderate / 0–7 severe.
+- **`ad8` — AD8 informant dementia screen.** Sum of the 8 "Yes, a change"
+  informant items, 0–8; 0–1 normal, ≥ 2 suggests cognitive impairment (Galvin
+  Neurology 2005; Washington University Knight ADRC).
+- **`cdr-sob` — Clinical Dementia Rating, Sum of Boxes.** Sum of the six CDR boxes
+  (memory, orientation, judgment & problem-solving, community affairs, home &
+  hobbies each 0/0.5/1/2/3; personal care 0/1/2/3, no 0.5), 0–18, with the
+  O'Bryant 2008 (Arch Neurol) global-CDR staging (0 none; 0.5–4.0 questionable–
+  very mild; 4.5–9.0 mild; 9.5–15.5 moderate; 16.0–18.0 severe). Boxes/staging
+  cross-verified against the WashU CDR scoring rules (Morris Neurology 1993).
+- New `lib/ltcga-v173.js` (exports `bims`, `ad8`, `cdrSob`) in the
+  `fuzz-tools.test.js` `MODULES` list (zero non-finite leaks); renderers in
+  `views/group-v173.js` (`RV173`, spread into `app.js` `RENDERERS`); +3 `META`
+  entries with inline citation + url + accessed + ≥3 boundary worked examples each
+  (band-flips: BIMS 7→8, AD8 1→2, CDR-SOB 4.0→4.5 and 9.0→9.5); +3 spec-v11 audit
+  logs; +3 `docs/clinical-citations.md` rows. Catalog count moved on all 13
+  catalog-truth surfaces.
+- **Deferred (sourcing/scope gate; see `docs/spec-v173.md`):** `iqcode-short`
+  (16 informant item texts to be sourced verbatim), `gpcog` (patient-section
+  point allocation + informant threshold), `mds-cps` (CPS decision-tree
+  boundaries), `global-deterioration-scale` and `fast-dementia` (feature→stage
+  selection logic + FAST substage wording).
+
 ### Changed (spec-v184 US-defaults & localization: en-US locale, American-English copy, US date display, °F/lb/inch affordances — no tile delta, 737 → 737)
 
 - **The site now presents US defaults to a US clinician end to end, with zero

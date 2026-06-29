@@ -1,10 +1,26 @@
 # spec-v173.md — Cognition & dementia staging: BIMS, AD8, GPCOG, Short IQCODE, Reisberg GDS, FAST, CDR-SOB, and the MDS Cognitive Performance Scale (+8 tiles)
 
-> Status: **PROPOSED (2026-06-24).** Feature spec of the [spec-v172](spec-v172.md)
-> **Long-Term Care & Geriatric Assessment (LTC-GA)** program — its first
-> implementation spec, opening the reserved **v173–v182** band. Adds **8**
-> deterministic cognition-screening and dementia-staging instruments that fill
-> confirmed gaps in the long-term-care surface. None duplicates a live tile.
+> Status: **SHIPPED 3 of 8 (2026-06-29).** First implementation spec of the
+> [spec-v172](spec-v172.md) **Long-Term Care & Geriatric Assessment (LTC-GA)**
+> program, opening the reserved **v173–v182** band. The three tiles whose **exact
+> item-level scoring was re-fetched and cross-verified against ≥ 2 independent
+> sources** ([spec-v97](spec-v97.md)) shipped — **`bims`** (item scoring from the
+> verbatim CMS MDS 3.0 Section C form + Saliba JAMDA 2012; bands 13–15/8–12/0–7),
+> **`ad8`** (Galvin Neurology 2005 + WashU Knight ADRC; sum 0–8, ≥ 2 impairment),
+> and **`cdr-sob`** (Morris 1993 boxes + O'Bryant Arch Neurol 2008 staging + WashU
+> CDR rules; sum 0–18). Catalog **737 → 740 (+3)**.
+>
+> **Deferred (sourcing/scope gate — re-opens when verbatim-verifiable):** the
+> other five proposed tiles are parked pending a clean ≥ 2-source verbatim
+> verification of their exact scoring at implementation, the
+> [spec-v148](spec-v148.md) §7.1 deferral pattern: **`iqcode-short`** (the 16
+> informant item texts must be sourced verbatim, not the mean), **`gpcog`** (exact
+> patient-section point allocation + informant-section threshold), **`mds-cps`**
+> (the CPS decision-tree branch boundaries), **`global-deterioration-scale`** and
+> **`fast-dementia`** (the feature→stage selection logic and FAST substage
+> wording). They remain reserved for a follow-on v173 wave / a later LTC-GA spec.
+> None duplicates a live tile (collision check re-run: `bims`/`ad8`/`cdr-sob`
+> absent; `global-deterioration-scale`≠`gds15`, `fast-dementia`≠`fast` confirmed).
 >
 > Catalog effect at v173: **live count + 8** tiles (the catalog-truth gate
 > enforces agreement; the implementing session uses the live `UTILITIES.length`
