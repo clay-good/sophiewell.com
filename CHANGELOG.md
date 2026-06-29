@@ -6,6 +6,51 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v174 LTC-GA behavioral symptoms & observational delirium / mood: Nu-DESC, DOSS, Cornell-CSDD, interRAI-ABS, CMAI, +5 — 740 → 745)
+
+- **The spec-v172 Long-Term Care & Geriatric Assessment program continues with
+  spec-v174, shipping all 5 of its proposed behavioral-symptom / observational
+  delirium / mood tiles (740 → 745, +5).** Each ships because its **exact item
+  list, per-item range, and bands were re-fetched and cross-verified against ≥ 2
+  independent sources** (spec-v97). All five are Group G, Class A, and **trip no
+  `ISSUER_PATTERN`** (journal/author issuers; CIHI/interRAI are not uppercase
+  acronyms in the pattern), so v174 adds **no `docs/citation-staleness.md` row**.
+- **`nu-desc` — Nursing Delirium Screening Scale.** Five shift-observation
+  features (disorientation, inappropriate behavior, inappropriate communication,
+  illusions/hallucinations, psychomotor retardation), each 0/1/2; total 0–10, ≥ 2
+  a positive delirium screen (Gaudreau *J Pain Symptom Manage* 2005). The
+  nurse-observation complement to the interview-based `cam` / `4at`.
+- **`doss` — Delirium Observation Screening Scale (13-item short form).** Each
+  behavior present (1) / absent (0); total 0–13, ≥ 3 suggests delirium
+  (Schuurmans *Res Theory Nurs Pract* 2003). The three reverse-scored items on the
+  original form (attention, time-of-day, recent recall) are phrased in their
+  abnormal direction so the published net 0/1 mapping is unchanged.
+- **`cornell-csdd` — Cornell Scale for Depression in Dementia.** 19 items in five
+  domains, each *a* (unable to evaluate → 0, reported unrated) / 0 / 1 / 2; total
+  0–38, > 10 probable and > 18 definite major depression (Alexopoulos *Biol
+  Psychiatry* 1988). Surfaces inline that `gds15` / `phq9` self-report scales are
+  not valid in moderate-to-severe dementia — the reason the Cornell scale exists.
+- **`interrai-abs` — interRAI Aggressive Behavior Scale.** Four behaviors each
+  0–3 on the MDS 7-day frequency scale; total 0–12 (Perlman & Hirdes *JAGS* 2008).
+  **Sourcing correction:** the draft's 0–4 per-item range (which would give 0–16)
+  was fixed to **0–3 / 0–12** by cross-verification against the CIHI interRAI job
+  aid. The original scale has no named bands; the none/mild/moderate/severe split
+  (0 / 1–2 / 3–5 / 6–12) is attributed to the secondary nursing-home literature.
+- **`cmai` — Cohen-Mansfield Agitation Inventory (29-item long form).** Each
+  behavior rated 1 (never) to 7 (several times an hour); total **29–203** — the
+  floor is 29, not 0 (Cohen-Mansfield *J Gerontol* 1989). The CMAI manual advises
+  against a total severity cut, so the tile reports the total as a **frequency
+  quantifier** plus the most-cited three-factor subscales (aggressive / physically
+  non-aggressive / verbally agitated; membership varies by population, noted).
+- New `lib/ltcga-v174.js` (exports `nuDesc`, `doss`, `cornellCsdd`,
+  `interraiAbs`, `cmai`) in the `fuzz-tools.test.js` `MODULES` list (zero
+  non-finite leaks); renderers in `views/group-v174.js` (`RV174`, spread into
+  `app.js` `RENDERERS`); +5 `META` entries with inline citation + url + accessed +
+  boundary worked examples with band-flips (Nu-DESC 1→2, DOSS 2→3, Cornell 10→11
+  and 18→19, ABS mild/moderate and moderate/severe boundaries, CMAI floor 29 /
+  ceiling 203); +5 spec-v11 audit logs; +5 `docs/clinical-citations.md` rows.
+  Catalog count moved on all 13 catalog-truth surfaces.
+
 ### Added (spec-v173 LTC-GA cognition & dementia staging: BIMS, AD8, CDR-SOB, +3 — 737 → 740; 5 of 8 proposed tiles deferred on sourcing grounds)
 
 - **The spec-v172 Long-Term Care & Geriatric Assessment program opens with

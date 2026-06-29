@@ -1,6 +1,19 @@
 # spec-v174.md — Behavioral symptoms of dementia & observational delirium screens: Nu-DESC, DOSS, Cornell-CSDD, interRAI ABS, CMAI (+5 tiles)
 
-> Status: **PROPOSED (2026-06-24).** Feature spec of the
+> Status: **SHIPPED 5 of 5 (2026-06-29).** Second implementation spec of the
+> [spec-v172](spec-v172.md) **Long-Term Care & Geriatric Assessment (LTC-GA)**
+> program. All five tiles shipped — **`nu-desc`**, **`doss`**, **`cornell-csdd`**,
+> **`interrai-abs`**, **`cmai`** — each with its exact item list, per-item range,
+> and bands re-fetched and cross-verified against ≥ 2 independent sources
+> ([spec-v97](spec-v97.md)). Catalog **740 → 745 (+5)**. Two corrections came out
+> of the verification and are recorded in the audit logs: the **`interrai-abs`
+> per-item range was corrected from the draft's 0–4 to 0–3 (total 0–12)** against
+> the CIHI interRAI job aid, and **`cmai` ships as a frequency quantifier with no
+> total severity band** — the CMAI manual explicitly advises against summing a
+> severity score, so the tile reports the 29–203 total plus the most-cited
+> three-factor subscales (membership varies by population, noted).
+>
+> Original proposal follows. Feature spec of the
 > [spec-v172](spec-v172.md) **Long-Term Care & Geriatric Assessment (LTC-GA)**
 > program (§3.2). Adds **5** deterministic LTC instruments that fill confirmed
 > gaps: the two nurse-observation delirium screens completed across a shift

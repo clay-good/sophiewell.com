@@ -4513,3 +4513,28 @@ Worked example: Two endorsed items give a total of two, which suggests cognitive
 Citation: Morris JC. The Clinical Dementia Rating (CDR): current version and scoring rules. Neurology. 1993. Staging ranges: O'Bryant SE, et al. Arch Neurol. 2008. (Cross-verified against the WashU CDR scoring rules; two or more sources, spec-v97.)
 Formula: The sum of boxes, from zero to eighteen, adds the six CDR boxes: memory, orientation, judgment and problem-solving, community affairs, and home and hobbies (each zero, one-half, one, two, or three) and personal care (zero, one, two, or three, with no one-half level). A sum of zero is no dementia; one-half to four is questionable to very mild; four and one-half to nine is mild; nine and one-half to fifteen and one-half is moderate; sixteen to eighteen is severe.
 Worked example: Memory one, orientation one, judgment one-half, community one, home and hobbies one, and personal care zero give a sum of four and one-half, mild dementia.
+
+### Nu-DESC (Nursing Delirium Screening Scale)
+Citation: Gaudreau JD, Gagnon P, Harel F, Tremblay A, Roy MA. Fast, systematic, and continuous delirium assessment in hospitalized patients: the nursing delirium screening scale. J Pain Symptom Manage. 2005. (Cross-verified across two or more sources, spec-v97.)
+Formula: Five features observed over a nursing shift (disorientation, inappropriate behavior, inappropriate communication, illusions or hallucinations, and psychomotor retardation) are each rated zero, one, or two, summing to a total of zero to ten. A total of two or more is a positive screen for delirium.
+Worked example: Disorientation one and inappropriate behavior one, the rest zero, give a total of two, a positive delirium screen.
+
+### DOSS (Delirium Observation Screening Scale)
+Citation: Schuurmans MJ, Shortridge-Baggett LM, Duursma SA. The Delirium Observation Screening Scale: a screening instrument for delirium. Res Theory Nurs Pract. 2003. (Thirteen-item short form; cross-verified across two or more sources, spec-v97.)
+Formula: Thirteen behaviors observed over a shift are each scored present (one) or absent (zero), summing to a total of zero to thirteen; a total of three or more suggests delirium. Three items (attention, time-of-day orientation, and recent recall) are reverse-scored on the original form and are phrased in their abnormal direction so a present answer scores one.
+Worked example: Three behaviors present give a total of three, which suggests delirium, whereas two is below the cut.
+
+### Cornell Scale for Depression in Dementia
+Citation: Alexopoulos GS, Abrams RC, Young RC, Shamoian CA. Cornell Scale for Depression in Dementia. Biol Psychiatry. 1988. (Cross-verified against the Cornell administration-and-scoring form; two or more sources, spec-v97.)
+Formula: Nineteen items across five domains (mood-related signs, behavioral disturbance, physical signs, cyclic functions, and ideational disturbance) are each rated absent (zero), mild or intermittent (one), or severe (two); an item that cannot be evaluated scores zero and is reported as unrated. The total runs zero to thirty-eight: above ten suggests probable major depression and above eighteen definite major depression. Built for moderate-to-severe dementia, where self-report mood scales are not valid.
+Worked example: Five items severe and one mild give a total of eleven, probable major depression.
+
+### interRAI Aggressive Behavior Scale (ABS)
+Citation: Perlman CM, Hirdes JP. The Aggressive Behavior Scale: a new scale to measure aggression based on the Minimum Data Set. J Am Geriatr Soc. 2008. (Cross-verified against the CIHI interRAI job aid; two or more sources, spec-v97.)
+Formula: Four behaviors (verbal abuse, physical abuse, socially inappropriate or disruptive behavior, and resisting care) are each rated on the seven-day frequency scale from zero (not exhibited) to three (daily), summing to a total of zero to twelve. The original scale defines no named bands; a secondary nursing-home convention reads zero as none, one to two mild, three to five moderate, and six to twelve severe.
+Worked example: Verbal abuse one and physical abuse two give a total of three, the moderate band.
+
+### Cohen-Mansfield Agitation Inventory (CMAI)
+Citation: Cohen-Mansfield J, Marx MS, Rosenthal AS. A description of agitation in a nursing home. J Gerontol. 1989. (Twenty-nine-item long form; cross-verified against the nineteen ninety-one CMAI manual; two or more sources, spec-v97.)
+Formula: Twenty-nine agitated behaviors are each rated for frequency over the prior two weeks from one (never) to seven (several times an hour), summing to a total of twenty-nine to two hundred three. The floor is twenty-nine, not zero. The CMAI manual advises against a total severity cut-point; it is a frequency quantifier, also read by its three factor subscales (aggressive, physically non-aggressive, and verbally agitated).
+Worked example: Every behavior rated never gives the floor total of twenty-nine; every behavior rated several times an hour gives the ceiling of two hundred three.
