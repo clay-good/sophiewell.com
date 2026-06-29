@@ -6,6 +6,42 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v175 LTC-GA observational pain in the cognitively impaired elder: Abbey Pain Scale, CNPI, DOLOPLUS-2, +3 — 745 → 748)
+
+- **The spec-v172 Long-Term Care & Geriatric Assessment program continues with
+  spec-v175 (cluster §3.3), shipping all 3 of its proposed observational
+  pain-assessment instruments for the cognitively impaired / nonverbal elder
+  (745 → 748, +3).** Each ships because its **exact item list, per-item range, and
+  bands were re-fetched and cross-verified against ≥ 2 independent sources**
+  (spec-v97). All three are Group G, Class A, and **trip no `ISSUER_PATTERN`**
+  (journal/author issuers), so v175 adds **no `docs/citation-staleness.md` row**.
+  The catalog already carried `painad` and `cpot`; these are the additional
+  validated scales an LTC pain protocol frequently *mandates* by name.
+- **`abbey-pain` — Abbey Pain Scale.** Six observed items (vocalization, facial
+  expression, body language, behavioral change, physiological change, physical
+  change), each 0–3; total 0–18, banded 0–2 no pain, 3–7 mild, 8–13 moderate, 14+
+  severe (Abbey *Int J Palliat Nurs* 2004). The standard scale in Australian and
+  UK aged care. The 7→8 mild→moderate and 13→14 moderate→severe edges are
+  unit-tested.
+- **`cnpi` — Checklist of Nonverbal Pain Indicators.** Six behaviors
+  (nonverbal/verbal vocal complaints, facial grimacing, bracing, restlessness,
+  rubbing), each present/absent observed *separately at rest and with movement*
+  (Feldt *Pain Manag Nurs* 2000). The compute carries two independent 0–6 sums
+  (rest, movement) and a 0–12 combined total and **never conflates the two
+  conditions**; a blank condition renders a complete-the-fields fallback. This is
+  the with-movement structure `painad` does not provide.
+- **`doloplus-2` — DOLOPLUS-2 behavioral pain assessment.** Ten items across
+  somatic (5, 0–15), psychomotor (2, 0–6), and psychosocial (3, 0–9) domains,
+  each 0–3; total 0–30, with a **score ≥ 5 indicating pain** (Wary *Eur J Palliat
+  Care* 2001). The standard observational scale in French and European geriatric
+  care. The 4→5 threshold and the domain subtotals are unit-tested.
+- New `lib/ltcga-v175.js` (`abbeyPain`, `cnpi`, `doloplus2`; added to the
+  `test/unit/fuzz-tools.test.js` `MODULES` list, **zero non-finite leaks**) and
+  `views/group-v175.js` (`RV175`, spread into `app.js` `RENDERERS`). +3 META
+  entries with band-flip worked examples; +3 unit-test files; +3 spec-v11 audit
+  logs; +3 `docs/clinical-citations.md` rows. The catalog count moved on all 13
+  catalog-truth surfaces using the live `UTILITIES.length` + 3.
+
 ### Added (spec-v174 LTC-GA behavioral symptoms & observational delirium / mood: Nu-DESC, DOSS, Cornell-CSDD, interRAI-ABS, CMAI, +5 — 740 → 745)
 
 - **The spec-v172 Long-Term Care & Geriatric Assessment program continues with

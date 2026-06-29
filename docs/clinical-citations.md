@@ -4538,3 +4538,18 @@ Worked example: Verbal abuse one and physical abuse two give a total of three, t
 Citation: Cohen-Mansfield J, Marx MS, Rosenthal AS. A description of agitation in a nursing home. J Gerontol. 1989. (Twenty-nine-item long form; cross-verified against the nineteen ninety-one CMAI manual; two or more sources, spec-v97.)
 Formula: Twenty-nine agitated behaviors are each rated for frequency over the prior two weeks from one (never) to seven (several times an hour), summing to a total of twenty-nine to two hundred three. The floor is twenty-nine, not zero. The CMAI manual advises against a total severity cut-point; it is a frequency quantifier, also read by its three factor subscales (aggressive, physically non-aggressive, and verbally agitated).
 Worked example: Every behavior rated never gives the floor total of twenty-nine; every behavior rated several times an hour gives the ceiling of two hundred three.
+
+### Abbey Pain Scale
+Citation: Abbey J, Piller N, De Bellis A, et al. The Abbey pain scale: a 1-minute numerical indicator for people with end-stage dementia. Int J Palliat Nurs. 2004. (Cross-verified against the geriatricpain.org administration form; two or more sources, spec-v97.)
+Formula: Six items observed in people with end-stage dementia (vocalization, facial expression, change in body language, behavioural change, physiological change, and physical change) are each rated zero (absent), one (mild), two (moderate), or three (severe), summing to a total of zero to eighteen. The total maps to no pain (zero to two), mild (three to seven), moderate (eight to thirteen), or severe (fourteen or more).
+Worked example: Four items rated two and two rated zero give a total of eight, the moderate band, at the boundary above the mild range.
+
+### CNPI (Checklist of Nonverbal Pain Indicators)
+Citation: Feldt KS. The checklist of nonverbal pain indicators (CNPI). Pain Manag Nurs. 2000. (Cross-verified against the geriatricpain.org form; two or more sources, spec-v97.)
+Formula: Six behaviours (nonverbal vocal complaints, facial grimacing or wincing, bracing, restlessness, rubbing, and verbal vocal complaints) are each scored present (one) or absent (zero), observed separately at rest and with movement. The rest score and the with-movement score each run zero to six, summing to a combined total of zero to twelve. There is no formal cut: any indicator present in either condition is clinically meaningful.
+Worked example: No indicators at rest and three with movement give a rest score of zero, a movement score of three, and a combined total of three, with pain indicators observed.
+
+### DOLOPLUS-2 (behavioural pain assessment)
+Citation: Wary B, Doloplus collective; Lefebvre-Chapiro S. The Doloplus-2 scale, evaluating pain in the elderly. Eur J Palliat Care. 2001. (Cross-verified against doloplus.fr and the BMC Geriatrics systematic review; two or more sources, spec-v97.)
+Formula: Ten items across three reaction domains (somatic with five items, psychomotor with two, and psychosocial with three) are each rated zero to three, summing to a total of zero to thirty (somatic zero to fifteen, psychomotor zero to six, psychosocial zero to nine). A score of five or more out of thirty indicates the presence of pain.
+Worked example: A somatic complaint rated two with three further somatic items rated one give a total of five, at the threshold that indicates pain, whereas a total of four is below it.

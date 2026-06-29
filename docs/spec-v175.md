@@ -1,10 +1,14 @@
 # spec-v175.md — Pain in the cognitively impaired / nonverbal elder: Abbey Pain Scale, CNPI, DOLOPLUS-2 (+3 tiles)
 
-> Status: **PROPOSED (2026-06-24).** Feature spec of the [spec-v172](spec-v172.md)
-> **Long-Term Care & Geriatric Assessment (LTC-GA)** program, cluster **§3.3 —
-> Pain in the cognitively impaired / nonverbal elder.** Adds **3** deterministic
-> observational pain-assessment instruments that fill confirmed LTC gaps. None
-> duplicates a live tile.
+> Status: **SHIPPED 3 of 3 (2026-06-29).** Third implementation spec of the
+> [spec-v172](spec-v172.md) **Long-Term Care & Geriatric Assessment (LTC-GA)**
+> program, cluster **§3.3 — Pain in the cognitively impaired / nonverbal elder.**
+> Adds **3** deterministic observational pain-assessment instruments
+> (`abbey-pain`, `cnpi`, `doloplus-2`) that fill confirmed LTC gaps. None
+> duplicates a live tile. The Abbey bands (0–2 / 3–7 / 8–13 / 14+), the CNPI
+> two-condition 0–6 + 0–6 → 0–12 scoring, and the DOLOPLUS-2 ≥ 5 threshold were
+> re-fetched and cross-verified against ≥ 2 independent sources at implementation
+> (spec-v97); all three are Class A and trip no `ISSUER_PATTERN`.
 >
 > Catalog effect at v175: **live count + 3 tiles** — never a number copied from
 > this document or the v172 umbrella (the running counts carry a known off-by-one;

@@ -96,6 +96,7 @@ import { renderers as RV167 } from './views/group-v167.js';
 import { renderers as RV169 } from './views/group-v169.js';
 import { renderers as RV173 } from './views/group-v173.js';
 import { renderers as RV174 } from './views/group-v174.js';
+import { renderers as RV175 } from './views/group-v175.js';
 import { renderers as RV149 } from './views/group-v149.js';
 import { renderers as RV63 } from './views/group-v63.js';
 import { renderers as RB } from './views/group-b.js';
@@ -115,7 +116,7 @@ import { resolvePrompt } from './lib/prompt.js';
 // artifact-detect / artifact-route / artifact-handoff helpers were
 // deleted in spec-v29 wave 29-2 (Group C/L).
 
-const RENDERERS = { ...RA, ...RB, ...RC, ...RE, ...RF, ...RG, ...RH, ...RI, ...RJ, ...RKLMNO, ...RV5, ...RV6, ...RV7, ...RV8, ...RV9, ...RV10, ...RV11, ...RV12, ...RV13, ...RV14, ...RV15, ...RV16, ...RV17, ...RV18, ...RV19, ...RV20, ...RV21, ...RV22, ...RV23, ...RV24, ...RV25, ...RV26, ...RV27, ...RV28, ...RV29, ...RV30, ...RV31, ...RV32, ...RV33, ...RV34, ...RV35, ...RV36, ...RV37, ...RV38, ...RV39, ...RV40, ...RV117, ...RV118, ...RV119, ...RV120, ...RV121, ...RV122, ...RV123, ...RV124, ...RV125, ...RV126, ...RV127, ...RV128, ...RV129, ...RV130, ...RV131, ...RV132, ...RV133, ...RV134, ...RV135, ...RV136, ...RV137, ...RV138, ...RV139, ...RV140, ...RV141, ...RV142, ...RV143, ...RV144, ...RV145, ...RV146, ...RV147, ...RV148, ...RV149, ...RV151, ...RV152, ...RV153, ...RV154, ...RV155, ...RV156, ...RV158, ...RV159, ...RV160, ...RV161, ...RV163, ...RV164, ...RV165, ...RV166, ...RV167, ...RV169, ...RV173, ...RV174, ...RV63, ...RPALINT };
+const RENDERERS = { ...RA, ...RB, ...RC, ...RE, ...RF, ...RG, ...RH, ...RI, ...RJ, ...RKLMNO, ...RV5, ...RV6, ...RV7, ...RV8, ...RV9, ...RV10, ...RV11, ...RV12, ...RV13, ...RV14, ...RV15, ...RV16, ...RV17, ...RV18, ...RV19, ...RV20, ...RV21, ...RV22, ...RV23, ...RV24, ...RV25, ...RV26, ...RV27, ...RV28, ...RV29, ...RV30, ...RV31, ...RV32, ...RV33, ...RV34, ...RV35, ...RV36, ...RV37, ...RV38, ...RV39, ...RV40, ...RV117, ...RV118, ...RV119, ...RV120, ...RV121, ...RV122, ...RV123, ...RV124, ...RV125, ...RV126, ...RV127, ...RV128, ...RV129, ...RV130, ...RV131, ...RV132, ...RV133, ...RV134, ...RV135, ...RV136, ...RV137, ...RV138, ...RV139, ...RV140, ...RV141, ...RV142, ...RV143, ...RV144, ...RV145, ...RV146, ...RV147, ...RV148, ...RV149, ...RV151, ...RV152, ...RV153, ...RV154, ...RV155, ...RV156, ...RV158, ...RV159, ...RV160, ...RV161, ...RV163, ...RV164, ...RV165, ...RV166, ...RV167, ...RV169, ...RV173, ...RV174, ...RV175, ...RV63, ...RPALINT };
 
 // ----- Utility registry ----------------------------------------------------
 // Source of truth for routes, names, group, audiences, and clinical flag.
@@ -1534,6 +1535,15 @@ const UTILITIES = [
   { id: 'cornell-csdd',           name: 'Cornell Scale for Depression in Dementia',          group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'interrai-abs',           name: 'interRAI Aggressive Behavior Scale (ABS)',          group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'cmai',                   name: 'Cohen-Mansfield Agitation Inventory (CMAI)',        group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+
+  // spec-v175 (third feature spec of the spec-v172 LTC-GA program, cluster
+  // §3.3): observational pain-assessment instruments for the cognitively
+  // impaired / nonverbal elder. views/group-v175.js, lib/ltcga-v175.js (RV175).
+  // All three proposed tiles ship; each item list, per-item range, and band was
+  // re-fetched and cross-verified against >= 2 independent sources (spec-v97).
+  { id: 'abbey-pain',             name: 'Abbey Pain Scale',                                  group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'cnpi',                   name: 'CNPI (Checklist of Nonverbal Pain Indicators)',     group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'doloplus-2',             name: 'DOLOPLUS-2 (behavioral pain assessment)',          group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
 
   // spec-v6 §3.3: lab result interpreter. Patient-decoder category.
   { id: 'lab-interpret',       name: 'Lab Result Interpreter',                           group: 'C', audiences: ['patients', 'clinicians', 'educators'], clinical: true },
