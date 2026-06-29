@@ -6,6 +6,38 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v177 LTC-GA frailty & sarcopenia case-finders: SARC-F, SARC-CalF, PRISMA-7, SOF Frailty Index, +4 — 754 → 758; 3 deferred)
+
+- **The spec-v172 Long-Term Care & Geriatric Assessment program continues with
+  spec-v177 (cluster §3.5), shipping 4 of its 7 proposed frailty / sarcopenia
+  case-finders (754 → 758, +4).** The live frailty surface (`frail-scale`,
+  `mfi-5/11`, `ves-13`) is deficit-count / self-report; v177 adds the **sarcopenia
+  case-finders** and the **multidomain LTC frailty screens** a nursing home
+  reaches for. Each cutoff was re-fetched and cross-verified against ≥ 2 sources
+  (spec-v97). All four are Group G, Class A (no `ISSUER_PATTERN` trip).
+- **`sarc-f`** — the 5-item sarcopenia screen (Strength, Assistance walking, Rise,
+  Climb stairs, Falls), each 0–2; total 0–10, **≥ 4** predicts sarcopenia
+  (Malmstrom *JAMDA* 2013).
+- **`sarc-calf`** — SARC-F plus a calf-circumference add-on: **+10** when calf
+  < 34 cm (men) / < 33 cm (women); total 0–20, **≥ 11** positive (Barbosa-Silva
+  *JAMDA* 2016).
+- **`prisma-7`** — the 7-item frailty/disability case-finder; each item 1 point,
+  with the **support item reverse-scored** (scores on “cannot count on someone”);
+  total 0–7, **≥ 3** flags (Raîche *Arch Gerontol Geriatr* 2008).
+- **`sof-frailty-index`** — the 3-item Study of Osteoporotic Fractures index
+  (weight loss ≥ 5%, cannot rise 5× without arms, reduced energy); **0 robust /
+  1 pre-frail / ≥ 2 frail** (Ensrud *Arch Intern Med* 2008).
+- **Three tiles deferred, not shipped:** `clinical-frailty-scale` (the Rockwood
+  CFS is copyright Dalhousie and requires a commercial license — it fails the
+  free-reproducibility bar, like PACSLAC in v175); `groningen-frailty-indicator`
+  and `edmonton-frail-scale` (the exact per-item 0/1 and 0/1/2 thresholds could
+  not be byte-verified against ≥ 2 independent sources at implementation — deferred
+  on sourcing grounds, the same gate as the v173 deferrals).
+- New `lib/ltcga-v177.js` (four named exports; in the fuzz `MODULES` list, zero
+  non-finite leaks) and `views/group-v177.js` (`RV177`). +4 META with band-flip
+  examples; +4 unit-test files; +4 audit logs; +4 `docs/clinical-citations.md`
+  rows. Catalog moved on all 13 catalog-truth surfaces via the live count + 4.
+
 ### Added (spec-v176 LTC-GA falls-risk, balance & gait: STRATIFY, 30-Second Chair Stand, 4-Stage Balance, Functional Reach, Gait Speed, CDC STEADI algorithm, +6 — 748 → 754)
 
 - **The spec-v172 Long-Term Care & Geriatric Assessment program continues with

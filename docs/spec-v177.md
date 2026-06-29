@@ -1,6 +1,16 @@
 # spec-v177.md — Frailty & sarcopenia: Clinical Frailty Scale, SARC-F, SARC-CalF, PRISMA-7, SOF index, GFI, Edmonton Frail Scale (+7 tiles)
 
-> Status: **PROPOSED (2026-06-24).** Feature spec of the
+> Status: **SHIPPED 4 of 7 (2026-06-29).** Fifth implementation spec of the
+> spec-v172 LTC-GA program; `sarc-f`, `sarc-calf`, `prisma-7`, and
+> `sof-frailty-index` are live (all Class A, item lists and cutoffs cross-verified,
+> spec-v97). **Deferred:** `clinical-frailty-scale` (Rockwood CFS — copyright
+> Dalhousie, commercial license required, fails the free-reproducibility bar like
+> PACSLAC in spec-v175); `groningen-frailty-indicator` and `edmonton-frail-scale`
+> (the 15 GFI / 9 EFS per-item 0/1 / 0/1/2 thresholds could not be byte-verified
+> against ≥ 2 independent sources at implementation — deferred on sourcing grounds,
+> the spec-v173 gate). Original draft below.
+>
+> Feature spec of the
 > [spec-v172](spec-v172.md) **Long-Term Care & Geriatric Assessment (LTC-GA)**
 > program (§3.5). Adds **7** deterministic frailty / sarcopenia case-finding and
 > staging instruments that fill confirmed long-term-care gaps. None duplicates a

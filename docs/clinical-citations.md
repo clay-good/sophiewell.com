@@ -4583,3 +4583,23 @@ Worked example: Four meters walked in five seconds gives a gait speed of zero po
 Citation: Stevens JA, Phelan EA. Development of STEADI: a fall prevention resource for health care providers. Health Promot Pract. 2013; CDC STEADI fall-risk algorithm. (Cross-verified against the Lohman operationalization; two or more sources, spec-v97.)
 Formula: The three key questions (a fall in the past year, feeling unsteady, worrying about falling) screen for increased risk. A negative screen is low risk. A positive screen is high risk when there is a recurrent (two or more) or injurious fall or a gait, strength, or balance problem, and moderate risk otherwise.
 Worked example: A person reporting two or more falls in the past year is high risk, driven by the recurrent falls, whereas someone who only feels unsteady, with no falls and no gait or balance problem, is moderate risk.
+
+### SARC-F (sarcopenia screen)
+Citation: Malmstrom TK, Morley JE. SARC-F: a simple questionnaire to rapidly diagnose sarcopenia. J Am Med Dir Assoc. 2013. (Cross-verified across two or more sources, spec-v97.)
+Formula: Five items (Strength, Assistance walking, Rise from a chair, Climb a flight of stairs, and Falls in the past year) are each rated zero (none), one (some difficulty), or two (a lot of difficulty or unable), summing to a total of zero to ten. A score of four or more predicts sarcopenia and poor outcomes.
+Worked example: Some difficulty on four of the five items gives a total of four, a positive screen, whereas three is negative.
+
+### SARC-CalF (SARC-F + calf circumference)
+Citation: Barbosa-Silva TG, Menezes AMB, Bielemann RM, et al. Enhancing SARC-F: improving sarcopenia screening in the clinical practice. J Am Med Dir Assoc. 2016. (Cross-verified across two or more sources, spec-v97.)
+Formula: The SARC-F total (zero to ten) is combined with a calf-circumference add-on that contributes ten points when calf circumference is below the sex-specific cutoff (under thirty-four centimeters for men, under thirty-three centimeters for women) and zero otherwise, for a total of zero to twenty. A score of eleven or more is a positive sarcopenia screen.
+Worked example: A SARC-F of one with a calf circumference of thirty-two centimeters in a woman fires the ten-point add-on for a total of eleven, the positive cutoff.
+
+### PRISMA-7 (frailty / disability case-finder)
+Citation: Raiche M, Hebert R, Dubois MF. PRISMA-7: a case-finding tool to identify older adults with moderate to severe disabilities. Arch Gerontol Geriatr. 2008. (Cross-verified against the PRISMA-7 user guide; two or more sources, spec-v97.)
+Formula: Seven items each score one point: age over eighty-five; male sex; health problems limiting activities; needing help on a regular basis; health problems requiring staying at home; not being able to count on someone close (the support item is reverse-scored, scoring on "no"); and using a cane, walker, or wheelchair. The total runs zero to seven; three or more suggests frailty or moderate-to-severe disability.
+Worked example: Age over eighty-five, male, and activity-limiting health problems give a total of three, the positive cutoff.
+
+### SOF Frailty Index
+Citation: Ensrud KE, Ewing SK, Taylor BC, et al. Comparison of 2 frailty indexes for prediction of falls, disability, fractures, and death in older women. Arch Intern Med. 2008. (Cross-verified across two or more sources, spec-v97.)
+Formula: Three items each score one point: weight loss of five percent or more over the prior year; inability to rise from a chair five times without using the arms; and reduced energy (a "no" to "do you feel full of energy?"). The total runs zero to three: zero is robust, one is pre-frail, and two or more is frail.
+Worked example: Weight loss and inability to rise give a total of two, the frail band, whereas a single item is pre-frail.
