@@ -101,6 +101,35 @@ through the band/note text; the R.E.N.A.L. hilar suffix is an empty-string /
 map to booleans the lib `present()` helper coerces. Every exposed example
 round-trips to its `META.example.expected`.
 
+## Seventh wave — 8 modules
+
+Coverage extends with 36 more clinical calculators across 8 `lib` modules:
+critical-care hemodynamics and ventilation mechanics (`lib/hemodynamics-v87.js` —
+the invasive hemodynamic suite, mechanical power of ventilation, physiologic
+dead-space fraction), nephrology staging / adequacy / risk (`lib/nephro-v92.js` —
+KDIGO CKD staging, spot UACR/UPCR, hemodialysis URR + Daugirdas Kt/V, the Mehran
+contrast-nephropathy score, and the 2021 race-free CKD-EPI cystatin estimates),
+evidence-based-medicine math (`lib/ebm-v163.js` — Fagan post-test probability, the
+2x2 diagnostic table, and ARR / RR / NNT), ophthalmology (`lib/ophtho-v164.js` —
+SRK II IOL power, the Snellen / logMAR / decimal visual-acuity converter, and
+ocular perfusion pressure), echocardiography (`lib/echo-v158.js` — LV mass index +
+geometry, LA volume index, Teichholz LVEF, RVSP / PASP from the TR jet, and E/e'),
+rheumatology activity / classification indices (`lib/rheum-v147.js` — CDAI, SDAI,
+the 2010 ACR/EULAR RA criteria, SLEDAI-2K, the 2015 ACR/EULAR gout criteria,
+CASPAR, and the 2016 revised ACR fibromyalgia criteria), venous-thromboembolism
+instruments (`lib/vte-v106.js` — PEGeD, 4PEPS, the Bova score, the Hestia
+outpatient gate, the original Geneva score, and the Constans upper-extremity DVT
+score), and vascular medicine (`lib/vascular-v105.js` — the ankle-brachial index,
+the Rutherford / Fontaine PAD mapping, the SVS WIfI limb-threat stage, and the
+logistic EuroSCORE II). Brings the exposed total to **167 calculators across 35
+modules**. The Mehran yes/no risk factors map to two-value enums (the lib `onFlag`
+helper coerces `'yes'` to true and treats blank or `'no'` as false); the EuroSCORE
+II logistic model is evaluated in a saturation-safe form whose mortality clamps to
+`[0, 1]` (spec-v140), so the JSON surface never leaks a non-finite value; and the
+mechanical-power adapter surfaces the driving-pressure unit in plain ASCII
+(`cmH2O`) so the JSON result is self-describing where the rendered tile uses the
+subscript `cmH₂O`. Every exposed example round-trips to its `META.example.expected`.
+
 ## Exposed
 
 Each id below is live in `mcp/catalog.js`. The gate parses this list.
@@ -289,6 +318,58 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 - `padua-renal`
 - `stone-nephrolithometry`
 - `twist-score`
+
+### lib/hemodynamics-v87.js
+- `hemodynamic-suite`
+- `mechanical-power`
+- `dead-space`
+
+### lib/nephro-v92.js
+- `ckd-staging`
+- `uacr-upcr`
+- `ktv-urr`
+- `mehran-cin`
+- `ckd-epi-cystatin`
+
+### lib/ebm-v163.js
+- `fagan-post-test`
+- `diagnostic-2x2`
+- `nnt-arr`
+
+### lib/ophtho-v164.js
+- `iol-power`
+- `visual-acuity-converter`
+- `ocular-perfusion-pressure`
+
+### lib/echo-v158.js
+- `lv-mass-index`
+- `la-volume-index`
+- `teichholz-lvef`
+- `rvsp-pasp`
+- `mitral-e-e-prime`
+
+### lib/rheum-v147.js
+- `cdai-ra`
+- `sdai-ra`
+- `acr-eular-2010-ra`
+- `sledai-2k`
+- `gout-acr-eular-2015`
+- `caspar`
+- `fibromyalgia-acr-2016`
+
+### lib/vte-v106.js
+- `peged`
+- `4peps`
+- `bova-pe`
+- `hestia`
+- `geneva-original`
+- `constans-uedvt`
+
+### lib/vascular-v105.js
+- `abi`
+- `rutherford-fontaine`
+- `wifi`
+- `euroscore2`
 
 ## Not yet adapted
 

@@ -3938,10 +3938,44 @@ as the e2e example-correctness sweep**, applied to the JSON surface.
 Exposing one tool per calculator would flood every client's tool list; the server
 uses a fixed three-tool surface with dynamic dispatch over the catalog instead.
 
+### The compute round-trip (what the gate enforces)
+
+A `compute_calculator` call is a pure pipeline; the same path runs the published
+example, which `check-mcp-catalog.mjs` replays on every build. If any numeric fact
+in the example's `expected` string is absent from the serialized result, the build
+fails — the JSON tool surface inherits the e2e example-correctness contract.
+
+```
+ inputs (dom-keyed)        adapter.fields[]            lib/<pure>.js
+ ─────────────────         ────────────────           ─────────────
+ { "mp-rr": "22",          dom → arg → kind           mechanicalPower({
+   "mp-vt": "420",   ─┬─▶  validateInputs()   ─┬─▶      respiratoryRate: 22,
+   ... }              │    (coerce '22'→22,     │       tidalVolume: 420, ... })
+                      │     'yes'→true, …)      │            │
+                      │                         │            ▼
+                      │    makeToArgs()  ───────┘    { mechanicalPower: 22.6,
+                      │    (dom→arg rename)            drivingPressure: 14, … }
+                      │                                       │
+                      ▼                          formatResult()  (optional;
+            { valid:false, message }  ◀── blank/  adds e.g. drivingPressureUnit
+            (spec-v59: never NaN/throw)  non-fin   so the JSON is self-describing)
+                                                          │
+                                                          ▼
+                              JSON.stringify(result) ⊇ numericFacts(expected)
+                                      └── gate: every expected number present ──┘
+```
+
+The adapter contributes only `fields[]` (and rarely `toArgs`/`formatResult`); the
+citation, example, interpretation, name, group, and specialties are all read from
+`META` and `UTILITIES`, so a wave is "add one file, list it in the ledger" with no
+re-typing of clinical content. EuroSCORE II (wave 7) shows the spec-v59 guard on a
+logistic model: its predicted mortality is evaluated in a saturation-safe form and
+clamped to `[0, 1]`, so the JSON surface never emits a non-finite probability.
+
 ### Coverage is explicit and honest
 
-Adapting the catalog is incremental. Coverage now stands at **131 clinical
-calculators across 27 `lib` modules** (of 774 catalog tiles), built module by
+Adapting the catalog is incremental. Coverage now stands at **167 clinical
+calculators across 35 `lib` modules** (of 774 catalog tiles), built module by
 module against the one fixed contract:
 
 | wave | modules | tiles |
@@ -3952,6 +3986,7 @@ module against the one fixed contract:
 | fourth | `cardio-v101` (CHADS2, CHA2DS2-VA, CHADS-65, ATRIA, Tisdale-QTc), `heme-v132` (PLASMIC, French-TTP, JAAM-DIC, IPSET, CISNE), `gi-v126` (CDAI, UCEIS, HAPS, CTSI, modified-Marshall) | 15 |
 | fifth | `cardio-v102` (MAGGIC, H2FPEF, HFA-PEFF, CardShock), `cardio-v104` (Brugada, Vereckei, ADD-RS, ROSE, EGSYS, OESIL), `cvrisk-v103` (SCORE2, SCORE2-OP, MESA, Framingham, Reynolds, non-HDL/remnant), `critcare-v112` (MEDS, SIC, CPIS-VAP, lactate clearance, MRC sum), `fluidresp-v113` (IVC, PPV/SVV, passive leg raise), `hepgi-v93` (NAFLD-FS, Glasgow-Imrie, Truelove-Witts, Harvey-Bradshaw, Mayo, Milan), `hemonc-v94` (HScore, IPSS-R, FLIPI, MASCC, Sokal) | 35 |
 | sixth | `neuro-v119` (CPSSS, FAST-ED, Boston-CAA, CVT-risk), `neuro-v120` (STESS, 2HELPS2B, MESS, POUND, HINTS), `neuro-v121` (EGRIS, mEGOS, Brighton-GBS, MGFA), `neuro-v122` (Hachinski, Modified-Ashworth, Bickerstaff), `nephro-v127` (KFRE, RIFLE, AKIN, UFR), `renal-v128` (FEPO4, FEMg, nPCR, std-Kt/V, EFWC), `uro-v130` (prostate-volume, PSA density/velocity/doubling-time, D'Amico, Gleason grade-group), `uro-v131` (CAPRA, R.E.N.A.L., PADUA, S.T.O.N.E., TWIST) | 36 |
+| seventh | `hemodynamics-v87` (hemodynamic-suite, mechanical-power, dead-space), `nephro-v92` (CKD-staging, UACR/UPCR, Kt/V-URR, Mehran-CIN, CKD-EPI-cystatin), `ebm-v163` (Fagan, diagnostic-2x2, NNT/ARR), `ophtho-v164` (IOL-power, visual-acuity, ocular-perfusion-pressure), `echo-v158` (LV-mass-index, LA-volume-index, Teichholz-LVEF, RVSP/PASP, E/e'), `rheum-v147` (CDAI, SDAI, ACR/EULAR-2010-RA, SLEDAI-2K, ACR/EULAR-2015-gout, CASPAR, ACR-2016-fibromyalgia), `vte-v106` (PEGeD, 4PEPS, Bova, Hestia, Geneva, Constans-UEDVT), `vascular-v105` (ABI, Rutherford/Fontaine, WIfI, EuroSCORE-II) | 36 |
 
 `docs/mcp-coverage.md` is the ledger and `list_calculators` always reports the
 live exposed fraction (`"<N> of <M> catalog tiles exposed"`), never a hardcoded
@@ -3961,9 +3996,13 @@ takes a variable-length comorbidity array that needs a bespoke `toArgs`, and
 `ses-cd` takes per-segment input arrays rather than the flat `dom→arg→kind`
 contract. Two wave-six tiles (HINTS, Bickerstaff) are categorical instruments
 whose number-free examples round-trip through the band/note text, and the
-R.E.N.A.L. hilar suffix is an empty-string/`h` enum. Later waves extend coverage
-the same way — one module, one ledger entry, one set of round-tripping examples
-at a time.
+R.E.N.A.L. hilar suffix is an empty-string/`h` enum. The wave-seven Mehran
+yes/no risk factors map to two-value enums, the EuroSCORE II logistic model is
+evaluated in a saturation-safe form whose mortality clamps to `[0, 1]`
+(spec-v140), and the `mechanical-power` adapter surfaces the driving-pressure
+unit in plain ASCII (`cmH2O`) so its JSON result is self-describing where the
+rendered tile uses the subscript `cmH₂O`. Later waves extend coverage the same
+way — one module, one ledger entry, one set of round-tripping examples at a time.
 
 ### Try it
 

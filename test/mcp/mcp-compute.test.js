@@ -210,6 +210,100 @@ test('lib/uro-v131.js worked calls (wave 6)', () => {
   assert.equal(ok('twist-score', { 'tw-swell': '1', 'tw-hard': '0', 'tw-crem': '1', 'tw-nv': '1', 'tw-high': '1' }).total, 5);
 });
 
+test('lib/hemodynamics-v87.js worked calls (wave 7)', () => {
+  const hs = ok('hemodynamic-suite', { 'hs-co': '5', 'hs-hr': '80', 'hs-bsa': '2', 'hs-map': '90', 'hs-cvp': '5', 'hs-mpap': '20', 'hs-pcwp': '10' });
+  assert.equal(hs.ci, 2.5);
+  assert.equal(hs.sv, 62.5);
+  const mp = ok('mechanical-power', { 'mp-rr': '22', 'mp-vt': '420', 'mp-plat': '26', 'mp-peep': '12', 'mp-peak': '32' });
+  assert.equal(mp.mechanicalPower, 22.6);
+  assert.equal(mp.drivingPressure, 14);
+  // The adapter formatResult surfaces the ASCII driving-pressure unit.
+  assert.equal(mp.drivingPressureUnit, 'cmH2O');
+  assert.equal(ok('dead-space', { 'ds-paco2': '60', 'ds-source': 'peco2', 'ds-eco2': '20' }).ratioPercent, 67);
+});
+
+test('lib/nephro-v92.js worked calls (wave 7)', () => {
+  const cs = ok('ckd-staging', { 'cs-egfr': '38', 'cs-uacr': '340' });
+  assert.equal(cs.gStage, 'G3b');
+  assert.equal(cs.aStage, 'A3');
+  assert.equal(ok('uacr-upcr', { 'uu-alb': '30', 'uu-cr': '100' }).uacr, 300);
+  const kt = ok('ktv-urr', { 'kt-pre': '60', 'kt-post': '18', 'kt-uf': '3', 'kt-time': '4', 'kt-wt': '70' });
+  assert.equal(kt.urr, 70);
+  assert.equal(kt.ktv, 1.44);
+  // The yes/no risk factors map to enums the lib onFlag() helper coerces.
+  assert.equal(ok('mehran-cin', { 'me-chf': 'yes', 'me-dm': 'yes', 'me-contrast': '300', 'me-egfr': '30' }).total, 15);
+  assert.equal(ok('ckd-epi-cystatin', { 'cc-cys': '1.5', 'cc-cr': '1.1', 'cc-age': '70', 'cc-sex': 'female' }).egfrCys, 40.6);
+});
+
+test('lib/ebm-v163.js worked calls (wave 7)', () => {
+  assert.equal(ok('fagan-post-test', { 'fagan-mode': 'lr', 'fagan-pretest': '20', 'fagan-lr': '10' }).posttest, 71.4);
+  const dx = ok('diagnostic-2x2', { 'dx-tp': '90', 'dx-fp': '10', 'dx-fn': '10', 'dx-tn': '90', 'dx-prev': '5' });
+  assert.equal(dx.sens, 90);
+  assert.equal(dx.lrPos, 9);
+  const nnt = ok('nnt-arr', { 'nnt-cer': '20', 'nnt-eer': '15' });
+  assert.equal(nnt.arr, 5);
+  assert.equal(nnt.nnt, 20);
+});
+
+test('lib/ophtho-v164.js worked calls (wave 7)', () => {
+  assert.equal(ok('iol-power', { 'iol-a': '118.4', 'iol-al': '23.5', 'iol-k': '44', 'iol-target': '0' }).power, 20.05);
+  const va = ok('visual-acuity-converter', { 'va-mode': 'snellen20', 'va-value': '40' });
+  assert.equal(va.decimal, 0.5);
+  assert.equal(va.logmar, 0.3);
+  assert.equal(ok('ocular-perfusion-pressure', { 'opp-sbp': '120', 'opp-dbp': '80', 'opp-iop': '15' }).meanOpp, 47.2);
+});
+
+test('lib/echo-v158.js worked calls (wave 7)', () => {
+  assert.equal(ok('lv-mass-index', { 'lvmi-lvidd': '5.2', 'lvmi-pwtd': '1.2', 'lvmi-ivsd': '1.2', 'lvmi-bsa': '2.0', 'lvmi-sex': 'male' }).lvmi, 124.4);
+  assert.equal(ok('la-volume-index', { 'lavi-a1': '21', 'lavi-a2': '21', 'lavi-l': '5.0', 'lavi-bsa': '2.0' }).lavi, 37.5);
+  const t = ok('teichholz-lvef', { 'teich-lvidd': '5.0', 'teich-lvids': '3.5', 'teich-sex': 'male' });
+  assert.equal(t.ef, 57);
+  assert.equal(t.fs, 30);
+  assert.equal(ok('rvsp-pasp', { 'rvsp-vmax': '2.8', 'rvsp-rap': '8' }).rvsp, 39.4);
+  assert.equal(ok('mitral-e-e-prime', { 'ee-e': '90', 'ee-eprime': '6', 'ee-site': 'average' }).ratio, 15);
+});
+
+test('lib/rheum-v147.js worked calls (wave 7)', () => {
+  assert.equal(ok('cdai-ra', { 'cdai-sjc': '6', 'cdai-tjc': '8', 'cdai-pga': '3', 'cdai-ega': '2' }).score, 19);
+  assert.equal(ok('sdai-ra', { 'sdai-sjc': '6', 'sdai-tjc': '8', 'sdai-pga': '3', 'sdai-ega': '2', 'sdai-crp': '1.5' }).score, 20.5);
+  assert.equal(ok('acr-eular-2010-ra', { 'acr-entry': '1', 'acr-joints': 'over10', 'acr-serology': 'negative', 'acr-acute': 'normal', 'acr-duration': 'over6' }).score, 6);
+  // SLEDAI-2K: arthritis (4) + low complement (2) + increased DNA binding (2) = 8.
+  assert.equal(ok('sledai-2k', { 'sle-arthritis': '1', 'sle-complement': '1', 'sle-dna': '1' }).score, 8);
+  assert.equal(ok('gout-acr-eular-2015', { 'gout-entry': '1', 'gout-pattern': 'mtp1', 'gout-char': 'c2', 'gout-time': 'recurrent', 'gout-urate': 'u8to10', 'gout-synovial': 'notdone' }).score, 9);
+  assert.equal(ok('caspar', { 'caspar-entry': '1', 'caspar-psoriasis': 'current', 'caspar-nail': '1' }).score, 3);
+  const fib = ok('fibromyalgia-acr-2016', { 'fib-wpi': '8', 'fib-fatigue': 's2', 'fib-waking': 's2', 'fib-cognitive': 's1', 'fib-headache': '1', 'fib-regions': '4', 'fib-duration': '1' });
+  assert.equal(fib.sss, 6);
+});
+
+test('lib/vte-v106.js worked calls (wave 7)', () => {
+  const pg = ok('peged', { 'pg-tier': 'low', 'pg-dd': 600 });
+  assert.equal(pg.excluded, true);
+  assert.equal(pg.threshold, 1000);
+  assert.equal(ok('4peps', { 'pp-age': 70, 'pp-male': 1, 'pp-vte': 1, 'pp-syn': 1, 'pp-calf': 1, 'pp-pe': 1 }).total, 14);
+  const bv = ok('bova-pe', { 'bv-sbp': 1, 'bv-trop': 1, 'bv-rv': 1 });
+  assert.equal(bv.total, 6);
+  assert.equal(bv.stage, 'III');
+  const he = ok('hestia', { 'he-preg': 1 });
+  assert.equal(he.positive, 1);
+  assert.equal(he.eligible, false);
+  assert.equal(ok('geneva-original', { 'gv-age': 85, 'gv-vte': 1, 'gv-surg': 1, 'gv-hr': 110, 'gv-co2': 'low2', 'gv-o2': 'b4' }).total, 14);
+  assert.equal(ok('constans-uedvt', { 'co-mat': 1, 'co-pain': 1, 'co-edema': 1 }).total, 3);
+});
+
+test('lib/vascular-v105.js worked calls (wave 7)', () => {
+  // The lower of the two legs governs; the right leg's 0.90 is the abnormal index.
+  const abi = ok('abi', { 'abi-ra': '90', 'abi-la': '120', 'abi-rb': '100', 'abi-lb': '100' });
+  assert.equal(abi.governing.value, 0.9);
+  assert.equal(abi.abnormal, true);
+  const rf = ok('rutherford-fontaine', { 'rf-pic': 'severe-claudication' });
+  assert.equal(rf.rutherford, 3);
+  assert.equal(rf.fontaine, 'IIb');
+  assert.equal(ok('wifi', { 'wifi-w': '2', 'wifi-i': '3', 'wifi-fi': '1' }).stage, 4);
+  // EuroSCORE II is a logistic model; the mortality is finite and clamped to [0,1].
+  const es = ok('euroscore2', { 'es-age': '70', 'es-female': '1', 'es-ins': '1', 'es-cpd': '1', 'es-nyha': '3', 'es-ccs4': '1', 'es-lv': 'poor', 'es-mi': '1', 'es-renal': 'dialysis', 'es-urg': 'elective', 'es-wt': 'cabg' });
+  assert.equal(es.mortality, 10.66);
+});
+
 // The enum->boolean adapter transform reaches the lib: el-ganzouri prognath and
 // elapss earlierSah both map a yes/no select onto a lib boolean.
 test('enum->boolean adapter transform reaches the lib (elapss earlierSah)', () => {

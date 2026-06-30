@@ -1,0 +1,123 @@
+// spec-v183 MCP wave 7: adapters for the seven lib/rheum-v147.js rheumatology
+// activity / classification indices (CDAI, SDAI, the 2010 ACR/EULAR RA criteria,
+// SLEDAI-2K, the 2015 ACR/EULAR gout criteria, CASPAR for psoriatic arthritis,
+// and the 2016 revised ACR fibromyalgia criteria). dom keys mirror
+// views/group-v147.js; joint counts / VAS / CRP / WPI are numbers, the criteria
+// gates are booleans, and the graded domains are enums.
+
+import * as F from '../../lib/rheum-v147.js';
+
+export default [
+  {
+    id: 'cdai-ra',
+    summary: 'Clinical Disease Activity Index for RA: the lab-free sum of SJC28, TJC28, and the patient and physician global VAS (0-76) (Aletaha 2005).',
+    compute: F.cdaiRa,
+    fields: [
+      { dom: 'cdai-sjc', arg: 'sjc', kind: 'number', required: true, label: 'Swollen-joint count (0-28)' },
+      { dom: 'cdai-tjc', arg: 'tjc', kind: 'number', required: true, label: 'Tender-joint count (0-28)' },
+      { dom: 'cdai-pga', arg: 'pga', kind: 'number', required: true, label: 'Patient global assessment (0-10 cm VAS)' },
+      { dom: 'cdai-ega', arg: 'ega', kind: 'number', required: true, label: 'Physician global assessment (0-10 cm VAS)' },
+    ],
+  },
+  {
+    id: 'sdai-ra',
+    summary: 'Simplified Disease Activity Index for RA: CDAI plus CRP in mg/dL (0-86) (Smolen 2003).',
+    compute: F.sdaiRa,
+    fields: [
+      { dom: 'sdai-sjc', arg: 'sjc', kind: 'number', required: true, label: 'Swollen-joint count (0-28)' },
+      { dom: 'sdai-tjc', arg: 'tjc', kind: 'number', required: true, label: 'Tender-joint count (0-28)' },
+      { dom: 'sdai-pga', arg: 'pga', kind: 'number', required: true, label: 'Patient global assessment (0-10 cm VAS)' },
+      { dom: 'sdai-ega', arg: 'ega', kind: 'number', required: true, label: 'Physician global assessment (0-10 cm VAS)' },
+      { dom: 'sdai-crp', arg: 'crp', kind: 'number', required: true, label: 'CRP', unit: 'mg/dL' },
+    ],
+  },
+  {
+    id: 'acr-eular-2010-ra',
+    summary: 'The 2010 ACR/EULAR rheumatoid-arthritis classification criteria; four weighted domains after the entry condition, >=6 of 10 classifies definite RA (Aletaha 2010).',
+    compute: F.acrEular2010Ra,
+    fields: [
+      { dom: 'acr-entry', arg: 'entry', kind: 'bool', required: true, label: 'Entry condition (>=1 joint with definite clinical synovitis, not better explained)' },
+      { dom: 'acr-joints', arg: 'joints', kind: 'enum', values: ['large1', 'large2to10', 'small1to3', 'small4to10', 'over10'], required: true, label: 'Joint involvement' },
+      { dom: 'acr-serology', arg: 'serology', kind: 'enum', values: ['negative', 'low', 'high'], required: true, label: 'Serology (RF / anti-CCP)' },
+      { dom: 'acr-acute', arg: 'acutePhase', kind: 'enum', values: ['normal', 'abnormal'], required: true, label: 'Acute-phase reactants' },
+      { dom: 'acr-duration', arg: 'duration', kind: 'enum', values: ['under6', 'over6'], required: true, label: 'Symptom duration' },
+    ],
+  },
+  {
+    id: 'sledai-2k',
+    summary: 'SLEDAI-2K SLE disease-activity index: 24 weighted descriptors (weights 8/4/2/1) present in the prior 10 days, total 0-105 (Gladman 2002).',
+    compute: F.sledai2k,
+    fields: [
+      { dom: 'sle-seizure', arg: 'seizure', kind: 'bool', required: false, label: 'Seizure' },
+      { dom: 'sle-psychosis', arg: 'psychosis', kind: 'bool', required: false, label: 'Psychosis' },
+      { dom: 'sle-obs', arg: 'organicBrain', kind: 'bool', required: false, label: 'Organic brain syndrome' },
+      { dom: 'sle-visual', arg: 'visual', kind: 'bool', required: false, label: 'Visual disturbance' },
+      { dom: 'sle-cranial', arg: 'cranialNerve', kind: 'bool', required: false, label: 'Cranial-nerve disorder' },
+      { dom: 'sle-headache', arg: 'lupusHeadache', kind: 'bool', required: false, label: 'Lupus headache' },
+      { dom: 'sle-cva', arg: 'cva', kind: 'bool', required: false, label: 'CVA' },
+      { dom: 'sle-vasculitis', arg: 'vasculitis', kind: 'bool', required: false, label: 'Vasculitis' },
+      { dom: 'sle-arthritis', arg: 'arthritis', kind: 'bool', required: false, label: 'Arthritis' },
+      { dom: 'sle-myositis', arg: 'myositis', kind: 'bool', required: false, label: 'Myositis' },
+      { dom: 'sle-casts', arg: 'urinaryCasts', kind: 'bool', required: false, label: 'Urinary casts' },
+      { dom: 'sle-hematuria', arg: 'hematuria', kind: 'bool', required: false, label: 'Hematuria' },
+      { dom: 'sle-proteinuria', arg: 'proteinuria', kind: 'bool', required: false, label: 'Proteinuria' },
+      { dom: 'sle-pyuria', arg: 'pyuria', kind: 'bool', required: false, label: 'Pyuria' },
+      { dom: 'sle-rash', arg: 'rash', kind: 'bool', required: false, label: 'Rash' },
+      { dom: 'sle-alopecia', arg: 'alopecia', kind: 'bool', required: false, label: 'Alopecia' },
+      { dom: 'sle-ulcers', arg: 'mucosalUlcers', kind: 'bool', required: false, label: 'Mucosal ulcers' },
+      { dom: 'sle-pleurisy', arg: 'pleurisy', kind: 'bool', required: false, label: 'Pleurisy' },
+      { dom: 'sle-pericarditis', arg: 'pericarditis', kind: 'bool', required: false, label: 'Pericarditis' },
+      { dom: 'sle-complement', arg: 'lowComplement', kind: 'bool', required: false, label: 'Low complement' },
+      { dom: 'sle-dna', arg: 'dnaBinding', kind: 'bool', required: false, label: 'Increased DNA binding' },
+      { dom: 'sle-fever', arg: 'fever', kind: 'bool', required: false, label: 'Fever' },
+      { dom: 'sle-thrombocytopenia', arg: 'thrombocytopenia', kind: 'bool', required: false, label: 'Thrombocytopenia' },
+      { dom: 'sle-leukopenia', arg: 'leukopenia', kind: 'bool', required: false, label: 'Leukopenia' },
+    ],
+  },
+  {
+    id: 'gout-acr-eular-2015',
+    summary: 'The 2015 ACR/EULAR gout classification criteria; MSU crystals are sufficient, otherwise weighted domains sum to 0-23 and >=8 classifies gout (Neogi 2015).',
+    compute: F.goutAcrEular2015,
+    fields: [
+      { dom: 'gout-entry', arg: 'entry', kind: 'bool', required: true, label: 'Entry criterion (>=1 episode of peripheral joint / bursa swelling, pain or tenderness)' },
+      { dom: 'gout-msu', arg: 'msuCrystals', kind: 'bool', required: false, label: 'Sufficient criterion: MSU crystals in a symptomatic joint / bursa or tophus' },
+      { dom: 'gout-pattern', arg: 'pattern', kind: 'enum', values: ['other', 'anklemid', 'mtp1'], required: true, label: 'Pattern of joint involvement (ever)' },
+      { dom: 'gout-char', arg: 'characteristics', kind: 'enum', values: ['c0', 'c1', 'c2', 'c3'], required: true, label: 'Episode characteristics (erythema / intolerable to touch / difficulty walking)' },
+      { dom: 'gout-time', arg: 'timeCourse', kind: 'enum', values: ['none', 'one', 'recurrent'], required: true, label: 'Time-course of episodes' },
+      { dom: 'gout-urate', arg: 'serumUrate', kind: 'enum', values: ['lt4', 'u4to6', 'u6to8', 'u8to10', 'ge10'], required: true, label: 'Serum urate (highest ever)' },
+      { dom: 'gout-synovial', arg: 'synovial', kind: 'enum', values: ['notdone', 'negative'], required: true, label: 'Synovial-fluid analysis' },
+      { dom: 'gout-tophus', arg: 'tophus', kind: 'bool', required: false, label: 'Clinical tophus (+4)' },
+      { dom: 'gout-imgurate', arg: 'imagingUrate', kind: 'bool', required: false, label: 'Imaging urate deposition: US double-contour or DECT (+4)' },
+      { dom: 'gout-imgdamage', arg: 'imagingDamage', kind: 'bool', required: false, label: 'Imaging gout-related erosion on radiograph (+4)' },
+    ],
+  },
+  {
+    id: 'caspar',
+    summary: 'CASPAR criteria for psoriatic arthritis: applied after established inflammatory articular disease, >=3 of the 6 points classifies (Taylor 2006).',
+    compute: F.caspar,
+    fields: [
+      { dom: 'caspar-entry', arg: 'entry', kind: 'bool', required: true, label: 'Entry condition (established inflammatory articular disease: joint, spine, or entheseal)' },
+      { dom: 'caspar-psoriasis', arg: 'psoriasis', kind: 'enum', values: ['current', 'personal', 'family', 'none'], required: true, label: 'Psoriasis (highest applies)' },
+      { dom: 'caspar-nail', arg: 'nail', kind: 'bool', required: false, label: 'Psoriatic nail dystrophy (onycholysis, pitting, hyperkeratosis) (+1)' },
+      { dom: 'caspar-rf', arg: 'rfNegative', kind: 'bool', required: false, label: 'Negative rheumatoid factor (any method except latex) (+1)' },
+      { dom: 'caspar-dactylitis', arg: 'dactylitis', kind: 'bool', required: false, label: 'Dactylitis (current or recorded history) (+1)' },
+      { dom: 'caspar-bone', arg: 'juxtaBone', kind: 'bool', required: false, label: 'Juxta-articular new bone formation on hand / foot radiograph (+1)' },
+    ],
+  },
+  {
+    id: 'fibromyalgia-acr-2016',
+    summary: 'The 2016 revised ACR fibromyalgia criteria: the Widespread Pain Index, the Symptom Severity Scale, generalized pain, and chronicity (Wolfe 2016).',
+    compute: F.fibromyalgiaAcr2016,
+    fields: [
+      { dom: 'fib-wpi', arg: 'wpi', kind: 'number', required: true, label: 'Widespread Pain Index: painful regions (0-19)' },
+      { dom: 'fib-fatigue', arg: 'fatigue', kind: 'enum', values: ['s0', 's1', 's2', 's3'], required: true, label: 'Fatigue severity' },
+      { dom: 'fib-waking', arg: 'waking', kind: 'enum', values: ['s0', 's1', 's2', 's3'], required: true, label: 'Waking unrefreshed' },
+      { dom: 'fib-cognitive', arg: 'cognitive', kind: 'enum', values: ['s0', 's1', 's2', 's3'], required: true, label: 'Cognitive symptoms' },
+      { dom: 'fib-headache', arg: 'somHeadache', kind: 'bool', required: false, label: 'Headaches (somatic-symptom count, past 6 months)' },
+      { dom: 'fib-abdominal', arg: 'somAbdominal', kind: 'bool', required: false, label: 'Lower-abdominal pain or cramps (somatic-symptom count)' },
+      { dom: 'fib-depression', arg: 'somDepression', kind: 'bool', required: false, label: 'Depression (somatic-symptom count)' },
+      { dom: 'fib-regions', arg: 'genRegions', kind: 'number', required: true, label: 'Generalized pain: regions with pain (of 5)' },
+      { dom: 'fib-duration', arg: 'duration', kind: 'bool', required: true, label: 'Symptoms present at a similar level for >=3 months' },
+    ],
+  },
+];

@@ -6,6 +6,41 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v183 — MCP wave 7: expose 36 more clinical calculators as deterministic agent tools; no tile delta, 774)
+
+- The optional stdio MCP server (`mcp/server.js`) gains a **seventh coverage
+  wave**: 36 more catalog calculators exposed as deterministic
+  `compute_calculator` tools, across 8 `lib` modules, bringing the exposed
+  surface to **167 of 774 catalog tiles across 35 modules**. No catalog tile is
+  added or changed — this is adapter-only coverage of compute logic that already
+  shipped.
+  - `lib/hemodynamics-v87.js` — critical-care hemodynamics and ventilation
+    mechanics: `hemodynamic-suite`, `mechanical-power`, `dead-space`.
+  - `lib/nephro-v92.js` — nephrology staging / adequacy / risk: `ckd-staging`,
+    `uacr-upcr`, `ktv-urr`, `mehran-cin`, `ckd-epi-cystatin`.
+  - `lib/ebm-v163.js` — evidence-based-medicine math: `fagan-post-test`,
+    `diagnostic-2x2`, `nnt-arr`.
+  - `lib/ophtho-v164.js` — ophthalmology: `iol-power`,
+    `visual-acuity-converter`, `ocular-perfusion-pressure`.
+  - `lib/echo-v158.js` — echocardiography: `lv-mass-index`, `la-volume-index`,
+    `teichholz-lvef`, `rvsp-pasp`, `mitral-e-e-prime`.
+  - `lib/rheum-v147.js` — rheumatology activity / classification indices:
+    `cdai-ra`, `sdai-ra`, `acr-eular-2010-ra`, `sledai-2k`,
+    `gout-acr-eular-2015`, `caspar`, `fibromyalgia-acr-2016`.
+  - `lib/vte-v106.js` — venous-thromboembolism instruments: `peged`, `4peps`,
+    `bova-pe`, `hestia`, `geneva-original`, `constans-uedvt`.
+  - `lib/vascular-v105.js` — vascular medicine: `abi`, `rutherford-fontaine`,
+    `wifi`, `euroscore2`.
+- The Mehran contrast-nephropathy yes/no risk factors map to two-value enums (the
+  lib `onFlag` helper coerces `yes` to true and treats blank or `no` as false);
+  the EuroSCORE II logistic model is evaluated in a saturation-safe form whose
+  predicted mortality clamps to `[0, 1]` (spec-v140), so the JSON surface never
+  leaks a non-finite value; and the `mechanical-power` adapter surfaces the
+  driving-pressure unit in plain ASCII (`cmH2O`) so its JSON result is
+  self-describing where the rendered tile uses the subscript `cmH₂O`. The wave-7
+  ledger, worked-call tests (>= 3 per module), and the full-set example
+  round-trip are all in CI (`test:mcp` 45 tests).
+
 ### Added (spec-v183 — MCP wave 6: expose 36 more clinical calculators as deterministic agent tools; no tile delta, 774)
 
 - The optional stdio MCP server (`mcp/server.js`) gains a **sixth coverage wave**:

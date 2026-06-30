@@ -73,7 +73,7 @@ strings; booleans as `true`/`false`; enums by their listed string values.
 
 ```
 list_calculators { "specialty": "hepatology" }
-  -> { coverage: "131 of 774 catalog tiles exposed ...", calculators: [ { id: "meld-xi", ... }, ... ] }
+  -> { coverage: "167 of 774 catalog tiles exposed ...", calculators: [ { id: "meld-xi", ... }, ... ] }
 
 describe_calculator { "id": "meld-xi" }
   -> { inputSchema: { ... mx-bili, mx-creat ... }, citation: "Heuman DM ... Liver Transpl 2007", ... }
@@ -101,8 +101,12 @@ adds 36 more across 8 modules (stroke-triage and cerebrovascular scores, seizure
 / headache / vertigo bedside instruments, neuromuscular prediction and
 classification, dementia / spasticity / brainstem-encephalitis instruments,
 nephrology risk and AKI staging, renal-physiology formulas, and two urology
-clusters), for 131 across 27 modules today. Later waves extend it module by
-module against the same contract.
+clusters); and a seventh wave adds 36 more across 8 modules (critical-care
+hemodynamics and ventilation mechanics, nephrology staging / adequacy / risk,
+evidence-based-medicine math, ophthalmology, echocardiography, rheumatology
+activity and classification indices, venous-thromboembolism instruments, and
+vascular medicine), for 167 across 35 modules today. Later waves extend it
+module by module against the same contract.
 
 ## Design
 

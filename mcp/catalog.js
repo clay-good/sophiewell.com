@@ -44,6 +44,14 @@ import nephroV127 from './adapters/nephro-v127.js';
 import renalV128 from './adapters/renal-v128.js';
 import uroV130 from './adapters/uro-v130.js';
 import uroV131 from './adapters/uro-v131.js';
+import hemodynamicsV87 from './adapters/hemodynamics-v87.js';
+import nephroV92 from './adapters/nephro-v92.js';
+import ebmV163 from './adapters/ebm-v163.js';
+import ophthoV164 from './adapters/ophtho-v164.js';
+import echoV158 from './adapters/echo-v158.js';
+import rheumV147 from './adapters/rheum-v147.js';
+import vteV106 from './adapters/vte-v106.js';
+import vascularV105 from './adapters/vascular-v105.js';
 
 const ADAPTER_MODULES = [
   ['tox-v86', toxV86],
@@ -73,6 +81,14 @@ const ADAPTER_MODULES = [
   ['renal-v128', renalV128],
   ['uro-v130', uroV130],
   ['uro-v131', uroV131],
+  ['hemodynamics-v87', hemodynamicsV87],
+  ['nephro-v92', nephroV92],
+  ['ebm-v163', ebmV163],
+  ['ophtho-v164', ophthoV164],
+  ['echo-v158', echoV158],
+  ['rheum-v147', rheumV147],
+  ['vte-v106', vteV106],
+  ['vascular-v105', vascularV105],
 ];
 
 const HERE = dirname(fileURLToPath(import.meta.url));
