@@ -6,6 +6,45 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v183 — MCP wave 6: expose 36 more clinical calculators as deterministic agent tools; no tile delta, 774)
+
+- The optional stdio MCP server (`mcp/server.js`) gains a **sixth coverage wave**:
+  36 more catalog calculators exposed as deterministic `compute_calculator`
+  tools, across 8 `lib` modules, bringing the exposed surface to **131 of 774
+  catalog tiles across 27 modules**. No catalog tile is added or changed — this
+  is adapter-only coverage of compute logic that already shipped.
+  - `lib/neuro-v119.js` — stroke-triage and cerebrovascular scores: `cpsss`,
+    `fast-ed`, `boston-caa`, `cvt-risk`.
+  - `lib/neuro-v120.js` — seizure / headache / vertigo bedside instruments:
+    `stess`, `helps2b`, `mess-first-seizure`, `pound-migraine`, `hints`.
+  - `lib/neuro-v121.js` — neuromuscular prediction and classification: `egris`,
+    `megos`, `brighton-gbs`, `mgfa`.
+  - `lib/neuro-v122.js` — dementia / spasticity / brainstem-encephalitis
+    instruments: `hachinski`, `modified-ashworth`, `bickerstaff`.
+  - `lib/nephro-v127.js` — nephrology risk and AKI staging: `kfre`, `rifle-aki`,
+    `akin-aki`, `ufr-dialysis`.
+  - `lib/renal-v128.js` — renal-physiology formulas: `fepo4`, `femg`,
+    `npcr-pna`, `std-ktv`, `efwc`.
+  - `lib/uro-v130.js` — prostate cancer / BPH: `prostate-volume`, `psa-density`,
+    `psa-velocity`, `psa-doubling-time`, `damico-prostate-risk`,
+    `gleason-grade-group`.
+  - `lib/uro-v131.js` — urology complexity scores: `capra-score`,
+    `renal-nephrometry`, `padua-renal`, `stone-nephrolithometry`, `twist-score`.
+- The HINTS exam and the Bickerstaff checklist are categorical instruments whose
+  number-free examples round-trip through the band/note text; the R.E.N.A.L.
+  hilar suffix is an empty-string/`h` enum and the TWIST yes/no findings map to
+  booleans the lib `present()` helper coerces. The wave-6 ledger, worked-call
+  tests (>= 3 per module), and the full-set example round-trip are all in CI.
+
+### Fixed
+
+- `lib/num.js` `r1`/`r2`/`r3` rounding helpers are now overflow-safe: a
+  float64-saturating magnitude (|n| >= ~1e305, never a real measurement) no
+  longer overflows `Math.round(n * scale)` to `Infinity` and leaks that token
+  into an interpolated band string. Surfaced by the MCP fuzz battery when
+  `psa-density` was exposed; the guard returns the (already-integral) input
+  unchanged at that boundary, so every clinical-range result is byte-identical.
+
 ### Added (spec-v183 — MCP wave 5: expose 35 more clinical calculators as deterministic agent tools; no tile delta, 774)
 
 - The optional stdio MCP server (`mcp/server.js`) gains a **fifth coverage wave**:

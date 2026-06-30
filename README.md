@@ -3940,9 +3940,9 @@ uses a fixed three-tool surface with dynamic dispatch over the catalog instead.
 
 ### Coverage is explicit and honest
 
-Adapting the catalog is incremental. Coverage now stands at **95 clinical
-calculators across 19 `lib` modules**, built module by module against the one
-fixed contract:
+Adapting the catalog is incremental. Coverage now stands at **131 clinical
+calculators across 27 `lib` modules** (of 774 catalog tiles), built module by
+module against the one fixed contract:
 
 | wave | modules | tiles |
 |---|---|---|
@@ -3951,6 +3951,7 @@ fixed contract:
 | third | `oneformula-v167` (mean-airway-pressure, cerebroplacental-ratio, toe-brachial-index, stool-osmotic-gap, pure-tone-average, rutgeerts) | 6 |
 | fourth | `cardio-v101` (CHADS2, CHA2DS2-VA, CHADS-65, ATRIA, Tisdale-QTc), `heme-v132` (PLASMIC, French-TTP, JAAM-DIC, IPSET, CISNE), `gi-v126` (CDAI, UCEIS, HAPS, CTSI, modified-Marshall) | 15 |
 | fifth | `cardio-v102` (MAGGIC, H2FPEF, HFA-PEFF, CardShock), `cardio-v104` (Brugada, Vereckei, ADD-RS, ROSE, EGSYS, OESIL), `cvrisk-v103` (SCORE2, SCORE2-OP, MESA, Framingham, Reynolds, non-HDL/remnant), `critcare-v112` (MEDS, SIC, CPIS-VAP, lactate clearance, MRC sum), `fluidresp-v113` (IVC, PPV/SVV, passive leg raise), `hepgi-v93` (NAFLD-FS, Glasgow-Imrie, Truelove-Witts, Harvey-Bradshaw, Mayo, Milan), `hemonc-v94` (HScore, IPSS-R, FLIPI, MASCC, Sokal) | 35 |
+| sixth | `neuro-v119` (CPSSS, FAST-ED, Boston-CAA, CVT-risk), `neuro-v120` (STESS, 2HELPS2B, MESS, POUND, HINTS), `neuro-v121` (EGRIS, mEGOS, Brighton-GBS, MGFA), `neuro-v122` (Hachinski, Modified-Ashworth, Bickerstaff), `nephro-v127` (KFRE, RIFLE, AKIN, UFR), `renal-v128` (FEPO4, FEMg, nPCR, std-Kt/V, EFWC), `uro-v130` (prostate-volume, PSA density/velocity/doubling-time, D'Amico, Gleason grade-group), `uro-v131` (CAPRA, R.E.N.A.L., PADUA, S.T.O.N.E., TWIST) | 36 |
 
 `docs/mcp-coverage.md` is the ledger and `list_calculators` always reports the
 live exposed fraction (`"<N> of <M> catalog tiles exposed"`), never a hardcoded
@@ -3958,8 +3959,11 @@ number. Three tiles inside these modules are deliberately left unexposed and
 recorded as such: `phases-iph` has no `META.example` to round-trip, `pospom`
 takes a variable-length comorbidity array that needs a bespoke `toArgs`, and
 `ses-cd` takes per-segment input arrays rather than the flat `dom→arg→kind`
-contract. Later waves extend coverage the same way — one module, one ledger
-entry, one set of round-tripping examples at a time.
+contract. Two wave-six tiles (HINTS, Bickerstaff) are categorical instruments
+whose number-free examples round-trip through the band/note text, and the
+R.E.N.A.L. hilar suffix is an empty-string/`h` enum. Later waves extend coverage
+the same way — one module, one ledger entry, one set of round-tripping examples
+at a time.
 
 ### Try it
 

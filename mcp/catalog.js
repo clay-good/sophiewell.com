@@ -36,6 +36,14 @@ import critcareV112 from './adapters/critcare-v112.js';
 import fluidrespV113 from './adapters/fluidresp-v113.js';
 import hepgiV93 from './adapters/hepgi-v93.js';
 import hemoncV94 from './adapters/hemonc-v94.js';
+import neuroV119 from './adapters/neuro-v119.js';
+import neuroV120 from './adapters/neuro-v120.js';
+import neuroV121 from './adapters/neuro-v121.js';
+import neuroV122 from './adapters/neuro-v122.js';
+import nephroV127 from './adapters/nephro-v127.js';
+import renalV128 from './adapters/renal-v128.js';
+import uroV130 from './adapters/uro-v130.js';
+import uroV131 from './adapters/uro-v131.js';
 
 const ADAPTER_MODULES = [
   ['tox-v86', toxV86],
@@ -57,6 +65,14 @@ const ADAPTER_MODULES = [
   ['fluidresp-v113', fluidrespV113],
   ['hepgi-v93', hepgiV93],
   ['hemonc-v94', hemoncV94],
+  ['neuro-v119', neuroV119],
+  ['neuro-v120', neuroV120],
+  ['neuro-v121', neuroV121],
+  ['neuro-v122', neuroV122],
+  ['nephro-v127', nephroV127],
+  ['renal-v128', renalV128],
+  ['uro-v130', uroV130],
+  ['uro-v131', uroV131],
 ];
 
 const HERE = dirname(fileURLToPath(import.meta.url));

@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `c7fd3050190114b6`
-Generated: 2026-06-30T20:48:07.560Z
+Build ID: `30b4cdf16ce6eaf9`
+Generated: 2026-06-30T21:15:52.244Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=20.18.1 <21, npm >=10.0.0
@@ -123,7 +123,7 @@ downloads is committed in this repository and is hashed below.
 | `lib/neuro-v121.js` | 17466 | `7f31b15619c2f8fb823c0005a64267a2051bb6a03e0c8afd87adb59062c51da1` |
 | `lib/neuro-v122.js` | 11470 | `93e42d759c472fa1482d12402a5daa370ce1163060374db83e5118c68579707f` |
 | `lib/neuro-v95.js` | 14709 | `7f7e4f5a0877afa8efbf6cc69f8b0549370bcdbcb5d7ed1dfcea1a5ee7266e85` |
-| `lib/num.js` | 3323 | `91c67f1f0c84da6047705b4b8f8e064c2256102cc10d90d66e8ffdd40e6db27d` |
+| `lib/num.js` | 3883 | `d420a01b7b54cd9d5e102b1ffaa0ed1b6a5ffb7c9e652d7bb2d458d24857e47f` |
 | `lib/nutrition-energy-v152.js` | 14446 | `924b5421f818147f64b10db410fca9892773a29a918cf40e2bacdb64c0dbb23a` |
 | `lib/ob-v138.js` | 15914 | `31473ee0596e0822f6a19fd4fb31f7c037fcac43888d9da260939925ab5f869b` |
 | `lib/onc-v134.js` | 16934 | `6335c7bb64652b213491db50ec0b0a04eddcab52c9bfea55d5dd26ba48ce86b5` |

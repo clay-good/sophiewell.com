@@ -73,7 +73,7 @@ strings; booleans as `true`/`false`; enums by their listed string values.
 
 ```
 list_calculators { "specialty": "hepatology" }
-  -> { coverage: "95 of 774 catalog tiles exposed ...", calculators: [ { id: "meld-xi", ... }, ... ] }
+  -> { coverage: "131 of 774 catalog tiles exposed ...", calculators: [ { id: "meld-xi", ... }, ... ] }
 
 describe_calculator { "id": "meld-xi" }
   -> { inputSchema: { ... mx-bili, mx-creat ... }, citation: "Heuman DM ... Liver Transpl 2007", ... }
@@ -96,8 +96,13 @@ gastroenterology severity indices); and a fifth wave adds 35 more across 7
 modules (heart-failure risk / HFpEF probability, wide-complex-tachycardia and
 syncope-risk algorithms, cardiovascular-risk engines, critical-care severity and
 ICU-weakness scores, dynamic fluid-responsiveness measures, hepatology / GI
-severity indices, and hematology / oncology prognostic scores), for 95 across 19
-modules today. Later waves extend it module by module against the same contract.
+severity indices, and hematology / oncology prognostic scores); and a sixth wave
+adds 36 more across 8 modules (stroke-triage and cerebrovascular scores, seizure
+/ headache / vertigo bedside instruments, neuromuscular prediction and
+classification, dementia / spasticity / brainstem-encephalitis instruments,
+nephrology risk and AKI staging, renal-physiology formulas, and two urology
+clusters), for 131 across 27 modules today. Later waves extend it module by
+module against the same contract.
 
 ## Design
 

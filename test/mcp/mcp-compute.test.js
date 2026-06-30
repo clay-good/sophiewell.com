@@ -142,6 +142,74 @@ test('lib/hemonc-v94.js worked calls (wave 5)', () => {
   assert.equal(ok('sokal-cml', { 'sk-age': '50', 'sk-spleen': '5', 'sk-plt': '300', 'sk-blasts': '2' }).valid, true);
 });
 
+test('lib/neuro-v119.js worked calls (wave 6)', () => {
+  assert.equal(ok('cpsss', { 'cp-gaze': true, 'cp-arm': true }).total, 3);
+  assert.equal(ok('fast-ed', { 'fe-facial': '1', 'fe-arm': '2', 'fe-speech': '2', 'fe-eye': '0', 'fe-neglect': '0' }).total, 5);
+  assert.equal(ok('boston-caa', { 'bc-age': true, 'bc-pres': true, 'bc-lobar': '2' }).category, 'Probable CAA');
+  assert.equal(ok('cvt-risk', { 'cv-malig': true, 'cv-coma': true }).total, 4);
+});
+
+test('lib/neuro-v120.js worked calls (wave 6)', () => {
+  assert.equal(ok('stess', { 'st-con': '1', 'st-sz': '2' }).total, 3);
+  assert.equal(ok('helps2b', { 'h2-birds': true, 'h2-sporadic': true }).risk, '50%');
+  assert.equal(ok('mess-first-seizure', { 'me-sz': '2' }).group, 'High');
+  assert.equal(ok('pound-migraine', { 'po-puls': true, 'po-hours': true, 'po-uni': true, 'po-nausea': true }).total, 4);
+  assert.equal(ok('hints', { 'hi-impulse': 'normal' }).category, 'Central (stroke) pattern');
+});
+
+test('lib/neuro-v121.js worked calls (wave 6)', () => {
+  assert.equal(ok('egris', { 'eg-days': '2', 'eg-fb': true, 'eg-mrc': '3' }).total, 6);
+  assert.equal(ok('megos', { 'mg-age': '2', 'mg-diar': true, 'mg-time': 'day7', 'mg-mrc': '3' }).total, 12);
+  assert.equal(ok('brighton-gbs', { 'br-weak': true, 'br-aref': true, 'br-mono': true, 'br-noalt': true, 'br-csf': 'dissociation', 'br-ncs': true }).level, 1);
+  const mg = ok('mgfa', { 'mf-sev': 'severe', 'mf-sub': 'b', 'mf-talk': '1', 'mf-breath': '2', 'mf-swal': '2' });
+  assert.equal(mg.cls, 'IVb');
+  assert.equal(mg.adlTotal, 5);
+});
+
+test('lib/neuro-v122.js worked calls (wave 6)', () => {
+  assert.equal(ok('hachinski', { 'ha-abrupt': true, 'ha-fluct': true, 'ha-stroke': true, 'ha-fsym': true }).total, 8);
+  assert.equal(ok('modified-ashworth', { 'ma-grade': '1plus' }).grade, '1+');
+  assert.equal(ok('bickerstaff', { 'bi-oph': true, 'bi-atax': true, 'bi-cons': true, 'bi-gq1b': true }).consistent, true);
+});
+
+test('lib/nephro-v127.js worked calls (wave 6)', () => {
+  const k = ok('kfre', { 'kf-mode': '4', 'kf-age': '60', 'kf-male': true, 'kf-egfr': '30', 'kf-acr': '300' });
+  assert.ok(Math.abs(k.risk2 - 0.0332) < 0.001);
+  assert.ok(Math.abs(k.risk5 - 0.1001) < 0.001);
+  assert.equal(ok('rifle-aki', { 'ri-base': '1.0', 'ri-curr': '2.2' }).className, 'Injury');
+  assert.equal(ok('akin-aki', { 'ak-base': '1.0', 'ak-curr': '3.5' }).stage, 3);
+  assert.equal(ok('ufr-dialysis', { 'uf-vol': '3.5', 'uf-hr': '3', 'uf-wt': '70' }).ufr, 16.67);
+});
+
+test('lib/renal-v128.js worked calls (wave 6)', () => {
+  assert.equal(ok('fepo4', { 'fp-up': '30', 'fp-pp': '1.5', 'fp-uc': '60', 'fp-pc': '1.0' }).fe, 33.3);
+  assert.equal(ok('femg', { 'fm-um': '2.0', 'fm-pm': '1.2', 'fm-uc': '50', 'fm-pc': '1.0' }).fe, 4.8);
+  assert.equal(ok('npcr-pna', { 'np-post': '24', 'np-pre': '70', 'np-hr': '44' }).npcr, 1.12);
+  assert.equal(ok('std-ktv', { 'sk-sp': '1.4', 'sk-min': '240', 'sk-n': '3' }).std, 2.18);
+  assert.equal(ok('efwc', { 'ef-vol': '2.0', 'ef-una': '20', 'ef-uk': '15', 'ef-pna': '140' }).efwc, 1.5);
+});
+
+test('lib/uro-v130.js worked calls (wave 6)', () => {
+  assert.equal(ok('prostate-volume', { 'pvol-ap': '4', 'pvol-tr': '5', 'pvol-cc': '4' }).volume, 41.6);
+  assert.equal(ok('psa-density', { 'psad-psa': '6', 'psad-vol': '30' }).density, 0.2);
+  assert.equal(ok('psa-velocity', { 'psav-psa1': '3', 'psav-psa2': '4.5', 'psav-mo': '12' }).velocity, 1.5);
+  assert.equal(ok('psa-doubling-time', { 'psadt-psa1': '4', 'psadt-psa2': '8', 'psadt-mo': '6' }).dt, 6);
+  assert.equal(ok('damico-prostate-risk', { 'dam-psa': '6', 'dam-gl': '7', 'dam-stage': 'T1c' }).risk, 'Intermediate');
+  assert.equal(ok('gleason-grade-group', { 'gl-pri': '3', 'gl-sec': '4' }).group, 2);
+});
+
+test('lib/uro-v131.js worked calls (wave 6)', () => {
+  assert.equal(ok('capra-score', { 'capra-age': '60', 'capra-psa': '7', 'capra-gp': '3', 'capra-gs': '4', 'capra-stage': 'T1-T2', 'capra-cores': '20' }).total, 3);
+  // R.E.N.A.L. hilar is the '' / 'h' enum: a blank suffix leaves the score unflagged.
+  const ren = ok('renal-nephrometry', { 'ren-radius': '2', 'ren-exo': '2', 'ren-near': '2', 'ren-loc': '1', 'ren-ap': 'p', 'ren-hilar': '' });
+  assert.equal(ren.total, 7);
+  assert.equal(ren.suffix, 'p');
+  assert.equal(ok('padua-renal', { 'pad-long': '2', 'pad-exo': '2', 'pad-rim': '1', 'pad-sinus': '1', 'pad-ucs': '1', 'pad-size': '1', 'pad-face': 'a' }).total, 8);
+  assert.equal(ok('stone-nephrolithometry', { 'stn-len': '20', 'stn-wid': '20', 'stn-tract': '80', 'stn-obstr': '1', 'stn-cal': '1', 'stn-hu': '800' }).area, 400);
+  // TWIST yes/no findings are booleans the lib present() coerces ('1' -> true, '0' -> false).
+  assert.equal(ok('twist-score', { 'tw-swell': '1', 'tw-hard': '0', 'tw-crem': '1', 'tw-nv': '1', 'tw-high': '1' }).total, 5);
+});
+
 // The enum->boolean adapter transform reaches the lib: el-ganzouri prognath and
 // elapss earlierSah both map a yes/no select onto a lib boolean.
 test('enum->boolean adapter transform reaches the lib (elapss earlierSah)', () => {

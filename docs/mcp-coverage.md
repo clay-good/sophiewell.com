@@ -77,6 +77,30 @@ without a unit field); the MRC sum score takes a fixed twelve-key set of
 manual-muscle-test grades, each a 0-5 number, not a variable-length array. Every
 exposed example round-trips to its `META.example.expected`.
 
+## Sixth wave — 8 modules
+
+Coverage extends with 36 more clinical calculators across 8 `lib` modules:
+stroke-triage and cerebrovascular scores (`lib/neuro-v119.js` — CPSSS / C-STAT,
+FAST-ED, Boston Criteria v2.0 for CAA, the ISCVT CVT-risk score), seizure /
+headache / vertigo bedside instruments (`lib/neuro-v120.js` — STESS, 2HELPS2B,
+MESS, POUND, the HINTS exam), neuromuscular prediction and classification
+(`lib/neuro-v121.js` — EGRIS, mEGOS, the Brighton GBS case definition, the MGFA
+class with MG-ADL), dementia / spasticity / brainstem-encephalitis instruments
+(`lib/neuro-v122.js` — the Hachinski ischemic score, the Modified Ashworth grade,
+the Bickerstaff checklist), nephrology risk / AKI staging (`lib/nephro-v127.js` —
+KFRE, RIFLE, AKIN, the dialysis ultrafiltration rate), renal-physiology formulas
+(`lib/renal-v128.js` — FEPO4, FEMg, nPCR, standard Kt/V, electrolyte-free water
+clearance), and two urology clusters (`lib/uro-v130.js` — prostate volume, PSA
+density / velocity / doubling time, the D'Amico risk group, the Gleason grade
+group; `lib/uro-v131.js` — CAPRA, the R.E.N.A.L. and PADUA nephrometry scores,
+S.T.O.N.E. nephrolithometry, and the TWIST torsion score). Brings the exposed
+total to **131 calculators across 27 modules**. The HINTS exam and the Bickerstaff
+checklist are categorical instruments whose number-free examples round-trip
+through the band/note text; the R.E.N.A.L. hilar suffix is an empty-string /
+`h` enum (the lib treats `'h'` as the hilar flag), and the TWIST yes/no findings
+map to booleans the lib `present()` helper coerces. Every exposed example
+round-trips to its `META.example.expected`.
+
 ## Exposed
 
 Each id below is live in `mcp/catalog.js`. The gate parses this list.
@@ -213,6 +237,58 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 - `flipi`
 - `mascc`
 - `sokal-cml`
+
+### lib/neuro-v119.js
+- `cpsss`
+- `fast-ed`
+- `boston-caa`
+- `cvt-risk`
+
+### lib/neuro-v120.js
+- `stess`
+- `helps2b`
+- `mess-first-seizure`
+- `pound-migraine`
+- `hints`
+
+### lib/neuro-v121.js
+- `egris`
+- `megos`
+- `brighton-gbs`
+- `mgfa`
+
+### lib/neuro-v122.js
+- `hachinski`
+- `modified-ashworth`
+- `bickerstaff`
+
+### lib/nephro-v127.js
+- `kfre`
+- `rifle-aki`
+- `akin-aki`
+- `ufr-dialysis`
+
+### lib/renal-v128.js
+- `fepo4`
+- `femg`
+- `npcr-pna`
+- `std-ktv`
+- `efwc`
+
+### lib/uro-v130.js
+- `prostate-volume`
+- `psa-density`
+- `psa-velocity`
+- `psa-doubling-time`
+- `damico-prostate-risk`
+- `gleason-grade-group`
+
+### lib/uro-v131.js
+- `capra-score`
+- `renal-nephrometry`
+- `padua-renal`
+- `stone-nephrolithometry`
+- `twist-score`
 
 ## Not yet adapted
 
