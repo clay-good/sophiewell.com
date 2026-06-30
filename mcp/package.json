@@ -1,0 +1,19 @@
+{
+  "name": "sophiewell-mcp",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Optional stdio MCP server exposing Sophie Well's deterministic, cited clinical calculators as tools for AI agents. No hosting, no network, no AI.",
+  "type": "module",
+  "bin": {
+    "sophiewell-mcp": "./server.js"
+  },
+  "engines": {
+    "node": ">=20.18.1 <21"
+  },
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "1.29.0"
+  }
+}

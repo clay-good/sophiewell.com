@@ -3757,6 +3757,115 @@ nothing off-origin, and only converts a scan's pixels into the text a human
 would otherwise type. It is an input adapter to the deterministic engine, not a
 decision-maker — so the "deterministic, not probabilistic" posture is intact.
 
+## MCP server (optional) — deterministic calculators as agent tools
+
+The website is the product. But the same property that makes it useful to a
+clinician — **exact arithmetic over published, cited coefficients** — is exactly
+what an AI agent is *bad* at. An agent drafting clinical content will cheerfully
+miscompute a MELD-XI score or invent a TIMI weighting. [spec-v183](docs/spec-v183.md)
+adds a second, optional consumption surface for the calculators that already
+exist: a local **stdio Model Context Protocol (MCP)** server (`mcp/`) that lets an
+agent call the vetted compute functions as deterministic tools. It turns *"the
+model guesses the score"* into *"the model calls a tool, gets the right number,
+and gets the source to cite."*
+
+**The site is untouched.** The MCP server adds zero browser code, zero runtime
+dependencies to the site (root `package.json` `dependencies` stays `{}` — the
+SDK is pinned in `mcp/package.json`), and zero new tiles (`UTILITIES.length` is
+unchanged). Delete `mcp/` and the site's lint, test, sbom, and build stay green.
+
+**No hosting, no network, no AI.** The server speaks MCP over stdin/stdout only —
+no HTTP, no SSE, no socket, no egress, no model calls, no telemetry, no input
+logging. It runs as a local subprocess on the caller's machine (the same model
+as the `openlore` MCP server already wired into this repo). We host nothing, run
+nothing, and see nothing — the right privacy posture for clinical inputs.
+
+### Architecture: a sibling that imports the pure core
+
+```
+            ┌──────────────────────────── the website (unchanged) ───────────────────────────┐
+            │  index.html ──▶ app.js ──▶ views/group-*.js ──▶ lib/<pure>.js ◀── lib/meta.js   │
+            │      (DOM, renderers)        (read DOM, call compute)   ▲            ▲           │
+            └──────────────────────────────────────────────────────── │ ─────────  │ ─────────┘
+                                                                       │            │
+                          imports the SAME pure modules ───────────────┘            │
+                                                                       │            │ citations,
+   AI agent                          ┌─────────────────┐              │            │ examples
+  (Claude, …) ◀── stdio JSON-RPC ──▶ │  mcp/server.js  │              │            │
+                                     │  (official SDK) │              │            │
+                                     └────────┬────────┘              │            │
+                                              │  dispatch             │            │
+                                     ┌────────▼────────┐     ┌─────────▼────────┐   │
+                                     │   mcp/tools.js  │────▶│  mcp/catalog.js  │◀──┘
+                                     │ list/describe/  │     │  registry =       │
+                                     │ compute (pure)  │     │  adapters ⋈ META  │
+                                     └─────────────────┘     │  ⋈ UTILITIES      │
+                                                             └────────┬─────────┘
+                                                                      │
+                                                        ┌─────────────▼─────────────┐
+                                                        │   mcp/adapters/*.js        │
+                                                        │  (input schema + toArgs +  │
+                                                        │   formatResult ONLY)       │
+                                                        └────────────────────────────┘
+```
+
+The import graph is acyclic and one-directional: `mcp/* → lib/<pure>` only. The
+server never imports `app.js`, `views/*`, or any DOM-coupled module — a build-time
+no-DOM scan in `check-mcp-catalog.mjs` enforces it, so a tile that accidentally
+couples compute to the DOM cannot silently break the server.
+
+### Single source of truth
+
+The one artifact that did not already exist is a **machine-readable per-tile input
+schema** — today each tile's input contract is tangled inside its DOM renderer. An
+adapter (`mcp/adapters/<module>.js`) supplies *only* that, as a flat field list:
+
+| field key | from the renderer | example | role |
+|---|---|---|---|
+| `dom` | the input id (`getElementById`), also the `META.example.fields` key | `mx-bili` | the public input key (so the example round-trips with zero re-typing) |
+| `arg` | the lib function's argument name | `bilirubin` | maps input → compute call |
+| `kind` | `number` / `bool` / `enum` | `number` | coercion + JSON-Schema type |
+
+From that one list, `mcp/fields.js` derives both the published JSON Schema and the
+default `toArgs()`. Everything else — name, group, specialties, citation, example,
+interpretation — is **read** from `UTILITIES` (app.js) and `META` (lib/meta.js),
+never re-typed. `scripts/check-mcp-catalog.mjs` (in the `lint` chain) fails the
+build if an id is not in `UTILITIES`, if an exposed tile is not `clinical: true`,
+if the `docs/mcp-coverage.md` ledger drifts, if a compute module touches the DOM,
+or if any example stops round-tripping — the **same numeric-correctness contract
+as the e2e example-correctness sweep**, applied to the JSON surface.
+
+### The three tools
+
+| tool | input | returns |
+|---|---|---|
+| `list_calculators` | `{ group?, specialty?, query? }` | lightweight rows + a live coverage line (`"<N> of <M> catalog tiles exposed"`). No computation. |
+| `describe_calculator` | `{ id }` | the full contract: input JSON Schema, a worked example, citation + URL + access date, interpretation bands, disclaimer. |
+| `compute_calculator` | `{ id, inputs }` | the deterministic result + citation + disclaimer. Invalid/incomplete input returns `{ valid: false, message }` — never a thrown error, never a `NaN`/`Infinity` (the spec-v59 output-safety guard, on the JSON surface). |
+
+Exposing one tool per calculator would flood every client's tool list; the server
+uses a fixed three-tool surface with dynamic dispatch over the catalog instead.
+
+### Coverage is explicit and honest
+
+Adapting the catalog is incremental. The first wave exposes **21 clinical
+calculators across 4 `lib` modules** (`tox-v86`, `hep-v124`, `acidbase-v129`,
+`cardio-v90`) as a proof of pattern; `docs/mcp-coverage.md` is the ledger and
+`list_calculators` always reports the live exposed fraction. Later waves extend
+coverage module by module against the same contract.
+
+### Try it
+
+```sh
+cd mcp && npm install          # SDK installs into this subtree only
+# then add a stdio block to your MCP client config:
+#   { "mcpServers": { "sophiewell-calculators":
+#       { "command": "node", "args": ["/abs/path/sophiewell.com/mcp/server.js"] } } }
+```
+
+See [`mcp/README.md`](mcp/README.md) for the full client snippet and the
+no-hosting/no-network/privacy posture.
+
 ## Stability commitments
 
 The site is stable and predictable by design. These commitments are hard
@@ -3788,8 +3897,9 @@ rules, not soft preferences.
 | `npm test`               | Run the full test suite (unit, a11y, grep, data integrity)        |
 | `npm run test:unit`      | Run Node's built-in unit tests (5,869 tests)                      |
 | `npm run test:e2e`       | Build `dist/`, then run Playwright integration tests against real browsers — incl. a full-catalog 320px no-horizontal-scroll sweep over both the SPA routes and the 772 pre-rendered static tool pages, the hub/topic/commitments pages, and the citation-wrap pin |
+| `npm run test:mcp`       | Run the optional MCP server's tool/compute/fuzz tests (independent of the site jobs; SDK-free) |
 | `npm run test:a11y`      | Run accessibility checks on every utility view                    |
-| `npm run lint`           | ESLint + the CI gate chain: grep-check, output-safety, citation-integrity, catalog-truth, commitments, PA staleness, PA audit |
+| `npm run lint`           | ESLint + the CI gate chain: grep-check, output-safety, citation-integrity, catalog-truth, commitments, MCP-catalog, PA staleness, PA audit |
 | `npm run data:refresh`   | Re-fetch and re-shard every public dataset                        |
 | `npm run data:verify`    | Verify shard SHA-256 hashes against the manifests                 |
 | `npm run sbom`           | Regenerate the CycloneDX SBOM (`sbom.json`, `sbom.md`)            |

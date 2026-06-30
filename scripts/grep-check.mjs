@@ -193,6 +193,12 @@ function catalogScanRanges(rel, text) {
     // once in prose and maintained by hand, exactly like the scope ledgers
     // above; excluded for the same reason.
     if (rel === 'docs/scope-data-sourced.md') return [];
+    // spec-v183 §4: docs/mcp-coverage.md is the MCP coverage ledger. Its count
+    // is a SUBSET of the catalog (exposed adapters), deliberately distinct from
+    // UTILITIES.length and owned by scripts/check-mcp-catalog.mjs rather than
+    // the catalog-truth surfaces. Excluded for the same reason as the scope
+    // ledgers above (and it never hardcodes the live total).
+    if (rel === 'docs/mcp-coverage.md') return [];
     return [[1, lines.length]];
   }
   return [];

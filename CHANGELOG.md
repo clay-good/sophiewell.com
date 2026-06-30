@@ -6,6 +6,59 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v183 optional stdio MCP server — first wave: 21 clinical calculators across 4 lib modules; no tile delta)
+
+- **A second, optional consumption surface for the calculators that already
+  exist: a local stdio Model Context Protocol (MCP) server (`mcp/`) that lets an
+  AI agent call the vetted, cited compute functions as deterministic tools — a
+  "deterministic linter" for the agent's own clinical arithmetic.** LLMs are
+  unreliable at exact arithmetic and at recalling published coefficients; these
+  functions are reliable at both. The website remains the product: v183 adds
+  **zero** browser code, **zero** runtime dependencies to the site (root
+  `package.json` `dependencies` stays `{}`), **zero** renderer/build changes, and
+  **zero** new tiles (`UTILITIES.length` is unchanged).
+- **No hosting, no network, no AI.** The server speaks MCP over stdin/stdout
+  only — no HTTP/SSE/socket, no network egress, no model calls, no telemetry, no
+  input logging. It runs as a local subprocess (the same model as the `openlore`
+  MCP server already wired into this repo). Determinism: identical
+  `{ id, inputs }` returns a byte-identical result.
+- **Fixed three-tool surface** with dynamic dispatch over the catalog (not one
+  tool per calculator): `list_calculators` (discovery + live coverage line),
+  `describe_calculator` (input JSON Schema, worked example, citation + URL +
+  access date, interpretation bands, disclaimer), and `compute_calculator`
+  (validated, deterministic result; invalid/incomplete input returns a structured
+  `{ valid: false, message }`, never a thrown error or a non-finite number).
+- **Single source of truth.** Compute stays in `lib/*.js`; citations/examples/
+  specialties stay in `lib/meta.js`; name/group/clinical stay in `app.js`
+  `UTILITIES`. A thin adapter (`mcp/adapters/*.js`) contributes only the input
+  schema and two pure mapping functions; everything else is read, never re-typed.
+  `scripts/check-mcp-catalog.mjs` (in the `lint` chain) fails the build if an id
+  is not in `UTILITIES`, if an exposed tile is not `clinical: true`, if the
+  `docs/mcp-coverage.md` ledger drifts from the live adapter set, if a compute
+  module references a DOM global, or if any example stops round-tripping (the
+  same numeric-correctness contract as the e2e example-correctness sweep, applied
+  to the JSON surface).
+- **First wave** exposes 21 clinical calculators across 4 `lib` modules:
+  `lib/tox-v86.js` (serotonin-toxicity, salicylate-toxicity, toxic-alcohol),
+  `lib/hep-v124.js` (albi-grade, meld-xi, forns-index, bard-score,
+  fatty-liver-index, lok-index), `lib/acidbase-v129.js` (stewart-sid-sig,
+  base-excess, resp-acidosis-compensation, resp-alkalosis-compensation,
+  met-alkalosis-compensation, urine-osmolal-gap), and `lib/cardio-v90.js`
+  (ecg-axis, lvh-criteria, timi-stemi, duke-treadmill, cardiac-power-output,
+  aortic-valve-area). Later waves extend coverage module by module.
+- **Isolation (verified):** deleting `mcp/` leaves `npm run lint`,
+  `npm run test`, `npm run sbom`, and `npm run build` green — `check-mcp-catalog`
+  is a clean no-op when `mcp/` is absent. The `@modelcontextprotocol/sdk`
+  dependency is pinned in `mcp/package.json` only; the site gains no runtime
+  dependency. New files: `mcp/server.js`, `mcp/tools.js`, `mcp/catalog.js`,
+  `mcp/fields.js`, `mcp/adapters/{tox-v86,hep-v124,acidbase-v129,cardio-v90}.js`,
+  `mcp/package.json`, `mcp/README.md`, `docs/mcp-coverage.md`,
+  `scripts/check-mcp-catalog.mjs`, and `test/mcp/{mcp-tools,mcp-compute,mcp-fuzz}.test.js`
+  (run by the new independent `test:mcp` CI job, not the site `test:unit` glob).
+  Implementation notes vs the charter: MCP tests live in `test/mcp/` (not
+  `test/unit/`) and the gate no-ops when `mcp/` is absent — both to preserve the
+  delete-`mcp/`-and-site-stays-green invariant literally.
+
 ### Added (spec-v182 LTC-GA continence, caregiver strain & advanced wound: Sandvik, ICIQ-UI-SF, MCSI, CSI, BWAT, +5 — 767 → 772; Waterlow deferred)
 
 - **The spec-v172 Long-Term Care & Geriatric Assessment program continues with

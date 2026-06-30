@@ -29,6 +29,23 @@ jobs:
       - name: Static build
         run: npm run build
 
+  # spec-v183: the optional stdio MCP surface. Independent of the site jobs —
+  # it does not gate, and is not gated by, the build/e2e. The tools tested here
+  # are SDK-free pure functions, so no transport dependency is installed.
+  mcp:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+      - run: npm ci || npm install --no-audit --no-fund
+      - name: MCP catalog gate
+        run: node scripts/check-mcp-catalog.mjs
+      - name: MCP tool tests
+        run: npm run test:mcp
+
   e2e:
     runs-on: ubuntu-latest
     needs: unit

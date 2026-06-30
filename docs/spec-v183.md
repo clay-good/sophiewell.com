@@ -1,6 +1,17 @@
 # spec-v183.md — Optional stdio MCP server: expose the calculator catalog as deterministic tools for AI agents (no hosting; website unchanged)
 
-> Status: **PROPOSED (2026-06-24). No code.** Standalone charter — **not** part of
+> Status: **SHIPPED (first wave, 2026-06-30).** 21 clinical calculators across
+> 4 `lib` modules (tox-v86, hep-v124, acidbase-v129, cardio-v90) exposed over a
+> local stdio MCP server (`mcp/`); `UTILITIES.length` unchanged (no tile delta);
+> root `package.json` `dependencies` still `{}` (the SDK is pinned in
+> `mcp/package.json`). Two implementation notes vs this charter: the MCP unit
+> tests live in **`test/mcp/`** (not `test/unit/`) so the site `test:unit` glob
+> is untouched and the delete-`mcp/`-and-site-stays-green invariant (§3) holds
+> literally; and `scripts/check-mcp-catalog.mjs` is a **clean no-op when `mcp/`
+> is absent**, so it can sit in the `lint` chain without breaking that same
+> invariant. Charter below preserved as written.
+>
+> Standalone charter — **not** part of
 > the [spec-v100](spec-v100.md) MDCalc-Parity program (complete at 676), the proposed
 > [spec-v150](spec-v150.md)–v171 gap-closure drafts, or the
 > [spec-v172](spec-v172.md) LTC-GA program (v173–v182). v183 adds a **second,
