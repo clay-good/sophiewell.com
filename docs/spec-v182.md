@@ -1,6 +1,16 @@
 # spec-v182.md — Continence, caregiver burden & advanced wound assessment: Sandvik, ICIQ-UI-SF, MCSI, CSI, Waterlow, and BWAT (+6 tiles)
 
-> Status: **PROPOSED (2026-06-24).** Feature spec of the
+> Status: **SHIPPED 5 of 6 (2026-06-29).** Closing implementation spec of the
+> spec-v172 LTC-GA program; `sandvik-incontinence` (Group E), `iciq-ui-sf`,
+> `modified-caregiver-strain-index`, `caregiver-strain-index`, and `bwat` are live
+> (all Class A; bands/cutoffs cross-verified, spec-v97). **Deferred:** `waterlow` —
+> the Waterlow Pressure Ulcer Risk card has detailed per-category sub-weights with
+> documented edition drift (1985 vs the 2005 revised card) and could not be
+> byte-verified against ≥ 2 independent sources at implementation (sourcing gate,
+> spec-v97); braden/braden-q/norton-push remain the live pressure-injury tiles.
+> Original draft below.
+>
+> **PROPOSED (2026-06-24).** Feature spec of the
 > [spec-v172](spec-v172.md) **Long-Term Care & Geriatric Assessment (LTC-GA)**
 > program, cluster **§3.10**, and the **CLOSING spec of the entire LTC-GA
 > program** (v173–v182). Adds **6** deterministic continence-severity,

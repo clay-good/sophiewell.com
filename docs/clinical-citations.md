@@ -4648,3 +4648,28 @@ Worked example: One two-point drug and one three-point drug give a total of five
 Citation: Hilmer SN, Mager DE, Simonsick EM, et al. A drug burden index to define the functional burden of medications in older people. Arch Intern Med. 2007. (Cross-verified across two or more sources, spec-v97.)
 Formula: For each anticholinergic or sedative medication, the contribution is the daily dose taken divided by the sum of the daily dose and the minimum recommended daily dose. The Drug Burden Index is the sum of those contributions across the patient's medications; a higher index predicts poorer physical and cognitive function. Each contribution is bounded below one, and the minimum-dose denominator must be greater than zero.
 Worked example: A drug taken at ten with a minimum of five contributes zero point six six seven, and a second at four with a minimum of four contributes zero point five, for an index of about one point one seven.
+
+### Sandvik Severity Index (urinary incontinence)
+Citation: Sandvik H, Hunskaar S, Vanvik A, et al. J Epidemiol Community Health. 1993; validation Sandvik H, Seim A, Vanvik A, Hunskaar S. Neurourol Urodyn. 2000. (Cross-verified across two or more sources, spec-v97.)
+Formula: The Severity Index is the product of frequency of leakage (one less than once a month, two a few times a month, three a few times a week, four every day or night) and amount of leakage (one drops, two small splashes, three more), giving a value of one to twelve. One to two is slight, three to six moderate, eight to nine severe, and twelve very severe.
+Worked example: A frequency of three and an amount of two give a Severity Index of six, the moderate band.
+
+### ICIQ-UI Short Form
+Citation: Avery K, Donovan J, Peters TJ, et al. ICIQ: a brief and robust measure for evaluating the symptoms and impact of urinary incontinence. Neurourol Urodyn. 2004. (Cross-verified across two or more sources, spec-v97.)
+Formula: The score sums three items, frequency of leakage (zero to five), amount of leakage (zero to six), and overall impact on daily life (zero to ten), for a total of zero to twenty-one. One to five is slight, six to twelve moderate, thirteen to eighteen severe, and nineteen to twenty-one very severe. A fourth self-diagnostic item is recorded but not scored.
+Worked example: Frequency three, amount four, and impact six give a total of thirteen, the severe band.
+
+### Modified Caregiver Strain Index (MCSI)
+Citation: Thornton M, Travis SS. Analysis of the reliability of the Modified Caregiver Strain Index. J Gerontol B Psychol Sci Soc Sci. 2003. (Cross-verified across two or more sources, spec-v97.)
+Formula: Thirteen items are each scored zero (no), one (yes, sometimes), or two (yes, on a regular basis), for a total of zero to twenty-six. A higher total reflects greater caregiver strain; the scale defines no official cut-point.
+Worked example: All thirteen items rated one give a total of thirteen.
+
+### Caregiver Strain Index (CSI)
+Citation: Robinson BC. Validation of a Caregiver Strain Index. J Gerontol. 1983. (Cross-verified across two or more sources, spec-v97.)
+Formula: Thirteen yes-or-no items are each scored one for yes, for a total of zero to thirteen. A total of seven or more indicates a high level of caregiver strain.
+Worked example: Seven yes answers give a total of seven, the high-strain threshold.
+
+### Bates-Jensen Wound Assessment Tool (BWAT)
+Citation: Bates-Jensen BM, Vredevoe DL, Brecht ML. Validity and reliability of the Pressure Sore Status Tool. Decubitus. 1992 (later the BWAT). (Cross-verified across two or more sources, spec-v97.)
+Formula: Thirteen wound characteristics (size, depth, edges, undermining, necrotic tissue type and amount, exudate type and amount, surrounding skin color, peripheral edema and induration, granulation, and epithelialization) are each scored one (healthy tissue) to five (severe degeneration), for a total of thirteen to sixty-five. A lower total means healing and a higher total degeneration; the score is read as a trajectory across serial assessments.
+Worked example: All thirteen items rated two give a total of twenty-six, between the healing floor of thirteen and the degeneration ceiling of sixty-five.

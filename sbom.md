@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `981d6e2bdcf1d20b`
-Generated: 2026-06-30T00:04:17.540Z
+Build ID: `eeea0111b323d4bf`
+Generated: 2026-06-30T00:16:53.088Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=20.18.1 <21, npm >=10.0.0
@@ -24,13 +24,13 @@ downloads is committed in this repository and is hashed below.
 
 | Path | Bytes | SHA-256 |
 |---|---:|---|
-| `index.html` | 57338 | `686a5080599eae73b597cb8a884d3167245b90313f2c1253d6398f2cc79c8e8e` |
+| `index.html` | 57611 | `449138f167669e97075c5e8faa4f9f55421114fb04b28a05948ab44a7548b7c1` |
 | `styles.css` | 42819 | `bea421c79d390a364eb571c3a9599cdf28264128d4ac02d7abb00f31000c7cda` |
-| `app.js` | 219056 | `145d614bf4a4e7cddff2811289590f9bb4bef7809f093f87ba91b549096ea49d` |
+| `app.js` | 220391 | `21f53a59faf2005e69bf8faa6c2c4eb655e340c3c8047717b42bd25f16427655` |
 | `sw.js` | 4622 | `b891d4344f8e04403b7f1d307fd446cc224bddc6f0c4397438a17d197351171e` |
 | `site.webmanifest` | 709 | `0e0de4da60590a12e8b27a0ae2a2f5ffdb6500b7d2b78f93631ec2f64ed3d5ce` |
 | `robots.txt` | 127 | `38fbf9c1854e72abb20e01e81dd5a31d4ea96f154c12d5db1ec3af05524dd1a1` |
-| `sitemap.xml` | 118158 | `56bb903b015d00bade146d79a94797ef5c7eef75a57e2083a8487a0228426565` |
+| `sitemap.xml` | 118945 | `37a2b75bed6866d518ada4dabbbb80edfe375151a1b0aad6da483b718959a5aa` |
 | `_headers` | 1316 | `2f39986457d2feff7e73e491a7d09ee871e8f2f4cc2bc437f86bd86a42554ec6` |
 | `logo.png` | 63440 | `11afaf1b0d3ca68393d202e4810bf766b5b6d591b4e3ec52f41d3cacaa4616ec` |
 | `favicon.ico` | 7411 | `407fde0ca2788409e87e11f596fa02e6a0b121817fcea7fd995beec1801e287b` |
@@ -106,10 +106,11 @@ downloads is committed in this repository and is hashed below.
 | `lib/ltcga-v177.js` | 9920 | `0ec323c76b737d3d64e7a4bf68a08384a10e1aaf511d250067469c2546545b2a` |
 | `lib/ltcga-v178.js` | 12438 | `79ca019ed7cfc4befecf07a0a24260cf3d8ba230c1b9c6502c3012784f1c8bd2` |
 | `lib/ltcga-v179.js` | 8006 | `14892e5bf68f918dc43c225d4289e5d71c1cc1c79b271f35e12bc5648cf2ce2c` |
+| `lib/ltcga-v182.js` | 9830 | `3c336cb6868034015a0e2111e7be0839ecf813fef361dc6609cadf2b271307d2` |
 | `lib/lymphoma-v135.js` | 16162 | `e29896a6de224445f46839cd06518817bd25d1235a91ede76f77ccb4996a934f` |
 | `lib/medication-v4.js` | 18192 | `467f9576c50da696cc56094eb022d0a5ed1e88de0c7618448554ede8067270b0` |
 | `lib/medication-v5.js` | 18863 | `ce81d9f8954abbd412892c13af9936f992239164f26fd2b999eaea7902787ab7` |
-| `lib/meta.js` | 1154225 | `bf2e012563d11cc963c57cf48e39b3531542fe5baf88b893ae1e31314fdadafb` |
+| `lib/meta.js` | 1159573 | `08df23caeff7f4cf0bae598b714661d22b46563b656f1de0f9b2382ccda46868` |
 | `lib/metabolic-onc-v88.js` | 12659 | `1553b641668c121661a66647da71a4aaaa023e9f3a6b7a753efbcdab27cdba81` |
 | `lib/nephro-v127.js` | 10884 | `c86865e98fced63ac9510fbebe0de77a88e305366c080a83c9beb8542371932a` |
 | `lib/nephro-v92.js` | 15979 | `621e12a7cd8aba40331051b7d7f6605b58053ab9cefde04f9f3581b1f92846f9` |
@@ -265,6 +266,7 @@ downloads is committed in this repository and is hashed below.
 | `views/group-v178.js` | 11677 | `b46473c90aef1f1a3ea61858c72dd4a2be4d6e535888387a0351e185d28a9d81` |
 | `views/group-v179.js` | 6756 | `240fe2830b2e7736ff3f57f681f4d109e99aeb0069fb4240f50933785033b01d` |
 | `views/group-v18.js` | 10455 | `90a5482884a16c0d8883b7e7de1ed1d1cbbbbcc6dcd45bc1f6d28d78e6547965` |
+| `views/group-v182.js` | 11675 | `98f15b655f7df400d3b185d1bf3988b8d990ae95e6386511c46e860042e7119e` |
 | `views/group-v19.js` | 13238 | `b885ca88c5e948367a78fa21ebb85e0cb04b77cb56c1ed7c4ab9c877b2c90486` |
 | `views/group-v20.js` | 11566 | `99fd8ab57f420c6337f98fddda7a1d61780e673f06ccb83a52c52a2ea5bbe492` |
 | `views/group-v21.js` | 11503 | `f56e58aed91b6b6cedf3663a60f56e2d1b1d612977bc7588a9670a8e3c9e8c07` |

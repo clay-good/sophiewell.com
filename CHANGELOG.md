@@ -6,6 +6,40 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v182 LTC-GA continence, caregiver strain & advanced wound: Sandvik, ICIQ-UI-SF, MCSI, CSI, BWAT, +5 — 767 → 772; Waterlow deferred)
+
+- **The spec-v172 Long-Term Care & Geriatric Assessment program continues with
+  spec-v182 (cluster §3.10), shipping 5 of its 6 proposed continence-severity,
+  caregiver-strain, and advanced-wound instruments (767 → 772, +5).** Each item
+  value, band, and cutoff was re-fetched and cross-verified against ≥ 2 sources
+  (spec-v97); all five are Class A.
+- **`sandvik-incontinence` (Group E)** — Severity Index = frequency × amount →
+  1–12; 1–2 slight / 3–6 moderate / 8–9 severe / 12 very severe (Sandvik 1993/2000).
+- **`iciq-ui-sf` (Group G)** — frequency (0–5) + amount (0–6) + impact (0–10) →
+  0–21; 1–5 / 6–12 / 13–18 / 19–21 (Avery *Neurourol Urodyn* 2004). Ships the
+  scoring only (ICIQ free to use, registered with the ICIQ Group, Bristol).
+- **`modified-caregiver-strain-index` (Group G)** — 13 items 0/1/2 → 0–26
+  (Thornton & Travis 2003); the free alternative to the licensed Zarit Burden
+  Interview (excluded by design).
+- **`caregiver-strain-index` (Group G)** — 13 yes/no → 0–13; ≥ 7 high strain
+  (Robinson *J Gerontol* 1983).
+- **`bwat` (Group G)** — the Bates-Jensen Wound Assessment Tool: 13 items 1–5 →
+  13–65, read as a healing trajectory (Bates-Jensen 1992). The full-trajectory
+  companion to the live `braden` / `norton-push` pressure-injury tiles.
+- **`waterlow` deferred** — the Waterlow Pressure Ulcer Risk card has detailed
+  per-category sub-weights with documented edition drift (1985 vs the 2005 revised
+  card); the current-card weight table could not be byte-verified against ≥ 2 open
+  sources at implementation (sourcing gate, spec-v97).
+- New `lib/ltcga-v182.js` (five named exports; in the fuzz `MODULES` list, zero
+  non-finite leaks) and `views/group-v182.js` (`RV182`). +5 META with band-flip /
+  boundary examples; +5 unit-test files; +5 audit logs; +5
+  `docs/clinical-citations.md` rows. Catalog moved on all 13 catalog-truth surfaces
+  via the live count + 5. **This closes the implemented portion of the spec-v172
+  LTC-GA program** (v173–v182); spec-v180 (older-adult mortality indices) and
+  spec-v181 (LTC infection-surveillance criteria) remain open, each requiring
+  dedicated verbatim sourcing of high-stakes weight tables / per-site boolean logic
+  before they can meet the spec-v97 bar.
+
 ### Added (spec-v179 LTC-GA polypharmacy burden: ACB, ARS, Drug Burden Index, +3 — 764 → 767; MRCI deferred)
 
 - **The spec-v172 Long-Term Care & Geriatric Assessment program continues with
