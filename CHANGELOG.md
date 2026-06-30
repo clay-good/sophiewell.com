@@ -6,6 +6,36 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v179 LTC-GA polypharmacy burden: ACB, ARS, Drug Burden Index, +3 — 764 → 767; MRCI deferred)
+
+- **The spec-v172 Long-Term Care & Geriatric Assessment program continues with
+  spec-v179 (cluster §3.7), shipping 3 of its 4 proposed polypharmacy-burden
+  quantifiers (764 → 767, +3).** The live `beers-check` flags *individual*
+  inappropriate medications; v179 adds the **cumulative-burden** view. Per the
+  spec-v100 §2 classification clarification, **none of these embeds a drug
+  database** — the clinician reads each drug's level/point/dose from the published
+  scale and enters the per-level counts (ACB/ARS) or per-drug doses (DBI); the tile
+  does the deterministic arithmetic. All three are Class A.
+- **`anticholinergic-burden` (ACB)** — total = 1×(level-1) + 2×(level-2) +
+  3×(level-3); ≥ 3 commonly treated as clinically relevant (Boustani *Aging Health*
+  2008).
+- **`anticholinergic-risk-scale` (ARS)** — total = 1×(1-pt) + 2×(2-pt) + 3×(3-pt);
+  higher = greater anticholinergic adverse-effect risk (Rudolph *Arch Intern Med*
+  2008).
+- **`drug-burden-index` (DBI, Group E)** — DBI = Σ D/(D + δ) across the entered
+  anticholinergic/sedative drugs; **each ratio is δ>0-guarded** (a blank/partial
+  row or non-positive δ → surfaced `valid:false`, never `Infinity`/`NaN`); higher
+  DBI predicts poorer function (Hilmer *Arch Intern Med* 2007).
+- **`medication-regimen-complexity` (MRCI) deferred** — the 65-item Section A
+  (dosage form), B (frequency), and C (additional-directions) weight tables (George
+  *Ann Pharmacother* 2004) are paywalled / copyright and could not be byte-verified
+  against ≥ 2 open sources at implementation (sourcing gate, spec-v97).
+- New `lib/ltcga-v179.js` (three named exports; in the fuzz `MODULES` list, zero
+  non-finite leaks, the DBI division path fuzzed) and `views/group-v179.js`
+  (`RV179`; DBI takes up to 5 drug rows). +3 META with band-flip examples; +3
+  unit-test files; +3 audit logs; +3 `docs/clinical-citations.md` rows. Catalog
+  moved on all 13 catalog-truth surfaces via the live count + 3.
+
 ### Added (spec-v178 LTC-GA geriatric nutrition & dysphagia: GNRI, Onodera PNI, CONUT, SNAQ, EAT-10, DETERMINE, +6 — 758 → 764)
 
 - **The spec-v172 Long-Term Care & Geriatric Assessment program continues with

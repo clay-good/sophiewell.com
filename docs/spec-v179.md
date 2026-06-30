@@ -1,6 +1,15 @@
 # spec-v179.md — Geriatric pharmacotherapy & polypharmacy burden: ACB, ARS, Drug Burden Index, and Medication Regimen Complexity (+4 tiles)
 
-> Status: **PROPOSED (2026-06-24).** Feature spec of the
+> Status: **SHIPPED 3 of 4 (2026-06-29).** Seventh implementation spec of the
+> spec-v172 LTC-GA program; `anticholinergic-burden` (ACB), `anticholinergic-risk-
+> scale` (ARS), and `drug-burden-index` (DBI, Group E) are live — each consumes the
+> clinician's per-level counts / per-drug doses per the §2 clarification, not a drug
+> database, and the DBI ratio is δ>0-guarded. **Deferred:**
+> `medication-regimen-complexity` (MRCI) — the 65-item Section A/B/C weight tables
+> are paywalled / copyright and could not be byte-verified against ≥ 2 open sources
+> at implementation (sourcing gate, spec-v97). Original draft below.
+>
+> Feature spec of the
 > [spec-v172](spec-v172.md) **Long-Term Care & Geriatric Assessment (LTC-GA)**
 > program (§3.7). Adds **4** deterministic geriatric-pharmacotherapy instruments
 > that quantify cumulative anticholinergic/sedative burden and medication-regimen

@@ -100,6 +100,7 @@ import { renderers as RV175 } from './views/group-v175.js';
 import { renderers as RV176 } from './views/group-v176.js';
 import { renderers as RV177 } from './views/group-v177.js';
 import { renderers as RV178 } from './views/group-v178.js';
+import { renderers as RV179 } from './views/group-v179.js';
 import { renderers as RV149 } from './views/group-v149.js';
 import { renderers as RV63 } from './views/group-v63.js';
 import { renderers as RB } from './views/group-b.js';
@@ -119,7 +120,7 @@ import { resolvePrompt } from './lib/prompt.js';
 // artifact-detect / artifact-route / artifact-handoff helpers were
 // deleted in spec-v29 wave 29-2 (Group C/L).
 
-const RENDERERS = { ...RA, ...RB, ...RC, ...RE, ...RF, ...RG, ...RH, ...RI, ...RJ, ...RKLMNO, ...RV5, ...RV6, ...RV7, ...RV8, ...RV9, ...RV10, ...RV11, ...RV12, ...RV13, ...RV14, ...RV15, ...RV16, ...RV17, ...RV18, ...RV19, ...RV20, ...RV21, ...RV22, ...RV23, ...RV24, ...RV25, ...RV26, ...RV27, ...RV28, ...RV29, ...RV30, ...RV31, ...RV32, ...RV33, ...RV34, ...RV35, ...RV36, ...RV37, ...RV38, ...RV39, ...RV40, ...RV117, ...RV118, ...RV119, ...RV120, ...RV121, ...RV122, ...RV123, ...RV124, ...RV125, ...RV126, ...RV127, ...RV128, ...RV129, ...RV130, ...RV131, ...RV132, ...RV133, ...RV134, ...RV135, ...RV136, ...RV137, ...RV138, ...RV139, ...RV140, ...RV141, ...RV142, ...RV143, ...RV144, ...RV145, ...RV146, ...RV147, ...RV148, ...RV149, ...RV151, ...RV152, ...RV153, ...RV154, ...RV155, ...RV156, ...RV158, ...RV159, ...RV160, ...RV161, ...RV163, ...RV164, ...RV165, ...RV166, ...RV167, ...RV169, ...RV173, ...RV174, ...RV175, ...RV176, ...RV177, ...RV178, ...RV63, ...RPALINT };
+const RENDERERS = { ...RA, ...RB, ...RC, ...RE, ...RF, ...RG, ...RH, ...RI, ...RJ, ...RKLMNO, ...RV5, ...RV6, ...RV7, ...RV8, ...RV9, ...RV10, ...RV11, ...RV12, ...RV13, ...RV14, ...RV15, ...RV16, ...RV17, ...RV18, ...RV19, ...RV20, ...RV21, ...RV22, ...RV23, ...RV24, ...RV25, ...RV26, ...RV27, ...RV28, ...RV29, ...RV30, ...RV31, ...RV32, ...RV33, ...RV34, ...RV35, ...RV36, ...RV37, ...RV38, ...RV39, ...RV40, ...RV117, ...RV118, ...RV119, ...RV120, ...RV121, ...RV122, ...RV123, ...RV124, ...RV125, ...RV126, ...RV127, ...RV128, ...RV129, ...RV130, ...RV131, ...RV132, ...RV133, ...RV134, ...RV135, ...RV136, ...RV137, ...RV138, ...RV139, ...RV140, ...RV141, ...RV142, ...RV143, ...RV144, ...RV145, ...RV146, ...RV147, ...RV148, ...RV149, ...RV151, ...RV152, ...RV153, ...RV154, ...RV155, ...RV156, ...RV158, ...RV159, ...RV160, ...RV161, ...RV163, ...RV164, ...RV165, ...RV166, ...RV167, ...RV169, ...RV173, ...RV174, ...RV175, ...RV176, ...RV177, ...RV178, ...RV179, ...RV63, ...RPALINT };
 
 // ----- Utility registry ----------------------------------------------------
 // Source of truth for routes, names, group, audiences, and clinical flag.
@@ -1585,6 +1586,17 @@ const UTILITIES = [
   { id: 'snaq',                   name: 'SNAQ (Simplified Nutritional Appetite Questionnaire)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'eat-10',                 name: 'EAT-10 (Eating Assessment Tool, dysphagia screen)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'determine',              name: 'DETERMINE Nutritional Health Checklist',            group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+
+  // spec-v179 (seventh feature spec of the spec-v172 LTC-GA program, cluster
+  // §3.7): geriatric-pharmacotherapy / polypharmacy-burden quantifiers.
+  // views/group-v179.js, lib/ltcga-v179.js (RV179). Per the spec-v100 §2
+  // clarification, these consume the clinician's per-level counts / per-drug doses
+  // and do NOT embed a drug database. Ships 3 of 4; medication-regimen-complexity
+  // (MRCI) is deferred (65-item weight tables not byte-verifiable, spec-v97). DBI
+  // is Group E (returns a value); ACB/ARS are Group G. All Class A.
+  { id: 'anticholinergic-burden', name: 'ACB (Anticholinergic Cognitive Burden)',             group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'anticholinergic-risk-scale', name: 'ARS (Anticholinergic Risk Scale)',               group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'drug-burden-index',      name: 'Drug Burden Index (DBI)',                           group: 'E', audiences: ['clinicians', 'educators'], clinical: true },
 
   // spec-v6 §3.3: lab result interpreter. Patient-decoder category.
   { id: 'lab-interpret',       name: 'Lab Result Interpreter',                           group: 'C', audiences: ['patients', 'clinicians', 'educators'], clinical: true },

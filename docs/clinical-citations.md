@@ -4633,3 +4633,18 @@ Worked example: Three items rated one give a total of three, the abnormal-swallo
 Citation: Posner BM, Jette AM, Smith KW, Miller DR. Nutrition and health risks in the elderly: the nutrition screening initiative. Am J Public Health. 1993. (Item weights re-fetched verbatim from the ACL Nutrition Screening Initiative checklist; two or more sources, spec-v97.)
 Formula: Ten yes-or-no items carry published weights: illness changing food two, fewer than two meals a day three, few fruits or vegetables or milk two, three or more alcoholic drinks most days two, tooth or mouth problems two, not enough money for food four, eating alone most of the time one, three or more medications a day one, an unintended ten-pound weight change in six months two, and being unable to shop or cook or feed oneself two, for a maximum of twenty-one. Zero to two is good, three to five is moderate, and six or more is high nutritional risk.
 Worked example: Illness, fewer than two meals a day, and eating alone sum to six, the high-risk band.
+
+### ACB (Anticholinergic Cognitive Burden)
+Citation: Boustani M, Campbell N, Munger S, Maidment I, Fox C. Impact of anticholinergics on the aging brain: a review and practical application. Aging Health. 2008. (Indiana ACB scale; cross-verified across two or more sources, spec-v97.)
+Formula: Each current medication is read from the published ACB list as level one (possible anticholinergic), level two, or level three (definite anticholinergic). The total ACB equals one times the number of level-one drugs plus two times the level-two count plus three times the level-three count. Each point is associated with cognitive and functional decline, and a total of three or more is commonly treated as clinically relevant. The tile consumes the per-level counts the clinician enters; it does not display the drug list.
+Worked example: One level-three drug gives a total of three, the clinically relevant cut, whereas a single level-two drug gives two, below it.
+
+### ARS (Anticholinergic Risk Scale)
+Citation: Rudolph JL, Salow MJ, Angelini MC, McGlinchey RE. The Anticholinergic Risk Scale and anticholinergic adverse effects in older persons. Arch Intern Med. 2008. (Cross-verified across two or more sources, spec-v97.)
+Formula: Each current medication is read from the published ARS list as a one-, two-, or three-point anticholinergic. The total equals one times the one-point count plus two times the two-point count plus three times the three-point count. A higher total is associated with greater risk of anticholinergic adverse effects; the scale defines no official cut-points. The tile consumes the per-point counts; it does not display the drug list.
+Worked example: One two-point drug and one three-point drug give a total of five.
+
+### Drug Burden Index (DBI)
+Citation: Hilmer SN, Mager DE, Simonsick EM, et al. A drug burden index to define the functional burden of medications in older people. Arch Intern Med. 2007. (Cross-verified across two or more sources, spec-v97.)
+Formula: For each anticholinergic or sedative medication, the contribution is the daily dose taken divided by the sum of the daily dose and the minimum recommended daily dose. The Drug Burden Index is the sum of those contributions across the patient's medications; a higher index predicts poorer physical and cognitive function. Each contribution is bounded below one, and the minimum-dose denominator must be greater than zero.
+Worked example: A drug taken at ten with a minimum of five contributes zero point six six seven, and a second at four with a minimum of four contributes zero point five, for an index of about one point one seven.
