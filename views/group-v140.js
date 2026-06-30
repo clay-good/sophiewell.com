@@ -17,6 +17,7 @@
 import { el, clear } from '../lib/dom.js';
 import * as M from '../lib/peds-v140.js';
 import { resultRow } from '../lib/result-copy.js';
+import { unitField, unitNumOpt, TEMP_UNITS } from '../lib/field-units.js';
 
 function field(label, id, opts = {}) {
   const wrap = el('p');
@@ -115,7 +116,7 @@ export const renderers = {
   'snappe-ii'(root) {
     note(root, 'SNAPPE-II (Richardson 2001): the neonatal illness-severity score (0–162) from the first hours of life. Enter the PaO₂ in mmHg and FiO₂ as a percentage; items left blank score their normal (0-point) band.');
     root.appendChild(field('Mean blood pressure (mmHg)', 'sn-map', { step: '1', min: 0, placeholder: 'e.g. 25' }));
-    root.appendChild(field('Lowest temperature (°C)', 'sn-temp', { step: '0.1', placeholder: 'e.g. 34.5' }));
+    root.appendChild(unitField('Lowest temperature', 'sn-temp', TEMP_UNITS, { placeholder: 'e.g. 34.5' }));
     root.appendChild(field('Lowest PaO₂ (mmHg)', 'sn-pao2', { step: '1', min: 0, placeholder: 'e.g. 50' }));
     root.appendChild(field('FiO₂ at that PaO₂ (%)', 'sn-fio2', { step: '1', min: 21, max: 100, placeholder: 'e.g. 80' }));
     root.appendChild(field('Lowest serum pH', 'sn-ph', { step: '0.01', placeholder: 'e.g. 7.05' }));
@@ -125,8 +126,8 @@ export const renderers = {
     root.appendChild(checkField('Small for gestational age (< 3rd percentile)', 'sn-sga'));
     root.appendChild(field('Apgar at 5 minutes', 'sn-apgar', { step: '1', min: 0, max: 10, placeholder: 'e.g. 5' }));
     const o = out(); root.appendChild(o);
-    wire(['sn-map', 'sn-temp', 'sn-pao2', 'sn-fio2', 'sn-ph', 'sn-seiz', 'sn-urine', 'sn-bw', 'sn-sga', 'sn-apgar'], () => safe(o, () => {
-      const r = M.snappeII({ map: optNum('sn-map'), temp: optNum('sn-temp'), pao2: optNum('sn-pao2'), fio2: optNum('sn-fio2'), ph: optNum('sn-ph'), seizures: chk('sn-seiz'), urine: optNum('sn-urine'), bw: optNum('sn-bw'), sga: chk('sn-sga'), apgar5: optNum('sn-apgar') });
+    wire(['sn-map', 'sn-temp', 'sn-temp-unit', 'sn-pao2', 'sn-fio2', 'sn-ph', 'sn-seiz', 'sn-urine', 'sn-bw', 'sn-sga', 'sn-apgar'], () => safe(o, () => {
+      const r = M.snappeII({ map: optNum('sn-map'), temp: unitNumOpt('sn-temp'), pao2: optNum('sn-pao2'), fio2: optNum('sn-fio2'), ph: optNum('sn-ph'), seizures: chk('sn-seiz'), urine: optNum('sn-urine'), bw: optNum('sn-bw'), sga: chk('sn-sga'), apgar5: optNum('sn-apgar') });
       resultRow(o, [
         { text: r.band, cls: r.abnormal ? 'warn' : null },
         { label: 'SNAPPE-II', value: `${r.score}/162` },

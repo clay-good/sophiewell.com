@@ -18,6 +18,7 @@
 import { el, clear } from '../lib/dom.js';
 import * as M from '../lib/warfarin-v133.js';
 import { resultRow } from '../lib/result-copy.js';
+import { unitField, unitNumOpt, HEIGHT_UNITS, WEIGHT_UNITS } from '../lib/field-units.js';
 
 function field(label, id, opts = {}) {
   const wrap = el('p');
@@ -91,16 +92,16 @@ export const renderers = {
   'warfarin-iwpc'(root) {
     note(root, 'IWPC pharmacogenetic warfarin dose (Klein 2009): predicts the stable weekly maintenance dose from age, height, weight, race, enzyme-inducer and amiodarone use, and the entered VKORC1 (-1639 G>A) and CYP2C9 genotypes. It regresses the square root of the weekly dose; the tile squares the result. A starting-point estimate — titrate to the measured INR.');
     root.appendChild(field('Age (years)', 'iw-age', { step: '1', min: 0, placeholder: 'e.g. 65' }));
-    root.appendChild(field('Height (cm)', 'iw-ht', { step: '0.1', min: 0, placeholder: 'e.g. 170' }));
-    root.appendChild(field('Weight (kg)', 'iw-wt', { step: '0.1', min: 0, placeholder: 'e.g. 70' }));
+    root.appendChild(unitField('Height', 'iw-ht', HEIGHT_UNITS, { placeholder: 'e.g. 170' }));
+    root.appendChild(unitField('Weight', 'iw-wt', WEIGHT_UNITS, { placeholder: 'e.g. 70' }));
     root.appendChild(selectField('VKORC1 (-1639 G>A) genotype', 'iw-vk', VKORC1_OPTS));
     root.appendChild(selectField('CYP2C9 genotype', 'iw-cyp', CYP2C9_OPTS));
     root.appendChild(selectField('Race / ethnicity (per the model terms)', 'iw-race', RACE_OPTS));
     root.appendChild(selectField('Enzyme inducer (carbamazepine / phenytoin / rifampin)?', 'iw-ind', YN));
     root.appendChild(selectField('Amiodarone?', 'iw-amio', YN));
     const o = out(); root.appendChild(o);
-    wire(['iw-age', 'iw-ht', 'iw-wt', 'iw-vk', 'iw-cyp', 'iw-race', 'iw-ind', 'iw-amio'], () => safe(o, () => {
-      const r = M.warfarinIwpc({ age: optNum('iw-age'), height: optNum('iw-ht'), weight: optNum('iw-wt'), vkorc1: selVal('iw-vk'), cyp2c9: selVal('iw-cyp'), race: selVal('iw-race'), inducer: selVal('iw-ind'), amiodarone: selVal('iw-amio') });
+    wire(['iw-age', 'iw-ht', 'iw-ht-unit', 'iw-wt', 'iw-wt-unit', 'iw-vk', 'iw-cyp', 'iw-race', 'iw-ind', 'iw-amio'], () => safe(o, () => {
+      const r = M.warfarinIwpc({ age: optNum('iw-age'), height: unitNumOpt('iw-ht'), weight: unitNumOpt('iw-wt'), vkorc1: selVal('iw-vk'), cyp2c9: selVal('iw-cyp'), race: selVal('iw-race'), inducer: selVal('iw-ind'), amiodarone: selVal('iw-amio') });
       if (!r.valid) { showInvalid(o, r); return; }
       resultRow(o, [{ text: r.band }, { label: 'Weekly dose', value: `${r.weekly} mg/week` }, { label: 'Daily', value: `${r.daily} mg/day` }]);
       secondCheck(o);
@@ -113,8 +114,8 @@ export const renderers = {
   'warfarin-gage'(root) {
     note(root, 'Gage pharmacogenomic warfarin dose (Gage 2008): predicts the therapeutic daily dose from body-surface area (DuBois), age, target INR, smoking, amiodarone use, race, the DVT/PE indication, and the entered CYP2C9 + VKORC1 genotypes. Exponential model — predicts mg/day directly. The original 2008 model has no CYP4F2 term. A starting-point estimate — titrate to the measured INR.');
     root.appendChild(field('Age (years)', 'ga-age', { step: '1', min: 0, placeholder: 'e.g. 60' }));
-    root.appendChild(field('Height (cm)', 'ga-ht', { step: '0.1', min: 0, placeholder: 'e.g. 175' }));
-    root.appendChild(field('Weight (kg)', 'ga-wt', { step: '0.1', min: 0, placeholder: 'e.g. 70' }));
+    root.appendChild(unitField('Height', 'ga-ht', HEIGHT_UNITS, { placeholder: 'e.g. 175' }));
+    root.appendChild(unitField('Weight', 'ga-wt', WEIGHT_UNITS, { placeholder: 'e.g. 70' }));
     root.appendChild(field('Target INR (midpoint)', 'ga-inr', { step: '0.1', min: 0, placeholder: 'e.g. 2.5' }));
     root.appendChild(selectField('VKORC1 (-1639 G>A) genotype', 'ga-vk', VKORC1_DET_OPTS));
     root.appendChild(selectField('CYP2C9 genotype', 'ga-cyp', CYP2C9_DET_OPTS));
@@ -123,8 +124,8 @@ export const renderers = {
     root.appendChild(selectField('Black / African American?', 'ga-aa', YN));
     root.appendChild(selectField('Indication is DVT / PE?', 'ga-dvt', YN));
     const o = out(); root.appendChild(o);
-    wire(['ga-age', 'ga-ht', 'ga-wt', 'ga-inr', 'ga-vk', 'ga-cyp', 'ga-amio', 'ga-smoke', 'ga-aa', 'ga-dvt'], () => safe(o, () => {
-      const r = M.warfarinGage({ age: optNum('ga-age'), height: optNum('ga-ht'), weight: optNum('ga-wt'), targetInr: optNum('ga-inr'), vkorc1: selVal('ga-vk'), cyp2c9: selVal('ga-cyp'), amiodarone: selVal('ga-amio'), smoker: selVal('ga-smoke'), africanAmerican: selVal('ga-aa'), dvtPe: selVal('ga-dvt') });
+    wire(['ga-age', 'ga-ht', 'ga-ht-unit', 'ga-wt', 'ga-wt-unit', 'ga-inr', 'ga-vk', 'ga-cyp', 'ga-amio', 'ga-smoke', 'ga-aa', 'ga-dvt'], () => safe(o, () => {
+      const r = M.warfarinGage({ age: optNum('ga-age'), height: unitNumOpt('ga-ht'), weight: unitNumOpt('ga-wt'), targetInr: optNum('ga-inr'), vkorc1: selVal('ga-vk'), cyp2c9: selVal('ga-cyp'), amiodarone: selVal('ga-amio'), smoker: selVal('ga-smoke'), africanAmerican: selVal('ga-aa'), dvtPe: selVal('ga-dvt') });
       if (!r.valid) { showInvalid(o, r); return; }
       resultRow(o, [{ text: r.band }, { label: 'Daily dose', value: `${r.daily} mg/day` }, { label: 'Weekly', value: `${r.weekly} mg/week` }]);
       secondCheck(o);

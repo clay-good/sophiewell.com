@@ -167,14 +167,14 @@ export const renderers = {
       { value: 'spontaneous', text: 'Spontaneously breathing' },
     ]));
     root.appendChild(numField('Age (years)', 'ij-age', { min: 0, max: 120, placeholder: 'e.g. 55' }));
-    root.appendChild(numField('Weight (kg)', 'ij-wt', { min: 0, max: 400, step: '0.1', placeholder: 'e.g. 80' }));
-    root.appendChild(numField('Height (cm) — for the BMI > 27 obesity flag (spontaneous form)', 'ij-ht', { min: 0, max: 260, step: '0.1', placeholder: 'e.g. 175' }));
+    root.appendChild(unitField('Weight', 'ij-wt', WEIGHT_UNITS, { placeholder: 'e.g. 80' }));
+    root.appendChild(unitField('Height — for the BMI > 27 obesity flag (spontaneous form)', 'ij-ht', HEIGHT_UNITS, { placeholder: 'e.g. 175' }));
     root.appendChild(selectField('Sex (male indicator, ventilated form)', 'ij-sex', SEX));
     root.appendChild(checkboxField('Trauma (ventilated form)', 'ij-trauma'));
     root.appendChild(checkboxField('Burn (ventilated form)', 'ij-burn'));
     const o = out(); root.appendChild(o);
-    wire(['ij-mode', 'ij-age', 'ij-wt', 'ij-ht', 'ij-sex', 'ij-trauma', 'ij-burn'], () => safe(o, () => {
-      const r = M.iretonJones({ mode: selVal('ij-mode'), age: optNum('ij-age'), weight: optNum('ij-wt'), height: optNum('ij-ht'), sex: selVal('ij-sex'), trauma: checkVal('ij-trauma'), burn: checkVal('ij-burn') });
+    wire(['ij-mode', 'ij-age', 'ij-wt', 'ij-wt-unit', 'ij-ht', 'ij-ht-unit', 'ij-sex', 'ij-trauma', 'ij-burn'], () => safe(o, () => {
+      const r = M.iretonJones({ mode: selVal('ij-mode'), age: optNum('ij-age'), weight: unitNumOpt('ij-wt'), height: unitNumOpt('ij-ht'), sex: selVal('ij-sex'), trauma: checkVal('ij-trauma'), burn: checkVal('ij-burn') });
       if (!r.valid) { showInvalid(o, r); return; }
       resultRow(o, [
         { text: r.band },

@@ -12,7 +12,7 @@ import * as S from '../lib/scoring-v6.js';
 import * as C8 from '../lib/clinical-v8.js';
 import { META } from '../lib/meta.js';
 import { renderDerivation, updateDerivationSteps } from '../lib/derivation.js';
-import { unitField, unitNum, BILIRUBIN_UNITS, LACTATE_UNITS } from '../lib/field-units.js';
+import { unitField, unitNum, BILIRUBIN_UNITS, LACTATE_UNITS, TEMP_UNITS } from '../lib/field-units.js';
 
 function field(label, id, opts = {}) {
   const wrap = el('p');
@@ -385,7 +385,7 @@ export const renderers = {
   // ----- 2.11 apache2 ----------------------------------------------------
   apache2(root) {
     root.appendChild(el('p', { class: 'muted', text: 'Enter the worst value in the first 24 ICU hours for each variable.' }));
-    root.appendChild(field('Temperature (C)', 'ap-temp', { placeholder: 'e.g. 39' }));
+    root.appendChild(unitField('Temperature', 'ap-temp', TEMP_UNITS, { placeholder: 'e.g. 39' }));
     root.appendChild(field('Mean arterial pressure (mmHg)', 'ap-map', { placeholder: 'e.g. 60' }));
     root.appendChild(field('Heart rate (bpm)', 'ap-hr', { placeholder: 'e.g. 120' }));
     root.appendChild(field('Respiratory rate (/min)', 'ap-rr', { placeholder: 'e.g. 30' }));
@@ -403,10 +403,10 @@ export const renderers = {
     const o = out(); root.appendChild(o);
     const deriv = renderDerivation(META.apache2);
     if (deriv) root.appendChild(deriv);
-    const ids = ['ap-temp', 'ap-map', 'ap-hr', 'ap-rr', 'ap-oxy', 'ap-ph', 'ap-na', 'ap-k', 'ap-creat', 'ap-hct', 'ap-wbc', 'ap-gcs', 'ap-age', 'ap-chronic', 'ap-nonop'];
+    const ids = ['ap-temp', 'ap-temp-unit', 'ap-map', 'ap-hr', 'ap-rr', 'ap-oxy', 'ap-ph', 'ap-na', 'ap-k', 'ap-creat', 'ap-hct', 'ap-wbc', 'ap-gcs', 'ap-age', 'ap-chronic', 'ap-nonop'];
     wire(ids, () => safe(o, () => {
       const inputs = {
-        temp: val('ap-temp'), map: val('ap-map'), hr: val('ap-hr'), rr: val('ap-rr'), oxy: val('ap-oxy'),
+        temp: unitNum('ap-temp'), map: val('ap-map'), hr: val('ap-hr'), rr: val('ap-rr'), oxy: val('ap-oxy'),
         ph: val('ap-ph'), na: val('ap-na'), k: val('ap-k'), creatinine: val('ap-creat'), hct: val('ap-hct'),
         wbc: val('ap-wbc'), gcs: val('ap-gcs'), age: val('ap-age'),
         chronicHealth: chk('ap-chronic'), nonoperativeOrEmergency: chk('ap-nonop'),

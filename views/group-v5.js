@@ -13,7 +13,7 @@ import { renderDerivation, updateDerivationSteps } from '../lib/derivation.js';
 import { renderPrintable, renderCompleteness } from '../lib/print.js';
 import { resultRow } from '../lib/result-copy.js';
 import { correctionRate, trend } from '../lib/trend.js';
-import { unitField, unitNum, ALBUMIN_UNITS } from '../lib/field-units.js';
+import { unitField, unitNum, ALBUMIN_UNITS, HEIGHT_UNITS } from '../lib/field-units.js';
 
 function field(label, id, opts = {}) {
   const wrap = el('p');
@@ -177,12 +177,12 @@ export const renderers = {
 
   // ----- T4: PBW + ARDSnet Vt --------------------------------------------
   'pbw-ardsnet'(root) {
-    root.appendChild(field('Height (cm)', 'h'));
+    root.appendChild(unitField('Height', 'h', HEIGHT_UNITS));
     root.appendChild(selectField('Sex', 'sex', SEX_OPTS));
     root.appendChild(field('Target Vt (mL/kg PBW)', 'mlkg', { value: 6 }));
     const o = out(); root.appendChild(o);
     const run = () => safe(o, () => {
-      const r = V5.pbwArdsnet({ heightCm: num('h'), sex: str('sex'), mlPerKg: num('mlkg') });
+      const r = V5.pbwArdsnet({ heightCm: unitNum('h'), sex: str('sex'), mlPerKg: num('mlkg') });
       const fb = '(height too low for PBW)';
       resultRow(o, [
         { label: 'Predicted body weight', value: fmt(r.pbwKg, { unit: 'kg', fallback: fb }) },
@@ -191,7 +191,7 @@ export const renderers = {
       ]);
       if (r.warning) o.appendChild(el('p', { class: 'warn', text: r.warning }));
     });
-    ['h', 'sex', 'mlkg'].forEach((id) => document.getElementById(id).addEventListener('input', run));
+    ['h', 'h-unit', 'sex', 'mlkg'].forEach((id) => document.getElementById(id).addEventListener('input', run));
   },
 
   // ----- T5: RSBI ---------------------------------------------------------

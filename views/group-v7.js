@@ -8,6 +8,7 @@ import { el, clear } from '../lib/dom.js';
 import { fmt } from '../lib/num.js';
 import * as V6 from '../lib/clinical-v6.js';
 import { resultRow } from '../lib/result-copy.js';
+import { unitField, unitNum, HEIGHT_UNITS } from '../lib/field-units.js';
 
 function field(label, id, opts = {}) {
   const wrap = el('p');
@@ -265,11 +266,11 @@ export const renderers = {
 
   // ----- 2.13 schwartz-egfr -----------------------------------------------
   'schwartz-egfr'(root) {
-    root.appendChild(field('Height (cm)', 'se-ht', { placeholder: 'e.g. 100' }));
+    root.appendChild(unitField('Height', 'se-ht', HEIGHT_UNITS, { placeholder: 'e.g. 100' }));
     root.appendChild(field('Serum creatinine (mg/dL)', 'se-scr', { placeholder: 'e.g. 0.5' }));
     const o = out(); root.appendChild(o);
-    wire(['se-ht', 'se-scr'], () => safe(o, () => {
-      const r = V6.schwartzEgfr({ heightCm: val('se-ht'), scr: val('se-scr') });
+    wire(['se-ht', 'se-ht-unit', 'se-scr'], () => safe(o, () => {
+      const r = V6.schwartzEgfr({ heightCm: unitNum('se-ht'), scr: val('se-scr') });
       o.appendChild(list([
         li(`Estimated GFR: ${fmt(r.egfr, { fallback: '(enter values)' })} mL/min/1.73m^2`),
         li(r.band),

@@ -12,6 +12,7 @@
 import { el, clear } from '../lib/dom.js';
 import * as M from '../lib/critcare-v112.js';
 import { resultRow } from '../lib/result-copy.js';
+import { unitField, unitNumOpt, TEMP_UNITS } from '../lib/field-units.js';
 
 function field(label, id, opts = {}) {
   const wrap = el('p');
@@ -118,7 +119,7 @@ export const renderers = {
   // ----- 2.3 cpis-vap ---------------------------------------------------
   'cpis-vap'(root) {
     note(root, 'Clinical Pulmonary Infection Score (CPIS): six components summed 0-12. A score greater than 6 suggests ventilator-associated pneumonia.');
-    root.appendChild(field('Temperature (degrees C)', 'cp-temp', { step: '0.1', placeholder: 'e.g. 39' }));
+    root.appendChild(unitField('Temperature', 'cp-temp', TEMP_UNITS, { placeholder: 'e.g. 39' }));
     root.appendChild(field('Leukocytes (per mm^3)', 'cp-wbc', { step: '100', min: 0, placeholder: 'e.g. 12000' }));
     root.appendChild(checkField('Band forms >= 50% (+1 to the leukocyte points)', 'cp-band'));
     root.appendChild(selectField('Tracheal secretions', 'cp-sec', [
@@ -141,9 +142,9 @@ export const renderers = {
     ]));
     root.appendChild(checkField('Same organism on Gram stain (+1 to the culture points)', 'cp-same'));
     const o = out(); root.appendChild(o);
-    wire(['cp-temp', 'cp-wbc', 'cp-band', 'cp-sec', 'cp-oxy', 'cp-cxr', 'cp-cult', 'cp-same'], () => safe(o, () => {
+    wire(['cp-temp', 'cp-temp-unit', 'cp-wbc', 'cp-band', 'cp-sec', 'cp-oxy', 'cp-cxr', 'cp-cult', 'cp-same'], () => safe(o, () => {
       const r = M.cpisVap({
-        temp: optNum('cp-temp'), wbc: optNum('cp-wbc'), bandForms: chk('cp-band'),
+        temp: unitNumOpt('cp-temp'), wbc: optNum('cp-wbc'), bandForms: chk('cp-band'),
         secretions: selVal('cp-sec'), oxygenation: selVal('cp-oxy'), cxr: selVal('cp-cxr'),
         culture: selVal('cp-cult'), sameOrganism: chk('cp-same'),
       });

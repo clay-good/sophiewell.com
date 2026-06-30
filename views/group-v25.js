@@ -13,6 +13,7 @@
 import { el, clear } from '../lib/dom.js';
 import * as M from '../lib/idcrit-v99.js';
 import { resultRow } from '../lib/result-copy.js';
+import { unitField, unitNumOpt, TEMP_UNITS } from '../lib/field-units.js';
 
 function field(label, id, opts = {}) {
   const wrap = el('p');
@@ -147,7 +148,7 @@ export const renderers = {
     root.appendChild(field('Age (years)', 'saps-age', { min: 0, max: 130, placeholder: '70' }));
     root.appendChild(field('Heart rate (bpm, worst)', 'saps-hr', { min: 0, max: 400, placeholder: '130' }));
     root.appendChild(field('Systolic BP (mmHg, worst)', 'saps-sbp', { min: 0, max: 400, placeholder: '90' }));
-    root.appendChild(field('Temperature (C, highest)', 'saps-temp', { min: 20, max: 46, step: '0.1', placeholder: '38' }));
+    root.appendChild(unitField('Temperature (highest)', 'saps-temp', TEMP_UNITS, { placeholder: '38' }));
     root.appendChild(checkField('Mechanically ventilated or CPAP', 'saps-vent'));
     root.appendChild(field('PaO2 (mmHg) -- if ventilated', 'saps-pao2', { min: 0, max: 800, placeholder: '80' }));
     root.appendChild(field('FiO2 (fraction) -- if ventilated', 'saps-fio2', { min: 0, max: 1, step: '0.01', placeholder: '0.5' }));
@@ -171,13 +172,13 @@ export const renderers = {
       { value: 'unscheduled-surgical', text: 'Unscheduled surgical (8)' },
     ]));
     const o = out(); root.appendChild(o);
-    const ids = ['saps-age', 'saps-hr', 'saps-sbp', 'saps-temp', 'saps-vent', 'saps-pao2', 'saps-fio2',
+    const ids = ['saps-age', 'saps-hr', 'saps-sbp', 'saps-temp', 'saps-temp-unit', 'saps-vent', 'saps-pao2', 'saps-fio2',
       'saps-urine', 'saps-bun', 'saps-na', 'saps-k', 'saps-hco3', 'saps-bili', 'saps-wbc', 'saps-gcs',
       'saps-chronic', 'saps-admit'];
     wire(ids, () => safe(o, () => {
       const r = M.sapsII({
         age: optNum('saps-age'), heartRate: optNum('saps-hr'), sbp: optNum('saps-sbp'),
-        temperature: optNum('saps-temp'), ventilated: chk('saps-vent'),
+        temperature: unitNumOpt('saps-temp'), ventilated: chk('saps-vent'),
         paO2: optNum('saps-pao2'), fio2: optNum('saps-fio2'), urineOutput: optNum('saps-urine'),
         bun: optNum('saps-bun'), sodium: optNum('saps-na'), potassium: optNum('saps-k'),
         bicarbonate: optNum('saps-hco3'), bilirubin: optNum('saps-bili'), wbc: optNum('saps-wbc'),

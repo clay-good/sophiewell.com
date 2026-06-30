@@ -16,6 +16,7 @@
 import { el, clear } from '../lib/dom.js';
 import * as M from '../lib/peds-growth-v141.js';
 import { resultRow } from '../lib/result-copy.js';
+import { unitField, unitNumOpt, HEIGHT_UNITS, WEIGHT_UNITS } from '../lib/field-units.js';
 
 function field(label, id, opts = {}) {
   const wrap = el('p');
@@ -61,11 +62,11 @@ export const renderers = {
     root.appendChild(selectField('Sex', 'bm-sex', SEX));
     root.appendChild(field('Age (years)', 'bm-age', { step: '0.1', min: 2, max: 20, placeholder: 'e.g. 16' }));
     root.appendChild(field('BMI (kg/m²) — optional if weight + height given', 'bm-bmi', { step: '0.1', min: 0, placeholder: 'e.g. 30' }));
-    root.appendChild(field('Weight (kg)', 'bm-wt', { step: '0.1', min: 0, placeholder: 'e.g. 85' }));
-    root.appendChild(field('Height (cm)', 'bm-ht', { step: '0.1', min: 0, placeholder: 'e.g. 168' }));
+    root.appendChild(unitField('Weight', 'bm-wt', WEIGHT_UNITS, { placeholder: 'e.g. 85' }));
+    root.appendChild(unitField('Height', 'bm-ht', HEIGHT_UNITS, { placeholder: 'e.g. 168' }));
     const o = out(); root.appendChild(o);
-    wire(['bm-sex', 'bm-age', 'bm-bmi', 'bm-wt', 'bm-ht'], () => safe(o, () => {
-      const r = M.pedsBmiPercentile({ sex: selVal('bm-sex'), ageYears: optNum('bm-age'), bmi: optNum('bm-bmi'), weightKg: optNum('bm-wt'), heightCm: optNum('bm-ht') });
+    wire(['bm-sex', 'bm-age', 'bm-bmi', 'bm-wt', 'bm-wt-unit', 'bm-ht', 'bm-ht-unit'], () => safe(o, () => {
+      const r = M.pedsBmiPercentile({ sex: selVal('bm-sex'), ageYears: optNum('bm-age'), bmi: optNum('bm-bmi'), weightKg: unitNumOpt('bm-wt'), heightCm: unitNumOpt('bm-ht') });
       if (!r.valid) { showInvalid(o, r); return; }
       const rows = [
         { text: r.band, cls: r.abnormal ? 'warn' : null },

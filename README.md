@@ -280,6 +280,54 @@ a permalink.
 All computation happens in the browser. For the full picture, see
 [docs/architecture.md](docs/architecture.md).
 
+#### Tile anatomy: one calculator, four single-sources-of-truth
+
+Every tile is assembled from four files, each owning exactly one concern, so a
+fact is typed once and read everywhere. Nothing is duplicated across the runtime,
+the SEO build, or the optional MCP surface — the catalog-truth and MCP-catalog
+gates fail the build if any of them drift.
+
+```
+                 ┌──────────────────────────────────────────────┐
+   one tile id ──┤  app.js  UTILITIES[]   name · group · clinical│  what & where
+                 └──────────────────────────────────────────────┘
+                       │ id                         │ id
+                       ▼                            ▼
+   ┌───────────────────────────────┐   ┌──────────────────────────────────┐
+   │ lib/meta.js  META[id]         │   │ views/group-*.js  RENDERERS[id]   │
+   │  citation · citationUrl       │   │  builds the DOM inputs + wires the │
+   │  worked example · bands       │   │  live recompute (pure el(), no     │
+   │  specialties · disclaimer     │   │  innerHTML)                        │
+   └───────────────────────────────┘   └──────────────────────────────────┘
+                                                    │  reads inputs via
+                                                    ▼
+        unitField(label,id,UNITS) ─► unitNum(id) / unitNumOpt(id)
+              (°C|°F · cm|in · kg|lb · mg/dL|mmol/L; canonical = default option,
+               so the documented example reproduces byte-identically)
+                                                    │ canonical-unit value
+                                                    ▼
+                       ┌────────────────────────────────────┐
+                       │ lib/*.js  pure compute fn           │
+                       │  routes every divide through        │
+                       │  lib/num.js → finite, never NaN     │
+                       └────────────────────────────────────┘
+                                                    │ result object
+                                                    ▼
+                          resultRow() → bands → references (citation/stamp)
+                                                    │
+        ┌───────────────────────────────────────────┴───────────────────────┐
+        ▼                                                                     ▼
+  state encoded in the URL hash (bookmark / share / deep-link)     fuzz harness +
+  static SEO page (build-tool-pages) + optional MCP tool           example-correctness
+  (mcp/adapters/*.js) all read the SAME compute + META             e2e assert the same
+                                                                    numeric contract
+```
+
+The unit-toggle row (`unitField` → `unitNum`) is the seam that lets a US nurse
+chart in °F / inches / lb while the compute function still receives canonical
+metric: the canonical unit is always the first `<select>` option, so every
+`META.example` and every shared hash reproduces a calculation byte-for-byte.
+
 ### Bedside-math cheat sheet (spec-v55 additions)
 
 The thirteen Group-E calculators added in spec-v55, with the formula a nurse or
@@ -1284,6 +1332,15 @@ The two shipped tiles are the percentile companions to the already-live
 `peds-bmi-percentile` (CDC BMI-for-age) and `who-growth-zscore` (WHO 0–2 yr),
 reusing the same `interpLMS`/`lmsToZ` infrastructure fuzzed since spec-v141.
 
+Both are **Class A** with gate-forced [citation-staleness](docs/citation-staleness.md)
+rows (the "CDC" acronym trips the issuer pattern; the 2000 standard is fixed and
+does not drift). The deferrals are tracked, with their re-open condition, in
+[docs/scope-data-sourced.md](docs/scope-data-sourced.md). The cross-verification
+is the point worth dwelling on: because the CDC files carry **both** the LMS
+coefficients and the printed percentiles, a single verbatim file is its own
+second source — the compute is correct iff it reproduces the publisher's own
+percentile columns, which it does to machine precision.
+
 ### US-defaults & localization (spec-v184)
 
 A clinician-perspective QA pass found the product was clinically strong but did
@@ -1306,17 +1363,17 @@ changed, every `META.example` and deep-link hash byte-identical):
 - **US-customary unit affordances** — `TEMP_UNITS` (°C|°F) and `HEIGHT_UNITS`
   (cm|in) join the existing `WEIGHT_UNITS` (kg|lb); the canonical unit is always
   the default option, so `unitNum` still feeds the compute path metric and the
-  documented examples reproduce exactly. The energy tiles (`mifflin-st-jeor`,
-  `harris-benedict`, `penn-state-ree`) now carry these toggles; the full sweep
-  across the remaining sites is a follow-on wave.
-Both are **Class A** with gate-forced [citation-staleness](docs/citation-staleness.md)
-rows (the "CDC" acronym trips the issuer pattern; the 2000 standard is fixed and
-does not drift). The deferrals are tracked, with their re-open condition, in
-[docs/scope-data-sourced.md](docs/scope-data-sourced.md). The cross-verification
-is the point worth dwelling on: because the CDC files carry **both** the LMS
-coefficients and the printed percentiles, a single verbatim file is its own
-second source — the compute is correct iff it reproduces the publisher's own
-percentile columns, which it does to machine precision.
+  documented examples reproduce exactly. The first wave shipped the toggles on
+  the three energy tiles; the §4.3/§4.4 follow-on wave then closed the sweep so
+  that **every numeric temperature input now offers °F** (NEWS2, MEWS, MEOWS,
+  Truelove-Witts, the HScore, SNAPPE-II, APACHE II, SAPS II, and the CPIS) and
+  **every metric-only height input now offers inches** (predicted spirometry,
+  the IWPC and Gage warfarin dosers, bedside Schwartz eGFR, ARDSnet predicted
+  body weight, pediatric BMI-for-age, the Ireton-Jones energy estimate, and
+  GNRI). The weights entered alongside those converted heights (warfarin, peds
+  BMI, Ireton-Jones, GNRI) gained the kg|lb toggle in the same change. The two
+  height fields whose canonical unit is *already* inches stay inch-first — they
+  already present the US default.
 
 ### Cross-Discipline Completion program: EBM bedside math, ophthalmology, radiology classification, PK & one-formula gaps (spec-v162, v163–v167, +18 → 735)
 

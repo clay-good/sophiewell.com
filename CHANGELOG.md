@@ -6,6 +6,31 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Changed (spec-v184 §4.3/§4.4 unit-toggle follow-on wave — US-customary affordances across the remaining temperature/height/weight inputs; no tile delta)
+
+- **Extended the `TEMP_UNITS` (°C|°F), `HEIGHT_UNITS` (cm|in), and `WEIGHT_UNITS`
+  (kg|lb) toggles to every remaining tile where a bedside nurse enters a
+  temperature, height, or weight**, completing the unit sweep that
+  [spec-v184](docs/spec-v184.md) §4.3/§4.4 sanctioned as a follow-on wave (the
+  first wave shipped the toggles on the three energy tiles).
+  - **Temperature (°C|°F)** — now on *every* numeric temperature input:
+    `truelove-witts`, `hscore-hlh`, `snappe-ii`, the early-warning scores
+    `news2` / `mews` / `meows`, `apache2`, `saps-ii`, and `cpis-vap`.
+  - **Height (cm|in)** — now on *every* metric-only height input:
+    `predicted-spirometry`, `warfarin-iwpc`, `warfarin-gage`, `schwartz-egfr`,
+    `pbw-ardsnet`, `peds-bmi-percentile`, the Ireton-Jones energy estimate, and
+    `gnri`. (The two tiles whose canonical height is already inches stay
+    inch-first — they already present the US default.)
+  - **Weight (kg|lb):** `warfarin-iwpc`, `warfarin-gage`, `peds-bmi-percentile`,
+    the Ireton-Jones energy estimate, and `gnri` (the tiles that take a weight
+    alongside the converted height).
+- **No compute, canonical unit, or example changed.** The canonical metric unit
+  is always the default (first) `<select>` option, so `unitNum`/`unitNumOpt` keep
+  feeding the compute path metric and every `META.example` plus deep-link hash
+  reproduces byte-identically (the example-correctness e2e stays green). The
+  `.unit-field-row` wraps on a narrow phone, so no toggle introduces horizontal
+  scroll (verified by the `mobile-no-hscroll` full-catalog sweep at 320/360 px).
+
 ### Added (spec-v183 optional stdio MCP server — first wave: 21 clinical calculators across 4 lib modules; no tile delta)
 
 - **A second, optional consumption surface for the calculators that already

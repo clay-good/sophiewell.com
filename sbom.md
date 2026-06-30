@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `eeea0111b323d4bf`
-Generated: 2026-06-30T00:16:53.088Z
+Build ID: `492cd338f5ac3bcd`
+Generated: 2026-06-30T17:59:25.271Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=20.18.1 <21, npm >=10.0.0
@@ -196,12 +196,12 @@ downloads is committed in this repository and is hashed below.
 | `views/group-c.js` | 24145 | `67dbb3952ce0af75ae5a91376b2347f8f61e0c92866401be9c969eb32489fdc5` |
 | `views/group-e.js` | 38706 | `239b11ef75a621359bbae596739f456ef5cc55bdb93c256785e5fde43bc0a318` |
 | `views/group-f.js` | 45853 | `419f0731a0612d77ce127fa1536a952d2ae15194e3fc9a8e280e59206d630e26` |
-| `views/group-g.js` | 234073 | `0e31b152168e8892c10ecda80d1006b493fcc4b94b7dac43cc22e49bc06bae94` |
+| `views/group-g.js` | 234228 | `afcb8770bd89a2a38b207b0eb99f0c77a28eaccfc98adbb39d1f67d736db1ccd` |
 | `views/group-h.js` | 28477 | `f9a8dc4ddbf7987b39a6bb88908d3523599eddaca1d6fcde22dbd847b4594b14` |
 | `views/group-i.js` | 27209 | `4ba4010663106b4ccbb02dab80367ec9667b44244947b0d6a47a4da1ef88a9b4` |
 | `views/group-j.js` | 8483 | `f097811a4f4f4dfa7fdcb893cc744757e7897a7b45fa5591ba7edbc307f26571` |
 | `views/group-klmno.js` | 7870 | `38d2851c570118dafbdbda729cbe427abc3d3b29e1025fd356f358877184f97c` |
-| `views/group-v10.js` | 29492 | `e6c8714610ceefd1a831348922f8c273c7f9a4a5d7ff3018001ed199ad367c8d` |
+| `views/group-v10.js` | 29536 | `3f256862f851fca6b2b69dd99cfee90583c45139c985ce9c0a9361de1f89a40a` |
 | `views/group-v11.js` | 18286 | `01072ce272edcae4693469db61f230e2070c688e244db192098f74cf5ab952a0` |
 | `views/group-v117.js` | 12105 | `c87f18cf8d92df4fa8d52ded7148f0a2ea174d51f1736574d7f9ccbc2e255b75` |
 | `views/group-v118.js` | 11836 | `551653e65ae7a15cfa8dc4fbd5ee702279a8749865cfec1d0c950225e43b62ae` |
@@ -221,7 +221,7 @@ downloads is committed in this repository and is hashed below.
 | `views/group-v130.js` | 10316 | `f02e9442545f3773a02c8e3f3f937fafe1fdb163a35bb691f57ff8b4a219d127` |
 | `views/group-v131.js` | 13332 | `e70c6e39682109a0c9e39d97ad136b437333850418c1f74ee40704a8d3371b91` |
 | `views/group-v132.js` | 10717 | `9f3cf53347ddd59a58c6b7a38037cfbdb1231e38ff52df6bddb84e499afe4772` |
-| `views/group-v133.js` | 11901 | `3bca006085951b40653ff485fd3ae1daa189cc18ab9bc0839d3fbc9f7fbc8068` |
+| `views/group-v133.js` | 12032 | `464ab5bfba0ae89945a2ccf3f8ebcbfe5a8c5b43f8f937a961346c2bd20a920a` |
 | `views/group-v134.js` | 11616 | `2c7bac75555c42a8844809b36e42f7126960a3b380c984d7a0e29a4936f45537` |
 | `views/group-v135.js` | 11699 | `f6963e2fb7847cce8822474a873530d8b93e2b6d904230e0c8ab97ef3d329fe3` |
 | `views/group-v136.js` | 10944 | `acb24fef721a643833ea92a76ed5eb1b276600902bed2eefdd41bd85e70dc262` |
@@ -229,8 +229,8 @@ downloads is committed in this repository and is hashed below.
 | `views/group-v138.js` | 11609 | `18da1d001f259b8b8e3ac1e4132b5a9a7e554a2b91ccf149677add3717451df7` |
 | `views/group-v139.js` | 12885 | `bddb5ec1584cc06108ae4e4480438d4afc51e70cfe3aa30bf458e7fcf13dd1e7` |
 | `views/group-v14.js` | 9817 | `0bda19d811249004152993e204f4139a070c21368eb8dbffff7cad9ca139a70b` |
-| `views/group-v140.js` | 14422 | `766094938522dae2b1981f19badbd9efe480be5fdedc9b5f226c0970e4d691cf` |
-| `views/group-v141.js` | 8572 | `4d3346114515ee2994c32c075500b93a2dd8ff84527f73ef8479f97e215643e1` |
+| `views/group-v140.js` | 14514 | `d330d0dcdeb920048537ca98cde29654071f067287d4c1a1ea88e86bb7e3453d` |
+| `views/group-v141.js` | 8683 | `90d4398bebf21a782588a4a9b438385727f29a7a8492ec4902b7498a4031b3b6` |
 | `views/group-v142.js` | 16095 | `dfbb15c129295f9b41a327894f3e1f70f5ac7d3edd98f93ba8a64115fbbfff8a` |
 | `views/group-v143.js` | 11846 | `f93378824560ca7ef1ae572e111bf50048910bdc917fb3e62c24fdf52f51ed61` |
 | `views/group-v144.js` | 10666 | `ee54b2c68e4fc925bae8eaecc5ffa59fa00dbcd7bac8d2adf6720e2f200d5bae` |
@@ -241,7 +241,7 @@ downloads is committed in this repository and is hashed below.
 | `views/group-v149.js` | 6243 | `1c2ecbbd4a0509a321f03eee88171ecb5e477bf29e253f127a4ffdcaae469117` |
 | `views/group-v15.js` | 9388 | `01c28613e794ec8bed2941659514ad8b75c18c1cb1256d2907644873fcbc53e4` |
 | `views/group-v151.js` | 12911 | `a4714b9e37739fcaf32669b3f1af04414babcaba8eb9df2078ecba47ba01e367` |
-| `views/group-v152.js` | 12547 | `1878aa63eaf3c909016ae86e31b2cf58c5ed5442aae97bd5bbb71cef3deb9ee2` |
+| `views/group-v152.js` | 12541 | `57d18428e1a0be221992c48228fb96b5980aefc73b7c43d7f44617e6771aa27a` |
 | `views/group-v153.js` | 11361 | `f5224aae77498ed9681a5493cea92a6983da60d7d1970a48549635a6e55ccf12` |
 | `views/group-v154.js` | 11517 | `a57e53e96d380ecdeb00114ea2fab7d73148183237dcd086222c11b64436a1d0` |
 | `views/group-v155.js` | 9405 | `bb10f55953254f56ff9c7f1e837d287655fdea1954a06ff56e08b950c88811ad` |
@@ -257,23 +257,23 @@ downloads is committed in this repository and is hashed below.
 | `views/group-v166.js` | 6060 | `4521b49f90248193dceaa9c0e312eed6a32462eed5f6010840e0e71188c3f596` |
 | `views/group-v167.js` | 9384 | `6125486b551767a2f01b844d06b7aee9bbfca70dcd0eb188ed92ffae8e7dbf46` |
 | `views/group-v169.js` | 5594 | `b5ecfff1c1c98e3a40ba354fd121ea2cd1ccff0586e654b909ed7d8a3a50fcf3` |
-| `views/group-v17.js` | 10867 | `e27c79eed69650e9f53b6ba6831a13e40e21f84a87094726892cea0970af3986` |
+| `views/group-v17.js` | 10957 | `af0a3542fbbfcfac8f0aa962222fa647582b709f426341af33bb0fa7e54901fe` |
 | `views/group-v173.js` | 9280 | `32aa62d633ca5b3cbd3bf4e1078ab8ce5441f4c0240ccf593d516114c201fd79` |
 | `views/group-v174.js` | 13670 | `cab582dd9ed63f9a83e6726bea7b42b8080b48add0ba2d9cb4e66c0eae24584b` |
 | `views/group-v175.js` | 8400 | `a629a477874fe833dc433b819efd390f5627e53a97774d0fb3f795b099fde643` |
 | `views/group-v176.js` | 11693 | `61a837144735d943b5e20b57ff125bc8353422c80f9656e37bc84adbbc8844c9` |
 | `views/group-v177.js` | 9040 | `e301e7f11c7e0c7979144ec2f22141e173c86b3b2625a1261e0fcf8b839c2ae4` |
-| `views/group-v178.js` | 11677 | `b46473c90aef1f1a3ea61858c72dd4a2be4d6e535888387a0351e185d28a9d81` |
+| `views/group-v178.js` | 11794 | `1453bdcf2e702ebc4a787d0b20dce2fc022a11ca337c11af71ca686884b804ea` |
 | `views/group-v179.js` | 6756 | `240fe2830b2e7736ff3f57f681f4d109e99aeb0069fb4240f50933785033b01d` |
 | `views/group-v18.js` | 10455 | `90a5482884a16c0d8883b7e7de1ed1d1cbbbbcc6dcd45bc1f6d28d78e6547965` |
 | `views/group-v182.js` | 11675 | `98f15b655f7df400d3b185d1bf3988b8d990ae95e6386511c46e860042e7119e` |
-| `views/group-v19.js` | 13238 | `b885ca88c5e948367a78fa21ebb85e0cb04b77cb56c1ed7c4ab9c877b2c90486` |
-| `views/group-v20.js` | 11566 | `99fd8ab57f420c6337f98fddda7a1d61780e673f06ccb83a52c52a2ea5bbe492` |
+| `views/group-v19.js` | 13321 | `56e84017c9c339c231148830f2ee36c53933cb3469d129d9924b9f2c1c1e526f` |
+| `views/group-v20.js` | 11649 | `a5d4ac6cddd4c1d9361b58390452845c4c5439ff9165f4f6fe9534d02f882064` |
 | `views/group-v21.js` | 11503 | `f56e58aed91b6b6cedf3663a60f56e2d1b1d612977bc7588a9670a8e3c9e8c07` |
 | `views/group-v22.js` | 11499 | `ff21c98406d9a4e07c191001279620148bf6a14cd6df0353bbdc69be73d5b5d5` |
 | `views/group-v23.js` | 14725 | `5b5270fee62e0915f4596e11ea46831f7055ad3bb5039a2c4fe96af83382d305` |
 | `views/group-v24.js` | 10751 | `a856aff3a39f3627d732c22bb2b55dcab114b69d989331f852456896d17baa5d` |
-| `views/group-v25.js` | 13326 | `eb7233039917eb9ea67c7d0de5d21985c9a4f40863509d4b61e155f3718a8870` |
+| `views/group-v25.js` | 13405 | `2c96c0ae05248fa8e89cf193f4d93139b4c02ec1a5e60593d0e0973667af9a88` |
 | `views/group-v26.js` | 10635 | `8637ca713172fc27943a32262d80842f7a4b7861fc249ff0cc0fc5976d0cc3a8` |
 | `views/group-v27.js` | 9680 | `580cd002df892d4319cc8f48c661813296ba47b214929b08f0a6678fe7a5e91e` |
 | `views/group-v28.js` | 14139 | `374784d87185826bcf38983997c200948240d1d0896b0ec09e6e9bb0180a30fc` |
@@ -285,14 +285,14 @@ downloads is committed in this repository and is hashed below.
 | `views/group-v34.js` | 14778 | `1eabda9aad5bf2728a8e49da8cfb227ce2a0560bea68a952ab259e60a8fc60b9` |
 | `views/group-v35.js` | 10362 | `345646cf73716e4125cf18cf2a1a1c6ae16ee526ea0b0ee418fc2ea7ffd47bea` |
 | `views/group-v36.js` | 9701 | `27235c5bd11c79ea046d75fe20f455c2648c6cbc31a1e1f2a9c1fccbcd41c693` |
-| `views/group-v37.js` | 11617 | `226c257859dce67a7cb4a140f1467dde712f40f67ee9d08cd93707c69e83107a` |
+| `views/group-v37.js` | 11703 | `b177fd467dbf0b92eab8832360375b7527667956f9392621cb2aedd70eb0e26d` |
 | `views/group-v38.js` | 6650 | `ebbf67a8d2bd2502456700ecd417d63e899e4493bb740138bc07b1f87c34aff5` |
 | `views/group-v39.js` | 12318 | `4a12ba09af0f6d602c9c97c98c4417d991e4702042caab03acb3eec6edbf0201` |
 | `views/group-v40.js` | 12318 | `0b6f3285013680487a90912c1fbd3a4850244dfc218013f7407803819bcfad8a` |
-| `views/group-v5.js` | 32719 | `d73b5c41e36fc3d6ecdfd1803787adbcee86ff16b8e1cd387d36d3db0f2a3248` |
+| `views/group-v5.js` | 32760 | `62d389b6af34ffb4d9a64ad086472e96d6f91b44c601ef8d43c0b17ccfe26ed7` |
 | `views/group-v6.js` | 5707 | `425918decb48cd9efac9fc5590ac8970a54c03c3b0df056fb99c9a22ff8dd1b2` |
 | `views/group-v63.js` | 14377 | `962d84b97e82bc39635801da79ecaa93fc0b501b5988b7d321b0f1f630497fab` |
-| `views/group-v7.js` | 14962 | `a0cddca8f42edecce51e48fb784449fc07f2397ae3a9d53bad71de11d12e54b4` |
+| `views/group-v7.js` | 15067 | `5ef421242c0b4e93e24a0af73d38caacabadfa693204bfea4198377956976931` |
 | `views/group-v8.js` | 20315 | `9617fd28337104e69eb7c6d98e1a196d690d6b3e0ec6d5acaf871e1be0f2788f` |
 | `views/group-v9.js` | 22815 | `66b61a3aa7fc5d8e0eb324392f546ff29c8bc88af80c0a418879f887737e5e1a` |
 | `views/pa-lint.js` | 28680 | `90c4bbb985af80d74f2957de7d11efc33f5a14d21a40ae8ae114ff3313879b88` |

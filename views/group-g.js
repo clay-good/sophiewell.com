@@ -8,7 +8,7 @@ import { META } from '../lib/meta.js';
 import { renderDerivation, updateDerivationSteps } from '../lib/derivation.js';
 import { fmt } from '../lib/num.js';
 import { trend } from '../lib/trend.js';
-import { unitField, unitNum, BILIRUBIN_UNITS } from '../lib/field-units.js';
+import { unitField, unitNum, BILIRUBIN_UNITS, TEMP_UNITS } from '../lib/field-units.js';
 
 function rangeField(label, id, min, max, value) {
   const wrap = el('p');
@@ -1076,7 +1076,6 @@ export const renderers = {
       ['SpO2 (%)', 'n2-spo2', '98'],
       ['Systolic BP (mmHg)', 'n2-sbp', '124'],
       ['Pulse (beats/min)', 'n2-pulse', '78'],
-      ['Temperature (°C)', 'n2-temp', '37.0'],
     ];
     for (const [l, id, v] of numFields) {
       root.appendChild(el('p', {}, [
@@ -1084,6 +1083,7 @@ export const renderers = {
         el('input', { id, type: 'number', step: 'any', value: String(v) }),
       ]));
     }
+    root.appendChild(unitField('Temperature', 'n2-temp', TEMP_UNITS, { value: '37.0' }));
     root.appendChild(checkbox('Use Scale 2 (hypercapnic / chronic Type II respiratory failure) per RCP 2017 §3.4', 'n2-scale2'));
     root.appendChild(checkbox('On supplemental oxygen', 'n2-o2'));
     root.appendChild(el('p', {}, [
@@ -1106,7 +1106,7 @@ export const renderers = {
         scale2: checked('n2-scale2'), onO2: checked('n2-o2'),
         sbp: nv('n2-sbp'), pulse: nv('n2-pulse'),
         acvpu: document.getElementById('n2-acvpu').value,
-        temp: nv('n2-temp'),
+        temp: unitNum('n2-temp'),
       };
       const r = S4.news2(inputs);
       o.appendChild(el('h2', { text: `NEWS2 ${r.score}` }));
@@ -1252,7 +1252,6 @@ export const renderers = {
       ['Systolic BP (mmHg)', 'me-sbp', '120'],
       ['Pulse (beats/min)', 'me-pulse', '78'],
       ['Respiratory rate (breaths/min)', 'me-rr', '14'],
-      ['Temperature (°C)', 'me-temp', '37.0'],
     ];
     for (const [l, id, v] of numFields) {
       root.appendChild(el('p', {}, [
@@ -1260,6 +1259,7 @@ export const renderers = {
         el('input', { id, type: 'number', step: 'any', value: String(v) }),
       ]));
     }
+    root.appendChild(unitField('Temperature', 'me-temp', TEMP_UNITS, { value: '37.0' }));
     root.appendChild(el('p', {}, [
       el('label', { for: 'me-avpu', text: 'Consciousness (AVPU)' }), el('br'),
       el('select', { id: 'me-avpu' }, [
@@ -1276,7 +1276,7 @@ export const renderers = {
     const run = () => safe(o, () => {
       const inputs = {
         sbp: nv('me-sbp'), pulse: nv('me-pulse'),
-        rr: nv('me-rr'), temp: nv('me-temp'),
+        rr: nv('me-rr'), temp: unitNum('me-temp'),
         avpu: document.getElementById('me-avpu').value,
       };
       const r = S4.mews(inputs);
@@ -4634,7 +4634,6 @@ export const renderers = {
     const nums = [
       ['Respiratory rate (breaths/min)', 'mw-rr', '16'],
       ['SpO2 (%)',                       'mw-spo2', '98'],
-      ['Temperature (°C)',               'mw-temp', '37.0'],
       ['Systolic BP (mmHg)',             'mw-sbp', '118'],
       ['Diastolic BP (mmHg)',            'mw-dbp', '72'],
       ['Heart rate (beats/min)',         'mw-hr', '82'],
@@ -4645,6 +4644,7 @@ export const renderers = {
         el('input', { id, type: 'number', step: 'any', value: String(v) }),
       ]));
     }
+    root.appendChild(unitField('Temperature', 'mw-temp', TEMP_UNITS, { value: '37.0' }));
     root.appendChild(el('p', {}, [
       el('label', { for: 'mw-neuro', text: 'Neurological response (AVPU)' }), el('br'),
       el('select', { id: 'mw-neuro' }, [
@@ -4660,7 +4660,7 @@ export const renderers = {
     if (deriv) root.appendChild(deriv);
     const run = () => safe(o, () => {
       const r = S4.meows({
-        rr: nv('mw-rr'), spo2: nv('mw-spo2'), temp: nv('mw-temp'),
+        rr: nv('mw-rr'), spo2: nv('mw-spo2'), temp: unitNum('mw-temp'),
         sbp: nv('mw-sbp'), dbp: nv('mw-dbp'), hr: nv('mw-hr'),
         neuro: document.getElementById('mw-neuro').value,
         pain: nv('mw-pain'),
@@ -4671,7 +4671,7 @@ export const renderers = {
       o.appendChild(el('p', { class: 'muted',
         text: `Per-parameter: RR ${f.rr}, SpO2 ${f.spo2}, temp ${f.temp}, SBP ${f.sbp}, DBP ${f.dbp}, HR ${f.hr}, neuro ${f.neuro}, pain ${f.pain}.` }));
     });
-    ['mw-rr', 'mw-spo2', 'mw-temp', 'mw-sbp', 'mw-dbp', 'mw-hr', 'mw-pain']
+    ['mw-rr', 'mw-spo2', 'mw-temp', 'mw-temp-unit', 'mw-sbp', 'mw-dbp', 'mw-hr', 'mw-pain']
       .forEach((id) => document.getElementById(id).addEventListener('input', run));
     document.getElementById('mw-neuro').addEventListener('change', run);
     run();

@@ -13,6 +13,7 @@ import { el, clear } from '../lib/dom.js';
 import { fmt } from '../lib/num.js';
 import * as M from '../lib/pulm-v91.js';
 import { resultRow } from '../lib/result-copy.js';
+import { unitField, unitNumOpt, HEIGHT_UNITS } from '../lib/field-units.js';
 
 function field(label, id, opts = {}) {
   const wrap = el('p');
@@ -148,7 +149,7 @@ export const renderers = {
   // ----- 2.4 predicted-spirometry ----------------------------------------
   'predicted-spirometry'(root) {
     root.appendChild(field('Age (years, 3–95)', 'ps-age', { placeholder: 'e.g. 40', inputmode: 'numeric' }));
-    root.appendChild(field('Height (cm)', 'ps-height', { placeholder: 'e.g. 175', inputmode: 'decimal' }));
+    root.appendChild(unitField('Height', 'ps-height', HEIGHT_UNITS, { placeholder: 'e.g. 175' }));
     root.appendChild(selectField('Sex', 'ps-sex', [
       { value: 'male', text: 'Male' },
       { value: 'female', text: 'Female' },
@@ -163,9 +164,9 @@ export const renderers = {
     root.appendChild(field('Measured FEV1 (L) — optional, for % predicted', 'ps-fev1', { placeholder: 'optional', inputmode: 'decimal' }));
     root.appendChild(field('Measured FVC (L) — optional, for % predicted', 'ps-fvc', { placeholder: 'optional', inputmode: 'decimal' }));
     const o = out(); root.appendChild(o);
-    wire(['ps-age', 'ps-height', 'ps-sex', 'ps-eth', 'ps-fev1', 'ps-fvc'], () => safe(o, () => {
+    wire(['ps-age', 'ps-height', 'ps-height-unit', 'ps-sex', 'ps-eth', 'ps-fev1', 'ps-fvc'], () => safe(o, () => {
       const r = M.predictedSpirometry({
-        age: optNum('ps-age'), heightCm: optNum('ps-height'), sex: selVal('ps-sex'),
+        age: optNum('ps-age'), heightCm: unitNumOpt('ps-height'), sex: selVal('ps-sex'),
         ethnicity: selVal('ps-eth'), measuredFev1: optNum('ps-fev1'), measuredFvc: optNum('ps-fvc'),
       });
       if (!r.valid) { o.appendChild(el('p', { class: 'muted', text: r.band })); return; }

@@ -8,11 +8,17 @@
 > §4.5 US date display (`usDate`/`usDateLong`), and §5.3 the
 > `scripts/check-us-english.mjs` guard + `test/unit/us-english-guard.test.js`
 > are **fully implemented**. §4.3 `TEMP_UNITS` and §4.4 `HEIGHT_UNITS` exports
-> ship with a blank-safe `unitNumOpt` reader and are applied to the three named
-> energy tiles (`mifflin-st-jeor`, `harris-benedict`, `penn-state-ree`: weight
-> kg|lb, height cm|in, Tmax °C|°F); the broader §4.3 threshold-label °F
-> annotations and the §4.4 sweep across every remaining height/temperature site
-> are the spec-sanctioned follow-on wave ("§4.4 … may land in waves"). The
+> ship with a blank-safe `unitNumOpt` reader and were first applied to the three
+> named energy tiles (`mifflin-st-jeor`, `harris-benedict`, `penn-state-ree`:
+> weight kg|lb, height cm|in, Tmax °C|°F). The §4.3/§4.4 **follow-on wave is now
+> complete**: every numeric temperature input offers °F (NEWS2, MEWS, MEOWS,
+> Truelove-Witts, the HScore, SNAPPE-II, APACHE II, SAPS II, CPIS) and every
+> metric-only height input offers inches (predicted spirometry, IWPC & Gage
+> warfarin dosers, bedside Schwartz eGFR, ARDSnet PBW, peds BMI-for-age,
+> Ireton-Jones, GNRI), with companion kg|lb weight toggles on the tiles that take
+> a weight beside the converted height. The only remaining §4.3 item is the
+> threshold-label °F annotation on checkbox/banded criteria (SIRS/qSOFA/EOS),
+> which is purely additive label text and changes no compute. The
 > official-name "(Japanese) Orthopaedic Association" (mJOA) and all
 > citation/journal strings are left untouched (§3.7), enforced by the guard's
 > allowlist. Authored from a full clinician-perspective QA pass of

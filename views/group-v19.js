@@ -13,6 +13,7 @@
 import { el, clear } from '../lib/dom.js';
 import * as M from '../lib/hepgi-v93.js';
 import { resultRow } from '../lib/result-copy.js';
+import { unitField, unitNumOpt, TEMP_UNITS } from '../lib/field-units.js';
 
 function field(label, id, opts = {}) {
   const wrap = el('p');
@@ -128,15 +129,15 @@ export const renderers = {
       { value: 'none', text: 'None' },
       { value: 'present', text: 'Present' },
     ]));
-    root.appendChild(field('Temperature (°C)', 'tw-temp', { placeholder: 'e.g. 38', inputmode: 'decimal' }));
+    root.appendChild(unitField('Temperature', 'tw-temp', TEMP_UNITS, { placeholder: 'e.g. 38' }));
     root.appendChild(field('Heart rate (bpm)', 'tw-hr', { placeholder: 'e.g. 100', inputmode: 'numeric' }));
     root.appendChild(field('Hemoglobin (g/dL)', 'tw-hgb', { placeholder: 'e.g. 9.5', inputmode: 'decimal' }));
     root.appendChild(field('ESR (mm/h)', 'tw-esr', { placeholder: 'e.g. 40', inputmode: 'decimal' }));
     const o = out(); root.appendChild(o);
-    wire(['tw-stools', 'tw-bleed', 'tw-temp', 'tw-hr', 'tw-hgb', 'tw-esr'], () => safe(o, () => {
+    wire(['tw-stools', 'tw-bleed', 'tw-temp', 'tw-temp-unit', 'tw-hr', 'tw-hgb', 'tw-esr'], () => safe(o, () => {
       const r = M.trueloveWitts({
         stools: optNum('tw-stools'), bleeding: selVal('tw-bleed'),
-        temp: optNum('tw-temp'), heartRate: optNum('tw-hr'),
+        temp: unitNumOpt('tw-temp'), heartRate: optNum('tw-hr'),
         hemoglobin: optNum('tw-hgb'), esr: optNum('tw-esr'),
       });
       if (!r.valid) { o.appendChild(el('p', { class: 'muted', text: r.band })); return; }

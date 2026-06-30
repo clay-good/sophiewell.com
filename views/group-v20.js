@@ -13,6 +13,7 @@ import { el, clear } from '../lib/dom.js';
 import * as M from '../lib/hemonc-v94.js';
 import { resultRow } from '../lib/result-copy.js';
 import { fmt } from '../lib/num.js';
+import { unitField, unitNumOpt, TEMP_UNITS } from '../lib/field-units.js';
 
 function field(label, id, opts = {}) {
   const wrap = el('p');
@@ -68,7 +69,7 @@ export const renderers = {
   // ----- 2.1 hscore-hlh --------------------------------------------------
   'hscore-hlh'(root) {
     root.appendChild(selectField('Known underlying immunosuppression', 'hs-immuno', YESNO));
-    root.appendChild(field('Temperature (°C)', 'hs-temp', { placeholder: 'e.g. 40', inputmode: 'decimal' }));
+    root.appendChild(unitField('Temperature', 'hs-temp', TEMP_UNITS, { placeholder: 'e.g. 40' }));
     root.appendChild(selectField('Organomegaly', 'hs-organ', [
       { value: 'none', text: 'None' },
       { value: 'one', text: 'Hepatomegaly or splenomegaly' },
@@ -85,10 +86,10 @@ export const renderers = {
     root.appendChild(field('AST (U/L)', 'hs-ast', { placeholder: 'e.g. 100', inputmode: 'decimal' }));
     root.appendChild(selectField('Hemophagocytosis on marrow aspirate', 'hs-hemo', YESNO));
     const o = out(); root.appendChild(o);
-    const ids = ['hs-immuno', 'hs-temp', 'hs-organ', 'hs-cyto', 'hs-fer', 'hs-tg', 'hs-fib', 'hs-ast', 'hs-hemo'];
+    const ids = ['hs-immuno', 'hs-temp', 'hs-temp-unit', 'hs-organ', 'hs-cyto', 'hs-fer', 'hs-tg', 'hs-fib', 'hs-ast', 'hs-hemo'];
     wire(ids, () => safe(o, () => {
       const r = M.hscoreHlh({
-        immunosuppression: selVal('hs-immuno'), temp: optNum('hs-temp'),
+        immunosuppression: selVal('hs-immuno'), temp: unitNumOpt('hs-temp'),
         organomegaly: selVal('hs-organ'), cytopenias: selVal('hs-cyto'),
         ferritin: optNum('hs-fer'), triglyceride: optNum('hs-tg'),
         fibrinogen: optNum('hs-fib'), ast: optNum('hs-ast'),

@@ -14,6 +14,7 @@
 import { el, clear } from '../lib/dom.js';
 import * as M from '../lib/ltcga-v178.js';
 import { resultRow } from '../lib/result-copy.js';
+import { unitField, unitNumOpt, HEIGHT_UNITS, WEIGHT_UNITS } from '../lib/field-units.js';
 
 function selectField(label, id, options) {
   const wrap = el('p');
@@ -102,12 +103,12 @@ export const renderers = {
   gnri(root) {
     note(root, 'GNRI (Bouillanne 2005): GNRI = 1.489 × albumin (g/L) + 41.7 × (weight ÷ ideal body weight), the ratio capped at 1 and ideal weight from the Lorentz equations. > 98 no risk, 92–98 low, 82 to < 92 moderate, < 82 major risk. A nutrition-related risk index for at-risk elderly medical patients.');
     root.appendChild(numField('Serum albumin (g/L)', 'gnri-albumin', { step: '0.1', min: 0, placeholder: 'e.g. 35' }));
-    root.appendChild(numField('Body weight (kg)', 'gnri-weight', { step: '0.1', min: 0, placeholder: 'e.g. 60' }));
-    root.appendChild(numField('Height (cm)', 'gnri-height', { step: '0.1', min: 0, placeholder: 'e.g. 165' }));
+    root.appendChild(unitField('Body weight', 'gnri-weight', WEIGHT_UNITS, { placeholder: 'e.g. 60' }));
+    root.appendChild(unitField('Height', 'gnri-height', HEIGHT_UNITS, { placeholder: 'e.g. 165' }));
     root.appendChild(pickField('Sex', 'gnri-sex', SEX));
     const o = out(); root.appendChild(o);
-    wire(['gnri-albumin', 'gnri-weight', 'gnri-height', 'gnri-sex'], () => safe(o, () => {
-      const r = M.gnri({ albuminGL: optNum('gnri-albumin'), weightKg: optNum('gnri-weight'), heightCm: optNum('gnri-height'), sex: selVal('gnri-sex') });
+    wire(['gnri-albumin', 'gnri-weight', 'gnri-weight-unit', 'gnri-height', 'gnri-height-unit', 'gnri-sex'], () => safe(o, () => {
+      const r = M.gnri({ albuminGL: optNum('gnri-albumin'), weightKg: unitNumOpt('gnri-weight'), heightCm: unitNumOpt('gnri-height'), sex: selVal('gnri-sex') });
       if (!r.valid) { showInvalid(o, r); return; }
       resultRow(o, [{ text: r.band }, { label: 'GNRI', value: `${r.value}` }]);
       note(o, r.detail); note(o, r.note);
