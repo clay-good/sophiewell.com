@@ -3940,8 +3940,8 @@ uses a fixed three-tool surface with dynamic dispatch over the catalog instead.
 
 ### Coverage is explicit and honest
 
-Adapting the catalog is incremental. Coverage now stands at **45 clinical
-calculators across 9 `lib` modules**, built module by module against the one
+Adapting the catalog is incremental. Coverage now stands at **60 clinical
+calculators across 12 `lib` modules**, built module by module against the one
 fixed contract:
 
 | wave | modules | tiles |
@@ -3949,14 +3949,16 @@ fixed contract:
 | first (spec-v183) | `tox-v86`, `hep-v124`, `acidbase-v129`, `cardio-v90` | 21 |
 | second | `pulm-v91`, `neuro-v118`, `endo-v136`, `periop-v97` | 18 |
 | third | `oneformula-v167` (mean-airway-pressure, cerebroplacental-ratio, toe-brachial-index, stool-osmotic-gap, pure-tone-average, rutgeerts) | 6 |
+| fourth | `cardio-v101` (CHADS2, CHA2DS2-VA, CHADS-65, ATRIA, Tisdale-QTc), `heme-v132` (PLASMIC, French-TTP, JAAM-DIC, IPSET, CISNE), `gi-v126` (CDAI, UCEIS, HAPS, CTSI, modified-Marshall) | 15 |
 
 `docs/mcp-coverage.md` is the ledger and `list_calculators` always reports the
 live exposed fraction (`"<N> of <M> catalog tiles exposed"`), never a hardcoded
-number. Two tiles inside the wave-2 modules are deliberately left unexposed and
-recorded as such: `phases-iph` has no `META.example` to round-trip, and `pospom`
-takes a variable-length comorbidity array that needs a bespoke `toArgs`. Later
-waves extend coverage the same way — one module, one ledger entry, one set of
-round-tripping examples at a time.
+number. Three tiles inside these modules are deliberately left unexposed and
+recorded as such: `phases-iph` has no `META.example` to round-trip, `pospom`
+takes a variable-length comorbidity array that needs a bespoke `toArgs`, and
+`ses-cd` takes per-segment input arrays rather than the flat `dom→arg→kind`
+contract. Later waves extend coverage the same way — one module, one ledger
+entry, one set of round-tripping examples at a time.
 
 ### Try it
 

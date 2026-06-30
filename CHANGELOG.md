@@ -41,6 +41,31 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 - Closes cluster **§3.9** of the [spec-v172](docs/spec-v172.md) Long-Term Care &
   Geriatric Assessment program.
 
+### Added (spec-v183 MCP wave 4 — 15 more clinical calculators across 3 lib modules; no tile delta)
+
+- The optional stdio MCP server now exposes **15 more deterministic clinical
+  calculators**, bringing coverage to **60 of the catalog across 12 `lib`
+  modules** (from 45 across 9). Three new adapters, each declaring only the flat
+  `dom→arg→kind` input contract; the name, group, specialties, citation,
+  example, and interpretation are still **read** from `UTILITIES` and `META`,
+  never re-typed:
+  - **`mcp/adapters/cardio-v101.js`** — atrial-fibrillation stroke risk and
+    QT-prolongation: `chads2`, `cha2ds2-va`, `chads-65`, `atria-stroke`,
+    `tisdale-qtc`.
+  - **`mcp/adapters/heme-v132.js`** — hematology pretest / risk scores:
+    `plasmic-ttp`, `french-ttp`, `jaam-dic`, `ipset-thrombosis`, `cisne`. The
+    yes/no clinical questions map to enums (the `flag()` helper distinguishes an
+    explicit `no` from a blank).
+  - **`mcp/adapters/gi-v126.js`** — gastroenterology disease-activity /
+    severity indices: `cdai-crohns`, `uceis`, `haps`, `ctsi-balthazar`,
+    `modified-marshall`. `ses-cd` is deliberately not exposed — its per-segment
+    array inputs are outside the flat field contract (recorded in the ledger).
+- Each exposed example **round-trips to its `META.example.expected`** (the same
+  numeric-correctness contract as the e2e example-correctness sweep, on the JSON
+  surface) and the fuzz harness confirms **no non-finite leak** on extreme
+  inputs. `docs/mcp-coverage.md` ledger updated and `scripts/check-mcp-catalog.mjs`
+  passes (60 adapters across 12 modules, ledger exact, no DOM coupling).
+
 ### Changed (spec-v184 §4.3 threshold-label °F annotation — no tile delta)
 
 - **The SIRS temperature criterion now reads `>38 °C (100.4 °F) or <36 °C

@@ -43,6 +43,19 @@ and each with a `META.example` that round-trips. Five are pure numeric formulas;
 grade digit appears in the result). Brings the exposed total to 45 calculators
 across 9 modules.
 
+## Fourth wave — 3 modules
+
+Coverage extends with 15 more clinical calculators across 3 `lib` modules:
+atrial-fibrillation stroke-risk and QT-prolongation (`lib/cardio-v101.js` — five
+tiles), hematology pretest / risk scores (`lib/heme-v132.js` — five tiles), and
+gastroenterology disease-activity / severity indices (`lib/gi-v126.js` — five
+tiles). One tile in `lib/gi-v126.js` is intentionally not adapted: `ses-cd`
+takes per-segment input arrays (`sumArr`), not the flat `dom→arg→kind` contract
+this wave covers. Brings the exposed total to **60 calculators across 12
+modules**. The yes/no clinical questions map to enums (the heme `flag()` helper
+distinguishes an explicit `no` from a blank), and the banded grades / lab values
+map to numbers; every exposed example round-trips to its `META.example.expected`.
+
 ## Exposed
 
 Each id below is live in `mcp/catalog.js`. The gate parses this list.
@@ -109,6 +122,27 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 - `stool-osmotic-gap`
 - `pure-tone-average`
 - `rutgeerts`
+
+### lib/cardio-v101.js
+- `chads2`
+- `cha2ds2-va`
+- `chads-65`
+- `atria-stroke`
+- `tisdale-qtc`
+
+### lib/heme-v132.js
+- `plasmic-ttp`
+- `french-ttp`
+- `jaam-dic`
+- `ipset-thrombosis`
+- `cisne`
+
+### lib/gi-v126.js
+- `cdai-crohns`
+- `uceis`
+- `haps`
+- `ctsi-balthazar`
+- `modified-marshall`
 
 ## Not yet adapted
 

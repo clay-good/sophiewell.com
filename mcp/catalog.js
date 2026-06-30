@@ -26,6 +26,9 @@ import neuroV118 from './adapters/neuro-v118.js';
 import endoV136 from './adapters/endo-v136.js';
 import periopV97 from './adapters/periop-v97.js';
 import oneformulaV167 from './adapters/oneformula-v167.js';
+import cardioV101 from './adapters/cardio-v101.js';
+import hemeV132 from './adapters/heme-v132.js';
+import giV126 from './adapters/gi-v126.js';
 
 const ADAPTER_MODULES = [
   ['tox-v86', toxV86],
@@ -37,6 +40,9 @@ const ADAPTER_MODULES = [
   ['endo-v136', endoV136],
   ['periop-v97', periopV97],
   ['oneformula-v167', oneformulaV167],
+  ['cardio-v101', cardioV101],
+  ['heme-v132', hemeV132],
+  ['gi-v126', giV126],
 ];
 
 const HERE = dirname(fileURLToPath(import.meta.url));
