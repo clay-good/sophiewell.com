@@ -29,6 +29,13 @@ import oneformulaV167 from './adapters/oneformula-v167.js';
 import cardioV101 from './adapters/cardio-v101.js';
 import hemeV132 from './adapters/heme-v132.js';
 import giV126 from './adapters/gi-v126.js';
+import cardioV102 from './adapters/cardio-v102.js';
+import cardioV104 from './adapters/cardio-v104.js';
+import cvriskV103 from './adapters/cvrisk-v103.js';
+import critcareV112 from './adapters/critcare-v112.js';
+import fluidrespV113 from './adapters/fluidresp-v113.js';
+import hepgiV93 from './adapters/hepgi-v93.js';
+import hemoncV94 from './adapters/hemonc-v94.js';
 
 const ADAPTER_MODULES = [
   ['tox-v86', toxV86],
@@ -43,6 +50,13 @@ const ADAPTER_MODULES = [
   ['cardio-v101', cardioV101],
   ['heme-v132', hemeV132],
   ['gi-v126', giV126],
+  ['cardio-v102', cardioV102],
+  ['cardio-v104', cardioV104],
+  ['cvrisk-v103', cvriskV103],
+  ['critcare-v112', critcareV112],
+  ['fluidresp-v113', fluidrespV113],
+  ['hepgi-v93', hepgiV93],
+  ['hemonc-v94', hemoncV94],
 ];
 
 const HERE = dirname(fileURLToPath(import.meta.url));

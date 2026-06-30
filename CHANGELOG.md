@@ -6,6 +6,39 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v183 — MCP wave 5: expose 35 more clinical calculators as deterministic agent tools; no tile delta, 774)
+
+- The optional stdio MCP server (`mcp/server.js`) gains a **fifth coverage wave**:
+  35 more catalog calculators exposed as deterministic `compute_calculator`
+  tools, across 7 `lib` modules, bringing the exposed surface to **95 of 774
+  catalog tiles across 19 modules**. No catalog tile is added or changed — this
+  is adapter-only coverage of compute logic that already shipped.
+  - `lib/cardio-v102.js` — heart-failure risk / HFpEF probability: `maggic`,
+    `h2fpef`, `hfa-peff`, `cardshock-score`.
+  - `lib/cardio-v104.js` — wide-complex-tachycardia and syncope-risk algorithms:
+    `brugada-vt`, `vereckei-avr`, `add-rs`, `rose-syncope`, `egsys`, `oesil`.
+  - `lib/cvrisk-v103.js` — cardiovascular-risk engines: `score2`, `score2-op`,
+    `mesa-chd`, `framingham-cvd`, `reynolds-risk`, `non-hdl-remnant`.
+  - `lib/critcare-v112.js` — critical-care severity and ICU-weakness scores:
+    `meds-score`, `sic-score`, `cpis-vap`, `lactate-clearance`, `mrc-sum-score`.
+  - `lib/fluidresp-v113.js` — dynamic fluid-responsiveness measures:
+    `ivc-fluid-responsiveness`, `ppv-svv`, `passive-leg-raise`.
+  - `lib/hepgi-v93.js` — hepatology / GI severity and disease-activity indices:
+    `nafld-fibrosis`, `glasgow-imrie`, `truelove-witts`, `harvey-bradshaw`,
+    `mayo-uc`, `milan-criteria`.
+  - `lib/hemonc-v94.js` — hematology / oncology prognostic scores: `hscore-hlh`,
+    `ipss-r-mds`, `flipi`, `mascc`, `sokal-cml`.
+- Each adapter declares only the flat `dom → arg → kind` input contract; name,
+  group, specialties, citation, example, and interpretation are read from
+  `UTILITIES` / `META`, never re-typed. The CPIS-VAP and Truelove-Witts
+  temperature inputs round-trip in degrees Celsius (the lib reads the canonical
+  Celsius value directly, so no unit field is needed); the MRC sum score takes a
+  fixed twelve-key set of 0-5 manual-muscle-test grades, not a variable-length
+  array. Every exposed example round-trips to its `META.example.expected`, and
+  the spec-v59 output-safety fuzz battery confirms no non-finite leak on the JSON
+  surface. `docs/mcp-coverage.md`, the README coverage table, and `mcp/README.md`
+  record the wave; `scripts/check-mcp-catalog.mjs` asserts the ledger is exact.
+
 ### Added (spec-v181 — LTC infection surveillance & antimicrobial stewardship: Revised McGeer definitions and Loeb minimum criteria, +2 → 774)
 
 - **`mcgeer-criteria` — Revised McGeer surveillance definitions of infection in

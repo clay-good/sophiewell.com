@@ -3940,8 +3940,8 @@ uses a fixed three-tool surface with dynamic dispatch over the catalog instead.
 
 ### Coverage is explicit and honest
 
-Adapting the catalog is incremental. Coverage now stands at **60 clinical
-calculators across 12 `lib` modules**, built module by module against the one
+Adapting the catalog is incremental. Coverage now stands at **95 clinical
+calculators across 19 `lib` modules**, built module by module against the one
 fixed contract:
 
 | wave | modules | tiles |
@@ -3950,6 +3950,7 @@ fixed contract:
 | second | `pulm-v91`, `neuro-v118`, `endo-v136`, `periop-v97` | 18 |
 | third | `oneformula-v167` (mean-airway-pressure, cerebroplacental-ratio, toe-brachial-index, stool-osmotic-gap, pure-tone-average, rutgeerts) | 6 |
 | fourth | `cardio-v101` (CHADS2, CHA2DS2-VA, CHADS-65, ATRIA, Tisdale-QTc), `heme-v132` (PLASMIC, French-TTP, JAAM-DIC, IPSET, CISNE), `gi-v126` (CDAI, UCEIS, HAPS, CTSI, modified-Marshall) | 15 |
+| fifth | `cardio-v102` (MAGGIC, H2FPEF, HFA-PEFF, CardShock), `cardio-v104` (Brugada, Vereckei, ADD-RS, ROSE, EGSYS, OESIL), `cvrisk-v103` (SCORE2, SCORE2-OP, MESA, Framingham, Reynolds, non-HDL/remnant), `critcare-v112` (MEDS, SIC, CPIS-VAP, lactate clearance, MRC sum), `fluidresp-v113` (IVC, PPV/SVV, passive leg raise), `hepgi-v93` (NAFLD-FS, Glasgow-Imrie, Truelove-Witts, Harvey-Bradshaw, Mayo, Milan), `hemonc-v94` (HScore, IPSS-R, FLIPI, MASCC, Sokal) | 35 |
 
 `docs/mcp-coverage.md` is the ledger and `list_calculators` always reports the
 live exposed fraction (`"<N> of <M> catalog tiles exposed"`), never a hardcoded

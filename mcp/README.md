@@ -73,7 +73,7 @@ strings; booleans as `true`/`false`; enums by their listed string values.
 
 ```
 list_calculators { "specialty": "hepatology" }
-  -> { coverage: "60 of 774 catalog tiles exposed ...", calculators: [ { id: "meld-xi", ... }, ... ] }
+  -> { coverage: "95 of 774 catalog tiles exposed ...", calculators: [ { id: "meld-xi", ... }, ... ] }
 
 describe_calculator { "id": "meld-xi" }
   -> { inputSchema: { ... mx-bili, mx-creat ... }, citation: "Heuman DM ... Liver Transpl 2007", ... }
@@ -90,10 +90,14 @@ which calculators are exposed; `list_calculators` always reports the live
 fraction. The first wave exposed 21 clinical calculators across 4 `lib` modules
 as a proof of pattern; a second wave added 18 more across 4 modules (pulmonary
 function, hemorrhagic stroke, metabolic / endocrine, and perioperative risk); a
-third wave added the 6 one-formula tiles; and a fourth wave adds 15 more across 3
+third wave added the 6 one-formula tiles; a fourth wave added 15 more across 3
 modules (atrial-fibrillation stroke / QT risk, hematology pretest scores, and
-gastroenterology severity indices), for 60 across 12 modules today. Later waves
-extend it module by module against the same contract.
+gastroenterology severity indices); and a fifth wave adds 35 more across 7
+modules (heart-failure risk / HFpEF probability, wide-complex-tachycardia and
+syncope-risk algorithms, cardiovascular-risk engines, critical-care severity and
+ICU-weakness scores, dynamic fluid-responsiveness measures, hepatology / GI
+severity indices, and hematology / oncology prognostic scores), for 95 across 19
+modules today. Later waves extend it module by module against the same contract.
 
 ## Design
 

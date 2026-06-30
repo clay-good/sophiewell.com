@@ -56,6 +56,27 @@ modules**. The yes/no clinical questions map to enums (the heme `flag()` helper
 distinguishes an explicit `no` from a blank), and the banded grades / lab values
 map to numbers; every exposed example round-trips to its `META.example.expected`.
 
+## Fifth wave — 7 modules
+
+Coverage extends with 35 more clinical calculators across 7 `lib` modules:
+heart-failure risk / HFpEF probability (`lib/cardio-v102.js` — MAGGIC, H2FPEF,
+HFA-PEFF, CardShock), wide-complex-tachycardia and syncope-risk algorithms
+(`lib/cardio-v104.js` — Brugada, Vereckei, ADD-RS, ROSE, EGSYS, OESIL),
+cardiovascular-risk engines (`lib/cvrisk-v103.js` — SCORE2, SCORE2-OP, MESA,
+Framingham, Reynolds, non-HDL / remnant), critical-care severity and ICU-weakness
+scores (`lib/critcare-v112.js` — MEDS, SIC, CPIS-VAP, lactate clearance, MRC sum
+score), dynamic fluid-responsiveness measures (`lib/fluidresp-v113.js` — IVC
+variation, PPV/SVV, passive leg raise), hepatology / GI severity and
+disease-activity indices (`lib/hepgi-v93.js` — NAFLD Fibrosis Score,
+Glasgow-Imrie, Truelove-Witts, Harvey-Bradshaw, Mayo, Milan), and hematology /
+oncology prognostic scores (`lib/hemonc-v94.js` — HScore, IPSS-R, FLIPI, MASCC,
+Sokal). Brings the exposed total to **95 calculators across 19 modules**. The
+CPIS-VAP and Truelove-Witts temperature inputs are entered in degrees Celsius
+(the lib reads the canonical Celsius value directly, so the example round-trips
+without a unit field); the MRC sum score takes a fixed twelve-key set of
+manual-muscle-test grades, each a 0-5 number, not a variable-length array. Every
+exposed example round-trips to its `META.example.expected`.
+
 ## Exposed
 
 Each id below is live in `mcp/catalog.js`. The gate parses this list.
@@ -143,6 +164,55 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 - `haps`
 - `ctsi-balthazar`
 - `modified-marshall`
+
+### lib/cardio-v102.js
+- `maggic`
+- `h2fpef`
+- `hfa-peff`
+- `cardshock-score`
+
+### lib/cardio-v104.js
+- `brugada-vt`
+- `vereckei-avr`
+- `add-rs`
+- `rose-syncope`
+- `egsys`
+- `oesil`
+
+### lib/cvrisk-v103.js
+- `score2`
+- `score2-op`
+- `mesa-chd`
+- `framingham-cvd`
+- `reynolds-risk`
+- `non-hdl-remnant`
+
+### lib/critcare-v112.js
+- `meds-score`
+- `sic-score`
+- `cpis-vap`
+- `lactate-clearance`
+- `mrc-sum-score`
+
+### lib/fluidresp-v113.js
+- `ivc-fluid-responsiveness`
+- `ppv-svv`
+- `passive-leg-raise`
+
+### lib/hepgi-v93.js
+- `nafld-fibrosis`
+- `glasgow-imrie`
+- `truelove-witts`
+- `harvey-bradshaw`
+- `mayo-uc`
+- `milan-criteria`
+
+### lib/hemonc-v94.js
+- `hscore-hlh`
+- `ipss-r-mds`
+- `flipi`
+- `mascc`
+- `sokal-cml`
 
 ## Not yet adapted
 
