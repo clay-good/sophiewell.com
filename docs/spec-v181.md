@@ -1,6 +1,21 @@
 # spec-v181.md — Long-term-care infection surveillance & antimicrobial stewardship: Revised McGeer surveillance definitions and Loeb minimum criteria (+2 tiles)
 
-> Status: **PROPOSED (2026-06-24).** Feature spec of the
+> Status: **SHIPPED (2026-06-30, +2 → 774).** Both tiles are live. Criteria
+> cross-verified verbatim against ≥ 2 independent sources (Stone 2012 primary +
+> the Missouri DHSS / Minnesota DOH field tools for McGeer; the MN DOH card + MO
+> DHSS chart for Loeb). **Both Class A**, not Class B as drafted: the
+> `check-citations` `ISSUER_PATTERN` is `CDC|KDIGO|AGS|ACC|AHA|ATS|IDSA|ESC|WHO|
+> AAP|ACOG|SAMHSA|NICE|Joint Commission` — **SHEA is not in it**, and the Stone
+> 2012 / Loeb 2001 citations are journal references that name no triggering
+> acronym, so **no `docs/citation-staleness.md` row is required** (the spec-v92/
+> v94 spelled-out-issuer lesson, confirmed at build time). `mcgeer-criteria`
+> ships the cross-verified surveillance syndromes — UTI (with / without
+> catheter), respiratory (common cold / pharyngitis, influenza-like illness,
+> pneumonia, lower-RTI), skin & soft tissue (cellulitis / wound, conjunctivitis),
+> and gastroenteritis; the Stone 2012 systemic primary-bloodstream /
+> unexplained-febrile definitions and the rash-plus-provider-diagnosis
+> dermatologic sub-syndromes are deferred on sourcing / computability grounds
+> (spec-v97 / spec-v172 §4). Feature spec of the
 > [spec-v172](spec-v172.md) **Long-Term Care & Geriatric Assessment (LTC-GA)**
 > program, cluster **§3.9**. Adds **2** deterministic infection-prevention /
 > antimicrobial-stewardship instruments that fill a confirmed gap — the catalog

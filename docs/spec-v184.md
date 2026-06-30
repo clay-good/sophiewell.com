@@ -16,9 +16,11 @@
 > metric-only height input offers inches (predicted spirometry, IWPC & Gage
 > warfarin dosers, bedside Schwartz eGFR, ARDSnet PBW, peds BMI-for-age,
 > Ireton-Jones, GNRI), with companion kg|lb weight toggles on the tiles that take
-> a weight beside the converted height. The only remaining §4.3 item is the
-> threshold-label °F annotation on checkbox/banded criteria (SIRS/qSOFA/EOS),
-> which is purely additive label text and changes no compute. The
+> a weight beside the converted height. The §4.3 threshold-label °F annotation
+> on checkbox/banded criteria is also complete: the SIRS temperature criterion
+> now reads `>38 °C (100.4 °F) or <36 °C (96.8 °F)` (qSOFA carries no
+> temperature criterion; the Kaiser EOS calculator already charts intrapartum
+> temperature in °F), purely additive label text that changes no compute. The
 > official-name "(Japanese) Orthopaedic Association" (mJOA) and all
 > citation/journal strings are left untouched (§3.7), enforced by the guard's
 > allowlist. Authored from a full clinician-perspective QA pass of

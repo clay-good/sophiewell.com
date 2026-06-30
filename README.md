@@ -5,7 +5,7 @@
 <h1 align="center">sophiewell.com</h1>
 
 <p align="center">
-  <strong>772 deterministic healthcare calculators that run entirely in your browser.</strong><br>
+  <strong>774 deterministic healthcare calculators that run entirely in your browser.</strong><br>
   Free forever. No servers, no accounts, no telemetry, no AI, no network call after first paint.
 </p>
 
@@ -36,7 +36,7 @@ output; "searchable lookup of static facts" does not qualify. See
 [docs/spec-v10.md](docs/spec-v10.md) for the audience and
 dependency-budget commitments and
 [docs/spec-v29.md](docs/spec-v29.md) for the nurse-first pivot
-and the v29 catalog ledger. At v182 close the catalog is 772
+and the v29 catalog ledger. At v181 close the catalog is 774
 deterministic tiles — every one of them computes from at least
 one user input. The catalog reached its present size on two tracks.
 **New tiles:** spec-v63 added the operations counterpart to the bedside
@@ -186,7 +186,7 @@ production security headers. Any static file server will also work.
 ## How it works and how to use it
 
 Since the spec-v29 nurse-first prune the catalog has grown one
-reviewable spec at a time to **772** deterministic calculators
+reviewable spec at a time to **774** deterministic calculators
 (the full per-version history is in [CHANGELOG.md](CHANGELOG.md)
 and `docs/spec-v*.md`; the most recent bedside additions are
 summarized in the cheat sheets below). They organize across the
@@ -1070,6 +1070,41 @@ and a > 100% total is **flagged, not silently capped**. `duke-endocarditis` (202
 Duke-ISCVID) and `refeeding-risk` (NICE CG32) are **Class B** with
 [citation-staleness](docs/citation-staleness.md) rows; the other three are
 **Class A**. See [docs/spec-v99.md](docs/spec-v99.md).
+
+### Long-Term Care & Geriatric Assessment program: infection surveillance & antimicrobial stewardship (spec-v172, v181, +2 → 774)
+
+[spec-v181](docs/spec-v181.md) closes cluster **§3.9** of the LTC-GA program with
+the tight, high-value pair a nursing home's CMS-mandated infection-prevention-and-control
+program (IPCP) and antibiotic-stewardship program (ASP) run on:
+
+- **`mcgeer-criteria`** — the **Revised McGeer** surveillance definitions
+  (Stone 2012). Pick the suspected site, check the constitutional + site-specific
+  findings → **MEETS / DOES NOT MEET** the surveillance definition, naming the
+  satisfied criteria and the blocking gap. Ships the cross-verified syndromes:
+  UTI (with / without catheter), respiratory (common cold/pharyngitis,
+  influenza-like illness, pneumonia, lower-RTI), skin & soft tissue (cellulitis/
+  wound, conjunctivitis), and gastroenteritis. A **surveillance** definition for
+  tracking and reporting — *not a diagnosis and not a treatment trigger*.
+- **`loeb-minimum-criteria`** — the **Loeb** minimum criteria for *initiating*
+  antibiotics (2001). Pick the site → minimum criteria **MET / NOT MET** across
+  UTI (with / without catheter), lower respiratory (all 5 Loeb paths), skin &
+  soft tissue, and fever-of-unknown-source. **Stewardship decision support** — it
+  neither orders nor withholds antibiotics and names no agent, dose, route, or
+  duration; the prescriber and local protocol decide.
+
+Both are **categorical, site-branched criteria-logic determinations** (no numeric
+score, no numeric leak — fuzzed for the empty/partial-selection and
+false-positive paths). Every criterion, body-site definition, temperature
+threshold, and boolean rule was re-fetched and cross-verified **verbatim** against
+≥ 2 independent sources ([spec-v97](docs/spec-v97.md)): the Stone 2012 primary
+paper plus the Missouri DHSS and Minnesota DOH field tools (McGeer), and the MN
+DOH card plus MO DHSS chart (Loeb). Both are **Class A** — the journal citations
+name no `ISSUER_PATTERN` acronym (SHEA is not in the pattern), so no
+[citation-staleness](docs/citation-staleness.md) row. The Stone 2012 systemic
+primary-bloodstream / unexplained-febrile definitions and the
+rash-plus-provider-diagnosis dermatologic sub-syndromes are deferred on sourcing /
+computability grounds. New `lib/ltcga-v181.js` + `views/group-v181.js` (`RV181`).
+See [docs/spec-v181.md](docs/spec-v181.md).
 
 ### Long-Term Care & Geriatric Assessment program: cognition & dementia staging (spec-v172, v173, +3 → 740)
 
@@ -3230,7 +3265,7 @@ long version, see [docs/architecture.md](docs/architecture.md).
  │  manifests (data/)            │  static │        ▼                     ▼             │
  │        │  scripts/build       │  files  │   lazy-load data shard   pure compute      │
  │        ▼                      │         │   (verified vs manifest)  (lib/*.js)       │
- │  dist/  (772 tool pages,      │         │        │                     │             │
+ │  dist/  (774 tool pages,      │         │        │                     │             │
  │  OG cards, sitemap, SBOM)     │         │        ▼                     ▼             │
  └───────────────────────────────┘         │   service worker cache    result + cite   │
                                             │   (keyed to build hash)                    │
@@ -3252,7 +3287,7 @@ assets:
 
 | Output | Count | Source |
 |--------|------:|--------|
-| Pre-rendered tool pages (`dist/tools/<id>/`) | 772 | `scripts/build-tool-pages.mjs` |
+| Pre-rendered tool pages (`dist/tools/<id>/`) | 774 | `scripts/build-tool-pages.mjs` |
 | Audience hub pages (`dist/for/<audience>/`) | 6 | `scripts/build-hub-pages.mjs` |
 | Topic pages + `/topics/` index | 8 + 1 | `scripts/build-topic-pages.mjs` |
 | `/commitments/` | 1 | `scripts/build-commitments-page.mjs` |
@@ -3288,7 +3323,7 @@ static tool pages, so a tile can never ship mobile overflow undetected.
 index.html          single-page shell (hero-search combobox + static browse-by-category nav, tile mount)
 styles.css          one stylesheet (responsive; no horizontal scroll — enforced catalog-wide at 320px in CI)
 app.js              router, hero-search wiring, view wiring, the UTILITIES catalog
-                    (772 tiles — the single source of truth; zero runtime deps)
+                    (774 tiles — the single source of truth; zero runtime deps)
 sw.js               service worker — precache shell, cache shards by build hash
 theme.js            light/dark theme toggle (writes only sw-theme, allowlisted)
 lib/input-persist.js opt-in "remember my inputs" (off by default; numbers only)
@@ -3306,12 +3341,12 @@ docs/               specs (spec-v4 onward) + per-tile v11/v12 audit logs +
                     citation-staleness ledger +
                     architecture / threat-model / …
 test/               unit/ (node:test) · integration/ (Playwright) · fixtures/
-dist/               build output (772 tool pages, OG cards, sitemap, SBOM)
+dist/               build output (774 tool pages, OG cards, sitemap, SBOM)
 ```
 
-### Discovery: how a query finds the right tool among 772
+### Discovery: how a query finds the right tool among 774
 
-With 772 tiles, search quality *is* the product — a tool you cannot find does
+With 774 tiles, search quality *is* the product — a tool you cannot find does
 not exist. Discovery is deterministic and offline (no fuzzy-match service, no
 embedding model, no AI). The home `#hero-search` combobox builds its dropdown
 from two complementary rankers, both pure functions of the typed query:
@@ -3384,10 +3419,10 @@ A login-less, AI-free calculator earns trust only if the nurse can see, on the
 tile, exactly which published source produced the number — and tell whether that
 source is current. spec-v54 defined the invariants; spec-v60 built the machinery
 (the gate, the ledger, and the `citationAccessed` convention) and extended it
-across the full 772-tile catalog, pinning the last three unpinned "current
+across the full 774-tile catalog, pinning the last three unpinned "current
 edition" phrases and re-verifying every guideline tile against its latest known
 edition. Three invariants make that auditable, each enforced by the
-`check-citations.mjs` lint gate (in the `npm run lint` chain) over all 772 tiles:
+`check-citations.mjs` lint gate (in the `npm run lint` chain) over all 774 tiles:
 
 | Invariant | Rule | Enforcement |
 |---|---|---|
@@ -3905,14 +3940,15 @@ uses a fixed three-tool surface with dynamic dispatch over the catalog instead.
 
 ### Coverage is explicit and honest
 
-Adapting the catalog is incremental. Coverage now stands at **39 clinical
-calculators across 8 `lib` modules**, built module by module against the one
+Adapting the catalog is incremental. Coverage now stands at **45 clinical
+calculators across 9 `lib` modules**, built module by module against the one
 fixed contract:
 
 | wave | modules | tiles |
 |---|---|---|
 | first (spec-v183) | `tox-v86`, `hep-v124`, `acidbase-v129`, `cardio-v90` | 21 |
 | second | `pulm-v91`, `neuro-v118`, `endo-v136`, `periop-v97` | 18 |
+| third | `oneformula-v167` (mean-airway-pressure, cerebroplacental-ratio, toe-brachial-index, stool-osmotic-gap, pure-tone-average, rutgeerts) | 6 |
 
 `docs/mcp-coverage.md` is the ledger and `list_calculators` always reports the
 live exposed fraction (`"<N> of <M> catalog tiles exposed"`), never a hardcoded
@@ -3964,7 +4000,7 @@ rules, not soft preferences.
 | `npm run build`          | Copy static files into `dist/` for deployment                     |
 | `npm test`               | Run the full test suite (unit, a11y, grep, data integrity)        |
 | `npm run test:unit`      | Run Node's built-in unit tests (5,869 tests)                      |
-| `npm run test:e2e`       | Build `dist/`, then run Playwright integration tests against real browsers — incl. a full-catalog 320px no-horizontal-scroll sweep over both the SPA routes and the 772 pre-rendered static tool pages, the hub/topic/commitments pages, and the citation-wrap pin |
+| `npm run test:e2e`       | Build `dist/`, then run Playwright integration tests against real browsers — incl. a full-catalog 320px no-horizontal-scroll sweep over both the SPA routes and the 774 pre-rendered static tool pages, the hub/topic/commitments pages, and the citation-wrap pin |
 | `npm run test:mcp`       | Run the optional MCP server's tool/compute/fuzz tests (independent of the site jobs; SDK-free) |
 | `npm run test:a11y`      | Run accessibility checks on every utility view                    |
 | `npm run lint`           | ESLint + the CI gate chain: grep-check, output-safety, citation-integrity, catalog-truth, commitments, MCP-catalog, PA staleness, PA audit |
@@ -4049,7 +4085,7 @@ build, integrity-verified data shards) are documented in
 - [docs/spec-v11.md](docs/spec-v11.md) — correctness-floor spec:
   per-tile audit protocol, specialty-named groups, optional
   source-quoted `interpretation` field. Audit coverage is **complete
-  — 772/772 tiles** carry a committed per-tile audit log
+  — 774/774 tiles** carry a committed per-tile audit log
   (`docs/audits/v11/<id>.md` for the pre-v78 catalog;
   `docs/audits/v12/<id>.md` for the tiles added since — the
   spec-v78–v83 billing & coding program, the spec-v85

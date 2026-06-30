@@ -1949,7 +1949,7 @@ export const renderers = {
   // spec-v12 §3.9.1 wave 12-8: SIRS Criteria (Bone 1992).
   sirs(root) {
     const items = [
-      ['Temperature >38 deg C or <36 deg C', 'sr-temp'],
+      ['Temperature >38 °C (100.4 °F) or <36 °C (96.8 °F)', 'sr-temp'],
       ['Heart rate >90 bpm', 'sr-hr'],
       ['Respiratory rate >20 / min OR PaCO2 <32 mmHg', 'sr-resp'],
       ['WBC >12 or <4 (x10^9/L) OR >10% bands', 'sr-wbc'],

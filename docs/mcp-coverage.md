@@ -33,6 +33,16 @@ to round-trip, and `pospom` takes a variable-length comorbidity array that needs
 a bespoke `toArgs` (deferred). Subset exposure of a module is fine — the ledger
 lists exactly which ids are live.
 
+## Third wave — 1 module
+
+Coverage extends with the six one-formula tiles in `lib/oneformula-v167.js`
+(mean airway pressure, cerebroplacental ratio, toe-brachial index, stool osmotic
+gap, pure-tone average, and the Rutgeerts endoscopic grade), all `clinical:true`
+and each with a `META.example` that round-trips. Five are pure numeric formulas;
+`rutgeerts` is a categorical i0–i4 grade whose example still round-trips (the
+grade digit appears in the result). Brings the exposed total to 45 calculators
+across 9 modules.
+
 ## Exposed
 
 Each id below is live in `mcp/catalog.js`. The gate parses this list.
@@ -91,6 +101,14 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 - `gupta-respiratory-failure`
 - `arozullah-pneumonia`
 - `el-ganzouri`
+
+### lib/oneformula-v167.js
+- `mean-airway-pressure`
+- `cerebroplacental-ratio`
+- `toe-brachial-index`
+- `stool-osmotic-gap`
+- `pure-tone-average`
+- `rutgeerts`
 
 ## Not yet adapted
 

@@ -6,6 +6,50 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v181 — LTC infection surveillance & antimicrobial stewardship: Revised McGeer definitions and Loeb minimum criteria, +2 → 774)
+
+- **`mcgeer-criteria` — Revised McGeer surveillance definitions of infection in
+  long-term care** (Stone ND, et al, *Infect Control Hosp Epidemiol* 2012).
+  Pick the suspected infection site, then check the constitutional and
+  site-specific findings present → **MEETS / DOES NOT MEET** the surveillance
+  definition for that site, naming the satisfied criteria and the blocking gap.
+  Ships the cross-verified syndromes: UTI (with / without indwelling catheter),
+  respiratory (common cold / pharyngitis, influenza-like illness, pneumonia,
+  lower-RTI), skin & soft tissue (cellulitis / wound, conjunctivitis), and
+  gastroenteritis. It is a **surveillance** definition for infection tracking
+  and reporting — not a diagnosis and not a treatment trigger.
+- **`loeb-minimum-criteria` — Loeb minimum criteria for initiating antibiotics
+  in LTC** (Loeb M, et al, *Infect Control Hosp Epidemiol* 2001). Pick the
+  suspected site → minimum criteria **MET / NOT MET** for starting
+  antimicrobials, across UTI (with / without catheter), lower respiratory (all 5
+  Loeb paths), skin & soft tissue, and fever-of-unknown-source. It is
+  **stewardship decision support** — it neither orders nor withholds antibiotics
+  and names no agent, dose, route, or duration; the prescriber and local
+  protocol decide.
+- Both are **categorical, site-branched criteria-logic determinations** (no
+  numeric score, no numeric leak). Every criterion, body-site definition,
+  temperature threshold, and boolean rule was re-fetched and cross-verified
+  **verbatim** against ≥ 2 independent sources at implementation
+  ([spec-v97](docs/spec-v97.md)): Stone 2012 (primary) plus the Missouri DHSS and
+  Minnesota DOH field tools for McGeer, and the MN DOH card plus MO DHSS chart
+  for Loeb. Both **Class A** — the journal citations name no `ISSUER_PATTERN`
+  acronym, so no `docs/citation-staleness.md` row. New `lib/ltcga-v181.js`
+  (`mcgeerCriteria`, `loebMinimumCriteria`) + `views/group-v181.js` (`RV181`).
+  Deferred on sourcing / computability grounds: the Stone 2012 systemic
+  primary-bloodstream / unexplained-febrile definitions and the
+  rash-plus-provider-diagnosis dermatologic sub-syndromes.
+- Closes cluster **§3.9** of the [spec-v172](docs/spec-v172.md) Long-Term Care &
+  Geriatric Assessment program.
+
+### Changed (spec-v184 §4.3 threshold-label °F annotation — no tile delta)
+
+- **The SIRS temperature criterion now reads `>38 °C (100.4 °F) or <36 °C
+  (96.8 °F)`**, completing the [spec-v184](docs/spec-v184.md) §4.3 threshold-label
+  °F annotation on banded/checkbox criteria. (qSOFA carries no temperature
+  criterion; the Kaiser EOS calculator already charts intrapartum temperature in
+  °F.) Purely additive label text — no compute, canonical unit, or example
+  changed.
+
 ### Changed (spec-v184 §4.3/§4.4 unit-toggle follow-on wave — US-customary affordances across the remaining temperature/height/weight inputs; no tile delta)
 
 - **Extended the `TEMP_UNITS` (°C|°F), `HEIGHT_UNITS` (cm|in), and `WEIGHT_UNITS`
