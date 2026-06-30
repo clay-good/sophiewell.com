@@ -42,6 +42,47 @@ test('lib/cardio-v90.js worked calls', () => {
   assert.equal(ava.severity, 'severe');
 });
 
+test('lib/pulm-v91.js worked calls (wave 2)', () => {
+  assert.equal(ok('gold-spirometry', { 'gs-pct': '45', 'gs-ratio': '0.6' }).grade, 3);
+  assert.equal(ok('bode-index', { 'bo-bmi': '24', 'bo-pct': '45', 'bo-mmrc': '2', 'bo-6mwd': '300' }).total, 4);
+  assert.equal(ok('gap-ipf', { 'gp-sex': 'male', 'gp-age': '68', 'gp-fvc': '60', 'gp-dlco': '40' }).stage, 'II');
+  assert.equal(ok('mmrc-dyspnea', { 'md-grade': '2' }).grade, 2);
+});
+
+test('lib/neuro-v118.js worked calls (wave 2)', () => {
+  assert.equal(ok('modified-fisher', { 'mf-sah': 'thick', 'mf-ivh': true }).grade, 4);
+  assert.equal(ok('bat-score', { 'bt-blend': true, 'bt-hypo': true, 'bt-timing': true }).total, 5);
+  const graeb = ok('graeb-ivh', {
+    'gr-rl': '4', 'gr-rl-exp': true, 'gr-ll': '4', 'gr-ll-exp': true, 'gr-3': '4', 'gr-3-exp': true,
+    'gr-4': '4', 'gr-4-exp': true, 'gr-ro': '2', 'gr-ro-exp': true, 'gr-lo': '2', 'gr-lo-exp': true,
+    'gr-rt': '2', 'gr-rt-exp': true, 'gr-lt': '2', 'gr-lt-exp': true,
+  });
+  assert.equal(graeb.total, 32);
+});
+
+test('lib/endo-v136.js worked calls (wave 2)', () => {
+  assert.equal(ok('homa-ir', { 'hir-insulin': '12', 'hir-glucose': '100', 'hir-unit': 'mgdl' }).value, 2.96);
+  assert.equal(ok('quicki', { 'qui-insulin': '12', 'qui-glucose': '100' }).value, 0.3248);
+  assert.equal(ok('osteoporosis-prescreen', { 'ost-age': '60', 'ost-weight': '72', 'ost-estrogen': 'no' }).ost, 2);
+});
+
+test('lib/periop-v97.js worked calls (wave 2)', () => {
+  assert.equal(ok('gupta-mica', { 'mica-age': '65', 'mica-asa': '3', 'mica-func': 'partial', 'mica-creat': 'normal', 'mica-surg': 'intestinal' }).risk, 1.66);
+  assert.equal(ok('arozullah-pneumonia', { 'aroz-surg': 'thoracic', 'aroz-age': '60-69', 'aroz-func': 'independent', 'aroz-bun': '8-21', 'aroz-copd': true }).total, 28);
+  assert.equal(ok('el-ganzouri', { 'eg-mouth': 'lt-4', 'eg-thyro': '6-6.5', 'eg-mall': '3', 'eg-neck': '80-90', 'eg-prog': 'yes', 'eg-weight': 'under-90', 'eg-history': 'none' }).total, 4);
+});
+
+// The enum->boolean adapter transform reaches the lib: el-ganzouri prognath and
+// elapss earlierSah both map a yes/no select onto a lib boolean.
+test('enum->boolean adapter transform reaches the lib (elapss earlierSah)', () => {
+  // Use a low, non-saturating profile so the +1 from earlierSah='no' is visible
+  // (the documented example saturates the score at the 40-point ceiling).
+  const base = { 'el-loc': 'icaAcaAcom', 'el-age': '40', 'el-pop': 'na', 'el-size': '4', 'el-irregular': false };
+  const no = ok('elapss', { ...base, 'el-sah': 'no' }).total;
+  const yes = ok('elapss', { ...base, 'el-sah': 'yes' }).total;
+  assert.notEqual(no, yes);
+});
+
 // The acute/chronic select maps to the lib boolean `chronic` arg via the
 // adapter `to` transform; confirm both branches differ.
 test('enum->boolean adapter transform (acute vs chronic) reaches the lib', () => {

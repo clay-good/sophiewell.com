@@ -21,12 +21,20 @@ import toxV86 from './adapters/tox-v86.js';
 import hepV124 from './adapters/hep-v124.js';
 import acidbaseV129 from './adapters/acidbase-v129.js';
 import cardioV90 from './adapters/cardio-v90.js';
+import pulmV91 from './adapters/pulm-v91.js';
+import neuroV118 from './adapters/neuro-v118.js';
+import endoV136 from './adapters/endo-v136.js';
+import periopV97 from './adapters/periop-v97.js';
 
 const ADAPTER_MODULES = [
   ['tox-v86', toxV86],
   ['hep-v124', hepV124],
   ['acidbase-v129', acidbaseV129],
   ['cardio-v90', cardioV90],
+  ['pulm-v91', pulmV91],
+  ['neuro-v118', neuroV118],
+  ['endo-v136', endoV136],
+  ['periop-v97', periopV97],
 ];
 
 const HERE = dirname(fileURLToPath(import.meta.url));

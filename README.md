@@ -3848,11 +3848,22 @@ uses a fixed three-tool surface with dynamic dispatch over the catalog instead.
 
 ### Coverage is explicit and honest
 
-Adapting the catalog is incremental. The first wave exposes **21 clinical
-calculators across 4 `lib` modules** (`tox-v86`, `hep-v124`, `acidbase-v129`,
-`cardio-v90`) as a proof of pattern; `docs/mcp-coverage.md` is the ledger and
-`list_calculators` always reports the live exposed fraction. Later waves extend
-coverage module by module against the same contract.
+Adapting the catalog is incremental. Coverage now stands at **39 clinical
+calculators across 8 `lib` modules**, built module by module against the one
+fixed contract:
+
+| wave | modules | tiles |
+|---|---|---|
+| first (spec-v183) | `tox-v86`, `hep-v124`, `acidbase-v129`, `cardio-v90` | 21 |
+| second | `pulm-v91`, `neuro-v118`, `endo-v136`, `periop-v97` | 18 |
+
+`docs/mcp-coverage.md` is the ledger and `list_calculators` always reports the
+live exposed fraction (`"<N> of <M> catalog tiles exposed"`), never a hardcoded
+number. Two tiles inside the wave-2 modules are deliberately left unexposed and
+recorded as such: `phases-iph` has no `META.example` to round-trip, and `pospom`
+takes a variable-length comorbidity array that needs a bespoke `toArgs`. Later
+waves extend coverage the same way — one module, one ledger entry, one set of
+round-tripping examples at a time.
 
 ### Try it
 

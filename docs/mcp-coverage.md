@@ -23,6 +23,16 @@ with a JSON-Schema input contract, an example that round-trips to its
 `META.example.expected`, a citation echoed from `META`, and a clinical-posture
 disclaimer.
 
+## Second wave — 4 modules
+
+Coverage extends, module by module against the same fixed contract, with 18 more
+clinical calculators across 4 `lib` modules (pulmonary function, hemorrhagic
+stroke / SAH / IVH, metabolic / endocrine, and perioperative risk). Two tiles in
+these modules are intentionally not adapted: `phases-iph` has no `META.example`
+to round-trip, and `pospom` takes a variable-length comorbidity array that needs
+a bespoke `toArgs` (deferred). Subset exposure of a module is fine — the ledger
+lists exactly which ids are live.
+
 ## Exposed
 
 Each id below is live in `mcp/catalog.js`. The gate parses this list.
@@ -55,6 +65,32 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 - `duke-treadmill`
 - `cardiac-power-output`
 - `aortic-valve-area`
+
+### lib/pulm-v91.js
+- `gold-spirometry`
+- `bode-index`
+- `gap-ipf`
+- `predicted-spirometry`
+- `mmrc-dyspnea`
+
+### lib/neuro-v118.js
+- `modified-fisher`
+- `graeb-ivh`
+- `bat-score`
+- `elapss`
+
+### lib/endo-v136.js
+- `homa-ir`
+- `quicki`
+- `tyg-index`
+- `metabolic-syndrome`
+- `osteoporosis-prescreen`
+
+### lib/periop-v97.js
+- `gupta-mica`
+- `gupta-respiratory-failure`
+- `arozullah-pneumonia`
+- `el-ganzouri`
 
 ## Not yet adapted
 

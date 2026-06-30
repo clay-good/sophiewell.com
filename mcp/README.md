@@ -73,7 +73,7 @@ strings; booleans as `true`/`false`; enums by their listed string values.
 
 ```
 list_calculators { "specialty": "hepatology" }
-  -> { coverage: "21 of 772 catalog tiles exposed ...", calculators: [ { id: "meld-xi", ... }, ... ] }
+  -> { coverage: "39 of 772 catalog tiles exposed ...", calculators: [ { id: "meld-xi", ... }, ... ] }
 
 describe_calculator { "id": "meld-xi" }
   -> { inputSchema: { ... mx-bili, mx-creat ... }, citation: "Heuman DM ... Liver Transpl 2007", ... }
@@ -87,9 +87,11 @@ compute_calculator { "id": "meld-xi", "inputs": { "mx-bili": 2.0, "mx-creat": 1.
 
 Coverage is incremental and explicit. `docs/mcp-coverage.md` is the ledger of
 which calculators are exposed; `list_calculators` always reports the live
-fraction. The first wave exposes 21 clinical calculators across 4 `lib` modules
-as a proof of pattern; later waves extend it module by module against the same
-contract.
+fraction. The first wave exposed 21 clinical calculators across 4 `lib` modules
+as a proof of pattern; a second wave adds 18 more across 4 modules (pulmonary
+function, hemorrhagic stroke, metabolic / endocrine, and perioperative risk),
+for 39 across 8 modules today. Later waves extend it module by module against the
+same contract.
 
 ## Design
 
