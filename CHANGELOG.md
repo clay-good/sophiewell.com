@@ -6,6 +6,42 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v185 / v186 / v187 — Advanced Bedside Quantitation program: 19 gap-filling calculators, 774 → 793)
+
+- Three post-audit feature specs ship **19 deterministic, free-to-reproduce
+  calculators** that fill *confirmed* gaps (each id verified absent by a direct
+  scan of `app.js` before any code — the withdrawn v185–v195 drafts had proposed
+  ~41 already-live concepts via a faulty keyword scan; this program re-does the
+  work honestly). Catalog **774 → 793**; every constant and threshold re-fetched
+  and cross-verified against ≥ 2 independent sources at implementation
+  (spec-v97). No runtime network call, no AI; each tile obeys the spec-v100 §2
+  doctrine, renders the spec-v50 §3 posture note, and authors no order.
+  - **spec-v185** (`lib/gaps-v185.js`, `views/group-v185.js`, +8): cardiac output
+    by the **Fick** principle (measured or LaFarge-estimated VO₂); the **Gorlin**
+    valve-area equation (aortic K = 44.3 / mitral K = 37.7); the **Qp/Qs** shunt
+    ratio; **Doppler LVOT-VTI** stroke volume & cardiac output; the **VTE-BLEED**
+    bleeding score on stable anticoagulation; the **Matsuda** OGTT
+    insulin-sensitivity index; **Rosendaal** time-in-therapeutic-range (linear
+    interpolation of a dated INR series); and **Janmahasatian** lean body weight.
+  - **spec-v186** (`lib/specialtymath-v186.js`, `views/group-v186.js`, +6):
+    radiotherapy **BED / EQD2** (linear-quadratic); **PISA** effective
+    regurgitant orifice & volume; **LV meridional wall stress** (Laplace); the
+    hemoglobin-corrected **DLCO** (Cotes) & KCO; estimated **VO₂max / METs**
+    (Bruce treadmill / Cooper field test); and the **Wilson-score** confidence
+    interval for a proportion.
+  - **spec-v187** (`lib/onc-staging-v187.js`, `views/group-v187.js`, +5): the
+    **BCLC** hepatocellular-carcinoma stage; **IMDC (Heng)** and **MSKCC
+    (Motzer)** metastatic-RCC risk; **RECIST 1.1** tumor response; and the
+    modified **Glasgow Prognostic Score** (mGPS).
+- Each compute routes through `lib/num.js` and is finite-/positive-guarded (the
+  Gorlin and Matsuda square roots, the Qp/Qs and LVOT and RECIST denominators,
+  the Rosendaal day-gap, the Wilson radicand and [0, 1] clamp), covered by the
+  spec-v59 fuzz harness with zero non-finite leaks. `dlco-correction` carries a
+  documentation-only `docs/citation-staleness.md` row (ATS trips the
+  issuer-acronym pattern; the Cotes formula is unchanged). All 19 carry ≥ 3
+  worked examples, a `META` entry with inline citation + `citationUrl` +
+  `accessed`, and a per-tile `docs/audits/v12/<id>.md` log.
+
 ### Added (spec-v183 — MCP wave 7: expose 36 more clinical calculators as deterministic agent tools; no tile delta, 774)
 
 - The optional stdio MCP server (`mcp/server.js`) gains a **seventh coverage

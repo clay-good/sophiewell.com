@@ -89,6 +89,9 @@ import { renderers as RV159 } from './views/group-v159.js';
 import { renderers as RV160 } from './views/group-v160.js';
 import { renderers as RV161 } from './views/group-v161.js';
 import { renderers as RV163 } from './views/group-v163.js';
+import { renderers as RV185 } from './views/group-v185.js';
+import { renderers as RV186 } from './views/group-v186.js';
+import { renderers as RV187 } from './views/group-v187.js';
 import { renderers as RV164 } from './views/group-v164.js';
 import { renderers as RV165 } from './views/group-v165.js';
 import { renderers as RV166 } from './views/group-v166.js';
@@ -122,7 +125,7 @@ import { resolvePrompt } from './lib/prompt.js';
 // artifact-detect / artifact-route / artifact-handoff helpers were
 // deleted in spec-v29 wave 29-2 (Group C/L).
 
-const RENDERERS = { ...RA, ...RB, ...RC, ...RE, ...RF, ...RG, ...RH, ...RI, ...RJ, ...RKLMNO, ...RV5, ...RV6, ...RV7, ...RV8, ...RV9, ...RV10, ...RV11, ...RV12, ...RV13, ...RV14, ...RV15, ...RV16, ...RV17, ...RV18, ...RV19, ...RV20, ...RV21, ...RV22, ...RV23, ...RV24, ...RV25, ...RV26, ...RV27, ...RV28, ...RV29, ...RV30, ...RV31, ...RV32, ...RV33, ...RV34, ...RV35, ...RV36, ...RV37, ...RV38, ...RV39, ...RV40, ...RV117, ...RV118, ...RV119, ...RV120, ...RV121, ...RV122, ...RV123, ...RV124, ...RV125, ...RV126, ...RV127, ...RV128, ...RV129, ...RV130, ...RV131, ...RV132, ...RV133, ...RV134, ...RV135, ...RV136, ...RV137, ...RV138, ...RV139, ...RV140, ...RV141, ...RV142, ...RV143, ...RV144, ...RV145, ...RV146, ...RV147, ...RV148, ...RV149, ...RV151, ...RV152, ...RV153, ...RV154, ...RV155, ...RV156, ...RV158, ...RV159, ...RV160, ...RV161, ...RV163, ...RV164, ...RV165, ...RV166, ...RV167, ...RV169, ...RV173, ...RV174, ...RV175, ...RV176, ...RV177, ...RV178, ...RV179, ...RV182, ...RV181, ...RV63, ...RPALINT };
+const RENDERERS = { ...RA, ...RB, ...RC, ...RE, ...RF, ...RG, ...RH, ...RI, ...RJ, ...RKLMNO, ...RV5, ...RV6, ...RV7, ...RV8, ...RV9, ...RV10, ...RV11, ...RV12, ...RV13, ...RV14, ...RV15, ...RV16, ...RV17, ...RV18, ...RV19, ...RV20, ...RV21, ...RV22, ...RV23, ...RV24, ...RV25, ...RV26, ...RV27, ...RV28, ...RV29, ...RV30, ...RV31, ...RV32, ...RV33, ...RV34, ...RV35, ...RV36, ...RV37, ...RV38, ...RV39, ...RV40, ...RV117, ...RV118, ...RV119, ...RV120, ...RV121, ...RV122, ...RV123, ...RV124, ...RV125, ...RV126, ...RV127, ...RV128, ...RV129, ...RV130, ...RV131, ...RV132, ...RV133, ...RV134, ...RV135, ...RV136, ...RV137, ...RV138, ...RV139, ...RV140, ...RV141, ...RV142, ...RV143, ...RV144, ...RV145, ...RV146, ...RV147, ...RV148, ...RV149, ...RV151, ...RV152, ...RV153, ...RV154, ...RV155, ...RV156, ...RV158, ...RV159, ...RV160, ...RV161, ...RV163, ...RV164, ...RV165, ...RV166, ...RV167, ...RV169, ...RV173, ...RV174, ...RV175, ...RV176, ...RV177, ...RV178, ...RV179, ...RV182, ...RV181, ...RV185, ...RV186, ...RV187, ...RV63, ...RPALINT };
 
 // ----- Utility registry ----------------------------------------------------
 // Source of truth for routes, names, group, audiences, and clinical flag.
@@ -1730,6 +1733,33 @@ const UTILITIES = [
   { id: 'oxytocin-titration',   name: 'Oxytocin mU/min <-> mL/hr',                        group: 'N', audiences: ['clinicians', 'educators'], clinical: true },
   // spec-v62 §3.3 Part B (wave 2): AAP-2022 neonatal phototherapy threshold.
   { id: 'neo-phototherapy',     name: 'Neonatal Phototherapy Threshold (AAP 2022)',      group: 'N', audiences: ['clinicians', 'educators'], clinical: true },
+  // spec-v185: eight gap-filling cardiac/echo hemodynamics, anticoagulation,
+  // metabolic, and dosing-weight calculators. lib/gaps-v185.js, views/group-v185.js (RV185).
+  { id: 'fick-cardiac-output',  name: 'Cardiac Output by the Fick Principle',             group: 'E', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'gorlin',               name: 'Gorlin Valve-Area Equation',                       group: 'E', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'qp-qs',                name: 'Qp/Qs Pulmonary-to-Systemic Flow Ratio',           group: 'E', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'lvot-stroke-volume',   name: 'Doppler Stroke Volume & CO (LVOT-VTI)',            group: 'E', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'vte-bleed',            name: 'VTE-BLEED Bleeding Risk (on anticoagulation)',     group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'matsuda-index',        name: 'Matsuda Insulin Sensitivity Index (OGTT)',         group: 'E', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'rosendaal-ttr',        name: 'Time in Therapeutic Range (Rosendaal)',            group: 'E', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'lean-body-weight',     name: 'Lean Body Weight (Janmahasatian)',                 group: 'E', audiences: ['clinicians', 'educators'], clinical: true },
+  // spec-v186: six advanced specialty computations (radiation oncology, valve
+  // regurgitation, LV mechanics, diffusing capacity, exercise physiology, EBM
+  // statistics). lib/specialtymath-v186.js, views/group-v186.js (RV186).
+  { id: 'bed-eqd2',             name: 'Radiotherapy BED & EQD2 (linear-quadratic)',       group: 'E', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'pisa-eroa',            name: 'PISA Regurgitant Orifice & Volume (EROA)',         group: 'E', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'lv-wall-stress',       name: 'LV Meridional Wall Stress (Laplace)',              group: 'E', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'dlco-correction',      name: 'Hemoglobin-Corrected DLCO & KCO',                  group: 'E', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'vo2max-exercise',      name: 'Estimated VO₂max & METs (Bruce / Cooper)',         group: 'E', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'proportion-ci',        name: 'Confidence Interval for a Proportion (Wilson)',    group: 'E', audiences: ['clinicians', 'educators'], clinical: true },
+  // spec-v187: five solid-tumor staging / response / inflammation-prognosis
+  // instruments (Subspecialty Oncology & Hematology Staging program, first spec).
+  // lib/onc-staging-v187.js, views/group-v187.js (RV187).
+  { id: 'bclc-hcc',             name: 'BCLC Stage (hepatocellular carcinoma)',            group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'imdc-rcc',             name: 'IMDC (Heng) Metastatic RCC Risk',                  group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'mskcc-rcc',            name: 'MSKCC (Motzer) Metastatic RCC Risk',               group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'recist',               name: 'RECIST 1.1 Tumor Response',                        group: 'E', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'glasgow-prognostic-score', name: 'Modified Glasgow Prognostic Score (mGPS)',     group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
 ];
 
 const UTIL_BY_ID = new Map(UTILITIES.map((u) => [u.id, u]));

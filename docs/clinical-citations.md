@@ -4683,3 +4683,98 @@ Worked example: Suspected urinary tract infection without an indwelling catheter
 Citation: Loeb M, Bentley DW, Bradley S, et al. Development of minimum criteria for the initiation of antibiotics in residents of long-term-care facilities: results of a consensus conference. Infect Control Hosp Epidemiol. 2001. (Cross-verified against the Minnesota DOH card and the Missouri DHSS quick-reference chart, spec-v97.)
 Formula: A categorical, site-branched minimum-criteria rule. The clinician selects the suspected site and marks the findings present; the tool returns whether the minimum criteria to initiate antibiotics are met or not met, naming the satisfied criteria and the blocking gap. It is stewardship decision support that neither orders nor withholds therapy; the prescriber and local protocol decide.
 Worked example: Suspected urinary tract infection without an indwelling catheter, with acute dysuria, meets the minimum criteria by the sufficient acute-dysuria path; fever alone, without a localizing urinary finding, does not.
+
+### Cardiac output by the Fick principle
+Citation: Fick A. Uber die Messung des Blutquantums in den Herzventrikeln. Sitzungsber Phys Med Ges Wurzburg. 1870. Estimated VO2: LaFarge CG, Miettinen OS. The estimation of oxygen consumption. Cardiovasc Res. 1970;4(1):23-30.
+Formula: CO (L/min) = VO2 (mL/min) / [1.36 * Hb (g/dL) * (SaO2 - SvO2) * 10]; cardiac index = CO / BSA. LaFarge indexed VO2 (mL/min/m2): male 138.1 - 11.49*ln(age) + 0.378*HR, female 138.1 - 17.04*ln(age) + 0.378*HR, times BSA.
+Worked example: VO2 280 mL/min, Hb 15, SaO2 98%, SvO2 70%, BSA 1.9. a-v O2 diff = 1.36*15*0.28 = 5.712 mL/dL; CO = 280/57.12 = 4.9 L/min; CI = 2.58 L/min/m2 (normal).
+
+### Gorlin valve-area equation
+Citation: Gorlin R, Gorlin SG. Hydraulic formula for the calculation of the area of the stenotic mitral valve, other cardiac valves, and central circulatory shunts. Am Heart J. 1951;41(1):1-29.
+Formula: valve area (cm2) = flow / (K * sqrt(mean gradient)); flow (mL/s) = CO (mL/min) / (period (s) * HR). K = 44.3 with the systolic ejection period (aortic), 37.7 with the diastolic filling period (mitral). Severity (cm2): severe < 1.0, moderate 1.0-1.5.
+Worked example: aortic, CO 5 L/min, HR 70, SEP 0.33 s, mean gradient 40 mmHg. flow = 5000/(0.33*70) = 216.5 mL/s; area = 216.5/(44.3*sqrt40) = 0.77 cm2 (severe).
+
+### Qp/Qs pulmonary-to-systemic flow ratio
+Citation: Wilkinson JL. Haemodynamic calculations in the catheter laboratory. Heart. 2001;85(1):113-120.
+Formula: Qp/Qs = (SaO2 - MvO2) / (PvO2 - PaO2). ~1 no net shunt; small 1.1-1.5, moderate 1.5-2.0, large > 2.0; < 1 net right-to-left.
+Worked example: SaO2 95, MvO2 60, PvO2 98, PaO2 85. Qp/Qs = 35/13 = 2.69 (large left-to-right).
+
+### Doppler stroke volume & cardiac output (LVOT-VTI)
+Citation: Lang RM, Badano LP, Mor-Avi V, et al. Recommendations for cardiac chamber quantification by echocardiography in adults (ASE/EACVI). J Am Soc Echocardiogr. 2015;28(1):1-39.
+Formula: LVOT area = pi*(D/2)^2; SV = area * VTI; CO = SV * HR / 1000; SVI = SV / BSA (normal 35-47 mL/m2); CI = CO / BSA.
+Worked example: D 2.2 cm, VTI 22 cm, HR 70, BSA 1.9. area = 3.80 cm2; SV = 83.6 mL; CO = 5.85 L/min; CI = 3.08 L/min/m2.
+
+### VTE-BLEED bleeding-risk score
+Citation: Klok FA, Hosel V, Clemens A, et al. Prediction of bleeding events in patients with venous thromboembolism on stable anticoagulation treatment. Eur Respir J. 2016;48(5):1369-1376.
+Formula: active cancer 2; male with uncontrolled hypertension 1; anemia, history of bleeding, age >= 60, renal dysfunction (CrCl 30-60) 1.5 each. Total >= 2 = elevated bleeding risk on stable anticoagulation.
+Worked example: anemia + age >= 60 = 3 (elevated, >= 2).
+
+### Matsuda insulin-sensitivity index (OGTT)
+Citation: Matsuda M, DeFronzo RA. Insulin sensitivity indices obtained from oral glucose tolerance testing. Diabetes Care. 1999;22(9):1462-1470.
+Formula: ISI = 10000 / sqrt(fasting glucose * fasting insulin * mean OGTT glucose * mean OGTT insulin), glucose mg/dL, insulin uU/mL. Lower = more insulin resistant.
+Worked example: G0 110, I0 20, Gmean 180, Imean 120. ISI = 10000/sqrt(47,520,000) = 1.45 (suggests insulin resistance).
+
+### Time in therapeutic range (Rosendaal)
+Citation: Rosendaal FR, Cannegieter SC, van der Meer FJM, Briet E. A method to determine the optimal intensity of oral anticoagulant therapy. Thromb Haemost. 1993;69(3):236-239.
+Formula: an INR is linearly interpolated across the days between consecutive measurements; TTR = days-in-range / total-days. Good control commonly >= 65%.
+Worked example: 2026-01-01 INR 1.5, 2026-01-11 INR 2.5, 2026-01-21 INR 2.8, target 2.0-3.0. 16 of 20 days in range = 80%.
+
+### Lean body weight (Janmahasatian)
+Citation: Janmahasatian S, Duffull SB, Ash S, Ward LC, Byrne NM, Green B. Quantification of lean bodyweight. Clin Pharmacokinet. 2005;44(10):1051-1065.
+Formula: LBW = 9270*TBW / (6680 + 216*BMI) for men, 9270*TBW / (8780 + 244*BMI) for women; BMI = TBW (kg) / height (m)^2.
+Worked example: male, 100 kg, 180 cm. BMI = 30.9; LBW = 927000/13346.6 = 69.5 kg.
+
+### Radiotherapy BED & EQD2 (linear-quadratic)
+Citation: Fowler JF. The linear-quadratic formula and progress in fractionated radiotherapy. Br J Radiol. 1989;62(740):679-694.
+Formula: BED = n*d*(1 + d/(a/b)); EQD2 = BED / (1 + 2/(a/b)). a/b ~ 10 Gy tumor / early tissue, 3 Gy late tissue.
+Worked example: 30 fractions * 2 Gy, a/b 10. BED = 60*1.2 = 72 Gy; EQD2 = 72/1.2 = 60 Gy.
+
+### PISA effective regurgitant orifice & volume
+Citation: Zoghbi WA, Adams D, Bonow RO, et al. Recommendations for noninvasive evaluation of native valvular regurgitation (ASE). J Am Soc Echocardiogr. 2017;30(4):303-371.
+Formula: flow = 2*pi*r^2*Va; EROA = flow / peak Vreg; regurgitant volume = EROA * VTIreg. Mitral EROA severe >= 0.40 cm2.
+Worked example: r 0.9 cm, Va 40 cm/s, peak Vreg 500 cm/s, VTIreg 120 cm. flow = 203.6 mL/s; EROA = 0.41 cm2; RVol = 48.9 mL (severe).
+
+### LV meridional wall stress (Laplace)
+Citation: Grossman W, Jones D, McLaurin LP. Wall stress and patterns of hypertrophy in the human left ventricle. J Clin Invest. 1975;56(1):56-64.
+Formula: sigma = P*r/(2*h); with 1 mmHg = 1.36 g/cm2, sigma (g/cm2) = 1.36*P*r/(2*h) and sigma (10^3 dyn/cm2) = 1.33322*P*r/(2*h).
+Worked example: P 120 mmHg, r 2.5 cm, h 1.0 cm. sigma = 1.36*150 = 204 g/cm2 (~200 * 10^3 dyn/cm2).
+
+### Hemoglobin-corrected DLCO & KCO (Cotes)
+Citation: Macintyre N, Crapo RO, Viegi G, et al. Standardisation of the single-breath determination of carbon monoxide uptake in the lung (ATS/ERS). Eur Respir J. 2005;26(4):720-735.
+Formula: Hb-adjusted DLCO = observed * (10.22 + Hb)/(1.7*Hb) for males >= 15 y, * (9.38 + Hb)/(1.7*Hb) for females / children; KCO = DLCO / VA.
+Worked example: DLCO 20, Hb 10 g/dL, VA 5 L, male. corrected = 20*20.22/17 = 23.8; KCO = 20/5 = 4.
+
+### Estimated VO2max & METs (Bruce / Cooper)
+Citation: Bruce RA, Kusumi F, Hosmer D. Maximal oxygen intake and nomographic assessment of functional aerobic impairment in cardiovascular disease. Am Heart J. 1973;85(4):546-562. Field test: Cooper KH. JAMA. 1968;203(3):201-204.
+Formula: Bruce men VO2max = 14.76 - 1.379*T + 0.451*T^2 - 0.012*T^3, women 4.38*T - 3.9 (T = min); Cooper = (distance_m - 504.9)/44.73; METs = VO2max/3.5.
+Worked example: Bruce, man, 10 min. VO2max = 34.1 mL/kg/min; 9.7 METs.
+
+### Confidence interval for a proportion (Wilson score)
+Citation: Wilson EB. Probable inference, the law of succession, and statistical inference. J Am Stat Assoc. 1927;22(158):209-212.
+Formula: p = x/n; center = (p + z^2/2n)/(1 + z^2/n); half = (z/(1 + z^2/n))*sqrt(p(1-p)/n + z^2/4n^2); clamped to [0,1]. z: 90% 1.6449, 95% 1.9600, 99% 2.5758.
+Worked example: 8 of 10, 95%. proportion 80%; Wilson 95% CI 49-94.3%.
+
+### BCLC stage (hepatocellular carcinoma)
+Citation: Llovet JM, Bru C, Bruix J. Prognosis of hepatocellular carcinoma: the BCLC staging classification. Semin Liver Dis. 1999;19(3):329-338. 2022 update: Reig M, Forner A, Rimola J, et al. J Hepatol. 2022;76(3):681-693.
+Formula: maps ECOG performance status, tumor burden, and Child-Pugh liver function to stage 0 (very early), A (early), B (intermediate), C (advanced), or D (terminal), each with a guideline-linked strategy.
+Worked example: ECOG 0, Child-Pugh A, multinodular without invasion -> stage B (TACE strategy).
+
+### IMDC (Heng) metastatic RCC risk
+Citation: Heng DYC, Xie W, Regan MM, et al. Prognostic factors for overall survival in patients with metastatic renal cell carcinoma treated with VEGF-targeted agents. J Clin Oncol. 2009;27(34):5794-5799.
+Formula: six factors, 1 point each (Karnofsky < 80%, dx-to-therapy < 1 y, anemia, hypercalcemia, neutrophilia, thrombocytosis). Favorable 0, intermediate 1-2, poor >= 3.
+Worked example: Karnofsky < 80% + anemia + hypercalcemia = 3 (poor).
+
+### MSKCC (Motzer) metastatic RCC risk
+Citation: Motzer RJ, Mazumdar M, Bacik J, Berg W, Amsterdam A, Ferrara J. Survival and prognostic stratification of 670 patients with advanced renal cell carcinoma. J Clin Oncol. 1999;17(8):2530-2540.
+Formula: five factors, 1 point each (Karnofsky < 80%, LDH > 1.5x ULN, low hemoglobin, high corrected calcium, dx-to-treatment < 1 y). Favorable 0, intermediate 1-2, poor >= 3.
+Worked example: Karnofsky < 80% + LDH > 1.5x ULN = 2 (intermediate).
+
+### RECIST 1.1 tumor response
+Citation: Eisenhauer EA, Therasse P, Bogaerts J, et al. New response evaluation criteria in solid tumours: revised RECIST guideline (version 1.1). Eur J Cancer. 2009;45(2):228-247.
+Formula: from the sum of target-lesion diameters: CR (target sum 0); PR (>= 30% decrease from baseline); PD (>= 20% increase from nadir and >= 5 mm absolute, or a new lesion / non-target progression); SD otherwise.
+Worked example: baseline 100 mm, current 65 mm, nadir 60 mm. -35% from baseline -> partial response (PR).
+
+### Modified Glasgow Prognostic Score (mGPS)
+Citation: McMillan DC. The systemic inflammation-based Glasgow Prognostic Score: a decade of experience in patients with cancer. Cancer Treat Rev. 2013;39(5):534-540.
+Formula: CRP <= 10 mg/L -> 0; CRP > 10 with albumin >= 3.5 g/dL -> 1; CRP > 10 and albumin < 3.5 g/dL -> 2.
+Worked example: CRP 25 mg/L, albumin 3.0 g/dL -> mGPS 2.

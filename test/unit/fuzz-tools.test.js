@@ -173,6 +173,9 @@ import * as ltcgaV178 from '../../lib/ltcga-v178.js';
 import * as ltcgaV179 from '../../lib/ltcga-v179.js';
 import * as ltcgaV181 from '../../lib/ltcga-v181.js';
 import * as ltcgaV182 from '../../lib/ltcga-v182.js';
+import * as gapsV185 from '../../lib/gaps-v185.js';
+import * as specialtymathV186 from '../../lib/specialtymath-v186.js';
+import * as oncStagingV187 from '../../lib/onc-staging-v187.js';
 
 const MODULES = {
   'clinical.js': clinical,
@@ -290,6 +293,9 @@ const MODULES = {
   'ltcga-v179.js': ltcgaV179,
   'ltcga-v181.js': ltcgaV181,
   'ltcga-v182.js': ltcgaV182,
+  'gaps-v185.js': gapsV185,
+  'specialtymath-v186.js': specialtymathV186,
+  'onc-staging-v187.js': oncStagingV187,
 };
 
 const MATRIX = [0, -1, 1e9, NaN, Infinity, -Infinity, '', undefined, null];
