@@ -73,7 +73,7 @@ strings; booleans as `true`/`false`; enums by their listed string values.
 
 ```
 list_calculators { "specialty": "hepatology" }
-  -> { coverage: "249 of 814 catalog tiles exposed ...", calculators: [ { id: "meld-xi", ... }, ... ] }
+  -> { coverage: "299 of 814 catalog tiles exposed ...", calculators: [ { id: "meld-xi", ... }, ... ] }
 
 describe_calculator { "id": "meld-xi" }
   -> { inputSchema: { ... mx-bili, mx-creat ... }, citation: "Heuman DM ... Liver Transpl 2007", ... }
@@ -114,7 +114,13 @@ across 8 modules (the Long-Term Care & Geriatric Assessment cluster — cognitio
 and dementia staging, delirium / depression / agitation, observational pain
 scales, falls-risk and physical performance, frailty and sarcopenia,
 nutrition-risk and dysphagia, medication-burden indices, and continence /
-caregiver-strain / wound-status quantitation), for 249 across 53 modules today.
+caregiver-strain / wound-status quantitation); and an eleventh wave added 50
+more across 9 modules (the acute neurology / psychiatry / pulmonary / toxicology
+/ trauma cluster — stroke outcome and AVM grading, stroke imaging and
+thrombolysis prognosis, clinician-rated and public-domain psychiatric scales,
+COPD / bronchiectasis / sleep instruments, pulmonary-nodule / PH /
+pleural-infection scores, toxicology dosing and dialysis decisions, and trauma
+severity / classification scores), for 299 across 62 modules today.
 Later waves extend it module by module against the same contract.
 
 ## Design

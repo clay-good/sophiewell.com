@@ -70,6 +70,15 @@ import ltcgaV177 from './adapters/ltcga-v177.js';
 import ltcgaV178 from './adapters/ltcga-v178.js';
 import ltcgaV179 from './adapters/ltcga-v179.js';
 import ltcgaV182 from './adapters/ltcga-v182.js';
+import neuroV95 from './adapters/neuro-v95.js';
+import neuroV117 from './adapters/neuro-v117.js';
+import psychV96 from './adapters/psych-v96.js';
+import psychV123 from './adapters/psych-v123.js';
+import pulmV114 from './adapters/pulm-v114.js';
+import pulmnodV115 from './adapters/pulmnod-v115.js';
+import toxV110 from './adapters/tox-v110.js';
+import traumaV108 from './adapters/trauma-v108.js';
+import traumaclassV109 from './adapters/traumaclass-v109.js';
 
 const ADAPTER_MODULES = [
   ['tox-v86', toxV86],
@@ -125,6 +134,15 @@ const ADAPTER_MODULES = [
   ['ltcga-v178', ltcgaV178],
   ['ltcga-v179', ltcgaV179],
   ['ltcga-v182', ltcgaV182],
+  ['neuro-v95', neuroV95],
+  ['neuro-v117', neuroV117],
+  ['psych-v96', psychV96],
+  ['psych-v123', psychV123],
+  ['pulm-v114', pulmV114],
+  ['pulmnod-v115', pulmnodV115],
+  ['tox-v110', toxV110],
+  ['trauma-v108', traumaV108],
+  ['traumaclass-v109', traumaclassV109],
 ];
 
 const HERE = dirname(fileURLToPath(import.meta.url));

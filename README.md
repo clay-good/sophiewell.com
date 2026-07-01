@@ -4071,8 +4071,8 @@ clamped to `[0, 1]`, so the JSON surface never emits a non-finite probability.
 
 ### Coverage is explicit and honest
 
-Adapting the catalog is incremental. Coverage now stands at **249 clinical
-calculators across 53 `lib` modules** (of 814 catalog tiles), built module by
+Adapting the catalog is incremental. Coverage now stands at **299 clinical
+calculators across 62 `lib` modules** (of 814 catalog tiles), built module by
 module against the one fixed contract:
 
 | wave | modules | tiles |
@@ -4087,6 +4087,7 @@ module against the one fixed contract:
 | eighth | `nutrition-energy-v152` (Mifflin-St Jeor, Harris-Benedict, Katch-McArdle, Penn-State-RMR, Ireton-Jones), `endo-metab-v161` (aldosterone-renin-ratio, calcium-phosphate-product, free-thyroxine-index, nitrogen-balance) | 9 |
 | ninth | `gaps-v185` (Fick CO, Gorlin, Qp:Qs, LVOT SV, VTE-BLEED, Matsuda, lean body weight), `specialtymath-v186` (BED/EQD2, PISA EROA, LV wall stress, corrected DLCO, VO₂max, proportion CI), `onc-staging-v187` (BCLC, IMDC, MSKCC, RECIST, mGPS), `heme-staging-v188` (Binet, Rai, Ann Arbor, FLIPI-2, Hasford), `heme-risk-v189` (mSMART, IMPEDE-VTE, SAMe-TT2R2, Elixhauser), `hepgi-v190` (PALBI, MELD-Na, Clichy, Rome IV IBS), `dermuro-v191` (SCORTEN, melanoma T, PI-RADS, Guy's stone), `risk-v192` (FINDRISC, Grobman VBAC, Marburg, ADHERE) | 39 |
 | tenth (LTC-GA) | `ltcga-v173` (BIMS, AD8, CDR-SOB), `ltcga-v174` (Nu-DESC, DOSS, Cornell CSDD, interRAI ABS, CMAI), `ltcga-v175` (Abbey, CNPI), `ltcga-v176` (STRATIFY, 30-s chair stand, 4-stage balance, functional reach, gait speed, STEADI algorithm), `ltcga-v177` (SARC-F, SARC-CalF, PRISMA-7, SOF), `ltcga-v178` (GNRI, Onodera PNI, CONUT, SNAQ, EAT-10, DETERMINE), `ltcga-v179` (ACB, ARS, Drug Burden Index), `ltcga-v182` (Sandvik, ICIQ-UI-SF, MCSI, CSI, BWAT) | 34 |
+| eleventh (acute neuro / psych / pulm / tox / trauma) | `neuro-v95` (mRS, GOS-E, Hoehn-Yahr, Spetzler-Martin, House-Brackmann, MIDAS), `neuro-v117` (ASPECTS, ICH ABC/2, DRAGON, HAT, SEDAN, THRIVE), `psych-v96` (HAM-D, HAM-A, MADRS, MDQ, Y-BOCS, PCL-5), `psych-v123` (AIMS, Bush-Francis, Barnes, SCOFF, CES-D), `pulm-v114` (DECAF, BAP-65, Bronchiectasis-SI, FACED, NoSAS, AHI/ODI), `pulmnod-v115` (Mayo SPN, Brock, Fleischner 2017, REVEAL Lite 2, RAPID), `tox-v110` (DigiFab, NAC, HIET, TCA bicarbonate, EXTRIP lithium), `trauma-v108` (TRISS, NISS, TASH, RABT, GCS-Pupils, NEXUS Chest CT), `traumaclass-v109` (Denver BCVI, AAST, MESS, LRINEC, ALT-70) | 50 |
 
 `docs/mcp-coverage.md` is the ledger and `list_calculators` always reports the
 live exposed fraction (`"<N> of <M> catalog tiles exposed"`), never a hardcoded
@@ -4120,8 +4121,18 @@ uses the one bespoke `toArgs` in the wave, rebuilding the renderer's five-row
 flat. Its sibling module `ltcga-v181` (`mcgeer-criteria`, `loeb-minimum-criteria`)
 is deliberately left unexposed: the valid criteria set is conditional on the
 selected infection site, so no single fixed JSON Schema honestly documents the
-input contract. Later waves extend coverage the same way — one module, one ledger
-entry, one set of round-tripping examples at a time.
+input contract. The wave-eleven acute neuro / psych / pulm / tox / trauma cluster
+(50 across 9 modules) exposes graded exam items and free labs as numbers, checkbox
+criteria as booleans, and ordinal / categorical selects as enums; the five
+item-summed psychometric scales (HAM-D, HAM-A, MADRS, Y-BOCS, PCL-5) and the MDQ
+carry the wave's only bespoke `toArgs`, rebuilding the renderer's `items` /
+`symptoms` array from flat per-item scalar fields (the same flat→array pattern as
+the Drug Burden Index). Exposing `brock-nodule` to the `mcp-fuzz` output-safety
+sweep surfaced a latent rounding overflow — `Math.round(n * 10) / 10` returns
+`Infinity` for `n` near `Number.MAX_VALUE`, which leaked an `"Infinity mm"` token
+into the nodule `detail` string on fuzz-only magnitudes — now fixed at the source
+(`lib/pulmnod-v115.js` rounds overflow-safe). Later waves extend coverage the same
+way — one module, one ledger entry, one set of round-tripping examples at a time.
 
 ### Try it
 

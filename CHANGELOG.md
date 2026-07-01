@@ -6,6 +6,57 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v183 — MCP wave 11: expose the acute neuro / psych / pulm / tox / trauma cluster (50 calculators) as deterministic agent tools; no tile delta, 814)
+
+- The optional stdio MCP server (`mcp/server.js`) gains an **eleventh coverage
+  wave**: 50 more catalog calculators exposed as deterministic
+  `compute_calculator` tools, across 9 `lib` modules, bringing the exposed
+  surface to **299 of 814 catalog tiles across 62 modules**. No catalog tile is
+  added or changed — this is adapter-only coverage of the acute neurology /
+  psychiatry / pulmonary / toxicology / trauma compute logic already shipped in
+  the spec-v100 Wave-2 and Wave-4 programs.
+  - `lib/neuro-v95.js` — stroke outcome & AVM grading: `mrs`, `gose`,
+    `hoehn-yahr`, `spetzler-martin`, `house-brackmann`, `midas`.
+  - `lib/neuro-v117.js` — stroke imaging & thrombolysis prognosis: `aspects`,
+    `ich-volume-abc2`, `dragon-stroke`, `hat-score`, `sedan-score`,
+    `thrive-stroke`.
+  - `lib/psych-v96.js` — clinician-rated severity scales: `hamd`, `hama`,
+    `madrs`, `mdq`, `ybocs`, `pcl5`.
+  - `lib/psych-v123.js` — public-domain exam scales: `aims-tardive`, `bfcrs`,
+    `bars-akathisia`, `scoff`, `ces-d`.
+  - `lib/pulm-v114.js` — COPD / bronchiectasis / sleep: `decaf-score`, `bap-65`,
+    `bronchiectasis-bsi`, `faced-bronchiectasis`, `nosas-score`,
+    `ahi-odi-severity`.
+  - `lib/pulmnod-v115.js` — pulmonary nodule / PH / pleural infection:
+    `mayo-spn`, `brock-nodule`, `fleischner-2017`, `reveal-lite-2`,
+    `rapid-pleural`.
+  - `lib/tox-v110.js` — toxicology dosing & dialysis decisions:
+    `digifab-dosing`, `nac-dosing`, `hiet-dosing`, `tca-bicarbonate`,
+    `lithium-extrip`.
+  - `lib/trauma-v108.js` — trauma severity & decision rules: `triss`, `niss`,
+    `tash-score`, `rabt-score`, `gcs-pupils`, `nexus-chest-ct`.
+  - `lib/traumaclass-v109.js` — trauma classification & soft-tissue infection:
+    `denver-bcvi`, `aast-organ-injury`, `mangled-extremity`, `lrinec`, `alt-70`.
+- Graded exam items and free labs are numbers, checkbox criteria are booleans,
+  and the ordinal / categorical selects are enums. The five item-summed
+  psychometric scales (`hamd`, `hama`, `madrs`, `ybocs`, `pcl5`) and the `mdq`
+  carry the wave's only bespoke `toArgs`, rebuilding the renderer's `items` /
+  `symptoms` array from flat per-item scalar fields (the same flat→array pattern
+  as the Drug Burden Index); every other adapter uses the default `makeToArgs`,
+  and no custom `formatResult` is needed. Each exposed example round-trips to its
+  `META.example.expected`.
+
+### Fixed (output safety — `brock-nodule` rounding overflow surfaced by the MCP fuzz sweep)
+
+- `lib/pulmnod-v115.js`'s one-decimal rounding helper (`Math.round(n * 10) / 10`)
+  returned `Infinity` for `n` near `Number.MAX_VALUE` (`n * 10` overflows before
+  the divide), which leaked an `"Infinity mm"` token into the Brock nodule
+  `detail` string on fuzz-only magnitudes. The `computeCalculator` non-finite
+  guard did not catch it because the leak was inside a string, not a numeric
+  field. Rounding is now overflow-safe (falls back to the un-scaled value), so
+  the `mcp-fuzz` sweep is clean across all 299 adapters. Normal-range output is
+  unchanged.
+
 ### Added (spec-v183 — MCP wave 10: expose the Long-Term Care & Geriatric Assessment cluster (34 calculators) as deterministic agent tools; no tile delta, 814)
 
 - The optional stdio MCP server (`mcp/server.js`) gains a **tenth coverage

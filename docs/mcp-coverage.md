@@ -198,6 +198,34 @@ conditional on the selected infection site, so no single fixed JSON Schema
 honestly documents the input contract. No custom `formatResult` is needed — every
 exposed example round-trips to its `META.example.expected`.
 
+## Eleventh wave — 9 modules
+
+Coverage extends with **50 more clinical calculators across 9 `lib` modules** —
+the acute neurology / psychiatry / pulmonary / toxicology / trauma cluster from
+the spec-v100 Wave-2/Wave-4 program. It exposes stroke outcome & AVM grading
+(`lib/neuro-v95.js` — modified Rankin, GOS-E, Hoehn & Yahr, Spetzler-Martin +
+Lawton-Young, House-Brackmann, MIDAS), stroke imaging & thrombolysis prognosis
+(`lib/neuro-v117.js` — ASPECTS, ICH volume by ABC/2, DRAGON, HAT, SEDAN,
+THRIVE), the clinician-rated psychiatric severity scales (`lib/psych-v96.js` —
+HAM-D, HAM-A, MADRS, MDQ, Y-BOCS, PCL-5) and the public-domain exam scales
+(`lib/psych-v123.js` — AIMS, Bush-Francis, Barnes akathisia, SCOFF, CES-D),
+COPD / bronchiectasis / sleep instruments (`lib/pulm-v114.js` — DECAF, BAP-65,
+Bronchiectasis Severity Index, FACED, NoSAS, AHI/ODI band), pulmonary-nodule /
+PH / pleural-infection instruments (`lib/pulmnod-v115.js` — Mayo & Brock SPN,
+Fleischner 2017, REVEAL Lite 2, RAPID), toxicology dosing & dialysis decisions
+(`lib/tox-v110.js` — DigiFab, NAC, HIET, TCA bicarbonate, EXTRIP lithium), and
+the trauma severity / classification scores (`lib/trauma-v108.js` — TRISS, NISS,
+TASH, RABT, GCS-Pupils, NEXUS Chest CT; `lib/traumaclass-v109.js` — Denver BCVI,
+AAST organ injury, MESS, LRINEC, ALT-70). Brings the exposed total to **299
+calculators across 62 modules**. The item-summed psychometric scales (HAM-D,
+HAM-A, MADRS, Y-BOCS, PCL-5) and the MDQ use a bespoke `toArgs` that rebuilds the
+renderer's `items` / `symptoms` array from flat per-item scalar fields (the same
+flat→array pattern as the Drug Burden Index), keeping the agent contract flat;
+every other adapter uses the default `makeToArgs`. Graded exam items and free
+labs are numbers, checkbox criteria are booleans, and the ordinal / categorical
+selects are enums. No custom `formatResult` is needed — every exposed example
+round-trips to its `META.example.expected`.
+
 ## Exposed
 
 Each id below is live in `mcp/catalog.js`. The gate parses this list.
@@ -556,6 +584,74 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 - `modified-caregiver-strain-index`
 - `caregiver-strain-index`
 - `bwat`
+
+### lib/neuro-v95.js
+- `mrs`
+- `gose`
+- `hoehn-yahr`
+- `spetzler-martin`
+- `house-brackmann`
+- `midas`
+
+### lib/neuro-v117.js
+- `aspects`
+- `ich-volume-abc2`
+- `dragon-stroke`
+- `hat-score`
+- `sedan-score`
+- `thrive-stroke`
+
+### lib/psych-v96.js
+- `hamd`
+- `hama`
+- `madrs`
+- `mdq`
+- `ybocs`
+- `pcl5`
+
+### lib/psych-v123.js
+- `aims-tardive`
+- `bfcrs`
+- `bars-akathisia`
+- `scoff`
+- `ces-d`
+
+### lib/pulm-v114.js
+- `decaf-score`
+- `bap-65`
+- `bronchiectasis-bsi`
+- `faced-bronchiectasis`
+- `nosas-score`
+- `ahi-odi-severity`
+
+### lib/pulmnod-v115.js
+- `mayo-spn`
+- `brock-nodule`
+- `fleischner-2017`
+- `reveal-lite-2`
+- `rapid-pleural`
+
+### lib/tox-v110.js
+- `digifab-dosing`
+- `nac-dosing`
+- `hiet-dosing`
+- `tca-bicarbonate`
+- `lithium-extrip`
+
+### lib/trauma-v108.js
+- `triss`
+- `niss`
+- `tash-score`
+- `rabt-score`
+- `gcs-pupils`
+- `nexus-chest-ct`
+
+### lib/traumaclass-v109.js
+- `denver-bcvi`
+- `aast-organ-injury`
+- `mangled-extremity`
+- `lrinec`
+- `alt-70`
 
 ## Not yet adapted
 
