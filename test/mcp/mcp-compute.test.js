@@ -304,6 +304,59 @@ test('lib/vascular-v105.js worked calls (wave 7)', () => {
   assert.equal(es.mortality, 10.66);
 });
 
+// ---- Wave 10: the Long-Term Care & Geriatric Assessment cluster -------------
+
+test('lib/ltcga-v173.js worked calls (wave 10)', () => {
+  assert.equal(ok('bims', { 'bims-rep': '3', 'bims-year': '3', 'bims-month': '2', 'bims-day': '1', 'bims-sock': '2', 'bims-blue': '2', 'bims-bed': '0' }).total, 13);
+  assert.equal(ok('ad8', { 'ad8-judgment': 'yes', 'ad8-interest': 'no', 'ad8-repeating': 'yes', 'ad8-learningTool': 'no', 'ad8-dateRecall': 'no', 'ad8-finances': 'no', 'ad8-appointments': 'no', 'ad8-dailyThinking': 'no' }).total, 2);
+  assert.equal(ok('cdr-sob', { 'cdr-memory': '1', 'cdr-orientation': '1', 'cdr-judgment': '0.5', 'cdr-community': '1', 'cdr-home': '1', 'cdr-personalCare': '0' }).sob, 4.5);
+});
+
+test('lib/ltcga-v174.js worked calls (wave 10)', () => {
+  assert.equal(ok('nu-desc', { 'nudesc-disorientation': '1', 'nudesc-behavior': '1', 'nudesc-communication': '0', 'nudesc-illusions': '0', 'nudesc-psychomotor': '0' }).total, 2);
+  assert.equal(ok('interrai-abs', { 'abs-verbal': '1', 'abs-physical': '2', 'abs-social': '0', 'abs-resists': '0' }).total, 3);
+  // CMAI floor: every behavior rated 1 (never) => 29.
+  const cmaiInputs = {};
+  for (const k of ['pacing', 'dressing', 'spitting', 'cursing', 'requests', 'repetitive', 'hitting', 'kicking', 'grabbing', 'pushing', 'throwing', 'noises', 'screaming', 'biting', 'scratching', 'trying', 'falling', 'complaining', 'negativism', 'eating', 'hurting', 'handling', 'hiding', 'hoarding', 'tearing', 'mannerisms', 'verbalsex', 'physicalsex', 'restlessness']) cmaiInputs[`cmai-${k}`] = '1';
+  assert.equal(ok('cmai', cmaiInputs).total, 29);
+});
+
+test('lib/ltcga-v176.js worked calls (wave 10)', () => {
+  assert.equal(ok('stratify', { 'stratify-fall': 'yes', 'stratify-agitated': 'yes', 'stratify-visual': 'no', 'stratify-toilet': 'no', 'stratify-transfer': '0', 'stratify-mobility': '0' }).total, 2);
+  assert.equal(ok('gait-speed', { 'gait-distance': '4', 'gait-time': '5' }).speed, 0.8);
+  assert.equal(ok('four-stage-balance', { 'balance-tandem': '8' }).held, false);
+});
+
+test('lib/ltcga-v177.js worked calls (wave 10)', () => {
+  assert.equal(ok('sarc-f', { 'sarcf-strength': '1', 'sarcf-walk': '1', 'sarcf-rise': '1', 'sarcf-stairs': '1', 'sarcf-falls': '0' }).total, 4);
+  assert.equal(ok('prisma-7', { 'prisma-age': 'yes', 'prisma-male': 'yes', 'prisma-limit': 'yes', 'prisma-help': 'no', 'prisma-home': 'no', 'prisma-support': 'yes', 'prisma-aid': 'no' }).total, 3);
+  assert.equal(ok('sof-frailty-index', { 'sof-weight': 'yes', 'sof-rise': 'yes', 'sof-energy': 'no' }).total, 2);
+});
+
+test('lib/ltcga-v178.js worked calls (wave 10)', () => {
+  assert.equal(ok('conut', { 'conut-albumin': '3.2', 'conut-chol': '150', 'conut-lymph': '1000' }).total, 5);
+  assert.equal(ok('pni-onodera', { 'pni-albumin': '4.0', 'pni-lymph': '1500' }).value, 47.5);
+  assert.equal(ok('eat-10', { 'eat-1': '1', 'eat-2': '1', 'eat-3': '1', 'eat-4': '0', 'eat-5': '0', 'eat-6': '0', 'eat-7': '0', 'eat-8': '0', 'eat-9': '0', 'eat-10': '0' }).total, 3);
+});
+
+test('lib/ltcga-v179.js worked calls (wave 10), including the flat->array Drug Burden Index toArgs', () => {
+  assert.equal(ok('anticholinergic-burden', { 'acb-l1': '0', 'acb-l2': '0', 'acb-l3': '1' }).total, 3);
+  assert.equal(ok('anticholinergic-risk-scale', { 'ars-p1': '0', 'ars-p2': '1', 'ars-p3': '1' }).total, 5);
+  // DBI = 10/(10+5) + 4/(4+4) = 0.667 + 0.5 = 1.17; the adapter rebuilds the
+  // two-drug array from four flat scalar fields.
+  const dbi = ok('drug-burden-index', { 'dbi-d1': '10', 'dbi-min1': '5', 'dbi-d2': '4', 'dbi-min2': '4' });
+  assert.equal(dbi.value, 1.17);
+  assert.equal(dbi.drugs, 2);
+});
+
+test('lib/ltcga-v182.js worked calls (wave 10)', () => {
+  assert.equal(ok('sandvik-incontinence', { 'sandvik-freq': '3', 'sandvik-amount': '2' }).value, 6);
+  assert.equal(ok('iciq-ui-sf', { 'iciq-freq': '3', 'iciq-amount': '4', 'iciq-impact': '6' }).total, 13);
+  const csiInputs = {};
+  for (const [i, k] of ['sleep', 'inconvenient', 'physical', 'confining', 'family', 'plans', 'other', 'emotional', 'upsetting', 'changed', 'work', 'financial', 'overwhelmed'].entries()) csiInputs[`csi-${k}`] = i < 7 ? 'yes' : 'no';
+  assert.equal(ok('caregiver-strain-index', csiInputs).total, 7);
+});
+
 // The enum->boolean adapter transform reaches the lib: el-ganzouri prognath and
 // elapss earlierSah both map a yes/no select onto a lib boolean.
 test('enum->boolean adapter transform reaches the lib (elapss earlierSah)', () => {

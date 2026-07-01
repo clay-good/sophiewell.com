@@ -4071,8 +4071,8 @@ clamped to `[0, 1]`, so the JSON surface never emits a non-finite probability.
 
 ### Coverage is explicit and honest
 
-Adapting the catalog is incremental. Coverage now stands at **215 clinical
-calculators across 45 `lib` modules** (of 814 catalog tiles), built module by
+Adapting the catalog is incremental. Coverage now stands at **249 clinical
+calculators across 53 `lib` modules** (of 814 catalog tiles), built module by
 module against the one fixed contract:
 
 | wave | modules | tiles |
@@ -4086,6 +4086,7 @@ module against the one fixed contract:
 | seventh | `hemodynamics-v87` (hemodynamic-suite, mechanical-power, dead-space), `nephro-v92` (CKD-staging, UACR/UPCR, Kt/V-URR, Mehran-CIN, CKD-EPI-cystatin), `ebm-v163` (Fagan, diagnostic-2x2, NNT/ARR), `ophtho-v164` (IOL-power, visual-acuity, ocular-perfusion-pressure), `echo-v158` (LV-mass-index, LA-volume-index, Teichholz-LVEF, RVSP/PASP, E/e'), `rheum-v147` (CDAI, SDAI, ACR/EULAR-2010-RA, SLEDAI-2K, ACR/EULAR-2015-gout, CASPAR, ACR-2016-fibromyalgia), `vte-v106` (PEGeD, 4PEPS, Bova, Hestia, Geneva, Constans-UEDVT), `vascular-v105` (ABI, Rutherford/Fontaine, WIfI, EuroSCORE-II) | 36 |
 | eighth | `nutrition-energy-v152` (Mifflin-St Jeor, Harris-Benedict, Katch-McArdle, Penn-State-RMR, Ireton-Jones), `endo-metab-v161` (aldosterone-renin-ratio, calcium-phosphate-product, free-thyroxine-index, nitrogen-balance) | 9 |
 | ninth | `gaps-v185` (Fick CO, Gorlin, Qp:Qs, LVOT SV, VTE-BLEED, Matsuda, lean body weight), `specialtymath-v186` (BED/EQD2, PISA EROA, LV wall stress, corrected DLCO, VO₂max, proportion CI), `onc-staging-v187` (BCLC, IMDC, MSKCC, RECIST, mGPS), `heme-staging-v188` (Binet, Rai, Ann Arbor, FLIPI-2, Hasford), `heme-risk-v189` (mSMART, IMPEDE-VTE, SAMe-TT2R2, Elixhauser), `hepgi-v190` (PALBI, MELD-Na, Clichy, Rome IV IBS), `dermuro-v191` (SCORTEN, melanoma T, PI-RADS, Guy's stone), `risk-v192` (FINDRISC, Grobman VBAC, Marburg, ADHERE) | 39 |
+| tenth (LTC-GA) | `ltcga-v173` (BIMS, AD8, CDR-SOB), `ltcga-v174` (Nu-DESC, DOSS, Cornell CSDD, interRAI ABS, CMAI), `ltcga-v175` (Abbey, CNPI), `ltcga-v176` (STRATIFY, 30-s chair stand, 4-stage balance, functional reach, gait speed, STEADI algorithm), `ltcga-v177` (SARC-F, SARC-CalF, PRISMA-7, SOF), `ltcga-v178` (GNRI, Onodera PNI, CONUT, SNAQ, EAT-10, DETERMINE), `ltcga-v179` (ACB, ARS, Drug Burden Index), `ltcga-v182` (Sandvik, ICIQ-UI-SF, MCSI, CSI, BWAT) | 34 |
 
 `docs/mcp-coverage.md` is the ledger and `list_calculators` always reports the
 live exposed fraction (`"<N> of <M> catalog tiles exposed"`), never a hardcoded
@@ -4111,7 +4112,15 @@ subspecialty-staging tiles (39 across 8 modules) are flat labs and dimensions as
 numbers, staging axes as enums (ECOG, Child-Pugh, tumor burden, lymphoma
 distribution, PI-RADS zone, confidence level), and yes/no risk factors as
 booleans; every one round-trips through the default `makeToArgs` with no bespoke
-`formatResult`. Later waves extend coverage the same way — one module, one ledger
+`formatResult`. The wave-ten Long-Term Care & Geriatric Assessment cluster (34
+across 8 modules) exposes the graded questionnaire items and free labs/dimensions
+as numbers and the yes/no screening items and sex axis as enums; `drug-burden-index`
+uses the one bespoke `toArgs` in the wave, rebuilding the renderer's five-row
+`{dose, minDose}` drug array from flat scalar fields so the agent contract stays
+flat. Its sibling module `ltcga-v181` (`mcgeer-criteria`, `loeb-minimum-criteria`)
+is deliberately left unexposed: the valid criteria set is conditional on the
+selected infection site, so no single fixed JSON Schema honestly documents the
+input contract. Later waves extend coverage the same way — one module, one ledger
 entry, one set of round-tripping examples at a time.
 
 ### Try it

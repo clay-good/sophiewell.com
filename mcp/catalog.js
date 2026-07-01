@@ -62,6 +62,14 @@ import hemeRiskV189 from './adapters/heme-risk-v189.js';
 import hepgiV190 from './adapters/hepgi-v190.js';
 import dermuroV191 from './adapters/dermuro-v191.js';
 import riskV192 from './adapters/risk-v192.js';
+import ltcgaV173 from './adapters/ltcga-v173.js';
+import ltcgaV174 from './adapters/ltcga-v174.js';
+import ltcgaV175 from './adapters/ltcga-v175.js';
+import ltcgaV176 from './adapters/ltcga-v176.js';
+import ltcgaV177 from './adapters/ltcga-v177.js';
+import ltcgaV178 from './adapters/ltcga-v178.js';
+import ltcgaV179 from './adapters/ltcga-v179.js';
+import ltcgaV182 from './adapters/ltcga-v182.js';
 
 const ADAPTER_MODULES = [
   ['tox-v86', toxV86],
@@ -109,6 +117,14 @@ const ADAPTER_MODULES = [
   ['hepgi-v190', hepgiV190],
   ['dermuro-v191', dermuroV191],
   ['risk-v192', riskV192],
+  ['ltcga-v173', ltcgaV173],
+  ['ltcga-v174', ltcgaV174],
+  ['ltcga-v175', ltcgaV175],
+  ['ltcga-v176', ltcgaV176],
+  ['ltcga-v177', ltcgaV177],
+  ['ltcga-v178', ltcgaV178],
+  ['ltcga-v179', ltcgaV179],
+  ['ltcga-v182', ltcgaV182],
 ];
 
 const HERE = dirname(fileURLToPath(import.meta.url));

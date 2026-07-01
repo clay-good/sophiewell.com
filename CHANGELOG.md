@@ -6,6 +6,50 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v183 — MCP wave 10: expose the Long-Term Care & Geriatric Assessment cluster (34 calculators) as deterministic agent tools; no tile delta, 814)
+
+- The optional stdio MCP server (`mcp/server.js`) gains a **tenth coverage
+  wave**: 34 more catalog calculators exposed as deterministic
+  `compute_calculator` tools, across 8 `lib` modules, bringing the exposed
+  surface to **249 of 814 catalog tiles across 53 modules**. No catalog tile is
+  added or changed — this is adapter-only coverage of the **Long-Term Care &
+  Geriatric Assessment (LTC-GA)** compute logic already shipped in spec-v173
+  through spec-v182.
+  - `lib/ltcga-v173.js` — cognition & dementia staging: `bims`, `ad8`,
+    `cdr-sob`.
+  - `lib/ltcga-v174.js` — delirium / depression / agitation: `nu-desc`, `doss`,
+    `cornell-csdd`, `interrai-abs`, `cmai`.
+  - `lib/ltcga-v175.js` — observational pain scales for nonverbal residents:
+    `abbey-pain`, `cnpi`.
+  - `lib/ltcga-v176.js` — falls-risk & physical performance: `stratify`,
+    `chair-stand-30s`, `four-stage-balance`, `functional-reach`, `gait-speed`,
+    `steadi-algorithm`.
+  - `lib/ltcga-v177.js` — frailty & sarcopenia: `sarc-f`, `sarc-calf`,
+    `prisma-7`, `sof-frailty-index`.
+  - `lib/ltcga-v178.js` — nutrition-risk & dysphagia: `gnri`, `pni-onodera`,
+    `conut`, `snaq`, `eat-10`, `determine`.
+  - `lib/ltcga-v179.js` — medication-burden indices: `anticholinergic-burden`,
+    `anticholinergic-risk-scale`, `drug-burden-index`.
+  - `lib/ltcga-v182.js` — continence / caregiver strain / wound status:
+    `sandvik-incontinence`, `iciq-ui-sf`, `modified-caregiver-strain-index`,
+    `caregiver-strain-index`, `bwat`.
+- The graded questionnaire items (BIMS, CDR boxes, Abbey, CMAI, Cornell, EAT-10,
+  BWAT, …) and free labs/dimensions (albumin, calf circumference, gait distance
+  and time, chair-stand count) are numbers; the yes/no screening items (AD8,
+  PRISMA-7, SOF, DETERMINE, CSI, and the STRATIFY / STEADI risk factors) and the
+  sex axis are enums. `drug-burden-index` uses the one bespoke `toArgs` in the
+  wave: it rebuilds the renderer's five-row `{dose, minDose}` drug array from
+  flat scalar fields so the agent contract stays flat (no nested-array input).
+  Its sibling module `lib/ltcga-v181.js` (`mcgeer-criteria`,
+  `loeb-minimum-criteria`) is deliberately **not** adapted — the valid criteria
+  set is conditional on the selected infection site, so no single fixed JSON
+  Schema honestly documents the input contract. No custom `formatResult` is
+  needed anywhere in the wave — every exposed example round-trips to its
+  `META.example.expected` through the default `makeToArgs`. The wave-10 ledger
+  and full-set example round-trip are in CI (`test:mcp` 45 tests; the
+  `mcp-fuzz` sweep drives all 249 adapters through numeric/enum/boolean edge
+  cases; `check-mcp-catalog` reports 249 adapters across 53 modules).
+
 ### Added (spec-v183 — MCP wave 9: expose 39 more clinical calculators as deterministic agent tools; no tile delta, 814)
 
 - The optional stdio MCP server (`mcp/server.js`) gains a **ninth coverage

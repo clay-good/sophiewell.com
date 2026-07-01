@@ -173,6 +173,31 @@ contract this wave covers. No custom `formatResult` is needed anywhere in the
 wave — every exposed example round-trips to its `META.example.expected` through
 the default `makeToArgs`.
 
+## Tenth wave — 8 modules
+
+Coverage extends with **34 more clinical calculators across 8 `lib` modules** —
+the **Long-Term Care & Geriatric Assessment (LTC-GA)** cluster shipped as tiles
+in spec-v173 through spec-v182: cognition & dementia staging
+(`lib/ltcga-v173.js` — BIMS, AD8, CDR-SOB), delirium / depression / agitation
+(`lib/ltcga-v174.js` — Nu-DESC, DOSS, Cornell CSDD, interRAI ABS, CMAI),
+observational pain scales for nonverbal residents (`lib/ltcga-v175.js` — Abbey,
+CNPI), falls-risk & physical performance (`lib/ltcga-v176.js` — STRATIFY and the
+CDC STEADI battery), frailty & sarcopenia (`lib/ltcga-v177.js` — SARC-F,
+SARC-CalF, PRISMA-7, SOF), nutrition-risk & dysphagia (`lib/ltcga-v178.js` —
+GNRI, Onodera PNI, CONUT, SNAQ, EAT-10, DETERMINE), medication-burden indices
+(`lib/ltcga-v179.js` — ACB, ARS, Drug Burden Index), and continence / caregiver
+strain / wound status (`lib/ltcga-v182.js` — Sandvik, ICIQ-UI-SF, MCSI, CSI,
+BWAT). Brings the exposed total to **249 calculators across 53 modules**. The
+graded questionnaire items and free labs/dimensions are numbers; the yes/no
+screening items and the sex axis are enums. Two exposure notes:
+`drug-burden-index` uses a bespoke `toArgs` that rebuilds the renderer's
+five-row `{dose, minDose}` drug array from flat scalar fields (keeping the agent
+contract flat); and `mcgeer-criteria` / `loeb-minimum-criteria`
+(`lib/ltcga-v181.js`) are deliberately **not** adapted — their criteria set is
+conditional on the selected infection site, so no single fixed JSON Schema
+honestly documents the input contract. No custom `formatResult` is needed — every
+exposed example round-trips to its `META.example.expected`.
+
 ## Exposed
 
 Each id below is live in `mcp/catalog.js`. The gate parses this list.
@@ -481,6 +506,56 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 - `grobman-vbac`
 - `marburg-heart-score`
 - `adhere-hf`
+
+### lib/ltcga-v173.js
+- `bims`
+- `ad8`
+- `cdr-sob`
+
+### lib/ltcga-v174.js
+- `nu-desc`
+- `doss`
+- `cornell-csdd`
+- `interrai-abs`
+- `cmai`
+
+### lib/ltcga-v175.js
+- `abbey-pain`
+- `cnpi`
+
+### lib/ltcga-v176.js
+- `stratify`
+- `chair-stand-30s`
+- `four-stage-balance`
+- `functional-reach`
+- `gait-speed`
+- `steadi-algorithm`
+
+### lib/ltcga-v177.js
+- `sarc-f`
+- `sarc-calf`
+- `prisma-7`
+- `sof-frailty-index`
+
+### lib/ltcga-v178.js
+- `gnri`
+- `pni-onodera`
+- `conut`
+- `snaq`
+- `eat-10`
+- `determine`
+
+### lib/ltcga-v179.js
+- `anticholinergic-burden`
+- `anticholinergic-risk-scale`
+- `drug-burden-index`
+
+### lib/ltcga-v182.js
+- `sandvik-incontinence`
+- `iciq-ui-sf`
+- `modified-caregiver-strain-index`
+- `caregiver-strain-index`
+- `bwat`
 
 ## Not yet adapted
 

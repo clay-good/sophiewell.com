@@ -73,7 +73,7 @@ strings; booleans as `true`/`false`; enums by their listed string values.
 
 ```
 list_calculators { "specialty": "hepatology" }
-  -> { coverage: "215 of 814 catalog tiles exposed ...", calculators: [ { id: "meld-xi", ... }, ... ] }
+  -> { coverage: "249 of 814 catalog tiles exposed ...", calculators: [ { id: "meld-xi", ... }, ... ] }
 
 describe_calculator { "id": "meld-xi" }
   -> { inputSchema: { ... mx-bili, mx-creat ... }, citation: "Heuman DM ... Liver Transpl 2007", ... }
@@ -109,7 +109,12 @@ vascular medicine); an eighth wave added 9 more across 2 modules (predictive
 energy-expenditure equations and endocrine / metabolic bedside math); and a
 ninth wave added 39 more across 8 modules (advanced bedside quantitation,
 specialty math, and subspecialty oncology / hematology / hepatology-GI /
-dermatology-urology / bedside-risk staging), for 215 across 45 modules today.
+dermatology-urology / bedside-risk staging); and a tenth wave added 34 more
+across 8 modules (the Long-Term Care & Geriatric Assessment cluster — cognition
+and dementia staging, delirium / depression / agitation, observational pain
+scales, falls-risk and physical performance, frailty and sarcopenia,
+nutrition-risk and dysphagia, medication-burden indices, and continence /
+caregiver-strain / wound-status quantitation), for 249 across 53 modules today.
 Later waves extend it module by module against the same contract.
 
 ## Design
