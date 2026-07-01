@@ -6,6 +6,48 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v190 / v191 / v192 — Hepatology/GI, Dermatology/Urology & Screening/Risk program: 12 calculators, 802 → 814)
+
+- Three feature specs add **12 deterministic calculators** across hepatology/GI,
+  dermatology/urology severity & staging, and primary-care screening / bedside
+  risk. Each id was verified absent by a direct scan of `app.js` before any code
+  (spec-v85 §6.2). Catalog **802 → 814**; every coefficient, grade boundary,
+  point weight, and criterion re-fetched and cross-verified against ≥ 2
+  independent sources at implementation (spec-v97). No runtime network call, no
+  AI; each tile obeys the spec-v100 §2 doctrine, renders the spec-v50 §3 posture
+  note, and authors no referral, diagnosis, delivery-mode, or disposition order.
+  - **spec-v190** (`lib/hepgi-v190.js`, `views/group-v190.js`, +4): the
+    **PALBI** grade (platelet-augmented ALBI); **MELD-Na** (the sodium-augmented
+    MELD, OPTN/UNOS operational coefficients, sodium applied only when MELD > 11,
+    bounded 6–40); the **Clichy** acute-liver-failure criteria (encephalopathy
+    plus an age-branched factor-V threshold); and the **Rome IV** diagnostic
+    criteria for IBS (with the IBS-C/D/M/U subtype).
+  - **spec-v191** (`lib/dermuro-v191.js`, `views/group-v191.js`, +4): **SCORTEN**
+    (toxic-epidermal-necrolysis mortality); the **AJCC 8th-edition melanoma T
+    category** (the 0.8 mm split and ulceration a/b suffix, T element only);
+    **PI-RADS v2.1** (the zone-specific score-3 upgrade rules); and the **Guy's
+    stone score** (PCNL complexity Grade I–IV with the stone-free-rate
+    expectation).
+  - **spec-v192** (`lib/risk-v192.js`, `views/group-v192.js`, +4): **FINDRISC**
+    (type-2-diabetes screening); the **Grobman race-free 2021 VBAC** calculator
+    (the published logistic model — weight + height, not BMI — computed in odds
+    space per spec-v140); the **Marburg Heart Score** (rule out CAD in
+    primary-care chest pain); and the **ADHERE** in-hospital heart-failure
+    mortality CART tree.
+- **GWTG-HF deferred** (the fifth proposed v192 tile): the complete row-by-row
+  sub-range point table (Peterson 2010 Table 3 — age / SBP / BUN / heart rate /
+  sodium points) is paywalled on ahajournals.org and is not reproduced verbatim
+  in ≥ 2 independent open sources; a continuous-variable approximation would
+  misreport the total, so it is parked with `precise-dapt` / `bvas` / `crib-ii`
+  under the spec-v97 fidelity bar, not shipped from an approximation.
+- Each compute routes through `lib/num.js`, is finite-guarded, and the
+  `grobman-vbac` logistic model is evaluated in odds space with a [0, 1] clamp
+  (spec-v140) — covered by the spec-v59 fuzz harness with zero non-finite leaks.
+  All 12 carry unit tests, a `META` entry with inline citation + `citationUrl` +
+  `accessed`, a per-tile `docs/audits/v12/<id>.md` log, and a
+  `docs/clinical-citations.md` worked example. No tile trips the check-citations
+  issuer pattern (AJCC / ACR are not in the pattern), so no staleness rows.
+
 ### Added (spec-v188 / v189 — Subspecialty Oncology & Hematology Staging program closeout: 9 staging / prognostic calculators, 793 → 802)
 
 - Two feature specs close the **Subspecialty Oncology & Hematology Staging**

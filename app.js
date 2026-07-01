@@ -94,6 +94,9 @@ import { renderers as RV186 } from './views/group-v186.js';
 import { renderers as RV187 } from './views/group-v187.js';
 import { renderers as RV188 } from './views/group-v188.js';
 import { renderers as RV189 } from './views/group-v189.js';
+import { renderers as RV190 } from './views/group-v190.js';
+import { renderers as RV191 } from './views/group-v191.js';
+import { renderers as RV192 } from './views/group-v192.js';
 import { renderers as RV164 } from './views/group-v164.js';
 import { renderers as RV165 } from './views/group-v165.js';
 import { renderers as RV166 } from './views/group-v166.js';
@@ -127,7 +130,7 @@ import { resolvePrompt } from './lib/prompt.js';
 // artifact-detect / artifact-route / artifact-handoff helpers were
 // deleted in spec-v29 wave 29-2 (Group C/L).
 
-const RENDERERS = { ...RA, ...RB, ...RC, ...RE, ...RF, ...RG, ...RH, ...RI, ...RJ, ...RKLMNO, ...RV5, ...RV6, ...RV7, ...RV8, ...RV9, ...RV10, ...RV11, ...RV12, ...RV13, ...RV14, ...RV15, ...RV16, ...RV17, ...RV18, ...RV19, ...RV20, ...RV21, ...RV22, ...RV23, ...RV24, ...RV25, ...RV26, ...RV27, ...RV28, ...RV29, ...RV30, ...RV31, ...RV32, ...RV33, ...RV34, ...RV35, ...RV36, ...RV37, ...RV38, ...RV39, ...RV40, ...RV117, ...RV118, ...RV119, ...RV120, ...RV121, ...RV122, ...RV123, ...RV124, ...RV125, ...RV126, ...RV127, ...RV128, ...RV129, ...RV130, ...RV131, ...RV132, ...RV133, ...RV134, ...RV135, ...RV136, ...RV137, ...RV138, ...RV139, ...RV140, ...RV141, ...RV142, ...RV143, ...RV144, ...RV145, ...RV146, ...RV147, ...RV148, ...RV149, ...RV151, ...RV152, ...RV153, ...RV154, ...RV155, ...RV156, ...RV158, ...RV159, ...RV160, ...RV161, ...RV163, ...RV164, ...RV165, ...RV166, ...RV167, ...RV169, ...RV173, ...RV174, ...RV175, ...RV176, ...RV177, ...RV178, ...RV179, ...RV182, ...RV181, ...RV185, ...RV186, ...RV187, ...RV188, ...RV189, ...RV63, ...RPALINT };
+const RENDERERS = { ...RA, ...RB, ...RC, ...RE, ...RF, ...RG, ...RH, ...RI, ...RJ, ...RKLMNO, ...RV5, ...RV6, ...RV7, ...RV8, ...RV9, ...RV10, ...RV11, ...RV12, ...RV13, ...RV14, ...RV15, ...RV16, ...RV17, ...RV18, ...RV19, ...RV20, ...RV21, ...RV22, ...RV23, ...RV24, ...RV25, ...RV26, ...RV27, ...RV28, ...RV29, ...RV30, ...RV31, ...RV32, ...RV33, ...RV34, ...RV35, ...RV36, ...RV37, ...RV38, ...RV39, ...RV40, ...RV117, ...RV118, ...RV119, ...RV120, ...RV121, ...RV122, ...RV123, ...RV124, ...RV125, ...RV126, ...RV127, ...RV128, ...RV129, ...RV130, ...RV131, ...RV132, ...RV133, ...RV134, ...RV135, ...RV136, ...RV137, ...RV138, ...RV139, ...RV140, ...RV141, ...RV142, ...RV143, ...RV144, ...RV145, ...RV146, ...RV147, ...RV148, ...RV149, ...RV151, ...RV152, ...RV153, ...RV154, ...RV155, ...RV156, ...RV158, ...RV159, ...RV160, ...RV161, ...RV163, ...RV164, ...RV165, ...RV166, ...RV167, ...RV169, ...RV173, ...RV174, ...RV175, ...RV176, ...RV177, ...RV178, ...RV179, ...RV182, ...RV181, ...RV185, ...RV186, ...RV187, ...RV188, ...RV189, ...RV190, ...RV191, ...RV192, ...RV63, ...RPALINT };
 
 // ----- Utility registry ----------------------------------------------------
 // Source of truth for routes, names, group, audiences, and clinical flag.
@@ -1777,6 +1780,24 @@ const UTILITIES = [
   { id: 'impede-vte',           name: 'IMPEDE VTE Score (Myeloma)',                       group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'same-tt2r2',           name: 'SAMe-TT2R2 (VKA Anticoagulation Control)',         group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'elixhauser',           name: 'Elixhauser Comorbidity Index (van Walraven)',      group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  // spec-v190: four hepatology / GI instruments. lib/hepgi-v190.js,
+  // views/group-v190.js (RV190). PALBI grade, MELD-Na, Clichy criteria, Rome IV IBS.
+  { id: 'palbi',                name: 'PALBI (Platelet-Albumin-Bilirubin) Grade',         group: 'E', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'meld-na',              name: 'MELD-Na (Sodium-Augmented MELD)',                  group: 'E', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'clichy',               name: 'Clichy Criteria for Acute Liver Failure',          group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'rome-iv-ibs',          name: 'Rome IV Criteria for Irritable Bowel Syndrome',    group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  // spec-v191: four dermatology / urology severity & staging instruments.
+  // lib/dermuro-v191.js, views/group-v191.js (RV191).
+  { id: 'scorten',              name: 'SCORTEN (Toxic Epidermal Necrolysis Severity)',    group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'melanoma-t-stage',     name: 'AJCC 8th-Edition Melanoma T Category',             group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'pi-rads',              name: 'PI-RADS v2.1 (Prostate MRI Assessment)',           group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'guys-stone-score',     name: 'Guy’s Stone Score (PCNL Complexity)',              group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  // spec-v192: four screening / bedside-risk instruments (GWTG-HF deferred).
+  // lib/risk-v192.js, views/group-v192.js (RV192).
+  { id: 'findrisc',             name: 'FINDRISC (Finnish Diabetes Risk Score)',           group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'grobman-vbac',         name: 'VBAC Success Calculator (Grobman, race-free 2021)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'marburg-heart-score',  name: 'Marburg Heart Score (CAD in Primary-Care Chest Pain)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'adhere-hf',            name: 'ADHERE In-Hospital Heart-Failure Mortality',       group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
 ];
 
 const UTIL_BY_ID = new Map(UTILITIES.map((u) => [u.id, u]));

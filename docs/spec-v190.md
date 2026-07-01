@@ -1,6 +1,6 @@
 # spec-v190.md — Hepatology & GI advanced indices: PALBI grade, MELD-Na, the Clichy acute-liver-failure criteria, and the Rome IV IBS criteria (+4 tiles)
 
-> Status: **PROPOSED (2026-07-01).** Advances the long-horizon
+> Status: **SHIPPED (2026-07-01).** Advances the long-horizon
 > [scope-mdcalc-parity.md](scope-mdcalc-parity.md) commitment. Adds **4**
 > deterministic hepatology / GI instruments, **each verified absent by a direct
 > scan of `app.js`** (zero id / name / keyword hits): the catalog carries

@@ -5,7 +5,7 @@
 <h1 align="center">sophiewell.com</h1>
 
 <p align="center">
-  <strong>802 deterministic healthcare calculators that run entirely in your browser.</strong><br>
+  <strong>814 deterministic healthcare calculators that run entirely in your browser.</strong><br>
   Free forever. No servers, no accounts, no telemetry, no AI, no network call after first paint.
 </p>
 
@@ -36,7 +36,7 @@ output; "searchable lookup of static facts" does not qualify. See
 [docs/spec-v10.md](docs/spec-v10.md) for the audience and
 dependency-budget commitments and
 [docs/spec-v29.md](docs/spec-v29.md) for the nurse-first pivot
-and the v29 catalog ledger. At v188 close the catalog is 802
+and the v29 catalog ledger. At v192 close the catalog is 814
 deterministic tiles — every one of them computes from at least
 one user input. The catalog reached its present size on two tracks.
 **New tiles:** spec-v63 added the operations counterpart to the bedside
@@ -186,7 +186,7 @@ production security headers. Any static file server will also work.
 ## How it works and how to use it
 
 Since the spec-v29 nurse-first prune the catalog has grown one
-reviewable spec at a time to **802** deterministic calculators
+reviewable spec at a time to **814** deterministic calculators
 (the full per-version history is in [CHANGELOG.md](CHANGELOG.md)
 and `docs/spec-v*.md`; the most recent bedside additions are
 summarized in the cheat sheets below). They organize across the
@@ -1100,6 +1100,45 @@ modified Glasgow Prognostic Score. Each compute is finite-/positive-guarded and
 covered by the [spec-v59](docs/spec-v59.md) fuzz harness; `dlco-correction` carries a
 documentation-only [citation-staleness](docs/citation-staleness.md) row (ATS trips
 the issuer-acronym pattern; the Cotes formula is unchanged).
+
+### Hepatology/GI, Dermatology/Urology & Screening/Risk program (spec-v190, v191, v192, +12 → 814)
+
+Three feature specs add **12 deterministic calculators** across three
+under-represented surfaces, each id verified absent by a direct `app.js` scan
+before any code ([spec-v85](docs/spec-v85.md) §6.2) and each coefficient,
+boundary, point weight, and criterion re-fetched and cross-verified against ≥ 2
+independent sources at implementation ([spec-v97](docs/spec-v97.md)).
+
+| Spec | Module | Tiles |
+|---|---|---|
+| [v190](docs/spec-v190.md) | `lib/hepgi-v190.js` | `palbi`, `meld-na`, `clichy`, `rome-iv-ibs` |
+| [v191](docs/spec-v191.md) | `lib/dermuro-v191.js` | `scorten`, `melanoma-t-stage`, `pi-rads`, `guys-stone-score` |
+| [v192](docs/spec-v192.md) | `lib/risk-v192.js` | `findrisc`, `grobman-vbac`, `marburg-heart-score`, `adhere-hf` |
+
+v190 fills the hepatology/GI gap: the **PALBI** grade (the platelet-augmented
+ALBI, using the published log-quadratic linear predictor and the −2.53 / −2.09
+cut-points), **MELD-Na** (the sodium-augmented MELD in its OPTN/UNOS operational
+form — sodium applied only when MELD > 11, bounded 6–40, distinct from the
+Kim-2008 NEJM re-fit), the **Clichy** acute-liver-failure criteria (encephalopathy
+plus an age-30-branched factor-V threshold), and the **Rome IV** IBS criteria with
+the IBS-C/D/M/U subtype. v191 spans dermatology and urology: **SCORTEN** (the
+toxic-epidermal-necrolysis mortality bands), the **AJCC 8th-edition melanoma T
+category** (the 0.8 mm split and ulceration a/b suffix, T element only),
+**PI-RADS v2.1** (the zone-specific score-3 upgrade rules — peripheral DWI-3 + DCE,
+transition T2W-3 + DWI-5), and the **Guy's stone score** (PCNL complexity Grade
+I–IV). v192 adds bedside risk: **FINDRISC** (type-2-diabetes screening), the
+**Grobman race-free 2021 VBAC** calculator (the published logistic model, which
+uses weight + height rather than BMI, evaluated in odds space per
+[spec-v140](docs/spec-v140.md)), the **Marburg Heart Score** (rule out CAD in
+primary-care chest pain), and the **ADHERE** in-hospital heart-failure mortality
+CART tree. The fifth proposed v192 score, **GWTG-HF, was deferred**: its complete
+row-by-row sub-range point table (Peterson 2010 Table 3) is paywalled and not
+reproduced verbatim in ≥ 2 independent open sources, so it is parked with
+`precise-dapt` under the [spec-v97](docs/spec-v97.md) fidelity bar rather than
+shipped from a continuous-variable approximation. Every compute is finite-guarded
+and covered by the [spec-v59](docs/spec-v59.md) fuzz harness (the `grobman-vbac`
+logistic in odds space with a [0, 1] clamp); no tile trips the issuer-acronym
+pattern (AJCC / ACR are not in it), so none forces a staleness row.
 
 ### Subspecialty Oncology & Hematology Staging closeout (spec-v188, v189, +9 → 802)
 
@@ -3323,7 +3362,7 @@ long version, see [docs/architecture.md](docs/architecture.md).
  │  manifests (data/)            │  static │        ▼                     ▼             │
  │        │  scripts/build       │  files  │   lazy-load data shard   pure compute      │
  │        ▼                      │         │   (verified vs manifest)  (lib/*.js)       │
- │  dist/  (802 tool pages,      │         │        │                     │             │
+ │  dist/  (814 tool pages,      │         │        │                     │             │
  │  OG cards, sitemap, SBOM)     │         │        ▼                     ▼             │
  └───────────────────────────────┘         │   service worker cache    result + cite   │
                                             │   (keyed to build hash)                    │
@@ -3345,7 +3384,7 @@ assets:
 
 | Output | Count | Source |
 |--------|------:|--------|
-| Pre-rendered tool pages (`dist/tools/<id>/`) | 802 | `scripts/build-tool-pages.mjs` |
+| Pre-rendered tool pages (`dist/tools/<id>/`) | 814 | `scripts/build-tool-pages.mjs` |
 | Audience hub pages (`dist/for/<audience>/`) | 6 | `scripts/build-hub-pages.mjs` |
 | Topic pages + `/topics/` index | 8 + 1 | `scripts/build-topic-pages.mjs` |
 | `/commitments/` | 1 | `scripts/build-commitments-page.mjs` |
@@ -3381,7 +3420,7 @@ static tool pages, so a tile can never ship mobile overflow undetected.
 index.html          single-page shell (hero-search combobox + static browse-by-category nav, tile mount)
 styles.css          one stylesheet (responsive; no horizontal scroll — enforced catalog-wide at 320px in CI)
 app.js              router, hero-search wiring, view wiring, the UTILITIES catalog
-                    (802 tiles — the single source of truth; zero runtime deps)
+                    (814 tiles — the single source of truth; zero runtime deps)
 sw.js               service worker — precache shell, cache shards by build hash
 theme.js            light/dark theme toggle (writes only sw-theme, allowlisted)
 lib/input-persist.js opt-in "remember my inputs" (off by default; numbers only)
@@ -3399,12 +3438,12 @@ docs/               specs (spec-v4 onward) + per-tile v11/v12 audit logs +
                     citation-staleness ledger +
                     architecture / threat-model / …
 test/               unit/ (node:test) · integration/ (Playwright) · fixtures/
-dist/               build output (802 tool pages, OG cards, sitemap, SBOM)
+dist/               build output (814 tool pages, OG cards, sitemap, SBOM)
 ```
 
-### Discovery: how a query finds the right tool among 802
+### Discovery: how a query finds the right tool among 814
 
-With 802 tiles, search quality *is* the product — a tool you cannot find does
+With 814 tiles, search quality *is* the product — a tool you cannot find does
 not exist. Discovery is deterministic and offline (no fuzzy-match service, no
 embedding model, no AI). The home `#hero-search` combobox builds its dropdown
 from two complementary rankers, both pure functions of the typed query:
@@ -3477,10 +3516,10 @@ A login-less, AI-free calculator earns trust only if the nurse can see, on the
 tile, exactly which published source produced the number — and tell whether that
 source is current. spec-v54 defined the invariants; spec-v60 built the machinery
 (the gate, the ledger, and the `citationAccessed` convention) and extended it
-across the full 802-tile catalog, pinning the last three unpinned "current
+across the full 814-tile catalog, pinning the last three unpinned "current
 edition" phrases and re-verifying every guideline tile against its latest known
 edition. Three invariants make that auditable, each enforced by the
-`check-citations.mjs` lint gate (in the `npm run lint` chain) over all 802 tiles:
+`check-citations.mjs` lint gate (in the `npm run lint` chain) over all 814 tiles:
 
 | Invariant | Rule | Enforcement |
 |---|---|---|
@@ -4033,7 +4072,7 @@ clamped to `[0, 1]`, so the JSON surface never emits a non-finite probability.
 ### Coverage is explicit and honest
 
 Adapting the catalog is incremental. Coverage now stands at **167 clinical
-calculators across 35 `lib` modules** (of 802 catalog tiles), built module by
+calculators across 35 `lib` modules** (of 814 catalog tiles), built module by
 module against the one fixed contract:
 
 | wave | modules | tiles |
@@ -4104,7 +4143,7 @@ rules, not soft preferences.
 | `npm run build`          | Copy static files into `dist/` for deployment                     |
 | `npm test`               | Run the full test suite (unit, a11y, grep, data integrity)        |
 | `npm run test:unit`      | Run Node's built-in unit tests (5,869 tests)                      |
-| `npm run test:e2e`       | Build `dist/`, then run Playwright integration tests against real browsers — incl. a full-catalog 320px no-horizontal-scroll sweep over both the SPA routes and the 802 pre-rendered static tool pages, the hub/topic/commitments pages, and the citation-wrap pin |
+| `npm run test:e2e`       | Build `dist/`, then run Playwright integration tests against real browsers — incl. a full-catalog 320px no-horizontal-scroll sweep over both the SPA routes and the 814 pre-rendered static tool pages, the hub/topic/commitments pages, and the citation-wrap pin |
 | `npm run test:mcp`       | Run the optional MCP server's tool/compute/fuzz tests (independent of the site jobs; SDK-free) |
 | `npm run test:a11y`      | Run accessibility checks on every utility view                    |
 | `npm run lint`           | ESLint + the CI gate chain: grep-check, output-safety, citation-integrity, catalog-truth, commitments, MCP-catalog, PA staleness, PA audit |
@@ -4189,7 +4228,7 @@ build, integrity-verified data shards) are documented in
 - [docs/spec-v11.md](docs/spec-v11.md) — correctness-floor spec:
   per-tile audit protocol, specialty-named groups, optional
   source-quoted `interpretation` field. Audit coverage is **complete
-  — 802/802 tiles** carry a committed per-tile audit log
+  — 814/814 tiles** carry a committed per-tile audit log
   (`docs/audits/v11/<id>.md` for the pre-v78 catalog;
   `docs/audits/v12/<id>.md` for the tiles added since — the
   spec-v78–v83 billing & coding program, the spec-v85

@@ -178,6 +178,9 @@ import * as specialtymathV186 from '../../lib/specialtymath-v186.js';
 import * as oncStagingV187 from '../../lib/onc-staging-v187.js';
 import * as hemeStagingV188 from '../../lib/heme-staging-v188.js';
 import * as hemeRiskV189 from '../../lib/heme-risk-v189.js';
+import * as hepgiV190 from '../../lib/hepgi-v190.js';
+import * as dermuroV191 from '../../lib/dermuro-v191.js';
+import * as riskV192 from '../../lib/risk-v192.js';
 
 const MODULES = {
   'clinical.js': clinical,
@@ -300,6 +303,9 @@ const MODULES = {
   'onc-staging-v187.js': oncStagingV187,
   'heme-staging-v188.js': hemeStagingV188,
   'heme-risk-v189.js': hemeRiskV189,
+  'hepgi-v190.js': hepgiV190,
+  'dermuro-v191.js': dermuroV191,
+  'risk-v192.js': riskV192,
 };
 
 const MATRIX = [0, -1, 1e9, NaN, Infinity, -Infinity, '', undefined, null];

@@ -83,7 +83,7 @@ live value, never copied as a literal.
   incorrect against the live regex; same treatment as the v147/v148 ACR/EULAR scores),
   so no documentation-only staleness row is forced. +4. **The spec-v150 Post-Parity
   Coverage program is now COMPLETE** (679 → 700, +21 shipped; PRECISE-DAPT the sole
-  deferral against the nominal +25). The live catalog is **802** deterministic tiles. The Subspecialty Depth and Cross-Discipline Completion programs have since carried the count from 700 onward; see [scope-subspecialty-depth.md](scope-subspecialty-depth.md).
+  deferral against the nominal +25). The live catalog is **814** deterministic tiles. The Subspecialty Depth and Cross-Discipline Completion programs have since carried the count from 700 onward; see [scope-subspecialty-depth.md](scope-subspecialty-depth.md).
 
 ## Program roadmap (complete)
 
@@ -110,3 +110,25 @@ total — parked with `precise-dapt` / `crib-ii` / `gwtg-hf`, not shipped from a
 approximation. Every shipped weight and boundary was re-fetched and cross-verified
 across ≥ 2 sources (the van Walraven weights, the Hasford ×1000 formula, the
 IMPEDE-VTE and SAMe-TT2R2 point bands).
+
+The **Hepatology/GI, Dermatology/Urology & Screening/Risk** program
+(spec-v190/v191/v192) closed 2026-07-01 at **814** (802 → 814, +12 shipped):
+[spec-v190](spec-v190.md) hepatology/GI (+4: `palbi`, `meld-na`, `clichy`,
+`rome-iv-ibs`), [spec-v191](spec-v191.md) dermatology/urology severity & staging
+(+4: `scorten`, `melanoma-t-stage`, `pi-rads`, `guys-stone-score`), and
+[spec-v192](spec-v192.md) screening / bedside risk (+4: `findrisc`,
+`grobman-vbac`, `marburg-heart-score`, `adhere-hf`). The fifth v192 score,
+**GWTG-HF, was deferred** under the [spec-v97](spec-v97.md) fidelity bar: its full
+row-by-row sub-range point table (Peterson 2010 Table 3 — the per-band points for
+age, SBP, BUN, heart rate, and sodium) is paywalled on ahajournals.org and is not
+reproduced verbatim in ≥ 2 independent open sources (only the categorical pieces —
+COPD +2, non-Black +3, the 0–100 range, and the score→mortality band map — could
+be cross-verified). A continuous-variable approximation would misreport the total,
+so GWTG-HF is parked with `precise-dapt` / `bvas` / `crib-ii`, not shipped from an
+approximation. Every shipped coefficient and boundary was re-fetched and
+cross-verified across ≥ 2 sources — the PALBI linear predictor and −2.53/−2.09
+cut-points, the MELD-Na OPTN operational coefficients (distinct from the Kim 2008
+NEJM re-fit), the AJCC 8th-edition 0.8 mm melanoma split, the PI-RADS v2.1
+zone-specific score-3 upgrades, the FINDRISC point table, the Grobman 2021
+race-free logistic coefficients (which use weight + height, not BMI), and the
+ADHERE CART thresholds and node mortality rates.

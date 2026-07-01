@@ -4823,3 +4823,63 @@ Worked example: current tobacco use = 2 -> poorer control predicted.
 Citation: Elixhauser A, Steiner C, Harris DR, Coffey RM. Comorbidity measures for use with administrative data. Med Care. 1998;36(1):8-27. Weights: van Walraven C, Austin PC, Jennings A, Quan H, Forster AJ. Med Care. 2009;47(6):626-633.
 Formula: sum the signed van Walraven weight of each present comorbidity (range -7 to +12; nine conditions weight 0). A higher total predicts higher in-hospital mortality.
 Worked example: CHF (+7) + metastatic cancer (+12) + obesity (-4) = 15 across 3 conditions.
+
+### PALBI (Platelet-Albumin-Bilirubin) grade
+Citation: Liu PH, Hsu CY, Hsia CY, et al. ALBI and PALBI grade predict survival for patients with hepatocellular carcinoma across treatment modalities. J Gastroenterol Hepatol. 2017;32(4):879-886.
+Formula: PALBI = 2.02*log10(bilirubin umol/L) - 0.37*(log10 bilirubin)^2 - 0.04*albumin g/L - 3.48*log10(platelets 10^9/L) + 1.01*(log10 platelets)^2. Grade 1 <= -2.53, grade 2 -2.53 to -2.09, grade 3 > -2.09. Entered in mg/dL and g/dL and converted internally.
+Worked example: bilirubin 1.0 mg/dL, albumin 4.0 g/dL, platelets 250 -> score -2.21 -> grade 2.
+
+### MELD-Na (sodium-augmented MELD)
+Citation: Kim WR, Biggins SW, Kremers WK, et al. Hyponatremia and mortality among patients on the liver-transplant waiting list. N Engl J Med. 2008;359(10):1018-1026.
+Formula: MELD(i) = 10*[0.957*ln(Cr) + 0.378*ln(bilirubin) + 1.120*ln(INR) + 0.643], labs floored at 1.0, Cr capped at 4.0 (dialysis -> 4.0). If MELD(i) > 11: MELD-Na = MELD(i) + 1.32*(137 - Na) - [0.033*MELD(i)*(137 - Na)], Na bounded 125-137. Score bounded 6-40. (OPTN/UNOS operational coefficients.)
+Worked example: bilirubin 2, INR 1.5, Cr 1.5, Na 130 -> MELD 17 -> MELD-Na 22.
+
+### Clichy criteria for acute liver failure
+Citation: Bernuau J, Goudeau A, Poynard T, et al. Multivariate analysis of prognostic factors in fulminant hepatitis B. Hepatology. 1986;6(4):648-651.
+Formula: emergency transplant evaluation indicated when hepatic encephalopathy (grade 3-4) is present AND factor V < 20% if age < 30, or < 30% if age >= 30.
+Worked example: age 40, factor V 25%, encephalopathy present -> criteria met (threshold < 30%).
+
+### Rome IV criteria for irritable bowel syndrome
+Citation: Lacy BE, Mearin F, Chang L, et al. Bowel disorders. Gastroenterology. 2016;150(6):1393-1407.
+Formula: recurrent abdominal pain on average >= 1 day/week in the last 3 months (onset >= 6 months prior) associated with >= 2 of: related to defecation, change in stool frequency, change in stool form. Subtype IBS-C/D/M/U by predominant Bristol stool pattern.
+Worked example: pain + onset + defecation-related + change in frequency, diarrhea-predominant -> IBS met, IBS-D.
+
+### SCORTEN (toxic epidermal necrolysis severity)
+Citation: Bastuji-Garin S, Fouchard N, Bertocchi M, Roujeau JC, Revuz J, Wolkenstein P. SCORTEN: a severity-of-illness score for toxic epidermal necrolysis. J Invest Dermatol. 2000;115(2):149-153.
+Formula: seven criteria each 1 point: age >= 40, heart rate > 120, malignancy, BSA detached > 10%, BUN > 28 mg/dL, bicarbonate < 20 mEq/L, glucose > 252 mg/dL. Mortality 0-1 3.2%, 2 12.1%, 3 35.3%, 4 58.3%, >= 5 90%.
+Worked example: age >= 40 + heart rate > 120 + BUN > 28 = 3 -> mortality ~35.3%.
+
+### AJCC 8th-edition melanoma T category
+Citation: Gershenwald JE, Scolyer RA, Hess KR, et al. Melanoma staging: evidence-based changes in the AJCC eighth edition cancer staging manual. CA Cancer J Clin. 2017;67(6):472-492.
+Formula: T1 <= 1.0 mm (T1a < 0.8 mm no ulceration; T1b < 0.8 mm with ulceration, or 0.8-1.0 mm), T2 > 1.0-2.0, T3 > 2.0-4.0, T4 > 4.0; suffix a = no ulceration, b = with ulceration for T2/T3/T4. The T element only.
+Worked example: Breslow 1.5 mm with ulceration -> T2b.
+
+### PI-RADS v2.1 (prostate MRI assessment)
+Citation: Turkbey B, Rosenkrantz AB, Haider MA, et al. Prostate Imaging Reporting and Data System version 2.1: 2019 update of PI-RADS version 2. Eur Urol. 2019;76(3):340-351.
+Formula: peripheral zone DWI dominant, DWI 3 upgraded to 4 if DCE positive; transition zone T2W dominant, T2W 2 upgraded to 3 if DWI >= 4, T2W 3 upgraded to 4 only if DWI = 5. Category 1 (very low) to 5 (very high).
+Worked example: peripheral zone, DWI 3, DCE positive -> PI-RADS 4.
+
+### Guy's stone score (PCNL complexity)
+Citation: Thomas K, Smith NC, Hegarty N, Glass JM. The Guy's stone score - grading the complexity of percutaneous nephrolithotomy procedures. Urology. 2011;78(2):277-281.
+Formula: Grade I solitary mid/lower-pole or pelvic stone simple anatomy (~81%); II upper-pole/multiple/abnormal-anatomy stone (~72%); III abnormal-anatomy multiple, diverticulum, or partial staghorn (~35%); IV staghorn or spinal-injury patient (~29%).
+Worked example: staghorn calculus -> Grade IV (expected stone-free rate ~29%).
+
+### FINDRISC (Finnish Diabetes Risk Score)
+Citation: Lindstrom J, Tuomilehto J. The diabetes risk score: a practical tool to predict type 2 diabetes risk. Diabetes Care. 2003;26(3):725-731.
+Formula: age (0-4), BMI (0-3), sex-specific waist (0-4), inactivity +2, no daily fruit/veg +1, antihypertensives +2, prior high glucose +5, family history +3/+5. Total 0-26. Bands < 7 low ~1%, 7-11 slightly elevated ~4%, 12-14 moderate ~17%, 15-20 high ~33%, > 20 very high ~50%.
+Worked example: age 60 (3) + BMI 32 (3) + waist 90 cm female (4) + inactive (2) = 12 -> moderate.
+
+### VBAC success calculator (Grobman race-free 2021)
+Citation: Grobman WA, Sandoval G, Rice MM, et al. Prediction of vaginal birth after cesarean delivery in term gestations: a calculator without race and ethnicity. Am J Obstet Gynecol. 2021;225(6):664.e1-664.e7.
+Formula: logit = -5.952 - 0.023*age - 0.024*weight(kg) + 0.056*height(cm) - 0.597*arrest-indication + 0.868*prior vaginal (before cesarean) + 1.869*prior VBAC - 0.966*treated chronic hypertension; probability = e^logit/(1+e^logit).
+Worked example: age 30, weight 80 kg, height 165 cm, prior VBAC -> ~92.7%.
+
+### Marburg Heart Score (CAD in primary-care chest pain)
+Citation: Bosner S, Haasenritter J, Becker A, et al. Ruling out coronary artery disease in primary care: development and validation of a simple prediction rule. CMAJ. 2010;182(12):1295-1300.
+Formula: five criteria each 1 point: female >= 65 or male >= 55, known vascular disease, pain worse with exercise, pain not reproducible by palpation, patient assumes pain is cardiac. 0-2 CAD unlikely (~3%), >= 3 higher (~23%).
+Worked example: age/sex + vascular disease + pain worse with exercise = 3 -> higher risk, further evaluation.
+
+### ADHERE in-hospital heart-failure mortality (CART)
+Citation: Fonarow GC, Adams KF Jr, Abraham WT, Yancy CW, Boscardin WJ; ADHERE Scientific Advisory Committee. Risk stratification for in-hospital mortality in acutely decompensated heart failure: classification and regression tree analysis. JAMA. 2005;293(5):572-580.
+Formula: BUN >= 43 mg/dL, then SBP < 115 mmHg, then creatinine >= 2.75 mg/dL. Mortality: BUN<43 & SBP>=115 low ~2.1%; BUN<43 & SBP<115 ~5.5%; BUN>=43 & SBP>=115 ~6.4%; BUN>=43 & SBP<115 & Cr<2.75 ~12.4%; BUN>=43 & SBP<115 & Cr>=2.75 high ~21.9%.
+Worked example: BUN 50, SBP 100, creatinine 3.0 -> high risk, ~21.9%.

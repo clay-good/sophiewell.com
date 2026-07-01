@@ -1,6 +1,6 @@
 # spec-v191.md — Dermatology & urology severity and staging: SCORTEN, AJCC melanoma T-stage, PI-RADS v2.1, and the Guy's stone score (+4 tiles)
 
-> Status: **PROPOSED (2026-07-01).** Advances the
+> Status: **SHIPPED (2026-07-01).** Advances the
 > [scope-mdcalc-parity.md](scope-mdcalc-parity.md) commitment into two
 > under-served surfaces (dermatology severity and urology staging). Adds **4**
 > deterministic instruments, **each verified absent by a direct scan of `app.js`**

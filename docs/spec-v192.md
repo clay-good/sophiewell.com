@@ -1,6 +1,6 @@
 # spec-v192.md — Screening & bedside risk: FINDRISC, the Grobman (race-free) VBAC calculator, the Marburg Heart Score, and the GWTG-HF and ADHERE in-hospital heart-failure mortality models (+5 tiles)
 
-> Status: **PROPOSED (2026-07-01).** Advances the
+> Status: **SHIPPED (2026-07-01).** Advances the
 > [scope-mdcalc-parity.md](scope-mdcalc-parity.md) commitment across primary-care
 > screening, obstetrics, and cardiology. Adds **5** deterministic instruments,
 > **each verified absent by a direct scan of `app.js`** (zero hits): the catalog
@@ -84,6 +84,15 @@ each is decision support, **never a screening, delivery-mode, or disposition ord
   and `edacs`.
 
 ### 2.4 `gwtg-hf` — GWTG-HF In-Hospital Mortality Risk
+
+> **SHIPPING NOTE (2026-07-01): DEFERRED.** The complete row-by-row sub-range
+> point table (Peterson 2010 Table 3 — the per-band points for age, SBP, BUN,
+> heart rate, and sodium) is paywalled on ahajournals.org and is not reproduced
+> verbatim in ≥ 2 independent open sources; only the categorical pieces (COPD +2,
+> non-Black +3, the 0–100 range, and the score→mortality band map) could be
+> cross-verified. A continuous-variable approximation would misreport the total,
+> so GWTG-HF is parked under the spec-v97 fidelity bar with `precise-dapt` /
+> `bvas` / `crib-ii`. **v192 shipped +4, not +5.**
 
 - **Citation:** Peterson PN, Rumsfeld JS, Liang L, et al. A validated risk score for
   in-hospital mortality in patients with heart failure from the American Heart
