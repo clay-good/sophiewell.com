@@ -6,6 +6,30 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v183 — MCP wave 8: expose 9 more clinical calculators as deterministic agent tools; no tile delta, 814)
+
+- The optional stdio MCP server (`mcp/server.js`) gains an **eighth coverage
+  wave**: 9 more catalog calculators exposed as deterministic
+  `compute_calculator` tools, across 2 `lib` modules, bringing the exposed
+  surface to **176 of 814 catalog tiles across 37 modules**. No catalog tile is
+  added or changed — this is adapter-only coverage of compute logic that already
+  shipped.
+  - `lib/nutrition-energy-v152.js` — predictive energy-expenditure equations:
+    `mifflin-st-jeor`, `harris-benedict`, `katch-mcardle`, `penn-state-ree`,
+    `ireton-jones`.
+  - `lib/endo-metab-v161.js` — endocrine / metabolic bedside math: `arr`
+    (aldosterone-renin ratio), `calcium-phosphate-product`,
+    `free-thyroxine-index`, `nitrogen-balance`.
+- The anthropometrics and labs are plain numbers; sex, the activity factor, and
+  the Ireton-Jones ventilation mode are enums; the Ireton-Jones trauma and burn
+  diagnosis modifiers are booleans; and the ARR renin-assay unit (PRA vs DRC) and
+  the calcium-phosphate input-unit system (mg/dL vs mmol/L) are enums whose cutoff
+  is never compared across unit systems. Katch-McArdle accepts either lean body
+  mass directly or weight + body-fat %, so its three body-composition inputs are
+  all optional. The wave-8 ledger, worked-call tests, and the full-set example
+  round-trip are all in CI (`test:mcp` 45 tests; `check-mcp-catalog` reports 176
+  adapters across 37 modules).
+
 ### Added (spec-v190 / v191 / v192 — Hepatology/GI, Dermatology/Urology & Screening/Risk program: 12 calculators, 802 → 814)
 
 - Three feature specs add **12 deterministic calculators** across hepatology/GI,

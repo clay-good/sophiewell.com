@@ -130,6 +130,24 @@ mechanical-power adapter surfaces the driving-pressure unit in plain ASCII
 (`cmH2O`) so the JSON result is self-describing where the rendered tile uses the
 subscript `cmH₂O`. Every exposed example round-trips to its `META.example.expected`.
 
+## Eighth wave — 2 modules
+
+Coverage extends with 9 more clinical calculators across 2 `lib` modules:
+predictive energy-expenditure equations (`lib/nutrition-energy-v152.js` —
+Mifflin-St Jeor and Harris-Benedict resting/basal expenditure, the Katch-McArdle
+lean-mass BMR, the Penn State ventilated RMR, and the Ireton-Jones hospitalized
+equation), and endocrine / metabolic bedside math (`lib/endo-metab-v161.js` — the
+aldosterone-renin ratio primary-aldosteronism screen, the calcium-phosphate
+product, the Free Thyroxine Index, and the nitrogen balance). Brings the exposed
+total to **176 calculators across 37 modules**. The anthropometrics and labs are
+plain numbers; sex, the activity factor, and the Ireton-Jones ventilation mode
+are enums; the Ireton-Jones trauma and burn diagnosis modifiers are booleans; and
+the ARR renin-assay unit (PRA vs DRC) and the calcium-phosphate input-unit system
+(mg/dL vs mmol/L) are enums whose cutoff is never compared across unit systems.
+Katch-McArdle accepts either lean body mass directly or weight + body-fat %, so
+its three body-composition inputs are all optional. Every exposed example
+round-trips to its `META.example.expected`.
+
 ## Exposed
 
 Each id below is live in `mcp/catalog.js`. The gate parses this list.
@@ -370,6 +388,19 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 - `rutherford-fontaine`
 - `wifi`
 - `euroscore2`
+
+### lib/nutrition-energy-v152.js
+- `mifflin-st-jeor`
+- `harris-benedict`
+- `katch-mcardle`
+- `penn-state-ree`
+- `ireton-jones`
+
+### lib/endo-metab-v161.js
+- `arr`
+- `calcium-phosphate-product`
+- `free-thyroxine-index`
+- `nitrogen-balance`
 
 ## Not yet adapted
 

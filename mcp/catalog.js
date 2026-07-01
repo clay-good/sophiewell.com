@@ -52,6 +52,8 @@ import echoV158 from './adapters/echo-v158.js';
 import rheumV147 from './adapters/rheum-v147.js';
 import vteV106 from './adapters/vte-v106.js';
 import vascularV105 from './adapters/vascular-v105.js';
+import nutritionEnergyV152 from './adapters/nutrition-energy-v152.js';
+import endoMetabV161 from './adapters/endo-metab-v161.js';
 
 const ADAPTER_MODULES = [
   ['tox-v86', toxV86],
@@ -89,6 +91,8 @@ const ADAPTER_MODULES = [
   ['rheum-v147', rheumV147],
   ['vte-v106', vteV106],
   ['vascular-v105', vascularV105],
+  ['nutrition-energy-v152', nutritionEnergyV152],
+  ['endo-metab-v161', endoMetabV161],
 ];
 
 const HERE = dirname(fileURLToPath(import.meta.url));

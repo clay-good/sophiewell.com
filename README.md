@@ -4071,8 +4071,8 @@ clamped to `[0, 1]`, so the JSON surface never emits a non-finite probability.
 
 ### Coverage is explicit and honest
 
-Adapting the catalog is incremental. Coverage now stands at **167 clinical
-calculators across 35 `lib` modules** (of 814 catalog tiles), built module by
+Adapting the catalog is incremental. Coverage now stands at **176 clinical
+calculators across 37 `lib` modules** (of 814 catalog tiles), built module by
 module against the one fixed contract:
 
 | wave | modules | tiles |
@@ -4084,6 +4084,7 @@ module against the one fixed contract:
 | fifth | `cardio-v102` (MAGGIC, H2FPEF, HFA-PEFF, CardShock), `cardio-v104` (Brugada, Vereckei, ADD-RS, ROSE, EGSYS, OESIL), `cvrisk-v103` (SCORE2, SCORE2-OP, MESA, Framingham, Reynolds, non-HDL/remnant), `critcare-v112` (MEDS, SIC, CPIS-VAP, lactate clearance, MRC sum), `fluidresp-v113` (IVC, PPV/SVV, passive leg raise), `hepgi-v93` (NAFLD-FS, Glasgow-Imrie, Truelove-Witts, Harvey-Bradshaw, Mayo, Milan), `hemonc-v94` (HScore, IPSS-R, FLIPI, MASCC, Sokal) | 35 |
 | sixth | `neuro-v119` (CPSSS, FAST-ED, Boston-CAA, CVT-risk), `neuro-v120` (STESS, 2HELPS2B, MESS, POUND, HINTS), `neuro-v121` (EGRIS, mEGOS, Brighton-GBS, MGFA), `neuro-v122` (Hachinski, Modified-Ashworth, Bickerstaff), `nephro-v127` (KFRE, RIFLE, AKIN, UFR), `renal-v128` (FEPO4, FEMg, nPCR, std-Kt/V, EFWC), `uro-v130` (prostate-volume, PSA density/velocity/doubling-time, D'Amico, Gleason grade-group), `uro-v131` (CAPRA, R.E.N.A.L., PADUA, S.T.O.N.E., TWIST) | 36 |
 | seventh | `hemodynamics-v87` (hemodynamic-suite, mechanical-power, dead-space), `nephro-v92` (CKD-staging, UACR/UPCR, Kt/V-URR, Mehran-CIN, CKD-EPI-cystatin), `ebm-v163` (Fagan, diagnostic-2x2, NNT/ARR), `ophtho-v164` (IOL-power, visual-acuity, ocular-perfusion-pressure), `echo-v158` (LV-mass-index, LA-volume-index, Teichholz-LVEF, RVSP/PASP, E/e'), `rheum-v147` (CDAI, SDAI, ACR/EULAR-2010-RA, SLEDAI-2K, ACR/EULAR-2015-gout, CASPAR, ACR-2016-fibromyalgia), `vte-v106` (PEGeD, 4PEPS, Bova, Hestia, Geneva, Constans-UEDVT), `vascular-v105` (ABI, Rutherford/Fontaine, WIfI, EuroSCORE-II) | 36 |
+| eighth | `nutrition-energy-v152` (Mifflin-St Jeor, Harris-Benedict, Katch-McArdle, Penn-State-RMR, Ireton-Jones), `endo-metab-v161` (aldosterone-renin-ratio, calcium-phosphate-product, free-thyroxine-index, nitrogen-balance) | 9 |
 
 `docs/mcp-coverage.md` is the ledger and `list_calculators` always reports the
 live exposed fraction (`"<N> of <M> catalog tiles exposed"`), never a hardcoded
@@ -4098,8 +4099,13 @@ yes/no risk factors map to two-value enums, the EuroSCORE II logistic model is
 evaluated in a saturation-safe form whose mortality clamps to `[0, 1]`
 (spec-v140), and the `mechanical-power` adapter surfaces the driving-pressure
 unit in plain ASCII (`cmH2O`) so its JSON result is self-describing where the
-rendered tile uses the subscript `cmH₂O`. Later waves extend coverage the same
-way — one module, one ledger entry, one set of round-tripping examples at a time.
+rendered tile uses the subscript `cmH₂O`. The wave-eight energy-expenditure and
+endocrine/metabolic tiles are flat scalars plus enums (sex, activity factor,
+ventilation mode, renin-assay unit, calcium/phosphate input-unit system); the
+Ireton-Jones trauma/burn diagnosis modifiers are booleans; and the Katch-McArdle
+body-composition inputs are all optional because it accepts either lean body mass
+directly or weight + body-fat %. Later waves extend coverage the same way — one
+module, one ledger entry, one set of round-tripping examples at a time.
 
 ### Try it
 
@@ -4142,7 +4148,7 @@ rules, not soft preferences.
 | `npm run dev`            | Serve the directory locally on http://localhost:4173 (set `SERVE_ROOT=dist` to preview the pre-rendered hubs/topics/tool pages as production serves them) |
 | `npm run build`          | Copy static files into `dist/` for deployment                     |
 | `npm test`               | Run the full test suite (unit, a11y, grep, data integrity)        |
-| `npm run test:unit`      | Run Node's built-in unit tests (5,869 tests)                      |
+| `npm run test:unit`      | Run Node's built-in unit tests (6,206 tests)                      |
 | `npm run test:e2e`       | Build `dist/`, then run Playwright integration tests against real browsers — incl. a full-catalog 320px no-horizontal-scroll sweep over both the SPA routes and the 814 pre-rendered static tool pages, the hub/topic/commitments pages, and the citation-wrap pin |
 | `npm run test:mcp`       | Run the optional MCP server's tool/compute/fuzz tests (independent of the site jobs; SDK-free) |
 | `npm run test:a11y`      | Run accessibility checks on every utility view                    |
