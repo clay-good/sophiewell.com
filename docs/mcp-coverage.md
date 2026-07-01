@@ -148,6 +148,31 @@ Katch-McArdle accepts either lean body mass directly or weight + body-fat %, so
 its three body-composition inputs are all optional. Every exposed example
 round-trips to its `META.example.expected`.
 
+## Ninth wave — 8 modules
+
+Coverage extends with **39 more clinical calculators across 8 `lib` modules**,
+the "advanced bedside quantitation" and subspecialty staging surface shipped as
+tiles in spec-v185 through spec-v192: advanced hemodynamic / metabolic gap-fillers
+(`lib/gaps-v185.js`), specialty math (`lib/specialtymath-v186.js` — radiation-
+oncology BED/EQD2, echo PISA, LV wall stress, corrected DLCO, VO₂max, a binomial
+CI), subspecialty oncology staging (`lib/onc-staging-v187.js` — BCLC, IMDC/MSKCC
+RCC, RECIST, mGPS), hematology staging (`lib/heme-staging-v188.js` — Binet, Rai,
+Ann Arbor, FLIPI-2, Hasford), hematology risk / comorbidity
+(`lib/heme-risk-v189.js` — mSMART, IMPEDE-VTE, SAMe-TT2R2, Elixhauser),
+hepatology/GI (`lib/hepgi-v190.js` — PALBI, MELD-Na, Clichy, Rome IV IBS),
+dermatology/urology (`lib/dermuro-v191.js` — SCORTEN, AJCC melanoma T, PI-RADS,
+Guy's stone score), and primary-care/bedside risk (`lib/risk-v192.js` — FINDRISC,
+Grobman VBAC, Marburg Heart Score, ADHERE). Brings the exposed total to **215
+calculators across 45 modules**. The flat labs and dimensions are numbers; the
+staging axes (ECOG, Child-Pugh, tumor burden, anatomic distribution, dexamethasone
+dose, family-history depth, confidence level, PI-RADS zone) are enums; and the
+yes/no risk factors are booleans. `rosendaal-ttr` in `lib/gaps-v185.js` is
+deliberately **not** adapted: its `series` input is a multi-line textarea of
+"date INR" rows (a list of item-values), not the flat `dom→arg→kind` scalar
+contract this wave covers. No custom `formatResult` is needed anywhere in the
+wave — every exposed example round-trips to its `META.example.expected` through
+the default `makeToArgs`.
+
 ## Exposed
 
 Each id below is live in `mcp/catalog.js`. The gate parses this list.
@@ -401,6 +426,61 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 - `calcium-phosphate-product`
 - `free-thyroxine-index`
 - `nitrogen-balance`
+
+### lib/gaps-v185.js
+- `fick-cardiac-output`
+- `gorlin`
+- `qp-qs`
+- `lvot-stroke-volume`
+- `vte-bleed`
+- `matsuda-index`
+- `lean-body-weight`
+
+### lib/specialtymath-v186.js
+- `bed-eqd2`
+- `pisa-eroa`
+- `lv-wall-stress`
+- `dlco-correction`
+- `vo2max-exercise`
+- `proportion-ci`
+
+### lib/onc-staging-v187.js
+- `bclc-hcc`
+- `imdc-rcc`
+- `mskcc-rcc`
+- `recist`
+- `glasgow-prognostic-score`
+
+### lib/heme-staging-v188.js
+- `binet-cll`
+- `rai-cll`
+- `ann-arbor`
+- `flipi-2`
+- `hasford-cml`
+
+### lib/heme-risk-v189.js
+- `msmart`
+- `impede-vte`
+- `same-tt2r2`
+- `elixhauser`
+
+### lib/hepgi-v190.js
+- `palbi`
+- `meld-na`
+- `clichy`
+- `rome-iv-ibs`
+
+### lib/dermuro-v191.js
+- `scorten`
+- `melanoma-t-stage`
+- `pi-rads`
+- `guys-stone-score`
+
+### lib/risk-v192.js
+- `findrisc`
+- `grobman-vbac`
+- `marburg-heart-score`
+- `adhere-hf`
 
 ## Not yet adapted
 

@@ -54,6 +54,14 @@ import vteV106 from './adapters/vte-v106.js';
 import vascularV105 from './adapters/vascular-v105.js';
 import nutritionEnergyV152 from './adapters/nutrition-energy-v152.js';
 import endoMetabV161 from './adapters/endo-metab-v161.js';
+import gapsV185 from './adapters/gaps-v185.js';
+import specialtymathV186 from './adapters/specialtymath-v186.js';
+import oncStagingV187 from './adapters/onc-staging-v187.js';
+import hemeStagingV188 from './adapters/heme-staging-v188.js';
+import hemeRiskV189 from './adapters/heme-risk-v189.js';
+import hepgiV190 from './adapters/hepgi-v190.js';
+import dermuroV191 from './adapters/dermuro-v191.js';
+import riskV192 from './adapters/risk-v192.js';
 
 const ADAPTER_MODULES = [
   ['tox-v86', toxV86],
@@ -93,6 +101,14 @@ const ADAPTER_MODULES = [
   ['vascular-v105', vascularV105],
   ['nutrition-energy-v152', nutritionEnergyV152],
   ['endo-metab-v161', endoMetabV161],
+  ['gaps-v185', gapsV185],
+  ['specialtymath-v186', specialtymathV186],
+  ['onc-staging-v187', oncStagingV187],
+  ['heme-staging-v188', hemeStagingV188],
+  ['heme-risk-v189', hemeRiskV189],
+  ['hepgi-v190', hepgiV190],
+  ['dermuro-v191', dermuroV191],
+  ['risk-v192', riskV192],
 ];
 
 const HERE = dirname(fileURLToPath(import.meta.url));

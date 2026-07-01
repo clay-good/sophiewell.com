@@ -4071,8 +4071,8 @@ clamped to `[0, 1]`, so the JSON surface never emits a non-finite probability.
 
 ### Coverage is explicit and honest
 
-Adapting the catalog is incremental. Coverage now stands at **176 clinical
-calculators across 37 `lib` modules** (of 814 catalog tiles), built module by
+Adapting the catalog is incremental. Coverage now stands at **215 clinical
+calculators across 45 `lib` modules** (of 814 catalog tiles), built module by
 module against the one fixed contract:
 
 | wave | modules | tiles |
@@ -4085,14 +4085,16 @@ module against the one fixed contract:
 | sixth | `neuro-v119` (CPSSS, FAST-ED, Boston-CAA, CVT-risk), `neuro-v120` (STESS, 2HELPS2B, MESS, POUND, HINTS), `neuro-v121` (EGRIS, mEGOS, Brighton-GBS, MGFA), `neuro-v122` (Hachinski, Modified-Ashworth, Bickerstaff), `nephro-v127` (KFRE, RIFLE, AKIN, UFR), `renal-v128` (FEPO4, FEMg, nPCR, std-Kt/V, EFWC), `uro-v130` (prostate-volume, PSA density/velocity/doubling-time, D'Amico, Gleason grade-group), `uro-v131` (CAPRA, R.E.N.A.L., PADUA, S.T.O.N.E., TWIST) | 36 |
 | seventh | `hemodynamics-v87` (hemodynamic-suite, mechanical-power, dead-space), `nephro-v92` (CKD-staging, UACR/UPCR, Kt/V-URR, Mehran-CIN, CKD-EPI-cystatin), `ebm-v163` (Fagan, diagnostic-2x2, NNT/ARR), `ophtho-v164` (IOL-power, visual-acuity, ocular-perfusion-pressure), `echo-v158` (LV-mass-index, LA-volume-index, Teichholz-LVEF, RVSP/PASP, E/e'), `rheum-v147` (CDAI, SDAI, ACR/EULAR-2010-RA, SLEDAI-2K, ACR/EULAR-2015-gout, CASPAR, ACR-2016-fibromyalgia), `vte-v106` (PEGeD, 4PEPS, Bova, Hestia, Geneva, Constans-UEDVT), `vascular-v105` (ABI, Rutherford/Fontaine, WIfI, EuroSCORE-II) | 36 |
 | eighth | `nutrition-energy-v152` (Mifflin-St Jeor, Harris-Benedict, Katch-McArdle, Penn-State-RMR, Ireton-Jones), `endo-metab-v161` (aldosterone-renin-ratio, calcium-phosphate-product, free-thyroxine-index, nitrogen-balance) | 9 |
+| ninth | `gaps-v185` (Fick CO, Gorlin, Qp:Qs, LVOT SV, VTE-BLEED, Matsuda, lean body weight), `specialtymath-v186` (BED/EQD2, PISA EROA, LV wall stress, corrected DLCO, VO₂max, proportion CI), `onc-staging-v187` (BCLC, IMDC, MSKCC, RECIST, mGPS), `heme-staging-v188` (Binet, Rai, Ann Arbor, FLIPI-2, Hasford), `heme-risk-v189` (mSMART, IMPEDE-VTE, SAMe-TT2R2, Elixhauser), `hepgi-v190` (PALBI, MELD-Na, Clichy, Rome IV IBS), `dermuro-v191` (SCORTEN, melanoma T, PI-RADS, Guy's stone), `risk-v192` (FINDRISC, Grobman VBAC, Marburg, ADHERE) | 39 |
 
 `docs/mcp-coverage.md` is the ledger and `list_calculators` always reports the
 live exposed fraction (`"<N> of <M> catalog tiles exposed"`), never a hardcoded
-number. Three tiles inside these modules are deliberately left unexposed and
+number. Four tiles inside these modules are deliberately left unexposed and
 recorded as such: `phases-iph` has no `META.example` to round-trip, `pospom`
-takes a variable-length comorbidity array that needs a bespoke `toArgs`, and
+takes a variable-length comorbidity array that needs a bespoke `toArgs`,
 `ses-cd` takes per-segment input arrays rather than the flat `dom→arg→kind`
-contract. Two wave-six tiles (HINTS, Bickerstaff) are categorical instruments
+contract, and `rosendaal-ttr` takes a multi-line textarea of "date INR" rows
+(a list of item-values, not a flat scalar). Two wave-six tiles (HINTS, Bickerstaff) are categorical instruments
 whose number-free examples round-trip through the band/note text, and the
 R.E.N.A.L. hilar suffix is an empty-string/`h` enum. The wave-seven Mehran
 yes/no risk factors map to two-value enums, the EuroSCORE II logistic model is
@@ -4104,8 +4106,13 @@ endocrine/metabolic tiles are flat scalars plus enums (sex, activity factor,
 ventilation mode, renin-assay unit, calcium/phosphate input-unit system); the
 Ireton-Jones trauma/burn diagnosis modifiers are booleans; and the Katch-McArdle
 body-composition inputs are all optional because it accepts either lean body mass
-directly or weight + body-fat %. Later waves extend coverage the same way — one
-module, one ledger entry, one set of round-tripping examples at a time.
+directly or weight + body-fat %. The wave-nine advanced-quantitation and
+subspecialty-staging tiles (39 across 8 modules) are flat labs and dimensions as
+numbers, staging axes as enums (ECOG, Child-Pugh, tumor burden, lymphoma
+distribution, PI-RADS zone, confidence level), and yes/no risk factors as
+booleans; every one round-trips through the default `makeToArgs` with no bespoke
+`formatResult`. Later waves extend coverage the same way — one module, one ledger
+entry, one set of round-tripping examples at a time.
 
 ### Try it
 

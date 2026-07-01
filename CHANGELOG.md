@@ -6,6 +6,40 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v183 — MCP wave 9: expose 39 more clinical calculators as deterministic agent tools; no tile delta, 814)
+
+- The optional stdio MCP server (`mcp/server.js`) gains a **ninth coverage
+  wave**: 39 more catalog calculators exposed as deterministic
+  `compute_calculator` tools, across 8 `lib` modules, bringing the exposed
+  surface to **215 of 814 catalog tiles across 45 modules**. No catalog tile is
+  added or changed — this is adapter-only coverage of the "advanced bedside
+  quantitation" and subspecialty-staging compute logic already shipped in
+  spec-v185 through spec-v192.
+  - `lib/gaps-v185.js` — `fick-cardiac-output`, `gorlin`, `qp-qs`,
+    `lvot-stroke-volume`, `vte-bleed`, `matsuda-index`, `lean-body-weight`.
+  - `lib/specialtymath-v186.js` — `bed-eqd2`, `pisa-eroa`, `lv-wall-stress`,
+    `dlco-correction`, `vo2max-exercise`, `proportion-ci`.
+  - `lib/onc-staging-v187.js` — `bclc-hcc`, `imdc-rcc`, `mskcc-rcc`, `recist`,
+    `glasgow-prognostic-score`.
+  - `lib/heme-staging-v188.js` — `binet-cll`, `rai-cll`, `ann-arbor`, `flipi-2`,
+    `hasford-cml`.
+  - `lib/heme-risk-v189.js` — `msmart`, `impede-vte`, `same-tt2r2`, `elixhauser`.
+  - `lib/hepgi-v190.js` — `palbi`, `meld-na`, `clichy`, `rome-iv-ibs`.
+  - `lib/dermuro-v191.js` — `scorten`, `melanoma-t-stage`, `pi-rads`,
+    `guys-stone-score`.
+  - `lib/risk-v192.js` — `findrisc`, `grobman-vbac`, `marburg-heart-score`,
+    `adhere-hf`.
+- The flat labs and dimensions are numbers; the staging axes (ECOG, Child-Pugh,
+  tumor burden, lymphoma distribution, dexamethasone dose, family-history depth,
+  confidence level, PI-RADS zone) are enums; and the yes/no risk factors are
+  booleans. `rosendaal-ttr` in `lib/gaps-v185.js` is deliberately **not** adapted:
+  its `series` input is a multi-line textarea of "date INR" rows (a list of
+  item-values), not the flat `dom→arg→kind` scalar contract. No custom
+  `formatResult` is needed anywhere in the wave — every exposed example
+  round-trips to its `META.example.expected` through the default `makeToArgs`.
+  The wave-9 ledger and full-set example round-trip are in CI (`test:mcp` 45
+  tests; `check-mcp-catalog` reports 215 adapters across 45 modules).
+
 ### Added (spec-v183 — MCP wave 8: expose 9 more clinical calculators as deterministic agent tools; no tile delta, 814)
 
 - The optional stdio MCP server (`mcp/server.js`) gains an **eighth coverage
