@@ -6,6 +6,41 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v183 — MCP wave 13: expose older-adult prognosis, metabolic emergencies, environmental injury, ED/ICU decisions & warfarin dosing (16 calculators) as deterministic agent tools; no tile delta, 816)
+
+- The optional stdio MCP server (`mcp/server.js`) gains a **thirteenth coverage
+  wave**: 16 more catalog calculators exposed as deterministic
+  `compute_calculator` tools, across 5 `lib` modules, bringing the exposed
+  surface to **371 of 816 catalog tiles across 78 modules**. No catalog tile is
+  added or changed — this is adapter-only coverage of compute logic already
+  shipped across the spec-v88 through spec-v180 programs.
+- Modules exposed: `lib/ltcga-v180.js` (Lee 4-year mortality index, interRAI
+  CHESS), `lib/metabolic-onc-v88.js` (DKA/HHS classifier, Calvert carboplatin
+  dose, Cairo-Bishop tumor-lysis grade), `lib/enviro-v111.js` (Lake-Louise AMS,
+  Szpilman drowning grade, Snakebite Severity Score, Cauchy frostbite grade),
+  `lib/eddecision-v107.js` (New-Orleans head-CT criteria, GO-FAR, MACOCHA), and
+  `lib/warfarin-v133.js` (IWPC and Gage pharmacogenetic models, Kovacs 10 mg and
+  Crowther 5 mg initiation nomograms).
+- The Calvert GFR cap (`on`/`off`) and Cairo-Bishop age class
+  (`adult`/`pediatric`) are enum→flag mappings the renderer performs; the adapter
+  reproduces them with a per-field `to` transform. Warfarin height/weight are
+  consumed in cm/kg directly (the browser unit toggle converts before calling the
+  pure function), so the adapter exposes those units and needs no custom
+  `formatResult`. Every exposed example round-trips to its `META.example.expected`
+  through the default `makeToArgs`.
+- **Not adapted this wave:** `hear` (the HEAR score) carries no `META.example` to
+  round-trip (the `phases-iph` precedent), and the two `lib/ltcga-v181.js`
+  infection-surveillance tiles (`mcgeer-criteria`, `loeb-minimum-criteria`) are
+  site-branched — their valid criteria set depends on the selected site, so a
+  single flat JSON Schema cannot honestly document the input contract; both are
+  deferred to a later wave.
+- Files: `mcp/adapters/{ltcga-v180,metabolic-onc-v88,enviro-v111,eddecision-v107,warfarin-v133}.js`,
+  `mcp/catalog.js` (+5 imports, +5 `ADAPTER_MODULES` rows), `docs/mcp-coverage.md`
+  (thirteenth-wave section + Exposed ids), `test/mcp/mcp-compute.test.js` (+5
+  worked-call blocks), and the count surfaces in `README.md` and `mcp/README.md`
+  (355/73 → 371/78). The `mcp-fuzz` extreme-input sweep covers all 371 adapters
+  automatically.
+
 ### Added (spec-v180 — Long-Term Care & Geriatric Assessment program: older-adult mortality & LTC prognosis, 2 of 7 tiles, +2 → 816)
 
 - The §3.8 cluster of the [spec-v172](docs/spec-v172.md) LTC-GA program ships

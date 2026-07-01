@@ -260,6 +260,38 @@ in the batch is skipped and no custom `formatResult` or `toArgs` is needed —
 every exposed example round-trips to its `META.example.expected` through the
 default `makeToArgs`.
 
+## Thirteenth wave — 5 modules
+
+Coverage extends with **16 more clinical calculators across 5 `lib` modules** —
+older-adult prognosis, metabolic emergencies, environmental injury, ED / ICU
+decision instruments, and warfarin dosing. It exposes the LTC-GA Group G
+prognosis tiles (`lib/ltcga-v180.js` — the Lee 4-year mortality index and the
+interRAI CHESS scale), the metabolic-emergency / oncology trio
+(`lib/metabolic-onc-v88.js` — the DKA/HHS classifier, Calvert carboplatin dose,
+and the Cairo-Bishop tumor-lysis-syndrome grade), the environmental-emergency
+set (`lib/enviro-v111.js` — Lake Louise AMS, the Szpilman drowning grade, the
+Snakebite Severity Score, the Cauchy frostbite grade), three of the four ED /
+critical-care decision tiles (`lib/eddecision-v107.js` — the New Orleans head-CT
+criteria, GO-FAR, and MACOCHA), and the warfarin dosing suite
+(`lib/warfarin-v133.js` — the IWPC and Gage pharmacogenetic models and the
+Kovacs 10 mg / Crowther 5 mg initiation nomograms). Brings the exposed total to
+**371 calculators across 78 modules**. The labs, symptom sub-scores, biometry,
+and nomogram protocol day/INR are numbers; the checklist criteria are booleans;
+and the ordinal / categorical selects (age bands, mental status, drowning /
+frostbite grade axes, VKORC1 / CYP2C9 genotypes, race, and the yes/no
+pharmacogenetic questions) are enums. Two enum→flag mappings the renderer
+performs — the Calvert GFR cap (`on`/`off`) and the Cairo-Bishop age class
+(`adult`/`pediatric`) — are reproduced with a per-field `to` transform. Warfarin
+height and weight are consumed by the pure functions in cm / kg (the browser
+unit toggles convert before calling), so the adapter exposes them in those units
+directly; no custom `formatResult` is needed. **One tile in
+`lib/eddecision-v107.js` is intentionally not adapted:** `hear` (the HEAR score)
+carries no `META.example` to round-trip (the `phases-iph` precedent). The two
+`lib/ltcga-v181.js` long-term-care infection-surveillance tiles
+(`mcgeer-criteria`, `loeb-minimum-criteria`) are deferred to a later wave: they
+are site-branched, so a faithful schema needs the full per-site criterion set
+rather than the flat `dom→arg→kind` contract this wave covers.
+
 ## Exposed
 
 Each id below is live in `mcp/catalog.js`. The gate parses this list.
@@ -764,6 +796,32 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 - `afi`
 - `barnhart-hcg`
 - `iom-gwg`
+
+### lib/ltcga-v180.js
+- `lee-mortality-index`
+- `chess-scale`
+
+### lib/metabolic-onc-v88.js
+- `dka-hhs`
+- `calvert-carboplatin`
+- `tls-cairo-bishop`
+
+### lib/enviro-v111.js
+- `lake-louise-ams`
+- `szpilman-drowning`
+- `snakebite-severity`
+- `cauchy-frostbite`
+
+### lib/eddecision-v107.js
+- `new-orleans-head`
+- `go-far`
+- `macocha`
+
+### lib/warfarin-v133.js
+- `warfarin-iwpc`
+- `warfarin-gage`
+- `warfarin-init-10mg`
+- `warfarin-init-5mg`
 
 ## Not yet adapted
 

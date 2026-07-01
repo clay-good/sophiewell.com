@@ -90,6 +90,11 @@ import surgV142 from './adapters/surg-v142.js';
 import urologyV153 from './adapters/urology-v153.js';
 import gynV139 from './adapters/gyn-v139.js';
 import obV138 from './adapters/ob-v138.js';
+import ltcgaV180 from './adapters/ltcga-v180.js';
+import metabolicOncV88 from './adapters/metabolic-onc-v88.js';
+import enviroV111 from './adapters/enviro-v111.js';
+import eddecisionV107 from './adapters/eddecision-v107.js';
+import warfarinV133 from './adapters/warfarin-v133.js';
 
 const ADAPTER_MODULES = [
   ['tox-v86', toxV86],
@@ -165,6 +170,11 @@ const ADAPTER_MODULES = [
   ['urology-v153', urologyV153],
   ['gyn-v139', gynV139],
   ['ob-v138', obV138],
+  ['ltcga-v180', ltcgaV180],
+  ['metabolic-onc-v88', metabolicOncV88],
+  ['enviro-v111', enviroV111],
+  ['eddecision-v107', eddecisionV107],
+  ['warfarin-v133', warfarinV133],
 ];
 
 const HERE = dirname(fileURLToPath(import.meta.url));

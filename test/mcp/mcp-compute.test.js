@@ -357,6 +357,41 @@ test('lib/ltcga-v182.js worked calls (wave 10)', () => {
   assert.equal(ok('caregiver-strain-index', csiInputs).total, 7);
 });
 
+test('lib/ltcga-v180.js worked calls (wave 13)', () => {
+  assert.equal(ok('lee-mortality-index', { 'lee-age': '85plus', 'lee-male': '1', 'lee-chf': '1', 'lee-cancer': '1' }).score, 13);
+  assert.equal(ok('lee-mortality-index', { 'lee-age': '85plus', 'lee-male': '1', 'lee-chf': '1', 'lee-cancer': '1' }).mortality, '42%');
+  assert.equal(ok('chess-scale', { 'chess-vomit': '1', 'chess-dyspnea': '1', 'chess-cog': '1', 'chess-adl': '1', 'chess-eol': '1' }).score, 5);
+});
+
+test('lib/metabolic-onc-v88.js worked calls (wave 13)', () => {
+  assert.equal(ok('dka-hhs', { 'dk-glu': '520', 'dk-ph': '6.95', 'dk-hco3': '6', 'dk-bohb': '6', 'dk-mental': 'stupor', 'dk-na': '130', 'dk-cl': '95' }).grade, 'severe');
+  // capGfr 'off' passes the raw GFR (60) through: 6 x (60 + 25) = 510 mg.
+  assert.equal(ok('calvert-carboplatin', { 'cv-auc': '6', 'cv-gfr': '60', 'cv-cap': 'off' }).dose, 510);
+  // The pediatric age class lowers the phosphate threshold to 6.5 (via the enum->bool `to`).
+  assert.equal(ok('tls-cairo-bishop', { 'tl-age': 'pediatric', 'tl-ua': '9', 'tl-k': '6.5', 'tl-phos': '7', 'tl-ca': '6', 'tl-cr': '2.4', 'tl-uln': '1.2', 'tl-arr': 'none', 'tl-sz': 'none' }).grade, 2);
+});
+
+test('lib/enviro-v111.js worked calls (wave 13)', () => {
+  assert.equal(ok('lake-louise-ams', { 'll-head': '2', 'll-gi': '2', 'll-fat': '1', 'll-diz': '1' }).total, 6);
+  assert.equal(ok('szpilman-drowning', { 'sz-status': 'breathing', 'sz-ausc': 'pulmonary-edema', 'sz-hypo': '1' }).grade, 4);
+  assert.equal(ok('snakebite-severity', { 'ss-pul': '3', 'ss-cv': '3', 'ss-loc': '4', 'ss-gi': '2', 'ss-hem': '1', 'ss-cns': '1' }).total, 14);
+  assert.equal(ok('cauchy-frostbite', { 'cf-topo': 'distal-phalanx', 'cf-bone': 'absent-carpal-tarsal' }).grade, 4);
+});
+
+test('lib/eddecision-v107.js worked calls (wave 13)', () => {
+  assert.equal(ok('new-orleans-head', { 'no-vomit': '1', 'no-age': '1', 'no-head': '1' }).positive, 3);
+  assert.equal(ok('go-far', { 'gf-age': '82', 'gf-sepsis': '1', 'gf-resp': '1' }).total, 17);
+  assert.equal(ok('macocha', { 'mc-mallampati': '1', 'mc-osa': '1' }).total, 7);
+});
+
+test('lib/warfarin-v133.js worked calls (wave 13)', () => {
+  // Height/weight are consumed in cm/kg directly (the browser unit toggle is bypassed).
+  assert.equal(ok('warfarin-iwpc', { 'iw-age': '65', 'iw-ht': '170', 'iw-wt': '70', 'iw-vk': 'GG', 'iw-cyp': '*1/*1', 'iw-race': 'white', 'iw-ind': 'no', 'iw-amio': 'no' }).weekly, 41.1);
+  assert.equal(ok('warfarin-gage', { 'ga-age': '60', 'ga-ht': '175', 'ga-wt': '70', 'ga-inr': '2.5', 'ga-vk': 'GG', 'ga-cyp': '*1/*1', 'ga-amio': 'no', 'ga-smoke': 'no', 'ga-aa': 'no', 'ga-dvt': 'no' }).daily, 6.3);
+  assert.equal(ok('warfarin-init-10mg', { 'w10-day': '3', 'w10-inr3': '1.2' }).dose, 15);
+  assert.equal(ok('warfarin-init-5mg', { 'w5-day': '3', 'w5-inr': '1.6' }).dose, 5);
+});
+
 // The enum->boolean adapter transform reaches the lib: el-ganzouri prognath and
 // elapss earlierSah both map a yes/no select onto a lib boolean.
 test('enum->boolean adapter transform reaches the lib (elapss earlierSah)', () => {

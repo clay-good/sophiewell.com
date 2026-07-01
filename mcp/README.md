@@ -73,7 +73,7 @@ strings; booleans as `true`/`false`; enums by their listed string values.
 
 ```
 list_calculators { "specialty": "hepatology" }
-  -> { coverage: "355 of 816 catalog tiles exposed ...", calculators: [ { id: "meld-xi", ... }, ... ] }
+  -> { coverage: "371 of 816 catalog tiles exposed ...", calculators: [ { id: "meld-xi", ... }, ... ] }
 
 describe_calculator { "id": "meld-xi" }
   -> { inputSchema: { ... mx-bili, mx-creat ... }, citation: "Heuman DM ... Liver Transpl 2007", ... }
@@ -125,8 +125,10 @@ modules (the rheumatology / obstetric-gynecology / spine / orthopedic / surgical
 cluster — RA/spondyloarthritis/SLE/vasculitis activity and criteria, palliative
 prognosis, opioid conversion, metastatic-spine and spinal-injury scores,
 fracture classifications, surgical and airway risk models, urology symptom
-scores, gynecologic risk/staging, and obstetric bedside math), for 355 across 73
-modules today.
+scores, gynecologic risk/staging, and obstetric bedside math); and a thirteenth
+wave added 16 more across 5 modules (older-adult prognosis, metabolic
+emergencies, environmental injury, ED/ICU decision instruments, and warfarin
+dosing), for 371 across 78 modules today.
 Later waves extend it module by module against the same contract.
 
 ## Design

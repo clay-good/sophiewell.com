@@ -4116,8 +4116,8 @@ clamped to `[0, 1]`, so the JSON surface never emits a non-finite probability.
 
 ### Coverage is explicit and honest
 
-Adapting the catalog is incremental. Coverage now stands at **355 clinical
-calculators across 73 `lib` modules** (of 816 catalog tiles), built module by
+Adapting the catalog is incremental. Coverage now stands at **371 clinical
+calculators across 78 `lib` modules** (of 816 catalog tiles), built module by
 module against the one fixed contract:
 
 | wave | modules | tiles |
@@ -4134,15 +4134,18 @@ module against the one fixed contract:
 | tenth (LTC-GA) | `ltcga-v173` (BIMS, AD8, CDR-SOB), `ltcga-v174` (Nu-DESC, DOSS, Cornell CSDD, interRAI ABS, CMAI), `ltcga-v175` (Abbey, CNPI), `ltcga-v176` (STRATIFY, 30-s chair stand, 4-stage balance, functional reach, gait speed, STEADI algorithm), `ltcga-v177` (SARC-F, SARC-CalF, PRISMA-7, SOF), `ltcga-v178` (GNRI, Onodera PNI, CONUT, SNAQ, EAT-10, DETERMINE), `ltcga-v179` (ACB, ARS, Drug Burden Index), `ltcga-v182` (Sandvik, ICIQ-UI-SF, MCSI, CSI, BWAT) | 34 |
 | eleventh (acute neuro / psych / pulm / tox / trauma) | `neuro-v95` (mRS, GOS-E, Hoehn-Yahr, Spetzler-Martin, House-Brackmann, MIDAS), `neuro-v117` (ASPECTS, ICH ABC/2, DRAGON, HAT, SEDAN, THRIVE), `psych-v96` (HAM-D, HAM-A, MADRS, MDQ, Y-BOCS, PCL-5), `psych-v123` (AIMS, Bush-Francis, Barnes, SCOFF, CES-D), `pulm-v114` (DECAF, BAP-65, Bronchiectasis-SI, FACED, NoSAS, AHI/ODI), `pulmnod-v115` (Mayo SPN, Brock, Fleischner 2017, REVEAL Lite 2, RAPID), `tox-v110` (DigiFab, NAC, HIET, TCA bicarbonate, EXTRIP lithium), `trauma-v108` (TRISS, NISS, TASH, RABT, GCS-Pupils, NEXUS Chest CT), `traumaclass-v109` (Denver BCVI, AAST, MESS, LRINEC, ALT-70) | 50 |
 | twelfth (rheumatology / ob-gyn / spine / ortho / surgical) | `rheum-v148` (ASDAS, FFS-2011, GCA-2022, PPI, PP-Score, opioid-conversion, Naranjo), `rheum-v160` (RAPID3, DAPSA, SLICC-SLE, 2019-EULAR/ACR-SLE), `rheum-periop-v89` (DAS28, King's-College, ASA-PS, Surgical-Apgar), `rheum-ob-v156` (BASDAI, BASFI, ESSDAI, Robson), `spine-v146` (SINS, Revised-Tokuhashi, Tomita, TLICS, SLIC), `ortho-v144` (Gustilo-Anderson, Garden, Weber, Schatzker, Salter-Harris, Neer), `ortho-v145` (Frykman, Mirels, Kellgren-Lawrence, Pittsburgh-knee, compartment-ΔP), `surg-v142` (POSSUM, P-POSSUM, SORT, Goldman-CRI, Wilson-airway, Surgical-Risk-Scale), `urology-v153` (IPSS, IIEF-5, OABSS), `gyn-v139` (Flamm-VBAC, ROMA, RMI, IOTA-Simple-Rules, Rotterdam-PCOS, POP-Q), `ob-v138` (Hadlock-EFW, fullPIERS, miniPIERS, AFI, Barnhart-hCG, IOM-GWG) | 56 |
+| thirteenth (older-adult prognosis / metabolic emergencies / environmental injury / ED-ICU decisions / warfarin dosing) | `ltcga-v180` (Lee 4-year mortality index, interRAI CHESS), `metabolic-onc-v88` (DKA/HHS, Calvert carboplatin, Cairo-Bishop TLS), `enviro-v111` (Lake-Louise AMS, Szpilman drowning, Snakebite Severity, Cauchy frostbite), `eddecision-v107` (New-Orleans head-CT, GO-FAR, MACOCHA), `warfarin-v133` (IWPC, Gage, Kovacs-10 mg, Crowther-5 mg) | 16 |
 
 `docs/mcp-coverage.md` is the ledger and `list_calculators` always reports the
 live exposed fraction (`"<N> of <M> catalog tiles exposed"`), never a hardcoded
-number. Four tiles inside these modules are deliberately left unexposed and
-recorded as such: `phases-iph` has no `META.example` to round-trip, `pospom`
-takes a variable-length comorbidity array that needs a bespoke `toArgs`,
-`ses-cd` takes per-segment input arrays rather than the flat `dom→arg→kind`
-contract, and `rosendaal-ttr` takes a multi-line textarea of "date INR" rows
-(a list of item-values, not a flat scalar). Two wave-six tiles (HINTS, Bickerstaff) are categorical instruments
+number. Five tiles inside these modules are deliberately left unexposed and
+recorded as such: `phases-iph` and `hear` (the HEAR score) have no `META.example`
+to round-trip, `pospom` takes a variable-length comorbidity array that needs a
+bespoke `toArgs`, `ses-cd` takes per-segment input arrays rather than the flat
+`dom→arg→kind` contract, and `rosendaal-ttr` takes a multi-line textarea of "date
+INR" rows (a list of item-values, not a flat scalar). The two `ltcga-v181`
+long-term-care infection-surveillance tiles (McGeer, Loeb) are site-branched and
+await a later wave that carries their full per-site criterion sets. Two wave-six tiles (HINTS, Bickerstaff) are categorical instruments
 whose number-free examples round-trip through the band/note text, and the
 R.E.N.A.L. hilar suffix is an empty-string/`h` enum. The wave-seven Mehran
 yes/no risk factors map to two-value enums, the EuroSCORE II logistic model is
@@ -4177,8 +4180,18 @@ the Drug Burden Index). Exposing `brock-nodule` to the `mcp-fuzz` output-safety
 sweep surfaced a latent rounding overflow — `Math.round(n * 10) / 10` returns
 `Infinity` for `n` near `Number.MAX_VALUE`, which leaked an `"Infinity mm"` token
 into the nodule `detail` string on fuzz-only magnitudes — now fixed at the source
-(`lib/pulmnod-v115.js` rounds overflow-safe). Later waves extend coverage the same
-way — one module, one ledger entry, one set of round-tripping examples at a time.
+(`lib/pulmnod-v115.js` rounds overflow-safe). The wave-thirteen older-adult
+prognosis / metabolic-emergency / environmental / ED-decision / warfarin cluster
+(16 across 5 modules) exposes free labs, symptom sub-scores, biometry, and the
+nomogram protocol day/INR as numbers, checklist criteria as booleans, and the
+ordinal selects (age bands, mental status, drowning and frostbite grade axes,
+VKORC1 / CYP2C9 genotypes, race, and the yes/no pharmacogenetic questions) as
+enums; the Calvert GFR cap and the Cairo-Bishop age class are the wave's only
+enum→flag `to` transforms, and the warfarin models consume height/weight in
+cm/kg directly (the browser unit toggle is a render-time convenience the pure
+functions never see), so no bespoke `formatResult` is needed. The HEAR score is
+left unexposed (no `META.example` to round-trip). Later waves extend coverage the
+same way — one module, one ledger entry, one set of round-tripping examples at a time.
 
 ### Try it
 
