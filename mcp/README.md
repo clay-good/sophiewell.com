@@ -73,7 +73,7 @@ strings; booleans as `true`/`false`; enums by their listed string values.
 
 ```
 list_calculators { "specialty": "hepatology" }
-  -> { coverage: "299 of 814 catalog tiles exposed ...", calculators: [ { id: "meld-xi", ... }, ... ] }
+  -> { coverage: "355 of 816 catalog tiles exposed ...", calculators: [ { id: "meld-xi", ... }, ... ] }
 
 describe_calculator { "id": "meld-xi" }
   -> { inputSchema: { ... mx-bili, mx-creat ... }, citation: "Heuman DM ... Liver Transpl 2007", ... }
@@ -120,7 +120,13 @@ more across 9 modules (the acute neurology / psychiatry / pulmonary / toxicology
 thrombolysis prognosis, clinician-rated and public-domain psychiatric scales,
 COPD / bronchiectasis / sleep instruments, pulmonary-nodule / PH /
 pleural-infection scores, toxicology dosing and dialysis decisions, and trauma
-severity / classification scores), for 299 across 62 modules today.
+severity / classification scores); and a twelfth wave added 56 more across 11
+modules (the rheumatology / obstetric-gynecology / spine / orthopedic / surgical
+cluster — RA/spondyloarthritis/SLE/vasculitis activity and criteria, palliative
+prognosis, opioid conversion, metastatic-spine and spinal-injury scores,
+fracture classifications, surgical and airway risk models, urology symptom
+scores, gynecologic risk/staging, and obstetric bedside math), for 355 across 73
+modules today.
 Later waves extend it module by module against the same contract.
 
 ## Design

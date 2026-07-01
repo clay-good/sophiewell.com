@@ -49,6 +49,57 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
   (index.html, README, package.json, `docs/scope-mdcalc-parity.md`) moved
   814 → 816.
 
+### Added (spec-v183 — MCP wave 12: expose the rheumatology / ob-gyn / spine / orthopedic / surgical cluster (56 calculators) as deterministic agent tools; no tile delta, 816)
+
+- The optional stdio MCP server (`mcp/server.js`) gains a **twelfth coverage
+  wave**: 56 more catalog calculators exposed as deterministic
+  `compute_calculator` tools, across 11 `lib` modules, bringing the exposed
+  surface to **355 of 816 catalog tiles across 73 modules**. No catalog tile is
+  added or changed — this is adapter-only coverage of the rheumatology,
+  obstetric-gynecology, spine, orthopedic, and surgical compute logic already
+  shipped across the spec-v89 through spec-v160 programs.
+  - `lib/rheum-v148.js` — RA/spondyloarthritis/vasculitis activity, palliative
+    prognosis, and drug safety: `asdas`, `ffs-2011`, `gca-acr-eular-2022`,
+    `palliative-prognostic-index`, `palliative-prognostic-score`,
+    `opioid-conversion`, `naranjo`.
+  - `lib/rheum-v160.js` — SLE / psoriatic-arthritis indices: `rapid3`, `dapsa`,
+    `slicc-sle`, `sle-2019-eular-acr`.
+  - `lib/rheum-periop-v89.js` — activity & perioperative/hepatic risk: `das28`,
+    `kings-college`, `asa-ps`, `surgical-apgar`.
+  - `lib/rheum-ob-v156.js` — axial spondyloarthritis, Sjögren, obstetric:
+    `basdai`, `basfi`, `essdai`, `robson`.
+  - `lib/spine-v146.js` — metastatic-spine & spinal-injury scores: `sins-score`,
+    `tokuhashi-revised`, `tomita-score`, `tlics-score`, `slic-score`.
+  - `lib/ortho-v144.js` — fracture classifications: `gustilo-anderson`,
+    `garden-classification`, `weber-ankle`, `schatzker-classification`,
+    `salter-harris`, `neer-classification`.
+  - `lib/ortho-v145.js` — fracture/joint scores & compartment syndrome:
+    `frykman-classification`, `mirels-score`, `kellgren-lawrence`,
+    `pittsburgh-knee-rule`, `compartment-delta-pressure`.
+  - `lib/surg-v142.js` — surgical & airway risk models: `possum`, `p-possum`,
+    `sort`, `goldman-cardiac-risk`, `wilson-airway`, `surgical-risk-scale`.
+  - `lib/urology-v153.js` — urology symptom scores: `ipss`, `iief5`, `oabss`.
+  - `lib/gyn-v139.js` — gynecologic risk & staging: `flamm-vbac`, `roma-ovarian`,
+    `rmi-ovarian`, `iota-simple-rules`, `rotterdam-pcos`, `popq-staging`.
+  - `lib/ob-v138.js` — obstetric bedside math: `hadlock-efw`, `fullpiers`,
+    `minipiers`, `afi`, `barnhart-hcg`, `iom-gwg`.
+- Every tile is `clinical:true`, carries a `META.example` that round-trips to its
+  `expected` value through the gate, and takes flat scalar inputs — no bespoke
+  `toArgs`/`formatResult` was needed. The graded questionnaire items, joint
+  counts, labs, and biometry map to numbers; the yes/no criteria to booleans; and
+  the ordinal / categorical selects (fracture patterns, staging axes, ESSDAI
+  activity levels, opioid agents, ASDAS/DAS28 marker form, Naranjo answers, Robson
+  delivery axes, POSSUM/P-POSSUM point grades) to enums. The single source of
+  truth is unchanged: compute stays in `lib/*.js`, citation/example/interpretation
+  in `lib/meta.js`, and name/group/clinical in `app.js` `UTILITIES`; the adapter
+  contributes only the input schema.
+- Files: `mcp/adapters/{rheum-v148,rheum-v160,rheum-periop-v89,rheum-ob-v156,spine-v146,ortho-v144,ortho-v145,surg-v142,urology-v153,gyn-v139,ob-v138}.js`,
+  `mcp/catalog.js` (imports + `ADAPTER_MODULES`), and the `docs/mcp-coverage.md`
+  ledger (twelfth-wave narrative + exposed-id blocks). The
+  `scripts/check-mcp-catalog.mjs` gate asserts the ledger equals the live adapter
+  set exactly and that every example round-trips; the `test/mcp/mcp-fuzz.test.js`
+  extreme-input sweep covers all 355 adapters automatically.
+
 ### Added (spec-v183 — MCP wave 11: expose the acute neuro / psych / pulm / tox / trauma cluster (50 calculators) as deterministic agent tools; no tile delta, 814)
 
 - The optional stdio MCP server (`mcp/server.js`) gains an **eleventh coverage

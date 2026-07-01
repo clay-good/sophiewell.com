@@ -1,6 +1,6 @@
 # spec-v185.md — Genuinely-absent advanced calculators: Fick cardiac output, Gorlin valve area, Qp/Qs shunt ratio, Doppler LVOT stroke volume, VTE-BLEED, Matsuda index, Rosendaal TTR, and Janmahasatian lean body weight (+8 tiles)
 
-> Status: **PROPOSED (2026-07-01).** This spec **supersedes and replaces** an
+> Status: **SHIPPED (2026-07-01, +8 → 782; commit 9a29087).** This spec **supersedes and replaces** an
 > earlier v185–v195 batch of draft specs that were withdrawn: those drafts
 > proposed ~49 calculators but an audit against the live `UTILITIES` (774 tiles)
 > found ~41 of them **already shipped** (the earlier absence check used a faulty

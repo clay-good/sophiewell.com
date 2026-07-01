@@ -4116,8 +4116,8 @@ clamped to `[0, 1]`, so the JSON surface never emits a non-finite probability.
 
 ### Coverage is explicit and honest
 
-Adapting the catalog is incremental. Coverage now stands at **299 clinical
-calculators across 62 `lib` modules** (of 816 catalog tiles), built module by
+Adapting the catalog is incremental. Coverage now stands at **355 clinical
+calculators across 73 `lib` modules** (of 816 catalog tiles), built module by
 module against the one fixed contract:
 
 | wave | modules | tiles |
@@ -4133,6 +4133,7 @@ module against the one fixed contract:
 | ninth | `gaps-v185` (Fick CO, Gorlin, Qp:Qs, LVOT SV, VTE-BLEED, Matsuda, lean body weight), `specialtymath-v186` (BED/EQD2, PISA EROA, LV wall stress, corrected DLCO, VO₂max, proportion CI), `onc-staging-v187` (BCLC, IMDC, MSKCC, RECIST, mGPS), `heme-staging-v188` (Binet, Rai, Ann Arbor, FLIPI-2, Hasford), `heme-risk-v189` (mSMART, IMPEDE-VTE, SAMe-TT2R2, Elixhauser), `hepgi-v190` (PALBI, MELD-Na, Clichy, Rome IV IBS), `dermuro-v191` (SCORTEN, melanoma T, PI-RADS, Guy's stone), `risk-v192` (FINDRISC, Grobman VBAC, Marburg, ADHERE) | 39 |
 | tenth (LTC-GA) | `ltcga-v173` (BIMS, AD8, CDR-SOB), `ltcga-v174` (Nu-DESC, DOSS, Cornell CSDD, interRAI ABS, CMAI), `ltcga-v175` (Abbey, CNPI), `ltcga-v176` (STRATIFY, 30-s chair stand, 4-stage balance, functional reach, gait speed, STEADI algorithm), `ltcga-v177` (SARC-F, SARC-CalF, PRISMA-7, SOF), `ltcga-v178` (GNRI, Onodera PNI, CONUT, SNAQ, EAT-10, DETERMINE), `ltcga-v179` (ACB, ARS, Drug Burden Index), `ltcga-v182` (Sandvik, ICIQ-UI-SF, MCSI, CSI, BWAT) | 34 |
 | eleventh (acute neuro / psych / pulm / tox / trauma) | `neuro-v95` (mRS, GOS-E, Hoehn-Yahr, Spetzler-Martin, House-Brackmann, MIDAS), `neuro-v117` (ASPECTS, ICH ABC/2, DRAGON, HAT, SEDAN, THRIVE), `psych-v96` (HAM-D, HAM-A, MADRS, MDQ, Y-BOCS, PCL-5), `psych-v123` (AIMS, Bush-Francis, Barnes, SCOFF, CES-D), `pulm-v114` (DECAF, BAP-65, Bronchiectasis-SI, FACED, NoSAS, AHI/ODI), `pulmnod-v115` (Mayo SPN, Brock, Fleischner 2017, REVEAL Lite 2, RAPID), `tox-v110` (DigiFab, NAC, HIET, TCA bicarbonate, EXTRIP lithium), `trauma-v108` (TRISS, NISS, TASH, RABT, GCS-Pupils, NEXUS Chest CT), `traumaclass-v109` (Denver BCVI, AAST, MESS, LRINEC, ALT-70) | 50 |
+| twelfth (rheumatology / ob-gyn / spine / ortho / surgical) | `rheum-v148` (ASDAS, FFS-2011, GCA-2022, PPI, PP-Score, opioid-conversion, Naranjo), `rheum-v160` (RAPID3, DAPSA, SLICC-SLE, 2019-EULAR/ACR-SLE), `rheum-periop-v89` (DAS28, King's-College, ASA-PS, Surgical-Apgar), `rheum-ob-v156` (BASDAI, BASFI, ESSDAI, Robson), `spine-v146` (SINS, Revised-Tokuhashi, Tomita, TLICS, SLIC), `ortho-v144` (Gustilo-Anderson, Garden, Weber, Schatzker, Salter-Harris, Neer), `ortho-v145` (Frykman, Mirels, Kellgren-Lawrence, Pittsburgh-knee, compartment-ΔP), `surg-v142` (POSSUM, P-POSSUM, SORT, Goldman-CRI, Wilson-airway, Surgical-Risk-Scale), `urology-v153` (IPSS, IIEF-5, OABSS), `gyn-v139` (Flamm-VBAC, ROMA, RMI, IOTA-Simple-Rules, Rotterdam-PCOS, POP-Q), `ob-v138` (Hadlock-EFW, fullPIERS, miniPIERS, AFI, Barnhart-hCG, IOM-GWG) | 56 |
 
 `docs/mcp-coverage.md` is the ledger and `list_calculators` always reports the
 live exposed fraction (`"<N> of <M> catalog tiles exposed"`), never a hardcoded

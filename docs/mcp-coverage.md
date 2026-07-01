@@ -226,6 +226,40 @@ labs are numbers, checkbox criteria are booleans, and the ordinal / categorical
 selects are enums. No custom `formatResult` is needed — every exposed example
 round-trips to its `META.example.expected`.
 
+## Twelfth wave — 11 modules
+
+Coverage extends with **56 more clinical calculators across 11 `lib` modules** —
+the rheumatology / obstetric-gynecology / spine / orthopedic / surgical cluster
+from the spec-v138 through spec-v160 program. It exposes rheumatology activity,
+prognosis, and drug-safety instruments (`lib/rheum-v148.js` — ASDAS, FFS-2011,
+the 2022 ACR/EULAR GCA criteria, the Palliative Prognostic Index and Score, the
+opioid equianalgesic converter, Naranjo; `lib/rheum-v160.js` — RAPID3, DAPSA,
+the SLICC 2012 and 2019 EULAR/ACR SLE criteria; `lib/rheum-periop-v89.js` —
+DAS28, the King's College acetaminophen-ALF criteria, ASA physical status, the
+Surgical Apgar Score; `lib/rheum-ob-v156.js` — BASDAI, BASFI, ESSDAI, the Robson
+Ten-Group cesarean classification), metastatic-spine and spinal-injury scores
+(`lib/spine-v146.js` — SINS, Revised Tokuhashi, Tomita, TLICS, SLIC), fracture
+classifications (`lib/ortho-v144.js` — Gustilo-Anderson, Garden, Danis-Weber,
+Schatzker, Salter-Harris, Neer; `lib/ortho-v145.js` — Frykman, Mirels,
+Kellgren-Lawrence, the Pittsburgh knee rule, compartment ΔP), surgical-risk
+models (`lib/surg-v142.js` — POSSUM, P-POSSUM, SORT, the Goldman Cardiac Risk
+Index, the Wilson airway score, the Surgical Risk Scale), urology symptom scores
+(`lib/urology-v153.js` — IPSS, IIEF-5, OABSS), gynecology risk/staging
+(`lib/gyn-v139.js` — Flamm VBAC, ROMA, RMI, the IOTA Simple Rules, the Rotterdam
+PCOS criteria, POP-Q staging), and obstetric bedside math (`lib/ob-v138.js` —
+Hadlock EFW, fullPIERS, miniPIERS, the amniotic fluid index, the Barnhart
+minimal hCG rise, IOM gestational weight gain). Brings the exposed total to **355
+calculators across 73 modules**. The graded questionnaire items, joint counts,
+labs, and biometry are numbers; the yes/no criteria and screening findings are
+booleans; and the ordinal / categorical selects (fracture patterns, staging
+axes, ESSDAI activity levels, opioid agents, ASDAS/DAS28 marker form, Naranjo
+answers, Robson delivery axes) are enums. The POSSUM and P-POSSUM point grades
+are numeric selects the lib range-checks; ASA class and the SORT/Surgical-Risk-
+Scale grades are likewise numbers the lib validates against a fixed set. No tile
+in the batch is skipped and no custom `formatResult` or `toArgs` is needed —
+every exposed example round-trips to its `META.example.expected` through the
+default `makeToArgs`.
+
 ## Exposed
 
 Each id below is live in `mcp/catalog.js`. The gate parses this list.
@@ -652,6 +686,84 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 - `mangled-extremity`
 - `lrinec`
 - `alt-70`
+
+### lib/rheum-v148.js
+- `asdas`
+- `ffs-2011`
+- `gca-acr-eular-2022`
+- `palliative-prognostic-index`
+- `palliative-prognostic-score`
+- `opioid-conversion`
+- `naranjo`
+
+### lib/rheum-v160.js
+- `rapid3`
+- `dapsa`
+- `slicc-sle`
+- `sle-2019-eular-acr`
+
+### lib/rheum-periop-v89.js
+- `das28`
+- `kings-college`
+- `asa-ps`
+- `surgical-apgar`
+
+### lib/rheum-ob-v156.js
+- `basdai`
+- `basfi`
+- `essdai`
+- `robson`
+
+### lib/spine-v146.js
+- `sins-score`
+- `tokuhashi-revised`
+- `tomita-score`
+- `tlics-score`
+- `slic-score`
+
+### lib/ortho-v144.js
+- `gustilo-anderson`
+- `garden-classification`
+- `weber-ankle`
+- `schatzker-classification`
+- `salter-harris`
+- `neer-classification`
+
+### lib/ortho-v145.js
+- `frykman-classification`
+- `mirels-score`
+- `kellgren-lawrence`
+- `pittsburgh-knee-rule`
+- `compartment-delta-pressure`
+
+### lib/surg-v142.js
+- `possum`
+- `p-possum`
+- `sort`
+- `goldman-cardiac-risk`
+- `wilson-airway`
+- `surgical-risk-scale`
+
+### lib/urology-v153.js
+- `ipss`
+- `iief5`
+- `oabss`
+
+### lib/gyn-v139.js
+- `flamm-vbac`
+- `roma-ovarian`
+- `rmi-ovarian`
+- `iota-simple-rules`
+- `rotterdam-pcos`
+- `popq-staging`
+
+### lib/ob-v138.js
+- `hadlock-efw`
+- `fullpiers`
+- `minipiers`
+- `afi`
+- `barnhart-hcg`
+- `iom-gwg`
 
 ## Not yet adapted
 

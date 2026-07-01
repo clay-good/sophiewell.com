@@ -79,6 +79,17 @@ import pulmnodV115 from './adapters/pulmnod-v115.js';
 import toxV110 from './adapters/tox-v110.js';
 import traumaV108 from './adapters/trauma-v108.js';
 import traumaclassV109 from './adapters/traumaclass-v109.js';
+import rheumV148 from './adapters/rheum-v148.js';
+import rheumV160 from './adapters/rheum-v160.js';
+import rheumPeriopV89 from './adapters/rheum-periop-v89.js';
+import rheumObV156 from './adapters/rheum-ob-v156.js';
+import spineV146 from './adapters/spine-v146.js';
+import orthoV144 from './adapters/ortho-v144.js';
+import orthoV145 from './adapters/ortho-v145.js';
+import surgV142 from './adapters/surg-v142.js';
+import urologyV153 from './adapters/urology-v153.js';
+import gynV139 from './adapters/gyn-v139.js';
+import obV138 from './adapters/ob-v138.js';
 
 const ADAPTER_MODULES = [
   ['tox-v86', toxV86],
@@ -143,6 +154,17 @@ const ADAPTER_MODULES = [
   ['tox-v110', toxV110],
   ['trauma-v108', traumaV108],
   ['traumaclass-v109', traumaclassV109],
+  ['rheum-v148', rheumV148],
+  ['rheum-v160', rheumV160],
+  ['rheum-periop-v89', rheumPeriopV89],
+  ['rheum-ob-v156', rheumObV156],
+  ['spine-v146', spineV146],
+  ['ortho-v144', orthoV144],
+  ['ortho-v145', orthoV145],
+  ['surg-v142', surgV142],
+  ['urology-v153', urologyV153],
+  ['gyn-v139', gynV139],
+  ['ob-v138', obV138],
 ];
 
 const HERE = dirname(fileURLToPath(import.meta.url));

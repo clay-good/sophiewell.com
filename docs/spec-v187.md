@@ -1,6 +1,6 @@
 # spec-v187.md — Solid-tumor staging, response & inflammation-based prognosis: BCLC, IMDC, MSKCC/Motzer, RECIST 1.1, and the modified Glasgow Prognostic Score (+5 tiles)
 
-> Status: **PROPOSED (2026-07-01).** First feature spec of the **Subspecialty
+> Status: **SHIPPED (2026-07-01, +5 → 793; commit 9a29087).** First feature spec of the **Subspecialty
 > Oncology & Hematology Staging** program (umbrella below, §1.1), advancing the
 > long-horizon [scope-mdcalc-parity.md](scope-mdcalc-parity.md) commitment to carry
 > every clinically actionable calculator. Adds **5** deterministic solid-tumor

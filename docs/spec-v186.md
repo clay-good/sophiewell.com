@@ -1,6 +1,6 @@
 # spec-v186.md — Advanced specialty computations: radiotherapy BED/EQD2, echo PISA regurgitation, LV wall stress, corrected DLCO, exercise VO₂max/METs, and the proportion confidence interval (+6 tiles)
 
-> Status: **PROPOSED (2026-07-01).** Second post-audit spec (after
+> Status: **SHIPPED (2026-07-01, +6 → 788; commit 9a29087).** Second post-audit spec (after
 > [spec-v185](spec-v185.md), which corrected the withdrawn duplicative drafts).
 > Every tile below was verified absent by a **direct scan of `app.js`** (zero
 > id / name / keyword hits) — not the faulty keyword scan that produced the
