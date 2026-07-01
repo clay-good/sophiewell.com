@@ -6,6 +6,39 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v188 / v189 — Subspecialty Oncology & Hematology Staging program closeout: 9 staging / prognostic calculators, 793 → 802)
+
+- Two feature specs close the **Subspecialty Oncology & Hematology Staging**
+  program (opened by the shipped spec-v187) with **9 deterministic calculators**,
+  each id verified absent by a direct scan of `app.js` before any code (spec-v85
+  §6.2). Catalog **793 → 802**; every stage boundary, weight, and cut-point
+  re-fetched and cross-verified against ≥ 2 independent sources at implementation
+  (spec-v97). No runtime network call, no AI; each tile obeys the spec-v100 §2
+  doctrine, renders the spec-v50 §3 posture note, and authors no order.
+  - **spec-v188** (`lib/heme-staging-v188.js`, `views/group-v188.js`, +5):
+    **Binet** and **Rai** CLL clinical stages; **Ann Arbor** (Lugano
+    modification) lymphoma staging; **FLIPI-2** (the β₂-microglobulin revision,
+    distinct from the live FLIPI-1); and the **Hasford (Euro)** CML score
+    (`(0.6666·[age>50] + 0.0420·spleen + 0.0584·blasts + 0.0413·eos +
+    0.2039·[baso>3%] + 1.0956·[plt>1500]) × 1000`; low ≤ 780, high > 1480).
+  - **spec-v189** (`lib/heme-risk-v189.js`, `views/group-v189.js`, +4):
+    **mSMART** myeloma cytogenetic risk (double/triple-hit naming); the
+    **IMPEDE VTE** myeloma thromboprophylaxis score (signed weights, bands ≤ 3 /
+    4–7 / ≥ 8); **SAMe-TT2R2** VKA anticoagulation-control prediction (0–1 good,
+    ≥ 2 poorer); and the **Elixhauser** comorbidity index with the original
+    **van Walraven (2009)** signed weighting (range −7 to +12).
+- **BVAS v3 deferred** (the fifth proposed v189 tile): a faithful score needs
+  item-level new/worse-vs-persistent weighting of ~56 items across nine organ
+  systems, and an organ-system approximation would misreport the total — parked
+  with `precise-dapt` / `crib-ii` / `gwtg-hf` under the spec-v97 fidelity bar,
+  not shipped from an approximation.
+- Each compute routes through `lib/num.js`, is finite-guarded, and takes only
+  bounded comparisons / integer sums (no new divisions), covered by the spec-v59
+  fuzz harness with zero non-finite leaks. All 9 carry unit tests, a `META` entry
+  with inline citation + `citationUrl` + `accessed`, a per-tile
+  `docs/audits/v12/<id>.md` log, and a `docs/clinical-citations.md` worked
+  example. No tile trips the check-citations issuer pattern, so no staleness rows.
+
 ### Added (spec-v185 / v186 / v187 — Advanced Bedside Quantitation program: 19 gap-filling calculators, 774 → 793)
 
 - Three post-audit feature specs ship **19 deterministic, free-to-reproduce

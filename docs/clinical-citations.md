@@ -4778,3 +4778,48 @@ Worked example: baseline 100 mm, current 65 mm, nadir 60 mm. -35% from baseline 
 Citation: McMillan DC. The systemic inflammation-based Glasgow Prognostic Score: a decade of experience in patients with cancer. Cancer Treat Rev. 2013;39(5):534-540.
 Formula: CRP <= 10 mg/L -> 0; CRP > 10 with albumin >= 3.5 g/dL -> 1; CRP > 10 and albumin < 3.5 g/dL -> 2.
 Worked example: CRP 25 mg/L, albumin 3.0 g/dL -> mGPS 2.
+
+### Binet staging (CLL)
+Citation: Binet JL, Auquier A, Dighiero G, et al. A new prognostic classification of chronic lymphocytic leukemia derived from a multivariate survival analysis. Cancer. 1981;48(1):198-206.
+Formula: Stage A Hb >= 10 g/dL and platelets >= 100 x10^9/L with < 3 involved lymphoid areas; Stage B same counts with >= 3 areas; Stage C Hb < 10 and/or platelets < 100 (any area count).
+Worked example: 4 involved areas, Hb 12, platelets 150 -> stage B.
+
+### Rai staging (CLL)
+Citation: Rai KR, Sawitsky A, Cronkite EP, Chanana AD, Levy RN, Pasternack BS. Clinical staging of chronic lymphocytic leukemia. Blood. 1975;46(2):219-234.
+Formula: 0 lymphocytosis only; I + lymphadenopathy; II + spleen/liver enlargement; III + anemia (Hb < 11); IV + thrombocytopenia (platelets < 100). Modified: low (0), intermediate (I-II), high (III-IV).
+Worked example: lymphocytosis + lymphadenopathy, Hb 14, platelets 250 -> stage I (intermediate).
+
+### Ann Arbor / Lugano lymphoma staging
+Citation: Carbone PP, Kaplan HS, Musshoff K, Smithers DW, Tubiana M. Report of the Committee on Hodgkin's Disease Staging Classification. Cancer Res. 1971;31(11):1860-1861. Lugano: Cheson BD, Fisher RI, Barrington SF, et al. J Clin Oncol. 2014;32(27):3059-3068.
+Formula: I one region; II >= 2 regions same side of diaphragm; III both sides; IV disseminated extranodal. A/B suffix for B symptoms; E extranodal; S splenic. Limited (I-II) vs advanced (III-IV).
+Worked example: >= 2 regions same side with B symptoms -> stage IIB.
+
+### FLIPI-2 (follicular lymphoma prognostic index 2)
+Citation: Federico M, Bellei M, Marcheselli L, et al. Follicular Lymphoma International Prognostic Index 2. J Clin Oncol. 2009;27(27):4555-4562.
+Formula: five factors 1 point each (age > 60, elevated beta-2-microglobulin, longest node > 6 cm, marrow involvement, Hb < 12). Low 0, intermediate 1-2, high 3-5.
+Worked example: age > 60 + elevated beta-2-microglobulin + Hb < 12 = 3 (high).
+
+### Hasford (Euro) score for CML
+Citation: Hasford J, Pfirrmann M, Hehlmann R, et al. A new prognostic score for survival of patients with chronic myeloid leukemia treated with interferon alfa. J Natl Cancer Inst. 1998;90(11):850-858.
+Formula: (0.6666 x [age > 50] + 0.0420 x spleen + 0.0584 x blasts + 0.0413 x eosinophils + 0.2039 x [basophils > 3%] + 1.0956 x [platelets > 1500]) x 1000. Low <= 780, intermediate 781-1480, high > 1480.
+Worked example: age 60, spleen 10 cm, platelets 400, blasts 5%, eos 5%, baso 5% -> 1789 (high).
+
+### mSMART myeloma risk stratification
+Citation: Mikhael JR, Dingli D, Roy V, et al. Updated Mayo Stratification of Myeloma and Risk-Adapted Therapy (mSMART) consensus guidelines. Mayo Clin Proc. 2013;88(4):360-376.
+Formula: high-risk if any of t(4;14), t(14;16), t(14;20), del(17p)/p53, gain(1q)/del(1p), high plasma-cell S-phase, R-ISS III / high LDH. Two features = double hit, >= 3 = triple hit; standard risk otherwise.
+Worked example: t(4;14) + del(17p) -> high risk (double hit).
+
+### IMPEDE VTE score (myeloma)
+Citation: Sanfilippo KM, Luo S, Wang TF, et al. Predicting venous thromboembolism in multiple myeloma: development and validation of the IMPEDE VTE score. Am J Hematol. 2019;94(11):1176-1184.
+Formula: IMiD +4, BMI >= 25 +1, pelvic/hip/femur fracture +4, ESA +1, dexamethasone high +4/low +2, doxorubicin +3, Asian -3, prior VTE +5, tunneled line/CVC +2, thromboprophylaxis therapeutic anticoag -4/aspirin -3. Bands <= 3 low, 4-7 intermediate, >= 8 high.
+Worked example: IMiD + high-dose dexamethasone + prior VTE = 13 (high).
+
+### SAMe-TT2R2 (VKA anticoagulation-control prediction)
+Citation: Apostolakis S, Sullivan RM, Olshansky B, Lip GYH. Factors affecting quality of anticoagulation control among patients with atrial fibrillation on warfarin: the SAMe-TT2R2 score. Chest. 2013;144(5):1555-1563.
+Formula: Sex female +1, Age < 60 +1, Medical history (>= 2 comorbidities) +1, Treatment (interacting drugs) +1, Tobacco (within 2 y) +2, Race (non-white) +2. Score 0-1 good VKA control; >= 2 poorer control.
+Worked example: current tobacco use = 2 -> poorer control predicted.
+
+### Elixhauser comorbidity index (van Walraven weighting)
+Citation: Elixhauser A, Steiner C, Harris DR, Coffey RM. Comorbidity measures for use with administrative data. Med Care. 1998;36(1):8-27. Weights: van Walraven C, Austin PC, Jennings A, Quan H, Forster AJ. Med Care. 2009;47(6):626-633.
+Formula: sum the signed van Walraven weight of each present comorbidity (range -7 to +12; nine conditions weight 0). A higher total predicts higher in-hospital mortality.
+Worked example: CHF (+7) + metastatic cancer (+12) + obesity (-4) = 15 across 3 conditions.

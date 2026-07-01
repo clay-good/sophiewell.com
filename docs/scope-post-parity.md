@@ -83,7 +83,7 @@ live value, never copied as a literal.
   incorrect against the live regex; same treatment as the v147/v148 ACR/EULAR scores),
   so no documentation-only staleness row is forced. +4. **The spec-v150 Post-Parity
   Coverage program is now COMPLETE** (679 → 700, +21 shipped; PRECISE-DAPT the sole
-  deferral against the nominal +25). The live catalog is **793** deterministic tiles. The Subspecialty Depth and Cross-Discipline Completion programs have since carried the count from 700 onward; see [scope-subspecialty-depth.md](scope-subspecialty-depth.md).
+  deferral against the nominal +25). The live catalog is **802** deterministic tiles. The Subspecialty Depth and Cross-Discipline Completion programs have since carried the count from 700 onward; see [scope-subspecialty-depth.md](scope-subspecialty-depth.md).
 
 ## Program roadmap (complete)
 
@@ -96,3 +96,17 @@ function/falls/palliative performance (shipped, +4), v155 suite completions (shi
 own ≥ 2-source re-verification; the lone tile whose published form could not be
 cross-verified (PRECISE-DAPT, a restricted-cubic-spline nomogram) was deferred with the
 [spec-v97](spec-v97.md) rationale recorded, not shipped from an approximation.
+
+The **Subspecialty Oncology & Hematology Staging** program (spec-v187/v188/v189)
+closed 2026-07-01 at **802**: v187 solid-tumor staging/response/inflammation (+5),
+[spec-v188](spec-v188.md) leukemia/lymphoma staging & prognosis (+5:
+`binet-cll`, `rai-cll`, `ann-arbor`, `flipi-2`, `hasford-cml`), and
+[spec-v189](spec-v189.md) heme/rheum/anticoagulation/comorbidity (+4: `msmart`,
+`impede-vte`, `same-tt2r2`, `elixhauser`). The fifth v189 score, **BVAS v3, was
+deferred** under the same [spec-v97](spec-v97.md) fidelity bar as PRECISE-DAPT: a
+faithful score needs item-level new/worse-vs-persistent weighting of ~56 items
+across nine organ systems, and an organ-system approximation would misreport the
+total — parked with `precise-dapt` / `crib-ii` / `gwtg-hf`, not shipped from an
+approximation. Every shipped weight and boundary was re-fetched and cross-verified
+across ≥ 2 sources (the van Walraven weights, the Hasford ×1000 formula, the
+IMPEDE-VTE and SAMe-TT2R2 point bands).

@@ -1,6 +1,7 @@
 # spec-v189.md — Myeloma risk, vasculitis activity, anticoagulation suitability & comorbidity burden: mSMART, IMPEDE-VTE, BVAS, SAMe-TT2R2, and the Elixhauser index (+5 tiles)
 
-> Status: **PROPOSED (2026-07-01).** Third and **closing** feature spec of the
+> Status: **SHIPPED 2026-07-01 (798 → 802, +4; BVAS v3 deferred).** Third and
+> **closing** feature spec of the
 > **Subspecialty Oncology & Hematology Staging** program ([spec-v187](spec-v187.md)
 > §1.1), extending into adjacent hematology / rheumatology / anticoagulation
 > prognosis. Adds **5** deterministic instruments, **each verified absent by a
@@ -72,6 +73,13 @@ unit-tested at every band — and each is decision support, **never an order**.
   not an order. Class A. Cross-links `msmart` and the VTE tiles.
 
 ### 2.3 `bvas` — Birmingham Vasculitis Activity Score (v3)
+
+> **DEFERRED (2026-07-01).** A faithful BVAS v3 requires item-level
+> new/worse-vs-persistent scoring of ~56 weighted items across nine organ
+> systems; any organ-system approximation would misreport the total and fail the
+> [spec-v97](spec-v97.md) fidelity bar. Deferred with the other sourcing/fidelity
+> deferrals (crib-ii, gwtg-hf, precise-dapt); recorded in
+> [scope-post-parity.md](scope-post-parity.md). The other four v189 tiles shipped.
 
 - **Citation:** Mukhtyar C, Lee R, Brown D, et al. Modification and validation of
   the Birmingham Vasculitis Activity Score (version 3). *Ann Rheum Dis.*

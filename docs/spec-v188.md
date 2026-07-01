@@ -1,7 +1,7 @@
 # spec-v188.md — Leukemia & lymphoma staging and prognostic indices: Binet, Rai, Ann Arbor / Lugano, FLIPI-2, and the Hasford CML score (+5 tiles)
 
-> Status: **PROPOSED (2026-07-01).** Second feature spec of the **Subspecialty
-> Oncology & Hematology Staging** program ([spec-v187](spec-v187.md) §1.1). Adds
+> Status: **SHIPPED 2026-07-01 (793 → 798, +5).** Second feature spec of the
+> **Subspecialty Oncology & Hematology Staging** program ([spec-v187](spec-v187.md) §1.1). Adds
 > **5** deterministic leukemia / lymphoma staging and prognostic instruments,
 > **each verified absent by a direct scan of `app.js`** (zero hits): the catalog
 > carries the lymphoma IPIs (`flipi`, `nccn-ipi`, `r-ipi`), `mipi`, `gelf-criteria`,
