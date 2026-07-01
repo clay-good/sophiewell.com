@@ -171,6 +171,7 @@ import * as ltcgaV176 from '../../lib/ltcga-v176.js';
 import * as ltcgaV177 from '../../lib/ltcga-v177.js';
 import * as ltcgaV178 from '../../lib/ltcga-v178.js';
 import * as ltcgaV179 from '../../lib/ltcga-v179.js';
+import * as ltcgaV180 from '../../lib/ltcga-v180.js';
 import * as ltcgaV181 from '../../lib/ltcga-v181.js';
 import * as ltcgaV182 from '../../lib/ltcga-v182.js';
 import * as gapsV185 from '../../lib/gaps-v185.js';
@@ -296,6 +297,7 @@ const MODULES = {
   'ltcga-v177.js': ltcgaV177,
   'ltcga-v178.js': ltcgaV178,
   'ltcga-v179.js': ltcgaV179,
+  'ltcga-v180.js': ltcgaV180,
   'ltcga-v181.js': ltcgaV181,
   'ltcga-v182.js': ltcgaV182,
   'gaps-v185.js': gapsV185,

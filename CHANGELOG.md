@@ -6,6 +6,49 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v180 — Long-Term Care & Geriatric Assessment program: older-adult mortality & LTC prognosis, 2 of 7 tiles, +2 → 816)
+
+- The §3.8 cluster of the [spec-v172](docs/spec-v172.md) LTC-GA program ships
+  its first two instruments (Clinical Scoring & Risk, Group G), taking the
+  catalog from 814 to **816**:
+  - **`lee-mortality-index`** — the **Lee 4-Year Mortality Index for older
+    adults** (Lee, JAMA 2006). A weighted point sum (age band + male sex + four
+    comorbidities + current smoking + BMI < 25 + four functional difficulties,
+    0–26) mapped by table lookup to the validation-cohort 4-year all-cause
+    mortality bands (0–5 ≈ 4%, 6–9 ≈ 15%, 10–13 ≈ 42%, ≥ 14 ≈ 64%). A
+    point-table lookup, so there is no exponentiation and no `1 − sigmoid(−bx)`
+    complement to leak a non-finite value (the spec-v140 saturation hazard does
+    not arise).
+  - **`chess-scale`** — the **interRAI CHESS scale** (Changes in Health,
+    End-stage disease, Signs and Symptoms; Hirdes, J Am Geriatr Soc 2003),
+    operationalized per the interRAI LTCF Outcome Scales (CIHI). Signs/symptoms
+    counted and capped at 2, plus one point each for decline in decision-making,
+    decline in ADL status, and an end-stage (≤ 6-month) prognosis — a 0–5
+    health-instability score.
+- Both are **Class A** journal formulas naming no `ISSUER_PATTERN` acronym, so
+  neither requires a `docs/citation-staleness.md` row. Every weight, band, item,
+  and combination rule was re-fetched and cross-verified against **≥ 2
+  independent sources** at implementation ([spec-v97](docs/spec-v97.md)): Lee
+  across the JAMA Table 3/4, the PubMed abstract / MDCalc reproduction, and the
+  SoFOG "Score de Lee" PDF; CHESS across the interRAI official CHESS PDF, the
+  CIHI interRAI LTCF Outcome Scales Reference Guide (with a worked example
+  scoring 4/5), and the CIHI interRAI Contact Assessment job aid.
+- Both are **prognostic estimates framed as decision support** for
+  life-expectancy-informed care planning, never a prediction of an individual's
+  death and never an end-of-life order in Sophie's voice
+  ([spec-v11](docs/spec-v11.md) §5.3).
+- **Deferred** on the [spec-v97](docs/spec-v97.md) ≥ 2-source bar (each re-opens
+  when it clears): `schonberg-index` (band percentages single-sourced, 9-year
+  weights image-locked), `walter-index`, `suemoto-index`, `mitchell-mri`, and
+  `adept`.
+- Files: `lib/ltcga-v180.js`, `views/group-v180.js` (RV180), `lib/meta.js`
+  (+2 entries), `app.js` (+2 Group G rows, RENDERERS wiring), the fuzz `MODULES`
+  list, `test/unit/lee-mortality-index.test.js` + `chess-scale.test.js`,
+  `docs/audits/v12/{lee-mortality-index,chess-scale}.md`,
+  `docs/clinical-citations.md` (+2 rows), and the catalog-truth surfaces
+  (index.html, README, package.json, `docs/scope-mdcalc-parity.md`) moved
+  814 → 816.
+
 ### Added (spec-v183 — MCP wave 11: expose the acute neuro / psych / pulm / tox / trauma cluster (50 calculators) as deterministic agent tools; no tile delta, 814)
 
 - The optional stdio MCP server (`mcp/server.js`) gains an **eleventh coverage

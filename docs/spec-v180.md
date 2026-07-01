@@ -1,11 +1,23 @@
 # spec-v180.md — Older-adult mortality & long-term-care prognosis: Lee, Schonberg, Walter, Suemoto, Mitchell MRI, ADEPT, and the CHESS scale (+7 tiles)
 
-> Status: **PROPOSED (2026-06-24).** Feature spec of the
+> Status: **SHIPPED 2 of 7 (2026-07-01, +2 → 816).** Feature spec of the
 > [spec-v172](spec-v172.md) **Long-Term Care & Geriatric Assessment (LTC-GA)**
 > program (umbrella §3.8), implementing the **older-adult mortality & LTC
-> prognosis** cluster. Adds **7** deterministic prognostic instruments that fill
-> confirmed gaps in the elder-care / hospice-eligibility surface. None
-> duplicates a live tile.
+> prognosis** cluster. Proposes **7** deterministic prognostic instruments that
+> fill confirmed gaps in the elder-care / hospice-eligibility surface; none
+> duplicates a live tile. **Live at this implementation:** `lee-mortality-index`
+> (the Lee 4-year mortality point-table, all weights and validation-cohort bands
+> cross-verified across the JAMA tables, the abstract/MDCalc, and the SoFOG PDF)
+> and `chess-scale` (the interRAI CHESS 0–5 health-instability score, item set /
+> cap / combination cross-verified across the interRAI official PDF, the CIHI
+> LTCF guide, and the CIHI Contact Assessment job aid). **Deferred on the
+> [spec-v97](spec-v97.md) ≥ 2-source verbatim bar:** `schonberg-index` (5-year
+> weights are double-sourced, but the point→mortality-band percentages are
+> single-sourced and the 9-year weights are image-locked), `walter-index`,
+> `suemoto-index`, `mitchell-mri`, and `adept` (not re-verified against ≥ 2
+> independent sources at this implementation; the MRI/ADEPT logistic forms would
+> additionally need the spec-v140 odds-space guard). Each deferred tile re-opens
+> when it clears the bar.
 >
 > Catalog effect: **live `UTILITIES.length` + 7** — the catalog-truth gate
 > ([spec-v46](spec-v46.md)) enforces the live count + delta at build time; no

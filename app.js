@@ -110,6 +110,7 @@ import { renderers as RV177 } from './views/group-v177.js';
 import { renderers as RV178 } from './views/group-v178.js';
 import { renderers as RV179 } from './views/group-v179.js';
 import { renderers as RV182 } from './views/group-v182.js';
+import { renderers as RV180 } from './views/group-v180.js';
 import { renderers as RV181 } from './views/group-v181.js';
 import { renderers as RV149 } from './views/group-v149.js';
 import { renderers as RV63 } from './views/group-v63.js';
@@ -130,7 +131,7 @@ import { resolvePrompt } from './lib/prompt.js';
 // artifact-detect / artifact-route / artifact-handoff helpers were
 // deleted in spec-v29 wave 29-2 (Group C/L).
 
-const RENDERERS = { ...RA, ...RB, ...RC, ...RE, ...RF, ...RG, ...RH, ...RI, ...RJ, ...RKLMNO, ...RV5, ...RV6, ...RV7, ...RV8, ...RV9, ...RV10, ...RV11, ...RV12, ...RV13, ...RV14, ...RV15, ...RV16, ...RV17, ...RV18, ...RV19, ...RV20, ...RV21, ...RV22, ...RV23, ...RV24, ...RV25, ...RV26, ...RV27, ...RV28, ...RV29, ...RV30, ...RV31, ...RV32, ...RV33, ...RV34, ...RV35, ...RV36, ...RV37, ...RV38, ...RV39, ...RV40, ...RV117, ...RV118, ...RV119, ...RV120, ...RV121, ...RV122, ...RV123, ...RV124, ...RV125, ...RV126, ...RV127, ...RV128, ...RV129, ...RV130, ...RV131, ...RV132, ...RV133, ...RV134, ...RV135, ...RV136, ...RV137, ...RV138, ...RV139, ...RV140, ...RV141, ...RV142, ...RV143, ...RV144, ...RV145, ...RV146, ...RV147, ...RV148, ...RV149, ...RV151, ...RV152, ...RV153, ...RV154, ...RV155, ...RV156, ...RV158, ...RV159, ...RV160, ...RV161, ...RV163, ...RV164, ...RV165, ...RV166, ...RV167, ...RV169, ...RV173, ...RV174, ...RV175, ...RV176, ...RV177, ...RV178, ...RV179, ...RV182, ...RV181, ...RV185, ...RV186, ...RV187, ...RV188, ...RV189, ...RV190, ...RV191, ...RV192, ...RV63, ...RPALINT };
+const RENDERERS = { ...RA, ...RB, ...RC, ...RE, ...RF, ...RG, ...RH, ...RI, ...RJ, ...RKLMNO, ...RV5, ...RV6, ...RV7, ...RV8, ...RV9, ...RV10, ...RV11, ...RV12, ...RV13, ...RV14, ...RV15, ...RV16, ...RV17, ...RV18, ...RV19, ...RV20, ...RV21, ...RV22, ...RV23, ...RV24, ...RV25, ...RV26, ...RV27, ...RV28, ...RV29, ...RV30, ...RV31, ...RV32, ...RV33, ...RV34, ...RV35, ...RV36, ...RV37, ...RV38, ...RV39, ...RV40, ...RV117, ...RV118, ...RV119, ...RV120, ...RV121, ...RV122, ...RV123, ...RV124, ...RV125, ...RV126, ...RV127, ...RV128, ...RV129, ...RV130, ...RV131, ...RV132, ...RV133, ...RV134, ...RV135, ...RV136, ...RV137, ...RV138, ...RV139, ...RV140, ...RV141, ...RV142, ...RV143, ...RV144, ...RV145, ...RV146, ...RV147, ...RV148, ...RV149, ...RV151, ...RV152, ...RV153, ...RV154, ...RV155, ...RV156, ...RV158, ...RV159, ...RV160, ...RV161, ...RV163, ...RV164, ...RV165, ...RV166, ...RV167, ...RV169, ...RV173, ...RV174, ...RV175, ...RV176, ...RV177, ...RV178, ...RV179, ...RV182, ...RV180, ...RV181, ...RV185, ...RV186, ...RV187, ...RV188, ...RV189, ...RV190, ...RV191, ...RV192, ...RV63, ...RPALINT };
 
 // ----- Utility registry ----------------------------------------------------
 // Source of truth for routes, names, group, audiences, and clinical flag.
@@ -1630,6 +1631,21 @@ const UTILITIES = [
   // spec-v92/v94, same as the EULAR/ACR spelled-out lesson).
   { id: 'mcgeer-criteria',        name: 'Revised McGeer surveillance definitions (LTC infection)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'loeb-minimum-criteria',  name: 'Loeb minimum criteria (initiating antibiotics in LTC)',   group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+
+  // spec-v180 (LTC-GA cluster 3.8): older-adult mortality & LTC-prognosis
+  // instruments. views/group-v180.js, lib/ltcga-v180.js (RV180). Ships 2 of 7:
+  // lee-mortality-index (a 0-26 weighted point sum -> validation-cohort 4-year
+  // mortality bands, a point-table lookup with no exponentiation) and chess-scale
+  // (interRAI CHESS, a 0-5 health-instability score). The other five
+  // (schonberg-index, walter-index, suemoto-index, mitchell-mri, adept) are
+  // deferred on the spec-v97 >= 2-source bar (band-% mappings single-sourced /
+  // weights image-locked). Both Class A: Lee cites JAMA 2006 and CHESS cites
+  // Hirdes 2003 (J Am Geriatr Soc), journal formulas naming no acronym in
+  // check-citations ISSUER_PATTERN, so no docs/citation-staleness.md row is
+  // required. Both are prognostic estimates framed as decision support, not a
+  // prediction of an individual's death (spec-v11 5.3).
+  { id: 'lee-mortality-index',    name: 'Lee 4-Year Mortality Index (older adults)',         group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'chess-scale',            name: 'CHESS Scale (interRAI health instability)',         group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
 
   // spec-v6 §3.3: lab result interpreter. Patient-decoder category.
   { id: 'lab-interpret',       name: 'Lab Result Interpreter',                           group: 'C', audiences: ['patients', 'clinicians', 'educators'], clinical: true },

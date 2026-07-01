@@ -5,7 +5,7 @@
 <h1 align="center">sophiewell.com</h1>
 
 <p align="center">
-  <strong>814 deterministic healthcare calculators that run entirely in your browser.</strong><br>
+  <strong>816 deterministic healthcare calculators that run entirely in your browser.</strong><br>
   Free forever. No servers, no accounts, no telemetry, no AI, no network call after first paint.
 </p>
 
@@ -36,7 +36,7 @@ output; "searchable lookup of static facts" does not qualify. See
 [docs/spec-v10.md](docs/spec-v10.md) for the audience and
 dependency-budget commitments and
 [docs/spec-v29.md](docs/spec-v29.md) for the nurse-first pivot
-and the v29 catalog ledger. At v192 close the catalog is 814
+and the v29 catalog ledger. At v180 close the catalog is 816
 deterministic tiles — every one of them computes from at least
 one user input. The catalog reached its present size on two tracks.
 **New tiles:** spec-v63 added the operations counterpart to the bedside
@@ -186,7 +186,7 @@ production security headers. Any static file server will also work.
 ## How it works and how to use it
 
 Since the spec-v29 nurse-first prune the catalog has grown one
-reviewable spec at a time to **814** deterministic calculators
+reviewable spec at a time to **816** deterministic calculators
 (the full per-version history is in [CHANGELOG.md](CHANGELOG.md)
 and `docs/spec-v*.md`; the most recent bedside additions are
 summarized in the cheat sheets below). They organize across the
@@ -1167,6 +1167,51 @@ shipped from an approximation. Every compute is finite-guarded, takes only bound
 comparisons or integer sums, and is covered by the [spec-v59](docs/spec-v59.md)
 fuzz harness; no tile trips the issuer-acronym pattern, so none forces a staleness
 row.
+
+### Long-Term Care & Geriatric Assessment program: older-adult mortality & LTC prognosis (spec-v172, v180, +2 → 816; 5 deferred)
+
+[spec-v180](docs/spec-v180.md) opens cluster **§3.8** of the LTC-GA program — the
+validated life-expectancy and health-instability instruments the nursing home,
+the geriatric clinic, and the hospice team reach for when deciding whether to
+screen, to refer, or to revisit the goals of care. It ships **2 of its 7**
+proposed tiles (both Clinical Scoring & Risk, Group G); the remaining five are
+deferred on the [spec-v97](docs/spec-v97.md) ≥ 2-source verbatim bar:
+
+- **`lee-mortality-index`** — the **Lee 4-Year Mortality Index for older adults**
+  (Lee, JAMA 2006). A weighted point sum (0–26): an age band (60–64 = 1 up to
+  ≥ 85 = 7), male sex (2), diabetes (1), cancer (2), chronic lung disease (2),
+  heart failure (2), current smoking (2), BMI < 25 (1), and difficulty bathing
+  (2), walking several blocks (2), managing money (2), pushing/pulling heavy
+  objects (1). The total maps by table lookup to the **validation-cohort 4-year
+  all-cause mortality bands** (0–5 ≈ 4%, 6–9 ≈ 15%, 10–13 ≈ 42%, ≥ 14 ≈ 64%).
+  Because it is a published point-total → observed-mortality table, there is no
+  exponentiation and no `1 − sigmoid(−bx)` complement — the
+  [spec-v140](docs/spec-v140.md) saturation hazard cannot arise.
+- **`chess-scale`** — the **interRAI CHESS scale** (Changes in Health, End-stage
+  disease, Signs and Symptoms; Hirdes, J Am Geriatr Soc 2003), operationalized
+  per the interRAI LTCF Outcome Scales (CIHI). Count the signs/symptoms present
+  (vomiting, edema, dyspnea, weight loss, dehydration/low fluid, reduced intake),
+  **capped at 2**, then add one point each for decline in decision-making,
+  decline in ADL status, and an end-stage (≤ 6-month) prognosis — a **0–5
+  health-instability** score.
+
+Both are **prognostic estimates framed as decision support** for
+life-expectancy-informed care planning, never a prediction of an individual's
+death and never an end-of-life order in Sophie's voice
+([spec-v11](docs/spec-v11.md) §5.3). Both are **Class A** journal formulas naming
+no `ISSUER_PATTERN` acronym, so neither takes a
+[citation-staleness](docs/citation-staleness.md) row. Every weight, band, item,
+and combination rule was re-fetched and cross-verified against **≥ 2 independent
+sources** ([spec-v97](docs/spec-v97.md)): Lee across the JAMA Table 3/4, the
+abstract / MDCalc reproduction, and the SoFOG "Score de Lee" PDF; CHESS across
+the interRAI official CHESS PDF, the CIHI interRAI LTCF Outcome Scales Reference
+Guide (with a worked example scoring 4/5), and the CIHI interRAI Contact
+Assessment job aid. **Deferred** (each re-opens when it clears the bar):
+`schonberg-index` (5-year weights double-sourced, but the point→mortality-band
+percentages are single-sourced and the 9-year weights are published only as a
+non-extractable image), `walter-index`, `suemoto-index`, `mitchell-mri`, and
+`adept`. New `lib/ltcga-v180.js` + `views/group-v180.js` (`RV180`). See
+[docs/spec-v180.md](docs/spec-v180.md).
 
 ### Long-Term Care & Geriatric Assessment program: infection surveillance & antimicrobial stewardship (spec-v172, v181, +2 → 774)
 
@@ -3362,7 +3407,7 @@ long version, see [docs/architecture.md](docs/architecture.md).
  │  manifests (data/)            │  static │        ▼                     ▼             │
  │        │  scripts/build       │  files  │   lazy-load data shard   pure compute      │
  │        ▼                      │         │   (verified vs manifest)  (lib/*.js)       │
- │  dist/  (814 tool pages,      │         │        │                     │             │
+ │  dist/  (816 tool pages,      │         │        │                     │             │
  │  OG cards, sitemap, SBOM)     │         │        ▼                     ▼             │
  └───────────────────────────────┘         │   service worker cache    result + cite   │
                                             │   (keyed to build hash)                    │
@@ -3384,7 +3429,7 @@ assets:
 
 | Output | Count | Source |
 |--------|------:|--------|
-| Pre-rendered tool pages (`dist/tools/<id>/`) | 814 | `scripts/build-tool-pages.mjs` |
+| Pre-rendered tool pages (`dist/tools/<id>/`) | 816 | `scripts/build-tool-pages.mjs` |
 | Audience hub pages (`dist/for/<audience>/`) | 6 | `scripts/build-hub-pages.mjs` |
 | Topic pages + `/topics/` index | 8 + 1 | `scripts/build-topic-pages.mjs` |
 | `/commitments/` | 1 | `scripts/build-commitments-page.mjs` |
@@ -3420,7 +3465,7 @@ static tool pages, so a tile can never ship mobile overflow undetected.
 index.html          single-page shell (hero-search combobox + static browse-by-category nav, tile mount)
 styles.css          one stylesheet (responsive; no horizontal scroll — enforced catalog-wide at 320px in CI)
 app.js              router, hero-search wiring, view wiring, the UTILITIES catalog
-                    (814 tiles — the single source of truth; zero runtime deps)
+                    (816 tiles — the single source of truth; zero runtime deps)
 sw.js               service worker — precache shell, cache shards by build hash
 theme.js            light/dark theme toggle (writes only sw-theme, allowlisted)
 lib/input-persist.js opt-in "remember my inputs" (off by default; numbers only)
@@ -3438,12 +3483,12 @@ docs/               specs (spec-v4 onward) + per-tile v11/v12 audit logs +
                     citation-staleness ledger +
                     architecture / threat-model / …
 test/               unit/ (node:test) · integration/ (Playwright) · fixtures/
-dist/               build output (814 tool pages, OG cards, sitemap, SBOM)
+dist/               build output (816 tool pages, OG cards, sitemap, SBOM)
 ```
 
-### Discovery: how a query finds the right tool among 814
+### Discovery: how a query finds the right tool among 816
 
-With 814 tiles, search quality *is* the product — a tool you cannot find does
+With 816 tiles, search quality *is* the product — a tool you cannot find does
 not exist. Discovery is deterministic and offline (no fuzzy-match service, no
 embedding model, no AI). The home `#hero-search` combobox builds its dropdown
 from two complementary rankers, both pure functions of the typed query:
@@ -3516,10 +3561,10 @@ A login-less, AI-free calculator earns trust only if the nurse can see, on the
 tile, exactly which published source produced the number — and tell whether that
 source is current. spec-v54 defined the invariants; spec-v60 built the machinery
 (the gate, the ledger, and the `citationAccessed` convention) and extended it
-across the full 814-tile catalog, pinning the last three unpinned "current
+across the full 816-tile catalog, pinning the last three unpinned "current
 edition" phrases and re-verifying every guideline tile against its latest known
 edition. Three invariants make that auditable, each enforced by the
-`check-citations.mjs` lint gate (in the `npm run lint` chain) over all 814 tiles:
+`check-citations.mjs` lint gate (in the `npm run lint` chain) over all 816 tiles:
 
 | Invariant | Rule | Enforcement |
 |---|---|---|
@@ -4072,7 +4117,7 @@ clamped to `[0, 1]`, so the JSON surface never emits a non-finite probability.
 ### Coverage is explicit and honest
 
 Adapting the catalog is incremental. Coverage now stands at **299 clinical
-calculators across 62 `lib` modules** (of 814 catalog tiles), built module by
+calculators across 62 `lib` modules** (of 816 catalog tiles), built module by
 module against the one fixed contract:
 
 | wave | modules | tiles |
@@ -4176,7 +4221,7 @@ rules, not soft preferences.
 | `npm run build`          | Copy static files into `dist/` for deployment                     |
 | `npm test`               | Run the full test suite (unit, a11y, grep, data integrity)        |
 | `npm run test:unit`      | Run Node's built-in unit tests (6,206 tests)                      |
-| `npm run test:e2e`       | Build `dist/`, then run Playwright integration tests against real browsers — incl. a full-catalog 320px no-horizontal-scroll sweep over both the SPA routes and the 814 pre-rendered static tool pages, the hub/topic/commitments pages, and the citation-wrap pin |
+| `npm run test:e2e`       | Build `dist/`, then run Playwright integration tests against real browsers — incl. a full-catalog 320px no-horizontal-scroll sweep over both the SPA routes and the 816 pre-rendered static tool pages, the hub/topic/commitments pages, and the citation-wrap pin |
 | `npm run test:mcp`       | Run the optional MCP server's tool/compute/fuzz tests (independent of the site jobs; SDK-free) |
 | `npm run test:a11y`      | Run accessibility checks on every utility view                    |
 | `npm run lint`           | ESLint + the CI gate chain: grep-check, output-safety, citation-integrity, catalog-truth, commitments, MCP-catalog, PA staleness, PA audit |
@@ -4261,7 +4306,7 @@ build, integrity-verified data shards) are documented in
 - [docs/spec-v11.md](docs/spec-v11.md) — correctness-floor spec:
   per-tile audit protocol, specialty-named groups, optional
   source-quoted `interpretation` field. Audit coverage is **complete
-  — 814/814 tiles** carry a committed per-tile audit log
+  — 816/816 tiles** carry a committed per-tile audit log
   (`docs/audits/v11/<id>.md` for the pre-v78 catalog;
   `docs/audits/v12/<id>.md` for the tiles added since — the
   spec-v78–v83 billing & coding program, the spec-v85
