@@ -13,6 +13,27 @@ import { el, clear } from '../lib/dom.js';
 import * as M from '../lib/periop-frailty-v203.js';
 import { resultRow } from '../lib/result-copy.js';
 
+function field(label, id, attrs) {
+  const wrap = el('p');
+  wrap.appendChild(el('label', { for: id, text: label }));
+  wrap.appendChild(el('br'));
+  wrap.appendChild(el('input', { id, ...attrs }));
+  return wrap;
+}
+function numField(label, id, attrs = {}) {
+  return field(label, id, { type: 'number', step: 'any', inputmode: 'decimal', ...attrs });
+}
+function selectField(label, id, options) {
+  const wrap = el('p');
+  wrap.appendChild(el('label', { for: id, text: label }));
+  wrap.appendChild(el('br'));
+  const sel = el('select', { id });
+  for (const opt of options) sel.appendChild(el('option', { value: opt.value, text: opt.text }));
+  wrap.appendChild(sel);
+  return wrap;
+}
+function val(id) { const n = document.getElementById(id); return n ? n.value : ''; }
+function showInvalid(o, r) { note(o, r.message || 'Complete the remaining fields.'); }
 function checkField(label, id) {
   const wrap = el('p');
   wrap.appendChild(el('input', { id, type: 'checkbox' }));
@@ -60,6 +81,36 @@ export const renderers = {
         moderateRec: chk('dasi-modrec'), strenuous: chk('dasi-strenuous'),
       });
       resultRow(o, [{ text: r.band, cls: r.abnormal ? 'warn' : null }, { label: 'DASI', value: `${r.score}` }, { label: 'METs', value: `${r.mets}` }]);
+      note(o, r.detail); note(o, r.note);
+    }));
+    postureNote(root);
+  },
+
+  // ----- 2.3 abcd3-i ---------------------------------------------------------
+  'abcd3-i'(root) {
+    note(root, 'ABCD3-I score (Merwick 2010): the imaging-augmented refinement of ABCD² for early stroke risk after TIA — the ABCD² items plus dual TIA within 7 days (+2), ipsilateral ≥ 50% carotid stenosis (+2), and abnormal DWI (+2), total 0–13. Strata: low 0–3, medium 4–7, high 8–13. Near-neighbors: abcd2, nihss.');
+    root.appendChild(numField('Age (years)', 'abcd3i-age', { min: '0' }));
+    root.appendChild(numField('Systolic BP (mmHg)', 'abcd3i-sbp', { min: '30' }));
+    root.appendChild(numField('Diastolic BP (mmHg)', 'abcd3i-dbp', { min: '10' }));
+    root.appendChild(selectField('Clinical features', 'abcd3i-clinical', [
+      { value: 'weakness', text: 'Unilateral weakness (+2)' },
+      { value: 'speech', text: 'Speech disturbance without weakness (+1)' },
+      { value: 'other', text: 'Other (0)' },
+    ]));
+    root.appendChild(numField('TIA duration (minutes)', 'abcd3i-dur', { min: '0' }));
+    root.appendChild(checkField('Diabetes (+1)', 'abcd3i-dm'));
+    root.appendChild(checkField('Dual TIA — a second TIA within 7 days (+2)', 'abcd3i-dual'));
+    root.appendChild(checkField('Ipsilateral ≥ 50% carotid stenosis (+2)', 'abcd3i-carotid'));
+    root.appendChild(checkField('Abnormal DWI on MRI (+2)', 'abcd3i-dwi'));
+    const o = out(); root.appendChild(o);
+    const ids = ['abcd3i-age', 'abcd3i-sbp', 'abcd3i-dbp', 'abcd3i-clinical', 'abcd3i-dur', 'abcd3i-dm', 'abcd3i-dual', 'abcd3i-carotid', 'abcd3i-dwi'];
+    wire(ids, () => safe(o, () => {
+      const r = M.abcd3i({
+        age: val('abcd3i-age'), sbp: val('abcd3i-sbp'), dbp: val('abcd3i-dbp'), clinical: val('abcd3i-clinical'), durationMinutes: val('abcd3i-dur'),
+        diabetes: chk('abcd3i-dm'), dualTia: chk('abcd3i-dual'), carotidStenosis: chk('abcd3i-carotid'), dwiAbnormal: chk('abcd3i-dwi'),
+      });
+      if (!r.valid) { showInvalid(o, r); return; }
+      resultRow(o, [{ text: r.band, cls: r.abnormal ? 'warn' : null }, { label: 'ABCD3-I', value: `${r.score}` }]);
       note(o, r.detail); note(o, r.note);
     }));
     postureNote(root);

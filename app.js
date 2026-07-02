@@ -1903,6 +1903,7 @@ const UTILITIES = [
   // Subspecialty Quantitation program, closing spec). lib/periop-frailty-v203.js,
   // views/group-v203.js (RV203). Shipped one tile at a time.
   { id: 'dasi',                 name: 'Duke Activity Status Index (DASI, Functional Capacity)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'abcd3-i',              name: 'ABCD3-I Score (Early Stroke Risk After TIA)',      group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
 ];
 
 const UTIL_BY_ID = new Map(UTILITIES.map((u) => [u.id, u]));

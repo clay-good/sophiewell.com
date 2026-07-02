@@ -20,6 +20,12 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
   clinical references (spec-v97); note the published maximum is 58.2 (the sum of
   the weights), so MDCalc's stated "57.75" is inconsistent with its own listed
   weights.
+- **ABCD3-I score** (`abcd3-i`, 859 → 860): the imaging-augmented refinement of
+  ABCD² for early stroke risk after TIA. The ABCD² items (age ≥ 60, BP ≥ 140/90,
+  clinical features, duration, diabetes) plus dual TIA within 7 days (+2),
+  ipsilateral ≥ 50% carotid stenosis (+2), and abnormal DWI (+2), total 0–13;
+  strata low 0–3, medium 4–7, high 8–13. Weights cross-verified against the
+  neurology.org stroke-unit study and the AHA Stroke validation (spec-v97).
 
 ### Added (spec-v202 — Deep Subspecialty Quantitation program continues: cardiovascular & heart-failure risk engines, shipped one tile at a time, 857 → 858)
 
