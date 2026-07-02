@@ -6,6 +6,30 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v199 — Deep Subspecialty Quantitation program opens: 4 myeloid-neoplasm & transplant prognostic calculators, 844 → 848)
+
+- Opens the **Deep Subspecialty Quantitation** program (spec-v199–v203) with
+  **4 new deterministic hematology / transplant prognostic instruments**:
+  **MIPSS70** (`mipss70`, transplantation-age primary myelofibrosis),
+  **GIPSS** (`gipss`, genetically inspired prognostic score for PMF),
+  **MYSEC-PM** (`mysec-pm`, secondary post-PV / post-ET myelofibrosis), and the
+  **HCT-CI** (`hct-ci`, Sorror pre-transplant comorbidity index). New module
+  `lib/myeloid-prognosis-v199.js`, renderers `views/group-v199.js` (RV199).
+- The proposed **fifth** tile (ELTS) was **dropped at implementation**: the
+  spec-v85 §6.2 collision re-check found the EUTOS Long-Term Survival score is
+  already computed by the live `sokal-cml` tile (`lib/hemonc-v94.js`), so a
+  standalone tile would duplicate it — the program opens **+4**, not +5.
+- Two point-weight corrections were caught by the spec-v97 ≥ 2-source
+  re-verification and applied against the draft: the **HCT-CI** rheumatologic
+  and peptic-ulcer weights are **+2** each (Sorror 2005 / MDCalc), not +1; and
+  the **GIPSS** total range is **0–6**, not the draft's 0–8. Every remaining
+  weight, coefficient, and band threshold was re-fetched and cross-verified
+  against ≥ 2 independent open sources. Each compute routes through
+  `lib/num.js`, is finite-guarded, is covered by the fuzz harness with zero
+  non-finite leaks, and ships an inline citation with ≥ 3 worked examples. All
+  are decision support, never a transplant / conditioning / chemotherapy order
+  (spec-v11 §5.3).
+
 ### Added (spec-v193–v198 — Advanced Specialist Quantitation program: 28 specialist-grade calculators, 816 → 844)
 
 - The **Advanced Specialist Quantitation** program ships in full: **28 new

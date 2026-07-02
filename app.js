@@ -103,6 +103,7 @@ import { renderers as RV195 } from './views/group-v195.js';
 import { renderers as RV196 } from './views/group-v196.js';
 import { renderers as RV197 } from './views/group-v197.js';
 import { renderers as RV198 } from './views/group-v198.js';
+import { renderers as RV199 } from './views/group-v199.js';
 import { renderers as RV164 } from './views/group-v164.js';
 import { renderers as RV165 } from './views/group-v165.js';
 import { renderers as RV166 } from './views/group-v166.js';
@@ -137,7 +138,7 @@ import { resolvePrompt } from './lib/prompt.js';
 // artifact-detect / artifact-route / artifact-handoff helpers were
 // deleted in spec-v29 wave 29-2 (Group C/L).
 
-const RENDERERS = { ...RA, ...RB, ...RC, ...RE, ...RF, ...RG, ...RH, ...RI, ...RJ, ...RKLMNO, ...RV5, ...RV6, ...RV7, ...RV8, ...RV9, ...RV10, ...RV11, ...RV12, ...RV13, ...RV14, ...RV15, ...RV16, ...RV17, ...RV18, ...RV19, ...RV20, ...RV21, ...RV22, ...RV23, ...RV24, ...RV25, ...RV26, ...RV27, ...RV28, ...RV29, ...RV30, ...RV31, ...RV32, ...RV33, ...RV34, ...RV35, ...RV36, ...RV37, ...RV38, ...RV39, ...RV40, ...RV117, ...RV118, ...RV119, ...RV120, ...RV121, ...RV122, ...RV123, ...RV124, ...RV125, ...RV126, ...RV127, ...RV128, ...RV129, ...RV130, ...RV131, ...RV132, ...RV133, ...RV134, ...RV135, ...RV136, ...RV137, ...RV138, ...RV139, ...RV140, ...RV141, ...RV142, ...RV143, ...RV144, ...RV145, ...RV146, ...RV147, ...RV148, ...RV149, ...RV151, ...RV152, ...RV153, ...RV154, ...RV155, ...RV156, ...RV158, ...RV159, ...RV160, ...RV161, ...RV163, ...RV164, ...RV165, ...RV166, ...RV167, ...RV169, ...RV173, ...RV174, ...RV175, ...RV176, ...RV177, ...RV178, ...RV179, ...RV182, ...RV180, ...RV181, ...RV185, ...RV186, ...RV187, ...RV188, ...RV189, ...RV190, ...RV191, ...RV192, ...RV193, ...RV194, ...RV195, ...RV196, ...RV197, ...RV198, ...RV63, ...RPALINT };
+const RENDERERS = { ...RA, ...RB, ...RC, ...RE, ...RF, ...RG, ...RH, ...RI, ...RJ, ...RKLMNO, ...RV5, ...RV6, ...RV7, ...RV8, ...RV9, ...RV10, ...RV11, ...RV12, ...RV13, ...RV14, ...RV15, ...RV16, ...RV17, ...RV18, ...RV19, ...RV20, ...RV21, ...RV22, ...RV23, ...RV24, ...RV25, ...RV26, ...RV27, ...RV28, ...RV29, ...RV30, ...RV31, ...RV32, ...RV33, ...RV34, ...RV35, ...RV36, ...RV37, ...RV38, ...RV39, ...RV40, ...RV117, ...RV118, ...RV119, ...RV120, ...RV121, ...RV122, ...RV123, ...RV124, ...RV125, ...RV126, ...RV127, ...RV128, ...RV129, ...RV130, ...RV131, ...RV132, ...RV133, ...RV134, ...RV135, ...RV136, ...RV137, ...RV138, ...RV139, ...RV140, ...RV141, ...RV142, ...RV143, ...RV144, ...RV145, ...RV146, ...RV147, ...RV148, ...RV149, ...RV151, ...RV152, ...RV153, ...RV154, ...RV155, ...RV156, ...RV158, ...RV159, ...RV160, ...RV161, ...RV163, ...RV164, ...RV165, ...RV166, ...RV167, ...RV169, ...RV173, ...RV174, ...RV175, ...RV176, ...RV177, ...RV178, ...RV179, ...RV182, ...RV180, ...RV181, ...RV185, ...RV186, ...RV187, ...RV188, ...RV189, ...RV190, ...RV191, ...RV192, ...RV193, ...RV194, ...RV195, ...RV196, ...RV197, ...RV198, ...RV199, ...RV63, ...RPALINT };
 
 // ----- Utility registry ----------------------------------------------------
 // Source of truth for routes, names, group, audiences, and clinical flag.
@@ -1862,6 +1863,16 @@ const UTILITIES = [
   { id: 'virsta',               name: 'VIRSTA Score (IE Risk in S. aureus Bacteremia)',   group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'select-pse',           name: 'SeLECT Score (Late Post-Stroke Epilepsy)',         group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'figo-gtn',             name: 'WHO/FIGO Prognostic Score (GTN)',                  group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  // spec-v199: four myeloid-neoplasm & transplant prognostic instruments
+  // (Deep Subspecialty Quantitation program, opening spec). The proposed fifth
+  // tile (ELTS) was dropped at implementation: the spec-v85 §6.2 collision
+  // re-check found ELTS is already computed by the live `sokal-cml` tile
+  // (lib/hemonc-v94.js sokalCml), so a standalone tile would duplicate it.
+  // lib/myeloid-prognosis-v199.js, views/group-v199.js (RV199).
+  { id: 'mipss70',              name: 'MIPSS70 (Primary Myelofibrosis, Transplant-Age)',  group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'gipss',                name: 'GIPSS (Genetically Inspired Prognostic Score, PMF)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'mysec-pm',             name: 'MYSEC-PM (Secondary Myelofibrosis Survival)',      group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'hct-ci',               name: 'HCT-CI (Transplant Comorbidity Index, Sorror)',    group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
 ];
 
 const UTIL_BY_ID = new Map(UTILITIES.map((u) => [u.id, u]));

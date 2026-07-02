@@ -188,6 +188,7 @@ import * as ventV195 from '../../lib/vent-v195.js';
 import * as liverV196 from '../../lib/liver-v196.js';
 import * as endoQuantV197 from '../../lib/endo-quant-v197.js';
 import * as subspecialtyV198 from '../../lib/subspecialty-v198.js';
+import * as myeloidPrognosisV199 from '../../lib/myeloid-prognosis-v199.js';
 
 const MODULES = {
   'clinical.js': clinical,
@@ -320,6 +321,7 @@ const MODULES = {
   'liver-v196.js': liverV196,
   'endo-quant-v197.js': endoQuantV197,
   'subspecialty-v198.js': subspecialtyV198,
+  'myeloid-prognosis-v199.js': myeloidPrognosisV199,
 };
 
 const MATRIX = [0, -1, 1e9, NaN, Infinity, -Infinity, '', undefined, null];

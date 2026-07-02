@@ -5038,3 +5038,23 @@ Citation: FIGO Oncology Committee. FIGO staging for gestational trophoblastic ne
 Formula: Eight factors (age, antecedent pregnancy, interval, hormone level, tumor size, metastasis site, number of metastases, and prior chemotherapy) score zero, one, two, or four. A total at or below six is low risk (single-agent chemotherapy); at least seven is high risk (multi-agent).
 Worked example: A term antecedent pregnancy with a long interval, high hormone level, liver or brain metastases, and many lesions scores well into the high-risk band. The guideline stratification, not a chemotherapy order.
 
+
+### MIPSS70 (primary myelofibrosis, transplantation-age)
+Citation: Guglielmelli P, Lasho TL, Rotunno G, et al. MIPSS70: Mutation-Enhanced International Prognostic Score System for Transplantation-Age Patients With Primary Myelofibrosis. J Clin Oncol. 2018;36(4):310-318. (Cross-verified across two or more sources, spec-v97.)
+Formula: Anemia, circulating blasts, marrow fibrosis, constitutional symptoms, absence of a CALR type-1/like mutation, and a high-molecular-risk (HMR) category each add one; leukocytosis and thrombocytopenia add two each; two or more HMR mutations add a further two (total zero to twelve). Low zero to one, intermediate two to four, high five or more.
+Worked example: Anemia, leukocytosis, blasts, and fibrosis sum to five, the high-risk band. A prognostic estimate, not a transplant order.
+
+### GIPSS (genetically inspired prognostic scoring system, PMF)
+Citation: Tefferi A, Guglielmelli P, Nicolosi M, et al. GIPSS: genetically inspired prognostic scoring system for primary myelofibrosis. Leukemia. 2018;32(7):1631-1642. (Cross-verified across two or more sources, spec-v97.)
+Formula: A very-high-risk karyotype adds two or an unfavorable karyotype adds one; absence of a CALR type-1/like mutation, an ASXL1 mutation, an SRSF2 mutation, and a U2AF1 Q157 mutation each add one (total zero to six). Low zero, intermediate-1 one, intermediate-2 two, high three or more.
+Worked example: A very-high-risk karyotype with an ASXL1 mutation sums to three, the high-risk band. The mutation-and-karyotype-only companion to MIPSS70, not an order.
+
+### MYSEC-PM (myelofibrosis secondary to PV/ET)
+Citation: Passamonti F, Giorgino T, Mora B, et al. A clinical-molecular prognostic model to predict survival in patients with post polycythemia vera and post essential thrombocythemia myelofibrosis. Leukemia. 2017;31(12):2726-2731. (Cross-verified across two or more sources, spec-v97.)
+Formula: Age contributes 0.15 per year; hemoglobin below eleven, circulating blasts at least three percent, and a CALR-unmutated genotype each add two; a low platelet count and constitutional symptoms each add one. Low below eleven, intermediate-1 eleven to under fourteen, intermediate-2 fourteen to under sixteen, high sixteen or more.
+Worked example: Age sixty-five (9.75) with anemia and blasts sums to 13.75, the intermediate-1 band. The dedicated secondary-myelofibrosis model, not an order.
+
+### HCT-CI (hematopoietic cell transplantation comorbidity index, Sorror)
+Citation: Sorror ML, Maris MB, Storb R, et al. Hematopoietic cell transplantation (HCT)-specific comorbidity index: a new tool for risk assessment before allogeneic HCT. Blood. 2005;106(8):2912-2919. (Cross-verified across two or more sources, spec-v97.)
+Formula: A weighted comorbidity grid — most conditions add one; rheumatologic disease, peptic ulcer, moderate renal, and moderate pulmonary add two; prior solid tumor, heart-valve disease, severe pulmonary, and moderate-or-severe hepatic disease add three. Low zero, intermediate one to two, high three or more.
+Worked example: A prior solid tumor alone scores three, the high-risk band. The pre-transplant non-relapse-mortality estimate, not a go/no-go transplant order.

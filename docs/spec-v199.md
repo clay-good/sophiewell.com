@@ -1,6 +1,17 @@
-# spec-v199.md — Myeloid-neoplasm & transplant prognosis: the EUTOS long-term survival score, MIPSS70, GIPSS, MYSEC-PM, and the HCT-CI (+5 tiles)
+# spec-v199.md — Myeloid-neoplasm & transplant prognosis: MIPSS70, GIPSS, MYSEC-PM, and the HCT-CI (+4 tiles; ELTS dropped as a duplicate)
 
-> Status: **PROPOSED (2026-07-02).** First feature spec of the **Deep Subspecialty
+> Status: **SHIPPED (2026-07-02), +4 (not +5).** Implemented at catalog 844 → 848.
+> The proposed fifth tile **ELTS was dropped** at implementation: the spec-v85
+> §6.2 collision re-check found the EUTOS Long-Term Survival score is **already
+> computed by the live `sokal-cml` tile** (`lib/hemonc-v94.js` `sokalCml`, with the
+> same coefficients and the same ≤ 1.5680 / ≤ 2.2185 bands), so a standalone tile
+> would duplicate it. Two spec-v97 re-verification corrections were applied against
+> this draft: the **HCT-CI** rheumatologic and peptic-ulcer weights are **+2** each
+> (Sorror 2005 / MDCalc), not the +1 stated in §2.5; and the **GIPSS** total range
+> is **0–6**, not the 0–8 stated in §2.3. The four shipped tiles live in
+> `lib/myeloid-prognosis-v199.js` with renderers in `views/group-v199.js` (RV199).
+>
+> First feature spec of the **Deep Subspecialty
 > Quantitation** program (umbrella below, §1.1), advancing the long-horizon
 > [scope-mdcalc-parity.md](scope-mdcalc-parity.md) commitment to carry every
 > clinically actionable calculator. Adds **5** deterministic myeloid-neoplasm and
