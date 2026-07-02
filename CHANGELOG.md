@@ -6,6 +6,22 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v202 — Deep Subspecialty Quantitation program continues: cardiovascular & heart-failure risk engines, shipped one tile at a time, 857 → …)
+
+- Opens the fourth feature spec of the **Deep Subspecialty Quantitation** program
+  (spec-v199–v203) with cardiovascular / heart-failure risk and survival engines,
+  shipped **one tile at a time**. New module `lib/cvrisk-engines-v202.js`,
+  renderers `views/group-v202.js` (RV202).
+- **MECKI score** (`mecki`, 857 → 858): the cardiopulmonary-exercise-anchored
+  heart-failure prognostic score from six variables — hemoglobin, sodium, LVEF,
+  peak VO₂ (% predicted), VE/VCO₂ slope, and MDRD-eGFR. LP = 10.3464 −
+  0.0262·ppVO₂ + 0.0472·(VE/VCO₂ slope) − 0.1086·Hb − 0.0615·Na − 0.0699·LVEF −
+  0.0136·eGFR; the score is P = 1/(1+e^−LP) as a percentage — the model's
+  estimated 2-year risk of cardiovascular death, urgent transplant, or LVAD.
+  Coefficients cross-verified against the original Agostoni 2013 paper PDF and
+  validation reproductions (spec-v97); the logistic transform confirmed against
+  the MECKI-initiative review.
+
 ### Added (spec-v201 — Deep Subspecialty Quantitation program continues: 5 hepatology & upper-GI-bleeding prognostic instruments, shipped one tile at a time, 852 → 857)
 
 - Continues the **Deep Subspecialty Quantitation** program (spec-v199–v203) with
