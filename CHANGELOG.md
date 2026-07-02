@@ -6,12 +6,14 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
-### Added (spec-v203 — Deep Subspecialty Quantitation program (closing spec): perioperative / fracture / frailty risk, shipped one tile at a time, 858 → …)
+### Added (spec-v203 — Deep Subspecialty Quantitation program (closing spec): perioperative / fracture / frailty risk, shipped one tile at a time, 858 → 861)
 
-- Opens the closing feature spec of the **Deep Subspecialty Quantitation** program
-  (spec-v199–v203) with perioperative, fracture, cerebrovascular, and frailty risk
+- The closing feature spec of the **Deep Subspecialty Quantitation** program
+  (spec-v199–v203): perioperative, fracture, cerebrovascular, and frailty risk
   instruments, shipped **one tile at a time**. New module
-  `lib/periop-frailty-v203.js`, renderers `views/group-v203.js` (RV203).
+  `lib/periop-frailty-v203.js`, renderers `views/group-v203.js` (RV203). **Slice
+  ships +3 (DASI, ABCD3-I, SORT), not +5**: `edmonton-frail` and `garvan-fracture`
+  are deferred under [spec-v97] / spec-v203 §7 (see below).
 - **Duke Activity Status Index** (`dasi`, 858 → 859): the 12-item self-report
   functional-capacity questionnaire. Affirmative activities are summed by their
   published METs weights (maximum 58.2); peak VO₂ (mL/kg/min) = 0.43 × DASI + 9.6
@@ -33,6 +35,17 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
   1/(1+e^−logit). Coefficients cross-verified verbatim against the open-access
   development paper (Protopapa 2014, PMC4240514 Table 4) and an independent
   reproduction (spec-v97).
+- **Deferred (spec-v97 / spec-v203 §7 — not shipped):** the **Edmonton Frail
+  Scale** (`edmonton-frail`) and the **Garvan fracture-risk calculator**
+  (`garvan-fracture`). The Edmonton Frail Scale's item-by-item 0/1/2 grid could
+  not be read from an open source (binary PDFs, paywalled calculator pages), and
+  its published severity bands conflict between reproductions (0–5/6–7/8–9/10–11/
+  ≥12 vs 0–4/5–6/7–8/9–10/11+) — the cut-points cannot be pinned from ≥ 2 open
+  sources. The Garvan nomogram's Cox β coefficients and baseline-survival terms
+  are only in the paywalled primary paper (Osteoporos Int 2008); no open
+  reproduction exposes them, and the online calculator does not disclose the
+  formula. Both are held for a future slice pending open sourcing (the crib-ii /
+  gwtg-hf / precise-dapt deferral precedent).
 
 ### Added (spec-v202 — Deep Subspecialty Quantitation program continues: cardiovascular & heart-failure risk engines, shipped one tile at a time, 857 → 858)
 
