@@ -6,6 +6,21 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v203 — Deep Subspecialty Quantitation program (closing spec): perioperative / fracture / frailty risk, shipped one tile at a time, 858 → …)
+
+- Opens the closing feature spec of the **Deep Subspecialty Quantitation** program
+  (spec-v199–v203) with perioperative, fracture, cerebrovascular, and frailty risk
+  instruments, shipped **one tile at a time**. New module
+  `lib/periop-frailty-v203.js`, renderers `views/group-v203.js` (RV203).
+- **Duke Activity Status Index** (`dasi`, 858 → 859): the 12-item self-report
+  functional-capacity questionnaire. Affirmative activities are summed by their
+  published METs weights (maximum 58.2); peak VO₂ (mL/kg/min) = 0.43 × DASI + 9.6
+  and METs = VO₂ / 3.5. < 4 METs marks poor functional capacity linked to higher
+  perioperative risk. The 12 weights were cross-verified against MDCalc and
+  clinical references (spec-v97); note the published maximum is 58.2 (the sum of
+  the weights), so MDCalc's stated "57.75" is inconsistent with its own listed
+  weights.
+
 ### Added (spec-v202 — Deep Subspecialty Quantitation program continues: cardiovascular & heart-failure risk engines, shipped one tile at a time, 857 → 858)
 
 - Opens the fourth feature spec of the **Deep Subspecialty Quantitation** program
