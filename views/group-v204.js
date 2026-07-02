@@ -124,4 +124,38 @@ export const renderers = {
     }));
     postureNote(root);
   },
+
+  // ----- 2.2 urine-calcium-cr ------------------------------------------------
+  'urine-calcium-cr'(root) {
+    note(root, 'Urinary-calcium assessment (StatPearls; Sargent 1993 for infants): the calciuria step in the nephrolithiasis / hypercalciuria workup. Spot Ca/Cr > 0.20 mg/mg (adult), or 24-hour calcium > 250 (women) / > 300 (men) mg/day or > 4 mg/kg/day. Choose a mode and fill its fields. Near-neighbors: cccr, uacr-upcr.');
+    root.appendChild(selectField('Mode', 'uca-mode', [
+      { value: 'spot', text: 'Spot Ca/Cr ratio' },
+      { value: 'day', text: '24-hour excretion' },
+    ]));
+    root.appendChild(el('p', { class: 'muted', text: 'Spot mode:' }));
+    root.appendChild(num('Urine calcium (same mass unit as creatinine)', 'uca-uca', { min: '0' }));
+    root.appendChild(num('Urine creatinine (same mass unit as calcium)', 'uca-ucr', { min: '0' }));
+    root.appendChild(selectField('Age band (spot)', 'uca-age', [
+      { value: 'adult', text: 'Adult / older child (> 0.20 mg/mg)' },
+      { value: 'infant-lt7mo', text: '< 7 months (> 0.86 mg/mg)' },
+      { value: 'infant-7to18mo', text: '7–18 months (> 0.60 mg/mg)' },
+      { value: 'child-19moTo6y', text: '19 months–6 years (> 0.42 mg/mg)' },
+    ]));
+    root.appendChild(el('p', { class: 'muted', text: '24-hour mode:' }));
+    root.appendChild(num('24-hour urine calcium (mg/day)', 'uca-24h', { min: '0' }));
+    root.appendChild(num('Body weight (kg)', 'uca-wt', { min: '0' }));
+    root.appendChild(selectField('Sex (24-hour)', 'uca-sex', [
+      { value: 'female', text: 'Female (> 250 mg/day)' },
+      { value: 'male', text: 'Male (> 300 mg/day)' },
+    ]));
+    const o = out(); root.appendChild(o);
+    const ids = ['uca-mode', 'uca-uca', 'uca-ucr', 'uca-age', 'uca-24h', 'uca-wt', 'uca-sex'];
+    wire(ids, () => safe(o, () => {
+      const r = M.urineCalcium({ mode: val('uca-mode'), urineCa: val('uca-uca'), urineCr: val('uca-ucr'), ageBand: val('uca-age'), calcium24h: val('uca-24h'), weight: val('uca-wt'), sex: val('uca-sex') });
+      if (!r.valid) { showInvalid(o, r); return; }
+      resultRow(o, [{ text: r.band, cls: r.abnormal ? 'warn' : null }, { label: 'Result', value: r.bandLabel }]);
+      note(o, r.detail); note(o, r.note);
+    }));
+    postureNote(root);
+  },
 };

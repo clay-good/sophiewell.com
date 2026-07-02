@@ -6,7 +6,7 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
-### Added (spec-v204 — Frontline & Bedside Decision Instruments program (opens): nephrology / fluids / renal-tubular quantitation, shipped one tile at a time, 861 → …)
+### Added (spec-v204 — Frontline & Bedside Decision Instruments program (opens): nephrology / fluids / renal-tubular quantitation, shipped one tile at a time, 861 → 866, slice complete +5)
 
 - Opens the **Frontline & Bedside Decision Instruments** program (spec-v204–v208)
   with nephrology, fluid-balance, and renal-tubular instruments, shipped **one
@@ -39,6 +39,14 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
   wasting (hyperparathyroidism, FGF23 excess). Both branches and the constants
   cross-verified against Payne 1998, the ESPN calculator, and the Walton/Bijvoet
   nomogram (spec-v97). Group F.
+- **Urinary-calcium assessment** (`urine-calcium-cr`, 865 → 866): the calciuria
+  step in the nephrolithiasis / hypercalciuria workup, in two modes — a spot
+  Ca/Cr ratio (hypercalciuria above the adult > 0.20 mg/mg, or the Sargent
+  pediatric bands < 7 mo 0.86 / 7–18 mo 0.60 / 19 mo–6 y 0.42 mg/mg; molar ≈
+  ×2.82) and 24-hour excretion (> 250 mg/day women, > 300 mg/day men, or > 4
+  mg/kg/day). Thresholds cross-verified against StatPearls, Sargent 1993, and
+  Medscape (spec-v97). **Completes the spec-v204 slice (+5)** — the Frontline &
+  Bedside Decision Instruments program's first slice.
 
 ### Added (spec-v203 — Deep Subspecialty Quantitation program (closing spec): perioperative / fracture / frailty risk, shipped one tile at a time, 858 → 861)
 

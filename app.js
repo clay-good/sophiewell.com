@@ -1913,6 +1913,7 @@ const UTILITIES = [
   { id: 'max-allowable-blood-loss', name: 'Maximum Allowable Blood Loss (ABL)',            group: 'F', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'efw-clearance',        name: 'Electrolyte-Free Water Clearance',                 group: 'F', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'tmp-gfr',              name: 'TmP/GFR (Renal Phosphate Threshold)',              group: 'F', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'urine-calcium-cr',     name: 'Urinary Calcium (Spot Ca/Cr + 24-hour Excretion)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
 ];
 
 const UTIL_BY_ID = new Map(UTILITIES.map((u) => [u.id, u]));
