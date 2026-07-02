@@ -23,6 +23,15 @@ function field(label, id, attrs) {
 function num(label, id, attrs = {}) {
   return field(label, id, { type: 'number', step: 'any', inputmode: 'decimal', ...attrs });
 }
+function selectField(label, id, options) {
+  const wrap = el('p');
+  wrap.appendChild(el('label', { for: id, text: label }));
+  wrap.appendChild(el('br'));
+  const sel = el('select', { id });
+  for (const opt of options) sel.appendChild(el('option', { value: opt.value, text: opt.text }));
+  wrap.appendChild(sel);
+  return wrap;
+}
 function out() { return el('div', { id: 'q-results', 'aria-live': 'polite' }); }
 function val(id) { const n = document.getElementById(id); return n ? n.value : ''; }
 function safe(o, fn) { clear(o); try { fn(); } catch (err) { o.appendChild(el('p', { class: 'muted', text: err.message })); } }
@@ -60,6 +69,33 @@ export const renderers = {
       });
       if (!r.valid) { showInvalid(o, r); return; }
       resultRow(o, [{ text: r.band, cls: r.abnormal ? 'warn' : null }, { label: 'CAT', value: `${r.score}` }]);
+      note(o, r.detail); note(o, r.note);
+    }));
+    postureNote(root);
+  },
+
+  // ----- 2.1 lent-score ------------------------------------------------------
+  'lent-score'(root) {
+    note(root, 'LENT score (Clive 2014): the first effusion-specific survival score for malignant pleural effusion — pleural-fluid LDH, ECOG, serum neutrophil-to-lymphocyte ratio, and tumor type; total 0–7. Risk: low 0–1 (≈ 319 days), moderate 2–4 (≈ 130 days), high 5–7 (≈ 44 days). Near-neighbors: rapid-pleural, ecog-karnofsky.');
+    root.appendChild(num('Pleural-fluid LDH (IU/L)', 'lent-ldh', { min: '0' }));
+    root.appendChild(selectField('ECOG performance status', 'lent-ecog', [
+      { value: '0', text: '0 — fully active (+0)' },
+      { value: '1', text: '1 — restricted strenuous activity (+1)' },
+      { value: '2', text: '2 — ambulatory, no work (+2)' },
+      { value: '3-4', text: '3–4 — limited/no self-care (+3)' },
+    ]));
+    root.appendChild(num('Serum neutrophil-to-lymphocyte ratio', 'lent-nlr', { min: '0' }));
+    root.appendChild(selectField('Tumor type', 'lent-tumor', [
+      { value: 'low', text: 'Mesothelioma / hematologic (+0)' },
+      { value: 'moderate', text: 'Breast / gynecologic / renal (+1)' },
+      { value: 'high', text: 'Lung / other (+2)' },
+    ]));
+    const o = out(); root.appendChild(o);
+    const ids = ['lent-ldh', 'lent-ecog', 'lent-nlr', 'lent-tumor'];
+    wire(ids, () => safe(o, () => {
+      const r = M.lent({ pleuralLdh: val('lent-ldh'), ecog: val('lent-ecog'), nlr: val('lent-nlr'), tumorType: val('lent-tumor') });
+      if (!r.valid) { showInvalid(o, r); return; }
+      resultRow(o, [{ text: r.band, cls: r.abnormal ? 'warn' : null }, { label: 'LENT', value: `${r.score}` }]);
       note(o, r.detail); note(o, r.note);
     }));
     postureNote(root);

@@ -19,6 +19,13 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
   uses ≥ 10 as the "more symptoms" threshold (drives ABE group assignment); the
   MCID is ~2 points. Bands cross-verified against Jones 2009 / GOLD, GPnotebook,
   and the PMC primary-care evaluation (spec-v97).
+- **LENT score** (`lent-score`, 867 → 868): the first effusion-specific survival
+  score for malignant pleural effusion — pleural-fluid LDH (≥ 1500 → 1), ECOG
+  performance status (0–3), serum neutrophil-to-lymphocyte ratio (≥ 9 → 1), and
+  tumor type (mesothelioma/heme 0, breast/gyn/renal 1, lung/other 2); total 0–7.
+  Risk groups: low 0–1 (median ≈ 319 days), moderate 2–4 (≈ 130 days), high 5–7
+  (≈ 44 days). Weights and survival cross-verified against Clive 2014 and the
+  validation literature (spec-v97).
 
 ### Added (spec-v204 — Frontline & Bedside Decision Instruments program (opens): nephrology / fluids / renal-tubular quantitation, shipped one tile at a time, 861 → 866, slice complete +5)
 
