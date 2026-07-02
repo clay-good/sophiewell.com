@@ -4116,8 +4116,8 @@ clamped to `[0, 1]`, so the JSON surface never emits a non-finite probability.
 
 ### Coverage is explicit and honest
 
-Adapting the catalog is incremental. Coverage now stands at **371 clinical
-calculators across 78 `lib` modules** (of 816 catalog tiles), built module by
+Adapting the catalog is incremental. Coverage now stands at **430 clinical
+calculators across 94 `lib` modules** (of 816 catalog tiles), built module by
 module against the one fixed contract:
 
 | wave | modules | tiles |
@@ -4135,6 +4135,8 @@ module against the one fixed contract:
 | eleventh (acute neuro / psych / pulm / tox / trauma) | `neuro-v95` (mRS, GOS-E, Hoehn-Yahr, Spetzler-Martin, House-Brackmann, MIDAS), `neuro-v117` (ASPECTS, ICH ABC/2, DRAGON, HAT, SEDAN, THRIVE), `psych-v96` (HAM-D, HAM-A, MADRS, MDQ, Y-BOCS, PCL-5), `psych-v123` (AIMS, Bush-Francis, Barnes, SCOFF, CES-D), `pulm-v114` (DECAF, BAP-65, Bronchiectasis-SI, FACED, NoSAS, AHI/ODI), `pulmnod-v115` (Mayo SPN, Brock, Fleischner 2017, REVEAL Lite 2, RAPID), `tox-v110` (DigiFab, NAC, HIET, TCA bicarbonate, EXTRIP lithium), `trauma-v108` (TRISS, NISS, TASH, RABT, GCS-Pupils, NEXUS Chest CT), `traumaclass-v109` (Denver BCVI, AAST, MESS, LRINEC, ALT-70) | 50 |
 | twelfth (rheumatology / ob-gyn / spine / ortho / surgical) | `rheum-v148` (ASDAS, FFS-2011, GCA-2022, PPI, PP-Score, opioid-conversion, Naranjo), `rheum-v160` (RAPID3, DAPSA, SLICC-SLE, 2019-EULAR/ACR-SLE), `rheum-periop-v89` (DAS28, King's-College, ASA-PS, Surgical-Apgar), `rheum-ob-v156` (BASDAI, BASFI, ESSDAI, Robson), `spine-v146` (SINS, Revised-Tokuhashi, Tomita, TLICS, SLIC), `ortho-v144` (Gustilo-Anderson, Garden, Weber, Schatzker, Salter-Harris, Neer), `ortho-v145` (Frykman, Mirels, Kellgren-Lawrence, Pittsburgh-knee, compartment-ΔP), `surg-v142` (POSSUM, P-POSSUM, SORT, Goldman-CRI, Wilson-airway, Surgical-Risk-Scale), `urology-v153` (IPSS, IIEF-5, OABSS), `gyn-v139` (Flamm-VBAC, ROMA, RMI, IOTA-Simple-Rules, Rotterdam-PCOS, POP-Q), `ob-v138` (Hadlock-EFW, fullPIERS, miniPIERS, AFI, Barnhart-hCG, IOM-GWG) | 56 |
 | thirteenth (older-adult prognosis / metabolic emergencies / environmental injury / ED-ICU decisions / warfarin dosing) | `ltcga-v180` (Lee 4-year mortality index, interRAI CHESS), `metabolic-onc-v88` (DKA/HHS, Calvert carboplatin, Cairo-Bishop TLS), `enviro-v111` (Lake-Louise AMS, Szpilman drowning, Snakebite Severity, Cauchy frostbite), `eddecision-v107` (New-Orleans head-CT, GO-FAR, MACOCHA), `warfarin-v133` (IWPC, Gage, Kovacs-10 mg, Crowther-5 mg) | 16 |
+| fourteenth (specialty completion) | `ems-v149` (peds-weight-est, peds-vitals, dose-volume), `pk-v166` (PK-suite, chlorpromazine-equivalents), `radiology-v165` (ACR TI-RADS, adrenal-CT-washout, Bosniak-2019, CT-effective-dose), `frailty-v143` (mFI-5, mFI-11, FRAIL, VES-13, CARG), `function-v154` (Berg-Balance, TUG, Tinetti-POMA, PPS), `hep-v125` (PELD, CLIF-C-ACLF, GAHS, West-Haven, HSI), `id-v137` (ISARIC-4C, COVID-GRAM, Candida-score, VACS, RegiSCAR-DRESS), `lymphoma-v135` (R-IPI, NCCN-IPI, GELF, Hasenclever-IPS, CLL-IPI), `neuro-disability-v159` (mJOA, Nurick, ASIA, EDSS), `onc-v134` (ISS, R-ISS, R2-ISS, Mayo-MGUS, DIPSS, DIPSS-Plus), `suites-v155` (MIPI, Forrest), `peds-v98` (Kocher, PIM3), `peds-v140` (Kaiser-EOS, SNAPPE-II, RDAI/Tal, CDS, Koff), `peds-growth-v141` (CDC-BMI-percentile, WHO-z-score, mid-parental-height, corrected-age), `peds-percentile-v169` (CDC-stature-for-age, CDC-weight-for-age), `derm-v151` (SCORAD) | 59 | <!-- catalog-truth:historical (module version suffixes v141/v169 are not catalog counts; the module name "percentile" contains the "tile" heuristic word) -->
+
 
 `docs/mcp-coverage.md` is the ledger and `list_calculators` always reports the
 live exposed fraction (`"<N> of <M> catalog tiles exposed"`), never a hardcoded
@@ -4190,8 +4192,17 @@ enums; the Calvert GFR cap and the Cairo-Bishop age class are the wave's only
 enum→flag `to` transforms, and the warfarin models consume height/weight in
 cm/kg directly (the browser unit toggle is a render-time convenience the pure
 functions never see), so no bespoke `formatResult` is needed. The HEAR score is
-left unexposed (no `META.example` to round-trip). Later waves extend coverage the
-same way — one module, one ledger entry, one set of round-tripping examples at a time.
+left unexposed (no `META.example` to round-trip). The fourteenth
+specialty-completion wave (59 across 16 modules) is the largest single wave: it
+opens the pediatric / EMS, pharmacology, diagnostic-imaging, frailty,
+functional-status, hepatology, infectious-disease, lymphoma / plasma-cell /
+myeloid staging, neuro-disability, and pediatric-growth surfaces. Every tile uses
+the flat contract with the default `makeToArgs` (Berg Balance already carries the
+`q1`..`q14` arg names the lib expects); the item-scale dermatology scores
+(`pasi` / `easi` / `dlqi`), the array-input pediatric tiles (`kawasaki-criteria`,
+`catch-head`), and the two example-less diabetic-foot grades are the wave's only
+deferrals. Later waves extend coverage the same way — one module, one ledger
+entry, one set of round-tripping examples at a time.
 
 ### Try it
 

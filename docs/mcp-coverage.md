@@ -292,6 +292,39 @@ carries no `META.example` to round-trip (the `phases-iph` precedent). The two
 are site-branched, so a faithful schema needs the full per-site criterion set
 rather than the flat `dom→arg→kind` contract this wave covers.
 
+## Fourteenth wave — 16 modules
+
+Coverage extends across the specialty-completion surface with **59 more clinical
+calculators across 16 `lib` modules**: bedside pediatrics / EMS
+(`lib/ems-v149.js`), pharmacology (`lib/pk-v166.js`), diagnostic imaging
+(`lib/radiology-v165.js`), frailty & geriatric oncology (`lib/frailty-v143.js`),
+functional / fall-risk / performance status (`lib/function-v154.js`), hepatology
+(`lib/hep-v125.js`), infectious disease (`lib/id-v137.js`), lymphoma / CLL
+prognosis (`lib/lymphoma-v135.js`), neuro-disability grading
+(`lib/neuro-disability-v159.js`), plasma-cell / myeloid staging
+(`lib/onc-v134.js`), the mantle-cell / Forrest suite (`lib/suites-v155.js`),
+pediatric acute severity (`lib/peds-v98.js`, `lib/peds-v140.js`), pediatric
+growth (`lib/peds-growth-v141.js`, `lib/peds-percentile-v169.js`), and the
+SCORAD dermatology score (`lib/derm-v151.js`). This brings the exposed total to
+**430 calculators across 94 modules**. Every tile uses the flat
+`dom→arg→kind` contract and the default `makeToArgs`; no bespoke `toArgs` or
+`formatResult` is needed — the Berg Balance item scores already carry the
+`q1`..`q14` argument names the lib function expects. Continuous labs, vitals, and
+item sub-scores are numbers; checkbox deficits (mFI-5/-11, FRAIL, CARG, Kocher,
+the PIM3 flags) are booleans; and ordinal grades, yes/no clinical questions, and
+categorical selects (TI-RADS descriptors, mJOA/Nurick grades, ISS / DIPSS-group
+axes, CLIF organ sub-scores, sex/measure axes) are enums.
+
+**Not adapted this wave (deferred):** `pasi`, `easi`, and `dlqi`
+(`lib/derm-v151.js`) build their input object from per-region / per-item field
+groups that need a bespoke `toArgs`; `kawasaki-criteria` and `catch-head`
+(`lib/peds-v98.js`) collect variable-length principal / risk-factor **arrays**,
+not the flat scalar contract; and `wagner-dfu` / `university-texas-dfu`
+(`lib/suites-v155.js`) carry no `META.example` to round-trip (the `phases-iph`
+precedent). `peds-bmi-percentile` exposes BMI directly rather than the browser's
+optional weight/height unit-toggle path — the pure function takes BMI and never
+sees the unit inputs (the warfarin height/weight precedent).
+
 ## Exposed
 
 Each id below is live in `mcp/catalog.js`. The gate parses this list.
@@ -822,6 +855,97 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 - `warfarin-gage`
 - `warfarin-init-10mg`
 - `warfarin-init-5mg`
+
+### lib/ems-v149.js
+- `peds-weight-est`
+- `peds-vitals`
+- `dose-volume`
+
+### lib/pk-v166.js
+- `pk-suite`
+- `chlorpromazine-equivalents`
+
+### lib/radiology-v165.js
+- `acr-tirads`
+- `adrenal-ct-washout`
+- `bosniak`
+- `ct-effective-dose`
+
+### lib/frailty-v143.js
+- `mfi-5`
+- `mfi-11`
+- `frail-scale`
+- `ves-13`
+- `carg-toxicity`
+
+### lib/function-v154.js
+- `berg-balance`
+- `tug`
+- `tinetti-poma`
+- `pps`
+
+### lib/hep-v125.js
+- `peld-score`
+- `clif-c-aclf`
+- `gahs`
+- `west-haven-he`
+- `hepatic-steatosis-index`
+
+### lib/id-v137.js
+- `isaric-4c-mortality`
+- `covid-gram`
+- `candida-score`
+- `vacs-index`
+- `regiscar-dress`
+
+### lib/lymphoma-v135.js
+- `r-ipi`
+- `nccn-ipi`
+- `gelf-criteria`
+- `hodgkin-ips`
+- `cll-ipi`
+
+### lib/neuro-disability-v159.js
+- `mjoa`
+- `nurick`
+- `asia-impairment`
+- `edss`
+
+### lib/onc-v134.js
+- `myeloma-iss`
+- `myeloma-r-iss`
+- `myeloma-r2-iss`
+- `mgus-risk`
+- `dipss-mf`
+- `dipss-plus-mf`
+
+### lib/suites-v155.js
+- `mipi`
+- `forrest`
+
+### lib/peds-v98.js
+- `kocher-criteria`
+- `pim3`
+
+### lib/peds-v140.js
+- `eos-calculator`
+- `snappe-ii`
+- `rdai-tal`
+- `clinical-dehydration-scale`
+- `koff-bladder-capacity`
+
+### lib/peds-growth-v141.js
+- `peds-bmi-percentile`
+- `who-growth-zscore`
+- `mid-parental-height`
+- `corrected-age`
+
+### lib/peds-percentile-v169.js
+- `cdc-stature-for-age`
+- `cdc-weight-for-age`
+
+### lib/derm-v151.js
+- `scorad`
 
 ## Not yet adapted
 

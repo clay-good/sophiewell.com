@@ -95,6 +95,22 @@ import metabolicOncV88 from './adapters/metabolic-onc-v88.js';
 import enviroV111 from './adapters/enviro-v111.js';
 import eddecisionV107 from './adapters/eddecision-v107.js';
 import warfarinV133 from './adapters/warfarin-v133.js';
+import emsV149 from './adapters/ems-v149.js';
+import pkV166 from './adapters/pk-v166.js';
+import radiologyV165 from './adapters/radiology-v165.js';
+import frailtyV143 from './adapters/frailty-v143.js';
+import functionV154 from './adapters/function-v154.js';
+import hepV125 from './adapters/hep-v125.js';
+import idV137 from './adapters/id-v137.js';
+import lymphomaV135 from './adapters/lymphoma-v135.js';
+import neuroDisabilityV159 from './adapters/neuro-disability-v159.js';
+import oncV134 from './adapters/onc-v134.js';
+import suitesV155 from './adapters/suites-v155.js';
+import pedsV98 from './adapters/peds-v98.js';
+import pedsV140 from './adapters/peds-v140.js';
+import pedsGrowthV141 from './adapters/peds-growth-v141.js';
+import pedsPercentileV169 from './adapters/peds-percentile-v169.js';
+import dermV151 from './adapters/derm-v151.js';
 
 const ADAPTER_MODULES = [
   ['tox-v86', toxV86],
@@ -175,6 +191,22 @@ const ADAPTER_MODULES = [
   ['enviro-v111', enviroV111],
   ['eddecision-v107', eddecisionV107],
   ['warfarin-v133', warfarinV133],
+  ['ems-v149', emsV149],
+  ['pk-v166', pkV166],
+  ['radiology-v165', radiologyV165],
+  ['frailty-v143', frailtyV143],
+  ['function-v154', functionV154],
+  ['hep-v125', hepV125],
+  ['id-v137', idV137],
+  ['lymphoma-v135', lymphomaV135],
+  ['neuro-disability-v159', neuroDisabilityV159],
+  ['onc-v134', oncV134],
+  ['suites-v155', suitesV155],
+  ['peds-v98', pedsV98],
+  ['peds-v140', pedsV140],
+  ['peds-growth-v141', pedsGrowthV141],
+  ['peds-percentile-v169', pedsPercentileV169],
+  ['derm-v151', dermV151],
 ];
 
 const HERE = dirname(fileURLToPath(import.meta.url));

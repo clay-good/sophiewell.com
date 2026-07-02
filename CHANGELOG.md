@@ -6,6 +6,47 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v183 — MCP wave 14: expose the specialty-completion cluster (59 calculators across 16 lib modules) as deterministic agent tools; no tile delta, 816)
+
+- The optional stdio MCP server (`mcp/server.js`) gains a **fourteenth coverage
+  wave** — the largest single wave — exposing **59 more catalog calculators as
+  deterministic `compute_calculator` tools across 16 `lib` modules**, bringing
+  the exposed surface to **430 of 816 catalog tiles across 94 modules**. No
+  catalog tile is added or changed — this is adapter-only coverage of compute
+  logic already shipped across earlier programs.
+- Modules exposed: `lib/ems-v149.js` (bedside pediatrics / EMS),
+  `lib/pk-v166.js` (pharmacokinetics suite, chlorpromazine equivalents),
+  `lib/radiology-v165.js` (ACR TI-RADS, adrenal CT washout, Bosniak 2019, CT
+  effective dose), `lib/frailty-v143.js` (mFI-5/-11, FRAIL, VES-13, CARG),
+  `lib/function-v154.js` (Berg Balance, TUG, Tinetti POMA, PPS),
+  `lib/hep-v125.js` (PELD, CLIF-C ACLF, GAHS, West Haven, Hepatic Steatosis
+  Index), `lib/id-v137.js` (ISARIC 4C, COVID-GRAM, Candida score, VACS, RegiSCAR
+  DRESS), `lib/lymphoma-v135.js` (R-IPI, NCCN-IPI, GELF, Hasenclever IPS,
+  CLL-IPI), `lib/neuro-disability-v159.js` (mJOA, Nurick, ASIA, EDSS),
+  `lib/onc-v134.js` (ISS, R-ISS, R2-ISS, Mayo MGUS, DIPSS, DIPSS-Plus),
+  `lib/suites-v155.js` (MIPI, Forrest), `lib/peds-v98.js` (Kocher, PIM3),
+  `lib/peds-v140.js` (Kaiser EOS, SNAPPE-II, RDAI/Tal, Clinical Dehydration
+  Scale, Koff bladder capacity), `lib/peds-growth-v141.js` (CDC BMI-for-age
+  percentile, WHO growth z-score, mid-parental height, corrected age),
+  `lib/peds-percentile-v169.js` (CDC stature-for-age, CDC weight-for-age), and
+  `lib/derm-v151.js` (SCORAD).
+- Every tile uses the flat `dom→arg→kind` contract and the default `makeToArgs`;
+  no bespoke `toArgs` or `formatResult` is needed. Berg Balance already carries
+  the `q1`..`q14` argument names the lib function expects. Continuous labs /
+  vitals / item sub-scores are numbers, checkbox deficits are booleans, and
+  ordinal grades / yes-no questions / categorical selects are enums; every
+  exposed example round-trips to its `META.example.expected`.
+- **Not adapted this wave (deferred):** `pasi` / `easi` / `dlqi` build their
+  input object from per-region / per-item field groups (bespoke `toArgs`
+  needed); `kawasaki-criteria` and `catch-head` collect variable-length feature
+  arrays; and `wagner-dfu` / `university-texas-dfu` carry no `META.example` to
+  round-trip.
+- Files: 16 new `mcp/adapters/*.js`, `mcp/catalog.js` (+16 imports, +16
+  `ADAPTER_MODULES` rows), `docs/mcp-coverage.md` (fourteenth-wave section +
+  Exposed ids), and the count surfaces in `README.md` and `mcp/README.md`. The
+  round-trip gate (`check-mcp-catalog`) and the auto-covering `test:mcp` fuzz +
+  every-example suites validate all 430 adapters.
+
 ### Added (spec-v183 — MCP wave 13: expose older-adult prognosis, metabolic emergencies, environmental injury, ED/ICU decisions & warfarin dosing (16 calculators) as deterministic agent tools; no tile delta, 816)
 
 - The optional stdio MCP server (`mcp/server.js`) gains a **thirteenth coverage

@@ -73,7 +73,7 @@ strings; booleans as `true`/`false`; enums by their listed string values.
 
 ```
 list_calculators { "specialty": "hepatology" }
-  -> { coverage: "371 of 816 catalog tiles exposed ...", calculators: [ { id: "meld-xi", ... }, ... ] }
+  -> { coverage: "430 of 816 catalog tiles exposed ...", calculators: [ { id: "meld-xi", ... }, ... ] }
 
 describe_calculator { "id": "meld-xi" }
   -> { inputSchema: { ... mx-bili, mx-creat ... }, citation: "Heuman DM ... Liver Transpl 2007", ... }
@@ -128,7 +128,12 @@ fracture classifications, surgical and airway risk models, urology symptom
 scores, gynecologic risk/staging, and obstetric bedside math); and a thirteenth
 wave added 16 more across 5 modules (older-adult prognosis, metabolic
 emergencies, environmental injury, ED/ICU decision instruments, and warfarin
-dosing), for 371 across 78 modules today.
+dosing); and a fourteenth wave added 59 more across 16 modules (the
+specialty-completion surface — bedside pediatrics/EMS, pharmacology, diagnostic
+imaging, frailty & geriatric oncology, functional/fall-risk status, hepatology,
+infectious disease, lymphoma/CLL and plasma-cell/myeloid staging,
+neuro-disability grading, pediatric acute severity and growth, and the SCORAD
+dermatology score), for 430 across 94 modules today.
 Later waves extend it module by module against the same contract.
 
 ## Design
