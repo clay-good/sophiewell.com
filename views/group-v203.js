@@ -115,4 +115,35 @@ export const renderers = {
     }));
     postureNote(root);
   },
+
+  // ----- 2.1 sort-mortality --------------------------------------------------
+  'sort-mortality'(root) {
+    note(root, 'Surgical Outcome Risk Tool (Protopapa 2014): a preoperative 30-day-mortality estimate from six routine variables — ASA physical status, urgency, high-risk specialty (GI / thoracic / vascular), surgical severity, cancer, and age. logit = −7.366 + weighted terms; mortality = 1/(1+e^−logit). Near-neighbors: rcri, possum, surgical-apgar.');
+    root.appendChild(selectField('ASA physical status', 'sort-asa', [
+      { value: 'I', text: 'I (0)' },
+      { value: 'II', text: 'II (0)' },
+      { value: 'III', text: 'III (+1.411)' },
+      { value: 'IV', text: 'IV (+2.388)' },
+      { value: 'V', text: 'V (+4.081)' },
+    ]));
+    root.appendChild(selectField('Urgency', 'sort-urgency', [
+      { value: 'elective', text: 'Elective (0)' },
+      { value: 'expedited', text: 'Expedited (+1.236)' },
+      { value: 'urgent', text: 'Urgent (+1.657)' },
+      { value: 'immediate', text: 'Immediate (+2.452)' },
+    ]));
+    root.appendChild(numField('Age (years)', 'sort-age', { min: '0' }));
+    root.appendChild(checkField('High-risk specialty — GI, thoracic, or vascular (+0.712)', 'sort-highrisk'));
+    root.appendChild(checkField('Surgical severity major / complex (+0.381)', 'sort-major'));
+    root.appendChild(checkField('Cancer / malignancy (+0.667)', 'sort-cancer'));
+    const o = out(); root.appendChild(o);
+    const ids = ['sort-asa', 'sort-urgency', 'sort-age', 'sort-highrisk', 'sort-major', 'sort-cancer'];
+    wire(ids, () => safe(o, () => {
+      const r = M.sort({ asa: val('sort-asa'), urgency: val('sort-urgency'), age: val('sort-age'), highRiskSpecialty: chk('sort-highrisk'), majorComplex: chk('sort-major'), cancer: chk('sort-cancer') });
+      if (!r.valid) { showInvalid(o, r); return; }
+      resultRow(o, [{ text: r.band, cls: r.abnormal ? 'warn' : null }, { label: 'SORT', value: `${r.score}%` }]);
+      note(o, r.detail); note(o, r.note);
+    }));
+    postureNote(root);
+  },
 };

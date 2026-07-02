@@ -26,6 +26,13 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
   ipsilateral ≥ 50% carotid stenosis (+2), and abnormal DWI (+2), total 0–13;
   strata low 0–3, medium 4–7, high 8–13. Weights cross-verified against the
   neurology.org stroke-unit study and the AHA Stroke validation (spec-v97).
+- **Surgical Outcome Risk Tool** (`sort-mortality`, 860 → 861): a preoperative
+  30-day-mortality estimate from six routine variables — ASA physical status,
+  urgency, high-risk specialty (GI / thoracic / vascular), surgical severity,
+  cancer, and age. logit = −7.366 + weighted terms; predicted mortality =
+  1/(1+e^−logit). Coefficients cross-verified verbatim against the open-access
+  development paper (Protopapa 2014, PMC4240514 Table 4) and an independent
+  reproduction (spec-v97).
 
 ### Added (spec-v202 — Deep Subspecialty Quantitation program continues: cardiovascular & heart-failure risk engines, shipped one tile at a time, 857 → 858)
 

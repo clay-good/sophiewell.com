@@ -1904,6 +1904,7 @@ const UTILITIES = [
   // views/group-v203.js (RV203). Shipped one tile at a time.
   { id: 'dasi',                 name: 'Duke Activity Status Index (DASI, Functional Capacity)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'abcd3-i',              name: 'ABCD3-I Score (Early Stroke Risk After TIA)',      group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'sort-mortality',       name: 'SORT (Surgical Outcome Risk Tool, 30-day Mortality)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
 ];
 
 const UTIL_BY_ID = new Map(UTILITIES.map((u) => [u.id, u]));
