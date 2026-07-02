@@ -32,6 +32,14 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
   carry the five-variable formula with INR, so the tile ships the verbatim
   five-input model (the v199 ELTS / v200 APPS precedent — the source governs, not
   the draft). The logistic labs are ln-guarded to positive domains.
+- **Hepamet Fibrosis Score** (`hepamet-fibrosis`, 854 → 855): the non-invasive
+  advanced-fibrosis score for NAFLD (age, sex, AST, albumin, HOMA-IR, diabetes,
+  platelets) built to shrink the FIB-4 / NFS gray zone. The published Ampuero
+  2020 categorical logistic HFS = 1 / (1 + e^E); cut-points < 0.12 rule OUT
+  advanced fibrosis, ≥ 0.47 rule IN, 0.12–0.47 indeterminate. Coefficients
+  cross-verified verbatim across two independent reproductions (spec-v97). The
+  diabetes term is mutually exclusive with the HOMA-IR terms, so HOMA-IR is only
+  required when the patient is non-diabetic.
 
 ### Added (spec-v200 — Deep Subspecialty Quantitation program continues: 4 critical-care severity & acid-base calculators, 848 → 852)
 

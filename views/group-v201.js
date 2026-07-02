@@ -105,4 +105,28 @@ export const renderers = {
     }));
     postureNote(root);
   },
+
+  // ----- 2.3 hepamet-fibrosis ------------------------------------------------
+  'hepamet-fibrosis'(root) {
+    note(root, 'Hepamet Fibrosis Score (Ampuero 2020): a non-invasive advanced-fibrosis score for NAFLD from age, sex, AST, albumin, HOMA-IR, diabetes, and platelets. Cut-points: < 0.12 rules OUT, ≥ 0.47 rules IN, 0.12–0.47 indeterminate. Built to shrink the FIB-4 / NFS gray zone. Near-neighbors: fib4, nafld-fibrosis.');
+    root.appendChild(num('Age (years)', 'hep-age', { min: '0' }));
+    root.appendChild(selectField('Sex', 'hep-sex', [
+      { value: 'male', text: 'Male' },
+      { value: 'female', text: 'Female' },
+    ]));
+    root.appendChild(num('AST (IU/L)', 'hep-ast', { min: '0' }));
+    root.appendChild(num('Albumin (g/dL)', 'hep-alb', { min: '0' }));
+    root.appendChild(num('Platelets (×10⁹/L)', 'hep-plt', { min: '0' }));
+    root.appendChild(checkField('Diabetes mellitus (if checked, HOMA-IR is not needed)', 'hep-dm'));
+    root.appendChild(num('HOMA-IR (non-diabetic only)', 'hep-homa', { min: '0' }));
+    const o = out(); root.appendChild(o);
+    const ids = ['hep-age', 'hep-sex', 'hep-ast', 'hep-alb', 'hep-plt', 'hep-dm', 'hep-homa'];
+    wire(ids, () => safe(o, () => {
+      const r = M.hepamet({ age: val('hep-age'), sex: val('hep-sex'), ast: val('hep-ast'), albumin: val('hep-alb'), platelets: val('hep-plt'), diabetes: chk('hep-dm'), homa: val('hep-homa') });
+      if (!r.valid) { showInvalid(o, r); return; }
+      resultRow(o, [{ text: r.band, cls: r.abnormal ? 'warn' : null }, { label: 'Hepamet', value: `${r.score}` }]);
+      note(o, r.detail); note(o, r.note);
+    }));
+    postureNote(root);
+  },
 };
