@@ -6,6 +6,20 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v204 — Frontline & Bedside Decision Instruments program (opens): nephrology / fluids / renal-tubular quantitation, shipped one tile at a time, 861 → …)
+
+- Opens the **Frontline & Bedside Decision Instruments** program (spec-v204–v208)
+  with nephrology, fluid-balance, and renal-tubular instruments, shipped **one
+  tile at a time**. New module `lib/nephro-fluids-v204.js`, renderers
+  `views/group-v204.js` (RV204).
+- **Calcium/Creatinine Clearance Ratio** (`cccr`, 861 → 862): CCCR = (urine Ca ×
+  serum Cr) / (serum Ca × urine Cr), dimensionless when the calcium terms share a
+  unit and the creatinine terms share a unit. < 0.01 suggests familial
+  hypocalciuric hypercalcemia (FHH — a benign CASR condition that must not go to
+  parathyroidectomy); > 0.02 suggests primary hyperparathyroidism; 0.01–0.02 is
+  an indeterminate gray zone. Bands cross-verified across the FHH/PHPT literature
+  and independent reproductions (spec-v97).
+
 ### Added (spec-v203 — Deep Subspecialty Quantitation program (closing spec): perioperative / fracture / frailty risk, shipped one tile at a time, 858 → 861)
 
 - The closing feature spec of the **Deep Subspecialty Quantitation** program

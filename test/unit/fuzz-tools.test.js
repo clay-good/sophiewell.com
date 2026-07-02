@@ -193,6 +193,7 @@ import * as critcareSeverityV200 from '../../lib/critcare-severity-v200.js';
 import * as hepatologyGibleedV201 from '../../lib/hepatology-gibleed-v201.js';
 import * as cvriskEnginesV202 from '../../lib/cvrisk-engines-v202.js';
 import * as periopFrailtyV203 from '../../lib/periop-frailty-v203.js';
+import * as nephroFluidsV204 from '../../lib/nephro-fluids-v204.js';
 
 const MODULES = {
   'clinical.js': clinical,
@@ -330,6 +331,7 @@ const MODULES = {
   'hepatology-gibleed-v201.js': hepatologyGibleedV201,
   'cvrisk-engines-v202.js': cvriskEnginesV202,
   'periop-frailty-v203.js': periopFrailtyV203,
+  'nephro-fluids-v204.js': nephroFluidsV204,
 };
 
 const MATRIX = [0, -1, 1e9, NaN, Infinity, -Infinity, '', undefined, null];
