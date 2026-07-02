@@ -190,6 +190,7 @@ import * as endoQuantV197 from '../../lib/endo-quant-v197.js';
 import * as subspecialtyV198 from '../../lib/subspecialty-v198.js';
 import * as myeloidPrognosisV199 from '../../lib/myeloid-prognosis-v199.js';
 import * as critcareSeverityV200 from '../../lib/critcare-severity-v200.js';
+import * as hepatologyGibleedV201 from '../../lib/hepatology-gibleed-v201.js';
 
 const MODULES = {
   'clinical.js': clinical,
@@ -324,6 +325,7 @@ const MODULES = {
   'subspecialty-v198.js': subspecialtyV198,
   'myeloid-prognosis-v199.js': myeloidPrognosisV199,
   'critcare-severity-v200.js': critcareSeverityV200,
+  'hepatology-gibleed-v201.js': hepatologyGibleedV201,
 };
 
 const MATRIX = [0, -1, 1e9, NaN, Infinity, -Infinity, '', undefined, null];

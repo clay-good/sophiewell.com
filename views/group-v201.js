@@ -1,0 +1,89 @@
+// spec-v201 §2: renderers for the five hepatology & upper-GI-bleeding
+// prognostic tiles — Glasgow-Blatchford, CLIF-C AD, Hepamet, CLIP, and Agile
+// 3+. Group G.
+//
+// Same input/render contract as the rest of the codebase: every input has a
+// real <label for> (a11y-check passes), no innerHTML, no network, no storage.
+// The logistic models (CLIF-C AD, Hepamet, Agile 3+) take ln() of labs and are
+// finite-guarded in lib/hepatology-gibleed-v201.js. Per the spec-v50 §3 posture
+// note each tile defers the transfusion / endoscopy / biopsy / transplant /
+// disposition decision to the clinician and the patient (spec-v11 §5.3) — these
+// triage and stratify, they do not order.
+
+import { el, clear } from '../lib/dom.js';
+import * as M from '../lib/hepatology-gibleed-v201.js';
+import { resultRow } from '../lib/result-copy.js';
+
+function field(label, id, attrs) {
+  const wrap = el('p');
+  wrap.appendChild(el('label', { for: id, text: label }));
+  wrap.appendChild(el('br'));
+  wrap.appendChild(el('input', { id, ...attrs }));
+  return wrap;
+}
+function num(label, id, attrs = {}) {
+  return field(label, id, { type: 'number', step: 'any', inputmode: 'decimal', ...attrs });
+}
+function selectField(label, id, options) {
+  const wrap = el('p');
+  wrap.appendChild(el('label', { for: id, text: label }));
+  wrap.appendChild(el('br'));
+  const sel = el('select', { id });
+  for (const opt of options) sel.appendChild(el('option', { value: opt.value, text: opt.text }));
+  wrap.appendChild(sel);
+  return wrap;
+}
+function checkField(label, id) {
+  const wrap = el('p');
+  wrap.appendChild(el('input', { id, type: 'checkbox' }));
+  wrap.appendChild(el('label', { for: id, text: ' ' + label }));
+  return wrap;
+}
+function out() { return el('div', { id: 'q-results', 'aria-live': 'polite' }); }
+function val(id) { const n = document.getElementById(id); return n ? n.value : ''; }
+function chk(id) { const n = document.getElementById(id); return n ? n.checked : false; }
+function safe(o, fn) { clear(o); try { fn(); } catch (err) { o.appendChild(el('p', { class: 'muted', text: err.message })); } }
+function note(root, text) { if (text) root.appendChild(el('p', { class: 'muted', text })); }
+function showInvalid(o, r) { note(o, r.message || 'Complete the remaining fields.'); }
+function postureNote(root) {
+  root.appendChild(el('p', { class: 'muted', text: 'Decision support, not a verdict. The score is the cited source’s, computed from the inputs you enter. The transfusion, endoscopy, biopsy, transplant, and disposition decisions stay with the clinician and the patient.' }));
+}
+function wire(ids, run) {
+  for (const id of ids) { const n = document.getElementById(id); if (n) { n.addEventListener('input', run); n.addEventListener('change', run); } }
+  run();
+}
+
+export const renderers = {
+  // ----- 2.1 glasgow-blatchford ----------------------------------------------
+  'glasgow-blatchford'(root) {
+    note(root, 'Glasgow-Blatchford Score (Blatchford 2000): a pre-endoscopy upper-GI-bleed risk score from first-contact data. A score of 0 (or ≤ 1 by the BSG extension) flags a candidate for outpatient management; ≥ 6 a > 50% chance of needing intervention. Near-neighbors: rockall, aims65.');
+    root.appendChild(selectField('Urea unit', 'gbs-ureaunit', [
+      { value: 'mmol', text: 'Blood urea (mmol/L)' },
+      { value: 'mgdl', text: 'BUN (mg/dL)' },
+    ]));
+    root.appendChild(num('Blood urea / BUN (in the unit selected above)', 'gbs-urea', { min: '0' }));
+    root.appendChild(selectField('Sex', 'gbs-sex', [
+      { value: 'male', text: 'Male' },
+      { value: 'female', text: 'Female' },
+    ]));
+    root.appendChild(num('Hemoglobin (g/dL)', 'gbs-hb', { min: '1', max: '25' }));
+    root.appendChild(num('Systolic BP (mmHg)', 'gbs-sbp', { min: '20' }));
+    root.appendChild(checkField('Pulse ≥ 100 /min (+1)', 'gbs-pulse'));
+    root.appendChild(checkField('Presentation with melena (+1)', 'gbs-melena'));
+    root.appendChild(checkField('Presentation with syncope (+2)', 'gbs-syncope'));
+    root.appendChild(checkField('Hepatic disease (+2)', 'gbs-hepatic'));
+    root.appendChild(checkField('Cardiac failure (+2)', 'gbs-cardiac'));
+    const o = out(); root.appendChild(o);
+    const ids = ['gbs-ureaunit', 'gbs-urea', 'gbs-sex', 'gbs-hb', 'gbs-sbp', 'gbs-pulse', 'gbs-melena', 'gbs-syncope', 'gbs-hepatic', 'gbs-cardiac'];
+    wire(ids, () => safe(o, () => {
+      const r = M.glasgowBlatchford({
+        ureaUnit: val('gbs-ureaunit'), urea: val('gbs-urea'), sex: val('gbs-sex'), hb: val('gbs-hb'), sbp: val('gbs-sbp'),
+        pulseHigh: chk('gbs-pulse'), melena: chk('gbs-melena'), syncope: chk('gbs-syncope'), hepatic: chk('gbs-hepatic'), cardiac: chk('gbs-cardiac'),
+      });
+      if (!r.valid) { showInvalid(o, r); return; }
+      resultRow(o, [{ text: r.band, cls: r.abnormal ? 'warn' : null }, { label: 'GBS', value: `${r.score}` }]);
+      note(o, r.detail); note(o, r.note);
+    }));
+    postureNote(root);
+  },
+};

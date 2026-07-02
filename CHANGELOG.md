@@ -6,6 +6,23 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v201 — Deep Subspecialty Quantitation program continues: hepatology & upper-GI-bleeding prognostic instruments, shipped one tile at a time, 852 → …)
+
+- Continues the **Deep Subspecialty Quantitation** program (spec-v199–v203) with
+  the third feature spec, five hepatology and upper-GI-bleeding prognostic
+  instruments shipped **one tile at a time**. New module
+  `lib/hepatology-gibleed-v201.js`, renderers `views/group-v201.js` (RV201).
+- **Glasgow-Blatchford Score** (`glasgow-blatchford`, 852 → 853): the
+  pre-endoscopy upper-GI-bleed risk score from first-contact data (blood urea,
+  sex-specific haemoglobin, systolic BP, pulse ≥ 100, melaena, syncope, hepatic
+  disease, cardiac failure; total 0–23). A score of 0 (or ≤ 1 by the BSG
+  extension) flags a candidate for outpatient management; ≥ 6 carries a > 50%
+  chance of needing transfusion or endoscopic intervention. The grid was
+  cross-verified against GPnotebook and RCEMLearning (spec-v97), with the
+  RCEMLearning typos (urea > 25 as "5", max "29") corrected against the published
+  0–23 range (6+6+3+1+1+2+2+2 = 23). A US-standard BUN (mg/dL) input is converted
+  to urea mmol/L by urea = BUN ÷ 2.8.
+
 ### Added (spec-v200 — Deep Subspecialty Quantitation program continues: 4 critical-care severity & acid-base calculators, 848 → 852)
 
 - Continues the **Deep Subspecialty Quantitation** program (spec-v199–v203) with
