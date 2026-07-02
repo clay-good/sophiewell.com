@@ -26,6 +26,15 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
   Risk groups: low 0–1 (median ≈ 319 days), moderate 2–4 (≈ 130 days), high 5–7
   (≈ 44 days). Weights and survival cross-verified against Clive 2014 and the
   validation literature (spec-v97).
+- **ADO index** (`ado-index`, 868 → 869): a primary-care-friendly COPD mortality
+  index needing no 6-minute walk test — age (40–49 → 0 up to ≥ 90 → 5), mMRC
+  dyspnea (0–1 → 0, 2 → 1, 3 → 2, 4 → 3), and FEV₁ % predicted (≥ 65 → 0, 36–64 →
+  1, ≤ 35 → 2); total 0–10. A higher score predicts higher 3-year all-cause
+  mortality across the quartiles 0–2 / 3–4 / 5–6 / 7–10. The point map was
+  cross-verified against the PMC8999166 reproduction of the Puhan 2009 table
+  (spec-v97); per-score mortality percentages are reported as quartile risk tiers
+  rather than fabricated numbers, since the published per-score curve is not
+  reproducible from ≥ 2 open sources.
 
 ### Added (spec-v204 — Frontline & Bedside Decision Instruments program (opens): nephrology / fluids / renal-tubular quantitation, shipped one tile at a time, 861 → 866, slice complete +5)
 

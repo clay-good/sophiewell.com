@@ -100,4 +100,27 @@ export const renderers = {
     }));
     postureNote(root);
   },
+
+  // ----- 2.2 ado-index -------------------------------------------------------
+  'ado-index'(root) {
+    note(root, 'ADO index (Puhan 2009): a primary-care-friendly COPD mortality index needing no 6-minute walk test — age, mMRC dyspnea, and FEV₁ % predicted; total 0–10. Higher scores predict higher 3-year all-cause mortality. Near-neighbors: bode-index, gold-spirometry, mmrc-dyspnea.');
+    root.appendChild(num('Age (years)', 'ado-age', { min: '0' }));
+    root.appendChild(selectField('mMRC dyspnea grade', 'ado-mmrc', [
+      { value: '0', text: '0 — breathless with strenuous exercise (+0)' },
+      { value: '1', text: '1 — short of breath hurrying/slight hill (+0)' },
+      { value: '2', text: '2 — walks slower than peers / stops (+1)' },
+      { value: '3', text: '3 — stops after ~100 m / few minutes (+2)' },
+      { value: '4', text: '4 — too breathless to leave house / dressing (+3)' },
+    ]));
+    root.appendChild(num('FEV₁ (% predicted)', 'ado-fev1', { min: '0' }));
+    const o = out(); root.appendChild(o);
+    const ids = ['ado-age', 'ado-mmrc', 'ado-fev1'];
+    wire(ids, () => safe(o, () => {
+      const r = M.adoIndex({ age: val('ado-age'), mmrc: val('ado-mmrc'), fev1: val('ado-fev1') });
+      if (!r.valid) { showInvalid(o, r); return; }
+      resultRow(o, [{ text: r.band, cls: r.abnormal ? 'warn' : null }, { label: 'ADO', value: `${r.score}` }]);
+      note(o, r.detail); note(o, r.note);
+    }));
+    postureNote(root);
+  },
 };

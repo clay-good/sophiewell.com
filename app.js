@@ -1919,6 +1919,7 @@ const UTILITIES = [
   // Instruments program). lib/pulm-copd-v205.js, views/group-v205.js (RV205).
   { id: 'cat-copd',             name: 'COPD Assessment Test (CAT)',                       group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'lent-score',           name: 'LENT Score (Malignant Pleural Effusion Prognosis)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'ado-index',            name: 'ADO Index (Age, Dyspnea, Obstruction; COPD)',      group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
 ];
 
 const UTIL_BY_ID = new Map(UTILITIES.map((u) => [u.id, u]));
