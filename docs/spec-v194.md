@@ -1,6 +1,6 @@
 # spec-v194.md — Right-heart & echocardiographic hemodynamics: the pulmonary artery pulsatility index, the transpulmonary / diastolic pressure gradient, the Tei myocardial performance index, and the pulmonary shunt fraction (+4 tiles)
 
-> Status: **PROPOSED (2026-07-01).** Feature spec of the **Advanced Specialist
+> Status: **SHIPPED (2026-07-02).** _(Proposed 2026-07-01.)_ Feature spec of the **Advanced Specialist
 > Quantitation** program ([spec-v193](spec-v193.md) §1.1). Adds **4** deterministic
 > invasive- and echocardiographic-hemodynamics instruments. **Each tile was verified
 > absent by a direct scan of `app.js`** (zero id / name / keyword hits): the catalog

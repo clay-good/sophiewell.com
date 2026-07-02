@@ -97,6 +97,12 @@ import { renderers as RV189 } from './views/group-v189.js';
 import { renderers as RV190 } from './views/group-v190.js';
 import { renderers as RV191 } from './views/group-v191.js';
 import { renderers as RV192 } from './views/group-v192.js';
+import { renderers as RV193 } from './views/group-v193.js';
+import { renderers as RV194 } from './views/group-v194.js';
+import { renderers as RV195 } from './views/group-v195.js';
+import { renderers as RV196 } from './views/group-v196.js';
+import { renderers as RV197 } from './views/group-v197.js';
+import { renderers as RV198 } from './views/group-v198.js';
 import { renderers as RV164 } from './views/group-v164.js';
 import { renderers as RV165 } from './views/group-v165.js';
 import { renderers as RV166 } from './views/group-v166.js';
@@ -131,7 +137,7 @@ import { resolvePrompt } from './lib/prompt.js';
 // artifact-detect / artifact-route / artifact-handoff helpers were
 // deleted in spec-v29 wave 29-2 (Group C/L).
 
-const RENDERERS = { ...RA, ...RB, ...RC, ...RE, ...RF, ...RG, ...RH, ...RI, ...RJ, ...RKLMNO, ...RV5, ...RV6, ...RV7, ...RV8, ...RV9, ...RV10, ...RV11, ...RV12, ...RV13, ...RV14, ...RV15, ...RV16, ...RV17, ...RV18, ...RV19, ...RV20, ...RV21, ...RV22, ...RV23, ...RV24, ...RV25, ...RV26, ...RV27, ...RV28, ...RV29, ...RV30, ...RV31, ...RV32, ...RV33, ...RV34, ...RV35, ...RV36, ...RV37, ...RV38, ...RV39, ...RV40, ...RV117, ...RV118, ...RV119, ...RV120, ...RV121, ...RV122, ...RV123, ...RV124, ...RV125, ...RV126, ...RV127, ...RV128, ...RV129, ...RV130, ...RV131, ...RV132, ...RV133, ...RV134, ...RV135, ...RV136, ...RV137, ...RV138, ...RV139, ...RV140, ...RV141, ...RV142, ...RV143, ...RV144, ...RV145, ...RV146, ...RV147, ...RV148, ...RV149, ...RV151, ...RV152, ...RV153, ...RV154, ...RV155, ...RV156, ...RV158, ...RV159, ...RV160, ...RV161, ...RV163, ...RV164, ...RV165, ...RV166, ...RV167, ...RV169, ...RV173, ...RV174, ...RV175, ...RV176, ...RV177, ...RV178, ...RV179, ...RV182, ...RV180, ...RV181, ...RV185, ...RV186, ...RV187, ...RV188, ...RV189, ...RV190, ...RV191, ...RV192, ...RV63, ...RPALINT };
+const RENDERERS = { ...RA, ...RB, ...RC, ...RE, ...RF, ...RG, ...RH, ...RI, ...RJ, ...RKLMNO, ...RV5, ...RV6, ...RV7, ...RV8, ...RV9, ...RV10, ...RV11, ...RV12, ...RV13, ...RV14, ...RV15, ...RV16, ...RV17, ...RV18, ...RV19, ...RV20, ...RV21, ...RV22, ...RV23, ...RV24, ...RV25, ...RV26, ...RV27, ...RV28, ...RV29, ...RV30, ...RV31, ...RV32, ...RV33, ...RV34, ...RV35, ...RV36, ...RV37, ...RV38, ...RV39, ...RV40, ...RV117, ...RV118, ...RV119, ...RV120, ...RV121, ...RV122, ...RV123, ...RV124, ...RV125, ...RV126, ...RV127, ...RV128, ...RV129, ...RV130, ...RV131, ...RV132, ...RV133, ...RV134, ...RV135, ...RV136, ...RV137, ...RV138, ...RV139, ...RV140, ...RV141, ...RV142, ...RV143, ...RV144, ...RV145, ...RV146, ...RV147, ...RV148, ...RV149, ...RV151, ...RV152, ...RV153, ...RV154, ...RV155, ...RV156, ...RV158, ...RV159, ...RV160, ...RV161, ...RV163, ...RV164, ...RV165, ...RV166, ...RV167, ...RV169, ...RV173, ...RV174, ...RV175, ...RV176, ...RV177, ...RV178, ...RV179, ...RV182, ...RV180, ...RV181, ...RV185, ...RV186, ...RV187, ...RV188, ...RV189, ...RV190, ...RV191, ...RV192, ...RV193, ...RV194, ...RV195, ...RV196, ...RV197, ...RV198, ...RV63, ...RPALINT };
 
 // ----- Utility registry ----------------------------------------------------
 // Source of truth for routes, names, group, audiences, and clinical flag.
@@ -1814,6 +1820,48 @@ const UTILITIES = [
   { id: 'grobman-vbac',         name: 'VBAC Success Calculator (Grobman, race-free 2021)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'marburg-heart-score',  name: 'Marburg Heart Score (CAD in Primary-Care Chest Pain)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'adhere-hf',            name: 'ADHERE In-Hospital Heart-Failure Mortality',       group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  // spec-v193: five acute-coronary / primary-PCI / cardiogenic-shock risk
+  // instruments (Advanced Specialist Quantitation program, first spec).
+  // lib/acs-v193.js, views/group-v193.js (RV193).
+  { id: 'crusade',              name: 'CRUSADE Major-Bleeding Risk (NSTEMI)',             group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'scai-shock',           name: 'SCAI SHOCK Cardiogenic-Shock Stage',               group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'zwolle-pci',           name: 'Zwolle Primary-PCI Risk Score',                    group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'timi-risk-index',      name: 'TIMI Risk Index',                                  group: 'E', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'cadillac-risk',        name: 'CADILLAC Risk Score (post-PCI mortality)',         group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  // spec-v194: four invasive- / echocardiographic-hemodynamics instruments.
+  // lib/hemo-v194.js, views/group-v194.js (RV194).
+  { id: 'papi',                 name: 'Pulmonary Artery Pulsatility Index (PAPi)',        group: 'E', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'transpulmonary-gradient', name: 'Transpulmonary & Diastolic Pressure Gradient', group: 'E', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'tei-index',            name: 'Tei Myocardial Performance Index (MPI)',           group: 'E', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'shunt-fraction',       name: 'Pulmonary Shunt Fraction (Qs/Qt)',                 group: 'E', audiences: ['clinicians', 'educators'], clinical: true },
+  // spec-v195: four gas-exchange / ventilation-efficiency instruments.
+  // lib/vent-v195.js, views/group-v195.js (RV195).
+  { id: 'sf-ratio',             name: 'SpO₂/FiO₂ (S/F) Ratio with estimated P/F',         group: 'E', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'ventilatory-ratio',    name: 'Ventilatory Ratio (VR)',                           group: 'E', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'osi-oxygenation',      name: 'Oxygen Saturation Index (OSI)',                    group: 'E', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'ventilation-index',    name: 'Ventilation Index (VI)',                           group: 'E', audiences: ['clinicians', 'educators'], clinical: true },
+  // spec-v196: five chronic-liver-disease prognostic instruments.
+  // lib/liver-v196.js, views/group-v196.js (RV196).
+  { id: 'abic-score',           name: 'ABIC Score (Alcoholic Hepatitis)',                 group: 'E', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'globe-score',          name: 'GLOBE Score (PBC Transplant-Free Survival)',       group: 'E', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'uk-pbc-risk',          name: 'UK-PBC Risk Score',                                group: 'E', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'page-b',               name: 'PAGE-B Score (HCC Risk in Chronic Hepatitis B)',   group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'mayo-psc-risk',        name: 'Revised Mayo PSC Natural-History Model',           group: 'E', audiences: ['clinicians', 'educators'], clinical: true },
+  // spec-v197: five thyroid-homeostasis / β-cell-function instruments.
+  // lib/endo-quant-v197.js, views/group-v197.js (RV197).
+  { id: 'spina-gt',             name: 'SPINA-GT (Thyroid Secretory Capacity)',            group: 'E', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'spina-gd',             name: 'SPINA-GD (Peripheral Deiodinase Activity)',        group: 'E', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'jostel-tsh-index',     name: 'Jostel’s TSH Index (TSHI / sTSHI)',                group: 'E', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'homa-beta',            name: 'HOMA-B (Steady-State β-Cell Function)',            group: 'E', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'oral-disposition-index', name: 'Oral Disposition Index (DIo)',                   group: 'E', audiences: ['clinicians', 'educators'], clinical: true },
+  // spec-v198: five cross-specialty prognostic / diagnostic instruments
+  // (Advanced Specialist Quantitation program, closing spec).
+  // lib/subspecialty-v198.js, views/group-v198.js (RV198).
+  { id: 'cns-ipi',              name: 'CNS International Prognostic Index (CNS-IPI)',      group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'isth-bat',             name: 'ISTH Bleeding Assessment Tool (ISTH-BAT)',         group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'virsta',               name: 'VIRSTA Score (IE Risk in S. aureus Bacteremia)',   group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'select-pse',           name: 'SeLECT Score (Late Post-Stroke Epilepsy)',         group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'figo-gtn',             name: 'WHO/FIGO Prognostic Score (GTN)',                  group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
 ];
 
 const UTIL_BY_ID = new Map(UTILITIES.map((u) => [u.id, u]));

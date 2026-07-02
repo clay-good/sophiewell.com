@@ -1,6 +1,6 @@
 # spec-v198.md — Cross-specialty prognostic & diagnostic scores: the CNS-IPI, the ISTH bleeding assessment tool, the VIRSTA score, the SeLECT score, and the WHO/FIGO GTN prognostic score (+5 tiles)
 
-> Status: **PROPOSED (2026-07-01).** Closing feature spec of the **Advanced
+> Status: **SHIPPED (2026-07-02).** _(Proposed 2026-07-01.)_ Closing feature spec of the **Advanced
 > Specialist Quantitation** program ([spec-v193](spec-v193.md) §1.1). Adds **5**
 > deterministic subspecialty prognostic / diagnostic instruments spanning
 > hematology-oncology, coagulation, infectious disease, neurology, and gynecologic

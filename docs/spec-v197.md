@@ -1,6 +1,6 @@
 # spec-v197.md — Endocrine & metabolic quantitation: SPINA-GT, SPINA-GD, Jostel's TSH index, HOMA-B, and the oral disposition index (+5 tiles)
 
-> Status: **PROPOSED (2026-07-01).** Feature spec of the **Advanced Specialist
+> Status: **SHIPPED (2026-07-02).** _(Proposed 2026-07-01.)_ Feature spec of the **Advanced Specialist
 > Quantitation** program ([spec-v193](spec-v193.md) §1.1). Adds **5** deterministic
 > thyroid-homeostasis and β-cell-function instruments. **Each tile was verified
 > absent by a direct scan of `app.js`** (zero id / name / keyword hits): the catalog

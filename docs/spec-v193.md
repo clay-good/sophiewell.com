@@ -1,6 +1,6 @@
 # spec-v193.md — Acute coronary, primary-PCI & cardiogenic-shock risk: CRUSADE, the SCAI SHOCK stage, the Zwolle primary-PCI score, the TIMI Risk Index, and the CADILLAC risk score (+5 tiles)
 
-> Status: **PROPOSED (2026-07-01).** First feature spec of the **Advanced
+> Status: **SHIPPED (2026-07-02).** _(Proposed 2026-07-01.)_ First feature spec of the **Advanced
 > Specialist Quantitation** program (umbrella below, §1.1), advancing the
 > long-horizon [scope-mdcalc-parity.md](scope-mdcalc-parity.md) commitment to carry
 > every clinically actionable calculator. Adds **5** deterministic acute-cardiology

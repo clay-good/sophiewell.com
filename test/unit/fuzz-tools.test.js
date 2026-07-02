@@ -182,6 +182,12 @@ import * as hemeRiskV189 from '../../lib/heme-risk-v189.js';
 import * as hepgiV190 from '../../lib/hepgi-v190.js';
 import * as dermuroV191 from '../../lib/dermuro-v191.js';
 import * as riskV192 from '../../lib/risk-v192.js';
+import * as acsV193 from '../../lib/acs-v193.js';
+import * as hemoV194 from '../../lib/hemo-v194.js';
+import * as ventV195 from '../../lib/vent-v195.js';
+import * as liverV196 from '../../lib/liver-v196.js';
+import * as endoQuantV197 from '../../lib/endo-quant-v197.js';
+import * as subspecialtyV198 from '../../lib/subspecialty-v198.js';
 
 const MODULES = {
   'clinical.js': clinical,
@@ -308,6 +314,12 @@ const MODULES = {
   'hepgi-v190.js': hepgiV190,
   'dermuro-v191.js': dermuroV191,
   'risk-v192.js': riskV192,
+  'acs-v193.js': acsV193,
+  'hemo-v194.js': hemoV194,
+  'vent-v195.js': ventV195,
+  'liver-v196.js': liverV196,
+  'endo-quant-v197.js': endoQuantV197,
+  'subspecialty-v198.js': subspecialtyV198,
 };
 
 const MATRIX = [0, -1, 1e9, NaN, Infinity, -Infinity, '', undefined, null];

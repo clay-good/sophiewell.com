@@ -1,6 +1,6 @@
 # spec-v195.md — Advanced oxygenation & ventilation efficiency: the SpO2/FiO2 (S/F) ratio, the ventilatory ratio, the oxygen saturation index, and the ventilation index (+4 tiles)
 
-> Status: **PROPOSED (2026-07-01).** Feature spec of the **Advanced Specialist
+> Status: **SHIPPED (2026-07-02).** _(Proposed 2026-07-01.)_ Feature spec of the **Advanced Specialist
 > Quantitation** program ([spec-v193](spec-v193.md) §1.1). Adds **4** deterministic
 > gas-exchange / ventilation-efficiency instruments. **Each tile was verified absent
 > by a direct scan of `app.js`** (zero id / name / keyword hits): the catalog carries

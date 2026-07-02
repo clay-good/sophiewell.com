@@ -1,6 +1,6 @@
 # spec-v196.md — Chronic liver disease prognosis: ABIC, the GLOBE score, the UK-PBC risk score, PAGE-B, and the revised Mayo PSC model (+5 tiles)
 
-> Status: **PROPOSED (2026-07-01).** Feature spec of the **Advanced Specialist
+> Status: **SHIPPED (2026-07-02).** _(Proposed 2026-07-01.)_ Feature spec of the **Advanced Specialist
 > Quantitation** program ([spec-v193](spec-v193.md) §1.1). Adds **5** deterministic
 > chronic-liver-disease prognostic instruments spanning alcoholic hepatitis, primary
 > biliary cholangitis, chronic hepatitis B, and primary sclerosing cholangitis.

@@ -6,6 +6,44 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v193–v198 — Advanced Specialist Quantitation program: 28 specialist-grade calculators, 816 → 844)
+
+- The **Advanced Specialist Quantitation** program ships in full: **28 new
+  deterministic clinical calculators** across six feature specs, carrying the
+  catalog from **816 to 844** and closing the specialist-grade tail of the
+  long-horizon [scope-mdcalc-parity](docs/scope-mdcalc-parity.md) commitment.
+  Every point weight, coefficient, and band threshold was re-fetched and
+  cross-verified against **≥ 2 independent open sources** at implementation
+  (spec-v97); each compute routes through `lib/num.js`, is finite-guarded at its
+  zero-denominator / log-domain edges, is covered by the fuzz harness with zero
+  non-finite leaks, and ships an inline citation with ≥ 3 worked examples. All
+  are decision support, never an order (spec-v11 §5.3).
+- **spec-v193** — acute-coronary / primary-PCI / cardiogenic-shock risk
+  (`lib/acs-v193.js`, +5): CRUSADE major-bleeding score (NSTEMI), the SCAI SHOCK
+  stage (Kadosh/Kapur operationalization), the Zwolle primary-PCI score, the TIMI
+  Risk Index, and the CADILLAC post-PCI mortality score.
+- **spec-v194** — right-heart & echocardiographic hemodynamics
+  (`lib/hemo-v194.js`, +4): the pulmonary artery pulsatility index (PAPi), the
+  transpulmonary / diastolic pressure gradient (TPG/DPG), the Tei myocardial
+  performance index, and the pulmonary shunt fraction (Qs/Qt, Berggren).
+- **spec-v195** — oxygenation & ventilation efficiency (`lib/vent-v195.js`, +4):
+  the SpO₂/FiO₂ (S/F) ratio with estimated P/F, the ventilatory ratio, the oxygen
+  saturation index (OSI), and the ventilation index (VI).
+- **spec-v196** — chronic-liver-disease prognosis (`lib/liver-v196.js`, +5): the
+  ABIC score, the GLOBE score, the UK-PBC risk score, PAGE-B, and the revised Mayo
+  PSC natural-history model.
+- **spec-v197** — endocrine & metabolic quantitation (`lib/endo-quant-v197.js`,
+  +5): SPINA-GT, SPINA-GD, Jostel's TSH index, HOMA-B, and the oral disposition
+  index — the SPINA constant sets validated against the published worked examples.
+- **spec-v198** — cross-specialty prognostic / diagnostic scores
+  (`lib/subspecialty-v198.js`, +5): the CNS-IPI, the ISTH-BAT, the VIRSTA score,
+  the SeLECT score, and the WHO/FIGO GTN prognostic score.
+- Renderers live in `views/group-v193.js`–`group-v198.js`; META entries, 28 unit
+  test files, 28 spec-v11 audit logs, and the `docs/clinical-citations.md` +
+  `docs/citation-staleness.md` (FIGO/WHO row) ledgers accompany the tiles. GRACE
+  2.0, VOCAL-Penn, HOMA2, GWTG-HF, and other closed-coefficient or single-source
+  models remain deferred on the spec-v97 reproducibility bar.
+
 ### Added (spec-v183 — MCP wave 14: expose the specialty-completion cluster (59 calculators across 16 lib modules) as deterministic agent tools; no tile delta, 816)
 
 - The optional stdio MCP server (`mcp/server.js`) gains a **fourteenth coverage

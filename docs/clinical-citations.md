@@ -4893,3 +4893,148 @@ Worked example: a seventy-to-seventy-four-year-old (three) with heart failure (t
 Citation: Hirdes JP, Frijters DH, Teare GF. The MDS-CHESS scale: a new measure to predict mortality in institutionalized older people. J Am Geriatr Soc. 2003;51(1):96-100. (Operationalized per the interRAI Long-Term Care Facility Outcome Scales, CIHI; cross-verified across two or more sources, spec-v97.)
 Formula: the signs-and-symptoms items present (vomiting, peripheral edema, dyspnea, weight loss, dehydration or insufficient fluid, and reduced food or fluid intake) are counted and capped at two (none scores zero, exactly one scores one, two or more scores two); one point each is then added for a decline in decision-making, a decline in activities-of-daily-living status, and an end-stage-disease (six-month) prognosis, for a total from zero to five. Higher scores indicate greater health instability and mortality risk.
 Worked example: vomiting and dyspnea (two symptoms, sub-score two) with an end-stage prognosis (one) total three of five, substantial health instability. A care-planning marker, not a prediction of an individual's death.
+
+## Advanced Specialist Quantitation (spec-v193–v198)
+
+Specialist-grade instruments carrying the catalog from eight hundred sixteen to eight hundred forty-four. Every point weight, coefficient, and band threshold was re-fetched and cross-verified against two or more independent open sources at implementation (spec-v97). Each is decision support, never an order (spec-v11 section 5.3).
+
+### CRUSADE Major-Bleeding Risk Score (NSTEMI)
+Citation: Subherwal S, Bach RG, Chen AY, et al. Baseline risk of major bleeding in non-ST-segment-elevation myocardial infarction: the CRUSADE bleeding score. Circulation. 2009;119(14):1873-1882. (Cross-verified across two or more sources, spec-v97.)
+Formula: Eight weighted variables (baseline hematocrit, creatinine clearance, heart rate, sex, signs of heart failure, prior vascular disease, diabetes, and systolic blood pressure) sum to a score. The systolic-BP term is U-shaped: both low and high pressures add points. Bands: very low, low, moderate, high, and very high in-hospital major-bleeding risk.
+Worked example: A patient with a mid-range hematocrit, reduced creatinine clearance, tachycardia, female sex, low systolic pressure, heart failure, and diabetes scores in the very-high band. A bleeding-risk estimate, not a transfusion or antithrombotic order.
+
+### SCAI SHOCK Cardiogenic-Shock Stage
+Citation: Naidu SS, Baran DA, Jentzer JC, et al. SCAI SHOCK stage classification expert consensus update. J Soc Cardiovasc Angiogr Interv. 2022;1(1):100008. Operationalization: Kadosh BS, Kapur NK, et al. J Am Coll Cardiol. 2022;80(3):185-198. (Cross-verified across two or more sources, spec-v97.)
+Formula: Hypotension, hypoperfusion (lactate), and the level of vasoactive or mechanical support, with a cardiac-arrest modifier, map to stage A (at risk) through E (extremis). In-hospital mortality rises monotonically across the stages in the Mayo cohort.
+Worked example: Hypotension with a modestly elevated lactate and one vasopressor places a patient at the classic stage. A shared severity vocabulary, not an order; the consensus is prototypical and the stage follows the cited operationalization.
+
+### Zwolle Primary-PCI Risk Score
+Citation: De Luca G, Suryapranata H, van ’t Hof AWJ, et al. Prognostic assessment of patients with acute myocardial infarction treated with primary angioplasty: implications for early discharge. Circulation. 2004;109(22):2737-2743. (Cross-verified across two or more sources, spec-v97.)
+Formula: Killip class, post-PCI TIMI flow, age at least sixty, three-vessel disease, anterior infarction, and ischemic time beyond four hours sum from zero to sixteen. A low score identifies a candidate for early discharge.
+Worked example: A patient in Killip class one with normal post-PCI flow and younger age scores zero, the lowest band. A risk stratification, not a discharge order.
+
+### TIMI Risk Index
+Citation: Wiviott SD, Morrow DA, Frederick PD, et al. Application of the TIMI Risk Index in patients with ST-elevation and non-ST-elevation myocardial infarction. J Am Coll Cardiol. 2006;47(8):1553-1558. Derivation: Morrow DA, Antman EM, Giugliano RP, et al. Lancet. 2001;358(9293):1571-1575. (Cross-verified across two or more sources, spec-v97.)
+Formula: The index equals heart rate multiplied by the square of age-over-ten, divided by systolic blood pressure. A higher index marks higher mortality.
+Worked example: A patient with a heart rate of one hundred, age seventy, and systolic pressure of one hundred twenty sits in the highest mortality-risk group. A risk stratification, not an order.
+
+### CADILLAC Risk Score (post-PCI mortality)
+Citation: Halkin A, Singh M, Nikolsky E, et al. Prediction of mortality after primary percutaneous coronary intervention for acute myocardial infarction: the CADILLAC risk score. J Am Coll Cardiol. 2005;45(9):1397-1405. (Cross-verified across two or more sources, spec-v97.)
+Formula: Reduced ejection fraction, renal insufficiency, Killip class two or three, impaired post-PCI flow, older age, anemia, and three-vessel disease sum from zero to eighteen, mapped to low, intermediate, and high bands with rising thirty-day and one-year mortality.
+Worked example: A patient with every adverse factor present scores at the top of the high band. A risk stratification, not an order.
+
+### Pulmonary Artery Pulsatility Index (PAPi)
+Citation: Korabathina R, Heffernan KS, Paruchuri V, et al. The pulmonary artery pulsatility index identifies severe right ventricular dysfunction in acute inferior myocardial infarction. Catheter Cardiovasc Interv. 2012;80(4):593-600. Review: Lim HS, Gustafsson F. Eur J Heart Fail. 2020;22(1):32-38. (Cross-verified across two or more sources, spec-v97.)
+Formula: The index equals pulmonary-artery pulse pressure (systolic minus diastolic) divided by right atrial pressure. The threshold is population-dependent: below one flags severe right-ventricular dysfunction in acute or post-LVAD settings; below one-point-eight-five flags dysfunction in advanced heart failure.
+Worked example: A pulse pressure of twenty over a right atrial pressure of eighteen gives an index in the advanced-heart-failure range. A hemodynamic index, not an order.
+
+### Transpulmonary & Diastolic Pressure Gradient (TPG / DPG)
+Citation: Naeije R, Vachiery JL, Yerly P, Vanderpool R. The transpulmonary pressure gradient for the diagnosis of pulmonary vascular disease. Eur Respir J. 2013;41(1):217-223. (Cross-verified across two or more sources, spec-v97.)
+Formula: The transpulmonary gradient equals mean pulmonary-artery pressure minus wedge pressure; the diastolic gradient equals pulmonary-artery diastolic minus wedge pressure. A high transpulmonary gradient flags a pulmonary-vascular component; when wedge pressure exceeds fifteen, a diastolic gradient of at least seven marks a combined pre- and post-capillary pattern.
+Worked example: With an elevated wedge pressure and a diastolic gradient of ten, the pattern is combined pre- and post-capillary. A classification aid, not an order.
+
+### Tei Myocardial Performance Index (MPI)
+Citation: Tei C, Ling LH, Hodge DO, et al. New index of combined systolic and diastolic myocardial performance: a simple and reproducible measure of cardiac function. J Cardiol. 1995;26(6):357-366. (Cross-verified across two or more sources, spec-v97.)
+Formula: The index equals isovolumic contraction time plus isovolumic relaxation time, divided by ejection time. Higher values mark worse combined systolic-diastolic function; the left-ventricular normal band centers near zero-point-three-nine.
+Worked example: Contraction and relaxation intervals summing to a large fraction of ejection time yield a value above the normal band. A functional index, not an order.
+
+### Pulmonary Shunt Fraction (Qs/Qt, Berggren)
+Citation: Berggren SM. The oxygen deficit of arterial blood caused by non-ventilating parts of the lung. Acta Physiol Scand. 1942;4(Suppl 11):1-92. Restated in Nunn’s Applied Respiratory Physiology (Lumb AB, ed.). (Cross-verified across two or more sources, spec-v97.)
+Formula: Each oxygen content equals one-point-three-four times hemoglobin times saturation plus zero-point-zero-zero-three-one times oxygen tension; end-capillary saturation is taken as full. The shunt fraction equals the end-capillary-minus-arterial content difference over the end-capillary-minus-mixed-venous difference. The normal range is roughly four to ten percent.
+Worked example: Near-full arterial saturation with a modest content gap yields a shunt fraction inside the normal range. A gas-exchange measure, not an order.
+
+### SpO2/FiO2 (S/F) Ratio with estimated P/F
+Citation: Rice TW, Wheeler AP, Bernard GR, et al. Comparison of the SpO2/FiO2 ratio and the PaO2/FiO2 ratio in patients with acute lung injury or ARDS. Chest. 2007;132(2):410-417. (Cross-verified across two or more sources, spec-v97.)
+Formula: The ratio equals oxygen saturation divided by inspired-oxygen fraction; the estimated P/F equals the ratio minus sixty-four, divided by zero-point-eight-four. The estimate is reliable only when saturation is at or below ninety-seven percent.
+Worked example: A saturation of ninety-five on a half inspired-oxygen fraction gives a ratio in the ARDS range with a matching estimated P/F. A non-invasive oxygenation grade, not an order.
+
+### Ventilatory Ratio (VR)
+Citation: Sinha P, Fauvel NJ, Singh S, Soni N. Ventilatory ratio: a simple bedside measure of ventilation. Br J Anaesth. 2009;102(5):692-697. (Cross-verified across two or more sources, spec-v97.)
+Formula: The ratio equals measured minute ventilation times measured carbon-dioxide tension, divided by predicted body weight times one hundred times thirty-seven-point-five. The normal value is near one; a value above two tracks ARDS mortality.
+Worked example: A high minute ventilation with an elevated carbon-dioxide tension gives a ratio above the normal value. A ventilation-efficiency grade, not an order.
+
+### Oxygen Saturation Index (OSI)
+Citation: Pediatric Acute Lung Injury Consensus Conference Group. Pediatric acute respiratory distress syndrome: consensus recommendations. Pediatr Crit Care Med. 2015;16(5):428-439. (Cross-verified across two or more sources, spec-v97.)
+Formula: The index equals inspired-oxygen fraction times mean airway pressure times one hundred, divided by oxygen saturation. Pediatric ARDS bands are mild, moderate, and severe. The value is reliable only when saturation is at or below ninety-seven percent.
+Worked example: A moderate inspired-oxygen fraction and airway pressure with a saturation in the low nineties fall in the moderate pediatric-ARDS band. A gas-exchange grade, not an order.
+
+### Ventilation Index (VI)
+Citation: Paret G, Ziv T, Barzilai A, et al. Ventilation index and outcome in children with acute respiratory distress syndrome. Pediatr Pulmonol. 1998;26(2):125-128. (Cross-verified across two or more sources, spec-v97.)
+Formula: The index equals respiratory rate times peak inspiratory pressure times carbon-dioxide tension, divided by one thousand. Higher values are worse; a PEEP-corrected variant subtracts PEEP from the peak pressure.
+Worked example: A rapid rate with a high peak pressure and elevated carbon-dioxide tension gives a markedly elevated index. A tracking index, not an order.
+
+### ABIC Score (alcoholic hepatitis)
+Citation: Dominguez M, Rincon D, Abraldes JG, et al. A new scoring system for prognostic stratification of patients with alcoholic hepatitis. Am J Gastroenterol. 2008;103(11):2747-2756. (Cross-verified across two or more sources, spec-v97.)
+Formula: The score equals age times zero-point-one plus bilirubin times zero-point-zero-eight plus creatinine times zero-point-three plus INR times zero-point-eight. Ninety-day survival bands are low, intermediate, and high.
+Worked example: A middle-aged patient with a moderately raised bilirubin and INR scores in the intermediate band. A prognostic estimate, not a treatment order.
+
+### GLOBE Score (PBC transplant-free survival on UDCA)
+Citation: Lammers WJ, Hirschfield GM, Corpechot C, et al. Development and validation of a scoring system to predict outcomes of patients with primary biliary cirrhosis receiving ursodeoxycholic acid therapy. Gastroenterology. 2015;149(7):1804-1812.e4. (Cross-verified across two or more sources, spec-v97.)
+Formula: The continuous score sums weighted age, log bilirubin, and log alkaline phosphatase with negative albumin and platelet terms and a fixed constant. A score above zero-point-three marks a non-responder profile.
+Worked example: An older patient with a raised bilirubin and alkaline phosphatase, low albumin, and low platelets scores well above the non-responder threshold. A prognostic estimate, not a treatment order.
+
+### UK-PBC Risk Score
+Citation: Carbone M, Sharp SJ, Flack S, et al. The UK-PBC risk scores: derivation and validation of a scoring system for long-term prediction of end-stage liver disease in primary biliary cirrhosis. Hepatology. 2016;63(3):930-950. (Cross-verified across two or more sources, spec-v97.)
+Formula: A mean-centered linear predictor over alkaline phosphatase, transaminase, and bilirubin (each relative to the upper limit at twelve months) plus baseline albumin and platelets (relative to the lower limit) feeds fixed baseline survivor functions to give the risk of end-stage liver disease at five, ten, and fifteen years.
+Worked example: A patient with modestly abnormal liver chemistry carries a single-digit five-year risk rising over the fifteen-year horizon. A prognostic estimate, not a listing order.
+
+### PAGE-B Score (HCC risk in treated chronic hepatitis B)
+Citation: Papatheodoridis G, Dalekos G, Sypsa V, et al. PAGE-B predicts the risk of developing hepatocellular carcinoma in Caucasians with chronic hepatitis B on 5-year antiviral therapy. J Hepatol. 2016;64(4):800-806. (Cross-verified across two or more sources, spec-v97.)
+Formula: Age, sex, and platelet count map to categorical points. The total splits into low, intermediate, and high bands tracking the five-year risk of hepatocellular carcinoma.
+Worked example: An older man with a low platelet count scores in the high band. An incidence-risk score distinct from the tumor stage; a prognostic estimate, not a surveillance order.
+
+### Revised Mayo PSC Natural-History Model
+Citation: Kim WR, Therneau TM, Wiesner RH, et al. A revised natural history model for primary sclerosing cholangitis. Mayo Clin Proc. 2000;75(7):688-694. (Cross-verified across two or more sources, spec-v97.)
+Formula: The risk score equals zero-point-zero-three times age plus zero-point-five-four times log bilirubin plus zero-point-five-four times log AST plus one-point-two-four for a history of variceal bleeding, minus zero-point-eight-four times albumin. Higher is worse.
+Worked example: A patient with a raised bilirubin and AST, low albumin, and a variceal-bleeding history scores in the high band. A prognostic estimate, not a listing order.
+
+### SPINA-GT (thyroid secretory capacity)
+Citation: Dietrich JW, Landgrafe-Mende G, Wiora E, et al. Calculated parameters of thyroid homeostasis: emerging tools for differential diagnosis and clinical research. Front Endocrinol (Lausanne). 2016;7:57. (Cross-verified across two or more sources, spec-v97.)
+Formula: The secretory capacity is computed from thyrotropin and free thyroxine through the published structure-parameter equation with its fixed protein-binding factor. The reference range spans roughly one-point-four to eight-point-seven picomoles per second.
+Worked example: A normal thyrotropin with a mid-range free thyroxine gives a secretory capacity inside the reference band, matching the published worked example. A calculated structure parameter, not a diagnosis.
+
+### SPINA-GD (sum activity of peripheral deiodinases)
+Citation: Dietrich JW, Landgrafe-Mende G, Wiora E, et al. Calculated parameters of thyroid homeostasis. Front Endocrinol (Lausanne). 2016;7:57 (companion parameter). (Cross-verified across two or more sources, spec-v97.)
+Formula: The deiodinase activity is computed from free thyroxine and free triiodothyronine through the published equation with its fixed triiodothyronine protein-binding factor. The reference range spans roughly twenty to sixty nanomoles per second.
+Worked example: A mid-range free thyroxine and free triiodothyronine give an activity inside the reference band, reproducing the published worked example. A calculated structure parameter, not a diagnosis.
+
+### Jostel’s TSH Index (TSHI / sTSHI)
+Citation: Jostel A, Ryder WD, Shalet SM. The use of thyroid function tests in the diagnosis of hypopituitarism: definition and evaluation of the TSH index. Clin Endocrinol (Oxf). 2009;71(4):529-534. (Cross-verified across two or more sources, spec-v97.)
+Formula: The index equals log thyrotropin plus zero-point-one-three-four-five times free thyroxine; the standardized index subtracts two-point-seven and divides by zero-point-six-seven-six. A low index suggests central hypothyroidism.
+Worked example: A very low thyrotropin with a low free thyroxine gives an index below the reference band, suggesting a central cause. A pituitary-thyrotroph index, not a diagnosis.
+
+### HOMA-B (steady-state beta-cell function)
+Citation: Matthews DR, Hosker JP, Rudenski AS, et al. Homeostasis model assessment: insulin resistance and beta-cell function from fasting plasma glucose and insulin concentrations in man. Diabetologia. 1985;28(7):412-419. (Cross-verified across two or more sources, spec-v97.)
+Formula: The percentage equals twenty times fasting insulin, divided by fasting glucose in millimoles per liter minus three-point-five. It is the beta-cell arm complementing the insulin-resistance index.
+Worked example: A fasting insulin of eight with a fasting glucose of five gives a value near the normal reference. A physiologic index, not a diagnosis.
+
+### Oral Disposition Index (DIo)
+Citation: Utzschneider KM, Prigeon RL, Faulenbach MV, et al. Oral disposition index predicts the development of future diabetes above and beyond fasting and 2-h glucose levels. Diabetes Care. 2009;32(2):335-341. (Cross-verified across two or more sources, spec-v97.)
+Formula: The insulinogenic index equals the thirty-minute rise in insulin over the rise in glucose; the disposition index multiplies it by the reciprocal of fasting insulin. A lower value predicts higher future-diabetes risk.
+Worked example: A brisk thirty-minute insulin rise against a moderate glucose rise, scaled by fasting insulin, gives a small disposition index. A physiologic index, not a diagnosis.
+
+### CNS International Prognostic Index (CNS-IPI)
+Citation: Schmitz N, Zeynalova S, Nickelsen M, et al. CNS International Prognostic Index: a risk model for CNS relapse in patients with diffuse large B-cell lymphoma treated with R-CHOP. J Clin Oncol. 2016;34(26):3150-3156. (Cross-verified across two or more sources, spec-v97.)
+Formula: Six factors (older age, elevated LDH, reduced performance status, advanced stage, more than one extranodal site, and kidney or adrenal involvement) score one point each. Bands are low, intermediate, and high two-year central-nervous-system relapse risk.
+Worked example: Four factors present places a patient in the high band. A relapse-risk stratification, not a prophylaxis order.
+
+### ISTH Bleeding Assessment Tool (ISTH-BAT)
+Citation: Rodeghiero F, Tosetto A, Abshire T, et al. ISTH/SSC bleeding assessment tool: a standardized questionnaire and a proposal for a new bleeding score for inherited bleeding disorders. J Thromb Haemost. 2010;8(9):2063-2065. Thresholds: Elbatarny M, Mollah S, Grabell J, et al. Haemophilia. 2014;20(6):831-835. (Cross-verified across two or more sources, spec-v97.)
+Formula: Fourteen bleeding domains each score from zero to four with no negative values. Abnormal thresholds are at least four for an adult male, at least six for an adult female, and at least three for a child.
+Worked example: An adult male with two domains scoring two and three crosses the abnormal threshold. A screening score, not a workup order.
+
+### VIRSTA Score (IE risk in S. aureus bacteremia)
+Citation: Tubiana S, Duval X, Alla F, et al. The VIRSTA score, a prediction score to estimate risk of infective endocarditis and determine priority for echocardiography in patients with Staphylococcus aureus bacteremia. J Infect. 2016;72(5):544-553. (Cross-verified across two or more sources, spec-v97.)
+Formula: Weighted items (emboli, meningitis, intracardiac device or prior endocarditis, injection drug use, native valve disease, persistent bacteremia, vertebral osteomyelitis, community acquisition, severe sepsis, and a high C-reactive protein) sum to a total. A low total marks low endocarditis risk with a high negative predictive value.
+Worked example: A patient with emboli and native valve disease scores well above the low-risk threshold, so echocardiography is recommended. An echocardiography-triage aid, not an imaging order.
+
+### SeLECT Score (late post-stroke epilepsy)
+Citation: Galovic M, Dohler N, Erdelyi-Canavese B, et al. Prediction of late seizures after ischaemic stroke with a novel prognostic model (the SeLECT score): a multivariable prediction model. Lancet Neurol. 2018;17(2):143-152. (Cross-verified across two or more sources, spec-v97.)
+Formula: Severity by stroke-scale band, large-artery atherosclerotic etiology, early seizure within seven days, cortical involvement, and middle-cerebral-artery territory sum from zero to nine, mapped to the published one-year and five-year cumulative late-seizure risk.
+Worked example: A moderate stroke-scale band with an early seizure and cortical involvement scores in the middle of the range, carrying an appreciable five-year risk. A prognostic estimate, not an anti-seizure order.
+
+### WHO/FIGO Prognostic Score (gestational trophoblastic neoplasia)
+Citation: FIGO Oncology Committee. FIGO staging for gestational trophoblastic neoplasia 2000. Int J Gynaecol Obstet. 2002;77(3):285-287 (modified WHO scoring system). (Cross-verified across two or more sources, spec-v97.)
+Formula: Eight factors (age, antecedent pregnancy, interval, hormone level, tumor size, metastasis site, number of metastases, and prior chemotherapy) score zero, one, two, or four. A total at or below six is low risk (single-agent chemotherapy); at least seven is high risk (multi-agent).
+Worked example: A term antecedent pregnancy with a long interval, high hormone level, liver or brain metastases, and many lesions scores well into the high-risk band. The guideline stratification, not a chemotherapy order.
+
