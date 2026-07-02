@@ -1892,6 +1892,7 @@ const UTILITIES = [
   { id: 'clif-c-ad',            name: 'CLIF-C AD (Acute Decompensation, pre-ACLF)',        group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'hepamet-fibrosis',     name: 'Hepamet Fibrosis Score (NAFLD Advanced Fibrosis)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'clip-hcc',             name: 'CLIP Score (Cancer of the Liver Italian Program)',  group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'agile-3plus',          name: 'Agile 3+ (FibroScan Advanced Fibrosis Probability)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
 ];
 
 const UTIL_BY_ID = new Map(UTILITIES.map((u) => [u.id, u]));

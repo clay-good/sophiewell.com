@@ -155,4 +155,28 @@ export const renderers = {
     }));
     postureNote(root);
   },
+
+  // ----- 2.5 agile-3plus -----------------------------------------------------
+  'agile-3plus'(root) {
+    note(root, 'Agile 3+ (Sanyal 2023): a FibroScan-anchored probability of advanced (≥ F3) fibrosis in NAFLD from LSM, AST, ALT, platelets, diabetes, sex, and age. Cut-points: < 0.451 rules OUT, ≥ 0.679 rules IN, 0.451–0.679 indeterminate. Outperforms LSM alone. Near-neighbors: hepamet-fibrosis, fib4.');
+    root.appendChild(num('Liver stiffness (LSM, kPa) by VCTE / FibroScan', 'agile-lsm', { min: '0' }));
+    root.appendChild(num('AST (IU/L)', 'agile-ast', { min: '0' }));
+    root.appendChild(num('ALT (IU/L)', 'agile-alt', { min: '0' }));
+    root.appendChild(num('Platelets (×10⁹/L)', 'agile-plt', { min: '0' }));
+    root.appendChild(num('Age (years)', 'agile-age', { min: '0' }));
+    root.appendChild(selectField('Sex', 'agile-sex', [
+      { value: 'male', text: 'Male' },
+      { value: 'female', text: 'Female' },
+    ]));
+    root.appendChild(checkField('Diabetes mellitus', 'agile-dm'));
+    const o = out(); root.appendChild(o);
+    const ids = ['agile-lsm', 'agile-ast', 'agile-alt', 'agile-plt', 'agile-age', 'agile-sex', 'agile-dm'];
+    wire(ids, () => safe(o, () => {
+      const r = M.agile3plus({ lsm: val('agile-lsm'), ast: val('agile-ast'), alt: val('agile-alt'), platelets: val('agile-plt'), age: val('agile-age'), sex: val('agile-sex'), diabetes: chk('agile-dm') });
+      if (!r.valid) { showInvalid(o, r); return; }
+      resultRow(o, [{ text: r.band, cls: r.abnormal ? 'warn' : null }, { label: 'Agile 3+', value: `${r.score}` }]);
+      note(o, r.detail); note(o, r.note);
+    }));
+    postureNote(root);
+  },
 };

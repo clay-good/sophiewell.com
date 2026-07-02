@@ -6,7 +6,7 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
-### Added (spec-v201 — Deep Subspecialty Quantitation program continues: hepatology & upper-GI-bleeding prognostic instruments, shipped one tile at a time, 852 → …)
+### Added (spec-v201 — Deep Subspecialty Quantitation program continues: 5 hepatology & upper-GI-bleeding prognostic instruments, shipped one tile at a time, 852 → 857)
 
 - Continues the **Deep Subspecialty Quantitation** program (spec-v199–v203) with
   the third feature spec, five hepatology and upper-GI-bleeding prognostic
@@ -48,6 +48,15 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
   validation (Hepatology 2000): 0 ≈ 36 mo, 1 ≈ 22, 2 ≈ 9, 3 ≈ 7, 4–6 ≈ 3.
   Item weights cross-verified across two open reproductions (spec-v97).
   Integrates liver function with tumor burden and AFP, complementary to BCLC.
+- **Agile 3+** (`agile-3plus`, 856 → 857): the FibroScan-anchored probability of
+  advanced (≥ F3) fibrosis in NAFLD from LSM, AST, ALT, platelets, diabetes,
+  sex, and age. Published Sanyal 2023 logistic Agile 3+ = 1 / (1 + e^−logit);
+  cut-points < 0.451 rule OUT advanced fibrosis, ≥ 0.679 rule IN, 0.451–0.679
+  indeterminate. Coefficients cross-verified across three sources (spec-v97);
+  the original paper disambiguates the `AAR⁻¹` term as the ALT/AST ratio (AAR =
+  AST/ALT), sex is coded male = 1, and platelets are ×10⁹/L. Takes the LSM the
+  operator reads from the device — no vendor elastography processing reproduced.
+  This **completes the spec-v201 slice (+5)**.
 
 ### Added (spec-v200 — Deep Subspecialty Quantitation program continues: 4 critical-care severity & acid-base calculators, 848 → 852)
 
