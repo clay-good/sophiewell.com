@@ -26,6 +26,12 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
   An intraoperative transfusion-planning estimate. Factors and formula
   cross-verified against MDCalc, the Iowa Head & Neck protocols, and
   OpenAnesthesia (spec-v97). Group F.
+- **Electrolyte-Free Water Clearance** (`efw-clearance`, 863 → 864): EFWC = V ×
+  [1 − (U_Na + U_K) / P_Na] (Rose 1986), reported per collection interval. A
+  positive value means the kidney is excreting free water (aggravating
+  hypernatremia / correcting hyponatremia); a negative value means net free-water
+  retention (aggravating hyponatremia) — the physiologic quantity that explains
+  why urine output alone can mislead in dysnatremia management. Group F.
 
 ### Added (spec-v203 — Deep Subspecialty Quantitation program (closing spec): perioperative / fracture / frailty risk, shipped one tile at a time, 858 → 861)
 

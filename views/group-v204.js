@@ -88,4 +88,22 @@ export const renderers = {
     }));
     postureNote(root);
   },
+
+  // ----- 2.4 efw-clearance ---------------------------------------------------
+  'efw-clearance'(root) {
+    note(root, 'Electrolyte-Free Water Clearance (Rose 1986): EFWC = V × [1 − (U_Na + U_K) / P_Na]. A positive value means the kidney is excreting free water (aggravating hypernatremia / correcting hyponatremia); a negative value means net free-water retention (aggravating hyponatremia). Near-neighbors: free-water-deficit, sodium-correction.');
+    root.appendChild(num('Urine sodium (mEq/L)', 'efwc-una', { min: '0' }));
+    root.appendChild(num('Urine potassium (mEq/L)', 'efwc-uk', { min: '0' }));
+    root.appendChild(num('Plasma sodium (mEq/L)', 'efwc-pna', { min: '0' }));
+    root.appendChild(num('Urine volume over the interval (mL)', 'efwc-vol', { min: '0' }));
+    const o = out(); root.appendChild(o);
+    const ids = ['efwc-una', 'efwc-uk', 'efwc-pna', 'efwc-vol'];
+    wire(ids, () => safe(o, () => {
+      const r = M.efwClearance({ urineNa: val('efwc-una'), urineK: val('efwc-uk'), plasmaNa: val('efwc-pna'), urineVolume: val('efwc-vol') });
+      if (!r.valid) { showInvalid(o, r); return; }
+      resultRow(o, [{ text: r.band, cls: r.abnormal ? 'warn' : null }, { label: 'EFWC', value: `${r.score} mL` }]);
+      note(o, r.detail); note(o, r.note);
+    }));
+    postureNote(root);
+  },
 };

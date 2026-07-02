@@ -1911,6 +1911,7 @@ const UTILITIES = [
   // views/group-v204.js (RV204). Shipped one tile at a time.
   { id: 'cccr',                 name: 'Calcium/Creatinine Clearance Ratio (FHH vs PHPT)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'max-allowable-blood-loss', name: 'Maximum Allowable Blood Loss (ABL)',            group: 'F', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'efw-clearance',        name: 'Electrolyte-Free Water Clearance',                 group: 'F', audiences: ['clinicians', 'educators'], clinical: true },
 ];
 
 const UTIL_BY_ID = new Map(UTILITIES.map((u) => [u.id, u]));
