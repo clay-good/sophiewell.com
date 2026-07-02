@@ -1891,6 +1891,7 @@ const UTILITIES = [
   { id: 'glasgow-blatchford',   name: 'Glasgow-Blatchford Score (Upper GI Bleed)',        group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'clif-c-ad',            name: 'CLIF-C AD (Acute Decompensation, pre-ACLF)',        group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'hepamet-fibrosis',     name: 'Hepamet Fibrosis Score (NAFLD Advanced Fibrosis)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'clip-hcc',             name: 'CLIP Score (Cancer of the Liver Italian Program)',  group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
 ];
 
 const UTIL_BY_ID = new Map(UTILITIES.map((u) => [u.id, u]));

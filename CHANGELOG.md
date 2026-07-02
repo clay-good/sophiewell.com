@@ -40,6 +40,14 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
   cross-verified verbatim across two independent reproductions (spec-v97). The
   diabetes term is mutually exclusive with the HOMA-IR terms, so HOMA-IR is only
   required when the patient is non-diabetic.
+- **CLIP score** (`clip-hcc`, 855 → 856): the Cancer of the Liver Italian
+  Program HCC prognostic score summing four items 0–6 — Child-Pugh stage
+  (A/B/C → 0/1/2), tumor morphology (uninodular ≤ 50% / multinodular ≤ 50% /
+  massive or > 50% → 0/1/2), AFP (< 400 / ≥ 400 ng/mL → 0/1), and portal-vein
+  thrombosis (no/yes → 0/1). Median survival by score from the prospective
+  validation (Hepatology 2000): 0 ≈ 36 mo, 1 ≈ 22, 2 ≈ 9, 3 ≈ 7, 4–6 ≈ 3.
+  Item weights cross-verified across two open reproductions (spec-v97).
+  Integrates liver function with tumor burden and AFP, complementary to BCLC.
 
 ### Added (spec-v200 — Deep Subspecialty Quantitation program continues: 4 critical-care severity & acid-base calculators, 848 → 852)
 

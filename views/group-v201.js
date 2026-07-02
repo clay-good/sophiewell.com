@@ -129,4 +129,30 @@ export const renderers = {
     }));
     postureNote(root);
   },
+
+  // ----- 2.4 clip-hcc --------------------------------------------------------
+  'clip-hcc'(root) {
+    note(root, 'CLIP score (CLIP Investigators 1998): an HCC prognostic score summing four items 0–6 — Child-Pugh stage, tumor morphology, AFP, and portal-vein thrombosis. Median survival falls from ≈ 36 months at 0 to ≈ 3 months at 4–6. Complementary to BCLC. Near-neighbors: bclc-hcc, albi-grade, meld-childpugh.');
+    root.appendChild(selectField('Child-Pugh stage', 'clip-child', [
+      { value: 'A', text: 'A (+0)' },
+      { value: 'B', text: 'B (+1)' },
+      { value: 'C', text: 'C (+2)' },
+    ]));
+    root.appendChild(selectField('Tumor morphology', 'clip-morph', [
+      { value: 'uni', text: 'Uninodular and ≤ 50% liver (+0)' },
+      { value: 'multi', text: 'Multinodular and ≤ 50% liver (+1)' },
+      { value: 'massive', text: 'Massive or > 50% liver (+2)' },
+    ]));
+    root.appendChild(num('Alpha-fetoprotein (ng/mL)', 'clip-afp', { min: '0' }));
+    root.appendChild(checkField('Portal-vein thrombosis (+1)', 'clip-pvt'));
+    const o = out(); root.appendChild(o);
+    const ids = ['clip-child', 'clip-morph', 'clip-afp', 'clip-pvt'];
+    wire(ids, () => safe(o, () => {
+      const r = M.clip({ childPugh: val('clip-child'), morphology: val('clip-morph'), afp: val('clip-afp'), pvt: chk('clip-pvt') });
+      if (!r.valid) { showInvalid(o, r); return; }
+      resultRow(o, [{ text: r.band, cls: r.abnormal ? 'warn' : null }, { label: 'CLIP', value: `${r.score}` }]);
+      note(o, r.detail); note(o, r.note);
+    }));
+    postureNote(root);
+  },
 };
