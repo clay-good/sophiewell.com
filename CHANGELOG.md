@@ -19,6 +19,13 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
   parathyroidectomy); > 0.02 suggests primary hyperparathyroidism; 0.01–0.02 is
   an indeterminate gray zone. Bands cross-verified across the FHH/PHPT literature
   and independent reproductions (spec-v97).
+- **Maximum Allowable Blood Loss** (`max-allowable-blood-loss`, 862 → 863): EBV =
+  weight × blood-volume factor (neonate 85, infant 80, child 70, adult male 75,
+  adult female 65 mL/kg); ABL = EBV × (Hct initial − Hct target) / Hct initial
+  (Gross 1983), with the average-Hct dilution-corrected variant shown alongside.
+  An intraoperative transfusion-planning estimate. Factors and formula
+  cross-verified against MDCalc, the Iowa Head & Neck protocols, and
+  OpenAnesthesia (spec-v97). Group F.
 
 ### Added (spec-v203 — Deep Subspecialty Quantitation program (closing spec): perioperative / fracture / frailty risk, shipped one tile at a time, 858 → 861)
 

@@ -24,6 +24,15 @@ function field(label, id, attrs) {
 function num(label, id, attrs = {}) {
   return field(label, id, { type: 'number', step: 'any', inputmode: 'decimal', ...attrs });
 }
+function selectField(label, id, options) {
+  const wrap = el('p');
+  wrap.appendChild(el('label', { for: id, text: label }));
+  wrap.appendChild(el('br'));
+  const sel = el('select', { id });
+  for (const opt of options) sel.appendChild(el('option', { value: opt.value, text: opt.text }));
+  wrap.appendChild(sel);
+  return wrap;
+}
 function out() { return el('div', { id: 'q-results', 'aria-live': 'polite' }); }
 function val(id) { const n = document.getElementById(id); return n ? n.value : ''; }
 function safe(o, fn) { clear(o); try { fn(); } catch (err) { o.appendChild(el('p', { class: 'muted', text: err.message })); } }
@@ -51,6 +60,30 @@ export const renderers = {
       const r = M.cccr({ urineCa: val('cccr-uca'), serumCa: val('cccr-sca'), serumCr: val('cccr-scr'), urineCr: val('cccr-ucr') });
       if (!r.valid) { showInvalid(o, r); return; }
       resultRow(o, [{ text: r.band, cls: r.abnormal ? 'warn' : null }, { label: 'CCCR', value: `${r.score}` }]);
+      note(o, r.detail); note(o, r.note);
+    }));
+    postureNote(root);
+  },
+
+  // ----- 2.3 max-allowable-blood-loss ----------------------------------------
+  'max-allowable-blood-loss'(root) {
+    note(root, 'Maximum Allowable Blood Loss (Gross 1983): EBV = weight × factor (neonate 85, infant 80, child 70, adult male 75, adult female 65 mL/kg); ABL = EBV × (Hct initial − Hct target) / Hct initial. An intraoperative transfusion-planning estimate. Near-neighbors: peds-transfusion-volume, blood-compat.');
+    root.appendChild(selectField('Patient category (blood-volume factor)', 'abl-cat', [
+      { value: 'neonate', text: 'Neonate (85 mL/kg)' },
+      { value: 'infant', text: 'Infant (80 mL/kg)' },
+      { value: 'child', text: 'Child (70 mL/kg)' },
+      { value: 'adult-male', text: 'Adult male (75 mL/kg)' },
+      { value: 'adult-female', text: 'Adult female (65 mL/kg)' },
+    ]));
+    root.appendChild(num('Weight (kg)', 'abl-weight', { min: '0' }));
+    root.appendChild(num('Initial hematocrit (%) or hemoglobin (g/dL)', 'abl-hcti', { min: '0' }));
+    root.appendChild(num('Target (minimum acceptable) hematocrit or hemoglobin — same measure', 'abl-hctf', { min: '0' }));
+    const o = out(); root.appendChild(o);
+    const ids = ['abl-cat', 'abl-weight', 'abl-hcti', 'abl-hctf'];
+    wire(ids, () => safe(o, () => {
+      const r = M.maxAllowableBloodLoss({ category: val('abl-cat'), weight: val('abl-weight'), hctInitial: val('abl-hcti'), hctTarget: val('abl-hctf') });
+      if (!r.valid) { showInvalid(o, r); return; }
+      resultRow(o, [{ text: r.band, cls: r.abnormal ? 'warn' : null }, { label: 'ABL', value: `${r.score} mL` }, { label: 'EBV', value: `${r.ebv} mL` }]);
       note(o, r.detail); note(o, r.note);
     }));
     postureNote(root);
