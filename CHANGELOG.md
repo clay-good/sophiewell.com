@@ -6,12 +6,13 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
-### Added (spec-v202 — Deep Subspecialty Quantitation program continues: cardiovascular & heart-failure risk engines, shipped one tile at a time, 857 → …)
+### Added (spec-v202 — Deep Subspecialty Quantitation program continues: cardiovascular & heart-failure risk engines, shipped one tile at a time, 857 → 858)
 
 - Opens the fourth feature spec of the **Deep Subspecialty Quantitation** program
   (spec-v199–v203) with cardiovascular / heart-failure risk and survival engines,
   shipped **one tile at a time**. New module `lib/cvrisk-engines-v202.js`,
-  renderers `views/group-v202.js` (RV202).
+  renderers `views/group-v202.js` (RV202). **Slice ships +1 (MECKI), not +5**:
+  the other four engines are deferred under [spec-v97] / spec-v202 §7 (see below).
 - **MECKI score** (`mecki`, 857 → 858): the cardiopulmonary-exercise-anchored
   heart-failure prognostic score from six variables — hemoglobin, sodium, LVEF,
   peak VO₂ (% predicted), VE/VCO₂ slope, and MDRD-eGFR. LP = 10.3464 −
@@ -21,6 +22,22 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
   Coefficients cross-verified against the original Agostoni 2013 paper PDF and
   validation reproductions (spec-v97); the logistic transform confirmed against
   the MECKI-initiative review.
+- **Deferred (spec-v97 / spec-v202 §7 — not shipped):** **UKPDS Risk Engine**
+  (`ukpds-risk`), **ADVANCE CVD model** (`advance-cvd`), and the **Seattle Heart
+  Failure Model** (`seattle-hf`) are deferred because their full published
+  equations cannot be transcribed and cross-verified from ≥ 2 independent open
+  sources: the primary papers are paywalled, and open reproductions expose the
+  risk-factor multipliers but not the load-bearing constants — UKPDS's Weibull
+  time-integration `d` term, ADVANCE's baseline-survival S₀ and centering means,
+  and Seattle-HF's full coefficient/baseline/device-modifier set. Shipping any of
+  them with unverified constants would violate the spec-v97 ≥ 2-source bar.
+  **QRISK3** (`qrisk3`) is reproducible from the ClinRisk open-source (LGPL)
+  algorithm but is deferred to a dedicated verbatim-transcription session: its
+  ~80-coefficient, fractional-polynomial two-sex model must be transcribed
+  exactly and validated against qrisk.org reference cases, which was not
+  attempted here to avoid coefficient-transcription error in a medical tool. All
+  four remain open for a future slice (the crib-ii / gwtg-hf / precise-dapt
+  deferral precedent).
 
 ### Added (spec-v201 — Deep Subspecialty Quantitation program continues: 5 hepatology & upper-GI-bleeding prognostic instruments, shipped one tile at a time, 852 → 857)
 
