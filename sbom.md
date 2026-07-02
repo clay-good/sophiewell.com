@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `7d4ce8182fd1c08e`
-Generated: 2026-07-02T23:17:18.524Z
+Build ID: `72b71952268871c0`
+Generated: 2026-07-02T23:21:25.482Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=20.18.1 <21, npm >=10.0.0
@@ -24,13 +24,13 @@ downloads is committed in this repository and is hashed below.
 
 | Path | Bytes | SHA-256 |
 |---|---:|---|
-| `index.html` | 62589 | `c3b7d256a98013ae7bc2ec8dd8442475ceb028587c8fdaa2f11b5bf1b147b554` |
+| `index.html` | 62640 | `d559252779ea5ff344feaacb5f1458f79eb118d055f419929299caff2f60cbd3` |
 | `styles.css` | 42819 | `bea421c79d390a364eb571c3a9599cdf28264128d4ac02d7abb00f31000c7cda` |
-| `app.js` | 242334 | `4b00fc780ada614a4faa67bf3dbbc2803ebdaecab23c49e6e0135b29375eedc9` |
+| `app.js` | 242494 | `93582242a951728aabb3561a124ab2f550b8e768124661c8c4149ea9c7420a91` |
 | `sw.js` | 4622 | `b891d4344f8e04403b7f1d307fd446cc224bddc6f0c4397438a17d197351171e` |
 | `site.webmanifest` | 709 | `0e0de4da60590a12e8b27a0ae2a2f5ffdb6500b7d2b78f93631ec2f64ed3d5ce` |
 | `robots.txt` | 127 | `38fbf9c1854e72abb20e01e81dd5a31d4ea96f154c12d5db1ec3af05524dd1a1` |
-| `sitemap.xml` | 132822 | `e5063a2d0966c753b5522988818f3c8de9accd4f53c643f8991a14cdcd487803` |
+| `sitemap.xml` | 132969 | `b7bfc3ef0cacffac51bd16cbf2554cf6c53fb5b8f008bc59fc7bbfd289eeffdb` |
 | `_headers` | 1316 | `2f39986457d2feff7e73e491a7d09ee871e8f2f4cc2bc437f86bd86a42554ec6` |
 | `logo.png` | 63440 | `11afaf1b0d3ca68393d202e4810bf766b5b6d591b4e3ec52f41d3cacaa4616ec` |
 | `favicon.ico` | 7411 | `407fde0ca2788409e87e11f596fa02e6a0b121817fcea7fd995beec1801e287b` |
@@ -124,10 +124,10 @@ downloads is committed in this repository and is hashed below.
 | `lib/lymphoma-v135.js` | 16162 | `e29896a6de224445f46839cd06518817bd25d1235a91ede76f77ccb4996a934f` |
 | `lib/medication-v4.js` | 18192 | `467f9576c50da696cc56094eb022d0a5ed1e88de0c7618448554ede8067270b0` |
 | `lib/medication-v5.js` | 18863 | `ce81d9f8954abbd412892c13af9936f992239164f26fd2b999eaea7902787ab7` |
-| `lib/meta.js` | 1267795 | `44203c945c9c833f899ccd7981f670f64746c24d3e2fe42d624282f521dd0116` |
+| `lib/meta.js` | 1269032 | `ff55d3dd6a6722ed3390b5f0df4e39a16a9efd6485013ddd4ac6f4732df36d68` |
 | `lib/metabolic-onc-v88.js` | 12659 | `1553b641668c121661a66647da71a4aaaa023e9f3a6b7a753efbcdab27cdba81` |
 | `lib/myeloid-prognosis-v199.js` | 11996 | `d65fe650bc865814907eb9176be30f15bb5db529c5dbd629a78aaae974f6e1a6` |
-| `lib/nephro-fluids-v204.js` | 9014 | `bb909c7b8eb582f2a29fc6ac9d8a4a9186b484e3eba36d2a6a282ab551abd358` |
+| `lib/nephro-fluids-v204.js` | 11841 | `61573e7116b0c83d15d50bad86ebc21c40ec75107a0374485d0614b81bfce535` |
 | `lib/nephro-v127.js` | 10884 | `c86865e98fced63ac9510fbebe0de77a88e305366c080a83c9beb8542371932a` |
 | `lib/nephro-v92.js` | 15979 | `621e12a7cd8aba40331051b7d7f6605b58053ab9cefde04f9f3581b1f92846f9` |
 | `lib/neuro-disability-v159.js` | 15165 | `d2fb8f1306232369b37461eafb26ba7c36c595e67e1f53ad48f48a557d1e1dad` |
@@ -312,7 +312,7 @@ downloads is committed in this repository and is hashed below.
 | `views/group-v201.js` | 11268 | `c0db4cd8ba6ceb21de00556429ceb0cc1f9ef6452158a4175c532a2f690d8fc8` |
 | `views/group-v202.js` | 3701 | `8fa5d32ab72fb76a3071ede0e2b531c5643e6e028b001b1346d29b823fd2576a` |
 | `views/group-v203.js` | 9183 | `11df6bf09510af96e4dd5f7acbcd8c8a88c13e2108b82e028e8af6ffd0891991` |
-| `views/group-v204.js` | 6935 | `f58761cc5fb1f951c32e65f8a9e8564830ff9e9a409e0427d3feb305827b25c6` |
+| `views/group-v204.js` | 8351 | `fb761c09008f5dba0eea2142a90a88c6a7c27e34c8a9f74492228300d04bea75` |
 | `views/group-v21.js` | 11503 | `f56e58aed91b6b6cedf3663a60f56e2d1b1d612977bc7588a9670a8e3c9e8c07` |
 | `views/group-v22.js` | 11499 | `ff21c98406d9a4e07c191001279620148bf6a14cd6df0353bbdc69be73d5b5d5` |
 | `views/group-v23.js` | 14725 | `5b5270fee62e0915f4596e11ea46831f7055ad3bb5039a2c4fe96af83382d305` |

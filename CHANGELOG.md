@@ -32,6 +32,13 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
   hypernatremia / correcting hyponatremia); a negative value means net free-water
   retention (aggravating hyponatremia) — the physiologic quantity that explains
   why urine output alone can mislead in dysnatremia management. Group F.
+- **TmP/GFR** (`tmp-gfr`, 864 → 865): the renal phosphate threshold. TRP = 1 −
+  (U_P × S_Cr)/(S_P × U_Cr); TmP/GFR = TRP × S_P when TRP ≤ 0.86 (linear), else
+  (0.3 × TRP)/(1 − 0.8 × TRP) × S_P (Payne hyperbolic correction). Adult reference
+  ≈ 0.80–1.35 mmol/L (2.5–4.2 mg/dL); a low value indicates renal phosphate
+  wasting (hyperparathyroidism, FGF23 excess). Both branches and the constants
+  cross-verified against Payne 1998, the ESPN calculator, and the Walton/Bijvoet
+  nomogram (spec-v97). Group F.
 
 ### Added (spec-v203 — Deep Subspecialty Quantitation program (closing spec): perioperative / fracture / frailty risk, shipped one tile at a time, 858 → 861)
 

@@ -106,4 +106,22 @@ export const renderers = {
     }));
     postureNote(root);
   },
+
+  // ----- 2.5 tmp-gfr ---------------------------------------------------------
+  'tmp-gfr'(root) {
+    note(root, 'TmP/GFR (Payne 1998): the renal phosphate threshold. TRP = 1 − (U_P × S_Cr)/(S_P × U_Cr); TmP/GFR = TRP × S_P when TRP ≤ 0.86, else the Payne hyperbolic form. Adult reference ≈ 0.80–1.35 mmol/L (2.5–4.2 mg/dL); low = renal phosphate wasting. Enter phosphate terms in one shared unit and creatinine terms in one shared unit. Near-neighbors: fepo4, cccr.');
+    root.appendChild(num('Serum phosphate (shared phosphate unit)', 'tmp-sp', { min: '0' }));
+    root.appendChild(num('Urine phosphate (shared phosphate unit)', 'tmp-up', { min: '0' }));
+    root.appendChild(num('Serum creatinine (shared creatinine unit)', 'tmp-scr', { min: '0' }));
+    root.appendChild(num('Urine creatinine (shared creatinine unit)', 'tmp-ucr', { min: '0' }));
+    const o = out(); root.appendChild(o);
+    const ids = ['tmp-sp', 'tmp-up', 'tmp-scr', 'tmp-ucr'];
+    wire(ids, () => safe(o, () => {
+      const r = M.tmpGfr({ serumP: val('tmp-sp'), urineP: val('tmp-up'), serumCr: val('tmp-scr'), urineCr: val('tmp-ucr') });
+      if (!r.valid) { showInvalid(o, r); return; }
+      resultRow(o, [{ text: r.band, cls: r.abnormal ? 'warn' : null }, { label: 'TmP/GFR', value: `${r.score}` }, { label: 'TRP', value: `${r.trp}` }]);
+      note(o, r.detail); note(o, r.note);
+    }));
+    postureNote(root);
+  },
 };
