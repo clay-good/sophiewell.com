@@ -32,8 +32,15 @@ function selectField(label, id, options) {
   wrap.appendChild(sel);
   return wrap;
 }
+function checkField(label, id) {
+  const wrap = el('p');
+  wrap.appendChild(el('input', { id, type: 'checkbox' }));
+  wrap.appendChild(el('label', { for: id, text: ' ' + label }));
+  return wrap;
+}
 function out() { return el('div', { id: 'q-results', 'aria-live': 'polite' }); }
 function val(id) { const n = document.getElementById(id); return n ? n.value : ''; }
+function chk(id) { const n = document.getElementById(id); return n ? n.checked : false; }
 function safe(o, fn) { clear(o); try { fn(); } catch (err) { o.appendChild(el('p', { class: 'muted', text: err.message })); } }
 function note(root, text) { if (text) root.appendChild(el('p', { class: 'muted', text })); }
 function showInvalid(o, r) { note(o, r.message || 'Complete the remaining fields.'); }
@@ -119,6 +126,30 @@ export const renderers = {
       const r = M.adoIndex({ age: val('ado-age'), mmrc: val('ado-mmrc'), fev1: val('ado-fev1') });
       if (!r.valid) { showInvalid(o, r); return; }
       resultRow(o, [{ text: r.band, cls: r.abnormal ? 'warn' : null }, { label: 'ADO', value: `${r.score}` }]);
+      note(o, r.detail); note(o, r.note);
+    }));
+    postureNote(root);
+  },
+
+  // ----- 2.3 dose-index ------------------------------------------------------
+  'dose-index'(root) {
+    note(root, 'DOSE index (Jones 2009): a four-item composite for routine primary-care COPD review — dyspnea (mMRC), obstruction (FEV₁ % predicted), current smoking, and exacerbations in the past year; total 0–8. A score ≥ 4 marks markedly higher mortality and admission risk. Near-neighbors: bode-index, ado-index, pack-years.');
+    root.appendChild(selectField('mMRC dyspnea grade', 'dose-mmrc', [
+      { value: '0', text: '0 — strenuous exercise only (+0)' },
+      { value: '1', text: '1 — hurrying / slight hill (+0)' },
+      { value: '2', text: '2 — walks slower than peers / stops (+1)' },
+      { value: '3', text: '3 — stops after ~100 m / few minutes (+2)' },
+      { value: '4', text: '4 — too breathless to leave house / dressing (+3)' },
+    ]));
+    root.appendChild(num('FEV₁ (% predicted)', 'dose-fev1', { min: '0' }));
+    root.appendChild(checkField('Current smoker (+1)', 'dose-smoker'));
+    root.appendChild(num('Exacerbations in the past year', 'dose-exac', { min: '0' }));
+    const o = out(); root.appendChild(o);
+    const ids = ['dose-mmrc', 'dose-fev1', 'dose-smoker', 'dose-exac'];
+    wire(ids, () => safe(o, () => {
+      const r = M.doseIndex({ mmrc: val('dose-mmrc'), fev1: val('dose-fev1'), smoker: chk('dose-smoker'), exacerbations: val('dose-exac') });
+      if (!r.valid) { showInvalid(o, r); return; }
+      resultRow(o, [{ text: r.band, cls: r.abnormal ? 'warn' : null }, { label: 'DOSE', value: `${r.score}` }]);
       note(o, r.detail); note(o, r.note);
     }));
     postureNote(root);

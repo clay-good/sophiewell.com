@@ -35,6 +35,13 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
   (spec-v97); per-score mortality percentages are reported as quartile risk tiers
   rather than fabricated numbers, since the published per-score curve is not
   reproducible from ≥ 2 open sources.
+- **DOSE index** (`dose-index`, 869 → 870): a four-item composite for routine
+  primary-care COPD review — dyspnea (mMRC 0–1 → 0, 2 → 1, 3 → 2, 4 → 3),
+  obstruction (FEV₁ % predicted ≥ 50 → 0, 30–49 → 1, < 30 → 2), current smoking
+  (+1), and exacerbations in the past year (0–1 → 0, 2–3 → 1, ≥ 4 → 2); total
+  0–8. A score ≥ 4 marks markedly higher mortality and admission risk (mortality
+  HR 3.48 at 4–5, 8.00 at 6–8, vs 0–3). Map cross-verified against the DOSE
+  worked example and the published FEV₁ cut-points (spec-v97).
 
 ### Added (spec-v204 — Frontline & Bedside Decision Instruments program (opens): nephrology / fluids / renal-tubular quantitation, shipped one tile at a time, 861 → 866, slice complete +5)
 
