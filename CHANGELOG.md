@@ -6,6 +6,20 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v205 — Frontline & Bedside Decision Instruments program continues: pulmonology / COPD / sleep severity, shipped one tile at a time, 866 → …)
+
+- Continues the **Frontline & Bedside Decision Instruments** program (spec-v204–
+  v208) with pulmonology, COPD, and sleep severity instruments, shipped **one tile
+  at a time**. New module `lib/pulm-copd-v205.js`, renderers
+  `views/group-v205.js` (RV205).
+- **COPD Assessment Test** (`cat-copd`, 866 → 867): eight patient-completed items
+  (cough, phlegm, chest tightness, breathlessness on hills/stairs, activity
+  limitation at home, confidence leaving home, sleep, energy), each 0–5; total
+  0–40. Impact bands: low < 10, medium 10–20, high 21–30, very high > 30. GOLD
+  uses ≥ 10 as the "more symptoms" threshold (drives ABE group assignment); the
+  MCID is ~2 points. Bands cross-verified against Jones 2009 / GOLD, GPnotebook,
+  and the PMC primary-care evaluation (spec-v97).
+
 ### Added (spec-v204 — Frontline & Bedside Decision Instruments program (opens): nephrology / fluids / renal-tubular quantitation, shipped one tile at a time, 861 → 866, slice complete +5)
 
 - Opens the **Frontline & Bedside Decision Instruments** program (spec-v204–v208)
