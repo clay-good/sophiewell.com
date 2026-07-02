@@ -6,7 +6,7 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
-### Added (spec-v205 — Frontline & Bedside Decision Instruments program continues: pulmonology / COPD / sleep severity, shipped one tile at a time, 866 → …)
+### Added (spec-v205 — Frontline & Bedside Decision Instruments program continues: pulmonology / COPD / sleep severity, shipped one tile at a time, 866 → 871, slice complete +5)
 
 - Continues the **Frontline & Bedside Decision Instruments** program (spec-v204–
   v208) with pulmonology, COPD, and sleep severity instruments, shipped **one tile
@@ -42,6 +42,18 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
   0–8. A score ≥ 4 marks markedly higher mortality and admission risk (mortality
   HR 3.48 at 4–5, 8.00 at 6–8, vs 0–3). Map cross-verified against the DOSE
   worked example and the published FEV₁ cut-points (spec-v97).
+- **Sleep Apnea Clinical Score** (`sacs-osa`, 870 → 871): the Flemons adjusted
+  neck circumference = measured neck (cm) + 4 (hypertension) + 3 (habitual
+  snoring) + 3 (nocturnal gasping/choking); bands ≤ 43 low, 43–48 intermediate,
+  > 48 high pretest probability of OSA. **spec-v97 spec-draft note:** the draft
+  described a 0–100 SACS with < 5 / > 15 cut-points (the derived Flemons
+  probability-score nomogram), but that ANC → score nomogram is not reproducible
+  from ≥ 2 open sources, so this tile ships the openly reproducible
+  adjusted-neck-circumference form (the common clinical SACS calculator) rather
+  than an unverified nomogram — the v199 ELTS / v202 CLIF-C-AD precedent (the
+  source governs, not the draft). Increments and bands cross-verified against
+  MedicalAlgorithms, the SACS validation literature, and BioSerenity (spec-v97).
+  **Completes the spec-v205 slice (+5).**
 
 ### Added (spec-v204 — Frontline & Bedside Decision Instruments program (opens): nephrology / fluids / renal-tubular quantitation, shipped one tile at a time, 861 → 866, slice complete +5)
 

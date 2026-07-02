@@ -1921,6 +1921,7 @@ const UTILITIES = [
   { id: 'lent-score',           name: 'LENT Score (Malignant Pleural Effusion Prognosis)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'ado-index',            name: 'ADO Index (Age, Dyspnea, Obstruction; COPD)',      group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'dose-index',           name: 'DOSE Index (Dyspnea, Obstruction, Smoking, Exacerbations; COPD)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'sacs-osa',             name: 'Sleep Apnea Clinical Score (SACS, Flemons)',       group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
 ];
 
 const UTIL_BY_ID = new Map(UTILITIES.map((u) => [u.id, u]));

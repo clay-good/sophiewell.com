@@ -154,4 +154,22 @@ export const renderers = {
     }));
     postureNote(root);
   },
+
+  // ----- 2.5 sacs-osa --------------------------------------------------------
+  'sacs-osa'(root) {
+    note(root, 'Sleep Apnea Clinical Score (Flemons 1994): adjusted neck circumference = measured neck (cm) + 4 (hypertension) + 3 (habitual snoring) + 3 (nocturnal gasping/choking). Bands: ≤ 43 low, 43–48 intermediate, > 48 high pretest probability of OSA. An anthropometry-driven triage rule. Near-neighbors: stop-bang, berlin-osa, nosas-score.');
+    root.appendChild(num('Measured neck circumference (cm)', 'sacs-neck', { min: '20', max: '80' }));
+    root.appendChild(checkField('Hypertension (+4)', 'sacs-htn'));
+    root.appendChild(checkField('Habitual snoring (+3)', 'sacs-snore'));
+    root.appendChild(checkField('Nocturnal gasping / choking (+3)', 'sacs-choke'));
+    const o = out(); root.appendChild(o);
+    const ids = ['sacs-neck', 'sacs-htn', 'sacs-snore', 'sacs-choke'];
+    wire(ids, () => safe(o, () => {
+      const r = M.sacsOsa({ neck: val('sacs-neck'), hypertension: chk('sacs-htn'), snoring: chk('sacs-snore'), choking: chk('sacs-choke') });
+      if (!r.valid) { showInvalid(o, r); return; }
+      resultRow(o, [{ text: r.band, cls: r.abnormal ? 'warn' : null }, { label: 'SACS', value: `${r.score} cm` }]);
+      note(o, r.detail); note(o, r.note);
+    }));
+    postureNote(root);
+  },
 };
