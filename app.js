@@ -1889,6 +1889,7 @@ const UTILITIES = [
   // Subspecialty Quantitation program). lib/hepatology-gibleed-v201.js,
   // views/group-v201.js (RV201). Shipped one tile at a time.
   { id: 'glasgow-blatchford',   name: 'Glasgow-Blatchford Score (Upper GI Bleed)',        group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'clif-c-ad',            name: 'CLIF-C AD (Acute Decompensation, pre-ACLF)',        group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
 ];
 
 const UTIL_BY_ID = new Map(UTILITIES.map((u) => [u.id, u]));

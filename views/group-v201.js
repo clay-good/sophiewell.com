@@ -86,4 +86,23 @@ export const renderers = {
     }));
     postureNote(root);
   },
+
+  // ----- 2.2 clif-c-ad -------------------------------------------------------
+  'clif-c-ad'(root) {
+    note(root, 'CLIF-C AD score (Jalan 2015): a mortality model for the hospitalised decompensated cirrhotic without acute-on-chronic liver failure. CLIF-C ADs = 10 × [0.03·age + 0.66·ln(creatinine) + 1.71·ln(INR) + 0.88·ln(WBC) − 0.05·sodium + 8]. Bands: < 50 low, 50–59 intermediate, ≥ 60 high. Near-neighbors: clif-c-aclf, meld-na.');
+    root.appendChild(num('Age (years)', 'clifad-age', { min: '0' }));
+    root.appendChild(num('Creatinine (mg/dL)', 'clifad-creat', { min: '0' }));
+    root.appendChild(num('INR', 'clifad-inr', { min: '0' }));
+    root.appendChild(num('WBC (×10⁹/L)', 'clifad-wbc', { min: '0' }));
+    root.appendChild(num('Sodium (mmol/L)', 'clifad-na', { min: '0' }));
+    const o = out(); root.appendChild(o);
+    const ids = ['clifad-age', 'clifad-creat', 'clifad-inr', 'clifad-wbc', 'clifad-na'];
+    wire(ids, () => safe(o, () => {
+      const r = M.clifcAd({ age: val('clifad-age'), creatinine: val('clifad-creat'), inr: val('clifad-inr'), wbc: val('clifad-wbc'), sodium: val('clifad-na') });
+      if (!r.valid) { showInvalid(o, r); return; }
+      resultRow(o, [{ text: r.band, cls: r.abnormal ? 'warn' : null }, { label: 'CLIF-C AD', value: `${r.score}` }]);
+      note(o, r.detail); note(o, r.note);
+    }));
+    postureNote(root);
+  },
 };

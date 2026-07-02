@@ -22,6 +22,16 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
   RCEMLearning typos (urea > 25 as "5", max "29") corrected against the published
   0–23 range (6+6+3+1+1+2+2+2 = 23). A US-standard BUN (mg/dL) input is converted
   to urea mmol/L by urea = BUN ÷ 2.8.
+- **CLIF-C AD score** (`clif-c-ad`, 853 → 854): the CLIF Consortium Acute
+  Decompensation score for the hospitalised decompensated cirrhotic **without**
+  acute-on-chronic liver failure. CLIF-C ADs = 10 × [0.03·age + 0.66·ln(creatinine)
+  + 1.71·ln(INR) + 0.88·ln(WBC) − 0.05·sodium + 8]; bands < 50 low, 50–59
+  intermediate, ≥ 60 high (≈ 93% / 80% / 50% survival). **spec-v97 spec-draft
+  correction:** the spec-v201 §2.2 draft listed only four predictors and omitted
+  **INR**; both authoritative EF-CLIF sources (efclif.com, clifresearch.com)
+  carry the five-variable formula with INR, so the tile ships the verbatim
+  five-input model (the v199 ELTS / v200 APPS precedent — the source governs, not
+  the draft). The logistic labs are ln-guarded to positive domains.
 
 ### Added (spec-v200 — Deep Subspecialty Quantitation program continues: 4 critical-care severity & acid-base calculators, 848 → 852)
 
