@@ -6,6 +6,38 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v200 — Deep Subspecialty Quantitation program continues: 4 critical-care severity & acid-base calculators, 848 → 852)
+
+- Continues the **Deep Subspecialty Quantitation** program (spec-v199–v203) with
+  **4 new deterministic critical-care instruments**: **OASIS** (`oasis`, the
+  Oxford Acute Severity of Illness Score — a 10-variable ICU severity model
+  needing no lab panel, 0–75 → logistic in-hospital mortality), **LODS** (`lods`,
+  the Logistic Organ Dysfunction System — six organ systems scored by their worst
+  first-day value, 0–22 → logistic hospital mortality), the **delta-gap /
+  delta-ratio** (`delta-gap`, an acid-base disambiguator that flags a mixed
+  metabolic disorder behind a high anion gap, with the zero-denominator case
+  guarded), and the **APPS score** (`apps-ards`, the Villar age / PaO₂-FiO₂ /
+  plateau-pressure ARDS outcome stratifier, 3–9). New module
+  `lib/critcare-severity-v200.js`, renderers `views/group-v200.js` (RV200).
+- The proposed **fifth** tile (a vasoactive-inotropic-score tile) was **dropped
+  at implementation**: the spec-v85 §6.2 collision re-check found VIS is already
+  computed by the live `vis` tile (`lib/clinical-v4.js`, spec-v13) with the
+  identical Gaies 2010 multipliers — the program continues **+4**, not +5 (the
+  ELTS precedent).
+- Three **APPS** cut-point corrections were caught by the spec-v97 ≥ 2-source
+  re-verification and applied against the draft against Villar 2016: the
+  PaO₂/FiO₂ middle band is **105–158** (not 84–158), the plateau-pressure middle
+  band is **> 27 to 30** (not 28–29), and the mortality tiers are **5–7 / 8–9**
+  (not 5–6 / 7–9). The OASIS and LODS point grids were transcribed band-for-band
+  from two independent open reproductions each; their logistic mortality
+  coefficients rest on a single open source (author reference code / a
+  Le-Gall-1996 reproduction), literature-corroborated and sanity-checked, and are
+  presented as model estimates. Each compute routes through `lib/num.js`, is
+  finite-guarded, is covered by the fuzz harness with zero non-finite leaks, and
+  ships an inline citation with ≥ 3 worked examples. All four are decision
+  support, never a titration / ventilator / fluid / disposition order
+  (spec-v11 §5.3).
+
 ### Added (spec-v199 — Deep Subspecialty Quantitation program opens: 4 myeloid-neoplasm & transplant prognostic calculators, 844 → 848)
 
 - Opens the **Deep Subspecialty Quantitation** program (spec-v199–v203) with

@@ -1,14 +1,27 @@
 # spec-v200.md — Advanced critical-care severity & acid-base: OASIS, the LODS, the vasoactive-inotropic score, the delta-gap / delta-ratio, and the APPS score (+5 tiles)
 
-> Status: **PROPOSED (2026-07-02).** Second feature spec of the **Deep Subspecialty
-> Quantitation** program ([spec-v199](spec-v199.md) §1.1). Adds **5** deterministic
-> critical-care severity, organ-dysfunction, hemodynamic, and acid-base instruments.
+> Status: **SHIPPED (2026-07-02), +4 (not +5).** Implemented at catalog 848 → 852.
+> The proposed fifth tile **vasoactive-inotropic-score (VIS) was dropped** at
+> implementation: the spec-v85 §6.2 collision re-check found VIS is **already
+> computed by the live `vis` tile** (`lib/clinical-v4.js`, spec-v13 §3.6) with the
+> identical Gaies 2010 formula and multipliers (dopamine/dobutamine ×1,
+> epinephrine/norepinephrine ×100, milrinone ×10, vasopressin ×10,000), so a
+> standalone tile would duplicate it. Three spec-v97 re-verification corrections were
+> applied against the **APPS** draft against Villar 2016: the PaO₂/FiO₂ middle band is
+> **105–158** (not the 84–158 in §2.5), the plateau-pressure middle band is **> 27 to
+> 30** (not 28–29), and the mortality tiers are **5–7 / 8–9** (not 5–6 / 7–9). The
+> four shipped tiles live in `lib/critcare-severity-v200.js` with renderers in
+> `views/group-v200.js` (RV200).
+>
+> Second feature spec of the **Deep Subspecialty
+> Quantitation** program ([spec-v199](spec-v199.md) §1.1). Adds **4** deterministic
+> critical-care severity, organ-dysfunction, and acid-base instruments.
 > **Each tile was verified absent by a direct scan of `app.js`** (zero id / name /
-> keyword hits at draft): the catalog carries `apache2`, `saps-ii`, `sofa`, `psofa`,
-> `qsofa`, `berlin-ards`, `lis-murray`, `rox`, `anion-gap`, `corrected-anion-gap`, and
-> `winters`, but **not** the Oxford Acute Severity of Illness Score, the Logistic
-> Organ Dysfunction System, the vasoactive-inotropic score, the delta-gap /
-> delta-ratio, or the APPS score.
+> keyword hits at draft): the catalog carries `apache2`, `saps-ii`, `qsofa-sofa`,
+> `psofa`, `berlin-ards`, `lis-murray`, `rox`, `anion-gap`, `corrected-anion-gap`,
+> `winters`, and (as re-confirmed) `vis`, but **not** the Oxford Acute Severity of
+> Illness Score, the Logistic Organ Dysfunction System, the delta-gap / delta-ratio,
+> or the APPS score.
 >
 > Catalog effect: **live `UTILITIES.length` + 5** — enforced by the catalog-truth
 > gate ([spec-v46](spec-v46.md)) at build time; no number is copied here.

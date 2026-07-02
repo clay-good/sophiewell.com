@@ -5,7 +5,7 @@
 <h1 align="center">sophiewell.com</h1>
 
 <p align="center">
-  <strong>848 deterministic healthcare calculators that run entirely in your browser.</strong><br>
+  <strong>852 deterministic healthcare calculators that run entirely in your browser.</strong><br>
   Free forever. No servers, no accounts, no telemetry, no AI, no network call after first paint.
 </p>
 
@@ -36,7 +36,7 @@ output; "searchable lookup of static facts" does not qualify. See
 [docs/spec-v10.md](docs/spec-v10.md) for the audience and
 dependency-budget commitments and
 [docs/spec-v29.md](docs/spec-v29.md) for the nurse-first pivot
-and the v29 catalog ledger. At v199 close the catalog is 848
+and the v29 catalog ledger. At v200 close the catalog is 852
 deterministic tiles — every one of them computes from at least
 one user input. The catalog reached its present size on two tracks.
 **New tiles:** spec-v63 added the operations counterpart to the bedside
@@ -186,7 +186,7 @@ production security headers. Any static file server will also work.
 ## How it works and how to use it
 
 Since the spec-v29 nurse-first prune the catalog has grown one
-reviewable spec at a time to **848** deterministic calculators
+reviewable spec at a time to **852** deterministic calculators
 (the full per-version history is in [CHANGELOG.md](CHANGELOG.md)
 and `docs/spec-v*.md`; the most recent bedside additions are
 summarized in the cheat sheets below). They organize across the
@@ -1213,7 +1213,7 @@ non-extractable image), `walter-index`, `suemoto-index`, `mitchell-mri`, and
 `adept`. New `lib/ltcga-v180.js` + `views/group-v180.js` (`RV180`). See
 [docs/spec-v180.md](docs/spec-v180.md).
 
-### Deep Subspecialty Quantitation program (spec-v199–v203, opened +4 → 848)
+### Deep Subspecialty Quantitation program (spec-v199–v203, +8 so far → 852)
 
 The deepest specialist stratum of the [scope-mdcalc-parity](docs/scope-mdcalc-parity.md)
 tail: the myeloid-malignancy prognostic scores a hematologist computes at
@@ -1226,6 +1226,7 @@ The program **opens with [spec-v199](docs/spec-v199.md)** and its myeloid-neopla
 | Spec | Module | Tiles | What each computes |
 |---|---|---|---|
 | [v199](docs/spec-v199.md) | `myeloid-prognosis-v199.js` | `mipss70` · `gipss` · `mysec-pm` · `hct-ci` | Myeloid-neoplasm & transplant prognosis: MIPSS70 (transplantation-age primary myelofibrosis, HMR category cumulative to 0–12), GIPSS (mutation-and-karyotype-only companion, 0–6), MYSEC-PM (secondary post-PV / post-ET myelofibrosis, `0.15·age` + weighted items), and the Sorror HCT-CI (pre-transplant comorbidity grid, low 0 / intermediate 1–2 / high ≥ 3). |
+| [v200](docs/spec-v200.md) | `critcare-severity-v200.js` | `oasis` · `lods` · `delta-gap` · `apps-ards` | Critical-care severity & acid-base: OASIS (10-variable ICU severity, no lab panel, 0–75 → logistic in-hospital mortality), LODS (six-system organ dysfunction, worst value per system, 0–22 → logistic hospital mortality), the delta-gap / delta-ratio acid-base disambiguator (zero-denominator guarded), and the Villar APPS score (age / PaO₂-FiO₂ / plateau pressure, 3–9, low 3–4 / intermediate 5–7 / high 8–9). |
 
 **Design decisions.** (1) *Absence is a functional test, not an id test.* The
 proposed fifth tile (ELTS) was **dropped at implementation** — the
@@ -1241,6 +1242,22 @@ select.* MIPSS70's HMR count and the HCT-CI hepatic / pulmonary rows are single
 `<select>`s so an impossible double-count (e.g. "1 HMR" *and* "≥ 2 HMR") is
 unrepresentable. All four are decision support, never a transplant / conditioning
 / chemotherapy order ([spec-v11](docs/spec-v11.md) §5.3).
+
+**v200 design decisions.** (1) *Absence is a functional test, again.* The proposed
+fifth tile (a vasoactive-inotropic-score tile) was **dropped at implementation** —
+the [spec-v85](docs/spec-v85.md) §6.2 collision re-check found VIS already computed
+by the live `vis` tile ([lib/clinical-v4.js](lib/clinical-v4.js), spec-v13) with the
+identical Gaies 2010 multipliers, so v200 opens **+4**, not +5 (the ELTS precedent).
+(2) *Verify against the source, correct the draft.* The [spec-v97](docs/spec-v97.md)
+re-verification caught **three** APPS drafting slips against Villar 2016: the
+PaO₂/FiO₂ middle band is **105–158** (not 84–158), the plateau middle band is
+**> 27–30** (not 28–29), and the mortality tiers are **5–7 / 8–9** (not 5–6 / 7–9).
+(3) *Grids doubly-verified, mortality models sourced honestly.* The OASIS and LODS
+point grids were transcribed band-for-band from two independent open reproductions
+each; their logistic mortality coefficients rest on one open source (author
+reference code / a Le-Gall-1996 reproduction), literature-corroborated and
+sanity-checked, and are presented as model estimates. All four are decision support,
+never a titration / ventilator / fluid / disposition order.
 
 ### Advanced Specialist Quantitation program (spec-v193–v198, +28 → 844)
 
@@ -3480,7 +3497,7 @@ long version, see [docs/architecture.md](docs/architecture.md).
  │  manifests (data/)            │  static │        ▼                     ▼             │
  │        │  scripts/build       │  files  │   lazy-load data shard   pure compute      │
  │        ▼                      │         │   (verified vs manifest)  (lib/*.js)       │
- │  dist/  (848 tool pages,      │         │        │                     │             │
+ │  dist/  (852 tool pages,      │         │        │                     │             │
  │  OG cards, sitemap, SBOM)     │         │        ▼                     ▼             │
  └───────────────────────────────┘         │   service worker cache    result + cite   │
                                             │   (keyed to build hash)                    │
@@ -3502,7 +3519,7 @@ assets:
 
 | Output | Count | Source |
 |--------|------:|--------|
-| Pre-rendered tool pages (`dist/tools/<id>/`) | 848 | `scripts/build-tool-pages.mjs` |
+| Pre-rendered tool pages (`dist/tools/<id>/`) | 852 | `scripts/build-tool-pages.mjs` |
 | Audience hub pages (`dist/for/<audience>/`) | 6 | `scripts/build-hub-pages.mjs` |
 | Topic pages + `/topics/` index | 8 + 1 | `scripts/build-topic-pages.mjs` |
 | `/commitments/` | 1 | `scripts/build-commitments-page.mjs` |
@@ -3538,7 +3555,7 @@ static tool pages, so a tile can never ship mobile overflow undetected.
 index.html          single-page shell (hero-search combobox + static browse-by-category nav, tile mount)
 styles.css          one stylesheet (responsive; no horizontal scroll — enforced catalog-wide at 320px in CI)
 app.js              router, hero-search wiring, view wiring, the UTILITIES catalog
-                    (848 tiles — the single source of truth; zero runtime deps)
+                    (852 tiles — the single source of truth; zero runtime deps)
 sw.js               service worker — precache shell, cache shards by build hash
 theme.js            light/dark theme toggle (writes only sw-theme, allowlisted)
 lib/input-persist.js opt-in "remember my inputs" (off by default; numbers only)
@@ -3556,12 +3573,12 @@ docs/               specs (spec-v4 onward) + per-tile v11/v12 audit logs +
                     citation-staleness ledger +
                     architecture / threat-model / …
 test/               unit/ (node:test) · integration/ (Playwright) · fixtures/
-dist/               build output (848 tool pages, OG cards, sitemap, SBOM)
+dist/               build output (852 tool pages, OG cards, sitemap, SBOM)
 ```
 
-### Discovery: how a query finds the right tool among 848
+### Discovery: how a query finds the right tool among 852
 
-With 848 tiles, search quality *is* the product — a tool you cannot find does
+With 852 tiles, search quality *is* the product — a tool you cannot find does
 not exist. Discovery is deterministic and offline (no fuzzy-match service, no
 embedding model, no AI). The home `#hero-search` combobox builds its dropdown
 from two complementary rankers, both pure functions of the typed query:
@@ -3634,10 +3651,10 @@ A login-less, AI-free calculator earns trust only if the nurse can see, on the
 tile, exactly which published source produced the number — and tell whether that
 source is current. spec-v54 defined the invariants; spec-v60 built the machinery
 (the gate, the ledger, and the `citationAccessed` convention) and extended it
-across the full 848-tile catalog, pinning the last three unpinned "current
+across the full 852-tile catalog, pinning the last three unpinned "current
 edition" phrases and re-verifying every guideline tile against its latest known
 edition. Three invariants make that auditable, each enforced by the
-`check-citations.mjs` lint gate (in the `npm run lint` chain) over all 848 tiles:
+`check-citations.mjs` lint gate (in the `npm run lint` chain) over all 852 tiles:
 
 | Invariant | Rule | Enforcement |
 |---|---|---|
@@ -4190,7 +4207,7 @@ clamped to `[0, 1]`, so the JSON surface never emits a non-finite probability.
 ### Coverage is explicit and honest
 
 Adapting the catalog is incremental. Coverage now stands at **430 clinical
-calculators across 94 `lib` modules** (of 848 catalog tiles), built module by
+calculators across 94 `lib` modules** (of 852 catalog tiles), built module by
 module against the one fixed contract:
 
 | wave | modules | tiles |
@@ -4319,7 +4336,7 @@ rules, not soft preferences.
 | `npm run build`          | Copy static files into `dist/` for deployment                     |
 | `npm test`               | Run the full test suite (unit, a11y, grep, data integrity)        |
 | `npm run test:unit`      | Run Node's built-in unit tests (6,206 tests)                      |
-| `npm run test:e2e`       | Build `dist/`, then run Playwright integration tests against real browsers — incl. a full-catalog 320px no-horizontal-scroll sweep over both the SPA routes and the 848 pre-rendered static tool pages, the hub/topic/commitments pages, and the citation-wrap pin |
+| `npm run test:e2e`       | Build `dist/`, then run Playwright integration tests against real browsers — incl. a full-catalog 320px no-horizontal-scroll sweep over both the SPA routes and the 852 pre-rendered static tool pages, the hub/topic/commitments pages, and the citation-wrap pin |
 | `npm run test:mcp`       | Run the optional MCP server's tool/compute/fuzz tests (independent of the site jobs; SDK-free) |
 | `npm run test:a11y`      | Run accessibility checks on every utility view                    |
 | `npm run lint`           | ESLint + the CI gate chain: grep-check, output-safety, citation-integrity, catalog-truth, commitments, MCP-catalog, PA staleness, PA audit |
@@ -4404,7 +4421,7 @@ build, integrity-verified data shards) are documented in
 - [docs/spec-v11.md](docs/spec-v11.md) — correctness-floor spec:
   per-tile audit protocol, specialty-named groups, optional
   source-quoted `interpretation` field. Audit coverage is **complete
-  — 848/848 tiles** carry a committed per-tile audit log
+  — 852/852 tiles** carry a committed per-tile audit log
   (`docs/audits/v11/<id>.md` for the pre-v78 catalog;
   `docs/audits/v12/<id>.md` for the tiles added since — the
   spec-v78–v83 billing & coding program, the spec-v85
