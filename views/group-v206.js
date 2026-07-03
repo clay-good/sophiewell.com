@@ -122,4 +122,27 @@ export const renderers = {
     }));
     postureNote(root);
   },
+
+  // ----- 2.3 func-score ------------------------------------------------------
+  'func-score'(root) {
+    note(root, 'FUNC score (Rost 2008): a point model for the likelihood of functional independence (GOS ≥ 4) at 90 days after primary ICH — ICH volume, age, location, GCS, and pre-ICH cognitive impairment; total 0–11. No patient with ≤ 4 reached independence; > 80% of those with 11 did. Near-neighbors: ich-score, ich-volume-abc2.');
+    root.appendChild(num('ICH volume (cc)', 'func-vol', { min: '0' }));
+    root.appendChild(num('Age (years)', 'func-age', { min: '0' }));
+    root.appendChild(selectField('ICH location', 'func-loc', [
+      { value: 'lobar', text: 'Lobar (+2)' },
+      { value: 'deep', text: 'Deep (+1)' },
+      { value: 'infratentorial', text: 'Infratentorial (+0)' },
+    ]));
+    root.appendChild(num('Glasgow Coma Scale (3–15)', 'func-gcs', { min: '3', max: '15' }));
+    root.appendChild(checkField('Pre-ICH cognitive impairment (present scores 0; absent scores +1)', 'func-cog'));
+    const o = out(); root.appendChild(o);
+    const ids = ['func-vol', 'func-age', 'func-loc', 'func-gcs', 'func-cog'];
+    wire(ids, () => safe(o, () => {
+      const r = M.funcScore({ ichVolume: val('func-vol'), age: val('func-age'), location: val('func-loc'), gcs: val('func-gcs'), cognitiveImpairment: chk('func-cog') });
+      if (!r.valid) { showInvalid(o, r); return; }
+      resultRow(o, [{ text: r.band, cls: r.abnormal ? 'warn' : null }, { label: 'FUNC', value: `${r.score}` }]);
+      note(o, r.detail); note(o, r.note);
+    }));
+    postureNote(root);
+  },
 };

@@ -37,6 +37,16 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
   percentages are not reproducible from ≥ 2 open sources (validation cohorts
   disagree widely), so — like the ADO index — the tile avoids fabricated numbers
   and points to the Rotterdam score for verified per-score 6-month mortality.
+- **FUNC score** (`func-score`, 874 → 875): a point model for the likelihood of
+  functional independence (GOS ≥ 4) at 90 days after primary ICH — ICH volume
+  (< 30 → 4, 30–60 → 2, > 60 → 0), age (< 70 → 2, 70–79 → 1, ≥ 80 → 0), location
+  (lobar 2, deep 1, infratentorial 0), GCS (≥ 9 → 2, ≤ 8 → 0), and pre-ICH
+  cognitive impairment (absent → 1); total 0–11. Weights cross-verified against
+  Rost 2008 and the MDCalc/Medscape/QxMD implementations (spec-v97). Reports the
+  firmly-anchored endpoints (no independence at ≤ 4, > 80% at 11) and a rising
+  gradient; the intermediate per-band percentages are not reproducible from ≥ 2
+  readable open sources, so — like the ADO index — fabricated middle numbers are
+  avoided.
 
 ### Added (spec-v205 — Frontline & Bedside Decision Instruments program continues: pulmonology / COPD / sleep severity, shipped one tile at a time, 866 → 871, slice complete +5)
 
