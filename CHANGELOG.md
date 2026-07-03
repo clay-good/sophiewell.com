@@ -6,7 +6,7 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
-### Added (spec-v212 — Advanced Prognostic & Risk-Equation Instruments program continues: hepatology fibrosis & portal-hypertension prognosis, shipped one tile at a time, 889 → 890, slice ships +1 so far)
+### Added (spec-v212 — Advanced Prognostic & Risk-Equation Instruments program continues: hepatology fibrosis & portal-hypertension prognosis, shipped one tile at a time, 889 → 891, slice ships +2 so far)
 
 - Continues the **Advanced Prognostic & Risk-Equation Instruments** program
   (spec-v209–v212, the final proposed spec) with hepatology fibrosis /
@@ -22,6 +22,16 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
   across the Cross 2009 derivation (Eur J Gastroenterol Hepatol) and independent
   validation (spec-v97). Used alongside FIB-4 and APRI — a non-invasive fibrosis
   marker, not a biopsy order.
+- **Baveno VII** (`baveno-vii`, 890 → 891): the consensus non-invasive rules for
+  portal hypertension in compensated advanced chronic liver disease, over liver-
+  stiffness measurement (kPa, transient elastography) and platelet count.
+  Clinically significant portal hypertension (CSPH): LSM ≤ 15 kPa with platelets
+  ≥ 150 rules it out; LSM ≥ 25 kPa rules it in (not reliable in obese MASLD);
+  15–25 kPa is the gray zone. Favorable Baveno VI (LSM < 20 kPa and platelets
+  > 150) makes high-risk varices unlikely, so screening endoscopy may be
+  deferred. Thresholds re-fetched and cross-verified across the de Franchis 2022
+  Baveno VII consensus and the Augustin 2017 Baveno VI derivation (spec-v97).
+  A risk-stratification rule, not an endoscopy or beta-blocker order.
 
 ### Added (spec-v211 — Advanced Prognostic & Risk-Equation Instruments program continues: hematology-oncology risk stratification, shipped one tile at a time, 885 → 889, slice ships +4)
 

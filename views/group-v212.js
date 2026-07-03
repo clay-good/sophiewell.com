@@ -54,4 +54,20 @@ export const renderers = {
     }));
     postureNote(root);
   },
+
+  // ----- 2.1 baveno-vii ------------------------------------------------------
+  'baveno-vii'(root) {
+    note(root, 'Baveno VII (de Franchis 2022): the consensus non-invasive rules in compensated advanced chronic liver disease. Clinically significant portal hypertension (CSPH): LSM ≤ 15 kPa with platelets ≥ 150 rules it out; LSM ≥ 25 kPa rules it in (not reliable in obese MASLD); 15–25 kPa is the gray zone. Favorable Baveno VI (LSM < 20 kPa and platelets > 150) makes high-risk varices unlikely, so screening endoscopy may be deferred. Near-neighbors: meld-childpugh, apri.');
+    root.appendChild(num('Liver-stiffness measurement (kPa, transient elastography)', 'bav-lsm', { min: '0' }));
+    root.appendChild(num('Platelet count (×10⁹/L)', 'bav-plt', { min: '0' }));
+    const o = out(); root.appendChild(o);
+    const ids = ['bav-lsm', 'bav-plt'];
+    wire(ids, () => safe(o, () => {
+      const r = M.bavenoVii({ lsm: val('bav-lsm'), platelets: val('bav-plt') });
+      if (!r.valid) { showInvalid(o, r); return; }
+      resultRow(o, [{ text: r.band, cls: r.abnormal ? 'warn' : null }, { label: 'Varices screening', value: r.favorable ? 'endoscopy deferrable' : 'endoscopy indicated' }]);
+      note(o, r.detail); note(o, r.note);
+    }));
+    postureNote(root);
+  },
 };

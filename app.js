@@ -1966,6 +1966,7 @@ const UTILITIES = [
   // Prognostic & Risk-Equation Instruments program). lib/hep-fibrosis-portal-v212.js,
   // RV212. hepamet-fibrosis already live (v201).
   { id: 'king-score',           name: 'King’s Score (Non-Invasive Cirrhosis Marker)',     group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'baveno-vii',           name: 'Baveno VII (Portal Hypertension & Varices Rule-Out)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
 ];
 
 const UTIL_BY_ID = new Map(UTILITIES.map((u) => [u.id, u]));
