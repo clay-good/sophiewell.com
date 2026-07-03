@@ -6,6 +6,27 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v209 — Advanced Prognostic & Risk-Equation Instruments program (opens): advanced cardiology risk & prognosis, shipped one tile at a time, 882 → …)
+
+- Opens the **Advanced Prognostic & Risk-Equation Instruments** program
+  (spec-v209–v212) with advanced cardiology risk-equation and prognosis
+  instruments, shipped **one tile at a time**. New module
+  `lib/cardiology-risk-v209.js`, renderers `views/group-v209.js` (RV209). Two of
+  the five proposed tiles are handled without a new build: **`mecki` is already
+  live** (shipped by spec-v202) — the spec-v85 §6.2 collision re-check found it,
+  so v209 does not duplicate it; and **`seattle-hf` remains deferred** (its full
+  coefficient / baseline-survival / device-modifier set is not reproducible from
+  ≥ 2 open sources, the same spec-v97 deferral taken at spec-v202).
+- **HCM Risk-SCD** (`hcm-risk-scd`, 882 → 883): the ESC-endorsed 5-year
+  sudden-cardiac-death risk estimator for hypertrophic cardiomyopathy. 5-year SCD
+  probability = 1 − 0.998^exp(PI), where PI = 0.15939858·MWT − 0.00294271·MWT² +
+  0.0259082·LA + 0.00446131·maxLVOT + 0.4583082·FHxSCD + 0.82639195·NSVT +
+  0.71650361·syncope − 0.01799934·age. ESC bands: < 4% low, 4–6% intermediate,
+  ≥ 6% high — informing the ICD discussion. All coefficients and the 0.998
+  baseline cross-verified against O'Mahony 2014 and the ESC/Medscape/QxMD
+  calculators (spec-v97). Validated for age ≥ 16 without prior arrest/sustained
+  VT, wall thickness < 35 mm, or prior ICD.
+
 ### Added (spec-v208 — Frontline & Bedside Decision Instruments program continues: nutrition & maternal-neonatal risk, shipped one tile at a time, 878 → 882, slice ships +4)
 
 - Continues the **Frontline & Bedside Decision Instruments** program (spec-v204–
