@@ -6,6 +6,23 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v212 — Advanced Prognostic & Risk-Equation Instruments program continues: hepatology fibrosis & portal-hypertension prognosis, shipped one tile at a time, 889 → 890, slice ships +1 so far)
+
+- Continues the **Advanced Prognostic & Risk-Equation Instruments** program
+  (spec-v209–v212, the final proposed spec) with hepatology fibrosis /
+  portal-hypertension prognosis instruments, shipped **one tile at a time**. New
+  module `lib/hep-fibrosis-portal-v212.js`, renderers `views/group-v212.js`
+  (RV212). **`hepamet-fibrosis` is already live** (shipped by spec-v201) — the
+  spec-v85 §6.2 collision re-check found it, so v212 does not duplicate it.
+- **King's Score** (`king-score`, 889 → 890): a simple four-variable non-invasive
+  marker of cirrhosis in chronic hepatitis C — King's Score = (age × AST × INR) /
+  platelets (×10⁹/L). A score ≥ 16.7 rules cirrhosis in (sensitivity 86%,
+  specificity 80%, negative predictive value 96%); ≥ 12.3 marks significant
+  fibrosis (F3-6); < 12.3 rules it out. Cut-points re-fetched and cross-verified
+  across the Cross 2009 derivation (Eur J Gastroenterol Hepatol) and independent
+  validation (spec-v97). Used alongside FIB-4 and APRI — a non-invasive fibrosis
+  marker, not a biopsy order.
+
 ### Added (spec-v211 — Advanced Prognostic & Risk-Equation Instruments program continues: hematology-oncology risk stratification, shipped one tile at a time, 885 → 889, slice ships +4)
 
 - Continues the **Advanced Prognostic & Risk-Equation Instruments** program
