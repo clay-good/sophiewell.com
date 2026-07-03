@@ -6,6 +6,25 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v210 — Advanced Prognostic & Risk-Equation Instruments program continues: ischemic-stroke & ICH prognosis, shipped one tile at a time, 884 → …)
+
+- Continues the **Advanced Prognostic & Risk-Equation Instruments** program
+  (spec-v209–v212) with ischemic-stroke and intracerebral-hemorrhage prognosis
+  instruments, shipped **one tile at a time**. New module
+  `lib/stroke-prognosis-v210.js`, renderers `views/group-v210.js` (RV210). Two of
+  the five proposed tiles need no new build: **`func-score` is already live**
+  (shipped by spec-v206) — the spec-v85 §6.2 collision re-check found it; and
+  **`iscore` remains deferred** (its score→mortality mapping is available only
+  through the sorcan.ca web tool, not as an open formula — the spec-v97 deferral
+  taken at spec-v206).
+- **SPAN-100 index** (`span-100`, 884 → 885): the simplest validated
+  age-plus-severity stroke-prognostic index — SPAN-100 = age (years) + NIHSS,
+  dichotomized at 100 (positive when ≥ 100). Positive patients have substantially
+  higher mortality/disability and much lower rates of favorable 3-month outcome
+  (≈ 5.6% vs ≈ 55.4% in the NINDS-tPA derivation). Threshold cross-verified
+  against Saposnik 2013 and the validation literature (spec-v97). A counseling
+  index, not a treatment-eligibility rule.
+
 ### Added (spec-v209 — Advanced Prognostic & Risk-Equation Instruments program (opens): advanced cardiology risk & prognosis, shipped one tile at a time, 882 → 884, slice ships +2)
 
 - Opens the **Advanced Prognostic & Risk-Equation Instruments** program

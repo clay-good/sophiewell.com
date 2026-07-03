@@ -199,6 +199,7 @@ import * as tbiStrokeV206 from '../../lib/tbi-stroke-v206.js';
 import * as resusTraumaV207 from '../../lib/resus-trauma-v207.js';
 import * as nutritionMaternalV208 from '../../lib/nutrition-maternal-v208.js';
 import * as cardiologyRiskV209 from '../../lib/cardiology-risk-v209.js';
+import * as strokePrognosisV210 from '../../lib/stroke-prognosis-v210.js';
 
 const MODULES = {
   'clinical.js': clinical,
@@ -342,6 +343,7 @@ const MODULES = {
   'resus-trauma-v207.js': resusTraumaV207,
   'nutrition-maternal-v208.js': nutritionMaternalV208,
   'cardiology-risk-v209.js': cardiologyRiskV209,
+  'stroke-prognosis-v210.js': strokePrognosisV210,
 };
 
 const MATRIX = [0, -1, 1e9, NaN, Infinity, -Infinity, '', undefined, null];
