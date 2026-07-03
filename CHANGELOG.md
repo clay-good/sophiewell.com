@@ -6,6 +6,20 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v208 — Frontline & Bedside Decision Instruments program continues: nutrition & maternal-neonatal risk, shipped one tile at a time, 878 → …)
+
+- Continues the **Frontline & Bedside Decision Instruments** program (spec-v204–
+  v208) with nutrition-status assessment and maternal-neonatal risk instruments,
+  shipped **one tile at a time**. New module `lib/nutrition-maternal-v208.js`,
+  renderers `views/group-v208.js` (RV208).
+- **Neonatal Ponderal Index** (`ponderal-index`, 878 → 879): Rohrer's index = 
+  [weight (g) / length (cm)³] × 100, the proportionality of weight to length at
+  birth. Neonatal normal ≈ 2.0–3.0; a value < 2.0 in a term infant signals
+  disproportionate wasting (asymmetric IUGR), more specific than
+  birth-weight-for-age; > 3.0 is heavy-for-length. Formula and bands
+  cross-verified against Miller & Hassanein 1971 and the validation literature
+  (spec-v97).
+
 ### Added (spec-v207 — Frontline & Bedside Decision Instruments program continues: resuscitation / arrest / trauma-death prognosis, shipped one tile at a time, 875 → 878, slice ships +3)
 
 - Continues the **Frontline & Bedside Decision Instruments** program (spec-v204–
