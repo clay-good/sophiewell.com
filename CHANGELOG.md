@@ -6,6 +6,38 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v213 — Bedside Decision & Physiology Instruments program, opening spec: ED disposition & injury/physiology bedside instruments, 891 → 896, slice ships +5)
+
+- Opens the **Bedside Decision & Physiology Instruments** program — a broad,
+  cross-domain sweep of openly published, deterministic calculators verified
+  absent from the catalog. New module `lib/acute-injury-v213.js`, renderers
+  `views/group-v213.js` (RV213). Each id was verified absent by a direct scan of
+  `app.js` (spec-v85 §6.2); each stratifies, classifies, or estimates — none
+  orders. Cut-points / point systems re-fetched and cross-verified against ≥2
+  independent open sources (spec-v97).
+- **HEART Pathway** (`heart-pathway`, 891 → 892): pairs the HEART score with
+  serial troponin — HEART 0-3 and a non-elevated troponin at 0 h and 3 h marks a
+  low-risk, early-discharge candidate (~0.9-2% 30-day MACE). Mahler SA, et al,
+  Circ Cardiovasc Qual Outcomes 2015. A disposition-support rule, not an
+  admission or discharge order.
+- **Ottawa Heart Failure Risk Scale** (`ottawa-heart-failure`, 892 → 893): 10
+  weighted items (0-15) for ED heart-failure patients; serious-adverse-event risk
+  rises from ~2.8% at 0 to ~89% at the high end, with a recommended admission
+  threshold of > 1. Stiell IG, et al, Acad Emerg Med 2013. A risk scale, not an
+  admission order.
+- **Light's criteria** (`light-criteria`, 893 → 894): classifies a pleural
+  effusion as exudate vs transudate — exudate if any of pleural/serum protein
+  > 0.5, pleural/serum LDH > 0.6, or pleural LDH > two-thirds the ULN of serum
+  LDH. Light RW, et al, Ann Intern Med 1972. A classification, not a drainage
+  order.
+- **Baux score** (`baux-score`, 894 → 895): burn mortality estimate = age +
+  burned %TBSA. Baux 1961; reviewed in Roberts G, et al, J Trauma Acute Care Surg
+  2012. A prognostic estimate, not a triage order.
+- **Revised Baux score** (`revised-baux`, 895 → 896): age + burned %TBSA + 17 if
+  inhalation injury is present; the LD50 in the best modern burn units is a score
+  of ~130-140. Osler T, Glance LG, Hosmer DW, J Trauma 2010. A prognostic
+  estimate, not a triage order.
+
 ### Added (spec-v212 — Advanced Prognostic & Risk-Equation Instruments program, final proposed spec: hepatology fibrosis & portal-hypertension prognosis, shipped one tile at a time, 889 → 891, slice ships +2; closes the proposed-spec program v201–v212)
 
 - Continues the **Advanced Prognostic & Risk-Equation Instruments** program
