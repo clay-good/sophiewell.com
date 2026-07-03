@@ -6,6 +6,25 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v214 — Bedside Decision & Physiology Instruments program: cardiology risk scores (AF ablation/progression + ACS severity), 896 → 903, slice ships +7)
+
+- Continues the **Bedside Decision & Physiology Instruments** program
+  (spec-v213) with seven cardiology risk scores. New module
+  `lib/cardiology-risk-v214.js`, renderers `views/group-v214.js` (RV214). Each id
+  was verified absent by a direct scan of `app.js` (spec-v85 §6.2); each
+  stratifies recurrence / progression / complication risk — none orders (spec-v11
+  §5.3). Point systems re-fetched and cross-verified against ≥2 independent open
+  sources (spec-v97).
+- **APPLE** (`apple-score`), **CAAP-AF** (`caap-af-score`), **ATLAS**
+  (`atlas-score`), **HATCH** (`hatch-score`), and **MB-LATER** (`mb-later-score`):
+  atrial-fibrillation recurrence / progression scores (Kornej 2015, Winkle 2016,
+  Mesquita 2018, de Vos 2010, Mujovic 2017). Recurrence / progression-risk scores,
+  not ablation orders.
+- **Canada ACS (C-ACS)** (`canada-acs-risk-score`, Huynh 2013) and **ACTION ICU**
+  (`action-icu-score`, Fanaroff 2018): acute-coronary-syndrome severity scores for
+  in-hospital mortality and ICU-level complications in NSTEMI. Risk scores, not
+  admission or triage orders.
+
 ### Added (spec-v213 — Bedside Decision & Physiology Instruments program, opening spec: ED disposition & injury/physiology bedside instruments, 891 → 896, slice ships +5)
 
 - Opens the **Bedside Decision & Physiology Instruments** program — a broad,
