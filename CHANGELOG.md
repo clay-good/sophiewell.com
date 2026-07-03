@@ -6,6 +6,23 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v222 — Bedside Decision & Physiology Instruments program: rheumatology classification & activity, 951 → 958, slice ships +7)
+
+- Continues the **Bedside Decision & Physiology Instruments** program with seven
+  rheumatology classification and activity instruments. New module
+  `lib/rheum-classification-v222.js`, renderers `views/group-v222.js` (RV222). Each
+  id was verified absent by a direct scan of `app.js` (spec-v85 §6.2); each
+  classifies or scores activity — none orders (spec-v11 §5.3). Point systems
+  cross-verified against ≥2 open sources (spec-v97).
+- **2017 EULAR/ACR myositis** (`iim-eular-acr-2017`, Lundberg 2017), **2012 PMR**
+  (`pmr-eular-acr-2012`, Dasgupta 2012), and **Bohan & Peter** (`bohan-peter`,
+  1975): myopathy classification.
+- **2013 systemic sclerosis** (`acr-eular-2013-systemic-sclerosis`, van den Hoogen
+  2013) and **modified Rodnan skin score** (`mrss-modified-rodnan-skin-score`,
+  Clements 1995): scleroderma classification / severity.
+- **2016 Sjögren criteria** (`acr-eular-2016-sjogren`, Shiboski 2017) and **ESSPRI**
+  (`esspri`, Seror 2011): Sjögren classification and patient-reported activity.
+
 ### Added (spec-v221 — Bedside Decision & Physiology Instruments program: pulmonary & critical-care risk scores, 944 → 951, slice ships +7)
 
 - Continues the **Bedside Decision & Physiology Instruments** program with seven

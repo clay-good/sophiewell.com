@@ -211,6 +211,7 @@ import * as edDecisionV218 from '../../lib/ed-decision-v218.js';
 import * as metabolicHepaticV219 from '../../lib/metabolic-hepatic-v219.js';
 import * as hepatologyPrognosisV220 from '../../lib/hepatology-prognosis-v220.js';
 import * as pulmonaryRiskV221 from '../../lib/pulmonary-risk-v221.js';
+import * as rheumClassificationV222 from '../../lib/rheum-classification-v222.js';
 
 const MODULES = {
   'clinical.js': clinical,
@@ -366,6 +367,7 @@ const MODULES = {
   'metabolic-hepatic-v219.js': metabolicHepaticV219,
   'hepatology-prognosis-v220.js': hepatologyPrognosisV220,
   'pulmonary-risk-v221.js': pulmonaryRiskV221,
+  'rheum-classification-v222.js': rheumClassificationV222,
 };
 
 const MATRIX = [0, -1, 1e9, NaN, Infinity, -Infinity, '', undefined, null];
