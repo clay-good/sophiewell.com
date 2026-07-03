@@ -382,12 +382,17 @@ body {
   display: block;
   font-weight: 600;
   margin-bottom: 2px;
+  /* Break long single-word tile names ("Hypercholesterolemia") so the card
+     never forces horizontal scroll at 320px (webkit renders such tokens a few
+     px wider than blink, tipping the page over). */
+  overflow-wrap: anywhere;
 }
 .hub-page .hub-tile-desc {
   display: block;
   color: var(--text-secondary);
   font-size: 0.9rem;
   line-height: 1.4;
+  overflow-wrap: anywhere;
 }
 .hub-page .hub-other {
   margin-top: var(--space-6);
