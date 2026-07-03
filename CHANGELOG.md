@@ -6,6 +6,20 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v206 — Frontline & Bedside Decision Instruments program continues: TBI & stroke prognosis, shipped one tile at a time, 871 → …)
+
+- Continues the **Frontline & Bedside Decision Instruments** program (spec-v204–
+  v208) with traumatic brain injury and stroke prognosis instruments, shipped
+  **one tile at a time**. New module `lib/tbi-stroke-v206.js`, renderers
+  `views/group-v206.js` (RV206).
+- **Essen Stroke Risk Score** (`essen-stroke-risk`, 871 → 872): a simple bedside
+  score for recurrent vascular events after ischemic stroke / TIA — age (< 65 →
+  0, 65–75 → 1, > 75 → 2) plus one point each for hypertension, diabetes, prior
+  MI, other CVD (except MI/AF), peripheral arterial disease, current/ever
+  smoking, and an additional prior TIA/ischemic stroke; total 0–9. Low risk < 3,
+  high risk ≥ 3 (annual recurrent-stroke risk > 4% at ≥ 3). Weights and threshold
+  cross-verified against Weimar 2009 and the validation literature (spec-v97).
+
 ### Added (spec-v205 — Frontline & Bedside Decision Instruments program continues: pulmonology / COPD / sleep severity, shipped one tile at a time, 866 → 871, slice complete +5)
 
 - Continues the **Frontline & Bedside Decision Instruments** program (spec-v204–
