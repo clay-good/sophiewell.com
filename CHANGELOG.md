@@ -19,6 +19,13 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
   smoking, and an additional prior TIA/ischemic stroke; total 0–9. Low risk < 3,
   high risk ≥ 3 (annual recurrent-stroke risk > 4% at ≥ 3). Weights and threshold
   cross-verified against Weimar 2009 and the validation literature (spec-v97).
+- **Rotterdam CT score** (`rotterdam-ct`, 872 → 873): an additive head-CT
+  prognostic scale for TBI — basal cisterns (normal 0 / compressed 1 / absent 2),
+  midline shift (> 5 mm +1), epidural mass lesion (absent +1, inverted), and
+  intraventricular blood or traumatic SAH (+1), plus 1 by convention; total 1–6.
+  Published 6-month mortality: 1 → 5%, 2 → 7%, 3 → 16%, 4 → 26%, 5 → 53%, 6 →
+  61%. Weights, the epidural inversion, and per-score mortality cross-verified
+  against reproductions of the Maas 2005 paper (spec-v97).
 
 ### Added (spec-v205 — Frontline & Bedside Decision Instruments program continues: pulmonology / COPD / sleep severity, shipped one tile at a time, 866 → 871, slice complete +5)
 

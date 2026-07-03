@@ -77,4 +77,26 @@ export const renderers = {
     }));
     postureNote(root);
   },
+
+  // ----- 2.1 rotterdam-ct ----------------------------------------------------
+  'rotterdam-ct'(root) {
+    note(root, 'Rotterdam CT score (Maas 2005): an additive head-CT prognostic scale — basal cisterns, midline shift, epidural mass (inverted), and intraventricular / traumatic SAH, plus 1 by convention; total 1–6. 6-month mortality rises from ≈ 5% at 1 to ≈ 61% at 6. Near-neighbors: gcs-pupils, four-score.');
+    root.appendChild(selectField('Basal cisterns', 'rott-cist', [
+      { value: 'normal', text: 'Normal (+0)' },
+      { value: 'compressed', text: 'Compressed (+1)' },
+      { value: 'absent', text: 'Absent (+2)' },
+    ]));
+    root.appendChild(checkField('Midline shift > 5 mm (+1)', 'rott-shift'));
+    root.appendChild(checkField('Epidural mass lesion PRESENT (present scores 0; absent scores +1)', 'rott-edh'));
+    root.appendChild(checkField('Intraventricular blood or traumatic SAH (+1)', 'rott-ivh'));
+    const o = out(); root.appendChild(o);
+    const ids = ['rott-cist', 'rott-shift', 'rott-edh', 'rott-ivh'];
+    wire(ids, () => safe(o, () => {
+      const r = M.rotterdamCt({ cisterns: val('rott-cist'), shiftOver5: chk('rott-shift'), epiduralPresent: chk('rott-edh'), ivhOrSah: chk('rott-ivh') });
+      if (!r.valid) { showInvalid(o, r); return; }
+      resultRow(o, [{ text: r.band, cls: r.abnormal ? 'warn' : null }, { label: 'Rotterdam', value: `${r.score}` }, { label: 'Mortality', value: `${r.mortality}%` }]);
+      note(o, r.detail); note(o, r.note);
+    }));
+    postureNote(root);
+  },
 };
