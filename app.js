@@ -1927,6 +1927,7 @@ const UTILITIES = [
   // Decision Instruments program). lib/tbi-stroke-v206.js, group-v206 (RV206).
   { id: 'essen-stroke-risk',    name: 'Essen Stroke Risk Score (Recurrent Vascular Events)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'rotterdam-ct',         name: 'Rotterdam CT Score (Traumatic Brain Injury)',      group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'marshall-ct',          name: 'Marshall CT Classification (Traumatic Brain Injury)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
 ];
 
 const UTIL_BY_ID = new Map(UTILITIES.map((u) => [u.id, u]));

@@ -26,6 +26,17 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
   Published 6-month mortality: 1 → 5%, 2 → 7%, 3 → 16%, 4 → 26%, 5 → 53%, 6 →
   61%. Weights, the epidural inversion, and per-score mortality cross-verified
   against reproductions of the Maas 2005 paper (spec-v97).
+- **Marshall CT classification** (`marshall-ct`, 873 → 874): an ordinal head-CT
+  descriptor for TBI, derived from basal cisterns, midline shift, and the
+  presence/evacuation of a > 25 cc high/mixed-density mass lesion — Diffuse Injury
+  I (no pathology), II (cisterns present, shift ≤ 5 mm), III (cisterns
+  compressed/absent, shift ≤ 5 mm), IV (shift > 5 mm), Evacuated Mass Lesion (V),
+  Non-evacuated Mass Lesion (VI). Category definitions cross-verified against
+  Radiopaedia and TBI reviews of Marshall 1991 (spec-v97). Reports the category
+  with a qualitative mortality ordering; the original per-category TCDB mortality
+  percentages are not reproducible from ≥ 2 open sources (validation cohorts
+  disagree widely), so — like the ADO index — the tile avoids fabricated numbers
+  and points to the Rotterdam score for verified per-score 6-month mortality.
 
 ### Added (spec-v205 — Frontline & Bedside Decision Instruments program continues: pulmonology / COPD / sleep severity, shipped one tile at a time, 866 → 871, slice complete +5)
 

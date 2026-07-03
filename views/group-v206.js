@@ -99,4 +99,27 @@ export const renderers = {
     }));
     postureNote(root);
   },
+
+  // ----- 2.2 marshall-ct -----------------------------------------------------
+  'marshall-ct'(root) {
+    note(root, 'Marshall CT classification (Marshall 1991): an ordinal head-CT descriptor from basal cisterns, midline shift, and the presence/evacuation of a > 25 cc mass lesion — Diffuse Injury I–IV, plus Evacuated (V) and Non-evacuated (VI) Mass Lesion. Mortality rises across the categories. Near-neighbors: rotterdam-ct, ich-volume-abc2, gcs.');
+    root.appendChild(selectField('High/mixed-density mass lesion > 25 cc', 'mar-mass', [
+      { value: 'none', text: 'None (diffuse injury — set the fields below)' },
+      { value: 'evacuated', text: 'Present and surgically evacuated → V' },
+      { value: 'non-evacuated', text: 'Present, not evacuated → VI' },
+    ]));
+    root.appendChild(el('p', { class: 'muted', text: 'Diffuse-injury fields (used only when no mass lesion > 25 cc):' }));
+    root.appendChild(checkField('Any visible intracranial pathology (leave unchecked for a normal CT → I)', 'mar-path'));
+    root.appendChild(checkField('Basal cisterns compressed or absent', 'mar-cist'));
+    root.appendChild(checkField('Midline shift > 5 mm', 'mar-shift'));
+    const o = out(); root.appendChild(o);
+    const ids = ['mar-mass', 'mar-path', 'mar-cist', 'mar-shift'];
+    wire(ids, () => safe(o, () => {
+      const r = M.marshallCt({ massLesion: val('mar-mass'), pathology: chk('mar-path'), cisternsAbnormal: chk('mar-cist'), shiftOver5: chk('mar-shift') });
+      if (!r.valid) { showInvalid(o, r); return; }
+      resultRow(o, [{ text: r.band, cls: r.abnormal ? 'warn' : null }, { label: 'Marshall', value: r.category }]);
+      note(o, r.note);
+    }));
+    postureNote(root);
+  },
 };
