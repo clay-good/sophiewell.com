@@ -879,6 +879,9 @@ main h1 {
   letter-spacing: -0.01em;
   margin: 4px 0 16px;
   outline: none;
+  /* Break long slash-joined tokens in tile titles
+     ("Polymyositis/Dermatomyositis") rather than force horizontal scroll. */
+  overflow-wrap: anywhere;
 }
 
 .intro {
@@ -1358,6 +1361,15 @@ label {
   color: var(--text-primary);
   font-size: 0.92rem;
   margin-bottom: 6px;
+  /* Break long unbreakable tokens (gene/karyotype notations like
+     "-5/-7/-17/abn(17p)") rather than force horizontal scroll at 320px. */
+  overflow-wrap: anywhere;
+}
+
+/* Interpretation band text can carry slash-joined criteria lists
+   ("delay/presence/challenge/..."); break them rather than overflow. */
+.interpretation-text {
+  overflow-wrap: anywhere;
 }
 
 button {
