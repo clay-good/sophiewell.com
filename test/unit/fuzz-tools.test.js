@@ -214,6 +214,7 @@ import * as pulmonaryRiskV221 from '../../lib/pulmonary-risk-v221.js';
 import * as rheumClassificationV222 from '../../lib/rheum-classification-v222.js';
 import * as dermatologyV223 from '../../lib/dermatology-v223.js';
 import * as neurologyV224 from '../../lib/neurology-v224.js';
+import * as obgynV225 from '../../lib/obgyn-v225.js';
 
 const MODULES = {
   'clinical.js': clinical,
@@ -372,6 +373,7 @@ const MODULES = {
   'rheum-classification-v222.js': rheumClassificationV222,
   'dermatology-v223.js': dermatologyV223,
   'neurology-v224.js': neurologyV224,
+  'obgyn-v225.js': obgynV225,
 };
 
 const MATRIX = [0, -1, 1e9, NaN, Infinity, -Infinity, '', undefined, null];

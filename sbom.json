@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:sophiewell-eeb112b9e8be0a8e",
+  "serialNumber": "urn:uuid:sophiewell-fa364cbade7ff1ef",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-07-03T17:50:27.922Z",
+    "timestamp": "2026-07-03T17:58:28.386Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -16,7 +16,7 @@
       "type": "application",
       "name": "sophiewell.com",
       "version": "1.0.0",
-      "description": "Sophie Well - 972 deterministic healthcare calculators. Free, client-side, no servers, no telemetry, no AI.",
+      "description": "Sophie Well - 979 deterministic healthcare calculators. Free, client-side, no servers, no telemetry, no AI.",
       "licenses": [
         {
           "license": {
@@ -83,7 +83,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "eeb112b9e8be0a8e"
+      "value": "fa364cbade7ff1ef"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -91,7 +91,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "338"
+      "value": "340"
     }
   ]
 }

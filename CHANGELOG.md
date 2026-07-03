@@ -6,6 +6,21 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v225 — Bedside Decision & Physiology Instruments program: obstetrics & gynecology scoring, 972 → 979, slice ships +7)
+
+- Continues the **Bedside Decision & Physiology Instruments** program with seven
+  obstetrics and gynecology instruments. New module `lib/obgyn-v225.js`, renderers
+  `views/group-v225.js` (RV225). Each id was verified absent by a direct scan of
+  `app.js` (spec-v85 §6.2); each scores or classifies — none orders (spec-v11 §5.3).
+  Point systems cross-verified against ≥2 open sources (spec-v97).
+- **Nugent** (`nugent-score`, Nugent 1991) and **Amsel** (`amsel-criteria`, Amsel
+  1983): bacterial-vaginosis criteria. **Modified Ferriman-Gallwey**
+  (`ferriman-gallwey`, 1961/1981): hirsutism. **PBAC** (`pbac-hmb`, Higham 1990):
+  menstrual blood loss.
+- **Thompson** (`thompson-hie`, Thompson 1997): neonatal encephalopathy. **Menopause
+  Rating Scale** (`menopause-rating-scale`, Heinemann 2004) and **Blatt-Kupperman
+  index** (`kupperman-index`, Kupperman 1953): menopausal symptom burden.
+
 ### Added (spec-v224 — Bedside Decision & Physiology Instruments program: neurology screening, disability & epilepsy outcome, 965 → 972, slice ships +7)
 
 - Continues the **Bedside Decision & Physiology Instruments** program with seven
