@@ -6,12 +6,13 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
-### Added (spec-v206 — Frontline & Bedside Decision Instruments program continues: TBI & stroke prognosis, shipped one tile at a time, 871 → …)
+### Added (spec-v206 — Frontline & Bedside Decision Instruments program continues: TBI & stroke prognosis, shipped one tile at a time, 871 → 875, slice ships +4)
 
 - Continues the **Frontline & Bedside Decision Instruments** program (spec-v204–
   v208) with traumatic brain injury and stroke prognosis instruments, shipped
   **one tile at a time**. New module `lib/tbi-stroke-v206.js`, renderers
-  `views/group-v206.js` (RV206).
+  `views/group-v206.js` (RV206). **Slice ships +4, not +5**: `iscore` is deferred
+  under [spec-v97] / spec-v206 §7 (see below).
 - **Essen Stroke Risk Score** (`essen-stroke-risk`, 871 → 872): a simple bedside
   score for recurrent vascular events after ischemic stroke / TIA — age (< 65 →
   0, 65–75 → 1, > 75 → 2) plus one point each for hypertension, diabetes, prior
@@ -47,6 +48,15 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
   gradient; the intermediate per-band percentages are not reproducible from ≥ 2
   readable open sources, so — like the ADO index — fabricated middle numbers are
   avoided.
+- **Deferred (spec-v97 / spec-v206 §7 — not shipped):** the **iScore**
+  (`iscore`). Its two-horizon (30-day and 1-year) point tables come from the
+  paywalled Circulation Table 3, and — decisively — its score→mortality mapping
+  is a non-linear lookup that the primary paper states is available only through
+  the sorcan.ca web tool (unreachable: TLS certificate mismatch), not as an open
+  formula. Without the verified score→percent function the mortality output
+  cannot be reproduced, so shipping a raw point total would be clinically
+  meaningless. Held for a future slice pending open sourcing (the ukpds-risk /
+  seattle-hf deferral precedent). The slice's other four tiles shipped.
 
 ### Added (spec-v205 — Frontline & Bedside Decision Instruments program continues: pulmonology / COPD / sleep severity, shipped one tile at a time, 866 → 871, slice complete +5)
 
