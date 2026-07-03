@@ -6,17 +6,23 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
-### Added (spec-v210 — Advanced Prognostic & Risk-Equation Instruments program continues: ischemic-stroke & ICH prognosis, shipped one tile at a time, 884 → …)
+### Added (spec-v210 — Advanced Prognostic & Risk-Equation Instruments program continues: ischemic-stroke & ICH prognosis, shipped one tile at a time, 884 → 885, slice ships +1)
 
 - Continues the **Advanced Prognostic & Risk-Equation Instruments** program
   (spec-v209–v212) with ischemic-stroke and intracerebral-hemorrhage prognosis
   instruments, shipped **one tile at a time**. New module
-  `lib/stroke-prognosis-v210.js`, renderers `views/group-v210.js` (RV210). Two of
-  the five proposed tiles need no new build: **`func-score` is already live**
-  (shipped by spec-v206) — the spec-v85 §6.2 collision re-check found it; and
-  **`iscore` remains deferred** (its score→mortality mapping is available only
-  through the sorcan.ca web tool, not as an open formula — the spec-v97 deferral
-  taken at spec-v206).
+  `lib/stroke-prognosis-v210.js`, renderers `views/group-v210.js` (RV210).
+  **Slice ships +1 (SPAN-100).** Of the five proposed tiles, four are not built:
+  **`func-score` is already live** (shipped by spec-v206) — the spec-v85 §6.2
+  collision re-check found it; **`iscore` remains deferred** (its score→mortality
+  mapping is available only through the sorcan.ca web tool — the spec-v97 deferral
+  taken at spec-v206); and **`astral` and `plan-score` are deferred** — both are
+  integer point scores whose clinical output is a logistic *probability* of a
+  90-day/mortality outcome, and those score→probability mappings (plus, for
+  ASTRAL, the age and NIHSS point weights) are not reproducible from ≥ 2 open
+  sources — they live in the papers' nomogram figures or the online calculators
+  (the iscore precedent). Shipping the raw integer sum without the verified
+  probability output would not fulfil the spec's output requirement.
 - **SPAN-100 index** (`span-100`, 884 → 885): the simplest validated
   age-plus-severity stroke-prognostic index — SPAN-100 = age (years) + NIHSS,
   dichotomized at 100 (positive when ≥ 100). Positive patients have substantially
