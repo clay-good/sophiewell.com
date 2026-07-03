@@ -6,17 +6,25 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
-### Added (spec-v209 — Advanced Prognostic & Risk-Equation Instruments program (opens): advanced cardiology risk & prognosis, shipped one tile at a time, 882 → …)
+### Added (spec-v209 — Advanced Prognostic & Risk-Equation Instruments program (opens): advanced cardiology risk & prognosis, shipped one tile at a time, 882 → 884, slice ships +2)
 
 - Opens the **Advanced Prognostic & Risk-Equation Instruments** program
   (spec-v209–v212) with advanced cardiology risk-equation and prognosis
   instruments, shipped **one tile at a time**. New module
-  `lib/cardiology-risk-v209.js`, renderers `views/group-v209.js` (RV209). Two of
-  the five proposed tiles are handled without a new build: **`mecki` is already
-  live** (shipped by spec-v202) — the spec-v85 §6.2 collision re-check found it,
-  so v209 does not duplicate it; and **`seattle-hf` remains deferred** (its full
-  coefficient / baseline-survival / device-modifier set is not reproducible from
-  ≥ 2 open sources, the same spec-v97 deferral taken at spec-v202).
+  `lib/cardiology-risk-v209.js`, renderers `views/group-v209.js` (RV209). **Slice
+  ships +2 (HCM Risk-SCD, CHARGE-AF).** Of the five proposed tiles, three are not
+  built: **`mecki` is already live** (shipped by spec-v202) — the spec-v85 §6.2
+  collision re-check found it, so v209 does not duplicate it; **`seattle-hf`
+  remains deferred** (its full coefficient / baseline-survival / device-modifier
+  set is not reproducible from ≥ 2 open sources, the spec-v97 deferral taken at
+  spec-v202); and **`arvc-risk` is deferred** to a dedicated verbatim-
+  transcription session — the 2019 ARVC model (Cadrin-Tourigny) is reproducible
+  in principle from the open-access Eur Heart J paper and the arvcrisk.com
+  calculator, but it is a multi-timepoint Cox model with a log-transformed PVC
+  predictor and separate baseline-survival terms at 1, 2, and 5 years whose exact
+  values were not retrievable from a clean open source here (the paper PDF sits
+  behind a signed token); it warrants focused transcription rather than a rushed
+  build (the qrisk3 precedent).
 - **HCM Risk-SCD** (`hcm-risk-scd`, 882 → 883): the ESC-endorsed 5-year
   sudden-cardiac-death risk estimator for hypertrophic cardiomyopathy. 5-year SCD
   probability = 1 − 0.998^exp(PI), where PI = 0.15939858·MWT − 0.00294271·MWT² +
