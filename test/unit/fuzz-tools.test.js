@@ -219,6 +219,7 @@ import * as nephrologyV226 from '../../lib/nephrology-v226.js';
 import * as mixedV227 from '../../lib/mixed-v227.js';
 import * as mixedV228 from '../../lib/mixed-v228.js';
 import * as hematologyV229 from '../../lib/hematology-v229.js';
+import * as inflamV230 from '../../lib/inflam-v230.js';
 
 const MODULES = {
   'clinical.js': clinical,
@@ -382,6 +383,7 @@ const MODULES = {
   'mixed-v227.js': mixedV227,
   'mixed-v228.js': mixedV228,
   'hematology-v229.js': hematologyV229,
+  'inflam-v230.js': inflamV230,
 };
 
 const MATRIX = [0, -1, 1e9, NaN, Infinity, -Infinity, '', undefined, null];

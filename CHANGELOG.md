@@ -6,6 +6,20 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v230 — prognostic inflammation indices, 1000 → 1004)
+
+- Four deterministic prognostic inflammation indices extending the v229 CBC-index
+  family. New module `lib/inflam-v230.js`, renderers `views/group-v230.js` (RV230).
+  Each id was verified absent by a fixed-string scan of the extracted app.js id/name
+  lists AND the MCP adapter set (spec-v85 §6.2); each computes a lab value — none
+  diagnoses or orders (spec-v11 §5.3). Formulas cross-verified against ≥2 open
+  sources (spec-v97).
+- **LMR** (`lmr`, Nishijima 2015): ALC / AMC (a lower value is less favorable).
+  **SIRI** (`siri`, Qi 2016): ANC × AMC / ALC. **PIV** (`piv`, Fucà 2020): ANC ×
+  platelets × AMC / ALC. **CAR** (`crp-albumin-ratio`, Fairclough 2009): CRP (mg/L)
+  / albumin (g/dL). Each reports the value with a context-dependence note (no
+  universal cutoff). All Class A, no staleness rows.
+
 ### Added (spec-v229 — CBC-derived count & inflammation indices, 996 → 1000; catalog reaches the 1000-tile milestone)
 
 - Four deterministic complete-blood-count-derived indices, computed from CBC
