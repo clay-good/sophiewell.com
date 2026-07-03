@@ -6,6 +6,21 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v221 — Bedside Decision & Physiology Instruments program: pulmonary & critical-care risk scores, 944 → 951, slice ships +7)
+
+- Continues the **Bedside Decision & Physiology Instruments** program with seven
+  pulmonary and critical-care risk scores. New module `lib/pulmonary-risk-v221.js`,
+  renderers `views/group-v221.js` (RV221). Each id was verified absent by a direct
+  scan of `app.js` (spec-v85 §6.2); each stratifies or estimates — none orders
+  (spec-v11 §5.3). Point systems cross-verified against ≥2 open sources (spec-v97).
+- **Simplified Revised Geneva** (`simplified-revised-geneva`, Klok 2008): PE
+  probability. **SCAP** (`scap-score`, España 2006) and **CORB** (`corb-score`,
+  Buising 2007): community-acquired-pneumonia severity.
+- **RESP** (`resp-score`, Schmidt 2014): respiratory-ECMO survival. **ILD-GAP**
+  (`ild-gap`, Ryerson 2014) and **du Bois IPF** (`du-bois-ipf`, du Bois 2011):
+  interstitial-lung-disease / IPF mortality. **Pneumothorax size**
+  (`pneumothorax-volume`, Collins 1995): Collins interpleural-distance formula.
+
 ### Added (spec-v220 — Bedside Decision & Physiology Instruments program: hepatology prognosis & fibrosis, 938 → 944, slice ships +6)
 
 - Continues the **Bedside Decision & Physiology Instruments** program with six
