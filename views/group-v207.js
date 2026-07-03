@@ -97,4 +97,22 @@ export const renderers = {
     }));
     postureNote(root);
   },
+
+  // ----- 2.4 cart-score ------------------------------------------------------
+  'cart-score'(root) {
+    note(root, 'Cardiac Arrest Risk Triage (Churpek 2012): a vital-sign early-warning model from four ward observations — respiratory rate, heart rate, diastolic BP, and age — banded to 0–57. A score > 20 marks markedly elevated risk of ward cardiac arrest within 48 hours; it outperformed MEWS in its derivation. Near-neighbors: mews, rems.');
+    root.appendChild(num('Respiratory rate (breaths/min)', 'cart-rr', { min: '0' }));
+    root.appendChild(num('Heart rate (bpm)', 'cart-hr', { min: '0' }));
+    root.appendChild(num('Diastolic blood pressure (mmHg)', 'cart-dbp', { min: '0' }));
+    root.appendChild(num('Age (years)', 'cart-age', { min: '0' }));
+    const o = out(); root.appendChild(o);
+    const ids = ['cart-rr', 'cart-hr', 'cart-dbp', 'cart-age'];
+    wire(ids, () => safe(o, () => {
+      const r = M.cartScore({ rr: val('cart-rr'), hr: val('cart-hr'), dbp: val('cart-dbp'), age: val('cart-age') });
+      if (!r.valid) { showInvalid(o, r); return; }
+      resultRow(o, [{ text: r.band, cls: r.abnormal ? 'warn' : null }, { label: 'CART', value: `${r.score}` }]);
+      note(o, r.detail); note(o, r.note);
+    }));
+    postureNote(root);
+  },
 };

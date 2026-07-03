@@ -30,6 +30,14 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
   Table 1) is internally inconsistent — it compresses MAP/HR/SpO₂ to a maximum of
   3 (summing to 23), so the APACHE-II-standard bands validated by the max-26
   constraint were used instead (spec-v97).
+- **CART score** (`cart-score`, 877 → 878): the Cardiac Arrest Risk Triage
+  vital-sign early-warning model from four ward observations — respiratory rate
+  (< 21/21–23/24–25/26–29/> 29 → 0/8/12/15/22), heart rate (< 110/110–139/> 139 →
+  0/4/13), diastolic BP (> 49/40–49/35–39/< 35 → 0/4/6/13), and age
+  (< 55/55–69/> 69 → 0/4/9); total 0–57. A score > 20 marks markedly elevated
+  risk of ward cardiac arrest within 48 hours. The table was cross-verified
+  against the open-access review reproducing Churpek 2012 Table 4 (PMC3673668)
+  and the max-57 constraint (spec-v97).
 
 ### Added (spec-v206 — Frontline & Bedside Decision Instruments program continues: TBI & stroke prognosis, shipped one tile at a time, 871 → 875, slice ships +4)
 
