@@ -6,6 +6,20 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v226 — Bedside Decision & Physiology Instruments program: nephrology, electrolyte & fluid formulas, 979 → 985, slice ships +6)
+
+- Continues the **Bedside Decision & Physiology Instruments** program with six
+  nephrology / fluid formulas. New module `lib/nephrology-v226.js`, renderers
+  `views/group-v226.js` (RV226). Each id was verified absent by a direct scan of
+  `app.js` (spec-v85 §6.2); each estimates or stratifies — none orders (spec-v11
+  §5.3). Formulas cross-verified against ≥2 open sources (spec-v97).
+- **Watson TBW** (`watson-tbw`, Watson 1980) and **Salazar-Corcoran**
+  (`salazar-corcoran`, 1988): total body water and obese creatinine clearance.
+- **ePVS** (`epvs`, Duarte 2015): estimated plasma volume status. **Furosemide
+  stress test** (`furosemide-stress-test`, Chawla 2013): AKI progression.
+- **FEHCO3** (`fe-bicarbonate`, Kurtzman 2000) and **pH-corrected potassium**
+  (`corrected-potassium-ph`, Adrogué & Madias 1981): acid-base ratios.
+
 ### Added (spec-v225 — Bedside Decision & Physiology Instruments program: obstetrics & gynecology scoring, 972 → 979, slice ships +7)
 
 - Continues the **Bedside Decision & Physiology Instruments** program with seven
