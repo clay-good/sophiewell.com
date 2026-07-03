@@ -1947,6 +1947,7 @@ const UTILITIES = [
   // Risk-Equation Instruments program). lib/cardiology-risk-v209.js, RV209.
   // mecki already live (v202); seattle-hf deferred.
   { id: 'hcm-risk-scd',         name: 'HCM Risk-SCD (5-year Sudden Cardiac Death, HCM)',  group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'charge-af',            name: 'CHARGE-AF (5-year Atrial Fibrillation Risk)',      group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
 ];
 
 const UTIL_BY_ID = new Map(UTILITIES.map((u) => [u.id, u]));

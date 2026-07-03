@@ -26,6 +26,15 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
   baseline cross-verified against O'Mahony 2014 and the ESC/Medscape/QxMD
   calculators (spec-v97). Validated for age ≥ 16 without prior arrest/sustained
   VT, wall thickness < 35 mm, or prior ICD.
+- **CHARGE-AF** (`charge-af`, 883 → 884): a simple 5-year incident-atrial-
+  fibrillation risk model from routine variables — age, race, height, weight,
+  systolic and diastolic BP, current smoking, antihypertensive use, diabetes,
+  heart failure, and prior MI. 5-year AF risk = 1 − 0.9718412736^exp(LP −
+  12.5815600), where LP sums the published coefficients (age 0.508/5, white
+  0.465, height 0.248/10, weight 0.115/15, SBP 0.197/20, DBP −0.101/10, smoker
+  0.359, antiHTN 0.349, diabetes 0.237, HF 0.701, MI 0.496). Coefficients and the
+  baseline/centering constants cross-verified against Alonso 2013 and MDCalc /
+  johnsonfrancis (spec-v97). Used to select patients for AF screening.
 
 ### Added (spec-v208 — Frontline & Bedside Decision Instruments program continues: nutrition & maternal-neonatal risk, shipped one tile at a time, 878 → 882, slice ships +4)
 

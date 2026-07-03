@@ -69,4 +69,32 @@ export const renderers = {
     }));
     postureNote(root);
   },
+
+  // ----- 2.4 charge-af -------------------------------------------------------
+  'charge-af'(root) {
+    note(root, 'CHARGE-AF (Alonso 2013): a simple 5-year incident-atrial-fibrillation risk model from routine variables — age, race, height, weight, BP, smoking, antihypertensive use, diabetes, heart failure, and prior MI. Used to select patients for AF screening. Near-neighbors: cha2ds2-va, ascvd.');
+    root.appendChild(num('Age (years)', 'charge-age', { min: '18' }));
+    root.appendChild(num('Height (cm)', 'charge-height', { min: '100' }));
+    root.appendChild(num('Weight (kg)', 'charge-weight', { min: '20' }));
+    root.appendChild(num('Systolic BP (mmHg)', 'charge-sbp', { min: '60' }));
+    root.appendChild(num('Diastolic BP (mmHg)', 'charge-dbp', { min: '30' }));
+    root.appendChild(checkField('White race', 'charge-white'));
+    root.appendChild(checkField('Current smoker', 'charge-smoker'));
+    root.appendChild(checkField('Antihypertensive medication', 'charge-antihtn'));
+    root.appendChild(checkField('Diabetes', 'charge-dm'));
+    root.appendChild(checkField('Heart failure', 'charge-hf'));
+    root.appendChild(checkField('Prior myocardial infarction', 'charge-mi'));
+    const o = out(); root.appendChild(o);
+    const ids = ['charge-age', 'charge-height', 'charge-weight', 'charge-sbp', 'charge-dbp', 'charge-white', 'charge-smoker', 'charge-antihtn', 'charge-dm', 'charge-hf', 'charge-mi'];
+    wire(ids, () => safe(o, () => {
+      const r = M.chargeAf({
+        age: val('charge-age'), height: val('charge-height'), weight: val('charge-weight'), sbp: val('charge-sbp'), dbp: val('charge-dbp'),
+        white: chk('charge-white'), smoker: chk('charge-smoker'), antiHtn: chk('charge-antihtn'), diabetes: chk('charge-dm'), heartFailure: chk('charge-hf'), mi: chk('charge-mi'),
+      });
+      if (!r.valid) { showInvalid(o, r); return; }
+      resultRow(o, [{ text: r.band, cls: r.abnormal ? 'warn' : null }, { label: 'CHARGE-AF', value: `${r.score}%` }]);
+      note(o, r.detail); note(o, r.note);
+    }));
+    postureNote(root);
+  },
 };
