@@ -6,6 +6,20 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v223 — Bedside Decision & Physiology Instruments program: dermatology activity, staging & screening, 958 → 965, slice ships +7)
+
+- Continues the **Bedside Decision & Physiology Instruments** program with seven
+  dermatology instruments. New module `lib/dermatology-v223.js`, renderers
+  `views/group-v223.js` (RV223). Each id was verified absent by a direct scan of
+  `app.js` (spec-v85 §6.2); each scores, classifies, or screens — none orders
+  (spec-v11 §5.3). Point systems cross-verified against ≥2 open sources (spec-v97).
+- **UAS7** (`uas7`, Mlynek 2008): urticaria activity. **HiSCR** (`hiscr`, Kimball
+  2014) and **Hurley staging** (`hurley-stage`, Hurley 1989): hidradenitis
+  suppurativa. **POEM** (`poem`, Charman 2004): patient-reported eczema.
+- **ALDEN** (`alden`, Sassolas 2010): drug causality in SJS/TEN. **PEST** (`pest`,
+  Ibrahim 2009): psoriatic-arthritis screening. **Weighted Glasgow 7-point
+  checklist** (`glasgow-7-point-checklist`, MacKie 1990): melanoma referral.
+
 ### Added (spec-v222 — Bedside Decision & Physiology Instruments program: rheumatology classification & activity, 951 → 958, slice ships +7)
 
 - Continues the **Bedside Decision & Physiology Instruments** program with seven
