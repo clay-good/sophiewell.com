@@ -6,6 +6,20 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v231 — nutrition/inflammation prognostic tools, 1004 → 1007)
+
+- Three deterministic prognostic tools continuing the v229/v230 index family. New
+  module `lib/prognostic-v231.js`, renderers `views/group-v231.js` (RV231). Each id
+  was verified absent by a fixed-string scan of the extracted app.js id/name lists
+  AND the MCP adapter set (spec-v85 §6.2); each computes a score/lab value — none
+  diagnoses or orders (spec-v11 §5.3). Formulas/cutoffs cross-verified against ≥2
+  open sources (spec-v97).
+- **Naples Prognostic Score** (`naples-prognostic-score`, Galizia 2017): albumin
+  < 4 g/dL, cholesterol ≤ 180 mg/dL, NLR > 2.96, LMR ≤ 4.44 each +1 → group 0 (0) /
+  1 (1-2) / 2 (3-4). **NMR** (`nmr`): ANC / AMC. **FAR** (`far`, Sun 2020):
+  fibrinogen (mg/dL) / albumin (g/dL). NMR and FAR report the value with a
+  context-dependence note. All Class A, no staleness rows.
+
 ### Added (spec-v230 — prognostic inflammation indices, 1000 → 1004)
 
 - Four deterministic prognostic inflammation indices extending the v229 CBC-index
