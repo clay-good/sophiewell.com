@@ -6,6 +6,22 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v218 — Bedside Decision & Physiology Instruments program: ED / trauma / infection decision instruments, 924 → 931, slice ships +7)
+
+- Continues the **Bedside Decision & Physiology Instruments** program with seven
+  emergency-department, trauma, and infection decision instruments. New module
+  `lib/ed-decision-v218.js`, renderers `views/group-v218.js` (RV218). Each id was
+  verified absent by a direct scan of `app.js` (spec-v85 §6.2); each stratifies or
+  classifies — none orders (spec-v11 §5.3). Point systems cross-verified against
+  ≥2 open sources (spec-v97).
+- **FAINT** (`faint-score`, Probst 2020): older-adult ED syncope. **NEXUS Head CT**
+  (`nexus-head-ct`, Mower 2005): adult head-CT decision rule.
+- **HANDOC** (`handoc-score`, Sunnerhagen 2018) and **DENOVA** (`denova-score`,
+  Berge 2019): echocardiography-need scores in streptococcal / enterococcal
+  bacteremia. **2018 ICM PJI definition** (`icm-pji-2018`, Parvizi 2018).
+- **AIR** (`air-score`, Andersson 2008) and **Adult Appendicitis Score**
+  (`adult-appendicitis-score`, Sammalkorpi 2014): appendicitis probability scores.
+
 ### Added (spec-v217 — Bedside Decision & Physiology Instruments program: stroke & neuro-vascular risk scores, 917 → 924, slice ships +7)
 
 - Continues the **Bedside Decision & Physiology Instruments** program with seven

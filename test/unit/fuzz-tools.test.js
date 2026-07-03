@@ -207,6 +207,7 @@ import * as cardiologyRiskV214 from '../../lib/cardiology-risk-v214.js';
 import * as riskScoresV215 from '../../lib/risk-scores-v215.js';
 import * as hemePrognosticV216 from '../../lib/heme-prognostic-v216.js';
 import * as strokeRiskV217 from '../../lib/stroke-risk-v217.js';
+import * as edDecisionV218 from '../../lib/ed-decision-v218.js';
 
 const MODULES = {
   'clinical.js': clinical,
@@ -358,6 +359,7 @@ const MODULES = {
   'risk-scores-v215.js': riskScoresV215,
   'heme-prognostic-v216.js': hemePrognosticV216,
   'stroke-risk-v217.js': strokeRiskV217,
+  'ed-decision-v218.js': edDecisionV218,
 };
 
 const MATRIX = [0, -1, 1e9, NaN, Infinity, -Infinity, '', undefined, null];
