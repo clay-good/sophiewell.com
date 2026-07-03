@@ -6,12 +6,14 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
-### Added (spec-v207 — Frontline & Bedside Decision Instruments program continues: resuscitation / arrest / trauma-death prognosis, shipped one tile at a time, 875 → …)
+### Added (spec-v207 — Frontline & Bedside Decision Instruments program continues: resuscitation / arrest / trauma-death prognosis, shipped one tile at a time, 875 → 878, slice ships +3)
 
 - Continues the **Frontline & Bedside Decision Instruments** program (spec-v204–
   v208) with resuscitation, cardiac-arrest, and trauma-death prognosis
   instruments, shipped **one tile at a time**. New module
-  `lib/resus-trauma-v207.js`, renderers `views/group-v207.js` (RV207).
+  `lib/resus-trauma-v207.js`, renderers `views/group-v207.js` (RV207). **Slice
+  ships +3 (TOR rule, REMS, CART), not +5**: `cahp-score` and `crash2-mortality`
+  are deferred under [spec-v97] / spec-v207 §7 (see below).
 - **Termination-of-Resuscitation rule** (`tor-rule`, 875 → 876): field decision
   support for non-traumatic adult OHCA. The **BLS** rule allows considering
   termination when all three are absent — arrest witnessed by EMS, ROSC before
@@ -38,6 +40,16 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
   risk of ward cardiac arrest within 48 hours. The table was cross-verified
   against the open-access review reproducing Churpek 2012 Table 4 (PMC3673668)
   and the max-57 constraint (spec-v97).
+- **Deferred (spec-v97 / spec-v207 §7 — not shipped):** the **CAHP score**
+  (`cahp-score`) and the **CRASH-2 prognostic model** (`crash2-mortality`). Both
+  are logistic-regression models whose exact per-variable point functions /
+  coefficients are not reproducible from ≥ 2 open sources. The CRASH-2 authors
+  state (BMJ 2012, PMC3419468) that the equation is intentionally not published —
+  it carries non-linear (quadratic/cubic) terms and a GCS×injury interaction, and
+  is available only via the crash2.lshtm.ac.uk web calculator plus a coarse
+  4-band color chart. CAHP is a continuous logistic nomogram whose non-linear
+  per-variable point curves live in the paywalled Eur Heart J 2016 paper. Held
+  for a future slice pending open sourcing (the ukpds-risk / iscore precedent).
 
 ### Added (spec-v206 — Frontline & Bedside Decision Instruments program continues: TBI & stroke prognosis, shipped one tile at a time, 871 → 875, slice ships +4)
 
