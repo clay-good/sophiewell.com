@@ -6,6 +6,21 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v229 — CBC-derived count & inflammation indices, 996 → 1000; catalog reaches the 1000-tile milestone)
+
+- Four deterministic complete-blood-count-derived indices, computed from CBC
+  values already in hand. New module `lib/hematology-v229.js`, renderers
+  `views/group-v229.js` (RV229). Each id was verified absent by a direct scan of
+  `app.js` (spec-v85 §6.2); each computes a lab value — none diagnoses or orders
+  (spec-v11 §5.3). Formulas and bands cross-verified against ≥2 open sources
+  (spec-v97). This slice carries the catalog to **1000 tiles**.
+- **Absolute eosinophil count** (`aec`, Valent 2012 + NIH StatPearls): WBC ×
+  eosinophil %, graded < 500 normal / 500-1500 mild / 1500-5000 moderate / > 5000
+  severe; ≥ 1500 flags hypereosinophilia. **NLR** (`nlr`, Zahorec 2001): ANC / ALC,
+  > 3 elevated. **PLR** (`plr`, Gasparyan 2019): platelets / ALC, > 180 elevated.
+  **SII** (`sii`, Hu 2014): platelets × ANC / ALC, reported with a context-
+  dependence note. All Class A, no staleness rows.
+
 ### Added (spec-v228 — hematology depth: microcytic-anemia RBC discrimination indices, 991 → 996, slice ships +5)
 
 - Five deterministic red-cell discrimination indices that screen beta-thalassemia
