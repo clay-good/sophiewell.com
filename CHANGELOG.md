@@ -6,7 +6,7 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
-### Added (spec-v212 — Advanced Prognostic & Risk-Equation Instruments program continues: hepatology fibrosis & portal-hypertension prognosis, shipped one tile at a time, 889 → 891, slice ships +2 so far)
+### Added (spec-v212 — Advanced Prognostic & Risk-Equation Instruments program, final proposed spec: hepatology fibrosis & portal-hypertension prognosis, shipped one tile at a time, 889 → 891, slice ships +2; closes the proposed-spec program v201–v212)
 
 - Continues the **Advanced Prognostic & Risk-Equation Instruments** program
   (spec-v209–v212, the final proposed spec) with hepatology fibrosis /
@@ -32,6 +32,18 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
   deferred. Thresholds re-fetched and cross-verified across the de Franchis 2022
   Baveno VII consensus and the Augustin 2017 Baveno VI derivation (spec-v97).
   A risk-stratification rule, not an endoscopy or beta-blocker order.
+- **Deferred (spec-v97, verification gate):** `balad-2` and `hklc` were **not**
+  shipped. **BALAD-2** — the continuous HCC biomarker model's DCP and AFP
+  transforms/units (`ln(DCP)` vs `ln(DCP/1000)`, `afp_c` per-1000 cap) could not
+  be pinned unambiguously across ≥ 2 independent open sources, and the model is
+  embedded in proprietary calculators (Roche GAAD / Mayo GALAD); a single unit
+  error flips the prognostic group across the published boundaries. **HKLC** —
+  the tumor-category leaves cross-verify, but the full 9-node ECOG × Child-Pugh ×
+  tumor × EVM → stage tree lives only in the paywalled Gastroenterology 2014
+  figure; open overviews reference it without reproducing the node-by-node stage
+  assignments. Both await a dedicated primary-source transcription session.
+  `hepamet-fibrosis` (proposed 2.4) was a collision — already live from
+  spec-v201. **This closes the proposed-spec program (spec-v201–v212).**
 
 ### Added (spec-v211 — Advanced Prognostic & Risk-Equation Instruments program continues: hematology-oncology risk stratification, shipped one tile at a time, 885 → 889, slice ships +4)
 
