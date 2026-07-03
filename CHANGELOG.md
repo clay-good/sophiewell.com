@@ -6,6 +6,21 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v228 — hematology depth: microcytic-anemia RBC discrimination indices, 991 → 996, slice ships +5)
+
+- Five deterministic red-cell discrimination indices that screen beta-thalassemia
+  trait against iron-deficiency anemia from CBC values already in hand. New module
+  `lib/mixed-v228.js`, renderers `views/group-v228.js` (RV228). Each id was verified
+  absent by a direct scan of `app.js` (spec-v85 §6.2); the catalog already carried
+  the sibling `mentzer` and `shine-lal` indices. Each screens — none diagnoses or
+  orders (spec-v11 §5.3). Formulas and cutoffs cross-verified against ≥2 open
+  sources (spec-v97): Vehapoglu 2014 (PMC4003757) and the PMC4003440 cutoff table.
+- **England & Fraser** (`england-fraser-index`, 1973): MCV − RBC − (5 × Hb) − 3.4,
+  < 0 favors trait. **Sirdah** (`sirdah-index`, 2008): MCV − RBC − (3 × Hb), < 27.
+  **RDW Index** (`rdw-index`, Jayabose 1999): (MCV × RDW) / RBC, < 220. **Srivastava**
+  (`srivastava-index`, 1973): MCH / RBC, < 3.8. **Ehsani** (`ehsani-index`, 2009):
+  MCV − (10 × RBC), < 15. All Class A, no staleness rows.
+
 ### Added (spec-v227 — Bedside Decision & Physiology Instruments program CLOSING slice: cross-domain trauma / Behçet / dengue, 985 → 991; program total +100, 891 → 991)
 
 - Closes the **Bedside Decision & Physiology Instruments** program (spec-v213–v227)
