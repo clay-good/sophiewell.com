@@ -6,6 +6,21 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v220 — Bedside Decision & Physiology Instruments program: hepatology prognosis & fibrosis, 938 → 944, slice ships +6)
+
+- Continues the **Bedside Decision & Physiology Instruments** program with six
+  hepatology prognosis and fibrosis instruments. New module
+  `lib/hepatology-prognosis-v220.js`, renderers `views/group-v220.js` (RV220). Each
+  id was verified absent by a direct scan of `app.js` (spec-v85 §6.2); each stages
+  or stratifies — none orders (spec-v11 §5.3). Formulas cross-verified against ≥2
+  open sources (spec-v97).
+- **FIPS** (`fips-score`, Bettinger 2021): post-TIPS survival index. **ALBI-PLT**
+  (`albi-plt`, Chen 2018): high-risk-varices score. **D'Amico staging**
+  (`damico-cirrhosis-stage`, D’Amico 2006): natural-history cirrhosis stages.
+- **aMAP** (`amap-score`, Fan 2020): hepatocellular-carcinoma risk. **NACSELD-ACLF**
+  (`nacseld-aclf`, O’Leary 2018): acute-on-chronic-liver-failure organ-failure
+  count. **FibroQ** (`fibroq`, Hsieh 2009): fibrosis index.
+
 ### Added (spec-v219 — Bedside Decision & Physiology Instruments program: metabolic & hepatic indices, 931 → 938, slice ships +7)
 
 - Continues the **Bedside Decision & Physiology Instruments** program with seven

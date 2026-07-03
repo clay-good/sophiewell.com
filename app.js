@@ -124,6 +124,7 @@ import { renderers as RV216 } from './views/group-v216.js';
 import { renderers as RV217 } from './views/group-v217.js';
 import { renderers as RV218 } from './views/group-v218.js';
 import { renderers as RV219 } from './views/group-v219.js';
+import { renderers as RV220 } from './views/group-v220.js';
 import { renderers as RV164 } from './views/group-v164.js';
 import { renderers as RV165 } from './views/group-v165.js';
 import { renderers as RV166 } from './views/group-v166.js';
@@ -158,7 +159,7 @@ import { resolvePrompt } from './lib/prompt.js';
 // artifact-detect / artifact-route / artifact-handoff helpers were
 // deleted in spec-v29 wave 29-2 (Group C/L).
 
-const RENDERERS = { ...RA, ...RB, ...RC, ...RE, ...RF, ...RG, ...RH, ...RI, ...RJ, ...RKLMNO, ...RV5, ...RV6, ...RV7, ...RV8, ...RV9, ...RV10, ...RV11, ...RV12, ...RV13, ...RV14, ...RV15, ...RV16, ...RV17, ...RV18, ...RV19, ...RV20, ...RV21, ...RV22, ...RV23, ...RV24, ...RV25, ...RV26, ...RV27, ...RV28, ...RV29, ...RV30, ...RV31, ...RV32, ...RV33, ...RV34, ...RV35, ...RV36, ...RV37, ...RV38, ...RV39, ...RV40, ...RV117, ...RV118, ...RV119, ...RV120, ...RV121, ...RV122, ...RV123, ...RV124, ...RV125, ...RV126, ...RV127, ...RV128, ...RV129, ...RV130, ...RV131, ...RV132, ...RV133, ...RV134, ...RV135, ...RV136, ...RV137, ...RV138, ...RV139, ...RV140, ...RV141, ...RV142, ...RV143, ...RV144, ...RV145, ...RV146, ...RV147, ...RV148, ...RV149, ...RV151, ...RV152, ...RV153, ...RV154, ...RV155, ...RV156, ...RV158, ...RV159, ...RV160, ...RV161, ...RV163, ...RV164, ...RV165, ...RV166, ...RV167, ...RV169, ...RV173, ...RV174, ...RV175, ...RV176, ...RV177, ...RV178, ...RV179, ...RV182, ...RV180, ...RV181, ...RV185, ...RV186, ...RV187, ...RV188, ...RV189, ...RV190, ...RV191, ...RV192, ...RV193, ...RV194, ...RV195, ...RV196, ...RV197, ...RV198, ...RV199, ...RV200, ...RV201, ...RV202, ...RV203, ...RV204, ...RV205, ...RV206, ...RV207, ...RV208, ...RV209, ...RV210, ...RV211, ...RV212, ...RV213, ...RV214, ...RV215, ...RV216, ...RV217, ...RV218, ...RV219, ...RV63, ...RPALINT };
+const RENDERERS = { ...RA, ...RB, ...RC, ...RE, ...RF, ...RG, ...RH, ...RI, ...RJ, ...RKLMNO, ...RV5, ...RV6, ...RV7, ...RV8, ...RV9, ...RV10, ...RV11, ...RV12, ...RV13, ...RV14, ...RV15, ...RV16, ...RV17, ...RV18, ...RV19, ...RV20, ...RV21, ...RV22, ...RV23, ...RV24, ...RV25, ...RV26, ...RV27, ...RV28, ...RV29, ...RV30, ...RV31, ...RV32, ...RV33, ...RV34, ...RV35, ...RV36, ...RV37, ...RV38, ...RV39, ...RV40, ...RV117, ...RV118, ...RV119, ...RV120, ...RV121, ...RV122, ...RV123, ...RV124, ...RV125, ...RV126, ...RV127, ...RV128, ...RV129, ...RV130, ...RV131, ...RV132, ...RV133, ...RV134, ...RV135, ...RV136, ...RV137, ...RV138, ...RV139, ...RV140, ...RV141, ...RV142, ...RV143, ...RV144, ...RV145, ...RV146, ...RV147, ...RV148, ...RV149, ...RV151, ...RV152, ...RV153, ...RV154, ...RV155, ...RV156, ...RV158, ...RV159, ...RV160, ...RV161, ...RV163, ...RV164, ...RV165, ...RV166, ...RV167, ...RV169, ...RV173, ...RV174, ...RV175, ...RV176, ...RV177, ...RV178, ...RV179, ...RV182, ...RV180, ...RV181, ...RV185, ...RV186, ...RV187, ...RV188, ...RV189, ...RV190, ...RV191, ...RV192, ...RV193, ...RV194, ...RV195, ...RV196, ...RV197, ...RV198, ...RV199, ...RV200, ...RV201, ...RV202, ...RV203, ...RV204, ...RV205, ...RV206, ...RV207, ...RV208, ...RV209, ...RV210, ...RV211, ...RV212, ...RV213, ...RV214, ...RV215, ...RV216, ...RV217, ...RV218, ...RV219, ...RV220, ...RV63, ...RPALINT };
 
 // ----- Utility registry ----------------------------------------------------
 // Source of truth for routes, names, group, audiences, and clinical flag.
@@ -2038,6 +2039,14 @@ const UTILITIES = [
   { id: 'conicity-index',       name: 'Conicity Index (Central Adiposity)',               group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'ast-alt-ratio',        name: 'AST/ALT (De Ritis) Ratio',                         group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'ggt-platelet-ratio',   name: 'GGT-to-Platelet Ratio (GPR)',                      group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  // spec-v220: hepatology prognosis & fibrosis. lib/hepatology-prognosis-v220.js,
+  // RV220. Each verified absent (spec-v85 §6.2); each stages / stratifies, none orders.
+  { id: 'fips-score',           name: 'FIPS (Freiburg Index of Post-TIPS Survival)',      group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'albi-plt',             name: 'ALBI-PLT Score (Varices Risk)',                    group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'damico-cirrhosis-stage', name: 'D’Amico Clinical Stages of Cirrhosis',           group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'amap-score',           name: 'aMAP Score (Hepatocellular Carcinoma Risk)',       group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'nacseld-aclf',         name: 'NACSELD Acute-on-Chronic Liver Failure',           group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'fibroq',               name: 'FibroQ (Liver Fibrosis Index)',                    group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
 ];
 
 const UTIL_BY_ID = new Map(UTILITIES.map((u) => [u.id, u]));
