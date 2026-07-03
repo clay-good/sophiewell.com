@@ -22,6 +22,15 @@ function field(label, id, attrs) {
 function num(label, id, attrs = {}) {
   return field(label, id, { type: 'number', step: 'any', inputmode: 'decimal', ...attrs });
 }
+function selectField(label, id, options) {
+  const wrap = el('p');
+  wrap.appendChild(el('label', { for: id, text: label }));
+  wrap.appendChild(el('br'));
+  const sel = el('select', { id });
+  for (const opt of options) sel.appendChild(el('option', { value: opt.value, text: opt.text }));
+  wrap.appendChild(sel);
+  return wrap;
+}
 function out() { return el('div', { id: 'q-results', 'aria-live': 'polite' }); }
 function val(id) { const n = document.getElementById(id); return n ? n.value : ''; }
 function safe(o, fn) { clear(o); try { fn(); } catch (err) { o.appendChild(el('p', { class: 'muted', text: err.message })); } }
@@ -47,6 +56,25 @@ export const renderers = {
       const r = M.ponderalIndex({ weightG: val('pi-weight'), lengthCm: val('pi-length') });
       if (!r.valid) { showInvalid(o, r); return; }
       resultRow(o, [{ text: r.band, cls: r.abnormal ? 'warn' : null }, { label: 'PI', value: `${r.score}` }]);
+      note(o, r.detail); note(o, r.note);
+    }));
+    postureNote(root);
+  },
+
+  // ----- 2.4 sflt1-plgf ------------------------------------------------------
+  'sflt1-plgf'(root) {
+    note(root, 'sFlt-1/PlGF ratio (Zeisler 2016 PROGNOSIS; Verlohren 2014 phase-specific): a Roche Elecsys biomarker for suspected preeclampsia. ≤ 38 rules PE out for the next week (NPV ≈ 99.3%); > 38 flags elevated risk; rule-in ≥ 85 (early < 34 wk) / ≥ 110 (late ≥ 34 wk). Near-neighbors: fullpiers, acog-severe-pre.');
+    root.appendChild(num('sFlt-1/PlGF ratio', 'sflt-ratio', { min: '0' }));
+    root.appendChild(selectField('Gestational phase', 'sflt-phase', [
+      { value: 'early', text: 'Early-onset (< 34 weeks) — rule-in ≥ 85' },
+      { value: 'late', text: 'Late-onset (≥ 34 weeks) — rule-in ≥ 110' },
+    ]));
+    const o = out(); root.appendChild(o);
+    const ids = ['sflt-ratio', 'sflt-phase'];
+    wire(ids, () => safe(o, () => {
+      const r = M.sflt1Plgf({ ratio: val('sflt-ratio'), phase: val('sflt-phase') });
+      if (!r.valid) { showInvalid(o, r); return; }
+      resultRow(o, [{ text: r.band, cls: r.abnormal ? 'warn' : null }, { label: 'Ratio', value: `${r.score}` }]);
       note(o, r.detail); note(o, r.note);
     }));
     postureNote(root);

@@ -19,6 +19,12 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
   birth-weight-for-age; > 3.0 is heavy-for-length. Formula and bands
   cross-verified against Miller & Hassanein 1971 and the validation literature
   (spec-v97).
+- **sFlt-1/PlGF ratio** (`sflt1-plgf`, 879 → 880): a Roche Elecsys biomarker for
+  suspected preeclampsia. A ratio ≤ 38 rules preeclampsia out for the next week
+  (NPV ≈ 99.3%); > 38 flags elevated short-term risk; the gestational-phase
+  rule-in thresholds are ≥ 85 (early-onset < 34 weeks) and ≥ 110 (late-onset ≥ 34
+  weeks). Cut-points cross-verified against the PROGNOSIS trial (Zeisler 2016) and
+  the Verlohren 2014 phase-specific paper (spec-v97).
 
 ### Added (spec-v207 — Frontline & Bedside Decision Instruments program continues: resuscitation / arrest / trauma-death prognosis, shipped one tile at a time, 875 → 878, slice ships +3)
 
