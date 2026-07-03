@@ -31,8 +31,15 @@ function selectField(label, id, options) {
   wrap.appendChild(sel);
   return wrap;
 }
+function checkField(label, id) {
+  const wrap = el('p');
+  wrap.appendChild(el('input', { id, type: 'checkbox' }));
+  wrap.appendChild(el('label', { for: id, text: ' ' + label }));
+  return wrap;
+}
 function out() { return el('div', { id: 'q-results', 'aria-live': 'polite' }); }
 function val(id) { const n = document.getElementById(id); return n ? n.value : ''; }
+function chk(id) { const n = document.getElementById(id); return n ? n.checked : false; }
 function safe(o, fn) { clear(o); try { fn(); } catch (err) { o.appendChild(el('p', { class: 'muted', text: err.message })); } }
 function note(root, text) { if (text) root.appendChild(el('p', { class: 'muted', text })); }
 function showInvalid(o, r) { note(o, r.message || 'Complete the remaining fields.'); }
@@ -75,6 +82,33 @@ export const renderers = {
       const r = M.sflt1Plgf({ ratio: val('sflt-ratio'), phase: val('sflt-phase') });
       if (!r.valid) { showInvalid(o, r); return; }
       resultRow(o, [{ text: r.band, cls: r.abnormal ? 'warn' : null }, { label: 'Ratio', value: `${r.score}` }]);
+      note(o, r.detail); note(o, r.note);
+    }));
+    postureNote(root);
+  },
+
+  // ----- 2.2 glim-malnutrition -----------------------------------------------
+  'glim-malnutrition'(root) {
+    note(root, 'GLIM criteria (Cederholm 2019): malnutrition requires ≥ 1 phenotypic AND ≥ 1 etiologic criterion after a positive screen. Severity is graded on the phenotypic criteria (Stage 1 moderate vs Stage 2 severe). Near-neighbors: must-nutrition, conut.');
+    root.appendChild(selectField('Phenotypic — non-volitional weight loss', 'glim-wl', [
+      { value: 'none', text: 'None' },
+      { value: 'moderate', text: 'Moderate (5–10% within 6 mo, or 10–20% beyond)' },
+      { value: 'severe', text: 'Severe (> 10% within 6 mo, or > 20% beyond)' },
+    ]));
+    root.appendChild(selectField('Phenotypic — low BMI', 'glim-bmi', [
+      { value: 'none', text: 'None' },
+      { value: 'moderate', text: 'Moderate (< 20 if < 70 y, or < 22 if ≥ 70 y)' },
+      { value: 'severe', text: 'Severe (< 18.5 if < 70 y, or < 20 if ≥ 70 y)' },
+    ]));
+    root.appendChild(checkField('Phenotypic — reduced muscle mass (validated measure)', 'glim-muscle'));
+    root.appendChild(checkField('Etiologic — reduced intake / assimilation', 'glim-intake'));
+    root.appendChild(checkField('Etiologic — inflammation / disease burden', 'glim-inflam'));
+    const o = out(); root.appendChild(o);
+    const ids = ['glim-wl', 'glim-bmi', 'glim-muscle', 'glim-intake', 'glim-inflam'];
+    wire(ids, () => safe(o, () => {
+      const r = M.glim({ weightLoss: val('glim-wl'), lowBmi: val('glim-bmi'), reducedMuscle: chk('glim-muscle'), reducedIntake: chk('glim-intake'), inflammation: chk('glim-inflam') });
+      if (!r.valid) { showInvalid(o, r); return; }
+      resultRow(o, [{ text: r.band, cls: r.abnormal ? 'warn' : null }, { label: 'GLIM', value: r.diagnosed ? `Stage ${r.stage}` : 'not diagnosed' }]);
       note(o, r.detail); note(o, r.note);
     }));
     postureNote(root);

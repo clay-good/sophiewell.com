@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `35b90095bf5c4f5d`
-Generated: 2026-07-03T00:49:45.321Z
+Build ID: `06efb611b88924ed`
+Generated: 2026-07-03T00:55:12.837Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=20.18.1 <21, npm >=10.0.0
@@ -24,13 +24,13 @@ downloads is committed in this repository and is hashed below.
 
 | Path | Bytes | SHA-256 |
 |---|---:|---|
-| `index.html` | 63551 | `6fc525270a797d0b994c94e2f284de5d2db3dc94f57601d938d7c311ef2ffd39` |
+| `index.html` | 63605 | `a760aeed190c005fa72e6e36a4851925ef2be08de999e6dc0ae01810b4f93b2d` |
 | `styles.css` | 42819 | `bea421c79d390a364eb571c3a9599cdf28264128d4ac02d7abb00f31000c7cda` |
-| `app.js` | 245845 | `0ddae27a89ae6e209fb51a197e314c959884aff3870a389cb3ee24945ec665aa` |
+| `app.js` | 246005 | `732ab3d28733cba65b818890991bc63739202700f00a886941b2e32bc3ad1c4d` |
 | `sw.js` | 4622 | `b891d4344f8e04403b7f1d307fd446cc224bddc6f0c4397438a17d197351171e` |
 | `site.webmanifest` | 709 | `0e0de4da60590a12e8b27a0ae2a2f5ffdb6500b7d2b78f93631ec2f64ed3d5ce` |
 | `robots.txt` | 127 | `38fbf9c1854e72abb20e01e81dd5a31d4ea96f154c12d5db1ec3af05524dd1a1` |
-| `sitemap.xml` | 135226 | `cb4d66fdd91e04ef30d5a7dc7a8d4fbf6553ba81b41f413335a139cb674b0c0d` |
+| `sitemap.xml` | 135383 | `26089261b13e496ced07720b1c23b62be1918fed0a5e376e161f5ac660a5e407` |
 | `_headers` | 1316 | `2f39986457d2feff7e73e491a7d09ee871e8f2f4cc2bc437f86bd86a42554ec6` |
 | `logo.png` | 63440 | `11afaf1b0d3ca68393d202e4810bf766b5b6d591b4e3ec52f41d3cacaa4616ec` |
 | `favicon.ico` | 7411 | `407fde0ca2788409e87e11f596fa02e6a0b121817fcea7fd995beec1801e287b` |
@@ -124,7 +124,7 @@ downloads is committed in this repository and is hashed below.
 | `lib/lymphoma-v135.js` | 16162 | `e29896a6de224445f46839cd06518817bd25d1235a91ede76f77ccb4996a934f` |
 | `lib/medication-v4.js` | 18192 | `467f9576c50da696cc56094eb022d0a5ed1e88de0c7618448554ede8067270b0` |
 | `lib/medication-v5.js` | 18863 | `ce81d9f8954abbd412892c13af9936f992239164f26fd2b999eaea7902787ab7` |
-| `lib/meta.js` | 1288875 | `701ef762cf2e3abe5d6e4eb00ffa4c7d30e1de5624ed20ac663788b7c53f6367` |
+| `lib/meta.js` | 1290098 | `0f584e44807343e4fe5bd6e18a92bac41a2f033090844b8d722c63a70af9ea9a` |
 | `lib/metabolic-onc-v88.js` | 12659 | `1553b641668c121661a66647da71a4aaaa023e9f3a6b7a753efbcdab27cdba81` |
 | `lib/myeloid-prognosis-v199.js` | 11996 | `d65fe650bc865814907eb9176be30f15bb5db529c5dbd629a78aaae974f6e1a6` |
 | `lib/nephro-fluids-v204.js` | 15719 | `473ff5684785aec50239f20b5f35b9f30b9a6da40c00752ee210f68d924c9d49` |
@@ -140,7 +140,7 @@ downloads is committed in this repository and is hashed below.
 | `lib/neuro-v95.js` | 14709 | `7f7e4f5a0877afa8efbf6cc69f8b0549370bcdbcb5d7ed1dfcea1a5ee7266e85` |
 | `lib/num.js` | 3883 | `d420a01b7b54cd9d5e102b1ffaa0ed1b6a5ffb7c9e652d7bb2d458d24857e47f` |
 | `lib/nutrition-energy-v152.js` | 14446 | `924b5421f818147f64b10db410fca9892773a29a918cf40e2bacdb64c0dbb23a` |
-| `lib/nutrition-maternal-v208.js` | 5634 | `cdb3013662f6f084b4cea49d6d2203446623125d7efb6442aed595d031193a75` |
+| `lib/nutrition-maternal-v208.js` | 8768 | `33ea6650f6d536506d10a937b81e2197dd56b2047c0268a8e0b17740f659f876` |
 | `lib/ob-v138.js` | 15914 | `31473ee0596e0822f6a19fd4fb31f7c037fcac43888d9da260939925ab5f869b` |
 | `lib/onc-staging-v187.js` | 12324 | `365e62d3c84205a10dd0a093f79d9ed3ba89e809c98b2347b239a8552a9358a3` |
 | `lib/onc-v134.js` | 16934 | `6335c7bb64652b213491db50ec0b0a04eddcab52c9bfea55d5dd26ba48ce86b5` |
@@ -320,7 +320,7 @@ downloads is committed in this repository and is hashed below.
 | `views/group-v205.js` | 10687 | `c081e7d83c8a7cfa0a81be0354c8157a6a02f0e06371650ae94accb2fc4d4bfa` |
 | `views/group-v206.js` | 9422 | `033e33e9d7b809b4192c99ef66fec1e5ea2406dfbe3d320bd798aed8f6350104` |
 | `views/group-v207.js` | 7112 | `2bd6636fe7c67c517ba77229640f0e914b0d3218c4c6832810c61ff60f4088b9` |
-| `views/group-v208.js` | 4659 | `33825cade93c1cf135dd24f89c1707088a96299c61529eb30f595fede2b2fd90` |
+| `views/group-v208.js` | 6853 | `fe4d2107c3fdbc739a000242f95f6f609d0269486721f39d1d011292d678ae86` |
 | `views/group-v21.js` | 11503 | `f56e58aed91b6b6cedf3663a60f56e2d1b1d612977bc7588a9670a8e3c9e8c07` |
 | `views/group-v22.js` | 11499 | `ff21c98406d9a4e07c191001279620148bf6a14cd6df0353bbdc69be73d5b5d5` |
 | `views/group-v23.js` | 14725 | `5b5270fee62e0915f4596e11ea46831f7055ad3bb5039a2c4fe96af83382d305` |

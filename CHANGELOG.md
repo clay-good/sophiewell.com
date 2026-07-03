@@ -25,6 +25,13 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
   rule-in thresholds are ≥ 85 (early-onset < 34 weeks) and ≥ 110 (late-onset ≥ 34
   weeks). Cut-points cross-verified against the PROGNOSIS trial (Zeisler 2016) and
   the Verlohren 2014 phase-specific paper (spec-v97).
+- **GLIM criteria** (`glim-malnutrition`, 880 → 881): the international consensus
+  malnutrition diagnosis — malnutrition requires ≥ 1 phenotypic criterion (weight
+  loss, low BMI, or reduced muscle mass) AND ≥ 1 etiologic criterion (reduced
+  intake/assimilation, or inflammation/disease burden), after a positive screen.
+  Severity is graded on the phenotypic criteria: Stage 1 (moderate) vs Stage 2
+  (severe = weight loss > 10% within 6 mo or BMI < 18.5). Criteria cross-verified
+  against Cederholm 2019 and the ESPEN GLIM fact sheet (spec-v97).
 
 ### Added (spec-v207 — Frontline & Bedside Decision Instruments program continues: resuscitation / arrest / trauma-death prognosis, shipped one tile at a time, 875 → 878, slice ships +3)
 
