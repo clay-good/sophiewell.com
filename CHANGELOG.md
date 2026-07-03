@@ -6,6 +6,24 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v215 — Bedside Decision & Physiology Instruments program: lipid / device / oncology risk scores, 903 → 910, slice ships +7)
+
+- Continues the **Bedside Decision & Physiology Instruments** program with seven
+  lipid, cardiac-device, and oncology risk scores. New module
+  `lib/risk-scores-v215.js`, renderers `views/group-v215.js` (RV215). Each id was
+  verified absent by a direct scan of `app.js` (spec-v85 §6.2); each classifies or
+  stratifies — none orders (spec-v11 §5.3). Point systems cross-verified against
+  ≥2 independent open sources (spec-v97).
+- **Dutch Lipid Clinic Network** (`dlcn-fh-score`) and **Simon Broome**
+  (`simon-broome-fh`): familial-hypercholesterolemia classifiers (Nordestgaard
+  2013; Simon Broome Register Group 1991).
+- **PADIT** (`padit-score`, Birnie 2019): cardiac-implantable-electronic-device
+  infection risk.
+- **GRIm-Score** (`grim-score`, Bigot 2017) and **Lung Immune Prognostic Index**
+  (`lipi`, Mezquita 2018): immunotherapy prognostic indices.
+- **ONKOTEV** (`onkotev-score`, Cella 2017) and **PROTECHT** (`protecht-score`,
+  Verso 2012): cancer-associated-VTE risk scores.
+
 ### Added (spec-v214 — Bedside Decision & Physiology Instruments program: cardiology risk scores (AF ablation/progression + ACS severity), 896 → 903, slice ships +7)
 
 - Continues the **Bedside Decision & Physiology Instruments** program
