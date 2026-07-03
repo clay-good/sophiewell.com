@@ -77,4 +77,24 @@ export const renderers = {
     }));
     postureNote(root);
   },
+
+  // ----- 2.5 rems ------------------------------------------------------------
+  rems(root) {
+    note(root, 'Rapid Emergency Medicine Score (Olsson 2004): an abbreviated-APACHE-II in-hospital-mortality score needing no labs — age, MAP, heart rate, respiratory rate, SpO₂, and GCS (age 0–6, the five physiologic variables 0–4 each; total 0–26). Risk: low < 6, medium 6–13, high > 13. Near-neighbors: mews, apache2.');
+    root.appendChild(num('Age (years)', 'rems-age', { min: '0' }));
+    root.appendChild(num('Mean arterial pressure (mmHg)', 'rems-map', { min: '0' }));
+    root.appendChild(num('Heart rate (bpm)', 'rems-hr', { min: '0' }));
+    root.appendChild(num('Respiratory rate (breaths/min)', 'rems-rr', { min: '0' }));
+    root.appendChild(num('SpO₂ (%)', 'rems-spo2', { min: '0', max: '100' }));
+    root.appendChild(num('Glasgow Coma Scale (3–15)', 'rems-gcs', { min: '3', max: '15' }));
+    const o = out(); root.appendChild(o);
+    const ids = ['rems-age', 'rems-map', 'rems-hr', 'rems-rr', 'rems-spo2', 'rems-gcs'];
+    wire(ids, () => safe(o, () => {
+      const r = M.rems({ age: val('rems-age'), map: val('rems-map'), hr: val('rems-hr'), rr: val('rems-rr'), spo2: val('rems-spo2'), gcs: val('rems-gcs') });
+      if (!r.valid) { showInvalid(o, r); return; }
+      resultRow(o, [{ text: r.band, cls: r.abnormal ? 'warn' : null }, { label: 'REMS', value: `${r.score}` }]);
+      note(o, r.detail); note(o, r.note);
+    }));
+    postureNote(root);
+  },
 };

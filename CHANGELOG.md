@@ -20,6 +20,16 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
   for death in the derivation). Criteria cross-verified against Morrison 2006
   (BLS) / 2007 (ALS) and the validation literature (spec-v97). Never a mandate to
   stop.
+- **Rapid Emergency Medicine Score** (`rems`, 876 → 877): an abbreviated-APACHE-II
+  in-hospital-mortality score needing no labs — age, MAP, heart rate, respiratory
+  rate, SpO₂, and GCS (age 0–6, the five physiologic variables 0–4 each; total
+  0–26). Risk: low < 6, medium 6–13, high > 13; each 1-point rise ≈ OR 1.4 for
+  in-hospital death. The max-26 structure is confirmed across ≥ 3 open sources;
+  MAP/HR/RR use the universally documented APACHE-II acute-physiology bands, with
+  SpO₂ and banded GCS the REMS specifics. One readable reproduction (PMC4024603
+  Table 1) is internally inconsistent — it compresses MAP/HR/SpO₂ to a maximum of
+  3 (summing to 23), so the APACHE-II-standard bands validated by the max-26
+  constraint were used instead (spec-v97).
 
 ### Added (spec-v206 — Frontline & Bedside Decision Instruments program continues: TBI & stroke prognosis, shipped one tile at a time, 871 → 875, slice ships +4)
 

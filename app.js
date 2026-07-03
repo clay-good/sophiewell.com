@@ -1933,6 +1933,7 @@ const UTILITIES = [
   // spec-v207: resuscitation, cardiac-arrest & trauma-death prognosis (Frontline
   // & Bedside Decision Instruments program). lib/resus-trauma-v207.js, RV207.
   { id: 'tor-rule',             name: 'Termination of Resuscitation Rule (BLS / ALS)',    group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'rems',                 name: 'REMS (Rapid Emergency Medicine Score)',            group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
 ];
 
 const UTIL_BY_ID = new Map(UTILITIES.map((u) => [u.id, u]));
