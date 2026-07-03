@@ -6,12 +6,13 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
-### Added (spec-v208 — Frontline & Bedside Decision Instruments program continues: nutrition & maternal-neonatal risk, shipped one tile at a time, 878 → …)
+### Added (spec-v208 — Frontline & Bedside Decision Instruments program continues: nutrition & maternal-neonatal risk, shipped one tile at a time, 878 → 882, slice ships +4)
 
 - Continues the **Frontline & Bedside Decision Instruments** program (spec-v204–
   v208) with nutrition-status assessment and maternal-neonatal risk instruments,
   shipped **one tile at a time**. New module `lib/nutrition-maternal-v208.js`,
-  renderers `views/group-v208.js` (RV208).
+  renderers `views/group-v208.js` (RV208). **Slice ships +4, not +5**: `pg-sga`
+  is deferred on copyright grounds (see below).
 - **Neonatal Ponderal Index** (`ponderal-index`, 878 → 879): Rohrer's index = 
   [weight (g) / length (cm)³] × 100, the proportionality of weight to length at
   birth. Neonatal normal ≈ 2.0–3.0; a value < 2.0 in a term infant signals
@@ -39,6 +40,14 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
   malnourished). The original SGA emits no numeric score; the tile records the
   clinician's A/B/C rating with the feature prompts. Structure cross-verified
   against Detsky 1987 and standard nutrition references (spec-v97).
+- **Deferred (copyright — not shipped):** the **Scored PG-SGA** (`pg-sga`). The
+  Patient-Generated Subjective Global Assessment (PG-SGA©) is a copyrighted
+  instrument owned by Pt-Global BV / FD Ottery; reproducing its full scored
+  worksheet verbatim (the box-by-box item wordings and point weights, the
+  nutrition-impact-symptom list, and the physical-exam grading) would infringe
+  copyright. The public-domain SGA (Detsky) ships in its place; the copyrighted
+  scored PG-SGA is held out of the catalog. This differs from the spec-v97
+  verification deferrals — the barrier here is licensing, not reproducibility.
 
 ### Added (spec-v207 — Frontline & Bedside Decision Instruments program continues: resuscitation / arrest / trauma-death prognosis, shipped one tile at a time, 875 → 878, slice ships +3)
 
