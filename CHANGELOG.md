@@ -6,6 +6,21 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v207 — Frontline & Bedside Decision Instruments program continues: resuscitation / arrest / trauma-death prognosis, shipped one tile at a time, 875 → …)
+
+- Continues the **Frontline & Bedside Decision Instruments** program (spec-v204–
+  v208) with resuscitation, cardiac-arrest, and trauma-death prognosis
+  instruments, shipped **one tile at a time**. New module
+  `lib/resus-trauma-v207.js`, renderers `views/group-v207.js` (RV207).
+- **Termination-of-Resuscitation rule** (`tor-rule`, 875 → 876): field decision
+  support for non-traumatic adult OHCA. The **BLS** rule allows considering
+  termination when all three are absent — arrest witnessed by EMS, ROSC before
+  transport, and shock delivered (specificity ≈ 90%, PPV for death ≈ 99.5%); the
+  **ALS** rule adds two — bystander-witnessed and bystander CPR (100% specificity
+  for death in the derivation). Criteria cross-verified against Morrison 2006
+  (BLS) / 2007 (ALS) and the validation literature (spec-v97). Never a mandate to
+  stop.
+
 ### Added (spec-v206 — Frontline & Bedside Decision Instruments program continues: TBI & stroke prognosis, shipped one tile at a time, 871 → 875, slice ships +4)
 
 - Continues the **Frontline & Bedside Decision Instruments** program (spec-v204–

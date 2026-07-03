@@ -83,7 +83,7 @@ live value, never copied as a literal.
   incorrect against the live regex; same treatment as the v147/v148 ACR/EULAR scores),
   so no documentation-only staleness row is forced. +4. **The spec-v150 Post-Parity
   Coverage program is now COMPLETE** (679 → 700, +21 shipped; PRECISE-DAPT the sole
-  deferral against the nominal +25). The live catalog is **875** deterministic tiles. The Subspecialty Depth and Cross-Discipline Completion programs have since carried the count from 700 onward; see [scope-subspecialty-depth.md](scope-subspecialty-depth.md).
+  deferral against the nominal +25). The live catalog is **876** deterministic tiles. The Subspecialty Depth and Cross-Discipline Completion programs have since carried the count from 700 onward; see [scope-subspecialty-depth.md](scope-subspecialty-depth.md).
 
 ## Program roadmap (complete)
 

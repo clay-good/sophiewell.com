@@ -196,6 +196,7 @@ import * as periopFrailtyV203 from '../../lib/periop-frailty-v203.js';
 import * as nephroFluidsV204 from '../../lib/nephro-fluids-v204.js';
 import * as pulmCopdV205 from '../../lib/pulm-copd-v205.js';
 import * as tbiStrokeV206 from '../../lib/tbi-stroke-v206.js';
+import * as resusTraumaV207 from '../../lib/resus-trauma-v207.js';
 
 const MODULES = {
   'clinical.js': clinical,
@@ -336,6 +337,7 @@ const MODULES = {
   'nephro-fluids-v204.js': nephroFluidsV204,
   'pulm-copd-v205.js': pulmCopdV205,
   'tbi-stroke-v206.js': tbiStrokeV206,
+  'resus-trauma-v207.js': resusTraumaV207,
 };
 
 const MATRIX = [0, -1, 1e9, NaN, Infinity, -Infinity, '', undefined, null];
