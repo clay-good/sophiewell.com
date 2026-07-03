@@ -6,6 +6,21 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v224 — Bedside Decision & Physiology Instruments program: neurology screening, disability & epilepsy outcome, 965 → 972, slice ships +7)
+
+- Continues the **Bedside Decision & Physiology Instruments** program with seven
+  neurology instruments. New module `lib/neurology-v224.js`, renderers
+  `views/group-v224.js` (RV224). Each id was verified absent by a direct scan of
+  `app.js` (spec-v85 §6.2); each screens, classifies, or scores — none orders
+  (spec-v11 §5.3). Point systems cross-verified against ≥2 open sources (spec-v97).
+- **ID Migraine** (`id-migraine`, Lipton 2003): migraine screener. **ONLS**
+  (`onls`, Graham & Hughes 2006): neuropathy limitations. **END-IT** (`end-it-score`,
+  Gao 2016): status-epilepticus outcome.
+- **Engel** (`engel-classification`, Engel 1993) and **ILAE** (`ilae-surgical-outcome`,
+  Wieser 2001): epilepsy-surgery outcome classes. **Salzburg NCSE criteria**
+  (`salzburg-ncse-criteria`, Leitinger 2015). **Dizziness Handicap Inventory**
+  (`dhi`, Jacobson & Newman 1990), computed from Yes/Sometimes answer counts.
+
 ### Added (spec-v223 — Bedside Decision & Physiology Instruments program: dermatology activity, staging & screening, 958 → 965, slice ships +7)
 
 - Continues the **Bedside Decision & Physiology Instruments** program with seven

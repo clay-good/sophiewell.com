@@ -128,10 +128,10 @@ export const renderers = {
     postureNote(root);
   },
   'glasgow-7-point-checklist'(root) {
-    note(root, 'Weighted Glasgow 7-point checklist (MacKie 1990; NICE weighting): major features 2 points each, minor 1 point each. >= 3 prompts referral for a suspicious lesion. Near-neighbors: melanoma-t-stage, abcde.');
+    note(root, 'Weighted Glasgow 7-point checklist (MacKie 1990; weighted): major features 2 points each, minor 1 point each. >= 3 prompts referral for a suspicious lesion. Near-neighbors: melanoma-t-stage, abcde.');
     root.appendChild(check('Change in size of lesion (major, +2)', 'g7-size'));
     root.appendChild(check('Irregular shape or border (major, +2)', 'g7-shape'));
-    root.appendChild(check('Irregular colour / change in pigmentation (major, +2)', 'g7-color'));
+    root.appendChild(check('Irregular color / change in pigmentation (major, +2)', 'g7-color'));
     root.appendChild(check('Largest diameter >= 7 mm (minor, +1)', 'g7-diam'));
     root.appendChild(check('Inflammation (minor, +1)', 'g7-inflam'));
     root.appendChild(check('Oozing / crusting (minor, +1)', 'g7-ooze'));

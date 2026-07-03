@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `1eff71ac217579c4`
-Generated: 2026-07-03T17:40:18.024Z
+Build ID: `eeb112b9e8be0a8e`
+Generated: 2026-07-03T17:50:27.922Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=20.18.1 <21, npm >=10.0.0
@@ -24,13 +24,13 @@ downloads is committed in this repository and is hashed below.
 
 | Path | Bytes | SHA-256 |
 |---|---:|---|
-| `index.html` | 68277 | `b49b9b1eba32a0d0e1f857ba880deab33c2b134395396696856c83eab47f2081` |
+| `index.html` | 68652 | `7262361367ecabbb6e154f384611be18d97ba58be03ac0eb85950606d876ad56` |
 | `styles.css` | 42819 | `bea421c79d390a364eb571c3a9599cdf28264128d4ac02d7abb00f31000c7cda` |
-| `app.js` | 263491 | `08931b9a513a6e9109ebbdd3c89de9b7ced71e2725cf3223f4bf404f9099fa6b` |
+| `app.js` | 264904 | `6d231378d218fe1290e82606982090fc0a50d44ffd2eb54cac772fefc73d535e` |
 | `sw.js` | 4622 | `b891d4344f8e04403b7f1d307fd446cc224bddc6f0c4397438a17d197351171e` |
 | `site.webmanifest` | 709 | `0e0de4da60590a12e8b27a0ae2a2f5ffdb6500b7d2b78f93631ec2f64ed3d5ce` |
 | `robots.txt` | 127 | `38fbf9c1854e72abb20e01e81dd5a31d4ea96f154c12d5db1ec3af05524dd1a1` |
-| `sitemap.xml` | 148262 | `99e925889c766133b877a09ccd023cebf129ccf94bf5a95d870c33a98c2c4d92` |
+| `sitemap.xml` | 149335 | `fdb3221baee837d996e9e0aa7b13f10fd44de8eb72ed0ae70687417d4feb072e` |
 | `_headers` | 1316 | `2f39986457d2feff7e73e491a7d09ee871e8f2f4cc2bc437f86bd86a42554ec6` |
 | `logo.png` | 63440 | `11afaf1b0d3ca68393d202e4810bf766b5b6d591b4e3ec52f41d3cacaa4616ec` |
 | `favicon.ico` | 7411 | `407fde0ca2788409e87e11f596fa02e6a0b121817fcea7fd995beec1801e287b` |
@@ -74,7 +74,7 @@ downloads is committed in this repository and is hashed below.
 | `lib/deadline.js` | 7549 | `61eae0a0e23e8394e7814042b86a06ae6447f5518b6e3ef7b4cda388f373c40b` |
 | `lib/derivation.js` | 7246 | `5922c21f22f7189a7af82ba826172924961437d885194fd2007095c3f4b783fd` |
 | `lib/derm-v151.js` | 14407 | `4e7576314c8e0883b5688d740f45b361c7cabaac1d7af12a200d2f342f8722db` |
-| `lib/dermatology-v223.js` | 13205 | `3eacc765a53d1ec944193d6ad96867cd85eb9914ab3794d465dbe3c141143290` |
+| `lib/dermatology-v223.js` | 13207 | `b0664bf97310df895e03501102ab3504d890636210525de6b8046f434e97f56d` |
 | `lib/dermuro-v191.js` | 11583 | `c85429f5ea9211c38de10163a6ea82c7eea06d9c5aada83db4a06296681cc35c` |
 | `lib/dom.js` | 984 | `b4b4ac74decb848bde516bfc1773e6c45a8d80031ed8f9d14226393d18fcde54` |
 | `lib/ebm-v163.js` | 12938 | `1cac154202e287b9d8a35397f2de76d937b8687a5b71904ba8c55b78c1492742` |
@@ -133,7 +133,7 @@ downloads is committed in this repository and is hashed below.
 | `lib/lymphoma-v135.js` | 16162 | `e29896a6de224445f46839cd06518817bd25d1235a91ede76f77ccb4996a934f` |
 | `lib/medication-v4.js` | 18192 | `467f9576c50da696cc56094eb022d0a5ed1e88de0c7618448554ede8067270b0` |
 | `lib/medication-v5.js` | 18863 | `ce81d9f8954abbd412892c13af9936f992239164f26fd2b999eaea7902787ab7` |
-| `lib/meta.js` | 1383584 | `b5ee564370ffd5a699902cf2045d4cc86ef16c7c96397241e009e557eff5dae4` |
+| `lib/meta.js` | 1390762 | `1c504e5c014c0d61ffd7b01e6326d3e10bf8df9f98ea963efbcdd2d30ce1c60c` |
 | `lib/metabolic-hepatic-v219.js` | 12791 | `b9352877cebf7fbf3c3b99ecb8b72cdbee3ed94e056dc019113668609f5a95a8` |
 | `lib/metabolic-onc-v88.js` | 12659 | `1553b641668c121661a66647da71a4aaaa023e9f3a6b7a753efbcdab27cdba81` |
 | `lib/myeloid-prognosis-v199.js` | 11996 | `d65fe650bc865814907eb9176be30f15bb5db529c5dbd629a78aaae974f6e1a6` |
@@ -148,6 +148,7 @@ downloads is committed in this repository and is hashed below.
 | `lib/neuro-v121.js` | 17466 | `7f31b15619c2f8fb823c0005a64267a2051bb6a03e0c8afd87adb59062c51da1` |
 | `lib/neuro-v122.js` | 11470 | `93e42d759c472fa1482d12402a5daa370ce1163060374db83e5118c68579707f` |
 | `lib/neuro-v95.js` | 14709 | `7f7e4f5a0877afa8efbf6cc69f8b0549370bcdbcb5d7ed1dfcea1a5ee7266e85` |
+| `lib/neurology-v224.js` | 12458 | `566c9ca892cc749d23708ee97356e5f2016e31248b58551cb7dfdbacec6ebdec` |
 | `lib/num.js` | 3883 | `d420a01b7b54cd9d5e102b1ffaa0ed1b6a5ffb7c9e652d7bb2d458d24857e47f` |
 | `lib/nutrition-energy-v152.js` | 14446 | `924b5421f818147f64b10db410fca9892773a29a918cf40e2bacdb64c0dbb23a` |
 | `lib/nutrition-maternal-v208.js` | 11433 | `5ae7cfab30b606dd14b8ca1f839cd62ba9960d3394f1d8f8b309fe9373dd94f6` |
@@ -352,7 +353,8 @@ downloads is committed in this repository and is hashed below.
 | `views/group-v220.js` | 7523 | `e1d43b88ddc71f8292c8ce05e2355d591b0932e2f0c73a856c744316334d0a37` |
 | `views/group-v221.js` | 10410 | `cdf821e73d54915fc678388ffff21d033ed5bad014331486c1655356e4dc5fdc` |
 | `views/group-v222.js` | 10607 | `89e551a53739b0a096c9b1ad354fb59e05995e48e77212be7269ca98bb09eed2` |
-| `views/group-v223.js` | 10351 | `e78586b1c26adbb21efb9ec9ca27d842c070f8b98759537b56d266f5a8cd8757` |
+| `views/group-v223.js` | 10344 | `df6893813e0dfeb74e94b9370b9821c7dea4ef8e4a90488dea9700f548b52c27` |
+| `views/group-v224.js` | 9577 | `f218e6f5ecfe409df8ed35bc0472f8134bb2049201cbed9bce83ee9de9158c7b` |
 | `views/group-v23.js` | 14725 | `5b5270fee62e0915f4596e11ea46831f7055ad3bb5039a2c4fe96af83382d305` |
 | `views/group-v24.js` | 10751 | `a856aff3a39f3627d732c22bb2b55dcab114b69d989331f852456896d17baa5d` |
 | `views/group-v25.js` | 13405 | `2c96c0ae05248fa8e89cf193f4d93139b4c02ec1a5e60593d0e0973667af9a88` |
