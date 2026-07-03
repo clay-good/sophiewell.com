@@ -28,6 +28,14 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
   total 0–14. Risk: low 0–1, moderate 2–3, high ≥ 4; a total ≥ 2 is the threshold
   above which extended thromboprophylaxis is discussed. Weights cross-verified
   against Gibson 2017 and the IMPROVE derivation (spec-v97).
+- **COMPASS-CAT** (`compass-cat`, 887 → 888): a VTE risk-assessment model for
+  ambulatory patients with breast, colorectal, lung, or ovarian cancer on active
+  treatment — anti-hormonal/anthracycline therapy +6, diagnosis ≤ 6 months +4,
+  central venous catheter +3, advanced stage +2, cardiovascular risk factors +5,
+  recent hospitalization +5, prior VTE +1, platelets ≥ 350 +2; total 0–28.
+  Dichotomized 0–6 low/intermediate vs ≥ 7 high 6-month VTE risk (≈ 2.3% vs ≈
+  6.3–13.3%). Weights and cut-point cross-verified against Gerotziafas 2017 and
+  the external-validation literature (spec-v97). A complement to Khorana.
 
 ### Added (spec-v210 — Advanced Prognostic & Risk-Equation Instruments program continues: ischemic-stroke & ICH prognosis, shipped one tile at a time, 884 → 885, slice ships +1)
 

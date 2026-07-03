@@ -87,4 +87,32 @@ export const renderers = {
     }));
     postureNote(root);
   },
+
+  // ----- 2.3 compass-cat -----------------------------------------------------
+  'compass-cat'(root) {
+    note(root, 'COMPASS-CAT (Gerotziafas 2017): a VTE risk-assessment model for ambulatory patients with breast, colorectal, lung, or ovarian cancer on active treatment; total 0–28, dichotomized 0–6 low/intermediate vs ≥ 7 high 6-month VTE risk. A complement to Khorana. Near-neighbors: khorana, padua.');
+    const items = [
+      ['cc-antihorm', 'Anti-hormonal or anthracycline therapy (+6)'],
+      ['cc-diag6mo', 'Cancer diagnosis ≤ 6 months ago (+4)'],
+      ['cc-cvc', 'Central venous catheter (+3)'],
+      ['cc-stage', 'Advanced-stage cancer (+2)'],
+      ['cc-cvrisk', 'Cardiovascular risk factors (+5)'],
+      ['cc-hosp', 'Recent hospitalization for acute medical illness (+5)'],
+      ['cc-vte', 'Personal history of VTE (+1)'],
+      ['cc-plt', 'Platelet count ≥ 350 ×10⁹/L (+2)'],
+    ];
+    for (const [id, label] of items) root.appendChild(checkField(label, id));
+    const o = out(); root.appendChild(o);
+    const ids = items.map((i) => i[0]);
+    wire(ids, () => safe(o, () => {
+      const r = M.compassCat({
+        antiHormonalAnthracycline: chk('cc-antihorm'), diagWithin6mo: chk('cc-diag6mo'), cvc: chk('cc-cvc'), advancedStage: chk('cc-stage'),
+        cvRiskFactors: chk('cc-cvrisk'), recentHospitalization: chk('cc-hosp'), priorVte: chk('cc-vte'), platelets350: chk('cc-plt'),
+      });
+      if (!r.valid) { showInvalid(o, r); return; }
+      resultRow(o, [{ text: r.band, cls: r.abnormal ? 'warn' : null }, { label: 'COMPASS-CAT', value: `${r.score}` }]);
+      note(o, r.detail); note(o, r.note);
+    }));
+    postureNote(root);
+  },
 };
