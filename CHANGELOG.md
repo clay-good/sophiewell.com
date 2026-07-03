@@ -6,6 +6,22 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v211 — Advanced Prognostic & Risk-Equation Instruments program continues: hematology-oncology risk stratification, shipped one tile at a time, 885 → …)
+
+- Continues the **Advanced Prognostic & Risk-Equation Instruments** program
+  (spec-v209–v212) with hematology-oncology risk-stratification instruments,
+  shipped **one tile at a time**. New module `lib/heme-onc-risk-v211.js`,
+  renderers `views/group-v211.js` (RV211). **`hct-ci` is already live** (shipped
+  by spec-v199) — the spec-v85 §6.2 collision re-check found it, so v211 does not
+  duplicate it.
+- **EUTOS score** (`eutos`, 885 → 886): a simple two-variable prognostic score
+  for chronic myeloid leukemia on front-line imatinib — EUTOS = 7 × basophils
+  (% of peripheral blood at baseline) + 4 × spleen size (cm below the costal
+  margin). A score > 87 is high risk, ≤ 87 low risk, for the 18-month complete
+  cytogenetic response and progression-free survival. Formula and threshold
+  cross-verified against Hasford 2011 and the Medscape / ELN leukemia-net
+  calculators (spec-v97).
+
 ### Added (spec-v210 — Advanced Prognostic & Risk-Equation Instruments program continues: ischemic-stroke & ICH prognosis, shipped one tile at a time, 884 → 885, slice ships +1)
 
 - Continues the **Advanced Prognostic & Risk-Equation Instruments** program
