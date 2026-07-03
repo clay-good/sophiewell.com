@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `dd24c776fd1b22e6`
-Generated: 2026-07-03T16:05:38.819Z
+Build ID: `9ebaddd203eb1b0d`
+Generated: 2026-07-03T16:12:32.040Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=20.18.1 <21, npm >=10.0.0
@@ -24,13 +24,13 @@ downloads is committed in this repository and is hashed below.
 
 | Path | Bytes | SHA-256 |
 |---|---:|---|
-| `index.html` | 65692 | `94c8bbef2de9e7a83b4d00fe3db7f6a08fba4492f9abb89de8c61baeb7a0bf59` |
+| `index.html` | 66064 | `ba010a5a6ecd97c525982d23a6bc5f922313416d518a1821eab8722401af2095` |
 | `styles.css` | 42819 | `bea421c79d390a364eb571c3a9599cdf28264128d4ac02d7abb00f31000c7cda` |
-| `app.js` | 254003 | `c7543e78b83e3e5f9504dbc2f0161e86944d3ab55923486e6aa94367a4f3731b` |
+| `app.js` | 255361 | `8f8612d19a2bff582891ad2e7f1733fd6f8d46770d805b0ffcf9eb62095ee217` |
 | `sw.js` | 4622 | `b891d4344f8e04403b7f1d307fd446cc224bddc6f0c4397438a17d197351171e` |
 | `site.webmanifest` | 709 | `0e0de4da60590a12e8b27a0ae2a2f5ffdb6500b7d2b78f93631ec2f64ed3d5ce` |
 | `robots.txt` | 127 | `38fbf9c1854e72abb20e01e81dd5a31d4ea96f154c12d5db1ec3af05524dd1a1` |
-| `sitemap.xml` | 140870 | `7f8f17b86c45a07f7136c7b3daa57fb5868507f66e6265c1b33b5d7a44c62fee` |
+| `sitemap.xml` | 141931 | `d19ba64a796e35ec0f552693eeb4e3d0c62ec16b9635a4cdda76fd059bb6e928` |
 | `_headers` | 1316 | `2f39986457d2feff7e73e491a7d09ee871e8f2f4cc2bc437f86bd86a42554ec6` |
 | `logo.png` | 63440 | `11afaf1b0d3ca68393d202e4810bf766b5b6d591b4e3ec52f41d3cacaa4616ec` |
 | `favicon.ico` | 7411 | `407fde0ca2788409e87e11f596fa02e6a0b121817fcea7fd995beec1801e287b` |
@@ -130,7 +130,7 @@ downloads is committed in this repository and is hashed below.
 | `lib/lymphoma-v135.js` | 16162 | `e29896a6de224445f46839cd06518817bd25d1235a91ede76f77ccb4996a934f` |
 | `lib/medication-v4.js` | 18192 | `467f9576c50da696cc56094eb022d0a5ed1e88de0c7618448554ede8067270b0` |
 | `lib/medication-v5.js` | 18863 | `ce81d9f8954abbd412892c13af9936f992239164f26fd2b999eaea7902787ab7` |
-| `lib/meta.js` | 1331537 | `8141db661ce8b26b5649a23bbaf0b8ce252e1b48834486b95abf59c73a5dbdd8` |
+| `lib/meta.js` | 1339145 | `e23458a0aa0ac2b2d5d184e2bf9e8c80670ef10705b7a9c0ff0822ca20aa0bf3` |
 | `lib/metabolic-onc-v88.js` | 12659 | `1553b641668c121661a66647da71a4aaaa023e9f3a6b7a753efbcdab27cdba81` |
 | `lib/myeloid-prognosis-v199.js` | 11996 | `d65fe650bc865814907eb9176be30f15bb5db529c5dbd629a78aaae974f6e1a6` |
 | `lib/nephro-fluids-v204.js` | 15719 | `473ff5684785aec50239f20b5f35b9f30b9a6da40c00752ee210f68d924c9d49` |
@@ -204,6 +204,7 @@ downloads is committed in this repository and is hashed below.
 | `lib/specialtymath-v186.js` | 15358 | `90330464aea36b60a02933f5811ed91393d38e4e97cafb0cb62a8678a8a0f3c8` |
 | `lib/spine-v146.js` | 21128 | `d3cb6a1d1e2c3cc1235cc2336a0385a1ae6e0a1ea65b741a2d6c25e5cb527917` |
 | `lib/stroke-prognosis-v210.js` | 3431 | `75a4782a4abb9bdd584da9827074740c9773fb41fc0e25d961b79696cd1e8a3c` |
+| `lib/stroke-risk-v217.js` | 14688 | `92b225643e71019f940bb43d21357611555bfd443077b9c5747023ad6b7b372b` |
 | `lib/subspecialty-v198.js` | 13272 | `d9697591365cfe0a613057d5b9345aa894f8631ffeaf4257d2b8299d77efd09e` |
 | `lib/suites-v155.js` | 13422 | `8dcd9ee6cb60524bed730715b875ace734c5c8f4b9d3ec5eb1ad19370eae577e` |
 | `lib/surg-v142.js` | 16902 | `8bc28c3385b76d1fc0d11a3171f3459e09fd4c91e3b9548516cfd8c5692e39d2` |
@@ -338,6 +339,7 @@ downloads is committed in this repository and is hashed below.
 | `views/group-v214.js` | 7509 | `a67b5cec3c2997339af914ce298a80d47f49b6bd2a80f706fd7785dfa2983c22` |
 | `views/group-v215.js` | 10375 | `a2db7cb6c40d0b0bf5a65d74c564be20da6a470009c2b33743b0db74a7c52d81` |
 | `views/group-v216.js` | 9082 | `a7068d1113cd4dbec561f2700748c617bc809f6df2c9c3f0d6198f161dc531af` |
+| `views/group-v217.js` | 10909 | `9afb142df387757cf16804bbfd4c0d66a1739c49dbf29cd1703f9e37ad1336a7` |
 | `views/group-v22.js` | 11499 | `ff21c98406d9a4e07c191001279620148bf6a14cd6df0353bbdc69be73d5b5d5` |
 | `views/group-v23.js` | 14725 | `5b5270fee62e0915f4596e11ea46831f7055ad3bb5039a2c4fe96af83382d305` |
 | `views/group-v24.js` | 10751 | `a856aff3a39f3627d732c22bb2b55dcab114b69d989331f852456896d17baa5d` |

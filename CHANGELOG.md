@@ -6,6 +6,21 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v217 — Bedside Decision & Physiology Instruments program: stroke & neuro-vascular risk scores, 917 → 924, slice ships +7)
+
+- Continues the **Bedside Decision & Physiology Instruments** program with seven
+  stroke and neuro-vascular risk scores. New module `lib/stroke-risk-v217.js`,
+  renderers `views/group-v217.js` (RV217). Each id was verified absent by a direct
+  scan of `app.js` (spec-v85 §6.2); each stratifies or grades — none orders
+  (spec-v11 §5.3). Point systems cross-verified against ≥2 open sources (spec-v97).
+- **Canadian TIA Score** (`canadian-tia-score`, Perry 2014/2021), **ASTRAL**
+  (`astral-score`, Ntaios 2012), **SOAR** (`soar-score`, Myint 2014), and **PLAN**
+  (`plan-score`, O’Donnell 2012): TIA / ischemic-stroke outcome and mortality
+  scores.
+- **SITS-SICH** (`sits-sich`, Mazya 2012): symptomatic-ICH risk after IV alteplase.
+- **VASOGRADE** (`vasograde`, de Oliveira Manoel 2015) and **Ogilvy-Carter**
+  (`ogilvy-carter`, Ogilvy 1998): aneurysmal-subarachnoid-hemorrhage grading scales.
+
 ### Added (spec-v216 — Bedside Decision & Physiology Instruments program: hematology prognostic scores & staging, 910 → 917, slice ships +7)
 
 - Continues the **Bedside Decision & Physiology Instruments** program with seven
