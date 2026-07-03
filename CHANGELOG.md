@@ -6,6 +6,26 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v227 — Bedside Decision & Physiology Instruments program CLOSING slice: cross-domain trauma / Behçet / dengue, 985 → 991; program total +100, 891 → 991)
+
+- Closes the **Bedside Decision & Physiology Instruments** program (spec-v213–v227)
+  at the **+100** catalog milestone with six cross-domain instruments. New module
+  `lib/mixed-v227.js`, renderers `views/group-v227.js` (RV227). Each id was verified
+  absent by a direct scan of `app.js` (spec-v85 §6.2); each classifies or
+  stratifies — none orders (spec-v11 §5.3). Point systems cross-verified against ≥2
+  open sources (spec-v97).
+- **ICBD 2014** (`icbd-2014-behcet`, Davatchi 2014) and **ISG 1990**
+  (`isg-1990-behcet`, 1990): Behçet-disease criteria. **BATT** (`batt`, Ageron
+  2019), **Denver ED Trauma Organ Failure** (`denver-ed-tof`, Vogel 2014), and
+  **Emergency Transfusion Score** (`ets`, Ruchholtz 2006): trauma hemorrhage /
+  transfusion. **WHO 2009 dengue classification** (`who-dengue-2009`), which carries
+  a `docs/citation-staleness.md` row for the WHO acronym.
+- Program summary: spec-v213–v227 added 100 fully published, deterministic,
+  order-free calculators across 15 domains, each verified absent, Class A, cited,
+  finite-guarded, and order-free. Deferrals: duplicates of live tiles (Adrogué-Madias
+  = `sodium-correction`, MG-ADL = `mgfa`) and instruments not reproducible from ≥2
+  open sources (BVAS v3, VDI, Toronto HCC, BALAD-2, HIT-6/QMG).
+
 ### Added (spec-v226 — Bedside Decision & Physiology Instruments program: nephrology, electrolyte & fluid formulas, 979 → 985, slice ships +6)
 
 - Continues the **Bedside Decision & Physiology Instruments** program with six

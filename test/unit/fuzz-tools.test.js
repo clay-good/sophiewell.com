@@ -216,6 +216,7 @@ import * as dermatologyV223 from '../../lib/dermatology-v223.js';
 import * as neurologyV224 from '../../lib/neurology-v224.js';
 import * as obgynV225 from '../../lib/obgyn-v225.js';
 import * as nephrologyV226 from '../../lib/nephrology-v226.js';
+import * as mixedV227 from '../../lib/mixed-v227.js';
 
 const MODULES = {
   'clinical.js': clinical,
@@ -376,6 +377,7 @@ const MODULES = {
   'neurology-v224.js': neurologyV224,
   'obgyn-v225.js': obgynV225,
   'nephrology-v226.js': nephrologyV226,
+  'mixed-v227.js': mixedV227,
 };
 
 const MATRIX = [0, -1, 1e9, NaN, Infinity, -Infinity, '', undefined, null];
