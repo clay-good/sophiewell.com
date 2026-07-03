@@ -21,6 +21,13 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
   cytogenetic response and progression-free survival. Formula and threshold
   cross-verified against Hasford 2011 and the Medscape / ELN leukemia-net
   calculators (spec-v97).
+- **IMPROVEDD VTE risk score** (`improvedd`, 886 → 887): the D-dimer-augmented
+  inpatient medical-VTE stratifier — the seven IMPROVE items (previous VTE +3,
+  known thrombophilia +2, lower-limb paralysis +2, active cancer +2,
+  immobilization ≥ 7 days +1, ICU/CCU +1, age > 60 +1) plus D-dimer ≥ 2× ULN +2;
+  total 0–14. Risk: low 0–1, moderate 2–3, high ≥ 4; a total ≥ 2 is the threshold
+  above which extended thromboprophylaxis is discussed. Weights cross-verified
+  against Gibson 2017 and the IMPROVE derivation (spec-v97).
 
 ### Added (spec-v210 — Advanced Prognostic & Risk-Equation Instruments program continues: ischemic-stroke & ICH prognosis, shipped one tile at a time, 884 → 885, slice ships +1)
 

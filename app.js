@@ -1958,6 +1958,7 @@ const UTILITIES = [
   // Risk-Equation Instruments program). lib/heme-onc-risk-v211.js, RV211. hct-ci
   // already live (v199).
   { id: 'eutos',                name: 'EUTOS Score (CML Prognosis on Imatinib)',          group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'improvedd',            name: 'IMPROVEDD VTE Risk Score (Medical Inpatients)',    group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
 ];
 
 const UTIL_BY_ID = new Map(UTILITIES.map((u) => [u.id, u]));

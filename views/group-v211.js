@@ -59,4 +59,32 @@ export const renderers = {
     }));
     postureNote(root);
   },
+
+  // ----- 2.4 improvedd -------------------------------------------------------
+  improvedd(root) {
+    note(root, 'IMPROVEDD VTE risk score (Gibson 2017): the D-dimer-augmented inpatient medical-VTE stratifier — the seven IMPROVE items plus D-dimer ≥ 2× ULN (+2); total 0–14. Risk: low 0–1, moderate 2–3, high ≥ 4; a total ≥ 2 is the threshold for discussing extended thromboprophylaxis. Near-neighbors: improve-vte, improve-bleeding.');
+    const items = [
+      ['imdd-vte', 'Previous VTE (+3)'],
+      ['imdd-thromb', 'Known thrombophilia (+2)'],
+      ['imdd-paralysis', 'Current lower-limb paralysis (+2)'],
+      ['imdd-cancer', 'Active cancer (+2)'],
+      ['imdd-immob', 'Immobilization ≥ 7 days (+1)'],
+      ['imdd-icu', 'ICU / CCU stay (+1)'],
+      ['imdd-age', 'Age > 60 (+1)'],
+      ['imdd-ddimer', 'D-dimer ≥ 2× upper limit of normal (+2)'],
+    ];
+    for (const [id, label] of items) root.appendChild(checkField(label, id));
+    const o = out(); root.appendChild(o);
+    const ids = items.map((i) => i[0]);
+    wire(ids, () => safe(o, () => {
+      const r = M.improvedd({
+        previousVte: chk('imdd-vte'), thrombophilia: chk('imdd-thromb'), paralysis: chk('imdd-paralysis'), cancer: chk('imdd-cancer'),
+        immobilization: chk('imdd-immob'), icu: chk('imdd-icu'), ageOver60: chk('imdd-age'), dDimer: chk('imdd-ddimer'),
+      });
+      if (!r.valid) { showInvalid(o, r); return; }
+      resultRow(o, [{ text: r.band, cls: r.abnormal ? 'warn' : null }, { label: 'IMPROVEDD', value: `${r.score}` }]);
+      note(o, r.detail); note(o, r.note);
+    }));
+    postureNote(root);
+  },
 };
