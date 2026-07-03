@@ -115,4 +115,23 @@ export const renderers = {
     }));
     postureNote(root);
   },
+
+  // ----- 2.2 eln-2022-aml ----------------------------------------------------
+  'eln-2022-aml'(root) {
+    note(root, 'ELN 2022 AML risk classification (Döhner 2022): the standard genetic risk framework — favorable / intermediate / adverse — from diagnostic cytogenetics and molecular findings. An adverse lesion overrides an otherwise-favorable NPM1; any FLT3-ITD moves NPM1-mutated AML from favorable to intermediate. Set the findings present at diagnosis. Near-neighbors: myeloma-r-iss, ipss-r-mds.');
+    root.appendChild(checkField('Core-binding-factor AML — t(8;21) or inv(16)/t(16;16) (favorable)', 'eln-cbf'));
+    root.appendChild(checkField('bZIP in-frame CEBPA mutation (favorable)', 'eln-cebpa'));
+    root.appendChild(checkField('Mutated NPM1 (favorable if no FLT3-ITD)', 'eln-npm1'));
+    root.appendChild(checkField('FLT3-ITD present', 'eln-flt3'));
+    root.appendChild(checkField('Any adverse lesion — complex/monosomal karyotype, −5/−7/−17/abn(17p), TP53, RUNX1/ASXL1/EZH2/SF3B1/SRSF2/STAG2/U2AF1/ZRSR2/BCOR, t(6;9), KMT2A-r, BCR::ABL1, or inv(3)/MECOM (adverse)', 'eln-adverse'));
+    const o = out(); root.appendChild(o);
+    const ids = ['eln-cbf', 'eln-cebpa', 'eln-npm1', 'eln-flt3', 'eln-adverse'];
+    wire(ids, () => safe(o, () => {
+      const r = M.eln2022Aml({ cbf: chk('eln-cbf'), cebpa: chk('eln-cebpa'), npm1: chk('eln-npm1'), flt3itd: chk('eln-flt3'), adverse: chk('eln-adverse') });
+      if (!r.valid) { showInvalid(o, r); return; }
+      resultRow(o, [{ text: r.band, cls: r.abnormal ? 'warn' : null }, { label: 'ELN 2022', value: r.category }]);
+      note(o, r.detail); note(o, r.note);
+    }));
+    postureNote(root);
+  },
 };

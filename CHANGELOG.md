@@ -6,7 +6,7 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
-### Added (spec-v211 — Advanced Prognostic & Risk-Equation Instruments program continues: hematology-oncology risk stratification, shipped one tile at a time, 885 → …)
+### Added (spec-v211 — Advanced Prognostic & Risk-Equation Instruments program continues: hematology-oncology risk stratification, shipped one tile at a time, 885 → 889, slice ships +4)
 
 - Continues the **Advanced Prognostic & Risk-Equation Instruments** program
   (spec-v209–v212) with hematology-oncology risk-stratification instruments,
@@ -36,6 +36,18 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
   Dichotomized 0–6 low/intermediate vs ≥ 7 high 6-month VTE risk (≈ 2.3% vs ≈
   6.3–13.3%). Weights and cut-point cross-verified against Gerotziafas 2017 and
   the external-validation literature (spec-v97). A complement to Khorana.
+- **ELN 2022 AML risk classification** (`eln-2022-aml`, 888 → 889): the standard
+  genetic risk framework — favorable / intermediate / adverse — from diagnostic
+  cytogenetics and molecular findings. Favorable: CBF-AML [t(8;21) or inv(16)],
+  bZIP in-frame CEBPA, or mutated NPM1 without FLT3-ITD. Adverse (overrides):
+  complex/monosomal karyotype, −5/−7/−17/abn(17p), TP53, high-risk molecular
+  lesions, or adverse fusions. Intermediate: everything else. A structured
+  categorical classification (not an arithmetic score) with the 2022 precedence
+  rules — an adverse lesion overrides an otherwise-favorable NPM1, and any
+  FLT3-ITD moves NPM1-mutated AML from favorable to intermediate (the 2017
+  allelic-ratio distinction removed). Membership cross-verified against the
+  Döhner 2022 ELN recommendations (spec-v97). **Completes the spec-v211 slice
+  (+4)** — the 5th proposed tile (`hct-ci`) was already live from spec-v199.
 
 ### Added (spec-v210 — Advanced Prognostic & Risk-Equation Instruments program continues: ischemic-stroke & ICH prognosis, shipped one tile at a time, 884 → 885, slice ships +1)
 

@@ -1960,6 +1960,7 @@ const UTILITIES = [
   { id: 'eutos',                name: 'EUTOS Score (CML Prognosis on Imatinib)',          group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'improvedd',            name: 'IMPROVEDD VTE Risk Score (Medical Inpatients)',    group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'compass-cat',          name: 'COMPASS-CAT (Cancer-Associated VTE Risk)',         group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'eln-2022-aml',         name: 'ELN 2022 AML Genetic Risk Classification',         group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
 ];
 
 const UTIL_BY_ID = new Map(UTILITIES.map((u) => [u.id, u]));
