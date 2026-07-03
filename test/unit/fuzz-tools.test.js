@@ -205,6 +205,7 @@ import * as hepFibrosisPortalV212 from '../../lib/hep-fibrosis-portal-v212.js';
 import * as acuteInjuryV213 from '../../lib/acute-injury-v213.js';
 import * as cardiologyRiskV214 from '../../lib/cardiology-risk-v214.js';
 import * as riskScoresV215 from '../../lib/risk-scores-v215.js';
+import * as hemePrognosticV216 from '../../lib/heme-prognostic-v216.js';
 
 const MODULES = {
   'clinical.js': clinical,
@@ -354,6 +355,7 @@ const MODULES = {
   'acute-injury-v213.js': acuteInjuryV213,
   'cardiology-risk-v214.js': cardiologyRiskV214,
   'risk-scores-v215.js': riskScoresV215,
+  'heme-prognostic-v216.js': hemePrognosticV216,
 };
 
 const MATRIX = [0, -1, 1e9, NaN, Infinity, -Infinity, '', undefined, null];

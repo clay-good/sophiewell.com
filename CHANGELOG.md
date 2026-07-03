@@ -6,6 +6,21 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v216 — Bedside Decision & Physiology Instruments program: hematology prognostic scores & staging, 910 → 917, slice ships +7)
+
+- Continues the **Bedside Decision & Physiology Instruments** program with seven
+  hematology prognostic instruments. New module `lib/heme-prognostic-v216.js`,
+  renderers `views/group-v216.js` (RV216). Each id was verified absent by a direct
+  scan of `app.js` (spec-v85 §6.2); each stages or stratifies — none orders
+  (spec-v11 §5.3). Point systems cross-verified against ≥2 open sources (spec-v97).
+- **WPSS** (`wpss-mds`, Malcovati 2007), **MDACC CLL index** (`mdacc-cll-index`,
+  Wierda 2007), **PIT** (`pit-ptcl`, Gallamini 2004), **PRIMA-PI** (`prima-pi`,
+  Bachy 2018), and **Durie-Salmon staging** (`durie-salmon`, Durie 1975):
+  MDS / CLL / PTCL / follicular-lymphoma / myeloma prognostic instruments.
+- **Lymphocyte doubling time** (`lymphocyte-doubling-time`, Molica 1987): CLL
+  doubling-time formula. **Talcott rules** (`talcott-febrile-neutropenia`, Talcott
+  1988): febrile-neutropenia risk groups.
+
 ### Added (spec-v215 — Bedside Decision & Physiology Instruments program: lipid / device / oncology risk scores, 903 → 910, slice ships +7)
 
 - Continues the **Bedside Decision & Physiology Instruments** program with seven
