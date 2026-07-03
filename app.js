@@ -1941,6 +1941,7 @@ const UTILITIES = [
   { id: 'ponderal-index',       name: 'Neonatal Ponderal Index (Rohrer’s Index)',        group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'sflt1-plgf',           name: 'sFlt-1/PlGF Ratio (Preeclampsia Rule-out / Rule-in)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'glim-malnutrition',    name: 'GLIM Criteria (Malnutrition Diagnosis)',           group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'sga-nutrition',        name: 'Subjective Global Assessment (SGA, Detsky)',       group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
 ];
 
 const UTIL_BY_ID = new Map(UTILITIES.map((u) => [u.id, u]));

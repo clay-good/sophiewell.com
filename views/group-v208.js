@@ -113,4 +113,23 @@ export const renderers = {
     }));
     postureNote(root);
   },
+
+  // ----- 2.1 sga-nutrition ---------------------------------------------------
+  'sga-nutrition'(root) {
+    note(root, 'Subjective Global Assessment (Detsky 1987): the reference bedside malnutrition assessment, a structured clinician gestalt with no numeric score. Grade the five history features (weight change over 6 mo and the past 2 weeks, intake change, GI symptoms > 2 weeks, functional capacity, disease metabolic demand) and four exam features (subcutaneous-fat loss, muscle wasting, ankle/sacral edema, ascites) — weight loss > 10% ongoing, poor intake, and fat/muscle loss weigh heaviest — then select the overall rating. Near-neighbors: glim-malnutrition, must-nutrition, nrs2002.');
+    root.appendChild(selectField('Overall SGA rating', 'sga-rating', [
+      { value: 'A', text: 'A — well nourished' },
+      { value: 'B', text: 'B — moderately or suspected malnourished' },
+      { value: 'C', text: 'C — severely malnourished' },
+    ]));
+    const o = out(); root.appendChild(o);
+    const ids = ['sga-rating'];
+    wire(ids, () => safe(o, () => {
+      const r = M.sga({ rating: val('sga-rating') });
+      if (!r.valid) { showInvalid(o, r); return; }
+      resultRow(o, [{ text: r.band, cls: r.abnormal ? 'warn' : null }, { label: 'SGA', value: r.rating }]);
+      note(o, r.detail); note(o, r.note);
+    }));
+    postureNote(root);
+  },
 };

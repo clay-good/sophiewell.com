@@ -32,6 +32,13 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
   Severity is graded on the phenotypic criteria: Stage 1 (moderate) vs Stage 2
   (severe = weight loss > 10% within 6 mo or BMI < 18.5). Criteria cross-verified
   against Cederholm 2019 and the ESPEN GLIM fact sheet (spec-v97).
+- **Subjective Global Assessment** (`sga-nutrition`, 881 → 882): the reference
+  bedside malnutrition assessment, a structured clinician gestalt from five
+  history features and four physical-exam features that yields an overall rating
+  — A (well nourished), B (moderately or suspected malnourished), or C (severely
+  malnourished). The original SGA emits no numeric score; the tile records the
+  clinician's A/B/C rating with the feature prompts. Structure cross-verified
+  against Detsky 1987 and standard nutrition references (spec-v97).
 
 ### Added (spec-v207 — Frontline & Bedside Decision Instruments program continues: resuscitation / arrest / trauma-death prognosis, shipped one tile at a time, 875 → 878, slice ships +3)
 
