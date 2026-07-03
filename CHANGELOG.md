@@ -6,6 +6,22 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v219 — Bedside Decision & Physiology Instruments program: metabolic & hepatic indices, 931 → 938, slice ships +7)
+
+- Continues the **Bedside Decision & Physiology Instruments** program with seven
+  metabolic and hepatic indices. New module `lib/metabolic-hepatic-v219.js`,
+  renderers `views/group-v219.js` (RV219). Each id was verified absent by a direct
+  scan of `app.js` (spec-v85 §6.2); each screens or estimates — none orders
+  (spec-v11 §5.3). Formulas cross-verified against ≥2 open sources (spec-v97).
+- **ADA/Bang** (`ada-diabetes-risk-test`, Bang 2009) and **Cambridge**
+  (`cambridge-diabetes-risk`, Griffin 2000): diabetes-risk screeners.
+- **Lipid Accumulation Product** (`lipid-accumulation-product`, Kahn 2005),
+  **Visceral Adiposity Index** (`visceral-adiposity-index`, Amato 2010; VAI
+  denominator parenthesized as WC/(39.68+1.88·BMI)), and **Conicity Index**
+  (`conicity-index`, Valdez 1991): anthropometric adiposity indices.
+- **AST/ALT (De Ritis) ratio** (`ast-alt-ratio`, De Ritis 1957) and
+  **GGT-to-platelet ratio** (`ggt-platelet-ratio`, Lemoine 2016): liver ratios.
+
 ### Added (spec-v218 — Bedside Decision & Physiology Instruments program: ED / trauma / infection decision instruments, 924 → 931, slice ships +7)
 
 - Continues the **Bedside Decision & Physiology Instruments** program with seven

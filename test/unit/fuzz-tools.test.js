@@ -208,6 +208,7 @@ import * as riskScoresV215 from '../../lib/risk-scores-v215.js';
 import * as hemePrognosticV216 from '../../lib/heme-prognostic-v216.js';
 import * as strokeRiskV217 from '../../lib/stroke-risk-v217.js';
 import * as edDecisionV218 from '../../lib/ed-decision-v218.js';
+import * as metabolicHepaticV219 from '../../lib/metabolic-hepatic-v219.js';
 
 const MODULES = {
   'clinical.js': clinical,
@@ -360,6 +361,7 @@ const MODULES = {
   'heme-prognostic-v216.js': hemePrognosticV216,
   'stroke-risk-v217.js': strokeRiskV217,
   'ed-decision-v218.js': edDecisionV218,
+  'metabolic-hepatic-v219.js': metabolicHepaticV219,
 };
 
 const MATRIX = [0, -1, 1e9, NaN, Infinity, -Infinity, '', undefined, null];
