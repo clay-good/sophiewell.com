@@ -6,6 +6,19 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v249 — renal & respiratory bedside formulas, 1074 → 1078)
+
+- Four well-established deterministic formulas. New module `lib/renalpulm-v249.js`,
+  renderers `views/group-v249.js` (RV249). Each id was verified absent by a
+  fixed-string scan of the extracted app.js id/name lists AND the MCP adapter set
+  (spec-v85 §6.2); each computes a value — none diagnoses or orders (spec-v11 §5.3).
+  Formulas cross-verified against ≥2 open sources (spec-v97).
+- **RFI** (`renal-failure-index`): UNa·PCr/UCr, < 1 prerenal / > 1 ATN. **FEUA**
+  (`feua`): 100·UUA·SCr/(SUA·UCr), 4-11% normal. **Bronchodilator response**
+  (`bronchodilator-response`, ATS/ERS 2022): 100·(post−pre)/predicted, > 10%
+  significant. **IWI** (`integrative-weaning-index`, Nemer 2009): Cstat·SaO2/RSBI,
+  ≥ 25 weaning success. All Class A.
+
 ### Added (spec-v248 — wound-care + infectious-disease scores, 1070 → 1074)
 
 - Four well-established deterministic scores. New module `lib/woundid-v248.js`,

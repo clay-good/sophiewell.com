@@ -28,6 +28,7 @@ the quarterly source pull. No clinical formula or threshold changes here.
 | opioid-mme | CDC opioid prescribing / MME factors | CDC 2022 Clinical Practice Guideline (MMWR 2022;71(3)) | same | 2026-06-05 | current — the 2022 guideline superseded the 2016 version; no newer edition |
 | ascvd | ACC/AHA Pooled Cohort Equations | 2013 ACC/AHA PCE (Circulation 2014;129) | 2024 AHA PREVENT (race-free) | 2026-06-05 | behind, justified — the 2013 PCE is retained as the still-widely-charted instrument; the 2024 model ships separately as the `prevent` tile |
 | prevent | AHA PREVENT equations | 2024 (Circulation 2024;149(6)) | same | 2026-06-05 | current |
+| bronchodilator-response | ERS/ATS bronchodilator responsiveness criterion | 2022 ERS/ATS technical standard (Eur Respir J 2022;60:2101499) | same | 2026-07-04 | current — the > 10% of predicted criterion is the 2022 standard |
 | field-triage | National Field Triage Guideline | 2021 ACS-COT/CDC National Guideline | same | 2026-06-05 | current — pinned from "current edition" to the 2021 edition (supersedes CDC MMWR 2011;61(RR-1)) |
 | naloxone | FDA naloxone labeling + CDC overdose guidance | FDA label + standing CDC guidance | same | 2026-06-05 | current — drug label plus standing agency guidance; no fixed edition |
 | tetanus | CDC/ACIP tetanus prophylaxis | ACIP MMWR 2020;69(3) | same | 2026-06-05 | current — pinned from "current edition" to the 2020 ACIP edition |
