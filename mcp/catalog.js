@@ -124,6 +124,7 @@ import cvriskEnginesV202 from './adapters/cvrisk-engines-v202.js';
 import periopFrailtyV203 from './adapters/periop-frailty-v203.js';
 import nephroFluidsV204 from './adapters/nephro-fluids-v204.js';
 import pulmCopdV205 from './adapters/pulm-copd-v205.js';
+import tbiStrokeV206 from './adapters/tbi-stroke-v206.js';
 
 const ADAPTER_MODULES = [
   ['tox-v86', toxV86],
@@ -233,6 +234,7 @@ const ADAPTER_MODULES = [
   ['periop-frailty-v203', periopFrailtyV203],
   ['nephro-fluids-v204', nephroFluidsV204],
   ['pulm-copd-v205', pulmCopdV205],
+  ['tbi-stroke-v206', tbiStrokeV206],
 ];
 
 const HERE = dirname(fileURLToPath(import.meta.url));

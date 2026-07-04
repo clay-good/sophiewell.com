@@ -463,6 +463,16 @@ total to **485 calculators across 107 modules**. CAT's eight items are 0–5
 numeric symptom scores; LENT's ECOG and tumor type and the ADO/DOSE mMRC grade
 are ordinal enums mirroring the renderer selects.
 
+## Twenty-eighth wave — 1 module
+
+This slice exposes the **4 TBI / stroke prognostic instruments** of
+`lib/tbi-stroke-v206.js` — the Essen Stroke Risk Score, the Rotterdam and
+Marshall head-CT classifications, and the FUNC score for functional independence
+after primary ICH. This brings the exposed total to **489 calculators across 108
+modules**. Rotterdam's cistern status, Marshall's mass-lesion axis, and FUNC's
+ICH location are ordinal / categorical enums mirroring the renderer selects, with
+the usual boolean risk flags.
+
 ## Exposed
 
 Each id below is live in `mcp/catalog.js`. The gate parses this list.
@@ -1165,6 +1175,12 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 - `ado-index`
 - `dose-index`
 - `sacs-osa`
+
+### lib/tbi-stroke-v206.js
+- `essen-stroke-risk`
+- `rotterdam-ct`
+- `marshall-ct`
+- `func-score`
 
 ## Not yet adapted
 
