@@ -665,6 +665,16 @@ test('lib/neurology-v224.js worked calls (wave 46)', () => {
   assert.equal(ok('dhi', { 'dhi-yes': '10', 'dhi-some': '5' }).score, 50);
 });
 
+test('lib/obgyn-v225.js worked calls (wave 47)', () => {
+  assert.equal(ok('nugent-score', { 'nug-lacto': '4', 'nug-gard': '4', 'nug-mob': '1' }).score, 9);
+  assert.equal(ok('amsel-criteria', { 'ams-disch': '1', 'ams-ph': '1', 'ams-whiff': '1' }).score, 3);
+  assert.equal(ok('ferriman-gallwey', { 'fg-lip': '2', 'fg-chin': '2', 'fg-chest': '2', 'fg-thigh': '2' }).score, 8);
+  assert.equal(ok('pbac-hmb', { 'pb-mp': '4', 'pb-sp': '5', 'pb-lc': '2' }).score, 130);
+  assert.equal(ok('thompson-hie', { 'th-tone': '2', 'th-cons': '2', 'th-post': '2', 'th-resp': '2' }).score, 8);
+  assert.equal(ok('menopause-rating-scale', { 'mrs-flush': '3', 'mrs-sleep': '2', 'mrs-depr': '2', 'mrs-irr': '2' }).score, 9);
+  assert.equal(ok('kupperman-index', { 'ku-flush': '3', 'ku-ins': '2', 'ku-nerv': '2' }).score, 20);
+});
+
 // The enum->boolean adapter transform reaches the lib: el-ganzouri prognath and
 // elapss earlierSah both map a yes/no select onto a lib boolean.
 test('enum->boolean adapter transform reaches the lib (elapss earlierSah)', () => {

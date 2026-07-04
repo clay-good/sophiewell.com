@@ -651,6 +651,16 @@ Inventory. This brings the exposed total to **586 calculators across 126
 modules**. The ONLS, END-IT, Engel, and Salzburg selects carry numeric-string
 values (modeled as enums); the rest are boolean items and counts.
 
+## Forty-seventh wave — 1 module
+
+This slice exposes the **7 obstetrics/gynecology instruments** of
+`lib/obgyn-v225.js` — the Nugent score and Amsel criteria (bacterial vaginosis),
+the modified Ferriman-Gallwey hirsutism score, the PBAC menstrual-bleeding chart,
+the Thompson neonatal-HIE score, the Menopause Rating Scale, and the
+Blatt-Kupperman index. This brings the exposed total to **593 calculators across
+127 modules**. Nugent's three morphotype selects are numeric-string enums; the
+symptom/grade panels are numeric 0-N scores and the Amsel items are booleans.
+
 ## Exposed
 
 Each id below is live in `mcp/catalog.js`. The gate parses this list.
@@ -1492,6 +1502,15 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 - `ilae-surgical-outcome`
 - `salzburg-ncse-criteria`
 - `dhi`
+
+### lib/obgyn-v225.js
+- `nugent-score`
+- `amsel-criteria`
+- `ferriman-gallwey`
+- `pbac-hmb`
+- `thompson-hie`
+- `menopause-rating-scale`
+- `kupperman-index`
 
 ## Not yet adapted
 
