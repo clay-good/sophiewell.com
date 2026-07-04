@@ -6,6 +6,20 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v235 — pain / disability screening instruments, 1017 → 1021)
+
+- Four well-established deterministic screens. New module `lib/painscore-v235.js`,
+  renderers `views/group-v235.js` (RV235). Each id was verified absent by a
+  fixed-string scan of the extracted app.js id/name lists AND the MCP adapter set
+  (spec-v85 §6.2); each screens/grades — none diagnoses or orders (spec-v11 §5.3).
+  Point systems cross-verified against ≥2 open sources (spec-v97).
+- **DN4** (`dn4-neuropathic-pain`, Bouhassira 2005): 7 interview + 3 exam items,
+  ≥ 4 of 10 neuropathic likely. **LANSS** (`lanss-pain-scale`, Bennett 2001):
+  weighted symptom + exam items, ≥ 12 of 24 neuropathic. **Roland-Morris**
+  (`roland-morris-disability`, 1983, public domain): 24 low-back statements, 0-24.
+  **Neck Disability Index** (`neck-disability-index`, Vernon & Mior 1991): 10
+  sections 0-5, % = raw × 2, none/mild/moderate/severe/complete. All Class A.
+
 ### Added (spec-v234 — dermatology scoring indices, 1013 → 1017)
 
 - Four well-established deterministic scoring indices. New module

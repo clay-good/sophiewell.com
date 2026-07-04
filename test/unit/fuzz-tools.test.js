@@ -224,6 +224,7 @@ import * as prognosticV231 from '../../lib/prognostic-v231.js';
 import * as coagscoreV232 from '../../lib/coagscore-v232.js';
 import * as estimatorsV233 from '../../lib/estimators-v233.js';
 import * as dermscoreV234 from '../../lib/dermscore-v234.js';
+import * as painscoreV235 from '../../lib/painscore-v235.js';
 
 const MODULES = {
   'clinical.js': clinical,
@@ -392,6 +393,7 @@ const MODULES = {
   'coagscore-v232.js': coagscoreV232,
   'estimators-v233.js': estimatorsV233,
   'dermscore-v234.js': dermscoreV234,
+  'painscore-v235.js': painscoreV235,
 };
 
 const MATRIX = [0, -1, 1e9, NaN, Infinity, -Infinity, '', undefined, null];
