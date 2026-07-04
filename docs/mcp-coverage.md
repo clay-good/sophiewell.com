@@ -569,6 +569,17 @@ exposed total to **531 calculators across 118 modules**. The WPSS, MDACC, and
 Durie-Salmon ordinal selects carry numeric-string point values (modeled as
 enums); the rest are numeric labs and boolean flags.
 
+## Thirty-ninth wave — 1 module
+
+This slice exposes the **7 stroke / neuro-vascular risk scores** of
+`lib/stroke-risk-v217.js` — the Canadian TIA Score, the ASTRAL and PLAN
+ischemic-stroke outcome scores, the SOAR stroke-mortality score, the SITS-SICH
+post-thrombolysis hemorrhage score, and the VASOGRADE and Ogilvy-Carter
+aneurysmal-SAH grading scales. This brings the exposed total to **538
+calculators across 119 modules**. SOAR, SITS-SICH, and VASOGRADE ordinal selects
+carry numeric-string values (modeled as enums); the rest are numeric vitals/labs
+and boolean flags.
+
 ## Exposed
 
 Each id below is live in `mcp/catalog.js`. The gate parses this list.
@@ -1339,6 +1350,15 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 - `durie-salmon`
 - `lymphocyte-doubling-time`
 - `talcott-febrile-neutropenia`
+
+### lib/stroke-risk-v217.js
+- `canadian-tia-score`
+- `astral-score`
+- `soar-score`
+- `plan-score`
+- `sits-sich`
+- `vasograde`
+- `ogilvy-carter`
 
 ## Not yet adapted
 

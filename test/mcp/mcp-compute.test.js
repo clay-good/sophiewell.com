@@ -582,6 +582,16 @@ test('lib/heme-prognostic-v216.js worked calls (wave 38)', () => {
   assert.equal(ok('talcott-febrile-neutropenia', { 'tal-inpt': '0', 'tal-comorb': '0', 'tal-cancer': '0' }).group, 'IV');
 });
 
+test('lib/stroke-risk-v217.js worked calls (wave 39)', () => {
+  assert.equal(ok('canadian-tia-score', { 'ctia-ap': '1', 'ctia-dbp': '1', 'ctia-af': '1' }).score, 8);
+  assert.equal(ok('astral-score', { 'ast-age': '75', 'ast-nihss': '10', 'ast-onset': '1' }).score, 27);
+  assert.equal(ok('soar-score', { 'soar-sub': '1', 'soar-ocsp': '2', 'soar-age': '1', 'soar-rankin': '0' }).score, 4);
+  assert.equal(ok('plan-score', { 'plan-age': '80', 'plan-loc': '1', 'plan-arm': '1' }).score, 15);
+  assert.equal(ok('sits-sich', { 'sits-ap': '2', 'sits-nihss': '15', 'sits-glu': '200', 'sits-sbp': '150', 'sits-wt': '80', 'sits-age': '75', 'sits-onset': '1', 'sits-htn': '1' }).score, 10);
+  assert.equal(ok('vasograde', { 'vaso-mf': '3', 'vaso-wfns': '2' }).grade, 'Yellow');
+  assert.equal(ok('ogilvy-carter', { 'oc-age': '1', 'oc-hh': '1', 'oc-fisher': '1' }).score, 3);
+});
+
 // The enum->boolean adapter transform reaches the lib: el-ganzouri prognath and
 // elapss earlierSah both map a yes/no select onto a lib boolean.
 test('enum->boolean adapter transform reaches the lib (elapss earlierSah)', () => {
