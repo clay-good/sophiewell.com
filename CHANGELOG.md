@@ -6,6 +6,19 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v236 — ophthalmology / refractive calculators, 1021 → 1025)
+
+- Four well-established deterministic calculators. New module `lib/ophtho-v236.js`,
+  renderers `views/group-v236.js` (RV236). Each id was verified absent by a
+  fixed-string scan of the extracted app.js id/name lists AND the MCP adapter set
+  (spec-v85 §6.2); each computes an optical value or risk score — none diagnoses or
+  orders (spec-v11 §5.3). Formulas cross-verified against ≥2 open sources (spec-v97).
+- **Spherical equivalent** (`spherical-equivalent`): sphere + cylinder/2. **Vertex
+  distance** (`vertex-distance`): Fc = Fs/(1 − d·Fs). **Percent tissue altered**
+  (`percent-tissue-altered`, Santhiago 2014): (flap + ablation)/CCT × 100, ≥ 40%
+  high ectasia risk. **Randleman ERSS** (`randleman-erss`, 2008): topography + RSB +
+  age + CCT + MRSE (each 0-4), 0-2 low / 3 moderate / ≥ 4 high. All Class A.
+
 ### Added (spec-v235 — pain / disability screening instruments, 1017 → 1021)
 
 - Four well-established deterministic screens. New module `lib/painscore-v235.js`,
