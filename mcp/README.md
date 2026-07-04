@@ -73,7 +73,7 @@ strings; booleans as `true`/`false`; enums by their listed string values.
 
 ```
 list_calculators { "specialty": "hepatology" }
-  -> { coverage: "538 of 1109 catalog tiles exposed ...", calculators: [ { id: "meld-xi", ... }, ... ] }
+  -> { coverage: "545 of 1109 catalog tiles exposed ...", calculators: [ { id: "meld-xi", ... }, ... ] }
 
 describe_calculator { "id": "meld-xi" }
   -> { inputSchema: { ... mx-bili, mx-creat ... }, citation: "Heuman DM ... Liver Transpl 2007", ... }
@@ -168,9 +168,11 @@ added the cardiology risk scores (APPLE, CAAP-AF, ATLAS, HATCH, MB-LATER, C-ACS,
 ACTION ICU), a thirty-seventh added the lipid / device / onco-VTE risk
 cluster (DLCN, Simon Broome, PADIT, GRIm, LIPI, ONKOTEV, PROTECHT), a
 thirty-eighth added the hematology prognosis cluster (WPSS, MDACC CLL, PIT,
-PRIMA-PI, Durie-Salmon, LDT, Talcott), and a thirty-ninth added the stroke /
+PRIMA-PI, Durie-Salmon, LDT, Talcott), a thirty-ninth added the stroke /
 neuro-vascular risk cluster (Canadian TIA, ASTRAL, SOAR, PLAN, SITS-SICH,
-VASOGRADE, Ogilvy-Carter), for 538 across 119 modules today.
+VASOGRADE, Ogilvy-Carter), and a fortieth added the ED decision cluster (FAINT,
+NEXUS Head CT, HANDOC, DENOVA, ICM-PJI 2018, AIR, Adult Appendicitis), for 545
+across 120 modules today.
 Later waves extend it module by module against the same contract.
 
 ## Design

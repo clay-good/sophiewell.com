@@ -136,6 +136,7 @@ import cardiologyRiskV214 from './adapters/cardiology-risk-v214.js';
 import riskScoresV215 from './adapters/risk-scores-v215.js';
 import hemePrognosticV216 from './adapters/heme-prognostic-v216.js';
 import strokeRiskV217 from './adapters/stroke-risk-v217.js';
+import edDecisionV218 from './adapters/ed-decision-v218.js';
 
 const ADAPTER_MODULES = [
   ['tox-v86', toxV86],
@@ -257,6 +258,7 @@ const ADAPTER_MODULES = [
   ['risk-scores-v215', riskScoresV215],
   ['heme-prognostic-v216', hemePrognosticV216],
   ['stroke-risk-v217', strokeRiskV217],
+  ['ed-decision-v218', edDecisionV218],
 ];
 
 const HERE = dirname(fileURLToPath(import.meta.url));

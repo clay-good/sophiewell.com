@@ -580,6 +580,16 @@ calculators across 119 modules**. SOAR, SITS-SICH, and VASOGRADE ordinal selects
 carry numeric-string values (modeled as enums); the rest are numeric vitals/labs
 and boolean flags.
 
+## Fortieth wave — 1 module
+
+This slice exposes the **7 ED decision instruments** of
+`lib/ed-decision-v218.js` — the FAINT syncope score, the NEXUS Head CT rule, the
+HANDOC and DENOVA endocarditis-echo scores, the 2018 ICM prosthetic-joint-
+infection definition, and the AIR and Adult Appendicitis scores. This brings the
+exposed total to **545 calculators across 120 modules**. HANDOC aetiology, AIR
+rebound, and AAS guarding are ordinal selects (numeric-string enums); the rest
+are numeric labs and boolean flags.
+
 ## Exposed
 
 Each id below is live in `mcp/catalog.js`. The gate parses this list.
@@ -1359,6 +1369,15 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 - `sits-sich`
 - `vasograde`
 - `ogilvy-carter`
+
+### lib/ed-decision-v218.js
+- `faint-score`
+- `nexus-head-ct`
+- `handoc-score`
+- `denova-score`
+- `icm-pji-2018`
+- `air-score`
+- `adult-appendicitis-score`
 
 ## Not yet adapted
 

@@ -592,6 +592,16 @@ test('lib/stroke-risk-v217.js worked calls (wave 39)', () => {
   assert.equal(ok('ogilvy-carter', { 'oc-age': '1', 'oc-hh': '1', 'oc-fisher': '1' }).score, 3);
 });
 
+test('lib/ed-decision-v218.js worked calls (wave 40)', () => {
+  assert.equal(ok('faint-score', { 'fnt-hf': '1', 'fnt-bnp': '1' }).score, 3);
+  assert.equal(ok('nexus-head-ct', { 'nx-age': '1' }).ctIndicated, true);
+  assert.equal(ok('handoc-score', { 'hd-murmur': '1', 'hd-aet': '1', 'hd-cult': '1' }).score, 3);
+  assert.equal(ok('denova-score', { 'dn-dur': '1', 'dn-cult': '1', 'dn-murmur': '1' }).score, 3);
+  assert.equal(ok('icm-pji-2018', { 'icm-swbc': '1', 'icm-ad': '1' }).score, 6);
+  assert.equal(ok('air-score', { 'air-vomit': '1', 'air-rif': '1', 'air-rebound': '2', 'air-fever': '1', 'air-wbc': '16', 'air-pmn': '86', 'air-crp': '60' }).score, 11);
+  assert.equal(ok('adult-appendicitis-score', { 'aas-rlq': '1', 'aas-reloc': '1', 'aas-tender': '1', 'aas-age': '55', 'aas-guard': '4', 'aas-wbc': '15', 'aas-pmn': '84', 'aas-crp': '100' }).score, 19);
+});
+
 // The enum->boolean adapter transform reaches the lib: el-ganzouri prognath and
 // elapss earlierSah both map a yes/no select onto a lib boolean.
 test('enum->boolean adapter transform reaches the lib (elapss earlierSah)', () => {
