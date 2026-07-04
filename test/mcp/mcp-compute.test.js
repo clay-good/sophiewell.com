@@ -483,6 +483,15 @@ test('lib/periop-frailty-v203.js worked calls (wave 25)', () => {
   assert.equal(ok('sort-mortality', { 'sort-asa': 'III', 'sort-urgency': 'urgent', 'sort-age': '70', 'sort-highrisk': '1', 'sort-major': '1', 'sort-cancer': '1' }).score, 14.67);
 });
 
+test('lib/nephro-fluids-v204.js worked calls (wave 26)', () => {
+  assert.equal(ok('cccr', { 'cccr-uca': '6', 'cccr-sca': '10', 'cccr-scr': '1.0', 'cccr-ucr': '100' }).score, 0.006);
+  assert.equal(ok('max-allowable-blood-loss', { 'abl-cat': 'adult-male', 'abl-weight': '70', 'abl-hcti': '42', 'abl-hctf': '30' }).score, 1500);
+  assert.equal(ok('efw-clearance', { 'efwc-una': '20', 'efwc-uk': '10', 'efwc-pna': '140', 'efwc-vol': '2000' }).score, 1571.4);
+  const t = ok('tmp-gfr', { 'tmp-sp': '1.2', 'tmp-up': '15', 'tmp-scr': '0.09', 'tmp-ucr': '9' });
+  assert.equal(t.trp, 0.875);
+  assert.equal(ok('urine-calcium-cr', { 'uca-mode': 'spot', 'uca-uca': '30', 'uca-ucr': '100', 'uca-age': 'adult' }).score, 0.3);
+});
+
 // The enum->boolean adapter transform reaches the lib: el-ganzouri prognath and
 // elapss earlierSah both map a yes/no select onto a lib boolean.
 test('enum->boolean adapter transform reaches the lib (elapss earlierSah)', () => {

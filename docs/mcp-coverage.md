@@ -443,6 +443,16 @@ across 105 modules**. DASI is a 12-item boolean panel; ABCD3-I's clinical featur
 and SORT's ASA class and urgency are ordinal enums mirroring the renderer
 selects, with numeric ages, pressures, and durations.
 
+## Twenty-sixth wave — 1 module
+
+This slice exposes the **5 nephrology / fluid-and-electrolyte instruments** of
+`lib/nephro-fluids-v204.js` — the calcium/creatinine clearance ratio (CCCR),
+maximum allowable blood loss (ABL), electrolyte-free water clearance (EFWC),
+TmP/GFR (renal phosphate threshold), and the urinary-calcium assessment. This
+brings the exposed total to **480 calculators across 106 modules**. Labs and
+volumes pass as numbers; ABL's patient category and the urine-calcium tool's
+mode, age band, and sex are enums mirroring the renderer selects.
+
 ## Exposed
 
 Each id below is live in `mcp/catalog.js`. The gate parses this list.
@@ -1131,6 +1141,13 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 - `dasi`
 - `abcd3-i`
 - `sort-mortality`
+
+### lib/nephro-fluids-v204.js
+- `cccr`
+- `max-allowable-blood-loss`
+- `efw-clearance`
+- `tmp-gfr`
+- `urine-calcium-cr`
 
 ## Not yet adapted
 
