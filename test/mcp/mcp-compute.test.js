@@ -431,6 +431,15 @@ test('lib/liver-v196.js worked calls (wave 18)', () => {
   assert.equal(ok('mayo-psc-risk', { 'mayopsc-age': '55', 'mayopsc-bili': '5', 'mayopsc-alb': '3.0', 'mayopsc-ast': '120', 'mayopsc-var': '1' }).value, 3.82);
 });
 
+test('lib/endo-quant-v197.js worked calls (wave 19)', () => {
+  assert.equal(ok('spina-gt', { 'spinagt-tsh': '1', 'spinagt-ft4': '16.5' }).value, 4.7);
+  assert.equal(ok('spina-gd', { 'spinagd-ft4': '16.5', 'spinagd-ft3': '4.5' }).value, 25.22);
+  const j = ok('jostel-tsh-index', { 'jostel-tsh': '1.5', 'jostel-ft4': '15' });
+  assert.equal(j.tshi, 2.42);
+  assert.equal(ok('homa-beta', { 'homab-ins': '8', 'homab-glu': '5.0' }).value, 106.7);
+  assert.equal(ok('oral-disposition-index', { 'dio-i0': '8', 'dio-i30': '60', 'dio-g0': '90', 'dio-g30': '150' }).value, 0.108);
+});
+
 // The enum->boolean adapter transform reaches the lib: el-ganzouri prognath and
 // elapss earlierSah both map a yes/no select onto a lib boolean.
 test('enum->boolean adapter transform reaches the lib (elapss earlierSah)', () => {

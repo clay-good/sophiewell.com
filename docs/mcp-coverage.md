@@ -370,6 +370,16 @@ the exposed total to **448 calculators across 98 modules**. Labs, ages, and
 ratio-of-normal values pass as numbers through the default `makeToArgs`; PAGE-B
 takes a sex enum and the Mayo PSC model a variceal-bleeding boolean.
 
+## Nineteenth wave — 1 module
+
+This slice exposes the **5 quantitative thyroid / beta-cell instruments** of
+`lib/endo-quant-v197.js` — SPINA-GT (thyroid secretory capacity), SPINA-GD
+(peripheral deiodinase activity), Jostel's TSH index, the HOMA-B steady-state
+beta-cell index, and the oral disposition index (DIo). This brings the exposed
+total to **453 calculators across 99 modules**. All five take flat numeric
+hormone and glucose/insulin values through the default `makeToArgs`; no enums or
+booleans are involved.
+
 ## Exposed
 
 Each id below is live in `mcp/catalog.js`. The gate parses this list.
@@ -1017,6 +1027,13 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 - `uk-pbc-risk`
 - `page-b`
 - `mayo-psc-risk`
+
+### lib/endo-quant-v197.js
+- `spina-gt`
+- `spina-gd`
+- `jostel-tsh-index`
+- `homa-beta`
+- `oral-disposition-index`
 
 ## Not yet adapted
 
