@@ -440,6 +440,15 @@ test('lib/endo-quant-v197.js worked calls (wave 19)', () => {
   assert.equal(ok('oral-disposition-index', { 'dio-i0': '8', 'dio-i30': '60', 'dio-g0': '90', 'dio-g30': '150' }).value, 0.108);
 });
 
+test('lib/subspecialty-v198.js worked calls (wave 20)', () => {
+  assert.equal(ok('cns-ipi', { 'cnsipi-age': '1', 'cnsipi-ldh': '1', 'cnsipi-ecog': '1', 'cnsipi-stage': '1' }).score, 4);
+  assert.equal(ok('isth-bat', { 'isth-group': 'male', 'isth-epistaxis': '2', 'isth-surgery': '3' }).total, 5);
+  assert.equal(ok('virsta', { 'virsta-emboli': '1', 'virsta-valve': '1' }).score, 8);
+  const s = ok('select-pse', { 'select-nihss': '4-10', 'select-early': '1', 'select-cortical': '1' });
+  assert.equal(s.score, 6);
+  assert.equal(ok('figo-gtn', { 'figo-age': '45', 'figo-antecedent': 'term', 'figo-interval': '14', 'figo-hcg': '200000', 'figo-size': '6', 'figo-site': 'liverbrain', 'figo-mets': '10', 'figo-chemo': 'single' }).score, 23);
+});
+
 // The enum->boolean adapter transform reaches the lib: el-ganzouri prognath and
 // elapss earlierSah both map a yes/no select onto a lib boolean.
 test('enum->boolean adapter transform reaches the lib (elapss earlierSah)', () => {

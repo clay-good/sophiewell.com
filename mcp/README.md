@@ -73,7 +73,7 @@ strings; booleans as `true`/`false`; enums by their listed string values.
 
 ```
 list_calculators { "specialty": "hepatology" }
-  -> { coverage: "453 of 1109 catalog tiles exposed ...", calculators: [ { id: "meld-xi", ... }, ... ] }
+  -> { coverage: "458 of 1109 catalog tiles exposed ...", calculators: [ { id: "meld-xi", ... }, ... ] }
 
 describe_calculator { "id": "meld-xi" }
   -> { inputSchema: { ... mx-bili, mx-creat ... }, citation: "Heuman DM ... Liver Transpl 2007", ... }
@@ -140,9 +140,11 @@ the invasive / echocardiographic hemodynamics cluster (PAPi, transpulmonary and
 diastolic gradients, Tei index, shunt fraction), a seventeenth added the
 bedside ventilation / oxygenation indices (S/F ratio, ventilatory ratio, OSI,
 ventilation index), an eighteenth added the chronic-liver-disease prognostic
-cluster (ABIC, GLOBE, UK-PBC, PAGE-B, revised Mayo PSC), and a nineteenth added
+cluster (ABIC, GLOBE, UK-PBC, PAGE-B, revised Mayo PSC), a nineteenth added
 the quantitative thyroid / beta-cell cluster (SPINA-GT, SPINA-GD, Jostel TSH
-index, HOMA-B, oral disposition index), for 453 across 99 modules today.
+index, HOMA-B, oral disposition index), and a twentieth added the
+cross-subspecialty prognostic cluster (CNS-IPI, ISTH-BAT, VIRSTA, SeLECT,
+WHO/FIGO GTN), for 458 across 100 modules today.
 Later waves extend it module by module against the same contract.
 
 ## Design

@@ -380,6 +380,19 @@ total to **453 calculators across 99 modules**. All five take flat numeric
 hormone and glucose/insulin values through the default `makeToArgs`; no enums or
 booleans are involved.
 
+## Twentieth wave — 1 module
+
+This slice exposes the **5 cross-subspecialty prognostic / assessment
+instruments** of `lib/subspecialty-v198.js` — the CNS International Prognostic
+Index (CNS-IPI), the ISTH bleeding assessment tool (ISTH-BAT), the VIRSTA score
+for infective-endocarditis risk in S. aureus bacteremia, the SeLECT score for
+late post-stroke epilepsy, and the WHO/FIGO prognostic score for gestational
+trophoblastic neoplasia. This brings the exposed total to **458 calculators
+across 100 modules** — the hundredth `lib` module adapted. CNS-IPI and VIRSTA
+are boolean item panels; ISTH-BAT scores 14 numeric 0–4 bleeding domains under a
+patient-group enum; and SeLECT and FIGO-GTN mix numeric inputs with ordinal
+selects whose enum values mirror the renderer.
+
 ## Exposed
 
 Each id below is live in `mcp/catalog.js`. The gate parses this list.
@@ -1034,6 +1047,13 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 - `jostel-tsh-index`
 - `homa-beta`
 - `oral-disposition-index`
+
+### lib/subspecialty-v198.js
+- `cns-ipi`
+- `isth-bat`
+- `virsta`
+- `select-pse`
+- `figo-gtn`
 
 ## Not yet adapted
 

@@ -116,6 +116,7 @@ import hemoV194 from './adapters/hemo-v194.js';
 import ventV195 from './adapters/vent-v195.js';
 import liverV196 from './adapters/liver-v196.js';
 import endoQuantV197 from './adapters/endo-quant-v197.js';
+import subspecialtyV198 from './adapters/subspecialty-v198.js';
 
 const ADAPTER_MODULES = [
   ['tox-v86', toxV86],
@@ -217,6 +218,7 @@ const ADAPTER_MODULES = [
   ['vent-v195', ventV195],
   ['liver-v196', liverV196],
   ['endo-quant-v197', endoQuantV197],
+  ['subspecialty-v198', subspecialtyV198],
 ];
 
 const HERE = dirname(fileURLToPath(import.meta.url));
