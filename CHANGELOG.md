@@ -6,6 +6,18 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v247 — pediatric acute-care + toxicology tools, 1066 → 1070)
+
+- Four well-established deterministic tools. New module `lib/pedstox-v247.js`,
+  renderers `views/group-v247.js` (RV247). Each id was verified absent by a
+  fixed-string scan of the extracted app.js id/name lists AND the MCP adapter set
+  (spec-v85 §6.2); each scores/estimates — none diagnoses or orders (spec-v11 §5.3).
+  Point systems/formulas cross-verified against ≥2 open sources (spec-v97).
+- **Pediatric Trauma Score** (`pediatric-trauma-score`, Tepas 1987): 6 components
+  −6..+12, ≤ 8 transfer. **BIND** (`bind-score`, Bhutani 1999): 3 signs 0-9. **Widmark
+  BAC** (`widmark-bac`, 1932): A/(r·wt·10) − 0.015·t. **POVOC** (`povoc-ponv`, Eberhart
+  2004): 4 factors 0-4. All Class A.
+
 ### Added (spec-v246 — IBD / GI activity indices, 1062 → 1066)
 
 - Four well-established deterministic indices. New module `lib/ibd-v246.js`,
