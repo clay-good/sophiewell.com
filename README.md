@@ -4206,8 +4206,8 @@ clamped to `[0, 1]`, so the JSON surface never emits a non-finite probability.
 
 ### Coverage is explicit and honest
 
-Adapting the catalog is incremental. Coverage now stands at **510 clinical
-calculators across 115 `lib` modules** (of 1109 catalog tiles), built module by <!-- catalog-truth:historical (115 is the count of lib modules adapted, not a catalog tile count) -->
+Adapting the catalog is incremental. Coverage now stands at **517 clinical
+calculators across 116 `lib` modules** (of 1109 catalog tiles), built module by <!-- catalog-truth:historical (116 is the count of lib modules adapted, not a catalog tile count) -->
 module against the one fixed contract:
 
 | wave | modules | tiles |
@@ -4247,6 +4247,7 @@ module against the one fixed contract:
 | thirty-third (hematology-oncology risk) | `heme-onc-risk-v211` (EUTOS, IMPROVEDD, COMPASS-CAT, ELN 2022 AML) | 4 |
 | thirty-fourth (hepatology fibrosis / portal HTN) | `hep-fibrosis-portal-v212` (King's Score, Baveno VII) | 2 |
 | thirty-fifth (acute injury / ED decision) | `acute-injury-v213` (HEART Pathway, Ottawa HF, Light's criteria, Baux, revised Baux) | 5 |
+| thirty-sixth (cardiology risk scores) | `cardiology-risk-v214` (APPLE, CAAP-AF, ATLAS, HATCH, MB-LATER, C-ACS, ACTION ICU) | 7 |
 
 
 `docs/mcp-coverage.md` is the ledger and `list_calculators` always reports the

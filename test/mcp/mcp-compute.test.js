@@ -552,6 +552,16 @@ test('lib/acute-injury-v213.js worked calls (wave 35)', () => {
   assert.equal(ok('revised-baux', { 'rbx-age': '40', 'rbx-tbsa': '30', 'rbx-inh': '1' }).score, 87);
 });
 
+test('lib/cardiology-risk-v214.js worked calls (wave 36)', () => {
+  assert.equal(ok('apple-score', { 'apl-age': '1', 'apl-pers': '1', 'apl-egfr': '0', 'apl-la': '0', 'apl-ef': '0' }).score, 2);
+  assert.equal(ok('caap-af-score', { 'caap-la': '4.2', 'caap-age': '72', 'caap-aad': '1', 'caap-cad': '1', 'caap-pers': '0', 'caap-female': '1' }).score, 7);
+  assert.equal(ok('atlas-score', { 'atl-lavi': '34', 'atl-age': '1', 'atl-np': '0', 'atl-female': '1', 'atl-smoke': '0' }).score, 8);
+  assert.equal(ok('hatch-score', { 'htc-htn': '1', 'htc-age': '0', 'htc-stroke': '1', 'htc-copd': '0', 'htc-hf': '0' }).score, 3);
+  assert.equal(ok('mb-later-score', { 'mbl-type': '1', 'mbl-male': '1', 'mbl-bbb': '0', 'mbl-la': '1', 'mbl-er': '0' }).score, 3);
+  assert.equal(ok('canada-acs-risk-score', { 'cacs-age': '1', 'cacs-killip': '0', 'cacs-sbp': '1', 'cacs-hr': '0' }).score, 2);
+  assert.equal(ok('action-icu-score', { 'aic-hr': '105', 'aic-sbp': '120', 'aic-hf': '1' }).score, 11);
+});
+
 // The enum->boolean adapter transform reaches the lib: el-ganzouri prognath and
 // elapss earlierSah both map a yes/no select onto a lib boolean.
 test('enum->boolean adapter transform reaches the lib (elapss earlierSah)', () => {

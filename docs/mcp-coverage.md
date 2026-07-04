@@ -537,6 +537,17 @@ measurements plus an inhalation-injury boolean. (The HEART Pathway and Ottawa
 the box unchecked in the tile, but only `'0'` satisfies the flat boolean input
 contract the MCP round-trip enforces.)
 
+## Thirty-sixth wave — 1 module
+
+This slice exposes the **7 cardiology risk scores** of
+`lib/cardiology-risk-v214.js` — the APPLE, CAAP-AF, ATLAS, HATCH, and MB-LATER
+atrial-fibrillation ablation/progression scores and the Canada ACS (C-ACS) and
+ACTION ICU acute-coronary scores. This brings the exposed total to **517
+calculators across 116 modules**. Every clinical item is a boolean; CAAP-AF,
+ATLAS, MB-LATER, and ACTION ICU add a few numeric measurements. (Their
+checkbox `META.example` fields were normalized from `''` to `'0'`, the same
+behavior-preserving fix as wave 35.)
+
 ## Exposed
 
 Each id below is live in `mcp/catalog.js`. The gate parses this list.
@@ -1280,6 +1291,15 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 - `light-criteria`
 - `baux-score`
 - `revised-baux`
+
+### lib/cardiology-risk-v214.js
+- `apple-score`
+- `caap-af-score`
+- `atlas-score`
+- `hatch-score`
+- `mb-later-score`
+- `canada-acs-risk-score`
+- `action-icu-score`
 
 ## Not yet adapted
 
