@@ -6,6 +6,18 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v248 — wound-care + infectious-disease scores, 1070 → 1074)
+
+- Four well-established deterministic scores. New module `lib/woundid-v248.js`,
+  renderers `views/group-v248.js` (RV248). Each id was verified absent by a
+  fixed-string scan of the extracted app.js id/name lists AND the MCP adapter set
+  (spec-v85 §6.2); each scores/classifies risk — none diagnoses or orders (spec-v11
+  §5.3). Point systems cross-verified against ≥2 open sources (spec-v97).
+- **ABSI** (`absi-burn`, Tobiasen 1982): sex + age + inhalation + FT + %TBSA,
+  threat-to-life bands. **SINBAD** (`sinbad-score`, Ince 2008): 6 features 0-6, ≥ 3
+  worse. **ATLAS** (`atlas-cdi`, Miller 2013): 0-10, cure = 100 − 5.08·score.
+  **INCREMENT-CPE** (`increment-cpe`, 2017): 0-15, ≥ 8 high mortality. All Class A.
+
 ### Added (spec-v247 — pediatric acute-care + toxicology tools, 1066 → 1070)
 
 - Four well-established deterministic tools. New module `lib/pedstox-v247.js`,

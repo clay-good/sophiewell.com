@@ -237,6 +237,7 @@ import * as sportsmskV244 from '../../lib/sportsmsk-v244.js';
 import * as hemedermV245 from '../../lib/hemederm-v245.js';
 import * as ibdV246 from '../../lib/ibd-v246.js';
 import * as pedstoxV247 from '../../lib/pedstox-v247.js';
+import * as woundidV248 from '../../lib/woundid-v248.js';
 
 const MODULES = {
   'clinical.js': clinical,
@@ -418,6 +419,7 @@ const MODULES = {
   'hemederm-v245.js': hemedermV245,
   'ibd-v246.js': ibdV246,
   'pedstox-v247.js': pedstoxV247,
+  'woundid-v248.js': woundidV248,
 };
 
 const MATRIX = [0, -1, 1e9, NaN, Infinity, -Infinity, '', undefined, null];
