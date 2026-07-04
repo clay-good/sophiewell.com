@@ -6,6 +6,19 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v246 — IBD / GI activity indices, 1062 → 1066)
+
+- Four well-established deterministic indices. New module `lib/ibd-v246.js`,
+  renderers `views/group-v246.js` (RV246). Each id was verified absent by a
+  fixed-string scan of the extracted app.js id/name lists AND the MCP adapter set
+  (spec-v85 §6.2); each scores/grades disease activity — none diagnoses or orders
+  (spec-v11 §5.3). Point systems cross-verified against ≥2 open sources (spec-v97).
+- **SCCAI** (`sccai`, Walmsley 1998): 6 domains 0-19, ≥ 5 active. **PUCAI** (`pucai`,
+  Turner 2007): 6 items 0-85, remission/mild/moderate/severe. **BBPS** (`bbps-boston`,
+  Lai 2009): 3 segments × 0-3, ≥ 6 adequate. **Simplified AIH** (`simplified-aih`,
+  IAIHG 2008): autoantibodies + IgG + histology + viral-absent 0-8, ≥ 6 probable.
+  All Class A.
+
 ### Added (spec-v245 — hematology discrimination indices + HS severity, 1058 → 1062)
 
 - Four well-established deterministic tools. New module `lib/hemederm-v245.js`,
