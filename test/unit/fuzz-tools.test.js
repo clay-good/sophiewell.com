@@ -234,6 +234,7 @@ import * as geriV241 from '../../lib/geri-v241.js';
 import * as environV242 from '../../lib/environ-v242.js';
 import * as entsleepV243 from '../../lib/entsleep-v243.js';
 import * as sportsmskV244 from '../../lib/sportsmsk-v244.js';
+import * as hemedermV245 from '../../lib/hemederm-v245.js';
 
 const MODULES = {
   'clinical.js': clinical,
@@ -412,6 +413,7 @@ const MODULES = {
   'environ-v242.js': environV242,
   'entsleep-v243.js': entsleepV243,
   'sportsmsk-v244.js': sportsmskV244,
+  'hemederm-v245.js': hemedermV245,
 };
 
 const MATRIX = [0, -1, 1e9, NaN, Infinity, -Infinity, '', undefined, null];

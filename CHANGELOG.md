@@ -6,6 +6,19 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v245 — hematology discrimination indices + HS severity, 1058 → 1062)
+
+- Four well-established deterministic tools. New module `lib/hemederm-v245.js`,
+  renderers `views/group-v245.js` (RV245). Each id was verified absent by a
+  fixed-string scan of the extracted app.js id/name lists AND the MCP adapter set
+  (spec-v85 §6.2); each computes an index/score — none diagnoses or orders (spec-v11
+  §5.3). Formulas/point systems cross-verified against ≥2 open sources (spec-v97).
+- **Shine & Lal** (`shine-lal-index`, 1977): (MCV²·MCH)/100, < 1530 thalassemia.
+  **Green & King** (`green-king-index`, 1989): (MCV²·RDW)/(Hb·100), < 65 thalassemia.
+  **PPR** (`percent-platelet-recovery`, Davis 1999): transfusion response. **IHS4**
+  (`ihs4`, Zouboulis 2017): nodules + abscesses×2 + tunnels×4, mild/moderate/severe.
+  All Class A.
+
 ### Added (spec-v244 — sports-medicine / MSK measures, 1054 → 1058)
 
 - Four well-established deterministic measures. New module `lib/sportsmsk-v244.js`,
