@@ -6,6 +6,19 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v239 — hepatology / GI-surgery scores, 1034 → 1038)
+
+- Four well-established deterministic scores. New module `lib/gisurg-v239.js`,
+  renderers `views/group-v239.js` (RV239). Each id was verified absent by a
+  fixed-string scan of the extracted app.js id/name lists AND the MCP adapter set
+  (spec-v85 §6.2); each scores/classifies risk — none diagnoses or orders (spec-v11
+  §5.3). Point systems/formulas cross-verified against ≥2 open sources (spec-v97).
+- **Bonacini CDS** (`bonacini-cds`, 1997): platelets + ALT/AST + INR binned, ≥ 8
+  cirrhosis likely. **GUCI** (`guci`, Islam 2005): (AST/ULN)·INR·100/platelets, > 1.0
+  suggests cirrhosis. **Mannheim Peritonitis Index** (`mannheim-peritonitis-index`,
+  1987): weighted intraoperative factors 0-47, > 26 high mortality. **Boey score**
+  (`boey-score`, 1987): 3 perforated-ulcer risk factors, 0-3. All Class A.
+
 ### Added (spec-v238 — anthropometric / metabolic estimators, 1030 → 1034)
 
 - Four well-established deterministic estimators. New module `lib/anthro-v238.js`,

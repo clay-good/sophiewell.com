@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `421ba6fef57125e3`
-Generated: 2026-07-04T02:08:57.161Z
+Build ID: `58a37d6f7920b27d`
+Generated: 2026-07-04T02:15:02.805Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=20.18.1 <21, npm >=10.0.0
@@ -24,13 +24,13 @@ downloads is committed in this repository and is hashed below.
 
 | Path | Bytes | SHA-256 |
 |---|---:|---|
-| `index.html` | 71833 | `c6c08b05cd0d06c6729d5f456429d413809947a592418817bab9708916db1315` |
+| `index.html` | 72038 | `755d02647ace47d5067d682e2164b64144e936beab69d93d1d128a663fc37fff` |
 | `styles.css` | 43598 | `39b102cf1e2eb0d6d39bb776775a288e032d05a1365b3e135f771392ee598ad1` |
-| `app.js` | 279604 | `89ca8f13b156b9146883adc2b811cc249eeff4cafbf402efaae851911aa2db7b` |
+| `app.js` | 280587 | `b7adcb7f8d47615c0b67f061c187569207dd920fac7f43cc29bbf3c40f860904` |
 | `sw.js` | 4622 | `b891d4344f8e04403b7f1d307fd446cc224bddc6f0c4397438a17d197351171e` |
 | `site.webmanifest` | 709 | `0e0de4da60590a12e8b27a0ae2a2f5ffdb6500b7d2b78f93631ec2f64ed3d5ce` |
 | `robots.txt` | 127 | `38fbf9c1854e72abb20e01e81dd5a31d4ea96f154c12d5db1ec3af05524dd1a1` |
-| `sitemap.xml` | 158793 | `85dde2c9df76ea4e89d8b773c256447592ed91975002952b0c60b99c6f13236c` |
+| `sitemap.xml` | 159405 | `7dc495349bdad4a49e92ee04de6d62120c75579eb5a547e99b38ef225e10816e` |
 | `_headers` | 1316 | `2f39986457d2feff7e73e491a7d09ee871e8f2f4cc2bc437f86bd86a42554ec6` |
 | `logo.png` | 63440 | `11afaf1b0d3ca68393d202e4810bf766b5b6d591b4e3ec52f41d3cacaa4616ec` |
 | `favicon.ico` | 7411 | `407fde0ca2788409e87e11f596fa02e6a0b121817fcea7fd995beec1801e287b` |
@@ -98,6 +98,7 @@ downloads is committed in this repository and is hashed below.
 | `lib/function-v154.js` | 15012 | `ce6634d2acc5d69d16bf00e0c4d0fb85294e49102bfce1883190ff7526458870` |
 | `lib/gaps-v185.js` | 23007 | `281d91f2027eb2b40f879f95f59ff86f2371b9f01344ff78e6fb51163bfa5c3a` |
 | `lib/gi-v126.js` | 15336 | `4f3d35f89a4321f167170e7916646aedf7472b01315e9df2bcc9bc1afa6b3558` |
+| `lib/gisurg-v239.js` | 7913 | `d6da27d87f1f1c9ae3ba497127080931bfe66fd1e29c66d5e5b6b21a586761d0` |
 | `lib/gli-2012-data.js` | 41979 | `0fa7440b8d9ab03028185d56c7a6bc9e1e753fe3ac396c208eb06f80991ba125` |
 | `lib/growth-lms-data.js` | 62247 | `ab55ed9e9b56d47f239bfe21dc9d9811969332de08e595c2773d93538cc505d3` |
 | `lib/gyn-v139.js` | 16713 | `48b43ee6adf613155f263495dbded3c7fc5929d6373190b47bcb2fa2ff47fa69` |
@@ -140,7 +141,7 @@ downloads is committed in this repository and is hashed below.
 | `lib/lymphoma-v135.js` | 16162 | `e29896a6de224445f46839cd06518817bd25d1235a91ede76f77ccb4996a934f` |
 | `lib/medication-v4.js` | 18192 | `467f9576c50da696cc56094eb022d0a5ed1e88de0c7618448554ede8067270b0` |
 | `lib/medication-v5.js` | 18863 | `ce81d9f8954abbd412892c13af9936f992239164f26fd2b999eaea7902787ab7` |
-| `lib/meta.js` | 1456080 | `b47b19f06bb2adc63c155e8a0b93ce6015692e627a7db72b6f30016cbeb2e6ee` |
+| `lib/meta.js` | 1460264 | `5417387e9ca07e84e2b7df47f9e6df7eff6998588e0ac9d5a91679c0ee00481f` |
 | `lib/metabolic-hepatic-v219.js` | 12791 | `b9352877cebf7fbf3c3b99ecb8b72cdbee3ed94e056dc019113668609f5a95a8` |
 | `lib/metabolic-onc-v88.js` | 12659 | `1553b641668c121661a66647da71a4aaaa023e9f3a6b7a753efbcdab27cdba81` |
 | `lib/mixed-v227.js` | 12795 | `3256771ee5a250a8d28391563107d1c1d43f089f7cfca7aa9ee8df1a487f91ce` |
@@ -384,6 +385,7 @@ downloads is committed in this repository and is hashed below.
 | `views/group-v236.js` | 5202 | `b2e535e5d6494ea4ca0788819c9e652895032213cf5db89958bc60e71b2a012c` |
 | `views/group-v237.js` | 6350 | `c322a5783768b19dcc99da2a020dec6f43b1fbd5797dc6ca50c8319e792efbfd` |
 | `views/group-v238.js` | 5562 | `def5529e865774ae8e65d68855d606ceebe68e30d0fc0ac1a57a8701cec626b9` |
+| `views/group-v239.js` | 6168 | `c87df44a9161e138400b894e955d77fc7de6c3327f85af68734c83698322aaa8` |
 | `views/group-v24.js` | 10751 | `a856aff3a39f3627d732c22bb2b55dcab114b69d989331f852456896d17baa5d` |
 | `views/group-v25.js` | 13405 | `2c96c0ae05248fa8e89cf193f4d93139b4c02ec1a5e60593d0e0973667af9a88` |
 | `views/group-v26.js` | 10635 | `8637ca713172fc27943a32262d80842f7a4b7861fc249ff0cc0fc5976d0cc3a8` |
