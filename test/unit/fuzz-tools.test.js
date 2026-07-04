@@ -244,6 +244,7 @@ import * as cardiometabV251 from '../../lib/cardiometab-v251.js';
 import * as orthospineV252 from '../../lib/orthospine-v252.js';
 import * as radmeasureV253 from '../../lib/radmeasure-v253.js';
 import * as enturopsychV254 from '../../lib/enturopsych-v254.js';
+import * as riskscoresV255 from '../../lib/riskscores-v255.js';
 
 const MODULES = {
   'clinical.js': clinical,
@@ -432,6 +433,7 @@ const MODULES = {
   'orthospine-v252.js': orthospineV252,
   'radmeasure-v253.js': radmeasureV253,
   'enturopsych-v254.js': enturopsychV254,
+  'riskscores-v255.js': riskscoresV255,
 };
 
 const MATRIX = [0, -1, 1e9, NaN, Infinity, -Infinity, '', undefined, null];

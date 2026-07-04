@@ -6,6 +6,18 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v255 — risk & severity scores, 1098 → 1102)
+
+- Four well-established deterministic scores. New module `lib/riskscores-v255.js`,
+  renderers `views/group-v255.js` (RV255). Each id was verified absent by a
+  fixed-string scan of the extracted app.js id/name lists AND the MCP adapter set
+  (spec-v85 §6.2); each scores/grades risk — none diagnoses or orders (spec-v11
+  §5.3). Point systems cross-verified against ≥2 open sources (spec-v97).
+- **VCSS** (`vcss`, Vasquez 2010): 10 attributes × 0-3. **PEN-FAST** (`pen-fast`,
+  Trubiano 2020): 0-5, < 3 low risk. **Harris Hip Score** (`harris-hip-score`, 1969):
+  0-100, poor/fair/good/excellent. **Koivuranta PONV** (`koivuranta-ponv`, 1997):
+  5 factors, ~17-87% risk. All Class A.
+
 ### Added (spec-v254 — ENT / urology / psychiatry screening tools, 1094 → 1098)
 
 - Four well-established deterministic tools. New module `lib/enturopsych-v254.js`,
