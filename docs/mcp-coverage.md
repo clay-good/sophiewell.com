@@ -688,6 +688,14 @@ RDW, Srivastava, and Ehsani indices, each screening beta-thalassemia trait
 versus iron-deficiency anemia from routine CBC parameters. This brings the
 exposed total to **610 calculators across 130 modules**. All inputs are numeric.
 
+## Fifty-first wave — 1 module
+
+This slice exposes the **4 CBC-derived indices** of `lib/hematology-v229.js` —
+the absolute eosinophil count (AEC), the neutrophil-to-lymphocyte ratio (NLR),
+the platelet-to-lymphocyte ratio (PLR), and the systemic immune-inflammation
+index (SII). This brings the exposed total to **614 calculators across 131
+modules**. All inputs are numeric.
+
 ## Exposed
 
 Each id below is live in `mcp/catalog.js`. The gate parses this list.
@@ -1561,6 +1569,12 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 - `rdw-index`
 - `srivastava-index`
 - `ehsani-index`
+
+### lib/hematology-v229.js
+- `aec`
+- `nlr`
+- `plr`
+- `sii`
 
 ## Not yet adapted
 

@@ -703,6 +703,13 @@ test('lib/mixed-v228.js worked calls (wave 50)', () => {
   assert.equal(ok('ehsani-index', { 'eh-mcv': '65', 'eh-rbc': '5.5' }).score, 10);
 });
 
+test('lib/hematology-v229.js worked calls (wave 51)', () => {
+  assert.equal(ok('aec', { 'aec-wbc': '8', 'aec-eos': '12' }).score, 960);
+  assert.equal(ok('nlr', { 'nlr-anc': '6', 'nlr-alc': '1.5' }).score, 4);
+  assert.equal(ok('plr', { 'plr-plt': '300', 'plr-alc': '1.5' }).score, 200);
+  assert.equal(ok('sii', { 'sii-plt': '300', 'sii-anc': '6', 'sii-alc': '1.5' }).score, 1200);
+});
+
 // The enum->boolean adapter transform reaches the lib: el-ganzouri prognath and
 // elapss earlierSah both map a yes/no select onto a lib boolean.
 test('enum->boolean adapter transform reaches the lib (elapss earlierSah)', () => {

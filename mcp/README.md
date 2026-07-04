@@ -73,7 +73,7 @@ strings; booleans as `true`/`false`; enums by their listed string values.
 
 ```
 list_calculators { "specialty": "hepatology" }
-  -> { coverage: "610 of 1109 catalog tiles exposed ...", calculators: [ { id: "meld-xi", ... }, ... ] }
+  -> { coverage: "614 of 1109 catalog tiles exposed ...", calculators: [ { id: "meld-xi", ... }, ... ] }
 
 describe_calculator { "id": "meld-xi" }
   -> { inputSchema: { ... mx-bili, mx-creat ... }, citation: "Heuman DM ... Liver Transpl 2007", ... }
@@ -186,9 +186,10 @@ Amsel, Ferriman-Gallwey, PBAC, Thompson HIE, MRS, Kupperman), a forty-eighth
 added the nephrology / fluid-and-electrolyte cluster (Watson TBW,
 Salazar-Corcoran, ePVS, furosemide stress test, FE-bicarbonate, corrected
 potassium), a forty-ninth added the cross-specialty cluster (ICBD 2014, ISG
-1990, BATT, Denver ED-TOF, ETS, WHO dengue 2009), and a fiftieth added the
+1990, BATT, Denver ED-TOF, ETS, WHO dengue 2009), a fiftieth added the
 microcytic-anemia RBC discrimination indices (England-Fraser, Sirdah, RDW index,
-Srivastava, Ehsani), for 610 across 130 modules today.
+Srivastava, Ehsani), and a fifty-first added the CBC-derived indices (AEC, NLR,
+PLR, SII), for 614 across 131 modules today.
 Later waves extend it module by module against the same contract.
 
 ## Design
