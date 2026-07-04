@@ -6,6 +6,21 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v237 — cardiology ECG / echo bedside calculators, 1025 → 1030)
+
+- Five well-established deterministic calculators. New module
+  `lib/cardioecho-v237.js`, renderers `views/group-v237.js` (RV237). Each id was
+  verified absent by a fixed-string scan of the extracted app.js id/name lists AND
+  the MCP adapter set (spec-v85 §6.2); each scores/classifies/computes a value —
+  none diagnoses or orders (spec-v11 §5.3). Point systems/formulas cross-verified
+  against ≥2 open sources (spec-v97).
+- **Romhilt-Estes** (`romhilt-estes`, 1968): weighted ECG LVH criteria, ≥ 5 definite.
+  **Wilkins** (`wilkins-score`, 1988): 4 mitral features × 1-4, ≤ 8 favorable for
+  balloon valvuloplasty. **MVA by pressure half-time** (`mitral-valve-area-pht`,
+  Hatle 1979): 220/PHT. **Aortic dimensionless index** (`aortic-dvi`, ASE/EACVI):
+  LVOT/AV VTI, ≤ 0.25 severe AS. **Rate-pressure product** (`rate-pressure-product`,
+  Gobel 1978): HR × SBP. All Class A.
+
 ### Added (spec-v236 — ophthalmology / refractive calculators, 1021 → 1025)
 
 - Four well-established deterministic calculators. New module `lib/ophtho-v236.js`,
