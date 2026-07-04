@@ -458,6 +458,13 @@ test('lib/myeloid-prognosis-v199.js worked calls (wave 21)', () => {
   assert.equal(ok('hct-ci', { 'hct-hepatic': 'severe', 'hct-pulmonary': 'moderate' }).score, 5);
 });
 
+test('lib/critcare-severity-v200.js worked calls (wave 22)', () => {
+  assert.equal(ok('oasis', { 'oasis-preicu': '2', 'oasis-age': '70', 'oasis-gcs': '10', 'oasis-hr': '130', 'oasis-map': '55', 'oasis-rr': '28', 'oasis-temp': '35', 'oasis-urine': '500', 'oasis-vent': '1' }).score, 51);
+  assert.equal(ok('lods', { 'lods-gcs': '13', 'lods-hr': '80', 'lods-sbp': '120', 'lods-bun': '30', 'lods-creat': '1.0', 'lods-urine': '1.5', 'lods-wbc': '8', 'lods-plt': '200', 'lods-bili': '1' }).score, 4);
+  assert.equal(ok('delta-gap', { 'dg-na': '140', 'dg-cl': '100', 'dg-hco3': '10' }).score, 1.29);
+  assert.equal(ok('apps-ards', { 'apps-age': '70', 'apps-pf': '90', 'apps-plateau': '32' }).score, 9);
+});
+
 // The enum->boolean adapter transform reaches the lib: el-ganzouri prognath and
 // elapss earlierSah both map a yes/no select onto a lib boolean.
 test('enum->boolean adapter transform reaches the lib (elapss earlierSah)', () => {

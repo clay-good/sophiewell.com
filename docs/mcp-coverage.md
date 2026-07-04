@@ -404,6 +404,16 @@ are boolean risk flags; MIPSS70's HMR-mutation count, GIPSS's karyotype, and
 HCT-CI's hepatic and pulmonary severity are ordinal enums mirroring the renderer
 selects, and MYSEC-PM takes a numeric age.
 
+## Twenty-second wave — 1 module
+
+This slice exposes the **4 critical-care severity / acid-base instruments** of
+`lib/critcare-severity-v200.js` — OASIS (Oxford Acute Severity of Illness
+Score), LODS (Logistic Organ Dysfunction System), the delta gap / delta ratio,
+and the APPS score for ARDS outcome. This brings the exposed total to **466
+calculators across 102 modules**. OASIS and LODS take worst-24h physiology as
+numbers plus mechanical-ventilation and prothrombin boolean flags; delta gap's
+albumin correction and reference-gap overrides are optional numbers.
+
 ## Exposed
 
 Each id below is live in `mcp/catalog.js`. The gate parses this list.
@@ -1071,6 +1081,12 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 - `gipss`
 - `mysec-pm`
 - `hct-ci`
+
+### lib/critcare-severity-v200.js
+- `oasis`
+- `lods`
+- `delta-gap`
+- `apps-ards`
 
 ## Not yet adapted
 
