@@ -473,6 +473,16 @@ test('lib/hepatology-gibleed-v201.js worked calls (wave 23)', () => {
   assert.equal(ok('agile-3plus', { 'agile-lsm': '12', 'agile-ast': '50', 'agile-alt': '40', 'agile-plt': '180', 'agile-age': '60', 'agile-sex': 'male', 'agile-dm': '1' }).score, 0.868);
 });
 
+test('lib/cvrisk-engines-v202.js worked calls (wave 24)', () => {
+  assert.equal(ok('mecki', { 'mecki-hb': '10', 'mecki-na': '132', 'mecki-lvef': '25', 'mecki-ppvo2': '40', 'mecki-veco2': '40', 'mecki-egfr': '45' }).score, 40.7);
+});
+
+test('lib/periop-frailty-v203.js worked calls (wave 25)', () => {
+  assert.equal(ok('dasi', { 'dasi-selfcare': '1', 'dasi-walkindoors': '1', 'dasi-walkblocks': '1', 'dasi-stairs': '1', 'dasi-lightwork': '1', 'dasi-modwork': '1', 'dasi-yardwork': '1', 'dasi-sexual': '1' }).score, 28.7);
+  assert.equal(ok('abcd3-i', { 'abcd3i-age': '65', 'abcd3i-sbp': '150', 'abcd3i-dbp': '92', 'abcd3i-clinical': 'weakness', 'abcd3i-dur': '90', 'abcd3i-dm': '1', 'abcd3i-dual': '1', 'abcd3i-carotid': '1', 'abcd3i-dwi': '1' }).score, 13);
+  assert.equal(ok('sort-mortality', { 'sort-asa': 'III', 'sort-urgency': 'urgent', 'sort-age': '70', 'sort-highrisk': '1', 'sort-major': '1', 'sort-cancer': '1' }).score, 14.67);
+});
+
 // The enum->boolean adapter transform reaches the lib: el-ganzouri prognath and
 // elapss earlierSah both map a yes/no select onto a lib boolean.
 test('enum->boolean adapter transform reaches the lib (elapss earlierSah)', () => {

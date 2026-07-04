@@ -425,6 +425,24 @@ vitals pass as numbers; Glasgow-Blatchford's urea-unit and sex, Hepamet/Agile
 sex, and CLIP's Child-Pugh and morphology are categorical enums mirroring the
 renderer selects, with the usual boolean clinical flags.
 
+## Twenty-fourth wave — 1 module
+
+This slice exposes the **MECKI score** of `lib/cvrisk-engines-v202.js` — a
+CPET-anchored 2-year prognostic model for systolic heart failure from
+hemoglobin, sodium, LVEF, percent-predicted peak VO₂, VE/VCO₂ slope, and
+MDRD-eGFR. This brings the exposed total to **472 calculators across 104
+modules**. All six inputs are numbers through the default `makeToArgs`.
+
+## Twenty-fifth wave — 1 module
+
+This slice exposes the **3 perioperative / TIA-risk instruments** of
+`lib/periop-frailty-v203.js` — the Duke Activity Status Index (DASI) with its
+peak-VO₂ estimate, the ABCD3-I early-stroke-after-TIA score, and the SORT 30-day
+postoperative-mortality model. This brings the exposed total to **475 calculators
+across 105 modules**. DASI is a 12-item boolean panel; ABCD3-I's clinical feature
+and SORT's ASA class and urgency are ordinal enums mirroring the renderer
+selects, with numeric ages, pressures, and durations.
+
 ## Exposed
 
 Each id below is live in `mcp/catalog.js`. The gate parses this list.
@@ -1105,6 +1123,14 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 - `hepamet-fibrosis`
 - `clip-hcc`
 - `agile-3plus`
+
+### lib/cvrisk-engines-v202.js
+- `mecki`
+
+### lib/periop-frailty-v203.js
+- `dasi`
+- `abcd3-i`
+- `sort-mortality`
 
 ## Not yet adapted
 

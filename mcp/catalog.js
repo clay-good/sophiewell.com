@@ -120,6 +120,8 @@ import subspecialtyV198 from './adapters/subspecialty-v198.js';
 import myeloidPrognosisV199 from './adapters/myeloid-prognosis-v199.js';
 import critcareSeverityV200 from './adapters/critcare-severity-v200.js';
 import hepatologyGibleedV201 from './adapters/hepatology-gibleed-v201.js';
+import cvriskEnginesV202 from './adapters/cvrisk-engines-v202.js';
+import periopFrailtyV203 from './adapters/periop-frailty-v203.js';
 
 const ADAPTER_MODULES = [
   ['tox-v86', toxV86],
@@ -225,6 +227,8 @@ const ADAPTER_MODULES = [
   ['myeloid-prognosis-v199', myeloidPrognosisV199],
   ['critcare-severity-v200', critcareSeverityV200],
   ['hepatology-gibleed-v201', hepatologyGibleedV201],
+  ['cvrisk-engines-v202', cvriskEnginesV202],
+  ['periop-frailty-v203', periopFrailtyV203],
 ];
 
 const HERE = dirname(fileURLToPath(import.meta.url));
