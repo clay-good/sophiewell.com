@@ -6,6 +6,19 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v238 — anthropometric / metabolic estimators, 1030 → 1034)
+
+- Four well-established deterministic estimators. New module `lib/anthro-v238.js`,
+  renderers `views/group-v238.js` (RV238). Each id was verified absent by a
+  fixed-string scan of the extracted app.js id/name lists AND the MCP adapter set
+  (spec-v85 §6.2); each estimates a value — none diagnoses or orders (spec-v11
+  §5.3). Formulas cross-verified against ≥2 open sources (spec-v97).
+- **Relative fat mass** (`relative-fat-mass`, Woolcott 2018): 64 − 20·(height/waist)
+  + 12·sex. **Body roundness index** (`body-roundness-index`, Thomas 2013). **US
+  Navy body fat** (`navy-body-fat`, Hodgdon-Beckett 1984): log-circumference
+  estimate. **eGDR** (`egdr`, Williams 2000): 21.158 − 0.09·waist − 3.407·HTN −
+  0.551·A1c insulin-resistance surrogate. All Class A.
+
 ### Added (spec-v237 — cardiology ECG / echo bedside calculators, 1025 → 1030)
 
 - Five well-established deterministic calculators. New module
