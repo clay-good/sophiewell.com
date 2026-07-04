@@ -6,6 +6,19 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v241 — geriatric assessment tools, 1042 → 1046)
+
+- Four well-established deterministic tools. New module `lib/geri-v241.js`,
+  renderers `views/group-v241.js` (RV241). Each id was verified absent by a
+  fixed-string scan of the extracted app.js id/name lists AND the MCP adapter set
+  (spec-v85 §6.2); each screens/scores/estimates — none diagnoses or orders
+  (spec-v11 §5.3). Scoring/formulas cross-verified against ≥2 open sources (spec-v97).
+- **GFI** (`groningen-frailty-indicator`, Steverink 2001): 15 items, ≥ 4 frail.
+  **SPPB** (`short-physical-performance-battery`, Guralnik 1994): 3 sub-scores × 0-4,
+  < 10 mobility limitation. **OST** (`osteoporosis-self-assessment-tool`, Koh 2001):
+  (weight − age) × 0.2. **Five-times sit-to-stand** (`five-times-sit-to-stand`,
+  Csuka & McCarty 1985): time-based fall-risk bands. All Class A.
+
 ### Added (spec-v240 — palliative / rehabilitation functional measures, 1038 → 1042)
 
 - Four well-established deterministic measures. New module `lib/rehab-v240.js`,
