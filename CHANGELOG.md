@@ -6,6 +6,19 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v244 — sports-medicine / MSK measures, 1054 → 1058)
+
+- Four well-established deterministic measures. New module `lib/sportsmsk-v244.js`,
+  renderers `views/group-v244.js` (RV244). Each id was verified absent by a
+  fixed-string scan of the extracted app.js id/name lists AND the MCP adapter set
+  (spec-v85 §6.2); each scores/grades — none diagnoses or orders (spec-v11 §5.3).
+  Point systems cross-verified against ≥2 open sources (spec-v97).
+- **Lysholm** (`lysholm-knee-score`, 1982): 8 items 0-100, excellent/good/fair/poor.
+  **Marx** (`marx-activity-rating`, 2001): 4 items × 0-4, 0-16. **FPI-6**
+  (`foot-posture-index`, Redmond 2006): 6 observations × −2..+2, pronated/supinated.
+  **BESS** (`bess-balance-error`, Riemann & Guskiewicz): 6 stances × errors, 0-60.
+  All Class A.
+
 ### Added (spec-v243 — ENT / sleep screening tools, 1050 → 1054)
 
 - Four well-established deterministic tools. New module `lib/entsleep-v243.js`,
