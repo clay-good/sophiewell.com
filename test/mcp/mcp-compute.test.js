@@ -449,6 +449,15 @@ test('lib/subspecialty-v198.js worked calls (wave 20)', () => {
   assert.equal(ok('figo-gtn', { 'figo-age': '45', 'figo-antecedent': 'term', 'figo-interval': '14', 'figo-hcg': '200000', 'figo-size': '6', 'figo-site': 'liverbrain', 'figo-mets': '10', 'figo-chemo': 'single' }).score, 23);
 });
 
+test('lib/myeloid-prognosis-v199.js worked calls (wave 21)', () => {
+  assert.equal(ok('mipss70', { 'mipss-hb': '1', 'mipss-wbc': '1', 'mipss-blasts': '1', 'mipss-fibrosis': '1' }).score, 5);
+  assert.equal(ok('gipss', { 'gipss-karyo': 'vhr', 'gipss-asxl1': '1' }).score, 3);
+  assert.equal(ok('mysec-pm', { 'mysec-age': '65', 'mysec-hb': '1', 'mysec-blasts': '1' }).score, 13.75);
+  assert.equal(ok('hct-ci', { 'hct-tumor': '1' }).score, 3);
+  // HCT-CI hepatic/pulmonary enums reach the lib scoring path.
+  assert.equal(ok('hct-ci', { 'hct-hepatic': 'severe', 'hct-pulmonary': 'moderate' }).score, 5);
+});
+
 // The enum->boolean adapter transform reaches the lib: el-ganzouri prognath and
 // elapss earlierSah both map a yes/no select onto a lib boolean.
 test('enum->boolean adapter transform reaches the lib (elapss earlierSah)', () => {

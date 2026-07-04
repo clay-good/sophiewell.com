@@ -393,6 +393,17 @@ are boolean item panels; ISTH-BAT scores 14 numeric 0–4 bleeding domains under
 patient-group enum; and SeLECT and FIGO-GTN mix numeric inputs with ordinal
 selects whose enum values mirror the renderer.
 
+## Twenty-first wave — 1 module
+
+This slice exposes the **4 myeloid-neoplasm / transplant prognostic scores** of
+`lib/myeloid-prognosis-v199.js` — MIPSS70 for transplant-age primary
+myelofibrosis, GIPSS (genetically inspired), MYSEC-PM for secondary
+myelofibrosis survival, and the Sorror HCT-CI transplant comorbidity index. This
+brings the exposed total to **462 calculators across 101 modules**. Most items
+are boolean risk flags; MIPSS70's HMR-mutation count, GIPSS's karyotype, and
+HCT-CI's hepatic and pulmonary severity are ordinal enums mirroring the renderer
+selects, and MYSEC-PM takes a numeric age.
+
 ## Exposed
 
 Each id below is live in `mcp/catalog.js`. The gate parses this list.
@@ -1054,6 +1065,12 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 - `virsta`
 - `select-pse`
 - `figo-gtn`
+
+### lib/myeloid-prognosis-v199.js
+- `mipss70`
+- `gipss`
+- `mysec-pm`
+- `hct-ci`
 
 ## Not yet adapted
 
