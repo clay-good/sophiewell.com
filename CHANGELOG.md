@@ -6,6 +6,19 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v242 — environmental heat / cold exposure indices, 1046 → 1050)
+
+- Four well-established deterministic indices. New module `lib/environ-v242.js`,
+  renderers `views/group-v242.js` (RV242). Each id was verified absent by a
+  fixed-string scan of the extracted app.js id/name lists AND the MCP adapter set
+  (spec-v85 §6.2); each computes an apparent-temperature / heat-stress value — none
+  diagnoses or orders (spec-v11 §5.3). Formulas cross-verified against ≥2 open
+  sources (spec-v97).
+- **Heat index** (`heat-index`, Rothfusz/NOAA 1990): NWS algorithm, caution →
+  extreme danger. **Humidex** (`humidex`, Masterton 1979). **Wind chill**
+  (`wind-chill`, 2001 JAG/TI): frostbite-risk bands. **WBGT** (`wbgt`, Yaglou &
+  Minard 1957 / ISO 7243): outdoor/indoor weighted heat-stress. All Class A.
+
 ### Added (spec-v241 — geriatric assessment tools, 1042 → 1046)
 
 - Four well-established deterministic tools. New module `lib/geri-v241.js`,
