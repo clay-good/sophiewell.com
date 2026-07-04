@@ -73,7 +73,7 @@ strings; booleans as `true`/`false`; enums by their listed string values.
 
 ```
 list_calculators { "specialty": "hepatology" }
-  -> { coverage: "579 of 1109 catalog tiles exposed ...", calculators: [ { id: "meld-xi", ... }, ... ] }
+  -> { coverage: "586 of 1109 catalog tiles exposed ...", calculators: [ { id: "meld-xi", ... }, ... ] }
 
 describe_calculator { "id": "meld-xi" }
   -> { inputSchema: { ... mx-bili, mx-creat ... }, citation: "Heuman DM ... Liver Transpl 2007", ... }
@@ -178,9 +178,10 @@ prognosis cluster (FIPS, ALBI-PLT, D'Amico, aMAP, NACSELD-ACLF, FibroQ), a
 forty-third added the pulmonary risk cluster (simplified Geneva, SCAP, CORB,
 RESP, ILD-GAP, du Bois IPF, pneumothorax volume), a forty-fourth added the
 rheumatology classification cluster (IIM 2017, PMR 2012, Bohan-Peter, SSc 2013,
-mRSS, Sjogren 2016, ESSPRI), and a forty-fifth added the dermatology cluster
-(UAS7, HiSCR, Hurley, POEM, ALDEN, PEST, Glasgow 7-point), for 579 across 125
-modules today.
+mRSS, Sjogren 2016, ESSPRI), a forty-fifth added the dermatology cluster
+(UAS7, HiSCR, Hurley, POEM, ALDEN, PEST, Glasgow 7-point), and a forty-sixth
+added the neurology cluster (ID Migraine, ONLS, END-IT, Engel, ILAE, Salzburg
+NCSE, DHI), for 586 across 126 modules today.
 Later waves extend it module by module against the same contract.
 
 ## Design

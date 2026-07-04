@@ -641,6 +641,16 @@ brings the exposed total to **579 calculators across 125 modules**. ALDEN's five
 causality axes are numeric-string enums (including negative-point options); POEM
 takes seven 0–4 symptom scores; the rest are counts and boolean items.
 
+## Forty-sixth wave — 1 module
+
+This slice exposes the **7 neurology instruments** of `lib/neurology-v224.js` —
+ID Migraine, the ONLS neuropathy limitation scale, the END-IT
+autoimmune-encephalitis-status score, the Engel and ILAE epilepsy-surgery outcome
+classifications, the Salzburg NCSE consensus criteria, and the Dizziness Handicap
+Inventory. This brings the exposed total to **586 calculators across 126
+modules**. The ONLS, END-IT, Engel, and Salzburg selects carry numeric-string
+values (modeled as enums); the rest are boolean items and counts.
+
 ## Exposed
 
 Each id below is live in `mcp/catalog.js`. The gate parses this list.
@@ -1473,6 +1483,15 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 - `alden`
 - `pest`
 - `glasgow-7-point-checklist`
+
+### lib/neurology-v224.js
+- `id-migraine`
+- `onls`
+- `end-it-score`
+- `engel-classification`
+- `ilae-surgical-outcome`
+- `salzburg-ncse-criteria`
+- `dhi`
 
 ## Not yet adapted
 

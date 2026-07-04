@@ -655,6 +655,16 @@ test('lib/dermatology-v223.js worked calls (wave 45)', () => {
   assert.equal(ok('glasgow-7-point-checklist', { 'g7-size': '1', 'g7-color': '1' }).score, 4);
 });
 
+test('lib/neurology-v224.js worked calls (wave 46)', () => {
+  assert.equal(ok('id-migraine', { 'idm-nausea': '1', 'idm-photo': '1' }).score, 2);
+  assert.equal(ok('onls', { 'onls-arm': '2', 'onls-leg': '3' }).score, 5);
+  assert.equal(ok('end-it-score', { 'end-enc': '1', 'end-ncse': '1', 'end-img': '1' }).score, 3);
+  assert.equal(ok('engel-classification', { 'eng-out': '1' }).engelClass, 'I');
+  assert.equal(ok('ilae-surgical-outcome', { 'ilae-days': '2', 'ilae-base': '50' }).ilaeClass, 3);
+  assert.ok(ok('salzburg-ncse-criteria', { 'salz-pat': '1', 'salz-evo': '1' }).verdict.startsWith('Definite'));
+  assert.equal(ok('dhi', { 'dhi-yes': '10', 'dhi-some': '5' }).score, 50);
+});
+
 // The enum->boolean adapter transform reaches the lib: el-ganzouri prognath and
 // elapss earlierSah both map a yes/no select onto a lib boolean.
 test('enum->boolean adapter transform reaches the lib (elapss earlierSah)', () => {
