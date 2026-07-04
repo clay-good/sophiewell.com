@@ -6,6 +6,19 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v250 — obstetric calculators, 1078 → 1082)
+
+- Four well-established deterministic calculators. New module `lib/obgyn-v250.js`,
+  renderers `views/group-v250.js` (RV250). Each id was verified absent by a
+  fixed-string scan of the extracted app.js id/name lists AND the MCP adapter set
+  (spec-v85 §6.2); each computes a rate/dating/score — none diagnoses or orders
+  (spec-v11 §5.3). Formulas/point systems cross-verified against ≥2 open sources
+  (spec-v97).
+- **Pearl Index** (`pearl-index`): (pregnancies·1200)/months. **Robinson-Fleming CRL
+  dating** (`robinson-crl-dating`, 1975): GA = 8.052·√(1.037·CRL) + 23.73. **CARPREG
+  II** (`carpreg-ii`, Silversides 2018): weighted cardiac risk, 5-41%. **Malinas**
+  (`malinas-score`): 5 criteria × 0-2, ≥ 6 imminent delivery. All Class A.
+
 ### Added (spec-v249 — renal & respiratory bedside formulas, 1074 → 1078)
 
 - Four well-established deterministic formulas. New module `lib/renalpulm-v249.js`,
