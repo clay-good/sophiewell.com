@@ -73,7 +73,7 @@ strings; booleans as `true`/`false`; enums by their listed string values.
 
 ```
 list_calculators { "specialty": "hepatology" }
-  -> { coverage: "565 of 1109 catalog tiles exposed ...", calculators: [ { id: "meld-xi", ... }, ... ] }
+  -> { coverage: "572 of 1109 catalog tiles exposed ...", calculators: [ { id: "meld-xi", ... }, ... ] }
 
 describe_calculator { "id": "meld-xi" }
   -> { inputSchema: { ... mx-bili, mx-creat ... }, citation: "Heuman DM ... Liver Transpl 2007", ... }
@@ -174,10 +174,11 @@ VASOGRADE, Ogilvy-Carter), a fortieth added the ED decision cluster (FAINT,
 NEXUS Head CT, HANDOC, DENOVA, ICM-PJI 2018, AIR, Adult Appendicitis), a
 forty-first added the metabolic / hepatic indices (ADA, Cambridge, LAP, VAI,
 conicity, AST/ALT, GGT/platelet), a forty-second added the hepatology
-prognosis cluster (FIPS, ALBI-PLT, D'Amico, aMAP, NACSELD-ACLF, FibroQ), and a
+prognosis cluster (FIPS, ALBI-PLT, D'Amico, aMAP, NACSELD-ACLF, FibroQ), a
 forty-third added the pulmonary risk cluster (simplified Geneva, SCAP, CORB,
-RESP, ILD-GAP, du Bois IPF, pneumothorax volume), for 565 across 123 modules
-today.
+RESP, ILD-GAP, du Bois IPF, pneumothorax volume), and a forty-fourth added the
+rheumatology classification cluster (IIM 2017, PMR 2012, Bohan-Peter, SSc 2013,
+mRSS, Sjogren 2016, ESSPRI), for 572 across 124 modules today.
 Later waves extend it module by module against the same contract.
 
 ## Design

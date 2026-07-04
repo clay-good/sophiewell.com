@@ -140,6 +140,7 @@ import edDecisionV218 from './adapters/ed-decision-v218.js';
 import metabolicHepaticV219 from './adapters/metabolic-hepatic-v219.js';
 import hepatologyPrognosisV220 from './adapters/hepatology-prognosis-v220.js';
 import pulmonaryRiskV221 from './adapters/pulmonary-risk-v221.js';
+import rheumClassificationV222 from './adapters/rheum-classification-v222.js';
 
 const ADAPTER_MODULES = [
   ['tox-v86', toxV86],
@@ -265,6 +266,7 @@ const ADAPTER_MODULES = [
   ['metabolic-hepatic-v219', metabolicHepaticV219],
   ['hepatology-prognosis-v220', hepatologyPrognosisV220],
   ['pulmonary-risk-v221', pulmonaryRiskV221],
+  ['rheum-classification-v222', rheumClassificationV222],
 ];
 
 const HERE = dirname(fileURLToPath(import.meta.url));

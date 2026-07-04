@@ -633,6 +633,18 @@ test('lib/pulmonary-risk-v221.js worked calls (wave 43)', () => {
   assert.equal(ok('pneumothorax-volume', { 'ptx-a': '2', 'ptx-b': '3', 'ptx-c': '2' }).percent, 37.1);
 });
 
+test('lib/rheum-classification-v222.js worked calls (wave 44)', () => {
+  assert.equal(ok('iim-eular-acr-2017', { 'iim-age': '2.1', 'iim-pu': '1', 'iim-helio': '1', 'iim-jo1': '1' }).score, 9.8);
+  assert.equal(ok('pmr-eular-acr-2012', { 'pmr-stiff': '1', 'pmr-rf': '1' }).score, 4);
+  const bp = ok('bohan-peter', { 'bp-weak': '1', 'bp-enz': '1', 'bp-emg': '1', 'bp-rash': '1' });
+  assert.equal(bp.count, 3);
+  assert.equal(bp.rash, true);
+  assert.equal(ok('acr-eular-2013-systemic-sclerosis', { 'ssc-skin': '4', 'ssc-tip': '0', 'ssc-ray': '1', 'ssc-ab': '1' }).score, 10);
+  assert.equal(ok('mrss-modified-rodnan-skin-score', { 'mrss-fingersR': '2', 'mrss-fingersL': '2', 'mrss-face': '1', 'mrss-chest': '3' }).score, 8);
+  assert.equal(ok('acr-eular-2016-sjogren', { 'sj-focus': '1', 'sj-ssa': '1' }).score, 6);
+  assert.equal(ok('esspri', { 'esp-dry': '6', 'esp-fat': '5', 'esp-pain': '4' }).score, 5);
+});
+
 // The enum->boolean adapter transform reaches the lib: el-ganzouri prognath and
 // elapss earlierSah both map a yes/no select onto a lib boolean.
 test('enum->boolean adapter transform reaches the lib (elapss earlierSah)', () => {

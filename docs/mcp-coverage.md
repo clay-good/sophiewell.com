@@ -620,6 +620,17 @@ and ILD-GAP ordinal selects carry numeric-string point values (modeled as enums,
 including RESP's negative-point options); the rest are numeric measurements and
 boolean flags.
 
+## Forty-fourth wave — 1 module
+
+This slice exposes the **7 rheumatology classification / severity instruments**
+of `lib/rheum-classification-v222.js` — the 2017 EULAR/ACR myositis and 2012
+EULAR/ACR PMR criteria, the Bohan & Peter criteria, the 2013 ACR/EULAR
+systemic-sclerosis criteria, the modified Rodnan skin score, the 2016 ACR/EULAR
+Sjogren criteria, and ESSPRI. This brings the exposed total to **572 calculators
+across 124 modules**. The IIM age band and SSc skin/fingertip selects are
+numeric-string enums; mRSS takes 17 optional 0–3 site grades; the rest are
+boolean criteria and 0–10 patient scales.
+
 ## Exposed
 
 Each id below is live in `mcp/catalog.js`. The gate parses this list.
@@ -1434,6 +1445,15 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 - `ild-gap`
 - `du-bois-ipf`
 - `pneumothorax-volume`
+
+### lib/rheum-classification-v222.js
+- `iim-eular-acr-2017`
+- `pmr-eular-acr-2012`
+- `bohan-peter`
+- `acr-eular-2013-systemic-sclerosis`
+- `mrss-modified-rodnan-skin-score`
+- `acr-eular-2016-sjogren`
+- `esspri`
 
 ## Not yet adapted
 
