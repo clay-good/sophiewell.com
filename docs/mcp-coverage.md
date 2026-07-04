@@ -631,6 +631,16 @@ across 124 modules**. The IIM age band and SSc skin/fingertip selects are
 numeric-string enums; mRSS takes 17 optional 0–3 site grades; the rest are
 boolean criteria and 0–10 patient scales.
 
+## Forty-fifth wave — 1 module
+
+This slice exposes the **7 dermatology instruments** of `lib/dermatology-v223.js`
+— UAS7 (chronic urticaria), HiSCR and Hurley staging (hidradenitis
+suppurativa), POEM (atopic eczema), ALDEN (SJS/TEN drug causality), PEST
+(psoriatic-arthritis screen), and the weighted Glasgow 7-point checklist. This
+brings the exposed total to **579 calculators across 125 modules**. ALDEN's five
+causality axes are numeric-string enums (including negative-point options); POEM
+takes seven 0–4 symptom scores; the rest are counts and boolean items.
+
 ## Exposed
 
 Each id below is live in `mcp/catalog.js`. The gate parses this list.
@@ -1454,6 +1464,15 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 - `mrss-modified-rodnan-skin-score`
 - `acr-eular-2016-sjogren`
 - `esspri`
+
+### lib/dermatology-v223.js
+- `uas7`
+- `hiscr`
+- `hurley-stage`
+- `poem`
+- `alden`
+- `pest`
+- `glasgow-7-point-checklist`
 
 ## Not yet adapted
 

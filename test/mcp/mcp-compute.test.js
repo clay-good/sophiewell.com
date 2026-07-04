@@ -645,6 +645,16 @@ test('lib/rheum-classification-v222.js worked calls (wave 44)', () => {
   assert.equal(ok('esspri', { 'esp-dry': '6', 'esp-fat': '5', 'esp-pain': '4' }).score, 5);
 });
 
+test('lib/dermatology-v223.js worked calls (wave 45)', () => {
+  assert.equal(ok('uas7', { 'uas-wheal': '10', 'uas-itch': '8' }).score, 18);
+  assert.equal(ok('hiscr', { 'hs-bab': '2', 'hs-bnod': '6', 'hs-bfist': '1', 'hs-cab': '1', 'hs-cnod': '2', 'hs-cfist': '1' }).achieved, true);
+  assert.equal(ok('hurley-stage', { 'hur-tract': '1' }).stage, 'II');
+  assert.equal(ok('poem', { 'poem-itch': '3', 'poem-sleep': '2', 'poem-flake': '2', 'poem-dry': '4' }).score, 11);
+  assert.equal(ok('alden', { 'ald-delay': '3', 'ald-present': '0', 'ald-chal': '0', 'ald-dechal': '0', 'ald-not': '3' }).score, 6);
+  assert.equal(ok('pest', { 'pest-swollen': '1', 'pest-nail': '1', 'pest-heel': '1' }).score, 3);
+  assert.equal(ok('glasgow-7-point-checklist', { 'g7-size': '1', 'g7-color': '1' }).score, 4);
+});
+
 // The enum->boolean adapter transform reaches the lib: el-ganzouri prognath and
 // elapss earlierSah both map a yes/no select onto a lib boolean.
 test('enum->boolean adapter transform reaches the lib (elapss earlierSah)', () => {

@@ -73,7 +73,7 @@ strings; booleans as `true`/`false`; enums by their listed string values.
 
 ```
 list_calculators { "specialty": "hepatology" }
-  -> { coverage: "572 of 1109 catalog tiles exposed ...", calculators: [ { id: "meld-xi", ... }, ... ] }
+  -> { coverage: "579 of 1109 catalog tiles exposed ...", calculators: [ { id: "meld-xi", ... }, ... ] }
 
 describe_calculator { "id": "meld-xi" }
   -> { inputSchema: { ... mx-bili, mx-creat ... }, citation: "Heuman DM ... Liver Transpl 2007", ... }
@@ -176,9 +176,11 @@ forty-first added the metabolic / hepatic indices (ADA, Cambridge, LAP, VAI,
 conicity, AST/ALT, GGT/platelet), a forty-second added the hepatology
 prognosis cluster (FIPS, ALBI-PLT, D'Amico, aMAP, NACSELD-ACLF, FibroQ), a
 forty-third added the pulmonary risk cluster (simplified Geneva, SCAP, CORB,
-RESP, ILD-GAP, du Bois IPF, pneumothorax volume), and a forty-fourth added the
+RESP, ILD-GAP, du Bois IPF, pneumothorax volume), a forty-fourth added the
 rheumatology classification cluster (IIM 2017, PMR 2012, Bohan-Peter, SSc 2013,
-mRSS, Sjogren 2016, ESSPRI), for 572 across 124 modules today.
+mRSS, Sjogren 2016, ESSPRI), and a forty-fifth added the dermatology cluster
+(UAS7, HiSCR, Hurley, POEM, ALDEN, PEST, Glasgow 7-point), for 579 across 125
+modules today.
 Later waves extend it module by module against the same contract.
 
 ## Design
