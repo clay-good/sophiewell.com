@@ -4206,8 +4206,8 @@ clamped to `[0, 1]`, so the JSON surface never emits a non-finite probability.
 
 ### Coverage is explicit and honest
 
-Adapting the catalog is incremental. Coverage now stands at **435 clinical
-calculators across 95 `lib` modules** (of 1109 catalog tiles), built module by
+Adapting the catalog is incremental. Coverage now stands at **448 clinical
+calculators across 98 `lib` modules** (of 1109 catalog tiles), built module by
 module against the one fixed contract:
 
 | wave | modules | tiles |
@@ -4228,6 +4228,8 @@ module against the one fixed contract:
 | fourteenth (specialty completion) | `ems-v149` (peds-weight-est, peds-vitals, dose-volume), `pk-v166` (PK-suite, chlorpromazine-equivalents), `radiology-v165` (ACR TI-RADS, adrenal-CT-washout, Bosniak-2019, CT-effective-dose), `frailty-v143` (mFI-5, mFI-11, FRAIL, VES-13, CARG), `function-v154` (Berg-Balance, TUG, Tinetti-POMA, PPS), `hep-v125` (PELD, CLIF-C-ACLF, GAHS, West-Haven, HSI), `id-v137` (ISARIC-4C, COVID-GRAM, Candida-score, VACS, RegiSCAR-DRESS), `lymphoma-v135` (R-IPI, NCCN-IPI, GELF, Hasenclever-IPS, CLL-IPI), `neuro-disability-v159` (mJOA, Nurick, ASIA, EDSS), `onc-v134` (ISS, R-ISS, R2-ISS, Mayo-MGUS, DIPSS, DIPSS-Plus), `suites-v155` (MIPI, Forrest), `peds-v98` (Kocher, PIM3), `peds-v140` (Kaiser-EOS, SNAPPE-II, RDAI/Tal, CDS, Koff), `peds-growth-v141` (CDC-BMI-percentile, WHO-z-score, mid-parental-height, corrected-age), `peds-percentile-v169` (CDC-stature-for-age, CDC-weight-for-age), `derm-v151` (SCORAD) | 59 | <!-- catalog-truth:historical (module version suffixes v141/v169 are not catalog counts; the module name "percentile" contains the "tile" heuristic word) -->
 | fifteenth (acute-coronary / PCI / shock risk) | `acs-v193` (CRUSADE, SCAI SHOCK, Zwolle, TIMI-Risk-Index, CADILLAC) | 5 |
 | sixteenth (invasive / echo hemodynamics) | `hemo-v194` (PAPi, transpulmonary/diastolic gradient, Tei index, shunt fraction) | 4 |
+| seventeenth (ventilation / oxygenation indices) | `vent-v195` (S/F ratio, ventilatory ratio, OSI, ventilation index) | 4 |
+| eighteenth (chronic-liver-disease prognosis) | `liver-v196` (ABIC, GLOBE, UK-PBC, PAGE-B, revised Mayo PSC) | 5 |
 
 
 `docs/mcp-coverage.md` is the ledger and `list_calculators` always reports the

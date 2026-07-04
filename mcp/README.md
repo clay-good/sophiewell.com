@@ -73,7 +73,7 @@ strings; booleans as `true`/`false`; enums by their listed string values.
 
 ```
 list_calculators { "specialty": "hepatology" }
-  -> { coverage: "439 of 1109 catalog tiles exposed ...", calculators: [ { id: "meld-xi", ... }, ... ] }
+  -> { coverage: "448 of 1109 catalog tiles exposed ...", calculators: [ { id: "meld-xi", ... }, ... ] }
 
 describe_calculator { "id": "meld-xi" }
   -> { inputSchema: { ... mx-bili, mx-creat ... }, citation: "Heuman DM ... Liver Transpl 2007", ... }
@@ -135,9 +135,13 @@ infectious disease, lymphoma/CLL and plasma-cell/myeloid staging,
 neuro-disability grading, pediatric acute severity and growth, and the SCORAD
 dermatology score); and a fifteenth wave began the post-parity specialist
 modules with the acute-coronary / primary-PCI / cardiogenic-shock risk cluster
-(CRUSADE, SCAI SHOCK, Zwolle, TIMI Risk Index, CADILLAC), and a sixteenth added
+(CRUSADE, SCAI SHOCK, Zwolle, TIMI Risk Index, CADILLAC), a sixteenth added
 the invasive / echocardiographic hemodynamics cluster (PAPi, transpulmonary and
-diastolic gradients, Tei index, shunt fraction), for 439 across 96 modules today.
+diastolic gradients, Tei index, shunt fraction), a seventeenth added the
+bedside ventilation / oxygenation indices (S/F ratio, ventilatory ratio, OSI,
+ventilation index), and an eighteenth added the chronic-liver-disease prognostic
+cluster (ABIC, GLOBE, UK-PBC, PAGE-B, revised Mayo PSC), for 448 across 98
+modules today.
 Later waves extend it module by module against the same contract.
 
 ## Design

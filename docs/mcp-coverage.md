@@ -350,6 +350,26 @@ take flat numeric pressures, times, saturations, and tensions through the
 default `makeToArgs`; the transpulmonary-gradient tile's dom keys carry the
 `tpg-` prefix while its compute function is `pressureGradients`.
 
+## Seventeenth wave — 1 module
+
+This slice exposes the **4 bedside ventilation / oxygenation indices** of
+`lib/vent-v195.js` — the SpO₂/FiO₂ (S/F) ratio with an estimated P/F, the
+ventilatory ratio (VR), the oxygen saturation index (OSI), and the ventilation
+index (VI). This brings the exposed total to **443 calculators across 97
+modules**. All four take flat numeric saturations, tensions, pressures, rates,
+and a height through the default `makeToArgs`; the ventilatory-ratio tile's sex
+axis is the lone enum (it selects the predicted body weight).
+
+## Eighteenth wave — 1 module
+
+This slice exposes the **5 chronic-liver-disease prognostic instruments** of
+`lib/liver-v196.js` — the ABIC score for alcoholic hepatitis, the GLOBE score
+for PBC transplant-free survival, the UK-PBC risk score, PAGE-B for HCC risk in
+chronic hepatitis B, and the revised Mayo PSC natural-history model. This brings
+the exposed total to **448 calculators across 98 modules**. Labs, ages, and
+ratio-of-normal values pass as numbers through the default `makeToArgs`; PAGE-B
+takes a sex enum and the Mayo PSC model a variceal-bleeding boolean.
+
 ## Exposed
 
 Each id below is live in `mcp/catalog.js`. The gate parses this list.
@@ -984,6 +1004,19 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 - `transpulmonary-gradient`
 - `tei-index`
 - `shunt-fraction`
+
+### lib/vent-v195.js
+- `sf-ratio`
+- `ventilatory-ratio`
+- `osi-oxygenation`
+- `ventilation-index`
+
+### lib/liver-v196.js
+- `abic-score`
+- `globe-score`
+- `uk-pbc-risk`
+- `page-b`
+- `mayo-psc-risk`
 
 ## Not yet adapted
 

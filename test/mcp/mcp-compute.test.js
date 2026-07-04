@@ -414,6 +414,23 @@ test('lib/hemo-v194.js worked calls (wave 16)', () => {
   assert.equal(ok('shunt-fraction', { 'shunt-hb': '15', 'shunt-pao2a': '110', 'shunt-sao2': '99', 'shunt-pao2': '95', 'shunt-svo2': '75', 'shunt-pvo2': '40' }).pct, 4.7);
 });
 
+test('lib/vent-v195.js worked calls (wave 17)', () => {
+  const sf = ok('sf-ratio', { 'sf-spo2': '95', 'sf-fio2': '0.5' });
+  assert.equal(sf.sf, 190);
+  assert.equal(ok('ventilatory-ratio', { 'vr-ve': '9000', 'vr-paco2': '50', 'vr-height': '175', 'vr-sex': 'male' }).vr, 1.7);
+  assert.equal(ok('osi-oxygenation', { 'osi-fio2': '0.6', 'osi-map': '15', 'osi-spo2': '92' }).value, 9.78);
+  assert.equal(ok('ventilation-index', { 'vi-rr': '30', 'vi-pip': '30', 'vi-paco2': '50' }).value, 45);
+});
+
+test('lib/liver-v196.js worked calls (wave 18)', () => {
+  assert.equal(ok('abic-score', { 'abic-age': '50', 'abic-bili': '8', 'abic-creat': '1.0', 'abic-inr': '1.5' }).value, 7.14);
+  assert.equal(ok('globe-score', { 'globe-age': '65', 'globe-bili': '1.8', 'globe-alp': '2.5', 'globe-alb': '0.95', 'globe-plt': '120' }).abnormal, true);
+  const uk = ok('uk-pbc-risk', { 'ukpbc-alp': '2.0', 'ukpbc-trans': '1.5', 'ukpbc-bili': '1.0', 'ukpbc-alb': '1.1', 'ukpbc-plt': '1.5' });
+  assert.equal(uk.r5, 4.7);
+  assert.equal(ok('page-b', { 'pageb-age': '65', 'pageb-sex': 'male', 'pageb-plt': '90' }).score, 23);
+  assert.equal(ok('mayo-psc-risk', { 'mayopsc-age': '55', 'mayopsc-bili': '5', 'mayopsc-alb': '3.0', 'mayopsc-ast': '120', 'mayopsc-var': '1' }).value, 3.82);
+});
+
 // The enum->boolean adapter transform reaches the lib: el-ganzouri prognath and
 // elapss earlierSah both map a yes/no select onto a lib boolean.
 test('enum->boolean adapter transform reaches the lib (elapss earlierSah)', () => {

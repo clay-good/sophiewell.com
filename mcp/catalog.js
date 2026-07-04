@@ -113,6 +113,8 @@ import pedsPercentileV169 from './adapters/peds-percentile-v169.js';
 import dermV151 from './adapters/derm-v151.js';
 import acsV193 from './adapters/acs-v193.js';
 import hemoV194 from './adapters/hemo-v194.js';
+import ventV195 from './adapters/vent-v195.js';
+import liverV196 from './adapters/liver-v196.js';
 
 const ADAPTER_MODULES = [
   ['tox-v86', toxV86],
@@ -211,6 +213,8 @@ const ADAPTER_MODULES = [
   ['derm-v151', dermV151],
   ['acs-v193', acsV193],
   ['hemo-v194', hemoV194],
+  ['vent-v195', ventV195],
+  ['liver-v196', liverV196],
 ];
 
 const HERE = dirname(fileURLToPath(import.meta.url));
