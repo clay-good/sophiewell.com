@@ -453,6 +453,16 @@ brings the exposed total to **480 calculators across 106 modules**. Labs and
 volumes pass as numbers; ABL's patient category and the urine-calcium tool's
 mode, age band, and sex are enums mirroring the renderer selects.
 
+## Twenty-seventh wave — 1 module
+
+This slice exposes the **5 pulmonary / COPD / sleep instruments** of
+`lib/pulm-copd-v205.js` — the COPD Assessment Test (CAT), the LENT
+malignant-pleural-effusion prognostic score, the ADO and DOSE COPD mortality
+indices, and the Sleep Apnea Clinical Score (SACS). This brings the exposed
+total to **485 calculators across 107 modules**. CAT's eight items are 0–5
+numeric symptom scores; LENT's ECOG and tumor type and the ADO/DOSE mMRC grade
+are ordinal enums mirroring the renderer selects.
+
 ## Exposed
 
 Each id below is live in `mcp/catalog.js`. The gate parses this list.
@@ -1148,6 +1158,13 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 - `efw-clearance`
 - `tmp-gfr`
 - `urine-calcium-cr`
+
+### lib/pulm-copd-v205.js
+- `cat-copd`
+- `lent-score`
+- `ado-index`
+- `dose-index`
+- `sacs-osa`
 
 ## Not yet adapted
 

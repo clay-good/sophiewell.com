@@ -492,6 +492,14 @@ test('lib/nephro-fluids-v204.js worked calls (wave 26)', () => {
   assert.equal(ok('urine-calcium-cr', { 'uca-mode': 'spot', 'uca-uca': '30', 'uca-ucr': '100', 'uca-age': 'adult' }).score, 0.3);
 });
 
+test('lib/pulm-copd-v205.js worked calls (wave 27)', () => {
+  assert.equal(ok('cat-copd', { 'cat-cough': '4', 'cat-phlegm': '3', 'cat-chest': '2', 'cat-breathless': '4', 'cat-activity': '3', 'cat-confidence': '2', 'cat-sleep': '3', 'cat-energy': '3' }).score, 24);
+  assert.equal(ok('lent-score', { 'lent-ldh': '1600', 'lent-ecog': '2', 'lent-nlr': '10', 'lent-tumor': 'high' }).score, 6);
+  assert.equal(ok('ado-index', { 'ado-age': '72', 'ado-mmrc': '3', 'ado-fev1': '30' }).score, 7);
+  assert.equal(ok('dose-index', { 'dose-mmrc': '3', 'dose-fev1': '40', 'dose-smoker': '1', 'dose-exac': '3' }).score, 5);
+  assert.equal(ok('sacs-osa', { 'sacs-neck': '42', 'sacs-htn': '1', 'sacs-snore': '1' }).score, 49);
+});
+
 // The enum->boolean adapter transform reaches the lib: el-ganzouri prognath and
 // elapss earlierSah both map a yes/no select onto a lib boolean.
 test('enum->boolean adapter transform reaches the lib (elapss earlierSah)', () => {

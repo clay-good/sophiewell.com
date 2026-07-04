@@ -123,6 +123,7 @@ import hepatologyGibleedV201 from './adapters/hepatology-gibleed-v201.js';
 import cvriskEnginesV202 from './adapters/cvrisk-engines-v202.js';
 import periopFrailtyV203 from './adapters/periop-frailty-v203.js';
 import nephroFluidsV204 from './adapters/nephro-fluids-v204.js';
+import pulmCopdV205 from './adapters/pulm-copd-v205.js';
 
 const ADAPTER_MODULES = [
   ['tox-v86', toxV86],
@@ -231,6 +232,7 @@ const ADAPTER_MODULES = [
   ['cvrisk-engines-v202', cvriskEnginesV202],
   ['periop-frailty-v203', periopFrailtyV203],
   ['nephro-fluids-v204', nephroFluidsV204],
+  ['pulm-copd-v205', pulmCopdV205],
 ];
 
 const HERE = dirname(fileURLToPath(import.meta.url));

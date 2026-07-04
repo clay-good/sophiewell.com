@@ -73,7 +73,7 @@ strings; booleans as `true`/`false`; enums by their listed string values.
 
 ```
 list_calculators { "specialty": "hepatology" }
-  -> { coverage: "480 of 1109 catalog tiles exposed ...", calculators: [ { id: "meld-xi", ... }, ... ] }
+  -> { coverage: "485 of 1109 catalog tiles exposed ...", calculators: [ { id: "meld-xi", ... }, ... ] }
 
 describe_calculator { "id": "meld-xi" }
   -> { inputSchema: { ... mx-bili, mx-creat ... }, citation: "Heuman DM ... Liver Transpl 2007", ... }
@@ -150,9 +150,10 @@ twenty-second added the critical-care severity / acid-base cluster (OASIS, LODS,
 delta gap, APPS), a twenty-third added the hepatology / GI-bleed cluster
 (Glasgow-Blatchford, CLIF-C AD, Hepamet, CLIP, Agile 3+), a twenty-fourth
 added the MECKI CPET-anchored heart-failure prognosis score, a twenty-fifth
-added the perioperative / TIA-risk cluster (DASI, ABCD3-I, SORT), and a
+added the perioperative / TIA-risk cluster (DASI, ABCD3-I, SORT), a
 twenty-sixth added the nephrology / fluid-and-electrolyte cluster (CCCR, ABL,
-EFWC, TmP/GFR, urinary calcium), for 480 across 106 modules today.
+EFWC, TmP/GFR, urinary calcium), and a twenty-seventh added the pulmonary / COPD
+/ sleep cluster (CAT, LENT, ADO, DOSE, SACS), for 485 across 107 modules today.
 Later waves extend it module by module against the same contract.
 
 ## Design
