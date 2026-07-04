@@ -73,7 +73,7 @@ strings; booleans as `true`/`false`; enums by their listed string values.
 
 ```
 list_calculators { "specialty": "hepatology" }
-  -> { coverage: "552 of 1109 catalog tiles exposed ...", calculators: [ { id: "meld-xi", ... }, ... ] }
+  -> { coverage: "558 of 1109 catalog tiles exposed ...", calculators: [ { id: "meld-xi", ... }, ... ] }
 
 describe_calculator { "id": "meld-xi" }
   -> { inputSchema: { ... mx-bili, mx-creat ... }, citation: "Heuman DM ... Liver Transpl 2007", ... }
@@ -171,9 +171,11 @@ thirty-eighth added the hematology prognosis cluster (WPSS, MDACC CLL, PIT,
 PRIMA-PI, Durie-Salmon, LDT, Talcott), a thirty-ninth added the stroke /
 neuro-vascular risk cluster (Canadian TIA, ASTRAL, SOAR, PLAN, SITS-SICH,
 VASOGRADE, Ogilvy-Carter), a fortieth added the ED decision cluster (FAINT,
-NEXUS Head CT, HANDOC, DENOVA, ICM-PJI 2018, AIR, Adult Appendicitis), and a
+NEXUS Head CT, HANDOC, DENOVA, ICM-PJI 2018, AIR, Adult Appendicitis), a
 forty-first added the metabolic / hepatic indices (ADA, Cambridge, LAP, VAI,
-conicity, AST/ALT, GGT/platelet), for 552 across 121 modules today.
+conicity, AST/ALT, GGT/platelet), and a forty-second added the hepatology
+prognosis cluster (FIPS, ALBI-PLT, D'Amico, aMAP, NACSELD-ACLF, FibroQ), for 558
+across 122 modules today.
 Later waves extend it module by module against the same contract.
 
 ## Design

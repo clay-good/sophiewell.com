@@ -612,6 +612,15 @@ test('lib/metabolic-hepatic-v219.js worked calls (wave 41)', () => {
   assert.equal(ok('ggt-platelet-ratio', { 'gpr-ggt': '100', 'gpr-uln': '50', 'gpr-plt': '200' }).gpr, 1);
 });
 
+test('lib/hepatology-prognosis-v220.js worked calls (wave 42)', () => {
+  assert.equal(ok('fips-score', { 'fips-bili': '3.0', 'fips-cr': '1.2', 'fips-age': '60', 'fips-alb': '3.0' }).value, 1.2);
+  assert.equal(ok('albi-plt', { 'ap-bili': '20', 'ap-alb': '40', 'ap-plt': '120' }).score, 4);
+  assert.equal(ok('damico-cirrhosis-stage', { 'dam-varices': '1' }).stage, 2);
+  assert.equal(ok('amap-score', { 'amap-age': '60', 'amap-bili': '20', 'amap-alb': '40', 'amap-plt': '150', 'amap-male': '1' }).value, 62.1);
+  assert.equal(ok('nacseld-aclf', { 'nac-circ': '1', 'nac-renal': '1' }).count, 2);
+  assert.equal(ok('fibroq', { 'fq-age': '50', 'fq-ast': '80', 'fq-inr': '1.2', 'fq-alt': '40', 'fq-plt': '150' }).value, 8);
+});
+
 // The enum->boolean adapter transform reaches the lib: el-ganzouri prognath and
 // elapss earlierSah both map a yes/no select onto a lib boolean.
 test('enum->boolean adapter transform reaches the lib (elapss earlierSah)', () => {

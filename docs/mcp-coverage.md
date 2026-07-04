@@ -600,6 +600,15 @@ the exposed total to **552 calculators across 121 modules**. The Cambridge
 family-history and smoking selects carry numeric-string values (modeled as
 enums); the rest are numeric labs / anthropometry and boolean flags.
 
+## Forty-second wave — 1 module
+
+This slice exposes the **6 hepatology prognostic instruments** of
+`lib/hepatology-prognosis-v220.js` — the FIPS post-TIPS mortality score, the
+ALBI-PLT varices-risk score, D'Amico cirrhosis staging, the aMAP HCC-risk score,
+the NACSELD-ACLF organ-failure count, and the FibroQ fibrosis index. This brings
+the exposed total to **558 calculators across 122 modules**. All inputs are
+numeric labs plus a few boolean clinical flags.
+
 ## Exposed
 
 Each id below is live in `mcp/catalog.js`. The gate parses this list.
@@ -1397,6 +1406,14 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 - `conicity-index`
 - `ast-alt-ratio`
 - `ggt-platelet-ratio`
+
+### lib/hepatology-prognosis-v220.js
+- `fips-score`
+- `albi-plt`
+- `damico-cirrhosis-stage`
+- `amap-score`
+- `nacseld-aclf`
+- `fibroq`
 
 ## Not yet adapted
 
