@@ -537,6 +537,13 @@ test('lib/heme-onc-risk-v211.js worked calls (wave 33)', () => {
   assert.equal(ok('eln-2022-aml', { 'eln-npm1': '1' }).category, 'Favorable');
 });
 
+test('lib/hep-fibrosis-portal-v212.js worked calls (wave 34)', () => {
+  assert.equal(ok('king-score', { 'king-age': '40', 'king-ast': '30', 'king-inr': '1.0', 'king-plt': '200' }).score, 6);
+  const b = ok('baveno-vii', { 'bav-lsm': '12', 'bav-plt': '180' });
+  assert.equal(b.abnormal, false);
+  assert.ok(b.csph.includes('ruled OUT'));
+});
+
 // The enum->boolean adapter transform reaches the lib: el-ganzouri prognath and
 // elapss earlierSah both map a yes/no select onto a lib boolean.
 test('enum->boolean adapter transform reaches the lib (elapss earlierSah)', () => {

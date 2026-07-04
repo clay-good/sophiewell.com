@@ -73,7 +73,7 @@ strings; booleans as `true`/`false`; enums by their listed string values.
 
 ```
 list_calculators { "specialty": "hepatology" }
-  -> { coverage: "503 of 1109 catalog tiles exposed ...", calculators: [ { id: "meld-xi", ... }, ... ] }
+  -> { coverage: "505 of 1109 catalog tiles exposed ...", calculators: [ { id: "meld-xi", ... }, ... ] }
 
 describe_calculator { "id": "meld-xi" }
   -> { inputSchema: { ... mx-bili, mx-creat ... }, citation: "Heuman DM ... Liver Transpl 2007", ... }
@@ -159,9 +159,10 @@ twenty-ninth added the resuscitation / early-warning cluster (TOR rules, REMS,
 CART), a thirtieth added the nutrition / maternal-fetal cluster (ponderal
 index, sFlt-1/PlGF, GLIM, SGA), a thirty-first added the cardiology risk
 engines (HCM Risk-SCD, CHARGE-AF), a thirty-second added the SPAN-100
-acute-stroke prognostic index, and a thirty-third added the hematology-oncology
-risk cluster (EUTOS, IMPROVEDD, COMPASS-CAT, ELN 2022 AML), for 503 across 113
-modules today.
+acute-stroke prognostic index, a thirty-third added the hematology-oncology
+risk cluster (EUTOS, IMPROVEDD, COMPASS-CAT, ELN 2022 AML), and a thirty-fourth
+added the hepatology fibrosis / portal-hypertension cluster (King's Score, Baveno
+VII), for 505 across 114 modules today.
 Later waves extend it module by module against the same contract.
 
 ## Design
