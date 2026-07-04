@@ -499,6 +499,13 @@ model and the CHARGE-AF 5-year incident-atrial-fibrillation model. This brings
 the exposed total to **498 calculators across 111 modules**. Every clinical flag
 is a boolean and the remaining inputs are plain numeric measurements.
 
+## Thirty-second wave — 1 module
+
+This slice exposes the **SPAN-100 index** of `lib/stroke-prognosis-v210.js` — a
+simple acute-ischemic-stroke prognostic index summing age and NIHSS. This brings
+the exposed total to **499 calculators across 112 modules**. Both inputs are
+numbers through the default `makeToArgs`.
+
 ## Exposed
 
 Each id below is live in `mcp/catalog.js`. The gate parses this list.
@@ -1222,6 +1229,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/cardiology-risk-v209.js
 - `hcm-risk-scd`
 - `charge-af`
+
+### lib/stroke-prognosis-v210.js
+- `span-100`
 
 ## Not yet adapted
 

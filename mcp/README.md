@@ -73,7 +73,7 @@ strings; booleans as `true`/`false`; enums by their listed string values.
 
 ```
 list_calculators { "specialty": "hepatology" }
-  -> { coverage: "498 of 1109 catalog tiles exposed ...", calculators: [ { id: "meld-xi", ... }, ... ] }
+  -> { coverage: "499 of 1109 catalog tiles exposed ...", calculators: [ { id: "meld-xi", ... }, ... ] }
 
 describe_calculator { "id": "meld-xi" }
   -> { inputSchema: { ... mx-bili, mx-creat ... }, citation: "Heuman DM ... Liver Transpl 2007", ... }
@@ -157,8 +157,9 @@ EFWC, TmP/GFR, urinary calcium), a twenty-seventh added the pulmonary / COPD
 stroke prognostic cluster (Essen, Rotterdam CT, Marshall CT, FUNC), a
 twenty-ninth added the resuscitation / early-warning cluster (TOR rules, REMS,
 CART), a thirtieth added the nutrition / maternal-fetal cluster (ponderal
-index, sFlt-1/PlGF, GLIM, SGA), and a thirty-first added the cardiology risk
-engines (HCM Risk-SCD, CHARGE-AF), for 498 across 111 modules today.
+index, sFlt-1/PlGF, GLIM, SGA), a thirty-first added the cardiology risk
+engines (HCM Risk-SCD, CHARGE-AF), and a thirty-second added the SPAN-100
+acute-stroke prognostic index, for 499 across 112 modules today.
 Later waves extend it module by module against the same contract.
 
 ## Design
