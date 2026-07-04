@@ -514,6 +514,13 @@ test('lib/resus-trauma-v207.js worked calls (wave 29)', () => {
   assert.equal(ok('cart-score', { 'cart-rr': '27', 'cart-hr': '145', 'cart-dbp': '38', 'cart-age': '72' }).score, 43);
 });
 
+test('lib/nutrition-maternal-v208.js worked calls (wave 30)', () => {
+  assert.equal(ok('ponderal-index', { 'pi-weight': '2200', 'pi-length': '50' }).score, 1.76);
+  assert.equal(ok('sflt1-plgf', { 'sflt-ratio': '25', 'sflt-phase': 'late' }).score, 25);
+  assert.equal(ok('glim-malnutrition', { 'glim-wl': 'severe', 'glim-intake': '1' }).stage, 2);
+  assert.equal(ok('sga-nutrition', { 'sga-rating': 'C' }).rating, 'C');
+});
+
 // The enum->boolean adapter transform reaches the lib: el-ganzouri prognath and
 // elapss earlierSah both map a yes/no select onto a lib boolean.
 test('enum->boolean adapter transform reaches the lib (elapss earlierSah)', () => {

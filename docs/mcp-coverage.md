@@ -482,6 +482,15 @@ score. This brings the exposed total to **492 calculators across 109 modules**.
 The TOR rule set is an enum; every other TOR input is a boolean arrest fact, and
 REMS and CART take plain numeric vitals.
 
+## Thirtieth wave — 1 module
+
+This slice exposes the **4 nutrition / maternal-fetal instruments** of
+`lib/nutrition-maternal-v208.js` — the neonatal ponderal index, the sFlt-1/PlGF
+preeclampsia biomarker ratio, the GLIM malnutrition criteria, and the Subjective
+Global Assessment (SGA). This brings the exposed total to **496 calculators
+across 110 modules**. sFlt-1/PlGF phase, GLIM's weight-loss and low-BMI
+severities, and the SGA rating are enums mirroring the renderer selects.
+
 ## Exposed
 
 Each id below is live in `mcp/catalog.js`. The gate parses this list.
@@ -1195,6 +1204,12 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 - `tor-rule`
 - `rems`
 - `cart-score`
+
+### lib/nutrition-maternal-v208.js
+- `ponderal-index`
+- `sflt1-plgf`
+- `glim-malnutrition`
+- `sga-nutrition`
 
 ## Not yet adapted
 

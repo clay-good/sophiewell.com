@@ -126,6 +126,7 @@ import nephroFluidsV204 from './adapters/nephro-fluids-v204.js';
 import pulmCopdV205 from './adapters/pulm-copd-v205.js';
 import tbiStrokeV206 from './adapters/tbi-stroke-v206.js';
 import resusTraumaV207 from './adapters/resus-trauma-v207.js';
+import nutritionMaternalV208 from './adapters/nutrition-maternal-v208.js';
 
 const ADAPTER_MODULES = [
   ['tox-v86', toxV86],
@@ -237,6 +238,7 @@ const ADAPTER_MODULES = [
   ['pulm-copd-v205', pulmCopdV205],
   ['tbi-stroke-v206', tbiStrokeV206],
   ['resus-trauma-v207', resusTraumaV207],
+  ['nutrition-maternal-v208', nutritionMaternalV208],
 ];
 
 const HERE = dirname(fileURLToPath(import.meta.url));
