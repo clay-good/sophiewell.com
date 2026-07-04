@@ -6,6 +6,19 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v240 — palliative / rehabilitation functional measures, 1038 → 1042)
+
+- Four well-established deterministic measures. New module `lib/rehab-v240.js`,
+  renderers `views/group-v240.js` (RV240). Each id was verified absent by a
+  fixed-string scan of the extracted app.js id/name lists AND the MCP adapter set
+  (spec-v85 §6.2); each sums/estimates a value — none diagnoses or orders (spec-v11
+  §5.3). Scoring/formulas cross-verified against ≥2 open sources (spec-v97).
+- **ESAS** (`esas-symptom-assessment`, Bruera 1991): 9 symptoms × 0-10, total 0-90.
+  **Rivermead Mobility Index** (`rivermead-mobility-index`, Collen 1991): 0-15.
+  **Predicted 6MWD** (`six-minute-walk-predicted`, Enright-Sherrill 1998): sex-
+  specific reference equation + lower limit. **QuickDASH** (`quickdash`, Beaton
+  2005): 11 items × 1-5, [(mean) − 1] × 25. All Class A.
+
 ### Added (spec-v239 — hepatology / GI-surgery scores, 1034 → 1038)
 
 - Four well-established deterministic scores. New module `lib/gisurg-v239.js`,

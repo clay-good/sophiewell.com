@@ -229,6 +229,7 @@ import * as ophthoV236 from '../../lib/ophtho-v236.js';
 import * as cardioechoV237 from '../../lib/cardioecho-v237.js';
 import * as anthroV238 from '../../lib/anthro-v238.js';
 import * as gisurgV239 from '../../lib/gisurg-v239.js';
+import * as rehabV240 from '../../lib/rehab-v240.js';
 
 const MODULES = {
   'clinical.js': clinical,
@@ -402,6 +403,7 @@ const MODULES = {
   'cardioecho-v237.js': cardioechoV237,
   'anthro-v238.js': anthroV238,
   'gisurg-v239.js': gisurgV239,
+  'rehab-v240.js': rehabV240,
 };
 
 const MATRIX = [0, -1, 1e9, NaN, Infinity, -Infinity, '', undefined, null];
