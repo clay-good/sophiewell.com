@@ -544,6 +544,14 @@ test('lib/hep-fibrosis-portal-v212.js worked calls (wave 34)', () => {
   assert.ok(b.csph.includes('ruled OUT'));
 });
 
+test('lib/acute-injury-v213.js worked calls (wave 35)', () => {
+  assert.equal(ok('heart-pathway', { 'hp-heart': '2', 'hp-trop0': '0', 'hp-trop3': '0' }).lowRisk, true);
+  assert.equal(ok('ottawa-heart-failure', { 'ohf-stroke': '1', 'ohf-intub': '1' }).score, 3);
+  assert.equal(ok('light-criteria', { 'lc-pprot': '4.5', 'lc-sprot': '6.0', 'lc-pldh': '300', 'lc-sldh': '200', 'lc-uln': '250' }).exudate, true);
+  assert.equal(ok('baux-score', { 'bx-age': '40', 'bx-tbsa': '30' }).score, 70);
+  assert.equal(ok('revised-baux', { 'rbx-age': '40', 'rbx-tbsa': '30', 'rbx-inh': '1' }).score, 87);
+});
+
 // The enum->boolean adapter transform reaches the lib: el-ganzouri prognath and
 // elapss earlierSah both map a yes/no select onto a lib boolean.
 test('enum->boolean adapter transform reaches the lib (elapss earlierSah)', () => {

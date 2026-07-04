@@ -524,6 +524,19 @@ significant portal hypertension and varices. This brings the exposed total to
 **505 calculators across 114 modules**. Both take plain numeric labs and a
 liver-stiffness measurement.
 
+## Thirty-fifth wave — 1 module
+
+This slice exposes the **5 acute-injury / ED decision instruments** of
+`lib/acute-injury-v213.js` — the HEART Pathway early-discharge rule, the Ottawa
+Heart Failure Risk Scale, Light's criteria for pleural exudate/transudate, and
+the Baux and revised-Baux burn-mortality scores. This brings the exposed total
+to **510 calculators across 115 modules**. The HEART Pathway and Ottawa scale are
+boolean item panels; Light's criteria and the Baux scores take numeric labs /
+measurements plus an inhalation-injury boolean. (The HEART Pathway and Ottawa
+`META.example` checkbox fields were normalized from `''` to `'0'` — both leave
+the box unchecked in the tile, but only `'0'` satisfies the flat boolean input
+contract the MCP round-trip enforces.)
+
 ## Exposed
 
 Each id below is live in `mcp/catalog.js`. The gate parses this list.
@@ -1260,6 +1273,13 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/hep-fibrosis-portal-v212.js
 - `king-score`
 - `baveno-vii`
+
+### lib/acute-injury-v213.js
+- `heart-pathway`
+- `ottawa-heart-failure`
+- `light-criteria`
+- `baux-score`
+- `revised-baux`
 
 ## Not yet adapted
 
