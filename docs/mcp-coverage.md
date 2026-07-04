@@ -590,6 +590,16 @@ exposed total to **545 calculators across 120 modules**. HANDOC aetiology, AIR
 rebound, and AAS guarding are ordinal selects (numeric-string enums); the rest
 are numeric labs and boolean flags.
 
+## Forty-first wave — 1 module
+
+This slice exposes the **7 metabolic / hepatic indices** of
+`lib/metabolic-hepatic-v219.js` — the ADA and Cambridge diabetes-risk scores,
+the lipid accumulation product, the visceral adiposity index, the conicity
+index, the AST/ALT (De Ritis) ratio, and the GGT-to-platelet ratio. This brings
+the exposed total to **552 calculators across 121 modules**. The Cambridge
+family-history and smoking selects carry numeric-string values (modeled as
+enums); the rest are numeric labs / anthropometry and boolean flags.
+
 ## Exposed
 
 Each id below is live in `mcp/catalog.js`. The gate parses this list.
@@ -1378,6 +1388,15 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 - `icm-pji-2018`
 - `air-score`
 - `adult-appendicitis-score`
+
+### lib/metabolic-hepatic-v219.js
+- `ada-diabetes-risk-test`
+- `cambridge-diabetes-risk`
+- `lipid-accumulation-product`
+- `visceral-adiposity-index`
+- `conicity-index`
+- `ast-alt-ratio`
+- `ggt-platelet-ratio`
 
 ## Not yet adapted
 

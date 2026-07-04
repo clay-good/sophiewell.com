@@ -602,6 +602,16 @@ test('lib/ed-decision-v218.js worked calls (wave 40)', () => {
   assert.equal(ok('adult-appendicitis-score', { 'aas-rlq': '1', 'aas-reloc': '1', 'aas-tender': '1', 'aas-age': '55', 'aas-guard': '4', 'aas-wbc': '15', 'aas-pmn': '84', 'aas-crp': '100' }).score, 19);
 });
 
+test('lib/metabolic-hepatic-v219.js worked calls (wave 41)', () => {
+  assert.equal(ok('ada-diabetes-risk-test', { 'ada-age': '55', 'ada-bmi': '32', 'ada-male': '1', 'ada-htn': '1' }).score, 6);
+  assert.equal(ok('cambridge-diabetes-risk', { 'camb-age': '45', 'camb-bmi': '24', 'camb-fhx': '0', 'camb-smoke': '0' }).probability, 2.97);
+  assert.equal(ok('lipid-accumulation-product', { 'lap-wc': '100', 'lap-tg': '2.0' }).value, 70);
+  assert.equal(ok('visceral-adiposity-index', { 'vai-wc': '100', 'vai-bmi': '30', 'vai-tg': '2.0', 'vai-hdl': '1.0' }).value, 2.65);
+  assert.equal(ok('conicity-index', { 'con-wc': '100', 'con-wt': '80', 'con-ht': '175' }).value, 1.36);
+  assert.equal(ok('ast-alt-ratio', { 'aar-ast': '60', 'aar-alt': '30' }).ratio, 2);
+  assert.equal(ok('ggt-platelet-ratio', { 'gpr-ggt': '100', 'gpr-uln': '50', 'gpr-plt': '200' }).gpr, 1);
+});
+
 // The enum->boolean adapter transform reaches the lib: el-ganzouri prognath and
 // elapss earlierSah both map a yes/no select onto a lib boolean.
 test('enum->boolean adapter transform reaches the lib (elapss earlierSah)', () => {

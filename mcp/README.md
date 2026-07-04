@@ -73,7 +73,7 @@ strings; booleans as `true`/`false`; enums by their listed string values.
 
 ```
 list_calculators { "specialty": "hepatology" }
-  -> { coverage: "545 of 1109 catalog tiles exposed ...", calculators: [ { id: "meld-xi", ... }, ... ] }
+  -> { coverage: "552 of 1109 catalog tiles exposed ...", calculators: [ { id: "meld-xi", ... }, ... ] }
 
 describe_calculator { "id": "meld-xi" }
   -> { inputSchema: { ... mx-bili, mx-creat ... }, citation: "Heuman DM ... Liver Transpl 2007", ... }
@@ -170,9 +170,10 @@ cluster (DLCN, Simon Broome, PADIT, GRIm, LIPI, ONKOTEV, PROTECHT), a
 thirty-eighth added the hematology prognosis cluster (WPSS, MDACC CLL, PIT,
 PRIMA-PI, Durie-Salmon, LDT, Talcott), a thirty-ninth added the stroke /
 neuro-vascular risk cluster (Canadian TIA, ASTRAL, SOAR, PLAN, SITS-SICH,
-VASOGRADE, Ogilvy-Carter), and a fortieth added the ED decision cluster (FAINT,
-NEXUS Head CT, HANDOC, DENOVA, ICM-PJI 2018, AIR, Adult Appendicitis), for 545
-across 120 modules today.
+VASOGRADE, Ogilvy-Carter), a fortieth added the ED decision cluster (FAINT,
+NEXUS Head CT, HANDOC, DENOVA, ICM-PJI 2018, AIR, Adult Appendicitis), and a
+forty-first added the metabolic / hepatic indices (ADA, Cambridge, LAP, VAI,
+conicity, AST/ALT, GGT/platelet), for 552 across 121 modules today.
 Later waves extend it module by module against the same contract.
 
 ## Design
