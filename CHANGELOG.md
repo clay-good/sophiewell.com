@@ -6,6 +6,22 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v233 — quantitative bedside estimators, 1009 → 1013)
+
+- Four well-established deterministic estimators. New module
+  `lib/estimators-v233.js`, renderers `views/group-v233.js` (RV233). Each id was
+  verified absent by a fixed-string scan of the extracted app.js id/name lists AND
+  the MCP adapter set (spec-v85 §6.2); each computes a ratio/estimate/threshold —
+  none diagnoses or orders (spec-v11 §5.3). Formulas/cutoffs cross-verified against
+  ≥2 open sources (spec-v97).
+- **Evans index** (`evans-index`, Evans 1942): frontal-horn / inner-skull width →
+  ratio; > 0.30 ventricular enlargement. **FOHR** (`fohr`, O'Hayon 1998):
+  (frontal + occipital) / (2 × biparietal diameter); ≥ 0.55 ventriculomegaly.
+  **Age-adjusted D-dimer** (`age-adjusted-d-dimer`, ADJUST-PE 2014): cutoff = 500
+  µg/L up to age 50, else age × 10. **Deurenberg body-fat** (`deurenberg-body-fat`,
+  Br J Nutr 1991): 1.20·BMI + 0.23·age − 10.8·sex − 5.4, with ACE categories. All
+  Class A, no staleness rows.
+
 ### Added (spec-v232 — thrombosis/coagulation bedside scores, 1007 → 1009)
 
 - Two well-validated deterministic scores. New module `lib/coagscore-v232.js`,
