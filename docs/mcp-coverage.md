@@ -609,6 +609,17 @@ the NACSELD-ACLF organ-failure count, and the FibroQ fibrosis index. This brings
 the exposed total to **558 calculators across 122 modules**. All inputs are
 numeric labs plus a few boolean clinical flags.
 
+## Forty-third wave — 1 module
+
+This slice exposes the **7 pulmonary risk instruments** of
+`lib/pulmonary-risk-v221.js` — the simplified revised Geneva PE score, the SCAP
+and CORB severe-CAP scores, the RESP respiratory-ECMO-survival score, the ILD-GAP
+and du Bois IPF prognostic scores, and the Collins pneumothorax-volume estimate.
+This brings the exposed total to **565 calculators across 123 modules**. The RESP
+and ILD-GAP ordinal selects carry numeric-string point values (modeled as enums,
+including RESP's negative-point options); the rest are numeric measurements and
+boolean flags.
+
 ## Exposed
 
 Each id below is live in `mcp/catalog.js`. The gate parses this list.
@@ -1414,6 +1425,15 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 - `amap-score`
 - `nacseld-aclf`
 - `fibroq`
+
+### lib/pulmonary-risk-v221.js
+- `simplified-revised-geneva`
+- `scap-score`
+- `corb-score`
+- `resp-score`
+- `ild-gap`
+- `du-bois-ipf`
+- `pneumothorax-volume`
 
 ## Not yet adapted
 

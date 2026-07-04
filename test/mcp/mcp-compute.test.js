@@ -621,6 +621,18 @@ test('lib/hepatology-prognosis-v220.js worked calls (wave 42)', () => {
   assert.equal(ok('fibroq', { 'fq-age': '50', 'fq-ast': '80', 'fq-inr': '1.2', 'fq-alt': '40', 'fq-plt': '150' }).value, 8);
 });
 
+test('lib/pulmonary-risk-v221.js worked calls (wave 43)', () => {
+  assert.equal(ok('simplified-revised-geneva', { 'sg-hr': '100', 'sg-age': '1', 'sg-malig': '1' }).score, 4);
+  assert.equal(ok('scap-score', { 'scap-rr': '1', 'scap-bun': '1' }).score, 14);
+  assert.equal(ok('corb-score', { 'corb-conf': '1', 'corb-o2': '1' }).score, 2);
+  assert.equal(ok('resp-score', { 'resp-age': '-2', 'resp-mv': '3', 'resp-dx': '3' }).score, 4);
+  const ild = ok('ild-gap', { 'ild-sub': '0', 'ild-age': '2', 'ild-fvc': '60', 'ild-dlco': '1', 'ild-male': '1' });
+  assert.equal(ild.score, 5);
+  assert.equal(ild.stage, 'III');
+  assert.equal(ok('du-bois-ipf', { 'db-age': '72', 'db-fvc': '60', 'db-dfvc': '-6' }).score, 31);
+  assert.equal(ok('pneumothorax-volume', { 'ptx-a': '2', 'ptx-b': '3', 'ptx-c': '2' }).percent, 37.1);
+});
+
 // The enum->boolean adapter transform reaches the lib: el-ganzouri prognath and
 // elapss earlierSah both map a yes/no select onto a lib boolean.
 test('enum->boolean adapter transform reaches the lib (elapss earlierSah)', () => {
