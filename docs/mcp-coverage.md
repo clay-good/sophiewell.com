@@ -506,6 +506,24 @@ simple acute-ischemic-stroke prognostic index summing age and NIHSS. This brings
 the exposed total to **499 calculators across 112 modules**. Both inputs are
 numbers through the default `makeToArgs`.
 
+## Thirty-third wave — 1 module
+
+This slice exposes the **4 hematology-oncology risk instruments** of
+`lib/heme-onc-risk-v211.js` — the EUTOS score for chronic myeloid leukemia, the
+IMPROVEDD and COMPASS-CAT VTE risk scores, and the ELN 2022 AML genetic-risk
+stratification. This brings the exposed total to **503 calculators across 113
+modules**. EUTOS takes two numeric inputs; IMPROVEDD, COMPASS-CAT, and ELN 2022
+are boolean item panels.
+
+## Thirty-fourth wave — 1 module
+
+This slice exposes the **2 hepatology fibrosis / portal-hypertension
+instruments** of `lib/hep-fibrosis-portal-v212.js` — King's Score for significant
+fibrosis / cirrhosis and the Baveno VII non-invasive rules for clinically
+significant portal hypertension and varices. This brings the exposed total to
+**505 calculators across 114 modules**. Both take plain numeric labs and a
+liver-stiffness measurement.
+
 ## Exposed
 
 Each id below is live in `mcp/catalog.js`. The gate parses this list.
@@ -1232,6 +1250,16 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/stroke-prognosis-v210.js
 - `span-100`
+
+### lib/heme-onc-risk-v211.js
+- `eutos`
+- `improvedd`
+- `compass-cat`
+- `eln-2022-aml`
+
+### lib/hep-fibrosis-portal-v212.js
+- `king-score`
+- `baveno-vii`
 
 ## Not yet adapted
 

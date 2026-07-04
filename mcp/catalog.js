@@ -130,6 +130,7 @@ import nutritionMaternalV208 from './adapters/nutrition-maternal-v208.js';
 import cardiologyRiskV209 from './adapters/cardiology-risk-v209.js';
 import strokePrognosisV210 from './adapters/stroke-prognosis-v210.js';
 import hemeOncRiskV211 from './adapters/heme-onc-risk-v211.js';
+import hepFibrosisPortalV212 from './adapters/hep-fibrosis-portal-v212.js';
 
 const ADAPTER_MODULES = [
   ['tox-v86', toxV86],
@@ -245,6 +246,7 @@ const ADAPTER_MODULES = [
   ['cardiology-risk-v209', cardiologyRiskV209],
   ['stroke-prognosis-v210', strokePrognosisV210],
   ['heme-onc-risk-v211', hemeOncRiskV211],
+  ['hep-fibrosis-portal-v212', hepFibrosisPortalV212],
 ];
 
 const HERE = dirname(fileURLToPath(import.meta.url));

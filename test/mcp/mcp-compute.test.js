@@ -530,6 +530,13 @@ test('lib/stroke-prognosis-v210.js worked calls (wave 32)', () => {
   assert.equal(ok('span-100', { 'span-age': '80', 'span-nihss': '22' }).score, 102);
 });
 
+test('lib/heme-onc-risk-v211.js worked calls (wave 33)', () => {
+  assert.equal(ok('eutos', { 'eutos-baso': '8', 'eutos-spleen': '12' }).score, 104);
+  assert.equal(ok('improvedd', { 'imdd-vte': '1', 'imdd-cancer': '1', 'imdd-ddimer': '1' }).score, 7);
+  assert.equal(ok('compass-cat', { 'cc-antihorm': '1', 'cc-diag6mo': '1' }).score, 10);
+  assert.equal(ok('eln-2022-aml', { 'eln-npm1': '1' }).category, 'Favorable');
+});
+
 // The enum->boolean adapter transform reaches the lib: el-ganzouri prognath and
 // elapss earlierSah both map a yes/no select onto a lib boolean.
 test('enum->boolean adapter transform reaches the lib (elapss earlierSah)', () => {
