@@ -548,6 +548,17 @@ ATLAS, MB-LATER, and ACTION ICU add a few numeric measurements. (Their
 checkbox `META.example` fields were normalized from `''` to `'0'`, the same
 behavior-preserving fix as wave 35.)
 
+## Thirty-seventh wave — 1 module
+
+This slice exposes the **7 risk scores** of `lib/risk-scores-v215.js` — the DLCN
+and Simon Broome familial-hypercholesterolemia criteria, the PADIT
+cardiac-device-infection score, the GRIm-Score and LIPI immunotherapy/lung
+prognostic indices, and the ONKOTEV and PROTECHT cancer-associated-VTE scores.
+This brings the exposed total to **524 calculators across 117 modules**. The
+DLCN, PADIT, and PROTECHT ordinal selects carry numeric-string point values
+(modeled as enums); the rest are numeric labs and boolean flags, with the same
+`'' → '0'` checkbox-example normalization as waves 35–36.
+
 ## Exposed
 
 Each id below is live in `mcp/catalog.js`. The gate parses this list.
@@ -1300,6 +1311,15 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 - `mb-later-score`
 - `canada-acs-risk-score`
 - `action-icu-score`
+
+### lib/risk-scores-v215.js
+- `dlcn-fh-score`
+- `simon-broome-fh`
+- `padit-score`
+- `grim-score`
+- `lipi`
+- `onkotev-score`
+- `protecht-score`
 
 ## Not yet adapted
 

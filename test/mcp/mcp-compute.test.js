@@ -562,6 +562,16 @@ test('lib/cardiology-risk-v214.js worked calls (wave 36)', () => {
   assert.equal(ok('action-icu-score', { 'aic-hr': '105', 'aic-sbp': '120', 'aic-hf': '1' }).score, 11);
 });
 
+test('lib/risk-scores-v215.js worked calls (wave 37)', () => {
+  assert.equal(ok('dlcn-fh-score', { 'dlcn-fam': '1', 'dlcn-clin': '2', 'dlcn-exam': '6', 'dlcn-ldl': '7.0', 'dlcn-dna': '0' }).score, 14);
+  assert.equal(ok('simon-broome-fh', { 'sb-tc': '8.0', 'sb-xanthoma': '1' }).definite, true);
+  assert.equal(ok('padit-score', { 'padit-prior': '4', 'padit-age': '55', 'padit-type': '4' }).score, 10);
+  assert.equal(ok('grim-score', { 'grim-alb': '3.0', 'grim-nlr': '8', 'grim-ldh': '1' }).score, 3);
+  assert.equal(ok('lipi', { 'lipi-anc': '7', 'lipi-wbc': '9', 'lipi-ldh': '1' }).score, 2);
+  assert.equal(ok('onkotev-score', { 'onk-khorana': '1', 'onk-mets': '1' }).score, 2);
+  assert.equal(ok('protecht-score', { 'prot-site': '2', 'prot-plt': '1', 'prot-plat': '1' }).score, 4);
+});
+
 // The enum->boolean adapter transform reaches the lib: el-ganzouri prognath and
 // elapss earlierSah both map a yes/no select onto a lib boolean.
 test('enum->boolean adapter transform reaches the lib (elapss earlierSah)', () => {
