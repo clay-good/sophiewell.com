@@ -102,18 +102,13 @@ function makeSurfaces() {
     // spec-v52 (post-52-6c): the home lede was rewritten to a count-free
     // SEO elevator pitch ("Private healthcare calculators, built for the
     // bedside..."). The catalog count is no longer carried in the visible
-    // tagline; it remains enforced on the 13 surfaces below (title, meta /
-    // OG / Twitter description + image-alt, hero search label, JSON-LD,
-    // README, package.json, parity ledger).
+    // tagline; it remains enforced on the 12 surfaces below (title, meta /
+    // OG / Twitter description + image-alt, JSON-LD, README, package.json,
+    // parity ledger).
     // spec-v51: #browse-tile-count surface retired with the homepage
-    // tile-grid; the count now lives in the search-input label
-    // ("Search NNN tools") and the existing surfaces (lede, JSON-LD,
-    // <title>, OG/Twitter, README, package.json, parity ledger).
-    {
-      name: 'hero search label',
-      file: 'index.html',
-      extract: (t) => firstCapture(t, /<label[^>]*for="hero-search"[^>]*>Search\s+(\d{2,4})\s+tools<\/label>/i),
-    },
+    // tile-grid. 2026-07-04: the hero search label went count-free too
+    // ("What do you need to figure out?"), so its surface is retired the
+    // same way; the count stays enforced on the surfaces above and below.
     {
       name: 'JSON-LD description',
       file: 'index.html',
