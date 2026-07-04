@@ -6,6 +6,21 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v234 — dermatology scoring indices, 1013 → 1017)
+
+- Four well-established deterministic scoring indices. New module
+  `lib/dermscore-v234.js`, renderers `views/group-v234.js` (RV234). Each id was
+  verified absent by a fixed-string scan of the extracted app.js id/name lists AND
+  the MCP adapter set (spec-v85 §6.2); each grades/classifies severity — none
+  diagnoses or orders (spec-v11 §5.3). Formulas cross-verified against ≥2 open
+  sources (spec-v97).
+- **MASI** (`masi`, Kimbrough-Green 1994): 4 facial regions × Area(0-6) ×
+  (Darkness+Homogeneity, 0-4), weighted → 0-48. **SALT** (`salt-score`, Olsen 2004):
+  4 scalp regions × % loss, weighted → 0-100 with S0-S5. **NAPSI** (`napsi`, Rich &
+  Scher 2003): matrix(0-4)+bed(0-4) per nail → 0-8. **Vancouver Scar Scale**
+  (`vancouver-scar-scale`, Sullivan 1990): pigmentation+vascularity+pliability+height
+  → 0-13. All Class A, no staleness rows.
+
 ### Added (spec-v233 — quantitative bedside estimators, 1009 → 1013)
 
 - Four well-established deterministic estimators. New module
