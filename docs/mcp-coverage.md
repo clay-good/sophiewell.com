@@ -473,6 +473,15 @@ modules**. Rotterdam's cistern status, Marshall's mass-lesion axis, and FUNC's
 ICH location are ordinal / categorical enums mirroring the renderer selects, with
 the usual boolean risk flags.
 
+## Twenty-ninth wave — 1 module
+
+This slice exposes the **3 resuscitation / early-warning instruments** of
+`lib/resus-trauma-v207.js` — the BLS/ALS Termination-of-Resuscitation rules, the
+Rapid Emergency Medicine Score (REMS), and the Cardiac Arrest Risk Triage (CART)
+score. This brings the exposed total to **492 calculators across 109 modules**.
+The TOR rule set is an enum; every other TOR input is a boolean arrest fact, and
+REMS and CART take plain numeric vitals.
+
 ## Exposed
 
 Each id below is live in `mcp/catalog.js`. The gate parses this list.
@@ -1181,6 +1190,11 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 - `rotterdam-ct`
 - `marshall-ct`
 - `func-score`
+
+### lib/resus-trauma-v207.js
+- `tor-rule`
+- `rems`
+- `cart-score`
 
 ## Not yet adapted
 

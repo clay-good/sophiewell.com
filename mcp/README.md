@@ -73,7 +73,7 @@ strings; booleans as `true`/`false`; enums by their listed string values.
 
 ```
 list_calculators { "specialty": "hepatology" }
-  -> { coverage: "489 of 1109 catalog tiles exposed ...", calculators: [ { id: "meld-xi", ... }, ... ] }
+  -> { coverage: "492 of 1109 catalog tiles exposed ...", calculators: [ { id: "meld-xi", ... }, ... ] }
 
 describe_calculator { "id": "meld-xi" }
   -> { inputSchema: { ... mx-bili, mx-creat ... }, citation: "Heuman DM ... Liver Transpl 2007", ... }
@@ -153,9 +153,10 @@ added the MECKI CPET-anchored heart-failure prognosis score, a twenty-fifth
 added the perioperative / TIA-risk cluster (DASI, ABCD3-I, SORT), a
 twenty-sixth added the nephrology / fluid-and-electrolyte cluster (CCCR, ABL,
 EFWC, TmP/GFR, urinary calcium), a twenty-seventh added the pulmonary / COPD
-/ sleep cluster (CAT, LENT, ADO, DOSE, SACS), and a twenty-eighth added the TBI /
-stroke prognostic cluster (Essen, Rotterdam CT, Marshall CT, FUNC), for 489
-across 108 modules today.
+/ sleep cluster (CAT, LENT, ADO, DOSE, SACS), a twenty-eighth added the TBI /
+stroke prognostic cluster (Essen, Rotterdam CT, Marshall CT, FUNC), and a
+twenty-ninth added the resuscitation / early-warning cluster (TOR rules, REMS,
+CART), for 492 across 109 modules today.
 Later waves extend it module by module against the same contract.
 
 ## Design

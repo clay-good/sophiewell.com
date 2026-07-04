@@ -507,6 +507,13 @@ test('lib/tbi-stroke-v206.js worked calls (wave 28)', () => {
   assert.equal(ok('func-score', { 'func-vol': '20', 'func-age': '60', 'func-loc': 'lobar', 'func-gcs': '14' }).score, 11);
 });
 
+test('lib/resus-trauma-v207.js worked calls (wave 29)', () => {
+  assert.equal(ok('tor-rule', { 'tor-rule': 'bls' }).met, true);
+  assert.equal(ok('tor-rule', { 'tor-rule': 'bls', 'tor-rosc': '1' }).met, false);
+  assert.equal(ok('rems', { 'rems-age': '80', 'rems-map': '60', 'rems-hr': '130', 'rems-rr': '30', 'rems-spo2': '88', 'rems-gcs': '10' }).score, 14);
+  assert.equal(ok('cart-score', { 'cart-rr': '27', 'cart-hr': '145', 'cart-dbp': '38', 'cart-age': '72' }).score, 43);
+});
+
 // The enum->boolean adapter transform reaches the lib: el-ganzouri prognath and
 // elapss earlierSah both map a yes/no select onto a lib boolean.
 test('enum->boolean adapter transform reaches the lib (elapss earlierSah)', () => {
