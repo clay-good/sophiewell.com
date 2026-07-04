@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
 Build ID: `cbf15f7fd5179aab`
-Generated: 2026-07-04T17:13:07.760Z
+Generated: 2026-07-04T18:18:08.058Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=20.18.1 <21, npm >=10.0.0

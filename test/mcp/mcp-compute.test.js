@@ -695,6 +695,14 @@ test('lib/mixed-v227.js worked calls (wave 49)', () => {
   assert.equal(ok('who-dengue-2009', { 'dg-abd': '1', 'dg-vom': '1' }).tier, 'dengue with warning signs');
 });
 
+test('lib/mixed-v228.js worked calls (wave 50)', () => {
+  assert.equal(ok('england-fraser-index', { 'ef-mcv': '65', 'ef-rbc': '5.5', 'ef-hb': '12.5' }).score, -6.4);
+  assert.equal(ok('sirdah-index', { 'sd-mcv': '65', 'sd-rbc': '5.5', 'sd-hb': '12.5' }).score, 22);
+  assert.equal(ok('rdw-index', { 'rdwi-mcv': '65', 'rdwi-rdw': '14', 'rdwi-rbc': '5.5' }).score, 165.5);
+  assert.equal(ok('srivastava-index', { 'sv-mch': '20', 'sv-rbc': '5.5' }).score, 3.6);
+  assert.equal(ok('ehsani-index', { 'eh-mcv': '65', 'eh-rbc': '5.5' }).score, 10);
+});
+
 // The enum->boolean adapter transform reaches the lib: el-ganzouri prognath and
 // elapss earlierSah both map a yes/no select onto a lib boolean.
 test('enum->boolean adapter transform reaches the lib (elapss earlierSah)', () => {

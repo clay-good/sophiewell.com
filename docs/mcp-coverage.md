@@ -680,6 +680,14 @@ Score, and the WHO 2009 dengue classification. This brings the exposed total to
 **605 calculators across 129 modules**. BATT, Denver, and ETS take a few numeric
 vitals; every other input is a boolean criterion.
 
+## Fiftieth wave — 1 module
+
+This slice exposes the **5 microcytic-anemia RBC discrimination indices** of
+`lib/mixed-v228.js` — the England & Fraser discriminant function and the Sirdah,
+RDW, Srivastava, and Ehsani indices, each screening beta-thalassemia trait
+versus iron-deficiency anemia from routine CBC parameters. This brings the
+exposed total to **610 calculators across 130 modules**. All inputs are numeric.
+
 ## Exposed
 
 Each id below is live in `mcp/catalog.js`. The gate parses this list.
@@ -1546,6 +1554,13 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 - `denver-ed-tof`
 - `ets`
 - `who-dengue-2009`
+
+### lib/mixed-v228.js
+- `england-fraser-index`
+- `sirdah-index`
+- `rdw-index`
+- `srivastava-index`
+- `ehsani-index`
 
 ## Not yet adapted
 
