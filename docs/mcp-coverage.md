@@ -339,6 +339,17 @@ disease, anterior MI, ischemic time, and anemia are booleans; and sex, support
 level, Killip class, and post-PCI TIMI flow are enums whose values mirror the
 renderer's select options.
 
+## Sixteenth wave — 1 module
+
+This slice exposes the **4 invasive- / echocardiographic-hemodynamics
+calculators** of `lib/hemo-v194.js` — the Pulmonary Artery Pulsatility Index
+(PAPi), the transpulmonary and diastolic pressure gradients (TPG & DPG), the Tei
+myocardial performance index (MPI), and the pulmonary shunt fraction (Qs/Qt).
+This brings the exposed total to **439 calculators across 96 modules**. All four
+take flat numeric pressures, times, saturations, and tensions through the
+default `makeToArgs`; the transpulmonary-gradient tile's dom keys carry the
+`tpg-` prefix while its compute function is `pressureGradients`.
+
 ## Exposed
 
 Each id below is live in `mcp/catalog.js`. The gate parses this list.
@@ -967,6 +978,12 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 - `zwolle-pci`
 - `timi-risk-index`
 - `cadillac-risk`
+
+### lib/hemo-v194.js
+- `papi`
+- `transpulmonary-gradient`
+- `tei-index`
+- `shunt-fraction`
 
 ## Not yet adapted
 

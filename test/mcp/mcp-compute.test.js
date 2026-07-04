@@ -405,6 +405,15 @@ test('lib/acs-v193.js worked calls (wave 15)', () => {
   assert.equal(ok('cadillac-risk', { 'cad-lvef': '55', 'cad-crcl': '80', 'cad-age': '60', 'cad-killip': '1', 'cad-timi': '3' }).score, 0);
 });
 
+test('lib/hemo-v194.js worked calls (wave 16)', () => {
+  assert.equal(ok('papi', { 'papi-pasp': '40', 'papi-padp': '20', 'papi-rap': '18' }).value, 1.11);
+  const g = ok('transpulmonary-gradient', { 'tpg-mpap': '40', 'tpg-padp': '30', 'tpg-pcwp': '20' });
+  assert.equal(g.tpg, 20);
+  assert.equal(g.dpg, 10);
+  assert.equal(ok('tei-index', { 'tei-ivct': '80', 'tei-ivrt': '90', 'tei-et': '250' }).value, 0.68);
+  assert.equal(ok('shunt-fraction', { 'shunt-hb': '15', 'shunt-pao2a': '110', 'shunt-sao2': '99', 'shunt-pao2': '95', 'shunt-svo2': '75', 'shunt-pvo2': '40' }).pct, 4.7);
+});
+
 // The enum->boolean adapter transform reaches the lib: el-ganzouri prognath and
 // elapss earlierSah both map a yes/no select onto a lib boolean.
 test('enum->boolean adapter transform reaches the lib (elapss earlierSah)', () => {
