@@ -144,6 +144,7 @@ import rheumClassificationV222 from './adapters/rheum-classification-v222.js';
 import dermatologyV223 from './adapters/dermatology-v223.js';
 import neurologyV224 from './adapters/neurology-v224.js';
 import obgynV225 from './adapters/obgyn-v225.js';
+import nephrologyV226 from './adapters/nephrology-v226.js';
 
 const ADAPTER_MODULES = [
   ['tox-v86', toxV86],
@@ -273,6 +274,7 @@ const ADAPTER_MODULES = [
   ['dermatology-v223', dermatologyV223],
   ['neurology-v224', neurologyV224],
   ['obgyn-v225', obgynV225],
+  ['nephrology-v226', nephrologyV226],
 ];
 
 const HERE = dirname(fileURLToPath(import.meta.url));

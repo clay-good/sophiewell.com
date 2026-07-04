@@ -661,6 +661,16 @@ Blatt-Kupperman index. This brings the exposed total to **593 calculators across
 127 modules**. Nugent's three morphotype selects are numeric-string enums; the
 symptom/grade panels are numeric 0-N scores and the Amsel items are booleans.
 
+## Forty-eighth wave — 1 module
+
+This slice exposes the **6 nephrology / fluid-and-electrolyte instruments** of
+`lib/nephrology-v226.js` — the Watson total-body-water estimate, the
+Salazar-Corcoran creatinine clearance for obesity, the estimated plasma volume
+status (ePVS), the furosemide stress test, the fractional excretion of
+bicarbonate, and the pH-corrected serum potassium. This brings the exposed total
+to **599 calculators across 128 modules**. All inputs are numeric labs /
+anthropometry plus a couple of boolean flags.
+
 ## Exposed
 
 Each id below is live in `mcp/catalog.js`. The gate parses this list.
@@ -1511,6 +1521,14 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 - `thompson-hie`
 - `menopause-rating-scale`
 - `kupperman-index`
+
+### lib/nephrology-v226.js
+- `watson-tbw`
+- `salazar-corcoran`
+- `epvs`
+- `furosemide-stress-test`
+- `fe-bicarbonate`
+- `corrected-potassium-ph`
 
 ## Not yet adapted
 

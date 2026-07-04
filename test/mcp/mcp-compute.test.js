@@ -675,6 +675,17 @@ test('lib/obgyn-v225.js worked calls (wave 47)', () => {
   assert.equal(ok('kupperman-index', { 'ku-flush': '3', 'ku-ins': '2', 'ku-nerv': '2' }).score, 20);
 });
 
+test('lib/nephrology-v226.js worked calls (wave 48)', () => {
+  assert.equal(ok('watson-tbw', { 'wt-age': '40', 'wt-ht': '175', 'wt-wt': '80' }).value, 44.5);
+  assert.equal(ok('salazar-corcoran', { 'sc-age': '50', 'sc-wt': '120', 'sc-ht': '170', 'sc-scr': '1.2' }).value, 98.3);
+  assert.equal(ok('epvs', { 'ep-hct': '40', 'ep-hb': '13' }).value, 4.62);
+  const fst = ok('furosemide-stress-test', { 'fst-wt': '70', 'fst-uop': '150' });
+  assert.equal(fst.dose, 70);
+  assert.equal(fst.progression, true);
+  assert.equal(ok('fe-bicarbonate', { 'fe-uhco3': '20', 'fe-phco3': '24', 'fe-pcr': '1.0', 'fe-ucr': '50' }).value, 1.67);
+  assert.equal(ok('corrected-potassium-ph', { 'kc-k': '5.4', 'kc-ph': '7.2' }).corrected, 4.2);
+});
+
 // The enum->boolean adapter transform reaches the lib: el-ganzouri prognath and
 // elapss earlierSah both map a yes/no select onto a lib boolean.
 test('enum->boolean adapter transform reaches the lib (elapss earlierSah)', () => {
