@@ -73,7 +73,7 @@ strings; booleans as `true`/`false`; enums by their listed string values.
 
 ```
 list_calculators { "specialty": "hepatology" }
-  -> { coverage: "430 of 816 catalog tiles exposed ...", calculators: [ { id: "meld-xi", ... }, ... ] }
+  -> { coverage: "435 of 1109 catalog tiles exposed ...", calculators: [ { id: "meld-xi", ... }, ... ] }
 
 describe_calculator { "id": "meld-xi" }
   -> { inputSchema: { ... mx-bili, mx-creat ... }, citation: "Heuman DM ... Liver Transpl 2007", ... }
@@ -133,7 +133,10 @@ specialty-completion surface — bedside pediatrics/EMS, pharmacology, diagnosti
 imaging, frailty & geriatric oncology, functional/fall-risk status, hepatology,
 infectious disease, lymphoma/CLL and plasma-cell/myeloid staging,
 neuro-disability grading, pediatric acute severity and growth, and the SCORAD
-dermatology score), for 430 across 94 modules today.
+dermatology score); and a fifteenth wave began the post-parity specialist
+modules with the acute-coronary / primary-PCI / cardiogenic-shock risk cluster
+(CRUSADE, SCAI SHOCK, Zwolle, TIMI Risk Index, CADILLAC), for 435 across 95
+modules today.
 Later waves extend it module by module against the same contract.
 
 ## Design

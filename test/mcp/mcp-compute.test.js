@@ -392,6 +392,19 @@ test('lib/warfarin-v133.js worked calls (wave 13)', () => {
   assert.equal(ok('warfarin-init-5mg', { 'w5-day': '3', 'w5-inr': '1.6' }).dose, 5);
 });
 
+test('lib/acs-v193.js worked calls (wave 15)', () => {
+  assert.equal(ok('crusade', { 'crusade-hct': '35', 'crusade-crcl': '50', 'crusade-hr': '95', 'crusade-sex': 'female', 'crusade-sbp': '85', 'crusade-chf': '1', 'crusade-dm': '1' }).score, 68);
+  assert.equal(ok('crusade', { 'crusade-hct': '45', 'crusade-crcl': '130', 'crusade-hr': '60', 'crusade-sex': 'male', 'crusade-sbp': '130' }).score, 1);
+  assert.equal(ok('scai-shock', { 'scai-sbp': '80', 'scai-lactate': '3', 'scai-support': 'one' }).stage, 'C');
+  assert.equal(ok('scai-shock', { 'scai-sbp': '120', 'scai-lactate': '1', 'scai-support': 'none' }).stage, 'A');
+  assert.equal(ok('scai-shock', { 'scai-sbp': '80', 'scai-lactate': '6', 'scai-support': 'none', 'scai-arrest': '1' }).stage, 'E');
+  assert.equal(ok('zwolle-pci', { 'zwolle-killip': '3-4', 'zwolle-timi': '0-1', 'zwolle-age': '70', 'zwolle-3vd': '1', 'zwolle-ant': '1', 'zwolle-time': '1' }).score, 16);
+  assert.equal(ok('zwolle-pci', { 'zwolle-killip': '1', 'zwolle-timi': '3', 'zwolle-age': '45' }).score, 0);
+  assert.equal(ok('timi-risk-index', { 'tri-hr': '100', 'tri-age': '70', 'tri-sbp': '120' }).value, 40.8);
+  assert.equal(ok('cadillac-risk', { 'cad-lvef': '30', 'cad-crcl': '50', 'cad-age': '70', 'cad-killip': '2-3', 'cad-timi': '0-2', 'cad-anemia': '1', 'cad-3vd': '1' }).score, 18);
+  assert.equal(ok('cadillac-risk', { 'cad-lvef': '55', 'cad-crcl': '80', 'cad-age': '60', 'cad-killip': '1', 'cad-timi': '3' }).score, 0);
+});
+
 // The enum->boolean adapter transform reaches the lib: el-ganzouri prognath and
 // elapss earlierSah both map a yes/no select onto a lib boolean.
 test('enum->boolean adapter transform reaches the lib (elapss earlierSah)', () => {

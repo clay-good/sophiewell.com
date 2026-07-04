@@ -111,6 +111,7 @@ import pedsV140 from './adapters/peds-v140.js';
 import pedsGrowthV141 from './adapters/peds-growth-v141.js';
 import pedsPercentileV169 from './adapters/peds-percentile-v169.js';
 import dermV151 from './adapters/derm-v151.js';
+import acsV193 from './adapters/acs-v193.js';
 
 const ADAPTER_MODULES = [
   ['tox-v86', toxV86],
@@ -207,6 +208,7 @@ const ADAPTER_MODULES = [
   ['peds-growth-v141', pedsGrowthV141],
   ['peds-percentile-v169', pedsPercentileV169],
   ['derm-v151', dermV151],
+  ['acs-v193', acsV193],
 ];
 
 const HERE = dirname(fileURLToPath(import.meta.url));

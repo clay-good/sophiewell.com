@@ -7,7 +7,7 @@ deterministic MCP tools. `scripts/check-mcp-catalog.mjs` asserts that the
 exactly — no more, no less — and that each exposed example round-trips.
 
 The MCP coverage count is a **subset** of the catalog and is deliberately
-**not** one of the 13 catalog-truth count surfaces (spec-v46): it must never be
+**not** one of the 12 catalog-truth count surfaces (spec-v46): it must never be
 conflated with `UTILITIES.length`. The live total is reported at runtime by
 `list_calculators` (`"<N> of <M> catalog tiles exposed"`), never hardcoded here.
 
@@ -324,6 +324,20 @@ not the flat scalar contract; and `wagner-dfu` / `university-texas-dfu`
 precedent). `peds-bmi-percentile` exposes BMI directly rather than the browser's
 optional weight/height unit-toggle path — the pure function takes BMI and never
 sees the unit inputs (the warfarin height/weight precedent).
+
+## Fifteenth wave — 1 module
+
+The post-parity specialist modules (spec-v193 onward) begin. This slice exposes
+the **5 acute-coronary / primary-PCI / cardiogenic-shock risk calculators** of
+`lib/acs-v193.js` — the CRUSADE major-bleeding score for NSTEMI, the SCAI SHOCK
+stage, the Zwolle primary-PCI early-discharge score, the TIMI Risk Index, and
+the CADILLAC post-PCI mortality score. This brings the exposed total to
+**435 calculators across 95 modules**. All five use the flat `dom→arg→kind`
+contract and the default `makeToArgs`: labs, vitals, and ages are numbers;
+heart-failure signs, prior vascular disease, diabetes, arrest, three-vessel
+disease, anterior MI, ischemic time, and anemia are booleans; and sex, support
+level, Killip class, and post-PCI TIMI flow are enums whose values mirror the
+renderer's select options.
 
 ## Exposed
 
@@ -946,6 +960,13 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/derm-v151.js
 - `scorad`
+
+### lib/acs-v193.js
+- `crusade`
+- `scai-shock`
+- `zwolle-pci`
+- `timi-risk-index`
+- `cadillac-risk`
 
 ## Not yet adapted
 
