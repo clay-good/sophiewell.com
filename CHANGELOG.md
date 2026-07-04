@@ -6,6 +6,19 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v257 — diving / hyperbaric-medicine formulas, 1106 → 1109; +100 milestone)
+
+- Three well-established deterministic formulas, closing the +100 catalog program
+  (1009 → 1109). New module `lib/dive-v257.js`, renderers `views/group-v257.js`
+  (RV257). Each id was verified absent by a fixed-string scan of the extracted app.js
+  id/name lists AND the MCP adapter set (spec-v85 §6.2); each computes a depth/
+  exposure value — none diagnoses or orders (spec-v11 §5.3). Formulas cross-verified
+  against ≥2 open sources (spec-v97).
+- **Nitrox MOD** (`maximum-operating-depth`): 10 × (PO2max/FO2 − 1). **Nitrox EAD**
+  (`equivalent-air-depth`): (depth + 10)·(FN2/0.79) − 10. **Pulmonary OTU**
+  (`oxygen-toxicity-units`): t·[(PO2 − 0.5)/0.5]^0.83, ~615 single-dive limit. All
+  Class A.
+
 ### Added (spec-v256 — rheumatology + critical-care tools, 1102 → 1106)
 
 - Four well-established deterministic tools. New module `lib/rheumcrit-v256.js`,

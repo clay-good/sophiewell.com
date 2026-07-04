@@ -246,6 +246,7 @@ import * as radmeasureV253 from '../../lib/radmeasure-v253.js';
 import * as enturopsychV254 from '../../lib/enturopsych-v254.js';
 import * as riskscoresV255 from '../../lib/riskscores-v255.js';
 import * as rheumcritV256 from '../../lib/rheumcrit-v256.js';
+import * as diveV257 from '../../lib/dive-v257.js';
 
 const MODULES = {
   'clinical.js': clinical,
@@ -436,6 +437,7 @@ const MODULES = {
   'enturopsych-v254.js': enturopsychV254,
   'riskscores-v255.js': riskscoresV255,
   'rheumcrit-v256.js': rheumcritV256,
+  'dive-v257.js': diveV257,
 };
 
 const MATRIX = [0, -1, 1e9, NaN, Infinity, -Infinity, '', undefined, null];
