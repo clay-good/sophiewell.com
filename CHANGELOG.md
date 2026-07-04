@@ -6,6 +6,18 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v254 — ENT / urology / psychiatry screening tools, 1094 → 1098)
+
+- Four well-established deterministic tools. New module `lib/enturopsych-v254.js`,
+  renderers `views/group-v254.js` (RV254). Each id was verified absent by a
+  fixed-string scan of the extracted app.js id/name lists AND the MCP adapter set
+  (spec-v85 §6.2); each scores/grades/computes a value — none diagnoses or orders
+  (spec-v11 §5.3). Point systems cross-verified against ≥2 open sources (spec-v97).
+- **RSI** (`reflux-symptom-index`, Belafsky 2002): 9 items × 0-5, > 13 LPR.
+  **Lund-Mackay** (`lund-mackay`, 1993): 5 sinuses × 0-2 + OMC, 0-24. **BOOI/BCI**
+  (`bladder-outlet-obstruction-index`, Abrams 1999). **Fagerstrom** (`fagerstrom-ftnd`,
+  1991): 6 items, 0-10. All Class A.
+
 ### Added (spec-v253 — radiologic measurements & scores, 1090 → 1094)
 
 - Four well-established deterministic calculators. New module
