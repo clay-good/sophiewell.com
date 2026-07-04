@@ -6,6 +6,19 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v243 — ENT / sleep screening tools, 1050 → 1054)
+
+- Four well-established deterministic tools. New module `lib/entsleep-v243.js`,
+  renderers `views/group-v243.js` (RV243). Each id was verified absent by a
+  fixed-string scan of the extracted app.js id/name lists AND the MCP adapter set
+  (spec-v85 §6.2); each scores/screens/computes a value — none diagnoses or orders
+  (spec-v11 §5.3). Point systems/formulas cross-verified against ≥2 open sources
+  (spec-v97).
+- **NOSE scale** (`nose-scale`, Stewart 2004): 5 items × 0-4 × 5. **Reflux Finding
+  Score** (`rfs-reflux-finding`, Belafsky 2001): 8 laryngoscopic findings 0-26, > 7
+  LPR. **No-Apnea** (`no-apnea-score`, Duarte 2018): neck + age 0-9, > 3 high OSA
+  risk. **Sleep efficiency** (`sleep-efficiency`): TST/TIB × 100. All Class A.
+
 ### Added (spec-v242 — environmental heat / cold exposure indices, 1046 → 1050)
 
 - Four well-established deterministic indices. New module `lib/environ-v242.js`,
