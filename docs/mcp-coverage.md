@@ -491,6 +491,14 @@ Global Assessment (SGA). This brings the exposed total to **496 calculators
 across 110 modules**. sFlt-1/PlGF phase, GLIM's weight-loss and low-BMI
 severities, and the SGA rating are enums mirroring the renderer selects.
 
+## Thirty-first wave — 1 module
+
+This slice exposes the **2 cardiology risk engines** of
+`lib/cardiology-risk-v209.js` — the HCM Risk-SCD 5-year sudden-cardiac-death
+model and the CHARGE-AF 5-year incident-atrial-fibrillation model. This brings
+the exposed total to **498 calculators across 111 modules**. Every clinical flag
+is a boolean and the remaining inputs are plain numeric measurements.
+
 ## Exposed
 
 Each id below is live in `mcp/catalog.js`. The gate parses this list.
@@ -1210,6 +1218,10 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 - `sflt1-plgf`
 - `glim-malnutrition`
 - `sga-nutrition`
+
+### lib/cardiology-risk-v209.js
+- `hcm-risk-scd`
+- `charge-af`
 
 ## Not yet adapted
 

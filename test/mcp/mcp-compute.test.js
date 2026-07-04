@@ -521,6 +521,11 @@ test('lib/nutrition-maternal-v208.js worked calls (wave 30)', () => {
   assert.equal(ok('sga-nutrition', { 'sga-rating': 'C' }).rating, 'C');
 });
 
+test('lib/cardiology-risk-v209.js worked calls (wave 31)', () => {
+  assert.equal(ok('hcm-risk-scd', { 'hcm-age': '40', 'hcm-mwt': '25', 'hcm-la': '45', 'hcm-lvot': '50', 'hcm-nsvt': '1' }).score, 7.35);
+  assert.equal(ok('charge-af', { 'charge-age': '65', 'charge-height': '170', 'charge-weight': '80', 'charge-sbp': '130', 'charge-dbp': '80', 'charge-white': '1', 'charge-antihtn': '1' }).score, 3.23);
+});
+
 // The enum->boolean adapter transform reaches the lib: el-ganzouri prognath and
 // elapss earlierSah both map a yes/no select onto a lib boolean.
 test('enum->boolean adapter transform reaches the lib (elapss earlierSah)', () => {
