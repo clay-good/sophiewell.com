@@ -73,7 +73,7 @@ strings; booleans as `true`/`false`; enums by their listed string values.
 
 ```
 list_calculators { "specialty": "hepatology" }
-  -> { coverage: "466 of 1109 catalog tiles exposed ...", calculators: [ { id: "meld-xi", ... }, ... ] }
+  -> { coverage: "471 of 1109 catalog tiles exposed ...", calculators: [ { id: "meld-xi", ... }, ... ] }
 
 describe_calculator { "id": "meld-xi" }
   -> { inputSchema: { ... mx-bili, mx-creat ... }, citation: "Heuman DM ... Liver Transpl 2007", ... }
@@ -145,9 +145,11 @@ the quantitative thyroid / beta-cell cluster (SPINA-GT, SPINA-GD, Jostel TSH
 index, HOMA-B, oral disposition index), a twentieth added the
 cross-subspecialty prognostic cluster (CNS-IPI, ISTH-BAT, VIRSTA, SeLECT,
 WHO/FIGO GTN), a twenty-first added the myeloid-neoplasm / transplant
-prognostic cluster (MIPSS70, GIPSS, MYSEC-PM, Sorror HCT-CI), and a
+prognostic cluster (MIPSS70, GIPSS, MYSEC-PM, Sorror HCT-CI), a
 twenty-second added the critical-care severity / acid-base cluster (OASIS, LODS,
-delta gap, APPS), for 466 across 102 modules today.
+delta gap, APPS), and a twenty-third added the hepatology / GI-bleed cluster
+(Glasgow-Blatchford, CLIF-C AD, Hepamet, CLIP, Agile 3+), for 471 across 103
+modules today.
 Later waves extend it module by module against the same contract.
 
 ## Design

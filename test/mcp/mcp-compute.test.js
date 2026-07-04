@@ -465,6 +465,14 @@ test('lib/critcare-severity-v200.js worked calls (wave 22)', () => {
   assert.equal(ok('apps-ards', { 'apps-age': '70', 'apps-pf': '90', 'apps-plateau': '32' }).score, 9);
 });
 
+test('lib/hepatology-gibleed-v201.js worked calls (wave 23)', () => {
+  assert.equal(ok('glasgow-blatchford', { 'gbs-ureaunit': 'mmol', 'gbs-urea': '12', 'gbs-sex': 'male', 'gbs-hb': '11', 'gbs-sbp': '95', 'gbs-pulse': '1', 'gbs-melena': '1' }).score, 11);
+  assert.equal(ok('clif-c-ad', { 'clifad-age': '65', 'clifad-creat': '2.0', 'clifad-inr': '1.6', 'clifad-wbc': '12', 'clifad-na': '128' }).score, 70);
+  assert.equal(ok('hepamet-fibrosis', { 'hep-age': '68', 'hep-sex': 'male', 'hep-ast': '90', 'hep-alb': '3.5', 'hep-plt': '120', 'hep-dm': '1' }).score, 0.948);
+  assert.equal(ok('clip-hcc', { 'clip-child': 'B', 'clip-morph': 'multi', 'clip-afp': '500', 'clip-pvt': '1' }).score, 4);
+  assert.equal(ok('agile-3plus', { 'agile-lsm': '12', 'agile-ast': '50', 'agile-alt': '40', 'agile-plt': '180', 'agile-age': '60', 'agile-sex': 'male', 'agile-dm': '1' }).score, 0.868);
+});
+
 // The enum->boolean adapter transform reaches the lib: el-ganzouri prognath and
 // elapss earlierSah both map a yes/no select onto a lib boolean.
 test('enum->boolean adapter transform reaches the lib (elapss earlierSah)', () => {

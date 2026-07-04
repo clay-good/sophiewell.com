@@ -119,6 +119,7 @@ import endoQuantV197 from './adapters/endo-quant-v197.js';
 import subspecialtyV198 from './adapters/subspecialty-v198.js';
 import myeloidPrognosisV199 from './adapters/myeloid-prognosis-v199.js';
 import critcareSeverityV200 from './adapters/critcare-severity-v200.js';
+import hepatologyGibleedV201 from './adapters/hepatology-gibleed-v201.js';
 
 const ADAPTER_MODULES = [
   ['tox-v86', toxV86],
@@ -223,6 +224,7 @@ const ADAPTER_MODULES = [
   ['subspecialty-v198', subspecialtyV198],
   ['myeloid-prognosis-v199', myeloidPrognosisV199],
   ['critcare-severity-v200', critcareSeverityV200],
+  ['hepatology-gibleed-v201', hepatologyGibleedV201],
 ];
 
 const HERE = dirname(fileURLToPath(import.meta.url));

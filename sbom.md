@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `322d98d4348a6123`
-Generated: 2026-07-04T13:50:12.519Z
+Build ID: `563c1643f7dc33a7`
+Generated: 2026-07-04T13:56:54.122Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=20.18.1 <21, npm >=10.0.0
@@ -122,7 +122,7 @@ downloads is committed in this repository and is hashed below.
 | `lib/hep-fibrosis-portal-v212.js` | 6585 | `93bb19ad8fac24e2e86c21bd76be22c40b3df7ec8d1a8888002c643453d3223a` |
 | `lib/hep-v124.js` | 12530 | `9ab4bc19416297163fc8917ebd848a65105f65004f680219067e9c838c8ae9b9` |
 | `lib/hep-v125.js` | 11783 | `6b9383681fba0eb6b3576be4537ee3e10308b92b4f5e8729d461fa987e7a7391` |
-| `lib/hepatology-gibleed-v201.js` | 19445 | `f851ebd01bbfc6417570f110fc0b2181fb47f59fc9af957b17a9ae130d768dc4` |
+| `lib/hepatology-gibleed-v201.js` | 19770 | `b13202719fc096c742097095af56bcd722c07b67f7e138a791e72cd818eb7da6` |
 | `lib/hepatology-prognosis-v220.js` | 11769 | `1f9c49980dee9a6c4959fb670f74c99b1bbd44eab695f06dee16190eee21addb` |
 | `lib/hepgi-v190.js` | 11863 | `18fdde7face8dec98d83118b4840f01f3e93a7594a0cade787ab75771707e239` |
 | `lib/hepgi-v93.js` | 16557 | `da0b9334402347bc6df213ea918b786cdbdc0111529197212bd12ad77626c591` |

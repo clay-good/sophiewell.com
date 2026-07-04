@@ -414,6 +414,17 @@ calculators across 102 modules**. OASIS and LODS take worst-24h physiology as
 numbers plus mechanical-ventilation and prothrombin boolean flags; delta gap's
 albumin correction and reference-gap overrides are optional numbers.
 
+## Twenty-third wave — 1 module
+
+This slice exposes the **5 hepatology / GI-bleed instruments** of
+`lib/hepatology-gibleed-v201.js` — the Glasgow-Blatchford upper-GI-bleed score,
+CLIF-C AD (acute decompensation, pre-ACLF), the Hepamet fibrosis score, the CLIP
+HCC prognostic score, and Agile 3+ (FibroScan advanced-fibrosis probability).
+This brings the exposed total to **471 calculators across 103 modules**. Labs and
+vitals pass as numbers; Glasgow-Blatchford's urea-unit and sex, Hepamet/Agile
+sex, and CLIP's Child-Pugh and morphology are categorical enums mirroring the
+renderer selects, with the usual boolean clinical flags.
+
 ## Exposed
 
 Each id below is live in `mcp/catalog.js`. The gate parses this list.
@@ -1087,6 +1098,13 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 - `lods`
 - `delta-gap`
 - `apps-ards`
+
+### lib/hepatology-gibleed-v201.js
+- `glasgow-blatchford`
+- `clif-c-ad`
+- `hepamet-fibrosis`
+- `clip-hcc`
+- `agile-3plus`
 
 ## Not yet adapted
 
