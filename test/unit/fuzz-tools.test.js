@@ -241,6 +241,7 @@ import * as woundidV248 from '../../lib/woundid-v248.js';
 import * as renalpulmV249 from '../../lib/renalpulm-v249.js';
 import * as obgynV250 from '../../lib/obgyn-v250.js';
 import * as cardiometabV251 from '../../lib/cardiometab-v251.js';
+import * as orthospineV252 from '../../lib/orthospine-v252.js';
 
 const MODULES = {
   'clinical.js': clinical,
@@ -426,6 +427,7 @@ const MODULES = {
   'renalpulm-v249.js': renalpulmV249,
   'obgyn-v250.js': obgynV250,
   'cardiometab-v251.js': cardiometabV251,
+  'orthospine-v252.js': orthospineV252,
 };
 
 const MATRIX = [0, -1, 1e9, NaN, Infinity, -Infinity, '', undefined, null];

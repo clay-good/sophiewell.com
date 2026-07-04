@@ -6,6 +6,19 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v252 — orthopedic / spine radiographic ratios, 1086 → 1090)
+
+- Four well-established deterministic ratios & scores. New module
+  `lib/orthospine-v252.js`, renderers `views/group-v252.js` (RV252). Each id was
+  verified absent by a fixed-string scan of the extracted app.js id/name lists AND
+  the MCP adapter set (spec-v85 §6.2); each computes a ratio/grade/score — none
+  diagnoses or orders (spec-v11 §5.3). Ratios/scores cross-verified against ≥2 open
+  sources (spec-v97).
+- **Insall-Salvati** (`insall-salvati-ratio`, 1971): tendon/patella, 0.8-1.2 normal.
+  **Torg-Pavlov** (`torg-pavlov-ratio`, 1987): canal/body, ≤ 0.8 stenosis.
+  **Meyerding** (`meyerding-spondylolisthesis`, 1932): % slip → grade I-V.
+  **Beighton** (`beighton-hypermobility`, 1973): 0-9, ≥ 5 hypermobile. All Class A.
+
 ### Added (spec-v251 — cardiometabolic formulas, 1082 → 1086)
 
 - Four well-established deterministic formulas. New module `lib/cardiometab-v251.js`,
