@@ -6,6 +6,19 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v256 — rheumatology + critical-care tools, 1102 → 1106)
+
+- Four well-established deterministic tools. New module `lib/rheumcrit-v256.js`,
+  renderers `views/group-v256.js` (RV256). Each id was verified absent by a
+  fixed-string scan of the extracted app.js id/name lists AND the MCP adapter set
+  (spec-v85 §6.2); each scores/grades/computes a value — none diagnoses or orders
+  (spec-v11 §5.3). Point systems/formulas cross-verified against ≥2 open sources
+  (spec-v97).
+- **MASES** (`mases-enthesitis`, 2003): 13 sites, ≥ 1 enthesitis. **MMT-8**
+  (`mmt8-myositis`, IMACS): 8 muscles × 0-10. **IDS** (`intubation-difficulty-scale`,
+  Adnet 1997): N1-N7, > 5 difficult. **CROP** (`crop-index`, Yang-Tobin 1991): ≥ 13
+  favors extubation. All Class A.
+
 ### Added (spec-v255 — risk & severity scores, 1098 → 1102)
 
 - Four well-established deterministic scores. New module `lib/riskscores-v255.js`,
