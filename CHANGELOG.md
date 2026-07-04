@@ -6,6 +6,18 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v251 — cardiometabolic formulas, 1082 → 1086)
+
+- Four well-established deterministic formulas. New module `lib/cardiometab-v251.js`,
+  renderers `views/group-v251.js` (RV251). Each id was verified absent by a
+  fixed-string scan of the extracted app.js id/name lists AND the MCP adapter set
+  (spec-v85 §6.2); each computes a value — none diagnoses or orders (spec-v11 §5.3).
+  Formulas cross-verified against ≥2 open sources (spec-v97).
+- **cTFC** (`corrected-timi-frame-count`, Gibson 1996): frames·30/fps, LAD ÷1.7.
+  **Tp-e/QT** (`tpe-qt-ratio`, Gupta 2008): > 0.25 increased. **SPISE** (`spise`,
+  Paulmichl 2016): 600·HDL^0.185/(TG^0.2·BMI^1.338), < 5.4 IR. **AIP**
+  (`atherogenic-index-of-plasma`, Dobiasova 2001): log10(TG/HDL). All Class A.
+
 ### Added (spec-v250 — obstetric calculators, 1078 → 1082)
 
 - Four well-established deterministic calculators. New module `lib/obgyn-v250.js`,
