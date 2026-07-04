@@ -559,6 +559,16 @@ DLCN, PADIT, and PROTECHT ordinal selects carry numeric-string point values
 (modeled as enums); the rest are numeric labs and boolean flags, with the same
 `'' → '0'` checkbox-example normalization as waves 35–36.
 
+## Thirty-eighth wave — 1 module
+
+This slice exposes the **7 hematology prognostic instruments** of
+`lib/heme-prognostic-v216.js` — the WPSS (MDS), MD Anderson CLL index, PIT
+(PTCL), PRIMA-PI (follicular lymphoma), Durie-Salmon myeloma stage, lymphocyte
+doubling time, and the Talcott febrile-neutropenia risk groups. This brings the
+exposed total to **531 calculators across 118 modules**. The WPSS, MDACC, and
+Durie-Salmon ordinal selects carry numeric-string point values (modeled as
+enums); the rest are numeric labs and boolean flags.
+
 ## Exposed
 
 Each id below is live in `mcp/catalog.js`. The gate parses this list.
@@ -1320,6 +1330,15 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 - `lipi`
 - `onkotev-score`
 - `protecht-score`
+
+### lib/heme-prognostic-v216.js
+- `wpss-mds`
+- `mdacc-cll-index`
+- `pit-ptcl`
+- `prima-pi`
+- `durie-salmon`
+- `lymphocyte-doubling-time`
+- `talcott-febrile-neutropenia`
 
 ## Not yet adapted
 

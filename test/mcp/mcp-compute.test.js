@@ -572,6 +572,16 @@ test('lib/risk-scores-v215.js worked calls (wave 37)', () => {
   assert.equal(ok('protecht-score', { 'prot-site': '2', 'prot-plt': '1', 'prot-plat': '1' }).score, 4);
 });
 
+test('lib/heme-prognostic-v216.js worked calls (wave 38)', () => {
+  assert.equal(ok('wpss-mds', { 'wpss-cat': '2', 'wpss-karyo': '1', 'wpss-tx': '1' }).score, 4);
+  assert.equal(ok('mdacc-cll-index', { 'mdacc-age': '70', 'mdacc-b2m': '2', 'mdacc-alc': '60', 'mdacc-male': '1' }).score, 7);
+  assert.equal(ok('pit-ptcl', { 'pit-age': '1', 'pit-ldh': '1' }).score, 2);
+  assert.equal(ok('prima-pi', { 'prima-b2m': '2', 'prima-marrow': '1' }).group, 'Intermediate');
+  assert.equal(ok('durie-salmon', { 'ds-hb': '7', 'ds-ca': '10', 'ds-lesions': '4', 'ds-mprot': '2', 'ds-cr': '1.0' }).stage, 'IIIA');
+  assert.equal(ok('lymphocyte-doubling-time', { 'ldt-alc1': '20', 'ldt-alc2': '40', 'ldt-int': '6' }).months, 6);
+  assert.equal(ok('talcott-febrile-neutropenia', { 'tal-inpt': '0', 'tal-comorb': '0', 'tal-cancer': '0' }).group, 'IV');
+});
+
 // The enum->boolean adapter transform reaches the lib: el-ganzouri prognath and
 // elapss earlierSah both map a yes/no select onto a lib boolean.
 test('enum->boolean adapter transform reaches the lib (elapss earlierSah)', () => {

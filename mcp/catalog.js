@@ -134,6 +134,7 @@ import hepFibrosisPortalV212 from './adapters/hep-fibrosis-portal-v212.js';
 import acuteInjuryV213 from './adapters/acute-injury-v213.js';
 import cardiologyRiskV214 from './adapters/cardiology-risk-v214.js';
 import riskScoresV215 from './adapters/risk-scores-v215.js';
+import hemePrognosticV216 from './adapters/heme-prognostic-v216.js';
 
 const ADAPTER_MODULES = [
   ['tox-v86', toxV86],
@@ -253,6 +254,7 @@ const ADAPTER_MODULES = [
   ['acute-injury-v213', acuteInjuryV213],
   ['cardiology-risk-v214', cardiologyRiskV214],
   ['risk-scores-v215', riskScoresV215],
+  ['heme-prognostic-v216', hemePrognosticV216],
 ];
 
 const HERE = dirname(fileURLToPath(import.meta.url));
