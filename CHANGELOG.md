@@ -6,6 +6,19 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v253 — radiologic measurements & scores, 1090 → 1094)
+
+- Four well-established deterministic calculators. New module
+  `lib/radmeasure-v253.js`, renderers `views/group-v253.js` (RV253). Each id was
+  verified absent by a fixed-string scan of the extracted app.js id/name lists AND
+  the MCP adapter set (spec-v85 §6.2); each computes a percentage/score/grade/volume
+  — none diagnoses or orders (spec-v11 §5.3). Formulas/point systems cross-verified
+  against ≥2 open sources (spec-v97).
+- **NASCET** (`nascet-carotid-stenosis`, 1991): (1−narrow/distal)×100. **Helsinki
+  CT** (`helsinki-ct-score`, Raj 2014): weighted CT features −3..+14. **Genant**
+  (`genant-vertebral-fracture`, 1993): % height loss → grade 0-3. **Testicular
+  volume** (`testicular-volume`, Lambert): L×W×H×0.71. All Class A.
+
 ### Added (spec-v252 — orthopedic / spine radiographic ratios, 1086 → 1090)
 
 - Four well-established deterministic ratios & scores. New module
