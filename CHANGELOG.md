@@ -6,6 +6,18 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v232 — thrombosis/coagulation bedside scores, 1007 → 1009)
+
+- Two well-validated deterministic scores. New module `lib/coagscore-v232.js`,
+  renderers `views/group-v232.js` (RV232). Each id was verified absent by a
+  fixed-string scan of the extracted app.js id/name lists AND the MCP adapter set
+  (spec-v85 §6.2); each grades/classifies — none diagnoses or orders (spec-v11
+  §5.3). Point systems cross-verified against ≥2 open sources (spec-v97).
+- **Villalta scale** (`villalta`, Kahn 2009): 5 symptoms + 6 signs each 0-3 + venous
+  ulcer → 0-4 none / 5-9 mild / 10-14 moderate / ≥ 15 or ulcer severe post-thrombotic
+  syndrome. **ISTH SIC score** (`sic`, Iba 2019): platelet + PT-INR + total SOFA each
+  0-2, ≥ 4 diagnoses sepsis-induced coagulopathy. All Class A, no staleness rows.
+
 ### Added (spec-v231 — nutrition/inflammation prognostic tools, 1004 → 1007)
 
 - Three deterministic prognostic tools continuing the v229/v230 index family. New

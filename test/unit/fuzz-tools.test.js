@@ -221,6 +221,7 @@ import * as mixedV228 from '../../lib/mixed-v228.js';
 import * as hematologyV229 from '../../lib/hematology-v229.js';
 import * as inflamV230 from '../../lib/inflam-v230.js';
 import * as prognosticV231 from '../../lib/prognostic-v231.js';
+import * as coagscoreV232 from '../../lib/coagscore-v232.js';
 
 const MODULES = {
   'clinical.js': clinical,
@@ -386,6 +387,7 @@ const MODULES = {
   'hematology-v229.js': hematologyV229,
   'inflam-v230.js': inflamV230,
   'prognostic-v231.js': prognosticV231,
+  'coagscore-v232.js': coagscoreV232,
 };
 
 const MATRIX = [0, -1, 1e9, NaN, Infinity, -Infinity, '', undefined, null];
