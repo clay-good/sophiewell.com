@@ -145,6 +145,7 @@ import dermatologyV223 from './adapters/dermatology-v223.js';
 import neurologyV224 from './adapters/neurology-v224.js';
 import obgynV225 from './adapters/obgyn-v225.js';
 import nephrologyV226 from './adapters/nephrology-v226.js';
+import mixedV227 from './adapters/mixed-v227.js';
 
 const ADAPTER_MODULES = [
   ['tox-v86', toxV86],
@@ -275,6 +276,7 @@ const ADAPTER_MODULES = [
   ['neurology-v224', neurologyV224],
   ['obgyn-v225', obgynV225],
   ['nephrology-v226', nephrologyV226],
+  ['mixed-v227', mixedV227],
 ];
 
 const HERE = dirname(fileURLToPath(import.meta.url));

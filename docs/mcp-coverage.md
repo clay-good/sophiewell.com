@@ -671,6 +671,15 @@ bicarbonate, and the pH-corrected serum potassium. This brings the exposed total
 to **599 calculators across 128 modules**. All inputs are numeric labs /
 anthropometry plus a couple of boolean flags.
 
+## Forty-ninth wave — 1 module
+
+This slice exposes the **6 cross-specialty instruments** of `lib/mixed-v227.js`
+— the ICBD 2014 and ISG 1990 Behcet-disease criteria, the BATT prehospital-TXA
+score, the Denver ED Trauma Organ Failure score, the Emergency Transfusion
+Score, and the WHO 2009 dengue classification. This brings the exposed total to
+**605 calculators across 129 modules**. BATT, Denver, and ETS take a few numeric
+vitals; every other input is a boolean criterion.
+
 ## Exposed
 
 Each id below is live in `mcp/catalog.js`. The gate parses this list.
@@ -1529,6 +1538,14 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 - `furosemide-stress-test`
 - `fe-bicarbonate`
 - `corrected-potassium-ph`
+
+### lib/mixed-v227.js
+- `icbd-2014-behcet`
+- `isg-1990-behcet`
+- `batt`
+- `denver-ed-tof`
+- `ets`
+- `who-dengue-2009`
 
 ## Not yet adapted
 

@@ -686,6 +686,15 @@ test('lib/nephrology-v226.js worked calls (wave 48)', () => {
   assert.equal(ok('corrected-potassium-ph', { 'kc-k': '5.4', 'kc-ph': '7.2' }).corrected, 4.2);
 });
 
+test('lib/mixed-v227.js worked calls (wave 49)', () => {
+  assert.equal(ok('icbd-2014-behcet', { 'icbd-oral': '1', 'icbd-gen': '1', 'icbd-skin': '1' }).score, 5);
+  assert.equal(ok('isg-1990-behcet', { 'isg-oral': '1', 'isg-gen': '1', 'isg-eye': '1' }).meets, true);
+  assert.equal(ok('batt', { 'batt-age': '70', 'batt-sbp': '80', 'batt-gcs': '14', 'batt-hr': '1' }).score, 7);
+  assert.equal(ok('denver-ed-tof', { 'den-hct': '18', 'den-age': '1', 'den-intub': '1' }).score, 6);
+  assert.equal(ok('ets', { 'ets-sbp': '85', 'ets-age': '40', 'ets-fluid': '1' }).score, 5);
+  assert.equal(ok('who-dengue-2009', { 'dg-abd': '1', 'dg-vom': '1' }).tier, 'dengue with warning signs');
+});
+
 // The enum->boolean adapter transform reaches the lib: el-ganzouri prognath and
 // elapss earlierSah both map a yes/no select onto a lib boolean.
 test('enum->boolean adapter transform reaches the lib (elapss earlierSah)', () => {
