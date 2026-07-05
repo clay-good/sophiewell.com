@@ -4206,8 +4206,8 @@ clamped to `[0, 1]`, so the JSON surface never emits a non-finite probability.
 
 ### Coverage is explicit and honest
 
-Adapting the catalog is incremental. Coverage now stands at **614 clinical
-calculators across 131 `lib` modules** (of 1109 catalog tiles), built module by <!-- catalog-truth:historical (131 is the count of lib modules adapted, not a catalog tile count) -->
+Adapting the catalog is incremental. Coverage now stands at **723 clinical
+calculators across 159 `lib` modules** (of 1109 catalog tiles), built module by <!-- catalog-truth:historical (159 is the count of lib modules adapted, not a catalog tile count) -->
 module against the one fixed contract:
 
 | wave | modules | tiles |
@@ -4263,6 +4263,7 @@ module against the one fixed contract:
 | forty-ninth (cross-specialty) | `mixed-v227` (ICBD 2014, ISG 1990, BATT, Denver ED-TOF, ETS, WHO dengue 2009) | 6 |
 | fiftieth (microcytic-anemia indices) | `mixed-v228` (England-Fraser, Sirdah, RDW index, Srivastava, Ehsani) | 5 |
 | fifty-first (CBC-derived indices) | `hematology-v229` (AEC, NLR, PLR, SII) | 4 |
+| fifty-second (spec-v230–v257 subspecialty depth, 28 modules) | `inflam-v230`, `prognostic-v231`, `coagscore-v232`, `estimators-v233`, `dermscore-v234`, `painscore-v235`, `ophtho-v236`, `cardioecho-v237`, `anthro-v238`, `gisurg-v239`, `rehab-v240`, `geri-v241`, `environ-v242`, `entsleep-v243`, `sportsmsk-v244`, `hemederm-v245`, `ibd-v246`, `pedstox-v247`, `woundid-v248`, `renalpulm-v249`, `obgyn-v250`, `cardiometab-v251`, `orthospine-v252`, `radmeasure-v253`, `enturopsych-v254`, `riskscores-v255`, `rheumcrit-v256`, `dive-v257` | 109 |
 
 
 `docs/mcp-coverage.md` is the ledger and `list_calculators` always reports the

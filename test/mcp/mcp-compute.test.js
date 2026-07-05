@@ -710,6 +710,146 @@ test('lib/hematology-v229.js worked calls (wave 51)', () => {
   assert.equal(ok('sii', { 'sii-plt': '300', 'sii-anc': '6', 'sii-alc': '1.5' }).score, 1200);
 });
 
+test('lib wave 52 (spec-v230 through spec-v257 subspecialty depth) worked calls', () => {
+  // inflam-v230
+  assert.equal(ok('lmr', { 'lmr-alc': '2.0', 'lmr-amc': '0.5' }).score, 4);
+  assert.equal(ok('siri', { 'siri-anc': '4.0', 'siri-amc': '0.5', 'siri-alc': '2.0' }).score, 1);
+  assert.equal(ok('piv', { 'piv-anc': '4.0', 'piv-plt': '250', 'piv-amc': '0.5', 'piv-alc': '2.0' }).score, 250);
+  assert.equal(ok('crp-albumin-ratio', { 'car-crp': '20', 'car-alb': '4.0' }).score, 5);
+  // prognostic-v231
+  assert.equal(ok('naples-prognostic-score', { 'nap-alb': '3.5', 'nap-chol': '160', 'nap-nlr': '4.0', 'nap-lmr': '3.0' }).score, 4);
+  assert.equal(ok('nmr', { 'nmr-anc': '4.0', 'nmr-amc': '0.5' }).score, 8);
+  assert.equal(ok('far', { 'far-fib': '400', 'far-alb': '4.0' }).score, 100);
+  // coagscore-v232
+  assert.equal(ok('villalta', { 'vil-pain': '2', 'vil-heavy': '2', 'vil-edema': '2', 'vil-ind': '2', 'vil-hyp': '2', 'vil-ect': '2' }).score, 12);
+  assert.equal(ok('sic', { 'sic-plt': '2', 'sic-inr': '1', 'sic-sofa': '2' }).score, 5);
+  // estimators-v233
+  assert.equal(ok('evans-index', { 'ev-frontal': '45', 'ev-skull': '140' }).score, 0.32);
+  assert.equal(ok('fohr', { 'fo-frontal': '38', 'fo-occipital': '42', 'fo-bpd': '110' }).score, 0.36);
+  assert.equal(ok('age-adjusted-d-dimer', { 'add-age': '75', 'add-dd': '600' }).score, 750);
+  assert.equal(ok('deurenberg-body-fat', { 'db-bmi': '30', 'db-age': '40', 'db-sex': 'male' }).score, 29);
+  // dermscore-v234
+  assert.equal(ok('masi', { 'masi-fA': '4', 'masi-fD': '2', 'masi-fH': '2', 'masi-rmrA': '3', 'masi-rmrD': '2', 'masi-rmrH': '1', 'masi-lmrA': '3', 'masi-lmrD': '2', 'masi-lmrH': '1', 'masi-mA': '2', 'masi-mD': '1', 'masi-mH': '1' }).score, 10.6);
+  assert.equal(ok('salt-score', { 'salt-top': '50', 'salt-back': '50', 'salt-right': '50', 'salt-left': '50' }).score, 50);
+  assert.equal(ok('napsi', { 'napsi-matrix': '3', 'napsi-bed': '2' }).score, 5);
+  assert.equal(ok('vancouver-scar-scale', { 'vss-pig': '1', 'vss-vas': '2', 'vss-pli': '3', 'vss-ht': '2' }).score, 8);
+  // painscore-v235
+  assert.equal(ok('dn4-neuropathic-pain', { 'dn4-burn': '1', 'dn4-cold': '1', 'dn4-shock': '1', 'dn4-tingle': '1', 'dn4-pins': '1' }).score, 5);
+  assert.equal(ok('lanss-pain-scale', { 'lanss-dys': '1', 'lanss-auto': '1', 'lanss-brush': '1' }).score, 15);
+  assert.equal(ok('roland-morris-disability', { 'rmdq-count': '14' }).score, 14);
+  assert.equal(ok('neck-disability-index', { 'ndi-pain': '2', 'ndi-care': '2', 'ndi-lift': '2', 'ndi-read': '2', 'ndi-head': '2', 'ndi-conc': '2', 'ndi-work': '2', 'ndi-drive': '2', 'ndi-sleep': '2', 'ndi-rec': '2' }).score, 40);
+  // ophtho-v236
+  assert.equal(ok('spherical-equivalent', { 'se-sph': '2.5', 'se-cyl': '-0.5' }).score, 2.25);
+  assert.equal(ok('vertex-distance', { 'vx-power': '5', 'vx-mm': '12' }).score, 5.32);
+  assert.equal(ok('percent-tissue-altered', { 'pta-flap': '110', 'pta-abl': '80', 'pta-cct': '550' }).score, 34.5);
+  assert.equal(ok('randleman-erss', { 'er-topo': '3', 'er-rsb': '250', 'er-age': '20', 'er-cct': '445', 'er-mrse': '-15' }).score, 18);
+  // cardioecho-v237
+  assert.equal(ok('romhilt-estes', { 're-volt': '1', 're-stt': '3' }).score, 6);
+  assert.equal(ok('wilkins-score', { 'wk-mob': '2', 'wk-thick': '2', 'wk-calc': '2', 'wk-sub': '2' }).score, 8);
+  assert.equal(ok('mitral-valve-area-pht', { 'mva-pht': '150' }).score, 1.47);
+  assert.equal(ok('aortic-dvi', { 'dvi-lvot': '18', 'dvi-av': '90' }).score, 0.2);
+  assert.equal(ok('rate-pressure-product', { 'rpp-hr': '80', 'rpp-sbp': '140' }).score, 11200);
+  // anthro-v238
+  assert.equal(ok('relative-fat-mass', { 'rfm-height': '170', 'rfm-waist': '90', 'rfm-sex': 'female' }).score, 38.2);
+  assert.equal(ok('body-roundness-index', { 'bri-waist': '90', 'bri-height': '170' }).score, 3.93);
+  assert.equal(ok('navy-body-fat', { 'navy-sex': 'male', 'navy-height': '70', 'navy-neck': '15', 'navy-waist': '34' }).score, 11.1);
+  assert.equal(ok('egdr', { 'egdr-waist': '100', 'egdr-htn': '1', 'egdr-a1c': '8' }).score, 4.34);
+  // gisurg-v239
+  assert.equal(ok('bonacini-cds', { 'bon-plt': '90', 'bon-ratio': '0.5', 'bon-inr': '1.5' }).score, 10);
+  assert.equal(ok('guci', { 'guci-ast': '60', 'guci-uln': '40', 'guci-inr': '1.2', 'guci-plt': '150' }).score, 1.2);
+  assert.equal(ok('mannheim-peritonitis-index', { 'mpi-age': '1', 'mpi-female': '1', 'mpi-organ': '1', 'mpi-diffuse': '1', 'mpi-exudate': '6' }).score, 29);
+  assert.equal(ok('boey-score', { 'boey-shock': '1', 'boey-delay': '1' }).score, 2);
+  // rehab-v240
+  assert.equal(ok('esas-symptom-assessment', { 'esas-pain': '5', 'esas-tired': '5', 'esas-drowsy': '5', 'esas-nausea': '5', 'esas-appetite': '5', 'esas-dyspnea': '5', 'esas-depression': '5', 'esas-anxiety': '5', 'esas-wellbeing': '5' }).score, 45);
+  assert.equal(ok('rivermead-mobility-index', { 'rmi-count': '10' }).score, 10);
+  assert.equal(ok('six-minute-walk-predicted', { 'smwd-sex': 'male', 'smwd-height': '175', 'smwd-age': '60', 'smwd-weight': '80' }).score, 574);
+  assert.equal(ok('quickdash', { 'qd-1': '2', 'qd-2': '2', 'qd-3': '2', 'qd-4': '2', 'qd-5': '2', 'qd-6': '2', 'qd-7': '2', 'qd-8': '2', 'qd-9': '2', 'qd-10': '2', 'qd-11': '2' }).score, 25);
+  // geri-v241
+  assert.equal(ok('groningen-frailty-indicator', { 'gfi-count': '5' }).score, 5);
+  assert.equal(ok('short-physical-performance-battery', { 'sppb-balance': '3', 'sppb-gait': '3', 'sppb-chair': '2' }).score, 8);
+  assert.equal(ok('osteoporosis-self-assessment-tool', { 'ost-weight': '55', 'ost-age': '70' }).score, -3);
+  assert.equal(ok('five-times-sit-to-stand', { 'ftsts-time': '14' }).score, 14);
+  // environ-v242
+  assert.equal(ok('heat-index', { 'hi-temp': '90', 'hi-rh': '70' }).score, 105.9);
+  assert.equal(ok('humidex', { 'hx-temp': '30', 'hx-dew': '20' }).score, 37.6);
+  assert.equal(ok('wind-chill', { 'wc-temp': '-10', 'wc-wind': '30' }).score, -19.5);
+  assert.equal(ok('wbgt', { 'wbgt-setting': 'outdoor', 'wbgt-nwb': '25', 'wbgt-globe': '35', 'wbgt-dry': '30' }).score, 27.5);
+  // entsleep-v243
+  assert.equal(ok('nose-scale', { 'nose-cong': '2', 'nose-block': '2', 'nose-breath': '2', 'nose-sleep': '2', 'nose-exert': '2' }).score, 50);
+  assert.equal(ok('rfs-reflux-finding', { 'rfs-vent': '2', 'rfs-eryth': '2', 'rfs-vfe': '2', 'rfs-dle': '2' }).score, 8);
+  assert.equal(ok('no-apnea-score', { 'na-neck': '41', 'na-age': '50' }).score, 5);
+  assert.equal(ok('sleep-efficiency', { 'se-tst': '420', 'se-tib': '480' }).score, 87.5);
+  // sportsmsk-v244
+  assert.equal(ok('lysholm-knee-score', { 'lys-limp': '5', 'lys-support': '5', 'lys-lock': '15', 'lys-instab': '20', 'lys-pain': '20', 'lys-swell': '10', 'lys-stair': '10', 'lys-squat': '5' }).score, 90);
+  assert.equal(ok('marx-activity-rating', { 'marx-run': '4', 'marx-cut': '3', 'marx-dec': '3', 'marx-piv': '2' }).score, 12);
+  assert.equal(ok('foot-posture-index', { 'fpi-talar': '1', 'fpi-supra': '1', 'fpi-calc': '1', 'fpi-tn': '1', 'fpi-arch': '1', 'fpi-fore': '1' }).score, 6);
+  assert.equal(ok('bess-balance-error', { 'bess-df': '3', 'bess-sf': '3', 'bess-tf': '3', 'bess-dm': '3', 'bess-sm': '3', 'bess-tm': '3' }).score, 18);
+  // hemederm-v245
+  assert.equal(ok('shine-lal-index', { 'sl-mcv': '70', 'sl-mch': '22' }).score, 1078);
+  assert.equal(ok('green-king-index', { 'gk-mcv': '70', 'gk-rdw': '14', 'gk-hb': '11' }).score, 62.4);
+  assert.equal(ok('percent-platelet-recovery', { 'ppr-pre': '10', 'ppr-post': '40', 'ppr-bv': '5', 'ppr-tx': '4' }).score, 37.5);
+  assert.equal(ok('ihs4', { 'ihs4-nod': '3', 'ihs4-abs': '2', 'ihs4-tun': '1' }).score, 11);
+  // ibd-v246
+  assert.equal(ok('sccai', { 'sc-day': '2', 'sc-night': '1', 'sc-urg': '1', 'sc-blood': '1', 'sc-well': '1', 'sc-extra': '0' }).score, 6);
+  assert.equal(ok('pucai', { 'pu-pain': '5', 'pu-bleed': '10', 'pu-cons': '5', 'pu-num': '10', 'pu-noct': '0', 'pu-act': '5' }).score, 35);
+  assert.equal(ok('bbps-boston', { 'bb-right': '2', 'bb-trans': '2', 'bb-left': '2' }).score, 6);
+  assert.equal(ok('simplified-aih', { 'aih-auto': '2', 'aih-igg': '1', 'aih-hist': '2', 'aih-viral': '1' }).score, 6);
+  // pedstox-v247
+  assert.equal(ok('pediatric-trauma-score', { 'pts-wt': '2', 'pts-air': '2', 'pts-sbp': '2', 'pts-cns': '1', 'pts-wound': '2', 'pts-skel': '1' }).score, 10);
+  assert.equal(ok('bind-score', { 'bind-ms': '2', 'bind-mt': '2', 'bind-cry': '1' }).score, 5);
+  assert.equal(ok('widmark-bac', { 'wid-grams': '56', 'wid-weight': '70', 'wid-hours': '0', 'wid-sex': 'male' }).score, 0.12);
+  assert.equal(ok('povoc-ponv', { 'pov-dur': '1', 'pov-age': '1', 'pov-hist': '1' }).score, 3);
+  // woundid-v248
+  assert.equal(ok('absi-burn', { 'absi-sex': 'female', 'absi-age': '50', 'absi-tbsa': '35', 'absi-inhal': '1', 'absi-ft': '1' }).score, 10);
+  assert.equal(ok('sinbad-score', { 'sin-site': '1', 'sin-isch': '1', 'sin-neuro': '1' }).score, 3);
+  assert.equal(ok('atlas-cdi', { 'atl-age': '1', 'atl-abx': '2', 'atl-wbc': '1', 'atl-alb': '1', 'atl-cr': '1' }).score, 6);
+  assert.equal(ok('increment-cpe', { 'inc-shock': '1', 'inc-pitt': '1' }).score, 9);
+  // renalpulm-v249
+  assert.equal(ok('renal-failure-index', { 'rfi-una': '10', 'rfi-pcr': '4', 'rfi-ucr': '60' }).score, 0.67);
+  assert.equal(ok('feua', { 'feua-uua': '30', 'feua-scr': '1', 'feua-sua': '6', 'feua-ucr': '60' }).score, 8.3);
+  assert.equal(ok('bronchodilator-response', { 'bdr-pre': '2.0', 'bdr-post': '2.4', 'bdr-pred': '3.0' }).score, 13.3);
+  assert.equal(ok('integrative-weaning-index', { 'iwi-cst': '55', 'iwi-sao2': '97', 'iwi-rsbi': '55' }).score, 97);
+  // obgyn-v250
+  assert.equal(ok('pearl-index', { 'pi-preg': '2', 'pi-months': '1200' }).score, 2);
+  assert.equal(ok('robinson-crl-dating', { 'crl-mm': '30' }).score, 69);
+  assert.equal(ok('carpreg-ii', { 'cp-events': '1', 'cp-nyha': '1' }).score, 6);
+  assert.equal(ok('malinas-score', { 'mal-par': '1', 'mal-dur': '1', 'mal-con': '1', 'mal-int': '2', 'mal-mem': '1' }).score, 6);
+  // cardiometab-v251
+  assert.equal(ok('corrected-timi-frame-count', { 'ctfc-frames': '34', 'ctfc-fps': '30', 'ctfc-vessel': 'lad' }).score, 20);
+  assert.equal(ok('tpe-qt-ratio', { 'tpe-tpe': '120', 'tpe-qt': '400' }).score, 0.3);
+  assert.equal(ok('spise', { 'spise-hdl': '40', 'spise-tg': '150', 'spise-bmi': '30' }).score, 4.6);
+  assert.equal(ok('atherogenic-index-of-plasma', { 'aip-tg': '1.7', 'aip-hdl': '1.0' }).score, 0.23);
+  // orthospine-v252
+  assert.equal(ok('insall-salvati-ratio', { 'is-tendon': '5.0', 'is-patella': '4.0' }).score, 1.25);
+  assert.equal(ok('torg-pavlov-ratio', { 'tp-canal': '12', 'tp-body': '17' }).score, 0.71);
+  assert.equal(ok('meyerding-spondylolisthesis', { 'my-disp': '14', 'my-width': '40' }).score, 2);
+  assert.equal(ok('beighton-hypermobility', { 'bg-f5r': '1', 'bg-f5l': '1', 'bg-thr': '1', 'bg-thl': '1', 'bg-elr': '1' }).score, 5);
+  // radmeasure-v253
+  assert.equal(ok('nascet-carotid-stenosis', { 'ns-narrow': '3', 'ns-distal': '8' }).score, 62.5);
+  assert.equal(ok('helsinki-ct-score', { 'hel-mass': '2', 'hel-ivh': '1', 'hel-cist': '1' }).score, 6);
+  assert.equal(ok('genant-vertebral-fracture', { 'ge-loss': '30' }).score, 2);
+  assert.equal(ok('testicular-volume', { 'tv-l': '4', 'tv-w': '3', 'tv-h': '2.5' }).score, 21.3);
+  // enturopsych-v254
+  assert.equal(ok('reflux-symptom-index', { 'rsi-1': '3', 'rsi-2': '3', 'rsi-3': '3', 'rsi-4': '3', 'rsi-5': '3' }).score, 15);
+  assert.equal(ok('lund-mackay', { 'lm-maxr': '2', 'lm-aethr': '1', 'lm-omcr': '1', 'lm-maxl': '1' }).score, 6);
+  assert.equal(ok('bladder-outlet-obstruction-index', { 'boo-pdet': '80', 'boo-qmax': '10' }).score, 60);
+  assert.equal(ok('fagerstrom-ftnd', { 'ftnd-time': '3', 'ftnd-perday': '3' }).score, 6);
+  // riskscores-v255
+  assert.equal(ok('vcss', { 'vc-pain': '2', 'vc-var': '2', 'vc-edema': '1', 'vc-pig': '1', 'vc-inf': '1' }).score, 7);
+  assert.equal(ok('pen-fast', { 'pf-recent': '1', 'pf-anaph': '1' }).score, 4);
+  assert.equal(ok('harris-hip-score', { 'hh-pain': '40', 'hh-func': '40', 'hh-def': '4', 'hh-rom': '5' }).score, 89);
+  assert.equal(ok('koivuranta-ponv', { 'kv-female': '1', 'kv-prior': '1', 'kv-smoke': '1' }).score, 3);
+  // rheumcrit-v256
+  assert.equal(ok('mases-enthesitis', { 'ma-cc1r': '1', 'ma-cc1l': '1', 'ma-psisr': '1' }).score, 3);
+  assert.equal(ok('mmt8-myositis', { 'mm-neck': '8', 'mm-delt': '8', 'mm-bic': '8', 'mm-wrist': '8', 'mm-gmax': '8', 'mm-gmed': '8', 'mm-quad': '8', 'mm-ankle': '8' }).score, 64);
+  assert.equal(ok('intubation-difficulty-scale', { 'ids-attempts': '1', 'ids-cormack': '2' }).score, 2);
+  assert.equal(ok('crop-index', { 'crop-cdyn': '50', 'crop-pimax': '30', 'crop-pao2': '80', 'crop-fio2': '0.4', 'crop-paco2': '40', 'crop-rr': '20' }).score, 25.2);
+  // dive-v257
+  assert.equal(ok('maximum-operating-depth', { 'mod-fo2': '0.32', 'mod-po2': '1.4' }).score, 33.8);
+  assert.equal(ok('equivalent-air-depth', { 'ead-depth': '30', 'ead-fo2': '0.32' }).score, 24.4);
+  assert.equal(ok('oxygen-toxicity-units', { 'otu-po2': '1.4', 'otu-time': '30' }).score, 48.9);
+});
+
 // The enum->boolean adapter transform reaches the lib: el-ganzouri prognath and
 // elapss earlierSah both map a yes/no select onto a lib boolean.
 test('enum->boolean adapter transform reaches the lib (elapss earlierSah)', () => {

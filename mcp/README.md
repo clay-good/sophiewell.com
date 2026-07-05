@@ -73,7 +73,7 @@ strings; booleans as `true`/`false`; enums by their listed string values.
 
 ```
 list_calculators { "specialty": "hepatology" }
-  -> { coverage: "614 of 1109 catalog tiles exposed ...", calculators: [ { id: "meld-xi", ... }, ... ] }
+  -> { coverage: "723 of 1109 catalog tiles exposed ...", calculators: [ { id: "meld-xi", ... }, ... ] }
 
 describe_calculator { "id": "meld-xi" }
   -> { inputSchema: { ... mx-bili, mx-creat ... }, citation: "Heuman DM ... Liver Transpl 2007", ... }
@@ -188,8 +188,15 @@ Salazar-Corcoran, ePVS, furosemide stress test, FE-bicarbonate, corrected
 potassium), a forty-ninth added the cross-specialty cluster (ICBD 2014, ISG
 1990, BATT, Denver ED-TOF, ETS, WHO dengue 2009), a fiftieth added the
 microcytic-anemia RBC discrimination indices (England-Fraser, Sirdah, RDW index,
-Srivastava, Ehsani), and a fifty-first added the CBC-derived indices (AEC, NLR,
-PLR, SII), for 614 across 131 modules today.
+Srivastava, Ehsani), a fifty-first added the CBC-derived indices (AEC, NLR,
+PLR, SII), and a fifty-second adapted the whole spec-v230–v257 subspecialty-depth
+program in one pass (28 modules, 109 calculators — inflammation and coagulation
+indices, cranial / anthropometric estimators, dermatology / pain / ophthalmology
+/ echocardiography scores, GI-surgery and rehab / geriatric batteries,
+environmental-exposure indices, ENT-sleep, sports-MSK, heme-derm, IBD, pediatric
+tox, wound ID, renal-pulmonary, ob-gyn, cardiometabolic, ortho-spine, radiology
+measurement, ENT-uro-psych, mixed risk scores, rheumatology criteria, and dive
+medicine), for 723 across 159 modules today. <!-- catalog-truth:historical (159 is the count of lib modules adapted, not a catalog tile count) -->
 Later waves extend it module by module against the same contract.
 
 ## Design

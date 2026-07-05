@@ -148,6 +148,34 @@ import nephrologyV226 from './adapters/nephrology-v226.js';
 import mixedV227 from './adapters/mixed-v227.js';
 import mixedV228 from './adapters/mixed-v228.js';
 import hematologyV229 from './adapters/hematology-v229.js';
+import inflamV230 from './adapters/inflam-v230.js';
+import prognosticV231 from './adapters/prognostic-v231.js';
+import coagscoreV232 from './adapters/coagscore-v232.js';
+import estimatorsV233 from './adapters/estimators-v233.js';
+import dermscoreV234 from './adapters/dermscore-v234.js';
+import painscoreV235 from './adapters/painscore-v235.js';
+import ophthoV236 from './adapters/ophtho-v236.js';
+import cardioechoV237 from './adapters/cardioecho-v237.js';
+import anthroV238 from './adapters/anthro-v238.js';
+import gisurgV239 from './adapters/gisurg-v239.js';
+import rehabV240 from './adapters/rehab-v240.js';
+import geriV241 from './adapters/geri-v241.js';
+import environV242 from './adapters/environ-v242.js';
+import entsleepV243 from './adapters/entsleep-v243.js';
+import sportsmskV244 from './adapters/sportsmsk-v244.js';
+import hemedermV245 from './adapters/hemederm-v245.js';
+import ibdV246 from './adapters/ibd-v246.js';
+import pedstoxV247 from './adapters/pedstox-v247.js';
+import woundidV248 from './adapters/woundid-v248.js';
+import renalpulmV249 from './adapters/renalpulm-v249.js';
+import obgynV250 from './adapters/obgyn-v250.js';
+import cardiometabV251 from './adapters/cardiometab-v251.js';
+import orthospineV252 from './adapters/orthospine-v252.js';
+import radmeasureV253 from './adapters/radmeasure-v253.js';
+import enturopsychV254 from './adapters/enturopsych-v254.js';
+import riskscoresV255 from './adapters/riskscores-v255.js';
+import rheumcritV256 from './adapters/rheumcrit-v256.js';
+import diveV257 from './adapters/dive-v257.js';
 
 const ADAPTER_MODULES = [
   ['tox-v86', toxV86],
@@ -281,6 +309,34 @@ const ADAPTER_MODULES = [
   ['mixed-v227', mixedV227],
   ['mixed-v228', mixedV228],
   ['hematology-v229', hematologyV229],
+  ['inflam-v230', inflamV230],
+  ['prognostic-v231', prognosticV231],
+  ['coagscore-v232', coagscoreV232],
+  ['estimators-v233', estimatorsV233],
+  ['dermscore-v234', dermscoreV234],
+  ['painscore-v235', painscoreV235],
+  ['ophtho-v236', ophthoV236],
+  ['cardioecho-v237', cardioechoV237],
+  ['anthro-v238', anthroV238],
+  ['gisurg-v239', gisurgV239],
+  ['rehab-v240', rehabV240],
+  ['geri-v241', geriV241],
+  ['environ-v242', environV242],
+  ['entsleep-v243', entsleepV243],
+  ['sportsmsk-v244', sportsmskV244],
+  ['hemederm-v245', hemedermV245],
+  ['ibd-v246', ibdV246],
+  ['pedstox-v247', pedstoxV247],
+  ['woundid-v248', woundidV248],
+  ['renalpulm-v249', renalpulmV249],
+  ['obgyn-v250', obgynV250],
+  ['cardiometab-v251', cardiometabV251],
+  ['orthospine-v252', orthospineV252],
+  ['radmeasure-v253', radmeasureV253],
+  ['enturopsych-v254', enturopsychV254],
+  ['riskscores-v255', riskscoresV255],
+  ['rheumcrit-v256', rheumcritV256],
+  ['dive-v257', diveV257],
 ];
 
 const HERE = dirname(fileURLToPath(import.meta.url));

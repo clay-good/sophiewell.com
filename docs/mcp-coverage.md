@@ -696,6 +696,19 @@ the platelet-to-lymphocyte ratio (PLR), and the systemic immune-inflammation
 index (SII). This brings the exposed total to **614 calculators across 131
 modules**. All inputs are numeric.
 
+## Fifty-second wave — 28 modules
+
+This slice adapts the entire **spec-v230 through spec-v257 subspecialty-depth
+program** in one pass: 28 `lib` modules contributing **109 calculators** across
+inflammation indices, coagulation, cranial/anthropometric estimators, derm /
+pain / ophthalmology / echo scores, GI-surgery and rehab / geriatric batteries,
+environmental-exposure indices, ENT-sleep, sports-MSK, heme-derm, IBD, pediatric
+tox, wound ID, renal-pulmonary, ob-gyn, cardiometabolic, ortho-spine, radiology
+measurement, ENT-uro-psych, mixed risk scores, rheumatology criteria, and dive
+medicine. This brings the exposed total to **723 calculators across 159
+modules**. Inputs are flat scalars, checkbox booleans (optional, defaulting to
+unchecked), and a handful of string enums (sex, WBGT setting, TIMI vessel).
+
 ## Exposed
 
 Each id below is live in `mcp/catalog.js`. The gate parses this list.
@@ -1575,6 +1588,171 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 - `nlr`
 - `plr`
 - `sii`
+
+### lib/inflam-v230.js
+- `lmr`
+- `siri`
+- `piv`
+- `crp-albumin-ratio`
+
+### lib/prognostic-v231.js
+- `naples-prognostic-score`
+- `nmr`
+- `far`
+
+### lib/coagscore-v232.js
+- `villalta`
+- `sic`
+
+### lib/estimators-v233.js
+- `evans-index`
+- `fohr`
+- `age-adjusted-d-dimer`
+- `deurenberg-body-fat`
+
+### lib/dermscore-v234.js
+- `masi`
+- `salt-score`
+- `napsi`
+- `vancouver-scar-scale`
+
+### lib/painscore-v235.js
+- `dn4-neuropathic-pain`
+- `lanss-pain-scale`
+- `roland-morris-disability`
+- `neck-disability-index`
+
+### lib/ophtho-v236.js
+- `spherical-equivalent`
+- `vertex-distance`
+- `percent-tissue-altered`
+- `randleman-erss`
+
+### lib/cardioecho-v237.js
+- `romhilt-estes`
+- `wilkins-score`
+- `mitral-valve-area-pht`
+- `aortic-dvi`
+- `rate-pressure-product`
+
+### lib/anthro-v238.js
+- `relative-fat-mass`
+- `body-roundness-index`
+- `navy-body-fat`
+- `egdr`
+
+### lib/gisurg-v239.js
+- `bonacini-cds`
+- `guci`
+- `mannheim-peritonitis-index`
+- `boey-score`
+
+### lib/rehab-v240.js
+- `esas-symptom-assessment`
+- `rivermead-mobility-index`
+- `six-minute-walk-predicted`
+- `quickdash`
+
+### lib/geri-v241.js
+- `groningen-frailty-indicator`
+- `short-physical-performance-battery`
+- `osteoporosis-self-assessment-tool`
+- `five-times-sit-to-stand`
+
+### lib/environ-v242.js
+- `heat-index`
+- `humidex`
+- `wind-chill`
+- `wbgt`
+
+### lib/entsleep-v243.js
+- `nose-scale`
+- `rfs-reflux-finding`
+- `no-apnea-score`
+- `sleep-efficiency`
+
+### lib/sportsmsk-v244.js
+- `lysholm-knee-score`
+- `marx-activity-rating`
+- `foot-posture-index`
+- `bess-balance-error`
+
+### lib/hemederm-v245.js
+- `shine-lal-index`
+- `green-king-index`
+- `percent-platelet-recovery`
+- `ihs4`
+
+### lib/ibd-v246.js
+- `sccai`
+- `pucai`
+- `bbps-boston`
+- `simplified-aih`
+
+### lib/pedstox-v247.js
+- `pediatric-trauma-score`
+- `bind-score`
+- `widmark-bac`
+- `povoc-ponv`
+
+### lib/woundid-v248.js
+- `absi-burn`
+- `sinbad-score`
+- `atlas-cdi`
+- `increment-cpe`
+
+### lib/renalpulm-v249.js
+- `renal-failure-index`
+- `feua`
+- `bronchodilator-response`
+- `integrative-weaning-index`
+
+### lib/obgyn-v250.js
+- `pearl-index`
+- `robinson-crl-dating`
+- `carpreg-ii`
+- `malinas-score`
+
+### lib/cardiometab-v251.js
+- `corrected-timi-frame-count`
+- `tpe-qt-ratio`
+- `spise`
+- `atherogenic-index-of-plasma`
+
+### lib/orthospine-v252.js
+- `insall-salvati-ratio`
+- `torg-pavlov-ratio`
+- `meyerding-spondylolisthesis`
+- `beighton-hypermobility`
+
+### lib/radmeasure-v253.js
+- `nascet-carotid-stenosis`
+- `helsinki-ct-score`
+- `genant-vertebral-fracture`
+- `testicular-volume`
+
+### lib/enturopsych-v254.js
+- `reflux-symptom-index`
+- `lund-mackay`
+- `bladder-outlet-obstruction-index`
+- `fagerstrom-ftnd`
+
+### lib/riskscores-v255.js
+- `vcss`
+- `pen-fast`
+- `harris-hip-score`
+- `koivuranta-ponv`
+
+### lib/rheumcrit-v256.js
+- `mases-enthesitis`
+- `mmt8-myositis`
+- `intubation-difficulty-scale`
+- `crop-index`
+
+### lib/dive-v257.js
+- `maximum-operating-depth`
+- `equivalent-air-depth`
+- `oxygen-toxicity-units`
 
 ## Not yet adapted
 
