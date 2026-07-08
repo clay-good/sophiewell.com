@@ -903,6 +903,18 @@ Obstetric Warning Score (vitals banded green/yellow/red with the AVPU enum and
 0-3 pain score; temperature in canonical Celsius). Brings the exposed total to
 **924 calculators across 170 modules**.
 
+## Sixty-second wave — the pediatric fever / sepsis and respiratory cluster in lib/scoring-v4.js (+10)
+
+The four febrile-infant rules Rochester, Philadelphia, Boston, and Step-by-Step
+(the first three are all-criteria-met boolean checklists whose result reports
+the met/total counts; Step-by-Step is a sequential decision tree returning the
+risk tier and the step that fired), the Yale Observation Scale, the Westley
+croup score, the two pediatric asthma scores PRAM and PASS, the pediatric GCS
+(with its age-band verbal-scale enum), and the Nigrovic Bacterial Meningitis
+Score. The non-uniform ordinal selects (YOS 1/3/5, Westley and PRAM per-item
+maxima) map as enums coerced to numbers so each carries its point value
+directly. Brings the exposed total to **934 calculators across 170 modules**.
+
 ## Exposed
 
 Each id below is live in `mcp/catalog.js`. The gate parses this list.
@@ -2139,6 +2151,16 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 - `carpenter-coustan`
 - `iadpsg`
 - `meows`
+- `rochester`
+- `philadelphia`
+- `boston-febrile`
+- `step-by-step`
+- `yos`
+- `westley`
+- `pram-asthma`
+- `pass-asthma`
+- `peds-gcs`
+- `nigrovic`
 
 ### lib/scoring-v6.js
 - `ballard`

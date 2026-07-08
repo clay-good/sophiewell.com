@@ -1205,6 +1205,43 @@ test('lib/scoring-v4.js obstetric / maternal cluster worked calls (wave 61)', ()
   assert.equal(ok('meows', { 'mw-rr': '32', 'mw-spo2': '98', 'mw-temp': '37.0', 'mw-sbp': '118', 'mw-dbp': '72', 'mw-hr': '82', 'mw-neuro': 'A', 'mw-pain': '0' }).trigger, true);
 });
 
+test('lib/scoring-v4.js pediatric fever / sepsis + respiratory worked calls (wave 62)', () => {
+  // All 7 Rochester criteria met -> low risk.
+  const rc = ok('rochester', { 'rc-age': '1', 'rc-term': '1', 'rc-focal': '1', 'rc-wbc': '1', 'rc-bands': '1', 'rc-urine': '1', 'rc-stool': '1' });
+  assert.equal(rc.lowRisk, true);
+  assert.equal(rc.metCount, 7);
+  assert.equal(ok('philadelphia', { 'ph-age': '1', 'ph-well': '1', 'ph-wbc': '1', 'ph-bnr': '1', 'ph-ua': '1', 'ph-csf': '1', 'ph-cxr': '0', 'ph-stool': '1' }).lowRisk, false);
+  assert.equal(ok('boston-febrile', { 'bf-age': '1', 'bf-well': '1', 'bf-focal': '1', 'bf-wbc': '1', 'bf-ua': '1', 'bf-csf': '1', 'bf-cxr': '1' }).lowRisk, true);
+  // Step-by-Step: age <= 21 days -> high, reason from step 2.
+  const ss = ok('step-by-step', { 'ss-unwell': '0', 'ss-age': '1', 'ss-ua': '0', 'ss-pct': '0', 'ss-crp': '0' });
+  assert.equal(ss.risk, 'high');
+  // Only CRP/ANC positive -> intermediate.
+  assert.equal(ok('step-by-step', { 'ss-unwell': '0', 'ss-age': '0', 'ss-ua': '0', 'ss-pct': '0', 'ss-crp': '1' }).risk, 'intermediate');
+  // YOS: three items at 5, three at 1 -> 18, high band.
+  const yo = ok('yos', { 'yo-cry': '5', 'yo-react': '5', 'yo-state': '5', 'yo-color': '1', 'yo-hydr': '1', 'yo-social': '1' });
+  assert.equal(yo.score, 18);
+  assert.match(yo.band, /HIGH/);
+  // Westley: cyanosis at rest (5) + stridor at rest (2) + severe retractions (3) = 10, severe.
+  const wc = ok('westley', { 'wc-loc': '0', 'wc-cyan': '5', 'wc-stri': '2', 'wc-air': '0', 'wc-retr': '3' });
+  assert.equal(wc.score, 10);
+  assert.match(wc.band, /severe/);
+  // PRAM: suprasternal (2) + air entry 3 + wheezing 3 = 8, severe.
+  const pr = ok('pram-asthma', { 'pr-supra': '2', 'pr-scal': '0', 'pr-air': '3', 'pr-wheez': '3', 'pr-spo2': '0' });
+  assert.equal(pr.score, 8);
+  assert.match(pr.band, /severe/);
+  const pa = ok('pass-asthma', { 'pa-wh': '2', 'pa-wob': '2', 'pa-exp': '1' });
+  assert.equal(pa.score, 5);
+  assert.match(pa.band, /severe/);
+  // Peds GCS: eye 2 + verbal 2 + motor 4 = 8, severe.
+  const pg = ok('peds-gcs', { 'pg-eye': '2', 'pg-verb': '2', 'pg-mot': '4', 'pg-age': 'under-2' });
+  assert.equal(pg.score, 8);
+  assert.equal(pg.severity, 'severe');
+  // Nigrovic: Gram stain (2) alone -> not low risk.
+  const ni = ok('nigrovic', { 'ni-gram': '1', 'ni-csf-anc': '0', 'ni-prot': '0', 'ni-anc': '0', 'ni-sz': '0' });
+  assert.equal(ni.score, 2);
+  assert.equal(ni.veryLowRisk, false);
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];
