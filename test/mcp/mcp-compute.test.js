@@ -1405,6 +1405,28 @@ test('lib/scoring-v4.js workflow / wound / transfusion worked calls (wave 68)', 
   assert.ok(bc.compatibleDonors.length >= 4);
 });
 
+test('lib/clinical-v5.js group-v5 diagnostic ratios + staging worked calls (wave 69)', () => {
+  const li = ok('lights', { pp: '4.0', sp: '6.0', pl: '250', sl: '200', uln: '222' });
+  assert.equal(li.proteinRatio, 0.67);
+  assert.match(li.classification, /Exudate/);
+  const me = ok('mentzer', { mcv: '65', rbc: '6.0' });
+  assert.equal(me.index, 10.8);
+  const sa = ok('saag', { sa: '3.5', aa: '1.5' });
+  assert.equal(sa.saag, 2.0);
+  assert.match(sa.classification, /Portal hypertension/);
+  const rf = ok('r-factor', { alt: '500', altu: '40', alp: '100', alpu: '120' });
+  assert.equal(rf.rFactor, 15);
+  assert.equal(rf.pattern, 'Hepatocellular');
+  const kd = ok('kdigo-aki', { base: '1.0', cur: '3.5' });
+  assert.equal(kd.creatinineRatio, 3.5);
+  assert.equal(kd.creatinineStage, 3);
+  const sg = ok('sgarbossa', { a: '1' });
+  assert.equal(sg.positive, true);
+  assert.equal(sg.stThresholdMm, 1);
+  const av = ok('avpu-gcs', { lvl: 'P' });
+  assert.equal(av.typical, 8);
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];

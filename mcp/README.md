@@ -73,7 +73,7 @@ strings; booleans as `true`/`false`; enums by their listed string values.
 
 ```
 list_calculators { "specialty": "hepatology" }
-  -> { coverage: "979 of 1109 catalog tiles exposed ...", calculators: [ { id: "meld-xi", ... }, ... ] }
+  -> { coverage: "986 of 1109 catalog tiles exposed ...", calculators: [ { id: "meld-xi", ... }, ... ] }
 
 describe_calculator { "id": "meld-xi" }
   -> { inputSchema: { ... mx-bili, mx-creat ... }, citation: "Heuman DM ... Liver Transpl 2007", ... }
@@ -236,7 +236,10 @@ sixty-seventh the nutrition-risk and Ottawa-rule cluster (NUTRIC, mNUTRIC,
 NRS-2002, MUST, Ottawa Ankle, Ottawa SAH), and a sixty-eighth the workflow /
 wound / transfusion cluster (DRIP, ABC-MTP, NPIAP staging, Norton + PUSH, VIP +
 INS, blood compatibility) that drains the last adaptable Group-G tiles in
-`lib/scoring-v4.js`, for 979 across 170 modules today. <!-- catalog-truth:historical (170 is the count of lib modules adapted, not a catalog tile count) -->
+`lib/scoring-v4.js`, and a sixty-ninth the group-v5 diagnostic ratios and
+staging tiles in `lib/clinical-v5.js` (Light's criteria, Mentzer, SAAG,
+R-factor, KDIGO AKI, modified Sgarbossa, AVPU-GCS), for 986 across 170 modules
+today. <!-- catalog-truth:historical (170 is the count of lib modules adapted, not a catalog tile count) -->
 Later waves extend it module by module against the same contract.
 
 ## Design

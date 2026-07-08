@@ -984,6 +984,17 @@ underlying Aldrete computation is already exposed as the standalone `aldrete`
 tile (wave 58). Brings the exposed total to **979 calculators across 170
 modules**.
 
+## Sixty-ninth wave — the group-v5 diagnostic ratios and staging tiles in lib/clinical-v5.js (+7)
+
+Wave 54 adapted only the sodium/fluid/ventilation subset of `lib/clinical-v5.js`;
+this wave appends the remaining `views/group-v5.js` tiles that share the module:
+Light's criteria (pleural exudate/transudate), the Mentzer index, the SAAG, the
+drug-induced-liver-injury R-factor, KDIGO AKI staging (optional urine-output and
+RRT inputs left non-required), the modified Sgarbossa criteria, and the
+AVPU-to-GCS crosswalk (a positional-string lib call wrapped so the flat `lvl`
+enum maps onto it). No new module - append-only to the existing adapter. Brings
+the exposed total to **986 calculators across 170 modules**.
+
 ## Exposed
 
 Each id below is live in `mcp/catalog.js`. The gate parses this list.
@@ -2096,6 +2107,13 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 - `rsbi`
 - `corrected-anion-gap`
 - `iron-ganzoni`
+- `lights`
+- `mentzer`
+- `saag`
+- `r-factor`
+- `kdigo-aki`
+- `sgarbossa`
+- `avpu-gcs`
 
 ### lib/clinical-v6.js
 - `anc`
