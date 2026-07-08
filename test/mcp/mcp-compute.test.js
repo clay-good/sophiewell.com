@@ -1515,6 +1515,36 @@ test('lib/idcrit-v99.js ID / critical-care criteria worked calls (wave 75)', () 
   assert.equal(rf.majorCount, 1);
 });
 
+test('lib/scoring-v5.js group-v9 screening / decision worked calls (wave 76)', () => {
+  const pg = ok('phq2-gad2', { 'pg-d1': '2', 'pg-d2': '2', 'pg-a1': '1', 'pg-a2': '1' });
+  assert.equal(pg.phq2, 4);
+  assert.equal(pg.gad2, 2);
+  assert.equal(pg.phqPositive, true);
+  assert.equal(ok('audit-full', { 'af-1': '4', 'af-2': '4', 'af-3': '2' }).total, 10);
+  // DAST-10: two items + reverse-scored item 3 unchecked -> 3.
+  const dt = ok('dast10', { 'dt-1': '1', 'dt-2': '1' });
+  assert.equal(dt.total, 3);
+  assert.equal(dt.maxScore, 10);
+  const gd = ok('gds15', { 'gd-2': '1', 'gd-3': '1' });
+  assert.equal(gd.total, 7);
+  assert.equal(ok('ottawa-knee', { 'ok-age55': '1' }).xrayIndicated, true);
+  assert.equal(ok('nexus-chest', { 'nc-cxr': '1' }).imagingIndicated, true);
+  assert.equal(ok('sfsr', { 'sf-ecg': '1' }).highRisk, true);
+  assert.equal(ok('canadian-syncope', { 'cs-heart': '1', 'cs-trop': '1' }).score, 3);
+  const ed = ok('edacs', { 'ed-age': '50', 'ed-male': '1', 'ed-risk': '1', 'ed-diaph': '1' });
+  assert.equal(ed.score, 17);
+  assert.equal(ed.lowRisk, false);
+  assert.equal(ok('years-pe', { 'yp-ddimer': '400' }).excluded, true);
+  assert.equal(ok('feverpain', { 'fp-fever': '1', 'fp-pus': '1', 'fp-attend': '1', 'fp-inflamed': '1' }).total, 4);
+  assert.equal(ok('stone-score', { 'st-sex': 'male', 'st-timing': 'lt6', 'st-nonblack': '1', 'st-nausea': 'vomiting', 'st-hematuria': '1' }).score, 13);
+  const ir = ok('iss-rts', { 'ir-ais1': '4', 'ir-ais2': '3', 'ir-ais3': '2', 'ir-gcs': '14', 'ir-sbp': '120', 'ir-rr': '18' });
+  assert.equal(ir.iss, 29);
+  assert.equal(ir.rts, 7.84);
+  const sp = ok('sipa', { 'sp-age': '5', 'sp-hr': '140', 'sp-sbp': '100' });
+  assert.equal(sp.shockIndex, 1.4);
+  assert.equal(sp.elevated, true);
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];

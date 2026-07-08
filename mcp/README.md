@@ -73,7 +73,7 @@ strings; booleans as `true`/`false`; enums by their listed string values.
 
 ```
 list_calculators { "specialty": "hepatology" }
-  -> { coverage: "1008 of 1109 catalog tiles exposed ...", calculators: [ { id: "meld-xi", ... }, ... ] }
+  -> { coverage: "1022 of 1109 catalog tiles exposed ...", calculators: [ { id: "meld-xi", ... }, ... ] }
 
 describe_calculator { "id": "meld-xi" }
   -> { inputSchema: { ... mx-bili, mx-creat ... }, citation: "Heuman DM ... Liver Transpl 2007", ... }
@@ -249,7 +249,11 @@ scores in `lib/clinical-v5.js` (RCRI, PEWS, ABCD2), and a seventy-fourth the
 deterministic ICU workflow tiles in `lib/scoring-v4.js` (LIPS, MTP ratio
 tracker, Bristol stool scale), and a seventy-fifth the ID / critical-care
 criteria in the new `lib/idcrit-v99.js` module (modified Duke endocarditis,
-Pitt Bacteremia, SAPS II, refeeding risk), for 1008 across 172 modules today. <!-- catalog-truth:historical (172 is the count of lib modules adapted, not a catalog tile count) -->
+Pitt Bacteremia, SAPS II, refeeding risk), and a seventy-sixth the group-v9
+screening / decision instruments in the new `lib/scoring-v5.js` module (PHQ-2/
+GAD-2, AUDIT, DAST-10, GDS-15, Ottawa Knee, NEXUS Chest, SF + Canadian syncope,
+EDACS, YEARS, FeverPAIN, STONE, ISS + RTS, SIPA), for 1022 across 173 modules
+today. <!-- catalog-truth:historical (173 is the count of lib modules adapted, not a catalog tile count) -->
 Later waves extend it module by module against the same contract.
 
 ## Design

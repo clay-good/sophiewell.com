@@ -1066,6 +1066,19 @@ this module, `lund-browder`, stays deferred: it takes a variable-length
 per-region burn-fraction object needing its own bespoke `toArgs`. Brings the
 exposed total to **1008 calculators across 172 modules**.
 
+## Seventy-sixth wave — the group-v9 screening / decision instruments in lib/scoring-v5.js (+14, new module)
+
+A new lib module (`lib/scoring-v5.js`, registered in `mcp/catalog.js`): the
+ultra-brief PHQ-2/GAD-2, the full AUDIT, DAST-10, and GDS-15 screens, the Ottawa
+Knee and NEXUS Chest imaging rules, the San Francisco and Canadian syncope
+rules, EDACS, the YEARS PE algorithm, FeverPAIN, the STONE ureteral-stone score,
+combined ISS + RTS trauma scoring, and the pediatric age-adjusted shock index
+(SIPA). AUDIT, DAST-10, and GDS-15 take a fixed-length `items` array rebuilt
+from the flat per-question fields by a bespoke `toArgs` that defaults absent
+items, so the reverse-scored questions (DAST-10 item 3, the GDS-15
+positive-worded items) score correctly. Brings the exposed total to **1022
+calculators across 173 modules**.
+
 ## Exposed
 
 Each id below is live in `mcp/catalog.js`. The gate parses this list.
@@ -2421,6 +2434,22 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 - `pitt-bacteremia`
 - `saps-ii`
 - `refeeding-risk`
+
+### lib/scoring-v5.js
+- `phq2-gad2`
+- `audit-full`
+- `dast10`
+- `gds15`
+- `ottawa-knee`
+- `nexus-chest`
+- `sfsr`
+- `canadian-syncope`
+- `edacs`
+- `years-pe`
+- `feverpain`
+- `stone-score`
+- `iss-rts`
+- `sipa`
 
 ## Not yet adapted
 
