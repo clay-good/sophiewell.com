@@ -995,6 +995,23 @@ AVPU-to-GCS crosswalk (a positional-string lib call wrapped so the flat `lvl`
 enum maps onto it). No new module - append-only to the existing adapter. Brings
 the exposed total to **986 calculators across 170 modules**.
 
+## Seventieth wave — the flat prehospital / MCI triage screens in lib/field.js (+4, new module)
+
+The first genuinely new lib module this batch (`lib/field.js`, registered in
+`mcp/catalog.js`): the Cincinnati Prehospital Stroke Scale, FAST / BE-FAST (its
+`fast(answers, opts)` compute is wrapped to always score the extended BE-FAST
+item set), and the START (adult) and JumpSTART (pediatric) mass-casualty triage
+algorithms (their airway/rescue-breath enums map `na` to `undefined` via a
+per-field `to` transform). Brings the exposed total to **990 calculators across
+171 modules**.
+
+The rest of `lib/field.js` is deferred to a dedicated pass: the trauma
+`field-triage` tile reads variable criterion keys from a shipped `data/` shard
+(data-driven, not a fixed field list), and the burn / airway / drug-dose tiles
+(`bsa_burn`'s rule-of-nines region array, `burn-fluid`, `peds-ett`, `naloxone`,
+`peds-weight-dose`) take array inputs or recipe-table lookups needing a bespoke
+`toArgs`.
+
 ## Exposed
 
 Each id below is live in `mcp/catalog.js`. The gate parses this list.
@@ -2324,6 +2341,12 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 - `peds-fluid-deficit`
 - `peds-resus`
 - `conc-percent`
+
+### lib/field.js
+- `cincinnati`
+- `fast`
+- `start-triage`
+- `jumpstart-triage`
 
 ## Not yet adapted
 

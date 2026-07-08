@@ -187,6 +187,7 @@ import scoringV4 from './adapters/scoring-v4.js';
 import scoringV6 from './adapters/scoring-v6.js';
 import medicationV4 from './adapters/medication-v4.js';
 import medicationV5 from './adapters/medication-v5.js';
+import field from './adapters/field.js';
 
 const ADAPTER_MODULES = [
   ['tox-v86', toxV86],
@@ -359,6 +360,7 @@ const ADAPTER_MODULES = [
   ['scoring-v6', scoringV6],
   ['medication-v4', medicationV4],
   ['medication-v5', medicationV5],
+  ['field', field],
 ];
 
 const HERE = dirname(fileURLToPath(import.meta.url));

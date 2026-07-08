@@ -1427,6 +1427,23 @@ test('lib/clinical-v5.js group-v5 diagnostic ratios + staging worked calls (wave
   assert.equal(av.typical, 8);
 });
 
+test('lib/field.js prehospital / MCI triage worked calls (wave 70)', () => {
+  const ci = ok('cincinnati', { 'cps-face': '1', 'cps-arm': '1', 'cps-speech': '0' });
+  assert.equal(ci.total, 2);
+  assert.equal(ci.positive, true);
+  assert.equal(ci.itemCount, 3);
+  assert.equal(ok('fast', { 'fast-face': '1' }).positive, true);
+  assert.equal(ok('fast', { 'fast-balance': '0', 'fast-eyes': '0', 'fast-face': '0', 'fast-arms': '0', 'fast-speech': '0' }).positive, false);
+  // START: can walk -> Minor.
+  assert.match(ok('start-triage', { 'st-walk': '1' }).category, /Minor/);
+  // START: not walking, apnea persists after repositioning -> Expectant.
+  assert.match(ok('start-triage', { 'st-walk': '0', 'st-breath': '0', 'st-reposition': 'no' }).category, /Expectant/);
+  // JumpSTART: child can walk -> Minor.
+  assert.match(ok('jumpstart-triage', { 'js-walk': '1' }).category, /Minor/);
+  // JumpSTART: not walking, breathing returns after rescue breaths -> Immediate.
+  assert.match(ok('jumpstart-triage', { 'js-walk': '0', 'js-breath': '0', 'js-rescue': 'yes' }).category, /Immediate/);
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];
