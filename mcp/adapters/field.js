@@ -68,4 +68,44 @@ export default [
       { dom: 'js-avpu', arg: 'avpuAppropriate', kind: 'bool', label: 'AVPU appropriate (A, V, or appropriate P)' },
     ],
   },
+
+  // --- wave 78: the flat-input burn / airway / drug-dose recipes ----------
+  {
+    id: 'burn-fluid',
+    summary: 'Burn resuscitation fluid: the Parkland (4 mL/kg/%TBSA) and modified Brooke (2 mL/kg/%TBSA) formulas from weight and burn surface area, each split into the first-8-hour and subsequent-16-hour volumes; an optional hours-since-injury shows the remaining volume owed in the first-8-hour window.',
+    compute: F.burnFluid,
+    fields: [
+      { dom: 'bf-w', arg: 'weightKg', kind: 'number', required: true, label: 'Patient weight', unit: 'kg' },
+      { dom: 'bf-bsa', arg: 'tbsaPercent', kind: 'number', required: true, label: 'Burn surface area', unit: '% TBSA' },
+      { dom: 'bf-h', arg: 'hoursSinceInjury', kind: 'number', label: 'Hours since injury (optional, 0-8)' },
+    ],
+  },
+  {
+    id: 'peds-ett',
+    summary: 'Pediatric endotracheal-tube size and insertion depth: uncuffed internal diameter = age/4 + 4 mm (cuffed = age/4 + 3.5), depth at the lip = 3 x tube size.',
+    compute: F.pediatricEtt,
+    fields: [
+      { dom: 'pet-age', arg: 'ageYears', kind: 'number', required: true, label: 'Patient age', unit: 'years' },
+      { dom: 'pet-cuffed', arg: 'cuffed', kind: 'enum', values: ['uncuffed', 'cuffed'], required: true, label: 'Tube type', to: (v) => v === 'cuffed' },
+    ],
+  },
+  {
+    id: 'naloxone',
+    summary: 'Naloxone dosing reference for opioid overdose (FDA labeling / CDC guidance): the initial dose, re-dose interval, and escalation ceiling by population (adult / pediatric) and route (IV / IM / intranasal / SC); pediatric doses use the entered weight.',
+    compute: F.naloxoneDose,
+    fields: [
+      { dom: 'nx-pop', arg: 'population', kind: 'enum', values: ['adult', 'pediatric'], required: true, label: 'Population' },
+      { dom: 'nx-route', arg: 'route', kind: 'enum', values: ['iv', 'im', 'in', 'sc'], required: true, label: 'Route (IV / IM / intranasal / SC)' },
+      { dom: 'nx-w', arg: 'weightKg', kind: 'number', label: 'Pediatric weight (if pediatric)', unit: 'kg' },
+    ],
+  },
+  {
+    id: 'peds-weight-dose',
+    summary: 'Weight-based pediatric resuscitation dosing: the per-dose amount for a chosen medication recipe (epinephrine IV/IO or IM, atropine, amiodarone, naloxone, D10 dextrose, normal-saline bolus) from the patient weight, with the per-dose cap applied when the weight-based dose exceeds it.',
+    compute: F.pedsDose,
+    fields: [
+      { dom: 'pwd-w', arg: 'weightKg', kind: 'number', required: true, label: 'Patient weight', unit: 'kg' },
+      { dom: 'pwd-r', arg: 'recipe', kind: 'enum', values: ['epinephrine-iv-io', 'epinephrine-im-anaphyl', 'atropine', 'amiodarone', 'naloxone', 'dextrose-d10', 'fluid-bolus-ns'], required: true, label: 'Medication recipe' },
+    ],
+  },
 ];

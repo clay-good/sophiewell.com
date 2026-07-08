@@ -1555,6 +1555,20 @@ test('lib/scoring-v4.js cardiovascular risk engines worked calls (wave 77)', () 
   assert.equal(pv.horizonYears, 10);
 });
 
+test('lib/field.js burn / airway / drug-dose recipes worked calls (wave 78)', () => {
+  const bf = ok('burn-fluid', { 'bf-w': '70', 'bf-bsa': '20', 'bf-h': '0' });
+  assert.equal(bf.parkland.total24h, 5600);
+  assert.equal(bf.parkland.first8h, 2800);
+  assert.equal(bf.brooke.total24h, 2800);
+  const pe = ok('peds-ett', { 'pet-age': '4', 'pet-cuffed': 'uncuffed' });
+  assert.equal(pe.sizeMm, 5);
+  assert.equal(pe.depthCm, 15);
+  const nx = ok('naloxone', { 'nx-pop': 'adult', 'nx-route': 'in' });
+  assert.match(nx.dose, /4 mg intranasal/);
+  const pw = ok('peds-weight-dose', { 'pwd-w': '10', 'pwd-r': 'epinephrine-iv-io' });
+  assert.equal(pw.dose, 0.1);
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];

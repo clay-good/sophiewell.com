@@ -1088,6 +1088,18 @@ horizon (and PREVENT its age) so the documented facts in the interpretive
 example text round-trip alongside the computed risk percentage. Brings the
 exposed total to **1024 calculators across 173 modules**.
 
+## Seventy-eighth wave — the flat burn / airway / drug-dose recipes in lib/field.js (+4)
+
+Appends the four `views/group-i.js` tiles in `lib/field.js` whose recipe / table
+lookups the lib performs internally from flat inputs: burn-resuscitation fluid
+(Parkland + modified Brooke), the pediatric ETT size / depth formulas, the
+naloxone dosing reference (population + route enums), and weight-based pediatric
+resuscitation dosing (a medication-recipe enum). Append-only. The remaining
+`lib/field.js` tiles stay deferred: `field-triage` reads variable criterion keys
+from a shipped `data/` shard, and `bsa_burn` takes a variable-length rule-of-
+nines region array. Brings the exposed total to **1028 calculators across 173
+modules**.
+
 ## Exposed
 
 Each id below is live in `mcp/catalog.js`. The gate parses this list.
@@ -2439,6 +2451,10 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 - `fast`
 - `start-triage`
 - `jumpstart-triage`
+- `burn-fluid`
+- `peds-ett`
+- `naloxone`
+- `peds-weight-dose`
 
 ### lib/idcrit-v99.js
 - `duke-endocarditis`
