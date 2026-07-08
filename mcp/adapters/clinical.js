@@ -369,4 +369,21 @@ export default [
       { dom: '11', arg: '11', kind: 'number', label: '11 Extinction and inattention (0-2)' },
     ],
   },
+
+  // --- wave 80: Naegele's rule (views/group-e.js) -------------------------
+  {
+    id: 'due-date',
+    summary: "Naegele's rule estimated due date: last menstrual period plus 280 days.",
+    // The lib also reports a current gestational age computed against today's
+    // date; that field is wall-clock dependent, so the adapter returns only the
+    // deterministic due date (the gestational-age reading stays a browser-only
+    // convenience).
+    compute: (a) => {
+      const r = F.naegele(a);
+      return r == null ? null : { dueDate: r.dueDate };
+    },
+    fields: [
+      { dom: 'lmp', arg: 'lmpIso', kind: 'string', required: true, label: 'Last menstrual period (ISO date, YYYY-MM-DD)' },
+    ],
+  },
 ];

@@ -1114,6 +1114,15 @@ on the e2e example-correctness scenario-only allowlist for the same reason);
 `code-blue-clock` and `device-day-counter` each read the wall clock. Brings the
 exposed total to **1029 calculators across 173 modules**.
 
+## Eightieth wave — Naegele's rule in lib/clinical.js (+1)
+
+The `views/group-e.js` estimated-due-date tile (last menstrual period + 280
+days). The lib also reports a current gestational age computed against today's
+date; that field is wall-clock dependent, so the adapter returns only the
+deterministic due date (the gestational-age reading stays a browser-only
+convenience). Append-only. Brings the exposed total to **1030 calculators across
+173 modules**.
+
 ## Exposed
 
 Each id below is live in `mcp/catalog.js`. The gate parses this list.
@@ -2204,6 +2213,7 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 - `chads`
 - `hasbled`
 - `nihss`
+- `due-date`
 
 ### lib/clinical-v4.js
 - `anion-gap-dd`

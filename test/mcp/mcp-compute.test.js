@@ -1577,6 +1577,11 @@ test('lib/scoring-v4.js restraint-reassessment timer worked call (wave 79)', () 
   assert.match(rt.banners.join(' '), /482\.13/);
 });
 
+test('lib/clinical.js Naegele due-date worked call (wave 80)', () => {
+  const dd = ok('due-date', { lmp: '2025-01-01' });
+  assert.equal(dd.dueDate, '2025-10-08');
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];
