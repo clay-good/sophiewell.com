@@ -73,7 +73,7 @@ strings; booleans as `true`/`false`; enums by their listed string values.
 
 ```
 list_calculators { "specialty": "hepatology" }
-  -> { coverage: "961 of 1109 catalog tiles exposed ...", calculators: [ { id: "meld-xi", ... }, ... ] }
+  -> { coverage: "967 of 1109 catalog tiles exposed ...", calculators: [ { id: "meld-xi", ... }, ... ] }
 
 describe_calculator { "id": "meld-xi" }
   -> { inputSchema: { ... mx-bili, mx-creat ... }, citation: "Heuman DM ... Liver Transpl 2007", ... }
@@ -230,7 +230,9 @@ modified NIHSS, FOUR Score), and a sixty-fourth the pediatric / ICU pain,
 sedation, and withdrawal scales (FLACC, PAINAD, NIPS, N-PASS, CRIES, POSS,
 COMFORT-B, WAT-1, SBS, SOS), and a sixty-fifth the prehospital stroke scales,
 ADLs, and C-SSRS (CPSS, LAMS, RACE, ROSIER, GUSS, Barthel, Lawton IADL, Katz
-ADL, C-SSRS), for 961 across 170 modules today. <!-- catalog-truth:historical (170 is the count of lib modules adapted, not a catalog tile count) -->
+ADL, C-SSRS), and a sixty-sixth the pulmonary / CAP-severity cluster (HACOR,
+Berlin ARDS, Murray LIS, SMART-COP, CRB-65, ATS/IDSA severe CAP), for 967
+across 170 modules today. <!-- catalog-truth:historical (170 is the count of lib modules adapted, not a catalog tile count) -->
 Later waves extend it module by module against the same contract.
 
 ## Design

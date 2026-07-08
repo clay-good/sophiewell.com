@@ -949,6 +949,15 @@ examples write their unchecked booleans as the literal string `"false"`, which
 the shared boolean coercion accepts, so both round-trip. Brings the exposed
 total to **961 calculators across 170 modules**.
 
+## Sixty-sixth wave — the pulmonary / CAP-severity cluster in lib/scoring-v4.js (+6)
+
+HACOR (NIV-failure prediction), the Berlin ARDS definition (four boolean
+criteria plus an optional PaO2/FiO2 grade - the P/F inputs are non-required so
+the example's empty fields round-trip), the Murray Lung Injury Score, SMART-COP
+(age-driven tachypnea and oxygenation thresholds), CRB-65, and the ATS/IDSA
+2019 severe-CAP major/minor criteria. Brings the exposed total to **967
+calculators across 170 modules**.
+
 ## Exposed
 
 Each id below is live in `mcp/catalog.js`. The gate parses this list.
@@ -2222,6 +2231,12 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 - `lawton-iadl`
 - `katz-adl`
 - `cssrs`
+- `hacor`
+- `berlin-ards`
+- `lis-murray`
+- `smart-cop`
+- `crb65`
+- `ats-idsa-cap`
 
 ### lib/scoring-v6.js
 - `ballard`

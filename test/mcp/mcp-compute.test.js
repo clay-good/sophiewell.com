@@ -1334,6 +1334,27 @@ test('lib/scoring-v4.js prehospital stroke scales, ADLs, C-SSRS worked calls (wa
   assert.equal(cs.band, 'high risk');
 });
 
+test('lib/scoring-v4.js pulmonary / CAP-severity worked calls (wave 66)', () => {
+  // HACOR: tachycardia + acidosis + low GCS + poor oxygenation + tachypnea.
+  const hc = ok('hacor', { 'hc-hr': '130', 'hc-ph': '7.20', 'hc-gcs': '10', 'hc-pao2': '80', 'hc-fio2': '0.8', 'hc-rr': '45' });
+  assert.ok(hc.score > 5);
+  // Berlin ARDS: all four criteria + P/F 160 -> moderate.
+  const ba = ok('berlin-ards', { 'ba-timing': '1', 'ba-bilat': '1', 'ba-not': '1', 'ba-peep': '1', 'ba-pao2': '160', 'ba-fio2': '1.0' });
+  assert.equal(ba.ards, true);
+  assert.match(ba.severity, /moderate/i);
+  // Empty P/F still round-trips to not-met when a criterion is missing.
+  assert.equal(ok('berlin-ards', { 'ba-timing': '0', 'ba-bilat': '0', 'ba-not': '0', 'ba-peep': '0', 'ba-pao2': '', 'ba-fio2': '' }).ards, false);
+  const lm = ok('lis-murray', { 'lm-quad': '4', 'lm-pao2': '80', 'lm-fio2': '1.0', 'lm-peep': '14', 'lm-comp': '18' });
+  assert.ok(lm.score > 2.5);
+  // SMART-COP: SBP<90 (2) + pH<7.35 (2) = 4.
+  const sc = ok('smart-cop', { 'sc-age': '60', 'sc-sbp': '1', 'sc-multi': '0', 'sc-alb': '0', 'sc-rr': '20', 'sc-pao2': '90', 'sc-spo2': '96', 'sc-pf': '400', 'sc-hr': '0', 'sc-conf': '0', 'sc-ph': '1' });
+  assert.equal(sc.score, 4);
+  const cr = ok('crb65', { 'cr-conf': '1', 'cr-rr': '0', 'cr-bp': '1', 'cr-age': '1' });
+  assert.equal(cr.score, 3);
+  // ATS/IDSA: one major criterion -> severe.
+  assert.equal(ok('ats-idsa-cap', { 'ai-major-vp': '1', 'ai-major-mv': '0', 'ai-rr': '0', 'ai-pf': '0', 'ai-multi': '0', 'ai-conf': '0', 'ai-bun': '0', 'ai-leuk': '0', 'ai-plt': '0', 'ai-hypo': '0', 'ai-fluid': '0' }).severe, true);
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];
