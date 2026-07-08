@@ -1272,6 +1272,38 @@ test('lib/scoring-v4.js falls-risk + neuro-assessment worked calls (wave 63)', (
   assert.equal(fs.score, 12);
 });
 
+test('lib/scoring-v4.js pediatric / ICU pain, sedation, withdrawal worked calls (wave 64)', () => {
+  const fl = ok('flacc', { 'fl-face': '2', 'fl-legs': '1', 'fl-act': '2', 'fl-cry': '2', 'fl-cons': '1' });
+  assert.equal(fl.score, 8);
+  assert.equal(fl.band, 'severe pain');
+  assert.equal(ok('painad', { 'pa-br': '1', 'pa-vo': '1', 'pa-fa': '0', 'pa-bl': '0', 'pa-cons': '0' }).score, 2);
+  const ni = ok('nips', { 'ni-face': '1', 'ni-cry': '2', 'ni-br': '1', 'ni-arms': '1', 'ni-legs': '0', 'ni-sta': '0' });
+  assert.equal(ni.score, 5);
+  assert.match(ni.band, /severe/);
+  // N-PASS: three +2 pain items -> raw 6; preterm 27 wk adds 3 -> 9; sedation 0.
+  const np = ok('npass', { 'np-cry': '2', 'np-beh': '2', 'np-fac': '2', 'np-ext': '0', 'np-vit': '0', 'np-ga': '27' });
+  assert.equal(np.painScore, 9);
+  assert.equal(np.pretermAdjust, 3);
+  const cr = ok('cries', { 'cr-cry': '2', 'cr-o2': '1', 'cr-vit': '1', 'cr-exp': '1', 'cr-slp': '0' });
+  assert.equal(cr.score, 5);
+  assert.match(cr.band, /analgesia/);
+  const po = ok('poss', { 'po-lvl': '3' });
+  assert.equal(po.acceptable, false);
+  const cb = ok('comfort-b', { 'cb-alt': '4', 'cb-cal': '4', 'cb-res': '4', 'cb-mov': '4', 'cb-mus': '4', 'cb-fac': '4' });
+  assert.equal(cb.score, 24);
+  assert.match(cb.band, /inadequate/);
+  // WAT-1: three binary items + recovery 6 min (2 points) = 5, withdrawal.
+  const w1 = ok('wat-1', { 'w1-ls': '1', 'w1-vo': '1', 'w1-fe': '1', 'w1-sb': '0', 'w1-tr': '0', 'w1-sw': '0', 'w1-um': '0', 'w1-ys': '0', 'w1-st': '0', 'w1-mt': '0', 'w1-rm': '6' });
+  assert.equal(w1.score, 5);
+  assert.equal(w1.withdrawal, true);
+  const sb = ok('sbs', { 'sb-lvl': '-3' });
+  assert.equal(sb.score, -3);
+  assert.match(sb.band, /deeper than target/);
+  const so = ok('sos', { 'so-tac': '1', 'so-tap': '1', 'so-fev': '1', 'so-swe': '1', 'so-agi': '0', 'so-anx': '0', 'so-gri': '0', 'so-sle': '0', 'so-hal': '0', 'so-mot': '0', 'so-hyp': '0', 'so-tre': '0', 'so-vom': '0', 'so-dia': '0', 'so-cry': '0' });
+  assert.equal(so.score, 4);
+  assert.equal(so.withdrawal, true);
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];

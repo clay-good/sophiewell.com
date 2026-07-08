@@ -73,7 +73,7 @@ strings; booleans as `true`/`false`; enums by their listed string values.
 
 ```
 list_calculators { "specialty": "hepatology" }
-  -> { coverage: "942 of 1109 catalog tiles exposed ...", calculators: [ { id: "meld-xi", ... }, ... ] }
+  -> { coverage: "952 of 1109 catalog tiles exposed ...", calculators: [ { id: "meld-xi", ... }, ... ] }
 
 describe_calculator { "id": "meld-xi" }
   -> { inputSchema: { ... mx-bili, mx-creat ... }, citation: "Heuman DM ... Liver Transpl 2007", ... }
@@ -226,7 +226,9 @@ fever / sepsis and respiratory cluster (Rochester, Philadelphia, Boston,
 Step-by-Step, Yale Observation Scale, Westley croup, PRAM, PASS, pediatric GCS,
 Nigrovic), and a sixty-third the falls-risk and neuro-assessment cluster
 (Braden, Morse Fall Scale, Hendrich II, CAM, ICH Score, Hunt-Hess + WFNS,
-modified NIHSS, FOUR Score), for 942 across 170 modules today. <!-- catalog-truth:historical (170 is the count of lib modules adapted, not a catalog tile count) -->
+modified NIHSS, FOUR Score), and a sixty-fourth the pediatric / ICU pain,
+sedation, and withdrawal scales (FLACC, PAINAD, NIPS, N-PASS, CRIES, POSS,
+COMFORT-B, WAT-1, SBS, SOS), for 952 across 170 modules today. <!-- catalog-truth:historical (170 is the count of lib modules adapted, not a catalog tile count) -->
 Later waves extend it module by module against the same contract.
 
 ## Design

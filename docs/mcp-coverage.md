@@ -926,6 +926,17 @@ NIHSS, and the FOUR coma score. The CAM and mNIHSS examples carry empty
 fields is declared optional and the empty example round-trips. Brings the
 exposed total to **942 calculators across 170 modules**.
 
+## Sixty-fourth wave — the pediatric / ICU pain, sedation, and withdrawal scales in lib/scoring-v4.js (+10)
+
+The behavioral pain scales FLACC, PAINAD, NIPS, and CRIES; the neonatal N-PASS
+(five signed -2..+2 items yielding separate pain and sedation scores, with the
+preterm gestational-age pain adjustment); the single-item sedation ordinals
+POSS and SBS; the COMFORT-B behavioral sedation scale; and the two withdrawal
+instruments WAT-1 and SOS. All flat numeric-input adapters over the pure lib
+computes (the ordinal items, including the signed N-PASS and negative SBS
+levels, are plain numbers the lib validates). Brings the exposed total to
+**952 calculators across 170 modules**.
+
 ## Exposed
 
 Each id below is live in `mcp/catalog.js`. The gate parses this list.
@@ -2180,6 +2191,16 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 - `hunt-hess-wfns`
 - `mnihss`
 - `four-score`
+- `flacc`
+- `painad`
+- `nips`
+- `npass`
+- `cries`
+- `poss`
+- `comfort-b`
+- `wat-1`
+- `sbs`
+- `sos`
 
 ### lib/scoring-v6.js
 - `ballard`
