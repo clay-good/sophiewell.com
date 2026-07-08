@@ -969,6 +969,53 @@ test('lib/clinical.js Group G scoring core worked calls (wave 55)', () => {
   assert.equal(n.severity, 'Moderate stroke');
 });
 
+test('lib/scoring-v4.js Group G ED decision core worked calls (wave 56)', () => {
+  assert.equal(ok('timi', { 'tm-age': '1', 'tm-rf': '1', 'tm-asa': '1' }).score, 3);
+  // GRACE bands: age 70 (75) + HR 95 (15) + SBP 115 (43) + Cr 1.2 (10) + Killip 1 (0).
+  assert.equal(ok('grace', { 'gr-age': '70', 'gr-hr': '95', 'gr-sbp': '115', 'gr-cr': '1.2', 'gr-killip': '1' }).score, 143);
+  const h = ok('heart', { 'h-hist': '1', 'h-ekg': '0', 'h-age': '1', 'h-rf': '1', 'h-trop': '0' });
+  assert.equal(h.score, 3);
+  assert.match(h.band, /Low/);
+  const p = ok('perc', { 'pc-age': '1' });
+  assert.equal(p.score, 1);
+  assert.equal(p.cutoffs.ageYears, 50);
+  // Composite: Wells alt-dx (3) + HR (1.5) = 4.5; Geneva HR 105 scores 5.
+  const wg = ok('wells-pe-geneva', { 'wp-alt': '1', 'wp-hr': '1', 'gv-hr': '105' });
+  assert.equal(wg.wells.score, 4.5);
+  assert.equal(wg.geneva.score, 5);
+  assert.equal(wg.firedWellsPoints.alternativeDxLessLikely, 3);
+  const cu = ok('curb-65', { 'cu-conf': '1', 'cu-age': '1' });
+  assert.equal(cu.score, 2);
+  assert.equal(cu.ageCutoffYears, 65);
+  // PSI: age 70 + RR >= 30 (+20) = 90, Class III.
+  const psi = ok('psi', { 'ps-age': '70', 'ps-sex': 'M', 'ps-rr': '1' });
+  assert.equal(psi.score, 90);
+  assert.match(psi.band, /Class III/);
+  const qs = ok('qsofa-sofa', { 'q-rr': '1', 'q-am': '1', 's-resp': '1', 's-cv': '1' });
+  assert.equal(qs.qsofa.score, 2);
+  assert.equal(qs.sofa.score, 2);
+  const mc = ok('meld-childpugh', { 'm-bili': '2.0', 'm-inr': '1.5', 'm-cr': '1.3', 'm-na': '135', 'm-alb': '3.0', 'm-sex': 'M', 'cp-asc': 'mild', 'cp-enc': 'none' });
+  assert.equal(mc.meld.score, 18);
+  assert.equal(mc.childPugh.score, 8);
+  assert.match(mc.childPugh.band, /Class B/);
+  const rb = ok('ranson-bisap', { 'r-age': '1', 'r-wbc': '1', 'b-bun': '1', 'b-age': '1' });
+  assert.equal(rb.ranson.score, 2);
+  assert.equal(rb.bisap.score, 2);
+  // McIsaac: Centor 4 + age-12 modifier (+1) = 5.
+  const ce = ok('centor', { 'ce-exud': '1', 'ce-aden': '1', 'ce-fever': '1', 'ce-cough': '1', 'ce-age': '12' });
+  assert.equal(ce.centor.score, 4);
+  assert.equal(ce.mcisaac.score, 5);
+  assert.equal(ce.mcisaac.ageModifier, 1);
+  const wc = ok('wells-dvt-caprini', { 'wd-tender': '1', 'wd-leg': '1', 'wd-calf': '1', 'cap-pts': '5' });
+  assert.equal(wc.wellsDvt.total, 3);
+  assert.equal(wc.caprini.score, 5);
+  assert.match(wc.caprini.band, /High/);
+  assert.equal(ok('bishop', { 'bp-d': '3', 'bp-e': '60', 'bp-s': '-1', 'bp-c': 'medium', 'bp-p': 'anterior' }).score, 9);
+  const ap = ok('alvarado-pas', { 'a-mig': '1', 'a-anx': '1', 'a-rlq': '1', 'a-wbc': '1', 'p-rlq': '1', 'p-mig': '1', 'p-wbc': '1' });
+  assert.equal(ap.alvarado.score, 6);
+  assert.equal(ap.pas.score, 4);
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];

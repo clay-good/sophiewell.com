@@ -802,6 +802,33 @@ score's own name documents appear in the JSON. Brings the exposed total to
 **856 calculators across 170 modules** (no new module — `lib/clinical.js` was
 already adapted in wave 54).
 
+## Fifty-sixth wave — the Group G ED decision core in lib/scoring-v4.js (+14)
+
+The fourteen emergency-decision tiles rendered by `views/group-g.js` whose pure
+computes live in `lib/scoring-v4.js`: TIMI, GRACE, HEART, PERC, the paired
+Wells PE + revised Geneva, CURB-65, PSI/PORT, the paired qSOFA + SOFA,
+MELD-3.0 + Child-Pugh, Ranson + BISAP, Centor + McIsaac, Wells DVT + Caprini,
+Bishop, and Alvarado + PAS. Patterns:
+
+- **Composite wrappers** for the six side-by-side tiles: the adapter computes
+  both instruments from the one shared arg object (`wells-pe-geneva`,
+  `qsofa-sofa`, `meld-childpugh`, `ranson-bisap`, `centor` + McIsaac,
+  `alvarado-pas`); `wells-dvt-caprini` reuses the pure `lib/clinical.js` Wells
+  DVT compute beside the Caprini summed-points band.
+- **Nested-group rebuild** for Ranson: the lib takes two boolean groups
+  (admission / 48-hour); the wrapper rebuilds them from the flat args.
+- **Graded selects as enums** coerced to numbers (`to: Number`): HEART's five
+  0/1/2 components, the six SOFA organ grades (an unsupplied grade scores 0,
+  like the tile's defaults), GRACE's Killip class.
+- **Self-describing enrichment**: `perc` echoes its three numeric criterion
+  cutoffs (50 / 100 / 95), `curb-65` echoes the age-65 cutoff its name
+  documents, `meld-childpugh` echoes the albumin input (the "3.0" in the
+  example's "MELD-3.0" label), and `wells-pe-geneva` lists each fired Wells
+  criterion with its documented point weight.
+
+Brings the exposed total to **870 calculators across 170 modules** (no new
+module — `lib/scoring-v4.js` was already adapted in wave 54).
+
 ## Exposed
 
 Each id below is live in `mcp/catalog.js`. The gate parses this list.
@@ -1970,6 +1997,20 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 - `pecarn-head`
 - `pecarn-iai`
 - `pecarn-cspine`
+- `timi`
+- `grace`
+- `heart`
+- `perc`
+- `wells-pe-geneva`
+- `curb-65`
+- `psi`
+- `qsofa-sofa`
+- `meld-childpugh`
+- `ranson-bisap`
+- `centor`
+- `wells-dvt-caprini`
+- `bishop`
+- `alvarado-pas`
 
 ### lib/scoring-v6.js
 - `ballard`
