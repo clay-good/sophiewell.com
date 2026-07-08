@@ -1889,4 +1889,28 @@ export default [
       { dom: 'bc-prod', arg: 'product', kind: 'enum', values: ['prbc', 'ffp', 'platelets', 'cryo'], required: true, label: 'Product type' },
     ],
   },
+
+  // --- wave 71: the environmental-emergency decision tiles ----------------
+  {
+    id: 'hypothermia-rewarm',
+    summary: 'Swiss staging of accidental hypothermia (Durrer 2003) with the matched rewarming pathway: core temperature and patient state (alert/shivering HT I, impaired HT II, unconscious HT III, arrest HT IV) select passive, active-external, or active-internal rewarming; the optional ECPR-exclusion flag and serum potassium inform the arrest pathway.',
+    compute: F.hypothermiaRewarm,
+    fields: [
+      { dom: 'hyp-t', arg: 'coreTempC', kind: 'number', required: true, label: 'Core temperature', unit: 'C' },
+      { dom: 'hyp-s', arg: 'state', kind: 'enum', values: ['alert-shivering', 'impaired', 'unconscious', 'arrest'], required: true, label: 'Patient state (HT I-IV)' },
+      { dom: 'hyp-excl', arg: 'ecprExclusion', kind: 'bool', label: 'ECPR exclusion (lethal injury / non-compressible chest / known asystole before cooling)' },
+      { dom: 'hyp-k', arg: 'potassium', kind: 'number', label: 'Serum potassium (optional)', unit: 'mmol/L' },
+    ],
+  },
+  {
+    id: 'heatstroke-decision',
+    summary: 'Heat-illness severity and cooling algorithm (Bouchama 2002; WMS 2019): core temperature, CNS status, sweating (exertional vs classic subtype), and setting classify heat exhaustion vs heat stroke and select the cooling method (cold-water immersion to 38.9 C, cool-first-transport-second in the field).',
+    compute: F.heatstrokeDecision,
+    fields: [
+      { dom: 'hs-t', arg: 'coreTempC', kind: 'number', required: true, label: 'Core temperature', unit: 'C' },
+      { dom: 'hs-cns', arg: 'cns', kind: 'enum', values: ['none', 'mild-confusion', 'altered'], required: true, label: 'CNS status' },
+      { dom: 'hs-sw', arg: 'sweating', kind: 'bool', label: 'Sweating present (exertional; unchecked = anhidrotic / classic)' },
+      { dom: 'hs-set', arg: 'setting', kind: 'enum', values: ['field', 'hospital'], required: true, label: 'Setting' },
+    ],
+  },
 ];

@@ -1012,6 +1012,15 @@ The rest of `lib/field.js` is deferred to a dedicated pass: the trauma
 `peds-weight-dose`) take array inputs or recipe-table lookups needing a bespoke
 `toArgs`.
 
+## Seventy-first wave — the environmental-emergency decision tiles in lib/scoring-v4.js (+2)
+
+The Swiss accidental-hypothermia staging + rewarming pathway (Durrer 2003) and
+the heat-illness severity + cooling algorithm (Bouchama 2002 / WMS 2019), both
+rendered by `views/group-i.js` but computed in `lib/scoring-v4.js`. Append-only.
+This is the true completion of the adaptable `lib/scoring-v4.js` tiles (only the
+default-slider-dependent `aldrete-padss` remains deferred). Brings the exposed
+total to **992 calculators across 171 modules**.
+
 ## Exposed
 
 Each id below is live in `mcp/catalog.js`. The gate parses this list.
@@ -2310,6 +2319,8 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 - `norton-push`
 - `vip-extravasation`
 - `blood-compat`
+- `hypothermia-rewarm`
+- `heatstroke-decision`
 
 ### lib/scoring-v6.js
 - `ballard`

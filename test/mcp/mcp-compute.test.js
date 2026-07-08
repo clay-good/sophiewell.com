@@ -1444,6 +1444,20 @@ test('lib/field.js prehospital / MCI triage worked calls (wave 70)', () => {
   assert.match(ok('jumpstart-triage', { 'js-walk': '0', 'js-breath': '0', 'js-rescue': 'yes' }).category, /Immediate/);
 });
 
+test('lib/scoring-v4.js environmental-emergency worked calls (wave 71)', () => {
+  const hy = ok('hypothermia-rewarm', { 'hyp-t': '30', 'hyp-s': 'impaired' });
+  assert.equal(hy.coreTempC, 30);
+  assert.equal(hy.stage, 'HT II');
+  const hyIV = ok('hypothermia-rewarm', { 'hyp-t': '24', 'hyp-s': 'arrest' });
+  assert.equal(hyIV.stage, 'HT IV');
+  const hs = ok('heatstroke-decision', { 'hs-t': '41.2', 'hs-cns': 'mild-confusion', 'hs-sw': '1', 'hs-set': 'field' });
+  assert.equal(hs.coreTempC, 41.2);
+  assert.equal(hs.subtype, 'exertional');
+  assert.match(hs.stage, /heat stroke/i);
+  // No sweating -> classic subtype.
+  assert.equal(ok('heatstroke-decision', { 'hs-t': '41.5', 'hs-cns': 'altered', 'hs-sw': '0', 'hs-set': 'hospital' }).subtype, 'classic');
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];

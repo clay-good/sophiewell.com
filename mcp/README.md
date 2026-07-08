@@ -73,7 +73,7 @@ strings; booleans as `true`/`false`; enums by their listed string values.
 
 ```
 list_calculators { "specialty": "hepatology" }
-  -> { coverage: "990 of 1109 catalog tiles exposed ...", calculators: [ { id: "meld-xi", ... }, ... ] }
+  -> { coverage: "992 of 1109 catalog tiles exposed ...", calculators: [ { id: "meld-xi", ... }, ... ] }
 
 describe_calculator { "id": "meld-xi" }
   -> { inputSchema: { ... mx-bili, mx-creat ... }, citation: "Heuman DM ... Liver Transpl 2007", ... }
@@ -240,8 +240,9 @@ INS, blood compatibility) that drains the last adaptable Group-G tiles in
 staging tiles in `lib/clinical-v5.js` (Light's criteria, Mentzer, SAAG,
 R-factor, KDIGO AKI, modified Sgarbossa, AVPU-GCS), and a seventieth the flat
 prehospital / MCI triage screens in the new `lib/field.js` module (Cincinnati
-stroke scale, FAST / BE-FAST, START, JumpSTART), for 990 across 171 modules
-today. <!-- catalog-truth:historical (171 is the count of lib modules adapted, not a catalog tile count) -->
+stroke scale, FAST / BE-FAST, START, JumpSTART), and a seventy-first the
+environmental-emergency decision tiles (hypothermia staging + rewarming,
+heat-illness cooling algorithm), for 992 across 171 modules today. <!-- catalog-truth:historical (171 is the count of lib modules adapted, not a catalog tile count) -->
 Later waves extend it module by module against the same contract.
 
 ## Design
