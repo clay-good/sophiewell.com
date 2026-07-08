@@ -905,6 +905,43 @@ test('lib wave-53 deferral-cleanup worked calls', () => {
   assert.equal(ok('loeb-minimum-criteria', { 'loeb-site': 'uti-no-catheter', 'loeb-acuteDysuria': '1' }).met, true);
 });
 
+test('lib/clinical.js foundational-core worked calls (wave 54)', () => {
+  assert.equal(ok('bmi', { w: '70', h: '1.75' }).bmi, 22.9);
+  assert.equal(ok('map', { s: '120', d: '80' }), 93.3);
+  assert.equal(ok('anion-gap', { na: '140', cl: '100', hco3: '24', alb: '4' }).anionGap, 16);
+  // Composite wrappers return each formula under one result object.
+  const bsa = ok('bsa', { w: '70', h: '175' });
+  assert.equal(bsa.duBois, 1.85);
+  assert.equal(bsa.mosteller, 1.84);
+  const es = ok('egfr-suite', { 'es-scr': '1.0', 'es-age': '60', 'es-w': '70', 'es-sex': 'M' });
+  assert.equal(es.ckdEpi2021, 86.2);
+  // Positional convert() wrapper echoes the inputs.
+  assert.equal(Math.round(ok('unit-converter', { kind: 'weight', val: '70', from: 'kg', to: 'lb' }).converted), 154);
+});
+
+test('lib/clinical-v4/v8 suites and drips worked calls (wave 54)', () => {
+  assert.equal(ok('shock-index', { 'si-sbp': '120', 'si-dbp': '80', 'si-hr': '110' }).map, 93.3);
+  assert.equal(ok('fena-feurea', { 'fn-una': '20', 'fn-pna': '140', 'fn-ucr': '50', 'fn-pcr': '2.0', 'fu-uu': '300', 'fu-pu': '60' }).feUreaPct, 20);
+  // apap ceiling: sum the source products, then compare to the ceiling.
+  assert.equal(ok('apap-24h-max', { 'apap-d1': '650', 'apap-n1': '4', 'apap-d2': '325', 'apap-n2': '4', 'apap-d3': '0', 'apap-n3': '0', 'apap-ceiling': '4000' }).totalMg, 3900);
+  // o2 cylinder: size letter maps through the lib's tank-factor table.
+  assert.equal(ok('o2-cylinder-duration', { 'o2-size': 'E', 'o2-psi': '2000', 'o2-flow': '2', 'o2-res': '200' }).minutesRemaining, 252);
+});
+
+test('lib/scoring and medication tables worked calls (wave 54)', () => {
+  assert.equal(ok('mgap', { 'mgap-mech': 'blunt', 'mgap-gcs': '15', 'mgap-age': 'lt60', 'mgap-sbp': '120' }).score, 27);
+  // Data-table equivalence read from the shipped data/ shard.
+  assert.equal(ok('steroid-equiv', { 'st-dose': '5', 'st-from': 'prednisone', 'st-to': 'methylprednisolone' }).equivalentMg, 4);
+  assert.equal(ok('benzo-equiv', { 'bz-dose': '10', 'bz-from': 'diazepam', 'bz-to': 'lorazepam' }).equivalentMg, 1);
+  // Beers: medication/comorbidity arrays rebuilt from the flat booleans.
+  assert.equal(ok('beers-check', { 'bc-age': '78', 'bc-m-benzodiazepine': '1', 'bc-m-opioid': '1', 'bc-c-history-of-falls': '1' }).pimFlags.length, 2);
+  // Ballard: two six-element maturity arrays rebuilt from the flat selects.
+  assert.equal(ok('ballard', {
+    'bl-n1': '3', 'bl-n2': '3', 'bl-n3': '3', 'bl-n4': '3', 'bl-n5': '3', 'bl-n6': '3',
+    'bl-p1': '3', 'bl-p2': '3', 'bl-p3': '3', 'bl-p4': '3', 'bl-p5': '3', 'bl-p6': '3',
+  }).score, 36);
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];

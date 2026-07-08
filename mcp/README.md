@@ -73,7 +73,7 @@ strings; booleans as `true`/`false`; enums by their listed string values.
 
 ```
 list_calculators { "specialty": "hepatology" }
-  -> { coverage: "737 of 1109 catalog tiles exposed ...", calculators: [ { id: "meld-xi", ... }, ... ] }
+  -> { coverage: "848 of 1109 catalog tiles exposed ...", calculators: [ { id: "meld-xi", ... }, ... ] }
 
 describe_calculator { "id": "meld-xi" }
   -> { inputSchema: { ... mx-bili, mx-creat ... }, citation: "Heuman DM ... Liver Transpl 2007", ... }
@@ -200,7 +200,11 @@ medicine), and a fifty-third cleared the deferral backlog (14 tiles across 9
 modules that needed a bespoke `toArgs`, a variable-length array input, or a
 `META.example` that had not yet been written — PHASES, HEAR, Wagner / U-Texas
 DFU, PASI / EASI / DLQI, POSPOM, SES-CD, Kawasaki / CATCH, DOLOPLUS-2, and the
-McGeer / Loeb site-branched criteria), for 737 across 160 modules today. <!-- catalog-truth:historical (160 is the count of lib modules adapted, not a catalog tile count) -->
+McGeer / Loeb site-branched criteria), and a fifty-fourth adapted the
+foundational bedside-math and clinical-scoring core (111 tiles across 11 modules
+— `lib/clinical.js`, `lib/clinical-v4..v8.js`, `lib/scoring-v4/-v6.js`,
+`lib/medication-v4/-v5.js`, and `rosendaal-ttr` in `lib/gaps-v185.js`), for 848
+across 170 modules today. <!-- catalog-truth:historical (170 is the count of lib modules adapted, not a catalog tile count) -->
 Later waves extend it module by module against the same contract.
 
 ## Design

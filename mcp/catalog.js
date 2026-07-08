@@ -177,6 +177,16 @@ import enturopsychV254 from './adapters/enturopsych-v254.js';
 import riskscoresV255 from './adapters/riskscores-v255.js';
 import rheumcritV256 from './adapters/rheumcrit-v256.js';
 import diveV257 from './adapters/dive-v257.js';
+import clinical from './adapters/clinical.js';
+import clinicalV4 from './adapters/clinical-v4.js';
+import clinicalV5 from './adapters/clinical-v5.js';
+import clinicalV6 from './adapters/clinical-v6.js';
+import clinicalV7 from './adapters/clinical-v7.js';
+import clinicalV8 from './adapters/clinical-v8.js';
+import scoringV4 from './adapters/scoring-v4.js';
+import scoringV6 from './adapters/scoring-v6.js';
+import medicationV4 from './adapters/medication-v4.js';
+import medicationV5 from './adapters/medication-v5.js';
 
 const ADAPTER_MODULES = [
   ['tox-v86', toxV86],
@@ -339,6 +349,16 @@ const ADAPTER_MODULES = [
   ['riskscores-v255', riskscoresV255],
   ['rheumcrit-v256', rheumcritV256],
   ['dive-v257', diveV257],
+  ['clinical', clinical],
+  ['clinical-v4', clinicalV4],
+  ['clinical-v5', clinicalV5],
+  ['clinical-v6', clinicalV6],
+  ['clinical-v7', clinicalV7],
+  ['clinical-v8', clinicalV8],
+  ['scoring-v4', scoringV4],
+  ['scoring-v6', scoringV6],
+  ['medication-v4', medicationV4],
+  ['medication-v5', medicationV5],
 ];
 
 const HERE = dirname(fileURLToPath(import.meta.url));

@@ -3514,7 +3514,7 @@ session, and nothing to log.
 ### Build output & the CI gate chain
 
 `npm run build` is deterministic: same inputs → same `dist/` (the build hash is
-content-addressed). One build emits **757 HTML pages** plus the supporting
+content-addressed). One build emits **1126 HTML pages** plus the supporting
 assets:
 
 | Output | Count | Source |
@@ -3524,12 +3524,12 @@ assets:
 | Topic pages + `/topics/` index | 8 + 1 | `scripts/build-topic-pages.mjs` |
 | `/commitments/` | 1 | `scripts/build-commitments-page.mjs` |
 | SPA shell (`dist/index.html`) | 1 | copied + LD-stamped |
-| **Total HTML** | **757** | — |
-| OG card PNGs (`dist/og/`) | 754 | `scripts/build-og-images.mjs` |
-| Sitemap URLs (`sitemap.xml`) | 756 | `scripts/build-sitemap.mjs` |
+| **Total HTML** | **1126** | — |
+| OG card PNGs (`dist/og/`) | 1123 | `scripts/build-og-images.mjs` |
+| Sitemap URLs (`sitemap.xml`) | 1125 | `scripts/build-sitemap.mjs` |
 
 Nothing ships unless it survives the gate chain. `npm run lint` is ESLint
-followed by seven custom static checks, each enforcing one invariant; any
+followed by nine custom static checks, each enforcing one invariant; any
 failure is a non-zero exit that blocks the merge:
 
 | Gate (`scripts/`) | Invariant it enforces |
@@ -3538,15 +3538,16 @@ failure is a non-zero exit that blocks the merge:
 | `check-us-english.mjs` | no British spelling / non-US drug name in a user-facing surface (`lib/`, `views/`, `app.js`, `index.html`); citations, journal abbreviations, and official instrument names are exempt (spec-v184) |
 | `check-output-safety.mjs` | no view interpolates unescaped user input into the DOM |
 | `check-citations.mjs` | every tile is cited; guideline-issuer tiles carry an accessed-date + a staleness-ledger row |
-| `check-catalog-truth.mjs` | the catalog count (745) is identical across all 13 surfaces; no orphan/removed-tile ids |
+| `check-catalog-truth.mjs` | the catalog count (1109) is identical across all 12 surfaces; no orphan/removed-tile ids |
 | `check-commitments.mjs` | storage allowlist + AI/auth deny + license + CSP are intact |
+| `check-mcp-catalog.mjs` | the optional MCP adapter registry equals its coverage ledger exactly; every exposed example round-trips numerically; no adapter module touches a DOM global |
 | `check-pa-staleness.mjs` | every PA rule is source-anchored and within its freshness window |
 | `audit-pa.mjs` | the 46 PA-linter fixtures still reproduce their committed golden reports |
 
-`npm run test` adds the 5,891-test unit suite, the a11y check, and dataset
+`npm run test` adds the 7330-test unit suite, the a11y check, and dataset
 integrity verification; `npm run test:e2e` runs the Playwright suite against
 real Chromium/Firefox/WebKit — including a full-catalog 320 px no-horizontal-
-scroll sweep over every SPA route **and** every one of the 745 pre-rendered
+scroll sweep over every SPA route **and** every one of the 1109 pre-rendered
 static tool pages, so a tile can never ship mobile overflow undetected.
 
 ### Repository layout
@@ -4206,8 +4207,8 @@ clamped to `[0, 1]`, so the JSON surface never emits a non-finite probability.
 
 ### Coverage is explicit and honest
 
-Adapting the catalog is incremental. Coverage now stands at **737 clinical
-calculators across 160 `lib` modules** (of 1109 catalog tiles), built module by <!-- catalog-truth:historical (160 is the count of lib modules adapted, not a catalog tile count) -->
+Adapting the catalog is incremental. Coverage now stands at **848 clinical
+calculators across 170 `lib` modules** (of 1109 catalog tiles), built module by <!-- catalog-truth:historical (170 is the count of lib modules adapted, not a catalog tile count) -->
 module against the one fixed contract:
 
 | wave | modules | tiles |
@@ -4265,18 +4266,21 @@ module against the one fixed contract:
 | fifty-first (CBC-derived indices) | `hematology-v229` (AEC, NLR, PLR, SII) | 4 |
 | fifty-second (spec-v230–v257 subspecialty depth, 28 modules) | `inflam-v230`, `prognostic-v231`, `coagscore-v232`, `estimators-v233`, `dermscore-v234`, `painscore-v235`, `ophtho-v236`, `cardioecho-v237`, `anthro-v238`, `gisurg-v239`, `rehab-v240`, `geri-v241`, `environ-v242`, `entsleep-v243`, `sportsmsk-v244`, `hemederm-v245`, `ibd-v246`, `pedstox-v247`, `woundid-v248`, `renalpulm-v249`, `obgyn-v250`, `cardiometab-v251`, `orthospine-v252`, `radmeasure-v253`, `enturopsych-v254`, `riskscores-v255`, `rheumcrit-v256`, `dive-v257` | 109 |
 | fifty-third (deferral cleanup, 9 modules) | `neuro-v118` (PHASES), `eddecision-v107` (HEAR), `suites-v155` (Wagner, U-Texas DFU), `derm-v151` (PASI, EASI, DLQI), `periop-v97` (POSPOM), `gi-v126` (SES-CD), `peds-v98` (Kawasaki, CATCH), `ltcga-v175` (DOLOPLUS-2), `ltcga-v181` (McGeer, Loeb) | 14 |
+| fifty-fourth (foundational bedside-math + scoring core, 11 modules) | `clinical` (BMI, BSA, MAP, anion gap, corrected Ca/Na, A-a, eGFR, Cockcroft-Gault, QTc, P/F, drip/dose/conc), `clinical-v4` (delta-delta, osmolal gap, Winters, shock-index & body-weight suites, FENa/FEUrea, FIB-4, APRI, ROX, VIS), `clinical-v5` (Na correction, free-water deficit, ARDSNet PBW, RSBI, corrected AG, Ganzoni), `clinical-v6` (ANC, retic index, TSAT, CCI, LDL, eAG, CaO2/DO2, OI, driving pressure, TTKG, urine AG, Schwartz), `clinical-v7` (urine output, EBV/MABL, corrected phenytoin, GIR, K/Mg/Ca replacement, IV osmolarity, carb bolus, RhIG, peds transfusion), `clinical-v8` (CPP, peds dose, anticoag reversal, infusion timing, enteral free water, APAP ceiling, ICU nutrition, enoxaparin, norepi-equiv, O2 cylinder, neonatal feeding, oxytocin), `scoring-v4` (MGAP, GAP, BIG, insulin correction, electrolyte/CRRT/ECMO, PECARN head/IAI/c-spine), `scoring-v6` (Ballard, Finnegan, Silverman-Andersen, Downes, Bhutani, QBL, AAP phototherapy), `medication-v4` (steroid/benzo equiv, renal antibiotics, TPN, Beers), `medication-v5` (heparin nomogram, vanc AUC, aminoglycoside, Rumack-Matthew, digoxin, local-anesthetic max, MgSO4, PCA, sugammadex, ketamine/propofol, peds fluids/resus, conc %), plus `rosendaal-ttr` (`gaps-v185`) | 111 |
 
 
 `docs/mcp-coverage.md` is the ledger and `list_calculators` always reports the
 live exposed fraction (`"<N> of <M> catalog tiles exposed"`), never a hardcoded
-number. Five tiles inside these modules are deliberately left unexposed and
-recorded as such: `phases-iph` and `hear` (the HEAR score) have no `META.example`
-to round-trip, `pospom` takes a variable-length comorbidity array that needs a
-bespoke `toArgs`, `ses-cd` takes per-segment input arrays rather than the flat
-`dom→arg→kind` contract, and `rosendaal-ttr` takes a multi-line textarea of "date
-INR" rows (a list of item-values, not a flat scalar). The two `ltcga-v181`
-long-term-care infection-surveillance tiles (McGeer, Loeb) are site-branched and
-await a later wave that carries their full per-site criterion sets. Two wave-six tiles (HINTS, Bickerstaff) are categorical instruments
+number. The wave-53 deferral cleanup adapted the tiles earlier waves had parked
+(`phases`, `hear`, `pospom`, `ses-cd`, Kawasaki / CATCH, the site-branched McGeer
+/ Loeb criteria) with bespoke array-rebuilding `toArgs`, and the wave-54
+foundational-core slice picked up `rosendaal-ttr` (a multi-line dated-INR string
+the lib parses deterministically). Two foundational-core tiles stay unexposed and
+are recorded as such: `minute-ventilation` (its example text contains the
+substring `PaCO2`, which the shared numeric-round-trip extractor reads as a
+spurious `2` the compute result cannot own without fabricating a value) and
+`vasopressor` (its example dose is expressed per-kg but the default drug row is
+dosed per-minute, so a deterministic flat round-trip is ambiguous). Two wave-six tiles (HINTS, Bickerstaff) are categorical instruments
 whose number-free examples round-trip through the band/note text, and the
 R.E.N.A.L. hilar suffix is an empty-string/`h` enum. The wave-seven Mehran
 yes/no risk factors map to two-value enums, the EuroSCORE II logistic model is
@@ -4374,7 +4378,7 @@ rules, not soft preferences.
 | `npm run dev`            | Serve the directory locally on http://localhost:4173 (set `SERVE_ROOT=dist` to preview the pre-rendered hubs/topics/tool pages as production serves them) |
 | `npm run build`          | Copy static files into `dist/` for deployment                     |
 | `npm test`               | Run the full test suite (unit, a11y, grep, data integrity)        |
-| `npm run test:unit`      | Run Node's built-in unit tests (6,206 tests)                      |
+| `npm run test:unit`      | Run Node's built-in unit tests (7330 tests)                       |
 | `npm run test:e2e`       | Build `dist/`, then run Playwright integration tests against real browsers — incl. a full-catalog 320px no-horizontal-scroll sweep over both the SPA routes and the 1109 pre-rendered static tool pages, the hub/topic/commitments pages, and the citation-wrap pin |
 | `npm run test:mcp`       | Run the optional MCP server's tool/compute/fuzz tests (independent of the site jobs; SDK-free) |
 | `npm run test:a11y`      | Run accessibility checks on every utility view                    |

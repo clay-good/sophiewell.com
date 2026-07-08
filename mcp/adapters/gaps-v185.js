@@ -1,9 +1,8 @@
 // spec-v183 MCP wave 9: adapters for lib/gaps-v185.js — the "advanced bedside
-// quantitation" gap-fillers. Seven of the eight functions are flat dom→arg→kind
-// numeric/enum/bool computations and are exposed here; `rosendaal-ttr` is NOT
-// adapted because its `series` input is a multi-line textarea of "date INR" rows
-// (a list of item-values, not a flat scalar) — it stays in the ledger's
-// not-yet-adapted set. dom keys mirror views/group-v185.js and META.example.
+// quantitation" gap-fillers. dom keys mirror views/group-v185.js and
+// META.example. `rosendaal-ttr` joined in wave 54: its `series` input is a
+// multi-line "YYYY-MM-DD INR" string, but every date is explicit so the lib
+// parses it deterministically and the example round-trips as a plain string arg.
 
 import * as F from '../../lib/gaps-v185.js';
 
@@ -90,6 +89,16 @@ export default [
       { dom: 'lbw-sex', arg: 'sex', kind: 'enum', values: ['male', 'female'], required: true, label: 'Sex' },
       { dom: 'lbw-weight', arg: 'weight', kind: 'number', required: true, label: 'Total body weight', unit: 'kg' },
       { dom: 'lbw-height', arg: 'height', kind: 'number', required: true, label: 'Height', unit: 'cm' },
+    ],
+  },
+  {
+    id: 'rosendaal-ttr',
+    summary: 'Warfarin time in therapeutic range (Rosendaal 1993): linear INR interpolation between dated values; TTR = days-in-range / total-days. Good control is commonly >= 65%.',
+    compute: F.rosendaalTtr,
+    fields: [
+      { dom: 'ttr-series', arg: 'series', kind: 'string', required: true, label: 'Dated INR values (one per line, YYYY-MM-DD INR)' },
+      { dom: 'ttr-low', arg: 'low', kind: 'number', required: true, label: 'Target INR low' },
+      { dom: 'ttr-high', arg: 'high', kind: 'number', required: true, label: 'Target INR high' },
     ],
   },
 ];

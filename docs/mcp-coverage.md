@@ -735,6 +735,56 @@ the same fixed contract, bringing the exposed total to **737 calculators across
   site enum plus the deduped union of every criterion key across all sites as
   flat booleans; the compute function reads only the selected site's findings.
 
+## Fifty-fourth wave — the foundational core (11 modules, +111)
+
+The largest single slice: the original bedside-math and clinical-scoring core
+that predates the spec-numbered modules. It adapts `lib/clinical.js` and
+`lib/clinical-v4.js` … `lib/clinical-v8.js` (Group E clinical math — BMI, BSA,
+MAP, anion gap and its delta-delta, corrected calcium / sodium, A-a gradient,
+eGFR / MDRD / Cockcroft-Gault, QTc, P/F and the oxygenation suites, shock index,
+FENa / FEUrea, FIB-4 / APRI / ROX / VIS, the sodium-correction and free-water
+planners, the hematology / oxygenation / renal bedside indices, and the Group F
+drip / dose / infusion math — CPP, weight-based peds dosing, anticoagulation
+reversal, APAP ceiling, ICU nutrition, O2 cylinder duration, neonatal feeding,
+oxytocin titration), `lib/scoring-v4.js` and `lib/scoring-v6.js` (trauma triage
+MGAP / GAP / BIG, ICU titration, the PECARN pediatric rules, and the neonatal
+assessment set — Ballard, Finnegan, Silverman-Andersen, Downes, Bhutani, QBL,
+AAP phototherapy), and `lib/medication-v4.js` / `lib/medication-v5.js` (steroid /
+benzodiazepine equivalents, renal antibiotic dosing, TPN macronutrients, the AGS
+Beers screen, and the high-alert protocol math — heparin nomogram, vancomycin
+AUC, aminoglycoside, Rumack-Matthew, digoxin, local-anesthetic max, MgSO4,
+PCA pump, sugammadex, ketamine / propofol, pediatric fluids). `rosendaal-ttr`
+joins its home module `lib/gaps-v185.js`. This brings the exposed total to **848
+calculators across 170 modules**.
+
+Patterns used:
+
+- **Composite wrappers** where a tile reports several formulas side by side
+  (BSA Du Bois + Mosteller; the eGFR, oxygenation, shock-index, body-weight, and
+  FENa/FEUrea suites; anion-gap delta-delta; the dual-direction infusion and
+  oxytocin conversions): the adapter's `compute` calls the two or three pure lib
+  functions over the shared arg object and returns them under one result.
+- **Data-table args read from the shipped `data/` shards** (steroid / benzo
+  equivalence, renal-antibiotic dosing): the adapter passes the same JSON table
+  the site loads, so the equivalence coefficients are never re-typed.
+- **Array-rebuilding `toArgs`** (Ballard's two six-element maturity arrays; the
+  Beers medication / comorbidity lists) built from flat per-item fields with the
+  key sets read from each lib's own tables (the `drug-burden-index` precedent).
+- **Self-describing result enrichment**: a handful of results echo an input, a
+  unit constant, or a formula coefficient (the CKD-EPI `1.73m^2` unit, the Katz
+  1.6 / Hillier 2.4 sodium factors, the 4-2-1 maintenance-fluid tier breakdown,
+  the ISF `1800`/`1500` rule constant, the `h`/`m` split of a duration) so every
+  documented numeric fact appears in the JSON — the same numeric-round-trip
+  contract the browser tile satisfies through its richer rendered DOM.
+
+Two tiles in these modules are intentionally left unexposed: `minute-ventilation`
+(its example text `… target PaCO2 is 24/min` contains the substring `PaCO2`,
+which the shared numeric extractor reads as a spurious `2` the compute cannot own
+without fabricating a value) and `vasopressor` (its example dose is expressed
+per-kg but the default drug row is dosed per-minute, so a deterministic flat
+round-trip is ambiguous). Both are covered by the unit tests and stay in the
+not-yet-adapted set.
+
 ## Exposed
 
 Each id below is live in `mcp/catalog.js`. The gate parses this list.
@@ -1000,6 +1050,7 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 - `vte-bleed`
 - `matsuda-index`
 - `lean-body-weight`
+- `rosendaal-ttr`
 
 ### lib/specialtymath-v186.js
 - `bed-eqd2`
@@ -1795,6 +1846,136 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 - `maximum-operating-depth`
 - `equivalent-air-depth`
 - `oxygen-toxicity-units`
+
+### lib/clinical.js
+- `unit-converter`
+- `bmi`
+- `bsa`
+- `map`
+- `anion-gap`
+- `corrected-calcium`
+- `corrected-sodium`
+- `aa-gradient`
+- `egfr`
+- `cockcroft-gault`
+- `pack-years`
+- `qtc`
+- `pf-ratio`
+- `corrected-ca-na`
+- `aa-pf-suite`
+- `egfr-suite`
+- `drip-rate`
+- `weight-dose`
+- `conc-rate`
+
+### lib/clinical-v4.js
+- `anion-gap-dd`
+- `osmolal-gap`
+- `winters`
+- `shock-index`
+- `bw-bsa-suite`
+- `fena-feurea`
+- `maint-fluids`
+- `qtc-suite`
+- `fib4`
+- `apri`
+- `rox`
+- `vis`
+
+### lib/clinical-v5.js
+- `sodium-correction`
+- `free-water-deficit`
+- `pbw-ardsnet`
+- `rsbi`
+- `corrected-anion-gap`
+- `iron-ganzoni`
+
+### lib/clinical-v6.js
+- `anc`
+- `retic-index`
+- `tsat`
+- `cci-platelet`
+- `ldl-calc`
+- `eag-a1c`
+- `cao2-do2`
+- `oxygenation-index`
+- `driving-pressure`
+- `ttkg`
+- `urine-anion-gap`
+- `acid-base-deficit`
+- `schwartz-egfr`
+
+### lib/clinical-v7.js
+- `urine-output`
+- `ebv-mabl`
+- `corrected-phenytoin`
+- `burn-uop-target`
+- `fluid-balance`
+- `gir`
+- `potassium-deficit`
+- `magnesium-replacement`
+- `calcium-replacement`
+- `iv-osmolarity`
+- `carb-insulin-bolus`
+- `rhig-dose`
+- `peds-transfusion-volume`
+
+### lib/clinical-v8.js
+- `cerebral-perfusion-pressure`
+- `peds-dose`
+- `anticoag-reversal`
+- `infusion-time-remaining`
+- `enteral-free-water`
+- `apap-24h-max`
+- `icu-nutrition-target`
+- `vte-prophylaxis-dose`
+- `norepi-equiv`
+- `o2-cylinder-duration`
+- `neonatal-feeding-volume`
+- `oxytocin-titration`
+
+### lib/scoring-v4.js
+- `mgap`
+- `gap`
+- `big`
+- `insulin-correction`
+- `electrolyte-replacement`
+- `crrt-dose`
+- `ecmo-titration`
+- `pecarn-head`
+- `pecarn-iai`
+- `pecarn-cspine`
+
+### lib/scoring-v6.js
+- `ballard`
+- `finnegan`
+- `silverman-andersen`
+- `downes`
+- `bhutani-bilirubin`
+- `qbl-pph`
+- `neo-phototherapy`
+
+### lib/medication-v4.js
+- `steroid-equiv`
+- `benzo-equiv`
+- `abx-renal`
+- `tpn-macro`
+- `beers-check`
+
+### lib/medication-v5.js
+- `heparin-nomogram`
+- `vanc-auc`
+- `aminoglycoside`
+- `acetaminophen-nomogram`
+- `digoxin`
+- `local-anesthetic-max`
+- `mgso4-preeclampsia`
+- `pca-pump`
+- `sugammadex`
+- `ketamine-propofol`
+- `peds-fluid-deficit`
+- `peds-resus`
+- `conc-percent`
 
 ## Not yet adapted
 
