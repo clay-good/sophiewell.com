@@ -1569,6 +1569,14 @@ test('lib/field.js burn / airway / drug-dose recipes worked calls (wave 78)', ()
   assert.equal(pw.dose, 0.1);
 });
 
+test('lib/scoring-v4.js restraint-reassessment timer worked call (wave 79)', () => {
+  const rt = ok('restraint-timer', { 'rt-type': 'violent', 'rt-age': '40', 'rt-ts': '2026-05-19T12:00' });
+  assert.equal(rt.type, 'violent');
+  // The order-relative reassessment is 15 minutes after the order.
+  assert.match(rt.nextReassessIso, /:15:/);
+  assert.match(rt.banners.join(' '), /482\.13/);
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];

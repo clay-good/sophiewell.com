@@ -73,7 +73,7 @@ strings; booleans as `true`/`false`; enums by their listed string values.
 
 ```
 list_calculators { "specialty": "hepatology" }
-  -> { coverage: "1028 of 1109 catalog tiles exposed ...", calculators: [ { id: "meld-xi", ... }, ... ] }
+  -> { coverage: "1029 of 1109 catalog tiles exposed ...", calculators: [ { id: "meld-xi", ... }, ... ] }
 
 describe_calculator { "id": "meld-xi" }
   -> { inputSchema: { ... mx-bili, mx-creat ... }, citation: "Heuman DM ... Liver Transpl 2007", ... }
@@ -256,7 +256,8 @@ EDACS, YEARS, FeverPAIN, STONE, ISS + RTS, SIPA), and a seventy-seventh the
 cardiovascular 10-year risk engines in `lib/scoring-v4.js` (ASCVD Pooled Cohort
 Equations, AHA PREVENT 2023), and a seventy-eighth the flat burn / airway /
 drug-dose recipes in `lib/field.js` (burn fluid, pediatric ETT, naloxone,
-pediatric weight-based dose), for 1028 across 173 modules today. <!-- catalog-truth:historical (173 is the count of lib modules adapted, not a catalog tile count) -->
+pediatric weight-based dose), and a seventy-ninth the 42 CFR restraint-
+reassessment timer in `lib/scoring-v4.js`, for 1029 across 173 modules today. <!-- catalog-truth:historical (173 is the count of lib modules adapted, not a catalog tile count) -->
 Later waves extend it module by module against the same contract.
 
 ## Design

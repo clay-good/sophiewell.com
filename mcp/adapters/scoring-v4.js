@@ -1997,4 +1997,25 @@ export default [
       { dom: 'pv-dm', arg: 'diabetes', kind: 'bool', label: 'Diabetes' },
     ],
   },
+
+  // --- wave 79: the restraint-reassessment timer -------------------------
+  // Its cadence banners (renewal q4h, nursing q15 min, face-to-face within 1 h)
+  // are constants, so the round-trip holds; the next-due ISO fields are a pure
+  // function of the entered order timestamp. The sibling clock tiles are
+  // deferred: ews-escalation and sepsis-bundle-clock report a timezone-shifted
+  // ISO due-time (datetime-local input -> UTC output) whose hour digits the
+  // interpretive example cites, so they cannot round-trip through the numeric
+  // contract (they are on the e2e example-correctness scenario-only allowlist
+  // for the same reason); code-blue-clock and device-day-counter read the wall
+  // clock (Date.now()).
+  {
+    id: 'restraint-timer',
+    summary: 'Restraint reassessment timer (42 CFR 482.13): from restraint type (violent / non-violent), patient age, and the order timestamp, returns the next order-renewal, nursing-reassessment, and physician face-to-face ISO times per the regulatory intervals.',
+    compute: F.restraintTimer,
+    fields: [
+      { dom: 'rt-type', arg: 'type', kind: 'enum', values: ['violent', 'non-violent'], required: true, label: 'Restraint type' },
+      { dom: 'rt-age', arg: 'ageYears', kind: 'number', required: true, label: 'Patient age', unit: 'years' },
+      { dom: 'rt-ts', arg: 'orderTimestamp', kind: 'string', required: true, label: 'Restraint order at (ISO timestamp)' },
+    ],
+  },
 ];

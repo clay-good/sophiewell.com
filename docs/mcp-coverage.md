@@ -1100,6 +1100,20 @@ from a shipped `data/` shard, and `bsa_burn` takes a variable-length rule-of-
 nines region array. Brings the exposed total to **1028 calculators across 173
 modules**.
 
+## Seventy-ninth wave — the restraint-reassessment timer in lib/scoring-v4.js (+1)
+
+The `views/group-h.js` restraint-reassessment timer (42 CFR 482.13): its cadence
+banners (renewal q4h, nursing q15 min, physician face-to-face within 1 h) are
+constants that round-trip, and its next-due ISO fields are a pure function of
+the entered order timestamp (zero `Date.now()`). The datetime input is passed as
+an ISO string. Append-only. The sibling clock tiles stay deferred:
+`ews-escalation` and `sepsis-bundle-clock` report a timezone-shifted ISO
+due-time (datetime-local input -> UTC output) whose hour digits the interpretive
+example cites, so they cannot round-trip through the numeric contract (they sit
+on the e2e example-correctness scenario-only allowlist for the same reason);
+`code-blue-clock` and `device-day-counter` each read the wall clock. Brings the
+exposed total to **1029 calculators across 173 modules**.
+
 ## Exposed
 
 Each id below is live in `mcp/catalog.js`. The gate parses this list.
@@ -2408,6 +2422,7 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 - `bristol-girth`
 - `ascvd`
 - `prevent`
+- `restraint-timer`
 
 ### lib/scoring-v6.js
 - `ballard`
