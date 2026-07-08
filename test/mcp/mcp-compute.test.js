@@ -942,6 +942,33 @@ test('lib/scoring and medication tables worked calls (wave 54)', () => {
   }).score, 36);
 });
 
+test('lib/clinical.js Group G scoring core worked calls (wave 55)', () => {
+  const g = ok('gcs', { eye: '3', verbal: '4', motor: '5' });
+  assert.equal(g.total, 12);
+  assert.equal(g.severity, 'Moderate');
+  assert.equal(ok('apgar', { appearance: '2', pulse: '2', grimace: '2', activity: '2', respiration: '2' }).total, 10);
+  // Metabolic acidosis with the Winter-formula compensation window in the note.
+  const a = ok('abg', { pH: '7.30', paco2: '30', hco3: '14' });
+  assert.equal(a.primary, 'Metabolic acidosis');
+  assert.match(a.compensation, /expected PaCO2 27 to 31/);
+  // Optional oxygenation inputs add the A-a gradient and P/F ratio.
+  const a2 = ok('abg', { pH: '7.30', paco2: '30', hco3: '14', pao2: '90', fio2: '0.5' });
+  assert.equal(a2.pfRatio, 180);
+  assert.equal(ok('wells-pe', { peLikely: '1', hrOver100: '1' }).total, 4.5);
+  const wd = ok('wells-dvt', { tendernessAlongVeins: '1', entireLegSwollen: '1', calfSwellingGt3cm: '1' });
+  assert.equal(wd.total, 3);
+  assert.equal(wd.category, 'High probability');
+  // The -2 alternative-diagnosis item subtracts.
+  assert.equal(ok('wells-dvt', { activeCancer: '1', alternativeDxAsLikely: '1' }).total, -1);
+  const c = ok('chads', { hypertension: '1', ageGte65: '1', diabetes: '1' });
+  assert.equal(c.total, 3);
+  assert.equal(c.ageGte75Points, 2);
+  assert.equal(ok('hasbled', { hypertension: '1', ageGt65: '1' }).risk, 'Moderate');
+  const n = ok('nihss', { '1a': '1', '4': '1', '5': '2', '9': '1' });
+  assert.equal(n.total, 5);
+  assert.equal(n.severity, 'Moderate stroke');
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];

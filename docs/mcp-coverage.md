@@ -785,6 +785,23 @@ per-kg but the default drug row is dosed per-minute, so a deterministic flat
 round-trip is ambiguous). Both are covered by the unit tests and stay in the
 not-yet-adapted set.
 
+## Fifty-fifth wave — the Group G bedside scoring core in lib/clinical.js (+8)
+
+The eight classic bedside instruments whose pure computes live in
+`lib/clinical.js` beside the wave-54 math: GCS, APGAR, ABG interpretation
+(primary disorder + Winter / Boston compensation, with the optional A-a and P/F
+oxygenation add-on), Wells PE, Wells DVT, CHA2DS2-VASc, HAS-BLED, and the
+13-item NIHSS. dom keys mirror `views/group-g.js` (which are also the
+`META.example.fields` keys), so every example round-trips unchanged. The
+checkbox criteria are optional booleans (an unchecked box and an absent input
+score identically); the NIHSS items are optional numbers because the lib —
+like the tile's default-0 sliders — treats an unscored item as 0. `chads` uses
+the self-describing enrichment pattern: its result echoes the two doubled
+point weights (age >= 75 and prior stroke/TIA each score 2) so the "2"s the
+score's own name documents appear in the JSON. Brings the exposed total to
+**856 calculators across 170 modules** (no new module — `lib/clinical.js` was
+already adapted in wave 54).
+
 ## Exposed
 
 Each id below is live in `mcp/catalog.js`. The gate parses this list.
@@ -1867,6 +1884,14 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 - `drip-rate`
 - `weight-dose`
 - `conc-rate`
+- `gcs`
+- `apgar`
+- `abg`
+- `wells-pe`
+- `wells-dvt`
+- `chads`
+- `hasbled`
+- `nihss`
 
 ### lib/clinical-v4.js
 - `anion-gap-dd`

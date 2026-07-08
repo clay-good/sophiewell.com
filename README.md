@@ -4207,7 +4207,7 @@ clamped to `[0, 1]`, so the JSON surface never emits a non-finite probability.
 
 ### Coverage is explicit and honest
 
-Adapting the catalog is incremental. Coverage now stands at **848 clinical
+Adapting the catalog is incremental. Coverage now stands at **856 clinical
 calculators across 170 `lib` modules** (of 1109 catalog tiles), built module by <!-- catalog-truth:historical (170 is the count of lib modules adapted, not a catalog tile count) -->
 module against the one fixed contract:
 
@@ -4267,6 +4267,7 @@ module against the one fixed contract:
 | fifty-second (spec-v230–v257 subspecialty depth, 28 modules) | `inflam-v230`, `prognostic-v231`, `coagscore-v232`, `estimators-v233`, `dermscore-v234`, `painscore-v235`, `ophtho-v236`, `cardioecho-v237`, `anthro-v238`, `gisurg-v239`, `rehab-v240`, `geri-v241`, `environ-v242`, `entsleep-v243`, `sportsmsk-v244`, `hemederm-v245`, `ibd-v246`, `pedstox-v247`, `woundid-v248`, `renalpulm-v249`, `obgyn-v250`, `cardiometab-v251`, `orthospine-v252`, `radmeasure-v253`, `enturopsych-v254`, `riskscores-v255`, `rheumcrit-v256`, `dive-v257` | 109 |
 | fifty-third (deferral cleanup, 9 modules) | `neuro-v118` (PHASES), `eddecision-v107` (HEAR), `suites-v155` (Wagner, U-Texas DFU), `derm-v151` (PASI, EASI, DLQI), `periop-v97` (POSPOM), `gi-v126` (SES-CD), `peds-v98` (Kawasaki, CATCH), `ltcga-v175` (DOLOPLUS-2), `ltcga-v181` (McGeer, Loeb) | 14 |
 | fifty-fourth (foundational bedside-math + scoring core, 11 modules) | `clinical` (BMI, BSA, MAP, anion gap, corrected Ca/Na, A-a, eGFR, Cockcroft-Gault, QTc, P/F, drip/dose/conc), `clinical-v4` (delta-delta, osmolal gap, Winters, shock-index & body-weight suites, FENa/FEUrea, FIB-4, APRI, ROX, VIS), `clinical-v5` (Na correction, free-water deficit, ARDSNet PBW, RSBI, corrected AG, Ganzoni), `clinical-v6` (ANC, retic index, TSAT, CCI, LDL, eAG, CaO2/DO2, OI, driving pressure, TTKG, urine AG, Schwartz), `clinical-v7` (urine output, EBV/MABL, corrected phenytoin, GIR, K/Mg/Ca replacement, IV osmolarity, carb bolus, RhIG, peds transfusion), `clinical-v8` (CPP, peds dose, anticoag reversal, infusion timing, enteral free water, APAP ceiling, ICU nutrition, enoxaparin, norepi-equiv, O2 cylinder, neonatal feeding, oxytocin), `scoring-v4` (MGAP, GAP, BIG, insulin correction, electrolyte/CRRT/ECMO, PECARN head/IAI/c-spine), `scoring-v6` (Ballard, Finnegan, Silverman-Andersen, Downes, Bhutani, QBL, AAP phototherapy), `medication-v4` (steroid/benzo equiv, renal antibiotics, TPN, Beers), `medication-v5` (heparin nomogram, vanc AUC, aminoglycoside, Rumack-Matthew, digoxin, local-anesthetic max, MgSO4, PCA, sugammadex, ketamine/propofol, peds fluids/resus, conc %), plus `rosendaal-ttr` (`gaps-v185`) | 111 |
+| fifty-fifth (Group G bedside scoring core) | `clinical` (GCS, APGAR, ABG interpretation, Wells PE, Wells DVT, CHA2DS2-VASc, HAS-BLED, NIHSS) | 8 |
 
 
 `docs/mcp-coverage.md` is the ledger and `list_calculators` always reports the
