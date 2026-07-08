@@ -1304,6 +1304,36 @@ test('lib/scoring-v4.js pediatric / ICU pain, sedation, withdrawal worked calls 
   assert.equal(so.withdrawal, true);
 });
 
+test('lib/scoring-v4.js prehospital stroke scales, ADLs, C-SSRS worked calls (wave 65)', () => {
+  const cp = ok('cpss', { 'cp-face': '1', 'cp-arm': '0', 'cp-speech': '1' });
+  assert.equal(cp.abnormalCount, 2);
+  assert.equal(cp.positive, true);
+  const lm = ok('lams', { 'lm-face': '1', 'lm-arm': '2', 'lm-grip': '2' });
+  assert.equal(lm.score, 5);
+  assert.equal(lm.lvoLikely, true);
+  const ra = ok('race', { 'ra-face': '2', 'ra-arm': '2', 'ra-leg': '1', 'ra-gaze': '0', 'ra-lang': '0' });
+  assert.equal(ra.score, 5);
+  assert.equal(ra.lvoLikely, true);
+  // ROSIER: two weakness items (+2) minus seizure (-1) = 1, stroke likely.
+  const ro = ok('rosier', { 'ro-loc': 'false', 'ro-sez': 'true', 'ro-face': 'true', 'ro-arm': 'true', 'ro-leg': 'false', 'ro-speech': 'false', 'ro-vis': 'false' });
+  assert.equal(ro.score, 1);
+  assert.equal(ro.strokeLikely, true);
+  // GUSS full 20 (all stages passed).
+  const gu = ok('guss', { 'gu-vig': '1', 'gu-cgh': '1', 'gu-sw': '1', 'gu-dr': '1', 'gu-vc': '1', 'gu-ssSw': '2', 'gu-ssCg': '1', 'gu-ssDr': '1', 'gu-ssVc': '1', 'gu-liSw': '2', 'gu-liCg': '1', 'gu-liDr': '1', 'gu-liVc': '1', 'gu-soSw': '2', 'gu-soCg': '1', 'gu-soDr': '1', 'gu-soVc': '1' });
+  assert.equal(gu.score, 20);
+  // Barthel: reduced items -> moderate dependency band.
+  const bt = ok('barthel', { 'bt-feed': '5', 'bt-bath': '0', 'bt-groom': '5', 'bt-dress': '5', 'bt-bowel': '10', 'bt-bladder': '10', 'bt-toil': '5', 'bt-trans': '10', 'bt-mob': '10', 'bt-stair': '5' });
+  assert.equal(bt.score, 65);
+  assert.equal(bt.band, 'moderate dependency');
+  const lw = ok('lawton-iadl', { 'lw-tel': '1', 'lw-shop': '0', 'lw-food': '1', 'lw-house': '1', 'lw-laund': '0', 'lw-trans': '1', 'lw-med': '1', 'lw-fin': '1' });
+  assert.equal(lw.score, 6);
+  const kz = ok('katz-adl', { 'kz-bath': '1', 'kz-dress': '1', 'kz-toil': '0', 'kz-trans': '1', 'kz-cont': '1', 'kz-feed': '1' });
+  assert.equal(kz.score, 5);
+  // C-SSRS: plan and intent -> high risk band.
+  const cs = ok('cssrs', { 'cs-q1': 'true', 'cs-q2': 'true', 'cs-q3': 'true', 'cs-q4': 'true', 'cs-q5': 'true', 'cs-q6': 'false', 'cs-q6a': 'false' });
+  assert.equal(cs.band, 'high risk');
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];

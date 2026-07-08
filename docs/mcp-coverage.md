@@ -937,6 +937,18 @@ computes (the ordinal items, including the signed N-PASS and negative SBS
 levels, are plain numbers the lib validates). Brings the exposed total to
 **952 calculators across 170 modules**.
 
+## Sixty-fifth wave — the prehospital stroke scales, ADLs, and C-SSRS in lib/scoring-v4.js (+9)
+
+The four stroke field scales CPSS, LAMS, RACE, and ROSIER (ROSIER's plus/minus
+items are booleans, the rest are ordinal numbers), the two-stage GUSS
+post-stroke dysphagia screen (later consistency subtests gated until the prior
+stage scores 5), the three functional-status indices Barthel, Lawton IADL, and
+Katz ADL, and the Columbia-Suicide Severity Rating Scale Screener (seven yes/no
+questions banded no / low / moderate / high risk). The ROSIER and C-SSRS
+examples write their unchecked booleans as the literal string `"false"`, which
+the shared boolean coercion accepts, so both round-trip. Brings the exposed
+total to **961 calculators across 170 modules**.
+
 ## Exposed
 
 Each id below is live in `mcp/catalog.js`. The gate parses this list.
@@ -2201,6 +2213,15 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 - `wat-1`
 - `sbs`
 - `sos`
+- `cpss`
+- `lams`
+- `race`
+- `rosier`
+- `guss`
+- `barthel`
+- `lawton-iadl`
+- `katz-adl`
+- `cssrs`
 
 ### lib/scoring-v6.js
 - `ballard`
