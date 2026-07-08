@@ -1473,6 +1473,17 @@ test('lib/scoring-v6.js pediatric / adult severity worked calls (wave 72)', () =
   assert.equal(bq.total, 14);
 });
 
+test('lib/clinical-v5.js remaining group-v5 scores worked calls (wave 73)', () => {
+  const rc = ok('rcri', { highRiskSurgery: '1', ischemicHeartDisease: '1' });
+  assert.equal(rc.count, 2);
+  assert.equal(rc.majorCardiacEventRiskPct, 6.6);
+  const pw = ok('pews', { Behavior: '2', Cardiovascular: '2', Respiratory: '1' });
+  assert.equal(pw.total, 5);
+  const ab = ok('abcd2', { age: '70', sbp: '150', dbp: '90', clin: 'weakness', dur: '90', diab: '1' });
+  assert.match(ab.interpretation, /7\/7/);
+  assert.match(ab.interpretation, /High/);
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];

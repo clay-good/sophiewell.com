@@ -73,7 +73,7 @@ strings; booleans as `true`/`false`; enums by their listed string values.
 
 ```
 list_calculators { "specialty": "hepatology" }
-  -> { coverage: "998 of 1109 catalog tiles exposed ...", calculators: [ { id: "meld-xi", ... }, ... ] }
+  -> { coverage: "1001 of 1109 catalog tiles exposed ...", calculators: [ { id: "meld-xi", ... }, ... ] }
 
 describe_calculator { "id": "meld-xi" }
   -> { inputSchema: { ... mx-bili, mx-creat ... }, citation: "Heuman DM ... Liver Transpl 2007", ... }
@@ -244,7 +244,9 @@ stroke scale, FAST / BE-FAST, START, JumpSTART), and a seventy-first the
 environmental-emergency decision tiles (hypothermia staging + rewarming,
 heat-illness cooling algorithm), and a seventy-second the pediatric / adult
 severity scores in `lib/scoring-v6.js` (PELOD-2, pSOFA, Burch-Wartofsky,
-ARISCAT, APACHE II, Braden Q), for 998 across 171 modules today. <!-- catalog-truth:historical (171 is the count of lib modules adapted, not a catalog tile count) -->
+ARISCAT, APACHE II, Braden Q), and a seventy-third the remaining group-v5
+scores in `lib/clinical-v5.js` (RCRI, PEWS, ABCD2), for 1001 across 171 modules
+today. <!-- catalog-truth:historical (171 is the count of lib modules adapted, not a catalog tile count) -->
 Later waves extend it module by module against the same contract.
 
 ## Design

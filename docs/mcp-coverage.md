@@ -1032,6 +1032,14 @@ variables + age/chronic-health points), and the Braden Q pediatric pressure-
 injury scale. Append-only. Brings the exposed total to **998 calculators across
 171 modules**.
 
+## Seventy-third wave — the remaining group-v5 clinical scores in lib/clinical-v5.js (+3)
+
+The last three `views/group-v5.js` tiles that share `lib/clinical-v5.js`: the
+Revised Cardiac Risk Index (perioperative), the Pediatric Early Warning Score
+(its three subscale dom keys are the capitalized `Behavior` / `Cardiovascular` /
+`Respiratory`), and the ABCD2 post-TIA stroke-risk score. Append-only. Brings
+the exposed total to **1001 calculators across 171 modules**.
+
 ## Exposed
 
 Each id below is live in `mcp/catalog.js`. The gate parses this list.
@@ -2151,6 +2159,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 - `kdigo-aki`
 - `sgarbossa`
 - `avpu-gcs`
+- `rcri`
+- `pews`
+- `abcd2`
 
 ### lib/clinical-v6.js
 - `anc`

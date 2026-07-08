@@ -169,4 +169,42 @@ export default [
       { dom: 'lvl', arg: 'lvl', kind: 'enum', values: ['A', 'V', 'P', 'U'], required: true, label: 'AVPU level' },
     ],
   },
+
+  // --- wave 73: the remaining group-v5 clinical scores --------------------
+  {
+    id: 'rcri',
+    summary: 'Revised Cardiac Risk Index (Lee 1999) for perioperative major cardiac events: high-risk surgery, ischemic heart disease, congestive heart failure, cerebrovascular disease, insulin-dependent diabetes, and preoperative creatinine > 2.0 (1 each); the factor count maps to the Class I-IV event-rate band.',
+    compute: F.rcri,
+    fields: [
+      { dom: 'highRiskSurgery', arg: 'highRiskSurgery', kind: 'bool', label: 'High-risk surgery (suprainguinal vascular, intraperitoneal, intrathoracic)' },
+      { dom: 'ischemicHeartDisease', arg: 'ischemicHeartDisease', kind: 'bool', label: 'Ischemic heart disease' },
+      { dom: 'congestiveHeartFailure', arg: 'congestiveHeartFailure', kind: 'bool', label: 'History of congestive heart failure' },
+      { dom: 'cerebrovascularDisease', arg: 'cerebrovascularDisease', kind: 'bool', label: 'History of cerebrovascular disease (TIA / CVA)' },
+      { dom: 'insulinDependentDm', arg: 'insulinDependentDm', kind: 'bool', label: 'Insulin-dependent diabetes mellitus' },
+      { dom: 'creatinineOver2', arg: 'creatinineOver2', kind: 'bool', label: 'Preoperative creatinine > 2.0 mg/dL' },
+    ],
+  },
+  {
+    id: 'pews',
+    summary: 'Pediatric Early Warning Score: behavior, cardiovascular, and respiratory subscales each 0-3; the total maps to an escalation band (a rising trend warrants escalation).',
+    compute: F.pews,
+    fields: [
+      { dom: 'Behavior', arg: 'behaviorScore', kind: 'number', required: true, label: 'Behavior subscale (0-3)' },
+      { dom: 'Cardiovascular', arg: 'cardiovascularScore', kind: 'number', required: true, label: 'Cardiovascular subscale (0-3)' },
+      { dom: 'Respiratory', arg: 'respiratoryScore', kind: 'number', required: true, label: 'Respiratory subscale (0-3)' },
+    ],
+  },
+  {
+    id: 'abcd2',
+    summary: 'ABCD2 score for stroke risk after TIA (Johnston 2007): age >= 60 (1), BP >= 140/90 (1), clinical features (unilateral weakness 2, speech disturbance without weakness 1), duration (>= 60 min 2, 10-59 min 1), diabetes (1); total 0-7 with the 2-day stroke-risk band. Returns the component breakdown and interpretation.',
+    compute: F.abcd2,
+    fields: [
+      { dom: 'age', arg: 'age', kind: 'number', required: true, label: 'Age', unit: 'years' },
+      { dom: 'sbp', arg: 'sbp', kind: 'number', required: true, label: 'Systolic BP', unit: 'mmHg' },
+      { dom: 'dbp', arg: 'dbp', kind: 'number', required: true, label: 'Diastolic BP', unit: 'mmHg' },
+      { dom: 'clin', arg: 'clinicalFeatures', kind: 'enum', values: ['weakness', 'speech', 'other'], required: true, label: 'Clinical features (weakness 2 / speech 1 / other 0)' },
+      { dom: 'dur', arg: 'durationMinutes', kind: 'number', required: true, label: 'Symptom duration', unit: 'minutes' },
+      { dom: 'diab', arg: 'diabetes', kind: 'bool', label: 'Diabetes (1)' },
+    ],
+  },
 ];
