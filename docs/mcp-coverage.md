@@ -1132,6 +1132,30 @@ region key set read from the lib's `LB_REGION_LIST` table so the schema cannot
 drift (the Duke / kawasaki precedent). Append-only. Brings the exposed total to
 **1031 calculators across 173 modules**.
 
+## Eighty-second wave — the burn %TBSA estimator in lib/field.js (+1)
+
+The `views/group-i.js` `bsa_burn` tile, deferred in wave 70 for its method-
+branched region arrays: a bespoke `toArgs` builds either the Rule-of-Nines
+`{ region: checked }` selection (keys read from the lib's `RULE_OF_NINES_ADULT`
+table) or the Lund-Browder `{ region: percent }` map, and the compute dispatches
+on the method. Append-only. Brings the exposed total to **1032 calculators across
+173 modules**.
+
+This closes the routinely-adaptable catalog: the remaining unexposed clinical
+tiles are all structurally out of reach of the single-source round-trip contract
+and are recorded as deferred - tiles whose compute lives inline in the view with
+no pure `lib` function (`nexus-cspine`, `tb-testing`, `lab-interpret`,
+`insulin-drip`), wall-clock-dependent tiles (`due-date`'s gestational age,
+`preg-dating`, `code-blue-clock`, `device-day-counter`, and the timezone-shifted
+`ews-escalation` / `sepsis-bundle-clock`), empty-`{}`-example tiles that depend
+on the browser's default field values (`opioid-mme`, `aldrete-padss`), the
+`"on"`-checkbox example of `vent-sbt-peep`, the `PaCO2`-substring extractor
+collision of `minute-ventilation`, the per-kg/per-minute-ambiguous `vasopressor`,
+the data-shard-driven `field-triage`, the `lib/screener.js` config tiles with no
+`META.example` (`phq9`, `gad7`, `auditc`, `cage`, `epds`), and the pure static
+reference cards (`co-cn-antidote`, `tetanus`, `rabies-pep`, `bbp-exposure`,
+`sti-screening`).
+
 ## Exposed
 
 Each id below is live in `mcp/catalog.js`. The gate parses this list.
@@ -2489,6 +2513,7 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 - `peds-ett`
 - `naloxone`
 - `peds-weight-dose`
+- `bsa_burn`
 
 ### lib/idcrit-v99.js
 - `duke-endocarditis`

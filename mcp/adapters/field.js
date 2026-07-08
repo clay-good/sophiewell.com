@@ -12,6 +12,16 @@
 
 import * as F from '../../lib/field.js';
 
+// The Rule-of-Nines region keys are read from the lib's own table so the schema
+// cannot drift; the Lund-Browder region list mirrors the browser tile (its
+// compute simply sums the entered percents, so the exact keys are cosmetic).
+const NINES_KEYS = Object.keys(F.RULE_OF_NINES_ADULT);
+const LUND_REGIONS = [
+  'head', 'neck', 'anterior-trunk', 'posterior-trunk', 'arm-left', 'arm-right',
+  'forearm-left', 'forearm-right', 'hand-left', 'hand-right', 'thigh-left',
+  'thigh-right', 'leg-left', 'leg-right', 'foot-left', 'foot-right', 'genitalia',
+];
+
 export default [
   {
     id: 'cincinnati',
@@ -106,6 +116,37 @@ export default [
     fields: [
       { dom: 'pwd-w', arg: 'weightKg', kind: 'number', required: true, label: 'Patient weight', unit: 'kg' },
       { dom: 'pwd-r', arg: 'recipe', kind: 'enum', values: ['epinephrine-iv-io', 'epinephrine-im-anaphyl', 'atropine', 'amiodarone', 'naloxone', 'dextrose-d10', 'fluid-bolus-ns'], required: true, label: 'Medication recipe' },
+    ],
+  },
+  {
+    id: 'bsa_burn',
+    summary: 'Burn total-body-surface-area estimate: the adult Rule of Nines (check the involved regions, each weighted 9 / 18 / 1 percent) or the Lund-Browder chart (enter the percent affected per region). Returns the total %TBSA.',
+    // Method-branched: the Rule-of-Nines path sums the checked region weights,
+    // the Lund-Browder path sums the entered per-region percents. The bespoke
+    // toArgs builds the right selection object; the compute dispatches on method.
+    compute: (a) => (a.method === 'lund' ? F.lundBrowder(a.percents) : F.ruleOfNines(a.sel)),
+    toArgs: (inputs) => {
+      if (inputs['bb-method'] === 'lund') {
+        const percents = {};
+        for (const r of LUND_REGIONS) {
+          const key = `bb-l-${r}`;
+          if (Object.prototype.hasOwnProperty.call(inputs, key) && inputs[key] !== '' && inputs[key] != null) {
+            percents[r] = Number(inputs[key]);
+          }
+        }
+        return { method: 'lund', percents };
+      }
+      const sel = {};
+      for (const k of NINES_KEYS) {
+        const v = inputs[`bb-n-${k}`];
+        sel[k] = v === true || v === 1 || v === '1' || v === 'true' || v === 'yes';
+      }
+      return { method: 'nines', sel };
+    },
+    fields: [
+      { dom: 'bb-method', arg: 'method', kind: 'enum', values: ['nines', 'lund'], required: true, label: 'Method (Rule of Nines / Lund-Browder)' },
+      ...NINES_KEYS.map((k) => ({ dom: `bb-n-${k}`, arg: `bb-n-${k}`, kind: 'bool', label: `Rule of Nines: ${k} (${F.RULE_OF_NINES_ADULT[k]}%)` })),
+      ...LUND_REGIONS.map((r) => ({ dom: `bb-l-${r}`, arg: `bb-l-${r}`, kind: 'number', label: `Lund-Browder: ${r} (% affected)` })),
     ],
   },
 ];

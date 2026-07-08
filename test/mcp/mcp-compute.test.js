@@ -1588,6 +1588,15 @@ test('lib/idcrit-v99.js Lund-Browder burn worked call (wave 81)', () => {
   assert.equal(lb.ruleOfNines, 25);
 });
 
+test('lib/field.js bsa_burn method-branched worked calls (wave 82)', () => {
+  // Rule of Nines: anterior trunk alone -> 18%.
+  assert.equal(ok('bsa_burn', { 'bb-method': 'nines', 'bb-n-trunk-anterior': '1' }).tbsa, 18);
+  // Rule of Nines: head + one arm -> 18%.
+  assert.equal(ok('bsa_burn', { 'bb-method': 'nines', 'bb-n-head': '1', 'bb-n-arm-left': '1' }).tbsa, 18);
+  // Lund-Browder: entered percents sum.
+  assert.equal(ok('bsa_burn', { 'bb-method': 'lund', 'bb-l-head': '7', 'bb-l-anterior-trunk': '13' }).tbsa, 20);
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];

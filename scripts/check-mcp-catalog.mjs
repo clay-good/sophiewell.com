@@ -54,7 +54,7 @@ function parseLedgerExposed(text) {
   if (start === -1) throw new Error('mcp-catalog: "## Exposed" heading not found in docs/mcp-coverage.md');
   const end = text.indexOf('\n## ', start + 1);
   const section = text.slice(start, end === -1 ? undefined : end);
-  for (const m of section.matchAll(/^-\s+`([a-z0-9-]+)`/gm)) ids.add(m[1]);
+  for (const m of section.matchAll(/^-\s+`([a-z0-9_-]+)`/gm)) ids.add(m[1]);
   return ids;
 }
 
