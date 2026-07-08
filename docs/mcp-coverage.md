@@ -892,6 +892,17 @@ platelet/marker/PT/fibrinogen, DAPT age) map as enums the lib reads as strings,
 and the 4Ts domains as 0-2 numbers. Brings the exposed total to **918
 calculators across 170 modules**.
 
+## Sixty-first wave — the obstetric / maternal cluster in lib/scoring-v4.js (+6)
+
+The Biophysical Profile (five 0-or-2 components as booleans), the ACOG
+severe-feature preeclampsia criteria, the HELLP triad (with the optional
+platelet-nadir Mississippi class as a non-required number that the example's
+empty field round-trips), the two GDM diagnostic panels Carpenter-Coustan
+(100-g 3-hour OGTT) and IADPSG (75-g 2-hour OGTT), and the Modified Early
+Obstetric Warning Score (vitals banded green/yellow/red with the AVPU enum and
+0-3 pain score; temperature in canonical Celsius). Brings the exposed total to
+**924 calculators across 170 modules**.
+
 ## Exposed
 
 Each id below is live in `mcp/catalog.js`. The gate parses this list.
@@ -2122,6 +2133,12 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 - `four-ts`
 - `isth-dic`
 - `dapt-score`
+- `bpp`
+- `acog-severe-pre`
+- `hellp`
+- `carpenter-coustan`
+- `iadpsg`
+- `meows`
 
 ### lib/scoring-v6.js
 - `ballard`

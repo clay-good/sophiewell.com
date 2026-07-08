@@ -1080,4 +1080,78 @@ export default [
       { dom: 'dp-smoke', arg: 'currentSmoker', kind: 'bool', label: 'Current smoker (1)' },
     ],
   },
+
+  // --- wave 61: the obstetric / maternal cluster --------------------------
+  {
+    id: 'bpp',
+    summary: 'Biophysical Profile (Manning 1980): fetal breathing, fetal movements, fetal tone, amniotic fluid volume, and a reactive non-stress test each score 0 or 2; total 0-10 (8-10 normal, 6 equivocal, <= 4 abnormal).',
+    compute: F.bpp,
+    fields: [
+      { dom: 'bp-fb', arg: 'fetalBreathing', kind: 'bool', label: 'Fetal breathing movements present (2)' },
+      { dom: 'bp-fm', arg: 'fetalMovements', kind: 'bool', label: 'Fetal movements present (2)' },
+      { dom: 'bp-ft', arg: 'fetalTone', kind: 'bool', label: 'Fetal tone present (2)' },
+      { dom: 'bp-af', arg: 'amnioticFluid', kind: 'bool', label: 'Adequate amniotic fluid volume (2)' },
+      { dom: 'bp-nst', arg: 'reactiveNst', kind: 'bool', label: 'Reactive non-stress test (2)' },
+    ],
+  },
+  {
+    id: 'acog-severe-pre',
+    summary: 'ACOG severe-feature preeclampsia criteria (ACOG 2013): SBP >= 160 or DBP >= 110, thrombocytopenia < 100, impaired hepatic function, creatinine > 1.1 or doubled, pulmonary edema, or new cerebral/visual disturbances; any single feature qualifies as severe.',
+    compute: F.acogSeverePre,
+    fields: [
+      { dom: 'sp-bp', arg: 'sbpGte160OrDbpGte110', kind: 'bool', label: 'SBP >= 160 or DBP >= 110 (two occasions >= 4 h apart)' },
+      { dom: 'sp-plt', arg: 'thrombocytopeniaLt100', kind: 'bool', label: 'Thrombocytopenia (platelets < 100 x10^9/L)' },
+      { dom: 'sp-hep', arg: 'impairedHepaticFunction', kind: 'bool', label: 'Impaired hepatic function' },
+      { dom: 'sp-cr', arg: 'creatinineGt11OrDoubled', kind: 'bool', label: 'Creatinine > 1.1 mg/dL or doubled' },
+      { dom: 'sp-pulm', arg: 'pulmonaryEdema', kind: 'bool', label: 'Pulmonary edema' },
+      { dom: 'sp-neuro', arg: 'cerebralOrVisualDisturbances', kind: 'bool', label: 'New cerebral or visual disturbances' },
+    ],
+  },
+  {
+    id: 'hellp',
+    summary: 'HELLP syndrome criteria (Sibai 1990): hemolysis, elevated liver enzymes (AST >= 70), and low platelets (< 100) - all three is complete, one or two is partial. An optional platelet nadir adds the Mississippi class.',
+    compute: F.hellp,
+    fields: [
+      { dom: 'hl-hem', arg: 'hemolysis', kind: 'bool', label: 'Hemolysis (abnormal smear / bilirubin >= 1.2 / LDH >= 600)' },
+      { dom: 'hl-ast', arg: 'astGte70', kind: 'bool', label: 'Elevated liver enzymes (AST >= 70 U/L)' },
+      { dom: 'hl-plt', arg: 'plateletsLt100', kind: 'bool', label: 'Low platelets (< 100 x10^9/L)' },
+      { dom: 'hl-nadir', arg: 'plateletNadirThousands', kind: 'number', label: 'Platelet nadir for Mississippi class (x10^9/L, optional)' },
+    ],
+  },
+  {
+    id: 'carpenter-coustan',
+    summary: 'Carpenter-Coustan GDM criteria on the 100-g 3-hour OGTT: fasting >= 95, 1-hour >= 180, 2-hour >= 155, 3-hour >= 140 mg/dL; >= 2 values exceeding diagnoses GDM, a single abnormal value is impaired glucose tolerance.',
+    compute: F.carpenterCoustan,
+    fields: [
+      { dom: 'cc-f', arg: 'fasting', kind: 'number', required: true, label: 'Fasting glucose', unit: 'mg/dL' },
+      { dom: 'cc-1h', arg: 'oneHour', kind: 'number', required: true, label: '1-hour glucose', unit: 'mg/dL' },
+      { dom: 'cc-2h', arg: 'twoHour', kind: 'number', required: true, label: '2-hour glucose', unit: 'mg/dL' },
+      { dom: 'cc-3h', arg: 'threeHour', kind: 'number', required: true, label: '3-hour glucose', unit: 'mg/dL' },
+    ],
+  },
+  {
+    id: 'iadpsg',
+    summary: 'IADPSG GDM criteria on the 75-g 2-hour OGTT (IADPSG 2010): fasting >= 92, 1-hour >= 180, 2-hour >= 153 mg/dL; a single value exceeding diagnoses GDM.',
+    compute: F.iadpsg,
+    fields: [
+      { dom: 'ia-f', arg: 'fasting', kind: 'number', required: true, label: 'Fasting glucose', unit: 'mg/dL' },
+      { dom: 'ia-1h', arg: 'oneHour', kind: 'number', required: true, label: '1-hour glucose', unit: 'mg/dL' },
+      { dom: 'ia-2h', arg: 'twoHour', kind: 'number', required: true, label: '2-hour glucose', unit: 'mg/dL' },
+    ],
+  },
+  {
+    id: 'meows',
+    summary: 'Modified Early Obstetric Warning Score (Singh 2012): respiratory rate, SpO2, temperature (Celsius), systolic and diastolic BP, heart rate, AVPU neurological response, and a 0-3 pain score are each banded green/yellow/red; the response triggers on any one red or two or more yellows.',
+    compute: F.meows,
+    fields: [
+      { dom: 'mw-rr', arg: 'rr', kind: 'number', required: true, label: 'Respiratory rate', unit: 'breaths/min' },
+      { dom: 'mw-spo2', arg: 'spo2', kind: 'number', required: true, label: 'SpO2', unit: '%' },
+      { dom: 'mw-sbp', arg: 'sbp', kind: 'number', required: true, label: 'Systolic BP', unit: 'mmHg' },
+      { dom: 'mw-dbp', arg: 'dbp', kind: 'number', required: true, label: 'Diastolic BP', unit: 'mmHg' },
+      { dom: 'mw-hr', arg: 'hr', kind: 'number', required: true, label: 'Heart rate', unit: 'bpm' },
+      { dom: 'mw-temp', arg: 'temp', kind: 'number', required: true, label: 'Temperature', unit: 'C' },
+      { dom: 'mw-neuro', arg: 'neuro', kind: 'enum', values: ['A', 'V', 'P', 'U'], required: true, label: 'Neurological response (AVPU)' },
+      { dom: 'mw-pain', arg: 'pain', kind: 'number', required: true, label: 'Pain score (0-3)' },
+    ],
+  },
 ];

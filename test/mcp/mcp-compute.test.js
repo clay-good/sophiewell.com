@@ -1182,6 +1182,29 @@ test('lib/scoring-v4.js VTE / anticoagulation bleeding + risk worked calls (wave
   assert.equal(dp.favorsExtendedDapt, true);
 });
 
+test('lib/scoring-v4.js obstetric / maternal cluster worked calls (wave 61)', () => {
+  assert.equal(ok('bpp', { 'bp-fb': '1', 'bp-fm': '1', 'bp-ft': '1', 'bp-af': '1', 'bp-nst': '0' }).score, 8);
+  const sp = ok('acog-severe-pre', { 'sp-bp': '1', 'sp-plt': '0', 'sp-hep': '0', 'sp-cr': '0', 'sp-pulm': '0', 'sp-neuro': '0' });
+  assert.equal(sp.severe, true);
+  assert.equal(sp.featuresPresent, 1);
+  // Complete HELLP with a platelet nadir of 40 -> Mississippi class 1.
+  const hl = ok('hellp', { 'hl-hem': '1', 'hl-ast': '1', 'hl-plt': '1', 'hl-nadir': '40' });
+  assert.equal(hl.complete, true);
+  assert.equal(hl.mississippiClass, 1);
+  // Empty nadir (the example) leaves the class null.
+  assert.equal(ok('hellp', { 'hl-hem': '0', 'hl-ast': '0', 'hl-plt': '0', 'hl-nadir': '' }).mississippiClass, null);
+  // Carpenter-Coustan: fasting 100 (>=95) and 2-h 160 (>=155) exceed -> 2 -> GDM.
+  const cc = ok('carpenter-coustan', { 'cc-f': '100', 'cc-1h': '160', 'cc-2h': '160', 'cc-3h': '120' });
+  assert.equal(cc.exceeded, 2);
+  assert.equal(cc.gdm, true);
+  // IADPSG: fasting 95 (>=92) exceeds -> 1 -> GDM.
+  assert.equal(ok('iadpsg', { 'ia-f': '95', 'ia-1h': '160', 'ia-2h': '140' }).gdm, true);
+  const mw = ok('meows', { 'mw-rr': '16', 'mw-spo2': '98', 'mw-temp': '37.0', 'mw-sbp': '118', 'mw-dbp': '72', 'mw-hr': '82', 'mw-neuro': 'A', 'mw-pain': '0' });
+  assert.equal(mw.trigger, false);
+  // A red vital triggers.
+  assert.equal(ok('meows', { 'mw-rr': '32', 'mw-spo2': '98', 'mw-temp': '37.0', 'mw-sbp': '118', 'mw-dbp': '72', 'mw-hr': '82', 'mw-neuro': 'A', 'mw-pain': '0' }).trigger, true);
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];
