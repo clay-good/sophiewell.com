@@ -3,15 +3,22 @@
 // mirror the lib signatures. The shared procedure list is read from the lib's
 // own SURGERY_OPTIONS so the enum can never drift from the model coefficients.
 //
-// pospom is not adapted in this wave: its comorbidity input is a variable-length
-// array assembled from the lib's POSPOM_COMORBIDITIES list, which needs a bespoke
-// toArgs rather than the flat field->arg mapping; deferred to a later wave.
+// pospom joined in wave 53: its comorbidity input is a variable-length array
+// assembled from the lib's POSPOM_COMORBIDITIES list, so it uses a bespoke
+// toArgs (like ltcga-v179 drug-burden-index) that rebuilds the array from the
+// flat per-comorbidity boolean fields — keeping the agent contract flat.
 
 import * as P from '../../lib/periop-v97.js';
 
 const ASA = ['1', '2', '3', '4', '5'];
 const FUNCTIONAL = ['independent', 'partial', 'total'];
 const SURGERY = P.SURGERY_OPTIONS.map((o) => o.value);
+const POSPOM_SURGERY = P.POSPOM_SURGERY_OPTIONS.map((o) => o.value);
+// One boolean field per comorbidity, generated from the lib's own list so the
+// point weights and keys can never drift from the model.
+const POSPOM_COMORB_FIELDS = P.POSPOM_COMORBIDITIES.map((c) => ({
+  dom: `pospom-${c.key}`, arg: c.key, kind: 'bool', label: `${c.label} (${c.pts})`,
+}));
 const YESNO = ['no', 'yes'];
 
 export default [
@@ -73,5 +80,22 @@ export default [
       { dom: 'eg-weight', arg: 'weight', kind: 'enum', values: ['under-90', '90-110', 'over-110'], label: 'Body weight' },
       { dom: 'eg-history', arg: 'history', kind: 'enum', values: ['none', 'questionable', 'definite'], label: 'History of difficult intubation' },
     ],
+  },
+  {
+    id: 'pospom',
+    summary: 'POSPOM (Le Manach 2016): the Preoperative Score to predict PostOperative Mortality — age band + procedure category + comorbidity points map to predicted in-hospital mortality.',
+    compute: P.pospom,
+    fields: [
+      { dom: 'pospom-age', arg: 'age', kind: 'number', required: true, label: 'Age', unit: 'years' },
+      { dom: 'pospom-surg', arg: 'surgery', kind: 'enum', values: POSPOM_SURGERY, required: true, label: 'Planned surgery category' },
+      ...POSPOM_COMORB_FIELDS,
+    ],
+    toArgs(inputs) {
+      const comorbidities = POSPOM_COMORB_FIELDS
+        .filter((f) => inputs[f.dom] === true || inputs[f.dom] === 1 || inputs[f.dom] === '1' || inputs[f.dom] === 'true' || inputs[f.dom] === 'yes')
+        .map((f) => f.arg);
+      const age = inputs['pospom-age'] === '' || inputs['pospom-age'] == null ? null : Number(inputs['pospom-age']);
+      return { age, surgery: String(inputs['pospom-surg']), comorbidities };
+    },
   },
 ];

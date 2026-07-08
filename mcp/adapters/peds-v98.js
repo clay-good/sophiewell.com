@@ -3,14 +3,56 @@
 // predictors and the PIM3 pupils / ventilation / elective flags are booleans;
 // PIM3 recovery and diagnosis-risk axes are enums; labs are numbers.
 //
-// Deferred: kawasaki-criteria (principal / supplementary features arrive as
-// variable-length key arrays, not the flat dom→arg→kind contract) and catch-head
-// (high- and medium-risk factors are collected into arrays); both need a bespoke
-// toArgs and are left for a later wave.
+// kawasaki-criteria and catch-head joined in wave 53 with a bespoke toArgs:
+// their principal / supplementary / high- / medium-risk features arrive as
+// variable-length key arrays, which the adapter rebuilds from flat per-feature
+// boolean fields (keys read from the lib's own feature lists so they can never
+// drift), keeping the agent contract flat.
 
 import * as F from '../../lib/peds-v98.js';
 
+// Flat boolean field per feature, generated from the lib's own key lists.
+const boolField = (dom, key, label) => ({ dom, arg: key, kind: 'bool', label });
+const KAW_PRINCIPAL = F.KAWASAKI_PRINCIPAL_FEATURES.map((f) => boolField(`kaw-p-${f.key}`, f.key, f.label));
+const KAW_SUPPLEMENTARY = F.KAWASAKI_SUPPLEMENTARY_CRITERIA.map((f) => boolField(`kaw-s-${f.key}`, f.key, f.label));
+const CATCH_HIGH = F.CATCH_HIGH_RISK.map((f) => boolField(`catch-h-${f.key}`, f.key, f.label));
+const CATCH_MEDIUM = F.CATCH_MEDIUM_RISK.map((f) => boolField(`catch-m-${f.key}`, f.key, f.label));
+const isOn = (v) => v === true || v === 1 || v === '1' || v === 'true' || v === 'yes';
+const checkedKeys = (fields, inputs) => fields.filter((f) => isOn(inputs[f.dom])).map((f) => f.arg);
+
 export default [
+  {
+    id: 'kawasaki-criteria',
+    summary: 'Kawasaki disease criteria (AHA 2017): fever ≥ 5 days + ≥ 4 of 5 principal features = classic KD; the incomplete-KD pathway uses CRP/ESR and supplementary labs when 2-3 features are present.',
+    compute: F.kawasakiCriteria,
+    fields: [
+      { dom: 'kaw-fever', arg: 'feverDays', kind: 'number', required: true, label: 'Fever duration', unit: 'days' },
+      ...KAW_PRINCIPAL,
+      { dom: 'kaw-crp', arg: 'crp', kind: 'number', label: 'CRP', unit: 'mg/dL' },
+      { dom: 'kaw-esr', arg: 'esr', kind: 'number', label: 'ESR', unit: 'mm/hr' },
+      ...KAW_SUPPLEMENTARY,
+      { dom: 'kaw-echo', arg: 'echoPositive', kind: 'bool', label: 'Echocardiogram positive for coronary involvement' },
+    ],
+    toArgs(inputs) {
+      return {
+        feverDays: inputs['kaw-fever'] === '' || inputs['kaw-fever'] == null ? null : Number(inputs['kaw-fever']),
+        principal: checkedKeys(KAW_PRINCIPAL, inputs),
+        crp: inputs['kaw-crp'] === '' || inputs['kaw-crp'] == null ? undefined : Number(inputs['kaw-crp']),
+        esr: inputs['kaw-esr'] === '' || inputs['kaw-esr'] == null ? undefined : Number(inputs['kaw-esr']),
+        supplementary: checkedKeys(KAW_SUPPLEMENTARY, inputs),
+        echoPositive: isOn(inputs['kaw-echo']),
+      };
+    },
+  },
+  {
+    id: 'catch-head',
+    summary: 'CATCH rule (Osmond 2010): CT of the head in a child with minor head injury is indicated if any high-risk factor (need for neurosurgery) or medium-risk factor (brain injury on CT) is present.',
+    compute: F.catchHead,
+    fields: [...CATCH_HIGH, ...CATCH_MEDIUM],
+    toArgs(inputs) {
+      return { high: checkedKeys(CATCH_HIGH, inputs), medium: checkedKeys(CATCH_MEDIUM, inputs) };
+    },
+  },
   {
     id: 'kocher-criteria',
     summary: 'Kocher criteria (Kocher 1999): non-weight-bearing, fever, ESR > 40, and WBC > 12 predict the probability of septic arthritis of the hip in a child.',

@@ -284,13 +284,10 @@ performs — the Calvert GFR cap (`on`/`off`) and the Cairo-Bishop age class
 (`adult`/`pediatric`) — are reproduced with a per-field `to` transform. Warfarin
 height and weight are consumed by the pure functions in cm / kg (the browser
 unit toggles convert before calling), so the adapter exposes them in those units
-directly; no custom `formatResult` is needed. **One tile in
-`lib/eddecision-v107.js` is intentionally not adapted:** `hear` (the HEAR score)
-carries no `META.example` to round-trip (the `phases-iph` precedent). The two
-`lib/ltcga-v181.js` long-term-care infection-surveillance tiles
-(`mcgeer-criteria`, `loeb-minimum-criteria`) are deferred to a later wave: they
-are site-branched, so a faithful schema needs the full per-site criterion set
-rather than the flat `dom→arg→kind` contract this wave covers.
+directly; no custom `formatResult` is needed. (`hear` in
+`lib/eddecision-v107.js` and the two `lib/ltcga-v181.js` long-term-care
+infection-surveillance tiles — `mcgeer-criteria`, `loeb-minimum-criteria` — were
+parked in this wave and adapted later in the fifty-third wave.)
 
 ## Fourteenth wave — 16 modules
 
@@ -315,13 +312,13 @@ the PIM3 flags) are booleans; and ordinal grades, yes/no clinical questions, and
 categorical selects (TI-RADS descriptors, mJOA/Nurick grades, ISS / DIPSS-group
 axes, CLIF organ sub-scores, sex/measure axes) are enums.
 
-**Not adapted this wave (deferred):** `pasi`, `easi`, and `dlqi`
+**Parked in this wave, adapted in the fifty-third:** `pasi`, `easi`, and `dlqi`
 (`lib/derm-v151.js`) build their input object from per-region / per-item field
-groups that need a bespoke `toArgs`; `kawasaki-criteria` and `catch-head`
-(`lib/peds-v98.js`) collect variable-length principal / risk-factor **arrays**,
-not the flat scalar contract; and `wagner-dfu` / `university-texas-dfu`
-(`lib/suites-v155.js`) carry no `META.example` to round-trip (the `phases-iph`
-precedent). `peds-bmi-percentile` exposes BMI directly rather than the browser's
+groups; `kawasaki-criteria` and `catch-head`
+(`lib/peds-v98.js`) collect variable-length principal / risk-factor **arrays**;
+and `wagner-dfu` / `university-texas-dfu`
+(`lib/suites-v155.js`) then carried no `META.example` to round-trip.
+`peds-bmi-percentile` exposes BMI directly rather than the browser's
 optional weight/height unit-toggle path — the pure function takes BMI and never
 sees the unit inputs (the warfarin height/weight precedent).
 
@@ -709,6 +706,35 @@ medicine. This brings the exposed total to **723 calculators across 159
 modules**. Inputs are flat scalars, checkbox booleans (optional, defaulting to
 unchecked), and a handful of string enums (sex, WBGT setting, TIMI vessel).
 
+## Fifty-third wave — deferral cleanup (9 modules, +14)
+
+This slice clears the deferral backlog: the fourteen tiles earlier waves parked
+because they needed a bespoke `toArgs`, a variable-length array input, or a
+`META.example` that had not yet been written. All fourteen now round-trip against
+the same fixed contract, bringing the exposed total to **737 calculators across
+160 modules**:
+
+- **`neuro-v118` — `phases`**, **`eddecision-v107` — `hear`**,
+  **`suites-v155` — `wagner-dfu` / `university-texas-dfu`**: previously deferred
+  only because they carried no `META.example`; the examples exist now and the
+  flat enum/number inputs map straight through the default `toArgs`.
+- **`derm-v151` — `pasi` / `easi` / `dlqi`**: the per-region / per-item field
+  groups are named with the arg the lib reads (`headE`, `headArea`, `q1`…), so
+  they still use the DEFAULT `toArgs`; absent regions default to 0 in the lib.
+- **`periop-v97` — `pospom`**, **`gi-v126` — `ses-cd`**,
+  **`peds-v98` — `kawasaki-criteria` / `catch-head`**: variable-length array
+  inputs (comorbidity list, per-segment endoscopic arrays, principal /
+  supplementary / risk-factor key arrays) rebuilt from flat scalar / boolean
+  fields by a bespoke `toArgs` (the `drug-burden-index` precedent), keeping the
+  agent contract flat. Keys are read from each lib's own list so the schema
+  cannot drift from the model.
+- **`ltcga-v175` — `doloplus-2`**: the 10 behavioral items map through the
+  default `toArgs` with the arg names the lib expects.
+- **`ltcga-v181` — `mcgeer-criteria` / `loeb-minimum-criteria`** (new module):
+  site-branched surveillance / stewardship definitions. The adapter exposes the
+  site enum plus the deduped union of every criterion key across all sites as
+  flat booleans; the compute function reads only the selected site's findings.
+
 ## Exposed
 
 Each id below is live in `mcp/catalog.js`. The gate parses this list.
@@ -754,6 +780,7 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 - `graeb-ivh`
 - `bat-score`
 - `elapss`
+- `phases`
 
 ### lib/endo-v136.js
 - `homa-ir`
@@ -767,6 +794,7 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 - `gupta-respiratory-failure`
 - `arozullah-pneumonia`
 - `el-ganzouri`
+- `pospom`
 
 ### lib/oneformula-v167.js
 - `mean-airway-pressure`
@@ -796,6 +824,7 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 - `haps`
 - `ctsi-balthazar`
 - `modified-marshall`
+- `ses-cd`
 
 ### lib/cardio-v102.js
 - `maggic`
@@ -1033,6 +1062,7 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/ltcga-v175.js
 - `abbey-pain`
 - `cnpi`
+- `doloplus-2`
 
 ### lib/ltcga-v176.js
 - `stratify`
@@ -1218,6 +1248,10 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 - `lee-mortality-index`
 - `chess-scale`
 
+### lib/ltcga-v181.js
+- `mcgeer-criteria`
+- `loeb-minimum-criteria`
+
 ### lib/metabolic-onc-v88.js
 - `dka-hhs`
 - `calvert-carboplatin`
@@ -1230,6 +1264,7 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 - `cauchy-frostbite`
 
 ### lib/eddecision-v107.js
+- `hear`
 - `new-orleans-head`
 - `go-far`
 - `macocha`
@@ -1306,10 +1341,14 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/suites-v155.js
 - `mipi`
 - `forrest`
+- `wagner-dfu`
+- `university-texas-dfu`
 
 ### lib/peds-v98.js
 - `kocher-criteria`
 - `pim3`
+- `kawasaki-criteria`
+- `catch-head`
 
 ### lib/peds-v140.js
 - `eos-calculator`
@@ -1330,6 +1369,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/derm-v151.js
 - `scorad`
+- `pasi`
+- `easi`
+- `dlqi`
 
 ### lib/acs-v193.js
 - `crusade`

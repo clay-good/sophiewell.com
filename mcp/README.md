@@ -73,7 +73,7 @@ strings; booleans as `true`/`false`; enums by their listed string values.
 
 ```
 list_calculators { "specialty": "hepatology" }
-  -> { coverage: "723 of 1109 catalog tiles exposed ...", calculators: [ { id: "meld-xi", ... }, ... ] }
+  -> { coverage: "737 of 1109 catalog tiles exposed ...", calculators: [ { id: "meld-xi", ... }, ... ] }
 
 describe_calculator { "id": "meld-xi" }
   -> { inputSchema: { ... mx-bili, mx-creat ... }, citation: "Heuman DM ... Liver Transpl 2007", ... }
@@ -196,7 +196,11 @@ indices, cranial / anthropometric estimators, dermatology / pain / ophthalmology
 environmental-exposure indices, ENT-sleep, sports-MSK, heme-derm, IBD, pediatric
 tox, wound ID, renal-pulmonary, ob-gyn, cardiometabolic, ortho-spine, radiology
 measurement, ENT-uro-psych, mixed risk scores, rheumatology criteria, and dive
-medicine), for 723 across 159 modules today. <!-- catalog-truth:historical (159 is the count of lib modules adapted, not a catalog tile count) -->
+medicine), and a fifty-third cleared the deferral backlog (14 tiles across 9
+modules that needed a bespoke `toArgs`, a variable-length array input, or a
+`META.example` that had not yet been written — PHASES, HEAR, Wagner / U-Texas
+DFU, PASI / EASI / DLQI, POSPOM, SES-CD, Kawasaki / CATCH, DOLOPLUS-2, and the
+McGeer / Loeb site-branched criteria), for 737 across 160 modules today. <!-- catalog-truth:historical (160 is the count of lib modules adapted, not a catalog tile count) -->
 Later waves extend it module by module against the same contract.
 
 ## Design

@@ -1,7 +1,7 @@
-// spec-v183 (wave 2): adapters for four lib/neuro-v118.js hemorrhagic-stroke /
+// spec-v183 (wave 2): adapters for lib/neuro-v118.js hemorrhagic-stroke /
 // SAH / IVH risk tiles. dom keys mirror views/group-v118.js and
-// META.example.fields; arg names mirror the lib signatures. phases-iph is not
-// adapted: it has no META.example to round-trip (spec-v183 §4.4 requires one).
+// META.example.fields; arg names mirror the lib signatures. The `phases`
+// aneurysm-rupture-risk tile joined in wave 53 once its META.example was added.
 //
 // graeb-ivh's eight compartment selects are scored as plain numbers (0-4 for the
 // lateral/3rd/4th ventricles, 0-2 for the horns) with a per-compartment
@@ -62,6 +62,21 @@ export default [
       { dom: 'el-pop', arg: 'population', kind: 'enum', values: ['na', 'japan', 'finland'], label: 'Population' },
       { dom: 'el-size', arg: 'size', kind: 'number', required: true, label: 'Aneurysm size', unit: 'mm' },
       { dom: 'el-irregular', arg: 'irregular', kind: 'bool', label: 'Irregular shape (+4)' },
+    ],
+  },
+  {
+    // wave 53: the flat population/site enums and age/size/flag inputs map
+    // straight through the default toArgs (the renderer passes exactly these).
+    id: 'phases',
+    summary: 'PHASES score (Greving 2014): 5-year cumulative rupture risk of an unruptured intracranial aneurysm from population, hypertension, age, aneurysm size, earlier SAH, and site (total 0–22).',
+    compute: N.phases,
+    fields: [
+      { dom: 'ph-pop', arg: 'population', kind: 'enum', values: ['na', 'japanese', 'finnish'], label: 'Population' },
+      { dom: 'ph-htn', arg: 'htn', kind: 'bool', label: 'Hypertension (+1)' },
+      { dom: 'ph-age', arg: 'age', kind: 'number', required: true, label: 'Age', unit: 'years' },
+      { dom: 'ph-size', arg: 'size', kind: 'number', required: true, label: 'Aneurysm size', unit: 'mm' },
+      { dom: 'ph-sah', arg: 'earlierSah', kind: 'bool', label: 'Earlier SAH from a different aneurysm (+1)' },
+      { dom: 'ph-site', arg: 'site', kind: 'enum', values: ['ica', 'mca', 'acaPcomPost'], label: 'Aneurysm site' },
     ],
   },
 ];

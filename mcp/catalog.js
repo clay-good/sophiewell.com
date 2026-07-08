@@ -69,6 +69,7 @@ import ltcgaV176 from './adapters/ltcga-v176.js';
 import ltcgaV177 from './adapters/ltcga-v177.js';
 import ltcgaV178 from './adapters/ltcga-v178.js';
 import ltcgaV179 from './adapters/ltcga-v179.js';
+import ltcgaV181 from './adapters/ltcga-v181.js';
 import ltcgaV182 from './adapters/ltcga-v182.js';
 import neuroV95 from './adapters/neuro-v95.js';
 import neuroV117 from './adapters/neuro-v117.js';
@@ -230,6 +231,7 @@ const ADAPTER_MODULES = [
   ['ltcga-v177', ltcgaV177],
   ['ltcga-v178', ltcgaV178],
   ['ltcga-v179', ltcgaV179],
+  ['ltcga-v181', ltcgaV181],
   ['ltcga-v182', ltcgaV182],
   ['neuro-v95', neuroV95],
   ['neuro-v117', neuroV117],

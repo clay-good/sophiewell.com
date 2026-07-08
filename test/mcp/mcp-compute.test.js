@@ -869,6 +869,42 @@ test('enum->boolean adapter transform (acute vs chronic) reaches the lib', () =>
   assert.notEqual(acute, chronic);
 });
 
+// Wave 53 (deferral cleanup): flat, bespoke-array, and site-branched adapters.
+test('lib wave-53 deferral-cleanup worked calls', () => {
+  // Flat enum/number pass-through.
+  assert.equal(ok('phases', { 'ph-pop': 'finnish', 'ph-htn': true, 'ph-age': '72', 'ph-size': '12', 'ph-sah': true, 'ph-site': 'acaPcomPost' }).total, 18);
+  assert.equal(ok('hear', { 'hr-hist': 'h1', 'hr-ecg': 'e1', 'hr-age': '58', 'hr-risk': 'r1' }).total, 4);
+  assert.equal(ok('wagner-dfu', { 'wagner-grade': '3' }).grade, 3);
+  assert.equal(ok('university-texas-dfu', { 'ut-grade': '2', 'ut-stage': 'B' }).cell, 'IIB');
+  assert.equal(ok('doloplus-2', {
+    'dolo-complaints': '2', 'dolo-posture': '1', 'dolo-protection': '1', 'dolo-facial': '1', 'dolo-sleep': '0',
+    'dolo-washing': '0', 'dolo-mobility': '0', 'dolo-communication': '0', 'dolo-social': '0', 'dolo-behavior': '0',
+  }).total, 5);
+  // Per-region default toArgs (absent regions default to 0 in the lib).
+  assert.equal(ok('pasi', {
+    'pasi-head-e': '2', 'pasi-head-i': '2', 'pasi-head-d': '2', 'pasi-head-area': '25',
+    'pasi-upper-e': '1', 'pasi-upper-i': '1', 'pasi-upper-d': '1', 'pasi-upper-area': '5',
+    'pasi-lower-e': '3', 'pasi-lower-i': '3', 'pasi-lower-d': '3', 'pasi-lower-area': '60',
+  }).score, 16.2);
+  assert.equal(ok('dlqi', {
+    'dlqi-q1': '2', 'dlqi-q2': '1', 'dlqi-q3': '1', 'dlqi-q4': '1', 'dlqi-q5': '1',
+    'dlqi-q6': '0', 'dlqi-q7': '0', 'dlqi-q8': '0', 'dlqi-q9': '0', 'dlqi-q10': '0',
+  }).score, 6);
+  // Bespoke toArgs rebuilds variable-length arrays from flat fields.
+  assert.equal(ok('pospom', { 'pospom-age': '70', 'pospom-surg': 'major-gi', 'pospom-cancer': '1' }).total, 30);
+  assert.equal(ok('ses-cd', {
+    'se-us-il': '2', 'se-uf-il': '2', 'se-af-il': '3', 'se-st-il': '1',
+    'se-us-rc': '1', 'se-uf-rc': '1', 'se-af-rc': '2',
+  }).total, 12);
+  assert.equal(ok('kawasaki-criteria', {
+    'kaw-fever': '6', 'kaw-p-conjunctivitis': '1', 'kaw-p-oral': '1', 'kaw-p-lymphadenopathy': '1', 'kaw-p-extremity': '1',
+  }).pathway, 'classic');
+  assert.equal(ok('catch-head', { 'catch-h-gcs': '1' }).indicated, true);
+  // Site-branched: the compute reads only the selected site's findings.
+  assert.equal(ok('mcgeer-criteria', { 'mcg-site': 'uti-no-catheter', 'mcg-acuteDysuria': '1', 'mcg-voidedCulture': '1' }).meets, true);
+  assert.equal(ok('loeb-minimum-criteria', { 'loeb-site': 'uti-no-catheter', 'loeb-acuteDysuria': '1' }).met, true);
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];

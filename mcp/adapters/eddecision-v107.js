@@ -1,13 +1,24 @@
-// spec-v183 MCP wave 13: adapters for three of the four lib/eddecision-v107.js
-// ED / critical-care decision tiles. dom keys mirror views/group-v107.js and
+// spec-v183 MCP wave 13: adapters for the lib/eddecision-v107.js ED /
+// critical-care decision tiles. dom keys mirror views/group-v107.js and
 // META.example.fields; arg names mirror the lib signatures (input.headache,
-// { age, neuroIntact, ...items }, input.mallampati, …). `hear` is intentionally
-// not exposed — it carries no META.example to round-trip (the phases-iph
-// precedent).
+// { age, neuroIntact, ...items }, input.mallampati, …). `hear` joined in wave 53
+// once its META.example was added (the flat history/ecg/age/risk enums map
+// straight through the default toArgs).
 
 import * as F from '../../lib/eddecision-v107.js';
 
 export default [
+  {
+    id: 'hear',
+    summary: 'HEAR score (0-8): the troponin-free triage precursor to HEART — History + ECG + Age + Risk factors. A total ≤ 1 is the very-low-risk band (~0.4% 30-day MACE); > 1 warrants HEART scoring with troponin.',
+    compute: F.hear,
+    fields: [
+      { dom: 'hr-hist', arg: 'history', kind: 'enum', values: ['h0', 'h1', 'h2'], label: 'History (slightly / moderately / highly suspicious)' },
+      { dom: 'hr-ecg', arg: 'ecg', kind: 'enum', values: ['e0', 'e1', 'e2'], label: 'ECG (normal / non-specific repolarization / significant ST deviation)' },
+      { dom: 'hr-age', arg: 'age', kind: 'number', required: true, label: 'Age', unit: 'years' },
+      { dom: 'hr-risk', arg: 'risk', kind: 'enum', values: ['r0', 'r1', 'r2'], label: 'Risk factors (none / 1-2 / ≥ 3 or known atherosclerotic disease)' },
+    ],
+  },
   {
     id: 'new-orleans-head',
     summary: 'New Orleans Criteria for CT in minor head injury (Haydel 2000): a head CT is indicated if any of seven criteria is present in a GCS-15 patient with loss of consciousness.',

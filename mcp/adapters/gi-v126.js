@@ -1,10 +1,26 @@
 // spec-v183 MCP wave 4: adapters for five lib/gi-v126.js gastroenterology
 // disease-activity / severity indices. dom keys mirror views/group-v126.js and
 // META.example.fields; arg names mirror the lib signatures (stools, vascular,
-// pao2, …). `ses-cd` is deliberately NOT exposed: its inputs are per-segment
-// arrays (sumArr), not the flat dom→arg→kind contract this wave covers.
+// pao2, …). `ses-cd` joined in wave 53 with a bespoke toArgs: its inputs are
+// per-segment arrays (sumArr), which the adapter rebuilds from flat scalar
+// fields keyed `se-<variable>-<segment>`, keeping the agent contract flat.
 
 import * as F from '../../lib/gi-v126.js';
+
+// SES-CD scores four endoscopic variables across five ileocolonic segments.
+const SESCD_SEGMENTS = ['il', 'rc', 'tc', 'lc', 're'];
+const SESCD_VARS = [
+  { vk: 'us', arg: 'ulcerSize', label: 'Ulcer size' },
+  { vk: 'uf', arg: 'ulceratedSurface', label: 'Ulcerated surface' },
+  { vk: 'af', arg: 'affectedSurface', label: 'Affected surface' },
+  { vk: 'st', arg: 'stenosis', label: 'Stenosis' },
+];
+const SESCD_SEG_LABEL = { il: 'ileum', rc: 'right colon', tc: 'transverse', lc: 'left colon', re: 'rectum' };
+const SESCD_FIELDS = SESCD_VARS.flatMap((v) =>
+  SESCD_SEGMENTS.map((sk) => ({
+    dom: `se-${v.vk}-${sk}`, arg: `${v.vk}-${sk}`, kind: 'enum', values: ['0', '1', '2', '3'],
+    label: `${v.label} — ${SESCD_SEG_LABEL[sk]} (0-3)`,
+  })));
 
 export default [
   {
@@ -64,5 +80,18 @@ export default [
       { dom: 'mm-creat', arg: 'creatinine', kind: 'number', label: 'Creatinine', unit: 'mg/dL' },
       { dom: 'mm-cv', arg: 'cardiovascular', kind: 'number', label: 'Cardiovascular score (0-4, pre-banded; blank = not assessed)' },
     ],
+  },
+  {
+    id: 'ses-cd',
+    summary: "Simple Endoscopic Score for Crohn's Disease (Daperno 2004): four variables scored 0-3 in each of five ileocolonic segments (stenosis sub-total capped at 11); 0-2 remission, 3-6 mild, 7-15 moderate, > 15 severe.",
+    compute: F.sesCd,
+    fields: SESCD_FIELDS,
+    toArgs(inputs) {
+      const arr = (vk) => SESCD_SEGMENTS.map((sk) => inputs[`se-${vk}-${sk}`]);
+      return {
+        ulcerSize: arr('us'), ulceratedSurface: arr('uf'),
+        affectedSurface: arr('af'), stenosis: arr('st'),
+      };
+    },
   },
 ];

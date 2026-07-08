@@ -6,6 +6,31 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v183 — MCP wave 53: clear the deferral backlog (14 calculators across 9 lib modules) as deterministic agent tools; no tile delta, 1109)
+
+- Exposes the fourteen catalog tiles earlier MCP waves parked because they needed
+  a bespoke `toArgs`, a variable-length array input, or a `META.example` that had
+  not yet been written. Exposed adapters: 723 → **737 across 160 lib modules**;
+  no website change (`UTILITIES.length` unchanged at 1109, no `app.js` / `views/`
+  / `dist` diff). New adapter module `mcp/adapters/ltcga-v181.js` (McGeer / Loeb);
+  the other twelve extend existing adapter files.
+  - Flat enum/number pass-through (default `toArgs`): `phases` (`neuro-v118`),
+    `hear` (`eddecision-v107`), `wagner-dfu` / `university-texas-dfu`
+    (`suites-v155`), `doloplus-2` (`ltcga-v175`).
+  - Per-region / per-item field groups named with the arg the lib reads (default
+    `toArgs`): `pasi` / `easi` / `dlqi` (`derm-v151`).
+  - Bespoke `toArgs` rebuilding a variable-length array from flat scalar / boolean
+    fields (the `drug-burden-index` precedent): `pospom` (`periop-v97`), `ses-cd`
+    (`gi-v126`), `kawasaki-criteria` / `catch-head` (`peds-v98`).
+  - Site-branched criteria (site enum + deduped union of every criterion key as
+    flat booleans; the compute reads only the selected site's findings):
+    `mcgeer-criteria` / `loeb-minimum-criteria` (`ltcga-v181`).
+- Every adapter's `META.example` round-trips through `compute_calculator`
+  (`scripts/check-mcp-catalog.mjs`), and a worked-call test block asserts a real
+  result-key value per tile (`test/mcp/mcp-compute.test.js`). Feature keys, site
+  values, and comorbidity weights are read from each lib's own tables so the
+  input schema can never drift from the model.
+
 ### Added (spec-v257 — diving / hyperbaric-medicine formulas, 1106 → 1109; +100 milestone)
 
 - Three well-established deterministic formulas, closing the +100 catalog program
