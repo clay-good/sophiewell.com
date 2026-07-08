@@ -4207,7 +4207,7 @@ clamped to `[0, 1]`, so the JSON surface never emits a non-finite probability.
 
 ### Coverage is explicit and honest
 
-Adapting the catalog is incremental. Coverage now stands at **870 clinical
+Adapting the catalog is incremental. Coverage now stands at **882 clinical
 calculators across 170 `lib` modules** (of 1109 catalog tiles), built module by <!-- catalog-truth:historical (170 is the count of lib modules adapted, not a catalog tile count) -->
 module against the one fixed contract:
 
@@ -4269,6 +4269,7 @@ module against the one fixed contract:
 | fifty-fourth (foundational bedside-math + scoring core, 11 modules) | `clinical` (BMI, BSA, MAP, anion gap, corrected Ca/Na, A-a, eGFR, Cockcroft-Gault, QTc, P/F, drip/dose/conc), `clinical-v4` (delta-delta, osmolal gap, Winters, shock-index & body-weight suites, FENa/FEUrea, FIB-4, APRI, ROX, VIS), `clinical-v5` (Na correction, free-water deficit, ARDSNet PBW, RSBI, corrected AG, Ganzoni), `clinical-v6` (ANC, retic index, TSAT, CCI, LDL, eAG, CaO2/DO2, OI, driving pressure, TTKG, urine AG, Schwartz), `clinical-v7` (urine output, EBV/MABL, corrected phenytoin, GIR, K/Mg/Ca replacement, IV osmolarity, carb bolus, RhIG, peds transfusion), `clinical-v8` (CPP, peds dose, anticoag reversal, infusion timing, enteral free water, APAP ceiling, ICU nutrition, enoxaparin, norepi-equiv, O2 cylinder, neonatal feeding, oxytocin), `scoring-v4` (MGAP, GAP, BIG, insulin correction, electrolyte/CRRT/ECMO, PECARN head/IAI/c-spine), `scoring-v6` (Ballard, Finnegan, Silverman-Andersen, Downes, Bhutani, QBL, AAP phototherapy), `medication-v4` (steroid/benzo equiv, renal antibiotics, TPN, Beers), `medication-v5` (heparin nomogram, vanc AUC, aminoglycoside, Rumack-Matthew, digoxin, local-anesthetic max, MgSO4, PCA, sugammadex, ketamine/propofol, peds fluids/resus, conc %), plus `rosendaal-ttr` (`gaps-v185`) | 111 |
 | fifty-fifth (Group G bedside scoring core) | `clinical` (GCS, APGAR, ABG interpretation, Wells PE, Wells DVT, CHA2DS2-VASc, HAS-BLED, NIHSS) | 8 |
 | fifty-sixth (Group G ED decision core) | `scoring-v4` (TIMI, GRACE, HEART, PERC, Wells PE + Geneva, CURB-65, PSI, qSOFA + SOFA, MELD-3.0 + Child-Pugh, Ranson + BISAP, Centor + McIsaac, Wells DVT + Caprini, Bishop, Alvarado + PAS) | 14 |
+| fifty-seventh (ICU bedside / early warning) | `scoring-v4` (NEWS2, MEWS, SIRS, Killip, MODS, RASS, SAS/Riker, CAM-ICU, ICDSC, 4AT, CPOT, BPS) | 12 |
 
 
 `docs/mcp-coverage.md` is the ledger and `list_calculators` always reports the

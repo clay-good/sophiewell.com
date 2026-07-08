@@ -1016,6 +1016,44 @@ test('lib/scoring-v4.js Group G ED decision core worked calls (wave 56)', () => 
   assert.equal(ap.pas.score, 4);
 });
 
+test('lib/scoring-v4.js ICU bedside / early-warning cluster worked calls (wave 57)', () => {
+  // NEWS2: RR 24 (2) + SpO2 93 Scale 1 (2) + on O2 (2) + SBP 100 (2) = 8, high band.
+  const n2 = ok('news2', { 'n2-rr': '24', 'n2-spo2': '93', 'n2-o2': '1', 'n2-sbp': '100', 'n2-pulse': '80', 'n2-acvpu': 'A', 'n2-temp': '37.0' });
+  assert.equal(n2.score, 8);
+  assert.match(n2.band, /High/);
+  assert.equal(n2.parts.supplementalO2, 2);
+  // MEWS: SBP 85 (1) + pulse 115 (2) + RR 25 (2) + V (1) = 6.
+  const me = ok('mews', { 'me-sbp': '85', 'me-pulse': '115', 'me-rr': '25', 'me-temp': '37.0', 'me-avpu': 'V' });
+  assert.equal(me.score, 6);
+  const si = ok('sirs', { 'sr-temp': '1', 'sr-hr': '1' });
+  assert.equal(si.count, 2);
+  assert.equal(si.sirsPositive, true);
+  const kp = ok('killip', { 'kp-class': '3' });
+  assert.equal(kp.inHospitalMortalityPct, 38);
+  // MODS: P/F 140 (3) + platelets 60 (2) + GCS 9 (3) = 8.
+  const mo = ok('mods', { 'mods-pf': '140', 'mods-cr': '1.0', 'mods-bili': '1.0', 'mods-par': '8', 'mods-plt': '60', 'mods-gcs': '9' });
+  assert.equal(mo.score, 8);
+  assert.equal(mo.parts.neurologic, 3);
+  const rs = ok('rass', { 'rs-level': '-3' });
+  assert.equal(rs.level, -3);
+  assert.match(rs.band, /deeper than/);
+  assert.match(ok('sas-riker', { 'sk-level': '3' }).band, /light-sedation goal/);
+  assert.equal(ok('cam-icu', { 'ci-f1': '1', 'ci-f2': '1', 'ci-f4': '1' }).positive, true);
+  assert.equal(ok('cam-icu', { 'ci-f1': '1', 'ci-f2': '1' }).positive, false);
+  const ic = ok('icdsc', { 'id-a': '1', 'id-b': '1', 'id-c': '1', 'id-d': '1' });
+  assert.equal(ic.score, 4);
+  assert.equal(ic.delirium, true);
+  // 4AT: abnormal alertness (4) + 1 AMT4 error (1) = 5.
+  const fa = ok('4at', { 'fa-alert': '1', 'fa-amt': '1', 'fa-att': '0', 'fa-acute': '0' });
+  assert.equal(fa.score, 5);
+  const cp = ok('cpot', { 'cp-f': '2', 'cp-b': '1', 'cp-m': '1', 'cp-c': '0' });
+  assert.equal(cp.score, 4);
+  assert.equal(cp.unacceptablePain, true);
+  const bp = ok('bps', { 'bp-f': '3', 'bp-u': '2', 'bp-v': '2' });
+  assert.equal(bp.score, 7);
+  assert.equal(bp.unacceptablePain, true);
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];

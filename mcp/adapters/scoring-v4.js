@@ -426,4 +426,139 @@ export default [
       { dom: 'p-shift', arg: 'pasLeftShift', kind: 'bool', label: 'PAS: left shift (1)' },
     ],
   },
+
+  // --- wave 57: the ICU bedside assessment / early-warning cluster ---------
+  {
+    id: 'news2',
+    summary: 'NEWS2 (RCP 2017): respiratory rate, SpO2 (Scale 1, or Scale 2 for hypercapnic respiratory failure), supplemental oxygen, SBP, pulse, ACVPU consciousness, and temperature scored per parameter; aggregate 0-20 with the RCP escalation band and per-parameter breakdown. Temperature is entered in degrees Celsius.',
+    compute: F.news2,
+    fields: [
+      { dom: 'n2-rr', arg: 'rr', kind: 'number', required: true, label: 'Respiratory rate', unit: 'breaths/min' },
+      { dom: 'n2-spo2', arg: 'spo2', kind: 'number', required: true, label: 'SpO2', unit: '%' },
+      { dom: 'n2-scale2', arg: 'scale2', kind: 'bool', label: 'Use SpO2 Scale 2 (hypercapnic / chronic type II respiratory failure)' },
+      { dom: 'n2-o2', arg: 'onO2', kind: 'bool', label: 'On supplemental oxygen (+2)' },
+      { dom: 'n2-sbp', arg: 'sbp', kind: 'number', required: true, label: 'Systolic BP', unit: 'mmHg' },
+      { dom: 'n2-pulse', arg: 'pulse', kind: 'number', required: true, label: 'Pulse', unit: 'bpm' },
+      { dom: 'n2-acvpu', arg: 'acvpu', kind: 'enum', values: ['A', 'C', 'V', 'P', 'U'], required: true, label: 'Consciousness (ACVPU; anything but A scores 3)' },
+      { dom: 'n2-temp', arg: 'temp', kind: 'number', required: true, label: 'Temperature', unit: 'C' },
+    ],
+  },
+  {
+    id: 'mews',
+    summary: 'Modified Early Warning Score (Subbe 2001): SBP, pulse, respiratory rate, temperature (Celsius), and AVPU each banded to 0-3; aggregate with the Subbe risk band and per-parameter breakdown.',
+    compute: F.mews,
+    fields: [
+      { dom: 'me-sbp', arg: 'sbp', kind: 'number', required: true, label: 'Systolic BP', unit: 'mmHg' },
+      { dom: 'me-pulse', arg: 'pulse', kind: 'number', required: true, label: 'Pulse', unit: 'bpm' },
+      { dom: 'me-rr', arg: 'rr', kind: 'number', required: true, label: 'Respiratory rate', unit: 'breaths/min' },
+      { dom: 'me-temp', arg: 'temp', kind: 'number', required: true, label: 'Temperature', unit: 'C' },
+      { dom: 'me-avpu', arg: 'avpu', kind: 'enum', values: ['A', 'V', 'P', 'U'], required: true, label: 'Consciousness (AVPU scores 0-3)' },
+    ],
+  },
+  {
+    id: 'sirs',
+    summary: 'SIRS criteria (Bone 1992): temperature > 38 or < 36 C, HR > 90, RR > 20 or PaCO2 < 32, WBC > 12 or < 4 or > 10% bands; >= 2 of 4 is SIRS-positive. Sepsis-3 deprecated SIRS for sepsis screening; provided for auditing local protocol triggers.',
+    compute: F.sirs,
+    fields: [
+      { dom: 'sr-temp', arg: 'tempAbnormal', kind: 'bool', label: 'Temperature > 38 C or < 36 C' },
+      { dom: 'sr-hr', arg: 'hrGt90', kind: 'bool', label: 'Heart rate > 90 bpm' },
+      { dom: 'sr-resp', arg: 'rrOrPaco2', kind: 'bool', label: 'RR > 20/min or PaCO2 < 32 mmHg' },
+      { dom: 'sr-wbc', arg: 'wbcOrBands', kind: 'bool', label: 'WBC > 12 or < 4 (x10^9/L) or > 10% bands' },
+    ],
+  },
+  {
+    id: 'killip',
+    summary: 'Killip classification for acute MI (Killip & Kimball 1967): class I-IV by heart-failure signs, with the original-cohort in-hospital mortality percentage.',
+    compute: F.killip,
+    fields: [
+      { dom: 'kp-class', arg: 'klass', kind: 'enum', values: ['1', '2', '3', '4'], required: true, label: 'Killip class (I no HF signs / II rales or S3 / III pulmonary edema / IV cardiogenic shock)', to: (v) => Number(v) },
+    ],
+  },
+  {
+    id: 'mods',
+    summary: 'Multiple Organ Dysfunction Score (Marshall 1995): six organ systems graded 0-4 from P/F ratio, creatinine, bilirubin, pressure-adjusted heart rate (HR x CVP / MAP), platelets, and GCS; total 0-24 with ICU-mortality band and per-organ subscores.',
+    compute: F.mods,
+    fields: [
+      { dom: 'mods-pf', arg: 'pfRatio', kind: 'number', required: true, label: 'PaO2 / FiO2 ratio' },
+      { dom: 'mods-cr', arg: 'creatinineMgDl', kind: 'number', required: true, label: 'Serum creatinine', unit: 'mg/dL' },
+      { dom: 'mods-bili', arg: 'bilirubinMgDl', kind: 'number', required: true, label: 'Total bilirubin', unit: 'mg/dL' },
+      { dom: 'mods-par', arg: 'par', kind: 'number', required: true, label: 'Pressure-adjusted heart rate (HR x CVP / MAP)' },
+      { dom: 'mods-plt', arg: 'plateletsK', kind: 'number', required: true, label: 'Platelets', unit: 'x10^9/L' },
+      { dom: 'mods-gcs', arg: 'gcs', kind: 'number', required: true, label: 'Glasgow Coma Scale (3-15)' },
+    ],
+  },
+  {
+    id: 'rass',
+    summary: 'Richmond Agitation-Sedation Scale (Sessler 2002): one level from -5 (unarousable) to +4 (combative), with the level descriptor and the SCCM PADIS 2018 light-sedation target band (-2 to 0).',
+    compute: F.rass,
+    fields: [
+      { dom: 'rs-level', arg: 'level', kind: 'enum', values: ['4', '3', '2', '1', '0', '-1', '-2', '-3', '-4', '-5'], required: true, label: 'RASS level (+4 combative ... 0 alert and calm ... -5 unarousable)', to: (v) => Number(v) },
+    ],
+  },
+  {
+    id: 'sas-riker',
+    summary: 'Riker Sedation-Agitation Scale (Riker 1999): one level 1 (unarousable) to 7 (dangerous agitation), with the descriptor and the SAS 3-4 light-sedation goal band.',
+    compute: F.sasRiker,
+    fields: [
+      { dom: 'sk-level', arg: 'level', kind: 'enum', values: ['1', '2', '3', '4', '5', '6', '7'], required: true, label: 'SAS level (1 unarousable ... 4 calm and cooperative ... 7 dangerous agitation)', to: (v) => Number(v) },
+    ],
+  },
+  {
+    id: 'cam-icu',
+    summary: 'CAM-ICU delirium screen (Ely 2001): positive when feature 1 (acute onset or fluctuating course) AND feature 2 (inattention) AND either feature 3 (altered consciousness, RASS != 0) or feature 4 (disorganized thinking).',
+    compute: F.camIcu,
+    fields: [
+      { dom: 'ci-f1', arg: 'acuteOnsetOrFluctuating', kind: 'bool', label: 'Feature 1: acute onset of mental-status change or fluctuating course' },
+      { dom: 'ci-f2', arg: 'inattention', kind: 'bool', label: 'Feature 2: inattention (>= 2 ASE errors)' },
+      { dom: 'ci-f3', arg: 'alteredLoc', kind: 'bool', label: 'Feature 3: altered level of consciousness (current RASS != 0)' },
+      { dom: 'ci-f4', arg: 'disorganizedThinking', kind: 'bool', label: 'Feature 4: disorganized thinking' },
+    ],
+  },
+  {
+    id: 'icdsc',
+    summary: 'Intensive Care Delirium Screening Checklist (Bergeron 2001): eight binary items over the shift; score >= 4 of 8 indicates delirium.',
+    compute: F.icdsc,
+    fields: [
+      { dom: 'id-a', arg: 'alteredLoc', kind: 'bool', label: 'Altered level of consciousness' },
+      { dom: 'id-b', arg: 'inattention', kind: 'bool', label: 'Inattention' },
+      { dom: 'id-c', arg: 'disorientation', kind: 'bool', label: 'Disorientation' },
+      { dom: 'id-d', arg: 'hallucination', kind: 'bool', label: 'Hallucination, delusion, or psychosis' },
+      { dom: 'id-e', arg: 'psychomotor', kind: 'bool', label: 'Psychomotor agitation or retardation' },
+      { dom: 'id-f', arg: 'inappropriateSpeechOrMood', kind: 'bool', label: 'Inappropriate speech or mood' },
+      { dom: 'id-g', arg: 'sleepWakeDisturbance', kind: 'bool', label: 'Sleep / wake cycle disturbance' },
+      { dom: 'id-h', arg: 'symptomFluctuation', kind: 'bool', label: 'Symptom fluctuation' },
+    ],
+  },
+  {
+    id: '4at',
+    summary: '4AT rapid delirium screen (MacLullich 2019): abnormal alertness (0 or 4), AMT4 errors (0/1/2), attention by months backwards (0/1/2), acute change or fluctuating course (0 or 4); total 0-12, >= 4 possible delirium.',
+    compute: F.fourAt,
+    fields: [
+      { dom: 'fa-alert', arg: 'alertnessAbnormal', kind: 'bool', label: 'Alertness clearly abnormal (drowsy or agitated) (0 or 4)' },
+      { dom: 'fa-amt', arg: 'amt4Errors', kind: 'enum', values: ['0', '1', '2'], required: true, label: 'AMT4 errors (0 none / 1 one / 2 two or more or untestable)', to: (v) => Number(v) },
+      { dom: 'fa-att', arg: 'attentionScore', kind: 'enum', values: ['0', '1', '2'], required: true, label: 'Attention, months backwards (0 reaches July / 1 starts but < 7 / 2 untestable)', to: (v) => Number(v) },
+      { dom: 'fa-acute', arg: 'acuteChange', kind: 'bool', label: 'Acute change or fluctuating course (0 or 4)' },
+    ],
+  },
+  {
+    id: 'cpot',
+    summary: 'Critical-Care Pain Observation Tool (Gelinas 2006): facial expression, body movements, muscle tension, and ventilator compliance / vocalization each 0-2; total 0-8, >= 3 unacceptable pain.',
+    compute: F.cpot,
+    fields: [
+      { dom: 'cp-f', arg: 'facial', kind: 'enum', values: ['0', '1', '2'], required: true, label: 'Facial expression (0 relaxed / 1 tense / 2 grimacing)', to: (v) => Number(v) },
+      { dom: 'cp-b', arg: 'body', kind: 'enum', values: ['0', '1', '2'], required: true, label: 'Body movements (0 absent / 1 protection / 2 restlessness)', to: (v) => Number(v) },
+      { dom: 'cp-m', arg: 'muscleTension', kind: 'enum', values: ['0', '1', '2'], required: true, label: 'Muscle tension (0 relaxed / 1 tense / 2 very tense or rigid)', to: (v) => Number(v) },
+      { dom: 'cp-c', arg: 'complianceOrVocalization', kind: 'enum', values: ['0', '1', '2'], required: true, label: 'Ventilator compliance (intubated) or vocalization (extubated) (0-2)', to: (v) => Number(v) },
+    ],
+  },
+  {
+    id: 'bps',
+    summary: 'Behavioral Pain Scale (Payen 2001) for the ventilated patient: facial expression, upper-limb movements, and ventilator compliance each 1-4; total 3-12, > 5 unacceptable pain.',
+    compute: F.bps,
+    fields: [
+      { dom: 'bp-f', arg: 'facial', kind: 'enum', values: ['1', '2', '3', '4'], required: true, label: 'Facial expression (1 relaxed ... 4 grimacing)', to: (v) => Number(v) },
+      { dom: 'bp-u', arg: 'upperLimb', kind: 'enum', values: ['1', '2', '3', '4'], required: true, label: 'Upper-limb movements (1 none ... 4 permanently retracted)', to: (v) => Number(v) },
+      { dom: 'bp-v', arg: 'ventilatorCompliance', kind: 'enum', values: ['1', '2', '3', '4'], required: true, label: 'Ventilator compliance (1 tolerating ... 4 unable to control ventilation)', to: (v) => Number(v) },
+    ],
+  },
 ];

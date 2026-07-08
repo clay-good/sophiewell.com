@@ -829,6 +829,20 @@ Bishop, and Alvarado + PAS. Patterns:
 Brings the exposed total to **870 calculators across 170 modules** (no new
 module — `lib/scoring-v4.js` was already adapted in wave 54).
 
+## Fifty-seventh wave — the ICU bedside / early-warning cluster in lib/scoring-v4.js (+12)
+
+The twelve ICU-assessment and ward early-warning tiles: NEWS2 and MEWS (vital
+signs banded per parameter; temperature in canonical Celsius, the browser
+unit-selector companion omitted per the wave-54 convention), SIRS, Killip
+class, MODS (Marshall), the sedation-agitation pair RASS + SAS/Riker, the
+delirium trio CAM-ICU + ICDSC + 4AT, and the behavioral pain pair CPOT + BPS.
+All single-instrument adapters over the pure lib computes; the graded
+selects (Killip, RASS, SAS, AMT4/attention, CPOT, BPS) map as enums coerced
+to numbers, and every example round-trips because the lib band strings carry
+the documented cutoff constants (the "Table 2" / "cutoff >= 4" / "-2 to 0"
+numerals the examples cite). Brings the exposed total to **882 calculators
+across 170 modules**.
+
 ## Exposed
 
 Each id below is live in `mcp/catalog.js`. The gate parses this list.
@@ -2011,6 +2025,18 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 - `wells-dvt-caprini`
 - `bishop`
 - `alvarado-pas`
+- `news2`
+- `mews`
+- `sirs`
+- `killip`
+- `mods`
+- `rass`
+- `sas-riker`
+- `cam-icu`
+- `icdsc`
+- `4at`
+- `cpot`
+- `bps`
 
 ### lib/scoring-v6.js
 - `ballard`
