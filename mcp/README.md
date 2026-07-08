@@ -73,7 +73,7 @@ strings; booleans as `true`/`false`; enums by their listed string values.
 
 ```
 list_calculators { "specialty": "hepatology" }
-  -> { coverage: "1022 of 1109 catalog tiles exposed ...", calculators: [ { id: "meld-xi", ... }, ... ] }
+  -> { coverage: "1024 of 1109 catalog tiles exposed ...", calculators: [ { id: "meld-xi", ... }, ... ] }
 
 describe_calculator { "id": "meld-xi" }
   -> { inputSchema: { ... mx-bili, mx-creat ... }, citation: "Heuman DM ... Liver Transpl 2007", ... }
@@ -252,8 +252,9 @@ criteria in the new `lib/idcrit-v99.js` module (modified Duke endocarditis,
 Pitt Bacteremia, SAPS II, refeeding risk), and a seventy-sixth the group-v9
 screening / decision instruments in the new `lib/scoring-v5.js` module (PHQ-2/
 GAD-2, AUDIT, DAST-10, GDS-15, Ottawa Knee, NEXUS Chest, SF + Canadian syncope,
-EDACS, YEARS, FeverPAIN, STONE, ISS + RTS, SIPA), for 1022 across 173 modules
-today. <!-- catalog-truth:historical (173 is the count of lib modules adapted, not a catalog tile count) -->
+EDACS, YEARS, FeverPAIN, STONE, ISS + RTS, SIPA), and a seventy-seventh the
+cardiovascular 10-year risk engines in `lib/scoring-v4.js` (ASCVD Pooled Cohort
+Equations, AHA PREVENT 2023), for 1024 across 173 modules today. <!-- catalog-truth:historical (173 is the count of lib modules adapted, not a catalog tile count) -->
 Later waves extend it module by module against the same contract.
 
 ## Design

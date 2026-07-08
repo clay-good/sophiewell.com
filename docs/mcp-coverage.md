@@ -1079,6 +1079,15 @@ items, so the reverse-scored questions (DAST-10 item 3, the GDS-15
 positive-worded items) score correctly. Brings the exposed total to **1022
 calculators across 173 modules**.
 
+## Seventy-seventh wave — the cardiovascular 10-year risk engines in lib/scoring-v4.js (+2)
+
+The ASCVD Pooled Cohort Equations (race-stratified) and the AHA PREVENT 2023
+(race-free) 10-year total-CVD risk models, both rendered by `views/group-g.js`
+and computed in `lib/scoring-v4.js`. Append-only. Each echoes its 10-year
+horizon (and PREVENT its age) so the documented facts in the interpretive
+example text round-trip alongside the computed risk percentage. Brings the
+exposed total to **1024 calculators across 173 modules**.
+
 ## Exposed
 
 Each id below is live in `mcp/catalog.js`. The gate parses this list.
@@ -2385,6 +2394,8 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 - `lips`
 - `mtp-tracker`
 - `bristol-girth`
+- `ascvd`
+- `prevent`
 
 ### lib/scoring-v6.js
 - `ballard`

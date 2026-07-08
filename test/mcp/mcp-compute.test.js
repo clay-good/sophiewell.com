@@ -1545,6 +1545,16 @@ test('lib/scoring-v5.js group-v9 screening / decision worked calls (wave 76)', (
   assert.equal(sp.elevated, true);
 });
 
+test('lib/scoring-v4.js cardiovascular risk engines worked calls (wave 77)', () => {
+  const as = ok('ascvd', { 'as-age': '55', 'as-tc': '213', 'as-hdl': '50', 'as-sbp': '120', 'as-sex': 'M', 'as-race': 'white' });
+  assert.ok(as.pct > 0 && as.pct < 30);
+  assert.equal(as.horizonYears, 10);
+  const pv = ok('prevent', { 'pv-age': '55', 'pv-tc': '200', 'pv-hdl': '50', 'pv-sbp': '120', 'pv-bmi': '25', 'pv-egfr': '90', 'pv-sex': 'M' });
+  assert.ok(pv.pct > 0 && pv.pct < 30);
+  assert.equal(pv.ageYears, 55);
+  assert.equal(pv.horizonYears, 10);
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];

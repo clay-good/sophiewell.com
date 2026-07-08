@@ -1960,4 +1960,41 @@ export default [
       { dom: 'bg-t1', arg: 't1Timestamp', kind: 'string', label: 'T1 timestamp (optional, ISO)' },
     ],
   },
+
+  // --- wave 77: the cardiovascular 10-year risk engines -------------------
+  {
+    id: 'ascvd',
+    summary: 'ASCVD Pooled Cohort Equations (Goff 2013): the race-stratified 10-year atherosclerotic-cardiovascular-disease risk from age, total cholesterol, HDL, SBP, sex, race, treated hypertension, smoking, and diabetes. Returns the risk percentage, the equation used, and the risk band.',
+    // Echo the 10-year horizon so the "10-year" the tile documents round-trips.
+    compute: (a) => { const r = F.ascvdPce(a); return r == null ? null : { ...r, horizonYears: 10 }; },
+    fields: [
+      { dom: 'as-age', arg: 'age', kind: 'number', required: true, label: 'Age (40-79)', unit: 'years' },
+      { dom: 'as-tc', arg: 'totalChol', kind: 'number', required: true, label: 'Total cholesterol', unit: 'mg/dL' },
+      { dom: 'as-hdl', arg: 'hdl', kind: 'number', required: true, label: 'HDL cholesterol', unit: 'mg/dL' },
+      { dom: 'as-sbp', arg: 'sbp', kind: 'number', required: true, label: 'Systolic BP', unit: 'mmHg' },
+      { dom: 'as-sex', arg: 'sex', kind: 'enum', values: ['M', 'F'], required: true, label: 'Sex' },
+      { dom: 'as-race', arg: 'race', kind: 'enum', values: ['white', 'AA'], required: true, label: 'Race (white/other or African-American; PCE only)' },
+      { dom: 'as-trt', arg: 'treatedSbp', kind: 'bool', label: 'On treatment for hypertension' },
+      { dom: 'as-smk', arg: 'smoker', kind: 'bool', label: 'Smoker' },
+      { dom: 'as-dm', arg: 'diabetes', kind: 'bool', label: 'Diabetes' },
+    ],
+  },
+  {
+    id: 'prevent',
+    summary: 'AHA PREVENT 2023 (Khan) race-free 10-year total-cardiovascular-disease risk from age, total cholesterol, HDL, SBP, BMI, eGFR, sex, treated hypertension, smoking, and diabetes. Returns the risk percentage and band.',
+    // Echo the 10-year horizon and the age so the documented facts round-trip.
+    compute: (a) => { const r = F.prevent10yr(a); return r == null ? null : { ...r, horizonYears: 10, ageYears: a.age }; },
+    fields: [
+      { dom: 'pv-age', arg: 'age', kind: 'number', required: true, label: 'Age (30-79)', unit: 'years' },
+      { dom: 'pv-tc', arg: 'totalChol', kind: 'number', required: true, label: 'Total cholesterol', unit: 'mg/dL' },
+      { dom: 'pv-hdl', arg: 'hdl', kind: 'number', required: true, label: 'HDL cholesterol', unit: 'mg/dL' },
+      { dom: 'pv-sbp', arg: 'sbp', kind: 'number', required: true, label: 'Systolic BP', unit: 'mmHg' },
+      { dom: 'pv-bmi', arg: 'bmi', kind: 'number', required: true, label: 'BMI', unit: 'kg/m^2' },
+      { dom: 'pv-egfr', arg: 'egfr', kind: 'number', required: true, label: 'eGFR', unit: 'mL/min/1.73m^2' },
+      { dom: 'pv-sex', arg: 'sex', kind: 'enum', values: ['M', 'F'], required: true, label: 'Sex' },
+      { dom: 'pv-trt', arg: 'treatedSbp', kind: 'bool', label: 'On treatment for hypertension' },
+      { dom: 'pv-smk', arg: 'smoker', kind: 'bool', label: 'Smoker' },
+      { dom: 'pv-dm', arg: 'diabetes', kind: 'bool', label: 'Diabetes' },
+    ],
+  },
 ];
