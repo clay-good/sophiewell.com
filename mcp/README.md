@@ -73,7 +73,7 @@ strings; booleans as `true`/`false`; enums by their listed string values.
 
 ```
 list_calculators { "specialty": "hepatology" }
-  -> { coverage: "992 of 1109 catalog tiles exposed ...", calculators: [ { id: "meld-xi", ... }, ... ] }
+  -> { coverage: "998 of 1109 catalog tiles exposed ...", calculators: [ { id: "meld-xi", ... }, ... ] }
 
 describe_calculator { "id": "meld-xi" }
   -> { inputSchema: { ... mx-bili, mx-creat ... }, citation: "Heuman DM ... Liver Transpl 2007", ... }
@@ -242,7 +242,9 @@ R-factor, KDIGO AKI, modified Sgarbossa, AVPU-GCS), and a seventieth the flat
 prehospital / MCI triage screens in the new `lib/field.js` module (Cincinnati
 stroke scale, FAST / BE-FAST, START, JumpSTART), and a seventy-first the
 environmental-emergency decision tiles (hypothermia staging + rewarming,
-heat-illness cooling algorithm), for 992 across 171 modules today. <!-- catalog-truth:historical (171 is the count of lib modules adapted, not a catalog tile count) -->
+heat-illness cooling algorithm), and a seventy-second the pediatric / adult
+severity scores in `lib/scoring-v6.js` (PELOD-2, pSOFA, Burch-Wartofsky,
+ARISCAT, APACHE II, Braden Q), for 998 across 171 modules today. <!-- catalog-truth:historical (171 is the count of lib modules adapted, not a catalog tile count) -->
 Later waves extend it module by module against the same contract.
 
 ## Design

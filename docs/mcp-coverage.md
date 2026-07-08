@@ -1021,6 +1021,17 @@ This is the true completion of the adaptable `lib/scoring-v4.js` tiles (only the
 default-slider-dependent `aldrete-padss` remains deferred). Brings the exposed
 total to **992 calculators across 171 modules**.
 
+## Seventy-second wave — the pediatric / adult severity scores in lib/scoring-v6.js (+6)
+
+Wave 54 adapted only the neonatal subset of `lib/scoring-v6.js`; this wave
+appends the `views/group-v10.js` severity scores that share the module: PELOD-2
+and pSOFA (age-banded pediatric organ dysfunction), the Burch-Wartofsky thyroid-
+storm scale and ARISCAT postoperative-pulmonary score (both point-encoded
+selects entered as their point values), APACHE II (twelve raw acute-physiology
+variables + age/chronic-health points), and the Braden Q pediatric pressure-
+injury scale. Append-only. Brings the exposed total to **998 calculators across
+171 modules**.
+
 ## Exposed
 
 Each id below is live in `mcp/catalog.js`. The gate parses this list.
@@ -2330,6 +2341,12 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 - `bhutani-bilirubin`
 - `qbl-pph`
 - `neo-phototherapy`
+- `pelod2`
+- `psofa`
+- `burch-wartofsky`
+- `ariscat`
+- `apache2`
+- `braden-q`
 
 ### lib/medication-v4.js
 - `steroid-equiv`

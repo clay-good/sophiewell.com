@@ -1,7 +1,9 @@
-// spec-v183 MCP wave 54: adapters for lib/scoring-v6.js - the neonatal
-// assessment set: Ballard maturity, Finnegan NAS, Silverman-Andersen, Downes,
-// Bhutani bilirubin risk zone, quantitative blood loss (PPH), and the AAP
-// phototherapy threshold. dom keys mirror views/group-v10.js.
+// spec-v183 MCP waves 54 + 72: adapters for lib/scoring-v6.js - the neonatal
+// assessment set (Ballard maturity, Finnegan NAS, Silverman-Andersen, Downes,
+// Bhutani bilirubin risk zone, quantitative blood loss, AAP phototherapy; wave
+// 54) plus the pediatric/adult severity scores rendered by views/group-v10.js
+// (PELOD-2, pSOFA, Burch-Wartofsky, ARISCAT, APACHE II, Braden Q; wave 72). dom
+// keys mirror the renderers.
 
 import * as F from '../../lib/scoring-v6.js';
 
@@ -125,6 +127,106 @@ export default [
       { dom: 'np-hours', arg: 'ageHours', kind: 'number', required: true, label: 'Age (hours, 0-336)', unit: 'hours' },
       { dom: 'np-tsb', arg: 'tsb', kind: 'number', required: true, label: 'Total serum bilirubin', unit: 'mg/dL (canonical)' },
       { dom: 'np-risk', arg: 'riskFactors', kind: 'bool', required: false, label: 'Neurotoxicity risk factor(s) present' },
+    ],
+  },
+
+  // --- wave 72: the pediatric / adult severity scores (views/group-v10.js) --
+  {
+    id: 'pelod2',
+    summary: 'PELOD-2 pediatric organ-dysfunction score (Leteurtre 2013): GCS and pupils, lactate and MAP (age-banded), creatinine (age-banded), PaO2/FiO2 and PaCO2 and invasive ventilation, WBC and platelets; total 0-33 with the active age band reported.',
+    compute: F.pelod2,
+    fields: [
+      { dom: 'p2-age', arg: 'ageMonths', kind: 'number', required: true, label: 'Age', unit: 'months' },
+      { dom: 'p2-gcs', arg: 'gcs', kind: 'number', required: true, label: 'Glasgow Coma Scale (3-15)' },
+      { dom: 'p2-pupils', arg: 'pupilsFixed', kind: 'bool', label: 'Both pupils fixed' },
+      { dom: 'p2-lactate', arg: 'lactate', kind: 'number', required: true, label: 'Lactate', unit: 'mmol/L' },
+      { dom: 'p2-map', arg: 'map', kind: 'number', required: true, label: 'Mean arterial pressure', unit: 'mmHg' },
+      { dom: 'p2-creat', arg: 'creatinine', kind: 'number', required: true, label: 'Creatinine', unit: 'umol/L' },
+      { dom: 'p2-pf', arg: 'pao2fio2', kind: 'number', required: true, label: 'PaO2/FiO2', unit: 'mmHg' },
+      { dom: 'p2-paco2', arg: 'paco2', kind: 'number', required: true, label: 'PaCO2', unit: 'mmHg' },
+      { dom: 'p2-vent', arg: 'invasiveVent', kind: 'bool', label: 'Invasive ventilation' },
+      { dom: 'p2-wbc', arg: 'wbc', kind: 'number', required: true, label: 'WBC', unit: 'x10^3/uL' },
+      { dom: 'p2-plt', arg: 'platelets', kind: 'number', required: true, label: 'Platelets', unit: 'x10^3/uL' },
+    ],
+  },
+  {
+    id: 'psofa',
+    summary: 'Pediatric SOFA score (Matics 2017): PaO2/FiO2 (with ventilation), platelets, bilirubin, MAP (age-banded) with vasoactive grade, GCS, and creatinine (age-banded); total 0-24 with the active age band.',
+    compute: F.psofa,
+    fields: [
+      { dom: 'ps-age', arg: 'ageMonths', kind: 'number', required: true, label: 'Age', unit: 'months' },
+      { dom: 'ps-pf', arg: 'pao2fio2', kind: 'number', required: true, label: 'PaO2/FiO2', unit: 'mmHg' },
+      { dom: 'ps-vent', arg: 'vent', kind: 'bool', label: 'Mechanically ventilated' },
+      { dom: 'ps-plt', arg: 'platelets', kind: 'number', required: true, label: 'Platelets', unit: 'x10^3/uL' },
+      { dom: 'ps-bili', arg: 'bilirubin', kind: 'number', required: true, label: 'Bilirubin', unit: 'mg/dL' },
+      { dom: 'ps-map', arg: 'map', kind: 'number', required: true, label: 'Mean arterial pressure', unit: 'mmHg' },
+      { dom: 'ps-vaso', arg: 'vasoactive', kind: 'number', label: 'Vasoactive grade (0-4)' },
+      { dom: 'ps-gcs', arg: 'gcs', kind: 'number', required: true, label: 'Glasgow Coma Scale (3-15)' },
+      { dom: 'ps-creat', arg: 'creatinine', kind: 'number', required: true, label: 'Creatinine', unit: 'mg/dL' },
+    ],
+  },
+  {
+    id: 'burch-wartofsky',
+    summary: 'Burch-Wartofsky Point Scale for thyroid storm (Burch 1993): thermoregulatory (temperature), CNS, GI-hepatic, cardiovascular (tachycardia, CHF), atrial fibrillation, and a precipitant history, each entered as its point value; a total >= 45 is highly suggestive, 25-44 impending.',
+    compute: F.burchWartofsky,
+    fields: [
+      { dom: 'bw-temp', arg: 'temp', kind: 'number', required: true, label: 'Temperature points (0-30)' },
+      { dom: 'bw-cns', arg: 'cns', kind: 'number', required: true, label: 'CNS effects points (0-30)' },
+      { dom: 'bw-gi', arg: 'gi', kind: 'number', required: true, label: 'GI-hepatic points (0-20)' },
+      { dom: 'bw-hr', arg: 'hr', kind: 'number', required: true, label: 'Tachycardia points (0-25)' },
+      { dom: 'bw-chf', arg: 'chf', kind: 'number', required: true, label: 'Congestive heart failure points (0-15)' },
+      { dom: 'bw-afib', arg: 'afib', kind: 'bool', label: 'Atrial fibrillation (10)' },
+      { dom: 'bw-precip', arg: 'precipitant', kind: 'bool', label: 'Precipitant history (10)' },
+    ],
+  },
+  {
+    id: 'ariscat',
+    summary: 'ARISCAT score (Canet 2010) for postoperative pulmonary complications: age, preoperative SpO2, surgical incision site, and surgery duration entered as point values, plus respiratory infection, anemia, and emergency-procedure flags; < 26 low, 26-44 intermediate, >= 45 high risk.',
+    compute: F.ariscat,
+    fields: [
+      { dom: 'ar-age', arg: 'agePts', kind: 'number', required: true, label: 'Age points (0/3/16)' },
+      { dom: 'ar-spo2', arg: 'spo2Pts', kind: 'number', required: true, label: 'Preoperative SpO2 points (0/8/24)' },
+      { dom: 'ar-incision', arg: 'incisionPts', kind: 'number', required: true, label: 'Surgical incision points (0/15/24)' },
+      { dom: 'ar-duration', arg: 'durationPts', kind: 'number', required: true, label: 'Surgery duration points (0/16/23)' },
+      { dom: 'ar-infection', arg: 'respInfection', kind: 'bool', label: 'Respiratory infection in the last month (17)' },
+      { dom: 'ar-anemia', arg: 'anemia', kind: 'bool', label: 'Preoperative anemia (Hb <= 10 g/dL) (11)' },
+      { dom: 'ar-emergency', arg: 'emergency', kind: 'bool', label: 'Emergency procedure (8)' },
+    ],
+  },
+  {
+    id: 'apache2',
+    summary: 'APACHE II score (Knaus 1985): twelve acute-physiology variables (temperature, MAP, heart rate, respiratory rate, oxygenation, pH, sodium, potassium, creatinine, hematocrit, WBC, GCS) plus age points and chronic-health points; total 0-71 with the mortality band. Enter the worst first-24-hour value for each variable.',
+    compute: F.apache2,
+    fields: [
+      { dom: 'ap-temp', arg: 'temp', kind: 'number', required: true, label: 'Temperature', unit: 'C' },
+      { dom: 'ap-map', arg: 'map', kind: 'number', required: true, label: 'Mean arterial pressure', unit: 'mmHg' },
+      { dom: 'ap-hr', arg: 'hr', kind: 'number', required: true, label: 'Heart rate', unit: 'bpm' },
+      { dom: 'ap-rr', arg: 'rr', kind: 'number', required: true, label: 'Respiratory rate', unit: '/min' },
+      { dom: 'ap-oxy', arg: 'oxy', kind: 'number', required: true, label: 'Oxygenation: PaO2', unit: 'mmHg' },
+      { dom: 'ap-ph', arg: 'ph', kind: 'number', required: true, label: 'Arterial pH' },
+      { dom: 'ap-na', arg: 'na', kind: 'number', required: true, label: 'Serum sodium', unit: 'mmol/L' },
+      { dom: 'ap-k', arg: 'k', kind: 'number', required: true, label: 'Serum potassium', unit: 'mmol/L' },
+      { dom: 'ap-creat', arg: 'creatinine', kind: 'number', required: true, label: 'Serum creatinine', unit: 'mg/dL' },
+      { dom: 'ap-hct', arg: 'hct', kind: 'number', required: true, label: 'Hematocrit', unit: '%' },
+      { dom: 'ap-wbc', arg: 'wbc', kind: 'number', required: true, label: 'WBC', unit: 'x10^3/uL' },
+      { dom: 'ap-gcs', arg: 'gcs', kind: 'number', required: true, label: 'Glasgow Coma Scale (3-15)' },
+      { dom: 'ap-age', arg: 'age', kind: 'number', required: true, label: 'Age', unit: 'years' },
+      { dom: 'ap-chronic', arg: 'chronicHealth', kind: 'bool', label: 'Severe chronic-organ insufficiency / immunocompromise' },
+      { dom: 'ap-nonop', arg: 'nonoperativeOrEmergency', kind: 'bool', label: 'Nonoperative or emergency postoperative admission' },
+    ],
+  },
+  {
+    id: 'braden-q',
+    summary: 'Braden Q Scale for pediatric pressure-injury risk (Quigley 1996): seven subscales (mobility, activity, sensory perception, moisture, friction/shear, nutrition, tissue perfusion/oxygenation) each 1-4; total 7-28, <= 16 at risk (lower = higher risk).',
+    compute: F.bradenQ,
+    fields: [
+      { dom: 'bq-mobility', arg: 'mobility', kind: 'number', required: true, label: 'Mobility (1-4)' },
+      { dom: 'bq-activity', arg: 'activity', kind: 'number', required: true, label: 'Activity (1-4)' },
+      { dom: 'bq-sensory', arg: 'sensory', kind: 'number', required: true, label: 'Sensory perception (1-4)' },
+      { dom: 'bq-moisture', arg: 'moisture', kind: 'number', required: true, label: 'Moisture (1-4)' },
+      { dom: 'bq-friction', arg: 'friction', kind: 'number', required: true, label: 'Friction / shear (1-4)' },
+      { dom: 'bq-nutrition', arg: 'nutrition', kind: 'number', required: true, label: 'Nutrition (1-4)' },
+      { dom: 'bq-perfusion', arg: 'perfusion', kind: 'number', required: true, label: 'Tissue perfusion / oxygenation (1-4)' },
     ],
   },
 ];

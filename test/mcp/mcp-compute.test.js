@@ -1458,6 +1458,21 @@ test('lib/scoring-v4.js environmental-emergency worked calls (wave 71)', () => {
   assert.equal(ok('heatstroke-decision', { 'hs-t': '41.5', 'hs-cns': 'altered', 'hs-sw': '0', 'hs-set': 'hospital' }).subtype, 'classic');
 });
 
+test('lib/scoring-v6.js pediatric / adult severity worked calls (wave 72)', () => {
+  const p2 = ok('pelod2', { 'p2-age': '24', 'p2-gcs': '12', 'p2-lactate': '6', 'p2-map': '50', 'p2-creat': '60', 'p2-pf': '300', 'p2-paco2': '40', 'p2-vent': '1', 'p2-wbc': '5', 'p2-plt': '100' });
+  assert.equal(p2.score, 9);
+  const ps = ok('psofa', { 'ps-age': '24', 'ps-pf': '250', 'ps-vent': '1', 'ps-plt': '120', 'ps-bili': '1.5', 'ps-map': '50', 'ps-gcs': '13', 'ps-creat': '0.7' });
+  assert.equal(ps.score, 7);
+  const bw = ok('burch-wartofsky', { 'bw-temp': '15', 'bw-cns': '10', 'bw-gi': '10', 'bw-hr': '15', 'bw-chf': '5', 'bw-afib': '1', 'bw-precip': '1' });
+  assert.equal(bw.total, 75);
+  const ar = ok('ariscat', { 'ar-age': '3', 'ar-spo2': '8', 'ar-incision': '15', 'ar-duration': '16' });
+  assert.equal(ar.total, 42);
+  const ap = ok('apache2', { 'ap-temp': '39', 'ap-map': '60', 'ap-hr': '120', 'ap-rr': '30', 'ap-oxy': '65', 'ap-ph': '7.3', 'ap-na': '150', 'ap-k': '5.6', 'ap-creat': '2', 'ap-hct': '48', 'ap-wbc': '18', 'ap-gcs': '13', 'ap-age': '60' });
+  assert.equal(ap.total, 23);
+  const bq = ok('braden-q', { 'bq-mobility': '2', 'bq-activity': '2', 'bq-sensory': '2', 'bq-moisture': '2', 'bq-friction': '2', 'bq-nutrition': '2', 'bq-perfusion': '2' });
+  assert.equal(bq.total, 14);
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];
