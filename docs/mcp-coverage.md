@@ -843,6 +843,24 @@ the documented cutoff constants (the "Table 2" / "cutoff >= 4" / "-2 to 0"
 numerals the examples cite). Brings the exposed total to **882 calculators
 across 170 modules**.
 
+## Fifty-eighth wave — cognition, withdrawal, sleep, and periop assessment in lib/scoring-v4.js (+10)
+
+Mini-Cog (word recall + clock draw; the result echoes the 5-point maximum the
+example's "4/5" documents), CIWA-Ar, COWS (both take the pre-graded per-item
+points the scoring sheets define), Epworth, STOP-BANG, the Berlin OSA
+questionnaire (three-category logic with the per-category counts in the
+result), Apfel PONV, modified Aldrete, LEMON (with the 3-3-2 subtotal), and
+White-Song fast-track (score plus the no-domain-below-1 gate). Brings the
+exposed total to **892 calculators across 170 modules**.
+
+The five psychometric screeners in this module (`phq9`, `gad7`, `auditc`,
+`cage`, `epds`) stay unexposed for a structural reason: they render through
+the shared `lib/screener.js` machinery, which prefills from the config's
+`exampleAnswers` and has no `META.example` / example-reset contract, so there
+is no example to round-trip through the gate. Exposing them needs a dedicated
+pass that authors `META.example` payloads and threads the screener tiles into
+the example-correctness sweep's scenario allowlist — deferred, recorded here.
+
 ## Exposed
 
 Each id below is live in `mcp/catalog.js`. The gate parses this list.
@@ -2037,6 +2055,16 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 - `4at`
 - `cpot`
 - `bps`
+- `mini-cog`
+- `ciwa`
+- `cows`
+- `epworth`
+- `stop-bang`
+- `berlin-osa`
+- `apfel`
+- `aldrete`
+- `lemon`
+- `white-song`
 
 ### lib/scoring-v6.js
 - `ballard`

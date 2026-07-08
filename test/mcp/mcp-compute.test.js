@@ -1054,6 +1054,41 @@ test('lib/scoring-v4.js ICU bedside / early-warning cluster worked calls (wave 5
   assert.equal(bp.unacceptablePain, true);
 });
 
+test('lib/scoring-v4.js cognition / withdrawal / sleep / periop worked calls (wave 58)', () => {
+  const mc = ok('mini-cog', { 'mc-w': '2', 'mc-clock': '1' });
+  assert.equal(mc.score, 4);
+  assert.equal(mc.maxScore, 5);
+  assert.match(ok('mini-cog', { 'mc-w': '2', 'mc-clock': '0' }).band, /Positive screen/);
+  // CIWA-Ar: 2+2+2+2+1+1 = 10, moderate 8-15 band.
+  const cw = ok('ciwa', { 'cw-nau': '2', 'cw-tre': '2', 'cw-swt': '2', 'cw-anx': '2', 'cw-agi': '1', 'cw-tac': '0', 'cw-aud': '0', 'cw-vis': '0', 'cw-hea': '1', 'cw-ori': '0' });
+  assert.equal(cw.score, 10);
+  assert.match(cw.band, /Moderate/);
+  const co = ok('cows', { 'co-pul': '1', 'co-swt': '2', 'co-rest': '1', 'co-pup': '1', 'co-jt': '2', 'co-rn': '2', 'co-gi': '2', 'co-tre': '1', 'co-yaw': '1', 'co-anx': '2', 'co-goose': '0' });
+  assert.equal(co.score, 15);
+  assert.match(co.band, /Moderate withdrawal/);
+  const ep = ok('epworth', { 'ep-read': '2', 'ep-tv': '2', 'ep-pub': '1', 'ep-car': '2', 'ep-lying': '3', 'ep-talk': '0', 'ep-lunch': '2', 'ep-traffic': '0' });
+  assert.equal(ep.score, 12);
+  assert.match(ep.band, /mild excessive/);
+  const sb = ok('stop-bang', { 'sb-s': '1', 'sb-t': '1', 'sb-o': '1', 'sb-p': '1', 'sb-a': '1' });
+  assert.equal(sb.score, 5);
+  assert.match(sb.band, /high risk/);
+  // Berlin: cat1 positive (2 of 5) + cat3 positive (htn) = high risk.
+  const bo = ok('berlin-osa', { 'bo-q1': '1', 'bo-q2': '1', 'bo-htn': '1' });
+  assert.equal(bo.cat1Positive, true);
+  assert.equal(bo.highRisk, true);
+  assert.match(ok('apfel', { 'ap-female': '1', 'ap-nonsmoker': '1', 'ap-hx': '1', 'ap-opioid': '1' }).band, /~80%/);
+  const al = ok('aldrete', { 'al-act': '2', 'al-resp': '2', 'al-circ': '2', 'al-cons': '2', 'al-o2': '1' });
+  assert.equal(al.score, 9);
+  assert.equal(al.readyForDischarge, true);
+  const le = ok('lemon', { 'le-look': '1', 'le-incisor': '1', 'le-hyoid': '1', 'le-mp': '1' });
+  assert.equal(le.score, 4);
+  assert.equal(le.threeThreeTwo, 2);
+  // White-Song: 13 points but one domain at 0 -> not fast-track eligible.
+  const ws = ok('white-song', { 'ws-loc': '2', 'ws-act': '2', 'ws-hd': '2', 'ws-resp': '2', 'ws-o2': '2', 'ws-pain': '2', 'ws-eme': '0' });
+  assert.equal(ws.score, 12);
+  assert.equal(ws.fastTrackEligible, false);
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];

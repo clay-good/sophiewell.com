@@ -73,7 +73,7 @@ strings; booleans as `true`/`false`; enums by their listed string values.
 
 ```
 list_calculators { "specialty": "hepatology" }
-  -> { coverage: "882 of 1109 catalog tiles exposed ...", calculators: [ { id: "meld-xi", ... }, ... ] }
+  -> { coverage: "892 of 1109 catalog tiles exposed ...", calculators: [ { id: "meld-xi", ... }, ... ] }
 
 describe_calculator { "id": "meld-xi" }
   -> { inputSchema: { ... mx-bili, mx-creat ... }, citation: "Heuman DM ... Liver Transpl 2007", ... }
@@ -209,9 +209,11 @@ APGAR, ABG interpretation, Wells PE / DVT, CHA2DS2-VASc, HAS-BLED, NIHSS), and
 a fifty-sixth the Group G ED decision core in `lib/scoring-v4.js` (TIMI, GRACE,
 HEART, PERC, Wells PE + Geneva, CURB-65, PSI, qSOFA + SOFA, MELD-3.0 +
 Child-Pugh, Ranson + BISAP, Centor + McIsaac, Wells DVT + Caprini, Bishop,
-Alvarado + PAS), and a fifty-seventh the ICU bedside / early-warning cluster
+Alvarado + PAS), a fifty-seventh the ICU bedside / early-warning cluster
 (NEWS2, MEWS, SIRS, Killip, MODS, RASS, SAS/Riker, CAM-ICU, ICDSC, 4AT, CPOT,
-BPS), for 882 across 170 modules today. <!-- catalog-truth:historical (170 is the count of lib modules adapted, not a catalog tile count) -->
+BPS), and a fifty-eighth the cognition / withdrawal / sleep / periop
+assessment cluster (Mini-Cog, CIWA-Ar, COWS, Epworth, STOP-BANG, Berlin OSA,
+Apfel, Aldrete, LEMON, White-Song), for 892 across 170 modules today. <!-- catalog-truth:historical (170 is the count of lib modules adapted, not a catalog tile count) -->
 Later waves extend it module by module against the same contract.
 
 ## Design
