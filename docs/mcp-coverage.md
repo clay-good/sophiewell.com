@@ -861,6 +861,22 @@ is no example to round-trip through the gate. Exposing them needs a dedicated
 pass that authors `META.example` payloads and threads the screener tiles into
 the example-correctness sweep's scenario allowlist — deferred, recorded here.
 
+## Fifty-ninth wave — GI-bleed / readmission / comorbidity / performance status in lib/scoring-v4.js (+12)
+
+The GI-bleed severity trio Glasgow-Blatchford, Rockall (with the pre-endoscopy
+flag), and AIMS65, plus the Oakland lower-GI-bleed safe-discharge score; the
+alcoholic-hepatitis pair Maddrey DF + Lille (composite wrapper computing both
+from one lab panel, bilirubin in mg/dL); the two Canadian imaging rules
+(`cthr`, `ccsr`) exposed at the collapsed any-criterion boolean granularity
+their `META.example` already uses (the compute takes only the reduced
+`highRisk` / `mediumRisk` / `lowRisk` / `canRotate45` booleans, so the browser
+tile's per-criterion checkboxes are an input-side convenience the compute never
+sees); the readmission pair HOSPITAL + LACE; the Charlson Comorbidity Index
+(bespoke `toArgs` rebuilding the lib's `items` object from the flat comorbidity
+booleans and threading `ageYears` — the drug-burden-index precedent); and the
+Clinical Frailty Scale plus the coupled ECOG / Karnofsky performance-status
+picker. Brings the exposed total to **904 calculators across 170 modules**.
+
 ## Exposed
 
 Each id below is live in `mcp/catalog.js`. The gate parses this list.
@@ -2065,6 +2081,18 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 - `aldrete`
 - `lemon`
 - `white-song`
+- `gbs`
+- `rockall`
+- `aims65`
+- `oakland`
+- `maddrey-lille`
+- `cthr`
+- `ccsr`
+- `hospital-score`
+- `lace`
+- `charlson`
+- `cfs`
+- `ecog-karnofsky`
 
 ### lib/scoring-v6.js
 - `ballard`

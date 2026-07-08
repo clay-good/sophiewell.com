@@ -4207,7 +4207,7 @@ clamped to `[0, 1]`, so the JSON surface never emits a non-finite probability.
 
 ### Coverage is explicit and honest
 
-Adapting the catalog is incremental. Coverage now stands at **892 clinical
+Adapting the catalog is incremental. Coverage now stands at **904 clinical
 calculators across 170 `lib` modules** (of 1109 catalog tiles), built module by <!-- catalog-truth:historical (170 is the count of lib modules adapted, not a catalog tile count) -->
 module against the one fixed contract:
 
@@ -4271,6 +4271,7 @@ module against the one fixed contract:
 | fifty-sixth (Group G ED decision core) | `scoring-v4` (TIMI, GRACE, HEART, PERC, Wells PE + Geneva, CURB-65, PSI, qSOFA + SOFA, MELD-3.0 + Child-Pugh, Ranson + BISAP, Centor + McIsaac, Wells DVT + Caprini, Bishop, Alvarado + PAS) | 14 |
 | fifty-seventh (ICU bedside / early warning) | `scoring-v4` (NEWS2, MEWS, SIRS, Killip, MODS, RASS, SAS/Riker, CAM-ICU, ICDSC, 4AT, CPOT, BPS) | 12 |
 | fifty-eighth (cognition / withdrawal / sleep / periop assessment) | `scoring-v4` (Mini-Cog, CIWA-Ar, COWS, Epworth, STOP-BANG, Berlin OSA, Apfel, Aldrete, LEMON, White-Song) | 10 |
+| fifty-ninth (GI-bleed / readmission / comorbidity / performance status) | `scoring-v4` (Glasgow-Blatchford, Rockall, AIMS65, Oakland, Maddrey + Lille, Canadian CT Head, Canadian C-Spine, HOSPITAL, LACE, Charlson, Clinical Frailty Scale, ECOG + Karnofsky) | 12 |
 
 
 `docs/mcp-coverage.md` is the ledger and `list_calculators` always reports the

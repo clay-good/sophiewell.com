@@ -1089,6 +1089,52 @@ test('lib/scoring-v4.js cognition / withdrawal / sleep / periop worked calls (wa
   assert.equal(ws.fastTrackEligible, false);
 });
 
+test('lib/scoring-v4.js GI-bleed / readmission / comorbidity / performance worked calls (wave 59)', () => {
+  // GBS: BUN 30 (points) + Hgb 11 male (3) + SBP 95 (3) + melena (1) + syncope (2).
+  const gb = ok('gbs', { 'gb-bun': '30', 'gb-hgb': '11', 'gb-sex': 'M', 'gb-sbp': '95', 'gb-pulse': '0', 'gb-mel': '1', 'gb-syn': '1', 'gb-hep': '0', 'gb-cf': '0' });
+  assert.ok(gb.score > 0);
+  assert.equal(gb.parts.syncope, 2);
+  // Complete Rockall: age 2 + shock 2 + comorbidity 2 + dx 2 + stigmata 2 = 10.
+  const rk = ok('rockall', { 'rk-age': '2', 'rk-shock': '2', 'rk-co': '2', 'rk-dx': '2', 'rk-stig': '2', 'rk-pre': '0' });
+  assert.equal(rk.score, 10);
+  assert.equal(rk.preEndoscopy, false);
+  // Pre-endoscopy variant drops dx + stigmata: 2 + 2 + 2 = 6.
+  assert.equal(ok('rockall', { 'rk-age': '2', 'rk-shock': '2', 'rk-co': '2', 'rk-dx': '2', 'rk-stig': '2', 'rk-pre': '1' }).score, 6);
+  const am = ok('aims65', { 'am-alb': '1', 'am-inr': '1', 'am-am': '0', 'am-sbp': '0', 'am-age': '1' });
+  assert.equal(am.score, 3);
+  const ok59 = ok('oakland', { 'ok-age': '35', 'ok-sex': 'F', 'ok-prior': '0', 'ok-dre': '0', 'ok-hr': '65', 'ok-sbp': '165', 'ok-hgb': '17' });
+  assert.equal(ok59.score, 0);
+  const ml = ok('maddrey-lille', { 'ml-pt': '20', 'ml-ctrl': '12', 'ml-bili': '10', 'ml-age': '50', 'ml-alb': '3.0', 'ml-cr': '0.9', 'ml-b0': '10', 'ml-b7': '6', 'ml-ptl': '20' });
+  assert.equal(Math.round(ml.maddrey.df * 10) / 10, 46.8);
+  assert.ok(ml.lille.score > 0 && ml.lille.score < 1);
+  assert.equal(ok('cthr', { 'ct-hr': '1', 'ct-mr': '0' }).ctRecommended, true);
+  assert.equal(ok('cthr', { 'ct-hr': '0', 'ct-mr': '0' }).ctRecommended, false);
+  assert.equal(ok('ccsr', { 'cs-hr': '0', 'cs-lr': '1', 'cs-rot': '1' }).imagingRecommended, false);
+  assert.equal(ok('ccsr', { 'cs-hr': '0', 'cs-lr': '0', 'cs-rot': '1' }).imagingRecommended, true);
+  // HOSPITAL: onc (2) + LOS (2) + hgb (1) = 5, intermediate.
+  const hs = ok('hospital-score', { 'hs-hgb': '1', 'hs-onc': '1', 'hs-na': '0', 'hs-proc': '0', 'hs-urg': '0', 'hs-prior': '0', 'hs-los': '1' });
+  assert.equal(hs.score, 5);
+  assert.match(hs.band, /intermediate/);
+  // LACE: LOS 7 (5) + acute (3) + Charlson 2 (2) + ED 1 (1) = 11, high.
+  const lc = ok('lace', { 'lc-los': '7', 'lc-acute': '1', 'lc-charlson': '2', 'lc-ed': '1' });
+  assert.equal(lc.score, 11);
+  assert.match(lc.band, /high risk/);
+  // Charlson: MI (1) + CHF (1) + age 75 adjustment (3) = 5.
+  const ch = ok('charlson', { 'ch-age': '75', 'ch-mi': '1', 'ch-chf': '1' });
+  assert.equal(ch.comorbidity, 2);
+  assert.equal(ch.ageAdj, 3);
+  assert.equal(ch.score, 5);
+  // Severity dominance: end-organ diabetes drops the uncomplicated-diabetes point.
+  assert.equal(ok('charlson', { 'ch-age': '40', 'ch-dm': '1', 'ch-dm-end': '1' }).comorbidity, 2);
+  const cf = ok('cfs', { 'cf-level': '7' });
+  assert.equal(cf.level, 7);
+  assert.match(cf.band, /severe frailty/);
+  const ek = ok('ecog-karnofsky', { 'ek-ecog': '2', 'ek-kps': '60' });
+  assert.equal(ek.ecog, 2);
+  assert.equal(ek.kps, 60);
+  assert.equal(ek.suggestedKps, 60);
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];

@@ -708,4 +708,178 @@ export default [
       { dom: 'ws-eme', arg: 'postoperativeEmesis', kind: 'number', required: true, label: 'Postoperative emetic symptoms (0-2)' },
     ],
   },
+
+  // --- wave 59: GI-bleed / readmission / comorbidity / performance status --
+  {
+    id: 'gbs',
+    summary: 'Glasgow-Blatchford bleeding score (Blatchford 2000): BUN, hemoglobin (sex-weighted), and SBP banded, plus pulse >= 100, melena, syncope, hepatic disease, and cardiac failure; 0 identifies the low-risk outpatient group.',
+    compute: F.gbs,
+    fields: [
+      { dom: 'gb-bun', arg: 'bunMgDl', kind: 'number', required: true, label: 'BUN', unit: 'mg/dL' },
+      { dom: 'gb-hgb', arg: 'hgbGdl', kind: 'number', required: true, label: 'Hemoglobin', unit: 'g/dL' },
+      { dom: 'gb-sex', arg: 'sex', kind: 'enum', values: ['M', 'F'], required: true, label: 'Sex (weights hemoglobin per Blatchford 2000 Table 1)' },
+      { dom: 'gb-sbp', arg: 'sbp', kind: 'number', required: true, label: 'Systolic BP', unit: 'mmHg' },
+      { dom: 'gb-pulse', arg: 'pulse100', kind: 'bool', label: 'Pulse >= 100 (1)' },
+      { dom: 'gb-mel', arg: 'melena', kind: 'bool', label: 'Melena (1)' },
+      { dom: 'gb-syn', arg: 'syncope', kind: 'bool', label: 'Recent syncope (2)' },
+      { dom: 'gb-hep', arg: 'hepaticDisease', kind: 'bool', label: 'Hepatic disease (2)' },
+      { dom: 'gb-cf', arg: 'cardiacFailure', kind: 'bool', label: 'Cardiac failure (2)' },
+    ],
+  },
+  {
+    id: 'rockall',
+    summary: 'Rockall upper-GI-bleed score (Rockall 1996): age band, shock, and comorbidity, plus (post-endoscopy) the endoscopic diagnosis and stigmata of recent hemorrhage; an optional pre-endoscopy flag scores the Vreeburg 1999 variant. Returns the mortality band.',
+    compute: F.rockall,
+    fields: [
+      { dom: 'rk-age', arg: 'ageBand', kind: 'enum', values: ['0', '1', '2'], required: true, label: 'Age band (0 < 60 / 1 60-79 / 2 >= 80)', to: (v) => Number(v) },
+      { dom: 'rk-shock', arg: 'shock', kind: 'enum', values: ['0', '1', '2'], required: true, label: 'Shock (0 none / 1 tachycardia / 2 hypotension)', to: (v) => Number(v) },
+      { dom: 'rk-co', arg: 'comorbidity', kind: 'enum', values: ['0', '2', '3'], required: true, label: 'Comorbidity (0 none / 2 CHF-IHD / 3 renal-hepatic-failure or metastatic CA)', to: (v) => Number(v) },
+      { dom: 'rk-dx', arg: 'endoscopicDx', kind: 'enum', values: ['0', '1', '2'], required: true, label: 'Endoscopic diagnosis (0 Mallory-Weiss / 1 other / 2 upper-GI malignancy)', to: (v) => Number(v) },
+      { dom: 'rk-stig', arg: 'stigmata', kind: 'enum', values: ['0', '2'], required: true, label: 'Stigmata of recent hemorrhage (0 clean or dark spot / 2 blood, clot, or vessel)', to: (v) => Number(v) },
+      { dom: 'rk-pre', arg: 'preEndoscopy', kind: 'bool', label: 'Use pre-endoscopy variant (omits diagnosis and stigmata)' },
+    ],
+  },
+  {
+    id: 'aims65',
+    summary: 'AIMS65 upper-GI-bleed mortality score (Saltzman 2011): albumin < 3.0 g/dL, INR > 1.5, altered mental status, SBP <= 90, age > 65 (1 each); the in-hospital mortality band rises from 0.3% at 0 to 24.5% at 5.',
+    compute: F.aims65,
+    fields: [
+      { dom: 'am-alb', arg: 'albuminLt3', kind: 'bool', label: 'Albumin < 3.0 g/dL (A)' },
+      { dom: 'am-inr', arg: 'inrGt15', kind: 'bool', label: 'INR > 1.5 (I)' },
+      { dom: 'am-am', arg: 'alteredMental', kind: 'bool', label: 'Altered mental status (M)' },
+      { dom: 'am-sbp', arg: 'sbpLe90', kind: 'bool', label: 'SBP <= 90 mmHg (S)' },
+      { dom: 'am-age', arg: 'ageGt65', kind: 'bool', label: 'Age > 65 (65)' },
+    ],
+  },
+  {
+    id: 'oakland',
+    summary: 'Oakland lower-GI-bleed safe-discharge score (Oakland 2017): age, sex, prior LGIB admission, blood on DRE, heart rate, SBP, and hemoglobin banded; total <= 8 identifies the 95%-safe-discharge group.',
+    compute: F.oakland,
+    fields: [
+      { dom: 'ok-age', arg: 'age', kind: 'number', required: true, label: 'Age', unit: 'years' },
+      { dom: 'ok-sex', arg: 'sex', kind: 'enum', values: ['M', 'F'], required: true, label: 'Sex' },
+      { dom: 'ok-prior', arg: 'priorLgibAdmission', kind: 'bool', label: 'Previous LGIB admission' },
+      { dom: 'ok-dre', arg: 'dreBlood', kind: 'bool', label: 'Blood on digital rectal examination' },
+      { dom: 'ok-hr', arg: 'hr', kind: 'number', required: true, label: 'Heart rate', unit: 'bpm' },
+      { dom: 'ok-sbp', arg: 'sbp', kind: 'number', required: true, label: 'Systolic BP', unit: 'mmHg' },
+      { dom: 'ok-hgb', arg: 'hgbGdl', kind: 'number', required: true, label: 'Hemoglobin', unit: 'g/dL' },
+    ],
+  },
+  {
+    id: 'maddrey-lille',
+    summary: 'Maddrey discriminant function (4.6 x (patient PT - control PT) + bilirubin; DF >= 32 severe alcoholic hepatitis) with the Lille model (day-0 vs day-7 response to steroids). Bilirubin entered in mg/dL. Returns both scores.',
+    compute: (a) => {
+      const maddrey = F.maddreyDf({ patientPtSec: a.patientPtSec, controlPtSec: a.controlPtSec, bilirubinMgDl: a.bilirubinMgDl });
+      const lille = F.lille({
+        ageYears: a.ageYears, albuminGDl: a.albuminGDl, creatinineMgDl: a.creatinineMgDl,
+        bilirubinDay0MgDl: a.bilirubinDay0MgDl, bilirubinDay7MgDl: a.bilirubinDay7MgDl, ptSec: a.ptSec,
+      });
+      return { maddrey, lille };
+    },
+    fields: [
+      { dom: 'ml-pt', arg: 'patientPtSec', kind: 'number', required: true, label: 'Patient prothrombin time', unit: 'sec' },
+      { dom: 'ml-ctrl', arg: 'controlPtSec', kind: 'number', required: true, label: 'Control prothrombin time', unit: 'sec' },
+      { dom: 'ml-bili', arg: 'bilirubinMgDl', kind: 'number', required: true, label: 'Bilirubin (Maddrey)', unit: 'mg/dL' },
+      { dom: 'ml-age', arg: 'ageYears', kind: 'number', required: true, label: 'Age (Lille)', unit: 'years' },
+      { dom: 'ml-alb', arg: 'albuminGDl', kind: 'number', required: true, label: 'Albumin (Lille)', unit: 'g/dL' },
+      { dom: 'ml-cr', arg: 'creatinineMgDl', kind: 'number', required: true, label: 'Creatinine (Lille)', unit: 'mg/dL' },
+      { dom: 'ml-b0', arg: 'bilirubinDay0MgDl', kind: 'number', required: true, label: 'Bilirubin day 0 (Lille)', unit: 'mg/dL' },
+      { dom: 'ml-b7', arg: 'bilirubinDay7MgDl', kind: 'number', required: true, label: 'Bilirubin day 7 (Lille)', unit: 'mg/dL' },
+      { dom: 'ml-ptl', arg: 'ptSec', kind: 'number', required: true, label: 'Prothrombin time (Lille)', unit: 'sec' },
+    ],
+  },
+  {
+    id: 'cthr',
+    summary: 'Canadian CT Head Rule (Stiell 2001) for GCS 13-15 blunt head injury: CT recommended if any high-risk criterion (neurosurgical-intervention concern) or medium-risk criterion (clinically important brain injury) is present.',
+    compute: F.cthr,
+    fields: [
+      { dom: 'ct-hr', arg: 'highRisk', kind: 'bool', label: 'Any high-risk criterion (GCS < 15 at 2 h, open/depressed or basal skull fracture, >= 2 vomiting episodes, age >= 65)' },
+      { dom: 'ct-mr', arg: 'mediumRisk', kind: 'bool', label: 'Any medium-risk criterion (retrograde amnesia >= 30 min, dangerous mechanism)' },
+    ],
+  },
+  {
+    id: 'ccsr',
+    summary: 'Canadian C-Spine Rule (Stiell 2001): imaging is required if any high-risk factor is present, or if no low-risk factor allows safe range-of-motion testing, or if the patient cannot actively rotate the neck 45 degrees each way.',
+    compute: F.ccsr,
+    fields: [
+      { dom: 'cs-hr', arg: 'highRisk', kind: 'bool', label: 'Any high-risk factor (age >= 65, dangerous mechanism, extremity paresthesias)' },
+      { dom: 'cs-lr', arg: 'lowRisk', kind: 'bool', label: 'Any low-risk factor permitting safe range-of-motion assessment' },
+      { dom: 'cs-rot', arg: 'canRotate45', kind: 'bool', label: 'Able to actively rotate neck 45 degrees left and right' },
+    ],
+  },
+  {
+    id: 'hospital-score',
+    summary: 'HOSPITAL readmission score (Donze 2013): hemoglobin < 12, oncology discharge (2), sodium < 135, any procedure, urgent admission, prior admissions in 12 months (banded), length of stay >= 5 days (2); low / intermediate / high 30-day avoidable-readmission bands.',
+    compute: F.hospitalScore,
+    fields: [
+      { dom: 'hs-hgb', arg: 'hgbLt12', kind: 'bool', label: 'Hemoglobin < 12 g/dL at discharge (1)' },
+      { dom: 'hs-onc', arg: 'oncologyDischarge', kind: 'bool', label: 'Discharge from oncology service (2)' },
+      { dom: 'hs-na', arg: 'sodiumLt135', kind: 'bool', label: 'Sodium < 135 mEq/L at discharge (1)' },
+      { dom: 'hs-proc', arg: 'anyProcedure', kind: 'bool', label: 'Any procedure during the hospitalization (1)' },
+      { dom: 'hs-urg', arg: 'urgentAdmission', kind: 'bool', label: 'Urgent / emergent index admission (1)' },
+      { dom: 'hs-prior', arg: 'priorAdmissions12mo', kind: 'number', required: true, label: 'Admissions in the past 12 months (0/1-2 = 0; 3-4 = 2; >= 5 = 5)' },
+      { dom: 'hs-los', arg: 'losGe5', kind: 'bool', label: 'Length of stay >= 5 days (2)' },
+    ],
+  },
+  {
+    id: 'lace',
+    summary: 'LACE index (van Walraven 2010): length of stay (banded), acute admission (3), Charlson comorbidity (banded), and ED visits in the prior 6 months (capped at 4); 30-day death / unplanned-readmission risk band.',
+    compute: F.lace,
+    fields: [
+      { dom: 'lc-los', arg: 'losDays', kind: 'number', required: true, label: 'Length of stay', unit: 'days' },
+      { dom: 'lc-acute', arg: 'acuteAdmission', kind: 'bool', label: 'Acute (emergent) admission (3 points)' },
+      { dom: 'lc-charlson', arg: 'charlsonScore', kind: 'number', required: true, label: 'Charlson Comorbidity Index (banded)' },
+      { dom: 'lc-ed', arg: 'edVisits6mo', kind: 'number', required: true, label: 'ED visits in the prior 6 months (capped at 4 points)' },
+    ],
+  },
+  {
+    id: 'charlson',
+    summary: 'Charlson Comorbidity Index (Charlson 1987 weights + 1994 age adjustment): 1/2/3/6-point comorbidities plus one point per decade over 50 (capped at 4); returns the age-adjusted total, the comorbidity subtotal, and the 10-year mortality band. Severity dominance drops the milder class when a more severe one is present.',
+    // The tile collects each comorbidity as a flat checkbox; the lib takes them
+    // under one `items` object. Rebuild it from the flat bool args (the
+    // drug-burden-index precedent), passing ageYears through.
+    compute: (a) => {
+      const { ageYears, ...items } = a;
+      return F.charlson({ items, ageYears });
+    },
+    fields: [
+      { dom: 'ch-age', arg: 'ageYears', kind: 'number', required: true, label: 'Age', unit: 'years' },
+      { dom: 'ch-mi', arg: 'mi', kind: 'bool', label: 'Myocardial infarction (1)' },
+      { dom: 'ch-chf', arg: 'chf', kind: 'bool', label: 'Congestive heart failure (1)' },
+      { dom: 'ch-pvd', arg: 'pvd', kind: 'bool', label: 'Peripheral vascular disease (1)' },
+      { dom: 'ch-cvd', arg: 'cvd', kind: 'bool', label: 'Cerebrovascular disease (1)' },
+      { dom: 'ch-dementia', arg: 'dementia', kind: 'bool', label: 'Dementia (1)' },
+      { dom: 'ch-copd', arg: 'copd', kind: 'bool', label: 'Chronic pulmonary disease (1)' },
+      { dom: 'ch-ct', arg: 'connectiveTissue', kind: 'bool', label: 'Connective tissue disease (1)' },
+      { dom: 'ch-pud', arg: 'pud', kind: 'bool', label: 'Peptic ulcer disease (1)' },
+      { dom: 'ch-mild-liver', arg: 'mildLiver', kind: 'bool', label: 'Mild liver disease (1)' },
+      { dom: 'ch-dm', arg: 'diabetesUncomplicated', kind: 'bool', label: 'Diabetes, uncomplicated (1)' },
+      { dom: 'ch-hemi', arg: 'hemiplegia', kind: 'bool', label: 'Hemiplegia (2)' },
+      { dom: 'ch-renal', arg: 'modSevereRenal', kind: 'bool', label: 'Moderate or severe renal disease (2)' },
+      { dom: 'ch-dm-end', arg: 'diabetesEndOrgan', kind: 'bool', label: 'Diabetes with end-organ damage (2)' },
+      { dom: 'ch-tumor', arg: 'anyTumor', kind: 'bool', label: 'Any tumor within 5 years (2)' },
+      { dom: 'ch-leuk', arg: 'leukemia', kind: 'bool', label: 'Leukemia (2)' },
+      { dom: 'ch-lymph', arg: 'lymphoma', kind: 'bool', label: 'Lymphoma (2)' },
+      { dom: 'ch-mod-liver', arg: 'modSevereLiver', kind: 'bool', label: 'Moderate or severe liver disease (3)' },
+      { dom: 'ch-mets', arg: 'metastaticSolidTumor', kind: 'bool', label: 'Metastatic solid tumor (6)' },
+      { dom: 'ch-aids', arg: 'aids', kind: 'bool', label: 'AIDS (6)' },
+    ],
+  },
+  {
+    id: 'cfs',
+    summary: 'Clinical Frailty Scale (Rockwood 2005): one level 1 (very fit) to 9 (terminally ill), with the level descriptor and the not-frail / vulnerable / mild-moderate / severe frailty band.',
+    compute: F.cfs,
+    fields: [
+      { dom: 'cf-level', arg: 'level', kind: 'enum', values: ['1', '2', '3', '4', '5', '6', '7', '8', '9'], required: true, label: 'CFS level (1 very fit ... 9 terminally ill)', to: (v) => Number(v) },
+    ],
+  },
+  {
+    id: 'ecog-karnofsky',
+    summary: 'ECOG performance status (Oken 1982; 0-5) with the Karnofsky Performance Status (Karnofsky 1949; 0-100) and their descriptors, cross-walked per Buccheri 1996. Returns both level descriptors and the KPS the ECOG grade suggests.',
+    compute: F.ecogKarnofsky,
+    fields: [
+      { dom: 'ek-ecog', arg: 'ecog', kind: 'enum', values: ['0', '1', '2', '3', '4', '5'], required: true, label: 'ECOG performance status (0 fully active ... 5 dead)', to: (v) => Number(v) },
+      { dom: 'ek-kps', arg: 'kps', kind: 'enum', values: ['100', '90', '80', '70', '60', '50', '40', '30', '20', '10', '0'], required: true, label: 'Karnofsky Performance Status', to: (v) => Number(v) },
+    ],
+  },
 ];
