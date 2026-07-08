@@ -1355,6 +1355,31 @@ test('lib/scoring-v4.js pulmonary / CAP-severity worked calls (wave 66)', () => 
   assert.equal(ok('ats-idsa-cap', { 'ai-major-vp': '1', 'ai-major-mv': '0', 'ai-rr': '0', 'ai-pf': '0', 'ai-multi': '0', 'ai-conf': '0', 'ai-bun': '0', 'ai-leuk': '0', 'ai-plt': '0', 'ai-hypo': '0', 'ai-fluid': '0' }).severe, true);
 });
 
+test('lib/scoring-v4.js nutrition-risk + Ottawa-rule worked calls (wave 67)', () => {
+  // NUTRIC: age 78 (2) + APACHE 30 (3) + SOFA 11 (2) + comorbidities 3 (1) = 8, high.
+  const nt = ok('nutric', { 'nt-age': '78', 'nt-apache': '30', 'nt-sofa': '11', 'nt-comorb': '3', 'nt-days': '0', 'nt-il6': '0' });
+  assert.equal(nt.score, 8);
+  assert.equal(nt.highRisk, true);
+  const mn = ok('mnutric', { 'mn-age': '78', 'mn-apache': '30', 'mn-sofa': '11', 'mn-comorb': '3', 'mn-days': '0' });
+  assert.ok(mn.score >= 5);
+  assert.equal(mn.highRisk, true);
+  // NRS-2002: severity 3 + status 1 = 4, at risk.
+  const nr = ok('nrs2002', { 'nr-sev': '3', 'nr-nut': '1', 'nr-age': '0' });
+  assert.equal(nr.score, 4);
+  assert.equal(nr.atRisk, true);
+  // MUST: low BMI band (2) + big weight loss (2) = 4, high risk.
+  const mu = ok('must-nutrition', { 'mu-bmi': '17', 'mu-wl': '12', 'mu-acute': '0' });
+  assert.equal(mu.score, 4);
+  assert.match(mu.band, /high/);
+  // Ottawa ankle: malleolar pain + lateral tenderness -> ankle x-ray.
+  const oa = ok('ottawa-ankle', { 'oa-mp': '1', 'oa-lat': '1', 'oa-med': '0', 'oa-abw': '0', 'oa-fp': '0', 'oa-fmt': '0', 'oa-nav': '0', 'oa-fbw': '0' });
+  assert.equal(oa.ankleXray, true);
+  // Ottawa SAH: exclusion present -> not applicable.
+  assert.equal(ok('ottawa-sah', { 'os-excl': '1', 'os-age': '0', 'os-neck': '0', 'os-loc': '0', 'os-ex': '0', 'os-tc': '0', 'os-flex': '0' }).applicable, false);
+  // Ottawa SAH: one criterion, no exclusion -> cannot rule out.
+  assert.equal(ok('ottawa-sah', { 'os-excl': '0', 'os-age': '1', 'os-neck': '0', 'os-loc': '0', 'os-ex': '0', 'os-tc': '0', 'os-flex': '0' }).cannotRuleOut, true);
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];

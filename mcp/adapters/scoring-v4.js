@@ -1737,4 +1737,80 @@ export default [
       { dom: 'ai-fluid', arg: 'minorHypotensionAggressiveFluids', kind: 'bool', label: 'Minor: hypotension requiring aggressive fluids' },
     ],
   },
+
+  // --- wave 67: the nutrition-risk and Ottawa-rule cluster ----------------
+  {
+    id: 'nutric',
+    summary: 'NUTRIC Score (Heyland 2011) for ICU nutrition risk: age, APACHE II, SOFA, comorbidity count, days from hospital to ICU, and IL-6 each banded; total 0-10, >= 6 is high nutritional risk.',
+    compute: F.nutric,
+    fields: [
+      { dom: 'nt-age', arg: 'ageYears', kind: 'number', required: true, label: 'Age', unit: 'years' },
+      { dom: 'nt-apache', arg: 'apache2', kind: 'number', required: true, label: 'APACHE II score' },
+      { dom: 'nt-sofa', arg: 'sofa', kind: 'number', required: true, label: 'SOFA score' },
+      { dom: 'nt-comorb', arg: 'comorbidities', kind: 'number', required: true, label: 'Number of comorbidities' },
+      { dom: 'nt-days', arg: 'daysHospitalToIcu', kind: 'number', required: true, label: 'Days from hospital to ICU' },
+      { dom: 'nt-il6', arg: 'il6Pg', kind: 'number', required: true, label: 'IL-6', unit: 'pg/mL' },
+    ],
+  },
+  {
+    id: 'mnutric',
+    summary: 'Modified NUTRIC Score (Rahman 2016) without IL-6: age, APACHE II, SOFA, comorbidity count, and days from hospital to ICU each banded; total 0-9, >= 5 is high nutritional risk.',
+    compute: F.mnutric,
+    fields: [
+      { dom: 'mn-age', arg: 'ageYears', kind: 'number', required: true, label: 'Age', unit: 'years' },
+      { dom: 'mn-apache', arg: 'apache2', kind: 'number', required: true, label: 'APACHE II score' },
+      { dom: 'mn-sofa', arg: 'sofa', kind: 'number', required: true, label: 'SOFA score' },
+      { dom: 'mn-comorb', arg: 'comorbidities', kind: 'number', required: true, label: 'Number of comorbidities' },
+      { dom: 'mn-days', arg: 'daysHospitalToIcu', kind: 'number', required: true, label: 'Days from hospital to ICU' },
+    ],
+  },
+  {
+    id: 'nrs2002',
+    summary: 'Nutritional Risk Screening 2002 (Kondrup 2003): severity of disease (0-3), nutritional status (0-3), plus 1 point for age >= 70; total >= 3 flags nutritional risk (ESPEN-endorsed cutoff).',
+    compute: F.nrs2002,
+    fields: [
+      { dom: 'nr-sev', arg: 'severityOfDisease', kind: 'enum', values: ['0', '1', '2', '3'], required: true, label: 'Severity of disease (0-3)', to: (v) => Number(v) },
+      { dom: 'nr-nut', arg: 'nutritionalStatus', kind: 'enum', values: ['0', '1', '2', '3'], required: true, label: 'Nutritional status (0-3)', to: (v) => Number(v) },
+      { dom: 'nr-age', arg: 'ageGe70', kind: 'bool', label: 'Age >= 70 years (+1)' },
+    ],
+  },
+  {
+    id: 'must-nutrition',
+    summary: 'Malnutrition Universal Screening Tool (BAPEN 2003): BMI band (0-2), unplanned weight-loss band (0-2), plus 2 points if acutely ill with no intake for > 5 days; total 0 low, 1 medium, >= 2 high malnutrition risk.',
+    compute: F.mustNutrition,
+    fields: [
+      { dom: 'mu-bmi', arg: 'bmi', kind: 'number', required: true, label: 'BMI', unit: 'kg/m^2' },
+      { dom: 'mu-wl', arg: 'weightLossPct', kind: 'number', required: true, label: 'Unplanned weight loss in past 3-6 months', unit: '%' },
+      { dom: 'mu-acute', arg: 'acuteDiseaseNoIntakeGt5d', kind: 'bool', label: 'Acutely ill and no intake for > 5 days (+2)' },
+    ],
+  },
+  {
+    id: 'ottawa-ankle',
+    summary: 'Ottawa Ankle and Foot Rules (Stiell 1992): ankle x-ray if malleolar-zone pain plus posterior-malleolus tenderness or inability to bear weight; foot x-ray if midfoot-zone pain plus 5th-metatarsal/navicular tenderness or inability to bear weight. Returns which imaging is indicated.',
+    compute: F.ottawaAnkle,
+    fields: [
+      { dom: 'oa-mp', arg: 'malleolarPain', kind: 'bool', label: 'Pain in malleolar zone' },
+      { dom: 'oa-lat', arg: 'lateralMalleolusTender', kind: 'bool', label: 'Lateral malleolus tenderness (distal 6 cm)' },
+      { dom: 'oa-med', arg: 'medialMalleolusTender', kind: 'bool', label: 'Medial malleolus tenderness (distal 6 cm)' },
+      { dom: 'oa-abw', arg: 'ankleCannotBearWeight', kind: 'bool', label: 'Ankle: cannot bear weight 4 steps' },
+      { dom: 'oa-fp', arg: 'midfootPain', kind: 'bool', label: 'Pain in midfoot zone' },
+      { dom: 'oa-fmt', arg: 'fifthMetatarsalTender', kind: 'bool', label: 'Base of 5th metatarsal tenderness' },
+      { dom: 'oa-nav', arg: 'navicularTender', kind: 'bool', label: 'Navicular tenderness' },
+      { dom: 'oa-fbw', arg: 'footCannotBearWeight', kind: 'bool', label: 'Foot: cannot bear weight 4 steps' },
+    ],
+  },
+  {
+    id: 'ottawa-sah',
+    summary: 'Ottawa Subarachnoid Hemorrhage Rule (Perry 2013) for alert patients with a new severe non-traumatic headache peaking within 1 hour: an exclusion criterion makes the rule inapplicable; otherwise any of six criteria (age >= 40, neck pain/stiffness, witnessed LOC, onset during exertion, thunderclap headache, limited neck flexion) means SAH cannot be ruled out.',
+    compute: F.ottawaSah,
+    fields: [
+      { dom: 'os-excl', arg: 'exclusionCriteriaPresent', kind: 'bool', label: 'Any exclusion present (rule inapplicable)' },
+      { dom: 'os-age', arg: 'ageGe40', kind: 'bool', label: 'Age >= 40' },
+      { dom: 'os-neck', arg: 'neckPainOrStiffness', kind: 'bool', label: 'Neck pain or stiffness' },
+      { dom: 'os-loc', arg: 'witnessedLoc', kind: 'bool', label: 'Witnessed loss of consciousness' },
+      { dom: 'os-ex', arg: 'onsetDuringExertion', kind: 'bool', label: 'Onset during exertion' },
+      { dom: 'os-tc', arg: 'thunderclapHeadache', kind: 'bool', label: 'Thunderclap headache (peak within 1 second)' },
+      { dom: 'os-flex', arg: 'limitedNeckFlexion', kind: 'bool', label: 'Limited neck flexion on exam' },
+    ],
+  },
 ];

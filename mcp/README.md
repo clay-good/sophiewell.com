@@ -73,7 +73,7 @@ strings; booleans as `true`/`false`; enums by their listed string values.
 
 ```
 list_calculators { "specialty": "hepatology" }
-  -> { coverage: "967 of 1109 catalog tiles exposed ...", calculators: [ { id: "meld-xi", ... }, ... ] }
+  -> { coverage: "973 of 1109 catalog tiles exposed ...", calculators: [ { id: "meld-xi", ... }, ... ] }
 
 describe_calculator { "id": "meld-xi" }
   -> { inputSchema: { ... mx-bili, mx-creat ... }, citation: "Heuman DM ... Liver Transpl 2007", ... }
@@ -231,8 +231,9 @@ sedation, and withdrawal scales (FLACC, PAINAD, NIPS, N-PASS, CRIES, POSS,
 COMFORT-B, WAT-1, SBS, SOS), and a sixty-fifth the prehospital stroke scales,
 ADLs, and C-SSRS (CPSS, LAMS, RACE, ROSIER, GUSS, Barthel, Lawton IADL, Katz
 ADL, C-SSRS), and a sixty-sixth the pulmonary / CAP-severity cluster (HACOR,
-Berlin ARDS, Murray LIS, SMART-COP, CRB-65, ATS/IDSA severe CAP), for 967
-across 170 modules today. <!-- catalog-truth:historical (170 is the count of lib modules adapted, not a catalog tile count) -->
+Berlin ARDS, Murray LIS, SMART-COP, CRB-65, ATS/IDSA severe CAP), and a
+sixty-seventh the nutrition-risk and Ottawa-rule cluster (NUTRIC, mNUTRIC,
+NRS-2002, MUST, Ottawa Ankle, Ottawa SAH), for 973 across 170 modules today. <!-- catalog-truth:historical (170 is the count of lib modules adapted, not a catalog tile count) -->
 Later waves extend it module by module against the same contract.
 
 ## Design

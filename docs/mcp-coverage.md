@@ -958,6 +958,14 @@ the example's empty fields round-trip), the Murray Lung Injury Score, SMART-COP
 2019 severe-CAP major/minor criteria. Brings the exposed total to **967
 calculators across 170 modules**.
 
+## Sixty-seventh wave — the nutrition-risk and Ottawa-rule cluster in lib/scoring-v4.js (+6)
+
+The four nutrition-risk screens NUTRIC, mNUTRIC, NRS-2002 (its two graded
+selects map as number-coerced enums), and MUST, plus the two Ottawa decision
+rules for imaging - the Ottawa Ankle/Foot Rules and the Ottawa SAH Rule (whose
+exclusion criterion short-circuits the rule to inapplicable). Brings the
+exposed total to **973 calculators across 170 modules**.
+
 ## Exposed
 
 Each id below is live in `mcp/catalog.js`. The gate parses this list.
@@ -2237,6 +2245,12 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 - `smart-cop`
 - `crb65`
 - `ats-idsa-cap`
+- `nutric`
+- `mnutric`
+- `nrs2002`
+- `must-nutrition`
+- `ottawa-ankle`
+- `ottawa-sah`
 
 ### lib/scoring-v6.js
 - `ballard`
