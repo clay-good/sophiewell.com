@@ -9,13 +9,16 @@
 // mcgeer precedent). The criterion key sets are read from the lib's own tables
 // (DUKE_MAJOR_CRITERIA / DUKE_MINOR_CRITERIA) so the schema cannot drift.
 //
-// lundBrowder stays deferred: it takes a variable-length per-region fraction
-// object that needs its own bespoke toArgs.
+// lundBrowder (wave 81) takes an age band plus a per-region burn-fraction
+// object; a bespoke toArgs rebuilds the fractions from the flat lb-<region>
+// fields, with the region key set read from the lib's LB_REGION_LIST table.
 
 import * as F from '../../lib/idcrit-v99.js';
 
 const DUKE_MAJOR_KEYS = F.DUKE_MAJOR_CRITERIA.map((c) => c.key);
 const DUKE_MINOR_KEYS = F.DUKE_MINOR_CRITERIA.map((c) => c.key);
+const LB_REGION_KEYS = F.LB_REGION_LIST.map((r) => r.key);
+const LB_AGE_KEYS = F.LB_AGE_BANDS.map((b) => b.key);
 
 export default [
   {
@@ -79,6 +82,27 @@ export default [
       { dom: 'ref-days', arg: 'daysNoIntake', kind: 'number', required: true, label: 'Days with little or no nutritional intake' },
       { dom: 'ref-electrolytes', arg: 'lowElectrolytes', kind: 'bool', label: 'Low pre-feeding potassium, magnesium, or phosphate' },
       { dom: 'ref-history', arg: 'historyFlag', kind: 'bool', label: 'History of alcohol misuse or insulin / chemotherapy / antacids / diuretics' },
+    ],
+  },
+  {
+    id: 'lund-browder',
+    summary: 'Lund-Browder burn %TBSA: the age band (infant / 1 / 5 / 10 / 15 / adult) sets the age-specific area weights, and each body region is entered as the fraction burned (0-1); returns the total %TBSA with the Rule-of-Nines cross-check.',
+    // Rebuild the age band and the per-region fraction object from the flat
+    // lb-age / lb-<region> fields (the region key set is read from the lib).
+    compute: F.lundBrowder,
+    toArgs: (inputs) => {
+      const regions = {};
+      for (const k of LB_REGION_KEYS) {
+        const key = `lb-${k}`;
+        if (Object.prototype.hasOwnProperty.call(inputs, key) && inputs[key] !== '' && inputs[key] != null) {
+          regions[k] = Number(inputs[key]);
+        }
+      }
+      return { ageBand: inputs['lb-age'], regions };
+    },
+    fields: [
+      { dom: 'lb-age', arg: 'ageBand', kind: 'enum', values: LB_AGE_KEYS, required: true, label: 'Age band (infant / 1 / 5 / 10 / 15 / adult)' },
+      ...LB_REGION_KEYS.map((k) => ({ dom: `lb-${k}`, arg: `lb-${k}`, kind: 'number', label: `${k} burn fraction (0-1)` })),
     ],
   },
 ];

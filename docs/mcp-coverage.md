@@ -1123,6 +1123,15 @@ deterministic due date (the gestational-age reading stays a browser-only
 convenience). Append-only. Brings the exposed total to **1030 calculators across
 173 modules**.
 
+## Eighty-first wave — the Lund-Browder burn %TBSA in lib/idcrit-v99.js (+1)
+
+The `views/group-v25.js` Lund-Browder burn tile, deferred in wave 75 for its
+per-region fraction object: a bespoke `toArgs` rebuilds the age band and the
+`{ region: fraction }` map from the flat `lb-age` / `lb-<region>` fields, the
+region key set read from the lib's `LB_REGION_LIST` table so the schema cannot
+drift (the Duke / kawasaki precedent). Append-only. Brings the exposed total to
+**1031 calculators across 173 modules**.
+
 ## Exposed
 
 Each id below is live in `mcp/catalog.js`. The gate parses this list.
@@ -2486,6 +2495,7 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 - `pitt-bacteremia`
 - `saps-ii`
 - `refeeding-risk`
+- `lund-browder`
 
 ### lib/scoring-v5.js
 - `phq2-gad2`

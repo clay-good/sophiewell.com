@@ -1582,6 +1582,12 @@ test('lib/clinical.js Naegele due-date worked call (wave 80)', () => {
   assert.equal(dd.dueDate, '2025-10-08');
 });
 
+test('lib/idcrit-v99.js Lund-Browder burn worked call (wave 81)', () => {
+  const lb = ok('lund-browder', { 'lb-age': 'adult', 'lb-head': '1', 'lb-ant-trunk': '1' });
+  assert.equal(lb.tbsa, 20);
+  assert.equal(lb.ruleOfNines, 25);
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];
