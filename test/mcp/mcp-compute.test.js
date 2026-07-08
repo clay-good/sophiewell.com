@@ -1380,6 +1380,31 @@ test('lib/scoring-v4.js nutrition-risk + Ottawa-rule worked calls (wave 67)', ()
   assert.equal(ok('ottawa-sah', { 'os-excl': '0', 'os-age': '1', 'os-neck': '0', 'os-loc': '0', 'os-ex': '0', 'os-tc': '0', 'os-flex': '0' }).cannotRuleOut, true);
 });
 
+test('lib/scoring-v4.js workflow / wound / transfusion worked calls (wave 68)', () => {
+  // DRIP: two majors (4) -> high risk.
+  const dr = ok('drip', { 'dr-abx': '1', 'dr-ltc': '1', 'dr-tube': '0', 'dr-mdr': '0', 'dr-hosp': '0', 'dr-cpd': '0', 'dr-func': '0', 'dr-ppi': '0', 'dr-wound': '0', 'dr-mrsa': '0' });
+  assert.equal(dr.score, 4);
+  // ABC: penetrating + SBP<=90 = 2 -> activate MTP.
+  const abc = ok('abc-mtp', { 'abc-pen': '1', 'abc-sbp': '1', 'abc-hr': '0', 'abc-fast': '0' });
+  assert.equal(abc.score, 2);
+  assert.equal(abc.activateMtp, true);
+  // NPIAP: non-blanchable erythema on intact skin -> Stage 1.
+  const np = ok('npiap-staging', { 'np-muc': '0', 'np-intact': '1', 'np-blanch': 'non-blanchable-erythema', 'np-obs': '0', 'np-depth': 'partial-thickness' });
+  assert.match(np.stage, /Stage 1/);
+  // Norton: all 3 (physical bad) -> low totals; PUSH from bands.
+  const nr = ok('norton-push', { 'nr-pc': '2', 'nr-mc': '2', 'nr-act': '2', 'nr-mob': '2', 'nr-inc': '2', 'pu-lw': '6', 'pu-ex': '2', 'pu-tt': '3' });
+  assert.equal(nr.nortonTotal, 10);
+  assert.equal(nr.pushTotal, 11);
+  // VIP grade 4 -> banner present.
+  const ve = ok('vip-extravasation', { 've-vip': '4', 've-ins': '4', 've-ves': '1' });
+  assert.equal(ve.vip, 4);
+  assert.ok(ve.banners.length > 0);
+  // Blood compat: AB+ recipient, PRBC -> all donor types compatible.
+  const bc = ok('blood-compat', { 'bc-recip': 'AB+', 'bc-prod': 'prbc' });
+  assert.equal(bc.product, 'PRBC');
+  assert.ok(bc.compatibleDonors.length >= 4);
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];

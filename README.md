@@ -4207,7 +4207,7 @@ clamped to `[0, 1]`, so the JSON surface never emits a non-finite probability.
 
 ### Coverage is explicit and honest
 
-Adapting the catalog is incremental. Coverage now stands at **973 clinical
+Adapting the catalog is incremental. Coverage now stands at **979 clinical
 calculators across 170 `lib` modules** (of 1109 catalog tiles), built module by <!-- catalog-truth:historical (170 is the count of lib modules adapted, not a catalog tile count) -->
 module against the one fixed contract:
 
@@ -4280,6 +4280,7 @@ module against the one fixed contract:
 | sixty-fifth (prehospital stroke scales, ADLs, C-SSRS) | `scoring-v4` (CPSS, LAMS, RACE, ROSIER, GUSS, Barthel, Lawton IADL, Katz ADL, C-SSRS) | 9 |
 | sixty-sixth (pulmonary / CAP severity) | `scoring-v4` (HACOR, Berlin ARDS, Murray LIS, SMART-COP, CRB-65, ATS/IDSA severe CAP) | 6 |
 | sixty-seventh (nutrition risk + Ottawa rules) | `scoring-v4` (NUTRIC, mNUTRIC, NRS-2002, MUST, Ottawa Ankle, Ottawa SAH) | 6 |
+| sixty-eighth (workflow / wound / transfusion) | `scoring-v4` (DRIP, ABC-MTP, NPIAP staging, Norton + PUSH, VIP + INS, blood compatibility) | 6 |
 
 
 `docs/mcp-coverage.md` is the ledger and `list_calculators` always reports the

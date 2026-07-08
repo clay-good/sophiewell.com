@@ -1813,4 +1813,80 @@ export default [
       { dom: 'os-flex', arg: 'limitedNeckFlexion', kind: 'bool', label: 'Limited neck flexion on exam' },
     ],
   },
+
+  // --- wave 68: the workflow / wound / transfusion cluster ----------------
+  {
+    id: 'drip',
+    summary: 'Drug Resistance in Pneumonia score (Webb 2016): four major risk factors (antibiotics in 60 days, long-term-care residence, tube feeding, prior MDR isolate) score 2 each; six minor factors (recent hospitalization, chronic pulmonary disease, poor functional status, gastric acid suppression, wound care, MRSA colonization) score 1 each; total >= 4 is high risk for a drug-resistant pathogen.',
+    compute: F.drip,
+    fields: [
+      { dom: 'dr-abx', arg: 'antibioticsLast60d', kind: 'bool', label: 'Antibiotic use in past 60 days (2)' },
+      { dom: 'dr-ltc', arg: 'longTermCareResidence', kind: 'bool', label: 'Long-term care facility residence (2)' },
+      { dom: 'dr-tube', arg: 'tubeFeeding', kind: 'bool', label: 'Tube feeding (2)' },
+      { dom: 'dr-mdr', arg: 'priorMdrIsolate', kind: 'bool', label: 'Prior multidrug-resistant isolate (2)' },
+      { dom: 'dr-hosp', arg: 'hospitalizationLast60d', kind: 'bool', label: 'Hospitalization in past 60 days (1)' },
+      { dom: 'dr-cpd', arg: 'chronicPulmonary', kind: 'bool', label: 'Chronic pulmonary disease (1)' },
+      { dom: 'dr-func', arg: 'poorFunctionalStatus', kind: 'bool', label: 'Poor functional status (1)' },
+      { dom: 'dr-ppi', arg: 'gastricAcidSuppression', kind: 'bool', label: 'Gastric acid suppression (1)' },
+      { dom: 'dr-wound', arg: 'woundCare', kind: 'bool', label: 'Wound care (1)' },
+      { dom: 'dr-mrsa', arg: 'mrsaColonization', kind: 'bool', label: 'MRSA colonization (1)' },
+    ],
+  },
+  {
+    id: 'abc-mtp',
+    summary: 'Assessment of Blood Consumption score (Nunez 2009) for massive-transfusion activation: penetrating mechanism, SBP <= 90, heart rate >= 120, and a positive FAST exam (1 each); a total >= 2 predicts the need for massive transfusion.',
+    compute: F.abcMtp,
+    fields: [
+      { dom: 'abc-pen', arg: 'penetratingMechanism', kind: 'bool', label: 'Penetrating mechanism' },
+      { dom: 'abc-sbp', arg: 'sbpLe90', kind: 'bool', label: 'SBP <= 90 mmHg' },
+      { dom: 'abc-hr', arg: 'hrGe120', kind: 'bool', label: 'Heart rate >= 120 bpm' },
+      { dom: 'abc-fast', arg: 'positiveFast', kind: 'bool', label: 'Positive FAST exam' },
+    ],
+  },
+  {
+    id: 'npiap-staging',
+    summary: 'NPIAP 2016 pressure-injury staging: classifies from a mucosal location, whether skin is intact and the erythema behavior (blanchable / non-blanchable / deep discoloration), whether slough/eschar obscures the wound base, and the depth (partial-thickness, subcutaneous fat visible, or bone/tendon/muscle visible). Returns the stage.',
+    compute: F.npiapStaging,
+    fields: [
+      { dom: 'np-muc', arg: 'mucosal', kind: 'bool', label: 'Mucosal membrane location' },
+      { dom: 'np-intact', arg: 'skinIntact', kind: 'bool', label: 'Skin intact' },
+      { dom: 'np-blanch', arg: 'blanching', kind: 'enum', values: ['blanchable', 'non-blanchable-erythema', 'non-blanchable-deep-discoloration'], required: true, label: 'Erythema behavior if skin intact' },
+      { dom: 'np-obs', arg: 'obscured', kind: 'bool', label: 'Slough or eschar obscures the wound base' },
+      { dom: 'np-depth', arg: 'depth', kind: 'enum', values: ['partial-thickness', 'subq-visible', 'bone-tendon-muscle'], required: true, label: 'Depth if skin not intact and not obscured' },
+    ],
+  },
+  {
+    id: 'norton-push',
+    summary: 'Norton pressure-sore risk scale (Norton 1962; five items 1-4, <= 14 at risk) alongside the PUSH wound-healing tool (NPIAP 2005; length x width band 0-10, exudate 0-3, tissue type 0-4, total 0-17). Returns both totals.',
+    compute: F.nortonPush,
+    fields: [
+      { dom: 'nr-pc', arg: 'physicalCondition', kind: 'number', required: true, label: 'Norton: physical condition (1-4)' },
+      { dom: 'nr-mc', arg: 'mentalCondition', kind: 'number', required: true, label: 'Norton: mental condition (1-4)' },
+      { dom: 'nr-act', arg: 'activity', kind: 'number', required: true, label: 'Norton: activity (1-4)' },
+      { dom: 'nr-mob', arg: 'mobility', kind: 'number', required: true, label: 'Norton: mobility (1-4)' },
+      { dom: 'nr-inc', arg: 'incontinence', kind: 'number', required: true, label: 'Norton: incontinence (1-4)' },
+      { dom: 'pu-lw', arg: 'lengthWidthBand', kind: 'number', required: true, label: 'PUSH: length x width band (0-10)' },
+      { dom: 'pu-ex', arg: 'exudate', kind: 'number', required: true, label: 'PUSH: exudate amount (0-3)' },
+      { dom: 'pu-tt', arg: 'tissueType', kind: 'number', required: true, label: 'PUSH: tissue type (0-4)' },
+    ],
+  },
+  {
+    id: 'vip-extravasation',
+    summary: 'Peripheral-IV complication grading: the Visual Infusion Phlebitis score (Jackson 1998; 0-5) and the INS infiltration/extravasation grade (INS 2021; 0-4), with a vesicant flag; returns each grade with its label and the escalation banners the thresholds trigger.',
+    compute: F.vipExtravasation,
+    fields: [
+      { dom: 've-vip', arg: 'vip', kind: 'number', required: true, label: 'Visual Infusion Phlebitis score (0-5)' },
+      { dom: 've-ins', arg: 'insGrade', kind: 'number', required: true, label: 'INS infiltration / extravasation grade (0-4)' },
+      { dom: 've-ves', arg: 'vesicant', kind: 'bool', label: 'Infusate is a known vesicant' },
+    ],
+  },
+  {
+    id: 'blood-compat',
+    summary: 'ABO/Rh blood-product compatibility (AABB 33rd ed): from the recipient ABO/Rh type and the product (PRBC, FFP/plasma, platelets, cryoprecipitate), returns the compatible donor types and the emergency-release option.',
+    compute: F.bloodCompat,
+    fields: [
+      { dom: 'bc-recip', arg: 'recipient', kind: 'enum', values: ['O-', 'O+', 'A-', 'A+', 'B-', 'B+', 'AB-', 'AB+'], required: true, label: 'Recipient ABO / Rh' },
+      { dom: 'bc-prod', arg: 'product', kind: 'enum', values: ['prbc', 'ffp', 'platelets', 'cryo'], required: true, label: 'Product type' },
+    ],
+  },
 ];

@@ -966,6 +966,24 @@ rules for imaging - the Ottawa Ankle/Foot Rules and the Ottawa SAH Rule (whose
 exclusion criterion short-circuits the rule to inapplicable). Brings the
 exposed total to **973 calculators across 170 modules**.
 
+## Sixty-eighth wave — the workflow / wound / transfusion cluster in lib/scoring-v4.js (+7)
+
+The DRIP drug-resistant-pneumonia score, the ABC massive-transfusion score,
+NPIAP 2016 pressure-injury staging and the paired Norton + PUSH wound tools,
+the VIP + INS peripheral-IV complication grading, and ABO/Rh blood-product
+compatibility (recipient and product enums). This drains the last adaptable
+Group-G tiles in `lib/scoring-v4.js` (the PECARN IAI rule was already exposed
+in wave 54).
+
+One tile in this module stays unexposed and is recorded as such: `aldrete-padss`
+has an empty `META.example.fields` `{}` whose expected result ("Aldrete 10 /
+PADSS 10") comes from the browser tile's default-2 sliders; a flat compute over
+the empty input object scores 0/0, so the round-trip cannot honor the documented
+value without fabricating defaults the adapter contract does not inject. The
+underlying Aldrete computation is already exposed as the standalone `aldrete`
+tile (wave 58). Brings the exposed total to **979 calculators across 170
+modules**.
+
 ## Exposed
 
 Each id below is live in `mcp/catalog.js`. The gate parses this list.
@@ -2251,6 +2269,12 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 - `must-nutrition`
 - `ottawa-ankle`
 - `ottawa-sah`
+- `drip`
+- `abc-mtp`
+- `npiap-staging`
+- `norton-push`
+- `vip-extravasation`
+- `blood-compat`
 
 ### lib/scoring-v6.js
 - `ballard`
