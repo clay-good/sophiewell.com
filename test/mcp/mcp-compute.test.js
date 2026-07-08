@@ -1484,6 +1484,19 @@ test('lib/clinical-v5.js remaining group-v5 scores worked calls (wave 73)', () =
   assert.match(ab.interpretation, /High/);
 });
 
+test('lib/scoring-v4.js deterministic ICU workflow worked calls (wave 74)', () => {
+  // LIPS: shock (2) + aspiration (2) = 4, high risk.
+  const lp = ok('lips', { 'lp-shock': '1', 'lp-asp': '1', 'lp-sep': '0', 'lp-pna': '0', 'lp-surg': '0', 'lp-trauma': '0', 'lp-etoh': '0', 'lp-obese': '0', 'lp-alb': '0', 'lp-chemo': '0', 'lp-fio2': '0', 'lp-tach': '0', 'lp-spo2': '0', 'lp-acid': '0', 'lp-dm': '0' });
+  assert.equal(lp.score, 4);
+  const mt = ok('mtp-tracker', { 'mtp-prbc': '6', 'mtp-ffp': '4', 'mtp-plt': '1', 'mtp-cryo': '0' });
+  assert.equal(mt.ratio, '6:4:1');
+  assert.equal(mt.cumulativeUnits, 11);
+  const bg = ok('bristol-girth', { 'bg-b': '4' });
+  assert.equal(bg.bristolType, 4);
+  assert.equal(bg.category, 'normal');
+  assert.equal(ok('bristol-girth', { 'bg-b': '7' }).category, 'diarrhea');
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];

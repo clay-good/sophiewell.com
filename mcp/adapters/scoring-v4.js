@@ -1913,4 +1913,51 @@ export default [
       { dom: 'hs-set', arg: 'setting', kind: 'enum', values: ['field', 'hospital'], required: true, label: 'Setting' },
     ],
   },
+
+  // --- wave 74: the deterministic ICU workflow / monitoring tiles ----------
+  {
+    id: 'lips',
+    summary: 'Lung Injury Prediction Score (Gajic 2011) for ARDS risk: weighted predisposing conditions (shock 2, aspiration 2, sepsis 1, pneumonia 1.5, high-risk surgery 1.5, high-risk trauma 2) and risk modifiers (alcohol, obesity, hypoalbuminemia, chemotherapy, high FiO2 2, tachypnea 1.5, SpO2 < 95, acidosis 1.5, diabetes -1); >= 4 is high risk.',
+    compute: F.lips,
+    fields: [
+      { dom: 'lp-shock', arg: 'shock', kind: 'bool', label: 'Shock (2)' },
+      { dom: 'lp-asp', arg: 'aspiration', kind: 'bool', label: 'Aspiration (2)' },
+      { dom: 'lp-sep', arg: 'sepsis', kind: 'bool', label: 'Sepsis (1)' },
+      { dom: 'lp-pna', arg: 'pneumonia', kind: 'bool', label: 'Pneumonia (1.5)' },
+      { dom: 'lp-surg', arg: 'highRiskSurgery', kind: 'bool', label: 'High-risk surgery (1.5)' },
+      { dom: 'lp-trauma', arg: 'highRiskTrauma', kind: 'bool', label: 'High-risk trauma (2)' },
+      { dom: 'lp-etoh', arg: 'alcoholAbuse', kind: 'bool', label: 'Alcohol abuse (1)' },
+      { dom: 'lp-obese', arg: 'obesityBmiGt30', kind: 'bool', label: 'Obesity BMI > 30 (1)' },
+      { dom: 'lp-alb', arg: 'hypoalbuminemia', kind: 'bool', label: 'Hypoalbuminemia (1)' },
+      { dom: 'lp-chemo', arg: 'chemotherapy', kind: 'bool', label: 'Chemotherapy (1)' },
+      { dom: 'lp-fio2', arg: 'fio2Gt035or4L', kind: 'bool', label: 'FiO2 > 0.35 or > 4 L/min (2)' },
+      { dom: 'lp-tach', arg: 'tachypneaRrGt30', kind: 'bool', label: 'Tachypnea RR > 30 (1.5)' },
+      { dom: 'lp-spo2', arg: 'spo2Lt95', kind: 'bool', label: 'SpO2 < 95% (1)' },
+      { dom: 'lp-acid', arg: 'acidosisPhLt735', kind: 'bool', label: 'Acidosis pH < 7.35 (1.5)' },
+      { dom: 'lp-dm', arg: 'diabetes', kind: 'bool', label: 'Diabetes mellitus (-1)' },
+    ],
+  },
+  {
+    id: 'mtp-tracker',
+    summary: 'Massive-transfusion-protocol ratio tracker: from the PRBC, FFP/plasma, platelet, and cryoprecipitate units transfused, returns the running PRBC:FFP:platelet ratio (vs the PROPPR 1:1:1 target), the next product to give, cumulative units, and cryoprecipitate doses due.',
+    compute: F.mtpTracker,
+    fields: [
+      { dom: 'mtp-prbc', arg: 'prbcUnits', kind: 'number', required: true, label: 'PRBC units transfused' },
+      { dom: 'mtp-ffp', arg: 'ffpUnits', kind: 'number', required: true, label: 'FFP / plasma units transfused' },
+      { dom: 'mtp-plt', arg: 'plateletUnits', kind: 'number', required: true, label: 'Platelet apheresis units transfused' },
+      { dom: 'mtp-cryo', arg: 'cryoUnits', kind: 'number', required: true, label: 'Cryoprecipitate doses transfused' },
+    ],
+  },
+  {
+    id: 'bristol-girth',
+    summary: 'Bristol Stool Form Scale (Lewis 1997; type 1-7 mapped to constipation / normal / soft / diarrhea) with an optional abdominal-girth trend (girth and timestamp at two points yields the change per hour).',
+    compute: F.bristolGirth,
+    fields: [
+      { dom: 'bg-b', arg: 'bristolType', kind: 'number', required: true, label: 'Bristol stool type (1-7)' },
+      { dom: 'bg-g0', arg: 'girthT0Cm', kind: 'number', label: 'Abdominal girth at T0 (optional)', unit: 'cm' },
+      { dom: 'bg-t0', arg: 't0Timestamp', kind: 'string', label: 'T0 timestamp (optional, ISO)' },
+      { dom: 'bg-g1', arg: 'girthT1Cm', kind: 'number', label: 'Abdominal girth at T1 (optional)', unit: 'cm' },
+      { dom: 'bg-t1', arg: 't1Timestamp', kind: 'string', label: 'T1 timestamp (optional, ISO)' },
+    ],
+  },
 ];

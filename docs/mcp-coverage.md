@@ -1040,6 +1040,19 @@ Revised Cardiac Risk Index (perioperative), the Pediatric Early Warning Score
 `Respiratory`), and the ABCD2 post-TIA stroke-risk score. Append-only. Brings
 the exposed total to **1001 calculators across 171 modules**.
 
+## Seventy-fourth wave — the deterministic ICU workflow tiles in lib/scoring-v4.js (+3)
+
+The three `views/group-h.js` / `views/group-g.js` monitoring tiles whose compute
+is a pure function of its inputs: the Lung Injury Prediction Score (LIPS), the
+massive-transfusion-protocol ratio tracker, and the Bristol Stool Form Scale
+(with its optional abdominal-girth trend, timestamps passed as strings).
+Append-only. The remaining group-h tiles are deferred: the clock/timer tiles
+(`ews-escalation`, `restraint-timer`, `sepsis-bundle-clock`, `code-blue-clock`,
+`device-day-counter`) compute from wall-clock timestamps, and `vent-sbt-peep`'s
+example encodes a checkbox as the non-boolean string `"on"`; both need a
+dedicated pass. Brings the exposed total to **1004 calculators across 171
+modules**.
+
 ## Exposed
 
 Each id below is live in `mcp/catalog.js`. The gate parses this list.
@@ -2343,6 +2356,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 - `blood-compat`
 - `hypothermia-rewarm`
 - `heatstroke-decision`
+- `lips`
+- `mtp-tracker`
+- `bristol-girth`
 
 ### lib/scoring-v6.js
 - `ballard`
