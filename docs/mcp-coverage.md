@@ -915,6 +915,17 @@ Score. The non-uniform ordinal selects (YOS 1/3/5, Westley and PRAM per-item
 maxima) map as enums coerced to numbers so each carries its point value
 directly. Brings the exposed total to **934 calculators across 170 modules**.
 
+## Sixty-third wave — the falls-risk and neuro-assessment cluster in lib/scoring-v4.js (+8)
+
+The three fall-risk scores Braden (pressure injury), Morse Fall Scale, and
+Hendrich II (the last two mix weighted booleans with ordinal-aid/gait/get-up
+enums), the non-ICU CAM delirium screen, the ICH Score (with its 30-day
+mortality band), the aneurysmal-SAH Hunt-Hess + WFNS grading pair, the modified
+NIHSS, and the FOUR coma score. The CAM and mNIHSS examples carry empty
+`fields` objects (all inputs default false/0), so every one of those adapter
+fields is declared optional and the empty example round-trips. Brings the
+exposed total to **942 calculators across 170 modules**.
+
 ## Exposed
 
 Each id below is live in `mcp/catalog.js`. The gate parses this list.
@@ -2161,6 +2172,14 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 - `pass-asthma`
 - `peds-gcs`
 - `nigrovic`
+- `braden`
+- `morse-falls`
+- `hendrich-ii`
+- `cam`
+- `ich-score`
+- `hunt-hess-wfns`
+- `mnihss`
+- `four-score`
 
 ### lib/scoring-v6.js
 - `ballard`

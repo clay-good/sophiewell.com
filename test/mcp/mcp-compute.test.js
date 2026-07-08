@@ -1242,6 +1242,36 @@ test('lib/scoring-v4.js pediatric fever / sepsis + respiratory worked calls (wav
   assert.equal(ni.veryLowRisk, false);
 });
 
+test('lib/scoring-v4.js falls-risk + neuro-assessment worked calls (wave 63)', () => {
+  const br = ok('braden', { 'br-sens': '2', 'br-moist': '2', 'br-act': '2', 'br-mob': '2', 'br-nutr': '2', 'br-fric': '2' });
+  assert.equal(br.score, 12);
+  assert.equal(br.band, 'high risk');
+  // Morse: history (25) + impaired gait (20) + furniture aid (30) = 75, high.
+  const mf = ok('morse-falls', { 'mf-hist': '1', 'mf-sec': '0', 'mf-aid': 'furniture', 'mf-iv': '0', 'mf-gait': 'impaired', 'mf-ms': 'oriented' });
+  assert.equal(mf.score, 75);
+  assert.equal(mf.band, 'high');
+  // Hendrich II: confusion (4) + unable get-up (4) = 8, high.
+  const hii = ok('hendrich-ii', { 'hii-conf': '1', 'hii-gug': 'unable' });
+  assert.equal(hii.score, 8);
+  assert.equal(hii.highRisk, true);
+  assert.equal(ok('cam', { 'cam-f1': '1', 'cam-f2': '1', 'cam-f3': '1' }).positive, true);
+  assert.equal(ok('cam', { 'cam-f1': '1', 'cam-f2': '0' }).positive, false);
+  // ICH: GCS 5 (1) + age 82 (1) + vol 40 (1) + IVH (1) = 4, 97% mortality.
+  const ich = ok('ich-score', { 'ich-gcs': '5', 'ich-age': '82', 'ich-vol': '40', 'ich-infra': '0', 'ich-ivh': '1' });
+  assert.equal(ich.score, 4);
+  assert.equal(ich.mortality30d, '97%');
+  // Hunt-Hess grade III, GCS 13 with focal deficit -> WFNS 3.
+  const hh = ok('hunt-hess-wfns', { 'hh-grade': '3', 'hh-gcs': '13', 'hh-focal': '1' });
+  assert.equal(hh.huntHess, 3);
+  assert.equal(hh.wfns, 3);
+  // mNIHSS: gaze 2 + arm-left 4 + language 2 = 8, moderate.
+  const mn = ok('mnihss', { 'mn-gaze': '2', 'mn-arm-l': '4', 'mn-lang': '2' });
+  assert.equal(mn.total, 8);
+  assert.equal(mn.severity, 'moderate stroke');
+  const fs = ok('four-score', { 'fs-eye': '2', 'fs-motor': '3', 'fs-brain': '4', 'fs-resp': '3' });
+  assert.equal(fs.score, 12);
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];
