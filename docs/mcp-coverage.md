@@ -877,6 +877,21 @@ booleans and threading `ageYears` — the drug-burden-index precedent); and the
 Clinical Frailty Scale plus the coupled ECOG / Karnofsky performance-status
 picker. Brings the exposed total to **904 calculators across 170 modules**.
 
+## Sixtieth wave — the VTE / anticoagulation bleeding and risk cluster in lib/scoring-v4.js (+14)
+
+The PE-severity pair PESI + sPESI and the Padua inpatient-VTE score; the four
+anticoagulation bleeding-risk scores ATRIA, ORBIT, HEMORR2HAGES, and IMPROVE-
+Bleeding (the last with its banded age / renal-failure enums and a fractional
+weighted total); the IMPROVE-VTE prophylaxis score; the cancer-VTE Khorana
+score; the VTE-recurrence pair DASH (with its -2 hormone item) and HERDOO2;
+the two hematology instruments 4Ts (HIT pretest probability) and the ISTH
+overt-DIC score (with its required underlying-disorder gate); and the DAPT
+score for extended dual-antiplatelet therapy. All single-instrument adapters;
+the banded categoricals (IMPROVE-Bleeding age/renal, Khorana site, ISTH
+platelet/marker/PT/fibrinogen, DAPT age) map as enums the lib reads as strings,
+and the 4Ts domains as 0-2 numbers. Brings the exposed total to **918
+calculators across 170 modules**.
+
 ## Exposed
 
 Each id below is live in `mcp/catalog.js`. The gate parses this list.
@@ -2093,6 +2108,20 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 - `charlson`
 - `cfs`
 - `ecog-karnofsky`
+- `pesi`
+- `spesi`
+- `padua`
+- `atria-bleeding`
+- `orbit-bleeding`
+- `hemorr2hages`
+- `improve-bleeding`
+- `improve-vte`
+- `khorana`
+- `dash-vte`
+- `herdoo2`
+- `four-ts`
+- `isth-dic`
+- `dapt-score`
 
 ### lib/scoring-v6.js
 - `ballard`

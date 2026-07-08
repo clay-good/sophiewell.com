@@ -73,7 +73,7 @@ strings; booleans as `true`/`false`; enums by their listed string values.
 
 ```
 list_calculators { "specialty": "hepatology" }
-  -> { coverage: "904 of 1109 catalog tiles exposed ...", calculators: [ { id: "meld-xi", ... }, ... ] }
+  -> { coverage: "918 of 1109 catalog tiles exposed ...", calculators: [ { id: "meld-xi", ... }, ... ] }
 
 describe_calculator { "id": "meld-xi" }
   -> { inputSchema: { ... mx-bili, mx-creat ... }, citation: "Heuman DM ... Liver Transpl 2007", ... }
@@ -216,8 +216,10 @@ assessment cluster (Mini-Cog, CIWA-Ar, COWS, Epworth, STOP-BANG, Berlin OSA,
 Apfel, Aldrete, LEMON, White-Song), and a fifty-ninth the GI-bleed /
 readmission / comorbidity / performance-status cluster (Glasgow-Blatchford,
 Rockall, AIMS65, Oakland, Maddrey + Lille, the two Canadian imaging rules,
-HOSPITAL, LACE, Charlson, Clinical Frailty Scale, ECOG + Karnofsky), for 904
-across 170 modules today. <!-- catalog-truth:historical (170 is the count of lib modules adapted, not a catalog tile count) -->
+HOSPITAL, LACE, Charlson, Clinical Frailty Scale, ECOG + Karnofsky), and a
+sixtieth the VTE / anticoagulation bleeding-and-risk cluster (PESI, sPESI,
+Padua, ATRIA, ORBIT, HEMORR2HAGES, IMPROVE-Bleeding, IMPROVE-VTE, Khorana,
+DASH, HERDOO2, 4Ts, ISTH-DIC, DAPT), for 918 across 170 modules today. <!-- catalog-truth:historical (170 is the count of lib modules adapted, not a catalog tile count) -->
 Later waves extend it module by module against the same contract.
 
 ## Design

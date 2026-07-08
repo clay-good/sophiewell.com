@@ -1135,6 +1135,53 @@ test('lib/scoring-v4.js GI-bleed / readmission / comorbidity / performance worke
   assert.equal(ek.suggestedKps, 60);
 });
 
+test('lib/scoring-v4.js VTE / anticoagulation bleeding + risk worked calls (wave 60)', () => {
+  // PESI: age 70 + cancer (30) + HR>=110 (20) = 120, Class IV.
+  const pe = ok('pesi', { 'pe-age': '70', 'pe-sex': 'F', 'pe-ca': '1', 'pe-hr': '1', 'pe-sbp': '0', 'pe-rr': '0', 'pe-tmp': '0', 'pe-ams': '0', 'pe-sao2': '0', 'pe-hf': '0', 'pe-cld': '0' });
+  assert.equal(pe.score, 120);
+  assert.equal(pe.class, 'IV');
+  assert.equal(ok('spesi', { 'sp-age80': '1', 'sp-ca': '1', 'sp-ccp': '0', 'sp-hr': '0', 'sp-sbp': '0', 'sp-sao2': '0' }).score, 2);
+  // Padua: active cancer (3) + reduced mobility (3) = 6, high risk.
+  const pa = ok('padua', { 'pa-ca': '1', 'pa-mob': '1', 'pa-vte': '0', 'pa-thr': '0', 'pa-trauma': '0', 'pa-age': '0', 'pa-hf': '0', 'pa-mi': '0', 'pa-inf': '0', 'pa-bmi': '0', 'pa-horm': '0' });
+  assert.equal(pa.score, 6);
+  const at = ok('atria-bleeding', { 'at-an': '1', 'at-ag': '1', 'at-rn': '0', 'at-bl': '0', 'at-ht': '0' });
+  assert.equal(at.score, 5);
+  assert.match(at.band, /high/);
+  const ob = ok('orbit-bleeding', { 'ob-hb': '1', 'ob-bh': '1', 'ob-age': '0', 'ob-ri': '0', 'ob-ap': '0' });
+  assert.equal(ob.score, 4);
+  const hh = ok('hemorr2hages', { 'hh-reb': '1', 'hh-old': '1', 'hh-hr': '0', 'hh-et': '0', 'hh-mal': '0', 'hh-plt': '0', 'hh-htn': '0', 'hh-an': '0', 'hh-gen': '0', 'hh-fall': '0', 'hh-stk': '0' });
+  assert.equal(hh.score, 3);
+  // IMPROVE-Bleeding: active ulcer (4.5) + age 40-84 (1.5) + severe renal (2.5) = 8.5, high.
+  const ib = ok('improve-bleeding', { 'ib-ulcer': '1', 'ib-age': '40-84', 'ib-renal': 'severe', 'ib-bleed3': '0', 'ib-plt': '0', 'ib-hep': '0', 'ib-icu': '0', 'ib-cvc': '0', 'ib-rheum': '0', 'ib-cancer': '0', 'ib-male': '0' });
+  assert.equal(ib.score, 8.5);
+  assert.equal(ib.highBleedingRisk, true);
+  const iv = ok('improve-vte', { 'iv-prior': '1', 'iv-cancer': '1', 'iv-thr': '0', 'iv-para': '0', 'iv-immob': '0', 'iv-icu': '0', 'iv-age60': '0' });
+  assert.equal(iv.score, 5);
+  // Khorana: very-high site (2) + platelets (1) = 3, high.
+  const kh = ok('khorana', { 'kh-site': 'very-high', 'kh-plt': '1', 'kh-hb': '0', 'kh-wbc': '0', 'kh-bmi': '0' });
+  assert.equal(kh.score, 3);
+  assert.match(kh.band, /high/);
+  // DASH: D-dimer (2) + male (1) - hormone (2) = 1, low.
+  const da = ok('dash-vte', { 'da-dd': '1', 'da-male': '1', 'da-horm': '1', 'da-age': '0' });
+  assert.equal(da.score, 1);
+  const hd = ok('herdoo2', { 'hd-legs': '1', 'hd-dd': '1', 'hd-bmi': '0', 'hd-age': '0' });
+  assert.equal(hd.score, 2);
+  assert.equal(hd.canDiscontinue, false);
+  const ft = ok('four-ts', { '4t-thr': '2', '4t-time': '2', '4t-throm': '1', '4t-oth': '1' });
+  assert.equal(ft.score, 6);
+  assert.match(ft.band, /high/);
+  // ISTH DIC: gate met, platelets <50 (2) + strong marker (3) = 5, overt DIC.
+  const id = ok('isth-dic', { 'id-gate': '1', 'id-plt': '<50', 'id-fdp': 'strong', 'id-pt': '<3s', 'id-fib': '>1' });
+  assert.equal(id.score, 5);
+  assert.equal(id.overtDic, true);
+  // Gate not met short-circuits.
+  assert.equal(ok('isth-dic', { 'id-gate': '0', 'id-plt': '<50', 'id-fdp': 'strong', 'id-pt': '>6s', 'id-fib': '<=1' }).gateNotMet, true);
+  // DAPT: CHF (2) + vein graft (2) - age>=75 (2) = 2, favors extended DAPT.
+  const dp = ok('dapt-score', { 'dp-age': '>=75', 'dp-chf': '1', 'dp-vgp': '1', 'dp-mi': '0', 'dp-prior': '0', 'dp-dm': '0', 'dp-stent': '0', 'dp-pac': '0', 'dp-smoke': '0' });
+  assert.equal(dp.score, 2);
+  assert.equal(dp.favorsExtendedDapt, true);
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];
