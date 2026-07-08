@@ -1497,6 +1497,24 @@ test('lib/scoring-v4.js deterministic ICU workflow worked calls (wave 74)', () =
   assert.equal(ok('bristol-girth', { 'bg-b': '7' }).category, 'diarrhea');
 });
 
+test('lib/idcrit-v99.js ID / critical-care criteria worked calls (wave 75)', () => {
+  // Duke: 2 major criteria -> definite.
+  const du = ok('duke-endocarditis', { 'duke-maj-microbiologic': '1', 'duke-maj-imaging': '1' });
+  assert.equal(du.majorCount, 2);
+  assert.equal(du.verdict, 'definite');
+  // Pitt: severe temp (2) + hypotension (2) = 4, high risk.
+  const pi = ok('pitt-bacteremia', { 'pitt-temp': 'severe', 'pitt-hypotension': '1', 'pitt-mental': 'alert' });
+  assert.equal(pi.total, 4);
+  assert.equal(pi.highRisk, true);
+  const sa = ok('saps-ii', { 'saps-age': '70', 'saps-hr': '130', 'saps-sbp': '90', 'saps-temp': '38', 'saps-vent': '1', 'saps-pao2': '80', 'saps-fio2': '0.5', 'saps-urine': '0.4', 'saps-bun': '60', 'saps-na': '140', 'saps-k': '4.0', 'saps-hco3': '18', 'saps-bili': '2.0', 'saps-wbc': '15', 'saps-gcs': '12', 'saps-chronic': 'none', 'saps-admit': 'medical' });
+  assert.equal(sa.score, 64);
+  assert.equal(Math.round(sa.mortality * 10) / 10, 75.3);
+  // Refeeding: BMI 15 is a major criterion -> high risk.
+  const rf = ok('refeeding-risk', { 'ref-bmi': '15', 'ref-wl': '5', 'ref-days': '2' });
+  assert.equal(rf.highRisk, true);
+  assert.equal(rf.majorCount, 1);
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];

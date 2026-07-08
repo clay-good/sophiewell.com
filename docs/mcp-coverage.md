@@ -1053,6 +1053,19 @@ example encodes a checkbox as the non-boolean string `"on"`; both need a
 dedicated pass. Brings the exposed total to **1004 calculators across 171
 modules**.
 
+## Seventy-fifth wave — the ID / critical-care criteria in lib/idcrit-v99.js (+4, new module)
+
+A new lib module (`lib/idcrit-v99.js`, registered in `mcp/catalog.js`): the
+modified Duke endocarditis rule (its major/minor criterion arrays rebuilt from
+flat per-criterion booleans, the key sets read from the lib's own
+`DUKE_MAJOR_CRITERIA` / `DUKE_MINOR_CRITERIA` tables so the schema cannot
+drift - the kawasaki / mcgeer precedent), the Pitt Bacteremia Score, SAPS II
+(17 physiologic / categorical variables banded to a predicted-mortality
+percentage), and the NICE refeeding-syndrome risk criteria. The fifth tile in
+this module, `lund-browder`, stays deferred: it takes a variable-length
+per-region burn-fraction object needing its own bespoke `toArgs`. Brings the
+exposed total to **1008 calculators across 172 modules**.
+
 ## Exposed
 
 Each id below is live in `mcp/catalog.js`. The gate parses this list.
@@ -2402,6 +2415,12 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 - `fast`
 - `start-triage`
 - `jumpstart-triage`
+
+### lib/idcrit-v99.js
+- `duke-endocarditis`
+- `pitt-bacteremia`
+- `saps-ii`
+- `refeeding-risk`
 
 ## Not yet adapted
 
