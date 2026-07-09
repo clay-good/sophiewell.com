@@ -73,7 +73,7 @@ strings; booleans as `true`/`false`; enums by their listed string values.
 
 ```
 list_calculators { "specialty": "hepatology" }
-  -> { coverage: "1040 of 1109 catalog tiles exposed ...", calculators: [ { id: "meld-xi", ... }, ... ] }
+  -> { coverage: "1041 of 1109 catalog tiles exposed ...", calculators: [ { id: "meld-xi", ... }, ... ] }
 
 describe_calculator { "id": "meld-xi" }
   -> { inputSchema: { ... mx-bili, mx-creat ... }, citation: "Heuman DM ... Liver Transpl 2007", ... }
@@ -269,9 +269,10 @@ eighty-fourth the measured timed-urine creatinine clearance in
 `lib/proteins-v274.js`, and an eighty-eighth the TyG-BMI insulin-resistance
 surrogate in `lib/metabolic-v273.js`, and an eighty-ninth the waist-to-height
 ratio in `lib/anthro-v272.js`, and a ninetieth the Castelli Risk Indices in
-`lib/lipids-v271.js`, for
-1040 across 180 modules
-today. <!-- catalog-truth:historical (180 is the count of lib modules adapted, not a catalog tile count) -->
+`lib/lipids-v271.js`, and a ninety-first the Cardiometabolic Index in
+`lib/adiposity-v270.js`, for
+1041 across 181 modules
+today. <!-- catalog-truth:historical (181 is the count of lib modules adapted, not a catalog tile count) -->
 Later waves extend it module by module against the same contract.
 
 ## Design

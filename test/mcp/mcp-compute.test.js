@@ -1688,6 +1688,15 @@ test('lib/lipids-v271.js worked calls', () => {
   assert.equal(worse.cri2, 4);
 });
 
+test('lib/adiposity-v270.js worked calls', () => {
+  // TG 150 / HDL 50 = 3.0, waist 90 / height 170 = 0.529 -> CMI 1.59.
+  const cmi = ok('cmi', { 'cmi-tg': '150', 'cmi-hdl': '50', 'cmi-waist': '90', 'cmi-height': '170' });
+  assert.equal(cmi.score, 1.59);
+  // A higher TG/HDL and larger waist worsen the index.
+  const worse = ok('cmi', { 'cmi-tg': '200', 'cmi-hdl': '40', 'cmi-waist': '100', 'cmi-height': '170' });
+  assert.ok(worse.score > cmi.score);
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];

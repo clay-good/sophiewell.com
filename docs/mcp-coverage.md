@@ -1245,6 +1245,16 @@ round-trips through the default `makeToArgs`. New adapter module registered in
 `mcp/catalog.js`. Brings the exposed total to **1040 calculators across 180
 modules**.
 
+## Ninety-first wave — the Cardiometabolic Index in lib/adiposity-v270.js (+1)
+
+`cmi` (spec-v270) is the Cardiometabolic Index `(triglycerides / HDL) x
+waist-to-height ratio`, lipids in mg/dL (Wakabayashi 2015) — a higher value
+marks a worse cardiometabolic profile (no universal cut-point). Bounded
+four-number compute through `lib/num.js`; its `bandLabel` carries the 1.59
+example result, so the example round-trips through the default `makeToArgs`. New
+adapter module registered in `mcp/catalog.js`. Brings the exposed total to
+**1041 calculators across 181 modules**.
+
 ## Exposed
 
 Each id below is live in `mcp/catalog.js`. The gate parses this list.
@@ -2634,6 +2644,7 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 - `tyg-bmi`
 - `whtr`
 - `castelli-index`
+- `cmi`
 
 ## Not yet adapted
 
