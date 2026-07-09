@@ -6,6 +6,17 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v267 — HALP composite prognostic index, 1126 → 1127)
+
+- The HALP score (`halp-score`), the sole tile of spec-v267, extending the spec-v229/v230
+  prognostic inflammation-index family (NLR/PLR/SII/LMR/SIRI/PIV/CAR). New module
+  `lib/inflam-v267.js`, renderer `views/group-v267.js` (RV267). Verified absent (spec-v85
+  §6.2); computes a lab value — no diagnosis or treatment order (spec-v11 §5.3). HALP =
+  hemoglobin (g/L) × albumin (g/L) × absolute lymphocyte count (10⁹/L) / platelet count
+  (10⁹/L); a LOWER value is less favorable and the cutoff is cohort/cancer-specific (no
+  universal threshold). Formula cross-verified against Chen 2015 (Oncotarget, gastric
+  derivation) and Guo 2019 (J Cancer, pan-cancer validation). Class A.
+
 ### Added (spec-v266 — SSIGN RCC cancer-specific-survival score, 1125 → 1126; Leibovich & UISS parked)
 
 - The SSIGN score (`ssign-score`), first tile of spec-v266 (Advanced Sub-specialty
