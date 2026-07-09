@@ -6,6 +6,17 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v272 — Waist-to-Height Ratio (WHtR), 1131 → 1132)
+
+- The waist-to-height ratio (`whtr`), the sole tile of spec-v272, joining the
+  anthropometric/adiposity tiles beside the cardiometabolic index and VAI/LAP. New module
+  `lib/anthro-v272.js`, renderer `views/group-v272.js` (RV272). Verified absent (spec-v85
+  §6.2); an anthropometric ratio with a source-quoted boundary — no diagnosis or treatment
+  order (spec-v11 §5.3). WHtR = waist / height (same units), with the 0.5 boundary ("keep
+  your waist to less than half your height") and the Ashwell shape-chart bands (below 0.4 /
+  0.4-0.5 healthy / 0.5-0.6 increased / ≥0.6 high). Boundaries cross-verified against Ashwell
+  & Gibson 2016 (BMJ Open) and NICE. Class A.
+
 ### Added (spec-v271 — Castelli Risk Index I & II, 1130 → 1131)
 
 - The Castelli Risk Index (`castelli-index`), the sole tile of spec-v271, joining the lipid
