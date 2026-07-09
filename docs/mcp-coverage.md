@@ -1235,6 +1235,16 @@ round-trips through the default `makeToArgs`. New adapter module registered in
 `mcp/catalog.js`. Brings the exposed total to **1039 calculators across 179
 modules**.
 
+## Ninetieth wave — the Castelli Risk Indices in lib/lipids-v271.js (+1)
+
+`castelli-index` (spec-v271) returns Castelli Risk Index-I (total cholesterol /
+HDL) and Risk Index-II (LDL / HDL), all in mg/dL — higher ratios mark a more
+atherogenic profile. Bounded three-number compute through `lib/num.js`; the
+result echoes both the 4 (RI-I) and 2.6 (RI-II) example ratios, so the example
+round-trips through the default `makeToArgs`. New adapter module registered in
+`mcp/catalog.js`. Brings the exposed total to **1040 calculators across 180
+modules**.
+
 ## Exposed
 
 Each id below is live in `mcp/catalog.js`. The gate parses this list.
@@ -2623,6 +2633,7 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 - `agr`
 - `tyg-bmi`
 - `whtr`
+- `castelli-index`
 
 ## Not yet adapted
 

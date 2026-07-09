@@ -1677,6 +1677,17 @@ test('lib/anthro-v272.js worked calls', () => {
   assert.equal(lean.abnormal, false);
 });
 
+test('lib/lipids-v271.js worked calls', () => {
+  // TC 200, LDL 130, HDL 50 -> RI-I 4 (TC/HDL), RI-II 2.6 (LDL/HDL).
+  const c = ok('castelli-index', { 'cast-tc': '200', 'cast-ldl': '130', 'cast-hdl': '50' });
+  assert.equal(c.score, 4);
+  assert.equal(c.cri2, 2.6);
+  // A lower HDL raises both atherogenic ratios.
+  const worse = ok('castelli-index', { 'cast-tc': '240', 'cast-ldl': '160', 'cast-hdl': '40' });
+  assert.equal(worse.score, 6);
+  assert.equal(worse.cri2, 4);
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];
