@@ -6,6 +6,21 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v258 — acute & primary-care decision rules, 1109 → 1112)
+
+- Three deterministic decision rules, first feature spec of the Advanced
+  Risk-Stratification Instruments program. New module `lib/decision-rules-v258.js`,
+  renderers `views/group-v258.js` (RV258). Each id was verified absent by a
+  fixed-string scan of the extracted app.js id/name lists AND the MCP adapter set
+  (spec-v85 §6.2); each computes a risk/eligibility category — none images, admits,
+  discharges, or prescribes (spec-v11 §5.3). Criteria cross-verified against ≥2 open
+  sources (spec-v97).
+- **Canadian CT Head Rule** (`canadian-ct-head`): five high-risk (neurosurgical) +
+  two medium-risk (clinically important) criteria; CT recommended if any is present.
+  **San Francisco Syncope Rule** (`sf-syncope`): CHESS mnemonic, any-positive → high
+  risk for a serious 7-day outcome. **McIsaac score** (`mcisaac`): age-adjusted Centor
+  (−1…5) mapped to group A strep probability and a testing strategy. All Class A.
+
 ### Added (spec-v183 — MCP wave 53: clear the deferral backlog (14 calculators across 9 lib modules) as deterministic agent tools; no tile delta, 1109)
 
 - Exposes the fourteen catalog tiles earlier MCP waves parked because they needed

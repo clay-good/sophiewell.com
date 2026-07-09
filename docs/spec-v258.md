@@ -1,6 +1,6 @@
 # spec-v258.md — Acute & primary-care decision rules: the Canadian CT Head Rule, the San Francisco Syncope Rule, and the McIsaac score (+3 tiles)
 
-> Status: **PROPOSED (2026-07-08).** First feature spec of the **Advanced
+> Status: **SHIPPED (2026-07-08, 1109 → 1112).** First feature spec of the **Advanced
 > Risk-Stratification Instruments** program (§1.1). Adds **3** deterministic
 > point/criteria rules that decide imaging, disposition, or testing at the bedside.
 > **Each id was verified absent by a fixed-string scan of the extracted `app.js`
