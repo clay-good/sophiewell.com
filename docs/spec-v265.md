@@ -1,18 +1,31 @@
 # spec-v265.md — Predicting massive transfusion at the trauma bay: the Assessment of Blood Consumption score, the McLaughlin score, and the Prince of Wales Hospital score (+3 tiles)
 
-> Status: **PROPOSED (2026-07-09).** Second feature spec of the **Advanced Sub-specialty
-> Prognostic Instruments** program ([spec-v264](spec-v264.md) §1.1). Adds **3**
-> deterministic instruments that a trauma team uses in the first minutes of resuscitation
-> to decide whether to activate a massive-transfusion protocol — the simplest 4-variable
-> bedside trigger, the lab-anchored logistic model, and the weighted seven-variable score.
-> **Each id was verified absent by a fixed-string scan of the extracted `app.js` id/name
-> list** ([spec-v85 §6.2](spec-v85.md)): the catalog carries `tash-score`, `rabt-score`,
-> `shock-index`, `revised-baux`, `iss-rts`, and `triss`, but **not** the Assessment of
-> Blood Consumption (ABC) score, the McLaughlin score, or the Prince of Wales Hospital
-> (PWH) score.
+> Status: **PARTIALLY SHIPPED (2026-07-09, +1 of 3; McLaughlin & PWH parked).** Second
+> feature spec of the **Advanced Sub-specialty Prognostic Instruments** program
+> ([spec-v264](spec-v264.md) §1.1). Proposes **3** MTP-activation instruments; **1
+> shipped** (the ABC score), **2 parked** (McLaughlin, PWH). **Each id was verified
+> absent** ([spec-v85 §6.2](spec-v85.md)).
 >
-> Catalog effect: **live `UTILITIES.length` + 3** — enforced by the catalog-truth
-> gate ([spec-v46](spec-v46.md)) at build time; no number is copied here.
+> **Shipped:** `abc-transfusion-score` — the four-variable bedside trigger is fully
+> reproducible (Nunez 2009; four non-weighted binary items, >= 2 predicts MT) and is live.
+>
+> **Parked (spec-v97 / [spec-v259](spec-v259.md) precedent):** the exact values of the
+> other two cannot be reproduced from >= 2 open, fetchable sources in-session:
+>
+> - **`mclaughlin-score`** — the logistic intercept **sign is dropped** in every reachable
+>   secondary render (printed as `+1.576`, which yields an implausible ~83% baseline; the
+>   true value is almost certainly `-1.576`), and the count-to-probability table lives only
+>   in the paywalled primary (McLaughlin 2008 *J Trauma*).
+> - **`pwh-mt-score`** — the per-variable point weights live only in the paywalled primary
+>   (Rainer 2011 *Resuscitation*); open validations confirm the seven variables and the
+>   `>= 2.5` cutoff but decline the weights.
+>
+> **Re-open condition:** ship each parked tile when its weight table / logistic
+> coefficients are reproducible from >= 2 open, fetchable sources, or are supplied directly.
+>
+> Catalog effect this slice: **live `UTILITIES.length` + 1** (ABC only), enforced by the
+> catalog-truth gate ([spec-v46](spec-v46.md)); the remaining +2 lands when the parked
+> tiles re-open.
 >
 > Every prior spec remains in force. v265 adds no runtime network call and no AI; each
 > tile obeys the [spec-v100](spec-v100.md) §2 doctrine, passes the

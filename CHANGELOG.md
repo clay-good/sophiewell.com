@@ -6,6 +6,20 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v265 — ABC massive-transfusion trigger, 1124 → 1125; McLaughlin & PWH parked)
+
+- The Assessment of Blood Consumption (ABC) score (`abc-transfusion-score`), first tile of
+  spec-v265 (Advanced Sub-specialty Prognostic Instruments program). New module
+  `lib/massive-transfusion-v265.js`, renderer `views/group-v265.js` (RV265). Verified absent
+  (spec-v85 §6.2); computes a trigger category — no transfusion, protocol-activation, or
+  blood-product order (spec-v11 §5.3). Four non-weighted binary items (penetrating mechanism,
+  SBP≤90, HR≥120, positive FAST), ≥2 predicts massive transfusion (~75% sensitivity / ~86%
+  specificity; Nunez 2009, PMID 19204506). Class A.
+- **Parked this slice (spec-v265 §7, spec-v97 / spec-v259 precedent):** `mclaughlin-score`
+  (logistic intercept sign dropped in reachable secondary sources; count→probability table
+  paywalled) and `pwh-mt-score` (per-variable weights only in the paywalled Rainer 2011
+  primary). They re-open when reproducible from ≥2 open, fetchable sources.
+
 ### Added (spec-v263 — respiratory & maternal acute-risk instruments, 1121 → 1124)
 
 - Three deterministic respiratory/maternal acute-care instruments, third feature spec of
