@@ -6,6 +6,17 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v277 — Measured (timed-urine) creatinine clearance, 1136 → 1137)
+
+- Measured creatinine clearance (`measured-crcl`), the sole tile of spec-v277, joining the
+  renal tiles beside Cockcroft-Gault and eGFR. New module `lib/renal-v277.js`, renderer
+  `views/group-v277.js` (RV277). Verified absent (spec-v85 §6.2); a clearance value — no
+  diagnosis or treatment order (spec-v11 §5.3). CrCl (mL/min) = (urine Cr × urine volume mL)
+  / (serum Cr × collection time min) — the C = (U × V) / P clearance identity, the measured
+  counterpart to the Cockcroft-Gault estimate (not BSA-normalized). Formula cross-verified
+  against standard renal-physiology references (Stevens & Levey 2009, J Am Soc Nephrol).
+  Class A.
+
 ### Added (spec-v276 — Nutritional Risk Index (Buzby NRI), 1135 → 1136)
 
 - The Buzby Nutritional Risk Index (`nri`), the sole tile of spec-v276, joining the nutrition
