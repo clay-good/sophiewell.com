@@ -6,6 +6,20 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v260 — pneumonia severity & stewardship risk scores, 1112 → 1115)
+
+- Three deterministic pneumonia risk scores, third feature spec of the Advanced
+  Risk-Stratification Instruments program. New module `lib/pneumonia-risk-v260.js`,
+  renderers `views/group-v260.js` (RV260). Each id was verified absent by a
+  fixed-string scan of the extracted app.js id/name lists AND the MCP adapter set
+  (spec-v85 §6.2); each computes a severity/resistance-risk category — none admits,
+  transfers, or prescribes (spec-v11 §5.3). Weights cross-verified against the primary
+  papers' point tables (spec-v97; DRIP PMC4862530 Table 3, Shorr PMC3681572 Table 2).
+- **A-DROP** (`a-drop`): JRS CAP severity, five items (0–5) → mild/moderate/severe/
+  extremely-severe. **DRIP** (`drip-score`): major +2 / minor +1 (0–14), ≥4 → high risk
+  for a drug-resistant pathogen. **Shorr** (`shorr`): MRSA-pneumonia risk (0–10),
+  low/medium/high MRSA-prevalence bands. All Class A.
+
 ### Added (spec-v258 — acute & primary-care decision rules, 1109 → 1112)
 
 - Three deterministic decision rules, first feature spec of the Advanced

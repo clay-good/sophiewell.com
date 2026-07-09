@@ -1,6 +1,6 @@
 # spec-v260.md — Pneumonia severity & antimicrobial-stewardship risk: the A-DROP score, the DRIP score, and the Shorr MRSA-pneumonia score (+3 tiles)
 
-> Status: **PROPOSED (2026-07-08).** Third feature spec of the **Advanced
+> Status: **SHIPPED (2026-07-09, 1112 → 1115).** Third feature spec of the **Advanced
 > Risk-Stratification Instruments** program ([spec-v258](spec-v258.md) §1.1). Adds **3**
 > deterministic pneumonia instruments — one for severity/disposition, two for the
 > antibiotic-spectrum decision. **Each id was verified absent by a fixed-string scan of
