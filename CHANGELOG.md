@@ -6,6 +6,16 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v274 — Albumin-to-Globulin Ratio (A/G), 1133 → 1134)
+
+- The albumin-to-globulin ratio (`agr`), the sole tile of spec-v274, joining the group-E lab
+  tiles. New module `lib/proteins-v274.js`, renderer `views/group-v274.js` (RV274). Verified
+  absent (spec-v85 §6.2); a routine serum-protein ratio — no diagnosis or treatment order
+  (spec-v11 §5.3). A/G = albumin / (total protein − albumin); typical range ~1.1-2.5, and a
+  low or reversed ratio (< ~1) flags inflammation, paraproteinemia, or protein loss, with a
+  lower A/G tracking a worse prognosis. Definition (calculated globulin) cross-verified
+  against standard clinical chemistry; prognostic value per Suh 2014 (Ann Oncol). Class A.
+
 ### Added (spec-v273 — TyG-BMI insulin-resistance surrogate, 1132 → 1133)
 
 - TyG-BMI (`tyg-bmi`), the sole tile of spec-v273, joining the spec-v136 endocrine/metabolic
