@@ -6,6 +6,17 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v269 — METS-IR insulin-resistance surrogate, 1128 → 1129)
+
+- METS-IR (`mets-ir`), the sole tile of spec-v269, joining the spec-v136 endocrine/metabolic
+  cluster beside HOMA-IR / QUICKI / TyG. New module `lib/metabolic-v269.js`, renderer
+  `views/group-v269.js` (RV269). Verified absent (spec-v85 §6.2); computes a lab-derived
+  index — no diagnosis or treatment order (spec-v11 §5.3). METS-IR = (ln[(2 × fasting
+  glucose) + fasting TG] × BMI) / ln(HDL-C), all glucose/lipids in mg/dL, BMI in kg/m²; a
+  fasting-insulin-free insulin-resistance surrogate where a HIGHER value marks greater
+  insulin resistance (no universal cut-point). Formula cross-verified against Bello-Chavolla
+  2018 (Eur J Endocrinol) and validation cohorts. Class A.
+
 ### Added (spec-v268 — Advanced Lung Cancer Inflammation Index (ALI), 1127 → 1128)
 
 - The Advanced Lung Cancer Inflammation Index (`ali-index`), the sole tile of spec-v268,
