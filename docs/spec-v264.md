@@ -1,17 +1,36 @@
 # spec-v264.md — Deceased-donor kidney allocation: the Kidney Donor Risk Index, the Kidney Donor Profile Index, and the Estimated Post-Transplant Survival score (+3 tiles)
 
-> Status: **PROPOSED (2026-07-09).** First feature spec of the **Advanced Sub-specialty
-> Prognostic Instruments** program (§1.1). Adds **3** deterministic instruments that a
-> transplant team reads at the deceased-donor offer — how much relative risk does this
-> donor kidney carry, where does it sit on the national percentile scale, and how long is
-> this candidate expected to benefit. **Each id was verified absent by a fixed-string scan
-> of the extracted `app.js` id/name list** ([spec-v85 §6.2](spec-v85.md)): the catalog
-> carries `ckd-epi`, `ckd-epi-cystatin`, `ckd-staging`, `ktv-urr`, `meld-na`, and the
-> frailty indices, but **not** the Kidney Donor Risk Index, the Kidney Donor Profile Index,
-> or the Estimated Post-Transplant Survival score.
+> Status: **DEFERRED (2026-07-09) — not reproducible from open sources in-session.**
+> First feature spec of the **Advanced Sub-specialty Prognostic Instruments** program
+> (§1.1). Proposes **3** deterministic instruments a transplant team reads at the
+> deceased-donor offer — the donor-side KDRI/KDPI pair and the recipient-side EPTS.
+> **Each id was verified absent** ([spec-v85 §6.2](spec-v85.md)).
 >
-> Catalog effect: **live `UTILITIES.length` + 3** — enforced by the catalog-truth
-> gate ([spec-v46](spec-v46.md)) at build time; no number is copied here.
+> **Why deferred:** the [spec-v97](spec-v97.md) contract requires every coefficient and
+> mapping to be re-fetched and cross-verified against ≥2 independent, fetchable open
+> sources. That cannot be met in-session for this triad:
+>
+> - **KDPI and EPTS** are percentiles produced by **large OPTN mapping tables that OPTN
+>   revises every year** from the prior year's recovered-donor / waitlist population
+>   (KDRI→KDPI cumulative-percentage table; raw-EPTS→percentile table). The exact
+>   reference-year tables live only in the OPTN/HRSA guide PDFs, which are
+>   redirect/403-blocked to fetch here; open secondary calculators reproduce *a* mapping
+>   but at unstated or differing reference years, so no two fetchable sources agree on the
+>   same year's table. Emitting a national organ-allocation percentile from a
+>   mismatched-year or unverifiable table would be a spec-v97 violation with real
+>   clinical-integrity risk.
+> - **KDRI** is a fixed regression, but the clinically-reported **KDRI-Rao is
+>   median-scaled by an annually-revised constant**, and its standalone value without the
+>   KDPI percentile is limited; it is not shipped alone.
+>
+> **Re-open condition:** ship when the current-reference-year OPTN KDRI→KDPI and
+> raw-EPTS→percentile tables (and the KDRI median-scaling constant) are reproducible from
+> ≥2 open, fetchable sources for the *same* reference year, or are supplied directly. This
+> follows the [spec-v259](spec-v259.md) deferral precedent.
+>
+> Catalog effect while deferred: **none** (docs-only; `UTILITIES.length` unchanged). If
+> re-opened, the catalog effect is **live `UTILITIES.length` + 3**, enforced by the
+> catalog-truth gate ([spec-v46](spec-v46.md)).
 >
 > Every prior spec remains in force. v264 adds no runtime network call and no AI; each
 > tile obeys the [spec-v100](spec-v100.md) §2 doctrine, passes the
