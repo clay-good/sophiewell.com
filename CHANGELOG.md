@@ -6,6 +6,17 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v275 — RDW-to-Platelet Ratio (RPR), 1134 → 1135)
+
+- The RDW-to-platelet ratio (`rpr`), the sole tile of spec-v275, joining the non-invasive
+  liver-fibrosis family beside FIB-4 / APRI / Forns / Lok. New module `lib/fibrosis-v275.js`,
+  renderer `views/group-v275.js` (RV275). Verified absent (spec-v85 §6.2); a lab-derived
+  ratio — no diagnosis or treatment order (spec-v11 §5.3). RPR = RDW (%) / platelet count
+  (10⁹/L); a higher ratio marks more advanced fibrosis, with a derivation cutoff around 0.1
+  for significant fibrosis (thresholds vary by etiology). Formula cross-verified against Chen
+  2013 (PLoS One) and validation cohorts. Distinct from the existing `rdw-index` (thalassemia
+  vs iron-deficiency discrimination). Class A.
+
 ### Added (spec-v274 — Albumin-to-Globulin Ratio (A/G), 1133 → 1134)
 
 - The albumin-to-globulin ratio (`agr`), the sole tile of spec-v274, joining the group-E lab
