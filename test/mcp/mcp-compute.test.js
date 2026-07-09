@@ -1706,6 +1706,15 @@ test('lib/metabolic-v269.js worked calls', () => {
   assert.ok(worse.score > mi.score);
 });
 
+test('lib/inflam-v267.js worked calls', () => {
+  // Hgb 140, albumin 40 (g/L), ALC 2.0, platelets 250 -> 44.8.
+  const halp = ok('halp-score', { 'halp-hgb': '140', 'halp-alb': '40', 'halp-alc': '2.0', 'halp-plt': '250' });
+  assert.equal(halp.score, 44.8);
+  // Anemia, hypoalbuminemia, lymphopenia, and thrombocytosis lower HALP (worse).
+  const worse = ok('halp-score', { 'halp-hgb': '120', 'halp-alb': '35', 'halp-alc': '1.5', 'halp-plt': '300' });
+  assert.ok(worse.score < halp.score);
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];

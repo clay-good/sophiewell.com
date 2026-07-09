@@ -1266,6 +1266,17 @@ so the example round-trips through the default `makeToArgs`. New adapter module
 registered in `mcp/catalog.js`. Brings the exposed total to **1042 calculators
 across 182 modules**.
 
+## Ninety-third wave — the HALP score in lib/inflam-v267.js (+1)
+
+`halp-score` (spec-v267) is the combined nutrition / inflammation / immune-reserve
+marker `hemoglobin (g/L) x albumin (g/L) x absolute lymphocyte count (10^9/L) /
+platelet count (10^9/L)` (Chen 2015) — unlike neutrophil-based ratios, a LOWER
+HALP marks a worse profile (cohort-specific cutoff). Bounded four-number compute
+through `lib/num.js`; its `bandLabel` carries the 44.8 example result, so the
+example round-trips through the default `makeToArgs`. New adapter module
+registered in `mcp/catalog.js`. Brings the exposed total to **1043 calculators
+across 183 modules**.
+
 ## Exposed
 
 Each id below is live in `mcp/catalog.js`. The gate parses this list.
@@ -2657,6 +2668,7 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 - `castelli-index`
 - `cmi`
 - `mets-ir`
+- `halp-score`
 
 ## Not yet adapted
 
