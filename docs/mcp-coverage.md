@@ -1225,6 +1225,16 @@ example round-trips through the default `makeToArgs`. New adapter module
 registered in `mcp/catalog.js`. Brings the exposed total to **1038 calculators
 across 178 modules**.
 
+## Eighty-ninth wave — the waist-to-height ratio in lib/anthro-v272.js (+1)
+
+`whtr` (spec-v272) is the waist-to-height ratio `waist / height` (Ashwell) — a
+value at or above the 0.5 boundary marks increased central-adiposity risk.
+Bounded two-number ratio through `lib/num.js`; its `bandLabel` carries the 0.53
+example result and its `note` carries the 0.5 boundary, so the example
+round-trips through the default `makeToArgs`. New adapter module registered in
+`mcp/catalog.js`. Brings the exposed total to **1039 calculators across 179
+modules**.
+
 ## Exposed
 
 Each id below is live in `mcp/catalog.js`. The gate parses this list.
@@ -2612,6 +2622,7 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 - `nri`
 - `agr`
 - `tyg-bmi`
+- `whtr`
 
 ## Not yet adapted
 

@@ -1666,6 +1666,17 @@ test('lib/metabolic-v273.js worked calls', () => {
   assert.ok(higher.score > tyg.score);
 });
 
+test('lib/anthro-v272.js worked calls', () => {
+  // Waist 90 cm / height 170 cm -> 0.53, at/above the 0.5 boundary.
+  const whtr = ok('whtr', { 'whtr-waist': '90', 'whtr-height': '170' });
+  assert.equal(whtr.score, 0.53);
+  assert.equal(whtr.abnormal, true);
+  // A leaner waist clears the boundary.
+  const lean = ok('whtr', { 'whtr-waist': '70', 'whtr-height': '180' });
+  assert.equal(lean.score, 0.39);
+  assert.equal(lean.abnormal, false);
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];
