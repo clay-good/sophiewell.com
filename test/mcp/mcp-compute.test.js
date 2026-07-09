@@ -1645,6 +1645,18 @@ test('lib/nutrition-v276.js worked calls', () => {
   assert.equal(wellNourished.abnormal, false);
 });
 
+test('lib/proteins-v274.js worked calls', () => {
+  // Albumin 4.0, total protein 7.0 -> globulin 3.0, A/G 1.33.
+  const agr = ok('agr', { 'agr-albumin': '4.0', 'agr-tp': '7.0' });
+  assert.equal(agr.score, 1.33);
+  assert.equal(agr.globulin, 3);
+  assert.equal(agr.abnormal, false);
+  // A low albumin with high globulin drives the ratio below 1 (unfavorable).
+  const lowAgr = ok('agr', { 'agr-albumin': '2.0', 'agr-tp': '7.0' });
+  assert.equal(lowAgr.score, 0.4);
+  assert.equal(lowAgr.abnormal, true);
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];

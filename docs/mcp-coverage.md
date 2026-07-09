@@ -1204,6 +1204,16 @@ example round-trips through the default `makeToArgs`. New adapter module
 registered in `mcp/catalog.js`. Brings the exposed total to **1036 calculators
 across 176 modules**.
 
+## Eighty-seventh wave — the albumin-to-globulin ratio in lib/proteins-v274.js (+1)
+
+`agr` (spec-v274) is the albumin-to-globulin ratio
+`albumin / (total protein - albumin)`, both in g/dL — a lower value is less
+favorable (typical range ~1.1-2.5, context-dependent). Bounded two-number
+compute through `lib/num.js`; the result echoes both the 1.33 ratio and the
+derived globulin of 3 g/dL, so the example round-trips through the default
+`makeToArgs`. New adapter module registered in `mcp/catalog.js`. Brings the
+exposed total to **1037 calculators across 177 modules**.
+
 ## Exposed
 
 Each id below is live in `mcp/catalog.js`. The gate parses this list.
@@ -2589,6 +2599,7 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 - `measured-crcl`
 - `rpr`
 - `nri`
+- `agr`
 
 ## Not yet adapted
 
