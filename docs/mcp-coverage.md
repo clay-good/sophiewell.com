@@ -1255,6 +1255,17 @@ example result, so the example round-trips through the default `makeToArgs`. New
 adapter module registered in `mcp/catalog.js`. Brings the exposed total to
 **1041 calculators across 181 modules**.
 
+## Ninety-second wave — the METS-IR insulin-resistance surrogate in lib/metabolic-v269.js (+1)
+
+`mets-ir` (spec-v269) is the fasting-insulin-free insulin-resistance surrogate
+`(ln[(2 x fasting glucose) + fasting triglycerides] x BMI) / ln(HDL-C)`,
+glucose/TG/HDL in mg/dL and BMI in kg/m^2 (Bello-Chavolla 2018) — a higher value
+marks greater insulin resistance (no universal cut-point). Bounded four-number
+compute through `lib/num.js`; its `bandLabel` carries the 37.44 example result,
+so the example round-trips through the default `makeToArgs`. New adapter module
+registered in `mcp/catalog.js`. Brings the exposed total to **1042 calculators
+across 182 modules**.
+
 ## Exposed
 
 Each id below is live in `mcp/catalog.js`. The gate parses this list.
@@ -2645,6 +2656,7 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 - `whtr`
 - `castelli-index`
 - `cmi`
+- `mets-ir`
 
 ## Not yet adapted
 

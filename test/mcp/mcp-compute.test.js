@@ -1697,6 +1697,15 @@ test('lib/adiposity-v270.js worked calls', () => {
   assert.ok(worse.score > cmi.score);
 });
 
+test('lib/metabolic-v269.js worked calls', () => {
+  // FPG 100, TG 150, HDL 50, BMI 25 -> (ln(350) x 25) / ln(50) = 37.44.
+  const mi = ok('mets-ir', { 'metsir-fpg': '100', 'metsir-tg': '150', 'metsir-hdl': '50', 'metsir-bmi': '25' });
+  assert.equal(mi.score, 37.44);
+  // Higher glucose, TG, and BMI with lower HDL raise the surrogate.
+  const worse = ok('mets-ir', { 'metsir-fpg': '120', 'metsir-tg': '200', 'metsir-hdl': '40', 'metsir-bmi': '30' });
+  assert.ok(worse.score > mi.score);
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];
