@@ -1169,6 +1169,20 @@ the `lib/screener.js` config tiles with no `META.example` (`phq9`, `gad7`,
 `auditc`, `cage`, `epds`), and the pure static reference cards
 (`co-cn-antidote`, `tetanus`, `rabies-pep`, `bbp-exposure`, `sti-screening`).
 
+## Eighty-fourth wave — the measured (timed-urine) creatinine clearance in lib/renal-v277.js (+1)
+
+The first exposure from the SESSION-33 composite-index / lab-ratio program
+(spec-v267 through spec-v277). `measured-crcl` is the direct
+C = (U x V) / P clearance from a timed urine collection — `(urine creatinine x
+urine volume) / (serum creatinine x collection time in minutes)` — the measured
+counterpart to the Cockcroft-Gault estimate the catalog already exposes. The
+pure `measuredCrcl` compute is a bounded four-number formula that routes through
+`lib/num.js`; its `band` string already carries both example numbers (the
+100 mL/min result and the 24-hour collection window), so the documented example
+round-trips through the default `makeToArgs` with no custom `toArgs` or
+`formatResult`. New adapter module registered in `mcp/catalog.js`. Brings the
+exposed total to **1034 calculators across 174 modules**.
+
 ## Exposed
 
 Each id below is live in `mcp/catalog.js`. The gate parses this list.
@@ -2551,6 +2565,7 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 - `stone-score`
 - `iss-rts`
 - `sipa`
+- `measured-crcl`
 
 ## Not yet adapted
 

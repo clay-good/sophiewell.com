@@ -190,6 +190,7 @@ import medicationV5 from './adapters/medication-v5.js';
 import field from './adapters/field.js';
 import idcritV99 from './adapters/idcrit-v99.js';
 import scoringV5 from './adapters/scoring-v5.js';
+import renalV277 from './adapters/renal-v277.js';
 
 const ADAPTER_MODULES = [
   ['tox-v86', toxV86],
@@ -365,6 +366,7 @@ const ADAPTER_MODULES = [
   ['field', field],
   ['idcrit-v99', idcritV99],
   ['scoring-v5', scoringV5],
+  ['renal-v277', renalV277],
 ];
 
 const HERE = dirname(fileURLToPath(import.meta.url));

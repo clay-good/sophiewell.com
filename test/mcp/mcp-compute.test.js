@@ -1611,6 +1611,19 @@ test('lib/scoring-v4.js ventilator SBT readiness + ARDSnet PEEP worked calls (wa
   assert.equal(notReady.criteriaMet, 4);
 });
 
+test('lib/renal-v277.js worked calls', () => {
+  // 1440 mL urine at 100 mg/dL over 24 h, serum Cr 1.0 -> exactly 100 mL/min.
+  const crcl = ok('measured-crcl', { 'mcrcl-ucr': '100', 'mcrcl-uvol': '1440', 'mcrcl-scr': '1.0', 'mcrcl-hours': '24' });
+  assert.equal(crcl.score, 100);
+  assert.equal(crcl.abnormal, false);
+  // Halving the serum creatinine doubles the clearance.
+  assert.equal(ok('measured-crcl', { 'mcrcl-ucr': '100', 'mcrcl-uvol': '1440', 'mcrcl-scr': '0.5', 'mcrcl-hours': '24' }).score, 200);
+  // A reduced clearance flags abnormal (< 60 mL/min).
+  const low = ok('measured-crcl', { 'mcrcl-ucr': '50', 'mcrcl-uvol': '720', 'mcrcl-scr': '1.0', 'mcrcl-hours': '24' });
+  assert.equal(low.score, 25);
+  assert.equal(low.abnormal, true);
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];
