@@ -1,6 +1,6 @@
 # spec-v263.md — Respiratory & maternal acute risk: the MuLBSTA viral-pneumonia score, the Ottawa COPD Risk Scale, and the Sepsis in Obstetrics Score (+3 tiles)
 
-> Status: **PROPOSED (2026-07-09).** Third feature spec of the **Bedside Acute-Care
+> Status: **SHIPPED (2026-07-09, 1121 → 1124).** Third feature spec of the **Bedside Acute-Care
 > Instruments** program ([spec-v261](spec-v261.md) §1.1). Adds **3** deterministic
 > instruments — one for viral-pneumonia mortality, one for the ED-COPD disposition
 > decision, one for the obstetric-sepsis escalation decision. **Each id was verified

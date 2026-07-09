@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `c279167ec02e805c`
-Generated: 2026-07-09T15:36:28.546Z
+Build ID: `46b71600ffcd8703`
+Generated: 2026-07-09T15:50:17.559Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=20.18.1 <21, npm >=10.0.0
@@ -24,13 +24,13 @@ downloads is committed in this repository and is hashed below.
 
 | Path | Bytes | SHA-256 |
 |---|---:|---|
-| `index.html` | 75957 | `339b2bc0b103490848695480ee7c795464aaa694f86ea6eeb20ca84bcf85f67e` |
+| `index.html` | 76100 | `ec234bc5ba1d71766a9cfe26512c6da6aec8b8f09c8ff339e1717277b61f89e6` |
 | `styles.css` | 43598 | `39b102cf1e2eb0d6d39bb776775a288e032d05a1365b3e135f771392ee598ad1` |
-| `app.js` | 301717 | `7ab26da6c9360f47a7f3339c72fb3644561bbe1f3456966705bb4c1bd1c1eb89` |
+| `app.js` | 302593 | `69311dbd900bec0d2a5a5e432a5e750a676ec43f0f9c976bb0cb6fa7237f7961` |
 | `sw.js` | 4622 | `b891d4344f8e04403b7f1d307fd446cc224bddc6f0c4397438a17d197351171e` |
 | `site.webmanifest` | 709 | `0e0de4da60590a12e8b27a0ae2a2f5ffdb6500b7d2b78f93631ec2f64ed3d5ce` |
 | `robots.txt` | 127 | `38fbf9c1854e72abb20e01e81dd5a31d4ea96f154c12d5db1ec3af05524dd1a1` |
-| `sitemap.xml` | 172298 | `a50f34ad9738bae7818531a373e4280f12e32c91413e2a57603952690cfae30a` |
+| `sitemap.xml` | 172759 | `6ec38b6e4b36fa7e96a049e358eb1279ae333f11e993ad8a9dbcad326ef20746` |
 | `_headers` | 1316 | `2f39986457d2feff7e73e491a7d09ee871e8f2f4cc2bc437f86bd86a42554ec6` |
 | `logo.png` | 63440 | `11afaf1b0d3ca68393d202e4810bf766b5b6d591b4e3ec52f41d3cacaa4616ec` |
 | `favicon.ico` | 7411 | `407fde0ca2788409e87e11f596fa02e6a0b121817fcea7fd995beec1801e287b` |
@@ -151,7 +151,7 @@ downloads is committed in this repository and is hashed below.
 | `lib/lymphoma-v135.js` | 16162 | `e29896a6de224445f46839cd06518817bd25d1235a91ede76f77ccb4996a934f` |
 | `lib/medication-v4.js` | 18192 | `467f9576c50da696cc56094eb022d0a5ed1e88de0c7618448554ede8067270b0` |
 | `lib/medication-v5.js` | 18863 | `ce81d9f8954abbd412892c13af9936f992239164f26fd2b999eaea7902787ab7` |
-| `lib/meta.js` | 1545171 | `d53447b3604974c015a08f76f2f4e606b9d110bdd55050a067014266d457a106` |
+| `lib/meta.js` | 1548525 | `6736e8e1abbcbdd9d4972bbd51e187bf48023327faaa83310af024d3c8b7e917` |
 | `lib/metabolic-hepatic-v219.js` | 12791 | `b9352877cebf7fbf3c3b99ecb8b72cdbee3ed94e056dc019113668609f5a95a8` |
 | `lib/metabolic-onc-v88.js` | 12659 | `1553b641668c121661a66647da71a4aaaa023e9f3a6b7a753efbcdab27cdba81` |
 | `lib/mixed-v227.js` | 12795 | `3256771ee5a250a8d28391563107d1c1d43f089f7cfca7aa9ee8df1a487f91ce` |
@@ -226,6 +226,7 @@ downloads is committed in this repository and is hashed below.
 | `lib/rehab-v240.js` | 6834 | `98fad9be8c75236525118ca3df7581ab6229ce20e4586fee571ad0045ed019e8` |
 | `lib/renal-v128.js` | 12482 | `d6b5185edd1c2523f6b18c3b0740da7f53cfbfa6d4506f156ae1aaf53b6b1d38` |
 | `lib/renalpulm-v249.js` | 7088 | `f3a5c749b247759356a20c4f147d62f9b694302882e6d58c3cd05ceae8e5e6d0` |
+| `lib/respiratory-maternal-v263.js` | 9007 | `e983b05aaca13cbc24663ff10b78f9e74842609be7bbddaed82a81bdbac2127c` |
 | `lib/result-copy.js` | 1745 | `0389d38cabd3d8adca91096d93e663a5e446f3062f6282d0fb7e77f5a0ffad93` |
 | `lib/resus-trauma-v207.js` | 10247 | `de821d74c4915f2be35616dce76d9ef07f8237bfd3e2358b73830a5ed5dde55a` |
 | `lib/rheum-classification-v222.js` | 13915 | `95c66ddc0349e0fd38cde0662c0862de9c06e7e0534e4a21bab1108257f5a09b` |
@@ -433,6 +434,7 @@ downloads is committed in this repository and is hashed below.
 | `views/group-v260.js` | 5851 | `ab5708a9abcdab8f8499b46c76e9766dbf1e555a0e6b6493ae04f7d4051392f6` |
 | `views/group-v261.js` | 9278 | `7e8ef2b509f19d5a7705bea0a525aa5461e567abbb8df231600e9a813c1909e6` |
 | `views/group-v262.js` | 6427 | `5e59ad1959e1a783b5d24569553e51bd8c0e3f8c803e5c4c2b73aeb387ae95ca` |
+| `views/group-v263.js` | 7400 | `4dbfee5c59db5a72f28e3cfb815d40f91c0145d7352e91f9b5c59ed2381aa6c3` |
 | `views/group-v27.js` | 9680 | `580cd002df892d4319cc8f48c661813296ba47b214929b08f0a6678fe7a5e91e` |
 | `views/group-v28.js` | 14139 | `374784d87185826bcf38983997c200948240d1d0896b0ec09e6e9bb0180a30fc` |
 | `views/group-v29.js` | 10710 | `c1a683fbfafe86f37fed881efeee0e4974f7fb7b698c3ed00658b776d9ba7895` |

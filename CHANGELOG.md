@@ -6,6 +6,24 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v263 — respiratory & maternal acute-risk instruments, 1121 → 1124)
+
+- Three deterministic respiratory/maternal acute-care instruments, third feature spec of
+  the Bedside Acute-Care Instruments program. New module `lib/respiratory-maternal-v263.js`,
+  renderers `views/group-v263.js` (RV263). Each id was verified absent by a fixed-string
+  scan of the extracted app.js id/name lists (spec-v85 §6.2); each computes a mortality or
+  risk category — none authors an admission, ICU-transfer, discharge, or prescribing order
+  (spec-v11 §5.3). Weights/bands re-fetched and cross-verified against the primary papers
+  and independent calculators (spec-v97).
+- **MuLBSTA** (`mulbsta`): 90-day viral-pneumonia mortality (Guo 2019), multilobar +5 /
+  lymphopenia +4 / bacterial +4 / smoking current+3-former+2 / hypertension +2 / age≥60 +2
+  (mutually-exclusive smoking → max 20), ≥12 high risk. **Ottawa COPD Risk Scale**
+  (`ottawa-copd`): ED-COPD short-term serious-outcome risk (Stiell 2014, original
+  derivation weighting, 0–16). **SOS** (`sepsis-obstetrics-score`): pregnancy-specific
+  APACHE-II-derived ICU-admission risk (Albright 2014 Table 2, eight two-tailed bands 0–28,
+  ≥6 high risk; the band grid transcribed from the primary table and triangulated by the
+  0–28 maximum). All Class A.
+
 ### Added (spec-v262 — pediatric acute-assessment instruments, 1118 → 1121)
 
 - Three deterministic pediatric acute-care instruments, second feature spec of the
