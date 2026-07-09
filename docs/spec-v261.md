@@ -1,6 +1,6 @@
 # spec-v261.md — Acute abdomen & emergency general-surgery risk: the RIPASA appendicitis score, the PULP peptic-ulcer-perforation score, and the Emergency Surgery Score (+3 tiles)
 
-> Status: **PROPOSED (2026-07-09).** First feature spec of the **Bedside Acute-Care
+> Status: **SHIPPED (2026-07-09, 1115 → 1118).** First feature spec of the **Bedside Acute-Care
 > Instruments** program (§1.1). Adds **3** deterministic instruments a surgical or
 > emergency team reaches for at the acute-abdomen decision point — is this appendicitis,
 > how lethal is this perforation, how high is this emergency operation's risk. **Each id

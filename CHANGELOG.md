@@ -6,6 +6,24 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v261 — acute-abdomen & emergency-general-surgery risk instruments, 1115 → 1118)
+
+- Three deterministic acute-care surgical risk instruments, first feature spec of the
+  Bedside Acute-Care Instruments program. New module `lib/acute-abdomen-v261.js`,
+  renderers `views/group-v261.js` (RV261). Each id was verified absent by a fixed-string
+  scan of the extracted app.js id/name lists AND the MCP adapter set (spec-v85 §6.2);
+  each computes a probability or mortality-risk category — none authors an operative,
+  imaging, admission, or discharge order (spec-v11 §5.3). Weights re-fetched and cross-
+  verified against the primary papers and independent calculators (spec-v97).
+- **RIPASA** (`ripasa`): appendicitis probability score (Chong 2010), max 16, 7.5 =
+  optimal diagnostic cutoff → unlikely / low-moderate / high / very-high bands; a
+  higher-sensitivity alternative to Alvarado. **PULP** (`pulp`): peptic-ulcer-perforation
+  30-day mortality (Møller 2012), 0–18, ≤7 low (<25%) / ≥8 high (>25%), with the ASA-class
+  term (2/3/4/5 = 1/3/5/7); point table confirmed against IJPCR 2024;16(6) Table 1.
+  **ESS** (`emergency-surgery-score`): Emergency Surgery Score (Sangji 2016), 22
+  preoperative variables (0–29) on a monotone 30-day-mortality gradient (~0% low →
+  ~36–39% at 11 → ~100% at ≥22). All Class A.
+
 ### Added (spec-v260 — pneumonia severity & stewardship risk scores, 1112 → 1115)
 
 - Three deterministic pneumonia risk scores, third feature spec of the Advanced
