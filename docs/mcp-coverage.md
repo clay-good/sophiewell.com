@@ -1214,6 +1214,17 @@ derived globulin of 3 g/dL, so the example round-trips through the default
 `makeToArgs`. New adapter module registered in `mcp/catalog.js`. Brings the
 exposed total to **1037 calculators across 177 modules**.
 
+## Eighty-eighth wave — the TyG-BMI insulin-resistance surrogate in lib/metabolic-v273.js (+1)
+
+`tyg-bmi` (spec-v273) is the adiposity-enhanced insulin-resistance surrogate
+`ln[(fasting triglycerides x fasting glucose) / 2] x BMI`, lipids/glucose in
+mg/dL (Er 2016; TyG core Simental-Mendia 2008) — a higher value marks greater
+insulin resistance (no universal cut-point). Bounded three-number compute
+through `lib/num.js`; its `bandLabel` carries the 223.07 example result, so the
+example round-trips through the default `makeToArgs`. New adapter module
+registered in `mcp/catalog.js`. Brings the exposed total to **1038 calculators
+across 178 modules**.
+
 ## Exposed
 
 Each id below is live in `mcp/catalog.js`. The gate parses this list.
@@ -2600,6 +2611,7 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 - `rpr`
 - `nri`
 - `agr`
+- `tyg-bmi`
 
 ## Not yet adapted
 

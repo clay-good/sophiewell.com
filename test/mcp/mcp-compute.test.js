@@ -1657,6 +1657,15 @@ test('lib/proteins-v274.js worked calls', () => {
   assert.equal(lowAgr.abnormal, true);
 });
 
+test('lib/metabolic-v273.js worked calls', () => {
+  // TG 150, glucose 100, BMI 25 -> ln(7500) x 25 = 223.07.
+  const tyg = ok('tyg-bmi', { 'tygbmi-tg': '150', 'tygbmi-glucose': '100', 'tygbmi-bmi': '25' });
+  assert.equal(tyg.score, 223.07);
+  // Higher triglycerides, glucose, and BMI raise the surrogate.
+  const higher = ok('tyg-bmi', { 'tygbmi-tg': '250', 'tygbmi-glucose': '120', 'tygbmi-bmi': '30' });
+  assert.ok(higher.score > tyg.score);
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];
