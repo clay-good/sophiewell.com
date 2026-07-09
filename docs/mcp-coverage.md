@@ -1277,6 +1277,18 @@ example round-trips through the default `makeToArgs`. New adapter module
 registered in `mcp/catalog.js`. Brings the exposed total to **1043 calculators
 across 183 modules**.
 
+## Ninety-fourth wave — the Advanced Lung Cancer Inflammation Index in lib/inflam-v268.js (+1)
+
+`ali-index` (spec-v268) is the combined nutrition / inflammation marker
+`BMI (kg/m^2) x serum albumin (g/dL) / neutrophil-to-lymphocyte ratio (ANC/ALC)`
+(Jafri 2013) — a higher value is more favorable, so a LOWER value marks a worse
+profile (cohort-specific cutoff). Bounded four-number compute through
+`lib/num.js`; its `bandLabel` carries the 33.3 example result, so the example
+round-trips through the default `makeToArgs`. New adapter module registered in
+`mcp/catalog.js`. Brings the exposed total to **1044 calculators across 184
+modules** — completing the exposure of the SESSION-33 composite-index / lab-ratio
+program (spec-v267 through spec-v277).
+
 ## Exposed
 
 Each id below is live in `mcp/catalog.js`. The gate parses this list.
@@ -2669,6 +2681,7 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 - `cmi`
 - `mets-ir`
 - `halp-score`
+- `ali-index`
 
 ## Not yet adapted
 

@@ -1715,6 +1715,15 @@ test('lib/inflam-v267.js worked calls', () => {
   assert.ok(worse.score < halp.score);
 });
 
+test('lib/inflam-v268.js worked calls', () => {
+  // BMI 25, albumin 4.0 (g/dL), ANC 6.0, ALC 2.0 -> NLR 3, ALI 33.3.
+  const ali = ok('ali-index', { 'ali-bmi': '25', 'ali-alb': '4.0', 'ali-anc': '6.0', 'ali-alc': '2.0' });
+  assert.equal(ali.score, 33.3);
+  // Lower BMI/albumin with a higher NLR mark a worse (lower) index.
+  const worse = ok('ali-index', { 'ali-bmi': '22', 'ali-alb': '3.0', 'ali-anc': '9.0', 'ali-alc': '1.5' });
+  assert.ok(worse.score < ali.score);
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];

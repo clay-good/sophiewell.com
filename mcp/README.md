@@ -73,7 +73,7 @@ strings; booleans as `true`/`false`; enums by their listed string values.
 
 ```
 list_calculators { "specialty": "hepatology" }
-  -> { coverage: "1043 of 1109 catalog tiles exposed ...", calculators: [ { id: "meld-xi", ... }, ... ] }
+  -> { coverage: "1044 of 1109 catalog tiles exposed ...", calculators: [ { id: "meld-xi", ... }, ... ] }
 
 describe_calculator { "id": "meld-xi" }
   -> { inputSchema: { ... mx-bili, mx-creat ... }, citation: "Heuman DM ... Liver Transpl 2007", ... }
@@ -272,9 +272,10 @@ ratio in `lib/anthro-v272.js`, and a ninetieth the Castelli Risk Indices in
 `lib/lipids-v271.js`, and a ninety-first the Cardiometabolic Index in
 `lib/adiposity-v270.js`, and a ninety-second the METS-IR insulin-resistance
 surrogate in `lib/metabolic-v269.js`, and a ninety-third the HALP score in
-`lib/inflam-v267.js`, for
-1043 across 183 modules
-today. <!-- catalog-truth:historical (183 is the count of lib modules adapted, not a catalog tile count) -->
+`lib/inflam-v267.js`, and a ninety-fourth the Advanced Lung Cancer Inflammation
+Index in `lib/inflam-v268.js`, for
+1044 across 184 modules
+today. <!-- catalog-truth:historical (184 is the count of lib modules adapted, not a catalog tile count) -->
 Later waves extend it module by module against the same contract.
 
 ## Design
