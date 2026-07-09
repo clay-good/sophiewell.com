@@ -1183,6 +1183,16 @@ round-trips through the default `makeToArgs` with no custom `toArgs` or
 `formatResult`. New adapter module registered in `mcp/catalog.js`. Brings the
 exposed total to **1034 calculators across 174 modules**.
 
+## Eighty-fifth wave — the RDW-to-platelet ratio in lib/fibrosis-v275.js (+1)
+
+`rpr` (spec-v275) is the non-invasive liver-fibrosis marker
+`RDW (%) / platelet count (10^9/L)` (Chen 2013) — a higher ratio marks more
+advanced fibrosis. The pure `rpr` compute is a bounded two-number ratio through
+`lib/num.js`; its `bandLabel` carries the 0.16 example result and its `note`
+carries the ~0.1 derivation cutoff, so the example round-trips through the
+default `makeToArgs`. New adapter module registered in `mcp/catalog.js`. Brings
+the exposed total to **1035 calculators across 175 modules**.
+
 ## Exposed
 
 Each id below is live in `mcp/catalog.js`. The gate parses this list.
@@ -2566,6 +2576,7 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 - `iss-rts`
 - `sipa`
 - `measured-crcl`
+- `rpr`
 
 ## Not yet adapted
 

@@ -1624,6 +1624,17 @@ test('lib/renal-v277.js worked calls', () => {
   assert.equal(low.abnormal, true);
 });
 
+test('lib/fibrosis-v275.js worked calls', () => {
+  // RDW 16% / platelets 100 -> 0.16, at/above the ~0.1 fibrosis cutoff.
+  const rpr = ok('rpr', { 'rpr-rdw': '16', 'rpr-plt': '100' });
+  assert.equal(rpr.score, 0.16);
+  assert.equal(rpr.abnormal, true);
+  // A high platelet count drives the ratio below the cutoff.
+  const lowr = ok('rpr', { 'rpr-rdw': '13', 'rpr-plt': '260' });
+  assert.equal(lowr.score, 0.05);
+  assert.equal(lowr.abnormal, false);
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];
