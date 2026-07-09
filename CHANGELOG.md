@@ -6,6 +6,17 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v268 — Advanced Lung Cancer Inflammation Index (ALI), 1127 → 1128)
+
+- The Advanced Lung Cancer Inflammation Index (`ali-index`), the sole tile of spec-v268,
+  extending the spec-v229/v230/v267 prognostic inflammation-index family. New module
+  `lib/inflam-v268.js`, renderer `views/group-v268.js` (RV268). Verified absent (spec-v85
+  §6.2); computes a lab-derived value — no diagnosis or treatment order (spec-v11 §5.3).
+  ALI = BMI (kg/m²) × serum albumin (g/dL) / NLR (NLR = ANC/ALC); a HIGHER value is more
+  favorable, so a LOWER value is less favorable, and the cutoff is cohort/cancer-specific
+  (no universal threshold). Formula cross-verified against Jafri 2013 (BMC Cancer,
+  metastatic NSCLC derivation) and subsequent pan-cancer validations. Class A.
+
 ### Added (spec-v267 — HALP composite prognostic index, 1126 → 1127)
 
 - The HALP score (`halp-score`), the sole tile of spec-v267, extending the spec-v229/v230

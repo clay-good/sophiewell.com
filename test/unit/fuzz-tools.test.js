@@ -255,6 +255,7 @@ import * as respiratoryMaternalV263 from '../../lib/respiratory-maternal-v263.js
 import * as massiveTransfusionV265 from '../../lib/massive-transfusion-v265.js';
 import * as rccPrognosisV266 from '../../lib/rcc-prognosis-v266.js';
 import * as inflamV267 from '../../lib/inflam-v267.js';
+import * as inflamV268 from '../../lib/inflam-v268.js';
 
 const MODULES = {
   'clinical.js': clinical,
@@ -454,6 +455,7 @@ const MODULES = {
   'massive-transfusion-v265.js': massiveTransfusionV265,
   'rcc-prognosis-v266.js': rccPrognosisV266,
   'inflam-v267.js': inflamV267,
+  'inflam-v268.js': inflamV268,
 };
 
 const MATRIX = [0, -1, 1e9, NaN, Infinity, -Infinity, '', undefined, null];
