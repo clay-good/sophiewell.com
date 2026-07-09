@@ -257,6 +257,7 @@ import * as rccPrognosisV266 from '../../lib/rcc-prognosis-v266.js';
 import * as inflamV267 from '../../lib/inflam-v267.js';
 import * as inflamV268 from '../../lib/inflam-v268.js';
 import * as metabolicV269 from '../../lib/metabolic-v269.js';
+import * as adiposityV270 from '../../lib/adiposity-v270.js';
 
 const MODULES = {
   'clinical.js': clinical,
@@ -458,6 +459,7 @@ const MODULES = {
   'inflam-v267.js': inflamV267,
   'inflam-v268.js': inflamV268,
   'metabolic-v269.js': metabolicV269,
+  'adiposity-v270.js': adiposityV270,
 };
 
 const MATRIX = [0, -1, 1e9, NaN, Infinity, -Infinity, '', undefined, null];

@@ -6,6 +6,18 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v270 — Cardiometabolic Index (CMI), 1129 → 1130)
+
+- The Cardiometabolic Index (`cmi`), the sole tile of spec-v270, joining the
+  visceral-adiposity-index / lipid-accumulation-product adiposity family. New module
+  `lib/adiposity-v270.js`, renderer `views/group-v270.js` (RV270). Verified absent (spec-v85
+  §6.2); computes a lab/anthropometric-derived index — no diagnosis or treatment order
+  (spec-v11 §5.3). CMI = (triglycerides / HDL-C) × (waist / height); combines the atherogenic
+  TG/HDL ratio and the waist-to-height ratio, with a HIGHER value marking a worse
+  cardiometabolic profile (sex/cohort-specific cut-points, no universal threshold). Formula
+  cross-verified against Wakabayashi & Daimon 2015 (Clin Chim Acta) and validation cohorts.
+  Class A.
+
 ### Added (spec-v269 — METS-IR insulin-resistance surrogate, 1128 → 1129)
 
 - METS-IR (`mets-ir`), the sole tile of spec-v269, joining the spec-v136 endocrine/metabolic
