@@ -1,9 +1,34 @@
 # spec-v259.md — Cardiac risk engines: the GWTG-Heart Failure score, the Emergency Heart Failure Mortality Risk Grade, and the PRECISE-DAPT bleeding score (+3 tiles)
 
-> Status: **PROPOSED (2026-07-08).** Second feature spec of the **Advanced
-> Risk-Stratification Instruments** program ([spec-v258](spec-v258.md) §1.1). Adds **3**
-> deterministic cardiology risk engines — two for heart-failure mortality, one for
-> bleeding on dual antiplatelet therapy. **Each id was verified absent by a fixed-string
+> Status: **DEFERRED (2026-07-09) — not reproducible from open sources in-session.**
+> Second feature spec of the **Advanced Risk-Stratification Instruments** program
+> ([spec-v258](spec-v258.md) §1.1). Proposes **3** deterministic cardiology risk engines —
+> two for heart-failure mortality, one for bleeding on dual antiplatelet therapy.
+>
+> **Why deferred:** the [spec-v97](spec-v97.md) contract requires every coefficient,
+> nomogram point, and threshold to be **re-fetched (never recalled) and cross-verified
+> against ≥2 independent open sources at implementation**. At the implementing session
+> (2026-07-09) that bar could not be met for any of the three:
+> - **GWTG-HF** and **EHMRG** — the exact per-bin point tables / coefficient-and-cap
+>   formulas live only in the paywalled primary papers (Peterson 2010 *Circ CQO*; Lee
+>   2012 *Ann Intern Med*) and in JS-SPA calculators that cannot be fetched. Open
+>   secondary sources confirm the variable *ranges* (e.g. age 0–28, SBP 0–28, BUN 0–28,
+>   HR 0–8, Na 0–4, COPD 0/2, Black race 0/3) but explicitly decline to reproduce the
+>   exact per-cell points; one concordant open numeric source, let alone two, was not
+>   obtainable.
+> - **PRECISE-DAPT** — the primary source (Costa 2017 *Lancet*) publishes only a
+>   **graphical nomogram** with no numeric anchor table; independent reimplementations
+>   diverge. This tile was already **the sole deferral** of the earlier spec-v150
+>   Post-Parity Coverage program for the same reproducibility reason.
+>
+> Deferring is consistent with this spec's own §7 ("no proprietary or non-reproducible
+> model … deferred where they cannot be reproduced from ≥2 open sources"). The sibling
+> specs **[spec-v258](spec-v258.md)** (acute & primary-care decision rules) and
+> **[spec-v260](spec-v260.md)** (pneumonia severity & stewardship risk) shipped on
+> 2026-07-08/09. **Re-open v259 when the verbatim tables are available from ≥2 open,
+> fetchable sources** (or a source PDF is supplied); the build recipe below is unchanged.
+>
+> Original proposal follows. **Each id was verified absent by a fixed-string
 > scan of the extracted `app.js` id/name list** ([spec-v85 §6.2](spec-v85.md)): the
 > catalog carries `maggic`, `killip`, `grace`, `timi`, `crusade`, `has-bled`, and
 > `dapt-score`, but **not** the GWTG-HF score, the EHMRG, or the PRECISE-DAPT score.
