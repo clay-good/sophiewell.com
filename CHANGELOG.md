@@ -6,6 +6,17 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v276 — Nutritional Risk Index (Buzby NRI), 1135 → 1136)
+
+- The Buzby Nutritional Risk Index (`nri`), the sole tile of spec-v276, joining the nutrition
+  tiles beside GNRI / PNI / CONUT. New module `lib/nutrition-v276.js`, renderer
+  `views/group-v276.js` (RV276). Verified absent (spec-v85 §6.2); a nutrition-risk index with
+  source-quoted bands — no diagnosis or treatment order (spec-v11 §5.3). NRI = 1.519 ×
+  albumin (g/L) + 41.7 × (current weight / usual weight); bands > 100 no risk, 97.5-100 mild,
+  83.5-97.5 moderate, < 83.5 severe, with a lower value marking greater perioperative risk.
+  Formula/bands cross-verified against Buzby 1991 (NEJM, VA-TPN) and standard nutrition
+  references. Class A.
+
 ### Added (spec-v275 — RDW-to-Platelet Ratio (RPR), 1134 → 1135)
 
 - The RDW-to-platelet ratio (`rpr`), the sole tile of spec-v275, joining the non-invasive

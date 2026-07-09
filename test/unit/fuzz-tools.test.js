@@ -263,6 +263,7 @@ import * as anthroV272 from '../../lib/anthro-v272.js';
 import * as metabolicV273 from '../../lib/metabolic-v273.js';
 import * as proteinsV274 from '../../lib/proteins-v274.js';
 import * as fibrosisV275 from '../../lib/fibrosis-v275.js';
+import * as nutritionV276 from '../../lib/nutrition-v276.js';
 
 const MODULES = {
   'clinical.js': clinical,
@@ -470,6 +471,7 @@ const MODULES = {
   'metabolic-v273.js': metabolicV273,
   'proteins-v274.js': proteinsV274,
   'fibrosis-v275.js': fibrosisV275,
+  'nutrition-v276.js': nutritionV276,
 };
 
 const MATRIX = [0, -1, 1e9, NaN, Infinity, -Infinity, '', undefined, null];
