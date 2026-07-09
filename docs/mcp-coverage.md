@@ -1141,20 +1141,33 @@ table) or the Lund-Browder `{ region: percent }` map, and the compute dispatches
 on the method. Append-only. Brings the exposed total to **1032 calculators across
 173 modules**.
 
-This closes the routinely-adaptable catalog: the remaining unexposed clinical
-tiles are all structurally out of reach of the single-source round-trip contract
-and are recorded as deferred - tiles whose compute lives inline in the view with
-no pure `lib` function (`nexus-cspine`, `tb-testing`, `lab-interpret`,
+## Eighty-third wave — the ventilator SBT readiness + ARDSnet PEEP tile in lib/scoring-v4.js (+1)
+
+The `views/group-h.js` `vent-sbt-peep` tile, deferred at the wave-82 close only
+because its `META.example` filled the awake/cooperative checkbox with the DOM
+literal `'on'` — a value `applyExample` never checks (it honors `'1'`/`true`) and
+that `mcp/fields.js` `isBoolLike` rejects, so the browser example rendered "SBT
+not ready" against an "all 5 criteria met" expected string and the MCP round-trip
+could not validate. The example now uses `'1'`, which fixes the browser render
+and makes the checkbox bool-like. The adapter wraps the pure `ventSbtPeep` to
+echo two self-describing counts (`criteriaTotal` / `criteriaMet`) so the
+documented "All 5 criteria met" round-trips — the five criteria labels carry the
+threshold digits (150 / 8 / 0.5) but not the count. Append-only. Brings the
+exposed total to **1033 calculators across 173 modules**.
+
+This again closes the routinely-adaptable catalog: the remaining unexposed
+clinical tiles are all structurally out of reach of the single-source round-trip
+contract and are recorded as deferred - tiles whose compute lives inline in the
+view with no pure `lib` function (`nexus-cspine`, `tb-testing`, `lab-interpret`,
 `insulin-drip`), wall-clock-dependent tiles (`due-date`'s gestational age,
 `preg-dating`, `code-blue-clock`, `device-day-counter`, and the timezone-shifted
 `ews-escalation` / `sepsis-bundle-clock`), empty-`{}`-example tiles that depend
 on the browser's default field values (`opioid-mme`, `aldrete-padss`), the
-`"on"`-checkbox example of `vent-sbt-peep`, the `PaCO2`-substring extractor
-collision of `minute-ventilation`, the per-kg/per-minute-ambiguous `vasopressor`,
-the data-shard-driven `field-triage`, the `lib/screener.js` config tiles with no
-`META.example` (`phq9`, `gad7`, `auditc`, `cage`, `epds`), and the pure static
-reference cards (`co-cn-antidote`, `tetanus`, `rabies-pep`, `bbp-exposure`,
-`sti-screening`).
+`PaCO2`-substring extractor collision of `minute-ventilation`, the
+per-kg/per-minute-ambiguous `vasopressor`, the data-shard-driven `field-triage`,
+the `lib/screener.js` config tiles with no `META.example` (`phq9`, `gad7`,
+`auditc`, `cage`, `epds`), and the pure static reference cards
+(`co-cn-antidote`, `tetanus`, `rabies-pep`, `bbp-exposure`, `sti-screening`).
 
 ## Exposed
 
@@ -2466,6 +2479,7 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 - `ascvd`
 - `prevent`
 - `restraint-timer`
+- `vent-sbt-peep`
 
 ### lib/scoring-v6.js
 - `ballard`

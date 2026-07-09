@@ -4207,7 +4207,7 @@ clamped to `[0, 1]`, so the JSON surface never emits a non-finite probability.
 
 ### Coverage is explicit and honest
 
-Adapting the catalog is incremental. Coverage now stands at **1032 clinical
+Adapting the catalog is incremental. Coverage now stands at **1033 clinical
 calculators across 173 `lib` modules** (of 1109 catalog tiles), built module by <!-- catalog-truth:historical (173 is the count of lib modules adapted, not a catalog tile count) -->
 module against the one fixed contract:
 
@@ -4295,6 +4295,7 @@ module against the one fixed contract:
 | eightieth (Naegele's rule) | `clinical` (estimated due date) | 1 |
 | eighty-first (Lund-Browder burn %TBSA) | `idcrit-v99` (Lund-Browder per-region burn area) | 1 |
 | eighty-second (burn %TBSA estimator) | `field` (Rule of Nines / Lund-Browder %TBSA) | 1 |
+| eighty-third (ventilator SBT readiness + ARDSnet PEEP) | `scoring-v4` (Boles 2007 SBT readiness + ARDSnet PEEP/FiO2 look-up) | 1 |
 
 
 `docs/mcp-coverage.md` is the ledger and `list_calculators` always reports the

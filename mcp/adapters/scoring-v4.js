@@ -2018,4 +2018,34 @@ export default [
       { dom: 'rt-ts', arg: 'orderTimestamp', kind: 'string', required: true, label: 'Restraint order at (ISO timestamp)' },
     ],
   },
+
+  // --- wave 83: the ventilator SBT readiness + ARDSnet PEEP look-up ---------
+  // The compute is a pure function of the five Boles 2007 readiness inputs plus
+  // the ARDSnet arm/FiO2 look-up; no wall clock. Two self-describing counts are
+  // echoed (criteriaTotal / criteriaMet) so the "All 5 criteria met" the tile
+  // documents round-trips through the numeric contract - the criteria labels
+  // carry the threshold digits (150 / 8 / 0.5) but not the count itself. This
+  // tile was previously deferred only because its META.example filled the
+  // awake/cooperative checkbox with the DOM literal 'on', which is neither
+  // applyExample-checkable nor bool-like; the example now uses '1'.
+  {
+    id: 'vent-sbt-peep',
+    summary: 'Spontaneous-breathing-trial readiness (Boles 2007) with the ARDSnet PEEP/FiO2 look-up (Brower 2000 / ALVEOLI 2004): the five readiness criteria (PaO2/FiO2 >= 150, PEEP <= 8, FiO2 <= 0.5, no/minimal vasopressors, awake/cooperative) decide SBT readiness, and the selected arm + target FiO2 return the table PEEP. Echoes the count of criteria met.',
+    compute: (a) => {
+      const r = F.ventSbtPeep(a);
+      if (r == null) return null;
+      const criteriaTotal = Object.keys(r.sbtChecks).length;
+      const criteriaMet = Object.values(r.sbtChecks).filter(Boolean).length;
+      return { ...r, criteriaTotal, criteriaMet };
+    },
+    fields: [
+      { dom: 'vs-pf', arg: 'pao2FiO2', kind: 'number', required: true, label: 'PaO2 / FiO2 ratio' },
+      { dom: 'vs-peep', arg: 'peep', kind: 'number', required: true, label: 'Current PEEP', unit: 'cm H2O' },
+      { dom: 'vs-fio2', arg: 'fio2', kind: 'number', required: true, label: 'Current FiO2 (fraction 0-1)' },
+      { dom: 'vs-vaso', arg: 'vasopressors', kind: 'bool', label: 'Vasopressors at more than minimal dose' },
+      { dom: 'vs-awake', arg: 'awakeCooperative', kind: 'bool', required: true, label: 'Patient is awake / cooperative' },
+      { dom: 'vs-arm', arg: 'ardsArm', kind: 'enum', values: ['low', 'high'], required: true, label: 'ARDSnet arm (low = Brower 2000, high = ALVEOLI 2004)' },
+      { dom: 'vs-lf', arg: 'lookupFiO2', kind: 'number', required: true, label: 'Target FiO2 to look up (fraction 0-1)' },
+    ],
+  },
 ];

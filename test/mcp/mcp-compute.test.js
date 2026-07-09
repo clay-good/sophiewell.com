@@ -1597,6 +1597,20 @@ test('lib/field.js bsa_burn method-branched worked calls (wave 82)', () => {
   assert.equal(ok('bsa_burn', { 'bb-method': 'lund', 'bb-l-head': '7', 'bb-l-anterior-trunk': '13' }).tbsa, 20);
 });
 
+test('lib/scoring-v4.js ventilator SBT readiness + ARDSnet PEEP worked calls (wave 83)', () => {
+  // All five Boles 2007 criteria met -> SBT ready; the echoed counts round-trip.
+  const ready = ok('vent-sbt-peep', { 'vs-pf': '200', 'vs-peep': '6', 'vs-fio2': '0.4', 'vs-awake': '1', 'vs-arm': 'low', 'vs-lf': '0.5' });
+  assert.equal(ready.sbtReady, true);
+  assert.equal(ready.criteriaTotal, 5);
+  assert.equal(ready.criteriaMet, 5);
+  // ARDSnet low-PEEP arm at FiO2 0.5 -> PEEP band 8-10.
+  assert.equal(ready.suggestedPeep, '8-10');
+  // Awake criterion unchecked -> not ready, one criterion short.
+  const notReady = ok('vent-sbt-peep', { 'vs-pf': '200', 'vs-peep': '6', 'vs-fio2': '0.4', 'vs-awake': '0', 'vs-arm': 'low', 'vs-lf': '0.5' });
+  assert.equal(notReady.sbtReady, false);
+  assert.equal(notReady.criteriaMet, 4);
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];

@@ -73,7 +73,7 @@ strings; booleans as `true`/`false`; enums by their listed string values.
 
 ```
 list_calculators { "specialty": "hepatology" }
-  -> { coverage: "1032 of 1109 catalog tiles exposed ...", calculators: [ { id: "meld-xi", ... }, ... ] }
+  -> { coverage: "1033 of 1109 catalog tiles exposed ...", calculators: [ { id: "meld-xi", ... }, ... ] }
 
 describe_calculator { "id": "meld-xi" }
   -> { inputSchema: { ... mx-bili, mx-creat ... }, citation: "Heuman DM ... Liver Transpl 2007", ... }
@@ -259,8 +259,10 @@ drug-dose recipes in `lib/field.js` (burn fluid, pediatric ETT, naloxone,
 pediatric weight-based dose), and a seventy-ninth the 42 CFR restraint-
 reassessment timer in `lib/scoring-v4.js`, an eightieth Naegele's rule
 estimated due date in `lib/clinical.js`, an eighty-first the Lund-Browder burn
-%TBSA in `lib/idcrit-v99.js`, and an eighty-second the Rule-of-Nines /
-Lund-Browder burn %TBSA estimator in `lib/field.js`, for 1032 across 173 modules
+%TBSA in `lib/idcrit-v99.js`, an eighty-second the Rule-of-Nines /
+Lund-Browder burn %TBSA estimator in `lib/field.js`, and an eighty-third the
+ventilator SBT readiness + ARDSnet PEEP look-up in `lib/scoring-v4.js`, for
+1033 across 173 modules
 today. <!-- catalog-truth:historical (173 is the count of lib modules adapted, not a catalog tile count) -->
 Later waves extend it module by module against the same contract.
 
