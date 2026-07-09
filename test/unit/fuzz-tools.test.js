@@ -250,6 +250,7 @@ import * as diveV257 from '../../lib/dive-v257.js';
 import * as decisionRulesV258 from '../../lib/decision-rules-v258.js';
 import * as pneumoniaRiskV260 from '../../lib/pneumonia-risk-v260.js';
 import * as acuteAbdomenV261 from '../../lib/acute-abdomen-v261.js';
+import * as pediatricAcuteV262 from '../../lib/pediatric-acute-v262.js';
 
 const MODULES = {
   'clinical.js': clinical,
@@ -444,6 +445,7 @@ const MODULES = {
   'decision-rules-v258.js': decisionRulesV258,
   'pneumonia-risk-v260.js': pneumoniaRiskV260,
   'acute-abdomen-v261.js': acuteAbdomenV261,
+  'pediatric-acute-v262.js': pediatricAcuteV262,
 };
 
 const MATRIX = [0, -1, 1e9, NaN, Infinity, -Infinity, '', undefined, null];

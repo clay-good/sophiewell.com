@@ -165,6 +165,7 @@ import { renderers as RV257 } from './views/group-v257.js';
 import { renderers as RV258 } from './views/group-v258.js';
 import { renderers as RV260 } from './views/group-v260.js';
 import { renderers as RV261 } from './views/group-v261.js';
+import { renderers as RV262 } from './views/group-v262.js';
 import { renderers as RV164 } from './views/group-v164.js';
 import { renderers as RV165 } from './views/group-v165.js';
 import { renderers as RV166 } from './views/group-v166.js';
@@ -199,7 +200,7 @@ import { resolvePrompt } from './lib/prompt.js';
 // artifact-detect / artifact-route / artifact-handoff helpers were
 // deleted in spec-v29 wave 29-2 (Group C/L).
 
-const RENDERERS = { ...RA, ...RB, ...RC, ...RE, ...RF, ...RG, ...RH, ...RI, ...RJ, ...RKLMNO, ...RV5, ...RV6, ...RV7, ...RV8, ...RV9, ...RV10, ...RV11, ...RV12, ...RV13, ...RV14, ...RV15, ...RV16, ...RV17, ...RV18, ...RV19, ...RV20, ...RV21, ...RV22, ...RV23, ...RV24, ...RV25, ...RV26, ...RV27, ...RV28, ...RV29, ...RV30, ...RV31, ...RV32, ...RV33, ...RV34, ...RV35, ...RV36, ...RV37, ...RV38, ...RV39, ...RV40, ...RV117, ...RV118, ...RV119, ...RV120, ...RV121, ...RV122, ...RV123, ...RV124, ...RV125, ...RV126, ...RV127, ...RV128, ...RV129, ...RV130, ...RV131, ...RV132, ...RV133, ...RV134, ...RV135, ...RV136, ...RV137, ...RV138, ...RV139, ...RV140, ...RV141, ...RV142, ...RV143, ...RV144, ...RV145, ...RV146, ...RV147, ...RV148, ...RV149, ...RV151, ...RV152, ...RV153, ...RV154, ...RV155, ...RV156, ...RV158, ...RV159, ...RV160, ...RV161, ...RV163, ...RV164, ...RV165, ...RV166, ...RV167, ...RV169, ...RV173, ...RV174, ...RV175, ...RV176, ...RV177, ...RV178, ...RV179, ...RV182, ...RV180, ...RV181, ...RV185, ...RV186, ...RV187, ...RV188, ...RV189, ...RV190, ...RV191, ...RV192, ...RV193, ...RV194, ...RV195, ...RV196, ...RV197, ...RV198, ...RV199, ...RV200, ...RV201, ...RV202, ...RV203, ...RV204, ...RV205, ...RV206, ...RV207, ...RV208, ...RV209, ...RV210, ...RV211, ...RV212, ...RV213, ...RV214, ...RV215, ...RV216, ...RV217, ...RV218, ...RV219, ...RV220, ...RV221, ...RV222, ...RV223, ...RV224, ...RV225, ...RV226, ...RV227, ...RV228, ...RV229, ...RV230, ...RV231, ...RV232, ...RV233, ...RV234, ...RV235, ...RV236, ...RV237, ...RV238, ...RV239, ...RV240, ...RV241, ...RV242, ...RV243, ...RV244, ...RV245, ...RV246, ...RV247, ...RV248, ...RV249, ...RV250, ...RV251, ...RV252, ...RV253, ...RV254, ...RV255, ...RV256, ...RV257, ...RV258, ...RV260, ...RV261, ...RV63, ...RPALINT };
+const RENDERERS = { ...RA, ...RB, ...RC, ...RE, ...RF, ...RG, ...RH, ...RI, ...RJ, ...RKLMNO, ...RV5, ...RV6, ...RV7, ...RV8, ...RV9, ...RV10, ...RV11, ...RV12, ...RV13, ...RV14, ...RV15, ...RV16, ...RV17, ...RV18, ...RV19, ...RV20, ...RV21, ...RV22, ...RV23, ...RV24, ...RV25, ...RV26, ...RV27, ...RV28, ...RV29, ...RV30, ...RV31, ...RV32, ...RV33, ...RV34, ...RV35, ...RV36, ...RV37, ...RV38, ...RV39, ...RV40, ...RV117, ...RV118, ...RV119, ...RV120, ...RV121, ...RV122, ...RV123, ...RV124, ...RV125, ...RV126, ...RV127, ...RV128, ...RV129, ...RV130, ...RV131, ...RV132, ...RV133, ...RV134, ...RV135, ...RV136, ...RV137, ...RV138, ...RV139, ...RV140, ...RV141, ...RV142, ...RV143, ...RV144, ...RV145, ...RV146, ...RV147, ...RV148, ...RV149, ...RV151, ...RV152, ...RV153, ...RV154, ...RV155, ...RV156, ...RV158, ...RV159, ...RV160, ...RV161, ...RV163, ...RV164, ...RV165, ...RV166, ...RV167, ...RV169, ...RV173, ...RV174, ...RV175, ...RV176, ...RV177, ...RV178, ...RV179, ...RV182, ...RV180, ...RV181, ...RV185, ...RV186, ...RV187, ...RV188, ...RV189, ...RV190, ...RV191, ...RV192, ...RV193, ...RV194, ...RV195, ...RV196, ...RV197, ...RV198, ...RV199, ...RV200, ...RV201, ...RV202, ...RV203, ...RV204, ...RV205, ...RV206, ...RV207, ...RV208, ...RV209, ...RV210, ...RV211, ...RV212, ...RV213, ...RV214, ...RV215, ...RV216, ...RV217, ...RV218, ...RV219, ...RV220, ...RV221, ...RV222, ...RV223, ...RV224, ...RV225, ...RV226, ...RV227, ...RV228, ...RV229, ...RV230, ...RV231, ...RV232, ...RV233, ...RV234, ...RV235, ...RV236, ...RV237, ...RV238, ...RV239, ...RV240, ...RV241, ...RV242, ...RV243, ...RV244, ...RV245, ...RV246, ...RV247, ...RV248, ...RV249, ...RV250, ...RV251, ...RV252, ...RV253, ...RV254, ...RV255, ...RV256, ...RV257, ...RV258, ...RV260, ...RV261, ...RV262, ...RV63, ...RPALINT };
 
 // ----- Utility registry ----------------------------------------------------
 // Source of truth for routes, names, group, audiences, and clinical flag.
@@ -2404,6 +2405,13 @@ const UTILITIES = [
   { id: 'ripasa',               name: 'RIPASA Score (Appendicitis)',                      group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'pulp',                 name: 'PULP Score (Peptic Ulcer Perforation Mortality)',  group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'emergency-surgery-score', name: 'Emergency Surgery Score (ESS)',                 group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  // spec-v262: pediatric acute assessment. lib/pediatric-acute-v262.js, RV262. Each
+  // verified absent (spec-v85 6.2); each computes a risk/eligibility category, none
+  // authors an imaging/lumbar-puncture/admission/prescribing order (spec-v11 5.3).
+  // Bands/criteria verified against the primary papers (spec-v97).
+  { id: 'lab-score',            name: 'Lab-score (Serious Bacterial Infection)',          group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'chalice',              name: 'CHALICE Pediatric Head-Injury Rule',               group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'egami',                name: 'Egami Score (IVIG Resistance, Kawasaki)',          group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
 ];
 
 const UTIL_BY_ID = new Map(UTILITIES.map((u) => [u.id, u]));

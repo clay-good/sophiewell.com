@@ -1,6 +1,6 @@
 # spec-v262.md — Pediatric acute assessment: the Lab-score for serious bacterial infection, the CHALICE head-injury rule, and the Egami score for IVIG resistance in Kawasaki disease (+3 tiles)
 
-> Status: **PROPOSED (2026-07-09).** Second feature spec of the **Bedside Acute-Care
+> Status: **SHIPPED (2026-07-09, 1118 → 1121).** Second feature spec of the **Bedside Acute-Care
 > Instruments** program ([spec-v261](spec-v261.md) §1.1). Adds **3** deterministic
 > pediatric instruments — one for the febrile-infant sepsis-workup decision, one for the
 > head-CT decision, one for the Kawasaki treatment-escalation decision. **Each id was

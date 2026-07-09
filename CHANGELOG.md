@@ -6,6 +6,23 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v262 — pediatric acute-assessment instruments, 1118 → 1121)
+
+- Three deterministic pediatric acute-care instruments, second feature spec of the
+  Bedside Acute-Care Instruments program. New module `lib/pediatric-acute-v262.js`,
+  renderers `views/group-v262.js` (RV262). Each id was verified absent by a fixed-string
+  scan of the extracted app.js id/name lists (spec-v85 §6.2); each computes a risk or
+  eligibility category — none authors an imaging, lumbar-puncture, admission, or
+  prescribing order (spec-v11 §5.3). Bands/criteria re-fetched and cross-verified against
+  the primary papers and independent calculators (spec-v97), including the Lab-score
+  PCT-band 0.5 (not 0.05) correction.
+- **Lab-score** (`lab-score`): biomarker serious-bacterial-infection risk (Galetto-Lacour
+  2008), CRP 0/2/4 + PCT 0/2/4 + urine 0/1 (0–9), ≥3 high risk. **CHALICE** (`chalice`):
+  sensitivity-first pediatric head-CT rule (Dunning 2006), any of 14 criteria (6 history /
+  5 examination / 3 mechanism) → CT recommended. **Egami** (`egami`): IVIG-resistance risk
+  in Kawasaki disease (Egami 2006), ALT≥80 +2 / age≤6mo +1 / day≤4 +1 / CRP≥8 +1 /
+  platelets≤300k +1 (0–6), ≥3 high risk. All Class A.
+
 ### Added (spec-v261 — acute-abdomen & emergency-general-surgery risk instruments, 1115 → 1118)
 
 - Three deterministic acute-care surgical risk instruments, first feature spec of the
