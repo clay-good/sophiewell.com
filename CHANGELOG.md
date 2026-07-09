@@ -6,6 +6,17 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v273 — TyG-BMI insulin-resistance surrogate, 1132 → 1133)
+
+- TyG-BMI (`tyg-bmi`), the sole tile of spec-v273, joining the spec-v136 endocrine/metabolic
+  cluster beside HOMA-IR / QUICKI / TyG / METS-IR. New module `lib/metabolic-v273.js`,
+  renderer `views/group-v273.js` (RV273). Verified absent (spec-v85 §6.2); computes a
+  lab-derived index — no diagnosis or treatment order (spec-v11 §5.3). TyG-BMI = ln[(TG ×
+  glucose)/2] × BMI, both mg/dL (TyG core from Simental-Mendia 2008); adds adiposity to the
+  triglyceride-glucose index, with a HIGHER value marking greater insulin resistance (no
+  universal cut-point). Formula cross-verified against Er 2016 (PLoS One) and validation
+  cohorts. Class A.
+
 ### Added (spec-v272 — Waist-to-Height Ratio (WHtR), 1131 → 1132)
 
 - The waist-to-height ratio (`whtr`), the sole tile of spec-v272, joining the
