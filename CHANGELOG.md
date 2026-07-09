@@ -6,6 +6,17 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v271 — Castelli Risk Index I & II, 1130 → 1131)
+
+- The Castelli Risk Index (`castelli-index`), the sole tile of spec-v271, joining the lipid
+  tiles beside non-HDL / remnant cholesterol. New module `lib/lipids-v271.js`, renderer
+  `views/group-v271.js` (RV271). Verified absent (spec-v85 §6.2); computes lab-derived ratios
+  — no diagnosis or treatment order (spec-v11 §5.3). Risk Index-I = total cholesterol / HDL-C,
+  Risk Index-II = LDL-C / HDL-C (both unitless); a HIGHER ratio marks a more atherogenic
+  profile, with roughly < 5 (I) and < 3 (II) desirable but no single universal cut-point.
+  Formula cross-verified against Castelli 1983 (Circulation) and standard lipid references.
+  Class A.
+
 ### Added (spec-v270 — Cardiometabolic Index (CMI), 1129 → 1130)
 
 - The Cardiometabolic Index (`cmi`), the sole tile of spec-v270, joining the
