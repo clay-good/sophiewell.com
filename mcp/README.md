@@ -73,7 +73,7 @@ strings; booleans as `true`/`false`; enums by their listed string values.
 
 ```
 list_calculators { "specialty": "hepatology" }
-  -> { coverage: "1035 of 1109 catalog tiles exposed ...", calculators: [ { id: "meld-xi", ... }, ... ] }
+  -> { coverage: "1036 of 1109 catalog tiles exposed ...", calculators: [ { id: "meld-xi", ... }, ... ] }
 
 describe_calculator { "id": "meld-xi" }
   -> { inputSchema: { ... mx-bili, mx-creat ... }, citation: "Heuman DM ... Liver Transpl 2007", ... }
@@ -264,9 +264,10 @@ Lund-Browder burn %TBSA estimator in `lib/field.js`, and an eighty-third the
 ventilator SBT readiness + ARDSnet PEEP look-up in `lib/scoring-v4.js`, and an
 eighty-fourth the measured timed-urine creatinine clearance in
 `lib/renal-v277.js`, and an eighty-fifth the RDW-to-platelet ratio in
-`lib/fibrosis-v275.js`, for
-1035 across 175 modules
-today. <!-- catalog-truth:historical (175 is the count of lib modules adapted, not a catalog tile count) -->
+`lib/fibrosis-v275.js`, and an eighty-sixth the Buzby Nutritional Risk Index in
+`lib/nutrition-v276.js`, for
+1036 across 176 modules
+today. <!-- catalog-truth:historical (176 is the count of lib modules adapted, not a catalog tile count) -->
 Later waves extend it module by module against the same contract.
 
 ## Design

@@ -1193,6 +1193,17 @@ carries the ~0.1 derivation cutoff, so the example round-trips through the
 default `makeToArgs`. New adapter module registered in `mcp/catalog.js`. Brings
 the exposed total to **1035 calculators across 175 modules**.
 
+## Eighty-sixth wave — the Buzby Nutritional Risk Index in lib/nutrition-v276.js (+1)
+
+`nri` (spec-v276) is the VA-TPN Nutritional Risk Index
+`1.519 x albumin (g/L) + 41.7 x (current weight / usual weight)` (Buzby) — a
+lower value marks greater perioperative nutritional risk (bands >100 none,
+97.5-100 mild, 83.5-97.5 moderate, <83.5 severe). Bounded three-number compute
+through `lib/num.js`; its `bandLabel` carries the 96.5 example result, so the
+example round-trips through the default `makeToArgs`. New adapter module
+registered in `mcp/catalog.js`. Brings the exposed total to **1036 calculators
+across 176 modules**.
+
 ## Exposed
 
 Each id below is live in `mcp/catalog.js`. The gate parses this list.
@@ -2577,6 +2588,7 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 - `sipa`
 - `measured-crcl`
 - `rpr`
+- `nri`
 
 ## Not yet adapted
 

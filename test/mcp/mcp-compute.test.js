@@ -1635,6 +1635,16 @@ test('lib/fibrosis-v275.js worked calls', () => {
   assert.equal(lowr.abnormal, false);
 });
 
+test('lib/nutrition-v276.js worked calls', () => {
+  // Albumin 40 g/L, 60 kg current vs 70 kg usual -> 96.5 (moderate risk).
+  const nri = ok('nri', { 'nri-alb': '40', 'nri-current': '60', 'nri-usual': '70' });
+  assert.equal(nri.score, 96.5);
+  assert.equal(nri.abnormal, true);
+  // Weight-stable, higher albumin clears the >100 no-risk band.
+  const wellNourished = ok('nri', { 'nri-alb': '45', 'nri-current': '70', 'nri-usual': '70' });
+  assert.equal(wellNourished.abnormal, false);
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];
