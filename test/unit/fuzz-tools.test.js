@@ -253,6 +253,7 @@ import * as acuteAbdomenV261 from '../../lib/acute-abdomen-v261.js';
 import * as pediatricAcuteV262 from '../../lib/pediatric-acute-v262.js';
 import * as respiratoryMaternalV263 from '../../lib/respiratory-maternal-v263.js';
 import * as massiveTransfusionV265 from '../../lib/massive-transfusion-v265.js';
+import * as rccPrognosisV266 from '../../lib/rcc-prognosis-v266.js';
 
 const MODULES = {
   'clinical.js': clinical,
@@ -450,6 +451,7 @@ const MODULES = {
   'pediatric-acute-v262.js': pediatricAcuteV262,
   'respiratory-maternal-v263.js': respiratoryMaternalV263,
   'massive-transfusion-v265.js': massiveTransfusionV265,
+  'rcc-prognosis-v266.js': rccPrognosisV266,
 };
 
 const MATRIX = [0, -1, 1e9, NaN, Infinity, -Infinity, '', undefined, null];

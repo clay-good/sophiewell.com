@@ -1,17 +1,32 @@
 # spec-v266.md — Localized renal-cell carcinoma prognosis after nephrectomy: the Leibovich score, the SSIGN score, and the UCLA Integrated Staging System (+3 tiles)
 
-> Status: **PROPOSED (2026-07-09).** Third feature spec of the **Advanced Sub-specialty
-> Prognostic Instruments** program ([spec-v264](spec-v264.md) §1.1). Adds **3**
-> deterministic instruments a urologic-oncology team reads after nephrectomy to stratify
-> recurrence and cancer-specific survival — the metastasis-progression model, the Mayo
-> cancer-specific-survival model, and the UCLA integrated three-factor model. **Each id was
-> verified absent by a fixed-string scan of the extracted `app.js` id/name list**
-> ([spec-v85 §6.2](spec-v85.md)): the catalog carries `imdc-rcc`, `mskcc-rcc`,
-> `ecog-karnofsky`, and the myeloma/lymphoma staging engines, but **not** the Leibovich
-> score, the SSIGN score, or the UCLA Integrated Staging System (UISS).
+> Status: **PARTIALLY SHIPPED (2026-07-09, +1 of 3; Leibovich & UISS parked).** Third
+> feature spec of the **Advanced Sub-specialty Prognostic Instruments** program
+> ([spec-v264](spec-v264.md) §1.1). Proposes **3** post-nephrectomy prognostic instruments;
+> **1 shipped** (SSIGN), **2 parked** (Leibovich, UISS). **Each id was verified absent**
+> ([spec-v85 §6.2](spec-v85.md)).
 >
-> Catalog effect: **live `UTILITIES.length` + 3** — enforced by the catalog-truth
-> gate ([spec-v46](spec-v46.md)) at build time; no number is copied here.
+> **Shipped:** `ssign-score` — the SSIGN point table is reproducible from >= 2 independent
+> open sources (Frank 2002 + MDCalc "SSIGN Score" for the point grid; the 5-year
+> cancer-specific-survival bands are confirmed across external validations) and is live.
+>
+> **Parked (spec-v97 / [spec-v259](spec-v259.md) precedent):**
+>
+> - **`leibovich-rcc`** — the exact 2003 point table could not be confirmed from >= 2
+>   **independent** open, fetchable sources in-session: the reachable detailed renders trace
+>   to a single validation lineage, Radiopaedia/MDCalc/Kidney-Cancer-UK were 403/404, and
+>   known variant reproductions differ on the pN and pT weights.
+> - **`uiss`** — the localized-branch group-assignment table (TNM x Fuhrman grade x ECOG ->
+>   group I-V) is not reproducible from >= 2 open, fetchable sources in-session; the primary
+>   Zisman 2001 table and the cliot R source are not extractable here and secondary renders
+>   give only partial rules.
+>
+> **Re-open condition:** ship each parked tile when its point/assignment table is
+> reproducible from >= 2 independent open, fetchable sources, or is supplied directly.
+>
+> Catalog effect this slice: **live `UTILITIES.length` + 1** (SSIGN only), enforced by the
+> catalog-truth gate ([spec-v46](spec-v46.md)); the remaining +2 lands when the parked
+> tiles re-open.
 >
 > Every prior spec remains in force. v266 adds no runtime network call and no AI; each
 > tile obeys the [spec-v100](spec-v100.md) §2 doctrine, passes the

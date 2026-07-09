@@ -6,6 +6,22 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v266 — SSIGN RCC cancer-specific-survival score, 1125 → 1126; Leibovich & UISS parked)
+
+- The SSIGN score (`ssign-score`), first tile of spec-v266 (Advanced Sub-specialty
+  Prognostic Instruments program). New module `lib/rcc-prognosis-v266.js`, renderer
+  `views/group-v266.js` (RV266). Verified absent (spec-v85 §6.2); computes a risk group /
+  survival estimate — no surveillance, adjuvant-therapy, or biopsy order (spec-v11 §5.3).
+  Stage/Size/Grade/Necrosis point grid (pT1-4 0/1/2/4, N1-2 +2, M1 +4, size≥5cm +2, Fuhrman
+  grade 3 +1 / grade 4 +3, necrosis +2; 0–17) with 5-year cancer-specific survival by score
+  band (0-2 ~96.8% → ≥10 ~18.1%); Frank 2002 + MDCalc, external-validation-confirmed. Uses
+  1997 TNM and Fuhrman grade. Class A.
+- **Parked this slice (spec-v266 §7, spec-v97 / spec-v259 precedent):** `leibovich-rcc` (the
+  2003 point table could not be confirmed from ≥2 *independent* open fetchable sources; the
+  reachable renders share one lineage and variant reproductions differ on pN/pT weights) and
+  `uiss` (the localized group-assignment table is not extractable from ≥2 open sources). They
+  re-open when reproducible from ≥2 independent open sources.
+
 ### Added (spec-v265 — ABC massive-transfusion trigger, 1124 → 1125; McLaughlin & PWH parked)
 
 - The Assessment of Blood Consumption (ABC) score (`abc-transfusion-score`), first tile of
