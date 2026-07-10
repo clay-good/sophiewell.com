@@ -139,3 +139,13 @@ test('queryCompute: Cockcroft-Gault creatinine clearance (age + weight + scr + s
   assert.equal(queryCompute('crcl age 60 weight 80 kg cr 1.0'), null, 'sex missing');
   assert.equal(queryCompute('crcl weight 80 kg cr 1.0 male'), null, 'age missing');
 });
+
+test('queryCompute: ideal body weight (Devine) from height + sex', () => {
+  const r = queryCompute('ideal body weight 5 ft 10 in male');
+  assert.equal(r.tile, 'bw-bsa-suite');
+  assert.equal(r.value, 73);                           // 50 + 2.3*(70-60)
+  assert.deepEqual(r.inputs, { 'bw-hin': 70, 'bw-sex': 'M' });
+  const f = queryCompute('ibw 62 in female');
+  assert.equal(f.value, 50.1);                         // 45.5 + 2.3*(62-60)
+  assert.equal(queryCompute('ideal body weight 5 ft 10 in'), null, 'sex missing');
+});
