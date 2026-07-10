@@ -1,6 +1,17 @@
 # spec-v281.md — Hepatocellular-carcinoma surveillance & detection: the GALAD score and the Toronto HCC Risk Index (+2 tiles)
 
-> Status: **PROPOSED (2026-07-10, docs-only).** Fourth and final feature spec of the
+> Status: **BUILT (2026-07-10).** `galad-hcc` and `toronto-hcc-risk` are live (catalog
+> 1142 → 1144), **closing the Advanced Prognostic & Classification Instruments program
+> (spec-v278–v281, +7 tiles)**. Every coefficient and point weight was re-fetched and
+> cross-verified against ≥ 2 independent open sources per [spec-v97](spec-v97.md): the GALAD
+> five coefficients and the Z = -0.63 cutoff agree across the primary paper and independent
+> reproductions, and the THRI Table 3 weights were transcribed verbatim from the primary
+> Sharma 2017 accepted manuscript (age 0/50/100, etiology autoimmune-or-HCV-SVR 0 / other 36 /
+> steatohepatitis 54 / HCV-or-HBV 97, male 80, platelets 0/20/70/89; total 0-366) with the
+> low/medium/high < 120 / 120-240 / > 240 bands and the ~3% / 10% / 32% 10-year incidence
+> independently corroborated.
+>
+> Superseded status line — Fourth and final feature spec of the
 > **Advanced Prognostic & Classification Instruments** program ([spec-v278](spec-v278.md)
 > §1.1). Proposes **2** deterministic instruments a hepatology team reaches for around HCC
 > surveillance — how likely is a detected nodule to be HCC given the serum biomarkers, and

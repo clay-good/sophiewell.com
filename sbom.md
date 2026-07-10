@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `5a763b002b02f468`
-Generated: 2026-07-10T13:45:37.240Z
+Build ID: `8d80f0a818a04e08`
+Generated: 2026-07-10T13:54:17.721Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=20.18.1 <21, npm >=10.0.0
@@ -24,13 +24,13 @@ downloads is committed in this repository and is hashed below.
 
 | Path | Bytes | SHA-256 |
 |---|---:|---|
-| `index.html` | 77116 | `5168df9c48d3b443dcaa6a3deaccf77e736bf312ea19e3f9128fded7efef1942` |
+| `index.html` | 77222 | `687a0507688550e4590aeea1c0af74f036e2eed17f055c43daf649cc02a23076` |
 | `styles.css` | 43598 | `39b102cf1e2eb0d6d39bb776775a288e032d05a1365b3e135f771392ee598ad1` |
-| `app.js` | 310779 | `2bcf625ae26505291409d9f30635661f11fce8bd4cdd08439de84cf8dd2a3c46` |
+| `app.js` | 311169 | `0de4a27198e5222ae387f3a4da058f3f5c8b8846d049d1119166817d0a105005` |
 | `sw.js` | 4622 | `b891d4344f8e04403b7f1d307fd446cc224bddc6f0c4397438a17d197351171e` |
 | `site.webmanifest` | 709 | `0e0de4da60590a12e8b27a0ae2a2f5ffdb6500b7d2b78f93631ec2f64ed3d5ce` |
 | `robots.txt` | 127 | `38fbf9c1854e72abb20e01e81dd5a31d4ea96f154c12d5db1ec3af05524dd1a1` |
-| `sitemap.xml` | 175438 | `e0efdf7d304c2f22df21e2ca8209c2f1eda981dbc1aa51f66804c822c8482d99` |
+| `sitemap.xml` | 175743 | `60f1719bc6765f3ee41a440db64ee83119e951f80615fb3ead5a7abb5702a921` |
 | `_headers` | 1316 | `2f39986457d2feff7e73e491a7d09ee871e8f2f4cc2bc437f86bd86a42554ec6` |
 | `logo.png` | 63440 | `11afaf1b0d3ca68393d202e4810bf766b5b6d591b4e3ec52f41d3cacaa4616ec` |
 | `favicon.ico` | 7411 | `407fde0ca2788409e87e11f596fa02e6a0b121817fcea7fd995beec1801e287b` |
@@ -114,6 +114,7 @@ downloads is committed in this repository and is hashed below.
 | `lib/growth-lms-data.js` | 62247 | `ab55ed9e9b56d47f239bfe21dc9d9811969332de08e595c2773d93538cc505d3` |
 | `lib/gyn-v139.js` | 16713 | `48b43ee6adf613155f263495dbded3c7fc5929d6373190b47bcb2fa2ff47fa69` |
 | `lib/hash.js` | 4585 | `de41dadb11142ea86f1536176e94408ac124ca90305161fe04f1956355512403` |
+| `lib/hcc-surveillance-v281.js` | 7094 | `62d58923f76c7c1d5e79f8ba2301aadc44fd0ee9f30d7a39da9bcbfb5e1b7ec3` |
 | `lib/hematology-v229.js` | 7344 | `00286443125b0036df49b1f27f7b5d373d4c1b1281e89f185ccd18d189bd6e2d` |
 | `lib/heme-onc-risk-v211.js` | 11804 | `cbe39fe689c3723cd7eef4796c470a780d23dd31ac350a9cbd19bad2a05561c9` |
 | `lib/heme-prognostic-v216.js` | 13013 | `c6389635286fd17370fac65bfe97663eaf3e8ffa1b7852620f7b7011d532b6e8` |
@@ -158,7 +159,7 @@ downloads is committed in this repository and is hashed below.
 | `lib/massive-transfusion-v265.js` | 3240 | `7ad4d1d86063fdd077546be5d6381ea4a5024ef669389f88abdfe07850903b29` |
 | `lib/medication-v4.js` | 18192 | `467f9576c50da696cc56094eb022d0a5ed1e88de0c7618448554ede8067270b0` |
 | `lib/medication-v5.js` | 18863 | `ce81d9f8954abbd412892c13af9936f992239164f26fd2b999eaea7902787ab7` |
-| `lib/meta.js` | 1573317 | `0b8718d9ea1abeb0b701a11b7155ca05d20190ebb1ffb98957c0a081ef3192cb` |
+| `lib/meta.js` | 1575821 | `69d13d9ae3e779c1c60350f6d94f1de2615dca34f2d7acf06282ddcbeef13154` |
 | `lib/metabolic-hepatic-v219.js` | 12791 | `b9352877cebf7fbf3c3b99ecb8b72cdbee3ed94e056dc019113668609f5a95a8` |
 | `lib/metabolic-onc-v88.js` | 12659 | `1553b641668c121661a66647da71a4aaaa023e9f3a6b7a753efbcdab27cdba81` |
 | `lib/metabolic-v269.js` | 3262 | `0c7a42557886f2b0aeee7949b8d0bd682d795d4526174fd540717a978d94ec2f` |
@@ -469,6 +470,7 @@ downloads is committed in this repository and is hashed below.
 | `views/group-v279.js` | 4840 | `67e136eeedf10c8d7f41683a971c56db68ff5ad71455e4caf52f39b896a34b6d` |
 | `views/group-v28.js` | 14139 | `374784d87185826bcf38983997c200948240d1d0896b0ec09e6e9bb0180a30fc` |
 | `views/group-v280.js` | 5530 | `1eb474900f6540a22da0b88be7601abfc6bcc2b55e96c6064e1d3553ac3de6b1` |
+| `views/group-v281.js` | 4715 | `66e40f53207f662d4fedeff8971dbdd2f6fc6c4713db7a9eeca16590bea98bec` |
 | `views/group-v29.js` | 10710 | `c1a683fbfafe86f37fed881efeee0e4974f7fb7b698c3ed00658b776d9ba7895` |
 | `views/group-v30.js` | 11632 | `94de321b6ba8a28d9fe271d625ddb457b67ec6f1ad1376621f3f66f67bdaab5e` |
 | `views/group-v31.js` | 12661 | `0efe7001ebf25039dd348eec201a2499ea544be1edd2735fb7371c604e95a0be` |

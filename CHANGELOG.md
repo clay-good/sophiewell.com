@@ -6,6 +6,25 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v281 — HCC surveillance & detection: GALAD + Toronto HCC Risk Index, 1142 → 1144)
+
+- Two group-G hepatocellular-carcinoma tiles, joining the HCC staging / surveillance
+  instruments (BCLC, CLIP, Milan, PAGE-B, aMAP). New shared module
+  `lib/hcc-surveillance-v281.js`, renderer `views/group-v281.js` (RV281). Both verified
+  absent (spec-v85 §6.2); each reports a probability or a risk category — no diagnosis,
+  biopsy, imaging, or surveillance-interval order (spec-v11 §5.3). **Closes the Advanced
+  Prognostic & Classification Instruments program (spec-v278–v281, +7 tiles).**
+  - **GALAD score (`galad-hcc`)** — the serum-biomarker model (Johnson 2014) for the
+    probability a lesion is HCC: Z = -10.08 + 0.09·age + 1.67·(male=1) + 2.34·log₁₀(AFP) +
+    0.04·AFP-L3 + 1.33·log₁₀(DCP); probability = e^Z/(1+e^Z), commonly applied at the Z = -0.63
+    cutoff (~85% sensitivity / 90% specificity). Assay units stated inline (AFP ng/mL, DCP
+    mAU/mL, AFP-L3 %); log-domain guards on AFP/DCP and the probability clamped to [0, 100].
+    Coefficients cross-verified against the primary paper and independent reproductions. Class A.
+  - **Toronto HCC Risk Index (`toronto-hcc-risk`)** — the cirrhosis-cohort 10-year HCC-risk
+    score (Sharma 2017). Table 3 point weights transcribed verbatim from the primary paper
+    (age 0/50/100, etiology 0/36/54/97, male 80, platelets 0/20/70/89; total 0-366); bands low
+    < 120 (~3% 10-year HCC), medium 120-240 (~10%), high > 240 (~32%). Class A.
+
 ### Added (spec-v280 — Rheumatology function & case definition: HAQ-DI + ASAS axial-SpA, 1140 → 1142)
 
 - Two group-G rheumatology tiles, joining the RA/spondyloarthritis activity and classification
