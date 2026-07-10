@@ -267,6 +267,7 @@ import * as nutritionV276 from '../../lib/nutrition-v276.js';
 import * as renalV277 from '../../lib/renal-v277.js';
 import * as pedsSepsisV278 from '../../lib/peds-sepsis-v278.js';
 import * as rccPrognosisV279 from '../../lib/rcc-prognosis-v279.js';
+import * as rheumFnV280 from '../../lib/rheum-fn-v280.js';
 
 const MODULES = {
   'clinical.js': clinical,
@@ -478,6 +479,7 @@ const MODULES = {
   'renal-v277.js': renalV277,
   'peds-sepsis-v278.js': pedsSepsisV278,
   'rcc-prognosis-v279.js': rccPrognosisV279,
+  'rheum-fn-v280.js': rheumFnV280,
 };
 
 const MATRIX = [0, -1, 1e9, NaN, Infinity, -Infinity, '', undefined, null];

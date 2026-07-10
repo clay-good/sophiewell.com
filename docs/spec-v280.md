@@ -1,6 +1,14 @@
 # spec-v280.md — Rheumatology function & case definition: the HAQ-DI and the ASAS axial-spondyloarthritis criteria (+2 tiles)
 
-> Status: **PROPOSED (2026-07-10, docs-only).** Third feature spec of the **Advanced
+> Status: **BUILT (2026-07-10).** `haq-di` and `asas-axspa` are live (catalog 1140 → 1142).
+> Every item, weight, and threshold was re-fetched and cross-verified against ≥ 2 independent
+> open sources per [spec-v97](spec-v97.md): the HAQ-DI maximum-item / aid-to-2 / 6-of-8 rules
+> and the ASAS entry criterion, two arms, and 11-feature SpA list all agree across sources. The
+> imaging-vs-clinical feature-counting nuance is implemented faithfully — HLA-B27 counts as one
+> of the ≥ 1 features in the imaging arm but is the anchor (not counted toward the ≥ 2 "other"
+> features) in the clinical arm.
+>
+> Superseded status line — Third feature spec of the **Advanced
 > Prognostic & Classification Instruments** program ([spec-v278](spec-v278.md) §1.1).
 > Proposes **2** deterministic instruments a rheumatology team reaches for at the
 > function-assessment and case-definition decision points — how much physical disability

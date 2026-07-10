@@ -6,6 +6,27 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v280 — Rheumatology function & case definition: HAQ-DI + ASAS axial-SpA, 1140 → 1142)
+
+- Two group-G rheumatology tiles, joining the RA/spondyloarthritis activity and classification
+  instruments. New shared module `lib/rheum-fn-v280.js`, renderer `views/group-v280.js` (RV280).
+  Both verified absent (spec-v85 §6.2); each is decision support — no diagnosis or treatment
+  order (spec-v11 §5.3).
+  - **HAQ-DI (`haq-di`)** — the Health Assessment Questionnaire Disability Index (Fries 1980),
+    the anchor measure of physical function in rheumatology. Mean of 8 functional categories
+    (each 0-3, highest item), with the aids/devices adjustment (a category scored 0 or 1 with
+    aids/help is raised to 2) and the 6-of-8 completeness rule; range 0-3, bands ≤ 1
+    mild-to-moderate / > 1 to 2 moderate-to-severe / > 2 severe, MCID ~0.22. Scoring
+    cross-verified against standard HAQ references. Class A.
+  - **ASAS axial-SpA criteria (`asas-axspa`)** — the ASAS classification criteria for axial
+    spondyloarthritis (Rudwaleit 2009): entry (back pain ≥ 3 months + age at onset < 45), then
+    the imaging arm (sacroiliitis on imaging + ≥ 1 SpA feature) or the clinical arm (HLA-B27 +
+    ≥ 2 other SpA features over the 11-feature list). Cross-verified against the primary paper
+    and independent reproductions; the imaging-vs-clinical feature-counting nuance (HLA-B27
+    counts as a feature in the imaging arm but is the anchor in the clinical arm) is
+    implemented faithfully. A classification (study-enrollment) tool, not a diagnostic test.
+    Class A.
+
 ### Added (spec-v279 — Resected-RCC prognosis: Leibovich score + UISS, 1138 → 1140)
 
 - Two group-G renal-cell-carcinoma prognostic tiles, joining the SSIGN / IMDC / MSKCC RCC
