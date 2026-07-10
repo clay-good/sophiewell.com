@@ -1,54 +1,67 @@
 # Tasks — US-customary unit defaults
 
+> Built 2026-07-10; recorded in `docs/spec-v283.md`. Design D1 was built as variant (b) (a
+> `default: true` tag on the array entry, honored by `unitField`) rather than variant (a)'s
+> per-call-site `defaultUnit` opt, so tasks 2.1–2.3 collapse into the three array edits — the
+> option task 5.2 explicitly allowed. The D2 reset shipped scoped to example-covered fields
+> (examples prefill on load, so a whole-view reset would have hidden the US default everywhere);
+> see spec-v283 for the reasoning.
+
 ## 1. Helper: decouple default-selected from canonical
 
-- [ ] 1.1 Add a `defaultUnit` option to `unitField` (`lib/field-units.js`) that pre-selects the
-      named unit while leaving the canonical unit as option 0 (Design D1).
-- [ ] 1.2 Do **not** reorder any `*_UNITS` array; canonical stays first.
-- [ ] 1.3 Unit test: `unitField(..., { defaultUnit:'lb' })` renders with lb selected and
-      `unitNum` still returns kg for an lb entry.
+- [x] 1.1 Decouple default-selected from canonical in `unitField` (`lib/field-units.js`) —
+      built as Design D1(b): the US entry is tagged `default: true` and `unitField` selects the
+      tagged option at render; canonical stays option 0.
+- [x] 1.2 No `*_UNITS` array reordered; canonical stays first (guarded by unit test).
+- [x] 1.3 Unit test (`test/unit/field-units.test.js`): unitField renders with lb/°F selected and
+      `unitNum` still returns the canonical kg/°C value.
 
 ## 2. Flip the default across call sites
 
-- [ ] 2.1 Pass `defaultUnit:'lb'` at every `WEIGHT_UNITS` call site (30 fields).
-- [ ] 2.2 Pass `defaultUnit:'in'` at every `HEIGHT_UNITS` call site (19 fields).
-- [ ] 2.3 Pass `defaultUnit:'°F'` at every `TEMP_UNITS` call site (19 fields).
-- [ ] 2.4 Ratify labs already US-default (mg/dL, g/dL) — no change; confirm none regressed.
-- [ ] 2.5 Decide `LACTATE_UNITS` / `CALCIUM_MMOL_UNITS` per Design D4 (confirm the clinically
-      correct US default; keep mmol/L unless a US-conventional unit is the true bedside norm).
+- [x] 2.1 `WEIGHT_UNITS` → lb (array tag; every call site inherits it).
+- [x] 2.2 `HEIGHT_UNITS` → in (array tag), plus the two inline height arrays in
+      `views/group-e.js` (bmi `m/cm/in`, bsa `cm/in`).
+- [x] 2.3 `TEMP_UNITS` → °F (array tag).
+- [x] 2.4 Labs ratified US-default by position (mg/dL, g/dL option 0) — unchanged, pinned by the
+      GLUCOSE_UNITS guard test.
+- [x] 2.5 `LACTATE_UNITS` / `CALCIUM_MMOL_UNITS` stay mmol/L per Design D4 — US blood-gas
+      analyzers report both in mmol/L; no flip.
 
 ## 3. Preserve example / deep-link reproduction
 
-- [ ] 3.1 In `applyExample` (`app.js:2965`), reset every `select[id$="-unit"]` in the tool view
-      to its canonical option **before** applying `example.fields`, so canonical-unit examples
-      reproduce byte-identically (Design D2). Apply `example.fields` after the reset so any
-      explicit unit key in an example still wins.
-- [ ] 3.2 Confirm `applyHashState` still overrides from an explicit `*-unit` hash value (deep
-      links unaffected).
+- [x] 3.1 `applyExample` resets each example-covered field's `<field>-unit` select to its
+      canonical option 0 before applying `example.fields`; explicit unit keys in
+      `example.fields` still win (fill runs after the reset). Scoped to unitField selects
+      (option 0 carries the identity `_toCanonical`) so bespoke dose-unit pickers are untouched.
+- [x] 3.2 `applyHashState` still overrides: ids in the hash (and remembered inputs) are in the
+      skip set, so an explicit `*-unit` hash value survives the reset; unit-less inline-compute
+      links (`q=w=70;h=1.75`) still read canonically because only the value id, not the select,
+      is skipped. e2e-pinned both ways.
 
 ## 4. Coverage — every unit-bearing tile
 
-- [ ] 4.1 Audit for numeric inputs with a US/metric distinction that are still metric-only; add
-      the appropriate `unitField` toggle defaulting to US.
-- [ ] 4.2 Confirm unit-pinned analytes (HALP `g/L`, spec-v231) stay pinned — no toggle added.
-- [ ] 4.3 Confirm no-variant inputs (mmHg, %, bpm, mL, mEq/L, points) are untouched.
+- [x] 4.1 Audited: 19 plain `Weight (kg)` fields + 2 core-temp °C fields (group-i) predate the
+      spec-v184 toggle rollout and remain metric-only; converting each is a per-tile refactor
+      queued as follow-up waves (spec-v283 "Deferred"). `bw-hin` (in) / `pw-lb` (lb) already US.
+- [x] 4.2 Unit-pinned analytes (HALP `g/L`, spec-v231) unchanged — no toggle added.
+- [x] 4.3 No-variant inputs (mmHg, %, bpm, mL, mEq/L, points) untouched.
 
 ## 5. Tests & guards
 
-- [ ] 5.1 Update `test/integration/unit-toggle.spec.js` to assert the new US defaults (lb, in,
-      °F) and that the metric option is still present and selectable.
-- [ ] 5.2 Add a guard asserting every `WEIGHT_UNITS`/`HEIGHT_UNITS`/`TEMP_UNITS` call site sets
-      a US `defaultUnit` (or that the shared helper defaults to US for those sets).
-- [ ] 5.3 Run `test/integration/example-correctness.spec.js` (full-catalog Chromium sweep) — all
-      `example.expected` tokens still render.
-- [ ] 5.4 Run `npm run test:mcp` + `node scripts/check-mcp-catalog.mjs` — all 1,044 MCP
-      round-trips unchanged (they never saw the display toggle).
-- [ ] 5.5 Run `test/integration/unit-toggle.spec.js` 320px no-overflow assertion still passes.
+- [x] 5.1 `test/integration/unit-toggle.spec.js`: five new spec-v283 tests (visible US default,
+      canonical example reproduction, explicit-unit deep link, unit-less prefill link, reset
+      link); metric options still selectable in the pre-existing equivalence tests.
+- [x] 5.2 Guard: the shared helper defaults to US for WEIGHT/HEIGHT/TEMP (array-tag variant),
+      asserted per array in `test/unit/field-units.test.js`.
+- [x] 5.3 `test/integration/example-correctness.spec.js` full-catalog Chromium sweep green.
+- [x] 5.4 `npm run test:mcp` + `node scripts/check-mcp-catalog.mjs` green (adapters never see
+      the display toggle).
+- [x] 5.5 320px no-overflow assertion in `unit-toggle.spec.js` green.
 
 ## 6. Ship
 
-- [ ] 6.1 `npm run lint`, `npm test`, `npm run build` all green.
-- [ ] 6.2 Author the `docs/spec-v*.md` successor to spec-v184 recording the default flip; fold
-      this change's `calculator-units` requirements in.
-- [ ] 6.3 `UTILITIES.length` unchanged; catalog-truth surfaces unaffected. Record the change in
-      `CHANGELOG.md`.
+- [x] 6.1 `npm run lint`, `npm test`, `npm run build` all green.
+- [x] 6.2 `docs/spec-v283.md` records the flip (successor to spec-v184), folding this change's
+      `calculator-units` requirements in.
+- [x] 6.3 `UTILITIES.length` unchanged; catalog-truth surfaces unaffected; `CHANGELOG.md`
+      updated.

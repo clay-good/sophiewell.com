@@ -89,7 +89,7 @@ export const renderers = {
     root.appendChild(unitField('Height', 'h', [
       { unit: 'm', toCanonical: (v) => v },
       { unit: 'cm', toCanonical: (v) => v / 100 },
-      { unit: 'in', toCanonical: (v) => inchesToCm(v) / 100 },
+      { unit: 'in', toCanonical: (v) => inchesToCm(v) / 100, default: true },
     ]));
     const o = out(); root.appendChild(o);
     const run = () => safe(o, () => {
@@ -106,7 +106,7 @@ export const renderers = {
     root.appendChild(unitField('Weight', 'w', WEIGHT_UNITS));
     root.appendChild(unitField('Height', 'h', [
       { unit: 'cm', toCanonical: (v) => v },
-      { unit: 'in', toCanonical: inchesToCm },
+      { unit: 'in', toCanonical: inchesToCm, default: true },
     ]));
     const o = out(); root.appendChild(o);
     const run = () => safe(o, () => {

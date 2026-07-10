@@ -2986,6 +2986,24 @@ function renderMetaBlock(util) {
 function applyExample(util, { skip } = {}) {
   const meta = META[util.id];
   if (!meta || !meta.example || !meta.example.fields) return new Set();
+  // spec-v283: unit-toggle selects pre-select the US-customary option (lb,
+  // in, °F), but example values are documented in the canonical unit
+  // (option 0, the identity converter). Before filling, reset each
+  // example-covered field's unit select back to canonical so the example
+  // reproduces byte-identically. Skipped ids (deep-link hash / remembered
+  // inputs) keep the unit the user chose, and an explicit `*-unit` key in
+  // example.fields still wins because the fill loop below runs after the
+  // reset. Only unitField selects are touched - their option 0 carries the
+  // identity `_toCanonical`; bespoke selects (dose-unit pickers) do not.
+  for (const id of Object.keys(meta.example.fields)) {
+    const sel = document.getElementById(`${id}-unit`);
+    if (!sel || sel.tagName !== 'SELECT' || sel.selectedIndex === 0) continue;
+    if (!sel.options[0] || typeof sel.options[0]._toCanonical !== 'function') continue;
+    if (skip && skip.has(sel.id)) continue;
+    sel.selectedIndex = 0;
+    sel.dispatchEvent(new Event('input', { bubbles: true }));
+    sel.dispatchEvent(new Event('change', { bubbles: true }));
+  }
   const filled = new Set();
   for (const [id, value] of Object.entries(meta.example.fields)) {
     if (skip && skip.has(id)) continue;

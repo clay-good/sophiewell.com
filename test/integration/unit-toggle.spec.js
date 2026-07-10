@@ -156,6 +156,48 @@ test('weight toggle in lb matches the kg dose calculation across Group F / v11',
   await expect(page.locator('#q-results')).toContainText('0.5 mL/kg/hr');
 });
 
+// spec-v283: US-customary unit defaults. unitField pre-selects the US option
+// (lb, in, °F) while canonical stays option 0; applyExample resets an
+// example-covered field's select back to canonical before filling so every
+// documented example and prefill deep link still reproduces byte-identically.
+test('unit fields the example does not cover default to US customary (lb / in)', async ({ page }) => {
+  // peds-bmi-percentile's example fills sex/age/BMI only; the optional
+  // weight/height pair keeps the render-time US default.
+  await page.goto('/#peds-bmi-percentile', { waitUntil: 'load' });
+  await expect(page.locator('#bm-wt-unit')).toHaveValue('lb');
+  await expect(page.locator('#bm-ht-unit')).toHaveValue('in');
+});
+
+test('example prefill resets the unit selects to canonical and reproduces the documented BMI', async ({ page }) => {
+  await page.goto('/#bmi', { waitUntil: 'load' });
+  await expect(page.locator('#w-unit')).toHaveValue('kg');
+  await expect(page.locator('#h-unit')).toHaveValue('m');
+  await expect(page.locator('#q-results')).toContainText('BMI: 22.9');
+});
+
+test('a deep link carrying an explicit unit wins over the canonical reset', async ({ page }) => {
+  await page.goto('/#bmi&q=w=154.32358;w-unit=lb;h=1.75', { waitUntil: 'load' });
+  await expect(page.locator('#w-unit')).toHaveValue('lb');
+  await expect(page.locator('#q-results')).toContainText('BMI: 22.9');
+});
+
+test('an inline-compute prefill link (canonical values, no unit keys) reads canonically', async ({ page }) => {
+  // lib/query-compute.js emits canonical-unit inputs without *-unit keys;
+  // the applyExample reset must cover the hash-filled field's select too.
+  await page.goto('/#bmi&q=w=70;h=1.75', { waitUntil: 'load' });
+  await expect(page.locator('#w-unit')).toHaveValue('kg');
+  await expect(page.locator('#q-results')).toContainText('BMI: 22.9');
+});
+
+test('Reset to example restores canonical units after a US-unit entry', async ({ page }) => {
+  await page.goto('/#bmi', { waitUntil: 'load' });
+  await page.locator('#w-unit').selectOption('lb');
+  await page.fill('#w', '200');
+  await page.locator('.example-reset').first().click();
+  await expect(page.locator('#w-unit')).toHaveValue('kg');
+  await expect(page.locator('#q-results')).toContainText('BMI: 22.9');
+});
+
 // spec-v61 §2 A3: chart-ready labeled copy. Multi-output tiles render a
 // "Copy results" button inside #q-results so a paste lands as clean
 // `Label: Value Units` lines (lib/clipboard.js formatCopyAll) rather than a

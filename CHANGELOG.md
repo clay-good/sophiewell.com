@@ -6,7 +6,18 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
-### Added (spec-v282 — plain-language search: corpus, ranked API, find_calculator, answer cards)
+### Changed (spec-v283 — US-customary unit defaults: lb / in / °F pre-selected)
+
+- Every shared unit-toggle field now pre-selects the US-customary option — weight in **lb**,
+  height in **inches**, temperature in **°F** — instead of the metric one, closing the gap
+  spec-v184 deliberately left open (see [docs/spec-v283.md](docs/spec-v283.md)). Presentation
+  only: the canonical compute unit stays option 0, `unitNum()` still hands every formula its
+  canonical value, and no compute, `lib/meta.js` example, or MCP adapter changed. `applyExample`
+  resets an example-covered field's unit select to canonical before filling, so all 1,144
+  documented examples, prefill deep links, and MCP round-trips reproduce byte-identically;
+  an explicit `*-unit` value in a shared link or remembered inputs still wins. Lab units were
+  already US-conventional (mg/dL, g/dL) and are unchanged; lactate and CRRT ionized/total
+  calcium stay mmol/L (the unit US blood-gas analyzers report).
 
 - Records and closes the shipped portions of the `plain-language-search`,
   `mcp-find-calculator`, and `answer-shaped-results` programs (see
