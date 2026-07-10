@@ -1904,6 +1904,18 @@ test('lib/massive-transfusion-v265.js worked calls', () => {
   assert.equal(one.abnormal, false);
 });
 
+test('lib/rcc-prognosis-v266.js worked calls', () => {
+  // SSIGN: pT3 (+2) + grade 4 (+3) + necrosis present (+2) = 7, with N/M/size
+  // defaulting to 0.
+  const ss = ok('ssign-score', { 'ss-t': 'pt3', 'ss-grade': 'g4', 'ss-necrosis': 'present' });
+  assert.equal(ss.score, 7);
+  // A small, low-grade, localized tumor with no necrosis is the 0 floor.
+  const low = ok('ssign-score', {
+    'ss-t': 'pt1', 'ss-n': 'n0', 'ss-m': 'm0', 'ss-size': 'lt5', 'ss-grade': 'g12', 'ss-necrosis': 'absent',
+  });
+  assert.equal(low.score, 0);
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];

@@ -1423,6 +1423,19 @@ no field is individually required. New adapter module registered in
 `mcp/catalog.js`. Brings the exposed total to **1067 calculators across 194
 modules**.
 
+## One-hundred-fifth wave — the SSIGN RCC score in lib/rcc-prognosis-v266.js (+1)
+
+`ssign-score` (spec-v266) is the Mayo SSIGN score (Stage, Size, Grade, Necrosis):
+a 0-17 model for cancer-specific survival in clear-cell RCC over pT stage,
+regional nodes, distant metastasis, tumor size, Fuhrman grade, and coagulative
+necrosis. Each factor is an enum band that defaults to its 0 value when omitted;
+the `band` carries the `SSIGN 7 of 17 ... ~57.7% (score 7-9) 5-year` example, so
+it round-trips through the default `makeToArgs`. No field is individually
+required. New adapter module registered in `mcp/catalog.js`. Brings the exposed
+total to **1068 calculators across 195 modules** — completing MCP exposure of the
+SESSION-32 subspecialty-depth program (spec-v258 through spec-v266): every pure-
+compute tile a prior audit had missed is now a deterministic agent tool.
+
 ## Exposed
 
 Each id below is live in `mcp/catalog.js`. The gate parses this list.
@@ -2839,6 +2852,7 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 - `ottawa-copd`
 - `sepsis-obstetrics-score`
 - `abc-transfusion-score`
+- `ssign-score`
 
 ## Not yet adapted
 
