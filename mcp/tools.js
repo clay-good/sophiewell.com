@@ -4,9 +4,28 @@
 // suite (and CI) needs no transport dependency, and the site stays buildable
 // with the MCP subtree removed.
 
+import { readFileSync } from 'node:fs';
+import { fileURLToPath } from 'node:url';
 import {
   REGISTRY, TOTAL_TILES, getCalculator, allCalculators, coverageCount, DISCLAIMER,
 } from './catalog.js';
+import { resolvePromptRanked } from '../lib/prompt.js';
+
+// The hand-curated synonym table (data/synonyms.json) is the same accelerator
+// the browser prompt bar uses. Load it once, lazily; if it is absent the ranker
+// still works on names + specialties (find_calculator degrades to ranker-only).
+let synonymsCache;
+function loadSynonymEntries() {
+  if (synonymsCache !== undefined) return synonymsCache;
+  try {
+    const path = fileURLToPath(new URL('../data/synonyms.json', import.meta.url));
+    const doc = JSON.parse(readFileSync(path, 'utf8'));
+    synonymsCache = Array.isArray(doc && doc.entries) ? doc.entries : [];
+  } catch {
+    synonymsCache = [];
+  }
+  return synonymsCache;
+}
 
 // spec-v59 output-safety on the JSON surface: a result must serialize with no
 // NaN / Infinity. Returns the dotted path of the first non-finite number, or
@@ -122,8 +141,59 @@ export function computeCalculator(args = {}) {
   };
 }
 
-// Tool definitions exposed over MCP (the fixed three-tool surface). inputSchema
-// here is the schema for the TOOL's own arguments, not a calculator's.
+// spec plain-language-search / mcp-discovery: a ranked discovery tool. Where
+// list_calculators does a single lowercase substring test (so "stroke risk
+// afib" matches nothing), find_calculator runs the shared deterministic
+// resolver -- the synonym table plus the token ranker from lib/prompt.js -- over
+// the exposed registry and returns the top-N candidates with a `why` tag. Same
+// ranker, two surfaces (browser prompt bar + MCP). No AI, no model.
+const FIND_LIMIT_DEFAULT = 5;
+const FIND_LIMIT_MAX = 20;
+
+export function findCalculator(args = {}) {
+  const { query, group, specialty } = args;
+  const q = typeof query === 'string' ? query.trim() : '';
+  if (!q) {
+    return { valid: false, message: 'find_calculator needs a non-empty "query". Describe the calculation in plain words, e.g. "stroke risk afib".' };
+  }
+  let limit = Number.isFinite(args.limit) ? Math.floor(args.limit) : FIND_LIMIT_DEFAULT;
+  limit = Math.max(1, Math.min(FIND_LIMIT_MAX, limit));
+
+  // Rank over the exposed calculators, optionally prefiltered by group /
+  // specialty (the prefilters compose with the query). Sort by id so ranker
+  // ties resolve deterministically.
+  const tiles = allCalculators()
+    .filter((e) => (!group || e.group === group) && (!specialty || e.specialties.includes(specialty)))
+    .sort((a, b) => a.id.localeCompare(b.id))
+    .map((e) => ({ id: e.id, name: e.name, group: e.group, specialties: e.specialties, desc: '' }));
+
+  const ranked = resolvePromptRanked(q, tiles, loadSynonymEntries(), 'all', limit);
+  const candidates = ranked.map((r) => {
+    const e = getCalculator(r.tileId);
+    return {
+      id: e.id,
+      name: e.name,
+      group: e.group,
+      specialties: e.specialties,
+      summary: e.summary,
+      why: r.why,
+      ...(r.phrase ? { matchedPhrase: r.phrase } : {}),
+    };
+  });
+
+  if (candidates.length === 0) {
+    return {
+      query: q,
+      count: 0,
+      candidates: [],
+      hint: 'No calculator matched. Try fewer or more common words, or call list_calculators to browse by group / specialty.',
+    };
+  }
+  return { query: q, count: candidates.length, candidates };
+}
+
+// Tool definitions exposed over MCP. inputSchema here is the schema for the
+// TOOL's own arguments, not a calculator's.
 export const TOOL_DEFS = [
   {
     name: 'list_calculators',
@@ -161,6 +231,21 @@ export const TOOL_DEFS = [
       additionalProperties: false,
     },
   },
+  {
+    name: 'find_calculator',
+    description: 'Find calculators by a plain-language description of the calculation ("stroke risk afib", "creatinine clearance"). Deterministically ranks the exposed calculators (synonym table + token ranker, no AI) and returns the top-N candidates with a match reason. Use this for discovery by intent; use list_calculators to enumerate or browse by group / specialty.',
+    inputSchema: {
+      type: 'object',
+      properties: {
+        query: { type: 'string', description: 'Plain-language description of the calculation you want.' },
+        limit: { type: 'integer', description: 'Max candidates to return (default 5, capped at 20).' },
+        group: { type: 'string', description: 'Optional catalog group letter prefilter, e.g. "G".' },
+        specialty: { type: 'string', description: 'Optional specialty-tag prefilter, e.g. "hepatology".' },
+      },
+      required: ['query'],
+      additionalProperties: false,
+    },
+  },
 ];
 
 export function dispatch(name, args) {
@@ -168,6 +253,7 @@ export function dispatch(name, args) {
     case 'list_calculators': return listCalculators(args);
     case 'describe_calculator': return describeCalculator(args);
     case 'compute_calculator': return computeCalculator(args);
+    case 'find_calculator': return findCalculator(args);
     default: return { valid: false, message: `Unknown tool "${name}".` };
   }
 }

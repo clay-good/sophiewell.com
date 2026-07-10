@@ -6,6 +6,17 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (mcp-discovery — a fourth, ranked `find_calculator` MCP tool)
+
+- The MCP server's discovery affordance was a single substring test in
+  `list_calculators` (so "stroke risk afib" matched nothing). `find_calculator`
+  `{ query, limit?, group?, specialty? }` now ranks the exposed calculators by
+  plain-language intent using the same deterministic resolver the browser prompt
+  bar uses (`resolvePromptRanked` + `data/synonyms.json`, no AI) and returns the
+  top-N candidates `{ id, name, group, specialties, summary, why }`. Re-opens the
+  spec-v183 §2.2 three-tool fence to four; the other three tools are unchanged.
+  Builds on the `plain-language-search` ranked API and synonym expansion.
+
 ### Added (spec-v281 — HCC surveillance & detection: GALAD + Toronto HCC Risk Index, 1142 → 1144)
 
 - Two group-G hepatocellular-carcinoma tiles, joining the HCC staging / surveillance

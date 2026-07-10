@@ -56,12 +56,13 @@ server). For Claude Code / Claude Desktop:
 
 ## Tools
 
-A fixed three-tool surface with dynamic dispatch over the catalog (exposing one
+A fixed four-tool surface with dynamic dispatch over the catalog (exposing one
 tool per calculator would flood the client's tool list):
 
 | Tool | Input | Returns |
 |---|---|---|
-| `list_calculators` | `{ group?, specialty?, query? }` | Lightweight rows `{ id, name, group, specialties, summary }` plus a live coverage line. No computation. |
+| `list_calculators` | `{ group?, specialty?, query? }` | Lightweight rows `{ id, name, group, specialties, summary }` plus a live coverage line. `query` is a substring test. No computation. |
+| `find_calculator` | `{ query, limit?, group?, specialty? }` | Discovery by plain-language intent: the same deterministic ranker the browser prompt bar uses (synonym table + token ranker, no AI) ranks the exposed calculators and returns the top-N candidates `{ id, name, group, specialties, summary, why }`. Use it when a substring `query` would miss (e.g. "stroke risk afib"). |
 | `describe_calculator` | `{ id }` | The full contract: `inputSchema` (JSON Schema), a worked `example`, `citation` + `citationUrl` + `citationAccessed`, the source interpretation bands, and the clinical-posture disclaimer. |
 | `compute_calculator` | `{ id, inputs }` | The deterministic `result` (score, bands, derived values, source note), the citation, and the disclaimer. Invalid or incomplete input returns `{ valid: false, message }` — never a thrown error and never a non-finite number. |
 
@@ -72,6 +73,10 @@ strings; booleans as `true`/`false`; enums by their listed string values.
 ### Example session
 
 ```
+find_calculator { "query": "stroke risk afib" }
+  -> { query: "stroke risk afib", count: 3,
+       candidates: [ { id: "chads", name: "CHA2DS2-VASc", why: "synonym", ... }, ... ] }
+
 list_calculators { "specialty": "hepatology" }
   -> { coverage: "1068 of 1109 catalog tiles exposed ...", calculators: [ { id: "meld-xi", ... }, ... ] }
 

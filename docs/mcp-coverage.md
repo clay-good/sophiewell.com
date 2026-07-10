@@ -16,6 +16,18 @@ Adapting the catalog is incremental, module by module, against a fixed contract
 functions; the name, group, specialties, citation, example, and interpretation
 are read from `UTILITIES` and `META`, never re-typed.
 
+## Tool surface — four tools (mcp-discovery)
+
+spec-v183 §2.2 fixed a **three-tool** dispatch surface (`list_calculators`,
+`describe_calculator`, `compute_calculator`). The `mcp-discovery` change
+re-opens that fence for one addition: a fourth, read-only, deterministic
+`find_calculator`. It ranks the exposed calculators by a plain-language query
+using the same reviewed resolver the browser prompt bar uses
+(`resolvePromptRanked` in `lib/prompt.js` + the `data/synonyms.json` table) — no
+model, no per-tile tool flood. `list_calculators` keeps its exact substring
+semantics; the other three tools are byte-untouched. This is a tool-surface
+change, not a coverage change: the adapter count below is unaffected.
+
 ## First wave (spec-v183) — 4 modules
 
 The proof-of-pattern slice: 21 clinical calculators across 4 `lib` modules, each
