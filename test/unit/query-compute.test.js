@@ -116,3 +116,12 @@ test('queryCompute: analyte templates need every required value', () => {
   assert.equal(queryCompute('anion gap na 140 cl 104'), null, 'hco3 missing');
   assert.equal(queryCompute('corrected calcium ca 8'), null, 'albumin missing');
 });
+
+test('queryCompute: corrected sodium reports both correction factors', () => {
+  const r = queryCompute('corrected sodium na 130 glucose 600');
+  assert.equal(r.tile, 'corrected-sodium');
+  assert.equal(r.value, 138);                         // 130 + (600-100)/100*1.6
+  assert.match(r.text, /142 \(2\.4x\)/);              // 130 + (600-100)/100*2.4
+  assert.deepEqual(r.inputs, { na: 130, g: 600 });
+  assert.equal(queryCompute('corrected sodium na 130'), null, 'glucose missing');
+});
