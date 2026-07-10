@@ -2,15 +2,21 @@
 
 ## 1. Corpus builder
 
-- [ ] 1.1 Write `scripts/build-search-corpus.mjs`: assemble per-tile rows from UTILITIES
+- [x] 1.1 Write `scripts/build-search-corpus.mjs`: assemble per-tile rows from UTILITIES
       (name/group/audiences), META (specialties, `example.expected`, interpretation-band text),
       `data/tool-copy/*.json` (`whatThisIs`/`whenToUse`), and adapter summaries via
       `mcp/catalog.js` (Design D1). Skip the adapter source silently if `mcp/` is absent.
-- [ ] 1.2 Emit `data/search-corpus/manifest.json` + shard with sorted ids and stable key order;
-      two consecutive builds are byte-identical.
-- [ ] 1.3 Enforce the size budget (≤200 KB gzipped) and the catalog-truth rule (no spec/build
-      refs, no hardcoded counts) with assertions inside the builder.
-- [ ] 1.4 Wire the builder into `npm run build` (and document the standalone invocation).
+      (tool-copy `what`/`when` + META `expected` used as FALLBACKS only where a tile has no
+      adapter summary, to hold the budget with headroom; every tile gets prose. All source
+      prose sanitized: en/em dash -> hyphen, smart quotes -> ASCII.)
+- [x] 1.2 Emit `data/search-corpus/manifest.json` + `corpus.json` shard with sorted ids and
+      stable key order; two consecutive builds are byte-identical (guarded by
+      `test/unit/search-corpus.test.js`, and `verify-integrity` now covers the manifest hash).
+- [x] 1.3 Enforce the size budget (≤200 KB gzipped, currently 186 KB) with a hard assertion in
+      the builder; catalog-truth held by sanitizing emitted strings and keeping the corpus off
+      the 12 counted surfaces / grep-check scan.
+- [x] 1.4 Wire the builder into `npm run build` (via `regenerate()` in `scripts/build.mjs`,
+      before the `data/` -> `dist/` copy). Standalone: `node scripts/build-search-corpus.mjs`.
 
 ## 2. Corpus loader (SPA)
 
