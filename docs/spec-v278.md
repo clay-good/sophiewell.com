@@ -1,6 +1,14 @@
 # spec-v278.md — Pediatric sepsis at the bedside: the Phoenix Sepsis Score (+1 tile)
 
-> Status: **PROPOSED (2026-07-10, docs-only).** First feature spec of the **Advanced
+> Status: **BUILT (2026-07-10).** `phoenix-sepsis` is live (catalog 1137 → 1138). Every
+> point table was re-fetched and cross-verified against ≥ 2 independent open sources per
+> [spec-v97](spec-v97.md): the open-access `phoenix` R-package vignette (CRAN) and an
+> independent Phoenix-logic reference agree on every threshold. **Correction applied at
+> implementation:** the §2.1 draft sketched the cardiovascular lactate bands as "2-4.9 / ≥ 5";
+> the verified consensus bands are **5 to < 11 mmol/L (+1)** and **≥ 11 mmol/L (+2)** — the
+> value now shipped. This is exactly the re-verification spec-v97 mandates.
+>
+> Superseded status line — First feature spec of the **Advanced
 > Prognostic & Classification Instruments** program (§1.1). Proposes **1** deterministic
 > instrument a pediatric or emergency team reaches for at the sepsis-recognition decision
 > point — the 2024 international-consensus organ-dysfunction score that now *defines*

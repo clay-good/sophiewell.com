@@ -6,6 +6,21 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v278 — Phoenix Sepsis Score (pediatric), 1137 → 1138)
+
+- The Phoenix Sepsis Score (`phoenix-sepsis`), the sole tile of spec-v278 and the first of the
+  Advanced Prognostic & Classification Instruments program, joining the group-G pediatric
+  organ-dysfunction scores beside pSOFA and PELOD-2. New module `lib/peds-sepsis-v278.js`,
+  renderer `views/group-v278.js` (RV278). Verified absent (spec-v85 §6.2); it reports an
+  organ-dysfunction score and the consensus threshold — no diagnosis or treatment order
+  (spec-v11 §5.3). Four organ systems (respiratory 0-3, cardiovascular 0-6, coagulation 0-2,
+  neurologic 0-2) sum to 0-13; in a child with suspected/confirmed infection a total ≥ 2 meets
+  the 2024 SCCM/JAMA international-consensus definition of sepsis, and a cardiovascular sub-score
+  ≥ 1 meets the definition of septic shock. Every point table (including the age-banded MAP
+  cutoffs) re-fetched and cross-verified against ≥ 2 independent open sources (spec-v97) — the
+  open-access `phoenix` R-package vignette and an independent Phoenix-logic reference agree on
+  every threshold; the verified lactate bands are 5–<11 mmol/L (+1) and ≥ 11 mmol/L (+2). Class A.
+
 ### Added (spec-v277 — Measured (timed-urine) creatinine clearance, 1136 → 1137)
 
 - Measured creatinine clearance (`measured-crcl`), the sole tile of spec-v277, joining the
