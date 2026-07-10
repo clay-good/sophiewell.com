@@ -1,5 +1,5 @@
 {
-  "version": "v9-2026-07-10",
+  "version": "v10-2026-07-10",
   "note": "spec-v7 section 3.2: hand-curated patient-phrasing -> tile id table. Each entry maps patient-mental-model phrases (and, from the v8/v9 plain-language-search batches, clinical abbreviations, eponym aliases, and canonical-intent phrases) to a single existing tile. Audience is the primary audience the entry serves; the matcher deprioritizes (does not hide) entries when the user has selected a different chip. Every phrase is lowercase; every tile id is an existing catalog tile (guarded by test/unit/synonyms-catalog.test.js). Adding a new phrase is a one-line PR.",
   "entries": [
     { "phrases": ["denied", "denial letter", "they denied it", "insurance said no", "appeal", "write an appeal", "appeal my claim", "appeal letter", "appeal a denial"],
@@ -138,6 +138,16 @@
     { "phrases": ["potassium deficit", "potassium replacement"],
       "tile": "potassium-deficit", "audience": "clinicians" },
     { "phrases": ["magnesium replacement", "magnesium repletion"],
-      "tile": "magnesium-replacement", "audience": "clinicians" }
+      "tile": "magnesium-replacement", "audience": "clinicians" },
+    { "phrases": ["serotonin syndrome", "serotonin toxicity", "hunter criteria"],
+      "tile": "serotonin-toxicity", "audience": "clinicians" },
+    { "phrases": ["copd admission risk", "when to admit copd", "ottawa copd"],
+      "tile": "ottawa-copd", "audience": "clinicians" },
+    { "phrases": ["frailty score", "frailty index", "frailty assessment"],
+      "tile": "sof-frailty-index", "audience": "clinicians" },
+    { "phrases": ["groningen frailty"],
+      "tile": "groningen-frailty-indicator", "audience": "clinicians" },
+    { "phrases": ["pediatric gfr", "gfr in kids", "schwartz equation", "bedside schwartz", "child kidney function"],
+      "tile": "schwartz-egfr", "audience": "clinicians" }
   ]
 }

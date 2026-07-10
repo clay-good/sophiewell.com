@@ -70,6 +70,11 @@ test('synonyms.json: v9 natural-language intents resolve', () => {
   assert.equal(route('pressure injuries'), 'braden');
   assert.equal(route('convert opioids'), 'opioid-mme');
   assert.equal(route('sodium correction rate'), 'sodium-correction');
+  // v10: gap fixes for queries that misrouted to an unrelated tile.
+  assert.equal(route('serotonin syndrome'), 'serotonin-toxicity');
+  assert.equal(route('when to admit copd'), 'ottawa-copd');
+  assert.equal(route('frailty score'), 'sof-frailty-index');
+  assert.equal(route('gfr in kids'), 'schwartz-egfr');
 });
 
 // Routes that already worked before the v8 batch must not regress once the
