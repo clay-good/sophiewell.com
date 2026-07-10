@@ -1387,6 +1387,19 @@ that default in the compute when omitted, so the examples (`RIPASA 7.5`, `PULP 9
 required. New adapter module registered in `mcp/catalog.js`. Brings the exposed
 total to **1060 calculators across 191 modules**.
 
+## One-hundred-second wave — pediatric acute-care scores in lib/pediatric-acute-v262.js (+3)
+
+`lab-score`, `chalice`, and `egami` (spec-v262) are three pediatric acute-care
+scores. The Lab-score (0-9) stratifies serious bacterial infection in young
+febrile children (>= 3 high risk); CHALICE recommends a head CT if any of 14
+criteria is present; the Egami score (0-6) predicts IVIG resistance in Kawasaki
+disease (>= 3 high risk). Each mixes boolean criteria with CRP/PCT enum bands
+that default in the compute when omitted, so the examples (`Lab-score 4 of 9`,
+`CHALICE positive ... 1 of 14`, `Egami 3 of 6`) round-trip through the default
+`makeToArgs`; no field is individually required. New adapter module registered in
+`mcp/catalog.js`. Brings the exposed total to **1063 calculators across 192
+modules**.
+
 ## Exposed
 
 Each id below is live in `mcp/catalog.js`. The gate parses this list.
@@ -2796,6 +2809,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 - `ripasa`
 - `pulp`
 - `emergency-surgery-score`
+- `lab-score`
+- `chalice`
+- `egami`
 
 ## Not yet adapted
 

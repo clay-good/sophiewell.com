@@ -1863,6 +1863,22 @@ test('lib/acute-abdomen-v261.js worked calls', () => {
   assert.equal(es.score, 13);
 });
 
+test('lib/pediatric-acute-v262.js worked calls', () => {
+  // Lab-score: CRP mid (+2) + PCT mid (+2) = 4, high risk.
+  const ls = ok('lab-score', { 'ls-crp': 'mid', 'ls-pct': 'mid' });
+  assert.equal(ls.score, 4);
+  assert.equal(ls.abnormal, true);
+  // CHALICE: any one criterion -> positive (CT recommended).
+  const ch = ok('chalice', { 'ch-loc': '1' });
+  assert.equal(ch.abnormal, true);
+  const chNeg = ok('chalice', {});
+  assert.equal(chNeg.abnormal, false);
+  // Egami: ALT high (+2) + young age (+1) = 3, high risk of IVIG resistance.
+  const eg = ok('egami', { 'eg-alt': '1', 'eg-age': '1' });
+  assert.equal(eg.score, 3);
+  assert.equal(eg.abnormal, true);
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];

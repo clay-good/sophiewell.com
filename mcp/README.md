@@ -73,7 +73,7 @@ strings; booleans as `true`/`false`; enums by their listed string values.
 
 ```
 list_calculators { "specialty": "hepatology" }
-  -> { coverage: "1060 of 1109 catalog tiles exposed ...", calculators: [ { id: "meld-xi", ... }, ... ] }
+  -> { coverage: "1063 of 1109 catalog tiles exposed ...", calculators: [ { id: "meld-xi", ... }, ... ] }
 
 describe_calculator { "id": "meld-xi" }
   -> { inputSchema: { ... mx-bili, mx-creat ... }, citation: "Heuman DM ... Liver Transpl 2007", ... }
@@ -283,9 +283,10 @@ decision rules (Canadian CT Head, SF Syncope, McIsaac) in
 `lib/decision-rules-v258.js`, and a one-hundredth three pneumonia risk scores
 (A-DROP, DRIP, Shorr) in `lib/pneumonia-risk-v260.js`, and a one-hundred-first
 three acute-abdomen / emergency-surgery scores (RIPASA, PULP, ESS) in
-`lib/acute-abdomen-v261.js`, for
-1060 across 191 modules
-today. <!-- catalog-truth:historical (191 is the count of lib modules adapted, not a catalog tile count) -->
+`lib/acute-abdomen-v261.js`, and a one-hundred-second three pediatric acute-care
+scores (Lab-score, CHALICE, Egami) in `lib/pediatric-acute-v262.js`, for
+1063 across 192 modules
+today. <!-- catalog-truth:historical (192 is the count of lib modules adapted, not a catalog tile count) -->
 Later waves extend it module by module against the same contract.
 
 ## Design
