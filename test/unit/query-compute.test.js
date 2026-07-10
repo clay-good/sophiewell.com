@@ -82,3 +82,37 @@ test('queryCompute: incomplete or ambiguous queries return null (never guess)', 
   assert.equal(queryCompute('what is stroke risk'), null, 'no template trigger');
   assert.equal(queryCompute(''), null);
 });
+
+// --- named-analyte templates (task 3.2 named-analyte parsing) --------------
+
+test('parseAnalyte: matches name + value with optional separator', () => {
+  const { parseAnalyte } = _testing;
+  assert.equal(parseAnalyte('na 140', 'sodium|na'), 140);
+  assert.equal(parseAnalyte('sodium: 138', 'sodium|na'), 138);
+  assert.equal(parseAnalyte('hco3=24', 'bicarbonate|bicarb|hco3|tco2|co2'), 24);
+  assert.equal(parseAnalyte('no sodium here', 'sodium|na'), null);
+});
+
+test('queryCompute: anion gap with and without albumin correction', () => {
+  const a = queryCompute('anion gap na 140 cl 100 hco3 24');
+  assert.equal(a.tile, 'anion-gap');
+  assert.equal(a.value, 16);                         // 140 - (100 + 24)
+  assert.deepEqual(a.inputs, { na: 140, cl: 100, hco3: 24 });
+
+  const b = queryCompute('anion gap na 140 cl 104 hco3 20 alb 2');
+  assert.equal(b.value, 16);
+  assert.match(b.text, /albumin-corrected 21/);       // 16 + 2.5*(4-2)
+  assert.equal(b.inputs.alb, 2);
+});
+
+test('queryCompute: corrected calcium from ca + albumin', () => {
+  const r = queryCompute('corrected calcium ca 8 albumin 2');
+  assert.equal(r.tile, 'corrected-calcium');
+  assert.equal(r.value, 9.6);                         // 8 + 0.8*(4-2)
+  assert.deepEqual(r.inputs, { ca: 8, alb: 2 });
+});
+
+test('queryCompute: analyte templates need every required value', () => {
+  assert.equal(queryCompute('anion gap na 140 cl 104'), null, 'hco3 missing');
+  assert.equal(queryCompute('corrected calcium ca 8'), null, 'albumin missing');
+});
