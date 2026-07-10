@@ -10,6 +10,7 @@ import {
   REGISTRY, TOTAL_TILES, getCalculator, allCalculators, coverageCount, DISCLAIMER,
 } from './catalog.js';
 import { resolvePromptRanked } from '../lib/prompt.js';
+import { corpusDesc } from '../lib/search-corpus.js';
 
 // The hand-curated synonym table (data/synonyms.json) is the same accelerator
 // the browser prompt bar uses. Load it once, lazily; if it is absent the ranker
@@ -43,15 +44,6 @@ function loadCorpus() {
     corpusCache = {};
   }
   return corpusCache;
-}
-
-// Flatten a corpus row's prose fields into the ranker's `desc` channel (scored
-// below name/specialty weight), so summary / band / example terms are matchable.
-function corpusDesc(row) {
-  if (!row) return '';
-  return [row.summary, Array.isArray(row.bands) ? row.bands.join(' ') : '', row.what, row.when, row.expected]
-    .filter(Boolean)
-    .join(' ');
 }
 
 // spec-v59 output-safety on the JSON surface: a result must serialize with no

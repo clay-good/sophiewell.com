@@ -20,11 +20,15 @@
 
 ## 2. Corpus loader (SPA)
 
-- [ ] 2.1 Load `data/search-corpus/` lazily beside `loadSynonyms()` (`app.js`); on success,
-      enrich `tileCorpus()` rows with the new fields; on failure, rows stay as today
-      (Design D7).
+- [x] 2.1 Load `data/search-corpus/` lazily beside `loadSynonyms()` (`app.js`); on success,
+      enrich `tileCorpus()` rows (desc <- corpus summary/band/example prose via the shared
+      `lib/search-corpus.js` `corpusDesc`) and invalidate the tile-corpus cache; on failure,
+      desc stays '' (Design D7). e2e: a band-text query ("antithrombotic therapy not
+      recommended") routes to `chads` in-browser; synonym + BMI smokes unregressed.
 - [ ] 2.2 Build the token→postings index once per session, deferred off first paint (idle
-      callback), not on the fetch callback's critical path.
+      callback). DEFERRED with the IDF ranker (tasks 3.1-3.4): the flat ranker re-tokenizes per
+      keystroke over ~1,140 short docs (sub-frame today); the postings index lands when the
+      IDF/BM25-lite scoring does, which is what makes it worthwhile.
 
 ## 3. Ranker upgrade (`lib/prompt.js`)
 

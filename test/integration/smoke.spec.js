@@ -57,6 +57,23 @@ test('home: hero-search resolves patient phrasing via the synonym table', async 
   }
 });
 
+// plain-language-search: once the search corpus loads, hero search matches a
+// query term that lives only in a tile's summary / interpretation bands, not
+// its name. "antithrombotic therapy not recommended" is CHA2DS2-VASc band text;
+// without the corpus it misroutes (name-only), with it routes to chads.
+test('home: hero-search matches corpus prose (band-text term routes to chads)', async ({ page }) => {
+  const corpusLoaded = page.waitForResponse(
+    (r) => r.url().includes('data/search-corpus/corpus.json') && r.status() === 200,
+    { timeout: 15000 },
+  );
+  await page.goto('/');
+  await corpusLoaded;
+  await page.waitForSelector('#hero-search');
+  await page.fill('#hero-search', 'antithrombotic therapy not recommended');
+  const first = page.locator('#hero-search-results .hero-search-result').first();
+  await expect(first, 'a band-text query should resolve to #chads').toHaveAttribute('data-tool', 'chads', { timeout: 5000 });
+});
+
 // spec-v29 wave 29-2: tiles in Groups A (code-reference lookups), C/L
 // (patient-literacy / form-locator), I (field-medicine reference cards),
 // K/O (lab-range / wallet-card reference), and the single-class clinical

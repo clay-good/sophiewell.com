@@ -213,6 +213,7 @@ import { installKeyboard } from './lib/keyboard.js';
 import { parseHash, patchHash } from './lib/hash.js';
 import { loadSynonyms } from './lib/synonyms.js';
 import { resolvePrompt } from './lib/prompt.js';
+import { corpusDesc } from './lib/search-corpus.js';
 // The patient-artifact dropzone UI (spec-v7 sec 3.1) was removed when
 // Sophie pivoted to a clinical-staff-first wedge. The orphaned
 // artifact-detect / artifact-route / artifact-handoff helpers were
@@ -2638,11 +2639,19 @@ const GROUP_LABELS = {
 // dependency).
 let SYNONYM_ENTRIES = [];
 
+// plain-language-search: the natural-language search corpus, keyed by tile id.
+// Empty until loadSearchCorpus() resolves at boot; on failure it stays empty and
+// tileCorpus() desc falls back to '' (the corpus is an accelerator, not a hard
+// dependency, exactly like SYNONYM_ENTRIES).
+let SEARCH_CORPUS = {};
+
 // spec-v8 §4.3: assemble the tile corpus the synonym resolver reads.
 // id / name / group / audiences come from UTILITIES; tags + specialties from
 // META[id]. The per-tile description was scraped from the home tile-grid before
-// spec-v51/v53 removed that grid, so desc is now empty -- the resolver ranks on
-// name / id / tags / specialties, which is enough for synonym + token matching.
+// spec-v51/v53 removed that grid; it is now filled from the search corpus
+// (adapter summary + interpretation-band prose) when that has loaded, so a query
+// term living only in a tile's summary/bands still routes -- and stays '' until
+// then, ranking on name / id / tags / specialties as before.
 let TILE_CORPUS_CACHE = null;
 function tileCorpus() {
   if (TILE_CORPUS_CACHE) return TILE_CORPUS_CACHE;
@@ -2651,7 +2660,7 @@ function tileCorpus() {
     name: u.name,
     group: u.group,
     audiences: u.audiences || [],
-    desc: '',
+    desc: corpusDesc(SEARCH_CORPUS[u.id]),
     tags: (META[u.id] && Array.isArray(META[u.id].tags)) ? META[u.id].tags : [],
     // spec-v11 §4.3: optional specialty tags, additive search tokens.
     specialties: (META[u.id] && Array.isArray(META[u.id].specialties)) ? META[u.id].specialties : [],
@@ -3358,6 +3367,13 @@ function boot() {
   // to fuzzy-only if the fetch fails (e.g., file:// load); synonyms are an
   // optional accelerator, not a hard dependency.
   loadSynonyms().then((entries) => { SYNONYM_ENTRIES = entries; }).catch(() => {});
+  // plain-language-search: load the search corpus once at boot, then rebuild the
+  // tile corpus so desc-channel (summary/band) terms become matchable. Same
+  // accelerator-not-dependency contract: on failure the corpus stays empty and
+  // hero search ranks on name / id / tags / specialties as before.
+  fetchJson('data/search-corpus/corpus.json')
+    .then((corpus) => { if (corpus && typeof corpus === 'object') { SEARCH_CORPUS = corpus; TILE_CORPUS_CACHE = null; } })
+    .catch(() => {});
   window.addEventListener('hashchange', route);
   route();
   registerServiceWorker();
