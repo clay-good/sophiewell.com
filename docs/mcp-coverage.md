@@ -1349,6 +1349,21 @@ modules** — completing MCP exposure of the SESSION-36 advanced prognostic /
 classification program (spec-v278 through spec-v281; all 7 tiles now
 deterministic agent tools).
 
+## Ninety-ninth wave — acute & primary-care decision rules in lib/decision-rules-v258.js (+3)
+
+`canadian-ct-head`, `sf-syncope`, and `mcisaac` (spec-v258) are three acute /
+primary-care decision rules whose pure computes had not yet been adapted. The
+Canadian CT Head Rule and the San Francisco Syncope Rule (CHESS) are all-boolean
+criteria rules whose `band` names the fired criteria — the example text
+(criteria labels with their embedded thresholds) round-trips through the band.
+The McIsaac score is the age-corrected Centor for streptococcal pharyngitis; its
+`band` carries the `McIsaac 3 ... ~28-35%` example, and age is the only required
+input. Every criterion is a boolean coerced by the default `toBool`. New adapter
+module registered in `mcp/catalog.js`. Brings the exposed total to **1054
+calculators across 189 modules** — opening MCP exposure of the SESSION-32
+subspecialty-depth program (spec-v258 onward), whose pure-compute tiles a prior
+audit had missed.
+
 ## Exposed
 
 Each id below is live in `mcp/catalog.js`. The gate parses this list.
@@ -2749,6 +2764,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 - `asas-axspa`
 - `galad-hcc`
 - `toronto-hcc-risk`
+- `canadian-ct-head`
+- `sf-syncope`
+- `mcisaac`
 
 ## Not yet adapted
 

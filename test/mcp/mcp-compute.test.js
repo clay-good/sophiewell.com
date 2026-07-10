@@ -1812,6 +1812,27 @@ test('lib/hcc-surveillance-v281.js worked calls', () => {
   assert.equal(low.band, 'low');
 });
 
+test('lib/decision-rules-v258.js worked calls', () => {
+  // Canadian CT Head: any high-risk criterion -> CT recommended.
+  const cch = ok('canadian-ct-head', { 'cch-gcs2h': '1' });
+  assert.equal(cch.abnormal, true);
+  const cchNeg = ok('canadian-ct-head', {});
+  assert.equal(cchNeg.abnormal, false);
+  // SF Syncope: any CHESS criterion -> high risk.
+  const sfs = ok('sf-syncope', { 'sfs-ecg': '1', 'sfs-sbp': '1' });
+  assert.equal(sfs.abnormal, true);
+  const sfsLow = ok('sf-syncope', {});
+  assert.equal(sfsLow.abnormal, false);
+  // McIsaac: age 50 (>= 45, -1) + all four features (+4) = 3.
+  const mci = ok('mcisaac', {
+    'mci-age': '50', 'mci-fever': '1', 'mci-cough': '1', 'mci-adeno': '1', 'mci-exudate': '1',
+  });
+  assert.equal(mci.score, 3);
+  // Age is required for McIsaac.
+  const noAge = computeCalculator({ id: 'mcisaac', inputs: { 'mci-fever': '1' } });
+  assert.equal(noAge.valid, false);
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];
