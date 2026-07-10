@@ -1334,6 +1334,21 @@ tiles have their own completeness / arm gates, no single field is marked require
 (the lib's own guard fires). New adapter module registered in `mcp/catalog.js`.
 Brings the exposed total to **1049 calculators across 187 modules**.
 
+## Ninety-eighth wave — hepatocellular-carcinoma surveillance in lib/hcc-surveillance-v281.js (+2)
+
+`galad-hcc` and `toronto-hcc-risk` (spec-v281) are the two HCC surveillance /
+detection instruments. The GALAD score (Johnson 2014) evaluates a logistic
+linear predictor Z over Gender, Age, AFP-L3, AFP, and DCP; its `z`/`detail`
+carry the `5.58` example, so the example round-trips through the default
+`makeToArgs`. The Toronto HCC Risk Index (THRI; Sharma 2017) sums age, sex,
+etiology, and platelet-band points to a 0-366 total (low < 120 / medium 120-240 /
+high > 240); its `detail` carries the `347/366` example. Every input is required
+(each compute needs the full set). New adapter module registered in
+`mcp/catalog.js`. Brings the exposed total to **1051 calculators across 188
+modules** — completing MCP exposure of the SESSION-36 advanced prognostic /
+classification program (spec-v278 through spec-v281; all 7 tiles now
+deterministic agent tools).
+
 ## Exposed
 
 Each id below is live in `mcp/catalog.js`. The gate parses this list.
@@ -2732,6 +2747,8 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 - `uiss-rcc`
 - `haq-di`
 - `asas-axspa`
+- `galad-hcc`
+- `toronto-hcc-risk`
 
 ## Not yet adapted
 

@@ -1791,6 +1791,27 @@ test('lib/rheum-fn-v280.js worked calls', () => {
   assert.equal(noMeet.meets, false);
 });
 
+test('lib/hcc-surveillance-v281.js worked calls', () => {
+  // Male 65, AFP-L3 10%, AFP 100 ng/mL, DCP 200 mAU/mL -> Z 5.58, above the -0.63 cutoff.
+  const galad = ok('galad-hcc', {
+    'galad-sex': 'male', 'galad-age': '65', 'galad-afpl3': '10', 'galad-afp': '100', 'galad-dcp': '200',
+  });
+  assert.equal(galad.z, 5.58);
+  assert.equal(galad.aboveCutoff, true);
+  // THRI: age 65 (+50) + male (+80) + HCV (+97) + platelets 100 (+70) = 347/366, high.
+  const thri = ok('toronto-hcc-risk', {
+    'thri-age': '65', 'thri-sex': 'male', 'thri-etiology': 'hcv', 'thri-plt': '100',
+  });
+  assert.equal(thri.score, 347);
+  assert.equal(thri.band, 'high');
+  // A young female with HCV-SVR and normal platelets sits in the low band.
+  const low = ok('toronto-hcc-risk', {
+    'thri-age': '40', 'thri-sex': 'female', 'thri-etiology': 'hcv-svr', 'thri-plt': '250',
+  });
+  assert.equal(low.score, 0);
+  assert.equal(low.band, 'low');
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];
