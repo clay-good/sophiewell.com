@@ -6,6 +6,16 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Changed (spec-v286 — question-scaffold stripping + plural fold in search)
+
+- The hero search (and MCP `find_calculator`) now strips question scaffolding ("what is the",
+  "how do i", "for my patient") from the ranking view of a query and folds bare plurals, so
+  question-phrased searches route on their clinical terms: "how much maintenance fluid for a
+  child" and "what fluids does a burn patient need" now land on the right tile (see
+  [docs/spec-v286.md](docs/spec-v286.md)). Exact tile-name queries are unaffected (the raw
+  query keeps its phrase bonuses). Routing stays fully deterministic; the spec-v285 golden set
+  grew 59 → 68 probes, all green.
+
 ### Added (spec-v285 — search-relevance golden set + v11 synonym gap batch)
 
 - A 59-probe search-relevance golden set now pins plain-language routing quality end-to-end

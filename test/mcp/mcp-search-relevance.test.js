@@ -1,4 +1,4 @@
-// Search-relevance golden set. Runs 59 realistic clinical queries through the
+// Search-relevance golden set. Runs 68 realistic clinical queries through the
 // real find_calculator surface (shared resolvePromptRanked + data/synonyms.json
 // + data/search-corpus over the exposed registry) and asserts an acceptable
 // tile ranks in the top 3. This pins the routing quality spec-v282 shipped:
@@ -12,11 +12,14 @@
 //     (e.g. any of the three pancreatitis severity tiles is a correct route);
 //   - keep probes phrased the way a nurse would type them, not tile names.
 //
-// Known limitation (deliberately NOT probed): a query naming two intents
-// ("anticoagulation bleeding risk atrial fibrillation") resolves by the
-// synonym tie-break (shorter phrase wins), so "atrial fibrillation" routes it
-// to chads over hasbled. Arbitrating that needs term-weighted ranking -- the
-// deferred plain-language-search 2.2 work; add the probe when that lands.
+// Known limitations (deliberately NOT probed) -- both are acceptance tests
+// for the deferred term-weighted (IDF/BM25-lite) ranker slice:
+//   - a query naming two intents ("anticoagulation bleeding risk atrial
+//     fibrillation") resolves by the synonym tie-break (shorter phrase wins),
+//     so "atrial fibrillation" routes it to chads over hasbled;
+//   - derivational forms don't fold ("when should i transfuse for anemia"
+//     misses transfusion-threshold: transfuse vs transfusion). Only bare
+//     plurals fold today -- the ing/ion pairs showed order-dependent noise.
 
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
@@ -87,6 +90,18 @@ const PROBES = [
   ['ards oxygenation severity', ['pf-ratio', 'oxygenation-index', 'osi-oxygenation']],
   ['ventilator tidal volume ideal body weight', ['pbw-ardsnet']],
   ['rsbi wean vent', ['rsbi']],
+  // question-phrased probes (unlocked by the scaffold-strip + plural fold,
+  // plain-language-search 3.2/3.3): scaffolding tokens must not drown the
+  // clinical terms, and bare plurals must fold.
+  ['what is the score for pneumonia severity', ['curb-65', 'psi']],
+  ['how do i correct sodium for high glucose', ['corrected-sodium', 'corrected-ca-na']],
+  ['should i get a head ct for minor head injury', ['canadian-ct-head', 'nexus-head', 'pecarn-head', 'catch-head', 'chalice', 'cthr']],
+  ['what fluids does a burn patient need', ['burn-fluid']],
+  ['how do i figure out the anion gap', ['anion-gap']],
+  ['what is my patients stroke risk with afib', ['chads']],
+  ['how much maintenance fluid for a child', ['maint-fluids']],
+  ['what is the target tidal volume on the vent', ['pbw-ardsnet']],
+  ['how do i stage this pressure injury', ['npiap-staging', 'braden', 'braden-q']],
 ];
 
 test(`every golden probe routes an acceptable tile into the top ${TOP_N}`, () => {

@@ -217,3 +217,50 @@ test('resolvePromptRanked: empty query and empty tiles return []', () => {
   assert.deepEqual(resolvePromptRanked('', TILES, SYNONYMS, 'all'), []);
   assert.deepEqual(resolvePromptRanked('bmi', [], [], 'all'), []);
 });
+
+// --- Question-scaffold strip + plural fold (plain-language-search 3.2/3.3) --
+
+// The ranking view of the query drops interrogative scaffolding and pure
+// function words, and folds bare plurals on both the query and doc sides.
+// The raw query still drives the exact-phrase bonuses.
+
+test('scaffold strip: a question-phrased query routes on its clinical terms', () => {
+  // "what is the ..." tokens would otherwise collect +1 desc hits everywhere.
+  const r = resolvePrompt('what is the egfr for my patient', TILES, [], 'all');
+  assert.equal(r?.tileId, 'egfr');
+});
+
+test('plural fold: query plural matches a singular name token and vice versa', () => {
+  const tiles = [
+    { id: 'maint-fluids', name: 'Maintenance Fluid Rate', audiences: [], desc: 'Hourly rate.' },
+    { id: 'discharge', name: 'Discharge Instructions Builder', audiences: [], desc: '' },
+  ];
+  assert.equal(resolvePrompt('maintenance fluids', tiles, [], 'all')?.tileId, 'maint-fluids');
+  assert.equal(resolvePrompt('discharge instruction', tiles, [], 'all')?.tileId, 'discharge');
+});
+
+test('plural fold guards: -ss / -us / -is / short tokens are left alone', () => {
+  const { rankTilesAll } = _testing;
+  const tiles = [
+    { id: 'sepsis', name: 'Sepsis Screen Criteria', audiences: [], desc: 'sirs sepsis screen' },
+  ];
+  // "sepsis" must not be stemmed to "sepsi" on either side.
+  assert.equal(rankTilesAll('sepsis screen', tiles, 'all')[0]?.tileId, 'sepsis');
+});
+
+test('all-scaffold query falls back to unstripped tokens rather than matching nothing', () => {
+  // Contrived tile whose name is made of scaffold words; the fallback keeps
+  // pre-strip behavior (tokens still rank) instead of an empty token list.
+  const tiles = [{ id: 'howto', name: 'How To', audiences: [], desc: 'how to' }];
+  const r = _testing.rankTilesAll('how to', tiles, 'all');
+  assert.equal(r[0]?.tileId, 'howto', 'exact-phrase + fallback tokens still rank');
+});
+
+test('exact-phrase bonus still uses the raw query (scaffold words included)', () => {
+  const tiles = [
+    { id: 'wia', name: 'What If Analysis', audiences: [], desc: '' },
+    { id: 'other', name: 'Analysis Suite', audiences: [], desc: 'what if analysis notes here' },
+  ];
+  // Raw phrase "what if analysis" appears verbatim in the first tile's name.
+  assert.equal(resolvePrompt('what if analysis', tiles, [], 'all')?.tileId, 'wia');
+});

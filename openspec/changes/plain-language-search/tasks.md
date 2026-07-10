@@ -34,9 +34,15 @@
 
 - [ ] 3.1 Add field-weighted BM25-lite scoring with IDF and fixed-precision arithmetic
       (Design D2); keep the module pure (no DOM, no fetch).
-- [ ] 3.2 Add the bounded suffix-stemmer (Design D3) applied to corpus and query tokens.
-- [ ] 3.3 Add question-scaffold/stopword stripping for the ranking view of the query, keeping
-      the raw query for exact-phrase bonuses (Design D4).
+- [~] 3.2 Bounded suffix-stemmer (Design D3): the SAFE SUBSET shipped 2026-07-10 (spec-v286) —
+      plural-only fold (`stemToken`, guards for -ss/-us/-is and short tokens) applied
+      identically to corpus and query tokens. The ing/ion derivational pairs stay deferred
+      with 3.1: the prototype showed order-dependent noise (prediction<->predicting), and the
+      golden set records "transfuse vs transfusion" as their acceptance probe.
+- [x] 3.3 Question-scaffold/stopword stripping shipped 2026-07-10 (spec-v286): reviewed
+      QUERY_STOPWORDS constant, ranking-view-only strip with all-scaffold fallback; raw query
+      keeps the exact-phrase bonuses. Gated by the spec-v285 golden set (extended 59 -> 68
+      probes, all top-3).
 - [ ] 3.4 Extend the typo pass to the full corpus vocabulary with length-bucketed candidates
       (Design D5).
 - [x] 3.5 Export `resolvePromptRanked(...)` (top-N with `why`). Kept `resolvePrompt` untouched
