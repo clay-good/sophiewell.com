@@ -9,6 +9,22 @@
 > `ssign-score`, `imdc-rcc`, and `mskcc-rcc`, but **not** the Leibovich progression score or
 > the UISS.
 >
+> **Re-opens the [spec-v266](spec-v266.md) deferral.** Both tiles were *parked* at
+> spec-v266 under the [spec-v97](spec-v97.md) ≥ 2-independent-source bar: the Leibovich point
+> table could be traced only through a single validation lineage (secondary renders disagreed
+> on the pN points — some print pN1/pN2 = 1, which caps the total at 10 and contradicts the
+> documented 0-11 range), and the UISS group-assignment grid was not extractable from two
+> open sources. **This spec re-opens them because a second, independent, fetchable open source
+> now corroborates the Leibovich model** — the SORCE adjuvant-trial external validation
+> (*J Clin Oncol.* 2022, open on PMC) reproduces the full five-factor table, the 0-2/3-5/≥6
+> bands, and the 5-year MFS gradient, and its arithmetic is consistent only with pN1/pN2 = 2
+> (giving the 0-11 range). The UISS **localized** branch is likewise now corroborated (the
+> international multicenter validation plus the adjuvant-trial definitions); the UISS
+> **metastatic** branch remains under the same bar and is carried as *verify at
+> implementation* (§2.2). If, at implementation, the ≥ 2-independent-source bar still cannot
+> be met for a given branch, that branch stays parked (not approximated), per
+> [spec-v97](spec-v97.md) and the [spec-v266 §7](spec-v266.md) precedent.
+>
 > Catalog effect, if built: **live `UTILITIES.length` + 2**, enforced by the catalog-truth
 > gate ([spec-v46](spec-v46.md)); no number is copied here.
 >
