@@ -1879,6 +1879,20 @@ test('lib/pediatric-acute-v262.js worked calls', () => {
   assert.equal(eg.abnormal, true);
 });
 
+test('lib/respiratory-maternal-v263.js worked calls', () => {
+  // MuLBSTA: multilobar (+5) + lymphopenia (+4) + current smoker (+3) = 12.
+  const mu = ok('mulbsta', { 'mu-multi': '1', 'mu-lymph': '1', 'mu-smoke': 'current' });
+  assert.equal(mu.score, 12);
+  // Ottawa COPD: hemoglobin < 10 (+3) + HR >= 110 (+2) = 5.
+  const ot = ok('ottawa-copd', { 'ot-hb': '1', 'ot-hr': '1' });
+  assert.equal(ot.score, 5);
+  // SOS: temp band 30-31.9 (+3) + WBC band 25-39.9 (+3) = 6, with the other
+  // physiologic bands defaulting to normal.
+  const sos = ok('sepsis-obstetrics-score', { 'sos-temp': 't30_319', 'sos-wbc': 'w25_399' });
+  assert.equal(sos.score, 6);
+  assert.equal(sos.abnormal, true);
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];

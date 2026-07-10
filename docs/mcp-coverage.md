@@ -1400,6 +1400,19 @@ that default in the compute when omitted, so the examples (`Lab-score 4 of 9`,
 `mcp/catalog.js`. Brings the exposed total to **1063 calculators across 192
 modules**.
 
+## One-hundred-third wave — respiratory / maternal acute scores in lib/respiratory-maternal-v263.js (+3)
+
+`mulbsta`, `ottawa-copd`, and `sepsis-obstetrics-score` (spec-v263) are three
+acute-care scores. MuLBSTA (0-20) predicts 90-day viral-pneumonia mortality;
+the Ottawa COPD Risk Scale (0-16) predicts short-term serious outcomes in acute
+COPD exacerbation; the Sepsis in Obstetrics Score (0-28) predicts ICU admission
+(>= 6 high risk). The first two mix booleans with a smoking enum; SOS is eight
+physiologic band enums that default to `normal` when omitted. Each example
+(`MuLBSTA 12`, `Ottawa COPD 5`, `SOS 6`) round-trips through the default
+`makeToArgs`; no field is individually required. New adapter module registered in
+`mcp/catalog.js`. Brings the exposed total to **1066 calculators across 193
+modules**.
+
 ## Exposed
 
 Each id below is live in `mcp/catalog.js`. The gate parses this list.
@@ -2812,6 +2825,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 - `lab-score`
 - `chalice`
 - `egami`
+- `mulbsta`
+- `ottawa-copd`
+- `sepsis-obstetrics-score`
 
 ## Not yet adapted
 

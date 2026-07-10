@@ -209,6 +209,7 @@ import decisionRulesV258 from './adapters/decision-rules-v258.js';
 import pneumoniaRiskV260 from './adapters/pneumonia-risk-v260.js';
 import acuteAbdomenV261 from './adapters/acute-abdomen-v261.js';
 import pediatricAcuteV262 from './adapters/pediatric-acute-v262.js';
+import respiratoryMaternalV263 from './adapters/respiratory-maternal-v263.js';
 
 const ADAPTER_MODULES = [
   ['tox-v86', toxV86],
@@ -403,6 +404,7 @@ const ADAPTER_MODULES = [
   ['pneumonia-risk-v260', pneumoniaRiskV260],
   ['acute-abdomen-v261', acuteAbdomenV261],
   ['pediatric-acute-v262', pediatricAcuteV262],
+  ['respiratory-maternal-v263', respiratoryMaternalV263],
 ];
 
 const HERE = dirname(fileURLToPath(import.meta.url));
