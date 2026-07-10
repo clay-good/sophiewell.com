@@ -1,5 +1,5 @@
 {
-  "version": "v10-2026-07-10",
+  "version": "v11-2026-07-10",
   "note": "spec-v7 section 3.2: hand-curated patient-phrasing -> tile id table. Each entry maps patient-mental-model phrases (and, from the v8/v9 plain-language-search batches, clinical abbreviations, eponym aliases, and canonical-intent phrases) to a single existing tile. Audience is the primary audience the entry serves; the matcher deprioritizes (does not hide) entries when the user has selected a different chip. Every phrase is lowercase; every tile id is an existing catalog tile (guarded by test/unit/synonyms-catalog.test.js). Adding a new phrase is a one-line PR.",
   "entries": [
     { "phrases": ["denied", "denial letter", "they denied it", "insurance said no", "appeal", "write an appeal", "appeal my claim", "appeal letter", "appeal a denial"],
@@ -23,7 +23,7 @@
 
     { "phrases": ["afib", "a fib", "atrial fibrillation", "stroke risk in afib", "afib stroke risk", "stroke risk atrial fibrillation", "af stroke risk", "cha2ds2", "cha2ds2 vasc", "chads2 vasc", "chadsvasc", "chads vasc", "anticoagulation in afib"],
       "tile": "chads", "audience": "clinicians" },
-    { "phrases": ["bleeding risk on anticoagulation", "has bled", "hasbled", "bleeding risk warfarin"],
+    { "phrases": ["bleeding risk on anticoagulation", "has bled", "hasbled", "bleeding risk warfarin", "anticoagulation bleeding risk", "afib bleeding risk"],
       "tile": "hasbled", "audience": "clinicians" },
     { "phrases": ["orbit bleeding score", "orbit score"],
       "tile": "orbit-bleeding", "audience": "clinicians" },
@@ -41,8 +41,10 @@
       "tile": "news2", "audience": "clinicians" },
     { "phrases": ["modified early warning score", "mews"],
       "tile": "mews", "audience": "clinicians" },
-    { "phrases": ["qsofa", "sofa score", "sepsis organ failure"],
+    { "phrases": ["qsofa", "sofa score", "sepsis organ failure", "sepsis screen", "sepsis screening"],
       "tile": "qsofa-sofa", "audience": "clinicians" },
+    { "phrases": ["rass", "sedation scale", "sedation depth", "richmond agitation", "agitation sedation scale"],
+      "tile": "rass", "audience": "clinicians" },
     { "phrases": ["sirs criteria", "systemic inflammatory response"],
       "tile": "sirs", "audience": "clinicians" },
     { "phrases": ["chest pain score", "heart score", "acs risk chest pain"],

@@ -6,6 +6,15 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v285 — search-relevance golden set + v11 synonym gap batch)
+
+- A 59-probe search-relevance golden set now pins plain-language routing quality end-to-end
+  (real synonym table + search corpus + ranked resolver), and is the regression gate any future
+  ranker work must keep green (see [docs/spec-v285.md](docs/spec-v285.md)). Curating it surfaced
+  and fixed three routing gaps (synonyms v10 → v11): "sepsis screen(ing)" now routes to
+  qSOFA/SOFA, a new RASS entry covers "sedation scale" / "sedation depth", and HAS-BLED covers
+  "afib bleeding risk". No AI; routing stays fully deterministic.
+
 ### Changed (spec-v284 — unit-toggle stragglers converted: 21 metric-only fields)
 
 - The 19 plain `Weight (kg)` fields and 2 core-temperature °C fields that predated the
