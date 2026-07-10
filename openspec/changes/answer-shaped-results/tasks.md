@@ -17,10 +17,13 @@
 
 ## 3. Inline compute
 
-- [ ] 3.1 Create pure `lib/query-compute.js`: template shape (trigger tokens, field patterns
-      with unit requirements, compute import), plus the starter allow-list (Design D4).
-- [ ] 3.2 Implement number+unit parsing incl. feet-inches (`5'10`), explicit-unit weights, and
-      named-analyte conversions; a template with any missing/ambiguous field returns null.
+- [x] 3.1 Create pure `lib/query-compute.js`: template shape (trigger tokens, field patterns
+      with unit requirements, compute import), plus the starter allow-list (Design D4). Starter
+      allow-list = BMI, BSA, MAP, each reusing its own `lib/clinical.js` compute so the inline
+      value matches the tile. `_testing` exposes the parsers + TEMPLATES.
+- [x] 3.2 Implement number+unit parsing incl. feet-inches (`5'10`, `5 ft 10 in`, smart
+      apostrophe), explicit-unit weights (lb/kg), heights (in/cm/m), and BP pairs (`120/80`);
+      any missing/ambiguous field returns null (never guesses). 8 unit tests (task 5.1).
 - [ ] 3.3 Render the inline result row (value + canonical unit + tool name) as option 0 above
       the card/list when a template fires (Design D5).
 - [ ] 3.4 Route Enter/click on the inline row to the tile with `q=` prefill via the existing
