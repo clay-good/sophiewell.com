@@ -479,16 +479,16 @@ export const renderers = {
 
   'bw-bsa-suite'(root) {
     root.appendChild(field('Height (inches)', 'bw-hin'));
-    root.appendChild(field('Weight (kg)', 'bw-kg'));
+    root.appendChild(unitField('Weight', 'bw-kg', WEIGHT_UNITS));
     root.appendChild(selectField('Sex', 'bw-sex', [{ value: 'M', text: 'Male' }, { value: 'F', text: 'Female' }]));
     const o = out(); root.appendChild(o);
     const run = () => safe(o, () => {
       const sex = document.getElementById('bw-sex').value;
       const ibw = V4.ibwDevine({ heightInches: num('bw-hin'), sex });
-      const adj = V4.adjBW({ ibw, actualKg: num('bw-kg') });
+      const adj = V4.adjBW({ ibw, actualKg: unitNum('bw-kg') });
       const heightCm = num('bw-hin') * 2.54;
-      const bsaM = C.bsaMosteller({ weightKg: num('bw-kg'), heightCm });
-      const bsaD = C.bsaDuBois({ weightKg: num('bw-kg'), heightCm });
+      const bsaM = C.bsaMosteller({ weightKg: unitNum('bw-kg'), heightCm });
+      const bsaD = C.bsaDuBois({ weightKg: unitNum('bw-kg'), heightCm });
       resultRow(o, [
         { text: `IBW (Devine): ${ibw.toFixed(1)} kg` },
         { text: `AdjBW (40% rule): ${adj.toFixed(1)} kg` },
@@ -496,17 +496,17 @@ export const renderers = {
         { text: `BSA Du Bois: ${bsaD.toFixed(2)} m^2` },
       ]);
     });
-    ['bw-hin', 'bw-kg', 'bw-sex'].forEach((id) => document.getElementById(id).addEventListener(id === 'bw-sex' ? 'change' : 'input', run));
+    ['bw-hin', 'bw-kg', 'bw-kg-unit', 'bw-sex'].forEach((id) => document.getElementById(id).addEventListener(id === 'bw-sex' ? 'change' : 'input', run));
   },
 
   'egfr-suite'(root) {
     root.appendChild(field('Serum creatinine (mg/dL)', 'es-scr'));
     root.appendChild(field('Age (years)', 'es-age'));
-    root.appendChild(field('Weight (kg, for Cockcroft-Gault)', 'es-w'));
+    root.appendChild(unitField('Weight (for Cockcroft-Gault)', 'es-w', WEIGHT_UNITS));
     root.appendChild(selectField('Sex', 'es-sex', [{ value: 'M', text: 'Male' }, { value: 'F', text: 'Female' }]));
     const o = out(); root.appendChild(o);
     const run = () => safe(o, () => {
-      const scr = num('es-scr'), age = num('es-age'), w = num('es-w');
+      const scr = num('es-scr'), age = num('es-age'), w = unitNum('es-w');
       const sex = document.getElementById('es-sex').value;
       const ckdEpi = C.egfrCkdEpi2021({ scr, age, sex });
       const cg = C.cockcroftGault({ age, weightKg: w, scr, sex });
@@ -520,7 +520,7 @@ export const renderers = {
       if (adv) o.appendChild(el('p', { class: 'warn', text: adv }));
       o.appendChild(el('p', { class: 'muted', text: '2021 race-free shift: NIH/NKF removed the race coefficient from CKD-EPI in 2021. Many labs use CKD-EPI; nephrology references increasingly use MDRD race-free for legacy comparison.' }));
     });
-    ['es-scr', 'es-age', 'es-w', 'es-sex'].forEach((id) => document.getElementById(id).addEventListener(id === 'es-sex' ? 'change' : 'input', run));
+    ['es-scr', 'es-age', 'es-w', 'es-w-unit', 'es-sex'].forEach((id) => document.getElementById(id).addEventListener(id === 'es-sex' ? 'change' : 'input', run));
   },
 
   'fena-feurea'(root) {
@@ -552,13 +552,13 @@ export const renderers = {
   },
 
   'maint-fluids'(root) {
-    root.appendChild(field('Weight (kg)', 'mf-w'));
+    root.appendChild(unitField('Weight', 'mf-w', WEIGHT_UNITS));
     const o = out(); root.appendChild(o);
     const run = () => safe(o, () => {
-      const r = V4.maintenanceFluids({ weightKg: num('mf-w') });
+      const r = V4.maintenanceFluids({ weightKg: unitNum('mf-w') });
       o.appendChild(el('p', { text: `Maintenance: ${r.toFixed(1)} mL/hr (4 mL/kg/hr first 10 kg + 2 next 10 kg + 1 over 20 kg)` }));
     });
-    document.getElementById('mf-w').addEventListener('input', run);
+    ['mf-w', 'mf-w-unit'].forEach((id) => document.getElementById(id).addEventListener('input', run));
   },
 
   'qtc-suite'(root) {

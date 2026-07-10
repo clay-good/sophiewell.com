@@ -198,6 +198,24 @@ test('Reset to example restores canonical units after a US-unit entry', async ({
   await expect(page.locator('#q-results')).toContainText('BMI: 22.9');
 });
 
+// spec-v284: the straggler conversion wave. Tiles that predated the spec-v184
+// toggle rollout (plain metric-labeled fields) now render unitField toggles
+// with the US default; an alternate-unit entry must reproduce the canonical
+// calculation exactly.
+test('converted stragglers accept US units (heparin bolus in lb, hypothermia stage in °F)', async ({ page }) => {
+  // heparin-nomogram: 176.3698 lb = 80 kg -> VTE bolus 80 u/kg = 6400 units.
+  await page.goto('/#heparin-nomogram', { waitUntil: 'load' });
+  await page.locator('#hep-wt-unit').selectOption('lb');
+  await page.fill('#hep-wt', '176.3698');
+  await expect(page.locator('#q-results')).toContainText('6400');
+
+  // hypothermia-rewarm: 86 °F = 30 °C -> HT II at 30 C (Durrer 2003).
+  await page.goto('/#hypothermia-rewarm', { waitUntil: 'load' });
+  await page.locator('#hyp-t-unit').selectOption('°F');
+  await page.fill('#hyp-t', '86');
+  await expect(page.locator('#q-results')).toContainText('HT II at 30 C');
+});
+
 // spec-v61 §2 A3: chart-ready labeled copy. Multi-output tiles render a
 // "Copy results" button inside #q-results so a paste lands as clean
 // `Label: Value Units` lines (lib/clipboard.js formatCopyAll) rather than a

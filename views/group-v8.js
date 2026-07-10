@@ -8,6 +8,7 @@
 // refusal message from the compute layer's RangeError rather than a number.
 
 import { el, clear } from '../lib/dom.js';
+import { unitField, unitNum, WEIGHT_UNITS } from '../lib/field-units.js';
 import { fmt } from '../lib/num.js';
 import * as M5 from '../lib/medication-v5.js';
 
@@ -69,15 +70,15 @@ function wire(ids, run) {
 export const renderers = {
   // ----- 2.1 heparin-nomogram --------------------------------------------
   'heparin-nomogram'(root) {
-    root.appendChild(field('Weight (kg)', 'hep-wt', { placeholder: 'e.g. 80' }));
+    root.appendChild(unitField('Weight', 'hep-wt', WEIGHT_UNITS, { placeholder: 'e.g. 80' }));
     root.appendChild(selectField('Indication', 'hep-ind', [
       { value: 'vte', text: 'VTE (80 u/kg bolus, 18 u/kg/h)' },
       { value: 'acs', text: 'ACS (60 u/kg bolus max 4000, 12 u/kg/h max 1000)' },
     ]));
     root.appendChild(field('Current aPTT (seconds, optional)', 'hep-aptt', { placeholder: 'e.g. 40' }));
     const o = out(); root.appendChild(o);
-    wire(['hep-wt', 'hep-ind', 'hep-aptt'], () => safe(o, () => {
-      const r = M5.heparinNomogram({ weightKg: val('hep-wt'), indication: str('hep-ind'), aptt: optNum('hep-aptt') });
+    wire(['hep-wt', 'hep-wt-unit', 'hep-ind', 'hep-aptt'], () => safe(o, () => {
+      const r = M5.heparinNomogram({ weightKg: unitNum('hep-wt'), indication: str('hep-ind'), aptt: optNum('hep-aptt') });
       const items = [
         li(`Initial bolus: ${fmt(r.initialBolusUnits, { fallback: '(enter weight)' })} units`),
         li(`Initial rate: ${fmt(r.initialRateUnitsH, { fallback: '--' })} units/h (${r.initialRateUkgH} u/kg/h)`),
@@ -191,11 +192,11 @@ export const renderers = {
       { value: 'bupivacaine-epi', text: 'Bupivacaine + epinephrine (3 mg/kg)' },
       { value: 'ropivacaine', text: 'Ropivacaine (3 mg/kg)' },
     ]));
-    root.appendChild(field('Weight (kg)', 'la-wt', { placeholder: 'e.g. 70' }));
+    root.appendChild(unitField('Weight', 'la-wt', WEIGHT_UNITS, { placeholder: 'e.g. 70' }));
     root.appendChild(field('Solution concentration (%)', 'la-conc', { placeholder: 'e.g. 1' }));
     const o = out(); root.appendChild(o);
-    wire(['la-agent', 'la-wt', 'la-conc'], () => safe(o, () => {
-      const r = M5.localAnestheticMax({ agent: str('la-agent'), weightKg: val('la-wt'), concPct: val('la-conc') });
+    wire(['la-agent', 'la-wt', 'la-wt-unit', 'la-conc'], () => safe(o, () => {
+      const r = M5.localAnestheticMax({ agent: str('la-agent'), weightKg: unitNum('la-wt'), concPct: val('la-conc') });
       o.appendChild(list([
         li(`${r.label}: maximum total dose ${fmt(r.maxDoseMg, { fallback: '(enter weight)' })} mg`),
         li(`At ${fmt(r.mgPerMl, { fallback: '--' })} mg/mL: maximum volume ${fmt(r.maxVolMl, { fallback: '--' })} mL`),
@@ -283,11 +284,11 @@ export const renderers = {
       { value: 'propofol', text: 'Propofol (0.5-1 mg/kg, 10 mg/mL)' },
       { value: 'ketofol', text: 'Ketofol 1:1 (5 mg/mL each)' },
     ]));
-    root.appendChild(field('Weight (kg)', 'kp-wt', { placeholder: 'e.g. 70' }));
+    root.appendChild(unitField('Weight', 'kp-wt', WEIGHT_UNITS, { placeholder: 'e.g. 70' }));
     root.appendChild(field('Selected dose (mg/kg)', 'kp-mgkg', { placeholder: 'e.g. 1' }));
     const o = out(); root.appendChild(o);
-    wire(['kp-agent', 'kp-wt', 'kp-mgkg'], () => safe(o, () => {
-      const r = M5.ketaminePropofol({ agent: str('kp-agent'), weightKg: val('kp-wt'), mgkg: val('kp-mgkg') });
+    wire(['kp-agent', 'kp-wt', 'kp-wt-unit', 'kp-mgkg'], () => safe(o, () => {
+      const r = M5.ketaminePropofol({ agent: str('kp-agent'), weightKg: unitNum('kp-wt'), mgkg: val('kp-mgkg') });
       o.appendChild(list([
         li(`${r.label}: initial dose ${fmt(r.doseMg, { fallback: '(enter weight)' })} mg = ${fmt(r.volMl, { fallback: '--' })} mL`),
         li(`Typical re-dose increment: ${fmt(r.redoseMg, { fallback: '--' })} mg`),
@@ -299,11 +300,11 @@ export const renderers = {
 
   // ----- 2.11 peds-fluid-deficit -----------------------------------------
   'peds-fluid-deficit'(root) {
-    root.appendChild(field('Weight (kg)', 'pfd-wt', { placeholder: 'e.g. 12' }));
+    root.appendChild(unitField('Weight', 'pfd-wt', WEIGHT_UNITS, { placeholder: 'e.g. 12' }));
     root.appendChild(field('Estimated dehydration (%)', 'pfd-pct', { placeholder: 'e.g. 10' }));
     const o = out(); root.appendChild(o);
-    wire(['pfd-wt', 'pfd-pct'], () => safe(o, () => {
-      const r = M5.pedsFluidDeficit({ weightKg: val('pfd-wt'), dehydrationPct: val('pfd-pct') });
+    wire(['pfd-wt', 'pfd-wt-unit', 'pfd-pct'], () => safe(o, () => {
+      const r = M5.pedsFluidDeficit({ weightKg: unitNum('pfd-wt'), dehydrationPct: val('pfd-pct') });
       o.appendChild(list([
         li(`Maintenance rate (4-2-1): ${fmt(r.maintPerH, { fallback: '(enter weight)' })} mL/h`),
         li(`Total fluid deficit: ${fmt(r.deficitMl, { fallback: '--' })} mL`),
@@ -317,7 +318,7 @@ export const renderers = {
 
   // ----- 2.12 peds-resus -------------------------------------------------
   'peds-resus'(root) {
-    root.appendChild(field('Weight (kg)', 'pr-wt', { placeholder: 'e.g. 15' }));
+    root.appendChild(unitField('Weight', 'pr-wt', WEIGHT_UNITS, { placeholder: 'e.g. 15' }));
     root.appendChild(selectField('Bolus size', 'pr-ml', [
       { value: '20', text: '20 mL/kg' }, { value: '10', text: '10 mL/kg' },
     ]));
@@ -326,8 +327,8 @@ export const renderers = {
       { value: 'cardiac-dka', text: 'Cardiac / DKA (cautious)' },
     ]));
     const o = out(); root.appendChild(o);
-    wire(['pr-wt', 'pr-ml', 'pr-ctx'], () => safe(o, () => {
-      const r = M5.pedsResus({ weightKg: val('pr-wt'), mlPerKg: val('pr-ml'), context: str('pr-ctx') });
+    wire(['pr-wt', 'pr-wt-unit', 'pr-ml', 'pr-ctx'], () => safe(o, () => {
+      const r = M5.pedsResus({ weightKg: unitNum('pr-wt'), mlPerKg: val('pr-ml'), context: str('pr-ctx') });
       o.appendChild(list([
         li(`Bolus volume: ${fmt(r.bolusMl, { fallback: '(enter weight)' })} mL per push`),
         li('Reassess perfusion (HR, cap refill, mental status, urine output) after each bolus.'),

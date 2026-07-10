@@ -10,6 +10,7 @@
 // none authors a drug / dose / route decision in Sophie's voice (spec-v11 §5.3).
 
 import { el, clear } from '../lib/dom.js';
+import { unitField, unitNumOpt, WEIGHT_UNITS } from '../lib/field-units.js';
 import * as M from '../lib/ems-v149.js';
 import { resultRow } from '../lib/result-copy.js';
 
@@ -90,14 +91,14 @@ export const renderers = {
     note(root, 'Draw-up volume: volume to draw (mL) = ordered dose (mg) / stock concentration (mg/mL). Enter the ordered dose directly, or leave it blank and enter weight + a per-kg dose to derive it. A draw-up cross-check, not an infusion rate.');
     root.appendChild(field('Ordered dose (mg)', 'dv-dose', { step: '0.01', min: 0, placeholder: 'e.g. 25' }));
     root.appendChild(field('Stock concentration (mg/mL)', 'dv-conc', { step: '0.01', min: 0, placeholder: 'e.g. 50' }));
-    root.appendChild(field('Weight (kg) -- optional, to derive the dose', 'dv-weight', { step: '0.1', min: 0, placeholder: 'e.g. 20' }));
+    root.appendChild(unitField('Weight -- optional, to derive the dose', 'dv-weight', WEIGHT_UNITS, { placeholder: 'e.g. 20' }));
     root.appendChild(field('Per-kg dose (mg/kg) -- optional', 'dv-perkg', { step: '0.01', min: 0, placeholder: 'e.g. 1' }));
     const o = out(); root.appendChild(o);
-    wire(['dv-dose', 'dv-conc', 'dv-weight', 'dv-perkg'], () => safe(o, () => {
+    wire(['dv-dose', 'dv-conc', 'dv-weight', 'dv-weight-unit', 'dv-perkg'], () => safe(o, () => {
       const r = M.doseVolume({
         doseMg: optNum('dv-dose'),
         concentration: optNum('dv-conc'),
-        weightKg: optNum('dv-weight'),
+        weightKg: unitNumOpt('dv-weight'),
         doseMgPerKg: optNum('dv-perkg'),
       });
       if (!r.valid) { note(o, r.band); note(o, r.note); return; }

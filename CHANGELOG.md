@@ -6,6 +6,16 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Changed (spec-v284 — unit-toggle stragglers converted: 21 metric-only fields)
+
+- The 19 plain `Weight (kg)` fields and 2 core-temperature °C fields that predated the
+  spec-v184 toggle rollout now render the shared unit toggle and inherit the spec-v283
+  US-customary default (lb / °F), with metric one click away (see
+  [docs/spec-v284.md](docs/spec-v284.md)). Reads go through `unitNum`/`unitNumOpt`, so every
+  compute still receives kg/°C; all documented examples reproduce byte-identically. With this
+  wave every weight/height/temperature input in the catalog either offers the US-default toggle
+  or is intentionally exempt.
+
 ### Changed (spec-v283 — US-customary unit defaults: lb / in / °F pre-selected)
 
 - Every shared unit-toggle field now pre-selects the US-customary option — weight in **lb**,

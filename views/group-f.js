@@ -157,7 +157,7 @@ export const renderers = {
       { value: 'apixaban-rivaroxaban', text: 'Apixaban / Rivaroxaban (andexanet)' },
       { value: 'heparin-ufh', text: 'Heparin, UFH (protamine)' },
     ]));
-    root.appendChild(field('Weight (kg)', 'ar-w', { placeholder: '80' }));
+    root.appendChild(unitField('Weight', 'ar-w', WEIGHT_UNITS, { placeholder: '80' }));
     root.appendChild(field('INR (warfarin only)', 'ar-inr', { placeholder: '5' }));
     root.appendChild(field('Heparin units in last 2-3 h (UFH only)', 'ar-heparin', { placeholder: '4000' }));
     const o = out(); root.appendChild(o);
@@ -173,8 +173,8 @@ export const renderers = {
         ]);
         return;
       }
-      if (!(nv('ar-w') > 0)) { o.appendChild(el('p', { class: 'muted', text: 'Enter weight (and INR for warfarin).' })); return; }
-      const r = C8.anticoagReversalDose({ weightKg: nv('ar-w'), inr: nv('ar-inr') || 0, agent });
+      if (!(unitNum('ar-w') > 0)) { o.appendChild(el('p', { class: 'muted', text: 'Enter weight (and INR for warfarin).' })); return; }
+      const r = C8.anticoagReversalDose({ weightKg: unitNum('ar-w'), inr: nv('ar-inr') || 0, agent });
       if (!r) { o.appendChild(el('p', { class: 'muted', text: 'Select an agent and enter weight (and INR for warfarin).' })); return; }
       const items = [{ label: 'Agent', value: r.product, text: `Agent: ${r.product}` }];
       if (r.units != null) items.push({ label: '4F-PCC dose', value: fmt(r.units), units: `units (${r.unitsPerKg} units/kg${r.capped ? ', dosing weight capped at 100 kg' : ''})` });
@@ -184,7 +184,7 @@ export const renderers = {
       if (r.note) items.push({ text: r.note });
       resultRow(o, items);
     });
-    ['ar-agent', 'ar-w', 'ar-inr', 'ar-heparin'].forEach((id) => {
+    ['ar-agent', 'ar-w', 'ar-w-unit', 'ar-inr', 'ar-heparin'].forEach((id) => {
       const node = document.getElementById(id);
       node.addEventListener('input', run);
       node.addEventListener('change', run);
@@ -318,7 +318,7 @@ export const renderers = {
   },
 
   'icu-nutrition-target'(root) {
-    root.appendChild(field('Weight (kg, use adjusted weight in obesity)', 'int-w', { placeholder: '70' }));
+    root.appendChild(unitField('Weight (use adjusted weight in obesity)', 'int-w', WEIGHT_UNITS, { placeholder: '70' }));
     root.appendChild(selectField('Energy target (kcal/kg/day)', 'int-kcal', [
       { value: '25-30', text: '25-30 (ASPEN/SCCM standard)' },
       { value: '20-25', text: '20-25 (early / hypocaloric)' },
@@ -331,14 +331,14 @@ export const renderers = {
     const run = () => safe(o, () => {
       const [kl, kh] = document.getElementById('int-kcal').value.split('-').map(Number);
       const [pl, ph] = document.getElementById('int-pro').value.split('-').map(Number);
-      const r = C8.icuNutritionTarget({ weightKg: nv('int-w'), kcalLow: kl, kcalHigh: kh, proteinLow: pl, proteinHigh: ph });
+      const r = C8.icuNutritionTarget({ weightKg: unitNum('int-w'), kcalLow: kl, kcalHigh: kh, proteinLow: pl, proteinHigh: ph });
       resultRow(o, [
         { label: 'Energy target', value: `${fmt(r.energyLowKcal)}-${fmt(r.energyHighKcal)}`, units: 'kcal/day' },
         { label: 'Protein target', value: `${fmt(r.proteinLowG)}-${fmt(r.proteinHighG)}`, units: 'g/day' },
       ]);
       o.appendChild(el('p', { class: 'muted', text: 'Use ideal/adjusted body weight in obesity; higher protein for CRRT and burns. ASPEN/SCCM 2016.' }));
     });
-    ['int-w', 'int-kcal', 'int-pro'].forEach((id) => {
+    ['int-w', 'int-w-unit', 'int-kcal', 'int-pro'].forEach((id) => {
       const node = document.getElementById(id);
       node.addEventListener('input', run);
       node.addEventListener('change', run);
@@ -347,7 +347,7 @@ export const renderers = {
 
   'vte-prophylaxis-dose'(root) {
     root.appendChild(el('p', { class: 'notice', text: 'Planning estimate, not an order. Verify against local protocol; obesity and renal edges may warrant anti-Xa monitoring.' }));
-    root.appendChild(field('Weight (kg)', 'vte-w', { placeholder: '80' }));
+    root.appendChild(unitField('Weight', 'vte-w', WEIGHT_UNITS, { placeholder: '80' }));
     root.appendChild(field('Creatinine clearance (mL/min)', 'vte-crcl', { placeholder: '80' }));
     root.appendChild(selectField('Indication', 'vte-ind', [
       { value: 'prophylaxis', text: 'Prophylaxis' },
@@ -360,7 +360,7 @@ export const renderers = {
     const o = out(); root.appendChild(o);
     const run = () => safe(o, () => {
       const r = C8.enoxaparinDose({
-        weightKg: nv('vte-w'),
+        weightKg: unitNum('vte-w'),
         crcl: nv('vte-crcl'),
         indication: document.getElementById('vte-ind').value,
         regimen: document.getElementById('vte-reg').value,
@@ -371,7 +371,7 @@ export const renderers = {
         r.renalAdjusted ? { text: 'CrCl <30 mL/min: renal reduction applied.', cls: 'flag' } : null,
       ]);
     });
-    ['vte-w', 'vte-crcl', 'vte-ind', 'vte-reg'].forEach((id) => {
+    ['vte-w', 'vte-w-unit', 'vte-crcl', 'vte-ind', 'vte-reg'].forEach((id) => {
       const node = document.getElementById(id);
       node.addEventListener('input', run);
       node.addEventListener('change', run);

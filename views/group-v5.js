@@ -13,7 +13,7 @@ import { renderDerivation, updateDerivationSteps } from '../lib/derivation.js';
 import { renderPrintable, renderCompleteness } from '../lib/print.js';
 import { resultRow } from '../lib/result-copy.js';
 import { correctionRate, trend } from '../lib/trend.js';
-import { unitField, unitNum, ALBUMIN_UNITS, HEIGHT_UNITS } from '../lib/field-units.js';
+import { unitField, unitNum, ALBUMIN_UNITS, HEIGHT_UNITS, WEIGHT_UNITS } from '../lib/field-units.js';
 
 function field(label, id, opts = {}) {
   const wrap = el('p');
@@ -66,7 +66,7 @@ const SEX_OPTS = [{ value: 'M', text: 'Male' }, { value: 'F', text: 'Female' }];
 export const renderers = {
   // ----- T1: Sodium correction --------------------------------------------
   'sodium-correction'(root) {
-    root.appendChild(field('Weight (kg)', 'w'));
+    root.appendChild(unitField('Weight', 'w', WEIGHT_UNITS));
     root.appendChild(selectField('Sex', 'sex', SEX_OPTS));
     root.appendChild(field('Age (years, optional)', 'age'));
     root.appendChild(field('Current serum Na (mEq/L)', 'na'));
@@ -93,7 +93,7 @@ export const renderers = {
     const run = () => safe(o, () => {
       const ageRaw = str('age');
       const r = V5.sodiumCorrection({
-        weightKg: num('w'), sex: str('sex'),
+        weightKg: unitNum('w'), sex: str('sex'),
         age: ageRaw === '' ? null : Number(ageRaw),
         currentNa: num('na'), infusate: str('infusate'),
         targetChangePer24h: num('tgt'),
@@ -122,12 +122,12 @@ export const renderers = {
       }
       resultRow(o, items);
     });
-    ['w', 'sex', 'age', 'na', 'infusate', 'tgt', 'acuity', 'na-prior', 'na-hours'].forEach((id) => document.getElementById(id).addEventListener('input', run));
+    ['w', 'w-unit', 'sex', 'age', 'na', 'infusate', 'tgt', 'acuity', 'na-prior', 'na-hours'].forEach((id) => document.getElementById(id).addEventListener('input', run));
   },
 
   // ----- T2: Free water deficit -------------------------------------------
   'free-water-deficit'(root) {
-    root.appendChild(field('Weight (kg)', 'w'));
+    root.appendChild(unitField('Weight', 'w', WEIGHT_UNITS));
     root.appendChild(selectField('Sex', 'sex', SEX_OPTS));
     root.appendChild(field('Age (years, optional)', 'age'));
     root.appendChild(field('Current serum Na (mEq/L)', 'na'));
@@ -137,7 +137,7 @@ export const renderers = {
     const run = () => safe(o, () => {
       const ageRaw = str('age');
       const r = V5.freeWaterDeficit({
-        weightKg: num('w'), sex: str('sex'),
+        weightKg: unitNum('w'), sex: str('sex'),
         age: ageRaw === '' ? null : Number(ageRaw),
         currentNa: num('na'), targetNa: num('tgt'),
         replaceOverHours: num('hrs'),
@@ -151,12 +151,12 @@ export const renderers = {
         { text: r.safetyNote },
       ]);
     });
-    ['w', 'sex', 'age', 'na', 'tgt', 'hrs'].forEach((id) => document.getElementById(id).addEventListener('input', run));
+    ['w', 'w-unit', 'sex', 'age', 'na', 'tgt', 'hrs'].forEach((id) => document.getElementById(id).addEventListener('input', run));
   },
 
   // ----- T3: Iron deficit (Ganzoni) ---------------------------------------
   'iron-ganzoni'(root) {
-    root.appendChild(field('Weight (kg)', 'w'));
+    root.appendChild(unitField('Weight', 'w', WEIGHT_UNITS));
     root.appendChild(field('Current Hb (g/dL)', 'hb'));
     root.appendChild(field('Target Hb (g/dL)', 'tgt', { value: 15 }));
     root.appendChild(field('Iron stores override (mg, optional)', 'stores'));
@@ -164,7 +164,7 @@ export const renderers = {
     const run = () => safe(o, () => {
       const sRaw = str('stores');
       const r = V5.ironDeficitGanzoni({
-        weightKg: num('w'), currentHb: num('hb'), targetHb: num('tgt'),
+        weightKg: unitNum('w'), currentHb: num('hb'), targetHb: num('tgt'),
         ironStoresMg: sRaw === '' ? null : Number(sRaw),
       });
       resultRow(o, [
@@ -172,7 +172,7 @@ export const renderers = {
         { label: 'Total iron deficit', value: r.totalDeficitMg, units: 'mg' },
       ]);
     });
-    ['w', 'hb', 'tgt', 'stores'].forEach((id) => document.getElementById(id).addEventListener('input', run));
+    ['w', 'w-unit', 'hb', 'tgt', 'stores'].forEach((id) => document.getElementById(id).addEventListener('input', run));
   },
 
   // ----- T4: PBW + ARDSnet Vt --------------------------------------------

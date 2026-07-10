@@ -12,6 +12,7 @@
 // (lib/endo-v136.js).
 
 import { el, clear } from '../lib/dom.js';
+import { unitField, unitNumOpt, WEIGHT_UNITS } from '../lib/field-units.js';
 import * as M from '../lib/endo-v136.js';
 import { resultRow } from '../lib/result-copy.js';
 
@@ -137,11 +138,11 @@ export const renderers = {
   'osteoporosis-prescreen'(root) {
     note(root, 'OST / ORAI DXA pre-screen (Koh 2001 OST/OSTA; Cadarette 2000 ORAI): two free indices that flag postmenopausal women who warrant bone densitometry. OST index = (weight kg − age yr) × 0.2, truncated toward zero; index < 2 flags increased risk (Caucasian cutoff). ORAI sums age/weight/estrogen bands; score ≥ 9 selects for DXA. The licensed FRAX is excluded; this is the free substitute.');
     root.appendChild(field('Age (years)', 'ost-age', { step: '1', min: 0, placeholder: 'e.g. 60' }));
-    root.appendChild(field('Weight (kg)', 'ost-weight', { step: '0.1', min: 0, placeholder: 'e.g. 72' }));
+    root.appendChild(unitField('Weight', 'ost-weight', WEIGHT_UNITS, { placeholder: 'e.g. 72' }));
     root.appendChild(selectField('Currently using estrogen?', 'ost-estrogen', YN));
     const o = out(); root.appendChild(o);
-    wire(['ost-age', 'ost-weight', 'ost-estrogen'], () => safe(o, () => {
-      const r = M.osteoporosisPrescreen({ age: optNum('ost-age'), weight: optNum('ost-weight'), estrogen: selVal('ost-estrogen') });
+    wire(['ost-age', 'ost-weight', 'ost-weight-unit', 'ost-estrogen'], () => safe(o, () => {
+      const r = M.osteoporosisPrescreen({ age: optNum('ost-age'), weight: unitNumOpt('ost-weight'), estrogen: selVal('ost-estrogen') });
       if (!r.valid) { showInvalid(o, r); return; }
       resultRow(o, [{ text: r.band, cls: r.abnormal ? 'warn' : null }, { label: 'OST / ORAI', value: `OST ${r.ost} / ORAI ${r.orai}` }]);
       note(o, r.note);

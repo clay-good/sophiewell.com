@@ -3,6 +3,7 @@
 // later spec-v3 steps and slot into the same renderers map.
 
 import { el, clear } from '../lib/dom.js';
+import { unitField, unitNum, TEMP_UNITS } from '../lib/field-units.js';
 import { loadFile } from '../lib/data.js';
 import { pedsDose, cincinnatiStroke, fast, fieldTriage, startTriage, jumpStartTriage, ruleOfNines, lundBrowder, burnFluid, pediatricEtt, naloxoneDose, selectEmsChecklist, RULE_OF_NINES_ADULT, PEDS_DOSE_RECIPES } from '../lib/field.js';
 import { fetchJson } from '../lib/data.js';
@@ -465,7 +466,7 @@ export const renderers = {
   // spec-v30 §2.1: Swiss hypothermia staging -> rewarming algorithm.
   'hypothermia-rewarm'(root) {
     noticeBlock(root);
-    root.appendChild(field('Core (rectal / esophageal) temperature, C', 'hyp-t', { placeholder: '30' }));
+    root.appendChild(unitField('Core (rectal / esophageal) temperature', 'hyp-t', TEMP_UNITS, { placeholder: '30' }));
     root.appendChild(selectField('Patient state', 'hyp-s', [
       { value: 'alert-shivering', text: 'Alert and shivering (HT I)' },
       { value: 'impaired',        text: 'Impaired consciousness, breathing (HT II)' },
@@ -478,7 +479,7 @@ export const renderers = {
     const run = () => safe(o, () => {
       const kRaw = document.getElementById('hyp-k').value;
       const r = hypothermiaRewarm({
-        coreTempC: nv('hyp-t'),
+        coreTempC: unitNum('hyp-t'),
         state: document.getElementById('hyp-s').value,
         ecprExclusion: checked('hyp-excl'),
         potassium: kRaw === '' ? undefined : Number(kRaw),
@@ -488,7 +489,7 @@ export const renderers = {
       for (const b of r.banners) o.appendChild(el('p', { class: 'muted', text: b }));
       o.appendChild(el('p', { class: 'muted', text: 'Source: Durrer 2003 (ICAR-MEDCOM); ERC 2021 (Lott) §4; Brown NEJM 2012.' }));
     });
-    ['hyp-t', 'hyp-s', 'hyp-excl', 'hyp-k'].forEach((id) => {
+    ['hyp-t', 'hyp-t-unit', 'hyp-s', 'hyp-excl', 'hyp-k'].forEach((id) => {
       const node = document.getElementById(id);
       node.addEventListener('input', run);
       node.addEventListener('change', run);
@@ -499,7 +500,7 @@ export const renderers = {
   // spec-v30 §2.2: heat-illness -> cooling algorithm.
   'heatstroke-decision'(root) {
     noticeBlock(root);
-    root.appendChild(field('Core (rectal) temperature, C', 'hs-t', { placeholder: '40' }));
+    root.appendChild(unitField('Core (rectal) temperature', 'hs-t', TEMP_UNITS, { placeholder: '40' }));
     root.appendChild(selectField('CNS status', 'hs-cns', [
       { value: 'none',            text: 'No CNS dysfunction' },
       { value: 'mild-confusion',  text: 'Mild confusion' },
@@ -513,7 +514,7 @@ export const renderers = {
     const o = out(); root.appendChild(o);
     const run = () => safe(o, () => {
       const r = heatstrokeDecision({
-        coreTempC: nv('hs-t'),
+        coreTempC: unitNum('hs-t'),
         cns: document.getElementById('hs-cns').value,
         sweating: checked('hs-sw'),
         setting: document.getElementById('hs-set').value,
@@ -523,7 +524,7 @@ export const renderers = {
       for (const b of r.banners) o.appendChild(el('p', { class: 'muted', text: b }));
       o.appendChild(el('p', { class: 'muted', text: 'Source: Bouchama 2002 NEJM; WMS 2019 (Lipman) heat-illness practice guideline; Casa 2007.' }));
     });
-    ['hs-t', 'hs-cns', 'hs-sw', 'hs-set'].forEach((id) => {
+    ['hs-t', 'hs-t-unit', 'hs-cns', 'hs-sw', 'hs-set'].forEach((id) => {
       const node = document.getElementById(id);
       node.addEventListener('input', run);
       node.addEventListener('change', run);

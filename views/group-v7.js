@@ -8,7 +8,7 @@ import { el, clear } from '../lib/dom.js';
 import { fmt } from '../lib/num.js';
 import * as V6 from '../lib/clinical-v6.js';
 import { resultRow } from '../lib/result-copy.js';
-import { unitField, unitNum, HEIGHT_UNITS } from '../lib/field-units.js';
+import { unitField, unitNum, HEIGHT_UNITS, WEIGHT_UNITS } from '../lib/field-units.js';
 
 function field(label, id, opts = {}) {
   const wrap = el('p');
@@ -237,7 +237,7 @@ export const renderers = {
 
   // ----- 2.12 acid-base-deficit -------------------------------------------
   'acid-base-deficit'(root) {
-    root.appendChild(field('Weight (kg)', 'abd-wt', { placeholder: 'e.g. 70' }));
+    root.appendChild(unitField('Weight', 'abd-wt', WEIGHT_UNITS, { placeholder: 'e.g. 70' }));
     root.appendChild(selectField('Sex (TBW fraction)', 'abd-sex', [
       { value: 'M', text: 'Male (0.6)' },
       { value: 'F', text: 'Female (0.5)' },
@@ -247,9 +247,9 @@ export const renderers = {
     root.appendChild(field('Measured Na (mEq/L)', 'abd-mna', { placeholder: 'e.g. 120' }));
     root.appendChild(field('Target Na (mEq/L)', 'abd-tna', { placeholder: 'e.g. 135' }));
     const o = out(); root.appendChild(o);
-    wire(['abd-wt', 'abd-sex', 'abd-mhco3', 'abd-thco3', 'abd-mna', 'abd-tna'], () => safe(o, () => {
+    wire(['abd-wt', 'abd-wt-unit', 'abd-sex', 'abd-mhco3', 'abd-thco3', 'abd-mna', 'abd-tna'], () => safe(o, () => {
       const r = V6.acidBaseDeficit({
-        weightKg: val('abd-wt'), sex: str('abd-sex'),
+        weightKg: unitNum('abd-wt'), sex: str('abd-sex'),
         measuredHco3: val('abd-mhco3'), targetHco3: val('abd-thco3'),
         measuredNa: val('abd-mna'), targetNa: val('abd-tna'),
       });

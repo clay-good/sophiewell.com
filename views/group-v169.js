@@ -13,6 +13,7 @@
 // complete-the-fields fallback rather than a number from a bad input.
 
 import { el, clear } from '../lib/dom.js';
+import { unitField, unitNumOpt, WEIGHT_UNITS } from '../lib/field-units.js';
 import * as M from '../lib/peds-percentile-v169.js';
 import { resultRow } from '../lib/result-copy.js';
 
@@ -79,10 +80,10 @@ export const renderers = {
     note(root, 'CDC 2000 weight-for-age (Kuczmarski 2002), ages 2–20 y. Enter the child’s sex, age, and weight; the CDC LMS transform returns the percentile and z-score with the 5th/95th reference flags. Beyond about 10 y the CDC pairs weight with BMI-for-age.');
     root.appendChild(selectField('Sex', 'cw-sex', SEX));
     root.appendChild(field('Age (years)', 'cw-age', { step: '0.1', min: 2, max: 20, placeholder: 'e.g. 8' }));
-    root.appendChild(field('Weight (kg)', 'cw-wt', { step: '0.1', min: 0, placeholder: 'e.g. 25' }));
+    root.appendChild(unitField('Weight', 'cw-wt', WEIGHT_UNITS, { placeholder: 'e.g. 25' }));
     const o = out(); root.appendChild(o);
-    wire(['cw-sex', 'cw-age', 'cw-wt'], () => safe(o, () => {
-      const r = M.cdcWeightForAge({ sex: selVal('cw-sex'), ageYears: optNum('cw-age'), weightKg: optNum('cw-wt') });
+    wire(['cw-sex', 'cw-age', 'cw-wt', 'cw-wt-unit'], () => safe(o, () => {
+      const r = M.cdcWeightForAge({ sex: selVal('cw-sex'), ageYears: optNum('cw-age'), weightKg: unitNumOpt('cw-wt') });
       if (!r.valid) { showInvalid(o, r); return; }
       resultRow(o, [
         { text: r.band, cls: r.abnormal ? 'warn' : null },

@@ -12,7 +12,7 @@ import * as S from '../lib/scoring-v6.js';
 import * as C8 from '../lib/clinical-v8.js';
 import { META } from '../lib/meta.js';
 import { renderDerivation, updateDerivationSteps } from '../lib/derivation.js';
-import { unitField, unitNum, BILIRUBIN_UNITS, LACTATE_UNITS, TEMP_UNITS } from '../lib/field-units.js';
+import { unitField, unitNum, BILIRUBIN_UNITS, LACTATE_UNITS, TEMP_UNITS, WEIGHT_UNITS } from '../lib/field-units.js';
 
 function field(label, id, opts = {}) {
   const wrap = el('p');
@@ -480,7 +480,7 @@ export const renderers = {
   // --- spec-v62 §3 Part B (wave 1): OB/L&D & neonatal tiles -----------------
 
   'neonatal-feeding-volume'(root) {
-    root.appendChild(field('Weight (kg)', 'nfv-w', { placeholder: '3.2' }));
+    root.appendChild(unitField('Weight', 'nfv-w', WEIGHT_UNITS, { placeholder: '3.2' }));
     root.appendChild(field('Target volume (mL/kg/day, term ~150)', 'nfv-mlkg', { placeholder: '150' }));
     root.appendChild(selectField('Feeding frequency', 'nfv-freq', [
       { value: '8', text: 'q3h (8 feeds/day)' },
@@ -490,7 +490,7 @@ export const renderers = {
     const o = out(); root.appendChild(o);
     const run = () => safe(o, () => {
       const r = C8.neonatalFeedingVolume({
-        weightKg: val('nfv-w'),
+        weightKg: unitNum('nfv-w'),
         mlPerKgDay: val('nfv-mlkg'),
         feedsPerDay: Number(document.getElementById('nfv-freq').value),
       });
@@ -500,7 +500,7 @@ export const renderers = {
       ]));
       note(o, 'Term newborn 120-180 mL/kg/day (typ. 150); advance per day of life in preterm infants. AAP Pediatric Nutrition.');
     });
-    ['nfv-w', 'nfv-mlkg', 'nfv-freq'].forEach((id) => {
+    ['nfv-w', 'nfv-w-unit', 'nfv-mlkg', 'nfv-freq'].forEach((id) => {
       const node = document.getElementById(id);
       node.addEventListener('input', run);
       node.addEventListener('change', run);
