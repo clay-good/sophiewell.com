@@ -41,7 +41,10 @@
 - [x] 4.2 Review pass: every new row maps to an existing tile id (guard test), phrases are
       lowercase-normalized, no duplicates across entries. (`test/unit/synonyms-catalog.test.js`
       pins lowercase-uniqueness + marquee routing + non-regression; the pre-existing
-      `synonyms.test.js` already guards tile-id validity/audience/non-empty.)
+      `synonyms.test.js` already guards tile-id validity/audience/non-empty. v9-2026-07-10
+      extended to 68 entries / 254 phrases, adding NL intents the ranker differential
+      surfaced as fragile ties: fall-risk, pressure-injury, kidney-function estimate,
+      steroid/opioid conversion, hyponatremia correction-rate.)
 
 ## 5. Tests & guards
 

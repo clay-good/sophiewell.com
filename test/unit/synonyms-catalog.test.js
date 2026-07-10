@@ -59,6 +59,19 @@ test('synonyms.json: marquee canonical-intent routes resolve', () => {
   assert.equal(route('afib'), 'chads');
 });
 
+// v9 batch: natural-language intents surfaced by the ranker differential that
+// synonyms route deterministically (pass-1) instead of leaving to fragile ties.
+test('synonyms.json: v9 natural-language intents resolve', () => {
+  const tiles = catalogTiles();
+  const { entries } = loadEntries();
+  const route = (q) => resolvePrompt(q, tiles, entries, 'all')?.tileId;
+  assert.equal(route('estimate kidney function'), 'egfr');
+  assert.equal(route('risk of falling'), 'morse-falls');
+  assert.equal(route('pressure injuries'), 'braden');
+  assert.equal(route('convert opioids'), 'opioid-mme');
+  assert.equal(route('sodium correction rate'), 'sodium-correction');
+});
+
 // Routes that already worked before the v8 batch must not regress once the
 // broader synonym set is in play.
 test('synonyms.json: pre-existing good routes do not regress', () => {
