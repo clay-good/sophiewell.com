@@ -1319,6 +1319,21 @@ metastatic branch is intentionally out of scope (routed to imdc-rcc / mskcc-rcc)
 New adapter module registered in `mcp/catalog.js`. Brings the exposed total to
 **1047 calculators across 186 modules**.
 
+## Ninety-seventh wave — rheumatology function & case definition in lib/rheum-fn-v280.js (+2)
+
+`haq-di` and `asas-axspa` (spec-v280) are the two rheumatology function /
+case-definition instruments. The Health Assessment Questionnaire Disability Index
+(HAQ-DI; Fries 1980) averages 8 functional-category scores (each 0-3, with an
+aids/help adjustment) into a 0-3 index, computable once >= 6 of 8 categories are
+answered; its `detail` carries the `2/3` example, so the example round-trips
+through the default `makeToArgs`. The ASAS classification criteria for axial
+spondyloarthritis (Rudwaleit 2009) evaluate the entry gate plus the imaging /
+clinical arms over 11 boolean SpA features; its categorical example (`MEETS the
+ASAS axial-SpA classification`) round-trips through the band text. Because both
+tiles have their own completeness / arm gates, no single field is marked required
+(the lib's own guard fires). New adapter module registered in `mcp/catalog.js`.
+Brings the exposed total to **1049 calculators across 187 modules**.
+
 ## Exposed
 
 Each id below is live in `mcp/catalog.js`. The gate parses this list.
@@ -2715,6 +2730,8 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 - `phoenix-sepsis`
 - `leibovich-rcc`
 - `uiss-rcc`
+- `haq-di`
+- `asas-axspa`
 
 ## Not yet adapted
 

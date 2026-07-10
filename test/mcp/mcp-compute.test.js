@@ -1766,6 +1766,31 @@ test('lib/rcc-prognosis-v279.js worked calls', () => {
   assert.equal(uissLow.tier, 'low');
 });
 
+test('lib/rheum-fn-v280.js worked calls', () => {
+  // 6 of 8 categories answered; dressing 1 with an aid raises it to 2, so the
+  // mean of {2,2,2,2,2,2} = 2.0/3.
+  const haq = ok('haq-di', {
+    'haq-dressing': '1', 'haq-dressing-aid': '1', 'haq-arising': '2', 'haq-eating': '2',
+    'haq-walking': '2', 'haq-hygiene': '2', 'haq-reach': '2',
+  });
+  assert.equal(haq.score, 2);
+  assert.equal(haq.answered, 6);
+  // Fewer than 6 answered categories cannot compute.
+  const short = computeCalculator({ id: 'haq-di', inputs: { 'haq-dressing': '0', 'haq-arising': '0' } });
+  assert.equal(short.valid, false);
+  // ASAS clinical arm: entry + HLA-B27 + 2 other features (IBP, psoriasis) -> meets.
+  const asas = ok('asas-axspa', {
+    'asas-bp': '1', 'asas-age': '1', 'asas-hlaB27': '1', 'asas-ibp': '1', 'asas-psoriasis': '1',
+  });
+  assert.equal(asas.meets, true);
+  // HLA-B27 is the clinical-arm anchor and does not count toward the >= 2 OTHER
+  // features, so HLA-B27 + a single other feature does not meet.
+  const noMeet = ok('asas-axspa', {
+    'asas-bp': '1', 'asas-age': '1', 'asas-hlaB27': '1', 'asas-ibp': '1',
+  });
+  assert.equal(noMeet.meets, false);
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];

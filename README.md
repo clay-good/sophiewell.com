@@ -4207,8 +4207,8 @@ clamped to `[0, 1]`, so the JSON surface never emits a non-finite probability.
 
 ### Coverage is explicit and honest
 
-Adapting the catalog is incremental. Coverage now stands at **1047 clinical
-calculators across 186 `lib` modules** (of 1144 catalog tiles), built module by <!-- catalog-truth:historical (186 is the count of lib modules adapted, not a catalog tile count) -->
+Adapting the catalog is incremental. Coverage now stands at **1049 clinical
+calculators across 187 `lib` modules** (of 1144 catalog tiles), built module by <!-- catalog-truth:historical (187 is the count of lib modules adapted, not a catalog tile count) -->
 module against the one fixed contract:
 
 | wave | modules | tiles |

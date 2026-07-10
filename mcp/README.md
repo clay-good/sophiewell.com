@@ -73,7 +73,7 @@ strings; booleans as `true`/`false`; enums by their listed string values.
 
 ```
 list_calculators { "specialty": "hepatology" }
-  -> { coverage: "1047 of 1109 catalog tiles exposed ...", calculators: [ { id: "meld-xi", ... }, ... ] }
+  -> { coverage: "1049 of 1109 catalog tiles exposed ...", calculators: [ { id: "meld-xi", ... }, ... ] }
 
 describe_calculator { "id": "meld-xi" }
   -> { inputSchema: { ... mx-bili, mx-creat ... }, citation: "Heuman DM ... Liver Transpl 2007", ... }
@@ -275,9 +275,11 @@ surrogate in `lib/metabolic-v269.js`, and a ninety-third the HALP score in
 `lib/inflam-v267.js`, and a ninety-fourth the Advanced Lung Cancer Inflammation
 Index in `lib/inflam-v268.js`, and a ninety-fifth the Phoenix Sepsis Score in
 `lib/peds-sepsis-v278.js`, and a ninety-sixth the two resected-RCC prognosis
-instruments (Leibovich, UISS) in `lib/rcc-prognosis-v279.js`, for
-1047 across 186 modules
-today. <!-- catalog-truth:historical (186 is the count of lib modules adapted, not a catalog tile count) -->
+instruments (Leibovich, UISS) in `lib/rcc-prognosis-v279.js`, and a
+ninety-seventh the HAQ-DI and ASAS axial-SpA criteria in `lib/rheum-fn-v280.js`,
+for
+1049 across 187 modules
+today. <!-- catalog-truth:historical (187 is the count of lib modules adapted, not a catalog tile count) -->
 Later waves extend it module by module against the same contract.
 
 ## Design
