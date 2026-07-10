@@ -1364,6 +1364,17 @@ calculators across 189 modules** — opening MCP exposure of the SESSION-32
 subspecialty-depth program (spec-v258 onward), whose pure-compute tiles a prior
 audit had missed.
 
+## One-hundredth wave — pneumonia severity / drug-resistance risk in lib/pneumonia-risk-v260.js (+3)
+
+`a-drop`, `drip-score`, and `shorr` (spec-v260) are three pneumonia risk scores.
+A-DROP (JRS CAP severity) is a 0-5 criteria count; DRIP scores drug-resistant-
+pathogen risk (>= 4 = high); the Shorr score predicts MRSA pneumonia (> 30%
+prevalence = high). All three are all-boolean weighted counts whose `band`
+carries the example total (`3 of 5`, `DRIP 4`, `Shorr 6`), so each example round-
+trips through the default `makeToArgs` / `toBool`. No field is individually
+required. New adapter module registered in `mcp/catalog.js`. Brings the exposed
+total to **1057 calculators across 190 modules**.
+
 ## Exposed
 
 Each id below is live in `mcp/catalog.js`. The gate parses this list.
@@ -2767,6 +2778,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 - `canadian-ct-head`
 - `sf-syncope`
 - `mcisaac`
+- `a-drop`
+- `drip-score`
+- `shorr`
 
 ## Not yet adapted
 

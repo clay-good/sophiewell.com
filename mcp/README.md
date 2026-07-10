@@ -73,7 +73,7 @@ strings; booleans as `true`/`false`; enums by their listed string values.
 
 ```
 list_calculators { "specialty": "hepatology" }
-  -> { coverage: "1054 of 1109 catalog tiles exposed ...", calculators: [ { id: "meld-xi", ... }, ... ] }
+  -> { coverage: "1057 of 1109 catalog tiles exposed ...", calculators: [ { id: "meld-xi", ... }, ... ] }
 
 describe_calculator { "id": "meld-xi" }
   -> { inputSchema: { ... mx-bili, mx-creat ... }, citation: "Heuman DM ... Liver Transpl 2007", ... }
@@ -280,9 +280,10 @@ ninety-seventh the HAQ-DI and ASAS axial-SpA criteria in `lib/rheum-fn-v280.js`,
 and a ninety-eighth the GALAD score and Toronto HCC Risk Index in
 `lib/hcc-surveillance-v281.js`, and a ninety-ninth three acute / primary-care
 decision rules (Canadian CT Head, SF Syncope, McIsaac) in
-`lib/decision-rules-v258.js`, for
-1054 across 189 modules
-today. <!-- catalog-truth:historical (189 is the count of lib modules adapted, not a catalog tile count) -->
+`lib/decision-rules-v258.js`, and a one-hundredth three pneumonia risk scores
+(A-DROP, DRIP, Shorr) in `lib/pneumonia-risk-v260.js`, for
+1057 across 190 modules
+today. <!-- catalog-truth:historical (190 is the count of lib modules adapted, not a catalog tile count) -->
 Later waves extend it module by module against the same contract.
 
 ## Design

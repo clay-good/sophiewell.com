@@ -1833,6 +1833,20 @@ test('lib/decision-rules-v258.js worked calls', () => {
   assert.equal(noAge.valid, false);
 });
 
+test('lib/pneumonia-risk-v260.js worked calls', () => {
+  // A-DROP: 3 of 5 criteria -> score 3, severe.
+  const ad = ok('a-drop', { 'ad-age': '1', 'ad-dehyd': '1', 'ad-orient': '1' });
+  assert.equal(ad.score, 3);
+  assert.equal(ad.abnormal, true);
+  // DRIP: antibiotics (+?) + tube feeding sum to the high-risk 4.
+  const drip = ok('drip-score', { 'dr-abx': '1', 'dr-tube': '1' });
+  assert.equal(drip.score, 4);
+  // Shorr: hospitalization (+2) + ICU (+2) + dementia (+1) + CVD (+1) = 6, high.
+  const shorr = ok('shorr', { 'sh-hosp': '1', 'sh-icu': '1', 'sh-dementia': '1', 'sh-cvd': '1' });
+  assert.equal(shorr.score, 6);
+  assert.equal(shorr.abnormal, true);
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];
