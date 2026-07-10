@@ -1,6 +1,18 @@
 # spec-v279.md — Resected renal-cell-carcinoma prognosis: the Leibovich score and the UCLA Integrated Staging System (+2 tiles)
 
-> Status: **PROPOSED (2026-07-10, docs-only).** Second feature spec of the **Advanced
+> Status: **BUILT (2026-07-10).** `leibovich-rcc` and `uiss-rcc` are live (catalog
+> 1138 → 1140). Two spec-v97 resolutions applied at implementation: **(1) Leibovich pN cell** —
+> the regional-node term is **pN1/pN2 = 2**, settled by range-consistency (only pN = 2 yields
+> the universally documented 0-11 maximum: 4+2+1+3+1 = 11; the pN = 1 secondary renders cap at
+> 10 and are self-contradictory) and corroborated by the SORCE external validation (J Clin
+> Oncol. 2022). **(2) UISS metastatic branch parked** — a clean ≥ 2-source reproduction of the
+> exact node-positive/metastatic TNM/grade/ECOG cells could not be obtained, so only the
+> corroborated **localized (N0M0)** branch shipped (low/intermediate/high with 5-year OS
+> ~92%/67%/44%, verified against the Patard 2004 validation); the tile routes node-positive /
+> metastatic disease to imdc-rcc / mskcc-rcc, per [spec-v97](spec-v97.md) and the spec-v266 §7
+> precedent (parked, not approximated).
+>
+> Superseded status line — Second feature spec of the **Advanced
 > Prognostic & Classification Instruments** program ([spec-v278](spec-v278.md) §1.1).
 > Proposes **2** deterministic instruments a urologic-oncology team reaches for after
 > nephrectomy — how likely is this clear-cell tumor to recur, and which integrated risk tier

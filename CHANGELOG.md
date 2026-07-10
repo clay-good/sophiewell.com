@@ -6,6 +6,27 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v279 — Resected-RCC prognosis: Leibovich score + UISS, 1138 → 1140)
+
+- Two group-G renal-cell-carcinoma prognostic tiles, joining the SSIGN / IMDC / MSKCC RCC
+  models. New shared module `lib/rcc-prognosis-v279.js`, renderer `views/group-v279.js` (RV279).
+  Both verified absent (spec-v85 §6.2); each reports a recurrence risk or a risk tier — no
+  treatment, surveillance, or adjuvant-therapy order (spec-v11 §5.3). Re-opens the spec-v266
+  deferral now that a second independent open source corroborates the models.
+  - **Leibovich progression score (`leibovich-rcc`)** — the 2003 clear-cell-RCC recurrence model
+    that stratifies patients for adjuvant trials. Five additive factors (pT stage, regional
+    nodes, tumor size, Fuhrman grade, coagulative necrosis), total 0-11; bands low 0-2 /
+    intermediate 3-5 / high ≥ 6 with 5-year metastasis-free survival ~97% / 74% / 31%. The
+    regional-node cell (pN1/pN2 = 2) was resolved by range-consistency (only pN = 2 yields the
+    documented 0-11 maximum; the pN = 1 secondary renders cap at 10 and are self-contradictory)
+    and corroborated by the SORCE external validation (J Clin Oncol. 2022). Class A.
+  - **UCLA Integrated Staging System (`uiss-rcc`)** — the localized (N0M0) branch, integrating
+    1997 TNM stage, Fuhrman grade, and ECOG performance status into low / intermediate / high
+    tiers with 5-year overall survival ~92% / 67% / 44% (Zisman 2001/2002; Patard 2004 validation).
+    The node-positive / metastatic branch is out of scope (parked, not approximated, per spec-v97
+    and spec-v279 §7, since its exact cells could not be cross-verified against two open sources);
+    the tile routes that disease to the metastatic-RCC models (IMDC, MSKCC). Class A.
+
 ### Added (spec-v278 — Phoenix Sepsis Score (pediatric), 1137 → 1138)
 
 - The Phoenix Sepsis Score (`phoenix-sepsis`), the sole tile of spec-v278 and the first of the
