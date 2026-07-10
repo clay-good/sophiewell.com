@@ -496,6 +496,15 @@ body {
 }
 .hero-search-result .hsr-name { font-weight: 600; font-size: 0.98rem; }
 .hero-search-result .hsr-group { font-size: 0.78rem; color: var(--text-muted); }
+.hero-search-result .hsr-compute {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--accent, var(--text-primary));
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 100%;
+}
 .hero-search-result:hover,
 .hero-search-result.is-active { background: var(--bg-tertiary); }
 .hero-search-empty {

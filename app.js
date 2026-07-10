@@ -210,10 +210,11 @@ import {
   isRememberEnabled, setRememberEnabled, saveInputs, applySavedInputs, hasPersistableInputs,
 } from './lib/input-persist.js';
 import { installKeyboard } from './lib/keyboard.js';
-import { parseHash, patchHash } from './lib/hash.js';
+import { parseHash, patchHash, buildHash } from './lib/hash.js';
 import { loadSynonyms } from './lib/synonyms.js';
 import { resolvePrompt } from './lib/prompt.js';
 import { corpusDesc } from './lib/search-corpus.js';
+import { queryCompute } from './lib/query-compute.js';
 // The patient-artifact dropzone UI (spec-v7 sec 3.1) was removed when
 // Sophie pivoted to a clinical-staff-first wedge. The orphaned
 // artifact-detect / artifact-route / artifact-handoff helpers were
@@ -3201,6 +3202,10 @@ function bindHeroSearch() {
 
   let activeIndex = -1;
   let currentMatches = [];
+  // answer-shaped-results: the inline compute for the current query (or null).
+  // When set, its tile leads the list, its option shows the computed value, and
+  // selecting it routes with the parsed inputs prefilled.
+  let inlineCompute = null;
   const ALL = UTILITIES.slice().sort((a, b) => a.name.localeCompare(b.name));
 
   function setExpanded(open) {
@@ -3225,17 +3230,23 @@ function bindHeroSearch() {
 
   function navigateTo(util) {
     if (!util) return;
+    // For the inline-compute tile, route with the parsed inputs prefilled via
+    // the existing q= hash-state; otherwise a bare tile hash as before.
+    const targetHash = (inlineCompute && util.id === inlineCompute.tile)
+      ? buildHash({ route: util.id, state: inlineCompute.inputs })
+      : '#' + util.id;
     input.value = '';
     currentMatches = [];
+    inlineCompute = null;
     clear(list);
     setExpanded(false);
     setActive(-1);
     input.blur();
-    if (location.hash === '#' + util.id) {
+    if (location.hash === targetHash) {
       currentRouteId = null;
       route();
     } else {
-      location.hash = '#' + util.id;
+      location.hash = targetHash;
     }
   }
 
@@ -3243,6 +3254,11 @@ function bindHeroSearch() {
   // returns the ranked top matches.
   function matchesFor(query) {
     const q = query.trim();
+    // answer-shaped-results: parse an unambiguous numeric query ("bmi 180 lb
+    // 5'10", "map 120/80") once per render; a complete parse promotes its tile
+    // to the front so its answer leads. Ambiguous/partial parses return null and
+    // routing is unchanged.
+    inlineCompute = q ? queryCompute(q) : null;
     if (!q) return ALL;
     const ranked = searchUtilities(q, 12);
     // spec-v7 §3.2: searchUtilities ranks on name/id only and is blind to the
@@ -3254,11 +3270,18 @@ function bindHeroSearch() {
     // right tool. resolvePrompt returns null below its threshold, so a
     // non-matching query simply falls back to the name/id ranking.
     const r = resolvePrompt(q, tileCorpus(), SYNONYM_ENTRIES, audienceHint());
+    let list = ranked;
     if (r && r.tileId && UTIL_BY_ID) {
       const u = UTIL_BY_ID.get(r.tileId);
-      if (u) return [u, ...ranked.filter((x) => x.id !== u.id)].slice(0, 12);
+      if (u) list = [u, ...ranked.filter((x) => x.id !== u.id)].slice(0, 12);
     }
-    return ranked;
+    // The inline-compute tile leads (injected if the ranker did not surface it).
+    if (inlineCompute && UTIL_BY_ID) {
+      const cu = UTIL_BY_ID.get(inlineCompute.tile);
+      if (cu) list = [cu, ...list.filter((x) => x.id !== cu.id)].slice(0, 12);
+      else inlineCompute = null; // compute tile not in the catalog; drop it
+    }
+    return list;
   }
 
   function render(query) {
@@ -3271,16 +3294,23 @@ function bindHeroSearch() {
       return;
     }
     currentMatches.forEach((util, i) => {
+      const isCompute = inlineCompute && util.id === inlineCompute.tile;
+      const children = [
+        el('span', { class: 'hsr-name', text: util.name }),
+        el('span', { class: 'hsr-group', text: GROUP_LABELS[util.group] || util.group }),
+      ];
+      // answer-shaped-results: show the computed value on the inline-compute
+      // tile's option; selecting it opens the tile with the inputs prefilled.
+      if (isCompute) {
+        children.push(el('span', { class: 'hsr-compute', text: `= ${inlineCompute.label} ${inlineCompute.text}` }));
+      }
       const item = el('li', {
-        class: 'hero-search-result',
+        class: isCompute ? 'hero-search-result is-compute' : 'hero-search-result',
         role: 'option',
         id: `hero-search-result-${i}`,
         'data-tool': util.id,
         'aria-selected': 'false',
-      }, [
-        el('span', { class: 'hsr-name', text: util.name }),
-        el('span', { class: 'hsr-group', text: GROUP_LABELS[util.group] || util.group }),
-      ]);
+      }, children);
       // mousedown so the route fires before the input-blur close handler.
       item.addEventListener('mousedown', (e) => { e.preventDefault(); navigateTo(util); });
       item.addEventListener('mouseenter', () => setActive(i));

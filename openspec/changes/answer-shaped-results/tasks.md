@@ -24,10 +24,14 @@
 - [x] 3.2 Implement number+unit parsing incl. feet-inches (`5'10`, `5 ft 10 in`, smart
       apostrophe), explicit-unit weights (lb/kg), heights (in/cm/m), and BP pairs (`120/80`);
       any missing/ambiguous field returns null (never guesses). 8 unit tests (task 5.1).
-- [ ] 3.3 Render the inline result row (value + canonical unit + tool name) as option 0 above
-      the card/list when a template fires (Design D5).
-- [ ] 3.4 Route Enter/click on the inline row to the tile with `q=` prefill via the existing
-      hash-state serialization; partial parses prefill without an inline value (Design D6).
+- [x] 3.3 Render the inline result: rather than a separate option 0 (which would restructure
+      the combobox keyboard model + ARIA), the compute tile is promoted to the front and its
+      existing listbox option shows the value (`.hsr-compute`), so the a11y contract is
+      untouched by construction (Design D5, adapted).
+- [x] 3.4 Enter/click on the inline-compute option routes to the tile with `q=` prefill via
+      `buildHash` (existing hash-state serialization); the tile recomputes the same value
+      (Design D6). e2e round-trip verified: "bmi 180 lb 5'10" -> #bmi&q=w=81.65;h=1.778 ->
+      "BMI: 25.8 kg/m^2 (Overweight)".
 
 ## 4. Zero-result recovery
 

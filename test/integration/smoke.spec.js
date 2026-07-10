@@ -74,6 +74,22 @@ test('home: hero-search matches corpus prose (band-text term routes to chads)', 
   await expect(first, 'a band-text query should resolve to #chads').toHaveAttribute('data-tool', 'chads', { timeout: 5000 });
 });
 
+// answer-shaped-results: an unambiguous numeric query shows the computed value
+// inline on the target tile's option, and Enter opens the tile with the parsed
+// inputs prefilled -- the tile itself renders the same value (round-trip).
+test('home: hero-search inline compute (bmi 180 lb 5\'10) shows value and prefills', async ({ page }) => {
+  await page.goto('/');
+  await page.waitForSelector('#hero-search');
+  await page.fill('#hero-search', "bmi 180 lb 5'10");
+  const first = page.locator('#hero-search-results .hero-search-result').first();
+  await expect(first).toHaveAttribute('data-tool', 'bmi', { timeout: 5000 });
+  await expect(first.locator('.hsr-compute')).toContainText('25.8');
+  await page.keyboard.press('Enter');
+  await expect(page).toHaveURL(/#bmi&q=/);
+  // the BMI tile, prefilled from the parsed inputs, renders the same value.
+  await expect(page.locator('body')).toContainText('25.8', { timeout: 5000 });
+});
+
 // spec-v29 wave 29-2: tiles in Groups A (code-reference lookups), C/L
 // (patient-literacy / form-locator), I (field-medicine reference cards),
 // K/O (lab-range / wallet-card reference), and the single-class clinical
