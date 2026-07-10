@@ -55,6 +55,10 @@ test('home: hero-search resolves patient phrasing via the synonym table', async 
     const first = page.locator('#hero-search-results .hero-search-result').first();
     await expect(first, `"${query}" should resolve to #${expectedId}`).toHaveAttribute('data-tool', expectedId, { timeout: 5000 });
   }
+  // answer-shaped-results: a synonym-routed top hit explains itself.
+  await page.fill('#hero-search', 'they denied it');
+  const top = page.locator('#hero-search-results .hero-search-result').first();
+  await expect(top.locator('.hsr-why')).toContainText('they denied it', { timeout: 5000 });
 });
 
 // plain-language-search: once the search corpus loads, hero search matches a

@@ -3206,6 +3206,10 @@ function bindHeroSearch() {
   // When set, its tile leads the list, its option shows the computed value, and
   // selecting it routes with the parsed inputs prefilled.
   let inlineCompute = null;
+  // answer-shaped-results: when the top hit came from the curated synonym table,
+  // its option shows a "matched: '<phrase>'" breadcrumb so a non-obvious
+  // patient-phrasing route ("they denied it" -> appeal-letter) explains itself.
+  let answerHit = null;
   const ALL = UTILITIES.slice().sort((a, b) => a.name.localeCompare(b.name));
 
   function setExpanded(open) {
@@ -3238,6 +3242,7 @@ function bindHeroSearch() {
     input.value = '';
     currentMatches = [];
     inlineCompute = null;
+    answerHit = null;
     clear(list);
     setExpanded(false);
     setActive(-1);
@@ -3270,6 +3275,9 @@ function bindHeroSearch() {
     // right tool. resolvePrompt returns null below its threshold, so a
     // non-matching query simply falls back to the name/id ranking.
     const r = resolvePrompt(q, tileCorpus(), SYNONYM_ENTRIES, audienceHint());
+    answerHit = (r && r.tileId && r.why === 'synonym' && r.phrase)
+      ? { tileId: r.tileId, phrase: r.phrase }
+      : null;
     let list = ranked;
     if (r && r.tileId && UTIL_BY_ID) {
       const u = UTIL_BY_ID.get(r.tileId);
@@ -3303,6 +3311,10 @@ function bindHeroSearch() {
       // tile's option; selecting it opens the tile with the inputs prefilled.
       if (isCompute) {
         children.push(el('span', { class: 'hsr-compute', text: `= ${inlineCompute.label} ${inlineCompute.text}` }));
+      }
+      // answer-shaped-results: explain a non-obvious synonym-routed top hit.
+      if (answerHit && util.id === answerHit.tileId) {
+        children.push(el('span', { class: 'hsr-why', text: `matched: "${answerHit.phrase}"` }));
       }
       const item = el('li', {
         class: isCompute ? 'hero-search-result is-compute' : 'hero-search-result',
