@@ -125,3 +125,17 @@ test('queryCompute: corrected sodium reports both correction factors', () => {
   assert.deepEqual(r.inputs, { na: 130, g: 600 });
   assert.equal(queryCompute('corrected sodium na 130'), null, 'glucose missing');
 });
+
+test('queryCompute: Cockcroft-Gault creatinine clearance (age + weight + scr + sex)', () => {
+  const r = queryCompute('creatinine clearance age 60 weight 80 kg creatinine 1.0 male');
+  assert.equal(r.tile, 'cockcroft-gault');
+  assert.equal(r.value, 88.89);                        // ((140-60)*80)/(72*1.0)
+  assert.deepEqual(r.inputs, { age: 60, w: 80, scr: 1, sex: 'M' });
+  // lb weight + female (x0.85) path.
+  const f = queryCompute('crcl age 60 176 lb cr 1.0 female');
+  assert.equal(f.inputs.sex, 'F');
+  assert.ok(f.value < 88.89, 'female factor lowers CrCl');
+  // every field required.
+  assert.equal(queryCompute('crcl age 60 weight 80 kg cr 1.0'), null, 'sex missing');
+  assert.equal(queryCompute('crcl weight 80 kg cr 1.0 male'), null, 'age missing');
+});
