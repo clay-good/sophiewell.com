@@ -173,3 +173,47 @@ test('rankTiles: a specialty match alone stays below the surfacing threshold', (
   // "nephrology" matches only the specialty token (+1) < threshold (3) -> no route.
   assert.equal(rankTiles('nephrology', tiles, 'all'), null);
 });
+
+// --- resolvePromptRanked (plain-language-search task 3.5) ------------------
+// The ranked, top-N variant. resolvePrompt is its head; these pin the list
+// contract the answer-card / MCP find_calculator surfaces build on.
+import { resolvePromptRanked } from '../../lib/prompt.js';
+
+test('resolvePromptRanked: head equals resolvePrompt across varied queries', () => {
+  for (const q of ['egfr', 'framingham', 'bmi calculator', 'my medical bill', 'zzz', '']) {
+    const single = resolvePrompt(q, TILES, SYNONYMS, 'all');
+    const ranked = resolvePromptRanked(q, TILES, SYNONYMS, 'all');
+    assert.equal(ranked[0]?.tileId ?? null, single?.tileId ?? null, `head mismatch for "${q}"`);
+  }
+});
+
+test('resolvePromptRanked: returns synonym hit first, then ranker results', () => {
+  const r = resolvePromptRanked('bmi', TILES, SYNONYMS, 'all', 5);
+  assert.ok(r.length >= 1);
+  assert.equal(r[0].tileId, 'bmi');
+});
+
+test('resolvePromptRanked: results are score-ordered, distinct, and capped by limit', () => {
+  const r = resolvePromptRanked('code', TILES, SYNONYMS, 'billers', 3);
+  assert.ok(r.length <= 3);
+  const ids = r.map((x) => x.tileId);
+  assert.equal(new Set(ids).size, ids.length, 'no duplicate tiles');
+  for (let i = 1; i < r.length; i += 1) {
+    if (typeof r[i].score === 'number' && typeof r[i - 1].score === 'number') {
+      assert.ok(r[i - 1].score >= r[i].score, 'scores are non-increasing');
+    }
+  }
+});
+
+test('resolvePromptRanked: a synonym tile is not duplicated by the ranker', () => {
+  // "egfr" hits the egfr synonym AND the egfr name token; it must appear once.
+  const r = resolvePromptRanked('egfr', TILES, [{ tile: 'egfr', phrases: ['egfr'] }], 'all');
+  const egfrHits = r.filter((x) => x.tileId === 'egfr');
+  assert.equal(egfrHits.length, 1);
+  assert.equal(egfrHits[0].why, 'synonym');
+});
+
+test('resolvePromptRanked: empty query and empty tiles return []', () => {
+  assert.deepEqual(resolvePromptRanked('', TILES, SYNONYMS, 'all'), []);
+  assert.deepEqual(resolvePromptRanked('bmi', [], [], 'all'), []);
+});

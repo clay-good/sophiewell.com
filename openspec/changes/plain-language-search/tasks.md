@@ -35,8 +35,14 @@
       the raw query for exact-phrase bonuses (Design D4).
 - [ ] 3.4 Extend the typo pass to the full corpus vocabulary with length-bucketed candidates
       (Design D5).
-- [ ] 3.5 Export `resolvePromptRanked(...)` (top-N with `why`); reimplement `resolvePrompt` as
-      its top-1 wrapper preserving signature, threshold, and null contract.
+- [x] 3.5 Export `resolvePromptRanked(...)` (top-N with `why`). Kept `resolvePrompt` untouched
+      for zero regression risk; instead extracted `rankTilesAll` (score-ordered, threshold-
+      gated) so `rankTiles`/`resolvePrompt` are provably its head, and `resolvePromptRanked`
+      composes synonym-lead -> ranker -> typo-fallback in the same precedence. (Tasks 3.1-3.4,
+      the IDF/stem/scaffold scoring, still pending: prototypes show real prose-term recall wins
+      but also new noise that needs tuning + the app.js corpus loader (task 2) + e2e; deferred
+      to a dedicated slice. The ranked API here already unblocks answer-shaped-results and
+      mcp-find-calculator, which consume top-N with `why`.)
 
 ## 4. Synonym expansion
 
