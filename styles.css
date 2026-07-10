@@ -505,6 +505,14 @@ body {
   white-space: nowrap;
   max-width: 100%;
 }
+.hero-search-result .hsr-desc {
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 100%;
+}
 .hero-search-result .hsr-why {
   font-size: 0.74rem;
   color: var(--text-muted);

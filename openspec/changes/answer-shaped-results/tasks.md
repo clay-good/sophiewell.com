@@ -4,8 +4,11 @@
 
 - [ ] 1.1 Add the confidence gate (threshold + margin over runner-up, Design D1) reading the
       ranked resolver API from `plain-language-search`; constants exported via `_testing`.
-- [ ] 1.2 Render the card as option 0 in `bindHeroSearch`'s `render()`: name, one-liner
-      (corpus `whatThisIs` → adapter summary → none, Design D2), "matched: …" breadcrumb.
+- [x] 1.2 The top hit's option becomes an answer card: name (already shown), a plain-language
+      one-liner (`corpusOneLiner`: corpus `what` -> first sentence of adapter summary -> none,
+      Design D2), and a "matched: ..." breadcrumb -- scoped to synonym-routed hits where the
+      query->tile link is non-obvious. Kept as an augmented listbox option (not a distinct
+      option 0) so the combobox a11y contract is untouched. e2e: "kidney function" -> egfr card.
 - [ ] 1.3 Style the card in `styles.css`; two-line cap with ellipsis; 320px no-overflow.
 
 ## 2. Related-tools chips

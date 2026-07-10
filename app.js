@@ -213,7 +213,7 @@ import { installKeyboard } from './lib/keyboard.js';
 import { parseHash, patchHash, buildHash } from './lib/hash.js';
 import { loadSynonyms } from './lib/synonyms.js';
 import { resolvePrompt } from './lib/prompt.js';
-import { corpusDesc } from './lib/search-corpus.js';
+import { corpusDesc, corpusOneLiner } from './lib/search-corpus.js';
 import { queryCompute } from './lib/query-compute.js';
 // The patient-artifact dropzone UI (spec-v7 sec 3.1) was removed when
 // Sophie pivoted to a clinical-staff-first wedge. The orphaned
@@ -3312,8 +3312,12 @@ function bindHeroSearch() {
       if (isCompute) {
         children.push(el('span', { class: 'hsr-compute', text: `= ${inlineCompute.label} ${inlineCompute.text}` }));
       }
-      // answer-shaped-results: explain a non-obvious synonym-routed top hit.
+      // answer-shaped-results: on a non-obvious synonym-routed top hit, add a
+      // plain-language one-liner (from the search corpus) and the "matched: …"
+      // breadcrumb, turning the top row into a compact answer card.
       if (answerHit && util.id === answerHit.tileId) {
+        const oneLiner = corpusOneLiner(SEARCH_CORPUS[util.id]);
+        if (oneLiner) children.push(el('span', { class: 'hsr-desc', text: oneLiner }));
         children.push(el('span', { class: 'hsr-why', text: `matched: "${answerHit.phrase}"` }));
       }
       const item = el('li', {

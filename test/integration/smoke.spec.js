@@ -76,6 +76,14 @@ test('home: hero-search matches corpus prose (band-text term routes to chads)', 
   await page.fill('#hero-search', 'antithrombotic therapy not recommended');
   const first = page.locator('#hero-search-results .hero-search-result').first();
   await expect(first, 'a band-text query should resolve to #chads').toHaveAttribute('data-tool', 'chads', { timeout: 5000 });
+
+  // answer-shaped-results: a synonym-routed hit becomes an answer card once the
+  // corpus is loaded -- name + a plain-language one-liner + the breadcrumb.
+  await page.fill('#hero-search', 'kidney function');
+  const egfr = page.locator('#hero-search-results .hero-search-result').first();
+  await expect(egfr).toHaveAttribute('data-tool', 'egfr', { timeout: 5000 });
+  await expect(egfr.locator('.hsr-desc')).not.toBeEmpty();
+  await expect(egfr.locator('.hsr-why')).toContainText('kidney function');
 });
 
 // answer-shaped-results: an unambiguous numeric query shows the computed value
