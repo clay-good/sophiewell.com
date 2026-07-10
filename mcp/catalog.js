@@ -201,6 +201,7 @@ import adiposityV270 from './adapters/adiposity-v270.js';
 import metabolicV269 from './adapters/metabolic-v269.js';
 import inflamV267 from './adapters/inflam-v267.js';
 import inflamV268 from './adapters/inflam-v268.js';
+import pedsSepsisV278 from './adapters/peds-sepsis-v278.js';
 
 const ADAPTER_MODULES = [
   ['tox-v86', toxV86],
@@ -387,6 +388,7 @@ const ADAPTER_MODULES = [
   ['metabolic-v269', metabolicV269],
   ['inflam-v267', inflamV267],
   ['inflam-v268', inflamV268],
+  ['peds-sepsis-v278', pedsSepsisV278],
 ];
 
 const HERE = dirname(fileURLToPath(import.meta.url));

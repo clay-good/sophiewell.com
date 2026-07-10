@@ -1289,6 +1289,21 @@ round-trips through the default `makeToArgs`. New adapter module registered in
 modules** — completing the exposure of the SESSION-33 composite-index / lab-ratio
 program (spec-v267 through spec-v277).
 
+## Ninety-fifth wave — the Phoenix Sepsis Score in lib/peds-sepsis-v278.js (+1)
+
+`phoenix-sepsis` (spec-v278) is the 2024 SCCM/JAMA international-consensus
+organ-dysfunction score that now DEFINES pediatric sepsis: four organ systems —
+respiratory (0-3), cardiovascular (0-6), coagulation (0-2), neurologic (0-2) —
+sum to a 0-13 total. In a child with suspected/confirmed infection, total >= 2 =
+sepsis and a cardiovascular sub-score >= 1 = septic shock. The compute takes the
+worst value per system through `lib/num.js`; age is the only required input and
+every organ-system value is optional (a blank field is "not measured" and scores
+no points). Its `band` carries the `Phoenix Sepsis Score 8/13` example result, so
+the example round-trips through the default `makeToArgs`. New adapter module
+registered in `mcp/catalog.js`. Brings the exposed total to **1045 calculators
+across 185 modules** — opening MCP exposure of the SESSION-36 advanced prognostic
+/ classification program (spec-v278 through spec-v281).
+
 ## Exposed
 
 Each id below is live in `mcp/catalog.js`. The gate parses this list.
@@ -2682,6 +2697,7 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 - `mets-ir`
 - `halp-score`
 - `ali-index`
+- `phoenix-sepsis`
 
 ## Not yet adapted
 

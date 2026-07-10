@@ -1724,6 +1724,27 @@ test('lib/inflam-v268.js worked calls', () => {
   assert.ok(worse.score < ali.score);
 });
 
+test('lib/peds-sepsis-v278.js worked calls', () => {
+  // 2yo (24 mo), PaO2/FiO2 150 on IMV (resp 2); 1 vasoactive + lactate 6 + MAP 30
+  // in the 24-<60 mo band (cardio 4); platelets 80 (coag 1); GCS 10 (neuro 1) -> 8/13.
+  const phx = ok('phoenix-sepsis', {
+    'phx-age': '24', 'phx-ratiotype': 'pf', 'phx-ratio': '150', 'phx-support': 'imv',
+    'phx-vaso': '1', 'phx-lactate': '6', 'phx-map': '30', 'phx-plt': '80', 'phx-gcs': '10',
+  });
+  assert.equal(phx.score, 8);
+  assert.equal(phx.resp, 2);
+  assert.equal(phx.cardio, 4);
+  assert.equal(phx.sepsis, true);
+  assert.equal(phx.shock, true);
+  // A well child with no organ dysfunction sits below the sepsis threshold.
+  const well = ok('phoenix-sepsis', {
+    'phx-age': '36', 'phx-support': 'none', 'phx-vaso': '0', 'phx-lactate': '1',
+    'phx-map': '70', 'phx-plt': '250', 'phx-gcs': '15',
+  });
+  assert.equal(well.score, 0);
+  assert.equal(well.sepsis, false);
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];
