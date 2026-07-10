@@ -6,6 +6,15 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Changed (spec-v287 — full-vocabulary typo repair in search)
+
+- A misspelled clinical term now recovers even when the tile has no synonym entry: the typo
+  pass rewrites one unknown token against the full tile vocabulary and lets the repaired
+  reading lead only when it clearly beats the literal one ("bradan scale" → Braden,
+  "corected calcium" → Corrected Calcium; see [docs/spec-v287.md](docs/spec-v287.md)).
+  A margin gate keeps valid rare words from being "repaired" away. Deterministic as always;
+  the golden set grew 68 → 75 probes, all green.
+
 ### Changed (spec-v286 — question-scaffold stripping + plural fold in search)
 
 - The hero search (and MCP `find_calculator`) now strips question scaffolding ("what is the",

@@ -264,3 +264,47 @@ test('exact-phrase bonus still uses the raw query (scaffold words included)', ()
   // Raw phrase "what if analysis" appears verbatim in the first tile's name.
   assert.equal(resolvePrompt('what if analysis', tiles, [], 'all')?.tileId, 'wia');
 });
+
+// --- D5 full-vocabulary typo repair (plain-language-search 3.4) -------------
+
+// Pass-2's rankWithRepair rewrites one unknown token against the tile
+// vocabulary (length-bucketed, one edit), and the repaired reading may lead
+// only when it beats the literal reading by a name-token margin.
+
+test('typo repair: a misspelled name token recovers via the tile vocabulary', () => {
+  const tiles = [
+    { id: 'braden', name: 'Braden Scale (Pressure Injury Risk)', audiences: [], desc: 'Pressure injury risk.' },
+    { id: 'abbey', name: 'Abbey Pain Scale', audiences: [], desc: 'Pain in dementia.' },
+  ];
+  // "bradan" is not a synonym-table word; only the tile vocabulary can fix it.
+  const r = resolvePrompt('bradan scale', tiles, [], 'all');
+  assert.equal(r?.tileId, 'braden');
+  assert.equal(r?.why, 'token-edit-distance');
+});
+
+test('typo repair margin: a rewrite gaining only common-token evidence never displaces the literal top', () => {
+  const tiles = [
+    { id: 'rsbi', name: 'RSBI Index', audiences: [], desc: 'vent weaning readiness' },
+    { id: 'map', name: 'Mean Arterial Pressure', audiences: [], desc: '' },
+  ];
+  // "wean" is a valid clinical word this vocabulary happens to lack; its
+  // one-edit neighbor "mean" would score 3 (name token) - not 3 above the
+  // literal reading - so the literal rsbi hit must keep the lead.
+  const r = resolvePrompt('rsbi wean', tiles, [], 'all');
+  assert.equal(r?.tileId, 'rsbi');
+  assert.equal(r?.why, 'name-token-match');
+});
+
+test('typo repair skipped entirely when the literal reading is exact-phrase strong', () => {
+  const { rankWithRepair, rankTilesAll } = _testing;
+  const tiles = [
+    { id: 'bmi', name: 'BMI Calculator', audiences: [], desc: '' },
+    { id: 'bmp', name: 'BMP Panel', audiences: [], desc: '' },
+  ];
+  // Literal top scores >= 10 (phrase-in-name); the repaired view must be
+  // byte-identical to the unrepaired ranking.
+  assert.deepEqual(
+    rankWithRepair('bmi calculator', tiles, 'all'),
+    rankTilesAll('bmi calculator', tiles, 'all'),
+  );
+});

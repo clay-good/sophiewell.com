@@ -1,4 +1,4 @@
-// Search-relevance golden set. Runs 68 realistic clinical queries through the
+// Search-relevance golden set. Runs 75 realistic clinical queries through the
 // real find_calculator surface (shared resolvePromptRanked + data/synonyms.json
 // + data/search-corpus over the exposed registry) and asserts an acceptable
 // tile ranks in the top 3. This pins the routing quality spec-v282 shipped:
@@ -19,7 +19,12 @@
 //     so "atrial fibrillation" routes it to chads over hasbled;
 //   - derivational forms don't fold ("when should i transfuse for anemia"
 //     misses transfusion-threshold: transfuse vs transfusion). Only bare
-//     plurals fold today -- the ing/ion pairs showed order-dependent noise.
+//     plurals fold today -- the ing/ion pairs showed order-dependent noise;
+//   - a typo repair that only TIES the literal reading is rejected by the
+//     +3 margin gate ("heprin drip" stays on the drip tiles: heparin-nomogram
+//     ties at 4), and a repair can't rescue a rank when the literal reading
+//     is already strong ("wels criteria pe" sits rank 4). Both need
+//     term-weighted (IDF) scoring to know "heparin" outweighs "drip".
 
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
@@ -102,6 +107,16 @@ const PROBES = [
   ['how much maintenance fluid for a child', ['maint-fluids']],
   ['what is the target tidal volume on the vent', ['pbw-ardsnet']],
   ['how do i stage this pressure injury', ['npiap-staging', 'braden', 'braden-q']],
+  // typo probes (unlocked by the D5 tile-vocabulary repair, task 3.4): one
+  // misspelled clinical term must recover even when the tile has no synonym
+  // entry, without displacing strong literal readings.
+  ['glascow coma scale', ['gcs']],
+  ['bradan scale', ['braden', 'braden-q']],
+  ['cockroft gault', ['cockcroft-gault', 'egfr-suite']],
+  ['anion gapp', ['anion-gap']],
+  ['corected calcium', ['corrected-calcium', 'corrected-ca-na']],
+  ['morse fals', ['morse-falls']],
+  ['apgarr', ['apgar']],
 ];
 
 test(`every golden probe routes an acceptable tile into the top ${TOP_N}`, () => {

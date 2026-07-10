@@ -43,8 +43,13 @@
       QUERY_STOPWORDS constant, ranking-view-only strip with all-scaffold fallback; raw query
       keeps the exact-phrase bonuses. Gated by the spec-v285 golden set (extended 59 -> 68
       probes, all top-3).
-- [ ] 3.4 Extend the typo pass to the full corpus vocabulary with length-bucketed candidates
-      (Design D5).
+- [x] 3.4 Full-vocabulary typo pass shipped 2026-07-10 (spec-v287): `tokenEditFallback`
+      rewrites one unknown token against the length-bucketed tile vocabulary (±1 length,
+      3-attempt cap, WeakMap session memo), and `rankWithRepair` lets the repaired reading
+      lead only when it beats the literal reading by a name-token (+3) margin — the safety
+      valve the flat rubric needs until IDF lands (a "wean"→"mean" corruption only gains
+      common-token points and is rejected). Golden set 68 → 75 probes; the tie case
+      ("heprin drip") is recorded as an IDF acceptance probe.
 - [x] 3.5 Export `resolvePromptRanked(...)` (top-N with `why`). Kept `resolvePrompt` untouched
       for zero regression risk; instead extracted `rankTilesAll` (score-ordered, threshold-
       gated) so `rankTiles`/`resolvePrompt` are provably its head, and `resolvePromptRanked`
