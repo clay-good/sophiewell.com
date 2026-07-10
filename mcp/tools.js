@@ -27,6 +27,33 @@ function loadSynonymEntries() {
   return synonymsCache;
 }
 
+// The committed search corpus (scripts/build-search-corpus.mjs) carries per-tile
+// natural-language prose -- adapter summaries, interpretation-band text, example
+// sentences -- so a query term that appears in a tile's summary or bands but not
+// its name still routes. Load it once, lazily; if absent, find_calculator ranks
+// on names + specialties alone (same accelerator-not-dependency contract as the
+// synonym table).
+let corpusCache;
+function loadCorpus() {
+  if (corpusCache !== undefined) return corpusCache;
+  try {
+    const path = fileURLToPath(new URL('../data/search-corpus/corpus.json', import.meta.url));
+    corpusCache = JSON.parse(readFileSync(path, 'utf8'));
+  } catch {
+    corpusCache = {};
+  }
+  return corpusCache;
+}
+
+// Flatten a corpus row's prose fields into the ranker's `desc` channel (scored
+// below name/specialty weight), so summary / band / example terms are matchable.
+function corpusDesc(row) {
+  if (!row) return '';
+  return [row.summary, Array.isArray(row.bands) ? row.bands.join(' ') : '', row.what, row.when, row.expected]
+    .filter(Boolean)
+    .join(' ');
+}
+
 // spec-v59 output-safety on the JSON surface: a result must serialize with no
 // NaN / Infinity. Returns the dotted path of the first non-finite number, or
 // null if clean.
@@ -161,11 +188,13 @@ export function findCalculator(args = {}) {
 
   // Rank over the exposed calculators, optionally prefiltered by group /
   // specialty (the prefilters compose with the query). Sort by id so ranker
-  // ties resolve deterministically.
+  // ties resolve deterministically. Each tile's `desc` carries the corpus prose
+  // so summary / band terms are matchable, not just the name.
+  const corpus = loadCorpus();
   const tiles = allCalculators()
     .filter((e) => (!group || e.group === group) && (!specialty || e.specialties.includes(specialty)))
     .sort((a, b) => a.id.localeCompare(b.id))
-    .map((e) => ({ id: e.id, name: e.name, group: e.group, specialties: e.specialties, desc: '' }));
+    .map((e) => ({ id: e.id, name: e.name, group: e.group, specialties: e.specialties, desc: corpusDesc(corpus[e.id]) }));
 
   const ranked = resolvePromptRanked(q, tiles, loadSynonymEntries(), 'all', limit);
   const candidates = ranked.map((r) => {

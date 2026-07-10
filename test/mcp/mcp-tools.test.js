@@ -123,6 +123,17 @@ test('find_calculator: group / specialty prefilters compose with the query', () 
   assert.ok(hep.candidates.every((c) => c.specialties.includes('hepatology')));
 });
 
+test('find_calculator: corpus prose lets a band-text term route (recall the name misses)', () => {
+  // "antithrombotic therapy" appears in CHA2DS2-VASc's interpretation bands, not
+  // its name -- name-only ranking misses it; the corpus desc channel recovers it.
+  const r = findCalculator({ query: 'antithrombotic therapy not recommended' });
+  assert.ok(r.count > 0, 'a prose-term query surfaces candidates');
+  assert.equal(r.candidates[0].id, 'chads');
+  // And the marquee synonym/name routes are unchanged by the enrichment.
+  assert.equal(findCalculator({ query: 'stroke risk afib' }).candidates[0].id, 'chads');
+  assert.equal(findCalculator({ query: 'creatinine clearance' }).candidates[0].id, 'egfr');
+});
+
 test('find_calculator: blank query is a structured error; no match is a structured miss', () => {
   const blank = findCalculator({ query: '   ' });
   assert.equal(blank.valid, false);
