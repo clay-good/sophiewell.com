@@ -83,6 +83,6 @@
       not apply to `data/search-corpus/` (it is a committed build output — decide and document
       whether it is committed or dist-only at build time; default: dist-only, like the SEO
       pages).
-- [ ] 6.2 Author the `docs/spec-v*.md` successor to spec-v8 recording the routing upgrade;
-      fold this change's requirements in.
+- [x] 6.2 `docs/spec-v282.md` records the routing upgrade (successor to spec-v8), folding the
+      corpus + ranked-API + synonym + enrichment deltas in.
 - [ ] 6.3 Catalog count unchanged; CHANGELOG entry.

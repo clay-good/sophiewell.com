@@ -58,5 +58,5 @@
 
 - [ ] 6.1 `npm run lint`, `npm test`, `npm run build` green (em-dash guard applies to app.js /
       styles.css strings).
-- [ ] 6.2 Author the `docs/spec-v*.md` record; fold requirements in; CHANGELOG entry.
+- [x] 6.2 `docs/spec-v282.md` records the answer card + inline compute; CHANGELOG entry added.
 - [ ] 6.3 Catalog count unchanged; no new routes; no MCP/dist-data impact beyond app shell.

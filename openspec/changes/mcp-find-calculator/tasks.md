@@ -26,9 +26,7 @@
 - [x] 3.2 Leave `list_calculators`/`describe_calculator`/`compute_calculator` byte-untouched
       (Design D4).
 - [x] 3.3 Update `mcp/README.md` (tool table, usage example) and `docs/mcp-coverage.md`.
-- [ ] 3.4 Author the `docs/spec-v*.md` successor to spec-v183 §2.2 recording the four-tool
-      surface (Design D5). DEFERRED to a docs slice; CHANGELOG + mcp-coverage.md + README carry
-      the four-tool record for now.
+- [x] 3.4 `docs/spec-v282.md` records the four-tool surface (successor to spec-v183 §2.2).
 
 ## 4. Tests
 

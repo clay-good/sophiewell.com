@@ -6,6 +6,20 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v282 — plain-language search: corpus, ranked API, find_calculator, answer cards)
+
+- Records and closes the shipped portions of the `plain-language-search`,
+  `mcp-find-calculator`, and `answer-shaped-results` programs (see
+  [docs/spec-v282.md](docs/spec-v282.md)). Presentation + discovery only — no compute, no
+  `lib/meta.js` value, and no catalog tile added or changed. Highlights: a deterministic
+  per-tile search corpus (`data/search-corpus/`) that enriches both the browser prompt bar
+  and the MCP server; the synonym table expanded 9 → 73 entries; a `resolvePromptRanked`
+  top-N API; a fourth read-only MCP `find_calculator` discovery tool; and answer-shaped
+  hero results — a "matched:" breadcrumb + one-liner for synonym hits and an inline compute
+  (BMI, BSA, MAP, anion gap, corrected calcium/sodium, CrCl, ideal body weight) that opens
+  the tile prefilled. Deferred: the IDF/BM25-lite ranker + postings index, related-tools
+  chips. No AI anywhere.
+
 ### Added (mcp-discovery — a fourth, ranked `find_calculator` MCP tool)
 
 - The MCP server's discovery affordance was a single substring test in
