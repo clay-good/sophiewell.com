@@ -1847,6 +1847,22 @@ test('lib/pneumonia-risk-v260.js worked calls', () => {
   assert.equal(shorr.abnormal, true);
 });
 
+test('lib/acute-abdomen-v261.js worked calls', () => {
+  // RIPASA: 5 symptom/sign criteria + the defaulted demographic bands reach 7.5.
+  const rp = ok('ripasa', {
+    'rp-rifpain': '1', 'rp-anorexia': '1', 'rp-nausea': '1', 'rp-riftender': '1', 'rp-rebound': '1',
+  });
+  assert.equal(rp.score, 7.5);
+  // PULP: age (+3) + shock (+1) + creatinine (+2) + ASA 3 (+3) = 9.
+  const pu = ok('pulp', { 'pu-age': '1', 'pu-shock': '1', 'pu-creat': '1', 'pu-asa': '3' });
+  assert.equal(pu.score, 9);
+  // ESS: age (+2) + cancer (+3) + vent (+3) + creatinine (+2) + albumin (+1) + WBC high (+2) = 13.
+  const es = ok('emergency-surgery-score', {
+    'es-age': '1', 'es-cancer': '1', 'es-vent': '1', 'es-creat': '1', 'es-alb': '1', 'es-wbc': 'high',
+  });
+  assert.equal(es.score, 13);
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];

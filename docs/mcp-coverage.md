@@ -1375,6 +1375,18 @@ trips through the default `makeToArgs` / `toBool`. No field is individually
 required. New adapter module registered in `mcp/catalog.js`. Brings the exposed
 total to **1057 calculators across 190 modules**.
 
+## One-hundred-first wave — acute-abdomen / emergency-surgery risk in lib/acute-abdomen-v261.js (+3)
+
+`ripasa`, `pulp`, and `emergency-surgery-score` (spec-v261) are three acute-
+abdomen / emergency-surgery risk scores. RIPASA is a weighted 0-16 appendicitis
+probability (>= 7.5 cutoff); PULP is a 0-18 perforated-peptic-ulcer mortality
+score; ESS is a 0-29 emergency-general-surgery 30-day-mortality predictor. Each
+mixes boolean criteria with a few enum bands (demographics / ASA / WBC / transfer)
+that default in the compute when omitted, so the examples (`RIPASA 7.5`, `PULP 9`,
+`ESS 13`) round-trip through the default `makeToArgs`; no field is individually
+required. New adapter module registered in `mcp/catalog.js`. Brings the exposed
+total to **1060 calculators across 191 modules**.
+
 ## Exposed
 
 Each id below is live in `mcp/catalog.js`. The gate parses this list.
@@ -2781,6 +2793,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 - `a-drop`
 - `drip-score`
 - `shorr`
+- `ripasa`
+- `pulp`
+- `emergency-surgery-score`
 
 ## Not yet adapted
 
