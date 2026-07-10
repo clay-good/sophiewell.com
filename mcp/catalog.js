@@ -202,6 +202,7 @@ import metabolicV269 from './adapters/metabolic-v269.js';
 import inflamV267 from './adapters/inflam-v267.js';
 import inflamV268 from './adapters/inflam-v268.js';
 import pedsSepsisV278 from './adapters/peds-sepsis-v278.js';
+import rccPrognosisV279 from './adapters/rcc-prognosis-v279.js';
 
 const ADAPTER_MODULES = [
   ['tox-v86', toxV86],
@@ -389,6 +390,7 @@ const ADAPTER_MODULES = [
   ['inflam-v267', inflamV267],
   ['inflam-v268', inflamV268],
   ['peds-sepsis-v278', pedsSepsisV278],
+  ['rcc-prognosis-v279', rccPrognosisV279],
 ];
 
 const HERE = dirname(fileURLToPath(import.meta.url));

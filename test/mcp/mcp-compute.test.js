@@ -1745,6 +1745,27 @@ test('lib/peds-sepsis-v278.js worked calls', () => {
   assert.equal(well.sepsis, false);
 });
 
+test('lib/rcc-prognosis-v279.js worked calls', () => {
+  // pT3-pT4 (+4) + pN0 (0) + <10 cm (0) + grade 4 (+3) + necrosis (+1) = 8/11, high risk.
+  const leib = ok('leibovich-rcc', {
+    'leib-pt': 'pt3-4', 'leib-n': 'n0', 'leib-size': 'lt10', 'leib-grade': 'g4', 'leib-necrosis': '1',
+  });
+  assert.equal(leib.score, 8);
+  assert.equal(leib.band, 'high');
+  // A small, low-grade, node-negative tumor with no necrosis is the low-risk floor.
+  const low = ok('leibovich-rcc', {
+    'leib-pt': 'pt1a', 'leib-n': 'n0', 'leib-size': 'lt10', 'leib-grade': 'g1-2',
+  });
+  assert.equal(low.score, 0);
+  assert.equal(low.band, 'low');
+  // UISS localized: T4 -> high tier regardless of grade/ECOG.
+  const uiss = ok('uiss-rcc', { 'uiss-t': 't4', 'uiss-grade': '2', 'uiss-ecog': 'ecog0' });
+  assert.equal(uiss.tier, 'high');
+  // T1 / grade 1-2 / ECOG 0 is the low tier.
+  const uissLow = ok('uiss-rcc', { 'uiss-t': 't1', 'uiss-grade': '1', 'uiss-ecog': 'ecog0' });
+  assert.equal(uissLow.tier, 'low');
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];

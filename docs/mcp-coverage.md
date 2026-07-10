@@ -1304,6 +1304,21 @@ registered in `mcp/catalog.js`. Brings the exposed total to **1045 calculators
 across 185 modules** — opening MCP exposure of the SESSION-36 advanced prognostic
 / classification program (spec-v278 through spec-v281).
 
+## Ninety-sixth wave — resected-RCC prognosis in lib/rcc-prognosis-v279.js (+2)
+
+`leibovich-rcc` and `uiss-rcc` (spec-v279) are the two surgically-resected renal-
+cell-carcinoma prognosis instruments. The Leibovich progression score
+(Leibovich 2003, clear-cell RCC) sums five pathology factors to an additive
+0-11 recurrence-risk total (low 0-2 / intermediate 3-5 / high >= 6); its `detail`
+carries the `8/11` example result, so the example round-trips through the default
+`makeToArgs`. The UCLA Integrated Staging System (UISS; Zisman 2001/2002, Patard
+2004 validation) maps 1997 TNM stage + Fuhrman grade + ECOG into low /
+intermediate / high tiers for LOCALIZED (N0M0) disease only — its categorical
+example (`high risk`) round-trips through the band text, and the node-positive /
+metastatic branch is intentionally out of scope (routed to imdc-rcc / mskcc-rcc).
+New adapter module registered in `mcp/catalog.js`. Brings the exposed total to
+**1047 calculators across 186 modules**.
+
 ## Exposed
 
 Each id below is live in `mcp/catalog.js`. The gate parses this list.
@@ -2698,6 +2713,8 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 - `halp-score`
 - `ali-index`
 - `phoenix-sepsis`
+- `leibovich-rcc`
+- `uiss-rcc`
 
 ## Not yet adapted
 
