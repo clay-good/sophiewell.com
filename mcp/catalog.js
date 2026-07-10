@@ -210,6 +210,7 @@ import pneumoniaRiskV260 from './adapters/pneumonia-risk-v260.js';
 import acuteAbdomenV261 from './adapters/acute-abdomen-v261.js';
 import pediatricAcuteV262 from './adapters/pediatric-acute-v262.js';
 import respiratoryMaternalV263 from './adapters/respiratory-maternal-v263.js';
+import massiveTransfusionV265 from './adapters/massive-transfusion-v265.js';
 
 const ADAPTER_MODULES = [
   ['tox-v86', toxV86],
@@ -405,6 +406,7 @@ const ADAPTER_MODULES = [
   ['acute-abdomen-v261', acuteAbdomenV261],
   ['pediatric-acute-v262', pediatricAcuteV262],
   ['respiratory-maternal-v263', respiratoryMaternalV263],
+  ['massive-transfusion-v265', massiveTransfusionV265],
 ];
 
 const HERE = dirname(fileURLToPath(import.meta.url));

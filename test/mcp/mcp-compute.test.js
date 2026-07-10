@@ -1893,6 +1893,17 @@ test('lib/respiratory-maternal-v263.js worked calls', () => {
   assert.equal(sos.abnormal, true);
 });
 
+test('lib/massive-transfusion-v265.js worked calls', () => {
+  // ABC: penetrating + SBP <= 90 = 2 -> predicts massive transfusion.
+  const abc = ok('abc-transfusion-score', { 'abc-pen': '1', 'abc-sbp': '1' });
+  assert.equal(abc.score, 2);
+  assert.equal(abc.abnormal, true);
+  // A single criterion is below the >= 2 threshold.
+  const one = ok('abc-transfusion-score', { 'abc-pen': '1' });
+  assert.equal(one.score, 1);
+  assert.equal(one.abnormal, false);
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];

@@ -73,7 +73,7 @@ strings; booleans as `true`/`false`; enums by their listed string values.
 
 ```
 list_calculators { "specialty": "hepatology" }
-  -> { coverage: "1066 of 1109 catalog tiles exposed ...", calculators: [ { id: "meld-xi", ... }, ... ] }
+  -> { coverage: "1067 of 1109 catalog tiles exposed ...", calculators: [ { id: "meld-xi", ... }, ... ] }
 
 describe_calculator { "id": "meld-xi" }
   -> { inputSchema: { ... mx-bili, mx-creat ... }, citation: "Heuman DM ... Liver Transpl 2007", ... }
@@ -286,9 +286,10 @@ three acute-abdomen / emergency-surgery scores (RIPASA, PULP, ESS) in
 `lib/acute-abdomen-v261.js`, and a one-hundred-second three pediatric acute-care
 scores (Lab-score, CHALICE, Egami) in `lib/pediatric-acute-v262.js`, and a
 one-hundred-third three respiratory / maternal acute scores (MuLBSTA, Ottawa
-COPD, SOS) in `lib/respiratory-maternal-v263.js`, for
-1066 across 193 modules
-today. <!-- catalog-truth:historical (193 is the count of lib modules adapted, not a catalog tile count) -->
+COPD, SOS) in `lib/respiratory-maternal-v263.js`, and a one-hundred-fourth the
+ABC massive-transfusion score in `lib/massive-transfusion-v265.js`, for
+1067 across 194 modules
+today. <!-- catalog-truth:historical (194 is the count of lib modules adapted, not a catalog tile count) -->
 Later waves extend it module by module against the same contract.
 
 ## Design

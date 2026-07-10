@@ -1413,6 +1413,16 @@ physiologic band enums that default to `normal` when omitted. Each example
 `mcp/catalog.js`. Brings the exposed total to **1066 calculators across 193
 modules**.
 
+## One-hundred-fourth wave — the ABC massive-transfusion score in lib/massive-transfusion-v265.js (+1)
+
+`abc-transfusion-score` (spec-v265) is the Assessment of Blood Consumption score:
+a 0-4 boolean count (penetrating mechanism, SBP <= 90, HR >= 120, positive FAST)
+where a total >= 2 predicts massive transfusion in trauma. Its `band` carries the
+`ABC 2 of 4` example, so it round-trips through the default `makeToArgs` / `toBool`;
+no field is individually required. New adapter module registered in
+`mcp/catalog.js`. Brings the exposed total to **1067 calculators across 194
+modules**.
+
 ## Exposed
 
 Each id below is live in `mcp/catalog.js`. The gate parses this list.
@@ -2828,6 +2838,7 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 - `mulbsta`
 - `ottawa-copd`
 - `sepsis-obstetrics-score`
+- `abc-transfusion-score`
 
 ## Not yet adapted
 
