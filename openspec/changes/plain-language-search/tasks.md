@@ -34,11 +34,14 @@
 
 ## 4. Synonym expansion
 
-- [ ] 4.1 Author the expanded `data/synonyms.json` batch: clinical abbreviations, eponym
+- [x] 4.1 Author the expanded `data/synonyms.json` batch: clinical abbreviations, eponym
       aliases, canonical-intent phrases (incl. "stroke risk in afib" → `chads`,
-      "afib"/"a fib" → atrial-fibrillation tiles). Bump `version`.
-- [ ] 4.2 Review pass: every new row maps to an existing tile id (guard test), phrases are
-      lowercase-normalized, no duplicates across entries.
+      "afib"/"a fib" → atrial-fibrillation tiles). Bump `version`. (v8-2026-07-10: 9 → 57
+      entries / 207 phrases; both afib marquee misroutes fixed.)
+- [x] 4.2 Review pass: every new row maps to an existing tile id (guard test), phrases are
+      lowercase-normalized, no duplicates across entries. (`test/unit/synonyms-catalog.test.js`
+      pins lowercase-uniqueness + marquee routing + non-regression; the pre-existing
+      `synonyms.test.js` already guards tile-id validity/audience/non-empty.)
 
 ## 5. Tests & guards
 
