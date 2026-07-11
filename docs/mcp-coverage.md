@@ -1502,6 +1502,22 @@ round-trip both pass, without the phantom "2". Adapter appended to the existing
 rate to a target PaCO2. Brings the exposed total to **1072 calculators across 197
 modules**.
 
+## One-hundred-thirteenth wave — bidirectional vasopressor dose/rate math (+1)
+
+`vasopressor` converts between an infusion dose and pump rate. Its
+`vasopressorRateMlHr` / `vasopressorDose` computes already existed
+(medication-v4.js) and the drug->units map is the shipped vasopressor shard. It
+was deferred for the per-kg/per-min unit ambiguity — resolved by reading each
+drug's units from the shard (vasopressin's units/min treated as mcg/min for the
+math, as the renderer does) and requiring a weight only for mcg/kg/min drugs.
+**En route, corrected a genuine inconsistency in the tile's shipped META.example:
+it labeled a 0.1 mcg/kg/min x 70 kg = 6.56 mL/hr scenario as "Norepinephrine",
+but norepinephrine is dosed in mcg/min in the shard — the mcg/kg/min math is
+dopamine's, so the drug is now `dopamine` and vp-drug is set explicitly.** The
+tile is added to the e2e example-correctness allowlist (its "70 kg" is an
+input-only fact the output never echoes, and the drug select is async-populated).
+Brings the exposed total to **1076 calculators across 197 modules**.
+
 ## One-hundred-twelfth wave — single-medication opioid MME (+1)
 
 `opioid-mme` computes CDC 2022 morphine-milligram-equivalents. Its `mmeTotal`
@@ -2871,6 +2887,7 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 - `tpn-macro`
 - `beers-check`
 - `opioid-mme`
+- `vasopressor`
 
 ### lib/medication-v5.js
 - `heparin-nomogram`

@@ -1939,6 +1939,18 @@ test('lib/clinical-v8.js minute-ventilation worked calls', () => {
   assert.equal(noTarget.requiredRate, null);
 });
 
+test('lib/medication-v4.js vasopressor worked calls', () => {
+  // Dopamine (mcg/kg/min) 0.1 x 70 kg = 7 ug/min / 64 ug/mL x 60 = 6.5625 mL/hr.
+  const fwd = ok('vasopressor', { 'vp-drug': 'dopamine', 'vp-w': '70', 'vp-conc': '64', 'vp-dose': '0.1' });
+  assert.ok(Math.abs(fwd.rateMlHr - 6.5625) < 1e-6);
+  // Norepinephrine (mcg/min) 10 / 16 ug/mL x 60 = 37.5 mL/hr (no weight needed).
+  const norepi = ok('vasopressor', { 'vp-drug': 'norepinephrine', 'vp-dose': '10', 'vp-conc': '16' });
+  assert.equal(norepi.rateMlHr, 37.5);
+  // Reverse: 37.5 mL/hr back to 10 mcg/min.
+  const rev = ok('vasopressor', { 'vp-drug': 'norepinephrine', 'vp-rate': '37.5', 'vp-conc': '16' });
+  assert.equal(rev.doseFromRate, 10);
+});
+
 test('lib/medication-v4.js opioid-mme worked calls', () => {
   // Morphine (factor 1) 30 mg x 6/day = 180 MME.
   const morphine = ok('opioid-mme', { 'mme-drug': 'morphine', 'mme-mg': '30', 'mme-n': '6' });

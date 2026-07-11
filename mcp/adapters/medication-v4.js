@@ -19,6 +19,8 @@ const STEROID = readJson('steroid-equiv/steroid.json');
 const BENZO = readJson('benzo-equiv/benzo.json');
 const ABX = readJson('abx-renal/abx.json');
 const MME = readJson('mme-factors/mme.json');
+const VASO = readJson('vasopressor-doses/vasopressors.json');
+const VASO_UNITS = new Map(VASO.map((r) => [r.drug, r.units]));
 
 // Only rows with a numeric equivDoseMg are convertible (fludrocortisone carries
 // a text mineralocorticoid note, not a glucocorticoid equivalence).
@@ -107,6 +109,31 @@ export default [
       { dom: 'mme-drug', arg: 'drug', kind: 'enum', values: MME.map((f) => f.drug), required: true, label: 'Opioid' },
       { dom: 'mme-mg', arg: 'mgPerDose', kind: 'number', required: true, label: 'mg per dose' },
       { dom: 'mme-n', arg: 'dosesPerDay', kind: 'number', required: true, label: 'Doses per day' },
+    ],
+  },
+  {
+    id: 'vasopressor',
+    // Bidirectional dose <-> pump-rate conversion (matching the browser tile):
+    // give a dose to get mL/hr, and/or a rate to get the dose back. The drug's
+    // dosing units come from the shipped vasopressor shard; vasopressin's
+    // "units/min" is treated as mcg/min for the rate math, exactly as the
+    // renderer does. mcg/kg/min drugs (dopamine, dobutamine) require a weight
+    // (the compute throws a clear error without one).
+    summary: 'Vasopressor infusion dose <-> pump-rate conversion: mL/hr = (dose in ug/min / concentration in ug/mL) x 60 (a mcg/kg/min dose is first multiplied by weight); the reverse gives the dose from a pump rate. Drug dosing units come from the vasopressor table. A math aid, not an infusion order.',
+    compute: (a) => {
+      const rawUnits = VASO_UNITS.get(a.drug);
+      const units = rawUnits === 'units/min' ? 'mcg/min' : rawUnits;
+      const out = { drug: a.drug, doseUnits: rawUnits, concUgPerMl: a.concUgPerMl, weightKg: a.weightKg ?? null };
+      if (a.dose > 0) { out.dose = a.dose; out.rateMlHr = F.vasopressorRateMlHr({ dose: a.dose, units, weightKg: a.weightKg, concUgPerMl: a.concUgPerMl }); }
+      if (a.rateMlHr > 0) { out.inputRateMlHr = a.rateMlHr; out.doseFromRate = F.vasopressorDose({ rateMlHr: a.rateMlHr, units, weightKg: a.weightKg, concUgPerMl: a.concUgPerMl }); }
+      return out;
+    },
+    fields: [
+      { dom: 'vp-drug', arg: 'drug', kind: 'enum', values: VASO.map((r) => r.drug), required: true, label: 'Vasopressor' },
+      { dom: 'vp-conc', arg: 'concUgPerMl', kind: 'number', required: true, label: 'Bag concentration', unit: 'mcg/mL' },
+      { dom: 'vp-dose', arg: 'dose', kind: 'number', label: 'Dose to convert to a rate (in the drug units: mcg/min, mcg/kg/min, or units/min)' },
+      { dom: 'vp-rate', arg: 'rateMlHr', kind: 'number', label: 'OR a pump rate (mL/hr) to convert back to a dose' },
+      { dom: 'vp-w', arg: 'weightKg', kind: 'number', label: 'Patient weight (required for mcg/kg/min drugs)', unit: 'kg' },
     ],
   },
 ];

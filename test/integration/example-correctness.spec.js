@@ -88,7 +88,10 @@ test('every example payload produces the documented numeric output', async ({ pa
   // unit tests in test/unit/ cover their math.
   const SCENARIO_ONLY = new Set([
     // expected echoes input scenario, tool only renders the result
-    'conc-rate', 'opioid-mme', 'free-water-deficit',
+    // (vasopressor: the "70 kg" weight is an input the output never echoes, and
+    // the drug select is populated async from a data shard the static sweep
+    // can't reliably drive; the mcp round-trip + unit tests cover the math)
+    'conc-rate', 'opioid-mme', 'free-water-deficit', 'vasopressor',
     // expected describes the reference band, not the computed cell
     'rcri',
     // expected includes derivation breakdown the tool doesn't echo
