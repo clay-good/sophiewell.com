@@ -104,3 +104,23 @@ test('synonyms.json: phrases are non-empty strings and entries have an audience'
     for (const p of entry.phrases) assert.ok(typeof p === 'string' && p.trim().length > 0);
   }
 });
+
+test('matchSynonym tier-3: the phrase covering more of a two-intent query wins', () => {
+  const entries = [
+    { phrases: ['atrial fibrillation'], tile: 'chads', audience: 'clinicians' },
+    { phrases: ['anticoagulation bleeding risk'], tile: 'hasbled', audience: 'clinicians' },
+  ];
+  const r = matchSynonym('anticoagulation bleeding risk atrial fibrillation', entries, 'clinicians');
+  assert.equal(r && r.tile, 'hasbled', 'longer coverage dominates the incidental mention');
+});
+
+test('matchSynonym tier-2: the tighter (shorter) containing phrase still wins', () => {
+  // Both phrases CONTAIN the query (tier 2, no exact match); the shorter
+  // phrase fits the typed query more tightly and must keep winning.
+  const entries = [
+    { phrases: ['my hospital bill from the er visit'], tile: 'long', audience: 'patients' },
+    { phrases: ['the hospital bill'], tile: 'short', audience: 'patients' },
+  ];
+  const r = matchSynonym('hospital bill', entries, 'patients');
+  assert.equal(r && r.tile, 'short');
+});

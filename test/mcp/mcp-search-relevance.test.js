@@ -1,4 +1,4 @@
-// Search-relevance golden set. Runs 77 realistic clinical queries through the
+// Search-relevance golden set. Runs 78 realistic clinical queries through the
 // real find_calculator surface (shared resolvePromptRanked + data/synonyms.json
 // + data/search-corpus over the exposed registry) and asserts an acceptable
 // tile ranks in the top 3. This pins the routing quality spec-v282 shipped:
@@ -12,16 +12,12 @@
 //     (e.g. any of the three pancreatitis severity tiles is a correct route);
 //   - keep probes phrased the way a nurse would type them, not tile names.
 //
-// Known limitations (deliberately NOT probed) -- acceptance tests for the
-// remaining deferred ranker work:
-//   - a query naming two intents ("anticoagulation bleeding risk atrial
-//     fibrillation") resolves by the synonym tie-break (shorter phrase wins),
-//     so "atrial fibrillation" routes it to chads over hasbled;
-//   - derivational forms don't fold ("when should i transfuse for anemia"
-//     misses transfusion-threshold: transfuse vs transfusion). Only bare
-//     plurals fold today -- the ing/ion pairs showed order-dependent noise.
-// (The earlier "heprin drip" and "wels criteria pe" limitations were fixed
-// by the sub-point IDF slice and are probed below.)
+// Known limitation (deliberately NOT probed) -- the acceptance test for the
+// remaining deferred ranker work: derivational forms don't fold ("when
+// should i transfuse for anemia" misses transfusion-threshold: transfuse vs
+// transfusion). Only bare plurals fold today -- the ing/ion pairs showed
+// order-dependent noise. (The earlier "heprin drip", "wels criteria pe",
+// and two-intent limitations are fixed and probed below.)
 
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
@@ -120,6 +116,10 @@ const PROBES = [
   // gate) recovers "heprin drip" via the v12 "heparin drip" phrase.
   ['wels criteria pe', ['wells-pe', 'wells-pe-geneva']],
   ['heprin drip', ['heparin-nomogram']],
+  // former recorded limitation, fixed by the tier-3 coverage tie-break:
+  // the phrase covering more of a two-intent query wins, so the bleeding
+  // question dominates the incidental "atrial fibrillation".
+  ['anticoagulation bleeding risk atrial fibrillation', ['hasbled', 'orbit-bleeding']],
 ];
 
 test(`every golden probe routes an acceptable tile into the top ${TOP_N}`, () => {

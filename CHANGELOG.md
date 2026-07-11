@@ -6,6 +6,14 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Changed (spec-v289 — two-intent search queries route on the dominant intent)
+
+- When a search names two things at once ("anticoagulation bleeding risk atrial fibrillation"),
+  the synonym phrase covering more of the query now wins, so the bleeding question routes to
+  HAS-BLED instead of the stroke score the incidental "atrial fibrillation" used to trigger
+  (see [docs/spec-v289.md](docs/spec-v289.md)). Exact and contained-query matches are
+  unchanged. Golden set 77 → 78 probes, all green.
+
 ### Changed (spec-v288 — rarity-aware search: IDF tie-breaks + smarter typo repair)
 
 - Search results that used to tie now order by how informative the matched terms are, and the
