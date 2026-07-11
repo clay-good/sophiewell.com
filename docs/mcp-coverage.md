@@ -1502,6 +1502,18 @@ round-trip both pass, without the phantom "2". Adapter appended to the existing
 rate to a target PaCO2. Brings the exposed total to **1072 calculators across 197
 modules**.
 
+## One-hundred-twelfth wave — single-medication opioid MME (+1)
+
+`opioid-mme` computes CDC 2022 morphine-milligram-equivalents. Its `mmeTotal`
+compute already existed (medication-v4.js), and the CDC conversion factors are the
+shipped `mme-factors/mme.json` shard (read the same single-source way as the
+steroid / benzo / renal-dosing tables in this adapter, never re-typed). The
+browser tile sums a variable number of add/remove rows (an empty-`{}` example,
+e2e-allowlisted); the adapter exposes a single-medication MME (drug enum from the
+shard, mg/dose, doses/day) and the example now carries `morphine 30 mg x 6/day =
+180 MME`. The compute echoes the CDC 50 / 90 MME/day breakpoints. Brings the
+exposed total to **1075 calculators across 197 modules**.
+
 ## One-hundred-eleventh wave — ACS field triage, via a prefix-stripping toArgs (+1)
 
 `field-triage` (ACS 2021 National Field Triage) was deferred as "data-shard
@@ -2858,6 +2870,7 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 - `abx-renal`
 - `tpn-macro`
 - `beers-check`
+- `opioid-mme`
 
 ### lib/medication-v5.js
 - `heparin-nomogram`

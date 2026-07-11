@@ -1939,6 +1939,16 @@ test('lib/clinical-v8.js minute-ventilation worked calls', () => {
   assert.equal(noTarget.requiredRate, null);
 });
 
+test('lib/medication-v4.js opioid-mme worked calls', () => {
+  // Morphine (factor 1) 30 mg x 6/day = 180 MME.
+  const morphine = ok('opioid-mme', { 'mme-drug': 'morphine', 'mme-mg': '30', 'mme-n': '6' });
+  assert.equal(morphine.totalMme, 180);
+  assert.equal(morphine.cdcJustifyThreshold, 90);
+  // Hydromorphone (factor 4) 4 mg x 4/day = 64 MME.
+  const hydromorphone = ok('opioid-mme', { 'mme-drug': 'hydromorphone', 'mme-mg': '4', 'mme-n': '4' });
+  assert.equal(hydromorphone.totalMme, 64);
+});
+
 test('lib/tb-testing.js worked calls', () => {
   // 12 mm at the moderate (10 mm) cutoff is positive.
   const pos = ok('tb-testing', { 'tb-mm': '12', 'tb-risk': '10' });

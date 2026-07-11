@@ -18,6 +18,7 @@ const readJson = (rel) => JSON.parse(readFileSync(join(DATA, rel), 'utf8'));
 const STEROID = readJson('steroid-equiv/steroid.json');
 const BENZO = readJson('benzo-equiv/benzo.json');
 const ABX = readJson('abx-renal/abx.json');
+const MME = readJson('mme-factors/mme.json');
 
 // Only rows with a numeric equivDoseMg are convertible (fludrocortisone carries
 // a text mineralocorticoid note, not a glucocorticoid equivalence).
@@ -89,6 +90,23 @@ export default [
       { dom: 'bc-age', arg: 'ageYears', kind: 'number', required: true, label: 'Age', unit: 'years' },
       ...Object.keys(F.BEERS_PIM).map((k) => ({ dom: `bc-m-${k}`, arg: `med:${k}`, kind: 'bool', required: false, label: F.BEERS_PIM[k].label || k })),
       ...Object.keys(F.BEERS_DISEASE).map((k) => ({ dom: `bc-c-${k}`, arg: `dz:${k}`, kind: 'bool', required: false, label: k })),
+    ],
+  },
+  {
+    id: 'opioid-mme',
+    // Single-medication MME (the browser tile sums multiple rows); the CDC 2022
+    // conversion factors are read from the shipped data shard (single source of
+    // truth). The compute echoes the CDC 50 / 90 MME/day breakpoints so they
+    // appear in the JSON alongside the total.
+    summary: 'CDC 2022 opioid morphine-milligram-equivalents (MME): daily MME = mg per dose x doses per day x the drug conversion factor. Reference only (not a prescription), with the CDC reassess (50 MME/day) and justify-with-documentation (90 MME/day) breakpoints.',
+    compute: (a) => {
+      const r = F.mmeTotal({ rows: [{ drug: a.drug, mgPerDose: a.mgPerDose, dosesPerDay: a.dosesPerDay }], factors: MME });
+      return { ...r, cdcReassessThreshold: 50, cdcJustifyThreshold: 90 };
+    },
+    fields: [
+      { dom: 'mme-drug', arg: 'drug', kind: 'enum', values: MME.map((f) => f.drug), required: true, label: 'Opioid' },
+      { dom: 'mme-mg', arg: 'mgPerDose', kind: 'number', required: true, label: 'mg per dose' },
+      { dom: 'mme-n', arg: 'dosesPerDay', kind: 'number', required: true, label: 'Doses per day' },
     ],
   },
 ];
