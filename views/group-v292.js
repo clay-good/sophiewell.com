@@ -53,6 +53,7 @@ export const renderers = {
       ['orthopedic-surgery', 'Orthopedic surgery'],
       ['cardiovascular-disease', 'Preexisting cardiovascular disease'],
       ['stable-child', 'Stable critically ill child'],
+      ['heme-onc', 'Hematologic / oncologic disorder'],
       ['acute-coronary-syndrome', 'Acute coronary syndrome'],
     ]));
     root.appendChild(check('Active symptomatic anemia (angina, heart failure, hemodynamic instability)', 'tt-sympt'));

@@ -11,9 +11,17 @@ import { transfusionThreshold } from '../../lib/transfusion-v292.js';
 test('each population reports its verified AABB 2023 threshold', () => {
   assert.equal(transfusionThreshold({ hemoglobin: 6, population: 'stable-adult' }).threshold, 7);
   assert.equal(transfusionThreshold({ hemoglobin: 6, population: 'stable-child' }).threshold, 7);
+  assert.equal(transfusionThreshold({ hemoglobin: 6, population: 'heme-onc' }).threshold, 7);
   assert.equal(transfusionThreshold({ hemoglobin: 6, population: 'cardiac-surgery' }).threshold, 7.5);
   assert.equal(transfusionThreshold({ hemoglobin: 6, population: 'orthopedic-surgery' }).threshold, 8);
   assert.equal(transfusionThreshold({ hemoglobin: 6, population: 'cardiovascular-disease' }).threshold, 8);
+});
+
+test('hematologic/oncologic patients use the AABB 2023 conditional 7 g/dL threshold', () => {
+  const r = transfusionThreshold({ hemoglobin: 6.5, population: 'heme-onc' });
+  assert.equal(r.threshold, 7);
+  assert.equal(r.belowThreshold, true);
+  assert.match(r.band, /below the 7 g\/dL AABB restrictive threshold for a hospitalized adult with a hematologic or oncologic disorder/);
 });
 
 test('band flips at the threshold: below vs at or above', () => {
