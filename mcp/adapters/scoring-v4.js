@@ -2106,4 +2106,26 @@ export default [
     },
     fields: Array.from({ length: 10 }, (_, i) => ({ dom: `epds-${i}`, arg: `i${i}`, kind: 'number', label: `EPDS item ${i + 1} (0-3)` })),
   },
+  {
+    id: 'auditc',
+    summary: 'AUDIT-C brief alcohol-use screen (Bush 1998): three items each 0-4 (frequency, typical quantity, binge frequency); total 0-12. A total >= 4 (men) / >= 3 (women) indicates risky drinking; >= 8 is high risk for an alcohol use disorder. A validated screening tool, not a diagnosis.',
+    compute: (a) => {
+      const answers = Array.from({ length: 3 }, (_, i) => Number(a[`i${i}`]) || 0);
+      const score = scoreScreener(F.AUDITC_CONFIG.items, answers);
+      const band = bandFor(F.AUDITC_CONFIG.severityBands, score);
+      return { score, maxScore: 12, severity: band ? band.label : null };
+    },
+    fields: Array.from({ length: 3 }, (_, i) => ({ dom: `auditc-${i}`, arg: `i${i}`, kind: 'number', label: `AUDIT-C item ${i + 1} (0-4)` })),
+  },
+  {
+    id: 'cage',
+    summary: 'CAGE alcohol-use screen (Ewing 1984): four yes/no items (Cut down, Annoyed, Guilty, Eye-opener), each 0 or 1; total 0-4. A total >= 2 raises clinically significant suspicion of an alcohol use disorder. A validated screening tool, not a diagnosis.',
+    compute: (a) => {
+      const answers = Array.from({ length: 4 }, (_, i) => Number(a[`i${i}`]) || 0);
+      const score = scoreScreener(F.CAGE_CONFIG.items, answers);
+      const band = bandFor(F.CAGE_CONFIG.severityBands, score);
+      return { score, maxScore: 4, severity: band ? band.label : null };
+    },
+    fields: Array.from({ length: 4 }, (_, i) => ({ dom: `cage-${i}`, arg: `i${i}`, kind: 'number', label: `CAGE item ${i + 1} (0 or 1)` })),
+  },
 ];

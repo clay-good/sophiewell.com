@@ -111,7 +111,7 @@ test('every example payload produces the documented numeric output', async ({ pa
     // renderScreener's own ids); the numeric sweep sets input.value and can't
     // select radios, so the example is driven through the mcp round-trip and the
     // scoring-v4 screener unit tests instead.
-    'phq9', 'gad7', 'epds',
+    'phq9', 'gad7', 'epds', 'auditc', 'cage',
   ]);
 
   const failures = [];

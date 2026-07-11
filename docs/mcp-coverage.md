@@ -1502,6 +1502,15 @@ round-trip both pass, without the phantom "2". Adapter appended to the existing
 rate to a target PaCO2. Brings the exposed total to **1072 calculators across 197
 modules**.
 
+## One-hundred-eighteenth wave — the AUDIT-C and CAGE alcohol screens (+2)
+
+`auditc` (three items 0-4, total 0-12; >= 4/3 risky) and `cage` (four yes/no
+items 0-1, total 0-4; >= 2 significant) follow the same screener recipe over the
+exported AUDITC_CONFIG / CAGE_CONFIG via `scoreScreener` / `bandFor`; maxScore
+echoed (12 / 4); examples added and allowlisted for the e2e (renderScreener).
+This completes the named screener batch (phq9 / gad7 / epds / auditc / cage).
+Brings the exposed total to **1082 calculators across 198 modules**.
+
 ## One-hundred-seventeenth wave — the EPDS perinatal depression screen (+1)
 
 `epds` (Edinburgh Postnatal Depression Scale) follows the same screener recipe
@@ -2969,6 +2978,8 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 - `phq9`
 - `gad7`
 - `epds`
+- `auditc`
+- `cage`
 
 ### lib/scoring-v5.js
 - `phq2-gad2`

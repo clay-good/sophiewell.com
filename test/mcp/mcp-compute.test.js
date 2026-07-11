@@ -1916,6 +1916,20 @@ test('lib/rcc-prognosis-v266.js worked calls', () => {
   assert.equal(low.score, 0);
 });
 
+test('lib/scoring-v4.js auditc + cage worked calls', () => {
+  // AUDIT-C 2+1+1 = 4 -> positive (risky drinking); max 12.
+  const ac = ok('auditc', { 'auditc-0': '2', 'auditc-1': '1', 'auditc-2': '1' });
+  assert.equal(ac.score, 4);
+  assert.equal(ac.maxScore, 12);
+  assert.match(ac.severity, /Positive/);
+  // CAGE 2 of 4 -> positive; a single yes is negative.
+  const cagePos = ok('cage', { 'cage-0': '1', 'cage-1': '1', 'cage-2': '0', 'cage-3': '0' });
+  assert.equal(cagePos.score, 2);
+  assert.match(cagePos.severity, /Positive/);
+  const cageNeg = ok('cage', { 'cage-0': '1', 'cage-1': '0', 'cage-2': '0', 'cage-3': '0' });
+  assert.equal(cageNeg.severity, 'Negative');
+});
+
 test('lib/scoring-v4.js epds worked calls', () => {
   // Example answers sum to 7 -> low likelihood (max 30).
   const low = ok('epds', { 'epds-0': '1', 'epds-1': '1', 'epds-2': '1', 'epds-3': '1', 'epds-4': '0', 'epds-5': '1', 'epds-6': '1', 'epds-7': '1', 'epds-8': '0', 'epds-9': '0' });
