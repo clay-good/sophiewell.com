@@ -1,4 +1,4 @@
-// Search-relevance golden set. Runs 78 realistic clinical queries through the
+// Search-relevance golden set. Runs 80 realistic clinical queries through the
 // real find_calculator surface (shared resolvePromptRanked + data/synonyms.json
 // + data/search-corpus over the exposed registry) and asserts an acceptable
 // tile ranks in the top 3. This pins the routing quality spec-v282 shipped:
@@ -12,12 +12,14 @@
 //     (e.g. any of the three pancreatitis severity tiles is a correct route);
 //   - keep probes phrased the way a nurse would type them, not tile names.
 //
-// Known limitation (deliberately NOT probed) -- the acceptance test for the
-// remaining deferred ranker work: derivational forms don't fold ("when
-// should i transfuse for anemia" misses transfusion-threshold: transfuse vs
-// transfusion). Only bare plurals fold today -- the ing/ion pairs showed
-// order-dependent noise. (The earlier "heprin drip", "wels criteria pe",
-// and two-intent limitations are fixed and probed below.)
+// No recorded ranking limitations remain: the earlier "heprin drip",
+// "wels criteria pe", two-intent, and derivational-fold gaps are all fixed
+// and probed below (derivational folding is a REVIEWED pair table in
+// lib/prompt.js, not a suffix rule -- extend it only with a probe).
+// Catalog-gap note, NOT a ranking issue: "when should i transfuse for
+// anemia" has no right answer to probe because the catalog has no
+// restrictive-transfusion-threshold (TRICC/AABB) tile -- every transfusion
+// tile is a massive-transfusion score or a peds volume calc.
 
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
@@ -120,6 +122,10 @@ const PROBES = [
   // the phrase covering more of a two-intent query wins, so the bleeding
   // question dominates the incidental "atrial fibrillation".
   ['anticoagulation bleeding risk atrial fibrillation', ['hasbled', 'orbit-bleeding']],
+  // derivational pair folds (reviewed table, spec-v290): the verb form a
+  // nurse types matches the noun-form tile.
+  ['intubate this patient', ['intubation-difficulty-scale', 'macocha', 'wilson-airway']],
+  ['dialyze for toxic alcohol', ['toxic-alcohol']],
 ];
 
 test(`every golden probe routes an acceptable tile into the top ${TOP_N}`, () => {

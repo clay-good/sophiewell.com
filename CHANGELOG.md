@@ -6,6 +6,15 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Changed (spec-v290 — clinical verb forms match their noun-form tiles in search)
+
+- Typing the verb now finds the tool named for the noun: "intubate" reaches the intubation
+  scales, "dialyze" the dialysis tiles, "transfuse" the transfusion scores — via a small,
+  hand-reviewed pair table, not a blanket suffix rule (those proved noisy and stay rejected;
+  see [docs/spec-v290.md](docs/spec-v290.md)). This closes the search-quality program's last
+  recorded gap: the golden set stands at 80 probes, all green, with zero known ranking
+  limitations.
+
 ### Changed (spec-v289 — two-intent search queries route on the dominant intent)
 
 - When a search names two things at once ("anticoagulation bleeding risk atrial fibrillation"),

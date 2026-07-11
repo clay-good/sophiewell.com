@@ -39,11 +39,13 @@
       collisions ("wells" vs "well"). Full field-weighted BM25 rescaling + the token→postings
       index (task 2.2) stay deferred: the flat rubric + bonus now passes all 77 golden probes,
       so a rescale needs new evidence to justify its test-rewrite blast radius.
-- [~] 3.2 Bounded suffix-stemmer (Design D3): the SAFE SUBSET shipped 2026-07-10 (spec-v286) —
-      plural-only fold (`stemToken`, guards for -ss/-us/-is and short tokens) applied
-      identically to corpus and query tokens. The ing/ion derivational pairs stay deferred
-      with 3.1: the prototype showed order-dependent noise (prediction<->predicting), and the
-      golden set records "transfuse vs transfusion" as their acceptance probe.
+- [x] 3.2 Bounded suffix-stemmer (Design D3), shipped in two parts: the plural-only fold
+      (spec-v286: `stemToken`, guards for -ss/-us/-is and short tokens, both sides) and a
+      REVIEWED derivational pair table (spec-v290: `DERIVATIONAL_FOLDS`, clinical verb→noun
+      pairs like transfuse→transfusion). The design's general ing/ion suffix rules are
+      permanently rejected — the prototype's order-dependent noise (prediction<->predicting,
+      staging→stag) is inherent to blind stripping; the pair table extends only with a
+      golden-set probe demonstrating the gap.
 - [x] 3.3 Question-scaffold/stopword stripping shipped 2026-07-10 (spec-v286): reviewed
       QUERY_STOPWORDS constant, ranking-view-only strip with all-scaffold fallback; raw query
       keeps the exact-phrase bonuses. Gated by the spec-v285 golden set (extended 59 -> 68

@@ -351,3 +351,25 @@ test('weak reading: a synonym-edit rescue outranks weak token matches', () => {
   assert.equal(r?.tileId, 'hep');
   assert.equal(r?.why, 'synonym-edit-distance');
 });
+
+// --- Reviewed derivational pair folds (spec-v290) ---------------------------
+
+test('derivational fold: a clinical verb form matches its noun-form tile', () => {
+  const tiles = [
+    { id: 'tt', name: 'Transfusion Threshold', audiences: [], desc: 'restrictive strategy' },
+    { id: 'other', name: 'Anemia Workup', audiences: [], desc: '' },
+  ];
+  const r = resolvePrompt('when should i transfuse', tiles, [], 'all');
+  assert.equal(r?.tileId, 'tt');
+});
+
+test('derivational fold is pair-table only: unlisted -ing forms do not fold', () => {
+  const tiles = [
+    { id: 'stage', name: 'Staging Chart', audiences: [], desc: 'staging' },
+  ];
+  // "staging" is not in the pair table and must not be stripped to "stag"
+  // or "stage"; it matches its own surface form only.
+  const r = _testing.rankTilesAll('staging', tiles, 'all');
+  assert.equal(r[0]?.tileId, 'stage');
+  assert.deepEqual(_testing.rankTilesAll('stag chart', tiles, 'all').map((x) => x.tileId).includes('stage'), true, 'chart token still matches');
+});
