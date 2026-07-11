@@ -1916,6 +1916,16 @@ test('lib/rcc-prognosis-v266.js worked calls', () => {
   assert.equal(low.score, 0);
 });
 
+test('lib/tb-testing.js worked calls', () => {
+  // 12 mm at the moderate (10 mm) cutoff is positive.
+  const pos = ok('tb-testing', { 'tb-mm': '12', 'tb-risk': '10' });
+  assert.equal(pos.positive, true);
+  assert.match(pos.band, /12 mm vs cutoff 10 mm -> POSITIVE/);
+  // The same 12 mm is negative at the low-risk 15 mm cutoff.
+  const neg = ok('tb-testing', { 'tb-mm': '12', 'tb-risk': '15' });
+  assert.equal(neg.positive, false);
+});
+
 test('lib/field.js nexus-cspine worked calls', () => {
   // All five low-risk criteria met -> imaging not required.
   const cleared = ok('nexus-cspine', { 'nx-tender': '1', 'nx-intox': '1', 'nx-alert': '1', 'nx-focal': '1', 'nx-distract': '1' });

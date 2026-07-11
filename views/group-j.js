@@ -9,6 +9,7 @@ import { el, clear } from '../lib/dom.js';
 import { loadFile } from '../lib/data.js';
 import { renderTable } from '../lib/table.js';
 import { renderDecisionTree } from '../lib/tree.js';
+import { tbTstInterpret } from '../lib/tb-testing.js';
 
 function out() { return el('div', { id: 'q-results', 'aria-live': 'polite' }); }
 function num(id) { return Number(document.getElementById(id).value); }
@@ -130,20 +131,26 @@ export const renderers = {
       ]),
     ]));
     const o = out(); root.appendChild(o);
-    loadFile('tb-tst-igra', 'tb.json').then((d) => {
-      if (!root.isConnected) return; // view torn down before fetch resolved
-      const run = () => {
-        clear(o);
-        const mm = num('tb-mm');
-        const cutoff = Number(document.getElementById('tb-risk').value);
-        o.appendChild(el('h2', { text: `TST: ${mm} mm vs cutoff ${cutoff} mm -> ${mm >= cutoff ? 'POSITIVE' : 'Negative'}` }));
+    // The TST interpretation renders synchronously (it needs no data file); the
+    // IGRA reference list appends once tb.json resolves. Final DOM is unchanged.
+    let igra = null;
+    const run = () => {
+      clear(o);
+      const r = tbTstInterpret({ indurationMm: num('tb-mm'), cutoffMm: Number(document.getElementById('tb-risk').value) });
+      o.appendChild(el('h2', { text: r.band }));
+      if (igra) {
         o.appendChild(el('h2', { text: 'IGRA interpretation reference' }));
         const ul = el('ul');
-        for (const r of d.igra) ul.appendChild(el('li', { text: `${r.result}: ${r.interpretation}` }));
+        for (const row of igra) ul.appendChild(el('li', { text: `${row.result}: ${row.interpretation}` }));
         o.appendChild(ul);
-      };
-      document.getElementById('tb-mm').addEventListener('input', run);
-      document.getElementById('tb-risk').addEventListener('change', run);
+      }
+    };
+    document.getElementById('tb-mm').addEventListener('input', run);
+    document.getElementById('tb-risk').addEventListener('change', run);
+    run();
+    loadFile('tb-tst-igra', 'tb.json').then((d) => {
+      if (!root.isConnected) return; // view torn down before fetch resolved
+      igra = d.igra;
       run();
     });
   },

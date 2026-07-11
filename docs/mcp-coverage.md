@@ -1477,6 +1477,18 @@ exposed total to **1070 calculators across 196 modules** — the first of the
 inline-compute deferrals reclaimed by a deliberate lib extraction rather than the
 append-only adapter recipe.
 
+## One-hundred-eighth wave — the TST interpretation extracted to a lib fn (+1)
+
+`tb-testing` (the TST / Mantoux tuberculin-skin-test interpretation) was an
+inline-compute renderer with an async IGRA reference list, so the pure-adapter
+sweep had deferred it. Its per-patient TST interpretation (induration >= the
+risk-stratified 5 / 10 / 15 mm cutoff = positive, CDC/ATS) is now extracted into
+`tbTstInterpret()` in the new `lib/tb-testing.js`, and the group-j renderer
+computes it synchronously (the IGRA data-file list still appends after load, so
+the final DOM is unchanged). New adapter module registered in `mcp/catalog.js`.
+The IGRA reference list is a static dataset lookup and stays view-only. Brings
+the exposed total to **1071 calculators across 197 modules**.
+
 ## Exposed
 
 Each id below is live in `mcp/catalog.js`. The gate parses this list.
@@ -2898,6 +2910,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/transfusion-v292.js
 - `transfusion-threshold`
+
+### lib/tb-testing.js
+- `tb-testing`
 
 ## Not yet adapted
 
