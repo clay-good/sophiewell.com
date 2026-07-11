@@ -1916,6 +1916,21 @@ test('lib/rcc-prognosis-v266.js worked calls', () => {
   assert.equal(low.score, 0);
 });
 
+test('lib/transfusion-v292.js worked calls', () => {
+  // Hgb 6.8 in a stable adult is below the 7 g/dL restrictive threshold.
+  const below = ok('transfusion-threshold', { 'tt-hb': '6.8', 'tt-pop': 'stable-adult' });
+  assert.equal(below.threshold, 7);
+  assert.equal(below.belowThreshold, true);
+  assert.match(below.band, /below the 7 g\/dL AABB restrictive threshold/);
+  // Cardiac surgery carries the verified 7.5 g/dL threshold.
+  const cardiac = ok('transfusion-threshold', { 'tt-hb': '7.2', 'tt-pop': 'cardiac-surgery' });
+  assert.equal(cardiac.threshold, 7.5);
+  // Acute coronary syndrome yields no numeric threshold (never a fabricated number).
+  const acs = ok('transfusion-threshold', { 'tt-hb': '6.5', 'tt-pop': 'acute-coronary-syndrome' });
+  assert.equal(acs.threshold, null);
+  assert.doesNotMatch(acs.band, /\d+(\.\d+)?\s*g\/dL/);
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];

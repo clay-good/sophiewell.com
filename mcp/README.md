@@ -78,7 +78,7 @@ find_calculator { "query": "stroke risk afib" }
        candidates: [ { id: "chads", name: "CHA2DS2-VASc", why: "synonym", ... }, ... ] }
 
 list_calculators { "specialty": "hepatology" }
-  -> { coverage: "1068 of 1109 catalog tiles exposed ...", calculators: [ { id: "meld-xi", ... }, ... ] }
+  -> { coverage: "1069 of 1109 catalog tiles exposed ...", calculators: [ { id: "meld-xi", ... }, ... ] }
 
 describe_calculator { "id": "meld-xi" }
   -> { inputSchema: { ... mx-bili, mx-creat ... }, citation: "Heuman DM ... Liver Transpl 2007", ... }
@@ -293,9 +293,11 @@ scores (Lab-score, CHALICE, Egami) in `lib/pediatric-acute-v262.js`, and a
 one-hundred-third three respiratory / maternal acute scores (MuLBSTA, Ottawa
 COPD, SOS) in `lib/respiratory-maternal-v263.js`, and a one-hundred-fourth the
 ABC massive-transfusion score in `lib/massive-transfusion-v265.js`, and a
-one-hundred-fifth the SSIGN RCC score in `lib/rcc-prognosis-v266.js`, for
-1068 across 195 modules
-today. <!-- catalog-truth:historical (195 is the count of lib modules adapted, not a catalog tile count) -->
+one-hundred-fifth the SSIGN RCC score in `lib/rcc-prognosis-v266.js`, and a
+one-hundred-sixth the AABB restrictive transfusion threshold in
+`lib/transfusion-v292.js`, for
+1069 across 196 modules
+today. <!-- catalog-truth:historical (196 is the count of lib modules adapted, not a catalog tile count) -->
 Later waves extend it module by module against the same contract.
 
 ## Design

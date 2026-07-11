@@ -1,4 +1,4 @@
-// Search-relevance golden set. Runs 85 realistic clinical queries through the
+// Search-relevance golden set. Runs 86 realistic clinical queries through the
 // real find_calculator surface (shared resolvePromptRanked + data/synonyms.json
 // + data/search-corpus over the exposed registry) and asserts an acceptable
 // tile ranks in the top 3. This pins the routing quality spec-v282 shipped:
@@ -16,10 +16,10 @@
 // "wels criteria pe", two-intent, and derivational-fold gaps are all fixed
 // and probed below (derivational folding is a REVIEWED pair table in
 // lib/prompt.js, not a suffix rule -- extend it only with a probe).
-// Catalog-gap note, NOT a ranking issue: "when should i transfuse for
-// anemia" has no right answer to probe because the catalog has no
-// restrictive-transfusion-threshold (TRICC/AABB) tile -- every transfusion
-// tile is a massive-transfusion score or a peds volume calc.
+// The former catalog gap ("when should i transfuse for anemia" had no right
+// answer) is now closed: spec-v292 shipped the transfusion-threshold tile
+// (AABB 2023 restrictive threshold), exposed it as an MCP adapter, and the
+// probe below pins the route.
 
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
@@ -133,6 +133,8 @@ const PROBES = [
   ['heparin induced thrombocytopenia 4t', ['four-ts']],
   ['gestational diabetes screen', ['iadpsg', 'carpenter-coustan']],
   ['metabolic acidosis compensation', ['winters']],
+  // spec-v292: the former catalog gap, now a shipped tile + MCP adapter.
+  ['when should i transfuse for anemia', ['transfusion-threshold']],
 ];
 
 test(`every golden probe routes an acceptable tile into the top ${TOP_N}`, () => {

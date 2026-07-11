@@ -1448,6 +1448,21 @@ total to **1068 calculators across 195 modules** — completing MCP exposure of 
 SESSION-32 subspecialty-depth program (spec-v258 through spec-v266): every pure-
 compute tile a prior audit had missed is now a deterministic agent tool.
 
+## One-hundred-sixth wave — the AABB restrictive transfusion threshold in lib/transfusion-v292.js (+1)
+
+`transfusion-threshold` (spec-v292) is the AABB 2023 restrictive transfusion
+threshold decision aid: given a hemoglobin (g/dL) and a patient population it
+reports the population's threshold (7 g/dL stable adults/children, 7.5 cardiac
+surgery, 8 orthopedic surgery or preexisting cardiovascular disease) and whether
+the value sits below it, with a first-class "no numeric recommendation" output
+for acute coronary syndrome. Hemoglobin and population are required (both appear
+in the example); the symptomatic checkbox is optional. Its `band` carries the
+"below the 7 g/dL AABB restrictive threshold" example, so it round-trips through
+the default `makeToArgs` / `toBool` with no custom toArgs. New adapter module
+registered in `mcp/catalog.js`. Brings the exposed total to **1069 calculators
+across 196 modules** — the first tile of the spec-v285-v291 search program's
+surfaced catalog gap.
+
 ## Exposed
 
 Each id below is live in `mcp/catalog.js`. The gate parses this list.
@@ -2865,6 +2880,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 - `sepsis-obstetrics-score`
 - `abc-transfusion-score`
 - `ssign-score`
+
+### lib/transfusion-v292.js
+- `transfusion-threshold`
 
 ## Not yet adapted
 
