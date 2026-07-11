@@ -6,6 +6,15 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Changed (spec-v288 — rarity-aware search: IDF tie-breaks + smarter typo repair)
+
+- Search results that used to tie now order by how informative the matched terms are, and the
+  typo repair picks the most plausible correction ("wels criteria pe" → Wells' Criteria,
+  "heprin drip" → the heparin nomogram via a new v12 synonym row; see
+  [docs/spec-v288.md](docs/spec-v288.md)). The rarity signal is a bounded sub-point bonus, so
+  every existing routing contract and threshold is unchanged, and everything stays
+  deterministic. Golden set 75 → 77 probes, all green.
+
 ### Changed (spec-v287 — full-vocabulary typo repair in search)
 
 - A misspelled clinical term now recovers even when the tile has no synonym entry: the typo

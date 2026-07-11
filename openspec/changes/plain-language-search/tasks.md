@@ -32,8 +32,13 @@
 
 ## 3. Ranker upgrade (`lib/prompt.js`)
 
-- [ ] 3.1 Add field-weighted BM25-lite scoring with IDF and fixed-precision arithmetic
-      (Design D2); keep the module pure (no DOM, no fetch).
+- [~] 3.1 IDF scoring (Design D2): the BOUNDED FORM shipped 2026-07-10 (spec-v288) — a
+      sub-point rarity bonus (4-decimal fixed precision, strictly < 1 rubric point) that
+      breaks whole-point ties without disturbing the threshold or any rubric contract, plus a
+      rarity-gated typo-repair lead (`rankWithRepair`) and a raw-form df for eponym/prose
+      collisions ("wells" vs "well"). Full field-weighted BM25 rescaling + the token→postings
+      index (task 2.2) stay deferred: the flat rubric + bonus now passes all 77 golden probes,
+      so a rescale needs new evidence to justify its test-rewrite blast radius.
 - [~] 3.2 Bounded suffix-stemmer (Design D3): the SAFE SUBSET shipped 2026-07-10 (spec-v286) —
       plural-only fold (`stemToken`, guards for -ss/-us/-is and short tokens) applied
       identically to corpus and query tokens. The ing/ion derivational pairs stay deferred

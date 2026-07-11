@@ -1,4 +1,4 @@
-// Search-relevance golden set. Runs 75 realistic clinical queries through the
+// Search-relevance golden set. Runs 77 realistic clinical queries through the
 // real find_calculator surface (shared resolvePromptRanked + data/synonyms.json
 // + data/search-corpus over the exposed registry) and asserts an acceptable
 // tile ranks in the top 3. This pins the routing quality spec-v282 shipped:
@@ -12,19 +12,16 @@
 //     (e.g. any of the three pancreatitis severity tiles is a correct route);
 //   - keep probes phrased the way a nurse would type them, not tile names.
 //
-// Known limitations (deliberately NOT probed) -- both are acceptance tests
-// for the deferred term-weighted (IDF/BM25-lite) ranker slice:
+// Known limitations (deliberately NOT probed) -- acceptance tests for the
+// remaining deferred ranker work:
 //   - a query naming two intents ("anticoagulation bleeding risk atrial
 //     fibrillation") resolves by the synonym tie-break (shorter phrase wins),
 //     so "atrial fibrillation" routes it to chads over hasbled;
 //   - derivational forms don't fold ("when should i transfuse for anemia"
 //     misses transfusion-threshold: transfuse vs transfusion). Only bare
-//     plurals fold today -- the ing/ion pairs showed order-dependent noise;
-//   - a typo repair that only TIES the literal reading is rejected by the
-//     +3 margin gate ("heprin drip" stays on the drip tiles: heparin-nomogram
-//     ties at 4), and a repair can't rescue a rank when the literal reading
-//     is already strong ("wels criteria pe" sits rank 4). Both need
-//     term-weighted (IDF) scoring to know "heparin" outweighs "drip".
+//     plurals fold today -- the ing/ion pairs showed order-dependent noise.
+// (The earlier "heprin drip" and "wels criteria pe" limitations were fixed
+// by the sub-point IDF slice and are probed below.)
 
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
@@ -117,6 +114,12 @@ const PROBES = [
   ['corected calcium', ['corrected-calcium', 'corrected-ca-na']],
   ['morse fals', ['morse-falls']],
   ['apgarr', ['apgar']],
+  // former recorded limitations, fixed by the sub-point IDF slice: the
+  // rare-repair gate lets "wels" -> "wells" lead a weak literal reading,
+  // and the synonym-edit rescue (no longer starved by the zero-results
+  // gate) recovers "heprin drip" via the v12 "heparin drip" phrase.
+  ['wels criteria pe', ['wells-pe', 'wells-pe-geneva']],
+  ['heprin drip', ['heparin-nomogram']],
 ];
 
 test(`every golden probe routes an acceptable tile into the top ${TOP_N}`, () => {

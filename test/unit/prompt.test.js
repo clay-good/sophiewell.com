@@ -308,3 +308,46 @@ test('typo repair skipped entirely when the literal reading is exact-phrase stro
     rankTilesAll('bmi calculator', tiles, 'all'),
   );
 });
+
+// --- Sub-point IDF tie-break + rare-repair gate (D2 bounded form) -----------
+
+test('idf tie-break: the tile matching the rarer token wins a former whole-point tie', () => {
+  const tiles = [
+    // "drip" appears in three docs, "heparin" in one: same integer rubric
+    // score for each candidate, so rarity must decide.
+    { id: 'drip-a', name: 'Drip Rate', audiences: [], desc: 'drip timing' },
+    { id: 'drip-b', name: 'Drip Score', audiences: [], desc: 'drip staging' },
+    { id: 'hep', name: 'Heparin Nomogram', audiences: [], desc: 'heparin titration' },
+  ];
+  const r = _testing.rankTilesAll('heparin bolus', tiles, 'all');
+  assert.equal(r[0]?.tileId, 'hep');
+});
+
+test('idf bonus stays sub-point: it cannot lift a below-threshold tile over the gate', () => {
+  const tiles = [
+    { id: 'x', name: 'Zeta Panel', audiences: [], desc: 'unique rare-word here' },
+  ];
+  // One desc token hit (+1, no phrase match) plus any bonus < 1 stays
+  // below threshold 3.
+  assert.deepEqual(_testing.rankTilesAll('unique gadget', tiles, 'all'), []);
+});
+
+test('typo repair candidate selection prefers the longest surface form of the best family', () => {
+  const tiles = [
+    { id: 'wells', name: 'Wells Criteria PE', audiences: [], desc: 'wells wells wells' },
+    { id: 'noise', name: 'Delta Check', audiences: [], desc: 'del' },
+  ];
+  const { rewrote } = _testing.tokenEditFallback('wels criteria', tiles, 'all');
+  assert.equal(rewrote, 'wells', 'repairs toward the surface form, not the stem or a rare neighbor');
+});
+
+test('weak reading: a synonym-edit rescue outranks weak token matches', () => {
+  const tiles = [
+    { id: 'hep', name: 'Heparin Nomogram', audiences: [], desc: '' },
+    { id: 'drip', name: 'Drip Rate', audiences: [], desc: 'drip' },
+  ];
+  const synonyms = [{ tile: 'hep', phrases: ['heparin drip'], audience: 'clinicians' }];
+  const r = resolvePrompt('heprin drip', tiles, synonyms, 'all');
+  assert.equal(r?.tileId, 'hep');
+  assert.equal(r?.why, 'synonym-edit-distance');
+});
