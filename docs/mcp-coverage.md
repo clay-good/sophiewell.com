@@ -1502,6 +1502,17 @@ round-trip both pass, without the phantom "2". Adapter appended to the existing
 rate to a target PaCO2. Brings the exposed total to **1072 calculators across 197
 modules**.
 
+## One-hundred-tenth wave — the Aldrete + PADSS recovery scores (+1, composite)
+
+`aldrete-padss` shows two side-by-side post-anesthesia recovery scores (modified
+Aldrete and PADSS) that share one input panel, each already a pure lib fn
+(`scoring-v4.js aldrete` / `padss`). It was deferred because its META.example was
+`{}` (relying on the browser rangeField default of 2 per item), which gives an
+MCP call no inputs to compute from. The example now carries the ten explicit
+component values, and a composite adapter returns both scores (each lib fn
+destructures only its own five items). No lib or view change. Brings the exposed
+total to **1073 calculators across 197 modules**.
+
 ## Exposed
 
 Each id below is live in `mcp/catalog.js`. The gate parses this list.
@@ -2870,6 +2881,7 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 - `saps-ii`
 - `refeeding-risk`
 - `lund-browder`
+- `aldrete-padss`
 
 ### lib/scoring-v5.js
 - `phq2-gad2`

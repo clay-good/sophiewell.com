@@ -1916,6 +1916,18 @@ test('lib/rcc-prognosis-v266.js worked calls', () => {
   assert.equal(low.score, 0);
 });
 
+test('lib/scoring-v4.js aldrete-padss composite worked calls', () => {
+  // All items at 2 -> both scores at the 10 maximum.
+  const max = ok('aldrete-padss', { 'ap-al-act': '2', 'ap-al-resp': '2', 'ap-al-circ': '2', 'ap-al-cons': '2', 'ap-al-o2': '2', 'ap-pd-vs': '2', 'ap-pd-amb': '2', 'ap-pd-nv': '2', 'ap-pd-pain': '2', 'ap-pd-bld': '2' });
+  assert.equal(max.aldrete.score, 10);
+  assert.equal(max.padss.score, 10);
+  assert.equal(max.padss.readyForDischarge, true);
+  // A PADSS total below 9 is not yet ready for discharge.
+  const low = ok('aldrete-padss', { 'ap-al-act': '2', 'ap-al-resp': '2', 'ap-al-circ': '2', 'ap-al-cons': '2', 'ap-al-o2': '2', 'ap-pd-vs': '1', 'ap-pd-amb': '1', 'ap-pd-nv': '2', 'ap-pd-pain': '2', 'ap-pd-bld': '1' });
+  assert.equal(low.padss.score, 7);
+  assert.equal(low.padss.readyForDischarge, false);
+});
+
 test('lib/clinical-v8.js minute-ventilation worked calls', () => {
   // RR 16 x Vt 450 mL = 7.2 L/min; rate to move PaCO2 60 -> 40 is 16 x 60/40 = 24.
   const r = ok('minute-ventilation', { 'mv-rr': '16', 'mv-vt': '450', 'mv-paco2': '60', 'mv-target': '40' });

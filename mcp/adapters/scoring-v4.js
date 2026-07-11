@@ -2048,4 +2048,23 @@ export default [
       { dom: 'vs-lf', arg: 'lookupFiO2', kind: 'number', required: true, label: 'Target FiO2 to look up (fraction 0-1)' },
     ],
   },
+  {
+    id: 'aldrete-padss',
+    // Composite: the two side-by-side recovery scores share one input panel, so
+    // one call returns both (each lib fn destructures only its own five items).
+    summary: 'Post-anesthesia recovery scores. Modified Aldrete (activity, respiration, circulation, consciousness, O2 saturation, each 0-2; total 0-10) gauges phase-1 recovery. PADSS (vital signs, ambulation, nausea/vomiting, pain, surgical bleeding, each 0-2; total 0-10, >= 9 ready for home discharge) gauges readiness for discharge after ambulatory surgery. Reports both scores, not a discharge order.',
+    compute: (a) => ({ aldrete: F.aldrete(a), padss: F.padss(a) }),
+    fields: [
+      { dom: 'ap-al-act', arg: 'activity', kind: 'number', required: true, label: 'Aldrete: activity (0-2)' },
+      { dom: 'ap-al-resp', arg: 'respiration', kind: 'number', required: true, label: 'Aldrete: respiration (0-2)' },
+      { dom: 'ap-al-circ', arg: 'circulation', kind: 'number', required: true, label: 'Aldrete: circulation (0-2)' },
+      { dom: 'ap-al-cons', arg: 'consciousness', kind: 'number', required: true, label: 'Aldrete: consciousness (0-2)' },
+      { dom: 'ap-al-o2', arg: 'oxygenSaturation', kind: 'number', required: true, label: 'Aldrete: O2 saturation (0-2)' },
+      { dom: 'ap-pd-vs', arg: 'vitalSigns', kind: 'number', required: true, label: 'PADSS: vital signs (0-2)' },
+      { dom: 'ap-pd-amb', arg: 'ambulation', kind: 'number', required: true, label: 'PADSS: ambulation (0-2)' },
+      { dom: 'ap-pd-nv', arg: 'nauseaVomiting', kind: 'number', required: true, label: 'PADSS: nausea / vomiting (0-2)' },
+      { dom: 'ap-pd-pain', arg: 'pain', kind: 'number', required: true, label: 'PADSS: pain (0-2)' },
+      { dom: 'ap-pd-bld', arg: 'surgicalBleeding', kind: 'number', required: true, label: 'PADSS: surgical bleeding (0-2)' },
+    ],
+  },
 ];
