@@ -105,6 +105,8 @@
       "tile": "four-ts", "audience": "clinicians" },
     { "phrases": ["gestational diabetes screen", "gdm screen", "gdm criteria", "gestational diabetes criteria"],
       "tile": "iadpsg", "audience": "clinicians" },
+    { "phrases": ["when to transfuse", "transfusion threshold", "transfusion trigger", "hemoglobin transfusion trigger", "hgb transfusion threshold", "restrictive transfusion", "transfusion cutoff", "when should i transfuse for anemia"],
+      "tile": "transfusion-threshold", "audience": "clinicians" },
     { "phrases": ["a a gradient", "alveolar arterial gradient", "aa gradient"],
       "tile": "aa-gradient", "audience": "clinicians" },
     { "phrases": ["cockcroft gault", "creatinine clearance formula", "crcl"],

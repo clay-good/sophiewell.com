@@ -269,6 +269,7 @@ import * as pedsSepsisV278 from '../../lib/peds-sepsis-v278.js';
 import * as rccPrognosisV279 from '../../lib/rcc-prognosis-v279.js';
 import * as rheumFnV280 from '../../lib/rheum-fn-v280.js';
 import * as hccSurveillanceV281 from '../../lib/hcc-surveillance-v281.js';
+import * as transfusionV292 from '../../lib/transfusion-v292.js';
 
 const MODULES = {
   'clinical.js': clinical,
@@ -482,6 +483,7 @@ const MODULES = {
   'rcc-prognosis-v279.js': rccPrognosisV279,
   'rheum-fn-v280.js': rheumFnV280,
   'hcc-surveillance-v281.js': hccSurveillanceV281,
+  'transfusion-v292.js': transfusionV292,
 };
 
 const MATRIX = [0, -1, 1e9, NaN, Infinity, -Infinity, '', undefined, null];

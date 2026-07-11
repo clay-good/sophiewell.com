@@ -6,6 +6,21 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v292 — Restrictive transfusion threshold decision aid (AABB 2023), 1144 → 1145)
+
+- New `transfusion-threshold` tile (group G): given a hemoglobin and a patient population, it
+  reports the AABB 2023 restrictive threshold and whether the value sits below it — the routine
+  bedside question ("is this Hgb low enough to transfuse?") the massive-transfusion scores do
+  not answer, and the catalog gap the spec-v285–v291 search program surfaced. Thresholds:
+  7 g/dL for stable hospitalized adults (incl. critically ill) and stable critically ill
+  children, 7.5 g/dL for cardiac surgery, 8 g/dL for orthopedic surgery or preexisting
+  cardiovascular disease; acute coronary syndrome gets a first-class "no numeric
+  recommendation" output, never a fabricated number. Every threshold re-fetched and
+  cross-verified per spec-v97 — the design sketch's 8 g/dL for cardiac surgery was corrected to
+  the verified 7.5 g/dL. New `lib/transfusion-v292.js` + `views/group-v292.js` (RV292),
+  `HEMOGLOBIN_UNITS` (g/dL↔g/L), a synonyms row, and 9 worked-example unit tests (incl. the ACS
+  null branch and the RangeError guard). See [docs/spec-v292.md](docs/spec-v292.md).
+
 ### Changed (spec-v291 — v13 synonyms: cross-domain search-gap sweep)
 
 - A wide probe sweep across electrolytes, tox, renal, heme, OB, and acid-base found five
