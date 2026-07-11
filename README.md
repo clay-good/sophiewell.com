@@ -17,7 +17,8 @@
 <!--
   Machine-checked count (scripts/check-catalog-truth.mjs reads the line
   below; keep it in sync with UTILITIES.length in app.js):
-  At v281 close the catalog is 1144 deterministic tiles.
+  At v281 close the catalog is 1144
+  deterministic tiles.
 -->
 
 ## What it is
