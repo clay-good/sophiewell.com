@@ -21,7 +21,8 @@ approximating it — a high-stakes tile with a stale exclusion is a safety defec
 |---|---|
 | ≤ 3 hours | Standard eligibility: apply the absolute-exclusion checklist |
 | > 3 to ≤ 4.5 hours | Extended window: absolute exclusions PLUS the ECASS-III relative exclusions |
-| > 4.5 hours | Outside the IV alteplase window — no numeric verdict; route to imaging-based / thrombectomy pathway |
+| > 4.5 to 9 hours | **2026 addition (COR 2a):** IV thrombolysis MAY be reasonable with salvageable penumbra on perfusion imaging — the tile must NOT hard-exclude this window; report "perfusion-imaging-dependent, decide with the stroke team," not a flat "outside window" |
+| > 9 hours (or no penumbra) | Outside the IV thrombolysis window — no numeric verdict; route to imaging-based / thrombectomy pathway |
 
 ## Absolute exclusion checklist (verify at build — representative, not exhaustive)
 
@@ -53,9 +54,12 @@ of BOTH diabetes mellitus AND prior ischemic stroke.
 ## Decisions
 
 **D1 — window drives the criteria set.** The 3–4.5 h window adds the four ECASS-III relative
-exclusions to the absolute set; the ≤ 3 h window applies only the absolute set. The > 4.5 h
-window returns `eligible: null` with the thrombectomy-pathway pointer — never a fabricated
-verdict, mirroring the spec-v292 ACS `threshold: null` carve-out (Design D2 there).
+exclusions to the absolute set; the ≤ 3 h window applies only the absolute set. **The window
+enum must be REDESIGNED for the 2026 guideline's four-tier structure** (≤ 3 h / 3–4.5 h / 4.5–9 h
+perfusion-imaging-dependent / > 9 h), not the three-tier 2019 sketch: the 4.5–9 h penumbra window
+(COR 2a) returns a "perfusion-imaging-dependent, decide with the team" verdict, and only the > 9 h
+(or no-penumbra) case returns `eligible: null` with the thrombectomy-pathway pointer — never a
+fabricated verdict, mirroring the spec-v292 ACS `threshold: null` carve-out (Design D2 there).
 
 **D2 — verdict is a checklist result, never an order (spec-v11 §5.3).** The single most
 important correctness point: the band reports "meets / does not meet the AHA/ASA 2026 checklist"
