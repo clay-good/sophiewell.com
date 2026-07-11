@@ -207,6 +207,7 @@ import rheumFnV280 from './adapters/rheum-fn-v280.js';
 import hccSurveillanceV281 from './adapters/hcc-surveillance-v281.js';
 import transfusionV292 from './adapters/transfusion-v292.js';
 import tbTesting from './adapters/tb-testing.js';
+import labInterpret from './adapters/lab-interpret.js';
 import decisionRulesV258 from './adapters/decision-rules-v258.js';
 import pneumoniaRiskV260 from './adapters/pneumonia-risk-v260.js';
 import acuteAbdomenV261 from './adapters/acute-abdomen-v261.js';
@@ -406,6 +407,7 @@ const ADAPTER_MODULES = [
   ['hcc-surveillance-v281', hccSurveillanceV281],
   ['transfusion-v292', transfusionV292],
   ['tb-testing', tbTesting],
+  ['lab-interpret', labInterpret],
   ['decision-rules-v258', decisionRulesV258],
   ['pneumonia-risk-v260', pneumoniaRiskV260],
   ['acute-abdomen-v261', acuteAbdomenV261],

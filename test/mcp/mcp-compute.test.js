@@ -1939,6 +1939,18 @@ test('lib/clinical-v8.js minute-ventilation worked calls', () => {
   assert.equal(noTarget.requiredRate, null);
 });
 
+test('lib/lab-interpret.js worked calls', () => {
+  // A1C 5.4 is within the ADA 4.0-5.6% range.
+  const a1c = ok('lab-interpret', { 'lab-a1c': '5.4' });
+  assert.equal(a1c.count, 1);
+  assert.equal(a1c.interpretations[0].flag, 'within-range');
+  assert.equal(a1c.interpretations[0].refHigh, 5.6);
+  // A batch flags each entered analyte independently.
+  const batch = ok('lab-interpret', { 'lab-potassium': '6.5', 'lab-glucose': '250' });
+  assert.equal(batch.count, 2);
+  assert.ok(batch.interpretations.every((i) => i.flag !== 'within-range'));
+});
+
 test('lib/medication-v4.js vasopressor worked calls', () => {
   // Dopamine (mcg/kg/min) 0.1 x 70 kg = 7 ug/min / 64 ug/mL x 60 = 6.5625 mL/hr.
   const fwd = ok('vasopressor', { 'vp-drug': 'dopamine', 'vp-w': '70', 'vp-conc': '64', 'vp-dose': '0.1' });

@@ -78,7 +78,7 @@ find_calculator { "query": "stroke risk afib" }
        candidates: [ { id: "chads", name: "CHA2DS2-VASc", why: "synonym", ... }, ... ] }
 
 list_calculators { "specialty": "hepatology" }
-  -> { coverage: "1076 of 1109 catalog tiles exposed ...", calculators: [ { id: "meld-xi", ... }, ... ] }
+  -> { coverage: "1077 of 1109 catalog tiles exposed ...", calculators: [ { id: "meld-xi", ... }, ... ] }
 
 describe_calculator { "id": "meld-xi" }
   -> { inputSchema: { ... mx-bili, mx-creat ... }, citation: "Heuman DM ... Liver Transpl 2007", ... }
@@ -304,8 +304,9 @@ the Aldrete + PADSS post-anesthesia recovery scores (composite) in
 `lib/scoring-v4.js`, and a one-hundred-eleventh the ACS field-triage algorithm in
 `lib/field.js`, and a one-hundred-twelfth single-medication opioid MME, and a
 one-hundred-thirteenth the bidirectional vasopressor dose/rate math, both in
-`lib/medication-v4.js`, for
-1076 across 197 modules
+`lib/medication-v4.js`, and a one-hundred-fourteenth the plain-language lab-value
+interpreter in `lib/lab-interpret.js`, for
+1077 across 198 modules
 today. <!-- catalog-truth:historical (197 is the count of lib modules adapted, not a catalog tile count) -->
 Later waves extend it module by module against the same contract.
 

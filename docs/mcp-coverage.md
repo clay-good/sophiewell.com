@@ -1502,6 +1502,18 @@ round-trip both pass, without the phantom "2". Adapter appended to the existing
 rate to a target PaCO2. Brings the exposed total to **1072 calculators across 197
 modules**.
 
+## One-hundred-fourteenth wave — the plain-language lab-value interpreter (+1)
+
+`lab-interpret` classifies entered lab values (CBC, CMP, lipid panel, A1C, TSH)
+against published reference ranges. Its `interpretLab` / `interpretLabs` compute
+and the 25-analyte reference tables already existed (lib/lab-interpret.js) — the
+"free-text parsing" that had deferred it was a misread; the inputs are plain
+numeric analyte fields. The adapter mirrors the renderer dom keys
+(`lab-<analyteId>`, `lab-sex`, `lab-pregnant`) and interprets whichever analytes
+are supplied as a batch. No lib or view change. New adapter module registered in
+`mcp/catalog.js`. Brings the exposed total to **1077 calculators across 198
+modules**.
+
 ## One-hundred-thirteenth wave — bidirectional vasopressor dose/rate math (+1)
 
 `vasopressor` converts between an infusion dose and pump rate. Its
@@ -2981,6 +2993,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/tb-testing.js
 - `tb-testing`
+
+### lib/lab-interpret.js
+- `lab-interpret`
 
 ## Not yet adapted
 
