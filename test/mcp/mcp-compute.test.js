@@ -1949,6 +1949,19 @@ test('lib/tb-testing.js worked calls', () => {
   assert.equal(neg.positive, false);
 });
 
+test('lib/field.js field-triage worked calls', () => {
+  // Step 1 physiologic criterion -> highest-level trauma center.
+  const s1 = ok('field-triage', { 'ft-gcs-le-13': '1' });
+  assert.equal(s1.step, 1);
+  assert.match(s1.destination, /Highest-level trauma center/);
+  // Only a Step 4 special-consideration -> clinical judgment.
+  const s4 = ok('field-triage', { 'ft-older-adult': '1' });
+  assert.equal(s4.step, 4);
+  // No criteria met -> closest facility.
+  const none = ok('field-triage', {});
+  assert.equal(none.step, 0);
+});
+
 test('lib/field.js nexus-cspine worked calls', () => {
   // All five low-risk criteria met -> imaging not required.
   const cleared = ok('nexus-cspine', { 'nx-tender': '1', 'nx-intox': '1', 'nx-alert': '1', 'nx-focal': '1', 'nx-distract': '1' });

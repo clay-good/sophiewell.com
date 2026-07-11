@@ -149,6 +149,49 @@ export default [
       ...LUND_REGIONS.map((r) => ({ dom: `bb-l-${r}`, arg: `bb-l-${r}`, kind: 'number', label: `Lund-Browder: ${r} (% affected)` })),
     ],
   },
+  // --- wave 111: ACS 2021 field triage. The criterion ids are fixed in the
+  // fieldTriage compute (the browser also renders them from a data shard, but the
+  // decision logic keys off this stable set); a bespoke toArgs strips the `ft-`
+  // renderer prefix into the flat `answers` object the compute reads. Booleans,
+  // none individually required (check whichever criteria apply).
+  ...(() => {
+    const FT = [
+      ['gcs-le-13', 'Step 1: GCS <= 13'],
+      ['sbp-lt-110-adult-or-shock-pediatric', 'Step 1: SBP < 110 mmHg (adult) or signs of shock (pediatric)'],
+      ['rr-lt-10-or-gt-29-or-respiratory-distress', 'Step 1: respiratory rate < 10 or > 29, or respiratory distress'],
+      ['penetrating-head-neck-torso', 'Step 2: penetrating injury to head, neck, or torso'],
+      ['amputation-proximal-wrist-ankle', 'Step 2: amputation proximal to wrist or ankle'],
+      ['pelvic-fracture-suspected', 'Step 2: suspected pelvic fracture'],
+      ['long-bone-fractures-multi', 'Step 2: two or more proximal long-bone fractures'],
+      ['crushed-degloved', 'Step 2: crushed, degloved, mangled, or pulseless extremity'],
+      ['chest-wall-instability', 'Step 2: chest-wall instability or deformity (e.g. flail chest)'],
+      ['open-or-depressed-skull', 'Step 2: open or depressed skull fracture'],
+      ['paralysis', 'Step 2: paralysis'],
+      ['fall-adult-gt-20-or-pediatric-gt-10', 'Step 3: fall > 20 ft (adult) or > 10 ft / 2-3x height (pediatric)'],
+      ['mvc-high-risk', 'Step 3: high-risk motor-vehicle crash'],
+      ['auto-vs-ped-bicyclist-thrown-impact-gt-20', 'Step 3: auto vs pedestrian/bicyclist thrown, run over, or > 20 mph impact'],
+      ['motorcycle-crash-gt-20mph', 'Step 3: motorcycle crash > 20 mph'],
+      ['older-adult', 'Step 4: older adult'],
+      ['pediatric', 'Step 4: pediatric patient'],
+      ['anticoagulant-use', 'Step 4: anticoagulant or bleeding-disorder'],
+      ['pregnancy-gt-20wk', 'Step 4: pregnancy > 20 weeks'],
+      ['burns', 'Step 4: burns'],
+    ];
+    return [{
+      id: 'field-triage',
+      summary: 'ACS 2021 National Field Triage of Injured Patients: walks the four steps (Step 1 physiologic, Step 2 anatomic, Step 3 mechanism, Step 4 special considerations) and returns the first step whose criteria are met and the transport destination it implies (highest-level trauma center for Steps 1-2, trauma-center-consider for Step 3, clinical judgment for Step 4, closest facility if none). A triage recommendation, not a transport order.',
+      compute: (a) => F.fieldTriage(a),
+      toArgs: (inputs) => {
+        const answers = {};
+        for (const [id] of FT) {
+          const v = inputs[`ft-${id}`];
+          if (v === true || v === 1 || v === '1' || v === 'yes' || v === 'true') answers[id] = true;
+        }
+        return answers;
+      },
+      fields: FT.map(([id, label]) => ({ dom: `ft-${id}`, arg: id, kind: 'bool', label })),
+    }];
+  })(),
   // --- wave 107: the NEXUS c-spine rule, now that its compute is a pure lib fn
   {
     id: 'nexus-cspine',

@@ -1502,6 +1502,17 @@ round-trip both pass, without the phantom "2". Adapter appended to the existing
 rate to a target PaCO2. Brings the exposed total to **1072 calculators across 197
 modules**.
 
+## One-hundred-eleventh wave — ACS field triage, via a prefix-stripping toArgs (+1)
+
+`field-triage` (ACS 2021 National Field Triage) was deferred as "data-shard
+variable keys" — the browser renders its criteria checkboxes from a data file. But
+the decision logic in `field.js fieldTriage` keys off a FIXED criterion set (the
+four step arrays), so it exposes cleanly: a bespoke toArgs strips the `ft-`
+renderer prefix off each checked criterion into the flat `answers` object the
+compute reads, and the twenty booleans are none-required (check whichever apply).
+Its existing META.example (`ft-gcs-le-13` → Step 1) round-trips. No lib or view
+change. Brings the exposed total to **1074 calculators across 197 modules**.
+
 ## One-hundred-tenth wave — the Aldrete + PADSS recovery scores (+1, composite)
 
 `aldrete-padss` shows two side-by-side post-anesthesia recovery scores (modified
@@ -2874,6 +2885,7 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 - `peds-weight-dose`
 - `bsa_burn`
 - `nexus-cspine`
+- `field-triage`
 
 ### lib/idcrit-v99.js
 - `duke-endocarditis`
