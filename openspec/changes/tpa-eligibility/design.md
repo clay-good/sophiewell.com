@@ -33,10 +33,16 @@ intracranial neoplasm / AVM / aneurysm (structural); active internal bleeding; p
 within 48 h (unless assays normal); blood pressure > 185/110 mmHg not lowerable; blood glucose
 < 50 mg/dL; CT showing extensive early hypodensity across a large region.
 
-## 3–4.5 h extended-window relative exclusions (ECASS-III; verify at build)
+## 3–4.5 h extended-window relative exclusions (ECASS-III 2019 sketch; RE-VERIFY vs 2026)
 
 Age > 80 years; NIHSS > 25 (severe stroke); oral anticoagulant use regardless of INR; history
 of BOTH diabetes mellitus AND prior ischemic stroke.
+
+**2026 CHANGE FLAGGED:** the 2026 guideline recommends IVT for **disabling deficits regardless
+of NIHSS score** within 4.5 h — so the **NIHSS > 25 relative exclusion above may have been
+removed or changed** in 2026. Do NOT carry it into the build without confirming against the 2026
+text. This is a concrete example of why the whole criteria set MUST be re-sourced from the 2026
+guideline, not the 2019 sketch.
 
 ## Compute contract
 
