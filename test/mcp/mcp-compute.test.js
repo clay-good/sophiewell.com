@@ -1916,6 +1916,17 @@ test('lib/rcc-prognosis-v266.js worked calls', () => {
   assert.equal(low.score, 0);
 });
 
+test('lib/field.js nexus-cspine worked calls', () => {
+  // All five low-risk criteria met -> imaging not required.
+  const cleared = ok('nexus-cspine', { 'nx-tender': '1', 'nx-intox': '1', 'nx-alert': '1', 'nx-focal': '1', 'nx-distract': '1' });
+  assert.equal(cleared.criteriaMet, 5);
+  assert.equal(cleared.imagingRequired, false);
+  assert.match(cleared.band, /imaging NOT required/);
+  // Any unmet criterion -> imaging required.
+  const notCleared = ok('nexus-cspine', { 'nx-tender': '1', 'nx-intox': '1', 'nx-alert': '1', 'nx-focal': '1' });
+  assert.equal(notCleared.imagingRequired, true);
+});
+
 test('lib/transfusion-v292.js worked calls', () => {
   // Hgb 6.8 in a stable adult is below the 7 g/dL restrictive threshold.
   const below = ok('transfusion-threshold', { 'tt-hb': '6.8', 'tt-pop': 'stable-adult' });

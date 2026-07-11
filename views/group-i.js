@@ -5,7 +5,7 @@
 import { el, clear } from '../lib/dom.js';
 import { unitField, unitNum, TEMP_UNITS } from '../lib/field-units.js';
 import { loadFile } from '../lib/data.js';
-import { pedsDose, cincinnatiStroke, fast, fieldTriage, startTriage, jumpStartTriage, ruleOfNines, lundBrowder, burnFluid, pediatricEtt, naloxoneDose, selectEmsChecklist, RULE_OF_NINES_ADULT, PEDS_DOSE_RECIPES } from '../lib/field.js';
+import { pedsDose, cincinnatiStroke, fast, fieldTriage, startTriage, jumpStartTriage, ruleOfNines, lundBrowder, burnFluid, pediatricEtt, naloxoneDose, selectEmsChecklist, nexusCspine, RULE_OF_NINES_ADULT, PEDS_DOSE_RECIPES } from '../lib/field.js';
 import { fetchJson } from '../lib/data.js';
 import { hypothermiaRewarm, heatstrokeDecision } from '../lib/scoring-v4.js';
 import { resultRow } from '../lib/result-copy.js';
@@ -433,8 +433,14 @@ export const renderers = {
     root.appendChild(o);
     const run = () => {
       clear(o);
-      const all = items.every(([, id]) => document.getElementById(id).checked);
-      o.appendChild(el('h2', { text: all ? 'NEXUS: cervical spine imaging NOT required' : 'NEXUS: imaging IS required (one or more criteria not met)' }));
+      const r = nexusCspine({
+        noTenderness: document.getElementById('nx-tender').checked,
+        noIntoxication: document.getElementById('nx-intox').checked,
+        normalAlertness: document.getElementById('nx-alert').checked,
+        noFocalDeficit: document.getElementById('nx-focal').checked,
+        noDistractingInjury: document.getElementById('nx-distract').checked,
+      });
+      o.appendChild(el('h2', { text: r.band }));
       o.appendChild(el('p', { class: 'muted', text:
         'Canadian C-Spine Rule: if any high-risk factor (age >=65, dangerous mechanism, paresthesias in extremities) -> imaging. ' +
         'Otherwise check low-risk factors that allow safe range-of-motion testing (simple rear-end MVC, sitting in ED, ambulatory at any time, delayed onset of neck pain, absence of midline tenderness). ' +

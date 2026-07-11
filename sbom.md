@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `f13b721a120bf9a3`
-Generated: 2026-07-11T13:33:29.139Z
+Build ID: `ff7957cd13fda1c4`
+Generated: 2026-07-11T13:48:34.850Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=20.18.1 <21, npm >=10.0.0
@@ -102,7 +102,7 @@ downloads is committed in this repository and is hashed below.
 | `lib/estimators-v233.js` | 9102 | `163bd6f013cbd5388f0fc7d0953f1e938182d28e2039d3bfb22f1fccc647283a` |
 | `lib/fibrosis-v275.js` | 2577 | `2d43ffb3616e1d1cf98df08e2def7ef97046d61755cfe4f52af8819b3a8f0324` |
 | `lib/field-units.js` | 6801 | `46aa4546c76ec5d672d726f2bb1bb8101aeb13aa5761c20c741342291789ce25` |
-| `lib/field.js` | 12156 | `6a6b07f76a519a8f873a37a9b57c52909e9088c3a09bd256e0ac60240e16d2ea` |
+| `lib/field.js` | 13513 | `cbe15d4b105da144ed2c465e525fb1a49a626b50df7fc402f80830fa8efa0996` |
 | `lib/fluidresp-v113.js` | 8525 | `c40f34894d85e2aa6bbe92e153e89e922b8331cd6b6882660f771a3fe9106e1d` |
 | `lib/frailty-v143.js` | 13623 | `9f4c0b7c18818add0a8c6121070a3f2abea6975e56983ff8eddad0b5d6ca124f` |
 | `lib/function-v154.js` | 15012 | `ce6634d2acc5d69d16bf00e0c4d0fb85294e49102bfce1883190ff7526458870` |
@@ -159,7 +159,7 @@ downloads is committed in this repository and is hashed below.
 | `lib/massive-transfusion-v265.js` | 3240 | `7ad4d1d86063fdd077546be5d6381ea4a5024ef669389f88abdfe07850903b29` |
 | `lib/medication-v4.js` | 18192 | `467f9576c50da696cc56094eb022d0a5ed1e88de0c7618448554ede8067270b0` |
 | `lib/medication-v5.js` | 18863 | `ce81d9f8954abbd412892c13af9936f992239164f26fd2b999eaea7902787ab7` |
-| `lib/meta.js` | 1577445 | `1bd2764c55dfbdf8d2a3fba2d11fa55c23843c392eaf7b36600564051386e547` |
+| `lib/meta.js` | 1577479 | `464ea9148879bbcd489c1902c6fa9e7d46a45902655fca4dfb3d59b0a8f484d7` |
 | `lib/metabolic-hepatic-v219.js` | 12791 | `b9352877cebf7fbf3c3b99ecb8b72cdbee3ed94e056dc019113668609f5a95a8` |
 | `lib/metabolic-onc-v88.js` | 12659 | `1553b641668c121661a66647da71a4aaaa023e9f3a6b7a753efbcdab27cdba81` |
 | `lib/metabolic-v269.js` | 3262 | `0c7a42557886f2b0aeee7949b8d0bd682d795d4526174fd540717a978d94ec2f` |
@@ -298,7 +298,7 @@ downloads is committed in this repository and is hashed below.
 | `views/group-f.js` | 45954 | `bc0e791ae8b358300e4f05af4ae09bc2814e3a8f111d356ff26f0583fb4c30a6` |
 | `views/group-g.js` | 234247 | `917ed1d6006e3ad825fa3af310171347c38efc889379c7da06d73e4120abb008` |
 | `views/group-h.js` | 28477 | `f9a8dc4ddbf7987b39a6bb88908d3523599eddaca1d6fcde22dbd847b4594b14` |
-| `views/group-i.js` | 27344 | `de2972d20f064e7ce5bd5c70436299fd9eeca5279f04603aba04c92cb8fec351` |
+| `views/group-i.js` | 27564 | `a29c0dd2e02f1edcee8fb79e85ba4fa4c7630ca0e97c2412e787419cec697f83` |
 | `views/group-j.js` | 8483 | `f097811a4f4f4dfa7fdcb893cc744757e7897a7b45fa5591ba7edbc307f26571` |
 | `views/group-klmno.js` | 7870 | `38d2851c570118dafbdbda729cbe427abc3d3b29e1025fd356f358877184f97c` |
 | `views/group-v10.js` | 29581 | `fdf34311337c9a235a7c02e9b9ae849491ac6ce242566e022a08397b3212d409` |

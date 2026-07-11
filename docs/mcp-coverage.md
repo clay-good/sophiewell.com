@@ -1463,6 +1463,20 @@ registered in `mcp/catalog.js`. Brings the exposed total to **1069 calculators
 across 196 modules** — the first tile of the spec-v285-v291 search program's
 surfaced catalog gap.
 
+## One-hundred-seventh wave — the NEXUS c-spine rule extracted to a lib fn (+1)
+
+`nexus-cspine` (the NEXUS low-risk cervical-spine criteria, Hoffman JR et al.
+NEJM 2000) was previously an inline-compute renderer with no pure lib function,
+so the pure-adapter sweep had deferred it (wave-82 note). Its compute is now
+extracted verbatim into `nexusCspine()` in `lib/field.js` (the group-i renderer
+imports it and renders the same band string byte-for-byte), so it exposes on the
+existing `lib/field.js` adapter set. Five booleans; imaging is NOT required only
+when all five low-risk criteria are met. Its META.example (all five met) carries
+no numeric fact, so the round-trip check passes on the band text. Brings the
+exposed total to **1070 calculators across 196 modules** — the first of the
+inline-compute deferrals reclaimed by a deliberate lib extraction rather than the
+append-only adapter recipe.
+
 ## Exposed
 
 Each id below is live in `mcp/catalog.js`. The gate parses this list.
@@ -2822,6 +2836,7 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 - `naloxone`
 - `peds-weight-dose`
 - `bsa_burn`
+- `nexus-cspine`
 
 ### lib/idcrit-v99.js
 - `duke-endocarditis`

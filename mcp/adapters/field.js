@@ -149,4 +149,17 @@ export default [
       ...LUND_REGIONS.map((r) => ({ dom: `bb-l-${r}`, arg: `bb-l-${r}`, kind: 'number', label: `Lund-Browder: ${r} (% affected)` })),
     ],
   },
+  // --- wave 107: the NEXUS c-spine rule, now that its compute is a pure lib fn
+  {
+    id: 'nexus-cspine',
+    summary: 'NEXUS low-risk cervical-spine criteria (Hoffman JR et al. NEJM 2000): cervical-spine imaging is NOT required when ALL FIVE low-risk criteria are met - no posterior midline tenderness, no intoxication, normal alertness, no focal neurologic deficit, and no painful distracting injury. Reports the rule result and the met-criteria count, not an imaging order.',
+    compute: F.nexusCspine,
+    fields: [
+      { dom: 'nx-tender', arg: 'noTenderness', kind: 'bool', label: 'No posterior midline cervical-spine tenderness' },
+      { dom: 'nx-intox', arg: 'noIntoxication', kind: 'bool', label: 'No evidence of intoxication' },
+      { dom: 'nx-alert', arg: 'normalAlertness', kind: 'bool', label: 'Normal level of alertness' },
+      { dom: 'nx-focal', arg: 'noFocalDeficit', kind: 'bool', label: 'No focal neurologic deficit' },
+      { dom: 'nx-distract', arg: 'noDistractingInjury', kind: 'bool', label: 'No painful distracting injury' },
+    ],
+  },
 ];
