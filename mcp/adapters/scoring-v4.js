@@ -2082,4 +2082,16 @@ export default [
     },
     fields: Array.from({ length: 9 }, (_, i) => ({ dom: `phq9-${i}`, arg: `i${i}`, kind: 'number', label: `PHQ-9 item ${i + 1} (0-3)` })),
   },
+  {
+    id: 'gad7',
+    // Same generic-screener pattern as phq9, over the exported GAD7_CONFIG.
+    summary: 'GAD-7 generalized-anxiety screen (Spitzer 2006): seven items each 0-3 over the last two weeks; total 0-21 with severity bands (0-4 minimal, 5-9 mild, 10-14 moderate, 15-21 severe). A validated screening tool, not a diagnosis.',
+    compute: (a) => {
+      const answers = Array.from({ length: 7 }, (_, i) => Number(a[`i${i}`]) || 0);
+      const score = scoreScreener(F.GAD7_CONFIG.items, answers);
+      const band = bandFor(F.GAD7_CONFIG.severityBands, score);
+      return { score, maxScore: 21, severity: band ? band.label : null };
+    },
+    fields: Array.from({ length: 7 }, (_, i) => ({ dom: `gad7-${i}`, arg: `i${i}`, kind: 'number', label: `GAD-7 item ${i + 1} (0-3)` })),
+  },
 ];

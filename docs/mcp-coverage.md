@@ -1502,6 +1502,14 @@ round-trip both pass, without the phantom "2". Adapter appended to the existing
 rate to a target PaCO2. Brings the exposed total to **1072 calculators across 197
 modules**.
 
+## One-hundred-sixteenth wave — the GAD-7 anxiety screen (+1)
+
+`gad7` follows the exact phq9 recipe over the exported `GAD7_CONFIG` (seven items
+each 0-3, total 0-21, minimal/mild/moderate/severe bands) via
+`scoreScreener` / `bandFor`; maxScore (21) echoed; example added (config
+exampleAnswers -> 7 = Mild anxiety) and allowlisted for the e2e (renderScreener
+radios). Brings the exposed total to **1079 calculators across 198 modules**.
+
 ## One-hundred-fifteenth wave — the PHQ-9 depression screen (+1)
 
 `phq9` scores the nine PHQ-9 items (each 0-3) over the exported `PHQ9_CONFIG`
@@ -2950,6 +2958,7 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 - `lund-browder`
 - `aldrete-padss`
 - `phq9`
+- `gad7`
 
 ### lib/scoring-v5.js
 - `phq2-gad2`

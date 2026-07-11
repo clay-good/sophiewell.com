@@ -1916,6 +1916,18 @@ test('lib/rcc-prognosis-v266.js worked calls', () => {
   assert.equal(low.score, 0);
 });
 
+test('lib/scoring-v4.js gad7 worked calls', () => {
+  // Example answers sum to 7 -> mild anxiety (max 21).
+  const mild = ok('gad7', { 'gad7-0': '1', 'gad7-1': '1', 'gad7-2': '1', 'gad7-3': '2', 'gad7-4': '0', 'gad7-5': '1', 'gad7-6': '1' });
+  assert.equal(mild.score, 7);
+  assert.equal(mild.maxScore, 21);
+  assert.equal(mild.severity, 'Mild anxiety');
+  // All items maxed -> severe.
+  const severe = ok('gad7', { 'gad7-0': '3', 'gad7-1': '3', 'gad7-2': '3', 'gad7-3': '3', 'gad7-4': '3', 'gad7-5': '3', 'gad7-6': '3' });
+  assert.equal(severe.score, 21);
+  assert.equal(severe.severity, 'Severe anxiety');
+});
+
 test('lib/scoring-v4.js phq9 worked calls', () => {
   // The documented example answers sum to 7 -> mild depression.
   const mild = ok('phq9', { 'phq9-0': '1', 'phq9-1': '1', 'phq9-2': '1', 'phq9-3': '2', 'phq9-4': '1', 'phq9-5': '0', 'phq9-6': '1', 'phq9-7': '0', 'phq9-8': '0' });
