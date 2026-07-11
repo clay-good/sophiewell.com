@@ -1502,6 +1502,19 @@ round-trip both pass, without the phantom "2". Adapter appended to the existing
 rate to a target PaCO2. Brings the exposed total to **1072 calculators across 197
 modules**.
 
+## One-hundred-fifteenth wave — the PHQ-9 depression screen (+1)
+
+`phq9` scores the nine PHQ-9 items (each 0-3) over the exported `PHQ9_CONFIG`
+(items + severity bands) via the generic `scoreScreener` / `bandFor` compute
+(lib/screener.js) — all pre-existing. The adapter echoes maxScore (27) so the "of
+27" denominator is in the JSON and the round-trip does not lean on the "PHQ-9" 9.
+It renders via the generic renderScreener (radio inputs), so its new example is
+added to the e2e SCENARIO_ONLY allowlist (the numeric sweep can't select radios;
+the mcp round-trip + scoring-v4 unit tests cover the math). A validated screening
+tool, not a diagnosis. Brings the exposed total to **1078 calculators across 198
+modules** — the first of the renderScreener-based screeners (gad7 / epds follow
+the same recipe).
+
 ## One-hundred-fourteenth wave — the plain-language lab-value interpreter (+1)
 
 `lab-interpret` classifies entered lab values (CBC, CMP, lipid panel, A1C, TSH)
@@ -2936,6 +2949,7 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 - `refeeding-risk`
 - `lund-browder`
 - `aldrete-padss`
+- `phq9`
 
 ### lib/scoring-v5.js
 - `phq2-gad2`

@@ -107,6 +107,11 @@ test('every example payload produces the documented numeric output', async ({ pa
     // sweep can't drive a file-drop, so this tile is allowlisted; the
     // unit tests cover the hashing path indirectly via crypto.subtle.
     'pa-lint',
+    // phq9 renders via the generic renderScreener (radio inputs keyed to
+    // renderScreener's own ids); the numeric sweep sets input.value and can't
+    // select radios, so the example is driven through the mcp round-trip and the
+    // scoring-v4 screener unit tests instead.
+    'phq9',
   ]);
 
   const failures = [];

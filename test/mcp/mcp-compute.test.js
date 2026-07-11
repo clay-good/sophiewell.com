@@ -1916,6 +1916,18 @@ test('lib/rcc-prognosis-v266.js worked calls', () => {
   assert.equal(low.score, 0);
 });
 
+test('lib/scoring-v4.js phq9 worked calls', () => {
+  // The documented example answers sum to 7 -> mild depression.
+  const mild = ok('phq9', { 'phq9-0': '1', 'phq9-1': '1', 'phq9-2': '1', 'phq9-3': '2', 'phq9-4': '1', 'phq9-5': '0', 'phq9-6': '1', 'phq9-7': '0', 'phq9-8': '0' });
+  assert.equal(mild.score, 7);
+  assert.equal(mild.maxScore, 27);
+  assert.equal(mild.severity, 'Mild depression');
+  // All items near-max -> severe band.
+  const severe = ok('phq9', { 'phq9-0': '3', 'phq9-1': '3', 'phq9-2': '3', 'phq9-3': '3', 'phq9-4': '3', 'phq9-5': '3', 'phq9-6': '3', 'phq9-7': '3', 'phq9-8': '2' });
+  assert.equal(severe.score, 26);
+  assert.equal(severe.severity, 'Severe depression');
+});
+
 test('lib/scoring-v4.js aldrete-padss composite worked calls', () => {
   // All items at 2 -> both scores at the 10 maximum.
   const max = ok('aldrete-padss', { 'ap-al-act': '2', 'ap-al-resp': '2', 'ap-al-circ': '2', 'ap-al-cons': '2', 'ap-al-o2': '2', 'ap-pd-vs': '2', 'ap-pd-amb': '2', 'ap-pd-nv': '2', 'ap-pd-pain': '2', 'ap-pd-bld': '2' });

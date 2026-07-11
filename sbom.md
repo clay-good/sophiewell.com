@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `f8eb8df5f42b5e53`
-Generated: 2026-07-11T15:11:57.838Z
+Build ID: `0d91102fa3ab35a4`
+Generated: 2026-07-11T15:25:00.004Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=20.18.1 <21, npm >=10.0.0
@@ -159,7 +159,7 @@ downloads is committed in this repository and is hashed below.
 | `lib/massive-transfusion-v265.js` | 3240 | `7ad4d1d86063fdd077546be5d6381ea4a5024ef669389f88abdfe07850903b29` |
 | `lib/medication-v4.js` | 18192 | `467f9576c50da696cc56094eb022d0a5ed1e88de0c7618448554ede8067270b0` |
 | `lib/medication-v5.js` | 18863 | `ce81d9f8954abbd412892c13af9936f992239164f26fd2b999eaea7902787ab7` |
-| `lib/meta.js` | 1577736 | `79e7e343ebaf37bd66d9581eec7b169ec2f5c034eb8bd307ab0855ca20344f01` |
+| `lib/meta.js` | 1578005 | `447d5ab7c366fe5639be903315fee3ac96cc7213ef9d2d759804f8e0dad7b2c4` |
 | `lib/metabolic-hepatic-v219.js` | 12791 | `b9352877cebf7fbf3c3b99ecb8b72cdbee3ed94e056dc019113668609f5a95a8` |
 | `lib/metabolic-onc-v88.js` | 12659 | `1553b641668c121661a66647da71a4aaaa023e9f3a6b7a753efbcdab27cdba81` |
 | `lib/metabolic-v269.js` | 3262 | `0c7a42557886f2b0aeee7949b8d0bd682d795d4526174fd540717a978d94ec2f` |

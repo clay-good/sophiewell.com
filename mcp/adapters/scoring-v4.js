@@ -8,6 +8,7 @@
 
 import * as F from '../../lib/scoring-v4.js';
 import { wellsDvt as clinicalWellsDvt } from '../../lib/clinical.js';
+import { scoreScreener, bandFor } from '../../lib/screener.js';
 
 export default [
   {
@@ -2066,5 +2067,19 @@ export default [
       { dom: 'ap-pd-pain', arg: 'pain', kind: 'number', required: true, label: 'PADSS: pain (0-2)' },
       { dom: 'ap-pd-bld', arg: 'surgicalBleeding', kind: 'number', required: true, label: 'PADSS: surgical bleeding (0-2)' },
     ],
+  },
+  {
+    id: 'phq9',
+    // The nine PHQ-9 items (each 0-3) score via the generic screener compute over
+    // the exported PHQ9_CONFIG; maxScore (27) is echoed so the "of 27" denominator
+    // is in the JSON and the numeric round-trip does not depend on the "PHQ-9" 9.
+    summary: 'PHQ-9 depression screen (Kroenke 2001): nine items each 0-3 over the last two weeks; total 0-27 with severity bands (0-4 minimal, 5-9 mild, 10-14 moderate, 15-19 moderately severe, 20-27 severe). Item 9 asks about thoughts of self-harm. A validated screening tool, not a diagnosis.',
+    compute: (a) => {
+      const answers = Array.from({ length: 9 }, (_, i) => Number(a[`i${i}`]) || 0);
+      const score = scoreScreener(F.PHQ9_CONFIG.items, answers);
+      const band = bandFor(F.PHQ9_CONFIG.severityBands, score);
+      return { score, maxScore: 27, severity: band ? band.label : null };
+    },
+    fields: Array.from({ length: 9 }, (_, i) => ({ dom: `phq9-${i}`, arg: `i${i}`, kind: 'number', label: `PHQ-9 item ${i + 1} (0-3)` })),
   },
 ];
