@@ -1489,6 +1489,19 @@ the final DOM is unchanged). New adapter module registered in `mcp/catalog.js`.
 The IGRA reference list is a static dataset lookup and stays view-only. Brings
 the exposed total to **1071 calculators across 197 modules**.
 
+## One-hundred-ninth wave — minute-ventilation, unblocking the PaCO2 matcher collision (+1)
+
+`minute-ventilation` already had a pure lib fn (`clinical-v8.js minuteVentilation`);
+it was deferred only because its META.example expected string read "...target
+PaCO2 is 24/min", and the numeric-fact extractor pulls the "2" out of "PaCO2" as a
+spurious fact that the JSON result (V̇E 7.2, rate 24) cannot satisfy. The expected
+is reworded to "...rate to reach the target is 24/min" — the real facts (7.2, 24)
+still appear in both the browser render and the JSON, so the e2e sweep and the MCP
+round-trip both pass, without the phantom "2". Adapter appended to the existing
+`clinical-v8.js` set; V̇E = RR x Vt, plus alveolar ventilation (with IBW) and the
+rate to a target PaCO2. Brings the exposed total to **1072 calculators across 197
+modules**.
+
 ## Exposed
 
 Each id below is live in `mcp/catalog.js`. The gate parses this list.
@@ -2656,6 +2669,7 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 - `o2-cylinder-duration`
 - `neonatal-feeding-volume`
 - `oxytocin-titration`
+- `minute-ventilation`
 
 ### lib/scoring-v4.js
 - `mgap`

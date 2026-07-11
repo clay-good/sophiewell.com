@@ -216,4 +216,16 @@ export default [
       { dom: 'oxy-rate', arg: 'rateMlHr', kind: 'number', required: true, label: 'Pump rate (mL/hr)', unit: 'mL/hr', to: (v) => v || 0 },
     ],
   },
+  {
+    id: 'minute-ventilation',
+    summary: 'Minute ventilation and gas-exchange targets: minute ventilation (V̇E, L/min) = respiratory rate x tidal volume; with ideal body weight it also gives alveolar ventilation (subtracting ~2.2 mL/kg dead space), and with a current and target PaCO2 the rate to reach the target (rate x current/target PaCO2). A planning estimate, not a ventilator-mode order.',
+    compute: F.minuteVentilation,
+    fields: [
+      { dom: 'mv-rr', arg: 'respiratoryRate', kind: 'number', required: true, label: 'Respiratory rate', unit: '/min' },
+      { dom: 'mv-vt', arg: 'tidalVolumeMl', kind: 'number', required: true, label: 'Tidal volume', unit: 'mL' },
+      { dom: 'mv-ibw', arg: 'ibwKg', kind: 'number', label: 'Ideal body weight (optional, for alveolar ventilation)', unit: 'kg' },
+      { dom: 'mv-paco2', arg: 'currentPaco2', kind: 'number', label: 'Current PaCO2 (optional)', unit: 'mmHg' },
+      { dom: 'mv-target', arg: 'targetPaco2', kind: 'number', label: 'Target PaCO2 (optional)', unit: 'mmHg' },
+    ],
+  },
 ];

@@ -1916,6 +1916,17 @@ test('lib/rcc-prognosis-v266.js worked calls', () => {
   assert.equal(low.score, 0);
 });
 
+test('lib/clinical-v8.js minute-ventilation worked calls', () => {
+  // RR 16 x Vt 450 mL = 7.2 L/min; rate to move PaCO2 60 -> 40 is 16 x 60/40 = 24.
+  const r = ok('minute-ventilation', { 'mv-rr': '16', 'mv-vt': '450', 'mv-paco2': '60', 'mv-target': '40' });
+  assert.equal(r.minuteVentilationLMin, 7.2);
+  assert.equal(r.requiredRate, 24);
+  // Without a target, no required rate is computed.
+  const noTarget = ok('minute-ventilation', { 'mv-rr': '12', 'mv-vt': '500' });
+  assert.equal(noTarget.minuteVentilationLMin, 6);
+  assert.equal(noTarget.requiredRate, null);
+});
+
 test('lib/tb-testing.js worked calls', () => {
   // 12 mm at the moderate (10 mm) cutoff is positive.
   const pos = ok('tb-testing', { 'tb-mm': '12', 'tb-risk': '10' });
