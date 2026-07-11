@@ -53,7 +53,18 @@ test('search-corpus: no en/em dash or smart quotes leaked from source prose', ()
 test('search-corpus: gzip size is within the 200 KB budget', () => {
   const gzip = gzipSync(corpusText).length;
   assert.ok(gzip <= 200 * 1024, `corpus is ${gzip} bytes gzipped, over the 200 KB budget`);
-  assert.equal(manifest.gzipBytes, gzip, 'manifest gzipBytes matches the committed corpus');
+  // manifest.gzipBytes is informational and stamped by whichever zlib built
+  // it; different node/zlib versions emit different (all valid) gzip
+  // streams, so a strict equality here is environment-dependent - it held
+  // on the machine that stamped the manifest and failed on CI's pinned
+  // node (190444 vs 189860). The drift guard is manifest.hash over the raw
+  // bytes (next test); here we sanity-check the stamp is a plausible
+  // measurement of THIS corpus (within 2%) and inside the budget itself.
+  assert.ok(Number.isInteger(manifest.gzipBytes) && manifest.gzipBytes > 0, 'gzipBytes is a positive integer');
+  assert.ok(manifest.gzipBytes <= manifest.budgetGzip, 'stamped gzipBytes is within the stamped budget');
+  const drift = Math.abs(manifest.gzipBytes - gzip) / gzip;
+  assert.ok(drift <= 0.02,
+    `manifest gzipBytes (${manifest.gzipBytes}) differs from this environment's measurement (${gzip}) by ${(drift * 100).toFixed(1)}% - over the 2% zlib-variance allowance, rebuild the corpus`);
 });
 
 test('search-corpus: manifest hash matches the corpus bytes (drift guard)', () => {
