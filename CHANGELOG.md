@@ -6,6 +6,15 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Changed (spec-v291 — v13 synonyms: cross-domain search-gap sweep)
+
+- A wide probe sweep across electrolytes, tox, renal, heme, OB, and acid-base found five
+  queries where the right calculator existed but the search mis-routed; each is now fixed and
+  pinned by a golden-set probe: "serum osmolality calculation" → Osmolal Gap, "aki staging" →
+  KDIGO AKI, "heparin induced thrombocytopenia 4t" → 4Ts, "gestational diabetes screen" →
+  IADPSG, "metabolic acidosis compensation" → Winters (see
+  [docs/spec-v291.md](docs/spec-v291.md)). Golden set 80 → 85 probes, all green.
+
 ### Changed (spec-v290 — clinical verb forms match their noun-form tiles in search)
 
 - Typing the verb now finds the tool named for the noun: "intubate" reaches the intubation

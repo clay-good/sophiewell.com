@@ -1,4 +1,4 @@
-// Search-relevance golden set. Runs 80 realistic clinical queries through the
+// Search-relevance golden set. Runs 85 realistic clinical queries through the
 // real find_calculator surface (shared resolvePromptRanked + data/synonyms.json
 // + data/search-corpus over the exposed registry) and asserts an acceptable
 // tile ranks in the top 3. This pins the routing quality spec-v282 shipped:
@@ -126,6 +126,13 @@ const PROBES = [
   // nurse types matches the noun-form tile.
   ['intubate this patient', ['intubation-difficulty-scale', 'macocha', 'wilson-airway']],
   ['dialyze for toxic alcohol', ['toxic-alcohol']],
+  // v13 synonym batch (spec-v291): gaps a wide cross-domain probe sweep
+  // surfaced where the tile existed but the query mis-routed.
+  ['serum osmolality calculation', ['osmolal-gap']],
+  ['acute kidney injury staging', ['kdigo-aki']],
+  ['heparin induced thrombocytopenia 4t', ['four-ts']],
+  ['gestational diabetes screen', ['iadpsg', 'carpenter-coustan']],
+  ['metabolic acidosis compensation', ['winters']],
 ];
 
 test(`every golden probe routes an acceptable tile into the top ${TOP_N}`, () => {
