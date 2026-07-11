@@ -1916,6 +1916,18 @@ test('lib/rcc-prognosis-v266.js worked calls', () => {
   assert.equal(low.score, 0);
 });
 
+test('lib/scoring-v4.js epds worked calls', () => {
+  // Example answers sum to 7 -> low likelihood (max 30).
+  const low = ok('epds', { 'epds-0': '1', 'epds-1': '1', 'epds-2': '1', 'epds-3': '1', 'epds-4': '0', 'epds-5': '1', 'epds-6': '1', 'epds-7': '1', 'epds-8': '0', 'epds-9': '0' });
+  assert.equal(low.score, 7);
+  assert.equal(low.maxScore, 30);
+  assert.equal(low.severity, 'Low likelihood');
+  // A total >= 13 flags likely depression.
+  const high = ok('epds', { 'epds-0': '2', 'epds-1': '2', 'epds-2': '2', 'epds-3': '2', 'epds-4': '2', 'epds-5': '2', 'epds-6': '1', 'epds-7': '0', 'epds-8': '0', 'epds-9': '0' });
+  assert.equal(high.score, 13);
+  assert.match(high.severity, /Likely depression/);
+});
+
 test('lib/scoring-v4.js gad7 worked calls', () => {
   // Example answers sum to 7 -> mild anxiety (max 21).
   const mild = ok('gad7', { 'gad7-0': '1', 'gad7-1': '1', 'gad7-2': '1', 'gad7-3': '2', 'gad7-4': '0', 'gad7-5': '1', 'gad7-6': '1' });

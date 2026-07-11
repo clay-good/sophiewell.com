@@ -1502,6 +1502,15 @@ round-trip both pass, without the phantom "2". Adapter appended to the existing
 rate to a target PaCO2. Brings the exposed total to **1072 calculators across 197
 modules**.
 
+## One-hundred-seventeenth wave — the EPDS perinatal depression screen (+1)
+
+`epds` (Edinburgh Postnatal Depression Scale) follows the same screener recipe
+over the exported `EPDS_CONFIG` (ten items each 0-3, total 0-30; 0-9 low
+likelihood, 10-12 possible, 13+ likely depression). maxScore (30) echoed; example
+added (config exampleAnswers -> 7 = Low likelihood) and allowlisted for the e2e.
+Completes the renderScreener screener batch (phq9 / gad7 / epds). Brings the
+exposed total to **1080 calculators across 198 modules**.
+
 ## One-hundred-sixteenth wave — the GAD-7 anxiety screen (+1)
 
 `gad7` follows the exact phq9 recipe over the exported `GAD7_CONFIG` (seven items
@@ -2959,6 +2968,7 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 - `aldrete-padss`
 - `phq9`
 - `gad7`
+- `epds`
 
 ### lib/scoring-v5.js
 - `phq2-gad2`

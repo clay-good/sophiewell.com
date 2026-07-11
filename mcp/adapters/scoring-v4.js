@@ -2094,4 +2094,16 @@ export default [
     },
     fields: Array.from({ length: 7 }, (_, i) => ({ dom: `gad7-${i}`, arg: `i${i}`, kind: 'number', label: `GAD-7 item ${i + 1} (0-3)` })),
   },
+  {
+    id: 'epds',
+    // Same generic-screener pattern, over the exported EPDS_CONFIG (perinatal).
+    summary: 'Edinburgh Postnatal Depression Scale (EPDS, Cox 1987): ten items each 0-3 for perinatal depression; total 0-30 (0-9 low likelihood, 10-12 possible depression, 13+ likely depression - clinical evaluation indicated). Item 10 asks about self-harm. A validated screening tool, not a diagnosis.',
+    compute: (a) => {
+      const answers = Array.from({ length: 10 }, (_, i) => Number(a[`i${i}`]) || 0);
+      const score = scoreScreener(F.EPDS_CONFIG.items, answers);
+      const band = bandFor(F.EPDS_CONFIG.severityBands, score);
+      return { score, maxScore: 30, severity: band ? band.label : null };
+    },
+    fields: Array.from({ length: 10 }, (_, i) => ({ dom: `epds-${i}`, arg: `i${i}`, kind: 'number', label: `EPDS item ${i + 1} (0-3)` })),
+  },
 ];
