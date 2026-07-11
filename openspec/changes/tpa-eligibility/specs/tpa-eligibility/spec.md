@@ -5,7 +5,7 @@
 ### Requirement: IV alteplase eligibility decision aid
 
 The catalog SHALL provide a `tpa-eligibility` calculator that, given the time from last known
-well and a checklist of the AHA/ASA 2019 inclusion/exclusion criteria, reports whether the
+well and a checklist of the AHA/ASA 2026 inclusion/exclusion criteria, reports whether the
 patient meets the IV alteplase eligibility checklist for that time window. This answers the
 routine stroke-team question "is this patient a thrombolysis candidate?", which the existing
 stroke tiles (all severity, risk, or prognosis scores) do not.
@@ -20,7 +20,7 @@ stroke team (spec-v11 §5.3).
 #### Scenario: Eligible in the ≤ 3 hour window
 - **WHEN** the ≤ 3 hour window is selected and no absolute exclusion is checked
 - **THEN** the tile reports that no absolute contraindication is met and the patient meets the
-  AHA/ASA 2019 IV alteplase checklist, deferring the treatment decision to the stroke team
+  AHA/ASA 2026 IV alteplase checklist, deferring the treatment decision to the stroke team
 
 #### Scenario: An absolute exclusion is present
 - **WHEN** one or more absolute exclusion criteria are checked

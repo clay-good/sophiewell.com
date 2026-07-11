@@ -1,8 +1,10 @@
 # Tasks — IV alteplase eligibility tile
 
 > Docs-only proposal. Before building, re-verify every time window, exclusion criterion, and
-> threshold in `design.md` against the AHA/ASA 2019 guideline (Powers 2019) + ECASS-III + the
-> alteplase package insert (spec-v97 discipline), and grep-verify id absence
+> threshold in `design.md` against the **AHA/ASA 2026 guideline** (Stroke 2026,
+> doi:10.1161/STR.0000000000000513, which REPLACES the 2019 update) + the tenecteplase/alteplase
+> package inserts (spec-v97 discipline). The design's criteria table is a 2019-era SKETCH — do
+> NOT ship any criterion not confirmed against the 2026 text. Grep-verify id absence
 > (`grep -c "id: 'tpa-eligibility'" app.js` == 0, `grep -rn "'tpa-eligibility'" mcp/adapters/`).
 > Both confirmed 0 at proposal time (2026-07-11). This is a HIGH-STAKES tile — do not ship with
 > any unverified criterion.
@@ -24,7 +26,7 @@
 - [ ] 2.2 `lib/meta.js` entry: clinical:true, group G, specialties (neurology, emergency-medicine,
       critical-care, nursing-ed), `example.fields` on the ≤ 3 h eligible path (so the MCP round-trip
       asserts a determinate verdict), bands text ≤ 200 chars, citation ≤ 300 chars naming the
-      AHA/ASA 2019 guideline. Confirm the AHA/ASA issuer vs `ISSUER_PATTERN`: `AHA` IS in the
+      AHA/ASA 2026 guideline. Confirm the AHA/ASA issuer vs `ISSUER_PATTERN`: `AHA` IS in the
       pattern, so this tile REQUIRES a `citationAccessed` date AND a `docs/citation-staleness.md`
       row (unlike spec-v292's AABB, which is not in the pattern).
 
@@ -44,4 +46,4 @@
 
 ## 6. Ship
 - [ ] 6.1 lint / test / build green; `git checkout -- data/` (build restamp) before commit;
-      author `docs/spec-v*.md` recording the tile and the AHA/ASA 2019 criteria verification.
+      author `docs/spec-v*.md` recording the tile and the AHA/ASA 2026 criteria verification.
