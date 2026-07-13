@@ -6,6 +6,19 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v297 — Seddon-Sunderland nerve-injury classification tile, 1148 → 1149)
+
+- New `seddon-sunderland` tile (group G): the clinician selects the Sunderland grade (I–V) and the
+  tile reports which structures are disrupted, the Seddon equivalent (neurapraxia / axonotmesis /
+  neurotmesis), the expected recovery, and whether surgical repair is typically required (flagged
+  at grades IV–V) — a classification descriptor, not a diagnosis or a surgical decision
+  ([spec-v11] §5.3). Closes the "Seddon-Sunderland nerve-injury grading" catalog gap the v14
+  synonym sweep noted. Table re-fetched and cross-verified (spec-v97) against two independent
+  sources (Wikipedia nerve-injury-classification and StatPearls) that agree on every grade. New
+  `lib/nerve-injury-v297.js` + `views/group-v297.js` (RV297); +1 META entry, +1 UTILITIES row, a
+  synonym entry (v17 → v18), 6 unit tests + fuzz, corpus rebuilt to 1149. See
+  [docs/spec-v297.md](docs/spec-v297.md). The MCP adapter follows in a later wave.
+
 ### Added (spec-v296 — Benzodiazepine dose-equivalence converter, 1147 → 1148)
 
 - New `benzodiazepine-equivalence` tile (group F, with the opioid and steroid converters): given a
