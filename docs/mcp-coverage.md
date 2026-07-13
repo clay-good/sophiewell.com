@@ -1502,6 +1502,18 @@ round-trip both pass, without the phantom "2". Adapter appended to the existing
 rate to a target PaCO2. Brings the exposed total to **1072 calculators across 197
 modules**.
 
+## One-hundred-twenty-second wave — the Seddon-Sunderland nerve-injury classification in lib/nerve-injury-v297.js (+1)
+
+`seddon-sunderland` (spec-v297) classifies a peripheral nerve injury: given the
+Sunderland grade (I-V) it reports the disrupted structures, the Seddon equivalent,
+the expected recovery, and whether surgical repair is typically required (grades
+IV-V). The single `grade` field is a required enum over the 5 grades; the compute's
+`band` carries the "Sunderland grade IV" example, so it round-trips through the
+default `makeToArgs` with no custom toArgs. New adapter module registered in
+`mcp/catalog.js`; its golden probe ("seddon sunderland") is promoted now that the
+tile is in the MCP-exposed registry. Brings the exposed total to **1086 calculators
+across 202 modules**.
+
 ## One-hundred-twenty-first wave — the benzodiazepine dose-equivalence converter in lib/benzo-equiv-v296.js (+1)
 
 `benzodiazepine-equivalence` (spec-v296) converts a source benzodiazepine and dose
@@ -3079,6 +3091,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/benzo-equiv-v296.js
 - `benzodiazepine-equivalence`
+
+### lib/nerve-injury-v297.js
+- `seddon-sunderland`
 
 ### lib/tb-testing.js
 - `tb-testing`

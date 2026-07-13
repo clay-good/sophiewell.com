@@ -2109,6 +2109,18 @@ test('lib/benzo-equiv-v296.js worked calls', () => {
   assert.equal(rt.targetDoseVaDod, '4');
 });
 
+test('lib/nerve-injury-v297.js worked calls', () => {
+  // Grade IV flags surgical repair (perineurium disrupted).
+  const s4 = ok('seddon-sunderland', { 'ni-grade': 'IV' });
+  assert.equal(s4.grade, 'IV');
+  assert.equal(s4.surgeryLikely, true);
+  assert.match(s4.band, /Sunderland grade IV/);
+  // Grade I is neurapraxia with no surgery.
+  const s1 = ok('seddon-sunderland', { 'ni-grade': 'I' });
+  assert.equal(s1.seddon, 'neurapraxia');
+  assert.equal(s1.surgeryLikely, false);
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];

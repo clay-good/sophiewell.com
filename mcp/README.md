@@ -78,7 +78,7 @@ find_calculator { "query": "stroke risk afib" }
        candidates: [ { id: "chads", name: "CHA2DS2-VASc", why: "synonym", ... }, ... ] }
 
 list_calculators { "specialty": "hepatology" }
-  -> { coverage: "1085 of 1109 catalog tiles exposed ...", calculators: [ { id: "meld-xi", ... }, ... ] }
+  -> { coverage: "1086 of 1109 catalog tiles exposed ...", calculators: [ { id: "meld-xi", ... }, ... ] }
 
 describe_calculator { "id": "meld-xi" }
   -> { inputSchema: { ... mx-bili, mx-creat ... }, citation: "Heuman DM ... Liver Transpl 2007", ... }
@@ -312,8 +312,10 @@ CAGE alcohol screens, all in
 `lib/scoring-v4.js`, and a one-hundred-nineteenth the FAST dementia staging tile
 in `lib/fast-dementia-v294.js`, and a one-hundred-twentieth the Reisberg Global
 Deterioration Scale tile in `lib/gds-v295.js`, and a one-hundred-twenty-first the
-benzodiazepine dose-equivalence converter in `lib/benzo-equiv-v296.js`, for
-1085 across 201 modules
+benzodiazepine dose-equivalence converter in `lib/benzo-equiv-v296.js`, and a
+one-hundred-twenty-second the Seddon-Sunderland nerve-injury classification in
+`lib/nerve-injury-v297.js`, for
+1086 across 202 modules
 today. <!-- catalog-truth:historical (197 is the count of lib modules adapted, not a catalog tile count) -->
 Later waves extend it module by module against the same contract.
 

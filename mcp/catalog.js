@@ -209,6 +209,7 @@ import transfusionV292 from './adapters/transfusion-v292.js';
 import fastDementiaV294 from './adapters/fast-dementia-v294.js';
 import gdsV295 from './adapters/gds-v295.js';
 import benzoEquivV296 from './adapters/benzo-equiv-v296.js';
+import nerveInjuryV297 from './adapters/nerve-injury-v297.js';
 import tbTesting from './adapters/tb-testing.js';
 import labInterpret from './adapters/lab-interpret.js';
 import decisionRulesV258 from './adapters/decision-rules-v258.js';
@@ -412,6 +413,7 @@ const ADAPTER_MODULES = [
   ['fast-dementia-v294', fastDementiaV294],
   ['gds-v295', gdsV295],
   ['benzo-equiv-v296', benzoEquivV296],
+  ['nerve-injury-v297', nerveInjuryV297],
   ['tb-testing', tbTesting],
   ['lab-interpret', labInterpret],
   ['decision-rules-v258', decisionRulesV258],
