@@ -78,7 +78,7 @@ find_calculator { "query": "stroke risk afib" }
        candidates: [ { id: "chads", name: "CHA2DS2-VASc", why: "synonym", ... }, ... ] }
 
 list_calculators { "specialty": "hepatology" }
-  -> { coverage: "1083 of 1109 catalog tiles exposed ...", calculators: [ { id: "meld-xi", ... }, ... ] }
+  -> { coverage: "1084 of 1109 catalog tiles exposed ...", calculators: [ { id: "meld-xi", ... }, ... ] }
 
 describe_calculator { "id": "meld-xi" }
   -> { inputSchema: { ... mx-bili, mx-creat ... }, citation: "Heuman DM ... Liver Transpl 2007", ... }
@@ -310,8 +310,9 @@ depression screen, and a one-hundred-sixteenth the GAD-7 anxiety screen, and a o
 EPDS perinatal depression screen, and a one-hundred-eighteenth the AUDIT-C and
 CAGE alcohol screens, all in
 `lib/scoring-v4.js`, and a one-hundred-nineteenth the FAST dementia staging tile
-in `lib/fast-dementia-v294.js`, for
-1083 across 199 modules
+in `lib/fast-dementia-v294.js`, and a one-hundred-twentieth the Reisberg Global
+Deterioration Scale tile in `lib/gds-v295.js`, for
+1084 across 200 modules
 today. <!-- catalog-truth:historical (197 is the count of lib modules adapted, not a catalog tile count) -->
 Later waves extend it module by module against the same contract.
 

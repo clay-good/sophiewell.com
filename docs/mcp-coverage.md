@@ -1502,6 +1502,19 @@ round-trip both pass, without the phantom "2". Adapter appended to the existing
 rate to a target PaCO2. Brings the exposed total to **1072 calculators across 197
 modules**.
 
+## One-hundred-twentieth wave — the Reisberg Global Deterioration Scale tile in lib/gds-v295.js (+1)
+
+`global-deterioration-scale` (spec-v295) is the GDS, the global cognitive/functional
+staging companion to FAST: given the most appropriate global stage (1-7) it
+reports the published stage label and clinical characteristics and, at stage 5 and
+beyond, flags that the patient can no longer survive without assistance. The single
+`stage` field is a required enum over the 7 stages; the compute's `band` carries
+the "GDS stage 5" example, so it round-trips through the default `makeToArgs` with
+no custom toArgs. New adapter module registered in `mcp/catalog.js`; its golden
+probe ("global deterioration scale") is promoted now that the tile is in the
+MCP-exposed registry. Brings the exposed total to **1084 calculators across 200
+modules**.
+
 ## One-hundred-nineteenth wave — the FAST dementia staging tile in lib/fast-dementia-v294.js (+1)
 
 `fast-dementia` (spec-v294) is the Functional Assessment Staging Tool: given the
@@ -3049,6 +3062,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/fast-dementia-v294.js
 - `fast-dementia`
+
+### lib/gds-v295.js
+- `global-deterioration-scale`
 
 ### lib/tb-testing.js
 - `tb-testing`

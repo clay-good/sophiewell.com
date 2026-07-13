@@ -2085,6 +2085,19 @@ test('lib/fast-dementia-v294.js worked calls', () => {
   assert.match(s3.descriptor, /Decreased job functioning/);
 });
 
+test('lib/gds-v295.js worked calls', () => {
+  // Stage 5 flags "can no longer survive without assistance".
+  const s5 = ok('global-deterioration-scale', { 'gds-stage': '5' });
+  assert.equal(s5.stage, '5');
+  assert.equal(s5.needsAssistance, true);
+  assert.match(s5.band, /GDS stage 5/);
+  assert.match(s5.band, /can no longer survive without some assistance/);
+  // A pre-dementia stage returns its label with no assistance flag.
+  const s2 = ok('global-deterioration-scale', { 'gds-stage': '2' });
+  assert.equal(s2.needsAssistance, false);
+  assert.match(s2.stageLabel, /age-associated memory impairment/);
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];
