@@ -6,6 +6,20 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v298 — Graduated Return-to-Sport (concussion) tile, 1149 → 1150)
+
+- New `concussion-rts` tile (group G): the clinician selects the return-to-sport step (1–6) and the
+  tile reports the exercise strategy, the activity at that step, the goal, and the consensus
+  progression gates — that Steps 4–6 begin only after full symptom resolution (including after
+  exertion) and that a written HCP determination of readiness is required before unrestricted return
+  to sport — a consensus strategy descriptor, not a clearance decision ([spec-v11] §5.3). Closes the
+  "concussion return-to-play" catalog gap the v14 synonym sweep noted. Six-step ladder transcribed
+  verbatim from Table 2 of the Amsterdam 2022 consensus and cross-verified (spec-v97) against
+  independent reproductions (Cleveland Clinic; Parachute/Coach.ca handouts). New
+  `lib/concussion-rts-v298.js` + `views/group-v298.js` (RV298); +1 META entry, +1 UTILITIES row, a
+  synonym entry (v18 → v19), 7 unit tests + fuzz, corpus rebuilt to 1150. See
+  [docs/spec-v298.md](docs/spec-v298.md). The MCP adapter follows in a later wave.
+
 ### Added (spec-v297 — Seddon-Sunderland nerve-injury classification tile, 1148 → 1149)
 
 - New `seddon-sunderland` tile (group G): the clinician selects the Sunderland grade (I–V) and the
