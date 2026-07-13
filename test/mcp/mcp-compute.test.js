@@ -2072,6 +2072,19 @@ test('lib/transfusion-v292.js worked calls', () => {
   assert.doesNotMatch(acs.band, /\d+(\.\d+)?\s*g\/dL/);
 });
 
+test('lib/fast-dementia-v294.js worked calls', () => {
+  // Stage 7a flags the Medicare dementia hospice-eligibility context.
+  const s7a = ok('fast-dementia', { 'fast-stage': '7a' });
+  assert.equal(s7a.stage, '7a');
+  assert.equal(s7a.hospiceContext, true);
+  assert.match(s7a.band, /FAST stage 7a/);
+  assert.match(s7a.band, /hospice-eligibility guideline/);
+  // An earlier stage returns its descriptor with no hospice context.
+  const s3 = ok('fast-dementia', { 'fast-stage': '3' });
+  assert.equal(s3.hospiceContext, false);
+  assert.match(s3.descriptor, /Decreased job functioning/);
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];

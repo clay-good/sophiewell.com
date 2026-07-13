@@ -206,6 +206,7 @@ import rccPrognosisV279 from './adapters/rcc-prognosis-v279.js';
 import rheumFnV280 from './adapters/rheum-fn-v280.js';
 import hccSurveillanceV281 from './adapters/hcc-surveillance-v281.js';
 import transfusionV292 from './adapters/transfusion-v292.js';
+import fastDementiaV294 from './adapters/fast-dementia-v294.js';
 import tbTesting from './adapters/tb-testing.js';
 import labInterpret from './adapters/lab-interpret.js';
 import decisionRulesV258 from './adapters/decision-rules-v258.js';
@@ -406,6 +407,7 @@ const ADAPTER_MODULES = [
   ['rheum-fn-v280', rheumFnV280],
   ['hcc-surveillance-v281', hccSurveillanceV281],
   ['transfusion-v292', transfusionV292],
+  ['fast-dementia-v294', fastDementiaV294],
   ['tb-testing', tbTesting],
   ['lab-interpret', labInterpret],
   ['decision-rules-v258', decisionRulesV258],

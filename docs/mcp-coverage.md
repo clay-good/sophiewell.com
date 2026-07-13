@@ -1502,6 +1502,18 @@ round-trip both pass, without the phantom "2". Adapter appended to the existing
 rate to a target PaCO2. Brings the exposed total to **1072 calculators across 197
 modules**.
 
+## One-hundred-nineteenth wave — the FAST dementia staging tile in lib/fast-dementia-v294.js (+1)
+
+`fast-dementia` (spec-v294) is the Functional Assessment Staging Tool: given the
+highest consecutive FAST stage reached (1-5, 6a-6e, 7a-7f) it reports the
+published functional descriptor and, at stage 7a and beyond, the Medicare dementia
+hospice-eligibility context. The single `stage` field is a required enum over the
+16 stage codes; the compute's `band` carries the "FAST stage 7a" example, so it
+round-trips through the default `makeToArgs` with no custom toArgs. New adapter
+module registered in `mcp/catalog.js`; its golden probe ("fast dementia staging")
+is promoted now that the tile is in the MCP-exposed registry. Brings the exposed
+total to **1083 calculators across 199 modules**.
+
 ## One-hundred-eighteenth wave — the AUDIT-C and CAGE alcohol screens (+2)
 
 `auditc` (three items 0-4, total 0-12; >= 4/3 risky) and `cage` (four yes/no
@@ -3034,6 +3046,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/transfusion-v292.js
 - `transfusion-threshold`
+
+### lib/fast-dementia-v294.js
+- `fast-dementia`
 
 ### lib/tb-testing.js
 - `tb-testing`
