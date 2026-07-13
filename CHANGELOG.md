@@ -6,6 +6,17 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Changed (spec-v293 — v14 synonyms: second cross-domain search-gap sweep)
+
+- A second probe sweep (66 nurse-phrased queries across periop, ID, GI, endocrine, peds,
+  geriatrics, wounds/lines, and more) found six queries where the right calculator existed but
+  the search mis-routed; each is now fixed and pinned by a golden-set probe: "post op nausea
+  risk" → Apfel, "pre op cardiac risk" → RCRI, "cellulitis vs nec fasc" → LRINEC, "phlebitis
+  scale" → VIP/extravasation, "c diff severity" → ATLAS (CDI), "insulin sliding scale" →
+  insulin correction (see [docs/spec-v293.md](docs/spec-v293.md)). Golden set 86 → 92 probes,
+  all green. Genuine catalog gaps the sweep confirmed (FAST dementia staging, emetogenicity
+  risk, benzo conversion, and more) are noted in the spec, not forced into synonyms.
+
 ### Added (spec-v292 — Restrictive transfusion threshold decision aid (AABB 2023), 1144 → 1145)
 
 - New `transfusion-threshold` tile (group G): given a hemoglobin and a patient population, it
