@@ -14,6 +14,18 @@ import { test, expect } from '@playwright/test';
 
 test.skip(({ browserName }) => browserName !== 'chromium', 'engine sweep is chromium-only');
 
+// Pin the browser wall clock so the clock-relative rules (R-PA-005's 90-day
+// retro-auth window, R-PA-006's future ceiling) see the hardcoded fixture
+// service date (2026-04-12) as recent forever. The browser pa engine reads
+// `new Date()` (it cannot see the SOPHIEWELL_NOW env pin the Node unit suites
+// use), so without this the happy-path packet would start flagging R-PA-005 once
+// the fixture date aged past 90 days -- a time-bomb, not a code regression. The
+// seed date matches scripts/audit-pa.mjs and the pinned unit suites; setFixedTime
+// freezes Date without pausing timers, so the drop/render pipeline is unaffected.
+test.beforeEach(async ({ page }) => {
+  await page.clock.setFixedTime(new Date('2026-05-29T12:00:00Z'));
+});
+
 // Synced to the 25-rule starter set at wave 52-1f close. Adding rules
 // generally means adding anchors to this fixture too; the engine
 // unit suite uses the canonical version, this is the e2e mirror.
