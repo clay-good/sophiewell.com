@@ -11,6 +11,11 @@ import { classifyDocument } from '../../lib/pa/classify.js';
 import { detectPayer, detectPacketPayer } from '../../lib/pa/payer.js';
 import { buildBundle, runEngine } from '../../lib/pa/engine.js';
 
+// Pin "today" so the clock-relative rules (R-PA-005 retro window, R-PA-006
+// future ceiling) see the hardcoded fixture service dates as recent forever.
+// Same seed date as scripts/audit-pa.mjs; todayUtc() reads the pin lazily.
+process.env.SOPHIEWELL_NOW = '2026-05-29';
+
 // ---- classifier ----
 
 test('classifyDocument: clinical-note via HPI / A&P anchors', () => {

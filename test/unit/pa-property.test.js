@@ -20,6 +20,11 @@ import { buildBundle, runEngine } from '../../lib/pa/engine.js';
 import { buildJsonReport } from '../../lib/pa/report.js';
 import { redactBundle } from '../../lib/pa/redact.js';
 
+// Pin "today" so the clock-relative rules (R-PA-005 retro window, R-PA-006
+// future ceiling) see the hardcoded fixture service dates as recent forever.
+// Same seed date as scripts/audit-pa.mjs; todayUtc() reads the pin lazily.
+process.env.SOPHIEWELL_NOW = '2026-05-29';
+
 const FORM = {
   name: 'pa-form.txt',
   sha256: 'sha-form',

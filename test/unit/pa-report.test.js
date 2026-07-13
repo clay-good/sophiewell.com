@@ -10,6 +10,11 @@ import {
   buildRedactedDocxReport,
 } from '../../lib/pa/report.js';
 
+// Pin "today" so the clock-relative rules (R-PA-005 retro window, R-PA-006
+// future ceiling) see the hardcoded fixture service dates as recent forever.
+// Same seed date as scripts/audit-pa.mjs; todayUtc() reads the pin lazily.
+process.env.SOPHIEWELL_NOW = '2026-05-29';
+
 const HAPPY_TEXT = [
   'Cover sheet',
   'Patient: Jane Q Doe',

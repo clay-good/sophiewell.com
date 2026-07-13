@@ -16,6 +16,11 @@ import { buildJsonReport, buildRedactedJsonReport } from '../../lib/pa/report.js
 import { extractAll, extractDates, extractServiceDates, extractPosCodes } from '../../lib/pa/extract.js';
 import { redactText } from '../../lib/pa/redact.js';
 
+// Pin "today" so the clock-relative rules (R-PA-005 retro window, R-PA-006
+// future ceiling) see the hardcoded fixture service dates as recent forever.
+// Same seed date as scripts/audit-pa.mjs; todayUtc() reads the pin lazily.
+process.env.SOPHIEWELL_NOW = '2026-05-29';
+
 // A generous ceiling: the real pipeline finishes a 1 MB packet in well under
 // this. The point is to catch an O(n^2)/backtracking regression, not to
 // benchmark; CI machines are slow and shared, so the budget is deliberately

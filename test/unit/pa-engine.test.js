@@ -10,6 +10,11 @@ import assert from 'node:assert/strict';
 import { buildBundle, runEngine, summarizeFindings } from '../../lib/pa/engine.js';
 import { STARTER_RULES } from '../../lib/pa/rules.js';
 
+// Pin "today" so the clock-relative rules (R-PA-005 retro window, R-PA-006
+// future ceiling) see the hardcoded fixture service dates as recent forever.
+// Same seed date as scripts/audit-pa.mjs; todayUtc() reads the pin lazily.
+process.env.SOPHIEWELL_NOW = '2026-05-29';
+
 // Happy-path packet: one clinical-note document with everything the
 // starter rules look for, all valid. Should be all-pass.
 // Happy-path packet that satisfies every rule in the wave 52-1f
