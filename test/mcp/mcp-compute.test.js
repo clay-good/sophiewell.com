@@ -2121,6 +2121,21 @@ test('lib/nerve-injury-v297.js worked calls', () => {
   assert.equal(s1.surgeryLikely, false);
 });
 
+test('lib/concussion-rts-v298.js worked calls', () => {
+  // Step 4 (non-contact drills) requires full symptom resolution first.
+  const s4 = ok('concussion-rts', { 'crts-step': '4' });
+  assert.equal(s4.step, 4);
+  assert.equal(s4.resolutionRequired, true);
+  assert.match(s4.band, /Return-to-sport Step 4/);
+  // Step 1 (symptom-limited activity) has no resolution/clearance gate.
+  const s1 = ok('concussion-rts', { 'crts-step': '1' });
+  assert.equal(s1.resolutionRequired, false);
+  assert.equal(s1.clearanceRequired, false);
+  // Step 5 (full contact) is HCP-clearance gated.
+  const s5 = ok('concussion-rts', { 'crts-step': '5' });
+  assert.equal(s5.clearanceRequired, true);
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];

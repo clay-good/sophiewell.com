@@ -1502,6 +1502,20 @@ round-trip both pass, without the phantom "2". Adapter appended to the existing
 rate to a target PaCO2. Brings the exposed total to **1072 calculators across 197
 modules**.
 
+## One-hundred-twenty-third wave — the graduated return-to-sport (concussion) strategy in lib/concussion-rts-v298.js (+1)
+
+`concussion-rts` (spec-v298) is the graduated return-to-sport ladder after a
+sport-related concussion: given the RTS step (1-6) it reports the exercise
+strategy, the activity at that step, the goal, and the consensus progression
+gates (Steps 4-6 begin only after full symptom resolution; a written HCP
+determination of readiness is required before unrestricted return to sport). The
+single `step` field is a required enum over the 6 steps; the compute's `band`
+carries the "Step 4" example, so it round-trips through the default `makeToArgs`
+with no custom toArgs. New adapter module registered in `mcp/catalog.js`; its
+golden probe ("concussion return to sport") is promoted now that the tile is in
+the MCP-exposed registry. Brings the exposed total to **1087 calculators across
+203 modules**.
+
 ## One-hundred-twenty-second wave — the Seddon-Sunderland nerve-injury classification in lib/nerve-injury-v297.js (+1)
 
 `seddon-sunderland` (spec-v297) classifies a peripheral nerve injury: given the
@@ -3094,6 +3108,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/nerve-injury-v297.js
 - `seddon-sunderland`
+
+### lib/concussion-rts-v298.js
+- `concussion-rts`
 
 ### lib/tb-testing.js
 - `tb-testing`
