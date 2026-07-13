@@ -185,6 +185,7 @@ import { renderers as RV279 } from './views/group-v279.js';
 import { renderers as RV280 } from './views/group-v280.js';
 import { renderers as RV281 } from './views/group-v281.js';
 import { renderers as RV292 } from './views/group-v292.js';
+import { renderers as RV294 } from './views/group-v294.js';
 import { renderers as RV164 } from './views/group-v164.js';
 import { renderers as RV165 } from './views/group-v165.js';
 import { renderers as RV166 } from './views/group-v166.js';
@@ -221,7 +222,7 @@ import { queryCompute } from './lib/query-compute.js';
 // artifact-detect / artifact-route / artifact-handoff helpers were
 // deleted in spec-v29 wave 29-2 (Group C/L).
 
-const RENDERERS = { ...RA, ...RB, ...RC, ...RE, ...RF, ...RG, ...RH, ...RI, ...RJ, ...RKLMNO, ...RV5, ...RV6, ...RV7, ...RV8, ...RV9, ...RV10, ...RV11, ...RV12, ...RV13, ...RV14, ...RV15, ...RV16, ...RV17, ...RV18, ...RV19, ...RV20, ...RV21, ...RV22, ...RV23, ...RV24, ...RV25, ...RV26, ...RV27, ...RV28, ...RV29, ...RV30, ...RV31, ...RV32, ...RV33, ...RV34, ...RV35, ...RV36, ...RV37, ...RV38, ...RV39, ...RV40, ...RV117, ...RV118, ...RV119, ...RV120, ...RV121, ...RV122, ...RV123, ...RV124, ...RV125, ...RV126, ...RV127, ...RV128, ...RV129, ...RV130, ...RV131, ...RV132, ...RV133, ...RV134, ...RV135, ...RV136, ...RV137, ...RV138, ...RV139, ...RV140, ...RV141, ...RV142, ...RV143, ...RV144, ...RV145, ...RV146, ...RV147, ...RV148, ...RV149, ...RV151, ...RV152, ...RV153, ...RV154, ...RV155, ...RV156, ...RV158, ...RV159, ...RV160, ...RV161, ...RV163, ...RV164, ...RV165, ...RV166, ...RV167, ...RV169, ...RV173, ...RV174, ...RV175, ...RV176, ...RV177, ...RV178, ...RV179, ...RV182, ...RV180, ...RV181, ...RV185, ...RV186, ...RV187, ...RV188, ...RV189, ...RV190, ...RV191, ...RV192, ...RV193, ...RV194, ...RV195, ...RV196, ...RV197, ...RV198, ...RV199, ...RV200, ...RV201, ...RV202, ...RV203, ...RV204, ...RV205, ...RV206, ...RV207, ...RV208, ...RV209, ...RV210, ...RV211, ...RV212, ...RV213, ...RV214, ...RV215, ...RV216, ...RV217, ...RV218, ...RV219, ...RV220, ...RV221, ...RV222, ...RV223, ...RV224, ...RV225, ...RV226, ...RV227, ...RV228, ...RV229, ...RV230, ...RV231, ...RV232, ...RV233, ...RV234, ...RV235, ...RV236, ...RV237, ...RV238, ...RV239, ...RV240, ...RV241, ...RV242, ...RV243, ...RV244, ...RV245, ...RV246, ...RV247, ...RV248, ...RV249, ...RV250, ...RV251, ...RV252, ...RV253, ...RV254, ...RV255, ...RV256, ...RV257, ...RV258, ...RV260, ...RV261, ...RV262, ...RV263, ...RV265, ...RV266, ...RV267, ...RV268, ...RV269, ...RV270, ...RV271, ...RV272, ...RV273, ...RV274, ...RV275, ...RV276, ...RV277, ...RV278, ...RV279, ...RV280, ...RV281, ...RV292, ...RV63, ...RPALINT };
+const RENDERERS = { ...RA, ...RB, ...RC, ...RE, ...RF, ...RG, ...RH, ...RI, ...RJ, ...RKLMNO, ...RV5, ...RV6, ...RV7, ...RV8, ...RV9, ...RV10, ...RV11, ...RV12, ...RV13, ...RV14, ...RV15, ...RV16, ...RV17, ...RV18, ...RV19, ...RV20, ...RV21, ...RV22, ...RV23, ...RV24, ...RV25, ...RV26, ...RV27, ...RV28, ...RV29, ...RV30, ...RV31, ...RV32, ...RV33, ...RV34, ...RV35, ...RV36, ...RV37, ...RV38, ...RV39, ...RV40, ...RV117, ...RV118, ...RV119, ...RV120, ...RV121, ...RV122, ...RV123, ...RV124, ...RV125, ...RV126, ...RV127, ...RV128, ...RV129, ...RV130, ...RV131, ...RV132, ...RV133, ...RV134, ...RV135, ...RV136, ...RV137, ...RV138, ...RV139, ...RV140, ...RV141, ...RV142, ...RV143, ...RV144, ...RV145, ...RV146, ...RV147, ...RV148, ...RV149, ...RV151, ...RV152, ...RV153, ...RV154, ...RV155, ...RV156, ...RV158, ...RV159, ...RV160, ...RV161, ...RV163, ...RV164, ...RV165, ...RV166, ...RV167, ...RV169, ...RV173, ...RV174, ...RV175, ...RV176, ...RV177, ...RV178, ...RV179, ...RV182, ...RV180, ...RV181, ...RV185, ...RV186, ...RV187, ...RV188, ...RV189, ...RV190, ...RV191, ...RV192, ...RV193, ...RV194, ...RV195, ...RV196, ...RV197, ...RV198, ...RV199, ...RV200, ...RV201, ...RV202, ...RV203, ...RV204, ...RV205, ...RV206, ...RV207, ...RV208, ...RV209, ...RV210, ...RV211, ...RV212, ...RV213, ...RV214, ...RV215, ...RV216, ...RV217, ...RV218, ...RV219, ...RV220, ...RV221, ...RV222, ...RV223, ...RV224, ...RV225, ...RV226, ...RV227, ...RV228, ...RV229, ...RV230, ...RV231, ...RV232, ...RV233, ...RV234, ...RV235, ...RV236, ...RV237, ...RV238, ...RV239, ...RV240, ...RV241, ...RV242, ...RV243, ...RV244, ...RV245, ...RV246, ...RV247, ...RV248, ...RV249, ...RV250, ...RV251, ...RV252, ...RV253, ...RV254, ...RV255, ...RV256, ...RV257, ...RV258, ...RV260, ...RV261, ...RV262, ...RV263, ...RV265, ...RV266, ...RV267, ...RV268, ...RV269, ...RV270, ...RV271, ...RV272, ...RV273, ...RV274, ...RV275, ...RV276, ...RV277, ...RV278, ...RV279, ...RV280, ...RV281, ...RV292, ...RV294, ...RV63, ...RPALINT };
 
 // ----- Utility registry ----------------------------------------------------
 // Source of truth for routes, names, group, audiences, and clinical flag.
@@ -1654,12 +1655,14 @@ const UTILITIES = [
   // Assessment program): cognition / dementia-staging instruments for the LTC
   // surface. views/group-v173.js, lib/ltcga-v173.js (RV173). v173 ships the
   // three whose exact item-level scoring was re-fetched and cross-verified
-  // against >= 2 independent sources (spec-v97); the other five proposed tiles
-  // (gpcog, iqcode-short, global-deterioration-scale, fast-dementia, mds-cps)
-  // are deferred pending verbatim sourcing (see docs/spec-v173.md §4).
+  // against >= 2 independent sources (spec-v97); the remaining four proposed
+  // tiles (gpcog, iqcode-short, global-deterioration-scale, mds-cps) are
+  // deferred pending verbatim sourcing (see docs/spec-v173.md §4). fast-dementia
+  // was sourced and shipped as spec-v294 (lib/fast-dementia-v294.js, RV294).
   { id: 'bims',                   name: 'BIMS (Brief Interview for Mental Status, MDS 3.0)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'ad8',                    name: 'AD8 Dementia Screening Interview (informant)',      group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'cdr-sob',                name: 'CDR Sum of Boxes (dementia staging)',               group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'fast-dementia',          name: 'FAST (Functional Assessment Staging Tool, dementia)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
 
   // spec-v174 (second feature spec of the spec-v172 LTC-GA program): behavioral
   // symptoms of dementia & observational delirium / mood screens for the LTC

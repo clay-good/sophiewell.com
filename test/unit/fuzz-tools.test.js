@@ -270,6 +270,7 @@ import * as rccPrognosisV279 from '../../lib/rcc-prognosis-v279.js';
 import * as rheumFnV280 from '../../lib/rheum-fn-v280.js';
 import * as hccSurveillanceV281 from '../../lib/hcc-surveillance-v281.js';
 import * as transfusionV292 from '../../lib/transfusion-v292.js';
+import * as fastDementiaV294 from '../../lib/fast-dementia-v294.js';
 import * as tbTesting from '../../lib/tb-testing.js';
 
 const MODULES = {
@@ -485,6 +486,7 @@ const MODULES = {
   'rheum-fn-v280.js': rheumFnV280,
   'hcc-surveillance-v281.js': hccSurveillanceV281,
   'transfusion-v292.js': transfusionV292,
+  'fast-dementia-v294.js': fastDementiaV294,
   'tb-testing.js': tbTesting,
 };
 

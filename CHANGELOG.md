@@ -6,6 +6,21 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v294 — FAST dementia staging tile, 1145 → 1146)
+
+- New `fast-dementia` tile (group G): the Functional Assessment Staging Tool for dementia. The
+  clinician selects the highest consecutive FAST stage reached (1–5, 6a–6e, 7a–7f); the tile
+  reports the published functional descriptor and, for stage 7a and beyond, surfaces the Medicare
+  dementia hospice-eligibility context — never a diagnosis or an eligibility determination
+  ([spec-v11] §5.3). This fulfills the [spec-v173](docs/spec-v173.md) §2.6 deferral: the stage
+  table was re-fetched and cross-verified at build (spec-v97) against the CAPC and a hospice
+  reproduction of Reisberg's FAST, which agree on every substage descriptor. Reisberg is not an
+  ISSUER_PATTERN acronym, so no citation-staleness row is required. Id kept distinct from the
+  live `fast` = FAST / BE-FAST stroke tile. New `lib/fast-dementia-v294.js` (pure lookup) +
+  `views/group-v294.js` (RV294); +1 META entry, +1 UTILITIES row, a synonym entry (v14 → v15),
+  6 worked-example unit tests + fuzz registration, corpus rebuilt to 1146. See
+  [docs/spec-v294.md](docs/spec-v294.md). The MCP adapter + golden probe follow in a later wave.
+
 ### Changed (spec-v293 — v14 synonyms: second cross-domain search-gap sweep)
 
 - A second probe sweep (66 nurse-phrased queries across periop, ID, GI, endocrine, peds,
