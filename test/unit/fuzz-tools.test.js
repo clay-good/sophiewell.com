@@ -272,6 +272,7 @@ import * as hccSurveillanceV281 from '../../lib/hcc-surveillance-v281.js';
 import * as transfusionV292 from '../../lib/transfusion-v292.js';
 import * as fastDementiaV294 from '../../lib/fast-dementia-v294.js';
 import * as gdsV295 from '../../lib/gds-v295.js';
+import * as benzoEquivV296 from '../../lib/benzo-equiv-v296.js';
 import * as tbTesting from '../../lib/tb-testing.js';
 
 const MODULES = {
@@ -489,6 +490,7 @@ const MODULES = {
   'transfusion-v292.js': transfusionV292,
   'fast-dementia-v294.js': fastDementiaV294,
   'gds-v295.js': gdsV295,
+  'benzo-equiv-v296.js': benzoEquivV296,
   'tb-testing.js': tbTesting,
 };
 

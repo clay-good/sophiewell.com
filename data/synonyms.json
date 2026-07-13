@@ -1,5 +1,5 @@
 {
-  "version": "v16-2026-07-13",
+  "version": "v17-2026-07-13",
   "note": "spec-v7 section 3.2: hand-curated patient-phrasing -> tile id table. Each entry maps patient-mental-model phrases (and, from the v8/v9 plain-language-search batches, clinical abbreviations, eponym aliases, and canonical-intent phrases) to a single existing tile. Audience is the primary audience the entry serves; the matcher deprioritizes (does not hide) entries when the user has selected a different chip. Every phrase is lowercase; every tile id is an existing catalog tile (guarded by test/unit/synonyms-catalog.test.js). Adding a new phrase is a one-line PR.",
   "entries": [
     { "phrases": ["denied", "denial letter", "they denied it", "insurance said no", "appeal", "write an appeal", "appeal my claim", "appeal letter", "appeal a denial"],
@@ -176,6 +176,8 @@
     { "phrases": ["fast dementia staging", "fast scale dementia", "functional assessment staging", "reisberg fast", "dementia hospice eligibility", "fast stage 7a"],
       "tile": "fast-dementia", "audience": "clinicians" },
     { "phrases": ["global deterioration scale", "reisberg gds", "gds dementia stage", "dementia stage 1 to 7", "seven stages of dementia"],
-      "tile": "global-deterioration-scale", "audience": "clinicians" }
+      "tile": "global-deterioration-scale", "audience": "clinicians" },
+    { "phrases": ["benzodiazepine equivalence", "benzo equivalent dose", "benzo conversion", "diazepam equivalent", "lorazepam to diazepam", "clonazepam to diazepam", "benzodiazepine taper conversion"],
+      "tile": "benzodiazepine-equivalence", "audience": "clinicians" }
   ]
 }

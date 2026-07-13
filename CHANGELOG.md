@@ -6,6 +6,20 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v296 — Benzodiazepine dose-equivalence converter, 1147 → 1148)
+
+- New `benzodiazepine-equivalence` tile (group F, with the opioid and steroid converters): given a
+  source benzodiazepine and dose and an optional target benzodiazepine, it reports the approximate
+  oral-diazepam equivalent and target-drug dose under BOTH the VA/DoD 2021 and Ashton 2002 systems.
+  Benzodiazepine equivalence carries real cross-source variance, so the tile shows both side by
+  side (as the ASAM 2025 guideline does) rather than picking one — a tapering planning estimate,
+  not a prescription ([spec-v11] §5.3). Closes the "benzo conversion" catalog gap the v14 synonym
+  sweep noted. Factors re-fetched and cross-verified (spec-v97) from the ASAM 2025 benzodiazepine-
+  tapering guideline table, which tabulates VA/DoD 2021 and Ashton 2002 together. New
+  `lib/benzo-equiv-v296.js` + `views/group-v296.js` (RV296); +1 META entry, +1 UTILITIES row, a
+  synonym entry (v16 → v17), 7 unit tests + fuzz, corpus rebuilt to 1148. See
+  [docs/spec-v296.md](docs/spec-v296.md). The MCP adapter follows in a later wave.
+
 ### Added (spec-v295 — Reisberg Global Deterioration Scale tile, 1146 → 1147)
 
 - New `global-deterioration-scale` tile (group G): the Reisberg GDS, the global
