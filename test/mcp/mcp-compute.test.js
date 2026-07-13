@@ -2098,6 +2098,17 @@ test('lib/gds-v295.js worked calls', () => {
   assert.match(s2.stageLabel, /age-associated memory impairment/);
 });
 
+test('lib/benzo-equiv-v296.js worked calls', () => {
+  // 2 mg lorazepam: 10 mg diazepam (VA/DoD) vs 20 mg (Ashton).
+  const r = ok('benzodiazepine-equivalence', { 'bz-source': 'lorazepam', 'bz-dose': '2', 'bz-target': 'diazepam' });
+  assert.equal(r.diazepamEquivVaDod, '10');
+  assert.equal(r.diazepamEquivAshton, '20');
+  assert.match(r.band, /2 mg lorazepam/);
+  // Source -> target round trip (alprazolam -> lorazepam).
+  const rt = ok('benzodiazepine-equivalence', { 'bz-source': 'alprazolam', 'bz-dose': '2', 'bz-target': 'lorazepam' });
+  assert.equal(rt.targetDoseVaDod, '4');
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];

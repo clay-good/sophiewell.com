@@ -1502,6 +1502,17 @@ round-trip both pass, without the phantom "2". Adapter appended to the existing
 rate to a target PaCO2. Brings the exposed total to **1072 calculators across 197
 modules**.
 
+## One-hundred-twenty-first wave — the benzodiazepine dose-equivalence converter in lib/benzo-equiv-v296.js (+1)
+
+`benzodiazepine-equivalence` (spec-v296) converts a source benzodiazepine and dose
+to its oral-diazepam equivalent and a target-drug dose under BOTH the VA/DoD 2021
+and Ashton 2002 systems. Source, dose, and target all appear in the example, so all
+three fields are required; the `band` carries the "2 mg lorazepam" example, so it
+round-trips through the default `makeToArgs` with no custom toArgs. New adapter
+module registered in `mcp/catalog.js`; its golden probe ("benzodiazepine
+equivalence") is promoted now that the tile is in the MCP-exposed registry. Brings
+the exposed total to **1085 calculators across 201 modules**.
+
 ## One-hundred-twentieth wave — the Reisberg Global Deterioration Scale tile in lib/gds-v295.js (+1)
 
 `global-deterioration-scale` (spec-v295) is the GDS, the global cognitive/functional
@@ -3065,6 +3076,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/gds-v295.js
 - `global-deterioration-scale`
+
+### lib/benzo-equiv-v296.js
+- `benzodiazepine-equivalence`
 
 ### lib/tb-testing.js
 - `tb-testing`
