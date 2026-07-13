@@ -6,6 +6,21 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v295 — Reisberg Global Deterioration Scale tile, 1146 → 1147)
+
+- New `global-deterioration-scale` tile (group G): the Reisberg GDS, the global
+  cognitive/functional staging companion to the FAST tile. The clinician selects the single most
+  appropriate global stage (1–7); the tile reports the published stage label and clinical
+  characteristics and flags stage 5 and beyond, at which the source states the patient can no
+  longer survive without assistance — a descriptor, not a diagnosis ([spec-v11] §5.3). Fulfills
+  the [spec-v173](docs/spec-v173.md) §2.6 deferral: the stage table was re-fetched and
+  cross-verified at build (spec-v97) against two independent verbatim reproductions of Reisberg
+  1982, which agree on every stage. Reisberg is not an ISSUER_PATTERN acronym, so no
+  citation-staleness row is required. New `lib/gds-v295.js` + `views/group-v295.js` (RV295); +1
+  META entry, +1 UTILITIES row, a synonym entry (v15 → v16), 6 unit tests + fuzz registration,
+  corpus rebuilt to 1147; FAST now cross-links this tile. See [docs/spec-v295.md](docs/spec-v295.md).
+  The MCP adapter follows in a later wave.
+
 ### Added (spec-v294 — FAST dementia staging tile, 1145 → 1146)
 
 - New `fast-dementia` tile (group G): the Functional Assessment Staging Tool for dementia. The
