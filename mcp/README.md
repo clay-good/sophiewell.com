@@ -78,7 +78,7 @@ find_calculator { "query": "stroke risk afib" }
        candidates: [ { id: "chads", name: "CHA2DS2-VASc", why: "synonym", ... }, ... ] }
 
 list_calculators { "specialty": "hepatology" }
-  -> { coverage: "1093 of 1109 catalog tiles exposed ...", calculators: [ { id: "meld-xi", ... }, ... ] }
+  -> { coverage: "1094 of 1109 catalog tiles exposed ...", calculators: [ { id: "meld-xi", ... }, ... ] }
 
 describe_calculator { "id": "meld-xi" }
   -> { inputSchema: { ... mx-bili, mx-creat ... }, citation: "Heuman DM ... Liver Transpl 2007", ... }
@@ -323,8 +323,10 @@ diabetic retinopathy severity (ICDR scale) in `lib/dr-severity-v301.js`, and a
 one-hundred-twenty-seventh the Instability Severity Index Score (shoulder) in
 `lib/isis-v302.js`, and a one-hundred-twenty-eighth the Ring & Messmer anaphylaxis
 severity grade in `lib/anaphylaxis-v303.js`, and a one-hundred-twenty-ninth the
-1-mg overnight dexamethasone suppression test in `lib/dst-v304.js`, for
-1093 across 209 modules
+1-mg overnight dexamethasone suppression test in `lib/dst-v304.js`, and a
+one-hundred-thirtieth the ASTCT cytokine release syndrome grade in
+`lib/crs-v305.js`, for
+1094 across 210 modules
 today. <!-- catalog-truth:historical (197 is the count of lib modules adapted, not a catalog tile count) -->
 Later waves extend it module by module against the same contract.
 

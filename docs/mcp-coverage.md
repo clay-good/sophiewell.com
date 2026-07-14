@@ -1502,6 +1502,18 @@ round-trip both pass, without the phantom "2". Adapter appended to the existing
 rate to a target PaCO2. Brings the exposed total to **1072 calculators across 197
 modules**.
 
+## One-hundred-thirtieth wave — the ASTCT cytokine release syndrome grade in lib/crs-v305.js (+1)
+
+`crs-grade` (spec-v305) grades cytokine release syndrome on the ASTCT consensus
+(Lee 2019) after immune-effector-cell / CAR-T therapy: given the fever, hypotension
+level, and hypoxia level it reports the grade (1-4) as the more severe of the two
+axes. `fever` is a boolean; `hypotension` and `hypoxia` are enums; all are optional
+(none set is grade 0). The compute's `band` carries the "grade 3 of 4" example, so
+it round-trips through the default `makeToArgs` with no custom toArgs. New adapter
+module registered in `mcp/catalog.js`; its golden probe ("cytokine release syndrome
+grade") is promoted now that the tile is in the MCP-exposed registry. Brings the
+exposed total to **1094 calculators across 210 modules**.
+
 ## One-hundred-twenty-ninth wave — the 1-mg overnight dexamethasone suppression test in lib/dst-v304.js (+1)
 
 `dexamethasone-suppression` (spec-v304) interprets the 1-mg overnight DST: given
@@ -3208,6 +3220,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/dst-v304.js
 - `dexamethasone-suppression`
+
+### lib/crs-v305.js
+- `crs-grade`
 
 ### lib/tb-testing.js
 - `tb-testing`

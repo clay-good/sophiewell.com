@@ -2212,6 +2212,19 @@ test('lib/dst-v304.js worked calls', () => {
   assert.equal(metric.suppressed, true);
 });
 
+test('lib/crs-v305.js worked calls', () => {
+  // Fever + one vasopressor -> ASTCT CRS grade 3 (severe).
+  const g3 = ok('crs-grade', { 'crs-fever': true, 'crs-hypotension': 'onevaso' });
+  assert.equal(g3.grade, 3);
+  assert.equal(g3.severe, true);
+  assert.match(g3.band, /ASTCT CRS grade 3 of 4/);
+  // The more severe axis wins: no-vaso hypotension (2) + positive-pressure hypoxia (4) -> grade 4.
+  const g4 = ok('crs-grade', { 'crs-fever': true, 'crs-hypotension': 'novaso', 'crs-hypoxia': 'pospressure' });
+  assert.equal(g4.grade, 4);
+  // Fever alone -> grade 1.
+  assert.equal(ok('crs-grade', { 'crs-fever': true }).grade, 1);
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];
