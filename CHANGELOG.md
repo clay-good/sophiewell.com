@@ -6,6 +6,19 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v306 — ICANS neurotoxicity grade (ASTCT) tile, 1157 → 1158)
+
+- New `icans-grade` tile (group G): the clinician enters the ICE score (0–10) and picks the level of
+  consciousness, seizure, and raised-ICP findings plus the motor flag; the tile reports the ASTCT
+  ICANS grade (1–4) as the most severe of the five domains and flags grades ≥3 as severe — a
+  classification grade, not a treatment order ([spec-v11] §5.3). The neurotoxicity companion to the
+  spec-v305 CRS tile (a CAR-T unit grades both at every assessment); closes the "car t neurotoxicity"
+  gap. The ICE score is entered as a sub-score (its items not reproduced). Grades and domain
+  thresholds re-fetched and cross-verified (spec-v97) against Lee 2019 (ASTCT) and the NCBI/PDQ +
+  NHS-Wales reproductions. New `lib/icans-v306.js` + `views/group-v306.js` (RV306); +1 META entry, +1
+  UTILITIES row, a synonym entry (v27 → v28), 8 unit tests + fuzz, corpus rebuilt to 1158. See
+  [docs/spec-v306.md](docs/spec-v306.md). The MCP adapter follows in a later wave.
+
 ### Added (spec-v305 — Cytokine release syndrome grade (ASTCT) tile, 1156 → 1157)
 
 - New `crs-grade` tile (group G): the clinician marks the fever and picks the hypotension and hypoxia
