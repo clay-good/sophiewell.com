@@ -1502,6 +1502,19 @@ round-trip both pass, without the phantom "2". Adapter appended to the existing
 rate to a target PaCO2. Brings the exposed total to **1072 calculators across 197
 modules**.
 
+## One-hundred-twenty-fifth wave — the AVF maturation "Rule of 6s" in lib/av-fistula-v300.js (+1)
+
+`avf-rule-of-6s` (spec-v300) checks arteriovenous-fistula maturation against the
+2006 KDOQI Rule of 6s: given the internal fistula blood flow, vein inner diameter,
+and vein depth it reports which of the three thresholds are met (flow ≥ 600 mL/min,
+diameter ≥ 6 mm, depth ≤ 6 mm) and whether all three are satisfied. `flow`,
+`diameter`, and `depth` are the three required number fields; the compute's `band`
+carries the "700 / 7 / 4 vs 600 / 6 / 6" example, so it round-trips through the
+default `makeToArgs` with no custom toArgs. New adapter module registered in
+`mcp/catalog.js`; its golden probe ("fistula maturation rule of 6s") is promoted
+now that the tile is in the MCP-exposed registry. Brings the exposed total to
+**1089 calculators across 205 modules**.
+
 ## One-hundred-twenty-fourth wave — the cosyntropin (ACTH) stimulation test interpretation in lib/cosyntropin-v299.js (+1)
 
 `cosyntropin-stim` (spec-v299) interprets the peak stimulated serum cortisol
@@ -3128,6 +3141,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/cosyntropin-v299.js
 - `cosyntropin-stim`
+
+### lib/av-fistula-v300.js
+- `avf-rule-of-6s`
 
 ### lib/tb-testing.js
 - `tb-testing`

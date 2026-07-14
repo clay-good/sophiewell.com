@@ -78,7 +78,7 @@ find_calculator { "query": "stroke risk afib" }
        candidates: [ { id: "chads", name: "CHA2DS2-VASc", why: "synonym", ... }, ... ] }
 
 list_calculators { "specialty": "hepatology" }
-  -> { coverage: "1088 of 1109 catalog tiles exposed ...", calculators: [ { id: "meld-xi", ... }, ... ] }
+  -> { coverage: "1089 of 1109 catalog tiles exposed ...", calculators: [ { id: "meld-xi", ... }, ... ] }
 
 describe_calculator { "id": "meld-xi" }
   -> { inputSchema: { ... mx-bili, mx-creat ... }, citation: "Heuman DM ... Liver Transpl 2007", ... }
@@ -317,8 +317,9 @@ one-hundred-twenty-second the Seddon-Sunderland nerve-injury classification in
 `lib/nerve-injury-v297.js`, and a one-hundred-twenty-third the graduated
 return-to-sport (concussion) strategy in `lib/concussion-rts-v298.js`, and a
 one-hundred-twenty-fourth the cosyntropin (ACTH) stimulation test interpretation
-in `lib/cosyntropin-v299.js`, for
-1088 across 204 modules
+in `lib/cosyntropin-v299.js`, and a one-hundred-twenty-fifth the AVF maturation
+"Rule of 6s" in `lib/av-fistula-v300.js`, for
+1089 across 205 modules
 today. <!-- catalog-truth:historical (197 is the count of lib modules adapted, not a catalog tile count) -->
 Later waves extend it module by module against the same contract.
 

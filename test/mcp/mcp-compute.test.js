@@ -2151,6 +2151,19 @@ test('lib/cosyntropin-v299.js worked calls', () => {
   assert.equal(metric.normal, true);
 });
 
+test('lib/av-fistula-v300.js worked calls', () => {
+  // 700 / 7 / 4 meets all three Rule of 6s criteria.
+  const all = ok('avf-rule-of-6s', { 'avf-flow': '700', 'avf-diameter': '7', 'avf-depth': '4' });
+  assert.equal(all.allMet, true);
+  assert.equal(all.metCount, 3);
+  assert.match(all.band, /All three Rule of 6s criteria met/);
+  // Low flow drops one criterion.
+  const low = ok('avf-rule-of-6s', { 'avf-flow': '500', 'avf-diameter': '7', 'avf-depth': '4' });
+  assert.equal(low.flowOk, false);
+  assert.equal(low.allMet, false);
+  assert.equal(low.metCount, 2);
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];
