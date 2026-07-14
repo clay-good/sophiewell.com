@@ -6,6 +6,18 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v305 — Cytokine release syndrome grade (ASTCT) tile, 1156 → 1157)
+
+- New `crs-grade` tile (group G): the clinician marks the fever and picks the hypotension and hypoxia
+  levels; the tile reports the ASTCT consensus CRS grade (1–4) as the more severe of the two axes and
+  flags grades ≥3 as severe — a classification grade, not a treatment order ([spec-v11] §5.3). Closes
+  the "car t cytokine release grade" catalog gap the SESSION-40 third fresh-domain search sweep
+  surfaced. Grades and the oxygen/vasopressor thresholds re-fetched and cross-verified (spec-v97)
+  against Lee 2019 (ASTCT, Biol Blood Marrow Transplant) and the NCBI/PDQ reproduction. New
+  `lib/crs-v305.js` + `views/group-v305.js` (RV305); +1 META entry, +1 UTILITIES row, a synonym entry
+  (v26 → v27), 8 unit tests + fuzz, corpus rebuilt to 1157. See [docs/spec-v305.md](docs/spec-v305.md).
+  The MCP adapter follows in a later wave.
+
 ### Added (spec-v304 — Dexamethasone suppression test (1-mg overnight) tile, 1155 → 1156)
 
 - New `dexamethasone-suppression` tile (group G): the clinician enters the 8 am serum cortisol drawn

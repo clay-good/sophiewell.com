@@ -1,5 +1,5 @@
 {
-  "version": "v26-2026-07-14",
+  "version": "v27-2026-07-14",
   "note": "spec-v7 section 3.2: hand-curated patient-phrasing -> tile id table. Each entry maps patient-mental-model phrases (and, from the v8/v9 plain-language-search batches, clinical abbreviations, eponym aliases, and canonical-intent phrases) to a single existing tile. Audience is the primary audience the entry serves; the matcher deprioritizes (does not hide) entries when the user has selected a different chip. Every phrase is lowercase; every tile id is an existing catalog tile (guarded by test/unit/synonyms-catalog.test.js). Adding a new phrase is a one-line PR.",
   "entries": [
     { "phrases": ["denied", "denial letter", "they denied it", "insurance said no", "appeal", "write an appeal", "appeal my claim", "appeal letter", "appeal a denial"],
@@ -196,6 +196,8 @@
     { "phrases": ["thyroid nodule malignancy risk", "thyroid nodule risk", "ti-rads", "tirads", "thyroid nodule ultrasound", "thyroid ultrasound risk", "thyroid nodule classification"],
       "tile": "acr-tirads", "audience": "clinicians" },
     { "phrases": ["dexamethasone suppression test", "cushing screening", "cushing syndrome screen", "overnight dexamethasone test", "1mg dexamethasone suppression", "cortisol suppression test", "autonomous cortisol secretion"],
-      "tile": "dexamethasone-suppression", "audience": "clinicians" }
+      "tile": "dexamethasone-suppression", "audience": "clinicians" },
+    { "phrases": ["cytokine release syndrome grade", "crs grading", "astct crs grade", "car t cytokine release", "cytokine release syndrome severity", "immune effector cell crs", "car-t toxicity grade"],
+      "tile": "crs-grade", "audience": "clinicians" }
   ]
 }
