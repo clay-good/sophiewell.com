@@ -2175,6 +2175,18 @@ test('lib/dr-severity-v301.js worked calls', () => {
   assert.equal(pdr.proliferative, true);
 });
 
+test('lib/isis-v302.js worked calls', () => {
+  // age + competitive + Hill-Sachs + glenoid = 8 -> high recurrence risk (>6).
+  const high = ok('isis-shoulder', { 'isis-age': true, 'isis-comp': true, 'isis-hs': true, 'isis-glenoid': true });
+  assert.equal(high.total, 8);
+  assert.equal(high.highRisk, true);
+  assert.match(high.band, /an open procedure/);
+  // age + competitive + Hill-Sachs = 6 -> not high risk (cutoff is strict >6).
+  const six = ok('isis-shoulder', { 'isis-age': true, 'isis-comp': true, 'isis-hs': true });
+  assert.equal(six.total, 6);
+  assert.equal(six.highRisk, false);
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];

@@ -214,6 +214,7 @@ import concussionRtsV298 from './adapters/concussion-rts-v298.js';
 import cosyntropinV299 from './adapters/cosyntropin-v299.js';
 import avFistulaV300 from './adapters/av-fistula-v300.js';
 import drSeverityV301 from './adapters/dr-severity-v301.js';
+import isisV302 from './adapters/isis-v302.js';
 import tbTesting from './adapters/tb-testing.js';
 import labInterpret from './adapters/lab-interpret.js';
 import decisionRulesV258 from './adapters/decision-rules-v258.js';
@@ -422,6 +423,7 @@ const ADAPTER_MODULES = [
   ['cosyntropin-v299', cosyntropinV299],
   ['av-fistula-v300', avFistulaV300],
   ['dr-severity-v301', drSeverityV301],
+  ['isis-v302', isisV302],
   ['tb-testing', tbTesting],
   ['lab-interpret', labInterpret],
   ['decision-rules-v258', decisionRulesV258],

@@ -1502,6 +1502,19 @@ round-trip both pass, without the phantom "2". Adapter appended to the existing
 rate to a target PaCO2. Brings the exposed total to **1072 calculators across 197
 modules**.
 
+## One-hundred-twenty-seventh wave — the Instability Severity Index Score (ISIS) in lib/isis-v302.js (+1)
+
+`isis-shoulder` (spec-v302) sums six preoperative factors for anterior shoulder
+instability (age ≤20 = 2, competitive = 2, contact/overhead = 1, hyperlaxity = 1,
+Hill-Sachs on AP = 2, glenoid loss of contour = 2; max 10) and flags a score >6 as
+high recurrence risk after an arthroscopic Bankart repair. Each field is a boolean
+factor (all optional; none checked is 0). The compute's `band` carries the "8 of 10
+/ >6" example, so it round-trips through the default `makeToArgs` with no custom
+toArgs. New adapter module registered in `mcp/catalog.js`; its golden probe
+("shoulder instability recurrence risk") is promoted now that the tile is in the
+MCP-exposed registry. Brings the exposed total to **1091 calculators across 207
+modules**.
+
 ## One-hundred-twenty-sixth wave — the diabetic retinopathy severity (ICDR scale) in lib/dr-severity-v301.js (+1)
 
 `icdr-retinopathy` (spec-v301) grades diabetic retinopathy on the International
@@ -3160,6 +3173,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/dr-severity-v301.js
 - `icdr-retinopathy`
+
+### lib/isis-v302.js
+- `isis-shoulder`
 
 ### lib/tb-testing.js
 - `tb-testing`
