@@ -78,7 +78,7 @@ find_calculator { "query": "stroke risk afib" }
        candidates: [ { id: "chads", name: "CHA2DS2-VASc", why: "synonym", ... }, ... ] }
 
 list_calculators { "specialty": "hepatology" }
-  -> { coverage: "1096 of 1109 catalog tiles exposed ...", calculators: [ { id: "meld-xi", ... }, ... ] }
+  -> { coverage: "1097 of 1109 catalog tiles exposed ...", calculators: [ { id: "meld-xi", ... }, ... ] }
 
 describe_calculator { "id": "meld-xi" }
   -> { inputSchema: { ... mx-bili, mx-creat ... }, citation: "Heuman DM ... Liver Transpl 2007", ... }
@@ -327,8 +327,9 @@ severity grade in `lib/anaphylaxis-v303.js`, and a one-hundred-twenty-ninth the
 one-hundred-thirtieth the ASTCT cytokine release syndrome grade in
 `lib/crs-v305.js`, and a one-hundred-thirty-first the ASTCT ICANS neurotoxicity
 grade in `lib/icans-v306.js`, and a one-hundred-thirty-second the diabetic macular
-edema (DME) severity in `lib/dme-v307.js`, for
-1096 across 212 modules
+edema (DME) severity in `lib/dme-v307.js`, and a one-hundred-thirty-third the
+graduated return-to-learn (concussion) strategy in `lib/concussion-rtl-v308.js`, for
+1097 across 213 modules
 today. <!-- catalog-truth:historical (197 is the count of lib modules adapted, not a catalog tile count) -->
 Later waves extend it module by module against the same contract.
 

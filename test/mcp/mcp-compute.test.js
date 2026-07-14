@@ -2251,6 +2251,18 @@ test('lib/dme-v307.js worked calls', () => {
   assert.equal(absent.level, 'absent');
 });
 
+test('lib/concussion-rtl-v308.js worked calls', () => {
+  // Step 3 (part-time school) is a school-reintroduction step.
+  const s3 = ok('concussion-rtl', { 'crtl-step': '3' });
+  assert.equal(s3.step, 3);
+  assert.match(s3.mental, /part time/i);
+  assert.match(s3.band, /Return-to-learn Step 3 of 4/);
+  // Step 4 (full-time school) carries the before-RTS note.
+  const s4 = ok('concussion-rtl', { 'crtl-step': '4' });
+  assert.equal(s4.finalStep, true);
+  assert.match(s4.band, /before unrestricted return to sport/);
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];

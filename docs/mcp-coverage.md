@@ -1502,6 +1502,18 @@ round-trip both pass, without the phantom "2". Adapter appended to the existing
 rate to a target PaCO2. Brings the exposed total to **1072 calculators across 197
 modules**.
 
+## One-hundred-thirty-third wave — the graduated return-to-learn (concussion) strategy in lib/concussion-rtl-v308.js (+1)
+
+`concussion-rtl` (spec-v308) is the graduated return-to-learn ladder after a
+sport-related concussion, the school companion to `concussion-rts`: given the RTL
+step (1-4) it returns the mental activity, the activity at that step, and the goal.
+The single `step` field is a required enum over the 4 steps; the compute's `band`
+carries the "Step 3 of 4" example, so it round-trips through the default
+`makeToArgs` with no custom toArgs. New adapter module registered in
+`mcp/catalog.js`; its golden probe ("return to learn concussion") is promoted now
+that the tile is in the MCP-exposed registry. Brings the exposed total to **1097
+calculators across 213 modules**.
+
 ## One-hundred-thirty-second wave — the diabetic macular edema (DME) severity in lib/dme-v307.js (+1)
 
 `dme-severity` (spec-v307) grades diabetic macular edema on the International
@@ -3256,6 +3268,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/dme-v307.js
 - `dme-severity`
+
+### lib/concussion-rtl-v308.js
+- `concussion-rtl`
 
 ### lib/tb-testing.js
 - `tb-testing`
