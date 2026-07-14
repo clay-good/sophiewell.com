@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `a790cc766828b713`
-Generated: 2026-07-14T05:04:34.841Z
+Build ID: `d823b6e7682b5446`
+Generated: 2026-07-14T06:05:45.325Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=20.18.1 <21, npm >=10.0.0
@@ -24,13 +24,13 @@ downloads is committed in this repository and is hashed below.
 
 | Path | Bytes | SHA-256 |
 |---|---:|---|
-| `index.html` | 77843 | `3498fba0d0f21518b1321c43f5b0d5ad8a77f54a04d66fe78dbb7b1d1279f024` |
+| `index.html` | 77902 | `355fe578c09f238fa12f5c7410c49c9f9ecb71b27c16c4949fb71f6ec2e66a58` |
 | `styles.css` | 44160 | `a2cc7ad7bae9f7cfc9681d80bc6bd4a58f0b07d47bfcff64897dc04929c12333` |
-| `app.js` | 318546 | `a39dc03ed5e6c7a21ba06e0a665b9e755a4de4f2b026e00bc580fc6bbd6ee9f5` |
+| `app.js` | 318779 | `412579d9453836087227e1dd2af533ed9500eabf60d8bbc3adb5de92b4a13126` |
 | `sw.js` | 4622 | `b891d4344f8e04403b7f1d307fd446cc224bddc6f0c4397438a17d197351171e` |
 | `site.webmanifest` | 709 | `0e0de4da60590a12e8b27a0ae2a2f5ffdb6500b7d2b78f93631ec2f64ed3d5ce` |
 | `robots.txt` | 127 | `38fbf9c1854e72abb20e01e81dd5a31d4ea96f154c12d5db1ec3af05524dd1a1` |
-| `sitemap.xml` | 177319 | `96a94bee9784cd78f01c4ba06408f484430ead4b6005f3623a389a7a63317b46` |
+| `sitemap.xml` | 177476 | `607603934f05c9220af84398600b70c33fb2c4b1d1120c41cd3dd4771a5c05c6` |
 | `_headers` | 1316 | `2f39986457d2feff7e73e491a7d09ee871e8f2f4cc2bc437f86bd86a42554ec6` |
 | `logo.png` | 63440 | `11afaf1b0d3ca68393d202e4810bf766b5b6d591b4e3ec52f41d3cacaa4616ec` |
 | `favicon.ico` | 7411 | `407fde0ca2788409e87e11f596fa02e6a0b121817fcea7fd995beec1801e287b` |
@@ -47,6 +47,7 @@ downloads is committed in this repository and is hashed below.
 | `lib/acute-abdomen-v261.js` | 10676 | `0c0f7358da57d87ace5ee151a3c599f3e5a4232aaf92da7009bff01ac00fd5d4` |
 | `lib/acute-injury-v213.js` | 11748 | `d0db59b8b86c57a442bfe3b1cd2e9fb50bbb59aa6980810415f4dbbe41985b7d` |
 | `lib/adiposity-v270.js` | 3145 | `bafc017e4974f5c7180e5a2a6160c50fb8d837bccd6f45d0eaaf6bb6ada87ce9` |
+| `lib/anaphylaxis-v303.js` | 3399 | `7238b07c62535c8540d017cb268b841ffbc1a1bba2430bccc89c23c7f69fafbd` |
 | `lib/anthro-v238.js` | 7554 | `ab4ac8a758bfa2c72f22a29bf3df91b2e5d49991a9d8e2fc4f5343a6428c3512` |
 | `lib/anthro-v272.js` | 2988 | `0c8ae06f40b6747996c3069ca3eed48dd37fcb32d0b211bee0ada6ec113c1f53` |
 | `lib/av-fistula-v300.js` | 4050 | `9fa354a34bd21ab3dc8c93762767d54f281b1c4e605e00af36917098787fc1e8` |
@@ -167,7 +168,7 @@ downloads is committed in this repository and is hashed below.
 | `lib/massive-transfusion-v265.js` | 3240 | `7ad4d1d86063fdd077546be5d6381ea4a5024ef669389f88abdfe07850903b29` |
 | `lib/medication-v4.js` | 18192 | `467f9576c50da696cc56094eb022d0a5ed1e88de0c7618448554ede8067270b0` |
 | `lib/medication-v5.js` | 18863 | `ce81d9f8954abbd412892c13af9936f992239164f26fd2b999eaea7902787ab7` |
-| `lib/meta.js` | 1591819 | `a34cf071cd3f7302d0afe8457499830d25fa5923223c4181363a65f2c4a10024` |
+| `lib/meta.js` | 1593043 | `19ac888266d85ec62b3562ffe99b1970a7b399e99db54f669eac0cfada9b6368` |
 | `lib/metabolic-hepatic-v219.js` | 12791 | `b9352877cebf7fbf3c3b99ecb8b72cdbee3ed94e056dc019113668609f5a95a8` |
 | `lib/metabolic-onc-v88.js` | 12659 | `1553b641668c121661a66647da71a4aaaa023e9f3a6b7a753efbcdab27cdba81` |
 | `lib/metabolic-v269.js` | 3262 | `0c7a42557886f2b0aeee7949b8d0bd682d795d4526174fd540717a978d94ec2f` |
@@ -496,6 +497,7 @@ downloads is committed in this repository and is hashed below.
 | `views/group-v300.js` | 3127 | `537936c64271eb37895d5f9e26588c884a7b66d221ca51367816a9395a09e5e7` |
 | `views/group-v301.js` | 3379 | `bf0fab43bbea206351794e028e4891eb334ae8bbf28507017c1fa426c390450d` |
 | `views/group-v302.js` | 3303 | `d7ade1a5c24362d05e74c1085ea70aed444a0723688584495c2ad847a1b67976` |
+| `views/group-v303.js` | 3004 | `8051ec3f0bb370ee34f0393f370c14f0be89db5f58e4476b3444166904cb972d` |
 | `views/group-v31.js` | 12661 | `0efe7001ebf25039dd348eec201a2499ea544be1edd2735fb7371c604e95a0be` |
 | `views/group-v32.js` | 9831 | `776d0a169d7f4c7d86c55fca3b7d777105865319bbe634e79f7c99ddc9c6ae81` |
 | `views/group-v33.js` | 11760 | `2d5bf1a31d92e4b3fca27729dff106c72a8eb7c3b033a0b866711a0acdb2b78b` |

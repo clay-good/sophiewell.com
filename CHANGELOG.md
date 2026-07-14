@@ -6,6 +6,17 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v303 — Anaphylaxis severity grade (Ring & Messmer) tile, 1154 → 1155)
+
+- New `anaphylaxis-grade` tile (group G): the clinician selects the Ring & Messmer grade (I–IV) and
+  the tile reports the clinical features of that grade and whether it is life-threatening (grades
+  III–IV, managed as anaphylaxis) — a classification descriptor, not a diagnosis or a treatment order
+  ([spec-v11] §5.3). Closes the "anaphylaxis grading" catalog gap the SESSION-40 fresh-domain search
+  sweep surfaced. Grades re-fetched and cross-verified (spec-v97) against Ring & Messmer 1977 (Lancet)
+  and perioperative-anaphylaxis reviews. New `lib/anaphylaxis-v303.js` + `views/group-v303.js`
+  (RV303); +1 META entry, +1 UTILITIES row, a synonym entry (v23 → v24), 6 unit tests + fuzz, corpus
+  rebuilt to 1155. See [docs/spec-v303.md](docs/spec-v303.md). The MCP adapter follows in a later wave.
+
 ### Added (spec-v302 — Instability Severity Index Score (shoulder, ISIS) tile, 1153 → 1154)
 
 - New `isis-shoulder` tile (group G): the clinician checks the six preoperative factors (age ≤20,
