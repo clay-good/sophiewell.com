@@ -1502,6 +1502,19 @@ round-trip both pass, without the phantom "2". Adapter appended to the existing
 rate to a target PaCO2. Brings the exposed total to **1072 calculators across 197
 modules**.
 
+## One-hundred-twenty-sixth wave — the diabetic retinopathy severity (ICDR scale) in lib/dr-severity-v301.js (+1)
+
+`icdr-retinopathy` (spec-v301) grades diabetic retinopathy on the International
+Clinical Diabetic Retinopathy (ICDR) scale: given the dilated-fundus findings it
+reports the grade (1-5) as the highest-severity level whose criteria are met
+(PDR > severe-NPDR 4-2-1 rule > moderate > mild > none). Each field is a boolean
+finding; `dr-vb` (venous beading) is the required example field, the rest default
+to false. The compute's `band` carries the "grade 4" example, so it round-trips
+through the default `makeToArgs` with no custom toArgs. New adapter module
+registered in `mcp/catalog.js`; its golden probe ("diabetic retinopathy severity")
+is promoted now that the tile is in the MCP-exposed registry. Brings the exposed
+total to **1090 calculators across 206 modules**.
+
 ## One-hundred-twenty-fifth wave — the AVF maturation "Rule of 6s" in lib/av-fistula-v300.js (+1)
 
 `avf-rule-of-6s` (spec-v300) checks arteriovenous-fistula maturation against the
@@ -3144,6 +3157,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/av-fistula-v300.js
 - `avf-rule-of-6s`
+
+### lib/dr-severity-v301.js
+- `icdr-retinopathy`
 
 ### lib/tb-testing.js
 - `tb-testing`

@@ -2164,6 +2164,17 @@ test('lib/av-fistula-v300.js worked calls', () => {
   assert.equal(low.metCount, 2);
 });
 
+test('lib/dr-severity-v301.js worked calls', () => {
+  // Venous beading -> severe NPDR (grade 4) via the 4-2-1 rule.
+  const severe = ok('icdr-retinopathy', { 'dr-vb': true });
+  assert.equal(severe.grade, 4);
+  assert.match(severe.name, /Severe NPDR/);
+  // Neovascularization -> proliferative DR (grade 5), overriding lesser findings.
+  const pdr = ok('icdr-retinopathy', { 'dr-neo': true, 'dr-ma': true });
+  assert.equal(pdr.grade, 5);
+  assert.equal(pdr.proliferative, true);
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];
