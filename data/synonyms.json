@@ -1,5 +1,5 @@
 {
-  "version": "v20-2026-07-13",
+  "version": "v21-2026-07-14",
   "note": "spec-v7 section 3.2: hand-curated patient-phrasing -> tile id table. Each entry maps patient-mental-model phrases (and, from the v8/v9 plain-language-search batches, clinical abbreviations, eponym aliases, and canonical-intent phrases) to a single existing tile. Audience is the primary audience the entry serves; the matcher deprioritizes (does not hide) entries when the user has selected a different chip. Every phrase is lowercase; every tile id is an existing catalog tile (guarded by test/unit/synonyms-catalog.test.js). Adding a new phrase is a one-line PR.",
   "entries": [
     { "phrases": ["denied", "denial letter", "they denied it", "insurance said no", "appeal", "write an appeal", "appeal my claim", "appeal letter", "appeal a denial"],
@@ -184,6 +184,8 @@
     { "phrases": ["return to play", "return to sport", "return to play protocol", "concussion return to play", "graduated return to sport", "rts strategy", "return to sport steps", "concussion return to sport"],
       "tile": "concussion-rts", "audience": "clinicians" },
     { "phrases": ["cosyntropin stimulation test", "acth stimulation test", "cosyntropin test", "cortrosyn test", "adrenal insufficiency test", "short synacthen test", "peak cortisol threshold"],
-      "tile": "cosyntropin-stim", "audience": "clinicians" }
+      "tile": "cosyntropin-stim", "audience": "clinicians" },
+    { "phrases": ["rule of 6s", "rule of sixes", "fistula maturation", "avf maturation", "arteriovenous fistula maturation", "fistula rule of 6", "dialysis fistula maturation"],
+      "tile": "avf-rule-of-6s", "audience": "clinicians" }
   ]
 }

@@ -276,6 +276,7 @@ import * as benzoEquivV296 from '../../lib/benzo-equiv-v296.js';
 import * as nerveInjuryV297 from '../../lib/nerve-injury-v297.js';
 import * as concussionRtsV298 from '../../lib/concussion-rts-v298.js';
 import * as cosyntropinV299 from '../../lib/cosyntropin-v299.js';
+import * as avFistulaV300 from '../../lib/av-fistula-v300.js';
 import * as tbTesting from '../../lib/tb-testing.js';
 
 const MODULES = {
@@ -497,6 +498,7 @@ const MODULES = {
   'nerve-injury-v297.js': nerveInjuryV297,
   'concussion-rts-v298.js': concussionRtsV298,
   'cosyntropin-v299.js': cosyntropinV299,
+  'av-fistula-v300.js': avFistulaV300,
   'tb-testing.js': tbTesting,
 };
 

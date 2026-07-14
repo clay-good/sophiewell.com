@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `5e5fa3825e36df02`
-Generated: 2026-07-14T00:52:13.029Z
+Build ID: `1906c5204239c7bd`
+Generated: 2026-07-14T01:04:30.271Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=20.18.1 <21, npm >=10.0.0
@@ -24,13 +24,13 @@ downloads is committed in this repository and is hashed below.
 
 | Path | Bytes | SHA-256 |
 |---|---:|---|
-| `index.html` | 77670 | `062790cd6936a77d695b34b53d02c534ad356fe920b9df96be24a88bcd4a939a` |
+| `index.html` | 77720 | `1e9366dba453d96c429721c914b0990094279a007208b7a743ac3ac723851abe` |
 | `styles.css` | 44160 | `a2cc7ad7bae9f7cfc9681d80bc6bd4a58f0b07d47bfcff64897dc04929c12333` |
-| `app.js` | 317847 | `fdce329ee72ddc04dedb2270db61e7ef877967fe1a1445a5c4ccc8f3699ca2c8` |
+| `app.js` | 318080 | `38b1aaca0e4d0c9906bf8ba6d9d38b78456cfc99eb31a52b2a9b347e218e9df8` |
 | `sw.js` | 4622 | `b891d4344f8e04403b7f1d307fd446cc224bddc6f0c4397438a17d197351171e` |
 | `site.webmanifest` | 709 | `0e0de4da60590a12e8b27a0ae2a2f5ffdb6500b7d2b78f93631ec2f64ed3d5ce` |
 | `robots.txt` | 127 | `38fbf9c1854e72abb20e01e81dd5a31d4ea96f154c12d5db1ec3af05524dd1a1` |
-| `sitemap.xml` | 176856 | `a816a437668b6030fa72f20bdd2002e3bea63c291c606212ad692c53cac896ef` |
+| `sitemap.xml` | 177010 | `0da6da572fc030ab9e6a09f2356cc674bcb7b9ca0234e06aa6d851a04ceccf59` |
 | `_headers` | 1316 | `2f39986457d2feff7e73e491a7d09ee871e8f2f4cc2bc437f86bd86a42554ec6` |
 | `logo.png` | 63440 | `11afaf1b0d3ca68393d202e4810bf766b5b6d591b4e3ec52f41d3cacaa4616ec` |
 | `favicon.ico` | 7411 | `407fde0ca2788409e87e11f596fa02e6a0b121817fcea7fd995beec1801e287b` |
@@ -49,6 +49,7 @@ downloads is committed in this repository and is hashed below.
 | `lib/adiposity-v270.js` | 3145 | `bafc017e4974f5c7180e5a2a6160c50fb8d837bccd6f45d0eaaf6bb6ada87ce9` |
 | `lib/anthro-v238.js` | 7554 | `ab4ac8a758bfa2c72f22a29bf3df91b2e5d49991a9d8e2fc4f5343a6428c3512` |
 | `lib/anthro-v272.js` | 2988 | `0c8ae06f40b6747996c3069ca3eed48dd37fcb32d0b211bee0ada6ec113c1f53` |
+| `lib/av-fistula-v300.js` | 4050 | `9fa354a34bd21ab3dc8c93762767d54f281b1c4e605e00af36917098787fc1e8` |
 | `lib/benzo-equiv-v296.js` | 6358 | `fbf4ace4f4ff01d8f21f7a90406f6b1101068fb719b20c9367dbc8ea048a5cc3` |
 | `lib/billing-v78.js` | 11570 | `a83c4af7e754d690ca949b7015a66b0c42aa77346c5c67142ccb2e8fa16849a2` |
 | `lib/billing-v79.js` | 23588 | `d97e1e4dc9c6e358df2d79a93bc79a1960a13cdb75ad33e84403d278938b3f4f` |
@@ -164,7 +165,7 @@ downloads is committed in this repository and is hashed below.
 | `lib/massive-transfusion-v265.js` | 3240 | `7ad4d1d86063fdd077546be5d6381ea4a5024ef669389f88abdfe07850903b29` |
 | `lib/medication-v4.js` | 18192 | `467f9576c50da696cc56094eb022d0a5ed1e88de0c7618448554ede8067270b0` |
 | `lib/medication-v5.js` | 18863 | `ce81d9f8954abbd412892c13af9936f992239164f26fd2b999eaea7902787ab7` |
-| `lib/meta.js` | 1588087 | `f473aa833e187b18c7341604933e5cde09873f5b8567cbd6d6faa4fb34984afe` |
+| `lib/meta.js` | 1589273 | `b99154d15c436b01ea0e6b42edbecbf17c7788d24e001b782e611d22d998d94f` |
 | `lib/metabolic-hepatic-v219.js` | 12791 | `b9352877cebf7fbf3c3b99ecb8b72cdbee3ed94e056dc019113668609f5a95a8` |
 | `lib/metabolic-onc-v88.js` | 12659 | `1553b641668c121661a66647da71a4aaaa023e9f3a6b7a753efbcdab27cdba81` |
 | `lib/metabolic-v269.js` | 3262 | `0c7a42557886f2b0aeee7949b8d0bd682d795d4526174fd540717a978d94ec2f` |
@@ -490,6 +491,7 @@ downloads is committed in this repository and is hashed below.
 | `views/group-v298.js` | 3215 | `5de40d5ac7c59be0bd6d2623c15d3720d518034f0ad75ded58d0abcd7f470a53` |
 | `views/group-v299.js` | 3302 | `4fc6f99b3ba962a96ed1f873a491eca197d76fdab50aed6543fbf2390f66f192` |
 | `views/group-v30.js` | 11632 | `94de321b6ba8a28d9fe271d625ddb457b67ec6f1ad1376621f3f66f67bdaab5e` |
+| `views/group-v300.js` | 3127 | `537936c64271eb37895d5f9e26588c884a7b66d221ca51367816a9395a09e5e7` |
 | `views/group-v31.js` | 12661 | `0efe7001ebf25039dd348eec201a2499ea544be1edd2735fb7371c604e95a0be` |
 | `views/group-v32.js` | 9831 | `776d0a169d7f4c7d86c55fca3b7d777105865319bbe634e79f7c99ddc9c6ae81` |
 | `views/group-v33.js` | 11760 | `2d5bf1a31d92e4b3fca27729dff106c72a8eb7c3b033a0b866711a0acdb2b78b` |

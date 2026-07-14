@@ -6,6 +6,20 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v300 — AVF maturation "Rule of 6s" tile, 1151 → 1152)
+
+- New `avf-rule-of-6s` tile (group G): the clinician enters the measured internal fistula blood flow,
+  vein inner diameter, and vein depth from the skin; the tile checks each against the 2006 KDOQI
+  thresholds (flow ≥ 600 mL/min, diameter ≥ 6 mm, depth ≤ 6 mm) and reports which are met and whether
+  all three are satisfied — meeting all three is highly predictive of maturation (PPV >90%), while
+  not meeting them does not reliably predict failure (NPV ~47%) — a cited rule's criteria, not a
+  cannulation decision ([spec-v11] §5.3). Closes the "AV-fistula rule of 6s" catalog gap the v14
+  synonym sweep noted. Thresholds re-fetched and cross-verified (spec-v97) against the 2006 KDOQI
+  vascular-access guideline and the JVS 2022 validation; the 2019 KDOQI update (clinical judgment)
+  is noted. New `lib/av-fistula-v300.js` + `views/group-v300.js` (RV300); +1 META entry, +1 UTILITIES
+  row, a synonym entry (v20 → v21), 5 unit tests + fuzz, corpus rebuilt to 1152. See
+  [docs/spec-v300.md](docs/spec-v300.md). The MCP adapter follows in a later wave.
+
 ### Added (spec-v299 — Cosyntropin (ACTH) stimulation test interpretation tile, 1150 → 1151)
 
 - New `cosyntropin-stim` tile (group G): the clinician enters the peak stimulated serum cortisol
