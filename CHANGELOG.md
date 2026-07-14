@@ -6,6 +6,19 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v301 — Diabetic retinopathy severity (ICDR scale) tile, 1152 → 1153)
+
+- New `icdr-retinopathy` tile (group G): the clinician checks the dilated-ophthalmoscopy findings and
+  the tile reports the International Clinical Diabetic Retinopathy (ICDR) grade (1–5) as the
+  highest-severity level whose criteria are met — no apparent retinopathy, mild / moderate / severe
+  NPDR (the 4-2-1 rule), or proliferative DR — a classification grade, not a diagnosis or a follow-up
+  plan ([spec-v11] §5.3). Closes the "diabetic retinopathy severity" catalog gap the SESSION-40
+  fresh-domain search sweep surfaced. Criteria re-fetched and cross-verified (spec-v97) against
+  Wilkinson 2003 (Ophthalmology) and the ICDR reference table. New `lib/dr-severity-v301.js` +
+  `views/group-v301.js` (RV301); +1 META entry, +1 UTILITIES row, a synonym entry (v21 → v22), 8 unit
+  tests + fuzz, corpus rebuilt to 1153. See [docs/spec-v301.md](docs/spec-v301.md). The MCP adapter
+  follows in a later wave.
+
 ### Added (spec-v300 — AVF maturation "Rule of 6s" tile, 1151 → 1152)
 
 - New `avf-rule-of-6s` tile (group G): the clinician enters the measured internal fistula blood flow,
