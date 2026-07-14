@@ -6,6 +6,19 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v307 — Diabetic macular edema (DME) severity tile, 1158 → 1159)
+
+- New `dme-severity` tile (group G): the clinician marks whether retinal thickening / hard exudates
+  are present in the posterior pole and picks their location relative to the center of the macula; the
+  tile reports the DME level — absent, mild (distant), moderate (approaching), or severe (involving
+  the center = center-involving, vision-threatening) — a classification level, not a diagnosis or a
+  treatment decision ([spec-v11] §5.3). The companion to the spec-v301 ICDR retinopathy tile
+  (retinopathy and DME are graded together); closes the "diabetic macular edema severity" gap.
+  Location-based grading re-fetched and cross-verified (spec-v97) against Wilkinson 2003 (same paper
+  as the ICDR scale) and the DME reference table. New `lib/dme-v307.js` + `views/group-v307.js`
+  (RV307); +1 META entry, +1 UTILITIES row, a synonym entry (v28 → v29), 7 unit tests + fuzz, corpus
+  rebuilt to 1159. See [docs/spec-v307.md](docs/spec-v307.md). The MCP adapter follows in a later wave.
+
 ### Added (spec-v306 — ICANS neurotoxicity grade (ASTCT) tile, 1157 → 1158)
 
 - New `icans-grade` tile (group G): the clinician enters the ICE score (0–10) and picks the level of

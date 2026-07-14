@@ -283,6 +283,7 @@ import * as anaphylaxisV303 from '../../lib/anaphylaxis-v303.js';
 import * as dstV304 from '../../lib/dst-v304.js';
 import * as crsV305 from '../../lib/crs-v305.js';
 import * as icansV306 from '../../lib/icans-v306.js';
+import * as dmeV307 from '../../lib/dme-v307.js';
 import * as tbTesting from '../../lib/tb-testing.js';
 
 const MODULES = {
@@ -511,6 +512,7 @@ const MODULES = {
   'dst-v304.js': dstV304,
   'crs-v305.js': crsV305,
   'icans-v306.js': icansV306,
+  'dme-v307.js': dmeV307,
   'tb-testing.js': tbTesting,
 };
 
