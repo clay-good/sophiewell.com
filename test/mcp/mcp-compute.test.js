@@ -2197,6 +2197,21 @@ test('lib/anaphylaxis-v303.js worked calls', () => {
   assert.equal(g1.lifeThreatening, false);
 });
 
+test('lib/dst-v304.js worked calls', () => {
+  // 3 µg/dL is at/above the 1.8 cutoff -> failure to suppress.
+  const fail = ok('dexamethasone-suppression', { 'dst-cortisol': '3' });
+  assert.equal(fail.cutoff, 1.8);
+  assert.equal(fail.abnormal, true);
+  assert.match(fail.band, /failure to suppress/);
+  // 1.2 µg/dL suppresses normally.
+  const norm = ok('dexamethasone-suppression', { 'dst-cortisol': '1.2' });
+  assert.equal(norm.suppressed, true);
+  // nmol/L unit switches to the 50 nmol/L cutoff.
+  const metric = ok('dexamethasone-suppression', { 'dst-cortisol': '40', 'dst-unit': 'nmol/L' });
+  assert.equal(metric.cutoff, 50);
+  assert.equal(metric.suppressed, true);
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];

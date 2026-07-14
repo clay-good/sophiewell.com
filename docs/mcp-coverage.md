@@ -1502,6 +1502,19 @@ round-trip both pass, without the phantom "2". Adapter appended to the existing
 rate to a target PaCO2. Brings the exposed total to **1072 calculators across 197
 modules**.
 
+## One-hundred-twenty-ninth wave — the 1-mg overnight dexamethasone suppression test in lib/dst-v304.js (+1)
+
+`dexamethasone-suppression` (spec-v304) interprets the 1-mg overnight DST: given
+the post-dexamethasone 8 am serum cortisol and its unit, it compares against the
+suppression cutoff (1.8 µg/dL / 50 nmol/L) and reports normal suppression (below)
+or a failure to suppress (at or above, consistent with possible Cushing syndrome or
+autonomous cortisol secretion). `cortisol` is a required number; `unit` is an
+optional enum (µg/dL default, or nmol/L); the compute's `band` carries the "3 µg/dL
+/ 1.8" example, so it round-trips through the default `makeToArgs` with no custom
+toArgs. New adapter module registered in `mcp/catalog.js`; its golden probe
+("cushing screening") is promoted now that the tile is in the MCP-exposed registry.
+Brings the exposed total to **1093 calculators across 209 modules**.
+
 ## One-hundred-twenty-eighth wave — the Ring & Messmer anaphylaxis grade in lib/anaphylaxis-v303.js (+1)
 
 `anaphylaxis-grade` (spec-v303) reports the Ring & Messmer (1977) severity grade of
@@ -3192,6 +3205,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/anaphylaxis-v303.js
 - `anaphylaxis-grade`
+
+### lib/dst-v304.js
+- `dexamethasone-suppression`
 
 ### lib/tb-testing.js
 - `tb-testing`
