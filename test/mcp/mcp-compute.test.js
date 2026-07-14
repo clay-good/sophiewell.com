@@ -2136,6 +2136,21 @@ test('lib/concussion-rts-v298.js worked calls', () => {
   assert.equal(s5.clearanceRequired, true);
 });
 
+test('lib/cosyntropin-v299.js worked calls', () => {
+  // 22 µg/dL is at/above the 18 µg/dL threshold: normal adrenal response.
+  const normal = ok('cosyntropin-stim', { 'csy-cortisol': '22' });
+  assert.equal(normal.threshold, 18);
+  assert.equal(normal.normal, true);
+  assert.match(normal.band, /normal adrenal response/);
+  // 12 µg/dL is below threshold: suggestive of adrenal insufficiency.
+  const low = ok('cosyntropin-stim', { 'csy-cortisol': '12' });
+  assert.equal(low.abnormal, true);
+  // nmol/L unit switches to the 500 nmol/L threshold.
+  const metric = ok('cosyntropin-stim', { 'csy-cortisol': '520', 'csy-unit': 'nmol/L' });
+  assert.equal(metric.threshold, 500);
+  assert.equal(metric.normal, true);
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];

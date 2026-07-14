@@ -1502,6 +1502,20 @@ round-trip both pass, without the phantom "2". Adapter appended to the existing
 rate to a target PaCO2. Brings the exposed total to **1072 calculators across 197
 modules**.
 
+## One-hundred-twenty-fourth wave — the cosyntropin (ACTH) stimulation test interpretation in lib/cosyntropin-v299.js (+1)
+
+`cosyntropin-stim` (spec-v299) interprets the peak stimulated serum cortisol
+(30 or 60 min after 250 µg cosyntropin): given the value and its unit it compares
+against the standard-immunoassay threshold (18 µg/dL / 500 nmol/L) and reports a
+normal adrenal response or a value below threshold suggestive of adrenal
+insufficiency, with an LC-MS/MS caveat. `cortisol` is a required number; `unit` is
+an optional enum (µg/dL default, or nmol/L); the compute's `band` carries the
+"22 µg/dL / 18" example, so it round-trips through the default `makeToArgs` with no
+custom toArgs. New adapter module registered in `mcp/catalog.js`; its golden probe
+("cosyntropin stimulation test") is promoted now that the tile is in the
+MCP-exposed registry. Brings the exposed total to **1088 calculators across 204
+modules**.
+
 ## One-hundred-twenty-third wave — the graduated return-to-sport (concussion) strategy in lib/concussion-rts-v298.js (+1)
 
 `concussion-rts` (spec-v298) is the graduated return-to-sport ladder after a
@@ -3111,6 +3125,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/concussion-rts-v298.js
 - `concussion-rts`
+
+### lib/cosyntropin-v299.js
+- `cosyntropin-stim`
 
 ### lib/tb-testing.js
 - `tb-testing`
