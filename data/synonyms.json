@@ -1,5 +1,5 @@
 {
-  "version": "v24-2026-07-14",
+  "version": "v25-2026-07-14",
   "note": "spec-v7 section 3.2: hand-curated patient-phrasing -> tile id table. Each entry maps patient-mental-model phrases (and, from the v8/v9 plain-language-search batches, clinical abbreviations, eponym aliases, and canonical-intent phrases) to a single existing tile. Audience is the primary audience the entry serves; the matcher deprioritizes (does not hide) entries when the user has selected a different chip. Every phrase is lowercase; every tile id is an existing catalog tile (guarded by test/unit/synonyms-catalog.test.js). Adding a new phrase is a one-line PR.",
   "entries": [
     { "phrases": ["denied", "denial letter", "they denied it", "insurance said no", "appeal", "write an appeal", "appeal my claim", "appeal letter", "appeal a denial"],
@@ -192,6 +192,8 @@
     { "phrases": ["instability severity index score", "isis shoulder", "shoulder instability recurrence", "shoulder dislocation recurrence risk", "bankart recurrence risk", "arthroscopic bankart vs latarjet"],
       "tile": "isis-shoulder", "audience": "clinicians" },
     { "phrases": ["anaphylaxis grade", "anaphylaxis severity grading", "ring messmer classification", "anaphylactic reaction severity", "perioperative anaphylaxis grade", "hypersensitivity reaction grade"],
-      "tile": "anaphylaxis-grade", "audience": "clinicians" }
+      "tile": "anaphylaxis-grade", "audience": "clinicians" },
+    { "phrases": ["thyroid nodule malignancy risk", "thyroid nodule risk", "ti-rads", "tirads", "thyroid nodule ultrasound", "thyroid ultrasound risk", "thyroid nodule classification"],
+      "tile": "acr-tirads", "audience": "clinicians" }
   ]
 }
