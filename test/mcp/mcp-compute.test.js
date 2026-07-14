@@ -2187,6 +2187,16 @@ test('lib/isis-v302.js worked calls', () => {
   assert.equal(six.highRisk, false);
 });
 
+test('lib/anaphylaxis-v303.js worked calls', () => {
+  // Grade III is life-threatening; grade I is not.
+  const g3 = ok('anaphylaxis-grade', { 'anp-grade': 'III' });
+  assert.equal(g3.grade, 'III');
+  assert.equal(g3.lifeThreatening, true);
+  assert.match(g3.band, /Ring & Messmer grade III/);
+  const g1 = ok('anaphylaxis-grade', { 'anp-grade': 'I' });
+  assert.equal(g1.lifeThreatening, false);
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];

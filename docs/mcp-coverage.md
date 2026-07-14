@@ -1502,6 +1502,19 @@ round-trip both pass, without the phantom "2". Adapter appended to the existing
 rate to a target PaCO2. Brings the exposed total to **1072 calculators across 197
 modules**.
 
+## One-hundred-twenty-eighth wave — the Ring & Messmer anaphylaxis grade in lib/anaphylaxis-v303.js (+1)
+
+`anaphylaxis-grade` (spec-v303) reports the Ring & Messmer (1977) severity grade of
+an anaphylactic reaction: given the grade (I-IV) it returns the clinical features
+(I cutaneous only; II moderate multi-organ; III life-threatening collapse/
+bronchospasm; IV cardiac/respiratory arrest) and the life-threatening flag (grades
+III-IV). The single `grade` field is a required enum over the 4 grades; the
+compute's `band` carries the "grade III" example, so it round-trips through the
+default `makeToArgs` with no custom toArgs. New adapter module registered in
+`mcp/catalog.js`; its golden probe ("anaphylaxis severity grading") is promoted now
+that the tile is in the MCP-exposed registry. Brings the exposed total to **1092
+calculators across 208 modules**.
+
 ## One-hundred-twenty-seventh wave — the Instability Severity Index Score (ISIS) in lib/isis-v302.js (+1)
 
 `isis-shoulder` (spec-v302) sums six preoperative factors for anterior shoulder
@@ -3176,6 +3189,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/isis-v302.js
 - `isis-shoulder`
+
+### lib/anaphylaxis-v303.js
+- `anaphylaxis-grade`
 
 ### lib/tb-testing.js
 - `tb-testing`

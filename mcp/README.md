@@ -78,7 +78,7 @@ find_calculator { "query": "stroke risk afib" }
        candidates: [ { id: "chads", name: "CHA2DS2-VASc", why: "synonym", ... }, ... ] }
 
 list_calculators { "specialty": "hepatology" }
-  -> { coverage: "1091 of 1109 catalog tiles exposed ...", calculators: [ { id: "meld-xi", ... }, ... ] }
+  -> { coverage: "1092 of 1109 catalog tiles exposed ...", calculators: [ { id: "meld-xi", ... }, ... ] }
 
 describe_calculator { "id": "meld-xi" }
   -> { inputSchema: { ... mx-bili, mx-creat ... }, citation: "Heuman DM ... Liver Transpl 2007", ... }
@@ -321,8 +321,9 @@ in `lib/cosyntropin-v299.js`, and a one-hundred-twenty-fifth the AVF maturation
 "Rule of 6s" in `lib/av-fistula-v300.js`, and a one-hundred-twenty-sixth the
 diabetic retinopathy severity (ICDR scale) in `lib/dr-severity-v301.js`, and a
 one-hundred-twenty-seventh the Instability Severity Index Score (shoulder) in
-`lib/isis-v302.js`, for
-1091 across 207 modules
+`lib/isis-v302.js`, and a one-hundred-twenty-eighth the Ring & Messmer anaphylaxis
+severity grade in `lib/anaphylaxis-v303.js`, for
+1092 across 208 modules
 today. <!-- catalog-truth:historical (197 is the count of lib modules adapted, not a catalog tile count) -->
 Later waves extend it module by module against the same contract.
 
