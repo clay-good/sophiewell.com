@@ -6,6 +6,19 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v304 — Dexamethasone suppression test (1-mg overnight) tile, 1155 → 1156)
+
+- New `dexamethasone-suppression` tile (group G): the clinician enters the 8 am serum cortisol drawn
+  after 1 mg dexamethasone at ~11 pm and its unit (µg/dL or nmol/L); the tile compares it with the
+  suppression cutoff — 1.8 µg/dL (50 nmol/L) — and reports normal suppression (below) or a failure to
+  suppress (at or above, consistent with possible Cushing syndrome / autonomous cortisol secretion),
+  with an explicit false-positive caveat — a cited threshold interpretation, not a diagnosis
+  ([spec-v11] §5.3). Closes the "cushing screening" catalog gap the SESSION-40 second fresh-domain
+  search sweep surfaced. Cutoff re-fetched and cross-verified (spec-v97) against the Endocrine Society
+  2008 Cushing guideline and current DST reviews. New `lib/dst-v304.js` + `views/group-v304.js`
+  (RV304); +1 META entry, +1 UTILITIES row, a synonym entry (v25 → v26), 7 unit tests + fuzz, corpus
+  rebuilt to 1156. See [docs/spec-v304.md](docs/spec-v304.md). The MCP adapter follows in a later wave.
+
 ### Added (spec-v303 — Anaphylaxis severity grade (Ring & Messmer) tile, 1154 → 1155)
 
 - New `anaphylaxis-grade` tile (group G): the clinician selects the Ring & Messmer grade (I–IV) and

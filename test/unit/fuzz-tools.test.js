@@ -280,6 +280,7 @@ import * as avFistulaV300 from '../../lib/av-fistula-v300.js';
 import * as drSeverityV301 from '../../lib/dr-severity-v301.js';
 import * as isisV302 from '../../lib/isis-v302.js';
 import * as anaphylaxisV303 from '../../lib/anaphylaxis-v303.js';
+import * as dstV304 from '../../lib/dst-v304.js';
 import * as tbTesting from '../../lib/tb-testing.js';
 
 const MODULES = {
@@ -505,6 +506,7 @@ const MODULES = {
   'dr-severity-v301.js': drSeverityV301,
   'isis-v302.js': isisV302,
   'anaphylaxis-v303.js': anaphylaxisV303,
+  'dst-v304.js': dstV304,
   'tb-testing.js': tbTesting,
 };
 
