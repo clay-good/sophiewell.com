@@ -1,4 +1,4 @@
-// Search-relevance golden set. Runs 99 realistic clinical queries through the
+// Search-relevance golden set. Runs 114 realistic clinical queries through the
 // real find_calculator surface (shared resolvePromptRanked + data/synonyms.json
 // + data/search-corpus over the exposed registry) and asserts an acceptable
 // tile ranks in the top 3. This pins the routing quality spec-v282 shipped:
@@ -159,6 +159,27 @@ const PROBES = [
   ['cosyntropin stimulation test', ['cosyntropin-stim']],
   // spec-v300 tile, exposed to MCP in wave 125: AVF maturation rule of 6s.
   ['fistula maturation rule of 6s', ['avf-rule-of-6s']],
+  // SESSION-40 fresh-domain sweep (sleep, uro, ENT, OB, psych, tox, endo): the
+  // search already routes these marquee cross-domain queries into the top 3 --
+  // these rows pin those verified routes so a future corpus/ranker change can't
+  // silently regress them. (The same sweep surfaced un-forced CATALOG gaps with
+  // no tile to route to: diabetic-retinopathy grading, Young Mania Rating Scale,
+  // anaphylaxis grading, hypoglycemia-risk, shoulder-instability.)
+  ['epworth sleepiness scale', ['epworth']],
+  ['stop bang sleep apnea', ['stop-bang']],
+  ['prostate symptom score', ['ipss']],
+  ['cervical dilation labor', ['bishop']],
+  ['suicide risk assessment', ['cssrs']],
+  ['sore throat antibiotic score', ['mcisaac', 'centor', 'feverpain']],
+  ['dizziness vertigo score', ['dhi']],
+  ['dic score', ['isth-dic', 'jaam-dic']],
+  ['preeclampsia severity', ['acog-severe-pre']],
+  ['thyroid storm score', ['burch-wartofsky']],
+  ['testicular torsion score', ['twist-score']],
+  ['acetaminophen overdose nomogram', ['acetaminophen-nomogram']],
+  ['penicillin allergy risk', ['pen-fast']],
+  ['salicylate toxicity', ['salicylate-toxicity']],
+  ['kidney stone passage prediction', ['stone-score', 'guys-stone-score']],
 ];
 
 test(`every golden probe routes an acceptable tile into the top ${TOP_N}`, () => {
