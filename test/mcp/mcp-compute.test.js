@@ -2225,6 +2225,19 @@ test('lib/crs-v305.js worked calls', () => {
   assert.equal(ok('crs-grade', { 'crs-fever': true }).grade, 1);
 });
 
+test('lib/icans-v306.js worked calls', () => {
+  // ICE 1 -> ASTCT ICANS grade 3 (severe).
+  const g3 = ok('icans-grade', { 'icans-ice': '1' });
+  assert.equal(g3.grade, 3);
+  assert.equal(g3.severe, true);
+  assert.match(g3.band, /ICANS grade 3 of 4/);
+  // The most severe domain wins: mild ICE 9 but unarousable -> grade 4.
+  const g4 = ok('icans-grade', { 'icans-ice': '9', 'icans-loc': 'unarousable' });
+  assert.equal(g4.grade, 4);
+  // ICE 10, nothing else -> no ICANS (grade 0).
+  assert.equal(ok('icans-grade', { 'icans-ice': '10' }).grade, 0);
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];
