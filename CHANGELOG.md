@@ -6,6 +6,20 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v309 — Acute GVHD grade (modified Glucksberg) tile, 1160 → 1161)
+
+- New `gvhd-grade` tile (group G): the clinician picks the skin, liver, and gastrointestinal organ
+  stages (0–4 each) and the tile reports the overall acute GVHD grade (0–IV) by the modified
+  Glucksberg grouping (IV if any organ stage 4; III if liver/GI stage 2-3; II if skin 3 or liver/GI
+  1; I if skin 1-2), flagging grades III–IV as severe — a classification grade, not a treatment order
+  ([spec-v11] §5.3). Closes the "graft versus host disease grading" gap the SESSION-40 final probe
+  surfaced (same transplant/cellular-therapy cluster as the CRS/ICANS tiles). Organ staging and the
+  overall-grade grouping re-fetched and cross-verified (spec-v97) against Przepiorka 1995 (modified
+  Glucksberg) and StatPearls; MAGIC/IBMTR variants noted. New `lib/gvhd-v309.js` +
+  `views/group-v309.js` (RV309); +1 META entry, +1 UTILITIES row, a synonym entry (v30 → v31), 8 unit
+  tests + fuzz, corpus rebuilt to 1161. See [docs/spec-v309.md](docs/spec-v309.md). The MCP adapter
+  follows in a later wave.
+
 ### Added (spec-v308 — Graduated Return-to-Learn (concussion) tile, 1159 → 1160)
 
 - New `concussion-rtl` tile (group G): the clinician selects the return-to-learn step (1–4) and the
