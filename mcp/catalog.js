@@ -219,6 +219,7 @@ import anaphylaxisV303 from './adapters/anaphylaxis-v303.js';
 import dstV304 from './adapters/dst-v304.js';
 import crsV305 from './adapters/crs-v305.js';
 import icansV306 from './adapters/icans-v306.js';
+import dmeV307 from './adapters/dme-v307.js';
 import tbTesting from './adapters/tb-testing.js';
 import labInterpret from './adapters/lab-interpret.js';
 import decisionRulesV258 from './adapters/decision-rules-v258.js';
@@ -432,6 +433,7 @@ const ADAPTER_MODULES = [
   ['dst-v304', dstV304],
   ['crs-v305', crsV305],
   ['icans-v306', icansV306],
+  ['dme-v307', dmeV307],
   ['tb-testing', tbTesting],
   ['lab-interpret', labInterpret],
   ['decision-rules-v258', decisionRulesV258],

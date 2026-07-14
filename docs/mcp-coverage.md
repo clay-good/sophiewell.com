@@ -1502,6 +1502,20 @@ round-trip both pass, without the phantom "2". Adapter appended to the existing
 rate to a target PaCO2. Brings the exposed total to **1072 calculators across 197
 modules**.
 
+## One-hundred-thirty-second wave — the diabetic macular edema (DME) severity in lib/dme-v307.js (+1)
+
+`dme-severity` (spec-v307) grades diabetic macular edema on the International
+Clinical scale (Wilkinson 2003, the companion to ICDR): given whether retinal
+thickening / hard exudates are present in the posterior pole and their location
+relative to the fovea, it reports the level (absent / mild / moderate / severe =
+center-involving). `present` is a boolean and `location` is an enum; both are
+optional (present false is "apparently absent"). The compute's `band` carries the
+"Severe DME" example, so it round-trips through the default `makeToArgs` with no
+custom toArgs. New adapter module registered in `mcp/catalog.js`; its golden probe
+("diabetic macular edema severity") is promoted now that the tile is in the
+MCP-exposed registry. Brings the exposed total to **1096 calculators across 212
+modules**.
+
 ## One-hundred-thirty-first wave — the ASTCT ICANS neurotoxicity grade in lib/icans-v306.js (+1)
 
 `icans-grade` (spec-v306) grades ICANS neurotoxicity on the ASTCT consensus (Lee
@@ -3239,6 +3253,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/icans-v306.js
 - `icans-grade`
+
+### lib/dme-v307.js
+- `dme-severity`
 
 ### lib/tb-testing.js
 - `tb-testing`

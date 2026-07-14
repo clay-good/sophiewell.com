@@ -2238,6 +2238,19 @@ test('lib/icans-v306.js worked calls', () => {
   assert.equal(ok('icans-grade', { 'icans-ice': '10' }).grade, 0);
 });
 
+test('lib/dme-v307.js worked calls', () => {
+  // Present + involving -> severe, center-involving DME.
+  const severe = ok('dme-severity', { 'dme-present': true, 'dme-location': 'involving' });
+  assert.equal(severe.name, 'Severe DME');
+  assert.equal(severe.centerInvolving, true);
+  // Present + distant -> mild.
+  const mild = ok('dme-severity', { 'dme-present': true, 'dme-location': 'distant' });
+  assert.equal(mild.name, 'Mild DME');
+  // Absent.
+  const absent = ok('dme-severity', { 'dme-present': false });
+  assert.equal(absent.level, 'absent');
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];
