@@ -6,6 +6,18 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v308 — Graduated Return-to-Learn (concussion) tile, 1159 → 1160)
+
+- New `concussion-rtl` tile (group G): the clinician selects the return-to-learn step (1–4) and the
+  tile reports the mental activity, the activity at that step, and the goal — a consensus strategy
+  descriptor, not a clearance decision ([spec-v11] §5.3). The school companion to the spec-v298
+  return-to-sport tile (a student-athlete completes a full RTL before unrestricted RTS); closes the
+  "return to learn" gap. Four-step ladder re-fetched from Table 1 of the Amsterdam 2022 consensus and
+  cross-verified against the return-to-sport strategy; descriptors summarised in the tile's own words.
+  New `lib/concussion-rtl-v308.js` + `views/group-v308.js` (RV308); +1 META entry, +1 UTILITIES row, a
+  synonym entry (v29 → v30), 6 unit tests + fuzz, corpus rebuilt to 1160. See
+  [docs/spec-v308.md](docs/spec-v308.md). The MCP adapter follows in a later wave.
+
 ### Added (spec-v307 — Diabetic macular edema (DME) severity tile, 1158 → 1159)
 
 - New `dme-severity` tile (group G): the clinician marks whether retinal thickening / hard exudates

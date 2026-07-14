@@ -284,6 +284,7 @@ import * as dstV304 from '../../lib/dst-v304.js';
 import * as crsV305 from '../../lib/crs-v305.js';
 import * as icansV306 from '../../lib/icans-v306.js';
 import * as dmeV307 from '../../lib/dme-v307.js';
+import * as concussionRtlV308 from '../../lib/concussion-rtl-v308.js';
 import * as tbTesting from '../../lib/tb-testing.js';
 
 const MODULES = {
@@ -513,6 +514,7 @@ const MODULES = {
   'crs-v305.js': crsV305,
   'icans-v306.js': icansV306,
   'dme-v307.js': dmeV307,
+  'concussion-rtl-v308.js': concussionRtlV308,
   'tb-testing.js': tbTesting,
 };
 
