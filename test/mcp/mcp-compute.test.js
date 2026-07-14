@@ -2263,6 +2263,19 @@ test('lib/concussion-rtl-v308.js worked calls', () => {
   assert.match(s4.band, /before unrestricted return to sport/);
 });
 
+test('lib/gvhd-v309.js worked calls', () => {
+  // Liver stage 2 -> acute GVHD grade III (severe).
+  const g3 = ok('gvhd-grade', { 'gvhd-liver': '2' });
+  assert.equal(g3.gradeRoman, 'III');
+  assert.equal(g3.severe, true);
+  assert.match(g3.band, /Acute GVHD grade III/);
+  // Any organ stage 4 -> grade IV, overriding a lesser skin stage.
+  const g4 = ok('gvhd-grade', { 'gvhd-skin': '3', 'gvhd-gi': '4' });
+  assert.equal(g4.gradeRoman, 'IV');
+  // No organ involvement -> no GVHD.
+  assert.equal(ok('gvhd-grade', { 'gvhd-skin': '0' }).grade, 0);
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];

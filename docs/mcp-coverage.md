@@ -1502,6 +1502,18 @@ round-trip both pass, without the phantom "2". Adapter appended to the existing
 rate to a target PaCO2. Brings the exposed total to **1072 calculators across 197
 modules**.
 
+## One-hundred-thirty-fourth wave — the acute GVHD grade (modified Glucksberg) in lib/gvhd-v309.js (+1)
+
+`gvhd-grade` (spec-v309) grades acute graft-versus-host disease on the modified
+Glucksberg overall grade: given the skin, liver, and GI organ stages (0-4 each) it
+reports the overall grade (0-IV). The three `*Stage` fields are enums (0-4), all
+optional (each defaults to 0). The compute's `band` carries the "liver stage 2 ->
+grade III" example, so it round-trips through the default `makeToArgs` with no
+custom toArgs. New adapter module registered in `mcp/catalog.js`; its golden probe
+("graft versus host disease grading") is promoted now that the tile is in the
+MCP-exposed registry. Brings the exposed total to **1098 calculators across 214
+modules**.
+
 ## One-hundred-thirty-third wave — the graduated return-to-learn (concussion) strategy in lib/concussion-rtl-v308.js (+1)
 
 `concussion-rtl` (spec-v308) is the graduated return-to-learn ladder after a
@@ -3271,6 +3283,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/concussion-rtl-v308.js
 - `concussion-rtl`
+
+### lib/gvhd-v309.js
+- `gvhd-grade`
 
 ### lib/tb-testing.js
 - `tb-testing`
