@@ -1,5 +1,5 @@
 {
-  "version": "v22-2026-07-14",
+  "version": "v23-2026-07-14",
   "note": "spec-v7 section 3.2: hand-curated patient-phrasing -> tile id table. Each entry maps patient-mental-model phrases (and, from the v8/v9 plain-language-search batches, clinical abbreviations, eponym aliases, and canonical-intent phrases) to a single existing tile. Audience is the primary audience the entry serves; the matcher deprioritizes (does not hide) entries when the user has selected a different chip. Every phrase is lowercase; every tile id is an existing catalog tile (guarded by test/unit/synonyms-catalog.test.js). Adding a new phrase is a one-line PR.",
   "entries": [
     { "phrases": ["denied", "denial letter", "they denied it", "insurance said no", "appeal", "write an appeal", "appeal my claim", "appeal letter", "appeal a denial"],
@@ -188,6 +188,8 @@
     { "phrases": ["rule of 6s", "rule of sixes", "fistula maturation", "avf maturation", "arteriovenous fistula maturation", "fistula rule of 6", "dialysis fistula maturation"],
       "tile": "avf-rule-of-6s", "audience": "clinicians" },
     { "phrases": ["diabetic retinopathy severity", "diabetic retinopathy grading", "icdr scale", "retinopathy grade", "npdr severity", "proliferative retinopathy", "nonproliferative diabetic retinopathy"],
-      "tile": "icdr-retinopathy", "audience": "clinicians" }
+      "tile": "icdr-retinopathy", "audience": "clinicians" },
+    { "phrases": ["instability severity index score", "isis shoulder", "shoulder instability recurrence", "shoulder dislocation recurrence risk", "bankart recurrence risk", "arthroscopic bankart vs latarjet"],
+      "tile": "isis-shoulder", "audience": "clinicians" }
   ]
 }

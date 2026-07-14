@@ -6,6 +6,20 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v302 — Instability Severity Index Score (shoulder, ISIS) tile, 1153 → 1154)
+
+- New `isis-shoulder` tile (group G): the clinician checks the six preoperative factors (age ≤20,
+  competitive sport, contact/overhead sport, shoulder hyperlaxity, Hill-Sachs on the AP
+  external-rotation radiograph, glenoid loss of contour) and the tile sums them (0–10, weighted
+  2/2/1/1/2/2) and flags a score above 6 — high recurrence risk after an arthroscopic Bankart repair,
+  for whom an open procedure (Latarjet or open Bankart) is favored — a cited score, not a surgical
+  decision ([spec-v11] §5.3). Closes the "shoulder dislocation/instability" catalog gap the SESSION-40
+  fresh-domain search sweep surfaced. Weights and cutoff re-fetched and cross-verified (spec-v97)
+  against Balg & Boileau 2007 (JBJS Br) and the Clin Orthop Surg 2019 reliability study. New
+  `lib/isis-v302.js` + `views/group-v302.js` (RV302); +1 META entry, +1 UTILITIES row, a synonym
+  entry (v22 → v23), 6 unit tests + fuzz, corpus rebuilt to 1154. See [docs/spec-v302.md](docs/spec-v302.md).
+  The MCP adapter follows in a later wave.
+
 ### Added (spec-v301 — Diabetic retinopathy severity (ICDR scale) tile, 1152 → 1153)
 
 - New `icdr-retinopathy` tile (group G): the clinician checks the dilated-ophthalmoscopy findings and
