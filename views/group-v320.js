@@ -36,9 +36,9 @@ export const renderers = {
   'clavien-dindo'(root) {
     note(root, 'Clavien-Dindo classification of surgical complications (Dindo 2004): graded by the therapy the complication required. Pick the grade. IIIb (reoperation under general anesthesia) and IV–V (life-threatening / death) mark the severe end. Near-neighbors: euroscore2.');
     root.appendChild(select('Clavien-Dindo grade (therapy the complication required)', 'cd-grade', [
-      ['I', 'I — no treatment beyond antiemetics/analgesics/electrolytes/physio (or bedside wound opening)'],
+      ['I', 'I — no treatment beyond antiemetics, analgesics, electrolytes, physio (or bedside wound opening)'],
       ['II', 'II — pharmacological treatment beyond grade I (incl. transfusion, TPN)'],
-      ['IIIa', 'IIIa — surgical/endoscopic/radiological intervention, not under general anesthesia'],
+      ['IIIa', 'IIIa — surgical, endoscopic, radiological intervention, not under general anesthesia'],
       ['IIIb', 'IIIb — intervention under general anesthesia'],
       ['IVa', 'IVa — life-threatening, single-organ dysfunction (incl. dialysis)'],
       ['IVb', 'IVb — life-threatening, multiorgan dysfunction'],
