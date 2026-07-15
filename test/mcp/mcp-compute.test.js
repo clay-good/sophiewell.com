@@ -2401,6 +2401,19 @@ test('lib/cdi-severity-v317.js worked calls', () => {
   assert.equal(ful.fulminant, true);
 });
 
+test('lib/la-esophagitis-v318.js worked calls', () => {
+  // Grade B (the META example): > 5 mm, not severe.
+  const b = ok('la-esophagitis', { 'la-grade': 'B' });
+  assert.equal(b.grade, 'B');
+  assert.equal(b.severe, false);
+  // Grade D: >= 75% circumference, severe.
+  const d = ok('la-esophagitis', { 'la-grade': 'D' });
+  assert.equal(d.grade, 'D');
+  assert.equal(d.severe, true);
+  // Grade A is the mildest.
+  assert.equal(ok('la-esophagitis', { 'la-grade': 'A' }).severe, false);
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];

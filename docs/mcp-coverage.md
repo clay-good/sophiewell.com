@@ -1502,6 +1502,17 @@ round-trip both pass, without the phantom "2". Adapter appended to the existing
 rate to a target PaCO2. Brings the exposed total to **1072 calculators across 197
 modules**.
 
+## One-hundred-forty-third wave — the Los Angeles (LA) classification of erosive esophagitis in lib/la-esophagitis-v318.js (+1)
+
+`la-esophagitis` (spec-v318) applies the Los Angeles classification of erosive (reflux)
+esophagitis: given the endoscopic grade, it reports the grade (A-D) and its standard
+definition. `grade` is an enum (`kind: 'enum'`, values A/B/C/D) — the single input the
+renderer exposes. The example sets grade B; its band carries the "5 mm" example number,
+so it round-trips through the default `makeToArgs` with no custom toArgs. New adapter
+module registered in `mcp/catalog.js`; its golden probe ("erosive esophagitis grade") is
+promoted now that the tile is in the MCP-exposed registry. Brings the exposed total to
+**1107 calculators across 223 modules**.
+
 ## One-hundred-forty-second wave — the CDI severity classification (2017 IDSA/SHEA) in lib/cdi-severity-v317.js (+1)
 
 `cdi-severity` (spec-v317) applies the 2017 IDSA/SHEA Clostridioides difficile infection
@@ -3424,6 +3435,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/cdi-severity-v317.js
 - `cdi-severity`
+
+### lib/la-esophagitis-v318.js
+- `la-esophagitis`
 
 ### lib/tb-testing.js
 - `tb-testing`
