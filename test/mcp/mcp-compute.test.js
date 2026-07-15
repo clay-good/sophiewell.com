@@ -2440,6 +2440,19 @@ test('lib/clavien-dindo-v320.js worked calls', () => {
   assert.equal(v.severe, true);
 });
 
+test('lib/hinchey-v321.js worked calls', () => {
+  // Stage III (the META example): generalized purulent peritonitis, severe.
+  const iii = ok('hinchey', { 'hinchey-stage': 'III' });
+  assert.equal(iii.stage, 'III');
+  assert.equal(iii.severe, true);
+  // Stage I: localized abscess, not severe.
+  assert.equal(ok('hinchey', { 'hinchey-stage': 'I' }).severe, false);
+  // Stage IV: fecal peritonitis, severe.
+  const iv = ok('hinchey', { 'hinchey-stage': 'IV' });
+  assert.equal(iv.stage, 'IV');
+  assert.equal(iv.severe, true);
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];

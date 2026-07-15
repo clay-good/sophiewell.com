@@ -1502,6 +1502,17 @@ round-trip both pass, without the phantom "2". Adapter appended to the existing
 rate to a target PaCO2. Brings the exposed total to **1072 calculators across 197
 modules**.
 
+## One-hundred-forty-sixth wave — the Hinchey classification of acute diverticulitis in lib/hinchey-v321.js (+1)
+
+`hinchey` (spec-v321) applies the original Hinchey classification of perforated
+diverticulitis: given the stage, it reports the stage (I-IV) and its standard definition.
+`stage` is an enum (`kind: 'enum'`, values I/II/III/IV; the compute also accepts arabic
+1-4) — the single input the renderer exposes. The example sets stage III; its expected text
+is the stage definition (roman-graded, no numeric facts), so it round-trips through the
+default `makeToArgs` with no custom toArgs. New adapter module registered in `mcp/catalog.js`;
+its golden probe ("diverticulitis stage") is promoted now that the tile is in the
+MCP-exposed registry. Brings the exposed total to **1110 calculators across 226 modules**.
+
 ## One-hundred-forty-fifth wave — the Clavien-Dindo classification of surgical complications in lib/clavien-dindo-v320.js (+1)
 
 `clavien-dindo` (spec-v320) applies the Clavien-Dindo classification of surgical
@@ -3466,6 +3477,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/clavien-dindo-v320.js
 - `clavien-dindo`
+
+### lib/hinchey-v321.js
+- `hinchey`
 
 ### lib/tb-testing.js
 - `tb-testing`
