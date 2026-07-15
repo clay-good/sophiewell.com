@@ -6,6 +6,21 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v322 — ACR BI-RADS assessment categories tile, 1173 → 1174)
+
+- New `bi-rads` tile (group G): the ACR BI-RADS breast-imaging assessment categories (0–6, with 4A/4B/4C)
+  — one of the most widely used imaging reporting systems, the breast-imaging peer of the existing
+  `acr-tirads` thyroid tile, previously absent from the catalog. The radiologist picks the final assessment
+  category and the tile reports its likelihood-of-malignancy band and standard management. **0:** incomplete.
+  **1:** negative (~0%). **2:** benign (~0%). **3:** probably benign (> 0% to ≤ 2%), short-interval
+  follow-up. **4:** suspicious (> 2% to < 95%), biopsy — 4A (> 2–10%), 4B (> 10–50%), 4C (> 50 to < 95%).
+  **5:** highly suggestive (≥ 95%), biopsy. **6:** known biopsy-proven malignancy. An assessment category,
+  not a diagnosis or an order ([spec-v11] §5.3). Categories transcribed (spec-v97) from the ACR BI-RADS
+  Atlas 5th ed (2013), cross-verified against StatPearls; no citation-staleness row (ACR is not in the
+  issuer pattern; matches the `acr-tirads` precedent). New `lib/bi-rads-v322.js` + `views/group-v322.js`
+  (RV322); +1 META entry, +1 UTILITIES row, a synonym entry (v43 → v44), 8 unit tests + fuzz, corpus rebuilt
+  to 1174. See [docs/spec-v322.md](docs/spec-v322.md). The MCP adapter follows in a later wave.
+
 ### Added (spec-v321 — Hinchey classification of acute diverticulitis tile, 1172 → 1173)
 
 - New `hinchey` tile (group G): the original Hinchey classification that stages perforated/complicated

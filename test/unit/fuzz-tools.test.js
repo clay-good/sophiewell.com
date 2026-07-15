@@ -298,6 +298,7 @@ import * as laEsophagitisV318 from '../../lib/la-esophagitis-v318.js';
 import * as ccsAnginaV319 from '../../lib/ccs-angina-v319.js';
 import * as clavienDindoV320 from '../../lib/clavien-dindo-v320.js';
 import * as hincheyV321 from '../../lib/hinchey-v321.js';
+import * as biRadsV322 from '../../lib/bi-rads-v322.js';
 import * as tbTesting from '../../lib/tb-testing.js';
 
 const MODULES = {
@@ -541,6 +542,7 @@ const MODULES = {
   'ccs-angina-v319.js': ccsAnginaV319,
   'clavien-dindo-v320.js': clavienDindoV320,
   'hinchey-v321.js': hincheyV321,
+  'bi-rads-v322.js': biRadsV322,
   'tb-testing.js': tbTesting,
 };
 
