@@ -6,6 +6,18 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v312 — Acute cholangitis diagnosis (Tokyo Guidelines TG18) tile, 1163 → 1164)
+
+- New `cholangitis-diagnosis` tile (group G): the diagnostic companion to the spec-v310 severity grade
+  (TG18 defines both a diagnostic criteria set and a severity grade). The clinician checks the category
+  A (systemic inflammation), B (cholestasis), and C (imaging) items and the tile reports whether the
+  presentation is a **definite** acute cholangitis (one item in each of A, B, and C), a **suspected**
+  one (one item in A plus one in B or C), or does not meet the TG18 criteria. A diagnostic category,
+  not a diagnosis or an order ([spec-v11] §5.3). Criteria transcribed verbatim (spec-v97) from Table 1
+  of Miura 2018 (cited from Kiriyama 2018). New `lib/cholangitis-dx-v312.js` + `views/group-v312.js`
+  (RV312); +1 META entry, +1 UTILITIES row, a synonym entry (v33 → v34), 7 unit tests + fuzz, corpus
+  rebuilt to 1164. See [docs/spec-v312.md](docs/spec-v312.md). The MCP adapter follows in a later wave.
+
 ### Added (spec-v311 — Acute cholecystitis severity grade (Tokyo Guidelines TG18) tile, 1162 → 1163)
 
 - New `cholecystitis-severity` tile (group G): the companion to the spec-v310 acute cholangitis grade

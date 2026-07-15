@@ -288,6 +288,7 @@ import * as concussionRtlV308 from '../../lib/concussion-rtl-v308.js';
 import * as gvhdV309 from '../../lib/gvhd-v309.js';
 import * as cholangitisV310 from '../../lib/cholangitis-v310.js';
 import * as cholecystitisV311 from '../../lib/cholecystitis-v311.js';
+import * as cholangitisDxV312 from '../../lib/cholangitis-dx-v312.js';
 import * as tbTesting from '../../lib/tb-testing.js';
 
 const MODULES = {
@@ -521,6 +522,7 @@ const MODULES = {
   'gvhd-v309.js': gvhdV309,
   'cholangitis-v310.js': cholangitisV310,
   'cholecystitis-v311.js': cholecystitisV311,
+  'cholangitis-dx-v312.js': cholangitisDxV312,
   'tb-testing.js': tbTesting,
 };
 
