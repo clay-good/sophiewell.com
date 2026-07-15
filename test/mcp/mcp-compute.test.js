@@ -2386,6 +2386,21 @@ test('lib/gold-abe-v316.js worked calls', () => {
   assert.equal(ok('gold-abe', { 'gold-mmrc': '1', 'gold-exac-mod': '0' }).group, 'A');
 });
 
+test('lib/cdi-severity-v317.js worked calls', () => {
+  // WBC >= 15,000 -> severe (the META example).
+  const sev = ok('cdi-severity', { 'cdi-wbc': '18000', 'cdi-cr': '1.2' });
+  assert.equal(sev.category, 'severe');
+  assert.equal(sev.fulminant, false);
+  // Creatinine >= 1.5 alone -> severe.
+  assert.equal(ok('cdi-severity', { 'cdi-wbc': '9000', 'cdi-cr': '2.0' }).category, 'severe');
+  // Both labs below thresholds -> non-severe.
+  assert.equal(ok('cdi-severity', { 'cdi-wbc': '9000', 'cdi-cr': '1.0' }).category, 'non-severe');
+  // A fulminant finding classifies fulminant, overriding non-severe labs.
+  const ful = ok('cdi-severity', { 'cdi-megacolon': true, 'cdi-wbc': '9000', 'cdi-cr': '1.0' });
+  assert.equal(ful.category, 'fulminant');
+  assert.equal(ful.fulminant, true);
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];

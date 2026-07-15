@@ -229,6 +229,7 @@ import cholecystitisDxV313 from './adapters/cholecystitis-dx-v313.js';
 import deauvilleV314 from './adapters/deauville-v314.js';
 import jonesV315 from './adapters/jones-v315.js';
 import goldAbeV316 from './adapters/gold-abe-v316.js';
+import cdiSeverityV317 from './adapters/cdi-severity-v317.js';
 import tbTesting from './adapters/tb-testing.js';
 import labInterpret from './adapters/lab-interpret.js';
 import decisionRulesV258 from './adapters/decision-rules-v258.js';
@@ -452,6 +453,7 @@ const ADAPTER_MODULES = [
   ['deauville-v314', deauvilleV314],
   ['jones-v315', jonesV315],
   ['gold-abe-v316', goldAbeV316],
+  ['cdi-severity-v317', cdiSeverityV317],
   ['tb-testing', tbTesting],
   ['lab-interpret', labInterpret],
   ['decision-rules-v258', decisionRulesV258],

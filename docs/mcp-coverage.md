@@ -1502,6 +1502,20 @@ round-trip both pass, without the phantom "2". Adapter appended to the existing
 rate to a target PaCO2. Brings the exposed total to **1072 calculators across 197
 modules**.
 
+## One-hundred-forty-second wave — the CDI severity classification (2017 IDSA/SHEA) in lib/cdi-severity-v317.js (+1)
+
+`cdi-severity` (spec-v317) applies the 2017 IDSA/SHEA Clostridioides difficile infection
+severity criteria: given the WBC, serum creatinine, and any fulminant finding, it reports
+non-severe, severe, or fulminant. `wbc` and `creatinine` are numbers (`kind: 'number'`),
+each optional at the field level (the compute itself requires both when no fulminant
+finding is checked, and returns valid:false otherwise); `hypotension`, `ileus`, and
+`megacolon` are booleans — any one classifies fulminant and overrides the labs. The
+example sets WBC 18000 + creatinine 1.2 (a WBC-driven severe case); its band carries the
+"18000", "15,000", "1.2", and "1.5" example numbers, so it round-trips through the default
+`makeToArgs` with no custom toArgs. New adapter module registered in `mcp/catalog.js`; its
+golden probe ("clostridioides difficile severity") is promoted now that the tile is in the
+MCP-exposed registry. Brings the exposed total to **1106 calculators across 222 modules**.
+
 ## One-hundred-forty-first wave — the GOLD ABE assessment tool (COPD group A/B/E) in lib/gold-abe-v316.js (+1)
 
 `gold-abe` (spec-v316) applies the 2023 GOLD ABE assessment tool: given the symptom
@@ -3407,6 +3421,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/gold-abe-v316.js
 - `gold-abe`
+
+### lib/cdi-severity-v317.js
+- `cdi-severity`
 
 ### lib/tb-testing.js
 - `tb-testing`
