@@ -291,6 +291,7 @@ import * as cholecystitisV311 from '../../lib/cholecystitis-v311.js';
 import * as cholangitisDxV312 from '../../lib/cholangitis-dx-v312.js';
 import * as cholecystitisDxV313 from '../../lib/cholecystitis-dx-v313.js';
 import * as deauvilleV314 from '../../lib/deauville-v314.js';
+import * as jonesV315 from '../../lib/jones-v315.js';
 import * as tbTesting from '../../lib/tb-testing.js';
 
 const MODULES = {
@@ -527,6 +528,7 @@ const MODULES = {
   'cholangitis-dx-v312.js': cholangitisDxV312,
   'cholecystitis-dx-v313.js': cholecystitisDxV313,
   'deauville-v314.js': deauvilleV314,
+  'jones-v315.js': jonesV315,
   'tb-testing.js': tbTesting,
 };
 

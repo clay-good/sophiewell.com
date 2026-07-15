@@ -290,6 +290,7 @@ are on-publication.
 |---|---|---|---|---|---|
 | duke-endocarditis | Modified Duke criteria for infective endocarditis (definite/possible/rejected thresholds) | 2023 Duke-ISCVID (Fowler 2023, Clin Infect Dis 77(4)) | same | 2026-06-17 | current -- the 2023 Duke-ISCVID revision is the latest; Class B, review on-publication of the next Duke-ISCVID update. The major/minor counting thresholds are stable |
 | refeeding-risk | NICE refeeding-syndrome risk stratification (major/minor criteria) | NICE CG32 (2006, updated 2017) | same | 2026-06-17 | current -- CG32 with the 2017 update is the latest; Class B, review on-publication of the next NICE nutrition-support update. The BMI / weight-loss / intake / electrolyte criteria are stable |
+| jones-criteria | AHA revised Jones criteria for acute rheumatic fever (risk-stratified major/minor; initial/recurrent thresholds) | 2015 AHA (Gewitz 2015, Circulation 131(20)) | same | 2026-07-15 | current -- the 2015 AHA revision is the latest; Class B, review on-publication of the next AHA Jones-criteria update. The risk-tier major/minor definitions and 2-major / 1-major-plus-2-minor thresholds are stable |
 
 ## spec-v101 AF stroke-risk & QT-prolongation (added 2026-06-18)
 

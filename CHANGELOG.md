@@ -6,6 +6,22 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v315 — 2015 revised Jones criteria (acute rheumatic fever) tile, 1166 → 1167)
+
+- New `jones-criteria` tile (group G): the 2015 AHA revised Jones criteria for diagnosing acute
+  rheumatic fever — a major standard diagnostic set (the peer of the existing `duke-endocarditis`
+  tile) with no prior version. The clinician selects the population risk tier (low vs moderate/high)
+  and episode type (initial vs recurrent), marks evidence of preceding group A strep, and checks the
+  manifestations; the tile reports whether the criteria are **met**, met-but-**needs strep evidence**,
+  or **not met**. Initial ARF: 2 major, or 1 major + 2 minor; recurrent also allows 3 minor. The
+  major/minor definitions are risk-stratified; a prolonged PR counts only without carditis; isolated
+  Sydenham chorea is sufficient on its own. A classification result, not a diagnosis or an order
+  ([spec-v11] §5.3). Criteria transcribed verbatim (spec-v97) from Gewitz 2015 (AHA, Circulation),
+  cross-verified against PMC4829161; the AHA citation carries a **citation-staleness ledger row**. New
+  `lib/jones-v315.js` + `views/group-v315.js` (RV315); +1 META entry, +1 UTILITIES row, a synonym entry
+  (v36 → v37), 9 unit tests + fuzz, corpus rebuilt to 1167. See [docs/spec-v315.md](docs/spec-v315.md).
+  The MCP adapter follows in a later wave.
+
 ### Added (spec-v314 — Deauville 5-point score (PET response, lymphoma) tile, 1165 → 1166)
 
 - New `deauville-score` tile (group G): the FDG-PET metabolic-response companion to the existing Ann

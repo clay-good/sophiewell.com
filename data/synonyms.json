@@ -1,5 +1,5 @@
 {
-  "version": "v36-2026-07-15",
+  "version": "v37-2026-07-15",
   "note": "spec-v7 section 3.2: hand-curated patient-phrasing -> tile id table. Each entry maps patient-mental-model phrases (and, from the v8/v9 plain-language-search batches, clinical abbreviations, eponym aliases, and canonical-intent phrases) to a single existing tile. Audience is the primary audience the entry serves; the matcher deprioritizes (does not hide) entries when the user has selected a different chip. Every phrase is lowercase; every tile id is an existing catalog tile (guarded by test/unit/synonyms-catalog.test.js). Adding a new phrase is a one-line PR.",
   "entries": [
     { "phrases": ["denied", "denial letter", "they denied it", "insurance said no", "appeal", "write an appeal", "appeal my claim", "appeal letter", "appeal a denial"],
@@ -216,6 +216,8 @@
     { "phrases": ["acute cholecystitis diagnosis", "cholecystitis diagnostic criteria", "tokyo guidelines cholecystitis diagnosis", "tg18 cholecystitis criteria", "diagnose cholecystitis", "murphy sign cholecystitis", "gallbladder inflammation diagnosis"],
       "tile": "cholecystitis-diagnosis", "audience": "clinicians" },
     { "phrases": ["deauville score", "deauville 5 point score", "deauville criteria", "pet response lymphoma", "5 point scale lymphoma", "fdg pet lymphoma response", "metabolic response lymphoma"],
-      "tile": "deauville-score", "audience": "clinicians" }
+      "tile": "deauville-score", "audience": "clinicians" },
+    { "phrases": ["jones criteria", "acute rheumatic fever", "rheumatic fever diagnosis", "revised jones criteria", "arf diagnosis", "rheumatic fever criteria", "2015 jones criteria"],
+      "tile": "jones-criteria", "audience": "clinicians" }
   ]
 }
