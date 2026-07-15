@@ -2427,6 +2427,19 @@ test('lib/ccs-angina-v319.js worked calls', () => {
   assert.equal(ok('ccs-angina', { 'ccs-grade': '1' }).class, 'I');
 });
 
+test('lib/clavien-dindo-v320.js worked calls', () => {
+  // Grade IIIa (the META example): intervention not under GA, not severe-flagged.
+  const iiia = ok('clavien-dindo', { 'cd-grade': 'IIIa' });
+  assert.equal(iiia.grade, 'IIIa');
+  assert.equal(iiia.severe, false);
+  // Grade IIIb: under general anesthesia, severe.
+  assert.equal(ok('clavien-dindo', { 'cd-grade': 'IIIb' }).severe, true);
+  // Grade V: death.
+  const v = ok('clavien-dindo', { 'cd-grade': 'V' });
+  assert.equal(v.grade, 'V');
+  assert.equal(v.severe, true);
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];

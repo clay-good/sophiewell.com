@@ -232,6 +232,7 @@ import goldAbeV316 from './adapters/gold-abe-v316.js';
 import cdiSeverityV317 from './adapters/cdi-severity-v317.js';
 import laEsophagitisV318 from './adapters/la-esophagitis-v318.js';
 import ccsAnginaV319 from './adapters/ccs-angina-v319.js';
+import clavienDindoV320 from './adapters/clavien-dindo-v320.js';
 import tbTesting from './adapters/tb-testing.js';
 import labInterpret from './adapters/lab-interpret.js';
 import decisionRulesV258 from './adapters/decision-rules-v258.js';
@@ -458,6 +459,7 @@ const ADAPTER_MODULES = [
   ['cdi-severity-v317', cdiSeverityV317],
   ['la-esophagitis-v318', laEsophagitisV318],
   ['ccs-angina-v319', ccsAnginaV319],
+  ['clavien-dindo-v320', clavienDindoV320],
   ['tb-testing', tbTesting],
   ['lab-interpret', labInterpret],
   ['decision-rules-v258', decisionRulesV258],

@@ -1502,6 +1502,17 @@ round-trip both pass, without the phantom "2". Adapter appended to the existing
 rate to a target PaCO2. Brings the exposed total to **1072 calculators across 197
 modules**.
 
+## One-hundred-forty-fifth wave — the Clavien-Dindo classification of surgical complications in lib/clavien-dindo-v320.js (+1)
+
+`clavien-dindo` (spec-v320) applies the Clavien-Dindo classification of surgical
+complications: given the grade, it reports the grade (I / II / IIIa / IIIb / IVa / IVb / V)
+and its standard definition. `grade` is an enum (`kind: 'enum'`) — the single input the
+renderer exposes. The example sets grade IIIa; its expected text is the grade definition
+(letter-graded, no numeric facts), so it round-trips through the default `makeToArgs` with
+no custom toArgs. New adapter module registered in `mcp/catalog.js`; its golden probe
+("clavien dindo") is promoted now that the tile is in the MCP-exposed registry. Brings the
+exposed total to **1109 calculators across 225 modules**.
+
 ## One-hundred-forty-fourth wave — the CCS angina grade in lib/ccs-angina-v319.js (+1)
 
 `ccs-angina` (spec-v319) applies the Canadian Cardiovascular Society grading of angina
@@ -3452,6 +3463,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/ccs-angina-v319.js
 - `ccs-angina`
+
+### lib/clavien-dindo-v320.js
+- `clavien-dindo`
 
 ### lib/tb-testing.js
 - `tb-testing`
