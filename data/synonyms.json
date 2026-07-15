@@ -1,5 +1,5 @@
 {
-  "version": "v44-2026-07-15",
+  "version": "v45-2026-07-15",
   "note": "spec-v7 section 3.2: hand-curated patient-phrasing -> tile id table. Each entry maps patient-mental-model phrases (and, from the v8/v9 plain-language-search batches, clinical abbreviations, eponym aliases, and canonical-intent phrases) to a single existing tile. Audience is the primary audience the entry serves; the matcher deprioritizes (does not hide) entries when the user has selected a different chip. Every phrase is lowercase; every tile id is an existing catalog tile (guarded by test/unit/synonyms-catalog.test.js). Adding a new phrase is a one-line PR.",
   "entries": [
     { "phrases": ["denied", "denial letter", "they denied it", "insurance said no", "appeal", "write an appeal", "appeal my claim", "appeal letter", "appeal a denial"],
@@ -232,6 +232,8 @@
     { "phrases": ["hinchey", "hinchey classification", "hinchey stage", "diverticulitis stage", "perforated diverticulitis grade", "diverticulitis classification", "hinchey diverticulitis", "complicated diverticulitis stage"],
       "tile": "hinchey", "audience": "clinicians" },
     { "phrases": ["bi-rads", "birads", "breast imaging category", "birads category", "mammogram category", "breast imaging reporting", "bi-rads 4", "what does birads mean"],
-      "tile": "bi-rads", "audience": "clinicians" }
+      "tile": "bi-rads", "audience": "clinicians" },
+    { "phrases": ["siewert", "siewert classification", "siewert type", "esophagogastric junction adenocarcinoma", "gej adenocarcinoma type", "aeg classification", "cardia cancer type", "gastroesophageal junction tumor type"],
+      "tile": "siewert", "audience": "clinicians" }
   ]
 }

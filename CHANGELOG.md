@@ -6,6 +6,20 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v323 — Siewert classification of GEJ adenocarcinoma tile, 1174 → 1175)
+
+- New `siewert` tile (group G): the Siewert classification of esophagogastric-junction (GEJ)
+  adenocarcinoma (types I–III) — the most frequently used GEJ-adenocarcinoma classification, which informs
+  the surgical approach, previously absent from the catalog. The clinician picks the type from where the
+  tumor center sits relative to the anatomic GEJ. **I:** center 1–5 cm above the GEJ (distal esophageal).
+  **II:** center 1 cm above to 2 cm below the GEJ (true cardia). **III:** center 2–5 cm below the GEJ
+  (subcardial gastric). An anatomic classification, not a stage or a treatment order ([spec-v11] §5.3).
+  Criteria transcribed (spec-v97) from Siewert & Stein 1998 (Br J Surg), cross-verified across reviews; no
+  citation-staleness row (the Br J Surg citation carries no guideline-issuer acronym). New
+  `lib/siewert-v323.js` + `views/group-v323.js` (RV323); +1 META entry, +1 UTILITIES row, a synonym entry
+  (v44 → v45), 5 unit tests + fuzz, corpus rebuilt to 1175. See [docs/spec-v323.md](docs/spec-v323.md).
+  The MCP adapter follows in a later wave.
+
 ### Added (spec-v322 — ACR BI-RADS assessment categories tile, 1173 → 1174)
 
 - New `bi-rads` tile (group G): the ACR BI-RADS breast-imaging assessment categories (0–6, with 4A/4B/4C)
