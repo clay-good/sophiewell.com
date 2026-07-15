@@ -2338,6 +2338,22 @@ test('lib/cholecystitis-dx-v313.js worked calls', () => {
   assert.equal(ok('cholecystitis-diagnosis', { 'ccd-imaging': '1' }).category, 'not met');
 });
 
+test('lib/deauville-v314.js worked calls', () => {
+  // Score 4 -> positive scan.
+  const s4 = ok('deauville-score', { 'deauville-score-in': '4' });
+  assert.equal(s4.score, 4);
+  assert.equal(s4.positive, true);
+  assert.match(s4.band, /Deauville score 4/);
+  // Score 2 -> negative (complete metabolic response).
+  const s2 = ok('deauville-score', { 'deauville-score-in': '2' });
+  assert.equal(s2.negative, true);
+  assert.equal(s2.positive, false);
+  // Score 3 -> neither positive nor negative (clinical context).
+  const s3 = ok('deauville-score', { 'deauville-score-in': '3' });
+  assert.equal(s3.positive, false);
+  assert.equal(s3.negative, false);
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];

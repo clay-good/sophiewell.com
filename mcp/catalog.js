@@ -226,6 +226,7 @@ import cholangitisV310 from './adapters/cholangitis-v310.js';
 import cholecystitisV311 from './adapters/cholecystitis-v311.js';
 import cholangitisDxV312 from './adapters/cholangitis-dx-v312.js';
 import cholecystitisDxV313 from './adapters/cholecystitis-dx-v313.js';
+import deauvilleV314 from './adapters/deauville-v314.js';
 import tbTesting from './adapters/tb-testing.js';
 import labInterpret from './adapters/lab-interpret.js';
 import decisionRulesV258 from './adapters/decision-rules-v258.js';
@@ -446,6 +447,7 @@ const ADAPTER_MODULES = [
   ['cholecystitis-v311', cholecystitisV311],
   ['cholangitis-dx-v312', cholangitisDxV312],
   ['cholecystitis-dx-v313', cholecystitisDxV313],
+  ['deauville-v314', deauvilleV314],
   ['tb-testing', tbTesting],
   ['lab-interpret', labInterpret],
   ['decision-rules-v258', decisionRulesV258],

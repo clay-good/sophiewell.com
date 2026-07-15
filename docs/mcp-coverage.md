@@ -1502,6 +1502,18 @@ round-trip both pass, without the phantom "2". Adapter appended to the existing
 rate to a target PaCO2. Brings the exposed total to **1072 calculators across 197
 modules**.
 
+## One-hundred-thirty-ninth wave — the Deauville 5-point score (PET response, lymphoma) in lib/deauville-v314.js (+1)
+
+`deauville-score` (spec-v314) is the FDG-PET metabolic-response companion to the Ann
+Arbor / Lugano anatomic staging tile: given the 5-point uptake score (1-5) it reports
+the score, its uptake description, and the Lugano interpretation (1-2 negative, 4-5
+positive, 3 by clinical context). The single `score` field is an enum (1-5),
+required (the compute throws without it). The compute's `band` carries the "score 4
+-> positive" example, so it round-trips through the default `makeToArgs` with no
+custom toArgs. New adapter module registered in `mcp/catalog.js`; its golden probe
+("deauville score") is promoted now that the tile is in the MCP-exposed registry.
+Brings the exposed total to **1103 calculators across 219 modules**.
+
 ## One-hundred-thirty-eighth wave — the acute cholecystitis diagnosis (Tokyo Guidelines TG18) in lib/cholecystitis-dx-v313.js (+1)
 
 `cholecystitis-diagnosis` (spec-v313) is the fourth and final adapter of the TG18
@@ -3356,6 +3368,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/cholecystitis-dx-v313.js
 - `cholecystitis-diagnosis`
+
+### lib/deauville-v314.js
+- `deauville-score`
 
 ### lib/tb-testing.js
 - `tb-testing`
