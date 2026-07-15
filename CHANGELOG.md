@@ -6,6 +6,21 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v311 — Acute cholecystitis severity grade (Tokyo Guidelines TG18) tile, 1162 → 1163)
+
+- New `cholecystitis-severity` tile (group G): the companion to the spec-v310 acute cholangitis grade
+  (TG18 grades both biliary infections). The clinician checks the organ-dysfunction (Grade III) and
+  moderate (Grade II) criteria and the tile reports the Tokyo Guidelines TG18/TG13 acute cholecystitis
+  severity grade (I mild / II moderate / III severe). The Grade III organ dysfunctions are identical
+  to cholangitis, but Grade II differs: cholecystitis is Grade II if **any one** (not two) of four
+  cholecystitis-specific criteria (WBC > 18,000/mm³, palpable tender RUQ mass, duration > 72 h, or
+  marked local inflammation). A classification grade, not an operative or drainage order
+  ([spec-v11] §5.3). Criteria transcribed verbatim (spec-v97) from Table 4 of Miura 2018 (cited from
+  Yokoe 2018). New `lib/cholecystitis-v311.js` + `views/group-v311.js` (RV311); +1 META entry (+ a
+  companion cross-link from `cholangitis-severity`), +1 UTILITIES row, a synonym entry (v32 → v33), 7
+  unit tests + fuzz, corpus rebuilt to 1163. See [docs/spec-v311.md](docs/spec-v311.md). The MCP
+  adapter follows in a later wave.
+
 ### Added (spec-v310 — Acute cholangitis severity grade (Tokyo Guidelines TG18) tile, 1161 → 1162)
 
 - New `cholangitis-severity` tile (group G): the clinician checks the organ-dysfunction (Grade III)
