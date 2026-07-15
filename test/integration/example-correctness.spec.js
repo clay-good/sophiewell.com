@@ -28,8 +28,12 @@ test('every example payload produces the documented numeric output', async ({ pa
   // locally. Bumped 900s -> 1200s at the spec-v138 close: at 620 tiles a
   // contended local run, sharing CPU with the tool-interactions sweep, ran past
   // 900s before completing the serial click loop -- no numeric mismatch, just
-  // wall-clock.)
-  test.setTimeout(1_200_000);
+  // wall-clock. Bumped 1200s -> 1800s at the spec-v323 close: at ~1110 tiles
+  // with a documented example, a heavily contended CI runner ran the full serial
+  // sweep to the 1200s cap (all three attempts) with only wall-clock timeouts and
+  // 30s per-action starvation stalls -- again no numeric mismatch. 1800s restores
+  // headroom for the grown catalog; a real numeric mismatch still fails fast.)
+  test.setTimeout(1_800_000);
 
   // Pull META.example payloads out of the live module so the test stays in
   // sync with whatever lib/meta.js currently declares -- no duplication.
