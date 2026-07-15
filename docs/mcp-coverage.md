@@ -1502,6 +1502,21 @@ round-trip both pass, without the phantom "2". Adapter appended to the existing
 rate to a target PaCO2. Brings the exposed total to **1072 calculators across 197
 modules**.
 
+## One-hundred-thirty-eighth wave — the acute cholecystitis diagnosis (Tokyo Guidelines TG18) in lib/cholecystitis-dx-v313.js (+1)
+
+`cholecystitis-diagnosis` (spec-v313) is the fourth and final adapter of the TG18
+biliary quartet (cholangitis + cholecystitis, each with a diagnosis and a severity
+grade). It classifies a presentation as definite / suspected / not-met from three
+TG18 categories (A local signs, B systemic signs, C imaging). Suspected: one item in
+A + one in B. Definite: one item in A + one in B + C. All 6 fields are booleans
+(`kind: 'bool'`), each optional (the compute defaults each to false, and only strict
+boolean `true` fires). The example sets ccd-murphy + ccd-fever (a suspected case);
+its expected text carries no numbers, so the round-trip is trivial through the
+default `makeToArgs` with no custom toArgs. New adapter module registered in
+`mcp/catalog.js`; its golden probe ("acute cholecystitis diagnosis") is promoted now
+that the tile is in the MCP-exposed registry. Brings the exposed total to **1102
+calculators across 218 modules**.
+
 ## One-hundred-thirty-seventh wave — the acute cholangitis diagnosis (Tokyo Guidelines TG18) in lib/cholangitis-dx-v312.js (+1)
 
 `cholangitis-diagnosis` (spec-v312) is the diagnostic companion to the wave-135
@@ -3338,6 +3353,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/cholangitis-dx-v312.js
 - `cholangitis-diagnosis`
+
+### lib/cholecystitis-dx-v313.js
+- `cholecystitis-diagnosis`
 
 ### lib/tb-testing.js
 - `tb-testing`

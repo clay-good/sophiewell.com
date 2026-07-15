@@ -2324,6 +2324,20 @@ test('lib/cholangitis-dx-v312.js worked calls', () => {
   assert.equal(ok('cholangitis-diagnosis', { 'cgd-fever': '1' }).category, 'not met');
 });
 
+test('lib/cholecystitis-dx-v313.js worked calls', () => {
+  // Murphy (A) + fever (B) -> suspected.
+  const s = ok('cholecystitis-diagnosis', { 'ccd-murphy': '1', 'ccd-fever': '1' });
+  assert.equal(s.category, 'suspected');
+  assert.equal(s.abnormal, true);
+  assert.match(s.band, /Suspected acute cholecystitis/);
+  // A + B + a characteristic imaging finding -> definite.
+  const d = ok('cholecystitis-diagnosis', { 'ccd-murphy': '1', 'ccd-fever': '1', 'ccd-imaging': '1' });
+  assert.equal(d.category, 'definite');
+  assert.equal(d.definite, true);
+  // Imaging alone -> not met.
+  assert.equal(ok('cholecystitis-diagnosis', { 'ccd-imaging': '1' }).category, 'not met');
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];
