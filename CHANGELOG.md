@@ -6,6 +6,21 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v317 — C. difficile infection severity (IDSA/SHEA) tile, 1168 → 1169)
+
+- New `cdi-severity` tile (group G): the 2017 IDSA/SHEA severity classification that sorts a
+  Clostridioides difficile infection into **non-severe, severe, or fulminant** — the canonical companion
+  to the existing ATLAS bedside CDI score (`atlas-cdi`). The clinician enters the WBC and serum creatinine
+  and checks any fulminant finding; the tile reports the class. **Non-severe:** WBC ≤ 15,000 cells/µL and
+  creatinine < 1.5 mg/dL. **Severe:** WBC ≥ 15,000 cells/µL or creatinine ≥ 1.5 mg/dL. **Fulminant:**
+  hypotension/shock, ileus, or megacolon (overrides the labs, and classifies without them). A
+  classification, not a treatment order ([spec-v11] §5.3). Criteria transcribed verbatim (spec-v97) from
+  Table 1 of McDonald 2018 (Clin Infect Dis 66(7)), cross-verified against the primary guideline text; the
+  IDSA citation carries a **citation-staleness ledger row** (the 2021 focused update revised treatment, not
+  the severity definitions). New `lib/cdi-severity-v317.js` + `views/group-v317.js` (RV317); +1 META entry,
+  +1 UTILITIES row, a synonym entry (v38 → v39), 9 unit tests + fuzz, corpus rebuilt to 1169.
+  See [docs/spec-v317.md](docs/spec-v317.md). The MCP adapter follows in a later wave.
+
 ### Added (spec-v316 — GOLD ABE assessment tool (COPD group A/B/E) tile, 1167 → 1168)
 
 - New `gold-abe` tile (group G): the 2023 GOLD "ABE" grouping that assigns a COPD patient to group

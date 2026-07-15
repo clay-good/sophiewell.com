@@ -293,6 +293,7 @@ import * as cholecystitisDxV313 from '../../lib/cholecystitis-dx-v313.js';
 import * as deauvilleV314 from '../../lib/deauville-v314.js';
 import * as jonesV315 from '../../lib/jones-v315.js';
 import * as goldAbeV316 from '../../lib/gold-abe-v316.js';
+import * as cdiSeverityV317 from '../../lib/cdi-severity-v317.js';
 import * as tbTesting from '../../lib/tb-testing.js';
 
 const MODULES = {
@@ -531,6 +532,7 @@ const MODULES = {
   'deauville-v314.js': deauvilleV314,
   'jones-v315.js': jonesV315,
   'gold-abe-v316.js': goldAbeV316,
+  'cdi-severity-v317.js': cdiSeverityV317,
   'tb-testing.js': tbTesting,
 };
 
