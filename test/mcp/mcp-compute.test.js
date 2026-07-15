@@ -2293,6 +2293,23 @@ test('lib/cholangitis-v310.js worked calls', () => {
   assert.equal(ok('cholangitis-severity', {}).grade, 1);
 });
 
+test('lib/cholecystitis-v311.js worked calls', () => {
+  // One moderate criterion (duration > 72 h) -> Grade II (moderate); the key
+  // difference from cholangitis, which needs two moderate criteria.
+  const g2 = ok('cholecystitis-severity', { 'cc-duration': '1' });
+  assert.equal(g2.gradeRoman, 'II');
+  assert.equal(g2.moderateCount, 1);
+  assert.equal(g2.severe, false);
+  assert.match(g2.band, /72 h/);
+  // One organ dysfunction (hepatic) -> Grade III (severe), outranking moderate.
+  const g3 = ok('cholecystitis-severity', { 'cc-hepatic': '1', 'cc-duration': '1' });
+  assert.equal(g3.gradeRoman, 'III');
+  assert.equal(g3.severe, true);
+  assert.equal(g3.organCount, 1);
+  // No criteria -> Grade I.
+  assert.equal(ok('cholecystitis-severity', {}).grade, 1);
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];

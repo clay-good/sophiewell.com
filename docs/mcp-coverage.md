@@ -1502,6 +1502,21 @@ round-trip both pass, without the phantom "2". Adapter appended to the existing
 rate to a target PaCO2. Brings the exposed total to **1072 calculators across 197
 modules**.
 
+## One-hundred-thirty-sixth wave — the acute cholecystitis severity grade (Tokyo Guidelines TG18) in lib/cholecystitis-v311.js (+1)
+
+`cholecystitis-severity` (spec-v311) is the companion to the wave-135 acute
+cholangitis grade: it grades acute cholecystitis on the Tokyo Guidelines TG18/TG13
+scale — Grade III (severe) if any one of six new-onset organ dysfunctions, Grade II
+(moderate) if any one (not two) of four cholecystitis-specific moderate criteria,
+Grade I (mild) otherwise. All 10 fields are booleans (`kind: 'bool'`), each optional
+(the compute defaults each to false, and only strict boolean `true` fires). The
+example sets only `cc-duration`, whose `band`/`note` carry the "> 72 h" example
+number, so it round-trips through the default `makeToArgs` (which maps '1' -> true)
+with no custom toArgs. New adapter module registered in `mcp/catalog.js`; its golden
+probe ("acute cholecystitis severity") is promoted now that the tile is in the
+MCP-exposed registry. Brings the exposed total to **1100 calculators across 216
+modules**.
+
 ## One-hundred-thirty-fifth wave — the acute cholangitis severity grade (Tokyo Guidelines TG18) in lib/cholangitis-v310.js (+1)
 
 `cholangitis-severity` (spec-v310) grades acute cholangitis on the Tokyo Guidelines
@@ -3303,6 +3318,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/cholangitis-v310.js
 - `cholangitis-severity`
+
+### lib/cholecystitis-v311.js
+- `cholecystitis-severity`
 
 ### lib/tb-testing.js
 - `tb-testing`

@@ -1,4 +1,4 @@
-// Search-relevance golden set. Runs 125 realistic clinical queries through the
+// Search-relevance golden set. Runs 126 realistic clinical queries through the
 // real find_calculator surface (shared resolvePromptRanked + data/synonyms.json
 // + data/search-corpus over the exposed registry) and asserts an acceptable
 // tile ranks in the top 3. This pins the routing quality spec-v282 shipped:
@@ -204,6 +204,8 @@ const PROBES = [
   ['graft versus host disease grading', ['gvhd-grade']],
   // spec-v310 tile, exposed to MCP in wave 135: acute cholangitis severity.
   ['acute cholangitis severity', ['cholangitis-severity']],
+  // spec-v311 tile, exposed to MCP in wave 136: acute cholecystitis severity.
+  ['acute cholecystitis severity', ['cholecystitis-severity']],
 ];
 
 test(`every golden probe routes an acceptable tile into the top ${TOP_N}`, () => {

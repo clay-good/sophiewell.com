@@ -223,6 +223,7 @@ import dmeV307 from './adapters/dme-v307.js';
 import concussionRtlV308 from './adapters/concussion-rtl-v308.js';
 import gvhdV309 from './adapters/gvhd-v309.js';
 import cholangitisV310 from './adapters/cholangitis-v310.js';
+import cholecystitisV311 from './adapters/cholecystitis-v311.js';
 import tbTesting from './adapters/tb-testing.js';
 import labInterpret from './adapters/lab-interpret.js';
 import decisionRulesV258 from './adapters/decision-rules-v258.js';
@@ -440,6 +441,7 @@ const ADAPTER_MODULES = [
   ['concussion-rtl-v308', concussionRtlV308],
   ['gvhd-v309', gvhdV309],
   ['cholangitis-v310', cholangitisV310],
+  ['cholecystitis-v311', cholecystitisV311],
   ['tb-testing', tbTesting],
   ['lab-interpret', labInterpret],
   ['decision-rules-v258', decisionRulesV258],
