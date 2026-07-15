@@ -286,6 +286,7 @@ import * as icansV306 from '../../lib/icans-v306.js';
 import * as dmeV307 from '../../lib/dme-v307.js';
 import * as concussionRtlV308 from '../../lib/concussion-rtl-v308.js';
 import * as gvhdV309 from '../../lib/gvhd-v309.js';
+import * as cholangitisV310 from '../../lib/cholangitis-v310.js';
 import * as tbTesting from '../../lib/tb-testing.js';
 
 const MODULES = {
@@ -517,6 +518,7 @@ const MODULES = {
   'dme-v307.js': dmeV307,
   'concussion-rtl-v308.js': concussionRtlV308,
   'gvhd-v309.js': gvhdV309,
+  'cholangitis-v310.js': cholangitisV310,
   'tb-testing.js': tbTesting,
 };
 

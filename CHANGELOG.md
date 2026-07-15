@@ -6,6 +6,20 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v310 — Acute cholangitis severity grade (Tokyo Guidelines TG18) tile, 1161 → 1162)
+
+- New `cholangitis-severity` tile (group G): the clinician checks the organ-dysfunction (Grade III)
+  and moderate (Grade II) criteria they have determined and the tile reports the Tokyo Guidelines
+  TG18/TG13 acute cholangitis severity grade (I mild / II moderate / III severe) — Grade III if any
+  one of six organ dysfunctions, Grade II if any two of five moderate criteria, Grade I otherwise. A
+  classification grade, not a drainage or antibiotic order ([spec-v11] §5.3). Closes the biliary gap
+  the SESSION-40 probe surfaced (no Tokyo-Guidelines tile existed; the corpus returned zero hits for
+  `tokyo`/`cholecystitis`). Criteria transcribed verbatim (spec-v97) from Table 3 of Miura 2018 (cited
+  from Kiriyama 2018). New `lib/cholangitis-v310.js` + `views/group-v310.js` (RV310); +1 META entry,
+  +1 UTILITIES row, a synonym entry (v31 → v32), 8 unit tests + fuzz, corpus rebuilt to 1162. See
+  [docs/spec-v310.md](docs/spec-v310.md). The companion acute-cholecystitis grade and the MCP adapter
+  follow in later specs/waves.
+
 ### Added (spec-v309 — Acute GVHD grade (modified Glucksberg) tile, 1160 → 1161)
 
 - New `gvhd-grade` tile (group G): the clinician picks the skin, liver, and gastrointestinal organ
