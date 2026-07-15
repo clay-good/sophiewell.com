@@ -6,6 +6,21 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v319 — Canadian Cardiovascular Society (CCS) angina grade tile, 1170 → 1171)
+
+- New `ccs-angina` tile (group G): the Canadian Cardiovascular Society grading of angina pectoris (I–IV) —
+  the angina analog of the NYHA functional class, previously present only as a CCS-class-4 input flag inside
+  `euroscore2`. The clinician picks the class from the activity that provokes angina and the tile reports
+  its standard definition. **I:** ordinary activity does not cause angina. **II:** slight limitation
+  (hurrying, uphill, after meals, cold, stress, or > 2 blocks / > 1 flight at a normal pace). **III:**
+  marked limitation (1–2 blocks or 1 flight). **IV:** angina at rest or with any activity. III–IV severe. A
+  functional class, not a diagnosis or a treatment order ([spec-v11] §5.3). Criteria transcribed (spec-v97)
+  from Campeau 1976 (Circulation), cross-verified against the reproduced grade table; no citation-staleness
+  row (the Circulation citation carries no guideline-issuer acronym). New `lib/ccs-angina-v319.js` +
+  `views/group-v319.js` (RV319); +1 META entry, +1 UTILITIES row, a synonym entry (v40 → v41), 6 unit tests
+  + fuzz, corpus rebuilt to 1171. See [docs/spec-v319.md](docs/spec-v319.md). The MCP adapter follows in a
+  later wave.
+
 ### Added (spec-v318 — Los Angeles (LA) classification of erosive esophagitis tile, 1169 → 1170)
 
 - New `la-esophagitis` tile (group G): the Los Angeles (LA) classification that grades erosive (reflux)
