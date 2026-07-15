@@ -78,7 +78,7 @@ find_calculator { "query": "stroke risk afib" }
        candidates: [ { id: "chads", name: "CHA2DS2-VASc", why: "synonym", ... }, ... ] }
 
 list_calculators { "specialty": "hepatology" }
-  -> { coverage: "1100 of 1109 catalog tiles exposed ...", calculators: [ { id: "meld-xi", ... }, ... ] }
+  -> { coverage: "1101 of 1109 catalog tiles exposed ...", calculators: [ { id: "meld-xi", ... }, ... ] }
 
 describe_calculator { "id": "meld-xi" }
   -> { inputSchema: { ... mx-bili, mx-creat ... }, citation: "Heuman DM ... Liver Transpl 2007", ... }
@@ -333,8 +333,9 @@ a one-hundred-thirty-fourth the acute GVHD grade (modified Glucksberg) in
 `lib/gvhd-v309.js`, and a one-hundred-thirty-fifth the acute cholangitis severity
 grade (Tokyo Guidelines TG18) in `lib/cholangitis-v310.js`, and a
 one-hundred-thirty-sixth the acute cholecystitis severity grade (Tokyo Guidelines
-TG18) in `lib/cholecystitis-v311.js`, for
-1100 across 216 modules
+TG18) in `lib/cholecystitis-v311.js`, and a one-hundred-thirty-seventh the acute
+cholangitis diagnosis (Tokyo Guidelines TG18) in `lib/cholangitis-dx-v312.js`, for
+1101 across 217 modules
 today. <!-- catalog-truth:historical (197 is the count of lib modules adapted, not a catalog tile count) -->
 Later waves extend it module by module against the same contract.
 

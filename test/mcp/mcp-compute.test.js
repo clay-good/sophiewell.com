@@ -2310,6 +2310,20 @@ test('lib/cholecystitis-v311.js worked calls', () => {
   assert.equal(ok('cholecystitis-severity', {}).grade, 1);
 });
 
+test('lib/cholangitis-dx-v312.js worked calls', () => {
+  // Fever (A) + jaundice (B) -> suspected.
+  const s = ok('cholangitis-diagnosis', { 'cgd-fever': '1', 'cgd-jaundice': '1' });
+  assert.equal(s.category, 'suspected');
+  assert.equal(s.abnormal, true);
+  assert.match(s.band, /Suspected acute cholangitis/);
+  // One item in each of A, B, and C -> definite.
+  const d = ok('cholangitis-diagnosis', { 'cgd-fever': '1', 'cgd-jaundice': '1', 'cgd-dilatation': '1' });
+  assert.equal(d.category, 'definite');
+  assert.equal(d.definite, true);
+  // A alone -> not met.
+  assert.equal(ok('cholangitis-diagnosis', { 'cgd-fever': '1' }).category, 'not met');
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];
