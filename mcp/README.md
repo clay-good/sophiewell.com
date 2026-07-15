@@ -78,7 +78,7 @@ find_calculator { "query": "stroke risk afib" }
        candidates: [ { id: "chads", name: "CHA2DS2-VASc", why: "synonym", ... }, ... ] }
 
 list_calculators { "specialty": "hepatology" }
-  -> { coverage: "1107 of 1109 catalog tiles exposed ...", calculators: [ { id: "meld-xi", ... }, ... ] }
+  -> { coverage: "1108 of 1109 catalog tiles exposed ...", calculators: [ { id: "meld-xi", ... }, ... ] }
 
 describe_calculator { "id": "meld-xi" }
   -> { inputSchema: { ... mx-bili, mx-creat ... }, citation: "Heuman DM ... Liver Transpl 2007", ... }
@@ -343,8 +343,9 @@ one-hundred-fortieth the 2015 revised Jones criteria (acute rheumatic fever) in
 (COPD group A/B/E) in `lib/gold-abe-v316.js`, and a one-hundred-forty-second the
 CDI severity classification (2017 IDSA/SHEA) in `lib/cdi-severity-v317.js`, and a
 one-hundred-forty-third the Los Angeles (LA) classification of erosive esophagitis
-in `lib/la-esophagitis-v318.js`, for
-1107 across 223 modules
+in `lib/la-esophagitis-v318.js`, and a one-hundred-forty-fourth the CCS angina grade
+in `lib/ccs-angina-v319.js`, for
+1108 across 224 modules
 today. <!-- catalog-truth:historical (197 is the count of lib modules adapted, not a catalog tile count) -->
 Later waves extend it module by module against the same contract.
 

@@ -1502,6 +1502,17 @@ round-trip both pass, without the phantom "2". Adapter appended to the existing
 rate to a target PaCO2. Brings the exposed total to **1072 calculators across 197
 modules**.
 
+## One-hundred-forty-fourth wave — the CCS angina grade in lib/ccs-angina-v319.js (+1)
+
+`ccs-angina` (spec-v319) applies the Canadian Cardiovascular Society grading of angina
+pectoris: given the class, it reports the class (I-IV) and its standard definition.
+`grade` is an enum (`kind: 'enum'`, the select values 1/2/3/4; the compute also accepts
+roman I-IV) — the single input the renderer exposes. The example sets grade 2; its band
+carries the "2" example number, so it round-trips through the default `makeToArgs` with
+no custom toArgs. New adapter module registered in `mcp/catalog.js`; its golden probe
+("ccs angina") is promoted now that the tile is in the MCP-exposed registry. Brings the
+exposed total to **1108 calculators across 224 modules**.
+
 ## One-hundred-forty-third wave — the Los Angeles (LA) classification of erosive esophagitis in lib/la-esophagitis-v318.js (+1)
 
 `la-esophagitis` (spec-v318) applies the Los Angeles classification of erosive (reflux)
@@ -3438,6 +3449,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/la-esophagitis-v318.js
 - `la-esophagitis`
+
+### lib/ccs-angina-v319.js
+- `ccs-angina`
 
 ### lib/tb-testing.js
 - `tb-testing`

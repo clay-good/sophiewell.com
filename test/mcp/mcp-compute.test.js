@@ -2414,6 +2414,19 @@ test('lib/la-esophagitis-v318.js worked calls', () => {
   assert.equal(ok('la-esophagitis', { 'la-grade': 'A' }).severe, false);
 });
 
+test('lib/ccs-angina-v319.js worked calls', () => {
+  // Class II (the META example): slight limitation, not severe.
+  const ii = ok('ccs-angina', { 'ccs-grade': '2' });
+  assert.equal(ii.class, 'II');
+  assert.equal(ii.severe, false);
+  // Class IV: angina at rest, severe.
+  const iv = ok('ccs-angina', { 'ccs-grade': '4' });
+  assert.equal(iv.class, 'IV');
+  assert.equal(iv.severe, true);
+  // Class I is the mildest.
+  assert.equal(ok('ccs-angina', { 'ccs-grade': '1' }).class, 'I');
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];
