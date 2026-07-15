@@ -1502,6 +1502,17 @@ round-trip both pass, without the phantom "2". Adapter appended to the existing
 rate to a target PaCO2. Brings the exposed total to **1072 calculators across 197
 modules**.
 
+## One-hundred-forty-seventh wave — the ACR BI-RADS assessment categories in lib/bi-rads-v322.js (+1)
+
+`bi-rads` (spec-v322) applies the ACR BI-RADS breast-imaging assessment categories: given the
+final assessment category, it reports the category (0-6, with 4A/4B/4C), its likelihood-of-
+malignancy band, and the standard management. `category` is an enum (`kind: 'enum'`, values
+0/1/2/3/4/4A/4B/4C/5/6) — the single input the renderer exposes. The example sets category 4B;
+its band carries the "10" and "50" example numbers, so it round-trips through the default
+`makeToArgs` with no custom toArgs. New adapter module registered in `mcp/catalog.js`; its
+golden probe ("breast imaging category") is promoted now that the tile is in the MCP-exposed
+registry. Brings the exposed total to **1111 calculators across 227 modules**.
+
 ## One-hundred-forty-sixth wave — the Hinchey classification of acute diverticulitis in lib/hinchey-v321.js (+1)
 
 `hinchey` (spec-v321) applies the original Hinchey classification of perforated
@@ -3480,6 +3491,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/hinchey-v321.js
 - `hinchey`
+
+### lib/bi-rads-v322.js
+- `bi-rads`
 
 ### lib/tb-testing.js
 - `tb-testing`

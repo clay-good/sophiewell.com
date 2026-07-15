@@ -2453,6 +2453,19 @@ test('lib/hinchey-v321.js worked calls', () => {
   assert.equal(iv.severe, true);
 });
 
+test('lib/bi-rads-v322.js worked calls', () => {
+  // Category 4B (the META example): moderate suspicion, flagged suspicious.
+  const b = ok('bi-rads', { 'birads-cat': '4B' });
+  assert.equal(b.category, '4B');
+  assert.equal(b.suspicious, true);
+  // Category 2: benign, not suspicious.
+  assert.equal(ok('bi-rads', { 'birads-cat': '2' }).suspicious, false);
+  // Category 5: highly suggestive, suspicious.
+  const five = ok('bi-rads', { 'birads-cat': '5' });
+  assert.equal(five.category, '5');
+  assert.equal(five.suspicious, true);
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];
