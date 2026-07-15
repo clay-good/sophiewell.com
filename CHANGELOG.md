@@ -6,6 +6,23 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v316 — GOLD ABE assessment tool (COPD group A/B/E) tile, 1167 → 1168)
+
+- New `gold-abe` tile (group G): the 2023 GOLD "ABE" grouping that assigns a COPD patient to group
+  **A, B, or E** from symptom burden and exacerbation history. The catalog already carried the GOLD
+  **spirometric** grade (`gold-spirometry`, FEV1 severity), `cat-copd`, and `mmrc-dyspnea` individually,
+  and each of those tiles' notes pointed to the ABE group "that drives pharmacotherapy" as a separate,
+  un-built tool — this fills that gap. The clinician enters the symptom burden (mMRC and/or CAT — either
+  suffices) and the past-12-month exacerbations; the tile reports the group. Two axes: **more symptoms**
+  if mMRC ≥ 2 or CAT ≥ 10; **high exacerbation risk** (group E) if ≥ 2 moderate exacerbations or ≥ 1
+  leading to hospital admission. Group A = low risk + less symptoms; B = low risk + more symptoms; E =
+  high risk regardless of symptoms (the 2023 report merged the former C and D into E). A classification,
+  not a treatment order ([spec-v11] §5.3). Cut-points from the GOLD 2025 Report (spec-v97), same issuer
+  as `gold-spirometry`; carries a maintenance-driven **citation-staleness ledger row** (GOLD republishes
+  annually). New `lib/gold-abe-v316.js` + `views/group-v316.js` (RV316); +1 META entry, +1 UTILITIES row,
+  a synonym entry (v37 → v38), 11 unit tests + fuzz, corpus rebuilt to 1168.
+  See [docs/spec-v316.md](docs/spec-v316.md). The MCP adapter follows in a later wave.
+
 ### Added (spec-v315 — 2015 revised Jones criteria (acute rheumatic fever) tile, 1166 → 1167)
 
 - New `jones-criteria` tile (group G): the 2015 AHA revised Jones criteria for diagnosing acute

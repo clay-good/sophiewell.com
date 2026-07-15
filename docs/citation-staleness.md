@@ -235,6 +235,7 @@ gate-required issuer pattern, so the rows are maintenance-driven, not gate-force
 | tile id | instrument | edition shipped | latest known edition | accessed | justification if behind |
 |---|---|---|---|---|---|
 | gold-spirometry | GOLD spirometric classification of COPD (FEV1/FVC < 0.70 + FEV1 %predicted grade cut-points) | GOLD 2024 Report | same | 2026-06-16 | current -- the 2024 Report is the latest; Class B, review annual (GOLD republishes each year). The < 0.70 fixed ratio and the 80/50/30 grade edges are stable across recent editions |
+| gold-abe | GOLD ABE assessment tool (mMRC >= 2 / CAT >= 10 symptom split; >= 2 moderate or >= 1 hospitalized exacerbation -> group E) | GOLD 2025 Report | same | 2026-07-15 | current -- Class B, review annual (GOLD republishes each year). The ABE tool and its cut-points have been stable across the 2023 (which introduced it), 2024, and 2025 Reports; GOLD is not in the check-citations issuer pattern, so this row is maintenance-driven, not gate-forced |
 | predicted-spirometry | GLI-2012 spirometry reference equations (predicted FEV1/FVC/ratio + LLN) | GLI-2012 (Quanjer ERJ 40(6)) | same | 2026-06-16 | current -- GLI-2012 is the reference standard; Class B, review on-publication of the next GLI reference-equation update. The LMS model form is fixed (Class A) |
 
 ## spec-v92 nephrology (added 2026-06-16)
