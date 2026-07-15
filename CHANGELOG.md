@@ -6,6 +6,20 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v318 — Los Angeles (LA) classification of erosive esophagitis tile, 1169 → 1170)
+
+- New `la-esophagitis` tile (group G): the Los Angeles (LA) classification that grades erosive (reflux)
+  esophagitis A–D from the endoscopic mucosal-break findings — the erosive-esophagitis peer of the
+  existing `forrest` UGI-bleeding stigmata grader. The endoscopist picks the grade and the tile reports
+  its standard definition. **A:** break(s) ≤ 5 mm, not between two fold tops. **B:** break(s) > 5 mm, not
+  between two fold tops. **C:** break(s) between ≥ 2 fold tops but < 75% circumference. **D:** break(s) ≥
+  75% circumference. A–B mild, C–D severe. A classification grade, not a diagnosis or a treatment order
+  ([spec-v11] §5.3). Criteria transcribed (spec-v97) from Lundell 1999 (Gut), cross-verified against the
+  IWGCO LA classification; no citation-staleness row (the Gut citation carries no guideline-issuer
+  acronym). New `lib/la-esophagitis-v318.js` + `views/group-v318.js` (RV318); +1 META entry, +1 UTILITIES
+  row, a synonym entry (v39 → v40), 6 unit tests + fuzz, corpus rebuilt to 1170.
+  See [docs/spec-v318.md](docs/spec-v318.md). The MCP adapter follows in a later wave.
+
 ### Added (spec-v317 — C. difficile infection severity (IDSA/SHEA) tile, 1168 → 1169)
 
 - New `cdi-severity` tile (group G): the 2017 IDSA/SHEA severity classification that sorts a
