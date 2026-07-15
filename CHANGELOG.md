@@ -6,6 +6,21 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v321 — Hinchey classification of acute diverticulitis tile, 1172 → 1173)
+
+- New `hinchey` tile (group G): the original Hinchey classification that stages perforated/complicated
+  diverticulitis I–IV — the standard severity staging for complicated diverticulitis, the peer of the
+  existing `mannheim-peritonitis-index`, previously absent from the catalog. The clinician picks the stage
+  from the operative/CT findings and the tile reports its standard definition. **I:** localized pericolic/
+  mesocolic abscess or phlegmon. **II:** pelvic, distant intra-abdominal, or retroperitoneal abscess.
+  **III:** generalized purulent peritonitis. **IV:** generalized fecal peritonitis. III–IV severe. A stage,
+  not a diagnosis or a management order ([spec-v11] §5.3). Criteria transcribed (spec-v97) from Hinchey 1978
+  (Adv Surg), cross-verified across reproductions of the original four stages; no citation-staleness row
+  (the Adv Surg citation carries no guideline-issuer acronym). New `lib/hinchey-v321.js` +
+  `views/group-v321.js` (RV321); +1 META entry, +1 UTILITIES row, a synonym entry (v42 → v43), 7 unit tests
+  + fuzz, corpus rebuilt to 1173. See [docs/spec-v321.md](docs/spec-v321.md). The MCP adapter follows in a
+  later wave.
+
 ### Added (spec-v320 — Clavien-Dindo classification of surgical complications tile, 1171 → 1172)
 
 - New `clavien-dindo` tile (group G): the Clavien-Dindo grading of surgical complications (I, II, IIIa,
