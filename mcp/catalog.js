@@ -235,6 +235,7 @@ import ccsAnginaV319 from './adapters/ccs-angina-v319.js';
 import clavienDindoV320 from './adapters/clavien-dindo-v320.js';
 import hincheyV321 from './adapters/hinchey-v321.js';
 import biRadsV322 from './adapters/bi-rads-v322.js';
+import siewertV323 from './adapters/siewert-v323.js';
 import tbTesting from './adapters/tb-testing.js';
 import labInterpret from './adapters/lab-interpret.js';
 import decisionRulesV258 from './adapters/decision-rules-v258.js';
@@ -464,6 +465,7 @@ const ADAPTER_MODULES = [
   ['clavien-dindo-v320', clavienDindoV320],
   ['hinchey-v321', hincheyV321],
   ['bi-rads-v322', biRadsV322],
+  ['siewert-v323', siewertV323],
   ['tb-testing', tbTesting],
   ['lab-interpret', labInterpret],
   ['decision-rules-v258', decisionRulesV258],

@@ -4,7 +4,7 @@
   "serialNumber": "urn:uuid:sophiewell-0cce19bfee027a21",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-07-15T23:16:05.823Z",
+    "timestamp": "2026-07-15T23:19:17.154Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",

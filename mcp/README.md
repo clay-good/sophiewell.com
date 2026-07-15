@@ -78,7 +78,7 @@ find_calculator { "query": "stroke risk afib" }
        candidates: [ { id: "chads", name: "CHA2DS2-VASc", why: "synonym", ... }, ... ] }
 
 list_calculators { "specialty": "hepatology" }
-  -> { coverage: "1111 of 1109 catalog tiles exposed ...", calculators: [ { id: "meld-xi", ... }, ... ] }
+  -> { coverage: "1112 of 1109 catalog tiles exposed ...", calculators: [ { id: "meld-xi", ... }, ... ] }
 
 describe_calculator { "id": "meld-xi" }
   -> { inputSchema: { ... mx-bili, mx-creat ... }, citation: "Heuman DM ... Liver Transpl 2007", ... }
@@ -348,8 +348,9 @@ in `lib/ccs-angina-v319.js`, and a one-hundred-forty-fifth the Clavien-Dindo
 classification of surgical complications in `lib/clavien-dindo-v320.js`, and a
 one-hundred-forty-sixth the Hinchey classification of acute diverticulitis in
 `lib/hinchey-v321.js`, and a one-hundred-forty-seventh the ACR BI-RADS assessment
-categories in `lib/bi-rads-v322.js`, for
-1111 across 227 modules
+categories in `lib/bi-rads-v322.js`, and a one-hundred-forty-eighth the Siewert
+classification of GEJ adenocarcinoma in `lib/siewert-v323.js`, for
+1112 across 228 modules
 today. <!-- catalog-truth:historical (197 is the count of lib modules adapted, not a catalog tile count) -->
 Later waves extend it module by module against the same contract.
 

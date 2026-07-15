@@ -1502,6 +1502,17 @@ round-trip both pass, without the phantom "2". Adapter appended to the existing
 rate to a target PaCO2. Brings the exposed total to **1072 calculators across 197
 modules**.
 
+## One-hundred-forty-eighth wave — the Siewert classification of GEJ adenocarcinoma in lib/siewert-v323.js (+1)
+
+`siewert` (spec-v323) applies the Siewert classification of esophagogastric-junction
+adenocarcinoma: given the type, it reports the type (I-III) and its standard anatomic
+definition. `type` is an enum (`kind: 'enum'`, the select values 1/2/3; the compute also
+accepts roman I-III) — the single input the renderer exposes. The example sets type 2; its
+band carries the "1" and "2" (cm) example numbers, so it round-trips through the default
+`makeToArgs` with no custom toArgs. New adapter module registered in `mcp/catalog.js`; its
+golden probe ("esophagogastric junction adenocarcinoma") is promoted now that the tile is in
+the MCP-exposed registry. Brings the exposed total to **1112 calculators across 228 modules**.
+
 ## One-hundred-forty-seventh wave — the ACR BI-RADS assessment categories in lib/bi-rads-v322.js (+1)
 
 `bi-rads` (spec-v322) applies the ACR BI-RADS breast-imaging assessment categories: given the
@@ -3494,6 +3505,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/bi-rads-v322.js
 - `bi-rads`
+
+### lib/siewert-v323.js
+- `siewert`
 
 ### lib/tb-testing.js
 - `tb-testing`

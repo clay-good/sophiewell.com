@@ -2466,6 +2466,17 @@ test('lib/bi-rads-v322.js worked calls', () => {
   assert.equal(five.suspicious, true);
 });
 
+test('lib/siewert-v323.js worked calls', () => {
+  // Type II (the META example): true cardia carcinoma.
+  const ii = ok('siewert', { 'siewert-type': '2' });
+  assert.equal(ii.class, 'II');
+  assert.match(ii.band, /true carcinoma of the cardia/);
+  // Type I: distal esophageal.
+  assert.equal(ok('siewert', { 'siewert-type': '1' }).class, 'I');
+  // Type III: subcardial gastric.
+  assert.equal(ok('siewert', { 'siewert-type': '3' }).class, 'III');
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];
