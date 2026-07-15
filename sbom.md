@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `1871ca2df17232af`
-Generated: 2026-07-15T15:04:43.066Z
+Build ID: `8ab8c2fb14035f7e`
+Generated: 2026-07-15T15:08:24.329Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=20.18.1 <21, npm >=10.0.0
@@ -24,13 +24,13 @@ downloads is committed in this repository and is hashed below.
 
 | Path | Bytes | SHA-256 |
 |---|---:|---|
-| `index.html` | 78436 | `3993726f037b42b8a00580d93ab8ef6e87740fce1e7edf425972346259f87020` |
+| `index.html` | 78505 | `356c635e7af3e51c0f14fa1a864a5f1aa53c02ba7520c8af016db6e15ea5926e` |
 | `styles.css` | 44160 | `a2cc7ad7bae9f7cfc9681d80bc6bd4a58f0b07d47bfcff64897dc04929c12333` |
-| `app.js` | 320885 | `3dd116a5102c0be61149cb6297bd862094f9d4acc90e1124039151b532ab377c` |
+| `app.js` | 321123 | `795b97cc1c4848ba6ef754998fe05f2b2081fdcf4b87bc86f296903270fef34c` |
 | `sw.js` | 4622 | `b891d4344f8e04403b7f1d307fd446cc224bddc6f0c4397438a17d197351171e` |
 | `site.webmanifest` | 709 | `0e0de4da60590a12e8b27a0ae2a2f5ffdb6500b7d2b78f93631ec2f64ed3d5ce` |
 | `robots.txt` | 127 | `38fbf9c1854e72abb20e01e81dd5a31d4ea96f154c12d5db1ec3af05524dd1a1` |
-| `sitemap.xml` | 178880 | `a0c97738d1218059042e0c98f29810ddf1abf36a3c18dc4d0111383013344b66` |
+| `sitemap.xml` | 179043 | `7ad76aa4633d0f542b9a18afc477c9399bac66f29a3ac0a3eccf005dd7295d7d` |
 | `_headers` | 1316 | `2f39986457d2feff7e73e491a7d09ee871e8f2f4cc2bc437f86bd86a42554ec6` |
 | `logo.png` | 63440 | `11afaf1b0d3ca68393d202e4810bf766b5b6d591b4e3ec52f41d3cacaa4616ec` |
 | `favicon.ico` | 7411 | `407fde0ca2788409e87e11f596fa02e6a0b121817fcea7fd995beec1801e287b` |
@@ -69,6 +69,7 @@ downloads is committed in this repository and is hashed below.
 | `lib/cardiometab-v251.js` | 7142 | `5a16570359ceb7c3d5683209868e13ba5fb94335d98088586c787f825a6a4263` |
 | `lib/cholangitis-dx-v312.js` | 4598 | `73a2cdd9c981717c1c8810c286fc6b76d2ff629e5af4a04e7cbbe881e9776825` |
 | `lib/cholangitis-v310.js` | 4886 | `4cac9a021e002921e5ab5a7b41a7bb3b029db3050404e1bcf586f94cb8e8d7c3` |
+| `lib/cholecystitis-dx-v313.js` | 4270 | `6360a208f6243d59a29a492fcd166d7de931a86faf14ea411df7c782bf16cdcd` |
 | `lib/cholecystitis-v311.js` | 4816 | `d8e48338dd1d8961b5b227af4dfaba7c74602773b6314bfe605009ea637729a4` |
 | `lib/clinical-v4.js` | 13481 | `2434fa8ccf04a471d1d7ecf0075e6c279a2025b1eac834c06efb70c923a62e5e` |
 | `lib/clinical-v5.js` | 25042 | `1da466fb812401a08c4a1419f8b5eb579943d80e3626c00749a1b3bc87ac57cc` |
@@ -177,7 +178,7 @@ downloads is committed in this repository and is hashed below.
 | `lib/massive-transfusion-v265.js` | 3240 | `7ad4d1d86063fdd077546be5d6381ea4a5024ef669389f88abdfe07850903b29` |
 | `lib/medication-v4.js` | 18192 | `467f9576c50da696cc56094eb022d0a5ed1e88de0c7618448554ede8067270b0` |
 | `lib/medication-v5.js` | 18863 | `ce81d9f8954abbd412892c13af9936f992239164f26fd2b999eaea7902787ab7` |
-| `lib/meta.js` | 1604586 | `f185c454ad5e5e43db22f29c2ac25ae489220309bf1b2962536aee375736268e` |
+| `lib/meta.js` | 1605903 | `c2488cb56b02428c69bebf9a3b733e2d10caa1b930cd23f4fa3b513479664037` |
 | `lib/metabolic-hepatic-v219.js` | 12791 | `b9352877cebf7fbf3c3b99ecb8b72cdbee3ed94e056dc019113668609f5a95a8` |
 | `lib/metabolic-onc-v88.js` | 12659 | `1553b641668c121661a66647da71a4aaaa023e9f3a6b7a753efbcdab27cdba81` |
 | `lib/metabolic-v269.js` | 3262 | `0c7a42557886f2b0aeee7949b8d0bd682d795d4526174fd540717a978d94ec2f` |
@@ -517,6 +518,7 @@ downloads is committed in this repository and is hashed below.
 | `views/group-v310.js` | 4138 | `daa951983f5c6b516be12aea2b3cccef40ae79b37a93a1b45088dcb1ac24aa85` |
 | `views/group-v311.js` | 4121 | `0ed90abe14352aa7c1cab89d4e0776f6775c424485633ea92247c8504e38b480` |
 | `views/group-v312.js` | 3646 | `b6d560b5c93ab0c93b201f3f22c0db3490e4f6a0cac6862ba8053e00a4007bdb` |
+| `views/group-v313.js` | 3485 | `6087b8c6b163ee5c3590735ff3bcf5a99eff68ff941b5b9e2da0cc8f03d9453d` |
 | `views/group-v32.js` | 9831 | `776d0a169d7f4c7d86c55fca3b7d777105865319bbe634e79f7c99ddc9c6ae81` |
 | `views/group-v33.js` | 11760 | `2d5bf1a31d92e4b3fca27729dff106c72a8eb7c3b033a0b866711a0acdb2b78b` |
 | `views/group-v34.js` | 14778 | `1eabda9aad5bf2728a8e49da8cfb227ce2a0560bea68a952ab259e60a8fc60b9` |

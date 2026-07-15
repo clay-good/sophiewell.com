@@ -1,5 +1,5 @@
 {
-  "version": "v34-2026-07-15",
+  "version": "v35-2026-07-15",
   "note": "spec-v7 section 3.2: hand-curated patient-phrasing -> tile id table. Each entry maps patient-mental-model phrases (and, from the v8/v9 plain-language-search batches, clinical abbreviations, eponym aliases, and canonical-intent phrases) to a single existing tile. Audience is the primary audience the entry serves; the matcher deprioritizes (does not hide) entries when the user has selected a different chip. Every phrase is lowercase; every tile id is an existing catalog tile (guarded by test/unit/synonyms-catalog.test.js). Adding a new phrase is a one-line PR.",
   "entries": [
     { "phrases": ["denied", "denial letter", "they denied it", "insurance said no", "appeal", "write an appeal", "appeal my claim", "appeal letter", "appeal a denial"],
@@ -212,6 +212,8 @@
     { "phrases": ["acute cholecystitis severity", "cholecystitis grade", "cholecystitis severity grade", "tokyo guidelines cholecystitis", "tg18 cholecystitis", "gallbladder infection severity", "gangrenous cholecystitis grade"],
       "tile": "cholecystitis-severity", "audience": "clinicians" },
     { "phrases": ["acute cholangitis diagnosis", "cholangitis diagnostic criteria", "tokyo guidelines cholangitis diagnosis", "tg18 cholangitis criteria", "diagnose cholangitis", "charcot triad cholangitis", "reynolds pentad"],
-      "tile": "cholangitis-diagnosis", "audience": "clinicians" }
+      "tile": "cholangitis-diagnosis", "audience": "clinicians" },
+    { "phrases": ["acute cholecystitis diagnosis", "cholecystitis diagnostic criteria", "tokyo guidelines cholecystitis diagnosis", "tg18 cholecystitis criteria", "diagnose cholecystitis", "murphy sign cholecystitis", "gallbladder inflammation diagnosis"],
+      "tile": "cholecystitis-diagnosis", "audience": "clinicians" }
   ]
 }
