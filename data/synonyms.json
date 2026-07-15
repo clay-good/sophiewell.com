@@ -1,5 +1,5 @@
 {
-  "version": "v41-2026-07-15",
+  "version": "v42-2026-07-15",
   "note": "spec-v7 section 3.2: hand-curated patient-phrasing -> tile id table. Each entry maps patient-mental-model phrases (and, from the v8/v9 plain-language-search batches, clinical abbreviations, eponym aliases, and canonical-intent phrases) to a single existing tile. Audience is the primary audience the entry serves; the matcher deprioritizes (does not hide) entries when the user has selected a different chip. Every phrase is lowercase; every tile id is an existing catalog tile (guarded by test/unit/synonyms-catalog.test.js). Adding a new phrase is a one-line PR.",
   "entries": [
     { "phrases": ["denied", "denial letter", "they denied it", "insurance said no", "appeal", "write an appeal", "appeal my claim", "appeal letter", "appeal a denial"],
@@ -226,6 +226,8 @@
     { "phrases": ["la grade", "los angeles classification", "la classification esophagitis", "erosive esophagitis grade", "esophagitis grade", "la grade esophagitis", "reflux esophagitis grade", "grade a b c d esophagitis"],
       "tile": "la-esophagitis", "audience": "clinicians" },
     { "phrases": ["ccs angina", "ccs class", "canadian cardiovascular society angina", "angina class", "angina grade", "ccs angina grade", "angina functional class", "ccs grade"],
-      "tile": "ccs-angina", "audience": "clinicians" }
+      "tile": "ccs-angina", "audience": "clinicians" },
+    { "phrases": ["clavien dindo", "surgical complication grade", "postoperative complication classification", "clavien classification", "grade surgical complication", "complication grade surgery", "clavien dindo grade"],
+      "tile": "clavien-dindo", "audience": "clinicians" }
   ]
 }

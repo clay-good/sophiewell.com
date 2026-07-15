@@ -296,6 +296,7 @@ import * as goldAbeV316 from '../../lib/gold-abe-v316.js';
 import * as cdiSeverityV317 from '../../lib/cdi-severity-v317.js';
 import * as laEsophagitisV318 from '../../lib/la-esophagitis-v318.js';
 import * as ccsAnginaV319 from '../../lib/ccs-angina-v319.js';
+import * as clavienDindoV320 from '../../lib/clavien-dindo-v320.js';
 import * as tbTesting from '../../lib/tb-testing.js';
 
 const MODULES = {
@@ -537,6 +538,7 @@ const MODULES = {
   'cdi-severity-v317.js': cdiSeverityV317,
   'la-esophagitis-v318.js': laEsophagitisV318,
   'ccs-angina-v319.js': ccsAnginaV319,
+  'clavien-dindo-v320.js': clavienDindoV320,
   'tb-testing.js': tbTesting,
 };
 

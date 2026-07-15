@@ -6,6 +6,21 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v320 — Clavien-Dindo classification of surgical complications tile, 1171 → 1172)
+
+- New `clavien-dindo` tile (group G): the Clavien-Dindo grading of surgical complications (I, II, IIIa,
+  IIIb, IVa, IVb, V) — one of the most widely used surgical-outcome grading systems, previously absent from
+  the catalog. The clinician picks the grade from the therapy the complication required and the tile reports
+  its standard definition. **I:** no treatment beyond antiemetics/analgesics/electrolytes/physiotherapy.
+  **II:** pharmacological treatment beyond grade I (incl. transfusion, TPN). **IIIa/IIIb:** surgical/
+  endoscopic/radiological intervention without / under general anesthesia. **IVa/IVb:** life-threatening,
+  IC/ICU, single- / multi-organ dysfunction. **V:** death. A severity grade, not a diagnosis or a management
+  order ([spec-v11] §5.3). Criteria transcribed (spec-v97) from Dindo 2004 (Ann Surg), cross-verified
+  against the 2009 five-year-experience paper; no citation-staleness row (the Ann Surg citation carries no
+  guideline-issuer acronym). New `lib/clavien-dindo-v320.js` + `views/group-v320.js` (RV320); +1 META entry,
+  +1 UTILITIES row, a synonym entry (v41 → v42), 7 unit tests + fuzz, corpus rebuilt to 1172.
+  See [docs/spec-v320.md](docs/spec-v320.md). The MCP adapter follows in a later wave.
+
 ### Added (spec-v319 — Canadian Cardiovascular Society (CCS) angina grade tile, 1170 → 1171)
 
 - New `ccs-angina` tile (group G): the Canadian Cardiovascular Society grading of angina pectoris (I–IV) —
