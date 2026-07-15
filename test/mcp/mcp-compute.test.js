@@ -2370,6 +2370,22 @@ test('lib/jones-v315.js worked calls', () => {
   assert.equal(ok('jones-criteria', { 'jones-risk': 'modhigh', 'jones-polyarthralgia': '1' }).majors, 1);
 });
 
+test('lib/gold-abe-v316.js worked calls', () => {
+  // More symptoms (mMRC 2) + low exacerbation risk -> group B (the META example).
+  const b = ok('gold-abe', { 'gold-mmrc': '2', 'gold-exac-mod': '1' });
+  assert.equal(b.group, 'B');
+  assert.equal(b.moreSymptoms, true);
+  assert.equal(b.highExacRisk, false);
+  // >= 2 moderate exacerbations -> group E regardless of low symptoms.
+  const e = ok('gold-abe', { 'gold-mmrc': '0', 'gold-exac-mod': '2' });
+  assert.equal(e.group, 'E');
+  assert.equal(e.highExacRisk, true);
+  // A hospitalized exacerbation alone -> group E; CAT >= 10 drives "more symptoms".
+  assert.equal(ok('gold-abe', { 'gold-cat': '30', 'gold-exac-hosp': true }).group, 'E');
+  // Less symptoms + low risk -> group A.
+  assert.equal(ok('gold-abe', { 'gold-mmrc': '1', 'gold-exac-mod': '0' }).group, 'A');
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];

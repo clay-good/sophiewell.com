@@ -1502,6 +1502,22 @@ round-trip both pass, without the phantom "2". Adapter appended to the existing
 rate to a target PaCO2. Brings the exposed total to **1072 calculators across 197
 modules**.
 
+## One-hundred-forty-first wave — the GOLD ABE assessment tool (COPD group A/B/E) in lib/gold-abe-v316.js (+1)
+
+`gold-abe` (spec-v316) applies the 2023 GOLD ABE assessment tool: given the symptom
+burden (mMRC and/or CAT) and the past-12-month exacerbation history, it reports the
+COPD group A, B, or E. Two axes: "more symptoms" if mMRC >= 2 or CAT >= 10; "high
+exacerbation risk" (group E) if >= 2 moderate exacerbations or >= 1 leading to hospital
+admission. `mmrc`, `cat`, and `moderateExacerbations` are numbers (`kind: 'number'`),
+each optional (the compute treats an absent mMRC/CAT as not-entered — at least one is
+required by the compute itself — and defaults the exacerbation count to 0);
+`hospitalizedExacerbation` is a boolean. The example sets mMRC 2 + one moderate
+exacerbation (a group-B case); its band carries the "mMRC 2" and "1 moderate
+exacerbation" example numbers, so it round-trips through the default `makeToArgs` with
+no custom toArgs. New adapter module registered in `mcp/catalog.js`; its golden probe
+("copd group") is promoted now that the tile is in the MCP-exposed registry. Brings the
+exposed total to **1105 calculators across 221 modules**.
+
 ## One-hundred-fortieth wave — the 2015 revised Jones criteria (acute rheumatic fever) in lib/jones-v315.js (+1)
 
 `jones-criteria` (spec-v315) applies the 2015 AHA revised Jones criteria: given the
@@ -3388,6 +3404,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/jones-v315.js
 - `jones-criteria`
+
+### lib/gold-abe-v316.js
+- `gold-abe`
 
 ### lib/tb-testing.js
 - `tb-testing`

@@ -78,7 +78,7 @@ find_calculator { "query": "stroke risk afib" }
        candidates: [ { id: "chads", name: "CHA2DS2-VASc", why: "synonym", ... }, ... ] }
 
 list_calculators { "specialty": "hepatology" }
-  -> { coverage: "1104 of 1109 catalog tiles exposed ...", calculators: [ { id: "meld-xi", ... }, ... ] }
+  -> { coverage: "1105 of 1109 catalog tiles exposed ...", calculators: [ { id: "meld-xi", ... }, ... ] }
 
 describe_calculator { "id": "meld-xi" }
   -> { inputSchema: { ... mx-bili, mx-creat ... }, citation: "Heuman DM ... Liver Transpl 2007", ... }
@@ -339,8 +339,9 @@ one-hundred-thirty-eighth the acute cholecystitis diagnosis (Tokyo Guidelines TG
 in `lib/cholecystitis-dx-v313.js`, and a one-hundred-thirty-ninth the Deauville
 5-point score (PET response, lymphoma) in `lib/deauville-v314.js`, and a
 one-hundred-fortieth the 2015 revised Jones criteria (acute rheumatic fever) in
-`lib/jones-v315.js`, for
-1104 across 220 modules
+`lib/jones-v315.js`, and a one-hundred-forty-first the GOLD ABE assessment tool
+(COPD group A/B/E) in `lib/gold-abe-v316.js`, for
+1105 across 221 modules
 today. <!-- catalog-truth:historical (197 is the count of lib modules adapted, not a catalog tile count) -->
 Later waves extend it module by module against the same contract.
 
