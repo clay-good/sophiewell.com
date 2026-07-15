@@ -6,6 +6,19 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v314 — Deauville 5-point score (PET response, lymphoma) tile, 1165 → 1166)
+
+- New `deauville-score` tile (group G): the FDG-PET metabolic-response companion to the existing Ann
+  Arbor / Lugano anatomic staging tile. The clinician picks the 5-point uptake score (1 = no uptake
+  above background; 2 = ≤ mediastinum; 3 = > mediastinum but ≤ liver; 4 = moderately > liver; 5 =
+  markedly > liver and/or new lesions) and the tile reports the score, its uptake description, and the
+  standard Lugano interpretation (1–2 negative / complete metabolic response, 4–5 positive, 3 by
+  clinical context). A classification score, not a treatment decision ([spec-v11] §5.3). Scale
+  re-fetched and cross-verified (spec-v97) against Barrington 2014 (Lugano classification) and
+  Radiopaedia. New `lib/deauville-v314.js` + `views/group-v314.js` (RV314); +1 META entry, +1 UTILITIES
+  row, a synonym entry (v35 → v36), 6 unit tests + fuzz, corpus rebuilt to 1166. See
+  [docs/spec-v314.md](docs/spec-v314.md). The MCP adapter follows in a later wave.
+
 ### Added (spec-v313 — Acute cholecystitis diagnosis (Tokyo Guidelines TG18) tile, 1164 → 1165)
 
 - New `cholecystitis-diagnosis` tile (group G): the diagnostic companion to the spec-v311 severity
