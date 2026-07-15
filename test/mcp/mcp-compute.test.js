@@ -2276,6 +2276,23 @@ test('lib/gvhd-v309.js worked calls', () => {
   assert.equal(ok('gvhd-grade', { 'gvhd-skin': '0' }).grade, 0);
 });
 
+test('lib/cholangitis-v310.js worked calls', () => {
+  // One organ dysfunction (hepatic, PT-INR > 1.5) -> Grade III (severe).
+  const g3 = ok('cholangitis-severity', { 'chol-hepatic': '1' });
+  assert.equal(g3.gradeRoman, 'III');
+  assert.equal(g3.severe, true);
+  assert.match(g3.band, /Grade III \(severe\)/);
+  // Any two moderate criteria (age >= 75 + fever >= 39) -> Grade II (moderate).
+  const g2 = ok('cholangitis-severity', { 'chol-age': '1', 'chol-fever': '1' });
+  assert.equal(g2.gradeRoman, 'II');
+  assert.equal(g2.moderateCount, 2);
+  assert.equal(g2.severe, false);
+  // Exactly one moderate criterion stays Grade I (mild).
+  assert.equal(ok('cholangitis-severity', { 'chol-age': '1' }).grade, 1);
+  // No criteria -> Grade I.
+  assert.equal(ok('cholangitis-severity', {}).grade, 1);
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];

@@ -1502,6 +1502,20 @@ round-trip both pass, without the phantom "2". Adapter appended to the existing
 rate to a target PaCO2. Brings the exposed total to **1072 calculators across 197
 modules**.
 
+## One-hundred-thirty-fifth wave — the acute cholangitis severity grade (Tokyo Guidelines TG18) in lib/cholangitis-v310.js (+1)
+
+`cholangitis-severity` (spec-v310) grades acute cholangitis on the Tokyo Guidelines
+TG18/TG13 severity scale: Grade III (severe) if any one of six new-onset organ
+dysfunctions, Grade II (moderate) if any two of five moderate criteria, Grade I
+(mild) otherwise. All 11 fields are booleans (`kind: 'bool'`), each optional (the
+compute defaults each to false, and only strict boolean `true` fires a criterion).
+The example sets only `chol-hepatic`, whose `band`/`note` carry the "PT-INR > 1.5"
+example number, so it round-trips through the default `makeToArgs` (which maps '1'
+-> true) with no custom toArgs. New adapter module registered in `mcp/catalog.js`;
+its golden probe ("acute cholangitis severity") is promoted now that the tile is in
+the MCP-exposed registry. Brings the exposed total to **1099 calculators across 215
+modules**.
+
 ## One-hundred-thirty-fourth wave — the acute GVHD grade (modified Glucksberg) in lib/gvhd-v309.js (+1)
 
 `gvhd-grade` (spec-v309) grades acute graft-versus-host disease on the modified
@@ -3286,6 +3300,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/gvhd-v309.js
 - `gvhd-grade`
+
+### lib/cholangitis-v310.js
+- `cholangitis-severity`
 
 ### lib/tb-testing.js
 - `tb-testing`
