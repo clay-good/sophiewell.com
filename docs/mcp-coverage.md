@@ -1502,6 +1502,20 @@ round-trip both pass, without the phantom "2". Adapter appended to the existing
 rate to a target PaCO2. Brings the exposed total to **1072 calculators across 197
 modules**.
 
+## One-hundred-fortieth wave — the 2015 revised Jones criteria (acute rheumatic fever) in lib/jones-v315.js (+1)
+
+`jones-criteria` (spec-v315) applies the 2015 AHA revised Jones criteria: given the
+population risk tier, episode type, group-A-strep evidence, and the manifestations
+present, it reports whether the criteria are met, met-but-needs-strep-evidence, or
+not met. `riskPopulation` and `episode` are enums; the rest are booleans (`kind:
+'bool'`), each optional (the compute defaults each to false). The example sets gas +
+carditis + polyarthritis (a 2-major low-risk initial case that is met); its band
+carries the "2 major" example number, so it round-trips through the default
+`makeToArgs` with no custom toArgs. New adapter module registered in `mcp/catalog.js`;
+its golden probe ("acute rheumatic fever") is promoted now that the tile is in the
+MCP-exposed registry. Brings the exposed total to **1104 calculators across 220
+modules**.
+
 ## One-hundred-thirty-ninth wave — the Deauville 5-point score (PET response, lymphoma) in lib/deauville-v314.js (+1)
 
 `deauville-score` (spec-v314) is the FDG-PET metabolic-response companion to the Ann
@@ -3371,6 +3385,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/deauville-v314.js
 - `deauville-score`
+
+### lib/jones-v315.js
+- `jones-criteria`
 
 ### lib/tb-testing.js
 - `tb-testing`

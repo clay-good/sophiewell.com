@@ -2354,6 +2354,22 @@ test('lib/deauville-v314.js worked calls', () => {
   assert.equal(s3.negative, false);
 });
 
+test('lib/jones-v315.js worked calls', () => {
+  // Low-risk initial: carditis + polyarthritis (2 major) + strep -> met.
+  const met = ok('jones-criteria', { 'jones-gas': '1', 'jones-carditis': '1', 'jones-polyarthritis': '1' });
+  assert.equal(met.met, true);
+  assert.equal(met.majors, 2);
+  assert.match(met.band, /Meets the 2015 Jones criteria for initial/);
+  // Same manifestations without strep evidence -> needs-gas (not met).
+  const needsGas = ok('jones-criteria', { 'jones-carditis': '1', 'jones-polyarthritis': '1' });
+  assert.equal(needsGas.met, false);
+  assert.equal(needsGas.category, 'needs-gas');
+  // Isolated chorea -> met on its own.
+  assert.equal(ok('jones-criteria', { 'jones-chorea': '1' }).met, true);
+  // Moderate/high-risk reclasses polyarthralgia to a major.
+  assert.equal(ok('jones-criteria', { 'jones-risk': 'modhigh', 'jones-polyarthralgia': '1' }).majors, 1);
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];
