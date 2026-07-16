@@ -248,6 +248,7 @@ import haggittV332 from './adapters/haggitt-v332.js';
 import kikuchiV333 from './adapters/kikuchi-v333.js';
 import kudoV334 from './adapters/kudo-v334.js';
 import niceV335 from './adapters/nice-v335.js';
+import jnetV336 from './adapters/jnet-v336.js';
 import tbTesting from './adapters/tb-testing.js';
 import labInterpret from './adapters/lab-interpret.js';
 import decisionRulesV258 from './adapters/decision-rules-v258.js';
@@ -490,6 +491,7 @@ const ADAPTER_MODULES = [
   ['kikuchi-v333', kikuchiV333],
   ['kudo-v334', kudoV334],
   ['nice-v335', niceV335],
+  ['jnet-v336', jnetV336],
   ['tb-testing', tbTesting],
   ['lab-interpret', labInterpret],
   ['decision-rules-v258', decisionRulesV258],

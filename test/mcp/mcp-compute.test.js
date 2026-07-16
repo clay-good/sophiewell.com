@@ -2620,6 +2620,18 @@ test('lib/nice-v335.js worked calls', () => {
   assert.equal(two.invasive, false);
 });
 
+test('lib/jnet-v336.js worked calls', () => {
+  // Type 2B (the META example): neoplastic, high-grade, not deep-invasive-flagged.
+  const twoB = ok('jnet-classification', { 'jnet-type': '2B' });
+  assert.equal(twoB.type, '2B');
+  assert.equal(twoB.neoplastic, true);
+  assert.equal(twoB.invasive, false);
+  // Type 1: non-neoplastic.
+  assert.equal(ok('jnet-classification', { 'jnet-type': '1' }).neoplastic, false);
+  // Type 3: deep submucosal invasive, flagged.
+  assert.equal(ok('jnet-classification', { 'jnet-type': '3' }).invasive, true);
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];

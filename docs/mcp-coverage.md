@@ -1502,6 +1502,16 @@ round-trip both pass, without the phantom "2". Adapter appended to the existing
 rate to a target PaCO2. Brings the exposed total to **1072 calculators across 197
 modules**.
 
+## One-hundred-sixty-first wave — the JNET classification (magnifying NBI colorectal) in lib/jnet-v336.js (+1)
+
+`jnet-classification` (spec-v336) applies the JNET (Japan NBI Expert Team) classification: given the
+type, it reports its usual histologic correlate. `type` is an enum (`kind: 'enum'`, values
+1/2A/2B/3) — the single input the renderer exposes. The example sets type 2B; its expected text is
+the type description (no numeric facts), so it round-trips through the default `makeToArgs` with no
+custom toArgs. New adapter module registered in `mcp/catalog.js`; its golden probe ("japan nbi
+expert team") is promoted now that the tile is in the MCP-exposed registry. Brings the exposed total
+to **1125 calculators across 241 modules**.
+
 ## One-hundred-sixtieth wave — the NICE classification (NBI colorectal lesion) in lib/nice-v335.js (+1)
 
 `nice-classification` (spec-v335) applies the NICE (NBI International Colorectal Endoscopic)
@@ -3670,6 +3680,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/nice-v335.js
 - `nice-classification`
+
+### lib/jnet-v336.js
+- `jnet-classification`
 
 ### lib/tb-testing.js
 - `tb-testing`
