@@ -6,6 +6,23 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v345 — Lichtman staging (Kienböck disease) tile, 1196 → 1197)
+
+- New `lichtman-kienbock` tile (group G): the Lichtman staging of Kienböck disease / lunate osteonecrosis
+  (stages I, II, IIIA, IIIB, IV) — the standard radiographic staging of avascular necrosis of the carpal
+  lunate, the wrist AVN companion to the Ficat-Arlet femoral-head staging and the Hawkins talar
+  classification already in the catalog; previously absent. The clinician picks the radiographic stage
+  and the tile reports its description. **I:** normal X-ray, abnormal MRI. **II:** lunate sclerosis, shape
+  preserved. **IIIA:** lunate collapse, carpal alignment maintained (radioscaphoid angle < 60 degrees) —
+  flagged. **IIIB:** lunate collapse with fixed carpal collapse (angle > 60 degrees) — flagged. **IV:**
+  generalized degenerative arthrosis — flagged. A Lichtman stage, not a diagnosis, a treatment decision,
+  or a prognosis ([spec-v11] §5.3); the pre-collapse (I–II) vs collapse (IIIA–IV) split is the classic
+  reconstruct-vs-salvage watershed, not an order. Definitions transcribed (spec-v97) from Lichtman 1977
+  (JBJS Am), cross-verified against wrist-imaging references; no citation-staleness row (the citation
+  carries no guideline-issuer acronym). New `lib/lichtman-kienbock-v345.js` + `views/group-v345.js`
+  (RV345); +1 META entry, +1 UTILITIES row, a synonym entry (v66 → v67), 5 unit tests + fuzz, corpus
+  rebuilt to 1197. See [docs/spec-v345.md](docs/spec-v345.md). The MCP adapter follows in a later wave.
+
 ### Added (spec-v344 — Ficat-Arlet staging (femoral head AVN) tile, 1195 → 1196)
 
 - New `ficat-arlet` tile (group G): the Ficat-Arlet staging of femoral-head osteonecrosis / avascular
