@@ -2734,6 +2734,17 @@ test('lib/lichtman-kienbock-v345.js worked calls', () => {
   assert.equal(ok('lichtman-kienbock', { 'lichtman-stage': 'IV' }).collapse, true);
 });
 
+test('lib/catterall-perthes-v346.js worked calls', () => {
+  // Group III (the META example): most of the epiphysis, flagged extensive.
+  const three = ok('catterall-perthes', { 'catterall-group': 'III' });
+  assert.equal(three.group, 'III');
+  assert.equal(three.extensive, true);
+  // Group I: anterior only, not flagged.
+  assert.equal(ok('catterall-perthes', { 'catterall-group': 'I' }).extensive, false);
+  // Group IV: entire epiphysis, flagged.
+  assert.equal(ok('catterall-perthes', { 'catterall-group': 'IV' }).extensive, true);
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];

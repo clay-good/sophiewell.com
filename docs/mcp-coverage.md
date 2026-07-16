@@ -1502,6 +1502,16 @@ round-trip both pass, without the phantom "2". Adapter appended to the existing
 rate to a target PaCO2. Brings the exposed total to **1072 calculators across 197
 modules**.
 
+## One-hundred-seventy-first wave — the Catterall classification (Legg-Calve-Perthes) in lib/catterall-perthes-v346.js (+1)
+
+`catterall-perthes` (spec-v346) applies the Catterall classification: given the group, it reports the
+epiphyseal-involvement description. `group` is an enum (`kind: 'enum'`, values I/II/III/IV) — the
+single input the renderer exposes. The example sets group III; its expected text is the group
+description with no numeric facts (the group is a roman numeral), so it round-trips through the default
+`makeToArgs` with no custom toArgs. New adapter module registered in `mcp/catalog.js`; its golden probe
+("perthes disease group") is promoted now that the tile is in the MCP-exposed registry. Brings the
+exposed total to **1135 calculators across 251 modules**.
+
 ## One-hundred-seventieth wave — the Lichtman staging (Kienbock disease) in lib/lichtman-kienbock-v345.js (+1)
 
 `lichtman-kienbock` (spec-v345) applies the Lichtman staging: given the stage, it reports the
@@ -3801,6 +3811,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/lichtman-kienbock-v345.js
 - `lichtman-kienbock`
+
+### lib/catterall-perthes-v346.js
+- `catterall-perthes`
 
 ### lib/tb-testing.js
 - `tb-testing`
