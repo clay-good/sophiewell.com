@@ -6,6 +6,23 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v332 — Haggitt classification (malignant colorectal polyp) tile, 1183 → 1184)
+
+- New `haggitt-level` tile (group G): the Haggitt classification of invasion in a malignant colorectal
+  polyp (levels 0–4) — the standard grading of how deeply an invasive carcinoma arising in an adenomatous
+  polyp has invaded, which drives the endoscopic-vs-surgical decision after polypectomy; previously absent
+  from the catalog (the neighboring GI classifications Paris / Montreal / Siewert / Forrest / Rockall exist
+  but no Haggitt level). The pathologist picks the level from the depth of invasion and the tile reports its
+  description. **0:** carcinoma limited to the mucosa (in situ / intramucosal, not truly invasive). **1:**
+  submucosa of the polyp head. **2:** neck (head–stalk junction). **3:** stalk. **4:** bowel-wall submucosa
+  below the stalk — flagged higher-risk; all sessile invasive polyps are level 4 by definition. An invasion
+  level, not a diagnosis, a resection recommendation, or a metastasis prediction ([spec-v11] §5.3).
+  Definitions transcribed (spec-v97) from Haggitt 1985 (Gastroenterology), cross-verified against
+  Gastroenterology Research (Kuo 2020) / Pathology Outlines; no citation-staleness row (the citation carries
+  no guideline-issuer acronym). New `lib/haggitt-v332.js` + `views/group-v332.js` (RV332); +1 META entry, +1
+  UTILITIES row, a synonym entry (v53 → v54), 5 unit tests + fuzz, corpus rebuilt to 1184.
+  See [docs/spec-v332.md](docs/spec-v332.md). The MCP adapter follows in a later wave.
+
 ### Added (spec-v331 — Fitzpatrick skin phototype tile, 1182 → 1183)
 
 - New `fitzpatrick-skin-type` tile (group G): the Fitzpatrick skin phototype (I–VI) — the standard
