@@ -2606,6 +2606,20 @@ test('lib/kudo-v334.js worked calls', () => {
   assert.equal(iiis.invasive, false);
 });
 
+test('lib/nice-v335.js worked calls', () => {
+  // Type 3 (the META example): neoplastic + invasive (deep submucosal).
+  const three = ok('nice-classification', { 'nice-type': '3' });
+  assert.equal(three.type, '3');
+  assert.equal(three.neoplastic, true);
+  assert.equal(three.invasive, true);
+  // Type 1: non-neoplastic.
+  assert.equal(ok('nice-classification', { 'nice-type': '1' }).neoplastic, false);
+  // Type 2: neoplastic adenoma, not invasive-flagged.
+  const two = ok('nice-classification', { 'nice-type': '2' });
+  assert.equal(two.neoplastic, true);
+  assert.equal(two.invasive, false);
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];

@@ -1502,6 +1502,17 @@ round-trip both pass, without the phantom "2". Adapter appended to the existing
 rate to a target PaCO2. Brings the exposed total to **1072 calculators across 197
 modules**.
 
+## One-hundred-sixtieth wave — the NICE classification (NBI colorectal lesion) in lib/nice-v335.js (+1)
+
+`nice-classification` (spec-v335) applies the NICE (NBI International Colorectal Endoscopic)
+classification: given the type, it reports its usual histologic correlate. `type` is an enum
+(`kind: 'enum'`, values 1/2/3) — the single input the renderer exposes. The example sets type 3;
+its expected text is the type description (the type number already appears in the field value, no
+other numeric facts), so it round-trips through the default `makeToArgs` with no custom toArgs. New
+adapter module registered in `mcp/catalog.js`; its golden probe ("nbi polyp classification") is
+promoted now that the tile is in the MCP-exposed registry. Brings the exposed total to **1124
+calculators across 240 modules**.
+
 ## One-hundred-fifty-ninth wave — the Kudo pit-pattern classification in lib/kudo-v334.js (+1)
 
 `kudo-pit-pattern` (spec-v334) applies the Kudo pit-pattern classification: given the pit-pattern
@@ -3656,6 +3667,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/kudo-v334.js
 - `kudo-pit-pattern`
+
+### lib/nice-v335.js
+- `nice-classification`
 
 ### lib/tb-testing.js
 - `tb-testing`
