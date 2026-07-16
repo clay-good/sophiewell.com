@@ -1,4 +1,4 @@
-// Search-relevance golden set. Runs 141 realistic clinical queries through the
+// Search-relevance golden set. Runs 142 realistic clinical queries through the
 // real find_calculator surface (shared resolvePromptRanked + data/synonyms.json
 // + data/search-corpus over the exposed registry) and asserts an acceptable
 // tile ranks in the top 3. This pins the routing quality spec-v282 shipped:
@@ -236,6 +236,8 @@ const PROBES = [
   ['lung screening category', ['lung-rads']],
   // spec-v326 tile, exposed to MCP in wave 151: ACR O-RADS US v2022 risk categories.
   ['ovarian mass risk category', ['o-rads']],
+  // spec-v327 tile, exposed to MCP in wave 152: ACR LI-RADS v2018 CT/MRI categories.
+  ['liver imaging category', ['li-rads']],
 ];
 
 test(`every golden probe routes an acceptable tile into the top ${TOP_N}`, () => {

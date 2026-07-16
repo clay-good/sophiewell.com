@@ -1502,6 +1502,16 @@ round-trip both pass, without the phantom "2". Adapter appended to the existing
 rate to a target PaCO2. Brings the exposed total to **1072 calculators across 197
 modules**.
 
+## One-hundred-fifty-second wave — the ACR LI-RADS v2018 CT/MRI diagnostic categories in lib/li-rads-v327.js (+1)
+
+`li-rads` (spec-v327) applies the ACR LI-RADS v2018 CT/MRI diagnostic categories: given the
+category, it reports the descriptor and management. `category` is an enum (`kind: 'enum'`, values
+LR-1..LR-5, LR-M, LR-TIV, LR-NC) — the single input the renderer exposes. The example sets LR-3;
+its band carries the "3" and "6" (month) example numbers, so it round-trips through the default
+`makeToArgs` with no custom toArgs. New adapter module registered in `mcp/catalog.js`; its golden
+probe ("liver imaging category") is promoted now that the tile is in the MCP-exposed registry.
+Brings the exposed total to **1116 calculators across 232 modules**.
+
 ## One-hundred-fifty-first wave — the ACR O-RADS US v2022 risk categories in lib/o-rads-v326.js (+1)
 
 `o-rads` (spec-v326) applies the ACR O-RADS US v2022 ovarian-adnexal ultrasound risk categories:
@@ -3549,6 +3559,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/o-rads-v326.js
 - `o-rads`
+
+### lib/li-rads-v327.js
+- `li-rads`
 
 ### lib/tb-testing.js
 - `tb-testing`

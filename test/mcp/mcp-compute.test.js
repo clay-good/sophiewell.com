@@ -2511,6 +2511,19 @@ test('lib/o-rads-v326.js worked calls', () => {
   assert.equal(ok('o-rads', { 'orads-cat': '5' }).highRisk, true);
 });
 
+test('lib/li-rads-v327.js worked calls', () => {
+  // LR-3 (the META example): intermediate, not malignant-flagged.
+  const three = ok('li-rads', { 'lirads-cat': 'LR-3' });
+  assert.equal(three.category, 'LR-3');
+  assert.equal(three.malignant, false);
+  // LR-5: definitely HCC, malignant.
+  const five = ok('li-rads', { 'lirads-cat': 'LR-5' });
+  assert.equal(five.category, 'LR-5');
+  assert.equal(five.malignant, true);
+  // LR-M: malignant, not HCC specific.
+  assert.equal(ok('li-rads', { 'lirads-cat': 'LR-M' }).malignant, true);
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];

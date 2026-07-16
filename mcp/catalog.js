@@ -239,6 +239,7 @@ import siewertV323 from './adapters/siewert-v323.js';
 import wexnerV324 from './adapters/wexner-v324.js';
 import lungRadsV325 from './adapters/lung-rads-v325.js';
 import oRadsV326 from './adapters/o-rads-v326.js';
+import liRadsV327 from './adapters/li-rads-v327.js';
 import tbTesting from './adapters/tb-testing.js';
 import labInterpret from './adapters/lab-interpret.js';
 import decisionRulesV258 from './adapters/decision-rules-v258.js';
@@ -472,6 +473,7 @@ const ADAPTER_MODULES = [
   ['wexner-v324', wexnerV324],
   ['lung-rads-v325', lungRadsV325],
   ['o-rads-v326', oRadsV326],
+  ['li-rads-v327', liRadsV327],
   ['tb-testing', tbTesting],
   ['lab-interpret', labInterpret],
   ['decision-rules-v258', decisionRulesV258],
