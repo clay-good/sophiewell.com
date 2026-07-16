@@ -327,6 +327,7 @@ import * as herringPillarV347 from '../../lib/herring-pillar-v347.js';
 import * as strasbergBdiV348 from '../../lib/strasberg-bdi-v348.js';
 import * as fazekasV349 from '../../lib/fazekas-v349.js';
 import * as tscherneClosedV350 from '../../lib/tscherne-closed-v350.js';
+import * as goligherHemorrhoidsV351 from '../../lib/goligher-hemorrhoids-v351.js';
 import * as tbTesting from '../../lib/tb-testing.js';
 
 const MODULES = {
@@ -599,6 +600,7 @@ const MODULES = {
   'strasberg-bdi-v348.js': strasbergBdiV348,
   'fazekas-v349.js': fazekasV349,
   'tscherne-closed-v350.js': tscherneClosedV350,
+  'goligher-hemorrhoids-v351.js': goligherHemorrhoidsV351,
   'tb-testing.js': tbTesting,
 };
 

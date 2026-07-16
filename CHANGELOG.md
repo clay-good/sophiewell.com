@@ -6,6 +6,24 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v351 — Goligher classification (internal hemorrhoids) tile, 1202 → 1203)
+
+- New `goligher-hemorrhoids` tile (group G): the Goligher classification of internal hemorrhoids by
+  degree of prolapse (grades I–IV) — the worldwide-standard grading of internal hemorrhoidal disease;
+  previously absent. The GI-bleed / anorectal domain carried the bleeding-severity scores (`forrest`,
+  `rockall`, `glasgow-blatchford`) but not the internal-hemorrhoid prolapse grade. The clinician picks the
+  prolapse grade and the tile reports its description. **I:** bleed but do not prolapse. **II:** prolapse
+  on straining but reduce spontaneously. **III:** prolapse, require manual reduction — flagged (advanced).
+  **IV:** irreducible / permanently prolapsed (may be thrombosed or strangulated) — flagged (advanced). A
+  Goligher grade, not a diagnosis, a treatment decision, or a prognosis ([spec-v11] §5.3); the
+  office/conservative (lower grades) vs procedural/operative (higher grades) association is the classically
+  taught pattern, not an order. Definitions transcribed (spec-v97) from Goligher's *Surgery of the Anus,
+  Rectum and Colon* (1984), cross-verified against Tech Coloproctol 2022; no citation-staleness row (the
+  citation carries no guideline-issuer acronym). New `lib/goligher-hemorrhoids-v351.js` +
+  `views/group-v351.js` (RV351); +1 META entry, +1 UTILITIES row, a synonym entry (v72 → v73), 5 unit
+  tests + fuzz, corpus rebuilt to 1203. See [docs/spec-v351.md](docs/spec-v351.md). The MCP adapter
+  follows in a later wave.
+
 ### Added (spec-v350 — Tscherne classification (closed-fracture soft-tissue injury) tile, 1201 → 1202)
 
 - New `tscherne-closed` tile (group G): the Oestern-Tscherne classification of a closed-fracture
