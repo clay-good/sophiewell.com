@@ -6,6 +6,22 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v325 — ACR Lung-RADS v2022 assessment categories tile, 1176 → 1177)
+
+- New `lung-rads` tile (group G): the ACR Lung-RADS v2022 lung-cancer-screening assessment categories (0,
+  1, 2, 3, 4A, 4B, 4X) — one of the highest-volume reporting settings, joining the existing `bi-rads` and
+  `acr-tirads` -RADS tiles, previously absent from the catalog. The radiologist picks the assessment
+  category and the tile reports its descriptor and management. **0:** incomplete. **1/2:** negative/benign,
+  12-month LDCT. **3:** probably benign, 6-month LDCT. **4A:** suspicious, 3-month LDCT (PET/CT if solid
+  component ≥ 8 mm). **4B:** very suspicious, diagnostic CT / PET-CT / tissue sampling / referral. **4X:**
+  category 3/4 with additional suspicious features, managed as 4B. An assessment category, not a diagnosis
+  or an order ([spec-v11] §5.3). Transcribed (spec-v97) from the primary ACR Lung-RADS v2022 table (v2022
+  removed the risk-of-malignancy column, so the tile reports descriptor + management, not percentages); no
+  citation-staleness row (ACR is not in the issuer pattern). New `lib/lung-rads-v325.js` +
+  `views/group-v325.js` (RV325); +1 META entry, +1 UTILITIES row, a synonym entry (v46 → v47), 7 unit tests
+  + fuzz, corpus rebuilt to 1177. See [docs/spec-v325.md](docs/spec-v325.md). The MCP adapter follows in a
+  later wave.
+
 ### Added (spec-v324 — Wexner (Cleveland Clinic) fecal incontinence score tile, 1175 → 1176)
 
 - New `wexner` tile (group G): the Wexner / Cleveland Clinic fecal incontinence severity score (0–20) —
