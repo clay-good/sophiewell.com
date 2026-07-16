@@ -6,6 +6,21 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v330 — Nottingham Prognostic Index (breast cancer) tile, 1181 → 1182)
+
+- New `nottingham-prognostic-index` tile (group G): the Nottingham Prognostic Index (NPI) for early
+  invasive breast cancer — the standard clinicopathologic prognostic score, previously absent from the
+  catalog (the only "NPI" tile is the billing National-Provider-Identifier validator). The clinician enters
+  the tumor size and selects the node stage and grade and the tile computes the index. **NPI = (0.2 × tumor
+  size in cm) + node stage + grade** (node stage 1 = 0 nodes / 2 = 1–3 / 3 = ≥ 4; grade 1/2/3). Prognostic
+  groups: excellent ≤ 2.4 (~93% 5-yr survival), good ≤ 3.4 (~85%), moderate ≤ 5.4 (~70%), poor > 5.4 (~50%).
+  A cited prognostic score, not a diagnosis or a treatment order ([spec-v11] §5.3). Formula + groups
+  transcribed (spec-v97) from Galea 1992 (Breast Cancer Res Treat) / Haybittle 1982 (Br J Cancer); no
+  citation-staleness row (the citation carries no guideline-issuer acronym). New `lib/nottingham-npi-v330.js`
+  + `views/group-v330.js` (RV330); +1 META entry, +1 UTILITIES row, a synonym entry (v51 → v52), 4 unit
+  tests + fuzz, corpus rebuilt to 1182. See [docs/spec-v330.md](docs/spec-v330.md). The MCP adapter follows
+  in a later wave.
+
 ### Added (spec-v329 — Paris endoscopic classification tile, 1180 → 1181)
 
 - New `paris-classification` tile (group G): the Paris endoscopic classification of superficial neoplastic

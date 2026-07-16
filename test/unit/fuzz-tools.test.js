@@ -306,6 +306,7 @@ import * as oRadsV326 from '../../lib/o-rads-v326.js';
 import * as liRadsV327 from '../../lib/li-rads-v327.js';
 import * as montrealIbdV328 from '../../lib/montreal-ibd-v328.js';
 import * as parisClassificationV329 from '../../lib/paris-classification-v329.js';
+import * as nottinghamNpiV330 from '../../lib/nottingham-npi-v330.js';
 import * as tbTesting from '../../lib/tb-testing.js';
 
 const MODULES = {
@@ -557,6 +558,7 @@ const MODULES = {
   'li-rads-v327.js': liRadsV327,
   'montreal-ibd-v328.js': montrealIbdV328,
   'paris-classification-v329.js': parisClassificationV329,
+  'nottingham-npi-v330.js': nottinghamNpiV330,
   'tb-testing.js': tbTesting,
 };
 
