@@ -1502,6 +1502,17 @@ round-trip both pass, without the phantom "2". Adapter appended to the existing
 rate to a target PaCO2. Brings the exposed total to **1072 calculators across 197
 modules**.
 
+## One-hundred-fifty-fifth wave — the Nottingham Prognostic Index (breast cancer) in lib/nottingham-npi-v330.js (+1)
+
+`nottingham-prognostic-index` (spec-v330) computes the Nottingham Prognostic Index for early
+invasive breast cancer: NPI = (0.2 x tumor size in cm) + node stage + grade, with the prognostic
+group. `size` is a number (cm); `nodeStage` and `grade` are enums (1/2/3). The example sets size
+2.5 + node 2 + grade 2 (NPI 4.5, moderate); its band carries the "4.5" example number, so it
+round-trips through the default `makeToArgs` with no custom toArgs. New adapter module registered
+in `mcp/catalog.js`; its golden probe ("nottingham prognostic index") is promoted now that the
+tile is in the MCP-exposed registry. Brings the exposed total to **1119 calculators across 235
+modules**.
+
 ## One-hundred-fifty-fourth wave — the Paris endoscopic classification in lib/paris-classification-v329.js (+1)
 
 `paris-classification` (spec-v329) applies the Paris endoscopic classification of superficial
@@ -3590,6 +3601,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/paris-classification-v329.js
 - `paris-classification`
+
+### lib/nottingham-npi-v330.js
+- `nottingham-prognostic-index`
 
 ### lib/tb-testing.js
 - `tb-testing`

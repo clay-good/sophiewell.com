@@ -2548,6 +2548,17 @@ test('lib/paris-classification-v329.js worked calls', () => {
   assert.equal(ok('paris-classification', { 'paris-type': '0-III' }).highRisk, true);
 });
 
+test('lib/nottingham-npi-v330.js worked calls', () => {
+  // The META example: 0.2*2.5 + 2 + 2 = 4.5 (moderate).
+  const r = ok('nottingham-prognostic-index', { 'npi-size': '2.5', 'npi-node': '2', 'npi-grade': '2' });
+  assert.equal(r.npi, 4.5);
+  assert.equal(r.group, 'moderate');
+  // Small node-negative grade-I -> excellent.
+  assert.equal(ok('nottingham-prognostic-index', { 'npi-size': '1', 'npi-node': '1', 'npi-grade': '1' }).group, 'excellent');
+  // Large node-positive grade-III -> poor.
+  assert.equal(ok('nottingham-prognostic-index', { 'npi-size': '3', 'npi-node': '3', 'npi-grade': '3' }).group, 'poor');
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];
