@@ -1,5 +1,5 @@
 {
-  "version": "v47-2026-07-15",
+  "version": "v48-2026-07-15",
   "note": "spec-v7 section 3.2: hand-curated patient-phrasing -> tile id table. Each entry maps patient-mental-model phrases (and, from the v8/v9 plain-language-search batches, clinical abbreviations, eponym aliases, and canonical-intent phrases) to a single existing tile. Audience is the primary audience the entry serves; the matcher deprioritizes (does not hide) entries when the user has selected a different chip. Every phrase is lowercase; every tile id is an existing catalog tile (guarded by test/unit/synonyms-catalog.test.js). Adding a new phrase is a one-line PR.",
   "entries": [
     { "phrases": ["denied", "denial letter", "they denied it", "insurance said no", "appeal", "write an appeal", "appeal my claim", "appeal letter", "appeal a denial"],
@@ -238,6 +238,8 @@
     { "phrases": ["wexner", "wexner score", "cleveland clinic incontinence score", "fecal incontinence score", "ccfis", "bowel incontinence score", "wexner incontinence", "jorge wexner"],
       "tile": "wexner", "audience": "clinicians" },
     { "phrases": ["lung-rads", "lungrads", "lung screening category", "lung nodule category", "lung cancer screening ct category", "lung-rads 4a", "ldct nodule follow up"],
-      "tile": "lung-rads", "audience": "clinicians" }
+      "tile": "lung-rads", "audience": "clinicians" },
+    { "phrases": ["o-rads", "orads", "ovarian adnexal risk", "ovarian mass risk category", "adnexal mass ultrasound category", "ovarian cyst risk category", "o-rads ultrasound", "ovarian adnexal reporting"],
+      "tile": "o-rads", "audience": "clinicians" }
   ]
 }

@@ -6,6 +6,21 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v326 — ACR O-RADS US v2022 risk categories tile, 1177 → 1178)
+
+- New `o-rads` tile (group G): the ACR O-RADS US v2022 ovarian-adnexal ultrasound risk categories (0–5) —
+  the standard ovarian-adnexal-mass US risk system, completing the ACR -RADS cluster (BI-RADS, Lung-RADS,
+  TI-RADS), previously absent from the catalog. The radiologist picks the risk category and the tile reports
+  its descriptor, risk-of-malignancy band, and general management. **0:** incomplete. **1:** normal
+  premenopausal ovary (0%). **2:** almost certainly benign (< 1%). **3:** low risk (1% to < 10%). **4:**
+  intermediate risk (10% to < 50%). **5:** high risk (≥ 50%). A risk category, not a diagnosis or an order
+  ([spec-v11] §5.3); management is guidance modified by symptoms and history. Categories transcribed
+  (spec-v97) from Andreotti 2020 / ACR O-RADS US v2022, cross-verified against secondary reproductions and
+  the ACR governing-concepts page; no citation-staleness row (ACR is not in the issuer pattern). New
+  `lib/o-rads-v326.js` + `views/group-v326.js` (RV326); +1 META entry, +1 UTILITIES row, a synonym entry
+  (v47 → v48), 7 unit tests + fuzz, corpus rebuilt to 1178. See [docs/spec-v326.md](docs/spec-v326.md). The
+  MCP adapter follows in a later wave.
+
 ### Added (spec-v325 — ACR Lung-RADS v2022 assessment categories tile, 1176 → 1177)
 
 - New `lung-rads` tile (group G): the ACR Lung-RADS v2022 lung-cancer-screening assessment categories (0,
