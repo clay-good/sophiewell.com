@@ -1,5 +1,5 @@
 {
-  "version": "v52-2026-07-15",
+  "version": "v53-2026-07-15",
   "note": "spec-v7 section 3.2: hand-curated patient-phrasing -> tile id table. Each entry maps patient-mental-model phrases (and, from the v8/v9 plain-language-search batches, clinical abbreviations, eponym aliases, and canonical-intent phrases) to a single existing tile. Audience is the primary audience the entry serves; the matcher deprioritizes (does not hide) entries when the user has selected a different chip. Every phrase is lowercase; every tile id is an existing catalog tile (guarded by test/unit/synonyms-catalog.test.js). Adding a new phrase is a one-line PR.",
   "entries": [
     { "phrases": ["denied", "denial letter", "they denied it", "insurance said no", "appeal", "write an appeal", "appeal my claim", "appeal letter", "appeal a denial"],
@@ -248,6 +248,8 @@
     { "phrases": ["paris classification", "paris endoscopic classification", "polyp morphology", "superficial lesion morphology", "paris type", "sessile pedunculated flat depressed", "0-iic", "endoscopic lesion type"],
       "tile": "paris-classification", "audience": "clinicians" },
     { "phrases": ["nottingham prognostic index", "npi breast", "breast cancer prognosis", "nottingham index", "npi score breast", "breast cancer prognostic score", "nottingham prognostic", "breast npi"],
-      "tile": "nottingham-prognostic-index", "audience": "clinicians" }
+      "tile": "nottingham-prognostic-index", "audience": "clinicians" },
+    { "phrases": ["fitzpatrick", "fitzpatrick skin type", "skin phototype", "skin type scale", "phototype", "fitzpatrick scale", "skin type i to vi", "sun reactive skin type"],
+      "tile": "fitzpatrick-skin-type", "audience": "clinicians" }
   ]
 }

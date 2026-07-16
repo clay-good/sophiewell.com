@@ -6,6 +6,21 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v331 — Fitzpatrick skin phototype tile, 1182 → 1183)
+
+- New `fitzpatrick-skin-type` tile (group G): the Fitzpatrick skin phototype (I–VI) — the standard
+  classification of constitutive skin color by UV response, which stratifies photosensitivity, skin-cancer
+  risk, phototherapy dosing, and laser settings; previously absent from the catalog. The clinician picks the
+  phototype from the sunburn/tan response and the tile reports its description. **I:** always burns, never
+  tans. **II:** usually burns, tans minimally. **III:** sometimes burns, tans gradually. **IV:** burns
+  minimally, tans well. **V:** rarely burns, tans darkly. **VI:** never burns, deeply pigmented. Types I–II
+  are flagged higher-photosensitivity. A phototype, not a diagnosis or a treatment order ([spec-v11] §5.3).
+  Descriptions transcribed (spec-v97) from Fitzpatrick 1988 (Arch Dermatol), cross-verified against DermNet
+  / StatPearls; no citation-staleness row (the citation carries no guideline-issuer acronym). New
+  `lib/fitzpatrick-v331.js` + `views/group-v331.js` (RV331); +1 META entry, +1 UTILITIES row, a synonym
+  entry (v52 → v53), 6 unit tests + fuzz, corpus rebuilt to 1183.
+  See [docs/spec-v331.md](docs/spec-v331.md). The MCP adapter follows in a later wave.
+
 ### Added (spec-v330 — Nottingham Prognostic Index (breast cancer) tile, 1181 → 1182)
 
 - New `nottingham-prognostic-index` tile (group G): the Nottingham Prognostic Index (NPI) for early
