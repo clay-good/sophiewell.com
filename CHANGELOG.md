@@ -6,6 +6,23 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v335 — NICE classification (NBI colorectal lesion) tile, 1186 → 1187)
+
+- New `nice-classification` tile (group G): the NICE (NBI International Colorectal Endoscopic)
+  classification of a colorectal lesion (types 1 / 2 / 3) read on narrow-band imaging — the narrow-band
+  counterpart to the Kudo pit pattern (spec-v334), predicting histology from color, vessels, and surface
+  pattern **without requiring optical magnification**; previously absent from the catalog. The endoscopist
+  picks the type and the tile reports its histologic correlate. **1:** same/lighter color, absent or lacy
+  vessels, uniform or absent surface (hyperplastic, non-neoplastic). **2:** browner, brown vessels around
+  white structures (adenoma, or superficial cancer). **3:** brown to dark brown, disrupted/missing vessels,
+  amorphous surface (deep submucosal invasive cancer) — flagged. A NICE type + histologic correlate, not a
+  tissue diagnosis, a resection recommendation, or a cancer diagnosis ([spec-v11] §5.3). Definitions
+  transcribed (spec-v97) from Hewett 2012 (Gastroenterology, types 1–2) + Hayashi 2013 (Gastrointest Endosc,
+  type 3), cross-verified against endoscopy references; no citation-staleness row (the citation carries no
+  guideline-issuer acronym). New `lib/nice-v335.js` + `views/group-v335.js` (RV335); +1 META entry, +1
+  UTILITIES row, a synonym entry (v56 → v57), 5 unit tests + fuzz, corpus rebuilt to 1187.
+  See [docs/spec-v335.md](docs/spec-v335.md). The MCP adapter follows in a later wave.
+
 ### Added (spec-v334 — Kudo pit-pattern classification tile, 1185 → 1186)
 
 - New `kudo-pit-pattern` tile (group G): the Kudo pit-pattern classification of a colorectal lesion (types
