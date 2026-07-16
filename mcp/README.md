@@ -78,7 +78,7 @@ find_calculator { "query": "stroke risk afib" }
        candidates: [ { id: "chads", name: "CHA2DS2-VASc", why: "synonym", ... }, ... ] }
 
 list_calculators { "specialty": "hepatology" }
-  -> { coverage: "1125 of 1109 catalog tiles exposed ...", calculators: [ { id: "meld-xi", ... }, ... ] }
+  -> { coverage: "1126 of 1109 catalog tiles exposed ...", calculators: [ { id: "meld-xi", ... }, ... ] }
 
 describe_calculator { "id": "meld-xi" }
   -> { inputSchema: { ... mx-bili, mx-creat ... }, citation: "Heuman DM ... Liver Transpl 2007", ... }
@@ -365,7 +365,8 @@ one-hundred-fifty-seventh the Haggitt classification (malignant colorectal polyp
 submucosal invasion) in `lib/kikuchi-v333.js`, and a one-hundred-fifty-ninth the Kudo pit-pattern
 classification in `lib/kudo-v334.js`, and a one-hundred-sixtieth the NICE classification (NBI
 colorectal lesion) in `lib/nice-v335.js`, and a one-hundred-sixty-first the JNET classification
-(magnifying NBI colorectal) in `lib/jnet-v336.js`, for 1125 across 241 modules
+(magnifying NBI colorectal) in `lib/jnet-v336.js`, and a one-hundred-sixty-second the Outerbridge
+cartilage classification in `lib/outerbridge-v337.js`, for 1126 across 242 modules
 today. <!-- catalog-truth:historical (197 is the count of lib modules adapted, not a catalog tile count) -->
 Later waves extend it module by module against the same contract.
 

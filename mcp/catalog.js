@@ -249,6 +249,7 @@ import kikuchiV333 from './adapters/kikuchi-v333.js';
 import kudoV334 from './adapters/kudo-v334.js';
 import niceV335 from './adapters/nice-v335.js';
 import jnetV336 from './adapters/jnet-v336.js';
+import outerbridgeV337 from './adapters/outerbridge-v337.js';
 import tbTesting from './adapters/tb-testing.js';
 import labInterpret from './adapters/lab-interpret.js';
 import decisionRulesV258 from './adapters/decision-rules-v258.js';
@@ -492,6 +493,7 @@ const ADAPTER_MODULES = [
   ['kudo-v334', kudoV334],
   ['nice-v335', niceV335],
   ['jnet-v336', jnetV336],
+  ['outerbridge-v337', outerbridgeV337],
   ['tb-testing', tbTesting],
   ['lab-interpret', labInterpret],
   ['decision-rules-v258', decisionRulesV258],

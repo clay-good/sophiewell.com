@@ -1502,6 +1502,16 @@ round-trip both pass, without the phantom "2". Adapter appended to the existing
 rate to a target PaCO2. Brings the exposed total to **1072 calculators across 197
 modules**.
 
+## One-hundred-sixty-second wave — the Outerbridge cartilage classification in lib/outerbridge-v337.js (+1)
+
+`outerbridge-cartilage` (spec-v337) applies the Outerbridge classification: given the grade, it
+reports the cartilage-damage description. `grade` is an enum (`kind: 'enum'`, values 0/I/II/III/IV) —
+the single input the renderer exposes. The example sets grade IV; its expected text is the grade
+description (no numeric facts — the 1.5 cm threshold appears only in grades II/III), so it
+round-trips through the default `makeToArgs` with no custom toArgs. New adapter module registered in
+`mcp/catalog.js`; its golden probe ("chondromalacia cartilage grade") is promoted now that the tile
+is in the MCP-exposed registry. Brings the exposed total to **1126 calculators across 242 modules**.
+
 ## One-hundred-sixty-first wave — the JNET classification (magnifying NBI colorectal) in lib/jnet-v336.js (+1)
 
 `jnet-classification` (spec-v336) applies the JNET (Japan NBI Expert Team) classification: given the
@@ -3683,6 +3693,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/jnet-v336.js
 - `jnet-classification`
+
+### lib/outerbridge-v337.js
+- `outerbridge-cartilage`
 
 ### lib/tb-testing.js
 - `tb-testing`

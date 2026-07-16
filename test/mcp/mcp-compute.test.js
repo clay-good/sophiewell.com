@@ -2632,6 +2632,17 @@ test('lib/jnet-v336.js worked calls', () => {
   assert.equal(ok('jnet-classification', { 'jnet-type': '3' }).invasive, true);
 });
 
+test('lib/outerbridge-v337.js worked calls', () => {
+  // Grade IV (the META example): full-thickness, flagged.
+  const four = ok('outerbridge-cartilage', { 'outer-grade': 'IV' });
+  assert.equal(four.grade, 'IV');
+  assert.equal(four.fullThickness, true);
+  // Grade 0: normal, not full-thickness.
+  assert.equal(ok('outerbridge-cartilage', { 'outer-grade': '0' }).fullThickness, false);
+  // Grade II: partial-thickness.
+  assert.equal(ok('outerbridge-cartilage', { 'outer-grade': 'II' }).grade, 'II');
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];
