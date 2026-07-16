@@ -6,6 +6,22 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v327 — ACR LI-RADS v2018 CT/MRI diagnostic categories tile, 1178 → 1179)
+
+- New `li-rads` tile (group G): the ACR LI-RADS v2018 CT/MRI diagnostic categories (LR-1 to LR-5, LR-M,
+  LR-TIV, LR-NC) — the standard HCC-imaging reporting system and the liver peer of the -RADS cluster,
+  previously absent from the catalog (the HCC tiles like `bclc-hcc`/`galad-hcc` are risk/staging scores, not
+  the imaging category system). The radiologist picks the diagnostic category and the tile reports its
+  descriptor and management. **LR-1/2:** benign, routine surveillance. **LR-3:** intermediate probability of
+  malignancy, repeat/alternative imaging in 3–6 months. **LR-4/5:** probably/definitely HCC (LR-5 may be
+  treated as HCC without biopsy after multidisciplinary discussion). **LR-M:** malignant not HCC-specific.
+  **LR-TIV:** tumor in vein. **LR-NC:** not categorizable. A diagnostic category, not a diagnosis or an
+  order ([spec-v11] §5.3). Categories transcribed (spec-v97) from Chernyak 2018 (Radiology) / ACR LI-RADS
+  v2018, cross-verified against the ACR RADS-support material; no citation-staleness row (ACR is not in the
+  issuer pattern). New `lib/li-rads-v327.js` + `views/group-v327.js` (RV327); +1 META entry, +1 UTILITIES
+  row, a synonym entry (v48 → v49), 6 unit tests + fuzz, corpus rebuilt to 1179.
+  See [docs/spec-v327.md](docs/spec-v327.md). The MCP adapter follows in a later wave.
+
 ### Added (spec-v326 — ACR O-RADS US v2022 risk categories tile, 1177 → 1178)
 
 - New `o-rads` tile (group G): the ACR O-RADS US v2022 ovarian-adnexal ultrasound risk categories (0–5) —
