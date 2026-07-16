@@ -6,6 +6,23 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v341 — Mason-Johnston radial head fracture classification tile, 1192 → 1193)
+
+- New `mason-radial-head` tile (group G): the Mason-Johnston classification of a radial head fracture
+  (types I–IV) — the universally taught way to describe a fracture of the head of the radius, filling the
+  elbow / radial-head gap in the catalog's fracture-classification cluster (Garden, Danis-Weber, Schatzker,
+  Salter-Harris, Neer); previously absent. The clinician picks the fracture pattern and the tile reports its
+  description. **I:** nondisplaced / minimally displaced (< 2 mm), no mechanical block. **II:** displaced
+  (> 2 mm) partial-articular fracture, may block motion. **III:** comminuted whole-head fracture — flagged.
+  **IV:** with an associated elbow dislocation (Johnston) — flagged. A Mason type, not a diagnosis, a
+  treatment decision, or a prognosis ([spec-v11] §5.3); the management shorthand each type carries (early
+  motion / fixation / excision or replacement) is the classically taught association, not an order.
+  Definitions transcribed (spec-v97) from Mason 1954 (Br J Surg) and Johnston 1962 (Ulster Med J),
+  cross-verified against elbow-trauma references; no citation-staleness row (the citations carry no
+  guideline-issuer acronym). New `lib/mason-radial-head-v341.js` + `views/group-v341.js` (RV341); +1 META
+  entry, +1 UTILITIES row, a synonym entry (v62 → v63), 5 unit tests + fuzz, corpus rebuilt to 1193.
+  See [docs/spec-v341.md](docs/spec-v341.md). The MCP adapter follows in a later wave.
+
 ### Added (spec-v340 — Clark level (melanoma invasion) tile, 1191 → 1192)
 
 - New `clark-level` tile (group G): the Clark level of a cutaneous melanoma (levels I–V) — the classic

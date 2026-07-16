@@ -1,5 +1,5 @@
 {
-  "version": "v62-2026-07-16",
+  "version": "v63-2026-07-16",
   "note": "spec-v7 section 3.2: hand-curated patient-phrasing -> tile id table. Each entry maps patient-mental-model phrases (and, from the v8/v9 plain-language-search batches, clinical abbreviations, eponym aliases, and canonical-intent phrases) to a single existing tile. Audience is the primary audience the entry serves; the matcher deprioritizes (does not hide) entries when the user has selected a different chip. Every phrase is lowercase; every tile id is an existing catalog tile (guarded by test/unit/synonyms-catalog.test.js). Adding a new phrase is a one-line PR.",
   "entries": [
     { "phrases": ["denied", "denial letter", "they denied it", "insurance said no", "appeal", "write an appeal", "appeal my claim", "appeal letter", "appeal a denial"],
@@ -268,6 +268,8 @@
     { "phrases": ["cormack lehane", "cormack", "laryngoscopy grade", "laryngeal view grade", "cormack lehane grade", "glottic view classification", "laryngoscopy view", "intubation view grade"],
       "tile": "cormack-lehane", "audience": "clinicians" },
     { "phrases": ["clark level", "clark", "melanoma invasion level", "melanoma clark level", "anatomic level of invasion", "melanoma dermal invasion", "clark staging melanoma", "level of dermal invasion"],
-      "tile": "clark-level", "audience": "clinicians" }
+      "tile": "clark-level", "audience": "clinicians" },
+    { "phrases": ["mason classification", "mason", "radial head fracture type", "mason radial head", "radial head fracture classification", "mason johnston", "elbow radial head fracture grade", "fracture of the head of the radius classification"],
+      "tile": "mason-radial-head", "audience": "clinicians" }
   ]
 }
