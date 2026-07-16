@@ -2745,6 +2745,19 @@ test('lib/catterall-perthes-v346.js worked calls', () => {
   assert.equal(ok('catterall-perthes', { 'catterall-group': 'IV' }).extensive, true);
 });
 
+test('lib/herring-pillar-v347.js worked calls', () => {
+  // Group C (the META example): lateral pillar < 50%, flagged poorer prognosis.
+  const c = ok('herring-pillar', { 'herring-group': 'C' });
+  assert.equal(c.group, 'C');
+  assert.equal(c.poor, true);
+  // Group A: uninvolved, not flagged.
+  assert.equal(ok('herring-pillar', { 'herring-group': 'A' }).poor, false);
+  // Group BC (the B/C border): flagged, reports its full label.
+  const bc = ok('herring-pillar', { 'herring-group': 'BC' });
+  assert.equal(bc.poor, true);
+  assert.equal(bc.group, 'B/C border');
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];

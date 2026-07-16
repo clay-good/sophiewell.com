@@ -259,6 +259,7 @@ import sandersCalcanealV343 from './adapters/sanders-calcaneal-v343.js';
 import ficatArletV344 from './adapters/ficat-arlet-v344.js';
 import lichtmanKienbockV345 from './adapters/lichtman-kienbock-v345.js';
 import catterallPerthesV346 from './adapters/catterall-perthes-v346.js';
+import herringPillarV347 from './adapters/herring-pillar-v347.js';
 import tbTesting from './adapters/tb-testing.js';
 import labInterpret from './adapters/lab-interpret.js';
 import decisionRulesV258 from './adapters/decision-rules-v258.js';
@@ -512,6 +513,7 @@ const ADAPTER_MODULES = [
   ['ficat-arlet-v344', ficatArletV344],
   ['lichtman-kienbock-v345', lichtmanKienbockV345],
   ['catterall-perthes-v346', catterallPerthesV346],
+  ['herring-pillar-v347', herringPillarV347],
   ['tb-testing', tbTesting],
   ['lab-interpret', labInterpret],
   ['decision-rules-v258', decisionRulesV258],

@@ -1502,6 +1502,16 @@ round-trip both pass, without the phantom "2". Adapter appended to the existing
 rate to a target PaCO2. Brings the exposed total to **1072 calculators across 197
 modules**.
 
+## One-hundred-seventy-second wave — the Herring lateral pillar classification (Perthes) in lib/herring-pillar-v347.js (+1)
+
+`herring-pillar` (spec-v347) applies the Herring lateral pillar classification: given the group, it
+reports the lateral-pillar-height description. `group` is an enum (`kind: 'enum'`, values A/B/BC/C,
+where BC is the B/C border group) — the single input the renderer exposes. The example sets group C;
+its expected "< 50%" round-trips through the default `makeToArgs` with no custom toArgs (the result
+echoes the 50 in the band text). New adapter module registered in `mcp/catalog.js`; its golden probe
+("lateral pillar perthes") is promoted now that the tile is in the MCP-exposed registry. Brings the
+exposed total to **1136 calculators across 252 modules**.
+
 ## One-hundred-seventy-first wave — the Catterall classification (Legg-Calve-Perthes) in lib/catterall-perthes-v346.js (+1)
 
 `catterall-perthes` (spec-v346) applies the Catterall classification: given the group, it reports the
@@ -3814,6 +3824,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/catterall-perthes-v346.js
 - `catterall-perthes`
+
+### lib/herring-pillar-v347.js
+- `herring-pillar`
 
 ### lib/tb-testing.js
 - `tb-testing`
