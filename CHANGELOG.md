@@ -6,6 +6,25 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v350 — Tscherne classification (closed-fracture soft-tissue injury) tile, 1201 → 1202)
+
+- New `tscherne-closed` tile (group G): the Oestern-Tscherne classification of a closed-fracture
+  soft-tissue injury (grades 0–III / C0–C3) — the closed-fracture counterpart to the Gustilo-Anderson
+  open-fracture classification already in the catalog, grading the soft-tissue envelope damage of a
+  closed fracture; previously absent. Companion-gap pattern: the fracture-soft-tissue domain has both the
+  open scale (Gustilo) and the closed scale (Tscherne). The clinician picks the soft-tissue grade and the
+  tile reports its description. **0/C0:** little or no injury (low-energy). **I/C1:** superficial
+  abrasion / contusion. **II/C2:** deep contaminated abrasion, local contusion, impending compartment
+  syndrome — flagged. **III/C3:** extensive crush, degloving, overt compartment syndrome, or major
+  vascular injury — flagged. A Tscherne grade, not a diagnosis, a treatment decision, or a prognosis
+  ([spec-v11] §5.3); the primary-fixation (lower grades) vs staged-treatment (higher grades) association
+  is the classically taught pattern, not an order, and a compartment syndrome is a clinical emergency
+  assessed on its own. Definitions transcribed (spec-v97) from Tscherne & Oestern 1982 (Unfallheilkunde),
+  cross-verified against orthopedic-trauma references; no citation-staleness row (the citation carries no
+  guideline-issuer acronym). New `lib/tscherne-closed-v350.js` + `views/group-v350.js` (RV350); +1 META
+  entry, +1 UTILITIES row, a synonym entry (v71 → v72), 5 unit tests + fuzz, corpus rebuilt to 1202.
+  See [docs/spec-v350.md](docs/spec-v350.md). The MCP adapter follows in a later wave.
+
 ### Added (spec-v349 — Fazekas scale (white matter hyperintensities) tile, 1200 → 1201)
 
 - New `fazekas-wmh` tile (group G): the Fazekas scale for white matter hyperintensities on brain MRI —
