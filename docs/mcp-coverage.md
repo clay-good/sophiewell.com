@@ -1502,6 +1502,16 @@ round-trip both pass, without the phantom "2". Adapter appended to the existing
 rate to a target PaCO2. Brings the exposed total to **1072 calculators across 197
 modules**.
 
+## One-hundred-seventy-fifth wave — the Tscherne classification (closed-fracture soft-tissue injury) in lib/tscherne-closed-v350.js (+1)
+
+`tscherne-closed` (spec-v350) applies the Oestern-Tscherne closed-fracture soft-tissue classification:
+given the grade, it reports the soft-tissue description. `grade` is an enum (`kind: 'enum'`, values
+0/I/II/III, i.e. C0-C3) — the single input the renderer exposes. The example sets grade II; its expected
+text is the grade description with no numeric facts (the grade is a roman numeral / C-label), so it
+round-trips through the default `makeToArgs` with no custom toArgs. New adapter module registered in
+`mcp/catalog.js`; its golden probe ("closed fracture soft tissue grade") is promoted now that the tile
+is in the MCP-exposed registry. Brings the exposed total to **1139 calculators across 255 modules**.
+
 ## One-hundred-seventy-fourth wave — the Fazekas scale (white matter hyperintensities) in lib/fazekas-v349.js (+1)
 
 `fazekas-wmh` (spec-v349) applies the Fazekas scale. Unlike the other classification tiles in this
@@ -3854,6 +3864,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/fazekas-v349.js
 - `fazekas-wmh`
+
+### lib/tscherne-closed-v350.js
+- `tscherne-closed`
 
 ### lib/tb-testing.js
 - `tb-testing`

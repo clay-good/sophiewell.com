@@ -2780,6 +2780,18 @@ test('lib/fazekas-v349.js worked calls (two-field)', () => {
   assert.equal(ok('fazekas-wmh', { 'fz-pvh': '0', 'fz-dwmh': '0' }).abnormal, false);
 });
 
+test('lib/tscherne-closed-v350.js worked calls', () => {
+  // Grade II (the META example): C2, impending compartment syndrome, flagged.
+  const two = ok('tscherne-closed', { 'tscherne-grade': 'II' });
+  assert.equal(two.grade, 'II');
+  assert.equal(two.closedGrade, 'C2');
+  assert.equal(two.severe, true);
+  // Grade 0: low-energy, not flagged.
+  assert.equal(ok('tscherne-closed', { 'tscherne-grade': '0' }).severe, false);
+  // Grade III: C3, most severe, flagged.
+  assert.equal(ok('tscherne-closed', { 'tscherne-grade': 'III' }).severe, true);
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];

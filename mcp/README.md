@@ -78,7 +78,7 @@ find_calculator { "query": "stroke risk afib" }
        candidates: [ { id: "chads", name: "CHA2DS2-VASc", why: "synonym", ... }, ... ] }
 
 list_calculators { "specialty": "hepatology" }
-  -> { coverage: "1138 of 1109 catalog tiles exposed ...", calculators: [ { id: "meld-xi", ... }, ... ] }
+  -> { coverage: "1139 of 1109 catalog tiles exposed ...", calculators: [ { id: "meld-xi", ... }, ... ] }
 
 describe_calculator { "id": "meld-xi" }
   -> { inputSchema: { ... mx-bili, mx-creat ... }, citation: "Heuman DM ... Liver Transpl 2007", ... }
@@ -380,7 +380,8 @@ classification (Legg-Calve-Perthes) in `lib/catterall-perthes-v346.js`, and a on
 the Herring lateral pillar classification (Perthes) in `lib/herring-pillar-v347.js`, and a
 one-hundred-seventy-third the Strasberg classification (bile duct injury) in `lib/strasberg-bdi-v348.js`,
 and a one-hundred-seventy-fourth the Fazekas scale (white matter hyperintensities) in
-`lib/fazekas-v349.js`, for 1138 across 254 modules
+`lib/fazekas-v349.js`, and a one-hundred-seventy-fifth the Tscherne classification (closed-fracture
+soft-tissue injury) in `lib/tscherne-closed-v350.js`, for 1139 across 255 modules
 today. <!-- catalog-truth:historical (197 is the count of lib modules adapted, not a catalog tile count) -->
 Later waves extend it module by module against the same contract.
 

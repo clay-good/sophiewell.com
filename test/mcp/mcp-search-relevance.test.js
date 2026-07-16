@@ -1,4 +1,4 @@
-// Search-relevance golden set. Runs 164 realistic clinical queries through the
+// Search-relevance golden set. Runs 165 realistic clinical queries through the
 // real find_calculator surface (shared resolvePromptRanked + data/synonyms.json
 // + data/search-corpus over the exposed registry) and asserts an acceptable
 // tile ranks in the top 3. This pins the routing quality spec-v282 shipped:
@@ -282,6 +282,8 @@ const PROBES = [
   ['bile duct injury type', ['strasberg-bdi']],
   // spec-v349 tile, exposed to MCP in wave 174: Fazekas scale (white matter hyperintensities).
   ['white matter hyperintensity grade', ['fazekas-wmh']],
+  // spec-v350 tile, exposed to MCP in wave 175: Tscherne classification (closed-fracture soft tissue).
+  ['closed fracture soft tissue grade', ['tscherne-closed']],
 ];
 
 test(`every golden probe routes an acceptable tile into the top ${TOP_N}`, () => {
