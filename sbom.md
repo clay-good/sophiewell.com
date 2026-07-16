@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `73c4d4ac96e910e1`
-Generated: 2026-07-16T21:07:35.180Z
+Build ID: `b6475da2f8cb6145`
+Generated: 2026-07-16T21:15:42.091Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=20.18.1 <21, npm >=10.0.0
@@ -24,13 +24,13 @@ downloads is committed in this repository and is hashed below.
 
 | Path | Bytes | SHA-256 |
 |---|---:|---|
-| `index.html` | 80486 | `1f6f65730958abe6f319eb8129e3fc5f031b9df6df8914bed3139d0291e1857d` |
+| `index.html` | 80545 | `b62b71315973d5ed8684aae0de02a99473e32a6dcfb41447486f4d2acb33e5d9` |
 | `styles.css` | 44160 | `a2cc7ad7bae9f7cfc9681d80bc6bd4a58f0b07d47bfcff64897dc04929c12333` |
-| `app.js` | 329093 | `9a7be9011d1f087178f968857751f99c17b047f35e568651164bc19d303d3377` |
+| `app.js` | 329326 | `2e5dd2cb186f9b4f88258e26e51b81037cdbb26b8311beba51bdcdf894563bdb` |
 | `sw.js` | 4622 | `b891d4344f8e04403b7f1d307fd446cc224bddc6f0c4397438a17d197351171e` |
 | `site.webmanifest` | 709 | `0e0de4da60590a12e8b27a0ae2a2f5ffdb6500b7d2b78f93631ec2f64ed3d5ce` |
 | `robots.txt` | 127 | `38fbf9c1854e72abb20e01e81dd5a31d4ea96f154c12d5db1ec3af05524dd1a1` |
-| `sitemap.xml` | 184264 | `2898b3648dd984a72d2d8c8ecf6fcacbe903f49a99acd06962c1eedd3c3d2869` |
+| `sitemap.xml` | 184417 | `7628c7af72e868bac8414210d6af7edd5d52c4df61d715f52eb304c33e4224a8` |
 | `_headers` | 1316 | `2f39986457d2feff7e73e491a7d09ee871e8f2f4cc2bc437f86bd86a42554ec6` |
 | `logo.png` | 63440 | `11afaf1b0d3ca68393d202e4810bf766b5b6d591b4e3ec52f41d3cacaa4616ec` |
 | `favicon.ico` | 7411 | `407fde0ca2788409e87e11f596fa02e6a0b121817fcea7fd995beec1801e287b` |
@@ -203,7 +203,7 @@ downloads is committed in this repository and is hashed below.
 | `lib/massive-transfusion-v265.js` | 3240 | `7ad4d1d86063fdd077546be5d6381ea4a5024ef669389f88abdfe07850903b29` |
 | `lib/medication-v4.js` | 18192 | `467f9576c50da696cc56094eb022d0a5ed1e88de0c7618448554ede8067270b0` |
 | `lib/medication-v5.js` | 18863 | `ce81d9f8954abbd412892c13af9936f992239164f26fd2b999eaea7902787ab7` |
-| `lib/meta.js` | 1647298 | `14e4b2cbdfe73ae548a18f91f68ef914788037599218c92dbc82e980f5e8af2d` |
+| `lib/meta.js` | 1648523 | `7fc3ce1a2cf9a037741f15ce2a148f6eaf925e990d9291f166b512b57f794bb1` |
 | `lib/metabolic-hepatic-v219.js` | 12791 | `b9352877cebf7fbf3c3b99ecb8b72cdbee3ed94e056dc019113668609f5a95a8` |
 | `lib/metabolic-onc-v88.js` | 12659 | `1553b641668c121661a66647da71a4aaaa023e9f3a6b7a753efbcdab27cdba81` |
 | `lib/metabolic-v269.js` | 3262 | `0c7a42557886f2b0aeee7949b8d0bd682d795d4526174fd540717a978d94ec2f` |
@@ -319,6 +319,7 @@ downloads is committed in this repository and is hashed below.
 | `lib/specialtymath-v186.js` | 15358 | `90330464aea36b60a02933f5811ed91393d38e4e97cafb0cb62a8678a8a0f3c8` |
 | `lib/spine-v146.js` | 21128 | `d3cb6a1d1e2c3cc1235cc2336a0385a1ae6e0a1ea65b741a2d6c25e5cb527917` |
 | `lib/sportsmsk-v244.js` | 6969 | `4b4589408faef5ff873d2acd2a7593f9c6d6b1ab303bb01bdd35eabd939abd9f` |
+| `lib/strasberg-bdi-v348.js` | 4354 | `832252b56530217e303fa2a2dab25cba0b5090e7ecfa32fed5484a53b3a7781e` |
 | `lib/stroke-prognosis-v210.js` | 3431 | `75a4782a4abb9bdd584da9827074740c9773fb41fc0e25d961b79696cd1e8a3c` |
 | `lib/stroke-risk-v217.js` | 14688 | `92b225643e71019f940bb43d21357611555bfd443077b9c5747023ad6b7b372b` |
 | `lib/subspecialty-v198.js` | 13272 | `d9697591365cfe0a613057d5b9345aa894f8631ffeaf4257d2b8299d77efd09e` |
@@ -590,6 +591,7 @@ downloads is committed in this repository and is hashed below.
 | `views/group-v345.js` | 3163 | `d5f8cb01f2eefd2eef181a12fbb6c098c46ea8c63651a2b25562aff308d6e1cc` |
 | `views/group-v346.js` | 3188 | `944d6fa3044dc98d3e94046c35e9749704ed74c8fe20d50ec998be596a3fc0c3` |
 | `views/group-v347.js` | 3130 | `0a859eac5af714014f55b0fa9b72a879b4192ad3aa78b7bcc553088a5c7079ea` |
+| `views/group-v348.js` | 3171 | `f7f7bae84f7f650088e6462081ae57492cca2a77d127b2fe9e5c04e572df2f66` |
 | `views/group-v35.js` | 10362 | `345646cf73716e4125cf18cf2a1a1c6ae16ee526ea0b0ee418fc2ea7ffd47bea` |
 | `views/group-v36.js` | 9701 | `27235c5bd11c79ea046d75fe20f455c2648c6cbc31a1e1f2a9c1fccbcd41c693` |
 | `views/group-v37.js` | 11703 | `b177fd467dbf0b92eab8832360375b7527667956f9392621cb2aedd70eb0e26d` |

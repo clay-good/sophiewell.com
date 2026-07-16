@@ -6,6 +6,25 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v348 — Strasberg classification (bile duct injury) tile, 1199 → 1200)
+
+- New `strasberg-bdi` tile (group G): the Strasberg classification of an iatrogenic bile duct injury
+  (types A–E) — the standard way to describe a bile duct injury (most often during laparoscopic
+  cholecystectomy), a modification of the Bismuth classification that separates the minor leaks from the
+  major main-duct injuries, complementing the Tokyo Guidelines cholangitis / cholecystitis grading
+  already in the catalog; previously absent. **This tile brings the catalog to 1,200.** The clinician
+  picks the injury type and the tile reports its description. **A:** leak from a small duct in continuity
+  (cystic stump / Luschka). **B:** occlusion of an aberrant sectoral duct. **C:** leak from an aberrant
+  sectoral duct not in continuity. **D:** lateral injury to the extrahepatic duct — flagged. **E:**
+  transection of the main bile duct (E1–E5) — flagged. A Strasberg type, not a diagnosis, a treatment
+  decision, or a prognosis ([spec-v11] §5.3); the minor (A–C, often ERCP) vs major (D–E, often surgical)
+  split is the classically taught association, not an order. Definitions transcribed (spec-v97) from
+  Strasberg 1995 (J Am Coll Surg), cross-verified against hepatobiliary references; no citation-staleness
+  row (the citation carries no guideline-issuer acronym). New `lib/strasberg-bdi-v348.js` +
+  `views/group-v348.js` (RV348); +1 META entry, +1 UTILITIES row, a synonym entry (v69 → v70), 5 unit
+  tests + fuzz, corpus rebuilt to 1200. See [docs/spec-v348.md](docs/spec-v348.md). The MCP adapter
+  follows in a later wave.
+
 ### Added (spec-v347 — Herring lateral pillar classification (Perthes) tile, 1198 → 1199)
 
 - New `herring-pillar` tile (group G): the Herring lateral pillar classification of Legg-Calvé-Perthes
