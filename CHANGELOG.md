@@ -6,6 +6,24 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v349 — Fazekas scale (white matter hyperintensities) tile, 1200 → 1201)
+
+- New `fazekas-wmh` tile (group G): the Fazekas scale for white matter hyperintensities on brain MRI —
+  the standard visual rating of age-related / small-vessel-disease white matter change, one of the most
+  frequently reported brain-MRI findings, rated separately for the periventricular (PVH) and deep white
+  matter (DWMH) regions, each 0–3; previously absent (the catalog had the Marshall CT TBI classification
+  but no WMH rating). The radiologist picks both grades and the tile reports both descriptions, the
+  combined total (0–6), and a warn flag when either region reaches grade 2. **PVH:** 0 absent, 1 caps /
+  thin lining, 2 smooth halo, 3 irregular extension into the deep white matter. **DWMH:** 0 absent, 1
+  punctate foci, 2 beginning confluence, 3 large confluent areas. Fazekas grades, not a diagnosis, a
+  treatment decision, or a prognosis ([spec-v11] §5.3); WMH burden is read in the clinical context (age,
+  vascular risk, cognition), and the grade alone is not a diagnosis of small vessel disease or dementia.
+  Definitions transcribed (spec-v97) from Fazekas 1987 (AJR), cross-verified against neuroradiology
+  references; no citation-staleness row (the citation carries no guideline-issuer acronym). First
+  two-select classification tile in this batch. New `lib/fazekas-v349.js` + `views/group-v349.js`
+  (RV349); +1 META entry, +1 UTILITIES row, a synonym entry (v70 → v71), 5 unit tests + fuzz, corpus
+  rebuilt to 1201. See [docs/spec-v349.md](docs/spec-v349.md). The MCP adapter follows in a later wave.
+
 ### Added (spec-v348 — Strasberg classification (bile duct injury) tile, 1199 → 1200)
 
 - New `strasberg-bdi` tile (group G): the Strasberg classification of an iatrogenic bile duct injury

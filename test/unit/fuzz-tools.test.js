@@ -325,6 +325,7 @@ import * as lichtmanKienbockV345 from '../../lib/lichtman-kienbock-v345.js';
 import * as catterallPerthesV346 from '../../lib/catterall-perthes-v346.js';
 import * as herringPillarV347 from '../../lib/herring-pillar-v347.js';
 import * as strasbergBdiV348 from '../../lib/strasberg-bdi-v348.js';
+import * as fazekasV349 from '../../lib/fazekas-v349.js';
 import * as tbTesting from '../../lib/tb-testing.js';
 
 const MODULES = {
@@ -595,6 +596,7 @@ const MODULES = {
   'catterall-perthes-v346.js': catterallPerthesV346,
   'herring-pillar-v347.js': herringPillarV347,
   'strasberg-bdi-v348.js': strasbergBdiV348,
+  'fazekas-v349.js': fazekasV349,
   'tb-testing.js': tbTesting,
 };
 
