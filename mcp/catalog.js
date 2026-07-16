@@ -256,6 +256,7 @@ import clarkLevelV340 from './adapters/clark-level-v340.js';
 import masonRadialHeadV341 from './adapters/mason-radial-head-v341.js';
 import hawkinsTalarV342 from './adapters/hawkins-talar-v342.js';
 import sandersCalcanealV343 from './adapters/sanders-calcaneal-v343.js';
+import ficatArletV344 from './adapters/ficat-arlet-v344.js';
 import tbTesting from './adapters/tb-testing.js';
 import labInterpret from './adapters/lab-interpret.js';
 import decisionRulesV258 from './adapters/decision-rules-v258.js';
@@ -506,6 +507,7 @@ const ADAPTER_MODULES = [
   ['mason-radial-head-v341', masonRadialHeadV341],
   ['hawkins-talar-v342', hawkinsTalarV342],
   ['sanders-calcaneal-v343', sandersCalcanealV343],
+  ['ficat-arlet-v344', ficatArletV344],
   ['tb-testing', tbTesting],
   ['lab-interpret', labInterpret],
   ['decision-rules-v258', decisionRulesV258],

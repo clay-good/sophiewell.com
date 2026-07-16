@@ -1502,6 +1502,16 @@ round-trip both pass, without the phantom "2". Adapter appended to the existing
 rate to a target PaCO2. Brings the exposed total to **1072 calculators across 197
 modules**.
 
+## One-hundred-sixty-ninth wave — the Ficat-Arlet staging (femoral head AVN) in lib/ficat-arlet-v344.js (+1)
+
+`ficat-arlet` (spec-v344) applies the Ficat-Arlet staging: given the stage, it reports the radiographic
+description. `stage` is an enum (`kind: 'enum'`, values 0/I/II/III/IV) — the single input the renderer
+exposes. The example sets stage III; its expected text is the stage description with no numeric facts
+(the stage is a roman numeral), so it round-trips through the default `makeToArgs` with no custom
+toArgs. New adapter module registered in `mcp/catalog.js`; its golden probe ("avascular necrosis
+staging hip") is promoted now that the tile is in the MCP-exposed registry. Brings the exposed total to
+**1133 calculators across 249 modules**.
+
 ## One-hundred-sixty-eighth wave — the Sanders classification (calcaneal fracture) in lib/sanders-calcaneal-v343.js (+1)
 
 `sanders-calcaneal` (spec-v343) applies the Sanders classification: given the type, it reports the
@@ -3775,6 +3785,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/sanders-calcaneal-v343.js
 - `sanders-calcaneal`
+
+### lib/ficat-arlet-v344.js
+- `ficat-arlet`
 
 ### lib/tb-testing.js
 - `tb-testing`

@@ -2712,6 +2712,17 @@ test('lib/sanders-calcaneal-v343.js worked calls', () => {
   assert.equal(ok('sanders-calcaneal', { 'sanders-type': 'IV' }).severe, true);
 });
 
+test('lib/ficat-arlet-v344.js worked calls', () => {
+  // Stage III (the META example): subchondral collapse, flagged post-collapse.
+  const three = ok('ficat-arlet', { 'ficat-stage': 'III' });
+  assert.equal(three.stage, 'III');
+  assert.equal(three.collapse, true);
+  // Stage 0: silent hip, not flagged.
+  assert.equal(ok('ficat-arlet', { 'ficat-stage': '0' }).collapse, false);
+  // Stage IV: secondary osteoarthritis, flagged.
+  assert.equal(ok('ficat-arlet', { 'ficat-stage': 'IV' }).collapse, true);
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];
