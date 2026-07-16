@@ -78,7 +78,7 @@ find_calculator { "query": "stroke risk afib" }
        candidates: [ { id: "chads", name: "CHA2DS2-VASc", why: "synonym", ... }, ... ] }
 
 list_calculators { "specialty": "hepatology" }
-  -> { coverage: "1113 of 1109 catalog tiles exposed ...", calculators: [ { id: "meld-xi", ... }, ... ] }
+  -> { coverage: "1114 of 1109 catalog tiles exposed ...", calculators: [ { id: "meld-xi", ... }, ... ] }
 
 describe_calculator { "id": "meld-xi" }
   -> { inputSchema: { ... mx-bili, mx-creat ... }, citation: "Heuman DM ... Liver Transpl 2007", ... }
@@ -351,8 +351,9 @@ one-hundred-forty-sixth the Hinchey classification of acute diverticulitis in
 categories in `lib/bi-rads-v322.js`, and a one-hundred-forty-eighth the Siewert
 classification of GEJ adenocarcinoma in `lib/siewert-v323.js`, and a
 one-hundred-forty-ninth the Wexner (Cleveland Clinic) fecal incontinence score in
-`lib/wexner-v324.js`, for
-1113 across 229 modules
+`lib/wexner-v324.js`, and a one-hundred-fiftieth the ACR Lung-RADS v2022 assessment
+categories in `lib/lung-rads-v325.js`, for
+1114 across 230 modules
 today. <!-- catalog-truth:historical (197 is the count of lib modules adapted, not a catalog tile count) -->
 Later waves extend it module by module against the same contract.
 

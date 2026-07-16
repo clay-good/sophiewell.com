@@ -2488,6 +2488,18 @@ test('lib/wexner-v324.js worked calls', () => {
   assert.equal(max.significant, true);
 });
 
+test('lib/lung-rads-v325.js worked calls', () => {
+  // Category 4A (the META example): suspicious, 3-month LDCT.
+  const a = ok('lung-rads', { 'lungrads-cat': '4A' });
+  assert.equal(a.category, '4A');
+  assert.equal(a.suspicious, true);
+  assert.match(a.band, /3-month LDCT/);
+  // Category 2: benign, not suspicious.
+  assert.equal(ok('lung-rads', { 'lungrads-cat': '2' }).suspicious, false);
+  // Category 4B: very suspicious.
+  assert.equal(ok('lung-rads', { 'lungrads-cat': '4B' }).suspicious, true);
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];

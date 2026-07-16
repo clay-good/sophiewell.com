@@ -237,6 +237,7 @@ import hincheyV321 from './adapters/hinchey-v321.js';
 import biRadsV322 from './adapters/bi-rads-v322.js';
 import siewertV323 from './adapters/siewert-v323.js';
 import wexnerV324 from './adapters/wexner-v324.js';
+import lungRadsV325 from './adapters/lung-rads-v325.js';
 import tbTesting from './adapters/tb-testing.js';
 import labInterpret from './adapters/lab-interpret.js';
 import decisionRulesV258 from './adapters/decision-rules-v258.js';
@@ -468,6 +469,7 @@ const ADAPTER_MODULES = [
   ['bi-rads-v322', biRadsV322],
   ['siewert-v323', siewertV323],
   ['wexner-v324', wexnerV324],
+  ['lung-rads-v325', lungRadsV325],
   ['tb-testing', tbTesting],
   ['lab-interpret', labInterpret],
   ['decision-rules-v258', decisionRulesV258],

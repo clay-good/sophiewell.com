@@ -1502,6 +1502,16 @@ round-trip both pass, without the phantom "2". Adapter appended to the existing
 rate to a target PaCO2. Brings the exposed total to **1072 calculators across 197
 modules**.
 
+## One-hundred-fiftieth wave — the ACR Lung-RADS v2022 assessment categories in lib/lung-rads-v325.js (+1)
+
+`lung-rads` (spec-v325) applies the ACR Lung-RADS v2022 lung-cancer-screening assessment
+categories: given the category, it reports the descriptor and the standard management. `category`
+is an enum (`kind: 'enum'`, values 0/1/2/3/4A/4B/4X) — the single input the renderer exposes. The
+example sets category 4A; its band carries the "3" (month) and "8" (mm) example numbers, so it
+round-trips through the default `makeToArgs` with no custom toArgs. New adapter module registered
+in `mcp/catalog.js`; its golden probe ("lung screening category") is promoted now that the tile is
+in the MCP-exposed registry. Brings the exposed total to **1114 calculators across 230 modules**.
+
 ## One-hundred-forty-ninth wave — the Wexner (Cleveland Clinic) fecal incontinence score in lib/wexner-v324.js (+1)
 
 `wexner` (spec-v324) sums the Wexner / Cleveland Clinic fecal incontinence score: five items
@@ -3523,6 +3533,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/wexner-v324.js
 - `wexner`
+
+### lib/lung-rads-v325.js
+- `lung-rads`
 
 ### lib/tb-testing.js
 - `tb-testing`
