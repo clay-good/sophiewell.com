@@ -1502,6 +1502,16 @@ round-trip both pass, without the phantom "2". Adapter appended to the existing
 rate to a target PaCO2. Brings the exposed total to **1072 calculators across 197
 modules**.
 
+## One-hundred-fifty-ninth wave — the Kudo pit-pattern classification in lib/kudo-v334.js (+1)
+
+`kudo-pit-pattern` (spec-v334) applies the Kudo pit-pattern classification: given the pit-pattern
+type, it reports its usual histologic correlate. `type` is an enum (`kind: 'enum'`, values
+I/II/IIIS/IIIL/IV/V) — the single input the renderer exposes. The example sets type V; its expected
+text is the type description (no numeric facts), so it round-trips through the default `makeToArgs`
+with no custom toArgs. New adapter module registered in `mcp/catalog.js`; its golden probe ("pit
+pattern classification") is promoted now that the tile is in the MCP-exposed registry. Brings the
+exposed total to **1123 calculators across 239 modules**.
+
 ## One-hundred-fifty-eighth wave — the Kikuchi classification (sessile submucosal invasion) in lib/kikuchi-v333.js (+1)
 
 `kikuchi-level` (spec-v333) applies the Kikuchi classification: given the submucosal-invasion level,
@@ -3643,6 +3653,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/kikuchi-v333.js
 - `kikuchi-level`
+
+### lib/kudo-v334.js
+- `kudo-pit-pattern`
 
 ### lib/tb-testing.js
 - `tb-testing`

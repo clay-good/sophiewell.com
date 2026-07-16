@@ -2592,6 +2592,20 @@ test('lib/kikuchi-v333.js worked calls', () => {
   assert.equal(ok('kikuchi-level', { 'kik-level': 'Sm2' }).highRisk, true);
 });
 
+test('lib/kudo-v334.js worked calls', () => {
+  // Type V (the META example): neoplastic + invasive concern.
+  const v = ok('kudo-pit-pattern', { 'kudo-type': 'V' });
+  assert.equal(v.type, 'V');
+  assert.equal(v.neoplastic, true);
+  assert.equal(v.invasive, true);
+  // Type I: non-neoplastic.
+  assert.equal(ok('kudo-pit-pattern', { 'kudo-type': 'I' }).neoplastic, false);
+  // Type IIIS: neoplastic adenoma, not invasive-flagged.
+  const iiis = ok('kudo-pit-pattern', { 'kudo-type': 'IIIS' });
+  assert.equal(iiis.neoplastic, true);
+  assert.equal(iiis.invasive, false);
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];

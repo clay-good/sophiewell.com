@@ -246,6 +246,7 @@ import nottinghamNpiV330 from './adapters/nottingham-npi-v330.js';
 import fitzpatrickV331 from './adapters/fitzpatrick-v331.js';
 import haggittV332 from './adapters/haggitt-v332.js';
 import kikuchiV333 from './adapters/kikuchi-v333.js';
+import kudoV334 from './adapters/kudo-v334.js';
 import tbTesting from './adapters/tb-testing.js';
 import labInterpret from './adapters/lab-interpret.js';
 import decisionRulesV258 from './adapters/decision-rules-v258.js';
@@ -486,6 +487,7 @@ const ADAPTER_MODULES = [
   ['fitzpatrick-v331', fitzpatrickV331],
   ['haggitt-v332', haggittV332],
   ['kikuchi-v333', kikuchiV333],
+  ['kudo-v334', kudoV334],
   ['tb-testing', tbTesting],
   ['lab-interpret', labInterpret],
   ['decision-rules-v258', decisionRulesV258],
