@@ -2723,6 +2723,17 @@ test('lib/ficat-arlet-v344.js worked calls', () => {
   assert.equal(ok('ficat-arlet', { 'ficat-stage': 'IV' }).collapse, true);
 });
 
+test('lib/lichtman-kienbock-v345.js worked calls', () => {
+  // Stage IIIB (the META example): fixed carpal collapse, flagged.
+  const iiib = ok('lichtman-kienbock', { 'lichtman-stage': 'IIIB' });
+  assert.equal(iiib.stage, 'IIIB');
+  assert.equal(iiib.collapse, true);
+  // Stage II: sclerosis, no collapse, not flagged.
+  assert.equal(ok('lichtman-kienbock', { 'lichtman-stage': 'II' }).collapse, false);
+  // Stage IV: generalized arthrosis, flagged.
+  assert.equal(ok('lichtman-kienbock', { 'lichtman-stage': 'IV' }).collapse, true);
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];

@@ -78,7 +78,7 @@ find_calculator { "query": "stroke risk afib" }
        candidates: [ { id: "chads", name: "CHA2DS2-VASc", why: "synonym", ... }, ... ] }
 
 list_calculators { "specialty": "hepatology" }
-  -> { coverage: "1133 of 1109 catalog tiles exposed ...", calculators: [ { id: "meld-xi", ... }, ... ] }
+  -> { coverage: "1134 of 1109 catalog tiles exposed ...", calculators: [ { id: "meld-xi", ... }, ... ] }
 
 describe_calculator { "id": "meld-xi" }
   -> { inputSchema: { ... mx-bili, mx-creat ... }, citation: "Heuman DM ... Liver Transpl 2007", ... }
@@ -374,7 +374,8 @@ Mason-Johnston radial head fracture classification in `lib/mason-radial-head-v34
 one-hundred-sixty-seventh the Hawkins classification (talar neck fracture) in
 `lib/hawkins-talar-v342.js`, and a one-hundred-sixty-eighth the Sanders classification (calcaneal
 fracture) in `lib/sanders-calcaneal-v343.js`, and a one-hundred-sixty-ninth the Ficat-Arlet staging
-(femoral head AVN) in `lib/ficat-arlet-v344.js`, for 1133 across 249 modules
+(femoral head AVN) in `lib/ficat-arlet-v344.js`, and a one-hundred-seventieth the Lichtman staging
+(Kienbock disease) in `lib/lichtman-kienbock-v345.js`, for 1134 across 250 modules
 today. <!-- catalog-truth:historical (197 is the count of lib modules adapted, not a catalog tile count) -->
 Later waves extend it module by module against the same contract.
 

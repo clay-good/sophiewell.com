@@ -1502,6 +1502,16 @@ round-trip both pass, without the phantom "2". Adapter appended to the existing
 rate to a target PaCO2. Brings the exposed total to **1072 calculators across 197
 modules**.
 
+## One-hundred-seventieth wave — the Lichtman staging (Kienbock disease) in lib/lichtman-kienbock-v345.js (+1)
+
+`lichtman-kienbock` (spec-v345) applies the Lichtman staging: given the stage, it reports the
+radiographic description. `stage` is an enum (`kind: 'enum'`, values I/II/IIIA/IIIB/IV) — the single
+input the renderer exposes. The example sets stage IIIB; its expected radioscaphoid angle (> 60
+degrees) round-trips through the default `makeToArgs` with no custom toArgs (the result echoes the
+angle in the band text). New adapter module registered in `mcp/catalog.js`; its golden probe ("kienbock
+disease stage") is promoted now that the tile is in the MCP-exposed registry. Brings the exposed total
+to **1134 calculators across 250 modules**.
+
 ## One-hundred-sixty-ninth wave — the Ficat-Arlet staging (femoral head AVN) in lib/ficat-arlet-v344.js (+1)
 
 `ficat-arlet` (spec-v344) applies the Ficat-Arlet staging: given the stage, it reports the radiographic
@@ -3788,6 +3798,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/ficat-arlet-v344.js
 - `ficat-arlet`
+
+### lib/lichtman-kienbock-v345.js
+- `lichtman-kienbock`
 
 ### lib/tb-testing.js
 - `tb-testing`
