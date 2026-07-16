@@ -2804,6 +2804,18 @@ test('lib/goligher-hemorrhoids-v351.js worked calls', () => {
   assert.equal(ok('goligher-hemorrhoids', { 'goligher-grade': 'IV' }).advanced, true);
 });
 
+test('lib/lansky-v352.js worked calls', () => {
+  // Score 60 (the META example): up and around, reduced band, not flagged.
+  const sixty = ok('lansky', { 'lansky-score': '60' });
+  assert.equal(sixty.score, 60);
+  assert.equal(sixty.reduced, false);
+  assert.equal(sixty.functionalBand, 'reduced activity but up and about');
+  // Score 100: normal activity, not flagged.
+  assert.equal(ok('lansky', { 'lansky-score': '100' }).functionalBand, 'able to carry on normal activity');
+  // Score 30: disabled band, flagged.
+  assert.equal(ok('lansky', { 'lansky-score': '30' }).reduced, true);
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];

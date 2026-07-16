@@ -1502,6 +1502,16 @@ round-trip both pass, without the phantom "2". Adapter appended to the existing
 rate to a target PaCO2. Brings the exposed total to **1072 calculators across 197
 modules**.
 
+## One-hundred-seventy-seventh wave — the Lansky Play-Performance Scale (pediatric functional status) in lib/lansky-v352.js (+1)
+
+`lansky` (spec-v352) applies the Lansky Play-Performance Scale: given the score, it reports the
+play/activity description and the coarse functional band. `score` is an enum (`kind: 'enum'`, the eleven
+steps 0/10/.../100) — the single input the renderer exposes. The example sets score 60; its expected
+number (60) round-trips through the default `makeToArgs` with no custom toArgs. New adapter module
+registered in `mcp/catalog.js`; its golden probe ("pediatric performance status") is promoted now that
+the tile is in the MCP-exposed registry. Brings the exposed total to **1141 calculators across 257
+modules**.
+
 ## One-hundred-seventy-sixth wave — the Goligher classification (internal hemorrhoids) in lib/goligher-hemorrhoids-v351.js (+1)
 
 `goligher-hemorrhoids` (spec-v351) applies the Goligher classification of internal hemorrhoids by degree
@@ -3880,6 +3890,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/goligher-hemorrhoids-v351.js
 - `goligher-hemorrhoids`
+
+### lib/lansky-v352.js
+- `lansky`
 
 ### lib/tb-testing.js
 - `tb-testing`
