@@ -6,6 +6,23 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v343 — Sanders classification (calcaneal fracture) tile, 1194 → 1195)
+
+- New `sanders-calcaneal` tile (group G): the Sanders classification of an intra-articular calcaneal
+  fracture (types I–IV) — the CT-based standard for grading a fracture of the heel bone by
+  posterior-facet fragmentation, the foot-trauma companion to the Hawkins talar tile and the rest of the
+  catalog's fracture-classification cluster (Garden, Danis-Weber, Schatzker, Salter-Harris, Neer, Mason,
+  Hawkins); previously absent. The clinician picks the CT-based fragmentation pattern and the tile
+  reports its description. **I:** nondisplaced (< 2 mm). **II:** two-part (one fracture line). **III:**
+  three-part (two fracture lines) with a depressed middle fragment — flagged. **IV:** four or more parts
+  (highly comminuted) — flagged. A Sanders type, not a diagnosis, a treatment decision, or a prognosis
+  ([spec-v11] §5.3); the prognostic / operative implications are the classically taught association, not
+  an order. Definitions transcribed (spec-v97) from Sanders 1993 (Clin Orthop Relat Res), cross-verified
+  against foot-and-ankle trauma references; no citation-staleness row (the citation carries no
+  guideline-issuer acronym). New `lib/sanders-calcaneal-v343.js` + `views/group-v343.js` (RV343); +1 META
+  entry, +1 UTILITIES row, a synonym entry (v64 → v65), 5 unit tests + fuzz, corpus rebuilt to 1195.
+  See [docs/spec-v343.md](docs/spec-v343.md). The MCP adapter follows in a later wave.
+
 ### Added (spec-v342 — Hawkins classification (talar neck fracture) tile, 1193 → 1194)
 
 - New `hawkins-talar` tile (group G): the Hawkins classification of a talar neck fracture (types I–IV) —
