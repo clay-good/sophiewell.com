@@ -322,6 +322,7 @@ import * as hawkinsTalarV342 from '../../lib/hawkins-talar-v342.js';
 import * as sandersCalcanealV343 from '../../lib/sanders-calcaneal-v343.js';
 import * as ficatArletV344 from '../../lib/ficat-arlet-v344.js';
 import * as lichtmanKienbockV345 from '../../lib/lichtman-kienbock-v345.js';
+import * as catterallPerthesV346 from '../../lib/catterall-perthes-v346.js';
 import * as tbTesting from '../../lib/tb-testing.js';
 
 const MODULES = {
@@ -589,6 +590,7 @@ const MODULES = {
   'sanders-calcaneal-v343.js': sandersCalcanealV343,
   'ficat-arlet-v344.js': ficatArletV344,
   'lichtman-kienbock-v345.js': lichtmanKienbockV345,
+  'catterall-perthes-v346.js': catterallPerthesV346,
   'tb-testing.js': tbTesting,
 };
 

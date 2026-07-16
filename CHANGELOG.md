@@ -6,6 +6,23 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v346 — Catterall classification (Legg-Calvé-Perthes) tile, 1197 → 1198)
+
+- New `catterall-perthes` tile (group G): the Catterall classification of Legg-Calvé-Perthes disease
+  (groups I–IV) — the classic grade of the childhood osteonecrosis of the femoral head by the extent of
+  capital-femoral-epiphysis involvement, completing the catalog's osteonecrosis-staging cluster
+  (Ficat-Arlet adult hip AVN, Lichtman lunate AVN); previously absent. The clinician picks the extent of
+  epiphyseal involvement and the tile reports its description. **I:** anterior epiphysis only (best
+  prognosis). **II:** anterior and central, sequestrum, pillars preserved. **III:** most of the
+  epiphysis ("head within a head") — flagged. **IV:** the entire epiphysis — flagged. A Catterall group,
+  not a diagnosis, a treatment decision, or a prognosis ([spec-v11] §5.3); the "head-at-risk" signs are
+  separate modifiers, not group inputs, and the management gradient is the classically taught
+  association, not an order. Definitions transcribed (spec-v97) from Catterall 1971 (JBJS Br),
+  cross-verified against pediatric-orthopedic references; no citation-staleness row (the citation carries
+  no guideline-issuer acronym). New `lib/catterall-perthes-v346.js` + `views/group-v346.js` (RV346); +1
+  META entry, +1 UTILITIES row, a synonym entry (v67 → v68), 5 unit tests + fuzz, corpus rebuilt to 1198.
+  See [docs/spec-v346.md](docs/spec-v346.md). The MCP adapter follows in a later wave.
+
 ### Added (spec-v345 — Lichtman staging (Kienböck disease) tile, 1196 → 1197)
 
 - New `lichtman-kienbock` tile (group G): the Lichtman staging of Kienböck disease / lunate osteonecrosis
