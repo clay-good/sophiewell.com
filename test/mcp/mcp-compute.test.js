@@ -2570,6 +2570,17 @@ test('lib/fitzpatrick-v331.js worked calls', () => {
   assert.equal(ok('fitzpatrick-skin-type', { 'fitz-type': 'VI' }).type, 'VI');
 });
 
+test('lib/haggitt-v332.js worked calls', () => {
+  // Level 4 (the META example): higher-risk, invasion below the stalk.
+  const four = ok('haggitt-level', { 'hag-level': '4' });
+  assert.equal(four.level, '4');
+  assert.equal(four.highRisk, true);
+  // Level 0: carcinoma in situ, not higher-risk.
+  assert.equal(ok('haggitt-level', { 'hag-level': '0' }).highRisk, false);
+  // Level 2: neck invasion, not higher-risk.
+  assert.equal(ok('haggitt-level', { 'hag-level': '2' }).level, '2');
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];

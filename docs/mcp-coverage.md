@@ -1502,6 +1502,16 @@ round-trip both pass, without the phantom "2". Adapter appended to the existing
 rate to a target PaCO2. Brings the exposed total to **1072 calculators across 197
 modules**.
 
+## One-hundred-fifty-seventh wave — the Haggitt classification (malignant colorectal polyp) in lib/haggitt-v332.js (+1)
+
+`haggitt-level` (spec-v332) applies the Haggitt classification: given the invasion level, it reports
+the description. `level` is an enum (`kind: 'enum'`, values 0/1/2/3/4) — the single input the
+renderer exposes. The example sets level 4; its expected text is the level description (the level
+number already appears in the field value, no other numeric facts), so it round-trips through the
+default `makeToArgs` with no custom toArgs. New adapter module registered in `mcp/catalog.js`; its
+golden probe ("malignant polyp invasion level") is promoted now that the tile is in the MCP-exposed
+registry. Brings the exposed total to **1121 calculators across 237 modules**.
+
 ## One-hundred-fifty-sixth wave — the Fitzpatrick skin phototype in lib/fitzpatrick-v331.js (+1)
 
 `fitzpatrick-skin-type` (spec-v331) applies the Fitzpatrick skin phototype: given the type, it
@@ -3617,6 +3627,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/fitzpatrick-v331.js
 - `fitzpatrick-skin-type`
+
+### lib/haggitt-v332.js
+- `haggitt-level`
 
 ### lib/tb-testing.js
 - `tb-testing`
