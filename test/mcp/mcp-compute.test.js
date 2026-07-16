@@ -2477,6 +2477,17 @@ test('lib/siewert-v323.js worked calls', () => {
   assert.equal(ok('siewert', { 'siewert-type': '3' }).class, 'III');
 });
 
+test('lib/wexner-v324.js worked calls', () => {
+  // The META example: 0+2+3+1+1 = 7.
+  const r = ok('wexner', { 'wex-solid': '0', 'wex-liquid': '2', 'wex-gas': '3', 'wex-pad': '1', 'wex-lifestyle': '1' });
+  assert.equal(r.total, 7);
+  assert.equal(r.significant, false);
+  // All fours -> 20, flagged significant.
+  const max = ok('wexner', { 'wex-solid': '4', 'wex-liquid': '4', 'wex-gas': '4', 'wex-pad': '4', 'wex-lifestyle': '4' });
+  assert.equal(max.total, 20);
+  assert.equal(max.significant, true);
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];

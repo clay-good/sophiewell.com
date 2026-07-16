@@ -236,6 +236,7 @@ import clavienDindoV320 from './adapters/clavien-dindo-v320.js';
 import hincheyV321 from './adapters/hinchey-v321.js';
 import biRadsV322 from './adapters/bi-rads-v322.js';
 import siewertV323 from './adapters/siewert-v323.js';
+import wexnerV324 from './adapters/wexner-v324.js';
 import tbTesting from './adapters/tb-testing.js';
 import labInterpret from './adapters/lab-interpret.js';
 import decisionRulesV258 from './adapters/decision-rules-v258.js';
@@ -466,6 +467,7 @@ const ADAPTER_MODULES = [
   ['hinchey-v321', hincheyV321],
   ['bi-rads-v322', biRadsV322],
   ['siewert-v323', siewertV323],
+  ['wexner-v324', wexnerV324],
   ['tb-testing', tbTesting],
   ['lab-interpret', labInterpret],
   ['decision-rules-v258', decisionRulesV258],

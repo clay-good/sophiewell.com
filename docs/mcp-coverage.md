@@ -1502,6 +1502,18 @@ round-trip both pass, without the phantom "2". Adapter appended to the existing
 rate to a target PaCO2. Brings the exposed total to **1072 calculators across 197
 modules**.
 
+## One-hundred-forty-ninth wave — the Wexner (Cleveland Clinic) fecal incontinence score in lib/wexner-v324.js (+1)
+
+`wexner` (spec-v324) sums the Wexner / Cleveland Clinic fecal incontinence score: five items
+(incontinence to solid stool, liquid stool, gas; wears a pad; lifestyle alteration), each on
+a 0-4 frequency scale, for a total of 0-20. `solid`, `liquid`, `gas`, `pad`, and `lifestyle`
+are numbers (`kind: 'number'`), each optional (the compute defaults a missing item to 0). The
+example sets 0/2/3/1/1 (total 7); its band carries the "7" and "20" example numbers, so it
+round-trips through the default `makeToArgs` with no custom toArgs. New adapter module
+registered in `mcp/catalog.js`; its golden probe ("fecal incontinence score") is promoted now
+that the tile is in the MCP-exposed registry. Brings the exposed total to **1113 calculators
+across 229 modules**.
+
 ## One-hundred-forty-eighth wave — the Siewert classification of GEJ adenocarcinoma in lib/siewert-v323.js (+1)
 
 `siewert` (spec-v323) applies the Siewert classification of esophagogastric-junction
@@ -3508,6 +3520,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/siewert-v323.js
 - `siewert`
+
+### lib/wexner-v324.js
+- `wexner`
 
 ### lib/tb-testing.js
 - `tb-testing`
