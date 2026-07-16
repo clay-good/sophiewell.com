@@ -1502,6 +1502,16 @@ round-trip both pass, without the phantom "2". Adapter appended to the existing
 rate to a target PaCO2. Brings the exposed total to **1072 calculators across 197
 modules**.
 
+## One-hundred-sixty-fourth wave — the Cormack-Lehane laryngoscopy grade in lib/cormack-lehane-v339.js (+1)
+
+`cormack-lehane` (spec-v339) applies the Cormack-Lehane classification: given the grade, it reports
+the laryngeal-view description. `grade` is an enum (`kind: 'enum'`, values 1/2/3/4) — the single
+input the renderer exposes. The example sets grade 3; its expected text is the grade description (the
+grade number already appears in the field value, no other numeric facts), so it round-trips through
+the default `makeToArgs` with no custom toArgs. New adapter module registered in `mcp/catalog.js`;
+its golden probe ("laryngoscopy view grade") is promoted now that the tile is in the MCP-exposed
+registry. Brings the exposed total to **1128 calculators across 244 modules**.
+
 ## One-hundred-sixty-third wave — the ICRS cartilage lesion classification in lib/icrs-v338.js (+1)
 
 `icrs-cartilage` (spec-v338) applies the ICRS (International Cartilage Repair Society) classification:
@@ -3710,6 +3720,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/icrs-v338.js
 - `icrs-cartilage`
+
+### lib/cormack-lehane-v339.js
+- `cormack-lehane`
 
 ### lib/tb-testing.js
 - `tb-testing`

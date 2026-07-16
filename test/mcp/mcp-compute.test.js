@@ -2656,6 +2656,17 @@ test('lib/icrs-v338.js worked calls', () => {
   assert.equal(three.fullThickness, false);
 });
 
+test('lib/cormack-lehane-v339.js worked calls', () => {
+  // Grade 3 (the META example): difficult view.
+  const three = ok('cormack-lehane', { 'cl-grade': '3' });
+  assert.equal(three.grade, '3');
+  assert.equal(three.difficult, true);
+  // Grade 1: not difficult.
+  assert.equal(ok('cormack-lehane', { 'cl-grade': '1' }).difficult, false);
+  // Grade 4: difficult.
+  assert.equal(ok('cormack-lehane', { 'cl-grade': '4' }).difficult, true);
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];

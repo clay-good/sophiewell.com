@@ -1,4 +1,4 @@
-// Search-relevance golden set. Runs 153 realistic clinical queries through the
+// Search-relevance golden set. Runs 154 realistic clinical queries through the
 // real find_calculator surface (shared resolvePromptRanked + data/synonyms.json
 // + data/search-corpus over the exposed registry) and asserts an acceptable
 // tile ranks in the top 3. This pins the routing quality spec-v282 shipped:
@@ -260,6 +260,8 @@ const PROBES = [
   ['chondromalacia cartilage grade', ['outerbridge-cartilage']],
   // spec-v338 tile, exposed to MCP in wave 163: ICRS cartilage lesion classification.
   ['international cartilage repair society grade', ['icrs-cartilage']],
+  // spec-v339 tile, exposed to MCP in wave 164: Cormack-Lehane laryngoscopy grade.
+  ['laryngoscopy view grade', ['cormack-lehane']],
 ];
 
 test(`every golden probe routes an acceptable tile into the top ${TOP_N}`, () => {
