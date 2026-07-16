@@ -6,6 +6,21 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v353 — Crowe classification (hip dysplasia) tile, 1204 → 1205)
+
+- New `crowe-ddh` tile (group G): the Crowe classification of adult developmental dysplasia of the hip
+  (grades I–IV) by the extent of proximal femoral-head subluxation on an AP pelvis radiograph — the most
+  commonly used adult-DDH grade for total-hip-arthroplasty planning; previously absent. The clinician
+  picks the subluxation grade and the tile reports its description. **I:** < 50% subluxation. **II:**
+  50–75%. **III:** 75–100% — flagged. **IV:** > 100% (high / complete dislocation) — flagged. A Crowe
+  grade, not a diagnosis, a treatment decision, or a prognosis ([spec-v11] §5.3); the arthroplasty-
+  complexity association (higher grades = greater reconstruction difficulty) is the classically taught
+  pattern, not an order. Bands transcribed (spec-v97) from Crowe, Mani & Ranawat 1979 (JBJS),
+  cross-verified against orthopedic references; no citation-staleness row (the citation carries no
+  guideline-issuer acronym). New `lib/crowe-ddh-v353.js` + `views/group-v353.js` (RV353); +1 META entry,
+  +1 UTILITIES row, a synonym entry (v74 → v75), 5 unit tests + fuzz, corpus rebuilt to 1205. See
+  [docs/spec-v353.md](docs/spec-v353.md). The MCP adapter follows in a later wave.
+
 ### Added (spec-v352 — Lansky Play-Performance Scale (pediatric functional status) tile, 1203 → 1204)
 
 - New `lansky` tile (group G): the Lansky Play-Performance Scale — the observer-rated pediatric

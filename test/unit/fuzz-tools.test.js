@@ -329,6 +329,7 @@ import * as fazekasV349 from '../../lib/fazekas-v349.js';
 import * as tscherneClosedV350 from '../../lib/tscherne-closed-v350.js';
 import * as goligherHemorrhoidsV351 from '../../lib/goligher-hemorrhoids-v351.js';
 import * as lanskyV352 from '../../lib/lansky-v352.js';
+import * as croweDdhV353 from '../../lib/crowe-ddh-v353.js';
 import * as tbTesting from '../../lib/tb-testing.js';
 
 const MODULES = {
@@ -603,6 +604,7 @@ const MODULES = {
   'tscherne-closed-v350.js': tscherneClosedV350,
   'goligher-hemorrhoids-v351.js': goligherHemorrhoidsV351,
   'lansky-v352.js': lanskyV352,
+  'crowe-ddh-v353.js': croweDdhV353,
   'tb-testing.js': tbTesting,
 };
 
