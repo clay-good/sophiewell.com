@@ -1502,6 +1502,18 @@ round-trip both pass, without the phantom "2". Adapter appended to the existing
 rate to a target PaCO2. Brings the exposed total to **1072 calculators across 197
 modules**.
 
+## One-hundred-fifty-third wave — the Montreal classification of IBD in lib/montreal-ibd-v328.js (+1)
+
+`montreal-ibd` (spec-v328) composes the Montreal IBD phenotype: for Crohn's disease the age
+(A), location (L), and behavior (B) axes, or for ulcerative colitis the extent (E) and
+severity (S) axes. `disease` is an enum (crohn / uc, defaulting to crohn); the Crohn's/UC
+axes are enums; the +L4 and perianal (p) modifiers are booleans. Each field is optional --
+the compute requires the relevant axes for the chosen disease. The example sets the Crohn's
+A2/L3/B2 axes; its band carries the "17-40" example numbers, so it round-trips through the
+default `makeToArgs` with no custom toArgs. New adapter module registered in `mcp/catalog.js`;
+its golden probe ("crohn phenotype") is promoted now that the tile is in the MCP-exposed
+registry. Brings the exposed total to **1117 calculators across 233 modules**.
+
 ## One-hundred-fifty-second wave — the ACR LI-RADS v2018 CT/MRI diagnostic categories in lib/li-rads-v327.js (+1)
 
 `li-rads` (spec-v327) applies the ACR LI-RADS v2018 CT/MRI diagnostic categories: given the
@@ -3562,6 +3574,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/li-rads-v327.js
 - `li-rads`
+
+### lib/montreal-ibd-v328.js
+- `montreal-ibd`
 
 ### lib/tb-testing.js
 - `tb-testing`

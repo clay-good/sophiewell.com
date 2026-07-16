@@ -2524,6 +2524,19 @@ test('lib/li-rads-v327.js worked calls', () => {
   assert.equal(ok('li-rads', { 'lirads-cat': 'LR-M' }).malignant, true);
 });
 
+test('lib/montreal-ibd-v328.js worked calls', () => {
+  // The META example: Crohn A2 L3 B2 (disease defaults to crohn).
+  const crohn = ok('montreal-ibd', { 'mibd-age': 'A2', 'mibd-loc': 'L3', 'mibd-beh': 'B2' });
+  assert.equal(crohn.disease, 'crohn');
+  assert.equal(crohn.phenotype, 'A2 L3 B2');
+  // The +L4 and p modifiers compose.
+  const mod = ok('montreal-ibd', { 'mibd-age': 'A1', 'mibd-loc': 'L1', 'mibd-l4': true, 'mibd-beh': 'B3', 'mibd-p': true });
+  assert.equal(mod.phenotype, 'A1 L1+L4 B3p');
+  // Ulcerative colitis E/S phenotype.
+  const uc = ok('montreal-ibd', { 'mibd-disease': 'uc', 'mibd-ext': 'E3', 'mibd-sev': 'S2' });
+  assert.equal(uc.phenotype, 'E3 S2');
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];
