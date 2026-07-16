@@ -300,6 +300,7 @@ import * as clavienDindoV320 from '../../lib/clavien-dindo-v320.js';
 import * as hincheyV321 from '../../lib/hinchey-v321.js';
 import * as biRadsV322 from '../../lib/bi-rads-v322.js';
 import * as siewertV323 from '../../lib/siewert-v323.js';
+import * as wexnerV324 from '../../lib/wexner-v324.js';
 import * as tbTesting from '../../lib/tb-testing.js';
 
 const MODULES = {
@@ -545,6 +546,7 @@ const MODULES = {
   'hinchey-v321.js': hincheyV321,
   'bi-rads-v322.js': biRadsV322,
   'siewert-v323.js': siewertV323,
+  'wexner-v324.js': wexnerV324,
   'tb-testing.js': tbTesting,
 };
 

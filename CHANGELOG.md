@@ -6,6 +6,20 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v324 — Wexner (Cleveland Clinic) fecal incontinence score tile, 1175 → 1176)
+
+- New `wexner` tile (group G): the Wexner / Cleveland Clinic fecal incontinence severity score (0–20) —
+  the most widely used fecal-incontinence severity instrument, previously absent from the catalog. The
+  clinician (or patient) sets the frequency of each of five items (incontinence to solid stool, liquid
+  stool, gas; wears a pad; lifestyle alteration), each 0 (never) to 4 (daily), and the tile sums them.
+  Total 0 (perfect continence) to 20 (complete incontinence); ≥ 9 is flagged as the commonly cited (not
+  fixed) threshold for clinically significant incontinence. A cited severity score, not a diagnosis or a
+  treatment order ([spec-v11] §5.3). Scale transcribed (spec-v97) from Jorge & Wexner 1993 (Dis Colon
+  Rectum), cross-verified against reproductions; no citation-staleness row (the Dis Colon Rectum citation
+  carries no guideline-issuer acronym). New `lib/wexner-v324.js` + `views/group-v324.js` (RV324); +1 META
+  entry, +1 UTILITIES row, a synonym entry (v45 → v46), 6 unit tests + fuzz, corpus rebuilt to 1176.
+  See [docs/spec-v324.md](docs/spec-v324.md). The MCP adapter follows in a later wave.
+
 ### Added (spec-v323 — Siewert classification of GEJ adenocarcinoma tile, 1174 → 1175)
 
 - New `siewert` tile (group G): the Siewert classification of esophagogastric-junction (GEJ)
