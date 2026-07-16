@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `071266a8cc3bfdcf`
-Generated: 2026-07-16T16:38:08.449Z
+Build ID: `ab6124b35281c885`
+Generated: 2026-07-16T17:13:36.380Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=20.18.1 <21, npm >=10.0.0
@@ -24,13 +24,13 @@ downloads is committed in this repository and is hashed below.
 
 | Path | Bytes | SHA-256 |
 |---|---:|---|
-| `index.html` | 79974 | `032f71792d5d3c74c87a3944f6eb5c8d315dcff05fc29eb291f7b2b3aa55f2f3` |
+| `index.html` | 80023 | `cc45b52e5681e66df04b880546e521ba35e6b656c49030b3a478fb5acd854e69` |
 | `styles.css` | 44160 | `a2cc7ad7bae9f7cfc9681d80bc6bd4a58f0b07d47bfcff64897dc04929c12333` |
-| `app.js` | 326995 | `22a55888e6ef2c572293fba143a313429e539c274d475a39aba3db04644b0e84` |
+| `app.js` | 327228 | `14c8c797cf9a5e0ca72727523fdf30e504e165f4d28f2b5e35b59b25ef15f791` |
 | `sw.js` | 4622 | `b891d4344f8e04403b7f1d307fd446cc224bddc6f0c4397438a17d197351171e` |
 | `site.webmanifest` | 709 | `0e0de4da60590a12e8b27a0ae2a2f5ffdb6500b7d2b78f93631ec2f64ed3d5ce` |
 | `robots.txt` | 127 | `38fbf9c1854e72abb20e01e81dd5a31d4ea96f154c12d5db1ec3af05524dd1a1` |
-| `sitemap.xml` | 182873 | `89c2a72e1222dce6559f560857b6454dfcf20af2e185f0bae05d313fabfc439e` |
+| `sitemap.xml` | 183027 | `b48f2d68ba3ecf8b0f756f1fc29f016be27d36f456fc24db7529f2f8039d9288` |
 | `_headers` | 1316 | `2f39986457d2feff7e73e491a7d09ee871e8f2f4cc2bc437f86bd86a42554ec6` |
 | `logo.png` | 63440 | `11afaf1b0d3ca68393d202e4810bf766b5b6d591b4e3ec52f41d3cacaa4616ec` |
 | `favicon.ico` | 7411 | `407fde0ca2788409e87e11f596fa02e6a0b121817fcea7fd995beec1801e287b` |
@@ -86,6 +86,7 @@ downloads is committed in this repository and is hashed below.
 | `lib/coding-v5.js` | 12119 | `9dd3bbc7e833f65a612386b9a9474bff60d822d7cb7bc2e8f6b5ce48456a8ef1` |
 | `lib/concussion-rtl-v308.js` | 4088 | `a887bb2fc16a0c07f1f0e195bd44f35e212bd32fe123a681f82cdb6c81828e05` |
 | `lib/concussion-rts-v298.js` | 5692 | `e612a32f94bc0424564ea138fe3e50fa81ce7397c37ccf0a603b4763085f2e4c` |
+| `lib/cormack-lehane-v339.js` | 4150 | `9d2d41efc97fee93f2818f12447fa347fc98a3be836a2df5b4bb632d318f917e` |
 | `lib/cosyntropin-v299.js` | 3759 | `5969bbb878a6c6087a4309355bd1639a026838ad1d24e3a04ee3e14eeda92119` |
 | `lib/critcare-severity-v200.js` | 15639 | `e08d8c99b3000904ce53f517eb8b647868d44e31b46c43b9e75aa9dc167d3738` |
 | `lib/critcare-v112.js` | 13105 | `f29ae215fb01f6d440c94637f2825b7bcc8ef30bd47c061d65d9fc34d8fbec51` |
@@ -195,7 +196,7 @@ downloads is committed in this repository and is hashed below.
 | `lib/massive-transfusion-v265.js` | 3240 | `7ad4d1d86063fdd077546be5d6381ea4a5024ef669389f88abdfe07850903b29` |
 | `lib/medication-v4.js` | 18192 | `467f9576c50da696cc56094eb022d0a5ed1e88de0c7618448554ede8067270b0` |
 | `lib/medication-v5.js` | 18863 | `ce81d9f8954abbd412892c13af9936f992239164f26fd2b999eaea7902787ab7` |
-| `lib/meta.js` | 1636615 | `75468e9419631db793b8780d2651dc8b505eda81b4847a1199e16caf2723ea83` |
+| `lib/meta.js` | 1637738 | `b685581938644a7dd94669c6e3a5fd5c4ac9a99d24eed41daba072e59c2265f2` |
 | `lib/metabolic-hepatic-v219.js` | 12791 | `b9352877cebf7fbf3c3b99ecb8b72cdbee3ed94e056dc019113668609f5a95a8` |
 | `lib/metabolic-onc-v88.js` | 12659 | `1553b641668c121661a66647da71a4aaaa023e9f3a6b7a753efbcdab27cdba81` |
 | `lib/metabolic-v269.js` | 3262 | `0c7a42557886f2b0aeee7949b8d0bd682d795d4526174fd540717a978d94ec2f` |
@@ -571,6 +572,7 @@ downloads is committed in this repository and is hashed below.
 | `views/group-v336.js` | 3256 | `78ce206571bcdbd3b27180d4d994300b764d8a5d105c684cd43d6aa4ed5afc47` |
 | `views/group-v337.js` | 3115 | `35d9b6379a827355c971723164acb566e6e34bb93f44be20e43cc105c249eaf4` |
 | `views/group-v338.js` | 3175 | `ac8b8b5ff4ab06ee3307365cab9d278f72ee967a539b94705100e7bbd6d5af80` |
+| `views/group-v339.js` | 3026 | `8a6d2c31f23e5b3ad1efefb7e714edcc30a89b4f17c9ceac4bd86d910790203a` |
 | `views/group-v34.js` | 14778 | `1eabda9aad5bf2728a8e49da8cfb227ce2a0560bea68a952ab259e60a8fc60b9` |
 | `views/group-v35.js` | 10362 | `345646cf73716e4125cf18cf2a1a1c6ae16ee526ea0b0ee418fc2ea7ffd47bea` |
 | `views/group-v36.js` | 9701 | `27235c5bd11c79ea046d75fe20f455c2648c6cbc31a1e1f2a9c1fccbcd41c693` |

@@ -6,6 +6,22 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v339 — Cormack-Lehane laryngoscopy grade tile, 1190 → 1191)
+
+- New `cormack-lehane` tile (group G): the Cormack-Lehane classification of the laryngeal view at direct
+  laryngoscopy (grades 1–4) — the scale that documents the glottic view obtained at laryngoscopy and the
+  reference standard the catalog's difficult-intubation predictors (Wilson, El-Ganzouri, MACOCHA, IDS) are
+  validated against; previously absent. The laryngoscopist picks the grade and the tile reports its
+  description. **1:** most of the glottis visible. **2:** only the posterior glottis / arytenoids (modified
+  2a/2b). **3:** only the epiglottis (modified 3a/3b) — difficult. **4:** neither glottis nor epiglottis —
+  difficult. Grades 3–4 are flagged; the modified 2a/2b/3a/3b subtypes map to the parent grade. A
+  laryngeal-view grade, not a diagnosis, an airway-management plan, or an intubation-success prediction
+  ([spec-v11] §5.3). Definitions transcribed (spec-v97) from Cormack & Lehane 1984 (Anaesthesia),
+  cross-verified against the modified Yentis 1998 / Cook 2000 subdivisions; no citation-staleness row (the
+  citation carries no guideline-issuer acronym). New `lib/cormack-lehane-v339.js` + `views/group-v339.js`
+  (RV339); +1 META entry, +1 UTILITIES row, a synonym entry (v60 → v61), 5 unit tests + fuzz, corpus
+  rebuilt to 1191. See [docs/spec-v339.md](docs/spec-v339.md). The MCP adapter follows in a later wave.
+
 ### Added (spec-v338 — ICRS cartilage lesion classification tile, 1189 → 1190)
 
 - New `icrs-cartilage` tile (group G): the ICRS (International Cartilage Repair Society) cartilage lesion

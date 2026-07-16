@@ -315,6 +315,7 @@ import * as niceV335 from '../../lib/nice-v335.js';
 import * as jnetV336 from '../../lib/jnet-v336.js';
 import * as outerbridgeV337 from '../../lib/outerbridge-v337.js';
 import * as icrsV338 from '../../lib/icrs-v338.js';
+import * as cormackLehaneV339 from '../../lib/cormack-lehane-v339.js';
 import * as tbTesting from '../../lib/tb-testing.js';
 
 const MODULES = {
@@ -575,6 +576,7 @@ const MODULES = {
   'jnet-v336.js': jnetV336,
   'outerbridge-v337.js': outerbridgeV337,
   'icrs-v338.js': icrsV338,
+  'cormack-lehane-v339.js': cormackLehaneV339,
   'tb-testing.js': tbTesting,
 };
 
