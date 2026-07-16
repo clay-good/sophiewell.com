@@ -6,6 +6,23 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v334 — Kudo pit-pattern classification tile, 1185 → 1186)
+
+- New `kudo-pit-pattern` tile (group G): the Kudo pit-pattern classification of a colorectal lesion (types
+  I / II / IIIS / IIIL / IV / V) read on magnifying chromoendoscopy — the surface pattern that predicts a
+  lesion's histology at the time of endoscopy, the endoscopic companion to the Paris morphologic
+  classification; previously absent from the catalog. The endoscopist picks the pit pattern and the tile
+  reports its histologic correlate. **I:** roundish (normal). **II:** stellar / papillary (hyperplastic,
+  non-neoplastic). **IIIS:** small tubular (adenoma; often depressed, highest malignant potential of type
+  III). **IIIL:** larger tubular (adenoma). **IV:** branch / gyrus-like (adenoma, often villous). **V:**
+  non-structured / irregular (suggestive of invasive carcinoma / deep submucosal invasion) — flagged. A
+  pit-pattern type + histologic correlate, not a tissue diagnosis, a resection recommendation, or a cancer
+  diagnosis ([spec-v11] §5.3). Definitions transcribed (spec-v97) from Kudo 1996 (Gastrointest Endosc),
+  cross-verified against the Kudo pit-pattern meta-analysis; no citation-staleness row (the citation carries
+  no guideline-issuer acronym). New `lib/kudo-v334.js` + `views/group-v334.js` (RV334); +1 META entry, +1
+  UTILITIES row, a synonym entry (v55 → v56), 5 unit tests + fuzz, corpus rebuilt to 1186.
+  See [docs/spec-v334.md](docs/spec-v334.md). The MCP adapter follows in a later wave.
+
 ### Added (spec-v333 — Kikuchi classification (sessile submucosal invasion) tile, 1184 → 1185)
 
 - New `kikuchi-level` tile (group G): the Kikuchi classification of submucosal invasion in a sessile
