@@ -2701,6 +2701,17 @@ test('lib/hawkins-talar-v342.js worked calls', () => {
   assert.equal(ok('hawkins-talar', { 'hawkins-type': 'IV' }).severe, true);
 });
 
+test('lib/sanders-calcaneal-v343.js worked calls', () => {
+  // Type III (the META example): three-part with depressed fragment, flagged.
+  const three = ok('sanders-calcaneal', { 'sanders-type': 'III' });
+  assert.equal(three.type, 'III');
+  assert.equal(three.severe, true);
+  // Type I: nondisplaced, not flagged.
+  assert.equal(ok('sanders-calcaneal', { 'sanders-type': 'I' }).severe, false);
+  // Type IV: highly comminuted, flagged.
+  assert.equal(ok('sanders-calcaneal', { 'sanders-type': 'IV' }).severe, true);
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];

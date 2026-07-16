@@ -1502,6 +1502,16 @@ round-trip both pass, without the phantom "2". Adapter appended to the existing
 rate to a target PaCO2. Brings the exposed total to **1072 calculators across 197
 modules**.
 
+## One-hundred-sixty-eighth wave — the Sanders classification (calcaneal fracture) in lib/sanders-calcaneal-v343.js (+1)
+
+`sanders-calcaneal` (spec-v343) applies the Sanders classification: given the type, it reports the
+CT-fragmentation description. `type` is an enum (`kind: 'enum'`, values I/II/III/IV) — the single
+input the renderer exposes. The example sets type III; its expected text is the type description with
+no numeric facts (the part / fracture-line counts are spelled as words), so it round-trips through the
+default `makeToArgs` with no custom toArgs. New adapter module registered in `mcp/catalog.js`; its
+golden probe ("calcaneal fracture type") is promoted now that the tile is in the MCP-exposed registry.
+Brings the exposed total to **1132 calculators across 248 modules**.
+
 ## One-hundred-sixty-seventh wave — the Hawkins classification (talar neck fracture) in lib/hawkins-talar-v342.js (+1)
 
 `hawkins-talar` (spec-v342) applies the Hawkins classification: given the type, it reports the
@@ -3762,6 +3772,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/hawkins-talar-v342.js
 - `hawkins-talar`
+
+### lib/sanders-calcaneal-v343.js
+- `sanders-calcaneal`
 
 ### lib/tb-testing.js
 - `tb-testing`
