@@ -1,5 +1,5 @@
 {
-  "version": "v65-2026-07-16",
+  "version": "v66-2026-07-16",
   "note": "spec-v7 section 3.2: hand-curated patient-phrasing -> tile id table. Each entry maps patient-mental-model phrases (and, from the v8/v9 plain-language-search batches, clinical abbreviations, eponym aliases, and canonical-intent phrases) to a single existing tile. Audience is the primary audience the entry serves; the matcher deprioritizes (does not hide) entries when the user has selected a different chip. Every phrase is lowercase; every tile id is an existing catalog tile (guarded by test/unit/synonyms-catalog.test.js). Adding a new phrase is a one-line PR.",
   "entries": [
     { "phrases": ["denied", "denial letter", "they denied it", "insurance said no", "appeal", "write an appeal", "appeal my claim", "appeal letter", "appeal a denial"],
@@ -274,6 +274,8 @@
     { "phrases": ["hawkins classification", "hawkins talar", "talar neck fracture type", "talus fracture classification", "hawkins talus", "talar neck fracture classification", "hawkins canale", "talar avn risk classification"],
       "tile": "hawkins-talar", "audience": "clinicians" },
     { "phrases": ["sanders classification", "sanders", "calcaneal fracture type", "calcaneus fracture classification", "sanders calcaneal", "heel bone fracture classification", "calcaneal fracture ct classification", "sanders ct classification"],
-      "tile": "sanders-calcaneal", "audience": "clinicians" }
+      "tile": "sanders-calcaneal", "audience": "clinicians" },
+    { "phrases": ["ficat classification", "ficat arlet", "avascular necrosis staging hip", "femoral head avn stage", "ficat staging", "osteonecrosis femoral head staging", "avn hip stage", "ficat arlet staging"],
+      "tile": "ficat-arlet", "audience": "clinicians" }
   ]
 }

@@ -6,6 +6,23 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v344 — Ficat-Arlet staging (femoral head AVN) tile, 1195 → 1196)
+
+- New `ficat-arlet` tile (group G): the Ficat-Arlet staging of femoral-head osteonecrosis / avascular
+  necrosis (stages 0–IV) — the classic radiographic staging of hip osteonecrosis, complementing the
+  Hawkins talar tile (which reports AVN risk) and the Kellgren-Lawrence osteoarthritis grade already in
+  the catalog; previously absent. The clinician picks the radiographic stage and the tile reports its
+  description. **0:** silent hip (normal X-ray). **I:** pre-radiographic (abnormal MRI). **II:**
+  pre-collapse (sclerosis / cysts, sphericity preserved; IIA cysts, IIB crescent sign). **III:**
+  subchondral collapse (crescent sign) with flattening — flagged. **IV:** secondary osteoarthritis —
+  flagged. A Ficat-Arlet stage, not a diagnosis, a treatment decision, or a prognosis ([spec-v11] §5.3);
+  the pre-collapse (0–II) vs post-collapse (III–IV) split is the classic joint-preservation-vs-replacement
+  watershed, not an order. Definitions transcribed (spec-v97) from Ficat 1985 (JBJS Br) and Ficat & Arlet
+  1980, cross-verified against hip-imaging references; no citation-staleness row (the citation carries no
+  guideline-issuer acronym). New `lib/ficat-arlet-v344.js` + `views/group-v344.js` (RV344); +1 META entry,
+  +1 UTILITIES row, a synonym entry (v65 → v66), 5 unit tests + fuzz, corpus rebuilt to 1196.
+  See [docs/spec-v344.md](docs/spec-v344.md). The MCP adapter follows in a later wave.
+
 ### Added (spec-v343 — Sanders classification (calcaneal fracture) tile, 1194 → 1195)
 
 - New `sanders-calcaneal` tile (group G): the Sanders classification of an intra-articular calcaneal

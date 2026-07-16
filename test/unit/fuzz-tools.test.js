@@ -320,6 +320,7 @@ import * as clarkLevelV340 from '../../lib/clark-level-v340.js';
 import * as masonRadialHeadV341 from '../../lib/mason-radial-head-v341.js';
 import * as hawkinsTalarV342 from '../../lib/hawkins-talar-v342.js';
 import * as sandersCalcanealV343 from '../../lib/sanders-calcaneal-v343.js';
+import * as ficatArletV344 from '../../lib/ficat-arlet-v344.js';
 import * as tbTesting from '../../lib/tb-testing.js';
 
 const MODULES = {
@@ -585,6 +586,7 @@ const MODULES = {
   'mason-radial-head-v341.js': masonRadialHeadV341,
   'hawkins-talar-v342.js': hawkinsTalarV342,
   'sanders-calcaneal-v343.js': sandersCalcanealV343,
+  'ficat-arlet-v344.js': ficatArletV344,
   'tb-testing.js': tbTesting,
 };
 
