@@ -6,6 +6,22 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v338 — ICRS cartilage lesion classification tile, 1189 → 1190)
+
+- New `icrs-cartilage` tile (group G): the ICRS (International Cartilage Repair Society) cartilage lesion
+  classification (grades 0–4) — the modern depth-based arthroscopic cartilage grading used in
+  cartilage-repair practice, complementing the Outerbridge classification (spec-v337; ICRS grades by
+  percentage of cartilage depth and subdivides grade 3, where Outerbridge's original grades split by lesion
+  diameter); previously absent. The surgeon picks the grade and the tile reports its description. **0:**
+  normal. **1:** nearly normal (surface intact). **2:** < 50% of cartilage depth, no exposed bone. **3:**
+  > 50% depth / to but not through subchondral bone (3a–3d). **4:** complete loss through the subchondral
+  bone plate (osteochondral) — flagged. A cartilage grade, not a diagnosis, a surgical recommendation, or an
+  outcome prediction ([spec-v11] §5.3). Definitions transcribed (spec-v97) from Brittberg 2003 (JBJS Am),
+  cross-verified against ICRS grading reproductions; no citation-staleness row (the citation carries no
+  guideline-issuer acronym). New `lib/icrs-v338.js` + `views/group-v338.js` (RV338); +1 META entry, +1
+  UTILITIES row, a synonym entry (v59 → v60), 5 unit tests + fuzz, corpus rebuilt to 1190.
+  See [docs/spec-v338.md](docs/spec-v338.md). The MCP adapter follows in a later wave.
+
 ### Added (spec-v337 — Outerbridge cartilage classification tile, 1188 → 1189)
 
 - New `outerbridge-cartilage` tile (group G): the Outerbridge classification of articular cartilage damage
