@@ -6,6 +6,23 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v337 — Outerbridge cartilage classification tile, 1188 → 1189)
+
+- New `outerbridge-cartilage` tile (group G): the Outerbridge classification of articular cartilage damage
+  (grades 0–IV) — the standard arthroscopic / operative grading of chondral damage, complementing the
+  Kellgren-Lawrence radiographic osteoarthritis grade already in the catalog (KL grades the X-ray,
+  Outerbridge grades the cartilage seen at arthroscopy); previously absent. The surgeon picks the grade and
+  the tile reports its description. **0:** normal. **I:** softening/swelling. **II:** partial-thickness
+  fissures not reaching bone and ≤ 1.5 cm. **III:** fissuring to subchondral bone in an area > 1.5 cm.
+  **IV:** exposed subchondral bone (full-thickness loss) — flagged. A cartilage grade, not a diagnosis, a
+  surgical recommendation, or an outcome prediction ([spec-v11] §5.3). Definitions transcribed (spec-v97)
+  from Outerbridge 1961 (J Bone Joint Surg Br; the original II/III split is by 1.5 cm diameter),
+  cross-verified against the "Classifications in Brief" review (which notes the modified depth-based
+  version, surfaced in the tile note); no citation-staleness row (the citation carries no guideline-issuer
+  acronym). New `lib/outerbridge-v337.js` + `views/group-v337.js` (RV337); +1 META entry, +1 UTILITIES row,
+  a synonym entry (v58 → v59), 5 unit tests + fuzz, corpus rebuilt to 1189.
+  See [docs/spec-v337.md](docs/spec-v337.md). The MCP adapter follows in a later wave.
+
 ### Added (spec-v336 — JNET classification (magnifying NBI colorectal) tile, 1187 → 1188)
 
 - New `jnet-classification` tile (group G): the JNET (Japan NBI Expert Team) classification of a colorectal
