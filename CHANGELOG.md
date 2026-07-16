@@ -6,6 +6,24 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v336 — JNET classification (magnifying NBI colorectal) tile, 1187 → 1188)
+
+- New `jnet-classification` tile (group G): the JNET (Japan NBI Expert Team) classification of a colorectal
+  lesion (types 1 / 2A / 2B / 3) read on magnifying narrow-band imaging — the magnified-NBI refinement of
+  NICE (spec-v335) that splits NICE type 2 into 2A (low-grade adenoma) and 2B (high-grade neoplasia /
+  shallow submucosal cancer), completing the colorectal optical-diagnosis family (Kudo / NICE / JNET);
+  previously absent from the catalog. The endoscopist picks the type from the vessel and surface pattern and
+  the tile reports its histologic correlate. **1:** invisible vessels, regular spots (hyperplastic /
+  sessile-serrated, non-neoplastic). **2A:** regular vessels and surface (low-grade adenoma). **2B:**
+  irregular vessels and surface (high-grade neoplasia / shallow submucosal cancer). **3:** loose/interrupted
+  vessels, amorphous surface (deep submucosal invasive cancer) — flagged. A JNET type + histologic
+  correlate, not a tissue diagnosis, a resection recommendation, or a cancer diagnosis ([spec-v11] §5.3).
+  Definitions transcribed (spec-v97) from Sano 2016 (Dig Endosc), cross-verified against the JNET validation
+  studies; no citation-staleness row (the citation carries no guideline-issuer acronym). New
+  `lib/jnet-v336.js` + `views/group-v336.js` (RV336); +1 META entry, +1 UTILITIES row, a synonym entry
+  (v57 → v58), 5 unit tests + fuzz, corpus rebuilt to 1188. See [docs/spec-v336.md](docs/spec-v336.md). The
+  MCP adapter follows in a later wave.
+
 ### Added (spec-v335 — NICE classification (NBI colorectal lesion) tile, 1186 → 1187)
 
 - New `nice-classification` tile (group G): the NICE (NBI International Colorectal Endoscopic)

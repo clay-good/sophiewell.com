@@ -312,6 +312,7 @@ import * as haggittV332 from '../../lib/haggitt-v332.js';
 import * as kikuchiV333 from '../../lib/kikuchi-v333.js';
 import * as kudoV334 from '../../lib/kudo-v334.js';
 import * as niceV335 from '../../lib/nice-v335.js';
+import * as jnetV336 from '../../lib/jnet-v336.js';
 import * as tbTesting from '../../lib/tb-testing.js';
 
 const MODULES = {
@@ -569,6 +570,7 @@ const MODULES = {
   'kikuchi-v333.js': kikuchiV333,
   'kudo-v334.js': kudoV334,
   'nice-v335.js': niceV335,
+  'jnet-v336.js': jnetV336,
   'tb-testing.js': tbTesting,
 };
 

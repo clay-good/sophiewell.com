@@ -1,5 +1,5 @@
 {
-  "version": "v57-2026-07-16",
+  "version": "v58-2026-07-16",
   "note": "spec-v7 section 3.2: hand-curated patient-phrasing -> tile id table. Each entry maps patient-mental-model phrases (and, from the v8/v9 plain-language-search batches, clinical abbreviations, eponym aliases, and canonical-intent phrases) to a single existing tile. Audience is the primary audience the entry serves; the matcher deprioritizes (does not hide) entries when the user has selected a different chip. Every phrase is lowercase; every tile id is an existing catalog tile (guarded by test/unit/synonyms-catalog.test.js). Adding a new phrase is a one-line PR.",
   "entries": [
     { "phrases": ["denied", "denial letter", "they denied it", "insurance said no", "appeal", "write an appeal", "appeal my claim", "appeal letter", "appeal a denial"],
@@ -258,6 +258,8 @@
     { "phrases": ["kudo", "kudo pit pattern", "pit pattern", "pit pattern classification", "colorectal pit pattern", "magnifying endoscopy pit", "crypt pattern colon", "chromoendoscopy pit pattern"],
       "tile": "kudo-pit-pattern", "audience": "clinicians" },
     { "phrases": ["nice classification", "nice nbi", "nbi polyp classification", "narrow band imaging polyp", "nbi international colorectal endoscopic", "nice type", "nbi colorectal classification", "optical diagnosis polyp nbi"],
-      "tile": "nice-classification", "audience": "clinicians" }
+      "tile": "nice-classification", "audience": "clinicians" },
+    { "phrases": ["jnet", "jnet classification", "japan nbi expert team", "magnifying nbi classification", "jnet type", "nbi magnifying colorectal", "type 2b lesion", "japan nbi colorectal"],
+      "tile": "jnet-classification", "audience": "clinicians" }
   ]
 }
