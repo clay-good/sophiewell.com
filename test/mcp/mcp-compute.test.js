@@ -2758,6 +2758,17 @@ test('lib/herring-pillar-v347.js worked calls', () => {
   assert.equal(bc.group, 'B/C border');
 });
 
+test('lib/strasberg-bdi-v348.js worked calls', () => {
+  // Type D (the META example): lateral extrahepatic injury, flagged major.
+  const d = ok('strasberg-bdi', { 'strasberg-type': 'D' });
+  assert.equal(d.type, 'D');
+  assert.equal(d.major, true);
+  // Type A: minor leak, not flagged.
+  assert.equal(ok('strasberg-bdi', { 'strasberg-type': 'A' }).major, false);
+  // Type E: main-duct transection, flagged major.
+  assert.equal(ok('strasberg-bdi', { 'strasberg-type': 'E' }).major, true);
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];

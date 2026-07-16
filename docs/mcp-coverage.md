@@ -1502,6 +1502,16 @@ round-trip both pass, without the phantom "2". Adapter appended to the existing
 rate to a target PaCO2. Brings the exposed total to **1072 calculators across 197
 modules**.
 
+## One-hundred-seventy-third wave — the Strasberg classification (bile duct injury) in lib/strasberg-bdi-v348.js (+1)
+
+`strasberg-bdi` (spec-v348) applies the Strasberg classification: given the type, it reports the
+bile-duct-injury description. `type` is an enum (`kind: 'enum'`, values A/B/C/D/E) — the single input
+the renderer exposes. The example sets type D; its expected text is the type description with no numeric
+facts (the type is a letter), so it round-trips through the default `makeToArgs` with no custom toArgs.
+New adapter module registered in `mcp/catalog.js`; its golden probe ("bile duct injury type") is
+promoted now that the tile is in the MCP-exposed registry. Brings the exposed total to **1137
+calculators across 253 modules**.
+
 ## One-hundred-seventy-second wave — the Herring lateral pillar classification (Perthes) in lib/herring-pillar-v347.js (+1)
 
 `herring-pillar` (spec-v347) applies the Herring lateral pillar classification: given the group, it
@@ -3827,6 +3837,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/herring-pillar-v347.js
 - `herring-pillar`
+
+### lib/strasberg-bdi-v348.js
+- `strasberg-bdi`
 
 ### lib/tb-testing.js
 - `tb-testing`
