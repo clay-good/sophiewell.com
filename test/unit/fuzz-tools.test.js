@@ -318,6 +318,7 @@ import * as icrsV338 from '../../lib/icrs-v338.js';
 import * as cormackLehaneV339 from '../../lib/cormack-lehane-v339.js';
 import * as clarkLevelV340 from '../../lib/clark-level-v340.js';
 import * as masonRadialHeadV341 from '../../lib/mason-radial-head-v341.js';
+import * as hawkinsTalarV342 from '../../lib/hawkins-talar-v342.js';
 import * as tbTesting from '../../lib/tb-testing.js';
 
 const MODULES = {
@@ -581,6 +582,7 @@ const MODULES = {
   'cormack-lehane-v339.js': cormackLehaneV339,
   'clark-level-v340.js': clarkLevelV340,
   'mason-radial-head-v341.js': masonRadialHeadV341,
+  'hawkins-talar-v342.js': hawkinsTalarV342,
   'tb-testing.js': tbTesting,
 };
 

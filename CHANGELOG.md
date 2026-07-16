@@ -6,6 +6,24 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v342 — Hawkins classification (talar neck fracture) tile, 1193 → 1194)
+
+- New `hawkins-talar` tile (group G): the Hawkins classification of a talar neck fracture (types I–IV) —
+  the gold standard for describing a fracture of the neck of the talus and the reference for its
+  avascular-necrosis (AVN) risk, extending the catalog's fracture-classification cluster (Garden,
+  Danis-Weber, Schatzker, Salter-Harris, Neer, Mason); previously absent. The clinician picks the
+  fracture pattern and the tile reports its description and the classically reported AVN-risk range.
+  **I:** nondisplaced, no dislocation (AVN ~0–15%). **II:** displaced with subtalar dislocation
+  (~20–50%). **III:** displaced with dislocation from the subtalar and ankle joints (~70–100%) —
+  flagged. **IV:** type III plus talonavicular dislocation (highest) — flagged. A Hawkins type, not a
+  diagnosis, a treatment decision, or a prognosis ([spec-v11] §5.3); the AVN-risk ranges are the
+  classically reported case-series figures, not a per-patient prediction. Definitions transcribed
+  (spec-v97) from Hawkins 1970 (JBJS) and Canale-Kelly 1978 (JBJS), cross-verified against
+  foot-and-ankle trauma references; no citation-staleness row (the citations carry no guideline-issuer
+  acronym). New `lib/hawkins-talar-v342.js` + `views/group-v342.js` (RV342); +1 META entry, +1
+  UTILITIES row, a synonym entry (v63 → v64), 5 unit tests + fuzz, corpus rebuilt to 1194.
+  See [docs/spec-v342.md](docs/spec-v342.md). The MCP adapter follows in a later wave.
+
 ### Added (spec-v341 — Mason-Johnston radial head fracture classification tile, 1192 → 1193)
 
 - New `mason-radial-head` tile (group G): the Mason-Johnston classification of a radial head fracture
