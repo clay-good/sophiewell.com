@@ -6,6 +6,26 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v355 — Lachman test grade (ACL laxity) tile, 1206 → 1207)
+
+- New `lachman-acl` tile (group G): the Lachman test grade of anterior cruciate ligament (ACL) laxity
+  (grades I–III), from the anterior tibial translation (vs the uninjured knee) and the endpoint quality —
+  the standard bedside ACL-laxity maneuver; previously absent. The catalog carried the knee ED decision
+  rules (`ottawa-knee`, `pittsburgh-knee-rule`) but no ACL exam grade. The clinician picks the grade and
+  the tile reports its description. **I:** 0–5 mm, firm endpoint (mild). **II:** 6–10 mm, soft endpoint
+  (moderate) — flagged. **III:** 11–15 mm, no endpoint (severe) — flagged. A Lachman grade, not a
+  diagnosis (partial vs complete tear), an imaging substitute, or a treatment decision ([spec-v11] §5.3);
+  5 mm or more suggests a complete ACL tear, but MRI and the overall picture decide management. Grading
+  per StatPearls / IKDC convention (spec-v97), cross-verified against Physiopedia and standard sports-
+  medicine references; no citation-staleness row (the citation carries no guideline-issuer acronym). New
+  `lib/lachman-acl-v355.js` + `views/group-v355.js` (RV355); +1 META entry, +1 UTILITIES row, a synonym
+  entry (v76 → v77), 5 unit tests + fuzz, corpus rebuilt to 1207. See [docs/spec-v355.md](docs/spec-v355.md).
+  The MCP adapter follows in a later wave.
+- Search corpus: reduced the `band` CAP 120 → 108 chars in `scripts/build-search-corpus.mjs`. Following
+  the spec-v354 `MAX_BANDS` trim, this restores comfortable gzip-budget headroom (199.8 → 196.1 KB, ~4 KB
+  under the fixed 200 KB budget) by trimming only the tail of the longest interpretation-band sentences —
+  the lowest-signal corpus text. Zero search-relevance change: all 168 golden probes still route top-3.
+
 ### Added (spec-v354 — Tonnis classification (hip osteoarthritis) tile, 1205 → 1206)
 
 - New `tonnis-hip-oa` tile (group G): the Tonnis classification (grade) of hip osteoarthritis on an AP

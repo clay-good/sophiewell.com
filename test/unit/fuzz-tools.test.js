@@ -331,6 +331,7 @@ import * as goligherHemorrhoidsV351 from '../../lib/goligher-hemorrhoids-v351.js
 import * as lanskyV352 from '../../lib/lansky-v352.js';
 import * as croweDdhV353 from '../../lib/crowe-ddh-v353.js';
 import * as tonnisHipOaV354 from '../../lib/tonnis-hip-oa-v354.js';
+import * as lachmanAclV355 from '../../lib/lachman-acl-v355.js';
 import * as tbTesting from '../../lib/tb-testing.js';
 
 const MODULES = {
@@ -607,6 +608,7 @@ const MODULES = {
   'lansky-v352.js': lanskyV352,
   'crowe-ddh-v353.js': croweDdhV353,
   'tonnis-hip-oa-v354.js': tonnisHipOaV354,
+  'lachman-acl-v355.js': lachmanAclV355,
   'tb-testing.js': tbTesting,
 };
 
