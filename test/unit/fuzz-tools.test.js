@@ -309,6 +309,7 @@ import * as parisClassificationV329 from '../../lib/paris-classification-v329.js
 import * as nottinghamNpiV330 from '../../lib/nottingham-npi-v330.js';
 import * as fitzpatrickV331 from '../../lib/fitzpatrick-v331.js';
 import * as haggittV332 from '../../lib/haggitt-v332.js';
+import * as kikuchiV333 from '../../lib/kikuchi-v333.js';
 import * as tbTesting from '../../lib/tb-testing.js';
 
 const MODULES = {
@@ -563,6 +564,7 @@ const MODULES = {
   'nottingham-npi-v330.js': nottinghamNpiV330,
   'fitzpatrick-v331.js': fitzpatrickV331,
   'haggitt-v332.js': haggittV332,
+  'kikuchi-v333.js': kikuchiV333,
   'tb-testing.js': tbTesting,
 };
 

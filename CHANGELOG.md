@@ -6,6 +6,21 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v333 — Kikuchi classification (sessile submucosal invasion) tile, 1184 → 1185)
+
+- New `kikuchi-level` tile (group G): the Kikuchi classification of submucosal invasion in a sessile
+  malignant colorectal lesion (Sm1 / Sm2 / Sm3) — the direct sessile-lesion counterpart to the Haggitt
+  classification (spec-v332, for pedunculated polyps), grading submucosal invasion depth by dividing the
+  submucosa into thirds; previously absent from the catalog. The pathologist picks the level and the tile
+  reports its description. **Sm1:** upper (superficial) third (~0–3% node metastasis, low risk). **Sm2:**
+  middle third (~10%). **Sm3:** lower third, adjacent to the muscularis propria (~25%). Sm2 / Sm3 are
+  flagged higher-risk. An invasion level, not a diagnosis, a resection recommendation, or a metastasis
+  prediction ([spec-v11] §5.3). Definitions transcribed (spec-v97) from Kikuchi 1995 (Dis Colon Rectum),
+  cross-verified against the Haggitt/Kikuchi comparison literature; no citation-staleness row (the citation
+  carries no guideline-issuer acronym). New `lib/kikuchi-v333.js` + `views/group-v333.js` (RV333); +1 META
+  entry, +1 UTILITIES row, a synonym entry (v54 → v55), 4 unit tests + fuzz, corpus rebuilt to 1185.
+  See [docs/spec-v333.md](docs/spec-v333.md). The MCP adapter follows in a later wave.
+
 ### Added (spec-v332 — Haggitt classification (malignant colorectal polyp) tile, 1183 → 1184)
 
 - New `haggitt-level` tile (group G): the Haggitt classification of invasion in a malignant colorectal
