@@ -1502,6 +1502,16 @@ round-trip both pass, without the phantom "2". Adapter appended to the existing
 rate to a target PaCO2. Brings the exposed total to **1072 calculators across 197
 modules**.
 
+## One-hundred-sixty-sixth wave — the Mason-Johnston radial head fracture classification in lib/mason-radial-head-v341.js (+1)
+
+`mason-radial-head` (spec-v341) applies the Mason-Johnston classification: given the type, it reports
+the fracture-pattern description. `type` is an enum (`kind: 'enum'`, values I/II/III/IV) — the single
+input the renderer exposes. The example sets type III; its expected text is the type description (no
+numeric facts), so it round-trips through the default `makeToArgs` with no custom toArgs. New adapter
+module registered in `mcp/catalog.js`; its golden probe ("radial head fracture type") is promoted now
+that the tile is in the MCP-exposed registry. Brings the exposed total to **1130 calculators across
+246 modules**.
+
 ## One-hundred-sixty-fifth wave — the Clark level (melanoma invasion) in lib/clark-level-v340.js (+1)
 
 `clark-level` (spec-v340) applies the Clark level: given the level, it reports the
@@ -3736,6 +3746,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/clark-level-v340.js
 - `clark-level`
+
+### lib/mason-radial-head-v341.js
+- `mason-radial-head`
 
 ### lib/tb-testing.js
 - `tb-testing`

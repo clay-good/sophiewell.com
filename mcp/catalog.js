@@ -253,6 +253,7 @@ import outerbridgeV337 from './adapters/outerbridge-v337.js';
 import icrsV338 from './adapters/icrs-v338.js';
 import cormackLehaneV339 from './adapters/cormack-lehane-v339.js';
 import clarkLevelV340 from './adapters/clark-level-v340.js';
+import masonRadialHeadV341 from './adapters/mason-radial-head-v341.js';
 import tbTesting from './adapters/tb-testing.js';
 import labInterpret from './adapters/lab-interpret.js';
 import decisionRulesV258 from './adapters/decision-rules-v258.js';
@@ -500,6 +501,7 @@ const ADAPTER_MODULES = [
   ['icrs-v338', icrsV338],
   ['cormack-lehane-v339', cormackLehaneV339],
   ['clark-level-v340', clarkLevelV340],
+  ['mason-radial-head-v341', masonRadialHeadV341],
   ['tb-testing', tbTesting],
   ['lab-interpret', labInterpret],
   ['decision-rules-v258', decisionRulesV258],

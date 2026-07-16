@@ -78,7 +78,7 @@ find_calculator { "query": "stroke risk afib" }
        candidates: [ { id: "chads", name: "CHA2DS2-VASc", why: "synonym", ... }, ... ] }
 
 list_calculators { "specialty": "hepatology" }
-  -> { coverage: "1129 of 1109 catalog tiles exposed ...", calculators: [ { id: "meld-xi", ... }, ... ] }
+  -> { coverage: "1130 of 1109 catalog tiles exposed ...", calculators: [ { id: "meld-xi", ... }, ... ] }
 
 describe_calculator { "id": "meld-xi" }
   -> { inputSchema: { ... mx-bili, mx-creat ... }, citation: "Heuman DM ... Liver Transpl 2007", ... }
@@ -369,7 +369,9 @@ colorectal lesion) in `lib/nice-v335.js`, and a one-hundred-sixty-first the JNET
 cartilage classification in `lib/outerbridge-v337.js`, and a one-hundred-sixty-third the ICRS
 cartilage lesion classification in `lib/icrs-v338.js`, and a one-hundred-sixty-fourth the
 Cormack-Lehane laryngoscopy grade in `lib/cormack-lehane-v339.js`, and a one-hundred-sixty-fifth the
-Clark level (melanoma invasion) in `lib/clark-level-v340.js`, for 1129 across 245 modules
+Clark level (melanoma invasion) in `lib/clark-level-v340.js`, and a one-hundred-sixty-sixth the
+Mason-Johnston radial head fracture classification in `lib/mason-radial-head-v341.js`, for 1130
+across 246 modules
 today. <!-- catalog-truth:historical (197 is the count of lib modules adapted, not a catalog tile count) -->
 Later waves extend it module by module against the same contract.
 

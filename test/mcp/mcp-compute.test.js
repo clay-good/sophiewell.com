@@ -2678,6 +2678,17 @@ test('lib/clark-level-v340.js worked calls', () => {
   assert.equal(ok('clark-level', { 'clark-lvl': 'V' }).deep, true);
 });
 
+test('lib/mason-radial-head-v341.js worked calls', () => {
+  // Type III (the META example): comminuted whole head, flagged severe.
+  const three = ok('mason-radial-head', { 'mason-type': 'III' });
+  assert.equal(three.type, 'III');
+  assert.equal(three.severe, true);
+  // Type I: nondisplaced, not flagged.
+  assert.equal(ok('mason-radial-head', { 'mason-type': 'I' }).severe, false);
+  // Type IV: with elbow dislocation (Johnston), flagged.
+  assert.equal(ok('mason-radial-head', { 'mason-type': 'IV' }).severe, true);
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];
