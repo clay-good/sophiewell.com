@@ -2643,6 +2643,19 @@ test('lib/outerbridge-v337.js worked calls', () => {
   assert.equal(ok('outerbridge-cartilage', { 'outer-grade': 'II' }).grade, 'II');
 });
 
+test('lib/icrs-v338.js worked calls', () => {
+  // Grade 4 (the META example): full-thickness osteochondral, flagged.
+  const four = ok('icrs-cartilage', { 'icrs-grade': '4' });
+  assert.equal(four.grade, '4');
+  assert.equal(four.fullThickness, true);
+  // Grade 0: normal, not full-thickness.
+  assert.equal(ok('icrs-cartilage', { 'icrs-grade': '0' }).fullThickness, false);
+  // Grade 3: deep but not full-thickness.
+  const three = ok('icrs-cartilage', { 'icrs-grade': '3' });
+  assert.equal(three.grade, '3');
+  assert.equal(three.fullThickness, false);
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];

@@ -1502,6 +1502,17 @@ round-trip both pass, without the phantom "2". Adapter appended to the existing
 rate to a target PaCO2. Brings the exposed total to **1072 calculators across 197
 modules**.
 
+## One-hundred-sixty-third wave — the ICRS cartilage lesion classification in lib/icrs-v338.js (+1)
+
+`icrs-cartilage` (spec-v338) applies the ICRS (International Cartilage Repair Society) classification:
+given the grade, it reports the depth-based cartilage-lesion description. `grade` is an enum
+(`kind: 'enum'`, values 0/1/2/3/4) — the single input the renderer exposes. The example sets grade 4;
+its expected text is the grade description (the grade number already appears in the field value; the
+50% depth figures appear only in grades 2/3), so it round-trips through the default `makeToArgs` with
+no custom toArgs. New adapter module registered in `mcp/catalog.js`; its golden probe ("cartilage
+lesion depth grade") is promoted now that the tile is in the MCP-exposed registry. Brings the exposed
+total to **1127 calculators across 243 modules**.
+
 ## One-hundred-sixty-second wave — the Outerbridge cartilage classification in lib/outerbridge-v337.js (+1)
 
 `outerbridge-cartilage` (spec-v337) applies the Outerbridge classification: given the grade, it
@@ -3696,6 +3707,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/outerbridge-v337.js
 - `outerbridge-cartilage`
+
+### lib/icrs-v338.js
+- `icrs-cartilage`
 
 ### lib/tb-testing.js
 - `tb-testing`
