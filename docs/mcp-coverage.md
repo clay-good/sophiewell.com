@@ -1502,6 +1502,16 @@ round-trip both pass, without the phantom "2". Adapter appended to the existing
 rate to a target PaCO2. Brings the exposed total to **1072 calculators across 197
 modules**.
 
+## One-hundred-seventy-eighth wave — the Crowe classification (hip dysplasia) in lib/crowe-ddh-v353.js (+1)
+
+`crowe-ddh` (spec-v353) applies the Crowe classification of adult developmental dysplasia of the hip:
+given the grade, it reports the femoral-head subluxation description. `grade` is an enum (`kind: 'enum'`,
+values I/II/III/IV) — the single input the renderer exposes. The example sets grade III; its expected
+text is the grade description (the grade is a roman numeral; the percentage band is prose), so it
+round-trips through the default `makeToArgs` with no custom toArgs. New adapter module registered in
+`mcp/catalog.js`; its golden probe ("hip dysplasia grade") is promoted now that the tile is in the
+MCP-exposed registry. Brings the exposed total to **1142 calculators across 258 modules**.
+
 ## One-hundred-seventy-seventh wave — the Lansky Play-Performance Scale (pediatric functional status) in lib/lansky-v352.js (+1)
 
 `lansky` (spec-v352) applies the Lansky Play-Performance Scale: given the score, it reports the
@@ -3893,6 +3903,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/lansky-v352.js
 - `lansky`
+
+### lib/crowe-ddh-v353.js
+- `crowe-ddh`
 
 ### lib/tb-testing.js
 - `tb-testing`

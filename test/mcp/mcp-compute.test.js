@@ -2816,6 +2816,18 @@ test('lib/lansky-v352.js worked calls', () => {
   assert.equal(ok('lansky', { 'lansky-score': '30' }).reduced, true);
 });
 
+test('lib/crowe-ddh-v353.js worked calls', () => {
+  // Grade III (the META example): 75-100% subluxation, flagged higher grade.
+  const three = ok('crowe-ddh', { 'crowe-grade': 'III' });
+  assert.equal(three.grade, 'III');
+  assert.equal(three.severe, true);
+  assert.match(three.band, /75 to 100%/);
+  // Grade I: <50%, not flagged.
+  assert.equal(ok('crowe-ddh', { 'crowe-grade': 'I' }).severe, false);
+  // Grade IV: >100% high dislocation, flagged.
+  assert.equal(ok('crowe-ddh', { 'crowe-grade': 'IV' }).severe, true);
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];

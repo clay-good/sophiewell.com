@@ -78,7 +78,7 @@ find_calculator { "query": "stroke risk afib" }
        candidates: [ { id: "chads", name: "CHA2DS2-VASc", why: "synonym", ... }, ... ] }
 
 list_calculators { "specialty": "hepatology" }
-  -> { coverage: "1141 of 1109 catalog tiles exposed ...", calculators: [ { id: "meld-xi", ... }, ... ] }
+  -> { coverage: "1142 of 1109 catalog tiles exposed ...", calculators: [ { id: "meld-xi", ... }, ... ] }
 
 describe_calculator { "id": "meld-xi" }
   -> { inputSchema: { ... mx-bili, mx-creat ... }, citation: "Heuman DM ... Liver Transpl 2007", ... }
@@ -384,7 +384,8 @@ and a one-hundred-seventy-fourth the Fazekas scale (white matter hyperintensitie
 soft-tissue injury) in `lib/tscherne-closed-v350.js`, and a one-hundred-seventy-sixth the Goligher
 classification (internal hemorrhoids) in `lib/goligher-hemorrhoids-v351.js`, and a
 one-hundred-seventy-seventh the Lansky Play-Performance Scale (pediatric functional status) in
-`lib/lansky-v352.js`, for 1141 across 257 modules
+`lib/lansky-v352.js`, and a one-hundred-seventy-eighth the Crowe classification (hip dysplasia) in
+`lib/crowe-ddh-v353.js`, for 1142 across 258 modules
 today. <!-- catalog-truth:historical (197 is the count of lib modules adapted, not a catalog tile count) -->
 Later waves extend it module by module against the same contract.
 

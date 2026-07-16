@@ -265,6 +265,7 @@ import fazekasV349 from './adapters/fazekas-v349.js';
 import tscherneClosedV350 from './adapters/tscherne-closed-v350.js';
 import goligherHemorrhoidsV351 from './adapters/goligher-hemorrhoids-v351.js';
 import lanskyV352 from './adapters/lansky-v352.js';
+import croweDdhV353 from './adapters/crowe-ddh-v353.js';
 import tbTesting from './adapters/tb-testing.js';
 import labInterpret from './adapters/lab-interpret.js';
 import decisionRulesV258 from './adapters/decision-rules-v258.js';
@@ -524,6 +525,7 @@ const ADAPTER_MODULES = [
   ['tscherne-closed-v350', tscherneClosedV350],
   ['goligher-hemorrhoids-v351', goligherHemorrhoidsV351],
   ['lansky-v352', lanskyV352],
+  ['crowe-ddh-v353', croweDdhV353],
   ['tb-testing', tbTesting],
   ['lab-interpret', labInterpret],
   ['decision-rules-v258', decisionRulesV258],
