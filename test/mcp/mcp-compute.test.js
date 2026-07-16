@@ -2500,6 +2500,17 @@ test('lib/lung-rads-v325.js worked calls', () => {
   assert.equal(ok('lung-rads', { 'lungrads-cat': '4B' }).suspicious, true);
 });
 
+test('lib/o-rads-v326.js worked calls', () => {
+  // Category 4 (the META example): intermediate risk, flagged high-risk.
+  const four = ok('o-rads', { 'orads-cat': '4' });
+  assert.equal(four.category, 4);
+  assert.equal(four.highRisk, true);
+  // Category 2: almost certainly benign, not high-risk.
+  assert.equal(ok('o-rads', { 'orads-cat': '2' }).highRisk, false);
+  // Category 5: high risk.
+  assert.equal(ok('o-rads', { 'orads-cat': '5' }).highRisk, true);
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];

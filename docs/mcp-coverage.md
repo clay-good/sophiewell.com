@@ -1502,6 +1502,16 @@ round-trip both pass, without the phantom "2". Adapter appended to the existing
 rate to a target PaCO2. Brings the exposed total to **1072 calculators across 197
 modules**.
 
+## One-hundred-fifty-first wave — the ACR O-RADS US v2022 risk categories in lib/o-rads-v326.js (+1)
+
+`o-rads` (spec-v326) applies the ACR O-RADS US v2022 ovarian-adnexal ultrasound risk categories:
+given the category, it reports the descriptor, risk-of-malignancy band, and management. `category`
+is an enum (`kind: 'enum'`, values 0/1/2/3/4/5) — the single input the renderer exposes. The
+example sets category 4; its band carries the "10" and "50" example numbers, so it round-trips
+through the default `makeToArgs` with no custom toArgs. New adapter module registered in
+`mcp/catalog.js`; its golden probe ("ovarian mass risk category") is promoted now that the tile is
+in the MCP-exposed registry. Brings the exposed total to **1115 calculators across 231 modules**.
+
 ## One-hundred-fiftieth wave — the ACR Lung-RADS v2022 assessment categories in lib/lung-rads-v325.js (+1)
 
 `lung-rads` (spec-v325) applies the ACR Lung-RADS v2022 lung-cancer-screening assessment
@@ -3536,6 +3546,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/lung-rads-v325.js
 - `lung-rads`
+
+### lib/o-rads-v326.js
+- `o-rads`
 
 ### lib/tb-testing.js
 - `tb-testing`
