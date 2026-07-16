@@ -2769,6 +2769,17 @@ test('lib/strasberg-bdi-v348.js worked calls', () => {
   assert.equal(ok('strasberg-bdi', { 'strasberg-type': 'E' }).major, true);
 });
 
+test('lib/fazekas-v349.js worked calls (two-field)', () => {
+  // PVH 2 / DWMH 2 (the META example): combined 4, flagged.
+  const r = ok('fazekas-wmh', { 'fz-pvh': '2', 'fz-dwmh': '2' });
+  assert.equal(r.pvh, 2);
+  assert.equal(r.dwmh, 2);
+  assert.equal(r.total, 4);
+  assert.equal(r.abnormal, true);
+  // Grade 0 / 0: normal, not flagged.
+  assert.equal(ok('fazekas-wmh', { 'fz-pvh': '0', 'fz-dwmh': '0' }).abnormal, false);
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];

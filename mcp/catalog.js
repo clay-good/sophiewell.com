@@ -261,6 +261,7 @@ import lichtmanKienbockV345 from './adapters/lichtman-kienbock-v345.js';
 import catterallPerthesV346 from './adapters/catterall-perthes-v346.js';
 import herringPillarV347 from './adapters/herring-pillar-v347.js';
 import strasbergBdiV348 from './adapters/strasberg-bdi-v348.js';
+import fazekasV349 from './adapters/fazekas-v349.js';
 import tbTesting from './adapters/tb-testing.js';
 import labInterpret from './adapters/lab-interpret.js';
 import decisionRulesV258 from './adapters/decision-rules-v258.js';
@@ -516,6 +517,7 @@ const ADAPTER_MODULES = [
   ['catterall-perthes-v346', catterallPerthesV346],
   ['herring-pillar-v347', herringPillarV347],
   ['strasberg-bdi-v348', strasbergBdiV348],
+  ['fazekas-v349', fazekasV349],
   ['tb-testing', tbTesting],
   ['lab-interpret', labInterpret],
   ['decision-rules-v258', decisionRulesV258],

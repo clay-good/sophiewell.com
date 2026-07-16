@@ -1502,6 +1502,17 @@ round-trip both pass, without the phantom "2". Adapter appended to the existing
 rate to a target PaCO2. Brings the exposed total to **1072 calculators across 197
 modules**.
 
+## One-hundred-seventy-fourth wave — the Fazekas scale (white matter hyperintensities) in lib/fazekas-v349.js (+1)
+
+`fazekas-wmh` (spec-v349) applies the Fazekas scale. Unlike the other classification tiles in this
+batch it is a TWO-field tile: `pvh` (periventricular) and `dwmh` (deep white matter), each an enum
+(`kind: 'enum'`, values 0/1/2/3). The compute reports both grades, their descriptions, and the combined
+total. The example sets pvh=2, dwmh=2; its expected numbers (2, 2, combined 4 of 6) round-trip through
+the default `makeToArgs` with no custom toArgs (the result echoes them in the band text and the
+pvh/dwmh/total fields). New adapter module registered in `mcp/catalog.js`; its golden probe ("white
+matter hyperintensity grade") is promoted now that the tile is in the MCP-exposed registry. Brings the
+exposed total to **1138 calculators across 254 modules**.
+
 ## One-hundred-seventy-third wave — the Strasberg classification (bile duct injury) in lib/strasberg-bdi-v348.js (+1)
 
 `strasberg-bdi` (spec-v348) applies the Strasberg classification: given the type, it reports the
@@ -3840,6 +3851,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/strasberg-bdi-v348.js
 - `strasberg-bdi`
+
+### lib/fazekas-v349.js
+- `fazekas-wmh`
 
 ### lib/tb-testing.js
 - `tb-testing`
