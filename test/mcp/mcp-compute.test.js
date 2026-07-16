@@ -2689,6 +2689,18 @@ test('lib/mason-radial-head-v341.js worked calls', () => {
   assert.equal(ok('mason-radial-head', { 'mason-type': 'IV' }).severe, true);
 });
 
+test('lib/hawkins-talar-v342.js worked calls', () => {
+  // Type III (the META example): subtalar + ankle dislocation, flagged, ~70-100% AVN.
+  const three = ok('hawkins-talar', { 'hawkins-type': 'III' });
+  assert.equal(three.type, 'III');
+  assert.equal(three.severe, true);
+  assert.equal(three.avnRisk, '~70-100%');
+  // Type I: nondisplaced, not flagged.
+  assert.equal(ok('hawkins-talar', { 'hawkins-type': 'I' }).severe, false);
+  // Type IV: with talonavicular dislocation (Canale-Kelly), flagged.
+  assert.equal(ok('hawkins-talar', { 'hawkins-type': 'IV' }).severe, true);
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];

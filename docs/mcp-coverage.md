@@ -1502,6 +1502,16 @@ round-trip both pass, without the phantom "2". Adapter appended to the existing
 rate to a target PaCO2. Brings the exposed total to **1072 calculators across 197
 modules**.
 
+## One-hundred-sixty-seventh wave — the Hawkins classification (talar neck fracture) in lib/hawkins-talar-v342.js (+1)
+
+`hawkins-talar` (spec-v342) applies the Hawkins classification: given the type, it reports the
+fracture-pattern description and the classically reported AVN-risk range. `type` is an enum
+(`kind: 'enum'`, values I/II/III/IV) — the single input the renderer exposes. The example sets type
+III; its expected AVN range (~70-100%) round-trips through the default `makeToArgs` with no custom
+toArgs (the result echoes the range in `avnRisk` and the band text). New adapter module registered in
+`mcp/catalog.js`; its golden probe ("talar neck fracture type") is promoted now that the tile is in
+the MCP-exposed registry. Brings the exposed total to **1131 calculators across 247 modules**.
+
 ## One-hundred-sixty-sixth wave — the Mason-Johnston radial head fracture classification in lib/mason-radial-head-v341.js (+1)
 
 `mason-radial-head` (spec-v341) applies the Mason-Johnston classification: given the type, it reports
@@ -3749,6 +3759,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/mason-radial-head-v341.js
 - `mason-radial-head`
+
+### lib/hawkins-talar-v342.js
+- `hawkins-talar`
 
 ### lib/tb-testing.js
 - `tb-testing`
