@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `ab6124b35281c885`
-Generated: 2026-07-16T17:14:11.133Z
+Build ID: `084d6f7b4b627210`
+Generated: 2026-07-16T17:43:01.908Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=20.18.1 <21, npm >=10.0.0
@@ -24,13 +24,13 @@ downloads is committed in this repository and is hashed below.
 
 | Path | Bytes | SHA-256 |
 |---|---:|---|
-| `index.html` | 80023 | `cc45b52e5681e66df04b880546e521ba35e6b656c49030b3a478fb5acd854e69` |
+| `index.html` | 80070 | `c53adee88081b67e33dc6988d5260ef1b645c1cd42bd8b666655df5e4d2786b4` |
 | `styles.css` | 44160 | `a2cc7ad7bae9f7cfc9681d80bc6bd4a58f0b07d47bfcff64897dc04929c12333` |
-| `app.js` | 327228 | `14c8c797cf9a5e0ca72727523fdf30e504e165f4d28f2b5e35b59b25ef15f791` |
+| `app.js` | 327461 | `1b32d662ef7f1dbb8fbba5e2c99e425602cf602b8b5d8acc7375e1343d3965e9` |
 | `sw.js` | 4622 | `b891d4344f8e04403b7f1d307fd446cc224bddc6f0c4397438a17d197351171e` |
 | `site.webmanifest` | 709 | `0e0de4da60590a12e8b27a0ae2a2f5ffdb6500b7d2b78f93631ec2f64ed3d5ce` |
 | `robots.txt` | 127 | `38fbf9c1854e72abb20e01e81dd5a31d4ea96f154c12d5db1ec3af05524dd1a1` |
-| `sitemap.xml` | 183027 | `b48f2d68ba3ecf8b0f756f1fc29f016be27d36f456fc24db7529f2f8039d9288` |
+| `sitemap.xml` | 183178 | `642a1d1b48c0a00a8471867f6f6b7331245d4bc49772bdfb93ba785e70a6c2be` |
 | `_headers` | 1316 | `2f39986457d2feff7e73e491a7d09ee871e8f2f4cc2bc437f86bd86a42554ec6` |
 | `logo.png` | 63440 | `11afaf1b0d3ca68393d202e4810bf766b5b6d591b4e3ec52f41d3cacaa4616ec` |
 | `favicon.ico` | 7411 | `407fde0ca2788409e87e11f596fa02e6a0b121817fcea7fd995beec1801e287b` |
@@ -74,6 +74,7 @@ downloads is committed in this repository and is hashed below.
 | `lib/cholangitis-v310.js` | 4886 | `4cac9a021e002921e5ab5a7b41a7bb3b029db3050404e1bcf586f94cb8e8d7c3` |
 | `lib/cholecystitis-dx-v313.js` | 4270 | `6360a208f6243d59a29a492fcd166d7de931a86faf14ea411df7c782bf16cdcd` |
 | `lib/cholecystitis-v311.js` | 4816 | `d8e48338dd1d8961b5b227af4dfaba7c74602773b6314bfe605009ea637729a4` |
+| `lib/clark-level-v340.js` | 3939 | `def67d057403850cbdc41455c286e22795e0c276c0f4e365d5e76c0e6b553599` |
 | `lib/clavien-dindo-v320.js` | 5404 | `ae140f525e3d1f6103581f1d1e2eeed46813f69ada14d9c764ed867d51bda76b` |
 | `lib/clinical-v4.js` | 13481 | `2434fa8ccf04a471d1d7ecf0075e6c279a2025b1eac834c06efb70c923a62e5e` |
 | `lib/clinical-v5.js` | 25042 | `1da466fb812401a08c4a1419f8b5eb579943d80e3626c00749a1b3bc87ac57cc` |
@@ -196,7 +197,7 @@ downloads is committed in this repository and is hashed below.
 | `lib/massive-transfusion-v265.js` | 3240 | `7ad4d1d86063fdd077546be5d6381ea4a5024ef669389f88abdfe07850903b29` |
 | `lib/medication-v4.js` | 18192 | `467f9576c50da696cc56094eb022d0a5ed1e88de0c7618448554ede8067270b0` |
 | `lib/medication-v5.js` | 18863 | `ce81d9f8954abbd412892c13af9936f992239164f26fd2b999eaea7902787ab7` |
-| `lib/meta.js` | 1637738 | `b685581938644a7dd94669c6e3a5fd5c4ac9a99d24eed41daba072e59c2265f2` |
+| `lib/meta.js` | 1638799 | `df526ce689f4ab6ca98d964eb3830bbac4cfa76198a214ab7b3b681625593e67` |
 | `lib/metabolic-hepatic-v219.js` | 12791 | `b9352877cebf7fbf3c3b99ecb8b72cdbee3ed94e056dc019113668609f5a95a8` |
 | `lib/metabolic-onc-v88.js` | 12659 | `1553b641668c121661a66647da71a4aaaa023e9f3a6b7a753efbcdab27cdba81` |
 | `lib/metabolic-v269.js` | 3262 | `0c7a42557886f2b0aeee7949b8d0bd682d795d4526174fd540717a978d94ec2f` |
@@ -574,6 +575,7 @@ downloads is committed in this repository and is hashed below.
 | `views/group-v338.js` | 3175 | `ac8b8b5ff4ab06ee3307365cab9d278f72ee967a539b94705100e7bbd6d5af80` |
 | `views/group-v339.js` | 3026 | `8a6d2c31f23e5b3ad1efefb7e714edcc30a89b4f17c9ceac4bd86d910790203a` |
 | `views/group-v34.js` | 14778 | `1eabda9aad5bf2728a8e49da8cfb227ce2a0560bea68a952ab259e60a8fc60b9` |
+| `views/group-v340.js` | 2977 | `7fad1bf257255ccd9824be8ef2a683acb9134a7b31b433ae6c05bf9539c55ec5` |
 | `views/group-v35.js` | 10362 | `345646cf73716e4125cf18cf2a1a1c6ae16ee526ea0b0ee418fc2ea7ffd47bea` |
 | `views/group-v36.js` | 9701 | `27235c5bd11c79ea046d75fe20f455c2648c6cbc31a1e1f2a9c1fccbcd41c693` |
 | `views/group-v37.js` | 11703 | `b177fd467dbf0b92eab8832360375b7527667956f9392621cb2aedd70eb0e26d` |

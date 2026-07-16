@@ -6,6 +6,21 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v340 — Clark level (melanoma invasion) tile, 1191 → 1192)
+
+- New `clark-level` tile (group G): the Clark level of a cutaneous melanoma (levels I–V) — the classic
+  anatomic-compartment microstaging that grades a melanoma by the skin layer it reaches, complementing the
+  AJCC melanoma T category (Breslow thickness) already in the catalog; previously absent. The pathologist
+  picks the level and the tile reports its description. **I:** intraepidermal (in situ). **II:** partial
+  papillary-dermis invasion. **III:** fills the papillary dermis to the reticular interface. **IV:**
+  reticular dermis — flagged. **V:** subcutaneous fat — flagged. A Clark level, not a diagnosis, a staging
+  decision, or a prognosis ([spec-v11] §5.3); modern staging uses AJCC TNM with Breslow thickness (surfaced
+  in the note). Definitions transcribed (spec-v97) from Clark 1969 (Cancer Res), cross-verified against
+  melanoma-staging references; no citation-staleness row (the citation carries no guideline-issuer acronym).
+  New `lib/clark-level-v340.js` + `views/group-v340.js` (RV340); +1 META entry, +1 UTILITIES row, a synonym
+  entry (v61 → v62), 5 unit tests + fuzz, corpus rebuilt to 1192.
+  See [docs/spec-v340.md](docs/spec-v340.md). The MCP adapter follows in a later wave.
+
 ### Added (spec-v339 — Cormack-Lehane laryngoscopy grade tile, 1190 → 1191)
 
 - New `cormack-lehane` tile (group G): the Cormack-Lehane classification of the laryngeal view at direct
