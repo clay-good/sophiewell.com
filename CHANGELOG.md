@@ -6,6 +6,25 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v347 — Herring lateral pillar classification (Perthes) tile, 1198 → 1199)
+
+- New `herring-pillar` tile (group G): the Herring lateral pillar classification of Legg-Calvé-Perthes
+  disease (groups A, B, B/C border, C) — the modern prognostic standard, which grades the disease by the
+  height of the lateral pillar of the capital femoral epiphysis rather than total epiphyseal involvement,
+  completing the Perthes-classification pair with the Catterall tile shipped in spec-v346; previously
+  absent. The clinician picks the lateral-pillar-height group and the tile reports its description.
+  **A:** pillar not involved (best prognosis). **B:** pillar > 50% of original height. **B/C border:**
+  narrow or poorly ossified at about 50% — flagged. **C:** pillar < 50% (poorest prognosis) — flagged. A
+  Herring group, not a diagnosis, a treatment decision, or a prognosis ([spec-v11] §5.3); the prognosis
+  also depends strongly on the child's age at onset, so the group alone is not the outcome. Definitions
+  transcribed (spec-v97) from Herring 1992 (J Pediatr Orthop) and Herring 2004 (JBJS Am, the B/C border),
+  cross-verified against pediatric-orthopedic references; no citation-staleness row (the citations carry
+  no guideline-issuer acronym). Companion-gap pattern: the Perthes domain has both the involvement scale
+  (Catterall) and the lateral-pillar-height scale (Herring). New `lib/herring-pillar-v347.js` +
+  `views/group-v347.js` (RV347); +1 META entry, +1 UTILITIES row, a synonym entry (v68 → v69), 5 unit
+  tests + fuzz, corpus rebuilt to 1199. See [docs/spec-v347.md](docs/spec-v347.md). The MCP adapter
+  follows in a later wave.
+
 ### Added (spec-v346 — Catterall classification (Legg-Calvé-Perthes) tile, 1197 → 1198)
 
 - New `catterall-perthes` tile (group G): the Catterall classification of Legg-Calvé-Perthes disease

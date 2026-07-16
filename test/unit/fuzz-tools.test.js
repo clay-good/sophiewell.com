@@ -323,6 +323,7 @@ import * as sandersCalcanealV343 from '../../lib/sanders-calcaneal-v343.js';
 import * as ficatArletV344 from '../../lib/ficat-arlet-v344.js';
 import * as lichtmanKienbockV345 from '../../lib/lichtman-kienbock-v345.js';
 import * as catterallPerthesV346 from '../../lib/catterall-perthes-v346.js';
+import * as herringPillarV347 from '../../lib/herring-pillar-v347.js';
 import * as tbTesting from '../../lib/tb-testing.js';
 
 const MODULES = {
@@ -591,6 +592,7 @@ const MODULES = {
   'ficat-arlet-v344.js': ficatArletV344,
   'lichtman-kienbock-v345.js': lichtmanKienbockV345,
   'catterall-perthes-v346.js': catterallPerthesV346,
+  'herring-pillar-v347.js': herringPillarV347,
   'tb-testing.js': tbTesting,
 };
 
