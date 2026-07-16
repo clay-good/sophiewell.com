@@ -2537,6 +2537,17 @@ test('lib/montreal-ibd-v328.js worked calls', () => {
   assert.equal(uc.phenotype, 'E3 S2');
 });
 
+test('lib/paris-classification-v329.js worked calls', () => {
+  // 0-IIc (the META example): depressed, higher-risk.
+  const iic = ok('paris-classification', { 'paris-type': '0-IIc' });
+  assert.equal(iic.type, '0-IIc');
+  assert.equal(iic.highRisk, true);
+  // 0-Ip: pedunculated, not higher-risk.
+  assert.equal(ok('paris-classification', { 'paris-type': '0-Ip' }).highRisk, false);
+  // 0-III: excavated, higher-risk.
+  assert.equal(ok('paris-classification', { 'paris-type': '0-III' }).highRisk, true);
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];

@@ -78,7 +78,7 @@ find_calculator { "query": "stroke risk afib" }
        candidates: [ { id: "chads", name: "CHA2DS2-VASc", why: "synonym", ... }, ... ] }
 
 list_calculators { "specialty": "hepatology" }
-  -> { coverage: "1117 of 1109 catalog tiles exposed ...", calculators: [ { id: "meld-xi", ... }, ... ] }
+  -> { coverage: "1118 of 1109 catalog tiles exposed ...", calculators: [ { id: "meld-xi", ... }, ... ] }
 
 describe_calculator { "id": "meld-xi" }
   -> { inputSchema: { ... mx-bili, mx-creat ... }, citation: "Heuman DM ... Liver Transpl 2007", ... }
@@ -356,8 +356,9 @@ categories in `lib/lung-rads-v325.js`, and a one-hundred-fifty-first the ACR O-R
 US v2022 risk categories in `lib/o-rads-v326.js`, and a one-hundred-fifty-second the
 ACR LI-RADS v2018 CT/MRI diagnostic categories in `lib/li-rads-v327.js`, and a
 one-hundred-fifty-third the Montreal classification of IBD in
-`lib/montreal-ibd-v328.js`, for
-1117 across 233 modules
+`lib/montreal-ibd-v328.js`, and a one-hundred-fifty-fourth the Paris endoscopic
+classification in `lib/paris-classification-v329.js`, for
+1118 across 234 modules
 today. <!-- catalog-truth:historical (197 is the count of lib modules adapted, not a catalog tile count) -->
 Later waves extend it module by module against the same contract.
 

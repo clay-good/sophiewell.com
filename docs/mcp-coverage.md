@@ -1502,6 +1502,16 @@ round-trip both pass, without the phantom "2". Adapter appended to the existing
 rate to a target PaCO2. Brings the exposed total to **1072 calculators across 197
 modules**.
 
+## One-hundred-fifty-fourth wave — the Paris endoscopic classification in lib/paris-classification-v329.js (+1)
+
+`paris-classification` (spec-v329) applies the Paris endoscopic classification of superficial
+neoplastic lesions: given the morphologic type, it reports the description. `type` is an enum
+(`kind: 'enum'`, values 0-Ip, 0-Is, 0-IIa, 0-IIb, 0-IIc, 0-III) — the single input the renderer
+exposes. The example sets 0-IIc; its expected text carries the "0" from the type code, so it
+round-trips through the default `makeToArgs` with no custom toArgs. New adapter module registered
+in `mcp/catalog.js`; its golden probe ("polyp morphology") is promoted now that the tile is in
+the MCP-exposed registry. Brings the exposed total to **1118 calculators across 234 modules**.
+
 ## One-hundred-fifty-third wave — the Montreal classification of IBD in lib/montreal-ibd-v328.js (+1)
 
 `montreal-ibd` (spec-v328) composes the Montreal IBD phenotype: for Crohn's disease the age
@@ -3577,6 +3587,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/montreal-ibd-v328.js
 - `montreal-ibd`
+
+### lib/paris-classification-v329.js
+- `paris-classification`
 
 ### lib/tb-testing.js
 - `tb-testing`

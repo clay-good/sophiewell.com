@@ -241,6 +241,7 @@ import lungRadsV325 from './adapters/lung-rads-v325.js';
 import oRadsV326 from './adapters/o-rads-v326.js';
 import liRadsV327 from './adapters/li-rads-v327.js';
 import montrealIbdV328 from './adapters/montreal-ibd-v328.js';
+import parisClassificationV329 from './adapters/paris-classification-v329.js';
 import tbTesting from './adapters/tb-testing.js';
 import labInterpret from './adapters/lab-interpret.js';
 import decisionRulesV258 from './adapters/decision-rules-v258.js';
@@ -476,6 +477,7 @@ const ADAPTER_MODULES = [
   ['o-rads-v326', oRadsV326],
   ['li-rads-v327', liRadsV327],
   ['montreal-ibd-v328', montrealIbdV328],
+  ['paris-classification-v329', parisClassificationV329],
   ['tb-testing', tbTesting],
   ['lab-interpret', labInterpret],
   ['decision-rules-v258', decisionRulesV258],
