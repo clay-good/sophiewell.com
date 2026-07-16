@@ -78,7 +78,7 @@ find_calculator { "query": "stroke risk afib" }
        candidates: [ { id: "chads", name: "CHA2DS2-VASc", why: "synonym", ... }, ... ] }
 
 list_calculators { "specialty": "hepatology" }
-  -> { coverage: "1119 of 1109 catalog tiles exposed ...", calculators: [ { id: "meld-xi", ... }, ... ] }
+  -> { coverage: "1120 of 1109 catalog tiles exposed ...", calculators: [ { id: "meld-xi", ... }, ... ] }
 
 describe_calculator { "id": "meld-xi" }
   -> { inputSchema: { ... mx-bili, mx-creat ... }, citation: "Heuman DM ... Liver Transpl 2007", ... }
@@ -358,8 +358,9 @@ ACR LI-RADS v2018 CT/MRI diagnostic categories in `lib/li-rads-v327.js`, and a
 one-hundred-fifty-third the Montreal classification of IBD in
 `lib/montreal-ibd-v328.js`, and a one-hundred-fifty-fourth the Paris endoscopic
 classification in `lib/paris-classification-v329.js`, and a one-hundred-fifty-fifth
-the Nottingham Prognostic Index (breast cancer) in `lib/nottingham-npi-v330.js`, for
-1119 across 235 modules
+the Nottingham Prognostic Index (breast cancer) in `lib/nottingham-npi-v330.js`, and a
+one-hundred-fifty-sixth the Fitzpatrick skin phototype in `lib/fitzpatrick-v331.js`, for
+1120 across 236 modules
 today. <!-- catalog-truth:historical (197 is the count of lib modules adapted, not a catalog tile count) -->
 Later waves extend it module by module against the same contract.
 

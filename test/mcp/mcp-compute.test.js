@@ -2559,6 +2559,17 @@ test('lib/nottingham-npi-v330.js worked calls', () => {
   assert.equal(ok('nottingham-prognostic-index', { 'npi-size': '3', 'npi-node': '3', 'npi-grade': '3' }).group, 'poor');
 });
 
+test('lib/fitzpatrick-v331.js worked calls', () => {
+  // Type III (the META example): not higher-photosensitivity.
+  const iii = ok('fitzpatrick-skin-type', { 'fitz-type': 'III' });
+  assert.equal(iii.type, 'III');
+  assert.equal(iii.highRisk, false);
+  // Type I: higher-photosensitivity.
+  assert.equal(ok('fitzpatrick-skin-type', { 'fitz-type': 'I' }).highRisk, true);
+  // Type VI: not higher-photosensitivity.
+  assert.equal(ok('fitzpatrick-skin-type', { 'fitz-type': 'VI' }).type, 'VI');
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];

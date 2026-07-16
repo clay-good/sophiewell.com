@@ -1502,6 +1502,16 @@ round-trip both pass, without the phantom "2". Adapter appended to the existing
 rate to a target PaCO2. Brings the exposed total to **1072 calculators across 197
 modules**.
 
+## One-hundred-fifty-sixth wave — the Fitzpatrick skin phototype in lib/fitzpatrick-v331.js (+1)
+
+`fitzpatrick-skin-type` (spec-v331) applies the Fitzpatrick skin phototype: given the type, it
+reports the description. `type` is an enum (`kind: 'enum'`, values I/II/III/IV/V/VI) — the single
+input the renderer exposes. The example sets type III; its expected text is the phototype
+description (roman-graded, no numeric facts), so it round-trips through the default `makeToArgs`
+with no custom toArgs. New adapter module registered in `mcp/catalog.js`; its golden probe ("skin
+phototype") is promoted now that the tile is in the MCP-exposed registry. Brings the exposed total
+to **1120 calculators across 236 modules**.
+
 ## One-hundred-fifty-fifth wave — the Nottingham Prognostic Index (breast cancer) in lib/nottingham-npi-v330.js (+1)
 
 `nottingham-prognostic-index` (spec-v330) computes the Nottingham Prognostic Index for early
@@ -3604,6 +3614,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/nottingham-npi-v330.js
 - `nottingham-prognostic-index`
+
+### lib/fitzpatrick-v331.js
+- `fitzpatrick-skin-type`
 
 ### lib/tb-testing.js
 - `tb-testing`

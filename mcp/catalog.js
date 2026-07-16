@@ -243,6 +243,7 @@ import liRadsV327 from './adapters/li-rads-v327.js';
 import montrealIbdV328 from './adapters/montreal-ibd-v328.js';
 import parisClassificationV329 from './adapters/paris-classification-v329.js';
 import nottinghamNpiV330 from './adapters/nottingham-npi-v330.js';
+import fitzpatrickV331 from './adapters/fitzpatrick-v331.js';
 import tbTesting from './adapters/tb-testing.js';
 import labInterpret from './adapters/lab-interpret.js';
 import decisionRulesV258 from './adapters/decision-rules-v258.js';
@@ -480,6 +481,7 @@ const ADAPTER_MODULES = [
   ['montreal-ibd-v328', montrealIbdV328],
   ['paris-classification-v329', parisClassificationV329],
   ['nottingham-npi-v330', nottinghamNpiV330],
+  ['fitzpatrick-v331', fitzpatrickV331],
   ['tb-testing', tbTesting],
   ['lab-interpret', labInterpret],
   ['decision-rules-v258', decisionRulesV258],
