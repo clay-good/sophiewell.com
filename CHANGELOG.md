@@ -6,6 +6,22 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v329 — Paris endoscopic classification tile, 1180 → 1181)
+
+- New `paris-classification` tile (group G): the Paris endoscopic classification of superficial neoplastic
+  lesions (esophagus, stomach, colon) — the standard morphology classification for superficial GI lesions,
+  which guides the resection approach, previously absent from the catalog. The endoscopist picks the
+  morphologic type and the tile reports its description. **0-Ip:** protruded, pedunculated. **0-Is:**
+  protruded, sessile. **0-IIa:** slightly elevated. **0-IIb:** completely flat. **0-IIc:** slightly
+  depressed. **0-III:** excavated. Depressed (0-IIc) and excavated (0-III) types are flagged higher-risk
+  (higher risk of submucosal invasion). A morphologic type, not a diagnosis or a treatment order
+  ([spec-v11] §5.3). Types transcribed (spec-v97) from the Paris classification (Gastrointest Endosc 2003 /
+  Endoscopy 2005), cross-verified against secondary reproductions; no citation-staleness row (the GIE
+  citation carries no guideline-issuer acronym). New `lib/paris-classification-v329.js` +
+  `views/group-v329.js` (RV329); +1 META entry, +1 UTILITIES row, a synonym entry (v50 → v51), 5 unit tests
+  + fuzz, corpus rebuilt to 1181. See [docs/spec-v329.md](docs/spec-v329.md). The MCP adapter follows in a
+  later wave.
+
 ### Added (spec-v328 — Montreal classification of IBD tile, 1179 → 1180)
 
 - New `montreal-ibd` tile (group G): the Montreal classification of inflammatory bowel disease (Crohn's

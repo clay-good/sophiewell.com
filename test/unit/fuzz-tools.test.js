@@ -305,6 +305,7 @@ import * as lungRadsV325 from '../../lib/lung-rads-v325.js';
 import * as oRadsV326 from '../../lib/o-rads-v326.js';
 import * as liRadsV327 from '../../lib/li-rads-v327.js';
 import * as montrealIbdV328 from '../../lib/montreal-ibd-v328.js';
+import * as parisClassificationV329 from '../../lib/paris-classification-v329.js';
 import * as tbTesting from '../../lib/tb-testing.js';
 
 const MODULES = {
@@ -555,6 +556,7 @@ const MODULES = {
   'o-rads-v326.js': oRadsV326,
   'li-rads-v327.js': liRadsV327,
   'montreal-ibd-v328.js': montrealIbdV328,
+  'paris-classification-v329.js': parisClassificationV329,
   'tb-testing.js': tbTesting,
 };
 
