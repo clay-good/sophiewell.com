@@ -78,7 +78,7 @@ find_calculator { "query": "stroke risk afib" }
        candidates: [ { id: "chads", name: "CHA2DS2-VASc", why: "synonym", ... }, ... ] }
 
 list_calculators { "specialty": "hepatology" }
-  -> { coverage: "1139 of 1109 catalog tiles exposed ...", calculators: [ { id: "meld-xi", ... }, ... ] }
+  -> { coverage: "1140 of 1109 catalog tiles exposed ...", calculators: [ { id: "meld-xi", ... }, ... ] }
 
 describe_calculator { "id": "meld-xi" }
   -> { inputSchema: { ... mx-bili, mx-creat ... }, citation: "Heuman DM ... Liver Transpl 2007", ... }
@@ -381,7 +381,8 @@ the Herring lateral pillar classification (Perthes) in `lib/herring-pillar-v347.
 one-hundred-seventy-third the Strasberg classification (bile duct injury) in `lib/strasberg-bdi-v348.js`,
 and a one-hundred-seventy-fourth the Fazekas scale (white matter hyperintensities) in
 `lib/fazekas-v349.js`, and a one-hundred-seventy-fifth the Tscherne classification (closed-fracture
-soft-tissue injury) in `lib/tscherne-closed-v350.js`, for 1139 across 255 modules
+soft-tissue injury) in `lib/tscherne-closed-v350.js`, and a one-hundred-seventy-sixth the Goligher
+classification (internal hemorrhoids) in `lib/goligher-hemorrhoids-v351.js`, for 1140 across 256 modules
 today. <!-- catalog-truth:historical (197 is the count of lib modules adapted, not a catalog tile count) -->
 Later waves extend it module by module against the same contract.
 

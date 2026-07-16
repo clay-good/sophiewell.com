@@ -2792,6 +2792,18 @@ test('lib/tscherne-closed-v350.js worked calls', () => {
   assert.equal(ok('tscherne-closed', { 'tscherne-grade': 'III' }).severe, true);
 });
 
+test('lib/goligher-hemorrhoids-v351.js worked calls', () => {
+  // Grade III (the META example): prolapse requiring manual reduction, flagged advanced.
+  const three = ok('goligher-hemorrhoids', { 'goligher-grade': 'III' });
+  assert.equal(three.grade, 'III');
+  assert.equal(three.advanced, true);
+  assert.match(three.band, /require manual reduction/);
+  // Grade I: bleed, no prolapse, not flagged.
+  assert.equal(ok('goligher-hemorrhoids', { 'goligher-grade': 'I' }).advanced, false);
+  // Grade IV: irreducible, flagged advanced.
+  assert.equal(ok('goligher-hemorrhoids', { 'goligher-grade': 'IV' }).advanced, true);
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];

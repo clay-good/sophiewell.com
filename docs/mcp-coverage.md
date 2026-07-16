@@ -1502,6 +1502,16 @@ round-trip both pass, without the phantom "2". Adapter appended to the existing
 rate to a target PaCO2. Brings the exposed total to **1072 calculators across 197
 modules**.
 
+## One-hundred-seventy-sixth wave — the Goligher classification (internal hemorrhoids) in lib/goligher-hemorrhoids-v351.js (+1)
+
+`goligher-hemorrhoids` (spec-v351) applies the Goligher classification of internal hemorrhoids by degree
+of prolapse: given the grade, it reports the prolapse description. `grade` is an enum (`kind: 'enum'`,
+values I/II/III/IV) — the single input the renderer exposes. The example sets grade III; its expected
+text is the grade description with no numeric facts (the grade is a roman numeral), so it round-trips
+through the default `makeToArgs` with no custom toArgs. New adapter module registered in `mcp/catalog.js`;
+its golden probe ("internal hemorrhoid grade") is promoted now that the tile is in the MCP-exposed
+registry. Brings the exposed total to **1140 calculators across 256 modules**.
+
 ## One-hundred-seventy-fifth wave — the Tscherne classification (closed-fracture soft-tissue injury) in lib/tscherne-closed-v350.js (+1)
 
 `tscherne-closed` (spec-v350) applies the Oestern-Tscherne closed-fracture soft-tissue classification:
@@ -3867,6 +3877,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/tscherne-closed-v350.js
 - `tscherne-closed`
+
+### lib/goligher-hemorrhoids-v351.js
+- `goligher-hemorrhoids`
 
 ### lib/tb-testing.js
 - `tb-testing`
