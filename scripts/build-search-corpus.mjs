@@ -38,7 +38,7 @@ const BUDGET_GZIP = 200 * 1024;
 // Field length caps (chars, cut at a word boundary). Tuned so the full catalog
 // stays comfortably under the gzip budget with headroom for growth.
 const CAP = { summary: 200, what: 200, when: 200, expected: 180, band: 120 };
-const MAX_BANDS = 5;
+const MAX_BANDS = 4;
 
 // Sanitize source prose: en/em dashes -> hyphen, smart quotes -> ASCII, collapse
 // whitespace. The dash/quote codepoints are written as \u escapes (not literals)

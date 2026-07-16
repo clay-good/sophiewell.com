@@ -6,6 +6,27 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v354 — Tonnis classification (hip osteoarthritis) tile, 1205 → 1206)
+
+- New `tonnis-hip-oa` tile (group G): the Tonnis classification (grade) of hip osteoarthritis on an AP
+  pelvis radiograph (grades 0–3) — the hip-specific radiographic-OA grade, the hip counterpart to the
+  general `kellgren-lawrence` grade; previously absent. The clinician picks the grade and the tile reports
+  its description. **0:** no OA. **1:** slight sclerosis, slight joint-space narrowing, small osteophytes.
+  **2:** small cysts, moderate narrowing, moderate loss of head sphericity — flagged (radiographic OA).
+  **3:** large cysts, severe narrowing, head deformity, or AVN (end-stage) — flagged. A grade of 2 or more
+  defines radiographic hip OA. Disambiguated from the Tonnis *angle* (acetabular index). A Tonnis grade,
+  not a diagnosis, a treatment decision, or a prognosis ([spec-v11] §5.3); the joint-preservation vs
+  total-hip-arthroplasty (grade 3) association is the classically taught pattern, not an order. Bands
+  transcribed (spec-v97) from Tonnis 1987, cross-verified against CORR "Classifications in Brief" 2018 and
+  Radiopaedia; no citation-staleness row (the citation carries no guideline-issuer acronym). New
+  `lib/tonnis-hip-oa-v354.js` + `views/group-v354.js` (RV354); +1 META entry, +1 UTILITIES row, a synonym
+  entry (v75 → v76), 5 unit tests + fuzz, corpus rebuilt to 1206. See [docs/spec-v354.md](docs/spec-v354.md).
+  The MCP adapter follows in a later wave.
+- Search corpus: reduced `MAX_BANDS` 5 → 4 in `scripts/build-search-corpus.mjs`. At 1206 tiles the
+  gzipped corpus reached its fixed 200 KB budget; the 5th interpretation band (emitted by only 31 tiles)
+  is the lowest-signal corpus field, so dropping it restores headroom (204,939 → 204,288 bytes) with no
+  change to search relevance — all 168 golden probes still route into top-3.
+
 ### Added (spec-v353 — Crowe classification (hip dysplasia) tile, 1204 → 1205)
 
 - New `crowe-ddh` tile (group G): the Crowe classification of adult developmental dysplasia of the hip

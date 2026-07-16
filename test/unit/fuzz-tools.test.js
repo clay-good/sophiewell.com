@@ -330,6 +330,7 @@ import * as tscherneClosedV350 from '../../lib/tscherne-closed-v350.js';
 import * as goligherHemorrhoidsV351 from '../../lib/goligher-hemorrhoids-v351.js';
 import * as lanskyV352 from '../../lib/lansky-v352.js';
 import * as croweDdhV353 from '../../lib/crowe-ddh-v353.js';
+import * as tonnisHipOaV354 from '../../lib/tonnis-hip-oa-v354.js';
 import * as tbTesting from '../../lib/tb-testing.js';
 
 const MODULES = {
@@ -605,6 +606,7 @@ const MODULES = {
   'goligher-hemorrhoids-v351.js': goligherHemorrhoidsV351,
   'lansky-v352.js': lanskyV352,
   'crowe-ddh-v353.js': croweDdhV353,
+  'tonnis-hip-oa-v354.js': tonnisHipOaV354,
   'tb-testing.js': tbTesting,
 };
 
