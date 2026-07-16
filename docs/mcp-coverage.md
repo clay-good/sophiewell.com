@@ -1502,6 +1502,16 @@ round-trip both pass, without the phantom "2". Adapter appended to the existing
 rate to a target PaCO2. Brings the exposed total to **1072 calculators across 197
 modules**.
 
+## One-hundred-fifty-eighth wave — the Kikuchi classification (sessile submucosal invasion) in lib/kikuchi-v333.js (+1)
+
+`kikuchi-level` (spec-v333) applies the Kikuchi classification: given the submucosal-invasion level,
+it reports the description. `level` is an enum (`kind: 'enum'`, values Sm1/Sm2/Sm3) — the single
+input the renderer exposes. The example sets level Sm3; its only numeric fact (~25%) already appears
+verbatim in the compute's band string, so it round-trips through the default `makeToArgs` with no
+custom toArgs. New adapter module registered in `mcp/catalog.js`; its golden probe ("submucosal
+invasion depth") is promoted now that the tile is in the MCP-exposed registry. Brings the exposed
+total to **1122 calculators across 238 modules**.
+
 ## One-hundred-fifty-seventh wave — the Haggitt classification (malignant colorectal polyp) in lib/haggitt-v332.js (+1)
 
 `haggitt-level` (spec-v332) applies the Haggitt classification: given the invasion level, it reports
@@ -3630,6 +3640,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/haggitt-v332.js
 - `haggitt-level`
+
+### lib/kikuchi-v333.js
+- `kikuchi-level`
 
 ### lib/tb-testing.js
 - `tb-testing`

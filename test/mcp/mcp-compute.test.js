@@ -2581,6 +2581,17 @@ test('lib/haggitt-v332.js worked calls', () => {
   assert.equal(ok('haggitt-level', { 'hag-level': '2' }).level, '2');
 });
 
+test('lib/kikuchi-v333.js worked calls', () => {
+  // Sm3 (the META example): higher-risk, lower-third invasion.
+  const sm3 = ok('kikuchi-level', { 'kik-level': 'Sm3' });
+  assert.equal(sm3.level, 'Sm3');
+  assert.equal(sm3.highRisk, true);
+  // Sm1: upper third, low risk.
+  assert.equal(ok('kikuchi-level', { 'kik-level': 'Sm1' }).highRisk, false);
+  // Sm2: middle third, higher risk.
+  assert.equal(ok('kikuchi-level', { 'kik-level': 'Sm2' }).highRisk, true);
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];

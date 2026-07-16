@@ -78,7 +78,7 @@ find_calculator { "query": "stroke risk afib" }
        candidates: [ { id: "chads", name: "CHA2DS2-VASc", why: "synonym", ... }, ... ] }
 
 list_calculators { "specialty": "hepatology" }
-  -> { coverage: "1121 of 1109 catalog tiles exposed ...", calculators: [ { id: "meld-xi", ... }, ... ] }
+  -> { coverage: "1122 of 1109 catalog tiles exposed ...", calculators: [ { id: "meld-xi", ... }, ... ] }
 
 describe_calculator { "id": "meld-xi" }
   -> { inputSchema: { ... mx-bili, mx-creat ... }, citation: "Heuman DM ... Liver Transpl 2007", ... }
@@ -361,7 +361,8 @@ classification in `lib/paris-classification-v329.js`, and a one-hundred-fifty-fi
 the Nottingham Prognostic Index (breast cancer) in `lib/nottingham-npi-v330.js`, and a
 one-hundred-fifty-sixth the Fitzpatrick skin phototype in `lib/fitzpatrick-v331.js`, and a
 one-hundred-fifty-seventh the Haggitt classification (malignant colorectal polyp) in
-`lib/haggitt-v332.js`, for 1121 across 237 modules
+`lib/haggitt-v332.js`, and a one-hundred-fifty-eighth the Kikuchi classification (sessile
+submucosal invasion) in `lib/kikuchi-v333.js`, for 1122 across 238 modules
 today. <!-- catalog-truth:historical (197 is the count of lib modules adapted, not a catalog tile count) -->
 Later waves extend it module by module against the same contract.
 
