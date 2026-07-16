@@ -2667,6 +2667,17 @@ test('lib/cormack-lehane-v339.js worked calls', () => {
   assert.equal(ok('cormack-lehane', { 'cl-grade': '4' }).difficult, true);
 });
 
+test('lib/clark-level-v340.js worked calls', () => {
+  // Level IV (the META example): reticular dermis, flagged deeper.
+  const four = ok('clark-level', { 'clark-lvl': 'IV' });
+  assert.equal(four.level, 'IV');
+  assert.equal(four.deep, true);
+  // Level I: in situ, not flagged.
+  assert.equal(ok('clark-level', { 'clark-lvl': 'I' }).deep, false);
+  // Level V: subcutaneous fat, flagged.
+  assert.equal(ok('clark-level', { 'clark-lvl': 'V' }).deep, true);
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];

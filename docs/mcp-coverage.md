@@ -1502,6 +1502,16 @@ round-trip both pass, without the phantom "2". Adapter appended to the existing
 rate to a target PaCO2. Brings the exposed total to **1072 calculators across 197
 modules**.
 
+## One-hundred-sixty-fifth wave — the Clark level (melanoma invasion) in lib/clark-level-v340.js (+1)
+
+`clark-level` (spec-v340) applies the Clark level: given the level, it reports the
+anatomic-compartment description. `level` is an enum (`kind: 'enum'`, values I/II/III/IV/V) — the
+single input the renderer exposes. The example sets level IV; its expected text is the level
+description (no numeric facts), so it round-trips through the default `makeToArgs` with no custom
+toArgs. New adapter module registered in `mcp/catalog.js`; its golden probe ("melanoma invasion
+level") is promoted now that the tile is in the MCP-exposed registry. Brings the exposed total to
+**1129 calculators across 245 modules**.
+
 ## One-hundred-sixty-fourth wave — the Cormack-Lehane laryngoscopy grade in lib/cormack-lehane-v339.js (+1)
 
 `cormack-lehane` (spec-v339) applies the Cormack-Lehane classification: given the grade, it reports
@@ -3723,6 +3733,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/cormack-lehane-v339.js
 - `cormack-lehane`
+
+### lib/clark-level-v340.js
+- `clark-level`
 
 ### lib/tb-testing.js
 - `tb-testing`
