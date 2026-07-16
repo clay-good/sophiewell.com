@@ -1502,6 +1502,15 @@ round-trip both pass, without the phantom "2". Adapter appended to the existing
 rate to a target PaCO2. Brings the exposed total to **1072 calculators across 197
 modules**.
 
+## One-hundred-seventy-ninth wave — the Tonnis classification (hip osteoarthritis) in lib/tonnis-hip-oa-v354.js (+1)
+
+`tonnis-hip-oa` (spec-v354) applies the Tonnis classification of hip osteoarthritis: given the grade, it
+reports the radiographic hip-OA description. `grade` is an enum (`kind: 'enum'`, values 0/1/2/3) — the
+single input the renderer exposes. The example sets grade 2; its expected number (2) round-trips through
+the default `makeToArgs` with no custom toArgs. New adapter module registered in `mcp/catalog.js`; its
+golden probe ("hip osteoarthritis grade") is promoted now that the tile is in the MCP-exposed registry.
+Brings the exposed total to **1143 calculators across 259 modules**.
+
 ## One-hundred-seventy-eighth wave — the Crowe classification (hip dysplasia) in lib/crowe-ddh-v353.js (+1)
 
 `crowe-ddh` (spec-v353) applies the Crowe classification of adult developmental dysplasia of the hip:
@@ -3906,6 +3915,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/crowe-ddh-v353.js
 - `crowe-ddh`
+
+### lib/tonnis-hip-oa-v354.js
+- `tonnis-hip-oa`
 
 ### lib/tb-testing.js
 - `tb-testing`

@@ -2828,6 +2828,18 @@ test('lib/crowe-ddh-v353.js worked calls', () => {
   assert.equal(ok('crowe-ddh', { 'crowe-grade': 'IV' }).severe, true);
 });
 
+test('lib/tonnis-hip-oa-v354.js worked calls', () => {
+  // Grade 2 (the META example): small cysts / moderate narrowing, radiographic OA, flagged.
+  const two = ok('tonnis-hip-oa', { 'tonnis-grade': '2' });
+  assert.equal(two.grade, '2');
+  assert.equal(two.osteoarthritis, true);
+  assert.match(two.band, /small subchondral cysts/);
+  // Grade 0: no OA, not flagged.
+  assert.equal(ok('tonnis-hip-oa', { 'tonnis-grade': '0' }).osteoarthritis, false);
+  // Grade 3: end-stage, flagged.
+  assert.equal(ok('tonnis-hip-oa', { 'tonnis-grade': '3' }).osteoarthritis, true);
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];
