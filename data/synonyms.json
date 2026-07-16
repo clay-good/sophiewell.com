@@ -1,5 +1,5 @@
 {
-  "version": "v49-2026-07-15",
+  "version": "v50-2026-07-15",
   "note": "spec-v7 section 3.2: hand-curated patient-phrasing -> tile id table. Each entry maps patient-mental-model phrases (and, from the v8/v9 plain-language-search batches, clinical abbreviations, eponym aliases, and canonical-intent phrases) to a single existing tile. Audience is the primary audience the entry serves; the matcher deprioritizes (does not hide) entries when the user has selected a different chip. Every phrase is lowercase; every tile id is an existing catalog tile (guarded by test/unit/synonyms-catalog.test.js). Adding a new phrase is a one-line PR.",
   "entries": [
     { "phrases": ["denied", "denial letter", "they denied it", "insurance said no", "appeal", "write an appeal", "appeal my claim", "appeal letter", "appeal a denial"],
@@ -242,6 +242,8 @@
     { "phrases": ["o-rads", "orads", "ovarian adnexal risk", "ovarian mass risk category", "adnexal mass ultrasound category", "ovarian cyst risk category", "o-rads ultrasound", "ovarian adnexal reporting"],
       "tile": "o-rads", "audience": "clinicians" },
     { "phrases": ["li-rads", "lirads", "liver imaging category", "liver observation category", "lr-5", "hcc imaging category", "liver imaging reporting", "li-rads category"],
-      "tile": "li-rads", "audience": "clinicians" }
+      "tile": "li-rads", "audience": "clinicians" },
+    { "phrases": ["montreal classification", "montreal ibd", "crohn phenotype", "montreal crohn", "ulcerative colitis extent", "ibd phenotype", "montreal classification crohn", "uc extent severity"],
+      "tile": "montreal-ibd", "audience": "clinicians" }
   ]
 }

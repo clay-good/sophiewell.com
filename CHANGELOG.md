@@ -6,6 +6,22 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v328 — Montreal classification of IBD tile, 1179 → 1180)
+
+- New `montreal-ibd` tile (group G): the Montreal classification of inflammatory bowel disease (Crohn's
+  A/L/B or UC E/S phenotype) — the standard IBD phenotype system, used in every IBD clinic, previously absent
+  from the catalog (the existing IBD tiles like `harvey-bradshaw` / `mayo-uc` are activity/endoscopic
+  indices). The clinician picks the disease and the relevant axes and the tile composes the phenotype.
+  **Crohn's:** age A1 (≤ 16 y) / A2 (17–40 y) / A3 (> 40 y); location L1 ileal / L2 colonic / L3 ileocolonic
+  (+L4 upper GI); behavior B1 inflammatory / B2 stricturing / B3 penetrating (p perianal) — e.g. `A2 L3 B2`,
+  `A1 L1+L4 B3p`. **UC:** extent E1 proctitis / E2 left-sided / E3 extensive; severity S0–S3 — e.g. `E3 S2`.
+  A classification, not a diagnosis or a treatment order ([spec-v11] §5.3). Categories transcribed
+  (spec-v97) from Silverberg 2005 (Can J Gastroenterol), cross-verified against Satsangi 2006 (Gut); no
+  citation-staleness row (the citation carries no guideline-issuer acronym). New `lib/montreal-ibd-v328.js`
+  + `views/group-v328.js` (RV328); +1 META entry, +1 UTILITIES row, a synonym entry (v49 → v50), 6 unit
+  tests + fuzz, corpus rebuilt to 1180. See [docs/spec-v328.md](docs/spec-v328.md). The MCP adapter follows
+  in a later wave.
+
 ### Added (spec-v327 — ACR LI-RADS v2018 CT/MRI diagnostic categories tile, 1178 → 1179)
 
 - New `li-rads` tile (group G): the ACR LI-RADS v2018 CT/MRI diagnostic categories (LR-1 to LR-5, LR-M,

@@ -304,6 +304,7 @@ import * as wexnerV324 from '../../lib/wexner-v324.js';
 import * as lungRadsV325 from '../../lib/lung-rads-v325.js';
 import * as oRadsV326 from '../../lib/o-rads-v326.js';
 import * as liRadsV327 from '../../lib/li-rads-v327.js';
+import * as montrealIbdV328 from '../../lib/montreal-ibd-v328.js';
 import * as tbTesting from '../../lib/tb-testing.js';
 
 const MODULES = {
@@ -553,6 +554,7 @@ const MODULES = {
   'lung-rads-v325.js': lungRadsV325,
   'o-rads-v326.js': oRadsV326,
   'li-rads-v327.js': liRadsV327,
+  'montreal-ibd-v328.js': montrealIbdV328,
   'tb-testing.js': tbTesting,
 };
 
