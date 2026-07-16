@@ -6,6 +6,22 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v352 — Lansky Play-Performance Scale (pediatric functional status) tile, 1203 → 1204)
+
+- New `lansky` tile (group G): the Lansky Play-Performance Scale — the observer-rated pediatric
+  functional-status scale (0–100 in steps of 10), the pediatric counterpart to the adult Karnofsky score;
+  previously absent. The catalog carried `ecog-karnofsky` and `pps` for adults but no pediatric analogue.
+  The clinician picks the score describing the child's usual play and activity and the tile reports its
+  description and coarse functional band. **80–100:** able to carry on normal activity. **50–70:** reduced
+  activity but up and about. **0–40:** mostly bedbound / disabled — flagged. A Lansky score, not a
+  diagnosis, a treatment/eligibility decision, or a prognosis ([spec-v11] §5.3); trial-eligibility
+  thresholds (e.g. Lansky ≥ 60, analogous to Karnofsky ≥ 60) are protocol-specific. Levels transcribed
+  (spec-v97) from Lansky et al. 1987 (Cancer), cross-verified against pediatric-oncology references; no
+  citation-staleness row (the citation carries no guideline-issuer acronym). New `lib/lansky-v352.js` +
+  `views/group-v352.js` (RV352); +1 META entry, +1 UTILITIES row, a synonym entry (v73 → v74), 5 unit
+  tests + fuzz, corpus rebuilt to 1204. See [docs/spec-v352.md](docs/spec-v352.md). The MCP adapter
+  follows in a later wave.
+
 ### Added (spec-v351 — Goligher classification (internal hemorrhoids) tile, 1202 → 1203)
 
 - New `goligher-hemorrhoids` tile (group G): the Goligher classification of internal hemorrhoids by
