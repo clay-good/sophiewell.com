@@ -6,6 +6,22 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v358 — Ramsay Sedation Scale tile, 1209 → 1210)
+
+- New `ramsay-sedation` tile (group G): the Ramsay Sedation Scale (levels 1–6) — the original, still
+  widely used clinical scale for the depth of sedation; previously absent. The catalog carried RASS and
+  SAS/Riker but not the Ramsay scale they descend from. The clinician picks the level and the tile reports
+  its description and awake/asleep state. Awake: **1** agitated/restless — flagged; **2** cooperative,
+  tranquil; **3** responds to commands only. Asleep: **4** brisk response to a glabellar tap / loud
+  stimulus; **5** sluggish response — flagged; **6** no response — flagged. Levels 2–4 are the
+  cooperative-to-lightly-sedated range. A Ramsay level, not a diagnosis, a titration order, or a target
+  ([spec-v11] §5.3); the sedation target depends on the context and local protocol. Levels transcribed
+  (spec-v97) from Ramsay et al. 1974 (BMJ), cross-verified against ICU/anesthesia references; no
+  citation-staleness row (the citation carries no guideline-issuer acronym). New
+  `lib/ramsay-sedation-v358.js` + `views/group-v358.js` (RV358); +1 META entry, +1 UTILITIES row, a
+  synonym entry (v79 → v80), 5 unit tests + fuzz, corpus rebuilt to 1210. See
+  [docs/spec-v358.md](docs/spec-v358.md). The MCP adapter follows in a later wave.
+
 ### Added (spec-v357 — NYHA functional classification (heart failure) tile, 1208 → 1209)
 
 - New `nyha-class` tile (group G): the NYHA (New York Heart Association) functional classification of
