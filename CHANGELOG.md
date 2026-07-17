@@ -6,6 +6,21 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v388 — Brodsky tonsil grading scale tile, 1239 → 1240)
+
+- New `brodsky-tonsil` tile (group G): the Brodsky grading scale for palatine tonsil size (grades 0-4), by
+  the percentage of the oropharyngeal width the tonsils occupy — the most validated tonsillar-hypertrophy
+  classification, central to assessing pediatric sleep-disordered breathing and the need for
+  tonsillectomy; previously absent. The clinician picks the grade and the tile reports its description.
+  **0:** within the tonsillar fossa (no obstruction). **1:** <25% of the width. **2:** 25-50%. **3:**
+  50-75% — flagged (obstructive). **4:** >75% ("kissing tonsils") — flagged (obstructive). A Brodsky
+  grade, not a diagnosis, a treatment decision, or a prognosis ([spec-v11] §5.3); grades 3-4 are the
+  classically obstructive sizes. Grades transcribed (spec-v97) from Brodsky 1989 (Pediatr Clin North Am),
+  cross-verified against ENT/sleep-medicine references; no citation-staleness row (the citation carries no
+  guideline-issuer acronym). New `lib/brodsky-tonsil-v388.js` + `views/group-v388.js` (RV388); +1 META
+  entry, +1 UTILITIES row, a synonym entry (v109 → v110), 6 unit tests + fuzz, corpus rebuilt to 1240. See
+  [docs/spec-v388.md](docs/spec-v388.md). The MCP adapter follows in a later wave.
+
 ### Added (spec-v387 — Dimeglio classification (clubfoot severity) tile, 1238 → 1239)
 
 - New `dimeglio-clubfoot` tile (group G): the Dimeglio classification of a clubfoot — four reducibility

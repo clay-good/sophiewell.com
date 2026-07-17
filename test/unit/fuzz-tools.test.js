@@ -364,6 +364,7 @@ import * as spetzlerPonceV384 from '../../lib/spetzler-ponce-v384.js';
 import * as schwabEnglandV385 from '../../lib/schwab-england-v385.js';
 import * as piraniClubfootV386 from '../../lib/pirani-clubfoot-v386.js';
 import * as dimeglioClubfootV387 from '../../lib/dimeglio-clubfoot-v387.js';
+import * as brodskyTonsilV388 from '../../lib/brodsky-tonsil-v388.js';
 import * as tbTesting from '../../lib/tb-testing.js';
 
 const MODULES = {
@@ -673,6 +674,7 @@ const MODULES = {
   'schwab-england-v385.js': schwabEnglandV385,
   'pirani-clubfoot-v386.js': piraniClubfootV386,
   'dimeglio-clubfoot-v387.js': dimeglioClubfootV387,
+  'brodsky-tonsil-v388.js': brodskyTonsilV388,
   'tb-testing.js': tbTesting,
 };
 
