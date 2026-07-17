@@ -78,7 +78,7 @@ find_calculator { "query": "stroke risk afib" }
        candidates: [ { id: "chads", name: "CHA2DS2-VASc", why: "synonym", ... }, ... ] }
 
 list_calculators { "specialty": "hepatology" }
-  -> { coverage: "1187 of 1109 catalog tiles exposed ...", calculators: [ { id: "meld-xi", ... }, ... ] }
+  -> { coverage: "1188 of 1109 catalog tiles exposed ...", calculators: [ { id: "meld-xi", ... }, ... ] }
 
 describe_calculator { "id": "meld-xi" }
   -> { inputSchema: { ... mx-bili, mx-creat ... }, citation: "Heuman DM ... Liver Transpl 2007", ... }
@@ -433,7 +433,8 @@ maturity) in `lib/risser-sign-v383.js`, and a two-hundred-ninth the Spetzler-Pon
 `lib/parks-fistula-v395.js`, and a two-hundred-twenty-first the Sievers classification (bicuspid aortic
 valve) in `lib/sievers-bav-v396.js`, and a two-hundred-twenty-second the El Khoury classification (aortic
 regurgitation) in `lib/el-khoury-ar-v397.js`, and a two-hundred-twenty-third the Carpentier classification
-(mitral regurgitation) in `lib/carpentier-mr-v398.js`, for 1187 across 303 modules
+(mitral regurgitation) in `lib/carpentier-mr-v398.js`, and a two-hundred-twenty-fourth the Bismuth-Corlette
+classification (perihilar cholangiocarcinoma) in `lib/bismuth-corlette-v399.js`, for 1188 across 304 modules
 today. <!-- catalog-truth:historical (197 is the count of lib modules adapted, not a catalog tile count) -->
 Later waves extend it module by module against the same contract.
 

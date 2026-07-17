@@ -311,6 +311,7 @@ import parksFistulaV395 from './adapters/parks-fistula-v395.js';
 import sieversBavV396 from './adapters/sievers-bav-v396.js';
 import elKhouryArV397 from './adapters/el-khoury-ar-v397.js';
 import carpentierMrV398 from './adapters/carpentier-mr-v398.js';
+import bismuthCorletteV399 from './adapters/bismuth-corlette-v399.js';
 import tbTesting from './adapters/tb-testing.js';
 import labInterpret from './adapters/lab-interpret.js';
 import decisionRulesV258 from './adapters/decision-rules-v258.js';
@@ -616,6 +617,7 @@ const ADAPTER_MODULES = [
   ['sievers-bav-v396', sieversBavV396],
   ['el-khoury-ar-v397', elKhouryArV397],
   ['carpentier-mr-v398', carpentierMrV398],
+  ['bismuth-corlette-v399', bismuthCorletteV399],
   ['tb-testing', tbTesting],
   ['lab-interpret', labInterpret],
   ['decision-rules-v258', decisionRulesV258],

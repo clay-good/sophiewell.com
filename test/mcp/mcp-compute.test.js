@@ -3403,6 +3403,20 @@ test('lib/carpentier-mr-v398.js worked calls', () => {
   assert.match(ok('carpentier-mr', { 'carp-type': 'IIIb' }).band, /systole only/);
 });
 
+test('lib/bismuth-corlette-v399.js worked calls', () => {
+  // Type II (the META example): reaching the confluence.
+  const two = ok('bismuth-corlette', { 'bc-type': 'II' });
+  assert.equal(two.type, 'II');
+  assert.match(two.band, /reaching the confluence/);
+  // Type I: below / sparing the confluence.
+  assert.match(ok('bismuth-corlette', { 'bc-type': 'I' }).band, /below \(sparing\) the confluence/);
+  // Type IIIa vs IIIb: right vs left secondary ducts.
+  assert.match(ok('bismuth-corlette', { 'bc-type': 'IIIa' }).band, /RIGHT secondary/);
+  assert.match(ok('bismuth-corlette', { 'bc-type': 'IIIb' }).band, /LEFT secondary/);
+  // Type IV: bilateral.
+  assert.match(ok('bismuth-corlette', { 'bc-type': 'IV' }).band, /BOTH sides/);
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];

@@ -1502,6 +1502,16 @@ round-trip both pass, without the phantom "2". Adapter appended to the existing
 rate to a target PaCO2. Brings the exposed total to **1072 calculators across 197
 modules**.
 
+## Two-hundred-twenty-fourth wave — the Bismuth-Corlette classification (perihilar cholangiocarcinoma) in lib/bismuth-corlette-v399.js (+1)
+
+`bismuth-corlette` (spec-v399) applies the Bismuth-Corlette classification of a perihilar
+cholangiocarcinoma: given the type, it reports the ductal-extent description. `type` is an enum
+(`kind: 'enum'`, values I/II/IIIa/IIIb/IV) — the single input the renderer exposes. The example sets type
+II; its expected text is the type description (a roman numeral, no free numeric facts to round-trip), so it
+flows through the default `makeToArgs` with no custom toArgs. New adapter module registered in
+`mcp/catalog.js`; its golden probe ("klatskin tumor type") is promoted now that the tile is in the
+MCP-exposed registry. Brings the exposed total to **1188 calculators across 304 modules**.
+
 ## Two-hundred-twenty-third wave — the Carpentier classification (mitral regurgitation) in lib/carpentier-mr-v398.js (+1)
 
 `carpentier-mr` (spec-v398) applies the Carpentier functional classification of mitral regurgitation: given
@@ -4490,6 +4500,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/carpentier-mr-v398.js
 - `carpentier-mr`
+
+### lib/bismuth-corlette-v399.js
+- `bismuth-corlette`
 
 ### lib/tb-testing.js
 - `tb-testing`

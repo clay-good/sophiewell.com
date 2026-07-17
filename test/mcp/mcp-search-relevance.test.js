@@ -380,6 +380,8 @@ const PROBES = [
   ['aortic regurgitation mechanism', ['el-khoury-ar']],
   // spec-v398 tile, exposed to MCP in wave 223: Carpentier classification (mitral regurgitation).
   ['mitral regurgitation mechanism', ['carpentier-mr']],
+  // spec-v399 tile, exposed to MCP in wave 224: Bismuth-Corlette classification (perihilar cholangiocarcinoma).
+  ['klatskin tumor type', ['bismuth-corlette']],
 ];
 
 test(`every golden probe routes an acceptable tile into the top ${TOP_N}`, () => {
