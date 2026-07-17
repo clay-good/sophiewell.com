@@ -272,6 +272,7 @@ import ceapVenousV356 from './adapters/ceap-venous-v356.js';
 import nyhaClassV357 from './adapters/nyha-class-v357.js';
 import ramsaySedationV358 from './adapters/ramsay-sedation-v358.js';
 import pressureInjuryStageV359 from './adapters/pressure-injury-stage-v359.js';
+import kwbRetinopathyV360 from './adapters/kwb-retinopathy-v360.js';
 import tbTesting from './adapters/tb-testing.js';
 import labInterpret from './adapters/lab-interpret.js';
 import decisionRulesV258 from './adapters/decision-rules-v258.js';
@@ -538,6 +539,7 @@ const ADAPTER_MODULES = [
   ['nyha-class-v357', nyhaClassV357],
   ['ramsay-sedation-v358', ramsaySedationV358],
   ['pressure-injury-stage-v359', pressureInjuryStageV359],
+  ['kwb-retinopathy-v360', kwbRetinopathyV360],
   ['tb-testing', tbTesting],
   ['lab-interpret', labInterpret],
   ['decision-rules-v258', decisionRulesV258],

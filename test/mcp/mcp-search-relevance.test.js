@@ -1,4 +1,4 @@
-// Search-relevance golden set. Runs 174 realistic clinical queries through the
+// Search-relevance golden set. Runs 175 realistic clinical queries through the
 // real find_calculator surface (shared resolvePromptRanked + data/synonyms.json
 // + data/search-corpus over the exposed registry) and asserts an acceptable
 // tile ranks in the top 3. This pins the routing quality spec-v282 shipped:
@@ -302,6 +302,8 @@ const PROBES = [
   ['ramsay sedation scale', ['ramsay-sedation']],
   // spec-v359 tile, exposed to MCP in wave 184: NPIAP pressure injury staging.
   ['pressure injury stage', ['pressure-injury-stage']],
+  // spec-v360 tile, exposed to MCP in wave 185: Keith-Wagener-Barker hypertensive retinopathy.
+  ['hypertensive retinopathy grade', ['kwb-retinopathy']],
 ];
 
 test(`every golden probe routes an acceptable tile into the top ${TOP_N}`, () => {

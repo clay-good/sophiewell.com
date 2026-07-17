@@ -2904,6 +2904,18 @@ test('lib/pressure-injury-stage-v359.js worked calls', () => {
   assert.equal(ok('pressure-injury-stage', { 'pi-stage': 'dtpi' }).stage, 'Deep Tissue Pressure Injury');
 });
 
+test('lib/kwb-retinopathy-v360.js worked calls', () => {
+  // Grade 3 (the META example): hemorrhages / exudates, flagged.
+  const three = ok('kwb-retinopathy', { 'kwb-grade': '3' });
+  assert.equal(three.grade, '3');
+  assert.equal(three.severe, true);
+  assert.match(three.band, /hemorrhages, cotton-wool spots/);
+  // Grade 1: mild narrowing, not flagged.
+  assert.equal(ok('kwb-retinopathy', { 'kwb-grade': '1' }).severe, false);
+  // Grade 4: papilledema, flagged.
+  assert.match(ok('kwb-retinopathy', { 'kwb-grade': '4' }).band, /papilledema/);
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];

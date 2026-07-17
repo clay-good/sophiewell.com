@@ -1502,6 +1502,15 @@ round-trip both pass, without the phantom "2". Adapter appended to the existing
 rate to a target PaCO2. Brings the exposed total to **1072 calculators across 197
 modules**.
 
+## One-hundred-eighty-fifth wave — the Keith-Wagener-Barker hypertensive-retinopathy classification in lib/kwb-retinopathy-v360.js (+1)
+
+`kwb-retinopathy` (spec-v360) applies the Keith-Wagener-Barker classification of hypertensive
+retinopathy: given the grade, it reports the fundoscopic description. `grade` is an enum (`kind: 'enum'`,
+values 1-4) — the single input the renderer exposes. The example sets grade 3; its expected number (3)
+round-trips through the default `makeToArgs` with no custom toArgs. New adapter module registered in
+`mcp/catalog.js`; its golden probe ("hypertensive retinopathy grade") is promoted now that the tile is in
+the MCP-exposed registry. Brings the exposed total to **1149 calculators across 265 modules**.
+
 ## One-hundred-eighty-fourth wave — the NPIAP pressure injury staging in lib/pressure-injury-stage-v359.js (+1)
 
 `pressure-injury-stage` (spec-v359) applies the NPIAP pressure injury staging: given the stage, it
@@ -3981,6 +3990,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/pressure-injury-stage-v359.js
 - `pressure-injury-stage`
+
+### lib/kwb-retinopathy-v360.js
+- `kwb-retinopathy`
 
 ### lib/tb-testing.js
 - `tb-testing`
