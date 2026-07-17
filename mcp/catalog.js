@@ -301,6 +301,7 @@ import schwabEnglandV385 from './adapters/schwab-england-v385.js';
 import piraniClubfootV386 from './adapters/pirani-clubfoot-v386.js';
 import dimeglioClubfootV387 from './adapters/dimeglio-clubfoot-v387.js';
 import brodskyTonsilV388 from './adapters/brodsky-tonsil-v388.js';
+import koosSchwannomaV389 from './adapters/koos-schwannoma-v389.js';
 import tbTesting from './adapters/tb-testing.js';
 import labInterpret from './adapters/lab-interpret.js';
 import decisionRulesV258 from './adapters/decision-rules-v258.js';
@@ -596,6 +597,7 @@ const ADAPTER_MODULES = [
   ['pirani-clubfoot-v386', piraniClubfootV386],
   ['dimeglio-clubfoot-v387', dimeglioClubfootV387],
   ['brodsky-tonsil-v388', brodskyTonsilV388],
+  ['koos-schwannoma-v389', koosSchwannomaV389],
   ['tb-testing', tbTesting],
   ['lab-interpret', labInterpret],
   ['decision-rules-v258', decisionRulesV258],

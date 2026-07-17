@@ -1502,6 +1502,16 @@ round-trip both pass, without the phantom "2". Adapter appended to the existing
 rate to a target PaCO2. Brings the exposed total to **1072 calculators across 197
 modules**.
 
+## Two-hundred-fourteenth wave — the Koos grade (vestibular schwannoma) in lib/koos-schwannoma-v389.js (+1)
+
+`koos-schwannoma` (spec-v389) applies the Koos grading of a vestibular schwannoma: given the grade, it
+reports the extension/brainstem description. `grade` is an enum (`kind: 'enum'`, values I/II/III/IV) — the
+single input the renderer exposes. The example sets grade IV; its expected text is the grade description
+(a roman numeral + "fourth ventricle"), so it round-trips through the default `makeToArgs` with no custom
+toArgs. New adapter module registered in `mcp/catalog.js`; its golden probe ("vestibular schwannoma
+grade") is promoted now that the tile is in the MCP-exposed registry. Brings the exposed total to **1178
+calculators across 294 modules**.
+
 ## Two-hundred-thirteenth wave — the Brodsky tonsil grading scale in lib/brodsky-tonsil-v388.js (+1)
 
 `brodsky-tonsil` (spec-v388) applies the Brodsky grading scale for palatine tonsil size: given the grade,
@@ -4359,6 +4369,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/brodsky-tonsil-v388.js
 - `brodsky-tonsil`
+
+### lib/koos-schwannoma-v389.js
+- `koos-schwannoma`
 
 ### lib/tb-testing.js
 - `tb-testing`

@@ -3278,6 +3278,20 @@ test('lib/brodsky-tonsil-v388.js worked calls', () => {
   assert.match(ok('brodsky-tonsil', { 'brodsky-grade': '4' }).band, /kissing tonsils/);
 });
 
+test('lib/koos-schwannoma-v389.js worked calls', () => {
+  // Grade IV (the META example): compresses the brainstem, flagged.
+  const four = ok('koos-schwannoma', { 'koos-grade': 'IV' });
+  assert.equal(four.grade, 'IV');
+  assert.equal(four.brainstemInvolvement, true);
+  assert.match(four.band, /compresses the brainstem/);
+  // Grade I: intracanalicular, not flagged.
+  const one = ok('koos-schwannoma', { 'koos-grade': 'I' });
+  assert.equal(one.brainstemInvolvement, false);
+  assert.match(one.band, /intracanalicular/);
+  // Grade III: contacts the brainstem.
+  assert.match(ok('koos-schwannoma', { 'koos-grade': 'III' }).band, /contacts the brainstem/);
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];
