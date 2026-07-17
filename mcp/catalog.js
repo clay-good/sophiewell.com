@@ -278,6 +278,7 @@ import forresterHemodynamicV362 from './adapters/forrester-hemodynamic-v362.js';
 import shafferAngleV363 from './adapters/shaffer-angle-v363.js';
 import casTedV364 from './adapters/cas-ted-v364.js';
 import pragueBarrettV365 from './adapters/prague-barrett-v365.js';
+import neckZoneV366 from './adapters/neck-zone-v366.js';
 import tbTesting from './adapters/tb-testing.js';
 import labInterpret from './adapters/lab-interpret.js';
 import decisionRulesV258 from './adapters/decision-rules-v258.js';
@@ -550,6 +551,7 @@ const ADAPTER_MODULES = [
   ['shaffer-angle-v363', shafferAngleV363],
   ['cas-ted-v364', casTedV364],
   ['prague-barrett-v365', pragueBarrettV365],
+  ['neck-zone-v366', neckZoneV366],
   ['tb-testing', tbTesting],
   ['lab-interpret', labInterpret],
   ['decision-rules-v258', decisionRulesV258],

@@ -2975,6 +2975,17 @@ test('lib/prague-barrett-v365.js worked calls', () => {
   assert.equal(ok('prague-barrett', { 'pr-c': '0', 'pr-m': '2' }).segment, 'short-segment');
 });
 
+test('lib/neck-zone-v366.js worked calls', () => {
+  // Zone II (the META example): cricoid to angle of mandible, most accessible.
+  const two = ok('neck-zone', { 'neck-zone': 'II' });
+  assert.equal(two.zone, 'II');
+  assert.match(two.band, /most surgically accessible/);
+  // Zone I: thoracic-outlet.
+  assert.match(ok('neck-zone', { 'neck-zone': 'I' }).band, /upper thoracic injury/);
+  // Zone III: head-injury handling.
+  assert.match(ok('neck-zone', { 'neck-zone': 'III' }).band, /head injury/);
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];

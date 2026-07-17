@@ -1502,6 +1502,16 @@ round-trip both pass, without the phantom "2". Adapter appended to the existing
 rate to a target PaCO2. Brings the exposed total to **1072 calculators across 197
 modules**.
 
+## One-hundred-ninety-first wave — the penetrating-neck-trauma zones in lib/neck-zone-v366.js (+1)
+
+`neck-zone` (spec-v366) reports the anatomic zone of the neck (I-III) for penetrating trauma and its
+structures at risk. `zone` is an enum (`kind: 'enum'`, values I/II/III) — the single input the renderer
+exposes. The example sets Zone II; its expected text is the zone description (a roman numeral, no numeric
+facts), so it round-trips through the default `makeToArgs` with no custom toArgs. New adapter module
+registered in `mcp/catalog.js`; its golden probe ("penetrating neck trauma zone") is promoted now that
+the tile is in the MCP-exposed registry. Brings the exposed total to **1155 calculators across 271
+modules**.
+
 ## One-hundred-ninetieth wave — the Prague C&M criteria (Barrett esophagus) in lib/prague-barrett-v365.js (+1)
 
 `prague-barrett` (spec-v365) reports the Prague C&M notation for Barrett esophagus from the
@@ -4057,6 +4067,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/prague-barrett-v365.js
 - `prague-barrett`
+
+### lib/neck-zone-v366.js
+- `neck-zone`
 
 ### lib/tb-testing.js
 - `tb-testing`
