@@ -3477,6 +3477,17 @@ test('lib/regan-morrey-v404.js worked calls', () => {
   assert.match(ok('regan-morrey', { 'rm-type': 'III' }).band, /more than 50% of the coronoid height/);
 });
 
+test('lib/savary-miller-v405.js worked calls', () => {
+  // Grade III (the META example): circumferential confluent erosions.
+  const iii = ok('savary-miller', { 'sm-grade': 'III' });
+  assert.equal(iii.grade, 'III');
+  assert.match(iii.band, /circumferential \(confluent\) erosions/);
+  // Grade I: single fold.
+  assert.match(ok('savary-miller', { 'sm-grade': 'I' }).band, /single mucosal fold/);
+  // Grade V: Barrett.
+  assert.match(ok('savary-miller', { 'sm-grade': 'V' }).band, /Barrett/);
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];

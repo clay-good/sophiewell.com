@@ -78,7 +78,7 @@ find_calculator { "query": "stroke risk afib" }
        candidates: [ { id: "chads", name: "CHA2DS2-VASc", why: "synonym", ... }, ... ] }
 
 list_calculators { "specialty": "hepatology" }
-  -> { coverage: "1193 of 1109 catalog tiles exposed ...", calculators: [ { id: "meld-xi", ... }, ... ] }
+  -> { coverage: "1194 of 1109 catalog tiles exposed ...", calculators: [ { id: "meld-xi", ... }, ... ] }
 
 describe_calculator { "id": "meld-xi" }
   -> { inputSchema: { ... mx-bili, mx-creat ... }, citation: "Heuman DM ... Liver Transpl 2007", ... }
@@ -440,7 +440,8 @@ Zargar classification (caustic esophagogastric injury) in `lib/zargar-caustic-v4
 two-hundred-twenty-seventh the Lauge-Hansen classification (rotational ankle fracture) in
 `lib/lauge-hansen-v402.js`, and a two-hundred-twenty-eighth the Berndt-Harty classification (osteochondral
 lesion of the talus) in `lib/berndt-harty-v403.js`, and a two-hundred-twenty-ninth the Regan-Morrey
-classification (coronoid process fracture) in `lib/regan-morrey-v404.js`, for 1193 across 309
+classification (coronoid process fracture) in `lib/regan-morrey-v404.js`, and a two-hundred-thirtieth the
+Savary-Miller classification (reflux esophagitis) in `lib/savary-miller-v405.js`, for 1194 across 310
 modules today. <!-- catalog-truth:historical (197 is the count of lib modules adapted, not a catalog tile count) -->
 Later waves extend it module by module against the same contract.
 

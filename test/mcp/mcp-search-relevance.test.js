@@ -392,6 +392,8 @@ const PROBES = [
   ['osteochondral lesion of the talus', ['berndt-harty']],
   // spec-v404 tile, exposed to MCP in wave 229: Regan-Morrey classification (coronoid process fracture).
   ['coronoid process fracture', ['regan-morrey']],
+  // spec-v405 tile, exposed to MCP in wave 230: Savary-Miller classification (reflux esophagitis).
+  ['savary miller esophagitis', ['savary-miller']],
 ];
 
 test(`every golden probe routes an acceptable tile into the top ${TOP_N}`, () => {
