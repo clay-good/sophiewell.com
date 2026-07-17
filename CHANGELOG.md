@@ -6,6 +6,21 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v405 — Savary-Miller classification (reflux esophagitis) tile, 1256 → 1257)
+
+- New `savary-miller` tile (group G): the modified Savary-Miller endoscopic classification of reflux
+  esophagitis (grades I/II/III/IV/V), by the endoscopic extent of the mucosal lesions — the older /
+  alternative companion to the Los Angeles esophagitis classification (`la-esophagitis`) already in the
+  catalog; previously absent. The clinician picks the grade and the tile reports its endoscopic
+  description. **I:** single erosion on one fold. **II:** multiple non-confluent erosions on more than one
+  fold. **III:** circumferential confluent erosions. **IV:** chronic complications (ulcer / stricture /
+  short esophagus). **V:** Barrett's (columnar-lined) epithelium. A Savary-Miller grade, not a diagnosis, a
+  treatment decision, or a prognosis ([spec-v11] §5.3). Grades transcribed (spec-v97) from Savary-Miller
+  1978 (modified), cross-verified against gastroenterology references; no citation-staleness row (the
+  citation carries no guideline-issuer acronym). New `lib/savary-miller-v405.js` + `views/group-v405.js`
+  (RV405); +1 META entry, +1 UTILITIES row, a synonym entry (v126 → v127), 5 unit tests + fuzz, corpus
+  rebuilt to 1257. See [docs/spec-v405.md](docs/spec-v405.md). The MCP adapter follows in a later wave.
+
 ### Added (spec-v404 — Regan-Morrey classification (coronoid process fracture) tile, 1255 → 1256)
 
 - New `regan-morrey` tile (group G): the Regan-Morrey classification of a coronoid process fracture of the

@@ -381,6 +381,7 @@ import * as zargarCausticV401 from '../../lib/zargar-caustic-v401.js';
 import * as laugeHansenV402 from '../../lib/lauge-hansen-v402.js';
 import * as berndtHartyV403 from '../../lib/berndt-harty-v403.js';
 import * as reganMorreyV404 from '../../lib/regan-morrey-v404.js';
+import * as savaryMillerV405 from '../../lib/savary-miller-v405.js';
 import * as tbTesting from '../../lib/tb-testing.js';
 
 const MODULES = {
@@ -707,6 +708,7 @@ const MODULES = {
   'lauge-hansen-v402.js': laugeHansenV402,
   'berndt-harty-v403.js': berndtHartyV403,
   'regan-morrey-v404.js': reganMorreyV404,
+  'savary-miller-v405.js': savaryMillerV405,
   'tb-testing.js': tbTesting,
 };
 
