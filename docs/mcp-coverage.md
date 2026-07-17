@@ -1502,6 +1502,16 @@ round-trip both pass, without the phantom "2". Adapter appended to the existing
 rate to a target PaCO2. Brings the exposed total to **1072 calculators across 197
 modules**.
 
+## Two-hundred-twenty-fifth wave — the Nyhus classification (groin hernia) in lib/nyhus-hernia-v400.js (+1)
+
+`nyhus-hernia` (spec-v400) applies the Nyhus classification of a groin hernia: given the type, it reports
+the anatomic description. `type` is an enum (`kind: 'enum'`, values I/II/IIIa/IIIb/IIIc/IVa/IVb/IVc/IVd) —
+the single input the renderer exposes. The example sets type IIIa; its expected text is the type
+description (a roman numeral, no free numeric facts to round-trip), so it flows through the default
+`makeToArgs` with no custom toArgs. New adapter module registered in `mcp/catalog.js`; its golden probe
+("groin hernia classification") is promoted now that the tile is in the MCP-exposed registry. Brings the
+exposed total to **1189 calculators across 305 modules**.
+
 ## Two-hundred-twenty-fourth wave — the Bismuth-Corlette classification (perihilar cholangiocarcinoma) in lib/bismuth-corlette-v399.js (+1)
 
 `bismuth-corlette` (spec-v399) applies the Bismuth-Corlette classification of a perihilar
@@ -4503,6 +4513,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/bismuth-corlette-v399.js
 - `bismuth-corlette`
+
+### lib/nyhus-hernia-v400.js
+- `nyhus-hernia`
 
 ### lib/tb-testing.js
 - `tb-testing`

@@ -3417,6 +3417,19 @@ test('lib/bismuth-corlette-v399.js worked calls', () => {
   assert.match(ok('bismuth-corlette', { 'bc-type': 'IV' }).band, /BOTH sides/);
 });
 
+test('lib/nyhus-hernia-v400.js worked calls', () => {
+  // Type IIIa (the META example): direct inguinal hernia.
+  const iiia = ok('nyhus-hernia', { 'nyhus-type': 'IIIa' });
+  assert.equal(iiia.type, 'IIIa');
+  assert.match(iiia.band, /direct inguinal hernia/);
+  // Type I: normal internal ring.
+  assert.match(ok('nyhus-hernia', { 'nyhus-type': 'I' }).band, /normal internal ring/);
+  // Type IIIc: femoral.
+  assert.match(ok('nyhus-hernia', { 'nyhus-type': 'IIIc' }).band, /femoral hernia/);
+  // Type IVd: recurrent combined.
+  assert.match(ok('nyhus-hernia', { 'nyhus-type': 'IVd' }).band, /recurrent combined/);
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];
