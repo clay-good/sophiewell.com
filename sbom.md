@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `99096575b3d4756b`
-Generated: 2026-07-17T03:22:48.405Z
+Build ID: `ae810ea44b1d1098`
+Generated: 2026-07-17T04:07:12.921Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=20.18.1 <21, npm >=10.0.0
@@ -24,13 +24,13 @@ downloads is committed in this repository and is hashed below.
 
 | Path | Bytes | SHA-256 |
 |---|---:|---|
-| `index.html` | 81382 | `6058bfd6597558d22e994076194df974808c1bc855bad7961a0499c3e122bc53` |
+| `index.html` | 81443 | `62a8a8013f37af4b6fdfc424f0a44095e33ee59c2d44ca8271284819626822fc` |
 | `styles.css` | 44160 | `a2cc7ad7bae9f7cfc9681d80bc6bd4a58f0b07d47bfcff64897dc04929c12333` |
-| `app.js` | 332826 | `77c6ec0c44f0feef57db5c9a1036ed7ba8a0ac313acb93adbe9f67a96c7c32db` |
+| `app.js` | 333059 | `1a4ba3845300875a5f89e2434c7e7cea9f49bb9358c22812434a0019ca69dac2` |
 | `sw.js` | 4622 | `b891d4344f8e04403b7f1d307fd446cc224bddc6f0c4397438a17d197351171e` |
 | `site.webmanifest` | 709 | `0e0de4da60590a12e8b27a0ae2a2f5ffdb6500b7d2b78f93631ec2f64ed3d5ce` |
 | `robots.txt` | 127 | `38fbf9c1854e72abb20e01e81dd5a31d4ea96f154c12d5db1ec3af05524dd1a1` |
-| `sitemap.xml` | 186722 | `4ebbe5c51a2626044b30ebd3c64c3ba0d71ed77bbebaee4a230e2de72624542d` |
+| `sitemap.xml` | 186869 | `b0ddb44629e5c63fd7ca614bc137191bb6f9ea6ef9ecdf92e5055e718f80d749` |
 | `_headers` | 1316 | `2f39986457d2feff7e73e491a7d09ee871e8f2f4cc2bc437f86bd86a42554ec6` |
 | `logo.png` | 63440 | `11afaf1b0d3ca68393d202e4810bf766b5b6d591b4e3ec52f41d3cacaa4616ec` |
 | `favicon.ico` | 7411 | `407fde0ca2788409e87e11f596fa02e6a0b121817fcea7fd995beec1801e287b` |
@@ -68,6 +68,7 @@ downloads is committed in this repository and is hashed below.
 | `lib/cardiology-risk-v209.js` | 7709 | `995d41b33272eb9bdfcb07231a7c05897179c68cf969d6339dfe168aa3cdf9d9` |
 | `lib/cardiology-risk-v214.js` | 13668 | `57e82f2ed5ddee8578af62b3291013d254fd1c51359457e14ba0cd2533220c9a` |
 | `lib/cardiometab-v251.js` | 7142 | `5a16570359ceb7c3d5683209868e13ba5fb94335d98088586c787f825a6a4263` |
+| `lib/cas-ted-v364.js` | 3590 | `bc27df1bb7be048ce48d3b44bd2ff39db1d3dcaff9c061856e48b397531435f5` |
 | `lib/catterall-perthes-v346.js` | 4486 | `63322ecb14b2d99ffe2d6503fcf5c7ff8248f31768b9f6fb830223a43f085340` |
 | `lib/ccs-angina-v319.js` | 4235 | `9e2d5837e6b90988ba4bcb58a58bdc3286a320aa98e72a08590f0a6f927c20bd` |
 | `lib/cdi-severity-v317.js` | 5240 | `ecdbbb59e2933387e5b504f983dccb3eed85fa16e8c9908d10da4464f8a84ef7` |
@@ -211,7 +212,7 @@ downloads is committed in this repository and is hashed below.
 | `lib/massive-transfusion-v265.js` | 3240 | `7ad4d1d86063fdd077546be5d6381ea4a5024ef669389f88abdfe07850903b29` |
 | `lib/medication-v4.js` | 18192 | `467f9576c50da696cc56094eb022d0a5ed1e88de0c7618448554ede8067270b0` |
 | `lib/medication-v5.js` | 18863 | `ce81d9f8954abbd412892c13af9936f992239164f26fd2b999eaea7902787ab7` |
-| `lib/meta.js` | 1665692 | `a54f1fdcf8e8d7d3d5c6707ced1cd155ac58899a0c6e249f199437955cb3136b` |
+| `lib/meta.js` | 1666858 | `ff31c51714ca49dd05309372b2e67cbd02c267f8b6343eabaf8395d127781681` |
 | `lib/metabolic-hepatic-v219.js` | 12791 | `b9352877cebf7fbf3c3b99ecb8b72cdbee3ed94e056dc019113668609f5a95a8` |
 | `lib/metabolic-onc-v88.js` | 12659 | `1553b641668c121661a66647da71a4aaaa023e9f3a6b7a753efbcdab27cdba81` |
 | `lib/metabolic-v269.js` | 3262 | `0c7a42557886f2b0aeee7949b8d0bd682d795d4526174fd540717a978d94ec2f` |
@@ -624,6 +625,7 @@ downloads is committed in this repository and is hashed below.
 | `views/group-v361.js` | 3126 | `c906f8a4a67e9cdd348f116654fedd0bb18e4d43991c3c439a6d63709742f100` |
 | `views/group-v362.js` | 3048 | `7562fb9f6722da231336f5344791160b1be04c30d60a42799ae184592a531c5b` |
 | `views/group-v363.js` | 2992 | `4825730be52c608caa051f6c7c1587bc950b4979d4b946ea47ae6e0dc28a36c7` |
+| `views/group-v364.js` | 3165 | `8cde5843f0f157f5c7b4589390efaf4698c711a376c8fa742ddfffbd7e391a7c` |
 | `views/group-v37.js` | 11703 | `b177fd467dbf0b92eab8832360375b7527667956f9392621cb2aedd70eb0e26d` |
 | `views/group-v38.js` | 6650 | `ebbf67a8d2bd2502456700ecd417d63e899e4493bb740138bc07b1f87c34aff5` |
 | `views/group-v39.js` | 12318 | `4a12ba09af0f6d602c9c97c98c4417d991e4702042caab03acb3eec6edbf0201` |

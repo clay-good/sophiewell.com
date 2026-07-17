@@ -6,6 +6,22 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v364 — Clinical Activity Score (thyroid eye disease) tile, 1215 → 1216)
+
+- New `cas-ted` tile (group G): the Clinical Activity Score (CAS) for thyroid eye disease / Graves
+  orbitopathy (7-item initial assessment) — the standard measure of thyroid-eye-disease *activity* and a
+  predictor of response to anti-inflammatory treatment; previously absent (the catalog had other
+  ophthalmology grades but no thyroid-eye activity score). A boolean checklist: the clinician checks each
+  inflammatory item present in the study eye (spontaneous orbital pain, gaze-evoked orbital pain, eyelid
+  swelling, eyelid erythema, conjunctival redness, chemosis, caruncle/plica inflammation), the tile sums
+  0–7, and **CAS ≥ 3** flags active disease. A CAS, not a diagnosis, a treatment decision, or a prognosis
+  ([spec-v11] §5.3); the ≥ 3 threshold is the classically taught cutoff for *considering* treatment. The
+  10-item follow-up version is out of scope. Items transcribed (spec-v97) from Mourits 1989 (Br J
+  Ophthalmol) / EUGOGO; no citation-staleness row (the citation carries no guideline-issuer acronym). New
+  `lib/cas-ted-v364.js` + `views/group-v364.js` (RV364, seven checkboxes); +1 META entry, +1 UTILITIES
+  row, a synonym entry (v85 → v86), 5 unit tests + fuzz, corpus rebuilt to 1216. See
+  [docs/spec-v364.md](docs/spec-v364.md). The MCP adapter follows in a later wave.
+
 ### Added (spec-v363 — Shaffer gonioscopy angle grade tile, 1214 → 1215)
 
 - New `shaffer-angle` tile (group G): the Shaffer gonioscopy grading of the anterior chamber angle (grades
