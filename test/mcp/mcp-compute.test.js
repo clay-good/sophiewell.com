@@ -3380,6 +3380,17 @@ test('lib/sievers-bav-v396.js worked calls', () => {
   assert.match(ok('sievers-bav', { 'sievers-type': '2' }).band, /two raphes/);
 });
 
+test('lib/el-khoury-ar-v397.js worked calls', () => {
+  // Type II (the META example): cusp prolapse.
+  const two = ok('el-khoury-ar', { 'elk-type': 'II' });
+  assert.equal(two.type, 'II');
+  assert.match(two.band, /cusp prolapse/);
+  // Type I: normal motion with annulus dilatation.
+  assert.match(ok('el-khoury-ar', { 'elk-type': 'I' }).band, /functional aortic annulus/);
+  // Type III: cusp restriction.
+  assert.match(ok('el-khoury-ar', { 'elk-type': 'III' }).band, /cusp restriction/);
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];

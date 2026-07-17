@@ -1502,6 +1502,16 @@ round-trip both pass, without the phantom "2". Adapter appended to the existing
 rate to a target PaCO2. Brings the exposed total to **1072 calculators across 197
 modules**.
 
+## Two-hundred-twenty-second wave — the El Khoury classification (aortic regurgitation) in lib/el-khoury-ar-v397.js (+1)
+
+`el-khoury-ar` (spec-v397) applies the El Khoury functional classification of aortic regurgitation: given
+the type, it reports the mechanism description. `type` is an enum (`kind: 'enum'`, values I/II/III) — the
+single input the renderer exposes. The example sets type II; its expected text is the type description (a
+roman numeral, no free numeric facts to round-trip), so it flows through the default `makeToArgs` with no
+custom toArgs. New adapter module registered in `mcp/catalog.js`; its golden probe ("aortic regurgitation
+mechanism") is promoted now that the tile is in the MCP-exposed registry. Brings the exposed total to
+**1186 calculators across 302 modules**.
+
 ## Two-hundred-twenty-first wave — the Sievers classification (bicuspid aortic valve) in lib/sievers-bav-v396.js (+1)
 
 `sievers-bav` (spec-v396) applies the Sievers classification of a bicuspid aortic valve: given the type,
@@ -4464,6 +4474,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/sievers-bav-v396.js
 - `sievers-bav`
+
+### lib/el-khoury-ar-v397.js
+- `el-khoury-ar`
 
 ### lib/tb-testing.js
 - `tb-testing`
