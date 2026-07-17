@@ -1502,6 +1502,16 @@ round-trip both pass, without the phantom "2". Adapter appended to the existing
 rate to a target PaCO2. Brings the exposed total to **1072 calculators across 197
 modules**.
 
+## Two-hundred-seventeenth wave — the Hill classification (GE flap valve) in lib/hill-flap-valve-v392.js (+1)
+
+`hill-flap-valve` (spec-v392) applies the Hill classification of the gastroesophageal flap valve: given
+the grade, it reports the ridge/valve description. `grade` is an enum (`kind: 'enum'`, values I/II/III/IV)
+— the single input the renderer exposes. The example sets grade III; its expected text is the grade
+description (a roman numeral, no free numeric facts to round-trip), so it flows through the default
+`makeToArgs` with no custom toArgs. New adapter module registered in `mcp/catalog.js`; its golden probe
+("gastroesophageal flap valve") is promoted now that the tile is in the MCP-exposed registry. Brings the
+exposed total to **1181 calculators across 297 modules**.
+
 ## Two-hundred-sixteenth wave — the Hardy classification (pituitary adenoma) in lib/hardy-adenoma-v391.js (+1)
 
 `hardy-adenoma` (spec-v391) applies the Hardy (Hardy-Wilson) two-axis classification of a pituitary
@@ -4399,6 +4409,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/hardy-adenoma-v391.js
 - `hardy-adenoma`
+
+### lib/hill-flap-valve-v392.js
+- `hill-flap-valve`
 
 ### lib/tb-testing.js
 - `tb-testing`

@@ -3320,6 +3320,20 @@ test('lib/hardy-adenoma-v391.js worked calls', () => {
   assert.equal(ok('hardy-adenoma', { 'hardy-grade': 'IV', 'hardy-stage': 'E' }).invasive, true);
 });
 
+test('lib/hill-flap-valve-v392.js worked calls', () => {
+  // Grade III (the META example): diminished ridge, fails to close, flagged.
+  const three = ok('hill-flap-valve', { 'hill-grade': 'III' });
+  assert.equal(three.grade, 'III');
+  assert.equal(three.abnormalValve, true);
+  assert.match(three.band, /fails to close/);
+  // Grade I: prominent ridge, normal, not flagged.
+  const one = ok('hill-flap-valve', { 'hill-grade': 'I' });
+  assert.equal(one.abnormalValve, false);
+  assert.match(one.band, /prominent ridge/);
+  // Grade IV: no ridge, junction open.
+  assert.match(ok('hill-flap-valve', { 'hill-grade': 'IV' }).band, /no ridge/);
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];

@@ -304,6 +304,7 @@ import brodskyTonsilV388 from './adapters/brodsky-tonsil-v388.js';
 import koosSchwannomaV389 from './adapters/koos-schwannoma-v389.js';
 import knospAdenomaV390 from './adapters/knosp-adenoma-v390.js';
 import hardyAdenomaV391 from './adapters/hardy-adenoma-v391.js';
+import hillFlapValveV392 from './adapters/hill-flap-valve-v392.js';
 import tbTesting from './adapters/tb-testing.js';
 import labInterpret from './adapters/lab-interpret.js';
 import decisionRulesV258 from './adapters/decision-rules-v258.js';
@@ -602,6 +603,7 @@ const ADAPTER_MODULES = [
   ['koos-schwannoma-v389', koosSchwannomaV389],
   ['knosp-adenoma-v390', knospAdenomaV390],
   ['hardy-adenoma-v391', hardyAdenomaV391],
+  ['hill-flap-valve-v392', hillFlapValveV392],
   ['tb-testing', tbTesting],
   ['lab-interpret', labInterpret],
   ['decision-rules-v258', decisionRulesV258],
