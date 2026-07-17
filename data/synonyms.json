@@ -1,5 +1,5 @@
 {
-  "version": "v88-2026-07-16",
+  "version": "v89-2026-07-16",
   "note": "spec-v7 section 3.2: hand-curated patient-phrasing -> tile id table. Each entry maps patient-mental-model phrases (and, from the v8/v9 plain-language-search batches, clinical abbreviations, eponym aliases, and canonical-intent phrases) to a single existing tile. Audience is the primary audience the entry serves; the matcher deprioritizes (does not hide) entries when the user has selected a different chip. Every phrase is lowercase; every tile id is an existing catalog tile (guarded by test/unit/synonyms-catalog.test.js). Adding a new phrase is a one-line PR.",
   "entries": [
     { "phrases": ["denied", "denial letter", "they denied it", "insurance said no", "appeal", "write an appeal", "appeal my claim", "appeal letter", "appeal a denial"],
@@ -320,6 +320,8 @@
     { "phrases": ["prague criteria", "prague c m", "prague classification", "barrett esophagus length", "barrett esophagus extent", "barrett grading", "prague barrett", "c and m barrett"],
       "tile": "prague-barrett", "audience": "clinicians" },
     { "phrases": ["neck zone", "neck zones", "penetrating neck trauma zone", "neck trauma zone", "zone 2 neck", "zone ii neck", "penetrating neck injury zone", "anatomic neck zone"],
-      "tile": "neck-zone", "audience": "clinicians" }
+      "tile": "neck-zone", "audience": "clinicians" },
+    { "phrases": ["penetration aspiration scale", "rosenbek scale", "pas score", "pas swallow", "swallow study aspiration score", "airway invasion swallow", "aspiration scale swallow"],
+      "tile": "pas-swallow", "audience": "clinicians" }
   ]
 }

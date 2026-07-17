@@ -6,6 +6,21 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v367 — Penetration-Aspiration Scale (swallow study) tile, 1218 → 1219)
+
+- New `pas-swallow` tile (group G): the Penetration-Aspiration Scale (PAS, scores 1–8) — the standard
+  8-point ordinal scale for the depth of airway invasion during a swallow study (videofluoroscopy / FEES);
+  previously absent (the catalog had dysphagia *screens* — GUSS, EAT-10 — but not the PAS). The clinician
+  picks the worst airway-invasion score and the tile reports its description and category. **1:** no
+  airway invasion. **2–5:** penetration (above / at the vocal folds). **6–8:** aspiration (below the vocal
+  folds) — flagged. **8:** silent aspiration. A PAS score, not a diagnosis, a diet/management decision, or
+  a prognosis ([spec-v11] §5.3); a single worst-score does not capture the whole study. Levels transcribed
+  (spec-v97) from Rosenbek et al. 1996 (Dysphagia), cross-verified against SLP references; no
+  citation-staleness row (the citation carries no guideline-issuer acronym). New `lib/pas-swallow-v367.js`
+  + `views/group-v367.js` (RV367); +1 META entry, +1 UTILITIES row, a synonym entry (v88 → v89), 5 unit
+  tests + fuzz, corpus rebuilt to 1219. See [docs/spec-v367.md](docs/spec-v367.md). The MCP adapter follows
+  in a later wave.
+
 ### Added (spec-v366 — Penetrating neck trauma zones tile, 1217 → 1218)
 
 - New `neck-zone` tile (group G): the anatomic zones of the neck for penetrating trauma (Zones I–III) —
