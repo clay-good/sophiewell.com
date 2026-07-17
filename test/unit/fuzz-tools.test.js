@@ -341,6 +341,7 @@ import * as tannerStagingV361 from '../../lib/tanner-staging-v361.js';
 import * as forresterHemodynamicV362 from '../../lib/forrester-hemodynamic-v362.js';
 import * as shafferAngleV363 from '../../lib/shaffer-angle-v363.js';
 import * as casTedV364 from '../../lib/cas-ted-v364.js';
+import * as pragueBarrettV365 from '../../lib/prague-barrett-v365.js';
 import * as tbTesting from '../../lib/tb-testing.js';
 
 const MODULES = {
@@ -627,6 +628,7 @@ const MODULES = {
   'forrester-hemodynamic-v362.js': forresterHemodynamicV362,
   'shaffer-angle-v363.js': shafferAngleV363,
   'cas-ted-v364.js': casTedV364,
+  'prague-barrett-v365.js': pragueBarrettV365,
   'tb-testing.js': tbTesting,
 };
 

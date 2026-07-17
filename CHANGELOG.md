@@ -6,6 +6,22 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v365 — Prague C&M criteria (Barrett esophagus) tile, 1216 → 1217)
+
+- New `prague-barrett` tile (group G): the Prague C&M criteria for the endoscopic grading of Barrett's
+  esophagus — the standardized measure of the circumferential (C) and maximal (M) extent of a Barrett's
+  segment; previously absent (the catalog had other GI-endoscopy tiles but no Barrett's-extent grading). A
+  numeric compute: the endoscopist enters C and M in cm above the GEJ (M must be ≥ C), and the tile reports
+  the `Prague C_ M_` notation plus the traditional short-segment (M < 3 cm) / long-segment (M ≥ 3 cm)
+  descriptor. A Prague notation, not a diagnosis (Barrett's requires biopsy-confirmed intestinal
+  metaplasia), a dysplasia grade, or a surveillance-interval order ([spec-v11] §5.3); the Prague system is
+  the measurement itself, the 3 cm split is secondary. Criteria transcribed (spec-v97) from Sharma et al.
+  2006 (Gastroenterology), cross-verified against GI-endoscopy references; no citation-staleness row (the
+  citation carries no guideline-issuer acronym). New `lib/prague-barrett-v365.js` + `views/group-v365.js`
+  (RV365, two number inputs); +1 META entry, +1 UTILITIES row, a synonym entry (v86 → v87), 5 unit tests +
+  fuzz, corpus rebuilt to 1217. See [docs/spec-v365.md](docs/spec-v365.md). The MCP adapter follows in a
+  later wave.
+
 ### Added (spec-v364 — Clinical Activity Score (thyroid eye disease) tile, 1215 → 1216)
 
 - New `cas-ted` tile (group G): the Clinical Activity Score (CAS) for thyroid eye disease / Graves
