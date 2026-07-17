@@ -359,6 +359,7 @@ import * as tilePelvicV379 from '../../lib/tile-pelvic-v379.js';
 import * as youngBurgessV380 from '../../lib/young-burgess-v380.js';
 import * as winquistHansenV381 from '../../lib/winquist-hansen-v381.js';
 import * as eichenholtzCharcotV382 from '../../lib/eichenholtz-charcot-v382.js';
+import * as risserSignV383 from '../../lib/risser-sign-v383.js';
 import * as tbTesting from '../../lib/tb-testing.js';
 
 const MODULES = {
@@ -663,6 +664,7 @@ const MODULES = {
   'young-burgess-v380.js': youngBurgessV380,
   'winquist-hansen-v381.js': winquistHansenV381,
   'eichenholtz-charcot-v382.js': eichenholtzCharcotV382,
+  'risser-sign-v383.js': risserSignV383,
   'tb-testing.js': tbTesting,
 };
 

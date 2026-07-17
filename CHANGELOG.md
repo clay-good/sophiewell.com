@@ -6,6 +6,23 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v383 — Risser sign (skeletal maturity) tile, 1234 → 1235)
+
+- New `risser-sign` tile (group G): the Risser sign (US grading, 0-5) for skeletal maturity, read off the
+  ossification and fusion of the iliac crest apophysis — the standard radiographic maturity grade used in
+  scoliosis to gauge remaining growth and the likelihood of curve progression; previously absent (the
+  catalog had Tanner pubertal staging but no skeletal-maturity grade). The clinician picks the grade and
+  the tile reports its description plus the remaining growth potential. **0:** no ossification (maximum
+  growth). **1-3:** ~25% / ~50% / ~75% ossification. **4:** 100% ossified but not fused (little growth
+  remains). **5:** ossified and fused (full skeletal maturity). A **maturity indicator, not pathology** —
+  like Tanner staging it flags no grade as abnormal, and it is not a diagnosis, a treatment decision, or a
+  prognosis ([spec-v11] §5.3); the falling-growth-potential gradient (0 → 5) is the classically taught
+  pattern, not an order. Grades transcribed (spec-v97) from Risser 1958 (Clin Orthop), cross-verified
+  against radiology references (US convention); no citation-staleness row (the citation carries no
+  guideline-issuer acronym). New `lib/risser-sign-v383.js` + `views/group-v383.js` (RV383); +1 META entry,
+  +1 UTILITIES row, a synonym entry (v104 → v105), 6 unit tests + fuzz, corpus rebuilt to 1235. See
+  [docs/spec-v383.md](docs/spec-v383.md). The MCP adapter follows in a later wave.
+
 ### Added (spec-v382 — Eichenholtz classification (Charcot neuroarthropathy) tile, 1233 → 1234)
 
 - New `eichenholtz-charcot` tile (group G): the (modified) Eichenholtz classification of Charcot
