@@ -1502,6 +1502,15 @@ round-trip both pass, without the phantom "2". Adapter appended to the existing
 rate to a target PaCO2. Brings the exposed total to **1072 calculators across 197
 modules**.
 
+## One-hundred-eighty-eighth wave — the Shaffer gonioscopy angle grade in lib/shaffer-angle-v363.js (+1)
+
+`shaffer-angle` (spec-v363) applies the Shaffer gonioscopy grading of the anterior chamber angle: given
+the grade, it reports the angle-width description. `grade` is an enum (`kind: 'enum'`, values 0-4) — the
+single input the renderer exposes. The example sets grade 1; its expected numbers (1, ~10 degrees)
+round-trip through the default `makeToArgs` with no custom toArgs. New adapter module registered in
+`mcp/catalog.js`; its golden probe ("gonioscopy angle grade") is promoted now that the tile is in the
+MCP-exposed registry. Brings the exposed total to **1152 calculators across 268 modules**.
+
 ## One-hundred-eighty-seventh wave — the Forrester hemodynamic classification in lib/forrester-hemodynamic-v362.js (+1)
 
 `forrester-hemodynamic` (spec-v362) derives the Forrester hemodynamic subset (I-IV) from the cardiac
@@ -4019,6 +4028,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/forrester-hemodynamic-v362.js
 - `forrester-hemodynamic`
+
+### lib/shaffer-angle-v363.js
+- `shaffer-angle`
 
 ### lib/tb-testing.js
 - `tb-testing`

@@ -78,7 +78,7 @@ find_calculator { "query": "stroke risk afib" }
        candidates: [ { id: "chads", name: "CHA2DS2-VASc", why: "synonym", ... }, ... ] }
 
 list_calculators { "specialty": "hepatology" }
-  -> { coverage: "1151 of 1109 catalog tiles exposed ...", calculators: [ { id: "meld-xi", ... }, ... ] }
+  -> { coverage: "1152 of 1109 catalog tiles exposed ...", calculators: [ { id: "meld-xi", ... }, ... ] }
 
 describe_calculator { "id": "meld-xi" }
   -> { inputSchema: { ... mx-bili, mx-creat ... }, citation: "Heuman DM ... Liver Transpl 2007", ... }
@@ -395,7 +395,8 @@ injury staging in `lib/pressure-injury-stage-v359.js`, and a one-hundred-eighty-
 Keith-Wagener-Barker hypertensive-retinopathy classification in `lib/kwb-retinopathy-v360.js`, and a
 one-hundred-eighty-sixth Tanner staging (Sexual Maturity Rating) in `lib/tanner-staging-v361.js`, and a
 one-hundred-eighty-seventh the Forrester hemodynamic classification in
-`lib/forrester-hemodynamic-v362.js`, for 1151 across 267 modules
+`lib/forrester-hemodynamic-v362.js`, and a one-hundred-eighty-eighth the Shaffer gonioscopy angle grade
+in `lib/shaffer-angle-v363.js`, for 1152 across 268 modules
 today. <!-- catalog-truth:historical (197 is the count of lib modules adapted, not a catalog tile count) -->
 Later waves extend it module by module against the same contract.
 

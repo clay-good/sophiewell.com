@@ -2940,6 +2940,18 @@ test('lib/forrester-hemodynamic-v362.js worked calls', () => {
   assert.equal(i.abnormal, false);
 });
 
+test('lib/shaffer-angle-v363.js worked calls', () => {
+  // Grade 1 (the META example): very narrow, closure probable, flagged.
+  const one = ok('shaffer-angle', { 'shaffer-grade': '1' });
+  assert.equal(one.grade, '1');
+  assert.equal(one.narrow, true);
+  assert.match(one.band, /very narrow angle/);
+  // Grade 4: wide open, not flagged.
+  assert.equal(ok('shaffer-angle', { 'shaffer-grade': '4' }).narrow, false);
+  // Grade 0: closed, flagged.
+  assert.equal(ok('shaffer-angle', { 'shaffer-grade': '0' }).narrow, true);
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];
