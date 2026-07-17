@@ -6,6 +6,23 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v387 — Dimeglio classification (clubfoot severity) tile, 1238 → 1239)
+
+- New `dimeglio-clubfoot` tile (group G): the Dimeglio classification of a clubfoot — four reducibility
+  parameters (equinus, varus, derotation of the calcaneopedal block, forefoot adduction; each 0-4) plus
+  four 1-point features (posterior crease, medial crease, cavus, muscle abnormality), summed to a 0-20
+  severity score that maps to grades I-IV; the companion clubfoot-severity system to the Pirani score
+  (spec-v386), often used alongside it during Ponseti management; previously absent. The clinician scores
+  the parameters and checks the bonus features and the tile reports the total, the reducibility/bonus
+  subscores, and the grade. **0** normal; **1-5** I (benign); **6-10** II (moderate); **11-15** III
+  (severe); **16-20** IV (very severe); grades III-IV are flagged. A Dimeglio score, not a diagnosis, a
+  treatment decision, or a prognosis ([spec-v11] §5.3); higher = more severe, and the management decision
+  stays with the treating team. Items transcribed (spec-v97) from Dimeglio 1995 (J Pediatr Orthop B),
+  cross-verified against clubfoot references; no citation-staleness row (the citation carries no
+  guideline-issuer acronym). New `lib/dimeglio-clubfoot-v387.js` + `views/group-v387.js` (RV387); +1 META
+  entry, +1 UTILITIES row, a synonym entry (v108 → v109), 6 unit tests + fuzz, corpus rebuilt to 1239. See
+  [docs/spec-v387.md](docs/spec-v387.md). The MCP adapter follows in a later wave.
+
 ### Added (spec-v386 — Pirani score (clubfoot severity) tile, 1237 → 1238)
 
 - New `pirani-clubfoot` tile (group G): the Pirani score for clubfoot severity — six clinical signs, each

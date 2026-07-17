@@ -1,5 +1,5 @@
 {
-  "version": "v108-2026-07-17",
+  "version": "v109-2026-07-17",
   "note": "spec-v7 section 3.2: hand-curated patient-phrasing -> tile id table. Each entry maps patient-mental-model phrases (and, from the v8/v9 plain-language-search batches, clinical abbreviations, eponym aliases, and canonical-intent phrases) to a single existing tile. Audience is the primary audience the entry serves; the matcher deprioritizes (does not hide) entries when the user has selected a different chip. Every phrase is lowercase; every tile id is an existing catalog tile (guarded by test/unit/synonyms-catalog.test.js). Adding a new phrase is a one-line PR.",
   "entries": [
     { "phrases": ["denied", "denial letter", "they denied it", "insurance said no", "appeal", "write an appeal", "appeal my claim", "appeal letter", "appeal a denial"],
@@ -360,6 +360,8 @@
     { "phrases": ["schwab england", "schwab and england", "schwab england adl", "parkinson adl scale", "activities of daily living parkinson", "schwab england scale", "parkinson functional independence", "schwab england percentage"],
       "tile": "schwab-england", "audience": "clinicians" },
     { "phrases": ["pirani", "pirani score", "clubfoot severity score", "clubfoot pirani", "ponseti clubfoot score", "pirani clubfoot", "congenital talipes score", "clubfoot contracture score"],
-      "tile": "pirani-clubfoot", "audience": "clinicians" }
+      "tile": "pirani-clubfoot", "audience": "clinicians" },
+    { "phrases": ["dimeglio", "dimeglio classification", "dimeglio score", "clubfoot classification score", "dimeglio clubfoot", "clubfoot grade", "talipes classification", "clubfoot reducibility score"],
+      "tile": "dimeglio-clubfoot", "audience": "clinicians" }
   ]
 }
