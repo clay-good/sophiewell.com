@@ -78,7 +78,7 @@ find_calculator { "query": "stroke risk afib" }
        candidates: [ { id: "chads", name: "CHA2DS2-VASc", why: "synonym", ... }, ... ] }
 
 list_calculators { "specialty": "hepatology" }
-  -> { coverage: "1178 of 1109 catalog tiles exposed ...", calculators: [ { id: "meld-xi", ... }, ... ] }
+  -> { coverage: "1179 of 1109 catalog tiles exposed ...", calculators: [ { id: "meld-xi", ... }, ... ] }
 
 describe_calculator { "id": "meld-xi" }
   -> { inputSchema: { ... mx-bili, mx-creat ... }, citation: "Heuman DM ... Liver Transpl 2007", ... }
@@ -424,7 +424,8 @@ maturity) in `lib/risser-sign-v383.js`, and a two-hundred-ninth the Spetzler-Pon
 `lib/pirani-clubfoot-v386.js`, and a two-hundred-twelfth the Dimeglio clubfoot classification in
 `lib/dimeglio-clubfoot-v387.js`, and a two-hundred-thirteenth the Brodsky tonsil grading scale in
 `lib/brodsky-tonsil-v388.js`, and a two-hundred-fourteenth the Koos grade (vestibular schwannoma) in
-`lib/koos-schwannoma-v389.js`, for 1178 across 294 modules
+`lib/koos-schwannoma-v389.js`, and a two-hundred-fifteenth the Knosp grade (pituitary adenoma) in
+`lib/knosp-adenoma-v390.js`, for 1179 across 295 modules
 today. <!-- catalog-truth:historical (197 is the count of lib modules adapted, not a catalog tile count) -->
 Later waves extend it module by module against the same contract.
 

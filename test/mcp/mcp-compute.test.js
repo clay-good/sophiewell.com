@@ -3292,6 +3292,19 @@ test('lib/koos-schwannoma-v389.js worked calls', () => {
   assert.match(ok('koos-schwannoma', { 'koos-grade': 'III' }).band, /contacts the brainstem/);
 });
 
+test('lib/knosp-adenoma-v390.js worked calls', () => {
+  // Grade 4 (the META example): total ICA encasement, invasion, flagged.
+  const four = ok('knosp-adenoma', { 'knosp-grade': '4' });
+  assert.equal(four.grade, '4');
+  assert.equal(four.cavernousInvasion, true);
+  assert.match(four.band, /total encasement/);
+  // Grade 0: medial to the medial tangent, no invasion.
+  const zero = ok('knosp-adenoma', { 'knosp-grade': '0' });
+  assert.equal(zero.cavernousInvasion, false);
+  // Grade 3: lateral to the lateral tangent, flagged.
+  assert.equal(ok('knosp-adenoma', { 'knosp-grade': '3' }).cavernousInvasion, true);
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];

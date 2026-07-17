@@ -1502,6 +1502,16 @@ round-trip both pass, without the phantom "2". Adapter appended to the existing
 rate to a target PaCO2. Brings the exposed total to **1072 calculators across 197
 modules**.
 
+## Two-hundred-fifteenth wave — the Knosp grade (pituitary adenoma) in lib/knosp-adenoma-v390.js (+1)
+
+`knosp-adenoma` (spec-v390) applies the Knosp grading of cavernous sinus invasion by a pituitary adenoma:
+given the grade, it reports the ICA-landmark description. `grade` is an enum (`kind: 'enum'`, values 0-4)
+— the single input the renderer exposes. The example sets grade 4; its expected text is the grade
+description (a small integer echoed in the result), so it round-trips through the default `makeToArgs`
+with no custom toArgs. New adapter module registered in `mcp/catalog.js`; its golden probe ("pituitary
+adenoma cavernous sinus grade") is promoted now that the tile is in the MCP-exposed registry. Brings the
+exposed total to **1179 calculators across 295 modules**.
+
 ## Two-hundred-fourteenth wave — the Koos grade (vestibular schwannoma) in lib/koos-schwannoma-v389.js (+1)
 
 `koos-schwannoma` (spec-v389) applies the Koos grading of a vestibular schwannoma: given the grade, it
@@ -4372,6 +4382,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/koos-schwannoma-v389.js
 - `koos-schwannoma`
+
+### lib/knosp-adenoma-v390.js
+- `knosp-adenoma`
 
 ### lib/tb-testing.js
 - `tb-testing`
