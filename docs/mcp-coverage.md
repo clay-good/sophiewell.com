@@ -1502,6 +1502,16 @@ round-trip both pass, without the phantom "2". Adapter appended to the existing
 rate to a target PaCO2. Brings the exposed total to **1072 calculators across 197
 modules**.
 
+## Two-hundred-twentieth wave — the Parks classification (anal fistula) in lib/parks-fistula-v395.js (+1)
+
+`parks-fistula` (spec-v395) applies the Parks classification of an anal fistula: given the type, it
+reports the sphincter-relationship description. `type` is an enum (`kind: 'enum'`, the four
+sphincter-relationship types) — the single input the renderer exposes. The example sets transsphincteric;
+its expected text is the type description (no numeric facts to round-trip), so it flows through the
+default `makeToArgs` with no custom toArgs. New adapter module registered in `mcp/catalog.js`; its golden
+probe ("anal fistula classification") is promoted now that the tile is in the MCP-exposed registry. Brings
+the exposed total to **1184 calculators across 300 modules**.
+
 ## Two-hundred-nineteenth wave — the Borrmann classification (gastric cancer) in lib/borrmann-gastric-v394.js (+1)
 
 `borrmann-gastric` (spec-v394) applies the Borrmann classification of advanced gastric cancer: given the
@@ -4438,6 +4448,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/borrmann-gastric-v394.js
 - `borrmann-gastric`
+
+### lib/parks-fistula-v395.js
+- `parks-fistula`
 
 ### lib/tb-testing.js
 - `tb-testing`

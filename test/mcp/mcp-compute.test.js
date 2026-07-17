@@ -3356,6 +3356,19 @@ test('lib/borrmann-gastric-v394.js worked calls', () => {
   assert.match(ok('borrmann-gastric', { 'borrmann-type': 'III' }).band, /ulcerated and infiltrative/);
 });
 
+test('lib/parks-fistula-v395.js worked calls', () => {
+  // Transsphincteric (the META example): through both sphincters, not complex.
+  const t = ok('parks-fistula', { 'parks-type': 'transsphincteric' });
+  assert.equal(t.type, 'transsphincteric');
+  assert.equal(t.complex, false);
+  assert.match(t.band, /through both the internal and external sphincters/);
+  // Suprasphincteric: complex, flagged.
+  const s = ok('parks-fistula', { 'parks-type': 'suprasphincteric' });
+  assert.equal(s.complex, true);
+  // Intersphincteric: most common.
+  assert.match(ok('parks-fistula', { 'parks-type': 'intersphincteric' }).band, /the most common type/);
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];
