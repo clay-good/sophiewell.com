@@ -379,6 +379,7 @@ import * as bismuthCorletteV399 from '../../lib/bismuth-corlette-v399.js';
 import * as nyhusHerniaV400 from '../../lib/nyhus-hernia-v400.js';
 import * as zargarCausticV401 from '../../lib/zargar-caustic-v401.js';
 import * as laugeHansenV402 from '../../lib/lauge-hansen-v402.js';
+import * as berndtHartyV403 from '../../lib/berndt-harty-v403.js';
 import * as tbTesting from '../../lib/tb-testing.js';
 
 const MODULES = {
@@ -703,6 +704,7 @@ const MODULES = {
   'nyhus-hernia-v400.js': nyhusHerniaV400,
   'zargar-caustic-v401.js': zargarCausticV401,
   'lauge-hansen-v402.js': laugeHansenV402,
+  'berndt-harty-v403.js': berndtHartyV403,
   'tb-testing.js': tbTesting,
 };
 

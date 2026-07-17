@@ -1,0 +1,56 @@
+// spec-v403: renderer for the Berndt-Harty classification of an osteochondral lesion of the talus (stages
+// I/II/III/IV). Group G. The clinician picks the stage; the tile reports the stage and its radiographic
+// description. As a staging descriptor it reports the stage the clinician has determined.
+//
+// Same input/render contract as the rest of the codebase: the input has a real
+// <label for> (a11y-check passes), no innerHTML, no network, no storage. Per
+// spec-v11 §5.3 the tile reports the Berndt-Harty stage; it never asserts a diagnosis, a treatment
+// decision, or a prognosis (lib/berndt-harty-v403.js).
+
+import { el, clear } from '../lib/dom.js';
+import * as M from '../lib/berndt-harty-v403.js';
+import { resultRow } from '../lib/result-copy.js';
+
+function select(label, id, options) {
+  const wrap = el('p');
+  wrap.appendChild(el('label', { for: id, text: label }));
+  wrap.appendChild(el('br'));
+  const s = el('select', { id });
+  for (const [value, text] of options) s.appendChild(el('option', { value, text }));
+  wrap.appendChild(s);
+  return wrap;
+}
+function out() { return el('div', { id: 'q-results', 'aria-live': 'polite' }); }
+function val(id) { const n = document.getElementById(id); return n ? n.value : ''; }
+function safe(o, fn) { clear(o); try { fn(); } catch (err) { o.appendChild(el('p', { class: 'muted', text: err.message })); } }
+function note(root, text) { if (text) root.appendChild(el('p', { class: 'muted', text })); }
+function postureNote(root) {
+  root.appendChild(el('p', { class: 'muted', text: 'Decision support, not a verdict. The result is the cited source’s, computed from the inputs you enter. The management decision stays with the orthopedic / foot-and-ankle team.' }));
+}
+function wire(ids, run) {
+  for (const id of ids) { const n = document.getElementById(id); if (n) { n.addEventListener('input', run); n.addEventListener('change', run); } }
+  run();
+}
+
+export const renderers = {
+  'berndt-harty'(root) {
+    note(root, 'Berndt-Harty classification of an osteochondral lesion (transchondral fracture) of the talus, by the radiographic stage of the fragment. Pick the stage. I: subchondral compression (cartilage intact); II: partial detachment; III: complete detachment, non-displaced (in situ); IV: displaced fragment / loose body. Near-neighbors: weber-ankle, lauge-hansen.');
+    root.appendChild(select('Berndt-Harty stage', 'bh-stage', [
+      ['I', 'Stage I - subchondral compression (cartilage intact)'],
+      ['II', 'Stage II - partial detachment'],
+      ['III', 'Stage III - complete detachment, non-displaced'],
+      ['IV', 'Stage IV - displaced fragment / loose body'],
+    ]));
+
+    const o = out(); root.appendChild(o);
+    wire(['bh-stage'], () => safe(o, () => {
+      const r = M.berndtHarty({ stage: val('bh-stage') });
+      resultRow(o, [
+        { text: r.band },
+        { label: 'Stage', value: r.bandLabel },
+      ]);
+      note(o, r.note);
+    }));
+    postureNote(root);
+  },
+};

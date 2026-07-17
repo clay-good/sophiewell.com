@@ -6,6 +6,21 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v403 — Berndt-Harty classification (osteochondral lesion of the talus) tile, 1254 → 1255)
+
+- New `berndt-harty` tile (group G): the Berndt-Harty classification of an osteochondral lesion
+  (transchondral fracture) of the talus (stages I/II/III/IV), by the radiographic stage of the fragment —
+  the talar-lesion staging that sits beside the Danis-Weber and Lauge-Hansen ankle-fracture tiles;
+  previously absent. The clinician picks the stage and the tile reports its radiographic description.
+  **I:** subchondral compression, cartilage intact. **II:** partial detachment. **III:** complete
+  detachment, non-displaced (in situ). **IV:** displaced fragment / loose body. A Berndt-Harty stage, not a
+  diagnosis, a treatment decision, or a prognosis ([spec-v11] §5.3); the stage informs whether the fragment
+  is stable or displaced. Stages transcribed (spec-v97) from Berndt-Harty 1959 (J Bone Joint Surg Am),
+  cross-verified against orthopedic / radiology references; no citation-staleness row (the citation carries
+  no guideline-issuer acronym). New `lib/berndt-harty-v403.js` + `views/group-v403.js` (RV403); +1 META
+  entry, +1 UTILITIES row, a synonym entry (v124 → v125), 5 unit tests + fuzz, corpus rebuilt to 1255. See
+  [docs/spec-v403.md](docs/spec-v403.md). The MCP adapter follows in a later wave.
+
 ### Added (spec-v402 — Lauge-Hansen classification (rotational ankle fracture) tile, 1253 → 1254)
 
 - New `lauge-hansen` tile (group G): the Lauge-Hansen classification of a rotational ankle fracture by
