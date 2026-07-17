@@ -3059,6 +3059,18 @@ test('lib/cad-rads-v372.js worked calls', () => {
   assert.match(ok('cad-rads', { 'cadrads-cat': '4B' }).band, /left main/);
 });
 
+test('lib/ni-rads-v373.js worked calls', () => {
+  // NI-RADS 3 (the META example): high suspicion, biopsy, flagged.
+  const three = ok('ni-rads', { 'nirads-cat': '3' });
+  assert.equal(three.category, '3');
+  assert.equal(three.suspicious, true);
+  assert.match(three.band, /high suspicion/);
+  // 1: no recurrence, not flagged.
+  assert.equal(ok('ni-rads', { 'nirads-cat': '1' }).suspicious, false);
+  // 2A: mucosal, low suspicion.
+  assert.match(ok('ni-rads', { 'nirads-cat': '2A' }).band, /mucosal/);
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];

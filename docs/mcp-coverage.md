@@ -1502,6 +1502,16 @@ round-trip both pass, without the phantom "2". Adapter appended to the existing
 rate to a target PaCO2. Brings the exposed total to **1072 calculators across 197
 modules**.
 
+## One-hundred-ninety-eighth wave — the NI-RADS category (head & neck surveillance) in lib/ni-rads-v373.js (+1)
+
+`ni-rads` (spec-v373) applies the NI-RADS categories for post-treatment head-and-neck-cancer surveillance
+imaging: given the category, it reports the description. `category` is an enum (`kind: 'enum'`, values
+1/2A/2B/3/4) — the single input the renderer exposes. The example sets 3; its expected text is the
+category description (the numeral 3, no other numeric facts), so it round-trips through the default
+`makeToArgs` with no custom toArgs. New adapter module registered in `mcp/catalog.js`; its golden probe
+("neck imaging reporting") is promoted now that the tile is in the MCP-exposed registry. Brings the
+exposed total to **1162 calculators across 278 modules**. Completes the RADS family in the MCP registry.
+
 ## One-hundred-ninety-seventh wave — the CAD-RADS 2.0 category (coronary CTA) in lib/cad-rads-v372.js (+1)
 
 `cad-rads` (spec-v372) applies the CAD-RADS 2.0 coronary-CTA categories: given the category, it reports
@@ -4148,6 +4158,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/cad-rads-v372.js
 - `cad-rads`
+
+### lib/ni-rads-v373.js
+- `ni-rads`
 
 ### lib/tb-testing.js
 - `tb-testing`
