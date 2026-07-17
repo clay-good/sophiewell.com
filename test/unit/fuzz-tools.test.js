@@ -344,6 +344,7 @@ import * as casTedV364 from '../../lib/cas-ted-v364.js';
 import * as pragueBarrettV365 from '../../lib/prague-barrett-v365.js';
 import * as neckZoneV366 from '../../lib/neck-zone-v366.js';
 import * as pasSwallowV367 from '../../lib/pas-swallow-v367.js';
+import * as rossHfPedsV368 from '../../lib/ross-hf-peds-v368.js';
 import * as tbTesting from '../../lib/tb-testing.js';
 
 const MODULES = {
@@ -633,6 +634,7 @@ const MODULES = {
   'prague-barrett-v365.js': pragueBarrettV365,
   'neck-zone-v366.js': neckZoneV366,
   'pas-swallow-v367.js': pasSwallowV367,
+  'ross-hf-peds-v368.js': rossHfPedsV368,
   'tb-testing.js': tbTesting,
 };
 

@@ -6,6 +6,21 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v368 — Ross classification (pediatric heart failure) tile, 1219 → 1220)
+
+- New `ross-hf-peds` tile (group G): the Ross classification of heart failure in infants and children
+  (classes I–IV) — the pediatric functional classification of heart-failure severity, the pediatric analog
+  to the adult `nyha-class` (comparable class-for-class); previously absent. The clinician picks the class
+  and the tile reports its symptom description. **I:** no symptoms. **II:** mild tachypnea / diaphoresis
+  with feeds or dyspnea on exertion, no growth failure. **III:** marked symptoms with growth failure —
+  flagged. **IV:** symptomatic at rest — flagged. A Ross class, not a diagnosis, a treatment decision, or a
+  prognosis ([spec-v11] §5.3); it is symptom-based and can vary visit to visit. Definitions transcribed
+  (spec-v97) from Ross 1992 / modified 2012 (Pediatr Cardiol), cross-verified against pediatric-cardiology
+  references; no citation-staleness row (the citation carries no guideline-issuer acronym). New
+  `lib/ross-hf-peds-v368.js` + `views/group-v368.js` (RV368); +1 META entry, +1 UTILITIES row, a synonym
+  entry (v89 → v90), 5 unit tests + fuzz, corpus rebuilt to 1220. See [docs/spec-v368.md](docs/spec-v368.md).
+  The MCP adapter follows in a later wave.
+
 ### Added (spec-v367 — Penetration-Aspiration Scale (swallow study) tile, 1218 → 1219)
 
 - New `pas-swallow` tile (group G): the Penetration-Aspiration Scale (PAS, scores 1–8) — the standard
