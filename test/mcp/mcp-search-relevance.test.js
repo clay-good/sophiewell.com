@@ -354,6 +354,8 @@ const PROBES = [
   ['avm 3-tier classification', ['spetzler-ponce']],
   // spec-v385 tile, exposed to MCP in wave 210: Schwab & England ADL scale.
   ['parkinson adl scale', ['schwab-england']],
+  // spec-v386 tile, exposed to MCP in wave 211: Pirani clubfoot severity score.
+  ['clubfoot severity score', ['pirani-clubfoot']],
 ];
 
 test(`every golden probe routes an acceptable tile into the top ${TOP_N}`, () => {

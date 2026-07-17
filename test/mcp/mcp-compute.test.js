@@ -3235,6 +3235,18 @@ test('lib/schwab-england-v385.js worked calls', () => {
   assert.match(ok('schwab-england', { 'se-percent': '0' }).band, /bedridden/);
 });
 
+test('lib/pirani-clubfoot-v386.js worked calls', () => {
+  // The META example: 1/1/0.5/1/1/1 -> total 5.5, midfoot 2.5, hindfoot 3.
+  const r = ok('pirani-clubfoot', { 'pir-clb': '1', 'pir-mc': '1', 'pir-lht': '0.5', 'pir-pc': '1', 'pir-eh': '1', 'pir-re': '1' });
+  assert.equal(r.total, 5.5);
+  assert.equal(r.midfootScore, 2.5);
+  assert.equal(r.hindfootScore, 3);
+  assert.match(r.band, /5\.5 of 6/);
+  // all-zero -> 0.
+  const z = ok('pirani-clubfoot', { 'pir-clb': '0', 'pir-mc': '0', 'pir-lht': '0', 'pir-pc': '0', 'pir-eh': '0', 'pir-re': '0' });
+  assert.equal(z.total, 0);
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];

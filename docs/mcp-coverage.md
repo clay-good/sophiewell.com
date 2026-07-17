@@ -1502,6 +1502,16 @@ round-trip both pass, without the phantom "2". Adapter appended to the existing
 rate to a target PaCO2. Brings the exposed total to **1072 calculators across 197
 modules**.
 
+## Two-hundred-eleventh wave — the Pirani clubfoot severity score in lib/pirani-clubfoot-v386.js (+1)
+
+`pirani-clubfoot` (spec-v386) sums the six Pirani signs into the midfoot + hindfoot contracture scores
+and a 0-6 total. Each of the six signs is an enum (`kind: 'enum'`, values 0 / 0.5 / 1) — the inputs the
+renderer exposes. The example (1/1/0.5/1/1/1 → 5.5) sets all six fields, so all six adapter fields are
+`required: true`; its expected numbers (5.5, 6, 2.5, 3) are echoed in the band, so it round-trips through
+the default `makeToArgs` with no custom toArgs. New adapter module registered in `mcp/catalog.js`; its
+golden probe ("clubfoot severity score") is promoted now that the tile is in the MCP-exposed registry.
+Brings the exposed total to **1175 calculators across 291 modules**.
+
 ## Two-hundred-tenth wave — the Schwab & England ADL scale in lib/schwab-england-v385.js (+1)
 
 `schwab-england` (spec-v385) applies the Schwab & England ADL scale: given the level, it reports the
@@ -4319,6 +4329,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/schwab-england-v385.js
 - `schwab-england`
+
+### lib/pirani-clubfoot-v386.js
+- `pirani-clubfoot`
 
 ### lib/tb-testing.js
 - `tb-testing`
