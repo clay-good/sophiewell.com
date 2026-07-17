@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `75392480c1deda07`
-Generated: 2026-07-17T19:19:18.045Z
+Build ID: `306827a363315bbd`
+Generated: 2026-07-17T19:57:05.210Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=20.18.1 <21, npm >=10.0.0
@@ -24,13 +24,13 @@ downloads is committed in this repository and is hashed below.
 
 | Path | Bytes | SHA-256 |
 |---|---:|---|
-| `index.html` | 83230 | `be48f44807ff6f9dc9af379ff28c38cc90537b3f79648a5ba469089d353c5487` |
+| `index.html` | 83293 | `4032e9aaba90be7039bd2fc390d7318e329c85a73490287479701c2b02ea8a50` |
 | `styles.css` | 44160 | `a2cc7ad7bae9f7cfc9681d80bc6bd4a58f0b07d47bfcff64897dc04929c12333` |
-| `app.js` | 340518 | `71d385121ae4762884498da2dcfdea72b1985884e47a77aaba8afdc991f7a286` |
+| `app.js` | 340751 | `af92e7d038acd3af616a7f801929f3d5ffdd3f83209e21671f5b7702fd7681bf` |
 | `sw.js` | 4622 | `b891d4344f8e04403b7f1d307fd446cc224bddc6f0c4397438a17d197351171e` |
 | `site.webmanifest` | 709 | `0e0de4da60590a12e8b27a0ae2a2f5ffdb6500b7d2b78f93631ec2f64ed3d5ce` |
 | `robots.txt` | 127 | `38fbf9c1854e72abb20e01e81dd5a31d4ea96f154c12d5db1ec3af05524dd1a1` |
-| `sitemap.xml` | 191795 | `c2fbdedce4718be263d8f534eec98e504b1b509fc2239de2c066a0e41e74a5f7` |
+| `sitemap.xml` | 191947 | `a1e434c8a4457e8f654a824859b33dc261581eb265373fede5cd636bbeca5434` |
 | `_headers` | 1316 | `2f39986457d2feff7e73e491a7d09ee871e8f2f4cc2bc437f86bd86a42554ec6` |
 | `logo.png` | 63440 | `11afaf1b0d3ca68393d202e4810bf766b5b6d591b4e3ec52f41d3cacaa4616ec` |
 | `favicon.ico` | 7411 | `407fde0ca2788409e87e11f596fa02e6a0b121817fcea7fd995beec1801e287b` |
@@ -124,6 +124,7 @@ downloads is committed in this repository and is hashed below.
 | `lib/ed-decision-v218.js` | 16495 | `b762fa26049f9b531a60a7c339d7ddecde5828dbf8d60d10ec356c0dcf724956` |
 | `lib/eddecision-v107.js` | 13223 | `0ce30a67dcfaf269ab1bb9fbb2839020f55fdea0359a83e927c4a67a901013c6` |
 | `lib/eichenholtz-charcot-v382.js` | 4286 | `73fe4620dd735578d2c2a48de0e86e2df2be94e7bd89af331c702c9219374ad2` |
+| `lib/el-khoury-ar-v397.js` | 3593 | `7a35fd78ff6dbfeee75168d06e8222aa275255d98db3ab9057765a044dcf69dc` |
 | `lib/ems-v149.js` | 8963 | `a5242adc4eb12063911f88a9afec77847abfca348fc79c58c8e3ac74e4483e55` |
 | `lib/endo-metab-v161.js` | 10974 | `a80066691080d8911c7e8af3bbab9a9e67558476858de2b56e18c5e4a7dfc422` |
 | `lib/endo-quant-v197.js` | 10494 | `9c19351a50d95c1fd0d2060527f575a0a63afc95b94a2a119fbc2e1d3e1af55e` |
@@ -227,7 +228,7 @@ downloads is committed in this repository and is hashed below.
 | `lib/massive-transfusion-v265.js` | 3240 | `7ad4d1d86063fdd077546be5d6381ea4a5024ef669389f88abdfe07850903b29` |
 | `lib/medication-v4.js` | 18192 | `467f9576c50da696cc56094eb022d0a5ed1e88de0c7618448554ede8067270b0` |
 | `lib/medication-v5.js` | 18863 | `ce81d9f8954abbd412892c13af9936f992239164f26fd2b999eaea7902787ab7` |
-| `lib/meta.js` | 1704412 | `43b1f485f3ba2fb59a9c5a8643012afbecada433c66bf3978f7f08cf9a4caee0` |
+| `lib/meta.js` | 1705569 | `e1fc184b1874dce889dda68af7bb21dc8727b950df5fc1bb8e767548bf3ae01d` |
 | `lib/metabolic-hepatic-v219.js` | 12791 | `b9352877cebf7fbf3c3b99ecb8b72cdbee3ed94e056dc019113668609f5a95a8` |
 | `lib/metabolic-onc-v88.js` | 12659 | `1553b641668c121661a66647da71a4aaaa023e9f3a6b7a753efbcdab27cdba81` |
 | `lib/metabolic-v269.js` | 3262 | `0c7a42557886f2b0aeee7949b8d0bd682d795d4526174fd540717a978d94ec2f` |
@@ -693,6 +694,7 @@ downloads is committed in this repository and is hashed below.
 | `views/group-v394.js` | 2957 | `0a46ec0084cebe52a5c7ee1f4f07c3bbf67dbb3da03026d9d1665017b59bfb69` |
 | `views/group-v395.js` | 3108 | `8b0fcc06f061f638c4744a7a67e839cf06172d375baad6ecc78685b226a319a7` |
 | `views/group-v396.js` | 2720 | `cb0edb6166bc60b9157df0180d7c5a3241c748d8833258e9377c832da3f68d0b` |
+| `views/group-v397.js` | 2834 | `ead49e88d05ff3d3d97be35155d6afe6ed8b7ec8dfa5544fb61d99ba82e368ae` |
 | `views/group-v40.js` | 12318 | `0b6f3285013680487a90912c1fbd3a4850244dfc218013f7407803819bcfad8a` |
 | `views/group-v5.js` | 32855 | `c17fc4c7bdc25ea5a80969ddc7091a63731dc8aeafb7f478507145a71cf73b2e` |
 | `views/group-v6.js` | 5707 | `425918decb48cd9efac9fc5590ac8970a54c03c3b0df056fb99c9a22ff8dd1b2` |

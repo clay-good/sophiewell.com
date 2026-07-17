@@ -6,6 +6,22 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v397 — El Khoury classification (aortic regurgitation) tile, 1248 → 1249)
+
+- New `el-khoury-ar` tile (group G): the El Khoury (Boodhwani) repair-oriented functional classification
+  of aortic regurgitation (types I/II/III), by the mechanism of the aortic insufficiency — the aortic
+  analog of Carpentier's mitral classification, used to plan aortic-valve-sparing / repair surgery, the
+  complement to the Sievers bicuspid-aortic-valve typing shipped alongside; previously absent. The
+  clinician picks the type and the tile reports its mechanism description. **I:** normal cusp motion with
+  functional-aortic-annulus dilatation (subtypes Ia sinotubular / Ib root / Ic annular / Id perforation).
+  **II:** cusp prolapse (excessive motion). **III:** cusp restriction (restrictive motion). An El Khoury
+  type, not a diagnosis, a treatment decision, or a prognosis ([spec-v11] §5.3); the type guides the repair
+  strategy. Types transcribed (spec-v97) from Boodhwani 2009 (J Thorac Cardiovasc Surg), cross-verified
+  against cardiac-surgery/echocardiography references; no citation-staleness row (the citation carries no
+  guideline-issuer acronym). New `lib/el-khoury-ar-v397.js` + `views/group-v397.js` (RV397); +1 META entry,
+  +1 UTILITIES row, a synonym entry (v118 → v119), 5 unit tests + fuzz, corpus rebuilt to 1249. See
+  [docs/spec-v397.md](docs/spec-v397.md). The MCP adapter follows in a later wave.
+
 ### Added (spec-v396 — Sievers classification (bicuspid aortic valve) tile, 1247 → 1248)
 
 - New `sievers-bav` tile (group G): the Sievers classification of a bicuspid aortic valve (types 0/1/2),
