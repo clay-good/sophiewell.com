@@ -315,6 +315,7 @@ import bismuthCorletteV399 from './adapters/bismuth-corlette-v399.js';
 import nyhusHerniaV400 from './adapters/nyhus-hernia-v400.js';
 import zargarCausticV401 from './adapters/zargar-caustic-v401.js';
 import laugeHansenV402 from './adapters/lauge-hansen-v402.js';
+import berndtHartyV403 from './adapters/berndt-harty-v403.js';
 import tbTesting from './adapters/tb-testing.js';
 import labInterpret from './adapters/lab-interpret.js';
 import decisionRulesV258 from './adapters/decision-rules-v258.js';
@@ -624,6 +625,7 @@ const ADAPTER_MODULES = [
   ['nyhus-hernia-v400', nyhusHerniaV400],
   ['zargar-caustic-v401', zargarCausticV401],
   ['lauge-hansen-v402', laugeHansenV402],
+  ['berndt-harty-v403', berndtHartyV403],
   ['tb-testing', tbTesting],
   ['lab-interpret', labInterpret],
   ['decision-rules-v258', decisionRulesV258],

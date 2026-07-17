@@ -388,6 +388,8 @@ const PROBES = [
   ['caustic ingestion grade', ['zargar-caustic']],
   // spec-v402 tile, exposed to MCP in wave 227: Lauge-Hansen classification (rotational ankle fracture).
   ['ankle fracture mechanism', ['lauge-hansen']],
+  // spec-v403 tile, exposed to MCP in wave 228: Berndt-Harty classification (osteochondral lesion of the talus).
+  ['osteochondral lesion of the talus', ['berndt-harty']],
 ];
 
 test(`every golden probe routes an acceptable tile into the top ${TOP_N}`, () => {

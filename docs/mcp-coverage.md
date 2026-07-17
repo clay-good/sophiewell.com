@@ -1502,6 +1502,16 @@ round-trip both pass, without the phantom "2". Adapter appended to the existing
 rate to a target PaCO2. Brings the exposed total to **1072 calculators across 197
 modules**.
 
+## Two-hundred-twenty-eighth wave — the Berndt-Harty classification (osteochondral lesion of the talus) in lib/berndt-harty-v403.js (+1)
+
+`berndt-harty` (spec-v403) applies the Berndt-Harty classification of an osteochondral lesion of the talus:
+given the stage, it reports the radiographic description. `stage` is an enum (`kind: 'enum'`, values
+I/II/III/IV) — the single input the renderer exposes. The example sets stage III; its expected text is the
+stage description (a roman numeral, no free numeric facts to round-trip), so it flows through the default
+`makeToArgs` with no custom toArgs. New adapter module registered in `mcp/catalog.js`; its golden probe
+("osteochondral lesion of the talus") is promoted now that the tile is in the MCP-exposed registry. Brings
+the exposed total to **1192 calculators across 308 modules**.
+
 ## Two-hundred-twenty-seventh wave — the Lauge-Hansen classification (rotational ankle fracture) in lib/lauge-hansen-v402.js (+1)
 
 `lauge-hansen` (spec-v402) applies the Lauge-Hansen classification of a rotational ankle fracture: given
@@ -4542,6 +4552,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/lauge-hansen-v402.js
 - `lauge-hansen`
+
+### lib/berndt-harty-v403.js
+- `berndt-harty`
 
 ### lib/tb-testing.js
 - `tb-testing`

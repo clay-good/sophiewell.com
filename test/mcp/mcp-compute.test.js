@@ -3455,6 +3455,17 @@ test('lib/lauge-hansen-v402.js worked calls', () => {
   assert.match(ok('lauge-hansen', { 'lh-mech': 'PER' }).band, /Maisonneuve/);
 });
 
+test('lib/berndt-harty-v403.js worked calls', () => {
+  // Stage III (the META example): detached, non-displaced.
+  const iii = ok('berndt-harty', { 'bh-stage': 'III' });
+  assert.equal(iii.stage, 'III');
+  assert.match(iii.band, /completely detached fragment/);
+  // Stage I: subchondral compression.
+  assert.match(ok('berndt-harty', { 'bh-stage': 'I' }).band, /subchondral compression/);
+  // Stage IV: displaced loose body.
+  assert.match(ok('berndt-harty', { 'bh-stage': 'IV' }).band, /displaced osteochondral fragment/);
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];
