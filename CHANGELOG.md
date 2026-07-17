@@ -6,6 +6,23 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v356 — CEAP classification (chronic venous disease) tile, 1207 → 1208)
+
+- New `ceap-venous` tile (group G): the CEAP clinical classification (C-class C0–C6) of chronic venous
+  disease — the internationally accepted standard for describing the clinical signs of a chronic venous
+  disorder; previously absent. The catalog carried the Venous Clinical Severity Score (`vcss`) but not the
+  CEAP class it complements. The clinician picks the clinical class and the tile reports its description.
+  **C0:** no signs. **C1:** telangiectasias / reticular veins. **C2:** varicose veins. **C3:** edema.
+  **C4a:** pigmentation or eczema — flagged. **C4b:** lipodermatosclerosis or atrophie blanche — flagged.
+  **C5:** healed venous ulcer — flagged. **C6:** active venous ulcer — flagged. A CEAP clinical class, not
+  a diagnosis, a treatment decision, or a prognosis ([spec-v11] §5.3); the management decision stays with
+  the treating clinician. This tile reports the C (clinical) axis; the full CEAP also has E/A/P axes (out
+  of scope). Classes transcribed (spec-v97) from Eklof 2004 (JVS) + the 2020 update, cross-verified
+  against StatPearls; no citation-staleness row (the citation carries no guideline-issuer acronym). New
+  `lib/ceap-venous-v356.js` + `views/group-v356.js` (RV356); +1 META entry, +1 UTILITIES row, a synonym
+  entry (v77 → v78), 5 unit tests + fuzz, corpus rebuilt to 1208. See [docs/spec-v356.md](docs/spec-v356.md).
+  The MCP adapter follows in a later wave.
+
 ### Added (spec-v355 — Lachman test grade (ACL laxity) tile, 1206 → 1207)
 
 - New `lachman-acl` tile (group G): the Lachman test grade of anterior cruciate ligament (ACL) laxity

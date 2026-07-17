@@ -1,5 +1,5 @@
 {
-  "version": "v77-2026-07-16",
+  "version": "v78-2026-07-16",
   "note": "spec-v7 section 3.2: hand-curated patient-phrasing -> tile id table. Each entry maps patient-mental-model phrases (and, from the v8/v9 plain-language-search batches, clinical abbreviations, eponym aliases, and canonical-intent phrases) to a single existing tile. Audience is the primary audience the entry serves; the matcher deprioritizes (does not hide) entries when the user has selected a different chip. Every phrase is lowercase; every tile id is an existing catalog tile (guarded by test/unit/synonyms-catalog.test.js). Adding a new phrase is a one-line PR.",
   "entries": [
     { "phrases": ["denied", "denial letter", "they denied it", "insurance said no", "appeal", "write an appeal", "appeal my claim", "appeal letter", "appeal a denial"],
@@ -298,6 +298,8 @@
     { "phrases": ["tonnis grade", "tonnis classification", "tonnis classification hip", "tonnis osteoarthritis", "hip osteoarthritis grade", "hip oa grade", "radiographic hip osteoarthritis grade", "tonnis hip"],
       "tile": "tonnis-hip-oa", "audience": "clinicians" },
     { "phrases": ["lachman test grade", "lachman grade", "lachman test", "acl laxity grade", "acl laxity", "anterior cruciate ligament laxity", "acl tear grade", "knee laxity grade", "anterior tibial translation grade"],
-      "tile": "lachman-acl", "audience": "clinicians" }
+      "tile": "lachman-acl", "audience": "clinicians" },
+    { "phrases": ["ceap classification", "ceap", "ceap clinical class", "ceap class", "chronic venous disease class", "chronic venous insufficiency class", "venous disease classification", "varicose vein classification", "c0 c6 venous"],
+      "tile": "ceap-venous", "audience": "clinicians" }
   ]
 }

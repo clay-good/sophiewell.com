@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `7e8e510868df34ca`
-Generated: 2026-07-17T00:00:40.293Z
+Build ID: `cffe768e0d866687`
+Generated: 2026-07-17T00:08:43.093Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=20.18.1 <21, npm >=10.0.0
@@ -24,13 +24,13 @@ downloads is committed in this repository and is hashed below.
 
 | Path | Bytes | SHA-256 |
 |---|---:|---|
-| `index.html` | 80951 | `2ce80e8613e241d181e1ca447686cd9979f22dbada17a71026c40679254757e3` |
+| `index.html` | 81011 | `e81db77892326e94a19c090aa76b7d3f8e45e26c3d58e67a4941622b355e7cde` |
 | `styles.css` | 44160 | `a2cc7ad7bae9f7cfc9681d80bc6bd4a58f0b07d47bfcff64897dc04929c12333` |
-| `app.js` | 330962 | `7ebe8b34d63805091fd826fa6d0214dffacfdc995964f3b0cfc39328fdb0df8d` |
+| `app.js` | 331195 | `0abf5530d3cf1c0f72e4233634d1ec22c56c145b144cd299282c4f4a635f0ba1` |
 | `sw.js` | 4622 | `b891d4344f8e04403b7f1d307fd446cc224bddc6f0c4397438a17d197351171e` |
 | `site.webmanifest` | 709 | `0e0de4da60590a12e8b27a0ae2a2f5ffdb6500b7d2b78f93631ec2f64ed3d5ce` |
 | `robots.txt` | 127 | `38fbf9c1854e72abb20e01e81dd5a31d4ea96f154c12d5db1ec3af05524dd1a1` |
-| `sitemap.xml` | 185482 | `24a4a1b1e520a65884b218a3e34c56c9283d8b0953278ee700e2cd66dd49108a` |
+| `sitemap.xml` | 185633 | `a5ca9d52180fd1f5adab19f63ca8f28f89da52ac3421dc3531f07a24d0895ff1` |
 | `_headers` | 1316 | `2f39986457d2feff7e73e491a7d09ee871e8f2f4cc2bc437f86bd86a42554ec6` |
 | `logo.png` | 63440 | `11afaf1b0d3ca68393d202e4810bf766b5b6d591b4e3ec52f41d3cacaa4616ec` |
 | `favicon.ico` | 7411 | `407fde0ca2788409e87e11f596fa02e6a0b121817fcea7fd995beec1801e287b` |
@@ -71,6 +71,7 @@ downloads is committed in this repository and is hashed below.
 | `lib/catterall-perthes-v346.js` | 4486 | `63322ecb14b2d99ffe2d6503fcf5c7ff8248f31768b9f6fb830223a43f085340` |
 | `lib/ccs-angina-v319.js` | 4235 | `9e2d5837e6b90988ba4bcb58a58bdc3286a320aa98e72a08590f0a6f927c20bd` |
 | `lib/cdi-severity-v317.js` | 5240 | `ecdbbb59e2933387e5b504f983dccb3eed85fa16e8c9908d10da4464f8a84ef7` |
+| `lib/ceap-venous-v356.js` | 3969 | `595138549f950b9332bfa4fc3b7e9d2433d432673ad8d5603fdef98b6c36b2ae` |
 | `lib/cholangitis-dx-v312.js` | 4598 | `73a2cdd9c981717c1c8810c286fc6b76d2ff629e5af4a04e7cbbe881e9776825` |
 | `lib/cholangitis-v310.js` | 4886 | `4cac9a021e002921e5ab5a7b41a7bb3b029db3050404e1bcf586f94cb8e8d7c3` |
 | `lib/cholecystitis-dx-v313.js` | 4270 | `6360a208f6243d59a29a492fcd166d7de931a86faf14ea411df7c782bf16cdcd` |
@@ -208,7 +209,7 @@ downloads is committed in this repository and is hashed below.
 | `lib/massive-transfusion-v265.js` | 3240 | `7ad4d1d86063fdd077546be5d6381ea4a5024ef669389f88abdfe07850903b29` |
 | `lib/medication-v4.js` | 18192 | `467f9576c50da696cc56094eb022d0a5ed1e88de0c7618448554ede8067270b0` |
 | `lib/medication-v5.js` | 18863 | `ce81d9f8954abbd412892c13af9936f992239164f26fd2b999eaea7902787ab7` |
-| `lib/meta.js` | 1656685 | `7bac13669533b040a1898d1839368204625063cfbdebba222feff327a3740f38` |
+| `lib/meta.js` | 1657718 | `9b2b84940dee6e99ad0559dbbfa2dbcde0625615d6c99f385aeb56604d006516` |
 | `lib/metabolic-hepatic-v219.js` | 12791 | `b9352877cebf7fbf3c3b99ecb8b72cdbee3ed94e056dc019113668609f5a95a8` |
 | `lib/metabolic-onc-v88.js` | 12659 | `1553b641668c121661a66647da71a4aaaa023e9f3a6b7a753efbcdab27cdba81` |
 | `lib/metabolic-v269.js` | 3262 | `0c7a42557886f2b0aeee7949b8d0bd682d795d4526174fd540717a978d94ec2f` |
@@ -607,6 +608,7 @@ downloads is committed in this repository and is hashed below.
 | `views/group-v353.js` | 2875 | `5b09627a28b58d2f94f5756c5e5c82f52f2224394978087f3253dc8ed21c1f66` |
 | `views/group-v354.js` | 3101 | `2ed597a1a8b853c8173a7df4af9058d647f4a8abe4623e1c5bb78aa2844e0f69` |
 | `views/group-v355.js` | 2887 | `a7ba6bc8632858fc862cda007419204bd8a1a039b491a1884a96fea058daf668` |
+| `views/group-v356.js` | 3084 | `96afdd3bbe12c02f3b98f3c86e91a94e10307b389e8d2c95260bb93407aff697` |
 | `views/group-v36.js` | 9701 | `27235c5bd11c79ea046d75fe20f455c2648c6cbc31a1e1f2a9c1fccbcd41c693` |
 | `views/group-v37.js` | 11703 | `b177fd467dbf0b92eab8832360375b7527667956f9392621cb2aedd70eb0e26d` |
 | `views/group-v38.js` | 6650 | `ebbf67a8d2bd2502456700ecd417d63e899e4493bb740138bc07b1f87c34aff5` |
