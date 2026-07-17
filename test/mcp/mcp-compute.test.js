@@ -3109,6 +3109,20 @@ test('lib/denis-sacral-v376.js worked calls', () => {
   assert.match(ok('denis-sacral', { 'denis-zone': 'II' }).band, /through the sacral foramina/);
 });
 
+test('lib/gartland-supracondylar-v377.js worked calls', () => {
+  // Type III (the META example): completely displaced, flagged.
+  const three = ok('gartland-supracondylar', { 'gartland-type': 'III' });
+  assert.equal(three.type, 'III');
+  assert.equal(three.displaced, true);
+  assert.match(three.band, /completely displaced/);
+  // Type I: nondisplaced, stable, not flagged.
+  const one = ok('gartland-supracondylar', { 'gartland-type': 'I' });
+  assert.equal(one.displaced, false);
+  assert.match(one.band, /nondisplaced/);
+  // Type IV: modified multidirectional instability, flagged.
+  assert.match(ok('gartland-supracondylar', { 'gartland-type': 'IV' }).band, /multidirectional instability/);
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];
