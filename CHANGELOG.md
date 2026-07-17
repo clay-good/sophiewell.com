@@ -6,6 +6,22 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v384 — Spetzler-Ponce classification (cerebral AVM) tile, 1235 → 1236)
+
+- New `spetzler-ponce` tile (group G): the Spetzler-Ponce 3-tier classification of a cerebral
+  arteriovenous malformation (Classes A/B/C) — the 2011 simplification of the 5-tier Spetzler-Martin
+  grade, grouping grades with similar surgical outcomes (A = SM I-II, B = SM III, C = SM IV-V); previously
+  absent (the catalog had Spetzler-Martin but not its 3-tier companion). The clinician picks the class (or
+  the underlying Spetzler-Martin grade) and the tile reports its SM-grade grouping and surgical-risk level.
+  **A:** SM grade I-II (lowest surgical risk). **B:** SM grade III (intermediate). **C:** SM grade IV-V
+  (highest surgical risk) — flagged. A class derived from the SM grade, not a diagnosis, a treatment
+  decision, or a prognosis ([spec-v11] §5.3); the management approaches the authors associated with each
+  class (surgery / multimodal / observation) are stated descriptively as a general association, not an
+  order. Classes transcribed (spec-v97) from Spetzler 2011 (J Neurosurg); no citation-staleness row (the
+  citation carries no guideline-issuer acronym). New `lib/spetzler-ponce-v384.js` + `views/group-v384.js`
+  (RV384); +1 META entry, +1 UTILITIES row, a synonym entry (v105 → v106), 6 unit tests + fuzz, corpus
+  rebuilt to 1236. See [docs/spec-v384.md](docs/spec-v384.md). The MCP adapter follows in a later wave.
+
 ### Added (spec-v383 — Risser sign (skeletal maturity) tile, 1234 → 1235)
 
 - New `risser-sign` tile (group G): the Risser sign (US grading, 0-5) for skeletal maturity, read off the
