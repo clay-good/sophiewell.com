@@ -1,5 +1,5 @@
 {
-  "version": "v117-2026-07-17",
+  "version": "v118-2026-07-17",
   "note": "spec-v7 section 3.2: hand-curated patient-phrasing -> tile id table. Each entry maps patient-mental-model phrases (and, from the v8/v9 plain-language-search batches, clinical abbreviations, eponym aliases, and canonical-intent phrases) to a single existing tile. Audience is the primary audience the entry serves; the matcher deprioritizes (does not hide) entries when the user has selected a different chip. Every phrase is lowercase; every tile id is an existing catalog tile (guarded by test/unit/synonyms-catalog.test.js). Adding a new phrase is a one-line PR.",
   "entries": [
     { "phrases": ["denied", "denial letter", "they denied it", "insurance said no", "appeal", "write an appeal", "appeal my claim", "appeal letter", "appeal a denial"],
@@ -378,6 +378,8 @@
     { "phrases": ["borrmann", "borrmann classification", "gastric cancer gross morphology", "advanced gastric cancer type", "borrmann type", "gastric cancer macroscopic type", "linitis plastica type", "polypoid gastric cancer"],
       "tile": "borrmann-gastric", "audience": "clinicians" },
     { "phrases": ["parks", "parks classification", "anal fistula classification", "fistula in ano classification", "perianal fistula type", "intersphincteric fistula", "transsphincteric fistula", "anal fistula type"],
-      "tile": "parks-fistula", "audience": "clinicians" }
+      "tile": "parks-fistula", "audience": "clinicians" },
+    { "phrases": ["sievers", "sievers classification", "bicuspid aortic valve type", "bicuspid valve classification", "bav classification", "sievers bicuspid", "bicuspid aortic valve raphe", "aortic valve raphe type"],
+      "tile": "sievers-bav", "audience": "clinicians" }
   ]
 }

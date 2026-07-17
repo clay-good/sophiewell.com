@@ -6,6 +6,20 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v396 — Sievers classification (bicuspid aortic valve) tile, 1247 → 1248)
+
+- New `sievers-bav` tile (group G): the Sievers classification of a bicuspid aortic valve (types 0/1/2),
+  by the number of raphes — the standard morphological typing used in echocardiography, CT, and
+  aortic-valve repair / TAVR planning; previously absent. The clinician picks the type and the tile
+  reports its raphe description. **0:** no raphe (two symmetrical leaflets). **1:** one raphe (the most
+  common; sub-typed by the fused sinuses L-R / R-N / N-L). **2:** two raphes (least common). A Sievers
+  type, not a diagnosis, a treatment decision, or a prognosis ([spec-v11] §5.3); the type informs repair /
+  TAVR planning. Types transcribed (spec-v97) from Sievers 2007 (J Thorac Cardiovasc Surg), cross-verified
+  against cardiology/echocardiography references; no citation-staleness row (the citation carries no
+  guideline-issuer acronym). New `lib/sievers-bav-v396.js` + `views/group-v396.js` (RV396); +1 META entry,
+  +1 UTILITIES row, a synonym entry (v117 → v118), 5 unit tests + fuzz, corpus rebuilt to 1248. See
+  [docs/spec-v396.md](docs/spec-v396.md). The MCP adapter follows in a later wave.
+
 ### Added (spec-v395 — Parks classification (anal fistula) tile, 1246 → 1247)
 
 - New `parks-fistula` tile (group G): the Parks classification of an anal fistula (fistula-in-ano), by the

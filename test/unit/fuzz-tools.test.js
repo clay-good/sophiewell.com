@@ -372,6 +372,7 @@ import * as hillFlapValveV392 from '../../lib/hill-flap-valve-v392.js';
 import * as laurenGastricV393 from '../../lib/lauren-gastric-v393.js';
 import * as borrmannGastricV394 from '../../lib/borrmann-gastric-v394.js';
 import * as parksFistulaV395 from '../../lib/parks-fistula-v395.js';
+import * as sieversBavV396 from '../../lib/sievers-bav-v396.js';
 import * as tbTesting from '../../lib/tb-testing.js';
 
 const MODULES = {
@@ -689,6 +690,7 @@ const MODULES = {
   'lauren-gastric-v393.js': laurenGastricV393,
   'borrmann-gastric-v394.js': borrmannGastricV394,
   'parks-fistula-v395.js': parksFistulaV395,
+  'sievers-bav-v396.js': sieversBavV396,
   'tb-testing.js': tbTesting,
 };
 
