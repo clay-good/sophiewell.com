@@ -6,6 +6,21 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v402 — Lauge-Hansen classification (rotational ankle fracture) tile, 1253 → 1254)
+
+- New `lauge-hansen` tile (group G): the Lauge-Hansen classification of a rotational ankle fracture by
+  mechanism (SA / SER / PAB / PER / PD) — the mechanistic companion to the anatomic Danis-Weber
+  classification (`weber-ankle`) already in the catalog; previously absent. The clinician picks the
+  mechanism and the tile reports its injury-sequence description. **SA:** supination-adduction. **SER:**
+  supination-external-rotation (most common; Weber B). **PAB:** pronation-abduction (Weber C). **PER:**
+  pronation-external-rotation (Weber C; Maisonneuve if very proximal). **PD:** pronation-dorsiflexion
+  (pilon-type). A Lauge-Hansen mechanism, not a diagnosis, a treatment decision, or a prognosis ([spec-v11]
+  §5.3); the pattern describes the injury sequence. Patterns transcribed (spec-v97) from Lauge-Hansen 1950
+  (Arch Surg), cross-verified against orthopedic / radiology references; no citation-staleness row (the
+  citation carries no guideline-issuer acronym). New `lib/lauge-hansen-v402.js` + `views/group-v402.js`
+  (RV402); +1 META entry, +1 UTILITIES row, a synonym entry (v123 → v124), 5 unit tests + fuzz, corpus
+  rebuilt to 1254. See [docs/spec-v402.md](docs/spec-v402.md). The MCP adapter follows in a later wave.
+
 ### Added (spec-v401 — Zargar classification (caustic esophagogastric injury) tile, 1252 → 1253)
 
 - New `zargar-caustic` tile (group G): the modified Zargar endoscopic classification of a caustic /
