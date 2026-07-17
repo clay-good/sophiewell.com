@@ -6,6 +6,22 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v389 — Koos grade (vestibular schwannoma) tile, 1240 → 1241)
+
+- New `koos-schwannoma` tile (group G): the Koos grading of a vestibular schwannoma (acoustic neuroma),
+  grades I-IV, by extrameatal extension and brainstem involvement — the standard grading used in
+  radiosurgery-vs-microsurgery planning; previously absent. The clinician picks the grade and the tile
+  reports its description. **I:** intracanalicular (within the internal auditory canal). **II:** extends
+  into the cerebellopontine angle, no brainstem contact. **III:** contacts the brainstem, no displacement
+  — flagged. **IV:** compresses the brainstem, displaces the fourth ventricle — flagged. A Koos grade, not
+  a diagnosis, a treatment decision, or a prognosis ([spec-v11] §5.3); the rising brainstem-involvement
+  gradient (I → IV) is the classically taught pattern, not an order. Grades transcribed (spec-v97) from
+  Koos 1998 (J Neurosurg), cross-verified against neurosurgery/radiology reliability studies; no
+  citation-staleness row (the citation carries no guideline-issuer acronym). New
+  `lib/koos-schwannoma-v389.js` + `views/group-v389.js` (RV389); +1 META entry, +1 UTILITIES row, a synonym
+  entry (v110 → v111), 6 unit tests + fuzz, corpus rebuilt to 1241. See [docs/spec-v389.md](docs/spec-v389.md).
+  The MCP adapter follows in a later wave.
+
 ### Added (spec-v388 — Brodsky tonsil grading scale tile, 1239 → 1240)
 
 - New `brodsky-tonsil` tile (group G): the Brodsky grading scale for palatine tonsil size (grades 0-4), by
