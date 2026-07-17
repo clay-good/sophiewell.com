@@ -333,6 +333,7 @@ import * as croweDdhV353 from '../../lib/crowe-ddh-v353.js';
 import * as tonnisHipOaV354 from '../../lib/tonnis-hip-oa-v354.js';
 import * as lachmanAclV355 from '../../lib/lachman-acl-v355.js';
 import * as ceapVenousV356 from '../../lib/ceap-venous-v356.js';
+import * as nyhaClassV357 from '../../lib/nyha-class-v357.js';
 import * as tbTesting from '../../lib/tb-testing.js';
 
 const MODULES = {
@@ -611,6 +612,7 @@ const MODULES = {
   'tonnis-hip-oa-v354.js': tonnisHipOaV354,
   'lachman-acl-v355.js': lachmanAclV355,
   'ceap-venous-v356.js': ceapVenousV356,
+  'nyha-class-v357.js': nyhaClassV357,
   'tb-testing.js': tbTesting,
 };
 

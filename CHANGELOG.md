@@ -6,6 +6,22 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v357 — NYHA functional classification (heart failure) tile, 1208 → 1209)
+
+- New `nyha-class` tile (group G): the NYHA (New York Heart Association) functional classification of
+  heart failure (classes I–IV) — one of the most widely used classifications in medicine, which the
+  catalog previously carried only as an **input field** inside composite cardiac scores (`maggic`,
+  `euroscore2`) with no standalone tile to look up the definitions. The clinician picks the class and the
+  tile reports its description. **I:** no limitation. **II:** slight limitation; symptoms on ordinary
+  activity, comfortable at rest. **III:** marked limitation; symptoms on less-than-ordinary activity —
+  flagged. **IV:** symptoms at rest / any activity causes discomfort — flagged. A NYHA class, not a
+  diagnosis, a treatment decision, or a prognosis ([spec-v11] §5.3); it is symptom-based and can vary
+  visit to visit. Definitions transcribed (spec-v97) from the NYHA Criteria Committee 1994, cross-verified
+  against standard cardiology references; no citation-staleness row (the citation carries no
+  guideline-issuer acronym). New `lib/nyha-class-v357.js` + `views/group-v357.js` (RV357); +1 META entry,
+  +1 UTILITIES row, a synonym entry (v78 → v79), 5 unit tests + fuzz, corpus rebuilt to 1209. See
+  [docs/spec-v357.md](docs/spec-v357.md). The MCP adapter follows in a later wave.
+
 ### Added (spec-v356 — CEAP classification (chronic venous disease) tile, 1207 → 1208)
 
 - New `ceap-venous` tile (group G): the CEAP clinical classification (C-class C0–C6) of chronic venous
