@@ -1502,6 +1502,16 @@ round-trip both pass, without the phantom "2". Adapter appended to the existing
 rate to a target PaCO2. Brings the exposed total to **1072 calculators across 197
 modules**.
 
+## One-hundred-ninety-seventh wave — the CAD-RADS 2.0 category (coronary CTA) in lib/cad-rads-v372.js (+1)
+
+`cad-rads` (spec-v372) applies the CAD-RADS 2.0 coronary-CTA categories: given the category, it reports
+the stenosis description. `category` is an enum (`kind: 'enum'`, values 0/1/2/3/4A/4B/5) — the single
+input the renderer exposes. The example sets 3; its expected numbers (50-69) are the stenosis band echoed
+in the compute band, so it round-trips through the default `makeToArgs` with no custom toArgs. New adapter
+module registered in `mcp/catalog.js`; its golden probe ("coronary cta category") is promoted now that
+the tile is in the MCP-exposed registry. Brings the exposed total to **1161 calculators across 277
+modules**.
+
 ## One-hundred-ninety-sixth wave — the C-RADS category (CT colonography) in lib/c-rads-v371.js (+1)
 
 `c-rads` (spec-v371) applies the C-RADS colonic categories for a CT colonography: given the category, it
@@ -4135,6 +4145,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/c-rads-v371.js
 - `c-rads`
+
+### lib/cad-rads-v372.js
+- `cad-rads`
 
 ### lib/tb-testing.js
 - `tb-testing`

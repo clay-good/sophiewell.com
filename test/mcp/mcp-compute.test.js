@@ -3047,6 +3047,18 @@ test('lib/c-rads-v371.js worked calls', () => {
   assert.match(ok('c-rads', { 'crads-cat': 'C4' }).band, /colonic mass/);
 });
 
+test('lib/cad-rads-v372.js worked calls', () => {
+  // CAD-RADS 3 (the META example): moderate, obstructive, flagged.
+  const three = ok('cad-rads', { 'cadrads-cat': '3' });
+  assert.equal(three.category, '3');
+  assert.equal(three.obstructive, true);
+  assert.match(three.band, /50-69%/);
+  // 0: no plaque, not flagged.
+  assert.equal(ok('cad-rads', { 'cadrads-cat': '0' }).obstructive, false);
+  // 4B: left main / three-vessel, flagged.
+  assert.match(ok('cad-rads', { 'cadrads-cat': '4B' }).band, /left main/);
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];
