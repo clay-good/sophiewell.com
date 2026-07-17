@@ -6,6 +6,21 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v400 — Nyhus classification (groin hernia) tile, 1251 → 1252)
+
+- New `nyhus-hernia` tile (group G): the Nyhus classification of a groin (inguinal / femoral) hernia (types
+  I/II/IIIa/IIIb/IIIc/IVa/IVb/IVc/IVd), by the anatomy of the defect — the anatomic classification a general
+  surgeon describes and repairs a groin hernia from; previously absent. The clinician picks the type and the
+  tile reports its anatomic description. **I:** indirect, normal internal ring. **II:** indirect, dilated
+  ring, posterior wall intact. **IIIa:** direct. **IIIb:** large indirect encroaching on the posterior wall
+  (sliding / pantaloon). **IIIc:** femoral. **IVa-d:** recurrent (direct / indirect / femoral / combined). A
+  Nyhus type, not a diagnosis, a repair recommendation, or a prognosis ([spec-v11] §5.3); the type describes
+  the defect. Types transcribed (spec-v97) from Nyhus 1991/2004, cross-verified against general-surgery /
+  hernia references; no citation-staleness row (the citation carries no guideline-issuer acronym). New
+  `lib/nyhus-hernia-v400.js` + `views/group-v400.js` (RV400); +1 META entry, +1 UTILITIES row, a synonym
+  entry (v121 → v122), 5 unit tests + fuzz, corpus rebuilt to 1252. See [docs/spec-v400.md](docs/spec-v400.md).
+  The MCP adapter follows in a later wave.
+
 ### Added (spec-v399 — Bismuth-Corlette classification (perihilar cholangiocarcinoma) tile, 1250 → 1251)
 
 - New `bismuth-corlette` tile (group G): the Bismuth-Corlette classification of a perihilar
