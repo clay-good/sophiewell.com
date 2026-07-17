@@ -368,6 +368,7 @@ import * as brodskyTonsilV388 from '../../lib/brodsky-tonsil-v388.js';
 import * as koosSchwannomaV389 from '../../lib/koos-schwannoma-v389.js';
 import * as knospAdenomaV390 from '../../lib/knosp-adenoma-v390.js';
 import * as hardyAdenomaV391 from '../../lib/hardy-adenoma-v391.js';
+import * as hillFlapValveV392 from '../../lib/hill-flap-valve-v392.js';
 import * as tbTesting from '../../lib/tb-testing.js';
 
 const MODULES = {
@@ -681,6 +682,7 @@ const MODULES = {
   'koos-schwannoma-v389.js': koosSchwannomaV389,
   'knosp-adenoma-v390.js': knospAdenomaV390,
   'hardy-adenoma-v391.js': hardyAdenomaV391,
+  'hill-flap-valve-v392.js': hillFlapValveV392,
   'tb-testing.js': tbTesting,
 };
 

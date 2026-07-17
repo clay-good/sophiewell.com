@@ -6,6 +6,22 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v392 — Hill classification (GE flap valve) tile, 1243 → 1244)
+
+- New `hill-flap-valve` tile (group G): the Hill classification of the gastroesophageal flap valve (grades
+  I-IV), graded endoscopically from a retroflexed view of the cardia — the only endoscopic grading of the
+  flap-valve / esophagogastric-junction competence, which correlates with hiatal hernia and GERD;
+  previously absent. The endoscopist picks the grade and the tile reports its description. **I:** a
+  prominent ridge closely approximated to the scope (normal). **II:** a less pronounced ridge that may
+  open with respiration. **III:** a diminished ridge that fails to close around the scope — flagged.
+  **IV:** no ridge, the junction stays open — flagged. Grades III-IV carry the hiatal-hernia association.
+  A Hill grade, not a diagnosis, a treatment decision, or a prognosis ([spec-v11] §5.3). Grades
+  transcribed (spec-v97) from Hill 1996 (Gastrointest Endosc), cross-verified against GI-endoscopy
+  references; no citation-staleness row (the citation carries no guideline-issuer acronym). New
+  `lib/hill-flap-valve-v392.js` + `views/group-v392.js` (RV392); +1 META entry, +1 UTILITIES row, a synonym
+  entry (v113 → v114), 6 unit tests + fuzz, corpus rebuilt to 1244. See [docs/spec-v392.md](docs/spec-v392.md).
+  The MCP adapter follows in a later wave.
+
 ### Added (spec-v391 — Hardy classification (pituitary adenoma) tile, 1242 → 1243)
 
 - New `hardy-adenoma` tile (group G): the Hardy (Hardy-Wilson) classification of a pituitary adenoma — a
