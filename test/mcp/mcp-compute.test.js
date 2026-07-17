@@ -2840,6 +2840,18 @@ test('lib/tonnis-hip-oa-v354.js worked calls', () => {
   assert.equal(ok('tonnis-hip-oa', { 'tonnis-grade': '3' }).osteoarthritis, true);
 });
 
+test('lib/lachman-acl-v355.js worked calls', () => {
+  // Grade II (the META example): 6-10 mm soft endpoint, flagged.
+  const two = ok('lachman-acl', { 'lachman-grade': 'II' });
+  assert.equal(two.grade, 'II');
+  assert.equal(two.severe, true);
+  assert.match(two.band, /6 to 10 mm/);
+  // Grade I: mild, firm endpoint, not flagged.
+  assert.equal(ok('lachman-acl', { 'lachman-grade': 'I' }).severe, false);
+  // Grade III: severe, no endpoint, flagged.
+  assert.equal(ok('lachman-acl', { 'lachman-grade': 'III' }).severe, true);
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];
