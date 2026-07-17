@@ -378,6 +378,8 @@ const PROBES = [
   ['bicuspid aortic valve type', ['sievers-bav']],
   // spec-v397 tile, exposed to MCP in wave 222: El Khoury classification (aortic regurgitation).
   ['aortic regurgitation mechanism', ['el-khoury-ar']],
+  // spec-v398 tile, exposed to MCP in wave 223: Carpentier classification (mitral regurgitation).
+  ['mitral regurgitation mechanism', ['carpentier-mr']],
 ];
 
 test(`every golden probe routes an acceptable tile into the top ${TOP_N}`, () => {

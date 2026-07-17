@@ -3391,6 +3391,18 @@ test('lib/el-khoury-ar-v397.js worked calls', () => {
   assert.match(ok('el-khoury-ar', { 'elk-type': 'III' }).band, /cusp restriction/);
 });
 
+test('lib/carpentier-mr-v398.js worked calls', () => {
+  // Type II (the META example): excessive leaflet motion / prolapse.
+  const two = ok('carpentier-mr', { 'carp-type': 'II' });
+  assert.equal(two.type, 'II');
+  assert.match(two.band, /excessive leaflet motion/);
+  // Type I: normal motion with annular dilatation.
+  assert.match(ok('carpentier-mr', { 'carp-type': 'I' }).band, /normal leaflet motion/);
+  // Type IIIa vs IIIb: structural vs functional restriction.
+  assert.match(ok('carpentier-mr', { 'carp-type': 'IIIa' }).band, /both systole and diastole/);
+  assert.match(ok('carpentier-mr', { 'carp-type': 'IIIb' }).band, /systole only/);
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];

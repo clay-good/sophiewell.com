@@ -1502,6 +1502,16 @@ round-trip both pass, without the phantom "2". Adapter appended to the existing
 rate to a target PaCO2. Brings the exposed total to **1072 calculators across 197
 modules**.
 
+## Two-hundred-twenty-third wave — the Carpentier classification (mitral regurgitation) in lib/carpentier-mr-v398.js (+1)
+
+`carpentier-mr` (spec-v398) applies the Carpentier functional classification of mitral regurgitation: given
+the type, it reports the mechanism description. `type` is an enum (`kind: 'enum'`, values I/II/IIIa/IIIb) —
+the single input the renderer exposes. The example sets type II; its expected text is the type description
+(a roman numeral, no free numeric facts to round-trip), so it flows through the default `makeToArgs` with no
+custom toArgs. New adapter module registered in `mcp/catalog.js`; its golden probe ("mitral regurgitation
+mechanism") is promoted now that the tile is in the MCP-exposed registry. Brings the exposed total to
+**1187 calculators across 303 modules**.
+
 ## Two-hundred-twenty-second wave — the El Khoury classification (aortic regurgitation) in lib/el-khoury-ar-v397.js (+1)
 
 `el-khoury-ar` (spec-v397) applies the El Khoury functional classification of aortic regurgitation: given
@@ -4477,6 +4487,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/el-khoury-ar-v397.js
 - `el-khoury-ar`
+
+### lib/carpentier-mr-v398.js
+- `carpentier-mr`
 
 ### lib/tb-testing.js
 - `tb-testing`
