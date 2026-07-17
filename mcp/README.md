@@ -78,7 +78,7 @@ find_calculator { "query": "stroke risk afib" }
        candidates: [ { id: "chads", name: "CHA2DS2-VASc", why: "synonym", ... }, ... ] }
 
 list_calculators { "specialty": "hepatology" }
-  -> { coverage: "1162 of 1109 catalog tiles exposed ...", calculators: [ { id: "meld-xi", ... }, ... ] }
+  -> { coverage: "1163 of 1109 catalog tiles exposed ...", calculators: [ { id: "meld-xi", ... }, ... ] }
 
 describe_calculator { "id": "meld-xi" }
   -> { inputSchema: { ... mx-bili, mx-creat ... }, citation: "Heuman DM ... Liver Transpl 2007", ... }
@@ -406,8 +406,9 @@ failure) in `lib/ross-hf-peds-v368.js`, and a one-hundred-ninety-fourth the Nohr
 Hartofilakidis classification (hip dysplasia) in `lib/hartofilakidis-ddh-v370.js`, and a
 one-hundred-ninety-sixth the C-RADS category (CT colonography) in `lib/c-rads-v371.js`, and a
 one-hundred-ninety-seventh the CAD-RADS 2.0 category (coronary CTA) in `lib/cad-rads-v372.js`, and a
-one-hundred-ninety-eighth the NI-RADS category (head & neck surveillance) in `lib/ni-rads-v373.js`, for
-1162 across 278 modules
+one-hundred-ninety-eighth the NI-RADS category (head & neck surveillance) in `lib/ni-rads-v373.js`, and a
+one-hundred-ninety-ninth the Pauwels classification (femoral neck fracture) in
+`lib/pauwels-femoral-neck-v374.js`, for 1163 across 279 modules
 today. <!-- catalog-truth:historical (197 is the count of lib modules adapted, not a catalog tile count) -->
 Later waves extend it module by module against the same contract.
 

@@ -3071,6 +3071,18 @@ test('lib/ni-rads-v373.js worked calls', () => {
   assert.match(ok('ni-rads', { 'nirads-cat': '2A' }).band, /mucosal/);
 });
 
+test('lib/pauwels-femoral-neck-v374.js worked calls', () => {
+  // Type III (the META example): > 50 degrees, high shear, flagged.
+  const three = ok('pauwels-femoral-neck', { 'pauwels-type': 'III' });
+  assert.equal(three.type, 'III');
+  assert.equal(three.highShear, true);
+  assert.match(three.band, /greater than 50 degrees/);
+  // Type I: compression dominant, not flagged.
+  assert.equal(ok('pauwels-femoral-neck', { 'pauwels-type': 'I' }).highShear, false);
+  // Type II: intermediate.
+  assert.match(ok('pauwels-femoral-neck', { 'pauwels-type': 'II' }).band, /30 to 50 degrees/);
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];

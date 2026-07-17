@@ -1502,6 +1502,16 @@ round-trip both pass, without the phantom "2". Adapter appended to the existing
 rate to a target PaCO2. Brings the exposed total to **1072 calculators across 197
 modules**.
 
+## One-hundred-ninety-ninth wave — the Pauwels classification (femoral neck fracture) in lib/pauwels-femoral-neck-v374.js (+1)
+
+`pauwels-femoral-neck` (spec-v374) applies the Pauwels classification of a femoral neck fracture: given
+the type, it reports the angle/force description. `type` is an enum (`kind: 'enum'`, values I/II/III) —
+the single input the renderer exposes. The example sets type III; its expected number (50) is the angle
+threshold echoed in the band, so it round-trips through the default `makeToArgs` with no custom toArgs.
+New adapter module registered in `mcp/catalog.js`; its golden probe ("femoral neck fracture angle") is
+promoted now that the tile is in the MCP-exposed registry. Brings the exposed total to **1163 calculators
+across 279 modules**.
+
 ## One-hundred-ninety-eighth wave — the NI-RADS category (head & neck surveillance) in lib/ni-rads-v373.js (+1)
 
 `ni-rads` (spec-v373) applies the NI-RADS categories for post-treatment head-and-neck-cancer surveillance
@@ -4161,6 +4171,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/ni-rads-v373.js
 - `ni-rads`
+
+### lib/pauwels-femoral-neck-v374.js
+- `pauwels-femoral-neck`
 
 ### lib/tb-testing.js
 - `tb-testing`
