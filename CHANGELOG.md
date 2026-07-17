@@ -6,6 +6,21 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v376 — Denis classification (sacral fracture) tile, 1227 → 1228)
+
+- New `denis-sacral` tile (group G): the Denis classification of a sacral fracture (zones I–III), by the
+  relationship of the fracture line to the sacral foramina and central canal — the standard anatomic
+  zoning that predicts neurologic-injury risk; previously absent. The clinician picks the zone and the
+  tile reports its description. **I:** alar, lateral to the foramina (lowest neurologic-injury rate, ~6%).
+  **II:** through the foramina (intermediate, ~28%) — flagged. **III:** central sacral canal, medial to
+  the foramina (highest rate; bowel/bladder/sexual dysfunction) — flagged. A Denis zone, not a diagnosis,
+  a treatment decision, or a prognosis ([spec-v11] §5.3); the rising-neurologic-injury-risk association (I
+  → III) is the classically taught pattern, not an order. Zones transcribed (spec-v97) from Denis et al.
+  1988 (CORR), cross-verified against orthopedic/spine references; no citation-staleness row (the citation
+  carries no guideline-issuer acronym). New `lib/denis-sacral-v376.js` + `views/group-v376.js` (RV376); +1
+  META entry, +1 UTILITIES row, a synonym entry (v97 → v98), 5 unit tests + fuzz, corpus rebuilt to 1228.
+  See [docs/spec-v376.md](docs/spec-v376.md). The MCP adapter follows in a later wave.
+
 ### Added (spec-v375 — Pipkin classification (femoral head fracture) tile, 1226 → 1227)
 
 - New `pipkin-femoral-head` tile (group G): the Pipkin classification of a femoral HEAD fracture (types

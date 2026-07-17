@@ -352,6 +352,7 @@ import * as cadRadsV372 from '../../lib/cad-rads-v372.js';
 import * as niRadsV373 from '../../lib/ni-rads-v373.js';
 import * as pauwelsFemoralNeckV374 from '../../lib/pauwels-femoral-neck-v374.js';
 import * as pipkinFemoralHeadV375 from '../../lib/pipkin-femoral-head-v375.js';
+import * as denisSacralV376 from '../../lib/denis-sacral-v376.js';
 import * as tbTesting from '../../lib/tb-testing.js';
 
 const MODULES = {
@@ -649,6 +650,7 @@ const MODULES = {
   'ni-rads-v373.js': niRadsV373,
   'pauwels-femoral-neck-v374.js': pauwelsFemoralNeckV374,
   'pipkin-femoral-head-v375.js': pipkinFemoralHeadV375,
+  'denis-sacral-v376.js': denisSacralV376,
   'tb-testing.js': tbTesting,
 };
 
