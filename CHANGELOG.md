@@ -6,6 +6,22 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v360 — Keith-Wagener-Barker (hypertensive retinopathy) tile, 1211 → 1212)
+
+- New `kwb-retinopathy` tile (group G): the Keith-Wagener-Barker classification of hypertensive
+  retinopathy (grades 1–4) — the classic fundoscopic grading of the retinal changes of systemic
+  hypertension; previously absent. The catalog carried the ICDR diabetic-retinopathy scale but no
+  hypertensive-retinopathy grade. The clinician picks the grade and the tile reports its description.
+  **1:** mild generalized arteriolar narrowing. **2:** focal narrowing and AV nicking. **3:** plus
+  hemorrhages, cotton-wool spots, and exudates — flagged. **4:** plus optic disc swelling (papilledema),
+  the hallmark of malignant hypertension — flagged. A KWB grade, not a diagnosis, a treatment decision, or
+  a prognosis ([spec-v11] §5.3); grade 4 is a clinical emergency assessed on its own. Definitions
+  transcribed (spec-v97) from Keith, Wagener & Barker 1939 (Am J Med Sci), cross-verified against
+  ophthalmology/internal-medicine references; no citation-staleness row (the citation carries no
+  guideline-issuer acronym). New `lib/kwb-retinopathy-v360.js` + `views/group-v360.js` (RV360); +1 META
+  entry, +1 UTILITIES row, a synonym entry (v81 → v82), 5 unit tests + fuzz, corpus rebuilt to 1212. See
+  [docs/spec-v360.md](docs/spec-v360.md). The MCP adapter follows in a later wave.
+
 ### Added (spec-v359 — NPIAP pressure injury staging tile, 1210 → 1211)
 
 - New `pressure-injury-stage` tile (group G): NPIAP pressure injury staging (Stage 1–4, Unstageable, Deep
