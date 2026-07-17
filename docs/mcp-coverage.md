@@ -1502,6 +1502,16 @@ round-trip both pass, without the phantom "2". Adapter appended to the existing
 rate to a target PaCO2. Brings the exposed total to **1072 calculators across 197
 modules**.
 
+## One-hundred-eighty-ninth wave — the Clinical Activity Score (thyroid eye disease) in lib/cas-ted-v364.js (+1)
+
+`cas-ted` (spec-v364) sums the Clinical Activity Score for thyroid eye disease. It is a seven-field
+BOOLEAN checklist (each `kind: 'bool'`, left optional so absent items default to false); the compute
+returns the total (0-7) and whether CAS >= 3 (active). The example checks three items (CAS 3); its
+expected numbers (3, 7) round-trip through the default `makeToArgs` + toBool with no custom toArgs. New
+adapter module registered in `mcp/catalog.js`; its golden probe ("thyroid eye disease activity") is
+promoted now that the tile is in the MCP-exposed registry. Brings the exposed total to **1153
+calculators across 269 modules**.
+
 ## One-hundred-eighty-eighth wave — the Shaffer gonioscopy angle grade in lib/shaffer-angle-v363.js (+1)
 
 `shaffer-angle` (spec-v363) applies the Shaffer gonioscopy grading of the anterior chamber angle: given
@@ -4031,6 +4041,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/shaffer-angle-v363.js
 - `shaffer-angle`
+
+### lib/cas-ted-v364.js
+- `cas-ted`
 
 ### lib/tb-testing.js
 - `tb-testing`

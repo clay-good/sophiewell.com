@@ -2952,6 +2952,18 @@ test('lib/shaffer-angle-v363.js worked calls', () => {
   assert.equal(ok('shaffer-angle', { 'shaffer-grade': '0' }).narrow, true);
 });
 
+test('lib/cas-ted-v364.js worked calls', () => {
+  // Three items (the META example): CAS 3, active, flagged.
+  const three = ok('cas-ted', { 'cas-pain': true, 'cas-gaze': true, 'cas-lidsw': true });
+  assert.equal(three.total, 3);
+  assert.equal(three.active, true);
+  assert.equal(three.abnormal, true);
+  // Two items: CAS 2, inactive.
+  const two = ok('cas-ted', { 'cas-chem': true, 'cas-lidery': true });
+  assert.equal(two.total, 2);
+  assert.equal(two.active, false);
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];

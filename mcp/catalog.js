@@ -276,6 +276,7 @@ import kwbRetinopathyV360 from './adapters/kwb-retinopathy-v360.js';
 import tannerStagingV361 from './adapters/tanner-staging-v361.js';
 import forresterHemodynamicV362 from './adapters/forrester-hemodynamic-v362.js';
 import shafferAngleV363 from './adapters/shaffer-angle-v363.js';
+import casTedV364 from './adapters/cas-ted-v364.js';
 import tbTesting from './adapters/tb-testing.js';
 import labInterpret from './adapters/lab-interpret.js';
 import decisionRulesV258 from './adapters/decision-rules-v258.js';
@@ -546,6 +547,7 @@ const ADAPTER_MODULES = [
   ['tanner-staging-v361', tannerStagingV361],
   ['forrester-hemodynamic-v362', forresterHemodynamicV362],
   ['shaffer-angle-v363', shafferAngleV363],
+  ['cas-ted-v364', casTedV364],
   ['tb-testing', tbTesting],
   ['lab-interpret', labInterpret],
   ['decision-rules-v258', decisionRulesV258],
