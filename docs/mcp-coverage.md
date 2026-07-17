@@ -1502,6 +1502,16 @@ round-trip both pass, without the phantom "2". Adapter appended to the existing
 rate to a target PaCO2. Brings the exposed total to **1072 calculators across 197
 modules**.
 
+## Two-hundred-nineteenth wave — the Borrmann classification (gastric cancer) in lib/borrmann-gastric-v394.js (+1)
+
+`borrmann-gastric` (spec-v394) applies the Borrmann classification of advanced gastric cancer: given the
+type, it reports the gross-appearance description. `type` is an enum (`kind: 'enum'`, values I/II/III/IV)
+— the single input the renderer exposes. The example sets type IV; its expected text is the type
+description (a roman numeral, no free numeric facts to round-trip), so it flows through the default
+`makeToArgs` with no custom toArgs. New adapter module registered in `mcp/catalog.js`; its golden probe
+("gastric cancer gross morphology") is promoted now that the tile is in the MCP-exposed registry. Brings
+the exposed total to **1183 calculators across 299 modules**.
+
 ## Two-hundred-eighteenth wave — the Lauren classification (gastric cancer) in lib/lauren-gastric-v393.js (+1)
 
 `lauren-gastric` (spec-v393) applies the Lauren classification of gastric carcinoma: given the type, it
@@ -4425,6 +4435,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/lauren-gastric-v393.js
 - `lauren-gastric`
+
+### lib/borrmann-gastric-v394.js
+- `borrmann-gastric`
 
 ### lib/tb-testing.js
 - `tb-testing`

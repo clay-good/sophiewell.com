@@ -3345,6 +3345,17 @@ test('lib/lauren-gastric-v393.js worked calls', () => {
   assert.equal(ok('lauren-gastric', { 'lauren-type': 'mixed' }).type, 'mixed');
 });
 
+test('lib/borrmann-gastric-v394.js worked calls', () => {
+  // Type IV (the META example): diffusely infiltrative, linitis plastica.
+  const four = ok('borrmann-gastric', { 'borrmann-type': 'IV' });
+  assert.equal(four.type, 'IV');
+  assert.match(four.band, /linitis plastica/);
+  // Type I: polypoid.
+  assert.match(ok('borrmann-gastric', { 'borrmann-type': 'I' }).band, /polypoid/);
+  // Type III: ulcerated and infiltrative.
+  assert.match(ok('borrmann-gastric', { 'borrmann-type': 'III' }).band, /ulcerated and infiltrative/);
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];

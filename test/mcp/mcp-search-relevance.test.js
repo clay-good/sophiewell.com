@@ -370,6 +370,8 @@ const PROBES = [
   ['gastroesophageal flap valve', ['hill-flap-valve']],
   // spec-v393 tile, exposed to MCP in wave 218: Lauren classification (gastric cancer).
   ['gastric cancer histology type', ['lauren-gastric']],
+  // spec-v394 tile, exposed to MCP in wave 219: Borrmann classification (gastric cancer).
+  ['gastric cancer gross morphology', ['borrmann-gastric']],
 ];
 
 test(`every golden probe routes an acceptable tile into the top ${TOP_N}`, () => {
