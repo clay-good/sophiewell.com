@@ -1502,6 +1502,16 @@ round-trip both pass, without the phantom "2". Adapter appended to the existing
 rate to a target PaCO2. Brings the exposed total to **1072 calculators across 197
 modules**.
 
+## Two-hundred-twenty-sixth wave — the Zargar classification (caustic esophagogastric injury) in lib/zargar-caustic-v401.js (+1)
+
+`zargar-caustic` (spec-v401) applies the modified Zargar endoscopic classification of a caustic /
+corrosive esophagogastric injury: given the grade, it reports the endoscopic description. `grade` is an
+enum (`kind: 'enum'`, values 0/1/2a/2b/3a/3b/4) — the single input the renderer exposes. The example sets
+grade 2b; its expected text's only digits are the grade labels (2a / 2b), which the result echoes, so it
+flows through the default `makeToArgs` with no custom toArgs. New adapter module registered in
+`mcp/catalog.js`; its golden probe ("caustic ingestion grade") is promoted now that the tile is in the
+MCP-exposed registry. Brings the exposed total to **1190 calculators across 306 modules**.
+
 ## Two-hundred-twenty-fifth wave — the Nyhus classification (groin hernia) in lib/nyhus-hernia-v400.js (+1)
 
 `nyhus-hernia` (spec-v400) applies the Nyhus classification of a groin hernia: given the type, it reports
@@ -4516,6 +4526,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/nyhus-hernia-v400.js
 - `nyhus-hernia`
+
+### lib/zargar-caustic-v401.js
+- `zargar-caustic`
 
 ### lib/tb-testing.js
 - `tb-testing`

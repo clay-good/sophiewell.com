@@ -3430,6 +3430,19 @@ test('lib/nyhus-hernia-v400.js worked calls', () => {
   assert.match(ok('nyhus-hernia', { 'nyhus-type': 'IVd' }).band, /recurrent combined/);
 });
 
+test('lib/zargar-caustic-v401.js worked calls', () => {
+  // Grade 2b (the META example): deep or circumferential ulceration.
+  const twoB = ok('zargar-caustic', { 'zargar-grade': '2b' });
+  assert.equal(twoB.grade, '2b');
+  assert.match(twoB.band, /deep discrete or circumferential ulceration/);
+  // Grade 0: normal mucosa.
+  assert.match(ok('zargar-caustic', { 'zargar-grade': '0' }).band, /normal mucosa/);
+  // Grade 3b: extensive necrosis.
+  assert.match(ok('zargar-caustic', { 'zargar-grade': '3b' }).band, /extensive necrosis/);
+  // Grade 4: perforation.
+  assert.match(ok('zargar-caustic', { 'zargar-grade': '4' }).band, /perforation/);
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];

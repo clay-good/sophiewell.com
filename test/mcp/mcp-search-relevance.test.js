@@ -384,6 +384,8 @@ const PROBES = [
   ['klatskin tumor type', ['bismuth-corlette']],
   // spec-v400 tile, exposed to MCP in wave 225: Nyhus classification (groin hernia).
   ['groin hernia classification', ['nyhus-hernia']],
+  // spec-v401 tile, exposed to MCP in wave 226: Zargar classification (caustic esophagogastric injury).
+  ['caustic ingestion grade', ['zargar-caustic']],
 ];
 
 test(`every golden probe routes an acceptable tile into the top ${TOP_N}`, () => {

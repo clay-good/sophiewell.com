@@ -78,7 +78,7 @@ find_calculator { "query": "stroke risk afib" }
        candidates: [ { id: "chads", name: "CHA2DS2-VASc", why: "synonym", ... }, ... ] }
 
 list_calculators { "specialty": "hepatology" }
-  -> { coverage: "1189 of 1109 catalog tiles exposed ...", calculators: [ { id: "meld-xi", ... }, ... ] }
+  -> { coverage: "1190 of 1109 catalog tiles exposed ...", calculators: [ { id: "meld-xi", ... }, ... ] }
 
 describe_calculator { "id": "meld-xi" }
   -> { inputSchema: { ... mx-bili, mx-creat ... }, citation: "Heuman DM ... Liver Transpl 2007", ... }
@@ -435,8 +435,9 @@ valve) in `lib/sievers-bav-v396.js`, and a two-hundred-twenty-second the El Khou
 regurgitation) in `lib/el-khoury-ar-v397.js`, and a two-hundred-twenty-third the Carpentier classification
 (mitral regurgitation) in `lib/carpentier-mr-v398.js`, and a two-hundred-twenty-fourth the Bismuth-Corlette
 classification (perihilar cholangiocarcinoma) in `lib/bismuth-corlette-v399.js`, and a two-hundred-twenty-fifth
-the Nyhus classification (groin hernia) in `lib/nyhus-hernia-v400.js`, for 1189 across 305 modules
-today. <!-- catalog-truth:historical (197 is the count of lib modules adapted, not a catalog tile count) -->
+the Nyhus classification (groin hernia) in `lib/nyhus-hernia-v400.js`, and a two-hundred-twenty-sixth the
+Zargar classification (caustic esophagogastric injury) in `lib/zargar-caustic-v401.js`, for 1190 across 306
+modules today. <!-- catalog-truth:historical (197 is the count of lib modules adapted, not a catalog tile count) -->
 Later waves extend it module by module against the same contract.
 
 ## Design
