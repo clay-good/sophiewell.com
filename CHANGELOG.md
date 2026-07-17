@@ -6,6 +6,23 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v399 — Bismuth-Corlette classification (perihilar cholangiocarcinoma) tile, 1250 → 1251)
+
+- New `bismuth-corlette` tile (group G): the Bismuth-Corlette classification of a perihilar
+  cholangiocarcinoma (Klatskin tumor) (types I/II/IIIa/IIIb/IV), by the extent of ductal involvement along
+  the hepatic-duct confluence — the hilar-tumor anatomy the hepatobiliary surgeon stages from, the companion
+  to the `strasberg-bdi` bile-duct-injury classification in the biliary cluster; previously absent. The
+  clinician picks the type and the tile reports its ductal-extent description. **I:** below (sparing) the
+  confluence. **II:** reaching the confluence, secondary ducts spared. **IIIa:** extending to the right
+  secondary ducts. **IIIb:** extending to the left secondary ducts. **IV:** bilateral secondary ducts or
+  multifocal. A Bismuth-Corlette type, not a diagnosis, a resectability determination, a treatment decision,
+  or a prognosis ([spec-v11] §5.3); the type informs the surgical plan. Types transcribed (spec-v97) from
+  Bismuth-Corlette 1975 (Surg Gynecol Obstet), with the IIIa/IIIb split from Bismuth 1992 (Ann Surg),
+  cross-verified against hepatobiliary-surgery/radiology references; no citation-staleness row (the citation
+  carries no guideline-issuer acronym). New `lib/bismuth-corlette-v399.js` + `views/group-v399.js` (RV399);
+  +1 META entry, +1 UTILITIES row, a synonym entry (v120 → v121), 5 unit tests + fuzz, corpus rebuilt to
+  1251. See [docs/spec-v399.md](docs/spec-v399.md). The MCP adapter follows in a later wave.
+
 ### Added (spec-v398 — Carpentier classification (mitral regurgitation) tile, 1249 → 1250)
 
 - New `carpentier-mr` tile (group G): the Carpentier functional classification of mitral regurgitation

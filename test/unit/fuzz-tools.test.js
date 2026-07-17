@@ -375,6 +375,7 @@ import * as parksFistulaV395 from '../../lib/parks-fistula-v395.js';
 import * as sieversBavV396 from '../../lib/sievers-bav-v396.js';
 import * as elKhouryArV397 from '../../lib/el-khoury-ar-v397.js';
 import * as carpentierMrV398 from '../../lib/carpentier-mr-v398.js';
+import * as bismuthCorletteV399 from '../../lib/bismuth-corlette-v399.js';
 import * as tbTesting from '../../lib/tb-testing.js';
 
 const MODULES = {
@@ -695,6 +696,7 @@ const MODULES = {
   'sievers-bav-v396.js': sieversBavV396,
   'el-khoury-ar-v397.js': elKhouryArV397,
   'carpentier-mr-v398.js': carpentierMrV398,
+  'bismuth-corlette-v399.js': bismuthCorletteV399,
   'tb-testing.js': tbTesting,
 };
 

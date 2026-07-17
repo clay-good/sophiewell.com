@@ -1,5 +1,5 @@
 {
-  "version": "v120-2026-07-17",
+  "version": "v121-2026-07-17",
   "note": "spec-v7 section 3.2: hand-curated patient-phrasing -> tile id table. Each entry maps patient-mental-model phrases (and, from the v8/v9 plain-language-search batches, clinical abbreviations, eponym aliases, and canonical-intent phrases) to a single existing tile. Audience is the primary audience the entry serves; the matcher deprioritizes (does not hide) entries when the user has selected a different chip. Every phrase is lowercase; every tile id is an existing catalog tile (guarded by test/unit/synonyms-catalog.test.js). Adding a new phrase is a one-line PR.",
   "entries": [
     { "phrases": ["denied", "denial letter", "they denied it", "insurance said no", "appeal", "write an appeal", "appeal my claim", "appeal letter", "appeal a denial"],
@@ -384,6 +384,8 @@
     { "phrases": ["el khoury", "el khoury classification", "aortic regurgitation mechanism", "aortic insufficiency classification", "aortic regurgitation classification", "boodhwani aortic", "aortic valve repair classification", "aortic regurgitation type"],
       "tile": "el-khoury-ar", "audience": "clinicians" },
     { "phrases": ["carpentier", "carpentier classification", "mitral regurgitation mechanism", "mitral regurgitation classification", "mitral valve repair classification", "french correction", "leaflet motion classification", "mitral regurgitation type"],
-      "tile": "carpentier-mr", "audience": "clinicians" }
+      "tile": "carpentier-mr", "audience": "clinicians" },
+    { "phrases": ["bismuth", "bismuth corlette", "bismuth classification", "klatskin tumor type", "perihilar cholangiocarcinoma classification", "hilar cholangiocarcinoma type", "cholangiocarcinoma bismuth"],
+      "tile": "bismuth-corlette", "audience": "clinicians" }
   ]
 }
