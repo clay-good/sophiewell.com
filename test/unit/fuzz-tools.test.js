@@ -354,6 +354,7 @@ import * as pauwelsFemoralNeckV374 from '../../lib/pauwels-femoral-neck-v374.js'
 import * as pipkinFemoralHeadV375 from '../../lib/pipkin-femoral-head-v375.js';
 import * as denisSacralV376 from '../../lib/denis-sacral-v376.js';
 import * as gartlandSupracondylarV377 from '../../lib/gartland-supracondylar-v377.js';
+import * as delbetFemoralNeckV378 from '../../lib/delbet-femoral-neck-v378.js';
 import * as tbTesting from '../../lib/tb-testing.js';
 
 const MODULES = {
@@ -653,6 +654,7 @@ const MODULES = {
   'pipkin-femoral-head-v375.js': pipkinFemoralHeadV375,
   'denis-sacral-v376.js': denisSacralV376,
   'gartland-supracondylar-v377.js': gartlandSupracondylarV377,
+  'delbet-femoral-neck-v378.js': delbetFemoralNeckV378,
   'tb-testing.js': tbTesting,
 };
 

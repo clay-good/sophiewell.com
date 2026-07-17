@@ -6,6 +6,22 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v378 — Delbet classification (pediatric femoral neck fracture) tile, 1229 → 1230)
+
+- New `delbet-femoral-neck` tile (group G): the Delbet (Delbet-Colonna) classification of a pediatric
+  femoral neck / proximal femur fracture (types I-IV), by the anatomic level of the fracture line — the
+  standard grading that stratifies the risk of avascular necrosis (AVN) of the femoral head; previously
+  absent (the catalog had the adult hip-fracture eponyms but no pediatric one). The clinician picks the
+  type and the tile reports its description. **I:** transepiphyseal (highest AVN risk, worst outcomes) —
+  flagged. **II:** transcervical (most common, high AVN risk) — flagged. **III:** cervicotrochanteric /
+  basicervical (lower). **IV:** intertrochanteric (lowest AVN risk). A Delbet type, not a diagnosis, a
+  treatment decision, or a prognosis ([spec-v11] §5.3); the falling-AVN-risk gradient (I → IV) is the
+  classically taught pattern, not an order. Types transcribed (spec-v97) from Colonna 1929, cross-verified
+  against a modern review (JAAOS 2018) and POSNA; no citation-staleness row (the citation carries no
+  guideline-issuer acronym). New `lib/delbet-femoral-neck-v378.js` + `views/group-v378.js` (RV378); +1
+  META entry, +1 UTILITIES row, a synonym entry (v99 → v100), 6 unit tests + fuzz, corpus rebuilt to 1230.
+  See [docs/spec-v378.md](docs/spec-v378.md). The MCP adapter follows in a later wave.
+
 ### Added (spec-v377 — Gartland classification (supracondylar humerus fracture) tile, 1228 → 1229)
 
 - New `gartland-supracondylar` tile (group G): the Gartland classification of a pediatric extension-type
