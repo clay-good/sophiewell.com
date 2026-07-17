@@ -6,6 +6,22 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v370 — Hartofilakidis classification (hip dysplasia) tile, 1221 → 1222)
+
+- New `hartofilakidis-ddh` tile (group G): the Hartofilakidis classification of adult developmental
+  dysplasia of the hip (types A/B/C) — the second widely used adult-DDH classification alongside the
+  existing `crowe-ddh`, grading the hip by the relationship of the femoral head to the true acetabulum;
+  previously absent. The clinician picks the type and the tile reports its description. **A:** dysplasia
+  (head within the true acetabulum). **B:** low dislocation (false acetabulum partially overlaps the true
+  one) — flagged. **C:** high dislocation (false acetabulum with no connection to the true one) — flagged.
+  A Hartofilakidis type, not a diagnosis, a treatment decision, or a prognosis ([spec-v11] §5.3); the
+  reconstruction-complexity association (A → C) is the classically taught pattern, not an order. Types
+  transcribed (spec-v97) from Hartofilakidis 1988 (JBJS Br), cross-verified against CORR "Classifications
+  in Brief"; no citation-staleness row (the citation carries no guideline-issuer acronym). New
+  `lib/hartofilakidis-ddh-v370.js` + `views/group-v370.js` (RV370); +1 META entry, +1 UTILITIES row, a
+  synonym entry (v91 → v92), 5 unit tests + fuzz, corpus rebuilt to 1222. See
+  [docs/spec-v370.md](docs/spec-v370.md). The MCP adapter follows in a later wave.
+
 ### Added (spec-v369 — Nohria-Stevenson profiles (acute heart failure) tile, 1220 → 1221)
 
 - New `nohria-stevenson` tile (group G): the Nohria-Stevenson clinical hemodynamic profiles for acute

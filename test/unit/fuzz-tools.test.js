@@ -346,6 +346,7 @@ import * as neckZoneV366 from '../../lib/neck-zone-v366.js';
 import * as pasSwallowV367 from '../../lib/pas-swallow-v367.js';
 import * as rossHfPedsV368 from '../../lib/ross-hf-peds-v368.js';
 import * as nohriaStevensonV369 from '../../lib/nohria-stevenson-v369.js';
+import * as hartofilakidisDdhV370 from '../../lib/hartofilakidis-ddh-v370.js';
 import * as tbTesting from '../../lib/tb-testing.js';
 
 const MODULES = {
@@ -637,6 +638,7 @@ const MODULES = {
   'pas-swallow-v367.js': pasSwallowV367,
   'ross-hf-peds-v368.js': rossHfPedsV368,
   'nohria-stevenson-v369.js': nohriaStevensonV369,
+  'hartofilakidis-ddh-v370.js': hartofilakidisDdhV370,
   'tb-testing.js': tbTesting,
 };
 
