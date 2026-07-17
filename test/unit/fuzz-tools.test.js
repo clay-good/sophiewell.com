@@ -366,6 +366,7 @@ import * as piraniClubfootV386 from '../../lib/pirani-clubfoot-v386.js';
 import * as dimeglioClubfootV387 from '../../lib/dimeglio-clubfoot-v387.js';
 import * as brodskyTonsilV388 from '../../lib/brodsky-tonsil-v388.js';
 import * as koosSchwannomaV389 from '../../lib/koos-schwannoma-v389.js';
+import * as knospAdenomaV390 from '../../lib/knosp-adenoma-v390.js';
 import * as tbTesting from '../../lib/tb-testing.js';
 
 const MODULES = {
@@ -677,6 +678,7 @@ const MODULES = {
   'dimeglio-clubfoot-v387.js': dimeglioClubfootV387,
   'brodsky-tonsil-v388.js': brodskyTonsilV388,
   'koos-schwannoma-v389.js': koosSchwannomaV389,
+  'knosp-adenoma-v390.js': knospAdenomaV390,
   'tb-testing.js': tbTesting,
 };
 

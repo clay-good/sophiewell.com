@@ -6,6 +6,21 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v390 — Knosp grade (pituitary adenoma) tile, 1241 → 1242)
+
+- New `knosp-adenoma` tile (group G): the Knosp grading of cavernous sinus invasion by a pituitary adenoma
+  (grades 0-4), on coronal MRI, using the internal carotid artery (ICA) as the landmark — the standard
+  classification predictive of surgical remission; previously absent. The clinician picks the grade and
+  the tile reports its ICA-landmark description. **0:** medial to the medial tangent (no involvement).
+  **1:** to the intercarotid line. **2:** to the lateral tangent. **3:** lateral to the lateral tangent
+  (revised 3A/3B) — flagged. **4:** total ICA encasement — flagged. A Knosp grade, not a diagnosis, a
+  treatment decision, or a prognosis ([spec-v11] §5.3); grades 3-4 predict true invasion. Grades
+  transcribed (spec-v97) from Knosp 1993 (Neurosurgery), cross-verified against neurosurgery/neuroradiology
+  references; no citation-staleness row (the citation carries no guideline-issuer acronym). New
+  `lib/knosp-adenoma-v390.js` + `views/group-v390.js` (RV390); +1 META entry, +1 UTILITIES row, a synonym
+  entry (v111 → v112), 6 unit tests + fuzz, corpus rebuilt to 1242. See [docs/spec-v390.md](docs/spec-v390.md).
+  The MCP adapter follows in a later wave.
+
 ### Added (spec-v389 — Koos grade (vestibular schwannoma) tile, 1240 → 1241)
 
 - New `koos-schwannoma` tile (group G): the Koos grading of a vestibular schwannoma (acoustic neuroma),
