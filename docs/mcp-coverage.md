@@ -1502,6 +1502,16 @@ round-trip both pass, without the phantom "2". Adapter appended to the existing
 rate to a target PaCO2. Brings the exposed total to **1072 calculators across 197
 modules**.
 
+## Two-hundred-ninth wave — the Spetzler-Ponce classification (cerebral AVM) in lib/spetzler-ponce-v384.js (+1)
+
+`spetzler-ponce` (spec-v384) applies the Spetzler-Ponce 3-tier classification of a cerebral AVM: given
+the class, it reports the Spetzler-Martin-grade grouping and surgical-risk level. `class` is an enum
+(`kind: 'enum'`, values A/B/C) — the single input the renderer exposes. The example sets Class C; its
+expected text is the class description (roman-numeral SM grades, no free numeric facts to round-trip), so
+it flows through the default `makeToArgs` with no custom toArgs. New adapter module registered in
+`mcp/catalog.js`; its golden probe ("AVM 3-tier classification") is promoted now that the tile is in the
+MCP-exposed registry. Brings the exposed total to **1173 calculators across 289 modules**.
+
 ## Two-hundred-eighth wave — the Risser sign (skeletal maturity) in lib/risser-sign-v383.js (+1)
 
 `risser-sign` (spec-v383) applies the Risser sign (US grading, 0-5) for skeletal maturity: given the
@@ -4293,6 +4303,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/risser-sign-v383.js
 - `risser-sign`
+
+### lib/spetzler-ponce-v384.js
+- `spetzler-ponce`
 
 ### lib/tb-testing.js
 - `tb-testing`

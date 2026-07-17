@@ -3208,6 +3208,21 @@ test('lib/risser-sign-v383.js worked calls', () => {
   assert.match(ok('risser-sign', { 'risser-grade': '4' }).band, /not yet fused/);
 });
 
+test('lib/spetzler-ponce-v384.js worked calls', () => {
+  // Class C (the META example): SM grade IV-V, highest risk, flagged.
+  const c = ok('spetzler-ponce', { 'sp-class': 'C' });
+  assert.equal(c.class, 'C');
+  assert.equal(c.spetzlerMartinGrades, 'IV-V');
+  assert.equal(c.higherRisk, true);
+  assert.match(c.band, /highest surgical risk/);
+  // Class A: SM grade I-II, lowest risk, not flagged.
+  const a = ok('spetzler-ponce', { 'sp-class': 'A' });
+  assert.equal(a.higherRisk, false);
+  assert.match(a.band, /lowest surgical risk/);
+  // Class B: SM grade III.
+  assert.equal(ok('spetzler-ponce', { 'sp-class': 'B' }).spetzlerMartinGrades, 'III');
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];

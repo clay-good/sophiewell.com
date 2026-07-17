@@ -350,6 +350,8 @@ const PROBES = [
   ['charcot foot staging', ['eichenholtz-charcot']],
   // spec-v383 tile, exposed to MCP in wave 208: Risser sign (skeletal maturity).
   ['iliac apophysis skeletal maturity', ['risser-sign']],
+  // spec-v384 tile, exposed to MCP in wave 209: Spetzler-Ponce classification (cerebral AVM).
+  ['avm 3-tier classification', ['spetzler-ponce']],
 ];
 
 test(`every golden probe routes an acceptable tile into the top ${TOP_N}`, () => {

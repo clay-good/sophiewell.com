@@ -78,7 +78,7 @@ find_calculator { "query": "stroke risk afib" }
        candidates: [ { id: "chads", name: "CHA2DS2-VASc", why: "synonym", ... }, ... ] }
 
 list_calculators { "specialty": "hepatology" }
-  -> { coverage: "1172 of 1109 catalog tiles exposed ...", calculators: [ { id: "meld-xi", ... }, ... ] }
+  -> { coverage: "1173 of 1109 catalog tiles exposed ...", calculators: [ { id: "meld-xi", ... }, ... ] }
 
 describe_calculator { "id": "meld-xi" }
   -> { inputSchema: { ... mx-bili, mx-creat ... }, citation: "Heuman DM ... Liver Transpl 2007", ... }
@@ -418,7 +418,8 @@ two-hundred-fifth the Young-Burgess classification (pelvic ring injury) in `lib/
 and a two-hundred-sixth the Winquist-Hansen classification (femoral shaft fracture) in
 `lib/winquist-hansen-v381.js`, and a two-hundred-seventh the Eichenholtz classification (Charcot
 neuroarthropathy) in `lib/eichenholtz-charcot-v382.js`, and a two-hundred-eighth the Risser sign (skeletal
-maturity) in `lib/risser-sign-v383.js`, for 1172 across 288 modules
+maturity) in `lib/risser-sign-v383.js`, and a two-hundred-ninth the Spetzler-Ponce classification
+(cerebral AVM) in `lib/spetzler-ponce-v384.js`, for 1173 across 289 modules
 today. <!-- catalog-truth:historical (197 is the count of lib modules adapted, not a catalog tile count) -->
 Later waves extend it module by module against the same contract.
 

@@ -296,6 +296,7 @@ import youngBurgessV380 from './adapters/young-burgess-v380.js';
 import winquistHansenV381 from './adapters/winquist-hansen-v381.js';
 import eichenholtzCharcotV382 from './adapters/eichenholtz-charcot-v382.js';
 import risserSignV383 from './adapters/risser-sign-v383.js';
+import spetzlerPonceV384 from './adapters/spetzler-ponce-v384.js';
 import tbTesting from './adapters/tb-testing.js';
 import labInterpret from './adapters/lab-interpret.js';
 import decisionRulesV258 from './adapters/decision-rules-v258.js';
@@ -586,6 +587,7 @@ const ADAPTER_MODULES = [
   ['winquist-hansen-v381', winquistHansenV381],
   ['eichenholtz-charcot-v382', eichenholtzCharcotV382],
   ['risser-sign-v383', risserSignV383],
+  ['spetzler-ponce-v384', spetzlerPonceV384],
   ['tb-testing', tbTesting],
   ['lab-interpret', labInterpret],
   ['decision-rules-v258', decisionRulesV258],
