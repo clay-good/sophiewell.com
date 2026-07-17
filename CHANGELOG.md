@@ -6,6 +6,22 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v386 — Pirani score (clubfoot severity) tile, 1237 → 1238)
+
+- New `pirani-clubfoot` tile (group G): the Pirani score for clubfoot severity — six clinical signs, each
+  0/0.5/1, split into a midfoot and a hindfoot contracture score (total 0-6), the globally standard system
+  for grading and tracking a congenital clubfoot during Ponseti casting; previously absent. The clinician
+  scores the six signs and the tile reports the total plus the midfoot/hindfoot subscores. **Midfoot
+  (0-3):** curved lateral border, medial crease, position of the lateral head of the talus. **Hindfoot
+  (0-3):** posterior crease, empty heel, rigid equinus. Higher = more severe. A Pirani score, not a
+  diagnosis, a treatment decision, or a prognosis ([spec-v11] §5.3); the midfoot/hindfoot split classically
+  informs Ponseti casting and tenotomy timing, but that decision stays with the treating team. Items
+  transcribed (spec-v97) from Dyer 2006 (JBJS Br), cross-verified against the Pirani references; no
+  citation-staleness row (the citation carries no guideline-issuer acronym). This loop's first scored
+  (multi-item sum) tile. New `lib/pirani-clubfoot-v386.js` + `views/group-v386.js` (RV386); +1 META entry,
+  +1 UTILITIES row, a synonym entry (v107 → v108), 6 unit tests + fuzz, corpus rebuilt to 1238. See
+  [docs/spec-v386.md](docs/spec-v386.md). The MCP adapter follows in a later wave.
+
 ### Added (spec-v385 — Schwab & England ADL scale tile, 1236 → 1237)
 
 - New `schwab-england` tile (group G): the Schwab & England Activities of Daily Living (ADL) scale

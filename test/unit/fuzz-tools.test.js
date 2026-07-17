@@ -362,6 +362,7 @@ import * as eichenholtzCharcotV382 from '../../lib/eichenholtz-charcot-v382.js';
 import * as risserSignV383 from '../../lib/risser-sign-v383.js';
 import * as spetzlerPonceV384 from '../../lib/spetzler-ponce-v384.js';
 import * as schwabEnglandV385 from '../../lib/schwab-england-v385.js';
+import * as piraniClubfootV386 from '../../lib/pirani-clubfoot-v386.js';
 import * as tbTesting from '../../lib/tb-testing.js';
 
 const MODULES = {
@@ -669,6 +670,7 @@ const MODULES = {
   'risser-sign-v383.js': risserSignV383,
   'spetzler-ponce-v384.js': spetzlerPonceV384,
   'schwab-england-v385.js': schwabEnglandV385,
+  'pirani-clubfoot-v386.js': piraniClubfootV386,
   'tb-testing.js': tbTesting,
 };
 
