@@ -6,6 +6,23 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v359 — NPIAP pressure injury staging tile, 1210 → 1211)
+
+- New `pressure-injury-stage` tile (group G): NPIAP pressure injury staging (Stage 1–4, Unstageable, Deep
+  Tissue Pressure Injury) — the standard classification of a pressure injury by depth of tissue loss;
+  previously absent. The catalog carried the Braden Scale (pressure-injury *risk*) and Bates-Jensen wound
+  assessment but not the staging itself, which nursing uses constantly at the bedside. The clinician picks
+  the stage and the tile reports its description. **1:** non-blanchable erythema, intact skin. **2:**
+  partial-thickness loss, exposed dermis. **3:** full-thickness loss (fat may show) — flagged. **4:**
+  full-thickness loss, fascia/muscle/bone exposed — flagged. **Unstageable:** obscured by slough/eschar —
+  flagged. **DTPI:** persistent non-blanchable deep discoloration — flagged. A NPIAP stage, not a
+  diagnosis, a treatment decision, or a prognosis ([spec-v11] §5.3); staging describes tissue loss, not
+  healing (a healing wound is not reverse-staged). Definitions transcribed (spec-v97) from Edsberg et al.
+  2016 (JWOCN), cross-verified against NPIAP references; no citation-staleness row (the citation carries no
+  guideline-issuer acronym). New `lib/pressure-injury-stage-v359.js` + `views/group-v359.js` (RV359); +1
+  META entry, +1 UTILITIES row, a synonym entry (v80 → v81), 5 unit tests + fuzz, corpus rebuilt to 1211.
+  See [docs/spec-v359.md](docs/spec-v359.md). The MCP adapter follows in a later wave.
+
 ### Added (spec-v358 — Ramsay Sedation Scale tile, 1209 → 1210)
 
 - New `ramsay-sedation` tile (group G): the Ramsay Sedation Scale (levels 1–6) — the original, still

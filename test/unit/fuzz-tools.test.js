@@ -335,6 +335,7 @@ import * as lachmanAclV355 from '../../lib/lachman-acl-v355.js';
 import * as ceapVenousV356 from '../../lib/ceap-venous-v356.js';
 import * as nyhaClassV357 from '../../lib/nyha-class-v357.js';
 import * as ramsaySedationV358 from '../../lib/ramsay-sedation-v358.js';
+import * as pressureInjuryStageV359 from '../../lib/pressure-injury-stage-v359.js';
 import * as tbTesting from '../../lib/tb-testing.js';
 
 const MODULES = {
@@ -615,6 +616,7 @@ const MODULES = {
   'ceap-venous-v356.js': ceapVenousV356,
   'nyha-class-v357.js': nyhaClassV357,
   'ramsay-sedation-v358.js': ramsaySedationV358,
+  'pressure-injury-stage-v359.js': pressureInjuryStageV359,
   'tb-testing.js': tbTesting,
 };
 
