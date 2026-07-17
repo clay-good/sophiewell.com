@@ -1502,6 +1502,16 @@ round-trip both pass, without the phantom "2". Adapter appended to the existing
 rate to a target PaCO2. Brings the exposed total to **1072 calculators across 197
 modules**.
 
+## Two-hundredth wave — the Pipkin classification (femoral head fracture) in lib/pipkin-femoral-head-v375.js (+1)
+
+`pipkin-femoral-head` (spec-v375) applies the Pipkin classification of a femoral head fracture: given the
+type, it reports the description. `type` is an enum (`kind: 'enum'`, values I/II/III/IV) — the single
+input the renderer exposes. The example sets type III; its expected text is the type description (a roman
+numeral, no numeric facts), so it round-trips through the default `makeToArgs` with no custom toArgs. New
+adapter module registered in `mcp/catalog.js`; its golden probe ("femoral head fracture") is promoted now
+that the tile is in the MCP-exposed registry. Brings the exposed total to **1164 calculators across 280
+modules** — the two-hundredth MCP wave.
+
 ## One-hundred-ninety-ninth wave — the Pauwels classification (femoral neck fracture) in lib/pauwels-femoral-neck-v374.js (+1)
 
 `pauwels-femoral-neck` (spec-v374) applies the Pauwels classification of a femoral neck fracture: given
@@ -4174,6 +4184,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/pauwels-femoral-neck-v374.js
 - `pauwels-femoral-neck`
+
+### lib/pipkin-femoral-head-v375.js
+- `pipkin-femoral-head`
 
 ### lib/tb-testing.js
 - `tb-testing`

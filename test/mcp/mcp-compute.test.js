@@ -3083,6 +3083,18 @@ test('lib/pauwels-femoral-neck-v374.js worked calls', () => {
   assert.match(ok('pauwels-femoral-neck', { 'pauwels-type': 'II' }).band, /30 to 50 degrees/);
 });
 
+test('lib/pipkin-femoral-head-v375.js worked calls', () => {
+  // Type III (the META example): + femoral neck fracture, flagged.
+  const three = ok('pipkin-femoral-head', { 'pipkin-type': 'III' });
+  assert.equal(three.type, 'III');
+  assert.equal(three.complex, true);
+  assert.match(three.band, /associated femoral neck fracture/);
+  // Type I: isolated, not flagged.
+  assert.equal(ok('pipkin-femoral-head', { 'pipkin-type': 'I' }).complex, false);
+  // Type IV: + acetabular fracture, flagged.
+  assert.match(ok('pipkin-femoral-head', { 'pipkin-type': 'IV' }).band, /associated acetabular fracture/);
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];
