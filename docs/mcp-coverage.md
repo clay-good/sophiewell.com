@@ -1502,6 +1502,16 @@ round-trip both pass, without the phantom "2". Adapter appended to the existing
 rate to a target PaCO2. Brings the exposed total to **1072 calculators across 197
 modules**.
 
+## One-hundred-ninety-third wave — the Ross classification (pediatric heart failure) in lib/ross-hf-peds-v368.js (+1)
+
+`ross-hf-peds` (spec-v368) applies the Ross classification of pediatric heart failure: given the class,
+it reports the symptom description. `cls` is an enum (`kind: 'enum'`, values I/II/III/IV) — the single
+input the renderer exposes. The example sets class III; its expected text is the class description (a
+roman numeral, no numeric facts), so it round-trips through the default `makeToArgs` with no custom
+toArgs. New adapter module registered in `mcp/catalog.js`; its golden probe ("pediatric heart failure
+class") is promoted now that the tile is in the MCP-exposed registry. Brings the exposed total to **1157
+calculators across 273 modules**.
+
 ## One-hundred-ninety-second wave — the Penetration-Aspiration Scale in lib/pas-swallow-v367.js (+1)
 
 `pas-swallow` (spec-v367) applies the Penetration-Aspiration Scale for a swallow study: given the score,
@@ -4083,6 +4093,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/pas-swallow-v367.js
 - `pas-swallow`
+
+### lib/ross-hf-peds-v368.js
+- `ross-hf-peds`
 
 ### lib/tb-testing.js
 - `tb-testing`

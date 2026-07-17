@@ -78,7 +78,7 @@ find_calculator { "query": "stroke risk afib" }
        candidates: [ { id: "chads", name: "CHA2DS2-VASc", why: "synonym", ... }, ... ] }
 
 list_calculators { "specialty": "hepatology" }
-  -> { coverage: "1156 of 1109 catalog tiles exposed ...", calculators: [ { id: "meld-xi", ... }, ... ] }
+  -> { coverage: "1157 of 1109 catalog tiles exposed ...", calculators: [ { id: "meld-xi", ... }, ... ] }
 
 describe_calculator { "id": "meld-xi" }
   -> { inputSchema: { ... mx-bili, mx-creat ... }, citation: "Heuman DM ... Liver Transpl 2007", ... }
@@ -400,7 +400,8 @@ in `lib/shaffer-angle-v363.js`, and a one-hundred-eighty-ninth the Clinical Acti
 disease) in `lib/cas-ted-v364.js`, and a one-hundred-ninetieth the Prague C&M criteria (Barrett
 esophagus) in `lib/prague-barrett-v365.js`, and a one-hundred-ninety-first the penetrating-neck-trauma
 zones in `lib/neck-zone-v366.js`, and a one-hundred-ninety-second the Penetration-Aspiration Scale in
-`lib/pas-swallow-v367.js`, for 1156 across 272 modules
+`lib/pas-swallow-v367.js`, and a one-hundred-ninety-third the Ross classification (pediatric heart
+failure) in `lib/ross-hf-peds-v368.js`, for 1157 across 273 modules
 today. <!-- catalog-truth:historical (197 is the count of lib modules adapted, not a catalog tile count) -->
 Later waves extend it module by module against the same contract.
 

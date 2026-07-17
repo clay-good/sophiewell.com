@@ -2998,6 +2998,18 @@ test('lib/pas-swallow-v367.js worked calls', () => {
   assert.equal(ok('pas-swallow', { 'pas-score': '8' }).category, 'silent aspiration');
 });
 
+test('lib/ross-hf-peds-v368.js worked calls', () => {
+  // Class III (the META example): marked symptoms with growth failure, flagged.
+  const three = ok('ross-hf-peds', { 'ross-class': 'III' });
+  assert.equal(three.rossClass, 'III');
+  assert.equal(three.advanced, true);
+  assert.match(three.band, /growth failure/);
+  // Class I: no symptoms, not flagged.
+  assert.equal(ok('ross-hf-peds', { 'ross-class': 'I' }).advanced, false);
+  // Class IV: symptoms at rest, flagged.
+  assert.match(ok('ross-hf-peds', { 'ross-class': 'IV' }).band, /symptomatic at rest/);
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];
