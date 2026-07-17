@@ -1502,6 +1502,16 @@ round-trip both pass, without the phantom "2". Adapter appended to the existing
 rate to a target PaCO2. Brings the exposed total to **1072 calculators across 197
 modules**.
 
+## Two-hundred-thirteenth wave — the Brodsky tonsil grading scale in lib/brodsky-tonsil-v388.js (+1)
+
+`brodsky-tonsil` (spec-v388) applies the Brodsky grading scale for palatine tonsil size: given the grade,
+it reports the oropharyngeal-width description. `grade` is an enum (`kind: 'enum'`, values 0-4) — the
+single input the renderer exposes. The example sets grade 3; its expected text quotes the "50-75%" band,
+echoed in the result, so it round-trips through the default `makeToArgs` with no custom toArgs. New
+adapter module registered in `mcp/catalog.js`; its golden probe ("tonsil size grade") is promoted now that
+the tile is in the MCP-exposed registry. Brings the exposed total to **1177 calculators across 293
+modules**.
+
 ## Two-hundred-twelfth wave — the Dimeglio clubfoot classification in lib/dimeglio-clubfoot-v387.js (+1)
 
 `dimeglio-clubfoot` (spec-v387) sums the four Dimeglio reducibility parameters (0-4 enums) and the four
@@ -4346,6 +4356,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/dimeglio-clubfoot-v387.js
 - `dimeglio-clubfoot`
+
+### lib/brodsky-tonsil-v388.js
+- `brodsky-tonsil`
 
 ### lib/tb-testing.js
 - `tb-testing`

@@ -358,6 +358,8 @@ const PROBES = [
   ['clubfoot severity score', ['pirani-clubfoot']],
   // spec-v387 tile, exposed to MCP in wave 212: Dimeglio clubfoot classification.
   ['clubfoot classification score', ['dimeglio-clubfoot']],
+  // spec-v388 tile, exposed to MCP in wave 213: Brodsky tonsil grading scale.
+  ['tonsil size grade', ['brodsky-tonsil']],
 ];
 
 test(`every golden probe routes an acceptable tile into the top ${TOP_N}`, () => {

@@ -3265,6 +3265,19 @@ test('lib/dimeglio-clubfoot-v387.js worked calls', () => {
   assert.equal(z.grade, 'normal');
 });
 
+test('lib/brodsky-tonsil-v388.js worked calls', () => {
+  // Grade 3 (the META example): 50-75%, obstructive, flagged.
+  const three = ok('brodsky-tonsil', { 'brodsky-grade': '3' });
+  assert.equal(three.grade, '3');
+  assert.equal(three.obstructive, true);
+  assert.match(three.band, /50-75%/);
+  // Grade 0: within the fossa, not obstructive.
+  const zero = ok('brodsky-tonsil', { 'brodsky-grade': '0' });
+  assert.equal(zero.obstructive, false);
+  // Grade 4: kissing tonsils.
+  assert.match(ok('brodsky-tonsil', { 'brodsky-grade': '4' }).band, /kissing tonsils/);
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];
