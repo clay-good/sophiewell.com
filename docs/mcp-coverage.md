@@ -1502,6 +1502,16 @@ round-trip both pass, without the phantom "2". Adapter appended to the existing
 rate to a target PaCO2. Brings the exposed total to **1072 calculators across 197
 modules**.
 
+## One-hundred-ninetieth wave — the Prague C&M criteria (Barrett esophagus) in lib/prague-barrett-v365.js (+1)
+
+`prague-barrett` (spec-v365) reports the Prague C&M notation for Barrett esophagus from the
+circumferential (C) and maximal (M) extents. It is a two-field NUMERIC tile: `c` and `m` (`kind:
+'number'`), both required (both in the example). The compute echoes C and M and reports the notation +
+segment descriptor, so the example (C 2, M 5 -> Prague C2 M5) round-trips its numeric facts (2, 5)
+through the default `makeToArgs` with no custom toArgs. New adapter module registered in `mcp/catalog.js`;
+its golden probe ("barrett esophagus length") is promoted now that the tile is in the MCP-exposed
+registry. Brings the exposed total to **1154 calculators across 270 modules**.
+
 ## One-hundred-eighty-ninth wave — the Clinical Activity Score (thyroid eye disease) in lib/cas-ted-v364.js (+1)
 
 `cas-ted` (spec-v364) sums the Clinical Activity Score for thyroid eye disease. It is a seven-field
@@ -4044,6 +4054,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/cas-ted-v364.js
 - `cas-ted`
+
+### lib/prague-barrett-v365.js
+- `prague-barrett`
 
 ### lib/tb-testing.js
 - `tb-testing`

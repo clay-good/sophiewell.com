@@ -2964,6 +2964,17 @@ test('lib/cas-ted-v364.js worked calls', () => {
   assert.equal(two.active, false);
 });
 
+test('lib/prague-barrett-v365.js worked calls', () => {
+  // C 2 / M 5 (the META example): Prague C2 M5, long-segment.
+  const r = ok('prague-barrett', { 'pr-c': '2', 'pr-m': '5' });
+  assert.equal(r.c, 2);
+  assert.equal(r.m, 5);
+  assert.equal(r.bandLabel, 'Prague C2 M5');
+  assert.equal(r.segment, 'long-segment');
+  // Short segment: C0 M2.
+  assert.equal(ok('prague-barrett', { 'pr-c': '0', 'pr-m': '2' }).segment, 'short-segment');
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];
