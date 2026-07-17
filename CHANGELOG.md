@@ -6,6 +6,22 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v381 — Winquist-Hansen classification (femoral shaft fracture) tile, 1232 → 1233)
+
+- New `winquist-hansen` tile (group G): the Winquist-Hansen classification of a femoral shaft fracture
+  (types 0-IV), by the extent of comminution and the cortical contact between the two main fragments — the
+  standard grading that stratifies axial-rotational stability; previously absent. The clinician picks the
+  type and the tile reports its description. **0:** no comminution. **I:** small butterfly (<25% width).
+  **II:** larger butterfly (<50% width; ≥50% cortical contact). **III:** large fragment (>50% width; <50%
+  cortical contact) — flagged. **IV:** circumferential, no cortical contact — flagged. A Winquist-Hansen
+  type, not a diagnosis, a treatment decision, or a prognosis ([spec-v11] §5.3); the
+  falling-cortical-contact gradient (0 → IV) is the classically taught pattern, not an order. Types
+  transcribed (spec-v97) from Winquist 1984 (JBJS), cross-verified against orthopedic references; no
+  citation-staleness row (the citation carries no guideline-issuer acronym). New
+  `lib/winquist-hansen-v381.js` + `views/group-v381.js` (RV381); +1 META entry, +1 UTILITIES row, a
+  synonym entry (v102 → v103), 6 unit tests + fuzz, corpus rebuilt to 1233. See
+  [docs/spec-v381.md](docs/spec-v381.md). The MCP adapter follows in a later wave.
+
 ### Added (spec-v380 — Young-Burgess classification (pelvic ring injury) tile, 1231 → 1232)
 
 - New `young-burgess` tile (group G): the Young-Burgess mechanism-based classification of a pelvic ring

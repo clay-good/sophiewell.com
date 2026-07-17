@@ -357,6 +357,7 @@ import * as gartlandSupracondylarV377 from '../../lib/gartland-supracondylar-v37
 import * as delbetFemoralNeckV378 from '../../lib/delbet-femoral-neck-v378.js';
 import * as tilePelvicV379 from '../../lib/tile-pelvic-v379.js';
 import * as youngBurgessV380 from '../../lib/young-burgess-v380.js';
+import * as winquistHansenV381 from '../../lib/winquist-hansen-v381.js';
 import * as tbTesting from '../../lib/tb-testing.js';
 
 const MODULES = {
@@ -659,6 +660,7 @@ const MODULES = {
   'delbet-femoral-neck-v378.js': delbetFemoralNeckV378,
   'tile-pelvic-v379.js': tilePelvicV379,
   'young-burgess-v380.js': youngBurgessV380,
+  'winquist-hansen-v381.js': winquistHansenV381,
   'tb-testing.js': tbTesting,
 };
 
