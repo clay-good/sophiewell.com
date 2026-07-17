@@ -1502,6 +1502,16 @@ round-trip both pass, without the phantom "2". Adapter appended to the existing
 rate to a target PaCO2. Brings the exposed total to **1072 calculators across 197
 modules**.
 
+## One-hundred-ninety-fourth wave — the Nohria-Stevenson profiles (acute heart failure) in lib/nohria-stevenson-v369.js (+1)
+
+`nohria-stevenson` (spec-v369) derives the Nohria-Stevenson clinical hemodynamic profile (A/B/C/L). It is
+a two-field tile: `congestion` (enum dry/wet) and `perfusion` (enum warm/cold), both required (both in
+the example). The compute reports the profile and its congestion/perfusion state. The example (wet, cold
+-> profile C) round-trips through the default `makeToArgs` with no custom toArgs (its expected text is
+the profile description; no numeric facts). New adapter module registered in `mcp/catalog.js`; its golden
+probe ("hemodynamic profile heart failure") is promoted now that the tile is in the MCP-exposed registry.
+Brings the exposed total to **1158 calculators across 274 modules**.
+
 ## One-hundred-ninety-third wave — the Ross classification (pediatric heart failure) in lib/ross-hf-peds-v368.js (+1)
 
 `ross-hf-peds` (spec-v368) applies the Ross classification of pediatric heart failure: given the class,
@@ -4096,6 +4106,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/ross-hf-peds-v368.js
 - `ross-hf-peds`
+
+### lib/nohria-stevenson-v369.js
+- `nohria-stevenson`
 
 ### lib/tb-testing.js
 - `tb-testing`

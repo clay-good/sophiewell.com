@@ -3010,6 +3010,19 @@ test('lib/ross-hf-peds-v368.js worked calls', () => {
   assert.match(ok('ross-hf-peds', { 'ross-class': 'IV' }).band, /symptomatic at rest/);
 });
 
+test('lib/nohria-stevenson-v369.js worked calls', () => {
+  // wet + cold (the META example): profile C, flagged.
+  const c = ok('nohria-stevenson', { 'ns-congestion': 'wet', 'ns-perfusion': 'cold' });
+  assert.equal(c.profile, 'C');
+  assert.equal(c.abnormal, true);
+  // dry + warm: profile A, compensated.
+  const a = ok('nohria-stevenson', { 'ns-congestion': 'dry', 'ns-perfusion': 'warm' });
+  assert.equal(a.profile, 'A');
+  assert.equal(a.abnormal, false);
+  // dry + cold: profile L.
+  assert.equal(ok('nohria-stevenson', { 'ns-congestion': 'dry', 'ns-perfusion': 'cold' }).profile, 'L');
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];
