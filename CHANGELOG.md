@@ -6,6 +6,23 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v363 — Shaffer gonioscopy angle grade tile, 1214 → 1215)
+
+- New `shaffer-angle` tile (group G): the Shaffer gonioscopy grading of the anterior chamber angle (grades
+  0–4) — the standard grading of the drainage-angle width to gauge angle-closure-glaucoma risk; previously
+  absent (the catalog had other ophthalmology grades but no anterior-chamber-angle grade). The clinician
+  picks the grade and the tile reports its description; a **higher** grade is a **wider, safer** angle.
+  **4:** wide open (~35–45°). **3:** open (~20–35°). **2:** moderately narrow (~20°), closure possible —
+  flagged. **1:** very narrow (~10°), closure probable — flagged. **0:** closed — flagged. Grades 0–2 are
+  narrow angles at angle-closure risk. A Shaffer grade, not a diagnosis, a treatment decision, or a
+  prognosis ([spec-v11] §5.3); a closed/very-narrow angle with symptoms can be an ophthalmic emergency.
+  Grades transcribed (spec-v97) from Shaffer 1960, cross-verified against AAO/EyeWiki; angular widths are
+  approximate (they vary by source), the clinical interpretation is consistent; no citation-staleness row
+  (the citation carries no guideline-issuer acronym). New `lib/shaffer-angle-v363.js` +
+  `views/group-v363.js` (RV363); +1 META entry, +1 UTILITIES row, a synonym entry (v84 → v85), 5 unit
+  tests + fuzz, corpus rebuilt to 1215. See [docs/spec-v363.md](docs/spec-v363.md). The MCP adapter
+  follows in a later wave.
+
 ### Added (spec-v362 — Forrester hemodynamic classification tile, 1213 → 1214)
 
 - New `forrester-hemodynamic` tile (group G): the Forrester hemodynamic classification (subsets I–IV) of

@@ -13,9 +13,9 @@
     "expected",
     "bands"
   ],
-  "count": 1214,
+  "count": 1215,
   "withSummary": 1151,
   "budgetGzip": 204800,
-  "gzipBytes": 202444,
-  "hash": "6941e75063666d3d"
+  "gzipBytes": 202624,
+  "hash": "ad9f9aea9385465f"
 }
