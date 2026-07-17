@@ -1502,6 +1502,16 @@ round-trip both pass, without the phantom "2". Adapter appended to the existing
 rate to a target PaCO2. Brings the exposed total to **1072 calculators across 197
 modules**.
 
+## Two-hundred-twenty-seventh wave — the Lauge-Hansen classification (rotational ankle fracture) in lib/lauge-hansen-v402.js (+1)
+
+`lauge-hansen` (spec-v402) applies the Lauge-Hansen classification of a rotational ankle fracture: given
+the mechanism, it reports the injury-sequence description. `mechanism` is an enum (`kind: 'enum'`, values
+SA/SER/PAB/PER/PD) — the single input the renderer exposes. The example sets SER; its expected text's only
+digits are the stage numbers (1-4) that the result echoes verbatim, so it flows through the default
+`makeToArgs` with no custom toArgs. New adapter module registered in `mcp/catalog.js`; its golden probe
+("ankle fracture mechanism") is promoted now that the tile is in the MCP-exposed registry. Brings the
+exposed total to **1191 calculators across 307 modules**.
+
 ## Two-hundred-twenty-sixth wave — the Zargar classification (caustic esophagogastric injury) in lib/zargar-caustic-v401.js (+1)
 
 `zargar-caustic` (spec-v401) applies the modified Zargar endoscopic classification of a caustic /
@@ -4529,6 +4539,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/zargar-caustic-v401.js
 - `zargar-caustic`
+
+### lib/lauge-hansen-v402.js
+- `lauge-hansen`
 
 ### lib/tb-testing.js
 - `tb-testing`

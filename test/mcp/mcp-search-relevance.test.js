@@ -386,6 +386,8 @@ const PROBES = [
   ['groin hernia classification', ['nyhus-hernia']],
   // spec-v401 tile, exposed to MCP in wave 226: Zargar classification (caustic esophagogastric injury).
   ['caustic ingestion grade', ['zargar-caustic']],
+  // spec-v402 tile, exposed to MCP in wave 227: Lauge-Hansen classification (rotational ankle fracture).
+  ['ankle fracture mechanism', ['lauge-hansen']],
 ];
 
 test(`every golden probe routes an acceptable tile into the top ${TOP_N}`, () => {

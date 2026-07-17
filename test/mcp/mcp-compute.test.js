@@ -3443,6 +3443,18 @@ test('lib/zargar-caustic-v401.js worked calls', () => {
   assert.match(ok('zargar-caustic', { 'zargar-grade': '4' }).band, /perforation/);
 });
 
+test('lib/lauge-hansen-v402.js worked calls', () => {
+  // SER (the META example): supination-external-rotation, Weber B.
+  const ser = ok('lauge-hansen', { 'lh-mech': 'SER' });
+  assert.equal(ser.mechanism, 'SER');
+  assert.match(ser.band, /supination-external-rotation/);
+  assert.match(ser.band, /Weber B/);
+  // SA: supination-adduction.
+  assert.match(ok('lauge-hansen', { 'lh-mech': 'SA' }).band, /supination-adduction/);
+  // PER: high spiral fibula / Maisonneuve.
+  assert.match(ok('lauge-hansen', { 'lh-mech': 'PER' }).band, /Maisonneuve/);
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];
