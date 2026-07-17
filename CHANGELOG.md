@@ -6,6 +6,23 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v398 — Carpentier classification (mitral regurgitation) tile, 1249 → 1250)
+
+- New `carpentier-mr` tile (group G): the Carpentier functional classification of mitral regurgitation
+  (types I/II/IIIa/IIIb), by the motion of the mitral leaflets — the "French correction" (Carpentier 1983)
+  that the El Khoury aortic-regurgitation classification is explicitly the aortic analog of, used to plan
+  mitral-valve repair, the mitral complement to `el-khoury-ar`; previously absent. The clinician picks the
+  type and the tile reports its mechanism description. **I:** normal leaflet motion (annular dilatation or
+  perforation). **II:** excessive motion (prolapse or flail). **IIIa:** restricted motion in both systole
+  and diastole (structural, e.g. rheumatic). **IIIb:** restricted motion in systole only (functional /
+  ischemic). A Carpentier type, not a diagnosis, a treatment decision, or a prognosis ([spec-v11] §5.3); the
+  type guides the repair strategy. Types transcribed (spec-v97) from Carpentier 1983 (J Thorac Cardiovasc
+  Surg), cross-verified against cardiology/cardiac-surgery/echocardiography references; no citation-staleness
+  row (the citation carries no guideline-issuer acronym). New `lib/carpentier-mr-v398.js` +
+  `views/group-v398.js` (RV398); +1 META entry, +1 UTILITIES row, a synonym entry (v119 → v120), 5 unit
+  tests + fuzz, corpus rebuilt to 1250. See [docs/spec-v398.md](docs/spec-v398.md). The MCP adapter follows
+  in a later wave.
+
 ### Added (spec-v397 — El Khoury classification (aortic regurgitation) tile, 1248 → 1249)
 
 - New `el-khoury-ar` tile (group G): the El Khoury (Boodhwani) repair-oriented functional classification

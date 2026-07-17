@@ -374,6 +374,7 @@ import * as borrmannGastricV394 from '../../lib/borrmann-gastric-v394.js';
 import * as parksFistulaV395 from '../../lib/parks-fistula-v395.js';
 import * as sieversBavV396 from '../../lib/sievers-bav-v396.js';
 import * as elKhouryArV397 from '../../lib/el-khoury-ar-v397.js';
+import * as carpentierMrV398 from '../../lib/carpentier-mr-v398.js';
 import * as tbTesting from '../../lib/tb-testing.js';
 
 const MODULES = {
@@ -693,6 +694,7 @@ const MODULES = {
   'parks-fistula-v395.js': parksFistulaV395,
   'sievers-bav-v396.js': sieversBavV396,
   'el-khoury-ar-v397.js': elKhouryArV397,
+  'carpentier-mr-v398.js': carpentierMrV398,
   'tb-testing.js': tbTesting,
 };
 
