@@ -6,6 +6,21 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v374 — Pauwels classification (femoral neck fracture) tile, 1225 → 1226)
+
+- New `pauwels-femoral-neck` tile (group G): the Pauwels classification of a femoral neck fracture (types
+  I–III), by the angle of the fracture line from the horizontal — the classic biomechanical grading of the
+  compression-vs-shear balance, the shear-angle counterpart to the existing `garden-classification`
+  (displacement); previously absent. The clinician picks the type and the tile reports its description.
+  **I:** < 30° (compression dominant, most stable). **II:** 30–50° (shear appears, intermediate). **III:**
+  > 50° (shear dominant, highest nonunion / AVN risk) — flagged. A Pauwels type, not a diagnosis, a
+  treatment decision, or a prognosis ([spec-v11] §5.3); the rising-nonunion-risk association (I → III) is
+  the classically taught pattern, not an order. Angles transcribed (spec-v97) from Pauwels 1935,
+  cross-verified against orthopedic references; no citation-staleness row (the citation carries no
+  guideline-issuer acronym). New `lib/pauwels-femoral-neck-v374.js` + `views/group-v374.js` (RV374); +1
+  META entry, +1 UTILITIES row, a synonym entry (v95 → v96), 5 unit tests + fuzz, corpus rebuilt to 1226.
+  See [docs/spec-v374.md](docs/spec-v374.md). The MCP adapter follows in a later wave.
+
 ### Added (spec-v373 — NI-RADS category (head & neck surveillance) tile, 1224 → 1225)
 
 - New `ni-rads` tile (group G): the NI-RADS (Neck Imaging Reporting and Data System) categories (1–4, with

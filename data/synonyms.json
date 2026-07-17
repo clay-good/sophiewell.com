@@ -1,5 +1,5 @@
 {
-  "version": "v95-2026-07-17",
+  "version": "v96-2026-07-17",
   "note": "spec-v7 section 3.2: hand-curated patient-phrasing -> tile id table. Each entry maps patient-mental-model phrases (and, from the v8/v9 plain-language-search batches, clinical abbreviations, eponym aliases, and canonical-intent phrases) to a single existing tile. Audience is the primary audience the entry serves; the matcher deprioritizes (does not hide) entries when the user has selected a different chip. Every phrase is lowercase; every tile id is an existing catalog tile (guarded by test/unit/synonyms-catalog.test.js). Adding a new phrase is a one-line PR.",
   "entries": [
     { "phrases": ["denied", "denial letter", "they denied it", "insurance said no", "appeal", "write an appeal", "appeal my claim", "appeal letter", "appeal a denial"],
@@ -334,6 +334,8 @@
     { "phrases": ["cad-rads", "cadrads", "coronary cta category", "coronary stenosis grade", "coronary ct angiography category", "coronary artery disease reporting", "cad rads 2.0"],
       "tile": "cad-rads", "audience": "clinicians" },
     { "phrases": ["ni-rads", "nirads", "neck imaging reporting", "head and neck cancer surveillance category", "neck imaging data system", "head neck cancer imaging category"],
-      "tile": "ni-rads", "audience": "clinicians" }
+      "tile": "ni-rads", "audience": "clinicians" },
+    { "phrases": ["pauwels", "pauwels classification", "femoral neck fracture angle", "femoral neck fracture classification", "pauwels type", "vertical femoral neck fracture", "hip fracture shear angle"],
+      "tile": "pauwels-femoral-neck", "audience": "clinicians" }
   ]
 }
