@@ -6,6 +6,21 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v369 — Nohria-Stevenson profiles (acute heart failure) tile, 1220 → 1221)
+
+- New `nohria-stevenson` tile (group G): the Nohria-Stevenson clinical hemodynamic profiles for acute
+  heart failure (A / B / C / L) — the bedside 2×2 classification by congestion (dry/wet) and perfusion
+  (warm/cold), the clinical counterpart to the invasive `forrester-hemodynamic` tile; previously absent. A
+  two-select compute: the clinician selects congestion and perfusion and the tile derives the profile.
+  **A** dry-warm (compensated). **B** wet-warm (congested; most common ADHF) — flagged. **C** wet-cold
+  (congested + hypoperfused; worst outcomes) — flagged. **L** dry-cold (low output) — flagged. A profile,
+  not a diagnosis, a treatment decision, or a prognosis ([spec-v11] §5.3); the profile-guided therapy
+  pattern is a teaching association. Profiles transcribed (spec-v97) from Nohria et al. 2003 (JACC),
+  cross-verified against heart-failure references; no citation-staleness row (the citation carries no
+  guideline-issuer acronym). New `lib/nohria-stevenson-v369.js` + `views/group-v369.js` (RV369); +1 META
+  entry, +1 UTILITIES row, a synonym entry (v90 → v91), 5 unit tests + fuzz, corpus rebuilt to 1221. See
+  [docs/spec-v369.md](docs/spec-v369.md). The MCP adapter follows in a later wave.
+
 ### Added (spec-v368 — Ross classification (pediatric heart failure) tile, 1219 → 1220)
 
 - New `ross-hf-peds` tile (group G): the Ross classification of heart failure in infants and children

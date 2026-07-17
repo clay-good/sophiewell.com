@@ -1,5 +1,5 @@
 {
-  "version": "v90-2026-07-17",
+  "version": "v91-2026-07-17",
   "note": "spec-v7 section 3.2: hand-curated patient-phrasing -> tile id table. Each entry maps patient-mental-model phrases (and, from the v8/v9 plain-language-search batches, clinical abbreviations, eponym aliases, and canonical-intent phrases) to a single existing tile. Audience is the primary audience the entry serves; the matcher deprioritizes (does not hide) entries when the user has selected a different chip. Every phrase is lowercase; every tile id is an existing catalog tile (guarded by test/unit/synonyms-catalog.test.js). Adding a new phrase is a one-line PR.",
   "entries": [
     { "phrases": ["denied", "denial letter", "they denied it", "insurance said no", "appeal", "write an appeal", "appeal my claim", "appeal letter", "appeal a denial"],
@@ -324,6 +324,8 @@
     { "phrases": ["penetration aspiration scale", "rosenbek scale", "pas score", "pas swallow", "swallow study aspiration score", "airway invasion swallow", "aspiration scale swallow"],
       "tile": "pas-swallow", "audience": "clinicians" },
     { "phrases": ["ross classification", "ross class", "ross heart failure", "pediatric heart failure class", "pediatric heart failure classification", "modified ross", "ross score heart failure", "child heart failure class"],
-      "tile": "ross-hf-peds", "audience": "clinicians" }
+      "tile": "ross-hf-peds", "audience": "clinicians" },
+    { "phrases": ["nohria stevenson", "warm and wet heart failure", "cold and wet heart failure", "hemodynamic profile heart failure", "heart failure profile", "wet warm cold dry heart failure", "stevenson classification"],
+      "tile": "nohria-stevenson", "audience": "clinicians" }
   ]
 }
