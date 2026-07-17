@@ -3035,6 +3035,18 @@ test('lib/hartofilakidis-ddh-v370.js worked calls', () => {
   assert.match(ok('hartofilakidis-ddh', { 'hart-type': 'C' }).band, /high dislocation/);
 });
 
+test('lib/c-rads-v371.js worked calls', () => {
+  // C3 (the META example): polyp >= 10 mm, colonoscopy, flagged.
+  const c3 = ok('c-rads', { 'crads-cat': 'C3' });
+  assert.equal(c3.category, 'C3');
+  assert.equal(c3.actionable, true);
+  assert.match(c3.band, /colonoscopy is recommended/);
+  // C1: normal, not flagged.
+  assert.equal(ok('c-rads', { 'crads-cat': 'C1' }).actionable, false);
+  // C4: colonic mass, flagged.
+  assert.match(ok('c-rads', { 'crads-cat': 'C4' }).band, /colonic mass/);
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];

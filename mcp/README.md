@@ -78,7 +78,7 @@ find_calculator { "query": "stroke risk afib" }
        candidates: [ { id: "chads", name: "CHA2DS2-VASc", why: "synonym", ... }, ... ] }
 
 list_calculators { "specialty": "hepatology" }
-  -> { coverage: "1159 of 1109 catalog tiles exposed ...", calculators: [ { id: "meld-xi", ... }, ... ] }
+  -> { coverage: "1160 of 1109 catalog tiles exposed ...", calculators: [ { id: "meld-xi", ... }, ... ] }
 
 describe_calculator { "id": "meld-xi" }
   -> { inputSchema: { ... mx-bili, mx-creat ... }, citation: "Heuman DM ... Liver Transpl 2007", ... }
@@ -403,8 +403,9 @@ zones in `lib/neck-zone-v366.js`, and a one-hundred-ninety-second the Penetratio
 `lib/pas-swallow-v367.js`, and a one-hundred-ninety-third the Ross classification (pediatric heart
 failure) in `lib/ross-hf-peds-v368.js`, and a one-hundred-ninety-fourth the Nohria-Stevenson profiles
 (acute heart failure) in `lib/nohria-stevenson-v369.js`, and a one-hundred-ninety-fifth the
-Hartofilakidis classification (hip dysplasia) in `lib/hartofilakidis-ddh-v370.js`, for 1159 across 275
-modules
+Hartofilakidis classification (hip dysplasia) in `lib/hartofilakidis-ddh-v370.js`, and a
+one-hundred-ninety-sixth the C-RADS category (CT colonography) in `lib/c-rads-v371.js`, for 1160 across
+276 modules
 today. <!-- catalog-truth:historical (197 is the count of lib modules adapted, not a catalog tile count) -->
 Later waves extend it module by module against the same contract.
 

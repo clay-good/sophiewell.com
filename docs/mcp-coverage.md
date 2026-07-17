@@ -1502,6 +1502,16 @@ round-trip both pass, without the phantom "2". Adapter appended to the existing
 rate to a target PaCO2. Brings the exposed total to **1072 calculators across 197
 modules**.
 
+## One-hundred-ninety-sixth wave — the C-RADS category (CT colonography) in lib/c-rads-v371.js (+1)
+
+`c-rads` (spec-v371) applies the C-RADS colonic categories for a CT colonography: given the category, it
+reports the description. `category` is an enum (`kind: 'enum'`, values C0/C1/C2a/C2b/C3/C4) — the single
+input the renderer exposes. The example sets C3; its expected text is the category description (the polyp
+thresholds 10 and 6-9 are echoed in the band), so it round-trips through the default `makeToArgs` with no
+custom toArgs. New adapter module registered in `mcp/catalog.js`; its golden probe ("ct colonography
+category") is promoted now that the tile is in the MCP-exposed registry. Brings the exposed total to
+**1160 calculators across 276 modules**.
+
 ## One-hundred-ninety-fifth wave — the Hartofilakidis classification (hip dysplasia) in lib/hartofilakidis-ddh-v370.js (+1)
 
 `hartofilakidis-ddh` (spec-v370) applies the Hartofilakidis classification of adult DDH: given the type,
@@ -4122,6 +4132,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/hartofilakidis-ddh-v370.js
 - `hartofilakidis-ddh`
+
+### lib/c-rads-v371.js
+- `c-rads`
 
 ### lib/tb-testing.js
 - `tb-testing`
