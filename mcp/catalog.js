@@ -291,6 +291,7 @@ import pipkinFemoralHeadV375 from './adapters/pipkin-femoral-head-v375.js';
 import denisSacralV376 from './adapters/denis-sacral-v376.js';
 import gartlandSupracondylarV377 from './adapters/gartland-supracondylar-v377.js';
 import delbetFemoralNeckV378 from './adapters/delbet-femoral-neck-v378.js';
+import tilePelvicV379 from './adapters/tile-pelvic-v379.js';
 import tbTesting from './adapters/tb-testing.js';
 import labInterpret from './adapters/lab-interpret.js';
 import decisionRulesV258 from './adapters/decision-rules-v258.js';
@@ -576,6 +577,7 @@ const ADAPTER_MODULES = [
   ['denis-sacral-v376', denisSacralV376],
   ['gartland-supracondylar-v377', gartlandSupracondylarV377],
   ['delbet-femoral-neck-v378', delbetFemoralNeckV378],
+  ['tile-pelvic-v379', tilePelvicV379],
   ['tb-testing', tbTesting],
   ['lab-interpret', labInterpret],
   ['decision-rules-v258', decisionRulesV258],

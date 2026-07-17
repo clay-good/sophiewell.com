@@ -3137,6 +3137,20 @@ test('lib/delbet-femoral-neck-v378.js worked calls', () => {
   assert.match(ok('delbet-femoral-neck', { 'delbet-type': 'II' }).band, /transcervical/);
 });
 
+test('lib/tile-pelvic-v379.js worked calls', () => {
+  // Type C (the META example): rotationally and vertically unstable, flagged.
+  const c = ok('tile-pelvic', { 'tile-type': 'C' });
+  assert.equal(c.type, 'C');
+  assert.equal(c.unstable, true);
+  assert.match(c.band, /rotationally and vertically unstable/);
+  // Type A: stable, not flagged.
+  const a = ok('tile-pelvic', { 'tile-type': 'A' });
+  assert.equal(a.unstable, false);
+  assert.match(a.band, /stable/);
+  // Type B: rotationally unstable, vertically stable.
+  assert.match(ok('tile-pelvic', { 'tile-type': 'B' }).band, /rotationally unstable but vertically stable/);
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];
