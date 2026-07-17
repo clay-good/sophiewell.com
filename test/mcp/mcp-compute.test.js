@@ -2891,6 +2891,19 @@ test('lib/ramsay-sedation-v358.js worked calls', () => {
   assert.equal(six.outsideTarget, true);
 });
 
+test('lib/pressure-injury-stage-v359.js worked calls', () => {
+  // Stage 3 (the META example): full-thickness skin loss, flagged.
+  const three = ok('pressure-injury-stage', { 'pi-stage': '3' });
+  assert.equal(three.stage, 'Stage 3');
+  assert.equal(three.severe, true);
+  assert.match(three.band, /full-thickness skin loss/);
+  // Stage 1: intact skin, not flagged.
+  assert.equal(ok('pressure-injury-stage', { 'pi-stage': '1' }).severe, false);
+  // Unstageable and DTPI: flagged.
+  assert.equal(ok('pressure-injury-stage', { 'pi-stage': 'unstageable' }).severe, true);
+  assert.equal(ok('pressure-injury-stage', { 'pi-stage': 'dtpi' }).stage, 'Deep Tissue Pressure Injury');
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];

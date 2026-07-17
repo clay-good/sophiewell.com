@@ -1502,6 +1502,15 @@ round-trip both pass, without the phantom "2". Adapter appended to the existing
 rate to a target PaCO2. Brings the exposed total to **1072 calculators across 197
 modules**.
 
+## One-hundred-eighty-fourth wave — the NPIAP pressure injury staging in lib/pressure-injury-stage-v359.js (+1)
+
+`pressure-injury-stage` (spec-v359) applies the NPIAP pressure injury staging: given the stage, it
+reports the depth-of-tissue-loss description. `stage` is an enum (`kind: 'enum'`, values 1-4 /
+unstageable / dtpi) — the single input the renderer exposes. The example sets Stage 3; its expected
+number (3) round-trips through the default `makeToArgs` with no custom toArgs. New adapter module
+registered in `mcp/catalog.js`; its golden probe ("pressure injury stage") is promoted now that the tile
+is in the MCP-exposed registry. Brings the exposed total to **1148 calculators across 264 modules**.
+
 ## One-hundred-eighty-third wave — the Ramsay Sedation Scale in lib/ramsay-sedation-v358.js (+1)
 
 `ramsay-sedation` (spec-v358) applies the Ramsay Sedation Scale: given the level, it reports the
@@ -3969,6 +3978,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/ramsay-sedation-v358.js
 - `ramsay-sedation`
+
+### lib/pressure-injury-stage-v359.js
+- `pressure-injury-stage`
 
 ### lib/tb-testing.js
 - `tb-testing`
