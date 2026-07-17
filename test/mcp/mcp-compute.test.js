@@ -2916,6 +2916,18 @@ test('lib/kwb-retinopathy-v360.js worked calls', () => {
   assert.match(ok('kwb-retinopathy', { 'kwb-grade': '4' }).band, /papilledema/);
 });
 
+test('lib/tanner-staging-v361.js worked calls', () => {
+  // Breast stage 2 (the META example): breast bud stage.
+  const b2 = ok('tanner-staging', { 'tanner-scale': 'breast', 'tanner-stage': '2' });
+  assert.equal(b2.stage, 2);
+  assert.equal(b2.scale, 'breast (female)');
+  assert.match(b2.band, /breast bud stage/);
+  // Genital stage 5: adult genitalia.
+  assert.match(ok('tanner-staging', { 'tanner-scale': 'genital', 'tanner-stage': '5' }).band, /adult genitalia/);
+  // Pubic stage 1: prepubertal.
+  assert.match(ok('tanner-staging', { 'tanner-scale': 'pubic', 'tanner-stage': '1' }).band, /prepubertal/);
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];

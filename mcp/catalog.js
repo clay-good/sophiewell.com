@@ -273,6 +273,7 @@ import nyhaClassV357 from './adapters/nyha-class-v357.js';
 import ramsaySedationV358 from './adapters/ramsay-sedation-v358.js';
 import pressureInjuryStageV359 from './adapters/pressure-injury-stage-v359.js';
 import kwbRetinopathyV360 from './adapters/kwb-retinopathy-v360.js';
+import tannerStagingV361 from './adapters/tanner-staging-v361.js';
 import tbTesting from './adapters/tb-testing.js';
 import labInterpret from './adapters/lab-interpret.js';
 import decisionRulesV258 from './adapters/decision-rules-v258.js';
@@ -540,6 +541,7 @@ const ADAPTER_MODULES = [
   ['ramsay-sedation-v358', ramsaySedationV358],
   ['pressure-injury-stage-v359', pressureInjuryStageV359],
   ['kwb-retinopathy-v360', kwbRetinopathyV360],
+  ['tanner-staging-v361', tannerStagingV361],
   ['tb-testing', tbTesting],
   ['lab-interpret', labInterpret],
   ['decision-rules-v258', decisionRulesV258],

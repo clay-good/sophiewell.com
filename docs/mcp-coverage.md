@@ -1502,6 +1502,16 @@ round-trip both pass, without the phantom "2". Adapter appended to the existing
 rate to a target PaCO2. Brings the exposed total to **1072 calculators across 197
 modules**.
 
+## One-hundred-eighty-sixth wave — Tanner staging (Sexual Maturity Rating) in lib/tanner-staging-v361.js (+1)
+
+`tanner-staging` (spec-v361) applies Tanner staging / SMR. Unlike the other tiles in this batch it is a
+TWO-field tile: `scale` (enum breast/genital/pubic) and `stage` (enum 1-5), both in the example so both
+required. The compute reports the standard description for the selected scale and stage. The example sets
+scale breast, stage 2; its expected number (2) round-trips through the default `makeToArgs` with no
+custom toArgs. New adapter module registered in `mcp/catalog.js`; its golden probe ("sexual maturity
+rating") is promoted now that the tile is in the MCP-exposed registry. Brings the exposed total to **1150
+calculators across 266 modules**.
+
 ## One-hundred-eighty-fifth wave — the Keith-Wagener-Barker hypertensive-retinopathy classification in lib/kwb-retinopathy-v360.js (+1)
 
 `kwb-retinopathy` (spec-v360) applies the Keith-Wagener-Barker classification of hypertensive
@@ -3993,6 +4003,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/kwb-retinopathy-v360.js
 - `kwb-retinopathy`
+
+### lib/tanner-staging-v361.js
+- `tanner-staging`
 
 ### lib/tb-testing.js
 - `tb-testing`

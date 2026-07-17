@@ -78,7 +78,7 @@ find_calculator { "query": "stroke risk afib" }
        candidates: [ { id: "chads", name: "CHA2DS2-VASc", why: "synonym", ... }, ... ] }
 
 list_calculators { "specialty": "hepatology" }
-  -> { coverage: "1149 of 1109 catalog tiles exposed ...", calculators: [ { id: "meld-xi", ... }, ... ] }
+  -> { coverage: "1150 of 1109 catalog tiles exposed ...", calculators: [ { id: "meld-xi", ... }, ... ] }
 
 describe_calculator { "id": "meld-xi" }
   -> { inputSchema: { ... mx-bili, mx-creat ... }, citation: "Heuman DM ... Liver Transpl 2007", ... }
@@ -392,8 +392,9 @@ disease) in `lib/ceap-venous-v356.js`, and a one-hundred-eighty-second the NYHA 
 classification (heart failure) in `lib/nyha-class-v357.js`, and a one-hundred-eighty-third the Ramsay
 Sedation Scale in `lib/ramsay-sedation-v358.js`, and a one-hundred-eighty-fourth the NPIAP pressure
 injury staging in `lib/pressure-injury-stage-v359.js`, and a one-hundred-eighty-fifth the
-Keith-Wagener-Barker hypertensive-retinopathy classification in `lib/kwb-retinopathy-v360.js`, for 1149
-across 265 modules
+Keith-Wagener-Barker hypertensive-retinopathy classification in `lib/kwb-retinopathy-v360.js`, and a
+one-hundred-eighty-sixth Tanner staging (Sexual Maturity Rating) in `lib/tanner-staging-v361.js`, for
+1150 across 266 modules
 today. <!-- catalog-truth:historical (197 is the count of lib modules adapted, not a catalog tile count) -->
 Later waves extend it module by module against the same contract.
 
