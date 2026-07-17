@@ -78,7 +78,7 @@ find_calculator { "query": "stroke risk afib" }
        candidates: [ { id: "chads", name: "CHA2DS2-VASc", why: "synonym", ... }, ... ] }
 
 list_calculators { "specialty": "hepatology" }
-  -> { coverage: "1192 of 1109 catalog tiles exposed ...", calculators: [ { id: "meld-xi", ... }, ... ] }
+  -> { coverage: "1193 of 1109 catalog tiles exposed ...", calculators: [ { id: "meld-xi", ... }, ... ] }
 
 describe_calculator { "id": "meld-xi" }
   -> { inputSchema: { ... mx-bili, mx-creat ... }, citation: "Heuman DM ... Liver Transpl 2007", ... }
@@ -439,7 +439,8 @@ the Nyhus classification (groin hernia) in `lib/nyhus-hernia-v400.js`, and a two
 Zargar classification (caustic esophagogastric injury) in `lib/zargar-caustic-v401.js`, and a
 two-hundred-twenty-seventh the Lauge-Hansen classification (rotational ankle fracture) in
 `lib/lauge-hansen-v402.js`, and a two-hundred-twenty-eighth the Berndt-Harty classification (osteochondral
-lesion of the talus) in `lib/berndt-harty-v403.js`, for 1192 across 308
+lesion of the talus) in `lib/berndt-harty-v403.js`, and a two-hundred-twenty-ninth the Regan-Morrey
+classification (coronoid process fracture) in `lib/regan-morrey-v404.js`, for 1193 across 309
 modules today. <!-- catalog-truth:historical (197 is the count of lib modules adapted, not a catalog tile count) -->
 Later waves extend it module by module against the same contract.
 

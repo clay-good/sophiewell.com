@@ -390,6 +390,8 @@ const PROBES = [
   ['ankle fracture mechanism', ['lauge-hansen']],
   // spec-v403 tile, exposed to MCP in wave 228: Berndt-Harty classification (osteochondral lesion of the talus).
   ['osteochondral lesion of the talus', ['berndt-harty']],
+  // spec-v404 tile, exposed to MCP in wave 229: Regan-Morrey classification (coronoid process fracture).
+  ['coronoid process fracture', ['regan-morrey']],
 ];
 
 test(`every golden probe routes an acceptable tile into the top ${TOP_N}`, () => {

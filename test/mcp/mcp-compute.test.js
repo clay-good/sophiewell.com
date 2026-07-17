@@ -3466,6 +3466,17 @@ test('lib/berndt-harty-v403.js worked calls', () => {
   assert.match(ok('berndt-harty', { 'bh-stage': 'IV' }).band, /displaced osteochondral fragment/);
 });
 
+test('lib/regan-morrey-v404.js worked calls', () => {
+  // Type II (the META example): <=50% of the coronoid height.
+  const two = ok('regan-morrey', { 'rm-type': 'II' });
+  assert.equal(two.type, 'II');
+  assert.match(two.band, /50% or less of the coronoid height/);
+  // Type I: avulsion of the tip.
+  assert.match(ok('regan-morrey', { 'rm-type': 'I' }).band, /avulsion fracture of the tip/);
+  // Type III: >50%.
+  assert.match(ok('regan-morrey', { 'rm-type': 'III' }).band, /more than 50% of the coronoid height/);
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];

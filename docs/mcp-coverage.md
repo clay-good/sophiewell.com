@@ -1502,6 +1502,16 @@ round-trip both pass, without the phantom "2". Adapter appended to the existing
 rate to a target PaCO2. Brings the exposed total to **1072 calculators across 197
 modules**.
 
+## Two-hundred-twenty-ninth wave — the Regan-Morrey classification (coronoid process fracture) in lib/regan-morrey-v404.js (+1)
+
+`regan-morrey` (spec-v404) applies the Regan-Morrey classification of a coronoid process fracture: given
+the type, it reports the height description. `type` is an enum (`kind: 'enum'`, values I/II/III) — the
+single input the renderer exposes. The example sets type II; its expected text's only digits are the "50%"
+threshold that the result echoes verbatim, so it flows through the default `makeToArgs` with no custom
+toArgs. New adapter module registered in `mcp/catalog.js`; its golden probe ("coronoid process fracture")
+is promoted now that the tile is in the MCP-exposed registry. Brings the exposed total to **1193
+calculators across 309 modules**.
+
 ## Two-hundred-twenty-eighth wave — the Berndt-Harty classification (osteochondral lesion of the talus) in lib/berndt-harty-v403.js (+1)
 
 `berndt-harty` (spec-v403) applies the Berndt-Harty classification of an osteochondral lesion of the talus:
@@ -4555,6 +4565,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/berndt-harty-v403.js
 - `berndt-harty`
+
+### lib/regan-morrey-v404.js
+- `regan-morrey`
 
 ### lib/tb-testing.js
 - `tb-testing`
