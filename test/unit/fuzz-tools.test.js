@@ -342,6 +342,7 @@ import * as forresterHemodynamicV362 from '../../lib/forrester-hemodynamic-v362.
 import * as shafferAngleV363 from '../../lib/shaffer-angle-v363.js';
 import * as casTedV364 from '../../lib/cas-ted-v364.js';
 import * as pragueBarrettV365 from '../../lib/prague-barrett-v365.js';
+import * as neckZoneV366 from '../../lib/neck-zone-v366.js';
 import * as tbTesting from '../../lib/tb-testing.js';
 
 const MODULES = {
@@ -629,6 +630,7 @@ const MODULES = {
   'shaffer-angle-v363.js': shafferAngleV363,
   'cas-ted-v364.js': casTedV364,
   'prague-barrett-v365.js': pragueBarrettV365,
+  'neck-zone-v366.js': neckZoneV366,
   'tb-testing.js': tbTesting,
 };
 

@@ -6,6 +6,25 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v366 — Penetrating neck trauma zones tile, 1217 → 1218)
+
+- New `neck-zone` tile (group G): the anatomic zones of the neck for penetrating trauma (Zones I–III) —
+  the classic division used to describe an injury's location and the structures at risk; previously absent
+  (the catalog had trauma scores but no neck-zone reference). The clinician picks the zone and the tile
+  reports its boundaries and contents. **I:** sternal notch → cricoid (great vessels, trachea, esophagus;
+  like an upper thoracic injury). **II:** cricoid → angle of the mandible (carotids, jugulars, larynx; the
+  most surgically accessible zone). **III:** angle of the mandible → skull base (distal carotid, vertebral
+  artery; like a head injury). A zone, not a diagnosis, a management decision, or a prognosis ([spec-v11]
+  §5.3); the modern "no-zone" approach drives management by hard signs + CT angiography rather than by zone
+  alone, and no zone is flagged abnormal (it is an anatomic descriptor). Boundaries transcribed (spec-v97)
+  from Roon & Christensen 1979 / StatPearls / EAST; no citation-staleness row. New `lib/neck-zone-v366.js`
+  + `views/group-v366.js` (RV366); +1 META entry, +1 UTILITIES row, a synonym entry (v87 → v88), 5 unit
+  tests + fuzz, corpus rebuilt to 1218. See [docs/spec-v366.md](docs/spec-v366.md). The MCP adapter follows
+  in a later wave.
+- Search corpus: reduced the `band` CAP 108 → 100 chars in `scripts/build-search-corpus.mjs` to restore
+  gzip-budget headroom as the catalog crossed 1217 tiles — trimming only the longest interpretation-band
+  sentence tails (lowest-signal text), zero search-relevance change (all 181 golden probes still top-3).
+
 ### Added (spec-v365 — Prague C&M criteria (Barrett esophagus) tile, 1216 → 1217)
 
 - New `prague-barrett` tile (group G): the Prague C&M criteria for the endoscopic grading of Barrett's
