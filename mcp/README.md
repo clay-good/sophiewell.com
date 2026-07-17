@@ -78,7 +78,7 @@ find_calculator { "query": "stroke risk afib" }
        candidates: [ { id: "chads", name: "CHA2DS2-VASc", why: "synonym", ... }, ... ] }
 
 list_calculators { "specialty": "hepatology" }
-  -> { coverage: "1184 of 1109 catalog tiles exposed ...", calculators: [ { id: "meld-xi", ... }, ... ] }
+  -> { coverage: "1185 of 1109 catalog tiles exposed ...", calculators: [ { id: "meld-xi", ... }, ... ] }
 
 describe_calculator { "id": "meld-xi" }
   -> { inputSchema: { ... mx-bili, mx-creat ... }, citation: "Heuman DM ... Liver Transpl 2007", ... }
@@ -430,7 +430,8 @@ maturity) in `lib/risser-sign-v383.js`, and a two-hundred-ninth the Spetzler-Pon
 `lib/hill-flap-valve-v392.js`, and a two-hundred-eighteenth the Lauren classification (gastric cancer) in
 `lib/lauren-gastric-v393.js`, and a two-hundred-nineteenth the Borrmann classification (gastric cancer) in
 `lib/borrmann-gastric-v394.js`, and a two-hundred-twentieth the Parks classification (anal fistula) in
-`lib/parks-fistula-v395.js`, for 1184 across 300 modules
+`lib/parks-fistula-v395.js`, and a two-hundred-twenty-first the Sievers classification (bicuspid aortic
+valve) in `lib/sievers-bav-v396.js`, for 1185 across 301 modules
 today. <!-- catalog-truth:historical (197 is the count of lib modules adapted, not a catalog tile count) -->
 Later waves extend it module by module against the same contract.
 

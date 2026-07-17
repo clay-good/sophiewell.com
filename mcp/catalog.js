@@ -308,6 +308,7 @@ import hillFlapValveV392 from './adapters/hill-flap-valve-v392.js';
 import laurenGastricV393 from './adapters/lauren-gastric-v393.js';
 import borrmannGastricV394 from './adapters/borrmann-gastric-v394.js';
 import parksFistulaV395 from './adapters/parks-fistula-v395.js';
+import sieversBavV396 from './adapters/sievers-bav-v396.js';
 import tbTesting from './adapters/tb-testing.js';
 import labInterpret from './adapters/lab-interpret.js';
 import decisionRulesV258 from './adapters/decision-rules-v258.js';
@@ -610,6 +611,7 @@ const ADAPTER_MODULES = [
   ['lauren-gastric-v393', laurenGastricV393],
   ['borrmann-gastric-v394', borrmannGastricV394],
   ['parks-fistula-v395', parksFistulaV395],
+  ['sievers-bav-v396', sieversBavV396],
   ['tb-testing', tbTesting],
   ['lab-interpret', labInterpret],
   ['decision-rules-v258', decisionRulesV258],

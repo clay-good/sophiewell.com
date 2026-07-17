@@ -3369,6 +3369,17 @@ test('lib/parks-fistula-v395.js worked calls', () => {
   assert.match(ok('parks-fistula', { 'parks-type': 'intersphincteric' }).band, /the most common type/);
 });
 
+test('lib/sievers-bav-v396.js worked calls', () => {
+  // Type 1 (the META example): one raphe, most common.
+  const one = ok('sievers-bav', { 'sievers-type': '1' });
+  assert.equal(one.type, '1');
+  assert.match(one.band, /one raphe/);
+  // Type 0: no raphe.
+  assert.match(ok('sievers-bav', { 'sievers-type': '0' }).band, /no raphe/);
+  // Type 2: two raphes.
+  assert.match(ok('sievers-bav', { 'sievers-type': '2' }).band, /two raphes/);
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];

@@ -374,6 +374,8 @@ const PROBES = [
   ['gastric cancer gross morphology', ['borrmann-gastric']],
   // spec-v395 tile, exposed to MCP in wave 220: Parks classification (anal fistula).
   ['anal fistula classification', ['parks-fistula']],
+  // spec-v396 tile, exposed to MCP in wave 221: Sievers classification (bicuspid aortic valve).
+  ['bicuspid aortic valve type', ['sievers-bav']],
 ];
 
 test(`every golden probe routes an acceptable tile into the top ${TOP_N}`, () => {

@@ -1502,6 +1502,16 @@ round-trip both pass, without the phantom "2". Adapter appended to the existing
 rate to a target PaCO2. Brings the exposed total to **1072 calculators across 197
 modules**.
 
+## Two-hundred-twenty-first wave — the Sievers classification (bicuspid aortic valve) in lib/sievers-bav-v396.js (+1)
+
+`sievers-bav` (spec-v396) applies the Sievers classification of a bicuspid aortic valve: given the type,
+it reports the raphe description. `type` is an enum (`kind: 'enum'`, values 0/1/2) — the single input the
+renderer exposes. The example sets type 1; its expected text is the type description (a small integer
+echoed in the result), so it round-trips through the default `makeToArgs` with no custom toArgs. New
+adapter module registered in `mcp/catalog.js`; its golden probe ("bicuspid aortic valve type") is promoted
+now that the tile is in the MCP-exposed registry. Brings the exposed total to **1185 calculators across
+301 modules**.
+
 ## Two-hundred-twentieth wave — the Parks classification (anal fistula) in lib/parks-fistula-v395.js (+1)
 
 `parks-fistula` (spec-v395) applies the Parks classification of an anal fistula: given the type, it
@@ -4451,6 +4461,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/parks-fistula-v395.js
 - `parks-fistula`
+
+### lib/sievers-bav-v396.js
+- `sievers-bav`
 
 ### lib/tb-testing.js
 - `tb-testing`
