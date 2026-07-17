@@ -1502,6 +1502,16 @@ round-trip both pass, without the phantom "2". Adapter appended to the existing
 rate to a target PaCO2. Brings the exposed total to **1072 calculators across 197
 modules**.
 
+## Two-hundred-tenth wave — the Schwab & England ADL scale in lib/schwab-england-v385.js (+1)
+
+`schwab-england` (spec-v385) applies the Schwab & England ADL scale: given the level, it reports the
+functional-independence description. `percent` is a number-like enum (`kind: 'enum'`, values 0-100 in
+steps of 10) — the single input the renderer exposes. The example sets 50; its expected text quotes "50%"
+and "half", both echoed in the band, so it round-trips through the default `makeToArgs` with no custom
+toArgs. New adapter module registered in `mcp/catalog.js`; its golden probe ("parkinson adl scale") is
+promoted now that the tile is in the MCP-exposed registry. Brings the exposed total to **1174 calculators
+across 290 modules**.
+
 ## Two-hundred-ninth wave — the Spetzler-Ponce classification (cerebral AVM) in lib/spetzler-ponce-v384.js (+1)
 
 `spetzler-ponce` (spec-v384) applies the Spetzler-Ponce 3-tier classification of a cerebral AVM: given
@@ -4306,6 +4316,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/spetzler-ponce-v384.js
 - `spetzler-ponce`
+
+### lib/schwab-england-v385.js
+- `schwab-england`
 
 ### lib/tb-testing.js
 - `tb-testing`

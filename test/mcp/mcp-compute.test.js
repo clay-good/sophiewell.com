@@ -3223,6 +3223,18 @@ test('lib/spetzler-ponce-v384.js worked calls', () => {
   assert.equal(ok('spetzler-ponce', { 'sp-class': 'B' }).spetzlerMartinGrades, 'III');
 });
 
+test('lib/schwab-england-v385.js worked calls', () => {
+  // 50% (the META example): more dependent, needs help with half of chores.
+  const fifty = ok('schwab-england', { 'se-percent': '50' });
+  assert.equal(fifty.percent, 50);
+  assert.equal(fifty.abnormal, false);
+  assert.match(fifty.band, /needs help with half of chores/);
+  // 100%: completely independent.
+  assert.match(ok('schwab-england', { 'se-percent': '100' }).band, /completely independent/);
+  // 0%: bedridden.
+  assert.match(ok('schwab-england', { 'se-percent': '0' }).band, /bedridden/);
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];

@@ -78,7 +78,7 @@ find_calculator { "query": "stroke risk afib" }
        candidates: [ { id: "chads", name: "CHA2DS2-VASc", why: "synonym", ... }, ... ] }
 
 list_calculators { "specialty": "hepatology" }
-  -> { coverage: "1173 of 1109 catalog tiles exposed ...", calculators: [ { id: "meld-xi", ... }, ... ] }
+  -> { coverage: "1174 of 1109 catalog tiles exposed ...", calculators: [ { id: "meld-xi", ... }, ... ] }
 
 describe_calculator { "id": "meld-xi" }
   -> { inputSchema: { ... mx-bili, mx-creat ... }, citation: "Heuman DM ... Liver Transpl 2007", ... }
@@ -419,7 +419,8 @@ and a two-hundred-sixth the Winquist-Hansen classification (femoral shaft fractu
 `lib/winquist-hansen-v381.js`, and a two-hundred-seventh the Eichenholtz classification (Charcot
 neuroarthropathy) in `lib/eichenholtz-charcot-v382.js`, and a two-hundred-eighth the Risser sign (skeletal
 maturity) in `lib/risser-sign-v383.js`, and a two-hundred-ninth the Spetzler-Ponce classification
-(cerebral AVM) in `lib/spetzler-ponce-v384.js`, for 1173 across 289 modules
+(cerebral AVM) in `lib/spetzler-ponce-v384.js`, and a two-hundred-tenth the Schwab & England ADL scale in
+`lib/schwab-england-v385.js`, for 1174 across 290 modules
 today. <!-- catalog-truth:historical (197 is the count of lib modules adapted, not a catalog tile count) -->
 Later waves extend it module by module against the same contract.
 
