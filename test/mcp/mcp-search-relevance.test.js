@@ -338,6 +338,8 @@ const PROBES = [
   ['sacral fracture zone', ['denis-sacral']],
   // spec-v377 tile, exposed to MCP in wave 202: Gartland classification (supracondylar humerus fracture).
   ['supracondylar humerus fracture', ['gartland-supracondylar']],
+  // spec-v378 tile, exposed to MCP in wave 203: Delbet classification (pediatric femoral neck fracture).
+  ['pediatric femoral neck fracture', ['delbet-femoral-neck']],
 ];
 
 test(`every golden probe routes an acceptable tile into the top ${TOP_N}`, () => {

@@ -78,7 +78,7 @@ find_calculator { "query": "stroke risk afib" }
        candidates: [ { id: "chads", name: "CHA2DS2-VASc", why: "synonym", ... }, ... ] }
 
 list_calculators { "specialty": "hepatology" }
-  -> { coverage: "1166 of 1109 catalog tiles exposed ...", calculators: [ { id: "meld-xi", ... }, ... ] }
+  -> { coverage: "1167 of 1109 catalog tiles exposed ...", calculators: [ { id: "meld-xi", ... }, ... ] }
 
 describe_calculator { "id": "meld-xi" }
   -> { inputSchema: { ... mx-bili, mx-creat ... }, citation: "Heuman DM ... Liver Transpl 2007", ... }
@@ -411,7 +411,9 @@ one-hundred-ninety-ninth the Pauwels classification (femoral neck fracture) in
 `lib/pauwels-femoral-neck-v374.js`, and a two-hundredth the Pipkin classification (femoral head fracture)
 in `lib/pipkin-femoral-head-v375.js`, and a two-hundred-first the Denis classification (sacral fracture)
 in `lib/denis-sacral-v376.js`, and a two-hundred-second the Gartland classification (supracondylar
-humerus fracture) in `lib/gartland-supracondylar-v377.js`, for 1166 across 282 modules
+humerus fracture) in `lib/gartland-supracondylar-v377.js`, and a two-hundred-third the Delbet
+classification (pediatric femoral neck fracture) in `lib/delbet-femoral-neck-v378.js`, for 1167 across
+283 modules
 today. <!-- catalog-truth:historical (197 is the count of lib modules adapted, not a catalog tile count) -->
 Later waves extend it module by module against the same contract.
 

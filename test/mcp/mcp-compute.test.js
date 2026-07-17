@@ -3123,6 +3123,20 @@ test('lib/gartland-supracondylar-v377.js worked calls', () => {
   assert.match(ok('gartland-supracondylar', { 'gartland-type': 'IV' }).band, /multidirectional instability/);
 });
 
+test('lib/delbet-femoral-neck-v378.js worked calls', () => {
+  // Type I (the META example): transepiphyseal, highest AVN risk, flagged.
+  const one = ok('delbet-femoral-neck', { 'delbet-type': 'I' });
+  assert.equal(one.type, 'I');
+  assert.equal(one.highAvnRisk, true);
+  assert.match(one.band, /transepiphyseal/);
+  // Type IV: intertrochanteric, lowest AVN risk, not flagged.
+  const four = ok('delbet-femoral-neck', { 'delbet-type': 'IV' });
+  assert.equal(four.highAvnRisk, false);
+  assert.match(four.band, /intertrochanteric/);
+  // Type II: transcervical, most common.
+  assert.match(ok('delbet-femoral-neck', { 'delbet-type': 'II' }).band, /transcervical/);
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];

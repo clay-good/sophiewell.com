@@ -1502,6 +1502,17 @@ round-trip both pass, without the phantom "2". Adapter appended to the existing
 rate to a target PaCO2. Brings the exposed total to **1072 calculators across 197
 modules**.
 
+## Two-hundred-third wave — the Delbet classification (pediatric femoral neck fracture) in lib/delbet-femoral-neck-v378.js (+1)
+
+`delbet-femoral-neck` (spec-v378) applies the Delbet (Delbet-Colonna) classification of a pediatric
+femoral neck fracture: given the type, it reports the anatomic description and the AVN-risk gradient.
+`type` is an enum (`kind: 'enum'`, values I/II/III/IV) — the single input the renderer exposes. The
+example sets type I; its expected text is the type description (a roman numeral, no numeric facts to
+round-trip), so it flows through the default `makeToArgs` with no custom toArgs. New adapter module
+registered in `mcp/catalog.js`; its golden probe ("pediatric femoral neck fracture") is promoted now that
+the tile is in the MCP-exposed registry. Brings the exposed total to **1167 calculators across 283
+modules**.
+
 ## Two-hundred-second wave — the Gartland classification (supracondylar humerus fracture) in lib/gartland-supracondylar-v377.js (+1)
 
 `gartland-supracondylar` (spec-v377) applies the Gartland classification of a pediatric extension-type
@@ -4213,6 +4224,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/gartland-supracondylar-v377.js
 - `gartland-supracondylar`
+
+### lib/delbet-femoral-neck-v378.js
+- `delbet-femoral-neck`
 
 ### lib/tb-testing.js
 - `tb-testing`
