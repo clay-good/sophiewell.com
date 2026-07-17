@@ -6,6 +6,22 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v395 — Parks classification (anal fistula) tile, 1246 → 1247)
+
+- New `parks-fistula` tile (group G): the Parks classification of an anal fistula (fistula-in-ano), by the
+  tract's relationship to the anal sphincter complex — the standard anatomic classification that guides
+  surgical planning and the continence risk; previously absent. The clinician picks the type and the tile
+  reports its description. **intersphincteric:** through the internal sphincter only (most common).
+  **transsphincteric:** through both sphincters into the ischioanal fossa. **suprasphincteric:** above the
+  puborectalis — flagged (complex). **extrasphincteric:** outside the sphincter complex, through the
+  levator — flagged (complex). A Parks type, not a diagnosis, a treatment decision, or a prognosis
+  ([spec-v11] §5.3); the supra-/extrasphincteric types carry a higher continence risk. Types transcribed
+  (spec-v97) from Parks 1976 (Br J Surg), cross-verified against colorectal/radiology references; no
+  citation-staleness row (the citation carries no guideline-issuer acronym). New
+  `lib/parks-fistula-v395.js` + `views/group-v395.js` (RV395); +1 META entry, +1 UTILITIES row, a synonym
+  entry (v116 → v117), 6 unit tests + fuzz, corpus rebuilt to 1247. See [docs/spec-v395.md](docs/spec-v395.md).
+  The MCP adapter follows in a later wave.
+
 ### Added (spec-v394 — Borrmann classification (gastric cancer) tile, 1245 → 1246)
 
 - New `borrmann-gastric` tile (group G): the Borrmann classification of advanced gastric cancer (types
