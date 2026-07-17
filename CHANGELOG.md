@@ -6,6 +6,22 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v391 — Hardy classification (pituitary adenoma) tile, 1242 → 1243)
+
+- New `hardy-adenoma` tile (group G): the Hardy (Hardy-Wilson) classification of a pituitary adenoma — a
+  two-axis system pairing a sellar-floor / sphenoid-invasion grade (0-IV) with a suprasellar-extension
+  stage (0/A-E), the complement to the Knosp grade (parasellar axis) shipped alongside; previously absent.
+  The clinician picks both axes and the tile reports them. **Grade:** 0 enclosed / I focal <10 mm / II
+  enlarged, floor intact / III localized erosion (invasive) / IV diffuse destruction (invasive).
+  **Stage:** 0 none / A cistern / B third-ventricle recess / C third ventricle displaced / D intracranial
+  / E cavernous sinus. Grades III-IV are flagged (invasive). A Hardy grade/stage, not a diagnosis, a
+  treatment decision, or a prognosis ([spec-v11] §5.3). Axes transcribed (spec-v97) from Hardy 1969 (Clin
+  Neurosurg) + Wilson's modification, cross-verified against neurosurgery/neuroradiology references; no
+  citation-staleness row (the citation carries no guideline-issuer acronym). A two-select tile. New
+  `lib/hardy-adenoma-v391.js` + `views/group-v391.js` (RV391); +1 META entry, +1 UTILITIES row, a synonym
+  entry (v112 → v113), 6 unit tests + fuzz, corpus rebuilt to 1243. See [docs/spec-v391.md](docs/spec-v391.md).
+  The MCP adapter follows in a later wave.
+
 ### Added (spec-v390 — Knosp grade (pituitary adenoma) tile, 1241 → 1242)
 
 - New `knosp-adenoma` tile (group G): the Knosp grading of cavernous sinus invasion by a pituitary adenoma
