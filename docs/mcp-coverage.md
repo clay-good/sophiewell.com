@@ -1502,6 +1502,16 @@ round-trip both pass, without the phantom "2". Adapter appended to the existing
 rate to a target PaCO2. Brings the exposed total to **1072 calculators across 197
 modules**.
 
+## One-hundred-eighty-first wave — the CEAP classification (chronic venous disease) in lib/ceap-venous-v356.js (+1)
+
+`ceap-venous` (spec-v356) applies the CEAP clinical classification of chronic venous disease: given the
+clinical class, it reports the description. `cls` is an enum (`kind: 'enum'`, values C0-C6 incl.
+C4a/C4b) — the single input the renderer exposes. The example sets C3; its expected text is the class
+description (the class is a C-label), so it round-trips through the default `makeToArgs` with no custom
+toArgs. New adapter module registered in `mcp/catalog.js`; its golden probe ("chronic venous disease
+class") is promoted now that the tile is in the MCP-exposed registry. Brings the exposed total to **1145
+calculators across 261 modules**.
+
 ## One-hundred-eightieth wave — the Lachman test grade (ACL laxity) in lib/lachman-acl-v355.js (+1)
 
 `lachman-acl` (spec-v355) applies the Lachman test grade of ACL laxity: given the grade, it reports the
@@ -3931,6 +3941,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/lachman-acl-v355.js
 - `lachman-acl`
+
+### lib/ceap-venous-v356.js
+- `ceap-venous`
 
 ### lib/tb-testing.js
 - `tb-testing`

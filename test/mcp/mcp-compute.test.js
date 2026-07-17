@@ -2852,6 +2852,18 @@ test('lib/lachman-acl-v355.js worked calls', () => {
   assert.equal(ok('lachman-acl', { 'lachman-grade': 'III' }).severe, true);
 });
 
+test('lib/ceap-venous-v356.js worked calls', () => {
+  // C3 (the META example): edema, not flagged.
+  const c3 = ok('ceap-venous', { 'ceap-class': 'C3' });
+  assert.equal(c3.ceapClass, 'C3');
+  assert.equal(c3.advanced, false);
+  assert.match(c3.band, /edema/);
+  // C6: active venous ulcer, flagged.
+  assert.equal(ok('ceap-venous', { 'ceap-class': 'C6' }).advanced, true);
+  // C4a: skin changes, flagged.
+  assert.equal(ok('ceap-venous', { 'ceap-class': 'C4a' }).advanced, true);
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];
