@@ -337,6 +337,7 @@ import * as nyhaClassV357 from '../../lib/nyha-class-v357.js';
 import * as ramsaySedationV358 from '../../lib/ramsay-sedation-v358.js';
 import * as pressureInjuryStageV359 from '../../lib/pressure-injury-stage-v359.js';
 import * as kwbRetinopathyV360 from '../../lib/kwb-retinopathy-v360.js';
+import * as tannerStagingV361 from '../../lib/tanner-staging-v361.js';
 import * as tbTesting from '../../lib/tb-testing.js';
 
 const MODULES = {
@@ -619,6 +620,7 @@ const MODULES = {
   'ramsay-sedation-v358.js': ramsaySedationV358,
   'pressure-injury-stage-v359.js': pressureInjuryStageV359,
   'kwb-retinopathy-v360.js': kwbRetinopathyV360,
+  'tanner-staging-v361.js': tannerStagingV361,
   'tb-testing.js': tbTesting,
 };
 

@@ -6,6 +6,21 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v361 — Tanner staging (Sexual Maturity Rating) tile, 1212 → 1213)
+
+- New `tanner-staging` tile (group G): Tanner staging / Sexual Maturity Rating (stages 1–5) across the
+  three Marshall-Tanner scales — a fundamental pediatric/endocrine assessment the catalog previously
+  lacked (it had growth tiles but no pubertal staging). A two-select tile: the clinician picks the
+  development scale (**breast (female)**, **genital (male)**, or **pubic hair**) and the stage (**1**
+  prepubertal → **5** adult), and the tile reports the standard description. A Tanner stage, not a
+  diagnosis (precocious or delayed puberty), an age assessment, or a treatment decision ([spec-v11] §5.3);
+  whether a stage is early or late for age is a clinician judgment, and the stages themselves are
+  developmental (no stage is flagged abnormal). Descriptions transcribed (spec-v97) from Marshall & Tanner
+  1969/1970 (Arch Dis Child), cross-verified against StatPearls; no citation-staleness row (the citation
+  carries no guideline-issuer acronym). New `lib/tanner-staging-v361.js` + `views/group-v361.js` (RV361);
+  +1 META entry, +1 UTILITIES row, a synonym entry (v82 → v83), 5 unit tests + fuzz, corpus rebuilt to
+  1213. See [docs/spec-v361.md](docs/spec-v361.md). The MCP adapter follows in a later wave.
+
 ### Added (spec-v360 — Keith-Wagener-Barker (hypertensive retinopathy) tile, 1211 → 1212)
 
 - New `kwb-retinopathy` tile (group G): the Keith-Wagener-Barker classification of hypertensive

@@ -1,5 +1,5 @@
 {
-  "version": "v82-2026-07-16",
+  "version": "v83-2026-07-16",
   "note": "spec-v7 section 3.2: hand-curated patient-phrasing -> tile id table. Each entry maps patient-mental-model phrases (and, from the v8/v9 plain-language-search batches, clinical abbreviations, eponym aliases, and canonical-intent phrases) to a single existing tile. Audience is the primary audience the entry serves; the matcher deprioritizes (does not hide) entries when the user has selected a different chip. Every phrase is lowercase; every tile id is an existing catalog tile (guarded by test/unit/synonyms-catalog.test.js). Adding a new phrase is a one-line PR.",
   "entries": [
     { "phrases": ["denied", "denial letter", "they denied it", "insurance said no", "appeal", "write an appeal", "appeal my claim", "appeal letter", "appeal a denial"],
@@ -308,6 +308,8 @@
     { "phrases": ["pressure injury stage", "pressure injury staging", "pressure ulcer stage", "pressure ulcer staging", "npiap stage", "npuap stage", "bedsore stage", "decubitus ulcer stage", "stage 3 pressure injury", "unstageable pressure injury", "deep tissue pressure injury"],
       "tile": "pressure-injury-stage", "audience": "clinicians" },
     { "phrases": ["keith wagener barker", "hypertensive retinopathy grade", "hypertensive retinopathy classification", "kwb grade", "kwb classification", "hypertensive retinopathy staging", "retinopathy hypertension grade"],
-      "tile": "kwb-retinopathy", "audience": "clinicians" }
+      "tile": "kwb-retinopathy", "audience": "clinicians" },
+    { "phrases": ["tanner stage", "tanner staging", "tanner scale", "sexual maturity rating", "smr stage", "puberty stage", "pubertal staging", "breast tanner stage", "genital tanner stage", "pubic hair tanner stage"],
+      "tile": "tanner-staging", "audience": "clinicians" }
   ]
 }
