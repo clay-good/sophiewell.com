@@ -1502,6 +1502,16 @@ round-trip both pass, without the phantom "2". Adapter appended to the existing
 rate to a target PaCO2. Brings the exposed total to **1072 calculators across 197
 modules**.
 
+## One-hundred-ninety-second wave — the Penetration-Aspiration Scale in lib/pas-swallow-v367.js (+1)
+
+`pas-swallow` (spec-v367) applies the Penetration-Aspiration Scale for a swallow study: given the score,
+it reports the airway-invasion description and the penetration/aspiration category. `score` is an enum
+(`kind: 'enum'`, values 1-8) — the single input the renderer exposes. The example sets score 6; its
+expected number (6) round-trips through the default `makeToArgs` with no custom toArgs. New adapter module
+registered in `mcp/catalog.js`; its golden probe ("penetration aspiration scale") is promoted now that
+the tile is in the MCP-exposed registry. Brings the exposed total to **1156 calculators across 272
+modules**.
+
 ## One-hundred-ninety-first wave — the penetrating-neck-trauma zones in lib/neck-zone-v366.js (+1)
 
 `neck-zone` (spec-v366) reports the anatomic zone of the neck (I-III) for penetrating trauma and its
@@ -4070,6 +4080,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/neck-zone-v366.js
 - `neck-zone`
+
+### lib/pas-swallow-v367.js
+- `pas-swallow`
 
 ### lib/tb-testing.js
 - `tb-testing`

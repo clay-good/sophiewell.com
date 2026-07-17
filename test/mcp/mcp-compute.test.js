@@ -2986,6 +2986,18 @@ test('lib/neck-zone-v366.js worked calls', () => {
   assert.match(ok('neck-zone', { 'neck-zone': 'III' }).band, /head injury/);
 });
 
+test('lib/pas-swallow-v367.js worked calls', () => {
+  // PAS 6 (the META example): aspiration, flagged.
+  const six = ok('pas-swallow', { 'pas-score': '6' });
+  assert.equal(six.score, 6);
+  assert.equal(six.category, 'aspiration');
+  assert.equal(six.abnormal, true);
+  // PAS 1: no airway invasion, not flagged.
+  assert.equal(ok('pas-swallow', { 'pas-score': '1' }).aspiration, false);
+  // PAS 8: silent aspiration.
+  assert.equal(ok('pas-swallow', { 'pas-score': '8' }).category, 'silent aspiration');
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];
