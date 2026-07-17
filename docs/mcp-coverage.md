@@ -1502,6 +1502,16 @@ round-trip both pass, without the phantom "2". Adapter appended to the existing
 rate to a target PaCO2. Brings the exposed total to **1072 calculators across 197
 modules**.
 
+## One-hundred-eighty-second wave — the NYHA functional classification (heart failure) in lib/nyha-class-v357.js (+1)
+
+`nyha-class` (spec-v357) applies the NYHA functional classification of heart failure: given the class, it
+reports the symptom-limitation description. `cls` is an enum (`kind: 'enum'`, values I/II/III/IV) — the
+single input the renderer exposes. The example sets class III; its expected text is the class description
+(the class is a roman numeral), so it round-trips through the default `makeToArgs` with no custom toArgs.
+New adapter module registered in `mcp/catalog.js`; its golden probe ("heart failure functional class") is
+promoted now that the tile is in the MCP-exposed registry. Brings the exposed total to **1146
+calculators across 262 modules**.
+
 ## One-hundred-eighty-first wave — the CEAP classification (chronic venous disease) in lib/ceap-venous-v356.js (+1)
 
 `ceap-venous` (spec-v356) applies the CEAP clinical classification of chronic venous disease: given the
@@ -3944,6 +3954,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/ceap-venous-v356.js
 - `ceap-venous`
+
+### lib/nyha-class-v357.js
+- `nyha-class`
 
 ### lib/tb-testing.js
 - `tb-testing`

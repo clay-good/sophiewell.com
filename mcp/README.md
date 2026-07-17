@@ -78,7 +78,7 @@ find_calculator { "query": "stroke risk afib" }
        candidates: [ { id: "chads", name: "CHA2DS2-VASc", why: "synonym", ... }, ... ] }
 
 list_calculators { "specialty": "hepatology" }
-  -> { coverage: "1145 of 1109 catalog tiles exposed ...", calculators: [ { id: "meld-xi", ... }, ... ] }
+  -> { coverage: "1146 of 1109 catalog tiles exposed ...", calculators: [ { id: "meld-xi", ... }, ... ] }
 
 describe_calculator { "id": "meld-xi" }
   -> { inputSchema: { ... mx-bili, mx-creat ... }, citation: "Heuman DM ... Liver Transpl 2007", ... }
@@ -388,7 +388,8 @@ one-hundred-seventy-seventh the Lansky Play-Performance Scale (pediatric functio
 `lib/crowe-ddh-v353.js`, and a one-hundred-seventy-ninth the Tonnis classification (hip osteoarthritis)
 in `lib/tonnis-hip-oa-v354.js`, and a one-hundred-eightieth the Lachman test grade (ACL laxity) in
 `lib/lachman-acl-v355.js`, and a one-hundred-eighty-first the CEAP classification (chronic venous
-disease) in `lib/ceap-venous-v356.js`, for 1145 across 261 modules
+disease) in `lib/ceap-venous-v356.js`, and a one-hundred-eighty-second the NYHA functional
+classification (heart failure) in `lib/nyha-class-v357.js`, for 1146 across 262 modules
 today. <!-- catalog-truth:historical (197 is the count of lib modules adapted, not a catalog tile count) -->
 Later waves extend it module by module against the same contract.
 

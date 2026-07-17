@@ -2864,6 +2864,18 @@ test('lib/ceap-venous-v356.js worked calls', () => {
   assert.equal(ok('ceap-venous', { 'ceap-class': 'C4a' }).advanced, true);
 });
 
+test('lib/nyha-class-v357.js worked calls', () => {
+  // Class III (the META example): marked limitation, flagged.
+  const three = ok('nyha-class', { 'nyha-class': 'III' });
+  assert.equal(three.nyhaClass, 'III');
+  assert.equal(three.advanced, true);
+  assert.match(three.band, /marked limitation/);
+  // Class I: no limitation, not flagged.
+  assert.equal(ok('nyha-class', { 'nyha-class': 'I' }).advanced, false);
+  // Class IV: symptoms at rest, flagged.
+  assert.equal(ok('nyha-class', { 'nyha-class': 'IV' }).advanced, true);
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];

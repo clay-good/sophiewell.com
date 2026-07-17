@@ -269,6 +269,7 @@ import croweDdhV353 from './adapters/crowe-ddh-v353.js';
 import tonnisHipOaV354 from './adapters/tonnis-hip-oa-v354.js';
 import lachmanAclV355 from './adapters/lachman-acl-v355.js';
 import ceapVenousV356 from './adapters/ceap-venous-v356.js';
+import nyhaClassV357 from './adapters/nyha-class-v357.js';
 import tbTesting from './adapters/tb-testing.js';
 import labInterpret from './adapters/lab-interpret.js';
 import decisionRulesV258 from './adapters/decision-rules-v258.js';
@@ -532,6 +533,7 @@ const ADAPTER_MODULES = [
   ['tonnis-hip-oa-v354', tonnisHipOaV354],
   ['lachman-acl-v355', lachmanAclV355],
   ['ceap-venous-v356', ceapVenousV356],
+  ['nyha-class-v357', nyhaClassV357],
   ['tb-testing', tbTesting],
   ['lab-interpret', labInterpret],
   ['decision-rules-v258', decisionRulesV258],
