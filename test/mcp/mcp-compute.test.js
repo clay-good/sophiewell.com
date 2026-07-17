@@ -2928,6 +2928,18 @@ test('lib/tanner-staging-v361.js worked calls', () => {
   assert.match(ok('tanner-staging', { 'tanner-scale': 'pubic', 'tanner-stage': '1' }).band, /prepubertal/);
 });
 
+test('lib/forrester-hemodynamic-v362.js worked calls', () => {
+  // CI 1.8 / PCWP 24 (the META example): subset IV, cold and wet, flagged.
+  const iv = ok('forrester-hemodynamic', { 'fh-ci': '1.8', 'fh-pcwp': '24' });
+  assert.equal(iv.subset, 'IV');
+  assert.equal(iv.profile, 'cold and wet');
+  assert.equal(iv.abnormal, true);
+  // CI 3.0 / PCWP 12: subset I, warm and dry, not flagged.
+  const i = ok('forrester-hemodynamic', { 'fh-ci': '3.0', 'fh-pcwp': '12' });
+  assert.equal(i.subset, 'I');
+  assert.equal(i.abnormal, false);
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];

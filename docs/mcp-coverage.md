@@ -1502,6 +1502,16 @@ round-trip both pass, without the phantom "2". Adapter appended to the existing
 rate to a target PaCO2. Brings the exposed total to **1072 calculators across 197
 modules**.
 
+## One-hundred-eighty-seventh wave — the Forrester hemodynamic classification in lib/forrester-hemodynamic-v362.js (+1)
+
+`forrester-hemodynamic` (spec-v362) derives the Forrester hemodynamic subset (I-IV) from the cardiac
+index and PCWP. It is a two-field NUMERIC tile: `ci` and `pcwp` (`kind: 'number'`), both required (both
+in the example). The compute echoes the entered CI and PCWP in the band, so the example (CI 1.8, PCWP 24
+-> subset IV) round-trips its numeric facts (1.8, 24, 55.5) through the default `makeToArgs` with no
+custom toArgs. New adapter module registered in `mcp/catalog.js`; its golden probe ("hemodynamic subset")
+is promoted now that the tile is in the MCP-exposed registry. Brings the exposed total to **1151
+calculators across 267 modules**.
+
 ## One-hundred-eighty-sixth wave — Tanner staging (Sexual Maturity Rating) in lib/tanner-staging-v361.js (+1)
 
 `tanner-staging` (spec-v361) applies Tanner staging / SMR. Unlike the other tiles in this batch it is a
@@ -4006,6 +4016,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/tanner-staging-v361.js
 - `tanner-staging`
+
+### lib/forrester-hemodynamic-v362.js
+- `forrester-hemodynamic`
 
 ### lib/tb-testing.js
 - `tb-testing`
