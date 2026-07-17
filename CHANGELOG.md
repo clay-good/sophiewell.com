@@ -6,6 +6,21 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v372 — CAD-RADS 2.0 category (coronary CTA) tile, 1223 → 1224)
+
+- New `cad-rads` tile (group G): the CAD-RADS 2.0 coronary-CT-angiography categories (0–5, with 4A/4B) —
+  the standardized category by maximal coronary stenosis, one of the most common cardiac-imaging reporting
+  tasks; previously absent. It extends the RADS family in the catalog. The radiologist picks the category
+  and the tile reports its stenosis description. **0** 0% (no plaque). **1** 1–24% minimal. **2** 25–49%
+  mild. **3** 50–69% moderate (obstructive) — flagged. **4A** 70–99% severe — flagged. **4B** left main ≥
+  50% or three-vessel obstructive — flagged. **5** 100% occlusion — flagged. A CAD-RADS category, not a
+  diagnosis, a management order, or a prognosis ([spec-v11] §5.3); the modifiers (N/S/G/HRP/I/E) and
+  P-score are out of scope. Categories transcribed (spec-v97) from Cury et al. 2022 (CAD-RADS 2.0),
+  cross-verified against radiology references; no citation-staleness row (the citation cites the journal
+  without a guideline-issuer acronym). New `lib/cad-rads-v372.js` + `views/group-v372.js` (RV372); +1 META
+  entry, +1 UTILITIES row, a synonym entry (v93 → v94), 5 unit tests + fuzz, corpus rebuilt to 1224. See
+  [docs/spec-v372.md](docs/spec-v372.md). The MCP adapter follows in a later wave.
+
 ### Added (spec-v371 — C-RADS category (CT colonography) tile, 1222 → 1223)
 
 - New `c-rads` tile (group G): the C-RADS (CT Colonography Reporting and Data System) colonic categories

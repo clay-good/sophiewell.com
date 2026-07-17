@@ -348,6 +348,7 @@ import * as rossHfPedsV368 from '../../lib/ross-hf-peds-v368.js';
 import * as nohriaStevensonV369 from '../../lib/nohria-stevenson-v369.js';
 import * as hartofilakidisDdhV370 from '../../lib/hartofilakidis-ddh-v370.js';
 import * as cRadsV371 from '../../lib/c-rads-v371.js';
+import * as cadRadsV372 from '../../lib/cad-rads-v372.js';
 import * as tbTesting from '../../lib/tb-testing.js';
 
 const MODULES = {
@@ -641,6 +642,7 @@ const MODULES = {
   'nohria-stevenson-v369.js': nohriaStevensonV369,
   'hartofilakidis-ddh-v370.js': hartofilakidisDdhV370,
   'c-rads-v371.js': cRadsV371,
+  'cad-rads-v372.js': cadRadsV372,
   'tb-testing.js': tbTesting,
 };
 
