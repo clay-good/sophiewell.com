@@ -6,6 +6,21 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v371 — C-RADS category (CT colonography) tile, 1222 → 1223)
+
+- New `c-rads` tile (group G): the C-RADS (CT Colonography Reporting and Data System) colonic categories
+  (C0–C4, 2023 update) — the standardized reporting category for the colonic findings on a CT colonography;
+  previously absent. It completes the RADS family already in the catalog (BI/LI/PI/O/TI/Lung-RADS). The
+  radiologist picks the category and the tile reports its description. **C0** inadequate study. **C1**
+  normal/benign. **C2a** indeterminate 6–9 mm polyps. **C2b** likely-benign stricture. **C3** polyp(s) ≥
+  10 mm or ≥ 3 polyps 6–9 mm (colonoscopy) — flagged. **C4** colonic mass, malignant-appearing (urgent) —
+  flagged. A C-RADS category, not a diagnosis, a management order, or a prognosis ([spec-v11] §5.3); the
+  extracolonic (E0–E4) axis is out of scope. Categories transcribed (spec-v97) from Zalis 2005 / the 2023
+  update, cross-verified against radiology references; no citation-staleness row (the citation carries no
+  guideline-issuer acronym). New `lib/c-rads-v371.js` + `views/group-v371.js` (RV371); +1 META entry, +1
+  UTILITIES row, a synonym entry (v92 → v93), 5 unit tests + fuzz, corpus rebuilt to 1223. See
+  [docs/spec-v371.md](docs/spec-v371.md). The MCP adapter follows in a later wave.
+
 ### Added (spec-v370 — Hartofilakidis classification (hip dysplasia) tile, 1221 → 1222)
 
 - New `hartofilakidis-ddh` tile (group G): the Hartofilakidis classification of adult developmental
