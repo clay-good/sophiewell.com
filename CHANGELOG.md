@@ -6,6 +6,21 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v393 — Lauren classification (gastric cancer) tile, 1244 → 1245)
+
+- New `lauren-gastric` tile (group G): the Lauren classification of gastric carcinoma (intestinal /
+  diffuse / mixed) — the classic histological typing of gastric adenocarcinoma by growth pattern, with
+  distinct epidemiology and prognosis; previously absent. The pathologist picks the type and the tile
+  reports its histological description. **intestinal:** cohesive cells retaining glandular structure
+  (chronic gastritis / intestinal metaplasia). **diffuse:** poorly cohesive cells, signet-ring cells, no
+  gland formation (classically a worse prognosis). **mixed:** both components. A Lauren type, not a
+  diagnosis, a treatment decision, or a prognosis ([spec-v11] §5.3); the diffuse type's worse-prognosis
+  association is descriptive. Types transcribed (spec-v97) from Lauren 1965 (Acta Pathol Microbiol Scand),
+  cross-verified against pathology/oncology references; no citation-staleness row (the citation carries no
+  guideline-issuer acronym). New `lib/lauren-gastric-v393.js` + `views/group-v393.js` (RV393); +1 META
+  entry, +1 UTILITIES row, a synonym entry (v114 → v115), 5 unit tests + fuzz, corpus rebuilt to 1245. See
+  [docs/spec-v393.md](docs/spec-v393.md). The MCP adapter follows in a later wave.
+
 ### Added (spec-v392 — Hill classification (GE flap valve) tile, 1243 → 1244)
 
 - New `hill-flap-valve` tile (group G): the Hill classification of the gastroesophageal flap valve (grades
