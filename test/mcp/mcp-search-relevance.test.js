@@ -364,6 +364,8 @@ const PROBES = [
   ['vestibular schwannoma grade', ['koos-schwannoma']],
   // spec-v390 tile, exposed to MCP in wave 215: Knosp grade (pituitary adenoma).
   ['pituitary adenoma cavernous sinus grade', ['knosp-adenoma']],
+  // spec-v391 tile, exposed to MCP in wave 216: Hardy classification (pituitary adenoma).
+  ['pituitary adenoma sellar grade', ['hardy-adenoma']],
 ];
 
 test(`every golden probe routes an acceptable tile into the top ${TOP_N}`, () => {

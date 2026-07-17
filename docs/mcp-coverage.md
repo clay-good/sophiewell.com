@@ -1502,6 +1502,17 @@ round-trip both pass, without the phantom "2". Adapter appended to the existing
 rate to a target PaCO2. Brings the exposed total to **1072 calculators across 197
 modules**.
 
+## Two-hundred-sixteenth wave — the Hardy classification (pituitary adenoma) in lib/hardy-adenoma-v391.js (+1)
+
+`hardy-adenoma` (spec-v391) applies the Hardy (Hardy-Wilson) two-axis classification of a pituitary
+adenoma: given the grade and stage, it reports both. `grade` (0-IV) and `stage` (0/A-E) are both enums —
+the two inputs the renderer exposes. The example (grade III, stage C) has both fields, so both adapter
+fields are `required: true`; its expected text is the grade/stage description (roman numeral + letter, no
+free numeric facts to round-trip), so it flows through the default `makeToArgs` with no custom toArgs. New
+adapter module registered in `mcp/catalog.js`; its golden probe ("pituitary adenoma sellar grade") is
+promoted now that the tile is in the MCP-exposed registry. Brings the exposed total to **1180 calculators
+across 296 modules**.
+
 ## Two-hundred-fifteenth wave — the Knosp grade (pituitary adenoma) in lib/knosp-adenoma-v390.js (+1)
 
 `knosp-adenoma` (spec-v390) applies the Knosp grading of cavernous sinus invasion by a pituitary adenoma:
@@ -4385,6 +4396,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/knosp-adenoma-v390.js
 - `knosp-adenoma`
+
+### lib/hardy-adenoma-v391.js
+- `hardy-adenoma`
 
 ### lib/tb-testing.js
 - `tb-testing`

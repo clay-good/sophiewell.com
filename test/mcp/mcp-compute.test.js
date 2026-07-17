@@ -3305,6 +3305,21 @@ test('lib/knosp-adenoma-v390.js worked calls', () => {
   assert.equal(ok('knosp-adenoma', { 'knosp-grade': '3' }).cavernousInvasion, true);
 });
 
+test('lib/hardy-adenoma-v391.js worked calls', () => {
+  // Grade III, stage C (the META example): invasive floor + displaced third ventricle.
+  const r = ok('hardy-adenoma', { 'hardy-grade': 'III', 'hardy-stage': 'C' });
+  assert.equal(r.grade, 'III');
+  assert.equal(r.stage, 'C');
+  assert.equal(r.invasive, true);
+  assert.match(r.band, /localized erosion of the sellar floor/);
+  // Grade 0, stage 0: enclosed, not invasive.
+  const z = ok('hardy-adenoma', { 'hardy-grade': '0', 'hardy-stage': '0' });
+  assert.equal(z.invasive, false);
+  assert.match(z.band, /enclosed within the sella/);
+  // Grade IV, stage E: invasive.
+  assert.equal(ok('hardy-adenoma', { 'hardy-grade': 'IV', 'hardy-stage': 'E' }).invasive, true);
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];
