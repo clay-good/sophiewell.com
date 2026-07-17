@@ -38,7 +38,11 @@ const BUDGET_GZIP = 200 * 1024;
 // Field length caps (chars, cut at a word boundary). Tuned so the full catalog
 // stays comfortably under the gzip budget with headroom for growth.
 const CAP = { summary: 200, what: 200, when: 200, expected: 180, band: 92 };
-const MAX_BANDS = 4;
+// Interpretation bands are the lowest search-signal field (an interpretation-range
+// label + text; nobody searches by band text), so the per-tile band count is
+// trimmed first when the catalog grows into the gzip budget (spec-v401): three
+// bands still convey the shape of a scale without the long corpus tail.
+const MAX_BANDS = 3;
 
 // Sanitize source prose: en/em dashes -> hyphen, smart quotes -> ASCII, collapse
 // whitespace. The dash/quote codepoints are written as \u escapes (not literals)

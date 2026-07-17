@@ -377,6 +377,7 @@ import * as elKhouryArV397 from '../../lib/el-khoury-ar-v397.js';
 import * as carpentierMrV398 from '../../lib/carpentier-mr-v398.js';
 import * as bismuthCorletteV399 from '../../lib/bismuth-corlette-v399.js';
 import * as nyhusHerniaV400 from '../../lib/nyhus-hernia-v400.js';
+import * as zargarCausticV401 from '../../lib/zargar-caustic-v401.js';
 import * as tbTesting from '../../lib/tb-testing.js';
 
 const MODULES = {
@@ -699,6 +700,7 @@ const MODULES = {
   'carpentier-mr-v398.js': carpentierMrV398,
   'bismuth-corlette-v399.js': bismuthCorletteV399,
   'nyhus-hernia-v400.js': nyhusHerniaV400,
+  'zargar-caustic-v401.js': zargarCausticV401,
   'tb-testing.js': tbTesting,
 };
 

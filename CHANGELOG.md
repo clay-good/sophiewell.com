@@ -6,6 +6,21 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v401 — Zargar classification (caustic esophagogastric injury) tile, 1252 → 1253)
+
+- New `zargar-caustic` tile (group G): the modified Zargar endoscopic classification of a caustic /
+  corrosive esophagogastric injury (grades 0/1/2a/2b/3a/3b/4), by the endoscopic depth and extent of the
+  burn — the grading an endoscopist uses to gauge stricture risk after a corrosive ingestion; previously
+  absent. The clinician picks the grade and the tile reports its endoscopic description. **0:** normal.
+  **1:** edema / hyperemia. **2a:** superficial. **2b:** deep or circumferential ulceration. **3a:** focal
+  necrosis. **3b:** extensive necrosis. **4:** perforation. A Zargar grade, not a diagnosis, a management
+  decision, or a prognosis ([spec-v11] §5.3); higher grades (2b and above) are classically associated with a
+  higher stricture risk. Grades transcribed (spec-v97) from Zargar 1991 (Gastrointest Endosc),
+  cross-verified against gastroenterology / toxicology references; no citation-staleness row (the citation
+  carries no guideline-issuer acronym). New `lib/zargar-caustic-v401.js` + `views/group-v401.js` (RV401); +1
+  META entry, +1 UTILITIES row, a synonym entry (v122 → v123), 5 unit tests + fuzz, corpus rebuilt to 1253.
+  See [docs/spec-v401.md](docs/spec-v401.md). The MCP adapter follows in a later wave.
+
 ### Added (spec-v400 — Nyhus classification (groin hernia) tile, 1251 → 1252)
 
 - New `nyhus-hernia` tile (group G): the Nyhus classification of a groin (inguinal / femoral) hernia (types
