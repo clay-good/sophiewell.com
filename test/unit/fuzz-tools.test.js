@@ -338,6 +338,7 @@ import * as ramsaySedationV358 from '../../lib/ramsay-sedation-v358.js';
 import * as pressureInjuryStageV359 from '../../lib/pressure-injury-stage-v359.js';
 import * as kwbRetinopathyV360 from '../../lib/kwb-retinopathy-v360.js';
 import * as tannerStagingV361 from '../../lib/tanner-staging-v361.js';
+import * as forresterHemodynamicV362 from '../../lib/forrester-hemodynamic-v362.js';
 import * as tbTesting from '../../lib/tb-testing.js';
 
 const MODULES = {
@@ -621,6 +622,7 @@ const MODULES = {
   'pressure-injury-stage-v359.js': pressureInjuryStageV359,
   'kwb-retinopathy-v360.js': kwbRetinopathyV360,
   'tanner-staging-v361.js': tannerStagingV361,
+  'forrester-hemodynamic-v362.js': forresterHemodynamicV362,
   'tb-testing.js': tbTesting,
 };
 

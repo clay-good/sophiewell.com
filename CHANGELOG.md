@@ -6,6 +6,21 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v362 — Forrester hemodynamic classification tile, 1213 → 1214)
+
+- New `forrester-hemodynamic` tile (group G): the Forrester hemodynamic classification (subsets I–IV) of
+  acute MI / acute heart failure — the invasive counterpart to the Killip classification, previously
+  absent. A numeric compute: the clinician enters the cardiac index (perfusion) and PCWP (congestion) and
+  the tile derives the subset. **Cold** = CI < 2.2 L/min/m²; **wet** = PCWP > 18 mmHg. **I** warm+dry
+  (~2.2% mortality); **II** warm+wet (~10.1%) — flagged; **III** cold+dry (~22.4%) — flagged; **IV**
+  cold+wet, cardiogenic-shock physiology (~55.5%) — flagged. A Forrester subset, not a diagnosis, a
+  treatment decision, or a prognosis ([spec-v11] §5.3); the mortality figures are 1976 derivation-cohort
+  averages. Cutoffs/mortality transcribed (spec-v97) from Forrester, Diamond & Swan 1977 (Am J Cardiol),
+  cross-verified against cardiology references; no citation-staleness row (the citation carries no
+  guideline-issuer acronym). New `lib/forrester-hemodynamic-v362.js` + `views/group-v362.js` (RV362); +1
+  META entry, +1 UTILITIES row, a synonym entry (v83 → v84), 5 unit tests + fuzz, corpus rebuilt to 1214.
+  See [docs/spec-v362.md](docs/spec-v362.md). The MCP adapter follows in a later wave.
+
 ### Added (spec-v361 — Tanner staging (Sexual Maturity Rating) tile, 1212 → 1213)
 
 - New `tanner-staging` tile (group G): Tanner staging / Sexual Maturity Rating (stages 1–5) across the
