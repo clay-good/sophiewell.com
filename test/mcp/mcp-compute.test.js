@@ -3247,6 +3247,24 @@ test('lib/pirani-clubfoot-v386.js worked calls', () => {
   assert.equal(z.total, 0);
 });
 
+test('lib/dimeglio-clubfoot-v387.js worked calls', () => {
+  // The META example: 4/3/3/3, no bonus -> total 13, grade III.
+  const r = ok('dimeglio-clubfoot', { 'dim-equinus': '4', 'dim-varus': '3', 'dim-derotation': '3', 'dim-adduction': '3' });
+  assert.equal(r.total, 13);
+  assert.equal(r.grade, 'III');
+  assert.equal(r.angleScore, 13);
+  assert.equal(r.bonusScore, 0);
+  assert.match(r.band, /13 of 20/);
+  // the optional bonus flags add points when supplied.
+  const b = ok('dimeglio-clubfoot', { 'dim-equinus': '4', 'dim-varus': '3', 'dim-derotation': '3', 'dim-adduction': '3', 'dim-pc': true, 'dim-mc': true });
+  assert.equal(b.total, 15);
+  assert.equal(b.bonusScore, 2);
+  // all-zero -> normal.
+  const z = ok('dimeglio-clubfoot', { 'dim-equinus': '0', 'dim-varus': '0', 'dim-derotation': '0', 'dim-adduction': '0' });
+  assert.equal(z.total, 0);
+  assert.equal(z.grade, 'normal');
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];

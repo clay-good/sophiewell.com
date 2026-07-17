@@ -299,6 +299,7 @@ import risserSignV383 from './adapters/risser-sign-v383.js';
 import spetzlerPonceV384 from './adapters/spetzler-ponce-v384.js';
 import schwabEnglandV385 from './adapters/schwab-england-v385.js';
 import piraniClubfootV386 from './adapters/pirani-clubfoot-v386.js';
+import dimeglioClubfootV387 from './adapters/dimeglio-clubfoot-v387.js';
 import tbTesting from './adapters/tb-testing.js';
 import labInterpret from './adapters/lab-interpret.js';
 import decisionRulesV258 from './adapters/decision-rules-v258.js';
@@ -592,6 +593,7 @@ const ADAPTER_MODULES = [
   ['spetzler-ponce-v384', spetzlerPonceV384],
   ['schwab-england-v385', schwabEnglandV385],
   ['pirani-clubfoot-v386', piraniClubfootV386],
+  ['dimeglio-clubfoot-v387', dimeglioClubfootV387],
   ['tb-testing', tbTesting],
   ['lab-interpret', labInterpret],
   ['decision-rules-v258', decisionRulesV258],

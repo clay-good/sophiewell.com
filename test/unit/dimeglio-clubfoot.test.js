@@ -6,7 +6,7 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { dimeglioClubfoot } from '../../lib/dimeglio-clubfoot-v387.js';
 
-test('worked example: 4/3/3/3 + 2 bonus -> total 15, grade III (the META example)', () => {
+test('worked example: 4/3/3/3 + 2 bonus -> total 15, grade III', () => {
   const r = dimeglioClubfoot({ equinus: '4', varus: '3', derotation: '3', adduction: '3', posteriorCrease: true, medialCrease: true });
   assert.equal(r.valid, true);
   assert.equal(r.angleScore, 13);

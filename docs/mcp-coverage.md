@@ -1502,6 +1502,17 @@ round-trip both pass, without the phantom "2". Adapter appended to the existing
 rate to a target PaCO2. Brings the exposed total to **1072 calculators across 197
 modules**.
 
+## Two-hundred-twelfth wave — the Dimeglio clubfoot classification in lib/dimeglio-clubfoot-v387.js (+1)
+
+`dimeglio-clubfoot` (spec-v387) sums the four Dimeglio reducibility parameters (0-4 enums) and the four
+bonus features (booleans) into the 0-20 total and grade. The example (4/3/3/3, no bonus → 13, grade III)
+sets only the four reducibility params, so those four are `required: true`; all four bonus flags are
+`required: false` and default false. Its expected numbers (13, 20) are echoed in the band, so it
+round-trips through the default `makeToArgs` with no custom toArgs. New
+adapter module registered in `mcp/catalog.js`; its golden probe ("clubfoot classification score") is
+promoted now that the tile is in the MCP-exposed registry. Brings the exposed total to **1176 calculators
+across 292 modules**.
+
 ## Two-hundred-eleventh wave — the Pirani clubfoot severity score in lib/pirani-clubfoot-v386.js (+1)
 
 `pirani-clubfoot` (spec-v386) sums the six Pirani signs into the midfoot + hindfoot contracture scores
@@ -4332,6 +4343,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/pirani-clubfoot-v386.js
 - `pirani-clubfoot`
+
+### lib/dimeglio-clubfoot-v387.js
+- `dimeglio-clubfoot`
 
 ### lib/tb-testing.js
 - `tb-testing`

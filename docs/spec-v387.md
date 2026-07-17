@@ -22,8 +22,8 @@ tile reports the total (0-20), the reducibility/bonus subscores, and the grade (
 - `views/group-v387.js` (RV387) — four selects (dom `dim-equinus/varus/derotation/adduction`) + four
   checkboxes (dom `dim-pc/mc/cavus/muscle`), each with a real `<label for>`.
 - `lib/meta.js` — Dimeglio 1995 (J Pediatr Orthop B) citation + accessed date + grouped bands. No
-  citation-staleness row. The example (4/3/3/3 + 2 bonus → 15, grade III) round-trips its numbers through
-  the band; the two checked bonus flags use the `'1'` example value the browser applyExample honors.
+  citation-staleness row. The example (4/3/3/3, no bonus → 13, grade III) round-trips its numbers through
+  the band; the four bonus flags are optional (default false), so a caller need not supply them.
 - 6 worked-example unit tests + fuzz registration; synonym entry (v108 → v109); corpus → 1239.
 
 **HIGH-STAKES:** it reports the Dimeglio score and grade from the parameters the clinician has assessed,
