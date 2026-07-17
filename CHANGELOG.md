@@ -6,6 +6,22 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v380 — Young-Burgess classification (pelvic ring injury) tile, 1231 → 1232)
+
+- New `young-burgess` tile (group G): the Young-Burgess mechanism-based classification of a pelvic ring
+  injury (lateral compression LC I-III, anteroposterior compression APC I-III, vertical shear VS, combined
+  mechanism CM) — the companion to the Tile (AO/Tile) stability-based grouping shipped in spec-v379;
+  previously absent. The clinician picks the pattern and the tile reports its mechanism/stability
+  description. LC I-III: sacral compression → crescent fracture → windswept. APC I-III: progressive
+  symphysis/SI disruption (III complete). VS: vertical shear. CM: combined. The typically-unstable
+  patterns (APC-II, APC-III, LC-III, VS, CM) are flagged. A Young-Burgess pattern, not a diagnosis, a
+  treatment decision, or a prognosis ([spec-v11] §5.3); the stability associations are the classically
+  taught pattern, not an order. Patterns transcribed (spec-v97) from Young 1986 (Radiology),
+  cross-verified against a modern review (CORR 2014); no citation-staleness row (the citation carries no
+  guideline-issuer acronym). New `lib/young-burgess-v380.js` + `views/group-v380.js` (RV380); +1 META
+  entry, +1 UTILITIES row, a synonym entry (v101 → v102), 6 unit tests + fuzz, corpus rebuilt to 1232.
+  See [docs/spec-v380.md](docs/spec-v380.md). The MCP adapter follows in a later wave.
+
 ### Added (spec-v379 — Tile classification (pelvic ring injury) tile, 1230 → 1231)
 
 - New `tile-pelvic` tile (group G): the Tile (AO/Tile) classification of a pelvic ring injury (types
