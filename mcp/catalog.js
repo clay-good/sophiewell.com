@@ -282,6 +282,7 @@ import neckZoneV366 from './adapters/neck-zone-v366.js';
 import pasSwallowV367 from './adapters/pas-swallow-v367.js';
 import rossHfPedsV368 from './adapters/ross-hf-peds-v368.js';
 import nohriaStevensonV369 from './adapters/nohria-stevenson-v369.js';
+import hartofilakidisDdhV370 from './adapters/hartofilakidis-ddh-v370.js';
 import tbTesting from './adapters/tb-testing.js';
 import labInterpret from './adapters/lab-interpret.js';
 import decisionRulesV258 from './adapters/decision-rules-v258.js';
@@ -558,6 +559,7 @@ const ADAPTER_MODULES = [
   ['pas-swallow-v367', pasSwallowV367],
   ['ross-hf-peds-v368', rossHfPedsV368],
   ['nohria-stevenson-v369', nohriaStevensonV369],
+  ['hartofilakidis-ddh-v370', hartofilakidisDdhV370],
   ['tb-testing', tbTesting],
   ['lab-interpret', labInterpret],
   ['decision-rules-v258', decisionRulesV258],

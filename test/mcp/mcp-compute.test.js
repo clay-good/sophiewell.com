@@ -3023,6 +3023,18 @@ test('lib/nohria-stevenson-v369.js worked calls', () => {
   assert.equal(ok('nohria-stevenson', { 'ns-congestion': 'dry', 'ns-perfusion': 'cold' }).profile, 'L');
 });
 
+test('lib/hartofilakidis-ddh-v370.js worked calls', () => {
+  // Type B (the META example): low dislocation, flagged.
+  const b = ok('hartofilakidis-ddh', { 'hart-type': 'B' });
+  assert.equal(b.type, 'B');
+  assert.equal(b.dislocation, true);
+  assert.match(b.band, /low dislocation/);
+  // Type A: dysplasia, not flagged.
+  assert.equal(ok('hartofilakidis-ddh', { 'hart-type': 'A' }).dislocation, false);
+  // Type C: high dislocation, flagged.
+  assert.match(ok('hartofilakidis-ddh', { 'hart-type': 'C' }).band, /high dislocation/);
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];

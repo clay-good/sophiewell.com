@@ -1502,6 +1502,16 @@ round-trip both pass, without the phantom "2". Adapter appended to the existing
 rate to a target PaCO2. Brings the exposed total to **1072 calculators across 197
 modules**.
 
+## One-hundred-ninety-fifth wave — the Hartofilakidis classification (hip dysplasia) in lib/hartofilakidis-ddh-v370.js (+1)
+
+`hartofilakidis-ddh` (spec-v370) applies the Hartofilakidis classification of adult DDH: given the type,
+it reports the description. `type` is an enum (`kind: 'enum'`, values A/B/C) — the single input the
+renderer exposes. The example sets type B; its expected text is the type description (a letter, no
+numeric facts), so it round-trips through the default `makeToArgs` with no custom toArgs. New adapter
+module registered in `mcp/catalog.js`; its golden probe ("hartofilakidis classification") is promoted now
+that the tile is in the MCP-exposed registry. Brings the exposed total to **1159 calculators across 275
+modules**.
+
 ## One-hundred-ninety-fourth wave — the Nohria-Stevenson profiles (acute heart failure) in lib/nohria-stevenson-v369.js (+1)
 
 `nohria-stevenson` (spec-v369) derives the Nohria-Stevenson clinical hemodynamic profile (A/B/C/L). It is
@@ -4109,6 +4119,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/nohria-stevenson-v369.js
 - `nohria-stevenson`
+
+### lib/hartofilakidis-ddh-v370.js
+- `hartofilakidis-ddh`
 
 ### lib/tb-testing.js
 - `tb-testing`
