@@ -6,6 +6,21 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v404 — Regan-Morrey classification (coronoid process fracture) tile, 1255 → 1256)
+
+- New `regan-morrey` tile (group G): the Regan-Morrey classification of a coronoid process fracture of the
+  ulna (types I/II/III), by the height of the fragment — the companion to the Mason radial-head
+  classification (both are bony components of the "terrible triad" elbow injury); previously absent. The
+  clinician picks the type and the tile reports its height description. **I:** avulsion of the coronoid tip.
+  **II:** 50% or less of the coronoid height. **III:** more than 50% of the coronoid height (each subdivided
+  A without / B with an elbow dislocation). A Regan-Morrey type, not a diagnosis, a treatment decision, or a
+  prognosis ([spec-v11] §5.3); larger fragments (type III) are classically less stable. Types transcribed
+  (spec-v97) from Regan-Morrey 1989 (J Bone Joint Surg Am), cross-verified against orthopedic references; no
+  citation-staleness row (the citation carries no guideline-issuer acronym). New `lib/regan-morrey-v404.js`
+  + `views/group-v404.js` (RV404); +1 META entry, +1 UTILITIES row, a synonym entry (v125 → v126), 5 unit
+  tests + fuzz, corpus rebuilt to 1256. See [docs/spec-v404.md](docs/spec-v404.md). The MCP adapter follows
+  in a later wave.
+
 ### Added (spec-v403 — Berndt-Harty classification (osteochondral lesion of the talus) tile, 1254 → 1255)
 
 - New `berndt-harty` tile (group G): the Berndt-Harty classification of an osteochondral lesion
