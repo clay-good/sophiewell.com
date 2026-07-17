@@ -1502,6 +1502,16 @@ round-trip both pass, without the phantom "2". Adapter appended to the existing
 rate to a target PaCO2. Brings the exposed total to **1072 calculators across 197
 modules**.
 
+## Two-hundred-eighth wave — the Risser sign (skeletal maturity) in lib/risser-sign-v383.js (+1)
+
+`risser-sign` (spec-v383) applies the Risser sign (US grading, 0-5) for skeletal maturity: given the
+grade, it reports the ossification description. `grade` is an enum (`kind: 'enum'`, values 0-5) — the
+single input the renderer exposes. The example sets grade 5; its expected text is the grade description (a
+small integer already echoed in the band), so it round-trips through the default `makeToArgs` with no
+custom toArgs. New adapter module registered in `mcp/catalog.js`; its golden probe ("iliac apophysis
+skeletal maturity") is promoted now that the tile is in the MCP-exposed registry. Brings the exposed total
+to **1172 calculators across 288 modules**.
+
 ## Two-hundred-seventh wave — the Eichenholtz classification (Charcot neuroarthropathy) in lib/eichenholtz-charcot-v382.js (+1)
 
 `eichenholtz-charcot` (spec-v382) applies the (modified) Eichenholtz staging of Charcot neuroarthropathy:
@@ -4280,6 +4290,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/eichenholtz-charcot-v382.js
 - `eichenholtz-charcot`
+
+### lib/risser-sign-v383.js
+- `risser-sign`
 
 ### lib/tb-testing.js
 - `tb-testing`

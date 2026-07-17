@@ -3193,6 +3193,21 @@ test('lib/eichenholtz-charcot-v382.js worked calls', () => {
   assert.equal(ok('eichenholtz-charcot', { 'eich-stage': '0' }).active, true);
 });
 
+test('lib/risser-sign-v383.js worked calls', () => {
+  // Grade 5 (the META example): ossified and fused, skeletally mature.
+  const five = ok('risser-sign', { 'risser-grade': '5' });
+  assert.equal(five.grade, '5');
+  assert.equal(five.skeletallyMature, true);
+  assert.equal(five.abnormal, false);
+  assert.match(five.band, /complete ossification and fusion/);
+  // Grade 0: no ossification, not mature.
+  const zero = ok('risser-sign', { 'risser-grade': '0' });
+  assert.equal(zero.skeletallyMature, false);
+  assert.equal(zero.growthPotentialRemaining, 'substantial');
+  // Grade 4: fully ossified but not fused.
+  assert.match(ok('risser-sign', { 'risser-grade': '4' }).band, /not yet fused/);
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];

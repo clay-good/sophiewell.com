@@ -348,6 +348,8 @@ const PROBES = [
   ['femoral shaft comminution', ['winquist-hansen']],
   // spec-v382 tile, exposed to MCP in wave 207: Eichenholtz classification (Charcot neuroarthropathy).
   ['charcot foot staging', ['eichenholtz-charcot']],
+  // spec-v383 tile, exposed to MCP in wave 208: Risser sign (skeletal maturity).
+  ['iliac apophysis skeletal maturity', ['risser-sign']],
 ];
 
 test(`every golden probe routes an acceptable tile into the top ${TOP_N}`, () => {
