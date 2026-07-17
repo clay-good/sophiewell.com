@@ -334,6 +334,8 @@ const PROBES = [
   ['femoral neck fracture angle', ['pauwels-femoral-neck']],
   // spec-v375 tile, exposed to MCP in wave 200: Pipkin classification (femoral head fracture).
   ['femoral head fracture', ['pipkin-femoral-head']],
+  // spec-v376 tile, exposed to MCP in wave 201: Denis classification (sacral fracture).
+  ['sacral fracture zone', ['denis-sacral']],
 ];
 
 test(`every golden probe routes an acceptable tile into the top ${TOP_N}`, () => {

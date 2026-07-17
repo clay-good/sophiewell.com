@@ -1502,6 +1502,16 @@ round-trip both pass, without the phantom "2". Adapter appended to the existing
 rate to a target PaCO2. Brings the exposed total to **1072 calculators across 197
 modules**.
 
+## Two-hundred-first wave — the Denis classification (sacral fracture) in lib/denis-sacral-v376.js (+1)
+
+`denis-sacral` (spec-v376) applies the Denis classification of a sacral fracture: given the zone, it
+reports the anatomic/neurologic description. `zone` is an enum (`kind: 'enum'`, values I/II/III) — the
+single input the renderer exposes. The example sets zone III; its expected text is the zone description (a
+roman numeral, no numeric facts to round-trip), so it flows through the default `makeToArgs` with no
+custom toArgs. New adapter module registered in `mcp/catalog.js`; its golden probe ("sacral fracture
+zone") is promoted now that the tile is in the MCP-exposed registry. Brings the exposed total to **1165
+calculators across 281 modules**.
+
 ## Two-hundredth wave — the Pipkin classification (femoral head fracture) in lib/pipkin-femoral-head-v375.js (+1)
 
 `pipkin-femoral-head` (spec-v375) applies the Pipkin classification of a femoral head fracture: given the
@@ -4187,6 +4197,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/pipkin-femoral-head-v375.js
 - `pipkin-femoral-head`
+
+### lib/denis-sacral-v376.js
+- `denis-sacral`
 
 ### lib/tb-testing.js
 - `tb-testing`

@@ -3095,6 +3095,20 @@ test('lib/pipkin-femoral-head-v375.js worked calls', () => {
   assert.match(ok('pipkin-femoral-head', { 'pipkin-type': 'IV' }).band, /associated acetabular fracture/);
 });
 
+test('lib/denis-sacral-v376.js worked calls', () => {
+  // Zone III (the META example): central canal, highest neuro risk, flagged.
+  const three = ok('denis-sacral', { 'denis-zone': 'III' });
+  assert.equal(three.zone, 'III');
+  assert.equal(three.neuroRisk, true);
+  assert.match(three.band, /central sacral canal/);
+  // Zone I: alar, lateral to the foramina, not flagged.
+  const one = ok('denis-sacral', { 'denis-zone': 'I' });
+  assert.equal(one.neuroRisk, false);
+  assert.match(one.band, /alar region/);
+  // Zone II: through the foramina, flagged.
+  assert.match(ok('denis-sacral', { 'denis-zone': 'II' }).band, /through the sacral foramina/);
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];
