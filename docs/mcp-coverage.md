@@ -1502,6 +1502,16 @@ round-trip both pass, without the phantom "2". Adapter appended to the existing
 rate to a target PaCO2. Brings the exposed total to **1072 calculators across 197
 modules**.
 
+## Two-hundred-seventh wave — the Eichenholtz classification (Charcot neuroarthropathy) in lib/eichenholtz-charcot-v382.js (+1)
+
+`eichenholtz-charcot` (spec-v382) applies the (modified) Eichenholtz staging of Charcot neuroarthropathy:
+given the stage, it reports the temporal/radiographic description. `stage` is an enum (`kind: 'enum'`,
+values 0/1/2/3) — the single input the renderer exposes. The example sets stage 1; its expected text is
+the stage description (a small integer already echoed in the band), so it round-trips through the default
+`makeToArgs` with no custom toArgs. New adapter module registered in `mcp/catalog.js`; its golden probe
+("charcot foot staging") is promoted now that the tile is in the MCP-exposed registry. Brings the exposed
+total to **1171 calculators across 287 modules**.
+
 ## Two-hundred-sixth wave — the Winquist-Hansen classification (femoral shaft fracture) in lib/winquist-hansen-v381.js (+1)
 
 `winquist-hansen` (spec-v381) applies the Winquist-Hansen classification of a femoral shaft fracture:
@@ -4267,6 +4277,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/winquist-hansen-v381.js
 - `winquist-hansen`
+
+### lib/eichenholtz-charcot-v382.js
+- `eichenholtz-charcot`
 
 ### lib/tb-testing.js
 - `tb-testing`

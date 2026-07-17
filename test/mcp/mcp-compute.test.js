@@ -3179,6 +3179,20 @@ test('lib/winquist-hansen-v381.js worked calls', () => {
   assert.match(ok('winquist-hansen', { 'wh-type': 'IV' }).band, /no cortical contact/);
 });
 
+test('lib/eichenholtz-charcot-v382.js worked calls', () => {
+  // Stage 1 (the META example): development/fragmentation, active, flagged.
+  const one = ok('eichenholtz-charcot', { 'eich-stage': '1' });
+  assert.equal(one.stage, '1');
+  assert.equal(one.active, true);
+  assert.match(one.band, /development \/ fragmentation/);
+  // Stage 3: reconstruction, not active.
+  const three = ok('eichenholtz-charcot', { 'eich-stage': '3' });
+  assert.equal(three.active, false);
+  assert.match(three.band, /reconstruction \/ consolidation/);
+  // Stage 0: prodromal, active.
+  assert.equal(ok('eichenholtz-charcot', { 'eich-stage': '0' }).active, true);
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];

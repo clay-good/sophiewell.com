@@ -346,6 +346,8 @@ const PROBES = [
   ['pelvic ring injury mechanism', ['young-burgess']],
   // spec-v381 tile, exposed to MCP in wave 206: Winquist-Hansen classification (femoral shaft fracture).
   ['femoral shaft comminution', ['winquist-hansen']],
+  // spec-v382 tile, exposed to MCP in wave 207: Eichenholtz classification (Charcot neuroarthropathy).
+  ['charcot foot staging', ['eichenholtz-charcot']],
 ];
 
 test(`every golden probe routes an acceptable tile into the top ${TOP_N}`, () => {

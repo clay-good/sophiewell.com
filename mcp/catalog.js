@@ -294,6 +294,7 @@ import delbetFemoralNeckV378 from './adapters/delbet-femoral-neck-v378.js';
 import tilePelvicV379 from './adapters/tile-pelvic-v379.js';
 import youngBurgessV380 from './adapters/young-burgess-v380.js';
 import winquistHansenV381 from './adapters/winquist-hansen-v381.js';
+import eichenholtzCharcotV382 from './adapters/eichenholtz-charcot-v382.js';
 import tbTesting from './adapters/tb-testing.js';
 import labInterpret from './adapters/lab-interpret.js';
 import decisionRulesV258 from './adapters/decision-rules-v258.js';
@@ -582,6 +583,7 @@ const ADAPTER_MODULES = [
   ['tile-pelvic-v379', tilePelvicV379],
   ['young-burgess-v380', youngBurgessV380],
   ['winquist-hansen-v381', winquistHansenV381],
+  ['eichenholtz-charcot-v382', eichenholtzCharcotV382],
   ['tb-testing', tbTesting],
   ['lab-interpret', labInterpret],
   ['decision-rules-v258', decisionRulesV258],
