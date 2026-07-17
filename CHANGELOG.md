@@ -6,6 +6,22 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v394 — Borrmann classification (gastric cancer) tile, 1245 → 1246)
+
+- New `borrmann-gastric` tile (group G): the Borrmann classification of advanced gastric cancer (types
+  I-IV), by the gross (macroscopic) tumor appearance — the classic morphological typing that complements
+  the Lauren histological typing, the two often reported together; previously absent. The clinician picks
+  the type and the tile reports its gross-appearance description. **I:** polypoid (protruding, demarcated,
+  no ulcer). **II:** fungating / ulcerated (raised margins). **III:** ulcerated and infiltrative
+  (ill-defined margins). **IV:** diffusely infiltrative / linitis plastica (no mass or ulcer; classically
+  the worst prognosis). A Borrmann type, not a diagnosis, a treatment decision, or a prognosis ([spec-v11]
+  §5.3); the type IV worse-prognosis association is descriptive. Types transcribed (spec-v97) from Borrmann
+  1926 (+ a modern review), cross-verified against oncology/pathology references; no citation-staleness row
+  (the citation carries no guideline-issuer acronym). New `lib/borrmann-gastric-v394.js` +
+  `views/group-v394.js` (RV394); +1 META entry, +1 UTILITIES row, a synonym entry (v115 → v116), 6 unit
+  tests + fuzz, corpus rebuilt to 1246. See [docs/spec-v394.md](docs/spec-v394.md). The MCP adapter follows
+  in a later wave.
+
 ### Added (spec-v393 — Lauren classification (gastric cancer) tile, 1244 → 1245)
 
 - New `lauren-gastric` tile (group G): the Lauren classification of gastric carcinoma (intestinal /

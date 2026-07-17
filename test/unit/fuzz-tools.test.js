@@ -370,6 +370,7 @@ import * as knospAdenomaV390 from '../../lib/knosp-adenoma-v390.js';
 import * as hardyAdenomaV391 from '../../lib/hardy-adenoma-v391.js';
 import * as hillFlapValveV392 from '../../lib/hill-flap-valve-v392.js';
 import * as laurenGastricV393 from '../../lib/lauren-gastric-v393.js';
+import * as borrmannGastricV394 from '../../lib/borrmann-gastric-v394.js';
 import * as tbTesting from '../../lib/tb-testing.js';
 
 const MODULES = {
@@ -685,6 +686,7 @@ const MODULES = {
   'hardy-adenoma-v391.js': hardyAdenomaV391,
   'hill-flap-valve-v392.js': hillFlapValveV392,
   'lauren-gastric-v393.js': laurenGastricV393,
+  'borrmann-gastric-v394.js': borrmannGastricV394,
   'tb-testing.js': tbTesting,
 };
 
