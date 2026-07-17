@@ -6,6 +6,24 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v382 — Eichenholtz classification (Charcot neuroarthropathy) tile, 1233 → 1234)
+
+- New `eichenholtz-charcot` tile (group G): the (modified) Eichenholtz classification of Charcot
+  neuroarthropathy (stages 0-3), the temporal/radiographic staging of the neuropathic foot — the standard
+  framework tracking a Charcot joint from the acute, inflamed, at-risk phase through coalescence to a
+  consolidated, stable deformity; previously absent (the catalog had the Wagner-Meggitt ulcer grade but no
+  Charcot stage). The clinician picks the stage and the tile reports its description. **0:** prodromal /
+  pre-radiographic (warm, swollen; normal radiographs) — flagged. **1:** development / fragmentation
+  (inflammation + fragmentation, subluxation) — flagged. **2:** coalescence (debris absorption,
+  sclerosis). **3:** reconstruction / consolidation (remodeling, stable deformity). An Eichenholtz stage,
+  not a diagnosis, a treatment decision, or a prognosis ([spec-v11] §5.3); the active-vs-quiescent
+  grouping is the classically taught pattern, not an order. Stages transcribed (spec-v97) from Eichenholtz
+  1966 (+ the modified Stage 0), cross-verified against a modern review (CORR 2015); no citation-staleness
+  row (the citation carries no guideline-issuer acronym). New `lib/eichenholtz-charcot-v382.js` +
+  `views/group-v382.js` (RV382); +1 META entry, +1 UTILITIES row, a synonym entry (v103 → v104), 6 unit
+  tests + fuzz, corpus rebuilt to 1234. See [docs/spec-v382.md](docs/spec-v382.md). The MCP adapter
+  follows in a later wave.
+
 ### Added (spec-v381 — Winquist-Hansen classification (femoral shaft fracture) tile, 1232 → 1233)
 
 - New `winquist-hansen` tile (group G): the Winquist-Hansen classification of a femoral shaft fracture

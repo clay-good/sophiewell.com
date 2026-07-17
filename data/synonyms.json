@@ -1,5 +1,5 @@
 {
-  "version": "v103-2026-07-17",
+  "version": "v104-2026-07-17",
   "note": "spec-v7 section 3.2: hand-curated patient-phrasing -> tile id table. Each entry maps patient-mental-model phrases (and, from the v8/v9 plain-language-search batches, clinical abbreviations, eponym aliases, and canonical-intent phrases) to a single existing tile. Audience is the primary audience the entry serves; the matcher deprioritizes (does not hide) entries when the user has selected a different chip. Every phrase is lowercase; every tile id is an existing catalog tile (guarded by test/unit/synonyms-catalog.test.js). Adding a new phrase is a one-line PR.",
   "entries": [
     { "phrases": ["denied", "denial letter", "they denied it", "insurance said no", "appeal", "write an appeal", "appeal my claim", "appeal letter", "appeal a denial"],
@@ -350,6 +350,8 @@
     { "phrases": ["young burgess", "young burgess classification", "pelvic ring injury mechanism", "lateral compression pelvic", "anteroposterior compression pelvic", "vertical shear pelvic", "apc pelvic fracture", "windswept pelvis"],
       "tile": "young-burgess", "audience": "clinicians" },
     { "phrases": ["winquist", "winquist hansen", "winquist hansen classification", "femoral shaft comminution", "femoral shaft fracture classification", "femur shaft comminution", "comminuted femoral fracture grade", "femoral fracture cortical contact"],
-      "tile": "winquist-hansen", "audience": "clinicians" }
+      "tile": "winquist-hansen", "audience": "clinicians" },
+    { "phrases": ["eichenholtz", "eichenholtz classification", "charcot foot staging", "charcot neuroarthropathy stage", "charcot arthropathy classification", "charcot foot stage", "charcot joint staging", "neuropathic foot staging"],
+      "tile": "eichenholtz-charcot", "audience": "clinicians" }
   ]
 }
