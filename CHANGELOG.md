@@ -6,6 +6,21 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v379 — Tile classification (pelvic ring injury) tile, 1230 → 1231)
+
+- New `tile-pelvic` tile (group G): the Tile (AO/Tile) classification of a pelvic ring injury (types
+  A/B/C), by the mechanical stability of the posterior pelvic ring — the standard grouping that
+  stratifies pelvic-ring instability (and, with it, mortality); previously absent. The clinician picks the
+  type and the tile reports its description. **A:** stable, posterior ring intact. **B:** rotationally
+  unstable but vertically stable — incomplete posterior disruption (open-book or lateral-compression);
+  flagged. **C:** rotationally and vertically unstable — complete posterior disruption; flagged. A Tile
+  type, not a diagnosis, a treatment decision, or a prognosis ([spec-v11] §5.3); the rising-instability
+  gradient (A → C) is the classically taught pattern, not an order. Types transcribed (spec-v97) from Tile
+  1996 (JAAOS), cross-verified against orthopedic/trauma references; no citation-staleness row (the
+  citation carries no guideline-issuer acronym). New `lib/tile-pelvic-v379.js` + `views/group-v379.js`
+  (RV379); +1 META entry, +1 UTILITIES row, a synonym entry (v100 → v101), 5 unit tests + fuzz, corpus
+  rebuilt to 1231. See [docs/spec-v379.md](docs/spec-v379.md). The MCP adapter follows in a later wave.
+
 ### Added (spec-v378 — Delbet classification (pediatric femoral neck fracture) tile, 1229 → 1230)
 
 - New `delbet-femoral-neck` tile (group G): the Delbet (Delbet-Colonna) classification of a pediatric
