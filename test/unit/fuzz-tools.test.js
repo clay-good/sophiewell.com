@@ -361,6 +361,7 @@ import * as winquistHansenV381 from '../../lib/winquist-hansen-v381.js';
 import * as eichenholtzCharcotV382 from '../../lib/eichenholtz-charcot-v382.js';
 import * as risserSignV383 from '../../lib/risser-sign-v383.js';
 import * as spetzlerPonceV384 from '../../lib/spetzler-ponce-v384.js';
+import * as schwabEnglandV385 from '../../lib/schwab-england-v385.js';
 import * as tbTesting from '../../lib/tb-testing.js';
 
 const MODULES = {
@@ -667,6 +668,7 @@ const MODULES = {
   'eichenholtz-charcot-v382.js': eichenholtzCharcotV382,
   'risser-sign-v383.js': risserSignV383,
   'spetzler-ponce-v384.js': spetzlerPonceV384,
+  'schwab-england-v385.js': schwabEnglandV385,
   'tb-testing.js': tbTesting,
 };
 

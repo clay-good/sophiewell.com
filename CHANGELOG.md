@@ -6,6 +6,23 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v385 — Schwab & England ADL scale tile, 1236 → 1237)
+
+- New `schwab-england` tile (group G): the Schwab & England Activities of Daily Living (ADL) scale
+  (0-100%, in 10% steps) — the standard global measure of functional independence widely used in
+  Parkinson disease, the functional-ADL companion to the Hoehn-Yahr motor-staging tile; previously absent.
+  The clinician picks the level and the tile reports its functional-independence description. **100%:**
+  completely independent, normal. **80%:** independent in most chores, takes twice as long. **50%:** needs
+  help with half of chores. **20%:** nothing alone, severe invalid. **0%:** bedridden, vegetative
+  functions failing. A **functional-status descriptor, not pathology** — like the Karnofsky / ECOG scales
+  it flags no level as abnormal, and it is not a diagnosis, a treatment decision, or a prognosis
+  ([spec-v11] §5.3); the falling-independence ordering (100 → 0) is the scale's own, not an order. Levels
+  transcribed (spec-v97) from Schwab & England 1969, cross-verified across two look-ups and movement-
+  disorder references; no citation-staleness row (the citation carries no guideline-issuer acronym). New
+  `lib/schwab-england-v385.js` + `views/group-v385.js` (RV385); +1 META entry, +1 UTILITIES row, a synonym
+  entry (v106 → v107), 6 unit tests + fuzz, corpus rebuilt to 1237. See [docs/spec-v385.md](docs/spec-v385.md).
+  The MCP adapter follows in a later wave.
+
 ### Added (spec-v384 — Spetzler-Ponce classification (cerebral AVM) tile, 1235 → 1236)
 
 - New `spetzler-ponce` tile (group G): the Spetzler-Ponce 3-tier classification of a cerebral
