@@ -6,6 +6,22 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v373 — NI-RADS category (head & neck surveillance) tile, 1224 → 1225)
+
+- New `ni-rads` tile (group G): the NI-RADS (Neck Imaging Reporting and Data System) categories (1–4, with
+  2A/2B) — the ACR structured category for post-treatment surveillance imaging in head-and-neck cancer,
+  assigned separately to the primary site and the neck (nodes); previously absent. This is the ninth and
+  final member — the RADS family (BI/LI/PI/O/TI/Lung/C/CAD/NI-RADS) is now complete in the catalog. The
+  radiologist picks the category and the tile reports its description. **1** no recurrence (routine
+  surveillance). **2A** low suspicion, mucosal. **2B** low suspicion, deep. **3** high suspicion (biopsy
+  if indicated) — flagged. **4** definite recurrence — flagged. A NI-RADS category, not a diagnosis, a
+  management order, or a prognosis ([spec-v11] §5.3); it is for surveillance after definitive treatment.
+  Categories transcribed (spec-v97) from Aiken et al. 2018 (ACR NI-RADS white paper), cross-verified
+  against radiology references; no citation-staleness row (no ISSUER_PATTERN acronym). New
+  `lib/ni-rads-v373.js` + `views/group-v373.js` (RV373); +1 META entry, +1 UTILITIES row, a synonym entry
+  (v94 → v95), 5 unit tests + fuzz, corpus rebuilt to 1225. See [docs/spec-v373.md](docs/spec-v373.md).
+  The MCP adapter follows in a later wave.
+
 ### Added (spec-v372 — CAD-RADS 2.0 category (coronary CTA) tile, 1223 → 1224)
 
 - New `cad-rads` tile (group G): the CAD-RADS 2.0 coronary-CT-angiography categories (0–5, with 4A/4B) —
