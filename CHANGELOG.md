@@ -6,6 +6,23 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v377 — Gartland classification (supracondylar humerus fracture) tile, 1228 → 1229)
+
+- New `gartland-supracondylar` tile (group G): the Gartland classification of a pediatric extension-type
+  supracondylar humerus fracture (types I-III, plus the modified type IV) — the standard grading of the
+  most common pediatric elbow fracture, by displacement and the integrity of the cortical/periosteal
+  hinge; previously absent. The clinician picks the type and the tile reports its description. **I:**
+  nondisplaced, anterior humeral line through the capitellum (stable). **II:** displaced with an intact
+  posterior cortical hinge (Wilkins IIA stable / IIB malrotated) — flagged. **III:** completely displaced,
+  no cortical contact — flagged. **IV:** multidirectional instability, complete periosteal disruption
+  (modified, Leitch) — flagged. A Gartland type, not a diagnosis, a treatment decision, or a prognosis
+  ([spec-v11] §5.3); the rising-instability gradient (I → IV) is the classically taught pattern, not an
+  order. Types transcribed (spec-v97) from Gartland 1959 (+ Leitch 2006 type IV), cross-verified against
+  orthopedic references; no citation-staleness row (the citation carries no guideline-issuer acronym). New
+  `lib/gartland-supracondylar-v377.js` + `views/group-v377.js` (RV377); +1 META entry, +1 UTILITIES row, a
+  synonym entry (v98 → v99), 6 unit tests + fuzz, corpus rebuilt to 1229. See
+  [docs/spec-v377.md](docs/spec-v377.md). The MCP adapter follows in a later wave.
+
 ### Added (spec-v376 — Denis classification (sacral fracture) tile, 1227 → 1228)
 
 - New `denis-sacral` tile (group G): the Denis classification of a sacral fracture (zones I–III), by the
