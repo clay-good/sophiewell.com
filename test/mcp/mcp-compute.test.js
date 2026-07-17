@@ -3165,6 +3165,20 @@ test('lib/young-burgess-v380.js worked calls', () => {
   assert.match(ok('young-burgess', { 'yb-pattern': 'VS' }).band, /vertical shear/);
 });
 
+test('lib/winquist-hansen-v381.js worked calls', () => {
+  // Type III (the META example): large fragment, <50% cortical contact, flagged.
+  const three = ok('winquist-hansen', { 'wh-type': 'III' });
+  assert.equal(three.type, 'III');
+  assert.equal(three.unstable, true);
+  assert.match(three.band, /less than 50% cortical contact/);
+  // Type 0: no comminution, not flagged.
+  const zero = ok('winquist-hansen', { 'wh-type': '0' });
+  assert.equal(zero.unstable, false);
+  assert.match(zero.band, /no comminution/);
+  // Type IV: circumferential, no cortical contact.
+  assert.match(ok('winquist-hansen', { 'wh-type': 'IV' }).band, /no cortical contact/);
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];

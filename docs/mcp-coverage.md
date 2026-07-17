@@ -1502,6 +1502,16 @@ round-trip both pass, without the phantom "2". Adapter appended to the existing
 rate to a target PaCO2. Brings the exposed total to **1072 calculators across 197
 modules**.
 
+## Two-hundred-sixth wave — the Winquist-Hansen classification (femoral shaft fracture) in lib/winquist-hansen-v381.js (+1)
+
+`winquist-hansen` (spec-v381) applies the Winquist-Hansen classification of a femoral shaft fracture:
+given the type, it reports the comminution/cortical-contact description. `type` is an enum
+(`kind: 'enum'`, values 0/I/II/III/IV) — the single input the renderer exposes. The example sets type
+III; its expected text quotes the "50%" width/contact thresholds, which the band echoes, so it round-trips
+through the default `makeToArgs` with no custom toArgs. New adapter module registered in `mcp/catalog.js`;
+its golden probe ("femoral shaft comminution") is promoted now that the tile is in the MCP-exposed
+registry. Brings the exposed total to **1170 calculators across 286 modules**.
+
 ## Two-hundred-fifth wave — the Young-Burgess classification (pelvic ring injury) in lib/young-burgess-v380.js (+1)
 
 `young-burgess` (spec-v380) applies the Young-Burgess mechanism-based classification of a pelvic ring
@@ -4254,6 +4264,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/young-burgess-v380.js
 - `young-burgess`
+
+### lib/winquist-hansen-v381.js
+- `winquist-hansen`
 
 ### lib/tb-testing.js
 - `tb-testing`
