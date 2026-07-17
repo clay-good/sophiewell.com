@@ -1502,6 +1502,15 @@ round-trip both pass, without the phantom "2". Adapter appended to the existing
 rate to a target PaCO2. Brings the exposed total to **1072 calculators across 197
 modules**.
 
+## One-hundred-eighty-third wave — the Ramsay Sedation Scale in lib/ramsay-sedation-v358.js (+1)
+
+`ramsay-sedation` (spec-v358) applies the Ramsay Sedation Scale: given the level, it reports the
+awake/asleep state and the description. `level` is an enum (`kind: 'enum'`, values 1-6) — the single
+input the renderer exposes. The example sets level 2; its expected number (2) round-trips through the
+default `makeToArgs` with no custom toArgs. New adapter module registered in `mcp/catalog.js`; its golden
+probe ("ramsay sedation scale") is promoted now that the tile is in the MCP-exposed registry. Brings the
+exposed total to **1147 calculators across 263 modules**.
+
 ## One-hundred-eighty-second wave — the NYHA functional classification (heart failure) in lib/nyha-class-v357.js (+1)
 
 `nyha-class` (spec-v357) applies the NYHA functional classification of heart failure: given the class, it
@@ -3957,6 +3966,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/nyha-class-v357.js
 - `nyha-class`
+
+### lib/ramsay-sedation-v358.js
+- `ramsay-sedation`
 
 ### lib/tb-testing.js
 - `tb-testing`

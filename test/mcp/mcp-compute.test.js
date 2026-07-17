@@ -2876,6 +2876,21 @@ test('lib/nyha-class-v357.js worked calls', () => {
   assert.equal(ok('nyha-class', { 'nyha-class': 'IV' }).advanced, true);
 });
 
+test('lib/ramsay-sedation-v358.js worked calls', () => {
+  // Level 2 (the META example): cooperative, awake, not flagged.
+  const two = ok('ramsay-sedation', { 'ramsay-level': '2' });
+  assert.equal(two.level, 2);
+  assert.equal(two.state, 'awake');
+  assert.equal(two.outsideTarget, false);
+  assert.match(two.band, /cooperative, oriented, and tranquil/);
+  // Level 1: agitation, flagged.
+  assert.equal(ok('ramsay-sedation', { 'ramsay-level': '1' }).outsideTarget, true);
+  // Level 6: no response, asleep, flagged.
+  const six = ok('ramsay-sedation', { 'ramsay-level': '6' });
+  assert.equal(six.state, 'asleep');
+  assert.equal(six.outsideTarget, true);
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];
