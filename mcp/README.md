@@ -78,7 +78,7 @@ find_calculator { "query": "stroke risk afib" }
        candidates: [ { id: "chads", name: "CHA2DS2-VASc", why: "synonym", ... }, ... ] }
 
 list_calculators { "specialty": "hepatology" }
-  -> { coverage: "1168 of 1109 catalog tiles exposed ...", calculators: [ { id: "meld-xi", ... }, ... ] }
+  -> { coverage: "1169 of 1109 catalog tiles exposed ...", calculators: [ { id: "meld-xi", ... }, ... ] }
 
 describe_calculator { "id": "meld-xi" }
   -> { inputSchema: { ... mx-bili, mx-creat ... }, citation: "Heuman DM ... Liver Transpl 2007", ... }
@@ -413,8 +413,9 @@ in `lib/pipkin-femoral-head-v375.js`, and a two-hundred-first the Denis classifi
 in `lib/denis-sacral-v376.js`, and a two-hundred-second the Gartland classification (supracondylar
 humerus fracture) in `lib/gartland-supracondylar-v377.js`, and a two-hundred-third the Delbet
 classification (pediatric femoral neck fracture) in `lib/delbet-femoral-neck-v378.js`, and a
-two-hundred-fourth the Tile classification (pelvic ring injury) in `lib/tile-pelvic-v379.js`, for 1168
-across 284 modules
+two-hundred-fourth the Tile classification (pelvic ring injury) in `lib/tile-pelvic-v379.js`, and a
+two-hundred-fifth the Young-Burgess classification (pelvic ring injury) in `lib/young-burgess-v380.js`,
+for 1169 across 285 modules
 today. <!-- catalog-truth:historical (197 is the count of lib modules adapted, not a catalog tile count) -->
 Later waves extend it module by module against the same contract.
 

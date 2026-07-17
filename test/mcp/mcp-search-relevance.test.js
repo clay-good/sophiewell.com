@@ -342,6 +342,8 @@ const PROBES = [
   ['pediatric femoral neck fracture', ['delbet-femoral-neck']],
   // spec-v379 tile, exposed to MCP in wave 204: Tile classification (pelvic ring injury).
   ['pelvic ring fracture stability', ['tile-pelvic']],
+  // spec-v380 tile, exposed to MCP in wave 205: Young-Burgess classification (pelvic ring injury).
+  ['pelvic ring injury mechanism', ['young-burgess']],
 ];
 
 test(`every golden probe routes an acceptable tile into the top ${TOP_N}`, () => {

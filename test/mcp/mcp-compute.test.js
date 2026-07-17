@@ -3151,6 +3151,20 @@ test('lib/tile-pelvic-v379.js worked calls', () => {
   assert.match(ok('tile-pelvic', { 'tile-type': 'B' }).band, /rotationally unstable but vertically stable/);
 });
 
+test('lib/young-burgess-v380.js worked calls', () => {
+  // APC-III (the META example): complete SI disruption, unstable, flagged.
+  const apc3 = ok('young-burgess', { 'yb-pattern': 'APC-III' });
+  assert.equal(apc3.pattern, 'APC-III');
+  assert.equal(apc3.unstable, true);
+  assert.match(apc3.band, /complete sacroiliac disruption/);
+  // LC-I: stable, not flagged.
+  const lc1 = ok('young-burgess', { 'yb-pattern': 'LC-I' });
+  assert.equal(lc1.unstable, false);
+  assert.match(lc1.band, /sacral \(ala\) compression/);
+  // VS: vertical shear, unstable.
+  assert.match(ok('young-burgess', { 'yb-pattern': 'VS' }).band, /vertical shear/);
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];

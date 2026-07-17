@@ -1502,6 +1502,17 @@ round-trip both pass, without the phantom "2". Adapter appended to the existing
 rate to a target PaCO2. Brings the exposed total to **1072 calculators across 197
 modules**.
 
+## Two-hundred-fifth wave — the Young-Burgess classification (pelvic ring injury) in lib/young-burgess-v380.js (+1)
+
+`young-burgess` (spec-v380) applies the Young-Burgess mechanism-based classification of a pelvic ring
+injury: given the pattern, it reports the mechanism/stability description. `pattern` is an enum
+(`kind: 'enum'`, values LC-I..LC-III / APC-I..APC-III / VS / CM) — the single input the renderer exposes.
+The example sets APC-III; its expected text is the pattern description (no free numeric facts to
+round-trip), so it flows through the default `makeToArgs` with no custom toArgs. New adapter module
+registered in `mcp/catalog.js`; its golden probe ("pelvic ring injury mechanism") is promoted now that
+the tile is in the MCP-exposed registry. Brings the exposed total to **1169 calculators across 285
+modules**.
+
 ## Two-hundred-fourth wave — the Tile classification (pelvic ring injury) in lib/tile-pelvic-v379.js (+1)
 
 `tile-pelvic` (spec-v379) applies the Tile (AO/Tile) classification of a pelvic ring injury: given the
@@ -4240,6 +4251,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/tile-pelvic-v379.js
 - `tile-pelvic`
+
+### lib/young-burgess-v380.js
+- `young-burgess`
 
 ### lib/tb-testing.js
 - `tb-testing`
