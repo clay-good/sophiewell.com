@@ -3334,6 +3334,17 @@ test('lib/hill-flap-valve-v392.js worked calls', () => {
   assert.match(ok('hill-flap-valve', { 'hill-grade': 'IV' }).band, /no ridge/);
 });
 
+test('lib/lauren-gastric-v393.js worked calls', () => {
+  // Diffuse (the META example): poorly cohesive, signet-ring.
+  const d = ok('lauren-gastric', { 'lauren-type': 'diffuse' });
+  assert.equal(d.type, 'diffuse');
+  assert.match(d.band, /poorly cohesive cells/);
+  // Intestinal: glandular.
+  assert.match(ok('lauren-gastric', { 'lauren-type': 'intestinal' }).band, /glandular \/ tubular/);
+  // Mixed: both.
+  assert.equal(ok('lauren-gastric', { 'lauren-type': 'mixed' }).type, 'mixed');
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];

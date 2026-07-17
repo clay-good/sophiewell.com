@@ -1502,6 +1502,16 @@ round-trip both pass, without the phantom "2". Adapter appended to the existing
 rate to a target PaCO2. Brings the exposed total to **1072 calculators across 197
 modules**.
 
+## Two-hundred-eighteenth wave — the Lauren classification (gastric cancer) in lib/lauren-gastric-v393.js (+1)
+
+`lauren-gastric` (spec-v393) applies the Lauren classification of gastric carcinoma: given the type, it
+reports the histological description. `type` is an enum (`kind: 'enum'`, values intestinal/diffuse/mixed)
+— the single input the renderer exposes. The example sets diffuse; its expected text is the type
+description (no numeric facts to round-trip), so it flows through the default `makeToArgs` with no custom
+toArgs. New adapter module registered in `mcp/catalog.js`; its golden probe ("gastric cancer histology
+type") is promoted now that the tile is in the MCP-exposed registry. Brings the exposed total to **1182
+calculators across 298 modules**.
+
 ## Two-hundred-seventeenth wave — the Hill classification (GE flap valve) in lib/hill-flap-valve-v392.js (+1)
 
 `hill-flap-valve` (spec-v392) applies the Hill classification of the gastroesophageal flap valve: given
@@ -4412,6 +4422,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/hill-flap-valve-v392.js
 - `hill-flap-valve`
+
+### lib/lauren-gastric-v393.js
+- `lauren-gastric`
 
 ### lib/tb-testing.js
 - `tb-testing`

@@ -78,7 +78,7 @@ find_calculator { "query": "stroke risk afib" }
        candidates: [ { id: "chads", name: "CHA2DS2-VASc", why: "synonym", ... }, ... ] }
 
 list_calculators { "specialty": "hepatology" }
-  -> { coverage: "1181 of 1109 catalog tiles exposed ...", calculators: [ { id: "meld-xi", ... }, ... ] }
+  -> { coverage: "1182 of 1109 catalog tiles exposed ...", calculators: [ { id: "meld-xi", ... }, ... ] }
 
 describe_calculator { "id": "meld-xi" }
   -> { inputSchema: { ... mx-bili, mx-creat ... }, citation: "Heuman DM ... Liver Transpl 2007", ... }
@@ -427,7 +427,8 @@ maturity) in `lib/risser-sign-v383.js`, and a two-hundred-ninth the Spetzler-Pon
 `lib/koos-schwannoma-v389.js`, and a two-hundred-fifteenth the Knosp grade (pituitary adenoma) in
 `lib/knosp-adenoma-v390.js`, and a two-hundred-sixteenth the Hardy classification (pituitary adenoma) in
 `lib/hardy-adenoma-v391.js`, and a two-hundred-seventeenth the Hill classification (GE flap valve) in
-`lib/hill-flap-valve-v392.js`, for 1181 across 297 modules
+`lib/hill-flap-valve-v392.js`, and a two-hundred-eighteenth the Lauren classification (gastric cancer) in
+`lib/lauren-gastric-v393.js`, for 1182 across 298 modules
 today. <!-- catalog-truth:historical (197 is the count of lib modules adapted, not a catalog tile count) -->
 Later waves extend it module by module against the same contract.
 

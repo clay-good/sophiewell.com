@@ -368,6 +368,8 @@ const PROBES = [
   ['pituitary adenoma sellar grade', ['hardy-adenoma']],
   // spec-v392 tile, exposed to MCP in wave 217: Hill classification (GE flap valve).
   ['gastroesophageal flap valve', ['hill-flap-valve']],
+  // spec-v393 tile, exposed to MCP in wave 218: Lauren classification (gastric cancer).
+  ['gastric cancer histology type', ['lauren-gastric']],
 ];
 
 test(`every golden probe routes an acceptable tile into the top ${TOP_N}`, () => {
