@@ -6,6 +6,22 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v375 — Pipkin classification (femoral head fracture) tile, 1226 → 1227)
+
+- New `pipkin-femoral-head` tile (group G): the Pipkin classification of a femoral HEAD fracture (types
+  I–IV) — a distinct hip-trauma pattern (typically with a posterior hip dislocation), sitting beside the
+  femoral-neck (Garden, Pauwels) and hip-dysplasia (Crowe, Hartofilakidis) classifications; previously
+  absent. The clinician picks the type and the tile reports its description. **I:** below the fovea
+  centralis (spares the weight-bearing surface). **II:** above the fovea (involves it). **III:** type I/II
+  + an associated femoral neck fracture — flagged. **IV:** type I/II + an associated acetabular fracture —
+  flagged. A Pipkin type, not a diagnosis, a treatment decision, or a prognosis ([spec-v11] §5.3); the
+  worse-outcome-with-higher-type association (III/IV vs I/II) is the classically taught pattern, not an
+  order. Types transcribed (spec-v97) from Pipkin 1957 (JBJS Am), cross-verified against CORR
+  "Classifications in Brief"; no citation-staleness row (the citation carries no guideline-issuer
+  acronym). New `lib/pipkin-femoral-head-v375.js` + `views/group-v375.js` (RV375); +1 META entry, +1
+  UTILITIES row, a synonym entry (v96 → v97), 5 unit tests + fuzz, corpus rebuilt to 1227. See
+  [docs/spec-v375.md](docs/spec-v375.md). The MCP adapter follows in a later wave.
+
 ### Added (spec-v374 — Pauwels classification (femoral neck fracture) tile, 1225 → 1226)
 
 - New `pauwels-femoral-neck` tile (group G): the Pauwels classification of a femoral neck fracture (types
