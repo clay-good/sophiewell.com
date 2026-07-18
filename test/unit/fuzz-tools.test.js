@@ -391,6 +391,7 @@ import * as levineEdwardsV411 from '../../lib/levine-edwards-v411.js';
 import * as lisfrancMyersonV412 from '../../lib/lisfranc-myerson-v412.js';
 import * as seinsheimerSubtrochV413 from '../../lib/seinsheimer-subtroch-v413.js';
 import * as mayfieldPerilunateV414 from '../../lib/mayfield-perilunate-v414.js';
+import * as geisslerCarpalV415 from '../../lib/geissler-carpal-v415.js';
 import * as tbTesting from '../../lib/tb-testing.js';
 
 const MODULES = {
@@ -727,6 +728,7 @@ const MODULES = {
   'lisfranc-myerson-v412.js': lisfrancMyersonV412,
   'seinsheimer-subtroch-v413.js': seinsheimerSubtrochV413,
   'mayfield-perilunate-v414.js': mayfieldPerilunateV414,
+  'geissler-carpal-v415.js': geisslerCarpalV415,
   'tb-testing.js': tbTesting,
 };
 

@@ -6,6 +6,22 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v415 — Geissler classification (carpal ligament injury) tile, 1266 → 1267)
+
+- New `geissler-carpal` tile (group G): the Geissler arthroscopic classification of interosseous
+  (scapholunate / lunotriquetral) carpal-ligament injury (grades I/II/III/IV) — the arthroscopic companion to
+  the `mayfield-perilunate` radiographic staging; previously absent. The clinician picks the grade and the
+  tile reports its arthroscopic-appearance description. **I:** attenuation/hemorrhage seen from the
+  radiocarpal joint; midcarpal alignment still congruent. **II:** added midcarpal incongruency/step-off; no
+  probe passage. **III:** incongruency from both the radiocarpal and midcarpal spaces; a probe passes the
+  interval. **IV:** gross instability; a 2.7 mm arthroscope passes (the drive-through sign). A Geissler grade,
+  not a diagnosis, a treatment decision, or a prognosis ([spec-v11] §5.3); the management decision stays with
+  the hand / orthopedic team. Grades transcribed (spec-v97) from Geissler 1996, cross-verified against
+  hand-surgery / radiology references; no citation-staleness row (the citation carries no guideline-issuer
+  acronym). New `lib/geissler-carpal-v415.js` + `views/group-v415.js` (RV415); +1 META entry, +1 UTILITIES
+  row, a synonym entry (v136 → v137), 6 unit tests + fuzz, corpus rebuilt to 1267. See
+  [docs/spec-v415.md](docs/spec-v415.md). The MCP adapter follows in a later wave.
+
 ### Added (spec-v414 — Mayfield classification (perilunate instability) tile, 1265 → 1266)
 
 - New `mayfield-perilunate` tile (group G): the Mayfield classification of progressive perilunar (perilunate)
