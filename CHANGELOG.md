@@ -6,6 +6,24 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v413 — Seinsheimer classification (subtrochanteric femur fracture) tile, 1264 → 1265)
+
+- New `seinsheimer-subtroch` tile (group G): the Seinsheimer classification of subtrochanteric femur
+  fractures (types I/IIA/IIB/IIC/IIIA/IIIB/IV/V), by fragment count, fracture-line shape, and
+  lesser-trochanter attachment — completing the femur-by-region cluster (`pauwels-femoral-neck` neck,
+  `winquist-hansen` shaft, `pipkin-femoral-head` head, `delbet-femoral-neck` pediatric neck); previously absent.
+  The clinician picks the type and the tile reports its fragment/fracture-line description. **I:**
+  nondisplaced (<2 mm). **IIA:** two-part transverse. **IIB/IIC:** two-part spiral, lesser trochanter on the
+  proximal / distal fragment. **IIIA:** three-part spiral, lesser trochanter in the third fragment. **IIIB:**
+  three-part spiral with a butterfly fragment. **IV:** comminuted (four or more fragments). **V:**
+  subtrochanteric-intertrochanteric. A Seinsheimer type, not a diagnosis, a treatment decision, or a
+  prognosis ([spec-v11] §5.3); the fixation decision stays with the orthopedic team. Types transcribed
+  (spec-v97) from Seinsheimer 1978, cross-verified against Wheeless' Textbook of Orthopaedics; no
+  citation-staleness row (the citation carries no guideline-issuer acronym). New
+  `lib/seinsheimer-subtroch-v413.js` + `views/group-v413.js` (RV413); +1 META entry, +1 UTILITIES row, a
+  synonym entry (v134 → v135), 7 unit tests + fuzz, corpus rebuilt to 1265. See
+  [docs/spec-v413.md](docs/spec-v413.md). The MCP adapter follows in a later wave.
+
 ### Added (spec-v412 — Myerson classification (Lisfranc injury) tile, 1263 → 1264)
 
 - New `lisfranc-myerson` tile (group G): the Myerson classification (a modification of the Hardcastle /
