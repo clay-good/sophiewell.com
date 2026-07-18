@@ -418,6 +418,8 @@ const PROBES = [
   ['scaphoid fracture classification', ['russe-scaphoid']],
   // spec-v417 tile, exposed to MCP in wave 242: Wassel classification (thumb polydactyly).
   ['thumb polydactyly', ['wassel-thumb']],
+  // spec-v418 tile, exposed to MCP in wave 243: Milch classification (lateral condyle fracture).
+  ['lateral condyle fracture', ['milch-condyle']],
 ];
 
 test(`every golden probe routes an acceptable tile into the top ${TOP_N}`, () => {

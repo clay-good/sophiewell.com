@@ -3620,6 +3620,15 @@ test('lib/wassel-thumb-v417.js worked calls', () => {
   assert.match(ok('wassel-thumb', { 'wa-type': 'VII' }).band, /triphalangeal thumb/);
 });
 
+test('lib/milch-condyle-v418.js worked calls', () => {
+  // Type I (the META example): lateral to the groove, stable.
+  const one = ok('milch-condyle', { 'mi-type': 'I' });
+  assert.equal(one.type, 'I');
+  assert.match(one.band, /lateral to the trochlear groove and does not reach it/);
+  // Type II: into the groove, unstable.
+  assert.match(ok('milch-condyle', { 'mi-type': 'II' }).band, /the elbow becomes unstable/);
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];

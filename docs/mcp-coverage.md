@@ -1502,6 +1502,18 @@ round-trip both pass, without the phantom "2". Adapter appended to the existing
 rate to a target PaCO2. Brings the exposed total to **1072 calculators across 197
 modules**.
 
+## Two-hundred-forty-third wave — the Milch classification (lateral condyle fracture) in lib/milch-condyle-v418.js (+1)
+
+`milch-condyle` (spec-v418) applies the Milch classification of a lateral humeral condyle fracture: given the
+type, it reports the groove/stability description. `type` is an enum (`kind: 'enum'`, values I/II) — the
+single input the renderer exposes. The example sets type I; its expected text carries no numeric facts (the
+description is word-only), so it flows through the default `makeToArgs` with no custom toArgs. New adapter
+module registered in `mcp/catalog.js`; its golden probe ("lateral condyle fracture") is promoted now that the
+tile is in the MCP-exposed registry. Brings the exposed total to **1207 calculators across 323 modules**.
+
+### lib/milch-condyle-v418.js
+- `milch-condyle`
+
 ## Two-hundred-forty-second wave — the Wassel classification (thumb polydactyly) in lib/wassel-thumb-v417.js (+1)
 
 `wassel-thumb` (spec-v417) applies the Wassel classification of thumb polydactyly: given the type, it reports
@@ -4754,6 +4766,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/wassel-thumb-v417.js
 - `wassel-thumb`
+
+### lib/milch-condyle-v418.js
+- `milch-condyle`
 
 ### lib/tb-testing.js
 - `tb-testing`
