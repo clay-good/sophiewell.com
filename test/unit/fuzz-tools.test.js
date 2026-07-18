@@ -390,6 +390,7 @@ import * as andersonDalonzoV410 from '../../lib/anderson-dalonzo-v410.js';
 import * as levineEdwardsV411 from '../../lib/levine-edwards-v411.js';
 import * as lisfrancMyersonV412 from '../../lib/lisfranc-myerson-v412.js';
 import * as seinsheimerSubtrochV413 from '../../lib/seinsheimer-subtroch-v413.js';
+import * as mayfieldPerilunateV414 from '../../lib/mayfield-perilunate-v414.js';
 import * as tbTesting from '../../lib/tb-testing.js';
 
 const MODULES = {
@@ -725,6 +726,7 @@ const MODULES = {
   'levine-edwards-v411.js': levineEdwardsV411,
   'lisfranc-myerson-v412.js': lisfrancMyersonV412,
   'seinsheimer-subtroch-v413.js': seinsheimerSubtrochV413,
+  'mayfield-perilunate-v414.js': mayfieldPerilunateV414,
   'tb-testing.js': tbTesting,
 };
 

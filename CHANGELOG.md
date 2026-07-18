@@ -6,6 +6,23 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v414 — Mayfield classification (perilunate instability) tile, 1265 → 1266)
+
+- New `mayfield-perilunate` tile (group G): the Mayfield classification of progressive perilunar (perilunate)
+  instability (stages I/II/III/IV), staging a carpal ligamentous injury by how far the disruption has
+  progressed around the lunate; previously absent. The clinician picks the stage and the tile reports its
+  ligament-disruption description. **I:** scapholunate dissociation (scapholunate ligament; Terry-Thomas
+  sign). **II:** perilunate dislocation (capitolunate joint; the lunate stays with the radius while the
+  carpus dislocates). **III:** midcarpal dislocation (lunotriquetral ligament; the triquetrum separates).
+  **IV:** lunate dislocation (dorsal radiocarpal ligament; the lunate is extruded volarly while the capitate
+  realigns). Each stage adds the prior disruptions. A Mayfield stage, not a diagnosis, a treatment decision,
+  or a prognosis ([spec-v11] §5.3); the reduction / fixation decision stays with the hand / orthopedic team.
+  Stages transcribed (spec-v97) from Mayfield 1980, cross-verified against Radiopaedia and hand-surgery
+  references; no citation-staleness row (the citation carries no guideline-issuer acronym). New
+  `lib/mayfield-perilunate-v414.js` + `views/group-v414.js` (RV414); +1 META entry, +1 UTILITIES row, a
+  synonym entry (v135 → v136), 6 unit tests + fuzz, corpus rebuilt to 1266. See
+  [docs/spec-v414.md](docs/spec-v414.md). The MCP adapter follows in a later wave.
+
 ### Added (spec-v413 — Seinsheimer classification (subtrochanteric femur fracture) tile, 1264 → 1265)
 
 - New `seinsheimer-subtroch` tile (group G): the Seinsheimer classification of subtrochanteric femur
