@@ -329,6 +329,7 @@ import seinsheimerSubtrochV413 from './adapters/seinsheimer-subtroch-v413.js';
 import mayfieldPerilunateV414 from './adapters/mayfield-perilunate-v414.js';
 import geisslerCarpalV415 from './adapters/geissler-carpal-v415.js';
 import russeScaphoidV416 from './adapters/russe-scaphoid-v416.js';
+import wasselThumbV417 from './adapters/wassel-thumb-v417.js';
 import tbTesting from './adapters/tb-testing.js';
 import labInterpret from './adapters/lab-interpret.js';
 import decisionRulesV258 from './adapters/decision-rules-v258.js';
@@ -652,6 +653,7 @@ const ADAPTER_MODULES = [
   ['mayfield-perilunate-v414', mayfieldPerilunateV414],
   ['geissler-carpal-v415', geisslerCarpalV415],
   ['russe-scaphoid-v416', russeScaphoidV416],
+  ['wassel-thumb-v417', wasselThumbV417],
   ['tb-testing', tbTesting],
   ['lab-interpret', labInterpret],
   ['decision-rules-v258', decisionRulesV258],

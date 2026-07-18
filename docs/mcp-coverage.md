@@ -1502,6 +1502,18 @@ round-trip both pass, without the phantom "2". Adapter appended to the existing
 rate to a target PaCO2. Brings the exposed total to **1072 calculators across 197
 modules**.
 
+## Two-hundred-forty-second wave — the Wassel classification (thumb polydactyly) in lib/wassel-thumb-v417.js (+1)
+
+`wassel-thumb` (spec-v417) applies the Wassel classification of thumb polydactyly: given the type, it reports
+the duplication-level description. `type` is an enum (`kind: 'enum'`, values I..VII) — the single input the
+renderer exposes. The example sets type IV; its expected text carries no numeric facts (the description is
+word-only), so it flows through the default `makeToArgs` with no custom toArgs. New adapter module registered
+in `mcp/catalog.js`; its golden probe ("thumb polydactyly") is promoted now that the tile is in the
+MCP-exposed registry. Brings the exposed total to **1206 calculators across 322 modules**.
+
+### lib/wassel-thumb-v417.js
+- `wassel-thumb`
+
 ## Two-hundred-forty-first wave — the Russe classification (scaphoid fracture) in lib/russe-scaphoid-v416.js (+1)
 
 `russe-scaphoid` (spec-v416) applies the Russe classification of a scaphoid fracture: given the fracture-line
@@ -4739,6 +4751,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/russe-scaphoid-v416.js
 - `russe-scaphoid`
+
+### lib/wassel-thumb-v417.js
+- `wassel-thumb`
 
 ### lib/tb-testing.js
 - `tb-testing`

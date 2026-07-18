@@ -3609,6 +3609,17 @@ test('lib/russe-scaphoid-v416.js worked calls', () => {
   assert.match(ok('russe-scaphoid', { 'ru-type': 'vertical oblique' }).band, /least stable/);
 });
 
+test('lib/wassel-thumb-v417.js worked calls', () => {
+  // Type IV (the META example): duplicated proximal phalanx, most common.
+  const iv = ok('wassel-thumb', { 'wa-type': 'IV' });
+  assert.equal(iv.type, 'IV');
+  assert.match(iv.band, /duplicated proximal phalanx/);
+  // Type I: bifid distal phalanx.
+  assert.match(ok('wassel-thumb', { 'wa-type': 'I' }).band, /bifid distal phalanx/);
+  // Type VII: triphalangeal.
+  assert.match(ok('wassel-thumb', { 'wa-type': 'VII' }).band, /triphalangeal thumb/);
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];
