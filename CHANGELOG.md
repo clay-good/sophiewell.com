@@ -6,6 +6,22 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v411 — Levine-Edwards classification (hangman's fracture) tile, 1262 → 1263)
+
+- New `levine-edwards` tile (group G): the Levine-Edwards classification of a traumatic spondylolisthesis of
+  the axis (a hangman's fracture — bilateral C2 pars/pedicle fracture) (types I/II/IIa/III), by translation
+  and angulation — the C2 companion to the `anderson-dalonzo` odontoid classification; previously absent. The
+  clinician picks the type and the tile reports its displacement/angulation description. **I:** <3 mm
+  translation, no angulation (stable). **II:** >3 mm translation with angulation (unstable). **IIa:** minimal
+  translation but severe angulation (flexion — traction contraindicated). **III:** type I plus bilateral
+  C2-C3 facet dislocation. A Levine-Edwards type, not a diagnosis, a treatment decision, or a prognosis
+  ([spec-v11] §5.3); type IIa is the classic "do-not-apply-traction" pattern. Types transcribed (spec-v97)
+  from Levine-Edwards 1985, cross-verified against spine / radiology references; no citation-staleness row
+  (the citation carries no guideline-issuer acronym). New `lib/levine-edwards-v411.js` +
+  `views/group-v411.js` (RV411); +1 META entry, +1 UTILITIES row, a synonym entry (v132 → v133), 5 unit
+  tests + fuzz, corpus rebuilt to 1263. See [docs/spec-v411.md](docs/spec-v411.md). The MCP adapter follows
+  in a later wave.
+
 ### Added (spec-v410 — Anderson-D'Alonzo classification (odontoid fracture) tile, 1261 → 1262)
 
 - New `anderson-dalonzo` tile (group G): the Anderson-D'Alonzo classification of an odontoid (dens) fracture
