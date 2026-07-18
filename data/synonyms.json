@@ -1,5 +1,5 @@
 {
-  "version": "v131-2026-07-17",
+  "version": "v132-2026-07-17",
   "note": "spec-v7 section 3.2: hand-curated patient-phrasing -> tile id table. Each entry maps patient-mental-model phrases (and, from the v8/v9 plain-language-search batches, clinical abbreviations, eponym aliases, and canonical-intent phrases) to a single existing tile. Audience is the primary audience the entry serves; the matcher deprioritizes (does not hide) entries when the user has selected a different chip. Every phrase is lowercase; every tile id is an existing catalog tile (guarded by test/unit/synonyms-catalog.test.js). Adding a new phrase is a one-line PR.",
   "entries": [
     { "phrases": ["denied", "denial letter", "they denied it", "insurance said no", "appeal", "write an appeal", "appeal my claim", "appeal letter", "appeal a denial"],
@@ -406,6 +406,8 @@
     { "phrases": ["meyers mckeever", "meyers mckeever classification", "tibial eminence fracture", "tibial spine fracture", "tibial spine avulsion", "intercondylar eminence fracture", "acl avulsion fracture", "tibial eminence classification"],
       "tile": "meyers-mckeever", "audience": "clinicians" },
     { "phrases": ["ideberg", "ideberg classification", "glenoid fracture", "glenoid fossa fracture", "glenoid fracture classification", "scapula glenoid fracture", "intra articular glenoid fracture", "ideberg type"],
-      "tile": "ideberg-glenoid", "audience": "clinicians" }
+      "tile": "ideberg-glenoid", "audience": "clinicians" },
+    { "phrases": ["anderson dalonzo", "anderson dalonzo classification", "odontoid fracture", "dens fracture", "odontoid fracture classification", "odontoid process fracture", "c2 dens fracture", "odontoid fracture type"],
+      "tile": "anderson-dalonzo", "audience": "clinicians" }
   ]
 }

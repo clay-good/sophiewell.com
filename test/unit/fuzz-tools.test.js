@@ -386,6 +386,7 @@ import * as leFortV406 from '../../lib/le-fort-v406.js';
 import * as steinbergAvnV407 from '../../lib/steinberg-avn-v407.js';
 import * as meyersMckeeverV408 from '../../lib/meyers-mckeever-v408.js';
 import * as idebergGlenoidV409 from '../../lib/ideberg-glenoid-v409.js';
+import * as andersonDalonzoV410 from '../../lib/anderson-dalonzo-v410.js';
 import * as tbTesting from '../../lib/tb-testing.js';
 
 const MODULES = {
@@ -717,6 +718,7 @@ const MODULES = {
   'steinberg-avn-v407.js': steinbergAvnV407,
   'meyers-mckeever-v408.js': meyersMckeeverV408,
   'ideberg-glenoid-v409.js': idebergGlenoidV409,
+  'anderson-dalonzo-v410.js': andersonDalonzoV410,
   'tb-testing.js': tbTesting,
 };
 

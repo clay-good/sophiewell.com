@@ -6,6 +6,21 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v410 — Anderson-D'Alonzo classification (odontoid fracture) tile, 1261 → 1262)
+
+- New `anderson-dalonzo` tile (group G): the Anderson-D'Alonzo classification of an odontoid (dens) fracture
+  of C2 (types I/II/III), by the level of the fracture line — one of the most common and most-classified
+  cervical-spine injuries, previously absent. The clinician picks the type and the tile reports its level
+  description. **I:** through the tip, above the transverse ligament (rare, usually stable). **II:** through
+  the base / neck of the dens (most common, highest non-union risk). **III:** extending into the C2 body
+  (usually heals with immobilization). An Anderson-D'Alonzo type, not a diagnosis, a treatment decision, or
+  a prognosis ([spec-v11] §5.3); type II is classically the most prone to non-union. Types transcribed
+  (spec-v97) from Anderson-D'Alonzo 1974, cross-verified against spine / radiology references; no citation-
+  staleness row (the citation carries no guideline-issuer acronym). New `lib/anderson-dalonzo-v410.js` +
+  `views/group-v410.js` (RV410); +1 META entry, +1 UTILITIES row, a synonym entry (v131 → v132), 5 unit
+  tests + fuzz, corpus rebuilt to 1262. See [docs/spec-v410.md](docs/spec-v410.md). The MCP adapter follows
+  in a later wave.
+
 ### Added (spec-v409 — Ideberg classification (glenoid fossa fracture) tile, 1260 → 1261)
 
 - New `ideberg-glenoid` tile (group G): the Ideberg classification of an intra-articular glenoid-fossa
