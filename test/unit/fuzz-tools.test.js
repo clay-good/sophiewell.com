@@ -397,6 +397,7 @@ import * as wasselThumbV417 from '../../lib/wassel-thumb-v417.js';
 import * as milchCondyleV418 from '../../lib/milch-condyle-v418.js';
 import * as cottonMyerV419 from '../../lib/cotton-myer-v419.js';
 import * as friedmanTongueV420 from '../../lib/friedman-tongue-v420.js';
+import * as sunAcCellV421 from '../../lib/sun-ac-cell-v421.js';
 import * as tbTesting from '../../lib/tb-testing.js';
 
 const MODULES = {
@@ -739,6 +740,7 @@ const MODULES = {
   'milch-condyle-v418.js': milchCondyleV418,
   'cotton-myer-v419.js': cottonMyerV419,
   'friedman-tongue-v420.js': friedmanTongueV420,
+  'sun-ac-cell-v421.js': sunAcCellV421,
   'tb-testing.js': tbTesting,
 };
 

@@ -6,6 +6,22 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v421 — SUN anterior chamber cell grade (uveitis) tile, 1272 → 1273)
+
+- New `sun-ac-cell` tile (group G): the SUN (Standardization of Uveitis Nomenclature) anterior chamber cell
+  grade, the grading of anterior-chamber inflammatory cells by the number counted in a 1 mm by 1 mm slit-lamp
+  beam field (grades 0/0.5+/1+/2+/3+/4+), used to record anterior-chamber inflammation in uveitis; previously
+  absent. The clinician picks the grade and the tile reports its defining cell-count range. **0:** less than 1
+  cell. **0.5+:** 1 to 5. **1+:** 6 to 15. **2+:** 16 to 25. **3+:** 26 to 50. **4+:** more than 50. A cell
+  grade, not a diagnosis, a treatment decision, or a prognosis ([spec-v11] §5.3); it grades cells (inflammatory
+  activity), a separate scale from anterior chamber flare, and the management decision stays with the
+  ophthalmology team. Grades transcribed (spec-v97) from the SUN Working Group First International
+  Workshop (Jabs 2005, Am J Ophthalmol), cross-verified against ophthalmology / uveitis references; no
+  citation-staleness row (the citation carries no guideline-issuer acronym). New `lib/sun-ac-cell-v421.js` +
+  `views/group-v421.js` (RV421); +1 META entry, +1 UTILITIES row, a synonym entry (v142 → v143), 7 unit tests
+  + fuzz, corpus rebuilt to 1273. See [docs/spec-v421.md](docs/spec-v421.md). The MCP adapter follows in a
+  later wave.
+
 ### Added (spec-v420 — Friedman tongue position (OSA staging) tile, 1271 → 1272)
 
 - New `friedman-tongue` tile (group G): the Friedman tongue position (FTP), the anatomical grade of what the
