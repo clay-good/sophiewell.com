@@ -6,6 +6,22 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v416 — Russe classification (scaphoid fracture) tile, 1267 → 1268)
+
+- New `russe-scaphoid` tile (group G): the Russe classification of scaphoid (carpal navicular) fractures by
+  the orientation of the fracture line relative to the scaphoid long axis — horizontal oblique / transverse /
+  vertical oblique — which sets whether compressive or shear forces predominate across it; previously absent.
+  The clinician picks the orientation and the tile reports its stability description. **Horizontal oblique:**
+  compressive forces predominate (most stable). **Transverse:** both compressive and shear forces
+  (intermediate). **Vertical oblique:** shear forces predominate (least stable). A Russe type, not a
+  diagnosis, a treatment decision, or a prognosis ([spec-v11] §5.3); the stability is intrinsic to the
+  pattern (a classically taught association) and the cast-vs-fixation decision stays with the hand /
+  orthopedic team. Types transcribed (spec-v97) from Russe 1960, cross-verified against hand-surgery /
+  radiology references; no citation-staleness row (the citation carries no guideline-issuer acronym). New
+  `lib/russe-scaphoid-v416.js` + `views/group-v416.js` (RV416); +1 META entry, +1 UTILITIES row, a synonym
+  entry (v137 → v138), 5 unit tests + fuzz, corpus rebuilt to 1268. See [docs/spec-v416.md](docs/spec-v416.md).
+  The MCP adapter follows in a later wave.
+
 ### Added (spec-v415 — Geissler classification (carpal ligament injury) tile, 1266 → 1267)
 
 - New `geissler-carpal` tile (group G): the Geissler arthroscopic classification of interosseous

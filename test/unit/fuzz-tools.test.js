@@ -392,6 +392,7 @@ import * as lisfrancMyersonV412 from '../../lib/lisfranc-myerson-v412.js';
 import * as seinsheimerSubtrochV413 from '../../lib/seinsheimer-subtroch-v413.js';
 import * as mayfieldPerilunateV414 from '../../lib/mayfield-perilunate-v414.js';
 import * as geisslerCarpalV415 from '../../lib/geissler-carpal-v415.js';
+import * as russeScaphoidV416 from '../../lib/russe-scaphoid-v416.js';
 import * as tbTesting from '../../lib/tb-testing.js';
 
 const MODULES = {
@@ -729,6 +730,7 @@ const MODULES = {
   'seinsheimer-subtroch-v413.js': seinsheimerSubtrochV413,
   'mayfield-perilunate-v414.js': mayfieldPerilunateV414,
   'geissler-carpal-v415.js': geisslerCarpalV415,
+  'russe-scaphoid-v416.js': russeScaphoidV416,
   'tb-testing.js': tbTesting,
 };
 
