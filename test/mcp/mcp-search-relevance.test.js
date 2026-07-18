@@ -420,6 +420,8 @@ const PROBES = [
   ['thumb polydactyly', ['wassel-thumb']],
   // spec-v418 tile, exposed to MCP in wave 243: Milch classification (lateral condyle fracture).
   ['lateral condyle fracture', ['milch-condyle']],
+  // spec-v419 tile, exposed to MCP in wave 244: Myer-Cotton grade (subglottic stenosis).
+  ['subglottic stenosis grade', ['cotton-myer']],
 ];
 
 test(`every golden probe routes an acceptable tile into the top ${TOP_N}`, () => {

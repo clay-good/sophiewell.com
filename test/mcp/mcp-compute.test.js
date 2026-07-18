@@ -3629,6 +3629,15 @@ test('lib/milch-condyle-v418.js worked calls', () => {
   assert.match(ok('milch-condyle', { 'mi-type': 'II' }).band, /the elbow becomes unstable/);
 });
 
+test('lib/cotton-myer-v419.js worked calls', () => {
+  // Grade II (the META example): 51-70% obstruction.
+  const two = ok('cotton-myer', { 'cm-grade': 'II' });
+  assert.equal(two.grade, 'II');
+  assert.match(two.band, /51% to 70% obstruction/);
+  // Grade IV: no detectable lumen.
+  assert.match(ok('cotton-myer', { 'cm-grade': 'IV' }).band, /no detectable lumen/);
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];
