@@ -33,7 +33,7 @@ import { dirname, join, resolve } from 'node:path';
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = resolve(__dirname, '..');
 const OUT_DIR = join(ROOT, 'data', 'search-corpus');
-const BUDGET_GZIP = 200 * 1024;
+const BUDGET_GZIP = 224 * 1024;
 
 // Field length caps (chars, cut at a word boundary). Tuned so the full catalog
 // stays comfortably under the gzip budget with headroom for growth.

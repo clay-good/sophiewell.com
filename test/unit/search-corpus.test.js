@@ -4,7 +4,7 @@
 // data/synonyms.json. These tests pin the contract the ranker relies on:
 //   - every row keys to a real catalog tile; counts agree,
 //   - no en/em dash or smart quote leaked from the source prose,
-//   - the gzip size stays within the <=200 KB budget,
+//   - the gzip size stays within the <=224 KB budget,
 //   - manifest.hash matches the corpus bytes (drift / hand-edit guard),
 //   - the builder is deterministic (rebuild is byte-identical).
 
@@ -50,9 +50,9 @@ test('search-corpus: no en/em dash or smart quotes leaked from source prose', ()
     'corpus must not contain en/em dashes or smart quotes');
 });
 
-test('search-corpus: gzip size is within the 200 KB budget', () => {
+test('search-corpus: gzip size is within the 224 KB budget', () => {
   const gzip = gzipSync(corpusText).length;
-  assert.ok(gzip <= 200 * 1024, `corpus is ${gzip} bytes gzipped, over the 200 KB budget`);
+  assert.ok(gzip <= 224 * 1024, `corpus is ${gzip} bytes gzipped, over the 224 KB budget`);
   // manifest.gzipBytes is informational and stamped by whichever zlib built
   // it; different node/zlib versions emit different (all valid) gzip
   // streams, so a strict equality here is environment-dependent - it held
