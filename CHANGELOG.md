@@ -6,6 +6,20 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v409 — Ideberg classification (glenoid fossa fracture) tile, 1260 → 1261)
+
+- New `ideberg-glenoid` tile (group G): the Ideberg classification of an intra-articular glenoid-fossa
+  fracture (types I/II/III/IV/V/VI), by which scapular border the fracture line exits; previously absent.
+  The clinician picks the type and the tile reports its exit-border description. **I:** glenoid rim (Ia
+  anterior, Ib posterior). **II:** exits the lateral (axillary) border. **III:** exits the superior border.
+  **IV:** exits the medial (vertebral) border. **V:** a combination of II/III/IV. **VI:** severely
+  comminuted (Goss). An Ideberg type, not a diagnosis, a treatment decision, or a prognosis ([spec-v11]
+  §5.3). Types transcribed (spec-v97) from Ideberg 1984 (+ Goss 1992 type VI), cross-verified against
+  orthopedic references; no citation-staleness row (the citation carries no guideline-issuer acronym). New
+  `lib/ideberg-glenoid-v409.js` + `views/group-v409.js` (RV409); +1 META entry, +1 UTILITIES row, a synonym
+  entry (v130 → v131), 5 unit tests + fuzz, corpus rebuilt to 1261. See [docs/spec-v409.md](docs/spec-v409.md).
+  The MCP adapter follows in a later wave.
+
 ### Added (spec-v408 — Meyers-McKeever classification (tibial eminence fracture) tile, 1259 → 1260)
 
 - New `meyers-mckeever` tile (group G): the Meyers-McKeever classification of a tibial intercondylar-
