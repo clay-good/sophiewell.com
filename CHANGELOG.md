@@ -6,6 +6,21 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v426 — Gell and Coombs hypersensitivity classification tile, 1277 → 1278)
+
+- New `gell-coombs` tile (group G): the Gell and Coombs classification of hypersensitivity reactions, the
+  classic grouping by immune mechanism (types I/II/III/IV); previously absent. The clinician picks the type
+  and the tile reports its mechanism and examples. **I:** immediate, IgE-mediated (anaphylaxis, atopy). **II:**
+  antibody-mediated cytotoxic, IgG/IgM (autoimmune hemolytic anemia, Goodpasture). **III:**
+  immune-complex-mediated (serum sickness, SLE). **IV:** delayed, cell-mediated / T-cell (contact dermatitis,
+  tuberculin reaction). A mechanism type, not a diagnosis, a treatment decision, or a prognosis ([spec-v11]
+  §5.3); many real reactions involve more than one mechanism, and the clinical decision stays with the
+  treating team. Types transcribed (spec-v97) from Gell & Coombs 1963 / Rajan 2003 (Trends Immunol); no
+  citation-staleness row (the citation carries no guideline-issuer acronym). New `lib/gell-coombs-v426.js` +
+  `views/group-v426.js` (RV426); +1 META entry, +1 UTILITIES row, a synonym entry (v147 → v148), 6 unit tests
+  + fuzz, corpus rebuilt to 1278. See [docs/spec-v426.md](docs/spec-v426.md). The MCP adapter follows in a
+  later wave.
+
 ### Added (spec-v425 — Vesicoureteral reflux grade (VCUG) tile, 1276 → 1277)
 
 - New `vur-grade` tile (group G): the International Reflux Study grading of vesicoureteral reflux (VUR) on a

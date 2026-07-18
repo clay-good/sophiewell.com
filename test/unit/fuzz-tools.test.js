@@ -402,6 +402,7 @@ import * as sunAcFlareV422 from '../../lib/sun-ac-flare-v422.js';
 import * as marshOberhuberV423 from '../../lib/marsh-oberhuber-v423.js';
 import * as bethesdaThyroidV424 from '../../lib/bethesda-thyroid-v424.js';
 import * as vurGradeV425 from '../../lib/vur-grade-v425.js';
+import * as gellCoombsV426 from '../../lib/gell-coombs-v426.js';
 import * as tbTesting from '../../lib/tb-testing.js';
 
 const MODULES = {
@@ -749,6 +750,7 @@ const MODULES = {
   'marsh-oberhuber-v423.js': marshOberhuberV423,
   'bethesda-thyroid-v424.js': bethesdaThyroidV424,
   'vur-grade-v425.js': vurGradeV425,
+  'gell-coombs-v426.js': gellCoombsV426,
   'tb-testing.js': tbTesting,
 };
 
