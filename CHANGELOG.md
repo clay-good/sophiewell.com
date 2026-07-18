@@ -6,6 +6,22 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v407 — Steinberg staging (femoral head AVN) tile, 1258 → 1259)
+
+- New `steinberg-avn` tile (group G): the Steinberg (University of Pennsylvania) staging of femoral-head
+  osteonecrosis / avascular necrosis (stages 0-VI), by imaging — the more granular companion to the
+  Ficat-Arlet staging (`ficat-arlet`) already in the catalog, adding the quantitative A/B/C extent grading;
+  previously absent. The clinician picks the stage and the tile reports its radiographic description.
+  **0:** normal imaging. **I:** normal XR, abnormal MRI. **II:** cystic / sclerotic. **III:** subchondral
+  collapse (crescent) without flattening. **IV:** flattening. **V:** joint narrowing / acetabular changes.
+  **VI:** degenerative. Stages I-V are quantified A (<15%) / B (15-30%) / C (>30%) by extent. A Steinberg
+  stage, not a diagnosis, a treatment decision, or a prognosis ([spec-v11] §5.3); subchondral collapse (III)
+  is the classic hip-preservation watershed. Stages transcribed (spec-v97) from Steinberg 1995 (J Bone Joint
+  Surg Br), cross-verified against orthopedic references; no citation-staleness row (the citation carries no
+  guideline-issuer acronym). New `lib/steinberg-avn-v407.js` + `views/group-v407.js` (RV407); +1 META entry,
+  +1 UTILITIES row, a synonym entry (v128 → v129), 5 unit tests + fuzz, corpus rebuilt to 1259. See
+  [docs/spec-v407.md](docs/spec-v407.md). The MCP adapter follows in a later wave.
+
 ### Added (spec-v406 — Le Fort classification (midface fracture) tile, 1257 → 1258)
 
 - New `le-fort` tile (group G): the Le Fort classification of a midface (maxillary) fracture (types

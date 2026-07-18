@@ -383,6 +383,7 @@ import * as berndtHartyV403 from '../../lib/berndt-harty-v403.js';
 import * as reganMorreyV404 from '../../lib/regan-morrey-v404.js';
 import * as savaryMillerV405 from '../../lib/savary-miller-v405.js';
 import * as leFortV406 from '../../lib/le-fort-v406.js';
+import * as steinbergAvnV407 from '../../lib/steinberg-avn-v407.js';
 import * as tbTesting from '../../lib/tb-testing.js';
 
 const MODULES = {
@@ -711,6 +712,7 @@ const MODULES = {
   'regan-morrey-v404.js': reganMorreyV404,
   'savary-miller-v405.js': savaryMillerV405,
   'le-fort-v406.js': leFortV406,
+  'steinberg-avn-v407.js': steinbergAvnV407,
   'tb-testing.js': tbTesting,
 };
 
