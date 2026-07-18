@@ -6,6 +6,21 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v408 — Meyers-McKeever classification (tibial eminence fracture) tile, 1259 → 1260)
+
+- New `meyers-mckeever` tile (group G): the Meyers-McKeever classification of a tibial intercondylar-
+  eminence fracture (the bony ACL avulsion off the tibia) (types I/II/III/IV), by fragment displacement — a
+  common pediatric/adolescent knee injury, previously absent. The clinician picks the type and the tile
+  reports its displacement description. **I:** minimally / non-displaced. **II:** anterior beak, hinged
+  posteriorly. **III:** completely displaced, no bony apposition. **IV:** comminuted (Zaricznyj
+  modification). A Meyers-McKeever type, not a diagnosis, a treatment decision, or a prognosis ([spec-v11]
+  §5.3); displaced types (III-IV) are classically more often operative. Types transcribed (spec-v97) from
+  Meyers-McKeever 1959 (+ Zaricznyj 1977), cross-verified against orthopedic references; no citation-
+  staleness row (the citation carries no guideline-issuer acronym). New `lib/meyers-mckeever-v408.js` +
+  `views/group-v408.js` (RV408); +1 META entry, +1 UTILITIES row, a synonym entry (v129 → v130), 5 unit
+  tests + fuzz, corpus rebuilt to 1260. See [docs/spec-v408.md](docs/spec-v408.md). The MCP adapter follows
+  in a later wave.
+
 ### Added (spec-v407 — Steinberg staging (femoral head AVN) tile, 1258 → 1259)
 
 - New `steinberg-avn` tile (group G): the Steinberg (University of Pennsylvania) staging of femoral-head
