@@ -6,6 +6,22 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v422 — SUN anterior chamber flare grade (uveitis) tile, 1273 → 1274)
+
+- New `sun-ac-flare` tile (group G): the SUN (Standardization of Uveitis Nomenclature) anterior chamber flare
+  grade, the grading of aqueous flare (the scatter of the slit-lamp beam by anterior-chamber protein, grades
+  0/1+/2+/3+/4+), the companion scale to the SUN anterior chamber cell grade ([spec-v421]); previously absent.
+  The clinician picks the grade and the tile reports its description. **0:** none. **1+:** faint. **2+:**
+  moderate (iris and lens details clear). **3+:** marked (iris and lens details hazy). **4+:** intense (fibrin
+  or plasmoid aqueous). A flare grade, not a diagnosis, a treatment decision, or a prognosis ([spec-v11]
+  §5.3); it grades flare (protein leak), a separate scale from anterior chamber cells, and the management
+  decision stays with the ophthalmology team. Grades transcribed (spec-v97) from the SUN Working Group First
+  International Workshop (Jabs 2005, Am J Ophthalmol), cross-verified against ophthalmology / uveitis
+  references; no citation-staleness row (the citation carries no guideline-issuer acronym). New
+  `lib/sun-ac-flare-v422.js` + `views/group-v422.js` (RV422); +1 META entry, +1 UTILITIES row, a synonym entry
+  (v143 → v144), 7 unit tests + fuzz, corpus rebuilt to 1274. See [docs/spec-v422.md](docs/spec-v422.md). The
+  MCP adapter follows in a later wave.
+
 ### Added (spec-v421 — SUN anterior chamber cell grade (uveitis) tile, 1272 → 1273)
 
 - New `sun-ac-cell` tile (group G): the SUN (Standardization of Uveitis Nomenclature) anterior chamber cell
