@@ -6,6 +6,21 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v406 — Le Fort classification (midface fracture) tile, 1257 → 1258)
+
+- New `le-fort` tile (group G): the Le Fort classification of a midface (maxillary) fracture (types
+  I/II/III), by the level of the transverse fracture plane through the midface — one of the most
+  universally taught fracture classifications, previously absent. The clinician picks the type and the tile
+  reports its fracture-level description. **I:** horizontal "floating palate" (Guerin) above the tooth
+  apices. **II:** pyramidal "floating maxilla" up to the nasofrontal region. **III:** craniofacial
+  disjunction ("floating face"), the whole midface separated from the skull base (all three levels pass
+  through the pterygoid plates). A Le Fort type, not a diagnosis, a treatment decision, or a prognosis
+  ([spec-v11] §5.3). Types transcribed (spec-v97) from Le Fort 1901, cross-verified against maxillofacial /
+  radiology references; no citation-staleness row (the citation carries no guideline-issuer acronym). New
+  `lib/le-fort-v406.js` + `views/group-v406.js` (RV406); +1 META entry, +1 UTILITIES row, a synonym entry
+  (v127 → v128), 5 unit tests + fuzz, corpus rebuilt to 1258. See [docs/spec-v406.md](docs/spec-v406.md).
+  The MCP adapter follows in a later wave.
+
 ### Added (spec-v405 — Savary-Miller classification (reflux esophagitis) tile, 1256 → 1257)
 
 - New `savary-miller` tile (group G): the modified Savary-Miller endoscopic classification of reflux

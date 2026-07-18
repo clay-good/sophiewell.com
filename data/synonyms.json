@@ -1,5 +1,5 @@
 {
-  "version": "v127-2026-07-17",
+  "version": "v128-2026-07-17",
   "note": "spec-v7 section 3.2: hand-curated patient-phrasing -> tile id table. Each entry maps patient-mental-model phrases (and, from the v8/v9 plain-language-search batches, clinical abbreviations, eponym aliases, and canonical-intent phrases) to a single existing tile. Audience is the primary audience the entry serves; the matcher deprioritizes (does not hide) entries when the user has selected a different chip. Every phrase is lowercase; every tile id is an existing catalog tile (guarded by test/unit/synonyms-catalog.test.js). Adding a new phrase is a one-line PR.",
   "entries": [
     { "phrases": ["denied", "denial letter", "they denied it", "insurance said no", "appeal", "write an appeal", "appeal my claim", "appeal letter", "appeal a denial"],
@@ -398,6 +398,8 @@
     { "phrases": ["regan morrey", "regan morrey classification", "coronoid fracture", "coronoid process fracture", "coronoid fracture classification", "ulnar coronoid fracture", "terrible triad coronoid", "regan morrey type"],
       "tile": "regan-morrey", "audience": "clinicians" },
     { "phrases": ["savary miller", "savary miller classification", "savary miller esophagitis", "savary miller grade", "esophagitis classification", "reflux esophagitis classification", "savary miller reflux", "savary grade"],
-      "tile": "savary-miller", "audience": "clinicians" }
+      "tile": "savary-miller", "audience": "clinicians" },
+    { "phrases": ["le fort", "le fort classification", "midface fracture", "midface fracture classification", "maxillary fracture classification", "le fort fracture", "facial fracture classification", "le fort type"],
+      "tile": "le-fort", "audience": "clinicians" }
   ]
 }
