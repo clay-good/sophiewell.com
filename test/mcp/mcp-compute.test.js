@@ -3488,6 +3488,17 @@ test('lib/savary-miller-v405.js worked calls', () => {
   assert.match(ok('savary-miller', { 'sm-grade': 'V' }).band, /Barrett/);
 });
 
+test('lib/le-fort-v406.js worked calls', () => {
+  // Type II (the META example): pyramidal floating maxilla.
+  const two = ok('le-fort', { 'lf-type': 'II' });
+  assert.equal(two.type, 'II');
+  assert.match(two.band, /pyramidal/);
+  // Type I: floating palate (Guerin).
+  assert.match(ok('le-fort', { 'lf-type': 'I' }).band, /floating palate/);
+  // Type III: craniofacial disjunction.
+  assert.match(ok('le-fort', { 'lf-type': 'III' }).band, /craniofacial disjunction/);
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];
