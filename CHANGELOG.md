@@ -6,6 +6,23 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v427 — Vaughan Williams antiarrhythmic classification tile, 1278 → 1279)
+
+- New `vaughan-williams` tile (group G): the Vaughan Williams classification of antiarrhythmic drug actions,
+  the classic grouping by primary electrophysiologic mechanism (classes Ia/Ib/Ic/II/III/IV); previously
+  absent. The user picks the class and the tile reports its mechanism and representative agents. **Ia:**
+  Na-channel blockers, moderate block (quinidine, procainamide). **Ib:** weak block (lidocaine, mexiletine).
+  **Ic:** marked block (flecainide, propafenone). **II:** beta-blockers (metoprolol, propranolol). **III:**
+  K-channel blockers (amiodarone, sotalol, dofetilide). **IV:** non-dihydropyridine Ca-channel blockers
+  (verapamil, diltiazem). A class and its mechanism, not a prescribing decision, a dose, a diagnosis, or a
+  prognosis ([spec-v11] §5.3); many agents act in more than one class (e.g., amiodarone), and the prescribing
+  decision stays with the treating team. Classes transcribed (spec-v97) from Vaughan Williams 1984 (J Clin
+  Pharmacol); this reports the classic four-class scheme, and the modernized (Lei 2018) extension is out of
+  scope. No citation-staleness row (the citation carries no guideline-issuer acronym). New
+  `lib/vaughan-williams-v427.js` + `views/group-v427.js` (RV427); +1 META entry, +1 UTILITIES row, a synonym
+  entry (v148 → v149), 7 unit tests + fuzz, corpus rebuilt to 1279. See [docs/spec-v427.md](docs/spec-v427.md).
+  The MCP adapter follows in a later wave.
+
 ### Added (spec-v426 — Gell and Coombs hypersensitivity classification tile, 1277 → 1278)
 
 - New `gell-coombs` tile (group G): the Gell and Coombs classification of hypersensitivity reactions, the
