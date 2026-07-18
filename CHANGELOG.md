@@ -6,6 +6,22 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v420 — Friedman tongue position (OSA staging) tile, 1271 → 1272)
+
+- New `friedman-tongue` tile (group G): the Friedman tongue position (FTP), the anatomical grade of what the
+  observer can visualize of the oropharynx with the mouth open (grades I/II/III/IV), used in
+  obstructive-sleep-apnea staging; previously absent. The clinician picks the grade and the tile reports its
+  visualization description. **I:** the entire uvula and the tonsils / pillars. **II:** the uvula but not the
+  tonsils. **III:** the soft palate but not the uvula. **IV:** only the hard palate. A Friedman tongue
+  position, not a diagnosis, a treatment decision, or a prognosis ([spec-v11] §5.3); it is one input to the
+  Friedman OSA clinical stage (with tonsil size and BMI), not the stage itself, and the management decision
+  stays with the sleep / otolaryngology team. Grades transcribed (spec-v97) from Friedman 2002 (the base
+  four-grade version; some sources subdivide grade II into IIa/IIb), cross-verified against sleep-surgery /
+  otolaryngology references; no citation-staleness row (the citation carries no guideline-issuer acronym).
+  New `lib/friedman-tongue-v420.js` + `views/group-v420.js` (RV420); +1 META entry, +1 UTILITIES row, a
+  synonym entry (v141 → v142), 6 unit tests + fuzz, corpus rebuilt to 1272. See
+  [docs/spec-v420.md](docs/spec-v420.md). The MCP adapter follows in a later wave.
+
 ### Added (spec-v419 — Myer-Cotton grade (subglottic stenosis) tile, 1270 → 1271)
 
 - New `cotton-myer` tile (group G): the Myer-Cotton (Cotton-Myer) grading of subglottic stenosis by the
