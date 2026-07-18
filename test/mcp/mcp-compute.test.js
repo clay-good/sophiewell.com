@@ -3598,6 +3598,17 @@ test('lib/geissler-carpal-v415.js worked calls', () => {
   assert.match(ok('geissler-carpal', { 'gc-grade': 'IV' }).band, /drive-through sign/);
 });
 
+test('lib/russe-scaphoid-v416.js worked calls', () => {
+  // Transverse (the META example): intermediate stability.
+  const t = ok('russe-scaphoid', { 'ru-type': 'transverse' });
+  assert.equal(t.type, 'transverse');
+  assert.match(t.band, /intermediate stability/);
+  // Horizontal oblique: most stable.
+  assert.match(ok('russe-scaphoid', { 'ru-type': 'horizontal oblique' }).band, /most stable/);
+  // Vertical oblique: least stable.
+  assert.match(ok('russe-scaphoid', { 'ru-type': 'vertical oblique' }).band, /least stable/);
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];

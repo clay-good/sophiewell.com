@@ -1502,6 +1502,19 @@ round-trip both pass, without the phantom "2". Adapter appended to the existing
 rate to a target PaCO2. Brings the exposed total to **1072 calculators across 197
 modules**.
 
+## Two-hundred-forty-first wave — the Russe classification (scaphoid fracture) in lib/russe-scaphoid-v416.js (+1)
+
+`russe-scaphoid` (spec-v416) applies the Russe classification of a scaphoid fracture: given the fracture-line
+orientation, it reports the orientation and its stability description. `type` is an enum (`kind: 'enum'`,
+values horizontal oblique / transverse / vertical oblique) — the single input the renderer exposes. The
+example sets type transverse; its expected text carries no numeric facts (the descriptions are word-only), so
+it flows through the default `makeToArgs` with no custom toArgs. New adapter module registered in
+`mcp/catalog.js`; its golden probe ("scaphoid fracture classification") is promoted now that the tile is in
+the MCP-exposed registry. Brings the exposed total to **1205 calculators across 321 modules**.
+
+### lib/russe-scaphoid-v416.js
+- `russe-scaphoid`
+
 ## Two-hundred-fortieth wave — the Geissler classification (carpal ligament injury) in lib/geissler-carpal-v415.js (+1)
 
 `geissler-carpal` (spec-v415) applies the Geissler arthroscopic classification of an interosseous
@@ -4723,6 +4736,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/geissler-carpal-v415.js
 - `geissler-carpal`
+
+### lib/russe-scaphoid-v416.js
+- `russe-scaphoid`
 
 ### lib/tb-testing.js
 - `tb-testing`

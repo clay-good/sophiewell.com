@@ -414,6 +414,8 @@ const PROBES = [
   ['perilunate instability', ['mayfield-perilunate']],
   // spec-v415 tile, exposed to MCP in wave 240: Geissler classification (carpal ligament injury).
   ['geissler classification', ['geissler-carpal']],
+  // spec-v416 tile, exposed to MCP in wave 241: Russe classification (scaphoid fracture).
+  ['scaphoid fracture classification', ['russe-scaphoid']],
 ];
 
 test(`every golden probe routes an acceptable tile into the top ${TOP_N}`, () => {
