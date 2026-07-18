@@ -1502,6 +1502,19 @@ round-trip both pass, without the phantom "2". Adapter appended to the existing
 rate to a target PaCO2. Brings the exposed total to **1072 calculators across 197
 modules**.
 
+## Two-hundred-forty-ninth wave — the Bethesda System (thyroid cytopathology) in lib/bethesda-thyroid-v424.js (+1)
+
+`bethesda-thyroid` (spec-v424) applies the Bethesda System for Reporting Thyroid Cytopathology: given the
+category, it reports its cytologic meaning. `category` is an enum (`kind: 'enum'`, values I/II/III/IV/V/VI) —
+the single input the renderer exposes. The example sets category IV; its expected text carries no numeric
+facts (the meaning is word-only), so it flows through the default `makeToArgs` with no custom toArgs. New
+adapter module registered in `mcp/catalog.js`; its golden probe ("bethesda thyroid category") is promoted now
+that the tile is in the MCP-exposed registry. Brings the exposed total to **1213 calculators across 329
+modules**.
+
+### lib/bethesda-thyroid-v424.js
+- `bethesda-thyroid`
+
 ## Two-hundred-forty-eighth wave — the Marsh-Oberhuber classification (celiac histology) in lib/marsh-oberhuber-v423.js (+1)
 
 `marsh-oberhuber` (spec-v423) applies the modified Marsh (Marsh-Oberhuber) classification: given the type, it
@@ -4847,6 +4860,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/marsh-oberhuber-v423.js
 - `marsh-oberhuber`
+
+### lib/bethesda-thyroid-v424.js
+- `bethesda-thyroid`
 
 ### lib/tb-testing.js
 - `tb-testing`

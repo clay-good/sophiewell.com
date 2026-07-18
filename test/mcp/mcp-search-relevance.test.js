@@ -430,6 +430,8 @@ const PROBES = [
   ['anterior chamber flare grade', ['sun-ac-flare']],
   // spec-v423 tile, exposed to MCP in wave 248: Marsh-Oberhuber classification (celiac histology).
   ['marsh oberhuber classification', ['marsh-oberhuber']],
+  // spec-v424 tile, exposed to MCP in wave 249: Bethesda System (thyroid cytopathology).
+  ['bethesda thyroid category', ['bethesda-thyroid']],
 ];
 
 test(`every golden probe routes an acceptable tile into the top ${TOP_N}`, () => {

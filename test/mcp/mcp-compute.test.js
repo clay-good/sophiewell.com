@@ -3674,6 +3674,15 @@ test('lib/marsh-oberhuber-v423.js worked calls', () => {
   assert.match(ok('marsh-oberhuber', { 'mo-type': '0' }).band, /preinfiltrative/);
 });
 
+test('lib/bethesda-thyroid-v424.js worked calls', () => {
+  // Category IV (the META example): follicular neoplasm.
+  const four = ok('bethesda-thyroid', { 'bt-cat': 'IV' });
+  assert.equal(four.category, 'IV');
+  assert.match(four.band, /follicular neoplasm/);
+  // Category VI: malignant.
+  assert.match(ok('bethesda-thyroid', { 'bt-cat': 'VI' }).band, /malignant/);
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];
