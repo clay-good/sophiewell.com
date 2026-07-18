@@ -1502,6 +1502,16 @@ round-trip both pass, without the phantom "2". Adapter appended to the existing
 rate to a target PaCO2. Brings the exposed total to **1072 calculators across 197
 modules**.
 
+## Two-hundred-thirty-fourth wave — the Ideberg classification (glenoid fossa fracture) in lib/ideberg-glenoid-v409.js (+1)
+
+`ideberg-glenoid` (spec-v409) applies the Ideberg classification of a glenoid-fossa fracture: given the
+type, it reports the exit-border description. `type` is an enum (`kind: 'enum'`, values I/II/III/IV/V/VI) —
+the single input the renderer exposes. The example sets type II; its expected text is the type description
+(a roman numeral, no free numeric facts to round-trip), so it flows through the default `makeToArgs` with no
+custom toArgs. New adapter module registered in `mcp/catalog.js`; its golden probe ("glenoid fossa
+fracture") is promoted now that the tile is in the MCP-exposed registry. Brings the exposed total to
+**1198 calculators across 314 modules**.
+
 ## Two-hundred-thirty-third wave — the Meyers-McKeever classification (tibial eminence fracture) in lib/meyers-mckeever-v408.js (+1)
 
 `meyers-mckeever` (spec-v408) applies the Meyers-McKeever classification of a tibial eminence fracture:
@@ -4620,6 +4630,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/meyers-mckeever-v408.js
 - `meyers-mckeever`
+
+### lib/ideberg-glenoid-v409.js
+- `ideberg-glenoid`
 
 ### lib/tb-testing.js
 - `tb-testing`

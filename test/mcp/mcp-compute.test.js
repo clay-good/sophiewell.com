@@ -3521,6 +3521,17 @@ test('lib/meyers-mckeever-v408.js worked calls', () => {
   assert.match(ok('meyers-mckeever', { 'mm-type': 'IV' }).band, /comminuted/);
 });
 
+test('lib/ideberg-glenoid-v409.js worked calls', () => {
+  // Type II (the META example): exits the lateral border.
+  const two = ok('ideberg-glenoid', { 'idb-type': 'II' });
+  assert.equal(two.type, 'II');
+  assert.match(two.band, /lateral \(axillary\) scapular border/);
+  // Type I: glenoid rim.
+  assert.match(ok('ideberg-glenoid', { 'idb-type': 'I' }).band, /glenoid rim fracture/);
+  // Type VI: comminuted.
+  assert.match(ok('ideberg-glenoid', { 'idb-type': 'VI' }).band, /severely comminuted/);
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];

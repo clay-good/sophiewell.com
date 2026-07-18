@@ -321,6 +321,7 @@ import savaryMillerV405 from './adapters/savary-miller-v405.js';
 import leFortV406 from './adapters/le-fort-v406.js';
 import steinbergAvnV407 from './adapters/steinberg-avn-v407.js';
 import meyersMckeeverV408 from './adapters/meyers-mckeever-v408.js';
+import idebergGlenoidV409 from './adapters/ideberg-glenoid-v409.js';
 import tbTesting from './adapters/tb-testing.js';
 import labInterpret from './adapters/lab-interpret.js';
 import decisionRulesV258 from './adapters/decision-rules-v258.js';
@@ -636,6 +637,7 @@ const ADAPTER_MODULES = [
   ['le-fort-v406', leFortV406],
   ['steinberg-avn-v407', steinbergAvnV407],
   ['meyers-mckeever-v408', meyersMckeeverV408],
+  ['ideberg-glenoid-v409', idebergGlenoidV409],
   ['tb-testing', tbTesting],
   ['lab-interpret', labInterpret],
   ['decision-rules-v258', decisionRulesV258],
