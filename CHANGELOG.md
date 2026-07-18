@@ -6,6 +6,22 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v425 — Vesicoureteral reflux grade (VCUG) tile, 1276 → 1277)
+
+- New `vur-grade` tile (group G): the International Reflux Study grading of vesicoureteral reflux (VUR) on a
+  voiding cystourethrogram (VCUG), by the extent of reflux and the degree of ureteral/pelvicalyceal dilatation
+  (grades I/II/III/IV/V); previously absent. The radiologist picks the grade and the tile reports its imaging
+  description. **I:** ureter only, not reaching the pelvis. **II:** up to the pelvis, no dilatation. **III:**
+  mild to moderate dilatation. **IV:** moderate dilatation and tortuosity, fornices obliterated. **V:** gross
+  dilatation and tortuosity, intrarenal reflux. A grade, not a diagnosis, a treatment decision (medical
+  prophylaxis vs surgical reimplantation), or a prognosis ([spec-v11] §5.3); the decision stays with the
+  pediatric urology / nephrology team. Grades transcribed (spec-v97) from the International Reflux Study
+  Committee 1981 (Pediatrics), cross-verified against pediatric urology / radiology references; no
+  citation-staleness row (the citation carries no guideline-issuer acronym). New `lib/vur-grade-v425.js` +
+  `views/group-v425.js` (RV425); +1 META entry, +1 UTILITIES row, a synonym entry (v146 → v147), 7 unit tests
+  + fuzz, corpus rebuilt to 1277. See [docs/spec-v425.md](docs/spec-v425.md). The MCP adapter follows in a
+  later wave.
+
 ### Added (spec-v424 — Bethesda System (thyroid cytopathology) tile, 1275 → 1276)
 
 - New `bethesda-thyroid` tile (group G): the Bethesda System for Reporting Thyroid Cytopathology, the
