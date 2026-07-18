@@ -432,6 +432,8 @@ const PROBES = [
   ['marsh oberhuber classification', ['marsh-oberhuber']],
   // spec-v424 tile, exposed to MCP in wave 249: Bethesda System (thyroid cytopathology).
   ['bethesda thyroid category', ['bethesda-thyroid']],
+  // spec-v425 tile, exposed to MCP in wave 250: vesicoureteral reflux grade (VCUG).
+  ['vesicoureteral reflux grade', ['vur-grade']],
 ];
 
 test(`every golden probe routes an acceptable tile into the top ${TOP_N}`, () => {

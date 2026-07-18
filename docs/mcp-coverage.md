@@ -1502,6 +1502,19 @@ round-trip both pass, without the phantom "2". Adapter appended to the existing
 rate to a target PaCO2. Brings the exposed total to **1072 calculators across 197
 modules**.
 
+## Two-hundred-fiftieth wave — the vesicoureteral reflux grade (VCUG) in lib/vur-grade-v425.js (+1)
+
+`vur-grade` (spec-v425) applies the International Reflux Study grading of vesicoureteral reflux: given the
+grade, it reports the imaging description. `grade` is an enum (`kind: 'enum'`, values I/II/III/IV/V) — the
+single input the renderer exposes. The example sets grade III; its expected text carries no numeric facts
+(the description is word-only), so it flows through the default `makeToArgs` with no custom toArgs. New
+adapter module registered in `mcp/catalog.js`; its golden probe ("vesicoureteral reflux grade") is promoted
+now that the tile is in the MCP-exposed registry. Brings the exposed total to **1214 calculators across 330
+modules**.
+
+### lib/vur-grade-v425.js
+- `vur-grade`
+
 ## Two-hundred-forty-ninth wave — the Bethesda System (thyroid cytopathology) in lib/bethesda-thyroid-v424.js (+1)
 
 `bethesda-thyroid` (spec-v424) applies the Bethesda System for Reporting Thyroid Cytopathology: given the
@@ -4863,6 +4876,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/bethesda-thyroid-v424.js
 - `bethesda-thyroid`
+
+### lib/vur-grade-v425.js
+- `vur-grade`
 
 ### lib/tb-testing.js
 - `tb-testing`

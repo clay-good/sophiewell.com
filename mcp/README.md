@@ -78,7 +78,7 @@ find_calculator { "query": "stroke risk afib" }
        candidates: [ { id: "chads", name: "CHA2DS2-VASc", why: "synonym", ... }, ... ] }
 
 list_calculators { "specialty": "hepatology" }
-  -> { coverage: "1213 of 1109 catalog tiles exposed ...", calculators: [ { id: "meld-xi", ... }, ... ] }
+  -> { coverage: "1214 of 1109 catalog tiles exposed ...", calculators: [ { id: "meld-xi", ... }, ... ] }
 
 describe_calculator { "id": "meld-xi" }
   -> { inputSchema: { ... mx-bili, mx-creat ... }, citation: "Heuman DM ... Liver Transpl 2007", ... }
@@ -461,8 +461,9 @@ condyle fracture) in `lib/milch-condyle-v418.js`, and a two-hundred-forty-fourth
 position (OSA staging) in `lib/friedman-tongue-v420.js`, a two-hundred-forty-sixth the SUN anterior
 chamber cell grade (uveitis) in `lib/sun-ac-cell-v421.js`, a two-hundred-forty-seventh the SUN anterior
 chamber flare grade (uveitis) in `lib/sun-ac-flare-v422.js`, a two-hundred-forty-eighth the Marsh-Oberhuber
-classification (celiac histology) in `lib/marsh-oberhuber-v423.js`, and a two-hundred-forty-ninth the Bethesda
-System (thyroid cytopathology) in `lib/bethesda-thyroid-v424.js`, for 1213 across 329 modules today. <!-- catalog-truth:historical (197 is the count of lib modules adapted, not a catalog tile count) -->
+classification (celiac histology) in `lib/marsh-oberhuber-v423.js`, a two-hundred-forty-ninth the Bethesda
+System (thyroid cytopathology) in `lib/bethesda-thyroid-v424.js`, and a two-hundred-fiftieth the vesicoureteral
+reflux grade (VCUG) in `lib/vur-grade-v425.js`, for 1214 across 330 modules today. <!-- catalog-truth:historical (197 is the count of lib modules adapted, not a catalog tile count) -->
 Later waves extend it module by module against the same contract.
 
 ## Design

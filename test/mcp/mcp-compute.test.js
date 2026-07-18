@@ -3683,6 +3683,15 @@ test('lib/bethesda-thyroid-v424.js worked calls', () => {
   assert.match(ok('bethesda-thyroid', { 'bt-cat': 'VI' }).band, /malignant/);
 });
 
+test('lib/vur-grade-v425.js worked calls', () => {
+  // Grade III (the META example): mild to moderate dilatation.
+  const three = ok('vur-grade', { 'vur-grade': 'III' });
+  assert.equal(three.grade, 'III');
+  assert.match(three.band, /mild to moderate dilatation/);
+  // Grade V: intrarenal reflux.
+  assert.match(ok('vur-grade', { 'vur-grade': 'V' }).band, /intrarenal reflux/);
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];
