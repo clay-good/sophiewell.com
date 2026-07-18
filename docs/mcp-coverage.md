@@ -1502,6 +1502,19 @@ round-trip both pass, without the phantom "2". Adapter appended to the existing
 rate to a target PaCO2. Brings the exposed total to **1072 calculators across 197
 modules**.
 
+## Two-hundred-fortieth wave — the Geissler classification (carpal ligament injury) in lib/geissler-carpal-v415.js (+1)
+
+`geissler-carpal` (spec-v415) applies the Geissler arthroscopic classification of an interosseous
+carpal-ligament injury: given the grade, it reports the arthroscopic-appearance description. `grade` is an
+enum (`kind: 'enum'`, values I/II/III/IV) — the single input the renderer exposes. The example sets grade II;
+its expected text carries no numeric facts (the grade description is word-only), so it flows through the
+default `makeToArgs` with no custom toArgs. New adapter module registered in `mcp/catalog.js`; its golden
+probe ("geissler classification") is promoted now that the tile is in the MCP-exposed registry. Brings the
+exposed total to **1204 calculators across 320 modules**.
+
+### lib/geissler-carpal-v415.js
+- `geissler-carpal`
+
 ## Two-hundred-thirty-ninth wave — the Mayfield classification (perilunate instability) in lib/mayfield-perilunate-v414.js (+1)
 
 `mayfield-perilunate` (spec-v414) applies the Mayfield classification of progressive perilunar instability:
@@ -4707,6 +4720,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/mayfield-perilunate-v414.js
 - `mayfield-perilunate`
+
+### lib/geissler-carpal-v415.js
+- `geissler-carpal`
 
 ### lib/tb-testing.js
 - `tb-testing`

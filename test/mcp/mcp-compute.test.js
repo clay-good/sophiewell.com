@@ -3587,6 +3587,17 @@ test('lib/mayfield-perilunate-v414.js worked calls', () => {
   assert.match(ok('mayfield-perilunate', { 'mf-stage': 'IV' }).band, /dislocates volarly/);
 });
 
+test('lib/geissler-carpal-v415.js worked calls', () => {
+  // Grade II (the META example): midcarpal incongruency, no probe.
+  const g2 = ok('geissler-carpal', { 'gc-grade': 'II' });
+  assert.equal(g2.grade, 'II');
+  assert.match(g2.band, /incongruency or step-off of carpal alignment in the midcarpal space/);
+  // Grade III: a probe passes.
+  assert.match(ok('geissler-carpal', { 'gc-grade': 'III' }).band, /a probe can be passed through the gap/);
+  // Grade IV: drive-through sign.
+  assert.match(ok('geissler-carpal', { 'gc-grade': 'IV' }).band, /drive-through sign/);
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];
