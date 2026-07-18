@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `ea32d4e65c1361ab`
-Generated: 2026-07-18T22:53:50.423Z
+Build ID: `99ecc9aa6f5be096`
+Generated: 2026-07-18T23:02:17.048Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=20.18.1 <21, npm >=10.0.0
@@ -24,13 +24,13 @@ downloads is committed in this repository and is hashed below.
 
 | Path | Bytes | SHA-256 |
 |---|---:|---|
-| `index.html` | 84764 | `18acacc01076926c9707b2b9cd50a337bfcaaeaac0e6e645f96b8fe1b42d6244` |
+| `index.html` | 84829 | `0489757e75f3be449620a190622f8c6885862ae80f890a52c5211adae020354d` |
 | `styles.css` | 44160 | `a2cc7ad7bae9f7cfc9681d80bc6bd4a58f0b07d47bfcff64897dc04929c12333` |
-| `app.js` | 346600 | `62128a72cfe0d12a578f4da951edea10749857ad88e2db06725b0f83d0724409` |
+| `app.js` | 346833 | `22224519e6e35ac32bd74fd786b517ce5305573b9c50537d8c61cdfb8332beec` |
 | `sw.js` | 4622 | `b891d4344f8e04403b7f1d307fd446cc224bddc6f0c4397438a17d197351171e` |
 | `site.webmanifest` | 709 | `0e0de4da60590a12e8b27a0ae2a2f5ffdb6500b7d2b78f93631ec2f64ed3d5ce` |
 | `robots.txt` | 127 | `38fbf9c1854e72abb20e01e81dd5a31d4ea96f154c12d5db1ec3af05524dd1a1` |
-| `sitemap.xml` | 195789 | `74d253a2cff821ddece50916a2e02e9c53477449b67118e99703b24f7d26f462` |
+| `sitemap.xml` | 195944 | `8522157c9551e4e0992bd908762a2fd7c8402f87a44195bbfe4352f9246f6d0e` |
 | `_headers` | 1316 | `2f39986457d2feff7e73e491a7d09ee871e8f2f4cc2bc437f86bd86a42554ec6` |
 | `logo.png` | 63440 | `11afaf1b0d3ca68393d202e4810bf766b5b6d591b4e3ec52f41d3cacaa4616ec` |
 | `favicon.ico` | 7411 | `407fde0ca2788409e87e11f596fa02e6a0b121817fcea7fd995beec1801e287b` |
@@ -236,12 +236,13 @@ downloads is committed in this repository and is hashed below.
 | `lib/ltcga-v182.js` | 9830 | `3c336cb6868034015a0e2111e7be0839ecf813fef361dc6609cadf2b271307d2` |
 | `lib/lung-rads-v325.js` | 5240 | `9b4d732dc3a06310e5eda3e54ca054f67b923fbdb456b1425fba65d3c4ad5a25` |
 | `lib/lymphoma-v135.js` | 16162 | `e29896a6de224445f46839cd06518817bd25d1235a91ede76f77ccb4996a934f` |
+| `lib/marsh-oberhuber-v423.js` | 3970 | `283c02c5cf571e22696a6ca0e315a9e4c10b66dd0fd264c08c58fe2ba1589c27` |
 | `lib/mason-radial-head-v341.js` | 4841 | `5f3e5f6a2c2324d646a167f847a587dc1068e54cfb876bc4723212ea057cd4e2` |
 | `lib/massive-transfusion-v265.js` | 3240 | `7ad4d1d86063fdd077546be5d6381ea4a5024ef669389f88abdfe07850903b29` |
 | `lib/mayfield-perilunate-v414.js` | 4219 | `dbec2e4abce7912c621e5cee9f8bdb1fa3555240da1d08a3f75f448fd0297fc4` |
 | `lib/medication-v4.js` | 18192 | `467f9576c50da696cc56094eb022d0a5ed1e88de0c7618448554ede8067270b0` |
 | `lib/medication-v5.js` | 18863 | `ce81d9f8954abbd412892c13af9936f992239164f26fd2b999eaea7902787ab7` |
-| `lib/meta.js` | 1735497 | `ab989b61533af55bfd25b4b9ed179dbf5eb5050b9ba530babc031d574b80906e` |
+| `lib/meta.js` | 1736723 | `1b5957692b15437ff09962708598db094085cadefdc7f0e0ffa507b5fac9bfe1` |
 | `lib/metabolic-hepatic-v219.js` | 12791 | `b9352877cebf7fbf3c3b99ecb8b72cdbee3ed94e056dc019113668609f5a95a8` |
 | `lib/metabolic-onc-v88.js` | 12659 | `1553b641668c121661a66647da71a4aaaa023e9f3a6b7a753efbcdab27cdba81` |
 | `lib/metabolic-v269.js` | 3262 | `0c7a42557886f2b0aeee7949b8d0bd682d795d4526174fd540717a978d94ec2f` |
@@ -746,6 +747,7 @@ downloads is committed in this repository and is hashed below.
 | `views/group-v420.js` | 3012 | `6a04de4b0fc39696ed880cc30120ac6c04cc39ac41058dff3985bdb4b22b35ad` |
 | `views/group-v421.js` | 2987 | `3bdb30ecf9510bece9ef52b031011d3ff9723cf254b8d3273b9f8394a2812daa` |
 | `views/group-v422.js` | 3071 | `b119c0757734fed101cb7750cf864a2d42e163b786e19802bbb5d3cf7c16c480` |
+| `views/group-v423.js` | 3159 | `e55c3b24d9ea5552aebf1edcb09936b0dad00c58c0b68ec4a04767dba47239a0` |
 | `views/group-v5.js` | 32855 | `c17fc4c7bdc25ea5a80969ddc7091a63731dc8aeafb7f478507145a71cf73b2e` |
 | `views/group-v6.js` | 5707 | `425918decb48cd9efac9fc5590ac8970a54c03c3b0df056fb99c9a22ff8dd1b2` |
 | `views/group-v63.js` | 14377 | `962d84b97e82bc39635801da79ecaa93fc0b501b5988b7d321b0f1f630497fab` |

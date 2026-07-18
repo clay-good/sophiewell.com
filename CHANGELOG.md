@@ -6,6 +6,22 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v423 — Marsh-Oberhuber classification (celiac histology) tile, 1274 → 1275)
+
+- New `marsh-oberhuber` tile (group G): the modified Marsh (Marsh-Oberhuber) classification of the duodenal
+  histology in celiac disease, by the intraepithelial-lymphocyte infiltrate, crypt architecture, and villous
+  atrophy (types 0/1/2/3a/3b/3c); previously absent. The pathologist picks the type and the tile reports its
+  histologic description. **0:** preinfiltrative (normal). **1:** infiltrative (increased IELs, normal villi).
+  **2:** hyperplastic (increased IELs + crypt hyperplasia). **3a:** partial villous atrophy. **3b:** subtotal.
+  **3c:** total. A histologic type, not a diagnosis of celiac disease (which needs serology and the clinical
+  picture), a treatment decision, or a prognosis ([spec-v11] §5.3); the decisions stay with the
+  gastroenterology / pathology team. Types transcribed (spec-v97) from Oberhuber 1999 (Eur J Gastroenterol
+  Hepatol), cross-verified against the original Marsh scheme (Marsh 1992); this reports the modified (Oberhuber)
+  grading 0-3c, and the original Marsh type 4 is not part of it. No citation-staleness row (the citation
+  carries no guideline-issuer acronym). New `lib/marsh-oberhuber-v423.js` + `views/group-v423.js` (RV423); +1
+  META entry, +1 UTILITIES row, a synonym entry (v144 → v145), 7 unit tests + fuzz, corpus rebuilt to 1275.
+  See [docs/spec-v423.md](docs/spec-v423.md). The MCP adapter follows in a later wave.
+
 ### Added (spec-v422 — SUN anterior chamber flare grade (uveitis) tile, 1273 → 1274)
 
 - New `sun-ac-flare` tile (group G): the SUN (Standardization of Uveitis Nomenclature) anterior chamber flare
