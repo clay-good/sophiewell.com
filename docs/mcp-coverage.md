@@ -1502,6 +1502,18 @@ round-trip both pass, without the phantom "2". Adapter appended to the existing
 rate to a target PaCO2. Brings the exposed total to **1072 calculators across 197
 modules**.
 
+## Two-hundred-forty-sixth wave — the SUN anterior chamber cell grade (uveitis) in lib/sun-ac-cell-v421.js (+1)
+
+`sun-ac-cell` (spec-v421) applies the SUN anterior chamber cell grade: given the grade, it reports the
+defining cell-count range. `grade` is an enum (`kind: 'enum'`, values 0/0.5+/1+/2+/3+/4+) — the single input
+the renderer exposes. The example sets grade 1+; its expected numbers (6 to 15 cells) appear in the result
+band, so it flows through the default `makeToArgs` with no custom toArgs. New adapter module registered in
+`mcp/catalog.js`; its golden probe ("anterior chamber cell grade") is promoted now that the tile is in the
+MCP-exposed registry. Brings the exposed total to **1210 calculators across 326 modules**.
+
+### lib/sun-ac-cell-v421.js
+- `sun-ac-cell`
+
 ## Two-hundred-forty-fifth wave — the Friedman tongue position (OSA staging) in lib/friedman-tongue-v420.js (+1)
 
 `friedman-tongue` (spec-v420) applies the Friedman tongue position: given the grade, it reports the
@@ -4800,6 +4812,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/friedman-tongue-v420.js
 - `friedman-tongue`
+
+### lib/sun-ac-cell-v421.js
+- `sun-ac-cell`
 
 ### lib/tb-testing.js
 - `tb-testing`

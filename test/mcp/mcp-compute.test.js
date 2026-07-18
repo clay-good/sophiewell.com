@@ -3647,6 +3647,15 @@ test('lib/friedman-tongue-v420.js worked calls', () => {
   assert.match(ok('friedman-tongue', { 'ft-grade': 'IV' }).band, /only the hard palate/);
 });
 
+test('lib/sun-ac-cell-v421.js worked calls', () => {
+  // Grade 1+ (the META example): 6 to 15 cells.
+  const one = ok('sun-ac-cell', { 'sun-cell': '1+' });
+  assert.equal(one.grade, '1+');
+  assert.match(one.band, /6 to 15 cells/);
+  // Grade 4+: more than 50 cells.
+  assert.match(ok('sun-ac-cell', { 'sun-cell': '4+' }).band, /more than 50 cells/);
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];

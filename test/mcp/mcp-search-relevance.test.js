@@ -424,6 +424,8 @@ const PROBES = [
   ['subglottic stenosis grade', ['cotton-myer']],
   // spec-v420 tile, exposed to MCP in wave 245: Friedman tongue position (OSA staging).
   ['friedman tongue position', ['friedman-tongue']],
+  // spec-v421 tile, exposed to MCP in wave 246: SUN anterior chamber cell grade (uveitis).
+  ['anterior chamber cell grade', ['sun-ac-cell']],
 ];
 
 test(`every golden probe routes an acceptable tile into the top ${TOP_N}`, () => {
