@@ -6,6 +6,23 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v412 — Myerson classification (Lisfranc injury) tile, 1263 → 1264)
+
+- New `lisfranc-myerson` tile (group G): the Myerson classification (a modification of the Hardcastle /
+  Quenu-Kuss classification) of a Lisfranc (tarsometatarsal) injury (types A/B1/B2/C1/C2), by the pattern and
+  direction of the tarsometatarsal incongruity — filling the tarsometatarsal gap in the foot-injury cluster
+  (`lauge-hansen`, `sanders-calcaneal`, `hawkins-talar`, `meyers-mckeever`); previously absent. The clinician
+  picks the type and the tile reports its incongruity/displacement description. **A:** total incongruity, all
+  five metatarsals displaced the same direction (homolateral). **B1:** partial, medial displacement of the
+  first metatarsal. **B2:** partial, lateral displacement of one or more of the lateral four metatarsals.
+  **C1:** divergent, partial. **C2:** divergent, total (all five metatarsals). A Myerson type, not a
+  diagnosis, a treatment decision, or a prognosis ([spec-v11] §5.3); the operative-vs-nonoperative decision
+  stays with the foot-and-ankle team. Types transcribed (spec-v97) from Myerson 1986, cross-verified against
+  StatPearls and orthopedic / radiology references; no citation-staleness row (the citation carries no
+  guideline-issuer acronym). New `lib/lisfranc-myerson-v412.js` + `views/group-v412.js` (RV412); +1 META
+  entry, +1 UTILITIES row, a synonym entry (v133 → v134), 6 unit tests + fuzz, corpus rebuilt to 1264. See
+  [docs/spec-v412.md](docs/spec-v412.md). The MCP adapter follows in a later wave.
+
 ### Added (spec-v411 — Levine-Edwards classification (hangman's fracture) tile, 1262 → 1263)
 
 - New `levine-edwards` tile (group G): the Levine-Edwards classification of a traumatic spondylolisthesis of
