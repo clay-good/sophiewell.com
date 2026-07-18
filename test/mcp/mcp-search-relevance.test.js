@@ -434,6 +434,8 @@ const PROBES = [
   ['bethesda thyroid category', ['bethesda-thyroid']],
   // spec-v425 tile, exposed to MCP in wave 250: vesicoureteral reflux grade (VCUG).
   ['vesicoureteral reflux grade', ['vur-grade']],
+  // spec-v426 tile, exposed to MCP in wave 251: Gell and Coombs hypersensitivity classification.
+  ['gell coombs hypersensitivity', ['gell-coombs']],
 ];
 
 test(`every golden probe routes an acceptable tile into the top ${TOP_N}`, () => {

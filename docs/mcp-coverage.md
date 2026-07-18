@@ -1502,6 +1502,18 @@ round-trip both pass, without the phantom "2". Adapter appended to the existing
 rate to a target PaCO2. Brings the exposed total to **1072 calculators across 197
 modules**.
 
+## Two-hundred-fifty-first wave — the Gell and Coombs hypersensitivity classification in lib/gell-coombs-v426.js (+1)
+
+`gell-coombs` (spec-v426) applies the Gell and Coombs classification: given the type, it reports the immune
+mechanism and examples. `type` is an enum (`kind: 'enum'`, values I/II/III/IV) — the single input the
+renderer exposes. The example sets type I; its expected text carries no numeric facts (the mechanism is
+word-only), so it flows through the default `makeToArgs` with no custom toArgs. New adapter module registered
+in `mcp/catalog.js`; its golden probe ("gell coombs hypersensitivity") is promoted now that the tile is in
+the MCP-exposed registry. Brings the exposed total to **1215 calculators across 331 modules**.
+
+### lib/gell-coombs-v426.js
+- `gell-coombs`
+
 ## Two-hundred-fiftieth wave — the vesicoureteral reflux grade (VCUG) in lib/vur-grade-v425.js (+1)
 
 `vur-grade` (spec-v425) applies the International Reflux Study grading of vesicoureteral reflux: given the
@@ -4879,6 +4891,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/vur-grade-v425.js
 - `vur-grade`
+
+### lib/gell-coombs-v426.js
+- `gell-coombs`
 
 ### lib/tb-testing.js
 - `tb-testing`

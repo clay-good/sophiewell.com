@@ -3692,6 +3692,15 @@ test('lib/vur-grade-v425.js worked calls', () => {
   assert.match(ok('vur-grade', { 'vur-grade': 'V' }).band, /intrarenal reflux/);
 });
 
+test('lib/gell-coombs-v426.js worked calls', () => {
+  // Type I (the META example): immediate, IgE-mediated.
+  const one = ok('gell-coombs', { 'gc-type': 'I' });
+  assert.equal(one.type, 'I');
+  assert.match(one.band, /immediate, IgE-mediated/);
+  // Type IV: delayed, cell-mediated.
+  assert.match(ok('gell-coombs', { 'gc-type': 'IV' }).band, /delayed, cell-mediated/);
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];
