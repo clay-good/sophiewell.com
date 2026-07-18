@@ -78,7 +78,7 @@ find_calculator { "query": "stroke risk afib" }
        candidates: [ { id: "chads", name: "CHA2DS2-VASc", why: "synonym", ... }, ... ] }
 
 list_calculators { "specialty": "hepatology" }
-  -> { coverage: "1202 of 1109 catalog tiles exposed ...", calculators: [ { id: "meld-xi", ... }, ... ] }
+  -> { coverage: "1203 of 1109 catalog tiles exposed ...", calculators: [ { id: "meld-xi", ... }, ... ] }
 
 describe_calculator { "id": "meld-xi" }
   -> { inputSchema: { ... mx-bili, mx-creat ... }, citation: "Heuman DM ... Liver Transpl 2007", ... }
@@ -450,8 +450,9 @@ two-hundred-thirty-fourth the Ideberg classification (glenoid fossa fracture) in
 fracture) in `lib/anderson-dalonzo-v410.js`, and a two-hundred-thirty-sixth the Levine-Edwards
 classification (hangman's fracture) in `lib/levine-edwards-v411.js`, and a two-hundred-thirty-seventh the
 Myerson classification (Lisfranc injury) in `lib/lisfranc-myerson-v412.js`, and a two-hundred-thirty-eighth
-the Seinsheimer classification (subtrochanteric femur fracture) in `lib/seinsheimer-subtroch-v413.js`, for
-1202 across 318 modules today. <!-- catalog-truth:historical (197 is the count of lib modules adapted, not a catalog tile count) -->
+the Seinsheimer classification (subtrochanteric femur fracture) in `lib/seinsheimer-subtroch-v413.js`, and a
+two-hundred-thirty-ninth the Mayfield classification (perilunate instability) in
+`lib/mayfield-perilunate-v414.js`, for 1203 across 319 modules today. <!-- catalog-truth:historical (197 is the count of lib modules adapted, not a catalog tile count) -->
 Later waves extend it module by module against the same contract.
 
 ## Design

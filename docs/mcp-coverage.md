@@ -1502,6 +1502,19 @@ round-trip both pass, without the phantom "2". Adapter appended to the existing
 rate to a target PaCO2. Brings the exposed total to **1072 calculators across 197
 modules**.
 
+## Two-hundred-thirty-ninth wave — the Mayfield classification (perilunate instability) in lib/mayfield-perilunate-v414.js (+1)
+
+`mayfield-perilunate` (spec-v414) applies the Mayfield classification of progressive perilunar instability:
+given the stage, it reports the ligament-disruption description. `stage` is an enum (`kind: 'enum'`, values
+I/II/III/IV) — the single input the renderer exposes. The example sets stage III; its expected text carries
+no numeric facts (the stage description is word-only), so it flows through the default `makeToArgs` with no
+custom toArgs. New adapter module registered in `mcp/catalog.js`; its golden probe ("perilunate instability")
+is promoted now that the tile is in the MCP-exposed registry. Brings the exposed total to **1203 calculators
+across 319 modules**.
+
+### lib/mayfield-perilunate-v414.js
+- `mayfield-perilunate`
+
 ## Two-hundred-thirty-eighth wave — the Seinsheimer classification (subtrochanteric femur fracture) in lib/seinsheimer-subtroch-v413.js (+1)
 
 `seinsheimer-subtroch` (spec-v413) applies the Seinsheimer classification of a subtrochanteric femur
@@ -4691,6 +4704,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/seinsheimer-subtroch-v413.js
 - `seinsheimer-subtroch`
+
+### lib/mayfield-perilunate-v414.js
+- `mayfield-perilunate`
 
 ### lib/tb-testing.js
 - `tb-testing`

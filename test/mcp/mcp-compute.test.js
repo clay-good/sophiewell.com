@@ -3576,6 +3576,17 @@ test('lib/seinsheimer-subtroch-v413.js worked calls', () => {
   assert.match(ok('seinsheimer-subtroch', { 'ss-type': 'V' }).band, /greater trochanter/);
 });
 
+test('lib/mayfield-perilunate-v414.js worked calls', () => {
+  // Stage III (the META example): midcarpal dislocation.
+  const iii = ok('mayfield-perilunate', { 'mf-stage': 'III' });
+  assert.equal(iii.stage, 'III');
+  assert.match(iii.band, /disruption of the lunotriquetral ligament/);
+  // Stage I: scapholunate dissociation.
+  assert.match(ok('mayfield-perilunate', { 'mf-stage': 'I' }).band, /scapholunate ligament/);
+  // Stage IV: lunate dislocation, volar.
+  assert.match(ok('mayfield-perilunate', { 'mf-stage': 'IV' }).band, /dislocates volarly/);
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];
