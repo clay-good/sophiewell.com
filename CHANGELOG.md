@@ -6,6 +6,22 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v418 — Milch classification (lateral condyle fracture) tile, 1269 → 1270)
+
+- New `milch-condyle` tile (group G): the Milch classification of lateral humeral condyle fractures (a common
+  pediatric elbow injury) by whether the fracture line reaches the trochlear groove and involves the lateral
+  trochlear ridge — types I and II; previously absent. The clinician picks the type and the tile reports its
+  groove/stability description. **I:** the line runs lateral to the trochlear groove and does not reach it;
+  the lateral trochlear ridge is intact, so the elbow stays stable. **II:** the line extends medially into
+  the trochlear groove; the lateral trochlear ridge is involved, so the elbow becomes unstable and the
+  forearm can translate laterally. A Milch type, not a diagnosis, a treatment decision, or a prognosis
+  ([spec-v11] §5.3); the stability is intrinsic to the pattern (a classically taught association) and the
+  reduction / fixation decision stays with the orthopedic team. Types transcribed (spec-v97) from Milch 1964,
+  cross-verified against pediatric-orthopedic / radiology references; no citation-staleness row (the citation
+  carries no guideline-issuer acronym). New `lib/milch-condyle-v418.js` + `views/group-v418.js` (RV418); +1
+  META entry, +1 UTILITIES row, a synonym entry (v139 → v140), 4 unit tests + fuzz, corpus rebuilt to 1270.
+  See [docs/spec-v418.md](docs/spec-v418.md). The MCP adapter follows in a later wave.
+
 ### Added (spec-v417 — Wassel classification (thumb polydactyly) tile, 1268 → 1269)
 
 - New `wassel-thumb` tile (group G): the Wassel classification of thumb polydactyly (radial / preaxial thumb

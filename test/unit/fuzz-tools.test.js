@@ -394,6 +394,7 @@ import * as mayfieldPerilunateV414 from '../../lib/mayfield-perilunate-v414.js';
 import * as geisslerCarpalV415 from '../../lib/geissler-carpal-v415.js';
 import * as russeScaphoidV416 from '../../lib/russe-scaphoid-v416.js';
 import * as wasselThumbV417 from '../../lib/wassel-thumb-v417.js';
+import * as milchCondyleV418 from '../../lib/milch-condyle-v418.js';
 import * as tbTesting from '../../lib/tb-testing.js';
 
 const MODULES = {
@@ -733,6 +734,7 @@ const MODULES = {
   'geissler-carpal-v415.js': geisslerCarpalV415,
   'russe-scaphoid-v416.js': russeScaphoidV416,
   'wassel-thumb-v417.js': wasselThumbV417,
+  'milch-condyle-v418.js': milchCondyleV418,
   'tb-testing.js': tbTesting,
 };
 
