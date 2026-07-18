@@ -408,6 +408,8 @@ const PROBES = [
   ['hangman fracture', ['levine-edwards']],
   // spec-v412 tile, exposed to MCP in wave 237: Myerson classification (Lisfranc injury).
   ['lisfranc injury', ['lisfranc-myerson']],
+  // spec-v413 tile, exposed to MCP in wave 238: Seinsheimer classification (subtrochanteric femur fracture).
+  ['subtrochanteric fracture', ['seinsheimer-subtroch']],
 ];
 
 test(`every golden probe routes an acceptable tile into the top ${TOP_N}`, () => {

@@ -3565,6 +3565,17 @@ test('lib/lisfranc-myerson-v412.js worked calls', () => {
   assert.match(ok('lisfranc-myerson', { 'lf-type': 'C2' }).band, /divergent, total/);
 });
 
+test('lib/seinsheimer-subtroch-v413.js worked calls', () => {
+  // Type IIB (the META example): two-part spiral, lesser troch proximal.
+  const iib = ok('seinsheimer-subtroch', { 'ss-type': 'IIB' });
+  assert.equal(iib.type, 'IIB');
+  assert.match(iib.band, /lesser trochanter attached to the proximal fragment/);
+  // Type I: nondisplaced.
+  assert.match(ok('seinsheimer-subtroch', { 'ss-type': 'I' }).band, /less than 2 mm of displacement/);
+  // Type V: subtrochanteric-intertrochanteric.
+  assert.match(ok('seinsheimer-subtroch', { 'ss-type': 'V' }).band, /greater trochanter/);
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];

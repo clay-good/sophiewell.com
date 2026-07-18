@@ -1502,6 +1502,19 @@ round-trip both pass, without the phantom "2". Adapter appended to the existing
 rate to a target PaCO2. Brings the exposed total to **1072 calculators across 197
 modules**.
 
+## Two-hundred-thirty-eighth wave — the Seinsheimer classification (subtrochanteric femur fracture) in lib/seinsheimer-subtroch-v413.js (+1)
+
+`seinsheimer-subtroch` (spec-v413) applies the Seinsheimer classification of a subtrochanteric femur
+fracture: given the type, it reports the fragment/fracture-line description. `type` is an enum
+(`kind: 'enum'`, values I/IIA/IIB/IIC/IIIA/IIIB/IV/V) — the single input the renderer exposes. The example
+sets type IIB; its expected text carries no numeric facts (the type description is word-only), so it flows
+through the default `makeToArgs` with no custom toArgs. New adapter module registered in `mcp/catalog.js`;
+its golden probe ("subtrochanteric fracture") is promoted now that the tile is in the MCP-exposed registry.
+Brings the exposed total to **1202 calculators across 318 modules**.
+
+### lib/seinsheimer-subtroch-v413.js
+- `seinsheimer-subtroch`
+
 ## Two-hundred-thirty-seventh wave — the Myerson classification (Lisfranc injury) in lib/lisfranc-myerson-v412.js (+1)
 
 `lisfranc-myerson` (spec-v412) applies the Myerson classification (a modification of the Hardcastle /
@@ -4675,6 +4688,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/lisfranc-myerson-v412.js
 - `lisfranc-myerson`
+
+### lib/seinsheimer-subtroch-v413.js
+- `seinsheimer-subtroch`
 
 ### lib/tb-testing.js
 - `tb-testing`

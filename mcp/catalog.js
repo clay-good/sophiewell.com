@@ -325,6 +325,7 @@ import idebergGlenoidV409 from './adapters/ideberg-glenoid-v409.js';
 import andersonDalonzoV410 from './adapters/anderson-dalonzo-v410.js';
 import levineEdwardsV411 from './adapters/levine-edwards-v411.js';
 import lisfrancMyersonV412 from './adapters/lisfranc-myerson-v412.js';
+import seinsheimerSubtrochV413 from './adapters/seinsheimer-subtroch-v413.js';
 import tbTesting from './adapters/tb-testing.js';
 import labInterpret from './adapters/lab-interpret.js';
 import decisionRulesV258 from './adapters/decision-rules-v258.js';
@@ -644,6 +645,7 @@ const ADAPTER_MODULES = [
   ['anderson-dalonzo-v410', andersonDalonzoV410],
   ['levine-edwards-v411', levineEdwardsV411],
   ['lisfranc-myerson-v412', lisfrancMyersonV412],
+  ['seinsheimer-subtroch-v413', seinsheimerSubtrochV413],
   ['tb-testing', tbTesting],
   ['lab-interpret', labInterpret],
   ['decision-rules-v258', decisionRulesV258],
