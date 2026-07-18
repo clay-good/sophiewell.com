@@ -78,7 +78,7 @@ find_calculator { "query": "stroke risk afib" }
        candidates: [ { id: "chads", name: "CHA2DS2-VASc", why: "synonym", ... }, ... ] }
 
 list_calculators { "specialty": "hepatology" }
-  -> { coverage: "1198 of 1109 catalog tiles exposed ...", calculators: [ { id: "meld-xi", ... }, ... ] }
+  -> { coverage: "1199 of 1109 catalog tiles exposed ...", calculators: [ { id: "meld-xi", ... }, ... ] }
 
 describe_calculator { "id": "meld-xi" }
   -> { inputSchema: { ... mx-bili, mx-creat ... }, citation: "Heuman DM ... Liver Transpl 2007", ... }
@@ -446,7 +446,8 @@ the Le Fort classification (midface fracture) in `lib/le-fort-v406.js`, and a tw
 Steinberg staging (femoral head AVN) in `lib/steinberg-avn-v407.js`, and a two-hundred-thirty-third the
 Meyers-McKeever classification (tibial eminence fracture) in `lib/meyers-mckeever-v408.js`, and a
 two-hundred-thirty-fourth the Ideberg classification (glenoid fossa fracture) in
-`lib/ideberg-glenoid-v409.js`, for 1198 across 314
+`lib/ideberg-glenoid-v409.js`, and a two-hundred-thirty-fifth the Anderson-D'Alonzo classification (odontoid
+fracture) in `lib/anderson-dalonzo-v410.js`, for 1199 across 315
 modules today. <!-- catalog-truth:historical (197 is the count of lib modules adapted, not a catalog tile count) -->
 Later waves extend it module by module against the same contract.
 

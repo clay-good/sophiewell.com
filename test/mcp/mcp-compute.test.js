@@ -3532,6 +3532,17 @@ test('lib/ideberg-glenoid-v409.js worked calls', () => {
   assert.match(ok('ideberg-glenoid', { 'idb-type': 'VI' }).band, /severely comminuted/);
 });
 
+test('lib/anderson-dalonzo-v410.js worked calls', () => {
+  // Type II (the META example): base of the dens.
+  const two = ok('anderson-dalonzo', { 'ad-type': 'II' });
+  assert.equal(two.type, 'II');
+  assert.match(two.band, /base \(neck\) of the odontoid/);
+  // Type I: tip.
+  assert.match(ok('anderson-dalonzo', { 'ad-type': 'I' }).band, /tip of the odontoid/);
+  // Type III: C2 body.
+  assert.match(ok('anderson-dalonzo', { 'ad-type': 'III' }).band, /cancellous body of C2/);
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];

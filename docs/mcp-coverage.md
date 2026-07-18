@@ -1502,6 +1502,16 @@ round-trip both pass, without the phantom "2". Adapter appended to the existing
 rate to a target PaCO2. Brings the exposed total to **1072 calculators across 197
 modules**.
 
+## Two-hundred-thirty-fifth wave — the Anderson-D'Alonzo classification (odontoid fracture) in lib/anderson-dalonzo-v410.js (+1)
+
+`anderson-dalonzo` (spec-v410) applies the Anderson-D'Alonzo classification of an odontoid fracture: given
+the type, it reports the level description. `type` is an enum (`kind: 'enum'`, values I/II/III) — the
+single input the renderer exposes. The example sets type II; its expected text's only digits are the "C2"
+level label that the result echoes verbatim, so it flows through the default `makeToArgs` with no custom
+toArgs. New adapter module registered in `mcp/catalog.js`; its golden probe ("odontoid fracture") is
+promoted now that the tile is in the MCP-exposed registry. Brings the exposed total to **1199 calculators
+across 315 modules**.
+
 ## Two-hundred-thirty-fourth wave — the Ideberg classification (glenoid fossa fracture) in lib/ideberg-glenoid-v409.js (+1)
 
 `ideberg-glenoid` (spec-v409) applies the Ideberg classification of a glenoid-fossa fracture: given the
@@ -4633,6 +4643,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/ideberg-glenoid-v409.js
 - `ideberg-glenoid`
+
+### lib/anderson-dalonzo-v410.js
+- `anderson-dalonzo`
 
 ### lib/tb-testing.js
 - `tb-testing`
