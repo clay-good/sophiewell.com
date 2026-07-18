@@ -78,7 +78,7 @@ find_calculator { "query": "stroke risk afib" }
        candidates: [ { id: "chads", name: "CHA2DS2-VASc", why: "synonym", ... }, ... ] }
 
 list_calculators { "specialty": "hepatology" }
-  -> { coverage: "1210 of 1109 catalog tiles exposed ...", calculators: [ { id: "meld-xi", ... }, ... ] }
+  -> { coverage: "1211 of 1109 catalog tiles exposed ...", calculators: [ { id: "meld-xi", ... }, ... ] }
 
 describe_calculator { "id": "meld-xi" }
   -> { inputSchema: { ... mx-bili, mx-creat ... }, citation: "Heuman DM ... Liver Transpl 2007", ... }
@@ -458,8 +458,9 @@ fracture) in `lib/russe-scaphoid-v416.js`, and a two-hundred-forty-second the Wa
 polydactyly) in `lib/wassel-thumb-v417.js`, and a two-hundred-forty-third the Milch classification (lateral
 condyle fracture) in `lib/milch-condyle-v418.js`, and a two-hundred-forty-fourth the Myer-Cotton grade
 (subglottic stenosis) in `lib/cotton-myer-v419.js`, a two-hundred-forty-fifth the Friedman tongue
-position (OSA staging) in `lib/friedman-tongue-v420.js`, and a two-hundred-forty-sixth the SUN anterior
-chamber cell grade (uveitis) in `lib/sun-ac-cell-v421.js`, for 1210 across 326 modules today. <!-- catalog-truth:historical (197 is the count of lib modules adapted, not a catalog tile count) -->
+position (OSA staging) in `lib/friedman-tongue-v420.js`, a two-hundred-forty-sixth the SUN anterior
+chamber cell grade (uveitis) in `lib/sun-ac-cell-v421.js`, and a two-hundred-forty-seventh the SUN anterior
+chamber flare grade (uveitis) in `lib/sun-ac-flare-v422.js`, for 1211 across 327 modules today. <!-- catalog-truth:historical (197 is the count of lib modules adapted, not a catalog tile count) -->
 Later waves extend it module by module against the same contract.
 
 ## Design

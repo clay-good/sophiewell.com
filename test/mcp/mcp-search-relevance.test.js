@@ -426,6 +426,8 @@ const PROBES = [
   ['friedman tongue position', ['friedman-tongue']],
   // spec-v421 tile, exposed to MCP in wave 246: SUN anterior chamber cell grade (uveitis).
   ['anterior chamber cell grade', ['sun-ac-cell']],
+  // spec-v422 tile, exposed to MCP in wave 247: SUN anterior chamber flare grade (uveitis).
+  ['anterior chamber flare grade', ['sun-ac-flare']],
 ];
 
 test(`every golden probe routes an acceptable tile into the top ${TOP_N}`, () => {

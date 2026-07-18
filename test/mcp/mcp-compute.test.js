@@ -3656,6 +3656,15 @@ test('lib/sun-ac-cell-v421.js worked calls', () => {
   assert.match(ok('sun-ac-cell', { 'sun-cell': '4+' }).band, /more than 50 cells/);
 });
 
+test('lib/sun-ac-flare-v422.js worked calls', () => {
+  // Grade 2+ (the META example): moderate, iris and lens details clear.
+  const two = ok('sun-ac-flare', { 'sunf-grade': '2+' });
+  assert.equal(two.grade, '2+');
+  assert.match(two.band, /moderate flare \(iris and lens details clear\)/);
+  // Grade 4+: intense, fibrin or plasmoid aqueous.
+  assert.match(ok('sun-ac-flare', { 'sunf-grade': '4+' }).band, /intense flare \(fibrin or plasmoid aqueous\)/);
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];

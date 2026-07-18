@@ -1502,6 +1502,19 @@ round-trip both pass, without the phantom "2". Adapter appended to the existing
 rate to a target PaCO2. Brings the exposed total to **1072 calculators across 197
 modules**.
 
+## Two-hundred-forty-seventh wave — the SUN anterior chamber flare grade (uveitis) in lib/sun-ac-flare-v422.js (+1)
+
+`sun-ac-flare` (spec-v422) applies the SUN anterior chamber flare grade: given the grade, it reports the
+flare description. `grade` is an enum (`kind: 'enum'`, values 0/1+/2+/3+/4+) — the single input the renderer
+exposes. The example sets grade 2+; its expected text carries no numeric facts beyond the grade label (the
+description is word-only), so it flows through the default `makeToArgs` with no custom toArgs. New adapter
+module registered in `mcp/catalog.js`; its golden probe ("anterior chamber flare grade") is promoted now that
+the tile is in the MCP-exposed registry. Completes the SUN cell/flare pair in the exposed registry. Brings the
+exposed total to **1211 calculators across 327 modules**.
+
+### lib/sun-ac-flare-v422.js
+- `sun-ac-flare`
+
 ## Two-hundred-forty-sixth wave — the SUN anterior chamber cell grade (uveitis) in lib/sun-ac-cell-v421.js (+1)
 
 `sun-ac-cell` (spec-v421) applies the SUN anterior chamber cell grade: given the grade, it reports the
@@ -4815,6 +4828,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/sun-ac-cell-v421.js
 - `sun-ac-cell`
+
+### lib/sun-ac-flare-v422.js
+- `sun-ac-flare`
 
 ### lib/tb-testing.js
 - `tb-testing`
