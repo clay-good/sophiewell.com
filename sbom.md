@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `99ecc9aa6f5be096`
-Generated: 2026-07-18T23:02:17.048Z
+Build ID: `41cd85eb577e62c0`
+Generated: 2026-07-18T23:09:12.268Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=20.18.1 <21, npm >=10.0.0
@@ -24,13 +24,13 @@ downloads is committed in this repository and is hashed below.
 
 | Path | Bytes | SHA-256 |
 |---|---:|---|
-| `index.html` | 84829 | `0489757e75f3be449620a190622f8c6885862ae80f890a52c5211adae020354d` |
+| `index.html` | 84884 | `34413d7ee1e5a523470cbe0cba2beae5f0e6cbbc2b59ca6be8d15923fc00eec3` |
 | `styles.css` | 44160 | `a2cc7ad7bae9f7cfc9681d80bc6bd4a58f0b07d47bfcff64897dc04929c12333` |
-| `app.js` | 346833 | `22224519e6e35ac32bd74fd786b517ce5305573b9c50537d8c61cdfb8332beec` |
+| `app.js` | 347066 | `0addfdd86e4f9087c3d1d304e72fcf176888fed1f210e14c6b44ae435d5faf48` |
 | `sw.js` | 4622 | `b891d4344f8e04403b7f1d307fd446cc224bddc6f0c4397438a17d197351171e` |
 | `site.webmanifest` | 709 | `0e0de4da60590a12e8b27a0ae2a2f5ffdb6500b7d2b78f93631ec2f64ed3d5ce` |
 | `robots.txt` | 127 | `38fbf9c1854e72abb20e01e81dd5a31d4ea96f154c12d5db1ec3af05524dd1a1` |
-| `sitemap.xml` | 195944 | `8522157c9551e4e0992bd908762a2fd7c8402f87a44195bbfe4352f9246f6d0e` |
+| `sitemap.xml` | 196100 | `247f3ab71700c8e5b2237645b48b9e92049f7700c289e6364c50afa97a710e26` |
 | `_headers` | 1316 | `2f39986457d2feff7e73e491a7d09ee871e8f2f4cc2bc437f86bd86a42554ec6` |
 | `logo.png` | 63440 | `11afaf1b0d3ca68393d202e4810bf766b5b6d591b4e3ec52f41d3cacaa4616ec` |
 | `favicon.ico` | 7411 | `407fde0ca2788409e87e11f596fa02e6a0b121817fcea7fd995beec1801e287b` |
@@ -54,6 +54,7 @@ downloads is committed in this repository and is hashed below.
 | `lib/av-fistula-v300.js` | 4050 | `9fa354a34bd21ab3dc8c93762767d54f281b1c4e605e00af36917098787fc1e8` |
 | `lib/benzo-equiv-v296.js` | 6358 | `fbf4ace4f4ff01d8f21f7a90406f6b1101068fb719b20c9367dbc8ea048a5cc3` |
 | `lib/berndt-harty-v403.js` | 3412 | `86e138dcdf6e8810773fad12b4be6c7e43086d33349075f87c987136da52bba5` |
+| `lib/bethesda-thyroid-v424.js` | 3705 | `8112250a30620de3b4bf748e10429d4f58394b0ef6ee03232e5ae4cbbd34e9e2` |
 | `lib/bi-rads-v322.js` | 5295 | `22615c3018830dc91339396fc952be1aa0e111df6eaef1fdb5f223942fdc4ccb` |
 | `lib/billing-v78.js` | 11570 | `a83c4af7e754d690ca949b7015a66b0c42aa77346c5c67142ccb2e8fa16849a2` |
 | `lib/billing-v79.js` | 23588 | `d97e1e4dc9c6e358df2d79a93bc79a1960a13cdb75ad33e84403d278938b3f4f` |
@@ -242,7 +243,7 @@ downloads is committed in this repository and is hashed below.
 | `lib/mayfield-perilunate-v414.js` | 4219 | `dbec2e4abce7912c621e5cee9f8bdb1fa3555240da1d08a3f75f448fd0297fc4` |
 | `lib/medication-v4.js` | 18192 | `467f9576c50da696cc56094eb022d0a5ed1e88de0c7618448554ede8067270b0` |
 | `lib/medication-v5.js` | 18863 | `ce81d9f8954abbd412892c13af9936f992239164f26fd2b999eaea7902787ab7` |
-| `lib/meta.js` | 1736723 | `1b5957692b15437ff09962708598db094085cadefdc7f0e0ffa507b5fac9bfe1` |
+| `lib/meta.js` | 1737839 | `456bf19d303e42cba7be140fa5369018df79aec4a6873f80531d69e3ff1fab82` |
 | `lib/metabolic-hepatic-v219.js` | 12791 | `b9352877cebf7fbf3c3b99ecb8b72cdbee3ed94e056dc019113668609f5a95a8` |
 | `lib/metabolic-onc-v88.js` | 12659 | `1553b641668c121661a66647da71a4aaaa023e9f3a6b7a753efbcdab27cdba81` |
 | `lib/metabolic-v269.js` | 3262 | `0c7a42557886f2b0aeee7949b8d0bd682d795d4526174fd540717a978d94ec2f` |
@@ -748,6 +749,7 @@ downloads is committed in this repository and is hashed below.
 | `views/group-v421.js` | 2987 | `3bdb30ecf9510bece9ef52b031011d3ff9723cf254b8d3273b9f8394a2812daa` |
 | `views/group-v422.js` | 3071 | `b119c0757734fed101cb7750cf864a2d42e163b786e19802bbb5d3cf7c16c480` |
 | `views/group-v423.js` | 3159 | `e55c3b24d9ea5552aebf1edcb09936b0dad00c58c0b68ec4a04767dba47239a0` |
+| `views/group-v424.js` | 3167 | `50026a27397ac6b0b213815145d8c2d6190a86592a0cc735d031a4f908080ea5` |
 | `views/group-v5.js` | 32855 | `c17fc4c7bdc25ea5a80969ddc7091a63731dc8aeafb7f478507145a71cf73b2e` |
 | `views/group-v6.js` | 5707 | `425918decb48cd9efac9fc5590ac8970a54c03c3b0df056fb99c9a22ff8dd1b2` |
 | `views/group-v63.js` | 14377 | `962d84b97e82bc39635801da79ecaa93fc0b501b5988b7d321b0f1f630497fab` |

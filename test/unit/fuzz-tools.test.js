@@ -400,6 +400,7 @@ import * as friedmanTongueV420 from '../../lib/friedman-tongue-v420.js';
 import * as sunAcCellV421 from '../../lib/sun-ac-cell-v421.js';
 import * as sunAcFlareV422 from '../../lib/sun-ac-flare-v422.js';
 import * as marshOberhuberV423 from '../../lib/marsh-oberhuber-v423.js';
+import * as bethesdaThyroidV424 from '../../lib/bethesda-thyroid-v424.js';
 import * as tbTesting from '../../lib/tb-testing.js';
 
 const MODULES = {
@@ -745,6 +746,7 @@ const MODULES = {
   'sun-ac-cell-v421.js': sunAcCellV421,
   'sun-ac-flare-v422.js': sunAcFlareV422,
   'marsh-oberhuber-v423.js': marshOberhuberV423,
+  'bethesda-thyroid-v424.js': bethesdaThyroidV424,
   'tb-testing.js': tbTesting,
 };
 

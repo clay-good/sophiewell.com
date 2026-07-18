@@ -6,6 +6,22 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v424 — Bethesda System (thyroid cytopathology) tile, 1275 → 1276)
+
+- New `bethesda-thyroid` tile (group G): the Bethesda System for Reporting Thyroid Cytopathology, the
+  standardized six-category scheme a cytopathologist assigns to a thyroid fine-needle-aspiration (categories
+  I/II/III/IV/V/VI); previously absent. The cytopathologist picks the category and the tile reports its
+  cytologic meaning. **I:** nondiagnostic or unsatisfactory. **II:** benign. **III:** atypia of undetermined
+  significance (AUS/FLUS). **IV:** follicular neoplasm or suspicious for one. **V:** suspicious for
+  malignancy. **VI:** malignant. A category, not a diagnosis of thyroid cancer, an implied risk estimate, a
+  treatment decision, or a prognosis ([spec-v11] §5.3); the decisions stay with the pathology / endocrinology
+  / surgery team. The tile omits the edition-dependent risk percentages and management. Categories transcribed
+  (spec-v97) from Cibas & Ali 2017 (Thyroid), cross-verified against the third edition (Ali 2023, which keeps
+  the same six categories); no citation-staleness row (the citation carries no guideline-issuer acronym). New
+  `lib/bethesda-thyroid-v424.js` + `views/group-v424.js` (RV424); +1 META entry, +1 UTILITIES row, a synonym
+  entry (v145 → v146), 6 unit tests + fuzz, corpus rebuilt to 1276. See [docs/spec-v424.md](docs/spec-v424.md).
+  The MCP adapter follows in a later wave.
+
 ### Added (spec-v423 — Marsh-Oberhuber classification (celiac histology) tile, 1274 → 1275)
 
 - New `marsh-oberhuber` tile (group G): the modified Marsh (Marsh-Oberhuber) classification of the duodenal
