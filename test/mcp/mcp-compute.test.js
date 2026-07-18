@@ -3543,6 +3543,17 @@ test('lib/anderson-dalonzo-v410.js worked calls', () => {
   assert.match(ok('anderson-dalonzo', { 'ad-type': 'III' }).band, /cancellous body of C2/);
 });
 
+test('lib/levine-edwards-v411.js worked calls', () => {
+  // Type II (the META example): translation with angulation.
+  const two = ok('levine-edwards', { 'le-type': 'II' });
+  assert.equal(two.type, 'II');
+  assert.match(two.band, /more than 3 mm of translation/);
+  // Type I: stable.
+  assert.match(ok('levine-edwards', { 'le-type': 'I' }).band, /less than 3 mm of translation/);
+  // Type IIa: traction contraindicated.
+  assert.match(ok('levine-edwards', { 'le-type': 'IIa' }).band, /traction is contraindicated/);
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];

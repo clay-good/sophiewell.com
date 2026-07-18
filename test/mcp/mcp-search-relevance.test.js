@@ -404,6 +404,8 @@ const PROBES = [
   ['glenoid fossa fracture', ['ideberg-glenoid']],
   // spec-v410 tile, exposed to MCP in wave 235: Anderson-D'Alonzo classification (odontoid fracture).
   ['odontoid fracture', ['anderson-dalonzo']],
+  // spec-v411 tile, exposed to MCP in wave 236: Levine-Edwards classification (hangman's fracture).
+  ['hangman fracture', ['levine-edwards']],
 ];
 
 test(`every golden probe routes an acceptable tile into the top ${TOP_N}`, () => {

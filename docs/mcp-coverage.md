@@ -1502,6 +1502,16 @@ round-trip both pass, without the phantom "2". Adapter appended to the existing
 rate to a target PaCO2. Brings the exposed total to **1072 calculators across 197
 modules**.
 
+## Two-hundred-thirty-sixth wave — the Levine-Edwards classification (hangman's fracture) in lib/levine-edwards-v411.js (+1)
+
+`levine-edwards` (spec-v411) applies the Levine-Edwards classification of a hangman's fracture: given the
+type, it reports the displacement/angulation description. `type` is an enum (`kind: 'enum'`, values
+I/II/IIa/III) — the single input the renderer exposes. The example sets type II; its expected text's digits
+are the "3 mm" translation threshold that the result echoes verbatim, so it flows through the default
+`makeToArgs` with no custom toArgs. New adapter module registered in `mcp/catalog.js`; its golden probe
+("hangman fracture") is promoted now that the tile is in the MCP-exposed registry. Brings the exposed total
+to **1200 calculators across 316 modules**.
+
 ## Two-hundred-thirty-fifth wave — the Anderson-D'Alonzo classification (odontoid fracture) in lib/anderson-dalonzo-v410.js (+1)
 
 `anderson-dalonzo` (spec-v410) applies the Anderson-D'Alonzo classification of an odontoid fracture: given
@@ -4646,6 +4656,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/anderson-dalonzo-v410.js
 - `anderson-dalonzo`
+
+### lib/levine-edwards-v411.js
+- `levine-edwards`
 
 ### lib/tb-testing.js
 - `tb-testing`
