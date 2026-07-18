@@ -396,6 +396,8 @@ const PROBES = [
   ['savary miller esophagitis', ['savary-miller']],
   // spec-v406 tile, exposed to MCP in wave 231: Le Fort classification (midface fracture).
   ['midface fracture', ['le-fort']],
+  // spec-v407 tile, exposed to MCP in wave 232: Steinberg staging (femoral head AVN).
+  ['steinberg staging', ['steinberg-avn']],
 ];
 
 test(`every golden probe routes an acceptable tile into the top ${TOP_N}`, () => {

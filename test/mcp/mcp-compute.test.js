@@ -3499,6 +3499,17 @@ test('lib/le-fort-v406.js worked calls', () => {
   assert.match(ok('le-fort', { 'lf-type': 'III' }).band, /craniofacial disjunction/);
 });
 
+test('lib/steinberg-avn-v407.js worked calls', () => {
+  // Stage III (the META example): subchondral collapse without flattening.
+  const iii = ok('steinberg-avn', { 'stb-stage': 'III' });
+  assert.equal(iii.stage, 'III');
+  assert.match(iii.band, /subchondral collapse \(crescent sign\)/);
+  // Stage 0: normal imaging.
+  assert.match(ok('steinberg-avn', { 'stb-stage': '0' }).band, /non-diagnostic radiograph/);
+  // Stage VI: advanced degenerative.
+  assert.match(ok('steinberg-avn', { 'stb-stage': 'VI' }).band, /advanced degenerative changes/);
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];

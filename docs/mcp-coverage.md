@@ -1502,6 +1502,16 @@ round-trip both pass, without the phantom "2". Adapter appended to the existing
 rate to a target PaCO2. Brings the exposed total to **1072 calculators across 197
 modules**.
 
+## Two-hundred-thirty-second wave — the Steinberg staging (femoral head AVN) in lib/steinberg-avn-v407.js (+1)
+
+`steinberg-avn` (spec-v407) applies the Steinberg staging of femoral-head osteonecrosis: given the stage,
+it reports the radiographic description. `stage` is an enum (`kind: 'enum'`, values 0/I/II/III/IV/V/VI) —
+the single input the renderer exposes. The example sets stage III; its expected text's digits are the
+A/B/C extent thresholds (15, 30) that the result echoes verbatim, so it flows through the default
+`makeToArgs` with no custom toArgs. New adapter module registered in `mcp/catalog.js`; its golden probe
+("steinberg staging") is promoted now that the tile is in the MCP-exposed registry. Brings the exposed
+total to **1196 calculators across 312 modules**.
+
 ## Two-hundred-thirty-first wave — the Le Fort classification (midface fracture) in lib/le-fort-v406.js (+1)
 
 `le-fort` (spec-v406) applies the Le Fort classification of a midface fracture: given the type, it reports
@@ -4594,6 +4604,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/le-fort-v406.js
 - `le-fort`
+
+### lib/steinberg-avn-v407.js
+- `steinberg-avn`
 
 ### lib/tb-testing.js
 - `tb-testing`

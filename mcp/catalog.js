@@ -319,6 +319,7 @@ import berndtHartyV403 from './adapters/berndt-harty-v403.js';
 import reganMorreyV404 from './adapters/regan-morrey-v404.js';
 import savaryMillerV405 from './adapters/savary-miller-v405.js';
 import leFortV406 from './adapters/le-fort-v406.js';
+import steinbergAvnV407 from './adapters/steinberg-avn-v407.js';
 import tbTesting from './adapters/tb-testing.js';
 import labInterpret from './adapters/lab-interpret.js';
 import decisionRulesV258 from './adapters/decision-rules-v258.js';
@@ -632,6 +633,7 @@ const ADAPTER_MODULES = [
   ['regan-morrey-v404', reganMorreyV404],
   ['savary-miller-v405', savaryMillerV405],
   ['le-fort-v406', leFortV406],
+  ['steinberg-avn-v407', steinbergAvnV407],
   ['tb-testing', tbTesting],
   ['lab-interpret', labInterpret],
   ['decision-rules-v258', decisionRulesV258],
