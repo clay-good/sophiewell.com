@@ -1502,6 +1502,19 @@ round-trip both pass, without the phantom "2". Adapter appended to the existing
 rate to a target PaCO2. Brings the exposed total to **1072 calculators across 197
 modules**.
 
+## Two-hundred-thirty-seventh wave — the Myerson classification (Lisfranc injury) in lib/lisfranc-myerson-v412.js (+1)
+
+`lisfranc-myerson` (spec-v412) applies the Myerson classification (a modification of the Hardcastle /
+Quenu-Kuss classification) of a Lisfranc (tarsometatarsal) injury: given the type, it reports the
+incongruity/displacement description. `type` is an enum (`kind: 'enum'`, values A/B1/B2/C1/C2) — the single
+input the renderer exposes. The example sets type B2; its expected text carries no numeric facts (the type
+descriptions are word-only), so it flows through the default `makeToArgs` with no custom toArgs. New adapter
+module registered in `mcp/catalog.js`; its golden probe ("lisfranc injury") is promoted now that the tile is
+in the MCP-exposed registry. Brings the exposed total to **1201 calculators across 317 modules**.
+
+### lib/lisfranc-myerson-v412.js
+- `lisfranc-myerson`
+
 ## Two-hundred-thirty-sixth wave — the Levine-Edwards classification (hangman's fracture) in lib/levine-edwards-v411.js (+1)
 
 `levine-edwards` (spec-v411) applies the Levine-Edwards classification of a hangman's fracture: given the
@@ -4659,6 +4672,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/levine-edwards-v411.js
 - `levine-edwards`
+
+### lib/lisfranc-myerson-v412.js
+- `lisfranc-myerson`
 
 ### lib/tb-testing.js
 - `tb-testing`

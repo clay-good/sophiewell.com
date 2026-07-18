@@ -3554,6 +3554,17 @@ test('lib/levine-edwards-v411.js worked calls', () => {
   assert.match(ok('levine-edwards', { 'le-type': 'IIa' }).band, /traction is contraindicated/);
 });
 
+test('lib/lisfranc-myerson-v412.js worked calls', () => {
+  // Type B2 (the META example): partial, lateral.
+  const b2 = ok('lisfranc-myerson', { 'lf-type': 'B2' });
+  assert.equal(b2.type, 'B2');
+  assert.match(b2.band, /lateral displacement of one or more of the lateral four metatarsals/);
+  // Type A: total incongruity.
+  assert.match(ok('lisfranc-myerson', { 'lf-type': 'A' }).band, /all five metatarsals displaced in the same direction/);
+  // Type C2: divergent, total.
+  assert.match(ok('lisfranc-myerson', { 'lf-type': 'C2' }).band, /divergent, total/);
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];

@@ -78,7 +78,7 @@ find_calculator { "query": "stroke risk afib" }
        candidates: [ { id: "chads", name: "CHA2DS2-VASc", why: "synonym", ... }, ... ] }
 
 list_calculators { "specialty": "hepatology" }
-  -> { coverage: "1200 of 1109 catalog tiles exposed ...", calculators: [ { id: "meld-xi", ... }, ... ] }
+  -> { coverage: "1201 of 1109 catalog tiles exposed ...", calculators: [ { id: "meld-xi", ... }, ... ] }
 
 describe_calculator { "id": "meld-xi" }
   -> { inputSchema: { ... mx-bili, mx-creat ... }, citation: "Heuman DM ... Liver Transpl 2007", ... }
@@ -448,7 +448,8 @@ Meyers-McKeever classification (tibial eminence fracture) in `lib/meyers-mckeeve
 two-hundred-thirty-fourth the Ideberg classification (glenoid fossa fracture) in
 `lib/ideberg-glenoid-v409.js`, and a two-hundred-thirty-fifth the Anderson-D'Alonzo classification (odontoid
 fracture) in `lib/anderson-dalonzo-v410.js`, and a two-hundred-thirty-sixth the Levine-Edwards
-classification (hangman's fracture) in `lib/levine-edwards-v411.js`, for 1200 across 316
+classification (hangman's fracture) in `lib/levine-edwards-v411.js`, and a two-hundred-thirty-seventh the
+Myerson classification (Lisfranc injury) in `lib/lisfranc-myerson-v412.js`, for 1201 across 317
 modules today. <!-- catalog-truth:historical (197 is the count of lib modules adapted, not a catalog tile count) -->
 Later waves extend it module by module against the same contract.
 
