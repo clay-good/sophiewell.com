@@ -3510,6 +3510,17 @@ test('lib/steinberg-avn-v407.js worked calls', () => {
   assert.match(ok('steinberg-avn', { 'stb-stage': 'VI' }).band, /advanced degenerative changes/);
 });
 
+test('lib/meyers-mckeever-v408.js worked calls', () => {
+  // Type II (the META example): anterior beak.
+  const two = ok('meyers-mckeever', { 'mm-type': 'II' });
+  assert.equal(two.type, 'II');
+  assert.match(two.band, /producing a beak/);
+  // Type I: non-displaced.
+  assert.match(ok('meyers-mckeever', { 'mm-type': 'I' }).band, /minimally displaced or non-displaced/);
+  // Type IV: comminuted.
+  assert.match(ok('meyers-mckeever', { 'mm-type': 'IV' }).band, /comminuted/);
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];
