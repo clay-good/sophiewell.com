@@ -3665,6 +3665,15 @@ test('lib/sun-ac-flare-v422.js worked calls', () => {
   assert.match(ok('sun-ac-flare', { 'sunf-grade': '4+' }).band, /intense flare \(fibrin or plasmoid aqueous\)/);
 });
 
+test('lib/marsh-oberhuber-v423.js worked calls', () => {
+  // Type 3a (the META example): partial villous atrophy.
+  const t = ok('marsh-oberhuber', { 'mo-type': '3a' });
+  assert.equal(t.type, '3a');
+  assert.match(t.band, /partial villous atrophy/);
+  // Type 0: preinfiltrative.
+  assert.match(ok('marsh-oberhuber', { 'mo-type': '0' }).band, /preinfiltrative/);
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];

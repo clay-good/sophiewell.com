@@ -428,6 +428,8 @@ const PROBES = [
   ['anterior chamber cell grade', ['sun-ac-cell']],
   // spec-v422 tile, exposed to MCP in wave 247: SUN anterior chamber flare grade (uveitis).
   ['anterior chamber flare grade', ['sun-ac-flare']],
+  // spec-v423 tile, exposed to MCP in wave 248: Marsh-Oberhuber classification (celiac histology).
+  ['marsh oberhuber classification', ['marsh-oberhuber']],
 ];
 
 test(`every golden probe routes an acceptable tile into the top ${TOP_N}`, () => {

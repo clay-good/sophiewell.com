@@ -1502,6 +1502,19 @@ round-trip both pass, without the phantom "2". Adapter appended to the existing
 rate to a target PaCO2. Brings the exposed total to **1072 calculators across 197
 modules**.
 
+## Two-hundred-forty-eighth wave — the Marsh-Oberhuber classification (celiac histology) in lib/marsh-oberhuber-v423.js (+1)
+
+`marsh-oberhuber` (spec-v423) applies the modified Marsh (Marsh-Oberhuber) classification: given the type, it
+reports the histologic description. `type` is an enum (`kind: 'enum'`, values 0/1/2/3a/3b/3c) — the single
+input the renderer exposes. The example sets type 3a; its expected text carries no numeric facts beyond the
+type label (the description is word-only), so it flows through the default `makeToArgs` with no custom toArgs.
+New adapter module registered in `mcp/catalog.js`; its golden probe ("marsh oberhuber classification") is
+promoted now that the tile is in the MCP-exposed registry. Brings the exposed total to **1212 calculators
+across 328 modules**.
+
+### lib/marsh-oberhuber-v423.js
+- `marsh-oberhuber`
+
 ## Two-hundred-forty-seventh wave — the SUN anterior chamber flare grade (uveitis) in lib/sun-ac-flare-v422.js (+1)
 
 `sun-ac-flare` (spec-v422) applies the SUN anterior chamber flare grade: given the grade, it reports the
@@ -4831,6 +4844,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/sun-ac-flare-v422.js
 - `sun-ac-flare`
+
+### lib/marsh-oberhuber-v423.js
+- `marsh-oberhuber`
 
 ### lib/tb-testing.js
 - `tb-testing`

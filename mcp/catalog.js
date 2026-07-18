@@ -335,6 +335,7 @@ import cottonMyerV419 from './adapters/cotton-myer-v419.js';
 import friedmanTongueV420 from './adapters/friedman-tongue-v420.js';
 import sunAcCellV421 from './adapters/sun-ac-cell-v421.js';
 import sunAcFlareV422 from './adapters/sun-ac-flare-v422.js';
+import marshOberhuberV423 from './adapters/marsh-oberhuber-v423.js';
 import tbTesting from './adapters/tb-testing.js';
 import labInterpret from './adapters/lab-interpret.js';
 import decisionRulesV258 from './adapters/decision-rules-v258.js';
@@ -664,6 +665,7 @@ const ADAPTER_MODULES = [
   ['friedman-tongue-v420', friedmanTongueV420],
   ['sun-ac-cell-v421', sunAcCellV421],
   ['sun-ac-flare-v422', sunAcFlareV422],
+  ['marsh-oberhuber-v423', marshOberhuberV423],
   ['tb-testing', tbTesting],
   ['lab-interpret', labInterpret],
   ['decision-rules-v258', decisionRulesV258],
