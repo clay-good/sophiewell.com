@@ -1,5 +1,5 @@
 {
-  "version": "v140-2026-07-18",
+  "version": "v141-2026-07-18",
   "note": "spec-v7 section 3.2: hand-curated patient-phrasing -> tile id table. Each entry maps patient-mental-model phrases (and, from the v8/v9 plain-language-search batches, clinical abbreviations, eponym aliases, and canonical-intent phrases) to a single existing tile. Audience is the primary audience the entry serves; the matcher deprioritizes (does not hide) entries when the user has selected a different chip. Every phrase is lowercase; every tile id is an existing catalog tile (guarded by test/unit/synonyms-catalog.test.js). Adding a new phrase is a one-line PR.",
   "entries": [
     { "phrases": ["denied", "denial letter", "they denied it", "insurance said no", "appeal", "write an appeal", "appeal my claim", "appeal letter", "appeal a denial"],
@@ -424,6 +424,8 @@
     { "phrases": ["wassel", "wassel classification", "thumb polydactyly", "thumb duplication", "duplicated thumb", "radial polydactyly", "preaxial polydactyly", "wassel flatt"],
       "tile": "wassel-thumb", "audience": "clinicians" },
     { "phrases": ["milch", "milch classification", "lateral condyle fracture", "lateral humeral condyle fracture", "lateral condyle classification", "lateral condylar mass fracture", "pediatric lateral condyle"],
-      "tile": "milch-condyle", "audience": "clinicians" }
+      "tile": "milch-condyle", "audience": "clinicians" },
+    { "phrases": ["cotton myer", "myer cotton", "cotton myer classification", "subglottic stenosis grade", "subglottic stenosis grading", "myer cotton grade", "subglottic stenosis classification", "airway stenosis grade"],
+      "tile": "cotton-myer", "audience": "clinicians" }
   ]
 }

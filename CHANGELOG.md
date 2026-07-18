@@ -6,6 +6,19 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v419 — Myer-Cotton grade (subglottic stenosis) tile, 1270 → 1271)
+
+- New `cotton-myer` tile (group G): the Myer-Cotton (Cotton-Myer) grading of subglottic stenosis by the
+  percent obstruction of the subglottic airway lumen (grades I/II/III/IV); previously absent. The clinician
+  picks the grade and the tile reports its percent-obstruction description. **I:** 0% to 50% obstruction.
+  **II:** 51% to 70%. **III:** 71% to 99%. **IV:** no detectable lumen (complete obstruction). A Cotton-Myer
+  grade, not a diagnosis, a treatment decision, or a prognosis ([spec-v11] §5.3); the airway-management
+  decision stays with the otolaryngology / airway team. Grades transcribed (spec-v97) from Myer-Cotton 1994,
+  cross-verified against otolaryngology / airway references; no citation-staleness row (the citation carries
+  no guideline-issuer acronym). New `lib/cotton-myer-v419.js` + `views/group-v419.js` (RV419); +1 META entry,
+  +1 UTILITIES row, a synonym entry (v140 → v141), 6 unit tests + fuzz, corpus rebuilt to 1271. See
+  [docs/spec-v419.md](docs/spec-v419.md). The MCP adapter follows in a later wave.
+
 ### Added (spec-v418 — Milch classification (lateral condyle fracture) tile, 1269 → 1270)
 
 - New `milch-condyle` tile (group G): the Milch classification of lateral humeral condyle fractures (a common
