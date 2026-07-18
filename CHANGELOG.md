@@ -6,6 +6,21 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v417 — Wassel classification (thumb polydactyly) tile, 1268 → 1269)
+
+- New `wassel-thumb` tile (group G): the Wassel classification of thumb polydactyly (radial / preaxial thumb
+  duplication) by the most proximal level of skeletal duplication (types I-VII); previously absent. The
+  clinician picks the type and the tile reports its duplication-level description. Odd numerals are a bifid
+  bone (shared base); even numerals are a complete duplication; the numbers ascend proximally. **I:** bifid
+  distal phalanx. **II:** duplicated distal phalanx. **III:** bifid proximal phalanx. **IV:** duplicated
+  proximal phalanx (most common). **V:** bifid metacarpal. **VI:** duplicated metacarpal. **VII:**
+  triphalangeal thumb. A Wassel type, not a diagnosis, a treatment decision, or a prognosis ([spec-v11]
+  §5.3); the reconstruction decision stays with the hand / plastic-surgery team. Types transcribed (spec-v97)
+  from Wassel 1969, cross-verified against hand-surgery / radiology references; no citation-staleness row (the
+  citation carries no guideline-issuer acronym). New `lib/wassel-thumb-v417.js` + `views/group-v417.js`
+  (RV417); +1 META entry, +1 UTILITIES row, a synonym entry (v138 → v139), 6 unit tests + fuzz, corpus
+  rebuilt to 1269. See [docs/spec-v417.md](docs/spec-v417.md). The MCP adapter follows in a later wave.
+
 ### Added (spec-v416 — Russe classification (scaphoid fracture) tile, 1267 → 1268)
 
 - New `russe-scaphoid` tile (group G): the Russe classification of scaphoid (carpal navicular) fractures by
