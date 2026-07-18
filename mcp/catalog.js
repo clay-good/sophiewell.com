@@ -332,6 +332,7 @@ import russeScaphoidV416 from './adapters/russe-scaphoid-v416.js';
 import wasselThumbV417 from './adapters/wassel-thumb-v417.js';
 import milchCondyleV418 from './adapters/milch-condyle-v418.js';
 import cottonMyerV419 from './adapters/cotton-myer-v419.js';
+import friedmanTongueV420 from './adapters/friedman-tongue-v420.js';
 import tbTesting from './adapters/tb-testing.js';
 import labInterpret from './adapters/lab-interpret.js';
 import decisionRulesV258 from './adapters/decision-rules-v258.js';
@@ -658,6 +659,7 @@ const ADAPTER_MODULES = [
   ['wassel-thumb-v417', wasselThumbV417],
   ['milch-condyle-v418', milchCondyleV418],
   ['cotton-myer-v419', cottonMyerV419],
+  ['friedman-tongue-v420', friedmanTongueV420],
   ['tb-testing', tbTesting],
   ['lab-interpret', labInterpret],
   ['decision-rules-v258', decisionRulesV258],

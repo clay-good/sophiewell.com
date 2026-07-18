@@ -1502,6 +1502,18 @@ round-trip both pass, without the phantom "2". Adapter appended to the existing
 rate to a target PaCO2. Brings the exposed total to **1072 calculators across 197
 modules**.
 
+## Two-hundred-forty-fifth wave — the Friedman tongue position (OSA staging) in lib/friedman-tongue-v420.js (+1)
+
+`friedman-tongue` (spec-v420) applies the Friedman tongue position: given the grade, it reports the
+visualization description. `grade` is an enum (`kind: 'enum'`, values I/II/III/IV) — the single input the
+renderer exposes. The example sets grade II; its expected text carries no numeric facts (the description is
+word-only), so it flows through the default `makeToArgs` with no custom toArgs. New adapter module registered
+in `mcp/catalog.js`; its golden probe ("friedman tongue position") is promoted now that the tile is in the
+MCP-exposed registry. Brings the exposed total to **1209 calculators across 325 modules**.
+
+### lib/friedman-tongue-v420.js
+- `friedman-tongue`
+
 ## Two-hundred-forty-fourth wave — the Myer-Cotton grade (subglottic stenosis) in lib/cotton-myer-v419.js (+1)
 
 `cotton-myer` (spec-v419) applies the Myer-Cotton grading of subglottic stenosis: given the grade, it reports
@@ -4785,6 +4797,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/cotton-myer-v419.js
 - `cotton-myer`
+
+### lib/friedman-tongue-v420.js
+- `friedman-tongue`
 
 ### lib/tb-testing.js
 - `tb-testing`

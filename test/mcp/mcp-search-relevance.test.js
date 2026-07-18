@@ -422,6 +422,8 @@ const PROBES = [
   ['lateral condyle fracture', ['milch-condyle']],
   // spec-v419 tile, exposed to MCP in wave 244: Myer-Cotton grade (subglottic stenosis).
   ['subglottic stenosis grade', ['cotton-myer']],
+  // spec-v420 tile, exposed to MCP in wave 245: Friedman tongue position (OSA staging).
+  ['friedman tongue position', ['friedman-tongue']],
 ];
 
 test(`every golden probe routes an acceptable tile into the top ${TOP_N}`, () => {

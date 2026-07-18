@@ -3638,6 +3638,15 @@ test('lib/cotton-myer-v419.js worked calls', () => {
   assert.match(ok('cotton-myer', { 'cm-grade': 'IV' }).band, /no detectable lumen/);
 });
 
+test('lib/friedman-tongue-v420.js worked calls', () => {
+  // Grade II (the META example): uvula but not tonsils.
+  const two = ok('friedman-tongue', { 'ft-grade': 'II' });
+  assert.equal(two.grade, 'II');
+  assert.match(two.band, /visualize the uvula but not the tonsils/);
+  // Grade IV: only the hard palate.
+  assert.match(ok('friedman-tongue', { 'ft-grade': 'IV' }).band, /only the hard palate/);
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];
