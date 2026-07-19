@@ -4142,6 +4142,15 @@ test('lib/nash-moe-rotation-v476.js worked calls', () => {
   assert.match(ok('nash-moe-rotation', { 'nash-moe-grade': '4' }).band, /migrated past the midline/);
 });
 
+test('lib/sfu-hydronephrosis-v477.js worked calls', () => {
+  // Grade 2 (the META example): pelvis and a few calyces.
+  const two = ok('sfu-hydronephrosis', { 'sfu-grade': '2' });
+  assert.equal(two.grade, '2');
+  assert.match(two.band, /renal pelvis and a few calyces/);
+  // Grade 4: parenchymal thinning.
+  assert.match(ok('sfu-hydronephrosis', { 'sfu-grade': '4' }).band, /thinning of the renal parenchyma/);
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];

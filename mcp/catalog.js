@@ -388,6 +388,7 @@ import todaniCholedochalV473 from './adapters/todani-choledochal-v473.js';
 import rastelliAvsdV474 from './adapters/rastelli-avsd-v474.js';
 import glogauPhotoagingV475 from './adapters/glogau-photoaging-v475.js';
 import nashMoeRotationV476 from './adapters/nash-moe-rotation-v476.js';
+import sfuHydronephrosisV477 from './adapters/sfu-hydronephrosis-v477.js';
 import tbTesting from './adapters/tb-testing.js';
 import labInterpret from './adapters/lab-interpret.js';
 import decisionRulesV258 from './adapters/decision-rules-v258.js';
@@ -770,6 +771,7 @@ const ADAPTER_MODULES = [
   ['rastelli-avsd-v474', rastelliAvsdV474],
   ['glogau-photoaging-v475', glogauPhotoagingV475],
   ['nash-moe-rotation-v476', nashMoeRotationV476],
+  ['sfu-hydronephrosis-v477', sfuHydronephrosisV477],
   ['tb-testing', tbTesting],
   ['lab-interpret', labInterpret],
   ['decision-rules-v258', decisionRulesV258],
