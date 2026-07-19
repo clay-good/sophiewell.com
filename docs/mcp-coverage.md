@@ -1502,6 +1502,19 @@ round-trip both pass, without the phantom "2". Adapter appended to the existing
 rate to a target PaCO2. Brings the exposed total to **1072 calculators across 197
 modules**.
 
+## Two-hundred-seventieth wave — the Revised Atlanta severity (acute pancreatitis) in lib/atlanta-pancreatitis-v445.js (+1)
+
+`atlanta-pancreatitis` (spec-v445) applies the Revised Atlanta classification: given the severity, it reports
+the definition. `severity` is an enum (`kind: 'enum'`, values mild/moderately-severe/severe) — the single
+input the renderer exposes. The example sets moderately-severe; its expected text carries no numeric facts
+(the definition is word-only), so it flows through the default `makeToArgs` with no custom toArgs. New adapter
+module registered in `mcp/catalog.js`; its golden probe ("revised atlanta pancreatitis severity") is promoted
+now that the tile is in the MCP-exposed registry. Brings the exposed total to **1234 calculators across 350
+modules**.
+
+### lib/atlanta-pancreatitis-v445.js
+- `atlanta-pancreatitis`
+
 ## Two-hundred-sixty-ninth wave — the McCormick grade (spinal cord function) in lib/mccormick-v444.js (+1)
 
 `mccormick` (spec-v444) applies the McCormick grading scale: given the grade, it reports the functional
@@ -5165,6 +5178,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/mccormick-v444.js
 - `mccormick`
+
+### lib/atlanta-pancreatitis-v445.js
+- `atlanta-pancreatitis`
 
 ### lib/tb-testing.js
 - `tb-testing`

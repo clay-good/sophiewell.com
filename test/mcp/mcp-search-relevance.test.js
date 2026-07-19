@@ -472,6 +472,8 @@ const PROBES = [
   ['kadish esthesioneuroblastoma stage', ['kadish']],
   // spec-v444 tile, exposed to MCP in wave 269: McCormick grade (spinal cord function).
   ['mccormick spinal cord grade', ['mccormick']],
+  // spec-v445 tile, exposed to MCP in wave 270: Revised Atlanta severity (acute pancreatitis).
+  ['revised atlanta pancreatitis severity', ['atlanta-pancreatitis']],
 ];
 
 test(`every golden probe routes an acceptable tile into the top ${TOP_N}`, () => {

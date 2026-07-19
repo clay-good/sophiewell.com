@@ -3863,6 +3863,15 @@ test('lib/mccormick-v444.js worked calls', () => {
   assert.match(ok('mccormick', { 'mccormick-grade': 'IV' }).band, /requires a wheelchair/);
 });
 
+test('lib/atlanta-pancreatitis-v445.js worked calls', () => {
+  // Moderately-severe (the META example): transient organ failure.
+  const ms = ok('atlanta-pancreatitis', { 'atlanta-sev': 'moderately-severe' });
+  assert.equal(ms.category, 'moderately severe');
+  assert.match(ms.band, /transient organ failure/);
+  // Severe: persistent organ failure.
+  assert.match(ok('atlanta-pancreatitis', { 'atlanta-sev': 'severe' }).band, /persistent organ failure/);
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];
