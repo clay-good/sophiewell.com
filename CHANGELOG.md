@@ -6,6 +6,20 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v446 — ROP stage (retinopathy of prematurity) tile, 1297 → 1298)
+
+- New `rop-stage` tile (group G): the International Classification of Retinopathy of Prematurity (ICROP) stage
+  of acute ROP at the vascular/avascular junction (stages 1/2/3/4/5); previously absent. The ophthalmologist
+  picks the stage and the tile reports its retinal description. **1:** demarcation line. **2:** ridge. **3:**
+  ridge with extraretinal fibrovascular proliferation. **4:** partial retinal detachment (4A extrafoveal, 4B
+  foveal). **5:** total retinal detachment. A stage, not a diagnosis, a treatment decision, or a prognosis
+  ([spec-v11] §5.3); zone and plus disease are separate axes that also drive management, and the decision
+  stays with the ophthalmology / neonatology team. Stages transcribed (spec-v97) from ICROP revisited 2005
+  (Arch Ophthalmol); no citation-staleness row (the citation carries no guideline-issuer acronym). Joins the
+  neonatology cluster (sarnat-hie, papile-ivh, bell-nec). New `lib/rop-stage-v446.js` + `views/group-v446.js`
+  (RV446); +1 META entry, +1 UTILITIES row, a synonym entry (v167 → v168), 6 unit tests + fuzz, corpus rebuilt
+  to 1298. See [docs/spec-v446.md](docs/spec-v446.md). The MCP adapter follows in a later wave.
+
 ### Added (spec-v445 — Revised Atlanta severity (acute pancreatitis) tile, 1296 → 1297)
 
 - New `atlanta-pancreatitis` tile (group G): the Revised Atlanta classification of acute pancreatitis severity,
