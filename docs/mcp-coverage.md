@@ -1502,6 +1502,18 @@ round-trip both pass, without the phantom "2". Adapter appended to the existing
 rate to a target PaCO2. Brings the exposed total to **1072 calculators across 197
 modules**.
 
+## Two-hundred-sixty-fourth wave — the Hamada grade (cuff tear arthropathy) in lib/hamada-v439.js (+1)
+
+`hamada` (spec-v439) applies the Hamada classification: given the grade, it reports the radiographic
+description. `grade` is an enum (`kind: 'enum'`, values 1/2/3/4/5) — the single input the renderer exposes.
+The example sets grade 1; its expected number (6 mm) appears in the result band, so it flows through the
+default `makeToArgs` with no custom toArgs. New adapter module registered in `mcp/catalog.js`; its golden probe
+("hamada cuff tear arthropathy grade") is promoted now that the tile is in the MCP-exposed registry. Brings
+the exposed total to **1228 calculators across 344 modules**.
+
+### lib/hamada-v439.js
+- `hamada`
+
 ## Two-hundred-sixty-third wave — the Eaton-Littler stage (thumb CMC arthritis) in lib/eaton-littler-v438.js (+1)
 
 `eaton-littler` (spec-v438) applies the Eaton-Littler classification: given the stage, it reports the
@@ -5075,6 +5087,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/eaton-littler-v438.js
 - `eaton-littler`
+
+### lib/hamada-v439.js
+- `hamada`
 
 ### lib/tb-testing.js
 - `tb-testing`

@@ -460,6 +460,8 @@ const PROBES = [
   ['goutallier fatty infiltration grade', ['goutallier']],
   // spec-v438 tile, exposed to MCP in wave 263: Eaton-Littler stage (thumb CMC arthritis).
   ['eaton littler thumb arthritis stage', ['eaton-littler']],
+  // spec-v439 tile, exposed to MCP in wave 264: Hamada grade (cuff tear arthropathy).
+  ['hamada cuff tear arthropathy grade', ['hamada']],
 ];
 
 test(`every golden probe routes an acceptable tile into the top ${TOP_N}`, () => {

@@ -78,7 +78,7 @@ find_calculator { "query": "stroke risk afib" }
        candidates: [ { id: "chads", name: "CHA2DS2-VASc", why: "synonym", ... }, ... ] }
 
 list_calculators { "specialty": "hepatology" }
-  -> { coverage: "1227 of 1109 catalog tiles exposed ...", calculators: [ { id: "meld-xi", ... }, ... ] }
+  -> { coverage: "1228 of 1109 catalog tiles exposed ...", calculators: [ { id: "meld-xi", ... }, ... ] }
 
 describe_calculator { "id": "meld-xi" }
   -> { inputSchema: { ... mx-bili, mx-creat ... }, citation: "Heuman DM ... Liver Transpl 2007", ... }
@@ -475,8 +475,9 @@ HIE) in `lib/sarnat-hie-v429.js`, a two-hundred-fifty-fifth the Papile grade (ge
 `lib/pfirrmann-disc-v434.js`, a two-hundred-sixtieth the Van Herick angle grade in
 `lib/van-herick-v435.js`, a two-hundred-sixty-first the Biffl grade (blunt cerebrovascular injury) in
 `lib/biffl-bcvi-v436.js`, a two-hundred-sixty-second the Goutallier grade (rotator cuff fatty
-infiltration) in `lib/goutallier-v437.js`, and a two-hundred-sixty-third the Eaton-Littler stage (thumb CMC
-arthritis) in `lib/eaton-littler-v438.js`, for 1227 across 343 modules today. <!-- catalog-truth:historical (197 is the count of lib modules adapted, not a catalog tile count) -->
+infiltration) in `lib/goutallier-v437.js`, a two-hundred-sixty-third the Eaton-Littler stage (thumb CMC
+arthritis) in `lib/eaton-littler-v438.js`, and a two-hundred-sixty-fourth the Hamada grade (cuff tear
+arthropathy) in `lib/hamada-v439.js`, for 1228 across 344 modules today. <!-- catalog-truth:historical (197 is the count of lib modules adapted, not a catalog tile count) -->
 Later waves extend it module by module against the same contract.
 
 ## Design

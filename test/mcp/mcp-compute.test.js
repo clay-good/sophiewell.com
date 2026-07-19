@@ -3809,6 +3809,15 @@ test('lib/eaton-littler-v438.js worked calls', () => {
   assert.match(ok('eaton-littler', { 'eaton-stage': 'IV' }).band, /pantrapezial arthritis/);
 });
 
+test('lib/hamada-v439.js worked calls', () => {
+  // Grade 1 (the META example): AHI 6 mm or more.
+  const one = ok('hamada', { 'hamada-grade': '1' });
+  assert.equal(one.grade, '1');
+  assert.match(one.band, /6 mm or more/);
+  // Grade 5: humeral head collapse.
+  assert.match(ok('hamada', { 'hamada-grade': '5' }).band, /humeral head collapse/);
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];
