@@ -6,6 +6,21 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v430 — Papile grade (germinal matrix / IVH) tile, 1281 → 1282)
+
+- New `papile-ivh` tile (group G): the Papile grading of germinal matrix / intraventricular hemorrhage (IVH)
+  in the preterm newborn, by the extent of hemorrhage on cranial imaging (grades I/II/III/IV); previously
+  absent. The clinician picks the grade and the tile reports its imaging description. **I:** confined to the
+  germinal matrix (subependymal). **II:** IVH without ventricular dilatation. **III:** IVH with ventricular
+  dilatation. **IV:** IVH with parenchymal extension. An imaging grade, not a diagnosis, a treatment decision,
+  or a prognosis ([spec-v11] §5.3); the management decision stays with the neonatology team. Grades
+  transcribed (spec-v97) from Papile 1978 (J Pediatr); this reports the original four-grade scheme (a later
+  Volpe scheme treats parenchymal involvement as periventricular hemorrhagic infarction and is out of scope).
+  No citation-staleness row (the citation carries no guideline-issuer acronym). New `lib/papile-ivh-v430.js` +
+  `views/group-v430.js` (RV430); +1 META entry, +1 UTILITIES row, a synonym entry (v151 → v152), 6 unit tests
+  + fuzz, corpus rebuilt to 1282. See [docs/spec-v430.md](docs/spec-v430.md). The MCP adapter follows in a
+  later wave.
+
 ### Added (spec-v429 — Sarnat staging (neonatal HIE) tile, 1280 → 1281)
 
 - New `sarnat-hie` tile (group G): the Sarnat staging of neonatal hypoxic-ischemic encephalopathy (HIE), the
