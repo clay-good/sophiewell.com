@@ -425,6 +425,7 @@ import * as atlantaPancreatitisV445 from '../../lib/atlanta-pancreatitis-v445.js
 import * as ropStageV446 from '../../lib/rop-stage-v446.js';
 import * as andersonMontesanoV447 from '../../lib/anderson-montesano-v447.js';
 import * as traynelisV448 from '../../lib/traynelis-v448.js';
+import * as fieldingHawkinsV449 from '../../lib/fielding-hawkins-v449.js';
 import * as tbTesting from '../../lib/tb-testing.js';
 
 const MODULES = {
@@ -795,6 +796,7 @@ const MODULES = {
   'rop-stage-v446.js': ropStageV446,
   'anderson-montesano-v447.js': andersonMontesanoV447,
   'traynelis-v448.js': traynelisV448,
+  'fielding-hawkins-v449.js': fieldingHawkinsV449,
   'tb-testing.js': tbTesting,
 };
 

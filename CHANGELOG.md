@@ -6,6 +6,21 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v449 — Fielding-Hawkins (atlantoaxial rotatory subluxation) tile, 1300 → 1301)
+
+- New `fielding-hawkins` tile (group G): the Fielding-Hawkins classification of atlantoaxial rotatory
+  subluxation / fixation, by the direction and degree of atlas displacement on the axis (types I/II/III/IV);
+  previously absent. The clinician picks the type and the tile reports its displacement description. **I:** no
+  anterior displacement (ADI ≤ 3 mm), odontoid pivot. **II:** anterior 3-5 mm, transverse ligament deficient.
+  **III:** anterior > 5 mm, transverse and alar ligaments deficient. **IV:** posterior displacement. A type,
+  not a diagnosis, a stability determination, a treatment decision, or a prognosis ([spec-v11] §5.3); the
+  management decision stays with the spine / neurosurgery team. Types transcribed (spec-v97) from Fielding &
+  Hawkins 1977 (J Bone Joint Surg Am); no citation-staleness row (the citation carries no guideline-issuer
+  acronym). Joins the craniocervical cluster (traynelis, anderson-montesano). New
+  `lib/fielding-hawkins-v449.js` + `views/group-v449.js` (RV449); +1 META entry, +1 UTILITIES row, a synonym
+  entry (v170 → v171), 6 unit tests + fuzz, corpus rebuilt to 1301. See [docs/spec-v449.md](docs/spec-v449.md).
+  The MCP adapter follows in a later wave.
+
 ### Added (spec-v448 — Traynelis (atlanto-occipital dislocation) tile, 1299 → 1300)
 
 - New `traynelis` tile (group G): the Traynelis classification of traumatic atlanto-occipital dislocation
