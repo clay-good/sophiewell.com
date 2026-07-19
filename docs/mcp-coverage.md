@@ -1502,6 +1502,18 @@ round-trip both pass, without the phantom "2". Adapter appended to the existing
 rate to a target PaCO2. Brings the exposed total to **1072 calculators across 197
 modules**.
 
+## Two-hundred-seventy-seventh wave — the Brooker classification (heterotopic ossification) in lib/brooker-v452.js (+1)
+
+`brooker` (spec-v452) applies the Brooker classification: given the radiographic class, it reports the extent
+description. `cls` is an enum (`kind: 'enum'`, values I/II/III/IV) — the single input the renderer exposes. The
+example sets class II; its expected text carries the "1 cm" gap fact, so it flows through the default
+`makeToArgs` with no custom toArgs. New adapter module registered in `mcp/catalog.js`; its golden probe
+("brooker heterotopic ossification classification") is promoted now that the tile is in the MCP-exposed
+registry. Brings the exposed total to **1241 calculators across 357 modules**.
+
+### lib/brooker-v452.js
+- `brooker`
+
 ## Two-hundred-seventy-sixth wave — the Sade grade (tympanic membrane retraction) in lib/sade-retraction-v451.js (+1)
 
 `sade-retraction` (spec-v451) applies the Sade classification: given the grade, it reports the otoscopy
@@ -5271,6 +5283,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/sade-retraction-v451.js
 - `sade-retraction`
+
+### lib/brooker-v452.js
+- `brooker`
 
 ### lib/tb-testing.js
 - `tb-testing`

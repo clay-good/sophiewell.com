@@ -3926,6 +3926,15 @@ test('lib/sade-retraction-v451.js worked calls', () => {
   assert.match(ok('sade-retraction', { 'sade-grade': 'IV' }).band, /adhesive otitis media/);
 });
 
+test('lib/brooker-v452.js worked calls', () => {
+  // Class II (the META example): spurs, at least 1 cm gap.
+  const two = ok('brooker', { 'brooker-class': 'II' });
+  assert.equal(two.cls, 'II');
+  assert.match(two.band, /at least 1 cm/);
+  // Class IV: apparent bony ankylosis.
+  assert.match(ok('brooker', { 'brooker-class': 'IV' }).band, /apparent bony ankylosis/);
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];
