@@ -365,6 +365,7 @@ import fieldingHawkinsV449 from './adapters/fielding-hawkins-v449.js';
 import reidBronchiectasisV450 from './adapters/reid-bronchiectasis-v450.js';
 import sadeRetractionV451 from './adapters/sade-retraction-v451.js';
 import brookerV452 from './adapters/brooker-v452.js';
+import schatzkerV453 from './adapters/schatzker-v453.js';
 import tbTesting from './adapters/tb-testing.js';
 import labInterpret from './adapters/lab-interpret.js';
 import decisionRulesV258 from './adapters/decision-rules-v258.js';
@@ -724,6 +725,7 @@ const ADAPTER_MODULES = [
   ['reid-bronchiectasis-v450', reidBronchiectasisV450],
   ['sade-retraction-v451', sadeRetractionV451],
   ['brooker-v452', brookerV452],
+  ['schatzker-v453', schatzkerV453],
   ['tb-testing', tbTesting],
   ['lab-interpret', labInterpret],
   ['decision-rules-v258', decisionRulesV258],

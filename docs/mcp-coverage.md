@@ -1502,6 +1502,18 @@ round-trip both pass, without the phantom "2". Adapter appended to the existing
 rate to a target PaCO2. Brings the exposed total to **1072 calculators across 197
 modules**.
 
+## Two-hundred-seventy-eighth wave — the Schatzker classification (tibial plateau fracture) in lib/schatzker-v453.js (+1)
+
+`schatzker` (spec-v453) applies the Schatzker classification: given the fracture type, it reports the pattern
+description. `type` is an enum (`kind: 'enum'`, values I/II/III/IV/V/VI) — the single input the renderer
+exposes. The example sets type II; its expected text carries no numeric facts (the description is word-only),
+so it flows through the default `makeToArgs` with no custom toArgs. New adapter module registered in
+`mcp/catalog.js`; its golden probe ("schatzker tibial plateau fracture classification") is promoted now that
+the tile is in the MCP-exposed registry. Brings the exposed total to **1242 calculators across 358 modules**.
+
+### lib/schatzker-v453.js
+- `schatzker`
+
 ## Two-hundred-seventy-seventh wave — the Brooker classification (heterotopic ossification) in lib/brooker-v452.js (+1)
 
 `brooker` (spec-v452) applies the Brooker classification: given the radiographic class, it reports the extent
@@ -5286,6 +5298,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/brooker-v452.js
 - `brooker`
+
+### lib/schatzker-v453.js
+- `schatzker`
 
 ### lib/tb-testing.js
 - `tb-testing`
