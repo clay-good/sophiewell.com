@@ -1502,6 +1502,18 @@ round-trip both pass, without the phantom "2". Adapter appended to the existing
 rate to a target PaCO2. Brings the exposed total to **1072 calculators across 197
 modules**.
 
+## Two-hundred-seventy-sixth wave — the Sade grade (tympanic membrane retraction) in lib/sade-retraction-v451.js (+1)
+
+`sade-retraction` (spec-v451) applies the Sade classification: given the grade, it reports the otoscopy
+description. `grade` is an enum (`kind: 'enum'`, values I/II/III/IV) — the single input the renderer exposes.
+The example sets grade III; its expected text carries no numeric facts (the description is word-only), so it
+flows through the default `makeToArgs` with no custom toArgs. New adapter module registered in
+`mcp/catalog.js`; its golden probe ("sade tympanic membrane retraction grade") is promoted now that the tile
+is in the MCP-exposed registry. Brings the exposed total to **1240 calculators across 356 modules**.
+
+### lib/sade-retraction-v451.js
+- `sade-retraction`
+
 ## Two-hundred-seventy-fifth wave — the Reid classification (bronchiectasis) in lib/reid-bronchiectasis-v450.js (+1)
 
 `reid-bronchiectasis` (spec-v450) applies the Reid classification: given the type, it reports the morphology
@@ -5256,6 +5268,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/reid-bronchiectasis-v450.js
 - `reid-bronchiectasis`
+
+### lib/sade-retraction-v451.js
+- `sade-retraction`
 
 ### lib/tb-testing.js
 - `tb-testing`

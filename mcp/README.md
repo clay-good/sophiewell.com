@@ -78,7 +78,7 @@ find_calculator { "query": "stroke risk afib" }
        candidates: [ { id: "chads", name: "CHA2DS2-VASc", why: "synonym", ... }, ... ] }
 
 list_calculators { "specialty": "hepatology" }
-  -> { coverage: "1239 of 1109 catalog tiles exposed ...", calculators: [ { id: "meld-xi", ... }, ... ] }
+  -> { coverage: "1240 of 1109 catalog tiles exposed ...", calculators: [ { id: "meld-xi", ... }, ... ] }
 
 describe_calculator { "id": "meld-xi" }
   -> { inputSchema: { ... mx-bili, mx-creat ... }, citation: "Heuman DM ... Liver Transpl 2007", ... }
@@ -488,8 +488,9 @@ the ROP stage (retinopathy of prematurity) in `lib/rop-stage-v446.js`, a two-hun
 Anderson-Montesano (occipital condyle fracture) in `lib/anderson-montesano-v447.js`, a
 two-hundred-seventy-third the Traynelis (atlanto-occipital dislocation) in `lib/traynelis-v448.js`, a
 two-hundred-seventy-fourth the Fielding-Hawkins (atlantoaxial rotatory subluxation) in
-`lib/fielding-hawkins-v449.js`, and a two-hundred-seventy-fifth the Reid classification (bronchiectasis) in
-`lib/reid-bronchiectasis-v450.js`, for 1239 across 355 modules today. <!-- catalog-truth:historical (197 is the count of lib modules adapted, not a catalog tile count) -->
+`lib/fielding-hawkins-v449.js`, a two-hundred-seventy-fifth the Reid classification (bronchiectasis) in
+`lib/reid-bronchiectasis-v450.js`, and a two-hundred-seventy-sixth the Sade grade (tympanic membrane
+retraction) in `lib/sade-retraction-v451.js`, for 1240 across 356 modules today. <!-- catalog-truth:historical (197 is the count of lib modules adapted, not a catalog tile count) -->
 Later waves extend it module by module against the same contract.
 
 ## Design

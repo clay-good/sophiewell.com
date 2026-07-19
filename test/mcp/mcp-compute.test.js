@@ -3917,6 +3917,15 @@ test('lib/reid-bronchiectasis-v450.js worked calls', () => {
   assert.match(ok('reid-bronchiectasis', { 'reid-type': 'cystic' }).band, /large cyst-like/);
 });
 
+test('lib/sade-retraction-v451.js worked calls', () => {
+  // Grade III (the META example): touching the promontory.
+  const three = ok('sade-retraction', { 'sade-grade': 'III' });
+  assert.equal(three.grade, 'III');
+  assert.match(three.band, /touching the promontory/);
+  // Grade IV: adhesive otitis media.
+  assert.match(ok('sade-retraction', { 'sade-grade': 'IV' }).band, /adhesive otitis media/);
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];

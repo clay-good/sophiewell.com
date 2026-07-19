@@ -484,6 +484,8 @@ const PROBES = [
   ['fielding hawkins atlantoaxial rotatory subluxation', ['fielding-hawkins']],
   // spec-v450 tile, exposed to MCP in wave 275: Reid classification (bronchiectasis).
   ['reid bronchiectasis morphology', ['reid-bronchiectasis']],
+  // spec-v451 tile, exposed to MCP in wave 276: Sade grade (tympanic membrane retraction).
+  ['sade tympanic membrane retraction grade', ['sade-retraction']],
 ];
 
 test(`every golden probe routes an acceptable tile into the top ${TOP_N}`, () => {
