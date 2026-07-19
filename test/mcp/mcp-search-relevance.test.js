@@ -508,6 +508,7 @@ const PROBES = [
   ['yerdel portal vein thrombosis grade', ['yerdel-pvt']],
   ['todani choledochal cyst classification', ['todani-choledochal']],
   ['rastelli complete avsd classification', ['rastelli-avsd']],
+  ['glogau photoaging classification', ['glogau-photoaging']],
 ];
 
 test(`every golden probe routes an acceptable tile into the top ${TOP_N}`, () => {

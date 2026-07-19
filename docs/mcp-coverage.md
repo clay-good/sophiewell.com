@@ -1502,6 +1502,19 @@ round-trip both pass, without the phantom "2". Adapter appended to the existing
 rate to a target PaCO2. Brings the exposed total to **1072 calculators across 197
 modules**.
 
+## Three-hundredth wave — the Glogau classification (photoaging) in lib/glogau-photoaging-v475.js (+1)
+
+`glogau-photoaging` (spec-v475) applies the Glogau classification: given the type, it reports the
+photoaging-severity description. `type` is an enum (`kind: 'enum'`, values I..IV) — the single input the
+renderer exposes. The example sets type II; its expected text carries no numeric facts (the description is
+word-only), so it flows through the default `makeToArgs` with no custom toArgs. New adapter module registered in
+`mcp/catalog.js`; its golden probe ("glogau photoaging classification") is promoted now that the tile is in the
+MCP-exposed registry. Brings the exposed total to **1263 calculators across 379 modules** — the three-hundredth
+MCP wave.
+
+### lib/glogau-photoaging-v475.js
+- `glogau-photoaging`
+
 ## Two-hundred-ninety-ninth wave — the Rastelli classification (complete AVSD) in lib/rastelli-avsd-v474.js (+1)
 
 `rastelli-avsd` (spec-v474) applies the Rastelli classification: given the type, it reports the
@@ -5607,6 +5620,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/rastelli-avsd-v474.js
 - `rastelli-avsd`
+
+### lib/glogau-photoaging-v475.js
+- `glogau-photoaging`
 
 ### lib/tb-testing.js
 - `tb-testing`

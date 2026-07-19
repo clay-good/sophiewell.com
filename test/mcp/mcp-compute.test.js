@@ -4124,6 +4124,15 @@ test('lib/rastelli-avsd-v474.js worked calls', () => {
   assert.match(ok('rastelli-avsd', { 'rastelli-type': 'C' }).band, /free-floating/);
 });
 
+test('lib/glogau-photoaging-v475.js worked calls', () => {
+  // Type II (the META example): wrinkles in motion.
+  const two = ok('glogau-photoaging', { 'glogau-type': 'II' });
+  assert.equal(two.type, 'II');
+  assert.match(two.band, /"wrinkles in motion"/);
+  // Type IV: only wrinkles.
+  assert.match(ok('glogau-photoaging', { 'glogau-type': 'IV' }).band, /"only wrinkles"/);
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];
