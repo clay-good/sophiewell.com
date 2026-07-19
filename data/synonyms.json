@@ -1,5 +1,5 @@
 {
-  "version": "v184-2026-07-19",
+  "version": "v185-2026-07-19",
   "note": "spec-v7 section 3.2: hand-curated patient-phrasing -> tile id table. Each entry maps patient-mental-model phrases (and, from the v8/v9 plain-language-search batches, clinical abbreviations, eponym aliases, and canonical-intent phrases) to a single existing tile. Audience is the primary audience the entry serves; the matcher deprioritizes (does not hide) entries when the user has selected a different chip. Every phrase is lowercase; every tile id is an existing catalog tile (guarded by test/unit/synonyms-catalog.test.js). Adding a new phrase is a one-line PR.",
   "entries": [
     { "phrases": ["denied", "denial letter", "they denied it", "insurance said no", "appeal", "write an appeal", "appeal my claim", "appeal letter", "appeal a denial"],
@@ -512,6 +512,8 @@
     { "phrases": ["gmfcs", "gross motor function", "gross motor function classification", "cerebral palsy mobility level", "cerebral palsy function level", "gmfcs level", "cp gross motor", "motor function cerebral palsy"],
       "tile": "gmfcs", "audience": "clinicians" },
     { "phrases": ["waldenstrom", "waldenstrom staging", "perthes stage", "perthes radiographic stage", "legg calve perthes stage", "waldenstrom perthes", "coxa plana stage", "perthes disease stage"],
-      "tile": "waldenstrom-perthes", "audience": "clinicians" }
+      "tile": "waldenstrom-perthes", "audience": "clinicians" },
+    { "phrases": ["crawford", "crawford classification", "thoracoabdominal aortic aneurysm", "taaa extent", "thoracoabdominal aneurysm extent", "crawford extent", "thoracoabdominal aortic aneurysm classification", "aortic aneurysm extent"],
+      "tile": "crawford-taaa", "audience": "clinicians" }
   ]
 }

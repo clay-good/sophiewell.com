@@ -6,6 +6,20 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v464 — Crawford classification (thoracoabdominal aortic aneurysm) tile, 1314 → 1315)
+
+- New `crawford-taaa` tile (group G): the Crawford classification of thoracoabdominal aortic aneurysms, by the
+  extent of aortic involvement (extents I/II/III/IV); previously absent. The clinician picks the extent and the
+  tile reports its description. **I:** left subclavian to above the renals. **II:** left subclavian to the
+  aortoiliac bifurcation (most extensive). **III:** distal descending thoracic (sixth intercostal space) to
+  below the renals. **IV:** the entire abdominal aorta. An extent, not a diagnosis, a treatment decision, or a
+  prognosis ([spec-v11] §5.3); the management decision stays with the vascular / cardiac-surgery team.
+  Companions the DeBakey dissection tile. Extents transcribed (spec-v97) from Crawford 1986 (J Vasc Surg); the
+  four original extents (the Safi modification adds an extent V, noted). No citation-staleness row (the
+  citation carries no guideline-issuer acronym). New `lib/crawford-taaa-v464.js` + `views/group-v464.js`
+  (RV464); +1 META entry, +1 UTILITIES row, a synonym entry (v184 → v185), 6 unit tests + fuzz, corpus rebuilt
+  to 1315. See [docs/spec-v464.md](docs/spec-v464.md). The MCP adapter follows in the next wave.
+
 ### Added (spec-v463 — Waldenstrom staging (Legg-Calve-Perthes) tile, 1313 → 1314)
 
 - New `waldenstrom-perthes` tile (group G): the Waldenstrom radiographic staging of active Legg-Calve-Perthes
