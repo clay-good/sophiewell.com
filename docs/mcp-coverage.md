@@ -1502,6 +1502,18 @@ round-trip both pass, without the phantom "2". Adapter appended to the existing
 rate to a target PaCO2. Brings the exposed total to **1072 calculators across 197
 modules**.
 
+## Two-hundred-seventy-fourth wave — the Fielding-Hawkins (atlantoaxial rotatory subluxation) in lib/fielding-hawkins-v449.js (+1)
+
+`fielding-hawkins` (spec-v449) applies the Fielding-Hawkins classification: given the type, it reports the
+displacement description. `type` is an enum (`kind: 'enum'`, values I/II/III/IV) — the single input the
+renderer exposes. The example sets type II; its expected numbers (3 to 5 mm) appear in the result band, so it
+flows through the default `makeToArgs` with no custom toArgs. New adapter module registered in
+`mcp/catalog.js`; its golden probe ("fielding hawkins atlantoaxial rotatory subluxation") is promoted now that
+the tile is in the MCP-exposed registry. Brings the exposed total to **1238 calculators across 354 modules**.
+
+### lib/fielding-hawkins-v449.js
+- `fielding-hawkins`
+
 ## Two-hundred-seventy-third wave — the Traynelis (atlanto-occipital dislocation) in lib/traynelis-v448.js (+1)
 
 `traynelis` (spec-v448) applies the Traynelis classification: given the type, it reports the displacement
@@ -5226,6 +5238,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/traynelis-v448.js
 - `traynelis`
+
+### lib/fielding-hawkins-v449.js
+- `fielding-hawkins`
 
 ### lib/tb-testing.js
 - `tb-testing`

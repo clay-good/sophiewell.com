@@ -3899,6 +3899,15 @@ test('lib/traynelis-v448.js worked calls', () => {
   assert.match(ok('traynelis', { 'traynelis-type': 'III' }).band, /posterior displacement/);
 });
 
+test('lib/fielding-hawkins-v449.js worked calls', () => {
+  // Type II (the META example): anterior 3 to 5 mm.
+  const two = ok('fielding-hawkins', { 'fh-type': 'II' });
+  assert.equal(two.type, 'II');
+  assert.match(two.band, /anterior displacement of 3 to 5 mm/);
+  // Type IV: posterior displacement.
+  assert.match(ok('fielding-hawkins', { 'fh-type': 'IV' }).band, /posterior displacement of the atlas/);
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];

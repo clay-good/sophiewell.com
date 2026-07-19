@@ -78,7 +78,7 @@ find_calculator { "query": "stroke risk afib" }
        candidates: [ { id: "chads", name: "CHA2DS2-VASc", why: "synonym", ... }, ... ] }
 
 list_calculators { "specialty": "hepatology" }
-  -> { coverage: "1237 of 1109 catalog tiles exposed ...", calculators: [ { id: "meld-xi", ... }, ... ] }
+  -> { coverage: "1238 of 1109 catalog tiles exposed ...", calculators: [ { id: "meld-xi", ... }, ... ] }
 
 describe_calculator { "id": "meld-xi" }
   -> { inputSchema: { ... mx-bili, mx-creat ... }, citation: "Heuman DM ... Liver Transpl 2007", ... }
@@ -485,9 +485,10 @@ the Kadish staging (esthesioneuroblastoma) in `lib/kadish-v443.js`, a two-hundre
 McCormick grade (spinal cord function) in `lib/mccormick-v444.js`, a two-hundred-seventieth the Revised
 Atlanta severity (acute pancreatitis) in `lib/atlanta-pancreatitis-v445.js`, a two-hundred-seventy-first
 the ROP stage (retinopathy of prematurity) in `lib/rop-stage-v446.js`, a two-hundred-seventy-second the
-Anderson-Montesano (occipital condyle fracture) in `lib/anderson-montesano-v447.js`, and a
-two-hundred-seventy-third the Traynelis (atlanto-occipital dislocation) in `lib/traynelis-v448.js`, for 1237
-across 353 modules today. <!-- catalog-truth:historical (197 is the count of lib modules adapted, not a catalog tile count) -->
+Anderson-Montesano (occipital condyle fracture) in `lib/anderson-montesano-v447.js`, a
+two-hundred-seventy-third the Traynelis (atlanto-occipital dislocation) in `lib/traynelis-v448.js`, and a
+two-hundred-seventy-fourth the Fielding-Hawkins (atlantoaxial rotatory subluxation) in
+`lib/fielding-hawkins-v449.js`, for 1238 across 354 modules today. <!-- catalog-truth:historical (197 is the count of lib modules adapted, not a catalog tile count) -->
 Later waves extend it module by module against the same contract.
 
 ## Design
