@@ -6,6 +6,20 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v469 — Steinbrocker functional class (rheumatoid arthritis) tile, 1319 → 1320)
+
+- New `steinbrocker-ra` tile (group G): the Steinbrocker functional classification of rheumatoid arthritis, by
+  global functional capacity (classes I/II/III/IV); previously absent. The clinician picks the class and the
+  tile reports its description. **I:** complete capacity, all usual duties. **II:** adequate for normal
+  activities despite discomfort or limited joint mobility. **III:** adequate for little or none of the usual
+  occupation or self-care. **IV:** largely or wholly incapacitated. A class, not a diagnosis, a treatment
+  decision, or a prognosis ([spec-v11] §5.3); the management decision stays with the rheumatology team. Classes
+  transcribed (spec-v97) from Steinbrocker 1949 (JAMA); the original classes (the ACR revised the wording in
+  1991, noted). No citation-staleness row (the citation carries no guideline-issuer acronym). New
+  `lib/steinbrocker-ra-v469.js` + `views/group-v469.js` (RV469); +1 META entry, +1 UTILITIES row, a synonym
+  entry (v189 → v190), 6 unit tests + fuzz, corpus rebuilt to 1320. See
+  [docs/spec-v469.md](docs/spec-v469.md). The MCP adapter follows in the next wave.
+
 ### Added (spec-v468 — Brouet classification (cryoglobulinemia) tile, 1318 → 1319)
 
 - New `brouet-cryoglobulinemia` tile (group G): the Brouet classification of cryoglobulinemia, by the clonality

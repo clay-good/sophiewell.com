@@ -444,6 +444,7 @@ import * as stameyIncontinenceV465 from '../../lib/stamey-incontinence-v465.js';
 import * as letournelAcetabulumV466 from '../../lib/letournel-acetabulum-v466.js';
 import * as bromageScaleV467 from '../../lib/bromage-scale-v467.js';
 import * as brouetCryoglobulinemiaV468 from '../../lib/brouet-cryoglobulinemia-v468.js';
+import * as steinbrockerRaV469 from '../../lib/steinbrocker-ra-v469.js';
 import * as tbTesting from '../../lib/tb-testing.js';
 
 const MODULES = {
@@ -833,6 +834,7 @@ const MODULES = {
   'letournel-acetabulum-v466.js': letournelAcetabulumV466,
   'bromage-scale-v467.js': bromageScaleV467,
   'brouet-cryoglobulinemia-v468.js': brouetCryoglobulinemiaV468,
+  'steinbrocker-ra-v469.js': steinbrockerRaV469,
   'tb-testing.js': tbTesting,
 };
 

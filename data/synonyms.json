@@ -1,5 +1,5 @@
 {
-  "version": "v189-2026-07-19",
+  "version": "v190-2026-07-19",
   "note": "spec-v7 section 3.2: hand-curated patient-phrasing -> tile id table. Each entry maps patient-mental-model phrases (and, from the v8/v9 plain-language-search batches, clinical abbreviations, eponym aliases, and canonical-intent phrases) to a single existing tile. Audience is the primary audience the entry serves; the matcher deprioritizes (does not hide) entries when the user has selected a different chip. Every phrase is lowercase; every tile id is an existing catalog tile (guarded by test/unit/synonyms-catalog.test.js). Adding a new phrase is a one-line PR.",
   "entries": [
     { "phrases": ["denied", "denial letter", "they denied it", "insurance said no", "appeal", "write an appeal", "appeal my claim", "appeal letter", "appeal a denial"],
@@ -522,6 +522,8 @@
     { "phrases": ["bromage", "bromage scale", "motor block scale", "neuraxial motor block", "epidural motor block", "bromage grade", "spinal motor block", "motor block grade"],
       "tile": "bromage-scale", "audience": "clinicians" },
     { "phrases": ["brouet", "brouet classification", "cryoglobulinemia", "cryoglobulinemia type", "cryoglobulin classification", "mixed cryoglobulinemia", "brouet type", "cryoglobulinaemia type"],
-      "tile": "brouet-cryoglobulinemia", "audience": "clinicians" }
+      "tile": "brouet-cryoglobulinemia", "audience": "clinicians" },
+    { "phrases": ["steinbrocker", "steinbrocker class", "rheumatoid arthritis functional class", "ra functional class", "functional capacity rheumatoid", "steinbrocker functional", "acr functional class", "ra functional status"],
+      "tile": "steinbrocker-ra", "audience": "clinicians" }
   ]
 }
