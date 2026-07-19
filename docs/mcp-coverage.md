@@ -1502,6 +1502,18 @@ round-trip both pass, without the phantom "2". Adapter appended to the existing
 rate to a target PaCO2. Brings the exposed total to **1072 calculators across 197
 modules**.
 
+## Two-hundred-fifty-fifth wave — the Papile grade (germinal matrix / IVH) in lib/papile-ivh-v430.js (+1)
+
+`papile-ivh` (spec-v430) applies the Papile grading: given the grade, it reports the imaging description.
+`grade` is an enum (`kind: 'enum'`, values I/II/III/IV) — the single input the renderer exposes. The example
+sets grade III; its expected text carries no numeric facts (the description is word-only), so it flows through
+the default `makeToArgs` with no custom toArgs. New adapter module registered in `mcp/catalog.js`; its golden
+probe ("papile intraventricular hemorrhage grade") is promoted now that the tile is in the MCP-exposed
+registry. Brings the exposed total to **1219 calculators across 335 modules**.
+
+### lib/papile-ivh-v430.js
+- `papile-ivh`
+
 ## Two-hundred-fifty-fourth wave — the Sarnat staging (neonatal HIE) in lib/sarnat-hie-v429.js (+1)
 
 `sarnat-hie` (spec-v429) applies the Sarnat staging: given the stage, it reports the clinical features. `stage`
@@ -4940,6 +4952,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/sarnat-hie-v429.js
 - `sarnat-hie`
+
+### lib/papile-ivh-v430.js
+- `papile-ivh`
 
 ### lib/tb-testing.js
 - `tb-testing`

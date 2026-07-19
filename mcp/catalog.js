@@ -342,6 +342,7 @@ import gellCoombsV426 from './adapters/gell-coombs-v426.js';
 import vaughanWilliamsV427 from './adapters/vaughan-williams-v427.js';
 import mrcPowerV428 from './adapters/mrc-power-v428.js';
 import sarnatHieV429 from './adapters/sarnat-hie-v429.js';
+import papileIvhV430 from './adapters/papile-ivh-v430.js';
 import tbTesting from './adapters/tb-testing.js';
 import labInterpret from './adapters/lab-interpret.js';
 import decisionRulesV258 from './adapters/decision-rules-v258.js';
@@ -678,6 +679,7 @@ const ADAPTER_MODULES = [
   ['vaughan-williams-v427', vaughanWilliamsV427],
   ['mrc-power-v428', mrcPowerV428],
   ['sarnat-hie-v429', sarnatHieV429],
+  ['papile-ivh-v430', papileIvhV430],
   ['tb-testing', tbTesting],
   ['lab-interpret', labInterpret],
   ['decision-rules-v258', decisionRulesV258],

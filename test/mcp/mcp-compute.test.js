@@ -3728,6 +3728,15 @@ test('lib/sarnat-hie-v429.js worked calls', () => {
   assert.match(ok('sarnat-hie', { 'sarnat-stage': '3' }).band, /stupor or coma/);
 });
 
+test('lib/papile-ivh-v430.js worked calls', () => {
+  // Grade III (the META example): IVH with ventricular dilatation.
+  const three = ok('papile-ivh', { 'papile-grade': 'III' });
+  assert.equal(three.grade, 'III');
+  assert.match(three.band, /with ventricular dilatation/);
+  // Grade IV: parenchymal extension.
+  assert.match(ok('papile-ivh', { 'papile-grade': 'IV' }).band, /parenchymal/);
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];
