@@ -514,6 +514,7 @@ const PROBES = [
   ['spaulding device reprocessing classification', ['spaulding-classification']],
   ['spitz esophageal atresia classification', ['spitz-atresia']],
   ['ahlback knee osteoarthritis grade', ['ahlback-knee-oa']],
+  ['wiltse spondylolisthesis classification', ['wiltse-spondylolisthesis']],
 ];
 
 test(`every golden probe routes an acceptable tile into the top ${TOP_N}`, () => {

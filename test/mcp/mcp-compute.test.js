@@ -4178,6 +4178,15 @@ test('lib/ahlback-knee-oa-v480.js worked calls', () => {
   assert.match(ok('ahlback-knee-oa', { 'ahlback-grade': 'V' }).band, /more than 10 mm of bone loss/);
 });
 
+test('lib/wiltse-spondylolisthesis-v481.js worked calls', () => {
+  // Type II (the META example): isthmic.
+  const two = ok('wiltse-spondylolisthesis', { 'wiltse-type': 'II' });
+  assert.equal(two.type, 'II');
+  assert.match(two.band, /isthmic: a lesion in the pars interarticularis/);
+  // Type V: pathologic.
+  assert.match(ok('wiltse-spondylolisthesis', { 'wiltse-type': 'V' }).band, /pathologic/);
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];
