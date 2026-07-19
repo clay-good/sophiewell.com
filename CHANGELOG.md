@@ -6,6 +6,20 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v491 — Severin classification (DDH radiographic outcome) tile, 1341 → 1342)
+
+- New `severin-ddh` tile (group G): the Severin classification of the radiographic outcome of the hip after
+  treatment for developmental dysplasia (DDH), by congruency and the center-edge angle at maturity (groups
+  I-VI); previously absent. The clinician picks the group and the tile reports its description. **I:** normal.
+  **II:** concentric with moderate deformity. **III:** dysplastic without subluxation. **IV:** subluxated.
+  **V:** false (secondary) acetabulum. **VI:** redislocation. A group, not a diagnosis, a treatment decision, or
+  a prognosis ([spec-v11] §5.3); the management decision stays with the pediatric-orthopedic team. Companions
+  the Crowe / Hartofilakidis DDH tiles. Groups transcribed (spec-v97) from Severin 1941 (Acta Chir Scand). No
+  citation-staleness row (a named-author article, no guideline-issuer acronym). New `lib/severin-ddh-v491.js` +
+  `views/group-v491.js` (RV491); +1 META entry, +1 UTILITIES row, a synonym entry (v211 → v212), 7 unit tests +
+  fuzz, corpus rebuilt to 1342. See [docs/spec-v491.md](docs/spec-v491.md). The MCP adapter follows in the next
+  wave.
+
 ### Added (spec-v490 — Ruedi-Allgower classification (tibial pilon fracture) tile, 1340 → 1341)
 
 - New `ruedi-allgower-pilon` tile (group G): the Ruedi-Allgower classification of tibial pilon (plafond)
