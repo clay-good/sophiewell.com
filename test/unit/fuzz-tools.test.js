@@ -418,6 +418,7 @@ import * as eatonLittlerV438 from '../../lib/eaton-littler-v438.js';
 import * as hamadaV439 from '../../lib/hamada-v439.js';
 import * as barrowCcfV440 from '../../lib/barrow-ccf-v440.js';
 import * as bordenDavfV441 from '../../lib/borden-davf-v441.js';
+import * as zabramskiV442 from '../../lib/zabramski-v442.js';
 import * as tbTesting from '../../lib/tb-testing.js';
 
 const MODULES = {
@@ -781,6 +782,7 @@ const MODULES = {
   'hamada-v439.js': hamadaV439,
   'barrow-ccf-v440.js': barrowCcfV440,
   'borden-davf-v441.js': bordenDavfV441,
+  'zabramski-v442.js': zabramskiV442,
   'tb-testing.js': tbTesting,
 };
 

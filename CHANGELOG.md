@@ -6,6 +6,20 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v442 — Zabramski classification (cerebral cavernous malformation) tile, 1293 → 1294)
+
+- New `zabramski` tile (group G): the Zabramski classification of a cerebral cavernous malformation (CCM), by
+  its MRI appearance (hemorrhage age and signal) (types I/II/III/IV); previously absent. The radiologist picks
+  the type and the tile reports its MRI description. **I:** subacute hemorrhage (hyperintense on T1/T2). **II:**
+  classic popcorn/mulberry with a hemosiderin rim. **III:** chronic hemorrhage (iso- to hypointense). **IV:**
+  punctate microhemorrhages seen only on GRE/SWI. An imaging type, not a diagnosis, a treatment decision, or a
+  prognosis ([spec-v11] §5.3); the management decision stays with the neurosurgery / neuroradiology team.
+  Types transcribed (spec-v97) from Zabramski 1994 (J Neurosurg); no citation-staleness row (the citation
+  carries no guideline-issuer acronym). Joins the neuro-imaging cluster (barrow-ccf, borden-davf,
+  spetzler-ponce). New `lib/zabramski-v442.js` + `views/group-v442.js` (RV442); +1 META entry, +1 UTILITIES
+  row, a synonym entry (v163 → v164), 6 unit tests + fuzz, corpus rebuilt to 1294. See
+  [docs/spec-v442.md](docs/spec-v442.md). The MCP adapter follows in a later wave.
+
 ### Added (spec-v441 — Borden classification (dural AV fistula) tile, 1292 → 1293)
 
 - New `borden-davf` tile (group G): the Borden classification of a dural arteriovenous fistula (DAVF), by the
