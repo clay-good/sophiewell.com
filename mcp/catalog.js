@@ -377,6 +377,7 @@ import gmfcsV462 from './adapters/gmfcs-v462.js';
 import waldenstromPerthesV463 from './adapters/waldenstrom-perthes-v463.js';
 import crawfordTaaaV464 from './adapters/crawford-taaa-v464.js';
 import stameyIncontinenceV465 from './adapters/stamey-incontinence-v465.js';
+import letournelAcetabulumV466 from './adapters/letournel-acetabulum-v466.js';
 import tbTesting from './adapters/tb-testing.js';
 import labInterpret from './adapters/lab-interpret.js';
 import decisionRulesV258 from './adapters/decision-rules-v258.js';
@@ -748,6 +749,7 @@ const ADAPTER_MODULES = [
   ['waldenstrom-perthes-v463', waldenstromPerthesV463],
   ['crawford-taaa-v464', crawfordTaaaV464],
   ['stamey-incontinence-v465', stameyIncontinenceV465],
+  ['letournel-acetabulum-v466', letournelAcetabulumV466],
   ['tb-testing', tbTesting],
   ['lab-interpret', labInterpret],
   ['decision-rules-v258', decisionRulesV258],

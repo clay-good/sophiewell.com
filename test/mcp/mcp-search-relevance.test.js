@@ -499,6 +499,7 @@ const PROBES = [
   ['waldenstrom perthes radiographic staging', ['waldenstrom-perthes']],
   ['crawford thoracoabdominal aortic aneurysm classification', ['crawford-taaa']],
   ['stamey stress urinary incontinence grade', ['stamey-incontinence']],
+  ['judet letournel acetabular fracture classification', ['letournel-acetabulum']],
 ];
 
 test(`every golden probe routes an acceptable tile into the top ${TOP_N}`, () => {

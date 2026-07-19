@@ -4043,6 +4043,15 @@ test('lib/stamey-incontinence-v465.js worked calls', () => {
   assert.match(ok('stamey-incontinence', { 'stamey-grade': '3' }).band, /total \(continuous\) incontinence/);
 });
 
+test('lib/letournel-acetabulum-v466.js worked calls', () => {
+  // Transverse (the META example): elementary.
+  const tr = ok('letournel-acetabulum', { 'letournel-pattern': 'transverse' });
+  assert.equal(tr.group, 'elementary');
+  assert.match(tr.band, /dividing the acetabulum into upper and lower halves/);
+  // Both-column: associated, floating acetabulum.
+  assert.match(ok('letournel-acetabulum', { 'letournel-pattern': 'both-column' }).band, /no part of the articular surface remains attached/);
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];

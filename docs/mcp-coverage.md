@@ -1502,6 +1502,19 @@ round-trip both pass, without the phantom "2". Adapter appended to the existing
 rate to a target PaCO2. Brings the exposed total to **1072 calculators across 197
 modules**.
 
+## Two-hundred-ninety-first wave — the Judet-Letournel classification (acetabular fracture) in lib/letournel-acetabulum-v466.js (+1)
+
+`letournel-acetabulum` (spec-v466) applies the Judet-Letournel classification: given the pattern, it reports
+whether it is elementary or associated and its description. `pattern` is an enum of the ten pattern slugs — the
+single input the renderer exposes. The example sets `transverse`; its expected text carries no numeric facts
+(the description is word-only), so it flows through the default `makeToArgs` with no custom toArgs. New adapter
+module registered in `mcp/catalog.js`; its golden probe ("judet letournel acetabular fracture classification")
+is promoted now that the tile is in the MCP-exposed registry. Brings the exposed total to **1254 calculators
+across 370 modules**.
+
+### lib/letournel-acetabulum-v466.js
+- `letournel-acetabulum`
+
 ## Two-hundred-ninetieth wave — the Stamey grade (stress urinary incontinence) in lib/stamey-incontinence-v465.js (+1)
 
 `stamey-incontinence` (spec-v465) applies the Stamey grading: given the grade, it reports the provoking-stress
@@ -5469,6 +5482,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/stamey-incontinence-v465.js
 - `stamey-incontinence`
+
+### lib/letournel-acetabulum-v466.js
+- `letournel-acetabulum`
 
 ### lib/tb-testing.js
 - `tb-testing`
