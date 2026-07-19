@@ -1,5 +1,5 @@
 {
-  "version": "v155-2026-07-18",
+  "version": "v156-2026-07-19",
   "note": "spec-v7 section 3.2: hand-curated patient-phrasing -> tile id table. Each entry maps patient-mental-model phrases (and, from the v8/v9 plain-language-search batches, clinical abbreviations, eponym aliases, and canonical-intent phrases) to a single existing tile. Audience is the primary audience the entry serves; the matcher deprioritizes (does not hide) entries when the user has selected a different chip. Every phrase is lowercase; every tile id is an existing catalog tile (guarded by test/unit/synonyms-catalog.test.js). Adding a new phrase is a one-line PR.",
   "entries": [
     { "phrases": ["denied", "denial letter", "they denied it", "insurance said no", "appeal", "write an appeal", "appeal my claim", "appeal letter", "appeal a denial"],
@@ -454,6 +454,8 @@
     { "phrases": ["baden walker", "baden walker grade", "prolapse grade", "pelvic organ prolapse grade", "vaginal prolapse grade", "halfway system", "prolapse grading", "pop grade"],
       "tile": "baden-walker", "audience": "clinicians" },
     { "phrases": ["modic", "modic changes", "modic type", "vertebral endplate changes", "endplate changes mri", "modic classification", "modic type 1", "subchondral marrow changes"],
-      "tile": "modic-changes", "audience": "clinicians" }
+      "tile": "modic-changes", "audience": "clinicians" },
+    { "phrases": ["pfirrmann", "pfirrmann grade", "disc degeneration grade", "disc degeneration mri", "intervertebral disc grade", "pfirrmann classification", "disc grading", "degenerative disc grade"],
+      "tile": "pfirrmann-disc", "audience": "clinicians" }
   ]
 }

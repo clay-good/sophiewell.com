@@ -410,6 +410,7 @@ import * as papileIvhV430 from '../../lib/papile-ivh-v430.js';
 import * as bellNecV431 from '../../lib/bell-nec-v431.js';
 import * as badenWalkerV432 from '../../lib/baden-walker-v432.js';
 import * as modicChangesV433 from '../../lib/modic-changes-v433.js';
+import * as pfirrmannDiscV434 from '../../lib/pfirrmann-disc-v434.js';
 import * as tbTesting from '../../lib/tb-testing.js';
 
 const MODULES = {
@@ -765,6 +766,7 @@ const MODULES = {
   'bell-nec-v431.js': bellNecV431,
   'baden-walker-v432.js': badenWalkerV432,
   'modic-changes-v433.js': modicChangesV433,
+  'pfirrmann-disc-v434.js': pfirrmannDiscV434,
   'tb-testing.js': tbTesting,
 };
 

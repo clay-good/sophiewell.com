@@ -6,6 +6,20 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v434 — Pfirrmann disc degeneration grade tile, 1285 → 1286)
+
+- New `pfirrmann-disc` tile (group G): the Pfirrmann classification of lumbar intervertebral disc degeneration
+  on T2 MRI, by disc structure, nucleus-annulus distinction, signal, and height (grades I/II/III/IV/V);
+  previously absent. The radiologist picks the grade and the tile reports its MRI description. **I:**
+  homogeneous bright, normal. **II:** inhomogeneous bright, normal. **III:** gray, unclear distinction. **IV:**
+  gray to black, lost distinction. **V:** black, collapsed disc space. An imaging grade, not a diagnosis, a
+  treatment decision, or a prognosis ([spec-v11] §5.3); the clinical decision stays with the treating team.
+  Grades transcribed (spec-v97) from Pfirrmann 2001 (Spine); no citation-staleness row (the citation carries
+  no guideline-issuer acronym). Joins the spine-MRI cluster (modic-changes, meyerding-spondylolisthesis). New
+  `lib/pfirrmann-disc-v434.js` + `views/group-v434.js` (RV434); +1 META entry, +1 UTILITIES row, a synonym
+  entry (v155 → v156), 7 unit tests + fuzz, corpus rebuilt to 1286. See [docs/spec-v434.md](docs/spec-v434.md).
+  The MCP adapter follows in a later wave.
+
 ### Added (spec-v433 — Modic changes (vertebral endplate MRI) tile, 1284 → 1285)
 
 - New `modic-changes` tile (group G): the Modic classification of vertebral endplate / subchondral bone-marrow
