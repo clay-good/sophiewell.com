@@ -6,6 +6,20 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v461 — DeBakey classification (aortic dissection) tile, 1311 → 1312)
+
+- New `debakey` tile (group G): the DeBakey classification of aortic dissection, by the site of origin and the
+  extent of the flap (types I/II/IIIa/IIIb); previously absent. The clinician picks the type and the tile
+  reports its description. **I:** ascending aorta, extending through the arch into the descending (and often
+  abdominal) aorta. **II:** confined to the ascending aorta. **IIIa:** descending thoracic aorta, limited above
+  the diaphragm. **IIIb:** descending thoracic aorta, extending below the diaphragm. The note cross-references
+  Stanford (I/II = A, III = B). A type, not a diagnosis, a treatment decision, or a prognosis ([spec-v11]
+  §5.3); the management decision stays with the cardiac-surgery / vascular team. Types transcribed (spec-v97)
+  from DeBakey 1965 (J Thorac Cardiovasc Surg). No citation-staleness row (the citation carries no
+  guideline-issuer acronym). New `lib/debakey-v461.js` + `views/group-v461.js` (RV461); +1 META entry, +1
+  UTILITIES row, a synonym entry (v181 → v182), 6 unit tests + fuzz, corpus rebuilt to 1312. See
+  [docs/spec-v461.md](docs/spec-v461.md). The MCP adapter follows in the next wave.
+
 ### Added (spec-v460 — Enneking surgical staging (musculoskeletal sarcoma) tile, 1310 → 1311)
 
 - New `enneking` tile (group G): the Enneking (MSTS) surgical staging of malignant musculoskeletal tumors,
