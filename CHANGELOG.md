@@ -6,6 +6,20 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v440 — Barrow classification (carotid-cavernous fistula) tile, 1291 → 1292)
+
+- New `barrow-ccf` tile (group G): the Barrow classification of carotid-cavernous fistula (CCF), by the
+  arterial supply and flow (types A/B/C/D); previously absent. The clinician picks the type and the tile
+  reports its arterial-supply description. **A:** direct high-flow ICA-to-cavernous-sinus shunt (often
+  traumatic). **B:** dural shunt from ICA meningeal branches. **C:** dural shunt from ECA meningeal branches.
+  **D:** dural shunt from both ICA and ECA. B/C/D are the indirect (dural) fistulas. A type, not a diagnosis, a
+  treatment decision, or a prognosis ([spec-v11] §5.3); the management decision stays with the neurosurgery /
+  neurointervention team. Types transcribed (spec-v97) from Barrow 1985 (J Neurosurg); no citation-staleness
+  row (the citation carries no guideline-issuer acronym). New `lib/barrow-ccf-v440.js` +
+  `views/group-v440.js` (RV440); +1 META entry, +1 UTILITIES row, a synonym entry (v161 → v162), 6 unit tests
+  + fuzz, corpus rebuilt to 1292. See [docs/spec-v440.md](docs/spec-v440.md). The MCP adapter follows in a
+  later wave.
+
 ### Added (spec-v439 — Hamada grade (cuff tear arthropathy) tile, 1290 → 1291)
 
 - New `hamada` tile (group G): the Hamada classification of rotator cuff tear arthropathy on shoulder
