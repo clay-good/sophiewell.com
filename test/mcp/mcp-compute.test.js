@@ -3755,6 +3755,15 @@ test('lib/baden-walker-v432.js worked calls', () => {
   assert.match(ok('baden-walker', { 'bw-grade': '4' }).band, /procidentia/);
 });
 
+test('lib/modic-changes-v433.js worked calls', () => {
+  // Type 1 (the META example): edema, T1 low T2 high.
+  const one = ok('modic-changes', { 'modic-type': '1' });
+  assert.equal(one.type, '1');
+  assert.match(one.band, /T1 hypointense, T2 hyperintense/);
+  // Type 3: bony sclerosis.
+  assert.match(ok('modic-changes', { 'modic-type': '3' }).band, /subchondral bony sclerosis/);
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];

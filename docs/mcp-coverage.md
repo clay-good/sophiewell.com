@@ -1502,6 +1502,18 @@ round-trip both pass, without the phantom "2". Adapter appended to the existing
 rate to a target PaCO2. Brings the exposed total to **1072 calculators across 197
 modules**.
 
+## Two-hundred-fifty-eighth wave — the Modic changes (vertebral endplate MRI) in lib/modic-changes-v433.js (+1)
+
+`modic-changes` (spec-v433) applies the Modic classification: given the type, it reports the T1/T2 signal.
+`type` is an enum (`kind: 'enum'`, values 1/2/3) — the single input the renderer exposes. The example sets
+type 1; its expected T1/T2 tokens appear in the result band, so it flows through the default `makeToArgs` with
+no custom toArgs. New adapter module registered in `mcp/catalog.js`; its golden probe ("modic changes
+vertebral endplate") is promoted now that the tile is in the MCP-exposed registry. Brings the exposed total to
+**1222 calculators across 338 modules**.
+
+### lib/modic-changes-v433.js
+- `modic-changes`
+
 ## Two-hundred-fifty-seventh wave — the Baden-Walker prolapse grade in lib/baden-walker-v432.js (+1)
 
 `baden-walker` (spec-v432) applies the Baden-Walker halfway system: given the grade, it reports the
@@ -4985,6 +4997,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/baden-walker-v432.js
 - `baden-walker`
+
+### lib/modic-changes-v433.js
+- `modic-changes`
 
 ### lib/tb-testing.js
 - `tb-testing`
