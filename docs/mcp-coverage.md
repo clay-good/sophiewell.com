@@ -1502,6 +1502,18 @@ round-trip both pass, without the phantom "2". Adapter appended to the existing
 rate to a target PaCO2. Brings the exposed total to **1072 calculators across 197
 modules**.
 
+## Two-hundred-sixty-first wave — the Biffl grade (blunt cerebrovascular injury) in lib/biffl-bcvi-v436.js (+1)
+
+`biffl-bcvi` (spec-v436) applies the Biffl (Denver) grading scale: given the grade, it reports the
+angiographic description. `grade` is an enum (`kind: 'enum'`, values I/II/III/IV/V) — the single input the
+renderer exposes. The example sets grade III; its expected text carries no numeric facts (the description is
+word-only), so it flows through the default `makeToArgs` with no custom toArgs. New adapter module registered
+in `mcp/catalog.js`; its golden probe ("biffl bcvi grade") is promoted now that the tile is in the MCP-exposed
+registry. Brings the exposed total to **1225 calculators across 341 modules**.
+
+### lib/biffl-bcvi-v436.js
+- `biffl-bcvi`
+
 ## Two-hundred-sixtieth wave — the Van Herick angle grade in lib/van-herick-v435.js (+1)
 
 `van-herick` (spec-v435) applies the Van Herick grade: given the grade, it reports the PACD:CT description.
@@ -5030,6 +5042,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/van-herick-v435.js
 - `van-herick`
+
+### lib/biffl-bcvi-v436.js
+- `biffl-bcvi`
 
 ### lib/tb-testing.js
 - `tb-testing`

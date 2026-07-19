@@ -348,6 +348,7 @@ import badenWalkerV432 from './adapters/baden-walker-v432.js';
 import modicChangesV433 from './adapters/modic-changes-v433.js';
 import pfirrmannDiscV434 from './adapters/pfirrmann-disc-v434.js';
 import vanHerickV435 from './adapters/van-herick-v435.js';
+import bifflBcviV436 from './adapters/biffl-bcvi-v436.js';
 import tbTesting from './adapters/tb-testing.js';
 import labInterpret from './adapters/lab-interpret.js';
 import decisionRulesV258 from './adapters/decision-rules-v258.js';
@@ -690,6 +691,7 @@ const ADAPTER_MODULES = [
   ['modic-changes-v433', modicChangesV433],
   ['pfirrmann-disc-v434', pfirrmannDiscV434],
   ['van-herick-v435', vanHerickV435],
+  ['biffl-bcvi-v436', bifflBcviV436],
   ['tb-testing', tbTesting],
   ['lab-interpret', labInterpret],
   ['decision-rules-v258', decisionRulesV258],

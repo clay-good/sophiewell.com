@@ -3782,6 +3782,15 @@ test('lib/van-herick-v435.js worked calls', () => {
   assert.match(ok('van-herick', { 'vh-grade': '0' }).band, /angle closed/);
 });
 
+test('lib/biffl-bcvi-v436.js worked calls', () => {
+  // Grade III (the META example): pseudoaneurysm.
+  const three = ok('biffl-bcvi', { 'biffl-grade': 'III' });
+  assert.equal(three.grade, 'III');
+  assert.match(three.band, /pseudoaneurysm/);
+  // Grade IV: occlusion.
+  assert.match(ok('biffl-bcvi', { 'biffl-grade': 'IV' }).band, /occlusion/);
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];

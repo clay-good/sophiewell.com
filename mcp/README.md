@@ -78,7 +78,7 @@ find_calculator { "query": "stroke risk afib" }
        candidates: [ { id: "chads", name: "CHA2DS2-VASc", why: "synonym", ... }, ... ] }
 
 list_calculators { "specialty": "hepatology" }
-  -> { coverage: "1224 of 1109 catalog tiles exposed ...", calculators: [ { id: "meld-xi", ... }, ... ] }
+  -> { coverage: "1225 of 1109 catalog tiles exposed ...", calculators: [ { id: "meld-xi", ... }, ... ] }
 
 describe_calculator { "id": "meld-xi" }
   -> { inputSchema: { ... mx-bili, mx-creat ... }, citation: "Heuman DM ... Liver Transpl 2007", ... }
@@ -472,8 +472,9 @@ HIE) in `lib/sarnat-hie-v429.js`, a two-hundred-fifty-fifth the Papile grade (ge
 `lib/bell-nec-v431.js`, a two-hundred-fifty-seventh the Baden-Walker prolapse grade in
 `lib/baden-walker-v432.js`, a two-hundred-fifty-eighth the Modic changes (vertebral endplate MRI) in
 `lib/modic-changes-v433.js`, a two-hundred-fifty-ninth the Pfirrmann disc degeneration grade in
-`lib/pfirrmann-disc-v434.js`, and a two-hundred-sixtieth the Van Herick angle grade in
-`lib/van-herick-v435.js`, for 1224 across 340 modules today. <!-- catalog-truth:historical (197 is the count of lib modules adapted, not a catalog tile count) -->
+`lib/pfirrmann-disc-v434.js`, a two-hundred-sixtieth the Van Herick angle grade in
+`lib/van-herick-v435.js`, and a two-hundred-sixty-first the Biffl grade (blunt cerebrovascular injury) in
+`lib/biffl-bcvi-v436.js`, for 1225 across 341 modules today. <!-- catalog-truth:historical (197 is the count of lib modules adapted, not a catalog tile count) -->
 Later waves extend it module by module against the same contract.
 
 ## Design
