@@ -478,6 +478,8 @@ const PROBES = [
   ['retinopathy of prematurity stage', ['rop-stage']],
   // spec-v447 tile, exposed to MCP in wave 272: Anderson-Montesano (occipital condyle fracture).
   ['anderson montesano occipital condyle', ['anderson-montesano']],
+  // spec-v448 tile, exposed to MCP in wave 273: Traynelis (atlanto-occipital dislocation).
+  ['traynelis atlanto occipital dislocation', ['traynelis']],
 ];
 
 test(`every golden probe routes an acceptable tile into the top ${TOP_N}`, () => {

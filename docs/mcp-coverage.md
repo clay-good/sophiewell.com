@@ -1502,6 +1502,18 @@ round-trip both pass, without the phantom "2". Adapter appended to the existing
 rate to a target PaCO2. Brings the exposed total to **1072 calculators across 197
 modules**.
 
+## Two-hundred-seventy-third wave — the Traynelis (atlanto-occipital dislocation) in lib/traynelis-v448.js (+1)
+
+`traynelis` (spec-v448) applies the Traynelis classification: given the type, it reports the displacement
+description. `type` is an enum (`kind: 'enum'`, values I/II/III) — the single input the renderer exposes. The
+example sets type II; its expected text carries no numeric facts (the description is word-only), so it flows
+through the default `makeToArgs` with no custom toArgs. New adapter module registered in `mcp/catalog.js`; its
+golden probe ("traynelis atlanto occipital dislocation") is promoted now that the tile is in the MCP-exposed
+registry. Brings the exposed total to **1237 calculators across 353 modules**.
+
+### lib/traynelis-v448.js
+- `traynelis`
+
 ## Two-hundred-seventy-second wave — the Anderson-Montesano (occipital condyle fracture) in lib/anderson-montesano-v447.js (+1)
 
 `anderson-montesano` (spec-v447) applies the Anderson-Montesano classification: given the type, it reports the
@@ -5211,6 +5223,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/anderson-montesano-v447.js
 - `anderson-montesano`
+
+### lib/traynelis-v448.js
+- `traynelis`
 
 ### lib/tb-testing.js
 - `tb-testing`

@@ -3890,6 +3890,15 @@ test('lib/anderson-montesano-v447.js worked calls', () => {
   assert.match(ok('anderson-montesano', { 'am-type': 'I' }).band, /impacted, comminuted/);
 });
 
+test('lib/traynelis-v448.js worked calls', () => {
+  // Type II (the META example): longitudinal distraction.
+  const two = ok('traynelis', { 'traynelis-type': 'II' });
+  assert.equal(two.type, 'II');
+  assert.match(two.band, /longitudinal distraction/);
+  // Type III: posterior displacement.
+  assert.match(ok('traynelis', { 'traynelis-type': 'III' }).band, /posterior displacement/);
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];
