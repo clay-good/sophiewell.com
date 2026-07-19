@@ -6,6 +6,21 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v439 — Hamada grade (cuff tear arthropathy) tile, 1290 → 1291)
+
+- New `hamada` tile (group G): the Hamada classification of rotator cuff tear arthropathy on shoulder
+  radiographs, by the acromiohumeral interval (AHI) and glenohumeral / acromial changes (grades 1/2/3/4/5);
+  previously absent. The clinician picks the grade and the tile reports its radiographic description. **1:**
+  AHI ≥ 6 mm. **2:** AHI ≤ 5 mm. **3:** AHI ≤ 5 mm with acetabularization. **4:** glenohumeral arthritis.
+  **5:** humeral head collapse. A radiographic grade, not a diagnosis, a treatment decision, or a prognosis
+  ([spec-v11] §5.3); the management decision stays with the orthopedic / shoulder team. Grades transcribed
+  (spec-v97) from Hamada 1990 (Clin Orthop Relat Res); this reports the original five-grade scheme (a later
+  modification subdivides grade 4 into 4A/4B and is out of scope). No citation-staleness row (the citation
+  carries no guideline-issuer acronym). Joins the shoulder-imaging cluster (goutallier). New
+  `lib/hamada-v439.js` + `views/group-v439.js` (RV439); +1 META entry, +1 UTILITIES row, a synonym entry
+  (v160 → v161), 6 unit tests + fuzz, corpus rebuilt to 1291. See [docs/spec-v439.md](docs/spec-v439.md). The
+  MCP adapter follows in a later wave.
+
 ### Added (spec-v438 — Eaton-Littler stage (thumb CMC arthritis) tile, 1289 → 1290)
 
 - New `eaton-littler` tile (group G): the Eaton-Littler classification of thumb carpometacarpal (basal-joint)

@@ -1,5 +1,5 @@
 {
-  "version": "v160-2026-07-19",
+  "version": "v161-2026-07-19",
   "note": "spec-v7 section 3.2: hand-curated patient-phrasing -> tile id table. Each entry maps patient-mental-model phrases (and, from the v8/v9 plain-language-search batches, clinical abbreviations, eponym aliases, and canonical-intent phrases) to a single existing tile. Audience is the primary audience the entry serves; the matcher deprioritizes (does not hide) entries when the user has selected a different chip. Every phrase is lowercase; every tile id is an existing catalog tile (guarded by test/unit/synonyms-catalog.test.js). Adding a new phrase is a one-line PR.",
   "entries": [
     { "phrases": ["denied", "denial letter", "they denied it", "insurance said no", "appeal", "write an appeal", "appeal my claim", "appeal letter", "appeal a denial"],
@@ -464,6 +464,8 @@
     { "phrases": ["goutallier", "goutallier grade", "fatty infiltration grade", "rotator cuff fatty infiltration", "cuff fatty degeneration", "goutallier classification", "muscle fatty infiltration grade", "fatty atrophy grade"],
       "tile": "goutallier", "audience": "clinicians" },
     { "phrases": ["eaton littler", "eaton littler stage", "thumb cmc arthritis stage", "basal joint arthritis stage", "thumb base arthritis", "trapeziometacarpal arthritis stage", "eaton classification", "cmc osteoarthritis stage"],
-      "tile": "eaton-littler", "audience": "clinicians" }
+      "tile": "eaton-littler", "audience": "clinicians" },
+    { "phrases": ["hamada", "hamada grade", "cuff tear arthropathy grade", "rotator cuff arthropathy", "hamada classification", "acromiohumeral interval grade", "massive cuff tear grade", "cta grade"],
+      "tile": "hamada", "audience": "clinicians" }
   ]
 }

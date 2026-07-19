@@ -415,6 +415,7 @@ import * as vanHerickV435 from '../../lib/van-herick-v435.js';
 import * as bifflBcviV436 from '../../lib/biffl-bcvi-v436.js';
 import * as goutallierV437 from '../../lib/goutallier-v437.js';
 import * as eatonLittlerV438 from '../../lib/eaton-littler-v438.js';
+import * as hamadaV439 from '../../lib/hamada-v439.js';
 import * as tbTesting from '../../lib/tb-testing.js';
 
 const MODULES = {
@@ -775,6 +776,7 @@ const MODULES = {
   'biffl-bcvi-v436.js': bifflBcviV436,
   'goutallier-v437.js': goutallierV437,
   'eaton-littler-v438.js': eatonLittlerV438,
+  'hamada-v439.js': hamadaV439,
   'tb-testing.js': tbTesting,
 };
 
