@@ -6,6 +6,21 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v458 — Boyd-Griffin classification (intertrochanteric fracture) tile, 1308 → 1309)
+
+- New `boyd-griffin` tile (group G): the Boyd-Griffin classification of trochanteric (intertrochanteric) femur
+  fractures, by fracture line and comminution (types I/II/III/IV); previously absent. The clinician picks the
+  type and the tile reports its description. **I:** simple intertrochanteric, undisplaced. **II:** comminuted
+  intertrochanteric with secondary cortical lines. **III:** essentially subtrochanteric. **IV:** trochanteric
+  region plus proximal shaft in at least two planes. A type, not a diagnosis, a treatment decision, or a
+  prognosis ([spec-v11] §5.3); the management decision stays with the orthopedic team. Fills the
+  intertrochanteric region-completion gap in the proximal-femur cluster (neck = Pauwels/Garden/Delbet,
+  subtrochanteric = Seinsheimer). Types transcribed (spec-v97) from Boyd & Griffin 1949 (Arch Surg). No
+  citation-staleness row (the citation carries no guideline-issuer acronym). New `lib/boyd-griffin-v458.js` +
+  `views/group-v458.js` (RV458); +1 META entry, +1 UTILITIES row, a synonym entry (v178 → v179), 6 unit tests
+  + fuzz, corpus rebuilt to 1309. See [docs/spec-v458.md](docs/spec-v458.md). The MCP adapter follows in the
+  next wave.
+
 ### Added (spec-v457 — Stulberg classification (Perthes residual deformity) tile, 1307 → 1308)
 
 - New `stulberg` tile (group G): the Stulberg classification of the residual femoral head after
