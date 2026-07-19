@@ -78,7 +78,7 @@ find_calculator { "query": "stroke risk afib" }
        candidates: [ { id: "chads", name: "CHA2DS2-VASc", why: "synonym", ... }, ... ] }
 
 list_calculators { "specialty": "hepatology" }
-  -> { coverage: "1220 of 1109 catalog tiles exposed ...", calculators: [ { id: "meld-xi", ... }, ... ] }
+  -> { coverage: "1221 of 1109 catalog tiles exposed ...", calculators: [ { id: "meld-xi", ... }, ... ] }
 
 describe_calculator { "id": "meld-xi" }
   -> { inputSchema: { ... mx-bili, mx-creat ... }, citation: "Heuman DM ... Liver Transpl 2007", ... }
@@ -468,8 +468,9 @@ hypersensitivity classification in `lib/gell-coombs-v426.js`, a two-hundred-fift
 Williams antiarrhythmic classification in `lib/vaughan-williams-v427.js`, a two-hundred-fifty-third the MRC
 muscle-power grade in `lib/mrc-power-v428.js`, a two-hundred-fifty-fourth the Sarnat staging (neonatal
 HIE) in `lib/sarnat-hie-v429.js`, a two-hundred-fifty-fifth the Papile grade (germinal matrix / IVH) in
-`lib/papile-ivh-v430.js`, and a two-hundred-fifty-sixth the modified Bell staging (NEC) in
-`lib/bell-nec-v431.js`, for 1220 across 336 modules today. <!-- catalog-truth:historical (197 is the count of lib modules adapted, not a catalog tile count) -->
+`lib/papile-ivh-v430.js`, a two-hundred-fifty-sixth the modified Bell staging (NEC) in
+`lib/bell-nec-v431.js`, and a two-hundred-fifty-seventh the Baden-Walker prolapse grade in
+`lib/baden-walker-v432.js`, for 1221 across 337 modules today. <!-- catalog-truth:historical (197 is the count of lib modules adapted, not a catalog tile count) -->
 Later waves extend it module by module against the same contract.
 
 ## Design

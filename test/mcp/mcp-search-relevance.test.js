@@ -446,6 +446,8 @@ const PROBES = [
   ['papile intraventricular hemorrhage grade', ['papile-ivh']],
   // spec-v431 tile, exposed to MCP in wave 256: Modified Bell staging (NEC).
   ['bell staging necrotizing enterocolitis', ['bell-nec']],
+  // spec-v432 tile, exposed to MCP in wave 257: Baden-Walker prolapse grade.
+  ['baden walker prolapse grade', ['baden-walker']],
 ];
 
 test(`every golden probe routes an acceptable tile into the top ${TOP_N}`, () => {

@@ -1502,6 +1502,18 @@ round-trip both pass, without the phantom "2". Adapter appended to the existing
 rate to a target PaCO2. Brings the exposed total to **1072 calculators across 197
 modules**.
 
+## Two-hundred-fifty-seventh wave — the Baden-Walker prolapse grade in lib/baden-walker-v432.js (+1)
+
+`baden-walker` (spec-v432) applies the Baden-Walker halfway system: given the grade, it reports the
+examination description. `grade` is an enum (`kind: 'enum'`, values 0/1/2/3/4) — the single input the renderer
+exposes. The example sets grade 2; its expected text carries no numeric facts beyond the grade label (the
+description is word-only), so it flows through the default `makeToArgs` with no custom toArgs. New adapter
+module registered in `mcp/catalog.js`; its golden probe ("baden walker prolapse grade") is promoted now that
+the tile is in the MCP-exposed registry. Brings the exposed total to **1221 calculators across 337 modules**.
+
+### lib/baden-walker-v432.js
+- `baden-walker`
+
 ## Two-hundred-fifty-sixth wave — the modified Bell staging (NEC) in lib/bell-nec-v431.js (+1)
 
 `bell-nec` (spec-v431) applies the modified Bell staging: given the stage, it reports the hallmark findings.
@@ -4970,6 +4982,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/bell-nec-v431.js
 - `bell-nec`
+
+### lib/baden-walker-v432.js
+- `baden-walker`
 
 ### lib/tb-testing.js
 - `tb-testing`

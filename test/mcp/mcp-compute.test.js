@@ -3746,6 +3746,15 @@ test('lib/bell-nec-v431.js worked calls', () => {
   assert.match(ok('bell-nec', { 'bell-stage': 'IIIB' }).band, /pneumoperitoneum/);
 });
 
+test('lib/baden-walker-v432.js worked calls', () => {
+  // Grade 2 (the META example): descent to the hymen.
+  const two = ok('baden-walker', { 'bw-grade': '2' });
+  assert.equal(two.grade, '2');
+  assert.match(two.band, /descent to the hymen/);
+  // Grade 4: procidentia.
+  assert.match(ok('baden-walker', { 'bw-grade': '4' }).band, /procidentia/);
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];
