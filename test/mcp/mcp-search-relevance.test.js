@@ -462,6 +462,8 @@ const PROBES = [
   ['eaton littler thumb arthritis stage', ['eaton-littler']],
   // spec-v439 tile, exposed to MCP in wave 264: Hamada grade (cuff tear arthropathy).
   ['hamada cuff tear arthropathy grade', ['hamada']],
+  // spec-v440 tile, exposed to MCP in wave 265: Barrow classification (carotid-cavernous fistula).
+  ['barrow carotid cavernous fistula', ['barrow-ccf']],
 ];
 
 test(`every golden probe routes an acceptable tile into the top ${TOP_N}`, () => {

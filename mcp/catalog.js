@@ -352,6 +352,7 @@ import bifflBcviV436 from './adapters/biffl-bcvi-v436.js';
 import goutallierV437 from './adapters/goutallier-v437.js';
 import eatonLittlerV438 from './adapters/eaton-littler-v438.js';
 import hamadaV439 from './adapters/hamada-v439.js';
+import barrowCcfV440 from './adapters/barrow-ccf-v440.js';
 import tbTesting from './adapters/tb-testing.js';
 import labInterpret from './adapters/lab-interpret.js';
 import decisionRulesV258 from './adapters/decision-rules-v258.js';
@@ -698,6 +699,7 @@ const ADAPTER_MODULES = [
   ['goutallier-v437', goutallierV437],
   ['eaton-littler-v438', eatonLittlerV438],
   ['hamada-v439', hamadaV439],
+  ['barrow-ccf-v440', barrowCcfV440],
   ['tb-testing', tbTesting],
   ['lab-interpret', labInterpret],
   ['decision-rules-v258', decisionRulesV258],

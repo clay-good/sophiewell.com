@@ -1502,6 +1502,18 @@ round-trip both pass, without the phantom "2". Adapter appended to the existing
 rate to a target PaCO2. Brings the exposed total to **1072 calculators across 197
 modules**.
 
+## Two-hundred-sixty-fifth wave — the Barrow classification (carotid-cavernous fistula) in lib/barrow-ccf-v440.js (+1)
+
+`barrow-ccf` (spec-v440) applies the Barrow classification: given the type, it reports the arterial-supply
+description. `type` is an enum (`kind: 'enum'`, values A/B/C/D) — the single input the renderer exposes. The
+example sets type A; its expected text carries no numeric facts (the description is word-only), so it flows
+through the default `makeToArgs` with no custom toArgs. New adapter module registered in `mcp/catalog.js`; its
+golden probe ("barrow carotid cavernous fistula") is promoted now that the tile is in the MCP-exposed
+registry. Brings the exposed total to **1229 calculators across 345 modules**.
+
+### lib/barrow-ccf-v440.js
+- `barrow-ccf`
+
 ## Two-hundred-sixty-fourth wave — the Hamada grade (cuff tear arthropathy) in lib/hamada-v439.js (+1)
 
 `hamada` (spec-v439) applies the Hamada classification: given the grade, it reports the radiographic
@@ -5090,6 +5102,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/hamada-v439.js
 - `hamada`
+
+### lib/barrow-ccf-v440.js
+- `barrow-ccf`
 
 ### lib/tb-testing.js
 - `tb-testing`

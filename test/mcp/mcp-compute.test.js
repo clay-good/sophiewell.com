@@ -3818,6 +3818,15 @@ test('lib/hamada-v439.js worked calls', () => {
   assert.match(ok('hamada', { 'hamada-grade': '5' }).band, /humeral head collapse/);
 });
 
+test('lib/barrow-ccf-v440.js worked calls', () => {
+  // Type A (the META example): direct high-flow shunt.
+  const a = ok('barrow-ccf', { 'barrow-type': 'A' });
+  assert.equal(a.type, 'A');
+  assert.match(a.band, /direct high-flow shunt/);
+  // Type D: both ICA and ECA.
+  assert.match(ok('barrow-ccf', { 'barrow-type': 'D' }).band, /both the ICA and the ECA/);
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];
