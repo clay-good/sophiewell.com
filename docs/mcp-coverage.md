@@ -1502,6 +1502,18 @@ round-trip both pass, without the phantom "2". Adapter appended to the existing
 rate to a target PaCO2. Brings the exposed total to **1072 calculators across 197
 modules**.
 
+## Two-hundred-ninety-second wave — the Bromage scale (neuraxial motor block) in lib/bromage-scale-v467.js (+1)
+
+`bromage-scale` (spec-v467) applies the Bromage scale: given the grade, it reports the residual-movement
+description. `grade` is an enum (`kind: 'enum'`, values I/II/III/IV) — the single input the renderer exposes.
+The example sets grade II; its expected text carries no numeric facts (the description is word-only), so it
+flows through the default `makeToArgs` with no custom toArgs. New adapter module registered in `mcp/catalog.js`;
+its golden probe ("bromage neuraxial motor block scale") is promoted now that the tile is in the MCP-exposed
+registry. Brings the exposed total to **1255 calculators across 371 modules**.
+
+### lib/bromage-scale-v467.js
+- `bromage-scale`
+
 ## Two-hundred-ninety-first wave — the Judet-Letournel classification (acetabular fracture) in lib/letournel-acetabulum-v466.js (+1)
 
 `letournel-acetabulum` (spec-v466) applies the Judet-Letournel classification: given the pattern, it reports
@@ -5485,6 +5497,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/letournel-acetabulum-v466.js
 - `letournel-acetabulum`
+
+### lib/bromage-scale-v467.js
+- `bromage-scale`
 
 ### lib/tb-testing.js
 - `tb-testing`

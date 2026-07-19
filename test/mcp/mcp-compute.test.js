@@ -4052,6 +4052,15 @@ test('lib/letournel-acetabulum-v466.js worked calls', () => {
   assert.match(ok('letournel-acetabulum', { 'letournel-pattern': 'both-column' }).band, /no part of the articular surface remains attached/);
 });
 
+test('lib/bromage-scale-v467.js worked calls', () => {
+  // Grade II (the META example): partial.
+  const two = ok('bromage-scale', { 'bromage-grade': 'II' });
+  assert.equal(two.grade, 'II');
+  assert.match(two.band, /partial: just able to flex the knees/);
+  // Grade IV: complete.
+  assert.match(ok('bromage-scale', { 'bromage-grade': 'IV' }).band, /complete: unable to move the legs or feet/);
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];
