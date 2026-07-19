@@ -454,6 +454,7 @@ import * as glogauPhotoagingV475 from '../../lib/glogau-photoaging-v475.js';
 import * as nashMoeRotationV476 from '../../lib/nash-moe-rotation-v476.js';
 import * as sfuHydronephrosisV477 from '../../lib/sfu-hydronephrosis-v477.js';
 import * as spauldingClassificationV478 from '../../lib/spaulding-classification-v478.js';
+import * as spitzAtresiaV479 from '../../lib/spitz-atresia-v479.js';
 import * as tbTesting from '../../lib/tb-testing.js';
 
 const MODULES = {
@@ -853,6 +854,7 @@ const MODULES = {
   'nash-moe-rotation-v476.js': nashMoeRotationV476,
   'sfu-hydronephrosis-v477.js': sfuHydronephrosisV477,
   'spaulding-classification-v478.js': spauldingClassificationV478,
+  'spitz-atresia-v479.js': spitzAtresiaV479,
   'tb-testing.js': tbTesting,
 };
 

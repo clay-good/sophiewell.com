@@ -6,6 +6,19 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v479 — Spitz classification (esophageal atresia) tile, 1329 → 1330)
+
+- New `spitz-atresia` tile (group G): the Spitz classification of esophageal atresia, by birth weight and major
+  congenital cardiac disease (groups I/II/III); previously absent. The clinician picks the group and the tile
+  reports its criteria. **I:** birth weight 1500 g or more and no major cardiac disease. **II:** birth weight
+  less than 1500 g, or major cardiac disease. **III:** birth weight less than 1500 g and major cardiac disease.
+  A group, not a diagnosis, a treatment decision, or a prognosis ([spec-v11] §5.3); the management decision
+  stays with the neonatal / pediatric-surgery team. Groups transcribed (spec-v97) from Spitz 1994 (J Pediatr
+  Surg). No citation-staleness row (a named-author journal article, no guideline-issuer acronym). New
+  `lib/spitz-atresia-v479.js` + `views/group-v479.js` (RV479); +1 META entry, +1 UTILITIES row, a synonym entry
+  (v199 → v200), 5 unit tests + fuzz, corpus rebuilt to 1330. See [docs/spec-v479.md](docs/spec-v479.md). The
+  MCP adapter follows in the next wave.
+
 ### Added (spec-v478 — Spaulding classification (device reprocessing) tile, 1328 → 1329)
 
 - New `spaulding-classification` tile (group G): the Spaulding classification of medical devices for
