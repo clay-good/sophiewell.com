@@ -6,6 +6,19 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v432 — Baden-Walker prolapse grade tile, 1283 → 1284)
+
+- New `baden-walker` tile (group G): the Baden-Walker halfway system for grading pelvic organ prolapse, by the
+  position of the leading edge relative to the hymen at maximum strain (grades 0/1/2/3/4); previously absent.
+  The clinician picks the grade and the tile reports its examination description. **0:** normal position.
+  **1:** halfway to the hymen. **2:** to the hymen. **3:** halfway past the hymen. **4:** maximum descent
+  (complete prolapse / procidentia). A grade, not a diagnosis, a treatment decision, or a prognosis
+  ([spec-v11] §5.3); the management decision stays with the gynecology / urogynecology team. Grades
+  transcribed (spec-v97) from Baden & Walker 1972 (Clin Obstet Gynecol); no citation-staleness row (the
+  citation carries no guideline-issuer acronym). New `lib/baden-walker-v432.js` + `views/group-v432.js`
+  (RV432); +1 META entry, +1 UTILITIES row, a synonym entry (v153 → v154), 6 unit tests + fuzz, corpus rebuilt
+  to 1284. See [docs/spec-v432.md](docs/spec-v432.md). The MCP adapter follows in a later wave.
+
 ### Added (spec-v431 — Modified Bell staging (NEC) tile, 1282 → 1283)
 
 - New `bell-nec` tile (group G): the modified Bell staging of necrotizing enterocolitis (NEC), staging a
