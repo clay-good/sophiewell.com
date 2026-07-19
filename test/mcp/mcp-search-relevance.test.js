@@ -487,6 +487,7 @@ const PROBES = [
   // spec-v451 tile, exposed to MCP in wave 276: Sade grade (tympanic membrane retraction).
   ['sade tympanic membrane retraction grade', ['sade-retraction']],
   ['brooker heterotopic ossification classification', ['brooker']],
+  ['bado monteggia fracture classification', ['bado']],
 ];
 
 test(`every golden probe routes an acceptable tile into the top ${TOP_N}`, () => {

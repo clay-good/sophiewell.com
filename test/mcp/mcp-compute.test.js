@@ -3935,6 +3935,15 @@ test('lib/brooker-v452.js worked calls', () => {
   assert.match(ok('brooker', { 'brooker-class': 'IV' }).band, /apparent bony ankylosis/);
 });
 
+test('lib/bado-v454.js worked calls', () => {
+  // Type I (the META example): anterior dislocation, most common.
+  const one = ok('bado', { 'bado-type': 'I' });
+  assert.equal(one.type, 'I');
+  assert.match(one.band, /anterior dislocation of the radial head/);
+  // Type III: ulnar metaphyseal fracture.
+  assert.match(ok('bado', { 'bado-type': 'III' }).band, /ulnar metaphyseal fracture/);
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];
