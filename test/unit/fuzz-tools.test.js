@@ -409,6 +409,7 @@ import * as sarnatHieV429 from '../../lib/sarnat-hie-v429.js';
 import * as papileIvhV430 from '../../lib/papile-ivh-v430.js';
 import * as bellNecV431 from '../../lib/bell-nec-v431.js';
 import * as badenWalkerV432 from '../../lib/baden-walker-v432.js';
+import * as modicChangesV433 from '../../lib/modic-changes-v433.js';
 import * as tbTesting from '../../lib/tb-testing.js';
 
 const MODULES = {
@@ -763,6 +764,7 @@ const MODULES = {
   'papile-ivh-v430.js': papileIvhV430,
   'bell-nec-v431.js': bellNecV431,
   'baden-walker-v432.js': badenWalkerV432,
+  'modic-changes-v433.js': modicChangesV433,
   'tb-testing.js': tbTesting,
 };
 

@@ -6,6 +6,20 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v433 — Modic changes (vertebral endplate MRI) tile, 1284 → 1285)
+
+- New `modic-changes` tile (group G): the Modic classification of vertebral endplate / subchondral bone-marrow
+  changes on MRI in degenerative disc disease, by the T1 and T2 signal (types 1/2/3); previously absent. The
+  radiologist picks the type and the tile reports its T1/T2 signal description. **1:** bone-marrow edema /
+  inflammation (T1 hypointense, T2 hyperintense). **2:** fatty (yellow) marrow (T1 hyperintense, T2 iso- to
+  hyperintense). **3:** subchondral bony sclerosis (T1 hypointense, T2 hypointense). An imaging type, not a
+  diagnosis, a treatment decision, or a prognosis ([spec-v11] §5.3); the clinical decision stays with the
+  treating team. Mixed types (1/2, 2/3) are described when features coexist. Types transcribed (spec-v97) from
+  Modic 1988 (Radiology); no citation-staleness row (the citation carries no guideline-issuer acronym). New
+  `lib/modic-changes-v433.js` + `views/group-v433.js` (RV433); +1 META entry, +1 UTILITIES row, a synonym
+  entry (v154 → v155), 5 unit tests + fuzz, corpus rebuilt to 1285. See [docs/spec-v433.md](docs/spec-v433.md).
+  The MCP adapter follows in a later wave.
+
 ### Added (spec-v432 — Baden-Walker prolapse grade tile, 1283 → 1284)
 
 - New `baden-walker` tile (group G): the Baden-Walker halfway system for grading pelvic organ prolapse, by the
