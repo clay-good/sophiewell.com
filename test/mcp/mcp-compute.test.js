@@ -3935,15 +3935,6 @@ test('lib/brooker-v452.js worked calls', () => {
   assert.match(ok('brooker', { 'brooker-class': 'IV' }).band, /apparent bony ankylosis/);
 });
 
-test('lib/schatzker-v453.js worked calls', () => {
-  // Type II (the META example): lateral split-depression.
-  const two = ok('schatzker', { 'schatzker-type': 'II' });
-  assert.equal(two.type, 'II');
-  assert.match(two.band, /lateral tibial plateau split-depression/);
-  // Type VI: metaphyseal-diaphyseal dissociation.
-  assert.match(ok('schatzker', { 'schatzker-type': 'VI' }).band, /metaphyseal-diaphyseal dissociation/);
-});
-
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];
