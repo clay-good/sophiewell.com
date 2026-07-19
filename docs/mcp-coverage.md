@@ -1502,6 +1502,18 @@ round-trip both pass, without the phantom "2". Adapter appended to the existing
 rate to a target PaCO2. Brings the exposed total to **1072 calculators across 197
 modules**.
 
+## Two-hundred-sixty-third wave — the Eaton-Littler stage (thumb CMC arthritis) in lib/eaton-littler-v438.js (+1)
+
+`eaton-littler` (spec-v438) applies the Eaton-Littler classification: given the stage, it reports the
+radiographic description. `stage` is an enum (`kind: 'enum'`, values I/II/III/IV) — the single input the
+renderer exposes. The example sets stage II; its expected number (2 mm) appears in the result band, so it
+flows through the default `makeToArgs` with no custom toArgs. New adapter module registered in
+`mcp/catalog.js`; its golden probe ("eaton littler thumb arthritis stage") is promoted now that the tile is in
+the MCP-exposed registry. Brings the exposed total to **1227 calculators across 343 modules**.
+
+### lib/eaton-littler-v438.js
+- `eaton-littler`
+
 ## Two-hundred-sixty-second wave — the Goutallier grade (rotator cuff fatty infiltration) in lib/goutallier-v437.js (+1)
 
 `goutallier` (spec-v437) applies the Goutallier classification: given the grade, it reports the fat-vs-muscle
@@ -5060,6 +5072,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/goutallier-v437.js
 - `goutallier`
+
+### lib/eaton-littler-v438.js
+- `eaton-littler`
 
 ### lib/tb-testing.js
 - `tb-testing`

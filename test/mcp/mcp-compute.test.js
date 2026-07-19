@@ -3800,6 +3800,15 @@ test('lib/goutallier-v437.js worked calls', () => {
   assert.match(ok('goutallier', { 'goutallier-grade': '4' }).band, /more fat than muscle/);
 });
 
+test('lib/eaton-littler-v438.js worked calls', () => {
+  // Stage II (the META example): slight narrowing, osteophytes < 2 mm.
+  const two = ok('eaton-littler', { 'eaton-stage': 'II' });
+  assert.equal(two.stage, 'II');
+  assert.match(two.band, /slight narrowing of the TM joint/);
+  // Stage IV: pantrapezial arthritis.
+  assert.match(ok('eaton-littler', { 'eaton-stage': 'IV' }).band, /pantrapezial arthritis/);
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];
