@@ -1502,6 +1502,18 @@ round-trip both pass, without the phantom "2". Adapter appended to the existing
 rate to a target PaCO2. Brings the exposed total to **1072 calculators across 197
 modules**.
 
+## Two-hundred-sixty-eighth wave — the Kadish staging (esthesioneuroblastoma) in lib/kadish-v443.js (+1)
+
+`kadish` (spec-v443) applies the Kadish staging: given the stage, it reports the anatomic-extent description.
+`stage` is an enum (`kind: 'enum'`, values A/B/C/D) — the single input the renderer exposes. The example sets
+stage C; its expected text carries no numeric facts (the description is word-only), so it flows through the
+default `makeToArgs` with no custom toArgs. New adapter module registered in `mcp/catalog.js`; its golden probe
+("kadish esthesioneuroblastoma stage") is promoted now that the tile is in the MCP-exposed registry. Brings
+the exposed total to **1232 calculators across 348 modules**.
+
+### lib/kadish-v443.js
+- `kadish`
+
 ## Two-hundred-sixty-seventh wave — the Zabramski classification (cerebral cavernous malformation) in lib/zabramski-v442.js (+1)
 
 `zabramski` (spec-v442) applies the Zabramski classification: given the type, it reports the MRI description.
@@ -5135,6 +5147,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/zabramski-v442.js
 - `zabramski`
+
+### lib/kadish-v443.js
+- `kadish`
 
 ### lib/tb-testing.js
 - `tb-testing`

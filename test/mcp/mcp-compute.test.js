@@ -3845,6 +3845,15 @@ test('lib/zabramski-v442.js worked calls', () => {
   assert.match(ok('zabramski', { 'zabramski-type': 'IV' }).band, /punctate microhemorrhages/);
 });
 
+test('lib/kadish-v443.js worked calls', () => {
+  // Stage C (the META example): beyond the sinuses.
+  const c = ok('kadish', { 'kadish-stage': 'C' });
+  assert.equal(c.stage, 'C');
+  assert.match(c.band, /extending beyond the nasal cavity/);
+  // Stage A: confined to the nasal cavity.
+  assert.match(ok('kadish', { 'kadish-stage': 'A' }).band, /confined to the nasal cavity/);
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];
