@@ -452,6 +452,7 @@ import * as todaniCholedochalV473 from '../../lib/todani-choledochal-v473.js';
 import * as rastelliAvsdV474 from '../../lib/rastelli-avsd-v474.js';
 import * as glogauPhotoagingV475 from '../../lib/glogau-photoaging-v475.js';
 import * as nashMoeRotationV476 from '../../lib/nash-moe-rotation-v476.js';
+import * as sfuHydronephrosisV477 from '../../lib/sfu-hydronephrosis-v477.js';
 import * as tbTesting from '../../lib/tb-testing.js';
 
 const MODULES = {
@@ -849,6 +850,7 @@ const MODULES = {
   'rastelli-avsd-v474.js': rastelliAvsdV474,
   'glogau-photoaging-v475.js': glogauPhotoagingV475,
   'nash-moe-rotation-v476.js': nashMoeRotationV476,
+  'sfu-hydronephrosis-v477.js': sfuHydronephrosisV477,
   'tb-testing.js': tbTesting,
 };
 

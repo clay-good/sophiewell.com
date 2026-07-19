@@ -6,6 +6,20 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v477 — SFU grade (hydronephrosis) tile, 1327 → 1328)
+
+- New `sfu-hydronephrosis` tile (group G): the Society for Fetal Urology (SFU) ultrasound grading of
+  hydronephrosis, by renal-sinus and calyceal dilatation and parenchymal thinning (grades 0-4); previously
+  absent. The clinician picks the grade and the tile reports its description. **0:** intact central renal
+  complex. **1:** renal pelvis only. **2:** pelvis and a few calyces. **3:** pelvis and all calyces uniformly
+  dilated (normal parenchyma). **4:** as grade 3 plus parenchymal thinning. A grade, not a diagnosis, a
+  treatment decision, or a prognosis ([spec-v11] §5.3); the management decision stays with the urology team.
+  Grades transcribed (spec-v97) from Fernbach, Maizels & Conway 1993 (Pediatr Radiol). No citation-staleness
+  row (a named-author journal article, no guideline-issuer acronym). New `lib/sfu-hydronephrosis-v477.js` +
+  `views/group-v477.js` (RV477); +1 META entry, +1 UTILITIES row, a synonym entry (v197 → v198), 6 unit tests +
+  fuzz, corpus rebuilt to 1328. See [docs/spec-v477.md](docs/spec-v477.md). The MCP adapter follows in the next
+  wave.
+
 ### Added (spec-v476 — Nash-Moe grade (vertebral rotation) tile, 1326 → 1327)
 
 - New `nash-moe-rotation` tile (group G): the Nash-Moe method of grading vertebral rotation in scoliosis, by the
