@@ -4232,6 +4232,15 @@ test('lib/samilson-prieto-v486.js worked calls', () => {
   assert.match(ok('samilson-prieto', { 'samilson-grade': 'severe' }).band, /greater than 7 mm/);
 });
 
+test('lib/rockwood-ac-v487.js worked calls', () => {
+  // Type III (the META example): both ligaments torn, CC 25-100%.
+  const iii = ok('rockwood-ac', { 'rockwood-type': 'III' });
+  assert.equal(iii.type, 'III');
+  assert.match(iii.band, /coracoclavicular distance is increased 25% to 100%/);
+  // Type V: gross superior displacement.
+  assert.match(ok('rockwood-ac', { 'rockwood-type': 'V' }).band, /100% to 300% of normal/);
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];

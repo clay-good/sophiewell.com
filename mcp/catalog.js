@@ -398,6 +398,7 @@ import vancouverPeriprostheticV483 from './adapters/vancouver-periprosthetic-v48
 import barrackCementV484 from './adapters/barrack-cement-v484.js';
 import dejourTrochleaV485 from './adapters/dejour-trochlea-v485.js';
 import samilsonPrietoV486 from './adapters/samilson-prieto-v486.js';
+import rockwoodAcV487 from './adapters/rockwood-ac-v487.js';
 import tbTesting from './adapters/tb-testing.js';
 import labInterpret from './adapters/lab-interpret.js';
 import decisionRulesV258 from './adapters/decision-rules-v258.js';
@@ -790,6 +791,7 @@ const ADAPTER_MODULES = [
   ['barrack-cement-v484', barrackCementV484],
   ['dejour-trochlea-v485', dejourTrochleaV485],
   ['samilson-prieto-v486', samilsonPrietoV486],
+  ['rockwood-ac-v487', rockwoodAcV487],
   ['tb-testing', tbTesting],
   ['lab-interpret', labInterpret],
   ['decision-rules-v258', decisionRulesV258],

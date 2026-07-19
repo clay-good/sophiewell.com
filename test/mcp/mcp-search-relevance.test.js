@@ -520,6 +520,7 @@ const PROBES = [
   ['barrack femoral cement mantle grade', ['barrack-cement']],
   ['dejour trochlear dysplasia classification', ['dejour-trochlea']],
   ['samilson prieto shoulder dislocation arthropathy', ['samilson-prieto']],
+  ['rockwood acromioclavicular joint injury classification', ['rockwood-ac']],
 ];
 
 test(`every golden probe routes an acceptable tile into the top ${TOP_N}`, () => {

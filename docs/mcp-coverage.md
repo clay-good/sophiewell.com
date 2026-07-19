@@ -1502,6 +1502,18 @@ round-trip both pass, without the phantom "2". Adapter appended to the existing
 rate to a target PaCO2. Brings the exposed total to **1072 calculators across 197
 modules**.
 
+## Three-hundred-twelfth wave — the Rockwood classification (acromioclavicular joint injury) in lib/rockwood-ac-v487.js (+1)
+
+`rockwood-ac` (spec-v487) applies the Rockwood classification: given the type, it reports the
+ligament-injury / displacement description. `type` is an enum (`kind: 'enum'`, values I..VI) — the single input
+the renderer exposes. The example sets type III; its expected text carries the "25% to 100%" fact, so it flows
+through the default `makeToArgs` with no custom toArgs. New adapter module registered in `mcp/catalog.js`; its
+golden probe ("rockwood acromioclavicular joint injury classification") is promoted now that the tile is in the
+MCP-exposed registry. Brings the exposed total to **1275 calculators across 391 modules**.
+
+### lib/rockwood-ac-v487.js
+- `rockwood-ac`
+
 ## Three-hundred-eleventh wave — the Samilson-Prieto grade (shoulder dislocation arthropathy) in lib/samilson-prieto-v486.js (+1)
 
 `samilson-prieto` (spec-v486) applies the Samilson-Prieto classification: given the grade, it reports the
@@ -5791,6 +5803,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/samilson-prieto-v486.js
 - `samilson-prieto`
+
+### lib/rockwood-ac-v487.js
+- `rockwood-ac`
 
 ### lib/tb-testing.js
 - `tb-testing`
