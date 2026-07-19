@@ -3773,6 +3773,15 @@ test('lib/pfirrmann-disc-v434.js worked calls', () => {
   assert.match(ok('pfirrmann-disc', { 'pfirrmann-grade': 'V' }).band, /collapsed disc space/);
 });
 
+test('lib/van-herick-v435.js worked calls', () => {
+  // Grade 2 (the META example): 1/4 CT, closure possible.
+  const two = ok('van-herick', { 'vh-grade': '2' });
+  assert.equal(two.grade, '2');
+  assert.match(two.band, /angle closure possible/);
+  // Grade 0: angle closed.
+  assert.match(ok('van-herick', { 'vh-grade': '0' }).band, /angle closed/);
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];

@@ -452,6 +452,8 @@ const PROBES = [
   ['modic changes vertebral endplate', ['modic-changes']],
   // spec-v434 tile, exposed to MCP in wave 259: Pfirrmann disc degeneration grade.
   ['pfirrmann disc degeneration grade', ['pfirrmann-disc']],
+  // spec-v435 tile, exposed to MCP in wave 260: Van Herick angle grade.
+  ['van herick angle grade', ['van-herick']],
 ];
 
 test(`every golden probe routes an acceptable tile into the top ${TOP_N}`, () => {
