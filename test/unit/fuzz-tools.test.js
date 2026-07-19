@@ -427,6 +427,7 @@ import * as andersonMontesanoV447 from '../../lib/anderson-montesano-v447.js';
 import * as traynelisV448 from '../../lib/traynelis-v448.js';
 import * as fieldingHawkinsV449 from '../../lib/fielding-hawkins-v449.js';
 import * as reidBronchiectasisV450 from '../../lib/reid-bronchiectasis-v450.js';
+import * as sadeRetractionV451 from '../../lib/sade-retraction-v451.js';
 import * as tbTesting from '../../lib/tb-testing.js';
 
 const MODULES = {
@@ -799,6 +800,7 @@ const MODULES = {
   'traynelis-v448.js': traynelisV448,
   'fielding-hawkins-v449.js': fieldingHawkinsV449,
   'reid-bronchiectasis-v450.js': reidBronchiectasisV450,
+  'sade-retraction-v451.js': sadeRetractionV451,
   'tb-testing.js': tbTesting,
 };
 

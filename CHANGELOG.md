@@ -6,6 +6,20 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v451 — Sade grade (tympanic membrane retraction) tile, 1302 → 1303)
+
+- New `sade-retraction` tile (group G): the Sade classification of pars tensa tympanic-membrane retraction, by
+  the depth of the retraction pocket on otoscopy (grades I/II/III/IV); previously absent. The clinician picks
+  the grade and the tile reports its otoscopy description. **I:** mild, not touching the incus. **II:** touching
+  the incus or stapes. **III:** touching the promontory (atelectasis) but not adherent. **IV:** adherent to the
+  promontory (adhesive otitis media). A grade, not a diagnosis, a treatment decision, or a prognosis
+  ([spec-v11] §5.3); the management decision stays with the otolaryngology team. Grades transcribed (spec-v97)
+  from Sade & Berco 1976 (Ann Otol Rhinol Laryngol); this grades pars tensa retraction (pars flaccida / attic
+  retraction uses the Tos grading, out of scope). No citation-staleness row (the citation carries no
+  guideline-issuer acronym). New `lib/sade-retraction-v451.js` + `views/group-v451.js` (RV451); +1 META entry,
+  +1 UTILITIES row, a synonym entry (v172 → v173), 6 unit tests + fuzz, corpus rebuilt to 1303. See
+  [docs/spec-v451.md](docs/spec-v451.md). The MCP adapter follows in a later wave.
+
 ### Added (spec-v450 — Reid classification (bronchiectasis) tile, 1301 → 1302)
 
 - New `reid-bronchiectasis` tile (group G): the Reid classification of bronchiectasis by bronchial morphology
