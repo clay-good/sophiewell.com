@@ -4169,6 +4169,15 @@ test('lib/spitz-atresia-v479.js worked calls', () => {
   assert.match(ok('spitz-atresia', { 'spitz-group': 'I' }).band, /1500 g or more and no major/);
 });
 
+test('lib/ahlback-knee-oa-v480.js worked calls', () => {
+  // Grade III (the META example): minor attrition.
+  const three = ok('ahlback-knee-oa', { 'ahlback-grade': 'III' });
+  assert.equal(three.grade, 'III');
+  assert.match(three.band, /0 to 5 mm of bone loss/);
+  // Grade V: severe attrition.
+  assert.match(ok('ahlback-knee-oa', { 'ahlback-grade': 'V' }).band, /more than 10 mm of bone loss/);
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];

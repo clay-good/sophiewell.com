@@ -513,6 +513,7 @@ const PROBES = [
   ['sfu hydronephrosis grade', ['sfu-hydronephrosis']],
   ['spaulding device reprocessing classification', ['spaulding-classification']],
   ['spitz esophageal atresia classification', ['spitz-atresia']],
+  ['ahlback knee osteoarthritis grade', ['ahlback-knee-oa']],
 ];
 
 test(`every golden probe routes an acceptable tile into the top ${TOP_N}`, () => {

@@ -1502,6 +1502,18 @@ round-trip both pass, without the phantom "2". Adapter appended to the existing
 rate to a target PaCO2. Brings the exposed total to **1072 calculators across 197
 modules**.
 
+## Three-hundred-fifth wave — the Ahlback grade (knee osteoarthritis) in lib/ahlback-knee-oa-v480.js (+1)
+
+`ahlback-knee-oa` (spec-v480) applies the Ahlback classification: given the grade, it reports the
+joint-space/attrition description. `grade` is an enum (`kind: 'enum'`, values I..V) — the single input the
+renderer exposes. The example sets grade III; its expected text carries the "0 to 5 mm" fact, so it flows
+through the default `makeToArgs` with no custom toArgs. New adapter module registered in `mcp/catalog.js`; its
+golden probe ("ahlback knee osteoarthritis grade") is promoted now that the tile is in the MCP-exposed
+registry. Brings the exposed total to **1268 calculators across 384 modules**.
+
+### lib/ahlback-knee-oa-v480.js
+- `ahlback-knee-oa`
+
 ## Three-hundred-fourth wave — the Spitz classification (esophageal atresia) in lib/spitz-atresia-v479.js (+1)
 
 `spitz-atresia` (spec-v479) applies the Spitz classification: given the group, it reports the birth-weight /
@@ -5684,6 +5696,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/spitz-atresia-v479.js
 - `spitz-atresia`
+
+### lib/ahlback-knee-oa-v480.js
+- `ahlback-knee-oa`
 
 ### lib/tb-testing.js
 - `tb-testing`

@@ -391,6 +391,7 @@ import nashMoeRotationV476 from './adapters/nash-moe-rotation-v476.js';
 import sfuHydronephrosisV477 from './adapters/sfu-hydronephrosis-v477.js';
 import spauldingClassificationV478 from './adapters/spaulding-classification-v478.js';
 import spitzAtresiaV479 from './adapters/spitz-atresia-v479.js';
+import ahlbackKneeOaV480 from './adapters/ahlback-knee-oa-v480.js';
 import tbTesting from './adapters/tb-testing.js';
 import labInterpret from './adapters/lab-interpret.js';
 import decisionRulesV258 from './adapters/decision-rules-v258.js';
@@ -776,6 +777,7 @@ const ADAPTER_MODULES = [
   ['sfu-hydronephrosis-v477', sfuHydronephrosisV477],
   ['spaulding-classification-v478', spauldingClassificationV478],
   ['spitz-atresia-v479', spitzAtresiaV479],
+  ['ahlback-knee-oa-v480', ahlbackKneeOaV480],
   ['tb-testing', tbTesting],
   ['lab-interpret', labInterpret],
   ['decision-rules-v258', decisionRulesV258],
