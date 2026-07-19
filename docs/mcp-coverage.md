@@ -1502,6 +1502,18 @@ round-trip both pass, without the phantom "2". Adapter appended to the existing
 rate to a target PaCO2. Brings the exposed total to **1072 calculators across 197
 modules**.
 
+## Two-hundred-fifty-ninth wave — the Pfirrmann disc degeneration grade in lib/pfirrmann-disc-v434.js (+1)
+
+`pfirrmann-disc` (spec-v434) applies the Pfirrmann classification: given the grade, it reports the MRI
+description. `grade` is an enum (`kind: 'enum'`, values I/II/III/IV/V) — the single input the renderer
+exposes. The example sets grade III; its expected text carries no numeric facts (the description is word-only),
+so it flows through the default `makeToArgs` with no custom toArgs. New adapter module registered in
+`mcp/catalog.js`; its golden probe ("pfirrmann disc degeneration grade") is promoted now that the tile is in
+the MCP-exposed registry. Brings the exposed total to **1223 calculators across 339 modules**.
+
+### lib/pfirrmann-disc-v434.js
+- `pfirrmann-disc`
+
 ## Two-hundred-fifty-eighth wave — the Modic changes (vertebral endplate MRI) in lib/modic-changes-v433.js (+1)
 
 `modic-changes` (spec-v433) applies the Modic classification: given the type, it reports the T1/T2 signal.
@@ -5000,6 +5012,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/modic-changes-v433.js
 - `modic-changes`
+
+### lib/pfirrmann-disc-v434.js
+- `pfirrmann-disc`
 
 ### lib/tb-testing.js
 - `tb-testing`

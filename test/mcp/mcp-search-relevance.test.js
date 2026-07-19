@@ -450,6 +450,8 @@ const PROBES = [
   ['baden walker prolapse grade', ['baden-walker']],
   // spec-v433 tile, exposed to MCP in wave 258: Modic changes (vertebral endplate MRI).
   ['modic changes vertebral endplate', ['modic-changes']],
+  // spec-v434 tile, exposed to MCP in wave 259: Pfirrmann disc degeneration grade.
+  ['pfirrmann disc degeneration grade', ['pfirrmann-disc']],
 ];
 
 test(`every golden probe routes an acceptable tile into the top ${TOP_N}`, () => {

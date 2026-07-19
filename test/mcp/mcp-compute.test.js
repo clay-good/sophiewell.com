@@ -3764,6 +3764,15 @@ test('lib/modic-changes-v433.js worked calls', () => {
   assert.match(ok('modic-changes', { 'modic-type': '3' }).band, /subchondral bony sclerosis/);
 });
 
+test('lib/pfirrmann-disc-v434.js worked calls', () => {
+  // Grade III (the META example): gray, unclear distinction.
+  const three = ok('pfirrmann-disc', { 'pfirrmann-grade': 'III' });
+  assert.equal(three.grade, 'III');
+  assert.match(three.band, /inhomogeneous gray, unclear/);
+  // Grade V: collapsed disc space.
+  assert.match(ok('pfirrmann-disc', { 'pfirrmann-grade': 'V' }).band, /collapsed disc space/);
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];
