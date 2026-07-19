@@ -3836,6 +3836,15 @@ test('lib/borden-davf-v441.js worked calls', () => {
   assert.match(ok('borden-davf', { 'borden-type': 'III' }).band, /cortical veins only/);
 });
 
+test('lib/zabramski-v442.js worked calls', () => {
+  // Type II (the META example): popcorn with hemosiderin rim.
+  const two = ok('zabramski', { 'zabramski-type': 'II' });
+  assert.equal(two.type, 'II');
+  assert.match(two.band, /hemosiderin rim/);
+  // Type IV: punctate microhemorrhages.
+  assert.match(ok('zabramski', { 'zabramski-type': 'IV' }).band, /punctate microhemorrhages/);
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];

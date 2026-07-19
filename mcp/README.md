@@ -78,7 +78,7 @@ find_calculator { "query": "stroke risk afib" }
        candidates: [ { id: "chads", name: "CHA2DS2-VASc", why: "synonym", ... }, ... ] }
 
 list_calculators { "specialty": "hepatology" }
-  -> { coverage: "1230 of 1109 catalog tiles exposed ...", calculators: [ { id: "meld-xi", ... }, ... ] }
+  -> { coverage: "1231 of 1109 catalog tiles exposed ...", calculators: [ { id: "meld-xi", ... }, ... ] }
 
 describe_calculator { "id": "meld-xi" }
   -> { inputSchema: { ... mx-bili, mx-creat ... }, citation: "Heuman DM ... Liver Transpl 2007", ... }
@@ -478,8 +478,9 @@ HIE) in `lib/sarnat-hie-v429.js`, a two-hundred-fifty-fifth the Papile grade (ge
 infiltration) in `lib/goutallier-v437.js`, a two-hundred-sixty-third the Eaton-Littler stage (thumb CMC
 arthritis) in `lib/eaton-littler-v438.js`, a two-hundred-sixty-fourth the Hamada grade (cuff tear
 arthropathy) in `lib/hamada-v439.js`, a two-hundred-sixty-fifth the Barrow classification
-(carotid-cavernous fistula) in `lib/barrow-ccf-v440.js`, and a two-hundred-sixty-sixth the Borden
-classification (dural AV fistula) in `lib/borden-davf-v441.js`, for 1230 across 346 modules today. <!-- catalog-truth:historical (197 is the count of lib modules adapted, not a catalog tile count) -->
+(carotid-cavernous fistula) in `lib/barrow-ccf-v440.js`, a two-hundred-sixty-sixth the Borden
+classification (dural AV fistula) in `lib/borden-davf-v441.js`, and a two-hundred-sixty-seventh the Zabramski
+classification (cerebral cavernous malformation) in `lib/zabramski-v442.js`, for 1231 across 347 modules today. <!-- catalog-truth:historical (197 is the count of lib modules adapted, not a catalog tile count) -->
 Later waves extend it module by module against the same contract.
 
 ## Design
