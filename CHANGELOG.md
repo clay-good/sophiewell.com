@@ -6,6 +6,20 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v473 — Todani classification (choledochal cyst) tile, 1323 → 1324)
+
+- New `todani-choledochal` tile (group G): the Todani classification of choledochal (congenital bile duct)
+  cysts, by location and shape (types I-V); previously absent. The clinician picks the type and the tile reports
+  its description. **I:** extrahepatic fusiform/cystic dilatation (most common). **II:** a true extrahepatic
+  diverticulum. **III:** choledochocele (intraduodenal segment). **IV:** multiple cysts (IVa intra- and
+  extrahepatic; IVb extrahepatic only). **V:** Caroli disease (intrahepatic only). A type, not a diagnosis, a
+  treatment decision, or a prognosis ([spec-v11] §5.3); the management decision stays with the hepatobiliary /
+  surgical team. Types transcribed (spec-v97) from Todani 1977 (Am J Surg); the type I subtypes (Ia/Ib/Ic) are
+  noted. No citation-staleness row (the citation carries no guideline-issuer acronym). New
+  `lib/todani-choledochal-v473.js` + `views/group-v473.js` (RV473); +1 META entry, +1 UTILITIES row, a synonym
+  entry (v193 → v194), 7 unit tests + fuzz, corpus rebuilt to 1324. See
+  [docs/spec-v473.md](docs/spec-v473.md). The MCP adapter follows in the next wave.
+
 ### Added (spec-v472 — Yerdel grade (portal vein thrombosis) tile, 1322 → 1323)
 
 - New `yerdel-pvt` tile (group G): the Yerdel classification of portal vein thrombosis, by the extent of
