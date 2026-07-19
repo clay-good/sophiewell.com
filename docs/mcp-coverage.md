@@ -1502,6 +1502,18 @@ round-trip both pass, without the phantom "2". Adapter appended to the existing
 rate to a target PaCO2. Brings the exposed total to **1072 calculators across 197
 modules**.
 
+## Two-hundred-ninety-sixth wave — the Gass staging (macular hole) in lib/gass-macular-hole-v471.js (+1)
+
+`gass-macular-hole` (spec-v471) applies the Gass classification: given the stage, it reports the biomicroscopic
+description. `stage` is an enum (`kind: 'enum'`, values 1-4) — the single input the renderer exposes. The
+example sets stage 2; its expected text carries the "400 micrometers" fact, so it flows through the default
+`makeToArgs` with no custom toArgs. New adapter module registered in `mcp/catalog.js`; its golden probe ("gass
+macular hole staging") is promoted now that the tile is in the MCP-exposed registry. Brings the exposed total
+to **1259 calculators across 375 modules**.
+
+### lib/gass-macular-hole-v471.js
+- `gass-macular-hole`
+
 ## Two-hundred-ninety-fifth wave — the Larsen grade (rheumatoid arthritis radiographs) in lib/larsen-ra-v470.js (+1)
 
 `larsen-ra` (spec-v470) applies the Larsen radiographic grading: given the grade, it reports the joint-damage
@@ -5547,6 +5559,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/larsen-ra-v470.js
 - `larsen-ra`
+
+### lib/gass-macular-hole-v471.js
+- `gass-macular-hole`
 
 ### lib/tb-testing.js
 - `tb-testing`

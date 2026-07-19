@@ -4088,6 +4088,15 @@ test('lib/larsen-ra-v470.js worked calls', () => {
   assert.match(ok('larsen-ra', { 'larsen-grade': '5' }).band, /mutilating abnormality/);
 });
 
+test('lib/gass-macular-hole-v471.js worked calls', () => {
+  // Stage 2 (the META example): small full-thickness hole.
+  const two = ok('gass-macular-hole', { 'gass-stage': '2' });
+  assert.equal(two.stage, '2');
+  assert.match(two.band, /less than 400 micrometers/);
+  // Stage 4: complete PVD.
+  assert.match(ok('gass-macular-hole', { 'gass-stage': '4' }).band, /a complete posterior vitreous detachment/);
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];
