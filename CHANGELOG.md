@@ -6,6 +6,19 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v486 — Samilson-Prieto grade (shoulder dislocation arthropathy) tile, 1336 → 1337)
+
+- New `samilson-prieto` tile (group G): the Samilson-Prieto classification of dislocation arthropathy of the
+  shoulder, by the size of the inferior humeral / glenoid osteophyte (mild/moderate/severe); previously absent.
+  The clinician picks the grade and the tile reports its description. **Mild:** osteophyte less than 3 mm.
+  **Moderate:** 3 to 7 mm, with slight joint irregularity. **Severe:** greater than 7 mm, with joint-space
+  narrowing and sclerosis. A grade, not a diagnosis, a treatment decision, or a prognosis ([spec-v11] §5.3); the
+  management decision stays with the orthopedic team. Grades transcribed (spec-v97) from Samilson & Prieto 1983
+  (J Bone Joint Surg Am). No citation-staleness row (a named-author journal article, no guideline-issuer
+  acronym). New `lib/samilson-prieto-v486.js` + `views/group-v486.js` (RV486); +1 META entry, +1 UTILITIES row,
+  a synonym entry (v206 → v207), 5 unit tests + fuzz, corpus rebuilt to 1337. See
+  [docs/spec-v486.md](docs/spec-v486.md). The MCP adapter follows in the next wave.
+
 ### Added (spec-v485 — Dejour classification (trochlear dysplasia) tile, 1335 → 1336)
 
 - New `dejour-trochlea` tile (group G): the Dejour classification of trochlear dysplasia, by the radiographic /

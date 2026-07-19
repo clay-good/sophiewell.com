@@ -461,6 +461,7 @@ import * as russellTaylorSubtrochV482 from '../../lib/russell-taylor-subtroch-v4
 import * as vancouverPeriprostheticV483 from '../../lib/vancouver-periprosthetic-v483.js';
 import * as barrackCementV484 from '../../lib/barrack-cement-v484.js';
 import * as dejourTrochleaV485 from '../../lib/dejour-trochlea-v485.js';
+import * as samilsonPrietoV486 from '../../lib/samilson-prieto-v486.js';
 import * as tbTesting from '../../lib/tb-testing.js';
 
 const MODULES = {
@@ -867,6 +868,7 @@ const MODULES = {
   'vancouver-periprosthetic-v483.js': vancouverPeriprostheticV483,
   'barrack-cement-v484.js': barrackCementV484,
   'dejour-trochlea-v485.js': dejourTrochleaV485,
+  'samilson-prieto-v486.js': samilsonPrietoV486,
   'tb-testing.js': tbTesting,
 };
 
