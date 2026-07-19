@@ -6,6 +6,20 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v468 — Brouet classification (cryoglobulinemia) tile, 1318 → 1319)
+
+- New `brouet-cryoglobulinemia` tile (group G): the Brouet classification of cryoglobulinemia, by the clonality
+  of the cryoprecipitating immunoglobulins (types I/II/III); previously absent. The clinician picks the type
+  and the tile reports its description. **I:** a single monoclonal immunoglobulin (lymphoproliferative
+  disorders). **II:** mixed — a monoclonal immunoglobulin plus polyclonal IgG (strongly linked to hepatitis C).
+  **III:** mixed — polyclonal immunoglobulins only. Types II and III are "mixed" cryoglobulinemia. A type, not
+  a diagnosis, a treatment decision, or a prognosis ([spec-v11] §5.3); the management decision stays with the
+  hematology / rheumatology team. Types transcribed (spec-v97) from Brouet 1974 (Am J Med). No
+  citation-staleness row (the citation carries no guideline-issuer acronym). New
+  `lib/brouet-cryoglobulinemia-v468.js` + `views/group-v468.js` (RV468); +1 META entry, +1 UTILITIES row, a
+  synonym entry (v188 → v189), 5 unit tests + fuzz, corpus rebuilt to 1319. See
+  [docs/spec-v468.md](docs/spec-v468.md). The MCP adapter follows in the next wave.
+
 ### Added (spec-v467 — Bromage scale (neuraxial motor block) tile, 1317 → 1318)
 
 - New `bromage-scale` tile (group G): the Bromage scale of motor block after neuraxial (epidural / spinal)
