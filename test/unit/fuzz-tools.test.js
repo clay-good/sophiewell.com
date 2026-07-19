@@ -456,6 +456,7 @@ import * as sfuHydronephrosisV477 from '../../lib/sfu-hydronephrosis-v477.js';
 import * as spauldingClassificationV478 from '../../lib/spaulding-classification-v478.js';
 import * as spitzAtresiaV479 from '../../lib/spitz-atresia-v479.js';
 import * as ahlbackKneeOaV480 from '../../lib/ahlback-knee-oa-v480.js';
+import * as wiltseSpondylolisthesisV481 from '../../lib/wiltse-spondylolisthesis-v481.js';
 import * as tbTesting from '../../lib/tb-testing.js';
 
 const MODULES = {
@@ -857,6 +858,7 @@ const MODULES = {
   'spaulding-classification-v478.js': spauldingClassificationV478,
   'spitz-atresia-v479.js': spitzAtresiaV479,
   'ahlback-knee-oa-v480.js': ahlbackKneeOaV480,
+  'wiltse-spondylolisthesis-v481.js': wiltseSpondylolisthesisV481,
   'tb-testing.js': tbTesting,
 };
 

@@ -6,6 +6,19 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v481 — Wiltse classification (spondylolisthesis) tile, 1331 → 1332)
+
+- New `wiltse-spondylolisthesis` tile (group G): the Wiltse-Newman-Macnab classification of spondylolisthesis
+  by etiology (types I-V); previously absent. The clinician picks the type and the tile reports its etiology.
+  **I:** dysplastic (congenital). **II:** isthmic (pars lesion; IIA lytic, IIB elongated, IIC acute fracture).
+  **III:** degenerative. **IV:** traumatic. **V:** pathologic. A type, not a diagnosis, a treatment decision, or
+  a prognosis ([spec-v11] §5.3); the management decision stays with the orthopedic / spine team. Complements the
+  Meyerding slip-grade tile. Types transcribed (spec-v97) from Wiltse 1976 (Clin Orthop Relat Res); a later type
+  VI (iatrogenic) is noted. No citation-staleness row (a named-author journal article, no guideline-issuer
+  acronym). New `lib/wiltse-spondylolisthesis-v481.js` + `views/group-v481.js` (RV481); +1 META entry, +1
+  UTILITIES row, a synonym entry (v201 → v202), 6 unit tests + fuzz, corpus rebuilt to 1332. See
+  [docs/spec-v481.md](docs/spec-v481.md). The MCP adapter follows in the next wave.
+
 ### Added (spec-v480 — Ahlback grade (knee osteoarthritis) tile, 1330 → 1331)
 
 - New `ahlback-knee-oa` tile (group G): the Ahlback classification of knee osteoarthritis, by radiographic
