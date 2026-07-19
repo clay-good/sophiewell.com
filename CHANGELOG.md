@@ -6,6 +6,20 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v459 — Thompson-Epstein classification (posterior hip dislocation) tile, 1309 → 1310)
+
+- New `thompson-epstein` tile (group G): the Thompson-Epstein classification of posterior hip dislocations, by
+  the associated acetabular or femoral-head fracture (types I/II/III/IV/V); previously absent. The clinician
+  picks the type and the tile reports its description. **I:** no or minor rim fracture. **II:** a single large
+  posterior rim fracture. **III:** a comminuted rim fracture. **IV:** an acetabular rim and floor fracture.
+  **V:** a femoral-head fracture. A type, not a diagnosis, a treatment decision, or a prognosis ([spec-v11]
+  §5.3); the management decision stays with the orthopedic team. Companions the Pipkin femoral-head tile (a
+  type V is a femoral-head fracture). Types transcribed (spec-v97) from Thompson & Epstein 1951 (J Bone Joint
+  Surg Am). No citation-staleness row (the citation carries no guideline-issuer acronym). New
+  `lib/thompson-epstein-v459.js` + `views/group-v459.js` (RV459); +1 META entry, +1 UTILITIES row, a synonym
+  entry (v179 → v180), 7 unit tests + fuzz, corpus rebuilt to 1310. See [docs/spec-v459.md](docs/spec-v459.md).
+  The MCP adapter follows in the next wave.
+
 ### Added (spec-v458 — Boyd-Griffin classification (intertrochanteric fracture) tile, 1308 → 1309)
 
 - New `boyd-griffin` tile (group G): the Boyd-Griffin classification of trochanteric (intertrochanteric) femur

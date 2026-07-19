@@ -434,6 +434,7 @@ import * as nunleyVertulloV455 from '../../lib/nunley-vertullo-v455.js';
 import * as leddyPackerV456 from '../../lib/leddy-packer-v456.js';
 import * as stulbergV457 from '../../lib/stulberg-v457.js';
 import * as boydGriffinV458 from '../../lib/boyd-griffin-v458.js';
+import * as thompsonEpsteinV459 from '../../lib/thompson-epstein-v459.js';
 import * as tbTesting from '../../lib/tb-testing.js';
 
 const MODULES = {
@@ -813,6 +814,7 @@ const MODULES = {
   'leddy-packer-v456.js': leddyPackerV456,
   'stulberg-v457.js': stulbergV457,
   'boyd-griffin-v458.js': boydGriffinV458,
+  'thompson-epstein-v459.js': thompsonEpsteinV459,
   'tb-testing.js': tbTesting,
 };
 
