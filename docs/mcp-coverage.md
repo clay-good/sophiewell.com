@@ -1502,6 +1502,18 @@ round-trip both pass, without the phantom "2". Adapter appended to the existing
 rate to a target PaCO2. Brings the exposed total to **1072 calculators across 197
 modules**.
 
+## Two-hundred-eighty-sixth wave — the DeBakey classification (aortic dissection) in lib/debakey-v461.js (+1)
+
+`debakey` (spec-v461) applies the DeBakey classification: given the type, it reports the origin / extent
+description. `type` is an enum (`kind: 'enum'`, values I/II/IIIa/IIIb) — the single input the renderer exposes.
+The example sets type I; its expected text carries no numeric facts (the description is word-only), so it flows
+through the default `makeToArgs` with no custom toArgs. New adapter module registered in `mcp/catalog.js`; its
+golden probe ("debakey aortic dissection classification") is promoted now that the tile is in the MCP-exposed
+registry. Brings the exposed total to **1249 calculators across 365 modules**.
+
+### lib/debakey-v461.js
+- `debakey`
+
 ## Two-hundred-eighty-fifth wave — the Enneking surgical staging (musculoskeletal sarcoma) in lib/enneking-v460.js (+1)
 
 `enneking` (spec-v460) applies the Enneking (MSTS) surgical staging: given the stage, it reports the grade /
@@ -5394,6 +5406,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/enneking-v460.js
 - `enneking`
+
+### lib/debakey-v461.js
+- `debakey`
 
 ### lib/tb-testing.js
 - `tb-testing`

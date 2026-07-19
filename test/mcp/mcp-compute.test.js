@@ -3998,6 +3998,15 @@ test('lib/enneking-v460.js worked calls', () => {
   assert.match(ok('enneking', { 'enneking-stage': 'III' }).band, /any regional or distant metastasis/);
 });
 
+test('lib/debakey-v461.js worked calls', () => {
+  // Type I (the META example): ascending + arch + descending.
+  const one = ok('debakey', { 'debakey-type': 'I' });
+  assert.equal(one.type, 'I');
+  assert.match(one.band, /originates in the ascending aorta and extends through the arch/);
+  // Type IIIb: descending, below the diaphragm.
+  assert.match(ok('debakey', { 'debakey-type': 'IIIb' }).band, /extends below the diaphragm/);
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];
