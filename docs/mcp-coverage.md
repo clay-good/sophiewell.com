@@ -1502,6 +1502,18 @@ round-trip both pass, without the phantom "2". Adapter appended to the existing
 rate to a target PaCO2. Brings the exposed total to **1072 calculators across 197
 modules**.
 
+## Two-hundred-ninety-eighth wave — the Todani classification (choledochal cyst) in lib/todani-choledochal-v473.js (+1)
+
+`todani-choledochal` (spec-v473) applies the Todani classification: given the type, it reports the
+location/shape description. `type` is an enum (`kind: 'enum'`, values I..V) — the single input the renderer
+exposes. The example sets type I; its expected text carries no numeric facts (the description is word-only), so
+it flows through the default `makeToArgs` with no custom toArgs. New adapter module registered in
+`mcp/catalog.js`; its golden probe ("todani choledochal cyst classification") is promoted now that the tile is
+in the MCP-exposed registry. Brings the exposed total to **1261 calculators across 377 modules**.
+
+### lib/todani-choledochal-v473.js
+- `todani-choledochal`
+
 ## Two-hundred-ninety-seventh wave — the Yerdel grade (portal vein thrombosis) in lib/yerdel-pvt-v472.js (+1)
 
 `yerdel-pvt` (spec-v472) applies the Yerdel classification: given the grade, it reports the thrombus-extent
@@ -5577,6 +5589,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/yerdel-pvt-v472.js
 - `yerdel-pvt`
+
+### lib/todani-choledochal-v473.js
+- `todani-choledochal`
 
 ### lib/tb-testing.js
 - `tb-testing`

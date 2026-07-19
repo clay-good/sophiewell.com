@@ -4106,6 +4106,15 @@ test('lib/yerdel-pvt-v472.js worked calls', () => {
   assert.match(ok('yerdel-pvt', { 'yerdel-grade': '4' }).band, /the entire SMV/);
 });
 
+test('lib/todani-choledochal-v473.js worked calls', () => {
+  // Type I (the META example): extrahepatic dilatation.
+  const one = ok('todani-choledochal', { 'todani-type': 'I' });
+  assert.equal(one.type, 'I');
+  assert.match(one.band, /extrahepatic bile duct/);
+  // Type V: Caroli disease.
+  assert.match(ok('todani-choledochal', { 'todani-type': 'V' }).band, /Caroli disease/);
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];
