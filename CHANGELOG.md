@@ -6,6 +6,21 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v435 — Van Herick angle grade tile, 1286 → 1287)
+
+- New `van-herick` tile (group G): the Van Herick grade of the peripheral anterior chamber angle, estimated at
+  the slit lamp by the ratio of the peripheral anterior chamber depth (PACD) to the corneal thickness (CT)
+  (grades 0/1/2/3/4); previously absent. The clinician picks the grade and the tile reports its PACD:CT
+  description. **0:** PACD = 0, angle closed. **1:** < 1/4 CT, closure likely. **2:** 1/4 CT, closure possible.
+  **3:** 1/4 to 1/2 CT, closure unlikely. **4:** at least 1 CT, wide open. A grade, not a diagnosis of
+  angle-closure, a treatment decision, or a prognosis ([spec-v11] §5.3); gonioscopy remains the reference
+  standard and the management decision stays with the ophthalmology team. Grades transcribed (spec-v97) from
+  Van Herick 1969 (Am J Ophthalmol); no citation-staleness row (the citation carries no guideline-issuer
+  acronym). Companions the Shaffer gonioscopy angle grade. New `lib/van-herick-v435.js` +
+  `views/group-v435.js` (RV435); +1 META entry, +1 UTILITIES row, a synonym entry (v156 → v157), 6 unit tests
+  + fuzz, corpus rebuilt to 1287. See [docs/spec-v435.md](docs/spec-v435.md). The MCP adapter follows in a
+  later wave.
+
 ### Added (spec-v434 — Pfirrmann disc degeneration grade tile, 1285 → 1286)
 
 - New `pfirrmann-disc` tile (group G): the Pfirrmann classification of lumbar intervertebral disc degeneration
