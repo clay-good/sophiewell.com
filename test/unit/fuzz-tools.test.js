@@ -413,6 +413,7 @@ import * as modicChangesV433 from '../../lib/modic-changes-v433.js';
 import * as pfirrmannDiscV434 from '../../lib/pfirrmann-disc-v434.js';
 import * as vanHerickV435 from '../../lib/van-herick-v435.js';
 import * as bifflBcviV436 from '../../lib/biffl-bcvi-v436.js';
+import * as goutallierV437 from '../../lib/goutallier-v437.js';
 import * as tbTesting from '../../lib/tb-testing.js';
 
 const MODULES = {
@@ -771,6 +772,7 @@ const MODULES = {
   'pfirrmann-disc-v434.js': pfirrmannDiscV434,
   'van-herick-v435.js': vanHerickV435,
   'biffl-bcvi-v436.js': bifflBcviV436,
+  'goutallier-v437.js': goutallierV437,
   'tb-testing.js': tbTesting,
 };
 

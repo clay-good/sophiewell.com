@@ -6,6 +6,19 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v437 — Goutallier grade (rotator cuff fatty infiltration) tile, 1288 → 1289)
+
+- New `goutallier` tile (group G): the Goutallier classification of rotator cuff muscle fatty infiltration on
+  CT/MRI, by the amount of fat relative to muscle in the cuff belly (grades 0/1/2/3/4); previously absent. The
+  radiologist picks the grade and the tile reports its fat-vs-muscle description. **0:** normal, no fatty
+  streaks. **1:** some fatty streaks. **2:** less fat than muscle. **3:** fat equals muscle. **4:** more fat
+  than muscle. An imaging grade, not a diagnosis, a reparability or treatment decision, or a prognosis
+  ([spec-v11] §5.3); the management decision stays with the orthopedic / shoulder team. Grades transcribed
+  (spec-v97) from Goutallier 1994 (Clin Orthop Relat Res); no citation-staleness row (the citation carries no
+  guideline-issuer acronym). New `lib/goutallier-v437.js` + `views/group-v437.js` (RV437); +1 META entry, +1
+  UTILITIES row, a synonym entry (v158 → v159), 6 unit tests + fuzz, corpus rebuilt to 1289. See
+  [docs/spec-v437.md](docs/spec-v437.md). The MCP adapter follows in a later wave.
+
 ### Added (spec-v436 — Biffl grade (blunt cerebrovascular injury) tile, 1287 → 1288)
 
 - New `biffl-bcvi` tile (group G): the Biffl (Denver) grading scale for blunt cerebrovascular injury (BCVI),
