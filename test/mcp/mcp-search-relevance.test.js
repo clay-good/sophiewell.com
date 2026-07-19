@@ -456,6 +456,8 @@ const PROBES = [
   ['van herick angle grade', ['van-herick']],
   // spec-v436 tile, exposed to MCP in wave 261: Biffl grade (blunt cerebrovascular injury).
   ['biffl bcvi grade', ['biffl-bcvi']],
+  // spec-v437 tile, exposed to MCP in wave 262: Goutallier grade (rotator cuff fatty infiltration).
+  ['goutallier fatty infiltration grade', ['goutallier']],
 ];
 
 test(`every golden probe routes an acceptable tile into the top ${TOP_N}`, () => {

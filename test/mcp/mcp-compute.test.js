@@ -3791,6 +3791,15 @@ test('lib/biffl-bcvi-v436.js worked calls', () => {
   assert.match(ok('biffl-bcvi', { 'biffl-grade': 'IV' }).band, /occlusion/);
 });
 
+test('lib/goutallier-v437.js worked calls', () => {
+  // Grade 2 (the META example): less fat than muscle.
+  const two = ok('goutallier', { 'goutallier-grade': '2' });
+  assert.equal(two.grade, '2');
+  assert.match(two.band, /less fat than muscle/);
+  // Grade 4: more fat than muscle.
+  assert.match(ok('goutallier', { 'goutallier-grade': '4' }).band, /more fat than muscle/);
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];

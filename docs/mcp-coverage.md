@@ -1502,6 +1502,18 @@ round-trip both pass, without the phantom "2". Adapter appended to the existing
 rate to a target PaCO2. Brings the exposed total to **1072 calculators across 197
 modules**.
 
+## Two-hundred-sixty-second wave — the Goutallier grade (rotator cuff fatty infiltration) in lib/goutallier-v437.js (+1)
+
+`goutallier` (spec-v437) applies the Goutallier classification: given the grade, it reports the fat-vs-muscle
+description. `grade` is an enum (`kind: 'enum'`, values 0/1/2/3/4) — the single input the renderer exposes. The
+example sets grade 2; its expected text carries no numeric facts beyond the grade label (the description is
+word-only), so it flows through the default `makeToArgs` with no custom toArgs. New adapter module registered
+in `mcp/catalog.js`; its golden probe ("goutallier fatty infiltration grade") is promoted now that the tile is
+in the MCP-exposed registry. Brings the exposed total to **1226 calculators across 342 modules**.
+
+### lib/goutallier-v437.js
+- `goutallier`
+
 ## Two-hundred-sixty-first wave — the Biffl grade (blunt cerebrovascular injury) in lib/biffl-bcvi-v436.js (+1)
 
 `biffl-bcvi` (spec-v436) applies the Biffl (Denver) grading scale: given the grade, it reports the
@@ -5045,6 +5057,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/biffl-bcvi-v436.js
 - `biffl-bcvi`
+
+### lib/goutallier-v437.js
+- `goutallier`
 
 ### lib/tb-testing.js
 - `tb-testing`
