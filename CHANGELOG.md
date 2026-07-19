@@ -6,6 +6,19 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v488 — Bigliani classification (acromion morphology) tile, 1338 → 1339)
+
+- New `bigliani-acromion` tile (group G): the Bigliani classification of acromion morphology, by the shape of
+  the acromial undersurface on the supraspinatus-outlet view (types I/II/III); previously absent. The clinician
+  picks the type and the tile reports its description. **I:** flat. **II:** curved (paralleling the humeral
+  head). **III:** hooked (anterior hook), most associated with subacromial impingement and rotator cuff tears.
+  A type, not a diagnosis, a treatment decision, or a prognosis ([spec-v11] §5.3); the management decision stays
+  with the orthopedic team. Types transcribed (spec-v97) from Bigliani 1986 (Orthop Trans). No
+  citation-staleness row (a named-author reference, no guideline-issuer acronym). New
+  `lib/bigliani-acromion-v488.js` + `views/group-v488.js` (RV488); +1 META entry, +1 UTILITIES row, a synonym
+  entry (v208 → v209), 5 unit tests + fuzz, corpus rebuilt to 1339. See
+  [docs/spec-v488.md](docs/spec-v488.md). The MCP adapter follows in the next wave.
+
 ### Added (spec-v487 — Rockwood classification (acromioclavicular joint injury) tile, 1337 → 1338)
 
 - New `rockwood-ac` tile (group G): the Rockwood classification of acromioclavicular (AC) joint injuries, by AC

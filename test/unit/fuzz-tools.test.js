@@ -463,6 +463,7 @@ import * as barrackCementV484 from '../../lib/barrack-cement-v484.js';
 import * as dejourTrochleaV485 from '../../lib/dejour-trochlea-v485.js';
 import * as samilsonPrietoV486 from '../../lib/samilson-prieto-v486.js';
 import * as rockwoodAcV487 from '../../lib/rockwood-ac-v487.js';
+import * as biglianiAcromionV488 from '../../lib/bigliani-acromion-v488.js';
 import * as tbTesting from '../../lib/tb-testing.js';
 
 const MODULES = {
@@ -871,6 +872,7 @@ const MODULES = {
   'dejour-trochlea-v485.js': dejourTrochleaV485,
   'samilson-prieto-v486.js': samilsonPrietoV486,
   'rockwood-ac-v487.js': rockwoodAcV487,
+  'bigliani-acromion-v488.js': biglianiAcromionV488,
   'tb-testing.js': tbTesting,
 };
 
