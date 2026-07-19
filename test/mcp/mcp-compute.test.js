@@ -3953,6 +3953,15 @@ test('lib/nunley-vertullo-v455.js worked calls', () => {
   assert.match(ok('nunley-vertullo', { 'nunley-stage': 'III' }).band, /more than 5 mm of diastasis/);
 });
 
+test('lib/leddy-packer-v456.js worked calls', () => {
+  // Type II (the META example): retraction to the PIP joint, most common.
+  const two = ok('leddy-packer', { 'leddy-type': 'II' });
+  assert.equal(two.type, 'II');
+  assert.match(two.band, /retracts to the level of the PIP joint/);
+  // Type III: bony fragment at the A4 pulley.
+  assert.match(ok('leddy-packer', { 'leddy-type': 'III' }).band, /A4 pulley/);
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];

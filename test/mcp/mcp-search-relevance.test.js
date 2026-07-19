@@ -489,6 +489,7 @@ const PROBES = [
   ['brooker heterotopic ossification classification', ['brooker']],
   ['bado monteggia fracture classification', ['bado']],
   ['nunley vertullo midfoot sprain classification', ['nunley-vertullo']],
+  ['leddy packer jersey finger classification', ['leddy-packer']],
 ];
 
 test(`every golden probe routes an acceptable tile into the top ${TOP_N}`, () => {

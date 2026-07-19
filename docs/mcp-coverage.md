@@ -1502,6 +1502,18 @@ round-trip both pass, without the phantom "2". Adapter appended to the existing
 rate to a target PaCO2. Brings the exposed total to **1072 calculators across 197
 modules**.
 
+## Two-hundred-eighty-first wave — the Leddy-Packer classification (jersey finger) in lib/leddy-packer-v456.js (+1)
+
+`leddy-packer` (spec-v456) applies the Leddy-Packer classification: given the type, it reports the FDP
+retraction / bony-fragment description. `type` is an enum (`kind: 'enum'`, values I/II/III) — the single input
+the renderer exposes. The example sets type II; its expected text carries no numeric facts (the description is
+word-only), so it flows through the default `makeToArgs` with no custom toArgs. New adapter module registered
+in `mcp/catalog.js`; its golden probe ("leddy packer jersey finger classification") is promoted now that the
+tile is in the MCP-exposed registry. Brings the exposed total to **1244 calculators across 360 modules**.
+
+### lib/leddy-packer-v456.js
+- `leddy-packer`
+
 ## Two-hundred-eightieth wave — the Nunley-Vertullo classification (midfoot sprain) in lib/nunley-vertullo-v455.js (+1)
 
 `nunley-vertullo` (spec-v455) applies the Nunley-Vertullo classification: given the stage, it reports the
@@ -5318,6 +5330,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/nunley-vertullo-v455.js
 - `nunley-vertullo`
+
+### lib/leddy-packer-v456.js
+- `leddy-packer`
 
 ### lib/tb-testing.js
 - `tb-testing`

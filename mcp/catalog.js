@@ -367,6 +367,7 @@ import sadeRetractionV451 from './adapters/sade-retraction-v451.js';
 import brookerV452 from './adapters/brooker-v452.js';
 import badoV454 from './adapters/bado-v454.js';
 import nunleyVertulloV455 from './adapters/nunley-vertullo-v455.js';
+import leddyPackerV456 from './adapters/leddy-packer-v456.js';
 import tbTesting from './adapters/tb-testing.js';
 import labInterpret from './adapters/lab-interpret.js';
 import decisionRulesV258 from './adapters/decision-rules-v258.js';
@@ -728,6 +729,7 @@ const ADAPTER_MODULES = [
   ['brooker-v452', brookerV452],
   ['bado-v454', badoV454],
   ['nunley-vertullo-v455', nunleyVertulloV455],
+  ['leddy-packer-v456', leddyPackerV456],
   ['tb-testing', tbTesting],
   ['lab-interpret', labInterpret],
   ['decision-rules-v258', decisionRulesV258],
