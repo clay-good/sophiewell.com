@@ -523,6 +523,7 @@ const PROBES = [
   ['rockwood acromioclavicular joint injury classification', ['rockwood-ac']],
   ['bigliani acromion morphology classification', ['bigliani-acromion']],
   ['fernandez distal radius fracture classification', ['fernandez-radius']],
+  ['ruedi allgower tibial pilon fracture classification', ['ruedi-allgower-pilon']],
 ];
 
 test(`every golden probe routes an acceptable tile into the top ${TOP_N}`, () => {

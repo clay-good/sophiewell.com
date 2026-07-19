@@ -4259,6 +4259,15 @@ test('lib/fernandez-radius-v489.js worked calls', () => {
   assert.match(ok('fernandez-radius', { 'fernandez-type': 'III' }).band, /compression of the articular surface/);
 });
 
+test('lib/ruedi-allgower-pilon-v490.js worked calls', () => {
+  // Type II (the META example): displaced, minimal comminution.
+  const two = ok('ruedi-allgower-pilon', { 'ruedi-type': 'II' });
+  assert.equal(two.type, 'II');
+  assert.match(two.band, /significant displacement of the articular surface/);
+  // Type III: comminuted, impacted.
+  assert.match(ok('ruedi-allgower-pilon', { 'ruedi-type': 'III' }).band, /comminution and impaction/);
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];
