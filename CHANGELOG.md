@@ -6,6 +6,18 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v475 — Glogau classification (photoaging) tile, 1325 → 1326)
+
+- New `glogau-photoaging` tile (group G): the Glogau classification of photoaging, by the severity of wrinkles,
+  keratoses, and dyschromia (types I-IV); previously absent. The clinician picks the type and the tile reports
+  its description. **I:** "no wrinkles" (early photoaging). **II:** "wrinkles in motion" (dynamic). **III:**
+  "wrinkles at rest" (static). **IV:** "only wrinkles" (severe photoaging). A type, not a diagnosis, a treatment
+  decision, or a prognosis ([spec-v11] §5.3); the management decision stays with the dermatology team. Types
+  transcribed (spec-v97) from Glogau 1996 (Semin Cutan Med Surg). No citation-staleness row (the citation
+  carries no guideline-issuer acronym). New `lib/glogau-photoaging-v475.js` + `views/group-v475.js` (RV475); +1
+  META entry, +1 UTILITIES row, a synonym entry (v195 → v196), 6 unit tests + fuzz, corpus rebuilt to 1326. See
+  [docs/spec-v475.md](docs/spec-v475.md). The MCP adapter follows in the next wave.
+
 ### Added (spec-v474 — Rastelli classification (complete AVSD) tile, 1324 → 1325)
 
 - New `rastelli-avsd` tile (group G): the Rastelli classification of the complete atrioventricular septal

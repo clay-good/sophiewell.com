@@ -1,5 +1,5 @@
 {
-  "version": "v195-2026-07-19",
+  "version": "v196-2026-07-19",
   "note": "spec-v7 section 3.2: hand-curated patient-phrasing -> tile id table. Each entry maps patient-mental-model phrases (and, from the v8/v9 plain-language-search batches, clinical abbreviations, eponym aliases, and canonical-intent phrases) to a single existing tile. Audience is the primary audience the entry serves; the matcher deprioritizes (does not hide) entries when the user has selected a different chip. Every phrase is lowercase; every tile id is an existing catalog tile (guarded by test/unit/synonyms-catalog.test.js). Adding a new phrase is a one-line PR.",
   "entries": [
     { "phrases": ["denied", "denial letter", "they denied it", "insurance said no", "appeal", "write an appeal", "appeal my claim", "appeal letter", "appeal a denial"],
@@ -534,6 +534,8 @@
     { "phrases": ["todani", "todani classification", "choledochal cyst", "choledochal cyst type", "bile duct cyst classification", "todani type", "congenital bile duct cyst", "caroli disease type"],
       "tile": "todani-choledochal", "audience": "clinicians" },
     { "phrases": ["rastelli", "rastelli classification", "atrioventricular septal defect type", "avsd type", "complete av canal type", "rastelli type", "av canal classification", "bridging leaflet type"],
-      "tile": "rastelli-avsd", "audience": "clinicians" }
+      "tile": "rastelli-avsd", "audience": "clinicians" },
+    { "phrases": ["glogau", "glogau classification", "photoaging", "photoaging type", "photoageing classification", "glogau type", "skin aging classification", "wrinkle classification"],
+      "tile": "glogau-photoaging", "audience": "clinicians" }
   ]
 }
