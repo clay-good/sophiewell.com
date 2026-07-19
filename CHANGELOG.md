@@ -6,6 +6,20 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v456 — Leddy-Packer classification (jersey finger) tile, 1306 → 1307)
+
+- New `leddy-packer` tile (group G): the Leddy-Packer classification of flexor digitorum profundus (FDP)
+  avulsion ("jersey finger"), by the level of tendon retraction and any bony fragment (types I/II/III);
+  previously absent. The clinician picks the type and the tile reports its description. **I:** retraction into
+  the palm (both vincula ruptured, blood supply lost — most time-critical). **II:** retraction to the PIP
+  joint, held by the vinculum longus (most common). **III:** a large bony fragment caught at the A4 pulley. A
+  type, not a diagnosis, a treatment decision, or a prognosis ([spec-v11] §5.3); the management decision stays
+  with the hand / orthopedic team. Types transcribed (spec-v97) from Leddy & Packer 1977 (J Hand Surg Am); the
+  three original types (later authors added a type IV/V extension, noted). No citation-staleness row (the
+  citation carries no guideline-issuer acronym). New `lib/leddy-packer-v456.js` + `views/group-v456.js`
+  (RV456); +1 META entry, +1 UTILITIES row, a synonym entry (v176 → v177), 6 unit tests + fuzz, corpus rebuilt
+  to 1307. See [docs/spec-v456.md](docs/spec-v456.md). The MCP adapter follows in the next wave.
+
 ### Added (spec-v455 — Nunley-Vertullo classification (midfoot sprain) tile, 1305 → 1306)
 
 - New `nunley-vertullo` tile (group G): the Nunley-Vertullo classification of athletic midfoot (Lisfranc)

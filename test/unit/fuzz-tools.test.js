@@ -431,6 +431,7 @@ import * as sadeRetractionV451 from '../../lib/sade-retraction-v451.js';
 import * as brookerV452 from '../../lib/brooker-v452.js';
 import * as badoV454 from '../../lib/bado-v454.js';
 import * as nunleyVertulloV455 from '../../lib/nunley-vertullo-v455.js';
+import * as leddyPackerV456 from '../../lib/leddy-packer-v456.js';
 import * as tbTesting from '../../lib/tb-testing.js';
 
 const MODULES = {
@@ -807,6 +808,7 @@ const MODULES = {
   'brooker-v452.js': brookerV452,
   'bado-v454.js': badoV454,
   'nunley-vertullo-v455.js': nunleyVertulloV455,
+  'leddy-packer-v456.js': leddyPackerV456,
   'tb-testing.js': tbTesting,
 };
 

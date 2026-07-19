@@ -1,5 +1,5 @@
 {
-  "version": "v176-2026-07-19",
+  "version": "v177-2026-07-19",
   "note": "spec-v7 section 3.2: hand-curated patient-phrasing -> tile id table. Each entry maps patient-mental-model phrases (and, from the v8/v9 plain-language-search batches, clinical abbreviations, eponym aliases, and canonical-intent phrases) to a single existing tile. Audience is the primary audience the entry serves; the matcher deprioritizes (does not hide) entries when the user has selected a different chip. Every phrase is lowercase; every tile id is an existing catalog tile (guarded by test/unit/synonyms-catalog.test.js). Adding a new phrase is a one-line PR.",
   "entries": [
     { "phrases": ["denied", "denial letter", "they denied it", "insurance said no", "appeal", "write an appeal", "appeal my claim", "appeal letter", "appeal a denial"],
@@ -496,6 +496,8 @@
     { "phrases": ["bado", "bado classification", "monteggia", "monteggia fracture", "monteggia lesion", "monteggia fracture type", "radial head dislocation forearm fracture", "bado type"],
       "tile": "bado", "audience": "clinicians" },
     { "phrases": ["nunley", "nunley vertullo", "midfoot sprain", "lisfranc sprain", "lisfranc injury athlete", "midfoot sprain stage", "nunley vertullo classification", "athletic lisfranc injury"],
-      "tile": "nunley-vertullo", "audience": "clinicians" }
+      "tile": "nunley-vertullo", "audience": "clinicians" },
+    { "phrases": ["leddy", "leddy packer", "jersey finger", "fdp avulsion", "flexor digitorum profundus avulsion", "leddy packer classification", "jersey finger type", "profundus tendon avulsion"],
+      "tile": "leddy-packer", "audience": "clinicians" }
   ]
 }
