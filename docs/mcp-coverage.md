@@ -1502,6 +1502,18 @@ round-trip both pass, without the phantom "2". Adapter appended to the existing
 rate to a target PaCO2. Brings the exposed total to **1072 calculators across 197
 modules**.
 
+## Two-hundred-ninety-seventh wave — the Yerdel grade (portal vein thrombosis) in lib/yerdel-pvt-v472.js (+1)
+
+`yerdel-pvt` (spec-v472) applies the Yerdel classification: given the grade, it reports the thrombus-extent
+description. `grade` is an enum (`kind: 'enum'`, values 1-4) — the single input the renderer exposes. The
+example sets grade 2; its expected text carries the "50%" fact, so it flows through the default `makeToArgs`
+with no custom toArgs. New adapter module registered in `mcp/catalog.js`; its golden probe ("yerdel portal vein
+thrombosis grade") is promoted now that the tile is in the MCP-exposed registry. Brings the exposed total to
+**1260 calculators across 376 modules**.
+
+### lib/yerdel-pvt-v472.js
+- `yerdel-pvt`
+
 ## Two-hundred-ninety-sixth wave — the Gass staging (macular hole) in lib/gass-macular-hole-v471.js (+1)
 
 `gass-macular-hole` (spec-v471) applies the Gass classification: given the stage, it reports the biomicroscopic
@@ -5562,6 +5574,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/gass-macular-hole-v471.js
 - `gass-macular-hole`
+
+### lib/yerdel-pvt-v472.js
+- `yerdel-pvt`
 
 ### lib/tb-testing.js
 - `tb-testing`

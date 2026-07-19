@@ -505,6 +505,7 @@ const PROBES = [
   ['steinbrocker rheumatoid arthritis functional class', ['steinbrocker-ra']],
   ['larsen rheumatoid arthritis radiographic grade', ['larsen-ra']],
   ['gass macular hole staging', ['gass-macular-hole']],
+  ['yerdel portal vein thrombosis grade', ['yerdel-pvt']],
 ];
 
 test(`every golden probe routes an acceptable tile into the top ${TOP_N}`, () => {

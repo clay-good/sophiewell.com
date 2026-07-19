@@ -4097,6 +4097,15 @@ test('lib/gass-macular-hole-v471.js worked calls', () => {
   assert.match(ok('gass-macular-hole', { 'gass-stage': '4' }).band, /a complete posterior vitreous detachment/);
 });
 
+test('lib/yerdel-pvt-v472.js worked calls', () => {
+  // Grade 2 (the META example): more than 50% occlusion.
+  const two = ok('yerdel-pvt', { 'yerdel-grade': '2' });
+  assert.equal(two.grade, '2');
+  assert.match(two.band, /more than 50% occlusion of the portal vein/);
+  // Grade 4: complete PV + entire SMV.
+  assert.match(ok('yerdel-pvt', { 'yerdel-grade': '4' }).band, /the entire SMV/);
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];
