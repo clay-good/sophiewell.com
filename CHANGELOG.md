@@ -6,19 +6,6 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
-### Added (spec-v453 — Schatzker classification (tibial plateau fracture) tile, 1304 → 1305)
-
-- New `schatzker` tile (group G): the Schatzker classification of tibial plateau fractures, by fracture pattern
-  and location (types I/II/III/IV/V/VI); previously absent. The clinician picks the type and the tile reports
-  its pattern description. **I:** lateral split. **II:** lateral split-depression. **III:** lateral pure
-  depression. **IV:** medial plateau. **V:** bicondylar. **VI:** plateau fracture with metaphyseal-diaphyseal
-  dissociation. A type, not a diagnosis, a treatment decision, or a prognosis ([spec-v11] §5.3); the management
-  decision stays with the orthopedic team. Types transcribed (spec-v97) from Schatzker 1979 (Clin Orthop Relat
-  Res). No citation-staleness row (the citation carries no guideline-issuer acronym). New
-  `lib/schatzker-v453.js` + `views/group-v453.js` (RV453); +1 META entry, +1 UTILITIES row, a synonym entry
-  (v174 → v175), 8 unit tests + fuzz, corpus rebuilt to 1305. See [docs/spec-v453.md](docs/spec-v453.md). The
-  MCP adapter follows in the next wave.
-
 ### Added (spec-v452 — Brooker classification (heterotopic ossification) tile, 1303 → 1304)
 
 - New `brooker` tile (group G): the Brooker classification of heterotopic (ectopic) ossification about the hip,
