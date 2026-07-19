@@ -3881,6 +3881,15 @@ test('lib/rop-stage-v446.js worked calls', () => {
   assert.match(ok('rop-stage', { 'rop-stage': '5' }).band, /total retinal detachment/);
 });
 
+test('lib/anderson-montesano-v447.js worked calls', () => {
+  // Type III (the META example): alar-ligament avulsion.
+  const three = ok('anderson-montesano', { 'am-type': 'III' });
+  assert.equal(three.type, 'III');
+  assert.match(three.band, /avulsion fracture of the occipital condyle/);
+  // Type I: impacted, comminuted.
+  assert.match(ok('anderson-montesano', { 'am-type': 'I' }).band, /impacted, comminuted/);
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];

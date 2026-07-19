@@ -476,6 +476,8 @@ const PROBES = [
   ['revised atlanta pancreatitis severity', ['atlanta-pancreatitis']],
   // spec-v446 tile, exposed to MCP in wave 271: ROP stage (retinopathy of prematurity).
   ['retinopathy of prematurity stage', ['rop-stage']],
+  // spec-v447 tile, exposed to MCP in wave 272: Anderson-Montesano (occipital condyle fracture).
+  ['anderson montesano occipital condyle', ['anderson-montesano']],
 ];
 
 test(`every golden probe routes an acceptable tile into the top ${TOP_N}`, () => {
