@@ -6,6 +6,20 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v455 — Nunley-Vertullo classification (midfoot sprain) tile, 1305 → 1306)
+
+- New `nunley-vertullo` tile (group G): the Nunley-Vertullo classification of athletic midfoot (Lisfranc)
+  sprains, by weightbearing-radiograph diastasis and arch height (stages I/II/III); previously absent. The
+  clinician picks the stage and the tile reports its description. **I:** no diastasis or arch-height loss.
+  **II:** 1 to 5 mm diastasis, no arch-height loss. **III:** more than 5 mm diastasis with arch-height loss. A
+  stage, not a diagnosis, a treatment decision, or a prognosis ([spec-v11] §5.3); the management decision stays
+  with the orthopedic team. Stages transcribed (spec-v97) from Nunley & Vertullo 2002 (Am J Sports Med); this
+  stages the athletic ligamentous sprain (the Lisfranc fracture-dislocation is the existing `lisfranc-myerson`
+  tile). No citation-staleness row (the citation carries no guideline-issuer acronym). New
+  `lib/nunley-vertullo-v455.js` + `views/group-v455.js` (RV455); +1 META entry, +1 UTILITIES row, a synonym
+  entry (v175 → v176), 6 unit tests + fuzz, corpus rebuilt to 1306. See [docs/spec-v455.md](docs/spec-v455.md).
+  The MCP adapter follows in the next wave.
+
 ### Added (spec-v454 — Bado classification (Monteggia fracture) tile, 1304 → 1305)
 
 - New `bado` tile (group G): the Bado classification of Monteggia fractures, by the direction of radial-head
