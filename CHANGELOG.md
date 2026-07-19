@@ -6,6 +6,20 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v478 — Spaulding classification (device reprocessing) tile, 1328 → 1329)
+
+- New `spaulding-classification` tile (group G): the Spaulding classification of medical devices for
+  reprocessing, by the infection risk of the site the device contacts (critical / semicritical / noncritical);
+  previously absent. The clinician picks the category and the tile reports its required reprocessing.
+  **Critical:** enters sterile tissue or the bloodstream; requires sterilization. **Semicritical:** contacts
+  mucous membranes or non-intact skin; requires at least high-level disinfection. **Noncritical:** contacts
+  intact skin only; requires low-level disinfection. A category, not a diagnosis, a treatment decision, or a
+  prognosis ([spec-v11] §5.3); always follow the device instructions for use. Categories transcribed (spec-v97)
+  from Spaulding 1968. No citation-staleness row (a named-author book chapter, no guideline-issuer acronym). New
+  `lib/spaulding-classification-v478.js` + `views/group-v478.js` (RV478); +1 META entry, +1 UTILITIES row, a
+  synonym entry (v198 → v199), 5 unit tests + fuzz, corpus rebuilt to 1329. See
+  [docs/spec-v478.md](docs/spec-v478.md). The MCP adapter follows in the next wave.
+
 ### Added (spec-v477 — SFU grade (hydronephrosis) tile, 1327 → 1328)
 
 - New `sfu-hydronephrosis` tile (group G): the Society for Fetal Urology (SFU) ultrasound grading of
