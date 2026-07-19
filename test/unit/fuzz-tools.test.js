@@ -465,6 +465,7 @@ import * as samilsonPrietoV486 from '../../lib/samilson-prieto-v486.js';
 import * as rockwoodAcV487 from '../../lib/rockwood-ac-v487.js';
 import * as biglianiAcromionV488 from '../../lib/bigliani-acromion-v488.js';
 import * as fernandezRadiusV489 from '../../lib/fernandez-radius-v489.js';
+import * as ruediAllgowerPilonV490 from '../../lib/ruedi-allgower-pilon-v490.js';
 import * as tbTesting from '../../lib/tb-testing.js';
 
 const MODULES = {
@@ -875,6 +876,7 @@ const MODULES = {
   'rockwood-ac-v487.js': rockwoodAcV487,
   'bigliani-acromion-v488.js': biglianiAcromionV488,
   'fernandez-radius-v489.js': fernandezRadiusV489,
+  'ruedi-allgower-pilon-v490.js': ruediAllgowerPilonV490,
   'tb-testing.js': tbTesting,
 };
 

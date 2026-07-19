@@ -1,5 +1,5 @@
 {
-  "version": "v210-2026-07-19",
+  "version": "v211-2026-07-19",
   "note": "spec-v7 section 3.2: hand-curated patient-phrasing -> tile id table. Each entry maps patient-mental-model phrases (and, from the v8/v9 plain-language-search batches, clinical abbreviations, eponym aliases, and canonical-intent phrases) to a single existing tile. Audience is the primary audience the entry serves; the matcher deprioritizes (does not hide) entries when the user has selected a different chip. Every phrase is lowercase; every tile id is an existing catalog tile (guarded by test/unit/synonyms-catalog.test.js). Adding a new phrase is a one-line PR.",
   "entries": [
     { "phrases": ["denied", "denial letter", "they denied it", "insurance said no", "appeal", "write an appeal", "appeal my claim", "appeal letter", "appeal a denial"],
@@ -564,6 +564,8 @@
     { "phrases": ["bigliani", "bigliani classification", "acromion morphology", "acromion type", "acromial shape", "bigliani type", "hooked acromion", "acromion shape classification"],
       "tile": "bigliani-acromion", "audience": "clinicians" },
     { "phrases": ["fernandez", "fernandez classification", "distal radius fracture mechanism", "distal radius fracture type", "fernandez type", "wrist fracture mechanism", "distal radius classification", "radius fracture classification"],
-      "tile": "fernandez-radius", "audience": "clinicians" }
+      "tile": "fernandez-radius", "audience": "clinicians" },
+    { "phrases": ["ruedi allgower", "ruedi allgower classification", "pilon fracture", "pilon fracture type", "tibial pilon fracture", "plafond fracture", "ruedi type", "tibial plafond fracture classification"],
+      "tile": "ruedi-allgower-pilon", "audience": "clinicians" }
   ]
 }

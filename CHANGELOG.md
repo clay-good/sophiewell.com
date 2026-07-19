@@ -6,6 +6,19 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v490 — Ruedi-Allgower classification (tibial pilon fracture) tile, 1340 → 1341)
+
+- New `ruedi-allgower-pilon` tile (group G): the Ruedi-Allgower classification of tibial pilon (plafond)
+  fractures, by articular displacement and comminution (types I/II/III); previously absent. The clinician picks
+  the type and the tile reports its description. **I:** nondisplaced cleavage fracture. **II:** significant
+  displacement with minimal comminution. **III:** comminution and impaction of the articular surface. A type,
+  not a diagnosis, a treatment decision, or a prognosis ([spec-v11] §5.3); the management decision stays with
+  the orthopedic-trauma team. Types transcribed (spec-v97) from Ruedi & Allgower 1979 (Clin Orthop Relat Res;
+  names ASCII). No citation-staleness row (a named-author article, no guideline-issuer acronym). New
+  `lib/ruedi-allgower-pilon-v490.js` + `views/group-v490.js` (RV490); +1 META entry, +1 UTILITIES row, a synonym
+  entry (v210 → v211), 5 unit tests + fuzz, corpus rebuilt to 1341. See
+  [docs/spec-v490.md](docs/spec-v490.md). The MCP adapter follows in the next wave.
+
 ### Added (spec-v489 — Fernandez classification (distal radius fracture) tile, 1339 → 1340)
 
 - New `fernandez-radius` tile (group G): the Fernandez classification of distal radius fractures, by the
