@@ -1502,6 +1502,18 @@ round-trip both pass, without the phantom "2". Adapter appended to the existing
 rate to a target PaCO2. Brings the exposed total to **1072 calculators across 197
 modules**.
 
+## Two-hundred-fifty-fourth wave — the Sarnat staging (neonatal HIE) in lib/sarnat-hie-v429.js (+1)
+
+`sarnat-hie` (spec-v429) applies the Sarnat staging: given the stage, it reports the clinical features. `stage`
+is an enum (`kind: 'enum'`, values 1/2/3) — the single input the renderer exposes. The example sets stage 2;
+its expected text carries no numeric facts beyond the stage label (the features are word-only), so it flows
+through the default `makeToArgs` with no custom toArgs. New adapter module registered in `mcp/catalog.js`; its
+golden probe ("sarnat staging neonatal") is promoted now that the tile is in the MCP-exposed registry. Brings
+the exposed total to **1218 calculators across 334 modules**.
+
+### lib/sarnat-hie-v429.js
+- `sarnat-hie`
+
 ## Two-hundred-fifty-third wave — the MRC muscle-power grade in lib/mrc-power-v428.js (+1)
 
 `mrc-power` (spec-v428) applies the MRC muscle-power grade: given the grade, it reports the examination
@@ -4925,6 +4937,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/mrc-power-v428.js
 - `mrc-power`
+
+### lib/sarnat-hie-v429.js
+- `sarnat-hie`
 
 ### lib/tb-testing.js
 - `tb-testing`

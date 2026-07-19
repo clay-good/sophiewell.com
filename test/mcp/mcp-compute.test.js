@@ -3719,6 +3719,15 @@ test('lib/mrc-power-v428.js worked calls', () => {
   assert.match(ok('mrc-power', { 'mrc-grade': '5' }).band, /normal power/);
 });
 
+test('lib/sarnat-hie-v429.js worked calls', () => {
+  // Stage 2 (the META example): moderate.
+  const two = ok('sarnat-hie', { 'sarnat-stage': '2' });
+  assert.equal(two.stage, '2');
+  assert.match(two.band, /lethargic or obtunded/);
+  // Stage 3: severe.
+  assert.match(ok('sarnat-hie', { 'sarnat-stage': '3' }).band, /stupor or coma/);
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];
