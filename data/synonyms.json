@@ -1,5 +1,5 @@
 {
-  "version": "v157-2026-07-19",
+  "version": "v158-2026-07-19",
   "note": "spec-v7 section 3.2: hand-curated patient-phrasing -> tile id table. Each entry maps patient-mental-model phrases (and, from the v8/v9 plain-language-search batches, clinical abbreviations, eponym aliases, and canonical-intent phrases) to a single existing tile. Audience is the primary audience the entry serves; the matcher deprioritizes (does not hide) entries when the user has selected a different chip. Every phrase is lowercase; every tile id is an existing catalog tile (guarded by test/unit/synonyms-catalog.test.js). Adding a new phrase is a one-line PR.",
   "entries": [
     { "phrases": ["denied", "denial letter", "they denied it", "insurance said no", "appeal", "write an appeal", "appeal my claim", "appeal letter", "appeal a denial"],
@@ -458,6 +458,8 @@
     { "phrases": ["pfirrmann", "pfirrmann grade", "disc degeneration grade", "disc degeneration mri", "intervertebral disc grade", "pfirrmann classification", "disc grading", "degenerative disc grade"],
       "tile": "pfirrmann-disc", "audience": "clinicians" },
     { "phrases": ["van herick", "van herick grade", "van herick angle grade", "angle grade van herick", "peripheral anterior chamber depth", "angle closure risk grade", "slit lamp angle grade", "van herick technique"],
-      "tile": "van-herick", "audience": "clinicians" }
+      "tile": "van-herick", "audience": "clinicians" },
+    { "phrases": ["biffl", "biffl grade", "bcvi grade", "biffl bcvi grade", "blunt cerebrovascular injury grade", "carotid injury grade", "biffl denver grade", "bcvi injury grade"],
+      "tile": "biffl-bcvi", "audience": "clinicians" }
   ]
 }

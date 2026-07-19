@@ -6,6 +6,21 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v436 — Biffl grade (blunt cerebrovascular injury) tile, 1287 → 1288)
+
+- New `biffl-bcvi` tile (group G): the Biffl (Denver) grading scale for blunt cerebrovascular injury (BCVI),
+  by the angiographic appearance of the carotid or vertebral artery injury (grades I/II/III/IV/V); previously
+  absent (the catalog had the expanded Denver *screening* criteria but not the injury *grade*). The clinician
+  picks the grade and the tile reports its angiographic description. **I:** irregularity / dissection < 25%
+  narrowing. **II:** dissection / hematoma ≥ 25% narrowing, thrombus, or raised intimal flap. **III:**
+  pseudoaneurysm. **IV:** occlusion. **V:** transection with free extravasation. An injury grade, not a
+  diagnosis, a treatment decision, or a prognosis ([spec-v11] §5.3); the management decision stays with the
+  trauma / neurosurgery / neurointervention team. Grades transcribed (spec-v97) from Biffl 1999 (J Trauma);
+  no citation-staleness row (the citation carries no guideline-issuer acronym). Companions the `denver-bcvi`
+  screening tile. New `lib/biffl-bcvi-v436.js` + `views/group-v436.js` (RV436); +1 META entry, +1 UTILITIES
+  row, a synonym entry (v157 → v158), 7 unit tests + fuzz, corpus rebuilt to 1288. See
+  [docs/spec-v436.md](docs/spec-v436.md). The MCP adapter follows in a later wave.
+
 ### Added (spec-v435 — Van Herick angle grade tile, 1286 → 1287)
 
 - New `van-herick` tile (group G): the Van Herick grade of the peripheral anterior chamber angle, estimated at
