@@ -460,6 +460,7 @@ import * as wiltseSpondylolisthesisV481 from '../../lib/wiltse-spondylolisthesis
 import * as russellTaylorSubtrochV482 from '../../lib/russell-taylor-subtroch-v482.js';
 import * as vancouverPeriprostheticV483 from '../../lib/vancouver-periprosthetic-v483.js';
 import * as barrackCementV484 from '../../lib/barrack-cement-v484.js';
+import * as dejourTrochleaV485 from '../../lib/dejour-trochlea-v485.js';
 import * as tbTesting from '../../lib/tb-testing.js';
 
 const MODULES = {
@@ -865,6 +866,7 @@ const MODULES = {
   'russell-taylor-subtroch-v482.js': russellTaylorSubtrochV482,
   'vancouver-periprosthetic-v483.js': vancouverPeriprostheticV483,
   'barrack-cement-v484.js': barrackCementV484,
+  'dejour-trochlea-v485.js': dejourTrochleaV485,
   'tb-testing.js': tbTesting,
 };
 

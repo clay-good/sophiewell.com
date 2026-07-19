@@ -6,6 +6,19 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v485 — Dejour classification (trochlear dysplasia) tile, 1335 → 1336)
+
+- New `dejour-trochlea` tile (group G): the Dejour classification of trochlear dysplasia, by the radiographic /
+  CT appearance of the femoral trochlea (types A/B/C/D); previously absent. The clinician picks the type and the
+  tile reports its description. **A:** shallow but symmetric (low-grade). **B:** flat or convex with a
+  supratrochlear spur (high-grade). **C:** facet asymmetry (double contour) without a spur (high-grade). **D:**
+  asymmetry plus a spur with a facet "cliff" (high-grade). A type, not a diagnosis, a treatment decision, or a
+  prognosis ([spec-v11] §5.3); the management decision stays with the orthopedic team. Types transcribed
+  (spec-v97) from Dejour 2007 (Sports Med Arthrosc Rev). No citation-staleness row (a named-author journal
+  article, no guideline-issuer acronym). New `lib/dejour-trochlea-v485.js` + `views/group-v485.js` (RV485); +1
+  META entry, +1 UTILITIES row, a synonym entry (v205 → v206), 6 unit tests + fuzz, corpus rebuilt to 1336. See
+  [docs/spec-v485.md](docs/spec-v485.md). The MCP adapter follows in the next wave.
+
 ### Added (spec-v484 — Barrack grade (femoral cement mantle) tile, 1334 → 1335)
 
 - New `barrack-cement` tile (group G): the Barrack classification of the cement mantle around a cemented
