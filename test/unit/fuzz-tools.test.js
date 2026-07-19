@@ -449,6 +449,7 @@ import * as larsenRaV470 from '../../lib/larsen-ra-v470.js';
 import * as gassMacularHoleV471 from '../../lib/gass-macular-hole-v471.js';
 import * as yerdelPvtV472 from '../../lib/yerdel-pvt-v472.js';
 import * as todaniCholedochalV473 from '../../lib/todani-choledochal-v473.js';
+import * as rastelliAvsdV474 from '../../lib/rastelli-avsd-v474.js';
 import * as tbTesting from '../../lib/tb-testing.js';
 
 const MODULES = {
@@ -843,6 +844,7 @@ const MODULES = {
   'gass-macular-hole-v471.js': gassMacularHoleV471,
   'yerdel-pvt-v472.js': yerdelPvtV472,
   'todani-choledochal-v473.js': todaniCholedochalV473,
+  'rastelli-avsd-v474.js': rastelliAvsdV474,
   'tb-testing.js': tbTesting,
 };
 

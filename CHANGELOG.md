@@ -6,6 +6,20 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v474 — Rastelli classification (complete AVSD) tile, 1324 → 1325)
+
+- New `rastelli-avsd` tile (group G): the Rastelli classification of the complete atrioventricular septal
+  defect, by the morphology of the superior (anterior) bridging leaflet (types A/B/C); previously absent. The
+  clinician picks the type and the tile reports its description. **A:** attached by chordae to the crest of the
+  ventricular septum (most common). **B:** anomalous chordal attachments to a right-ventricular papillary muscle
+  (rarest). **C:** free-floating, unattached to the septum (often with tetralogy of Fallot). A type, not a
+  diagnosis, a treatment decision, or a prognosis ([spec-v11] §5.3); the management decision stays with the
+  congenital cardiac-surgery team. Types transcribed (spec-v97) from Rastelli 1966 (Mayo Clin Proc). No
+  citation-staleness row (the citation carries no guideline-issuer acronym). New `lib/rastelli-avsd-v474.js` +
+  `views/group-v474.js` (RV474); +1 META entry, +1 UTILITIES row, a synonym entry (v194 → v195), 6 unit tests +
+  fuzz, corpus rebuilt to 1325. See [docs/spec-v474.md](docs/spec-v474.md). The MCP adapter follows in the next
+  wave.
+
 ### Added (spec-v473 — Todani classification (choledochal cyst) tile, 1323 → 1324)
 
 - New `todani-choledochal` tile (group G): the Todani classification of choledochal (congenital bile duct)
