@@ -419,6 +419,7 @@ import * as hamadaV439 from '../../lib/hamada-v439.js';
 import * as barrowCcfV440 from '../../lib/barrow-ccf-v440.js';
 import * as bordenDavfV441 from '../../lib/borden-davf-v441.js';
 import * as zabramskiV442 from '../../lib/zabramski-v442.js';
+import * as kadishV443 from '../../lib/kadish-v443.js';
 import * as tbTesting from '../../lib/tb-testing.js';
 
 const MODULES = {
@@ -783,6 +784,7 @@ const MODULES = {
   'barrow-ccf-v440.js': barrowCcfV440,
   'borden-davf-v441.js': bordenDavfV441,
   'zabramski-v442.js': zabramskiV442,
+  'kadish-v443.js': kadishV443,
   'tb-testing.js': tbTesting,
 };
 

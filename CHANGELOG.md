@@ -6,6 +6,20 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v443 — Kadish staging (esthesioneuroblastoma) tile, 1294 → 1295)
+
+- New `kadish` tile (group G): the Kadish staging of esthesioneuroblastoma (olfactory neuroblastoma), by the
+  anatomic extent of the tumor (stages A/B/C/D); previously absent. The clinician picks the stage and the tile
+  reports its anatomic-extent description. **A:** confined to the nasal cavity. **B:** nasal cavity plus
+  paranasal sinuses. **C:** beyond the sinuses (orbit, skull base, intracranial). **D:** metastasis to cervical
+  nodes or distant sites (Morita modification). A stage, not a diagnosis, a treatment decision, or a prognosis
+  ([spec-v11] §5.3); the management decision stays with the head-and-neck oncology / skull-base team. Stages
+  transcribed (spec-v97) from Kadish 1976 (Cancer), with stage D from the Morita 1993 modification; no
+  citation-staleness row (the citation carries no guideline-issuer acronym). New `lib/kadish-v443.js` +
+  `views/group-v443.js` (RV443); +1 META entry, +1 UTILITIES row, a synonym entry (v164 → v165), 6 unit tests
+  + fuzz, corpus rebuilt to 1295. See [docs/spec-v443.md](docs/spec-v443.md). The MCP adapter follows in a
+  later wave.
+
 ### Added (spec-v442 — Zabramski classification (cerebral cavernous malformation) tile, 1293 → 1294)
 
 - New `zabramski` tile (group G): the Zabramski classification of a cerebral cavernous malformation (CCM), by
