@@ -4034,6 +4034,15 @@ test('lib/crawford-taaa-v464.js worked calls', () => {
   assert.match(ok('crawford-taaa', { 'crawford-extent': 'IV' }).band, /the entire abdominal aorta/);
 });
 
+test('lib/stamey-incontinence-v465.js worked calls', () => {
+  // Grade 2 (the META example): lesser stress.
+  const two = ok('stamey-incontinence', { 'stamey-grade': '2' });
+  assert.equal(two.grade, '2');
+  assert.match(two.band, /lesser degrees of stress/);
+  // Grade 3: total, continuous.
+  assert.match(ok('stamey-incontinence', { 'stamey-grade': '3' }).band, /total \(continuous\) incontinence/);
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];

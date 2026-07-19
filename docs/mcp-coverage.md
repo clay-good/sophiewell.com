@@ -1502,6 +1502,18 @@ round-trip both pass, without the phantom "2". Adapter appended to the existing
 rate to a target PaCO2. Brings the exposed total to **1072 calculators across 197
 modules**.
 
+## Two-hundred-ninetieth wave — the Stamey grade (stress urinary incontinence) in lib/stamey-incontinence-v465.js (+1)
+
+`stamey-incontinence` (spec-v465) applies the Stamey grading: given the grade, it reports the provoking-stress
+description. `grade` is an enum (`kind: 'enum'`, values 1/2/3) — the single input the renderer exposes. The
+example sets grade 2; its expected text carries no numeric facts beyond the word-only description, so it flows
+through the default `makeToArgs` with no custom toArgs. New adapter module registered in `mcp/catalog.js`; its
+golden probe ("stamey stress urinary incontinence grade") is promoted now that the tile is in the MCP-exposed
+registry. Brings the exposed total to **1253 calculators across 369 modules**.
+
+### lib/stamey-incontinence-v465.js
+- `stamey-incontinence`
+
 ## Two-hundred-eighty-ninth wave — the Crawford classification (thoracoabdominal aortic aneurysm) in lib/crawford-taaa-v464.js (+1)
 
 `crawford-taaa` (spec-v464) applies the Crawford classification: given the extent, it reports the aortic-segment
@@ -5454,6 +5466,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/crawford-taaa-v464.js
 - `crawford-taaa`
+
+### lib/stamey-incontinence-v465.js
+- `stamey-incontinence`
 
 ### lib/tb-testing.js
 - `tb-testing`

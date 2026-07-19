@@ -498,6 +498,7 @@ const PROBES = [
   ['gmfcs cerebral palsy gross motor function', ['gmfcs']],
   ['waldenstrom perthes radiographic staging', ['waldenstrom-perthes']],
   ['crawford thoracoabdominal aortic aneurysm classification', ['crawford-taaa']],
+  ['stamey stress urinary incontinence grade', ['stamey-incontinence']],
 ];
 
 test(`every golden probe routes an acceptable tile into the top ${TOP_N}`, () => {
