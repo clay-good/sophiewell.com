@@ -1,5 +1,5 @@
 {
-  "version": "v202-2026-07-19",
+  "version": "v203-2026-07-19",
   "note": "spec-v7 section 3.2: hand-curated patient-phrasing -> tile id table. Each entry maps patient-mental-model phrases (and, from the v8/v9 plain-language-search batches, clinical abbreviations, eponym aliases, and canonical-intent phrases) to a single existing tile. Audience is the primary audience the entry serves; the matcher deprioritizes (does not hide) entries when the user has selected a different chip. Every phrase is lowercase; every tile id is an existing catalog tile (guarded by test/unit/synonyms-catalog.test.js). Adding a new phrase is a one-line PR.",
   "entries": [
     { "phrases": ["denied", "denial letter", "they denied it", "insurance said no", "appeal", "write an appeal", "appeal my claim", "appeal letter", "appeal a denial"],
@@ -548,6 +548,8 @@
     { "phrases": ["ahlback", "ahlback grade", "knee osteoarthritis grade", "ahlback classification", "knee oa radiographic grade", "ahlback knee", "gonarthrosis grade", "knee arthritis grade"],
       "tile": "ahlback-knee-oa", "audience": "clinicians" },
     { "phrases": ["wiltse", "wiltse classification", "spondylolisthesis type", "spondylolisthesis etiology", "wiltse newman macnab", "wiltse type", "isthmic spondylolisthesis", "dysplastic spondylolisthesis"],
-      "tile": "wiltse-spondylolisthesis", "audience": "clinicians" }
+      "tile": "wiltse-spondylolisthesis", "audience": "clinicians" },
+    { "phrases": ["russell taylor", "russell taylor classification", "subtrochanteric fracture type", "subtrochanteric femur fracture classification", "russell taylor type", "piriformis fossa fracture", "subtroch nail classification", "im nail subtrochanteric"],
+      "tile": "russell-taylor-subtroch", "audience": "clinicians" }
   ]
 }

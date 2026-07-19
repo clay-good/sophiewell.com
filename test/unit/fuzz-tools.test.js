@@ -457,6 +457,7 @@ import * as spauldingClassificationV478 from '../../lib/spaulding-classification
 import * as spitzAtresiaV479 from '../../lib/spitz-atresia-v479.js';
 import * as ahlbackKneeOaV480 from '../../lib/ahlback-knee-oa-v480.js';
 import * as wiltseSpondylolisthesisV481 from '../../lib/wiltse-spondylolisthesis-v481.js';
+import * as russellTaylorSubtrochV482 from '../../lib/russell-taylor-subtroch-v482.js';
 import * as tbTesting from '../../lib/tb-testing.js';
 
 const MODULES = {
@@ -859,6 +860,7 @@ const MODULES = {
   'spitz-atresia-v479.js': spitzAtresiaV479,
   'ahlback-knee-oa-v480.js': ahlbackKneeOaV480,
   'wiltse-spondylolisthesis-v481.js': wiltseSpondylolisthesisV481,
+  'russell-taylor-subtroch-v482.js': russellTaylorSubtrochV482,
   'tb-testing.js': tbTesting,
 };
 

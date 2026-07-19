@@ -6,6 +6,19 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v482 — Russell-Taylor classification (subtrochanteric fracture) tile, 1332 → 1333)
+
+- New `russell-taylor-subtroch` tile (group G): the Russell-Taylor classification of subtrochanteric femur
+  fractures, by piriformis-fossa involvement (type I intact, type II involved) and lesser-trochanter status (A
+  attached, B detached) — types IA/IB/IIA/IIB; previously absent. The clinician picks the type and the tile
+  reports its description. Devised to guide intramedullary nail selection. A type, not a diagnosis, a treatment
+  decision, or a prognosis ([spec-v11] §5.3); the management decision stays with the orthopedic-trauma team.
+  Companions the Seinsheimer subtrochanteric tile (a complementary axis). Types transcribed (spec-v97) from
+  Russell & Taylor (Skeletal Trauma). No citation-staleness row (a named-author book chapter, no
+  guideline-issuer acronym). New `lib/russell-taylor-subtroch-v482.js` + `views/group-v482.js` (RV482); +1 META
+  entry, +1 UTILITIES row, a synonym entry (v202 → v203), 6 unit tests + fuzz, corpus rebuilt to 1333. See
+  [docs/spec-v482.md](docs/spec-v482.md). The MCP adapter follows in the next wave.
+
 ### Added (spec-v481 — Wiltse classification (spondylolisthesis) tile, 1331 → 1332)
 
 - New `wiltse-spondylolisthesis` tile (group G): the Wiltse-Newman-Macnab classification of spondylolisthesis
