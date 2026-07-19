@@ -4268,6 +4268,15 @@ test('lib/ruedi-allgower-pilon-v490.js worked calls', () => {
   assert.match(ok('ruedi-allgower-pilon', { 'ruedi-type': 'III' }).band, /comminution and impaction/);
 });
 
+test('lib/severin-ddh-v491.js worked calls', () => {
+  // Group II (the META example): concentric, moderate deformity.
+  const two = ok('severin-ddh', { 'severin-group': 'II' });
+  assert.equal(two.group, 'II');
+  assert.match(two.band, /a concentric hip with moderate deformity/);
+  // Group VI: redislocation.
+  assert.match(ok('severin-ddh', { 'severin-group': 'VI' }).band, /redislocation/);
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];
