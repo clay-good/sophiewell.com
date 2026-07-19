@@ -1,5 +1,5 @@
 {
-  "version": "v168-2026-07-19",
+  "version": "v169-2026-07-19",
   "note": "spec-v7 section 3.2: hand-curated patient-phrasing -> tile id table. Each entry maps patient-mental-model phrases (and, from the v8/v9 plain-language-search batches, clinical abbreviations, eponym aliases, and canonical-intent phrases) to a single existing tile. Audience is the primary audience the entry serves; the matcher deprioritizes (does not hide) entries when the user has selected a different chip. Every phrase is lowercase; every tile id is an existing catalog tile (guarded by test/unit/synonyms-catalog.test.js). Adding a new phrase is a one-line PR.",
   "entries": [
     { "phrases": ["denied", "denial letter", "they denied it", "insurance said no", "appeal", "write an appeal", "appeal my claim", "appeal letter", "appeal a denial"],
@@ -480,6 +480,8 @@
     { "phrases": ["revised atlanta", "atlanta classification", "acute pancreatitis severity", "moderately severe pancreatitis", "atlanta pancreatitis severity", "pancreatitis severity classification", "severe acute pancreatitis", "atlanta severity"],
       "tile": "atlanta-pancreatitis", "audience": "clinicians" },
     { "phrases": ["rop stage", "retinopathy of prematurity stage", "rop staging", "icrop stage", "retinopathy of prematurity", "rop classification", "premature retinopathy stage", "rop exam stage"],
-      "tile": "rop-stage", "audience": "clinicians" }
+      "tile": "rop-stage", "audience": "clinicians" },
+    { "phrases": ["anderson montesano", "occipital condyle fracture", "occipital condyle fracture type", "anderson montesano classification", "condyle fracture classification", "occipital condyle classification", "craniocervical fracture type"],
+      "tile": "anderson-montesano", "audience": "clinicians" }
   ]
 }

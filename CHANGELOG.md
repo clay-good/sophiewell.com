@@ -6,6 +6,20 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v447 — Anderson-Montesano (occipital condyle fracture) tile, 1298 → 1299)
+
+- New `anderson-montesano` tile (group G): the Anderson-Montesano classification of occipital condyle
+  fractures, by fracture morphology and mechanism (types I/II/III); previously absent. The clinician picks the
+  type and the tile reports its morphology description. **I:** impacted/comminuted from axial loading
+  (typically stable). **II:** extending from a basioccipital / skull-base fracture (usually stable). **III:**
+  alar-ligament avulsion (potentially unstable). A type, not a diagnosis, a stability determination, a
+  treatment decision, or a prognosis ([spec-v11] §5.3); craniocervical stability is judged with the full
+  clinical and imaging picture, and the decision stays with the spine / neurosurgery team. Types transcribed
+  (spec-v97) from Anderson & Montesano 1988 (Spine); no citation-staleness row (the citation carries no
+  guideline-issuer acronym). New `lib/anderson-montesano-v447.js` + `views/group-v447.js` (RV447); +1 META
+  entry, +1 UTILITIES row, a synonym entry (v168 → v169), 5 unit tests + fuzz, corpus rebuilt to 1299. See
+  [docs/spec-v447.md](docs/spec-v447.md). The MCP adapter follows in a later wave.
+
 ### Added (spec-v446 — ROP stage (retinopathy of prematurity) tile, 1297 → 1298)
 
 - New `rop-stage` tile (group G): the International Classification of Retinopathy of Prematurity (ICROP) stage
