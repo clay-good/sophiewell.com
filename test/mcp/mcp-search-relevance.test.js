@@ -507,6 +507,7 @@ const PROBES = [
   ['gass macular hole staging', ['gass-macular-hole']],
   ['yerdel portal vein thrombosis grade', ['yerdel-pvt']],
   ['todani choledochal cyst classification', ['todani-choledochal']],
+  ['rastelli complete avsd classification', ['rastelli-avsd']],
 ];
 
 test(`every golden probe routes an acceptable tile into the top ${TOP_N}`, () => {

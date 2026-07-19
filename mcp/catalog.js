@@ -385,6 +385,7 @@ import larsenRaV470 from './adapters/larsen-ra-v470.js';
 import gassMacularHoleV471 from './adapters/gass-macular-hole-v471.js';
 import yerdelPvtV472 from './adapters/yerdel-pvt-v472.js';
 import todaniCholedochalV473 from './adapters/todani-choledochal-v473.js';
+import rastelliAvsdV474 from './adapters/rastelli-avsd-v474.js';
 import tbTesting from './adapters/tb-testing.js';
 import labInterpret from './adapters/lab-interpret.js';
 import decisionRulesV258 from './adapters/decision-rules-v258.js';
@@ -764,6 +765,7 @@ const ADAPTER_MODULES = [
   ['gass-macular-hole-v471', gassMacularHoleV471],
   ['yerdel-pvt-v472', yerdelPvtV472],
   ['todani-choledochal-v473', todaniCholedochalV473],
+  ['rastelli-avsd-v474', rastelliAvsdV474],
   ['tb-testing', tbTesting],
   ['lab-interpret', labInterpret],
   ['decision-rules-v258', decisionRulesV258],

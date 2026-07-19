@@ -4115,6 +4115,15 @@ test('lib/todani-choledochal-v473.js worked calls', () => {
   assert.match(ok('todani-choledochal', { 'todani-type': 'V' }).band, /Caroli disease/);
 });
 
+test('lib/rastelli-avsd-v474.js worked calls', () => {
+  // Type A (the META example): attached to the septal crest.
+  const a = ok('rastelli-avsd', { 'rastelli-type': 'A' });
+  assert.equal(a.type, 'A');
+  assert.match(a.band, /crest of the interventricular septum/);
+  // Type C: free-floating.
+  assert.match(ok('rastelli-avsd', { 'rastelli-type': 'C' }).band, /free-floating/);
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];
