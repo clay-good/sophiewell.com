@@ -4214,6 +4214,15 @@ test('lib/barrack-cement-v484.js worked calls', () => {
   assert.match(ok('barrack-cement', { 'barrack-grade': 'A' }).band, /"white-out"/);
 });
 
+test('lib/dejour-trochlea-v485.js worked calls', () => {
+  // Type B (the META example): flat/convex with a spur.
+  const b = ok('dejour-trochlea', { 'dejour-type': 'B' });
+  assert.equal(b.type, 'B');
+  assert.match(b.band, /a flat or convex trochlea with a supratrochlear spur/);
+  // Type A: shallow but symmetric.
+  assert.match(ok('dejour-trochlea', { 'dejour-type': 'A' }).band, /shallow but still symmetric/);
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];

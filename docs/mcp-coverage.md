@@ -1502,6 +1502,18 @@ round-trip both pass, without the phantom "2". Adapter appended to the existing
 rate to a target PaCO2. Brings the exposed total to **1072 calculators across 197
 modules**.
 
+## Three-hundred-tenth wave — the Dejour classification (trochlear dysplasia) in lib/dejour-trochlea-v485.js (+1)
+
+`dejour-trochlea` (spec-v485) applies the Dejour classification: given the type, it reports the
+trochlear-morphology description. `type` is an enum (`kind: 'enum'`, values A/B/C/D) — the single input the
+renderer exposes. The example sets type B; its expected text carries no numeric facts (the description is
+word-only), so it flows through the default `makeToArgs` with no custom toArgs. New adapter module registered in
+`mcp/catalog.js`; its golden probe ("dejour trochlear dysplasia classification") is promoted now that the tile
+is in the MCP-exposed registry. Brings the exposed total to **1273 calculators across 389 modules**.
+
+### lib/dejour-trochlea-v485.js
+- `dejour-trochlea`
+
 ## Three-hundred-ninth wave — the Barrack grade (femoral cement mantle) in lib/barrack-cement-v484.js (+1)
 
 `barrack-cement` (spec-v484) applies the Barrack classification: given the grade, it reports the
@@ -5761,6 +5773,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/barrack-cement-v484.js
 - `barrack-cement`
+
+### lib/dejour-trochlea-v485.js
+- `dejour-trochlea`
 
 ### lib/tb-testing.js
 - `tb-testing`

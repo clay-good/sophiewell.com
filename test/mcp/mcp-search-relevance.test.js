@@ -518,6 +518,7 @@ const PROBES = [
   ['russell taylor subtrochanteric fracture classification', ['russell-taylor-subtroch']],
   ['vancouver periprosthetic femoral fracture classification', ['vancouver-periprosthetic']],
   ['barrack femoral cement mantle grade', ['barrack-cement']],
+  ['dejour trochlear dysplasia classification', ['dejour-trochlea']],
 ];
 
 test(`every golden probe routes an acceptable tile into the top ${TOP_N}`, () => {
