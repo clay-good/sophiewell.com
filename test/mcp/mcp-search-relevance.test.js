@@ -502,6 +502,7 @@ const PROBES = [
   ['judet letournel acetabular fracture classification', ['letournel-acetabulum']],
   ['bromage neuraxial motor block scale', ['bromage-scale']],
   ['brouet cryoglobulinemia classification', ['brouet-cryoglobulinemia']],
+  ['steinbrocker rheumatoid arthritis functional class', ['steinbrocker-ra']],
 ];
 
 test(`every golden probe routes an acceptable tile into the top ${TOP_N}`, () => {

@@ -4070,6 +4070,15 @@ test('lib/brouet-cryoglobulinemia-v468.js worked calls', () => {
   assert.match(ok('brouet-cryoglobulinemia', { 'brouet-type': 'I' }).band, /a single monoclonal immunoglobulin/);
 });
 
+test('lib/steinbrocker-ra-v469.js worked calls', () => {
+  // Class II (the META example): adequate despite handicap.
+  const two = ok('steinbrocker-ra', { 'steinbrocker-class': 'II' });
+  assert.equal(two.cls, 'II');
+  assert.match(two.band, /adequate for normal activities despite the handicap/);
+  // Class IV: incapacitated.
+  assert.match(ok('steinbrocker-ra', { 'steinbrocker-class': 'IV' }).band, /largely or wholly incapacitated/);
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];
