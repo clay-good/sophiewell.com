@@ -1502,6 +1502,18 @@ round-trip both pass, without the phantom "2". Adapter appended to the existing
 rate to a target PaCO2. Brings the exposed total to **1072 calculators across 197
 modules**.
 
+## Two-hundred-eighty-seventh wave — the GMFCS level (cerebral palsy gross motor function) in lib/gmfcs-v462.js (+1)
+
+`gmfcs` (spec-v462) applies the Gross Motor Function Classification System: given the level, it reports the
+mobility description. `level` is an enum (`kind: 'enum'`, values I/II/III/IV/V) — the single input the renderer
+exposes. The example sets level III; its expected text carries no numeric facts (the description is word-only),
+so it flows through the default `makeToArgs` with no custom toArgs. New adapter module registered in
+`mcp/catalog.js`; its golden probe ("gmfcs cerebral palsy gross motor function") is promoted now that the tile
+is in the MCP-exposed registry. Brings the exposed total to **1250 calculators across 366 modules**.
+
+### lib/gmfcs-v462.js
+- `gmfcs`
+
 ## Two-hundred-eighty-sixth wave — the DeBakey classification (aortic dissection) in lib/debakey-v461.js (+1)
 
 `debakey` (spec-v461) applies the DeBakey classification: given the type, it reports the origin / extent
@@ -5409,6 +5421,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/debakey-v461.js
 - `debakey`
+
+### lib/gmfcs-v462.js
+- `gmfcs`
 
 ### lib/tb-testing.js
 - `tb-testing`

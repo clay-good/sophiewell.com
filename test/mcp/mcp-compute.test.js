@@ -4007,6 +4007,15 @@ test('lib/debakey-v461.js worked calls', () => {
   assert.match(ok('debakey', { 'debakey-type': 'IIIb' }).band, /extends below the diaphragm/);
 });
 
+test('lib/gmfcs-v462.js worked calls', () => {
+  // Level III (the META example): hand-held mobility device.
+  const three = ok('gmfcs', { 'gmfcs-level': 'III' });
+  assert.equal(three.level, 'III');
+  assert.match(three.band, /hand-held mobility device/);
+  // Level V: transported in a manual wheelchair.
+  assert.match(ok('gmfcs', { 'gmfcs-level': 'V' }).band, /transported in a manual wheelchair/);
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];

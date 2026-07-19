@@ -495,6 +495,7 @@ const PROBES = [
   ['thompson epstein posterior hip dislocation classification', ['thompson-epstein']],
   ['enneking musculoskeletal sarcoma surgical staging', ['enneking']],
   ['debakey aortic dissection classification', ['debakey']],
+  ['gmfcs cerebral palsy gross motor function', ['gmfcs']],
 ];
 
 test(`every golden probe routes an acceptable tile into the top ${TOP_N}`, () => {
