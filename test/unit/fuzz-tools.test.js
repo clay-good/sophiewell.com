@@ -437,6 +437,7 @@ import * as boydGriffinV458 from '../../lib/boyd-griffin-v458.js';
 import * as thompsonEpsteinV459 from '../../lib/thompson-epstein-v459.js';
 import * as ennekingV460 from '../../lib/enneking-v460.js';
 import * as debakeyV461 from '../../lib/debakey-v461.js';
+import * as gmfcsV462 from '../../lib/gmfcs-v462.js';
 import * as tbTesting from '../../lib/tb-testing.js';
 
 const MODULES = {
@@ -819,6 +820,7 @@ const MODULES = {
   'thompson-epstein-v459.js': thompsonEpsteinV459,
   'enneking-v460.js': ennekingV460,
   'debakey-v461.js': debakeyV461,
+  'gmfcs-v462.js': gmfcsV462,
   'tb-testing.js': tbTesting,
 };
 

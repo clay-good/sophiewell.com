@@ -6,6 +6,21 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v462 — GMFCS level (cerebral palsy gross motor function) tile, 1312 → 1313)
+
+- New `gmfcs` tile (group G): the Gross Motor Function Classification System (GMFCS) for cerebral palsy, by
+  self-initiated movement with emphasis on sitting and walking (levels I/II/III/IV/V); previously absent. The
+  clinician picks the level and the tile reports its description. **I:** walks without limitations. **II:**
+  walks with limitations. **III:** walks using a hand-held mobility device. **IV:** self-mobility with
+  limitations, may use powered mobility. **V:** transported in a manual wheelchair. A level, not a diagnosis, a
+  treatment decision, or a prognosis ([spec-v11] §5.3); the management decision stays with the
+  pediatric-neurology / rehabilitation team. Levels transcribed (spec-v97) from Palisano 1997 (Dev Med Child
+  Neurol) / GMFCS-E&R; the general level descriptors (the full system also gives age-band-specific ones). No
+  citation-staleness row (the citation carries no guideline-issuer acronym). New `lib/gmfcs-v462.js` +
+  `views/group-v462.js` (RV462); +1 META entry, +1 UTILITIES row, a synonym entry (v182 → v183), 7 unit tests
+  + fuzz, corpus rebuilt to 1313. See [docs/spec-v462.md](docs/spec-v462.md). The MCP adapter follows in the
+  next wave.
+
 ### Added (spec-v461 — DeBakey classification (aortic dissection) tile, 1311 → 1312)
 
 - New `debakey` tile (group G): the DeBakey classification of aortic dissection, by the site of origin and the
