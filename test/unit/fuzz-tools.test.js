@@ -467,6 +467,7 @@ import * as biglianiAcromionV488 from '../../lib/bigliani-acromion-v488.js';
 import * as fernandezRadiusV489 from '../../lib/fernandez-radius-v489.js';
 import * as ruediAllgowerPilonV490 from '../../lib/ruedi-allgower-pilon-v490.js';
 import * as severinDdhV491 from '../../lib/severin-ddh-v491.js';
+import * as hattrupJohnsonV492 from '../../lib/hattrup-johnson-v492.js';
 import * as tbTesting from '../../lib/tb-testing.js';
 
 const MODULES = {
@@ -879,6 +880,7 @@ const MODULES = {
   'fernandez-radius-v489.js': fernandezRadiusV489,
   'ruedi-allgower-pilon-v490.js': ruediAllgowerPilonV490,
   'severin-ddh-v491.js': severinDdhV491,
+  'hattrup-johnson-v492.js': hattrupJohnsonV492,
   'tb-testing.js': tbTesting,
 };
 

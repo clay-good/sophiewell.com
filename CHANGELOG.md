@@ -6,6 +6,20 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v492 — Hattrup-Johnson grade (hallux rigidus) tile, 1342 → 1343)
+
+- New `hattrup-johnson` tile (group G): the Hattrup-Johnson classification of hallux rigidus (first-MTP
+  osteoarthritis), by radiographic osteophyte formation and joint-space change (grades I/II/III); previously
+  absent. The clinician picks the grade and the tile reports its description. **I:** mild (dorsal osteophyte,
+  preserved joint space). **II:** moderate (dorsal/medial/lateral osteophytes with narrowing and sclerosis).
+  **III:** severe (marked osteophytes with joint-space loss and subchondral cysts). A grade, not a diagnosis, a
+  treatment decision, or a prognosis ([spec-v11] §5.3); the management decision stays with the orthopedic /
+  foot-and-ankle team. Grades transcribed (spec-v97) from Hattrup & Johnson 1988 (Clin Orthop Relat Res). No
+  citation-staleness row (a named-author article, no guideline-issuer acronym). New `lib/hattrup-johnson-v492.js`
+  + `views/group-v492.js` (RV492); +1 META entry, +1 UTILITIES row, a synonym entry (v212 → v213), 5 unit tests
+  + fuzz, corpus rebuilt to 1343. See [docs/spec-v492.md](docs/spec-v492.md). The MCP adapter follows in the
+  next wave.
+
 ### Added (spec-v491 — Severin classification (DDH radiographic outcome) tile, 1341 → 1342)
 
 - New `severin-ddh` tile (group G): the Severin classification of the radiographic outcome of the hip after
