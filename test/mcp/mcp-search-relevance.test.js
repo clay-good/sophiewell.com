@@ -516,6 +516,7 @@ const PROBES = [
   ['ahlback knee osteoarthritis grade', ['ahlback-knee-oa']],
   ['wiltse spondylolisthesis classification', ['wiltse-spondylolisthesis']],
   ['russell taylor subtrochanteric fracture classification', ['russell-taylor-subtroch']],
+  ['vancouver periprosthetic femoral fracture classification', ['vancouver-periprosthetic']],
 ];
 
 test(`every golden probe routes an acceptable tile into the top ${TOP_N}`, () => {

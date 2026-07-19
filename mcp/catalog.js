@@ -394,6 +394,7 @@ import spitzAtresiaV479 from './adapters/spitz-atresia-v479.js';
 import ahlbackKneeOaV480 from './adapters/ahlback-knee-oa-v480.js';
 import wiltseSpondylolisthesisV481 from './adapters/wiltse-spondylolisthesis-v481.js';
 import russellTaylorSubtrochV482 from './adapters/russell-taylor-subtroch-v482.js';
+import vancouverPeriprostheticV483 from './adapters/vancouver-periprosthetic-v483.js';
 import tbTesting from './adapters/tb-testing.js';
 import labInterpret from './adapters/lab-interpret.js';
 import decisionRulesV258 from './adapters/decision-rules-v258.js';
@@ -782,6 +783,7 @@ const ADAPTER_MODULES = [
   ['ahlback-knee-oa-v480', ahlbackKneeOaV480],
   ['wiltse-spondylolisthesis-v481', wiltseSpondylolisthesisV481],
   ['russell-taylor-subtroch-v482', russellTaylorSubtrochV482],
+  ['vancouver-periprosthetic-v483', vancouverPeriprostheticV483],
   ['tb-testing', tbTesting],
   ['lab-interpret', labInterpret],
   ['decision-rules-v258', decisionRulesV258],

@@ -4196,6 +4196,15 @@ test('lib/russell-taylor-subtroch-v482.js worked calls', () => {
   assert.match(ok('russell-taylor-subtroch', { 'rt-type': 'IIB' }).band, /extends into the piriformis fossa and the lesser trochanter is detached/);
 });
 
+test('lib/vancouver-periprosthetic-v483.js worked calls', () => {
+  // Type B2 (the META example): stem loose, adequate bone.
+  const b2 = ok('vancouver-periprosthetic', { 'vancouver-type': 'B2' });
+  assert.equal(b2.type, 'B2');
+  assert.match(b2.band, /the stem loose but adequate proximal bone stock/);
+  // Type C: well below the stem tip.
+  assert.match(ok('vancouver-periprosthetic', { 'vancouver-type': 'C' }).band, /well below the stem tip/);
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];

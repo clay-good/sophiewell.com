@@ -1502,6 +1502,19 @@ round-trip both pass, without the phantom "2". Adapter appended to the existing
 rate to a target PaCO2. Brings the exposed total to **1072 calculators across 197
 modules**.
 
+## Three-hundred-eighth wave — the Vancouver classification (periprosthetic femoral fracture) in lib/vancouver-periprosthetic-v483.js (+1)
+
+`vancouver-periprosthetic` (spec-v483) applies the Vancouver classification: given the type, it reports the
+location / stem-stability description. `type` is an enum (`kind: 'enum'`, values AG/AL/B1/B2/B3/C) — the single
+input the renderer exposes. The example sets type B2; its expected text carries no numeric facts (the
+description is word-only), so it flows through the default `makeToArgs` with no custom toArgs. New adapter
+module registered in `mcp/catalog.js`; its golden probe ("vancouver periprosthetic femoral fracture
+classification") is promoted now that the tile is in the MCP-exposed registry. Brings the exposed total to
+**1271 calculators across 387 modules**.
+
+### lib/vancouver-periprosthetic-v483.js
+- `vancouver-periprosthetic`
+
 ## Three-hundred-seventh wave — the Russell-Taylor classification (subtrochanteric fracture) in lib/russell-taylor-subtroch-v482.js (+1)
 
 `russell-taylor-subtroch` (spec-v482) applies the Russell-Taylor classification: given the type, it reports the
@@ -5730,6 +5743,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/russell-taylor-subtroch-v482.js
 - `russell-taylor-subtroch`
+
+### lib/vancouver-periprosthetic-v483.js
+- `vancouver-periprosthetic`
 
 ### lib/tb-testing.js
 - `tb-testing`
