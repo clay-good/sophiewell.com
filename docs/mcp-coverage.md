@@ -1502,6 +1502,18 @@ round-trip both pass, without the phantom "2". Adapter appended to the existing
 rate to a target PaCO2. Brings the exposed total to **1072 calculators across 197
 modules**.
 
+## Three-hundred-fourteenth wave — the Fernandez classification (distal radius fracture) in lib/fernandez-radius-v489.js (+1)
+
+`fernandez-radius` (spec-v489) applies the Fernandez classification: given the type, it reports the mechanism
+description. `type` is an enum (`kind: 'enum'`, values I..V) — the single input the renderer exposes. The
+example sets type I; its expected text carries no numeric facts (the description is word-only), so it flows
+through the default `makeToArgs` with no custom toArgs. New adapter module registered in `mcp/catalog.js`; its
+golden probe ("fernandez distal radius fracture classification") is promoted now that the tile is in the
+MCP-exposed registry. Brings the exposed total to **1277 calculators across 393 modules**.
+
+### lib/fernandez-radius-v489.js
+- `fernandez-radius`
+
 ## Three-hundred-thirteenth wave — the Bigliani classification (acromion morphology) in lib/bigliani-acromion-v488.js (+1)
 
 `bigliani-acromion` (spec-v488) applies the Bigliani classification: given the type, it reports the
@@ -5821,6 +5833,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/bigliani-acromion-v488.js
 - `bigliani-acromion`
+
+### lib/fernandez-radius-v489.js
+- `fernandez-radius`
 
 ### lib/tb-testing.js
 - `tb-testing`

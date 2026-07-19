@@ -4250,6 +4250,15 @@ test('lib/bigliani-acromion-v488.js worked calls', () => {
   assert.match(ok('bigliani-acromion', { 'bigliani-type': 'III' }).band, /hooked acromion/);
 });
 
+test('lib/fernandez-radius-v489.js worked calls', () => {
+  // Type I (the META example): bending fracture.
+  const one = ok('fernandez-radius', { 'fernandez-type': 'I' });
+  assert.equal(one.type, 'I');
+  assert.match(one.band, /a bending fracture of the metaphysis/);
+  // Type III: compression / die-punch.
+  assert.match(ok('fernandez-radius', { 'fernandez-type': 'III' }).band, /compression of the articular surface/);
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];

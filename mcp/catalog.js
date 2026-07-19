@@ -400,6 +400,7 @@ import dejourTrochleaV485 from './adapters/dejour-trochlea-v485.js';
 import samilsonPrietoV486 from './adapters/samilson-prieto-v486.js';
 import rockwoodAcV487 from './adapters/rockwood-ac-v487.js';
 import biglianiAcromionV488 from './adapters/bigliani-acromion-v488.js';
+import fernandezRadiusV489 from './adapters/fernandez-radius-v489.js';
 import tbTesting from './adapters/tb-testing.js';
 import labInterpret from './adapters/lab-interpret.js';
 import decisionRulesV258 from './adapters/decision-rules-v258.js';
@@ -794,6 +795,7 @@ const ADAPTER_MODULES = [
   ['samilson-prieto-v486', samilsonPrietoV486],
   ['rockwood-ac-v487', rockwoodAcV487],
   ['bigliani-acromion-v488', biglianiAcromionV488],
+  ['fernandez-radius-v489', fernandezRadiusV489],
   ['tb-testing', tbTesting],
   ['lab-interpret', labInterpret],
   ['decision-rules-v258', decisionRulesV258],

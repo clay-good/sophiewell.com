@@ -522,6 +522,7 @@ const PROBES = [
   ['samilson prieto shoulder dislocation arthropathy', ['samilson-prieto']],
   ['rockwood acromioclavicular joint injury classification', ['rockwood-ac']],
   ['bigliani acromion morphology classification', ['bigliani-acromion']],
+  ['fernandez distal radius fracture classification', ['fernandez-radius']],
 ];
 
 test(`every golden probe routes an acceptable tile into the top ${TOP_N}`, () => {
