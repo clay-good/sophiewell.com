@@ -343,6 +343,7 @@ import vaughanWilliamsV427 from './adapters/vaughan-williams-v427.js';
 import mrcPowerV428 from './adapters/mrc-power-v428.js';
 import sarnatHieV429 from './adapters/sarnat-hie-v429.js';
 import papileIvhV430 from './adapters/papile-ivh-v430.js';
+import bellNecV431 from './adapters/bell-nec-v431.js';
 import tbTesting from './adapters/tb-testing.js';
 import labInterpret from './adapters/lab-interpret.js';
 import decisionRulesV258 from './adapters/decision-rules-v258.js';
@@ -680,6 +681,7 @@ const ADAPTER_MODULES = [
   ['mrc-power-v428', mrcPowerV428],
   ['sarnat-hie-v429', sarnatHieV429],
   ['papile-ivh-v430', papileIvhV430],
+  ['bell-nec-v431', bellNecV431],
   ['tb-testing', tbTesting],
   ['lab-interpret', labInterpret],
   ['decision-rules-v258', decisionRulesV258],

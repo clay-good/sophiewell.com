@@ -1502,6 +1502,18 @@ round-trip both pass, without the phantom "2". Adapter appended to the existing
 rate to a target PaCO2. Brings the exposed total to **1072 calculators across 197
 modules**.
 
+## Two-hundred-fifty-sixth wave — the modified Bell staging (NEC) in lib/bell-nec-v431.js (+1)
+
+`bell-nec` (spec-v431) applies the modified Bell staging: given the stage, it reports the hallmark findings.
+`stage` is an enum (`kind: 'enum'`, values IA/IB/IIA/IIB/IIIA/IIIB) — the single input the renderer exposes.
+The example sets stage IIA; its expected text carries no numeric facts (the findings are word-only), so it
+flows through the default `makeToArgs` with no custom toArgs. New adapter module registered in
+`mcp/catalog.js`; its golden probe ("bell staging necrotizing enterocolitis") is promoted now that the tile is
+in the MCP-exposed registry. Brings the exposed total to **1220 calculators across 336 modules**.
+
+### lib/bell-nec-v431.js
+- `bell-nec`
+
 ## Two-hundred-fifty-fifth wave — the Papile grade (germinal matrix / IVH) in lib/papile-ivh-v430.js (+1)
 
 `papile-ivh` (spec-v430) applies the Papile grading: given the grade, it reports the imaging description.
@@ -4955,6 +4967,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/papile-ivh-v430.js
 - `papile-ivh`
+
+### lib/bell-nec-v431.js
+- `bell-nec`
 
 ### lib/tb-testing.js
 - `tb-testing`

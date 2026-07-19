@@ -3737,6 +3737,15 @@ test('lib/papile-ivh-v430.js worked calls', () => {
   assert.match(ok('papile-ivh', { 'papile-grade': 'IV' }).band, /parenchymal/);
 });
 
+test('lib/bell-nec-v431.js worked calls', () => {
+  // Stage IIA (the META example): pneumatosis intestinalis.
+  const iia = ok('bell-nec', { 'bell-stage': 'IIA' });
+  assert.equal(iia.stage, 'IIA');
+  assert.match(iia.band, /pneumatosis intestinalis/);
+  // Stage IIIB: perforated, pneumoperitoneum.
+  assert.match(ok('bell-nec', { 'bell-stage': 'IIIB' }).band, /pneumoperitoneum/);
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];

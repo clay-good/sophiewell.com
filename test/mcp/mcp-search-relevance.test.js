@@ -444,6 +444,8 @@ const PROBES = [
   ['sarnat staging neonatal', ['sarnat-hie']],
   // spec-v430 tile, exposed to MCP in wave 255: Papile grade (germinal matrix / IVH).
   ['papile intraventricular hemorrhage grade', ['papile-ivh']],
+  // spec-v431 tile, exposed to MCP in wave 256: Modified Bell staging (NEC).
+  ['bell staging necrotizing enterocolitis', ['bell-nec']],
 ];
 
 test(`every golden probe routes an acceptable tile into the top ${TOP_N}`, () => {
