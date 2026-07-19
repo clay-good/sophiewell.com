@@ -6,6 +6,19 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v465 — Stamey grade (stress urinary incontinence) tile, 1315 → 1316)
+
+- New `stamey-incontinence` tile (group G): the Stamey grading of stress urinary incontinence, by the degree of
+  physical stress that provokes leakage (grades 1/2/3); previously absent. The clinician picks the grade and
+  the tile reports its description. **1:** sudden increases in abdominal pressure (cough, sneeze, laugh), not at
+  night. **2:** lesser stress (walking, standing, sitting up). **3:** total, continuous incontinence regardless
+  of activity or position. A grade, not a diagnosis, a treatment decision, or a prognosis ([spec-v11] §5.3);
+  the management decision stays with the urology / urogynecology team. Grades transcribed (spec-v97) from
+  Stamey 1980 (Ann Surg). No citation-staleness row (the citation carries no guideline-issuer acronym). New
+  `lib/stamey-incontinence-v465.js` + `views/group-v465.js` (RV465); +1 META entry, +1 UTILITIES row, a synonym
+  entry (v185 → v186), 5 unit tests + fuzz, corpus rebuilt to 1316. See
+  [docs/spec-v465.md](docs/spec-v465.md). The MCP adapter follows in the next wave.
+
 ### Added (spec-v464 — Crawford classification (thoracoabdominal aortic aneurysm) tile, 1314 → 1315)
 
 - New `crawford-taaa` tile (group G): the Crawford classification of thoracoabdominal aortic aneurysms, by the
