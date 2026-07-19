@@ -6,6 +6,20 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v438 — Eaton-Littler stage (thumb CMC arthritis) tile, 1289 → 1290)
+
+- New `eaton-littler` tile (group G): the Eaton-Littler classification of thumb carpometacarpal (basal-joint)
+  osteoarthritis, by the radiographic joint findings (stages I/II/III/IV); previously absent. The clinician
+  picks the stage and the tile reports its radiographic description. **I:** normal or slightly widened TM
+  joint (synovitis). **II:** slight narrowing, osteophytes < 2 mm, subluxation up to one-third. **III:** marked
+  narrowing, osteophytes ≥ 2 mm, subluxation > one-third, scaphotrapezial joint spared. **IV:** pantrapezial
+  arthritis. A radiographic stage, not a diagnosis, a treatment decision, or a prognosis ([spec-v11] §5.3);
+  the management decision stays with the hand / orthopedic team. Stages transcribed (spec-v97) from Eaton &
+  Littler 1973 (J Bone Joint Surg Am); no citation-staleness row (the citation carries no guideline-issuer
+  acronym). New `lib/eaton-littler-v438.js` + `views/group-v438.js` (RV438); +1 META entry, +1 UTILITIES row,
+  a synonym entry (v159 → v160), 6 unit tests + fuzz, corpus rebuilt to 1290. See
+  [docs/spec-v438.md](docs/spec-v438.md). The MCP adapter follows in a later wave.
+
 ### Added (spec-v437 — Goutallier grade (rotator cuff fatty infiltration) tile, 1288 → 1289)
 
 - New `goutallier` tile (group G): the Goutallier classification of rotator cuff muscle fatty infiltration on
