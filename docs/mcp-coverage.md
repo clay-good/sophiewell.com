@@ -1502,6 +1502,18 @@ round-trip both pass, without the phantom "2". Adapter appended to the existing
 rate to a target PaCO2. Brings the exposed total to **1072 calculators across 197
 modules**.
 
+## Two-hundred-eighty-ninth wave — the Crawford classification (thoracoabdominal aortic aneurysm) in lib/crawford-taaa-v464.js (+1)
+
+`crawford-taaa` (spec-v464) applies the Crawford classification: given the extent, it reports the aortic-segment
+description. `extent` is an enum (`kind: 'enum'`, values I/II/III/IV) — the single input the renderer exposes.
+The example sets extent II; its expected text carries no numeric facts (the description is word-only), so it
+flows through the default `makeToArgs` with no custom toArgs. New adapter module registered in `mcp/catalog.js`;
+its golden probe ("crawford thoracoabdominal aortic aneurysm classification") is promoted now that the tile is
+in the MCP-exposed registry. Brings the exposed total to **1252 calculators across 368 modules**.
+
+### lib/crawford-taaa-v464.js
+- `crawford-taaa`
+
 ## Two-hundred-eighty-eighth wave — the Waldenstrom staging (Legg-Calve-Perthes) in lib/waldenstrom-perthes-v463.js (+1)
 
 `waldenstrom-perthes` (spec-v463) applies the Waldenstrom radiographic staging: given the stage, it reports the
@@ -5439,6 +5451,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/waldenstrom-perthes-v463.js
 - `waldenstrom-perthes`
+
+### lib/crawford-taaa-v464.js
+- `crawford-taaa`
 
 ### lib/tb-testing.js
 - `tb-testing`

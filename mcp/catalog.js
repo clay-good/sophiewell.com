@@ -375,6 +375,7 @@ import ennekingV460 from './adapters/enneking-v460.js';
 import debakeyV461 from './adapters/debakey-v461.js';
 import gmfcsV462 from './adapters/gmfcs-v462.js';
 import waldenstromPerthesV463 from './adapters/waldenstrom-perthes-v463.js';
+import crawfordTaaaV464 from './adapters/crawford-taaa-v464.js';
 import tbTesting from './adapters/tb-testing.js';
 import labInterpret from './adapters/lab-interpret.js';
 import decisionRulesV258 from './adapters/decision-rules-v258.js';
@@ -744,6 +745,7 @@ const ADAPTER_MODULES = [
   ['debakey-v461', debakeyV461],
   ['gmfcs-v462', gmfcsV462],
   ['waldenstrom-perthes-v463', waldenstromPerthesV463],
+  ['crawford-taaa-v464', crawfordTaaaV464],
   ['tb-testing', tbTesting],
   ['lab-interpret', labInterpret],
   ['decision-rules-v258', decisionRulesV258],

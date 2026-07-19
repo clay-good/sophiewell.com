@@ -4025,6 +4025,15 @@ test('lib/waldenstrom-perthes-v463.js worked calls', () => {
   assert.match(ok('waldenstrom-perthes', { 'wp-stage': 'IV' }).band, /healed \(remodeling\)/);
 });
 
+test('lib/crawford-taaa-v464.js worked calls', () => {
+  // Extent II (the META example): most extensive.
+  const two = ok('crawford-taaa', { 'crawford-extent': 'II' });
+  assert.equal(two.extent, 'II');
+  assert.match(two.band, /the most extensive/);
+  // Extent IV: the entire abdominal aorta.
+  assert.match(ok('crawford-taaa', { 'crawford-extent': 'IV' }).band, /the entire abdominal aorta/);
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];
