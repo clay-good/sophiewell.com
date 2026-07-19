@@ -1502,6 +1502,18 @@ round-trip both pass, without the phantom "2". Adapter appended to the existing
 rate to a target PaCO2. Brings the exposed total to **1072 calculators across 197
 modules**.
 
+## Two-hundred-sixty-ninth wave — the McCormick grade (spinal cord function) in lib/mccormick-v444.js (+1)
+
+`mccormick` (spec-v444) applies the McCormick grading scale: given the grade, it reports the functional
+description. `grade` is an enum (`kind: 'enum'`, values I/II/III/IV) — the single input the renderer exposes.
+The example sets grade II; its expected text carries no numeric facts (the description is word-only), so it
+flows through the default `makeToArgs` with no custom toArgs. New adapter module registered in
+`mcp/catalog.js`; its golden probe ("mccormick spinal cord grade") is promoted now that the tile is in the
+MCP-exposed registry. Brings the exposed total to **1233 calculators across 349 modules**.
+
+### lib/mccormick-v444.js
+- `mccormick`
+
 ## Two-hundred-sixty-eighth wave — the Kadish staging (esthesioneuroblastoma) in lib/kadish-v443.js (+1)
 
 `kadish` (spec-v443) applies the Kadish staging: given the stage, it reports the anatomic-extent description.
@@ -5150,6 +5162,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/kadish-v443.js
 - `kadish`
+
+### lib/mccormick-v444.js
+- `mccormick`
 
 ### lib/tb-testing.js
 - `tb-testing`

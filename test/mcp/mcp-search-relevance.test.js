@@ -470,6 +470,8 @@ const PROBES = [
   ['zabramski cavernous malformation', ['zabramski']],
   // spec-v443 tile, exposed to MCP in wave 268: Kadish staging (esthesioneuroblastoma).
   ['kadish esthesioneuroblastoma stage', ['kadish']],
+  // spec-v444 tile, exposed to MCP in wave 269: McCormick grade (spinal cord function).
+  ['mccormick spinal cord grade', ['mccormick']],
 ];
 
 test(`every golden probe routes an acceptable tile into the top ${TOP_N}`, () => {

@@ -356,6 +356,7 @@ import barrowCcfV440 from './adapters/barrow-ccf-v440.js';
 import bordenDavfV441 from './adapters/borden-davf-v441.js';
 import zabramskiV442 from './adapters/zabramski-v442.js';
 import kadishV443 from './adapters/kadish-v443.js';
+import mccormickV444 from './adapters/mccormick-v444.js';
 import tbTesting from './adapters/tb-testing.js';
 import labInterpret from './adapters/lab-interpret.js';
 import decisionRulesV258 from './adapters/decision-rules-v258.js';
@@ -706,6 +707,7 @@ const ADAPTER_MODULES = [
   ['borden-davf-v441', bordenDavfV441],
   ['zabramski-v442', zabramskiV442],
   ['kadish-v443', kadishV443],
+  ['mccormick-v444', mccormickV444],
   ['tb-testing', tbTesting],
   ['lab-interpret', labInterpret],
   ['decision-rules-v258', decisionRulesV258],

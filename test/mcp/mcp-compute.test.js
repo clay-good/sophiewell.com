@@ -3854,6 +3854,15 @@ test('lib/kadish-v443.js worked calls', () => {
   assert.match(ok('kadish', { 'kadish-stage': 'A' }).band, /confined to the nasal cavity/);
 });
 
+test('lib/mccormick-v444.js worked calls', () => {
+  // Grade II (the META example): deficit but independent.
+  const two = ok('mccormick', { 'mccormick-grade': 'II' });
+  assert.equal(two.grade, 'II');
+  assert.match(two.band, /functions and ambulates independently/);
+  // Grade IV: wheelchair.
+  assert.match(ok('mccormick', { 'mccormick-grade': 'IV' }).band, /requires a wheelchair/);
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];
