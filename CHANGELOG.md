@@ -6,6 +6,20 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v452 — Brooker classification (heterotopic ossification) tile, 1303 → 1304)
+
+- New `brooker` tile (group G): the Brooker classification of heterotopic (ectopic) ossification about the hip,
+  by the radiographic extent of ectopic bone (classes I/II/III/IV); previously absent. The clinician picks the
+  class and the tile reports its radiographic description. **I:** islands of bone within the soft tissues.
+  **II:** bone spurs leaving at least 1 cm between opposing bone surfaces. **III:** bone spurs reducing the gap
+  to less than 1 cm. **IV:** apparent bony ankylosis. A class, not a diagnosis, a treatment decision, or a
+  prognosis ([spec-v11] §5.3); the management decision stays with the orthopedic team. Classes transcribed
+  (spec-v97) from Brooker 1973 (J Bone Joint Surg Am); the 1 cm gap between opposing bone surfaces is the II/III
+  discriminator. No citation-staleness row (the citation carries no guideline-issuer acronym). New
+  `lib/brooker-v452.js` + `views/group-v452.js` (RV452); +1 META entry, +1 UTILITIES row, a synonym entry
+  (v173 → v174), 6 unit tests + fuzz, corpus rebuilt to 1304. See [docs/spec-v452.md](docs/spec-v452.md). The
+  MCP adapter follows in the next wave.
+
 ### Added (spec-v451 — Sade grade (tympanic membrane retraction) tile, 1302 → 1303)
 
 - New `sade-retraction` tile (group G): the Sade classification of pars tensa tympanic-membrane retraction, by
