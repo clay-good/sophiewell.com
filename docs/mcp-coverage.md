@@ -1502,6 +1502,19 @@ round-trip both pass, without the phantom "2". Adapter appended to the existing
 rate to a target PaCO2. Brings the exposed total to **1072 calculators across 197
 modules**.
 
+## Two-hundred-eighty-fourth wave — the Thompson-Epstein classification (posterior hip dislocation) in lib/thompson-epstein-v459.js (+1)
+
+`thompson-epstein` (spec-v459) applies the Thompson-Epstein classification: given the type, it reports the
+associated-fracture description. `type` is an enum (`kind: 'enum'`, values I/II/III/IV/V) — the single input
+the renderer exposes. The example sets type II; its expected text carries no numeric facts (the description is
+word-only), so it flows through the default `makeToArgs` with no custom toArgs. New adapter module registered
+in `mcp/catalog.js`; its golden probe ("thompson epstein posterior hip dislocation classification") is promoted
+now that the tile is in the MCP-exposed registry. Brings the exposed total to **1247 calculators across 363
+modules**.
+
+### lib/thompson-epstein-v459.js
+- `thompson-epstein`
+
 ## Two-hundred-eighty-third wave — the Boyd-Griffin classification (intertrochanteric fracture) in lib/boyd-griffin-v458.js (+1)
 
 `boyd-griffin` (spec-v458) applies the Boyd-Griffin classification: given the type, it reports the fracture-line
@@ -5363,6 +5376,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/boyd-griffin-v458.js
 - `boyd-griffin`
+
+### lib/thompson-epstein-v459.js
+- `thompson-epstein`
 
 ### lib/tb-testing.js
 - `tb-testing`

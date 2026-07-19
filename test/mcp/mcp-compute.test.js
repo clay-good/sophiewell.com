@@ -3980,6 +3980,15 @@ test('lib/boyd-griffin-v458.js worked calls', () => {
   assert.match(ok('boyd-griffin', { 'boyd-type': 'III' }).band, /essentially subtrochanteric/);
 });
 
+test('lib/thompson-epstein-v459.js worked calls', () => {
+  // Type II (the META example): single large rim fracture.
+  const two = ok('thompson-epstein', { 'te-type': 'II' });
+  assert.equal(two.type, 'II');
+  assert.match(two.band, /single large fracture of the posterior acetabular rim/);
+  // Type V: femoral-head fracture.
+  assert.match(ok('thompson-epstein', { 'te-type': 'V' }).band, /fracture of the femoral head/);
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];
