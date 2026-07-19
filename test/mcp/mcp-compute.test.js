@@ -3962,6 +3962,15 @@ test('lib/leddy-packer-v456.js worked calls', () => {
   assert.match(ok('leddy-packer', { 'leddy-type': 'III' }).band, /A4 pulley/);
 });
 
+test('lib/stulberg-v457.js worked calls', () => {
+  // Class III (the META example): non-spherical but not flat.
+  const three = ok('stulberg', { 'stulberg-class': 'III' });
+  assert.equal(three.cls, 'III');
+  assert.match(three.band, /non-spherical head/);
+  // Class V: aspherical incongruency.
+  assert.match(ok('stulberg', { 'stulberg-class': 'V' }).band, /aspherical incongruency/);
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];

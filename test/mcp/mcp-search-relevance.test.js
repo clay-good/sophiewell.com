@@ -490,6 +490,7 @@ const PROBES = [
   ['bado monteggia fracture classification', ['bado']],
   ['nunley vertullo midfoot sprain classification', ['nunley-vertullo']],
   ['leddy packer jersey finger classification', ['leddy-packer']],
+  ['stulberg perthes residual deformity classification', ['stulberg']],
 ];
 
 test(`every golden probe routes an acceptable tile into the top ${TOP_N}`, () => {

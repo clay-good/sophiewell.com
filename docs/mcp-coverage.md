@@ -1502,6 +1502,18 @@ round-trip both pass, without the phantom "2". Adapter appended to the existing
 rate to a target PaCO2. Brings the exposed total to **1072 calculators across 197
 modules**.
 
+## Two-hundred-eighty-second wave — the Stulberg classification (Perthes residual deformity) in lib/stulberg-v457.js (+1)
+
+`stulberg` (spec-v457) applies the Stulberg classification: given the class, it reports the sphericity /
+congruency description. `cls` is an enum (`kind: 'enum'`, values I/II/III/IV/V) — the single input the renderer
+exposes. The example sets class III; its expected text carries no numeric facts (the description is word-only),
+so it flows through the default `makeToArgs` with no custom toArgs. New adapter module registered in
+`mcp/catalog.js`; its golden probe ("stulberg perthes residual deformity classification") is promoted now that
+the tile is in the MCP-exposed registry. Brings the exposed total to **1245 calculators across 361 modules**.
+
+### lib/stulberg-v457.js
+- `stulberg`
+
 ## Two-hundred-eighty-first wave — the Leddy-Packer classification (jersey finger) in lib/leddy-packer-v456.js (+1)
 
 `leddy-packer` (spec-v456) applies the Leddy-Packer classification: given the type, it reports the FDP
@@ -5333,6 +5345,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/leddy-packer-v456.js
 - `leddy-packer`
+
+### lib/stulberg-v457.js
+- `stulberg`
 
 ### lib/tb-testing.js
 - `tb-testing`
