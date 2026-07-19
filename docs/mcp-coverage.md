@@ -1502,6 +1502,18 @@ round-trip both pass, without the phantom "2". Adapter appended to the existing
 rate to a target PaCO2. Brings the exposed total to **1072 calculators across 197
 modules**.
 
+## Two-hundred-fifty-third wave — the MRC muscle-power grade in lib/mrc-power-v428.js (+1)
+
+`mrc-power` (spec-v428) applies the MRC muscle-power grade: given the grade, it reports the examination
+description. `grade` is an enum (`kind: 'enum'`, values 0/1/2/3/4/5) — the single input the renderer exposes.
+The example sets grade 3; its expected text carries no numeric facts beyond the grade label (the description
+is word-only), so it flows through the default `makeToArgs` with no custom toArgs. New adapter module
+registered in `mcp/catalog.js`; its golden probe ("mrc muscle power grade") is promoted now that the tile is
+in the MCP-exposed registry. Brings the exposed total to **1217 calculators across 333 modules**.
+
+### lib/mrc-power-v428.js
+- `mrc-power`
+
 ## Two-hundred-fifty-second wave — the Vaughan Williams antiarrhythmic classification in lib/vaughan-williams-v427.js (+1)
 
 `vaughan-williams` (spec-v427) applies the Vaughan Williams classification: given the class, it reports the
@@ -4910,6 +4922,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/vaughan-williams-v427.js
 - `vaughan-williams`
+
+### lib/mrc-power-v428.js
+- `mrc-power`
 
 ### lib/tb-testing.js
 - `tb-testing`

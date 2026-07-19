@@ -3710,6 +3710,15 @@ test('lib/vaughan-williams-v427.js worked calls', () => {
   assert.match(ok('vaughan-williams', { 'vw-class': 'Ic' }).band, /flecainide, propafenone/);
 });
 
+test('lib/mrc-power-v428.js worked calls', () => {
+  // Grade 3 (the META example): active movement against gravity.
+  const three = ok('mrc-power', { 'mrc-grade': '3' });
+  assert.equal(three.grade, '3');
+  assert.match(three.band, /active movement against gravity/);
+  // Grade 5: normal power.
+  assert.match(ok('mrc-power', { 'mrc-grade': '5' }).band, /normal power/);
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];

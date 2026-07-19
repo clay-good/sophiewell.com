@@ -438,6 +438,8 @@ const PROBES = [
   ['gell coombs hypersensitivity', ['gell-coombs']],
   // spec-v427 tile, exposed to MCP in wave 252: Vaughan Williams antiarrhythmic classification.
   ['vaughan williams antiarrhythmic', ['vaughan-williams']],
+  // spec-v428 tile, exposed to MCP in wave 253: MRC muscle-power grade.
+  ['mrc muscle power grade', ['mrc-power']],
 ];
 
 test(`every golden probe routes an acceptable tile into the top ${TOP_N}`, () => {

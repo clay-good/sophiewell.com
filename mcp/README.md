@@ -78,7 +78,7 @@ find_calculator { "query": "stroke risk afib" }
        candidates: [ { id: "chads", name: "CHA2DS2-VASc", why: "synonym", ... }, ... ] }
 
 list_calculators { "specialty": "hepatology" }
-  -> { coverage: "1216 of 1109 catalog tiles exposed ...", calculators: [ { id: "meld-xi", ... }, ... ] }
+  -> { coverage: "1217 of 1109 catalog tiles exposed ...", calculators: [ { id: "meld-xi", ... }, ... ] }
 
 describe_calculator { "id": "meld-xi" }
   -> { inputSchema: { ... mx-bili, mx-creat ... }, citation: "Heuman DM ... Liver Transpl 2007", ... }
@@ -464,8 +464,9 @@ chamber flare grade (uveitis) in `lib/sun-ac-flare-v422.js`, a two-hundred-forty
 classification (celiac histology) in `lib/marsh-oberhuber-v423.js`, a two-hundred-forty-ninth the Bethesda
 System (thyroid cytopathology) in `lib/bethesda-thyroid-v424.js`, a two-hundred-fiftieth the vesicoureteral
 reflux grade (VCUG) in `lib/vur-grade-v425.js`, a two-hundred-fifty-first the Gell and Coombs
-hypersensitivity classification in `lib/gell-coombs-v426.js`, and a two-hundred-fifty-second the Vaughan
-Williams antiarrhythmic classification in `lib/vaughan-williams-v427.js`, for 1216 across 332 modules today. <!-- catalog-truth:historical (197 is the count of lib modules adapted, not a catalog tile count) -->
+hypersensitivity classification in `lib/gell-coombs-v426.js`, a two-hundred-fifty-second the Vaughan
+Williams antiarrhythmic classification in `lib/vaughan-williams-v427.js`, and a two-hundred-fifty-third the MRC
+muscle-power grade in `lib/mrc-power-v428.js`, for 1217 across 333 modules today. <!-- catalog-truth:historical (197 is the count of lib modules adapted, not a catalog tile count) -->
 Later waves extend it module by module against the same contract.
 
 ## Design
