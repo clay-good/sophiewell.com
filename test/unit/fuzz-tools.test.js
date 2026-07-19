@@ -429,6 +429,7 @@ import * as fieldingHawkinsV449 from '../../lib/fielding-hawkins-v449.js';
 import * as reidBronchiectasisV450 from '../../lib/reid-bronchiectasis-v450.js';
 import * as sadeRetractionV451 from '../../lib/sade-retraction-v451.js';
 import * as brookerV452 from '../../lib/brooker-v452.js';
+import * as badoV454 from '../../lib/bado-v454.js';
 import * as tbTesting from '../../lib/tb-testing.js';
 
 const MODULES = {
@@ -803,6 +804,7 @@ const MODULES = {
   'reid-bronchiectasis-v450.js': reidBronchiectasisV450,
   'sade-retraction-v451.js': sadeRetractionV451,
   'brooker-v452.js': brookerV452,
+  'bado-v454.js': badoV454,
   'tb-testing.js': tbTesting,
 };
 

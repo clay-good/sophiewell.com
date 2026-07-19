@@ -6,6 +6,20 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v454 — Bado classification (Monteggia fracture) tile, 1304 → 1305)
+
+- New `bado` tile (group G): the Bado classification of Monteggia fractures, by the direction of radial-head
+  dislocation and the ulnar fracture (types I/II/III/IV); previously absent. The clinician picks the type and
+  the tile reports its description. **I:** anterior dislocation, anterior ulnar angulation (most common).
+  **II:** posterior dislocation, posterior ulnar angulation. **III:** lateral dislocation with an ulnar
+  metaphyseal fracture. **IV:** anterior dislocation with both-bone proximal-third fractures. A type, not a
+  diagnosis, a treatment decision, or a prognosis ([spec-v11] §5.3); the management decision stays with the
+  orthopedic team. Types transcribed (spec-v97) from Bado 1967 (Clin Orthop Relat Res). No citation-staleness
+  row (the citation carries no guideline-issuer acronym). New `lib/bado-v454.js` + `views/group-v454.js`
+  (RV454); +1 META entry, +1 UTILITIES row, a synonym entry (v174 → v175), 6 unit tests + fuzz, corpus rebuilt
+  to 1305. See [docs/spec-v454.md](docs/spec-v454.md). The MCP adapter follows in the next wave. (spec-v453 was
+  a Schatzker tile reverted before release as a duplicate of the existing `schatzker-classification`.)
+
 ### Added (spec-v452 — Brooker classification (heterotopic ossification) tile, 1303 → 1304)
 
 - New `brooker` tile (group G): the Brooker classification of heterotopic (ectopic) ossification about the hip,
