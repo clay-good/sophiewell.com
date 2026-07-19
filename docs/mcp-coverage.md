@@ -1502,6 +1502,19 @@ round-trip both pass, without the phantom "2". Adapter appended to the existing
 rate to a target PaCO2. Brings the exposed total to **1072 calculators across 197
 modules**.
 
+## Three-hundred-third wave — the Spaulding classification (device reprocessing) in lib/spaulding-classification-v478.js (+1)
+
+`spaulding-classification` (spec-v478) applies the Spaulding classification: given the category, it reports the
+required reprocessing. `category` is an enum (`kind: 'enum'`, values critical/semicritical/noncritical) — the
+single input the renderer exposes. The example sets semicritical; its expected text carries no numeric facts
+(the description is word-only), so it flows through the default `makeToArgs` with no custom toArgs. New adapter
+module registered in `mcp/catalog.js`; its golden probe ("spaulding device reprocessing classification") is
+promoted now that the tile is in the MCP-exposed registry. Brings the exposed total to **1266 calculators
+across 382 modules**.
+
+### lib/spaulding-classification-v478.js
+- `spaulding-classification`
+
 ## Three-hundred-second wave — the SFU grade (hydronephrosis) in lib/sfu-hydronephrosis-v477.js (+1)
 
 `sfu-hydronephrosis` (spec-v477) applies the SFU grading: given the grade, it reports the dilatation
@@ -5653,6 +5666,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/sfu-hydronephrosis-v477.js
 - `sfu-hydronephrosis`
+
+### lib/spaulding-classification-v478.js
+- `spaulding-classification`
 
 ### lib/tb-testing.js
 - `tb-testing`

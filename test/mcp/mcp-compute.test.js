@@ -4151,6 +4151,15 @@ test('lib/sfu-hydronephrosis-v477.js worked calls', () => {
   assert.match(ok('sfu-hydronephrosis', { 'sfu-grade': '4' }).band, /thinning of the renal parenchyma/);
 });
 
+test('lib/spaulding-classification-v478.js worked calls', () => {
+  // Semicritical (the META example): high-level disinfection.
+  const semi = ok('spaulding-classification', { 'spaulding-category': 'semicritical' });
+  assert.equal(semi.category, 'Semicritical');
+  assert.match(semi.band, /at least high-level disinfection/);
+  // Critical: sterilization.
+  assert.match(ok('spaulding-classification', { 'spaulding-category': 'critical' }).band, /it requires sterilization/);
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];

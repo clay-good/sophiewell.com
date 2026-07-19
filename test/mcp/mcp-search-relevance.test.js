@@ -511,6 +511,7 @@ const PROBES = [
   ['glogau photoaging classification', ['glogau-photoaging']],
   ['nash moe vertebral rotation grade', ['nash-moe-rotation']],
   ['sfu hydronephrosis grade', ['sfu-hydronephrosis']],
+  ['spaulding device reprocessing classification', ['spaulding-classification']],
 ];
 
 test(`every golden probe routes an acceptable tile into the top ${TOP_N}`, () => {
