@@ -4187,6 +4187,15 @@ test('lib/wiltse-spondylolisthesis-v481.js worked calls', () => {
   assert.match(ok('wiltse-spondylolisthesis', { 'wiltse-type': 'V' }).band, /pathologic/);
 });
 
+test('lib/russell-taylor-subtroch-v482.js worked calls', () => {
+  // Type IA (the META example): piriformis intact, LT attached.
+  const ia = ok('russell-taylor-subtroch', { 'rt-type': 'IA' });
+  assert.equal(ia.type, 'IA');
+  assert.match(ia.band, /the piriformis fossa is intact and the lesser trochanter is attached/);
+  // Type IIB: piriformis involved, LT detached.
+  assert.match(ok('russell-taylor-subtroch', { 'rt-type': 'IIB' }).band, /extends into the piriformis fossa and the lesser trochanter is detached/);
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];
