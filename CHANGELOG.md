@@ -6,6 +6,19 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v450 — Reid classification (bronchiectasis) tile, 1301 → 1302)
+
+- New `reid-bronchiectasis` tile (group G): the Reid classification of bronchiectasis by bronchial morphology
+  on imaging (cylindrical / varicose / cystic); previously absent. The radiologist picks the type and the tile
+  reports its morphology description. **Cylindrical (tubular):** uniformly dilated, regular outline (least
+  severe). **Varicose:** irregular, beaded outline. **Cystic (saccular):** large cyst-like dilatations (most
+  severe). A morphology, not a diagnosis, a severity determination, a treatment decision, or a prognosis
+  ([spec-v11] §5.3); the management decision stays with the pulmonology team. Types transcribed (spec-v97) from
+  Reid 1950 (Thorax); no citation-staleness row (the citation carries no guideline-issuer acronym). New
+  `lib/reid-bronchiectasis-v450.js` + `views/group-v450.js` (RV450); +1 META entry, +1 UTILITIES row, a
+  synonym entry (v171 → v172), 5 unit tests + fuzz, corpus rebuilt to 1302. See
+  [docs/spec-v450.md](docs/spec-v450.md). The MCP adapter follows in a later wave.
+
 ### Added (spec-v449 — Fielding-Hawkins (atlantoaxial rotatory subluxation) tile, 1300 → 1301)
 
 - New `fielding-hawkins` tile (group G): the Fielding-Hawkins classification of atlantoaxial rotatory

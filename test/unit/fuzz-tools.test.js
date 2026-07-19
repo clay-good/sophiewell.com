@@ -426,6 +426,7 @@ import * as ropStageV446 from '../../lib/rop-stage-v446.js';
 import * as andersonMontesanoV447 from '../../lib/anderson-montesano-v447.js';
 import * as traynelisV448 from '../../lib/traynelis-v448.js';
 import * as fieldingHawkinsV449 from '../../lib/fielding-hawkins-v449.js';
+import * as reidBronchiectasisV450 from '../../lib/reid-bronchiectasis-v450.js';
 import * as tbTesting from '../../lib/tb-testing.js';
 
 const MODULES = {
@@ -797,6 +798,7 @@ const MODULES = {
   'anderson-montesano-v447.js': andersonMontesanoV447,
   'traynelis-v448.js': traynelisV448,
   'fielding-hawkins-v449.js': fieldingHawkinsV449,
+  'reid-bronchiectasis-v450.js': reidBronchiectasisV450,
   'tb-testing.js': tbTesting,
 };
 
