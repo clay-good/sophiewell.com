@@ -6,6 +6,20 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v448 — Traynelis (atlanto-occipital dislocation) tile, 1299 → 1300)
+
+- New `traynelis` tile (group G): the Traynelis classification of traumatic atlanto-occipital dislocation
+  (AOD), by the direction of occiput displacement relative to the atlas (types I/II/III); previously absent.
+  The clinician picks the type and the tile reports its displacement description. **I:** anterior displacement.
+  **II:** longitudinal distraction (vertical separation). **III:** posterior displacement. A type, not a
+  diagnosis, a stability determination, a treatment decision, or a prognosis ([spec-v11] §5.3);
+  atlanto-occipital dislocation is a high-mortality craniocervical injury and the decision stays with the
+  spine / neurosurgery team. Types transcribed (spec-v97) from Traynelis 1986 (J Neurosurg); no
+  citation-staleness row (the citation carries no guideline-issuer acronym). Joins the craniocervical cluster
+  (anderson-montesano, levine-edwards). New `lib/traynelis-v448.js` + `views/group-v448.js` (RV448); +1 META
+  entry, +1 UTILITIES row, a synonym entry (v169 → v170), 5 unit tests + fuzz, corpus rebuilt to 1300 (catalog
+  crosses 1300). See [docs/spec-v448.md](docs/spec-v448.md). The MCP adapter follows in a later wave.
+
 ### Added (spec-v447 — Anderson-Montesano (occipital condyle fracture) tile, 1298 → 1299)
 
 - New `anderson-montesano` tile (group G): the Anderson-Montesano classification of occipital condyle
