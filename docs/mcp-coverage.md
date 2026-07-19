@@ -1502,6 +1502,19 @@ round-trip both pass, without the phantom "2". Adapter appended to the existing
 rate to a target PaCO2. Brings the exposed total to **1072 calculators across 197
 modules**.
 
+## Two-hundred-fifty-second wave — the Vaughan Williams antiarrhythmic classification in lib/vaughan-williams-v427.js (+1)
+
+`vaughan-williams` (spec-v427) applies the Vaughan Williams classification: given the class, it reports the
+mechanism and representative agents. `cls` is an enum (`kind: 'enum'`, values Ia/Ib/Ic/II/III/IV) — the single
+input the renderer exposes. The example sets class III; its expected text carries no numeric facts (the
+mechanism and drug names are word-only), so it flows through the default `makeToArgs` with no custom toArgs.
+New adapter module registered in `mcp/catalog.js`; its golden probe ("vaughan williams antiarrhythmic") is
+promoted now that the tile is in the MCP-exposed registry. Brings the exposed total to **1216 calculators
+across 332 modules**.
+
+### lib/vaughan-williams-v427.js
+- `vaughan-williams`
+
 ## Two-hundred-fifty-first wave — the Gell and Coombs hypersensitivity classification in lib/gell-coombs-v426.js (+1)
 
 `gell-coombs` (spec-v426) applies the Gell and Coombs classification: given the type, it reports the immune
@@ -4894,6 +4907,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/gell-coombs-v426.js
 - `gell-coombs`
+
+### lib/vaughan-williams-v427.js
+- `vaughan-williams`
 
 ### lib/tb-testing.js
 - `tb-testing`

@@ -3701,6 +3701,15 @@ test('lib/gell-coombs-v426.js worked calls', () => {
   assert.match(ok('gell-coombs', { 'gc-type': 'IV' }).band, /delayed, cell-mediated/);
 });
 
+test('lib/vaughan-williams-v427.js worked calls', () => {
+  // Class III (the META example): K-channel blockers, amiodarone.
+  const three = ok('vaughan-williams', { 'vw-class': 'III' });
+  assert.equal(three.cls, 'III');
+  assert.match(three.band, /potassium-channel blockers/);
+  // Class Ic: flecainide, propafenone.
+  assert.match(ok('vaughan-williams', { 'vw-class': 'Ic' }).band, /flecainide, propafenone/);
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];

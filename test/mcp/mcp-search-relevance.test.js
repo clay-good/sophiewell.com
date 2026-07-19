@@ -436,6 +436,8 @@ const PROBES = [
   ['vesicoureteral reflux grade', ['vur-grade']],
   // spec-v426 tile, exposed to MCP in wave 251: Gell and Coombs hypersensitivity classification.
   ['gell coombs hypersensitivity', ['gell-coombs']],
+  // spec-v427 tile, exposed to MCP in wave 252: Vaughan Williams antiarrhythmic classification.
+  ['vaughan williams antiarrhythmic', ['vaughan-williams']],
 ];
 
 test(`every golden probe routes an acceptable tile into the top ${TOP_N}`, () => {
