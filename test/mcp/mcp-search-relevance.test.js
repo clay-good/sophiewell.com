@@ -493,6 +493,7 @@ const PROBES = [
   ['stulberg perthes residual deformity classification', ['stulberg']],
   ['boyd griffin intertrochanteric fracture classification', ['boyd-griffin']],
   ['thompson epstein posterior hip dislocation classification', ['thompson-epstein']],
+  ['enneking musculoskeletal sarcoma surgical staging', ['enneking']],
 ];
 
 test(`every golden probe routes an acceptable tile into the top ${TOP_N}`, () => {

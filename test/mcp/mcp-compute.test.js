@@ -3989,6 +3989,15 @@ test('lib/thompson-epstein-v459.js worked calls', () => {
   assert.match(ok('thompson-epstein', { 'te-type': 'V' }).band, /fracture of the femoral head/);
 });
 
+test('lib/enneking-v460.js worked calls', () => {
+  // Stage IIB (the META example): high-grade, extracompartmental, no mets.
+  const iib = ok('enneking', { 'enneking-stage': 'IIB' });
+  assert.equal(iib.stage, 'IIB');
+  assert.match(iib.band, /high-grade \(G2\), extracompartmental \(T2\)/);
+  // Stage III: any metastasis.
+  assert.match(ok('enneking', { 'enneking-stage': 'III' }).band, /any regional or distant metastasis/);
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];

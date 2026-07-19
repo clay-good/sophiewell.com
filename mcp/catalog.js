@@ -371,6 +371,7 @@ import leddyPackerV456 from './adapters/leddy-packer-v456.js';
 import stulbergV457 from './adapters/stulberg-v457.js';
 import boydGriffinV458 from './adapters/boyd-griffin-v458.js';
 import thompsonEpsteinV459 from './adapters/thompson-epstein-v459.js';
+import ennekingV460 from './adapters/enneking-v460.js';
 import tbTesting from './adapters/tb-testing.js';
 import labInterpret from './adapters/lab-interpret.js';
 import decisionRulesV258 from './adapters/decision-rules-v258.js';
@@ -736,6 +737,7 @@ const ADAPTER_MODULES = [
   ['stulberg-v457', stulbergV457],
   ['boyd-griffin-v458', boydGriffinV458],
   ['thompson-epstein-v459', thompsonEpsteinV459],
+  ['enneking-v460', ennekingV460],
   ['tb-testing', tbTesting],
   ['lab-interpret', labInterpret],
   ['decision-rules-v258', decisionRulesV258],

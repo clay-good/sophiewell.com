@@ -1502,6 +1502,18 @@ round-trip both pass, without the phantom "2". Adapter appended to the existing
 rate to a target PaCO2. Brings the exposed total to **1072 calculators across 197
 modules**.
 
+## Two-hundred-eighty-fifth wave — the Enneking surgical staging (musculoskeletal sarcoma) in lib/enneking-v460.js (+1)
+
+`enneking` (spec-v460) applies the Enneking (MSTS) surgical staging: given the stage, it reports the grade /
+compartment / metastasis combination. `stage` is an enum (`kind: 'enum'`, values IA/IB/IIA/IIB/III) — the
+single input the renderer exposes. The example sets stage IIB; its expected text carries the G2/T2/M0 facts, so
+it flows through the default `makeToArgs` with no custom toArgs. New adapter module registered in
+`mcp/catalog.js`; its golden probe ("enneking musculoskeletal sarcoma surgical staging") is promoted now that
+the tile is in the MCP-exposed registry. Brings the exposed total to **1248 calculators across 364 modules**.
+
+### lib/enneking-v460.js
+- `enneking`
+
 ## Two-hundred-eighty-fourth wave — the Thompson-Epstein classification (posterior hip dislocation) in lib/thompson-epstein-v459.js (+1)
 
 `thompson-epstein` (spec-v459) applies the Thompson-Epstein classification: given the type, it reports the
@@ -5379,6 +5391,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/thompson-epstein-v459.js
 - `thompson-epstein`
+
+### lib/enneking-v460.js
+- `enneking`
 
 ### lib/tb-testing.js
 - `tb-testing`
