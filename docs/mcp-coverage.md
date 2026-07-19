@@ -1502,6 +1502,18 @@ round-trip both pass, without the phantom "2". Adapter appended to the existing
 rate to a target PaCO2. Brings the exposed total to **1072 calculators across 197
 modules**.
 
+## Three-hundred-first wave — the Nash-Moe grade (vertebral rotation) in lib/nash-moe-rotation-v476.js (+1)
+
+`nash-moe-rotation` (spec-v476) applies the Nash-Moe grading: given the grade, it reports the
+convex-pedicle-position description. `grade` is an enum (`kind: 'enum'`, values 0-4) — the single input the
+renderer exposes. The example sets grade 2; its expected text carries no numeric facts beyond the word-only
+description, so it flows through the default `makeToArgs` with no custom toArgs. New adapter module registered
+in `mcp/catalog.js`; its golden probe ("nash moe vertebral rotation grade") is promoted now that the tile is in
+the MCP-exposed registry. Brings the exposed total to **1264 calculators across 380 modules**.
+
+### lib/nash-moe-rotation-v476.js
+- `nash-moe-rotation`
+
 ## Three-hundredth wave — the Glogau classification (photoaging) in lib/glogau-photoaging-v475.js (+1)
 
 `glogau-photoaging` (spec-v475) applies the Glogau classification: given the type, it reports the
@@ -5623,6 +5635,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/glogau-photoaging-v475.js
 - `glogau-photoaging`
+
+### lib/nash-moe-rotation-v476.js
+- `nash-moe-rotation`
 
 ### lib/tb-testing.js
 - `tb-testing`

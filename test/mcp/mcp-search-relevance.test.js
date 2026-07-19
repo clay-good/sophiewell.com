@@ -509,6 +509,7 @@ const PROBES = [
   ['todani choledochal cyst classification', ['todani-choledochal']],
   ['rastelli complete avsd classification', ['rastelli-avsd']],
   ['glogau photoaging classification', ['glogau-photoaging']],
+  ['nash moe vertebral rotation grade', ['nash-moe-rotation']],
 ];
 
 test(`every golden probe routes an acceptable tile into the top ${TOP_N}`, () => {

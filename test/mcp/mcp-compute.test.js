@@ -4133,6 +4133,15 @@ test('lib/glogau-photoaging-v475.js worked calls', () => {
   assert.match(ok('glogau-photoaging', { 'glogau-type': 'IV' }).band, /"only wrinkles"/);
 });
 
+test('lib/nash-moe-rotation-v476.js worked calls', () => {
+  // Grade 2 (the META example): middle third.
+  const two = ok('nash-moe-rotation', { 'nash-moe-grade': '2' });
+  assert.equal(two.grade, '2');
+  assert.match(two.band, /middle third of the vertebral body/);
+  // Grade 4: past the midline.
+  assert.match(ok('nash-moe-rotation', { 'nash-moe-grade': '4' }).band, /migrated past the midline/);
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];
