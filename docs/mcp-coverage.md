@@ -1502,6 +1502,18 @@ round-trip both pass, without the phantom "2". Adapter appended to the existing
 rate to a target PaCO2. Brings the exposed total to **1072 calculators across 197
 modules**.
 
+## Two-hundred-eighty-eighth wave — the Waldenstrom staging (Legg-Calve-Perthes) in lib/waldenstrom-perthes-v463.js (+1)
+
+`waldenstrom-perthes` (spec-v463) applies the Waldenstrom radiographic staging: given the stage, it reports the
+temporal appearance description. `stage` is an enum (`kind: 'enum'`, values I/II/III/IV) — the single input the
+renderer exposes. The example sets stage II; its expected text carries no numeric facts (the description is
+word-only), so it flows through the default `makeToArgs` with no custom toArgs. New adapter module registered
+in `mcp/catalog.js`; its golden probe ("waldenstrom perthes radiographic staging") is promoted now that the
+tile is in the MCP-exposed registry. Brings the exposed total to **1251 calculators across 367 modules**.
+
+### lib/waldenstrom-perthes-v463.js
+- `waldenstrom-perthes`
+
 ## Two-hundred-eighty-seventh wave — the GMFCS level (cerebral palsy gross motor function) in lib/gmfcs-v462.js (+1)
 
 `gmfcs` (spec-v462) applies the Gross Motor Function Classification System: given the level, it reports the
@@ -5424,6 +5436,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/gmfcs-v462.js
 - `gmfcs`
+
+### lib/waldenstrom-perthes-v463.js
+- `waldenstrom-perthes`
 
 ### lib/tb-testing.js
 - `tb-testing`

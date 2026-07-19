@@ -4016,6 +4016,15 @@ test('lib/gmfcs-v462.js worked calls', () => {
   assert.match(ok('gmfcs', { 'gmfcs-level': 'V' }).band, /transported in a manual wheelchair/);
 });
 
+test('lib/waldenstrom-perthes-v463.js worked calls', () => {
+  // Stage II (the META example): fragmentation.
+  const two = ok('waldenstrom-perthes', { 'wp-stage': 'II' });
+  assert.equal(two.stage, 'II');
+  assert.match(two.band, /fragmentation/);
+  // Stage IV: healed (remodeling).
+  assert.match(ok('waldenstrom-perthes', { 'wp-stage': 'IV' }).band, /healed \(remodeling\)/);
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];
