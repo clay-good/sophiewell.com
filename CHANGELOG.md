@@ -6,6 +6,20 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v470 — Larsen grade (rheumatoid arthritis radiographs) tile, 1320 → 1321)
+
+- New `larsen-ra` tile (group G): the Larsen (Larsen-Dale-Eek) radiographic grading of joint damage in
+  rheumatoid arthritis, by erosion and joint-space change (grades 0-5); previously absent. The clinician picks
+  the grade and the tile reports its description. **0:** normal. **1:** slight (swelling, osteoporosis, slight
+  narrowing). **2:** definite early (erosion and narrowing). **3:** medium destructive (marked erosions). **4:**
+  severe destructive (gross deformity). **5:** mutilating (articular surfaces lost). A grade, not a diagnosis, a
+  treatment decision, or a prognosis ([spec-v11] §5.3); the management decision stays with the rheumatology
+  team. Companions the Steinbrocker functional-class tile. Grades transcribed (spec-v97) from Larsen, Dale &
+  Eek 1977 (Acta Radiol Diagn). No citation-staleness row (the citation carries no guideline-issuer acronym).
+  New `lib/larsen-ra-v470.js` + `views/group-v470.js` (RV470); +1 META entry, +1 UTILITIES row, a synonym entry
+  (v190 → v191), 6 unit tests + fuzz, corpus rebuilt to 1321. See [docs/spec-v470.md](docs/spec-v470.md). The
+  MCP adapter follows in the next wave.
+
 ### Added (spec-v469 — Steinbrocker functional class (rheumatoid arthritis) tile, 1319 → 1320)
 
 - New `steinbrocker-ra` tile (group G): the Steinbrocker functional classification of rheumatoid arthritis, by
