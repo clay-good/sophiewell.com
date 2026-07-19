@@ -488,6 +488,7 @@ const PROBES = [
   ['sade tympanic membrane retraction grade', ['sade-retraction']],
   ['brooker heterotopic ossification classification', ['brooker']],
   ['bado monteggia fracture classification', ['bado']],
+  ['nunley vertullo midfoot sprain classification', ['nunley-vertullo']],
 ];
 
 test(`every golden probe routes an acceptable tile into the top ${TOP_N}`, () => {

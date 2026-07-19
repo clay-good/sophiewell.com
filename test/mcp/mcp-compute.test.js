@@ -3944,6 +3944,15 @@ test('lib/bado-v454.js worked calls', () => {
   assert.match(ok('bado', { 'bado-type': 'III' }).band, /ulnar metaphyseal fracture/);
 });
 
+test('lib/nunley-vertullo-v455.js worked calls', () => {
+  // Stage II (the META example): 1 to 5 mm diastasis.
+  const two = ok('nunley-vertullo', { 'nunley-stage': 'II' });
+  assert.equal(two.stage, 'II');
+  assert.match(two.band, /1 to 5 mm of diastasis/);
+  // Stage III: > 5 mm with arch-height loss.
+  assert.match(ok('nunley-vertullo', { 'nunley-stage': 'III' }).band, /more than 5 mm of diastasis/);
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];

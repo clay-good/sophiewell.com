@@ -1502,6 +1502,18 @@ round-trip both pass, without the phantom "2". Adapter appended to the existing
 rate to a target PaCO2. Brings the exposed total to **1072 calculators across 197
 modules**.
 
+## Two-hundred-eightieth wave — the Nunley-Vertullo classification (midfoot sprain) in lib/nunley-vertullo-v455.js (+1)
+
+`nunley-vertullo` (spec-v455) applies the Nunley-Vertullo classification: given the stage, it reports the
+weightbearing-radiograph description. `stage` is an enum (`kind: 'enum'`, values I/II/III) — the single input
+the renderer exposes. The example sets stage II; its expected text carries the "1 to 5 mm" diastasis fact, so
+it flows through the default `makeToArgs` with no custom toArgs. New adapter module registered in
+`mcp/catalog.js`; its golden probe ("nunley vertullo midfoot sprain classification") is promoted now that the
+tile is in the MCP-exposed registry. Brings the exposed total to **1243 calculators across 359 modules**.
+
+### lib/nunley-vertullo-v455.js
+- `nunley-vertullo`
+
 ## Two-hundred-seventy-ninth wave — the Bado classification (Monteggia fracture) in lib/bado-v454.js (+1)
 
 `bado` (spec-v454) applies the Bado classification: given the fracture type, it reports the dislocation /
@@ -5303,6 +5315,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/bado-v454.js
 - `bado`
+
+### lib/nunley-vertullo-v455.js
+- `nunley-vertullo`
 
 ### lib/tb-testing.js
 - `tb-testing`
