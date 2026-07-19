@@ -4061,6 +4061,15 @@ test('lib/bromage-scale-v467.js worked calls', () => {
   assert.match(ok('bromage-scale', { 'bromage-grade': 'IV' }).band, /complete: unable to move the legs or feet/);
 });
 
+test('lib/brouet-cryoglobulinemia-v468.js worked calls', () => {
+  // Type II (the META example): mixed, monoclonal + polyclonal, HCV.
+  const two = ok('brouet-cryoglobulinemia', { 'brouet-type': 'II' });
+  assert.equal(two.type, 'II');
+  assert.match(two.band, /hepatitis C/);
+  // Type I: monoclonal only.
+  assert.match(ok('brouet-cryoglobulinemia', { 'brouet-type': 'I' }).band, /a single monoclonal immunoglobulin/);
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];
