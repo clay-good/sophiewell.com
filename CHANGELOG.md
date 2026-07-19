@@ -6,6 +6,20 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v463 — Waldenstrom staging (Legg-Calve-Perthes) tile, 1313 → 1314)
+
+- New `waldenstrom-perthes` tile (group G): the Waldenstrom radiographic staging of active Legg-Calve-Perthes
+  disease, by the temporal appearance of the femoral epiphysis (stages I/II/III/IV); previously absent. The
+  clinician picks the stage and the tile reports its description. **I:** initial (sclerosis). **II:**
+  fragmentation. **III:** reossification (healing). **IV:** healed (remodeling). A stage, not a diagnosis, a
+  treatment decision, or a prognosis ([spec-v11] §5.3); the management decision stays with the orthopedic team.
+  Completes the Perthes staging set alongside Catterall (extent) and Stulberg (outcome). Stages transcribed
+  (spec-v97) from Waldenstrom 1938 (J Bone Joint Surg); the modern four-stage synthesis (name rendered ASCII).
+  No citation-staleness row (the citation carries no guideline-issuer acronym). New
+  `lib/waldenstrom-perthes-v463.js` + `views/group-v463.js` (RV463); +1 META entry, +1 UTILITIES row, a synonym
+  entry (v183 → v184), 6 unit tests + fuzz, corpus rebuilt to 1314. See
+  [docs/spec-v463.md](docs/spec-v463.md). The MCP adapter follows in the next wave.
+
 ### Added (spec-v462 — GMFCS level (cerebral palsy gross motor function) tile, 1312 → 1313)
 
 - New `gmfcs` tile (group G): the Gross Motor Function Classification System (GMFCS) for cerebral palsy, by
