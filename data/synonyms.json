@@ -1,5 +1,5 @@
 {
-  "version": "v152-2026-07-18",
+  "version": "v153-2026-07-18",
   "note": "spec-v7 section 3.2: hand-curated patient-phrasing -> tile id table. Each entry maps patient-mental-model phrases (and, from the v8/v9 plain-language-search batches, clinical abbreviations, eponym aliases, and canonical-intent phrases) to a single existing tile. Audience is the primary audience the entry serves; the matcher deprioritizes (does not hide) entries when the user has selected a different chip. Every phrase is lowercase; every tile id is an existing catalog tile (guarded by test/unit/synonyms-catalog.test.js). Adding a new phrase is a one-line PR.",
   "entries": [
     { "phrases": ["denied", "denial letter", "they denied it", "insurance said no", "appeal", "write an appeal", "appeal my claim", "appeal letter", "appeal a denial"],
@@ -448,6 +448,8 @@
     { "phrases": ["sarnat", "sarnat staging", "sarnat stage", "neonatal hie stage", "hie staging", "hypoxic ischemic encephalopathy stage", "neonatal encephalopathy stage", "sarnat score"],
       "tile": "sarnat-hie", "audience": "clinicians" },
     { "phrases": ["papile", "papile grade", "ivh grade", "intraventricular hemorrhage grade", "germinal matrix hemorrhage grade", "ivh grading", "neonatal ivh grade", "papile classification"],
-      "tile": "papile-ivh", "audience": "clinicians" }
+      "tile": "papile-ivh", "audience": "clinicians" },
+    { "phrases": ["bell staging", "modified bell", "nec stage", "necrotizing enterocolitis stage", "bell nec", "nec staging", "bell criteria", "necrotizing enterocolitis staging"],
+      "tile": "bell-nec", "audience": "clinicians" }
   ]
 }

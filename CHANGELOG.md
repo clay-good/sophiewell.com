@@ -6,6 +6,22 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v431 — Modified Bell staging (NEC) tile, 1282 → 1283)
+
+- New `bell-nec` tile (group G): the modified Bell staging of necrotizing enterocolitis (NEC), staging a
+  newborn by systemic, intestinal, and radiographic findings (stages IA/IB/IIA/IIB/IIIA/IIIB); previously
+  absent. The clinician picks the stage and the tile reports its hallmark findings. **IA/IB:** suspected (IB
+  adds grossly bloody stool). **IIA:** proven, mildly ill (pneumatosis intestinalis). **IIB:** proven,
+  moderately ill (portal venous gas, acidosis, thrombocytopenia). **IIIA:** advanced, severely ill, bowel
+  intact (peritonitis, ascites). **IIIB:** advanced, perforated (pneumoperitoneum). A stage, not a diagnosis,
+  a treatment decision (medical management vs surgery), or a prognosis ([spec-v11] §5.3); the management
+  decision stays with the neonatology / pediatric-surgery team. Stages transcribed (spec-v97) from Walsh &
+  Kliegman 1986 (Pediatr Clin North Am); no citation-staleness row (the citation carries no guideline-issuer
+  acronym). Completes the neonatology cluster (sarnat-hie, papile-ivh). New `lib/bell-nec-v431.js` +
+  `views/group-v431.js` (RV431); +1 META entry, +1 UTILITIES row, a synonym entry (v152 → v153), 7 unit tests
+  + fuzz, corpus rebuilt to 1283. See [docs/spec-v431.md](docs/spec-v431.md). The MCP adapter follows in a
+  later wave.
+
 ### Added (spec-v430 — Papile grade (germinal matrix / IVH) tile, 1281 → 1282)
 
 - New `papile-ivh` tile (group G): the Papile grading of germinal matrix / intraventricular hemorrhage (IVH)

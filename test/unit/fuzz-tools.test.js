@@ -407,6 +407,7 @@ import * as vaughanWilliamsV427 from '../../lib/vaughan-williams-v427.js';
 import * as mrcPowerV428 from '../../lib/mrc-power-v428.js';
 import * as sarnatHieV429 from '../../lib/sarnat-hie-v429.js';
 import * as papileIvhV430 from '../../lib/papile-ivh-v430.js';
+import * as bellNecV431 from '../../lib/bell-nec-v431.js';
 import * as tbTesting from '../../lib/tb-testing.js';
 
 const MODULES = {
@@ -759,6 +760,7 @@ const MODULES = {
   'mrc-power-v428.js': mrcPowerV428,
   'sarnat-hie-v429.js': sarnatHieV429,
   'papile-ivh-v430.js': papileIvhV430,
+  'bell-nec-v431.js': bellNecV431,
   'tb-testing.js': tbTesting,
 };
 
