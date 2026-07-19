@@ -435,6 +435,7 @@ import * as leddyPackerV456 from '../../lib/leddy-packer-v456.js';
 import * as stulbergV457 from '../../lib/stulberg-v457.js';
 import * as boydGriffinV458 from '../../lib/boyd-griffin-v458.js';
 import * as thompsonEpsteinV459 from '../../lib/thompson-epstein-v459.js';
+import * as ennekingV460 from '../../lib/enneking-v460.js';
 import * as tbTesting from '../../lib/tb-testing.js';
 
 const MODULES = {
@@ -815,6 +816,7 @@ const MODULES = {
   'stulberg-v457.js': stulbergV457,
   'boyd-griffin-v458.js': boydGriffinV458,
   'thompson-epstein-v459.js': thompsonEpsteinV459,
+  'enneking-v460.js': ennekingV460,
   'tb-testing.js': tbTesting,
 };
 

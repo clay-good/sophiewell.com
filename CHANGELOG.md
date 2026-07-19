@@ -6,6 +6,19 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v460 — Enneking surgical staging (musculoskeletal sarcoma) tile, 1310 → 1311)
+
+- New `enneking` tile (group G): the Enneking (MSTS) surgical staging of malignant musculoskeletal tumors,
+  combining histologic grade (G), compartment (T), and metastasis (M) into stages IA/IB/IIA/IIB/III; previously
+  absent. The clinician picks the stage and the tile reports its combination. **IA:** G1 T1 M0. **IB:** G1 T2
+  M0. **IIA:** G2 T1 M0. **IIB:** G2 T2 M0. **III:** any M1. A stage, not a diagnosis, a treatment decision, or
+  a prognosis ([spec-v11] §5.3); the management decision stays with the orthopedic-oncology team. Stages
+  transcribed (spec-v97) from Enneking 1980 (Clin Orthop Relat Res); the malignant surgical staging (the
+  separate benign latent/active/aggressive staging is out of scope). No citation-staleness row (the citation
+  carries no guideline-issuer acronym). New `lib/enneking-v460.js` + `views/group-v460.js` (RV460); +1 META
+  entry, +1 UTILITIES row, a synonym entry (v180 → v181), 7 unit tests + fuzz, corpus rebuilt to 1311. See
+  [docs/spec-v460.md](docs/spec-v460.md). The MCP adapter follows in the next wave.
+
 ### Added (spec-v459 — Thompson-Epstein classification (posterior hip dislocation) tile, 1309 → 1310)
 
 - New `thompson-epstein` tile (group G): the Thompson-Epstein classification of posterior hip dislocations, by
