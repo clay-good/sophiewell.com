@@ -6,6 +6,19 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v472 — Yerdel grade (portal vein thrombosis) tile, 1322 → 1323)
+
+- New `yerdel-pvt` tile (group G): the Yerdel classification of portal vein thrombosis, by the extent of
+  thrombus in the portal vein and superior mesenteric vein (grades 1-4); previously absent. The clinician picks
+  the grade and the tile reports its description. **1:** partial PVT, 50% or less of the lumen. **2:** more than
+  50% occlusion (including total) of the portal vein. **3:** complete portal vein and proximal SMV thrombosis,
+  distal SMV patent. **4:** complete portal vein and entire SMV thrombosis. A grade, not a diagnosis, a
+  treatment decision, or a prognosis ([spec-v11] §5.3); the management decision stays with the hepatology /
+  transplant team. Grades transcribed (spec-v97) from Yerdel 2000 (Transplantation). No citation-staleness row
+  (the citation carries no guideline-issuer acronym). New `lib/yerdel-pvt-v472.js` + `views/group-v472.js`
+  (RV472); +1 META entry, +1 UTILITIES row, a synonym entry (v192 → v193), 6 unit tests + fuzz, corpus rebuilt
+  to 1323. See [docs/spec-v472.md](docs/spec-v472.md). The MCP adapter follows in the next wave.
+
 ### Added (spec-v471 — Gass staging (macular hole) tile, 1321 → 1322)
 
 - New `gass-macular-hole` tile (group G): the Gass classification of the stages of development of an idiopathic
