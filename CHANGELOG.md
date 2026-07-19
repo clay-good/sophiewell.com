@@ -6,6 +6,21 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v457 — Stulberg classification (Perthes residual deformity) tile, 1307 → 1308)
+
+- New `stulberg` tile (group G): the Stulberg classification of the residual femoral head after
+  Legg-Calve-Perthes disease, by sphericity and joint congruency at skeletal maturity (classes I/II/III/IV/V);
+  previously absent. The clinician picks the class and the tile reports its description. **I:** normal spherical
+  head. **II:** spherical but with coxa magna, a short neck, or an abnormal acetabulum. **III:** non-spherical
+  (ovoid/mushroom/umbrella) but not flat. **IV:** flat head, congruent. **V:** flat head, incongruent. A class,
+  not a diagnosis, a treatment decision, or a prognosis ([spec-v11] §5.3); the management decision stays with
+  the orthopedic team. Classes transcribed (spec-v97) from Stulberg 1981 (J Bone Joint Surg Am); this grades
+  the healed hip (the active-disease Catterall/Herring/Waldenstrom classifications are separate). No
+  citation-staleness row (the citation carries no guideline-issuer acronym). New `lib/stulberg-v457.js` +
+  `views/group-v457.js` (RV457); +1 META entry, +1 UTILITIES row, a synonym entry (v177 → v178), 7 unit tests
+  + fuzz, corpus rebuilt to 1308. See [docs/spec-v457.md](docs/spec-v457.md). The MCP adapter follows in the
+  next wave.
+
 ### Added (spec-v456 — Leddy-Packer classification (jersey finger) tile, 1306 → 1307)
 
 - New `leddy-packer` tile (group G): the Leddy-Packer classification of flexor digitorum profundus (FDP)
