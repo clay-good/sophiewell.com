@@ -6,6 +6,21 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v445 — Revised Atlanta severity (acute pancreatitis) tile, 1296 → 1297)
+
+- New `atlanta-pancreatitis` tile (group G): the Revised Atlanta classification of acute pancreatitis severity,
+  by the presence and duration of organ failure and of local/systemic complications (mild / moderately severe
+  / severe); previously absent (the catalog had Ranson/BISAP prediction and the modified Marshall organ-failure
+  score, but not the severity classification itself). The clinician picks the severity and the tile reports its
+  definition. **Mild:** no organ failure, no complications. **Moderately severe:** transient organ failure
+  (< 48 h) and/or local or systemic complications. **Severe:** persistent organ failure (> 48 h). A severity
+  category, not a diagnosis, a treatment decision, or a prognosis ([spec-v11] §5.3); the assessment stays with
+  the treating team. Categories transcribed (spec-v97) from Banks 2013 (Gut); no citation-staleness row (the
+  citation carries no guideline-issuer acronym). New `lib/atlanta-pancreatitis-v445.js` +
+  `views/group-v445.js` (RV445); +1 META entry, +1 UTILITIES row, a synonym entry (v166 → v167), 5 unit tests
+  + fuzz, corpus rebuilt to 1297. See [docs/spec-v445.md](docs/spec-v445.md). The MCP adapter follows in a
+  later wave.
+
 ### Added (spec-v444 — McCormick grade (spinal cord function) tile, 1295 → 1296)
 
 - New `mccormick` tile (group G): the McCormick neurological grading scale for spinal-cord (intramedullary)

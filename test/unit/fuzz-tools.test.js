@@ -421,6 +421,7 @@ import * as bordenDavfV441 from '../../lib/borden-davf-v441.js';
 import * as zabramskiV442 from '../../lib/zabramski-v442.js';
 import * as kadishV443 from '../../lib/kadish-v443.js';
 import * as mccormickV444 from '../../lib/mccormick-v444.js';
+import * as atlantaPancreatitisV445 from '../../lib/atlanta-pancreatitis-v445.js';
 import * as tbTesting from '../../lib/tb-testing.js';
 
 const MODULES = {
@@ -787,6 +788,7 @@ const MODULES = {
   'zabramski-v442.js': zabramskiV442,
   'kadish-v443.js': kadishV443,
   'mccormick-v444.js': mccormickV444,
+  'atlanta-pancreatitis-v445.js': atlantaPancreatitisV445,
   'tb-testing.js': tbTesting,
 };
 
