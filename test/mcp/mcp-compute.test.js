@@ -4223,6 +4223,15 @@ test('lib/dejour-trochlea-v485.js worked calls', () => {
   assert.match(ok('dejour-trochlea', { 'dejour-type': 'A' }).band, /shallow but still symmetric/);
 });
 
+test('lib/samilson-prieto-v486.js worked calls', () => {
+  // Moderate (the META example): 3-7 mm.
+  const mod = ok('samilson-prieto', { 'samilson-grade': 'moderate' });
+  assert.equal(mod.grade, 'Moderate');
+  assert.match(mod.band, /3 to 7 mm/);
+  // Severe: > 7 mm.
+  assert.match(ok('samilson-prieto', { 'samilson-grade': 'severe' }).band, /greater than 7 mm/);
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];

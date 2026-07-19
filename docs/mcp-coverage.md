@@ -1502,6 +1502,18 @@ round-trip both pass, without the phantom "2". Adapter appended to the existing
 rate to a target PaCO2. Brings the exposed total to **1072 calculators across 197
 modules**.
 
+## Three-hundred-eleventh wave — the Samilson-Prieto grade (shoulder dislocation arthropathy) in lib/samilson-prieto-v486.js (+1)
+
+`samilson-prieto` (spec-v486) applies the Samilson-Prieto classification: given the grade, it reports the
+osteophyte-size description. `grade` is an enum (`kind: 'enum'`, values mild/moderate/severe) — the single input
+the renderer exposes. The example sets moderate; its expected text carries the "3 to 7 mm" fact, so it flows
+through the default `makeToArgs` with no custom toArgs. New adapter module registered in `mcp/catalog.js`; its
+golden probe ("samilson prieto shoulder dislocation arthropathy") is promoted now that the tile is in the
+MCP-exposed registry. Brings the exposed total to **1274 calculators across 390 modules**.
+
+### lib/samilson-prieto-v486.js
+- `samilson-prieto`
+
 ## Three-hundred-tenth wave — the Dejour classification (trochlear dysplasia) in lib/dejour-trochlea-v485.js (+1)
 
 `dejour-trochlea` (spec-v485) applies the Dejour classification: given the type, it reports the
@@ -5776,6 +5788,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/dejour-trochlea-v485.js
 - `dejour-trochlea`
+
+### lib/samilson-prieto-v486.js
+- `samilson-prieto`
 
 ### lib/tb-testing.js
 - `tb-testing`

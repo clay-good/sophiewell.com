@@ -519,6 +519,7 @@ const PROBES = [
   ['vancouver periprosthetic femoral fracture classification', ['vancouver-periprosthetic']],
   ['barrack femoral cement mantle grade', ['barrack-cement']],
   ['dejour trochlear dysplasia classification', ['dejour-trochlea']],
+  ['samilson prieto shoulder dislocation arthropathy', ['samilson-prieto']],
 ];
 
 test(`every golden probe routes an acceptable tile into the top ${TOP_N}`, () => {
