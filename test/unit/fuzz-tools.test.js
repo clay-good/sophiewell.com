@@ -441,6 +441,7 @@ import * as gmfcsV462 from '../../lib/gmfcs-v462.js';
 import * as waldenstromPerthesV463 from '../../lib/waldenstrom-perthes-v463.js';
 import * as crawfordTaaaV464 from '../../lib/crawford-taaa-v464.js';
 import * as stameyIncontinenceV465 from '../../lib/stamey-incontinence-v465.js';
+import * as letournelAcetabulumV466 from '../../lib/letournel-acetabulum-v466.js';
 import * as tbTesting from '../../lib/tb-testing.js';
 
 const MODULES = {
@@ -827,6 +828,7 @@ const MODULES = {
   'waldenstrom-perthes-v463.js': waldenstromPerthesV463,
   'crawford-taaa-v464.js': crawfordTaaaV464,
   'stamey-incontinence-v465.js': stameyIncontinenceV465,
+  'letournel-acetabulum-v466.js': letournelAcetabulumV466,
   'tb-testing.js': tbTesting,
 };
 

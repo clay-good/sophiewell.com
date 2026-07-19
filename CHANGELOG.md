@@ -6,6 +6,20 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v466 — Judet-Letournel classification (acetabular fracture) tile, 1316 → 1317)
+
+- New `letournel-acetabulum` tile (group G): the Judet-Letournel classification of acetabular fractures, five
+  elementary and five associated patterns; previously absent. The clinician picks the pattern and the tile
+  reports whether it is elementary or associated and its description. **Elementary:** posterior wall, posterior
+  column, anterior wall, anterior column, transverse. **Associated:** posterior column + posterior wall,
+  transverse + posterior wall, T-shaped, anterior column + posterior hemitransverse, both-column. A pattern,
+  not a diagnosis, a treatment decision, or a prognosis ([spec-v11] §5.3); the management decision stays with
+  the orthopedic-trauma team. Fills the acetabular gap alongside Pipkin and Thompson-Epstein. Patterns
+  transcribed (spec-v97) from Judet & Letournel 1964 (J Bone Joint Surg Am). No citation-staleness row (the
+  citation carries no guideline-issuer acronym). New `lib/letournel-acetabulum-v466.js` + `views/group-v466.js`
+  (RV466); +1 META entry, +1 UTILITIES row, a synonym entry (v186 → v187), 6 unit tests + fuzz, corpus rebuilt
+  to 1317. See [docs/spec-v466.md](docs/spec-v466.md). The MCP adapter follows in the next wave.
+
 ### Added (spec-v465 — Stamey grade (stress urinary incontinence) tile, 1315 → 1316)
 
 - New `stamey-incontinence` tile (group G): the Stamey grading of stress urinary incontinence, by the degree of
