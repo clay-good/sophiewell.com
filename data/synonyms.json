@@ -1,5 +1,5 @@
 {
-  "version": "v204-2026-07-19",
+  "version": "v205-2026-07-19",
   "note": "spec-v7 section 3.2: hand-curated patient-phrasing -> tile id table. Each entry maps patient-mental-model phrases (and, from the v8/v9 plain-language-search batches, clinical abbreviations, eponym aliases, and canonical-intent phrases) to a single existing tile. Audience is the primary audience the entry serves; the matcher deprioritizes (does not hide) entries when the user has selected a different chip. Every phrase is lowercase; every tile id is an existing catalog tile (guarded by test/unit/synonyms-catalog.test.js). Adding a new phrase is a one-line PR.",
   "entries": [
     { "phrases": ["denied", "denial letter", "they denied it", "insurance said no", "appeal", "write an appeal", "appeal my claim", "appeal letter", "appeal a denial"],
@@ -552,6 +552,8 @@
     { "phrases": ["russell taylor", "russell taylor classification", "subtrochanteric fracture type", "subtrochanteric femur fracture classification", "russell taylor type", "piriformis fossa fracture", "subtroch nail classification", "im nail subtrochanteric"],
       "tile": "russell-taylor-subtroch", "audience": "clinicians" },
     { "phrases": ["vancouver", "vancouver classification", "periprosthetic femoral fracture", "periprosthetic fracture classification", "fracture around hip stem", "vancouver type", "periprosthetic hip fracture", "femoral fracture after hip replacement"],
-      "tile": "vancouver-periprosthetic", "audience": "clinicians" }
+      "tile": "vancouver-periprosthetic", "audience": "clinicians" },
+    { "phrases": ["barrack", "barrack grade", "cement mantle grade", "femoral cement mantle", "cement mantle quality", "barrack cement", "cementing grade hip", "cement bone interface grade"],
+      "tile": "barrack-cement", "audience": "clinicians" }
   ]
 }

@@ -459,6 +459,7 @@ import * as ahlbackKneeOaV480 from '../../lib/ahlback-knee-oa-v480.js';
 import * as wiltseSpondylolisthesisV481 from '../../lib/wiltse-spondylolisthesis-v481.js';
 import * as russellTaylorSubtrochV482 from '../../lib/russell-taylor-subtroch-v482.js';
 import * as vancouverPeriprostheticV483 from '../../lib/vancouver-periprosthetic-v483.js';
+import * as barrackCementV484 from '../../lib/barrack-cement-v484.js';
 import * as tbTesting from '../../lib/tb-testing.js';
 
 const MODULES = {
@@ -863,6 +864,7 @@ const MODULES = {
   'wiltse-spondylolisthesis-v481.js': wiltseSpondylolisthesisV481,
   'russell-taylor-subtroch-v482.js': russellTaylorSubtrochV482,
   'vancouver-periprosthetic-v483.js': vancouverPeriprostheticV483,
+  'barrack-cement-v484.js': barrackCementV484,
   'tb-testing.js': tbTesting,
 };
 

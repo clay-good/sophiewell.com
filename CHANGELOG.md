@@ -6,6 +6,20 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v484 — Barrack grade (femoral cement mantle) tile, 1334 → 1335)
+
+- New `barrack-cement` tile (group G): the Barrack classification of the cement mantle around a cemented
+  femoral stem, by the quality of cementing on the immediate postoperative radiograph (grades A-D); previously
+  absent. The clinician picks the grade and the tile reports its description. **A:** complete filling
+  ("white-out"). **B:** slight radiolucency, nearly complete filling. **C:** radiolucency over 50-99% of the
+  interface, or a mantle defect. **D:** radiolucency over 100%, or an unfilled canal. A grade, not a diagnosis,
+  a treatment decision, or a prognosis ([spec-v11] §5.3); the management decision stays with the orthopedic
+  team. Grades transcribed (spec-v97) from Barrack 1992 (J Bone Joint Surg Br). No citation-staleness row (a
+  named-author journal article, no guideline-issuer acronym). New `lib/barrack-cement-v484.js` +
+  `views/group-v484.js` (RV484); +1 META entry, +1 UTILITIES row, a synonym entry (v204 → v205), 6 unit tests +
+  fuzz, corpus rebuilt to 1335. See [docs/spec-v484.md](docs/spec-v484.md). The MCP adapter follows in the next
+  wave.
+
 ### Added (spec-v483 — Vancouver classification (periprosthetic femoral fracture) tile, 1333 → 1334)
 
 - New `vancouver-periprosthetic` tile (group G): the Vancouver classification of periprosthetic femoral
