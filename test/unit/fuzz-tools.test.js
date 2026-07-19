@@ -404,6 +404,7 @@ import * as bethesdaThyroidV424 from '../../lib/bethesda-thyroid-v424.js';
 import * as vurGradeV425 from '../../lib/vur-grade-v425.js';
 import * as gellCoombsV426 from '../../lib/gell-coombs-v426.js';
 import * as vaughanWilliamsV427 from '../../lib/vaughan-williams-v427.js';
+import * as mrcPowerV428 from '../../lib/mrc-power-v428.js';
 import * as tbTesting from '../../lib/tb-testing.js';
 
 const MODULES = {
@@ -753,6 +754,7 @@ const MODULES = {
   'vur-grade-v425.js': vurGradeV425,
   'gell-coombs-v426.js': gellCoombsV426,
   'vaughan-williams-v427.js': vaughanWilliamsV427,
+  'mrc-power-v428.js': mrcPowerV428,
   'tb-testing.js': tbTesting,
 };
 

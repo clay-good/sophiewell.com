@@ -6,6 +6,20 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v428 — MRC muscle-power grade tile, 1279 → 1280)
+
+- New `mrc-power` tile (group G): the Medical Research Council (MRC) muscle-power grade, the standard 0-5
+  bedside grading of the strength of a single muscle or movement; previously only the MRC *sum* score (0-60)
+  was in the catalog. The clinician picks the grade and the tile reports its examination description. **0:** no
+  contraction. **1:** a flicker or trace. **2:** active movement with gravity eliminated. **3:** against
+  gravity. **4:** against gravity and resistance. **5:** normal power. A grade, not a diagnosis, a treatment
+  decision, or a prognosis ([spec-v11] §5.3); the clinical decision stays with the treating team. It is the
+  unit the MRC sum score aggregates. Grades transcribed (spec-v97) from the MRC 1976 memorandum / Compston 2010
+  (Brain); no citation-staleness row (the citation carries no guideline-issuer acronym). New
+  `lib/mrc-power-v428.js` + `views/group-v428.js` (RV428); +1 META entry, +1 UTILITIES row, a synonym entry
+  (v149 → v150), 7 unit tests + fuzz, corpus rebuilt to 1280. See [docs/spec-v428.md](docs/spec-v428.md). The
+  MCP adapter follows in a later wave.
+
 ### Added (spec-v427 — Vaughan Williams antiarrhythmic classification tile, 1278 → 1279)
 
 - New `vaughan-williams` tile (group G): the Vaughan Williams classification of antiarrhythmic drug actions,
