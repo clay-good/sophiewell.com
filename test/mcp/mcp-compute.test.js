@@ -3872,6 +3872,15 @@ test('lib/atlanta-pancreatitis-v445.js worked calls', () => {
   assert.match(ok('atlanta-pancreatitis', { 'atlanta-sev': 'severe' }).band, /persistent organ failure/);
 });
 
+test('lib/rop-stage-v446.js worked calls', () => {
+  // Stage 3 (the META example): ridge with proliferation.
+  const three = ok('rop-stage', { 'rop-stage': '3' });
+  assert.equal(three.stage, '3');
+  assert.match(three.band, /extraretinal fibrovascular proliferation/);
+  // Stage 5: total retinal detachment.
+  assert.match(ok('rop-stage', { 'rop-stage': '5' }).band, /total retinal detachment/);
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];

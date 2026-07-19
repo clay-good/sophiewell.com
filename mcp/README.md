@@ -78,7 +78,7 @@ find_calculator { "query": "stroke risk afib" }
        candidates: [ { id: "chads", name: "CHA2DS2-VASc", why: "synonym", ... }, ... ] }
 
 list_calculators { "specialty": "hepatology" }
-  -> { coverage: "1234 of 1109 catalog tiles exposed ...", calculators: [ { id: "meld-xi", ... }, ... ] }
+  -> { coverage: "1235 of 1109 catalog tiles exposed ...", calculators: [ { id: "meld-xi", ... }, ... ] }
 
 describe_calculator { "id": "meld-xi" }
   -> { inputSchema: { ... mx-bili, mx-creat ... }, citation: "Heuman DM ... Liver Transpl 2007", ... }
@@ -482,8 +482,9 @@ arthropathy) in `lib/hamada-v439.js`, a two-hundred-sixty-fifth the Barrow class
 classification (dural AV fistula) in `lib/borden-davf-v441.js`, a two-hundred-sixty-seventh the Zabramski
 classification (cerebral cavernous malformation) in `lib/zabramski-v442.js`, a two-hundred-sixty-eighth
 the Kadish staging (esthesioneuroblastoma) in `lib/kadish-v443.js`, a two-hundred-sixty-ninth the
-McCormick grade (spinal cord function) in `lib/mccormick-v444.js`, and a two-hundred-seventieth the Revised
-Atlanta severity (acute pancreatitis) in `lib/atlanta-pancreatitis-v445.js`, for 1234 across 350 modules today. <!-- catalog-truth:historical (197 is the count of lib modules adapted, not a catalog tile count) -->
+McCormick grade (spinal cord function) in `lib/mccormick-v444.js`, a two-hundred-seventieth the Revised
+Atlanta severity (acute pancreatitis) in `lib/atlanta-pancreatitis-v445.js`, and a two-hundred-seventy-first
+the ROP stage (retinopathy of prematurity) in `lib/rop-stage-v446.js`, for 1235 across 351 modules today. <!-- catalog-truth:historical (197 is the count of lib modules adapted, not a catalog tile count) -->
 Later waves extend it module by module against the same contract.
 
 ## Design

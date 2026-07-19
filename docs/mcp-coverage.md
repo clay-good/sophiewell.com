@@ -1502,6 +1502,18 @@ round-trip both pass, without the phantom "2". Adapter appended to the existing
 rate to a target PaCO2. Brings the exposed total to **1072 calculators across 197
 modules**.
 
+## Two-hundred-seventy-first wave — the ROP stage (retinopathy of prematurity) in lib/rop-stage-v446.js (+1)
+
+`rop-stage` (spec-v446) applies the ICROP stage: given the stage, it reports the retinal description. `stage`
+is an enum (`kind: 'enum'`, values 1/2/3/4/5) — the single input the renderer exposes. The example sets stage
+3; its expected text carries no numeric facts beyond the stage label (the description is word-only), so it
+flows through the default `makeToArgs` with no custom toArgs. New adapter module registered in
+`mcp/catalog.js`; its golden probe ("retinopathy of prematurity stage") is promoted now that the tile is in
+the MCP-exposed registry. Brings the exposed total to **1235 calculators across 351 modules**.
+
+### lib/rop-stage-v446.js
+- `rop-stage`
+
 ## Two-hundred-seventieth wave — the Revised Atlanta severity (acute pancreatitis) in lib/atlanta-pancreatitis-v445.js (+1)
 
 `atlanta-pancreatitis` (spec-v445) applies the Revised Atlanta classification: given the severity, it reports
@@ -5181,6 +5193,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/atlanta-pancreatitis-v445.js
 - `atlanta-pancreatitis`
+
+### lib/rop-stage-v446.js
+- `rop-stage`
 
 ### lib/tb-testing.js
 - `tb-testing`

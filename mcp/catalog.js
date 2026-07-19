@@ -358,6 +358,7 @@ import zabramskiV442 from './adapters/zabramski-v442.js';
 import kadishV443 from './adapters/kadish-v443.js';
 import mccormickV444 from './adapters/mccormick-v444.js';
 import atlantaPancreatitisV445 from './adapters/atlanta-pancreatitis-v445.js';
+import ropStageV446 from './adapters/rop-stage-v446.js';
 import tbTesting from './adapters/tb-testing.js';
 import labInterpret from './adapters/lab-interpret.js';
 import decisionRulesV258 from './adapters/decision-rules-v258.js';
@@ -710,6 +711,7 @@ const ADAPTER_MODULES = [
   ['kadish-v443', kadishV443],
   ['mccormick-v444', mccormickV444],
   ['atlanta-pancreatitis-v445', atlantaPancreatitisV445],
+  ['rop-stage-v446', ropStageV446],
   ['tb-testing', tbTesting],
   ['lab-interpret', labInterpret],
   ['decision-rules-v258', decisionRulesV258],
