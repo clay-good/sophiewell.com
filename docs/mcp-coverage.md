@@ -1502,6 +1502,18 @@ round-trip both pass, without the phantom "2". Adapter appended to the existing
 rate to a target PaCO2. Brings the exposed total to **1072 calculators across 197
 modules**.
 
+## Two-hundred-sixty-sixth wave — the Borden classification (dural AV fistula) in lib/borden-davf-v441.js (+1)
+
+`borden-davf` (spec-v441) applies the Borden classification: given the type, it reports the venous-drainage
+description. `type` is an enum (`kind: 'enum'`, values I/II/III) — the single input the renderer exposes. The
+example sets type II; its expected text carries no numeric facts (the description is word-only), so it flows
+through the default `makeToArgs` with no custom toArgs. New adapter module registered in `mcp/catalog.js`; its
+golden probe ("borden dural av fistula") is promoted now that the tile is in the MCP-exposed registry. Brings
+the exposed total to **1230 calculators across 346 modules**.
+
+### lib/borden-davf-v441.js
+- `borden-davf`
+
 ## Two-hundred-sixty-fifth wave — the Barrow classification (carotid-cavernous fistula) in lib/barrow-ccf-v440.js (+1)
 
 `barrow-ccf` (spec-v440) applies the Barrow classification: given the type, it reports the arterial-supply
@@ -5105,6 +5117,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/barrow-ccf-v440.js
 - `barrow-ccf`
+
+### lib/borden-davf-v441.js
+- `borden-davf`
 
 ### lib/tb-testing.js
 - `tb-testing`

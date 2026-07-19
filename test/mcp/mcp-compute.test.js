@@ -3827,6 +3827,15 @@ test('lib/barrow-ccf-v440.js worked calls', () => {
   assert.match(ok('barrow-ccf', { 'barrow-type': 'D' }).band, /both the ICA and the ECA/);
 });
 
+test('lib/borden-davf-v441.js worked calls', () => {
+  // Type II (the META example): cortical venous reflux.
+  const two = ok('borden-davf', { 'borden-type': 'II' });
+  assert.equal(two.type, 'II');
+  assert.match(two.band, /retrograde flow into cortical veins/);
+  // Type III: cortical drainage only.
+  assert.match(ok('borden-davf', { 'borden-type': 'III' }).band, /cortical veins only/);
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];
