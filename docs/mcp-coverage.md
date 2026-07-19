@@ -1502,6 +1502,18 @@ round-trip both pass, without the phantom "2". Adapter appended to the existing
 rate to a target PaCO2. Brings the exposed total to **1072 calculators across 197
 modules**.
 
+## Three-hundred-thirteenth wave — the Bigliani classification (acromion morphology) in lib/bigliani-acromion-v488.js (+1)
+
+`bigliani-acromion` (spec-v488) applies the Bigliani classification: given the type, it reports the
+acromial-undersurface description. `type` is an enum (`kind: 'enum'`, values I/II/III) — the single input the
+renderer exposes. The example sets type II; its expected text carries no numeric facts (the description is
+word-only), so it flows through the default `makeToArgs` with no custom toArgs. New adapter module registered in
+`mcp/catalog.js`; its golden probe ("bigliani acromion morphology classification") is promoted now that the tile
+is in the MCP-exposed registry. Brings the exposed total to **1276 calculators across 392 modules**.
+
+### lib/bigliani-acromion-v488.js
+- `bigliani-acromion`
+
 ## Three-hundred-twelfth wave — the Rockwood classification (acromioclavicular joint injury) in lib/rockwood-ac-v487.js (+1)
 
 `rockwood-ac` (spec-v487) applies the Rockwood classification: given the type, it reports the
@@ -5806,6 +5818,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/rockwood-ac-v487.js
 - `rockwood-ac`
+
+### lib/bigliani-acromion-v488.js
+- `bigliani-acromion`
 
 ### lib/tb-testing.js
 - `tb-testing`

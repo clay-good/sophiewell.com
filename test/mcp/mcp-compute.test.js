@@ -4241,6 +4241,15 @@ test('lib/rockwood-ac-v487.js worked calls', () => {
   assert.match(ok('rockwood-ac', { 'rockwood-type': 'V' }).band, /100% to 300% of normal/);
 });
 
+test('lib/bigliani-acromion-v488.js worked calls', () => {
+  // Type II (the META example): curved.
+  const two = ok('bigliani-acromion', { 'bigliani-type': 'II' });
+  assert.equal(two.type, 'II');
+  assert.match(two.band, /curved acromion/);
+  // Type III: hooked.
+  assert.match(ok('bigliani-acromion', { 'bigliani-type': 'III' }).band, /hooked acromion/);
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];
