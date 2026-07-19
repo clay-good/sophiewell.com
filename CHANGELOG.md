@@ -6,6 +6,20 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v476 — Nash-Moe grade (vertebral rotation) tile, 1326 → 1327)
+
+- New `nash-moe-rotation` tile (group G): the Nash-Moe method of grading vertebral rotation in scoliosis, by the
+  position of the convex-side pedicle on the AP radiograph (grades 0-4); previously absent. The clinician picks
+  the grade and the tile reports its description. **0:** symmetric pedicles (no rotation). **1:** convex pedicle
+  slightly toward the midline. **2:** convex pedicle in the middle third. **3:** convex pedicle central, near
+  the midline. **4:** convex pedicle past the midline. A grade, not a diagnosis, a treatment decision, or a
+  prognosis ([spec-v11] §5.3); the management decision stays with the orthopedic / spine team. Companions the
+  Risser skeletal-maturity tile. Grades transcribed (spec-v97) from Nash & Moe 1969 (J Bone Joint Surg Am). No
+  citation-staleness row (the citation carries no guideline-issuer acronym). New `lib/nash-moe-rotation-v476.js`
+  + `views/group-v476.js` (RV476); +1 META entry, +1 UTILITIES row, a synonym entry (v196 → v197), 6 unit tests
+  + fuzz, corpus rebuilt to 1327. See [docs/spec-v476.md](docs/spec-v476.md). The MCP adapter follows in the
+  next wave.
+
 ### Added (spec-v475 — Glogau classification (photoaging) tile, 1325 → 1326)
 
 - New `glogau-photoaging` tile (group G): the Glogau classification of photoaging, by the severity of wrinkles,

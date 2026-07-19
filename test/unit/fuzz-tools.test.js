@@ -451,6 +451,7 @@ import * as yerdelPvtV472 from '../../lib/yerdel-pvt-v472.js';
 import * as todaniCholedochalV473 from '../../lib/todani-choledochal-v473.js';
 import * as rastelliAvsdV474 from '../../lib/rastelli-avsd-v474.js';
 import * as glogauPhotoagingV475 from '../../lib/glogau-photoaging-v475.js';
+import * as nashMoeRotationV476 from '../../lib/nash-moe-rotation-v476.js';
 import * as tbTesting from '../../lib/tb-testing.js';
 
 const MODULES = {
@@ -847,6 +848,7 @@ const MODULES = {
   'todani-choledochal-v473.js': todaniCholedochalV473,
   'rastelli-avsd-v474.js': rastelliAvsdV474,
   'glogau-photoaging-v475.js': glogauPhotoagingV475,
+  'nash-moe-rotation-v476.js': nashMoeRotationV476,
   'tb-testing.js': tbTesting,
 };
 
