@@ -1502,6 +1502,18 @@ round-trip both pass, without the phantom "2". Adapter appended to the existing
 rate to a target PaCO2. Brings the exposed total to **1072 calculators across 197
 modules**.
 
+## Three-hundred-fourth wave — the Spitz classification (esophageal atresia) in lib/spitz-atresia-v479.js (+1)
+
+`spitz-atresia` (spec-v479) applies the Spitz classification: given the group, it reports the birth-weight /
+cardiac criteria. `group` is an enum (`kind: 'enum'`, values I/II/III) — the single input the renderer exposes.
+The example sets group II; its expected text carries the "1500 g" fact, so it flows through the default
+`makeToArgs` with no custom toArgs. New adapter module registered in `mcp/catalog.js`; its golden probe ("spitz
+esophageal atresia classification") is promoted now that the tile is in the MCP-exposed registry. Brings the
+exposed total to **1267 calculators across 383 modules**.
+
+### lib/spitz-atresia-v479.js
+- `spitz-atresia`
+
 ## Three-hundred-third wave — the Spaulding classification (device reprocessing) in lib/spaulding-classification-v478.js (+1)
 
 `spaulding-classification` (spec-v478) applies the Spaulding classification: given the category, it reports the
@@ -5669,6 +5681,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/spaulding-classification-v478.js
 - `spaulding-classification`
+
+### lib/spitz-atresia-v479.js
+- `spitz-atresia`
 
 ### lib/tb-testing.js
 - `tb-testing`

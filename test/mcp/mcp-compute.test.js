@@ -4160,6 +4160,15 @@ test('lib/spaulding-classification-v478.js worked calls', () => {
   assert.match(ok('spaulding-classification', { 'spaulding-category': 'critical' }).band, /it requires sterilization/);
 });
 
+test('lib/spitz-atresia-v479.js worked calls', () => {
+  // Group II (the META example): one risk factor.
+  const two = ok('spitz-atresia', { 'spitz-group': 'II' });
+  assert.equal(two.group, 'II');
+  assert.match(two.band, /less than 1500 g, or major congenital cardiac disease/);
+  // Group I: neither risk factor.
+  assert.match(ok('spitz-atresia', { 'spitz-group': 'I' }).band, /1500 g or more and no major/);
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];
