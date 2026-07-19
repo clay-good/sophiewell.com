@@ -420,6 +420,7 @@ import * as barrowCcfV440 from '../../lib/barrow-ccf-v440.js';
 import * as bordenDavfV441 from '../../lib/borden-davf-v441.js';
 import * as zabramskiV442 from '../../lib/zabramski-v442.js';
 import * as kadishV443 from '../../lib/kadish-v443.js';
+import * as mccormickV444 from '../../lib/mccormick-v444.js';
 import * as tbTesting from '../../lib/tb-testing.js';
 
 const MODULES = {
@@ -785,6 +786,7 @@ const MODULES = {
   'borden-davf-v441.js': bordenDavfV441,
   'zabramski-v442.js': zabramskiV442,
   'kadish-v443.js': kadishV443,
+  'mccormick-v444.js': mccormickV444,
   'tb-testing.js': tbTesting,
 };
 

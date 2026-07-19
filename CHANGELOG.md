@@ -6,6 +6,20 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v444 — McCormick grade (spinal cord function) tile, 1295 → 1296)
+
+- New `mccormick` tile (group G): the McCormick neurological grading scale for spinal-cord (intramedullary)
+  lesion function, by the motor / sensory deficit and ambulation (grades I/II/III/IV); previously absent. The
+  clinician picks the grade and the tile reports its functional description. **I:** intact or mild deficit,
+  normal gait. **II:** deficit affecting the involved limb but functions and ambulates independently. **III:**
+  needs a cane or brace, or significant bilateral upper-limb impairment. **IV:** severe, needs a wheelchair,
+  usually not independent. A functional grade, not a diagnosis, a treatment decision, or a prognosis
+  ([spec-v11] §5.3); the management decision stays with the neurosurgery / neurology team. Grades transcribed
+  (spec-v97) from McCormick 1990 (J Neurosurg); no citation-staleness row (the citation carries no
+  guideline-issuer acronym). New `lib/mccormick-v444.js` + `views/group-v444.js` (RV444); +1 META entry, +1
+  UTILITIES row, a synonym entry (v165 → v166), 6 unit tests + fuzz, corpus rebuilt to 1296. See
+  [docs/spec-v444.md](docs/spec-v444.md). The MCP adapter follows in a later wave.
+
 ### Added (spec-v443 — Kadish staging (esthesioneuroblastoma) tile, 1294 → 1295)
 
 - New `kadish` tile (group G): the Kadish staging of esthesioneuroblastoma (olfactory neuroblastoma), by the
