@@ -6,6 +6,20 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v487 — Rockwood classification (acromioclavicular joint injury) tile, 1337 → 1338)
+
+- New `rockwood-ac` tile (group G): the Rockwood classification of acromioclavicular (AC) joint injuries, by AC
+  and coracoclavicular (CC) ligament integrity and clavicular displacement (types I-VI); previously absent (the
+  existing "Rockwood" match is the Clinical Frailty Scale — a different Rockwood). The clinician picks the type
+  and the tile reports its description. **I:** AC sprain, ligaments intact. **II:** AC torn, CC intact, slight
+  widening. **III:** both torn, CC distance 25-100% increased. **IV:** posterior displacement. **V:** gross
+  superior displacement (CC 100-300%). **VI:** inferior displacement. A type, not a diagnosis, a treatment
+  decision, or a prognosis ([spec-v11] §5.3); the management decision stays with the orthopedic team. Types
+  transcribed (spec-v97) from Rockwood 1984 (Fractures in Adults). No citation-staleness row (a named-author
+  book chapter, no guideline-issuer acronym). New `lib/rockwood-ac-v487.js` + `views/group-v487.js` (RV487); +1
+  META entry, +1 UTILITIES row, a synonym entry (v207 → v208, AC-focused to avoid the CFS), 8 unit tests + fuzz,
+  corpus rebuilt to 1338. See [docs/spec-v487.md](docs/spec-v487.md). The MCP adapter follows in the next wave.
+
 ### Added (spec-v486 — Samilson-Prieto grade (shoulder dislocation arthropathy) tile, 1336 → 1337)
 
 - New `samilson-prieto` tile (group G): the Samilson-Prieto classification of dislocation arthropathy of the
