@@ -4205,6 +4205,15 @@ test('lib/vancouver-periprosthetic-v483.js worked calls', () => {
   assert.match(ok('vancouver-periprosthetic', { 'vancouver-type': 'C' }).band, /well below the stem tip/);
 });
 
+test('lib/barrack-cement-v484.js worked calls', () => {
+  // Grade C (the META example): 50-99% radiolucency.
+  const c = ok('barrack-cement', { 'barrack-grade': 'C' });
+  assert.equal(c.grade, 'C');
+  assert.match(c.band, /50% to 99% of the cement-bone interface/);
+  // Grade A: white-out.
+  assert.match(ok('barrack-cement', { 'barrack-grade': 'A' }).band, /"white-out"/);
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];

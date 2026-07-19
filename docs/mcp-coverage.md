@@ -1502,6 +1502,18 @@ round-trip both pass, without the phantom "2". Adapter appended to the existing
 rate to a target PaCO2. Brings the exposed total to **1072 calculators across 197
 modules**.
 
+## Three-hundred-ninth wave — the Barrack grade (femoral cement mantle) in lib/barrack-cement-v484.js (+1)
+
+`barrack-cement` (spec-v484) applies the Barrack classification: given the grade, it reports the
+cement-mantle-quality description. `grade` is an enum (`kind: 'enum'`, values A/B/C/D) — the single input the
+renderer exposes. The example sets grade C; its expected text carries the "50% to 99%" fact, so it flows
+through the default `makeToArgs` with no custom toArgs. New adapter module registered in `mcp/catalog.js`; its
+golden probe ("barrack femoral cement mantle grade") is promoted now that the tile is in the MCP-exposed
+registry. Brings the exposed total to **1272 calculators across 388 modules**.
+
+### lib/barrack-cement-v484.js
+- `barrack-cement`
+
 ## Three-hundred-eighth wave — the Vancouver classification (periprosthetic femoral fracture) in lib/vancouver-periprosthetic-v483.js (+1)
 
 `vancouver-periprosthetic` (spec-v483) applies the Vancouver classification: given the type, it reports the
@@ -5746,6 +5758,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/vancouver-periprosthetic-v483.js
 - `vancouver-periprosthetic`
+
+### lib/barrack-cement-v484.js
+- `barrack-cement`
 
 ### lib/tb-testing.js
 - `tb-testing`
