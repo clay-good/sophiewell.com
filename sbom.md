@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `b8080733d90a5a9d`
-Generated: 2026-07-19T00:11:02.460Z
+Build ID: `0406a15859229407`
+Generated: 2026-07-19T01:43:02.609Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=20.18.1 <21, npm >=10.0.0
@@ -24,13 +24,13 @@ downloads is committed in this repository and is hashed below.
 
 | Path | Bytes | SHA-256 |
 |---|---:|---|
-| `index.html` | 85097 | `bf850d321482824333f9c27dffa81186385e1026275f425b10b3bb928dfac368` |
+| `index.html` | 85142 | `72291755fa205cc174f769175dc41019222f88ce7608c042f8837094786ab994` |
 | `styles.css` | 44160 | `a2cc7ad7bae9f7cfc9681d80bc6bd4a58f0b07d47bfcff64897dc04929c12333` |
-| `app.js` | 347998 | `c2584f4513bc069a843d0cda160f26e89c04e81ce94d92bd1f0e27230de3c0b7` |
+| `app.js` | 348231 | `ff62bdd19f755df357ce65595b7a322950eefd5d7789d8c951d8aa84f45b2ad7` |
 | `sw.js` | 4622 | `b891d4344f8e04403b7f1d307fd446cc224bddc6f0c4397438a17d197351171e` |
 | `site.webmanifest` | 709 | `0e0de4da60590a12e8b27a0ae2a2f5ffdb6500b7d2b78f93631ec2f64ed3d5ce` |
 | `robots.txt` | 127 | `38fbf9c1854e72abb20e01e81dd5a31d4ea96f154c12d5db1ec3af05524dd1a1` |
-| `sitemap.xml` | 196705 | `deccd762bb983aad6e0449f45a46f0f900a5859771c934fd20bfd22c3dce2d0a` |
+| `sitemap.xml` | 196855 | `1d2b1598203843748889d5251b1627d9a2dbda46da4c032cbcb59aff133d6967` |
 | `_headers` | 1316 | `2f39986457d2feff7e73e491a7d09ee871e8f2f4cc2bc437f86bd86a42554ec6` |
 | `logo.png` | 63440 | `11afaf1b0d3ca68393d202e4810bf766b5b6d591b4e3ec52f41d3cacaa4616ec` |
 | `favicon.ico` | 7411 | `407fde0ca2788409e87e11f596fa02e6a0b121817fcea7fd995beec1801e287b` |
@@ -244,7 +244,7 @@ downloads is committed in this repository and is hashed below.
 | `lib/mayfield-perilunate-v414.js` | 4219 | `dbec2e4abce7912c621e5cee9f8bdb1fa3555240da1d08a3f75f448fd0297fc4` |
 | `lib/medication-v4.js` | 18192 | `467f9576c50da696cc56094eb022d0a5ed1e88de0c7618448554ede8067270b0` |
 | `lib/medication-v5.js` | 18863 | `ce81d9f8954abbd412892c13af9936f992239164f26fd2b999eaea7902787ab7` |
-| `lib/meta.js` | 1742602 | `94af8273befd3a30e5ab35e2fb5f9bcb059090c0de5b48150e9661f7ddf0fd10` |
+| `lib/meta.js` | 1743636 | `f788094aa59cc63deb5ce391c5d73f4f6960c89fc12a6387b6a372199df8d207` |
 | `lib/metabolic-hepatic-v219.js` | 12791 | `b9352877cebf7fbf3c3b99ecb8b72cdbee3ed94e056dc019113668609f5a95a8` |
 | `lib/metabolic-onc-v88.js` | 12659 | `1553b641668c121661a66647da71a4aaaa023e9f3a6b7a753efbcdab27cdba81` |
 | `lib/metabolic-v269.js` | 3262 | `0c7a42557886f2b0aeee7949b8d0bd682d795d4526174fd540717a978d94ec2f` |
@@ -370,6 +370,7 @@ downloads is committed in this repository and is hashed below.
 | `lib/ross-hf-peds-v368.js` | 3656 | `fad8260eae2c6c117dfee9177dfbf5f2a20042e72b049799b94588ae426449ce` |
 | `lib/russe-scaphoid-v416.js` | 4054 | `393fb761d9bcfb169b583f73ec59e807a0894591bc9c4726821d7597796440f2` |
 | `lib/sanders-calcaneal-v343.js` | 4431 | `97e1e00751f5e640f19b31adb748bd838d4538265e521f5f9b798b0f09a7c340` |
+| `lib/sarnat-hie-v429.js` | 3448 | `d937b361ddf87357471d77034d89c0778faf26885e337a95fe775e1f8bdce4c6` |
 | `lib/savary-miller-v405.js` | 3874 | `224df20e17cf0c2a8e40cb4423623f24271f6c61f38e3eea5f02720f1b17f1ff` |
 | `lib/schwab-england-v385.js` | 4331 | `caddd0709826db63186ebf0a5f8b60fd9a3e00fa934bddc3e0331977f70c5e4b` |
 | `lib/scoring-v4.js` | 228123 | `b5de5498817722bbb2ffc2f0381ceaf62c66d262d43e7aa47a6fa03f64ad6697` |
@@ -758,6 +759,7 @@ downloads is committed in this repository and is hashed below.
 | `views/group-v426.js` | 3025 | `ee8969b17b5ee14d927ab0ba36165c447e64ede176211f4536b418c030c219f4` |
 | `views/group-v427.js` | 3188 | `3d02b792029b33c886fe21696a03f542d1a8c6f03f27efd058b00db2a93a61a3` |
 | `views/group-v428.js` | 3019 | `1d50f3fef27859f856227ace4a0af4848512e844a95dd8629d7f32eec030ec78` |
+| `views/group-v429.js` | 2965 | `c6fb22fd1ee1cb719fc24a6957fd46b7f30d16b0682e2d8da22d1f2ea35df034` |
 | `views/group-v5.js` | 32855 | `c17fc4c7bdc25ea5a80969ddc7091a63731dc8aeafb7f478507145a71cf73b2e` |
 | `views/group-v6.js` | 5707 | `425918decb48cd9efac9fc5590ac8970a54c03c3b0df056fb99c9a22ff8dd1b2` |
 | `views/group-v63.js` | 14377 | `962d84b97e82bc39635801da79ecaa93fc0b501b5988b7d321b0f1f630497fab` |

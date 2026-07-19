@@ -6,6 +6,20 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v429 — Sarnat staging (neonatal HIE) tile, 1280 → 1281)
+
+- New `sarnat-hie` tile (group G): the Sarnat staging of neonatal hypoxic-ischemic encephalopathy (HIE), the
+  clinical grading of a term newborn after a hypoxic-ischemic insult (stages 1/2/3); previously absent. The
+  clinician picks the stage and the tile reports its hallmark clinical features. **1 (mild):** hyperalert,
+  normal or increased tone, no seizures, resolves within 24 hours. **2 (moderate):** lethargic/obtunded,
+  hypotonia, seizures common. **3 (severe):** stupor or coma, flaccid tone, suppressed or isoelectric EEG. A
+  clinical stage, not a diagnosis, a treatment decision (e.g., therapeutic-hypothermia eligibility), or a
+  prognosis ([spec-v11] §5.3); the management decision stays with the neonatology team. Stages transcribed
+  (spec-v97) from Sarnat & Sarnat 1976 (Arch Neurol); no citation-staleness row (the citation carries no
+  guideline-issuer acronym). New `lib/sarnat-hie-v429.js` + `views/group-v429.js` (RV429); +1 META entry, +1
+  UTILITIES row, a synonym entry (v150 → v151), 5 unit tests + fuzz, corpus rebuilt to 1281. See
+  [docs/spec-v429.md](docs/spec-v429.md). The MCP adapter follows in a later wave.
+
 ### Added (spec-v428 — MRC muscle-power grade tile, 1279 → 1280)
 
 - New `mrc-power` tile (group G): the Medical Research Council (MRC) muscle-power grade, the standard 0-5
