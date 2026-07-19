@@ -446,6 +446,7 @@ import * as bromageScaleV467 from '../../lib/bromage-scale-v467.js';
 import * as brouetCryoglobulinemiaV468 from '../../lib/brouet-cryoglobulinemia-v468.js';
 import * as steinbrockerRaV469 from '../../lib/steinbrocker-ra-v469.js';
 import * as larsenRaV470 from '../../lib/larsen-ra-v470.js';
+import * as gassMacularHoleV471 from '../../lib/gass-macular-hole-v471.js';
 import * as tbTesting from '../../lib/tb-testing.js';
 
 const MODULES = {
@@ -837,6 +838,7 @@ const MODULES = {
   'brouet-cryoglobulinemia-v468.js': brouetCryoglobulinemiaV468,
   'steinbrocker-ra-v469.js': steinbrockerRaV469,
   'larsen-ra-v470.js': larsenRaV470,
+  'gass-macular-hole-v471.js': gassMacularHoleV471,
   'tb-testing.js': tbTesting,
 };
 

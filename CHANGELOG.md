@@ -6,6 +6,20 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v471 — Gass staging (macular hole) tile, 1321 → 1322)
+
+- New `gass-macular-hole` tile (group G): the Gass classification of the stages of development of an idiopathic
+  macular hole (stages 1-4); previously absent. The clinician picks the stage and the tile reports its
+  description. **1:** impending (foveal detachment, no full-thickness defect). **2:** small full-thickness hole
+  (less than 400 micrometers). **3:** larger full-thickness hole (400 micrometers or more) without a complete
+  posterior vitreous detachment. **4:** full-thickness hole with a complete posterior vitreous detachment
+  (Weiss ring). A stage, not a diagnosis, a treatment decision, or a prognosis ([spec-v11] §5.3); the
+  management decision stays with the ophthalmology team. Stages transcribed (spec-v97) from Gass 1995 (Am J
+  Ophthalmol). No citation-staleness row (the citation carries no guideline-issuer acronym). New
+  `lib/gass-macular-hole-v471.js` + `views/group-v471.js` (RV471); +1 META entry, +1 UTILITIES row, a synonym
+  entry (v191 → v192), 6 unit tests + fuzz, corpus rebuilt to 1322. See
+  [docs/spec-v471.md](docs/spec-v471.md). The MCP adapter follows in the next wave.
+
 ### Added (spec-v470 — Larsen grade (rheumatoid arthritis radiographs) tile, 1320 → 1321)
 
 - New `larsen-ra` tile (group G): the Larsen (Larsen-Dale-Eek) radiographic grading of joint damage in
