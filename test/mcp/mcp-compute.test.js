@@ -3908,6 +3908,15 @@ test('lib/fielding-hawkins-v449.js worked calls', () => {
   assert.match(ok('fielding-hawkins', { 'fh-type': 'IV' }).band, /posterior displacement of the atlas/);
 });
 
+test('lib/reid-bronchiectasis-v450.js worked calls', () => {
+  // Varicose (the META example): beaded outline.
+  const v = ok('reid-bronchiectasis', { 'reid-type': 'varicose' });
+  assert.equal(v.type, 'varicose');
+  assert.match(v.band, /irregular, beaded outline/);
+  // Cystic: large cyst-like dilatations.
+  assert.match(ok('reid-bronchiectasis', { 'reid-type': 'cystic' }).band, /large cyst-like/);
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];

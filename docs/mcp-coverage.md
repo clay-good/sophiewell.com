@@ -1502,6 +1502,18 @@ round-trip both pass, without the phantom "2". Adapter appended to the existing
 rate to a target PaCO2. Brings the exposed total to **1072 calculators across 197
 modules**.
 
+## Two-hundred-seventy-fifth wave — the Reid classification (bronchiectasis) in lib/reid-bronchiectasis-v450.js (+1)
+
+`reid-bronchiectasis` (spec-v450) applies the Reid classification: given the type, it reports the morphology
+description. `type` is an enum (`kind: 'enum'`, values cylindrical/varicose/cystic) — the single input the
+renderer exposes. The example sets varicose; its expected text carries no numeric facts (the description is
+word-only), so it flows through the default `makeToArgs` with no custom toArgs. New adapter module registered
+in `mcp/catalog.js`; its golden probe ("reid bronchiectasis morphology") is promoted now that the tile is in
+the MCP-exposed registry. Brings the exposed total to **1239 calculators across 355 modules**.
+
+### lib/reid-bronchiectasis-v450.js
+- `reid-bronchiectasis`
+
 ## Two-hundred-seventy-fourth wave — the Fielding-Hawkins (atlantoaxial rotatory subluxation) in lib/fielding-hawkins-v449.js (+1)
 
 `fielding-hawkins` (spec-v449) applies the Fielding-Hawkins classification: given the type, it reports the
@@ -5241,6 +5253,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/fielding-hawkins-v449.js
 - `fielding-hawkins`
+
+### lib/reid-bronchiectasis-v450.js
+- `reid-bronchiectasis`
 
 ### lib/tb-testing.js
 - `tb-testing`

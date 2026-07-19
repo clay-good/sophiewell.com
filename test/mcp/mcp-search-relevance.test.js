@@ -482,6 +482,8 @@ const PROBES = [
   ['traynelis atlanto occipital dislocation', ['traynelis']],
   // spec-v449 tile, exposed to MCP in wave 274: Fielding-Hawkins (atlantoaxial rotatory subluxation).
   ['fielding hawkins atlantoaxial rotatory subluxation', ['fielding-hawkins']],
+  // spec-v450 tile, exposed to MCP in wave 275: Reid classification (bronchiectasis).
+  ['reid bronchiectasis morphology', ['reid-bronchiectasis']],
 ];
 
 test(`every golden probe routes an acceptable tile into the top ${TOP_N}`, () => {

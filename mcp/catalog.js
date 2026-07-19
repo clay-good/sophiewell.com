@@ -362,6 +362,7 @@ import ropStageV446 from './adapters/rop-stage-v446.js';
 import andersonMontesanoV447 from './adapters/anderson-montesano-v447.js';
 import traynelisV448 from './adapters/traynelis-v448.js';
 import fieldingHawkinsV449 from './adapters/fielding-hawkins-v449.js';
+import reidBronchiectasisV450 from './adapters/reid-bronchiectasis-v450.js';
 import tbTesting from './adapters/tb-testing.js';
 import labInterpret from './adapters/lab-interpret.js';
 import decisionRulesV258 from './adapters/decision-rules-v258.js';
@@ -718,6 +719,7 @@ const ADAPTER_MODULES = [
   ['anderson-montesano-v447', andersonMontesanoV447],
   ['traynelis-v448', traynelisV448],
   ['fielding-hawkins-v449', fieldingHawkinsV449],
+  ['reid-bronchiectasis-v450', reidBronchiectasisV450],
   ['tb-testing', tbTesting],
   ['lab-interpret', labInterpret],
   ['decision-rules-v258', decisionRulesV258],
