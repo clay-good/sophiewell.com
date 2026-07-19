@@ -6,6 +6,20 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v483 — Vancouver classification (periprosthetic femoral fracture) tile, 1333 → 1334)
+
+- New `vancouver-periprosthetic` tile (group G): the Vancouver classification of periprosthetic femoral
+  fractures after hip replacement, by location, stem stability, and bone stock (types AG/AL/B1/B2/B3/C);
+  previously absent (the existing Vancouver *scar* scale is a different classification). The clinician picks the
+  type and the tile reports its description. **AG/AL:** trochanteric. **B1:** around the stem, stem well-fixed.
+  **B2:** around the stem, stem loose, adequate bone. **B3:** around the stem, stem loose, deficient bone.
+  **C:** well below the stem tip. A type, not a diagnosis, a treatment decision, or a prognosis ([spec-v11]
+  §5.3); the management decision stays with the orthopedic-trauma / arthroplasty team. Types transcribed
+  (spec-v97) from Duncan & Masri 1995 (Instr Course Lect). No citation-staleness row (a named-author article, no
+  guideline-issuer acronym). New `lib/vancouver-periprosthetic-v483.js` + `views/group-v483.js` (RV483); +1 META
+  entry, +1 UTILITIES row, a synonym entry (v203 → v204), 7 unit tests + fuzz, corpus rebuilt to 1334. See
+  [docs/spec-v483.md](docs/spec-v483.md). The MCP adapter follows in the next wave.
+
 ### Added (spec-v482 — Russell-Taylor classification (subtrochanteric fracture) tile, 1332 → 1333)
 
 - New `russell-taylor-subtroch` tile (group G): the Russell-Taylor classification of subtrochanteric femur
