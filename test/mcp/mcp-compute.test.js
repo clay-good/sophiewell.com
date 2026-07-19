@@ -3971,6 +3971,15 @@ test('lib/stulberg-v457.js worked calls', () => {
   assert.match(ok('stulberg', { 'stulberg-class': 'V' }).band, /aspherical incongruency/);
 });
 
+test('lib/boyd-griffin-v458.js worked calls', () => {
+  // Type II (the META example): comminuted intertrochanteric.
+  const two = ok('boyd-griffin', { 'boyd-type': 'II' });
+  assert.equal(two.type, 'II');
+  assert.match(two.band, /comminuted fracture along the intertrochanteric line/);
+  // Type III: essentially subtrochanteric.
+  assert.match(ok('boyd-griffin', { 'boyd-type': 'III' }).band, /essentially subtrochanteric/);
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];

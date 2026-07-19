@@ -1502,6 +1502,18 @@ round-trip both pass, without the phantom "2". Adapter appended to the existing
 rate to a target PaCO2. Brings the exposed total to **1072 calculators across 197
 modules**.
 
+## Two-hundred-eighty-third wave — the Boyd-Griffin classification (intertrochanteric fracture) in lib/boyd-griffin-v458.js (+1)
+
+`boyd-griffin` (spec-v458) applies the Boyd-Griffin classification: given the type, it reports the fracture-line
+description. `type` is an enum (`kind: 'enum'`, values I/II/III/IV) — the single input the renderer exposes. The
+example sets type II; its expected text carries no numeric facts (the description is word-only), so it flows
+through the default `makeToArgs` with no custom toArgs. New adapter module registered in `mcp/catalog.js`; its
+golden probe ("boyd griffin intertrochanteric fracture classification") is promoted now that the tile is in the
+MCP-exposed registry. Brings the exposed total to **1246 calculators across 362 modules**.
+
+### lib/boyd-griffin-v458.js
+- `boyd-griffin`
+
 ## Two-hundred-eighty-second wave — the Stulberg classification (Perthes residual deformity) in lib/stulberg-v457.js (+1)
 
 `stulberg` (spec-v457) applies the Stulberg classification: given the class, it reports the sphericity /
@@ -5348,6 +5360,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/stulberg-v457.js
 - `stulberg`
+
+### lib/boyd-griffin-v458.js
+- `boyd-griffin`
 
 ### lib/tb-testing.js
 - `tb-testing`
