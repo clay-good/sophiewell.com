@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `5020e065944e39ec`
-Generated: 2026-07-19T20:53:50.537Z
+Build ID: `2b2224a010bad559`
+Generated: 2026-07-19T21:00:14.018Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=20.18.1 <21, npm >=10.0.0
@@ -24,13 +24,13 @@ downloads is committed in this repository and is hashed below.
 
 | Path | Bytes | SHA-256 |
 |---|---:|---|
-| `index.html` | 87997 | `6f91d4b9551c50ca02415d1b2641c703ae13b1f2c658449fcd424fb3aa36de47` |
+| `index.html` | 88048 | `02c32324db2df4bc65d8671be2240b91b4c5dfa6af4265f9795bb5d31c9ee93f` |
 | `styles.css` | 44160 | `a2cc7ad7bae9f7cfc9681d80bc6bd4a58f0b07d47bfcff64897dc04929c12333` |
-| `app.js` | 359560 | `5f1c7b1f79dce2c20f3650728decb345a9e78bc35c7b654f001014c812253e99` |
+| `app.js` | 359780 | `b052e3efc8be9c8d1654c081d4f163eb039106949e6907791fbd38045ba2f535` |
 | `sw.js` | 4622 | `b891d4344f8e04403b7f1d307fd446cc224bddc6f0c4397438a17d197351171e` |
 | `site.webmanifest` | 709 | `0e0de4da60590a12e8b27a0ae2a2f5ffdb6500b7d2b78f93631ec2f64ed3d5ce` |
 | `robots.txt` | 127 | `38fbf9c1854e72abb20e01e81dd5a31d4ea96f154c12d5db1ec3af05524dd1a1` |
-| `sitemap.xml` | 204344 | `538c11dd4fbe73b1cb411d5a63e7192f6a5a6189db7fbbc5422e02c69af1b50c` |
+| `sitemap.xml` | 204499 | `5c954cd7a7ca01c357b876f5e08871ae08124ee1df712a3765c97d64eedc6e44` |
 | `_headers` | 1316 | `2f39986457d2feff7e73e491a7d09ee871e8f2f4cc2bc437f86bd86a42554ec6` |
 | `logo.png` | 63440 | `11afaf1b0d3ca68393d202e4810bf766b5b6d591b4e3ec52f41d3cacaa4616ec` |
 | `favicon.ico` | 7411 | `407fde0ca2788409e87e11f596fa02e6a0b121817fcea7fd995beec1801e287b` |
@@ -47,6 +47,7 @@ downloads is committed in this repository and is hashed below.
 | `lib/acute-abdomen-v261.js` | 10676 | `0c0f7358da57d87ace5ee151a3c599f3e5a4232aaf92da7009bff01ac00fd5d4` |
 | `lib/acute-injury-v213.js` | 11748 | `d0db59b8b86c57a442bfe3b1cd2e9fb50bbb59aa6980810415f4dbbe41985b7d` |
 | `lib/adiposity-v270.js` | 3145 | `bafc017e4974f5c7180e5a2a6160c50fb8d837bccd6f45d0eaaf6bb6ada87ce9` |
+| `lib/ahlback-knee-oa-v480.js` | 3309 | `c7e76a2794a1764fc50dd4f467219d7b5f9a6f19c98a5bc241cd43a85a810239` |
 | `lib/anaphylaxis-v303.js` | 3399 | `7238b07c62535c8540d017cb268b841ffbc1a1bba2430bccc89c23c7f69fafbd` |
 | `lib/anderson-dalonzo-v410.js` | 3589 | `b11d0b4c9006f7917de76cc07c30e1849b97f31b8c39e3521fca8f0a306132de` |
 | `lib/anderson-montesano-v447.js` | 3265 | `5bbf21950c01668ad58c463249a23c6672b4246aa8c06279981f6129445d58ac` |
@@ -271,7 +272,7 @@ downloads is committed in this repository and is hashed below.
 | `lib/mccormick-v444.js` | 3548 | `226844081eb702e3917925b1fb684495c90fd90d83717106c632f91f09fad0c6` |
 | `lib/medication-v4.js` | 18192 | `467f9576c50da696cc56094eb022d0a5ed1e88de0c7618448554ede8067270b0` |
 | `lib/medication-v5.js` | 18863 | `ce81d9f8954abbd412892c13af9936f992239164f26fd2b999eaea7902787ab7` |
-| `lib/meta.js` | 1800772 | `fa56143bfe03db2c7b6e9f9ba3adda63dfc090bfe367f7a4aa066b55df2414c5` |
+| `lib/meta.js` | 1801950 | `aa92993e6bc29e7d25f8d8c509c3c5d9fb60e050fb2d734776dc3c73ba7b7995` |
 | `lib/metabolic-hepatic-v219.js` | 12791 | `b9352877cebf7fbf3c3b99ecb8b72cdbee3ed94e056dc019113668609f5a95a8` |
 | `lib/metabolic-onc-v88.js` | 12659 | `1553b641668c121661a66647da71a4aaaa023e9f3a6b7a753efbcdab27cdba81` |
 | `lib/metabolic-v269.js` | 3262 | `0c7a42557886f2b0aeee7949b8d0bd682d795d4526174fd540717a978d94ec2f` |
@@ -858,6 +859,7 @@ downloads is committed in this repository and is hashed below.
 | `views/group-v477.js` | 3032 | `77be69d9386662f9e63ada3793570281e6cfcccea13522185a293b54a6600e77` |
 | `views/group-v478.js` | 3238 | `136f0e970b870cfcf49b3ec0fdb468d73f3794e93b19767ed74453d2c5278404` |
 | `views/group-v479.js` | 2971 | `3d62db5cf89f91fd6951e0b2ce40e548e836c10a0a950e5f1d98331af7cca483` |
+| `views/group-v480.js` | 3054 | `f4a1d5a973de12644f585e9fc1861a23472bc9f55814e1a5e38a81f42308cb6e` |
 | `views/group-v5.js` | 32855 | `c17fc4c7bdc25ea5a80969ddc7091a63731dc8aeafb7f478507145a71cf73b2e` |
 | `views/group-v6.js` | 5707 | `425918decb48cd9efac9fc5590ac8970a54c03c3b0df056fb99c9a22ff8dd1b2` |
 | `views/group-v63.js` | 14377 | `962d84b97e82bc39635801da79ecaa93fc0b501b5988b7d321b0f1f630497fab` |

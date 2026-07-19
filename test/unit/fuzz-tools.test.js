@@ -455,6 +455,7 @@ import * as nashMoeRotationV476 from '../../lib/nash-moe-rotation-v476.js';
 import * as sfuHydronephrosisV477 from '../../lib/sfu-hydronephrosis-v477.js';
 import * as spauldingClassificationV478 from '../../lib/spaulding-classification-v478.js';
 import * as spitzAtresiaV479 from '../../lib/spitz-atresia-v479.js';
+import * as ahlbackKneeOaV480 from '../../lib/ahlback-knee-oa-v480.js';
 import * as tbTesting from '../../lib/tb-testing.js';
 
 const MODULES = {
@@ -855,6 +856,7 @@ const MODULES = {
   'sfu-hydronephrosis-v477.js': sfuHydronephrosisV477,
   'spaulding-classification-v478.js': spauldingClassificationV478,
   'spitz-atresia-v479.js': spitzAtresiaV479,
+  'ahlback-knee-oa-v480.js': ahlbackKneeOaV480,
   'tb-testing.js': tbTesting,
 };
 

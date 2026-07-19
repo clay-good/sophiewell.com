@@ -6,6 +6,20 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v480 — Ahlback grade (knee osteoarthritis) tile, 1330 → 1331)
+
+- New `ahlback-knee-oa` tile (group G): the Ahlback classification of knee osteoarthritis, by radiographic
+  joint-space loss and bone attrition (grades I-V); previously absent. The clinician picks the grade and the
+  tile reports its description. **I:** joint-space narrowing. **II:** joint-space obliteration (bone-to-bone).
+  **III:** minor bone attrition (0-5 mm). **IV:** moderate bone attrition (5-10 mm). **V:** severe bone
+  attrition (>10 mm), often with subluxation. A grade, not a diagnosis, a treatment decision, or a prognosis
+  ([spec-v11] §5.3); the management decision stays with the orthopedic team. Companions the Kellgren-Lawrence
+  grade. Grades transcribed (spec-v97) from Ahlback 1968 (Acta Radiol Diagn). No citation-staleness row (a
+  named-author journal article, no guideline-issuer acronym). New `lib/ahlback-knee-oa-v480.js` +
+  `views/group-v480.js` (RV480); +1 META entry, +1 UTILITIES row, a synonym entry (v200 → v201), 6 unit tests +
+  fuzz, corpus rebuilt to 1331. See [docs/spec-v480.md](docs/spec-v480.md). The MCP adapter follows in the next
+  wave.
+
 ### Added (spec-v479 — Spitz classification (esophageal atresia) tile, 1329 → 1330)
 
 - New `spitz-atresia` tile (group G): the Spitz classification of esophageal atresia, by birth weight and major
