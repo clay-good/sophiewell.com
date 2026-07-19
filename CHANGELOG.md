@@ -6,6 +6,20 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v441 — Borden classification (dural AV fistula) tile, 1292 → 1293)
+
+- New `borden-davf` tile (group G): the Borden classification of a dural arteriovenous fistula (DAVF), by the
+  pattern of venous drainage (types I/II/III); previously absent. The clinician picks the type and the tile
+  reports its venous-drainage description. **I:** dural sinus / meningeal vein, antegrade flow, no cortical
+  venous drainage (benign). **II:** dural sinus with retrograde cortical venous reflux. **III:** cortical
+  venous drainage only (aggressive). The key discriminator is cortical venous drainage (II/III). A type, not a
+  diagnosis, a treatment decision, or a prognosis ([spec-v11] §5.3); the management decision stays with the
+  neurosurgery / neurointervention team. Types transcribed (spec-v97) from Borden 1995 (J Neurosurg); no
+  citation-staleness row (the citation carries no guideline-issuer acronym). Joins the neurovascular cluster
+  (barrow-ccf, spetzler-ponce). New `lib/borden-davf-v441.js` + `views/group-v441.js` (RV441); +1 META entry,
+  +1 UTILITIES row, a synonym entry (v162 → v163), 5 unit tests + fuzz, corpus rebuilt to 1293. See
+  [docs/spec-v441.md](docs/spec-v441.md). The MCP adapter follows in a later wave.
+
 ### Added (spec-v440 — Barrow classification (carotid-cavernous fistula) tile, 1291 → 1292)
 
 - New `barrow-ccf` tile (group G): the Barrow classification of carotid-cavernous fistula (CCF), by the
