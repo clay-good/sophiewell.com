@@ -6,6 +6,19 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v489 — Fernandez classification (distal radius fracture) tile, 1339 → 1340)
+
+- New `fernandez-radius` tile (group G): the Fernandez classification of distal radius fractures, by the
+  mechanism of injury (types I-V); previously absent. The clinician picks the type and the tile reports its
+  mechanism. **I:** bending (Colles/Smith). **II:** shearing (Barton, radial styloid). **III:** compression
+  (die-punch). **IV:** avulsion / radiocarpal fracture-dislocation. **V:** combined, high-velocity. A type, not
+  a diagnosis, a treatment decision, or a prognosis ([spec-v11] §5.3); the management decision stays with the
+  orthopedic-trauma team. Complements the Frykman fracture-line classification. Types transcribed (spec-v97)
+  from Fernandez 1993 (Instr Course Lect). No citation-staleness row (a named-author article, no
+  guideline-issuer acronym). New `lib/fernandez-radius-v489.js` + `views/group-v489.js` (RV489); +1 META entry,
+  +1 UTILITIES row, a synonym entry (v209 → v210), 7 unit tests + fuzz, corpus rebuilt to 1340. See
+  [docs/spec-v489.md](docs/spec-v489.md). The MCP adapter follows in the next wave.
+
 ### Added (spec-v488 — Bigliani classification (acromion morphology) tile, 1338 → 1339)
 
 - New `bigliani-acromion` tile (group G): the Bigliani classification of acromion morphology, by the shape of
