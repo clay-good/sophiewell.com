@@ -503,6 +503,7 @@ const PROBES = [
   ['bromage neuraxial motor block scale', ['bromage-scale']],
   ['brouet cryoglobulinemia classification', ['brouet-cryoglobulinemia']],
   ['steinbrocker rheumatoid arthritis functional class', ['steinbrocker-ra']],
+  ['larsen rheumatoid arthritis radiographic grade', ['larsen-ra']],
 ];
 
 test(`every golden probe routes an acceptable tile into the top ${TOP_N}`, () => {

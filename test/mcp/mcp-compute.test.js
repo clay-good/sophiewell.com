@@ -4079,6 +4079,15 @@ test('lib/steinbrocker-ra-v469.js worked calls', () => {
   assert.match(ok('steinbrocker-ra', { 'steinbrocker-class': 'IV' }).band, /largely or wholly incapacitated/);
 });
 
+test('lib/larsen-ra-v470.js worked calls', () => {
+  // Grade 2 (the META example): definite early.
+  const two = ok('larsen-ra', { 'larsen-grade': '2' });
+  assert.equal(two.grade, '2');
+  assert.match(two.band, /definite early abnormality/);
+  // Grade 5: mutilating.
+  assert.match(ok('larsen-ra', { 'larsen-grade': '5' }).band, /mutilating abnormality/);
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];

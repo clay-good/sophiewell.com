@@ -1502,6 +1502,18 @@ round-trip both pass, without the phantom "2". Adapter appended to the existing
 rate to a target PaCO2. Brings the exposed total to **1072 calculators across 197
 modules**.
 
+## Two-hundred-ninety-fifth wave — the Larsen grade (rheumatoid arthritis radiographs) in lib/larsen-ra-v470.js (+1)
+
+`larsen-ra` (spec-v470) applies the Larsen radiographic grading: given the grade, it reports the joint-damage
+description. `grade` is an enum (`kind: 'enum'`, values 0-5) — the single input the renderer exposes. The
+example sets grade 2; its expected text carries no numeric facts beyond the word-only description, so it flows
+through the default `makeToArgs` with no custom toArgs. New adapter module registered in `mcp/catalog.js`; its
+golden probe ("larsen rheumatoid arthritis radiographic grade") is promoted now that the tile is in the
+MCP-exposed registry. Brings the exposed total to **1258 calculators across 374 modules**.
+
+### lib/larsen-ra-v470.js
+- `larsen-ra`
+
 ## Two-hundred-ninety-fourth wave — the Steinbrocker functional class (rheumatoid arthritis) in lib/steinbrocker-ra-v469.js (+1)
 
 `steinbrocker-ra` (spec-v469) applies the Steinbrocker functional classification: given the class, it reports
@@ -5532,6 +5544,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/steinbrocker-ra-v469.js
 - `steinbrocker-ra`
+
+### lib/larsen-ra-v470.js
+- `larsen-ra`
 
 ### lib/tb-testing.js
 - `tb-testing`
