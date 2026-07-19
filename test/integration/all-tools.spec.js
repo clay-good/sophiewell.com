@@ -24,7 +24,13 @@ test('discover tool ids from sitemap', async ({ page }) => {
 });
 
 test('every tool route renders without console errors and shows an h1', async ({ page }) => {
-  test.setTimeout(180_000);
+  // This test navigates EVERY catalog route (1280+ and growing) sequentially,
+  // each with a ~120ms settle wait, so its wall time scales with the catalog.
+  // At ~1280 tiles chromium runs ~2.9 min while the slower WebKit/Firefox
+  // engines exceed the old 180s budget under loaded CI runners (a timeout, not
+  // a render error -- the same infra transient the 2 CI retries absorb). Give it
+  // generous headroom so a growing catalog does not chronically trip the ceiling.
+  test.setTimeout(420_000);
   const errors = [];
   page.on('pageerror', (err) => errors.push({ kind: 'pageerror', msg: String(err) }));
   page.on('console', (msg) => {
