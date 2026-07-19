@@ -6,6 +6,20 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v467 — Bromage scale (neuraxial motor block) tile, 1317 → 1318)
+
+- New `bromage-scale` tile (group G): the Bromage scale of motor block after neuraxial (epidural / spinal)
+  anesthesia, by residual lower-limb movement (grades I/II/III/IV); previously absent. The clinician picks the
+  grade and the tile reports its description. **I:** nil (free knees and feet). **II:** partial (just able to
+  flex the knees). **III:** almost complete (unable to flex the knees, some foot movement). **IV:** complete
+  (unable to move the legs or feet). A grade, not a diagnosis, a treatment decision, or a prognosis ([spec-v11]
+  §5.3); the management decision stays with the anesthesia team. Grades transcribed (spec-v97) from Bromage
+  1965/1978; the original I-IV numbering (a modified Bromage renumbers these 0-3, noted). No citation-staleness
+  row (the citation carries no guideline-issuer acronym). New `lib/bromage-scale-v467.js` +
+  `views/group-v467.js` (RV467); +1 META entry, +1 UTILITIES row, a synonym entry (v187 → v188), 6 unit tests +
+  fuzz, corpus rebuilt to 1318. See [docs/spec-v467.md](docs/spec-v467.md). The MCP adapter follows in the next
+  wave.
+
 ### Added (spec-v466 — Judet-Letournel classification (acetabular fracture) tile, 1316 → 1317)
 
 - New `letournel-acetabulum` tile (group G): the Judet-Letournel classification of acetabular fractures, five
