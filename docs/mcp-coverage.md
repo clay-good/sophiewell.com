@@ -1502,6 +1502,20 @@ round-trip both pass, without the phantom "2". Adapter appended to the existing
 rate to a target PaCO2. Brings the exposed total to **1072 calculators across 197
 modules**.
 
+## Three-hundred-eighteenth wave — the Lown grade (ventricular ectopy) in lib/lown-ectopy-v493.js (+1)
+
+`lown-ectopy` (spec-v493) applies the Lown grading system for ventricular ectopy on an ambulatory ECG
+recording: given the grade, it reports the frequency/form description. `grade` is an enum (`kind: 'enum'`,
+values 0/1/2/3/4A/4B/5) — the single input the renderer exposes; bare `4` is deliberately absent from the
+enum so the 4A/4B split stays explicit. The example sets grade 4B; the numbers in its expected text are
+carried by the result band, so it flows through the default `makeToArgs` with no custom toArgs. New adapter
+module registered in `mcp/catalog.js`; its golden probe ("lown grade ventricular ectopy holter") is promoted
+now that the tile is in the MCP-exposed registry. Brings the exposed total to **1281 calculators across 397
+modules**.
+
+### lib/lown-ectopy-v493.js
+- `lown-ectopy`
+
 ## Three-hundred-seventeenth wave — the Hattrup-Johnson grade (hallux rigidus) in lib/hattrup-johnson-v492.js (+1)
 
 `hattrup-johnson` (spec-v492) applies the Hattrup-Johnson classification of hallux rigidus (first MTP
@@ -5882,6 +5896,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/hattrup-johnson-v492.js
 - `hattrup-johnson`
+
+### lib/lown-ectopy-v493.js
+- `lown-ectopy`
 
 ### lib/tb-testing.js
 - `tb-testing`
