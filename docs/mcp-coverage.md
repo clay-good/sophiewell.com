@@ -1502,6 +1502,21 @@ round-trip both pass, without the phantom "2". Adapter appended to the existing
 rate to a target PaCO2. Brings the exposed total to **1072 calculators across 197
 modules**.
 
+## Three-hundred-thirtieth wave — the METAVIR activity grade (liver biopsy) in lib/metavir-activity-v505.js (+1)
+
+`metavir-activity` (spec-v505) applies the METAVIR necroinflammatory activity grading: given the grade, it
+reports the description. `grade` is an enum (`kind: 'enum'`, values A0-A3) — the single input the renderer
+exposes, on a dom key (`metavir-activity-grade`) deliberately distinct from the sibling fibrosis tile's
+`metavir-stage`. The example sets grade A2; the only numbers in its expected text are the grade labels
+themselves, which the result band carries, so it flows through the default `makeToArgs` with no custom toArgs.
+Completes the METAVIR pair with `metavir-fibrosis` (wave 329) — a METAVIR read is reported as both together
+(for example A2F3). New adapter module registered in `mcp/catalog.js`; its golden probe ("metavir activity
+grade necroinflammatory") is promoted now that the tile is in the MCP-exposed registry. Brings the exposed
+total to **1293 calculators across 409 modules**.
+
+### lib/metavir-activity-v505.js
+- `metavir-activity`
+
 ## Three-hundred-twenty-ninth wave — the METAVIR fibrosis stage (liver biopsy) in lib/metavir-fibrosis-v504.js (+1)
 
 `metavir-fibrosis` (spec-v504) applies the METAVIR histologic staging of liver fibrosis: given the stage, it
@@ -6076,6 +6091,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/metavir-fibrosis-v504.js
 - `metavir-fibrosis`
+
+### lib/metavir-activity-v505.js
+- `metavir-activity`
 
 ### lib/tb-testing.js
 - `tb-testing`
