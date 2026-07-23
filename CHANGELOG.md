@@ -6,6 +6,22 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v505 — METAVIR activity grade (liver biopsy) tile, 1355 → 1356)
+
+- New `metavir-activity` tile (group G): the METAVIR necroinflammatory activity grade (A0-A3), the second axis
+  of the METAVIR system; completes the pair with the `metavir-fibrosis` stage tile shipped in spec-v504. A
+  METAVIR read is reported as an activity grade **and** a fibrosis stage together (for example A2F3), so
+  shipping one without the other left the read half-described. The pathologist assigns the grade and the tile
+  reports its description. **A0:** none. **A1:** mild. **A2:** moderate. **A3:** severe. Activity describes
+  ongoing necroinflammation; fibrosis describes accumulated scarring — separate axes, and the copy says so. A
+  grade, not a diagnosis, a non-invasive substitute for biopsy, or a treatment decision ([spec-v11] §5.3); the
+  management decision stays with the hepatology team. Grades transcribed (spec-v97) from Bedossa and Poynard
+  1996 (Hepatology), the activity-grading algorithm paper, distinct from the 1994 paper the fibrosis tile
+  cites. No citation-staleness row (a named-author article, no guideline-issuer acronym). New
+  `lib/metavir-activity-v505.js` + `views/group-v505.js` (RV505); +1 META entry, +1 UTILITIES row, a synonym
+  entry (v225 → v226), 7 unit tests + fuzz, corpus rebuilt to 1356. See
+  [docs/spec-v505.md](docs/spec-v505.md). The MCP adapter follows in the next wave.
+
 ### Added (spec-v504 — METAVIR fibrosis stage (liver biopsy) tile, 1354 → 1355)
 
 - New `metavir-fibrosis` tile (group G): the METAVIR histologic staging of liver fibrosis on biopsy (stages
