@@ -468,6 +468,7 @@ import * as fernandezRadiusV489 from '../../lib/fernandez-radius-v489.js';
 import * as ruediAllgowerPilonV490 from '../../lib/ruedi-allgower-pilon-v490.js';
 import * as severinDdhV491 from '../../lib/severin-ddh-v491.js';
 import * as hattrupJohnsonV492 from '../../lib/hattrup-johnson-v492.js';
+import * as lownEctopyV493 from '../../lib/lown-ectopy-v493.js';
 import * as tbTesting from '../../lib/tb-testing.js';
 
 const MODULES = {
@@ -881,6 +882,7 @@ const MODULES = {
   'ruedi-allgower-pilon-v490.js': ruediAllgowerPilonV490,
   'severin-ddh-v491.js': severinDdhV491,
   'hattrup-johnson-v492.js': hattrupJohnsonV492,
+  'lown-ectopy-v493.js': lownEctopyV493,
   'tb-testing.js': tbTesting,
 };
 

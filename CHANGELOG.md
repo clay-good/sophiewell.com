@@ -6,6 +6,21 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v493 — Lown grade (ventricular ectopy) tile, 1343 → 1344)
+
+- New `lown-ectopy` tile (group G): the Lown grading system for ventricular ectopy on an ambulatory ECG
+  (Holter) recording, by the frequency and form of the ventricular ectopic beats (grades 0-5 with the 4A/4B
+  split); previously absent — no catalog tile mentioned ectopy at all. The clinician picks the grade and the
+  tile reports its description. **0:** none. **1:** occasional isolated beats, fewer than 30 per hour.
+  **2:** frequent beats, 30 or more per hour. **3:** multiform. **4A:** couplets. **4B:** salvos, three or more
+  consecutive beats. **5:** the R-on-T phenomenon. A grade, not a diagnosis, an antiarrhythmic decision, or a
+  sudden-death risk prediction ([spec-v11] §5.3); the management decision stays with the cardiology team. Bare
+  `4` is rejected so the 4A/4B split stays explicit. Companions the Vaughan Williams antiarrhythmic tile.
+  Grades transcribed (spec-v97) from Lown and Wolf 1971 (Circulation). No citation-staleness row (a
+  named-author article, no guideline-issuer acronym). New `lib/lown-ectopy-v493.js` + `views/group-v493.js`
+  (RV493); +1 META entry, +1 UTILITIES row, a synonym entry (v213 → v214), 9 unit tests + fuzz, corpus rebuilt
+  to 1344. See [docs/spec-v493.md](docs/spec-v493.md). The MCP adapter follows in the next wave.
+
 ### Added (spec-v492 — Hattrup-Johnson grade (hallux rigidus) tile, 1342 → 1343)
 
 - New `hattrup-johnson` tile (group G): the Hattrup-Johnson classification of hallux rigidus (first-MTP
