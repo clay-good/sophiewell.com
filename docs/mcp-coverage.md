@@ -1502,6 +1502,20 @@ round-trip both pass, without the phantom "2". Adapter appended to the existing
 rate to a target PaCO2. Brings the exposed total to **1072 calculators across 197
 modules**.
 
+## Three-hundred-twentieth wave — the Ranawat classification (rheumatoid cervical myelopathy) in lib/ranawat-myelopathy-v495.js (+1)
+
+`ranawat-myelopathy` (spec-v495) applies the Ranawat classification of the rheumatoid cervical spine: given the
+class, it reports the neurologic-deficit description. `klass` is an enum (`kind: 'enum'`, values I/II/IIIA/IIIB)
+— the single input the renderer exposes; bare `III` is deliberately absent from the enum so the ambulation
+split stays explicit. The example sets class IIIA; its expected text carries no numeric facts (the description
+is word-only), so it flows through the default `makeToArgs` with no custom toArgs. New adapter module
+registered in `mcp/catalog.js`; its golden probe ("ranawat class rheumatoid cervical myelopathy") is promoted
+now that the tile is in the MCP-exposed registry. Brings the exposed total to **1283 calculators across 399
+modules**.
+
+### lib/ranawat-myelopathy-v495.js
+- `ranawat-myelopathy`
+
 ## Three-hundred-nineteenth wave — the INTERMACS profile (advanced heart failure) in lib/intermacs-profile-v494.js (+1)
 
 `intermacs-profile` (spec-v494) applies the INTERMACS profiles of advanced heart failure: given the profile, it
@@ -5914,6 +5928,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/intermacs-profile-v494.js
 - `intermacs-profile`
+
+### lib/ranawat-myelopathy-v495.js
+- `ranawat-myelopathy`
 
 ### lib/tb-testing.js
 - `tb-testing`
