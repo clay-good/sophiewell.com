@@ -1502,6 +1502,24 @@ round-trip both pass, without the phantom "2". Adapter appended to the existing
 rate to a target PaCO2. Brings the exposed total to **1072 calculators across 197
 modules**.
 
+## Three-hundred-thirty-third wave — the Voice Handicap Index-10 in lib/vhi10-v508.js (+1)
+
+`vhi10` (spec-v508) sums the ten VHI-10 items into a total of 0-40 and compares it to the commonly cited
+abnormal threshold of 11. The adapter's `fields` array is **generated** from the lib's exported `VHI10_ITEMS`,
+so the renderer, the adapter labels, and the tests all share one source of item wording. Each item is an enum
+(`kind: 'enum'`, values `'0'`-`'4'`) on dom keys `vhi-q1` … `vhi-q10` mapping to args `v1` … `v10`; all ten are
+in `META.example`, so all ten are required for every caller — correct here, because a partial VHI-10 has no
+total. The example answers total 18; that number and the 40 ceiling are carried by the result band, so it
+flows through the default `makeToArgs` with no custom toArgs. New adapter module registered in
+`mcp/catalog.js`; its golden probe ("voice handicap index vhi 10 score") is promoted now that the tile is in
+the MCP-exposed registry. Brings the exposed total to **1295 calculators across 411 modules**.
+
+> Wave 332 was used by the `hearing-loss-degree` adapter, reverted the same day as a duplicate of the existing
+> `pure-tone-average` tile. That wave number is retired rather than reused.
+
+### lib/vhi10-v508.js
+- `vhi10`
+
 ## Three-hundred-thirty-first wave — the Jerger tympanogram type in lib/jerger-tympanogram-v506.js (+1)
 
 `jerger-tympanogram` (spec-v506) applies the Jerger classification of tympanogram shapes: given the type, it
@@ -6111,6 +6129,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/jerger-tympanogram-v506.js
 - `jerger-tympanogram`
+
+### lib/vhi10-v508.js
+- `vhi10`
 
 ### lib/tb-testing.js
 - `tb-testing`

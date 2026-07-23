@@ -540,6 +540,7 @@ const PROBES = [
   ['metavir fibrosis stage liver biopsy', ['metavir-fibrosis']],
   ['metavir activity grade necroinflammatory', ['metavir-activity']],
   ['jerger tympanogram type tympanometry', ['jerger-tympanogram']],
+  ['voice handicap index vhi 10 score', ['vhi10']],
 ];
 
 test(`every golden probe routes an acceptable tile into the top ${TOP_N}`, () => {
