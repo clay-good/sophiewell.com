@@ -418,7 +418,6 @@ import simpsonMeningiomaV503 from './adapters/simpson-meningioma-v503.js';
 import metavirFibrosisV504 from './adapters/metavir-fibrosis-v504.js';
 import metavirActivityV505 from './adapters/metavir-activity-v505.js';
 import jergerTympanogramV506 from './adapters/jerger-tympanogram-v506.js';
-import hearingLossDegreeV507 from './adapters/hearing-loss-degree-v507.js';
 import tbTesting from './adapters/tb-testing.js';
 import labInterpret from './adapters/lab-interpret.js';
 import decisionRulesV258 from './adapters/decision-rules-v258.js';
@@ -831,7 +830,6 @@ const ADAPTER_MODULES = [
   ['metavir-fibrosis-v504', metavirFibrosisV504],
   ['metavir-activity-v505', metavirActivityV505],
   ['jerger-tympanogram-v506', jergerTympanogramV506],
-  ['hearing-loss-degree-v507', hearingLossDegreeV507],
   ['tb-testing', tbTesting],
   ['lab-interpret', labInterpret],
   ['decision-rules-v258', decisionRulesV258],

@@ -1502,20 +1502,6 @@ round-trip both pass, without the phantom "2". Adapter appended to the existing
 rate to a target PaCO2. Brings the exposed total to **1072 calculators across 197
 modules**.
 
-## Three-hundred-thirty-second wave — the degree of hearing loss (pure-tone average) in lib/hearing-loss-degree-v507.js (+1)
-
-`hearing-loss-degree` (spec-v507) bands a pure-tone average in dB HL into a degree of hearing loss. Unlike the
-recent enum adapters this one exposes a **number** field: `pta` (`kind: 'number'`), the PTA the clinician has
-already averaged from the audiogram. The example sets 45; both numbers in its expected text (45, and the
-41-to-55 band bounds) are carried by the result, so it flows through the default `makeToArgs` with no custom
-toArgs. Completes the audiology pair with `jerger-tympanogram` (wave 331) — middle-ear function and hearing
-threshold. New adapter module registered in `mcp/catalog.js`; its golden probe ("degree of hearing loss pure
-tone average") is promoted now that the tile is in the MCP-exposed registry. Brings the exposed total to
-**1295 calculators across 411 modules**.
-
-### lib/hearing-loss-degree-v507.js
-- `hearing-loss-degree`
-
 ## Three-hundred-thirty-first wave — the Jerger tympanogram type in lib/jerger-tympanogram-v506.js (+1)
 
 `jerger-tympanogram` (spec-v506) applies the Jerger classification of tympanogram shapes: given the type, it
@@ -6125,9 +6111,6 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/jerger-tympanogram-v506.js
 - `jerger-tympanogram`
-
-### lib/hearing-loss-degree-v507.js
-- `hearing-loss-degree`
 
 ### lib/tb-testing.js
 - `tb-testing`
