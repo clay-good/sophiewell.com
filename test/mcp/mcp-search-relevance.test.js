@@ -531,6 +531,7 @@ const PROBES = [
   ['ranawat class rheumatoid cervical myelopathy', ['ranawat-myelopathy']],
   ['lodwick grade bone lesion aggressiveness', ['lodwick-grade']],
   ['schobinger stage peripheral arteriovenous malformation', ['schobinger-avm']],
+  ['narakas group obstetric brachial plexus palsy', ['narakas-obpp']],
 ];
 
 test(`every golden probe routes an acceptable tile into the top ${TOP_N}`, () => {

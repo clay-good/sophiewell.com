@@ -409,6 +409,7 @@ import intermacsProfileV494 from './adapters/intermacs-profile-v494.js';
 import ranawatMyelopathyV495 from './adapters/ranawat-myelopathy-v495.js';
 import lodwickGradeV496 from './adapters/lodwick-grade-v496.js';
 import schobingerAvmV497 from './adapters/schobinger-avm-v497.js';
+import narakasObppV498 from './adapters/narakas-obpp-v498.js';
 import tbTesting from './adapters/tb-testing.js';
 import labInterpret from './adapters/lab-interpret.js';
 import decisionRulesV258 from './adapters/decision-rules-v258.js';
@@ -812,6 +813,7 @@ const ADAPTER_MODULES = [
   ['ranawat-myelopathy-v495', ranawatMyelopathyV495],
   ['lodwick-grade-v496', lodwickGradeV496],
   ['schobinger-avm-v497', schobingerAvmV497],
+  ['narakas-obpp-v498', narakasObppV498],
   ['tb-testing', tbTesting],
   ['lab-interpret', labInterpret],
   ['decision-rules-v258', decisionRulesV258],

@@ -1502,6 +1502,19 @@ round-trip both pass, without the phantom "2". Adapter appended to the existing
 rate to a target PaCO2. Brings the exposed total to **1072 calculators across 197
 modules**.
 
+## Three-hundred-twenty-third wave — the Narakas classification (obstetric brachial plexus palsy) in lib/narakas-obpp-v498.js (+1)
+
+`narakas-obpp` (spec-v498) applies the Narakas classification of obstetric brachial plexus palsy: given the
+group, it reports the root-involvement description. `group` is an enum (`kind: 'enum'`, values I/II/III/IV) —
+the single input the renderer exposes. The example sets group II; the root labels in its expected text (C5-C7)
+are carried verbatim by the result band, so it flows through the default `makeToArgs` with no custom toArgs.
+New adapter module registered in `mcp/catalog.js`; its golden probe ("narakas group obstetric brachial plexus
+palsy") is promoted now that the tile is in the MCP-exposed registry. Brings the exposed total to **1286
+calculators across 402 modules**.
+
+### lib/narakas-obpp-v498.js
+- `narakas-obpp`
+
 ## Three-hundred-twenty-second wave — the Schobinger staging (peripheral AVM) in lib/schobinger-avm-v497.js (+1)
 
 `schobinger-avm` (spec-v497) applies the Schobinger clinical staging of a peripheral arteriovenous
@@ -5964,6 +5977,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/schobinger-avm-v497.js
 - `schobinger-avm`
+
+### lib/narakas-obpp-v498.js
+- `narakas-obpp`
 
 ### lib/tb-testing.js
 - `tb-testing`
