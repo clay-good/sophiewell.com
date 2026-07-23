@@ -532,6 +532,7 @@ const PROBES = [
   ['lodwick grade bone lesion aggressiveness', ['lodwick-grade']],
   ['schobinger stage peripheral arteriovenous malformation', ['schobinger-avm']],
   ['narakas group obstetric brachial plexus palsy', ['narakas-obpp']],
+  ['dorr type proximal femoral morphology', ['dorr-femur']],
 ];
 
 test(`every golden probe routes an acceptable tile into the top ${TOP_N}`, () => {

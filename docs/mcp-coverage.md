@@ -1502,6 +1502,19 @@ round-trip both pass, without the phantom "2". Adapter appended to the existing
 rate to a target PaCO2. Brings the exposed total to **1072 calculators across 197
 modules**.
 
+## Three-hundred-twenty-fourth wave — the Dorr classification (proximal femoral morphology) in lib/dorr-femur-v499.js (+1)
+
+`dorr-femur` (spec-v499) applies the Dorr classification of proximal femoral bone morphology: given the type,
+it reports the cortical / canal description. `type` is an enum (`kind: 'enum'`, values A/B/C) — the single
+input the renderer exposes. The example sets type B; the canal-to-calcar cut points in its expected text (0.5,
+0.75) are carried by the result band, so it flows through the default `makeToArgs` with no custom toArgs. New
+adapter module registered in `mcp/catalog.js`; its golden probe ("dorr type proximal femoral morphology") is
+promoted now that the tile is in the MCP-exposed registry. Brings the exposed total to **1287 calculators
+across 403 modules**.
+
+### lib/dorr-femur-v499.js
+- `dorr-femur`
+
 ## Three-hundred-twenty-third wave — the Narakas classification (obstetric brachial plexus palsy) in lib/narakas-obpp-v498.js (+1)
 
 `narakas-obpp` (spec-v498) applies the Narakas classification of obstetric brachial plexus palsy: given the
@@ -5980,6 +5993,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/narakas-obpp-v498.js
 - `narakas-obpp`
+
+### lib/dorr-femur-v499.js
+- `dorr-femur`
 
 ### lib/tb-testing.js
 - `tb-testing`
