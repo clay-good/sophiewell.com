@@ -415,6 +415,7 @@ import tegnerActivityV500 from './adapters/tegner-activity-v500.js';
 import ludwigHairlossV501 from './adapters/ludwig-hairloss-v501.js';
 import norwoodHairlossV502 from './adapters/norwood-hairloss-v502.js';
 import simpsonMeningiomaV503 from './adapters/simpson-meningioma-v503.js';
+import metavirFibrosisV504 from './adapters/metavir-fibrosis-v504.js';
 import tbTesting from './adapters/tb-testing.js';
 import labInterpret from './adapters/lab-interpret.js';
 import decisionRulesV258 from './adapters/decision-rules-v258.js';
@@ -824,6 +825,7 @@ const ADAPTER_MODULES = [
   ['ludwig-hairloss-v501', ludwigHairlossV501],
   ['norwood-hairloss-v502', norwoodHairlossV502],
   ['simpson-meningioma-v503', simpsonMeningiomaV503],
+  ['metavir-fibrosis-v504', metavirFibrosisV504],
   ['tb-testing', tbTesting],
   ['lab-interpret', labInterpret],
   ['decision-rules-v258', decisionRulesV258],

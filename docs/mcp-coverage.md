@@ -1502,6 +1502,19 @@ round-trip both pass, without the phantom "2". Adapter appended to the existing
 rate to a target PaCO2. Brings the exposed total to **1072 calculators across 197
 modules**.
 
+## Three-hundred-twenty-ninth wave — the METAVIR fibrosis stage (liver biopsy) in lib/metavir-fibrosis-v504.js (+1)
+
+`metavir-fibrosis` (spec-v504) applies the METAVIR histologic staging of liver fibrosis: given the stage, it
+reports the histologic description. `stage` is an enum (`kind: 'enum'`, values F0-F4) — the single input the
+renderer exposes. The example sets stage F2; the only numbers in its expected text are the stage labels
+themselves, which the result band carries, so it flows through the default `makeToArgs` with no custom toArgs.
+Complements the already-exposed `fib4`, which estimates the same fibrosis non-invasively. New adapter module
+registered in `mcp/catalog.js`; its golden probe ("metavir fibrosis stage liver biopsy") is promoted now that
+the tile is in the MCP-exposed registry. Brings the exposed total to **1292 calculators across 408 modules**.
+
+### lib/metavir-fibrosis-v504.js
+- `metavir-fibrosis`
+
 ## Three-hundred-twenty-eighth wave — the Simpson grade (meningioma resection) in lib/simpson-meningioma-v503.js (+1)
 
 `simpson-meningioma` (spec-v503) applies the Simpson grade of meningioma resection completeness: given the
@@ -6060,6 +6073,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/simpson-meningioma-v503.js
 - `simpson-meningioma`
+
+### lib/metavir-fibrosis-v504.js
+- `metavir-fibrosis`
 
 ### lib/tb-testing.js
 - `tb-testing`

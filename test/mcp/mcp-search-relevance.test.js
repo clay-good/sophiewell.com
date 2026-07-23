@@ -537,6 +537,7 @@ const PROBES = [
   ['ludwig female pattern hair loss grade', ['ludwig-hairloss']],
   ['norwood male pattern hair loss stage', ['norwood-hairloss']],
   ['simpson grade meningioma resection', ['simpson-meningioma']],
+  ['metavir fibrosis stage liver biopsy', ['metavir-fibrosis']],
 ];
 
 test(`every golden probe routes an acceptable tile into the top ${TOP_N}`, () => {
