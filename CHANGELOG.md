@@ -6,6 +6,24 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v502 — Norwood scale (male-pattern hair loss) tile, 1352 → 1353)
+
+- New `norwood-hairloss` tile (group G): the Norwood (Hamilton-Norwood) scale of male-pattern (androgenetic)
+  hair loss (stages I-VII, plus a distinct III vertex); previously absent — `norwood` was zero-hit. Completes
+  the pattern-hair-loss pair with the female-pattern `ludwig-hairloss` tile. The clinician picks the stage and
+  the tile reports its description, by increasing frontotemporal recession and vertex loss: **I** no or minimal
+  recession, **II** triangular recession, **III** the minimal balding extent, **III vertex** crown-predominant
+  loss, **IV** recession and vertex loss separated by a band, **V** the band narrows, **VI** the areas become
+  confluent, **VII** only a horseshoe band remains. A pattern stage, not a diagnosis of androgenetic alopecia,
+  an exclusion of other causes of hair loss, or a treatment decision ([spec-v11] §5.3); the workup and
+  management decision stay with the treating clinician. The synonyms use `norwood` and pattern-specific phrases
+  rather than the bare word "hamilton", which would collide with the Hamilton anxiety/depression tiles. Stages
+  transcribed (spec-v97) from Norwood 1975 (South Med J); the Type A variant series is out of scope. No
+  citation-staleness row (a named-author article, no guideline-issuer acronym). New
+  `lib/norwood-hairloss-v502.js` + `views/group-v502.js` (RV502); +1 META entry, +1 UTILITIES row, a synonym
+  entry (v222 → v223), 7 unit tests + fuzz, corpus rebuilt to 1353. See
+  [docs/spec-v502.md](docs/spec-v502.md). The MCP adapter follows in the next wave.
+
 ### Added (spec-v501 — Ludwig scale (female-pattern hair loss) tile, 1351 → 1352)
 
 - New `ludwig-hairloss` tile (group G): the Ludwig scale of female-pattern (androgenetic) hair loss (grades

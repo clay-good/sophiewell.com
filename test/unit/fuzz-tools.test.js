@@ -477,6 +477,7 @@ import * as narakasObppV498 from '../../lib/narakas-obpp-v498.js';
 import * as dorrFemurV499 from '../../lib/dorr-femur-v499.js';
 import * as tegnerActivityV500 from '../../lib/tegner-activity-v500.js';
 import * as ludwigHairlossV501 from '../../lib/ludwig-hairloss-v501.js';
+import * as norwoodHairlossV502 from '../../lib/norwood-hairloss-v502.js';
 import * as tbTesting from '../../lib/tb-testing.js';
 
 const MODULES = {
@@ -899,6 +900,7 @@ const MODULES = {
   'dorr-femur-v499.js': dorrFemurV499,
   'tegner-activity-v500.js': tegnerActivityV500,
   'ludwig-hairloss-v501.js': ludwigHairlossV501,
+  'norwood-hairloss-v502.js': norwoodHairlossV502,
   'tb-testing.js': tbTesting,
 };
 
