@@ -411,6 +411,7 @@ import lodwickGradeV496 from './adapters/lodwick-grade-v496.js';
 import schobingerAvmV497 from './adapters/schobinger-avm-v497.js';
 import narakasObppV498 from './adapters/narakas-obpp-v498.js';
 import dorrFemurV499 from './adapters/dorr-femur-v499.js';
+import tegnerActivityV500 from './adapters/tegner-activity-v500.js';
 import tbTesting from './adapters/tb-testing.js';
 import labInterpret from './adapters/lab-interpret.js';
 import decisionRulesV258 from './adapters/decision-rules-v258.js';
@@ -816,6 +817,7 @@ const ADAPTER_MODULES = [
   ['schobinger-avm-v497', schobingerAvmV497],
   ['narakas-obpp-v498', narakasObppV498],
   ['dorr-femur-v499', dorrFemurV499],
+  ['tegner-activity-v500', tegnerActivityV500],
   ['tb-testing', tbTesting],
   ['lab-interpret', labInterpret],
   ['decision-rules-v258', decisionRulesV258],

@@ -1502,6 +1502,19 @@ round-trip both pass, without the phantom "2". Adapter appended to the existing
 rate to a target PaCO2. Brings the exposed total to **1072 calculators across 197
 modules**.
 
+## Three-hundred-twenty-fifth wave — the Tegner activity scale (knee) in lib/tegner-activity-v500.js (+1)
+
+`tegner-activity` (spec-v500) applies the Tegner activity scale: given the level, it reports the work / sport
+anchors. `level` is an enum (`kind: 'enum'`, values `'0'`-`'10'`) — the single input the renderer exposes.
+The example sets level 5; the only number in its expected text is the level itself, which the result band
+carries, so it flows through the default `makeToArgs` with no custom toArgs. Completes the Tegner-Lysholm
+pair: `lysholm-knee-score` was already exposed, and the two are reported together. New adapter module
+registered in `mcp/catalog.js`; its golden probe ("tegner activity scale knee level") is promoted now that the
+tile is in the MCP-exposed registry. Brings the exposed total to **1288 calculators across 404 modules**.
+
+### lib/tegner-activity-v500.js
+- `tegner-activity`
+
 ## Three-hundred-twenty-fourth wave — the Dorr classification (proximal femoral morphology) in lib/dorr-femur-v499.js (+1)
 
 `dorr-femur` (spec-v499) applies the Dorr classification of proximal femoral bone morphology: given the type,
@@ -5996,6 +6009,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/dorr-femur-v499.js
 - `dorr-femur`
+
+### lib/tegner-activity-v500.js
+- `tegner-activity`
 
 ### lib/tb-testing.js
 - `tb-testing`
