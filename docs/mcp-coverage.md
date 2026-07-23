@@ -1502,6 +1502,19 @@ round-trip both pass, without the phantom "2". Adapter appended to the existing
 rate to a target PaCO2. Brings the exposed total to **1072 calculators across 197
 modules**.
 
+## Three-hundred-twenty-eighth wave — the Simpson grade (meningioma resection) in lib/simpson-meningioma-v503.js (+1)
+
+`simpson-meningioma` (spec-v503) applies the Simpson grade of meningioma resection completeness: given the
+grade, it reports the resection description. `grade` is an enum (`kind: 'enum'`, values I/II/III/IV/V) — the
+single input the renderer exposes. The example sets grade II; its expected text carries no numeric facts (the
+description is word-only), so it flows through the default `makeToArgs` with no custom toArgs. New adapter
+module registered in `mcp/catalog.js`; its golden probe ("simpson grade meningioma resection") is promoted now
+that the tile is in the MCP-exposed registry. Brings the exposed total to **1291 calculators across 407
+modules**.
+
+### lib/simpson-meningioma-v503.js
+- `simpson-meningioma`
+
 ## Three-hundred-twenty-seventh wave — the Norwood scale (male-pattern hair loss) in lib/norwood-hairloss-v502.js (+1)
 
 `norwood-hairloss` (spec-v502) applies the Norwood (Hamilton-Norwood) scale of male-pattern hair loss: given
@@ -6044,6 +6057,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/norwood-hairloss-v502.js
 - `norwood-hairloss`
+
+### lib/simpson-meningioma-v503.js
+- `simpson-meningioma`
 
 ### lib/tb-testing.js
 - `tb-testing`
