@@ -6,6 +6,22 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v499 — Dorr classification (proximal femoral morphology) tile, 1349 → 1350)
+
+- New `dorr-femur` tile (group G): the Dorr classification of proximal femoral bone morphology on a plain
+  radiograph, from the cortical thickness and the canal-to-calcar ratio (types A / B / C); previously absent —
+  `dorr`, `canal calcar`, `stovepipe`, and `champagne flute` were all zero-hit. The clinician picks the type
+  and the tile reports its description. **A:** the champagne-flute femur, thick medial and posterior cortices
+  and a narrow canal, ratio below 0.5. **B:** intermediate, ratio 0.5 to 0.75. **C:** the stovepipe femur,
+  extensive cortical loss and a wide canal, ratio above 0.75. A morphologic type, not a diagnosis, a
+  bone-quality or osteoporosis diagnosis, or a cemented-versus-cementless stem recommendation ([spec-v11] §5.3);
+  the implant decision stays with the arthroplasty surgeon. Fills the *pre*-operative axis of the arthroplasty
+  cluster, whose existing tiles (`barrack-cement`, `vancouver-periprosthetic`, `brooker`) are all
+  post-operative. Types transcribed (spec-v97) from Dorr and colleagues 1993 (Bone). No citation-staleness row
+  (a named-author article, no guideline-issuer acronym). New `lib/dorr-femur-v499.js` + `views/group-v499.js`
+  (RV499); +1 META entry, +1 UTILITIES row, a synonym entry (v219 → v220), 6 unit tests + fuzz, corpus rebuilt
+  to 1350. See [docs/spec-v499.md](docs/spec-v499.md). The MCP adapter follows in the next wave.
+
 ### Added (spec-v498 — Narakas classification (obstetric brachial plexus palsy) tile, 1348 → 1349)
 
 - New `narakas-obpp` tile (group G): the Narakas classification of obstetric brachial plexus palsy by root
