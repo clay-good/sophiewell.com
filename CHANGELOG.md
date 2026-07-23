@@ -6,6 +6,22 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v495 — Ranawat classification (rheumatoid cervical myelopathy) tile, 1345 → 1346)
+
+- New `ranawat-myelopathy` tile (group G): the Ranawat classification of the neurologic deficit of the
+  rheumatoid cervical spine (classes I / II / IIIA / IIIB); previously absent — the only `ranawat` mention in
+  the corpus was a co-author credit on the Crowe DDH tile. The clinician picks the class and the tile reports
+  its description. **I:** pain, no neural deficit. **II:** subjective weakness with dysesthesias and
+  hyperreflexia. **IIIA:** objective weakness and long-tract signs, ambulatory. **IIIB:** the same,
+  non-ambulatory. A class, not a diagnosis, a decision to operate, or a prognosis ([spec-v11] §5.3); the
+  management decision stays with the spine team. Bare `III` is rejected so the ambulation split stays explicit.
+  Companions the `nurick` and `mjoa` cervical-myelopathy tiles, which grade the spondylotic form. Classes
+  transcribed (spec-v97) from Ranawat and colleagues 1979 (J Bone Joint Surg Am). No citation-staleness row (a
+  named-author article, no guideline-issuer acronym). New `lib/ranawat-myelopathy-v495.js` +
+  `views/group-v495.js` (RV495); +1 META entry, +1 UTILITIES row, a synonym entry (v215 → v216), 6 unit tests +
+  fuzz, corpus rebuilt to 1346. See [docs/spec-v495.md](docs/spec-v495.md). The MCP adapter follows in the next
+  wave.
+
 ### Added (spec-v494 — INTERMACS profile (advanced heart failure) tile, 1344 → 1345)
 
 - New `intermacs-profile` tile (group G): the INTERMACS profiles of advanced heart failure, the clinical-severity
