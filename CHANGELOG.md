@@ -6,6 +6,24 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v506 — Jerger tympanogram type tile, 1356 → 1357)
+
+- New `jerger-tympanogram` tile (group G): the Jerger classification of tympanogram shapes (types A / As / Ad /
+  B / C), by the peak pressure and peak compliance of the tracing; previously absent — tympanometry was
+  uncovered entirely (`tympanogram`, `tympanometry`, `audiogram`, `middle ear`, `jerger` all zero-hit), the
+  catalog's only otology tile being `sade-retraction`. The type is read off the tracing and the tile reports
+  its description. **A:** normal peak, normal pressure and compliance. **As:** shallow peak, reduced compliance
+  (a stiff system). **Ad:** deep peak, abnormally high compliance. **B:** flat, no identifiable peak. **C:**
+  peak at significantly negative pressure. A tracing type, not a diagnosis, a hearing-loss severity, or a
+  decision about tube placement ([spec-v11] §5.3); the classic cause associations are stated descriptively, and
+  type B deliberately names **both** canal-volume readings (effusion at a normal volume; perforation or patent
+  tube at a large volume) rather than asserting one — a unit test pins that both appear. The management
+  decision stays with the audiology and ENT team. Types transcribed (spec-v97) from Jerger 1970 (Arch
+  Otolaryngol). No citation-staleness row (a named-author article, no guideline-issuer acronym). New
+  `lib/jerger-tympanogram-v506.js` + `views/group-v506.js` (RV506); +1 META entry, +1 UTILITIES row, a synonym
+  entry (v226 → v227), 7 unit tests + fuzz, corpus rebuilt to 1357. See
+  [docs/spec-v506.md](docs/spec-v506.md). The MCP adapter follows in the next wave.
+
 ### Added (spec-v505 — METAVIR activity grade (liver biopsy) tile, 1355 → 1356)
 
 - New `metavir-activity` tile (group G): the METAVIR necroinflammatory activity grade (A0-A3), the second axis
