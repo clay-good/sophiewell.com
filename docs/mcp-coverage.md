@@ -1502,6 +1502,19 @@ round-trip both pass, without the phantom "2". Adapter appended to the existing
 rate to a target PaCO2. Brings the exposed total to **1072 calculators across 197
 modules**.
 
+## Three-hundred-twenty-first wave — the Lodwick grade (bone lesion aggressiveness) in lib/lodwick-grade-v496.js (+1)
+
+`lodwick-grade` (spec-v496) applies the Lodwick grading of a focal bone lesion: given the grade, it reports the
+margin / destruction-pattern description. `grade` is an enum (`kind: 'enum'`, values IA/IB/IC/II/III) — the
+single input the renderer exposes; bare `I` is deliberately absent from the enum because it is ambiguous across
+IA/IB/IC. The example sets grade IC; its expected text carries no numeric facts (the description is word-only),
+so it flows through the default `makeToArgs` with no custom toArgs. New adapter module registered in
+`mcp/catalog.js`; its golden probe ("lodwick grade bone lesion aggressiveness") is promoted now that the tile
+is in the MCP-exposed registry. Brings the exposed total to **1284 calculators across 400 modules**.
+
+### lib/lodwick-grade-v496.js
+- `lodwick-grade`
+
 ## Three-hundred-twentieth wave — the Ranawat classification (rheumatoid cervical myelopathy) in lib/ranawat-myelopathy-v495.js (+1)
 
 `ranawat-myelopathy` (spec-v495) applies the Ranawat classification of the rheumatoid cervical spine: given the
@@ -5931,6 +5944,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/ranawat-myelopathy-v495.js
 - `ranawat-myelopathy`
+
+### lib/lodwick-grade-v496.js
+- `lodwick-grade`
 
 ### lib/tb-testing.js
 - `tb-testing`

@@ -407,6 +407,7 @@ import hattrupJohnsonV492 from './adapters/hattrup-johnson-v492.js';
 import lownEctopyV493 from './adapters/lown-ectopy-v493.js';
 import intermacsProfileV494 from './adapters/intermacs-profile-v494.js';
 import ranawatMyelopathyV495 from './adapters/ranawat-myelopathy-v495.js';
+import lodwickGradeV496 from './adapters/lodwick-grade-v496.js';
 import tbTesting from './adapters/tb-testing.js';
 import labInterpret from './adapters/lab-interpret.js';
 import decisionRulesV258 from './adapters/decision-rules-v258.js';
@@ -808,6 +809,7 @@ const ADAPTER_MODULES = [
   ['lown-ectopy-v493', lownEctopyV493],
   ['intermacs-profile-v494', intermacsProfileV494],
   ['ranawat-myelopathy-v495', ranawatMyelopathyV495],
+  ['lodwick-grade-v496', lodwickGradeV496],
   ['tb-testing', tbTesting],
   ['lab-interpret', labInterpret],
   ['decision-rules-v258', decisionRulesV258],
