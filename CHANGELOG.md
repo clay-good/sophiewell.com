@@ -6,6 +6,22 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v498 — Narakas classification (obstetric brachial plexus palsy) tile, 1348 → 1349)
+
+- New `narakas-obpp` tile (group G): the Narakas classification of obstetric brachial plexus palsy by root
+  involvement (groups I-IV); previously absent — `brachial plexus` was zero-hit across the whole corpus. The
+  clinician picks the group and the tile reports its description. **I:** C5-C6, the upper trunk (Erb palsy).
+  **II:** C5-C7, adding wrist and finger extension. **III:** C5-T1, a complete flaccid limb without Horner
+  syndrome. **IV:** C5-T1 with Horner syndrome. A group, not a diagnosis, a decision to refer for nerve
+  reconstruction, and **not a recovery prediction for an individual infant** ([spec-v11] §5.3); the groups are
+  ordered by increasing extent of root involvement, and the tile states that ordering as anatomy rather than
+  prognosis. The management decision stays with the brachial-plexus team. Complements `seddon-sunderland`,
+  which grades the degree of injury to a nerve rather than which roots are involved. Groups transcribed
+  (spec-v97) from Narakas 1987 (The Paralysed Hand). No citation-staleness row (a named-author book chapter, no
+  guideline-issuer acronym). New `lib/narakas-obpp-v498.js` + `views/group-v498.js` (RV498); +1 META entry, +1
+  UTILITIES row, a synonym entry (v218 → v219), 6 unit tests + fuzz, corpus rebuilt to 1349. See
+  [docs/spec-v498.md](docs/spec-v498.md). The MCP adapter follows in the next wave.
+
 ### Added (spec-v497 — Schobinger staging (peripheral AVM) tile, 1347 → 1348)
 
 - New `schobinger-avm` tile (group G): the Schobinger clinical staging of a peripheral (extracranial)
