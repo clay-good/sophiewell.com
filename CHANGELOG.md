@@ -6,6 +6,23 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v496 — Lodwick grade (bone lesion aggressiveness) tile, 1346 → 1347)
+
+- New `lodwick-grade` tile (group G): the Lodwick grading of the radiographic aggressiveness of a focal bone
+  lesion, read from the lesion margin and the pattern of bone destruction (grades IA / IB / IC / II / III);
+  previously absent — `lodwick`, `moth-eaten`, `permeative`, and `geographic` were all zero-hit across the
+  corpus. The clinician picks the grade and the tile reports its description. **IA:** geographic with a
+  sclerotic margin. **IB:** geographic, well-defined, no sclerotic rim. **IC:** geographic with an ill-defined
+  margin. **II:** geographic with moth-eaten or permeative areas. **III:** moth-eaten or permeative throughout.
+  A grade, not a diagnosis, a benign-or-malignant call, a biopsy decision, or a prognosis ([spec-v11] §5.3); a
+  higher grade indicates a faster-growing, more aggressive-appearing lesion, not a specific tumor. Bare `I` is
+  rejected as ambiguous across IA/IB/IC. Complements the `enneking` surgical-staging and `mirels-score`
+  fracture-risk tiles, which grade different axes. Grades transcribed (spec-v97) from Lodwick and colleagues
+  1980 (Radiology). No citation-staleness row (a named-author article, no guideline-issuer acronym). New
+  `lib/lodwick-grade-v496.js` + `views/group-v496.js` (RV496); +1 META entry, +1 UTILITIES row, a synonym entry
+  (v216 → v217), 6 unit tests + fuzz, corpus rebuilt to 1347. See [docs/spec-v496.md](docs/spec-v496.md). The
+  MCP adapter follows in the next wave.
+
 ### Added (spec-v495 — Ranawat classification (rheumatoid cervical myelopathy) tile, 1345 → 1346)
 
 - New `ranawat-myelopathy` tile (group G): the Ranawat classification of the neurologic deficit of the

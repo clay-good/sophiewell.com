@@ -471,6 +471,7 @@ import * as hattrupJohnsonV492 from '../../lib/hattrup-johnson-v492.js';
 import * as lownEctopyV493 from '../../lib/lown-ectopy-v493.js';
 import * as intermacsProfileV494 from '../../lib/intermacs-profile-v494.js';
 import * as ranawatMyelopathyV495 from '../../lib/ranawat-myelopathy-v495.js';
+import * as lodwickGradeV496 from '../../lib/lodwick-grade-v496.js';
 import * as tbTesting from '../../lib/tb-testing.js';
 
 const MODULES = {
@@ -887,6 +888,7 @@ const MODULES = {
   'lown-ectopy-v493.js': lownEctopyV493,
   'intermacs-profile-v494.js': intermacsProfileV494,
   'ranawat-myelopathy-v495.js': ranawatMyelopathyV495,
+  'lodwick-grade-v496.js': lodwickGradeV496,
   'tb-testing.js': tbTesting,
 };
 
