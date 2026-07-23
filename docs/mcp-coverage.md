@@ -1502,6 +1502,20 @@ round-trip both pass, without the phantom "2". Adapter appended to the existing
 rate to a target PaCO2. Brings the exposed total to **1072 calculators across 197
 modules**.
 
+## Three-hundred-twenty-seventh wave — the Norwood scale (male-pattern hair loss) in lib/norwood-hairloss-v502.js (+1)
+
+`norwood-hairloss` (spec-v502) applies the Norwood (Hamilton-Norwood) scale of male-pattern hair loss: given
+the stage, it reports the recession / vertex description. `stage` is an enum (`kind: 'enum'`, values I..VII
+plus `III vertex`) — the single input the renderer exposes. The example sets stage IV; its expected text
+carries no numeric facts (the description is word-only), so it flows through the default `makeToArgs` with no
+custom toArgs. Completes the pattern-hair-loss pair with `ludwig-hairloss` (the female pattern). New adapter
+module registered in `mcp/catalog.js`; its golden probe ("norwood male pattern hair loss stage") is promoted
+now that the tile is in the MCP-exposed registry. Brings the exposed total to **1290 calculators across 406
+modules**.
+
+### lib/norwood-hairloss-v502.js
+- `norwood-hairloss`
+
 ## Three-hundred-twenty-sixth wave — the Ludwig scale (female-pattern hair loss) in lib/ludwig-hairloss-v501.js (+1)
 
 `ludwig-hairloss` (spec-v501) applies the Ludwig scale of female-pattern hair loss: given the grade, it reports
@@ -6027,6 +6041,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/ludwig-hairloss-v501.js
 - `ludwig-hairloss`
+
+### lib/norwood-hairloss-v502.js
+- `norwood-hairloss`
 
 ### lib/tb-testing.js
 - `tb-testing`

@@ -535,6 +535,7 @@ const PROBES = [
   ['dorr type proximal femoral morphology', ['dorr-femur']],
   ['tegner activity scale knee level', ['tegner-activity']],
   ['ludwig female pattern hair loss grade', ['ludwig-hairloss']],
+  ['norwood male pattern hair loss stage', ['norwood-hairloss']],
 ];
 
 test(`every golden probe routes an acceptable tile into the top ${TOP_N}`, () => {
