@@ -475,6 +475,7 @@ import * as lodwickGradeV496 from '../../lib/lodwick-grade-v496.js';
 import * as schobingerAvmV497 from '../../lib/schobinger-avm-v497.js';
 import * as narakasObppV498 from '../../lib/narakas-obpp-v498.js';
 import * as dorrFemurV499 from '../../lib/dorr-femur-v499.js';
+import * as tegnerActivityV500 from '../../lib/tegner-activity-v500.js';
 import * as tbTesting from '../../lib/tb-testing.js';
 
 const MODULES = {
@@ -895,6 +896,7 @@ const MODULES = {
   'schobinger-avm-v497.js': schobingerAvmV497,
   'narakas-obpp-v498.js': narakasObppV498,
   'dorr-femur-v499.js': dorrFemurV499,
+  'tegner-activity-v500.js': tegnerActivityV500,
   'tb-testing.js': tbTesting,
 };
 

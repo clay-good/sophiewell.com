@@ -6,6 +6,26 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v500 — Tegner activity scale (knee) tile, 1350 → 1351)
+
+- New `tegner-activity` tile (group G): the Tegner activity scale (levels 0-10); previously absent — `tegner`
+  routed to nothing even though the catalog already had `lysholm-knee-score`, and Tegner and Lysholm published
+  the two instruments in the same 1985 paper. They are normally reported together: the Lysholm score measures
+  symptoms, the Tegner scale records the activity level those symptoms are measured against. The level is
+  selected and the tile reports its work / sport anchors. **0:** sick leave or a disability pension because of
+  knee problems. **1-3:** sedentary to light labor. **4-5:** moderately heavy to heavy labor. **6-7:**
+  recreational racquet sports and frequent jogging up to competitive tennis or running. **8-10:** competitive
+  sport, topping out at national elite team sport. An **activity-level descriptor, not a pathology grade** — no
+  level is "abnormal" (same pattern as the Karnofsky / ECOG / Tanner / Risser / Schwab-England tiles). Not a
+  diagnosis, **not a return-to-sport clearance**, and not a prediction of what the knee will tolerate
+  ([spec-v11] §5.3); the return-to-play decision stays with the treating clinician. Levels transcribed
+  (spec-v97) from Tegner and Lysholm 1985 (Clin Orthop Relat Res); each level names the representative work and
+  sport anchors the source lists, and the copy says so rather than implying an exhaustive list. No
+  citation-staleness row (a named-author article, no guideline-issuer acronym). New
+  `lib/tegner-activity-v500.js` + `views/group-v500.js` (RV500); +1 META entry, +1 UTILITIES row, a synonym
+  entry (v220 → v221), 7 unit tests + fuzz, corpus rebuilt to 1351. See
+  [docs/spec-v500.md](docs/spec-v500.md). The MCP adapter follows in the next wave.
+
 ### Added (spec-v499 — Dorr classification (proximal femoral morphology) tile, 1349 → 1350)
 
 - New `dorr-femur` tile (group G): the Dorr classification of proximal femoral bone morphology on a plain
