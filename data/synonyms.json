@@ -1,5 +1,5 @@
 {
-  "version": "v221-2026-07-23",
+  "version": "v222-2026-07-23",
   "note": "spec-v7 section 3.2: hand-curated patient-phrasing -> tile id table. Each entry maps patient-mental-model phrases (and, from the v8/v9 plain-language-search batches, clinical abbreviations, eponym aliases, and canonical-intent phrases) to a single existing tile. Audience is the primary audience the entry serves; the matcher deprioritizes (does not hide) entries when the user has selected a different chip. Every phrase is lowercase; every tile id is an existing catalog tile (guarded by test/unit/synonyms-catalog.test.js). Adding a new phrase is a one-line PR.",
   "entries": [
     { "phrases": ["denied", "denial letter", "they denied it", "insurance said no", "appeal", "write an appeal", "appeal my claim", "appeal letter", "appeal a denial"],
@@ -586,6 +586,8 @@
     { "phrases": ["dorr", "dorr classification", "dorr type", "proximal femoral morphology", "femoral bone morphology type", "stovepipe femur", "champagne flute femur"],
       "tile": "dorr-femur", "audience": "clinicians" },
     { "phrases": ["tegner", "tegner scale", "tegner activity scale", "tegner activity level", "knee activity level", "knee activity scale"],
-      "tile": "tegner-activity", "audience": "clinicians" }
+      "tile": "tegner-activity", "audience": "clinicians" },
+    { "phrases": ["ludwig", "ludwig scale", "ludwig grade", "female pattern hair loss", "female androgenetic alopecia grade", "crown thinning grade", "female hair loss scale"],
+      "tile": "ludwig-hairloss", "audience": "clinicians" }
   ]
 }

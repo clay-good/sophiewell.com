@@ -6,6 +6,22 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v501 — Ludwig scale (female-pattern hair loss) tile, 1351 → 1352)
+
+- New `ludwig-hairloss` tile (group G): the Ludwig scale of female-pattern (androgenetic) hair loss (grades
+  I / II / III); previously absent — the catalog graded alopecia areata (`salt-score`) but nothing for pattern
+  hair loss, and `ludwig` / `female pattern hair loss` were zero-hit. The clinician picks the grade and the
+  tile reports its description. **I:** perceptible crown thinning behind a retained frontal fringe. **II:**
+  pronounced thinning within that area. **III:** full baldness within that area. The frontal hairline is
+  preserved throughout. A pattern grade, not a diagnosis of androgenetic alopecia, an exclusion of other causes
+  of hair loss (thyroid disease, iron deficiency, telogen effluvium), or a treatment decision ([spec-v11]
+  §5.3); the workup and management decision stay with the treating clinician. Complements the `salt-score`
+  alopecia-areata tile. Grades transcribed (spec-v97) from Ludwig 1977 (Br J Dermatol). No citation-staleness
+  row (a named-author article, no guideline-issuer acronym). New `lib/ludwig-hairloss-v501.js` +
+  `views/group-v501.js` (RV501); +1 META entry, +1 UTILITIES row, a synonym entry (v221 → v222), 6 unit tests +
+  fuzz, corpus rebuilt to 1352. See [docs/spec-v501.md](docs/spec-v501.md). The MCP adapter follows in the next
+  wave.
+
 ### Added (spec-v500 — Tegner activity scale (knee) tile, 1350 → 1351)
 
 - New `tegner-activity` tile (group G): the Tegner activity scale (levels 0-10); previously absent — `tegner`
