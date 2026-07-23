@@ -469,6 +469,7 @@ import * as ruediAllgowerPilonV490 from '../../lib/ruedi-allgower-pilon-v490.js'
 import * as severinDdhV491 from '../../lib/severin-ddh-v491.js';
 import * as hattrupJohnsonV492 from '../../lib/hattrup-johnson-v492.js';
 import * as lownEctopyV493 from '../../lib/lown-ectopy-v493.js';
+import * as intermacsProfileV494 from '../../lib/intermacs-profile-v494.js';
 import * as tbTesting from '../../lib/tb-testing.js';
 
 const MODULES = {
@@ -883,6 +884,7 @@ const MODULES = {
   'severin-ddh-v491.js': severinDdhV491,
   'hattrup-johnson-v492.js': hattrupJohnsonV492,
   'lown-ectopy-v493.js': lownEctopyV493,
+  'intermacs-profile-v494.js': intermacsProfileV494,
   'tb-testing.js': tbTesting,
 };
 

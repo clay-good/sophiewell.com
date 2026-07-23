@@ -1,5 +1,5 @@
 {
-  "version": "v214-2026-07-23",
+  "version": "v215-2026-07-23",
   "note": "spec-v7 section 3.2: hand-curated patient-phrasing -> tile id table. Each entry maps patient-mental-model phrases (and, from the v8/v9 plain-language-search batches, clinical abbreviations, eponym aliases, and canonical-intent phrases) to a single existing tile. Audience is the primary audience the entry serves; the matcher deprioritizes (does not hide) entries when the user has selected a different chip. Every phrase is lowercase; every tile id is an existing catalog tile (guarded by test/unit/synonyms-catalog.test.js). Adding a new phrase is a one-line PR.",
   "entries": [
     { "phrases": ["denied", "denial letter", "they denied it", "insurance said no", "appeal", "write an appeal", "appeal my claim", "appeal letter", "appeal a denial"],
@@ -572,6 +572,8 @@
     { "phrases": ["hattrup johnson", "hattrup johnson classification", "hallux rigidus grade", "hallux rigidus classification", "first mtp osteoarthritis grade", "hattrup grade", "big toe arthritis grade", "hallux rigidus staging"],
       "tile": "hattrup-johnson", "audience": "clinicians" },
     { "phrases": ["lown", "lown grade", "lown grading", "lown wolf", "ventricular ectopy grade", "ventricular ectopy classification", "pvc grade", "holter ectopy grade"],
-      "tile": "lown-ectopy", "audience": "clinicians" }
+      "tile": "lown-ectopy", "audience": "clinicians" },
+    { "phrases": ["intermacs", "intermacs profile", "intermacs classification", "advanced heart failure profile", "mechanical circulatory support profile", "lvad candidacy profile", "inotrope dependent profile"],
+      "tile": "intermacs-profile", "audience": "clinicians" }
   ]
 }

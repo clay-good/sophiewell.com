@@ -6,6 +6,21 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v494 — INTERMACS profile (advanced heart failure) tile, 1344 → 1345)
+
+- New `intermacs-profile` tile (group G): the INTERMACS profiles of advanced heart failure, the clinical-severity
+  descriptor used when mechanical circulatory support is being considered (profiles 1-7); previously absent — no
+  catalog tile mentioned circulatory support at all. The clinician picks the profile and the tile reports its
+  description. **1:** critical cardiogenic shock. **2:** progressive decline on inotropes. **3:** stable but
+  inotrope dependent. **4:** resting symptoms. **5:** exertion intolerant. **6:** exertion limited.
+  **7:** advanced NYHA class III. A profile, not a diagnosis, a device or transplant decision, or a survival
+  prediction ([spec-v11] §5.3); the management decision stays with the advanced-heart-failure team. Companions
+  the `nyha-class` tile, which profile 7 is defined against. Profiles transcribed (spec-v97) from Stevenson and
+  colleagues 2009 (J Heart Lung Transplant). No citation-staleness row (a named-author article; INTERMACS is not
+  a guideline-issuer acronym). New `lib/intermacs-profile-v494.js` + `views/group-v494.js` (RV494); +1 META
+  entry, +1 UTILITIES row, a synonym entry (v214 → v215), 8 unit tests + fuzz, corpus rebuilt to 1345. See
+  [docs/spec-v494.md](docs/spec-v494.md). The MCP adapter follows in the next wave.
+
 ### Added (spec-v493 — Lown grade (ventricular ectopy) tile, 1343 → 1344)
 
 - New `lown-ectopy` tile (group G): the Lown grading system for ventricular ectopy on an ambulatory ECG
