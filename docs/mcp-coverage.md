@@ -1502,6 +1502,18 @@ round-trip both pass, without the phantom "2". Adapter appended to the existing
 rate to a target PaCO2. Brings the exposed total to **1072 calculators across 197
 modules**.
 
+## Three-hundred-twenty-sixth wave — the Ludwig scale (female-pattern hair loss) in lib/ludwig-hairloss-v501.js (+1)
+
+`ludwig-hairloss` (spec-v501) applies the Ludwig scale of female-pattern hair loss: given the grade, it reports
+the crown-thinning description. `grade` is an enum (`kind: 'enum'`, values I/II/III) — the single input the
+renderer exposes. The example sets grade II; its expected text carries no numeric facts (the description is
+word-only), so it flows through the default `makeToArgs` with no custom toArgs. New adapter module registered
+in `mcp/catalog.js`; its golden probe ("ludwig female pattern hair loss grade") is promoted now that the tile
+is in the MCP-exposed registry. Brings the exposed total to **1289 calculators across 405 modules**.
+
+### lib/ludwig-hairloss-v501.js
+- `ludwig-hairloss`
+
 ## Three-hundred-twenty-fifth wave — the Tegner activity scale (knee) in lib/tegner-activity-v500.js (+1)
 
 `tegner-activity` (spec-v500) applies the Tegner activity scale: given the level, it reports the work / sport
@@ -6012,6 +6024,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/tegner-activity-v500.js
 - `tegner-activity`
+
+### lib/ludwig-hairloss-v501.js
+- `ludwig-hairloss`
 
 ### lib/tb-testing.js
 - `tb-testing`
