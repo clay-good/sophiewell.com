@@ -482,6 +482,7 @@ import * as simpsonMeningiomaV503 from '../../lib/simpson-meningioma-v503.js';
 import * as metavirFibrosisV504 from '../../lib/metavir-fibrosis-v504.js';
 import * as metavirActivityV505 from '../../lib/metavir-activity-v505.js';
 import * as jergerTympanogramV506 from '../../lib/jerger-tympanogram-v506.js';
+import * as vhi10V508 from '../../lib/vhi10-v508.js';
 import * as tbTesting from '../../lib/tb-testing.js';
 
 const MODULES = {
@@ -909,6 +910,7 @@ const MODULES = {
   'metavir-fibrosis-v504.js': metavirFibrosisV504,
   'metavir-activity-v505.js': metavirActivityV505,
   'jerger-tympanogram-v506.js': jergerTympanogramV506,
+  'vhi10-v508.js': vhi10V508,
   'tb-testing.js': tbTesting,
 };
 
