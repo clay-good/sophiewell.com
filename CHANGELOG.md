@@ -6,6 +6,22 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v504 — METAVIR fibrosis stage (liver biopsy) tile, 1354 → 1355)
+
+- New `metavir-fibrosis` tile (group G): the METAVIR histologic staging of liver fibrosis on biopsy (stages
+  F0-F4); previously absent — the catalog had non-invasive fibrosis estimates (FIB-4, NAFLD Fibrosis Score,
+  RDW-to-platelet ratio) but no histologic stage, and `metavir` was zero-hit. The pathologist assigns the stage
+  and the tile reports its description. **F0:** no fibrosis. **F1:** portal fibrosis without septa. **F2:**
+  portal fibrosis with a few septa. **F3:** numerous septa without cirrhosis (bridging fibrosis). **F4:**
+  cirrhosis. A histologic stage, not a diagnosis, a non-invasive substitute for biopsy, or a treatment decision
+  ([spec-v11] §5.3); METAVIR also grades necroinflammatory activity (A0-A3) separately, and this tile reports
+  the fibrosis stage only. The management decision stays with the hepatology team. Complements the serum-marker
+  `fib4` tile, which estimates the same fibrosis non-invasively. Stages transcribed (spec-v97) from the METAVIR
+  Cooperative Study Group 1994 (Hepatology). No citation-staleness row (a named-study-group article, no
+  guideline-issuer acronym). New `lib/metavir-fibrosis-v504.js` + `views/group-v504.js` (RV504); +1 META entry,
+  +1 UTILITIES row, a synonym entry (v224 → v225), 7 unit tests + fuzz, corpus rebuilt to 1355. See
+  [docs/spec-v504.md](docs/spec-v504.md). The MCP adapter follows in the next wave.
+
 ### Added (spec-v503 — Simpson grade (meningioma resection) tile, 1353 → 1354)
 
 - New `simpson-meningioma` tile (group G): the Simpson grade of meningioma resection completeness, recorded by
