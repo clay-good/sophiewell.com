@@ -1502,6 +1502,20 @@ round-trip both pass, without the phantom "2". Adapter appended to the existing
 rate to a target PaCO2. Brings the exposed total to **1072 calculators across 197
 modules**.
 
+## Three-hundred-twenty-second wave — the Schobinger staging (peripheral AVM) in lib/schobinger-avm-v497.js (+1)
+
+`schobinger-avm` (spec-v497) applies the Schobinger clinical staging of a peripheral arteriovenous
+malformation: given the stage, it reports the clinical description. `stage` is an enum (`kind: 'enum'`, values
+I/II/III/IV) — the single input the renderer exposes. Because the staging is cumulative, each band names the
+stage below it. The example sets stage II; its expected text carries no numeric facts (the description is
+word-only), so it flows through the default `makeToArgs` with no custom toArgs. New adapter module registered
+in `mcp/catalog.js`; its golden probe ("schobinger stage peripheral arteriovenous malformation") is promoted
+now that the tile is in the MCP-exposed registry. Brings the exposed total to **1285 calculators across 401
+modules**.
+
+### lib/schobinger-avm-v497.js
+- `schobinger-avm`
+
 ## Three-hundred-twenty-first wave — the Lodwick grade (bone lesion aggressiveness) in lib/lodwick-grade-v496.js (+1)
 
 `lodwick-grade` (spec-v496) applies the Lodwick grading of a focal bone lesion: given the grade, it reports the
@@ -5947,6 +5961,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/lodwick-grade-v496.js
 - `lodwick-grade`
+
+### lib/schobinger-avm-v497.js
+- `schobinger-avm`
 
 ### lib/tb-testing.js
 - `tb-testing`

@@ -530,6 +530,7 @@ const PROBES = [
   ['intermacs profile advanced heart failure', ['intermacs-profile']],
   ['ranawat class rheumatoid cervical myelopathy', ['ranawat-myelopathy']],
   ['lodwick grade bone lesion aggressiveness', ['lodwick-grade']],
+  ['schobinger stage peripheral arteriovenous malformation', ['schobinger-avm']],
 ];
 
 test(`every golden probe routes an acceptable tile into the top ${TOP_N}`, () => {
