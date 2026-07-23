@@ -6,6 +6,22 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v497 — Schobinger staging (peripheral AVM) tile, 1347 → 1348)
+
+- New `schobinger-avm` tile (group G): the Schobinger clinical staging of a peripheral (extracranial)
+  arteriovenous malformation (stages I-IV); previously absent — the catalog graded only *intracranial* AVMs
+  (`spetzler-martin`, `spetzler-ponce`), and `schobinger` / `vascular anomaly` were zero-hit. The clinician
+  picks the stage and the tile reports its description. **I:** quiescence, a warm stain with shunting on
+  Doppler. **II:** expansion, with pulsation, thrill, and bruit. **III:** destruction, with skin breakdown,
+  bleeding, pain, or necrosis. **IV:** decompensation, with high-output cardiac failure. The staging is
+  cumulative — each stage carries the findings of the one below it, and the band text says so. A stage, not a
+  diagnosis, an indication for embolization or resection, or a prognosis ([spec-v11] §5.3); the management
+  decision stays with the vascular-anomalies team. Stages transcribed (spec-v97) from Kohout and colleagues
+  1998 (Plast Reconstr Surg). No citation-staleness row (a named-author article, no guideline-issuer acronym).
+  New `lib/schobinger-avm-v497.js` + `views/group-v497.js` (RV497); +1 META entry, +1 UTILITIES row, a synonym
+  entry (v217 → v218), 7 unit tests + fuzz, corpus rebuilt to 1348. See
+  [docs/spec-v497.md](docs/spec-v497.md). The MCP adapter follows in the next wave.
+
 ### Added (spec-v496 — Lodwick grade (bone lesion aggressiveness) tile, 1346 → 1347)
 
 - New `lodwick-grade` tile (group G): the Lodwick grading of the radiographic aggressiveness of a focal bone

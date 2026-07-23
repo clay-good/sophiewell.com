@@ -1,5 +1,5 @@
 {
-  "version": "v217-2026-07-23",
+  "version": "v218-2026-07-23",
   "note": "spec-v7 section 3.2: hand-curated patient-phrasing -> tile id table. Each entry maps patient-mental-model phrases (and, from the v8/v9 plain-language-search batches, clinical abbreviations, eponym aliases, and canonical-intent phrases) to a single existing tile. Audience is the primary audience the entry serves; the matcher deprioritizes (does not hide) entries when the user has selected a different chip. Every phrase is lowercase; every tile id is an existing catalog tile (guarded by test/unit/synonyms-catalog.test.js). Adding a new phrase is a one-line PR.",
   "entries": [
     { "phrases": ["denied", "denial letter", "they denied it", "insurance said no", "appeal", "write an appeal", "appeal my claim", "appeal letter", "appeal a denial"],
@@ -578,6 +578,8 @@
     { "phrases": ["ranawat", "ranawat classification", "ranawat class", "rheumatoid cervical myelopathy", "rheumatoid cervical spine deficit", "rheumatoid neck neurologic class"],
       "tile": "ranawat-myelopathy", "audience": "clinicians" },
     { "phrases": ["lodwick", "lodwick grade", "lodwick grading", "bone lesion aggressiveness", "bone lesion margin grade", "moth eaten lesion grade", "permeative bone lesion grade"],
-      "tile": "lodwick-grade", "audience": "clinicians" }
+      "tile": "lodwick-grade", "audience": "clinicians" },
+    { "phrases": ["schobinger", "schobinger stage", "schobinger staging", "peripheral avm stage", "arteriovenous malformation stage", "vascular malformation stage"],
+      "tile": "schobinger-avm", "audience": "clinicians" }
   ]
 }
