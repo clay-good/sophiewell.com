@@ -6,6 +6,23 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v503 — Simpson grade (meningioma resection) tile, 1353 → 1354)
+
+- New `simpson-meningioma` tile (group G): the Simpson grade of meningioma resection completeness, recorded by
+  the surgeon at operation (grades I-V); previously absent — the catalog had no extent-of-resection descriptor,
+  and the one `simpson` corpus mention was the unrelated echocardiographic Simpson biplane LVEF method. The
+  surgeon records the grade and the tile reports its description. **I:** complete removal with the dural
+  attachment and abnormal bone. **II:** complete removal with coagulation of the dural attachment. **III:**
+  complete removal without treating the dural attachment. **IV:** partial removal, tumor left in situ. **V:**
+  decompression only. A grade, not a diagnosis, an individual recurrence prediction, or an adjuvant-radiotherapy
+  decision ([spec-v11] §5.3); the lower grades were associated with a lower reported recurrence rate, stated as
+  the general association Simpson reported rather than a prognosis. The management decision stays with the
+  neurosurgery and neuro-oncology team. Grades transcribed (spec-v97) from Simpson 1957 (J Neurol Neurosurg
+  Psychiatry); the later grade 0 modification is out of scope. No citation-staleness row (a named-author
+  article, no guideline-issuer acronym). New `lib/simpson-meningioma-v503.js` + `views/group-v503.js` (RV503);
+  +1 META entry, +1 UTILITIES row, a synonym entry (v223 → v224), 7 unit tests + fuzz, corpus rebuilt to 1354.
+  See [docs/spec-v503.md](docs/spec-v503.md). The MCP adapter follows in the next wave.
+
 ### Added (spec-v502 — Norwood scale (male-pattern hair loss) tile, 1352 → 1353)
 
 - New `norwood-hairloss` tile (group G): the Norwood (Hamilton-Norwood) scale of male-pattern (androgenetic)
