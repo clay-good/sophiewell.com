@@ -527,6 +527,7 @@ const PROBES = [
   ['severin ddh radiographic outcome classification', ['severin-ddh']],
   ['hattrup johnson hallux rigidus grade', ['hattrup-johnson']],
   ['lown grade ventricular ectopy holter', ['lown-ectopy']],
+  ['intermacs profile advanced heart failure', ['intermacs-profile']],
 ];
 
 test(`every golden probe routes an acceptable tile into the top ${TOP_N}`, () => {

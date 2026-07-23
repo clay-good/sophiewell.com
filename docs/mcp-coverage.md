@@ -1502,6 +1502,18 @@ round-trip both pass, without the phantom "2". Adapter appended to the existing
 rate to a target PaCO2. Brings the exposed total to **1072 calculators across 197
 modules**.
 
+## Three-hundred-nineteenth wave — the INTERMACS profile (advanced heart failure) in lib/intermacs-profile-v494.js (+1)
+
+`intermacs-profile` (spec-v494) applies the INTERMACS profiles of advanced heart failure: given the profile, it
+reports the clinical-severity description. `profile` is an enum (`kind: 'enum'`, values 1-7) — the single input
+the renderer exposes. The example sets profile 3; the numbers in its expected text are carried by the result
+band, so it flows through the default `makeToArgs` with no custom toArgs. New adapter module registered in
+`mcp/catalog.js`; its golden probe ("intermacs profile advanced heart failure") is promoted now that the tile
+is in the MCP-exposed registry. Brings the exposed total to **1282 calculators across 398 modules**.
+
+### lib/intermacs-profile-v494.js
+- `intermacs-profile`
+
 ## Three-hundred-eighteenth wave — the Lown grade (ventricular ectopy) in lib/lown-ectopy-v493.js (+1)
 
 `lown-ectopy` (spec-v493) applies the Lown grading system for ventricular ectopy on an ambulatory ECG
@@ -5899,6 +5911,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/lown-ectopy-v493.js
 - `lown-ectopy`
+
+### lib/intermacs-profile-v494.js
+- `intermacs-profile`
 
 ### lib/tb-testing.js
 - `tb-testing`
