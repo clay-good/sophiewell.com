@@ -1502,6 +1502,20 @@ round-trip both pass, without the phantom "2". Adapter appended to the existing
 rate to a target PaCO2. Brings the exposed total to **1072 calculators across 197
 modules**.
 
+## Three-hundred-thirty-first wave — the Jerger tympanogram type in lib/jerger-tympanogram-v506.js (+1)
+
+`jerger-tympanogram` (spec-v506) applies the Jerger classification of tympanogram shapes: given the type, it
+reports the shape description. `type` is an enum (`kind: 'enum'`, values A/As/Ad/B/C) — the single input the
+renderer exposes; the mixed-case two-letter values are what the renderer emits, and the lib uppercases before
+lookup so `as` / `AD` also resolve. The example sets type B; its expected text carries no numeric facts (the
+description is word-only), so it flows through the default `makeToArgs` with no custom toArgs. First
+tympanometry tile in the registry. New adapter module registered in `mcp/catalog.js`; its golden probe
+("jerger tympanogram type tympanometry") is promoted now that the tile is in the MCP-exposed registry. Brings
+the exposed total to **1294 calculators across 410 modules**.
+
+### lib/jerger-tympanogram-v506.js
+- `jerger-tympanogram`
+
 ## Three-hundred-thirtieth wave — the METAVIR activity grade (liver biopsy) in lib/metavir-activity-v505.js (+1)
 
 `metavir-activity` (spec-v505) applies the METAVIR necroinflammatory activity grading: given the grade, it
@@ -6094,6 +6108,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/metavir-activity-v505.js
 - `metavir-activity`
+
+### lib/jerger-tympanogram-v506.js
+- `jerger-tympanogram`
 
 ### lib/tb-testing.js
 - `tb-testing`
