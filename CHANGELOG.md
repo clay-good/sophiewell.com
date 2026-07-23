@@ -6,6 +6,24 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v507 — Degree of hearing loss (pure-tone average) tile, 1357 → 1358)
+
+- New `hearing-loss-degree` tile (group G): the degree-of-hearing-loss classification from a pure-tone average
+  in dB HL; previously absent — `audiogram` and `hearing loss` were zero-hit, and the sibling
+  `jerger-tympanogram` tile covers middle-ear function rather than the hearing threshold itself. Unlike the
+  recent enum tiles this one **computes**: the clinician enters the PTA already averaged from the audiogram and
+  the tile returns the band. **-10 to 15:** normal. **16 to 25:** slight. **26 to 40:** mild. **41 to 55:**
+  moderate. **56 to 70:** moderately severe. **71 to 90:** severe. **above 90:** profound. Each band owns its
+  upper cut point (15 normal, 16 slight), pinned by a unit test; non-numeric input and anything outside -10 to
+  130 dB HL is rejected with a message. It bands the number entered and nothing more — **not** an audiogram
+  interpretation (nothing about conductive versus sensorineural loss, asymmetry, or configuration), not a
+  diagnosis, and not a recommendation for amplification or a cochlear implant ([spec-v11] §5.3); the management
+  decision stays with the audiology and ENT team. Bands transcribed (spec-v97) from Clark 1981 (ASHA). No
+  citation-staleness row (a named-author article; `ASHA` does not match `ISSUER_PATTERN`'s `\bAHA\b`). New
+  `lib/hearing-loss-degree-v507.js` + `views/group-v507.js` (RV507); +1 META entry, +1 UTILITIES row, a synonym
+  entry (v227 → v228), 7 unit tests + fuzz, corpus rebuilt to 1358. See
+  [docs/spec-v507.md](docs/spec-v507.md). The MCP adapter follows in the next wave.
+
 ### Added (spec-v506 — Jerger tympanogram type tile, 1356 → 1357)
 
 - New `jerger-tympanogram` tile (group G): the Jerger classification of tympanogram shapes (types A / As / Ad /
