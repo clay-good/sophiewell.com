@@ -236,3 +236,22 @@ test('queryCompute: Mentzer index from MCV + RBC', () => {
   assert.deepEqual(r.inputs, { mcv: 90, rbc: 4 });
   assert.equal(queryCompute('mentzer mcv 65'), null, 'rbc missing');
 });
+
+test('queryCompute: eGFR (CKD-EPI 2021) from creatinine + age + sex', () => {
+  const r = queryCompute('egfr creatinine 1.2 age 60 male');
+  assert.equal(r.tile, 'egfr');
+  assert.equal(r.value, 69.2);
+  assert.deepEqual(r.inputs, { scr: 1.2, age: 60, sex: 'M' });
+  assert.equal(queryCompute('ckd-epi cr 2.0 age 70 man').inputs.sex, 'M');
+  assert.equal(queryCompute('egfr creatinine 1.2 age 60'), null, 'sex missing');
+  assert.equal(queryCompute('egfr age 60 male'), null, 'creatinine missing');
+});
+
+test('queryCompute: delta ratio from Na + Cl + HCO3; albumin optional', () => {
+  const r = queryCompute('delta gap na 140 cl 100 hco3 12');
+  assert.equal(r.tile, 'delta-gap');
+  assert.equal(r.value, 1.33);                          // (16-12) / (24-12)
+  assert.deepEqual(r.inputs, { 'dg-na': 140, 'dg-cl': 100, 'dg-hco3': 12 });
+  assert.equal(queryCompute('delta ratio na 140 cl 105 hco3 8 alb 2').inputs['dg-alb'], 2);
+  assert.equal(queryCompute('delta gap na 140 cl 100'), null, 'hco3 missing');
+});
