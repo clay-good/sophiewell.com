@@ -198,13 +198,15 @@ test('queryCompute: shock index from HR + SBP; DBP optional', () => {
   assert.equal(queryCompute('shock index hr 110'), null, 'sbp missing');
 });
 
-test('queryCompute: maintenance fluids (4-2-1) preserve the typed weight unit', () => {
+test('queryCompute: maintenance fluids (4-2-1) emits canonical kg, no unit key', () => {
   const r = queryCompute('maintenance fluids 15 kg');
   assert.equal(r.tile, 'maint-fluids');
   assert.equal(r.value, 50);                           // 40 + (15-10)*2
-  assert.deepEqual(r.inputs, { 'mf-w': 15, 'mf-w-unit': 'kg' });
-  const lb = queryCompute('maintenance fluids 30 lb');
-  assert.deepEqual(lb.inputs, { 'mf-w': 30, 'mf-w-unit': 'lb' });   // unit preserved, not converted
+  assert.deepEqual(r.inputs, { 'mf-w': 15 });          // canonical kg; reset sets the select
+  // a lb entry converts to canonical kg so the deep link computes correctly.
+  const lb = queryCompute('maintenance fluids 33.07 lb');  // ~15 kg
+  assert.equal(lb.inputs['mf-w'], 15);
+  assert.equal(lb.inputs['mf-w-unit'], undefined, 'no unit key emitted');
   assert.equal(queryCompute('maintenance fluids 15'), null, 'weight needs a unit');
 });
 
