@@ -149,3 +149,61 @@ test('queryCompute: ideal body weight (Devine) from height + sex', () => {
   assert.equal(f.value, 50.1);                         // 45.5 + 2.3*(62-60)
   assert.equal(queryCompute('ideal body weight 5 ft 10 in'), null, 'sex missing');
 });
+
+// --- second-wave templates (eAG, QTc, A-a gradient, shock index, fluids) ----
+
+test('parseA1c: named or bare number, guarded to the assay range', () => {
+  const { parseA1c } = _testing;
+  assert.equal(parseA1c('a1c 7'), 7);
+  assert.equal(parseA1c('hba1c: 6.5'), 6.5);
+  assert.equal(parseA1c('eag 8'), 8, 'bare number after the trigger');
+  assert.equal(parseA1c('average glucose 154'), null, '154 is out of the A1c range');
+  assert.equal(parseA1c('eag'), null, 'no number');
+});
+
+test('queryCompute: eAG from A1c (named and bare) matches the ADAG lib', () => {
+  const r = queryCompute('eag a1c 7');
+  assert.equal(r.tile, 'eag-a1c');
+  assert.equal(r.value, 154);                          // round(28.7*7 - 46.7)
+  assert.match(r.text, /8\.6 mmol\/L/);
+  assert.deepEqual(r.inputs, { 'eag-a1c': 7 });
+  assert.equal(queryCompute('estimated average glucose 6.5').value, 140);
+  assert.equal(queryCompute('average glucose 250'), null, 'out-of-range number never guesses');
+});
+
+test('queryCompute: QTc (Bazett + Fridericia) from QT + HR, not tripped by "qtc"', () => {
+  const r = queryCompute('qtc qt 440 hr 80');
+  assert.equal(r.tile, 'qtc-suite');
+  assert.equal(r.value, 508);                          // round(440 / sqrt(0.75))
+  assert.match(r.text, /Fridericia 484 ms/);
+  assert.deepEqual(r.inputs, { 'qs-qt': 440, 'qs-hr': 80 });
+  assert.equal(queryCompute('qtc'), null, 'trigger only');
+  assert.equal(queryCompute('qtc qt 440'), null, 'heart rate missing');
+});
+
+test('queryCompute: A-a gradient from FiO2 + PaCO2 + PaO2', () => {
+  const r = queryCompute('a-a gradient fio2 0.21 paco2 40 pao2 90');
+  assert.equal(r.tile, 'aa-gradient');
+  assert.equal(r.value, 9.73);                         // (0.21*713 - 40/0.8) - 90
+  assert.deepEqual(r.inputs, { fio2: 0.21, paco2: 40, pao2: 90 });
+  assert.equal(queryCompute('aa gradient fio2 0.21 pao2 90'), null, 'paco2 missing');
+});
+
+test('queryCompute: shock index from HR + SBP; DBP optional', () => {
+  const r = queryCompute('shock index hr 110 sbp 90');
+  assert.equal(r.tile, 'shock-index');
+  assert.equal(r.value, 1.22);                         // 110 / 90
+  assert.deepEqual(r.inputs, { 'si-hr': 110, 'si-sbp': 90 });
+  assert.equal(queryCompute('shock index hr 110 sbp 90 dbp 60').inputs['si-dbp'], 60);
+  assert.equal(queryCompute('shock index hr 110'), null, 'sbp missing');
+});
+
+test('queryCompute: maintenance fluids (4-2-1) preserve the typed weight unit', () => {
+  const r = queryCompute('maintenance fluids 15 kg');
+  assert.equal(r.tile, 'maint-fluids');
+  assert.equal(r.value, 50);                           // 40 + (15-10)*2
+  assert.deepEqual(r.inputs, { 'mf-w': 15, 'mf-w-unit': 'kg' });
+  const lb = queryCompute('maintenance fluids 30 lb');
+  assert.deepEqual(lb.inputs, { 'mf-w': 30, 'mf-w-unit': 'lb' });   // unit preserved, not converted
+  assert.equal(queryCompute('maintenance fluids 15'), null, 'weight needs a unit');
+});
