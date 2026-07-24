@@ -207,3 +207,32 @@ test('queryCompute: maintenance fluids (4-2-1) preserve the typed weight unit', 
   assert.deepEqual(lb.inputs, { 'mf-w': 30, 'mf-w-unit': 'lb' });   // unit preserved, not converted
   assert.equal(queryCompute('maintenance fluids 15'), null, 'weight needs a unit');
 });
+
+test('queryCompute: P/F ratio from PaO2 + FiO2 with the Berlin band', () => {
+  const r = queryCompute('pf ratio pao2 90 fio2 0.4');
+  assert.equal(r.tile, 'pf-ratio');
+  assert.equal(r.value, 225);                          // 90 / 0.4
+  assert.match(r.text, /Mild ARDS/);
+  assert.deepEqual(r.inputs, { pao2: 90, fio2: 0.4 });
+  assert.equal(queryCompute('p/f ratio pao2 60 fio2 0.5').value, 120);
+  assert.equal(queryCompute('pf ratio pao2 90'), null, 'fio2 missing');
+});
+
+test('queryCompute: Winters expected PaCO2 from HCO3; measured PaCO2 optional', () => {
+  const r = queryCompute('winters hco3 12');
+  assert.equal(r.tile, 'winters');
+  assert.equal(r.value, 24);                            // 1.5*12 + 8 - 2
+  assert.match(r.text, /24-28 mmHg/);                  // low-high band
+  assert.deepEqual(r.inputs, { 'wf-hco3': 12 });
+  assert.equal(queryCompute('winters hco3 12 paco2 30').inputs['wf-paco2'], 30);
+  assert.equal(queryCompute('winters'), null, 'hco3 missing');
+});
+
+test('queryCompute: Mentzer index from MCV + RBC', () => {
+  const r = queryCompute('mentzer mcv 90 rbc 4');
+  assert.equal(r.tile, 'mentzer');
+  assert.equal(r.value, 22.5);                          // 90 / 4
+  assert.match(r.text, /iron-deficiency/);
+  assert.deepEqual(r.inputs, { mcv: 90, rbc: 4 });
+  assert.equal(queryCompute('mentzer mcv 65'), null, 'rbc missing');
+});
