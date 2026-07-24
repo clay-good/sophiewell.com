@@ -255,3 +255,21 @@ test('queryCompute: delta ratio from Na + Cl + HCO3; albumin optional', () => {
   assert.equal(queryCompute('delta ratio na 140 cl 105 hco3 8 alb 2').inputs['dg-alb'], 2);
   assert.equal(queryCompute('delta gap na 140 cl 100'), null, 'hco3 missing');
 });
+
+test('queryCompute: reticulocyte production index from retic% + Hct', () => {
+  const r = queryCompute('reticulocyte index retic 5 hct 30');
+  assert.equal(r.tile, 'retic-index');
+  assert.equal(r.value, 2.22);                          // 5*(30/45) / 1.5
+  assert.deepEqual(r.inputs, { 'ri-retic': 5, 'ri-hct': 30 });
+  assert.equal(queryCompute('corrected retic 6 hematocrit 30').value, 2.67);
+  assert.equal(queryCompute('retic index retic 5'), null, 'hct missing');
+});
+
+test('queryCompute: transferrin saturation from iron + TIBC; ferritin optional', () => {
+  const r = queryCompute('tsat iron 40 tibc 400');
+  assert.equal(r.tile, 'tsat');
+  assert.equal(r.value, 10);                            // 40/400 * 100
+  assert.deepEqual(r.inputs, { 'ts-iron': 40, 'ts-tibc': 400 });
+  assert.equal(queryCompute('transferrin saturation iron 25 tibc 450 ferritin 10').inputs['ts-ferritin'], 10);
+  assert.equal(queryCompute('tsat iron 40'), null, 'tibc missing');
+});
