@@ -275,3 +275,15 @@ test('queryCompute: transferrin saturation from iron + TIBC; ferritin optional',
   assert.equal(queryCompute('transferrin saturation iron 25 tibc 450 ferritin 10').inputs['ts-ferritin'], 10);
   assert.equal(queryCompute('tsat iron 40'), null, 'tibc missing');
 });
+
+test('queryCompute: FENa from prefixed urine/serum Na + Cr; bare pairs never guess', () => {
+  const r = queryCompute('fena una 40 pna 140 ucr 50 pcr 1.2');
+  assert.equal(r.tile, 'fena-feurea');
+  assert.equal(r.value, 0.69);                          // (40*1.2)/(140*50) * 100
+  assert.deepEqual(r.inputs, { 'fn-una': 40, 'fn-pna': 140, 'fn-ucr': 50, 'fn-pcr': 1.2 });
+  // long-form urine/serum prefixes resolve to the right compartment.
+  const long = queryCompute('fractional excretion of sodium urine na 20 serum na 138 urine cr 60 serum cr 2');
+  assert.deepEqual(long.inputs, { 'fn-una': 20, 'fn-pna': 138, 'fn-ucr': 60, 'fn-pcr': 2 });
+  assert.equal(queryCompute('fena una 40 pna 140 ucr 50'), null, 'plasma Cr missing');
+  assert.equal(queryCompute('fena na 40 cr 1.2'), null, 'unprefixed values are ambiguous, no guess');
+});
