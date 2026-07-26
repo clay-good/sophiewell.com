@@ -189,6 +189,23 @@ test('an inline-compute prefill link (canonical values, no unit keys) reads cano
   await expect(page.locator('#q-results')).toContainText('BMI: 22.9');
 });
 
+test('inline-compute prefill lands on the target tile fields (egfr, plain fields)', async ({ page }) => {
+  // queryCompute('egfr creatinine 1.2 age 60 male') emits these field-keyed
+  // inputs; the deep link proves the keys match the egfr tile's real DOM ids.
+  await page.goto('/#egfr&q=scr=1.2;age=60;sex=M', { waitUntil: 'load' });
+  await expect(page.locator('#sex')).toHaveValue('M');
+  await expect(page.locator('#q-results')).toContainText('eGFR: 69.2');
+});
+
+test('inline-compute prefill fills a unit-select tile (maint-fluids: canonical kg)', async ({ page }) => {
+  // queryCompute('maintenance fluids 15 kg') emits the canonical weight (kg)
+  // with no *-unit key; the route's canonical-reset must set mf-w-unit to kg
+  // so 15 is read as kg (-> 50.0), not the default lb (-> 27.2).
+  await page.goto('/#maint-fluids&q=mf-w=15', { waitUntil: 'load' });
+  await expect(page.locator('#mf-w-unit')).toHaveValue('kg');
+  await expect(page.locator('#q-results')).toContainText('Maintenance: 50.0');
+});
+
 test('Reset to example restores canonical units after a US-unit entry', async ({ page }) => {
   await page.goto('/#bmi', { waitUntil: 'load' });
   await page.locator('#w-unit').selectOption('lb');

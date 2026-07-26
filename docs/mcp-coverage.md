@@ -1502,6 +1502,871 @@ round-trip both pass, without the phantom "2". Adapter appended to the existing
 rate to a target PaCO2. Brings the exposed total to **1072 calculators across 197
 modules**.
 
+## Three-hundred-thirty-third wave — the Voice Handicap Index-10 in lib/vhi10-v508.js (+1)
+
+`vhi10` (spec-v508) sums the ten VHI-10 items into a total of 0-40 and compares it to the commonly cited
+abnormal threshold of 11. The adapter's `fields` array is **generated** from the lib's exported `VHI10_ITEMS`,
+so the renderer, the adapter labels, and the tests all share one source of item wording. Each item is an enum
+(`kind: 'enum'`, values `'0'`-`'4'`) on dom keys `vhi-q1` … `vhi-q10` mapping to args `v1` … `v10`; all ten are
+in `META.example`, so all ten are required for every caller — correct here, because a partial VHI-10 has no
+total. The example answers total 18; that number and the 40 ceiling are carried by the result band, so it
+flows through the default `makeToArgs` with no custom toArgs. New adapter module registered in
+`mcp/catalog.js`; its golden probe ("voice handicap index vhi 10 score") is promoted now that the tile is in
+the MCP-exposed registry. Brings the exposed total to **1295 calculators across 411 modules**.
+
+> Wave 332 was used by the `hearing-loss-degree` adapter, reverted the same day as a duplicate of the existing
+> `pure-tone-average` tile. That wave number is retired rather than reused.
+
+### lib/vhi10-v508.js
+- `vhi10`
+
+## Three-hundred-thirty-first wave — the Jerger tympanogram type in lib/jerger-tympanogram-v506.js (+1)
+
+`jerger-tympanogram` (spec-v506) applies the Jerger classification of tympanogram shapes: given the type, it
+reports the shape description. `type` is an enum (`kind: 'enum'`, values A/As/Ad/B/C) — the single input the
+renderer exposes; the mixed-case two-letter values are what the renderer emits, and the lib uppercases before
+lookup so `as` / `AD` also resolve. The example sets type B; its expected text carries no numeric facts (the
+description is word-only), so it flows through the default `makeToArgs` with no custom toArgs. First
+tympanometry tile in the registry. New adapter module registered in `mcp/catalog.js`; its golden probe
+("jerger tympanogram type tympanometry") is promoted now that the tile is in the MCP-exposed registry. Brings
+the exposed total to **1294 calculators across 410 modules**.
+
+### lib/jerger-tympanogram-v506.js
+- `jerger-tympanogram`
+
+## Three-hundred-thirtieth wave — the METAVIR activity grade (liver biopsy) in lib/metavir-activity-v505.js (+1)
+
+`metavir-activity` (spec-v505) applies the METAVIR necroinflammatory activity grading: given the grade, it
+reports the description. `grade` is an enum (`kind: 'enum'`, values A0-A3) — the single input the renderer
+exposes, on a dom key (`metavir-activity-grade`) deliberately distinct from the sibling fibrosis tile's
+`metavir-stage`. The example sets grade A2; the only numbers in its expected text are the grade labels
+themselves, which the result band carries, so it flows through the default `makeToArgs` with no custom toArgs.
+Completes the METAVIR pair with `metavir-fibrosis` (wave 329) — a METAVIR read is reported as both together
+(for example A2F3). New adapter module registered in `mcp/catalog.js`; its golden probe ("metavir activity
+grade necroinflammatory") is promoted now that the tile is in the MCP-exposed registry. Brings the exposed
+total to **1293 calculators across 409 modules**.
+
+### lib/metavir-activity-v505.js
+- `metavir-activity`
+
+## Three-hundred-twenty-ninth wave — the METAVIR fibrosis stage (liver biopsy) in lib/metavir-fibrosis-v504.js (+1)
+
+`metavir-fibrosis` (spec-v504) applies the METAVIR histologic staging of liver fibrosis: given the stage, it
+reports the histologic description. `stage` is an enum (`kind: 'enum'`, values F0-F4) — the single input the
+renderer exposes. The example sets stage F2; the only numbers in its expected text are the stage labels
+themselves, which the result band carries, so it flows through the default `makeToArgs` with no custom toArgs.
+Complements the already-exposed `fib4`, which estimates the same fibrosis non-invasively. New adapter module
+registered in `mcp/catalog.js`; its golden probe ("metavir fibrosis stage liver biopsy") is promoted now that
+the tile is in the MCP-exposed registry. Brings the exposed total to **1292 calculators across 408 modules**.
+
+### lib/metavir-fibrosis-v504.js
+- `metavir-fibrosis`
+
+## Three-hundred-twenty-eighth wave — the Simpson grade (meningioma resection) in lib/simpson-meningioma-v503.js (+1)
+
+`simpson-meningioma` (spec-v503) applies the Simpson grade of meningioma resection completeness: given the
+grade, it reports the resection description. `grade` is an enum (`kind: 'enum'`, values I/II/III/IV/V) — the
+single input the renderer exposes. The example sets grade II; its expected text carries no numeric facts (the
+description is word-only), so it flows through the default `makeToArgs` with no custom toArgs. New adapter
+module registered in `mcp/catalog.js`; its golden probe ("simpson grade meningioma resection") is promoted now
+that the tile is in the MCP-exposed registry. Brings the exposed total to **1291 calculators across 407
+modules**.
+
+### lib/simpson-meningioma-v503.js
+- `simpson-meningioma`
+
+## Three-hundred-twenty-seventh wave — the Norwood scale (male-pattern hair loss) in lib/norwood-hairloss-v502.js (+1)
+
+`norwood-hairloss` (spec-v502) applies the Norwood (Hamilton-Norwood) scale of male-pattern hair loss: given
+the stage, it reports the recession / vertex description. `stage` is an enum (`kind: 'enum'`, values I..VII
+plus `III vertex`) — the single input the renderer exposes. The example sets stage IV; its expected text
+carries no numeric facts (the description is word-only), so it flows through the default `makeToArgs` with no
+custom toArgs. Completes the pattern-hair-loss pair with `ludwig-hairloss` (the female pattern). New adapter
+module registered in `mcp/catalog.js`; its golden probe ("norwood male pattern hair loss stage") is promoted
+now that the tile is in the MCP-exposed registry. Brings the exposed total to **1290 calculators across 406
+modules**.
+
+### lib/norwood-hairloss-v502.js
+- `norwood-hairloss`
+
+## Three-hundred-twenty-sixth wave — the Ludwig scale (female-pattern hair loss) in lib/ludwig-hairloss-v501.js (+1)
+
+`ludwig-hairloss` (spec-v501) applies the Ludwig scale of female-pattern hair loss: given the grade, it reports
+the crown-thinning description. `grade` is an enum (`kind: 'enum'`, values I/II/III) — the single input the
+renderer exposes. The example sets grade II; its expected text carries no numeric facts (the description is
+word-only), so it flows through the default `makeToArgs` with no custom toArgs. New adapter module registered
+in `mcp/catalog.js`; its golden probe ("ludwig female pattern hair loss grade") is promoted now that the tile
+is in the MCP-exposed registry. Brings the exposed total to **1289 calculators across 405 modules**.
+
+### lib/ludwig-hairloss-v501.js
+- `ludwig-hairloss`
+
+## Three-hundred-twenty-fifth wave — the Tegner activity scale (knee) in lib/tegner-activity-v500.js (+1)
+
+`tegner-activity` (spec-v500) applies the Tegner activity scale: given the level, it reports the work / sport
+anchors. `level` is an enum (`kind: 'enum'`, values `'0'`-`'10'`) — the single input the renderer exposes.
+The example sets level 5; the only number in its expected text is the level itself, which the result band
+carries, so it flows through the default `makeToArgs` with no custom toArgs. Completes the Tegner-Lysholm
+pair: `lysholm-knee-score` was already exposed, and the two are reported together. New adapter module
+registered in `mcp/catalog.js`; its golden probe ("tegner activity scale knee level") is promoted now that the
+tile is in the MCP-exposed registry. Brings the exposed total to **1288 calculators across 404 modules**.
+
+### lib/tegner-activity-v500.js
+- `tegner-activity`
+
+## Three-hundred-twenty-fourth wave — the Dorr classification (proximal femoral morphology) in lib/dorr-femur-v499.js (+1)
+
+`dorr-femur` (spec-v499) applies the Dorr classification of proximal femoral bone morphology: given the type,
+it reports the cortical / canal description. `type` is an enum (`kind: 'enum'`, values A/B/C) — the single
+input the renderer exposes. The example sets type B; the canal-to-calcar cut points in its expected text (0.5,
+0.75) are carried by the result band, so it flows through the default `makeToArgs` with no custom toArgs. New
+adapter module registered in `mcp/catalog.js`; its golden probe ("dorr type proximal femoral morphology") is
+promoted now that the tile is in the MCP-exposed registry. Brings the exposed total to **1287 calculators
+across 403 modules**.
+
+### lib/dorr-femur-v499.js
+- `dorr-femur`
+
+## Three-hundred-twenty-third wave — the Narakas classification (obstetric brachial plexus palsy) in lib/narakas-obpp-v498.js (+1)
+
+`narakas-obpp` (spec-v498) applies the Narakas classification of obstetric brachial plexus palsy: given the
+group, it reports the root-involvement description. `group` is an enum (`kind: 'enum'`, values I/II/III/IV) —
+the single input the renderer exposes. The example sets group II; the root labels in its expected text (C5-C7)
+are carried verbatim by the result band, so it flows through the default `makeToArgs` with no custom toArgs.
+New adapter module registered in `mcp/catalog.js`; its golden probe ("narakas group obstetric brachial plexus
+palsy") is promoted now that the tile is in the MCP-exposed registry. Brings the exposed total to **1286
+calculators across 402 modules**.
+
+### lib/narakas-obpp-v498.js
+- `narakas-obpp`
+
+## Three-hundred-twenty-second wave — the Schobinger staging (peripheral AVM) in lib/schobinger-avm-v497.js (+1)
+
+`schobinger-avm` (spec-v497) applies the Schobinger clinical staging of a peripheral arteriovenous
+malformation: given the stage, it reports the clinical description. `stage` is an enum (`kind: 'enum'`, values
+I/II/III/IV) — the single input the renderer exposes. Because the staging is cumulative, each band names the
+stage below it. The example sets stage II; its expected text carries no numeric facts (the description is
+word-only), so it flows through the default `makeToArgs` with no custom toArgs. New adapter module registered
+in `mcp/catalog.js`; its golden probe ("schobinger stage peripheral arteriovenous malformation") is promoted
+now that the tile is in the MCP-exposed registry. Brings the exposed total to **1285 calculators across 401
+modules**.
+
+### lib/schobinger-avm-v497.js
+- `schobinger-avm`
+
+## Three-hundred-twenty-first wave — the Lodwick grade (bone lesion aggressiveness) in lib/lodwick-grade-v496.js (+1)
+
+`lodwick-grade` (spec-v496) applies the Lodwick grading of a focal bone lesion: given the grade, it reports the
+margin / destruction-pattern description. `grade` is an enum (`kind: 'enum'`, values IA/IB/IC/II/III) — the
+single input the renderer exposes; bare `I` is deliberately absent from the enum because it is ambiguous across
+IA/IB/IC. The example sets grade IC; its expected text carries no numeric facts (the description is word-only),
+so it flows through the default `makeToArgs` with no custom toArgs. New adapter module registered in
+`mcp/catalog.js`; its golden probe ("lodwick grade bone lesion aggressiveness") is promoted now that the tile
+is in the MCP-exposed registry. Brings the exposed total to **1284 calculators across 400 modules**.
+
+### lib/lodwick-grade-v496.js
+- `lodwick-grade`
+
+## Three-hundred-twentieth wave — the Ranawat classification (rheumatoid cervical myelopathy) in lib/ranawat-myelopathy-v495.js (+1)
+
+`ranawat-myelopathy` (spec-v495) applies the Ranawat classification of the rheumatoid cervical spine: given the
+class, it reports the neurologic-deficit description. `klass` is an enum (`kind: 'enum'`, values I/II/IIIA/IIIB)
+— the single input the renderer exposes; bare `III` is deliberately absent from the enum so the ambulation
+split stays explicit. The example sets class IIIA; its expected text carries no numeric facts (the description
+is word-only), so it flows through the default `makeToArgs` with no custom toArgs. New adapter module
+registered in `mcp/catalog.js`; its golden probe ("ranawat class rheumatoid cervical myelopathy") is promoted
+now that the tile is in the MCP-exposed registry. Brings the exposed total to **1283 calculators across 399
+modules**.
+
+### lib/ranawat-myelopathy-v495.js
+- `ranawat-myelopathy`
+
+## Three-hundred-nineteenth wave — the INTERMACS profile (advanced heart failure) in lib/intermacs-profile-v494.js (+1)
+
+`intermacs-profile` (spec-v494) applies the INTERMACS profiles of advanced heart failure: given the profile, it
+reports the clinical-severity description. `profile` is an enum (`kind: 'enum'`, values 1-7) — the single input
+the renderer exposes. The example sets profile 3; the numbers in its expected text are carried by the result
+band, so it flows through the default `makeToArgs` with no custom toArgs. New adapter module registered in
+`mcp/catalog.js`; its golden probe ("intermacs profile advanced heart failure") is promoted now that the tile
+is in the MCP-exposed registry. Brings the exposed total to **1282 calculators across 398 modules**.
+
+### lib/intermacs-profile-v494.js
+- `intermacs-profile`
+
+## Three-hundred-eighteenth wave — the Lown grade (ventricular ectopy) in lib/lown-ectopy-v493.js (+1)
+
+`lown-ectopy` (spec-v493) applies the Lown grading system for ventricular ectopy on an ambulatory ECG
+recording: given the grade, it reports the frequency/form description. `grade` is an enum (`kind: 'enum'`,
+values 0/1/2/3/4A/4B/5) — the single input the renderer exposes; bare `4` is deliberately absent from the
+enum so the 4A/4B split stays explicit. The example sets grade 4B; the numbers in its expected text are
+carried by the result band, so it flows through the default `makeToArgs` with no custom toArgs. New adapter
+module registered in `mcp/catalog.js`; its golden probe ("lown grade ventricular ectopy holter") is promoted
+now that the tile is in the MCP-exposed registry. Brings the exposed total to **1281 calculators across 397
+modules**.
+
+### lib/lown-ectopy-v493.js
+- `lown-ectopy`
+
+## Three-hundred-seventeenth wave — the Hattrup-Johnson grade (hallux rigidus) in lib/hattrup-johnson-v492.js (+1)
+
+`hattrup-johnson` (spec-v492) applies the Hattrup-Johnson classification of hallux rigidus (first MTP
+osteoarthritis): given the grade, it reports the osteophyte/joint-space description. `grade` is an enum
+(`kind: 'enum'`, values I/II/III) — the single input the renderer exposes. The example sets grade II; its
+expected text carries no numeric facts (the description is word-only), so it flows through the default
+`makeToArgs` with no custom toArgs. New adapter module registered in `mcp/catalog.js`; its golden probe
+("hattrup johnson hallux rigidus grade") is promoted now that the tile is in the MCP-exposed registry. Brings
+the exposed total to **1280 calculators across 395 modules**.
+
+### lib/hattrup-johnson-v492.js
+- `hattrup-johnson`
+
+## Three-hundred-sixteenth wave — the Severin classification (DDH radiographic outcome) in lib/severin-ddh-v491.js (+1)
+
+`severin-ddh` (spec-v491) applies the Severin classification: given the group, it reports the hip-congruency
+description. `group` is an enum (`kind: 'enum'`, values I..VI) — the single input the renderer exposes. The
+example sets group II; its expected text carries no numeric facts (the description is word-only), so it flows
+through the default `makeToArgs` with no custom toArgs. New adapter module registered in `mcp/catalog.js`; its
+golden probe ("severin ddh radiographic outcome classification") is promoted now that the tile is in the
+MCP-exposed registry. Brings the exposed total to **1279 calculators across 395 modules**.
+
+### lib/severin-ddh-v491.js
+- `severin-ddh`
+
+## Three-hundred-fifteenth wave — the Ruedi-Allgower classification (tibial pilon fracture) in lib/ruedi-allgower-pilon-v490.js (+1)
+
+`ruedi-allgower-pilon` (spec-v490) applies the Ruedi-Allgower classification: given the type, it reports the
+displacement / comminution description. `type` is an enum (`kind: 'enum'`, values I/II/III) — the single input
+the renderer exposes. The example sets type II; its expected text carries no numeric facts (the description is
+word-only), so it flows through the default `makeToArgs` with no custom toArgs. New adapter module registered in
+`mcp/catalog.js`; its golden probe ("ruedi allgower tibial pilon fracture classification") is promoted now that
+the tile is in the MCP-exposed registry. Brings the exposed total to **1278 calculators across 394 modules**.
+
+### lib/ruedi-allgower-pilon-v490.js
+- `ruedi-allgower-pilon`
+
+## Three-hundred-fourteenth wave — the Fernandez classification (distal radius fracture) in lib/fernandez-radius-v489.js (+1)
+
+`fernandez-radius` (spec-v489) applies the Fernandez classification: given the type, it reports the mechanism
+description. `type` is an enum (`kind: 'enum'`, values I..V) — the single input the renderer exposes. The
+example sets type I; its expected text carries no numeric facts (the description is word-only), so it flows
+through the default `makeToArgs` with no custom toArgs. New adapter module registered in `mcp/catalog.js`; its
+golden probe ("fernandez distal radius fracture classification") is promoted now that the tile is in the
+MCP-exposed registry. Brings the exposed total to **1277 calculators across 393 modules**.
+
+### lib/fernandez-radius-v489.js
+- `fernandez-radius`
+
+## Three-hundred-thirteenth wave — the Bigliani classification (acromion morphology) in lib/bigliani-acromion-v488.js (+1)
+
+`bigliani-acromion` (spec-v488) applies the Bigliani classification: given the type, it reports the
+acromial-undersurface description. `type` is an enum (`kind: 'enum'`, values I/II/III) — the single input the
+renderer exposes. The example sets type II; its expected text carries no numeric facts (the description is
+word-only), so it flows through the default `makeToArgs` with no custom toArgs. New adapter module registered in
+`mcp/catalog.js`; its golden probe ("bigliani acromion morphology classification") is promoted now that the tile
+is in the MCP-exposed registry. Brings the exposed total to **1276 calculators across 392 modules**.
+
+### lib/bigliani-acromion-v488.js
+- `bigliani-acromion`
+
+## Three-hundred-twelfth wave — the Rockwood classification (acromioclavicular joint injury) in lib/rockwood-ac-v487.js (+1)
+
+`rockwood-ac` (spec-v487) applies the Rockwood classification: given the type, it reports the
+ligament-injury / displacement description. `type` is an enum (`kind: 'enum'`, values I..VI) — the single input
+the renderer exposes. The example sets type III; its expected text carries the "25% to 100%" fact, so it flows
+through the default `makeToArgs` with no custom toArgs. New adapter module registered in `mcp/catalog.js`; its
+golden probe ("rockwood acromioclavicular joint injury classification") is promoted now that the tile is in the
+MCP-exposed registry. Brings the exposed total to **1275 calculators across 391 modules**.
+
+### lib/rockwood-ac-v487.js
+- `rockwood-ac`
+
+## Three-hundred-eleventh wave — the Samilson-Prieto grade (shoulder dislocation arthropathy) in lib/samilson-prieto-v486.js (+1)
+
+`samilson-prieto` (spec-v486) applies the Samilson-Prieto classification: given the grade, it reports the
+osteophyte-size description. `grade` is an enum (`kind: 'enum'`, values mild/moderate/severe) — the single input
+the renderer exposes. The example sets moderate; its expected text carries the "3 to 7 mm" fact, so it flows
+through the default `makeToArgs` with no custom toArgs. New adapter module registered in `mcp/catalog.js`; its
+golden probe ("samilson prieto shoulder dislocation arthropathy") is promoted now that the tile is in the
+MCP-exposed registry. Brings the exposed total to **1274 calculators across 390 modules**.
+
+### lib/samilson-prieto-v486.js
+- `samilson-prieto`
+
+## Three-hundred-tenth wave — the Dejour classification (trochlear dysplasia) in lib/dejour-trochlea-v485.js (+1)
+
+`dejour-trochlea` (spec-v485) applies the Dejour classification: given the type, it reports the
+trochlear-morphology description. `type` is an enum (`kind: 'enum'`, values A/B/C/D) — the single input the
+renderer exposes. The example sets type B; its expected text carries no numeric facts (the description is
+word-only), so it flows through the default `makeToArgs` with no custom toArgs. New adapter module registered in
+`mcp/catalog.js`; its golden probe ("dejour trochlear dysplasia classification") is promoted now that the tile
+is in the MCP-exposed registry. Brings the exposed total to **1273 calculators across 389 modules**.
+
+### lib/dejour-trochlea-v485.js
+- `dejour-trochlea`
+
+## Three-hundred-ninth wave — the Barrack grade (femoral cement mantle) in lib/barrack-cement-v484.js (+1)
+
+`barrack-cement` (spec-v484) applies the Barrack classification: given the grade, it reports the
+cement-mantle-quality description. `grade` is an enum (`kind: 'enum'`, values A/B/C/D) — the single input the
+renderer exposes. The example sets grade C; its expected text carries the "50% to 99%" fact, so it flows
+through the default `makeToArgs` with no custom toArgs. New adapter module registered in `mcp/catalog.js`; its
+golden probe ("barrack femoral cement mantle grade") is promoted now that the tile is in the MCP-exposed
+registry. Brings the exposed total to **1272 calculators across 388 modules**.
+
+### lib/barrack-cement-v484.js
+- `barrack-cement`
+
+## Three-hundred-eighth wave — the Vancouver classification (periprosthetic femoral fracture) in lib/vancouver-periprosthetic-v483.js (+1)
+
+`vancouver-periprosthetic` (spec-v483) applies the Vancouver classification: given the type, it reports the
+location / stem-stability description. `type` is an enum (`kind: 'enum'`, values AG/AL/B1/B2/B3/C) — the single
+input the renderer exposes. The example sets type B2; its expected text carries no numeric facts (the
+description is word-only), so it flows through the default `makeToArgs` with no custom toArgs. New adapter
+module registered in `mcp/catalog.js`; its golden probe ("vancouver periprosthetic femoral fracture
+classification") is promoted now that the tile is in the MCP-exposed registry. Brings the exposed total to
+**1271 calculators across 387 modules**.
+
+### lib/vancouver-periprosthetic-v483.js
+- `vancouver-periprosthetic`
+
+## Three-hundred-seventh wave — the Russell-Taylor classification (subtrochanteric fracture) in lib/russell-taylor-subtroch-v482.js (+1)
+
+`russell-taylor-subtroch` (spec-v482) applies the Russell-Taylor classification: given the type, it reports the
+piriformis-fossa / lesser-trochanter description. `type` is an enum (`kind: 'enum'`, values IA/IB/IIA/IIB) — the
+single input the renderer exposes. The example sets type IA; its expected text carries no numeric facts (the
+description is word-only), so it flows through the default `makeToArgs` with no custom toArgs. New adapter module
+registered in `mcp/catalog.js`; its golden probe ("russell taylor subtrochanteric fracture classification") is
+promoted now that the tile is in the MCP-exposed registry. Brings the exposed total to **1270 calculators
+across 386 modules**.
+
+### lib/russell-taylor-subtroch-v482.js
+- `russell-taylor-subtroch`
+
+## Three-hundred-sixth wave — the Wiltse classification (spondylolisthesis) in lib/wiltse-spondylolisthesis-v481.js (+1)
+
+`wiltse-spondylolisthesis` (spec-v481) applies the Wiltse-Newman-Macnab classification: given the type, it
+reports the etiology description. `type` is an enum (`kind: 'enum'`, values I..V) — the single input the
+renderer exposes. The example sets type II; its expected text carries no numeric facts (the description is
+word-only), so it flows through the default `makeToArgs` with no custom toArgs. New adapter module registered in
+`mcp/catalog.js`; its golden probe ("wiltse spondylolisthesis classification") is promoted now that the tile is
+in the MCP-exposed registry. Brings the exposed total to **1269 calculators across 385 modules**.
+
+### lib/wiltse-spondylolisthesis-v481.js
+- `wiltse-spondylolisthesis`
+
+## Three-hundred-fifth wave — the Ahlback grade (knee osteoarthritis) in lib/ahlback-knee-oa-v480.js (+1)
+
+`ahlback-knee-oa` (spec-v480) applies the Ahlback classification: given the grade, it reports the
+joint-space/attrition description. `grade` is an enum (`kind: 'enum'`, values I..V) — the single input the
+renderer exposes. The example sets grade III; its expected text carries the "0 to 5 mm" fact, so it flows
+through the default `makeToArgs` with no custom toArgs. New adapter module registered in `mcp/catalog.js`; its
+golden probe ("ahlback knee osteoarthritis grade") is promoted now that the tile is in the MCP-exposed
+registry. Brings the exposed total to **1268 calculators across 384 modules**.
+
+### lib/ahlback-knee-oa-v480.js
+- `ahlback-knee-oa`
+
+## Three-hundred-fourth wave — the Spitz classification (esophageal atresia) in lib/spitz-atresia-v479.js (+1)
+
+`spitz-atresia` (spec-v479) applies the Spitz classification: given the group, it reports the birth-weight /
+cardiac criteria. `group` is an enum (`kind: 'enum'`, values I/II/III) — the single input the renderer exposes.
+The example sets group II; its expected text carries the "1500 g" fact, so it flows through the default
+`makeToArgs` with no custom toArgs. New adapter module registered in `mcp/catalog.js`; its golden probe ("spitz
+esophageal atresia classification") is promoted now that the tile is in the MCP-exposed registry. Brings the
+exposed total to **1267 calculators across 383 modules**.
+
+### lib/spitz-atresia-v479.js
+- `spitz-atresia`
+
+## Three-hundred-third wave — the Spaulding classification (device reprocessing) in lib/spaulding-classification-v478.js (+1)
+
+`spaulding-classification` (spec-v478) applies the Spaulding classification: given the category, it reports the
+required reprocessing. `category` is an enum (`kind: 'enum'`, values critical/semicritical/noncritical) — the
+single input the renderer exposes. The example sets semicritical; its expected text carries no numeric facts
+(the description is word-only), so it flows through the default `makeToArgs` with no custom toArgs. New adapter
+module registered in `mcp/catalog.js`; its golden probe ("spaulding device reprocessing classification") is
+promoted now that the tile is in the MCP-exposed registry. Brings the exposed total to **1266 calculators
+across 382 modules**.
+
+### lib/spaulding-classification-v478.js
+- `spaulding-classification`
+
+## Three-hundred-second wave — the SFU grade (hydronephrosis) in lib/sfu-hydronephrosis-v477.js (+1)
+
+`sfu-hydronephrosis` (spec-v477) applies the SFU grading: given the grade, it reports the dilatation
+description. `grade` is an enum (`kind: 'enum'`, values 0-4) — the single input the renderer exposes. The
+example sets grade 2; its expected text carries no numeric facts beyond the word-only description, so it flows
+through the default `makeToArgs` with no custom toArgs. New adapter module registered in `mcp/catalog.js`; its
+golden probe ("sfu hydronephrosis grade") is promoted now that the tile is in the MCP-exposed registry. Brings
+the exposed total to **1265 calculators across 381 modules**.
+
+### lib/sfu-hydronephrosis-v477.js
+- `sfu-hydronephrosis`
+
+## Three-hundred-first wave — the Nash-Moe grade (vertebral rotation) in lib/nash-moe-rotation-v476.js (+1)
+
+`nash-moe-rotation` (spec-v476) applies the Nash-Moe grading: given the grade, it reports the
+convex-pedicle-position description. `grade` is an enum (`kind: 'enum'`, values 0-4) — the single input the
+renderer exposes. The example sets grade 2; its expected text carries no numeric facts beyond the word-only
+description, so it flows through the default `makeToArgs` with no custom toArgs. New adapter module registered
+in `mcp/catalog.js`; its golden probe ("nash moe vertebral rotation grade") is promoted now that the tile is in
+the MCP-exposed registry. Brings the exposed total to **1264 calculators across 380 modules**.
+
+### lib/nash-moe-rotation-v476.js
+- `nash-moe-rotation`
+
+## Three-hundredth wave — the Glogau classification (photoaging) in lib/glogau-photoaging-v475.js (+1)
+
+`glogau-photoaging` (spec-v475) applies the Glogau classification: given the type, it reports the
+photoaging-severity description. `type` is an enum (`kind: 'enum'`, values I..IV) — the single input the
+renderer exposes. The example sets type II; its expected text carries no numeric facts (the description is
+word-only), so it flows through the default `makeToArgs` with no custom toArgs. New adapter module registered in
+`mcp/catalog.js`; its golden probe ("glogau photoaging classification") is promoted now that the tile is in the
+MCP-exposed registry. Brings the exposed total to **1263 calculators across 379 modules** — the three-hundredth
+MCP wave.
+
+### lib/glogau-photoaging-v475.js
+- `glogau-photoaging`
+
+## Two-hundred-ninety-ninth wave — the Rastelli classification (complete AVSD) in lib/rastelli-avsd-v474.js (+1)
+
+`rastelli-avsd` (spec-v474) applies the Rastelli classification: given the type, it reports the
+bridging-leaflet-morphology description. `type` is an enum (`kind: 'enum'`, values A/B/C) — the single input the
+renderer exposes. The example sets type A; its expected text carries no numeric facts (the description is
+word-only), so it flows through the default `makeToArgs` with no custom toArgs. New adapter module registered in
+`mcp/catalog.js`; its golden probe ("rastelli complete avsd classification") is promoted now that the tile is in
+the MCP-exposed registry. Brings the exposed total to **1262 calculators across 378 modules**.
+
+### lib/rastelli-avsd-v474.js
+- `rastelli-avsd`
+
+## Two-hundred-ninety-eighth wave — the Todani classification (choledochal cyst) in lib/todani-choledochal-v473.js (+1)
+
+`todani-choledochal` (spec-v473) applies the Todani classification: given the type, it reports the
+location/shape description. `type` is an enum (`kind: 'enum'`, values I..V) — the single input the renderer
+exposes. The example sets type I; its expected text carries no numeric facts (the description is word-only), so
+it flows through the default `makeToArgs` with no custom toArgs. New adapter module registered in
+`mcp/catalog.js`; its golden probe ("todani choledochal cyst classification") is promoted now that the tile is
+in the MCP-exposed registry. Brings the exposed total to **1261 calculators across 377 modules**.
+
+### lib/todani-choledochal-v473.js
+- `todani-choledochal`
+
+## Two-hundred-ninety-seventh wave — the Yerdel grade (portal vein thrombosis) in lib/yerdel-pvt-v472.js (+1)
+
+`yerdel-pvt` (spec-v472) applies the Yerdel classification: given the grade, it reports the thrombus-extent
+description. `grade` is an enum (`kind: 'enum'`, values 1-4) — the single input the renderer exposes. The
+example sets grade 2; its expected text carries the "50%" fact, so it flows through the default `makeToArgs`
+with no custom toArgs. New adapter module registered in `mcp/catalog.js`; its golden probe ("yerdel portal vein
+thrombosis grade") is promoted now that the tile is in the MCP-exposed registry. Brings the exposed total to
+**1260 calculators across 376 modules**.
+
+### lib/yerdel-pvt-v472.js
+- `yerdel-pvt`
+
+## Two-hundred-ninety-sixth wave — the Gass staging (macular hole) in lib/gass-macular-hole-v471.js (+1)
+
+`gass-macular-hole` (spec-v471) applies the Gass classification: given the stage, it reports the biomicroscopic
+description. `stage` is an enum (`kind: 'enum'`, values 1-4) — the single input the renderer exposes. The
+example sets stage 2; its expected text carries the "400 micrometers" fact, so it flows through the default
+`makeToArgs` with no custom toArgs. New adapter module registered in `mcp/catalog.js`; its golden probe ("gass
+macular hole staging") is promoted now that the tile is in the MCP-exposed registry. Brings the exposed total
+to **1259 calculators across 375 modules**.
+
+### lib/gass-macular-hole-v471.js
+- `gass-macular-hole`
+
+## Two-hundred-ninety-fifth wave — the Larsen grade (rheumatoid arthritis radiographs) in lib/larsen-ra-v470.js (+1)
+
+`larsen-ra` (spec-v470) applies the Larsen radiographic grading: given the grade, it reports the joint-damage
+description. `grade` is an enum (`kind: 'enum'`, values 0-5) — the single input the renderer exposes. The
+example sets grade 2; its expected text carries no numeric facts beyond the word-only description, so it flows
+through the default `makeToArgs` with no custom toArgs. New adapter module registered in `mcp/catalog.js`; its
+golden probe ("larsen rheumatoid arthritis radiographic grade") is promoted now that the tile is in the
+MCP-exposed registry. Brings the exposed total to **1258 calculators across 374 modules**.
+
+### lib/larsen-ra-v470.js
+- `larsen-ra`
+
+## Two-hundred-ninety-fourth wave — the Steinbrocker functional class (rheumatoid arthritis) in lib/steinbrocker-ra-v469.js (+1)
+
+`steinbrocker-ra` (spec-v469) applies the Steinbrocker functional classification: given the class, it reports
+the functional-capacity description. `cls` is an enum (`kind: 'enum'`, values I/II/III/IV) — the single input
+the renderer exposes. The example sets class II; its expected text carries no numeric facts (the description is
+word-only), so it flows through the default `makeToArgs` with no custom toArgs. New adapter module registered
+in `mcp/catalog.js`; its golden probe ("steinbrocker rheumatoid arthritis functional class") is promoted now
+that the tile is in the MCP-exposed registry. Brings the exposed total to **1257 calculators across 373
+modules**.
+
+### lib/steinbrocker-ra-v469.js
+- `steinbrocker-ra`
+
+## Two-hundred-ninety-third wave — the Brouet classification (cryoglobulinemia) in lib/brouet-cryoglobulinemia-v468.js (+1)
+
+`brouet-cryoglobulinemia` (spec-v468) applies the Brouet classification: given the type, it reports the
+clonality / disease-association description. `type` is an enum (`kind: 'enum'`, values I/II/III) — the single
+input the renderer exposes. The example sets type II; its expected text carries no numeric facts (the
+description is word-only), so it flows through the default `makeToArgs` with no custom toArgs. New adapter
+module registered in `mcp/catalog.js`; its golden probe ("brouet cryoglobulinemia classification") is promoted
+now that the tile is in the MCP-exposed registry. Brings the exposed total to **1256 calculators across 372
+modules**.
+
+### lib/brouet-cryoglobulinemia-v468.js
+- `brouet-cryoglobulinemia`
+
+## Two-hundred-ninety-second wave — the Bromage scale (neuraxial motor block) in lib/bromage-scale-v467.js (+1)
+
+`bromage-scale` (spec-v467) applies the Bromage scale: given the grade, it reports the residual-movement
+description. `grade` is an enum (`kind: 'enum'`, values I/II/III/IV) — the single input the renderer exposes.
+The example sets grade II; its expected text carries no numeric facts (the description is word-only), so it
+flows through the default `makeToArgs` with no custom toArgs. New adapter module registered in `mcp/catalog.js`;
+its golden probe ("bromage neuraxial motor block scale") is promoted now that the tile is in the MCP-exposed
+registry. Brings the exposed total to **1255 calculators across 371 modules**.
+
+### lib/bromage-scale-v467.js
+- `bromage-scale`
+
+## Two-hundred-ninety-first wave — the Judet-Letournel classification (acetabular fracture) in lib/letournel-acetabulum-v466.js (+1)
+
+`letournel-acetabulum` (spec-v466) applies the Judet-Letournel classification: given the pattern, it reports
+whether it is elementary or associated and its description. `pattern` is an enum of the ten pattern slugs — the
+single input the renderer exposes. The example sets `transverse`; its expected text carries no numeric facts
+(the description is word-only), so it flows through the default `makeToArgs` with no custom toArgs. New adapter
+module registered in `mcp/catalog.js`; its golden probe ("judet letournel acetabular fracture classification")
+is promoted now that the tile is in the MCP-exposed registry. Brings the exposed total to **1254 calculators
+across 370 modules**.
+
+### lib/letournel-acetabulum-v466.js
+- `letournel-acetabulum`
+
+## Two-hundred-ninetieth wave — the Stamey grade (stress urinary incontinence) in lib/stamey-incontinence-v465.js (+1)
+
+`stamey-incontinence` (spec-v465) applies the Stamey grading: given the grade, it reports the provoking-stress
+description. `grade` is an enum (`kind: 'enum'`, values 1/2/3) — the single input the renderer exposes. The
+example sets grade 2; its expected text carries no numeric facts beyond the word-only description, so it flows
+through the default `makeToArgs` with no custom toArgs. New adapter module registered in `mcp/catalog.js`; its
+golden probe ("stamey stress urinary incontinence grade") is promoted now that the tile is in the MCP-exposed
+registry. Brings the exposed total to **1253 calculators across 369 modules**.
+
+### lib/stamey-incontinence-v465.js
+- `stamey-incontinence`
+
+## Two-hundred-eighty-ninth wave — the Crawford classification (thoracoabdominal aortic aneurysm) in lib/crawford-taaa-v464.js (+1)
+
+`crawford-taaa` (spec-v464) applies the Crawford classification: given the extent, it reports the aortic-segment
+description. `extent` is an enum (`kind: 'enum'`, values I/II/III/IV) — the single input the renderer exposes.
+The example sets extent II; its expected text carries no numeric facts (the description is word-only), so it
+flows through the default `makeToArgs` with no custom toArgs. New adapter module registered in `mcp/catalog.js`;
+its golden probe ("crawford thoracoabdominal aortic aneurysm classification") is promoted now that the tile is
+in the MCP-exposed registry. Brings the exposed total to **1252 calculators across 368 modules**.
+
+### lib/crawford-taaa-v464.js
+- `crawford-taaa`
+
+## Two-hundred-eighty-eighth wave — the Waldenstrom staging (Legg-Calve-Perthes) in lib/waldenstrom-perthes-v463.js (+1)
+
+`waldenstrom-perthes` (spec-v463) applies the Waldenstrom radiographic staging: given the stage, it reports the
+temporal appearance description. `stage` is an enum (`kind: 'enum'`, values I/II/III/IV) — the single input the
+renderer exposes. The example sets stage II; its expected text carries no numeric facts (the description is
+word-only), so it flows through the default `makeToArgs` with no custom toArgs. New adapter module registered
+in `mcp/catalog.js`; its golden probe ("waldenstrom perthes radiographic staging") is promoted now that the
+tile is in the MCP-exposed registry. Brings the exposed total to **1251 calculators across 367 modules**.
+
+### lib/waldenstrom-perthes-v463.js
+- `waldenstrom-perthes`
+
+## Two-hundred-eighty-seventh wave — the GMFCS level (cerebral palsy gross motor function) in lib/gmfcs-v462.js (+1)
+
+`gmfcs` (spec-v462) applies the Gross Motor Function Classification System: given the level, it reports the
+mobility description. `level` is an enum (`kind: 'enum'`, values I/II/III/IV/V) — the single input the renderer
+exposes. The example sets level III; its expected text carries no numeric facts (the description is word-only),
+so it flows through the default `makeToArgs` with no custom toArgs. New adapter module registered in
+`mcp/catalog.js`; its golden probe ("gmfcs cerebral palsy gross motor function") is promoted now that the tile
+is in the MCP-exposed registry. Brings the exposed total to **1250 calculators across 366 modules**.
+
+### lib/gmfcs-v462.js
+- `gmfcs`
+
+## Two-hundred-eighty-sixth wave — the DeBakey classification (aortic dissection) in lib/debakey-v461.js (+1)
+
+`debakey` (spec-v461) applies the DeBakey classification: given the type, it reports the origin / extent
+description. `type` is an enum (`kind: 'enum'`, values I/II/IIIa/IIIb) — the single input the renderer exposes.
+The example sets type I; its expected text carries no numeric facts (the description is word-only), so it flows
+through the default `makeToArgs` with no custom toArgs. New adapter module registered in `mcp/catalog.js`; its
+golden probe ("debakey aortic dissection classification") is promoted now that the tile is in the MCP-exposed
+registry. Brings the exposed total to **1249 calculators across 365 modules**.
+
+### lib/debakey-v461.js
+- `debakey`
+
+## Two-hundred-eighty-fifth wave — the Enneking surgical staging (musculoskeletal sarcoma) in lib/enneking-v460.js (+1)
+
+`enneking` (spec-v460) applies the Enneking (MSTS) surgical staging: given the stage, it reports the grade /
+compartment / metastasis combination. `stage` is an enum (`kind: 'enum'`, values IA/IB/IIA/IIB/III) — the
+single input the renderer exposes. The example sets stage IIB; its expected text carries the G2/T2/M0 facts, so
+it flows through the default `makeToArgs` with no custom toArgs. New adapter module registered in
+`mcp/catalog.js`; its golden probe ("enneking musculoskeletal sarcoma surgical staging") is promoted now that
+the tile is in the MCP-exposed registry. Brings the exposed total to **1248 calculators across 364 modules**.
+
+### lib/enneking-v460.js
+- `enneking`
+
+## Two-hundred-eighty-fourth wave — the Thompson-Epstein classification (posterior hip dislocation) in lib/thompson-epstein-v459.js (+1)
+
+`thompson-epstein` (spec-v459) applies the Thompson-Epstein classification: given the type, it reports the
+associated-fracture description. `type` is an enum (`kind: 'enum'`, values I/II/III/IV/V) — the single input
+the renderer exposes. The example sets type II; its expected text carries no numeric facts (the description is
+word-only), so it flows through the default `makeToArgs` with no custom toArgs. New adapter module registered
+in `mcp/catalog.js`; its golden probe ("thompson epstein posterior hip dislocation classification") is promoted
+now that the tile is in the MCP-exposed registry. Brings the exposed total to **1247 calculators across 363
+modules**.
+
+### lib/thompson-epstein-v459.js
+- `thompson-epstein`
+
+## Two-hundred-eighty-third wave — the Boyd-Griffin classification (intertrochanteric fracture) in lib/boyd-griffin-v458.js (+1)
+
+`boyd-griffin` (spec-v458) applies the Boyd-Griffin classification: given the type, it reports the fracture-line
+description. `type` is an enum (`kind: 'enum'`, values I/II/III/IV) — the single input the renderer exposes. The
+example sets type II; its expected text carries no numeric facts (the description is word-only), so it flows
+through the default `makeToArgs` with no custom toArgs. New adapter module registered in `mcp/catalog.js`; its
+golden probe ("boyd griffin intertrochanteric fracture classification") is promoted now that the tile is in the
+MCP-exposed registry. Brings the exposed total to **1246 calculators across 362 modules**.
+
+### lib/boyd-griffin-v458.js
+- `boyd-griffin`
+
+## Two-hundred-eighty-second wave — the Stulberg classification (Perthes residual deformity) in lib/stulberg-v457.js (+1)
+
+`stulberg` (spec-v457) applies the Stulberg classification: given the class, it reports the sphericity /
+congruency description. `cls` is an enum (`kind: 'enum'`, values I/II/III/IV/V) — the single input the renderer
+exposes. The example sets class III; its expected text carries no numeric facts (the description is word-only),
+so it flows through the default `makeToArgs` with no custom toArgs. New adapter module registered in
+`mcp/catalog.js`; its golden probe ("stulberg perthes residual deformity classification") is promoted now that
+the tile is in the MCP-exposed registry. Brings the exposed total to **1245 calculators across 361 modules**.
+
+### lib/stulberg-v457.js
+- `stulberg`
+
+## Two-hundred-eighty-first wave — the Leddy-Packer classification (jersey finger) in lib/leddy-packer-v456.js (+1)
+
+`leddy-packer` (spec-v456) applies the Leddy-Packer classification: given the type, it reports the FDP
+retraction / bony-fragment description. `type` is an enum (`kind: 'enum'`, values I/II/III) — the single input
+the renderer exposes. The example sets type II; its expected text carries no numeric facts (the description is
+word-only), so it flows through the default `makeToArgs` with no custom toArgs. New adapter module registered
+in `mcp/catalog.js`; its golden probe ("leddy packer jersey finger classification") is promoted now that the
+tile is in the MCP-exposed registry. Brings the exposed total to **1244 calculators across 360 modules**.
+
+### lib/leddy-packer-v456.js
+- `leddy-packer`
+
+## Two-hundred-eightieth wave — the Nunley-Vertullo classification (midfoot sprain) in lib/nunley-vertullo-v455.js (+1)
+
+`nunley-vertullo` (spec-v455) applies the Nunley-Vertullo classification: given the stage, it reports the
+weightbearing-radiograph description. `stage` is an enum (`kind: 'enum'`, values I/II/III) — the single input
+the renderer exposes. The example sets stage II; its expected text carries the "1 to 5 mm" diastasis fact, so
+it flows through the default `makeToArgs` with no custom toArgs. New adapter module registered in
+`mcp/catalog.js`; its golden probe ("nunley vertullo midfoot sprain classification") is promoted now that the
+tile is in the MCP-exposed registry. Brings the exposed total to **1243 calculators across 359 modules**.
+
+### lib/nunley-vertullo-v455.js
+- `nunley-vertullo`
+
+## Two-hundred-seventy-ninth wave — the Bado classification (Monteggia fracture) in lib/bado-v454.js (+1)
+
+`bado` (spec-v454) applies the Bado classification: given the fracture type, it reports the dislocation /
+fracture description. `type` is an enum (`kind: 'enum'`, values I/II/III/IV) — the single input the renderer
+exposes. The example sets type I; its expected text carries no numeric facts (the description is word-only), so
+it flows through the default `makeToArgs` with no custom toArgs. New adapter module registered in
+`mcp/catalog.js`; its golden probe ("bado monteggia fracture classification") is promoted now that the tile is
+in the MCP-exposed registry. Brings the exposed total to **1242 calculators across 358 modules**. (Wave 278,
+the Schatzker tile, was reverted before release as a duplicate of the existing `schatzker-classification`
+adapter, so this wave is 279.)
+
+### lib/bado-v454.js
+- `bado`
+
+## Two-hundred-seventy-seventh wave — the Brooker classification (heterotopic ossification) in lib/brooker-v452.js (+1)
+
+`brooker` (spec-v452) applies the Brooker classification: given the radiographic class, it reports the extent
+description. `cls` is an enum (`kind: 'enum'`, values I/II/III/IV) — the single input the renderer exposes. The
+example sets class II; its expected text carries the "1 cm" gap fact, so it flows through the default
+`makeToArgs` with no custom toArgs. New adapter module registered in `mcp/catalog.js`; its golden probe
+("brooker heterotopic ossification classification") is promoted now that the tile is in the MCP-exposed
+registry. Brings the exposed total to **1241 calculators across 357 modules**.
+
+### lib/brooker-v452.js
+- `brooker`
+
+## Two-hundred-seventy-sixth wave — the Sade grade (tympanic membrane retraction) in lib/sade-retraction-v451.js (+1)
+
+`sade-retraction` (spec-v451) applies the Sade classification: given the grade, it reports the otoscopy
+description. `grade` is an enum (`kind: 'enum'`, values I/II/III/IV) — the single input the renderer exposes.
+The example sets grade III; its expected text carries no numeric facts (the description is word-only), so it
+flows through the default `makeToArgs` with no custom toArgs. New adapter module registered in
+`mcp/catalog.js`; its golden probe ("sade tympanic membrane retraction grade") is promoted now that the tile
+is in the MCP-exposed registry. Brings the exposed total to **1240 calculators across 356 modules**.
+
+### lib/sade-retraction-v451.js
+- `sade-retraction`
+
+## Two-hundred-seventy-fifth wave — the Reid classification (bronchiectasis) in lib/reid-bronchiectasis-v450.js (+1)
+
+`reid-bronchiectasis` (spec-v450) applies the Reid classification: given the type, it reports the morphology
+description. `type` is an enum (`kind: 'enum'`, values cylindrical/varicose/cystic) — the single input the
+renderer exposes. The example sets varicose; its expected text carries no numeric facts (the description is
+word-only), so it flows through the default `makeToArgs` with no custom toArgs. New adapter module registered
+in `mcp/catalog.js`; its golden probe ("reid bronchiectasis morphology") is promoted now that the tile is in
+the MCP-exposed registry. Brings the exposed total to **1239 calculators across 355 modules**.
+
+### lib/reid-bronchiectasis-v450.js
+- `reid-bronchiectasis`
+
+## Two-hundred-seventy-fourth wave — the Fielding-Hawkins (atlantoaxial rotatory subluxation) in lib/fielding-hawkins-v449.js (+1)
+
+`fielding-hawkins` (spec-v449) applies the Fielding-Hawkins classification: given the type, it reports the
+displacement description. `type` is an enum (`kind: 'enum'`, values I/II/III/IV) — the single input the
+renderer exposes. The example sets type II; its expected numbers (3 to 5 mm) appear in the result band, so it
+flows through the default `makeToArgs` with no custom toArgs. New adapter module registered in
+`mcp/catalog.js`; its golden probe ("fielding hawkins atlantoaxial rotatory subluxation") is promoted now that
+the tile is in the MCP-exposed registry. Brings the exposed total to **1238 calculators across 354 modules**.
+
+### lib/fielding-hawkins-v449.js
+- `fielding-hawkins`
+
+## Two-hundred-seventy-third wave — the Traynelis (atlanto-occipital dislocation) in lib/traynelis-v448.js (+1)
+
+`traynelis` (spec-v448) applies the Traynelis classification: given the type, it reports the displacement
+description. `type` is an enum (`kind: 'enum'`, values I/II/III) — the single input the renderer exposes. The
+example sets type II; its expected text carries no numeric facts (the description is word-only), so it flows
+through the default `makeToArgs` with no custom toArgs. New adapter module registered in `mcp/catalog.js`; its
+golden probe ("traynelis atlanto occipital dislocation") is promoted now that the tile is in the MCP-exposed
+registry. Brings the exposed total to **1237 calculators across 353 modules**.
+
+### lib/traynelis-v448.js
+- `traynelis`
+
+## Two-hundred-seventy-second wave — the Anderson-Montesano (occipital condyle fracture) in lib/anderson-montesano-v447.js (+1)
+
+`anderson-montesano` (spec-v447) applies the Anderson-Montesano classification: given the type, it reports the
+morphology description. `type` is an enum (`kind: 'enum'`, values I/II/III) — the single input the renderer
+exposes. The example sets type III; its expected text carries no numeric facts (the description is word-only),
+so it flows through the default `makeToArgs` with no custom toArgs. New adapter module registered in
+`mcp/catalog.js`; its golden probe ("anderson montesano occipital condyle") is promoted now that the tile is
+in the MCP-exposed registry. Brings the exposed total to **1236 calculators across 352 modules**.
+
+### lib/anderson-montesano-v447.js
+- `anderson-montesano`
+
+## Two-hundred-seventy-first wave — the ROP stage (retinopathy of prematurity) in lib/rop-stage-v446.js (+1)
+
+`rop-stage` (spec-v446) applies the ICROP stage: given the stage, it reports the retinal description. `stage`
+is an enum (`kind: 'enum'`, values 1/2/3/4/5) — the single input the renderer exposes. The example sets stage
+3; its expected text carries no numeric facts beyond the stage label (the description is word-only), so it
+flows through the default `makeToArgs` with no custom toArgs. New adapter module registered in
+`mcp/catalog.js`; its golden probe ("retinopathy of prematurity stage") is promoted now that the tile is in
+the MCP-exposed registry. Brings the exposed total to **1235 calculators across 351 modules**.
+
+### lib/rop-stage-v446.js
+- `rop-stage`
+
+## Two-hundred-seventieth wave — the Revised Atlanta severity (acute pancreatitis) in lib/atlanta-pancreatitis-v445.js (+1)
+
+`atlanta-pancreatitis` (spec-v445) applies the Revised Atlanta classification: given the severity, it reports
+the definition. `severity` is an enum (`kind: 'enum'`, values mild/moderately-severe/severe) — the single
+input the renderer exposes. The example sets moderately-severe; its expected text carries no numeric facts
+(the definition is word-only), so it flows through the default `makeToArgs` with no custom toArgs. New adapter
+module registered in `mcp/catalog.js`; its golden probe ("revised atlanta pancreatitis severity") is promoted
+now that the tile is in the MCP-exposed registry. Brings the exposed total to **1234 calculators across 350
+modules**.
+
+### lib/atlanta-pancreatitis-v445.js
+- `atlanta-pancreatitis`
+
+## Two-hundred-sixty-ninth wave — the McCormick grade (spinal cord function) in lib/mccormick-v444.js (+1)
+
+`mccormick` (spec-v444) applies the McCormick grading scale: given the grade, it reports the functional
+description. `grade` is an enum (`kind: 'enum'`, values I/II/III/IV) — the single input the renderer exposes.
+The example sets grade II; its expected text carries no numeric facts (the description is word-only), so it
+flows through the default `makeToArgs` with no custom toArgs. New adapter module registered in
+`mcp/catalog.js`; its golden probe ("mccormick spinal cord grade") is promoted now that the tile is in the
+MCP-exposed registry. Brings the exposed total to **1233 calculators across 349 modules**.
+
+### lib/mccormick-v444.js
+- `mccormick`
+
+## Two-hundred-sixty-eighth wave — the Kadish staging (esthesioneuroblastoma) in lib/kadish-v443.js (+1)
+
+`kadish` (spec-v443) applies the Kadish staging: given the stage, it reports the anatomic-extent description.
+`stage` is an enum (`kind: 'enum'`, values A/B/C/D) — the single input the renderer exposes. The example sets
+stage C; its expected text carries no numeric facts (the description is word-only), so it flows through the
+default `makeToArgs` with no custom toArgs. New adapter module registered in `mcp/catalog.js`; its golden probe
+("kadish esthesioneuroblastoma stage") is promoted now that the tile is in the MCP-exposed registry. Brings
+the exposed total to **1232 calculators across 348 modules**.
+
+### lib/kadish-v443.js
+- `kadish`
+
+## Two-hundred-sixty-seventh wave — the Zabramski classification (cerebral cavernous malformation) in lib/zabramski-v442.js (+1)
+
+`zabramski` (spec-v442) applies the Zabramski classification: given the type, it reports the MRI description.
+`type` is an enum (`kind: 'enum'`, values I/II/III/IV) — the single input the renderer exposes. The example
+sets type II; its expected text carries no numeric facts (the description is word-only), so it flows through
+the default `makeToArgs` with no custom toArgs. New adapter module registered in `mcp/catalog.js`; its golden
+probe ("zabramski cavernous malformation") is promoted now that the tile is in the MCP-exposed registry.
+Brings the exposed total to **1231 calculators across 347 modules**.
+
+### lib/zabramski-v442.js
+- `zabramski`
+
+## Two-hundred-sixty-sixth wave — the Borden classification (dural AV fistula) in lib/borden-davf-v441.js (+1)
+
+`borden-davf` (spec-v441) applies the Borden classification: given the type, it reports the venous-drainage
+description. `type` is an enum (`kind: 'enum'`, values I/II/III) — the single input the renderer exposes. The
+example sets type II; its expected text carries no numeric facts (the description is word-only), so it flows
+through the default `makeToArgs` with no custom toArgs. New adapter module registered in `mcp/catalog.js`; its
+golden probe ("borden dural av fistula") is promoted now that the tile is in the MCP-exposed registry. Brings
+the exposed total to **1230 calculators across 346 modules**.
+
+### lib/borden-davf-v441.js
+- `borden-davf`
+
+## Two-hundred-sixty-fifth wave — the Barrow classification (carotid-cavernous fistula) in lib/barrow-ccf-v440.js (+1)
+
+`barrow-ccf` (spec-v440) applies the Barrow classification: given the type, it reports the arterial-supply
+description. `type` is an enum (`kind: 'enum'`, values A/B/C/D) — the single input the renderer exposes. The
+example sets type A; its expected text carries no numeric facts (the description is word-only), so it flows
+through the default `makeToArgs` with no custom toArgs. New adapter module registered in `mcp/catalog.js`; its
+golden probe ("barrow carotid cavernous fistula") is promoted now that the tile is in the MCP-exposed
+registry. Brings the exposed total to **1229 calculators across 345 modules**.
+
+### lib/barrow-ccf-v440.js
+- `barrow-ccf`
+
+## Two-hundred-sixty-fourth wave — the Hamada grade (cuff tear arthropathy) in lib/hamada-v439.js (+1)
+
+`hamada` (spec-v439) applies the Hamada classification: given the grade, it reports the radiographic
+description. `grade` is an enum (`kind: 'enum'`, values 1/2/3/4/5) — the single input the renderer exposes.
+The example sets grade 1; its expected number (6 mm) appears in the result band, so it flows through the
+default `makeToArgs` with no custom toArgs. New adapter module registered in `mcp/catalog.js`; its golden probe
+("hamada cuff tear arthropathy grade") is promoted now that the tile is in the MCP-exposed registry. Brings
+the exposed total to **1228 calculators across 344 modules**.
+
+### lib/hamada-v439.js
+- `hamada`
+
+## Two-hundred-sixty-third wave — the Eaton-Littler stage (thumb CMC arthritis) in lib/eaton-littler-v438.js (+1)
+
+`eaton-littler` (spec-v438) applies the Eaton-Littler classification: given the stage, it reports the
+radiographic description. `stage` is an enum (`kind: 'enum'`, values I/II/III/IV) — the single input the
+renderer exposes. The example sets stage II; its expected number (2 mm) appears in the result band, so it
+flows through the default `makeToArgs` with no custom toArgs. New adapter module registered in
+`mcp/catalog.js`; its golden probe ("eaton littler thumb arthritis stage") is promoted now that the tile is in
+the MCP-exposed registry. Brings the exposed total to **1227 calculators across 343 modules**.
+
+### lib/eaton-littler-v438.js
+- `eaton-littler`
+
 ## Two-hundred-sixty-second wave — the Goutallier grade (rotator cuff fatty infiltration) in lib/goutallier-v437.js (+1)
 
 `goutallier` (spec-v437) applies the Goutallier classification: given the grade, it reports the fat-vs-muscle
@@ -5060,6 +5925,213 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/goutallier-v437.js
 - `goutallier`
+
+### lib/eaton-littler-v438.js
+- `eaton-littler`
+
+### lib/hamada-v439.js
+- `hamada`
+
+### lib/barrow-ccf-v440.js
+- `barrow-ccf`
+
+### lib/borden-davf-v441.js
+- `borden-davf`
+
+### lib/zabramski-v442.js
+- `zabramski`
+
+### lib/kadish-v443.js
+- `kadish`
+
+### lib/mccormick-v444.js
+- `mccormick`
+
+### lib/atlanta-pancreatitis-v445.js
+- `atlanta-pancreatitis`
+
+### lib/rop-stage-v446.js
+- `rop-stage`
+
+### lib/anderson-montesano-v447.js
+- `anderson-montesano`
+
+### lib/traynelis-v448.js
+- `traynelis`
+
+### lib/fielding-hawkins-v449.js
+- `fielding-hawkins`
+
+### lib/reid-bronchiectasis-v450.js
+- `reid-bronchiectasis`
+
+### lib/sade-retraction-v451.js
+- `sade-retraction`
+
+### lib/brooker-v452.js
+- `brooker`
+
+### lib/bado-v454.js
+- `bado`
+
+### lib/nunley-vertullo-v455.js
+- `nunley-vertullo`
+
+### lib/leddy-packer-v456.js
+- `leddy-packer`
+
+### lib/stulberg-v457.js
+- `stulberg`
+
+### lib/boyd-griffin-v458.js
+- `boyd-griffin`
+
+### lib/thompson-epstein-v459.js
+- `thompson-epstein`
+
+### lib/enneking-v460.js
+- `enneking`
+
+### lib/debakey-v461.js
+- `debakey`
+
+### lib/gmfcs-v462.js
+- `gmfcs`
+
+### lib/waldenstrom-perthes-v463.js
+- `waldenstrom-perthes`
+
+### lib/crawford-taaa-v464.js
+- `crawford-taaa`
+
+### lib/stamey-incontinence-v465.js
+- `stamey-incontinence`
+
+### lib/letournel-acetabulum-v466.js
+- `letournel-acetabulum`
+
+### lib/bromage-scale-v467.js
+- `bromage-scale`
+
+### lib/brouet-cryoglobulinemia-v468.js
+- `brouet-cryoglobulinemia`
+
+### lib/steinbrocker-ra-v469.js
+- `steinbrocker-ra`
+
+### lib/larsen-ra-v470.js
+- `larsen-ra`
+
+### lib/gass-macular-hole-v471.js
+- `gass-macular-hole`
+
+### lib/yerdel-pvt-v472.js
+- `yerdel-pvt`
+
+### lib/todani-choledochal-v473.js
+- `todani-choledochal`
+
+### lib/rastelli-avsd-v474.js
+- `rastelli-avsd`
+
+### lib/glogau-photoaging-v475.js
+- `glogau-photoaging`
+
+### lib/nash-moe-rotation-v476.js
+- `nash-moe-rotation`
+
+### lib/sfu-hydronephrosis-v477.js
+- `sfu-hydronephrosis`
+
+### lib/spaulding-classification-v478.js
+- `spaulding-classification`
+
+### lib/spitz-atresia-v479.js
+- `spitz-atresia`
+
+### lib/ahlback-knee-oa-v480.js
+- `ahlback-knee-oa`
+
+### lib/wiltse-spondylolisthesis-v481.js
+- `wiltse-spondylolisthesis`
+
+### lib/russell-taylor-subtroch-v482.js
+- `russell-taylor-subtroch`
+
+### lib/vancouver-periprosthetic-v483.js
+- `vancouver-periprosthetic`
+
+### lib/barrack-cement-v484.js
+- `barrack-cement`
+
+### lib/dejour-trochlea-v485.js
+- `dejour-trochlea`
+
+### lib/samilson-prieto-v486.js
+- `samilson-prieto`
+
+### lib/rockwood-ac-v487.js
+- `rockwood-ac`
+
+### lib/bigliani-acromion-v488.js
+- `bigliani-acromion`
+
+### lib/fernandez-radius-v489.js
+- `fernandez-radius`
+
+### lib/ruedi-allgower-pilon-v490.js
+- `ruedi-allgower-pilon`
+
+### lib/severin-ddh-v491.js
+- `severin-ddh`
+
+### lib/hattrup-johnson-v492.js
+- `hattrup-johnson`
+
+### lib/lown-ectopy-v493.js
+- `lown-ectopy`
+
+### lib/intermacs-profile-v494.js
+- `intermacs-profile`
+
+### lib/ranawat-myelopathy-v495.js
+- `ranawat-myelopathy`
+
+### lib/lodwick-grade-v496.js
+- `lodwick-grade`
+
+### lib/schobinger-avm-v497.js
+- `schobinger-avm`
+
+### lib/narakas-obpp-v498.js
+- `narakas-obpp`
+
+### lib/dorr-femur-v499.js
+- `dorr-femur`
+
+### lib/tegner-activity-v500.js
+- `tegner-activity`
+
+### lib/ludwig-hairloss-v501.js
+- `ludwig-hairloss`
+
+### lib/norwood-hairloss-v502.js
+- `norwood-hairloss`
+
+### lib/simpson-meningioma-v503.js
+- `simpson-meningioma`
+
+### lib/metavir-fibrosis-v504.js
+- `metavir-fibrosis`
+
+### lib/metavir-activity-v505.js
+- `metavir-activity`
+
+### lib/jerger-tympanogram-v506.js
+- `jerger-tympanogram`
+
+### lib/vhi10-v508.js
+- `vhi10`
 
 ### lib/tb-testing.js
 - `tb-testing`

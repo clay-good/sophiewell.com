@@ -149,3 +149,141 @@ test('queryCompute: ideal body weight (Devine) from height + sex', () => {
   assert.equal(f.value, 50.1);                         // 45.5 + 2.3*(62-60)
   assert.equal(queryCompute('ideal body weight 5 ft 10 in'), null, 'sex missing');
 });
+
+// --- second-wave templates (eAG, QTc, A-a gradient, shock index, fluids) ----
+
+test('parseA1c: named or bare number, guarded to the assay range', () => {
+  const { parseA1c } = _testing;
+  assert.equal(parseA1c('a1c 7'), 7);
+  assert.equal(parseA1c('hba1c: 6.5'), 6.5);
+  assert.equal(parseA1c('eag 8'), 8, 'bare number after the trigger');
+  assert.equal(parseA1c('average glucose 154'), null, '154 is out of the A1c range');
+  assert.equal(parseA1c('eag'), null, 'no number');
+});
+
+test('queryCompute: eAG from A1c (named and bare) matches the ADAG lib', () => {
+  const r = queryCompute('eag a1c 7');
+  assert.equal(r.tile, 'eag-a1c');
+  assert.equal(r.value, 154);                          // round(28.7*7 - 46.7)
+  assert.match(r.text, /8\.6 mmol\/L/);
+  assert.deepEqual(r.inputs, { 'eag-a1c': 7 });
+  assert.equal(queryCompute('estimated average glucose 6.5').value, 140);
+  assert.equal(queryCompute('average glucose 250'), null, 'out-of-range number never guesses');
+});
+
+test('queryCompute: QTc (Bazett + Fridericia) from QT + HR, not tripped by "qtc"', () => {
+  const r = queryCompute('qtc qt 440 hr 80');
+  assert.equal(r.tile, 'qtc-suite');
+  assert.equal(r.value, 508);                          // round(440 / sqrt(0.75))
+  assert.match(r.text, /Fridericia 484 ms/);
+  assert.deepEqual(r.inputs, { 'qs-qt': 440, 'qs-hr': 80 });
+  assert.equal(queryCompute('qtc'), null, 'trigger only');
+  assert.equal(queryCompute('qtc qt 440'), null, 'heart rate missing');
+});
+
+test('queryCompute: A-a gradient from FiO2 + PaCO2 + PaO2', () => {
+  const r = queryCompute('a-a gradient fio2 0.21 paco2 40 pao2 90');
+  assert.equal(r.tile, 'aa-gradient');
+  assert.equal(r.value, 9.73);                         // (0.21*713 - 40/0.8) - 90
+  assert.deepEqual(r.inputs, { fio2: 0.21, paco2: 40, pao2: 90 });
+  assert.equal(queryCompute('aa gradient fio2 0.21 pao2 90'), null, 'paco2 missing');
+});
+
+test('queryCompute: shock index from HR + SBP; DBP optional', () => {
+  const r = queryCompute('shock index hr 110 sbp 90');
+  assert.equal(r.tile, 'shock-index');
+  assert.equal(r.value, 1.22);                         // 110 / 90
+  assert.deepEqual(r.inputs, { 'si-hr': 110, 'si-sbp': 90 });
+  assert.equal(queryCompute('shock index hr 110 sbp 90 dbp 60').inputs['si-dbp'], 60);
+  assert.equal(queryCompute('shock index hr 110'), null, 'sbp missing');
+});
+
+test('queryCompute: maintenance fluids (4-2-1) emits canonical kg, no unit key', () => {
+  const r = queryCompute('maintenance fluids 15 kg');
+  assert.equal(r.tile, 'maint-fluids');
+  assert.equal(r.value, 50);                           // 40 + (15-10)*2
+  assert.deepEqual(r.inputs, { 'mf-w': 15 });          // canonical kg; reset sets the select
+  // a lb entry converts to canonical kg so the deep link computes correctly.
+  const lb = queryCompute('maintenance fluids 33.07 lb');  // ~15 kg
+  assert.equal(lb.inputs['mf-w'], 15);
+  assert.equal(lb.inputs['mf-w-unit'], undefined, 'no unit key emitted');
+  assert.equal(queryCompute('maintenance fluids 15'), null, 'weight needs a unit');
+});
+
+test('queryCompute: P/F ratio from PaO2 + FiO2 with the Berlin band', () => {
+  const r = queryCompute('pf ratio pao2 90 fio2 0.4');
+  assert.equal(r.tile, 'pf-ratio');
+  assert.equal(r.value, 225);                          // 90 / 0.4
+  assert.match(r.text, /Mild ARDS/);
+  assert.deepEqual(r.inputs, { pao2: 90, fio2: 0.4 });
+  assert.equal(queryCompute('p/f ratio pao2 60 fio2 0.5').value, 120);
+  assert.equal(queryCompute('pf ratio pao2 90'), null, 'fio2 missing');
+});
+
+test('queryCompute: Winters expected PaCO2 from HCO3; measured PaCO2 optional', () => {
+  const r = queryCompute('winters hco3 12');
+  assert.equal(r.tile, 'winters');
+  assert.equal(r.value, 24);                            // 1.5*12 + 8 - 2
+  assert.match(r.text, /24-28 mmHg/);                  // low-high band
+  assert.deepEqual(r.inputs, { 'wf-hco3': 12 });
+  assert.equal(queryCompute('winters hco3 12 paco2 30').inputs['wf-paco2'], 30);
+  assert.equal(queryCompute('winters'), null, 'hco3 missing');
+});
+
+test('queryCompute: Mentzer index from MCV + RBC', () => {
+  const r = queryCompute('mentzer mcv 90 rbc 4');
+  assert.equal(r.tile, 'mentzer');
+  assert.equal(r.value, 22.5);                          // 90 / 4
+  assert.match(r.text, /iron-deficiency/);
+  assert.deepEqual(r.inputs, { mcv: 90, rbc: 4 });
+  assert.equal(queryCompute('mentzer mcv 65'), null, 'rbc missing');
+});
+
+test('queryCompute: eGFR (CKD-EPI 2021) from creatinine + age + sex', () => {
+  const r = queryCompute('egfr creatinine 1.2 age 60 male');
+  assert.equal(r.tile, 'egfr');
+  assert.equal(r.value, 69.2);
+  assert.deepEqual(r.inputs, { scr: 1.2, age: 60, sex: 'M' });
+  assert.equal(queryCompute('ckd-epi cr 2.0 age 70 man').inputs.sex, 'M');
+  assert.equal(queryCompute('egfr creatinine 1.2 age 60'), null, 'sex missing');
+  assert.equal(queryCompute('egfr age 60 male'), null, 'creatinine missing');
+});
+
+test('queryCompute: delta ratio from Na + Cl + HCO3; albumin optional', () => {
+  const r = queryCompute('delta gap na 140 cl 100 hco3 12');
+  assert.equal(r.tile, 'delta-gap');
+  assert.equal(r.value, 1.33);                          // (16-12) / (24-12)
+  assert.deepEqual(r.inputs, { 'dg-na': 140, 'dg-cl': 100, 'dg-hco3': 12 });
+  assert.equal(queryCompute('delta ratio na 140 cl 105 hco3 8 alb 2').inputs['dg-alb'], 2);
+  assert.equal(queryCompute('delta gap na 140 cl 100'), null, 'hco3 missing');
+});
+
+test('queryCompute: reticulocyte production index from retic% + Hct', () => {
+  const r = queryCompute('reticulocyte index retic 5 hct 30');
+  assert.equal(r.tile, 'retic-index');
+  assert.equal(r.value, 2.22);                          // 5*(30/45) / 1.5
+  assert.deepEqual(r.inputs, { 'ri-retic': 5, 'ri-hct': 30 });
+  assert.equal(queryCompute('corrected retic 6 hematocrit 30').value, 2.67);
+  assert.equal(queryCompute('retic index retic 5'), null, 'hct missing');
+});
+
+test('queryCompute: transferrin saturation from iron + TIBC; ferritin optional', () => {
+  const r = queryCompute('tsat iron 40 tibc 400');
+  assert.equal(r.tile, 'tsat');
+  assert.equal(r.value, 10);                            // 40/400 * 100
+  assert.deepEqual(r.inputs, { 'ts-iron': 40, 'ts-tibc': 400 });
+  assert.equal(queryCompute('transferrin saturation iron 25 tibc 450 ferritin 10').inputs['ts-ferritin'], 10);
+  assert.equal(queryCompute('tsat iron 40'), null, 'tibc missing');
+});
+
+test('queryCompute: FENa from prefixed urine/serum Na + Cr; bare pairs never guess', () => {
+  const r = queryCompute('fena una 40 pna 140 ucr 50 pcr 1.2');
+  assert.equal(r.tile, 'fena-feurea');
+  assert.equal(r.value, 0.69);                          // (40*1.2)/(140*50) * 100
+  assert.deepEqual(r.inputs, { 'fn-una': 40, 'fn-pna': 140, 'fn-ucr': 50, 'fn-pcr': 1.2 });
+  // long-form urine/serum prefixes resolve to the right compartment.
+  const long = queryCompute('fractional excretion of sodium urine na 20 serum na 138 urine cr 60 serum cr 2');
+  assert.deepEqual(long.inputs, { 'fn-una': 20, 'fn-pna': 138, 'fn-ucr': 60, 'fn-pcr': 2 });
+  assert.equal(queryCompute('fena una 40 pna 140 ucr 50'), null, 'plasma Cr missing');
+  assert.equal(queryCompute('fena na 40 cr 1.2'), null, 'unprefixed values are ambiguous, no guess');
+});

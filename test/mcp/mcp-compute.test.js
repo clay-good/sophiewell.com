@@ -3800,6 +3800,483 @@ test('lib/goutallier-v437.js worked calls', () => {
   assert.match(ok('goutallier', { 'goutallier-grade': '4' }).band, /more fat than muscle/);
 });
 
+test('lib/eaton-littler-v438.js worked calls', () => {
+  // Stage II (the META example): slight narrowing, osteophytes < 2 mm.
+  const two = ok('eaton-littler', { 'eaton-stage': 'II' });
+  assert.equal(two.stage, 'II');
+  assert.match(two.band, /slight narrowing of the TM joint/);
+  // Stage IV: pantrapezial arthritis.
+  assert.match(ok('eaton-littler', { 'eaton-stage': 'IV' }).band, /pantrapezial arthritis/);
+});
+
+test('lib/hamada-v439.js worked calls', () => {
+  // Grade 1 (the META example): AHI 6 mm or more.
+  const one = ok('hamada', { 'hamada-grade': '1' });
+  assert.equal(one.grade, '1');
+  assert.match(one.band, /6 mm or more/);
+  // Grade 5: humeral head collapse.
+  assert.match(ok('hamada', { 'hamada-grade': '5' }).band, /humeral head collapse/);
+});
+
+test('lib/barrow-ccf-v440.js worked calls', () => {
+  // Type A (the META example): direct high-flow shunt.
+  const a = ok('barrow-ccf', { 'barrow-type': 'A' });
+  assert.equal(a.type, 'A');
+  assert.match(a.band, /direct high-flow shunt/);
+  // Type D: both ICA and ECA.
+  assert.match(ok('barrow-ccf', { 'barrow-type': 'D' }).band, /both the ICA and the ECA/);
+});
+
+test('lib/borden-davf-v441.js worked calls', () => {
+  // Type II (the META example): cortical venous reflux.
+  const two = ok('borden-davf', { 'borden-type': 'II' });
+  assert.equal(two.type, 'II');
+  assert.match(two.band, /retrograde flow into cortical veins/);
+  // Type III: cortical drainage only.
+  assert.match(ok('borden-davf', { 'borden-type': 'III' }).band, /cortical veins only/);
+});
+
+test('lib/zabramski-v442.js worked calls', () => {
+  // Type II (the META example): popcorn with hemosiderin rim.
+  const two = ok('zabramski', { 'zabramski-type': 'II' });
+  assert.equal(two.type, 'II');
+  assert.match(two.band, /hemosiderin rim/);
+  // Type IV: punctate microhemorrhages.
+  assert.match(ok('zabramski', { 'zabramski-type': 'IV' }).band, /punctate microhemorrhages/);
+});
+
+test('lib/kadish-v443.js worked calls', () => {
+  // Stage C (the META example): beyond the sinuses.
+  const c = ok('kadish', { 'kadish-stage': 'C' });
+  assert.equal(c.stage, 'C');
+  assert.match(c.band, /extending beyond the nasal cavity/);
+  // Stage A: confined to the nasal cavity.
+  assert.match(ok('kadish', { 'kadish-stage': 'A' }).band, /confined to the nasal cavity/);
+});
+
+test('lib/mccormick-v444.js worked calls', () => {
+  // Grade II (the META example): deficit but independent.
+  const two = ok('mccormick', { 'mccormick-grade': 'II' });
+  assert.equal(two.grade, 'II');
+  assert.match(two.band, /functions and ambulates independently/);
+  // Grade IV: wheelchair.
+  assert.match(ok('mccormick', { 'mccormick-grade': 'IV' }).band, /requires a wheelchair/);
+});
+
+test('lib/atlanta-pancreatitis-v445.js worked calls', () => {
+  // Moderately-severe (the META example): transient organ failure.
+  const ms = ok('atlanta-pancreatitis', { 'atlanta-sev': 'moderately-severe' });
+  assert.equal(ms.category, 'moderately severe');
+  assert.match(ms.band, /transient organ failure/);
+  // Severe: persistent organ failure.
+  assert.match(ok('atlanta-pancreatitis', { 'atlanta-sev': 'severe' }).band, /persistent organ failure/);
+});
+
+test('lib/rop-stage-v446.js worked calls', () => {
+  // Stage 3 (the META example): ridge with proliferation.
+  const three = ok('rop-stage', { 'rop-stage': '3' });
+  assert.equal(three.stage, '3');
+  assert.match(three.band, /extraretinal fibrovascular proliferation/);
+  // Stage 5: total retinal detachment.
+  assert.match(ok('rop-stage', { 'rop-stage': '5' }).band, /total retinal detachment/);
+});
+
+test('lib/anderson-montesano-v447.js worked calls', () => {
+  // Type III (the META example): alar-ligament avulsion.
+  const three = ok('anderson-montesano', { 'am-type': 'III' });
+  assert.equal(three.type, 'III');
+  assert.match(three.band, /avulsion fracture of the occipital condyle/);
+  // Type I: impacted, comminuted.
+  assert.match(ok('anderson-montesano', { 'am-type': 'I' }).band, /impacted, comminuted/);
+});
+
+test('lib/traynelis-v448.js worked calls', () => {
+  // Type II (the META example): longitudinal distraction.
+  const two = ok('traynelis', { 'traynelis-type': 'II' });
+  assert.equal(two.type, 'II');
+  assert.match(two.band, /longitudinal distraction/);
+  // Type III: posterior displacement.
+  assert.match(ok('traynelis', { 'traynelis-type': 'III' }).band, /posterior displacement/);
+});
+
+test('lib/fielding-hawkins-v449.js worked calls', () => {
+  // Type II (the META example): anterior 3 to 5 mm.
+  const two = ok('fielding-hawkins', { 'fh-type': 'II' });
+  assert.equal(two.type, 'II');
+  assert.match(two.band, /anterior displacement of 3 to 5 mm/);
+  // Type IV: posterior displacement.
+  assert.match(ok('fielding-hawkins', { 'fh-type': 'IV' }).band, /posterior displacement of the atlas/);
+});
+
+test('lib/reid-bronchiectasis-v450.js worked calls', () => {
+  // Varicose (the META example): beaded outline.
+  const v = ok('reid-bronchiectasis', { 'reid-type': 'varicose' });
+  assert.equal(v.type, 'varicose');
+  assert.match(v.band, /irregular, beaded outline/);
+  // Cystic: large cyst-like dilatations.
+  assert.match(ok('reid-bronchiectasis', { 'reid-type': 'cystic' }).band, /large cyst-like/);
+});
+
+test('lib/sade-retraction-v451.js worked calls', () => {
+  // Grade III (the META example): touching the promontory.
+  const three = ok('sade-retraction', { 'sade-grade': 'III' });
+  assert.equal(three.grade, 'III');
+  assert.match(three.band, /touching the promontory/);
+  // Grade IV: adhesive otitis media.
+  assert.match(ok('sade-retraction', { 'sade-grade': 'IV' }).band, /adhesive otitis media/);
+});
+
+test('lib/brooker-v452.js worked calls', () => {
+  // Class II (the META example): spurs, at least 1 cm gap.
+  const two = ok('brooker', { 'brooker-class': 'II' });
+  assert.equal(two.cls, 'II');
+  assert.match(two.band, /at least 1 cm/);
+  // Class IV: apparent bony ankylosis.
+  assert.match(ok('brooker', { 'brooker-class': 'IV' }).band, /apparent bony ankylosis/);
+});
+
+test('lib/bado-v454.js worked calls', () => {
+  // Type I (the META example): anterior dislocation, most common.
+  const one = ok('bado', { 'bado-type': 'I' });
+  assert.equal(one.type, 'I');
+  assert.match(one.band, /anterior dislocation of the radial head/);
+  // Type III: ulnar metaphyseal fracture.
+  assert.match(ok('bado', { 'bado-type': 'III' }).band, /ulnar metaphyseal fracture/);
+});
+
+test('lib/nunley-vertullo-v455.js worked calls', () => {
+  // Stage II (the META example): 1 to 5 mm diastasis.
+  const two = ok('nunley-vertullo', { 'nunley-stage': 'II' });
+  assert.equal(two.stage, 'II');
+  assert.match(two.band, /1 to 5 mm of diastasis/);
+  // Stage III: > 5 mm with arch-height loss.
+  assert.match(ok('nunley-vertullo', { 'nunley-stage': 'III' }).band, /more than 5 mm of diastasis/);
+});
+
+test('lib/leddy-packer-v456.js worked calls', () => {
+  // Type II (the META example): retraction to the PIP joint, most common.
+  const two = ok('leddy-packer', { 'leddy-type': 'II' });
+  assert.equal(two.type, 'II');
+  assert.match(two.band, /retracts to the level of the PIP joint/);
+  // Type III: bony fragment at the A4 pulley.
+  assert.match(ok('leddy-packer', { 'leddy-type': 'III' }).band, /A4 pulley/);
+});
+
+test('lib/stulberg-v457.js worked calls', () => {
+  // Class III (the META example): non-spherical but not flat.
+  const three = ok('stulberg', { 'stulberg-class': 'III' });
+  assert.equal(three.cls, 'III');
+  assert.match(three.band, /non-spherical head/);
+  // Class V: aspherical incongruency.
+  assert.match(ok('stulberg', { 'stulberg-class': 'V' }).band, /aspherical incongruency/);
+});
+
+test('lib/boyd-griffin-v458.js worked calls', () => {
+  // Type II (the META example): comminuted intertrochanteric.
+  const two = ok('boyd-griffin', { 'boyd-type': 'II' });
+  assert.equal(two.type, 'II');
+  assert.match(two.band, /comminuted fracture along the intertrochanteric line/);
+  // Type III: essentially subtrochanteric.
+  assert.match(ok('boyd-griffin', { 'boyd-type': 'III' }).band, /essentially subtrochanteric/);
+});
+
+test('lib/thompson-epstein-v459.js worked calls', () => {
+  // Type II (the META example): single large rim fracture.
+  const two = ok('thompson-epstein', { 'te-type': 'II' });
+  assert.equal(two.type, 'II');
+  assert.match(two.band, /single large fracture of the posterior acetabular rim/);
+  // Type V: femoral-head fracture.
+  assert.match(ok('thompson-epstein', { 'te-type': 'V' }).band, /fracture of the femoral head/);
+});
+
+test('lib/enneking-v460.js worked calls', () => {
+  // Stage IIB (the META example): high-grade, extracompartmental, no mets.
+  const iib = ok('enneking', { 'enneking-stage': 'IIB' });
+  assert.equal(iib.stage, 'IIB');
+  assert.match(iib.band, /high-grade \(G2\), extracompartmental \(T2\)/);
+  // Stage III: any metastasis.
+  assert.match(ok('enneking', { 'enneking-stage': 'III' }).band, /any regional or distant metastasis/);
+});
+
+test('lib/debakey-v461.js worked calls', () => {
+  // Type I (the META example): ascending + arch + descending.
+  const one = ok('debakey', { 'debakey-type': 'I' });
+  assert.equal(one.type, 'I');
+  assert.match(one.band, /originates in the ascending aorta and extends through the arch/);
+  // Type IIIb: descending, below the diaphragm.
+  assert.match(ok('debakey', { 'debakey-type': 'IIIb' }).band, /extends below the diaphragm/);
+});
+
+test('lib/gmfcs-v462.js worked calls', () => {
+  // Level III (the META example): hand-held mobility device.
+  const three = ok('gmfcs', { 'gmfcs-level': 'III' });
+  assert.equal(three.level, 'III');
+  assert.match(three.band, /hand-held mobility device/);
+  // Level V: transported in a manual wheelchair.
+  assert.match(ok('gmfcs', { 'gmfcs-level': 'V' }).band, /transported in a manual wheelchair/);
+});
+
+test('lib/waldenstrom-perthes-v463.js worked calls', () => {
+  // Stage II (the META example): fragmentation.
+  const two = ok('waldenstrom-perthes', { 'wp-stage': 'II' });
+  assert.equal(two.stage, 'II');
+  assert.match(two.band, /fragmentation/);
+  // Stage IV: healed (remodeling).
+  assert.match(ok('waldenstrom-perthes', { 'wp-stage': 'IV' }).band, /healed \(remodeling\)/);
+});
+
+test('lib/crawford-taaa-v464.js worked calls', () => {
+  // Extent II (the META example): most extensive.
+  const two = ok('crawford-taaa', { 'crawford-extent': 'II' });
+  assert.equal(two.extent, 'II');
+  assert.match(two.band, /the most extensive/);
+  // Extent IV: the entire abdominal aorta.
+  assert.match(ok('crawford-taaa', { 'crawford-extent': 'IV' }).band, /the entire abdominal aorta/);
+});
+
+test('lib/stamey-incontinence-v465.js worked calls', () => {
+  // Grade 2 (the META example): lesser stress.
+  const two = ok('stamey-incontinence', { 'stamey-grade': '2' });
+  assert.equal(two.grade, '2');
+  assert.match(two.band, /lesser degrees of stress/);
+  // Grade 3: total, continuous.
+  assert.match(ok('stamey-incontinence', { 'stamey-grade': '3' }).band, /total \(continuous\) incontinence/);
+});
+
+test('lib/letournel-acetabulum-v466.js worked calls', () => {
+  // Transverse (the META example): elementary.
+  const tr = ok('letournel-acetabulum', { 'letournel-pattern': 'transverse' });
+  assert.equal(tr.group, 'elementary');
+  assert.match(tr.band, /dividing the acetabulum into upper and lower halves/);
+  // Both-column: associated, floating acetabulum.
+  assert.match(ok('letournel-acetabulum', { 'letournel-pattern': 'both-column' }).band, /no part of the articular surface remains attached/);
+});
+
+test('lib/bromage-scale-v467.js worked calls', () => {
+  // Grade II (the META example): partial.
+  const two = ok('bromage-scale', { 'bromage-grade': 'II' });
+  assert.equal(two.grade, 'II');
+  assert.match(two.band, /partial: just able to flex the knees/);
+  // Grade IV: complete.
+  assert.match(ok('bromage-scale', { 'bromage-grade': 'IV' }).band, /complete: unable to move the legs or feet/);
+});
+
+test('lib/brouet-cryoglobulinemia-v468.js worked calls', () => {
+  // Type II (the META example): mixed, monoclonal + polyclonal, HCV.
+  const two = ok('brouet-cryoglobulinemia', { 'brouet-type': 'II' });
+  assert.equal(two.type, 'II');
+  assert.match(two.band, /hepatitis C/);
+  // Type I: monoclonal only.
+  assert.match(ok('brouet-cryoglobulinemia', { 'brouet-type': 'I' }).band, /a single monoclonal immunoglobulin/);
+});
+
+test('lib/steinbrocker-ra-v469.js worked calls', () => {
+  // Class II (the META example): adequate despite handicap.
+  const two = ok('steinbrocker-ra', { 'steinbrocker-class': 'II' });
+  assert.equal(two.cls, 'II');
+  assert.match(two.band, /adequate for normal activities despite the handicap/);
+  // Class IV: incapacitated.
+  assert.match(ok('steinbrocker-ra', { 'steinbrocker-class': 'IV' }).band, /largely or wholly incapacitated/);
+});
+
+test('lib/larsen-ra-v470.js worked calls', () => {
+  // Grade 2 (the META example): definite early.
+  const two = ok('larsen-ra', { 'larsen-grade': '2' });
+  assert.equal(two.grade, '2');
+  assert.match(two.band, /definite early abnormality/);
+  // Grade 5: mutilating.
+  assert.match(ok('larsen-ra', { 'larsen-grade': '5' }).band, /mutilating abnormality/);
+});
+
+test('lib/gass-macular-hole-v471.js worked calls', () => {
+  // Stage 2 (the META example): small full-thickness hole.
+  const two = ok('gass-macular-hole', { 'gass-stage': '2' });
+  assert.equal(two.stage, '2');
+  assert.match(two.band, /less than 400 micrometers/);
+  // Stage 4: complete PVD.
+  assert.match(ok('gass-macular-hole', { 'gass-stage': '4' }).band, /a complete posterior vitreous detachment/);
+});
+
+test('lib/yerdel-pvt-v472.js worked calls', () => {
+  // Grade 2 (the META example): more than 50% occlusion.
+  const two = ok('yerdel-pvt', { 'yerdel-grade': '2' });
+  assert.equal(two.grade, '2');
+  assert.match(two.band, /more than 50% occlusion of the portal vein/);
+  // Grade 4: complete PV + entire SMV.
+  assert.match(ok('yerdel-pvt', { 'yerdel-grade': '4' }).band, /the entire SMV/);
+});
+
+test('lib/todani-choledochal-v473.js worked calls', () => {
+  // Type I (the META example): extrahepatic dilatation.
+  const one = ok('todani-choledochal', { 'todani-type': 'I' });
+  assert.equal(one.type, 'I');
+  assert.match(one.band, /extrahepatic bile duct/);
+  // Type V: Caroli disease.
+  assert.match(ok('todani-choledochal', { 'todani-type': 'V' }).band, /Caroli disease/);
+});
+
+test('lib/rastelli-avsd-v474.js worked calls', () => {
+  // Type A (the META example): attached to the septal crest.
+  const a = ok('rastelli-avsd', { 'rastelli-type': 'A' });
+  assert.equal(a.type, 'A');
+  assert.match(a.band, /crest of the interventricular septum/);
+  // Type C: free-floating.
+  assert.match(ok('rastelli-avsd', { 'rastelli-type': 'C' }).band, /free-floating/);
+});
+
+test('lib/glogau-photoaging-v475.js worked calls', () => {
+  // Type II (the META example): wrinkles in motion.
+  const two = ok('glogau-photoaging', { 'glogau-type': 'II' });
+  assert.equal(two.type, 'II');
+  assert.match(two.band, /"wrinkles in motion"/);
+  // Type IV: only wrinkles.
+  assert.match(ok('glogau-photoaging', { 'glogau-type': 'IV' }).band, /"only wrinkles"/);
+});
+
+test('lib/nash-moe-rotation-v476.js worked calls', () => {
+  // Grade 2 (the META example): middle third.
+  const two = ok('nash-moe-rotation', { 'nash-moe-grade': '2' });
+  assert.equal(two.grade, '2');
+  assert.match(two.band, /middle third of the vertebral body/);
+  // Grade 4: past the midline.
+  assert.match(ok('nash-moe-rotation', { 'nash-moe-grade': '4' }).band, /migrated past the midline/);
+});
+
+test('lib/sfu-hydronephrosis-v477.js worked calls', () => {
+  // Grade 2 (the META example): pelvis and a few calyces.
+  const two = ok('sfu-hydronephrosis', { 'sfu-grade': '2' });
+  assert.equal(two.grade, '2');
+  assert.match(two.band, /renal pelvis and a few calyces/);
+  // Grade 4: parenchymal thinning.
+  assert.match(ok('sfu-hydronephrosis', { 'sfu-grade': '4' }).band, /thinning of the renal parenchyma/);
+});
+
+test('lib/spaulding-classification-v478.js worked calls', () => {
+  // Semicritical (the META example): high-level disinfection.
+  const semi = ok('spaulding-classification', { 'spaulding-category': 'semicritical' });
+  assert.equal(semi.category, 'Semicritical');
+  assert.match(semi.band, /at least high-level disinfection/);
+  // Critical: sterilization.
+  assert.match(ok('spaulding-classification', { 'spaulding-category': 'critical' }).band, /it requires sterilization/);
+});
+
+test('lib/spitz-atresia-v479.js worked calls', () => {
+  // Group II (the META example): one risk factor.
+  const two = ok('spitz-atresia', { 'spitz-group': 'II' });
+  assert.equal(two.group, 'II');
+  assert.match(two.band, /less than 1500 g, or major congenital cardiac disease/);
+  // Group I: neither risk factor.
+  assert.match(ok('spitz-atresia', { 'spitz-group': 'I' }).band, /1500 g or more and no major/);
+});
+
+test('lib/ahlback-knee-oa-v480.js worked calls', () => {
+  // Grade III (the META example): minor attrition.
+  const three = ok('ahlback-knee-oa', { 'ahlback-grade': 'III' });
+  assert.equal(three.grade, 'III');
+  assert.match(three.band, /0 to 5 mm of bone loss/);
+  // Grade V: severe attrition.
+  assert.match(ok('ahlback-knee-oa', { 'ahlback-grade': 'V' }).band, /more than 10 mm of bone loss/);
+});
+
+test('lib/wiltse-spondylolisthesis-v481.js worked calls', () => {
+  // Type II (the META example): isthmic.
+  const two = ok('wiltse-spondylolisthesis', { 'wiltse-type': 'II' });
+  assert.equal(two.type, 'II');
+  assert.match(two.band, /isthmic: a lesion in the pars interarticularis/);
+  // Type V: pathologic.
+  assert.match(ok('wiltse-spondylolisthesis', { 'wiltse-type': 'V' }).band, /pathologic/);
+});
+
+test('lib/russell-taylor-subtroch-v482.js worked calls', () => {
+  // Type IA (the META example): piriformis intact, LT attached.
+  const ia = ok('russell-taylor-subtroch', { 'rt-type': 'IA' });
+  assert.equal(ia.type, 'IA');
+  assert.match(ia.band, /the piriformis fossa is intact and the lesser trochanter is attached/);
+  // Type IIB: piriformis involved, LT detached.
+  assert.match(ok('russell-taylor-subtroch', { 'rt-type': 'IIB' }).band, /extends into the piriformis fossa and the lesser trochanter is detached/);
+});
+
+test('lib/vancouver-periprosthetic-v483.js worked calls', () => {
+  // Type B2 (the META example): stem loose, adequate bone.
+  const b2 = ok('vancouver-periprosthetic', { 'vancouver-type': 'B2' });
+  assert.equal(b2.type, 'B2');
+  assert.match(b2.band, /the stem loose but adequate proximal bone stock/);
+  // Type C: well below the stem tip.
+  assert.match(ok('vancouver-periprosthetic', { 'vancouver-type': 'C' }).band, /well below the stem tip/);
+});
+
+test('lib/barrack-cement-v484.js worked calls', () => {
+  // Grade C (the META example): 50-99% radiolucency.
+  const c = ok('barrack-cement', { 'barrack-grade': 'C' });
+  assert.equal(c.grade, 'C');
+  assert.match(c.band, /50% to 99% of the cement-bone interface/);
+  // Grade A: white-out.
+  assert.match(ok('barrack-cement', { 'barrack-grade': 'A' }).band, /"white-out"/);
+});
+
+test('lib/dejour-trochlea-v485.js worked calls', () => {
+  // Type B (the META example): flat/convex with a spur.
+  const b = ok('dejour-trochlea', { 'dejour-type': 'B' });
+  assert.equal(b.type, 'B');
+  assert.match(b.band, /a flat or convex trochlea with a supratrochlear spur/);
+  // Type A: shallow but symmetric.
+  assert.match(ok('dejour-trochlea', { 'dejour-type': 'A' }).band, /shallow but still symmetric/);
+});
+
+test('lib/samilson-prieto-v486.js worked calls', () => {
+  // Moderate (the META example): 3-7 mm.
+  const mod = ok('samilson-prieto', { 'samilson-grade': 'moderate' });
+  assert.equal(mod.grade, 'Moderate');
+  assert.match(mod.band, /3 to 7 mm/);
+  // Severe: > 7 mm.
+  assert.match(ok('samilson-prieto', { 'samilson-grade': 'severe' }).band, /greater than 7 mm/);
+});
+
+test('lib/rockwood-ac-v487.js worked calls', () => {
+  // Type III (the META example): both ligaments torn, CC 25-100%.
+  const iii = ok('rockwood-ac', { 'rockwood-type': 'III' });
+  assert.equal(iii.type, 'III');
+  assert.match(iii.band, /coracoclavicular distance is increased 25% to 100%/);
+  // Type V: gross superior displacement.
+  assert.match(ok('rockwood-ac', { 'rockwood-type': 'V' }).band, /100% to 300% of normal/);
+});
+
+test('lib/bigliani-acromion-v488.js worked calls', () => {
+  // Type II (the META example): curved.
+  const two = ok('bigliani-acromion', { 'bigliani-type': 'II' });
+  assert.equal(two.type, 'II');
+  assert.match(two.band, /curved acromion/);
+  // Type III: hooked.
+  assert.match(ok('bigliani-acromion', { 'bigliani-type': 'III' }).band, /hooked acromion/);
+});
+
+test('lib/fernandez-radius-v489.js worked calls', () => {
+  // Type I (the META example): bending fracture.
+  const one = ok('fernandez-radius', { 'fernandez-type': 'I' });
+  assert.equal(one.type, 'I');
+  assert.match(one.band, /a bending fracture of the metaphysis/);
+  // Type III: compression / die-punch.
+  assert.match(ok('fernandez-radius', { 'fernandez-type': 'III' }).band, /compression of the articular surface/);
+});
+
+test('lib/ruedi-allgower-pilon-v490.js worked calls', () => {
+  // Type II (the META example): displaced, minimal comminution.
+  const two = ok('ruedi-allgower-pilon', { 'ruedi-type': 'II' });
+  assert.equal(two.type, 'II');
+  assert.match(two.band, /significant displacement of the articular surface/);
+  // Type III: comminuted, impacted.
+  assert.match(ok('ruedi-allgower-pilon', { 'ruedi-type': 'III' }).band, /comminution and impaction/);
+});
+
+test('lib/severin-ddh-v491.js worked calls', () => {
+  // Group II (the META example): concentric, moderate deformity.
+  const two = ok('severin-ddh', { 'severin-group': 'II' });
+  assert.equal(two.group, 'II');
+  assert.match(two.band, /a concentric hip with moderate deformity/);
+  // Group VI: redislocation.
+  assert.match(ok('severin-ddh', { 'severin-group': 'VI' }).band, /redislocation/);
+});
+
 test('every exposed example round-trips to its META.example.expected numbers', () => {
   function numericFacts(s) {
     const facts = [];

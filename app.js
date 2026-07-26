@@ -329,6 +329,75 @@ import { renderers as RV434 } from './views/group-v434.js';
 import { renderers as RV435 } from './views/group-v435.js';
 import { renderers as RV436 } from './views/group-v436.js';
 import { renderers as RV437 } from './views/group-v437.js';
+import { renderers as RV438 } from './views/group-v438.js';
+import { renderers as RV439 } from './views/group-v439.js';
+import { renderers as RV440 } from './views/group-v440.js';
+import { renderers as RV441 } from './views/group-v441.js';
+import { renderers as RV442 } from './views/group-v442.js';
+import { renderers as RV443 } from './views/group-v443.js';
+import { renderers as RV444 } from './views/group-v444.js';
+import { renderers as RV445 } from './views/group-v445.js';
+import { renderers as RV446 } from './views/group-v446.js';
+import { renderers as RV447 } from './views/group-v447.js';
+import { renderers as RV448 } from './views/group-v448.js';
+import { renderers as RV449 } from './views/group-v449.js';
+import { renderers as RV450 } from './views/group-v450.js';
+import { renderers as RV451 } from './views/group-v451.js';
+import { renderers as RV452 } from './views/group-v452.js';
+import { renderers as RV454 } from './views/group-v454.js';
+import { renderers as RV455 } from './views/group-v455.js';
+import { renderers as RV456 } from './views/group-v456.js';
+import { renderers as RV457 } from './views/group-v457.js';
+import { renderers as RV458 } from './views/group-v458.js';
+import { renderers as RV459 } from './views/group-v459.js';
+import { renderers as RV460 } from './views/group-v460.js';
+import { renderers as RV461 } from './views/group-v461.js';
+import { renderers as RV462 } from './views/group-v462.js';
+import { renderers as RV463 } from './views/group-v463.js';
+import { renderers as RV464 } from './views/group-v464.js';
+import { renderers as RV465 } from './views/group-v465.js';
+import { renderers as RV466 } from './views/group-v466.js';
+import { renderers as RV467 } from './views/group-v467.js';
+import { renderers as RV468 } from './views/group-v468.js';
+import { renderers as RV469 } from './views/group-v469.js';
+import { renderers as RV470 } from './views/group-v470.js';
+import { renderers as RV471 } from './views/group-v471.js';
+import { renderers as RV472 } from './views/group-v472.js';
+import { renderers as RV473 } from './views/group-v473.js';
+import { renderers as RV474 } from './views/group-v474.js';
+import { renderers as RV475 } from './views/group-v475.js';
+import { renderers as RV476 } from './views/group-v476.js';
+import { renderers as RV477 } from './views/group-v477.js';
+import { renderers as RV478 } from './views/group-v478.js';
+import { renderers as RV479 } from './views/group-v479.js';
+import { renderers as RV480 } from './views/group-v480.js';
+import { renderers as RV481 } from './views/group-v481.js';
+import { renderers as RV482 } from './views/group-v482.js';
+import { renderers as RV483 } from './views/group-v483.js';
+import { renderers as RV484 } from './views/group-v484.js';
+import { renderers as RV485 } from './views/group-v485.js';
+import { renderers as RV486 } from './views/group-v486.js';
+import { renderers as RV487 } from './views/group-v487.js';
+import { renderers as RV488 } from './views/group-v488.js';
+import { renderers as RV489 } from './views/group-v489.js';
+import { renderers as RV490 } from './views/group-v490.js';
+import { renderers as RV491 } from './views/group-v491.js';
+import { renderers as RV492 } from './views/group-v492.js';
+import { renderers as RV493 } from './views/group-v493.js';
+import { renderers as RV494 } from './views/group-v494.js';
+import { renderers as RV495 } from './views/group-v495.js';
+import { renderers as RV496 } from './views/group-v496.js';
+import { renderers as RV497 } from './views/group-v497.js';
+import { renderers as RV498 } from './views/group-v498.js';
+import { renderers as RV499 } from './views/group-v499.js';
+import { renderers as RV500 } from './views/group-v500.js';
+import { renderers as RV501 } from './views/group-v501.js';
+import { renderers as RV502 } from './views/group-v502.js';
+import { renderers as RV503 } from './views/group-v503.js';
+import { renderers as RV504 } from './views/group-v504.js';
+import { renderers as RV505 } from './views/group-v505.js';
+import { renderers as RV506 } from './views/group-v506.js';
+import { renderers as RV508 } from './views/group-v508.js';
 import { renderers as RV164 } from './views/group-v164.js';
 import { renderers as RV165 } from './views/group-v165.js';
 import { renderers as RV166 } from './views/group-v166.js';
@@ -365,7 +434,7 @@ import { queryCompute } from './lib/query-compute.js';
 // artifact-detect / artifact-route / artifact-handoff helpers were
 // deleted in spec-v29 wave 29-2 (Group C/L).
 
-const RENDERERS = { ...RA, ...RB, ...RC, ...RE, ...RF, ...RG, ...RH, ...RI, ...RJ, ...RKLMNO, ...RV5, ...RV6, ...RV7, ...RV8, ...RV9, ...RV10, ...RV11, ...RV12, ...RV13, ...RV14, ...RV15, ...RV16, ...RV17, ...RV18, ...RV19, ...RV20, ...RV21, ...RV22, ...RV23, ...RV24, ...RV25, ...RV26, ...RV27, ...RV28, ...RV29, ...RV30, ...RV31, ...RV32, ...RV33, ...RV34, ...RV35, ...RV36, ...RV37, ...RV38, ...RV39, ...RV40, ...RV117, ...RV118, ...RV119, ...RV120, ...RV121, ...RV122, ...RV123, ...RV124, ...RV125, ...RV126, ...RV127, ...RV128, ...RV129, ...RV130, ...RV131, ...RV132, ...RV133, ...RV134, ...RV135, ...RV136, ...RV137, ...RV138, ...RV139, ...RV140, ...RV141, ...RV142, ...RV143, ...RV144, ...RV145, ...RV146, ...RV147, ...RV148, ...RV149, ...RV151, ...RV152, ...RV153, ...RV154, ...RV155, ...RV156, ...RV158, ...RV159, ...RV160, ...RV161, ...RV163, ...RV164, ...RV165, ...RV166, ...RV167, ...RV169, ...RV173, ...RV174, ...RV175, ...RV176, ...RV177, ...RV178, ...RV179, ...RV182, ...RV180, ...RV181, ...RV185, ...RV186, ...RV187, ...RV188, ...RV189, ...RV190, ...RV191, ...RV192, ...RV193, ...RV194, ...RV195, ...RV196, ...RV197, ...RV198, ...RV199, ...RV200, ...RV201, ...RV202, ...RV203, ...RV204, ...RV205, ...RV206, ...RV207, ...RV208, ...RV209, ...RV210, ...RV211, ...RV212, ...RV213, ...RV214, ...RV215, ...RV216, ...RV217, ...RV218, ...RV219, ...RV220, ...RV221, ...RV222, ...RV223, ...RV224, ...RV225, ...RV226, ...RV227, ...RV228, ...RV229, ...RV230, ...RV231, ...RV232, ...RV233, ...RV234, ...RV235, ...RV236, ...RV237, ...RV238, ...RV239, ...RV240, ...RV241, ...RV242, ...RV243, ...RV244, ...RV245, ...RV246, ...RV247, ...RV248, ...RV249, ...RV250, ...RV251, ...RV252, ...RV253, ...RV254, ...RV255, ...RV256, ...RV257, ...RV258, ...RV260, ...RV261, ...RV262, ...RV263, ...RV265, ...RV266, ...RV267, ...RV268, ...RV269, ...RV270, ...RV271, ...RV272, ...RV273, ...RV274, ...RV275, ...RV276, ...RV277, ...RV278, ...RV279, ...RV280, ...RV281, ...RV292, ...RV294, ...RV295, ...RV296, ...RV297, ...RV298, ...RV299, ...RV300, ...RV301, ...RV302, ...RV303, ...RV304, ...RV305, ...RV306, ...RV307, ...RV308, ...RV309, ...RV310, ...RV311, ...RV312, ...RV313, ...RV314, ...RV315, ...RV316, ...RV317, ...RV318, ...RV319, ...RV320, ...RV321, ...RV322, ...RV323, ...RV324, ...RV325, ...RV326, ...RV327, ...RV328, ...RV329, ...RV330, ...RV331, ...RV332, ...RV333, ...RV334, ...RV335, ...RV336, ...RV337, ...RV338, ...RV339, ...RV340, ...RV341, ...RV342, ...RV343, ...RV344, ...RV345, ...RV346, ...RV347, ...RV348, ...RV349, ...RV350, ...RV351, ...RV352, ...RV353, ...RV354, ...RV355, ...RV356, ...RV357, ...RV358, ...RV359, ...RV360, ...RV361, ...RV362, ...RV363, ...RV364, ...RV365, ...RV366, ...RV367, ...RV368, ...RV369, ...RV370, ...RV371, ...RV372, ...RV373, ...RV374, ...RV375, ...RV376, ...RV377, ...RV378, ...RV379, ...RV380, ...RV381, ...RV382, ...RV383, ...RV384, ...RV385, ...RV386, ...RV387, ...RV388, ...RV389, ...RV390, ...RV391, ...RV392, ...RV393, ...RV394, ...RV395, ...RV396, ...RV397, ...RV398, ...RV399, ...RV400, ...RV401, ...RV402, ...RV403, ...RV404, ...RV405, ...RV406, ...RV407, ...RV408, ...RV409, ...RV410, ...RV411, ...RV412, ...RV413, ...RV414, ...RV415, ...RV416, ...RV417, ...RV418, ...RV419, ...RV420, ...RV421, ...RV422, ...RV423, ...RV424, ...RV425, ...RV426, ...RV427, ...RV428, ...RV429, ...RV430, ...RV431, ...RV432, ...RV433, ...RV434, ...RV435, ...RV436, ...RV437, ...RV63, ...RPALINT };
+const RENDERERS = { ...RA, ...RB, ...RC, ...RE, ...RF, ...RG, ...RH, ...RI, ...RJ, ...RKLMNO, ...RV5, ...RV6, ...RV7, ...RV8, ...RV9, ...RV10, ...RV11, ...RV12, ...RV13, ...RV14, ...RV15, ...RV16, ...RV17, ...RV18, ...RV19, ...RV20, ...RV21, ...RV22, ...RV23, ...RV24, ...RV25, ...RV26, ...RV27, ...RV28, ...RV29, ...RV30, ...RV31, ...RV32, ...RV33, ...RV34, ...RV35, ...RV36, ...RV37, ...RV38, ...RV39, ...RV40, ...RV117, ...RV118, ...RV119, ...RV120, ...RV121, ...RV122, ...RV123, ...RV124, ...RV125, ...RV126, ...RV127, ...RV128, ...RV129, ...RV130, ...RV131, ...RV132, ...RV133, ...RV134, ...RV135, ...RV136, ...RV137, ...RV138, ...RV139, ...RV140, ...RV141, ...RV142, ...RV143, ...RV144, ...RV145, ...RV146, ...RV147, ...RV148, ...RV149, ...RV151, ...RV152, ...RV153, ...RV154, ...RV155, ...RV156, ...RV158, ...RV159, ...RV160, ...RV161, ...RV163, ...RV164, ...RV165, ...RV166, ...RV167, ...RV169, ...RV173, ...RV174, ...RV175, ...RV176, ...RV177, ...RV178, ...RV179, ...RV182, ...RV180, ...RV181, ...RV185, ...RV186, ...RV187, ...RV188, ...RV189, ...RV190, ...RV191, ...RV192, ...RV193, ...RV194, ...RV195, ...RV196, ...RV197, ...RV198, ...RV199, ...RV200, ...RV201, ...RV202, ...RV203, ...RV204, ...RV205, ...RV206, ...RV207, ...RV208, ...RV209, ...RV210, ...RV211, ...RV212, ...RV213, ...RV214, ...RV215, ...RV216, ...RV217, ...RV218, ...RV219, ...RV220, ...RV221, ...RV222, ...RV223, ...RV224, ...RV225, ...RV226, ...RV227, ...RV228, ...RV229, ...RV230, ...RV231, ...RV232, ...RV233, ...RV234, ...RV235, ...RV236, ...RV237, ...RV238, ...RV239, ...RV240, ...RV241, ...RV242, ...RV243, ...RV244, ...RV245, ...RV246, ...RV247, ...RV248, ...RV249, ...RV250, ...RV251, ...RV252, ...RV253, ...RV254, ...RV255, ...RV256, ...RV257, ...RV258, ...RV260, ...RV261, ...RV262, ...RV263, ...RV265, ...RV266, ...RV267, ...RV268, ...RV269, ...RV270, ...RV271, ...RV272, ...RV273, ...RV274, ...RV275, ...RV276, ...RV277, ...RV278, ...RV279, ...RV280, ...RV281, ...RV292, ...RV294, ...RV295, ...RV296, ...RV297, ...RV298, ...RV299, ...RV300, ...RV301, ...RV302, ...RV303, ...RV304, ...RV305, ...RV306, ...RV307, ...RV308, ...RV309, ...RV310, ...RV311, ...RV312, ...RV313, ...RV314, ...RV315, ...RV316, ...RV317, ...RV318, ...RV319, ...RV320, ...RV321, ...RV322, ...RV323, ...RV324, ...RV325, ...RV326, ...RV327, ...RV328, ...RV329, ...RV330, ...RV331, ...RV332, ...RV333, ...RV334, ...RV335, ...RV336, ...RV337, ...RV338, ...RV339, ...RV340, ...RV341, ...RV342, ...RV343, ...RV344, ...RV345, ...RV346, ...RV347, ...RV348, ...RV349, ...RV350, ...RV351, ...RV352, ...RV353, ...RV354, ...RV355, ...RV356, ...RV357, ...RV358, ...RV359, ...RV360, ...RV361, ...RV362, ...RV363, ...RV364, ...RV365, ...RV366, ...RV367, ...RV368, ...RV369, ...RV370, ...RV371, ...RV372, ...RV373, ...RV374, ...RV375, ...RV376, ...RV377, ...RV378, ...RV379, ...RV380, ...RV381, ...RV382, ...RV383, ...RV384, ...RV385, ...RV386, ...RV387, ...RV388, ...RV389, ...RV390, ...RV391, ...RV392, ...RV393, ...RV394, ...RV395, ...RV396, ...RV397, ...RV398, ...RV399, ...RV400, ...RV401, ...RV402, ...RV403, ...RV404, ...RV405, ...RV406, ...RV407, ...RV408, ...RV409, ...RV410, ...RV411, ...RV412, ...RV413, ...RV414, ...RV415, ...RV416, ...RV417, ...RV418, ...RV419, ...RV420, ...RV421, ...RV422, ...RV423, ...RV424, ...RV425, ...RV426, ...RV427, ...RV428, ...RV429, ...RV430, ...RV431, ...RV432, ...RV433, ...RV434, ...RV435, ...RV436, ...RV437, ...RV438, ...RV439, ...RV440, ...RV441, ...RV442, ...RV443, ...RV444, ...RV445, ...RV446, ...RV447, ...RV448, ...RV449, ...RV450, ...RV451, ...RV452, ...RV454, ...RV455, ...RV456, ...RV457, ...RV458, ...RV459, ...RV460, ...RV461, ...RV462, ...RV463, ...RV464, ...RV465, ...RV466, ...RV467, ...RV468, ...RV469, ...RV470, ...RV471, ...RV472, ...RV473, ...RV474, ...RV475, ...RV476, ...RV477, ...RV478, ...RV479, ...RV480, ...RV481, ...RV482, ...RV483, ...RV484, ...RV485, ...RV486, ...RV487, ...RV488, ...RV489, ...RV490, ...RV491, ...RV492, ...RV493, ...RV494, ...RV495, ...RV496, ...RV497, ...RV498, ...RV499, ...RV500, ...RV501, ...RV502, ...RV503, ...RV504, ...RV505, ...RV506, ...RV508, ...RV63, ...RPALINT };
 
 // ----- Utility registry ----------------------------------------------------
 // Source of truth for routes, names, group, audiences, and clinical flag.
@@ -1098,6 +1167,75 @@ const UTILITIES = [
   { id: 'van-herick',             name: 'Van Herick Angle Grade',                           group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'biffl-bcvi',             name: 'Biffl Grade (Blunt Cerebrovascular Injury)',        group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'goutallier',             name: 'Goutallier Grade (Rotator Cuff Fatty Infiltration)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'eaton-littler',          name: 'Eaton-Littler Stage (Thumb CMC Arthritis)',         group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'hamada',                 name: 'Hamada Grade (Cuff Tear Arthropathy)',              group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'barrow-ccf',             name: 'Barrow Classification (Carotid-Cavernous Fistula)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'borden-davf',            name: 'Borden Classification (Dural AV Fistula)',          group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'zabramski',              name: 'Zabramski Classification (Cerebral Cavernous Malformation)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'kadish',                 name: 'Kadish Staging (Esthesioneuroblastoma)',            group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'mccormick',              name: 'McCormick Grade (Spinal Cord Function)',            group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'atlanta-pancreatitis',    name: 'Revised Atlanta Severity (Acute Pancreatitis)',     group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'rop-stage',              name: 'ROP Stage (Retinopathy of Prematurity)',            group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'anderson-montesano',     name: 'Anderson-Montesano (Occipital Condyle Fracture)',   group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'traynelis',              name: 'Traynelis Classification (Atlanto-Occipital Dislocation)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'fielding-hawkins',        name: 'Fielding-Hawkins (Atlantoaxial Rotatory Subluxation)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'reid-bronchiectasis',     name: 'Reid Classification (Bronchiectasis)',              group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'sade-retraction',        name: 'Sade Grade (Tympanic Membrane Retraction)',         group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'brooker',                name: 'Brooker Classification (Heterotopic Ossification)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'bado',                    name: 'Bado Classification (Monteggia Fracture)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'nunley-vertullo',         name: 'Nunley-Vertullo Classification (Midfoot Sprain)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'leddy-packer',            name: 'Leddy-Packer Classification (Jersey Finger)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'stulberg',                name: 'Stulberg Classification (Perthes Residual Deformity)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'boyd-griffin',            name: 'Boyd-Griffin Classification (Intertrochanteric Fracture)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'thompson-epstein',        name: 'Thompson-Epstein Classification (Posterior Hip Dislocation)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'enneking',                name: 'Enneking Surgical Staging (Musculoskeletal Sarcoma)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'debakey',                 name: 'DeBakey Classification (Aortic Dissection)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'gmfcs',                   name: 'GMFCS Level (Cerebral Palsy Gross Motor Function)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'waldenstrom-perthes',     name: 'Waldenstrom Staging (Legg-Calve-Perthes)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'crawford-taaa',           name: 'Crawford Classification (Thoracoabdominal Aortic Aneurysm)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'stamey-incontinence',      name: 'Stamey Grade (Stress Urinary Incontinence)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'letournel-acetabulum',      name: 'Judet-Letournel Classification (Acetabular Fracture)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'bromage-scale',           name: 'Bromage Scale (Neuraxial Motor Block)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'brouet-cryoglobulinemia',  name: 'Brouet Classification (Cryoglobulinemia)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'steinbrocker-ra',         name: 'Steinbrocker Functional Class (Rheumatoid Arthritis)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'larsen-ra',               name: 'Larsen Grade (Rheumatoid Arthritis Radiographs)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'gass-macular-hole',        name: 'Gass Staging (Macular Hole)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'yerdel-pvt',              name: 'Yerdel Grade (Portal Vein Thrombosis)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'todani-choledochal',      name: 'Todani Classification (Choledochal Cyst)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'rastelli-avsd',           name: 'Rastelli Classification (Complete AVSD)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'glogau-photoaging',       name: 'Glogau Classification (Photoaging)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'nash-moe-rotation',       name: 'Nash-Moe Grade (Vertebral Rotation)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'sfu-hydronephrosis',      name: 'SFU Grade (Hydronephrosis)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'spaulding-classification', name: 'Spaulding Classification (Device Reprocessing)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'spitz-atresia',           name: 'Spitz Classification (Esophageal Atresia)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'ahlback-knee-oa',         name: 'Ahlback Grade (Knee Osteoarthritis)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'wiltse-spondylolisthesis', name: 'Wiltse Classification (Spondylolisthesis)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'russell-taylor-subtroch',  name: 'Russell-Taylor Classification (Subtrochanteric Fracture)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'vancouver-periprosthetic', name: 'Vancouver Classification (Periprosthetic Femoral Fracture)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'barrack-cement',           name: 'Barrack Grade (Femoral Cement Mantle)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'dejour-trochlea',          name: 'Dejour Classification (Trochlear Dysplasia)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'samilson-prieto',          name: 'Samilson-Prieto Grade (Shoulder Dislocation Arthropathy)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'rockwood-ac',              name: 'Rockwood Classification (Acromioclavicular Joint Injury)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'bigliani-acromion',        name: 'Bigliani Classification (Acromion Morphology)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'fernandez-radius',         name: 'Fernandez Classification (Distal Radius Fracture)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'ruedi-allgower-pilon',     name: 'Ruedi-Allgower Classification (Tibial Pilon Fracture)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'severin-ddh',              name: 'Severin Classification (DDH Radiographic Outcome)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'hattrup-johnson',          name: 'Hattrup-Johnson Grade (Hallux Rigidus)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'lown-ectopy',              name: 'Lown Grade (Ventricular Ectopy)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'intermacs-profile',        name: 'INTERMACS Profile (Advanced Heart Failure)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'ranawat-myelopathy',       name: 'Ranawat Classification (Rheumatoid Cervical Myelopathy)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'lodwick-grade',            name: 'Lodwick Grade (Bone Lesion Aggressiveness)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'schobinger-avm',           name: 'Schobinger Staging (Peripheral AVM)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'narakas-obpp',             name: 'Narakas Classification (Obstetric Brachial Plexus Palsy)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'dorr-femur',               name: 'Dorr Classification (Proximal Femoral Morphology)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'tegner-activity',          name: 'Tegner Activity Scale (Knee)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'ludwig-hairloss',          name: 'Ludwig Scale (Female-Pattern Hair Loss)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'norwood-hairloss',         name: 'Norwood Scale (Male-Pattern Hair Loss)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'simpson-meningioma',       name: 'Simpson Grade (Meningioma Resection)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'metavir-fibrosis',         name: 'METAVIR Fibrosis Stage (Liver Biopsy)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'metavir-activity',         name: 'METAVIR Activity Grade (Liver Biopsy)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'jerger-tympanogram',       name: 'Jerger Tympanogram Type', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'vhi10',                    name: 'Voice Handicap Index-10 (VHI-10)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
 
   // spec-v145 (Wave 8 of spec-v100): five orthopedic risk / osteoarthritis
   // instruments beside the v144 fracture-classification cluster and the existing

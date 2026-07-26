@@ -458,6 +458,89 @@ const PROBES = [
   ['biffl bcvi grade', ['biffl-bcvi']],
   // spec-v437 tile, exposed to MCP in wave 262: Goutallier grade (rotator cuff fatty infiltration).
   ['goutallier fatty infiltration grade', ['goutallier']],
+  // spec-v438 tile, exposed to MCP in wave 263: Eaton-Littler stage (thumb CMC arthritis).
+  ['eaton littler thumb arthritis stage', ['eaton-littler']],
+  // spec-v439 tile, exposed to MCP in wave 264: Hamada grade (cuff tear arthropathy).
+  ['hamada cuff tear arthropathy grade', ['hamada']],
+  // spec-v440 tile, exposed to MCP in wave 265: Barrow classification (carotid-cavernous fistula).
+  ['barrow carotid cavernous fistula', ['barrow-ccf']],
+  // spec-v441 tile, exposed to MCP in wave 266: Borden classification (dural AV fistula).
+  ['borden dural av fistula', ['borden-davf']],
+  // spec-v442 tile, exposed to MCP in wave 267: Zabramski classification (cerebral cavernous malformation).
+  ['zabramski cavernous malformation', ['zabramski']],
+  // spec-v443 tile, exposed to MCP in wave 268: Kadish staging (esthesioneuroblastoma).
+  ['kadish esthesioneuroblastoma stage', ['kadish']],
+  // spec-v444 tile, exposed to MCP in wave 269: McCormick grade (spinal cord function).
+  ['mccormick spinal cord grade', ['mccormick']],
+  // spec-v445 tile, exposed to MCP in wave 270: Revised Atlanta severity (acute pancreatitis).
+  ['revised atlanta pancreatitis severity', ['atlanta-pancreatitis']],
+  // spec-v446 tile, exposed to MCP in wave 271: ROP stage (retinopathy of prematurity).
+  ['retinopathy of prematurity stage', ['rop-stage']],
+  // spec-v447 tile, exposed to MCP in wave 272: Anderson-Montesano (occipital condyle fracture).
+  ['anderson montesano occipital condyle', ['anderson-montesano']],
+  // spec-v448 tile, exposed to MCP in wave 273: Traynelis (atlanto-occipital dislocation).
+  ['traynelis atlanto occipital dislocation', ['traynelis']],
+  // spec-v449 tile, exposed to MCP in wave 274: Fielding-Hawkins (atlantoaxial rotatory subluxation).
+  ['fielding hawkins atlantoaxial rotatory subluxation', ['fielding-hawkins']],
+  // spec-v450 tile, exposed to MCP in wave 275: Reid classification (bronchiectasis).
+  ['reid bronchiectasis morphology', ['reid-bronchiectasis']],
+  // spec-v451 tile, exposed to MCP in wave 276: Sade grade (tympanic membrane retraction).
+  ['sade tympanic membrane retraction grade', ['sade-retraction']],
+  ['brooker heterotopic ossification classification', ['brooker']],
+  ['bado monteggia fracture classification', ['bado']],
+  ['nunley vertullo midfoot sprain classification', ['nunley-vertullo']],
+  ['leddy packer jersey finger classification', ['leddy-packer']],
+  ['stulberg perthes residual deformity classification', ['stulberg']],
+  ['boyd griffin intertrochanteric fracture classification', ['boyd-griffin']],
+  ['thompson epstein posterior hip dislocation classification', ['thompson-epstein']],
+  ['enneking musculoskeletal sarcoma surgical staging', ['enneking']],
+  ['debakey aortic dissection classification', ['debakey']],
+  ['gmfcs cerebral palsy gross motor function', ['gmfcs']],
+  ['waldenstrom perthes radiographic staging', ['waldenstrom-perthes']],
+  ['crawford thoracoabdominal aortic aneurysm classification', ['crawford-taaa']],
+  ['stamey stress urinary incontinence grade', ['stamey-incontinence']],
+  ['judet letournel acetabular fracture classification', ['letournel-acetabulum']],
+  ['bromage neuraxial motor block scale', ['bromage-scale']],
+  ['brouet cryoglobulinemia classification', ['brouet-cryoglobulinemia']],
+  ['steinbrocker rheumatoid arthritis functional class', ['steinbrocker-ra']],
+  ['larsen rheumatoid arthritis radiographic grade', ['larsen-ra']],
+  ['gass macular hole staging', ['gass-macular-hole']],
+  ['yerdel portal vein thrombosis grade', ['yerdel-pvt']],
+  ['todani choledochal cyst classification', ['todani-choledochal']],
+  ['rastelli complete avsd classification', ['rastelli-avsd']],
+  ['glogau photoaging classification', ['glogau-photoaging']],
+  ['nash moe vertebral rotation grade', ['nash-moe-rotation']],
+  ['sfu hydronephrosis grade', ['sfu-hydronephrosis']],
+  ['spaulding device reprocessing classification', ['spaulding-classification']],
+  ['spitz esophageal atresia classification', ['spitz-atresia']],
+  ['ahlback knee osteoarthritis grade', ['ahlback-knee-oa']],
+  ['wiltse spondylolisthesis classification', ['wiltse-spondylolisthesis']],
+  ['russell taylor subtrochanteric fracture classification', ['russell-taylor-subtroch']],
+  ['vancouver periprosthetic femoral fracture classification', ['vancouver-periprosthetic']],
+  ['barrack femoral cement mantle grade', ['barrack-cement']],
+  ['dejour trochlear dysplasia classification', ['dejour-trochlea']],
+  ['samilson prieto shoulder dislocation arthropathy', ['samilson-prieto']],
+  ['rockwood acromioclavicular joint injury classification', ['rockwood-ac']],
+  ['bigliani acromion morphology classification', ['bigliani-acromion']],
+  ['fernandez distal radius fracture classification', ['fernandez-radius']],
+  ['ruedi allgower tibial pilon fracture classification', ['ruedi-allgower-pilon']],
+  ['severin ddh radiographic outcome classification', ['severin-ddh']],
+  ['hattrup johnson hallux rigidus grade', ['hattrup-johnson']],
+  ['lown grade ventricular ectopy holter', ['lown-ectopy']],
+  ['intermacs profile advanced heart failure', ['intermacs-profile']],
+  ['ranawat class rheumatoid cervical myelopathy', ['ranawat-myelopathy']],
+  ['lodwick grade bone lesion aggressiveness', ['lodwick-grade']],
+  ['schobinger stage peripheral arteriovenous malformation', ['schobinger-avm']],
+  ['narakas group obstetric brachial plexus palsy', ['narakas-obpp']],
+  ['dorr type proximal femoral morphology', ['dorr-femur']],
+  ['tegner activity scale knee level', ['tegner-activity']],
+  ['ludwig female pattern hair loss grade', ['ludwig-hairloss']],
+  ['norwood male pattern hair loss stage', ['norwood-hairloss']],
+  ['simpson grade meningioma resection', ['simpson-meningioma']],
+  ['metavir fibrosis stage liver biopsy', ['metavir-fibrosis']],
+  ['metavir activity grade necroinflammatory', ['metavir-activity']],
+  ['jerger tympanogram type tympanometry', ['jerger-tympanogram']],
+  ['voice handicap index vhi 10 score', ['vhi10']],
 ];
 
 test(`every golden probe routes an acceptable tile into the top ${TOP_N}`, () => {

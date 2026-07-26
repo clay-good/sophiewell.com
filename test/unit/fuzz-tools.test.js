@@ -414,6 +414,75 @@ import * as pfirrmannDiscV434 from '../../lib/pfirrmann-disc-v434.js';
 import * as vanHerickV435 from '../../lib/van-herick-v435.js';
 import * as bifflBcviV436 from '../../lib/biffl-bcvi-v436.js';
 import * as goutallierV437 from '../../lib/goutallier-v437.js';
+import * as eatonLittlerV438 from '../../lib/eaton-littler-v438.js';
+import * as hamadaV439 from '../../lib/hamada-v439.js';
+import * as barrowCcfV440 from '../../lib/barrow-ccf-v440.js';
+import * as bordenDavfV441 from '../../lib/borden-davf-v441.js';
+import * as zabramskiV442 from '../../lib/zabramski-v442.js';
+import * as kadishV443 from '../../lib/kadish-v443.js';
+import * as mccormickV444 from '../../lib/mccormick-v444.js';
+import * as atlantaPancreatitisV445 from '../../lib/atlanta-pancreatitis-v445.js';
+import * as ropStageV446 from '../../lib/rop-stage-v446.js';
+import * as andersonMontesanoV447 from '../../lib/anderson-montesano-v447.js';
+import * as traynelisV448 from '../../lib/traynelis-v448.js';
+import * as fieldingHawkinsV449 from '../../lib/fielding-hawkins-v449.js';
+import * as reidBronchiectasisV450 from '../../lib/reid-bronchiectasis-v450.js';
+import * as sadeRetractionV451 from '../../lib/sade-retraction-v451.js';
+import * as brookerV452 from '../../lib/brooker-v452.js';
+import * as badoV454 from '../../lib/bado-v454.js';
+import * as nunleyVertulloV455 from '../../lib/nunley-vertullo-v455.js';
+import * as leddyPackerV456 from '../../lib/leddy-packer-v456.js';
+import * as stulbergV457 from '../../lib/stulberg-v457.js';
+import * as boydGriffinV458 from '../../lib/boyd-griffin-v458.js';
+import * as thompsonEpsteinV459 from '../../lib/thompson-epstein-v459.js';
+import * as ennekingV460 from '../../lib/enneking-v460.js';
+import * as debakeyV461 from '../../lib/debakey-v461.js';
+import * as gmfcsV462 from '../../lib/gmfcs-v462.js';
+import * as waldenstromPerthesV463 from '../../lib/waldenstrom-perthes-v463.js';
+import * as crawfordTaaaV464 from '../../lib/crawford-taaa-v464.js';
+import * as stameyIncontinenceV465 from '../../lib/stamey-incontinence-v465.js';
+import * as letournelAcetabulumV466 from '../../lib/letournel-acetabulum-v466.js';
+import * as bromageScaleV467 from '../../lib/bromage-scale-v467.js';
+import * as brouetCryoglobulinemiaV468 from '../../lib/brouet-cryoglobulinemia-v468.js';
+import * as steinbrockerRaV469 from '../../lib/steinbrocker-ra-v469.js';
+import * as larsenRaV470 from '../../lib/larsen-ra-v470.js';
+import * as gassMacularHoleV471 from '../../lib/gass-macular-hole-v471.js';
+import * as yerdelPvtV472 from '../../lib/yerdel-pvt-v472.js';
+import * as todaniCholedochalV473 from '../../lib/todani-choledochal-v473.js';
+import * as rastelliAvsdV474 from '../../lib/rastelli-avsd-v474.js';
+import * as glogauPhotoagingV475 from '../../lib/glogau-photoaging-v475.js';
+import * as nashMoeRotationV476 from '../../lib/nash-moe-rotation-v476.js';
+import * as sfuHydronephrosisV477 from '../../lib/sfu-hydronephrosis-v477.js';
+import * as spauldingClassificationV478 from '../../lib/spaulding-classification-v478.js';
+import * as spitzAtresiaV479 from '../../lib/spitz-atresia-v479.js';
+import * as ahlbackKneeOaV480 from '../../lib/ahlback-knee-oa-v480.js';
+import * as wiltseSpondylolisthesisV481 from '../../lib/wiltse-spondylolisthesis-v481.js';
+import * as russellTaylorSubtrochV482 from '../../lib/russell-taylor-subtroch-v482.js';
+import * as vancouverPeriprostheticV483 from '../../lib/vancouver-periprosthetic-v483.js';
+import * as barrackCementV484 from '../../lib/barrack-cement-v484.js';
+import * as dejourTrochleaV485 from '../../lib/dejour-trochlea-v485.js';
+import * as samilsonPrietoV486 from '../../lib/samilson-prieto-v486.js';
+import * as rockwoodAcV487 from '../../lib/rockwood-ac-v487.js';
+import * as biglianiAcromionV488 from '../../lib/bigliani-acromion-v488.js';
+import * as fernandezRadiusV489 from '../../lib/fernandez-radius-v489.js';
+import * as ruediAllgowerPilonV490 from '../../lib/ruedi-allgower-pilon-v490.js';
+import * as severinDdhV491 from '../../lib/severin-ddh-v491.js';
+import * as hattrupJohnsonV492 from '../../lib/hattrup-johnson-v492.js';
+import * as lownEctopyV493 from '../../lib/lown-ectopy-v493.js';
+import * as intermacsProfileV494 from '../../lib/intermacs-profile-v494.js';
+import * as ranawatMyelopathyV495 from '../../lib/ranawat-myelopathy-v495.js';
+import * as lodwickGradeV496 from '../../lib/lodwick-grade-v496.js';
+import * as schobingerAvmV497 from '../../lib/schobinger-avm-v497.js';
+import * as narakasObppV498 from '../../lib/narakas-obpp-v498.js';
+import * as dorrFemurV499 from '../../lib/dorr-femur-v499.js';
+import * as tegnerActivityV500 from '../../lib/tegner-activity-v500.js';
+import * as ludwigHairlossV501 from '../../lib/ludwig-hairloss-v501.js';
+import * as norwoodHairlossV502 from '../../lib/norwood-hairloss-v502.js';
+import * as simpsonMeningiomaV503 from '../../lib/simpson-meningioma-v503.js';
+import * as metavirFibrosisV504 from '../../lib/metavir-fibrosis-v504.js';
+import * as metavirActivityV505 from '../../lib/metavir-activity-v505.js';
+import * as jergerTympanogramV506 from '../../lib/jerger-tympanogram-v506.js';
+import * as vhi10V508 from '../../lib/vhi10-v508.js';
 import * as tbTesting from '../../lib/tb-testing.js';
 
 const MODULES = {
@@ -773,6 +842,75 @@ const MODULES = {
   'van-herick-v435.js': vanHerickV435,
   'biffl-bcvi-v436.js': bifflBcviV436,
   'goutallier-v437.js': goutallierV437,
+  'eaton-littler-v438.js': eatonLittlerV438,
+  'hamada-v439.js': hamadaV439,
+  'barrow-ccf-v440.js': barrowCcfV440,
+  'borden-davf-v441.js': bordenDavfV441,
+  'zabramski-v442.js': zabramskiV442,
+  'kadish-v443.js': kadishV443,
+  'mccormick-v444.js': mccormickV444,
+  'atlanta-pancreatitis-v445.js': atlantaPancreatitisV445,
+  'rop-stage-v446.js': ropStageV446,
+  'anderson-montesano-v447.js': andersonMontesanoV447,
+  'traynelis-v448.js': traynelisV448,
+  'fielding-hawkins-v449.js': fieldingHawkinsV449,
+  'reid-bronchiectasis-v450.js': reidBronchiectasisV450,
+  'sade-retraction-v451.js': sadeRetractionV451,
+  'brooker-v452.js': brookerV452,
+  'bado-v454.js': badoV454,
+  'nunley-vertullo-v455.js': nunleyVertulloV455,
+  'leddy-packer-v456.js': leddyPackerV456,
+  'stulberg-v457.js': stulbergV457,
+  'boyd-griffin-v458.js': boydGriffinV458,
+  'thompson-epstein-v459.js': thompsonEpsteinV459,
+  'enneking-v460.js': ennekingV460,
+  'debakey-v461.js': debakeyV461,
+  'gmfcs-v462.js': gmfcsV462,
+  'waldenstrom-perthes-v463.js': waldenstromPerthesV463,
+  'crawford-taaa-v464.js': crawfordTaaaV464,
+  'stamey-incontinence-v465.js': stameyIncontinenceV465,
+  'letournel-acetabulum-v466.js': letournelAcetabulumV466,
+  'bromage-scale-v467.js': bromageScaleV467,
+  'brouet-cryoglobulinemia-v468.js': brouetCryoglobulinemiaV468,
+  'steinbrocker-ra-v469.js': steinbrockerRaV469,
+  'larsen-ra-v470.js': larsenRaV470,
+  'gass-macular-hole-v471.js': gassMacularHoleV471,
+  'yerdel-pvt-v472.js': yerdelPvtV472,
+  'todani-choledochal-v473.js': todaniCholedochalV473,
+  'rastelli-avsd-v474.js': rastelliAvsdV474,
+  'glogau-photoaging-v475.js': glogauPhotoagingV475,
+  'nash-moe-rotation-v476.js': nashMoeRotationV476,
+  'sfu-hydronephrosis-v477.js': sfuHydronephrosisV477,
+  'spaulding-classification-v478.js': spauldingClassificationV478,
+  'spitz-atresia-v479.js': spitzAtresiaV479,
+  'ahlback-knee-oa-v480.js': ahlbackKneeOaV480,
+  'wiltse-spondylolisthesis-v481.js': wiltseSpondylolisthesisV481,
+  'russell-taylor-subtroch-v482.js': russellTaylorSubtrochV482,
+  'vancouver-periprosthetic-v483.js': vancouverPeriprostheticV483,
+  'barrack-cement-v484.js': barrackCementV484,
+  'dejour-trochlea-v485.js': dejourTrochleaV485,
+  'samilson-prieto-v486.js': samilsonPrietoV486,
+  'rockwood-ac-v487.js': rockwoodAcV487,
+  'bigliani-acromion-v488.js': biglianiAcromionV488,
+  'fernandez-radius-v489.js': fernandezRadiusV489,
+  'ruedi-allgower-pilon-v490.js': ruediAllgowerPilonV490,
+  'severin-ddh-v491.js': severinDdhV491,
+  'hattrup-johnson-v492.js': hattrupJohnsonV492,
+  'lown-ectopy-v493.js': lownEctopyV493,
+  'intermacs-profile-v494.js': intermacsProfileV494,
+  'ranawat-myelopathy-v495.js': ranawatMyelopathyV495,
+  'lodwick-grade-v496.js': lodwickGradeV496,
+  'schobinger-avm-v497.js': schobingerAvmV497,
+  'narakas-obpp-v498.js': narakasObppV498,
+  'dorr-femur-v499.js': dorrFemurV499,
+  'tegner-activity-v500.js': tegnerActivityV500,
+  'ludwig-hairloss-v501.js': ludwigHairlossV501,
+  'norwood-hairloss-v502.js': norwoodHairlossV502,
+  'simpson-meningioma-v503.js': simpsonMeningiomaV503,
+  'metavir-fibrosis-v504.js': metavirFibrosisV504,
+  'metavir-activity-v505.js': metavirActivityV505,
+  'jerger-tympanogram-v506.js': jergerTympanogramV506,
+  'vhi10-v508.js': vhi10V508,
   'tb-testing.js': tbTesting,
 };
 

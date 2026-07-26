@@ -78,7 +78,7 @@ find_calculator { "query": "stroke risk afib" }
        candidates: [ { id: "chads", name: "CHA2DS2-VASc", why: "synonym", ... }, ... ] }
 
 list_calculators { "specialty": "hepatology" }
-  -> { coverage: "1226 of 1109 catalog tiles exposed ...", calculators: [ { id: "meld-xi", ... }, ... ] }
+  -> { coverage: "1279 of 1109 catalog tiles exposed ...", calculators: [ { id: "meld-xi", ... }, ... ] }
 
 describe_calculator { "id": "meld-xi" }
   -> { inputSchema: { ... mx-bili, mx-creat ... }, citation: "Heuman DM ... Liver Transpl 2007", ... }
@@ -474,8 +474,23 @@ HIE) in `lib/sarnat-hie-v429.js`, a two-hundred-fifty-fifth the Papile grade (ge
 `lib/modic-changes-v433.js`, a two-hundred-fifty-ninth the Pfirrmann disc degeneration grade in
 `lib/pfirrmann-disc-v434.js`, a two-hundred-sixtieth the Van Herick angle grade in
 `lib/van-herick-v435.js`, a two-hundred-sixty-first the Biffl grade (blunt cerebrovascular injury) in
-`lib/biffl-bcvi-v436.js`, and a two-hundred-sixty-second the Goutallier grade (rotator cuff fatty
-infiltration) in `lib/goutallier-v437.js`, for 1226 across 342 modules today. <!-- catalog-truth:historical (197 is the count of lib modules adapted, not a catalog tile count) -->
+`lib/biffl-bcvi-v436.js`, a two-hundred-sixty-second the Goutallier grade (rotator cuff fatty
+infiltration) in `lib/goutallier-v437.js`, a two-hundred-sixty-third the Eaton-Littler stage (thumb CMC
+arthritis) in `lib/eaton-littler-v438.js`, a two-hundred-sixty-fourth the Hamada grade (cuff tear
+arthropathy) in `lib/hamada-v439.js`, a two-hundred-sixty-fifth the Barrow classification
+(carotid-cavernous fistula) in `lib/barrow-ccf-v440.js`, a two-hundred-sixty-sixth the Borden
+classification (dural AV fistula) in `lib/borden-davf-v441.js`, a two-hundred-sixty-seventh the Zabramski
+classification (cerebral cavernous malformation) in `lib/zabramski-v442.js`, a two-hundred-sixty-eighth
+the Kadish staging (esthesioneuroblastoma) in `lib/kadish-v443.js`, a two-hundred-sixty-ninth the
+McCormick grade (spinal cord function) in `lib/mccormick-v444.js`, a two-hundred-seventieth the Revised
+Atlanta severity (acute pancreatitis) in `lib/atlanta-pancreatitis-v445.js`, a two-hundred-seventy-first
+the ROP stage (retinopathy of prematurity) in `lib/rop-stage-v446.js`, a two-hundred-seventy-second the
+Anderson-Montesano (occipital condyle fracture) in `lib/anderson-montesano-v447.js`, a
+two-hundred-seventy-third the Traynelis (atlanto-occipital dislocation) in `lib/traynelis-v448.js`, a
+two-hundred-seventy-fourth the Fielding-Hawkins (atlantoaxial rotatory subluxation) in
+`lib/fielding-hawkins-v449.js`, a two-hundred-seventy-fifth the Reid classification (bronchiectasis) in
+`lib/reid-bronchiectasis-v450.js`, and a two-hundred-seventy-sixth the Sade grade (tympanic membrane
+retraction) in `lib/sade-retraction-v451.js`, for 1240 across 356 modules today. <!-- catalog-truth:historical (197 is the count of lib modules adapted, not a catalog tile count) -->
 Later waves extend it module by module against the same contract.
 
 ## Design
