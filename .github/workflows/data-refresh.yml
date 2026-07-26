@@ -31,6 +31,12 @@ jobs:
       - name: Verify integrity
         run: node scripts/verify-integrity.mjs
 
+      # The search corpus is derived from data/, so a refresh can change its
+      # bytes. Rebuild it here or the committed manifest hash drifts from
+      # corpus.json and the unit job fails on main after the PR merges.
+      - name: Rebuild search corpus
+        run: node scripts/build-search-corpus.mjs
+
       - name: Generate data change summary
         id: changes
         run: |
