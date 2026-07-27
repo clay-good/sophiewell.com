@@ -1502,6 +1502,25 @@ round-trip both pass, without the phantom "2". Adapter appended to the existing
 rate to a target PaCO2. Brings the exposed total to **1072 calculators across 197
 modules**.
 
+## Three-hundred-forty-second wave — the Premature Infant Pain Profile in lib/pipp-v517.js (+1)
+
+`pipp` (spec-v517) sums the seven PIPP indicators into a total of 0-21 and reports the contextual subtotal
+alongside it. The adapter's `fields` array is **generated** from the lib's exported `PIPP_INDICATORS`, each
+field label carrying that indicator's own option texts. Every indicator is an enum (`kind: 'enum'`, values
+`'0'`-`'3'`) on dom keys `pp-ga`, `pp-state`, `pp-hr`, `pp-spo2`, `pp-brow`, `pp-squeeze`, `pp-furrow`,
+mapping to args of the same short name. All seven are in `META.example`, so all seven are required for every
+caller — and that matters more here than on a plain questionnaire: the two contextual indicators are scored
+**before** the procedure, so a caller holding only the observed facial and physiologic response does not have
+a PIPP at all, and defaulting gestational age or behavioral state to 0 would systematically under-score
+exactly the infants the instrument exists to protect. The example totals 13; that number and the contextual
+subtotal are carried by the result band, so it flows through the default `makeToArgs` with no custom toArgs.
+New adapter module registered in `mcp/catalog.js`; its golden probe ("premature infant pain profile pipp") is
+promoted now that the tile is in the MCP-exposed registry. Brings the exposed total to **1304 calculators
+across 420 modules**.
+
+### lib/pipp-v517.js
+- `pipp`
+
 ## Three-hundred-forty-first wave — the Asthma Control Test in lib/asthma-control-test-v516.js (+1)
 
 `asthma-control-test` (spec-v516) sums the five ACT items into a total of 5-25 and bands it. The adapter's
@@ -6294,6 +6313,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/asthma-control-test-v516.js
 - `asthma-control-test`
+
+### lib/pipp-v517.js
+- `pipp`
 
 ### lib/tb-testing.js
 - `tb-testing`

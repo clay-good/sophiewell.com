@@ -549,6 +549,7 @@ const PROBES = [
   ['young mania rating scale ymrs', ['ymrs']],
   ['simpson angus drug induced parkinsonism', ['simpson-angus']],
   ['asthma control test act score', ['asthma-control-test']],
+  ['premature infant pain profile pipp', ['pipp']],
 ];
 
 test(`every golden probe routes an acceptable tile into the top ${TOP_N}`, () => {
