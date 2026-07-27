@@ -428,6 +428,7 @@ import ymrsV514 from './adapters/ymrs-v514.js';
 import simpsonAngusV515 from './adapters/simpson-angus-v515.js';
 import asthmaControlTestV516 from './adapters/asthma-control-test-v516.js';
 import pippV517 from './adapters/pipp-v517.js';
+import childhoodActV518 from './adapters/childhood-act-v518.js';
 import tbTesting from './adapters/tb-testing.js';
 import labInterpret from './adapters/lab-interpret.js';
 import decisionRulesV258 from './adapters/decision-rules-v258.js';
@@ -850,6 +851,7 @@ const ADAPTER_MODULES = [
   ['simpson-angus-v515', simpsonAngusV515],
   ['asthma-control-test-v516', asthmaControlTestV516],
   ['pipp-v517', pippV517],
+  ['childhood-act-v518', childhoodActV518],
   ['tb-testing', tbTesting],
   ['lab-interpret', labInterpret],
   ['decision-rules-v258', decisionRulesV258],

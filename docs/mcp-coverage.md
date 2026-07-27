@@ -1502,6 +1502,23 @@ round-trip both pass, without the phantom "2". Adapter appended to the existing
 rate to a target PaCO2. Brings the exposed total to **1072 calculators across 197
 modules**.
 
+## Three-hundred-forty-third wave — the Childhood Asthma Control Test in lib/childhood-act-v518.js (+1)
+
+`childhood-act` (spec-v518) sums the four child items and three caregiver items into a total of 0-27 and bands
+it. The adapter's `fields` array is **generated** from the lib's exported `CHILD_ITEMS` and `PARENT_ITEMS`,
+and the two groups get **different enum value lists** — `'0'`-`'3'` for the child items, `'0'`-`'5'` for the
+caregiver items. A single shared enum would let a 4 or 5 through on a child item and silently inflate the
+total. Each field label names **who answers it**, because one tool call mixes a child-reported and a
+caregiver-reported instrument. Dom keys `cact-c1` … `cact-c4` and `cact-p1` … `cact-p3` map to args `c1` …
+`c4` and `p1` … `p3`; all seven are in `META.example`, so all seven are required for every caller: a partial
+c-ACT has no total. The example scores 17; that number and both subtotals are carried by the result band, so
+it flows through the default `makeToArgs` with no custom toArgs. New adapter module registered in
+`mcp/catalog.js`; its golden probe ("childhood asthma control test for a child") is promoted now that the tile
+is in the MCP-exposed registry. Brings the exposed total to **1305 calculators across 421 modules**.
+
+### lib/childhood-act-v518.js
+- `childhood-act`
+
 ## Three-hundred-forty-second wave — the Premature Infant Pain Profile in lib/pipp-v517.js (+1)
 
 `pipp` (spec-v517) sums the seven PIPP indicators into a total of 0-21 and reports the contextual subtotal
@@ -6316,6 +6333,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/pipp-v517.js
 - `pipp`
+
+### lib/childhood-act-v518.js
+- `childhood-act`
 
 ### lib/tb-testing.js
 - `tb-testing`
