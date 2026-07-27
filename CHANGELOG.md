@@ -6,6 +6,17 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v511 — CRAFFT (adolescent substance-use screen) tile, 1360 → 1361)
+
+- New `crafft` tile (group G): the six-item adolescent substance-use screen — **C**ar, **R**elax, **A**lone,
+  **F**orget, **F**amily or friends, **T**rouble — one point per yes, total **0 to 6**, positive at **2 or
+  more**. The catalog already carried the adult screens (CAGE, AUDIT, DAST) but nothing validated for
+  adolescents; `crafft` was zero-hit. Answers may be `yes`/`no`, booleans, or 0/1; a missing or unreadable
+  answer is rejected rather than half-scored. The copy states that the CAR question is about riding with an
+  impaired driver and is worth addressing whatever the total is, and that the score is not an indication for
+  drug testing, a treatment referral, or disclosure to a parent or guardian. See
+  [spec-v511](docs/spec-v511.md).
+
 ### Added (spec-v510 — Banff grade (acute T cell-mediated rejection) tile, 1359 → 1360)
 
 - New `banff-tcmr` tile (group G): the Banff category of acute T cell-mediated rejection in a kidney allograft
