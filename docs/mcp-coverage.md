@@ -1502,6 +1502,28 @@ round-trip both pass, without the phantom "2". Adapter appended to the existing
 rate to a target PaCO2. Brings the exposed total to **1072 calculators across 197
 modules**.
 
+## Three-hundred-forty-fifth wave — the Spigelman duodenal-polyposis stage in lib/spigelman-v520.js (+1)
+
+`spigelman` (spec-v520) sums the four Spigelman parameters into a total of 4-12, assigns the stage, and
+returns the standard severity reading of that stage. The adapter's `fields` array is **generated** from the
+lib's exported `SPIGELMAN_ITEMS`, so each field's label carries that parameter's own point rows. The enum
+values are `'1'`, `'2'`, `'3'` with **no zero on any field** — not an omission: the Spigelman table has no
+zero row, so once any adenoma is present the lowest reachable total is 4, and stage 0 means no duodenal
+adenomas were found at all. A caller that passes 0 gets an explicit invalid result saying so rather than a
+silently deflated stage. The **dysplasia** labels carry both the original mild/moderate/severe wording and
+the two-tiered low-grade / high-grade equivalent, because a caller reading a modern pathology report will not
+find "moderate" in it and would otherwise have to guess which end to map to. Dom keys `spig-number`,
+`spig-size`, `spig-histology`, and `spig-dysplasia` map to the lib args `number`, `size`, `histology`, and
+`dysplasia`; all four are in `META.example`, so all four are required. The example scores 12 (stage IV); the
+total, the stage, and the severity reading are all carried by the result band, so it flows through the
+default `makeToArgs` with no custom toArgs. The tool deliberately emits **no surveillance interval**. New
+adapter module registered in `mcp/catalog.js`; its golden probe ("spigelman stage duodenal polyposis") is
+promoted now that the tile is in the MCP-exposed registry. Brings the exposed total to **1307 calculators
+across 423 modules**.
+
+### lib/spigelman-v520.js
+- `spigelman`
+
 ## Three-hundred-forty-fourth wave — the Eckardt achalasia symptom score in lib/eckardt-v519.js (+1)
 
 `eckardt` (spec-v519) sums the four achalasia symptoms into a total of 0-12, assigns the stage, and reports
@@ -6357,6 +6379,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/eckardt-v519.js
 - `eckardt`
+
+### lib/spigelman-v520.js
+- `spigelman`
 
 ### lib/tb-testing.js
 - `tb-testing`
