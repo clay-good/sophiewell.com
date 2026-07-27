@@ -1502,6 +1502,24 @@ round-trip both pass, without the phantom "2". Adapter appended to the existing
 rate to a target PaCO2. Brings the exposed total to **1072 calculators across 197
 modules**.
 
+## Three-hundred-forty-ninth wave — the Cornell Assessment of Pediatric Delirium in lib/capd-v525.js (+1)
+
+`capd` (spec-v525) sums the eight CAPD observations into a total of 0-32 and compares it to the positive cut
+of 9. The adapter's `fields` array is **generated** from the lib's exported `CAPD_ITEMS`, and each field label
+embeds **that item's own anchor texts** — because the anchors are reversed by half: items 1-4 score
+`never = 4` / `always = 0` and items 5-8 score `never = 0` / `always = 4`. A caller reading a generic "0 to 4"
+schema would invert half the instrument and turn a well child into a positive screen, so the label is doing
+real safety work here rather than documentation. Each item is an enum (`kind: 'enum'`, values `'0'`-`'4'`) on
+dom keys `capd-q1` … `capd-q8` mapping to args `q1` … `q8`; all eight are in `META.example`, so all eight are
+required for every caller: a partial CAPD has no total, and an unanswered item is not a zero on either half.
+The example totals 12; that number is carried by the result band, so it flows through the default
+`makeToArgs` with no custom toArgs. New adapter module registered in `mcp/catalog.js`; its golden probe
+("cornell assessment of pediatric delirium capd") is promoted now that the tile is in the MCP-exposed
+registry. Brings the exposed total to **1311 calculators across 427 modules**.
+
+### lib/capd-v525.js
+- `capd`
+
 ## Three-hundred-forty-eighth wave — the Scadding sarcoidosis stage in lib/scadding-v523.js (+1)
 
 `scadding` (spec-v523) maps a chest-radiograph appearance to one of the five Scadding stages. The enum
@@ -6460,6 +6478,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/scadding-v523.js
 - `scadding`
+
+### lib/capd-v525.js
+- `capd`
 
 ### lib/tb-testing.js
 - `tb-testing`

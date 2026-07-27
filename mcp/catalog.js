@@ -434,6 +434,7 @@ import spigelmanV520 from './adapters/spigelman-v520.js';
 import pcPtsd5V521 from './adapters/pc-ptsd5-v521.js';
 import pcdaiV522 from './adapters/pcdai-v522.js';
 import scaddingV523 from './adapters/scadding-v523.js';
+import capdV525 from './adapters/capd-v525.js';
 import tbTesting from './adapters/tb-testing.js';
 import labInterpret from './adapters/lab-interpret.js';
 import decisionRulesV258 from './adapters/decision-rules-v258.js';
@@ -862,6 +863,7 @@ const ADAPTER_MODULES = [
   ['pc-ptsd5-v521', pcPtsd5V521],
   ['pcdai-v522', pcdaiV522],
   ['scadding-v523', scaddingV523],
+  ['capd-v525', capdV525],
   ['tb-testing', tbTesting],
   ['lab-interpret', labInterpret],
   ['decision-rules-v258', decisionRulesV258],
