@@ -6,6 +6,21 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v520 — Spigelman stage (duodenal polyposis in FAP) tile, 1369 → 1370)
+
+- New `spigelman` tile (group G): the four-parameter duodenal-polyposis stage for familial adenomatous
+  polyposis — polyp number, largest polyp size, histology, and dysplasia grade, each **1-3 points**, total
+  **4-12**, staged **0/I/II/III/IV**. `spigelman`, `duodenal polyposis`, and `ampullary` were all zero-hit;
+  the catalog's existing polyposis instruments all look at the **colon**, and the duodenum is where FAP
+  patients who have already had a colectomy face their remaining risk. The tile refuses to paper over two
+  things: **stage 0 is not four zeros** (no parameter has a zero row, so the floor once any adenoma is
+  present is 4, and stage 0 means none were found at all — established before scoring, not by scoring), and
+  **the dysplasia terminology changed while the score did not** (the original mild/moderate/severe maps onto
+  today's two-tiered report at its ends, so each option names both wordings and the middle one says a
+  two-tiered report will not contain it). It reports the stage and its severity reading and stops — no
+  surveillance interval, no resection or surgery indication, and no ampullary staging. See
+  [spec-v520](docs/spec-v520.md).
+
 ### Added (spec-v519 — Eckardt symptom score (achalasia) tile, 1368 → 1369)
 
 - New `eckardt` tile (group G): the four-symptom achalasia score, **total 0-12** with stages **0/I/II/III**.

@@ -494,6 +494,7 @@ import * as asthmaControlTestV516 from '../../lib/asthma-control-test-v516.js';
 import * as pippV517 from '../../lib/pipp-v517.js';
 import * as childhoodActV518 from '../../lib/childhood-act-v518.js';
 import * as eckardtV519 from '../../lib/eckardt-v519.js';
+import * as spigelmanV520 from '../../lib/spigelman-v520.js';
 import * as tbTesting from '../../lib/tb-testing.js';
 
 const MODULES = {
@@ -933,6 +934,7 @@ const MODULES = {
   'pipp-v517.js': pippV517,
   'childhood-act-v518.js': childhoodActV518,
   'eckardt-v519.js': eckardtV519,
+  'spigelman-v520.js': spigelmanV520,
   'tb-testing.js': tbTesting,
 };
 

@@ -622,6 +622,8 @@
     { "phrases": ["c act", "childhood asthma control test", "childhood act", "pediatric asthma control score", "kids asthma control score"],
       "tile": "childhood-act", "audience": "clinicians" },
     { "phrases": ["eckardt", "eckardt score", "achalasia symptom score", "achalasia severity score", "achalasia stage"],
-      "tile": "eckardt", "audience": "clinicians" }
+      "tile": "eckardt", "audience": "clinicians" },
+    { "phrases": ["spigelman", "spigelman stage", "spigelman classification", "duodenal polyposis stage", "familial adenomatous polyposis duodenal stage"],
+      "tile": "spigelman", "audience": "clinicians" }
   ]
 }

@@ -52,7 +52,7 @@ The tile says so.
 ## Duplicate check
 
 Per the procedure in [spec-v508](spec-v508.md): the eponym (`eckardt`), the concept (`achalasia`), and
-neighbouring esophageal-motility terms (`gastroparesis`, `demeester`, `chicago`) — each against **both**
+neighboring esophageal-motility terms (`gastroparesis`, `demeester`, `chicago`) — each against **both**
 `corpus.json` and `app.js` (and `lib/meta.js`), plus a `test/unit/` scan. All zero. `dysphagia` and
 `esophagitis` are present but belong to other tiles grading other things.
 
