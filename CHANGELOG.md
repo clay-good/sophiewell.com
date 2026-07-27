@@ -6,6 +6,18 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v509 — Sunnybrook Facial Grading System tile, 1358 → 1359)
+
+- New `sunnybrook-facial` tile (group G): the three-axis quantitative grading of facial nerve function, and the
+  companion the catalog was missing next to `house-brackmann`. House-Brackmann assigns one gestalt grade I-VI;
+  Sunnybrook grades **resting symmetry** (eye, cheek, mouth against the normal side, points **× 5**),
+  **voluntary movement** (five standard expressions, each **1-5**, **× 4**), and **synkinesis** (the same five
+  expressions, each **0-3**) separately, then subtracts: `composite = movement − resting − synkinesis`. A
+  normal face computes **100** and complete flaccid paralysis computes **0**, both out of the weights rather
+  than by special case. A missing item, a non-integer, an out-of-range scale value, or an unknown resting
+  choice is rejected rather than half-scored. `sunnybrook`, `facial grading system`, and `synkinesis` were all
+  zero-hit before this tile. See [spec-v509](docs/spec-v509.md).
+
 ### Reverted (spec-v507 — degree of hearing loss tile + MCP wave 332, 1358 → 1357)
 
 - Reverted the `hearing-loss-degree` tile and its MCP adapter, shipped earlier the same day. The existing

@@ -600,6 +600,8 @@
     { "phrases": ["jerger", "jerger type", "tympanogram", "tympanogram type", "tympanometry", "tympanometry type", "middle ear compliance curve"],
       "tile": "jerger-tympanogram", "audience": "clinicians" },
     { "phrases": ["vhi", "vhi 10", "voice handicap index", "voice handicap score", "dysphonia questionnaire", "hoarseness questionnaire"],
-      "tile": "vhi10", "audience": "clinicians" }
+      "tile": "vhi10", "audience": "clinicians" },
+    { "phrases": ["sunnybrook", "sunnybrook facial grading", "sunnybrook composite score", "facial grading system", "facial nerve grading score", "facial palsy composite score", "synkinesis score"],
+      "tile": "sunnybrook-facial", "audience": "clinicians" }
   ]
 }

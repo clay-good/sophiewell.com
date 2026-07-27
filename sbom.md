@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `f350684655997b62`
-Generated: 2026-07-23T22:57:48.866Z
+Build ID: `957b73b523840d76`
+Generated: 2026-07-27T18:56:29.029Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=20.18.1 <21, npm >=10.0.0
@@ -24,13 +24,13 @@ downloads is committed in this repository and is hashed below.
 
 | Path | Bytes | SHA-256 |
 |---|---:|---|
-| `index.html` | 89641 | `676cce0a1d6ec672b022b24c9181919d66e740119aed3f672ecf9761376c47f9` |
+| `index.html` | 89689 | `54e6195d26a19c29650f2d7187b826818080d6ba6d3da15d3632ef512de43c68` |
 | `styles.css` | 44160 | `a2cc7ad7bae9f7cfc9681d80bc6bd4a58f0b07d47bfcff64897dc04929c12333` |
-| `app.js` | 365963 | `0e9a00d784e58ddcd807bbcb7ba36105d1fd52e53a1d678035d76ea304655fc2` |
+| `app.js` | 366181 | `626f3de2fae3dfda2eea259df0424051ab8ef356b51e192ae0fc668961589477` |
 | `sw.js` | 4622 | `b891d4344f8e04403b7f1d307fd446cc224bddc6f0c4397438a17d197351171e` |
 | `site.webmanifest` | 709 | `0e0de4da60590a12e8b27a0ae2a2f5ffdb6500b7d2b78f93631ec2f64ed3d5ce` |
 | `robots.txt` | 127 | `38fbf9c1854e72abb20e01e81dd5a31d4ea96f154c12d5db1ec3af05524dd1a1` |
-| `sitemap.xml` | 208698 | `6d62aad3a0230e972fddffdb6a264a1779acbc7d4af5b4608895308eb11f4591` |
+| `sitemap.xml` | 208855 | `ff81a30ef70dc3d434f96bebddca0a554d6229ec483026d03911024ba7780b9c` |
 | `_headers` | 1316 | `2f39986457d2feff7e73e491a7d09ee871e8f2f4cc2bc437f86bd86a42554ec6` |
 | `logo.png` | 63440 | `11afaf1b0d3ca68393d202e4810bf766b5b6d591b4e3ec52f41d3cacaa4616ec` |
 | `favicon.ico` | 7411 | `407fde0ca2788409e87e11f596fa02e6a0b121817fcea7fd995beec1801e287b` |
@@ -283,7 +283,7 @@ downloads is committed in this repository and is hashed below.
 | `lib/mccormick-v444.js` | 3548 | `226844081eb702e3917925b1fb684495c90fd90d83717106c632f91f09fad0c6` |
 | `lib/medication-v4.js` | 18192 | `467f9576c50da696cc56094eb022d0a5ed1e88de0c7618448554ede8067270b0` |
 | `lib/medication-v5.js` | 18863 | `ce81d9f8954abbd412892c13af9936f992239164f26fd2b999eaea7902787ab7` |
-| `lib/meta.js` | 1834137 | `41659927fb20427773ba59c5a703e9a243b248bbfb8319878ec24098be7ff92b` |
+| `lib/meta.js` | 1835662 | `826e99fd64f06f3251f3a29d0659062ac010a31eff0ec4cc1cfdd0d94226cc8d` |
 | `lib/metabolic-hepatic-v219.js` | 12791 | `b9352877cebf7fbf3c3b99ecb8b72cdbee3ed94e056dc019113668609f5a95a8` |
 | `lib/metabolic-onc-v88.js` | 12659 | `1553b641668c121661a66647da71a4aaaa023e9f3a6b7a753efbcdab27cdba81` |
 | `lib/metabolic-v269.js` | 3262 | `0c7a42557886f2b0aeee7949b8d0bd682d795d4526174fd540717a978d94ec2f` |
@@ -388,7 +388,7 @@ downloads is committed in this repository and is hashed below.
 | `lib/pulm-v91.js` | 16605 | `7b5fe62cf129654c1e1511a649bd549571e97631f2cb91d0e663e71edfb2ce92` |
 | `lib/pulmnod-v115.js` | 19420 | `a60c65fc6d99c2137036c549d4c31308a8b635d30277ddb1c524b84b4cb9731d` |
 | `lib/pulmonary-risk-v221.js` | 14238 | `69991f0c4ba63da303e0047c55b6c2f054244ec7e353ba26fde5246edfea1479` |
-| `lib/query-compute.js` | 9122 | `0bab2a526f148cb23ab74bde559233ec14219bb88f56498d79660a073d64d4de` |
+| `lib/query-compute.js` | 18505 | `c4132165eb74826abc209f8783fee660f7fd8b661b0614f313f9a1f5481f7a0c` |
 | `lib/radiology-v165.js` | 14752 | `965c040fa92553139ecfca2c11efb94522496799ee745f6b2fdf512ee3494d72` |
 | `lib/radmeasure-v253.js` | 7140 | `6e438d606d573be5431eb6ec9d0575353297d97ed8f255aa7afb6c7f86c7197c` |
 | `lib/ramsay-sedation-v358.js` | 3651 | `d7ee3190c3179b4290c1b77a3bf187cd447b9632442f0005478e3b627bcea8bf` |
@@ -461,6 +461,7 @@ downloads is committed in this repository and is hashed below.
 | `lib/suites-v155.js` | 13422 | `8dcd9ee6cb60524bed730715b875ace734c5c8f4b9d3ec5eb1ad19370eae577e` |
 | `lib/sun-ac-cell-v421.js` | 3663 | `2e98fadd5a5b0b497a827fe2fc7cd3c2dbe6b1c00cc2f6e465f50cc2e389fb55` |
 | `lib/sun-ac-flare-v422.js` | 3437 | `c372e87d2726c6e87123b9971c50eed8b5d23a434bd99dc6dad494e10005b30c` |
+| `lib/sunnybrook-facial-v509.js` | 6479 | `44a4dccd9400ffcde761ed885ef5cc3588b42ed8e7a0822e8653a1261fd1b8b5` |
 | `lib/surg-v142.js` | 16902 | `8bc28c3385b76d1fc0d11a3171f3459e09fd4c91e3b9548516cfd8c5692e39d2` |
 | `lib/synonyms.js` | 3813 | `95d65001246939cb582331c67925d1da1a0b312f40ac9a872eff3fb905e38e5a` |
 | `lib/table.js` | 5372 | `c1c9b7f8ad0cd087d76e3e1aac879feb9837373b11f067b0f910fa8e5a7974d1` |
@@ -915,6 +916,7 @@ downloads is committed in this repository and is hashed below.
 | `views/group-v505.js` | 3148 | `7cf7af07cbd4dc7584cdc337238abce6c0c428b6900a375603da02fa865b94ce` |
 | `views/group-v506.js` | 3258 | `ba671dda1135ed92e3ebb11f76787869a760a47424017e756eb845ced75ea0d0` |
 | `views/group-v508.js` | 3085 | `7989a45959691d1ab913850ad1e4b35239b4c2d98de923278ca2dd0ccaec5f8e` |
+| `views/group-v509.js` | 4173 | `051491560644dc677a8ac6f1f3597f15f831834cd113baa172d5a65ebb665bd6` |
 | `views/group-v6.js` | 5707 | `425918decb48cd9efac9fc5590ac8970a54c03c3b0df056fb99c9a22ff8dd1b2` |
 | `views/group-v63.js` | 14377 | `962d84b97e82bc39635801da79ecaa93fc0b501b5988b7d321b0f1f630497fab` |
 | `views/group-v7.js` | 15113 | `d480a5b34adfd035507dd4313e12462c47c949aeee155b253c8a2f9596839d05` |
