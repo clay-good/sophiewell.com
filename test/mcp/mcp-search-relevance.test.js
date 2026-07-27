@@ -543,6 +543,7 @@ const PROBES = [
   ['voice handicap index vhi 10 score', ['vhi10']],
   ['sunnybrook facial grading composite synkinesis', ['sunnybrook-facial']],
   ['banff grade t cell mediated rejection tubulitis', ['banff-tcmr']],
+  ['crafft adolescent substance use screen', ['crafft']],
 ];
 
 test(`every golden probe routes an acceptable tile into the top ${TOP_N}`, () => {

@@ -1502,6 +1502,22 @@ round-trip both pass, without the phantom "2". Adapter appended to the existing
 rate to a target PaCO2. Brings the exposed total to **1072 calculators across 197
 modules**.
 
+## Three-hundred-thirty-sixth wave — the CRAFFT adolescent substance-use screen in lib/crafft-v511.js (+1)
+
+`crafft` (spec-v511) sums the six CRAFFT items into a total of 0-6 and compares it to the validated positive
+cut point of 2. The adapter's `fields` array is **generated** from the lib's exported `CRAFFT_ITEMS`, so the
+renderer, the adapter labels, and the tests all share one source of item wording. Each item is an enum
+(`kind: 'enum'`, values `'no'` / `'yes'`) on dom keys `cf-q1` … `cf-q6` mapping to args `q1` … `q6`; all six
+are in `META.example`, so all six are required for every caller — correct here, because a partial CRAFFT has
+no total and an **unanswered** item is not a no. The example scores 3; that number and the cut point are
+carried by the result band, so it flows through the default `makeToArgs` with no custom toArgs. New adapter
+module registered in `mcp/catalog.js`; its golden probe ("crafft adolescent substance use screen") is promoted
+now that the tile is in the MCP-exposed registry. Brings the exposed total to **1298 calculators across 414
+modules**.
+
+### lib/crafft-v511.js
+- `crafft`
+
 ## Three-hundred-thirty-fifth wave — the Banff acute T cell-mediated rejection grade in lib/banff-tcmr-v510.js (+1)
 
 `banff-tcmr` (spec-v510) reads the Banff category of acute T cell-mediated rejection from the three lesion
@@ -6174,6 +6190,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/banff-tcmr-v510.js
 - `banff-tcmr`
+
+### lib/crafft-v511.js
+- `crafft`
 
 ### lib/tb-testing.js
 - `tb-testing`
