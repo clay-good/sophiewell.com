@@ -422,6 +422,7 @@ import vhi10V508 from './adapters/vhi10-v508.js';
 import sunnybrookFacialV509 from './adapters/sunnybrook-facial-v509.js';
 import banffTcmrV510 from './adapters/banff-tcmr-v510.js';
 import crafftV511 from './adapters/crafft-v511.js';
+import vaizeyV512 from './adapters/vaizey-v512.js';
 import tbTesting from './adapters/tb-testing.js';
 import labInterpret from './adapters/lab-interpret.js';
 import decisionRulesV258 from './adapters/decision-rules-v258.js';
@@ -838,6 +839,7 @@ const ADAPTER_MODULES = [
   ['sunnybrook-facial-v509', sunnybrookFacialV509],
   ['banff-tcmr-v510', banffTcmrV510],
   ['crafft-v511', crafftV511],
+  ['vaizey-v512', vaizeyV512],
   ['tb-testing', tbTesting],
   ['lab-interpret', labInterpret],
   ['decision-rules-v258', decisionRulesV258],

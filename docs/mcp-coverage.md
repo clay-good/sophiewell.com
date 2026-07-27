@@ -1502,6 +1502,23 @@ round-trip both pass, without the phantom "2". Adapter appended to the existing
 rate to a target PaCO2. Brings the exposed total to **1072 calculators across 197
 modules**.
 
+## Three-hundred-thirty-seventh wave — the Vaizey (St Marks) fecal incontinence score in lib/vaizey-v512.js (+1)
+
+`vaizey` (spec-v512) sums the four 0-4 frequency rows and the three weighted yes/no rows into a total of 0-24.
+The adapter's `fields` array is **generated** from the lib's exported `FREQUENCY_ROWS`, `FREQUENCY_SCALE`, and
+`YES_NO_ROWS`, so the renderer, the adapter labels, and the point weights all come from one place. Every field
+is an enum (`kind: 'enum'`) on dom keys `vz-solid`, `vz-liquid`, `vz-gas`, `vz-lifestyle`, `vz-pad`,
+`vz-meds`, `vz-defer`, each mapping to the lib arg of the same short name; all seven are in `META.example`, so
+all seven are required for every caller — correct for a summed instrument, and specifically because an
+**unanswered** added row is not a no: omitting `vz-defer` would silently drop 4 points. The example scores 15;
+that number, the two subtotals, and the 24 ceiling are carried by the result band, so it flows through the
+default `makeToArgs` with no custom toArgs. New adapter module registered in `mcp/catalog.js`; its golden probe
+("vaizey st marks fecal incontinence score") is promoted now that the tile is in the MCP-exposed registry.
+Brings the exposed total to **1299 calculators across 415 modules**.
+
+### lib/vaizey-v512.js
+- `vaizey`
+
 ## Three-hundred-thirty-sixth wave — the CRAFFT adolescent substance-use screen in lib/crafft-v511.js (+1)
 
 `crafft` (spec-v511) sums the six CRAFFT items into a total of 0-6 and compares it to the validated positive
@@ -6193,6 +6210,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/crafft-v511.js
 - `crafft`
+
+### lib/vaizey-v512.js
+- `vaizey`
 
 ### lib/tb-testing.js
 - `tb-testing`

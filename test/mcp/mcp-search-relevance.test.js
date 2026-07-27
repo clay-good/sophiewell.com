@@ -544,6 +544,7 @@ const PROBES = [
   ['sunnybrook facial grading composite synkinesis', ['sunnybrook-facial']],
   ['banff grade t cell mediated rejection tubulitis', ['banff-tcmr']],
   ['crafft adolescent substance use screen', ['crafft']],
+  ['vaizey st marks fecal incontinence score', ['vaizey']],
 ];
 
 test(`every golden probe routes an acceptable tile into the top ${TOP_N}`, () => {
