@@ -1502,6 +1502,24 @@ round-trip both pass, without the phantom "2". Adapter appended to the existing
 rate to a target PaCO2. Brings the exposed total to **1072 calculators across 197
 modules**.
 
+## Three-hundred-forty-fourth wave — the Eckardt achalasia symptom score in lib/eckardt-v519.js (+1)
+
+`eckardt` (spec-v519) sums the four achalasia symptoms into a total of 0-12, assigns the stage, and reports
+whether the total falls in the remission range. The adapter's `fields` array is **generated** from the lib's
+exported `ECKARDT_ITEMS`, so each field's label carries **that item's own option wording** — three items are
+scored by **frequency** (none / occasional / daily / at every meal) and the fourth by an **amount in
+kilograms** (none / under 5 / 5-10 / over 10). A caller handed one shared set of anchors would be answering
+how often the patient lost weight, which is exactly the misread the tile exists to prevent. Dom keys
+`eck-dysphagia`, `eck-regurgitation`, `eck-chestPain`, and `eck-weightLoss` map to the lib args of the same
+name; all four are in `META.example`, so all four are required for every caller: a partial Eckardt score has
+no total. The example scores 8 (stage III); the total, the stage, and the remission reading are all carried
+by the result band, so it flows through the default `makeToArgs` with no custom toArgs. New adapter module
+registered in `mcp/catalog.js`; its golden probe ("eckardt score achalasia symptoms") is promoted now that
+the tile is in the MCP-exposed registry. Brings the exposed total to **1306 calculators across 422 modules**.
+
+### lib/eckardt-v519.js
+- `eckardt`
+
 ## Three-hundred-forty-third wave — the Childhood Asthma Control Test in lib/childhood-act-v518.js (+1)
 
 `childhood-act` (spec-v518) sums the four child items and three caregiver items into a total of 0-27 and bands
@@ -6336,6 +6354,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/childhood-act-v518.js
 - `childhood-act`
+
+### lib/eckardt-v519.js
+- `eckardt`
 
 ### lib/tb-testing.js
 - `tb-testing`
