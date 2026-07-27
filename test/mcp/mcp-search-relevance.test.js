@@ -546,6 +546,7 @@ const PROBES = [
   ['crafft adolescent substance use screen', ['crafft']],
   ['vaizey st marks fecal incontinence score', ['vaizey']],
   ['asrs adult adhd screener part a', ['asrs']],
+  ['young mania rating scale ymrs', ['ymrs']],
 ];
 
 test(`every golden probe routes an acceptable tile into the top ${TOP_N}`, () => {

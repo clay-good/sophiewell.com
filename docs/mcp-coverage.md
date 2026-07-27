@@ -1502,6 +1502,23 @@ round-trip both pass, without the phantom "2". Adapter appended to the existing
 rate to a target PaCO2. Brings the exposed total to **1072 calculators across 197
 modules**.
 
+## Three-hundred-thirty-ninth wave — the Young Mania Rating Scale in lib/ymrs-v514.js (+1)
+
+`ymrs` (spec-v514) sums the eleven YMRS items into a total of 0-60. The adapter's `fields` array is
+**generated** from the lib's exported `YMRS_ITEMS`, so the renderer, the adapter labels, and the per-item
+maxima all come from one place. Each item is an enum on dom keys `ym-q1` … `ym-q11` mapping to args `q1` …
+`q11`, but **not the same enum**: the seven 0-4 items and the four 0-8 items get their own value lists. That
+is the whole point of exposing it — a caller that assumed one shared 0-4 scale would silently cap
+irritability, speech, thought content, and disruptive or aggressive behavior at half their real weight, and
+each field label carries its own range. All eleven are in `META.example`, so all eleven are required for every
+caller. The example totals 24; that number, the 60 ceiling, and the double-weighted subtotal are carried by
+the result band, so it flows through the default `makeToArgs` with no custom toArgs. New adapter module
+registered in `mcp/catalog.js`; its golden probe ("young mania rating scale ymrs") is promoted now that the
+tile is in the MCP-exposed registry. Brings the exposed total to **1301 calculators across 417 modules**.
+
+### lib/ymrs-v514.js
+- `ymrs`
+
 ## Three-hundred-thirty-eighth wave — the ASRS v1.1 Part A adult ADHD screener in lib/asrs-v513.js (+1)
 
 `asrs` (spec-v513) applies the ASRS Part A counting rule: six items on one 0-4 scale, but items 1-3 count at
@@ -6234,6 +6251,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/asrs-v513.js
 - `asrs`
+
+### lib/ymrs-v514.js
+- `ymrs`
 
 ### lib/tb-testing.js
 - `tb-testing`
