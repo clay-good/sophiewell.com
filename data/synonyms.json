@@ -626,6 +626,8 @@
     { "phrases": ["spigelman", "spigelman stage", "spigelman classification", "duodenal polyposis stage", "familial adenomatous polyposis duodenal stage"],
       "tile": "spigelman", "audience": "clinicians" },
     { "phrases": ["pc ptsd", "primary care ptsd screen", "ptsd screen", "five item ptsd screen", "brief ptsd screening questions"],
-      "tile": "pc-ptsd5", "audience": "clinicians" }
+      "tile": "pc-ptsd5", "audience": "clinicians" },
+    { "phrases": ["pcdai", "pediatric crohn activity index", "pediatric crohn disease activity", "childhood crohn activity score", "crohn activity index in children"],
+      "tile": "pcdai", "audience": "clinicians" }
   ]
 }

@@ -6,6 +6,23 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v522 — PCDAI (Pediatric Crohn Disease Activity Index) tile, 1371 → 1372)
+
+- New `pcdai` tile (group G): the eleven-item pediatric Crohn's activity index, total **0-100**. `pcdai` and
+  `hyams` were zero-hit. Every Crohn's instrument in the catalog is validated in **adults**
+  (`cdai-crohns`, `harvey-bradshaw`, `ses-cd`, `rutgeerts`) and the one pediatric IBD index present is
+  `pucai`, which is **ulcerative colitis** — this fills the corner neither covers, and it is not the adult
+  CDAI with a child's weight plugged in: it adds growth and lab measures and down-weights the subjective
+  items, because Crohn's in a child can damage growth while the gut symptoms look mild. **The weights are not
+  uniform:** eight items score 0/5/10, hematocrit and ESR score **0/2.5/5**, and albumin scores **0/5/10**
+  like the eight — half-weighting all three labs caps the index at 95 and full-weighting all three caps it at
+  110. **The hematocrit threshold depends on age and sex** (34% is a 0 in a girl of 12 and 2.5 points in a boy
+  of 12), so the band is asked explicitly and a test walks all sixteen published edges. Band edges follow the
+  cut scores Hyams and colleagues recommended in 2005 — below 10 inactive, 30 or above moderate-to-severe —
+  stated as the convention followed, because reproductions put 10 in both ranges and the 2.5-point steps make
+  exactly 10 and exactly 30 reachable. It scores activity: not a diagnosis, not disease location or behavior,
+  and **not** mucosal healing. See [spec-v522](docs/spec-v522.md).
+
 ### Added (spec-v521 — PC-PTSD-5 (Primary Care PTSD Screen for DSM-5) tile, 1370 → 1371)
 
 - New `pc-ptsd5` tile (group G): the five-item primary-care PTSD screen, total **0-5**. `pc-ptsd`,
