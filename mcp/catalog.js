@@ -431,6 +431,7 @@ import pippV517 from './adapters/pipp-v517.js';
 import childhoodActV518 from './adapters/childhood-act-v518.js';
 import eckardtV519 from './adapters/eckardt-v519.js';
 import spigelmanV520 from './adapters/spigelman-v520.js';
+import pcPtsd5V521 from './adapters/pc-ptsd5-v521.js';
 import tbTesting from './adapters/tb-testing.js';
 import labInterpret from './adapters/lab-interpret.js';
 import decisionRulesV258 from './adapters/decision-rules-v258.js';
@@ -856,6 +857,7 @@ const ADAPTER_MODULES = [
   ['childhood-act-v518', childhoodActV518],
   ['eckardt-v519', eckardtV519],
   ['spigelman-v520', spigelmanV520],
+  ['pc-ptsd5-v521', pcPtsd5V521],
   ['tb-testing', tbTesting],
   ['lab-interpret', labInterpret],
   ['decision-rules-v258', decisionRulesV258],

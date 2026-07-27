@@ -1502,6 +1502,28 @@ round-trip both pass, without the phantom "2". Adapter appended to the existing
 rate to a target PaCO2. Brings the exposed total to **1072 calculators across 197
 modules**.
 
+## Three-hundred-forty-sixth wave — the Primary Care PTSD Screen for DSM-5 in lib/pc-ptsd5-v521.js (+1)
+
+`pc-ptsd5` (spec-v521) sums the five PC-PTSD-5 items into a total of 0-5 and reports it against both
+published cut points. **The `required` flags encode the instrument's gate, and that is the design point of
+this wave.** Only `pcp-trauma` is marked required. The five symptom items are **not**, because when no
+traumatic event is reported the source is explicit that the screen is complete with a score of 0 and the five
+items are never asked - every one of them refers to "the event(s)". A caller reporting no trauma can
+therefore compute a valid, finished, negative result from **one** input instead of being forced to invent
+five answers to questions that presuppose a trauma the patient has not reported. When trauma **is** reported,
+the lib itself requires all five and names what is missing, so nothing is silently scored as a no. The two
+cut points are both reported rather than collapsed into a bare positive/negative: 3 is optimally sensitive, 4
+is optimally efficient, and a total of exactly 3 is where they disagree - an agent that needs one answer
+should be told which threshold it is applying. Dom keys `pcp-trauma` and `pcp-q1` … `pcp-q5` map to the lib
+args `trauma` and `q1` … `q5`. The example scores 4; that number and both cut points are carried by the
+result band, so it flows through the default `makeToArgs` with no custom toArgs. New adapter module
+registered in `mcp/catalog.js`; its golden probe ("primary care ptsd screen five questions") is promoted now
+that the tile is in the MCP-exposed registry. Brings the exposed total to **1308 calculators across 424
+modules**.
+
+### lib/pc-ptsd5-v521.js
+- `pc-ptsd5`
+
 ## Three-hundred-forty-fifth wave — the Spigelman duodenal-polyposis stage in lib/spigelman-v520.js (+1)
 
 `spigelman` (spec-v520) sums the four Spigelman parameters into a total of 4-12, assigns the stage, and
@@ -6382,6 +6404,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/spigelman-v520.js
 - `spigelman`
+
+### lib/pc-ptsd5-v521.js
+- `pc-ptsd5`
 
 ### lib/tb-testing.js
 - `tb-testing`

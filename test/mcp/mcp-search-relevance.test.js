@@ -553,6 +553,7 @@ const PROBES = [
   ['childhood asthma control test for a child', ['childhood-act']],
   ['eckardt score achalasia symptoms', ['eckardt']],
   ['spigelman stage duodenal polyposis', ['spigelman']],
+  ['primary care ptsd screen five questions', ['pc-ptsd5']],
 ];
 
 test(`every golden probe routes an acceptable tile into the top ${TOP_N}`, () => {
