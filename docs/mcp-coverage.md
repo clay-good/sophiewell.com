@@ -1502,6 +1502,25 @@ round-trip both pass, without the phantom "2". Adapter appended to the existing
 rate to a target PaCO2. Brings the exposed total to **1072 calculators across 197
 modules**.
 
+## Three-hundred-thirty-fourth wave — the Sunnybrook Facial Grading System in lib/sunnybrook-facial-v509.js (+1)
+
+`sunnybrook-facial` (spec-v509) grades facial nerve function on three axes and subtracts: resting symmetry
+(points × 5), five voluntary expressions each 1-5 (× 4), and synkinesis on those same expressions (0-3), for a
+composite anchored at 0 (complete flaccid paralysis) and 100 (normal symmetry). The adapter's `fields` array is
+**generated** from the lib's exported `REST_ITEMS`, `EXPRESSIONS`, `MOVEMENT_SCALE`, and `SYNKINESIS_SCALE`, so
+the renderer, the adapter labels, and the tests all share one source of wording. Every field is an enum
+(`kind: 'enum'`) on dom keys `sb-rest-eye` / `sb-rest-cheek` / `sb-rest-mouth`, `sb-m1` … `sb-m5`, and `sb-s1`
+… `sb-s5`, mapping to args `eye` / `cheek` / `mouth`, `m1` … `m5`, and `s1` … `s5`; all thirteen are in
+`META.example`, so all thirteen are required for every caller — correct here, because the composite is a
+subtraction across three axes and a partial exam has no composite. The example scores 52; that number and the
+0 / 100 anchors are carried by the result band, so it flows through the default `makeToArgs` with no custom
+toArgs. New adapter module registered in `mcp/catalog.js`; its golden probe ("sunnybrook facial grading
+composite synkinesis") is promoted now that the tile is in the MCP-exposed registry. Brings the exposed total
+to **1296 calculators across 412 modules**.
+
+### lib/sunnybrook-facial-v509.js
+- `sunnybrook-facial`
+
 ## Three-hundred-thirty-third wave — the Voice Handicap Index-10 in lib/vhi10-v508.js (+1)
 
 `vhi10` (spec-v508) sums the ten VHI-10 items into a total of 0-40 and compares it to the commonly cited
@@ -6132,6 +6151,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/vhi10-v508.js
 - `vhi10`
+
+### lib/sunnybrook-facial-v509.js
+- `sunnybrook-facial`
 
 ### lib/tb-testing.js
 - `tb-testing`
