@@ -6,6 +6,18 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v525 — CAPD (Cornell Assessment of Pediatric Delirium) tile, 1373 → 1374)
+
+- New `capd` tile (group G): the eight-item observational delirium screen for children. The catalog's three
+  delirium screens (`icdsc`, `4at`, `nu-desc`) are all adult-validated, and the nearest-looking tiles are
+  something else — `sos` is the Sophia Observation **withdrawal** scale and `cornell-csdd` is the Cornell
+  Scale for **Depression in Dementia**. Each item scores **0-4**, total **0-32**, positive at **9 or more**.
+  **The anchors are reversed between the two halves**: items 1-4 ask about preserved function so *never*
+  scores 4, items 5-8 ask about abnormal behavior so *never* scores 0. Reading one direction across all eight
+  inverts the instrument — a test pins that the well child who scores 0 through the real anchors would score
+  16 and screen positive. Every item is rated against the child's own developmental baseline. See
+  [spec-v525](docs/spec-v525.md).
+
 ### Added (spec-v523 — Scadding stage (sarcoidosis chest radiograph) tile, 1372 → 1373)
 
 - New `scadding` tile (group G): the five radiographic stages of intrathoracic sarcoidosis — **0** normal,

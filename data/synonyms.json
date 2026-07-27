@@ -630,6 +630,8 @@
     { "phrases": ["pcdai", "pediatric crohn activity index", "pediatric crohn disease activity", "childhood crohn activity score", "crohn activity index in children"],
       "tile": "pcdai", "audience": "clinicians" },
     { "phrases": ["scadding", "scadding stage", "sarcoidosis stage", "sarcoidosis chest xray stage", "sarcoid radiographic stage"],
-      "tile": "scadding", "audience": "clinicians" }
+      "tile": "scadding", "audience": "clinicians" },
+    { "phrases": ["capd", "cornell assessment of pediatric delirium", "pediatric delirium screen", "picu delirium score", "delirium screen in children"],
+      "tile": "capd", "audience": "clinicians" }
   ]
 }
