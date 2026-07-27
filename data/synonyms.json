@@ -612,6 +612,8 @@
     { "phrases": ["asrs", "asrs v1 1", "adult adhd screener", "adult adhd self report scale", "adhd screening questionnaire", "attention deficit screener"],
       "tile": "asrs", "audience": "clinicians" },
     { "phrases": ["ymrs", "young mania rating scale", "mania rating scale", "mania severity score", "manic episode severity rating"],
-      "tile": "ymrs", "audience": "clinicians" }
+      "tile": "ymrs", "audience": "clinicians" },
+    { "phrases": ["simpson angus", "simpson angus scale", "drug induced parkinsonism scale", "extrapyramidal side effect rating", "antipsychotic parkinsonism rating"],
+      "tile": "simpson-angus", "audience": "clinicians" }
   ]
 }

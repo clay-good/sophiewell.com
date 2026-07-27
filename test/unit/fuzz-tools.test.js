@@ -489,6 +489,7 @@ import * as crafftV511 from '../../lib/crafft-v511.js';
 import * as vaizeyV512 from '../../lib/vaizey-v512.js';
 import * as asrsV513 from '../../lib/asrs-v513.js';
 import * as ymrsV514 from '../../lib/ymrs-v514.js';
+import * as simpsonAngusV515 from '../../lib/simpson-angus-v515.js';
 import * as tbTesting from '../../lib/tb-testing.js';
 
 const MODULES = {
@@ -923,6 +924,7 @@ const MODULES = {
   'vaizey-v512.js': vaizeyV512,
   'asrs-v513.js': asrsV513,
   'ymrs-v514.js': ymrsV514,
+  'simpson-angus-v515.js': simpsonAngusV515,
   'tb-testing.js': tbTesting,
 };
 

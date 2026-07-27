@@ -6,6 +6,16 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v515 — Simpson-Angus Scale (drug-induced parkinsonism) tile, 1364 → 1365)
+
+- New `simpson-angus` tile (group G): the ten-item rating of drug-induced parkinsonism, completing the
+  antipsychotic movement-side-effect cluster next to the existing AIMS (tardive dyskinesia) and Barnes
+  (akathisia) scales — the parkinsonism axis was zero-hit. Each item scores **0** normal to **4** severe.
+  **The reported number is the mean item score (total ÷ 10), not the total**, with a mean **above 0.3** as the
+  threshold in common use; quoting the total where a mean is expected is a ten-fold error, so the tile returns
+  both and labels which is which. The threshold is strictly *above* 0.3: a total of 3 is a mean of exactly
+  0.30 and reads as at-or-below. See [spec-v515](docs/spec-v515.md).
+
 ### Added (spec-v514 — Young Mania Rating Scale (YMRS) tile, 1363 → 1364)
 
 - New `ymrs` tile (group G): the eleven-item clinician rating of manic severity. Mania was a whole-concept
