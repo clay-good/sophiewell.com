@@ -562,6 +562,7 @@ const PROBES = [
   ['wayne index clinical thyrotoxicosis', ['wayne-index']],
   ['oxford mest c iga nephropathy biopsy', ['mest-c']],
   ['tuberculous versus bacterial meningitis score', ['thwaites']],
+  ['vesikari gastroenteritis severity score', ['vesikari']],
 ];
 
 test(`every golden probe routes an acceptable tile into the top ${TOP_N}`, () => {

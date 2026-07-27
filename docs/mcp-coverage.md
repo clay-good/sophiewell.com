@@ -1574,6 +1574,30 @@ Brings the exposed total to **1314 calculators across 430 modules**.
 ### lib/wayne-index-v527.js
 - `wayne-index`
 
+## Three-hundred-fifty-fifth wave — the Vesikari clinical severity score in lib/vesikari-v530.js (+1)
+
+`vesikari` (spec-v530) sums the seven Vesikari items into a total of 0-20 and bands the episode's severity.
+
+**The enum value lists are per-item and two of them are irregular**, which is the design point of this wave.
+Five items publish `['0','1','2','3']`; **dehydration** publishes `['0','2','3']` with no `'1'`, and
+**treatment** publishes `['0','1','2']` with no `'3'`. A shared 0-3 vocabulary across all seven would let an
+agent send a `1` for dehydration — a score the instrument does not define — or a `3` for treatment, which
+would push the maximum to 23 and inflate every hospitalized child by a point. Generating the values from the
+lib's per-item option lists makes both impossible at the schema layer rather than catching them later.
+
+**The temperature field label says rectal-equivalent and gives the conversion**, because that is the most
+common scoring error and an agent handed a chart temperature has no way to know the route mattered: an
+axillary 38.5 °C is not a 2-point fever. The summary distinguishes this tool from three neighbors an agent
+could otherwise conflate — the Gorelick and Clinical Dehydration scales (current dehydration, not the
+episode), the 24-point norovirus modification, and the Schnadower modified score — all of which are called
+something close enough to "Vesikari" or "dehydration score" that a caller could pick this one for the wrong
+question. New adapter module registered in `mcp/catalog.js`; its golden probe ("vesikari gastroenteritis
+severity score") is promoted now that the tile is in the MCP-exposed registry. Brings the exposed total to
+**1317 calculators across 433 modules**.
+
+### lib/vesikari-v530.js
+- `vesikari`
+
 ## Three-hundred-fifty-fourth wave — the Thwaites diagnostic index in lib/thwaites-v529.js (+1)
 
 `thwaites` (spec-v529) sums the five Thwaites features into a signed total and reports which of two diagnoses
@@ -6619,6 +6643,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/thwaites-v529.js
 - `thwaites`
+
+### lib/vesikari-v530.js
+- `vesikari`
 
 ### lib/tb-testing.js
 - `tb-testing`
