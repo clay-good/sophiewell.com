@@ -6,6 +6,15 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v512 — Vaizey (St Marks) fecal incontinence score tile, 1361 → 1362)
+
+- New `vaizey` tile (group G): the seven-row St Marks fecal incontinence score, and the companion the catalog
+  was missing next to `wexner`. Four frequency rows (solid stool, liquid stool, gas, lifestyle) score **0**
+  never to **4** daily; the three rows Wexner leaves out add **2** for a pad or plug, **2** for constipating
+  medicines, and **4** for being unable to defer defecation 15 minutes. Total **0** (perfect continence) to
+  **24** (totally incontinent), and the tile reports the two subtotals alongside it so the number is never a
+  black box. `vaizey` and `st marks` were both zero-hit. See [spec-v512](docs/spec-v512.md).
+
 ### Added (spec-v511 — CRAFFT (adolescent substance-use screen) tile, 1360 → 1361)
 
 - New `crafft` tile (group G): the six-item adolescent substance-use screen — **C**ar, **R**elax, **A**lone,

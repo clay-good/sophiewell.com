@@ -606,6 +606,8 @@
     { "phrases": ["banff", "banff grade", "banff classification", "t cell mediated rejection grade", "acute cellular rejection grade", "kidney allograft rejection grade", "tubulitis grade"],
       "tile": "banff-tcmr", "audience": "clinicians" },
     { "phrases": ["crafft", "crafft score", "crafft screen", "adolescent substance use screen", "teen substance use screening", "adolescent alcohol and drug screen"],
-      "tile": "crafft", "audience": "clinicians" }
+      "tile": "crafft", "audience": "clinicians" },
+    { "phrases": ["vaizey", "vaizey score", "st marks score", "st marks incontinence score", "fecal incontinence severity score", "anal incontinence score"],
+      "tile": "vaizey", "audience": "clinicians" }
   ]
 }
