@@ -6,6 +6,16 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v516 — Asthma Control Test (ACT) tile, 1365 → 1366)
+
+- New `asthma-control-test` tile (group G): the five-item patient-reported measure of asthma control over the
+  past four weeks. The catalog's existing asthma tiles score **acute severity** in a child; the ACT answers
+  the different question of control **between** visits, and was zero-hit. Each item scores **1-5** with its
+  own anchor wording (5 is always the best answer); total **5-25** — **25** totally controlled, **20-24** well
+  controlled, **19 or less** not well controlled. **There is no zero on this scale**: the floor is 5 and a 0
+  is rejected with a message that says so. Tagged for the `patients` audience as well, since it is
+  self-administered. See [spec-v516](docs/spec-v516.md).
+
 ### Added (spec-v515 — Simpson-Angus Scale (drug-induced parkinsonism) tile, 1364 → 1365)
 
 - New `simpson-angus` tile (group G): the ten-item rating of drug-induced parkinsonism, completing the

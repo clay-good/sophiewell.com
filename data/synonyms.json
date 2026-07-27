@@ -614,6 +614,8 @@
     { "phrases": ["ymrs", "young mania rating scale", "mania rating scale", "mania severity score", "manic episode severity rating"],
       "tile": "ymrs", "audience": "clinicians" },
     { "phrases": ["simpson angus", "simpson angus scale", "drug induced parkinsonism scale", "extrapyramidal side effect rating", "antipsychotic parkinsonism rating"],
-      "tile": "simpson-angus", "audience": "clinicians" }
+      "tile": "simpson-angus", "audience": "clinicians" },
+    { "phrases": ["asthma control test", "act asthma", "asthma control score", "is my asthma controlled", "asthma control questionnaire score"],
+      "tile": "asthma-control-test", "audience": "clinicians" }
   ]
 }
