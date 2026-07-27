@@ -6,6 +6,73 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v528 — Oxford MEST-C (IgA nephropathy biopsy) tile, 1377 → 1378)
+
+- New `mest-c` tile (group G): the five-lesion Oxford classification of an IgA nephropathy biopsy — **M**
+  mesangial hypercellularity, **E** endocapillary hypercellularity, **S** segmental glomerulosclerosis,
+  **T** tubular atrophy/interstitial fibrosis, **C** crescents. `mest`, `mesangial`, `endocapillary`, and
+  `berger` were all zero-hit; the four non-zero probes were read in context and are false positives. It is a
+  different axis from the existing `kfre`, which estimates kidney-failure risk from serum and urine — this
+  grades what the **biopsy** shows. **The tile returns a code, not a score, and that is the point:** MEST-C
+  is reported as its five scores side by side (`M1 E0 S1 T1 C0`) and is **not summed**. The summed 0-7
+  grading is a research proposal, not the standard biopsy report, so producing a total would invent a report
+  format pathologists do not issue and would flatten five independent lesions into one meaningless number —
+  three tests pin that no total exists. The **M threshold is deliberately the mesangial score (>0.5), not a
+  percentage of glomeruli**, because sources rendering it as a percentage disagree at exactly 50%. T and C
+  are shares of **different denominators** (cortical area vs glomeruli) and each option says which. It
+  describes a biopsy: it does not diagnose IgA nephropathy, which needs mesangial IgA on immunofluorescence.
+  See [spec-v528](docs/spec-v528.md).
+
+### Added (spec-v527 — Wayne index (clinical diagnosis of thyrotoxicosis) tile, 1376 → 1377)
+
+- New `wayne-index` tile (group G): the eighteen-item signed-weight clinical index for thyrotoxicosis, read
+  as **above 19 toxic**, **11-19 equivocal**, **below 11 euthyroid**. `wayne`, `crooks`, `thyrotoxicosis`,
+  and `hyperthyroid` were all zero-hit. It is **a different axis** from the existing `burch-wartofsky`, which
+  grades thyroid *storm* in someone already known to be thyrotoxic — this asks whether the examination looks
+  thyrotoxic at all. **The weights are signed and several are negative**, which is what implementations get
+  wrong: preferring heat is **−5**, an absent palpable thyroid **−3**, absent hyperkinesis **−2**, a pulse
+  below 80 **−3**. Treating absent findings as zero converts a euthyroid patient's protective negatives into
+  neutrals and manufactures false positives — so every negative is carried, the renderer shows each option's
+  signed value, and a test pins that **an exam with nothing found scores −10, not 0**. Temperature
+  preference, appetite, and weight are **three-way** items with opposite-signed alternatives rather than
+  checkboxes, and the casual pulse is **one** item with three bands rather than two. The total range is
+  **computed from the weight table** rather than asserted, since secondary sources say "+45 to −25" while the
+  table as printed floors at −24. Published in **1959, before sensitive TSH assays**: not a substitute for
+  TSH and free T4, does not identify the cause, and performs worst in mild disease and in older patients.
+  See [spec-v527](docs/spec-v527.md).
+
+### Added (spec-v526 — nSOFA (neonatal Sequential Organ Failure Assessment) tile, 1375 → 1376)
+
+- New `nsofa` tile (group G): the three-domain neonatal organ-dysfunction score — respiratory **0-8**,
+  cardiovascular **0-4**, hematologic **0-3**, total **0-15**. `nsofa` and `wynn` were zero-hit. It is an
+  age-band gap with a **real structural difference**: the catalog has adult SOFA/qSOFA and `psofa`, but the
+  nSOFA has three organ systems where SOFA has six, **dropping the neurologic, hepatic, and renal domains
+  outright** because a coma scale cannot be scored in a 26-week infant, neonatal bilirubin is dominated by
+  physiologic jaundice, and early creatinine reflects maternal creatinine and the postnatal diuresis. The
+  respiratory domain has a **deliberate blind spot the tile names rather than patching**: SpO2/FiO2 is scored
+  only when intubated, so an infant on nasal CPAP at FiO2 0.60 scores the same zero as one in room air — no
+  "not intubated, on oxygen" row exists in any source, and inventing one would be inventing a scale. The
+  published platelet rows overlap (40 satisfies both "below 100" and "below 50"), so the SOFA-family
+  highest-wins convention is stated in the copy and pinned by a test. It was validated for mortality from
+  late-onset sepsis in preterm very-low-birth-weight infants: it does not diagnose sepsis, does not rule it
+  out, and a low score in an infant who looks unwell is not reassurance. See [spec-v526](docs/spec-v526.md).
+
+### Added (spec-v524 — Gray-Weale carotid plaque type (ultrasound echogenicity) tile, 1374 → 1375)
+
+- New `gray-weale` tile (group G): the four B-mode echogenicity types of carotid plaque — **1** uniformly
+  echolucent, **2** predominantly echolucent, **3** predominantly echogenic, **4** uniformly echogenic or
+  extensively calcified, grouped as echolucent (1-2) and echogenic (3-4). `gray-weale`, `weale`,
+  `echolucent`, `nicolaides`, and `gsm` were all zero-hit. It is **a different axis on the same vessel** from
+  the existing `nascet-carotid-stenosis`: NASCET measures how narrow the lumen is, this describes what the
+  plaque appears to be made of, and the two are known to disagree — each tile now names the other. The copy
+  states plainly that it is **a grade read by eye**, anchored to the vessel lumen and the far-wall
+  media-adventitia interface in the same image, so it depends on gain settings and the operator, which is why
+  computerized grayscale-median measurement exists. Echolucent plaque's association with symptomatic disease
+  is stated at **group level with no stroke rate attached to any type**, and every result carries the two
+  disclaimers that matter: this is not the degree of stenosis, and it is **not an indication for carotid
+  endarterectomy or stenting** — those trials selected on stenosis and symptoms, not echogenicity. See
+  [spec-v524](docs/spec-v524.md).
+
 ### Added (spec-v525 — CAPD (Cornell Assessment of Pediatric Delirium) tile, 1373 → 1374)
 
 - New `capd` tile (group G): the eight-item observational delirium screen for children. The catalog's three
@@ -17,21 +84,6 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
   inverts the instrument — a test pins that the well child who scores 0 through the real anchors would score
   16 and screen positive. Every item is rated against the child's own developmental baseline. See
   [spec-v525](docs/spec-v525.md).
-
-### Added (spec-v523 — Scadding stage (sarcoidosis chest radiograph) tile, 1372 → 1373)
-
-- New `scadding` tile (group G): the five radiographic stages of intrathoracic sarcoidosis — **0** normal,
-  **I** bilateral hilar lymphadenopathy with clear lungs, **II** adenopathy with parenchymal infiltrates,
-  **III** infiltrates without adenopathy, **IV** fibrosis. Whole-concept gap: `scadding`, `sarcoidosis`,
-  `sarcoid`, and `siltzbach` were all zero-hit and the catalog had no sarcoidosis content of any kind. The
-  numbering invites three wrong readings and the tile refuses all three: it is **not a progression** (stage
-  III is defined by the *absence* of the adenopathy that defines I and II, so it is not "II plus more"),
-  **not a measure of how the patient is doing** (the scale correlates poorly with functional parameters — a
-  stage IV film does not establish impaired lung function), and **not reliable between readers** (the III/IV
-  line moves depending on whether "fibrosis" means any concern for it or end-stage change). It states the
-  reported remission *direction* by stage but attaches **no percentage** to any stage, and names the
-  extrathoracic blind spot — cardiac sarcoidosis is a leading cause of death this staging cannot see. See
-  [spec-v523](docs/spec-v523.md).
 
 ### Added (spec-v523 — Scadding stage (sarcoidosis chest radiograph) tile, 1372 → 1373)
 

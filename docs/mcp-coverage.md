@@ -1502,6 +1502,103 @@ round-trip both pass, without the phantom "2". Adapter appended to the existing
 rate to a target PaCO2. Brings the exposed total to **1072 calculators across 197
 modules**.
 
+## Three-hundred-fiftieth wave — the Gray-Weale carotid plaque type in lib/gray-weale-v524.js (+1)
+
+`gray-weale` (spec-v524) maps a B-mode ultrasound appearance to one of the four Gray-Weale echogenicity
+types and returns the echolucent/echogenic grouping with it. The enum values are `'1'`-`'4'`; the lib also
+accepts roman numerals, but the adapter publishes only the arabic forms so an agent emits one canonical
+shape. The field label carries each type's **appearance** rather than the bare numeral, because an agent
+choosing a type is describing an image and needs the descriptors, not the ordinal.
+
+The summary leads with the fact that decides whether a caller uses this correctly: **it is a different axis
+from the degree of stenosis.** An agent that already has a NASCET percentage must not read this as a second
+severity number, and an agent that has this must not report it as a stenosis. The summary also states, twice
+over, that plaque type is **not an indication for carotid endarterectomy or stenting** — the trials that
+established when to intervene selected on stenosis and symptom status, not echogenicity — because "type 1
+echolucent plaque" is exactly the phrase an agent would otherwise turn into a surgical recommendation. The
+echolucent-symptomatic association is given at group level with **no stroke rate attached to any type**. New
+adapter module registered in `mcp/catalog.js`; its golden probe ("carotid plaque echogenicity type
+ultrasound") is promoted now that the tile is in the MCP-exposed registry. Brings the exposed total to
+**1312 calculators across 428 modules**.
+
+### lib/gray-weale-v524.js
+- `gray-weale`
+
+## Three-hundred-fifty-first wave — the neonatal SOFA in lib/nsofa-v526.js (+1)
+
+`nsofa` (spec-v526) scores the three nSOFA domains into a total of 0-15 and returns each subscore plus the
+computed SpO2/FiO2 ratio.
+
+**`nso-spo2` and `nso-fio2` are deliberately NOT required, and that is the design point of this wave.** The
+published respiratory domain scores the ratio **only when the infant is intubated**; a non-intubated infant
+scores 0 there regardless of oxygen requirement. Marking the two required would force a caller scoring a
+non-intubated infant to supply values the instrument will not look at — worse than useless, because it would
+suggest they contribute. The lib requires them exactly when intubation is reported and names what is missing
+otherwise.
+
+The FiO2 field is labeled as a **fraction** with a worked example ("0.40 for 40 percent"), because an agent
+that sends `40` would compute a ratio a hundred times too small and land the infant in the 8-point row; the
+unit is declared so it appears in the published schema description. The summary states the respiratory blind
+spot in the instrument's own terms rather than papering over it, and states the validated population
+(late-onset sepsis in preterm very-low-birth-weight infants), because "nSOFA 2" is exactly the kind of number
+an agent would otherwise carry into a term infant or an early-onset-sepsis case as though it travelled. New
+adapter module registered in `mcp/catalog.js`; its golden probe ("neonatal sofa organ dysfunction preterm")
+is promoted now that the tile is in the MCP-exposed registry. Brings the exposed total to **1313 calculators
+across 429 modules**.
+
+### lib/nsofa-v526.js
+- `nsofa`
+
+## Three-hundred-fifty-second wave — the Wayne index in lib/wayne-index-v527.js (+1)
+
+`wayne-index` (spec-v527) scores the eighteen Wayne items into a signed total and reads it against the
+toxic / equivocal / euthyroid bands.
+
+**Every field label carries its options' signed point values, including the negative ones, and that is the
+whole design point of this wave.** An agent handed "Palpable thyroid: yes/no" has no way to know that
+answering *no* **subtracts three points** rather than adding nothing, and an agent assuming the usual
+"absent contributes nothing" convention would systematically inflate every total toward a false positive.
+Publishing the signed weights in the schema makes the instrument's actual shape legible to the caller.
+
+**Three items are published as three-way enums, not booleans** — temperature preference, appetite, and
+weight — because their alternatives carry opposite signs and cannot both be true, so a pair of booleans would
+let an agent assert an impossible combination. The casual pulse is likewise **one** three-band enum, not two
+rows, even though the source prints it as two. All eighteen are required: a partial Wayne index has no total,
+and because absent findings carry negative weight, an omitted item is **not** equivalent to a negative
+answer. The summary states up front that this is a 1959 instrument from before sensitive TSH assays and is
+not a substitute for thyroid function tests, because "Wayne index 24, toxic range" is exactly the phrase an
+agent would otherwise report as a diagnosis. New adapter module registered in `mcp/catalog.js`; its golden
+probe ("wayne index clinical thyrotoxicosis") is promoted now that the tile is in the MCP-exposed registry.
+Brings the exposed total to **1314 calculators across 430 modules**.
+
+### lib/wayne-index-v527.js
+- `wayne-index`
+
+## Three-hundred-fifty-third wave — the Oxford MEST-C classification in lib/mest-c-v528.js (+1)
+
+`mest-c` (spec-v528) maps five IgA-nephropathy biopsy lesion scores to the MEST-C code.
+
+**The result is a code, and the summary says so twice**, because an agent handed five small integers will
+reach for a total almost by reflex. MEST-C is reported as its five scores side by side and is **not summed**;
+the summed 0-7 grading with grades I-III is a research proposal, not the standard biopsy report. The compute
+function returns `code` and a per-lesion breakdown and deliberately exposes **no total field**, so there is
+nothing for a caller to add up even if it tried.
+
+**The enum values are the full lesion labels (`'M0'`, `'M1'`, `'T2'`), not bare integers.** That is
+deliberate: a bare 0/1/2 vocabulary shared across five fields would let a caller send a T-level to the M
+field and have it silently accepted, and "1" means different things on M (binary) and T (0-2). Prefixed
+values turn a misrouted score into a validation error rather than a wrong answer, and the lib rejects it by
+name. The field labels carry each lesion's **denominator**, because T is a share of *cortical area* and C a
+share of *glomeruli* — an agent that swapped them would produce a plausible, wrong code. The M label states
+that the threshold is the mesangial hypercellularity **score** above 0.5, not a percentage of glomeruli,
+since sources rendering M as a percentage disagree with each other at exactly 50%. New adapter module
+registered in `mcp/catalog.js`; its golden probe ("oxford mest c iga nephropathy biopsy") is promoted now
+that the tile is in the MCP-exposed registry. Brings the exposed total to **1315 calculators across 431
+modules**.
+
+### lib/mest-c-v528.js
+- `mest-c`
+
 ## Three-hundred-forty-ninth wave — the Cornell Assessment of Pediatric Delirium in lib/capd-v525.js (+1)
 
 `capd` (spec-v525) sums the eight CAPD observations into a total of 0-32 and compares it to the positive cut
@@ -6481,6 +6578,18 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/capd-v525.js
 - `capd`
+
+### lib/gray-weale-v524.js
+- `gray-weale`
+
+### lib/nsofa-v526.js
+- `nsofa`
+
+### lib/wayne-index-v527.js
+- `wayne-index`
+
+### lib/mest-c-v528.js
+- `mest-c`
 
 ### lib/tb-testing.js
 - `tb-testing`

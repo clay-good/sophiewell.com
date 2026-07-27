@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `2b1270d33e86c9db`
-Generated: 2026-07-27T22:36:04.189Z
+Build ID: `a3ead73990c2c936`
+Generated: 2026-07-27T23:29:12.329Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=20.18.1 <21, npm >=10.0.0
@@ -24,13 +24,13 @@ downloads is committed in this repository and is hashed below.
 
 | Path | Bytes | SHA-256 |
 |---|---:|---|
-| `index.html` | 90530 | `0893d40955e1f3ecd3a330166fff75cb362b9db2c08b8948f212cbbb5d46529f` |
+| `index.html` | 90790 | `8f0022c68856662ce7ca68e3a4900d3b6fe11daaa12e73cb99b0e5f7fee560bf` |
 | `styles.css` | 44160 | `a2cc7ad7bae9f7cfc9681d80bc6bd4a58f0b07d47bfcff64897dc04929c12333` |
-| `app.js` | 369608 | `09288a8f7c8071e7c90420072914741d4242af7474ffd77a5827616cb0020824` |
+| `app.js` | 370548 | `2488942e87e7eee8944f19d4c9b64d40b0efb08866538067d0cfb83b868561d5` |
 | `sw.js` | 4622 | `b891d4344f8e04403b7f1d307fd446cc224bddc6f0c4397438a17d197351171e` |
 | `site.webmanifest` | 709 | `0e0de4da60590a12e8b27a0ae2a2f5ffdb6500b7d2b78f93631ec2f64ed3d5ce` |
 | `robots.txt` | 127 | `38fbf9c1854e72abb20e01e81dd5a31d4ea96f154c12d5db1ec3af05524dd1a1` |
-| `sitemap.xml` | 211075 | `29d437a6e5a5a6db16ef41c3252e23ca39e6fc3932b980242ad944402d9cc03f` |
+| `sitemap.xml` | 211667 | `99e3d9e480386d72897ccc4bc52cc29b1067392e48b19ab62494ea97a9ea4140` |
 | `_headers` | 1316 | `2f39986457d2feff7e73e491a7d09ee871e8f2f4cc2bc437f86bd86a42554ec6` |
 | `logo.png` | 63440 | `11afaf1b0d3ca68393d202e4810bf766b5b6d591b4e3ec52f41d3cacaa4616ec` |
 | `favicon.ico` | 7411 | `407fde0ca2788409e87e11f596fa02e6a0b121817fcea7fd995beec1801e287b` |
@@ -197,6 +197,7 @@ downloads is committed in this repository and is hashed below.
 | `lib/gold-abe-v316.js` | 6054 | `a76f64af84f4b91f8f2d8ff5c14d47bc2ea71829a5da968f9b79058e398dbce1` |
 | `lib/goligher-hemorrhoids-v351.js` | 4200 | `126dea5e4fec27fd6a295e871eb6a54363a2ba1ed63b5b43961e47c9b2605bfa` |
 | `lib/goutallier-v437.js` | 2793 | `b13a814c10cd7e21cb70b9edb6fd8adc28f31a9bdda5e75b3532e8baab520d7a` |
+| `lib/gray-weale-v524.js` | 7212 | `40da7dbef79e5870d84108f26fddae6ff7ced15b2e793acb3921f27899a88b7b` |
 | `lib/growth-lms-data.js` | 62247 | `ab55ed9e9b56d47f239bfe21dc9d9811969332de08e595c2773d93538cc505d3` |
 | `lib/gvhd-v309.js` | 3729 | `dbdbf82238cc7b3cfa79ef6fd6980113d2d2382da368b0a976b070132b5c59a2` |
 | `lib/gyn-v139.js` | 16713 | `48b43ee6adf613155f263495dbded3c7fc5929d6373190b47bcb2fa2ff47fa69` |
@@ -290,7 +291,8 @@ downloads is committed in this repository and is hashed below.
 | `lib/mccormick-v444.js` | 3548 | `226844081eb702e3917925b1fb684495c90fd90d83717106c632f91f09fad0c6` |
 | `lib/medication-v4.js` | 18192 | `467f9576c50da696cc56094eb022d0a5ed1e88de0c7618448554ede8067270b0` |
 | `lib/medication-v5.js` | 18863 | `ce81d9f8954abbd412892c13af9936f992239164f26fd2b999eaea7902787ab7` |
-| `lib/meta.js` | 1854693 | `9a41df27d590e33633d23e22683e142ac839b94ba74304a737dd6a667b7ae145` |
+| `lib/mest-c-v528.js` | 9310 | `e33f178c339338f62c47b6a19d50d345d38be3b05d9a33e7d2703e0a99ae3a69` |
+| `lib/meta.js` | 1861416 | `4d1c914c1c412871fbcf0e462b4daaf2105afe791a25e3c8b03db2a9d855258c` |
 | `lib/metabolic-hepatic-v219.js` | 12791 | `b9352877cebf7fbf3c3b99ecb8b72cdbee3ed94e056dc019113668609f5a95a8` |
 | `lib/metabolic-onc-v88.js` | 12659 | `1553b641668c121661a66647da71a4aaaa023e9f3a6b7a753efbcdab27cdba81` |
 | `lib/metabolic-v269.js` | 3262 | `0c7a42557886f2b0aeee7949b8d0bd682d795d4526174fd540717a978d94ec2f` |
@@ -327,6 +329,7 @@ downloads is committed in this repository and is hashed below.
 | `lib/nohria-stevenson-v369.js` | 4429 | `26571c3b11db66d7650f7f044e6f5e99134ec131fb7a5d7bf12eb8c19d3c5a96` |
 | `lib/norwood-hairloss-v502.js` | 4547 | `4a9482a2d123c549c3af8550efc44f2360190f1bd33015cfe0ae77662d45d2d8` |
 | `lib/nottingham-npi-v330.js` | 3875 | `9a95ea364fb41e94801ff30ac7789c22eeebef1abd6c2bd24a3c6fd1e01253ac` |
+| `lib/nsofa-v526.js` | 9799 | `459b65cd36b79e54aef1c52ab5b77e682ec0af768a6f9c8000321e3c9fc53009` |
 | `lib/num.js` | 3883 | `d420a01b7b54cd9d5e102b1ffaa0ed1b6a5ffb7c9e652d7bb2d458d24857e47f` |
 | `lib/nunley-vertullo-v455.js` | 3085 | `6f287a16c80ba5d73e2bb2c15989a7aa81d8335767f0a36e8c67c3203b357439` |
 | `lib/nutrition-energy-v152.js` | 14446 | `924b5421f818147f64b10db410fca9892773a29a918cf40e2bacdb64c0dbb23a` |
@@ -511,6 +514,7 @@ downloads is committed in this repository and is hashed below.
 | `lib/waldenstrom-perthes-v463.js` | 3215 | `61142875bbb4fe034e8b075c8dfd4c0d5169d11325bf43db82a05803685fa5c7` |
 | `lib/warfarin-v133.js` | 17650 | `d8828a05588e183023b5655c0a23741b0834be45ca68c18309267a125dcc13e6` |
 | `lib/wassel-thumb-v417.js` | 3695 | `737843b45e55eb4516c05998d701f524c458961c1aec0374c3142786d4e0a46d` |
+| `lib/wayne-index-v527.js` | 10220 | `73e78ac1e4ff49a83a078d3ba3a03da6a9527c6c11ea8790621d1d58a84d3889` |
 | `lib/wexner-v324.js` | 3664 | `256be0f80c9c9fefa624b7a8e80236c8e78c018ccef18d2432509f8cb334fdff` |
 | `lib/wiltse-spondylolisthesis-v481.js` | 3497 | `6cc7aba8c22ffdce234a0e6a36d2d607bd25642494da50f5f5add4a06f8163a7` |
 | `lib/winquist-hansen-v381.js` | 4270 | `285352c99d2f0a5d567e14be8216500bdae9e24158cb7bfc4bbf4e192a202e1e` |
@@ -946,7 +950,11 @@ downloads is committed in this repository and is hashed below.
 | `views/group-v521.js` | 4298 | `f4b84dbc0f8311140fcf1400fe3c5f9175baf4061ff15a5e698725d43df4eadd` |
 | `views/group-v522.js` | 4960 | `15791f4f9779dbdc0a4b8518b23f95465c3daad696135311020946b1998d01ad` |
 | `views/group-v523.js` | 2999 | `9dad3277642a018726c52bc5cf88087dab3ebaa0fb424eeee8ded0f56ceb25f9` |
+| `views/group-v524.js` | 3226 | `01115e7fb78b67dab4946bccd47f3e7f64ebe4bffc14ead45c231ec8fe198ceb` |
 | `views/group-v525.js` | 3195 | `7a19f09c68ac3d3d9b881a7bea6fedfd854ff674b8db85a2f610fe7cc4291104` |
+| `views/group-v526.js` | 4819 | `cc8c40b9bebee820768339028d846a2b567387ab2963f763923abf2743eccb18` |
+| `views/group-v527.js` | 3938 | `0500e0ed10500761374e26094815fd518f0d60fa92843332254210bda9902b47` |
+| `views/group-v528.js` | 3542 | `f0fc452ee249bede7e4e4635218b9f9a9e953cb93d974e9cfed17e925b0806d8` |
 | `views/group-v6.js` | 5707 | `425918decb48cd9efac9fc5590ac8970a54c03c3b0df056fb99c9a22ff8dd1b2` |
 | `views/group-v63.js` | 14377 | `962d84b97e82bc39635801da79ecaa93fc0b501b5988b7d321b0f1f630497fab` |
 | `views/group-v7.js` | 15113 | `d480a5b34adfd035507dd4313e12462c47c949aeee155b253c8a2f9596839d05` |

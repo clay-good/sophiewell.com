@@ -632,6 +632,14 @@
     { "phrases": ["scadding", "scadding stage", "sarcoidosis stage", "sarcoidosis chest xray stage", "sarcoid radiographic stage"],
       "tile": "scadding", "audience": "clinicians" },
     { "phrases": ["capd", "cornell assessment of pediatric delirium", "pediatric delirium screen", "picu delirium score", "delirium screen in children"],
-      "tile": "capd", "audience": "clinicians" }
+      "tile": "capd", "audience": "clinicians" },
+    { "phrases": ["gray weale", "carotid plaque echogenicity", "carotid plaque type", "echolucent plaque grade", "carotid plaque morphology ultrasound"],
+      "tile": "gray-weale", "audience": "clinicians" },
+    { "phrases": ["nsofa", "neonatal sofa", "neonatal organ failure score", "newborn organ dysfunction score", "preterm sepsis organ failure score"],
+      "tile": "nsofa", "audience": "clinicians" },
+    { "phrases": ["wayne index", "clinical thyrotoxicosis index", "thyrotoxicosis clinical score", "hyperthyroid clinical index", "crooks wayne index"],
+      "tile": "wayne-index", "audience": "clinicians" },
+    { "phrases": ["mest c", "oxford classification iga", "iga nephropathy biopsy score", "mest score kidney biopsy", "iga nephropathy histology grade"],
+      "tile": "mest-c", "audience": "clinicians" }
   ]
 }

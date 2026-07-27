@@ -499,6 +499,10 @@ import * as pcPtsd5V521 from '../../lib/pc-ptsd5-v521.js';
 import * as pcdaiV522 from '../../lib/pcdai-v522.js';
 import * as scaddingV523 from '../../lib/scadding-v523.js';
 import * as capdV525 from '../../lib/capd-v525.js';
+import * as grayWealeV524 from '../../lib/gray-weale-v524.js';
+import * as nsofaV526 from '../../lib/nsofa-v526.js';
+import * as wayneIndexV527 from '../../lib/wayne-index-v527.js';
+import * as mestCV528 from '../../lib/mest-c-v528.js';
 import * as tbTesting from '../../lib/tb-testing.js';
 
 const MODULES = {
@@ -943,6 +947,10 @@ const MODULES = {
   'pcdai-v522.js': pcdaiV522,
   'scadding-v523.js': scaddingV523,
   'capd-v525.js': capdV525,
+  'gray-weale-v524.js': grayWealeV524,
+  'nsofa-v526.js': nsofaV526,
+  'wayne-index-v527.js': wayneIndexV527,
+  'mest-c-v528.js': mestCV528,
   'tb-testing.js': tbTesting,
 };
 

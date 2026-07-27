@@ -557,6 +557,10 @@ const PROBES = [
   ['pediatric crohn disease activity index', ['pcdai']],
   ['scadding stage sarcoidosis chest xray', ['scadding']],
   ['cornell assessment of pediatric delirium capd', ['capd']],
+  ['carotid plaque echogenicity type ultrasound', ['gray-weale']],
+  ['neonatal sofa organ dysfunction preterm', ['nsofa']],
+  ['wayne index clinical thyrotoxicosis', ['wayne-index']],
+  ['oxford mest c iga nephropathy biopsy', ['mest-c']],
 ];
 
 test(`every golden probe routes an acceptable tile into the top ${TOP_N}`, () => {

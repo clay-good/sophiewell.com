@@ -435,6 +435,10 @@ import pcPtsd5V521 from './adapters/pc-ptsd5-v521.js';
 import pcdaiV522 from './adapters/pcdai-v522.js';
 import scaddingV523 from './adapters/scadding-v523.js';
 import capdV525 from './adapters/capd-v525.js';
+import grayWealeV524 from './adapters/gray-weale-v524.js';
+import nsofaV526 from './adapters/nsofa-v526.js';
+import wayneIndexV527 from './adapters/wayne-index-v527.js';
+import mestCV528 from './adapters/mest-c-v528.js';
 import tbTesting from './adapters/tb-testing.js';
 import labInterpret from './adapters/lab-interpret.js';
 import decisionRulesV258 from './adapters/decision-rules-v258.js';
@@ -864,6 +868,10 @@ const ADAPTER_MODULES = [
   ['pcdai-v522', pcdaiV522],
   ['scadding-v523', scaddingV523],
   ['capd-v525', capdV525],
+  ['gray-weale-v524', grayWealeV524],
+  ['nsofa-v526', nsofaV526],
+  ['wayne-index-v527', wayneIndexV527],
+  ['mest-c-v528', mestCV528],
   ['tb-testing', tbTesting],
   ['lab-interpret', labInterpret],
   ['decision-rules-v258', decisionRulesV258],
