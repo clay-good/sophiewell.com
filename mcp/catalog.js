@@ -439,6 +439,7 @@ import grayWealeV524 from './adapters/gray-weale-v524.js';
 import nsofaV526 from './adapters/nsofa-v526.js';
 import wayneIndexV527 from './adapters/wayne-index-v527.js';
 import mestCV528 from './adapters/mest-c-v528.js';
+import thwaitesV529 from './adapters/thwaites-v529.js';
 import tbTesting from './adapters/tb-testing.js';
 import labInterpret from './adapters/lab-interpret.js';
 import decisionRulesV258 from './adapters/decision-rules-v258.js';
@@ -872,6 +873,7 @@ const ADAPTER_MODULES = [
   ['nsofa-v526', nsofaV526],
   ['wayne-index-v527', wayneIndexV527],
   ['mest-c-v528', mestCV528],
+  ['thwaites-v529', thwaitesV529],
   ['tb-testing', tbTesting],
   ['lab-interpret', labInterpret],
   ['decision-rules-v258', decisionRulesV258],

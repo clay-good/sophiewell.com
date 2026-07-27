@@ -1574,6 +1574,32 @@ Brings the exposed total to **1314 calculators across 430 modules**.
 ### lib/wayne-index-v527.js
 - `wayne-index`
 
+## Three-hundred-fifty-fourth wave — the Thwaites diagnostic index in lib/thwaites-v529.js (+1)
+
+`thwaites` (spec-v529) sums the five Thwaites features into a signed total and reports which of two diagnoses
+it favors.
+
+**The summary leads with the direction of the cut, and repeats it**, because this is the one score in the
+catalog that reads **backwards**: a *low* total favors tuberculous meningitis. An agent applying the usual
+"higher means more severe or more likely" heuristic to a Thwaites total does not get a vaguer answer — it
+gets the **opposite diagnosis**. The compute result never returns a bare number either: `favors` is a word,
+and the band states the direction in prose.
+
+Each field's label carries its **signed** weight, including the **−5** on duration. An agent told only
+"duration of illness 6 days or more: yes/no" would have no way to know that answering *yes* moves the score
+five points toward tuberculous — the single largest movement any feature can produce, and the opposite of
+what "more days of illness" suggests to a naive reader. All five are required: because one weight is
+negative, an omitted feature is **not** equivalent to a "no", and a missing duration answer would leave out
+the term that most often decides the result. The summary also states the two documented failure modes
+(partially treated bacterial meningitis, HIV-positive adults) and the differential the rule cannot see,
+because an agent reporting "Thwaites favors tuberculous meningitis" in a patient who has already had
+antibiotics is in exactly the situation where the rule is least trustworthy. New adapter module registered in
+`mcp/catalog.js`; its golden probe ("tuberculous versus bacterial meningitis score") is promoted now that the
+tile is in the MCP-exposed registry. Brings the exposed total to **1316 calculators across 432 modules**.
+
+### lib/thwaites-v529.js
+- `thwaites`
+
 ## Three-hundred-fifty-third wave — the Oxford MEST-C classification in lib/mest-c-v528.js (+1)
 
 `mest-c` (spec-v528) maps five IgA-nephropathy biopsy lesion scores to the MEST-C code.
@@ -6590,6 +6616,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/mest-c-v528.js
 - `mest-c`
+
+### lib/thwaites-v529.js
+- `thwaites`
 
 ### lib/tb-testing.js
 - `tb-testing`
