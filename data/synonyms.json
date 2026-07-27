@@ -618,6 +618,8 @@
     { "phrases": ["asthma control test", "act asthma", "asthma control score", "is my asthma controlled", "asthma control questionnaire score"],
       "tile": "asthma-control-test", "audience": "clinicians" },
     { "phrases": ["pipp", "premature infant pain profile", "preterm procedural pain score", "neonatal procedural pain score"],
-      "tile": "pipp", "audience": "clinicians" }
+      "tile": "pipp", "audience": "clinicians" },
+    { "phrases": ["c act", "childhood asthma control test", "childhood act", "pediatric asthma control score", "kids asthma control score"],
+      "tile": "childhood-act", "audience": "clinicians" }
   ]
 }

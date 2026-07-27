@@ -6,6 +6,17 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v518 — Childhood Asthma Control Test (c-ACT) tile, 1367 → 1368)
+
+- New `childhood-act` tile (group G): the asthma control questionnaire for children roughly 4-11, and the
+  companion [spec-v516](docs/spec-v516.md) named as out of scope. It is **not the adult ACT with easier
+  words** — four items answered by the **child** score **0-3** and three answered by the **caregiver** about
+  the past four weeks score **0-5**, for a total of **0-27**, with **19 or less** not well controlled.
+  Validation is per group, so a 4 is legal on a caregiver item and rejected on a child item. The cut point is
+  the same number as the adult ACT but on a different scale (adult 5-25, child 0-27), which is the error the
+  pair exists to prevent; the tile reports both subtotals alongside the total. See
+  [spec-v518](docs/spec-v518.md).
+
 ### Added (spec-v517 — PIPP (Premature Infant Pain Profile) tile, 1366 → 1367)
 
 - New `pipp` tile (group G): the seven-indicator procedural pain score for preterm and term newborns,

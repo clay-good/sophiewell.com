@@ -492,6 +492,7 @@ import * as ymrsV514 from '../../lib/ymrs-v514.js';
 import * as simpsonAngusV515 from '../../lib/simpson-angus-v515.js';
 import * as asthmaControlTestV516 from '../../lib/asthma-control-test-v516.js';
 import * as pippV517 from '../../lib/pipp-v517.js';
+import * as childhoodActV518 from '../../lib/childhood-act-v518.js';
 import * as tbTesting from '../../lib/tb-testing.js';
 
 const MODULES = {
@@ -929,6 +930,7 @@ const MODULES = {
   'simpson-angus-v515.js': simpsonAngusV515,
   'asthma-control-test-v516.js': asthmaControlTestV516,
   'pipp-v517.js': pippV517,
+  'childhood-act-v518.js': childhoodActV518,
   'tb-testing.js': tbTesting,
 };
 
