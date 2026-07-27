@@ -6,6 +6,17 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v517 — PIPP (Premature Infant Pain Profile) tile, 1366 → 1367)
+
+- New `pipp` tile (group G): the seven-indicator procedural pain score for preterm and term newborns,
+  completing the neonatal pain cluster next to the existing NIPS, CRIES, N-PASS, FLACC, and COMFORT-B — `pipp`
+  was zero-hit. Each indicator scores **0-3**, total **0-21**: two **contextual** (gestational age,
+  behavioral state, scored *before* the procedure), two physiologic (heart-rate rise, oxygen-saturation
+  fall), three facial (brow bulge, eye squeeze, nasolabial furrow). **6 or less** reads as minimal or no
+  pain; **above 12** as moderate to severe. The result reports the contextual subtotal alongside the total,
+  because a 26-week infant in quiet sleep scores 6 before anything is observed. The copy states the failure
+  mode: a low score does not mean the procedure did not hurt. See [spec-v517](docs/spec-v517.md).
+
 ### Added (spec-v516 — Asthma Control Test (ACT) tile, 1365 → 1366)
 
 - New `asthma-control-test` tile (group G): the five-item patient-reported measure of asthma control over the

@@ -616,6 +616,8 @@
     { "phrases": ["simpson angus", "simpson angus scale", "drug induced parkinsonism scale", "extrapyramidal side effect rating", "antipsychotic parkinsonism rating"],
       "tile": "simpson-angus", "audience": "clinicians" },
     { "phrases": ["asthma control test", "act asthma", "asthma control score", "is my asthma controlled", "asthma control questionnaire score"],
-      "tile": "asthma-control-test", "audience": "clinicians" }
+      "tile": "asthma-control-test", "audience": "clinicians" },
+    { "phrases": ["pipp", "premature infant pain profile", "preterm procedural pain score", "neonatal procedural pain score"],
+      "tile": "pipp", "audience": "clinicians" }
   ]
 }
