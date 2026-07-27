@@ -1502,6 +1502,28 @@ round-trip both pass, without the phantom "2". Adapter appended to the existing
 rate to a target PaCO2. Brings the exposed total to **1072 calculators across 197
 modules**.
 
+## Three-hundred-forty-eighth wave — the Scadding sarcoidosis stage in lib/scadding-v523.js (+1)
+
+`scadding` (spec-v523) maps a chest-radiograph appearance to one of the five Scadding stages. The enum
+values are the canonical `'0'`, `'I'`, `'II'`, `'III'`, `'IV'`; the lib also accepts `'1'`-`'4'` and
+lowercase, but the adapter publishes only the canonical forms so an agent reading the schema emits what the
+source uses.
+
+The field label carries **each stage's defining radiographic features**, not just the numeral, because the
+distinction that matters most is invisible in the numbering: stage II is adenopathy **with** infiltrates and
+stage III is infiltrates **without** adenopathy. An agent handed a bare "0-IV" would have no way to know that
+III is not II plus more, and would be likely to read the sequence as a severity ramp. The summary states all
+three readings the numbering invites and the tile refuses — not a progression, not a measure of lung
+function, not reliable between readers — plus the extrathoracic blind spot, because an agent summarizing
+"stage IV sarcoidosis" is exactly where a claim about lung function or prognosis would otherwise get
+invented. **No remission percentage is attached to any stage**, only the direction reported across cohorts.
+New adapter module registered in `mcp/catalog.js`; its golden probe ("scadding stage sarcoidosis chest xray")
+is promoted now that the tile is in the MCP-exposed registry. Brings the exposed total to **1310 calculators
+across 426 modules**.
+
+### lib/scadding-v523.js
+- `scadding`
+
 ## Three-hundred-forty-seventh wave — the Pediatric Crohn's Disease Activity Index in lib/pcdai-v522.js (+1)
 
 `pcdai` (spec-v522) scores the eleven PCDAI items into a total of 0-100 and bands the activity. The eight
@@ -6435,6 +6457,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/pcdai-v522.js
 - `pcdai`
+
+### lib/scadding-v523.js
+- `scadding`
 
 ### lib/tb-testing.js
 - `tb-testing`

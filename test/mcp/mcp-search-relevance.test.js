@@ -555,6 +555,7 @@ const PROBES = [
   ['spigelman stage duodenal polyposis', ['spigelman']],
   ['primary care ptsd screen five questions', ['pc-ptsd5']],
   ['pediatric crohn disease activity index', ['pcdai']],
+  ['scadding stage sarcoidosis chest xray', ['scadding']],
 ];
 
 test(`every golden probe routes an acceptable tile into the top ${TOP_N}`, () => {
