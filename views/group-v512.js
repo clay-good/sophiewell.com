@@ -25,7 +25,7 @@ function out() { return el('div', { id: 'q-results', 'aria-live': 'polite' }); }
 function val(id) { const n = document.getElementById(id); return n ? n.value : ''; }
 function safe(o, fn) { clear(o); try { fn(); } catch (err) { o.appendChild(el('p', { class: 'muted', text: err.message })); } }
 function note(root, text) { if (text) root.appendChild(el('p', { class: 'muted', text })); }
-function heading(root, text) { root.appendChild(el('h3', { text })); }
+function heading(root, text) { root.appendChild(el('h2', { text })); }
 function postureNote(root) {
   root.appendChild(el('p', { class: 'muted', text: 'Decision support, not a verdict. The result is the cited source’s, computed from the inputs you enter. The management decision stays with the colorectal and pelvic-floor team.' }));
 }
