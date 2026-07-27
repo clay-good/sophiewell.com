@@ -495,6 +495,7 @@ import * as pippV517 from '../../lib/pipp-v517.js';
 import * as childhoodActV518 from '../../lib/childhood-act-v518.js';
 import * as eckardtV519 from '../../lib/eckardt-v519.js';
 import * as spigelmanV520 from '../../lib/spigelman-v520.js';
+import * as pcPtsd5V521 from '../../lib/pc-ptsd5-v521.js';
 import * as tbTesting from '../../lib/tb-testing.js';
 
 const MODULES = {
@@ -935,6 +936,7 @@ const MODULES = {
   'childhood-act-v518.js': childhoodActV518,
   'eckardt-v519.js': eckardtV519,
   'spigelman-v520.js': spigelmanV520,
+  'pc-ptsd5-v521.js': pcPtsd5V521,
   'tb-testing.js': tbTesting,
 };
 

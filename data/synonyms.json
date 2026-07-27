@@ -624,6 +624,8 @@
     { "phrases": ["eckardt", "eckardt score", "achalasia symptom score", "achalasia severity score", "achalasia stage"],
       "tile": "eckardt", "audience": "clinicians" },
     { "phrases": ["spigelman", "spigelman stage", "spigelman classification", "duodenal polyposis stage", "familial adenomatous polyposis duodenal stage"],
-      "tile": "spigelman", "audience": "clinicians" }
+      "tile": "spigelman", "audience": "clinicians" },
+    { "phrases": ["pc ptsd", "primary care ptsd screen", "ptsd screen", "five item ptsd screen", "brief ptsd screening questions"],
+      "tile": "pc-ptsd5", "audience": "clinicians" }
   ]
 }

@@ -6,6 +6,19 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v521 — PC-PTSD-5 (Primary Care PTSD Screen for DSM-5) tile, 1370 → 1371)
+
+- New `pc-ptsd5` tile (group G): the five-item primary-care PTSD screen, total **0-5**. `pc-ptsd`,
+  `primary care ptsd`, `ptsd screen`, and `prins` were all zero-hit. It is **not** a duplicate of the
+  existing `pcl-5`, which is a 20-item **severity** measure — this is a **screen**, a different axis, and
+  each tile now names the other. The **trauma-exposure gate is modeled as part of the instrument**: if no
+  traumatic event is reported the screen is complete with a score of 0, the five symptom items are not
+  required, and the renderer hides them, because every one of them refers to "the event(s)" and is
+  unanswerable without one. The tile also **refuses to silently pick a cut point** — the source recommends
+  **3** as optimally sensitive and **4** as optimally efficient, so the result reports the total against both
+  and says in words that a total of exactly 3 is where they disagree. A screen is not a diagnosis; a test
+  asserts the result never emits a diagnostic claim. See [spec-v521](docs/spec-v521.md).
+
 ### Added (spec-v520 — Spigelman stage (duodenal polyposis in FAP) tile, 1369 → 1370)
 
 - New `spigelman` tile (group G): the four-parameter duodenal-polyposis stage for familial adenomatous
