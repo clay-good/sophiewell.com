@@ -6,6 +6,36 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v523 — Scadding stage (sarcoidosis chest radiograph) tile, 1372 → 1373)
+
+- New `scadding` tile (group G): the five radiographic stages of intrathoracic sarcoidosis — **0** normal,
+  **I** bilateral hilar lymphadenopathy with clear lungs, **II** adenopathy with parenchymal infiltrates,
+  **III** infiltrates without adenopathy, **IV** fibrosis. Whole-concept gap: `scadding`, `sarcoidosis`,
+  `sarcoid`, and `siltzbach` were all zero-hit and the catalog had no sarcoidosis content of any kind. The
+  numbering invites three wrong readings and the tile refuses all three: it is **not a progression** (stage
+  III is defined by the *absence* of the adenopathy that defines I and II, so it is not "II plus more"),
+  **not a measure of how the patient is doing** (the scale correlates poorly with functional parameters — a
+  stage IV film does not establish impaired lung function), and **not reliable between readers** (the III/IV
+  line moves depending on whether "fibrosis" means any concern for it or end-stage change). It states the
+  reported remission *direction* by stage but attaches **no percentage** to any stage, and names the
+  extrathoracic blind spot — cardiac sarcoidosis is a leading cause of death this staging cannot see. See
+  [spec-v523](docs/spec-v523.md).
+
+### Added (spec-v523 — Scadding stage (sarcoidosis chest radiograph) tile, 1372 → 1373)
+
+- New `scadding` tile (group G): the five radiographic stages of intrathoracic sarcoidosis — **0** normal,
+  **I** bilateral hilar lymphadenopathy with clear lungs, **II** adenopathy with parenchymal infiltrates,
+  **III** infiltrates without adenopathy, **IV** fibrosis. Whole-concept gap: `scadding`, `sarcoidosis`,
+  `sarcoid`, and `siltzbach` were all zero-hit and the catalog had no sarcoidosis content of any kind. The
+  numbering invites three wrong readings and the tile refuses all three: it is **not a progression** (stage
+  III is defined by the *absence* of the adenopathy that defines I and II, so it is not "II plus more"),
+  **not a measure of how the patient is doing** (the scale correlates poorly with functional parameters — a
+  stage IV film does not establish impaired lung function), and **not reliable between readers** (the III/IV
+  line moves depending on whether "fibrosis" means any concern for it or end-stage change). It states the
+  reported remission *direction* by stage but attaches **no percentage** to any stage, and names the
+  extrathoracic blind spot — cardiac sarcoidosis is a leading cause of death this staging cannot see. See
+  [spec-v523](docs/spec-v523.md).
+
 ### Added (spec-v522 — PCDAI (Pediatric Crohn Disease Activity Index) tile, 1371 → 1372)
 
 - New `pcdai` tile (group G): the eleven-item pediatric Crohn's activity index, total **0-100**. `pcdai` and

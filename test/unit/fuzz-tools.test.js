@@ -497,6 +497,7 @@ import * as eckardtV519 from '../../lib/eckardt-v519.js';
 import * as spigelmanV520 from '../../lib/spigelman-v520.js';
 import * as pcPtsd5V521 from '../../lib/pc-ptsd5-v521.js';
 import * as pcdaiV522 from '../../lib/pcdai-v522.js';
+import * as scaddingV523 from '../../lib/scadding-v523.js';
 import * as tbTesting from '../../lib/tb-testing.js';
 
 const MODULES = {
@@ -939,6 +940,7 @@ const MODULES = {
   'spigelman-v520.js': spigelmanV520,
   'pc-ptsd5-v521.js': pcPtsd5V521,
   'pcdai-v522.js': pcdaiV522,
+  'scadding-v523.js': scaddingV523,
   'tb-testing.js': tbTesting,
 };
 
