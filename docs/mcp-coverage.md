@@ -1502,6 +1502,23 @@ round-trip both pass, without the phantom "2". Adapter appended to the existing
 rate to a target PaCO2. Brings the exposed total to **1072 calculators across 197
 modules**.
 
+## Three-hundred-fortieth wave — the Simpson-Angus Scale in lib/simpson-angus-v515.js (+1)
+
+`simpson-angus` (spec-v515) rates ten examination items 0-4 for drug-induced parkinsonism. The adapter's
+`fields` array is **generated** from the lib's exported `SAS_ITEMS`, so the renderer, the adapter labels, and
+the tests all share one source of item wording. Each item is an enum (`kind: 'enum'`, values `'0'`-`'4'`) on
+dom keys `sa-q1` … `sa-q10` mapping to args `q1` … `q10`; all ten are in `META.example`, so all ten are
+required for every caller — correct here because the reported figure is a **mean**: an omitted item would
+change the denominator silently, which is worse than refusing to answer. The example gives a mean of 0.80 on a
+total of 8, and the result band carries **both** numbers deliberately, since quoting the total where a mean is
+expected is a ten-fold error. Flows through the default `makeToArgs` with no custom toArgs. New adapter module
+registered in `mcp/catalog.js`; its golden probe ("simpson angus drug induced parkinsonism") is promoted now
+that the tile is in the MCP-exposed registry. Brings the exposed total to **1302 calculators across 418
+modules**.
+
+### lib/simpson-angus-v515.js
+- `simpson-angus`
+
 ## Three-hundred-thirty-ninth wave — the Young Mania Rating Scale in lib/ymrs-v514.js (+1)
 
 `ymrs` (spec-v514) sums the eleven YMRS items into a total of 0-60. The adapter's `fields` array is
@@ -6254,6 +6271,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/ymrs-v514.js
 - `ymrs`
+
+### lib/simpson-angus-v515.js
+- `simpson-angus`
 
 ### lib/tb-testing.js
 - `tb-testing`
