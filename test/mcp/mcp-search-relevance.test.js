@@ -548,6 +548,7 @@ const PROBES = [
   ['asrs adult adhd screener part a', ['asrs']],
   ['young mania rating scale ymrs', ['ymrs']],
   ['simpson angus drug induced parkinsonism', ['simpson-angus']],
+  ['asthma control test act score', ['asthma-control-test']],
 ];
 
 test(`every golden probe routes an acceptable tile into the top ${TOP_N}`, () => {

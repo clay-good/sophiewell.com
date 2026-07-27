@@ -1502,6 +1502,23 @@ round-trip both pass, without the phantom "2". Adapter appended to the existing
 rate to a target PaCO2. Brings the exposed total to **1072 calculators across 197
 modules**.
 
+## Three-hundred-forty-first wave — the Asthma Control Test in lib/asthma-control-test-v516.js (+1)
+
+`asthma-control-test` (spec-v516) sums the five ACT items into a total of 5-25 and bands it. The adapter's
+`fields` array is **generated** from the lib's exported `ACT_ITEMS`, and each field label carries that item's
+**own anchor wording** — because `5` means "none of the time" on item 1 and "not at all" on item 2, a generic
+1-5 label would lose the instrument. Each item is an enum (`kind: 'enum'`, values `'1'`-`'5'`) on dom keys
+`act-q1` … `act-q5` mapping to args `q1` … `q5`. Note the range starts at **1, not 0**: that is the one thing
+a caller used to 0-based instruments gets wrong, and the enum makes `0` an invalid value rather than a
+silently accepted floor. All five are in `META.example`, so all five are required for every caller: a partial
+ACT has no total. The example scores 17; that number and the band are carried by the result band, so it flows
+through the default `makeToArgs` with no custom toArgs. New adapter module registered in `mcp/catalog.js`; its
+golden probe ("asthma control test act score") is promoted now that the tile is in the MCP-exposed registry.
+Brings the exposed total to **1303 calculators across 419 modules**.
+
+### lib/asthma-control-test-v516.js
+- `asthma-control-test`
+
 ## Three-hundred-fortieth wave — the Simpson-Angus Scale in lib/simpson-angus-v515.js (+1)
 
 `simpson-angus` (spec-v515) rates ten examination items 0-4 for drug-induced parkinsonism. The adapter's
@@ -6274,6 +6291,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/simpson-angus-v515.js
 - `simpson-angus`
+
+### lib/asthma-control-test-v516.js
+- `asthma-control-test`
 
 ### lib/tb-testing.js
 - `tb-testing`
