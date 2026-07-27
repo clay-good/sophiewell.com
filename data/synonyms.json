@@ -640,6 +640,8 @@
     { "phrases": ["wayne index", "clinical thyrotoxicosis index", "thyrotoxicosis clinical score", "hyperthyroid clinical index", "crooks wayne index"],
       "tile": "wayne-index", "audience": "clinicians" },
     { "phrases": ["mest c", "oxford classification iga", "iga nephropathy biopsy score", "mest score kidney biopsy", "iga nephropathy histology grade"],
-      "tile": "mest-c", "audience": "clinicians" }
+      "tile": "mest-c", "audience": "clinicians" },
+    { "phrases": ["thwaites", "thwaites index", "tuberculous versus bacterial meningitis", "tb meningitis score", "tuberculous meningitis discrimination"],
+      "tile": "thwaites", "audience": "clinicians" }
   ]
 }

@@ -6,6 +6,22 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v529 — Thwaites index (tuberculous vs bacterial meningitis) tile, 1378 → 1379)
+
+- New `thwaites` tile (group G): the five-feature signed-weight discriminator between tuberculous and
+  bacterial meningitis in adults, range **−5 to +13**. `thwaites`, `tuberculous`, and `bandim` were all
+  zero-hit. It asks **a different question** from the existing `nigrovic` Bacterial Meningitis Score, which
+  rules bacterial meningitis *out* in a child; this assumes meningitis in an adult and asks which of two
+  organisms is causing it. **It runs in the opposite direction to every other score in the catalog:** a total
+  of **4 or less favors tuberculous** and above 4 favors bacterial, so low is the TB end — the tile never
+  emits a bare number and every result states the direction in words. **The −5 on a history of 6 days or more
+  is the instrument's engine**, not a detail: it is the only negative weight and the largest, encoding that
+  bacterial meningitis presents over hours while TB meningitis presents over a week, and a test shows a long
+  history alone flipping a bacterial-looking picture to tuberculous. The copy names all three known limits:
+  specificity collapses in **partially treated** bacterial meningitis (~24%), it performs poorly in
+  **HIV-positive** adults, and it discriminates two diagnoses only — saying nothing about viral, fungal,
+  autoimmune, or malignant causes of a lymphocytic CSF. See [spec-v529](docs/spec-v529.md).
+
 ### Added (spec-v528 — Oxford MEST-C (IgA nephropathy biopsy) tile, 1377 → 1378)
 
 - New `mest-c` tile (group G): the five-lesion Oxford classification of an IgA nephropathy biopsy — **M**
