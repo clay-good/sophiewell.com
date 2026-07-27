@@ -504,6 +504,7 @@ import * as nsofaV526 from '../../lib/nsofa-v526.js';
 import * as wayneIndexV527 from '../../lib/wayne-index-v527.js';
 import * as mestCV528 from '../../lib/mest-c-v528.js';
 import * as thwaitesV529 from '../../lib/thwaites-v529.js';
+import * as vesikariV530 from '../../lib/vesikari-v530.js';
 import * as tbTesting from '../../lib/tb-testing.js';
 
 const MODULES = {
@@ -953,6 +954,7 @@ const MODULES = {
   'wayne-index-v527.js': wayneIndexV527,
   'mest-c-v528.js': mestCV528,
   'thwaites-v529.js': thwaitesV529,
+  'vesikari-v530.js': vesikariV530,
   'tb-testing.js': tbTesting,
 };
 

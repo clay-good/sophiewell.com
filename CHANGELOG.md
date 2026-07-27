@@ -6,6 +6,21 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v530 — Vesikari clinical severity score (gastroenteritis episode) tile, 1379 → 1380)
+
+- New `vesikari` tile (group G): the seven-item episode-severity score for acute gastroenteritis, total
+  **0-20**, banded **<7 mild / 7-10 moderate / ≥11 severe**. `vesikari`, `ruuska`, and `rotavirus` were all
+  zero-hit. It is **a different axis** from the existing `gorelick` and `clinical-dehydration-scale`, which
+  grade how dry a child is *right now*; this grades **the whole episode in retrospect** and was built as a
+  vaccine-trial endpoint. **Two shapes that are easy to get wrong, both pinned by tests:** dehydration has
+  **no 1-point row** (it scores 0, 2, or 3, and passing 1 is a validation error), and rehydration and
+  hospitalization are **one** treatment item rather than two — scoring them separately would push the
+  maximum to 23 and inflate every hospitalized child by a point. **The temperature is a rectal-equivalent
+  reading**, the most common scoring error: an axillary 38.5 °C is not a 2-point fever. It is also **not the
+  24-point norovirus modification** nor the Schnadower modified score, both of which the copy names so a
+  reader holding one notices. It grades severity in retrospect: not a triage tool, not current dehydration,
+  not an indication for fluids or admission. See [spec-v530](docs/spec-v530.md).
+
 ### Added (spec-v529 — Thwaites index (tuberculous vs bacterial meningitis) tile, 1378 → 1379)
 
 - New `thwaites` tile (group G): the five-feature signed-weight discriminator between tuberculous and

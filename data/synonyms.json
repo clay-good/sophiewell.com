@@ -642,6 +642,8 @@
     { "phrases": ["mest c", "oxford classification iga", "iga nephropathy biopsy score", "mest score kidney biopsy", "iga nephropathy histology grade"],
       "tile": "mest-c", "audience": "clinicians" },
     { "phrases": ["thwaites", "thwaites index", "tuberculous versus bacterial meningitis", "tb meningitis score", "tuberculous meningitis discrimination"],
-      "tile": "thwaites", "audience": "clinicians" }
+      "tile": "thwaites", "audience": "clinicians" },
+    { "phrases": ["vesikari", "vesikari score", "gastroenteritis severity score", "rotavirus severity score", "diarrhea episode severity"],
+      "tile": "vesikari", "audience": "clinicians" }
   ]
 }
