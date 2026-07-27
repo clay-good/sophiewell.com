@@ -545,6 +545,7 @@ const PROBES = [
   ['banff grade t cell mediated rejection tubulitis', ['banff-tcmr']],
   ['crafft adolescent substance use screen', ['crafft']],
   ['vaizey st marks fecal incontinence score', ['vaizey']],
+  ['asrs adult adhd screener part a', ['asrs']],
 ];
 
 test(`every golden probe routes an acceptable tile into the top ${TOP_N}`, () => {

@@ -1502,6 +1502,24 @@ round-trip both pass, without the phantom "2". Adapter appended to the existing
 rate to a target PaCO2. Brings the exposed total to **1072 calculators across 197
 modules**.
 
+## Three-hundred-thirty-eighth wave — the ASRS v1.1 Part A adult ADHD screener in lib/asrs-v513.js (+1)
+
+`asrs` (spec-v513) applies the ASRS Part A counting rule: six items on one 0-4 scale, but items 1-3 count at
+*sometimes* or more and items 4-6 only at *often* or more, with 4 or more counting answers positive. The
+adapter's `fields` array is **generated** from the lib's exported `ASRS_ITEMS` and `FREQUENCY_SCALE`, so the
+renderer, the adapter labels, and the thresholds all come from one place. Each item is an enum
+(`kind: 'enum'`, values `'0'`-`'4'`) on dom keys `as-q1` … `as-q6` mapping to args `q1` … `q6`, and **each
+field label states that item's own threshold** — so a caller reading only the tool schema still cannot mistake
+the screen for a sum. All six are in `META.example`, so all six are required for every caller: an omitted item
+cannot be defaulted here, because the same answer counts on items 1-3 and does not on items 4-6. The example
+counts 5 of 6; that number and the raw total are carried by the result band, so it flows through the default
+`makeToArgs` with no custom toArgs. New adapter module registered in `mcp/catalog.js`; its golden probe ("asrs
+adult adhd screener part a") is promoted now that the tile is in the MCP-exposed registry. Brings the exposed
+total to **1300 calculators across 416 modules**.
+
+### lib/asrs-v513.js
+- `asrs`
+
 ## Three-hundred-thirty-seventh wave — the Vaizey (St Marks) fecal incontinence score in lib/vaizey-v512.js (+1)
 
 `vaizey` (spec-v512) sums the four 0-4 frequency rows and the three weighted yes/no rows into a total of 0-24.
@@ -6213,6 +6231,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/vaizey-v512.js
 - `vaizey`
+
+### lib/asrs-v513.js
+- `asrs`
 
 ### lib/tb-testing.js
 - `tb-testing`
