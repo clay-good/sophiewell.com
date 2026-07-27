@@ -6,6 +6,17 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v514 — Young Mania Rating Scale (YMRS) tile, 1363 → 1364)
+
+- New `ymrs` tile (group G): the eleven-item clinician rating of manic severity. Mania was a whole-concept
+  gap — `ymrs`, `young mania`, and `mania` were all effectively zero-hit. The items are **not weighted
+  equally**: seven score **0-4** and four — irritability, speech, thought content, and disruptive or
+  aggressive behavior — score **0-8**, for a total of **0-60**. Validation is per item, so a 5 is accepted on
+  a 0-8 item and rejected on a 0-4 one, and the tile reports the double-weighted subtotal (of 32) alongside
+  the total. Published severity bands vary between sources and none come from the original scale, so the tile
+  asserts none; it states only the trial convention of **12 or less** as remission, labeled as a convention.
+  See [spec-v514](docs/spec-v514.md).
+
 ### Added (spec-v513 — ASRS v1.1 Part A (adult ADHD screener) tile, 1362 → 1363)
 
 - New `asrs` tile (group G): the six-item ASRS v1.1 Part A adult ADHD screener. Adult ADHD was a whole-concept

@@ -610,6 +610,8 @@
     { "phrases": ["vaizey", "vaizey score", "st marks score", "st marks incontinence score", "fecal incontinence severity score", "anal incontinence score"],
       "tile": "vaizey", "audience": "clinicians" },
     { "phrases": ["asrs", "asrs v1 1", "adult adhd screener", "adult adhd self report scale", "adhd screening questionnaire", "attention deficit screener"],
-      "tile": "asrs", "audience": "clinicians" }
+      "tile": "asrs", "audience": "clinicians" },
+    { "phrases": ["ymrs", "young mania rating scale", "mania rating scale", "mania severity score", "manic episode severity rating"],
+      "tile": "ymrs", "audience": "clinicians" }
   ]
 }

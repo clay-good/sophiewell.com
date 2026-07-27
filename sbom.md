@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `b5bef8fee7f335e6`
-Generated: 2026-07-27T19:32:12.811Z
+Build ID: `1995d4a7bb8c482a`
+Generated: 2026-07-27T19:45:47.032Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=20.18.1 <21, npm >=10.0.0
@@ -24,13 +24,13 @@ downloads is committed in this repository and is hashed below.
 
 | Path | Bytes | SHA-256 |
 |---|---:|---|
-| `index.html` | 89918 | `fe697e547fe78392834e8fb522cfd3971c2502f5c9c94c218147732a86d19ddf` |
+| `index.html` | 89965 | `000a99c46faf32dd2ca86d906a915a1bf035229a76f744964d2aff4304725c41` |
 | `styles.css` | 44160 | `a2cc7ad7bae9f7cfc9681d80bc6bd4a58f0b07d47bfcff64897dc04929c12333` |
-| `app.js` | 367090 | `97ce65064fad8bedbc8728721325bb2befab7189a3816198a14a50d56889ff30` |
+| `app.js` | 367307 | `c19be43989b5f2f1d35b98225cd87d6df7092e48050bdefb88ab6d6a080aa0fa` |
 | `sw.js` | 4622 | `b891d4344f8e04403b7f1d307fd446cc224bddc6f0c4397438a17d197351171e` |
 | `site.webmanifest` | 709 | `0e0de4da60590a12e8b27a0ae2a2f5ffdb6500b7d2b78f93631ec2f64ed3d5ce` |
 | `robots.txt` | 127 | `38fbf9c1854e72abb20e01e81dd5a31d4ea96f154c12d5db1ec3af05524dd1a1` |
-| `sitemap.xml` | 209441 | `beddeecb648f2ba8f2ad0051fd769703a7ee3b68bab3226486f5de376c3ec9ca` |
+| `sitemap.xml` | 209585 | `f839c17029a1f89d7c033787b641311ee08ade39c0b3f42da4dcc29f800cad28` |
 | `_headers` | 1316 | `2f39986457d2feff7e73e491a7d09ee871e8f2f4cc2bc437f86bd86a42554ec6` |
 | `logo.png` | 63440 | `11afaf1b0d3ca68393d202e4810bf766b5b6d591b4e3ec52f41d3cacaa4616ec` |
 | `favicon.ico` | 7411 | `407fde0ca2788409e87e11f596fa02e6a0b121817fcea7fd995beec1801e287b` |
@@ -286,7 +286,7 @@ downloads is committed in this repository and is hashed below.
 | `lib/mccormick-v444.js` | 3548 | `226844081eb702e3917925b1fb684495c90fd90d83717106c632f91f09fad0c6` |
 | `lib/medication-v4.js` | 18192 | `467f9576c50da696cc56094eb022d0a5ed1e88de0c7618448554ede8067270b0` |
 | `lib/medication-v5.js` | 18863 | `ce81d9f8954abbd412892c13af9936f992239164f26fd2b999eaea7902787ab7` |
-| `lib/meta.js` | 1840279 | `9ad9d866f8fb88b34cbf67219c4765e3517175ebd8adde207019e4c195ca9cbf` |
+| `lib/meta.js` | 1841578 | `e87191aa6bce4505170dc633a4d1105d033d8052d1c8da48ea37de5ce8918283` |
 | `lib/metabolic-hepatic-v219.js` | 12791 | `b9352877cebf7fbf3c3b99ecb8b72cdbee3ed94e056dc019113668609f5a95a8` |
 | `lib/metabolic-onc-v88.js` | 12659 | `1553b641668c121661a66647da71a4aaaa023e9f3a6b7a753efbcdab27cdba81` |
 | `lib/metabolic-v269.js` | 3262 | `0c7a42557886f2b0aeee7949b8d0bd682d795d4526174fd540717a978d94ec2f` |
@@ -507,6 +507,7 @@ downloads is committed in this repository and is hashed below.
 | `lib/workflow-v4.js` | 7999 | `927a8a476e2c1b124c9e51040e549001b580b0baf2a4409ce463a0681fd08a72` |
 | `lib/woundid-v248.js` | 8147 | `24a0f30066e5306aadde69a2b7f147b31b4bcbfe97bda1d89950deb1a8d20828` |
 | `lib/yerdel-pvt-v472.js` | 3428 | `ce8f770be445a23840693ea3f37b9c4662513b342aa4e385e5ec22c18f6f1278` |
+| `lib/ymrs-v514.js` | 4492 | `822eefe30510c038f0795e27545f27dab0f45108ee308604f0748ac94f3c8aef` |
 | `lib/young-burgess-v380.js` | 5591 | `f25b02022a4a7efc3a56fdd970428ef04c1923c36174d8c909a092261eb6a794` |
 | `lib/zabramski-v442.js` | 3415 | `e6d4e34b1ef199e4f8478df095ead5462aaf5f6382f28d5d60afcd3191204860` |
 | `lib/zargar-caustic-v401.js` | 4163 | `74e90fca997b2ddaf575bb6cb161b293783c29d440199ee6f646892904b144d0` |
@@ -920,11 +921,12 @@ downloads is committed in this repository and is hashed below.
 | `views/group-v505.js` | 3148 | `7cf7af07cbd4dc7584cdc337238abce6c0c428b6900a375603da02fa865b94ce` |
 | `views/group-v506.js` | 3258 | `ba671dda1135ed92e3ebb11f76787869a760a47424017e756eb845ced75ea0d0` |
 | `views/group-v508.js` | 3085 | `7989a45959691d1ab913850ad1e4b35239b4c2d98de923278ca2dd0ccaec5f8e` |
-| `views/group-v509.js` | 4173 | `051491560644dc677a8ac6f1f3597f15f831834cd113baa172d5a65ebb665bd6` |
+| `views/group-v509.js` | 4173 | `c30db4f669ab2d981649dd627419231f04db50c9a6bf97e505db220defb0cc78` |
 | `views/group-v510.js` | 3023 | `390bbc423480611d5cf6649adb4a4ad7cc58b51bdc25aaa1692c32759fe2b2e4` |
 | `views/group-v511.js` | 2869 | `aa64eaea6c06c72fc8152234824bdd94ed49bd48d7decb1edabb46b555b05b53` |
-| `views/group-v512.js` | 3425 | `c5be22a17a763ec40bda2c0fd46bca15bc1830ed01bb224b28bd1621b638934f` |
+| `views/group-v512.js` | 3425 | `5ddb05109d47bf836d559d5edb3546c45b8cc4c2843cc5763bb1f8d239703472` |
 | `views/group-v513.js` | 3060 | `9d50c7da6701484524af418eaf7b5dfc4b4e645e38116fb32b3295895bec60ff` |
+| `views/group-v514.js` | 3095 | `70b395059a99e797fae2ead09b6c4ef802fc7e7a8f0166716d3249308c53afa9` |
 | `views/group-v6.js` | 5707 | `425918decb48cd9efac9fc5590ac8970a54c03c3b0df056fb99c9a22ff8dd1b2` |
 | `views/group-v63.js` | 14377 | `962d84b97e82bc39635801da79ecaa93fc0b501b5988b7d321b0f1f630497fab` |
 | `views/group-v7.js` | 15113 | `d480a5b34adfd035507dd4313e12462c47c949aeee155b253c8a2f9596839d05` |
