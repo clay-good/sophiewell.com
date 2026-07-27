@@ -6,6 +6,18 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v510 — Banff grade (acute T cell-mediated rejection) tile, 1359 → 1360)
+
+- New `banff-tcmr` tile (group G): the Banff category of acute T cell-mediated rejection in a kidney allograft
+  biopsy, read from the three lesion scores the pathologist assigned. Any intimal arteritis grades the biopsy
+  on its own (**v1** → IIA, **v2** → IIB, **v3** → III), overriding an i/t pair that would otherwise read as a
+  grade I. Without arteritis: tubulitis with only minor inflammation, or **i2/i3 with t1** only, is
+  **borderline**; **i2/i3 with t2** is **IA** and with **t3** is **IB**; tubulitis-free inflammation is not
+  graded. Transplant pathology was a whole-concept gap — `banff`, `tcmr`, `tubulitis`, `allograft`, and
+  `kidney transplant` were all zero-hit. The copy states the three ways the category could mislead: it does
+  not cover antibody-mediated rejection, chronic active rejection is scored on different lesions, and intimal
+  arteritis is not specific to rejection. See [spec-v510](docs/spec-v510.md).
+
 ### Added (spec-v509 — Sunnybrook Facial Grading System tile, 1358 → 1359)
 
 - New `sunnybrook-facial` tile (group G): the three-axis quantitative grading of facial nerve function, and the

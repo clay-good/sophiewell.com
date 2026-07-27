@@ -602,6 +602,8 @@
     { "phrases": ["vhi", "vhi 10", "voice handicap index", "voice handicap score", "dysphonia questionnaire", "hoarseness questionnaire"],
       "tile": "vhi10", "audience": "clinicians" },
     { "phrases": ["sunnybrook", "sunnybrook facial grading", "sunnybrook composite score", "facial grading system", "facial nerve grading score", "facial palsy composite score", "synkinesis score"],
-      "tile": "sunnybrook-facial", "audience": "clinicians" }
+      "tile": "sunnybrook-facial", "audience": "clinicians" },
+    { "phrases": ["banff", "banff grade", "banff classification", "t cell mediated rejection grade", "acute cellular rejection grade", "kidney allograft rejection grade", "tubulitis grade"],
+      "tile": "banff-tcmr", "audience": "clinicians" }
   ]
 }

@@ -484,6 +484,7 @@ import * as metavirActivityV505 from '../../lib/metavir-activity-v505.js';
 import * as jergerTympanogramV506 from '../../lib/jerger-tympanogram-v506.js';
 import * as vhi10V508 from '../../lib/vhi10-v508.js';
 import * as sunnybrookFacialV509 from '../../lib/sunnybrook-facial-v509.js';
+import * as banffTcmrV510 from '../../lib/banff-tcmr-v510.js';
 import * as tbTesting from '../../lib/tb-testing.js';
 
 const MODULES = {
@@ -913,6 +914,7 @@ const MODULES = {
   'jerger-tympanogram-v506.js': jergerTympanogramV506,
   'vhi10-v508.js': vhi10V508,
   'sunnybrook-facial-v509.js': sunnybrookFacialV509,
+  'banff-tcmr-v510.js': banffTcmrV510,
   'tb-testing.js': tbTesting,
 };
 
