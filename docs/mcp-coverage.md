@@ -1502,6 +1502,31 @@ round-trip both pass, without the phantom "2". Adapter appended to the existing
 rate to a target PaCO2. Brings the exposed total to **1072 calculators across 197
 modules**.
 
+## Three-hundred-forty-seventh wave — the Pediatric Crohn's Disease Activity Index in lib/pcdai-v522.js (+1)
+
+`pcdai` (spec-v522) scores the eleven PCDAI items into a total of 0-100 and bands the activity. The eight
+clinical `fields` are **generated** from the lib's exported `PCDAI_ITEMS`, so each label carries that item's
+own three option texts. Their enum values are `'0'`, `'5'`, `'10'` — the **point values**, not a 0/1/2
+ordinal — because the PCDAI's weights are not uniform and a 0/1/2 ordinal would invite a caller to send a 2
+meaning "severe" and have it scored as two points instead of ten.
+
+**The three labs are numbers, not pre-scored enums, and that is deliberate.** The lib applies the published
+thresholds itself, which keeps the two facts a caller most often gets wrong out of the caller's hands.
+**Hematocrit has no single cut** — the threshold depends on age and sex, so `pcd-hctBand` is a **required**
+enum generated from the lib's `HCT_BANDS`, with every band's three thresholds spelled out in its label; a
+hematocrit of 34 is 0 points in a girl of 12 and 2.5 in a boy of 12, and asking for the raw value plus the
+band is the only way an agent gets that right. **Albumin scores 0/5/10 while hematocrit and ESR score
+0/2.5/5**, so publishing the labs as pre-scored enums would hand a caller three "lab" fields that look
+interchangeable and are not; the albumin field's label says so outright. The result returns the per-lab
+points alongside the total so a caller can show its work. The example scores 35 (moderate to severe); that
+number and the activity band are carried by the result band, so it flows through the default `makeToArgs`
+with no custom toArgs. New adapter module registered in `mcp/catalog.js`; its golden probe ("pediatric crohn
+disease activity index") is promoted now that the tile is in the MCP-exposed registry. Brings the exposed
+total to **1309 calculators across 425 modules**.
+
+### lib/pcdai-v522.js
+- `pcdai`
+
 ## Three-hundred-forty-sixth wave — the Primary Care PTSD Screen for DSM-5 in lib/pc-ptsd5-v521.js (+1)
 
 `pc-ptsd5` (spec-v521) sums the five PC-PTSD-5 items into a total of 0-5 and reports it against both
@@ -6407,6 +6432,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/pc-ptsd5-v521.js
 - `pc-ptsd5`
+
+### lib/pcdai-v522.js
+- `pcdai`
 
 ### lib/tb-testing.js
 - `tb-testing`
