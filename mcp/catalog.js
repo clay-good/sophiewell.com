@@ -420,6 +420,7 @@ import metavirActivityV505 from './adapters/metavir-activity-v505.js';
 import jergerTympanogramV506 from './adapters/jerger-tympanogram-v506.js';
 import vhi10V508 from './adapters/vhi10-v508.js';
 import sunnybrookFacialV509 from './adapters/sunnybrook-facial-v509.js';
+import banffTcmrV510 from './adapters/banff-tcmr-v510.js';
 import tbTesting from './adapters/tb-testing.js';
 import labInterpret from './adapters/lab-interpret.js';
 import decisionRulesV258 from './adapters/decision-rules-v258.js';
@@ -834,6 +835,7 @@ const ADAPTER_MODULES = [
   ['jerger-tympanogram-v506', jergerTympanogramV506],
   ['vhi10-v508', vhi10V508],
   ['sunnybrook-facial-v509', sunnybrookFacialV509],
+  ['banff-tcmr-v510', banffTcmrV510],
   ['tb-testing', tbTesting],
   ['lab-interpret', labInterpret],
   ['decision-rules-v258', decisionRulesV258],

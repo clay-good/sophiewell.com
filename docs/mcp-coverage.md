@@ -1502,6 +1502,23 @@ round-trip both pass, without the phantom "2". Adapter appended to the existing
 rate to a target PaCO2. Brings the exposed total to **1072 calculators across 197
 modules**.
 
+## Three-hundred-thirty-fifth wave — the Banff acute T cell-mediated rejection grade in lib/banff-tcmr-v510.js (+1)
+
+`banff-tcmr` (spec-v510) reads the Banff category of acute T cell-mediated rejection from the three lesion
+scores a pathologist has already assigned: interstitial inflammation (i), tubulitis (t), and intimal arteritis
+(v). The adapter's `fields` array is **generated** from the lib's exported `LESIONS`, so the renderer, the
+adapter labels, and the tests all share one source of wording. Each score is an enum (`kind: 'enum'`, values
+`'0'`-`'3'`) on dom keys `bf-i`, `bf-t`, `bf-v` mapping to args `i`, `t`, `v`; all three are in `META.example`,
+so all three are required for every caller — correct here, because the category is a **joint** rule over the
+three scores and a missing one changes the answer (a caller who omits `v` cannot be told IIA). The example is
+i2 t2 v0, grade IA; the category and the lesion scores are carried by the result band, so it flows through the
+default `makeToArgs` with no custom toArgs. New adapter module registered in `mcp/catalog.js`; its golden probe
+("banff grade t cell mediated rejection tubulitis") is promoted now that the tile is in the MCP-exposed
+registry. Brings the exposed total to **1297 calculators across 413 modules**.
+
+### lib/banff-tcmr-v510.js
+- `banff-tcmr`
+
 ## Three-hundred-thirty-fourth wave — the Sunnybrook Facial Grading System in lib/sunnybrook-facial-v509.js (+1)
 
 `sunnybrook-facial` (spec-v509) grades facial nerve function on three axes and subtracts: resting symmetry
@@ -6154,6 +6171,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/sunnybrook-facial-v509.js
 - `sunnybrook-facial`
+
+### lib/banff-tcmr-v510.js
+- `banff-tcmr`
 
 ### lib/tb-testing.js
 - `tb-testing`
