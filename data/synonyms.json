@@ -620,6 +620,8 @@
     { "phrases": ["pipp", "premature infant pain profile", "preterm procedural pain score", "neonatal procedural pain score"],
       "tile": "pipp", "audience": "clinicians" },
     { "phrases": ["c act", "childhood asthma control test", "childhood act", "pediatric asthma control score", "kids asthma control score"],
-      "tile": "childhood-act", "audience": "clinicians" }
+      "tile": "childhood-act", "audience": "clinicians" },
+    { "phrases": ["eckardt", "eckardt score", "achalasia symptom score", "achalasia severity score", "achalasia stage"],
+      "tile": "eckardt", "audience": "clinicians" }
   ]
 }

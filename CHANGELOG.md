@@ -6,6 +6,19 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v519 — Eckardt symptom score (achalasia) tile, 1368 → 1369)
+
+- New `eckardt` tile (group G): the four-symptom achalasia score, **total 0-12** with stages **0/I/II/III**.
+  Achalasia was a whole-concept gap — `achalasia`, `eckardt`, `gastroparesis`, and `demeester` were all
+  zero-hit. The catalog already reads the esophagus through what an endoscope or fluoroscope *sees*
+  (`la-esophagitis`, `savary-miller`, `prague`, `pas-swallow`); this is the axis none of them cover: what the
+  patient **reports**, which is how achalasia treatment is followed over time. The four items are **not four
+  of the same question** — dysphagia, regurgitation, and retrosternal pain are scored by *frequency*, while
+  weight loss is scored by *amount in kilograms* — so each item carries its own option wording and a test
+  asserts the weight-loss options never read as a frequency. **0-1** is stage 0, **2-3** stage I, **4-6**
+  stage II, **above 6** stage III; the total and the stage are different numbers (a total of 2 is stage I)
+  and both are labeled. See [spec-v519](docs/spec-v519.md).
+
 ### Added (spec-v518 — Childhood Asthma Control Test (c-ACT) tile, 1367 → 1368)
 
 - New `childhood-act` tile (group G): the asthma control questionnaire for children roughly 4-11, and the
