@@ -6,6 +6,16 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v513 — ASRS v1.1 Part A (adult ADHD screener) tile, 1362 → 1363)
+
+- New `asrs` tile (group G): the six-item ASRS v1.1 Part A adult ADHD screener. Adult ADHD was a whole-concept
+  gap — `asrs`, `adhd`, `attention deficit`, `conners`, and `vanderbilt` were all zero-hit. **The answers are
+  not summed.** Every item uses the same 0-4 frequency scale, but items **1-3** count toward the screen at
+  *sometimes* or more while items **4-6** count only at *often* or more, and **4 or more** counting answers is
+  a positive screen. Answering "sometimes" to all six gives a raw total of 12 of 24 and a **negative** screen;
+  the tile shows the raw total but labels it as not the screen so the two cannot be confused, and each item's
+  own threshold is printed in its label. See [spec-v513](docs/spec-v513.md).
+
 ### Added (spec-v512 — Vaizey (St Marks) fecal incontinence score tile, 1361 → 1362)
 
 - New `vaizey` tile (group G): the seven-row St Marks fecal incontinence score, and the companion the catalog

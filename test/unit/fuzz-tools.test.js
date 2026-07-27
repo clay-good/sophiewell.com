@@ -487,6 +487,7 @@ import * as sunnybrookFacialV509 from '../../lib/sunnybrook-facial-v509.js';
 import * as banffTcmrV510 from '../../lib/banff-tcmr-v510.js';
 import * as crafftV511 from '../../lib/crafft-v511.js';
 import * as vaizeyV512 from '../../lib/vaizey-v512.js';
+import * as asrsV513 from '../../lib/asrs-v513.js';
 import * as tbTesting from '../../lib/tb-testing.js';
 
 const MODULES = {
@@ -919,6 +920,7 @@ const MODULES = {
   'banff-tcmr-v510.js': banffTcmrV510,
   'crafft-v511.js': crafftV511,
   'vaizey-v512.js': vaizeyV512,
+  'asrs-v513.js': asrsV513,
   'tb-testing.js': tbTesting,
 };
 
