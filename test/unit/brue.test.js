@@ -76,7 +76,7 @@ test('lower-risk refuses the discharge-order reading', () => {
 test('higher-risk refuses the diagnosis and admission-order readings', () => {
   const r = allMet({ noConcerningExam: 'no' });
   assert.match(r.band, /not a diagnosis and not an admission order/);
-  assert.match(r.band, /needs individualised assessment/);
+  assert.match(r.band, /needs individualized assessment/);
 });
 
 test('the copy names the febrile-infant distinction and child abuse', () => {

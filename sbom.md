@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `9342a99523cd4da6`
-Generated: 2026-07-28T03:24:59.505Z
+Build ID: `ef2dfc44a7897411`
+Generated: 2026-07-28T12:24:17.445Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=20.18.1 <21, npm >=10.0.0
@@ -85,7 +85,7 @@ downloads is committed in this repository and is hashed below.
 | `lib/bromage-scale-v467.js` | 3093 | `9247f0b4421fca3c360e3fd27504c23e02ca612b34cc2b33daea168762c0ce64` |
 | `lib/brooker-v452.js` | 3050 | `a04239b3721fad434f4c86321e7bcf34c3f1e149e2eeb079339b026f452931db` |
 | `lib/brouet-cryoglobulinemia-v468.js` | 3542 | `0b5ebe9c5d82f90608a39ce469ae7b5a3eea1803fb65fc9a1fdf01c9422d83ee` |
-| `lib/brue-v547.js` | 10841 | `344e40f291b650000355cfd07807c2a011c91ae63dc104f6ed0feae4e1eeec6f` |
+| `lib/brue-v547.js` | 10837 | `904e4ea8cb334c4b31070e7ef84d0998391f1a323de5f5657832ba20867c3f0a` |
 | `lib/c-rads-v371.js` | 4340 | `b28f01035c470be8e300d875c731c1d01d8e8fc0c5c346e2b4eef96b61a046da` |
 | `lib/cad-rads-v372.js` | 3973 | `fede4415e7d14df4bd4f0e205d2522389a9fb54289f5e2d8f82fea304da9ac29` |
 | `lib/capd-v525.js` | 5930 | `2a3f1a910941fc28e5609f269b8c15957b595d9780d112230a492b1981e3c974` |

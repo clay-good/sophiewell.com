@@ -8,7 +8,7 @@
 `brue`, `tieder`, `apparent life threatening`, and `alte` were all zero-hit.
 
 **A different presenting complaint from the existing febrile-infant rules.** Rochester, Philadelphia, Boston
-and Step-by-Step all stratify a **fever**. BRUE stratifies an apneic or colour-change event in an infant who
+and Step-by-Step all stratify a **fever**. BRUE stratifies an apneic or color-change event in an infant who
 is **afebrile and well-appearing** by the time they are seen. Reaching for a febrile-infant rule here applies
 a tool to a patient it was never derived in.
 
@@ -60,9 +60,9 @@ discharge order.** The classification exists to identify infants in whom extensi
 unlikely to help, so they can be *spared* them — it does not establish that nothing is wrong, and shared
 decision-making with the family is part of the guideline rather than an optional extra. **"Higher-risk" is
 not a diagnosis and not an admission order**; it means the lower-risk pathway does not apply and the infant
-needs individualised assessment. The tile does not diagnose a cause, does not recommend or exclude any
+needs individualized assessment. The tile does not diagnose a cause, does not recommend or exclude any
 investigation, and **cannot detect** the concerning historical or examination features that criteria 6 and 7
-turn on — those are clinical judgements it takes as given ([spec-v11](spec-v11.md) §5.3). **Child abuse** is
+turn on — those are clinical judgments it takes as given ([spec-v11](spec-v11.md) §5.3). **Child abuse** is
 among the causes an appropriate history and examination must consider.
 
 ## Duplicate check

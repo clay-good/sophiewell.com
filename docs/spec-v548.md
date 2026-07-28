@@ -38,7 +38,7 @@ misattribute the mitral cut points, so **each position carries its own citation*
 **The aortic severe boundary is disclosed rather than silently picked.** Heart 2006 defines severe as
 **below** 0.65, so exactly 0.65 is moderate; later guideline-aligned tables define it as **0.65 or below**.
 The tile follows its own cited source and says so *at the boundary*, staying quiet elsewhere — a test asserts
-both halves of that behaviour.
+both halves of that behavior.
 
 **Obesity-specific aortic thresholds** (proposed for BMI ≥30) are deliberately **not implemented**: they
 appear in a single source, and a lower threshold applied on one source's authority would **downgrade real
@@ -63,7 +63,7 @@ overstates the opening ([spec-v11](spec-v11.md) §5.3).
 ## Duplicate check
 
 Per the procedure in [spec-v508](spec-v508.md): the acronym (`eoai`), the first author (`pibarot`), the
-concept (`effective orifice`, `prosthesis`, `mismatch`), and the native-valve neighbour (`gorlin`) — each
+concept (`effective orifice`, `prosthesis`, `mismatch`), and the native-valve neighbor (`gorlin`) — each
 against **both** `corpus.json` and `app.js` (and `lib/meta.js`), plus a `test/unit/` scan. The non-zero hits
 were read in context and are the unrelated prose and the Gorlin tile named above.
 
