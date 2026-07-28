@@ -664,6 +664,8 @@
     { "phrases": ["isl lymphedema", "lymphedema stage", "lymphedema staging", "lymphoedema severity grade", "swollen limb lymphatic stage"],
       "tile": "isl-lymphedema", "audience": "clinicians" },
     { "phrases": ["ishlt grade", "cardiac allograft rejection grade", "heart transplant rejection biopsy grade", "acute cellular rejection heart"],
-      "tile": "ishlt-rejection", "audience": "clinicians" }
+      "tile": "ishlt-rejection", "audience": "clinicians" },
+    { "phrases": ["rachs", "rachs 1", "congenital heart surgery risk category", "pediatric cardiac surgery risk adjustment"],
+      "tile": "rachs1", "audience": "clinicians" }
   ]
 }

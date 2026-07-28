@@ -1574,6 +1574,37 @@ Brings the exposed total to **1314 calculators across 430 modules**.
 ### lib/wayne-index-v527.js
 - `wayne-index`
 
+## Three-hundred-sixty-sixth wave — RACHS-1 in lib/rachs1-v541.js (+1)
+
+`rachs1` (spec-v541) returns the RACHS-1 category with its derivation-cohort mortality and the separate risk
+modifiers.
+
+**The tool returns no mortality for category 5, and the summary says why.** The derivation published figures
+for categories 1, 2, 3, 4 and 6 and explicitly **none** for 5, because there were too few cases — yet
+category 5 sits numerically between two categories that *do* have figures (19.4% and 47.7%). That is exactly
+the shape most likely to make an agent interpolate: "it's between 4 and 6, so call it thirty-something
+percent". The result returns `mortality: null` with a `mortalityPublished` boolean and the ordering the panel
+actually asserted (higher than 4, lower than 6), and nothing else.
+
+**The modifiers are adjusted odds ratios and must not be added to anything.** Age band, prematurity, and
+major non-cardiac structural anomaly each *multiply* risk within the model. An agent treating them as points,
+or reporting "category 4 plus prematurity equals category 5", would be inventing a scale — so they come back
+as a separate `modifiers` list, never folded into the category.
+
+The category comes from the **procedure**, so the field label carries representative procedures per category;
+they are explicitly **representative, not exhaustive**, and an unlisted operation should be looked up rather
+than matched to the nearest-sounding example. Every band labels the mortality figures **historical** — they
+come from a cohort analysed for a 2002 publication and outcomes have improved substantially since, so
+reporting "19.4 percent" to a contemporary question would materially overstate current risk. And the framing
+that matters most: this is a risk-adjustment tool for comparing **programs and case-mixes**, never designed
+to predict one child's outcome, because "RACHS-1 category 6" is exactly the phrase an agent might otherwise
+turn into a prognosis for a family. New adapter module registered in `mcp/catalog.js`; its golden probe
+("rachs congenital heart surgery risk category") is promoted now that the tile is in the MCP-exposed
+registry. Brings the exposed total to **1328 calculators across 444 modules**.
+
+### lib/rachs1-v541.js
+- `rachs1`
+
 ## Three-hundred-sixty-fifth wave — the ISHLT cardiac rejection grade in lib/ishlt-rejection-v540.js (+1)
 
 `ishlt-rejection` (spec-v540) maps an endomyocardial biopsy appearance to one of the four revised ISHLT
@@ -6959,6 +6990,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/ishlt-rejection-v540.js
 - `ishlt-rejection`
+
+### lib/rachs1-v541.js
+- `rachs1`
 
 ### lib/tb-testing.js
 - `tb-testing`

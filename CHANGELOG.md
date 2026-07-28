@@ -6,6 +6,22 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v541 — RACHS-1 (congenital heart surgery risk category) tile, 1390 → 1391)
+
+- New `rachs1` tile (group G): the six consensus risk categories for congenital heart surgery, with
+  derivation-cohort in-hospital mortality of 0.4 / 3.8 / 8.5 / 19.4 / **none** / 47.7 percent. `rachs`,
+  `jenkins`, `aristotle`, and `congenital heart surgery` were all zero-hit; it is a **population gap** next
+  to `euroscore`, which covers adult *acquired* cardiac surgery. The category comes from the **procedure**,
+  not the patient. **Category 5 has no published mortality and the tile returns none** — the derivation had
+  too few cases, and because category 5 sits numerically *between* two categories that do have figures, the
+  invented "thirty-something percent" is an easy inference; a test verifies no percentage can appear in a
+  category 5 result. **The modifiers are adjusted odds ratios, not points:** age ≤30 days ~3.0, 31 days-1
+  year ~1.9, prematurity ~1.8, major non-cardiac anomaly ~1.8 — they multiply risk and never change the
+  category. The mortality figures are labeled **historical** (2002 cohort; outcomes have improved
+  substantially since), and the procedure lists **representative, not exhaustive**. It is a risk-adjustment
+  tool for comparing programs and case-mixes, **not** a prediction for an individual child or a basis for
+  counselling a family. See [spec-v541](docs/spec-v541.md).
+
 ### Added (spec-v540 — ISHLT grade (cardiac acute cellular rejection) tile, 1389 → 1390)
 
 - New `ishlt-rejection` tile (group G): the four revised ISHLT grades for acute cellular rejection in a

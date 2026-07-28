@@ -515,6 +515,7 @@ import * as alsfrsRV537 from '../../lib/alsfrs-r-v537.js';
 import * as neosV538 from '../../lib/neos-v538.js';
 import * as islLymphedemaV539 from '../../lib/isl-lymphedema-v539.js';
 import * as ishltRejectionV540 from '../../lib/ishlt-rejection-v540.js';
+import * as rachs1V541 from '../../lib/rachs1-v541.js';
 import * as tbTesting from '../../lib/tb-testing.js';
 
 const MODULES = {
@@ -975,6 +976,7 @@ const MODULES = {
   'neos-v538.js': neosV538,
   'isl-lymphedema-v539.js': islLymphedemaV539,
   'ishlt-rejection-v540.js': ishltRejectionV540,
+  'rachs1-v541.js': rachs1V541,
   'tb-testing.js': tbTesting,
 };
 
