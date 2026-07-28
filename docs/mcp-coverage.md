@@ -1574,6 +1574,40 @@ Brings the exposed total to **1314 calculators across 430 modules**.
 ### lib/wayne-index-v527.js
 - `wayne-index`
 
+## Three-hundred-ninety-fourth wave — GAPP in lib/gapp-v569.js (+1)
+
+`gapp` (spec-v569) grades the metastatic potential of a resected pheochromocytoma or paraganglioma, 0-10. A
+**revised-successor gap**: GAPP replaced an earlier scaled score by dropping features that concorded poorly
+between observers and adding Ki-67 and a biochemical phenotype, and neither instrument was in the catalog.
+
+**The two histological-pattern features add; they are not alternatives — and the arithmetic proves it.** The
+published table lists zellballen 0, large irregular cell nest 1 and pseudorosette 1 as though one is chosen.
+But every other category's maximum summed with a *single* pattern point gives **9**, while the same table
+states a maximum of **10**. The only reading that reaches 10 is that both features can be present at once,
+and an independent summary table lists the pattern maximum as 2. Treating them as mutually exclusive
+silently caps the score at 9 and makes a maximum-grade tumor unreachable. A test asserts both the reachable
+10 and the counterfactual ceiling of 9.
+
+**The catecholamine term is non-monotonic and looks like a bug.** A **non-functioning** tumor scores 0 — the
+same as adrenergic, and *less* than noradrenergic — so a hormonally silent tumor is treated as low risk on
+this axis although non-functioning disease is not clinically benign. That is the published ordering and is
+not rearranged.
+
+**A biochemical variable sits inside a histopathology grade**, with its definition in a table footnote: the
+catecholamine type comes from 24-hour urine fractionated metanephrine and normetanephrine, not the slide, so
+an agent given only a pathology report cannot supply it.
+
+**SDHB immunohistochemistry is not part of GAPP** — a modified version adds it and is separate and
+unvalidated. And **no grade excludes metastasis**: these tumors metastasize years to decades after
+resection, well-differentiated ones included, so a low grade is not a reason to stop surveillance — the
+decision this score would most damagingly be misused to settle. New adapter module registered in
+`mcp/catalog.js`; its golden probe ("gapp grade pheochromocytoma paraganglioma metastatic") is promoted now
+that the tile is in the MCP-exposed registry. Brings the exposed total to **1356 calculators across 472
+modules**.
+
+### lib/gapp-v569.js
+- `gapp`
+
 ## Three-hundred-ninety-third wave — the Cleveland Clinic (Thakar) score in lib/thakar-aki-v568.js (+1)
 
 `thakar-aki` (spec-v568) estimates the preoperative risk of acute renal failure **requiring dialysis** after
@@ -7935,6 +7969,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/thakar-aki-v568.js
 - `thakar-aki`
+
+### lib/gapp-v569.js
+- `gapp`
 
 ### lib/tb-testing.js
 - `tb-testing`

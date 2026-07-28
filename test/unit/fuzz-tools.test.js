@@ -543,6 +543,7 @@ import * as lupusNephritisIndicesV565 from '../../lib/lupus-nephritis-indices-v5
 import * as nihCpsiV566 from '../../lib/nih-cpsi-v566.js';
 import * as igcccgV567 from '../../lib/igcccg-v567.js';
 import * as thakarAkiV568 from '../../lib/thakar-aki-v568.js';
+import * as gappV569 from '../../lib/gapp-v569.js';
 import * as tbTesting from '../../lib/tb-testing.js';
 
 const MODULES = {
@@ -1031,6 +1032,7 @@ const MODULES = {
   'nih-cpsi-v566.js': nihCpsiV566,
   'igcccg-v567.js': igcccgV567,
   'thakar-aki-v568.js': thakarAkiV568,
+  'gapp-v569.js': gappV569,
   'tb-testing.js': tbTesting,
 };
 

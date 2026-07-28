@@ -601,6 +601,7 @@ const PROBES = [
   ['chronic prostatitis symptom index cpsi', ['nih-cpsi']],
   ['igcccg prognostic group germ cell tumor', ['igcccg']],
   ['thakar cleveland clinic renal failure cardiac surgery', ['thakar-aki']],
+  ['gapp grade pheochromocytoma paraganglioma metastatic', ['gapp']],
 ];
 
 test(`every golden probe routes an acceptable tile into the top ${TOP_N}`, () => {

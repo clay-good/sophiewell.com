@@ -720,6 +720,8 @@
     { "phrases": ["igcccg", "germ cell prognostic group", "testicular cancer risk group", "seminoma nonseminoma prognosis"],
       "tile": "igcccg", "audience": "clinicians" },
     { "phrases": ["thakar score", "cleveland clinic score", "renal failure after cardiac surgery", "dialysis risk cardiac surgery"],
-      "tile": "thakar-aki", "audience": "clinicians" }
+      "tile": "thakar-aki", "audience": "clinicians" },
+    { "phrases": ["gapp score", "pheochromocytoma grading", "paraganglioma metastatic potential", "adrenal tumor grade"],
+      "tile": "gapp", "audience": "clinicians" }
   ]
 }

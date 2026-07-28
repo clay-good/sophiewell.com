@@ -479,6 +479,7 @@ import lupusNephritisIndicesV565 from './adapters/lupus-nephritis-indices-v565.j
 import nihCpsiV566 from './adapters/nih-cpsi-v566.js';
 import igcccgV567 from './adapters/igcccg-v567.js';
 import thakarAkiV568 from './adapters/thakar-aki-v568.js';
+import gappV569 from './adapters/gapp-v569.js';
 import tbTesting from './adapters/tb-testing.js';
 import labInterpret from './adapters/lab-interpret.js';
 import decisionRulesV258 from './adapters/decision-rules-v258.js';
@@ -952,6 +953,7 @@ const ADAPTER_MODULES = [
   ['nih-cpsi-v566', nihCpsiV566],
   ['igcccg-v567', igcccgV567],
   ['thakar-aki-v568', thakarAkiV568],
+  ['gapp-v569', gappV569],
   ['tb-testing', tbTesting],
   ['lab-interpret', labInterpret],
   ['decision-rules-v258', decisionRulesV258],
