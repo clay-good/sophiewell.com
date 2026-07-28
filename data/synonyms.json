@@ -660,6 +660,8 @@
     { "phrases": ["alsfrs", "alsfrs r", "als functional rating scale", "motor neuron disease function score", "amyotrophic lateral sclerosis function scale"],
       "tile": "alsfrs-r", "audience": "clinicians" },
     { "phrases": ["neos score", "anti nmdar encephalitis outcome", "nmdar encephalitis prognosis", "autoimmune encephalitis outcome score"],
-      "tile": "neos", "audience": "clinicians" }
+      "tile": "neos", "audience": "clinicians" },
+    { "phrases": ["isl lymphedema", "lymphedema stage", "lymphedema staging", "lymphoedema severity grade", "swollen limb lymphatic stage"],
+      "tile": "isl-lymphedema", "audience": "clinicians" }
   ]
 }

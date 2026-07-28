@@ -1574,6 +1574,33 @@ Brings the exposed total to **1314 calculators across 430 modules**.
 ### lib/wayne-index-v527.js
 - `wayne-index`
 
+## Three-hundred-sixty-fourth wave — the ISL lymphedema staging in lib/isl-lymphedema-v539.js (+1)
+
+`isl-lymphedema` (spec-v539) returns the ISL stage and the volume-based severity grade together.
+
+**The tool takes two axes and refuses to collapse them.** Stage describes what the tissue has become;
+severity grades how much volume the limb has gained. "Stage III lymphedema" and "severe lymphedema" are
+different statements that get used interchangeably, and an agent handed only one must not report the other.
+Both are required, and both come back separately.
+
+**The stage enum's labels carry the pitting behavior, which is non-monotonic.** Pitting rises from stage I to
+stage II and then **falls away again** through late stage II to stage III as fibrosis replaces fluid. An
+agent treating "does it pit?" as a severity dial reads stage III backwards and would report an advanced
+fibrotic limb as improved — so the advanced stages say "that is fibrosis, not improvement" in their own text.
+
+**`isl-bilateral` is required, and it is not a formality.** The severity grade is an **inter-limb**
+comparison, so when both limbs are affected the difference between them understates the disease. An agent
+that omitted it would report a falsely reassuring grade on exactly the patients with the most disease; when
+it is yes, the band carries the caveat and the result exposes a `bilateral` flag. The severity enum also
+includes `none` for an excess at or below 5 percent, because subclinical lymphedema is measurable from about
+3 to 5 percent — below the minimal grade — so without that option an agent would be forced to call a
+measurably abnormal limb "minimal". New adapter module registered in `mcp/catalog.js`; its golden probe
+("isl lymphedema stage swollen limb") is promoted now that the tile is in the MCP-exposed registry. Brings
+the exposed total to **1326 calculators across 442 modules**.
+
+### lib/isl-lymphedema-v539.js
+- `isl-lymphedema`
+
 ## Three-hundred-sixty-third wave — the NEOS score in lib/neos-v538.js (+1)
 
 `neos` (spec-v538) counts the five NEOS predictors and returns the published probability of poor one-year
@@ -6898,6 +6925,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/neos-v538.js
 - `neos`
+
+### lib/isl-lymphedema-v539.js
+- `isl-lymphedema`
 
 ### lib/tb-testing.js
 - `tb-testing`

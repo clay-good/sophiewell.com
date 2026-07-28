@@ -6,6 +6,23 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v539 — ISL lymphedema staging (stage and volume severity) tile, 1388 → 1389)
+
+- New `isl-lymphedema` tile (group G): the International Society of Lymphology stage (0, I, II, late II, III)
+  **plus the separate volume-based severity grade**. Whole-concept gap — `lymphedema`, `isl`,
+  `elephantiasis`, `lymphoscintigraphy`, and `stemmer` were all zero-hit. **Stage and severity are two
+  separate axes and the tile refuses to collapse them:** the stage describes what the tissue has become,
+  severity how much volume the limb has gained, and "stage III lymphedema" and "severe lymphedema" are
+  different statements. **Pitting is non-monotonic, which is the trap** — it rises from stage I to stage II
+  then *falls away again* through late stage II to stage III, so the absence of pitting in an advanced limb
+  means fibrosis has replaced fluid, not improvement; both advanced stages say so and a test asserts it.
+  **Bilateral swelling is required input**, because the severity grade is an inter-limb comparison that
+  understates disease when both limbs are affected. A `none` grade exists because subclinical lymphedema is
+  measurable from 3-5%, *below* the minimal grade. It describes a limb: it does not diagnose lymphedema or
+  distinguish it from venous disease, heart or kidney failure, thrombosis, lipedema, or infection — and an
+  acutely painful, red, or hot limb needs assessment for cellulitis or thrombosis rather than staging. See
+  [spec-v539](docs/spec-v539.md).
+
 ### Added (spec-v538 — NEOS score (anti-NMDAR encephalitis one-year status) tile, 1387 → 1388)
 
 - New `neos` tile (group G): the five-predictor prognostic score for anti-NMDA receptor encephalitis —

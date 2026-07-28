@@ -571,6 +571,7 @@ const PROBES = [
   ['hardman index ruptured aortic aneurysm', ['hardman']],
   ['alsfrs r als functional rating scale', ['alsfrs-r']],
   ['neos score nmdar encephalitis outcome', ['neos']],
+  ['isl lymphedema stage swollen limb', ['isl-lymphedema']],
 ];
 
 test(`every golden probe routes an acceptable tile into the top ${TOP_N}`, () => {
