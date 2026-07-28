@@ -1574,6 +1574,36 @@ Brings the exposed total to **1314 calculators across 430 modules**.
 ### lib/wayne-index-v527.js
 - `wayne-index`
 
+## Three-hundred-fifty-seventh wave — the Columbia FSGS classification in lib/columbia-fsgs-v532.js (+1)
+
+`columbia-fsgs` (spec-v532) takes the six biopsy findings and applies the Columbia precedence order to return
+one of five mutually exclusive variants.
+
+**The tool takes findings and returns a variant — it does not accept a variant.** That is the design point.
+An agent that already believes it knows the variant has nothing to gain here; the value is entirely in the
+precedence order, which is what gets applied wrong by hand. Publishing a "which variant is it?" enum would
+have inverted the tool into a lookup table and thrown away the only thing it does.
+
+**The `anyPerihilarSclerosis` field is the one that matters most, and its label says so.** It is not a
+finding that selects a variant — it is a **veto** on the tip variant, and it fires even though tip sits
+*above* perihilar in the precedence order. An agent reasoning "tip outranks perihilar, so a tip lesion wins"
+gets the wrong variant on exactly the biopsies where the distinction is real. The result exposes a
+`tipVetoed` flag so a caller can see the veto fired rather than silently receiving a different variant than
+it expected.
+
+All six are required, and a "no" is meaningful: the classification is a sequence of exclusions, so an omitted
+finding is not the same as an absent one. A biopsy with none of the six defining lesions returns **no
+variant** rather than defaulting to NOS. The summary states in the strongest terms the copy allows that this
+does **not** distinguish primary from secondary FSGS — that distinction decides whether immunosuppression is
+considered, it is made from clinical context and electron microscopy rather than from these five variants,
+and it is the single most likely wrong inference an agent would draw from a variant name. New adapter module
+registered in `mcp/catalog.js`; its golden probe ("fsgs biopsy variant columbia classification") is promoted
+now that the tile is in the MCP-exposed registry. Brings the exposed total to **1319 calculators across 435
+modules**.
+
+### lib/columbia-fsgs-v532.js
+- `columbia-fsgs`
+
 ## Three-hundred-fifty-sixth wave — the EHIT classification in lib/ehit-v531.js (+1)
 
 `ehit` (spec-v531) maps an ultrasound finding after endovenous thermal ablation to one of the five EHIT
@@ -6676,6 +6706,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/ehit-v531.js
 - `ehit`
+
+### lib/columbia-fsgs-v532.js
+- `columbia-fsgs`
 
 ### lib/tb-testing.js
 - `tb-testing`
