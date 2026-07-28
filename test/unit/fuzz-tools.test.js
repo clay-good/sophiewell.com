@@ -521,6 +521,7 @@ import * as saveScoreV543 from '../../lib/save-score-v543.js';
 import * as nemsV544 from '../../lib/nems-v544.js';
 import * as palmCoeinV545 from '../../lib/palm-coein-v545.js';
 import * as rasrmStageV546 from '../../lib/rasrm-stage-v546.js';
+import * as brueV547 from '../../lib/brue-v547.js';
 import * as tbTesting from '../../lib/tb-testing.js';
 
 const MODULES = {
@@ -987,6 +988,7 @@ const MODULES = {
   'nems-v544.js': nemsV544,
   'palm-coein-v545.js': palmCoeinV545,
   'rasrm-stage-v546.js': rasrmStageV546,
+  'brue-v547.js': brueV547,
   'tb-testing.js': tbTesting,
 };
 

@@ -1574,6 +1574,38 @@ Brings the exposed total to **1314 calculators across 430 modules**.
 ### lib/wayne-index-v527.js
 - `wayne-index`
 
+## Three-hundred-seventy-second wave — the AAP BRUE lower-risk criteria in lib/brue-v547.js (+1)
+
+`brue` (spec-v547) applies the seven AAP lower-risk criteria to a qualifying Brief Resolved Unexplained
+Event.
+
+**`brue-qualifiesAsBrue` is a gate, not a formality, and the lib stops on it.** BRUE is a diagnosis of
+exclusion: if the history or examination explains the episode, the diagnosis is that explanation and the
+lower-risk criteria **do not apply**. Answering the gate "no" returns a finished, valid result with
+`lowerRisk: null` — deliberately **null rather than false**, because the event was never stratified, and
+reporting "not lower-risk" would imply higher-risk when the truth is "not a BRUE at all".
+
+**The seven criteria are conjunctive and there is no score.** Failing any one is higher-risk by definition.
+This is the shape an agent most reliably gets wrong on a criteria list: it will want to count how many were
+met. The result exposes **no total and no score field**, and returns `failed` plus `failedText` so a caller
+reports *which* criterion failed rather than a meaningless fraction.
+
+The prematurity criterion **spells out its inequality**, because published reproductions diverge — three give
+"32 weeks or more" and "45 weeks or more", two give "over". At-or-above is used, matching the guideline's
+rationale that risk attaches to birth *below* 32 weeks and attenuates *once* 45 weeks postconceptional age is
+reached; an infant born at exactly 32w0d is the case to be careful with.
+
+And the asymmetry the summary leads with: **"lower-risk" is not "no risk" and not a discharge order**, and
+**"higher-risk" is not a diagnosis and not an admission order**. "Lower-risk BRUE" is exactly the phrase an
+agent would otherwise turn into "safe to send home". Two of the seven criteria — concerning history and
+concerning examination — are clinical judgements the tool takes as **given** and cannot itself detect, and
+child abuse is among the causes an appropriate history and examination must consider. New adapter module
+registered in `mcp/catalog.js`; its golden probe ("brue lower risk criteria infant") is promoted now that the
+tile is in the MCP-exposed registry. Brings the exposed total to **1334 calculators across 450 modules**.
+
+### lib/brue-v547.js
+- `brue`
+
 ## Three-hundred-seventy-first wave — the revised ASRM endometriosis stage in lib/rasrm-stage-v546.js (+1)
 
 `rasrm-stage` (spec-v546) converts a revised ASRM point total into a stage.
@@ -7156,6 +7188,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/rasrm-stage-v546.js
 - `rasrm-stage`
+
+### lib/brue-v547.js
+- `brue`
 
 ### lib/tb-testing.js
 - `tb-testing`

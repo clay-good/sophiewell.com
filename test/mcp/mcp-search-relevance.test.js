@@ -579,6 +579,7 @@ const PROBES = [
   ['nems icu nursing workload score', ['nems']],
   ['palm coein abnormal uterine bleeding causes', ['palm-coein']],
   ['asrm endometriosis stage from score', ['rasrm-stage']],
+  ['brue lower risk criteria infant', ['brue']],
 ];
 
 test(`every golden probe routes an acceptable tile into the top ${TOP_N}`, () => {

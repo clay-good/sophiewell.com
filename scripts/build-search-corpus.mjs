@@ -37,11 +37,17 @@ const BUDGET_GZIP = 224 * 1024;
 
 // Field length caps (chars, cut at a word boundary). Tuned so the full catalog
 // stays comfortably under the gzip budget with headroom for growth.
-const CAP = { summary: 200, what: 200, when: 200, expected: 180, band: 92 };
+const CAP = { summary: 200, what: 200, when: 200, expected: 180, band: 64 };
 // Interpretation bands are the lowest search-signal field (an interpretation-range
 // label + text; nobody searches by band text), so the per-tile band count is
-// trimmed first when the catalog grows into the gzip budget (spec-v401): three
-// bands still convey the shape of a scale without the long corpus tail.
+// trimmed first when the catalog grows into the gzip budget: four bands became three
+// at ~1253 tiles (spec-v401). At 1397 tiles (spec-v547) the budget breached again, and
+// cutting to TWO bands was tried and REVERTED: it regressed a golden search probe, so
+// band text carries more signal than "nobody searches by band text" implies. The band
+// COUNT was therefore kept at three and CAP.band was cut 92 -> 64 instead, which keeps
+// every band present (so the matching band still exists for a query) while trimming the
+// long tail. If this breaches again, cut CAP.band further before cutting MAX_BANDS, and
+// re-run test:mcp to confirm no probe regresses.
 const MAX_BANDS = 3;
 
 // Sanitize source prose: en/em dashes -> hyphen, smart quotes -> ASCII, collapse

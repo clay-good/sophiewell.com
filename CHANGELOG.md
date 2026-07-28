@@ -6,6 +6,22 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v547 — BRUE lower-risk criteria tile, 1396 → 1397)
+
+- New `brue` tile (group G): the AAP seven lower-risk criteria for a Brief Resolved Unexplained Event.
+  `brue`, `tieder`, `apparent life threatening`, and `alte` were all zero-hit; it is **a different presenting
+  complaint** from the febrile-infant rules, which stratify a fever rather than an apneic or colour-change
+  event in an afebrile, well-appearing infant. **BRUE is a diagnosis of exclusion and the tile enforces that
+  order:** the qualifying gate comes first, and answering it "no" returns `lowerRisk: null` — deliberately
+  null rather than false, because an event that was never a BRUE has not been stratified and "not
+  lower-risk" would wrongly imply higher-risk. **The seven criteria are conjunctive with no score and no
+  partial credit**, so the tile returns a binary verdict plus **which criteria failed** — a fraction would be
+  meaningless. Criterion 2 **states its inequality explicitly** (≥32 weeks, ≥45 weeks) because published
+  reproductions diverge, and a 32w0d infant is exactly where they differ. The asymmetry is the point:
+  **"lower-risk" is not "no risk" and not a discharge order**, and **"higher-risk" is not a diagnosis and not
+  an admission order**. Two criteria turn on clinical judgements the tile cannot detect, and child abuse is
+  among the causes the history and exam must consider. See [spec-v547](docs/spec-v547.md).
+
 ### Added (spec-v546 — Revised ASRM stage (endometriosis, from a total) tile, 1395 → 1396)
 
 - New `rasrm-stage` tile (group G): converts a revised ASRM point total into a stage — **I** minimal 1-5,
