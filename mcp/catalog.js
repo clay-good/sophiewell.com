@@ -470,6 +470,7 @@ import vasiV556 from './adapters/vasi-v556.js';
 import mswatV557 from './adapters/mswat-v557.js';
 import osdiV558 from './adapters/osdi-v558.js';
 import erezDicV559 from './adapters/erez-dic-v559.js';
+import anaqeebAeegV560 from './adapters/anaqeeb-aeeg-v560.js';
 import tbTesting from './adapters/tb-testing.js';
 import labInterpret from './adapters/lab-interpret.js';
 import decisionRulesV258 from './adapters/decision-rules-v258.js';
@@ -934,6 +935,7 @@ const ADAPTER_MODULES = [
   ['mswat-v557', mswatV557],
   ['osdi-v558', osdiV558],
   ['erez-dic-v559', erezDicV559],
+  ['anaqeeb-aeeg-v560', anaqeebAeegV560],
   ['tb-testing', tbTesting],
   ['lab-interpret', labInterpret],
   ['decision-rules-v258', decisionRulesV258],

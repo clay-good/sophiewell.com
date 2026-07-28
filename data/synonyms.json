@@ -702,6 +702,8 @@
     { "phrases": ["osdi", "ocular surface disease index", "dry eye questionnaire", "dry eye symptom score"],
       "tile": "osdi", "audience": "clinicians" },
     { "phrases": ["erez dic score", "pregnancy dic score", "obstetric disseminated intravascular coagulation", "pregnancy specific isth dic"],
-      "tile": "erez-dic", "audience": "clinicians" }
+      "tile": "erez-dic", "audience": "clinicians" },
+    { "phrases": ["aeeg", "amplitude integrated eeg", "al naqeeb classification", "neonatal aeeg amplitude"],
+      "tile": "anaqeeb-aeeg", "audience": "clinicians" }
   ]
 }

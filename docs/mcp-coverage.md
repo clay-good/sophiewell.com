@@ -1574,6 +1574,39 @@ Brings the exposed total to **1314 calculators across 430 modules**.
 ### lib/wayne-index-v527.js
 - `wayne-index`
 
+## Three-hundred-eighty-fifth wave — the al Naqeeb aEEG classification in lib/anaqeeb-aeeg-v560.js (+1)
+
+`anaqeeb-aeeg` (spec-v560) sorts the amplitude-integrated EEG into three categories from the upper and lower
+margins of the trace. A decision table, not a score — nothing is summed. The catalog had no aEEG content of
+any kind.
+
+**The classification is not exhaustive, and an agent will fill the holes if not told.** Two regions of the
+input space fall in **no** published category: an upper margin of *exactly* 10 µV (every category requires
+strictly above or strictly below 10), and an upper margin below 10 with a lower margin above 5. Both are
+reachable from a real measurement. Two thresholds in a three-way classifier look as though they should
+partition the plane — they do not. The tool returns `classified: false` with the reason rather than rounding
+to the nearest category, because the holes sit exactly where a reader most needs to know the instrument is
+silent.
+
+**Seizure activity is a separate flag and is never folded into the amplitude category.** The original scheme
+defines seizures *alongside* the classification, not within it, so an infant with a **normal** amplitude and
+recorded seizures is **not** thereby moderately abnormal. A test asserts the category is unchanged by the
+flag in both directions.
+
+**Sleep-wake cycling is not assessed here at all** — it belongs to the later pattern-based schemes — so its
+absence must not be read as normal.
+
+The middle band's lower boundary differs by **one glyph** between the original ("5 µV or below") and an
+independent review ("less than 5"). The numbers are identical, so this is a convention rather than a value
+disagreement; the original is followed and the divergence is disclosed *only* at a lower margin of exactly
+5. And the summary states plainly that this is **not a therapeutic hypothermia eligibility criterion** — the
+decision it would most damagingly be misused to settle. New adapter module registered in `mcp/catalog.js`;
+its golden probe ("aeeg amplitude classification neonatal encephalopathy") is promoted now that the tile is
+in the MCP-exposed registry. Brings the exposed total to **1347 calculators across 463 modules**.
+
+### lib/anaqeeb-aeeg-v560.js
+- `anaqeeb-aeeg`
+
 ## Three-hundred-eighty-fourth wave — the Erez pregnancy-specific DIC score in lib/erez-dic-v559.js (+1)
 
 `erez-dic` (spec-v559) scores platelets, the prothrombin time difference and fibrinogen, maximum 52, with 26
@@ -7617,6 +7650,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/erez-dic-v559.js
 - `erez-dic`
+
+### lib/anaqeeb-aeeg-v560.js
+- `anaqeeb-aeeg`
 
 ### lib/tb-testing.js
 - `tb-testing`
