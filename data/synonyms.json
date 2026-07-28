@@ -684,6 +684,8 @@
     { "phrases": ["poseidon classification", "poseidon group", "low prognosis ivf", "poor ovarian response stratification"],
       "tile": "poseidon", "audience": "clinicians" },
     { "phrases": ["glass stage", "global limb anatomic staging", "femoropopliteal infrapopliteal grade", "clti anatomic stage"],
-      "tile": "glass-stage", "audience": "clinicians" }
+      "tile": "glass-stage", "audience": "clinicians" },
+    { "phrases": ["irecist", "immune response criteria", "pseudoprogression immunotherapy", "iupd icpd"],
+      "tile": "irecist", "audience": "clinicians" }
   ]
 }

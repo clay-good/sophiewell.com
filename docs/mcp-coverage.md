@@ -1574,6 +1574,43 @@ Brings the exposed total to **1314 calculators across 430 modules**.
 ### lib/wayne-index-v527.js
 - `wayne-index`
 
+## Three-hundred-seventy-sixth wave — the iRECIST time-point response in lib/irecist-v551.js (+1)
+
+`irecist` (spec-v551) assigns the iRECIST time-point response for trials of immunotherapeutics. A
+**companion gap** of the most useful kind: `recist` was already in the catalog, and iRECIST exists precisely
+because RECIST 1.1 gets one case wrong — pseudoprogression, where immune-cell infiltration transiently
+enlarges lesions before a deep and durable response follows.
+
+**iCPD is not reachable without a prior iUPD, and the tool enforces that structurally.** An agent that knows
+RECIST 1.1 will reach for "PD" the moment the sum of measures grows or a new lesion appears. Under iRECIST
+that is iUPD, *unconfirmed*, and it takes a further assessment at least 4 weeks and no more than 8 weeks
+later to become iCPD. `irecist-prior` is required for exactly this reason, and a test sweeps every category
+combination to assert iCPD never appears without it.
+
+**The bar resets, and this is the one rule that inverts RECIST 1.1 knowledge.** Under RECIST 1.1 any
+progression permanently precludes a later complete response, partial response or stable disease. Under
+iRECIST, shrinkage against baseline after iUPD means the iCPD criteria are *not* met: the response IS
+assigned, and iUPD must occur again from nadir before iCPD can be reached. An agent applying its RECIST 1.1
+prior here would refuse to assign a response it is required to assign.
+
+**No change from a prior iUPD remains iUPD.** Confirmation requires *further* increase, not persistence —
+treating the confirmatory scan as a yes/no on "is it still progressed?" would convert every
+stable-but-enlarged patient into confirmed progression, the exact failure mode iRECIST was written to
+prevent. And **new lesions are never added to the baseline target sum**: they are recorded separately as
+NLT/NLNT, so folding them in would inflate the sum and manufacture the very progression iRECIST treats as
+provisional.
+
+The four confirmation fields are kept separate because **the thresholds are not uniform**: at least 5 mm for
+target disease, *any* increase for non-target disease (explicitly need not be unequivocal), and for new
+lesions a 5 mm NLT increase or any NLNT increase or additional lesions. Collapsing them into one question
+would apply the 5 mm bar where the source does not put it. New adapter module registered in
+`mcp/catalog.js`; its golden probe ("irecist immunotherapy response pseudoprogression") is promoted now that
+the tile is in the MCP-exposed registry. Brings the exposed total to **1338 calculators across 454
+modules**.
+
+### lib/irecist-v551.js
+- `irecist`
+
 ## Three-hundred-seventy-fifth wave — the GLASS anatomic stage in lib/glass-stage-v550.js (+1)
 
 `glass-stage` (spec-v550) grades the femoropopliteal and infrapopliteal segments of a target arterial path
@@ -7293,6 +7330,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/glass-stage-v550.js
 - `glass-stage`
+
+### lib/irecist-v551.js
+- `irecist`
 
 ### lib/tb-testing.js
 - `tb-testing`
