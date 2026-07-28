@@ -587,6 +587,7 @@ const PROBES = [
   ['snot 22 sinonasal outcome test score', ['snot22']],
   ['puqe score nausea vomiting pregnancy', ['puqe24']],
   ['global acne grading system severity score', ['gags']],
+  ['tinnitus handicap inventory score grade', ['thi']],
 ];
 
 test(`every golden probe routes an acceptable tile into the top ${TOP_N}`, () => {

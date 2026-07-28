@@ -692,6 +692,8 @@
     { "phrases": ["puqe", "puqe 24", "nausea vomiting pregnancy score", "morning sickness severity"],
       "tile": "puqe24", "audience": "clinicians" },
     { "phrases": ["gags", "global acne grading system", "acne severity score", "acne grading"],
-      "tile": "gags", "audience": "clinicians" }
+      "tile": "gags", "audience": "clinicians" },
+    { "phrases": ["thi", "tinnitus handicap inventory", "tinnitus severity score", "ringing in ears questionnaire"],
+      "tile": "thi", "audience": "clinicians" }
   ]
 }

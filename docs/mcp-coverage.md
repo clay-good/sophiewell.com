@@ -1574,6 +1574,36 @@ Brings the exposed total to **1314 calculators across 430 modules**.
 ### lib/wayne-index-v527.js
 - `wayne-index`
 
+## Three-hundred-eightieth wave — the Tinnitus Handicap Inventory in lib/thi-v555.js (+1)
+
+`thi` (spec-v555) sums 25 items, each answered yes (4), sometimes (2) or no (0), for a total of 0 to 100,
+and assigns one of five published grades. A **companion** to `dhi`, the Dizziness Handicap Inventory — the
+two share a design but measure different symptoms, and a patient can score high on one and zero on the
+other.
+
+**Every total is even, which is why the published bands have one-point gaps.** The grades are 0-16, 18-36,
+38-56, 58-76 and 78-100, so 17, 37, 57 and 77 are **unreachable** — every item contributes 0, 2 or 4, and a
+sum of even numbers is even. A band table with holes in it looks like an off-by-one to tidy up. It is not.
+Asked what band a score of 17 falls in, the correct answer is that 17 cannot occur, and the adapter exposes
+`ODD_TOTALS_UNREACHABLE` so the property is checkable rather than merely asserted.
+
+**The functional/emotional/catastrophic subscales are deliberately not computed, and that is a finding
+rather than an omission.** The instrument is usually *described* as having those three subscales, so an
+agent will expect them and may try to derive them. It must not: two independent renderings of the
+item-to-subscale map disagree on four items (3, 9, 14 and 18) and do not even agree on the shape of the
+split — one gives 13/7/5 against a published structure described as 11/9/5 — and the primary text could not
+be obtained to adjudicate. Emitting subscores would mean picking one map on no authority and presenting
+three numbers a reader would take as the instrument's own, so the tool returns `subscalesReported: false`
+and says why.
+
+The grades are also attributed correctly: the 25 items are Newman and colleagues 1996, while the five
+severity grades are a separate British working group published in 2001. New adapter module registered in
+`mcp/catalog.js`; its golden probe ("tinnitus handicap inventory score grade") is promoted now that the tile
+is in the MCP-exposed registry. Brings the exposed total to **1342 calculators across 458 modules**.
+
+### lib/thi-v555.js
+- `thi`
+
 ## Three-hundred-seventy-ninth wave — the Global Acne Grading System in lib/gags-v554.js (+1)
 
 `gags` (spec-v554) multiplies a fixed factor for each of six regions by a lesion grade 0-4 and sums the six
@@ -7435,6 +7465,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/gags-v554.js
 - `gags`
+
+### lib/thi-v555.js
+- `thi`
 
 ### lib/tb-testing.js
 - `tb-testing`

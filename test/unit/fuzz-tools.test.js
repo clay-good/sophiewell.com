@@ -529,6 +529,7 @@ import * as irecistV551 from '../../lib/irecist-v551.js';
 import * as snot22V552 from '../../lib/snot22-v552.js';
 import * as puqe24V553 from '../../lib/puqe24-v553.js';
 import * as gagsV554 from '../../lib/gags-v554.js';
+import * as thiV555 from '../../lib/thi-v555.js';
 import * as tbTesting from '../../lib/tb-testing.js';
 
 const MODULES = {
@@ -1003,6 +1004,7 @@ const MODULES = {
   'snot22-v552.js': snot22V552,
   'puqe24-v553.js': puqe24V553,
   'gags-v554.js': gagsV554,
+  'thi-v555.js': thiV555,
   'tb-testing.js': tbTesting,
 };
 
