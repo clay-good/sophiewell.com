@@ -700,6 +700,8 @@
     { "phrases": ["mswat", "modified severity weighted assessment tool", "mycosis fungoides skin score", "cutaneous lymphoma skin burden"],
       "tile": "mswat", "audience": "clinicians" },
     { "phrases": ["osdi", "ocular surface disease index", "dry eye questionnaire", "dry eye symptom score"],
-      "tile": "osdi", "audience": "clinicians" }
+      "tile": "osdi", "audience": "clinicians" },
+    { "phrases": ["erez dic score", "pregnancy dic score", "obstetric disseminated intravascular coagulation", "pregnancy specific isth dic"],
+      "tile": "erez-dic", "audience": "clinicians" }
   ]
 }

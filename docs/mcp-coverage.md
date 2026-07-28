@@ -1574,6 +1574,39 @@ Brings the exposed total to **1314 calculators across 430 modules**.
 ### lib/wayne-index-v527.js
 - `wayne-index`
 
+## Three-hundred-eighty-fourth wave — the Erez pregnancy-specific DIC score in lib/erez-dic-v559.js (+1)
+
+`erez-dic` (spec-v559) scores platelets, the prothrombin time difference and fibrinogen, maximum 52, with 26
+or more indicating DIC. A **companion gap**: the catalog already exposes the ISTH and JAAM DIC scores, and
+this is a third, pregnancy-specific instrument with different components and a cutoff on a different scale —
+**26, not 5** — so the cutoffs must never be carried across.
+
+**The platelet row is non-monotonic and must not be "fixed".** Below 50 scores 1 point while 50-100 scores
+2, so the *most* severe thrombocytopenia scores *fewer* points than moderate thrombocytopenia. Two
+independent sources print it that way and one names the pattern explicitly as unusual — it is the published
+table, not a transcription error. Every instinct says to straighten it into a monotonic ladder, and doing so
+would change the score of exactly the sickest patients. A test asserts the row is *not* sorted.
+
+**The prothrombin time input is a difference in seconds, not a ratio and not an INR.** It is the patient
+value minus the laboratory control, and the strata are fractions of a second. An agent handed "INR 1.2" or
+"PT 14 seconds" and passing either straight through lands in the top stratum and adds **25 unearned
+points** — most of the way to the cutoff on its own. This is the single largest error the instrument
+invites, so it is stated in the field label, the summary and the result.
+
+**The cutoff is essentially unreachable without one of the two 25-point findings** — a fibrinogen below 3.0
+g/L or a PT difference above 1.5 seconds. Everything else on the form totals at most 20, so a falling
+platelet count can never reach DIC by that route however far it falls. A test constructs the worst case
+without either finding and asserts it lands at 20.
+
+**D-dimer and fibrin degradation products are deliberately absent**, unlike ISTH, because they rise in
+normal pregnancy and would false-positive — a design decision, not a gap to fill in. New adapter module
+registered in `mcp/catalog.js`; its golden probe ("pregnancy dic score erez obstetric") is promoted now that
+the tile is in the MCP-exposed registry. Brings the exposed total to **1346 calculators across 462
+modules**.
+
+### lib/erez-dic-v559.js
+- `erez-dic`
+
 ## Three-hundred-eighty-third wave — the Ocular Surface Disease Index in lib/osdi-v558.js (+1)
 
 `osdi` (spec-v558) scores 12 patient-reported items over the last week as (sum of scores) x 25 / (number of
@@ -7581,6 +7614,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/osdi-v558.js
 - `osdi`
+
+### lib/erez-dic-v559.js
+- `erez-dic`
 
 ### lib/tb-testing.js
 - `tb-testing`

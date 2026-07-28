@@ -533,6 +533,7 @@ import * as thiV555 from '../../lib/thi-v555.js';
 import * as vasiV556 from '../../lib/vasi-v556.js';
 import * as mswatV557 from '../../lib/mswat-v557.js';
 import * as osdiV558 from '../../lib/osdi-v558.js';
+import * as erezDicV559 from '../../lib/erez-dic-v559.js';
 import * as tbTesting from '../../lib/tb-testing.js';
 
 const MODULES = {
@@ -1011,6 +1012,7 @@ const MODULES = {
   'vasi-v556.js': vasiV556,
   'mswat-v557.js': mswatV557,
   'osdi-v558.js': osdiV558,
+  'erez-dic-v559.js': erezDicV559,
   'tb-testing.js': tbTesting,
 };
 

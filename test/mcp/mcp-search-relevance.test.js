@@ -591,6 +591,7 @@ const PROBES = [
   ['vitiligo area scoring index vasi', ['vasi']],
   ['mswat skin tumor burden mycosis fungoides', ['mswat']],
   ['osdi dry eye symptom questionnaire score', ['osdi']],
+  ['pregnancy dic score erez obstetric', ['erez-dic']],
 ];
 
 test(`every golden probe routes an acceptable tile into the top ${TOP_N}`, () => {
