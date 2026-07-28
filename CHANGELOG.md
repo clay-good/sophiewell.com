@@ -6,6 +6,21 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v537 — ALSFRS-R (ALS Functional Rating Scale, Revised) tile, 1386 → 1387)
+
+- New `alsfrs-r` tile (group G): the twelve-item ALS function scale, total **0-48**. **Whole-disease gap** —
+  `alsfrs`, `amyotrophic`, and `cedarbaum` were all zero-hit and the catalog had no ALS instrument at all.
+  **Higher is better** (48 normal, 0 complete loss), the opposite of most scored instruments here, so a
+  reader assuming otherwise would read a declining patient as improving. The revision replaced the original
+  scale's **single** breathing item with **three**, taking the maximum from 40 to 48 — so a total of 40 is
+  the top of the original scale but a substantial deficit on this one, and the tile always reports the total
+  **out of 48** because a bare number from an older record is uninterpretable. **Item 5 is two alternative
+  scales, not two items:** cutting food is scored on the with- or without-gastrostomy version, exactly one of
+  which counts; scoring both would give a maximum of 52 and inflate every gastrostomy patient. The three
+  respiratory items are returned as a subscore out of 12 — and the copy states they record reported symptoms
+  and ventilatory support, **not a vital capacity**, so full marks are not reassurance about respiratory
+  function. See [spec-v537](docs/spec-v537.md).
+
 ### Added (spec-v536 — Hardman index (ruptured abdominal aortic aneurysm) tile, 1385 → 1386)
 
 - New `hardman` tile (group G): the five-factor index for mortality after a ruptured abdominal aortic

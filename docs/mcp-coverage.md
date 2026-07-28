@@ -1574,6 +1574,34 @@ Brings the exposed total to **1314 calculators across 430 modules**.
 ### lib/wayne-index-v527.js
 - `wayne-index`
 
+## Three-hundred-sixty-second wave — the ALSFRS-R in lib/alsfrs-r-v537.js (+1)
+
+`alsfrs-r` (spec-v537) rates the twelve ALSFRS-R functions into a total of 0-48 and returns the respiratory
+subscore with it.
+
+**The summary states the direction first: higher is BETTER**, 48 normal and 0 complete loss. Most scored
+instruments an agent meets run the other way, and an agent assuming "higher is worse" would describe a
+declining patient as improving — the single most damaging misreading available here.
+
+**Both cutting-food scales are published as fields, but exactly one is ever scored, and neither is marked
+required.** `als-hasGastrostomy` is required and **selects** which alternative applies. Marking both cutting
+fields required would force a caller to invent a score on a scale that does not apply to their patient, and
+scoring both would give a maximum of **52** rather than 48. The lib requires exactly the applicable twelve
+and names what is missing; the result reports `cuttingScale` and `cuttingItem` so a caller can see which was
+used.
+
+**The summary warns that a bare total is not comparable across versions.** The original ALSFRS had ten items
+and a maximum of 40; the revision has twelve and 48. An agent that reads "ALSFRS 40" from an older record and
+reports it as this scale's output has turned a normal score into a substantial deficit — every band states
+the denominator. It also states what the three respiratory items are **not**: reported symptoms and support
+in use, not a vital capacity, so a full 12 of 12 is not reassurance about respiratory function. New adapter
+module registered in `mcp/catalog.js`; its golden probe ("alsfrs r als functional rating scale") is promoted
+now that the tile is in the MCP-exposed registry. Brings the exposed total to **1324 calculators across 440
+modules**.
+
+### lib/alsfrs-r-v537.js
+- `alsfrs-r`
+
 ## Three-hundred-sixty-first wave — the Hardman index in lib/hardman-v536.js (+1)
 
 `hardman` (spec-v536) counts the five Hardman factors and returns the index with the original series'
@@ -6836,6 +6864,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/hardman-v536.js
 - `hardman`
+
+### lib/alsfrs-r-v537.js
+- `alsfrs-r`
 
 ### lib/tb-testing.js
 - `tb-testing`

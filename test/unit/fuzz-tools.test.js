@@ -511,6 +511,7 @@ import * as renalAnginaV533 from '../../lib/renal-angina-v533.js';
 import * as ridleyJoplingV534 from '../../lib/ridley-jopling-v534.js';
 import * as capthusV535 from '../../lib/capthus-v535.js';
 import * as hardmanV536 from '../../lib/hardman-v536.js';
+import * as alsfrsRV537 from '../../lib/alsfrs-r-v537.js';
 import * as tbTesting from '../../lib/tb-testing.js';
 
 const MODULES = {
@@ -967,6 +968,7 @@ const MODULES = {
   'ridley-jopling-v534.js': ridleyJoplingV534,
   'capthus-v535.js': capthusV535,
   'hardman-v536.js': hardmanV536,
+  'alsfrs-r-v537.js': alsfrsRV537,
   'tb-testing.js': tbTesting,
 };
 

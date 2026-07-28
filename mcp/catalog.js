@@ -447,6 +447,7 @@ import renalAnginaV533 from './adapters/renal-angina-v533.js';
 import ridleyJoplingV534 from './adapters/ridley-jopling-v534.js';
 import capthusV535 from './adapters/capthus-v535.js';
 import hardmanV536 from './adapters/hardman-v536.js';
+import alsfrsRV537 from './adapters/alsfrs-r-v537.js';
 import tbTesting from './adapters/tb-testing.js';
 import labInterpret from './adapters/lab-interpret.js';
 import decisionRulesV258 from './adapters/decision-rules-v258.js';
@@ -888,6 +889,7 @@ const ADAPTER_MODULES = [
   ['ridley-jopling-v534', ridleyJoplingV534],
   ['capthus-v535', capthusV535],
   ['hardman-v536', hardmanV536],
+  ['alsfrs-r-v537', alsfrsRV537],
   ['tb-testing', tbTesting],
   ['lab-interpret', labInterpret],
   ['decision-rules-v258', decisionRulesV258],

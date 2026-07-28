@@ -656,6 +656,8 @@
     { "phrases": ["capthus", "capthus score", "single gland parathyroid prediction", "parathyroid adenoma prediction score", "focused parathyroidectomy score"],
       "tile": "capthus", "audience": "clinicians" },
     { "phrases": ["hardman index", "hardman", "ruptured aaa mortality", "ruptured aortic aneurysm score", "raaa risk factors"],
-      "tile": "hardman", "audience": "clinicians" }
+      "tile": "hardman", "audience": "clinicians" },
+    { "phrases": ["alsfrs", "alsfrs r", "als functional rating scale", "motor neuron disease function score", "amyotrophic lateral sclerosis function scale"],
+      "tile": "alsfrs-r", "audience": "clinicians" }
   ]
 }
