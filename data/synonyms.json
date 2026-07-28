@@ -690,6 +690,8 @@
     { "phrases": ["snot 22", "sinonasal outcome test", "sinus symptom score", "rhinosinusitis quality of life"],
       "tile": "snot22", "audience": "clinicians" },
     { "phrases": ["puqe", "puqe 24", "nausea vomiting pregnancy score", "morning sickness severity"],
-      "tile": "puqe24", "audience": "clinicians" }
+      "tile": "puqe24", "audience": "clinicians" },
+    { "phrases": ["gags", "global acne grading system", "acne severity score", "acne grading"],
+      "tile": "gags", "audience": "clinicians" }
   ]
 }

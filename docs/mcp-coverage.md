@@ -1574,6 +1574,34 @@ Brings the exposed total to **1314 calculators across 430 modules**.
 ### lib/wayne-index-v527.js
 - `wayne-index`
 
+## Three-hundred-seventy-ninth wave — the Global Acne Grading System in lib/gags-v554.js (+1)
+
+`gags` (spec-v554) multiplies a fixed factor for each of six regions by a lesion grade 0-4 and sums the six
+products, giving 0 to 44. A **whole-concept gap** — the catalog had no acne content of any kind.
+
+**Each region is graded by its single most severe lesion, never by summing lesion types.** The grade key
+reads like an additive checklist (1 comedone, 2 papule, 3 pustule, 4 nodule), so an agent handed "the
+forehead has comedones, papules and a nodule" is tempted to return 7. It is 4. Summing lesion types would
+roughly triple the score of anyone with mixed disease — which is most patients with acne.
+
+**Chest and upper back are one combined region with a single factor of 3, not two sites.** There are six
+regions, not seven. Scoring them separately would take the maximum from 44 to 47 and over-weight truncal
+disease against the face, inverting the intent of factors derived from surface area and pilosebaceous-unit
+density.
+
+**The published table leaves a score of exactly 39 unassigned, and the tool reports that rather than
+patching it.** Severe is printed as 31-38 and very severe as *above* 39, so 39 falls in neither — and 39 is
+reachable (a test constructs it). Two independent reproductions print it identically, so this is the
+source's own gap, not one publisher's typo, and many tertiary sources silently rewrite the top band as "39
+or above" and erase it. The tool returns `bandAssigned: false` with `band: null` at 39 and states what the
+primary table prints, because quietly choosing a reading would hide a real ambiguity sitting exactly on the
+boundary between the two most severe categories. New adapter module registered in `mcp/catalog.js`; its
+golden probe ("global acne grading system severity score") is promoted now that the tile is in the
+MCP-exposed registry. Brings the exposed total to **1341 calculators across 457 modules**.
+
+### lib/gags-v554.js
+- `gags`
+
 ## Three-hundred-seventy-eighth wave — the PUQE-24 in lib/puqe24-v553.js (+1)
 
 `puqe24` (spec-v553) quantifies nausea and vomiting of pregnancy over the last 24 hours from three items:
@@ -7404,6 +7432,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/puqe24-v553.js
 - `puqe24`
+
+### lib/gags-v554.js
+- `gags`
 
 ### lib/tb-testing.js
 - `tb-testing`

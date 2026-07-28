@@ -528,6 +528,7 @@ import * as glassStageV550 from '../../lib/glass-stage-v550.js';
 import * as irecistV551 from '../../lib/irecist-v551.js';
 import * as snot22V552 from '../../lib/snot22-v552.js';
 import * as puqe24V553 from '../../lib/puqe24-v553.js';
+import * as gagsV554 from '../../lib/gags-v554.js';
 import * as tbTesting from '../../lib/tb-testing.js';
 
 const MODULES = {
@@ -1001,6 +1002,7 @@ const MODULES = {
   'irecist-v551.js': irecistV551,
   'snot22-v552.js': snot22V552,
   'puqe24-v553.js': puqe24V553,
+  'gags-v554.js': gagsV554,
   'tb-testing.js': tbTesting,
 };
 
