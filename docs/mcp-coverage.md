@@ -1574,6 +1574,44 @@ Brings the exposed total to **1314 calculators across 430 modules**.
 ### lib/wayne-index-v527.js
 - `wayne-index`
 
+## Three-hundred-eighty-second wave — the mSWAT in lib/mswat-v557.js (+1)
+
+`mswat` (spec-v557) measures skin tumor burden in mycosis fungoides and Sezary syndrome: percent body
+surface area at weight 1, plus twice the area at weight 2, plus four times the tumor or ulcer area. A
+**whole-concept gap** — the catalog had no cutaneous lymphoma content of any kind.
+
+**The score runs 0 to 400, not 0 to 100.** Every input is a percentage of body surface area, so the output
+looks like it should be one too. It is not: a body wholly covered in tumor scores 4 × 100. An agent that
+caps its expectation at 100 will call an ordinary score of 180 impossible, or will report it as "180 percent
+of body surface area" — a different and false claim.
+
+**The three categories are mutually exclusive per unit of skin.** Each square centimetre is counted *once*,
+in one category only, so the three percentages sum to at most 100. They are not three independent
+measurements of the same skin — and three fields each accepting 0-100 invite exactly that error. The tool
+enforces the ceiling.
+
+**The tumor weight is 4 in mSWAT and was 3 in the original SWAT** — that is what the "m" modifies — so a
+score quoted from older work without its version is not comparable. Both weights are exposed.
+
+**The two forms use different lesion vocabularies for identical arithmetic.** Erythrodermic patients are
+scored as patch / plaque / tumor; nonerythrodermic patients as mild infiltration / moderate infiltration /
+tumor. `mswat-erythrodermic` is required because it selects which question is being asked, even though it
+does not change the sum.
+
+**There are no severity bands and the tool invents none.** mSWAT is a continuous burden measure whose
+published threshold is a *change* from the same patient's baseline — a 50% or greater reduction is a partial
+skin response — which belongs to a comparison of two scores, not to one. Asked whether some mSWAT is
+"severe", the correct answer is that the instrument publishes no such categories.
+
+A 12-region %BSA reference table circulating with this instrument is **deliberately not implemented**: only
+two of its twelve values could be independently confirmed, and the core scoring does not need it, since the
+assessor supplies %BSA directly. New adapter module registered in `mcp/catalog.js`; its golden probe ("mswat
+skin tumor burden mycosis fungoides") is promoted now that the tile is in the MCP-exposed registry. Brings
+the exposed total to **1344 calculators across 460 modules**.
+
+### lib/mswat-v557.js
+- `mswat`
+
 ## Three-hundred-eighty-first wave — the Vitiligo Area Scoring Index in lib/vasi-v556.js (+1)
 
 `vasi` (spec-v556) sums, over body regions, the hand units of involvement multiplied by the residual
@@ -7504,6 +7542,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/vasi-v556.js
 - `vasi`
+
+### lib/mswat-v557.js
+- `mswat`
 
 ### lib/tb-testing.js
 - `tb-testing`

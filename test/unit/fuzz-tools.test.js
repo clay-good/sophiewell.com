@@ -531,6 +531,7 @@ import * as puqe24V553 from '../../lib/puqe24-v553.js';
 import * as gagsV554 from '../../lib/gags-v554.js';
 import * as thiV555 from '../../lib/thi-v555.js';
 import * as vasiV556 from '../../lib/vasi-v556.js';
+import * as mswatV557 from '../../lib/mswat-v557.js';
 import * as tbTesting from '../../lib/tb-testing.js';
 
 const MODULES = {
@@ -1007,6 +1008,7 @@ const MODULES = {
   'gags-v554.js': gagsV554,
   'thi-v555.js': thiV555,
   'vasi-v556.js': vasiV556,
+  'mswat-v557.js': mswatV557,
   'tb-testing.js': tbTesting,
 };
 

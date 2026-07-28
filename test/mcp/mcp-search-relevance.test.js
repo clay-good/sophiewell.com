@@ -589,6 +589,7 @@ const PROBES = [
   ['global acne grading system severity score', ['gags']],
   ['tinnitus handicap inventory score grade', ['thi']],
   ['vitiligo area scoring index vasi', ['vasi']],
+  ['mswat skin tumor burden mycosis fungoides', ['mswat']],
 ];
 
 test(`every golden probe routes an acceptable tile into the top ${TOP_N}`, () => {
