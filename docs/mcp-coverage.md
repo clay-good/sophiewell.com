@@ -1574,6 +1574,37 @@ Brings the exposed total to **1314 calculators across 430 modules**.
 ### lib/wayne-index-v527.js
 - `wayne-index`
 
+## Three-hundred-seventieth wave — FIGO PALM-COEIN in lib/palm-coein-v545.js (+1)
+
+`palm-coein` (spec-v545) returns the full TNM-style AUB notation from the nine category values.
+
+**Every category enum has three values, not two: `'0'`, `'1'` and `'?'`.** This is the design point. The
+obvious schema is nine booleans, and it would destroy the instrument's central property: PALM-COEIN is
+modelled on TNM staging, every category is addressed for every patient, and a category recorded as **absent**
+must be distinguishable from one **never assessed**. An agent that has not seen imaging or a coagulation
+screen must be able to say so rather than being forced to assert an absence. The result returns an
+`unassessed` list so a caller can see exactly which categories are unknown.
+
+**All nine are required, and that is the point rather than an inconvenience** — omitting a category is not
+the same as scoring it 0, and the lib refuses a partial classification and says why. **The leiomyoma
+secondary tier is conditionally required:** when L is 1, SM versus O must be supplied, because that
+distinction carries the clinical weight; the tertiary type is genuinely optional and is omitted from the
+notation when absent.
+
+**The edition is stated in every result.** The 2011 and 2018 editions disagree in two ways that change a
+case: type 3 leiomyomas sit outside the submucous group in 2011 and inside it from 2018, and
+anticoagulant-associated bleeding is AUB-C in 2011 but AUB-I from 2018. Both remain in active use, so an
+agent comparing a stored classification against a fresh one must know which edition each used; this tool
+implements 2018 and returns `edition: '2018'`. The summary also states that this **does not exclude
+malignancy**, because "AUB-M0" is exactly the string an agent could report as reassurance — M0 records that
+malignancy was *assessed and not found*, and a classification made before endometrial sampling says nothing
+about whether cancer is present. New adapter module registered in `mcp/catalog.js`; its golden probe ("palm
+coein abnormal uterine bleeding causes") is promoted now that the tile is in the MCP-exposed registry. Brings
+the exposed total to **1332 calculators across 448 modules**.
+
+### lib/palm-coein-v545.js
+- `palm-coein`
+
 ## Three-hundred-sixty-ninth wave — NEMS in lib/nems-v544.js (+1)
 
 `nems` (spec-v544) scores the nine NEMS items into a nursing-workload total out of 56.
@@ -7090,6 +7121,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/nems-v544.js
 - `nems`
+
+### lib/palm-coein-v545.js
+- `palm-coein`
 
 ### lib/tb-testing.js
 - `tb-testing`

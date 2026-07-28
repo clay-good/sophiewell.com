@@ -672,6 +672,8 @@
     { "phrases": ["save score", "va ecmo survival", "veno arterial ecmo score", "ecmo survival cardiogenic shock"],
       "tile": "save-score", "audience": "clinicians" },
     { "phrases": ["nems", "nursing manpower score", "icu nursing workload score", "nursing workload icu"],
-      "tile": "nems", "audience": "clinicians" }
+      "tile": "nems", "audience": "clinicians" },
+    { "phrases": ["palm coein", "abnormal uterine bleeding classification", "aub causes classification", "figo aub system"],
+      "tile": "palm-coein", "audience": "clinicians" }
   ]
 }

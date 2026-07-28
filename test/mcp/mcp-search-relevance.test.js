@@ -577,6 +577,7 @@ const PROBES = [
   ['twstrs cervical dystonia severity', ['twstrs-severity']],
   ['save score veno arterial ecmo survival', ['save-score']],
   ['nems icu nursing workload score', ['nems']],
+  ['palm coein abnormal uterine bleeding causes', ['palm-coein']],
 ];
 
 test(`every golden probe routes an acceptable tile into the top ${TOP_N}`, () => {

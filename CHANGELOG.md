@@ -6,6 +6,22 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v545 — FIGO PALM-COEIN (abnormal uterine bleeding causes) tile, 1394 → 1395)
+
+- New `palm-coein` tile (group G): the nine-category FIGO classification of AUB causes, **2018 revision**.
+  `palm-coein`, `coein`, `munro`, `abnormal uterine bleeding`, and `leiomyoma` were all zero-hit. It is **a
+  different axis** from the existing `pbac-hmb`, which quantifies *how much* a woman bleeds — this
+  classifies *why*. **It is a notation, not a score:** modelled on TNM staging, every category is reported
+  for every patient, and **each takes three values — 0 absent, 1 present, `?` not yet assessed** — because a
+  clinician who has not done imaging or a coagulation screen must not be forced to assert an absence; a test
+  asserts `?` and `0` produce different notations. More than one category can be positive at once, which the
+  system exists partly to capture. The **leiomyoma secondary tier (SM vs O) is required when L is present**,
+  since that distinction carries the clinical weight. **The tile implements the 2018 revision and reports the
+  edition**, because 2011 and 2018 disagree on type-3 placement and on whether anticoagulant-associated
+  bleeding is AUB-C or AUB-I — both are in active use and records under one are not comparable with the
+  other. It organises a diagnosis rather than making one, and **`M0` does not exclude malignancy**: it
+  records that malignancy was assessed and not found. See [spec-v545](docs/spec-v545.md).
+
 ### Added (spec-v544 — NEMS (Nine Equivalents of Nursing Manpower Use) tile, 1393 → 1394)
 
 - New `nems` tile (group G): the nine-item ICU nursing-workload score, total **0-56**. All probe tokens were
