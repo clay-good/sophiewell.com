@@ -668,6 +668,8 @@
     { "phrases": ["rachs", "rachs 1", "congenital heart surgery risk category", "pediatric cardiac surgery risk adjustment"],
       "tile": "rachs1", "audience": "clinicians" },
     { "phrases": ["twstrs", "cervical dystonia severity", "torticollis rating scale", "spasmodic torticollis score"],
-      "tile": "twstrs-severity", "audience": "clinicians" }
+      "tile": "twstrs-severity", "audience": "clinicians" },
+    { "phrases": ["save score", "va ecmo survival", "veno arterial ecmo score", "ecmo survival cardiogenic shock"],
+      "tile": "save-score", "audience": "clinicians" }
   ]
 }

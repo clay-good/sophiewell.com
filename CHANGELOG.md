@@ -6,6 +6,23 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v543 — SAVE score (survival after veno-arterial ECMO) tile, 1392 → 1393)
+
+- New `save-score` tile (group G): hospital survival after VA-ECMO for refractory cardiogenic shock, range
+  **−35 to 23** across five risk classes. `save score` and `veno-arterial` were zero-hit; it is the
+  **veno-arterial counterpart** of the existing `resp-score` (respiratory, VV ECMO) and distinct from
+  `cardshock-score` and `scai-shock`, which grade shock without reference to ECMO. **There is a constant of
+  −6 added to every calculation, and forgetting it shifts a full risk class:** components summing to 0 give a
+  score of −6, not 0, and the boundaries sit at 5, 0, −5 and −10 — so the tile reports the component
+  subtotal, the constant, and the total separately, and a test pins that the all-negative patient is class IV
+  rather than the class III a missing constant would give. **The diagnosis groups and organ failures are
+  additive, not one-of** (myocarditis plus refractory VT scores both; three organ failures score −9), which
+  is the schema shape a natural implementation would get wrong. Two secondary-source errors are corrected:
+  the range is 23 not 17, and class I is **above** 5 (a common rendering mis-assigns exactly 5). These are
+  **cohort** figures, not individual predictions — and the score is **not** a tool for deciding whether to
+  offer ECMO or to withdraw it: a low predicted survival is not futility, and patients in the lowest class
+  still survived. See [spec-v543](docs/spec-v543.md).
+
 ### Added (spec-v542 — TWSTRS severity subscale (cervical dystonia) tile, 1391 → 1392)
 
 - New `twstrs-severity` tile (group G): the ten-item motor subscale of the Toronto Western Spasmodic

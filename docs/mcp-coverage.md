@@ -1574,6 +1574,38 @@ Brings the exposed total to **1314 calculators across 430 modules**.
 ### lib/wayne-index-v527.js
 - `wayne-index`
 
+## Three-hundred-sixty-eighth wave — the SAVE score in lib/save-score-v543.js (+1)
+
+`save-score` (spec-v543) sums the SAVE items, applies the published constant, and returns the risk class with
+its reported cohort survival.
+
+**The summary states the minus-six constant first, and the result returns it as its own field.** This is the
+design point. An agent that sums the published item weights and stops has produced a number **six points too
+high**, and because the class boundaries sit at 5, 0, −5 and −10, that shifts most patients a **full risk
+class** — typically reporting a better survival than the instrument gives. The result exposes
+`componentTotal`, `constant` and `total` separately so the arithmetic is auditable rather than something a
+caller has to trust.
+
+**The diagnosis groups and the organ failures are published as independent booleans, not one-of enums.** The
+source says "select one or more" for both. Modelling either as a single-choice list would have been the
+natural schema shape and would be wrong: myocarditis plus refractory VT scores **+3 and +2**, and liver plus
+CNS plus renal failure scores **−9**. Enum-ing them would under-score the most salvageable and the sickest
+patients in opposite directions. Every field label carries its **signed** weight, since roughly half subtract
+and a caller cannot otherwise sanity-check a total that *falls* as findings accumulate.
+
+The summary gives the **primary source's** class boundaries explicitly — class I is **above** 5, class II is
+1 **through** 5 — because a widely used secondary rendering says "5 or above" and mis-assigns a score of
+exactly 5; and the range as **−35 to 23**, not the −35 to 17 another secondary source reports. And the
+framing: these are **cohort** figures, and the summary says outright that the score is not a tool for
+deciding whether to offer ECMO or to withdraw it, because "SAVE class V, 18 percent survival" is precisely
+the phrase an agent might otherwise convert into a recommendation against support — in a condition that is
+fatal without it, and in a class where patients still survived. New adapter module registered in
+`mcp/catalog.js`; its golden probe ("save score veno arterial ecmo survival") is promoted now that the tile
+is in the MCP-exposed registry. Brings the exposed total to **1330 calculators across 446 modules**.
+
+### lib/save-score-v543.js
+- `save-score`
+
 ## Three-hundred-sixty-seventh wave — the TWSTRS severity subscale in lib/twstrs-severity-v542.js (+1)
 
 `twstrs-severity` (spec-v542) scores the ten TWSTRS severity items out of 35 and returns the excursion
@@ -7024,6 +7056,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/twstrs-severity-v542.js
 - `twstrs-severity`
+
+### lib/save-score-v543.js
+- `save-score`
 
 ### lib/tb-testing.js
 - `tb-testing`
