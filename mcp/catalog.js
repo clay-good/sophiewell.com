@@ -492,6 +492,7 @@ import nancyIndexV578 from './adapters/nancy-index-v578.js';
 import robartsIndexV579 from './adapters/robarts-index-v579.js';
 import ehraAfV580 from './adapters/ehra-af-v580.js';
 import shanghaiBrugadaV581 from './adapters/shanghai-brugada-v581.js';
+import hlh2004V582 from './adapters/hlh-2004-v582.js';
 import tbTesting from './adapters/tb-testing.js';
 import labInterpret from './adapters/lab-interpret.js';
 import decisionRulesV258 from './adapters/decision-rules-v258.js';
@@ -978,6 +979,7 @@ const ADAPTER_MODULES = [
   ['robarts-index-v579', robartsIndexV579],
   ['ehra-af-v580', ehraAfV580],
   ['shanghai-brugada-v581', shanghaiBrugadaV581],
+  ['hlh-2004-v582', hlh2004V582],
   ['tb-testing', tbTesting],
   ['lab-interpret', labInterpret],
   ['decision-rules-v258', decisionRulesV258],

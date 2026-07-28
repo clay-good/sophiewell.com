@@ -746,6 +746,8 @@
     { "phrases": ["ehra class", "modified ehra", "af symptom scale", "atrial fibrillation symptom class"],
       "tile": "ehra-af", "audience": "clinicians" },
     { "phrases": ["shanghai score", "shanghai brugada", "brugada syndrome diagnosis", "brugada diagnostic score"],
-      "tile": "shanghai-brugada", "audience": "clinicians" }
+      "tile": "shanghai-brugada", "audience": "clinicians" },
+    { "phrases": ["hlh 2004", "hlh criteria", "hemophagocytic lymphohistiocytosis criteria", "hlh diagnostic criteria"],
+      "tile": "hlh-2004", "audience": "clinicians" }
   ]
 }

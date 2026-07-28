@@ -1574,6 +1574,44 @@ Brings the exposed total to **1314 calculators across 430 modules**.
 ### lib/wayne-index-v527.js
 - `wayne-index`
 
+## Four-hundred-and-seventh wave — the HLH-2004 diagnostic criteria in lib/hlh-2004-v582.js (+1)
+
+`hlh-2004` (spec-v582) applies the revised diagnostic guidelines for hemophagocytic lymphohistiocytosis. A
+**companion gap on a different axis**: the catalog already carried `hscore-hlh`, which returns a
+*probability* of reactive hemophagocytic syndrome in adults. HLH-2004 is a *criteria checklist* from a
+pediatric treatment protocol — different construction, different population, different output.
+
+**There are two paths, and the first bypasses the criteria entirely.** Table I reads "The diagnosis HLH can
+be established if one of either 1 or 2 below is fulfilled", where 1 is a molecular diagnosis consistent with
+HLH. A patient with a confirmed causative mutation **meets the guideline with zero of the eight criteria**.
+An implementation that only counts criteria reports that patient backwards, and a test asserts the zero-of-
+eight molecular case.
+
+**"No evidence of malignancy" is a ninth bullet, not a ninth criterion.** The primary table prints it in list
+(A) alongside the clinical items, but the requirement is five of *eight*. Counting it gives nine and inflates
+every total by one. The tool asks it, reports it, and deliberately does not count it — a test asserts the
+answer does not move the count, and a second asserts the maximum reachable total is eight.
+
+**The primary gives no fever threshold.** Table I says only "Fever". The 38.5 °C figure carried by many
+widely reproduced secondary tables is not in the source, so the tile asks fever as a clinical judgment and
+says where the expected number came from rather than silently adopting it.
+
+**Pending is not the same as not met.** NK-cell activity and soluble CD25 are send-out assays that routinely
+return days after the question is asked, and NK-cell activity has no universal cutoff — the source defines it
+"according to local laboratory reference". With 4 met and 2 pending the tool returns *not yet decided*, not a
+negative, because reporting "does not meet HLH-2004" while assays are outstanding is the dangerous error
+here: untreated HLH is rapidly fatal.
+
+**Two of the eight are themselves compound** — cytopenias require 2 of 3 lineages (with a separate hemoglobin
+threshold for infants under 4 weeks), and the fourth criterion is an OR of triglycerides and fibrinogen — so
+the eight criteria are not eight yes/no questions. Every unit conversion used is exact and stated. New
+adapter module registered in `mcp/catalog.js`; its golden probe ("hlh 2004 diagnostic criteria hemophagocytic
+lymphohistiocytosis") is promoted now that the tile is in the MCP-exposed registry. Brings the exposed total
+to **1369 calculators across 485 modules**.
+
+### lib/hlh-2004-v582.js
+- `hlh-2004`
+
 ## Four-hundred-and-sixth wave — the Shanghai Score System for Brugada syndrome in lib/shanghai-brugada-v581.js (+1)
 
 `shanghai-brugada` (spec-v581) applies the Shanghai Score System, the diagnostic criteria for Brugada
@@ -8397,6 +8435,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/shanghai-brugada-v581.js
 - `shanghai-brugada`
+
+### lib/hlh-2004-v582.js
+- `hlh-2004`
 
 ### lib/tb-testing.js
 - `tb-testing`

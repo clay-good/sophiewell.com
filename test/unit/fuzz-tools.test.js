@@ -556,6 +556,7 @@ import * as nancyIndexV578 from '../../lib/nancy-index-v578.js';
 import * as robartsIndexV579 from '../../lib/robarts-index-v579.js';
 import * as ehraAfV580 from '../../lib/ehra-af-v580.js';
 import * as shanghaiBrugadaV581 from '../../lib/shanghai-brugada-v581.js';
+import * as hlh2004V582 from '../../lib/hlh-2004-v582.js';
 import * as tbTesting from '../../lib/tb-testing.js';
 
 const MODULES = {
@@ -1057,6 +1058,7 @@ const MODULES = {
   'robarts-index-v579.js': robartsIndexV579,
   'ehra-af-v580.js': ehraAfV580,
   'shanghai-brugada-v581.js': shanghaiBrugadaV581,
+  'hlh-2004-v582.js': hlh2004V582,
   'tb-testing.js': tbTesting,
 };
 
