@@ -484,6 +484,7 @@ import globalArdsV570 from './adapters/global-ards-v570.js';
 import eFacedV571 from './adapters/e-faced-v571.js';
 import heavenCriteriaV572 from './adapters/heaven-criteria-v572.js';
 import mapiAsthmaV573 from './adapters/mapi-asthma-v573.js';
+import compera2V574 from './adapters/compera-2-v574.js';
 import tbTesting from './adapters/tb-testing.js';
 import labInterpret from './adapters/lab-interpret.js';
 import decisionRulesV258 from './adapters/decision-rules-v258.js';
@@ -962,6 +963,7 @@ const ADAPTER_MODULES = [
   ['e-faced-v571', eFacedV571],
   ['heaven-criteria-v572', heavenCriteriaV572],
   ['mapi-asthma-v573', mapiAsthmaV573],
+  ['compera-2-v574', compera2V574],
   ['tb-testing', tbTesting],
   ['lab-interpret', labInterpret],
   ['decision-rules-v258', decisionRulesV258],

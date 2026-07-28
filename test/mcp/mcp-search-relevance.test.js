@@ -606,6 +606,7 @@ const PROBES = [
   ['e-faced bronchiectasis exacerbation score', ['e-faced']],
   ['heaven criteria difficult emergency airway', ['heaven-criteria']],
   ['modified asthma predictive index preschool wheeze', ['mapi-asthma']],
+  ['compera four stratum pulmonary hypertension risk', ['compera-2']],
 ];
 
 test(`every golden probe routes an acceptable tile into the top ${TOP_N}`, () => {

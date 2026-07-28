@@ -1574,6 +1574,40 @@ Brings the exposed total to **1314 calculators across 430 modules**.
 ### lib/wayne-index-v527.js
 - `wayne-index`
 
+## Three-hundred-ninety-ninth wave — COMPERA 2.0 in lib/compera-2-v574.js (+1)
+
+`compera-2` (spec-v574) grades up to three variables 1-4 and takes the mean, rounded to the nearest integer.
+A **companion and successor at once**: `reveal-lite-2` is in the catalog, and COMPERA 2.0 is the European
+counterpart adopted by the 2022 guidelines — which by its own footnote *borrows* REVEAL Lite 2's 6MWD and
+BNP cut points, so the two are not independent.
+
+**WHO functional class has only three grades in a four-grade model.** I/II = 1, III = 2, IV = 3. **No
+functional class scores 4.** A four-column table whose first row stops at three columns looks like a missing
+cell, and "completing" it by mapping class IV to 4 would push every such patient a whole stratum higher. A
+test asserts grade 4 is unreachable on that row.
+
+**Three rows have numeric gaps, because the table is written as though every input is an integer.** 6MWD
+runs 440-320 then 319-165; NT-proBNP to 649 then from 650; BNP to 199 then from 200. A walk distance of
+319.5 m falls in **no** band — and walk distances are routinely recorded to the metre. The tool **refuses**
+such a value and names the gap rather than rounding the patient into whichever neighbour is nearer.
+
+**The denominator is the number of variables actually available, not a fixed three.** A patient with two of
+three is scorable; treating a missing variable as zero would drag every incomplete patient toward low risk.
+
+**BNP and NT-proBNP are mutually exclusive with a stated precedence — NT-proBNP wins.** They are not two
+variables that both count; scoring both would give the peptide axis double the weight of functional class
+and walk distance combined.
+
+**The rounding rule differs from the three-stratum model**, which uses banded rounding with different
+boundaries — reusing one for the other is the classic error. And **this paper publishes no per-stratum
+mortality percentages of its own**, so none is quoted: the circulating four-strata figures come from other
+cohorts. New adapter module registered in `mcp/catalog.js`; its golden probe ("compera four stratum
+pulmonary hypertension risk") is promoted now that the tile is in the MCP-exposed registry. Brings the
+exposed total to **1361 calculators across 477 modules**.
+
+### lib/compera-2-v574.js
+- `compera-2`
+
 ## Three-hundred-ninety-eighth wave — the Modified Asthma Predictive Index in lib/mapi-asthma-v573.js (+1)
 
 `mapi-asthma` (spec-v573) fills an axis the catalog lacked entirely: `asthma-control-test`, `childhood-act`,
@@ -8111,6 +8145,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/mapi-asthma-v573.js
 - `mapi-asthma`
+
+### lib/compera-2-v574.js
+- `compera-2`
 
 ### lib/tb-testing.js
 - `tb-testing`
