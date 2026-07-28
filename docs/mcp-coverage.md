@@ -1574,6 +1574,38 @@ Brings the exposed total to **1314 calculators across 430 modules**.
 ### lib/wayne-index-v527.js
 - `wayne-index`
 
+## Four-hundred-and-second wave — MAGIC acute GVHD staging in lib/magic-gvhd-v577.js (+1)
+
+`magic-gvhd` (spec-v577) stages four organs and reads a grade off a pattern table. A **revised-successor
+gap**: the catalog ships `gvhd-grade` (Modified Glucksberg), and MAGIC is the consortium standard that
+superseded it for data collection and is the grading used in the ruxolitinib registration trials.
+
+**The grade is not a maximum over the organ stages, and treating it as one is the central error.** Stage-3
+skin **alone** is grade II; stage-2 lower GI **alone** is grade III. A *lower* organ stage therefore
+produces a *higher* overall grade, because the table asks **which** organ is involved rather than how badly.
+A test constructs exactly that inversion — a max() implementation would get both cases wrong, in opposite
+directions.
+
+**Upper GI has only two states, 0 and 1.** There is no upper-GI stage 2, 3 or 4, so a uniform 0-4 enum per
+organ invents three unreachable values (the tool refuses 2, 3 and 4). And in the grade III and IV rules
+upper GI appears as a **constraint** — "with stage 0-1 upper GI" — which, since 1 is its maximum, can never
+be violated: **upper GI can never by itself drive grade III or IV.**
+
+**Lower-GI stage 4 is qualitative and explicitly overrides stool volume** (severe pain ± ileus, or grossly
+bloody stool, *regardless of volume*), so a volume-derived stage could never reach it. The volume criteria
+also have **separate adult and pediatric denominators** and two alternative measures within each — volume or
+episode count — that can disagree for the same patient, with **no tie-break rule** in the source. That is
+why the tool takes the stage rather than a volume.
+
+**Skin stage 4 is a conjunction, not a threshold**: erythroderma >50% BSA **plus** bullae **plus** >5%
+desquamation — generalized erythroderma without bullae stays at stage 3. Skin is scored on active erythema
+only. New adapter module registered in `mcp/catalog.js`; its golden probe ("magic acute gvhd staging grade")
+is promoted now that the tile is in the MCP-exposed registry. Brings the exposed total to **1364 calculators
+across 480 modules**.
+
+### lib/magic-gvhd-v577.js
+- `magic-gvhd`
+
 ## Four-hundred-and-first wave — the Ablett tetanus classification in lib/ablett-tetanus-v576.js (+1)
 
 `ablett-tetanus` (spec-v576) grades **established** tetanus. A **companion-axis gap**: the catalog's
@@ -8216,6 +8248,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/ablett-tetanus-v576.js
 - `ablett-tetanus`
+
+### lib/magic-gvhd-v577.js
+- `magic-gvhd`
 
 ### lib/tb-testing.js
 - `tb-testing`

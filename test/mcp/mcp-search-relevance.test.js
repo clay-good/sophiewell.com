@@ -609,6 +609,7 @@ const PROBES = [
   ['compera four stratum pulmonary hypertension risk', ['compera-2']],
   ['peradeniya organophosphorus poisoning severity scale', ['peradeniya-op']],
   ['ablett tetanus severity grade', ['ablett-tetanus']],
+  ['magic acute gvhd staging grade', ['magic-gvhd']],
 ];
 
 test(`every golden probe routes an acceptable tile into the top ${TOP_N}`, () => {
