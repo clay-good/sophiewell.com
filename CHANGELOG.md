@@ -6,6 +6,23 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v538 — NEOS score (anti-NMDAR encephalitis one-year status) tile, 1387 → 1388)
+
+- New `neos` tile (group G): the five-predictor prognostic score for anti-NMDA receptor encephalitis —
+  ICU admission, no treatment within 4 weeks of onset, no improvement 4 weeks after treatment, abnormal MRI,
+  CSF white cells >20/µL — predicting a modified Rankin Scale of ≥3 at one year. `neos`, `nmdar`, `balu`, and
+  `titulaer` were all zero-hit; the `encephalitis` hits belong to the Bickerstaff *diagnostic* tile, a
+  different disease and a different question. **The tile reports only the two probability bands the source
+  actually published** (3% at 0-1, 69% at 4-5) and returns **null for a score of 2 or 3**, because the
+  derivation pooled small groups and printed no figure there. Numbers for those scores circulate but appear
+  in no primary source, so inventing the middle of a five-point scale is refused explicitly and a test
+  asserts no stray percentage appears. The **abnormal-MRI predictor keeps the source's deliberately loose
+  definition** (the referring physician's opinion), since tightening it would score a different variable than
+  was validated. **Two predictors need four weeks to have passed, so the score is not available at
+  presentation.** And the safety frame every band carries: prolonged severe illness in this disease is
+  compatible with good recovery over 18-24 months, so a high score is **not a basis for withdrawing or
+  limiting treatment**. See [spec-v538](docs/spec-v538.md).
+
 ### Added (spec-v537 — ALSFRS-R (ALS Functional Rating Scale, Revised) tile, 1386 → 1387)
 
 - New `alsfrs-r` tile (group G): the twelve-item ALS function scale, total **0-48**. **Whole-disease gap** —

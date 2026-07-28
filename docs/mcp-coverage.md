@@ -1574,6 +1574,34 @@ Brings the exposed total to **1314 calculators across 430 modules**.
 ### lib/wayne-index-v527.js
 - `wayne-index`
 
+## Three-hundred-sixty-third wave — the NEOS score in lib/neos-v538.js (+1)
+
+`neos` (spec-v538) counts the five NEOS predictors and returns the published probability of poor one-year
+functional status.
+
+**The compute result returns `probability: null` for a score of 2 or 3, and that is the design point.** The
+derivation published a probability only for 0 or 1 (3%) and 4 or 5 (69%); it pooled groups of twenty patients
+or fewer with adjacent scores to avoid unstable estimates, so no figure for 2 or 3 is printed anywhere in it
+or in the validation literature. Figures for those scores **do** circulate — an agent asked "what is the
+probability for NEOS 3?" will find one and repeat it. So the tool returns an explicit null plus a
+`probabilityPublished` boolean and a sentence explaining the omission, which is more useful, and more honest,
+than a number nobody published.
+
+The **abnormal-MRI field keeps the source's loose definition** and its label says so: the derivation
+classified an MRI as abnormal on the referring physician's opinion, and an agent substituting a specific
+radiologic criterion would be scoring a different variable from the one validated. The summary also states
+that the score **cannot be computed at presentation** — two predictors require four weeks to have elapsed, so
+an agent asked to score a newly admitted patient should say so rather than marking those predictors absent,
+which would return a falsely reassuring total. Every band carries the safety frame: a high score identifies a
+group with worse average outcomes, is not an individual prediction, and is **not a basis for withdrawing or
+limiting treatment** — in a disease where prolonged severe illness is compatible with good recovery over
+eighteen to twenty-four months, premature pessimism is the specific harm. New adapter module registered in
+`mcp/catalog.js`; its golden probe ("neos score nmdar encephalitis outcome") is promoted now that the tile is
+in the MCP-exposed registry. Brings the exposed total to **1325 calculators across 441 modules**.
+
+### lib/neos-v538.js
+- `neos`
+
 ## Three-hundred-sixty-second wave — the ALSFRS-R in lib/alsfrs-r-v537.js (+1)
 
 `alsfrs-r` (spec-v537) rates the twelve ALSFRS-R functions into a total of 0-48 and returns the respiratory
@@ -6867,6 +6895,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/alsfrs-r-v537.js
 - `alsfrs-r`
+
+### lib/neos-v538.js
+- `neos`
 
 ### lib/tb-testing.js
 - `tb-testing`

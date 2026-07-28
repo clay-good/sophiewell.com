@@ -658,6 +658,8 @@
     { "phrases": ["hardman index", "hardman", "ruptured aaa mortality", "ruptured aortic aneurysm score", "raaa risk factors"],
       "tile": "hardman", "audience": "clinicians" },
     { "phrases": ["alsfrs", "alsfrs r", "als functional rating scale", "motor neuron disease function score", "amyotrophic lateral sclerosis function scale"],
-      "tile": "alsfrs-r", "audience": "clinicians" }
+      "tile": "alsfrs-r", "audience": "clinicians" },
+    { "phrases": ["neos score", "anti nmdar encephalitis outcome", "nmdar encephalitis prognosis", "autoimmune encephalitis outcome score"],
+      "tile": "neos", "audience": "clinicians" }
   ]
 }
