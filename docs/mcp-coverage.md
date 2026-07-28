@@ -1574,6 +1574,35 @@ Brings the exposed total to **1314 calculators across 430 modules**.
 ### lib/wayne-index-v527.js
 - `wayne-index`
 
+## Four-hundred-and-first wave — the Ablett tetanus classification in lib/ablett-tetanus-v576.js (+1)
+
+`ablett-tetanus` (spec-v576) grades **established** tetanus. A **companion-axis gap**: the catalog's
+existing `tetanus` tile is the *prophylaxis decision tree* — wound management and immunization in someone
+who does **not** have tetanus. The two never apply to the same patient at the same moment.
+
+**Grade 4 is not a distinct clinical picture — it is grade 3 plus a modifier.** The original defines it
+literally as grade 3 *with* severe autonomic instability, so the classification is **three severity levels
+and one boolean**, which is why published series report "Ablett III/IV" as a single stratum. The tool takes
+the picture as 1-3 and the modifier separately; autonomic instability promotes **only** grade 3, and at
+grades 1-2 it is reported without creating a grade 4. Grade 4 cannot be selected directly.
+
+**The vital-sign figures are illustrative, not thresholds — and they are not monotone.** Grade 2 mentions
+only ventilatory frequency >30; grade 3 adds pulse >120 *and* raises frequency to >40. A patient with RR 35
+and pulse 130 satisfies **neither** row cleanly. Grading is a gestalt judgment over the descriptor set, so
+this tool deliberately accepts **no vital signs at all** — deriving a grade from a respiratory rate would
+invent a threshold test the classification does not contain. A test passes vital signs and asserts the
+result is unchanged.
+
+**It is a descriptor, not a score**: no points, no sum, and no grade 0 — there is no grade for a patient
+without tetanus. Grade 1 is the only grade with no numeric criterion. Wording varies between reproductions
+of the 1967 original ("no" vs "little or no" dysphagia) while every number is identical, so those are
+transcription variants and the tile names the reproduction it quotes. New adapter module registered in
+`mcp/catalog.js`; its golden probe ("ablett tetanus severity grade") is promoted now that the tile is in the
+MCP-exposed registry. Brings the exposed total to **1363 calculators across 479 modules**.
+
+### lib/ablett-tetanus-v576.js
+- `ablett-tetanus`
+
 ## Four-hundredth wave — the POP scale in lib/peradeniya-op-v575.js (+1)
 
 `peradeniya-op` (spec-v575) grades acute organophosphate poisoning severity from six parameters, maximum 11.
@@ -8184,6 +8213,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/peradeniya-op-v575.js
 - `peradeniya-op`
+
+### lib/ablett-tetanus-v576.js
+- `ablett-tetanus`
 
 ### lib/tb-testing.js
 - `tb-testing`

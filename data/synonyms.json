@@ -734,6 +734,8 @@
     { "phrases": ["compera 2.0", "four strata pah risk", "esc ers pulmonary hypertension risk", "pah follow up risk"],
       "tile": "compera-2", "audience": "clinicians" },
     { "phrases": ["pop scale", "peradeniya organophosphorus", "organophosphate poisoning severity", "op poisoning grade"],
-      "tile": "peradeniya-op", "audience": "clinicians" }
+      "tile": "peradeniya-op", "audience": "clinicians" },
+    { "phrases": ["ablett", "tetanus severity", "tetanus grade", "established tetanus classification"],
+      "tile": "ablett-tetanus", "audience": "clinicians" }
   ]
 }

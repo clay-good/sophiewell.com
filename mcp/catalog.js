@@ -486,6 +486,7 @@ import heavenCriteriaV572 from './adapters/heaven-criteria-v572.js';
 import mapiAsthmaV573 from './adapters/mapi-asthma-v573.js';
 import compera2V574 from './adapters/compera-2-v574.js';
 import peradeniyaOpV575 from './adapters/peradeniya-op-v575.js';
+import ablettTetanusV576 from './adapters/ablett-tetanus-v576.js';
 import tbTesting from './adapters/tb-testing.js';
 import labInterpret from './adapters/lab-interpret.js';
 import decisionRulesV258 from './adapters/decision-rules-v258.js';
@@ -966,6 +967,7 @@ const ADAPTER_MODULES = [
   ['mapi-asthma-v573', mapiAsthmaV573],
   ['compera-2-v574', compera2V574],
   ['peradeniya-op-v575', peradeniyaOpV575],
+  ['ablett-tetanus-v576', ablettTetanusV576],
   ['tb-testing', tbTesting],
   ['lab-interpret', labInterpret],
   ['decision-rules-v258', decisionRulesV258],
