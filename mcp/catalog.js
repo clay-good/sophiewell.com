@@ -462,6 +462,7 @@ import ppmEoaiV548 from './adapters/ppm-eoai-v548.js';
 import poseidonV549 from './adapters/poseidon-v549.js';
 import glassStageV550 from './adapters/glass-stage-v550.js';
 import irecistV551 from './adapters/irecist-v551.js';
+import snot22V552 from './adapters/snot22-v552.js';
 import tbTesting from './adapters/tb-testing.js';
 import labInterpret from './adapters/lab-interpret.js';
 import decisionRulesV258 from './adapters/decision-rules-v258.js';
@@ -918,6 +919,7 @@ const ADAPTER_MODULES = [
   ['poseidon-v549', poseidonV549],
   ['glass-stage-v550', glassStageV550],
   ['irecist-v551', irecistV551],
+  ['snot22-v552', snot22V552],
   ['tb-testing', tbTesting],
   ['lab-interpret', labInterpret],
   ['decision-rules-v258', decisionRulesV258],

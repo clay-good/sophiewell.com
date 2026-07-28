@@ -686,6 +686,8 @@
     { "phrases": ["glass stage", "global limb anatomic staging", "femoropopliteal infrapopliteal grade", "clti anatomic stage"],
       "tile": "glass-stage", "audience": "clinicians" },
     { "phrases": ["irecist", "immune response criteria", "pseudoprogression immunotherapy", "iupd icpd"],
-      "tile": "irecist", "audience": "clinicians" }
+      "tile": "irecist", "audience": "clinicians" },
+    { "phrases": ["snot 22", "sinonasal outcome test", "sinus symptom score", "rhinosinusitis quality of life"],
+      "tile": "snot22", "audience": "clinicians" }
   ]
 }

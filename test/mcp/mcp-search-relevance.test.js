@@ -584,6 +584,7 @@ const PROBES = [
   ['poseidon group low prognosis ivf', ['poseidon']],
   ['glass anatomic stage limb threatening ischemia', ['glass-stage']],
   ['irecist immunotherapy response pseudoprogression', ['irecist']],
+  ['snot 22 sinonasal outcome test score', ['snot22']],
 ];
 
 test(`every golden probe routes an acceptable tile into the top ${TOP_N}`, () => {

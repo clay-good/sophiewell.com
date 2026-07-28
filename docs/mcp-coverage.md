@@ -1574,6 +1574,41 @@ Brings the exposed total to **1314 calculators across 430 modules**.
 ### lib/wayne-index-v527.js
 - `wayne-index`
 
+## Three-hundred-seventy-seventh wave — the SNOT-22 in lib/snot22-v552.js (+1)
+
+`snot22` (spec-v552) sums 22 patient-rated items, each 0 to 5 over the past two weeks, for a total of 0 to
+110. A **companion** to `lund-mackay` rather than a duplicate: that stages the CT scan, this asks the
+patient, and the two correlate poorly with one another by design, so a near-normal CT can accompany a severe
+symptom burden and the reverse.
+
+**A score below 8 is not "mild", and an agent will call it mild unless told otherwise.** The stratification
+defines mild as 8 to 20 inclusive, moderate as above 20 up to 50, and severe as above 50 — and defines
+*nothing* below 8, describing a score in that range as having no clinically significant symptoms. A
+three-band scale whose lowest band starts at 8 rather than 0 looks like an off-by-one to fix. It is not:
+rounding 0-7 into mild would invent a band the source does not contain and would file a symptom-free patient
+alongside one scoring 20. The tool returns a distinct band with `namedBand: false`, and a test pins every
+boundary.
+
+**The bands are not part of the instrument.** The 22 items and their anchors are the Washington University
+questionnaire, which defines no severity bands at all; the cut points come from a separate 2016
+stratification study of 65 patients. The summary says so, because an agent that believes the instrument
+ships with bands will over-trust them and will not flag the small derivation sample.
+
+**The form's "most important items" selection is never scored.** It asks the patient to mark up to five
+items most affecting their health — a separate checkbox column that is not summed, not weighted, and does
+not modify any item's contribution. An agent that up-weighted the marked items would return a number that is
+not a SNOT-22 score. The tool records the selection, caps it at five, and a test asserts the total is
+unchanged by it.
+
+The MCID of 8.9 is stated as a property of a **comparison** between two scores from the same patient, not of
+a single total, since attached to a lone score it would read as a threshold it is not. New adapter module
+registered in `mcp/catalog.js`; its golden probe ("snot 22 sinonasal outcome test score") is promoted now
+that the tile is in the MCP-exposed registry. Brings the exposed total to **1339 calculators across 455
+modules**.
+
+### lib/snot22-v552.js
+- `snot22`
+
 ## Three-hundred-seventy-sixth wave — the iRECIST time-point response in lib/irecist-v551.js (+1)
 
 `irecist` (spec-v551) assigns the iRECIST time-point response for trials of immunotherapeutics. A
@@ -7333,6 +7368,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/irecist-v551.js
 - `irecist`
+
+### lib/snot22-v552.js
+- `snot22`
 
 ### lib/tb-testing.js
 - `tb-testing`

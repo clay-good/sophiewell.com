@@ -526,6 +526,7 @@ import * as ppmEoaiV548 from '../../lib/ppm-eoai-v548.js';
 import * as poseidonV549 from '../../lib/poseidon-v549.js';
 import * as glassStageV550 from '../../lib/glass-stage-v550.js';
 import * as irecistV551 from '../../lib/irecist-v551.js';
+import * as snot22V552 from '../../lib/snot22-v552.js';
 import * as tbTesting from '../../lib/tb-testing.js';
 
 const MODULES = {
@@ -997,6 +998,7 @@ const MODULES = {
   'poseidon-v549.js': poseidonV549,
   'glass-stage-v550.js': glassStageV550,
   'irecist-v551.js': irecistV551,
+  'snot22-v552.js': snot22V552,
   'tb-testing.js': tbTesting,
 };
 
