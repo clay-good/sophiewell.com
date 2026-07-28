@@ -466,6 +466,7 @@ import snot22V552 from './adapters/snot22-v552.js';
 import puqe24V553 from './adapters/puqe24-v553.js';
 import gagsV554 from './adapters/gags-v554.js';
 import thiV555 from './adapters/thi-v555.js';
+import vasiV556 from './adapters/vasi-v556.js';
 import tbTesting from './adapters/tb-testing.js';
 import labInterpret from './adapters/lab-interpret.js';
 import decisionRulesV258 from './adapters/decision-rules-v258.js';
@@ -926,6 +927,7 @@ const ADAPTER_MODULES = [
   ['puqe24-v553', puqe24V553],
   ['gags-v554', gagsV554],
   ['thi-v555', thiV555],
+  ['vasi-v556', vasiV556],
   ['tb-testing', tbTesting],
   ['lab-interpret', labInterpret],
   ['decision-rules-v258', decisionRulesV258],

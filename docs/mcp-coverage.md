@@ -1574,6 +1574,39 @@ Brings the exposed total to **1314 calculators across 430 modules**.
 ### lib/wayne-index-v527.js
 - `wayne-index`
 
+## Three-hundred-eighty-first wave — the Vitiligo Area Scoring Index in lib/vasi-v556.js (+1)
+
+`vasi` (spec-v556) sums, over body regions, the hand units of involvement multiplied by the residual
+depigmentation. A **whole-concept gap** — the catalog had no vitiligo content of any kind.
+
+**Depigmentation is a seven-level ordinal ladder, not a free percentage.** Only 0, 10, 25, 50, 75, 90 and
+100 are permitted, and the assessor snaps to the nearest *by description* rather than by measuring. An agent
+handed "about 60 percent depigmented" must choose 50 or 75, not pass 60. The ladder is deliberately coarse
+because the underlying judgment is a visual comparison — accepting an arbitrary percentage would look more
+precise while scoring a different instrument. The enum enforces it and a test rejects five plausible
+off-ladder values.
+
+**The area unit is patient-relative.** One hand unit is the *patient's own* palm including fingers, defined
+as 1% of their body surface area — not a fixed number of square centimetres. The same patch is a different
+number of units on a child and a large adult, which is intended: the score is a proportion of that person's
+body. The whole body is therefore 100 units, and the tool refuses totals above that.
+
+**The region set diverged, and the tool names the one it implements.** The original used five regions with
+upper extremities *including* the axillae and lower extremities *including* the inguinal regions and
+buttocks; modern protocols use six *mutually exclusive* regions where upper extremities **exclude** the
+hands and lower extremities **exclude** the feet. Under the original five a hand could be counted twice.
+This implements the six-region set and returns `regionSet`, because a VASI reported without its region set
+is not reproducible.
+
+**T-VASI and F-VASI are different scales and must never share a band table.** Total-body runs 0-100; facial
+runs 0-3, because the face is only about 3% of body surface area — so a facial 2 is severe and a total-body
+2 is trivial. This computes the total-body score and says so. New adapter module registered in
+`mcp/catalog.js`; its golden probe ("vitiligo area scoring index vasi") is promoted now that the tile is in
+the MCP-exposed registry. Brings the exposed total to **1343 calculators across 459 modules**.
+
+### lib/vasi-v556.js
+- `vasi`
+
 ## Three-hundred-eightieth wave — the Tinnitus Handicap Inventory in lib/thi-v555.js (+1)
 
 `thi` (spec-v555) sums 25 items, each answered yes (4), sometimes (2) or no (0), for a total of 0 to 100,
@@ -7468,6 +7501,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/thi-v555.js
 - `thi`
+
+### lib/vasi-v556.js
+- `vasi`
 
 ### lib/tb-testing.js
 - `tb-testing`

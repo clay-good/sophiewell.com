@@ -694,6 +694,8 @@
     { "phrases": ["gags", "global acne grading system", "acne severity score", "acne grading"],
       "tile": "gags", "audience": "clinicians" },
     { "phrases": ["thi", "tinnitus handicap inventory", "tinnitus severity score", "ringing in ears questionnaire"],
-      "tile": "thi", "audience": "clinicians" }
+      "tile": "thi", "audience": "clinicians" },
+    { "phrases": ["vasi", "vitiligo area scoring index", "vitiligo extent score", "depigmentation area score"],
+      "tile": "vasi", "audience": "clinicians" }
   ]
 }
