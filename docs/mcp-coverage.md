@@ -1574,6 +1574,37 @@ Brings the exposed total to **1314 calculators across 430 modules**.
 ### lib/wayne-index-v527.js
 - `wayne-index`
 
+## Three-hundred-ninety-fifth wave — the New Global Definition of ARDS in lib/global-ards-v570.js (+1)
+
+`global-ards` (spec-v570) applies the 2023/2024 global definition. A **revised-successor gap**: the catalog
+already has `berlin-ards`, and this is its successor — adding a **nonintubated** category on high-flow or
+noninvasive support and a **resource-limited** category needing neither a blood gas nor positive pressure,
+and admitting pulse oximetry and lung ultrasound as evidence.
+
+**Nonintubated ARDS has no severity grading at all.** Mild, moderate and severe exist **only** for intubated
+ARDS — there is no such thing as "moderate nonintubated ARDS". A definition that grades one branch invites
+grading all of them, so the tool returns `severity: null` outside the intubated branch, and a test sweeps
+five nonintubated ratios asserting none produces a grade.
+
+**The resource-limited branch is a terminal dead end, not a milder category.** No PEEP requirement, no
+minimum oxygen flow, SpO2:FiO2 only, no severity grade. A patient meeting it has not been shown to be less
+sick — only to have been assessed with fewer resources. The tool refuses a PaO2:FiO2 ratio in that branch.
+
+**The saturation ratio is invalid above an SpO2 of 97%, and that is a hard gate.** Above 97% the saturation
+sits on the flat part of the dissociation curve and the ratio stops tracking oxygenation, so the tool
+**refuses to assess** rather than returning a confident number from a measurement the source excludes. A
+test asserts 97 is accepted and 99 is refused.
+
+**Every intubated severity category requires a minimum PEEP of 5 cm H2O** — severity is not read off the
+ratio alone. The nonintubated branch has its own floor of HFNO ≥30 L/min or NIV/CPAP ≥5 cm H2O. Both
+corrections the source specifies are carried: estimated FiO2 = ambient + 0.03 × L/min, and above 1,000 m the
+ratio is multiplied by barometric pressure ÷ 760. New adapter module registered in `mcp/catalog.js`; its
+golden probe ("global definition ards 2024 nonintubated") is promoted now that the tile is in the
+MCP-exposed registry. Brings the exposed total to **1357 calculators across 473 modules**.
+
+### lib/global-ards-v570.js
+- `global-ards`
+
 ## Three-hundred-ninety-fourth wave — GAPP in lib/gapp-v569.js (+1)
 
 `gapp` (spec-v569) grades the metastatic potential of a resected pheochromocytoma or paraganglioma, 0-10. A
@@ -7972,6 +8003,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/gapp-v569.js
 - `gapp`
+
+### lib/global-ards-v570.js
+- `global-ards`
 
 ### lib/tb-testing.js
 - `tb-testing`

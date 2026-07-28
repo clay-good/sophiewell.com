@@ -544,6 +544,7 @@ import * as nihCpsiV566 from '../../lib/nih-cpsi-v566.js';
 import * as igcccgV567 from '../../lib/igcccg-v567.js';
 import * as thakarAkiV568 from '../../lib/thakar-aki-v568.js';
 import * as gappV569 from '../../lib/gapp-v569.js';
+import * as globalArdsV570 from '../../lib/global-ards-v570.js';
 import * as tbTesting from '../../lib/tb-testing.js';
 
 const MODULES = {
@@ -1033,6 +1034,7 @@ const MODULES = {
   'igcccg-v567.js': igcccgV567,
   'thakar-aki-v568.js': thakarAkiV568,
   'gapp-v569.js': gappV569,
+  'global-ards-v570.js': globalArdsV570,
   'tb-testing.js': tbTesting,
 };
 

@@ -722,6 +722,8 @@
     { "phrases": ["thakar score", "cleveland clinic score", "renal failure after cardiac surgery", "dialysis risk cardiac surgery"],
       "tile": "thakar-aki", "audience": "clinicians" },
     { "phrases": ["gapp score", "pheochromocytoma grading", "paraganglioma metastatic potential", "adrenal tumor grade"],
-      "tile": "gapp", "audience": "clinicians" }
+      "tile": "gapp", "audience": "clinicians" },
+    { "phrases": ["global definition of ards", "new ards definition", "nonintubated ards", "ards 2024 criteria"],
+      "tile": "global-ards", "audience": "clinicians" }
   ]
 }
