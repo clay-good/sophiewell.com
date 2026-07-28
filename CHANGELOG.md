@@ -6,6 +6,23 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v532 — Columbia classification of FSGS (biopsy variant) tile, 1381 → 1382)
+
+- New `columbia-fsgs` tile (group G): the five-variant morphologic classification of focal segmental
+  glomerulosclerosis — collapsing, tip, cellular, perihilar, NOS. `fsgs`, `dagati`, `podocyte`, and
+  `collapsing` were all zero-hit. **It is not a score but a decision procedure**, and the tile takes the
+  *findings* and applies the precedence order itself, because the order is what is easy to get wrong.
+  **The tip veto is not a rank comparison, and that is the trap:** tip outranks perihilar, yet the tip
+  definition excludes **any** perihilar sclerosis, so a biopsy with both is *not* tip and falls through — a
+  test is deliberately built so a naive rank comparison would return `tip` while the correct answer is
+  `perihilar`. The perihilar threshold is **strictly** more than 50%, and the cellular "25% of tuft"
+  qualifier is **named but not enforced**, since it appears in narrative text rather than the criteria table
+  and enforcing it would make the tile stricter than the classification. No defining lesion yields **no
+  variant** rather than a default. It names a variant: it does not diagnose FSGS, and it does **not**
+  distinguish primary from secondary or adaptive disease — that distinction, made from clinical context,
+  proteinuria, and foot-process effacement on electron microscopy, is what decides whether immunosuppression
+  is considered. No outcome figure is attached to any variant. See [spec-v532](docs/spec-v532.md).
+
 ### Added (spec-v531 — EHIT class (endothermal heat-induced thrombosis) tile, 1380 → 1381)
 
 - New `ehit` tile (group G): the AVF/SVS classification of thrombus found on ultrasound within four weeks of

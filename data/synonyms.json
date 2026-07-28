@@ -646,6 +646,8 @@
     { "phrases": ["vesikari", "vesikari score", "gastroenteritis severity score", "rotavirus severity score", "diarrhea episode severity"],
       "tile": "vesikari", "audience": "clinicians" },
     { "phrases": ["ehit", "ehit class", "endothermal heat induced thrombosis", "thrombus after vein ablation", "post ablation thrombus extension"],
-      "tile": "ehit", "audience": "clinicians" }
+      "tile": "ehit", "audience": "clinicians" },
+    { "phrases": ["columbia fsgs", "fsgs variant", "focal segmental glomerulosclerosis variant", "collapsing glomerulopathy variant", "fsgs biopsy classification"],
+      "tile": "columbia-fsgs", "audience": "clinicians" }
   ]
 }

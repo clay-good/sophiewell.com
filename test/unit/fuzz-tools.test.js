@@ -506,6 +506,7 @@ import * as mestCV528 from '../../lib/mest-c-v528.js';
 import * as thwaitesV529 from '../../lib/thwaites-v529.js';
 import * as vesikariV530 from '../../lib/vesikari-v530.js';
 import * as ehitV531 from '../../lib/ehit-v531.js';
+import * as columbiaFsgsV532 from '../../lib/columbia-fsgs-v532.js';
 import * as tbTesting from '../../lib/tb-testing.js';
 
 const MODULES = {
@@ -957,6 +958,7 @@ const MODULES = {
   'thwaites-v529.js': thwaitesV529,
   'vesikari-v530.js': vesikariV530,
   'ehit-v531.js': ehitV531,
+  'columbia-fsgs-v532.js': columbiaFsgsV532,
   'tb-testing.js': tbTesting,
 };
 
