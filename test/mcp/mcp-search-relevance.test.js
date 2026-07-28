@@ -605,6 +605,7 @@ const PROBES = [
   ['global definition ards 2024 nonintubated', ['global-ards']],
   ['e-faced bronchiectasis exacerbation score', ['e-faced']],
   ['heaven criteria difficult emergency airway', ['heaven-criteria']],
+  ['modified asthma predictive index preschool wheeze', ['mapi-asthma']],
 ];
 
 test(`every golden probe routes an acceptable tile into the top ${TOP_N}`, () => {

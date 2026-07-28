@@ -1574,6 +1574,38 @@ Brings the exposed total to **1314 calculators across 430 modules**.
 ### lib/wayne-index-v527.js
 - `wayne-index`
 
+## Three-hundred-ninety-eighth wave — the Modified Asthma Predictive Index in lib/mapi-asthma-v573.js (+1)
+
+`mapi-asthma` (spec-v573) fills an axis the catalog lacked entirely: `asthma-control-test`, `childhood-act`,
+`pram-asthma` and `pass-asthma` all measure **current** control or severity, and none **predicts** anything.
+
+**This is not a score — it is a two-gate boolean.** Positive requires **both** at least 4 wheezing episodes
+in a year **and** either ≥1 major or ≥2 minor criteria. There is no total and no band table, and **criteria
+can never substitute for the frequency gate**: a test sets every criterion to yes with 3 episodes and
+asserts the result is still negative.
+
+**The change from the original API is a move, not an addition — "API plus food allergy" is wrong.** Allergic
+rhinitis was **removed** from the minors and replaced by milk/egg/peanut sensitization; aeroallergen
+sensitization was **added** as a third major. Both lists end at three items, but neither is a superset of its
+predecessor, because a criterion *left* the instrument. A test asserts rhinitis appears nowhere in the
+criteria.
+
+**The two indices use different wheeze denominators.** The original API gates on a 1-to-5 frequency *rating
+scale* (stringent ≥3); the mAPI gates on a literal *count* of ≥4 episodes/year. A rating of 3 is not four
+episodes. The original also has loose and stringent variants, which is why a quoted "API positive" is
+ambiguous; the mAPI has one form.
+
+The eosinophil criterion is **4% or more**, so exactly 4.0% meets it — one secondary source's "greater than
+4%" is a loose paraphrase, and the boundary is disclosed at that value. And **the horizon is years, not
+months**: the index is applied at ages 1-3 and validated against asthma at ages 6, 8 and 11 in a *high-risk*
+cohort, so its positive predictive value is strongly population-dependent. New adapter module registered in
+`mcp/catalog.js`; its golden probe ("modified asthma predictive index preschool wheeze") is promoted now
+that the tile is in the MCP-exposed registry. Brings the exposed total to **1360 calculators across 476
+modules**.
+
+### lib/mapi-asthma-v573.js
+- `mapi-asthma`
+
 ## Three-hundred-ninety-seventh wave — the HEAVEN criteria in lib/heaven-criteria-v572.js (+1)
 
 `heaven-criteria` (spec-v572) counts six criteria for a difficult **emergency** airway. A **companion gap**:
@@ -8076,6 +8108,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/heaven-criteria-v572.js
 - `heaven-criteria`
+
+### lib/mapi-asthma-v573.js
+- `mapi-asthma`
 
 ### lib/tb-testing.js
 - `tb-testing`

@@ -547,6 +547,7 @@ import * as gappV569 from '../../lib/gapp-v569.js';
 import * as globalArdsV570 from '../../lib/global-ards-v570.js';
 import * as eFacedV571 from '../../lib/e-faced-v571.js';
 import * as heavenCriteriaV572 from '../../lib/heaven-criteria-v572.js';
+import * as mapiAsthmaV573 from '../../lib/mapi-asthma-v573.js';
 import * as tbTesting from '../../lib/tb-testing.js';
 
 const MODULES = {
@@ -1039,6 +1040,7 @@ const MODULES = {
   'global-ards-v570.js': globalArdsV570,
   'e-faced-v571.js': eFacedV571,
   'heaven-criteria-v572.js': heavenCriteriaV572,
+  'mapi-asthma-v573.js': mapiAsthmaV573,
   'tb-testing.js': tbTesting,
 };
 

@@ -728,6 +728,8 @@
     { "phrases": ["e-faced", "efaced score", "bronchiectasis exacerbation risk", "faced exacerbation score"],
       "tile": "e-faced", "audience": "clinicians" },
     { "phrases": ["heaven criteria", "difficult emergency airway", "rsi difficult airway prediction", "emergency intubation difficulty"],
-      "tile": "heaven-criteria", "audience": "clinicians" }
+      "tile": "heaven-criteria", "audience": "clinicians" },
+    { "phrases": ["mapi", "asthma predictive index", "preschool wheeze asthma risk", "will my child develop asthma"],
+      "tile": "mapi-asthma", "audience": "clinicians" }
   ]
 }
