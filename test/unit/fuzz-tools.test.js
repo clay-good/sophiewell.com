@@ -508,6 +508,7 @@ import * as vesikariV530 from '../../lib/vesikari-v530.js';
 import * as ehitV531 from '../../lib/ehit-v531.js';
 import * as columbiaFsgsV532 from '../../lib/columbia-fsgs-v532.js';
 import * as renalAnginaV533 from '../../lib/renal-angina-v533.js';
+import * as ridleyJoplingV534 from '../../lib/ridley-jopling-v534.js';
 import * as tbTesting from '../../lib/tb-testing.js';
 
 const MODULES = {
@@ -961,6 +962,7 @@ const MODULES = {
   'ehit-v531.js': ehitV531,
   'columbia-fsgs-v532.js': columbiaFsgsV532,
   'renal-angina-v533.js': renalAnginaV533,
+  'ridley-jopling-v534.js': ridleyJoplingV534,
   'tb-testing.js': tbTesting,
 };
 

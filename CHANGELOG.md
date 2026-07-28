@@ -6,6 +6,24 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v534 — Ridley-Jopling classification (leprosy spectrum) tile, 1383 → 1384)
+
+- New `ridley-jopling` tile (group G): the five-group immunologic spectrum of leprosy — TT, BT, BB, BL, LL —
+  plus indeterminate. **Whole-disease gap:** `ridley`, `jopling`, `leprosy`, `lepromatous`, and `bacillary`
+  were all zero-hit and the catalog had no leprosy content of any kind. It is **a spectrum ordered by
+  cell-mediated immune response, not a ladder of severity**, and the tile reports immunity, lesion pattern,
+  nerve involvement, lepromin response, and histology per group. **Indeterminate sits outside the five** and
+  is offered as a distinct answer with an `onSpectrum` flag rather than being filed as TT. **No bacterial
+  index number is attached to any group** — four independent reproductions give four different per-group
+  values, partly by quoting the bacterial index of *granuloma* rather than the smear index — so only the
+  direction is reported, alongside the BI scale itself, which is unambiguous. Two further disagreements (TT
+  nerve involvement, the LL Grenz zone) are resolved to wording all sources support. The copy carries the
+  **current** WHO operational rule, not just the crosswalk: **nerve involvement alone makes a case
+  multibacillary** even with few lesions, which stale references most often get wrong and which changes
+  treatment duration. It classifies an already-diagnosed case: it does not diagnose leprosy, cannot be
+  assigned from a clinical description alone, emits no regimen, and says nothing about leprosy reactions.
+  See [spec-v534](docs/spec-v534.md).
+
 ### Added (spec-v533 — Renal Angina Index (predicting severe AKI in children) tile, 1382 → 1383)
 
 - New `renal-angina` tile (group G): the risk × injury product predicting day-3 severe AKI in a critically

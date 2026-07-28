@@ -1574,6 +1574,36 @@ Brings the exposed total to **1314 calculators across 430 modules**.
 ### lib/wayne-index-v527.js
 - `wayne-index`
 
+## Three-hundred-fifty-ninth wave — the Ridley-Jopling leprosy classification in lib/ridley-jopling-v534.js (+1)
+
+`ridley-jopling` (spec-v534) maps a leprosy case to one of the five Ridley-Jopling groups, or to
+indeterminate, and returns the WHO operational crosswalk with it.
+
+**The enum includes `'I'` for indeterminate alongside the five groups**, because indeterminate leprosy sits
+*outside* the five-group spectrum. An enum of exactly five would force an agent to file an indeterminate case
+as TT, which misstates both the immunology and the prognosis. The result exposes an `onSpectrum` boolean so a
+caller can tell the two situations apart.
+
+**The tool returns no per-group bacterial index, and the summary says why.** Four independent reproductions
+give four different per-group BI values, partly because some quote the bacterial index of *granuloma* rather
+than the slit-skin smear index. Returning any one of them would manufacture a precision the literature does
+not have, and an agent would repeat it as fact. What *is* returned is the Ridley logarithmic **scale**, which
+is unambiguous, plus the direction across the spectrum.
+
+The summary carries the **current** WHO operational rule rather than just the crosswalk, because the rule has
+changed several times and stale references are common: a case is multibacillary if there are more than five
+skin lesions, **or** any nerve involvement, **or** bacilli on a smear — alternatives, not requirements — and
+**nerve involvement alone makes a case multibacillary** even with few lesions, which is the point most often
+gotten wrong and the one that changes treatment duration. The summary also states that the classification
+**cannot be assigned from a clinical description alone**, since the lepromin response and the histology are
+part of the definition: an agent handed a photograph or a symptom list cannot pick a group and should say so
+rather than guessing between BT and BB. New adapter module registered in `mcp/catalog.js`; its golden probe
+("ridley jopling leprosy classification") is promoted now that the tile is in the MCP-exposed registry.
+Brings the exposed total to **1321 calculators across 437 modules**.
+
+### lib/ridley-jopling-v534.js
+- `ridley-jopling`
+
 ## Three-hundred-fifty-eighth wave — the Renal Angina Index in lib/renal-angina-v533.js (+1)
 
 `renal-angina` (spec-v533) multiplies the risk stratum by the injury stratum and reports whether renal angina
@@ -6741,6 +6771,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/renal-angina-v533.js
 - `renal-angina`
+
+### lib/ridley-jopling-v534.js
+- `ridley-jopling`
 
 ### lib/tb-testing.js
 - `tb-testing`

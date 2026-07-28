@@ -650,6 +650,8 @@
     { "phrases": ["columbia fsgs", "fsgs variant", "focal segmental glomerulosclerosis variant", "collapsing glomerulopathy variant", "fsgs biopsy classification"],
       "tile": "columbia-fsgs", "audience": "clinicians" },
     { "phrases": ["renal angina index", "renal angina", "predict aki in children", "pediatric aki prediction score", "aki risk index picu"],
-      "tile": "renal-angina", "audience": "clinicians" }
+      "tile": "renal-angina", "audience": "clinicians" },
+    { "phrases": ["ridley jopling", "leprosy classification", "hansen disease spectrum", "lepromatous tuberculoid spectrum", "leprosy group classification"],
+      "tile": "ridley-jopling", "audience": "clinicians" }
   ]
 }
