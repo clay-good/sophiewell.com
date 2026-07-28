@@ -1574,6 +1574,45 @@ Brings the exposed total to **1314 calculators across 430 modules**.
 ### lib/wayne-index-v527.js
 - `wayne-index`
 
+## Four-hundred-and-sixth wave — the Shanghai Score System for Brugada syndrome in lib/shanghai-brugada-v581.js (+1)
+
+`shanghai-brugada` (spec-v581) applies the Shanghai Score System, the diagnostic criteria for Brugada
+syndrome, 0 to 9 points across four categories. A **name-collision gap**: the catalog already carried
+`brugada-vt`, the algorithm distinguishing ventricular tachycardia from SVT with aberrancy. Same surname,
+entirely different clinical question, and the diagnostic score was absent.
+
+**There is a hard gate that is not a score: at least one ECG finding is required.** This is the load-bearing
+fact. A patient with an aborted cardiac arrest (3), a first-degree relative with definite Brugada syndrome
+(2) and a probable pathogenic mutation (0.5) totals **5.5 points** — well above the 3.5 diagnostic threshold
+— and is **still non-diagnostic**, because the ECG category is empty. A test asserts exactly that patient.
+Any consumer that sums the categories and reads a band off the total is wrong, and wrong in the direction of
+**over-diagnosing** a condition whose management can include an implantable defibrillator.
+
+**The categories take their maximum; they do not sum within themselves.** Within the ECG, clinical-history
+and family-history categories only the single highest-scoring item counts — arrest plus nocturnal agonal
+respirations plus syncope is 3 for that category, not 6. Only the four categories are added together, which
+is why the tool asks one question per category rather than offering a checklist.
+
+**One item is age-conditional and silently disappears.** Atrial flutter or fibrillation without alternative
+etiology scores 0.5 **only under 30 years**; at 30 and above the item does not exist and the identical
+finding contributes nothing. The tool refuses to compute without an age when that item is selected, and says
+so when the age zeroes it.
+
+**Two family-history items are unusual as published**: the definite-Brugada item counts **second-degree**
+relatives, and the sudden-death item requires a **negative autopsy** — an absence of finding scored as a
+positive input, so an un-autopsied death does not qualify.
+
+**Genotype is deliberately de-weighted** to 0.5, the same as the weakest clinical item and one seventh of a
+spontaneous type 1 pattern, and it cannot open the ECG gate. And **the top band does not distinguish
+probable from definite** — it is labeled "probable and/or definite" — so the result never reports "definite
+Brugada syndrome". This is a diagnostic score, not a risk stratification; whether the diagnosis is met is a
+separate question from arrhythmic risk. New adapter module registered in `mcp/catalog.js`; its golden probe
+("shanghai score brugada syndrome diagnosis") is promoted now that the tile is in the MCP-exposed registry.
+Brings the exposed total to **1368 calculators across 484 modules**.
+
+### lib/shanghai-brugada-v581.js
+- `shanghai-brugada`
+
 ## Four-hundred-and-fifth wave — the modified EHRA symptom scale in lib/ehra-af-v580.js (+1)
 
 `ehra-af` (spec-v580) classifies symptom burden in atrial fibrillation. A **companion gap: the missing
@@ -8355,6 +8394,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/ehra-af-v580.js
 - `ehra-af`
+
+### lib/shanghai-brugada-v581.js
+- `shanghai-brugada`
 
 ### lib/tb-testing.js
 - `tb-testing`
