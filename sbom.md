@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `e537f9bbd302fefc`
-Generated: 2026-07-28T16:09:13.183Z
+Build ID: `87ff15c349c48f84`
+Generated: 2026-07-28T16:23:02.940Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=20.18.1 <21, npm >=10.0.0
@@ -24,13 +24,13 @@ downloads is committed in this repository and is hashed below.
 
 | Path | Bytes | SHA-256 |
 |---|---:|---|
-| `index.html` | 92791 | `bad8c56a77a77a18a121609068ccea5663317f7db0d412e6d741050645c41ed1` |
+| `index.html` | 92849 | `44d1882a9dbfb09e32ecb3de4d3083b6bcedbae8f13a22c3b59e2c812f95aca8` |
 | `styles.css` | 44160 | `a2cc7ad7bae9f7cfc9681d80bc6bd4a58f0b07d47bfcff64897dc04929c12333` |
-| `app.js` | 378064 | `6bc864217f2bece87e8cf07b83e66071fe6448dd266b04f0bac360eb63f8fbb7` |
+| `app.js` | 378304 | `278a3235290a34e036e590d9701d1ca03721060fe0f526d460109fb8470a93e9` |
 | `sw.js` | 4622 | `b891d4344f8e04403b7f1d307fd446cc224bddc6f0c4397438a17d197351171e` |
 | `site.webmanifest` | 709 | `0e0de4da60590a12e8b27a0ae2a2f5ffdb6500b7d2b78f93631ec2f64ed3d5ce` |
 | `robots.txt` | 127 | `38fbf9c1854e72abb20e01e81dd5a31d4ea96f154c12d5db1ec3af05524dd1a1` |
-| `sitemap.xml` | 216407 | `530084a5bbdd5ef8741d5ac194169c371d44098cbb4830327934a1a8c1847965` |
+| `sitemap.xml` | 216552 | `6923b5cb9aeba0fcbdc17485394537712c0149f1771a580279e8ac233dc49880` |
 | `_headers` | 1316 | `2f39986457d2feff7e73e491a7d09ee871e8f2f4cc2bc437f86bd86a42554ec6` |
 | `logo.png` | 63440 | `11afaf1b0d3ca68393d202e4810bf766b5b6d591b4e3ec52f41d3cacaa4616ec` |
 | `favicon.ico` | 7411 | `407fde0ca2788409e87e11f596fa02e6a0b121817fcea7fd995beec1801e287b` |
@@ -305,7 +305,7 @@ downloads is committed in this repository and is hashed below.
 | `lib/medication-v4.js` | 18192 | `467f9576c50da696cc56094eb022d0a5ed1e88de0c7618448554ede8067270b0` |
 | `lib/medication-v5.js` | 18863 | `ce81d9f8954abbd412892c13af9936f992239164f26fd2b999eaea7902787ab7` |
 | `lib/mest-c-v528.js` | 9310 | `e33f178c339338f62c47b6a19d50d345d38be3b05d9a33e7d2703e0a99ae3a69` |
-| `lib/meta.js` | 1915350 | `09dc16212aef1b07a094fd7dd3e17471e2179fef1b3dca006add16560580cd4a` |
+| `lib/meta.js` | 1917381 | `55deec5050bc7a641dce83458b4b4b9c1726a6c7c6c2fc5eb5e86e80fb3ca64d` |
 | `lib/metabolic-hepatic-v219.js` | 12791 | `b9352877cebf7fbf3c3b99ecb8b72cdbee3ed94e056dc019113668609f5a95a8` |
 | `lib/metabolic-onc-v88.js` | 12659 | `1553b641668c121661a66647da71a4aaaa023e9f3a6b7a753efbcdab27cdba81` |
 | `lib/metabolic-v269.js` | 3262 | `0c7a42557886f2b0aeee7949b8d0bd682d795d4526174fd540717a978d94ec2f` |
@@ -486,6 +486,7 @@ downloads is committed in this repository and is hashed below.
 | `lib/simpson-angus-v515.js` | 4076 | `ac4c0ab6135693d8e2ae1d91e8bbd2d3f176262bf2be9107be355d942d0a2ca1` |
 | `lib/simpson-meningioma-v503.js` | 3590 | `a47197f0a46356bffdb89208d4b780b324ac51000a2f5bdf650db5cd8fb841ca` |
 | `lib/snot22-v552.js` | 11542 | `73435b2a8335bd8e96ca85dd386fc70fdb5ca8829ba4ba20d7b37c87b099dd88` |
+| `lib/spadi-v561.js` | 10890 | `1da081c00b12deb444752014acf1124d1ab47072642cf9a1078dc3e29f446172` |
 | `lib/spaulding-classification-v478.js` | 3914 | `3769b89a89709f65be882a19360c23f6a8f371168daa90b3563d32e554767142` |
 | `lib/specialtymath-v186.js` | 15358 | `90330464aea36b60a02933f5811ed91393d38e4e97cafb0cb62a8678a8a0f3c8` |
 | `lib/spetzler-ponce-v384.js` | 4231 | `772c79598424299e9aec418f92d9878cd29f53fa96a9694ab4f935b8eec6c992` |
@@ -1019,6 +1020,7 @@ downloads is committed in this repository and is hashed below.
 | `views/group-v558.js` | 3656 | `9d617318b51fd78339ee41031a0501a921c174438898129dc240a2dc6e751587` |
 | `views/group-v559.js` | 3910 | `3346923f5e743d5dc929aa45899734cad2bdc8a0c0c480d90a05da75ba1572fa` |
 | `views/group-v560.js` | 4195 | `4c03d462e00f0b48a3778d44d87b49116a702d26ff27678473d845b1b70e352c` |
+| `views/group-v561.js` | 3888 | `bf99672fef72c1d6591e7c76353fccbe3d5ac3fd4e8fc247f3d97884079b88b2` |
 | `views/group-v6.js` | 5707 | `425918decb48cd9efac9fc5590ac8970a54c03c3b0df056fb99c9a22ff8dd1b2` |
 | `views/group-v63.js` | 14377 | `962d84b97e82bc39635801da79ecaa93fc0b501b5988b7d321b0f1f630497fab` |
 | `views/group-v7.js` | 15113 | `d480a5b34adfd035507dd4313e12462c47c949aeee155b253c8a2f9596839d05` |

@@ -1574,6 +1574,34 @@ Brings the exposed total to **1314 calculators across 430 modules**.
 ### lib/wayne-index-v527.js
 - `wayne-index`
 
+## Three-hundred-eighty-sixth wave — the SPADI in lib/spadi-v561.js (+1)
+
+`spadi` (spec-v561) scores 13 patient-reported items in two subscales, each 0-10.
+
+**The total is the mean of the two subscale percentages, not the sum of all 13 items over 130.** Thirteen
+items on a single 0-10 scale look like one questionnaire, so summing them and dividing by 130 is the obvious
+move — and it gives a different, wrong number. The result returns `naiveTotal`, that wrong-but-tempting
+computation, alongside the correct total, so an agent can see the two diverge rather than take the
+distinction on trust. A test pins a case where they differ (50% vs 38.5%) and one where they coincide.
+
+**The consequence is unequal implicit item weighting.** Five pain items carry half the total and eight
+disability items the other half, so one pain item is worth **1.6×** one disability item — a test measures
+that ratio directly by moving a single item in each subscale.
+
+**The published missing-data rules diverge, so only complete forms are scored.** One rendering drops an
+omitted item from its subscale denominator; another replaces up to two missing values with the subscale
+mean. Those are not equivalent and give different totals on the same form, so the tool requires all 13 items
+and says in the refusal that the handling of omissions is disputed, rather than reporting a number under an
+authority it does not have.
+
+The minimal detectable change of 13 points at 90% confidence is stated as a property of a **change** between
+two of the same patient's scores, not of a single score. New adapter module registered in `mcp/catalog.js`;
+its golden probe ("spadi shoulder pain disability index") is promoted now that the tile is in the
+MCP-exposed registry. Brings the exposed total to **1348 calculators across 464 modules**.
+
+### lib/spadi-v561.js
+- `spadi`
+
 ## Three-hundred-eighty-fifth wave — the al Naqeeb aEEG classification in lib/anaqeeb-aeeg-v560.js (+1)
 
 `anaqeeb-aeeg` (spec-v560) sorts the amplitude-integrated EEG into three categories from the upper and lower
@@ -7653,6 +7681,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/anaqeeb-aeeg-v560.js
 - `anaqeeb-aeeg`
+
+### lib/spadi-v561.js
+- `spadi`
 
 ### lib/tb-testing.js
 - `tb-testing`

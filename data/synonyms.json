@@ -704,6 +704,8 @@
     { "phrases": ["erez dic score", "pregnancy dic score", "obstetric disseminated intravascular coagulation", "pregnancy specific isth dic"],
       "tile": "erez-dic", "audience": "clinicians" },
     { "phrases": ["aeeg", "amplitude integrated eeg", "al naqeeb classification", "neonatal aeeg amplitude"],
-      "tile": "anaqeeb-aeeg", "audience": "clinicians" }
+      "tile": "anaqeeb-aeeg", "audience": "clinicians" },
+    { "phrases": ["spadi", "shoulder pain and disability index", "shoulder disability score", "shoulder function questionnaire"],
+      "tile": "spadi", "audience": "clinicians" }
   ]
 }

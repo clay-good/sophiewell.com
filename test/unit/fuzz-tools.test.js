@@ -535,6 +535,7 @@ import * as mswatV557 from '../../lib/mswat-v557.js';
 import * as osdiV558 from '../../lib/osdi-v558.js';
 import * as erezDicV559 from '../../lib/erez-dic-v559.js';
 import * as anaqeebAeegV560 from '../../lib/anaqeeb-aeeg-v560.js';
+import * as spadiV561 from '../../lib/spadi-v561.js';
 import * as tbTesting from '../../lib/tb-testing.js';
 
 const MODULES = {
@@ -1015,6 +1016,7 @@ const MODULES = {
   'osdi-v558.js': osdiV558,
   'erez-dic-v559.js': erezDicV559,
   'anaqeeb-aeeg-v560.js': anaqeebAeegV560,
+  'spadi-v561.js': spadiV561,
   'tb-testing.js': tbTesting,
 };
 
