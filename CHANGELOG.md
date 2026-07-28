@@ -6,6 +6,22 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v531 — EHIT class (endothermal heat-induced thrombosis) tile, 1380 → 1381)
+
+- New `ehit` tile (group G): the AVF/SVS classification of thrombus found on ultrasound within four weeks of
+  endovenous thermal ablation — **Ia/Ib** no propagation into the deep vein, **II** under half the lumen,
+  **III** over half but not occlusive, **IV** occlusive. `ehit`, `kabnick`, `endovenous`, and
+  `saphenofemoral` were all zero-hit. It is **a different axis** from the existing `ceap-venous` and `vcss`,
+  which grade chronic venous disease; this grades an acute complication of a procedure, and the decision it
+  informs is binary and immediate. **The 2021 revision renumbered nothing** — II, III and IV are word for
+  word the 2006 originals and the only change was subdividing class I, so **Ib is exactly the old class I**
+  and a pre-2021 record saying "EHIT 1" means Ib. A **bare "class I" is deliberately rejected as ambiguous**,
+  with a message naming which subclass is which. The copy refuses the **Lawrence conflation**: that separate
+  six-level system collapses its levels 1-3 into class I here, so a Lawrence level 3 is *not* a class III,
+  and confusing them moves a patient who needs no treatment into the anticoagulation band. Per-class
+  recommendations are reported with their stated strength of evidence and labeled **suggestions, not
+  orders** — class IV is explicitly individualized. See [spec-v531](docs/spec-v531.md).
+
 ### Added (spec-v530 — Vesikari clinical severity score (gastroenteritis episode) tile, 1379 → 1380)
 
 - New `vesikari` tile (group G): the seven-item episode-severity score for acute gastroenteritis, total

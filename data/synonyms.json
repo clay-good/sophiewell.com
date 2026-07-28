@@ -644,6 +644,8 @@
     { "phrases": ["thwaites", "thwaites index", "tuberculous versus bacterial meningitis", "tb meningitis score", "tuberculous meningitis discrimination"],
       "tile": "thwaites", "audience": "clinicians" },
     { "phrases": ["vesikari", "vesikari score", "gastroenteritis severity score", "rotavirus severity score", "diarrhea episode severity"],
-      "tile": "vesikari", "audience": "clinicians" }
+      "tile": "vesikari", "audience": "clinicians" },
+    { "phrases": ["ehit", "ehit class", "endothermal heat induced thrombosis", "thrombus after vein ablation", "post ablation thrombus extension"],
+      "tile": "ehit", "audience": "clinicians" }
   ]
 }
