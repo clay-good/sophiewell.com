@@ -1574,6 +1574,33 @@ Brings the exposed total to **1314 calculators across 430 modules**.
 ### lib/wayne-index-v527.js
 - `wayne-index`
 
+## Three-hundred-sixtieth wave — the CaPTHUS score in lib/capthus-v535.js (+1)
+
+`capthus` (spec-v535) sums the five CaPTHUS criteria and reports whether the score predicts single-gland
+disease.
+
+**The calcium field label carries both units and says which is which.** The threshold is **12 mg/dL**,
+equivalently 3 mmol/L, and the bare number 3 sits next to a score that also runs 0-5. An agent that read the
+3 as mg/dL would award the calcium point to essentially every patient with primary hyperparathyroidism and
+inflate every score it produced.
+
+**Concordance is its own field, not derived.** Two positive scans pointing at *different* glands score 2, not
+3. An agent given only "ultrasound positive" and "sestamibi positive" and left to infer concordance would
+over-score exactly the discordant patient the fifth criterion exists to catch; the result exposes a
+`discordantScans` flag so a caller can see when that case arises.
+
+**The summary labels the 100 percent as derivation-cohort performance**, because reporting a bare "100
+percent positive predictive value" is the single most misleading thing this tool could say — external
+validation runs lower and varies. It also states the asymmetry agents get wrong in the *other* direction: the
+**negative** predictive value is poor, so a score below 3 does not predict multigland disease, and an agent
+reporting "CaPTHUS 1, suggests four-gland hyperplasia" has inverted the instrument. New adapter module
+registered in `mcp/catalog.js`; its golden probe ("capthus single gland parathyroid score") is promoted now
+that the tile is in the MCP-exposed registry. Brings the exposed total to **1322 calculators across 438
+modules**.
+
+### lib/capthus-v535.js
+- `capthus`
+
 ## Three-hundred-fifty-ninth wave — the Ridley-Jopling leprosy classification in lib/ridley-jopling-v534.js (+1)
 
 `ridley-jopling` (spec-v534) maps a leprosy case to one of the five Ridley-Jopling groups, or to
@@ -6774,6 +6801,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/ridley-jopling-v534.js
 - `ridley-jopling`
+
+### lib/capthus-v535.js
+- `capthus`
 
 ### lib/tb-testing.js
 - `tb-testing`

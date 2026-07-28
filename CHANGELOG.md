@@ -6,6 +6,21 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v535 — CaPTHUS score (single-gland primary hyperparathyroidism) tile, 1384 → 1385)
+
+- New `capthus` tile (group G): the five-criterion predictor of single-gland disease in primary
+  hyperparathyroidism — calcium, PTH, ultrasound, sestamibi, and scan concordance, one point each, **≥3**
+  predicts a single adenoma. `capthus`, `kebebew`, `parathyroid`, and `sestamibi` were all zero-hit; the one
+  `hyperparathyroidism` hit belongs to the calcium/creatinine clearance ratio tile, which answers a
+  *diagnostic* question where this predicts *surgical anatomy*. **The calcium threshold is 12 mg/dL, not
+  3 mg/dL** — the original gives both units, and the bare 3 next to a 0-5 score invites a misread that would
+  award the point to nearly every patient. **Concordance is scored separately from the two scans being
+  individually positive**, so two positive scans pointing at *different* glands score 2, not 3; the result
+  exposes a `discordantScans` flag. The **100% positive predictive value is labeled as derivation-cohort
+  performance**, since external validation runs lower. And the asymmetry that matters more: the **negative**
+  predictive value is poor, so a score below 3 is an *absence of information*, not evidence of four-gland
+  disease. It predicts anatomy, not whether an operation is indicated. See [spec-v535](docs/spec-v535.md).
+
 ### Added (spec-v534 — Ridley-Jopling classification (leprosy spectrum) tile, 1383 → 1384)
 
 - New `ridley-jopling` tile (group G): the five-group immunologic spectrum of leprosy — TT, BT, BB, BL, LL —

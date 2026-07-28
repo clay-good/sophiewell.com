@@ -652,6 +652,8 @@
     { "phrases": ["renal angina index", "renal angina", "predict aki in children", "pediatric aki prediction score", "aki risk index picu"],
       "tile": "renal-angina", "audience": "clinicians" },
     { "phrases": ["ridley jopling", "leprosy classification", "hansen disease spectrum", "lepromatous tuberculoid spectrum", "leprosy group classification"],
-      "tile": "ridley-jopling", "audience": "clinicians" }
+      "tile": "ridley-jopling", "audience": "clinicians" },
+    { "phrases": ["capthus", "capthus score", "single gland parathyroid prediction", "parathyroid adenoma prediction score", "focused parathyroidectomy score"],
+      "tile": "capthus", "audience": "clinicians" }
   ]
 }

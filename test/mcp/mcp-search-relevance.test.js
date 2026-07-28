@@ -567,6 +567,7 @@ const PROBES = [
   ['fsgs biopsy variant columbia classification', ['columbia-fsgs']],
   ['renal angina index predict aki child', ['renal-angina']],
   ['ridley jopling leprosy classification', ['ridley-jopling']],
+  ['capthus single gland parathyroid score', ['capthus']],
 ];
 
 test(`every golden probe routes an acceptable tile into the top ${TOP_N}`, () => {
