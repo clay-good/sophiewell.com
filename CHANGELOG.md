@@ -6,6 +6,22 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v536 — Hardman index (ruptured abdominal aortic aneurysm) tile, 1385 → 1386)
+
+- New `hardman` tile (group G): the five-factor index for mortality after a ruptured abdominal aortic
+  aneurysm — age >76, creatinine >190 µmol/L, hemoglobin <9.0 g/dL, loss of consciousness after
+  presentation, ECG ischemia. `hardman` was zero-hit, and the catalog's existing aneurysm tiles are all
+  intracranial or purely anatomic, so there was no AAA outcome instrument at all. **This tile exists as much
+  to carry the refutation as the score.** The original 1996 series reported that all eight patients with ≥3
+  factors died, and that figure entered practice as a rule for **denying surgery** — since repeatedly
+  refuted: a pooled analysis of ~970 patients found **77%**, not 100%, and concluded the index **cannot be
+  used as an absolute limit for denial of surgery**; a 178-patient validation found three of the five factors
+  were not individually significant predictors. So the original figures ship as **history** (a single 1996
+  cohort, only 8 patients in the top group), the refutation appears **in the result itself** at every score
+  ≥3, and a test walks all six scores asserting that **none** reads as an instruction to deny surgery. A
+  ruptured aneurysm is fatal without repair, so a wrongly withheld operation is not a conservative choice.
+  See [spec-v536](docs/spec-v536.md).
+
 ### Added (spec-v535 — CaPTHUS score (single-gland primary hyperparathyroidism) tile, 1384 → 1385)
 
 - New `capthus` tile (group G): the five-criterion predictor of single-gland disease in primary

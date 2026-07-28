@@ -1574,6 +1574,35 @@ Brings the exposed total to **1314 calculators across 430 modules**.
 ### lib/wayne-index-v527.js
 - `wayne-index`
 
+## Three-hundred-sixty-first wave — the Hardman index in lib/hardman-v536.js (+1)
+
+`hardman` (spec-v536) counts the five Hardman factors and returns the index with the original series'
+observed mortality and, at three or more, its refutation.
+
+**The summary leads with the refutation, not the score, and that is the entire design point of this
+adapter.** The original 1996 finding — that all eight patients with three or more factors died — entered
+practice as a rule for **denying surgery**, and it has been repeatedly refuted since. An agent that fetched
+"Hardman index 4" and reported "100 percent mortality" would reproduce the exact error the later literature
+exists to correct, in the one clinical situation where that error is irreversible: a ruptured abdominal
+aortic aneurysm is **fatal without repair**, so a wrongly withheld operation is not a conservative choice.
+
+The compute result therefore **never returns a bare mortality figure**. `originalSeriesMortality` is a
+sentence, not a number, and at every score of 3 or more it is accompanied by a `refutation` field carrying
+the pooled 77-percent figure and the explicit finding that the index cannot be used as an absolute limit for
+denial of surgery. Every band, at every score, states that the index does not identify patients who should be
+denied an operation — a unit test walks all six scores and asserts it.
+
+Units are spelled out on the field labels: creatinine as **over 190 micromol/L** with the mg/dL equivalent,
+because one secondary source renders it as 180 and because an agent working in mg/dL cannot convert a
+threshold it was never given; hemoglobin in both g/dL and g/L. All five are required — this is a count of
+factors, so an omitted factor is not the same as an absent one and would silently deflate the index. New
+adapter module registered in `mcp/catalog.js`; its golden probe ("hardman index ruptured aortic aneurysm") is
+promoted now that the tile is in the MCP-exposed registry. Brings the exposed total to **1323 calculators
+across 439 modules**.
+
+### lib/hardman-v536.js
+- `hardman`
+
 ## Three-hundred-sixtieth wave — the CaPTHUS score in lib/capthus-v535.js (+1)
 
 `capthus` (spec-v535) sums the five CaPTHUS criteria and reports whether the score predicts single-gland
@@ -6804,6 +6833,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/capthus-v535.js
 - `capthus`
+
+### lib/hardman-v536.js
+- `hardman`
 
 ### lib/tb-testing.js
 - `tb-testing`

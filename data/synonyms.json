@@ -654,6 +654,8 @@
     { "phrases": ["ridley jopling", "leprosy classification", "hansen disease spectrum", "lepromatous tuberculoid spectrum", "leprosy group classification"],
       "tile": "ridley-jopling", "audience": "clinicians" },
     { "phrases": ["capthus", "capthus score", "single gland parathyroid prediction", "parathyroid adenoma prediction score", "focused parathyroidectomy score"],
-      "tile": "capthus", "audience": "clinicians" }
+      "tile": "capthus", "audience": "clinicians" },
+    { "phrases": ["hardman index", "hardman", "ruptured aaa mortality", "ruptured aortic aneurysm score", "raaa risk factors"],
+      "tile": "hardman", "audience": "clinicians" }
   ]
 }

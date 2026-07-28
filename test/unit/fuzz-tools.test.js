@@ -510,6 +510,7 @@ import * as columbiaFsgsV532 from '../../lib/columbia-fsgs-v532.js';
 import * as renalAnginaV533 from '../../lib/renal-angina-v533.js';
 import * as ridleyJoplingV534 from '../../lib/ridley-jopling-v534.js';
 import * as capthusV535 from '../../lib/capthus-v535.js';
+import * as hardmanV536 from '../../lib/hardman-v536.js';
 import * as tbTesting from '../../lib/tb-testing.js';
 
 const MODULES = {
@@ -965,6 +966,7 @@ const MODULES = {
   'renal-angina-v533.js': renalAnginaV533,
   'ridley-jopling-v534.js': ridleyJoplingV534,
   'capthus-v535.js': capthusV535,
+  'hardman-v536.js': hardmanV536,
   'tb-testing.js': tbTesting,
 };
 

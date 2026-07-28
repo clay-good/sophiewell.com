@@ -568,6 +568,7 @@ const PROBES = [
   ['renal angina index predict aki child', ['renal-angina']],
   ['ridley jopling leprosy classification', ['ridley-jopling']],
   ['capthus single gland parathyroid score', ['capthus']],
+  ['hardman index ruptured aortic aneurysm', ['hardman']],
 ];
 
 test(`every golden probe routes an acceptable tile into the top ${TOP_N}`, () => {
