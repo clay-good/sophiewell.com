@@ -546,6 +546,7 @@ import * as thakarAkiV568 from '../../lib/thakar-aki-v568.js';
 import * as gappV569 from '../../lib/gapp-v569.js';
 import * as globalArdsV570 from '../../lib/global-ards-v570.js';
 import * as eFacedV571 from '../../lib/e-faced-v571.js';
+import * as heavenCriteriaV572 from '../../lib/heaven-criteria-v572.js';
 import * as tbTesting from '../../lib/tb-testing.js';
 
 const MODULES = {
@@ -1037,6 +1038,7 @@ const MODULES = {
   'gapp-v569.js': gappV569,
   'global-ards-v570.js': globalArdsV570,
   'e-faced-v571.js': eFacedV571,
+  'heaven-criteria-v572.js': heavenCriteriaV572,
   'tb-testing.js': tbTesting,
 };
 

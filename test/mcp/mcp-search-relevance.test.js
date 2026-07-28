@@ -604,6 +604,7 @@ const PROBES = [
   ['gapp grade pheochromocytoma paraganglioma metastatic', ['gapp']],
   ['global definition ards 2024 nonintubated', ['global-ards']],
   ['e-faced bronchiectasis exacerbation score', ['e-faced']],
+  ['heaven criteria difficult emergency airway', ['heaven-criteria']],
 ];
 
 test(`every golden probe routes an acceptable tile into the top ${TOP_N}`, () => {

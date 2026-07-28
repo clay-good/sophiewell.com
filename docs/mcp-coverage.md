@@ -1574,6 +1574,39 @@ Brings the exposed total to **1314 calculators across 430 modules**.
 ### lib/wayne-index-v527.js
 - `wayne-index`
 
+## Three-hundred-ninety-seventh wave — the HEAVEN criteria in lib/heaven-criteria-v572.js (+1)
+
+`heaven-criteria` (spec-v572) counts six criteria for a difficult **emergency** airway. A **companion gap**:
+`lemon` and `macocha` are in the catalog, and HEAVEN exists precisely because those tools assume a
+cooperative, largely elective patient — it is the rapid-sequence-intubation axis of the same question and
+includes physiologic as well as anatomic difficulty.
+
+**HEAVEN is a count, not a point score, and it has no band table.** Only **two** figures were ever
+published: about 94% first-attempt success with no criteria, and about 43% with five or more. Everything in
+between exists in the source papers as a **figure**, never a numeric table. Asked for the success rate at a
+count of 3, the correct answer is that none is published — reading a value off a chart and presenting it as
+data is exactly the failure this guards against. A test sweeps counts 1-4 asserting `publishedAnchor` is
+null and the result says so.
+
+**Four of the six criteria are operator-judgment descriptors, not measurements** — defined with phrases like
+"anticipated to interfere" and "suspected". Only the hypoxemia threshold and the pediatric age are
+objective, and **obesity is deliberately left undefined with no BMI threshold**, so supplying one replaces
+the judgment the instrument asks for.
+
+**"Exsanguination" does not mean bleeding, and the name is actively misleading.** It means *suspected
+anemia*, chronic or acute, scored for its effect on safe apnea time. A patient who is not bleeding at all
+can meet it; a briskly bleeding patient with a normal hemoglobin may not.
+
+**The criteria are assessed at the moment of laryngoscopy, not on arrival** — effective preoxygenation can
+legitimately un-score hypoxemia, so a count taken on arrival is not a HEAVEN count. And **two different
+outcomes** have been published against the same criteria (first-pass success; Cormack-Lehane III/IV view),
+so a figure quoted without its endpoint is ambiguous. New adapter module registered in `mcp/catalog.js`; its
+golden probe ("heaven criteria difficult emergency airway") is promoted now that the tile is in the
+MCP-exposed registry. Brings the exposed total to **1359 calculators across 475 modules**.
+
+### lib/heaven-criteria-v572.js
+- `heaven-criteria`
+
 ## Three-hundred-ninety-sixth wave — the E-FACED score in lib/e-faced-v571.js (+1)
 
 `e-faced` (spec-v571) scores six items to 9 points for exacerbation risk in bronchiectasis. A
@@ -8040,6 +8073,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/e-faced-v571.js
 - `e-faced`
+
+### lib/heaven-criteria-v572.js
+- `heaven-criteria`
 
 ### lib/tb-testing.js
 - `tb-testing`

@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `32a13dfd51bc64c2`
-Generated: 2026-07-28T20:35:06.244Z
+Build ID: `de6c9340721c7503`
+Generated: 2026-07-28T20:48:43.654Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=20.18.1 <21, npm >=10.0.0
@@ -24,13 +24,13 @@ downloads is committed in this repository and is hashed below.
 
 | Path | Bytes | SHA-256 |
 |---|---:|---|
-| `index.html` | 93499 | `52bb9005a3d2157557489996774c41f48a82a85678012d4f5390a74a925d6834` |
+| `index.html` | 93559 | `35627c584c29d94b47bac96196a07946104dc32e8ab7dd03da87a3431fe4b558` |
 | `styles.css` | 44160 | `a2cc7ad7bae9f7cfc9681d80bc6bd4a58f0b07d47bfcff64897dc04929c12333` |
-| `app.js` | 380666 | `ed89c0dbf5da835e31703fab02369aa623633a20b26d3a16109c4124ec813481` |
+| `app.js` | 380896 | `fe7f471e47e161a9048ddbb9b69426244a35506c261e273ef1ce76361d352c37` |
 | `sw.js` | 4622 | `b891d4344f8e04403b7f1d307fd446cc224bddc6f0c4397438a17d197351171e` |
 | `site.webmanifest` | 709 | `0e0de4da60590a12e8b27a0ae2a2f5ffdb6500b7d2b78f93631ec2f64ed3d5ce` |
 | `robots.txt` | 127 | `38fbf9c1854e72abb20e01e81dd5a31d4ea96f154c12d5db1ec3af05524dd1a1` |
-| `sitemap.xml` | 218048 | `8d63fa6d19caf819afcd36931e075c551bf19583063a9dc917439c729baaf559` |
+| `sitemap.xml` | 218203 | `d83ff48c75d42362c21f0a244ecfcdb30eba140d4f745c085a0b1e1ed3298801` |
 | `_headers` | 1316 | `2f39986457d2feff7e73e491a7d09ee871e8f2f4cc2bc437f86bd86a42554ec6` |
 | `logo.png` | 63440 | `11afaf1b0d3ca68393d202e4810bf766b5b6d591b4e3ec52f41d3cacaa4616ec` |
 | `favicon.ico` | 7411 | `407fde0ca2788409e87e11f596fa02e6a0b121817fcea7fd995beec1801e287b` |
@@ -222,6 +222,7 @@ downloads is committed in this repository and is hashed below.
 | `lib/hattrup-johnson-v492.js` | 3076 | `6a1c8a42c24748aeb0ad4a218427b6f2ea7ac056f1599b2a9932978c9d6c6df7` |
 | `lib/hawkins-talar-v342.js` | 4647 | `e3648c7b917fb070ee79a94daa6a8d3624af39df84f6576ea5e2ee66f2d954ed` |
 | `lib/hcc-surveillance-v281.js` | 7094 | `62d58923f76c7c1d5e79f8ba2301aadc44fd0ee9f30d7a39da9bcbfb5e1b7ec3` |
+| `lib/heaven-criteria-v572.js` | 11853 | `328d08c858b86c7d6dbf658bf4eed7035b5f1a39512c98dccfdfc8956e49acbb` |
 | `lib/hematology-v229.js` | 7344 | `00286443125b0036df49b1f27f7b5d373d4c1b1281e89f185ccd18d189bd6e2d` |
 | `lib/heme-onc-risk-v211.js` | 11804 | `cbe39fe689c3723cd7eef4796c470a780d23dd31ac350a9cbd19bad2a05561c9` |
 | `lib/heme-prognostic-v216.js` | 13013 | `c6389635286fd17370fac65bfe97663eaf3e8ffa1b7852620f7b7011d532b6e8` |
@@ -311,7 +312,7 @@ downloads is committed in this repository and is hashed below.
 | `lib/medication-v4.js` | 18192 | `467f9576c50da696cc56094eb022d0a5ed1e88de0c7618448554ede8067270b0` |
 | `lib/medication-v5.js` | 18863 | `ce81d9f8954abbd412892c13af9936f992239164f26fd2b999eaea7902787ab7` |
 | `lib/mest-c-v528.js` | 9310 | `e33f178c339338f62c47b6a19d50d345d38be3b05d9a33e7d2703e0a99ae3a69` |
-| `lib/meta.js` | 1936681 | `40b90befa2bc45cb45576bffa1d45b32a6827668c6ceddd6b6f9deb0029d0c38` |
+| `lib/meta.js` | 1938705 | `f25a8705d33b5e5193876894b005532946318a087158d342c34be296a00c88e6` |
 | `lib/metabolic-hepatic-v219.js` | 12791 | `b9352877cebf7fbf3c3b99ecb8b72cdbee3ed94e056dc019113668609f5a95a8` |
 | `lib/metabolic-onc-v88.js` | 12659 | `1553b641668c121661a66647da71a4aaaa023e9f3a6b7a753efbcdab27cdba81` |
 | `lib/metabolic-v269.js` | 3262 | `0c7a42557886f2b0aeee7949b8d0bd682d795d4526174fd540717a978d94ec2f` |
@@ -1041,6 +1042,7 @@ downloads is committed in this repository and is hashed below.
 | `views/group-v569.js` | 5179 | `662f5a881a739b3383e5d88f5b6dc2b9250cba018e000138e5d76f791fd61cab` |
 | `views/group-v570.js` | 5151 | `c8f0849d902693e84a81b30c35ca7ae62e97bd4b30dbb70218085fe12f493cc5` |
 | `views/group-v571.js` | 3446 | `453b8ba857c9dadaf46e3c4dba50f60f1ec41437248c4b4cc65d696aab3c51b0` |
+| `views/group-v572.js` | 3755 | `6c4d15c8b9c501fc8e92b5aff5a331c88851aeddd63b0f626959aa92b912276e` |
 | `views/group-v6.js` | 5707 | `425918decb48cd9efac9fc5590ac8970a54c03c3b0df056fb99c9a22ff8dd1b2` |
 | `views/group-v63.js` | 14377 | `962d84b97e82bc39635801da79ecaa93fc0b501b5988b7d321b0f1f630497fab` |
 | `views/group-v7.js` | 15113 | `d480a5b34adfd035507dd4313e12462c47c949aeee155b253c8a2f9596839d05` |

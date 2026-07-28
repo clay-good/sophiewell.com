@@ -726,6 +726,8 @@
     { "phrases": ["global definition of ards", "new ards definition", "nonintubated ards", "ards 2024 criteria"],
       "tile": "global-ards", "audience": "clinicians" },
     { "phrases": ["e-faced", "efaced score", "bronchiectasis exacerbation risk", "faced exacerbation score"],
-      "tile": "e-faced", "audience": "clinicians" }
+      "tile": "e-faced", "audience": "clinicians" },
+    { "phrases": ["heaven criteria", "difficult emergency airway", "rsi difficult airway prediction", "emergency intubation difficulty"],
+      "tile": "heaven-criteria", "audience": "clinicians" }
   ]
 }
