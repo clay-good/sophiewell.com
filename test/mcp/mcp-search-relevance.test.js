@@ -610,6 +610,7 @@ const PROBES = [
   ['peradeniya organophosphorus poisoning severity scale', ['peradeniya-op']],
   ['ablett tetanus severity grade', ['ablett-tetanus']],
   ['magic acute gvhd staging grade', ['magic-gvhd']],
+  ['nancy histological index ulcerative colitis biopsy', ['nancy-index']],
 ];
 
 test(`every golden probe routes an acceptable tile into the top ${TOP_N}`, () => {

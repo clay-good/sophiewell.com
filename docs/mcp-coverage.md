@@ -1574,6 +1574,37 @@ Brings the exposed total to **1314 calculators across 430 modules**.
 ### lib/wayne-index-v527.js
 - `wayne-index`
 
+## Four-hundred-and-third wave — the Nancy histological index in lib/nancy-index-v578.js (+1)
+
+`nancy-index` (spec-v578) grades histologic activity in ulcerative colitis 0-4. A **companion gap on a
+different axis**: the catalog already has the *endoscopic* UC scores (Mayo subscore, UCEIS) and had no
+*histologic* one — and the two diverge in real patients, with histologic remission the stricter target.
+
+**It is not a sum. It is a three-item decision tree in strict priority order** — ulceration, then the
+neutrophilic infiltrate, then the chronic infiltrate — and the **first that fires decides the grade**, with
+the rest not consulted. Building it additively is wrong in *both* directions: mild findings would accumulate
+into a high grade, and an ulcerated biopsy could score below 4 because its other features were unremarkable.
+A test asserts a quiet specimen cannot offset ulceration.
+
+**Chronic inflammation is a dead end at grade 1.** However florid the lymphoplasmacytic and eosinophilic
+infiltrate, it can **never** push the grade above 1 — it only decides 0 versus 1, and only when neutrophils
+and ulcers are both absent. A test sweeps both chronic levels asserting neither exceeds 1.
+
+**The published threshold condition turns out to be structurally guaranteed.** The source defines response
+as an index ≤1 "when there are no neutrophils in the epithelium, nor erosions or ulcers" — and because of
+the priority order, a grade ≤1 can *only* arise when those are absent. The tool reports the condition
+anyway, because applying the same numeric threshold to a score computed some other way **could** reach it
+with neutrophils present.
+
+**The denominator is the set of biopsies from the visit — the worst biopsy wins.** A comparative study
+instead *averaged* several ratings, an operationally different denominator that will not reproduce this
+index. New adapter module registered in `mcp/catalog.js`; its golden probe ("nancy histological index
+ulcerative colitis biopsy") is promoted now that the tile is in the MCP-exposed registry. Brings the exposed
+total to **1365 calculators across 481 modules**.
+
+### lib/nancy-index-v578.js
+- `nancy-index`
+
 ## Four-hundred-and-second wave — MAGIC acute GVHD staging in lib/magic-gvhd-v577.js (+1)
 
 `magic-gvhd` (spec-v577) stages four organs and reads a grade off a pattern table. A **revised-successor
@@ -8251,6 +8282,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/magic-gvhd-v577.js
 - `magic-gvhd`
+
+### lib/nancy-index-v578.js
+- `nancy-index`
 
 ### lib/tb-testing.js
 - `tb-testing`

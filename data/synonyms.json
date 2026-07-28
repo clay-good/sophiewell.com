@@ -738,6 +738,8 @@
     { "phrases": ["ablett", "tetanus severity", "tetanus grade", "established tetanus classification"],
       "tile": "ablett-tetanus", "audience": "clinicians" },
     { "phrases": ["magic gvhd", "acute gvhd staging", "mount sinai gvhd consortium", "gvhd organ stage"],
-      "tile": "magic-gvhd", "audience": "clinicians" }
+      "tile": "magic-gvhd", "audience": "clinicians" },
+    { "phrases": ["nancy index", "nancy histological index", "uc histology score", "ulcerative colitis biopsy grade"],
+      "tile": "nancy-index", "audience": "clinicians" }
   ]
 }

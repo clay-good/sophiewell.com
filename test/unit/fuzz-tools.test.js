@@ -552,6 +552,7 @@ import * as compera2V574 from '../../lib/compera-2-v574.js';
 import * as peradeniyaOpV575 from '../../lib/peradeniya-op-v575.js';
 import * as ablettTetanusV576 from '../../lib/ablett-tetanus-v576.js';
 import * as magicGvhdV577 from '../../lib/magic-gvhd-v577.js';
+import * as nancyIndexV578 from '../../lib/nancy-index-v578.js';
 import * as tbTesting from '../../lib/tb-testing.js';
 
 const MODULES = {
@@ -1049,6 +1050,7 @@ const MODULES = {
   'peradeniya-op-v575.js': peradeniyaOpV575,
   'ablett-tetanus-v576.js': ablettTetanusV576,
   'magic-gvhd-v577.js': magicGvhdV577,
+  'nancy-index-v578.js': nancyIndexV578,
   'tb-testing.js': tbTesting,
 };
 
