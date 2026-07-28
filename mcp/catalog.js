@@ -489,6 +489,7 @@ import peradeniyaOpV575 from './adapters/peradeniya-op-v575.js';
 import ablettTetanusV576 from './adapters/ablett-tetanus-v576.js';
 import magicGvhdV577 from './adapters/magic-gvhd-v577.js';
 import nancyIndexV578 from './adapters/nancy-index-v578.js';
+import robartsIndexV579 from './adapters/robarts-index-v579.js';
 import tbTesting from './adapters/tb-testing.js';
 import labInterpret from './adapters/lab-interpret.js';
 import decisionRulesV258 from './adapters/decision-rules-v258.js';
@@ -972,6 +973,7 @@ const ADAPTER_MODULES = [
   ['ablett-tetanus-v576', ablettTetanusV576],
   ['magic-gvhd-v577', magicGvhdV577],
   ['nancy-index-v578', nancyIndexV578],
+  ['robarts-index-v579', robartsIndexV579],
   ['tb-testing', tbTesting],
   ['lab-interpret', labInterpret],
   ['decision-rules-v258', decisionRulesV258],

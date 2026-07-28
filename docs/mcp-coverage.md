@@ -1574,6 +1574,38 @@ Brings the exposed total to **1314 calculators across 430 modules**.
 ### lib/wayne-index-v527.js
 - `wayne-index`
 
+## Four-hundred-and-fourth wave — the Robarts Histopathology Index in lib/robarts-index-v579.js (+1)
+
+`robarts-index` (spec-v579) scores UC histologic activity as a weighted sum, 0-33. A **companion to the
+Nancy index** shipped in the previous wave rather than an alternative spelling of it: Nancy is a decision
+tree emitting a single grade, Robarts is a weighted sum, and the two disagree on real biopsies.
+
+**The erosion item has five descriptors but only four distinct values.** 5.1 ("recovering epithelium with
+adjacent inflammation") and 5.2 ("probable erosion, focally stripped") **both score raw 1** — the
+level-to-score map is *not injective*. An agent offering a 0-4 enum for this item would give an item maximum
+of 20 and an overall maximum of **38** against the published 15 and 33. The tool therefore addresses the
+item **by descriptor**, and a test computes the wrong maximum a naive implementation would report.
+
+**Three Geboes grades are scored in the source system and contribute nothing here.** Architectural change,
+lamina propria eosinophils and crypt destruction are each graded 0-3 in Geboes, and *every* level of each
+contributes **0** to the RHI — including "severe diffuse architectural abnormality" and "unequivocal crypt
+destruction". They are pathology descriptors, not calculator inputs, and are named so an agent does not go
+looking for fields that do not exist.
+
+**The epithelial-neutrophil bands overlap and leave a hole**: "<5% of crypts" is a strict *subset* of
+"<50%", so 3% satisfies two levels at once, and **exactly 50% satisfies neither**. The tool takes the level,
+not a percentage.
+
+**One claimed oddity did not survive checking.** It is natural to suppose a weighted sum over four coarse
+items leaves gaps in its range. With these weights it does not — **every integer from 0 to 33 is
+attainable**, computed in `attainableTotals()` rather than assumed, and a test asserts all 34. The property
+is stated precisely because the intuitive guess is the opposite. New adapter module registered in
+`mcp/catalog.js`; its golden probe ("robarts histopathology index uc geboes") is promoted now that the tile
+is in the MCP-exposed registry. Brings the exposed total to **1366 calculators across 482 modules**.
+
+### lib/robarts-index-v579.js
+- `robarts-index`
+
 ## Four-hundred-and-third wave — the Nancy histological index in lib/nancy-index-v578.js (+1)
 
 `nancy-index` (spec-v578) grades histologic activity in ulcerative colitis 0-4. A **companion gap on a
@@ -8285,6 +8317,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/nancy-index-v578.js
 - `nancy-index`
+
+### lib/robarts-index-v579.js
+- `robarts-index`
 
 ### lib/tb-testing.js
 - `tb-testing`

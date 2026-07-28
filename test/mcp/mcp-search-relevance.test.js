@@ -611,6 +611,7 @@ const PROBES = [
   ['ablett tetanus severity grade', ['ablett-tetanus']],
   ['magic acute gvhd staging grade', ['magic-gvhd']],
   ['nancy histological index ulcerative colitis biopsy', ['nancy-index']],
+  ['robarts histopathology index uc geboes', ['robarts-index']],
 ];
 
 test(`every golden probe routes an acceptable tile into the top ${TOP_N}`, () => {
