@@ -581,6 +581,7 @@ const PROBES = [
   ['asrm endometriosis stage from score', ['rasrm-stage']],
   ['brue lower risk criteria infant', ['brue']],
   ['patient prosthesis mismatch indexed orifice area', ['ppm-eoai']],
+  ['poseidon group low prognosis ivf', ['poseidon']],
 ];
 
 test(`every golden probe routes an acceptable tile into the top ${TOP_N}`, () => {

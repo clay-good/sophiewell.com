@@ -523,6 +523,7 @@ import * as palmCoeinV545 from '../../lib/palm-coein-v545.js';
 import * as rasrmStageV546 from '../../lib/rasrm-stage-v546.js';
 import * as brueV547 from '../../lib/brue-v547.js';
 import * as ppmEoaiV548 from '../../lib/ppm-eoai-v548.js';
+import * as poseidonV549 from '../../lib/poseidon-v549.js';
 import * as tbTesting from '../../lib/tb-testing.js';
 
 const MODULES = {
@@ -991,6 +992,7 @@ const MODULES = {
   'rasrm-stage-v546.js': rasrmStageV546,
   'brue-v547.js': brueV547,
   'ppm-eoai-v548.js': ppmEoaiV548,
+  'poseidon-v549.js': poseidonV549,
   'tb-testing.js': tbTesting,
 };
 

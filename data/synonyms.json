@@ -680,6 +680,8 @@
     { "phrases": ["brue", "brief resolved unexplained event", "alte infant", "lower risk brue criteria"],
       "tile": "brue", "audience": "clinicians" },
     { "phrases": ["patient prosthesis mismatch", "eoai", "indexed effective orifice area", "prosthesis too small for patient"],
-      "tile": "ppm-eoai", "audience": "clinicians" }
+      "tile": "ppm-eoai", "audience": "clinicians" },
+    { "phrases": ["poseidon classification", "poseidon group", "low prognosis ivf", "poor ovarian response stratification"],
+      "tile": "poseidon", "audience": "clinicians" }
   ]
 }

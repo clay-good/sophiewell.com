@@ -1574,6 +1574,38 @@ Brings the exposed total to **1314 calculators across 430 modules**.
 ### lib/wayne-index-v527.js
 - `wayne-index`
 
+## Three-hundred-seventy-fourth wave — the POSEIDON classification in lib/poseidon-v549.js (+1)
+
+`poseidon` (spec-v549) stratifies low-prognosis patients in assisted reproduction on two axes, age and
+ovarian reserve, into four groups. This wave opens reproductive endocrinology on the MCP surface, which had
+no representation at all.
+
+**Only groups 1 and 2 are subdivided, and an agent will invent 3a and 4b if not told otherwise.** The a/b
+split by oocyte yield exists only where a prior cycle has happened; groups 3 and 4 are single undivided
+groups. A four-group scheme in which exactly two groups split is precisely the shape a language model
+smooths into "all four split", so the summary states the asymmetry outright.
+
+**Groups 1 and 2 require a prior conventional-stimulation cycle; groups 3 and 4 do not.** The defining
+feature of groups 1 and 2 is an *unexpectedly* poor response, so a patient with adequate reserve who has
+never been stimulated is not group 1 or 2 — and is not "group 1 pending" either — but simply unclassifiable
+until a cycle has been done. The tool returns `classified: false` with the reason rather than guessing a
+group.
+
+**Adequate reserve with 10 or more oocytes is not a POSEIDON group at all.** The classification describes
+*low-prognosis* patients, so a normal responder falls outside it and the tool says so. An agent that always
+emitted a group would label every patient low-prognosis, inverting the purpose of the scheme.
+
+The two reserve markers are **alternatives**: antral follicle count of 5 or more *and/or* anti-Mullerian
+hormone of 1.2 ng/mL or more. Neither field is individually required and the tool refuses only when both are
+absent. When both are supplied and disagree, reserve is graded adequate — that is what "and/or" means — and
+the result sets `markersDiscordant` so the disagreement is visible instead of being resolved silently, since
+discordance is common and decides which half of the scheme applies. New adapter module registered in
+`mcp/catalog.js`; its golden probe ("poseidon group low prognosis ivf") is promoted now that the tile is in
+the MCP-exposed registry. Brings the exposed total to **1336 calculators across 452 modules**.
+
+### lib/poseidon-v549.js
+- `poseidon`
+
 ## Three-hundred-seventy-third wave — patient-prosthesis mismatch in lib/ppm-eoai-v548.js (+1)
 
 `ppm-eoai` (spec-v548) divides the prosthesis effective orifice area by body surface area and grades the
@@ -7223,6 +7255,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/ppm-eoai-v548.js
 - `ppm-eoai`
+
+### lib/poseidon-v549.js
+- `poseidon`
 
 ### lib/tb-testing.js
 - `tb-testing`
