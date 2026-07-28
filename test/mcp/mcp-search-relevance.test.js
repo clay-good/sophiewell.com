@@ -595,6 +595,7 @@ const PROBES = [
   ['aeeg amplitude classification neonatal encephalopathy', ['anaqeeb-aeeg']],
   ['spadi shoulder pain disability index', ['spadi']],
   ['pusher behaviour scale contraversive pushing stroke', ['scp-pushing']],
+  ['mayo imaging classification adpkd kidney volume', ['mayo-adpkd']],
 ];
 
 test(`every golden probe routes an acceptable tile into the top ${TOP_N}`, () => {

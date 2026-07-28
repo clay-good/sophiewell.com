@@ -708,6 +708,8 @@
     { "phrases": ["spadi", "shoulder pain and disability index", "shoulder disability score", "shoulder function questionnaire"],
       "tile": "spadi", "audience": "clinicians" },
     { "phrases": ["scale for contraversive pushing", "pusher behavior", "pusher syndrome stroke", "contraversive pushing scale"],
-      "tile": "scp-pushing", "audience": "clinicians" }
+      "tile": "scp-pushing", "audience": "clinicians" },
+    { "phrases": ["mayo imaging classification", "adpkd class", "polycystic kidney risk class", "height adjusted total kidney volume"],
+      "tile": "mayo-adpkd", "audience": "clinicians" }
   ]
 }

@@ -537,6 +537,7 @@ import * as erezDicV559 from '../../lib/erez-dic-v559.js';
 import * as anaqeebAeegV560 from '../../lib/anaqeeb-aeeg-v560.js';
 import * as spadiV561 from '../../lib/spadi-v561.js';
 import * as scpPushingV562 from '../../lib/scp-pushing-v562.js';
+import * as mayoAdpkdV563 from '../../lib/mayo-adpkd-v563.js';
 import * as tbTesting from '../../lib/tb-testing.js';
 
 const MODULES = {
@@ -1019,6 +1020,7 @@ const MODULES = {
   'anaqeeb-aeeg-v560.js': anaqeebAeegV560,
   'spadi-v561.js': spadiV561,
   'scp-pushing-v562.js': scpPushingV562,
+  'mayo-adpkd-v563.js': mayoAdpkdV563,
   'tb-testing.js': tbTesting,
 };
 

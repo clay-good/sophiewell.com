@@ -1574,6 +1574,39 @@ Brings the exposed total to **1314 calculators across 430 modules**.
 ### lib/wayne-index-v527.js
 - `wayne-index`
 
+## Three-hundred-eighty-eighth wave — the Mayo imaging classification of ADPKD in lib/mayo-adpkd-v563.js (+1)
+
+`mayo-adpkd` (spec-v563) works in two steps, and only the second is arithmetic: a radiologist classifies the
+morphology, and only typical (class 1) patients are then subclassified 1A-1E from height-adjusted total
+kidney volume and age.
+
+**Class 2 is a terminal dead end, not a route to a low subclass.** Atypical patients receive **no** 1A-1E
+subclass at all — the classification explicitly does not risk-stratify them. An agent handed an atypical
+patient's volume and age will happily run the formula, and the answer would be a class the instrument
+refuses to give. Worse, because atypical disease is often asymmetric or segmental, the computed figure tends
+to look falsely **reassuring**. The tool returns `subclassified: false` and stops.
+
+**The morphology class is a descriptor and cannot be inferred.** Nothing in the volume, the height or the
+age determines whether a patient is class 1 or class 2, so it is required and never guessed.
+
+**Age sits in a denominator inside an exponent, and the model is not validated below 15.** The published
+cut-off table starts there, and the reciprocal exponent makes the estimate increasingly unstable as age
+falls. The tool refuses below 15 rather than returning a confident-looking number from the unvalidated end
+of the model.
+
+**K = 150 is the published model; a competing K = 130 is a rival parameterization, not a correction.** An
+independent validation found the alternative tended to *overestimate* the class. It is named in the summary
+so an agent meeting it in the literature knows which model this implements, and it is not applied.
+
+How the volume was measured can shift a whole subclass — the ellipsoid equation overestimated stereologic
+volume by about 5.3% on average — so the method is recorded as an input although it does not enter the
+arithmetic. New adapter module registered in `mcp/catalog.js`; its golden probe ("mayo imaging
+classification adpkd kidney volume") is promoted now that the tile is in the MCP-exposed registry. Brings
+the exposed total to **1350 calculators across 466 modules**.
+
+### lib/mayo-adpkd-v563.js
+- `mayo-adpkd`
+
 ## Three-hundred-eighty-seventh wave — the Scale for Contraversive Pushing in lib/scp-pushing-v562.js (+1)
 
 `scp-pushing` (spec-v562) scores three sections, each sitting **and** standing, summed — section max 2,
@@ -7718,6 +7751,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/scp-pushing-v562.js
 - `scp-pushing`
+
+### lib/mayo-adpkd-v563.js
+- `mayo-adpkd`
 
 ### lib/tb-testing.js
 - `tb-testing`

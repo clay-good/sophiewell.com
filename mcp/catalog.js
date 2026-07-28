@@ -473,6 +473,7 @@ import erezDicV559 from './adapters/erez-dic-v559.js';
 import anaqeebAeegV560 from './adapters/anaqeeb-aeeg-v560.js';
 import spadiV561 from './adapters/spadi-v561.js';
 import scpPushingV562 from './adapters/scp-pushing-v562.js';
+import mayoAdpkdV563 from './adapters/mayo-adpkd-v563.js';
 import tbTesting from './adapters/tb-testing.js';
 import labInterpret from './adapters/lab-interpret.js';
 import decisionRulesV258 from './adapters/decision-rules-v258.js';
@@ -940,6 +941,7 @@ const ADAPTER_MODULES = [
   ['anaqeeb-aeeg-v560', anaqeebAeegV560],
   ['spadi-v561', spadiV561],
   ['scp-pushing-v562', scpPushingV562],
+  ['mayo-adpkd-v563', mayoAdpkdV563],
   ['tb-testing', tbTesting],
   ['lab-interpret', labInterpret],
   ['decision-rules-v258', decisionRulesV258],
