@@ -1574,6 +1574,39 @@ Brings the exposed total to **1314 calculators across 430 modules**.
 ### lib/wayne-index-v527.js
 - `wayne-index`
 
+## Three-hundred-eighty-ninth wave — the PROPKD score in lib/propkd-v564.js (+1)
+
+`propkd` (spec-v564) predicts renal survival in ADPKD from four variables totalling 0-9. A **companion** to
+`mayo-adpkd` on a different axis: that stratifies from kidney volume on a scan, this from genotype and
+clinical history with no imaging at all, and the two disagree on real patients.
+
+**"PKD2 mutation, 0 points" is an explicit finding, not an absence — the trap a zero-point level invites.**
+Scoring 0 for the mutation term *asserts that PKD2 was found*. A patient who has not been genotyped has
+**no** PROPKD score, because the variable is missing rather than zero, and defaulting an ungenotyped patient
+to the 0-point level would return a low-risk result built on an assertion nobody made. The enum has no
+"unknown" or "not tested" member, the tool refuses without a category, and a test asserts no such member
+exists. The score is likewise **inapplicable** to patients in whom no PKD1 or PKD2 mutation was found — the
+PKD2 level is not a fallback.
+
+**The mutation term supplies up to 4 of the 9 points from one mutually exclusive, non-linear categorical
+variable**, so a truncating PKD1 mutation alone reaches the intermediate band before any clinical variable
+is counted.
+
+**Both clinical variables are age-gated at 35, and the instrument is weakest in young patients.** A later
+analysis notes the score may not help identify rapid progression under 35 unless the patient is *already*
+hypertensive and has *already* had urologic complications — so it is least informative in exactly the
+patients a clinician most wants to stratify. The optional age argument does not enter the score; it only
+attaches that caveat.
+
+The low-risk band runs **0-3**: one widely circulated slide draws the strip starting at 1, which would leave
+a score of 0 unbanded, and the paper is followed. The 81.4% NPV and 90.9% PPV are attributed to a separate
+review rather than the derivation paper. New adapter module registered in `mcp/catalog.js`; its golden probe
+("propkd score renal survival polycystic kidney") is promoted now that the tile is in the MCP-exposed
+registry. Brings the exposed total to **1351 calculators across 467 modules**.
+
+### lib/propkd-v564.js
+- `propkd`
+
 ## Three-hundred-eighty-eighth wave — the Mayo imaging classification of ADPKD in lib/mayo-adpkd-v563.js (+1)
 
 `mayo-adpkd` (spec-v563) works in two steps, and only the second is arithmetic: a radiologist classifies the
@@ -7754,6 +7787,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/mayo-adpkd-v563.js
 - `mayo-adpkd`
+
+### lib/propkd-v564.js
+- `propkd`
 
 ### lib/tb-testing.js
 - `tb-testing`

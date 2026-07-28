@@ -710,6 +710,8 @@
     { "phrases": ["scale for contraversive pushing", "pusher behavior", "pusher syndrome stroke", "contraversive pushing scale"],
       "tile": "scp-pushing", "audience": "clinicians" },
     { "phrases": ["mayo imaging classification", "adpkd class", "polycystic kidney risk class", "height adjusted total kidney volume"],
-      "tile": "mayo-adpkd", "audience": "clinicians" }
+      "tile": "mayo-adpkd", "audience": "clinicians" },
+    { "phrases": ["propkd", "propkd score", "adpkd renal survival", "pkd1 pkd2 risk score"],
+      "tile": "propkd", "audience": "clinicians" }
   ]
 }
