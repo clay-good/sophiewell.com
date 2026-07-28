@@ -541,6 +541,7 @@ import * as mayoAdpkdV563 from '../../lib/mayo-adpkd-v563.js';
 import * as propkdV564 from '../../lib/propkd-v564.js';
 import * as lupusNephritisIndicesV565 from '../../lib/lupus-nephritis-indices-v565.js';
 import * as nihCpsiV566 from '../../lib/nih-cpsi-v566.js';
+import * as igcccgV567 from '../../lib/igcccg-v567.js';
 import * as tbTesting from '../../lib/tb-testing.js';
 
 const MODULES = {
@@ -1027,6 +1028,7 @@ const MODULES = {
   'propkd-v564.js': propkdV564,
   'lupus-nephritis-indices-v565.js': lupusNephritisIndicesV565,
   'nih-cpsi-v566.js': nihCpsiV566,
+  'igcccg-v567.js': igcccgV567,
   'tb-testing.js': tbTesting,
 };
 

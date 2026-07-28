@@ -716,6 +716,8 @@
     { "phrases": ["lupus nephritis activity index", "chronicity index", "modified nih index lupus", "nih activity chronicity"],
       "tile": "lupus-nephritis-indices", "audience": "clinicians" },
     { "phrases": ["nih cpsi", "chronic prostatitis symptom index", "prostatitis score", "chronic pelvic pain syndrome score"],
-      "tile": "nih-cpsi", "audience": "clinicians" }
+      "tile": "nih-cpsi", "audience": "clinicians" },
+    { "phrases": ["igcccg", "germ cell prognostic group", "testicular cancer risk group", "seminoma nonseminoma prognosis"],
+      "tile": "igcccg", "audience": "clinicians" }
   ]
 }

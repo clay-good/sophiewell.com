@@ -1574,6 +1574,40 @@ Brings the exposed total to **1314 calculators across 430 modules**.
 ### lib/wayne-index-v527.js
 - `wayne-index`
 
+## Three-hundred-ninety-second wave — the IGCCCG classification in lib/igcccg-v567.js (+1)
+
+`igcccg` (spec-v567) assigns the prognostic group for metastatic germ cell cancer.
+
+**Seminoma has no poor-prognosis category, and the sixth cell of the grid does not exist.** The source states
+outright that no patients with seminoma are classified as poor prognosis. A three-by-two table invites
+filling in the missing cell, and letting a seminoma fall through to "poor" would invent a category the
+classification refuses to contain. The tool caps seminoma at intermediate, returns `poorCategoryExists:
+false`, and a test sweeps every seminoma input path asserting none reaches poor.
+
+**The table mixes all-of and any-of in one classification.** Good prognosis requires **every** criterion
+(AND); intermediate and poor are triggered by **any one** marker criterion (OR). Reading the whole table in
+a single direction misclassifies both ways — tests pin each direction separately.
+
+**In seminoma the AFP field is a gate, not a graded marker.** A raised AFP does not make a seminoma
+higher-risk: by definition the tumor is then a **nonseminoma**. The tool returns
+`reclassifyAsNonseminoma: true` rather than a seminoma group. Seminoma also ignores hCG and LDH entirely and
+permits any primary site — tests assert a mediastinal primary does not demote a seminoma.
+
+**Units are stated because one is a documented typo.** hCG thresholds are in **IU/L**; a widely used
+secondary source prints IU/mL in two rows while quoting the same numbers, and reading it that way is wrong
+by a factor of a thousand. LDH is a **multiple** of the local upper limit of normal, not an absolute value.
+Markers must be **post-orchiectomy, pre-chemotherapy** — a dedicated study exists showing pre-orchiectomy
+values mis-assign the group.
+
+**Two survival vintages with identical group definitions** are both returned, labeled: poor-risk nonseminoma
+moved from 48% (1997) to 71% (2021 update) with no change to who falls in the group. New adapter module
+registered in `mcp/catalog.js`; its golden probe ("igcccg prognostic group germ cell tumor") is promoted now
+that the tile is in the MCP-exposed registry. Brings the exposed total to **1354 calculators across 470
+modules**.
+
+### lib/igcccg-v567.js
+- `igcccg`
+
 ## Three-hundred-ninety-first wave — the NIH-CPSI in lib/nih-cpsi-v566.js (+1)
 
 `nih-cpsi` (spec-v566) scores three subscales — pain 0-21, urinary 0-10, quality-of-life impact 0-12 —
@@ -7863,6 +7897,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/nih-cpsi-v566.js
 - `nih-cpsi`
+
+### lib/igcccg-v567.js
+- `igcccg`
 
 ### lib/tb-testing.js
 - `tb-testing`

@@ -599,6 +599,7 @@ const PROBES = [
   ['propkd score renal survival polycystic kidney', ['propkd']],
   ['lupus nephritis activity chronicity index biopsy', ['lupus-nephritis-indices']],
   ['chronic prostatitis symptom index cpsi', ['nih-cpsi']],
+  ['igcccg prognostic group germ cell tumor', ['igcccg']],
 ];
 
 test(`every golden probe routes an acceptable tile into the top ${TOP_N}`, () => {

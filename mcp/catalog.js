@@ -477,6 +477,7 @@ import mayoAdpkdV563 from './adapters/mayo-adpkd-v563.js';
 import propkdV564 from './adapters/propkd-v564.js';
 import lupusNephritisIndicesV565 from './adapters/lupus-nephritis-indices-v565.js';
 import nihCpsiV566 from './adapters/nih-cpsi-v566.js';
+import igcccgV567 from './adapters/igcccg-v567.js';
 import tbTesting from './adapters/tb-testing.js';
 import labInterpret from './adapters/lab-interpret.js';
 import decisionRulesV258 from './adapters/decision-rules-v258.js';
@@ -948,6 +949,7 @@ const ADAPTER_MODULES = [
   ['propkd-v564', propkdV564],
   ['lupus-nephritis-indices-v565', lupusNephritisIndicesV565],
   ['nih-cpsi-v566', nihCpsiV566],
+  ['igcccg-v567', igcccgV567],
   ['tb-testing', tbTesting],
   ['lab-interpret', labInterpret],
   ['decision-rules-v258', decisionRulesV258],
