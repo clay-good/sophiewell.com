@@ -1574,6 +1574,37 @@ Brings the exposed total to **1314 calculators across 430 modules**.
 ### lib/wayne-index-v527.js
 - `wayne-index`
 
+## Three-hundred-ninety-first wave — the NIH-CPSI in lib/nih-cpsi-v566.js (+1)
+
+`nih-cpsi` (spec-v566) scores three subscales — pain 0-21, urinary 0-10, quality-of-life impact 0-12 —
+summed to 0-43.
+
+**Nine numbered questions but thirteen scored items, and both counts are correct.** The literature
+universally calls this a 13-item index while the form shows nine questions: Q1 has four yes/no sub-parts and
+Q2 has two, so 4 + 2 + 7 = 13. An agent that has met only one of the two counts will think the other
+describes a different instrument.
+
+**The per-item ranges are heterogeneous and one item carries ~23% of the total.** Six items are 0-1, two are
+0-3, three are 0-5, one is 0-6, and the average-pain rating is 0-10 — worth **ten times** any one yes/no
+item. Every field carries its own enum; there is no shared response scale, and a test asserts the exact
+range distribution.
+
+**The development paper published no severity bands.** The widely quoted mild 0-14 / moderate 15-29 / severe
+30-43 come from a *later* multinational cohort, and the summary attributes them, because an agent that
+believes the instrument ships with bands will over-trust them.
+
+**The MGUPI/GUPI is a different instrument**: two extra pain items give a pain subscale of 0-23 and a total
+of 0-45, so a total of 44 is impossible here and ordinary there. The two must never be mixed.
+
+Q4 is conditional in wording ("on the days that you had it") but unconditional in scoring, so the tool
+requires it and sets `painFrequencyConflict` when Q3 is "never" while Q4 is positive — reporting the
+contradiction rather than silently accepting it. New adapter module registered in `mcp/catalog.js`; its
+golden probe ("chronic prostatitis symptom index cpsi") is promoted now that the tile is in the MCP-exposed
+registry. Brings the exposed total to **1353 calculators across 469 modules**.
+
+### lib/nih-cpsi-v566.js
+- `nih-cpsi`
+
 ## Three-hundred-ninetieth wave — the modified NIH lupus nephritis indices in lib/lupus-nephritis-indices-v565.js (+1)
 
 `lupus-nephritis-indices` (spec-v565) scores the 2018 ISN/RPS activity index (0-24, six components) and
@@ -7829,6 +7860,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/lupus-nephritis-indices-v565.js
 - `lupus-nephritis-indices`
+
+### lib/nih-cpsi-v566.js
+- `nih-cpsi`
 
 ### lib/tb-testing.js
 - `tb-testing`
