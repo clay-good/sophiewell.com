@@ -557,6 +557,7 @@ import * as robartsIndexV579 from '../../lib/robarts-index-v579.js';
 import * as ehraAfV580 from '../../lib/ehra-af-v580.js';
 import * as shanghaiBrugadaV581 from '../../lib/shanghai-brugada-v581.js';
 import * as hlh2004V582 from '../../lib/hlh-2004-v582.js';
+import * as nacAttrStageV583 from '../../lib/nac-attr-stage-v583.js';
 import * as tbTesting from '../../lib/tb-testing.js';
 
 const MODULES = {
@@ -1059,6 +1060,7 @@ const MODULES = {
   'ehra-af-v580.js': ehraAfV580,
   'shanghai-brugada-v581.js': shanghaiBrugadaV581,
   'hlh-2004-v582.js': hlh2004V582,
+  'nac-attr-stage-v583.js': nacAttrStageV583,
   'tb-testing.js': tbTesting,
 };
 

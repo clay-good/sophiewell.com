@@ -1574,6 +1574,45 @@ Brings the exposed total to **1314 calculators across 430 modules**.
 ### lib/wayne-index-v527.js
 - `wayne-index`
 
+## Four-hundred-and-eighth wave — the NAC / Gillmore ATTR stage in lib/nac-attr-stage-v583.js (+1)
+
+`nac-attr-stage` (spec-v583) returns the National Amyloidosis Centre stage for transthyretin cardiac
+amyloidosis in **both** its original three-stage form and its 2024 four-stage expansion. A
+**revised-successor gap** with neither version present: `grep -ci transthyretin app.js` returned 0.
+
+**Stage 4 is not a tail of stage 3 — it cuts across.** Stage 4 is NT-proBNP ≥ 10,000 ng/L *irrespective of
+eGFR*, so a patient with NT-proBNP 12,000 and a perfectly good eGFR of 60 is original stage 2 and expanded
+stage 4. The paper counts it: of its 180 stage 4 patients, **65 came from original stage 2** and 115 from
+original stage 3. Modelling stage 4 as "stage 3 plus a higher NT-proBNP" silently loses the 65, and a test
+asserts exactly that patient. Both stages are reported side by side rather than the newer replacing the
+older, because they disagree for a defined and clinically real group.
+
+**The published definition of stage 2 is an OR that literally overlaps stage 3.** The source's own wording is
+"stage 2: NT-proBNP >3000 ng/L *or* eGFR <45 ml/min; stage 3: NT-proBNP >3000 ng/L *and* eGFR <45 ml/min" —
+every stage 3 patient also satisfies the stage 2 sentence. The intended and universally applied reading is
+that stage 2 is the residual, one criterion but not both, with stage 3 taking precedence. That reading is
+applied and *stated*, rather than the published wording being presented as unambiguous.
+
+**Stage 2 lumps together two opposite patients** — cardiac-dominant (NT-proBNP over 3000, kidneys fine) and
+renal-dominant (eGFR under 45, NT-proBNP at or under 3000). Same label, different clinical picture; the
+result names which one it is.
+
+**The 10,000 cut-point is rounded and its sensitivity is about 54%.** The Youden-optimal value was 10,461
+ng/L, and it was derived *only* within stage 3 patients. Nearly half the patients who die early are not
+flagged, so a stage below 4 is not reassurance.
+
+**Two source holes are reported rather than patched.** The paper never states which eGFR equation was used,
+and CKD-EPI and MDRD routinely disagree by several ml/min right at the 45 boundary. And median survival is
+returned as **null for stages 1 and 2** on purpose: within 36 months of follow-up a median was reached only
+for stage 3 (33.5 months) and stage 4 (22.5 months), so quoting one would be inventing it. NT-proBNP in ng/L
+and pg/mL are numerically identical, so no conversion is applied. New adapter module registered in
+`mcp/catalog.js`; its golden probe ("nac gillmore stage transthyretin cardiac amyloidosis") is promoted now
+that the tile is in the MCP-exposed registry. Brings the exposed total to **1370 calculators across 486
+modules**.
+
+### lib/nac-attr-stage-v583.js
+- `nac-attr-stage`
+
 ## Four-hundred-and-seventh wave — the HLH-2004 diagnostic criteria in lib/hlh-2004-v582.js (+1)
 
 `hlh-2004` (spec-v582) applies the revised diagnostic guidelines for hemophagocytic lymphohistiocytosis. A
@@ -8438,6 +8477,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/hlh-2004-v582.js
 - `hlh-2004`
+
+### lib/nac-attr-stage-v583.js
+- `nac-attr-stage`
 
 ### lib/tb-testing.js
 - `tb-testing`

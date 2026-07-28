@@ -748,6 +748,8 @@
     { "phrases": ["shanghai score", "shanghai brugada", "brugada syndrome diagnosis", "brugada diagnostic score"],
       "tile": "shanghai-brugada", "audience": "clinicians" },
     { "phrases": ["hlh 2004", "hlh criteria", "hemophagocytic lymphohistiocytosis criteria", "hlh diagnostic criteria"],
-      "tile": "hlh-2004", "audience": "clinicians" }
+      "tile": "hlh-2004", "audience": "clinicians" },
+    { "phrases": ["nac stage", "gillmore stage", "attr cardiac amyloidosis stage", "transthyretin amyloidosis staging"],
+      "tile": "nac-attr-stage", "audience": "clinicians" }
   ]
 }
