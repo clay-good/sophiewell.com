@@ -452,6 +452,7 @@ import neosV538 from './adapters/neos-v538.js';
 import islLymphedemaV539 from './adapters/isl-lymphedema-v539.js';
 import ishltRejectionV540 from './adapters/ishlt-rejection-v540.js';
 import rachs1V541 from './adapters/rachs1-v541.js';
+import twstrsSeverityV542 from './adapters/twstrs-severity-v542.js';
 import tbTesting from './adapters/tb-testing.js';
 import labInterpret from './adapters/lab-interpret.js';
 import decisionRulesV258 from './adapters/decision-rules-v258.js';
@@ -898,6 +899,7 @@ const ADAPTER_MODULES = [
   ['isl-lymphedema-v539', islLymphedemaV539],
   ['ishlt-rejection-v540', ishltRejectionV540],
   ['rachs1-v541', rachs1V541],
+  ['twstrs-severity-v542', twstrsSeverityV542],
   ['tb-testing', tbTesting],
   ['lab-interpret', labInterpret],
   ['decision-rules-v258', decisionRulesV258],

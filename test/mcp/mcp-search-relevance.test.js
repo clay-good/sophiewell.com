@@ -574,6 +574,7 @@ const PROBES = [
   ['isl lymphedema stage swollen limb', ['isl-lymphedema']],
   ['ishlt cardiac allograft rejection grade', ['ishlt-rejection']],
   ['rachs congenital heart surgery risk category', ['rachs1']],
+  ['twstrs cervical dystonia severity', ['twstrs-severity']],
 ];
 
 test(`every golden probe routes an acceptable tile into the top ${TOP_N}`, () => {

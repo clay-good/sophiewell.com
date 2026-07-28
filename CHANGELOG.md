@@ -6,6 +6,23 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v542 — TWSTRS severity subscale (cervical dystonia) tile, 1391 → 1392)
+
+- New `twstrs-severity` tile (group G): the ten-item motor subscale of the Toronto Western Spasmodic
+  Torticollis Rating Scale, scored **out of 35**. Whole-concept gap — `twstrs`, `torticollis`, `dystonia`,
+  `consky`, and `cervical dystonia` were all zero-hit, and the catalog's movement-disorder tiles are all
+  parkinsonian or drug-induced. **It scores the severity subscale only, and says so in every result**: the
+  full TWSTRS is 85 points (severity 35 + disability 30 + pain 20), but the disability item anchors and the
+  pain-severity formula each rested on a single source, so they are deliberately not implemented rather than
+  shipping a total that resembles the published instrument without being it. **Duration is the only weighted
+  item** — rated 0-5 then **doubled**; summing it raw would cap the subscale at 30 and under-weight how much
+  of the time the patient is dystonic, so the raw rating and weighted contribution are reported separately.
+  **Anterocollis and retrocollis share one slot** (a neck cannot be flexed and extended at once), made
+  structural so scoring both and reaching 38 is impossible. The `12+10+2+3+4+4 = 35` arithmetic is asserted
+  by a test as a check on the item ranges. It rates motor appearance: it does not diagnose cervical dystonia,
+  does not measure disability or pain, and is not an indication for botulinum toxin. See
+  [spec-v542](docs/spec-v542.md).
+
 ### Added (spec-v541 — RACHS-1 (congenital heart surgery risk category) tile, 1390 → 1391)
 
 - New `rachs1` tile (group G): the six consensus risk categories for congenital heart surgery, with

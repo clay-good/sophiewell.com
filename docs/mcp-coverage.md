@@ -1574,6 +1574,34 @@ Brings the exposed total to **1314 calculators across 430 modules**.
 ### lib/wayne-index-v527.js
 - `wayne-index`
 
+## Three-hundred-sixty-seventh wave — the TWSTRS severity subscale in lib/twstrs-severity-v542.js (+1)
+
+`twstrs-severity` (spec-v542) scores the ten TWSTRS severity items out of 35 and returns the excursion
+subtotal and the duration contribution separately.
+
+**The tool is named and scoped as one subscale, and the summary says so repeatedly.** The full TWSTRS is 85
+points — severity 35, disability 30, pain 20. Only the severity subscale could be verified to the standard
+this catalog requires, so an agent asked for "the TWSTRS" must be told it is receiving 35 points of an
+85-point instrument; reporting this total as "TWSTRS 20" without the denominator would understate a patient
+by more than a factor of two.
+
+**The per-item enum ranges differ, which is what a shared vocabulary would break.** Rotation runs 0-4,
+laterocollis and sagittal deviation 0-3, the two shifts **0-1**, sensory tricks 0-2, duration 0-5. A single
+0-4 vocabulary across all ten would let an agent send a `4` for a lateral shift, which has only "absent" and
+"present". Each field publishes only its own legal values, generated from the lib.
+
+**Duration is doubled, and the label says so in capitals.** It is the only weighted item; an agent reporting
+the raw 0-5 rating as its contribution would under-count by up to five points on the item the scale
+deliberately emphasises. The result returns `durationRaw` and `durationPoints` separately so the doubling is
+auditable rather than buried in a total. **Anterocollis and retrocollis share one field** — mutually
+exclusive, since a neck cannot be flexed and extended at once — so there is no way for an agent to score both
+and reach 38. New adapter module registered in `mcp/catalog.js`; its golden probe ("twstrs cervical dystonia
+severity") is promoted now that the tile is in the MCP-exposed registry. Brings the exposed total to **1329
+calculators across 445 modules**.
+
+### lib/twstrs-severity-v542.js
+- `twstrs-severity`
+
 ## Three-hundred-sixty-sixth wave — RACHS-1 in lib/rachs1-v541.js (+1)
 
 `rachs1` (spec-v541) returns the RACHS-1 category with its derivation-cohort mortality and the separate risk
@@ -6993,6 +7021,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/rachs1-v541.js
 - `rachs1`
+
+### lib/twstrs-severity-v542.js
+- `twstrs-severity`
 
 ### lib/tb-testing.js
 - `tb-testing`
