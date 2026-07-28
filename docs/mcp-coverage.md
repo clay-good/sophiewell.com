@@ -1574,6 +1574,35 @@ Brings the exposed total to **1314 calculators across 430 modules**.
 ### lib/wayne-index-v527.js
 - `wayne-index`
 
+## Three-hundred-seventy-first wave — the revised ASRM endometriosis stage in lib/rasrm-stage-v546.js (+1)
+
+`rasrm-stage` (spec-v546) converts a revised ASRM point total into a stage.
+
+**This tool takes a total and returns a stage. It does not score a laparoscopy, and the summary says so
+twice.** That is a deliberate scope limit, not an omission. The ASRM point grid could not be verified against
+two independent sources — the scoring form is a single copyrighted figure, and the reachable reproductions
+are images or single transcriptions. An agent asked to "calculate the ASRM score" from operative findings
+must **decline and ask for the total from the completed form**, because a grid assembled from one unverified
+transcription would produce authoritative-looking numbers nobody can check.
+
+**The only thing this tool computes is the boundary, so the boundary is stated exactly:** a total of 40 is
+stage III; 41 is the first stage IV. That matters because one secondary account, paraphrasing a well-known
+criticism of the system, loosely calls a lone finding of complete cul-de-sac obliteration — which scores 40 —
+"severe disease". Under the published ranges it sits at the *top of stage III*, and an agent repeating the
+loose phrasing would upgrade a stage. A total of **0 returns no stage**, not stage I, since stage I begins at
+1. The **1979 AFS ranges are named** (stage III 16-30, IV 31-54) because an agent handed a bare "stage III"
+from an older record cannot interpret it without the edition.
+
+The summary leads with the instrument's own weakness rather than burying it: the stage **correlates poorly
+with pain and with fertility outcome**. "Stage IV endometriosis" is exactly the phrase an agent would
+otherwise convert into a prognosis about pain or conception, and the classification does not support that.
+New adapter module registered in `mcp/catalog.js`; its golden probe ("asrm endometriosis stage from score")
+is promoted now that the tile is in the MCP-exposed registry. Brings the exposed total to **1333 calculators
+across 449 modules**.
+
+### lib/rasrm-stage-v546.js
+- `rasrm-stage`
+
 ## Three-hundred-seventieth wave — FIGO PALM-COEIN in lib/palm-coein-v545.js (+1)
 
 `palm-coein` (spec-v545) returns the full TNM-style AUB notation from the nine category values.
@@ -7124,6 +7153,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/palm-coein-v545.js
 - `palm-coein`
+
+### lib/rasrm-stage-v546.js
+- `rasrm-stage`
 
 ### lib/tb-testing.js
 - `tb-testing`

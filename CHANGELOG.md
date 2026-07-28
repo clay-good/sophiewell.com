@@ -6,6 +6,22 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v546 — Revised ASRM stage (endometriosis, from a total) tile, 1395 → 1396)
+
+- New `rasrm-stage` tile (group G): converts a revised ASRM point total into a stage — **I** minimal 1-5,
+  **II** mild 6-15, **III** moderate 16-40, **IV** severe above 40, maximum 150. Whole-concept gap:
+  `rasrm`, `endometriosis`, `enzian`, and `cul-de-sac` were all zero-hit. **The tile deliberately does not
+  compute the score, it interprets one** — the per-site point grid could not be double-confirmed (the form is
+  a single copyrighted figure and every reproduction is an image or a lone transcription), so building a
+  calculator on it would produce authoritative-looking numbers nobody can check. **The III/IV boundary sits
+  at exactly 40** — 40 is stage III, 41 is the first stage IV — which matters because it is the only thing
+  this tile computes, and a secondary account loosely calls a lone complete cul-de-sac obliteration (scoring
+  40) "severe". A total of **0 returns no stage**, not stage I. The **1979 AFS ranges are named** (III 16-30,
+  IV 31-54) since a stage from an older record is otherwise uninterpretable. **The instrument's own weakness
+  is the headline:** the stage correlates poorly with pain and with fertility outcome — stage I can be
+  severely painful, stage IV painless, and it does not predict conception. See
+  [spec-v546](docs/spec-v546.md).
+
 ### Added (spec-v545 — FIGO PALM-COEIN (abnormal uterine bleeding causes) tile, 1394 → 1395)
 
 - New `palm-coein` tile (group G): the nine-category FIGO classification of AUB causes, **2018 revision**.

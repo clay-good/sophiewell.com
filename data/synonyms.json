@@ -674,6 +674,8 @@
     { "phrases": ["nems", "nursing manpower score", "icu nursing workload score", "nursing workload icu"],
       "tile": "nems", "audience": "clinicians" },
     { "phrases": ["palm coein", "abnormal uterine bleeding classification", "aub causes classification", "figo aub system"],
-      "tile": "palm-coein", "audience": "clinicians" }
+      "tile": "palm-coein", "audience": "clinicians" },
+    { "phrases": ["rasrm", "endometriosis stage", "asrm endometriosis score", "endometriosis staging laparoscopy"],
+      "tile": "rasrm-stage", "audience": "clinicians" }
   ]
 }

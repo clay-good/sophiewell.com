@@ -520,6 +520,7 @@ import * as twstrsSeverityV542 from '../../lib/twstrs-severity-v542.js';
 import * as saveScoreV543 from '../../lib/save-score-v543.js';
 import * as nemsV544 from '../../lib/nems-v544.js';
 import * as palmCoeinV545 from '../../lib/palm-coein-v545.js';
+import * as rasrmStageV546 from '../../lib/rasrm-stage-v546.js';
 import * as tbTesting from '../../lib/tb-testing.js';
 
 const MODULES = {
@@ -985,6 +986,7 @@ const MODULES = {
   'save-score-v543.js': saveScoreV543,
   'nems-v544.js': nemsV544,
   'palm-coein-v545.js': palmCoeinV545,
+  'rasrm-stage-v546.js': rasrmStageV546,
   'tb-testing.js': tbTesting,
 };
 

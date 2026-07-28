@@ -578,6 +578,7 @@ const PROBES = [
   ['save score veno arterial ecmo survival', ['save-score']],
   ['nems icu nursing workload score', ['nems']],
   ['palm coein abnormal uterine bleeding causes', ['palm-coein']],
+  ['asrm endometriosis stage from score', ['rasrm-stage']],
 ];
 
 test(`every golden probe routes an acceptable tile into the top ${TOP_N}`, () => {
