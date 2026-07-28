@@ -549,6 +549,7 @@ import * as eFacedV571 from '../../lib/e-faced-v571.js';
 import * as heavenCriteriaV572 from '../../lib/heaven-criteria-v572.js';
 import * as mapiAsthmaV573 from '../../lib/mapi-asthma-v573.js';
 import * as compera2V574 from '../../lib/compera-2-v574.js';
+import * as peradeniyaOpV575 from '../../lib/peradeniya-op-v575.js';
 import * as tbTesting from '../../lib/tb-testing.js';
 
 const MODULES = {
@@ -1043,6 +1044,7 @@ const MODULES = {
   'heaven-criteria-v572.js': heavenCriteriaV572,
   'mapi-asthma-v573.js': mapiAsthmaV573,
   'compera-2-v574.js': compera2V574,
+  'peradeniya-op-v575.js': peradeniyaOpV575,
   'tb-testing.js': tbTesting,
 };
 

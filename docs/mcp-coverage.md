@@ -1574,6 +1574,39 @@ Brings the exposed total to **1314 calculators across 430 modules**.
 ### lib/wayne-index-v527.js
 - `wayne-index`
 
+## Four-hundredth wave — the POP scale in lib/peradeniya-op-v575.js (+1)
+
+`peradeniya-op` (spec-v575) grades acute organophosphate poisoning severity from six parameters, maximum 11.
+The catalog had no organophosphate content of any kind.
+
+**The heart-rate row has a hole, and it is an interval rather than a single value.** The published levels
+are above 60 = 0, 41-60 = 1, and **below 40** = 2 — so everything from 40 up to but not including 41 falls
+in none of them. Reading the table as though rates are whole numbers makes it look like a one-value gap; it
+is not. Two independent reproductions print it identically, so this is the instrument rather than one
+paper's typo, and a bradycardic poisoned patient at 40 is not contrived. The tool **refuses** anything in
+the interval and names it.
+
+**The pupil levels overlap on their face** — a pinpoint pupil *is* under 2 mm — so pinpoint takes
+**precedence** rather than letting a first-match rule decide.
+
+**Fasciculation is a two-attribute conjunction dressed as a three-level scale.** Generalized **or**
+continuous scores 1; **both** scores 2. Intensity is not the axis, so a patient with violent but localized
+twitching does not score 2 — and the tool takes the two attributes separately so the conjunction is
+structural rather than a judgment call.
+
+**The maximum is 11, not 12.** Five parameters run 0-2 but seizures runs 0-1 only. Assuming six symmetric
+items misplaces every band boundary.
+
+**It must be applied before treatment** — atropine reverses miosis and bradycardia, two of the six
+parameters — and **it is not a dosing instrument**: atropine titration in these patients is driven by
+secretions and oxygenation, not by any score, which is the use this would most damagingly be put to. New
+adapter module registered in `mcp/catalog.js`; its golden probe ("peradeniya organophosphorus poisoning
+severity scale") is promoted now that the tile is in the MCP-exposed registry. Brings the exposed total to
+**1362 calculators across 478 modules**.
+
+### lib/peradeniya-op-v575.js
+- `peradeniya-op`
+
 ## Three-hundred-ninety-ninth wave — COMPERA 2.0 in lib/compera-2-v574.js (+1)
 
 `compera-2` (spec-v574) grades up to three variables 1-4 and takes the mean, rounded to the nearest integer.
@@ -8148,6 +8181,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/compera-2-v574.js
 - `compera-2`
+
+### lib/peradeniya-op-v575.js
+- `peradeniya-op`
 
 ### lib/tb-testing.js
 - `tb-testing`

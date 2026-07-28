@@ -732,6 +732,8 @@
     { "phrases": ["mapi", "asthma predictive index", "preschool wheeze asthma risk", "will my child develop asthma"],
       "tile": "mapi-asthma", "audience": "clinicians" },
     { "phrases": ["compera 2.0", "four strata pah risk", "esc ers pulmonary hypertension risk", "pah follow up risk"],
-      "tile": "compera-2", "audience": "clinicians" }
+      "tile": "compera-2", "audience": "clinicians" },
+    { "phrases": ["pop scale", "peradeniya organophosphorus", "organophosphate poisoning severity", "op poisoning grade"],
+      "tile": "peradeniya-op", "audience": "clinicians" }
   ]
 }
