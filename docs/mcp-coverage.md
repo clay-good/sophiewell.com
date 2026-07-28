@@ -1574,6 +1574,37 @@ Brings the exposed total to **1314 calculators across 430 modules**.
 ### lib/wayne-index-v527.js
 - `wayne-index`
 
+## Three-hundred-eighty-seventh wave — the Scale for Contraversive Pushing in lib/scp-pushing-v562.js (+1)
+
+`scp-pushing` (spec-v562) scores three sections, each sitting **and** standing, summed — section max 2,
+total max 6.
+
+**The total is not the classifier, and thresholding a total is the most natural thing to do with a scored
+instrument.** Pusher behavior is diagnosed only when **all three** sections independently clear the
+threshold. A patient scoring **4 of 6** with one section at zero is **not** a pusher, while a patient
+scoring 1.75 spread across all three **is** — and a test asserts exactly that inversion. The tool returns
+section subtotals as first-class values and evaluates every criterion against them, never against the total.
+
+**The point ladders differ between sections and are not equally spaced.** Section A is 0 / 0.25 / 0.75 / 1 —
+**there is no 0.5 in section A**. Section B is 0 / 0.5 / 1. Section C is binary. Each field's enum carries
+only its own section's values, and a test asserts 0.5 is refused in section A.
+
+**Three named criteria coexist and all three are returned.** They are not a source disagreement to refuse —
+they were formalized and named together and answer different questions: Crit_1 (total >0), Crit_2 (every
+section >0, the current recommendation), Crit_3 (every section ≥1, Karnath's original and the only one with
+no false positives). Reporting one would hide that a patient can be a pusher under the recommended criterion
+and not under the original, so the result flags when the criteria disagree.
+
+**A secondary-source error is carried deliberately as a warning.** A widely used rehabilitation-measures
+reference states Karnath's criterion as subscores **above 1**; the primary sources say **1 or more**. The
+stricter misreading would reclassify every patient scoring exactly 1 in a section. New adapter module
+registered in `mcp/catalog.js`; its golden probe ("pusher behaviour scale contraversive pushing stroke") is
+promoted now that the tile is in the MCP-exposed registry. Brings the exposed total to **1349 calculators
+across 465 modules**.
+
+### lib/scp-pushing-v562.js
+- `scp-pushing`
+
 ## Three-hundred-eighty-sixth wave — the SPADI in lib/spadi-v561.js (+1)
 
 `spadi` (spec-v561) scores 13 patient-reported items in two subscales, each 0-10.
@@ -7684,6 +7715,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/spadi-v561.js
 - `spadi`
+
+### lib/scp-pushing-v562.js
+- `scp-pushing`
 
 ### lib/tb-testing.js
 - `tb-testing`

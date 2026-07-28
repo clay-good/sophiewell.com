@@ -706,6 +706,8 @@
     { "phrases": ["aeeg", "amplitude integrated eeg", "al naqeeb classification", "neonatal aeeg amplitude"],
       "tile": "anaqeeb-aeeg", "audience": "clinicians" },
     { "phrases": ["spadi", "shoulder pain and disability index", "shoulder disability score", "shoulder function questionnaire"],
-      "tile": "spadi", "audience": "clinicians" }
+      "tile": "spadi", "audience": "clinicians" },
+    { "phrases": ["scale for contraversive pushing", "pusher behavior", "pusher syndrome stroke", "contraversive pushing scale"],
+      "tile": "scp-pushing", "audience": "clinicians" }
   ]
 }

@@ -594,6 +594,7 @@ const PROBES = [
   ['pregnancy dic score erez obstetric', ['erez-dic']],
   ['aeeg amplitude classification neonatal encephalopathy', ['anaqeeb-aeeg']],
   ['spadi shoulder pain disability index', ['spadi']],
+  ['pusher behaviour scale contraversive pushing stroke', ['scp-pushing']],
 ];
 
 test(`every golden probe routes an acceptable tile into the top ${TOP_N}`, () => {
