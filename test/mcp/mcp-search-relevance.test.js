@@ -597,6 +597,7 @@ const PROBES = [
   ['pusher behaviour scale contraversive pushing stroke', ['scp-pushing']],
   ['mayo imaging classification adpkd kidney volume', ['mayo-adpkd']],
   ['propkd score renal survival polycystic kidney', ['propkd']],
+  ['lupus nephritis activity chronicity index biopsy', ['lupus-nephritis-indices']],
 ];
 
 test(`every golden probe routes an acceptable tile into the top ${TOP_N}`, () => {

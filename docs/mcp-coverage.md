@@ -1574,6 +1574,42 @@ Brings the exposed total to **1314 calculators across 430 modules**.
 ### lib/wayne-index-v527.js
 - `wayne-index`
 
+## Three-hundred-ninetieth wave — the modified NIH lupus nephritis indices in lib/lupus-nephritis-indices-v565.js (+1)
+
+`lupus-nephritis-indices` (spec-v565) scores the 2018 ISN/RPS activity index (0-24, six components) and
+chronicity index (0-12, four components). A **revised-successor gap**: these were introduced specifically to
+*replace* the A / A-C / C subscripts the 2003 scheme appended to classes III and IV, so a report reading
+"Class IV-G (A/C)" is on the superseded scheme.
+
+**Two separate indices that must never be added together.** They measure opposite things — what may still
+respond to treatment against what is already scarred — so a combined "36" is meaningless. An agent handed
+two numbers from one biopsy will be tempted to sum them; the tool returns separate fields and emits no
+total, and a test asserts none exists.
+
+**Only two components are weighted, and only in the activity index.** Fibrinoid necrosis and cellular or
+fibrocellular crescents count double. Six components each 0-3 would cap at **18**, and the published maximum
+is **24** — the extra 6 is entirely those two terms, which a test asserts arithmetically. The chronicity
+index is wholly unweighted.
+
+**Two different 0-3 rubrics coexist inside the same total and are incommensurable.** Glomerular components
+are scored by *percentage of glomeruli* (1 = <25%, 2 = 25-50%, 3 = >50%); interstitial inflammation, tubular
+atrophy and interstitial fibrosis are scored *mild / moderate / severe*. Identical numeric range, different
+question — so each field carries its own rubric rather than sharing one list.
+
+**The denominator is the glomeruli the core actually captured**, so an inadequate biopsy can only *lower*
+the glomerular scores, and a low activity index on a sparse core may reflect sampling rather than disease —
+a silent failure mode the result states.
+
+**The 2018 and 1984 indices are not interconvertible**: karyorrhexis was separated from fibrinoid necrosis
+and merged with neutrophil infiltration, so one original component was split and re-glued to another. Also
+"total glomerulosclerosis" means global **and** segmental — a secondary source writing "global" would
+undercount chronicity. New adapter module registered in `mcp/catalog.js`; its golden probe ("lupus nephritis
+activity chronicity index biopsy") is promoted now that the tile is in the MCP-exposed registry. Brings the
+exposed total to **1352 calculators across 468 modules**.
+
+### lib/lupus-nephritis-indices-v565.js
+- `lupus-nephritis-indices`
+
 ## Three-hundred-eighty-ninth wave — the PROPKD score in lib/propkd-v564.js (+1)
 
 `propkd` (spec-v564) predicts renal survival in ADPKD from four variables totalling 0-9. A **companion** to
@@ -7790,6 +7826,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/propkd-v564.js
 - `propkd`
+
+### lib/lupus-nephritis-indices-v565.js
+- `lupus-nephritis-indices`
 
 ### lib/tb-testing.js
 - `tb-testing`

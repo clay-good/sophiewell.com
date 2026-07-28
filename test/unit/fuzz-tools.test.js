@@ -539,6 +539,7 @@ import * as spadiV561 from '../../lib/spadi-v561.js';
 import * as scpPushingV562 from '../../lib/scp-pushing-v562.js';
 import * as mayoAdpkdV563 from '../../lib/mayo-adpkd-v563.js';
 import * as propkdV564 from '../../lib/propkd-v564.js';
+import * as lupusNephritisIndicesV565 from '../../lib/lupus-nephritis-indices-v565.js';
 import * as tbTesting from '../../lib/tb-testing.js';
 
 const MODULES = {
@@ -1023,6 +1024,7 @@ const MODULES = {
   'scp-pushing-v562.js': scpPushingV562,
   'mayo-adpkd-v563.js': mayoAdpkdV563,
   'propkd-v564.js': propkdV564,
+  'lupus-nephritis-indices-v565.js': lupusNephritisIndicesV565,
   'tb-testing.js': tbTesting,
 };
 

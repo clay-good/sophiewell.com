@@ -475,6 +475,7 @@ import spadiV561 from './adapters/spadi-v561.js';
 import scpPushingV562 from './adapters/scp-pushing-v562.js';
 import mayoAdpkdV563 from './adapters/mayo-adpkd-v563.js';
 import propkdV564 from './adapters/propkd-v564.js';
+import lupusNephritisIndicesV565 from './adapters/lupus-nephritis-indices-v565.js';
 import tbTesting from './adapters/tb-testing.js';
 import labInterpret from './adapters/lab-interpret.js';
 import decisionRulesV258 from './adapters/decision-rules-v258.js';
@@ -944,6 +945,7 @@ const ADAPTER_MODULES = [
   ['scp-pushing-v562', scpPushingV562],
   ['mayo-adpkd-v563', mayoAdpkdV563],
   ['propkd-v564', propkdV564],
+  ['lupus-nephritis-indices-v565', lupusNephritisIndicesV565],
   ['tb-testing', tbTesting],
   ['lab-interpret', labInterpret],
   ['decision-rules-v258', decisionRulesV258],
