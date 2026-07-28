@@ -590,6 +590,7 @@ const PROBES = [
   ['tinnitus handicap inventory score grade', ['thi']],
   ['vitiligo area scoring index vasi', ['vasi']],
   ['mswat skin tumor burden mycosis fungoides', ['mswat']],
+  ['osdi dry eye symptom questionnaire score', ['osdi']],
 ];
 
 test(`every golden probe routes an acceptable tile into the top ${TOP_N}`, () => {

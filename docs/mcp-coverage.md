@@ -1574,6 +1574,39 @@ Brings the exposed total to **1314 calculators across 430 modules**.
 ### lib/wayne-index-v527.js
 - `wayne-index`
 
+## Three-hundred-eighty-third wave — the Ocular Surface Disease Index in lib/osdi-v558.js (+1)
+
+`osdi` (spec-v558) scores 12 patient-reported items over the last week as (sum of scores) x 25 / (number of
+questions answered). A **whole-concept gap** — the catalog had no dry-eye content of any kind.
+
+**The denominator is variable and the score is generally not an integer.** Items answered "not applicable"
+are excluded from **both** the numerator and the denominator, so the divisor is the number *answered*, not
+12. Twelve questions answered with a sum of 5 gives 10.4, and the instrument's own printed grid shows
+exactly such fractional values. An agent that divides by a fixed 12, or rounds to a whole number, reports a
+different number from the instrument for most patients.
+
+**Because the score is fractional, the integer band rendering is unusable, and the tool uses half-open
+intervals.** The bands circulate two ways — intervals (0 to under 13, 13 to under 23, 23 to under 33, 33 and
+above) and integer ranges (0-12, 13-22, 23-32, 33+). Under the integer rendering a score of 12.5 or 22.7
+falls in **no band**, and such scores are ordinary here rather than contrived. The two agree wherever both
+are defined, so this is not a source disagreement to disclose — just a rendering that cannot express a
+fractional score. A test scores exactly 12.5 and asserts it still bands.
+
+**Only items 6-12 accept "na"; items 1-5 do not, and the tool refuses it there.** The first section asks
+what the patient has *experienced*, which is always answerable; the later sections ask about limitation in
+specific activities and discomfort in specific situations, which may genuinely not apply — someone who does
+not drive cannot answer about driving at night. This also makes division by zero structurally impossible:
+the denominator can never fall below 5.
+
+The instrument itself **prints no numeric cut points** — it encodes the bands graphically only — so the
+summary attributes them to the secondary literature rather than to the instrument. New adapter module
+registered in `mcp/catalog.js`; its golden probe ("osdi dry eye symptom questionnaire score") is promoted
+now that the tile is in the MCP-exposed registry. Brings the exposed total to **1345 calculators across 461
+modules**.
+
+### lib/osdi-v558.js
+- `osdi`
+
 ## Three-hundred-eighty-second wave — the mSWAT in lib/mswat-v557.js (+1)
 
 `mswat` (spec-v557) measures skin tumor burden in mycosis fungoides and Sezary syndrome: percent body
@@ -7545,6 +7578,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/mswat-v557.js
 - `mswat`
+
+### lib/osdi-v558.js
+- `osdi`
 
 ### lib/tb-testing.js
 - `tb-testing`

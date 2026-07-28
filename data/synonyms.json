@@ -698,6 +698,8 @@
     { "phrases": ["vasi", "vitiligo area scoring index", "vitiligo extent score", "depigmentation area score"],
       "tile": "vasi", "audience": "clinicians" },
     { "phrases": ["mswat", "modified severity weighted assessment tool", "mycosis fungoides skin score", "cutaneous lymphoma skin burden"],
-      "tile": "mswat", "audience": "clinicians" }
+      "tile": "mswat", "audience": "clinicians" },
+    { "phrases": ["osdi", "ocular surface disease index", "dry eye questionnaire", "dry eye symptom score"],
+      "tile": "osdi", "audience": "clinicians" }
   ]
 }

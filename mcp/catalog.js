@@ -468,6 +468,7 @@ import gagsV554 from './adapters/gags-v554.js';
 import thiV555 from './adapters/thi-v555.js';
 import vasiV556 from './adapters/vasi-v556.js';
 import mswatV557 from './adapters/mswat-v557.js';
+import osdiV558 from './adapters/osdi-v558.js';
 import tbTesting from './adapters/tb-testing.js';
 import labInterpret from './adapters/lab-interpret.js';
 import decisionRulesV258 from './adapters/decision-rules-v258.js';
@@ -930,6 +931,7 @@ const ADAPTER_MODULES = [
   ['thi-v555', thiV555],
   ['vasi-v556', vasiV556],
   ['mswat-v557', mswatV557],
+  ['osdi-v558', osdiV558],
   ['tb-testing', tbTesting],
   ['lab-interpret', labInterpret],
   ['decision-rules-v258', decisionRulesV258],
