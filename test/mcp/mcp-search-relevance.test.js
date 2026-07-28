@@ -585,6 +585,7 @@ const PROBES = [
   ['glass anatomic stage limb threatening ischemia', ['glass-stage']],
   ['irecist immunotherapy response pseudoprogression', ['irecist']],
   ['snot 22 sinonasal outcome test score', ['snot22']],
+  ['puqe score nausea vomiting pregnancy', ['puqe24']],
 ];
 
 test(`every golden probe routes an acceptable tile into the top ${TOP_N}`, () => {

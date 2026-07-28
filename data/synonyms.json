@@ -688,6 +688,8 @@
     { "phrases": ["irecist", "immune response criteria", "pseudoprogression immunotherapy", "iupd icpd"],
       "tile": "irecist", "audience": "clinicians" },
     { "phrases": ["snot 22", "sinonasal outcome test", "sinus symptom score", "rhinosinusitis quality of life"],
-      "tile": "snot22", "audience": "clinicians" }
+      "tile": "snot22", "audience": "clinicians" },
+    { "phrases": ["puqe", "puqe 24", "nausea vomiting pregnancy score", "morning sickness severity"],
+      "tile": "puqe24", "audience": "clinicians" }
   ]
 }

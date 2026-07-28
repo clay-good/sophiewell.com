@@ -1574,6 +1574,36 @@ Brings the exposed total to **1314 calculators across 430 modules**.
 ### lib/wayne-index-v527.js
 - `wayne-index`
 
+## Three-hundred-seventy-eighth wave — the PUQE-24 in lib/puqe24-v553.js (+1)
+
+`puqe24` (spec-v553) quantifies nausea and vomiting of pregnancy over the last 24 hours from three items:
+hours of nausea, episodes of vomiting, and episodes of retching without bringing anything up.
+
+**The scale has no zero — the total runs 3 to 15, not 0 to 15.** Every item has a minimum of 1 point, the
+"not at all" answer, so a woman with no nausea, no vomiting and no retching scores 3. A 0 floor is the
+overwhelmingly common shape for a symptom instrument, and assuming it here would read a score of 3 as a mild
+symptom burden rather than as the *complete absence* of symptoms, mis-scaling every comparison. The source
+says so directly: a value of 3 means no nausea, vomiting or retching, and a lower category would not be
+meaningful. The tool rejects an answer of 0 outright and says why.
+
+**The well-being item is not part of the total and runs in the opposite direction.** The form asks the
+patient to rate her well-being from 0, the worst possible, to 10, as good as she felt before pregnancy —
+higher is *better* there while higher is *worse* on the PUQE score. Summing it would both corrupt the total
+and invert the contribution of the one item whose direction disagrees with the rest. It is optional,
+reported separately, and a test asserts the total is unchanged across its whole range.
+
+**The bottom-of-scale label diverges between renderings, and the tool discloses it at the boundary.** The
+numeric boundaries are identical everywhere (7 and 13); only the name for the lowest range differs. The
+instrument's own figure calls 6 or less "mild", while other renderings label 3 separately as "no nausea and
+vomiting of pregnancy" and reserve mild for 4-6. This follows the instrument's figure and adds the
+alternative reading **only at a total of 3** — the single value where the conventions disagree about what to
+call the patient. New adapter module registered in `mcp/catalog.js`; its golden probe ("puqe score nausea
+vomiting pregnancy") is promoted now that the tile is in the MCP-exposed registry. Brings the exposed total
+to **1340 calculators across 456 modules**.
+
+### lib/puqe24-v553.js
+- `puqe24`
+
 ## Three-hundred-seventy-seventh wave — the SNOT-22 in lib/snot22-v552.js (+1)
 
 `snot22` (spec-v552) sums 22 patient-rated items, each 0 to 5 over the past two weeks, for a total of 0 to
@@ -7371,6 +7401,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/snot22-v552.js
 - `snot22`
+
+### lib/puqe24-v553.js
+- `puqe24`
 
 ### lib/tb-testing.js
 - `tb-testing`
