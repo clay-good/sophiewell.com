@@ -563,6 +563,7 @@ const PROBES = [
   ['oxford mest c iga nephropathy biopsy', ['mest-c']],
   ['tuberculous versus bacterial meningitis score', ['thwaites']],
   ['vesikari gastroenteritis severity score', ['vesikari']],
+  ['thrombus after endovenous vein ablation class', ['ehit']],
 ];
 
 test(`every golden probe routes an acceptable tile into the top ${TOP_N}`, () => {

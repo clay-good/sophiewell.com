@@ -1574,6 +1574,33 @@ Brings the exposed total to **1314 calculators across 430 modules**.
 ### lib/wayne-index-v527.js
 - `wayne-index`
 
+## Three-hundred-fifty-sixth wave — the EHIT classification in lib/ehit-v531.js (+1)
+
+`ehit` (spec-v531) maps an ultrasound finding after endovenous thermal ablation to one of the five EHIT
+classes and returns the published recommendation attached to it.
+
+**The enum publishes `'Ia'` and `'Ib'` and deliberately omits a bare `'I'`.** The two subclasses carry
+identical management, so collapsing them would be tempting — but a bare `I` would let an agent record a class
+that no longer exists in the 2021 consensus and silently lose which subclass was seen. The lib rejects `'I'`
+and `'1'` with a message naming which is which and stating that **Ib is the original 2006 class I**; that
+message is more useful to a caller than a permissive parse. Both the field label and the summary carry that
+continuity, because an agent reading an older operative note or radiology report will encounter "EHIT 1" and
+must map it to Ib rather than guessing.
+
+**The summary refuses the Lawrence conflation explicitly.** A separate six-level system grades the same
+complication, and its levels 1 through 3 **all** collapse into class I here. An agent that reads "level 3" as
+"class III" would move a patient who needs no treatment into the therapeutic-anticoagulation band — the
+single most consequential error available with this instrument. The per-class recommendations are returned,
+because deciding about anticoagulation is the entire point of classifying an EHIT, but each carries its
+published strength of evidence and is stated to be a suggestion rather than an order — and class IV's
+recommendation is itself "individualize". The tool chooses no agent, dose, or duration. New adapter module
+registered in `mcp/catalog.js`; its golden probe ("thrombus after endovenous vein ablation class") is
+promoted now that the tile is in the MCP-exposed registry. Brings the exposed total to **1318 calculators
+across 434 modules**.
+
+### lib/ehit-v531.js
+- `ehit`
+
 ## Three-hundred-fifty-fifth wave — the Vesikari clinical severity score in lib/vesikari-v530.js (+1)
 
 `vesikari` (spec-v530) sums the seven Vesikari items into a total of 0-20 and bands the episode's severity.
@@ -6646,6 +6673,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/vesikari-v530.js
 - `vesikari`
+
+### lib/ehit-v531.js
+- `ehit`
 
 ### lib/tb-testing.js
 - `tb-testing`
