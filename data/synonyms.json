@@ -678,6 +678,8 @@
     { "phrases": ["rasrm", "endometriosis stage", "asrm endometriosis score", "endometriosis staging laparoscopy"],
       "tile": "rasrm-stage", "audience": "clinicians" },
     { "phrases": ["brue", "brief resolved unexplained event", "alte infant", "lower risk brue criteria"],
-      "tile": "brue", "audience": "clinicians" }
+      "tile": "brue", "audience": "clinicians" },
+    { "phrases": ["patient prosthesis mismatch", "eoai", "indexed effective orifice area", "prosthesis too small for patient"],
+      "tile": "ppm-eoai", "audience": "clinicians" }
   ]
 }

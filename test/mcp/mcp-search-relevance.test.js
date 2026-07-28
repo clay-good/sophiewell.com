@@ -580,6 +580,7 @@ const PROBES = [
   ['palm coein abnormal uterine bleeding causes', ['palm-coein']],
   ['asrm endometriosis stage from score', ['rasrm-stage']],
   ['brue lower risk criteria infant', ['brue']],
+  ['patient prosthesis mismatch indexed orifice area', ['ppm-eoai']],
 ];
 
 test(`every golden probe routes an acceptable tile into the top ${TOP_N}`, () => {

@@ -6,6 +6,21 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v548 — Patient-prosthesis mismatch (indexed effective orifice area) tile, 1397 → 1398)
+
+- New `ppm-eoai` tile (group G): EOAi = prosthesis effective orifice area ÷ body surface area, graded
+  against **position-specific** thresholds — aortic >0.85 / 0.65-0.85 / <0.65, mitral >1.2 / >0.9-1.2 /
+  ≤0.9. `eoai`, `pibarot`, and `effective orifice` were zero-hit. It is a different question from the
+  existing `gorlin`, which sizes a *native* valve: this grades a valve already replaced against the person
+  it was put into, so a prosthesis can be working exactly as designed and still be too small — **mismatch is
+  not prosthesis failure**. **The position is required and never assumed**, because an EOAi of 1.0 is
+  entirely normal aortic and moderate mismatch mitral. **A citation correction ships with it:** the paper
+  almost universally cited for mismatch (Heart 2006) contains the aortic grading and **no mitral
+  moderate/severe grading at all** — the mitral cut points are Magne 2007 — so each position carries its own
+  citation. The aortic severe boundary is **disclosed at the boundary** (the cited source says *below* 0.65;
+  later tables say 0.65 *or below*), and single-sourced obesity thresholds are **omitted**, since applying
+  them would *downgrade* real mismatch. See [spec-v548](docs/spec-v548.md).
+
 ### Added (spec-v547 — BRUE lower-risk criteria tile, 1396 → 1397)
 
 - New `brue` tile (group G): the AAP seven lower-risk criteria for a Brief Resolved Unexplained Event.

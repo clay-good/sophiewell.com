@@ -458,6 +458,7 @@ import nemsV544 from './adapters/nems-v544.js';
 import palmCoeinV545 from './adapters/palm-coein-v545.js';
 import rasrmStageV546 from './adapters/rasrm-stage-v546.js';
 import brueV547 from './adapters/brue-v547.js';
+import ppmEoaiV548 from './adapters/ppm-eoai-v548.js';
 import tbTesting from './adapters/tb-testing.js';
 import labInterpret from './adapters/lab-interpret.js';
 import decisionRulesV258 from './adapters/decision-rules-v258.js';
@@ -910,6 +911,7 @@ const ADAPTER_MODULES = [
   ['palm-coein-v545', palmCoeinV545],
   ['rasrm-stage-v546', rasrmStageV546],
   ['brue-v547', brueV547],
+  ['ppm-eoai-v548', ppmEoaiV548],
   ['tb-testing', tbTesting],
   ['lab-interpret', labInterpret],
   ['decision-rules-v258', decisionRulesV258],

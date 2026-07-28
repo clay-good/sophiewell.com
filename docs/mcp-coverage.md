@@ -1574,6 +1574,35 @@ Brings the exposed total to **1314 calculators across 430 modules**.
 ### lib/wayne-index-v527.js
 - `wayne-index`
 
+## Three-hundred-seventy-third wave — patient-prosthesis mismatch in lib/ppm-eoai-v548.js (+1)
+
+`ppm-eoai` (spec-v548) divides the prosthesis effective orifice area by body surface area and grades the
+result against the position-specific thresholds.
+
+**`ppm-position` is required and has no default, because the same number grades differently.** An EOAi of
+1.0 is entirely **normal** aortic and **moderate** mismatch mitral. An agent assuming aortic — the commoner
+case, and the one nearly all the literature is about — would report a mitral patient with moderate mismatch
+as having a normal valve. There is no safe default, so the tool refuses to guess.
+
+**Each position carries its own citation, and that is a correction rather than a flourish.** The paper almost
+universally cited for patient-prosthesis mismatch (Pibarot and Dumesnil, Heart 2006) contains the aortic
+grading and **no mitral moderate/severe grading at all** — it says only that mitral indexed area should
+ideally not fall below about 1.2-1.3. The three-tier mitral grading is Magne and colleagues, Circulation
+2007. The result returns the per-position source in a `citation` field.
+
+The aortic severe boundary is **disclosed at the boundary**: the cited source puts severe *below* 0.65, so
+exactly 0.65 is moderate, while later guideline-aligned tables put it at 0.65 *or below*. The band says so
+when the value lands on 0.65 and stays quiet otherwise. **Obesity-specific thresholds are not implemented**
+and the summary says why — single-sourced, and applying a lower threshold on one source's authority would
+*downgrade* real mismatch in exactly the patients where indexing is most contested. The summary also warns
+that the EOA must be the **measured or reference** area, not the labelled valve size, which is a
+manufacturing dimension that overstates the opening. New adapter module registered in `mcp/catalog.js`; its
+golden probe ("patient prosthesis mismatch indexed orifice area") is promoted now that the tile is in the
+MCP-exposed registry. Brings the exposed total to **1335 calculators across 451 modules**.
+
+### lib/ppm-eoai-v548.js
+- `ppm-eoai`
+
 ## Three-hundred-seventy-second wave — the AAP BRUE lower-risk criteria in lib/brue-v547.js (+1)
 
 `brue` (spec-v547) applies the seven AAP lower-risk criteria to a qualifying Brief Resolved Unexplained
@@ -7191,6 +7220,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/brue-v547.js
 - `brue`
+
+### lib/ppm-eoai-v548.js
+- `ppm-eoai`
 
 ### lib/tb-testing.js
 - `tb-testing`
