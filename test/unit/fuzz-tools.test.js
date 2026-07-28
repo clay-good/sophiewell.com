@@ -554,6 +554,7 @@ import * as ablettTetanusV576 from '../../lib/ablett-tetanus-v576.js';
 import * as magicGvhdV577 from '../../lib/magic-gvhd-v577.js';
 import * as nancyIndexV578 from '../../lib/nancy-index-v578.js';
 import * as robartsIndexV579 from '../../lib/robarts-index-v579.js';
+import * as ehraAfV580 from '../../lib/ehra-af-v580.js';
 import * as tbTesting from '../../lib/tb-testing.js';
 
 const MODULES = {
@@ -1053,6 +1054,7 @@ const MODULES = {
   'magic-gvhd-v577.js': magicGvhdV577,
   'nancy-index-v578.js': nancyIndexV578,
   'robarts-index-v579.js': robartsIndexV579,
+  'ehra-af-v580.js': ehraAfV580,
   'tb-testing.js': tbTesting,
 };
 

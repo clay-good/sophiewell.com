@@ -612,6 +612,7 @@ const PROBES = [
   ['magic acute gvhd staging grade', ['magic-gvhd']],
   ['nancy histological index ulcerative colitis biopsy', ['nancy-index']],
   ['robarts histopathology index uc geboes', ['robarts-index']],
+  ['ehra symptom class atrial fibrillation', ['ehra-af']],
 ];
 
 test(`every golden probe routes an acceptable tile into the top ${TOP_N}`, () => {

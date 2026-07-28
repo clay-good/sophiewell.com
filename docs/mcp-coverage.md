@@ -1574,6 +1574,38 @@ Brings the exposed total to **1314 calculators across 430 modules**.
 ### lib/wayne-index-v527.js
 - `wayne-index`
 
+## Four-hundred-and-fifth wave — the modified EHRA symptom scale in lib/ehra-af-v580.js (+1)
+
+`ehra-af` (spec-v580) classifies symptom burden in atrial fibrillation. A **companion gap: the missing
+axis.** The catalog already carries the AF stroke axis (CHA2DS2-VASc), the bleeding axis (HAS-BLED, ATRIA,
+ORBIT) and the recurrence axis (HATCH, APPLE, CAAP-AF, MB-LATER, CHARGE-AF) — and had no **symptom** axis,
+which is the one the guideline makes a Class I recommendation to record.
+
+**There is no class 2.** The ladder is 1, **2a**, **2b**, 3, 4 — five levels with a non-numeric label in the
+middle. The class must be handled as a **string**: a test demonstrates the loss directly, asserting that 2a
+and 2b are distinct classes yet `parseInt` maps both to the same integer. Storing it numerically destroys
+exactly the distinction the modification exists to draw.
+
+**2a and 2b share the same objective criterion** — "normal daily activity not affected" — and are separated
+*only* by whether the patient is **troubled**. Everywhere else on this scale the discriminator is
+**function**; at this one boundary it is **subjective**, deliberately, because that is the boundary the
+modification was created to draw. The tool asks it as its own question, and only when activity is
+unaffected; a test asserts the troubled answer does *not* move a class already decided by function.
+
+**The six evaluated symptoms are not inputs.** Palpitations, fatigue, dizziness, dyspnea, chest pain and
+anxiety are the *domains* the rater weighs; the class depends only on activity impact. A test passes symptom
+flags and asserts the class is unchanged.
+
+**It is physician-assessed, not patient-reported** — the guideline states it ignores anxiety, treatment
+concerns and medication adverse effects, and that physician and patient assessments frequently diverge. And
+**it says nothing about stroke risk**: a completely asymptomatic class 1 patient can carry a high
+CHA2DS2-VASc score, which is the most damaging misreading available here. New adapter module registered in
+`mcp/catalog.js`; its golden probe ("ehra symptom class atrial fibrillation") is promoted now that the tile
+is in the MCP-exposed registry. Brings the exposed total to **1367 calculators across 483 modules**.
+
+### lib/ehra-af-v580.js
+- `ehra-af`
+
 ## Four-hundred-and-fourth wave — the Robarts Histopathology Index in lib/robarts-index-v579.js (+1)
 
 `robarts-index` (spec-v579) scores UC histologic activity as a weighted sum, 0-33. A **companion to the
@@ -8320,6 +8352,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/robarts-index-v579.js
 - `robarts-index`
+
+### lib/ehra-af-v580.js
+- `ehra-af`
 
 ### lib/tb-testing.js
 - `tb-testing`

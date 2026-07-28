@@ -742,6 +742,8 @@
     { "phrases": ["nancy index", "nancy histological index", "uc histology score", "ulcerative colitis biopsy grade"],
       "tile": "nancy-index", "audience": "clinicians" },
     { "phrases": ["robarts index", "rhi histopathology", "geboes derived score", "uc histologic activity index"],
-      "tile": "robarts-index", "audience": "clinicians" }
+      "tile": "robarts-index", "audience": "clinicians" },
+    { "phrases": ["ehra class", "modified ehra", "af symptom scale", "atrial fibrillation symptom class"],
+      "tile": "ehra-af", "audience": "clinicians" }
   ]
 }
