@@ -718,6 +718,8 @@
     { "phrases": ["nih cpsi", "chronic prostatitis symptom index", "prostatitis score", "chronic pelvic pain syndrome score"],
       "tile": "nih-cpsi", "audience": "clinicians" },
     { "phrases": ["igcccg", "germ cell prognostic group", "testicular cancer risk group", "seminoma nonseminoma prognosis"],
-      "tile": "igcccg", "audience": "clinicians" }
+      "tile": "igcccg", "audience": "clinicians" },
+    { "phrases": ["thakar score", "cleveland clinic score", "renal failure after cardiac surgery", "dialysis risk cardiac surgery"],
+      "tile": "thakar-aki", "audience": "clinicians" }
   ]
 }

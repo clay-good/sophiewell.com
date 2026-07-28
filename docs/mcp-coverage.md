@@ -1574,6 +1574,38 @@ Brings the exposed total to **1314 calculators across 430 modules**.
 ### lib/wayne-index-v527.js
 - `wayne-index`
 
+## Three-hundred-ninety-third wave — the Cleveland Clinic (Thakar) score in lib/thakar-aki-v568.js (+1)
+
+`thakar-aki` (spec-v568) estimates the preoperative risk of acute renal failure **requiring dialysis** after
+cardiac surgery, 0-17 points.
+
+**The outcome is dialysis-requiring failure, not KDIGO AKI** — the single most important thing to get right
+here. Dialysis-requiring failure is far rarer and far more severe than any-stage AKI, which is common after
+cardiac surgery, and studies revalidating this score against any-stage AKI are measuring something else. An
+agent reporting the output as "risk of AKI" overstates what is predicted by a wide margin.
+
+**The published risk categories stop at 13 while the score runs to 17.** Scores of 14-17 are reachable and
+fall outside the published table, so the tool returns `bandAssigned: false` above 13 rather than stretching
+the top category — extending a band the source closed would invent a risk estimate for patients the
+derivation never described. A test builds a 17 and asserts no band.
+
+**The exact risk percentages are deliberately not reported.** Independent secondary sources disagree (one
+gives the 6-8 band as a 7.8-9.5% range and 9-13 as 21.5%, another gives 9.5 and 21.3, and the original
+abstract describes the test-set frequency as spanning 0.5-22.1%), the primary table is paywalled, and it
+could not be fetched to adjudicate. The score and the four band **boundaries** are consistent and are
+reported; a test asserts no percentage appears anywhere in the output.
+
+**Surgery type is counter-intuitive and must not be reordered by invasiveness**: isolated CABG, the
+commonest operation, scores 0, while "other cardiac surgery" scores 2 — the same as the far more invasive
+CABG plus valve. **Creatinine is stepped and jumps 2 → 5 across one threshold**, a step larger than any
+single risk factor, so 0.1 mg/dL of drift near 2.1 can move a patient two bands. New adapter module
+registered in `mcp/catalog.js`; its golden probe ("thakar cleveland clinic renal failure cardiac surgery")
+is promoted now that the tile is in the MCP-exposed registry. Brings the exposed total to **1355 calculators
+across 471 modules**.
+
+### lib/thakar-aki-v568.js
+- `thakar-aki`
+
 ## Three-hundred-ninety-second wave — the IGCCCG classification in lib/igcccg-v567.js (+1)
 
 `igcccg` (spec-v567) assigns the prognostic group for metastatic germ cell cancer.
@@ -7900,6 +7932,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/igcccg-v567.js
 - `igcccg`
+
+### lib/thakar-aki-v568.js
+- `thakar-aki`
 
 ### lib/tb-testing.js
 - `tb-testing`
