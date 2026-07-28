@@ -1574,6 +1574,35 @@ Brings the exposed total to **1314 calculators across 430 modules**.
 ### lib/wayne-index-v527.js
 - `wayne-index`
 
+## Three-hundred-fifty-eighth wave — the Renal Angina Index in lib/renal-angina-v533.js (+1)
+
+`renal-angina` (spec-v533) multiplies the risk stratum by the injury stratum and reports whether renal angina
+is fulfilled.
+
+**The injury enum publishes `'1'`, `'2'`, `'4'`, `'8'` — the tiers double, and there is no 3, 5, 6, or 7.**
+An agent that assumed a 1-4 ordinal would send a `3` and get a validation error rather than a silently halved
+score, and the error message says the tiers double, because "3 is not a valid injury stratum" would otherwise
+read like a bug in the tool.
+
+**The summary says "product, not sum" explicitly** and gives the arithmetic. An agent that adds a risk of 5
+and an injury of 8 gets 13 — a number the index cannot produce at all; the true answer is 40, the maximum.
+Addition does not merely mis-scale here, it **inverts the conclusion on the sickest patients**. The reachable
+set is returned and named: only twelve totals exist, so an agent reporting "RAI 12 out of 40" would badly
+understate a value that is in fact the fourth-highest the index can produce. The result exposes `reachable`
+so a caller can position the total honestly.
+
+The very-high risk tier's label spells out that it requires ventilation **and** vasoactive support rather
+than either, because several secondary sources render it as "or" and that reading promotes every ventilated
+child to a 5. The summary frames the index as a **rule-out**, which is what its published performance
+supports — a high negative predictive value and a modest positive one — because an agent reporting a positive
+RAI as "this child will develop AKI" has overstated the only claim the index makes. New adapter module
+registered in `mcp/catalog.js`; its golden probe ("renal angina index predict aki child") is promoted now
+that the tile is in the MCP-exposed registry. Brings the exposed total to **1320 calculators across 436
+modules**.
+
+### lib/renal-angina-v533.js
+- `renal-angina`
+
 ## Three-hundred-fifty-seventh wave — the Columbia FSGS classification in lib/columbia-fsgs-v532.js (+1)
 
 `columbia-fsgs` (spec-v532) takes the six biopsy findings and applies the Columbia precedence order to return
@@ -6709,6 +6738,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/columbia-fsgs-v532.js
 - `columbia-fsgs`
+
+### lib/renal-angina-v533.js
+- `renal-angina`
 
 ### lib/tb-testing.js
 - `tb-testing`

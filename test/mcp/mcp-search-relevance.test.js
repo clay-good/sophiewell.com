@@ -565,6 +565,7 @@ const PROBES = [
   ['vesikari gastroenteritis severity score', ['vesikari']],
   ['thrombus after endovenous vein ablation class', ['ehit']],
   ['fsgs biopsy variant columbia classification', ['columbia-fsgs']],
+  ['renal angina index predict aki child', ['renal-angina']],
 ];
 
 test(`every golden probe routes an acceptable tile into the top ${TOP_N}`, () => {
