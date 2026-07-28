@@ -582,6 +582,7 @@ const PROBES = [
   ['brue lower risk criteria infant', ['brue']],
   ['patient prosthesis mismatch indexed orifice area', ['ppm-eoai']],
   ['poseidon group low prognosis ivf', ['poseidon']],
+  ['glass anatomic stage limb threatening ischemia', ['glass-stage']],
 ];
 
 test(`every golden probe routes an acceptable tile into the top ${TOP_N}`, () => {

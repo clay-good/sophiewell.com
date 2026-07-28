@@ -682,6 +682,8 @@
     { "phrases": ["patient prosthesis mismatch", "eoai", "indexed effective orifice area", "prosthesis too small for patient"],
       "tile": "ppm-eoai", "audience": "clinicians" },
     { "phrases": ["poseidon classification", "poseidon group", "low prognosis ivf", "poor ovarian response stratification"],
-      "tile": "poseidon", "audience": "clinicians" }
+      "tile": "poseidon", "audience": "clinicians" },
+    { "phrases": ["glass stage", "global limb anatomic staging", "femoropopliteal infrapopliteal grade", "clti anatomic stage"],
+      "tile": "glass-stage", "audience": "clinicians" }
   ]
 }

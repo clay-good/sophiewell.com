@@ -1574,6 +1574,38 @@ Brings the exposed total to **1314 calculators across 430 modules**.
 ### lib/wayne-index-v527.js
 - `wayne-index`
 
+## Three-hundred-seventy-fifth wave — the GLASS anatomic stage in lib/glass-stage-v550.js (+1)
+
+`glass-stage` (spec-v550) grades the femoropopliteal and infrapopliteal segments of a target arterial path
+from 0 to 4 each and looks the pair up in a matrix to give stage I, II or III.
+
+**Grade 0 in both segments is "not applicable", not stage I.** That one cell is the most commonly
+mis-tabulated part of the system, and it is exactly the corner a model fills in by symmetry — a five-by-five
+matrix whose top-left cell is a hole looks like an omission. It is not. With no significant disease in
+either segment there is no target arterial path to stage, and returning stage I there would assert that a
+limb with no significant disease is a revascularization target. The tool returns `applicable: false` with
+the reason, and a test asserts the band says "NOT stage I" in as many words.
+
+**The inframalleolar modifier is a descriptor and is never an input to the matrix.** The guideline states
+outright that it is not considered in the primary stage assignment, so P0, P1 and P2 are appended to the
+stage as in "GLASS III, P1". A test asserts that all three modifiers leave the stage unchanged. An agent
+that let P2 push the stage upward would be applying a rule the source does not contain.
+
+Severe calcification is a **grade** modifier, not a stage modifier: it raises the affected **segment** grade
+by one *before* the matrix lookup, per segment, capped at 4. The result exposes the base grades alongside
+the adjusted ones so an agent can see what the adjustment did instead of receiving a number it cannot take
+apart.
+
+This is a **companion** to `wifi` and `rutherford-fontaine`, not a replacement for either — those stage the
+limb threat and the symptoms, while GLASS grades the anatomic pattern of disease. A limb has all three at
+once, and an agent asked "how bad is this limb?" should know the three answer different questions. New
+adapter module registered in `mcp/catalog.js`; its golden probe ("glass anatomic stage limb threatening
+ischemia") is promoted now that the tile is in the MCP-exposed registry. Brings the exposed total to
+**1337 calculators across 453 modules**.
+
+### lib/glass-stage-v550.js
+- `glass-stage`
+
 ## Three-hundred-seventy-fourth wave — the POSEIDON classification in lib/poseidon-v549.js (+1)
 
 `poseidon` (spec-v549) stratifies low-prognosis patients in assisted reproduction on two axes, age and
@@ -7258,6 +7290,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/poseidon-v549.js
 - `poseidon`
+
+### lib/glass-stage-v550.js
+- `glass-stage`
 
 ### lib/tb-testing.js
 - `tb-testing`
