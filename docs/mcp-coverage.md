@@ -1574,6 +1574,34 @@ Brings the exposed total to **1314 calculators across 430 modules**.
 ### lib/wayne-index-v527.js
 - `wayne-index`
 
+## Three-hundred-sixty-fifth wave — the ISHLT cardiac rejection grade in lib/ishlt-rejection-v540.js (+1)
+
+`ishlt-rejection` (spec-v540) maps an endomyocardial biopsy appearance to one of the four revised ISHLT
+grades and returns the 1990 grades that collapse into it.
+
+**The enum publishes only the revised R grades, and the lib refuses the 1990 ones with their mapping.** That
+refusal is the design point. Both schemes use the numbers 1-4 and they do not mean the same things, so an
+agent that reads "grade 3" out of an older pathology report and passes it through has a coin-flip between
+1990 grade **3A (which is 2R)** and **3B (which is 3R)** — and those sit on opposite sides of the threshold
+that usually decides treatment. Sending `'3A'` returns an explicit "this is a 1990-scheme grade, it maps to
+2R" rather than a silent score; sending a bare `'3'` returns "ambiguous between the two schemes".
+
+**The many-to-one mapping is returned, not just applied.** `legacyGrades` lists which old grades collapse
+into the reported one, so an agent reconciling a longitudinal record can see that a patient's "1B" three
+years ago and "2" last year are **both 1R** today and represent no change, rather than reporting a trend that
+does not exist.
+
+**Every band names the two blind spots**, because they are the ones an agent would otherwise paper over: this
+grades acute *cellular* rejection only. Antibody-mediated rejection has its own ISHLT pAMR scale using
+immunohistochemistry, so a biopsy can be 0R and still show it; and cardiac allograft vasculopathy — the
+chronic process that limits long-term survival — is invisible here. **"ISHLT 0R" is not "no rejection".** New
+adapter module registered in `mcp/catalog.js`; its golden probe ("ishlt cardiac allograft rejection grade")
+is promoted now that the tile is in the MCP-exposed registry. Brings the exposed total to **1327 calculators
+across 443 modules**.
+
+### lib/ishlt-rejection-v540.js
+- `ishlt-rejection`
+
 ## Three-hundred-sixty-fourth wave — the ISL lymphedema staging in lib/isl-lymphedema-v539.js (+1)
 
 `isl-lymphedema` (spec-v539) returns the ISL stage and the volume-based severity grade together.
@@ -6928,6 +6956,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/isl-lymphedema-v539.js
 - `isl-lymphedema`
+
+### lib/ishlt-rejection-v540.js
+- `ishlt-rejection`
 
 ### lib/tb-testing.js
 - `tb-testing`

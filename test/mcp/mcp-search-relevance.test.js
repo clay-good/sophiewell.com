@@ -572,6 +572,7 @@ const PROBES = [
   ['alsfrs r als functional rating scale', ['alsfrs-r']],
   ['neos score nmdar encephalitis outcome', ['neos']],
   ['isl lymphedema stage swollen limb', ['isl-lymphedema']],
+  ['ishlt cardiac allograft rejection grade', ['ishlt-rejection']],
 ];
 
 test(`every golden probe routes an acceptable tile into the top ${TOP_N}`, () => {

@@ -6,6 +6,22 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v540 — ISHLT grade (cardiac acute cellular rejection) tile, 1389 → 1390)
+
+- New `ishlt-rejection` tile (group G): the four revised ISHLT grades for acute cellular rejection in a
+  cardiac allograft — **0R** none, **1R** up to one focus of myocyte damage, **2R** two or more foci, **3R**
+  diffuse with multifocal damage. `ishlt` and `myocyte` were zero-hit; it is **a different organ and lesion
+  set** from the existing `banff-tcmr`, which grades a *kidney* allograft from tubulitis and arteritis —
+  lesions that do not exist in myocardium. **The "R" is not decoration:** the 1990 scheme reused the numbers
+  1-4 with different meanings, so an unqualified "grade 3" is genuinely ambiguous. The mapping is
+  **many-to-one and asymmetric**, and the trap is that **3A and 3B are adjacent in the old scheme but land in
+  different revised grades** (2R and 3R), on opposite sides of the treatment threshold — one published source
+  gets this wrong. So the tile **refuses 1990-scheme input**, returning its mapping instead of guessing, and
+  returns `legacyGrades` so an agent reconciling an old record can see that a "1B" and a "2" are both 1R and
+  represent no change. Every grade names the two blind spots: it is blind to **antibody-mediated rejection**
+  (separate pAMR scale — a biopsy can be 0R and still show it, so "0R" is not "no rejection") and to
+  **allograft vasculopathy**. See [spec-v540](docs/spec-v540.md).
+
 ### Added (spec-v539 — ISL lymphedema staging (stage and volume severity) tile, 1388 → 1389)
 
 - New `isl-lymphedema` tile (group G): the International Society of Lymphology stage (0, I, II, late II, III)

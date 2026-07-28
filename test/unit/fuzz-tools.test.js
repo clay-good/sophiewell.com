@@ -514,6 +514,7 @@ import * as hardmanV536 from '../../lib/hardman-v536.js';
 import * as alsfrsRV537 from '../../lib/alsfrs-r-v537.js';
 import * as neosV538 from '../../lib/neos-v538.js';
 import * as islLymphedemaV539 from '../../lib/isl-lymphedema-v539.js';
+import * as ishltRejectionV540 from '../../lib/ishlt-rejection-v540.js';
 import * as tbTesting from '../../lib/tb-testing.js';
 
 const MODULES = {
@@ -973,6 +974,7 @@ const MODULES = {
   'alsfrs-r-v537.js': alsfrsRV537,
   'neos-v538.js': neosV538,
   'isl-lymphedema-v539.js': islLymphedemaV539,
+  'ishlt-rejection-v540.js': ishltRejectionV540,
   'tb-testing.js': tbTesting,
 };
 
