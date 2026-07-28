@@ -518,6 +518,7 @@ import * as ishltRejectionV540 from '../../lib/ishlt-rejection-v540.js';
 import * as rachs1V541 from '../../lib/rachs1-v541.js';
 import * as twstrsSeverityV542 from '../../lib/twstrs-severity-v542.js';
 import * as saveScoreV543 from '../../lib/save-score-v543.js';
+import * as nemsV544 from '../../lib/nems-v544.js';
 import * as tbTesting from '../../lib/tb-testing.js';
 
 const MODULES = {
@@ -981,6 +982,7 @@ const MODULES = {
   'rachs1-v541.js': rachs1V541,
   'twstrs-severity-v542.js': twstrsSeverityV542,
   'save-score-v543.js': saveScoreV543,
+  'nems-v544.js': nemsV544,
   'tb-testing.js': tbTesting,
 };
 

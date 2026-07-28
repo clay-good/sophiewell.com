@@ -670,6 +670,8 @@
     { "phrases": ["twstrs", "cervical dystonia severity", "torticollis rating scale", "spasmodic torticollis score"],
       "tile": "twstrs-severity", "audience": "clinicians" },
     { "phrases": ["save score", "va ecmo survival", "veno arterial ecmo score", "ecmo survival cardiogenic shock"],
-      "tile": "save-score", "audience": "clinicians" }
+      "tile": "save-score", "audience": "clinicians" },
+    { "phrases": ["nems", "nursing manpower score", "icu nursing workload score", "nursing workload icu"],
+      "tile": "nems", "audience": "clinicians" }
   ]
 }

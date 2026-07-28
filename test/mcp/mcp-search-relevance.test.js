@@ -576,6 +576,7 @@ const PROBES = [
   ['rachs congenital heart surgery risk category', ['rachs1']],
   ['twstrs cervical dystonia severity', ['twstrs-severity']],
   ['save score veno arterial ecmo survival', ['save-score']],
+  ['nems icu nursing workload score', ['nems']],
 ];
 
 test(`every golden probe routes an acceptable tile into the top ${TOP_N}`, () => {

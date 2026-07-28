@@ -6,6 +6,22 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v544 — NEMS (Nine Equivalents of Nursing Manpower Use) tile, 1393 → 1394)
+
+- New `nems` tile (group G): the nine-item ICU nursing-workload score, total **0-56**. All probe tokens were
+  zero-hit. **It is a genuinely different axis from every other ICU tile:** APACHE, SOFA, SAPS and the rest
+  score how *sick* the patient is; NEMS scores how much *nursing resource* they consume — a stable ventilated
+  patient on two infusions is expensive in nursing time with an unremarkable severity score, and a patient
+  dying of an untreatable illness may consume very little. **Two pairs of items are mutually exclusive and
+  the tile makes that structural:** mechanical ventilation *excludes* supplementary ventilatory care, and
+  multiple vasoactive drugs *replaces* the single-drug score, so each pair is one three-way choice rather
+  than two items. **The arithmetic is the proof** — summing all nine weights gives 66, while the published
+  maximum of 56 is reachable only by taking one item from each pair; a test pins both numbers. Item 8
+  excludes routine care (radiographs, ECGs, dressings, line insertion), the commonest scoring error, worth
+  five points on a large fraction of patients. It measures workload already consumed: **not** severity, not
+  mortality, not triage, and **not a nurse-to-patient ratio** — and it under-counts the care of the dying,
+  which appears in none of its items. See [spec-v544](docs/spec-v544.md).
+
 ### Added (spec-v543 — SAVE score (survival after veno-arterial ECMO) tile, 1392 → 1393)
 
 - New `save-score` tile (group G): hospital survival after VA-ECMO for refractory cardiogenic shock, range

@@ -1574,6 +1574,34 @@ Brings the exposed total to **1314 calculators across 430 modules**.
 ### lib/wayne-index-v527.js
 - `wayne-index`
 
+## Three-hundred-sixty-ninth wave — NEMS in lib/nems-v544.js (+1)
+
+`nems` (spec-v544) scores the nine NEMS items into a nursing-workload total out of 56.
+
+**The two exclusive pairs are published as three-way enums, not as four booleans, and that is the design
+point.** The instrument names nine items, so the obvious schema is nine booleans — and it would be wrong.
+Mechanical ventilatory support **excludes** supplementary ventilatory care, and multiple vasoactive drugs
+**replaces** the single-drug score. Four booleans would let an agent score 12 + 3 and 12 + 7, reaching **66**
+on a scale whose maximum is **56**. Collapsing each pair into one enum makes that unrepresentable.
+
+**The summary gives the arithmetic proof**, because an agent that has read the nine-item list elsewhere may
+believe the tool is under-scoring: summing all nine weights gives 66, while 56 is reachable only as
+`9 + 6 + 12 + 12 + 6 + 5 + 6` — exactly one item from each exclusive pair. The exclusivity is not an
+interpretation; it is the only reading under which the instrument's own stated maximum is achievable.
+
+**The axis warning is the most important line in the summary.** Every other ICU instrument an agent knows —
+APACHE, SOFA, SAPS — scores illness severity or mortality. NEMS scores **nursing workload consumed**. An
+agent reporting "NEMS 45" as though it meant a critically ill patient has said something the instrument does
+not support: a stable ventilated patient on two infusions scores high, and a patient dying of an untreatable
+illness may score low. The interventions-in-ICU label also spells out the routine-care exclusion — routine
+radiographs, echocardiograms, ECGs, dressings, and line insertion do **not** count, and counting them
+inflates a large fraction of ICU patients by five points. New adapter module registered in `mcp/catalog.js`;
+its golden probe ("nems icu nursing workload score") is promoted now that the tile is in the MCP-exposed
+registry. Brings the exposed total to **1331 calculators across 447 modules**.
+
+### lib/nems-v544.js
+- `nems`
+
 ## Three-hundred-sixty-eighth wave — the SAVE score in lib/save-score-v543.js (+1)
 
 `save-score` (spec-v543) sums the SAVE items, applies the published constant, and returns the risk class with
@@ -7059,6 +7087,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/save-score-v543.js
 - `save-score`
+
+### lib/nems-v544.js
+- `nems`
 
 ### lib/tb-testing.js
 - `tb-testing`
