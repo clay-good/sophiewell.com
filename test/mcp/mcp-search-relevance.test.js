@@ -603,6 +603,7 @@ const PROBES = [
   ['thakar cleveland clinic renal failure cardiac surgery', ['thakar-aki']],
   ['gapp grade pheochromocytoma paraganglioma metastatic', ['gapp']],
   ['global definition ards 2024 nonintubated', ['global-ards']],
+  ['e-faced bronchiectasis exacerbation score', ['e-faced']],
 ];
 
 test(`every golden probe routes an acceptable tile into the top ${TOP_N}`, () => {

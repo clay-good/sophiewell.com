@@ -1574,6 +1574,37 @@ Brings the exposed total to **1314 calculators across 430 modules**.
 ### lib/wayne-index-v527.js
 - `wayne-index`
 
+## Three-hundred-ninety-sixth wave — the E-FACED score in lib/e-faced-v571.js (+1)
+
+`e-faced` (spec-v571) scores six items to 9 points for exacerbation risk in bronchiectasis. A
+**revised-successor gap**: `faced-bronchiectasis` and `bronchiectasis-bsi` are both in the catalog, and
+E-FACED — the exacerbation-augmented successor to FACED by the same authors — was not.
+
+**The successor answers a different question from its predecessor.** FACED predicts **mortality**; E-FACED
+predicts **exacerbations**, with essentially unchanged mortality performance. Choosing between them is
+choosing the outcome, not taking the newer score.
+
+**The paper's own abstract contradicts its own results section on the added item.** The abstract says the
+best cut point was at least **two exacerbations** in the previous year; the results section says at least
+**one hospitalization** and builds the model and its table around that. Those are different questions — a
+count of any-severity exacerbations against a single severe one. The body describes the actual model
+construction, so it governs, and the summary states the discrepancy because an agent that has read only the
+abstract will otherwise believe the tool has the wrong item.
+
+**The bands do not carry over from FACED, and a widely copied source gets this wrong.** FACED is 0-7 with
+bands 0-2 / 3-4 / 5-7; E-FACED is 0-9 with bands 0-3 / 4-6 / 7-9. At least one widely reproduced secondary
+source lists the E-FACED *components* under the FACED *bands*, calling a score of 5 "severe" when E-FACED
+calls it moderate. A test constructs exactly that score and asserts the result names the discrepancy — the
+live error is much of the reason this tile exists.
+
+**The weighting is uneven: six items but nine points.** Exacerbation, FEV1 and age carry 2 each; Pseudomonas,
+extension and dyspnea carry 1 each. New adapter module registered in `mcp/catalog.js`; its golden probe
+("e-faced bronchiectasis exacerbation score") is promoted now that the tile is in the MCP-exposed registry.
+Brings the exposed total to **1358 calculators across 474 modules**.
+
+### lib/e-faced-v571.js
+- `e-faced`
+
 ## Three-hundred-ninety-fifth wave — the New Global Definition of ARDS in lib/global-ards-v570.js (+1)
 
 `global-ards` (spec-v570) applies the 2023/2024 global definition. A **revised-successor gap**: the catalog
@@ -8006,6 +8037,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/global-ards-v570.js
 - `global-ards`
+
+### lib/e-faced-v571.js
+- `e-faced`
 
 ### lib/tb-testing.js
 - `tb-testing`

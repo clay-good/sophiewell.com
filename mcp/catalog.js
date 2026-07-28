@@ -481,6 +481,7 @@ import igcccgV567 from './adapters/igcccg-v567.js';
 import thakarAkiV568 from './adapters/thakar-aki-v568.js';
 import gappV569 from './adapters/gapp-v569.js';
 import globalArdsV570 from './adapters/global-ards-v570.js';
+import eFacedV571 from './adapters/e-faced-v571.js';
 import tbTesting from './adapters/tb-testing.js';
 import labInterpret from './adapters/lab-interpret.js';
 import decisionRulesV258 from './adapters/decision-rules-v258.js';
@@ -956,6 +957,7 @@ const ADAPTER_MODULES = [
   ['thakar-aki-v568', thakarAkiV568],
   ['gapp-v569', gappV569],
   ['global-ards-v570', globalArdsV570],
+  ['e-faced-v571', eFacedV571],
   ['tb-testing', tbTesting],
   ['lab-interpret', labInterpret],
   ['decision-rules-v258', decisionRulesV258],

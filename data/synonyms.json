@@ -724,6 +724,8 @@
     { "phrases": ["gapp score", "pheochromocytoma grading", "paraganglioma metastatic potential", "adrenal tumor grade"],
       "tile": "gapp", "audience": "clinicians" },
     { "phrases": ["global definition of ards", "new ards definition", "nonintubated ards", "ards 2024 criteria"],
-      "tile": "global-ards", "audience": "clinicians" }
+      "tile": "global-ards", "audience": "clinicians" },
+    { "phrases": ["e-faced", "efaced score", "bronchiectasis exacerbation risk", "faced exacerbation score"],
+      "tile": "e-faced", "audience": "clinicians" }
   ]
 }

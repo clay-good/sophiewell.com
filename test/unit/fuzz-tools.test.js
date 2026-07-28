@@ -545,6 +545,7 @@ import * as igcccgV567 from '../../lib/igcccg-v567.js';
 import * as thakarAkiV568 from '../../lib/thakar-aki-v568.js';
 import * as gappV569 from '../../lib/gapp-v569.js';
 import * as globalArdsV570 from '../../lib/global-ards-v570.js';
+import * as eFacedV571 from '../../lib/e-faced-v571.js';
 import * as tbTesting from '../../lib/tb-testing.js';
 
 const MODULES = {
@@ -1035,6 +1036,7 @@ const MODULES = {
   'thakar-aki-v568.js': thakarAkiV568,
   'gapp-v569.js': gappV569,
   'global-ards-v570.js': globalArdsV570,
+  'e-faced-v571.js': eFacedV571,
   'tb-testing.js': tbTesting,
 };
 
