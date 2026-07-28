@@ -648,6 +648,8 @@
     { "phrases": ["ehit", "ehit class", "endothermal heat induced thrombosis", "thrombus after vein ablation", "post ablation thrombus extension"],
       "tile": "ehit", "audience": "clinicians" },
     { "phrases": ["columbia fsgs", "fsgs variant", "focal segmental glomerulosclerosis variant", "collapsing glomerulopathy variant", "fsgs biopsy classification"],
-      "tile": "columbia-fsgs", "audience": "clinicians" }
+      "tile": "columbia-fsgs", "audience": "clinicians" },
+    { "phrases": ["renal angina index", "renal angina", "predict aki in children", "pediatric aki prediction score", "aki risk index picu"],
+      "tile": "renal-angina", "audience": "clinicians" }
   ]
 }

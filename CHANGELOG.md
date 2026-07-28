@@ -6,6 +6,22 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added (spec-v533 — Renal Angina Index (predicting severe AKI in children) tile, 1382 → 1383)
+
+- New `renal-angina` tile (group G): the risk × injury product predicting day-3 severe AKI in a critically
+  ill child, scored at ~12 hours after ICU admission. `renal angina` and `basu` were zero-hit. It is **a
+  different axis** from `rifle-aki`, `akin-aki`, and KDIGO staging: those classify an injury that has already
+  happened, this predicts one *before the creatinine has moved*. **The score is a product, not a sum** —
+  adding would cap it at 13 instead of 40 and, on the sickest patients, invert the conclusion; a test asserts
+  5 × 8 = 40 and not 13. **The very-high risk tier is AND, not OR** (ventilation *and* vasoactive support),
+  since the "or" rendering found in secondary sources would promote every ventilated child to a 5. **Only
+  twelve totals are reachable** (1, 2, 3, 4, 5, 6, 8, 10, 12, 20, 24, 40) — there is no 7, 9, 11, 15, 16, or
+  32 — so the tile reports the reachable set rather than implying a scale out of 40, in which a 12 would read
+  as low when it is the fourth-highest value possible. The result also names which injury level the
+  patient's own risk stratum would need to cross 8. It is designed as a **rule-out**: high negative
+  predictive value, modest positive, so a negative result is the informative one. See
+  [spec-v533](docs/spec-v533.md).
+
 ### Added (spec-v532 — Columbia classification of FSGS (biopsy variant) tile, 1381 → 1382)
 
 - New `columbia-fsgs` tile (group G): the five-variant morphologic classification of focal segmental
