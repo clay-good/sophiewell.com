@@ -1574,6 +1574,40 @@ Brings the exposed total to **1314 calculators across 430 modules**.
 ### lib/wayne-index-v527.js
 - `wayne-index`
 
+## Four-hundred-and-thirty-ninth wave — the Ocular Trauma Score in lib/ocular-trauma-score-v614.js (+1)
+
+`ocular-trauma-score` (spec-v614) estimates the distribution of visual outcome six months after serious eye
+injury. A **whole-concept gap** in an otherwise well-covered eye cluster — `shaffer-angle`, `van-herick` and
+the ocular-burn tiles all ship, and there was no prognostic score for eye injury at all.
+
+**The initial visual acuity is the only term that adds; everything else subtracts.** The acuity sets a base
+of 60 to 100 and the five findings deduct 23, 17, 14, 11 and 10 — 75 points available against a base that
+never exceeds 100. The presenting vision is not one variable among six; it is the whole of the positive side
+of the ledger, and a test asserts every acuity term is positive and every finding negative.
+
+**The raw score can fall below the published table, and the adapter reports that instead of patching it.**
+Both sources print the lowest band as "0 to 44". But no light perception with globe rupture,
+endophthalmitis, retinal detachment and an afferent pupillary defect is **−1**, and all five findings
+together give **−15**. Those are reachable, so `ots` comes back `null` with `belowPublishedRange` set —
+never clamped to category 1 — the same handling given to the al Naqeeb unclassified region. A test pins
+both negative totals, and pins that a raw score of exactly 0 *is* category 1 while −1 is not.
+
+**The output is a probability distribution, not a predicted acuity.** Each category carries five
+probabilities for where vision lands at six months, and a test asserts every row sums to exactly 100. The
+distributions are wide — category 3 is 44% at 20/40 or better and still 13% at hand movements or worse — so
+quoting the category alone throws the result away, and the summary says so.
+
+**Neither extreme is certain**: category 1, the worst, still carries 1% at 20/40 or better, and category 5,
+the best, still carries 1% at light perception or hand movements. And **the bands narrow as the prognosis
+improves** — 45, 21, 15, 11 and 9 raw points wide — so a single point matters far more near the top of the
+scale than near the bottom; a test asserts each band is strictly narrower than the one below it. New adapter
+module registered in `mcp/catalog.js`; its golden probe ("ocular trauma score visual prognosis eye injury")
+is promoted now that the tile is in the MCP-exposed registry. Brings the exposed total to **1401 calculators
+across 517 modules**.
+
+### lib/ocular-trauma-score-v614.js
+- `ocular-trauma-score`
+
 ## Four-hundred-and-thirty-eighth wave — the PEDIS classification and score in lib/pedis-v613.js (+1)
 
 `pedis` (spec-v613) grades a diabetic foot ulcer on perfusion, extent, depth, infection and sensation. A
@@ -9581,6 +9615,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/pedis-v613.js
 - `pedis`
+
+### lib/ocular-trauma-score-v614.js
+- `ocular-trauma-score`
 
 ### lib/tb-testing.js
 - `tb-testing`

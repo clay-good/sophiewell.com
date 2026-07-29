@@ -810,6 +810,8 @@
     { "phrases": ["university of texas wound classification", "ut diabetic foot", "diabetic foot ulcer grade stage", "armstrong wound classification", "diabetic foot ulcer classification"],
       "tile": "ut-diabetic-foot", "audience": "clinicians" },
     { "phrases": ["pedis classification", "pedis score", "perfusion extent depth infection sensation", "iwgdf classification"],
-      "tile": "pedis", "audience": "clinicians" }
+      "tile": "pedis", "audience": "clinicians" },
+    { "phrases": ["ocular trauma score", "eye injury prognosis", "open globe prognosis", "visual outcome after eye injury"],
+      "tile": "ocular-trauma-score", "audience": "clinicians" }
   ]
 }
