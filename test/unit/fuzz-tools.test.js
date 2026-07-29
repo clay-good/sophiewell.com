@@ -565,6 +565,7 @@ import * as qpittV587 from '../../lib/qpitt-v587.js';
 import * as bolognaPorV588 from '../../lib/bologna-por-v588.js';
 import * as sternbachV589 from '../../lib/sternbach-v589.js';
 import * as ffs1996V590 from '../../lib/ffs-1996-v590.js';
+import * as heffnerV591 from '../../lib/heffner-v591.js';
 import * as tbTesting from '../../lib/tb-testing.js';
 
 const MODULES = {
@@ -1075,6 +1076,7 @@ const MODULES = {
   'bologna-por-v588.js': bolognaPorV588,
   'sternbach-v589.js': sternbachV589,
   'ffs-1996-v590.js': ffs1996V590,
+  'heffner-v591.js': heffnerV591,
   'tb-testing.js': tbTesting,
 };
 

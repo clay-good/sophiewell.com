@@ -623,6 +623,7 @@ const PROBES = [
   ['bologna criteria poor ovarian response', ['bologna-por']],
   ['sternbach criteria serotonin syndrome', ['sternbach']],
   ['five factor score 1996 vasculitis prognosis', ['ffs-1996']],
+  ['heffner criteria pleural exudate without serum', ['heffner']],
 ];
 
 test(`every golden probe routes an acceptable tile into the top ${TOP_N}`, () => {

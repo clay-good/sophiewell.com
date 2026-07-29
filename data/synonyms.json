@@ -764,6 +764,8 @@
     { "phrases": ["sternbach criteria", "sternbach serotonin", "serotonin syndrome criteria", "serotonin toxicity criteria"],
       "tile": "sternbach", "audience": "clinicians" },
     { "phrases": ["ffs 1996", "original five factor score", "guillevin five factor", "vasculitis prognostic score"],
-      "tile": "ffs-1996", "audience": "clinicians" }
+      "tile": "ffs-1996", "audience": "clinicians" },
+    { "phrases": ["heffner criteria", "abbreviated lights criteria", "pleural exudate without serum", "pleural fluid cholesterol"],
+      "tile": "heffner", "audience": "clinicians" }
   ]
 }

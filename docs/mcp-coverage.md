@@ -1574,6 +1574,39 @@ Brings the exposed total to **1314 calculators across 430 modules**.
 ### lib/wayne-index-v527.js
 - `wayne-index`
 
+## Four-hundred-and-sixteenth wave — the Heffner criteria in lib/heffner-v591.js (+1)
+
+`heffner` (spec-v591) classifies a pleural effusion as exudative **without a paired serum sample**. A
+**companion gap**: `light-criteria` is already in the catalog, and Light's criteria require a serum sample
+drawn at the same time. Heffner's rules were derived to answer the same question without one.
+
+**"No serum sample needed" is not quite true, and the exception is the LDH test.** Cholesterol and protein
+use the pleural fluid alone. The LDH test compares pleural fluid LDH against **0.45 × the laboratory's upper
+limit of normal for serum LDH** — a reference value rather than the patient's blood, so no extra sample is
+drawn, but **not a fixed number**, because the upper limit differs between laboratories and assays. The tile
+requires the local value and defaults nothing; a test shows the *same* pleural LDH classifying differently
+under two laboratory references.
+
+**The thresholds are deliberately not the round numbers they resemble.** Protein is **2.9** g/dL, not 3.0.
+The LDH multiplier is **0.45**, not the two-thirds Light's criteria use. Each was re-derived for use without
+a serum comparison, so "protein over 3" and "LDH over two-thirds" are *different tests*. The tile computes
+Light's cutoff from the same reference value for contrast.
+
+**There are two published rules and the number of tests is a choice.** The protein test can be dropped
+without loss of accuracy, giving a two-test rule alongside the three-test rule. Both are returned, and
+`rulesDisagree` is true **exactly** when protein is the only positive test — asserted in all four
+combinations. Which rule a source means by "Heffner's criteria" is often left unstated.
+
+**Any one test is enough; they do not vote**, and **the trade is specificity**: about 98.4% sensitivity
+against about 85% specificity, where Light's is far more specific and already misclassifies 15-20% of
+transudates. A positive here is weaker evidence of an exudate than a positive Light's result — and both share
+the diuretic failure mode. New adapter module registered in `mcp/catalog.js`; its golden probe ("heffner
+criteria pleural exudate without serum") is promoted now that the tile is in the MCP-exposed registry. Brings
+the exposed total to **1378 calculators across 494 modules**.
+
+### lib/heffner-v591.js
+- `heffner`
+
 ## Four-hundred-and-fifteenth wave — the original 1996 Five-Factor Score in lib/ffs-1996-v590.js (+1)
 
 `ffs-1996` (spec-v590) is the original Five-Factor Score for systemic necrotizing vasculitis. A **predecessor
@@ -8743,6 +8776,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/ffs-1996-v590.js
 - `ffs-1996`
+
+### lib/heffner-v591.js
+- `heffner`
 
 ### lib/tb-testing.js
 - `tb-testing`
