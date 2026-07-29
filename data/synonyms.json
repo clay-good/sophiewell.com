@@ -774,6 +774,8 @@
     { "phrases": ["arc hbr", "high bleeding risk", "arc high bleeding risk", "bleeding risk pci"],
       "tile": "arc-hbr", "audience": "clinicians" },
     { "phrases": ["acef score", "acef ii", "age creatinine ejection fraction", "cardiac surgery risk score"],
-      "tile": "acef", "audience": "clinicians" }
+      "tile": "acef", "audience": "clinicians" },
+    { "phrases": ["lepine criteria", "lepine pleural", "pleural cholesterol rule", "cholesterol ldh exudate"],
+      "tile": "lepine", "audience": "clinicians" }
   ]
 }

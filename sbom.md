@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `cead22c3c5296458`
-Generated: 2026-07-29T13:24:25.325Z
+Build ID: `614562d88e08b678`
+Generated: 2026-07-29T13:39:54.660Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=20.18.1 <21, npm >=10.0.0
@@ -24,13 +24,13 @@ downloads is committed in this repository and is hashed below.
 
 | Path | Bytes | SHA-256 |
 |---|---:|---|
-| `index.html` | 94995 | `5383a18a77df5939671d70b8c49c5908e04cc28705df42f44027caa9542c23d0` |
+| `index.html` | 95061 | `925d2acf14434a9401212b922a735bce516b905f694c371203f2cdde745704c4` |
 | `styles.css` | 44160 | `a2cc7ad7bae9f7cfc9681d80bc6bd4a58f0b07d47bfcff64897dc04929c12333` |
-| `app.js` | 386242 | `6558500df0624bb44dc6710bb2ea2f215396eed13e838d39c39b2570ddace844` |
+| `app.js` | 386478 | `71913befc02b7926a9d167d69a8ce41d82c44254c247f6c1b4fdf91d66a1c49f` |
 | `sw.js` | 4622 | `b891d4344f8e04403b7f1d307fd446cc224bddc6f0c4397438a17d197351171e` |
 | `site.webmanifest` | 709 | `0e0de4da60590a12e8b27a0ae2a2f5ffdb6500b7d2b78f93631ec2f64ed3d5ce` |
 | `robots.txt` | 127 | `38fbf9c1854e72abb20e01e81dd5a31d4ea96f154c12d5db1ec3af05524dd1a1` |
-| `sitemap.xml` | 221646 | `b49956948e01fab2d80f051eafe81ef31a1d447e65632a4b42ffc43f071f27a4` |
+| `sitemap.xml` | 221792 | `a48bfbc89ef9005e1941bc18332a10f286d09f007f54d6b5a0e2b2eee0c64aa5` |
 | `_headers` | 1316 | `2f39986457d2feff7e73e491a7d09ee871e8f2f4cc2bc437f86bd86a42554ec6` |
 | `logo.png` | 63440 | `11afaf1b0d3ca68393d202e4810bf766b5b6d591b4e3ec52f41d3cacaa4616ec` |
 | `favicon.ico` | 7411 | `407fde0ca2788409e87e11f596fa02e6a0b121817fcea7fd995beec1801e287b` |
@@ -291,6 +291,7 @@ downloads is committed in this repository and is hashed below.
 | `lib/lauren-gastric-v393.js` | 3670 | `e6d981ac3e9e76c9458ce5b225d8ef8a91266ca87c3c3fc7952ef9ac56b02f41` |
 | `lib/le-fort-v406.js` | 3871 | `22519f726d0904118436f0cd34d665878a1f63e2cb7240eef374f631b4050654` |
 | `lib/leddy-packer-v456.js` | 3483 | `28e7739172e81201d43e89616cbbd383e8584d101a7d1375c44e4b6207836793` |
+| `lib/lepine-v596.js` | 11457 | `fdef3da0cbcaf433af572e8b26744d0ca7235c22811a8d44e31ebda325ea934f` |
 | `lib/letournel-acetabulum-v466.js` | 5574 | `689cf7aaae5d4dc8c93260f73203ea0f3c96cea278fc61f8fc822f9418000c87` |
 | `lib/levine-edwards-v411.js` | 4146 | `5b8fad3241eb0819b4f66f2a3229cf0a7b2ae1452ca8ed9a928ae81e7f8514e8` |
 | `lib/li-rads-v327.js` | 4931 | `fa89bbfeffee9ee672f964665b42bfe958158a0210f07848595585bbca9ba94c` |
@@ -326,7 +327,7 @@ downloads is committed in this repository and is hashed below.
 | `lib/medication-v4.js` | 18192 | `467f9576c50da696cc56094eb022d0a5ed1e88de0c7618448554ede8067270b0` |
 | `lib/medication-v5.js` | 18863 | `ce81d9f8954abbd412892c13af9936f992239164f26fd2b999eaea7902787ab7` |
 | `lib/mest-c-v528.js` | 9310 | `e33f178c339338f62c47b6a19d50d345d38be3b05d9a33e7d2703e0a99ae3a69` |
-| `lib/meta.js` | 1986185 | `c709d6e95a1829279f56a4bb4666cf798d30e1c7e93537e2daba1d6ddba81564` |
+| `lib/meta.js` | 1987944 | `0f4ec2d94b003bb3cf85650e3d0b9b50f861510f5e99346f4f539e1e6580f0f3` |
 | `lib/metabolic-hepatic-v219.js` | 12791 | `b9352877cebf7fbf3c3b99ecb8b72cdbee3ed94e056dc019113668609f5a95a8` |
 | `lib/metabolic-onc-v88.js` | 12659 | `1553b641668c121661a66647da71a4aaaa023e9f3a6b7a753efbcdab27cdba81` |
 | `lib/metabolic-v269.js` | 3262 | `0c7a42557886f2b0aeee7949b8d0bd682d795d4526174fd540717a978d94ec2f` |
@@ -1089,6 +1090,7 @@ downloads is committed in this repository and is hashed below.
 | `views/group-v593.js` | 3368 | `cee0e7ee2ee628a1df7891d4e743da23d71fe0e8538f9a7460411d8d2edb45fb` |
 | `views/group-v594.js` | 5261 | `fb3296420cbe1321da893195ed95bc2c6cfcdd34f777e8886f70c10acc3dbfa6` |
 | `views/group-v595.js` | 4124 | `153ca2f5807ef04ab6f4e8c1bd56710773168447dde5f5e7852840ef24f5cae9` |
+| `views/group-v596.js` | 3482 | `65c508ed61b9ebf492dc42233dec18e43b56cdcc996780f146f5e0b0c9e2e00c` |
 | `views/group-v6.js` | 5707 | `425918decb48cd9efac9fc5590ac8970a54c03c3b0df056fb99c9a22ff8dd1b2` |
 | `views/group-v63.js` | 14377 | `962d84b97e82bc39635801da79ecaa93fc0b501b5988b7d321b0f1f630497fab` |
 | `views/group-v7.js` | 15113 | `d480a5b34adfd035507dd4313e12462c47c949aeee155b253c8a2f9596839d05` |

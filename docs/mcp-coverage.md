@@ -1574,6 +1574,36 @@ Brings the exposed total to **1314 calculators across 430 modules**.
 ### lib/wayne-index-v527.js
 - `wayne-index`
 
+## Four-hundred-and-twenty-first wave — the Lepine criteria in lib/lepine-v596.js (+1)
+
+`lepine` (spec-v596) classifies a pleural effusion as exudative without a paired serum sample. A **direct
+companion** to `heffner`, shipped in spec-v591: both are serum-free two-test rules built from the **same two
+measurements** — pleural fluid LDH against the laboratory's serum reference, and pleural fluid cholesterol.
+
+**The two rules use the same two tests with thresholds that move in opposite directions.** Lepine's LDH bar
+is **higher** than Heffner's — 0.6 against 0.45 times the serum upper limit, so *harder* to trigger — while
+its cholesterol bar is **lower** — 40 against 45 mg/dL, so *easier* to trigger. **Neither rule dominates the
+other.** A test proves it in both directions from a single laboratory reference: a cholesterol of 42 is an
+exudate by Lepine and a transudate by Heffner, while a pleural LDH of 130 (cutoffs 150 and 112.5) is an
+exudate by Heffner and a transudate by Lepine. `disagreementAxis` names which measurement caused it, and a
+further test asserts the constants carried for the contrast match the shipped `heffner` lib exactly.
+
+**The trade is specificity, and it is large.** Lepine ran 0.91 sensitive and 0.73 specific against Heffner's
+0.93 and 0.58 — about 15 points of specificity for about 2 of sensitivity. Describing Lepine as the
+alternative comparable to Light's criteria is therefore a statement about **specificity**, not about overall
+superiority, and the tile says so.
+
+**It is an OR rule and the tests do not vote** — one positive classifies the effusion, and reading either
+rule as requiring *both* tests would call almost every exudate a transudate. And **it is not actually
+serum-free**: the LDH test needs the laboratory's upper limit of normal for serum LDH, a reference value
+rather than the patient's blood, but not a fixed number — so the local value is required and no cutoff is
+hard-coded. New adapter module registered in `mcp/catalog.js`; its golden probe ("lepine criteria pleural
+exudate cholesterol") is promoted now that the tile is in the MCP-exposed registry. Brings the exposed total
+to **1383 calculators across 499 modules**.
+
+### lib/lepine-v596.js
+- `lepine`
+
 ## Four-hundred-and-twentieth wave — ACEF and ACEF II in lib/acef-v595.js (+1)
 
 `acef` (spec-v595) returns both the ACEF and ACEF II cardiac-surgery mortality risk scores from the same
@@ -8929,6 +8959,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/acef-v595.js
 - `acef`
+
+### lib/lepine-v596.js
+- `lepine`
 
 ### lib/tb-testing.js
 - `tb-testing`

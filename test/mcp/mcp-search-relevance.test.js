@@ -628,6 +628,7 @@ const PROBES = [
   ['revised bethesda guidelines msi testing', ['bethesda']],
   ['arc hbr high bleeding risk criteria pci', ['arc-hbr']],
   ['acef score cardiac surgery mortality risk', ['acef']],
+  ['lepine criteria pleural exudate cholesterol', ['lepine']],
 ];
 
 test(`every golden probe routes an acceptable tile into the top ${TOP_N}`, () => {
