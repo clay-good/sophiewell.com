@@ -1574,6 +1574,41 @@ Brings the exposed total to **1314 calculators across 430 modules**.
 ### lib/wayne-index-v527.js
 - `wayne-index`
 
+## Four-hundred-and-twenty-eighth wave — the Bauer scores in lib/bauer-score-v603.js (+1)
+
+`bauer-score` (spec-v603) returns both the Bauer and modified Bauer scores for survival after surgery for
+skeletal metastases. A **cluster-completion gap**: `tokuhashi-revised` and `tomita-score` are both in the
+catalog and this third widely compared member was not.
+
+**A higher score means a better prognosis.** Every item scores 1 for the *favorable* state — the absence of
+something bad, or a favorable histology — and the published bands prove the direction rather than merely
+asserting it: 0-1 is under 6 months and the top band is over 12 months. Reading it as a severity scale
+inverts the answer completely, and scores in this family do not share a direction.
+
+**The modification removed an item and also moved the bands, and the two versions disagree in exactly two
+situations — in opposite directions.** Enumerating all 32 item combinations in a test gives precisely two:
+
+- **No pathological fracture and one other favorable factor** — original scores 2 (palliative surgery),
+  modified scores 1 (conservative treatment). **The original is more optimistic.**
+- **A fracture present with three favorable factors** — both score 3, but the original says palliative
+  surgery and the modification says **excisional** surgery. **The modification is more optimistic.**
+
+So **neither version is systematically more optimistic**, and both disagreements are management-changing.
+The exhaustive test asserts there are exactly two disagreement shapes and that they point opposite ways.
+
+**Two of the items are both about the primary tumor and they overlap.** A breast primary scores *both* "not
+lung cancer" and "favorable primary"; a colon primary scores only the first; a lung primary scores neither.
+Histology therefore carries up to two points — **half the modified scale**.
+
+**The dropped item was dropped for a reason**: pathological fracture predicted worse survival in the
+*extremity* group only, not the spine, so the original is not simply the fuller score — the two are tuned to
+different anatomy. New adapter module registered in `mcp/catalog.js`; its golden probe ("bauer score skeletal
+metastases survival") is promoted now that the tile is in the MCP-exposed registry. Brings the exposed total
+to **1390 calculators across 506 modules**.
+
+### lib/bauer-score-v603.js
+- `bauer-score`
+
 ## Four-hundred-and-twenty-seventh wave — the Virginia Radiosurgery AVM Scale in lib/vras-v602.js (+1)
 
 `vras` (spec-v602) predicts the outcome of stereotactic radiosurgery for a brain arteriovenous malformation.
@@ -9174,6 +9209,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/vras-v602.js
 - `vras`
+
+### lib/bauer-score-v603.js
+- `bauer-score`
 
 ### lib/tb-testing.js
 - `tb-testing`

@@ -635,6 +635,7 @@ const PROBES = [
   ['fisher grade subarachnoid hemorrhage ct', ['fisher-grade']],
   ['pollock flickinger avm radiosurgery score', ['pollock-flickinger']],
   ['virginia radiosurgery avm scale vras', ['vras']],
+  ['bauer score skeletal metastases survival', ['bauer-score']],
 ];
 
 test(`every golden probe routes an acceptable tile into the top ${TOP_N}`, () => {

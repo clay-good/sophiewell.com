@@ -788,6 +788,8 @@
     { "phrases": ["pollock flickinger", "avm score radiosurgery", "radiosurgery based avm grading", "avm radiosurgery outcome"],
       "tile": "pollock-flickinger", "audience": "clinicians" },
     { "phrases": ["vras", "virginia radiosurgery", "virginia avm scale", "avm radiosurgery grading"],
-      "tile": "vras", "audience": "clinicians" }
+      "tile": "vras", "audience": "clinicians" },
+    { "phrases": ["bauer score", "modified bauer", "skeletal metastases prognosis", "bone metastasis survival score"],
+      "tile": "bauer-score", "audience": "clinicians" }
   ]
 }

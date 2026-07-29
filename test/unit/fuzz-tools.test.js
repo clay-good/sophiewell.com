@@ -577,6 +577,7 @@ import * as myxedemaComaV599 from '../../lib/myxedema-coma-v599.js';
 import * as fisherGradeV600 from '../../lib/fisher-grade-v600.js';
 import * as pollockFlickingerV601 from '../../lib/pollock-flickinger-v601.js';
 import * as vrasV602 from '../../lib/vras-v602.js';
+import * as bauerScoreV603 from '../../lib/bauer-score-v603.js';
 import * as tbTesting from '../../lib/tb-testing.js';
 
 const MODULES = {
@@ -1099,6 +1100,7 @@ const MODULES = {
   'fisher-grade-v600.js': fisherGradeV600,
   'pollock-flickinger-v601.js': pollockFlickingerV601,
   'vras-v602.js': vrasV602,
+  'bauer-score-v603.js': bauerScoreV603,
   'tb-testing.js': tbTesting,
 };
 
