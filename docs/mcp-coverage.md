@@ -1574,6 +1574,39 @@ Brings the exposed total to **1314 calculators across 430 modules**.
 ### lib/wayne-index-v527.js
 - `wayne-index`
 
+## Four-hundred-and-fifteenth wave — the original 1996 Five-Factor Score in lib/ffs-1996-v590.js (+1)
+
+`ffs-1996` (spec-v590) is the original Five-Factor Score for systemic necrotizing vasculitis. A **predecessor
+gap**: `ffs-2011`, the revision, has been in the catalog since spec-v148, and the score it revised was
+absent.
+
+**The two scores share a name, a range and a band structure — and only one factor.** Both run 0-5 and both
+read as 0 / 1 / 2-or-more. But of the five factors only **gastrointestinal involvement** survives unchanged:
+cardiomyopathy became cardiac insufficiency, the renal threshold moved and **proteinuria was dropped**,
+**CNS involvement was dropped**, and **age over 65** — a demographic variable, not an organ — was added. An
+identical number from the two scores does not mean the same thing, and a value cannot be carried between
+them. Tests assert exactly one factor survived unchanged and exactly two were dropped.
+
+**The renal threshold moved by only 10 µmol/L, which is enough to cross.** 1996 counts creatinine *above*
+140 µmol/L (1.58 mg/dL); the revision counts *at or above* 150. A patient at 145 scores the renal factor here
+and not on the revision — the tile detects that window and says so, with the boundaries tested as exclusive
+at both ends.
+
+**The successor has a factor that scores for its absence; this one has nothing like it.** In the revision the
+*absence* of ENT manifestations scores a point. Every factor here counts something being **present**, so the
+inverted item must not be carried across.
+
+**Two things are deliberately withheld or flagged.** `fiveYearMortalityPercent` is **always null**: the
+percentages usually quoted alongside "the Five-Factor Score" belong to the 2011 cohort, and the 1996 figures
+could not be confirmed from two independent sources, so under the spec-v97 gate none is reported rather than
+one being borrowed. And granulomatosis with polyangiitis entered only with the revision's cohort, so
+selecting it sets `outsideDerivationCohort`. New adapter module registered in `mcp/catalog.js`; its golden
+probe ("five factor score 1996 vasculitis prognosis") is promoted now that the tile is in the MCP-exposed
+registry. Brings the exposed total to **1377 calculators across 493 modules**.
+
+### lib/ffs-1996-v590.js
+- `ffs-1996`
+
 ## Four-hundred-and-fourteenth wave — the Sternbach criteria in lib/sternbach-v589.js (+1)
 
 `sternbach` (spec-v589) applies the Sternbach criteria for serotonin syndrome. A **predecessor gap**:
@@ -8707,6 +8740,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/sternbach-v589.js
 - `sternbach`
+
+### lib/ffs-1996-v590.js
+- `ffs-1996`
 
 ### lib/tb-testing.js
 - `tb-testing`
