@@ -1574,6 +1574,40 @@ Brings the exposed total to **1314 calculators across 430 modules**.
 ### lib/wayne-index-v527.js
 - `wayne-index`
 
+## Four-hundred-and-twenty-seventh wave — the Virginia Radiosurgery AVM Scale in lib/vras-v602.js (+1)
+
+`vras` (spec-v602) predicts the outcome of stereotactic radiosurgery for a brain arteriovenous malformation.
+A **companion with a different construction** to `pollock-flickinger`, shipped one wave earlier: both answer
+the same question about the same malformation, but this is a **0-to-4 ordinal point scale** and that one is a
+**continuous formula with no maximum**.
+
+**The scale has five values but only three published outcome bands.** Favorable outcome is reported for 0-1,
+for 2, and for 3-4 — so **a 0 and a 1 share the same figure**, as do a 3 and a 4. The scale is *finer than
+the evidence behind it*, and distinguishing a 0 from a 1 has no published consequence. The tile reports the
+band and never invents a per-score rate.
+
+**Volume is the only graded item and it carries half the scale** (0/1/2 against 1 each for eloquence and
+prior hemorrhage). A test asserts the collision this produces: **a 5 cm³ AVM with no eloquence and no
+hemorrhage scores 2 — exactly like a 1 cm³ eloquent AVM that has bled.** Their components differ entirely and
+the scale cannot tell them apart.
+
+**The volume item saturates at 4 cm³ and the companion's does not.** Above it every malformation scores the
+same 2 points, so a 5 cm³ and a 40 cm³ AVM are identical here — while in `pollock-flickinger` volume is
+linear and unbounded, and a test asserts those same two are **exactly 3.5 points apart** there, importing the
+companion's coefficient to pin the comparison against future drift. `companionVolumeContribution` surfaces
+that value.
+
+**The two scales share only volume** — this uses eloquence and prior hemorrhage, the companion uses age and a
+location tier — so they can rank two patients in opposite orders and neither converts into the other. And
+**"favorable outcome" is a composite of three conditions that must all hold**: obliteration, no
+post-treatment hemorrhage, and no permanent symptomatic radiation-induced complication. A rate against it is
+not the obliteration rate. New adapter module registered in `mcp/catalog.js`; its golden probe ("virginia
+radiosurgery avm scale vras") is promoted now that the tile is in the MCP-exposed registry. Brings the
+exposed total to **1389 calculators across 505 modules**.
+
+### lib/vras-v602.js
+- `vras`
+
 ## Four-hundred-and-twenty-sixth wave — the Pollock-Flickinger score in lib/pollock-flickinger-v601.js (+1)
 
 `pollock-flickinger` (spec-v601) predicts the outcome of stereotactic radiosurgery for a brain arteriovenous
@@ -9137,6 +9171,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/pollock-flickinger-v601.js
 - `pollock-flickinger`
+
+### lib/vras-v602.js
+- `vras`
 
 ### lib/tb-testing.js
 - `tb-testing`

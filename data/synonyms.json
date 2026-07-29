@@ -786,6 +786,8 @@
     { "phrases": ["fisher grade", "fisher scale", "original fisher", "sah ct grading"],
       "tile": "fisher-grade", "audience": "clinicians" },
     { "phrases": ["pollock flickinger", "avm score radiosurgery", "radiosurgery based avm grading", "avm radiosurgery outcome"],
-      "tile": "pollock-flickinger", "audience": "clinicians" }
+      "tile": "pollock-flickinger", "audience": "clinicians" },
+    { "phrases": ["vras", "virginia radiosurgery", "virginia avm scale", "avm radiosurgery grading"],
+      "tile": "vras", "audience": "clinicians" }
   ]
 }

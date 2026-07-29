@@ -634,6 +634,7 @@ const PROBES = [
   ['myxedema coma diagnostic score', ['myxedema-coma']],
   ['fisher grade subarachnoid hemorrhage ct', ['fisher-grade']],
   ['pollock flickinger avm radiosurgery score', ['pollock-flickinger']],
+  ['virginia radiosurgery avm scale vras', ['vras']],
 ];
 
 test(`every golden probe routes an acceptable tile into the top ${TOP_N}`, () => {
