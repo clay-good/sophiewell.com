@@ -778,6 +778,8 @@
     { "phrases": ["lepine criteria", "lepine pleural", "pleural cholesterol rule", "cholesterol ldh exudate"],
       "tile": "lepine", "audience": "clinicians" },
     { "phrases": ["panc 3", "panc3 score", "pancreatitis admission severity", "severe pancreatitis prediction"],
-      "tile": "panc3", "audience": "clinicians" }
+      "tile": "panc3", "audience": "clinicians" },
+    { "phrases": ["jta criteria", "japan thyroid association", "thyroid storm criteria", "ts1 ts2 thyroid storm"],
+      "tile": "jta-thyroid-storm", "audience": "clinicians" }
   ]
 }

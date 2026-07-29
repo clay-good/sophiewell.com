@@ -572,6 +572,7 @@ import * as arcHbrV594 from '../../lib/arc-hbr-v594.js';
 import * as acefV595 from '../../lib/acef-v595.js';
 import * as lepineV596 from '../../lib/lepine-v596.js';
 import * as panc3V597 from '../../lib/panc3-v597.js';
+import * as jtaThyroidStormV598 from '../../lib/jta-thyroid-storm-v598.js';
 import * as tbTesting from '../../lib/tb-testing.js';
 
 const MODULES = {
@@ -1089,6 +1090,7 @@ const MODULES = {
   'acef-v595.js': acefV595,
   'lepine-v596.js': lepineV596,
   'panc3-v597.js': panc3V597,
+  'jta-thyroid-storm-v598.js': jtaThyroidStormV598,
   'tb-testing.js': tbTesting,
 };
 

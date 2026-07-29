@@ -1574,6 +1574,38 @@ Brings the exposed total to **1314 calculators across 430 modules**.
 ### lib/wayne-index-v527.js
 - `wayne-index`
 
+## Four-hundred-and-twenty-third wave — the JTA thyroid-storm criteria in lib/jta-thyroid-storm-v598.js (+1)
+
+`jta-thyroid-storm` (spec-v598) applies the Japan Thyroid Association diagnostic criteria for thyroid storm.
+A **companion with a different construction** to `burch-wartofsky`, already in the catalog: the
+Burch-Wartofsky Point Scale is a *weighted point scale* read against a threshold, while these are
+*categorical combination rules*. The two are the pair used worldwide and are known to disagree.
+
+**Central nervous system manifestations are privileged, and nothing else is.** With a CNS manifestation
+present, **one** other feature reaches TS1; without one, **three** are required. A patient with fever and
+tachycardia alone is TS2; a patient with delirium and fever alone is TS1. A test holds the feature count
+fixed at two and flips only the CNS answer to show the grade change, and a second test walks every pair of
+the four non-privileged features to confirm none of them carries that weight.
+
+**TS1 and TS2 are definite and suspected, not mild and severe** — they grade diagnostic *certainty*. A TS2
+patient is not less sick; the criteria are less sure.
+
+**TS2 has a second route that is "TS1 without laboratory confirmation".** A patient meeting the TS1 pattern
+whose thyroid function tests are unavailable, with clinical evidence of thyroid disease, is TS2 rather than
+TS1 — **the same clinical picture drops a grade purely on whether a blood test has come back**. The tile
+models that route explicitly and flags it with `viaNoLabsRoute` rather than refusing to compute.
+
+**The heart-failure criterion is severe-level only** (pulmonary edema, rales over more than half the lung
+fields, or cardiogenic shock — NYHA IV or Killip III+), so counting mild decompensation over-diagnoses. And
+**the exclusion clause is deliberately not mechanical**: the source says an alternative cause warrants
+exclusion, then says those same conditions may *themselves trigger* thyroid storm. The tile asks the question
+and reports the answer without letting it change the grade. New adapter module registered in
+`mcp/catalog.js`; its golden probe ("jta criteria thyroid storm ts1 ts2") is promoted now that the tile is in
+the MCP-exposed registry. Brings the exposed total to **1385 calculators across 501 modules**.
+
+### lib/jta-thyroid-storm-v598.js
+- `jta-thyroid-storm`
+
 ## Four-hundred-and-twenty-second wave — the PANC 3 score in lib/panc3-v597.js (+1)
 
 `panc3` (spec-v597) predicts severe acute pancreatitis from three items available **at admission**. A
@@ -8997,6 +9029,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/panc3-v597.js
 - `panc3`
+
+### lib/jta-thyroid-storm-v598.js
+- `jta-thyroid-storm`
 
 ### lib/tb-testing.js
 - `tb-testing`
