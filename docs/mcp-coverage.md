@@ -1574,6 +1574,40 @@ Brings the exposed total to **1314 calculators across 430 modules**.
 ### lib/wayne-index-v527.js
 - `wayne-index`
 
+## Four-hundred-and-thirty-seventh wave — the University of Texas diabetic foot classification in lib/ut-diabetic-foot-v612.js (+1)
+
+`ut-diabetic-foot` (spec-v612) classifies a diabetic foot ulcer. A **thin-cluster gap**: the catalog carried
+`wifi`, which stages limb *threat* in chronic limb-threatening ischemia, and no diabetic foot **ulcer**
+classification at all.
+
+**It is a two-dimensional matrix, and a single number cannot express it.** Depth is the grade (0, I, II,
+III); infection and ischemia are the stage (A, B, C, D). Four by four is sixteen cells, and the answer is
+always a *pair* — "2B", "3D". A test walks all sixteen and asserts every cell is reachable with a distinct
+label. The Wagner classification this extends is one-dimensional, so a reader who carries a bare Wagner
+grade across has silently dropped the entire infection-and-ischemia axis, and the summary says so.
+
+**Grade 0 does not mean "no problem".** It is a pre-ulcerative *or post-ulcerative* completely
+epithelialized lesion — a foot at risk, or a healed ulcer site — and it still carries a stage. A healed ulcer
+on an ischemic foot is **0C, not "resolved"**. The warning fires at grade 0 and, a test confirms, nowhere
+else.
+
+**One published rendering blurs two rungs of the depth ladder**, writing grade II as reaching "capsule or
+bone" — which overlaps grade III and cannot be right. The non-overlapping ladder (II reaches tendon or
+capsule *without* palpable bone; III probes to bone) is used, and the blur is disclosed.
+
+**The Wagner grade table is deliberately not reproduced.** Independent renderings of Wagner conflict on
+whether its grade 2 involves bone, which is a value disagreement rather than a wording variant (spec-v97), so
+Wagner is named as the predecessor and nothing more — a test asserts none of Wagner's grade descriptors leak
+into the output. **No outcome percentages are returned** either; the per-cell healing and amputation figures
+are single-sourced, so the tile states only the direction both sources agree on — risk rises across *both*
+axes, which are therefore read together and never traded against each other. A test scans all sixteen cells
+for any percentage and finds none. New adapter module registered in `mcp/catalog.js`; its golden probe
+("university of texas diabetic foot ulcer classification") is promoted now that the tile is in the
+MCP-exposed registry. Brings the exposed total to **1399 calculators across 515 modules**.
+
+### lib/ut-diabetic-foot-v612.js
+- `ut-diabetic-foot`
+
 ## Four-hundred-and-thirty-sixth wave — the Fried frailty phenotype in lib/fried-frailty-v611.js (+1)
 
 `fried-frailty` (spec-v611) counts the five criteria of the original frailty phenotype. A **predecessor gap
@@ -9511,6 +9545,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/fried-frailty-v611.js
 - `fried-frailty`
+
+### lib/ut-diabetic-foot-v612.js
+- `ut-diabetic-foot`
 
 ### lib/tb-testing.js
 - `tb-testing`

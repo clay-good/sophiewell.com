@@ -806,6 +806,8 @@
     { "phrases": ["edinburgh criteria", "edinburgh ct criteria", "simplified edinburgh criteria", "finger-like projections", "caa ct criteria"],
       "tile": "edinburgh-caa", "audience": "clinicians" },
     { "phrases": ["fried frailty", "frailty phenotype", "fried phenotype", "cardiovascular health study frailty", "pre-frail"],
-      "tile": "fried-frailty", "audience": "clinicians" }
+      "tile": "fried-frailty", "audience": "clinicians" },
+    { "phrases": ["university of texas wound classification", "ut diabetic foot", "diabetic foot ulcer grade stage", "armstrong wound classification", "diabetic foot ulcer classification"],
+      "tile": "ut-diabetic-foot", "audience": "clinicians" }
   ]
 }

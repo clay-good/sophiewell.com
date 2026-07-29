@@ -586,6 +586,7 @@ import * as zulewskiV608 from '../../lib/zulewski-v608.js';
 import * as hijdraV609 from '../../lib/hijdra-v609.js';
 import * as edinburghCaaV610 from '../../lib/edinburgh-caa-v610.js';
 import * as friedFrailtyV611 from '../../lib/fried-frailty-v611.js';
+import * as utDiabeticFootV612 from '../../lib/ut-diabetic-foot-v612.js';
 import * as tbTesting from '../../lib/tb-testing.js';
 
 const MODULES = {
@@ -1117,6 +1118,7 @@ const MODULES = {
   'hijdra-v609.js': hijdraV609,
   'edinburgh-caa-v610.js': edinburghCaaV610,
   'fried-frailty-v611.js': friedFrailtyV611,
+  'ut-diabetic-foot-v612.js': utDiabeticFootV612,
   'tb-testing.js': tbTesting,
 };
 
