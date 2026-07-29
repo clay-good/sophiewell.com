@@ -1574,6 +1574,40 @@ Brings the exposed total to **1314 calculators across 430 modules**.
 ### lib/wayne-index-v527.js
 - `wayne-index`
 
+## Four-hundred-and-seventeenth wave — the Amsterdam II criteria in lib/amsterdam-ii-v592.js (+1)
+
+`amsterdam-ii` (spec-v592) applies the Amsterdam II criteria for Lynch syndrome. The catalog carried breast
+and ovarian familial-risk models and had nothing on the Lynch axis: `grep -ci lynch app.js` returned 0.
+
+**All six requirements must be met — it is a conjunction, not a count.** No score, no threshold, no partial
+credit: a family meeting five of six **fails**. A test walks every requirement and asserts each one alone
+defeats the criteria, and the result never presents five of six as a near miss.
+
+**The "3-2-1" mnemonic omits half the rule, and the part it omits is the part families fail.** It covers
+three affected relatives, two successive generations and one diagnosed under 50 — leaving out that **one of
+the three must be a first-degree relative of the other two**, that FAP must be excluded, and that tumors must
+be **verified by pathological examination**. Three affected *cousins* satisfy "3" and fail the criteria, so
+the tile asks the first-degree question separately and puts the three omitted requirements in their own
+section.
+
+**The cancer spectrum is closed and shorter than the syndrome.** Only colorectal, endometrium, small
+intestine, ureter and renal pelvis count toward the three; a relative with any other cancer contributes
+nothing, however strongly the family history suggests Lynch syndrome. The list is the criteria's, not a
+summary of which cancers Lynch syndrome causes.
+
+**The predecessor counted colorectal cancer only**, so the same family can meet Amsterdam II and fail
+Amsterdam I — both are returned from the same inputs. And **a negative result must not stop an evaluation**:
+the Bethesda guidelines exist because these criteria were found too strict, so failing them is not evidence
+against Lynch syndrome nor a reason to withhold MMR immunohistochemistry, MSI or germline testing — a caveat
+that appears *only* on negative results, as a test asserts. Finally, the commonly quoted sensitivity and
+specificity appeared in only one of the two sources checked, so both fields are **always null**. New adapter
+module registered in `mcp/catalog.js`; its golden probe ("amsterdam ii criteria lynch syndrome") is promoted
+now that the tile is in the MCP-exposed registry. Brings the exposed total to **1379 calculators across 495
+modules**.
+
+### lib/amsterdam-ii-v592.js
+- `amsterdam-ii`
+
 ## Four-hundred-and-sixteenth wave — the Heffner criteria in lib/heffner-v591.js (+1)
 
 `heffner` (spec-v591) classifies a pleural effusion as exudative **without a paired serum sample**. A
@@ -8779,6 +8813,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/heffner-v591.js
 - `heffner`
+
+### lib/amsterdam-ii-v592.js
+- `amsterdam-ii`
 
 ### lib/tb-testing.js
 - `tb-testing`

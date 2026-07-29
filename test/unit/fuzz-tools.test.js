@@ -566,6 +566,7 @@ import * as bolognaPorV588 from '../../lib/bologna-por-v588.js';
 import * as sternbachV589 from '../../lib/sternbach-v589.js';
 import * as ffs1996V590 from '../../lib/ffs-1996-v590.js';
 import * as heffnerV591 from '../../lib/heffner-v591.js';
+import * as amsterdamIiV592 from '../../lib/amsterdam-ii-v592.js';
 import * as tbTesting from '../../lib/tb-testing.js';
 
 const MODULES = {
@@ -1077,6 +1078,7 @@ const MODULES = {
   'sternbach-v589.js': sternbachV589,
   'ffs-1996-v590.js': ffs1996V590,
   'heffner-v591.js': heffnerV591,
+  'amsterdam-ii-v592.js': amsterdamIiV592,
   'tb-testing.js': tbTesting,
 };
 
