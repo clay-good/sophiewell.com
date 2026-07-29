@@ -1574,6 +1574,41 @@ Brings the exposed total to **1314 calculators across 430 modules**.
 ### lib/wayne-index-v527.js
 - `wayne-index`
 
+## Four-hundred-and-thirty-sixth wave — the Fried frailty phenotype in lib/fried-frailty-v611.js (+1)
+
+`fried-frailty` (spec-v611) counts the five criteria of the original frailty phenotype. A **predecessor gap
+of the clearest kind**: the catalog already carried FOUR instruments derived from or simplified out of this
+one — `frail-scale`, `sof-frailty-index`, `prisma-7` and `groningen-frailty-indicator` — and the original was
+missing. Every slug spelling returned zero; the `fried` prose hits were all "Friedman" and "Friedewald".
+
+**The grip-strength cut-point rises with BMI: a heavier person must squeeze harder to avoid being called
+weak.** A man at BMI 24 or below is weak at 29 kg or less; above 28 he is weak at 32 kg or less. It reads
+backwards and it is correct — grip scales with body mass, so a single fixed threshold would call heavy people
+strong and light people weak. A test asserts the cut-points are monotonically non-decreasing in BMI for both
+sexes, rather than pinning eight numbers and hoping.
+
+**The men's table has four BMI bands but only three distinct cut-points** — 24.1–26 and 26.1–28 both cut at
+30 kg. That is not a transcription slip, and a test says so explicitly; the women's table, by contrast, has
+four distinct values.
+
+**Slowness is a time over 15 feet, not a speed, and sex enters only through the height threshold.** The times
+are identical for both sexes — 7 seconds or more if shorter, 6 or more if taller — and only the boundary
+moves, 173 cm for men against 159 cm for women. Published conversions of the same 6 seconds into metres per
+second disagree with each other by rounding (0.8 against 0.76), so the adapter keeps the published times and
+a test asserts no `m/s` figure appears in the result at all.
+
+**Weight loss has two alternative definitions and either satisfies it** (more than 10 pounds unintentionally
+in a year, or a measured loss of 5% or more). **The activity cut-offs are cohort-specific**: the criterion is
+the lowest quintile by sex, and the familiar 383 and 270 kcal/week figures are that quintile's values in the
+derivation cohort, not universal constants. And **three of the five criteria need equipment or a
+questionnaire** — a dynamometer, a timed walk, the Minnesota Leisure Time Activity Questionnaire — which is
+precisely why the simplified derivatives already in this catalog exist. New adapter module registered in
+`mcp/catalog.js`; its golden probe ("fried frailty phenotype criteria") is promoted now that the tile is in
+the MCP-exposed registry. Brings the exposed total to **1398 calculators across 514 modules**.
+
+### lib/fried-frailty-v611.js
+- `fried-frailty`
+
 ## Four-hundred-and-thirty-fifth wave — the Edinburgh CT criteria in lib/edinburgh-caa-v610.js (+1)
 
 `edinburgh-caa` (spec-v610) estimates the probability that cerebral amyloid angiopathy caused a lobar
@@ -9473,6 +9508,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/edinburgh-caa-v610.js
 - `edinburgh-caa`
+
+### lib/fried-frailty-v611.js
+- `fried-frailty`
 
 ### lib/tb-testing.js
 - `tb-testing`

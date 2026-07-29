@@ -804,6 +804,8 @@
     { "phrases": ["hijdra score", "hijdra sum score", "sah blood burden", "subarachnoid blood volume score", "cisternal blood score"],
       "tile": "hijdra", "audience": "clinicians" },
     { "phrases": ["edinburgh criteria", "edinburgh ct criteria", "simplified edinburgh criteria", "finger-like projections", "caa ct criteria"],
-      "tile": "edinburgh-caa", "audience": "clinicians" }
+      "tile": "edinburgh-caa", "audience": "clinicians" },
+    { "phrases": ["fried frailty", "frailty phenotype", "fried phenotype", "cardiovascular health study frailty", "pre-frail"],
+      "tile": "fried-frailty", "audience": "clinicians" }
   ]
 }
