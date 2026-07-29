@@ -792,6 +792,8 @@
     { "phrases": ["bauer score", "modified bauer", "skeletal metastases prognosis", "bone metastasis survival score"],
       "tile": "bauer-score", "audience": "clinicians" },
     { "phrases": ["bilsky", "escc scale", "epidural spinal cord compression grade", "metastatic cord compression grading"],
-      "tile": "bilsky-escc", "audience": "clinicians" }
+      "tile": "bilsky-escc", "audience": "clinicians" },
+    { "phrases": ["harrington classification", "periacetabular metastases", "acetabular metastatic defect", "harrington class"],
+      "tile": "harrington-acetabular", "audience": "clinicians" }
   ]
 }

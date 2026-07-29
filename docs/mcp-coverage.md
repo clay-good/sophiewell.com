@@ -1574,6 +1574,37 @@ Brings the exposed total to **1314 calculators across 430 modules**.
 ### lib/wayne-index-v527.js
 - `wayne-index`
 
+## Four-hundred-and-thirtieth wave — the Harrington classification in lib/harrington-acetabular-v605.js (+1)
+
+`harrington-acetabular` (spec-v605) classifies periacetabular metastatic destruction and the reconstruction
+it demands. A **companion on a different bone** to `mirels-score`, already in the catalog: Mirels grades an
+impending pathological fracture of a **long bone**; this classifies the **acetabulum**.
+
+**Classes I to III grade bone destruction. Class IV does not, and is not "worse than class III."** Class IV
+is defined by the lesion being **solitary and amenable to en-bloc resection with curative intent** — a
+statement about the disease *elsewhere in the body* and about the *treatment goal*, not about the acetabulum.
+A test asserts the consequence directly: **a solitary resectable lesion in an intact acetabulum is class
+IV**, with `destructionOnlyClass` reporting the class I that the destruction ladder alone would have given,
+and `assignedByIntent` flagging the override at every level of destruction.
+
+**A widely reproduced rendering re-defines class IV as the most destructive** — "widespread destruction all
+the way to the wing of the ilium" — which **inverts its meaning**. Under the original, class IV is not a
+hopeless acetabulum but the one patient who might be *cured*. Two renderings disagreed on this and a third,
+whose purpose is to restate the original in order to propose an extension, adjudicated it in favour of the
+resectability definition.
+
+**Class III, not class IV, is the one described as most challenging to reconstruct** — which follows directly
+from class IV not being a destruction level. And **the classes map to named reconstructions rather than
+severity bands**: cemented total hip arthroplasty; an anti-protrusion device such as a flanged cup;
+acetabuloplasty with large Steinmann pins; a saddle prosthesis after resection. The class states what
+operation the bone will accept, and those constructs are reported as 1981-era provenance rather than as a
+recommendation. New adapter module registered in `mcp/catalog.js`; its golden probe ("harrington
+classification periacetabular metastases") is promoted now that the tile is in the MCP-exposed registry.
+Brings the exposed total to **1392 calculators across 508 modules**.
+
+### lib/harrington-acetabular-v605.js
+- `harrington-acetabular`
+
 ## Four-hundred-and-twenty-ninth wave — the Bilsky ESCC scale in lib/bilsky-escc-v604.js (+1)
 
 `bilsky-escc` (spec-v604) grades epidural spinal cord compression from spinal metastasis. An **axis gap** in a
@@ -9249,6 +9280,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/bilsky-escc-v604.js
 - `bilsky-escc`
+
+### lib/harrington-acetabular-v605.js
+- `harrington-acetabular`
 
 ### lib/tb-testing.js
 - `tb-testing`
