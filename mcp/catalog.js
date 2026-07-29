@@ -507,6 +507,7 @@ import bethesdaV593 from './adapters/bethesda-v593.js';
 import arcHbrV594 from './adapters/arc-hbr-v594.js';
 import acefV595 from './adapters/acef-v595.js';
 import lepineV596 from './adapters/lepine-v596.js';
+import panc3V597 from './adapters/panc3-v597.js';
 import tbTesting from './adapters/tb-testing.js';
 import labInterpret from './adapters/lab-interpret.js';
 import decisionRulesV258 from './adapters/decision-rules-v258.js';
@@ -1008,6 +1009,7 @@ const ADAPTER_MODULES = [
   ['arc-hbr-v594', arcHbrV594],
   ['acef-v595', acefV595],
   ['lepine-v596', lepineV596],
+  ['panc3-v597', panc3V597],
   ['tb-testing', tbTesting],
   ['lab-interpret', labInterpret],
   ['decision-rules-v258', decisionRulesV258],

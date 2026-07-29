@@ -629,6 +629,7 @@ const PROBES = [
   ['arc hbr high bleeding risk criteria pci', ['arc-hbr']],
   ['acef score cardiac surgery mortality risk', ['acef']],
   ['lepine criteria pleural exudate cholesterol', ['lepine']],
+  ['panc 3 score severe acute pancreatitis admission', ['panc3']],
 ];
 
 test(`every golden probe routes an acceptable tile into the top ${TOP_N}`, () => {

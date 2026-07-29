@@ -1574,6 +1574,38 @@ Brings the exposed total to **1314 calculators across 430 modules**.
 ### lib/wayne-index-v527.js
 - `wayne-index`
 
+## Four-hundred-and-twenty-second wave — the PANC 3 score in lib/panc3-v597.js (+1)
+
+`panc3` (spec-v597) predicts severe acute pancreatitis from three items available **at admission**. A
+**timing-axis gap** in a cluster the catalog already carries: `ranson-bisap`, `glasgow-imrie` and
+`atlanta-pancreatitis` are all present, and the two classical severity scores among them need **48 hours**.
+Admission-time prediction is PANC 3's entire reason for existing.
+
+**The rule is all three, not a majority.** The score runs 0-3 and **only a 3 is positive** — this is a
+conjunction wearing a score's clothing, and a "2 or more" threshold over-calls severity. A test walks every
+two-of-three combination and asserts each one is negative.
+
+**It is a rule-in test, and its sensitivity is the point of failure.** Reported specificity 96-100% against
+reported sensitivity 50-75%: a positive result is strong evidence, while **a negative result misses between a
+quarter and a half of severe cases**. Using it to send a patient home inverts what the score is good for, so
+*every* negative result carries that warning and a test asserts a positive result does not.
+
+**Widely reproduced secondary sources print two of the three units wrong** — hematocrit as "mg/dL" when it is
+a percentage with no mass concentration, and BMI as "mg/kg squared" instead of kg/m². The values 44 and 30
+are right; those units are not. Every input carries its correct unit inline, and the missing-input message
+states them too.
+
+**The reference standard is persistent organ failure, not a score**: organ failure beyond 48 hours graded by
+the modified Marshall score — itself in this catalog — so PANC 3 is an admission-time prediction of a
+48-hour outcome. And as with the other pancreatitis severity tiles, **amylase and lipase are not inputs**:
+hemoconcentration, obesity and a pleural effusion are three unrelated mechanisms, and the enzymes that
+diagnose pancreatitis play no part in predicting its severity. New adapter module registered in
+`mcp/catalog.js`; its golden probe ("panc 3 score severe acute pancreatitis admission") is promoted now that
+the tile is in the MCP-exposed registry. Brings the exposed total to **1384 calculators across 500 modules**.
+
+### lib/panc3-v597.js
+- `panc3`
+
 ## Four-hundred-and-twenty-first wave — the Lepine criteria in lib/lepine-v596.js (+1)
 
 `lepine` (spec-v596) classifies a pleural effusion as exudative without a paired serum sample. A **direct
@@ -8962,6 +8994,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/lepine-v596.js
 - `lepine`
+
+### lib/panc3-v597.js
+- `panc3`
 
 ### lib/tb-testing.js
 - `tb-testing`
