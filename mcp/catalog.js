@@ -523,6 +523,7 @@ import hijdraV609 from './adapters/hijdra-v609.js';
 import edinburghCaaV610 from './adapters/edinburgh-caa-v610.js';
 import friedFrailtyV611 from './adapters/fried-frailty-v611.js';
 import utDiabeticFootV612 from './adapters/ut-diabetic-foot-v612.js';
+import pedisV613 from './adapters/pedis-v613.js';
 import tbTesting from './adapters/tb-testing.js';
 import labInterpret from './adapters/lab-interpret.js';
 import decisionRulesV258 from './adapters/decision-rules-v258.js';
@@ -1040,6 +1041,7 @@ const ADAPTER_MODULES = [
   ['edinburgh-caa-v610', edinburghCaaV610],
   ['fried-frailty-v611', friedFrailtyV611],
   ['ut-diabetic-foot-v612', utDiabeticFootV612],
+  ['pedis-v613', pedisV613],
   ['tb-testing', tbTesting],
   ['lab-interpret', labInterpret],
   ['decision-rules-v258', decisionRulesV258],

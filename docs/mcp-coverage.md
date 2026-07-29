@@ -1574,6 +1574,36 @@ Brings the exposed total to **1314 calculators across 430 modules**.
 ### lib/wayne-index-v527.js
 - `wayne-index`
 
+## Four-hundred-and-thirty-eighth wave — the PEDIS classification and score in lib/pedis-v613.js (+1)
+
+`pedis` (spec-v613) grades a diabetic foot ulcer on perfusion, extent, depth, infection and sensation. A
+**companion with a different shape**: `sinbad-score` sums to 0–6, `ut-diabetic-foot` (spec-v612) does not sum
+at all, and the five-category research classification that does both was missing.
+
+**The grade and the score are off by one, and the published table prints both columns side by side.** Grades
+are 1-based — grade 1 means the category is *wholly intact* — while the score contribution is grade minus
+one. Adding the grades instead of the scores inflates the total by exactly 5: a minimum ulcer reads **5
+instead of 0** and a maximum one **17 instead of 12**. A test asserts the difference is exactly 5 at both
+extremes and in between, and the adapter returns `gradeSum` **only so the error is visible** — labelled, in
+the summary and in the field docs, as not being the score.
+
+**The five categories do not have the same number of grades, so they are not equally weighted.** Extent,
+depth and infection run to four grades and carry 3 points each; perfusion runs to three and carries 2; and
+**sensation runs to two and carries only 1**. So the neuropathy that defines the diabetic foot moves the
+total by a single point of twelve — a test asserts sensation's ceiling is strictly below every other
+category's, rather than pinning a list of numbers.
+
+**PEDIS has two identities**, and the adapter keeps them apart: a research *classification* reported as a
+profile (`P2 E3 D3 I2 S2`) and a summed *score* added later by a validation study. Both are returned; a test
+asserts the profile follows the published grade numbers while the score follows the offset ones. Extent
+carries its explicit measurement rule — largest diameter times the perpendicular second largest, in square
+centimetres, an area rather than a length. New adapter module registered in `mcp/catalog.js`; its golden
+probe ("pedis classification diabetic foot") is promoted now that the tile is in the MCP-exposed registry.
+Brings the exposed total to **1400 calculators across 516 modules**.
+
+### lib/pedis-v613.js
+- `pedis`
+
 ## Four-hundred-and-thirty-seventh wave — the University of Texas diabetic foot classification in lib/ut-diabetic-foot-v612.js (+1)
 
 `ut-diabetic-foot` (spec-v612) classifies a diabetic foot ulcer. A **thin-cluster gap**: the catalog carried
@@ -9548,6 +9578,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/ut-diabetic-foot-v612.js
 - `ut-diabetic-foot`
+
+### lib/pedis-v613.js
+- `pedis`
 
 ### lib/tb-testing.js
 - `tb-testing`

@@ -808,6 +808,8 @@
     { "phrases": ["fried frailty", "frailty phenotype", "fried phenotype", "cardiovascular health study frailty", "pre-frail"],
       "tile": "fried-frailty", "audience": "clinicians" },
     { "phrases": ["university of texas wound classification", "ut diabetic foot", "diabetic foot ulcer grade stage", "armstrong wound classification", "diabetic foot ulcer classification"],
-      "tile": "ut-diabetic-foot", "audience": "clinicians" }
+      "tile": "ut-diabetic-foot", "audience": "clinicians" },
+    { "phrases": ["pedis classification", "pedis score", "perfusion extent depth infection sensation", "iwgdf classification"],
+      "tile": "pedis", "audience": "clinicians" }
   ]
 }

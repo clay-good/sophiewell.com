@@ -645,6 +645,7 @@ const PROBES = [
   ['edinburgh ct criteria amyloid angiopathy', ['edinburgh-caa']],
   ['fried frailty phenotype criteria', ['fried-frailty']],
   ['university of texas diabetic foot ulcer classification', ['ut-diabetic-foot']],
+  ['pedis classification diabetic foot', ['pedis']],
 ];
 
 test(`every golden probe routes an acceptable tile into the top ${TOP_N}`, () => {
