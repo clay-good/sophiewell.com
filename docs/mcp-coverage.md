@@ -1574,6 +1574,40 @@ Brings the exposed total to **1314 calculators across 430 modules**.
 ### lib/wayne-index-v527.js
 - `wayne-index`
 
+## Four-hundred-and-twenty-ninth wave — the Bilsky ESCC scale in lib/bilsky-escc-v604.js (+1)
+
+`bilsky-escc` (spec-v604) grades epidural spinal cord compression from spinal metastasis. An **axis gap** in a
+cluster the catalog already carries three members of: `sins-score` grades **stability**, and
+`tokuhashi-revised`, `tomita-score` and `bauer-score` grade **survival**. None of them grades the **cord**.
+
+**The grades are not numbers and must not be stored as one.** The scale is nominally 4-point but grade 1 is
+subdivided into 1a, 1b and 1c, giving labels 0, 1a, 1b, 1c, 2, 3. A test demonstrates the loss directly:
+`parseInt` maps **all three** subdivided grades to 1, destroying exactly the distinction the subdivision
+exists to draw — while the three carry distinct definitions and distinct ranks. `grade` is returned as a
+**string**, with `ordinalRank` exposed separately for sorting only. A "mean ESCC grade" is not a quantity
+this scale supports.
+
+**The clinically decisive split sits inside grade 1, not at the numeric middle.** Low grade is 0 through 1c
+and high grade is 2 and 3 — so **four of the six grades are low**, and the boundary falls between cord
+*abutment* (1c) and cord *compression* (2).
+
+**The scale grades anatomy, not neurology.** In the cited analysis the severity of paralysis was **not**
+correlated with the grade: a patient can have grade 3 compression with normal power, and grade 1b can be
+severely impaired. Every result carries that caveat.
+
+**The same grade means different things at different spinal levels, and the scale carries no level
+information.** At C1-T2 at least half of patients with grade **1b** or worse developed moderate-to-severe
+paralysis; at T3-L5 that threshold was **1c**. The level is an optional input and the threshold is reported
+separately rather than folded into the grade — a test asserts grade 1b crosses the threshold at C1-T2 and
+does not at T3-L5. Finally it is a **single-slice, single-sequence** judgment: axial T2 at the site of most
+severe compromise, so a sagittal or CT reading is not this scale's grade. New adapter module registered in
+`mcp/catalog.js`; its golden probe ("bilsky escc epidural spinal cord compression grade") is promoted now
+that the tile is in the MCP-exposed registry. Brings the exposed total to **1391 calculators across 507
+modules**.
+
+### lib/bilsky-escc-v604.js
+- `bilsky-escc`
+
 ## Four-hundred-and-twenty-eighth wave — the Bauer scores in lib/bauer-score-v603.js (+1)
 
 `bauer-score` (spec-v603) returns both the Bauer and modified Bauer scores for survival after surgery for
@@ -9212,6 +9246,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/bauer-score-v603.js
 - `bauer-score`
+
+### lib/bilsky-escc-v604.js
+- `bilsky-escc`
 
 ### lib/tb-testing.js
 - `tb-testing`

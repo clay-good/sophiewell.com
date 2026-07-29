@@ -790,6 +790,8 @@
     { "phrases": ["vras", "virginia radiosurgery", "virginia avm scale", "avm radiosurgery grading"],
       "tile": "vras", "audience": "clinicians" },
     { "phrases": ["bauer score", "modified bauer", "skeletal metastases prognosis", "bone metastasis survival score"],
-      "tile": "bauer-score", "audience": "clinicians" }
+      "tile": "bauer-score", "audience": "clinicians" },
+    { "phrases": ["bilsky", "escc scale", "epidural spinal cord compression grade", "metastatic cord compression grading"],
+      "tile": "bilsky-escc", "audience": "clinicians" }
   ]
 }
