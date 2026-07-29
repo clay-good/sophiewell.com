@@ -796,6 +796,8 @@
     { "phrases": ["harrington classification", "periacetabular metastases", "acetabular metastatic defect", "harrington class"],
       "tile": "harrington-acetabular", "audience": "clinicians" },
     { "phrases": ["katagiri score", "new katagiri", "skeletal metastasis survival", "bone metastasis prognosis score"],
-      "tile": "katagiri", "audience": "clinicians" }
+      "tile": "katagiri", "audience": "clinicians" },
+    { "phrases": ["sartorius score", "modified sartorius", "sartorius hidradenitis", "hidradenitis suppurativa extent score", "hs sartorius score"],
+      "tile": "sartorius-hs", "audience": "clinicians" }
   ]
 }

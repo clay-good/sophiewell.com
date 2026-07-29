@@ -1574,6 +1574,44 @@ Brings the exposed total to **1314 calculators across 430 modules**.
 ### lib/wayne-index-v527.js
 - `wayne-index`
 
+## Four-hundred-and-thirty-second wave — the modified Sartorius score in lib/sartorius-hs-v607.js (+1)
+
+`sartorius-hs` (spec-v607) measures the extent of hidradenitis suppurativa. A **cluster-completion gap**:
+`hurley-stage` and `ihs4` were both in the catalog and the third member of that trio was not.
+
+**The published unit is a single anatomical region, and the patient's total is the sum across regions.**
+The adapter computes one region: 3 points for the region being involved, plus 1 per nodule, plus 6 per
+draining fistula, plus a distance term, plus 9 if the lesions are not separated by normal skin. A regional
+score presented as the patient's total is wrong, and the source gives no aggregation rule beyond the sum.
+
+**There is no maximum.** Lesions are counted individually and regions are summed, so the score is unbounded
+and a patient with many draining fistulas across several regions can reach the hundreds. Any "x of y"
+reading is wrong, and so is normalizing it — the summary says so, and a test drives the score past 200.
+
+**A draining fistula is worth exactly six nodules**, and the test that proves it is the load-bearing one:
+six nodules and one fistula produce the identical score. Lesion **type** dominates lesion **count**, so an
+implementation that counts "lesions" without separating the two is wrong by a factor of six on the item that
+matters most. **The distance term triples at each step** — 1, 3, then 9 — so a single span greater than 10 cm
+is worth nine nodules, and it is not a linear measure of size.
+
+**The separation item is the Hurley question in disguise.** "Lesions not separated by normal skin" is the
+defining feature of Hurley stage III, and one reproduction of this score states the item directly as 9
+points for a Hurley stage III area — the two descriptions are the same criterion, and `hurley-stage` in this
+catalog is therefore not independent of this score.
+
+**No severity band is returned, deliberately.** One reproduction gives activity as high above 60 and
+moderate between 20 and 60; a comparative review of hidradenitis scores states that no bands are provided
+for this system. Under the spec-v97 gate a single-sourced band table is reported, not applied, so `band` is
+always `null` and a test asserts it across the range. The score was superseded for being time-consuming in
+extensive disease, which is why the IHS4 — also in this catalog — was produced by a Delphi process to give an
+easy-to-use formula, and it uses examination findings only, with no patient-reported component. New adapter
+module registered in `mcp/catalog.js`; its golden probe ("modified sartorius score hidradenitis") is
+promoted now that the tile is in the MCP-exposed registry. Brings the exposed total to **1394 calculators
+across 510 modules**.
+
+### lib/sartorius-hs-v607.js
+- `sartorius-hs`
+
 ## Four-hundred-and-thirty-first wave — the new Katagiri score in lib/katagiri-v606.js (+1)
 
 `katagiri` (spec-v606) estimates survival in symptomatic skeletal metastasis. A **cluster-completion gap**:
@@ -9314,6 +9352,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/katagiri-v606.js
 - `katagiri`
+
+### lib/sartorius-hs-v607.js
+- `sartorius-hs`
 
 ### lib/tb-testing.js
 - `tb-testing`

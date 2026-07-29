@@ -581,6 +581,7 @@ import * as bauerScoreV603 from '../../lib/bauer-score-v603.js';
 import * as bilskyEsccV604 from '../../lib/bilsky-escc-v604.js';
 import * as harringtonAcetabularV605 from '../../lib/harrington-acetabular-v605.js';
 import * as katagiriV606 from '../../lib/katagiri-v606.js';
+import * as sartoriusHsV607 from '../../lib/sartorius-hs-v607.js';
 import * as tbTesting from '../../lib/tb-testing.js';
 
 const MODULES = {
@@ -1107,6 +1108,7 @@ const MODULES = {
   'bilsky-escc-v604.js': bilskyEsccV604,
   'harrington-acetabular-v605.js': harringtonAcetabularV605,
   'katagiri-v606.js': katagiriV606,
+  'sartorius-hs-v607.js': sartoriusHsV607,
   'tb-testing.js': tbTesting,
 };
 
