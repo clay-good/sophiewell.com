@@ -569,6 +569,7 @@ import * as heffnerV591 from '../../lib/heffner-v591.js';
 import * as amsterdamIiV592 from '../../lib/amsterdam-ii-v592.js';
 import * as bethesdaV593 from '../../lib/bethesda-v593.js';
 import * as arcHbrV594 from '../../lib/arc-hbr-v594.js';
+import * as acefV595 from '../../lib/acef-v595.js';
 import * as tbTesting from '../../lib/tb-testing.js';
 
 const MODULES = {
@@ -1083,6 +1084,7 @@ const MODULES = {
   'amsterdam-ii-v592.js': amsterdamIiV592,
   'bethesda-v593.js': bethesdaV593,
   'arc-hbr-v594.js': arcHbrV594,
+  'acef-v595.js': acefV595,
   'tb-testing.js': tbTesting,
 };
 

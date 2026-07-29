@@ -772,6 +772,8 @@
     { "phrases": ["bethesda guidelines", "revised bethesda", "msi testing criteria", "microsatellite instability testing"],
       "tile": "bethesda", "audience": "clinicians" },
     { "phrases": ["arc hbr", "high bleeding risk", "arc high bleeding risk", "bleeding risk pci"],
-      "tile": "arc-hbr", "audience": "clinicians" }
+      "tile": "arc-hbr", "audience": "clinicians" },
+    { "phrases": ["acef score", "acef ii", "age creatinine ejection fraction", "cardiac surgery risk score"],
+      "tile": "acef", "audience": "clinicians" }
   ]
 }

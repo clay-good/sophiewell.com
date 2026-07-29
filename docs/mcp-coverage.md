@@ -1574,6 +1574,37 @@ Brings the exposed total to **1314 calculators across 430 modules**.
 ### lib/wayne-index-v527.js
 - `wayne-index`
 
+## Four-hundred-and-twentieth wave — ACEF and ACEF II in lib/acef-v595.js (+1)
+
+`acef` (spec-v595) returns both the ACEF and ACEF II cardiac-surgery mortality risk scores from the same
+inputs. The catalog carried perioperative cardiac risk instruments and had neither version; every slug
+spelling and filename search returned zero.
+
+**This is a ratio, not a sum of points.** The backbone is **age divided by ejection fraction** — a
+dimensionless quantity — with absolute numbers bolted on. There is **no maximum score** and no point
+ceiling, so the usual "x of y" framing does not apply and the tile reports no maximum.
+
+**Ejection fraction is a denominator, so the score is nonlinear in it.** Halving the ejection fraction
+**doubles** the score: at age 70, an EF of 30 gives 2.33 against 1.17 for an EF of 60. No additive score
+behaves this way, and a test pins the exact doubling before rounding.
+
+**The creatinine weight doubles between the versions** — 1 point in the original, 2 in ACEF II — so a value
+cannot be carried between them. And **one reproduction of the original prints the operator differently**:
+"2.0 mg/dL or more" against "above 2.0", differing only at exactly 2.0. ACEF II is consistently "above", so
+that operator is applied to both; `atCreatinineOperatorBoundary` fires at exactly 2.0 and the result states
+what the other rendering would give.
+
+**The hematocrit term is continuous and one-sided** — 0.2 for *each* point below 36, and nothing above it.
+It is not a threshold flag: a hematocrit of 26 adds 2.0, as much as the creatinine term, and a test asserts
+that equality. **The original was derived in elective surgery and has no emergency term**, while ACEF II adds
+emergency surgery as its largest single add-on, so an emergency case sets `acefOutsideDerivation` and the
+ACEF value is flagged as outside the setting it was built for. New adapter module registered in
+`mcp/catalog.js`; its golden probe ("acef score cardiac surgery mortality risk") is promoted now that the
+tile is in the MCP-exposed registry. Brings the exposed total to **1382 calculators across 498 modules**.
+
+### lib/acef-v595.js
+- `acef`
+
 ## Four-hundred-and-nineteenth wave — the ARC-HBR criteria in lib/arc-hbr-v594.js (+1)
 
 `arc-hbr` (spec-v594) applies the Academic Research Consortium definition of high bleeding risk after
@@ -8895,6 +8926,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/arc-hbr-v594.js
 - `arc-hbr`
+
+### lib/acef-v595.js
+- `acef`
 
 ### lib/tb-testing.js
 - `tb-testing`

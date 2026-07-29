@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `023fabe302689d08`
-Generated: 2026-07-29T13:07:56.264Z
+Build ID: `cead22c3c5296458`
+Generated: 2026-07-29T13:24:25.325Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=20.18.1 <21, npm >=10.0.0
@@ -24,13 +24,13 @@ downloads is committed in this repository and is hashed below.
 
 | Path | Bytes | SHA-256 |
 |---|---:|---|
-| `index.html` | 94930 | `954b0b1607e33f3ee25b901710f047330dc206c44947606be6cfd5436e9a8331` |
+| `index.html` | 94995 | `5383a18a77df5939671d70b8c49c5908e04cc28705df42f44027caa9542c23d0` |
 | `styles.css` | 44160 | `a2cc7ad7bae9f7cfc9681d80bc6bd4a58f0b07d47bfcff64897dc04929c12333` |
-| `app.js` | 386007 | `b413252111a0b4aac8bdb3b347a19cffbf61c379de48d3ea89d7b93b99a3d051` |
+| `app.js` | 386242 | `6558500df0624bb44dc6710bb2ea2f215396eed13e838d39c39b2570ddace844` |
 | `sw.js` | 4622 | `b891d4344f8e04403b7f1d307fd446cc224bddc6f0c4397438a17d197351171e` |
 | `site.webmanifest` | 709 | `0e0de4da60590a12e8b27a0ae2a2f5ffdb6500b7d2b78f93631ec2f64ed3d5ce` |
 | `robots.txt` | 127 | `38fbf9c1854e72abb20e01e81dd5a31d4ea96f154c12d5db1ec3af05524dd1a1` |
-| `sitemap.xml` | 221502 | `5259739d0a2e65bc3877e80b3adb676bd49d79e6ea1acc026b318e6fdfc6e095` |
+| `sitemap.xml` | 221646 | `b49956948e01fab2d80f051eafe81ef31a1d447e65632a4b42ffc43f071f27a4` |
 | `_headers` | 1316 | `2f39986457d2feff7e73e491a7d09ee871e8f2f4cc2bc437f86bd86a42554ec6` |
 | `logo.png` | 63440 | `11afaf1b0d3ca68393d202e4810bf766b5b6d591b4e3ec52f41d3cacaa4616ec` |
 | `favicon.ico` | 7411 | `407fde0ca2788409e87e11f596fa02e6a0b121817fcea7fd995beec1801e287b` |
@@ -43,6 +43,7 @@ downloads is committed in this repository and is hashed below.
 | Path | Bytes | SHA-256 |
 |---|---:|---|
 | `lib/ablett-tetanus-v576.js` | 11571 | `55c0a29b6ed65dab28caa723322ce513f4017217113429dbfd926bd8fdc8f0af` |
+| `lib/acef-v595.js` | 11727 | `7f6eb09e8e47d18db22b488a037178a3a3af2cdf20a71e56fccbe0af0454d45a` |
 | `lib/acidbase-v129.js` | 15449 | `7356c25e7883a3b36053121ef8fcb53dd59b0ecb90dc68039083aa3c69028934` |
 | `lib/acs-v193.js` | 15400 | `219926127d8100963f60bd083fb4a77fa33e1f806b7d581dc78dea821b819d52` |
 | `lib/acute-abdomen-v261.js` | 10676 | `0c0f7358da57d87ace5ee151a3c599f3e5a4232aaf92da7009bff01ac00fd5d4` |
@@ -325,7 +326,7 @@ downloads is committed in this repository and is hashed below.
 | `lib/medication-v4.js` | 18192 | `467f9576c50da696cc56094eb022d0a5ed1e88de0c7618448554ede8067270b0` |
 | `lib/medication-v5.js` | 18863 | `ce81d9f8954abbd412892c13af9936f992239164f26fd2b999eaea7902787ab7` |
 | `lib/mest-c-v528.js` | 9310 | `e33f178c339338f62c47b6a19d50d345d38be3b05d9a33e7d2703e0a99ae3a69` |
-| `lib/meta.js` | 1984168 | `a7c6e8fab0eb3d8006714179a7fe99d405edd21f2cf711ccaec1d8127e47a911` |
+| `lib/meta.js` | 1986185 | `c709d6e95a1829279f56a4bb4666cf798d30e1c7e93537e2daba1d6ddba81564` |
 | `lib/metabolic-hepatic-v219.js` | 12791 | `b9352877cebf7fbf3c3b99ecb8b72cdbee3ed94e056dc019113668609f5a95a8` |
 | `lib/metabolic-onc-v88.js` | 12659 | `1553b641668c121661a66647da71a4aaaa023e9f3a6b7a753efbcdab27cdba81` |
 | `lib/metabolic-v269.js` | 3262 | `0c7a42557886f2b0aeee7949b8d0bd682d795d4526174fd540717a978d94ec2f` |
@@ -1087,6 +1088,7 @@ downloads is committed in this repository and is hashed below.
 | `views/group-v592.js` | 3881 | `67a1d798c2e6e623a43f054fecee4edb267dd057cf6625cdb007edf5c25b3f46` |
 | `views/group-v593.js` | 3368 | `cee0e7ee2ee628a1df7891d4e743da23d71fe0e8538f9a7460411d8d2edb45fb` |
 | `views/group-v594.js` | 5261 | `fb3296420cbe1321da893195ed95bc2c6cfcdd34f777e8886f70c10acc3dbfa6` |
+| `views/group-v595.js` | 4124 | `153ca2f5807ef04ab6f4e8c1bd56710773168447dde5f5e7852840ef24f5cae9` |
 | `views/group-v6.js` | 5707 | `425918decb48cd9efac9fc5590ac8970a54c03c3b0df056fb99c9a22ff8dd1b2` |
 | `views/group-v63.js` | 14377 | `962d84b97e82bc39635801da79ecaa93fc0b501b5988b7d321b0f1f630497fab` |
 | `views/group-v7.js` | 15113 | `d480a5b34adfd035507dd4313e12462c47c949aeee155b253c8a2f9596839d05` |
