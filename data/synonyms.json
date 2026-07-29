@@ -780,6 +780,8 @@
     { "phrases": ["panc 3", "panc3 score", "pancreatitis admission severity", "severe pancreatitis prediction"],
       "tile": "panc3", "audience": "clinicians" },
     { "phrases": ["jta criteria", "japan thyroid association", "thyroid storm criteria", "ts1 ts2 thyroid storm"],
-      "tile": "jta-thyroid-storm", "audience": "clinicians" }
+      "tile": "jta-thyroid-storm", "audience": "clinicians" },
+    { "phrases": ["myxedema coma", "myxoedema coma", "hypothyroid emergency", "myxedema coma score"],
+      "tile": "myxedema-coma", "audience": "clinicians" }
   ]
 }

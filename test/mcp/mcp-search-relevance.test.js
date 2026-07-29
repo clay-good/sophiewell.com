@@ -631,6 +631,7 @@ const PROBES = [
   ['lepine criteria pleural exudate cholesterol', ['lepine']],
   ['panc 3 score severe acute pancreatitis admission', ['panc3']],
   ['jta criteria thyroid storm ts1 ts2', ['jta-thyroid-storm']],
+  ['myxedema coma diagnostic score', ['myxedema-coma']],
 ];
 
 test(`every golden probe routes an acceptable tile into the top ${TOP_N}`, () => {

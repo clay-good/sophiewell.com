@@ -1574,6 +1574,39 @@ Brings the exposed total to **1314 calculators across 430 modules**.
 ### lib/wayne-index-v527.js
 - `wayne-index`
 
+## Four-hundred-and-twenty-fourth wave — the myxedema coma score in lib/myxedema-coma-v599.js (+1)
+
+`myxedema-coma` (spec-v599) scores the hypothyroid emergency. An **axis companion** to the two thyroid-storm
+tiles — `burch-wartofsky` and `jta-thyroid-storm`, the latter shipped one wave earlier: those grade the
+*hyper*thyroid emergency, and the *hypo*thyroid one had nothing.
+
+**Two categories are additive sub-checklists and the rest are single graded picks.** Temperature, CNS effects,
+gastrointestinal findings and bradycardia are ladders where exactly one option counts. But the cardiovascular
+category adds its graded bradycardia pick **to** five independent items, and every metabolic item adds
+independently — so **the cardiovascular category alone can contribute 100 points, more than the entire
+diagnostic threshold**. Treating either block as a ladder under-scores massively, and tests accumulate each
+block item by item to pin the additive behaviour.
+
+**A patient can cross the threshold on non-specific derangement alone.** The five metabolic items —
+hyponatremia, hypoglycemia, hypoxemia, hypercarbia, reduced GFR — total 50, and *none* is specific to
+hypothyroidism; they occur in most critically ill patients. Those five plus a precipitating event total
+**exactly 60**, the diagnostic threshold, and a test asserts that equality. The result reports
+`nonSpecificSharePercent` so the composition of a total is visible.
+
+**The diagnostic threshold is agreed at 60 but the middle band's lower edge is not.** The widely reproduced
+adapted table gives 25–59 as "supportive" and under 25 as "unlikely"; the primary's own abstract gives 45–59
+as "at risk". **A score of 30 is "supportive" under one rendering and "unlikely" under the other** —
+`bandsDisagree` fires across that whole interval rather than the tile picking silently.
+
+**The threshold is only about a quarter of the 230-point maximum** — it sounds like a high bar and is not
+one. And **it was derived in twenty-one patients** (14 cases, 7 controls), so the quoted 100% sensitivity and
+85.7% specificity are stated as fragile rather than settled. New adapter module registered in
+`mcp/catalog.js`; its golden probe ("myxedema coma diagnostic score") is promoted now that the tile is in the
+MCP-exposed registry. Brings the exposed total to **1386 calculators across 502 modules**.
+
+### lib/myxedema-coma-v599.js
+- `myxedema-coma`
+
 ## Four-hundred-and-twenty-third wave — the JTA thyroid-storm criteria in lib/jta-thyroid-storm-v598.js (+1)
 
 `jta-thyroid-storm` (spec-v598) applies the Japan Thyroid Association diagnostic criteria for thyroid storm.
@@ -9032,6 +9065,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/jta-thyroid-storm-v598.js
 - `jta-thyroid-storm`
+
+### lib/myxedema-coma-v599.js
+- `myxedema-coma`
 
 ### lib/tb-testing.js
 - `tb-testing`
