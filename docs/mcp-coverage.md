@@ -1574,6 +1574,42 @@ Brings the exposed total to **1314 calculators across 430 modules**.
 ### lib/wayne-index-v527.js
 - `wayne-index`
 
+## Four-hundred-and-eleventh wave — the up-to-seven criteria in lib/up-to-seven-v586.js (+1)
+
+`up-to-seven` (spec-v586) applies the up-to-seven (Metroticket) criteria for liver transplantation in
+hepatocellular carcinoma. A **cluster-completion gap the catalog had documented against itself**:
+`milan-criteria` has shipped since spec-v93, and its own note says the criterion it reports "is not a listing
+decision (MELD allocation, downstaging, UCSF/extended criteria and center policy all apply)". The extended
+criteria it pointed at were not in the catalog.
+
+**The criterion is conditional on something that cannot be measured when the decision is made.** Up-to-seven
+as published applies "in the absence of microvascular invasion" — and **microvascular invasion cannot be
+assessed before transplant**: imaging shows only *gross* vascular invasion, and biopsy cannot exclude it
+because of sampling bias. The published 71.2% five-year survival therefore describes patients who turned out
+*on the explant* not to have had it. Applied prospectively, the criterion rests on a condition nobody can
+verify at the time of the decision. The tile asks only what is knowable before transplant and states the gap
+rather than accepting "no microvascular invasion" as a satisfied input.
+
+**"Seven" is a sum of two different kinds of thing** — the largest tumor's size *in centimeters* plus the
+*number* of tumors. That is dimensionally odd on purpose: it is an exchange rate between size and number
+rather than a limit on either, so one 6 cm tumor (6 + 1) and four 3 cm tumors (3 + 4) sit at exactly the same
+boundary, and a test asserts they do.
+
+**Only the largest tumor's size enters the sum.** Every other tumor contributes 1 by being counted, however
+large it is — three tumors of 4.9, 4.8 and 4.7 cm score identically to three of 4.9, 0.5 and 0.5 cm. Total
+tumor burden is not what this measures, and the tile does not even accept the other diameters.
+
+**Milan is fully contained within up-to-seven**, so up-to-seven can only *add* candidates, never remove them.
+That containment is asserted **by enumeration** over every Milan-eligible size-and-count combination rather
+than stated. And **UCSF is deliberately not computed**: its published renderings diverge on whether the
+nodule limit is two or three and on whether the size thresholds are strict or inclusive, so under the
+spec-v97 gate the divergent cell is reported rather than guessed. New adapter module registered in
+`mcp/catalog.js`; its golden probe ("up to seven criteria hcc liver transplant") is promoted now that the
+tile is in the MCP-exposed registry. Brings the exposed total to **1373 calculators across 489 modules**.
+
+### lib/up-to-seven-v586.js
+- `up-to-seven`
+
 ## Four-hundred-and-tenth wave — the updated RUCAM in lib/rucam-v585.js (+1)
 
 `rucam` (spec-v585) grades the probability that a particular drug or herb caused an episode of liver injury.
@@ -8561,6 +8597,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/rucam-v585.js
 - `rucam`
+
+### lib/up-to-seven-v586.js
+- `up-to-seven`
 
 ### lib/tb-testing.js
 - `tb-testing`

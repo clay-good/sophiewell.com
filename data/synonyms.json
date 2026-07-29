@@ -754,6 +754,8 @@
     { "phrases": ["ebmt score", "ebmt risk score", "gratwohl score", "transplant risk score"],
       "tile": "ebmt-score", "audience": "clinicians" },
     { "phrases": ["rucam", "drug induced liver injury causality", "dili causality", "r ratio liver injury"],
-      "tile": "rucam", "audience": "clinicians" }
+      "tile": "rucam", "audience": "clinicians" },
+    { "phrases": ["up to seven", "up-to-seven criteria", "metroticket", "extended hcc transplant criteria"],
+      "tile": "up-to-seven", "audience": "clinicians" }
   ]
 }

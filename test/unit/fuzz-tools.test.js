@@ -560,6 +560,7 @@ import * as hlh2004V582 from '../../lib/hlh-2004-v582.js';
 import * as nacAttrStageV583 from '../../lib/nac-attr-stage-v583.js';
 import * as ebmtScoreV584 from '../../lib/ebmt-score-v584.js';
 import * as rucamV585 from '../../lib/rucam-v585.js';
+import * as upToSevenV586 from '../../lib/up-to-seven-v586.js';
 import * as tbTesting from '../../lib/tb-testing.js';
 
 const MODULES = {
@@ -1065,6 +1066,7 @@ const MODULES = {
   'nac-attr-stage-v583.js': nacAttrStageV583,
   'ebmt-score-v584.js': ebmtScoreV584,
   'rucam-v585.js': rucamV585,
+  'up-to-seven-v586.js': upToSevenV586,
   'tb-testing.js': tbTesting,
 };
 

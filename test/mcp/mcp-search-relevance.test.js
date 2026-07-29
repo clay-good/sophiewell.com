@@ -618,6 +618,7 @@ const PROBES = [
   ['nac gillmore stage transthyretin cardiac amyloidosis', ['nac-attr-stage']],
   ['ebmt risk score allogeneic stem cell transplant', ['ebmt-score']],
   ['rucam drug induced liver injury causality', ['rucam']],
+  ['up to seven criteria hcc liver transplant', ['up-to-seven']],
 ];
 
 test(`every golden probe routes an acceptable tile into the top ${TOP_N}`, () => {
