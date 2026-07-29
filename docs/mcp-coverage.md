@@ -1574,6 +1574,44 @@ Brings the exposed total to **1314 calculators across 430 modules**.
 ### lib/wayne-index-v527.js
 - `wayne-index`
 
+## Four-hundred-and-eighteenth wave — the revised Bethesda guidelines in lib/bethesda-v593.js (+1)
+
+`bethesda` (spec-v593) identifies colorectal tumors that should be tested for microsatellite instability. A
+**companion with deliberately inverted logic** to `amsterdam-ii`, shipped one wave earlier: Amsterdam II is
+an **AND of six** requirements a family must all satisfy; Bethesda is an **OR of five** of which **any one**
+triggers testing. They were written to catch the families Amsterdam II misses, and running one without the
+other is the commonest way a Lynch family is lost.
+
+**The tumor spectrum is far broader, and that is the point.** Amsterdam II counts five cancers; the Bethesda
+spectrum adds stomach, ovarian, pancreas, biliary tract, brain and sebaceous lesions. **A family whose
+cancers are gastric and ovarian fails Amsterdam II on spectrum alone and still triggers Bethesda** — the two
+tiles will disagree for exactly that family, and a test asserts the spectrum containment that makes it
+happen. That disagreement is correct, not a bug.
+
+**There are three different age rules in five criteria, and two criteria have none** — under 50, under 60,
+one cancer under 50, and *regardless of age* for criteria 2 and 5. Each criterion carries its own age rule
+inline in the tile, because carrying one threshold across the set is the easiest way to get this wrong.
+
+**The 60-year threshold was settled by a vote, not by data.** The revision's own account records that there
+was no consensus on whether to include an age criterion at all, and that the participants voted to keep "less
+than 60 years". The tile reports it as a convention, and only when that criterion actually fires.
+
+**Criterion 3 uses a pathologist's impression of MSI to decide whether to test for MSI** — "MSI-H histology"
+is a morphological judgment, not a laboratory result, so it is a screening step for the screening test. And
+**adjacent criteria use different degrees of relative**: criterion 4 is first-degree only, criterion 5 is
+first- *or second*-degree.
+
+**Sourcing note (spec-v97):** two renderings disagreed on three cells — whether criterion 1 includes
+endometrial cancer, whether criterion 3 carries the under-60 limit, and whether criterion 5 admits
+second-degree relatives. A third source, which records the vote and quotes criterion 5 as "first- or
+second-degree", resolved all three in favour of the verbatim 2004 text; the dissenting rendering was a
+modernized paraphrase, not a competing account of the same text. New adapter module registered in
+`mcp/catalog.js`; its golden probe ("revised bethesda guidelines msi testing") is promoted now that the tile
+is in the MCP-exposed registry. Brings the exposed total to **1380 calculators across 496 modules**.
+
+### lib/bethesda-v593.js
+- `bethesda`
+
 ## Four-hundred-and-seventeenth wave — the Amsterdam II criteria in lib/amsterdam-ii-v592.js (+1)
 
 `amsterdam-ii` (spec-v592) applies the Amsterdam II criteria for Lynch syndrome. The catalog carried breast
@@ -8816,6 +8854,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/amsterdam-ii-v592.js
 - `amsterdam-ii`
+
+### lib/bethesda-v593.js
+- `bethesda`
 
 ### lib/tb-testing.js
 - `tb-testing`

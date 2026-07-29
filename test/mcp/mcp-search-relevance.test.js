@@ -625,6 +625,7 @@ const PROBES = [
   ['five factor score 1996 vasculitis prognosis', ['ffs-1996']],
   ['heffner criteria pleural exudate without serum', ['heffner']],
   ['amsterdam ii criteria lynch syndrome', ['amsterdam-ii']],
+  ['revised bethesda guidelines msi testing', ['bethesda']],
 ];
 
 test(`every golden probe routes an acceptable tile into the top ${TOP_N}`, () => {

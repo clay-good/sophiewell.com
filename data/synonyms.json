@@ -768,6 +768,8 @@
     { "phrases": ["heffner criteria", "abbreviated lights criteria", "pleural exudate without serum", "pleural fluid cholesterol"],
       "tile": "heffner", "audience": "clinicians" },
     { "phrases": ["amsterdam criteria", "amsterdam ii", "lynch syndrome criteria", "hnpcc criteria"],
-      "tile": "amsterdam-ii", "audience": "clinicians" }
+      "tile": "amsterdam-ii", "audience": "clinicians" },
+    { "phrases": ["bethesda guidelines", "revised bethesda", "msi testing criteria", "microsatellite instability testing"],
+      "tile": "bethesda", "audience": "clinicians" }
   ]
 }
