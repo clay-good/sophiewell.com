@@ -1574,6 +1574,41 @@ Brings the exposed total to **1314 calculators across 430 modules**.
 ### lib/wayne-index-v527.js
 - `wayne-index`
 
+## Four-hundred-and-nineteenth wave — the ARC-HBR criteria in lib/arc-hbr-v594.js (+1)
+
+`arc-hbr` (spec-v594) applies the Academic Research Consortium definition of high bleeding risk after
+percutaneous coronary intervention. The catalog carried bleeding-risk *scores* (`crusade`, `dapt-score`,
+`mehran-cin`) and had no ARC-HBR *definition*.
+
+**The rule is one major or two minor, and a widely used online calculator states it as "at least one
+major".** Two minor criteria are worth one major, so a patient with minor criteria alone and no major
+criterion **is** at high bleeding risk — and any implementation that only looks for a major criterion reports
+that patient as not at risk. `qualifiesOnMinorsAlone` marks exactly those patients, and the warning fires
+only for them.
+
+**The same variable appears as both major and minor at different values, so these are not twenty independent
+boxes.** Anemia, kidney function, prior bleeding and prior stroke are **banded**: a hemoglobin of 10 is
+major, a hemoglobin of 12 in a man is minor, and the same patient cannot be both. Each is asked **once** and
+its tier derived, which makes the usual double-counting impossible by construction — tests assert each banded
+variable never appears in both lists.
+
+**The anemia minor band is sex-split and the major band is not.** Under 11 g/dL is major for everyone; the
+minor band is 11–12.9 for men and 11–11.9 for women. So a hemoglobin of 12.0 is a minor criterion in a man
+and **no criterion at all** in a woman — asserted directly.
+
+**There are six different timing windows** — 6 months, 6–12 months, 12 months, any time, 30 days — including
+the asymmetry that *spontaneous* intracranial hemorrhage counts at any time while *traumatic* counts only
+within 12 months. Carrying one window across the set is the commonest error.
+
+**It is a definition, not a score.** No points, no ranking: it targets an absolute risk of BARC 3–5 bleeding
+at or above 4%, or intracranial hemorrhage at or above 1%, at one year. The criteria counts are returned as
+provenance for the verdict, never as a severity measure. New adapter module registered in `mcp/catalog.js`;
+its golden probe ("arc hbr high bleeding risk criteria pci") is promoted now that the tile is in the
+MCP-exposed registry. Brings the exposed total to **1381 calculators across 497 modules**.
+
+### lib/arc-hbr-v594.js
+- `arc-hbr`
+
 ## Four-hundred-and-eighteenth wave — the revised Bethesda guidelines in lib/bethesda-v593.js (+1)
 
 `bethesda` (spec-v593) identifies colorectal tumors that should be tested for microsatellite instability. A
@@ -8857,6 +8892,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/bethesda-v593.js
 - `bethesda`
+
+### lib/arc-hbr-v594.js
+- `arc-hbr`
 
 ### lib/tb-testing.js
 - `tb-testing`

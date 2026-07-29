@@ -770,6 +770,8 @@
     { "phrases": ["amsterdam criteria", "amsterdam ii", "lynch syndrome criteria", "hnpcc criteria"],
       "tile": "amsterdam-ii", "audience": "clinicians" },
     { "phrases": ["bethesda guidelines", "revised bethesda", "msi testing criteria", "microsatellite instability testing"],
-      "tile": "bethesda", "audience": "clinicians" }
+      "tile": "bethesda", "audience": "clinicians" },
+    { "phrases": ["arc hbr", "high bleeding risk", "arc high bleeding risk", "bleeding risk pci"],
+      "tile": "arc-hbr", "audience": "clinicians" }
   ]
 }

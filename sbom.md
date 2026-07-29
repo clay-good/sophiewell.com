@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `bec56424eef68e60`
-Generated: 2026-07-29T06:45:26.602Z
+Build ID: `023fabe302689d08`
+Generated: 2026-07-29T13:07:56.264Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=20.18.1 <21, npm >=10.0.0
@@ -24,13 +24,13 @@ downloads is committed in this repository and is hashed below.
 
 | Path | Bytes | SHA-256 |
 |---|---:|---|
-| `index.html` | 94867 | `8d66b5aa63db0e8a16d58be8caa2636d31e9d689631fda3956487f3fc9d7de49` |
+| `index.html` | 94930 | `954b0b1607e33f3ee25b901710f047330dc206c44947606be6cfd5436e9a8331` |
 | `styles.css` | 44160 | `a2cc7ad7bae9f7cfc9681d80bc6bd4a58f0b07d47bfcff64897dc04929c12333` |
-| `app.js` | 385774 | `6b2eca61ad535d64ac259666440901860a56ed822a2318165d36aed6d43dd16a` |
+| `app.js` | 386007 | `b413252111a0b4aac8bdb3b347a19cffbf61c379de48d3ea89d7b93b99a3d051` |
 | `sw.js` | 4622 | `b891d4344f8e04403b7f1d307fd446cc224bddc6f0c4397438a17d197351171e` |
 | `site.webmanifest` | 709 | `0e0de4da60590a12e8b27a0ae2a2f5ffdb6500b7d2b78f93631ec2f64ed3d5ce` |
 | `robots.txt` | 127 | `38fbf9c1854e72abb20e01e81dd5a31d4ea96f154c12d5db1ec3af05524dd1a1` |
-| `sitemap.xml` | 221355 | `88bbcd2ebc3a0ac39c4c83323182dda1a10f70ff58fc48b598eb72aec5943f06` |
+| `sitemap.xml` | 221502 | `5259739d0a2e65bc3877e80b3adb676bd49d79e6ea1acc026b318e6fdfc6e095` |
 | `_headers` | 1316 | `2f39986457d2feff7e73e491a7d09ee871e8f2f4cc2bc437f86bd86a42554ec6` |
 | `logo.png` | 63440 | `11afaf1b0d3ca68393d202e4810bf766b5b6d591b4e3ec52f41d3cacaa4616ec` |
 | `favicon.ico` | 7411 | `407fde0ca2788409e87e11f596fa02e6a0b121817fcea7fd995beec1801e287b` |
@@ -57,6 +57,7 @@ downloads is committed in this repository and is hashed below.
 | `lib/anderson-montesano-v447.js` | 3265 | `5bbf21950c01668ad58c463249a23c6672b4246aa8c06279981f6129445d58ac` |
 | `lib/anthro-v238.js` | 7554 | `ab4ac8a758bfa2c72f22a29bf3df91b2e5d49991a9d8e2fc4f5343a6428c3512` |
 | `lib/anthro-v272.js` | 2988 | `0c8ae06f40b6747996c3069ca3eed48dd37fcb32d0b211bee0ada6ec113c1f53` |
+| `lib/arc-hbr-v594.js` | 16008 | `88c72c385e4018fc0d2cddba66606c2f136b52091d4f7e2b4f9dfc656fcdb7f9` |
 | `lib/asrs-v513.js` | 5206 | `1c7faaf0acea6f85228c21aa97496ad212e0f623e9364b1c33e68c4143fe7bf9` |
 | `lib/asthma-control-test-v516.js` | 5938 | `79ba0008f697e922671adecf105ab73e3f4bc1526c354027eabe3b3f48ea366a` |
 | `lib/atlanta-pancreatitis-v445.js` | 3620 | `1eb1382cc11cc7b3a42e54ab14143721e30ac6b41de03bec5362d29e17d85bf3` |
@@ -324,7 +325,7 @@ downloads is committed in this repository and is hashed below.
 | `lib/medication-v4.js` | 18192 | `467f9576c50da696cc56094eb022d0a5ed1e88de0c7618448554ede8067270b0` |
 | `lib/medication-v5.js` | 18863 | `ce81d9f8954abbd412892c13af9936f992239164f26fd2b999eaea7902787ab7` |
 | `lib/mest-c-v528.js` | 9310 | `e33f178c339338f62c47b6a19d50d345d38be3b05d9a33e7d2703e0a99ae3a69` |
-| `lib/meta.js` | 1981474 | `a97e866fa075c462edd0a51ef7e61afc736a58f7b75de8c421940a5cb317174a` |
+| `lib/meta.js` | 1984168 | `a7c6e8fab0eb3d8006714179a7fe99d405edd21f2cf711ccaec1d8127e47a911` |
 | `lib/metabolic-hepatic-v219.js` | 12791 | `b9352877cebf7fbf3c3b99ecb8b72cdbee3ed94e056dc019113668609f5a95a8` |
 | `lib/metabolic-onc-v88.js` | 12659 | `1553b641668c121661a66647da71a4aaaa023e9f3a6b7a753efbcdab27cdba81` |
 | `lib/metabolic-v269.js` | 3262 | `0c7a42557886f2b0aeee7949b8d0bd682d795d4526174fd540717a978d94ec2f` |
@@ -1085,6 +1086,7 @@ downloads is committed in this repository and is hashed below.
 | `views/group-v591.js` | 3702 | `85364898508bbb28d287f0bcf3c886817db5e262dd7260681e216717d5daa0c8` |
 | `views/group-v592.js` | 3881 | `67a1d798c2e6e623a43f054fecee4edb267dd057cf6625cdb007edf5c25b3f46` |
 | `views/group-v593.js` | 3368 | `cee0e7ee2ee628a1df7891d4e743da23d71fe0e8538f9a7460411d8d2edb45fb` |
+| `views/group-v594.js` | 5261 | `fb3296420cbe1321da893195ed95bc2c6cfcdd34f777e8886f70c10acc3dbfa6` |
 | `views/group-v6.js` | 5707 | `425918decb48cd9efac9fc5590ac8970a54c03c3b0df056fb99c9a22ff8dd1b2` |
 | `views/group-v63.js` | 14377 | `962d84b97e82bc39635801da79ecaa93fc0b501b5988b7d321b0f1f630497fab` |
 | `views/group-v7.js` | 15113 | `d480a5b34adfd035507dd4313e12462c47c949aeee155b253c8a2f9596839d05` |

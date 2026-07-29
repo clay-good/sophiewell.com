@@ -504,6 +504,7 @@ import ffs1996V590 from './adapters/ffs-1996-v590.js';
 import heffnerV591 from './adapters/heffner-v591.js';
 import amsterdamIiV592 from './adapters/amsterdam-ii-v592.js';
 import bethesdaV593 from './adapters/bethesda-v593.js';
+import arcHbrV594 from './adapters/arc-hbr-v594.js';
 import tbTesting from './adapters/tb-testing.js';
 import labInterpret from './adapters/lab-interpret.js';
 import decisionRulesV258 from './adapters/decision-rules-v258.js';
@@ -1002,6 +1003,7 @@ const ADAPTER_MODULES = [
   ['heffner-v591', heffnerV591],
   ['amsterdam-ii-v592', amsterdamIiV592],
   ['bethesda-v593', bethesdaV593],
+  ['arc-hbr-v594', arcHbrV594],
   ['tb-testing', tbTesting],
   ['lab-interpret', labInterpret],
   ['decision-rules-v258', decisionRulesV258],

@@ -626,6 +626,7 @@ const PROBES = [
   ['heffner criteria pleural exudate without serum', ['heffner']],
   ['amsterdam ii criteria lynch syndrome', ['amsterdam-ii']],
   ['revised bethesda guidelines msi testing', ['bethesda']],
+  ['arc hbr high bleeding risk criteria pci', ['arc-hbr']],
 ];
 
 test(`every golden probe routes an acceptable tile into the top ${TOP_N}`, () => {
