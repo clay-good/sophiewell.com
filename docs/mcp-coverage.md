@@ -1574,6 +1574,40 @@ Brings the exposed total to **1314 calculators across 430 modules**.
 ### lib/wayne-index-v527.js
 - `wayne-index`
 
+## Four-hundred-and-ninth wave — the EBMT (Gratwohl) risk score in lib/ebmt-score-v584.js (+1)
+
+`ebmt-score` (spec-v584) sums five pre-transplant factors, 0-7, for allogeneic hematopoietic stem cell
+transplantation. A **companion gap**: the catalog already carried `hct-ci`, the Sorror comorbidity index,
+which scores the patient's *organ comorbidity*. The EBMT score scores the *disease and the transplant* — age,
+stage, timing, donor and sex direction. The two are complementary axes, routinely reported together, and only
+one was here.
+
+**One factor silently disappears.** The time-from-diagnosis item "does not apply for patients transplanted in
+first complete remission (score 0)". A first-CR patient scores 0 for timing *however long the interval was* —
+three years from diagnosis still scores 0 — so the **maximum reachable score in first CR is 6, not 7**, and a
+test asserts it. Reading the interval and scoring it unconditionally over-scores exactly the group with the
+best prognosis. The tile does not even ask for the interval in first CR.
+
+**The sex item is one-directional.** Only a **female donor into a male recipient** scores. Male donor into
+female recipient scores 0, as do both matched combinations. It is one asymmetric direction, not a "sex
+mismatch" item, and treating it as mismatch double-counts half the mismatched pairs.
+
+**The donor item has only two published categories** — HLA-identical sibling and unrelated donor. That is the
+whole item. **Haploidentical and cord-blood donors have no defined value** in a score that predates both as
+routine options; validation studies have applied it in those settings, but the score assigns them no
+category, so the tile refuses the input rather than inventing one, and says why.
+
+**A widely reproduced rendering of the timing threshold would leave a hole**: "<12 months = 0, >12 months =
+1" leaves an interval of exactly 12 months unclassified. The consistent partition — 12 or less = 0 — is used,
+and a test pins exactly 12 months at 0. Plus a disease-specific override hiding inside a generic-looking
+three-level item: **severe aplastic anemia always scores 0 for stage**, because the ladder is built from
+remission states it does not have. New adapter module registered in `mcp/catalog.js`; its golden probe
+("ebmt risk score allogeneic stem cell transplant") is promoted now that the tile is in the MCP-exposed
+registry. Brings the exposed total to **1371 calculators across 487 modules**.
+
+### lib/ebmt-score-v584.js
+- `ebmt-score`
+
 ## Four-hundred-and-eighth wave — the NAC / Gillmore ATTR stage in lib/nac-attr-stage-v583.js (+1)
 
 `nac-attr-stage` (spec-v583) returns the National Amyloidosis Centre stage for transthyretin cardiac
@@ -8480,6 +8514,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/nac-attr-stage-v583.js
 - `nac-attr-stage`
+
+### lib/ebmt-score-v584.js
+- `ebmt-score`
 
 ### lib/tb-testing.js
 - `tb-testing`

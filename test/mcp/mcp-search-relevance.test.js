@@ -616,6 +616,7 @@ const PROBES = [
   ['shanghai score brugada syndrome diagnosis', ['shanghai-brugada']],
   ['hlh 2004 diagnostic criteria hemophagocytic lymphohistiocytosis', ['hlh-2004']],
   ['nac gillmore stage transthyretin cardiac amyloidosis', ['nac-attr-stage']],
+  ['ebmt risk score allogeneic stem cell transplant', ['ebmt-score']],
 ];
 
 test(`every golden probe routes an acceptable tile into the top ${TOP_N}`, () => {
