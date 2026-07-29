@@ -1574,6 +1574,41 @@ Brings the exposed total to **1314 calculators across 430 modules**.
 ### lib/wayne-index-v527.js
 - `wayne-index`
 
+## Four-hundred-and-thirty-third wave — the Zulewski clinical score in lib/zulewski-v608.js (+1)
+
+`zulewski` (spec-v608) rates clinical suspicion of hypothyroidism from seven symptoms and five signs. A
+**predecessor/successor gap**: the items were "originally chosen by Billewicz", and this score re-derived
+which of them still discriminate — so it is that older index rebuilt, not an independent instrument.
+
+**The age correction is the finding, and most reproductions drop it.** One point is added when the patient
+is **under 55 years**. The consequence is concrete and the summary states it: a patient under 55 with **no
+clinical findings at all scores 1, not 0**, the age point is worth exactly as much as a delayed ankle
+reflex, and the true maximum is **13, not the 12 that item tables print**.
+
+**The split in the literature is exact and checkable.** The reproductions that print the twelve-item table
+state the maximum as 12 and never mention the correction; the sources that state the correction never print
+the item table. The two halves of this instrument are, in practice, published separately, and the adapter
+carries both.
+
+**The bands are set on the corrected score**, and the age point alone moves the band at *both* published
+boundaries — 2 to 3 and 5 to 6. So dropping the correction is a scoring error, not a rounding detail: it
+reads every patient under 55 one point too low, and a test pins both flips. The adapter returns
+`uncorrectedScore` and `uncorrectedBand` so the difference is visible rather than implied.
+
+**The three skin items are not the same question.** Dry skin is a patient-reported *symptom*; coarse skin is
+a *sign* felt on the hands, forearms and elbows; cold skin is a *sign* read against the examiner's own hands.
+Skin is a quarter of the instrument, and collapsing the three loses two of twelve points.
+
+**It does not correlate with TSH.** The score correlates with free T4 and free T3 but not with TSH, the gold
+standard for thyroid function testing — so a high score is a reason to *measure* TSH and never a substitute
+for it. Predictive values from validation cohorts are single-sourced and are not reported (spec-v97). New
+adapter module registered in `mcp/catalog.js`; its golden probe ("zulewski clinical score hypothyroidism")
+is promoted now that the tile is in the MCP-exposed registry. Brings the exposed total to **1395 calculators
+across 511 modules**.
+
+### lib/zulewski-v608.js
+- `zulewski`
+
 ## Four-hundred-and-thirty-second wave — the modified Sartorius score in lib/sartorius-hs-v607.js (+1)
 
 `sartorius-hs` (spec-v607) measures the extent of hidradenitis suppurativa. A **cluster-completion gap**:
@@ -9355,6 +9390,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/sartorius-hs-v607.js
 - `sartorius-hs`
+
+### lib/zulewski-v608.js
+- `zulewski`
 
 ### lib/tb-testing.js
 - `tb-testing`

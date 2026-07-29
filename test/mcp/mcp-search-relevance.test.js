@@ -640,6 +640,7 @@ const PROBES = [
   ['harrington classification periacetabular metastases', ['harrington-acetabular']],
   ['katagiri score skeletal metastasis survival', ['katagiri']],
   ['modified sartorius score hidradenitis', ['sartorius-hs']],
+  ['zulewski clinical score hypothyroidism', ['zulewski']],
 ];
 
 test(`every golden probe routes an acceptable tile into the top ${TOP_N}`, () => {
