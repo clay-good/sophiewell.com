@@ -583,6 +583,7 @@ import * as harringtonAcetabularV605 from '../../lib/harrington-acetabular-v605.
 import * as katagiriV606 from '../../lib/katagiri-v606.js';
 import * as sartoriusHsV607 from '../../lib/sartorius-hs-v607.js';
 import * as zulewskiV608 from '../../lib/zulewski-v608.js';
+import * as hijdraV609 from '../../lib/hijdra-v609.js';
 import * as tbTesting from '../../lib/tb-testing.js';
 
 const MODULES = {
@@ -1111,6 +1112,7 @@ const MODULES = {
   'katagiri-v606.js': katagiriV606,
   'sartorius-hs-v607.js': sartoriusHsV607,
   'zulewski-v608.js': zulewskiV608,
+  'hijdra-v609.js': hijdraV609,
   'tb-testing.js': tbTesting,
 };
 

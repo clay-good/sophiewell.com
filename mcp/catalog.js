@@ -519,6 +519,7 @@ import harringtonAcetabularV605 from './adapters/harrington-acetabular-v605.js';
 import katagiriV606 from './adapters/katagiri-v606.js';
 import sartoriusHsV607 from './adapters/sartorius-hs-v607.js';
 import zulewskiV608 from './adapters/zulewski-v608.js';
+import hijdraV609 from './adapters/hijdra-v609.js';
 import tbTesting from './adapters/tb-testing.js';
 import labInterpret from './adapters/lab-interpret.js';
 import decisionRulesV258 from './adapters/decision-rules-v258.js';
@@ -1032,6 +1033,7 @@ const ADAPTER_MODULES = [
   ['katagiri-v606', katagiriV606],
   ['sartorius-hs-v607', sartoriusHsV607],
   ['zulewski-v608', zulewskiV608],
+  ['hijdra-v609', hijdraV609],
   ['tb-testing', tbTesting],
   ['lab-interpret', labInterpret],
   ['decision-rules-v258', decisionRulesV258],

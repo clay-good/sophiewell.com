@@ -1574,6 +1574,45 @@ Brings the exposed total to **1314 calculators across 430 modules**.
 ### lib/wayne-index-v527.js
 - `wayne-index`
 
+## Four-hundred-and-thirty-fourth wave — the Hijdra sum score in lib/hijdra-v609.js (+1)
+
+`hijdra` (spec-v609) quantifies blood on the initial CT after subarachnoid hemorrhage. A
+**cluster-completion gap**: `fisher-grade`, `modified-fisher` and `ogilvy-carter` all ship, and the
+*quantitative* member of that family did not.
+
+**A near-miss worth recording: the "Claassen scale" is not a separate instrument — it *is* the modified
+Fisher scale**, which already ships as `modified-fisher`. It was dup-checked, sourced, and rejected before
+any file was written. A second eponym is not a second tile.
+
+**It is a sum across fourteen sites, not a grade.** Fisher and modified Fisher assign one ordinal category
+to the whole scan; this scores ten cisterns and fissures 0 to 3 each (0 to 30) and four ventricles 0 to 3
+each (0 to 12) and adds them, total 0 to 42. The summary says so, because reporting it as a grade is the
+obvious error.
+
+**The two halves use the same 0-to-3 range with different anchor definitions.** In a cistern, 1 is "a small
+amount of blood" and 2 is "moderately filled". In a ventricle, 1 is "sedimentation of blood in the posterior
+part" and 2 is "partly filled". A test pins that **only 0 and 3 mean the same thing in both halves** — and
+the two halves are still summed into one total. The adapter therefore carries two distinct field label sets
+rather than one shared wording.
+
+**Eight of the ten cisternal sites are paired, so there are only six named structures.** The interhemispheric
+fissure and the quadrigeminal cistern are scored once; the lateral part of the sylvian fissure, the basal
+part of the sylvian fissure, the suprasellar cistern and the ambient cistern are each scored *twice*, left
+and right. Scoring "the sylvian fissure" once silently halves four of the ten sites, and a test shows the
+lost points directly.
+
+**No severity band is returned** — the instrument has none, so `band` is always `null`. Study thresholds (19
+or below as a limited clot burden, 23 or above as predicting vasospasm) come from single studies rather than
+the instrument, so they are stated and not applied (spec-v97). And **which scale is best depends on which
+outcome**: modified Fisher led for vasospasm with an area under the curve of 0.78 against 0.68 and 0.62, but
+only this score correlated significantly with radiological delayed cerebral ischemia — the ranking flips
+between the two endpoints. New adapter module registered in `mcp/catalog.js`; its golden probe ("hijdra sum
+score subarachnoid blood") is promoted now that the tile is in the MCP-exposed registry. Brings the exposed
+total to **1396 calculators across 512 modules**.
+
+### lib/hijdra-v609.js
+- `hijdra`
+
 ## Four-hundred-and-thirty-third wave — the Zulewski clinical score in lib/zulewski-v608.js (+1)
 
 `zulewski` (spec-v608) rates clinical suspicion of hypothyroidism from seven symptoms and five signs. A
@@ -9393,6 +9432,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/zulewski-v608.js
 - `zulewski`
+
+### lib/hijdra-v609.js
+- `hijdra`
 
 ### lib/tb-testing.js
 - `tb-testing`
