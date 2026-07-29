@@ -752,6 +752,8 @@
     { "phrases": ["nac stage", "gillmore stage", "attr cardiac amyloidosis stage", "transthyretin amyloidosis staging"],
       "tile": "nac-attr-stage", "audience": "clinicians" },
     { "phrases": ["ebmt score", "ebmt risk score", "gratwohl score", "transplant risk score"],
-      "tile": "ebmt-score", "audience": "clinicians" }
+      "tile": "ebmt-score", "audience": "clinicians" },
+    { "phrases": ["rucam", "drug induced liver injury causality", "dili causality", "r ratio liver injury"],
+      "tile": "rucam", "audience": "clinicians" }
   ]
 }

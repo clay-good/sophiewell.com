@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `399f36e71ea42c86`
-Generated: 2026-07-28T23:59:12.129Z
+Build ID: `bc62d7b427082bf0`
+Generated: 2026-07-29T00:46:36.873Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=20.18.1 <21, npm >=10.0.0
@@ -24,13 +24,13 @@ downloads is committed in this repository and is hashed below.
 
 | Path | Bytes | SHA-256 |
 |---|---:|---|
-| `index.html` | 94308 | `74939920c9e2aab3b3614757107c4b38c834ac6f26df31481caea3fe169a96c4` |
+| `index.html` | 94377 | `a56676d5680d591998036aefe6d5dac0adbf6b7b34d7bf9b1935c05d1b21b7be` |
 | `styles.css` | 44160 | `a2cc7ad7bae9f7cfc9681d80bc6bd4a58f0b07d47bfcff64897dc04929c12333` |
-| `app.js` | 383685 | `4e99695aa2e8692b9207b9433b9fba9cb598a1d194ba02795d4127f96f03a176` |
+| `app.js` | 383924 | `186344437810f4689623ee3c62615bc1a16092d6233414f5d1b088595cf19a50` |
 | `sw.js` | 4622 | `b891d4344f8e04403b7f1d307fd446cc224bddc6f0c4397438a17d197351171e` |
 | `site.webmanifest` | 709 | `0e0de4da60590a12e8b27a0ae2a2f5ffdb6500b7d2b78f93631ec2f64ed3d5ce` |
 | `robots.txt` | 127 | `38fbf9c1854e72abb20e01e81dd5a31d4ea96f154c12d5db1ec3af05524dd1a1` |
-| `sitemap.xml` | 220019 | `f8c2da416839bbb75c53609c52fcf1ebd6114917afd3bd1987ec069f7bcc908f` |
+| `sitemap.xml` | 220164 | `5e5db448f3ff37bbf3c1816af23e7b1ce80d73cec836f9dd88b7a5db66d8aa28` |
 | `_headers` | 1316 | `2f39986457d2feff7e73e491a7d09ee871e8f2f4cc2bc437f86bd86a42554ec6` |
 | `logo.png` | 63440 | `11afaf1b0d3ca68393d202e4810bf766b5b6d591b4e3ec52f41d3cacaa4616ec` |
 | `favicon.ico` | 7411 | `407fde0ca2788409e87e11f596fa02e6a0b121817fcea7fd995beec1801e287b` |
@@ -160,7 +160,7 @@ downloads is committed in this repository and is hashed below.
 | `lib/e-faced-v571.js` | 9870 | `5f9c76ad0e8f01f00bf32601245e755b644f2527b61e6cc555adb00ad43f3033` |
 | `lib/eaton-littler-v438.js` | 3535 | `b9a87fb8ec59bdee2c88304a9311400ba8e5a1a60244b99ca4aa6bcf04cb3601` |
 | `lib/ebm-v163.js` | 12938 | `1cac154202e287b9d8a35397f2de76d937b8687a5b71904ba8c55b78c1492742` |
-| `lib/ebmt-score-v584.js` | 12083 | `475558f86a1c820a0a69bb3f217fcfdd1ae92369c8da49dbfef618bff35f3101` |
+| `lib/ebmt-score-v584.js` | 12089 | `6e970677c0d39dab76e13a4a6546c01573ab86ac98ad69b4469c487509f2c76f` |
 | `lib/echo-v158.js` | 14918 | `de2bbfb4b0a464a4ed3cfcde8e01574e991f9abe147e3de941a53a83f7dcc105` |
 | `lib/eckardt-v519.js` | 6397 | `747cca98ef4bbaab5a3aed5780cd808e444fc5d3d8959e68b820f946070343e0` |
 | `lib/ed-decision-v218.js` | 16495 | `b762fa26049f9b531a60a7c339d7ddecde5828dbf8d60d10ec356c0dcf724956` |
@@ -319,7 +319,7 @@ downloads is committed in this repository and is hashed below.
 | `lib/medication-v4.js` | 18192 | `467f9576c50da696cc56094eb022d0a5ed1e88de0c7618448554ede8067270b0` |
 | `lib/medication-v5.js` | 18863 | `ce81d9f8954abbd412892c13af9936f992239164f26fd2b999eaea7902787ab7` |
 | `lib/mest-c-v528.js` | 9310 | `e33f178c339338f62c47b6a19d50d345d38be3b05d9a33e7d2703e0a99ae3a69` |
-| `lib/meta.js` | 1961601 | `40228fd458f06def140c20d5ae90ce03d8631820e98123b08414310d0316ff80` |
+| `lib/meta.js` | 1963878 | `d692f40040900a4c365e855ef8ceb0179dd63cc88327c1e48e4287aeff333571` |
 | `lib/metabolic-hepatic-v219.js` | 12791 | `b9352877cebf7fbf3c3b99ecb8b72cdbee3ed94e056dc019113668609f5a95a8` |
 | `lib/metabolic-onc-v88.js` | 12659 | `1553b641668c121661a66647da71a4aaaa023e9f3a6b7a753efbcdab27cdba81` |
 | `lib/metabolic-v269.js` | 3262 | `0c7a42557886f2b0aeee7949b8d0bd682d795d4526174fd540717a978d94ec2f` |
@@ -479,6 +479,7 @@ downloads is committed in this repository and is hashed below.
 | `lib/rockwood-ac-v487.js` | 4114 | `86eca56af675219c672040d3b2a187e02633e255e45db01c91b93efccb980cfb` |
 | `lib/rop-stage-v446.js` | 3594 | `43991004160342a2c6eda1fab7bb7775d7cd9743f90f396012f99ed941487c62` |
 | `lib/ross-hf-peds-v368.js` | 3656 | `fad8260eae2c6c117dfee9177dfbf5f2a20042e72b049799b94588ae426449ce` |
+| `lib/rucam-v585.js` | 18101 | `bfe0f12ce3a85fa5d40cd37c9428f491c2bf6b25a7c77c843454735954ac3a1d` |
 | `lib/ruedi-allgower-pilon-v490.js` | 2967 | `dd1e44e6aea6ec383f19e98e0ce9414fc77ae84355c5050306b3f3330406aaa6` |
 | `lib/russe-scaphoid-v416.js` | 4054 | `393fb761d9bcfb169b583f73ec59e807a0894591bc9c4726821d7597796440f2` |
 | `lib/russell-taylor-subtroch-v482.js` | 3448 | `b8995ea5fb16e414172af1b8ce1aacc45c2bdadd69441e3ed73168f28d4a52b8` |
@@ -1067,6 +1068,7 @@ downloads is committed in this repository and is hashed below.
 | `views/group-v582.js` | 6387 | `3ed2b1f1135ee916b0dc44c89c4b09f9b99b76e6a8bd71434569b84178b1104b` |
 | `views/group-v583.js` | 3466 | `e827899fc1053d56c2ef44a97b4870e47bb12b79949568b427302713e44eae58` |
 | `views/group-v584.js` | 4364 | `47a89add4fd628ff899543dab775d7a6c9d40513a68c14aca5b0d15392fd43e4` |
+| `views/group-v585.js` | 6715 | `e282e74887a609203168993760013e72869366262702601a4363c0b0de13a940` |
 | `views/group-v6.js` | 5707 | `425918decb48cd9efac9fc5590ac8970a54c03c3b0df056fb99c9a22ff8dd1b2` |
 | `views/group-v63.js` | 14377 | `962d84b97e82bc39635801da79ecaa93fc0b501b5988b7d321b0f1f630497fab` |
 | `views/group-v7.js` | 15113 | `d480a5b34adfd035507dd4313e12462c47c949aeee155b253c8a2f9596839d05` |

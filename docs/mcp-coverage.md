@@ -1574,6 +1574,47 @@ Brings the exposed total to **1314 calculators across 430 modules**.
 ### lib/wayne-index-v527.js
 - `wayne-index`
 
+## Four-hundred-and-tenth wave — the updated RUCAM in lib/rucam-v585.js (+1)
+
+`rucam` (spec-v585) grades the probability that a particular drug or herb caused an episode of liver injury.
+An **axis gap**: the catalog carried King's College criteria — a *severity* axis for liver failure — and
+nothing on the *causality* axis, which is the question actually asked when a patient on a new drug develops
+abnormal liver tests. `grep -ci rucam app.js` returned 0.
+
+**The R ratio picks the scale, and mixed injury is scored on the cholestatic scale.** There are **two**
+scoring tables, and which applies is decided *before any item is answered*, by R = (ALT / ALT ULN) ÷ (ALP /
+ALP ULN): hepatocellular at R ≥ 5, cholestatic at R ≤ 2, mixed strictly between — and **mixed has no table of
+its own**, it borrows the cholestatic one. That is why four laboratory values are required inputs even though
+they score nothing.
+
+**The two scales differ in four of seven domains under the same domain names.** Latency windows are longer on
+the cholestatic scale (prior exposure 1–90 days against 1–15), the dechallenge windows are 180 days against
+30, the dechallenge point ranges are 0 to +2 against −2 to +3, and the risk-factor line differs. The `onset`
+and `course` enum keys are *shared*, so **the same key can be worth different points in two cases** — a test
+pins the differing windows, and another asserts that a course value from the wrong scale is refused rather
+than silently scored.
+
+**Time to onset can exclude the case outright.** Onset before the drug was started, or more than 15 days
+(hepatocellular) or 30 days (cholestatic) after it was stopped, returns `excluded: true` and `total: null`.
+No total exists; reporting a number there is wrong.
+
+**The two scales do not share a range but do share the bands.** The best reachable total is 14
+hepatocellular against 13 cholestatic, yet both are read against the same causality bands, so a "probable" is
+not equally hard to reach on the two — `scaleMax` is returned so the total can be read in context. And
+**negative points are real and large**: concomitant drugs and an alternative diagnosis each reach −3, so a
+case can be argued *out* of causality as well as into it.
+
+**One cell is reconciled rather than recalled.** Two authoritative reproductions render the cholestatic
+risk-factor line differently — pregnancy as an extra item, or sharing a line with alcohol. Both state a domain
+maximum of +2, which is only consistent with the shared line, so that reading is applied and the divergence
+stated. Finally, the tile is explicit that RUCAM grades **causality, not severity**, and that rechallenge is
+scored because it sometimes happens, *not* because it is advisable. New adapter module registered in
+`mcp/catalog.js`; its golden probe ("rucam drug induced liver injury causality") is promoted now that the
+tile is in the MCP-exposed registry. Brings the exposed total to **1372 calculators across 488 modules**.
+
+### lib/rucam-v585.js
+- `rucam`
+
 ## Four-hundred-and-ninth wave — the EBMT (Gratwohl) risk score in lib/ebmt-score-v584.js (+1)
 
 `ebmt-score` (spec-v584) sums five pre-transplant factors, 0-7, for allogeneic hematopoietic stem cell
@@ -8517,6 +8558,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/ebmt-score-v584.js
 - `ebmt-score`
+
+### lib/rucam-v585.js
+- `rucam`
 
 ### lib/tb-testing.js
 - `tb-testing`

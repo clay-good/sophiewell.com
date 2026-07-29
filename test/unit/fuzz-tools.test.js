@@ -559,6 +559,7 @@ import * as shanghaiBrugadaV581 from '../../lib/shanghai-brugada-v581.js';
 import * as hlh2004V582 from '../../lib/hlh-2004-v582.js';
 import * as nacAttrStageV583 from '../../lib/nac-attr-stage-v583.js';
 import * as ebmtScoreV584 from '../../lib/ebmt-score-v584.js';
+import * as rucamV585 from '../../lib/rucam-v585.js';
 import * as tbTesting from '../../lib/tb-testing.js';
 
 const MODULES = {
@@ -1063,6 +1064,7 @@ const MODULES = {
   'hlh-2004-v582.js': hlh2004V582,
   'nac-attr-stage-v583.js': nacAttrStageV583,
   'ebmt-score-v584.js': ebmtScoreV584,
+  'rucam-v585.js': rucamV585,
   'tb-testing.js': tbTesting,
 };
 
