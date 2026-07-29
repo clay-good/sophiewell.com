@@ -60,10 +60,10 @@ export const renderers = {
     note(root, M.TIMING_NOTE);
 
     heading(root, 'Major criteria');
-    for (const m of M.MAJOR_BOOLEANS) root.appendChild(select(m.text, aid(m.key)));
+    for (const m of M.MAJOR_BOOLEANS) root.appendChild(select(m.text, aid(m.key), YN));
 
     heading(root, 'Minor criteria');
-    for (const m of M.MINOR_BOOLEANS) root.appendChild(select(m.text, aid(m.key)));
+    for (const m of M.MINOR_BOOLEANS) root.appendChild(select(m.text, aid(m.key), YN));
 
     const ids = [aid('sex'), aid('hemoglobin'), aid('egfr'), aid('platelets'), aid('age'),
       aid('priorBleeding'), aid('priorStroke'),
