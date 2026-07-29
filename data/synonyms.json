@@ -756,6 +756,8 @@
     { "phrases": ["rucam", "drug induced liver injury causality", "dili causality", "r ratio liver injury"],
       "tile": "rucam", "audience": "clinicians" },
     { "phrases": ["up to seven", "up-to-seven criteria", "metroticket", "extended hcc transplant criteria"],
-      "tile": "up-to-seven", "audience": "clinicians" }
+      "tile": "up-to-seven", "audience": "clinicians" },
+    { "phrases": ["qpitt", "quick pitt", "quick pitt bacteremia", "bloodstream infection mortality score"],
+      "tile": "qpitt", "audience": "clinicians" }
   ]
 }

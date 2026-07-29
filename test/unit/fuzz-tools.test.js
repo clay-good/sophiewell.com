@@ -561,6 +561,7 @@ import * as nacAttrStageV583 from '../../lib/nac-attr-stage-v583.js';
 import * as ebmtScoreV584 from '../../lib/ebmt-score-v584.js';
 import * as rucamV585 from '../../lib/rucam-v585.js';
 import * as upToSevenV586 from '../../lib/up-to-seven-v586.js';
+import * as qpittV587 from '../../lib/qpitt-v587.js';
 import * as tbTesting from '../../lib/tb-testing.js';
 
 const MODULES = {
@@ -1067,6 +1068,7 @@ const MODULES = {
   'ebmt-score-v584.js': ebmtScoreV584,
   'rucam-v585.js': rucamV585,
   'up-to-seven-v586.js': upToSevenV586,
+  'qpitt-v587.js': qpittV587,
   'tb-testing.js': tbTesting,
 };
 

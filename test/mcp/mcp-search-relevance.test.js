@@ -619,6 +619,7 @@ const PROBES = [
   ['ebmt risk score allogeneic stem cell transplant', ['ebmt-score']],
   ['rucam drug induced liver injury causality', ['rucam']],
   ['up to seven criteria hcc liver transplant', ['up-to-seven']],
+  ['quick pitt bacteremia score mortality', ['qpitt']],
 ];
 
 test(`every golden probe routes an acceptable tile into the top ${TOP_N}`, () => {

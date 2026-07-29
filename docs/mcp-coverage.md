@@ -1574,6 +1574,37 @@ Brings the exposed total to **1314 calculators across 430 modules**.
 ### lib/wayne-index-v527.js
 - `wayne-index`
 
+## Four-hundred-and-twelfth wave — the quick Pitt bacteremia score in lib/qpitt-v587.js (+1)
+
+`qpitt` (spec-v587) scores five binary items, 0-5, to predict mortality in a patient who already has a
+bloodstream infection. A **revised-successor gap**: `pitt-bacteremia` has been in the catalog since spec-v199
+and its simplified successor was absent.
+
+**Fever scores nothing. Only hypothermia does.** The temperature item is a single binary — under 36 °C scores
+1 and *everything else scores 0* — so a patient at 40.5 °C scores exactly the same as one at 37.0. The
+predecessor awarded points for fever as well; the successor dropped that half of the item. Any consumer that
+scores "abnormal temperature" is wrong for every febrile patient, and wrong in the direction of
+**over**-scoring. A test asserts there is no fever input to answer at all.
+
+**The successor is binary where the predecessor was weighted, over the same five domains.** The Pitt
+Bacteremia Score runs 0-14 with cardiac arrest worth 4 and graded mental-status and temperature bands. Here
+**cardiac arrest is worth exactly as much as a respiratory rate of 25** — a test asserts the two produce
+identical results — so a score cannot be carried between the two.
+
+**The high-risk threshold is only 2 of 5**, across which derivation mortality moved from 8.7% to 57.5%. A
+test walks every unordered pair of items and asserts each one reaches it.
+
+**The published mortality ladder stops short.** Predicted 28-day mortality is 3, 9, 22, 45 and 70% for 0, 1,
+2, 3 and **"4 or more"** — a score of 5 has no figure of its own. Both 4 and 5 return 70% with
+`mortalityFigureLumped` set, so the lumping is visibly the source's rather than an extrapolation. And one
+operator diverges between reproductions — the hypotension item as "under 90" or "90 or below" — where the
+derivation's own wording governs. New adapter module registered in `mcp/catalog.js`; its golden probe ("quick
+pitt bacteremia score mortality") is promoted now that the tile is in the MCP-exposed registry. Brings the
+exposed total to **1374 calculators across 490 modules**.
+
+### lib/qpitt-v587.js
+- `qpitt`
+
 ## Four-hundred-and-eleventh wave — the up-to-seven criteria in lib/up-to-seven-v586.js (+1)
 
 `up-to-seven` (spec-v586) applies the up-to-seven (Metroticket) criteria for liver transplantation in
@@ -8600,6 +8631,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/up-to-seven-v586.js
 - `up-to-seven`
+
+### lib/qpitt-v587.js
+- `qpitt`
 
 ### lib/tb-testing.js
 - `tb-testing`

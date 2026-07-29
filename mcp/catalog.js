@@ -497,6 +497,7 @@ import nacAttrStageV583 from './adapters/nac-attr-stage-v583.js';
 import ebmtScoreV584 from './adapters/ebmt-score-v584.js';
 import rucamV585 from './adapters/rucam-v585.js';
 import upToSevenV586 from './adapters/up-to-seven-v586.js';
+import qpittV587 from './adapters/qpitt-v587.js';
 import tbTesting from './adapters/tb-testing.js';
 import labInterpret from './adapters/lab-interpret.js';
 import decisionRulesV258 from './adapters/decision-rules-v258.js';
@@ -988,6 +989,7 @@ const ADAPTER_MODULES = [
   ['ebmt-score-v584', ebmtScoreV584],
   ['rucam-v585', rucamV585],
   ['up-to-seven-v586', upToSevenV586],
+  ['qpitt-v587', qpittV587],
   ['tb-testing', tbTesting],
   ['lab-interpret', labInterpret],
   ['decision-rules-v258', decisionRulesV258],
