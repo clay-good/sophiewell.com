@@ -784,6 +784,8 @@
     { "phrases": ["myxedema coma", "myxoedema coma", "hypothyroid emergency", "myxedema coma score"],
       "tile": "myxedema-coma", "audience": "clinicians" },
     { "phrases": ["fisher grade", "fisher scale", "original fisher", "sah ct grading"],
-      "tile": "fisher-grade", "audience": "clinicians" }
+      "tile": "fisher-grade", "audience": "clinicians" },
+    { "phrases": ["pollock flickinger", "avm score radiosurgery", "radiosurgery based avm grading", "avm radiosurgery outcome"],
+      "tile": "pollock-flickinger", "audience": "clinicians" }
   ]
 }

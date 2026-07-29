@@ -511,6 +511,7 @@ import panc3V597 from './adapters/panc3-v597.js';
 import jtaThyroidStormV598 from './adapters/jta-thyroid-storm-v598.js';
 import myxedemaComaV599 from './adapters/myxedema-coma-v599.js';
 import fisherGradeV600 from './adapters/fisher-grade-v600.js';
+import pollockFlickingerV601 from './adapters/pollock-flickinger-v601.js';
 import tbTesting from './adapters/tb-testing.js';
 import labInterpret from './adapters/lab-interpret.js';
 import decisionRulesV258 from './adapters/decision-rules-v258.js';
@@ -1016,6 +1017,7 @@ const ADAPTER_MODULES = [
   ['jta-thyroid-storm-v598', jtaThyroidStormV598],
   ['myxedema-coma-v599', myxedemaComaV599],
   ['fisher-grade-v600', fisherGradeV600],
+  ['pollock-flickinger-v601', pollockFlickingerV601],
   ['tb-testing', tbTesting],
   ['lab-interpret', labInterpret],
   ['decision-rules-v258', decisionRulesV258],

@@ -1574,6 +1574,39 @@ Brings the exposed total to **1314 calculators across 430 modules**.
 ### lib/wayne-index-v527.js
 - `wayne-index`
 
+## Four-hundred-and-twenty-sixth wave — the Pollock-Flickinger score in lib/pollock-flickinger-v601.js (+1)
+
+`pollock-flickinger` (spec-v601) predicts the outcome of stereotactic radiosurgery for a brain arteriovenous
+malformation, in both its original and modified forms. An **axis gap**: `spetzler-ponce` is in the catalog
+and grades **microsurgical** risk — a different treatment, a different question, and a different answer for
+the same malformation.
+
+**The modification changed no coefficient. It halved the location variable's range.** Both versions are
+0.1 × volume + 0.02 × age + **0.3** × location; what changed is that location went from a *three*-tier
+variable to a *two*-tier one. A widely circulated rendering gives the modified coefficient as 0.5 — **both
+primary abstracts give 0.3**, and 0.3 is applied with the divergence disclosed.
+
+**The modified score is exactly 0.3 lower than the original for every location except frontal and
+temporal**, which are tier 0 in both. A test walks every site and asserts the shift is exactly the location
+coefficient or exactly zero. Because the outcome bands sit at 1.00, 1.50 and 2.00, **that constant shift can
+move a patient a whole band**: an 8 cm³ basal-ganglia AVM at 40 scores 2.2 originally and 1.9 modified — the
+difference between a reported **46%** and **64%** obliteration without new deficit. `bandChanged` marks
+exactly those patients.
+
+**Intraventricular location has no home in the modified list.** The original names it explicitly in tier 1;
+the modified list names hemispheric, corpus callosum and cerebellar for 0 and basal ganglia, thalamus and
+brainstem for 1, and never mentions it. `modifiedAvailable` is false and `modified` is null — the source's
+hole, reported rather than filled by analogy, with a test asserting it is the only such site.
+
+**The published outcome bands overlap at exactly 2.00** ("1.51 to 2.00" and "2.00 or more"); the higher band
+is applied and flagged. And **it is a continuous score, not a grade** — volume and age are unbounded, so
+there is no maximum and no "x of y" reading. New adapter module registered in `mcp/catalog.js`; its golden
+probe ("pollock flickinger avm radiosurgery score") is promoted now that the tile is in the MCP-exposed
+registry. Brings the exposed total to **1388 calculators across 504 modules**.
+
+### lib/pollock-flickinger-v601.js
+- `pollock-flickinger`
+
 ## Four-hundred-and-twenty-fifth wave — the original Fisher grade in lib/fisher-grade-v600.js (+1)
 
 `fisher-grade` (spec-v600) grades the appearance of blood on CT after subarachnoid hemorrhage. A
@@ -9101,6 +9134,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/fisher-grade-v600.js
 - `fisher-grade`
+
+### lib/pollock-flickinger-v601.js
+- `pollock-flickinger`
 
 ### lib/tb-testing.js
 - `tb-testing`
