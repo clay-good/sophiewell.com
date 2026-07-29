@@ -1574,6 +1574,34 @@ Brings the exposed total to **1314 calculators across 430 modules**.
 ### lib/wayne-index-v527.js
 - `wayne-index`
 
+## Four-hundred-and-thirty-first wave — the new Katagiri score in lib/katagiri-v606.js (+1)
+
+`katagiri` (spec-v606) estimates survival in symptomatic skeletal metastasis. A **cluster-completion gap**:
+`tokuhashi-revised`, `tomita-score` and `bauer-score` are all in the catalog, and this fourth member — the
+only one derived in a cohort treated mostly **non-surgically** — was not.
+
+**The primary-site item is defined by treatability, not by organ, and the same organ appears in two
+groups.** Breast and prostate are *slow* growth (0 points) when **hormone-dependent** and *moderate* (2) when
+hormone-**independent**; lung is *moderate* (2) when molecularly targeted and *rapid* (3) when it is not. So
+naming the organ does not determine the score — it turns on whether the disease still has a treatment that
+works, and an implementation that maps organ to group is wrong for the commonest primaries in the series.
+
+**The laboratory item is two tiers of different analytes, not a severity ladder of the same ones.** Abnormal
+(1 point) is CRP, LDH or albumin; critical (2 points) is platelets, calcium or bilirubin — **the two tiers
+share no analyte**, and a test asserts the intersection is empty. The consequence is directly demonstrated:
+**all three abnormal values together score 1, while a single low platelet count scores 2.** Each tier is
+any-of, critical outranks abnormal, and the item never reaches 3.
+
+Primary site also carries the single largest weight (3 of 10), more than the visceral or laboratory items.
+One-year survival in the **derivation** cohort was 91% at 0-3, 49% at 4-6 and 6% at 7-10 — reported as the
+derivation cohort's, since validation cohorts differ. And the 2014 score **added the laboratory item** to a
+2005 predecessor, so a score computed without it is the older instrument. New adapter module registered in
+`mcp/catalog.js`; its golden probe ("katagiri score skeletal metastasis survival") is promoted now that the
+tile is in the MCP-exposed registry. Brings the exposed total to **1393 calculators across 509 modules**.
+
+### lib/katagiri-v606.js
+- `katagiri`
+
 ## Four-hundred-and-thirtieth wave — the Harrington classification in lib/harrington-acetabular-v605.js (+1)
 
 `harrington-acetabular` (spec-v605) classifies periacetabular metastatic destruction and the reconstruction
@@ -9283,6 +9311,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/harrington-acetabular-v605.js
 - `harrington-acetabular`
+
+### lib/katagiri-v606.js
+- `katagiri`
 
 ### lib/tb-testing.js
 - `tb-testing`

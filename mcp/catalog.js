@@ -516,6 +516,7 @@ import vrasV602 from './adapters/vras-v602.js';
 import bauerScoreV603 from './adapters/bauer-score-v603.js';
 import bilskyEsccV604 from './adapters/bilsky-escc-v604.js';
 import harringtonAcetabularV605 from './adapters/harrington-acetabular-v605.js';
+import katagiriV606 from './adapters/katagiri-v606.js';
 import tbTesting from './adapters/tb-testing.js';
 import labInterpret from './adapters/lab-interpret.js';
 import decisionRulesV258 from './adapters/decision-rules-v258.js';
@@ -1026,6 +1027,7 @@ const ADAPTER_MODULES = [
   ['bauer-score-v603', bauerScoreV603],
   ['bilsky-escc-v604', bilskyEsccV604],
   ['harrington-acetabular-v605', harringtonAcetabularV605],
+  ['katagiri-v606', katagiriV606],
   ['tb-testing', tbTesting],
   ['lab-interpret', labInterpret],
   ['decision-rules-v258', decisionRulesV258],

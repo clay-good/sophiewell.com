@@ -794,6 +794,8 @@
     { "phrases": ["bilsky", "escc scale", "epidural spinal cord compression grade", "metastatic cord compression grading"],
       "tile": "bilsky-escc", "audience": "clinicians" },
     { "phrases": ["harrington classification", "periacetabular metastases", "acetabular metastatic defect", "harrington class"],
-      "tile": "harrington-acetabular", "audience": "clinicians" }
+      "tile": "harrington-acetabular", "audience": "clinicians" },
+    { "phrases": ["katagiri score", "new katagiri", "skeletal metastasis survival", "bone metastasis prognosis score"],
+      "tile": "katagiri", "audience": "clinicians" }
   ]
 }

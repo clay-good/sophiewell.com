@@ -638,6 +638,7 @@ const PROBES = [
   ['bauer score skeletal metastases survival', ['bauer-score']],
   ['bilsky escc epidural spinal cord compression grade', ['bilsky-escc']],
   ['harrington classification periacetabular metastases', ['harrington-acetabular']],
+  ['katagiri score skeletal metastasis survival', ['katagiri']],
 ];
 
 test(`every golden probe routes an acceptable tile into the top ${TOP_N}`, () => {
