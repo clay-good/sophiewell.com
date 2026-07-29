@@ -1574,6 +1574,41 @@ Brings the exposed total to **1314 calculators across 430 modules**.
 ### lib/wayne-index-v527.js
 - `wayne-index`
 
+## Four-hundred-and-fourteenth wave — the Sternbach criteria in lib/sternbach-v589.js (+1)
+
+`sternbach` (spec-v589) applies the Sternbach criteria for serotonin syndrome. A **predecessor gap**:
+`serotonin-toxicity` (the Hunter criteria) is already in the catalog, and the Hunter criteria were built to replace these.
+
+**The superiority of the successor is contested, which is why the predecessor still matters.** The usual
+summary is that Hunter is simply better — sensitivity 84% against 75%, specificity 97% against 96%. A
+published re-examination points out that the Hunter derivation dataset **overlapped substantially with its
+validation data**, so the comparison cannot be upheld as stated, and reports that in that group's own case
+series Sternbach missed **10%** of cases against Hunter's **37%**. The tile reports the headline figures *and*
+the challenge to them, because "Sternbach is obsolete" is received wisdom rather than a settled finding.
+
+**Three of the four requirements are not symptoms, and one is a negative.** Meeting 3 of 10 features is
+*necessary and not sufficient*: the features must have coincided with the addition or increase of a
+serotonergic agent, other causes must have been ruled out, and **a neuroleptic must not have been started or
+increased** before onset. That last is a hard negative and the one implementations drop — it exists because
+neuroleptic malignant syndrome is the differential, so a symptom count that ignores it will label an NMS
+patient with serotonin syndrome. A test asserts each of the three defeats all ten features on its own.
+
+**The ten features are mostly non-specific**, which is the known weakness: a patient on an SSRI with a
+febrile gastroenteritis can reach 3 of 10 without serotonin toxicity. That is why the exclusion requirement
+is load-bearing, and why the successor was built around clonus.
+
+**One reproduction adds an eleventh feature and that can change a verdict.** At least one authoritative
+review prints an eleven-item list adding **rigidity**. Because the bar is 3 of N, a patient with rigidity and
+exactly two of the ten is positive under that rendering and negative under this one. The ten-item list is
+applied, rigidity is asked separately and never counted, and `verdictDependsOnDisputedFeature` fires exactly
+when counting it would flip the answer — tested in all four combinations. Finally, the tile is explicit that
+**failing these criteria does not exclude serotonin syndrome**. New adapter module registered in
+`mcp/catalog.js`; its golden probe ("sternbach criteria serotonin syndrome") is promoted now that the tile is
+in the MCP-exposed registry. Brings the exposed total to **1376 calculators across 492 modules**.
+
+### lib/sternbach-v589.js
+- `sternbach`
+
 ## Four-hundred-and-thirteenth wave — the ESHRE Bologna criteria in lib/bologna-por-v588.js (+1)
 
 `bologna-por` (spec-v588) applies the ESHRE Bologna criteria for poor ovarian response. A **predecessor
@@ -8669,6 +8704,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/bologna-por-v588.js
 - `bologna-por`
+
+### lib/sternbach-v589.js
+- `sternbach`
 
 ### lib/tb-testing.js
 - `tb-testing`

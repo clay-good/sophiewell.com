@@ -760,6 +760,8 @@
     { "phrases": ["qpitt", "quick pitt", "quick pitt bacteremia", "bloodstream infection mortality score"],
       "tile": "qpitt", "audience": "clinicians" },
     { "phrases": ["bologna criteria", "poor ovarian response", "poor responder ivf", "eshre bologna"],
-      "tile": "bologna-por", "audience": "clinicians" }
+      "tile": "bologna-por", "audience": "clinicians" },
+    { "phrases": ["sternbach criteria", "sternbach serotonin", "serotonin syndrome criteria", "serotonin toxicity criteria"],
+      "tile": "sternbach", "audience": "clinicians" }
   ]
 }
