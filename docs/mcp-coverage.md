@@ -1574,6 +1574,36 @@ Brings the exposed total to **1314 calculators across 430 modules**.
 ### lib/wayne-index-v527.js
 - `wayne-index`
 
+## Four-hundred-and-twenty-fifth wave — the original Fisher grade in lib/fisher-grade-v600.js (+1)
+
+`fisher-grade` (spec-v600) grades the appearance of blood on CT after subarachnoid hemorrhage. A
+**predecessor gap**: `modified-fisher` is already in the catalog, and the scale it modified was absent.
+
+**The grades are not ordinal for the risk they grade.** Vasospasm risk rises from grade 1 to grade 3, and
+**grade 4 does not continue the trend** — grade 3 carries the highest vasospasm risk. A higher Fisher grade
+does *not* mean higher vasospasm risk, and every result says so; `carriesHighestVasospasmRisk` marks grade 3
+while `outrankedByGradeThree` marks grade 4.
+
+**Grade 4 is defined by location, not by amount, which is why the ordering breaks.** It is intracerebral or
+intraventricular blood *with diffuse or no subarachnoid blood* — not "more blood than grade 3" but different
+blood in a different compartment. A test asserts the consequence directly: **a speck of intraventricular
+blood with no subarachnoid blood at all is grade 4, while thick cisternal clot is grade 3** — the number is
+higher and the risk is not. Another test confirms grade 4 is assigned by compartment across *every*
+subarachnoid description.
+
+**The same grade 4 covers a speck and a ventricle full of clot** — the documented flaw that motivated the
+modified scale. And **the modified scale is not a renumbering**: it adds a grade 0 and splits blood thickness
+from intraventricular hemorrhage into two independent axes, so a Fisher 3 is not a modified Fisher 3. The
+tile offers no conversion between the scales, and a test asserts none is exposed.
+
+**The 1 mm threshold was measured on 1980-era CT**, where slice thickness, resolution and windowing were
+nothing like a modern scanner's — applied as published, with the caveat stated. New adapter module registered
+in `mcp/catalog.js`; its golden probe ("fisher grade subarachnoid hemorrhage ct") is promoted now that the
+tile is in the MCP-exposed registry. Brings the exposed total to **1387 calculators across 503 modules**.
+
+### lib/fisher-grade-v600.js
+- `fisher-grade`
+
 ## Four-hundred-and-twenty-fourth wave — the myxedema coma score in lib/myxedema-coma-v599.js (+1)
 
 `myxedema-coma` (spec-v599) scores the hypothyroid emergency. An **axis companion** to the two thyroid-storm
@@ -9068,6 +9098,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/myxedema-coma-v599.js
 - `myxedema-coma`
+
+### lib/fisher-grade-v600.js
+- `fisher-grade`
 
 ### lib/tb-testing.js
 - `tb-testing`

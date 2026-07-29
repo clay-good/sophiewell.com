@@ -782,6 +782,8 @@
     { "phrases": ["jta criteria", "japan thyroid association", "thyroid storm criteria", "ts1 ts2 thyroid storm"],
       "tile": "jta-thyroid-storm", "audience": "clinicians" },
     { "phrases": ["myxedema coma", "myxoedema coma", "hypothyroid emergency", "myxedema coma score"],
-      "tile": "myxedema-coma", "audience": "clinicians" }
+      "tile": "myxedema-coma", "audience": "clinicians" },
+    { "phrases": ["fisher grade", "fisher scale", "original fisher", "sah ct grading"],
+      "tile": "fisher-grade", "audience": "clinicians" }
   ]
 }

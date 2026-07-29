@@ -574,6 +574,7 @@ import * as lepineV596 from '../../lib/lepine-v596.js';
 import * as panc3V597 from '../../lib/panc3-v597.js';
 import * as jtaThyroidStormV598 from '../../lib/jta-thyroid-storm-v598.js';
 import * as myxedemaComaV599 from '../../lib/myxedema-coma-v599.js';
+import * as fisherGradeV600 from '../../lib/fisher-grade-v600.js';
 import * as tbTesting from '../../lib/tb-testing.js';
 
 const MODULES = {
@@ -1093,6 +1094,7 @@ const MODULES = {
   'panc3-v597.js': panc3V597,
   'jta-thyroid-storm-v598.js': jtaThyroidStormV598,
   'myxedema-coma-v599.js': myxedemaComaV599,
+  'fisher-grade-v600.js': fisherGradeV600,
   'tb-testing.js': tbTesting,
 };
 
