@@ -562,6 +562,7 @@ import * as ebmtScoreV584 from '../../lib/ebmt-score-v584.js';
 import * as rucamV585 from '../../lib/rucam-v585.js';
 import * as upToSevenV586 from '../../lib/up-to-seven-v586.js';
 import * as qpittV587 from '../../lib/qpitt-v587.js';
+import * as bolognaPorV588 from '../../lib/bologna-por-v588.js';
 import * as tbTesting from '../../lib/tb-testing.js';
 
 const MODULES = {
@@ -1069,6 +1070,7 @@ const MODULES = {
   'rucam-v585.js': rucamV585,
   'up-to-seven-v586.js': upToSevenV586,
   'qpitt-v587.js': qpittV587,
+  'bologna-por-v588.js': bolognaPorV588,
   'tb-testing.js': tbTesting,
 };
 

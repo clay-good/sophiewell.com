@@ -1574,6 +1574,38 @@ Brings the exposed total to **1314 calculators across 430 modules**.
 ### lib/wayne-index-v527.js
 - `wayne-index`
 
+## Four-hundred-and-thirteenth wave — the ESHRE Bologna criteria in lib/bologna-por-v588.js (+1)
+
+`bologna-por` (spec-v588) applies the ESHRE Bologna criteria for poor ovarian response. A **predecessor
+gap** — the inverse of the usual shape, because the *successor* was already here: `poseidon` shipped earlier,
+and the POSEIDON classification exists precisely because the Bologna criteria group women with very different
+prognoses. The criteria it was built to replace were absent.
+
+**The cut-offs are published as ranges, not numbers.** The consensus defines an abnormal ovarian reserve test
+as an antral follicle count under **5 to 7**, or AMH under **0.5 to 1.1 ng/mL**. It does not pick a number.
+So the criteria **cannot be computed without a choice the source declined to make**: an antral follicle count
+of 6 is abnormal under a cutoff of 7 and normal under a cutoff of 5, and a test asserts that the *same
+patient* is a poor responder under one permissible cutoff and not under the other. Both cutoffs are therefore
+required inputs, **neither is defaulted**, and any result resting on a value inside the published range sets
+`cutoffSensitive` so the fragility is visible rather than implied.
+
+**"At least two of three" has an override that needs only one.** Two episodes of poor response after
+*maximal* stimulation are sufficient on their own — but only *in the absence of* advanced maternal age and of
+an abnormal ovarian reserve test. An implementation that counts to two and stops calls exactly the group that
+clause was written for a non-responder. Both directions are tested: `qualifiedByOverride` for the patient the
+override rescues, and `overrideBlocked` for the patient it cannot.
+
+**Two criteria are not what they look like.** The first is not a number — "advanced maternal age (40 or over)
+**or any other risk factor** for poor ovarian response" is an open-ended clause with no list attached, so it
+is asked as its own input. The second is conditional on the protocol: three or fewer oocytes counts only
+after a **conventional** stimulation cycle, and treating any low retrieval as qualifying over-diagnoses poor
+response. New adapter module registered in `mcp/catalog.js`; its golden probe ("bologna criteria poor ovarian
+response") is promoted now that the tile is in the MCP-exposed registry. Brings the exposed total to **1375
+calculators across 491 modules**.
+
+### lib/bologna-por-v588.js
+- `bologna-por`
+
 ## Four-hundred-and-twelfth wave — the quick Pitt bacteremia score in lib/qpitt-v587.js (+1)
 
 `qpitt` (spec-v587) scores five binary items, 0-5, to predict mortality in a patient who already has a
@@ -8634,6 +8666,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/qpitt-v587.js
 - `qpitt`
+
+### lib/bologna-por-v588.js
+- `bologna-por`
 
 ### lib/tb-testing.js
 - `tb-testing`

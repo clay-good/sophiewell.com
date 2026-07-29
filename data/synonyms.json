@@ -758,6 +758,8 @@
     { "phrases": ["up to seven", "up-to-seven criteria", "metroticket", "extended hcc transplant criteria"],
       "tile": "up-to-seven", "audience": "clinicians" },
     { "phrases": ["qpitt", "quick pitt", "quick pitt bacteremia", "bloodstream infection mortality score"],
-      "tile": "qpitt", "audience": "clinicians" }
+      "tile": "qpitt", "audience": "clinicians" },
+    { "phrases": ["bologna criteria", "poor ovarian response", "poor responder ivf", "eshre bologna"],
+      "tile": "bologna-por", "audience": "clinicians" }
   ]
 }
