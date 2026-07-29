@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `290b436490ca25f1`
-Generated: 2026-07-29T18:19:01.814Z
+Build ID: `c2666d64babf4c59`
+Generated: 2026-07-29T18:36:33.626Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=20.18.1 <21, npm >=10.0.0
@@ -24,13 +24,13 @@ downloads is committed in this repository and is hashed below.
 
 | Path | Bytes | SHA-256 |
 |---|---:|---|
-| `index.html` | 95865 | `cec903b894d7f0ad9009ab41298f95371eb434a2b7e4b6ee2f4d5c0c922ea4d2` |
+| `index.html` | 95929 | `b6e4c2c3e1fa7601ac51b2bf74aa084fc15e6cfe55278713c710bc6162f0572f` |
 | `styles.css` | 44160 | `a2cc7ad7bae9f7cfc9681d80bc6bd4a58f0b07d47bfcff64897dc04929c12333` |
-| `app.js` | 390990 | `4380d4283350e45d71694b519c78a0d1546f7c405b0f795a89ac265d2b4c7072` |
+| `app.js` | 391699 | `003e98795ef8ca9d9538c393355ed9d2be0bd7a97ebf361e5ccceeba7cecee2a` |
 | `sw.js` | 4622 | `b891d4344f8e04403b7f1d307fd446cc224bddc6f0c4397438a17d197351171e` |
 | `site.webmanifest` | 709 | `0e0de4da60590a12e8b27a0ae2a2f5ffdb6500b7d2b78f93631ec2f64ed3d5ce` |
 | `robots.txt` | 127 | `38fbf9c1854e72abb20e01e81dd5a31d4ea96f154c12d5db1ec3af05524dd1a1` |
-| `sitemap.xml` | 223758 | `663d563c16dec31b9f0ca7bffd1cc5e9d7f7db8ee68c1ef40f5b034469afd090` |
+| `sitemap.xml` | 223911 | `8fd8bfe53a3c6ebcd60394625b4a46b221b92c6f5ba6047438d1621730bce33e` |
 | `_headers` | 1316 | `2f39986457d2feff7e73e491a7d09ee871e8f2f4cc2bc437f86bd86a42554ec6` |
 | `logo.png` | 63440 | `11afaf1b0d3ca68393d202e4810bf766b5b6d591b4e3ec52f41d3cacaa4616ec` |
 | `favicon.ico` | 7411 | `407fde0ca2788409e87e11f596fa02e6a0b121817fcea7fd995beec1801e287b` |
@@ -172,6 +172,7 @@ downloads is committed in this repository and is hashed below.
 | `lib/eckardt-v519.js` | 6397 | `747cca98ef4bbaab5a3aed5780cd808e444fc5d3d8959e68b820f946070343e0` |
 | `lib/ed-decision-v218.js` | 16495 | `b762fa26049f9b531a60a7c339d7ddecde5828dbf8d60d10ec356c0dcf724956` |
 | `lib/eddecision-v107.js` | 13223 | `0ce30a67dcfaf269ab1bb9fbb2839020f55fdea0359a83e927c4a67a901013c6` |
+| `lib/edinburgh-caa-v610.js` | 10304 | `fb5605e75a11370d90b16fc49949021691ed4ede58851ccc5bc6fcb199698944` |
 | `lib/ehit-v531.js` | 10332 | `718b6a6de8e755b57849081fcff223b8888955ce85c8bef8c9d348e4145822df` |
 | `lib/ehra-af-v580.js` | 13349 | `0f503c137f02e4583b1de127418244bf9a1e244452437654a75b9b85e8a94579` |
 | `lib/eichenholtz-charcot-v382.js` | 4286 | `73fe4620dd735578d2c2a48de0e86e2df2be94e7bd89af331c702c9219374ad2` |
@@ -334,7 +335,7 @@ downloads is committed in this repository and is hashed below.
 | `lib/medication-v4.js` | 18192 | `467f9576c50da696cc56094eb022d0a5ed1e88de0c7618448554ede8067270b0` |
 | `lib/medication-v5.js` | 18863 | `ce81d9f8954abbd412892c13af9936f992239164f26fd2b999eaea7902787ab7` |
 | `lib/mest-c-v528.js` | 9310 | `e33f178c339338f62c47b6a19d50d345d38be3b05d9a33e7d2703e0a99ae3a69` |
-| `lib/meta.js` | 2018315 | `2e2455d07daa7468a884d761e9fcdfece4da77f29ee1eb296118cd7665aa660d` |
+| `lib/meta.js` | 2021074 | `a0aafe2e5349eebba0d5add310dbe9f8acae2d92c83686ff31363f912cbf897c` |
 | `lib/metabolic-hepatic-v219.js` | 12791 | `b9352877cebf7fbf3c3b99ecb8b72cdbee3ed94e056dc019113668609f5a95a8` |
 | `lib/metabolic-onc-v88.js` | 12659 | `1553b641668c121661a66647da71a4aaaa023e9f3a6b7a753efbcdab27cdba81` |
 | `lib/metabolic-v269.js` | 3262 | `0c7a42557886f2b0aeee7949b8d0bd682d795d4526174fd540717a978d94ec2f` |
@@ -1118,6 +1119,7 @@ downloads is committed in this repository and is hashed below.
 | `views/group-v607.js` | 3911 | `b94b6b22cc002d5f52737a2ca74efac90b26947f676ad6055c2661b904b4ddf9` |
 | `views/group-v608.js` | 3650 | `cdedfed063c6d6ed67c48e77a411aa5afa87a49e6f0441aefc1dc627fafa7fc8` |
 | `views/group-v609.js` | 3549 | `96cbadff58f1ead90ba94a3aa19ceb0afef8a2aa908d75da3be721dc80b68b0e` |
+| `views/group-v610.js` | 3528 | `80547c1cfbff3c9f375ce4c28276f0f86d70f91ce82274c34e4f937201adbab2` |
 | `views/group-v63.js` | 14377 | `962d84b97e82bc39635801da79ecaa93fc0b501b5988b7d321b0f1f630497fab` |
 | `views/group-v7.js` | 15113 | `d480a5b34adfd035507dd4313e12462c47c949aeee155b253c8a2f9596839d05` |
 | `views/group-v8.js` | 20546 | `5e6ebaa807abb0677621321175906ec60531116c30aa824930ad77bc47ecad6d` |

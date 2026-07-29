@@ -642,6 +642,7 @@ const PROBES = [
   ['modified sartorius score hidradenitis', ['sartorius-hs']],
   ['zulewski clinical score hypothyroidism', ['zulewski']],
   ['hijdra sum score subarachnoid blood', ['hijdra']],
+  ['edinburgh ct criteria amyloid angiopathy', ['edinburgh-caa']],
 ];
 
 test(`every golden probe routes an acceptable tile into the top ${TOP_N}`, () => {

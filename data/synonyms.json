@@ -802,6 +802,8 @@
     { "phrases": ["zulewski score", "zulewski clinical score", "hypothyroidism clinical score", "clinical score for hypothyroidism", "hypothyroid signs and symptoms score"],
       "tile": "zulewski", "audience": "clinicians" },
     { "phrases": ["hijdra score", "hijdra sum score", "sah blood burden", "subarachnoid blood volume score", "cisternal blood score"],
-      "tile": "hijdra", "audience": "clinicians" }
+      "tile": "hijdra", "audience": "clinicians" },
+    { "phrases": ["edinburgh criteria", "edinburgh ct criteria", "simplified edinburgh criteria", "finger-like projections", "caa ct criteria"],
+      "tile": "edinburgh-caa", "audience": "clinicians" }
   ]
 }

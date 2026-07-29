@@ -1574,6 +1574,41 @@ Brings the exposed total to **1314 calculators across 430 modules**.
 ### lib/wayne-index-v527.js
 - `wayne-index`
 
+## Four-hundred-and-thirty-fifth wave — the Edinburgh CT criteria in lib/edinburgh-caa-v610.js (+1)
+
+`edinburgh-caa` (spec-v610) estimates the probability that cerebral amyloid angiopathy caused a lobar
+intracerebral hemorrhage already seen on CT. A **companion on a different modality**: `boston-caa` is in the
+catalog and needs MRI; this reads the non-contrast CT that has already been done.
+
+**Both versions ship together, because the APOE result is almost never back when the CT is read.** The
+original criteria use subarachnoid extension, finger-like projections and the APOE e4 genotype; the
+simplified criteria use the two CT findings alone. The adapter returns both, and when APOE is `unknown` the
+`original` field is `null` rather than guessed.
+
+**The simplified version can only ever read lower than the original, never higher.** All eight combinations
+of the three findings are enumerated in code, not transcribed: exactly three disagree, the original is the
+higher category in every one, and **APOE e4 accounts for all three** — with a negative genotype the two
+versions always agree. Tests pin each of those three claims separately.
+
+**A widely-repeated restatement describes the original as a count of any two of three findings. It is not a
+count.** The derivation paper defines high risk as subarachnoid extension *and* at least one other
+predictor, so subarachnoid extension is a **gate**, not one of three interchangeable tokens. The concrete
+consequence has its own test: finger-like projections plus APOE e4 *without* subarachnoid extension would be
+high risk under the count reading, and is medium under the criteria as published. Where the secondary and
+the derivation paper conflict, the tile follows the derivation paper and says so.
+
+**Finger-like projections never count on their own, in either version** — they raise the category only once
+subarachnoid extension is present. And there is one disclosed hole: the derivation paper describes low risk
+as "when no predictors were present" while its own rule-out criterion is the absence of subarachnoid
+extension and APOE e4, which places finger-like projections *alone* in the low group even though a predictor
+is present. The simplified criteria settle it as low probability; the tile returns low and discloses the
+ambiguity **at that one combination only**, not everywhere. New adapter module registered in
+`mcp/catalog.js`; its golden probe ("edinburgh ct criteria amyloid angiopathy") is promoted now that the
+tile is in the MCP-exposed registry. Brings the exposed total to **1397 calculators across 513 modules**.
+
+### lib/edinburgh-caa-v610.js
+- `edinburgh-caa`
+
 ## Four-hundred-and-thirty-fourth wave — the Hijdra sum score in lib/hijdra-v609.js (+1)
 
 `hijdra` (spec-v609) quantifies blood on the initial CT after subarachnoid hemorrhage. A
@@ -9435,6 +9470,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/hijdra-v609.js
 - `hijdra`
+
+### lib/edinburgh-caa-v610.js
+- `edinburgh-caa`
 
 ### lib/tb-testing.js
 - `tb-testing`
