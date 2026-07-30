@@ -1574,6 +1574,43 @@ Brings the exposed total to **1314 calculators across 430 modules**.
 ### lib/wayne-index-v527.js
 - `wayne-index`
 
+## Four-hundred-and-fortieth wave — the AREDS simplified severity scale in lib/areds-v615.js (+1)
+
+`areds` (spec-v615) counts risk factors across both eyes and reads off an approximate five-year risk of
+advanced age-related macular degeneration. A **whole-concept gap**: `icdr-retinopathy`, `kwb-retinopathy`,
+`rop-stage` and `gass-macular-hole` all ship, and macular degeneration was entirely uncovered — "macular
+degeneration" and "drusen" were both zero-hit across `app.js`.
+
+**The scale scores a person, not an eye, but the features are read eye by eye.** Each eye contributes one
+factor for large drusen and one for any pigment abnormality, so the total runs 0 to 4. Scoring a single eye
+and reporting 0 to 2 is a different instrument, and the summary says so.
+
+**An eye that already has advanced disease is assigned 2 factors outright, and its own drusen and pigment
+stop counting** — it has already converted. A test proves the point directly: adding large drusen *and*
+pigment to an already-advanced eye changes nothing. The remaining factors come from the fellow, still-at-risk
+eye, so the question the scale answers becomes "will the *other* eye convert".
+
+**Intermediate drusen count only when neither eye has large drusen, and only when bilateral** — one factor
+for the *person*, never one per eye. The adapter returns `intermediateSuppressed` with a reason when the
+answer was yes but the factor did not apply, and a test walks both suppression paths.
+
+**Two states needed explicit handling rather than a silent number.** If *both* eyes are already advanced
+there is no at-risk eye, so `fiveYearRiskPercent` comes back `null` — the scale has nothing left to predict.
+And in that same state the published rules, applied literally, would total **5**, outside the published 0–4
+scale; since the intermediate-drusen rule is about drusen *grading* and an already-converted eye is not
+graded, the factor is not added there. That decision is disclosed in the result text rather than clamped
+silently, and a test pins both the total of 4 and the stated reason.
+
+**The five-year risk is nowhere near linear** — 0.5%, 3%, 12%, 25%, 50%. The first step multiplies risk about
+sixfold and the last two roughly double it, so a reader treating the 0-to-4 count as evenly spaced severity
+badly misreads the bottom of the scale; a test asserts the increments are not uniform. New adapter module
+registered in `mcp/catalog.js`; its golden probe ("areds simplified severity scale macular degeneration") is
+promoted now that the tile is in the MCP-exposed registry. Brings the exposed total to **1402 calculators
+across 518 modules**.
+
+### lib/areds-v615.js
+- `areds`
+
 ## Four-hundred-and-thirty-ninth wave — the Ocular Trauma Score in lib/ocular-trauma-score-v614.js (+1)
 
 `ocular-trauma-score` (spec-v614) estimates the distribution of visual outcome six months after serious eye
@@ -9618,6 +9655,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/ocular-trauma-score-v614.js
 - `ocular-trauma-score`
+
+### lib/areds-v615.js
+- `areds`
 
 ### lib/tb-testing.js
 - `tb-testing`

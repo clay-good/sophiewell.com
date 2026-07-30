@@ -812,6 +812,8 @@
     { "phrases": ["pedis classification", "pedis score", "perfusion extent depth infection sensation", "iwgdf classification"],
       "tile": "pedis", "audience": "clinicians" },
     { "phrases": ["ocular trauma score", "eye injury prognosis", "open globe prognosis", "visual outcome after eye injury"],
-      "tile": "ocular-trauma-score", "audience": "clinicians" }
+      "tile": "ocular-trauma-score", "audience": "clinicians" },
+    { "phrases": ["areds scale", "areds simplified severity scale", "macular degeneration risk", "amd progression risk", "drusen risk factors"],
+      "tile": "areds", "audience": "clinicians" }
   ]
 }

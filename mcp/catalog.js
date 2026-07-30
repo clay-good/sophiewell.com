@@ -525,6 +525,7 @@ import friedFrailtyV611 from './adapters/fried-frailty-v611.js';
 import utDiabeticFootV612 from './adapters/ut-diabetic-foot-v612.js';
 import pedisV613 from './adapters/pedis-v613.js';
 import ocularTraumaScoreV614 from './adapters/ocular-trauma-score-v614.js';
+import aredsV615 from './adapters/areds-v615.js';
 import tbTesting from './adapters/tb-testing.js';
 import labInterpret from './adapters/lab-interpret.js';
 import decisionRulesV258 from './adapters/decision-rules-v258.js';
@@ -1044,6 +1045,7 @@ const ADAPTER_MODULES = [
   ['ut-diabetic-foot-v612', utDiabeticFootV612],
   ['pedis-v613', pedisV613],
   ['ocular-trauma-score-v614', ocularTraumaScoreV614],
+  ['areds-v615', aredsV615],
   ['tb-testing', tbTesting],
   ['lab-interpret', labInterpret],
   ['decision-rules-v258', decisionRulesV258],

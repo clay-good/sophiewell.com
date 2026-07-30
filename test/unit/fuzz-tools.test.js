@@ -589,6 +589,7 @@ import * as friedFrailtyV611 from '../../lib/fried-frailty-v611.js';
 import * as utDiabeticFootV612 from '../../lib/ut-diabetic-foot-v612.js';
 import * as pedisV613 from '../../lib/pedis-v613.js';
 import * as ocularTraumaScoreV614 from '../../lib/ocular-trauma-score-v614.js';
+import * as aredsV615 from '../../lib/areds-v615.js';
 import * as tbTesting from '../../lib/tb-testing.js';
 
 const MODULES = {
@@ -1123,6 +1124,7 @@ const MODULES = {
   'ut-diabetic-foot-v612.js': utDiabeticFootV612,
   'pedis-v613.js': pedisV613,
   'ocular-trauma-score-v614.js': ocularTraumaScoreV614,
+  'areds-v615.js': aredsV615,
   'tb-testing.js': tbTesting,
 };
 
