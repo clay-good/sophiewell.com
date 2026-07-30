@@ -1574,6 +1574,38 @@ Brings the exposed total to **1314 calculators across 430 modules**.
 ### lib/wayne-index-v527.js
 - `wayne-index`
 
+## Four-hundred-and-forty-second wave — the WHO oral mucositis scale in lib/who-mucositis-v617.js (+1)
+
+`who-mucositis` (spec-v617) grades oral mucositis 0 to 4. A **whole-concept gap**: "mucositis" and
+"stomatitis" were both zero-hit across `app.js`.
+
+**The scale conflates two different axes in one ordinal grade.** Grades 0 to 2 are driven by what the mucosa
+*looks like* — soreness and erythema, then ulcers. Grades 2 to 4 are driven by what the patient *can eat* —
+solids, then liquids only, then nothing. Grade 2 is the hinge where the axis silently changes, which is why
+the tile asks the two questions separately rather than offering one list of five grades.
+
+**Above grade 2 the appearance stops mattering entirely.** A test walks all three appearances at each
+restricted intake and asserts they collapse to a *single* grade — the appearance genuinely makes no
+difference. Because the grade number hides that, the adapter returns `appearanceIgnored`, and the result text
+says the appearance did not affect the grade.
+
+**Extensive ulceration does not raise the grade past 2 if solids are tolerated**, because the *extent* of
+ulceration is never scored — only its presence. So a mouth that looks far worse than another can carry the
+same grade, and one that looks better can carry a higher one. The summary states plainly that this is not an
+anatomic severity measure.
+
+**The definitions say what the patient can tolerate, not why.** Nothing in the grade wording requires the
+eating limitation to be attributable to the mucositis, so `intakeUnexplainedByMucosa` is returned when intake
+is restricted while the mucosa is recorded as normal. The tile still returns the grade the scale specifies —
+the scale is the source — but it does not let that combination pass silently. And **the scale was built for
+reporting, not bedside management**: it comes from the 1979 WHO handbook and exists for comparability across
+trials. New adapter module registered in `mcp/catalog.js`; its golden probe ("who oral mucositis grade") is
+promoted now that the tile is in the MCP-exposed registry. Brings the exposed total to **1404 calculators
+across 520 modules**.
+
+### lib/who-mucositis-v617.js
+- `who-mucositis`
+
 ## Four-hundred-and-forty-first wave — the Frisen papilledema scale in lib/frisen-v616.js (+1)
 
 `frisen` (spec-v616) grades swelling of the optic nerve head 0 to 5 on fundus appearance. A **whole-concept
@@ -9694,6 +9726,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/frisen-v616.js
 - `frisen`
+
+### lib/who-mucositis-v617.js
+- `who-mucositis`
 
 ### lib/tb-testing.js
 - `tb-testing`

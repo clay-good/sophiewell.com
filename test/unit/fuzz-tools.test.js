@@ -591,6 +591,7 @@ import * as pedisV613 from '../../lib/pedis-v613.js';
 import * as ocularTraumaScoreV614 from '../../lib/ocular-trauma-score-v614.js';
 import * as aredsV615 from '../../lib/areds-v615.js';
 import * as frisenV616 from '../../lib/frisen-v616.js';
+import * as whoMucositisV617 from '../../lib/who-mucositis-v617.js';
 import * as tbTesting from '../../lib/tb-testing.js';
 
 const MODULES = {
@@ -1127,6 +1128,7 @@ const MODULES = {
   'ocular-trauma-score-v614.js': ocularTraumaScoreV614,
   'areds-v615.js': aredsV615,
   'frisen-v616.js': frisenV616,
+  'who-mucositis-v617.js': whoMucositisV617,
   'tb-testing.js': tbTesting,
 };
 

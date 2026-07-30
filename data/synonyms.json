@@ -816,6 +816,8 @@
     { "phrases": ["areds scale", "areds simplified severity scale", "macular degeneration risk", "amd progression risk", "drusen risk factors"],
       "tile": "areds", "audience": "clinicians" },
     { "phrases": ["frisen scale", "papilledema grading", "papilledema grade", "optic disc swelling grade", "frisen grade"],
-      "tile": "frisen", "audience": "clinicians" }
+      "tile": "frisen", "audience": "clinicians" },
+    { "phrases": ["who mucositis", "oral mucositis grade", "mucositis grading", "oral toxicity scale", "chemotherapy mouth sores grade"],
+      "tile": "who-mucositis", "audience": "clinicians" }
   ]
 }
