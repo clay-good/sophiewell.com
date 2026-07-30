@@ -1574,6 +1574,43 @@ Brings the exposed total to **1314 calculators across 430 modules**.
 ### lib/wayne-index-v527.js
 - `wayne-index`
 
+## Four-hundred-and-forty-third wave — the EREFS endoscopic reference score in lib/erefs-v618.js (+1)
+
+`erefs` (spec-v618) grades the five endoscopic features of eosinophilic esophagitis. A **whole-concept gap**:
+"eosinophilic esophagitis" was zero-hit across `app.js`.
+
+**The proximal and distal esophagus are scored separately: 0 to 9 each, 0 to 18 overall.** Reporting a single
+0-to-9 figure as "the EREFS" halves the scale, so the adapter returns both regional scores *and* the total,
+and a test asserts one region's score is never presented as the whole.
+
+**The five features have different maxima and are not equally weighted** — edema 1, rings 3, exudates 2,
+furrows 2, stricture 1. **Stricture, the most consequential finding, is present-or-absent only**: a test shows
+it moves the score by exactly the same single point as edema, while rings can move it by three.
+
+**"The EREFS score" is ambiguous — at least three composites are published from the same five features.** A
+full composite (0–18); an *inflammatory* subscore that adds only edema, exudates and furrows and **excludes
+rings and stricture**; and a *modified* score that reduces every feature to present-or-absent. All three are
+returned, named, and the summary tells a caller never to report a bare number without saying which it is.
+Tests pin the distinctions directly — severe rings contribute 6 to the full composite, 0 to the inflammatory
+subscore, and 2 to the modified score.
+
+**Two things the tile deliberately does not assert.** The published descriptors for mild, moderate and severe
+*rings* differ between renderings and were not double-confirmed, so the four grade labels are carried without
+a descriptor for each. And the exudate boundary at exactly 10% is rendered both ways, so the tile states which
+it uses and discloses the divergence **at that grade only** — the two renderings agree at every other value.
+The furrows range was a genuine 1-versus-1 split (absent/present against absent/mild/severe) that a third
+source resolved 2-to-1 in favour of three grades. **No severity band is returned** — none is validated, and
+the instrument is used as a trial endpoint by *change* from a patient's own baseline.
+
+**A bug the tests caught before release:** grade 0 is a real grade here, and `Number('')` is 0, so an
+unanswered item was being silently graded as absent. The lookup now rejects empty values before coercion, and
+a test pins it. New adapter module registered in `mcp/catalog.js`; its golden probe ("erefs endoscopic
+reference score eosinophilic esophagitis") is promoted now that the tile is in the MCP-exposed registry.
+Brings the exposed total to **1405 calculators across 521 modules**.
+
+### lib/erefs-v618.js
+- `erefs`
+
 ## Four-hundred-and-forty-second wave — the WHO oral mucositis scale in lib/who-mucositis-v617.js (+1)
 
 `who-mucositis` (spec-v617) grades oral mucositis 0 to 4. A **whole-concept gap**: "mucositis" and
@@ -9729,6 +9766,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/who-mucositis-v617.js
 - `who-mucositis`
+
+### lib/erefs-v618.js
+- `erefs`
 
 ### lib/tb-testing.js
 - `tb-testing`

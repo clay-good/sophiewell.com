@@ -528,6 +528,7 @@ import ocularTraumaScoreV614 from './adapters/ocular-trauma-score-v614.js';
 import aredsV615 from './adapters/areds-v615.js';
 import frisenV616 from './adapters/frisen-v616.js';
 import whoMucositisV617 from './adapters/who-mucositis-v617.js';
+import erefsV618 from './adapters/erefs-v618.js';
 import tbTesting from './adapters/tb-testing.js';
 import labInterpret from './adapters/lab-interpret.js';
 import decisionRulesV258 from './adapters/decision-rules-v258.js';
@@ -1050,6 +1051,7 @@ const ADAPTER_MODULES = [
   ['areds-v615', aredsV615],
   ['frisen-v616', frisenV616],
   ['who-mucositis-v617', whoMucositisV617],
+  ['erefs-v618', erefsV618],
   ['tb-testing', tbTesting],
   ['lab-interpret', labInterpret],
   ['decision-rules-v258', decisionRulesV258],

@@ -818,6 +818,8 @@
     { "phrases": ["frisen scale", "papilledema grading", "papilledema grade", "optic disc swelling grade", "frisen grade"],
       "tile": "frisen", "audience": "clinicians" },
     { "phrases": ["who mucositis", "oral mucositis grade", "mucositis grading", "oral toxicity scale", "chemotherapy mouth sores grade"],
-      "tile": "who-mucositis", "audience": "clinicians" }
+      "tile": "who-mucositis", "audience": "clinicians" },
+    { "phrases": ["erefs", "endoscopic reference score", "eosinophilic esophagitis endoscopy score", "eoe endoscopy grading"],
+      "tile": "erefs", "audience": "clinicians" }
   ]
 }
