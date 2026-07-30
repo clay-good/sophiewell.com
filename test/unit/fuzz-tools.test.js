@@ -590,6 +590,7 @@ import * as utDiabeticFootV612 from '../../lib/ut-diabetic-foot-v612.js';
 import * as pedisV613 from '../../lib/pedis-v613.js';
 import * as ocularTraumaScoreV614 from '../../lib/ocular-trauma-score-v614.js';
 import * as aredsV615 from '../../lib/areds-v615.js';
+import * as frisenV616 from '../../lib/frisen-v616.js';
 import * as tbTesting from '../../lib/tb-testing.js';
 
 const MODULES = {
@@ -1125,6 +1126,7 @@ const MODULES = {
   'pedis-v613.js': pedisV613,
   'ocular-trauma-score-v614.js': ocularTraumaScoreV614,
   'areds-v615.js': aredsV615,
+  'frisen-v616.js': frisenV616,
   'tb-testing.js': tbTesting,
 };
 

@@ -814,6 +814,8 @@
     { "phrases": ["ocular trauma score", "eye injury prognosis", "open globe prognosis", "visual outcome after eye injury"],
       "tile": "ocular-trauma-score", "audience": "clinicians" },
     { "phrases": ["areds scale", "areds simplified severity scale", "macular degeneration risk", "amd progression risk", "drusen risk factors"],
-      "tile": "areds", "audience": "clinicians" }
+      "tile": "areds", "audience": "clinicians" },
+    { "phrases": ["frisen scale", "papilledema grading", "papilledema grade", "optic disc swelling grade", "frisen grade"],
+      "tile": "frisen", "audience": "clinicians" }
   ]
 }

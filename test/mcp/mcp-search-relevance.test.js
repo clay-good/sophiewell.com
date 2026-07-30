@@ -648,6 +648,7 @@ const PROBES = [
   ['pedis classification diabetic foot', ['pedis']],
   ['ocular trauma score visual prognosis eye injury', ['ocular-trauma-score']],
   ['areds simplified severity scale macular degeneration', ['areds']],
+  ['frisen scale papilledema grading', ['frisen']],
 ];
 
 test(`every golden probe routes an acceptable tile into the top ${TOP_N}`, () => {

@@ -1574,6 +1574,39 @@ Brings the exposed total to **1314 calculators across 430 modules**.
 ### lib/wayne-index-v527.js
 - `wayne-index`
 
+## Four-hundred-and-forty-first wave — the Frisen papilledema scale in lib/frisen-v616.js (+1)
+
+`frisen` (spec-v616) grades swelling of the optic nerve head 0 to 5 on fundus appearance. A **whole-concept
+gap**: "papilledema", "optic disc" and "intracranial hypertension" were all zero-hit across `app.js`.
+
+**The grade is derived from findings rather than picked from a list, and the cumulative rule is enforced
+rather than assumed.** The published wording is literally "features of grade 2 plus...", so a disc cannot be
+grade 3 while its halo still shows a temporal gap. Contradictory findings return `grade: null` with
+`consistent: false` and a list of `contradictions` — three separate contradiction paths, each with its own
+test — and the summary tells a caller **not** to resolve a contradiction by picking the higher grade.
+
+**The temporal gap is the entire difference between grade 1 and grade 2.** A test proves it: the two grades
+are produced with identical vessel findings, and only the halo description differs. The tile also gives the
+anatomical reason — the temporal border is spared because its axons are of fine caliber — so the gap reads as
+a real finding rather than a photographic artefact.
+
+**Grade 3 and grade 4 differ by where the obscured vessel is, not by how much is obscured**: total
+obscuration of a portion of a major vessel *as it leaves* the disc against the same finding *on* the disc.
+And **grade 4 is defined by an exception — at least one major vessel on the disc must be spared.** If none is
+spared it is grade 5. A negative condition inside a severity definition is easy to read past, and it is the
+only thing separating the top two grades.
+
+**Partial and total obscuration are not the same thing.** Grade 2 explicitly *permits* partial obscuration of
+major vessels; grades 3 and above require *total* obscuration of a portion, and every field label says so.
+**The grade does not measure intracranial pressure** — it describes an appearance, a low grade does not
+exclude raised pressure, and a test asserts that caveat appears in the result at both ends of the scale. New
+adapter module registered in `mcp/catalog.js`; its golden probe ("frisen scale papilledema grading") is
+promoted now that the tile is in the MCP-exposed registry. Brings the exposed total to **1403 calculators
+across 519 modules**.
+
+### lib/frisen-v616.js
+- `frisen`
+
 ## Four-hundred-and-fortieth wave — the AREDS simplified severity scale in lib/areds-v615.js (+1)
 
 `areds` (spec-v615) counts risk factors across both eyes and reads off an approximate five-year risk of
@@ -9658,6 +9691,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/areds-v615.js
 - `areds`
+
+### lib/frisen-v616.js
+- `frisen`
 
 ### lib/tb-testing.js
 - `tb-testing`
