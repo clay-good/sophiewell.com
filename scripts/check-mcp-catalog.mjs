@@ -86,6 +86,24 @@ async function main() {
   for (const id of live) if (!ledger.has(id)) errors.push(`ledger missing exposed id: ${id}`);
   for (const id of ledger) if (!live.has(id)) errors.push(`ledger lists ${id} but it is not in the live adapter set`);
 
+  // spec-v637 §2: id-aliases accountability. Each alias must map a RETIRED id
+  // (not a live one) to a LIVE canonical successor, so an agent's hardcoded old
+  // id self-heals and no alias silently shadows a real tile. Optional file.
+  if (await exists('data/id-aliases.json')) {
+    try {
+      const aliasDoc = JSON.parse(await readFile(join(ROOT, 'data/id-aliases.json'), 'utf8'));
+      const aliases = (aliasDoc && typeof aliasDoc.aliases === 'object' && aliasDoc.aliases) || {};
+      for (const [oldId, rec] of Object.entries(aliases)) {
+        if (live.has(oldId)) errors.push(`id-alias "${oldId}" shadows a live tile id (an alias must map a retired id)`);
+        if (!rec || typeof rec.canonical !== 'string') { errors.push(`id-alias "${oldId}" has no canonical id`); continue; }
+        if (rec.canonical === oldId) errors.push(`id-alias "${oldId}" points to itself`);
+        if (!live.has(rec.canonical)) errors.push(`id-alias "${oldId}" canonical "${rec.canonical}" is not a live exposed id`);
+      }
+    } catch (err) {
+      errors.push(`data/id-aliases.json is not valid JSON: ${err && err.message ? err.message : err}`);
+    }
+  }
+
   // 5. No-DOM scan of each distinct compute module.
   const seenModules = new Map(); // module rel-path -> ok
   for (const e of entries) {

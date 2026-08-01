@@ -76,6 +76,48 @@ export function catalogVersion() {
   };
 }
 
+// spec-v637 §2: stable-id aliasing. Tile ids are the public API; when a shipped
+// id is retired it maps here to its canonical successor so an agent that
+// hardcoded the old id self-heals. Loaded once, lazily; empty if absent
+// (accelerator-not-dependency). Empty today — no shipped id has been renamed.
+let aliasCache;
+function loadIdAliases() {
+  if (aliasCache !== undefined) return aliasCache;
+  try {
+    const path = fileURLToPath(new URL('../data/id-aliases.json', import.meta.url));
+    const doc = JSON.parse(readFileSync(path, 'utf8'));
+    aliasCache = (doc && typeof doc.aliases === 'object' && doc.aliases) ? doc.aliases : {};
+  } catch {
+    aliasCache = {};
+  }
+  return aliasCache;
+}
+
+// Pure resolver (unit-testable with a synthetic getter + map): a direct hit
+// wins; else an alias to a LIVE canonical resolves WITH a deprecation notice;
+// else an alias whose canonical was removed reports where it went; else nothing.
+// No wall-clock is read (the server stays deterministic) -- `sunset` is advisory
+// metadata, and a maintainer removes the entry after that date.
+export function resolveWithAliases(id, getCalc, aliases) {
+  const direct = getCalc(id);
+  if (direct) return { entry: direct, deprecation: null };
+  const a = aliases && aliases[id];
+  if (a && typeof a.canonical === 'string') {
+    const canonical = getCalc(a.canonical);
+    if (canonical) {
+      return { entry: canonical, deprecation: { deprecatedId: id, canonicalId: a.canonical, sunset: a.sunset || null } };
+    }
+    return {
+      entry: null, deprecation: { deprecatedId: id, canonicalId: a.canonical, since: a.since || null, removed: true },
+    };
+  }
+  return { entry: null, deprecation: null };
+}
+
+function resolveEntry(id) {
+  return resolveWithAliases(id, getCalculator, loadIdAliases());
+}
+
 // spec-v59 output-safety on the JSON surface: a result must serialize with no
 // NaN / Infinity. Returns the dotted path of the first non-finite number, or
 // null if clean.
@@ -175,9 +217,12 @@ export function getCatalogManifest() {
 
 export function describeCalculator(args = {}) {
   const { id } = args;
-  const e = getCalculator(id);
-  if (!e) return { id, valid: false, code: 'UNKNOWN_ID', message: `Unknown calculator id "${id}". Call list_calculators for available ids.` };
-  return {
+  const { entry: e, deprecation } = resolveEntry(id);
+  if (!e) {
+    if (deprecation) return { id, valid: false, code: 'UNKNOWN_ID', replacedBy: deprecation.canonicalId, deprecatedSince: deprecation.since, message: `Calculator id "${id}" was retired; use "${deprecation.canonicalId}".` };
+    return { id, valid: false, code: 'UNKNOWN_ID', message: `Unknown calculator id "${id}". Call list_calculators for available ids.` };
+  }
+  const out = {
     id: e.id,
     name: e.name,
     group: e.group,
@@ -191,39 +236,55 @@ export function describeCalculator(args = {}) {
     interpretation: e.interpretation,
     disclaimer: DISCLAIMER,
   };
+  // spec-v637 §2: if reached via a retired id, tell the agent so it can migrate.
+  if (deprecation) {
+    out.deprecatedId = deprecation.deprecatedId;
+    out.canonicalId = deprecation.canonicalId;
+    out.deprecationSunset = deprecation.sunset;
+  }
+  return out;
 }
 
 export function computeCalculator(args = {}) {
   const { id, inputs } = args;
-  const e = getCalculator(id);
-  if (!e) return { id, valid: false, code: 'UNKNOWN_ID', message: `Unknown calculator id "${id}". Call list_calculators for available ids.` };
+  const { entry: e, deprecation } = resolveEntry(id);
+  if (!e) {
+    if (deprecation) return { id, valid: false, code: 'UNKNOWN_ID', replacedBy: deprecation.canonicalId, deprecatedSince: deprecation.since, message: `Calculator id "${id}" was retired; use "${deprecation.canonicalId}".` };
+    return { id, valid: false, code: 'UNKNOWN_ID', message: `Unknown calculator id "${id}". Call list_calculators for available ids.` };
+  }
+  // spec-v637 §2: deprecation fields ride on every return when reached via a
+  // retired id, so the agent can self-heal and migrate before the sunset date.
+  const dep = deprecation
+    ? { deprecatedId: deprecation.deprecatedId, canonicalId: deprecation.canonicalId, deprecationSunset: deprecation.sunset }
+    : null;
 
   // spec-v637 §1: pass the validator's stable code/field through unchanged.
   const v = e.validate(inputs || {});
-  if (!v.valid) return { id, valid: false, code: v.code, ...(v.field ? { field: v.field } : {}), message: v.message };
+  if (!v.valid) return { id: e.id, valid: false, code: v.code, ...(v.field ? { field: v.field } : {}), ...(dep || {}), message: v.message };
 
   let raw;
   try {
     raw = e.compute(e.toArgs(inputs || {}));
   } catch (err) {
-    return { id, valid: false, code: 'COMPUTE_ERROR', message: `Computation failed: ${err && err.message ? err.message : 'unknown error'}` };
+    return { id: e.id, valid: false, code: 'COMPUTE_ERROR', ...(dep || {}), message: `Computation failed: ${err && err.message ? err.message : 'unknown error'}` };
   }
 
   // null (some libs) or an explicit { valid: false } shape = incomplete input.
   if (raw == null || raw.valid === false) {
     const message = (raw && (raw.message || raw.band)) || 'Enter the required values.';
-    return { id, valid: false, code: 'INCOMPLETE', message };
+    return { id: e.id, valid: false, code: 'INCOMPLETE', ...(dep || {}), message };
   }
 
   const result = e.formatResult(raw);
   const leak = firstNonFinite(result);
   if (leak) {
-    return { id, valid: false, code: 'COMPUTE_ERROR', message: `Output-safety guard: non-finite value at ${leak}.` };
+    return { id: e.id, valid: false, code: 'COMPUTE_ERROR', ...(dep || {}), message: `Output-safety guard: non-finite value at ${leak}.` };
   }
 
   return {
-    id,
+    id: e.id,
     valid: true,
+    ...(dep || {}),
     result,
     citation: e.citation,
     citationUrl: e.citationUrl,

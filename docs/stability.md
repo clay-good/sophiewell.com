@@ -74,6 +74,20 @@ for at least 90 days explaining what changed and why, and points to
 the closest replacement. Only after the 90-day notice period does the
 route stop responding.
 
+## Stable calculator ids (the MCP contract)
+
+A calculator's `id` is a stable public identifier. Agents call it over
+MCP and may hardcode it, so a shipped id is never reused for a
+different concept. If a calculator is renamed, the retired id is
+recorded in `data/id-aliases.json` with its canonical successor and a
+sunset date. Until the sunset date the MCP server resolves the old id
+to the new one and returns a deprecation notice
+(`deprecatedId`/`canonicalId`/`deprecationSunset`), so a caller that
+hardcoded the old id keeps working while it migrates. This is the
+machine-readable counterpart of the 90-day view notice above, which an
+agent never sees. (No id has been renamed to date; the alias map is
+empty.)
+
 ## Semantic versioning and a public changelog
 
 Every release is tagged in git with a semantic version. Every release

@@ -6,7 +6,7 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 
 import {
-  TOOL_DEFS, dispatch, toCallToolResult, SERVER_INSTRUCTIONS, catalogVersion,
+  TOOL_DEFS, dispatch, toCallToolResult, SERVER_INSTRUCTIONS, catalogVersion, resolveWithAliases,
   listCalculators, getCatalogManifest, describeCalculator, computeCalculator, findCalculator,
 } from '../../mcp/tools.js';
 
@@ -245,6 +245,37 @@ test('spec-v637: catalogVersion is a cacheable content-version on the discovery 
   assert.ok(cv.contentHash === null || /^[0-9a-f]{8,}$/.test(cv.contentHash), 'contentHash is a hex digest or null');
   assert.deepEqual(listCalculators().catalogVersion, cv, 'list_calculators carries the version');
   assert.deepEqual(getCatalogManifest().catalogVersion, cv, 'get_catalog_manifest carries the version');
+});
+
+// spec-v637 §2: stable-id aliasing resolves retired ids to their canonical successor.
+test('spec-v637: resolveWithAliases resolves, reports removals, and passes unknowns through', () => {
+  const reg = { chads: { id: 'chads', name: 'CHA2DS2-VASc' } };
+  const get = (x) => reg[x] || null;
+  const aliases = {
+    'chads-vasc': { canonical: 'chads', since: '2026-01-01', sunset: '2026-12-31' },
+    gone: { canonical: 'removed-tile', since: '2025-01-01' },
+  };
+  // direct hit: no deprecation
+  assert.deepEqual(resolveWithAliases('chads', get, aliases), { entry: reg.chads, deprecation: null });
+  // alias -> live canonical, with a deprecation notice
+  const r = resolveWithAliases('chads-vasc', get, aliases);
+  assert.equal(r.entry, reg.chads);
+  assert.equal(r.deprecation.canonicalId, 'chads');
+  assert.equal(r.deprecation.deprecatedId, 'chads-vasc');
+  assert.equal(r.deprecation.sunset, '2026-12-31');
+  // alias -> removed canonical, reports where it went
+  const g = resolveWithAliases('gone', get, aliases);
+  assert.equal(g.entry, null);
+  assert.equal(g.deprecation.removed, true);
+  assert.equal(g.deprecation.canonicalId, 'removed-tile');
+  // truly unknown
+  assert.deepEqual(resolveWithAliases('nope', get, aliases), { entry: null, deprecation: null });
+});
+
+test('spec-v637: the live alias file is empty, so an unknown id is a plain UNKNOWN_ID', () => {
+  const r = describeCalculator({ id: 'definitely-not-a-tile' });
+  assert.equal(r.code, 'UNKNOWN_ID');
+  assert.ok(!('replacedBy' in r), 'no alias record maps an unknown id today');
 });
 
 // spec-v634 §3: the CallTool envelope keeps the text block AND adds structuredContent.
