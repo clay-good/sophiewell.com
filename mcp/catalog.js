@@ -1137,6 +1137,10 @@ function buildRegistry() {
         citationAccessed: meta.citationAccessed || null,
         interpretation: meta.interpretation || null,
         example: meta.example || null,
+        // spec-v630: the curated related-tile graph (from META), already used by
+        // the site's "Related tools" links. describe_calculator filters it to the
+        // exposed set so every returned id is itself describable/computable.
+        related: Array.isArray(meta.related) ? meta.related : [],
       });
     }
   }

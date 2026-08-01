@@ -212,6 +212,20 @@ test('every tool carries read-only annotations and an object outputSchema', () =
   }
 });
 
+// spec-v630: describe_calculator exposes the curated related-tile graph.
+test('spec-v630: describe_calculator returns related ids, all exposed/describable', () => {
+  const d = describeCalculator({ id: 'chads' });
+  assert.ok(Array.isArray(d.related), 'related is an array');
+  assert.ok(d.related.length > 0, 'chads has related calculators');
+  assert.ok(d.related.includes('hasbled'), 'chads relates to hasbled');
+  for (const rid of d.related) {
+    assert.equal(describeCalculator({ id: rid }).id, rid, `related id ${rid} is itself describable`);
+  }
+  // a tile with no META.related still returns an array (never undefined)
+  const any = describeCalculator({ id: getCatalogManifest().calculators[0].id });
+  assert.ok(Array.isArray(any.related));
+});
+
 // spec-v637 §1: every failure carries a stable machine-readable code (+ field).
 test('spec-v637: failures carry a stable code and, where applicable, the field', () => {
   assert.equal(dispatch('bogus_tool', {}).code, 'UNKNOWN_TOOL');

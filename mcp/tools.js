@@ -234,6 +234,9 @@ export function describeCalculator(args = {}) {
     citationUrl: e.citationUrl,
     citationAccessed: e.citationAccessed,
     interpretation: e.interpretation,
+    // spec-v630: the curated related calculators, filtered to the exposed set so
+    // every id here is one the agent can describe/compute next.
+    related: (e.related || []).filter((rid) => getCalculator(rid)),
     disclaimer: DISCLAIMER,
   };
   // spec-v637 §2: if reached via a retired id, tell the agent so it can migrate.
@@ -473,6 +476,7 @@ export const TOOL_DEFS = [
         citationUrl: { type: ['string', 'null'] },
         citationAccessed: { type: ['string', 'null'] },
         interpretation: {},
+        related: { type: 'array', items: { type: 'string' }, description: 'Ids of related calculators, all exposed and describable.' },
         disclaimer: { type: 'string' },
         valid: { type: 'boolean' },
         code: { type: 'string', description: 'Stable error code on failure, e.g. UNKNOWN_ID.' },
