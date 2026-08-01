@@ -40,6 +40,15 @@ Go to [sophiewell.com](https://sophiewell.com) and type what you need.
 To run your own copy, clone this repository and run `npm run dev`,
 then open http://localhost:4173.
 
+## For AI agents (MCP)
+
+The same deterministic calculators are available to AI agents through an
+optional local [Model Context Protocol](https://modelcontextprotocol.io)
+server — so an agent calls a tool and gets the right number plus a
+citation, instead of guessing. It runs on your machine over stdio: no
+hosting, no network, no telemetry. Quickstart and client config are in
+[mcp/README.md](mcp/README.md).
+
 ## More
 
 - [CHANGELOG.md](CHANGELOG.md): what's new
