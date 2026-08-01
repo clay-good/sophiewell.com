@@ -7,8 +7,14 @@
 import { readFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import {
-  REGISTRY, TOTAL_TILES, getCalculator, allCalculators, coverageCount, DISCLAIMER,
+  REGISTRY, TOTAL_TILES, getCalculator, allCalculators, coverageCount, DISCLAIMER, ADMIN_DISCLAIMER,
 } from './catalog.js';
+
+// spec-v629: clinical tiles carry the clinical disclaimer; non-clinical
+// (billing/coding/admin) tiles carry the administrative one. `domain` lets an
+// agent tell decision-support from administrative math.
+function disclaimerFor(e) { return e.clinical ? DISCLAIMER : ADMIN_DISCLAIMER; }
+function domainOf(e) { return e.clinical ? 'clinical' : 'administrative'; }
 import { resolvePromptRanked } from '../lib/prompt.js';
 import { corpusDesc } from '../lib/search-corpus.js';
 import { queryCompute } from '../lib/query-compute.js';
@@ -239,7 +245,8 @@ export function describeCalculator(args = {}) {
     // spec-v630: the curated related calculators, filtered to the exposed set so
     // every id here is one the agent can describe/compute next.
     related: (e.related || []).filter((rid) => getCalculator(rid)),
-    disclaimer: DISCLAIMER,
+    domain: domainOf(e),
+    disclaimer: disclaimerFor(e),
   };
   // spec-v637 §2: if reached via a retired id, tell the agent so it can migrate.
   if (deprecation) {
@@ -294,7 +301,8 @@ export function computeCalculator(args = {}) {
     citation: e.citation,
     citationUrl: e.citationUrl,
     citationAccessed: e.citationAccessed,
-    disclaimer: DISCLAIMER,
+    domain: domainOf(e),
+    disclaimer: disclaimerFor(e),
   };
 }
 
@@ -375,7 +383,7 @@ export function answerQuery(args = {}) {
   if (e) {
     out.citation = e.citation;
     out.citationUrl = e.citationUrl;
-    out.disclaimer = DISCLAIMER;
+    out.disclaimer = disclaimerFor(e);
   }
   const full = computeCalculator({ id: hit.tile, inputs: hit.inputs });
   if (full.valid) out.result = full.result;
@@ -609,6 +617,7 @@ export const TOOL_DEFS = [
         citationAccessed: { type: ['string', 'null'] },
         interpretation: {},
         related: { type: 'array', items: { type: 'string' }, description: 'Ids of related calculators, all exposed and describable.' },
+        domain: { type: 'string', description: 'clinical | administrative (which disclaimer applies).' },
         disclaimer: { type: 'string' },
         valid: { type: 'boolean' },
         code: { type: 'string', description: 'Stable error code on failure, e.g. UNKNOWN_ID.' },
@@ -638,6 +647,7 @@ export const TOOL_DEFS = [
         citation: { type: ['string', 'null'] },
         citationUrl: { type: ['string', 'null'] },
         citationAccessed: { type: ['string', 'null'] },
+        domain: { type: 'string', description: 'clinical | administrative (which disclaimer applies).' },
         disclaimer: { type: 'string' },
         code: { type: 'string', description: 'Stable error code on failure: UNKNOWN_ID, MISSING_INPUT, UNKNOWN_INPUT, INVALID_TYPE, INCOMPLETE, or COMPUTE_ERROR.' },
         field: { type: 'string', description: 'The offending input key, when the error is input-specific.' },

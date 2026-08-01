@@ -227,6 +227,24 @@ test('every tool carries read-only annotations and an object outputSchema', () =
   }
 });
 
+// spec-v629: non-clinical (administrative) calculators are exposed with the
+// admin disclaimer/domain; clinical tiles are unchanged.
+test('spec-v629: non-clinical validators exposed with the administrative domain', () => {
+  const npi = computeCalculator({ id: 'npi-validate', inputs: { 'npi-in': '1234567893' } });
+  assert.equal(npi.valid, true);
+  assert.equal(npi.domain, 'administrative');
+  assert.match(npi.result.note, /Valid NPI/);
+  assert.ok(/payment|coverage|compliance/i.test(npi.disclaimer), 'carries the admin disclaimer, not the clinical one');
+
+  assert.equal(computeCalculator({ id: 'icd10-validate', inputs: { 'icd-in': 'M54.5' } }).valid, true);
+  assert.equal(describeCalculator({ id: 'mbi-validate' }).domain, 'administrative');
+
+  // clinical tiles keep the clinical domain and a different disclaimer
+  const meld = computeCalculator({ id: 'meld-xi', inputs: { 'mx-bili': 2.0, 'mx-creat': 1.5 } });
+  assert.equal(meld.domain, 'clinical');
+  assert.notEqual(meld.disclaimer, npi.disclaimer, 'clinical and admin disclaimers differ');
+});
+
 // spec-v630: one-shot natural-language answer via queryCompute.
 test('spec-v630: answer_query computes a value from a sentence with embedded numbers', () => {
   const bmi = answerQuery({ query: 'bmi 80kg 180cm' });

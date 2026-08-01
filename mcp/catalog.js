@@ -538,6 +538,7 @@ import pediatricAcuteV262 from './adapters/pediatric-acute-v262.js';
 import respiratoryMaternalV263 from './adapters/respiratory-maternal-v263.js';
 import massiveTransfusionV265 from './adapters/massive-transfusion-v265.js';
 import rccPrognosisV266 from './adapters/rcc-prognosis-v266.js';
+import billingV83 from './adapters/billing-v83.js';
 
 const ADAPTER_MODULES = [
   ['tox-v86', toxV86],
@@ -1061,6 +1062,7 @@ const ADAPTER_MODULES = [
   ['respiratory-maternal-v263', respiratoryMaternalV263],
   ['massive-transfusion-v265', massiveTransfusionV265],
   ['rcc-prognosis-v266', rccPrognosisV266],
+  ['billing-v83', billingV83],
 ];
 
 const HERE = dirname(fileURLToPath(import.meta.url));
@@ -1096,6 +1098,12 @@ function parseUtilities() {
 // spec-v50 §3 clinical-posture disclaimer carried on every compute/describe.
 export const DISCLAIMER = 'This is a computed quantity for decision support, not a treat / escalate / prescribe order. The value and its interpretation are the cited source’s; the decision stays with the clinician and local protocol.';
 
+// spec-v629: non-clinical (billing / coding / administrative) calculators carry a
+// domain-appropriate disclaimer instead of the clinical one. A payment estimate or
+// a format check is decision support against payer rules and published schedules,
+// not a guarantee of payment, coverage, or compliance.
+export const ADMIN_DISCLAIMER = 'This is an administrative computation for decision support, not a guarantee of payment, coverage, coding correctness, or regulatory compliance. Verify against the current payer policy, fee schedule, and code set before relying on it.';
+
 function buildRegistry() {
   const utilities = parseUtilities();
   const registry = new Map();
@@ -1108,7 +1116,10 @@ function buildRegistry() {
       if (registry.has(id)) { errors.push(`${id}: duplicate adapter`); continue; }
       const util = utilities.get(id);
       if (!util) { errors.push(`${id}: not present in UTILITIES (app.js)`); continue; }
-      if (!util.clinical) { errors.push(`${id}: not clinical:true (spec-v183 §2.4 first wave is clinical only)`); continue; }
+      // spec-v629: the clinical-only fence is lifted. Exposure is opt-in by the
+      // existence of an adapter, so a non-clinical (billing/coding/admin) tile is
+      // exposed only when someone writes one; the clinical flag now selects the
+      // disclaimer domain (see ADMIN_DISCLAIMER) rather than gating exposure.
       const meta = META[id];
       if (!meta) { errors.push(`${id}: no META entry`); continue; }
       if (!Array.isArray(fields) || fields.length === 0) { errors.push(`${id}: no fields`); continue; }

@@ -3,7 +3,8 @@
 //
 // Asserts the optional stdio MCP surface stays single-sourced and honest:
 //   1. every adapter id exists in app.js UTILITIES (enforced at registry load);
-//   2. every exposed id is clinical:true (enforced at registry load);
+//   2. every exposed id carries the domain-correct disclaimer (spec-v629:
+//      clinical tiles the clinical disclaimer, non-clinical the admin one);
 //   3. docs/mcp-coverage.md "Exposed" list equals the live adapter set exactly;
 //   4. every adapter's META.example round-trips through compute_calculator
 //      (every numeric token in example.expected appears in the result, the same
@@ -120,6 +121,14 @@ async function main() {
     const s = e.inputSchema;
     if (!s || s.type !== 'object' || typeof s.properties !== 'object') errors.push(`${e.id}: invalid inputSchema`);
     if (typeof e.summary !== 'string' || e.summary.length < 8) errors.push(`${e.id}: missing summary`);
+  }
+
+  // 2b. spec-v629: describe reports the domain-correct disclaimer for each tile.
+  for (const e of entries) {
+    const d = tools.describeCalculator({ id: e.id });
+    const expectedDomain = e.clinical ? 'clinical' : 'administrative';
+    if (d.domain !== expectedDomain) errors.push(`${e.id}: domain "${d.domain}" != expected "${expectedDomain}"`);
+    if (typeof d.disclaimer !== 'string' || d.disclaimer.length < 20) errors.push(`${e.id}: missing/short disclaimer`);
   }
 
   // 4. Example round-trip: every numeric fact in expected appears in the result.
