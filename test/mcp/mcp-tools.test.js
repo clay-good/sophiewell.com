@@ -409,6 +409,23 @@ test('spec-v629 wave 9: deadline tiles give a deterministic deadline date', () =
   assert.equal(br.result.hhsNoticeDeadline, '2026-05-14');
 });
 
+// spec-v629 wave 10: pediatric weight conversion (bidirectional, composed lib fns).
+test('spec-v629 wave 10: peds-weight-conv converts both directions', () => {
+  const r = computeCalculator({ id: 'peds-weight-conv', inputs: { 'pw-lb': '7', 'pw-oz': '5', 'pw-kg': '3.5' } });
+  assert.equal(r.valid, true);
+  assert.equal(r.result.kg, 3.317, '7 lb 5 oz -> 3.317 kg');
+  assert.equal(r.result.lbFromKg, 7);
+  assert.equal(r.result.ozFromKg, 11.5, '3.5 kg -> 7 lb 11.5 oz');
+  assert.equal(r.domain, 'administrative');
+  // one direction only
+  const kgOnly = computeCalculator({ id: 'peds-weight-conv', inputs: { 'pw-kg': '3.5' } });
+  assert.equal(kgOnly.valid, true);
+  assert.equal(kgOnly.result.lbFromKg, 7);
+  assert.ok(!('kg' in kgOnly.result), 'no lb+oz input -> no forward conversion');
+  // nothing supplied -> incomplete
+  assert.equal(computeCalculator({ id: 'peds-weight-conv', inputs: {} }).code, 'INCOMPLETE');
+});
+
 // spec-v630: one-shot natural-language answer via queryCompute.
 test('spec-v630: answer_query computes a value from a sentence with embedded numbers', () => {
   const bmi = answerQuery({ query: 'bmi 80kg 180cm' });

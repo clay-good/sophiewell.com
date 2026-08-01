@@ -7424,6 +7424,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 - `overpayment-60day`
 - `breach-clock`
 
+### lib/unit-convert.js (spec-v629 wave 10: pediatric weight conversion — administrative disclaimer)
+- `peds-weight-conv`
+
 ### lib/tox-v86.js
 - `serotonin-toxicity`
 - `salicylate-toxicity`

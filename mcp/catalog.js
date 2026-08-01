@@ -547,6 +547,7 @@ import billingV82 from './adapters/billing-v82.js';
 import codingV5 from './adapters/coding-v5.js';
 import opsV63 from './adapters/ops-v63.js';
 import regulatory from './adapters/regulatory.js';
+import unitConvert from './adapters/unit-convert.js';
 
 const ADAPTER_MODULES = [
   ['tox-v86', toxV86],
@@ -1079,6 +1080,7 @@ const ADAPTER_MODULES = [
   ['coding-v5', codingV5],
   ['ops-v63', opsV63],
   ['regulatory', regulatory],
+  ['unit-convert', unitConvert],
 ];
 
 const HERE = dirname(fileURLToPath(import.meta.url));
