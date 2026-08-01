@@ -7387,6 +7387,12 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 - `multi-surgeon-pay`
 - `sequestration-adjust`
 
+### lib/billing-v79.js (spec-v629 wave 4: claim-edit engines — administrative disclaimer)
+- `ncci-ptp`
+- `mue-check`
+- `global-period`
+- `modifier-order`
+
 ### lib/tox-v86.js
 - `serotonin-toxicity`
 - `salicylate-toxicity`

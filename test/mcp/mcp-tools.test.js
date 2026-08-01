@@ -287,6 +287,27 @@ test('spec-v629 wave 3: rvu/bilateral/multi-surgeon/sequestration price correctl
   assert.equal(seq.result.netPaymentUsd, 78.4);
 });
 
+// spec-v629 wave 4: claim-edit engines (verdicts; global-period is date-deterministic).
+test('spec-v629 wave 4: ncci/mue/global-period/modifier-order rule correctly', () => {
+  const mue = computeCalculator({ id: 'mue-check', inputs: { 'mue-units': '4', 'mue-value': '1', 'mue-mai': '2' } });
+  assert.equal(mue.valid, true);
+  assert.equal(mue.result.payableUnits, 1);
+  assert.equal(mue.result.unitsAtRisk, 3);
+  assert.equal(mue.domain, 'administrative');
+
+  const ncci = computeCalculator({ id: 'ncci-ptp', inputs: { 'ncci-a': '11042', 'ncci-b': '97597', 'ncci-col': 'a', 'ncci-ind': '1', 'ncci-mod': '59' } });
+  assert.equal(ncci.valid, true);
+
+  const gp = computeCalculator({ id: 'global-period', inputs: { 'gp-surg': '2026-01-01', 'gp-glob': '090', 'gp-sub': '2026-02-01', 'gp-nat': 'unrelated-em' } });
+  assert.equal(gp.valid, true);
+  assert.equal(gp.result.insideGlobal, true);
+  assert.equal(gp.result.daysFromSurgery, 31, 'computed from the two explicit dates (no clock)');
+
+  const mo = computeCalculator({ id: 'modifier-order', inputs: { 'mo-1': '59', 'mo-2': '26', 'mo-3': 'RT', 'mo-4': '' } });
+  assert.equal(mo.valid, true);
+  assert.deepEqual(mo.result.sequence, ['26', '59', 'RT'], 'pricing modifier 26 leads');
+});
+
 // spec-v630: one-shot natural-language answer via queryCompute.
 test('spec-v630: answer_query computes a value from a sentence with embedded numbers', () => {
   const bmi = answerQuery({ query: 'bmi 80kg 180cm' });
