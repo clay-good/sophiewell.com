@@ -81,24 +81,63 @@ function matches(entry, { group, specialty, query }) {
   return true;
 }
 
+// spec-v635 §1-2: list_calculators is capped and paginated so the natural
+// "show me everything" call can no longer return a whole context window of rows
+// (the full unfiltered set serialized to ~230k tokens). `total` is the full
+// match count; `count` is the rows in this page; `nextOffset` is null when the
+// page is the last one. `fields: 'compact'` drops the heavy `summary`/`specialties`
+// (an ~8x smaller row) for cheap browsing.
+const LIST_LIMIT_DEFAULT = 50;
+const LIST_LIMIT_MAX = 200;
+
 export function listCalculators(args = {}) {
-  const { group, specialty, query } = args;
-  const rows = allCalculators()
+  const { group, specialty, query, fields } = args;
+  const compact = fields === 'compact';
+  const matched = allCalculators()
     .filter((e) => matches(e, { group, specialty, query }))
+    .sort((a, b) => a.id.localeCompare(b.id));
+
+  let limit = Number.isFinite(args.limit) ? Math.floor(args.limit) : LIST_LIMIT_DEFAULT;
+  limit = Math.max(1, Math.min(LIST_LIMIT_MAX, limit));
+  let offset = Number.isFinite(args.offset) ? Math.floor(args.offset) : 0;
+  offset = Math.max(0, offset);
+
+  const page = matched.slice(offset, offset + limit);
+  const rows = page.map((e) => (compact
+    ? { id: e.id, name: e.name, group: e.group }
+    : {
+      id: e.id, name: e.name, group: e.group, specialties: e.specialties, summary: e.summary,
+    }));
+  const nextOffset = offset + page.length < matched.length ? offset + page.length : null;
+
+  return {
+    coverage: `${coverageCount()} of ${TOTAL_TILES} catalog tiles exposed as MCP tools`,
+    exposed: coverageCount(),
+    catalogTotal: TOTAL_TILES,
+    total: matched.length,
+    count: rows.length,
+    offset,
+    nextOffset,
+    calculators: rows,
+  };
+}
+
+// spec-v635 §3: a one-shot compact index of every exposed calculator, so an
+// agent can reason about the whole catalog in a single call (id/name/group/
+// specialties, no summaries) instead of paging list_calculators. A thin
+// projection of the live registry -- the same source of truth, no new data.
+export function getCatalogManifest() {
+  const calculators = allCalculators()
     .map((e) => ({
-      id: e.id,
-      name: e.name,
-      group: e.group,
-      specialties: e.specialties,
-      summary: e.summary,
+      id: e.id, name: e.name, group: e.group, specialties: e.specialties,
     }))
     .sort((a, b) => a.id.localeCompare(b.id));
   return {
     coverage: `${coverageCount()} of ${TOTAL_TILES} catalog tiles exposed as MCP tools`,
     exposed: coverageCount(),
     catalogTotal: TOTAL_TILES,
-    count: rows.length,
-    calculators: rows,
+    count: calculators.length,
+    calculators,
   };
 }
 
@@ -248,9 +287,12 @@ function readOnlyAnnotations(title) {
 // back-compat with clients that ignore structuredContent; structuredContent is
 // the same payload as a typed object so agents need not re-parse a JSON string.
 // Pure (no SDK) so it is unit-testable and mcp/ stays deletable.
+// spec-v635 §4: the wire is serialized compact (no 2-space indent) — a free
+// ~13-15% token saving on every payload; the transport is machine-read, and
+// describe_calculator carries the human-readable detail either way.
 export function toCallToolResult(result) {
   return {
-    content: [{ type: 'text', text: JSON.stringify(result, null, 2) }],
+    content: [{ type: 'text', text: JSON.stringify(result) }],
     structuredContent: result,
   };
 }
@@ -262,7 +304,7 @@ export function toCallToolResult(result) {
 export const TOOL_DEFS = [
   {
     name: 'list_calculators',
-    description: 'Discover the exposed deterministic clinical calculators. Optional filters: group (catalog group letter), specialty, query (substring over id/name/specialties). Returns lightweight rows plus the live coverage count. No computation.',
+    description: 'Discover the exposed deterministic clinical calculators. Optional filters: group (catalog group letter), specialty, query (substring over id/name/specialties). Paginated (default 50, max 200 per page) — read `total`, `count`, and `nextOffset`. Pass fields:"compact" for id/name/group only. For a one-shot whole-catalog index use get_catalog_manifest. No computation.',
     annotations: readOnlyAnnotations('List clinical calculators'),
     inputSchema: {
       type: 'object',
@@ -270,7 +312,33 @@ export const TOOL_DEFS = [
         group: { type: 'string', description: 'Catalog group letter, e.g. "G" or "E".' },
         specialty: { type: 'string', description: 'Specialty tag, e.g. "hepatology".' },
         query: { type: 'string', description: 'Substring match over id, name, summary, specialties.' },
+        limit: { type: 'integer', description: 'Max rows per page (default 50, capped at 200).' },
+        offset: { type: 'integer', description: 'Row offset for pagination (default 0). Use the returned nextOffset to page.' },
+        fields: { type: 'string', enum: ['full', 'compact'], description: '"compact" returns id/name/group only (~8x smaller); "full" (default) adds specialties + summary.' },
       },
+      additionalProperties: false,
+    },
+    outputSchema: {
+      type: 'object',
+      properties: {
+        coverage: { type: 'string' },
+        exposed: { type: 'integer' },
+        catalogTotal: { type: 'integer' },
+        total: { type: 'integer' },
+        count: { type: 'integer' },
+        offset: { type: 'integer' },
+        nextOffset: { type: ['integer', 'null'] },
+        calculators: { type: 'array', items: { type: 'object' } },
+      },
+    },
+  },
+  {
+    name: 'get_catalog_manifest',
+    description: 'Return a compact one-shot index of every exposed calculator (id, name, group, specialties) plus the live coverage counts. Use this once to reason about the whole catalog cheaply, instead of paging list_calculators. No summaries, no computation.',
+    annotations: readOnlyAnnotations('Get the catalog manifest'),
+    inputSchema: {
+      type: 'object',
+      properties: {},
       additionalProperties: false,
     },
     outputSchema: {
@@ -373,6 +441,7 @@ export const TOOL_DEFS = [
 export function dispatch(name, args) {
   switch (name) {
     case 'list_calculators': return listCalculators(args);
+    case 'get_catalog_manifest': return getCatalogManifest(args);
     case 'describe_calculator': return describeCalculator(args);
     case 'compute_calculator': return computeCalculator(args);
     case 'find_calculator': return findCalculator(args);

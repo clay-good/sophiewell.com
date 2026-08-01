@@ -6,7 +6,7 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 
 import { META } from '../../lib/meta.js';
-import { computeCalculator, listCalculators } from '../../mcp/tools.js';
+import { computeCalculator, getCatalogManifest } from '../../mcp/tools.js';
 
 function ok(id, inputs) {
   const r = computeCalculator({ id, inputs });
@@ -4295,7 +4295,9 @@ test('every exposed example round-trips to its META.example.expected numbers', (
     const hi = (f.rangeEnd != null ? Math.max(f.value, f.rangeEnd) : f.value) + tol;
     return [...haystack.matchAll(/\d+(?:\.\d+)?/g)].map((x) => Number(x[0])).some((n) => n >= lo && n <= hi);
   }
-  for (const row of listCalculators().calculators) {
+  // spec-v635: list_calculators is now paginated, so iterate the full manifest
+  // to keep this an every-exposed-tile sweep.
+  for (const row of getCatalogManifest().calculators) {
     const ex = META[row.id].example;
     const r = computeCalculator({ id: row.id, inputs: ex.fields });
     assert.equal(r.valid, true, `${row.id} example must compute`);

@@ -7,33 +7,38 @@ import assert from 'node:assert/strict';
 
 import {
   TOOL_DEFS, dispatch, toCallToolResult, SERVER_INSTRUCTIONS,
-  listCalculators, describeCalculator, computeCalculator, findCalculator,
+  listCalculators, getCatalogManifest, describeCalculator, computeCalculator, findCalculator,
 } from '../../mcp/tools.js';
 
-test('exactly four tools, each with a valid object inputSchema', () => {
-  // spec-v183 §2.2 fixed a three-tool surface; the mcp-discovery change re-opens
-  // that fence to add the fourth, read-only find_calculator.
-  assert.equal(TOOL_DEFS.length, 4);
+test('five tools, each with a valid object inputSchema', () => {
+  // spec-v183 §2.2 fixed a three-tool surface; mcp-discovery added find_calculator
+  // (four); spec-v635 added get_catalog_manifest (five).
+  assert.equal(TOOL_DEFS.length, 5);
   assert.deepEqual(TOOL_DEFS.map((t) => t.name).sort(),
-    ['compute_calculator', 'describe_calculator', 'find_calculator', 'list_calculators']);
+    ['compute_calculator', 'describe_calculator', 'find_calculator', 'get_catalog_manifest', 'list_calculators']);
   for (const t of TOOL_DEFS) {
     assert.equal(t.inputSchema.type, 'object');
     assert.ok(typeof t.description === 'string' && t.description.length > 20);
   }
 });
 
-test('list_calculators: coverage line, subset count, and filters', () => {
+test('list_calculators: coverage line, paginated totals, and filters', () => {
   const all = listCalculators();
   assert.match(all.coverage, /^\d+ of \d+ catalog tiles exposed/);
   assert.ok(all.exposed >= 20, 'first wave exposes at least 20');
   assert.ok(all.catalogTotal > all.exposed, 'exposed is a strict subset of the catalog');
+  // spec-v635: total is the full match count; count/calculators is one capped page.
+  assert.ok(all.total > 200, 'many calculators match the empty filter');
   assert.equal(all.count, all.calculators.length);
+  assert.ok(all.count <= 50, 'default page is capped at 50 rows');
+  assert.equal(all.offset, 0);
+  assert.equal(all.nextOffset, 50, 'more rows remain after the first page');
   for (const row of all.calculators) {
     assert.ok(row.id && row.name && row.group && Array.isArray(row.specialties) && row.summary);
   }
 
   const hep = listCalculators({ specialty: 'hepatology' });
-  assert.ok(hep.count >= 6 && hep.count < all.count);
+  assert.ok(hep.total >= 6 && hep.total < all.total);
   assert.ok(hep.calculators.every((r) => r.specialties.includes('hepatology')));
 
   const q = listCalculators({ query: 'osmolal' });
@@ -41,6 +46,44 @@ test('list_calculators: coverage line, subset count, and filters', () => {
 
   const none = listCalculators({ group: 'ZZZ' });
   assert.equal(none.count, 0);
+  assert.equal(none.total, 0);
+  assert.equal(none.nextOffset, null);
+});
+
+// spec-v635 §1-2: pagination is deterministic and non-overlapping; compact drops summary.
+test('list_calculators: limit/offset paginate without overlap; compact mode is lean', () => {
+  const p1 = listCalculators({ limit: 10, offset: 0 });
+  const p2 = listCalculators({ limit: 10, offset: 10 });
+  assert.equal(p1.count, 10);
+  assert.equal(p1.nextOffset, 10);
+  assert.equal(p2.offset, 10);
+  const ids1 = new Set(p1.calculators.map((r) => r.id));
+  assert.ok(p2.calculators.every((r) => !ids1.has(r.id)), 'pages do not overlap');
+  assert.equal(p1.total, p2.total, 'total is stable across pages');
+
+  const over = listCalculators({ limit: 9999 });
+  assert.ok(over.count <= 200, 'limit hard-capped at 200');
+
+  const compact = listCalculators({ fields: 'compact', limit: 5 });
+  for (const row of compact.calculators) {
+    assert.ok(row.id && row.name && row.group);
+    assert.ok(!('summary' in row) && !('specialties' in row), 'compact rows drop summary/specialties');
+  }
+});
+
+// spec-v635 §3: the one-shot manifest indexes every exposed calculator compactly.
+test('get_catalog_manifest: every exposed calculator, compact, no summaries', () => {
+  const m = getCatalogManifest();
+  assert.equal(m.count, m.exposed, 'manifest lists exactly the exposed set');
+  assert.equal(m.count, m.calculators.length);
+  assert.ok(m.count > 200);
+  for (const row of m.calculators) {
+    assert.ok(row.id && row.name && row.group && Array.isArray(row.specialties));
+    assert.ok(!('summary' in row), 'manifest rows carry no summary');
+  }
+  // every manifest id is describable (it is a real exposed tile)
+  assert.equal(describeCalculator({ id: m.calculators[0].id }).id, m.calculators[0].id);
+  assert.equal(dispatch('get_catalog_manifest', {}).count, m.count);
 });
 
 test('describe_calculator: full contract; unknown id is a structured error', () => {
