@@ -245,6 +245,24 @@ test('spec-v629: non-clinical validators exposed with the administrative domain'
   assert.notEqual(meld.disclaimer, npi.disclaimer, 'clinical and admin disclaimers differ');
 });
 
+// spec-v629 wave 2: facility pricing — dollar->cents scaling and apc line parsing.
+test('spec-v629 wave 2: era/drg/apc price correctly through the adapters', () => {
+  const era = computeCalculator({ id: 'era-balance', inputs: { 'era-billed': '200', 'era-paid': '120', 'era-co': '50', 'era-pr': '30' } });
+  assert.equal(era.valid, true);
+  assert.equal(era.result.residualCents, 0, 'balances to zero');
+  assert.equal(era.result.patientResponsibilityCents, 3000, 'PR $30.00 = 3000 cents (dollar->cents scaling)');
+
+  const drg = computeCalculator({ id: 'drg-payment', inputs: { 'drg-weight': '1.5', 'drg-oper': '6000', 'drg-cap': '500', 'drg-wage': '1' } });
+  assert.equal(drg.valid, true);
+  assert.equal(drg.result.baseDrgCents, 975000, 'base DRG $9750.00');
+
+  const apc = computeCalculator({ id: 'apc-payment', inputs: { 'apc-list': '10, T\n4, T\n2, N', 'apc-cf': '87', 'apc-wage': '1' } });
+  assert.equal(apc.valid, true);
+  assert.equal(apc.result.totalUsd, 1044, 'total OPPS $1044 (lines parsed, N packaged, T discounted)');
+  assert.deepEqual(apc.result.lines.map((l) => l.payUsd), [870, 174, 0]);
+  assert.equal(apc.domain, 'administrative');
+});
+
 // spec-v630: one-shot natural-language answer via queryCompute.
 test('spec-v630: answer_query computes a value from a sentence with embedded numbers', () => {
   const bmi = answerQuery({ query: 'bmi 80kg 180cm' });

@@ -7373,10 +7373,13 @@ total to **1073 calculators across 197 modules**.
 
 Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
-### lib/billing-v83.js (spec-v629: first non-clinical wave — administrative disclaimer)
+### lib/billing-v83.js (spec-v629: non-clinical waves — administrative disclaimer)
 - `npi-validate`
 - `mbi-validate`
 - `icd10-validate`
+- `era-balance`
+- `drg-payment`
+- `apc-payment`
 
 ### lib/tox-v86.js
 - `serotonin-toxicity`
