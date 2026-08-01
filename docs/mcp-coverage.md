@@ -7412,6 +7412,11 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 - `allowed-amount`
 - `nsa-cost-share`
 
+### lib/coding-v5.js + lib/ops-v63.js (spec-v629 wave 8: coding — administrative disclaimer)
+- `em-time`
+- `em-mdm`
+- `ndc-convert`
+
 ### lib/tox-v86.js
 - `serotonin-toxicity`
 - `salicylate-toxicity`

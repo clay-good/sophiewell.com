@@ -371,6 +371,23 @@ test('spec-v629 wave 7: cost-share/cob/allowed-amount/nsa compute correctly', ()
   assert.equal(nsa.result.coinsurancePct, 20);
 });
 
+// spec-v629 wave 8: coding (em-time/em-mdm codes; ndc string-in via custom toArgs).
+test('spec-v629 wave 8: em-time/em-mdm/ndc-convert code correctly', () => {
+  const et = computeCalculator({ id: 'em-time', inputs: { enc: 'new', t: '45' } });
+  assert.equal(et.valid, true);
+  assert.equal(et.result.code, '99204');
+  assert.equal(et.domain, 'administrative');
+
+  const em = computeCalculator({ id: 'em-mdm', inputs: { 'mdm-prob': '4', 'mdm-data': '3', 'mdm-risk': '4' } });
+  assert.equal(em.result.newCode, '99204');
+  assert.equal(em.result.estCode, '99214');
+
+  const ndc = computeCalculator({ id: 'ndc-convert', inputs: { n: '1234-5678-90' } });
+  assert.equal(ndc.valid, true);
+  assert.equal(ndc.result.billing11, '01234-5678-90');
+  assert.equal(ndc.result.fda10, '1234-5678-90');
+});
+
 // spec-v630: one-shot natural-language answer via queryCompute.
 test('spec-v630: answer_query computes a value from a sentence with embedded numbers', () => {
   const bmi = answerQuery({ query: 'bmi 80kg 180cm' });
