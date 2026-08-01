@@ -8,15 +8,16 @@ import assert from 'node:assert/strict';
 import {
   TOOL_DEFS, dispatch, toCallToolResult, SERVER_INSTRUCTIONS, catalogVersion, resolveWithAliases,
   listCalculators, getCatalogManifest, describeCalculator, computeCalculator, findCalculator,
-  answerQuery, convertUnits,
+  answerQuery, convertUnits, computeBatch,
 } from '../../mcp/tools.js';
 
-test('seven tools, each with a valid object inputSchema', () => {
+test('eight tools, each with a valid object inputSchema', () => {
   // spec-v183 fixed three; mcp-discovery added find_calculator (four); spec-v635
-  // added get_catalog_manifest (five); spec-v630 added answer_query + convert_units.
-  assert.equal(TOOL_DEFS.length, 7);
+  // added get_catalog_manifest (five); spec-v630 added answer_query + convert_units
+  // (seven); spec-v623 added compute_batch (eight).
+  assert.equal(TOOL_DEFS.length, 8);
   assert.deepEqual(TOOL_DEFS.map((t) => t.name).sort(),
-    ['answer_query', 'compute_calculator', 'convert_units', 'describe_calculator', 'find_calculator', 'get_catalog_manifest', 'list_calculators']);
+    ['answer_query', 'compute_batch', 'compute_calculator', 'convert_units', 'describe_calculator', 'find_calculator', 'get_catalog_manifest', 'list_calculators']);
   for (const t of TOOL_DEFS) {
     assert.equal(t.inputSchema.type, 'object');
     assert.ok(typeof t.description === 'string' && t.description.length > 20);
@@ -259,6 +260,37 @@ test('spec-v630: convert_units converts labs and vitals both directions', () => 
   assert.equal(convertUnits({ kind: 'glucose', value: 'abc' }).code, 'INVALID_TYPE');
   // via dispatch too
   assert.equal(dispatch('convert_units', { kind: 'weight', value: 220, direction: 'lbToKg' }).valid, true);
+});
+
+// spec-v623: batch compute is an ordered fan-out; one failure doesn't sink the rest.
+test('spec-v623: compute_batch runs many, isolates failures, and is bounded', () => {
+  const r = computeBatch({
+    calculations: [
+      { id: 'meld-xi', inputs: { 'mx-bili': 2.0, 'mx-creat': 1.5 } },
+      { id: 'meld-xi', inputs: {} }, // invalid: missing input
+      { id: 'no-such-tile', inputs: {} }, // invalid: unknown id
+    ],
+  });
+  assert.equal(r.count, 3);
+  assert.equal(r.results.length, 3);
+  assert.equal(r.results[0].valid, true);
+  assert.equal(r.results[0].result.score, 18);
+  assert.equal(r.results[1].valid, false);
+  assert.equal(r.results[1].code, 'MISSING_INPUT');
+  assert.equal(r.results[2].valid, false);
+  assert.equal(r.results[2].code, 'UNKNOWN_ID');
+  assert.ok(r.disclaimer);
+  // ordering preserved + deterministic
+  assert.deepEqual(computeBatch({ calculations: [{ id: 'meld-xi', inputs: { 'mx-bili': 2.0, 'mx-creat': 1.5 } }] }).results[0].result.score, 18);
+
+  // guards
+  assert.equal(computeBatch({}).code, 'BAD_ARGS');
+  assert.equal(computeBatch({ calculations: [] }).code, 'BAD_ARGS');
+  const tooMany = computeBatch({ calculations: Array.from({ length: 26 }, () => ({ id: 'meld-xi', inputs: {} })) });
+  assert.equal(tooMany.code, 'BAD_ARGS');
+  assert.match(tooMany.message, /at most 25/);
+  // via dispatch
+  assert.equal(dispatch('compute_batch', { calculations: [{ id: 'ecg-axis', inputs: { 'ea-i': 8, 'ea-avf': 6 } }] }).count, 1);
 });
 
 // spec-v630: describe_calculator exposes the curated related-tile graph.

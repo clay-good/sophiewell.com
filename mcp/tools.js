@@ -451,6 +451,33 @@ export function convertUnits(args = {}) {
   };
 }
 
+// spec-v623: batch compute. A thin, ordered fan-out over computeCalculator so an
+// agent assembling a workup (qSOFA + NEWS2 + SOFA, say) pays one round-trip
+// instead of N. Each element runs through the exact same validated, output-safe
+// path; one element's failure never sinks the others (it returns its own
+// { valid:false, code, message } in place). Bounded so a single call cannot be
+// turned into a load amplifier. No cross-calculator synthesis (posture): the
+// agent reasons over the individual results.
+const BATCH_MAX = 25;
+
+export function computeBatch(args = {}) {
+  const { calculations } = args;
+  if (!Array.isArray(calculations)) {
+    return { valid: false, code: 'BAD_ARGS', field: 'calculations', message: 'compute_batch needs a "calculations" array of { id, inputs }.' };
+  }
+  if (calculations.length === 0) {
+    return { valid: false, code: 'BAD_ARGS', field: 'calculations', message: 'compute_batch "calculations" must not be empty.' };
+  }
+  if (calculations.length > BATCH_MAX) {
+    return { valid: false, code: 'BAD_ARGS', field: 'calculations', message: `compute_batch accepts at most ${BATCH_MAX} calculations per call (got ${calculations.length}).` };
+  }
+  const results = calculations.map((c) => {
+    const call = (c && typeof c === 'object' && !Array.isArray(c)) ? c : {};
+    return computeCalculator({ id: call.id, inputs: call.inputs });
+  });
+  return { count: results.length, results, disclaimer: DISCLAIMER };
+}
+
 // spec-v634 §1: the server-level usage guidance the client shows the model on
 // connect. One authoritative place that teaches the discover -> describe ->
 // compute pipeline and the determinism / read-only / citation posture. Kept
@@ -679,6 +706,43 @@ export const TOOL_DEFS = [
     },
   },
   {
+    name: 'compute_batch',
+    description: 'Run several calculators in one call. Pass calculations: [{ id, inputs }, ...] (max 25). Returns results in request order; each is the same shape as compute_calculator, and one invalid element does not fail the others. No combined interpretation — reason over the individual results.',
+    annotations: readOnlyAnnotations('Compute several calculators'),
+    inputSchema: {
+      type: 'object',
+      properties: {
+        calculations: {
+          type: 'array',
+          description: 'Up to 25 { id, inputs } calculations to run together.',
+          maxItems: 25,
+          items: {
+            type: 'object',
+            properties: {
+              id: { type: 'string', description: 'Calculator id.' },
+              inputs: { type: 'object', description: 'Inputs keyed per the calculator inputSchema.' },
+            },
+            required: ['id', 'inputs'],
+          },
+        },
+      },
+      required: ['calculations'],
+      additionalProperties: false,
+    },
+    outputSchema: {
+      type: 'object',
+      properties: {
+        count: { type: 'integer' },
+        results: { type: 'array', items: { type: 'object' } },
+        disclaimer: { type: 'string' },
+        valid: { type: 'boolean' },
+        code: { type: 'string' },
+        field: { type: 'string' },
+        message: { type: 'string' },
+      },
+    },
+  },
+  {
     name: 'convert_units',
     description: 'Deterministic lab and vitals unit conversion. kind is one of the lab analytes (glucose, cholesterol, creatinine, bun, calcium, uricAcid, albumin, hemoglobin, magnesium, bilirubin, lactate) or a1c, pressure, temperature, length, weight. direction picks which way; the default is the first listed for that kind. Returns the converted value and the unit labels.',
     annotations: readOnlyAnnotations('Convert units'),
@@ -718,6 +782,7 @@ export function dispatch(name, args) {
     case 'find_calculator': return findCalculator(args);
     case 'answer_query': return answerQuery(args);
     case 'convert_units': return convertUnits(args);
+    case 'compute_batch': return computeBatch(args);
     default: return { valid: false, code: 'UNKNOWN_TOOL', message: `Unknown tool "${name}".` };
   }
 }
