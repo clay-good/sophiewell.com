@@ -4,6 +4,8 @@
 
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
+import { readFileSync } from 'node:fs';
+import { fileURLToPath } from 'node:url';
 
 import {
   TOOL_DEFS, dispatch, toCallToolResult, SERVER_INSTRUCTIONS, catalogVersion, resolveWithAliases,
@@ -21,6 +23,17 @@ test('eight tools, each with a valid object inputSchema', () => {
   for (const t of TOOL_DEFS) {
     assert.equal(t.inputSchema.type, 'object');
     assert.ok(typeof t.description === 'string' && t.description.length > 20);
+  }
+});
+
+// Every declared tool must be wired into dispatch and documented in the README,
+// so the surface can't silently drift out of sync with its docs (as it did when
+// answer_query/convert_units/compute_batch were added after the v636 README pass).
+test('every tool is wired into dispatch and documented in mcp/README.md', () => {
+  const readme = readFileSync(fileURLToPath(new URL('../../mcp/README.md', import.meta.url)), 'utf8');
+  for (const t of TOOL_DEFS) {
+    assert.notEqual(dispatch(t.name, {}).code, 'UNKNOWN_TOOL', `${t.name} is routed by dispatch`);
+    assert.ok(readme.includes(`\`${t.name}\``), `${t.name} is documented in mcp/README.md`);
   }
 });
 
