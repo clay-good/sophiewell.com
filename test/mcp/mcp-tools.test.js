@@ -245,7 +245,7 @@ test('spec-v629: non-clinical validators exposed with the administrative domain'
   assert.notEqual(meld.disclaimer, npi.disclaimer, 'clinical and admin disclaimers differ');
 });
 
-// spec-v629 wave 2: facility pricing — dollar->cents scaling and apc line parsing.
+// spec-v629 wave 2: facility pricing (dollar->cents scaling and apc line parsing).
 test('spec-v629 wave 2: era/drg/apc price correctly through the adapters', () => {
   const era = computeCalculator({ id: 'era-balance', inputs: { 'era-billed': '200', 'era-paid': '120', 'era-co': '50', 'era-pr': '30' } });
   assert.equal(era.valid, true);
