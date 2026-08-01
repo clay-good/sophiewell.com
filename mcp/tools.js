@@ -46,6 +46,36 @@ function loadCorpus() {
   return corpusCache;
 }
 
+// spec-v637 §3: scripts/build-search-corpus.mjs writes a deterministic sha256 of
+// the corpus to data/search-corpus/manifest.json each release. Load it once,
+// lazily; degrade to {} if absent (accelerator-not-dependency, like the corpus).
+let manifestCache;
+function loadManifest() {
+  if (manifestCache !== undefined) return manifestCache;
+  try {
+    const path = fileURLToPath(new URL('../data/search-corpus/manifest.json', import.meta.url));
+    manifestCache = JSON.parse(readFileSync(path, 'utf8'));
+  } catch {
+    manifestCache = {};
+  }
+  return manifestCache;
+}
+
+// spec-v637 §3-4: the content version an agent can pin and cache against. The
+// hash changes iff the catalog content changes, so results are safe to cache
+// keyed by (id, inputs, contentHash). deterministic/cacheable make the standing
+// guarantee machine-readable. Counts are read live, never hardcoded.
+export function catalogVersion() {
+  const m = loadManifest();
+  return {
+    contentHash: typeof m.hash === 'string' ? m.hash : null,
+    tileCount: TOTAL_TILES,
+    exposedCount: coverageCount(),
+    deterministic: true,
+    cacheable: true,
+  };
+}
+
 // spec-v59 output-safety on the JSON surface: a result must serialize with no
 // NaN / Infinity. Returns the dotted path of the first non-finite number, or
 // null if clean.
@@ -114,6 +144,7 @@ export function listCalculators(args = {}) {
     coverage: `${coverageCount()} of ${TOTAL_TILES} catalog tiles exposed as MCP tools`,
     exposed: coverageCount(),
     catalogTotal: TOTAL_TILES,
+    catalogVersion: catalogVersion(),
     total: matched.length,
     count: rows.length,
     offset,
@@ -136,6 +167,7 @@ export function getCatalogManifest() {
     coverage: `${coverageCount()} of ${TOTAL_TILES} catalog tiles exposed as MCP tools`,
     exposed: coverageCount(),
     catalogTotal: TOTAL_TILES,
+    catalogVersion: catalogVersion(),
     count: calculators.length,
     calculators,
   };
@@ -144,7 +176,7 @@ export function getCatalogManifest() {
 export function describeCalculator(args = {}) {
   const { id } = args;
   const e = getCalculator(id);
-  if (!e) return { valid: false, message: `Unknown calculator id "${id}". Call list_calculators for available ids.` };
+  if (!e) return { id, valid: false, code: 'UNKNOWN_ID', message: `Unknown calculator id "${id}". Call list_calculators for available ids.` };
   return {
     id: e.id,
     name: e.name,
@@ -164,28 +196,29 @@ export function describeCalculator(args = {}) {
 export function computeCalculator(args = {}) {
   const { id, inputs } = args;
   const e = getCalculator(id);
-  if (!e) return { id, valid: false, message: `Unknown calculator id "${id}". Call list_calculators for available ids.` };
+  if (!e) return { id, valid: false, code: 'UNKNOWN_ID', message: `Unknown calculator id "${id}". Call list_calculators for available ids.` };
 
+  // spec-v637 §1: pass the validator's stable code/field through unchanged.
   const v = e.validate(inputs || {});
-  if (!v.valid) return { id, valid: false, message: v.message };
+  if (!v.valid) return { id, valid: false, code: v.code, ...(v.field ? { field: v.field } : {}), message: v.message };
 
   let raw;
   try {
     raw = e.compute(e.toArgs(inputs || {}));
   } catch (err) {
-    return { id, valid: false, message: `Computation failed: ${err && err.message ? err.message : 'unknown error'}` };
+    return { id, valid: false, code: 'COMPUTE_ERROR', message: `Computation failed: ${err && err.message ? err.message : 'unknown error'}` };
   }
 
   // null (some libs) or an explicit { valid: false } shape = incomplete input.
   if (raw == null || raw.valid === false) {
     const message = (raw && (raw.message || raw.band)) || 'Enter the required values.';
-    return { id, valid: false, message };
+    return { id, valid: false, code: 'INCOMPLETE', message };
   }
 
   const result = e.formatResult(raw);
   const leak = firstNonFinite(result);
   if (leak) {
-    return { id, valid: false, message: `Output-safety guard: non-finite value at ${leak}.` };
+    return { id, valid: false, code: 'COMPUTE_ERROR', message: `Output-safety guard: non-finite value at ${leak}.` };
   }
 
   return {
@@ -212,7 +245,7 @@ export function findCalculator(args = {}) {
   const { query, group, specialty } = args;
   const q = typeof query === 'string' ? query.trim() : '';
   if (!q) {
-    return { valid: false, message: 'find_calculator needs a non-empty "query". Describe the calculation in plain words, e.g. "stroke risk afib".' };
+    return { valid: false, code: 'BAD_ARGS', message: 'find_calculator needs a non-empty "query". Describe the calculation in plain words, e.g. "stroke risk afib".' };
   }
   let limit = Number.isFinite(args.limit) ? Math.floor(args.limit) : FIND_LIMIT_DEFAULT;
   limit = Math.max(1, Math.min(FIND_LIMIT_MAX, limit));
@@ -246,6 +279,7 @@ export function findCalculator(args = {}) {
       query: q,
       count: 0,
       candidates: [],
+      code: 'NO_MATCH',
       hint: 'No calculator matched. Try fewer or more common words, or call list_calculators to browse by group / specialty.',
     };
   }
@@ -324,6 +358,7 @@ export const TOOL_DEFS = [
         coverage: { type: 'string' },
         exposed: { type: 'integer' },
         catalogTotal: { type: 'integer' },
+        catalogVersion: { type: 'object' },
         total: { type: 'integer' },
         count: { type: 'integer' },
         offset: { type: 'integer' },
@@ -347,6 +382,7 @@ export const TOOL_DEFS = [
         coverage: { type: 'string' },
         exposed: { type: 'integer' },
         catalogTotal: { type: 'integer' },
+        catalogVersion: { type: 'object' },
         count: { type: 'integer' },
         calculators: { type: 'array', items: { type: 'object' } },
       },
@@ -378,6 +414,7 @@ export const TOOL_DEFS = [
         interpretation: {},
         disclaimer: { type: 'string' },
         valid: { type: 'boolean' },
+        code: { type: 'string', description: 'Stable error code on failure, e.g. UNKNOWN_ID.' },
         message: { type: 'string' },
       },
     },
@@ -405,6 +442,8 @@ export const TOOL_DEFS = [
         citationUrl: { type: ['string', 'null'] },
         citationAccessed: { type: ['string', 'null'] },
         disclaimer: { type: 'string' },
+        code: { type: 'string', description: 'Stable error code on failure: UNKNOWN_ID, MISSING_INPUT, UNKNOWN_INPUT, INVALID_TYPE, INCOMPLETE, or COMPUTE_ERROR.' },
+        field: { type: 'string', description: 'The offending input key, when the error is input-specific.' },
         message: { type: 'string' },
       },
     },
@@ -431,6 +470,7 @@ export const TOOL_DEFS = [
         count: { type: 'integer' },
         candidates: { type: 'array', items: { type: 'object' } },
         hint: { type: 'string' },
+        code: { type: 'string', description: 'NO_MATCH when nothing ranked; BAD_ARGS for an empty query.' },
         valid: { type: 'boolean' },
         message: { type: 'string' },
       },
@@ -445,7 +485,7 @@ export function dispatch(name, args) {
     case 'describe_calculator': return describeCalculator(args);
     case 'compute_calculator': return computeCalculator(args);
     case 'find_calculator': return findCalculator(args);
-    default: return { valid: false, message: `Unknown tool "${name}".` };
+    default: return { valid: false, code: 'UNKNOWN_TOOL', message: `Unknown tool "${name}".` };
   }
 }
 

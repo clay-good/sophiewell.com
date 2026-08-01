@@ -52,34 +52,38 @@ export function fieldSchema(fields) {
 
 // Validate an inputs object against the field descriptors. Faithful to the
 // DOM-origin contract: numbers may arrive as numeric strings, booleans as the
-// '1'/'yes' forms, enums as their listed values. Returns { valid, message }.
+// '1'/'yes' forms, enums as their listed values.
+// spec-v637 §1: every failure carries a stable machine-readable `code` (and the
+// offending `field` where one applies) alongside the English `message`, so an
+// agent can branch on the code instead of parsing prose. Returns
+// { valid, code?, field?, message? }.
 export function validateInputs(inputs, fields) {
   if (inputs == null || typeof inputs !== 'object' || Array.isArray(inputs)) {
-    return { valid: false, message: 'inputs must be an object.' };
+    return { valid: false, code: 'BAD_ARGS', message: 'inputs must be an object.' };
   }
   const known = new Set(fields.map((f) => f.dom));
   for (const key of Object.keys(inputs)) {
-    if (!known.has(key)) return { valid: false, message: `Unknown input "${key}". Call describe_calculator for the input schema.` };
+    if (!known.has(key)) return { valid: false, code: 'UNKNOWN_INPUT', field: key, message: `Unknown input "${key}". Call describe_calculator for the input schema.` };
   }
   for (const f of fields) {
     const present = Object.prototype.hasOwnProperty.call(inputs, f.dom);
     if (!present) {
-      if (f.required) return { valid: false, message: `Missing required input "${f.dom}".` };
+      if (f.required) return { valid: false, code: 'MISSING_INPUT', field: f.dom, message: `Missing required input "${f.dom}".` };
       continue;
     }
     const v = inputs[f.dom];
     if (f.kind === 'number') {
       if (v === '' || v === null || v === undefined) {
-        if (f.required) return { valid: false, message: `"${f.dom}" is required.` };
+        if (f.required) return { valid: false, code: 'MISSING_INPUT', field: f.dom, message: `"${f.dom}" is required.` };
         continue;
       }
       const n = typeof v === 'number' ? v : (typeof v === 'string' && v.trim() !== '' ? Number(v) : NaN);
-      if (!Number.isFinite(n)) return { valid: false, message: `"${f.dom}" must be a finite number.` };
+      if (!Number.isFinite(n)) return { valid: false, code: 'INVALID_TYPE', field: f.dom, message: `"${f.dom}" must be a finite number.` };
     } else if (f.kind === 'bool') {
-      if (!isBoolLike(v)) return { valid: false, message: `"${f.dom}" must be a boolean.` };
+      if (!isBoolLike(v)) return { valid: false, code: 'INVALID_TYPE', field: f.dom, message: `"${f.dom}" must be a boolean.` };
     } else if (f.kind === 'enum') {
       if (!f.values.includes(String(v))) {
-        return { valid: false, message: `"${f.dom}" must be one of: ${f.values.join(', ')}.` };
+        return { valid: false, code: 'INVALID_TYPE', field: f.dom, message: `"${f.dom}" must be one of: ${f.values.join(', ')}.` };
       }
     }
   }

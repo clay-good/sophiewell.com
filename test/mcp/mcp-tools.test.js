@@ -6,7 +6,7 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 
 import {
-  TOOL_DEFS, dispatch, toCallToolResult, SERVER_INSTRUCTIONS,
+  TOOL_DEFS, dispatch, toCallToolResult, SERVER_INSTRUCTIONS, catalogVersion,
   listCalculators, getCatalogManifest, describeCalculator, computeCalculator, findCalculator,
 } from '../../mcp/tools.js';
 
@@ -210,6 +210,41 @@ test('every tool carries read-only annotations and an object outputSchema', () =
     assert.ok(!('destructiveHint' in t.annotations), `${t.name} omits destructiveHint (meaningless when read-only)`);
     assert.equal(t.outputSchema.type, 'object', `${t.name} outputSchema is an object`);
   }
+});
+
+// spec-v637 §1: every failure carries a stable machine-readable code (+ field).
+test('spec-v637: failures carry a stable code and, where applicable, the field', () => {
+  assert.equal(dispatch('bogus_tool', {}).code, 'UNKNOWN_TOOL');
+  assert.equal(computeCalculator({ id: 'nope', inputs: {} }).code, 'UNKNOWN_ID');
+  assert.equal(describeCalculator({ id: 'nope' }).code, 'UNKNOWN_ID');
+  assert.equal(describeCalculator({ id: 'nope' }).id, 'nope', 'describe echoes the id on error');
+
+  const missing = computeCalculator({ id: 'meld-xi', inputs: {} });
+  assert.equal(missing.code, 'MISSING_INPUT');
+  assert.ok(missing.field, 'missing-input error names the offending field');
+
+  const unknownKey = computeCalculator({ id: 'meld-xi', inputs: { 'mx-bili': 1, zzz: 2 } });
+  assert.equal(unknownKey.code, 'UNKNOWN_INPUT');
+  assert.equal(unknownKey.field, 'zzz');
+
+  const badType = computeCalculator({ id: 'meld-xi', inputs: { 'mx-bili': 'abc', 'mx-creat': 1 } });
+  assert.equal(badType.code, 'INVALID_TYPE');
+  assert.equal(badType.field, 'mx-bili');
+
+  assert.equal(findCalculator({ query: '  ' }).code, 'BAD_ARGS');
+  assert.equal(findCalculator({ query: 'qwxzptv nonsense token' }).code, 'NO_MATCH');
+});
+
+// spec-v637 §3-4: a deterministic content version agents can pin and cache against.
+test('spec-v637: catalogVersion is a cacheable content-version on the discovery surfaces', () => {
+  const cv = catalogVersion();
+  assert.equal(cv.deterministic, true);
+  assert.equal(cv.cacheable, true);
+  assert.equal(cv.tileCount, listCalculators().catalogTotal);
+  assert.equal(cv.exposedCount, listCalculators().exposed);
+  assert.ok(cv.contentHash === null || /^[0-9a-f]{8,}$/.test(cv.contentHash), 'contentHash is a hex digest or null');
+  assert.deepEqual(listCalculators().catalogVersion, cv, 'list_calculators carries the version');
+  assert.deepEqual(getCatalogManifest().catalogVersion, cv, 'get_catalog_manifest carries the version');
 });
 
 // spec-v634 §3: the CallTool envelope keeps the text block AND adds structuredContent.
