@@ -105,6 +105,48 @@ async function main() {
     }
   }
 
+  // spec-v632: waiver-ledger accountability. Every catalog tile is either exposed
+  // or listed in docs/mcp-waivers.md with a reason -- so no computational tile can
+  // silently ship without an MCP adapter. exposed and waived must not overlap.
+  const WAIVER_REASONS = new Set([
+    'template-generator', 'bespoke-shape', 'redundant', 'wrong-input-modality',
+    'pending-adapter', 'time-dependent', 'outputs-recommendation', 'static-reference',
+  ]);
+  const appText = await readFile(join(ROOT, 'app.js'), 'utf8');
+  const uStart = appText.indexOf('const UTILITIES = [');
+  const allIds = new Set();
+  if (uStart !== -1) {
+    let depth = 0; let k = appText.indexOf('[', uStart); let uEnd = -1;
+    for (; k < appText.length; k += 1) { const ch = appText[k]; if (ch === '[') depth += 1; else if (ch === ']') { depth -= 1; if (depth === 0) { uEnd = k; break; } } }
+    const uBody = appText.slice(uStart, uEnd);
+    const uRe = /\{\s*id:\s*'([^']+)',\s*name:\s*'((?:\\.|[^'])*)',\s*group:\s*'([^']*)'[^}]*?clinical:\s*(true|false)\b/g;
+    let um;
+    while ((um = uRe.exec(uBody)) !== null) allIds.add(um[1]);
+  }
+  if (!(await exists('docs/mcp-waivers.md'))) {
+    errors.push('spec-v632: docs/mcp-waivers.md is missing');
+  } else {
+    const wText = await readFile(join(ROOT, 'docs/mcp-waivers.md'), 'utf8');
+    const wStart = wText.indexOf('## Waived');
+    const wSection = wStart === -1 ? '' : wText.slice(wStart);
+    const waived = new Set();
+    // Ledger lines are `- <id> - <reason>`; the separator is a plain hyphen.
+    for (const m of wSection.matchAll(/^-\s+`([a-z0-9_-]+)`\s+-\s+([a-z-]+)\s*$/gm)) {
+      const id = m[1];
+      const reason = m[2];
+      if (waived.has(id)) errors.push(`waiver: duplicate entry for ${id}`);
+      waived.add(id);
+      if (!WAIVER_REASONS.has(reason)) errors.push(`waiver: ${id} has unknown reason "${reason}"`);
+      if (!allIds.has(id)) errors.push(`waiver: ${id} is not a catalog tile`);
+      if (live.has(id)) errors.push(`waiver: ${id} is waived but also exposed -- retire the waiver`);
+    }
+    for (const id of allIds) {
+      if (!live.has(id) && !waived.has(id)) {
+        errors.push(`accountability: ${id} is neither exposed nor waived -- add an mcp adapter or a docs/mcp-waivers.md entry`);
+      }
+    }
+  }
+
   // 5. No-DOM scan of each distinct compute module.
   const seenModules = new Map(); // module rel-path -> ok
   for (const e of entries) {
