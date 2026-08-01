@@ -79,7 +79,7 @@ any other MCP client — only the surrounding config file differs.
 
 ## Tools
 
-A fixed five-tool surface with dynamic dispatch over the catalog (exposing one
+A fixed eight-tool surface with dynamic dispatch over the catalog (exposing one
 tool per calculator would flood the client's tool list). Every tool is
 annotated read-only, idempotent, and closed-world, and returns both a text block
 and typed `structuredContent`.
@@ -89,8 +89,11 @@ and typed `structuredContent`.
 | `find_calculator` | `{ query, limit?, group?, specialty? }` | Discovery by plain-language intent: the same deterministic ranker the browser prompt bar uses (synonym table + token ranker, no AI) ranks the exposed calculators and returns the top-N candidates `{ id, name, group, specialties, summary, why }`. Use it when a substring `query` would miss (e.g. "stroke risk afib"). |
 | `list_calculators` | `{ group?, specialty?, query?, limit?, offset?, fields? }` | Paginated rows plus a live coverage line and `catalogVersion`. Default page 50, max 200; read `total`, `count`, and `nextOffset` to page. `fields:"compact"` returns id/name/group only. `query` is a substring test. No computation. |
 | `get_catalog_manifest` | `{}` | A one-shot compact index of **every** exposed calculator `{ id, name, group, specialties }` plus coverage counts and `catalogVersion`. Fetch once to reason about the whole catalog instead of paging. |
-| `describe_calculator` | `{ id }` | The full contract: `inputSchema` (JSON Schema), a worked `example`, `citation` + `citationUrl` + `citationAccessed`, the source interpretation bands, and the clinical-posture disclaimer. |
+| `describe_calculator` | `{ id }` | The full contract: `inputSchema` (JSON Schema), a worked `example`, `citation` + `citationUrl` + `citationAccessed`, the source interpretation bands, `related` calculator ids, and the clinical-posture disclaimer. |
 | `compute_calculator` | `{ id, inputs }` | The deterministic `result` (score, bands, derived values, source note), the citation, and the disclaimer. Invalid or incomplete input returns `{ valid: false, code, field?, message }` — never a thrown error and never a non-finite number. |
+| `compute_batch` | `{ calculations: [{ id, inputs }, ...] }` | Runs up to 25 calculators in one call for a workup. Results come back in request order, each the same shape as `compute_calculator`; one invalid element does not fail the others. No combined interpretation. |
+| `answer_query` | `{ query }` | One-shot answer: parses a sentence that already carries its values ("bmi 80kg 180cm", "map 120/80") and returns the computed value with its citation. `matched:false` / `NO_MATCH` when no template applies — then use `find_calculator`. |
+| `convert_units` | `{ kind, value, direction? }` | Deterministic lab + vitals unit conversion (mg/dL ↔ mmol/L, HbA1c % ↔ IFCC, mmHg ↔ kPa, degF ↔ degC, in ↔ cm, lb ↔ kg). `kind` is a lab analyte or a1c/pressure/temperature/length/weight. |
 
 `inputs` are keyed exactly as `describe_calculator` reports them (and exactly as
 each calculator's documented example). Numbers may be sent as numbers or numeric
