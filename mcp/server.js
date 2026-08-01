@@ -4,7 +4,7 @@
 // Speaks the Model Context Protocol over stdin/stdout only — no HTTP, no SSE,
 // no socket, no network egress of any kind. It imports the pure tool logic from
 // ./tools.js (which imports ./catalog.js and the pure lib/*.js computes) and
-// exposes the fixed three-tool surface. The server is stateless and
+// exposes the fixed four-tool surface. The server is stateless and
 // side-effect-free: no filesystem writes, no persistence, no input logging, no
 // telemetry. Identical { id, inputs } always yields a byte-identical result.
 //
@@ -19,11 +19,13 @@ import {
   ListToolsRequestSchema,
 } from '@modelcontextprotocol/sdk/types.js';
 
-import { TOOL_DEFS, dispatch } from './tools.js';
+import { TOOL_DEFS, dispatch, toCallToolResult, SERVER_INSTRUCTIONS } from './tools.js';
 
+// spec-v634 §1: `instructions` orients the model on the discover -> describe ->
+// compute pipeline and the read-only / deterministic / citation posture.
 const server = new Server(
   { name: 'sophiewell-calculators', version: '1.0.0' },
-  { capabilities: { tools: {} } },
+  { capabilities: { tools: {} }, instructions: SERVER_INSTRUCTIONS },
 );
 
 server.setRequestHandler(ListToolsRequestSchema, async () => ({ tools: TOOL_DEFS }));
@@ -31,10 +33,11 @@ server.setRequestHandler(ListToolsRequestSchema, async () => ({ tools: TOOL_DEFS
 server.setRequestHandler(CallToolRequestSchema, async (request) => {
   const { name, arguments: args } = request.params;
   const result = dispatch(name, args || {});
-  // The result object is the tool's payload; clients parse the JSON text. We
-  // never throw across the protocol boundary — invalid input is already a
-  // structured { valid: false, message } from dispatch().
-  return { content: [{ type: 'text', text: JSON.stringify(result, null, 2) }] };
+  // spec-v634 §3: return both the text block (back-compat) and structuredContent
+  // (the same payload typed) so agents need not re-parse a JSON string. We never
+  // throw across the protocol boundary — invalid input is already a structured
+  // { valid: false, message } from dispatch().
+  return toCallToolResult(result);
 });
 
 const transport = new StdioServerTransport();

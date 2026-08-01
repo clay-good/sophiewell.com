@@ -213,12 +213,57 @@ export function findCalculator(args = {}) {
   return { query: q, count: candidates.length, candidates };
 }
 
+// spec-v634 §1: the server-level usage guidance the client shows the model on
+// connect. One authoritative place that teaches the discover -> describe ->
+// compute pipeline and the determinism / read-only / citation posture. Kept
+// concise: it is prepended to model context every session.
+export const SERVER_INSTRUCTIONS = [
+  'Sophie Well exposes deterministic, individually cited clinical calculators as read-only tools.',
+  'Nothing here writes data, calls a network, or invokes a model: identical inputs always return',
+  'byte-identical output, so results are safe to cache.',
+  '',
+  'Workflow: (1) Discover — call find_calculator with a plain-language intent ("stroke risk in afib",',
+  '"creatinine clearance"), or call list_calculators to enumerate or browse by group / specialty.',
+  '(2) Inspect — call describe_calculator to get a calculator\'s input JSON Schema, a worked example,',
+  'interpretation bands, and citation before computing. (3) Compute — call compute_calculator with the',
+  'id and inputs; inputs are validated against the schema, and invalid or incomplete input returns',
+  '{ valid: false, message } rather than throwing.',
+  '',
+  'Every describe / compute result carries the source citation (with URL and access date) and a',
+  'disclaimer: a computed value is decision-support, not a treat / prescribe order. Surface the',
+  'citation and leave the clinical decision to the clinician.',
+].join('\n');
+
+// spec-v634 §2: every tool is read-only, side-effect-free, deterministic, and
+// closed-world (the catalog is a fixed set). These advisory hints let a client
+// auto-approve safe reads without a confirmation prompt, cache and safely retry
+// results, and treat a find_calculator miss as authoritative rather than a
+// transient/network failure. destructiveHint is omitted — it is only meaningful
+// when readOnlyHint is false.
+function readOnlyAnnotations(title) {
+  return { title, readOnlyHint: true, idempotentHint: true, openWorldHint: false };
+}
+
+// spec-v634 §3: build the CallTool response envelope. The text block stays for
+// back-compat with clients that ignore structuredContent; structuredContent is
+// the same payload as a typed object so agents need not re-parse a JSON string.
+// Pure (no SDK) so it is unit-testable and mcp/ stays deletable.
+export function toCallToolResult(result) {
+  return {
+    content: [{ type: 'text', text: JSON.stringify(result, null, 2) }],
+    structuredContent: result,
+  };
+}
+
 // Tool definitions exposed over MCP. inputSchema here is the schema for the
-// TOOL's own arguments, not a calculator's.
+// TOOL's own arguments, not a calculator's. outputSchema documents the stable
+// result envelope (the variable per-calculator `result` object is left open);
+// the low-level Server performs no output validation, so a loose schema is safe.
 export const TOOL_DEFS = [
   {
     name: 'list_calculators',
     description: 'Discover the exposed deterministic clinical calculators. Optional filters: group (catalog group letter), specialty, query (substring over id/name/specialties). Returns lightweight rows plus the live coverage count. No computation.',
+    annotations: readOnlyAnnotations('List clinical calculators'),
     inputSchema: {
       type: 'object',
       properties: {
@@ -228,20 +273,51 @@ export const TOOL_DEFS = [
       },
       additionalProperties: false,
     },
+    outputSchema: {
+      type: 'object',
+      properties: {
+        coverage: { type: 'string' },
+        exposed: { type: 'integer' },
+        catalogTotal: { type: 'integer' },
+        count: { type: 'integer' },
+        calculators: { type: 'array', items: { type: 'object' } },
+      },
+    },
   },
   {
     name: 'describe_calculator',
     description: 'Return the full contract for one calculator: input JSON Schema, a worked example, the primary citation (with URL and access date), the source interpretation bands, and the clinical-posture disclaimer.',
+    annotations: readOnlyAnnotations('Describe a calculator'),
     inputSchema: {
       type: 'object',
       properties: { id: { type: 'string', description: 'Calculator id from list_calculators.' } },
       required: ['id'],
       additionalProperties: false,
     },
+    outputSchema: {
+      type: 'object',
+      properties: {
+        id: { type: 'string' },
+        name: { type: 'string' },
+        group: { type: 'string' },
+        specialties: { type: 'array', items: { type: 'string' } },
+        summary: { type: 'string' },
+        inputSchema: { type: 'object' },
+        example: { type: 'object' },
+        citation: { type: ['string', 'null'] },
+        citationUrl: { type: ['string', 'null'] },
+        citationAccessed: { type: ['string', 'null'] },
+        interpretation: {},
+        disclaimer: { type: 'string' },
+        valid: { type: 'boolean' },
+        message: { type: 'string' },
+      },
+    },
   },
   {
     name: 'compute_calculator',
     description: 'Run one calculator deterministically. Inputs are validated against the calculator inputSchema first; invalid or incomplete inputs return { valid: false, message } (never a thrown error or a non-finite number). On success returns the structured result, the citation, and the disclaimer.',
+    annotations: readOnlyAnnotations('Compute a calculator'),
     inputSchema: {
       type: 'object',
       properties: {
@@ -251,10 +327,24 @@ export const TOOL_DEFS = [
       required: ['id', 'inputs'],
       additionalProperties: false,
     },
+    outputSchema: {
+      type: 'object',
+      properties: {
+        id: { type: 'string' },
+        valid: { type: 'boolean' },
+        result: { type: 'object' },
+        citation: { type: ['string', 'null'] },
+        citationUrl: { type: ['string', 'null'] },
+        citationAccessed: { type: ['string', 'null'] },
+        disclaimer: { type: 'string' },
+        message: { type: 'string' },
+      },
+    },
   },
   {
     name: 'find_calculator',
     description: 'Find calculators by a plain-language description of the calculation ("stroke risk afib", "creatinine clearance"). Deterministically ranks the exposed calculators (synonym table + token ranker, no AI) and returns the top-N candidates with a match reason. Use this for discovery by intent; use list_calculators to enumerate or browse by group / specialty.',
+    annotations: readOnlyAnnotations('Find calculators by intent'),
     inputSchema: {
       type: 'object',
       properties: {
@@ -265,6 +355,17 @@ export const TOOL_DEFS = [
       },
       required: ['query'],
       additionalProperties: false,
+    },
+    outputSchema: {
+      type: 'object',
+      properties: {
+        query: { type: 'string' },
+        count: { type: 'integer' },
+        candidates: { type: 'array', items: { type: 'object' } },
+        hint: { type: 'string' },
+        valid: { type: 'boolean' },
+        message: { type: 'string' },
+      },
     },
   },
 ];

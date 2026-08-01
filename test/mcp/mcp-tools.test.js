@@ -6,7 +6,7 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 
 import {
-  TOOL_DEFS, dispatch,
+  TOOL_DEFS, dispatch, toCallToolResult, SERVER_INSTRUCTIONS,
   listCalculators, describeCalculator, computeCalculator, findCalculator,
 } from '../../mcp/tools.js';
 
@@ -143,4 +143,41 @@ test('find_calculator: blank query is a structured error; no match is a structur
   assert.equal(miss.count, 0);
   assert.deepEqual(miss.candidates, []);
   assert.ok(miss.hint);
+});
+
+// spec-v634 §1: server-level instructions orient the model on the tool pipeline.
+test('SERVER_INSTRUCTIONS: a concise usage brief naming the discover/describe/compute tools', () => {
+  assert.equal(typeof SERVER_INSTRUCTIONS, 'string');
+  assert.ok(SERVER_INSTRUCTIONS.length > 200 && SERVER_INSTRUCTIONS.length < 2000, 'kept concise');
+  for (const tool of ['find_calculator', 'list_calculators', 'describe_calculator', 'compute_calculator']) {
+    assert.ok(SERVER_INSTRUCTIONS.includes(tool), `mentions ${tool}`);
+  }
+  assert.match(SERVER_INSTRUCTIONS, /deterministic|byte-identical/i);
+  assert.match(SERVER_INSTRUCTIONS, /citation/i);
+});
+
+// spec-v634 §2: every tool is read-only, idempotent, closed-world, and titled.
+test('every tool carries read-only annotations and an object outputSchema', () => {
+  for (const t of TOOL_DEFS) {
+    assert.ok(t.annotations, `${t.name} has annotations`);
+    assert.equal(t.annotations.readOnlyHint, true, `${t.name} readOnlyHint`);
+    assert.equal(t.annotations.idempotentHint, true, `${t.name} idempotentHint`);
+    assert.equal(t.annotations.openWorldHint, false, `${t.name} openWorldHint`);
+    assert.ok(typeof t.annotations.title === 'string' && t.annotations.title.length > 0, `${t.name} title`);
+    assert.ok(!('destructiveHint' in t.annotations), `${t.name} omits destructiveHint (meaningless when read-only)`);
+    assert.equal(t.outputSchema.type, 'object', `${t.name} outputSchema is an object`);
+  }
+});
+
+// spec-v634 §3: the CallTool envelope keeps the text block AND adds structuredContent.
+test('toCallToolResult: text block preserved, structuredContent equals the payload', () => {
+  const payload = computeCalculator({ id: 'meld-xi', inputs: { 'mx-bili': 2.0, 'mx-creat': 1.5 } });
+  const env = toCallToolResult(payload);
+  assert.equal(env.content[0].type, 'text');
+  assert.deepEqual(JSON.parse(env.content[0].text), payload, 'text parses back to the payload');
+  assert.deepEqual(env.structuredContent, payload, 'structuredContent is the typed payload');
+
+  // Error payloads must also carry structuredContent (tools declare an outputSchema).
+  const errEnv = toCallToolResult(computeCalculator({ id: 'no-such', inputs: {} }));
+  assert.equal(errEnv.structuredContent.valid, false);
 });
