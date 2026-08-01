@@ -7401,6 +7401,11 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 - `therapy-units`
 - `anesthesia-units`
 
+### lib/billing-v81.js (spec-v629 wave 6: drug / infusion billing — administrative disclaimer)
+- `ndc-hcpcs-units`
+- `drug-wastage`
+- `infusion-hierarchy`
+
 ### lib/tox-v86.js
 - `serotonin-toxicity`
 - `salicylate-toxicity`

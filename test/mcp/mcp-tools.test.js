@@ -330,6 +330,24 @@ test('spec-v629 wave 5: em/critical-care/split-shared/prolonged/therapy/anesthes
   assert.equal(an.result.directedPaymentUsd, 110);
 });
 
+// spec-v629 wave 6: drug / infusion billing.
+test('spec-v629 wave 6: ndc-units/drug-wastage/infusion-hierarchy compute correctly', () => {
+  const ndc = computeCalculator({ id: 'ndc-hcpcs-units', inputs: { 'nh-dose': '35', 'nh-dose-unit': 'mg', 'nh-unitsize': '10', 'nh-unit-unit': 'mg', 'nh-round': 'up' } });
+  assert.equal(ndc.valid, true);
+  assert.equal(ndc.result.billingUnits, 4);
+  assert.equal(ndc.domain, 'administrative');
+
+  const dw = computeCalculator({ id: 'drug-wastage', inputs: { 'dw-vial': '50', 'dw-dose': '35', 'dw-dose-unit': 'mg', 'dw-unitsize': '10', 'dw-unit-unit': 'mg', 'dw-type': 'single' } });
+  assert.equal(dw.result.discardedUnits, 1);
+  assert.equal(dw.result.modifier, 'JW');
+  assert.equal(dw.result.dose, 35, 'echoes the input dose into the result');
+  assert.equal(dw.result.vialSize, 50, 'echoes the input vial size into the result');
+
+  const ih = computeCalculator({ id: 'infusion-hierarchy', inputs: { 'ih-list': 'chemo-infusion, 90\ntherapeutic-infusion, 60\nhydration, 30' } });
+  assert.equal(ih.result.initialCode, '96413');
+  assert.deepEqual(ih.result.lines.map((l) => l.code), ['96413', '96367', '96361']);
+});
+
 // spec-v630: one-shot natural-language answer via queryCompute.
 test('spec-v630: answer_query computes a value from a sentence with embedded numbers', () => {
   const bmi = answerQuery({ query: 'bmi 80kg 180cm' });
