@@ -541,6 +541,7 @@ import rccPrognosisV266 from './adapters/rcc-prognosis-v266.js';
 import billingV83 from './adapters/billing-v83.js';
 import billingV78 from './adapters/billing-v78.js';
 import billingV79 from './adapters/billing-v79.js';
+import billingV80 from './adapters/billing-v80.js';
 
 const ADAPTER_MODULES = [
   ['tox-v86', toxV86],
@@ -1067,6 +1068,7 @@ const ADAPTER_MODULES = [
   ['billing-v83', billingV83],
   ['billing-v78', billingV78],
   ['billing-v79', billingV79],
+  ['billing-v80', billingV80],
 ];
 
 const HERE = dirname(fileURLToPath(import.meta.url));

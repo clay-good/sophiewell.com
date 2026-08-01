@@ -308,6 +308,28 @@ test('spec-v629 wave 4: ncci/mue/global-period/modifier-order rule correctly', (
   assert.deepEqual(mo.result.sequence, ['26', '59', 'RT'], 'pricing modifier 26 leads');
 });
 
+// spec-v629 wave 5: E&M / time coding (codes, units, and anesthesia dollars).
+test('spec-v629 wave 5: em/critical-care/split-shared/prolonged/therapy/anesthesia code correctly', () => {
+  const emm = computeCalculator({ id: 'em-mdm-2023', inputs: { 'emm-setting': 'ed', 'emm-prob': '4', 'emm-data': '4', 'emm-risk': '2' } });
+  assert.equal(emm.valid, true);
+  assert.equal(emm.result.code, '99284');
+  assert.equal(emm.domain, 'administrative');
+
+  const cc = computeCalculator({ id: 'critical-care-time', inputs: { 'cc-total': '104', 'cc-proc': '0' } });
+  assert.deepEqual(cc.result.codes, ['99291', '99292']);
+
+  const ps = computeCalculator({ id: 'prolonged-services', inputs: { 'ps-code': '99205', 'ps-payer': 'medicare', 'ps-min': '90' } });
+  assert.equal(ps.result.prolongedCode, 'G2212');
+
+  const tu = computeCalculator({ id: 'therapy-units', inputs: { 'tu-rule': 'medicare', 'tu-total': '50' } });
+  assert.equal(tu.result.units, 3);
+
+  const an = computeCalculator({ id: 'anesthesia-units', inputs: { 'an-base': '5', 'an-time': '60', 'an-mod': '1', 'an-cf': '22', 'an-dir': 'qk' } });
+  assert.equal(an.result.totalUnits, 10);
+  assert.equal(an.result.fullPaymentUsd, 220);
+  assert.equal(an.result.directedPaymentUsd, 110);
+});
+
 // spec-v630: one-shot natural-language answer via queryCompute.
 test('spec-v630: answer_query computes a value from a sentence with embedded numbers', () => {
   const bmi = answerQuery({ query: 'bmi 80kg 180cm' });

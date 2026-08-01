@@ -7393,6 +7393,14 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 - `global-period`
 - `modifier-order`
 
+### lib/billing-v80.js (spec-v629 wave 5: E&M / time coding — administrative disclaimer)
+- `em-mdm-2023`
+- `critical-care-time`
+- `split-shared`
+- `prolonged-services`
+- `therapy-units`
+- `anesthesia-units`
+
 ### lib/tox-v86.js
 - `serotonin-toxicity`
 - `salicylate-toxicity`
