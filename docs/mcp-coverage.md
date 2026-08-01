@@ -7417,6 +7417,13 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 - `em-mdm`
 - `ndc-convert`
 
+### lib/ops-v63.js + lib/regulatory.js (spec-v629 wave 9: regulatory deadlines — administrative disclaimer)
+- `appeal-deadline`
+- `timely-filing`
+- `pa-turnaround`
+- `overpayment-60day`
+- `breach-clock`
+
 ### lib/tox-v86.js
 - `serotonin-toxicity`
 - `salicylate-toxicity`

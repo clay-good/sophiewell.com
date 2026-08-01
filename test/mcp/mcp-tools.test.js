@@ -388,6 +388,27 @@ test('spec-v629 wave 8: em-time/em-mdm/ndc-convert code correctly', () => {
   assert.equal(ndc.result.fda10, '1234-5678-90');
 });
 
+// spec-v629 wave 9: regulatory deadlines (deterministic; clock-relative fields stripped).
+test('spec-v629 wave 9: deadline tiles give a deterministic deadline date', () => {
+  const ap = computeCalculator({ id: 'appeal-deadline', inputs: { 'apd-level': 'initial', 'apd-date': '2026-01-15' } });
+  assert.equal(ap.valid, true);
+  assert.equal(ap.result.deadline, '2026-05-15');
+  assert.equal(ap.result.windowDays, 120);
+  assert.ok(!('daysRemaining' in ap.result) && !('pastDue' in ap.result), 'clock-relative fields stripped for determinism');
+  assert.equal(ap.domain, 'administrative');
+  // deterministic across calls (no wall-clock leak into the output)
+  assert.deepEqual(computeCalculator({ id: 'appeal-deadline', inputs: { 'apd-level': 'initial', 'apd-date': '2026-01-15' } }).result, ap.result);
+
+  assert.equal(computeCalculator({ id: 'timely-filing', inputs: { 'tf-date': '2026-03-01', 'tf-payer': 'medicare', 'tf-limit': '' } }).result.deadline, '2027-03-01');
+  assert.equal(computeCalculator({ id: 'pa-turnaround', inputs: { 'pat-date': '2026-06-01', 'pat-type': 'standard', 'pat-days': '' } }).result.deadline, '2026-06-08');
+  const ov = computeCalculator({ id: 'overpayment-60day', inputs: { 'ov-date': '2026-05-01' } });
+  assert.equal(ov.result.deadline, '2026-06-30');
+  assert.equal(ov.result.windowDays, 60);
+
+  const br = computeCalculator({ id: 'breach-clock', inputs: { d: '2026-03-15', n: '600' } });
+  assert.equal(br.result.hhsNoticeDeadline, '2026-05-14');
+});
+
 // spec-v630: one-shot natural-language answer via queryCompute.
 test('spec-v630: answer_query computes a value from a sentence with embedded numbers', () => {
   const bmi = answerQuery({ query: 'bmi 80kg 180cm' });
