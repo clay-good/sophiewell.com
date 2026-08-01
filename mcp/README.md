@@ -110,6 +110,12 @@ may cache a result keyed by `(id, inputs, contentHash)` and invalidate only when
 `contentHash` changes. A retired `id` resolves to its successor with a
 `deprecatedId`/`canonicalId` notice (see `data/id-aliases.json`).
 
+**`domain`** on `describe`/`compute` is `clinical` or `administrative`. Most tiles
+are clinical decision-support and carry the clinical disclaimer; administrative
+tiles (billing, coding, identifier and format checks) carry an administrative
+disclaimer instead — a computed figure is not a guarantee of payment, coverage, or
+compliance. Both are deterministic and cited the same way.
+
 ### Example session
 
 ```
