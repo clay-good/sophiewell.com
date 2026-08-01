@@ -426,6 +426,19 @@ test('spec-v629 wave 10: peds-weight-conv converts both directions', () => {
   assert.equal(computeCalculator({ id: 'peds-weight-conv', inputs: {} }).code, 'INCOMPLETE');
 });
 
+// spec-v629 wave 11: next-dose scheduling (extracted to lib/dose-schedule.js).
+test('spec-v629 wave 11: time-to-dose projects the next doses', () => {
+  const r = computeCalculator({ id: 'time-to-dose', inputs: { 'td-time': '14:00', 'td-freq': 'q6h' } });
+  assert.equal(r.valid, true);
+  assert.deepEqual(r.result.doses, ['20:00', '02:00', '08:00', '14:00']);
+  assert.equal(r.result.stepHours, 6);
+  assert.equal(r.domain, 'administrative');
+  // malformed time -> incomplete
+  assert.equal(computeCalculator({ id: 'time-to-dose', inputs: { 'td-time': 'noon', 'td-freq': 'q6h' } }).code, 'INCOMPLETE');
+  // unknown frequency is rejected by the enum before compute
+  assert.equal(computeCalculator({ id: 'time-to-dose', inputs: { 'td-time': '14:00', 'td-freq': 'q3h' } }).code, 'INVALID_TYPE');
+});
+
 // spec-v630: one-shot natural-language answer via queryCompute.
 test('spec-v630: answer_query computes a value from a sentence with embedded numbers', () => {
   const bmi = answerQuery({ query: 'bmi 80kg 180cm' });

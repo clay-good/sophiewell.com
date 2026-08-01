@@ -7427,6 +7427,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/unit-convert.js (spec-v629 wave 10: pediatric weight conversion — administrative disclaimer)
 - `peds-weight-conv`
 
+### lib/dose-schedule.js (spec-v629 wave 11: next-dose scheduling — administrative disclaimer)
+- `time-to-dose`
+
 ### lib/tox-v86.js
 - `serotonin-toxicity`
 - `salicylate-toxicity`

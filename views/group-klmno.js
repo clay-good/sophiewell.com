@@ -10,6 +10,7 @@ import {
   labConvert, a1cPctToIfcc, mmHgToKpa, kpaToMmHg, fToC, cToF,
   inchesToCm, cmToInches, lbToKg, kgToLb, lbOzToKg, kgToLbOz, feetInToCm,
 } from '../lib/unit-convert.js';
+import { nextDoses } from '../lib/dose-schedule.js';
 
 function field(label, id, opts = {}) {
   const wrap = el('p');
@@ -99,22 +100,13 @@ export const renderers = {
       ].map(([v, l]) => el('option', { value: v, text: l })))]));
     const o = out(); root.appendChild(o);
     const run = () => safe(o, () => {
-      const t = document.getElementById('td-time').value.trim();
-      const m = /^(\d{1,2}):(\d{2})$/.exec(t);
-      if (!m) { o.appendChild(el('p', { class: 'muted', text: 'Enter time as HH:MM (24-hour).' })); return; }
-      let h = Number(m[1]), mi = Number(m[2]);
-      if (h > 23 || mi > 59) { o.appendChild(el('p', { class: 'muted', text: 'Invalid time.' })); return; }
-      const FREQ_HRS = { q4h: 4, q6h: 6, q8h: 8, q12h: 12, qd: 24, bid: 12, tid: 8, qid: 6 };
-      const step = FREQ_HRS[document.getElementById('td-freq').value];
-      const next = [];
-      for (let i = 1; i <= 4; i++) {
-        const total = h * 60 + mi + step * 60 * i;
-        const nh = String(Math.floor(total / 60) % 24).padStart(2, '0');
-        const nm = String(total % 60).padStart(2, '0');
-        next.push(`${nh}:${nm}`);
-      }
-      o.appendChild(el('h2', { text: `Next ${next.length} doses (every ${step}h)` }));
-      o.appendChild(el('ol', {}, next.map((t) => el('li', { text: t }))));
+      const r = nextDoses({
+        time: document.getElementById('td-time').value,
+        freq: document.getElementById('td-freq').value,
+      });
+      if (!r) { o.appendChild(el('p', { class: 'muted', text: 'Enter time as HH:MM (24-hour).' })); return; }
+      o.appendChild(el('h2', { text: `Next ${r.doses.length} doses (every ${r.stepHours}h)` }));
+      o.appendChild(el('ol', {}, r.doses.map((t) => el('li', { text: t }))));
     });
     ['td-time', 'td-freq'].forEach((id) => document.getElementById(id).addEventListener(id === 'td-freq' ? 'change' : 'input', run));
     run();
