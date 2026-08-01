@@ -7381,6 +7381,12 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 - `drg-payment`
 - `apc-payment`
 
+### lib/billing-v78.js (spec-v629 wave 3: MPFS payment — administrative disclaimer)
+- `rvu-payment`
+- `bilateral-pay`
+- `multi-surgeon-pay`
+- `sequestration-adjust`
+
 ### lib/tox-v86.js
 - `serotonin-toxicity`
 - `salicylate-toxicity`

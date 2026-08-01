@@ -263,6 +263,30 @@ test('spec-v629 wave 2: era/drg/apc price correctly through the adapters', () =>
   assert.equal(apc.domain, 'administrative');
 });
 
+// spec-v629 wave 3: MPFS payment calculators (cents lib results surfaced as USD).
+test('spec-v629 wave 3: rvu/bilateral/multi-surgeon/sequestration price correctly', () => {
+  const rvu = computeCalculator({
+    id: 'rvu-payment',
+    inputs: {
+      'rvu-work': '1.92', 'rvu-penf': '1.5', 'rvu-pef': '0.69', 'rvu-mp': '0.13', 'rvu-loc': 'manual', 'rvu-wg': '1', 'rvu-peg': '1', 'rvu-mpg': '1', 'rvu-cf': '32.7442', 'rvu-units': '1',
+    },
+  });
+  assert.equal(rvu.valid, true);
+  assert.equal(rvu.result.nonFacilityUsd, 116.24);
+  assert.equal(rvu.result.facilityUsd, 89.72);
+  assert.equal(rvu.domain, 'administrative');
+
+  const bil = computeCalculator({ id: 'bilateral-pay', inputs: { 'bil-fee': '500', 'bil-ind': '1' } });
+  assert.equal(bil.result.allowedUsd, 750);
+
+  const ms = computeCalculator({ id: 'multi-surgeon-pay', inputs: { 'ms-fee': '2000', 'ms-role': 'assistant', 'ms-ind': '2' } });
+  assert.equal(ms.result.allowedUsd, 320);
+
+  const seq = computeCalculator({ id: 'sequestration-adjust', inputs: { 'seq-allowed': '100', 'seq-patient': '20', 'seq-pct': '2' } });
+  assert.equal(seq.result.programPaymentUsd, 80);
+  assert.equal(seq.result.netPaymentUsd, 78.4);
+});
+
 // spec-v630: one-shot natural-language answer via queryCompute.
 test('spec-v630: answer_query computes a value from a sentence with embedded numbers', () => {
   const bmi = answerQuery({ query: 'bmi 80kg 180cm' });
