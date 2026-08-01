@@ -8,14 +8,15 @@ import assert from 'node:assert/strict';
 import {
   TOOL_DEFS, dispatch, toCallToolResult, SERVER_INSTRUCTIONS, catalogVersion, resolveWithAliases,
   listCalculators, getCatalogManifest, describeCalculator, computeCalculator, findCalculator,
+  answerQuery, convertUnits,
 } from '../../mcp/tools.js';
 
-test('five tools, each with a valid object inputSchema', () => {
-  // spec-v183 §2.2 fixed a three-tool surface; mcp-discovery added find_calculator
-  // (four); spec-v635 added get_catalog_manifest (five).
-  assert.equal(TOOL_DEFS.length, 5);
+test('seven tools, each with a valid object inputSchema', () => {
+  // spec-v183 fixed three; mcp-discovery added find_calculator (four); spec-v635
+  // added get_catalog_manifest (five); spec-v630 added answer_query + convert_units.
+  assert.equal(TOOL_DEFS.length, 7);
   assert.deepEqual(TOOL_DEFS.map((t) => t.name).sort(),
-    ['compute_calculator', 'describe_calculator', 'find_calculator', 'get_catalog_manifest', 'list_calculators']);
+    ['answer_query', 'compute_calculator', 'convert_units', 'describe_calculator', 'find_calculator', 'get_catalog_manifest', 'list_calculators']);
   for (const t of TOOL_DEFS) {
     assert.equal(t.inputSchema.type, 'object');
     assert.ok(typeof t.description === 'string' && t.description.length > 20);
@@ -210,6 +211,54 @@ test('every tool carries read-only annotations and an object outputSchema', () =
     assert.ok(!('destructiveHint' in t.annotations), `${t.name} omits destructiveHint (meaningless when read-only)`);
     assert.equal(t.outputSchema.type, 'object', `${t.name} outputSchema is an object`);
   }
+});
+
+// spec-v630: one-shot natural-language answer via queryCompute.
+test('spec-v630: answer_query computes a value from a sentence with embedded numbers', () => {
+  const bmi = answerQuery({ query: 'bmi 80kg 180cm' });
+  assert.equal(bmi.matched, true);
+  assert.equal(bmi.valid, true);
+  assert.equal(bmi.tile, 'bmi');
+  assert.equal(bmi.value, 24.7);
+  assert.ok(bmi.citation, 'carries the tile citation');
+  assert.ok(bmi.result, 'attaches the full result when inputs round-trip');
+
+  const map = answerQuery({ query: 'map 120/80' });
+  assert.equal(map.tile, 'map');
+  assert.ok(Math.abs(map.value - 93.3) < 0.5);
+
+  const miss = answerQuery({ query: 'what is the meaning of life' });
+  assert.equal(miss.matched, false);
+  assert.equal(miss.code, 'NO_MATCH');
+
+  assert.equal(answerQuery({ query: '   ' }).code, 'BAD_ARGS');
+  // deterministic
+  assert.deepEqual(answerQuery({ query: 'bmi 80kg 180cm' }), bmi);
+});
+
+// spec-v630: deterministic lab/vitals unit conversion.
+test('spec-v630: convert_units converts labs and vitals both directions', () => {
+  const g = convertUnits({ kind: 'glucose', value: 90, direction: 'toSi' });
+  assert.equal(g.valid, true);
+  assert.ok(Math.abs(g.result - 5.0) < 0.05, `glucose 90 mg/dL ~= 5.0 mmol/L, got ${g.result}`);
+  assert.equal(g.units, 'mg/dL -> mmol/L');
+
+  const back = convertUnits({ kind: 'glucose', value: 5, direction: 'fromSi' });
+  assert.ok(Math.abs(back.result - 90) < 1, `5 mmol/L ~= 90 mg/dL, got ${back.result}`);
+
+  const t = convertUnits({ kind: 'temperature', value: 98.6, direction: 'fToC' });
+  assert.ok(Math.abs(t.result - 37) < 0.1);
+
+  const a1c = convertUnits({ kind: 'a1c', value: 7, direction: 'pctToIfcc' });
+  assert.ok(Math.abs(a1c.result - 53) < 1, `A1c 7% ~= 53 mmol/mol, got ${a1c.result}`);
+
+  // default direction when omitted
+  assert.equal(convertUnits({ kind: 'pressure', value: 120 }).direction, 'mmHgToKpa');
+  // errors
+  assert.equal(convertUnits({ kind: 'nope', value: 1 }).code, 'BAD_ARGS');
+  assert.equal(convertUnits({ kind: 'glucose', value: 'abc' }).code, 'INVALID_TYPE');
+  // via dispatch too
+  assert.equal(dispatch('convert_units', { kind: 'weight', value: 220, direction: 'lbToKg' }).valid, true);
 });
 
 // spec-v630: describe_calculator exposes the curated related-tile graph.

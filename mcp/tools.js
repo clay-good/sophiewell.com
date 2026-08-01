@@ -11,6 +11,8 @@ import {
 } from './catalog.js';
 import { resolvePromptRanked } from '../lib/prompt.js';
 import { corpusDesc } from '../lib/search-corpus.js';
+import { queryCompute } from '../lib/query-compute.js';
+import * as UNITS from '../lib/unit-convert.js';
 
 // The hand-curated synonym table (data/synonyms.json) is the same accelerator
 // the browser prompt bar uses. Load it once, lazily; if it is absent the ranker
@@ -350,6 +352,105 @@ export function findCalculator(args = {}) {
   return { query: q, count: candidates.length, candidates };
 }
 
+// spec-v630: one-shot natural-language answer. queryCompute (lib/query-compute.js,
+// the same parser the browser search bar uses) turns a sentence with embedded
+// values ("bmi 80kg 180cm", "map 120/80") into a computed answer, reusing each
+// tile's own lib compute so the number matches the tile. Deterministic, no AI. On
+// a match it also attaches the citation and, when the parsed inputs round-trip,
+// the full structured result; the `inputs` let an agent re-run compute_calculator.
+export function answerQuery(args = {}) {
+  const { query } = args;
+  const q = typeof query === 'string' ? query.trim() : '';
+  if (!q) {
+    return { valid: false, code: 'BAD_ARGS', message: 'answer_query needs a non-empty "query". Describe the calculation with its values, e.g. "bmi 80kg 180cm".' };
+  }
+  const hit = queryCompute(q);
+  if (!hit) {
+    return { query: q, matched: false, code: 'NO_MATCH', hint: 'No one-shot answer for this query. Use find_calculator to choose a calculator, then compute_calculator.' };
+  }
+  const out = {
+    query: q, matched: true, valid: true, tile: hit.tile, label: hit.label, value: hit.value, unit: hit.unit, text: hit.text, inputs: hit.inputs,
+  };
+  const e = getCalculator(hit.tile);
+  if (e) {
+    out.citation = e.citation;
+    out.citationUrl = e.citationUrl;
+    out.disclaimer = DISCLAIMER;
+  }
+  const full = computeCalculator({ id: hit.tile, inputs: hit.inputs });
+  if (full.valid) out.result = full.result;
+  return out;
+}
+
+// spec-v630: lab + vitals unit conversion, reusing lib/unit-convert.js verbatim.
+// Each `kind` has two directions; value in, converted value out, with the unit
+// labels. Deterministic and pure. The lab kinds come straight from the LAB table
+// so this list can never drift from the library.
+const CONVERSIONS = (() => {
+  const map = {};
+  for (const kind of Object.keys(UNITS.LAB)) {
+    const r = UNITS.LAB[kind];
+    map[kind] = {
+      directions: ['toSi', 'fromSi'],
+      units: { toSi: `${r.from} -> ${r.to}`, fromSi: `${r.to} -> ${r.from}` },
+      convert: (v, d) => UNITS.labConvert(kind, v, d === 'fromSi' ? 'fromSi' : 'toSi'),
+    };
+  }
+  map.a1c = {
+    directions: ['pctToIfcc', 'ifccToPct'],
+    units: { pctToIfcc: '% NGSP -> mmol/mol IFCC', ifccToPct: 'mmol/mol IFCC -> % NGSP' },
+    convert: (v, d) => (d === 'ifccToPct' ? UNITS.a1cIfccToPct(v) : UNITS.a1cPctToIfcc(v)),
+  };
+  map.pressure = {
+    directions: ['mmHgToKpa', 'kpaToMmHg'],
+    units: { mmHgToKpa: 'mmHg -> kPa', kpaToMmHg: 'kPa -> mmHg' },
+    convert: (v, d) => (d === 'kpaToMmHg' ? UNITS.kpaToMmHg(v) : UNITS.mmHgToKpa(v)),
+  };
+  map.temperature = {
+    directions: ['fToC', 'cToF'],
+    units: { fToC: 'degF -> degC', cToF: 'degC -> degF' },
+    convert: (v, d) => (d === 'cToF' ? UNITS.cToF(v) : UNITS.fToC(v)),
+  };
+  map.length = {
+    directions: ['inToCm', 'cmToIn'],
+    units: { inToCm: 'in -> cm', cmToIn: 'cm -> in' },
+    convert: (v, d) => (d === 'cmToIn' ? UNITS.cmToInches(v) : UNITS.inchesToCm(v)),
+  };
+  map.weight = {
+    directions: ['lbToKg', 'kgToLb'],
+    units: { lbToKg: 'lb -> kg', kgToLb: 'kg -> lb' },
+    convert: (v, d) => (d === 'kgToLb' ? UNITS.kgToLb(v) : UNITS.lbToKg(v)),
+  };
+  return map;
+})();
+
+export const CONVERT_KINDS = Object.keys(CONVERSIONS);
+
+export function convertUnits(args = {}) {
+  const { kind, value, direction } = args;
+  const c = CONVERSIONS[kind];
+  if (!c) {
+    return { valid: false, code: 'BAD_ARGS', field: 'kind', message: `Unknown kind "${kind}". One of: ${CONVERT_KINDS.join(', ')}.` };
+  }
+  const dir = c.directions.includes(direction) ? direction : c.directions[0];
+  const n = typeof value === 'number' ? value : (typeof value === 'string' && value.trim() !== '' ? Number(value) : NaN);
+  if (!Number.isFinite(n)) {
+    return { valid: false, code: 'INVALID_TYPE', field: 'value', message: '"value" must be a finite number.' };
+  }
+  let result;
+  try {
+    result = c.convert(n, dir);
+  } catch (err) {
+    return { valid: false, code: 'COMPUTE_ERROR', message: err && err.message ? err.message : 'conversion failed' };
+  }
+  if (!Number.isFinite(result)) {
+    return { valid: false, code: 'COMPUTE_ERROR', message: 'conversion produced a non-finite value' };
+  }
+  return {
+    valid: true, kind, direction: dir, value: n, result, units: c.units[dir],
+  };
+}
+
 // spec-v634 §1: the server-level usage guidance the client shows the model on
 // connect. One authoritative place that teaches the discover -> describe ->
 // compute pipeline and the determinism / read-only / citation posture. Kept
@@ -360,11 +461,14 @@ export const SERVER_INSTRUCTIONS = [
   'byte-identical output, so results are safe to cache.',
   '',
   'Workflow: (1) Discover — call find_calculator with a plain-language intent ("stroke risk in afib",',
-  '"creatinine clearance"), or call list_calculators to enumerate or browse by group / specialty.',
-  '(2) Inspect — call describe_calculator to get a calculator\'s input JSON Schema, a worked example,',
-  'interpretation bands, and citation before computing. (3) Compute — call compute_calculator with the',
-  'id and inputs; inputs are validated against the schema, and invalid or incomplete input returns',
-  '{ valid: false, message } rather than throwing.',
+  '"creatinine clearance"), or list_calculators / get_catalog_manifest to browse. (2) Inspect — call',
+  'describe_calculator to get a calculator\'s input JSON Schema, a worked example, interpretation bands,',
+  'related calculators, and citation before computing. (3) Compute — call compute_calculator with the id',
+  'and inputs; inputs are validated against the schema, and invalid or incomplete input returns',
+  '{ valid: false, code, message } rather than throwing.',
+  '',
+  'Shortcuts: answer_query takes a sentence that already contains its values ("bmi 80kg 180cm") and',
+  'returns the number directly; convert_units does lab/vitals unit conversion (mg/dL <-> mmol/L, etc.).',
   '',
   'Every describe / compute result carries the source citation (with URL and access date) and a',
   'disclaimer: a computed value is decision-support, not a treat / prescribe order. Surface the',
@@ -541,6 +645,68 @@ export const TOOL_DEFS = [
       },
     },
   },
+  {
+    name: 'answer_query',
+    description: 'One-shot answer: parse a plain-language query that already contains its values ("bmi 80kg 180cm", "map 120/80", "corrected calcium ca 8 albumin 2") and return the computed value directly, with the citation. Deterministic (no AI). Returns matched:false with code NO_MATCH when no template applies — then use find_calculator + compute_calculator.',
+    annotations: readOnlyAnnotations('Answer a query in one shot'),
+    inputSchema: {
+      type: 'object',
+      properties: {
+        query: { type: 'string', description: 'A calculation described with its numbers, e.g. "bmi 80kg 180cm".' },
+      },
+      required: ['query'],
+      additionalProperties: false,
+    },
+    outputSchema: {
+      type: 'object',
+      properties: {
+        query: { type: 'string' },
+        matched: { type: 'boolean' },
+        valid: { type: 'boolean' },
+        tile: { type: 'string' },
+        label: { type: 'string' },
+        value: {},
+        unit: { type: 'string' },
+        text: { type: 'string' },
+        inputs: { type: 'object' },
+        result: { type: 'object' },
+        citation: { type: ['string', 'null'] },
+        citationUrl: { type: ['string', 'null'] },
+        disclaimer: { type: 'string' },
+        code: { type: 'string' },
+        hint: { type: 'string' },
+      },
+    },
+  },
+  {
+    name: 'convert_units',
+    description: 'Deterministic lab and vitals unit conversion. kind is one of the lab analytes (glucose, cholesterol, creatinine, bun, calcium, uricAcid, albumin, hemoglobin, magnesium, bilirubin, lactate) or a1c, pressure, temperature, length, weight. direction picks which way; the default is the first listed for that kind. Returns the converted value and the unit labels.',
+    annotations: readOnlyAnnotations('Convert units'),
+    inputSchema: {
+      type: 'object',
+      properties: {
+        kind: { type: 'string', description: 'What to convert, e.g. "glucose", "creatinine", "a1c", "pressure", "temperature".' },
+        value: { type: 'number', description: 'The numeric value to convert.' },
+        direction: { type: 'string', description: 'e.g. lab: "toSi"|"fromSi"; a1c: "pctToIfcc"|"ifccToPct"; pressure: "mmHgToKpa"|"kpaToMmHg". Defaults to the first for the kind.' },
+      },
+      required: ['kind', 'value'],
+      additionalProperties: false,
+    },
+    outputSchema: {
+      type: 'object',
+      properties: {
+        valid: { type: 'boolean' },
+        kind: { type: 'string' },
+        direction: { type: 'string' },
+        value: { type: 'number' },
+        result: { type: 'number' },
+        units: { type: 'string' },
+        code: { type: 'string' },
+        field: { type: 'string' },
+        message: { type: 'string' },
+      },
+    },
+  },
 ];
 
 export function dispatch(name, args) {
@@ -550,6 +716,8 @@ export function dispatch(name, args) {
     case 'describe_calculator': return describeCalculator(args);
     case 'compute_calculator': return computeCalculator(args);
     case 'find_calculator': return findCalculator(args);
+    case 'answer_query': return answerQuery(args);
+    case 'convert_units': return convertUnits(args);
     default: return { valid: false, code: 'UNKNOWN_TOOL', message: `Unknown tool "${name}".` };
   }
 }
