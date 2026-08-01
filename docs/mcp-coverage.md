@@ -7406,6 +7406,12 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 - `drug-wastage`
 - `infusion-hierarchy`
 
+### lib/billing-v82.js (spec-v629 wave 7: patient responsibility / COB — administrative disclaimer)
+- `medicare-cost-share`
+- `cob-calc`
+- `allowed-amount`
+- `nsa-cost-share`
+
 ### lib/tox-v86.js
 - `serotonin-toxicity`
 - `salicylate-toxicity`

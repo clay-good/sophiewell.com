@@ -348,6 +348,29 @@ test('spec-v629 wave 6: ndc-units/drug-wastage/infusion-hierarchy compute correc
   assert.deepEqual(ih.result.lines.map((l) => l.code), ['96413', '96367', '96361']);
 });
 
+// spec-v629 wave 7: patient responsibility / COB (cents in, USD surfaced).
+test('spec-v629 wave 7: cost-share/cob/allowed-amount/nsa compute correctly', () => {
+  const mcs = computeCalculator({ id: 'medicare-cost-share', inputs: { 'mc-part': 'B', 'mc-allowed': '500', 'mc-ded': '283' } });
+  assert.equal(mcs.valid, true);
+  assert.equal(mcs.result.patientUsd, 326.4);
+  assert.equal(mcs.result.programPaysUsd, 173.6);
+  assert.equal(mcs.result.coinsuranceBaseUsd, 217, 'surfaces the amount subject to coinsurance');
+  assert.equal(mcs.domain, 'administrative');
+
+  const cob = computeCalculator({ id: 'cob-calc', inputs: { 'cob-method': 'lesser-of', 'cob-charge': '1000', 'cob-pri-allowed': '600', 'cob-pri-paid': '480', 'cob-sec-allowed': '500', 'cob-sec-would': '400' } });
+  assert.equal(cob.result.secondaryPaysUsd, 120);
+  assert.equal(cob.result.patientResidualUsd, 0);
+
+  const aa = computeCalculator({ id: 'allowed-amount', inputs: { 'aa-charge': '1000', 'aa-allowed': '600', 'aa-ded': '100', 'aa-coins': '20' } });
+  assert.equal(aa.result.patientResponsibilityUsd, 200);
+  assert.equal(aa.result.contractualWriteOffUsd, 400);
+
+  const nsa = computeCalculator({ id: 'nsa-cost-share', inputs: { 'nsa-cat': 'emergency', 'nsa-qpa': '800', 'nsa-charge': '1000', 'nsa-coins': '20' } });
+  assert.equal(nsa.result.patientCostShareUsd, 160);
+  assert.equal(nsa.result.prohibitedBalanceBillUsd, 200);
+  assert.equal(nsa.result.coinsurancePct, 20);
+});
+
 // spec-v630: one-shot natural-language answer via queryCompute.
 test('spec-v630: answer_query computes a value from a sentence with embedded numbers', () => {
   const bmi = answerQuery({ query: 'bmi 80kg 180cm' });

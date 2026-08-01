@@ -543,6 +543,7 @@ import billingV78 from './adapters/billing-v78.js';
 import billingV79 from './adapters/billing-v79.js';
 import billingV80 from './adapters/billing-v80.js';
 import billingV81 from './adapters/billing-v81.js';
+import billingV82 from './adapters/billing-v82.js';
 
 const ADAPTER_MODULES = [
   ['tox-v86', toxV86],
@@ -1071,6 +1072,7 @@ const ADAPTER_MODULES = [
   ['billing-v79', billingV79],
   ['billing-v80', billingV80],
   ['billing-v81', billingV81],
+  ['billing-v82', billingV82],
 ];
 
 const HERE = dirname(fileURLToPath(import.meta.url));
