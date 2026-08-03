@@ -7451,6 +7451,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/yamaguchi-v642.js (spec-v642: Yamaguchi criteria for adult-onset Still disease — clinical disclaimer)
 - `yamaguchi-aosd`
 
+### lib/oswestry-v643.js (spec-v643: Oswestry Disability Index — clinical disclaimer)
+- `oswestry-odi`
+
 ### lib/tox-v86.js
 - `serotonin-toxicity`
 - `salicylate-toxicity`

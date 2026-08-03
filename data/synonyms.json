@@ -711,6 +711,8 @@
       "tile": "egpa-acr-eular-2022", "audience": "clinicians" },
     { "phrases": ["adult onset still disease criteria", "yamaguchi criteria still disease", "adult still disease classification", "aosd yamaguchi"],
       "tile": "yamaguchi-aosd", "audience": "clinicians" },
+    { "phrases": ["oswestry disability index", "odi low back pain disability", "oswestry low back questionnaire", "low back disability score"],
+      "tile": "oswestry-odi", "audience": "clinicians" },
     { "phrases": ["erez dic score", "pregnancy dic score", "obstetric disseminated intravascular coagulation", "pregnancy specific isth dic"],
       "tile": "erez-dic", "audience": "clinicians" },
     { "phrases": ["aeeg", "amplitude integrated eeg", "al naqeeb classification", "neonatal aeeg amplitude"],
