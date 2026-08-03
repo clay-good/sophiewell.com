@@ -550,6 +550,7 @@ import regulatory from './adapters/regulatory.js';
 import unitConvert from './adapters/unit-convert.js';
 import doseSchedule from './adapters/dose-schedule.js';
 import insulinDrip from './adapters/insulin-drip.js';
+import pregDating from './adapters/preg-dating.js';
 
 const ADAPTER_MODULES = [
   ['tox-v86', toxV86],
@@ -1085,6 +1086,7 @@ const ADAPTER_MODULES = [
   ['unit-convert', unitConvert],
   ['dose-schedule', doseSchedule],
   ['insulin-drip', insulinDrip],
+  ['preg-dating', pregDating],
 ];
 
 const HERE = dirname(fileURLToPath(import.meta.url));

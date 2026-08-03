@@ -454,6 +454,22 @@ test('spec-v629 wave 12: insulin-drip returns the example-protocol rate', () => 
   assert.equal(computeCalculator({ id: 'insulin-drip', inputs: { p: 'aggressive', bg: '180' } }).code, 'INVALID_TYPE');
 });
 
+// spec-v629 wave 13: deterministic pregnancy dating (extracted to lib/preg-dating.js).
+test('spec-v629 wave 13: preg-dating composes LMP/CRL dating deterministically', () => {
+  const r = computeCalculator({ id: 'preg-dating', inputs: { 'pd-lmp': '2025-12-23', 'pd-crl': '50', 'pd-us': '2026-03-12' } });
+  assert.equal(r.valid, true);
+  assert.equal(r.result.lmpEdd, '2026-09-29');
+  assert.equal(r.result.crlGaWeeks, 11);
+  assert.equal(r.result.crlGaRemainderDays, 5);
+  assert.equal(r.result.discordanceDays, 3);
+  assert.equal(r.result.discordant, false);
+  assert.equal(r.domain, 'clinical');
+  // no inputs -> incomplete (all fields optional, but at least one of LMP/CRL is needed)
+  assert.equal(computeCalculator({ id: 'preg-dating', inputs: {} }).code, 'INCOMPLETE');
+  // malformed date -> compute error
+  assert.equal(computeCalculator({ id: 'preg-dating', inputs: { 'pd-lmp': 'nope' } }).code, 'COMPUTE_ERROR');
+});
+
 // spec-v630: one-shot natural-language answer via queryCompute.
 test('spec-v630: answer_query computes a value from a sentence with embedded numbers', () => {
   const bmi = answerQuery({ query: 'bmi 80kg 180cm' });

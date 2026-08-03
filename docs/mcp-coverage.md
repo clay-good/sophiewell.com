@@ -7433,6 +7433,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/insulin-drip.js (spec-v629 wave 12: sliding-scale insulin-drip math — clinical disclaimer)
 - `insulin-drip`
 
+### lib/preg-dating.js (spec-v629 wave 13: deterministic pregnancy dating — clinical disclaimer)
+- `preg-dating`
+
 ### lib/tox-v86.js
 - `serotonin-toxicity`
 - `salicylate-toxicity`

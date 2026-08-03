@@ -40,7 +40,6 @@ Reasons are a fixed vocabulary:
 - `ems-doc` - template-generator
 - `unit-converter-v4` - redundant
 - `pa-lint` - wrong-input-modality
-- `preg-dating` - pending-adapter
 - `ews-escalation` - time-dependent
 - `sepsis-bundle-clock` - time-dependent
 - `code-blue-clock` - time-dependent
