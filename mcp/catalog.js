@@ -553,6 +553,7 @@ import insulinDrip from './adapters/insulin-drip.js';
 import pregDating from './adapters/preg-dating.js';
 import takayasuV638 from './adapters/takayasu-v638.js';
 import gpaV639 from './adapters/gpa-v639.js';
+import mpaV640 from './adapters/mpa-v640.js';
 
 const ADAPTER_MODULES = [
   ['tox-v86', toxV86],
@@ -1091,6 +1092,7 @@ const ADAPTER_MODULES = [
   ['preg-dating', pregDating],
   ['takayasu-v638', takayasuV638],
   ['gpa-v639', gpaV639],
+  ['mpa-v640', mpaV640],
 ];
 
 const HERE = dirname(fileURLToPath(import.meta.url));

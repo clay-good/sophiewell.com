@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `73ea737763f3da42`
-Generated: 2026-08-03T18:12:21.518Z
+Build ID: `322875ed51dddf92`
+Generated: 2026-08-03T18:54:42.213Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=20.18.1 <21, npm >=10.0.0
@@ -24,13 +24,13 @@ downloads is committed in this repository and is hashed below.
 
 | Path | Bytes | SHA-256 |
 |---|---:|---|
-| `index.html` | 96564 | `4bfa7c4fc0b6c50e327a052f757fd8e7cff6c24c4162968eb67eda8a254b533e` |
+| `index.html` | 96643 | `248877cd0c8d95157f2dcc0d139287986b6beccfa0e5437e85b661922f1721d9` |
 | `styles.css` | 44160 | `a2cc7ad7bae9f7cfc9681d80bc6bd4a58f0b07d47bfcff64897dc04929c12333` |
-| `app.js` | 398410 | `4cd2bcfa6ea46b72fc38d895e060f41875f733e822dd7b6da1220eaaf5aad530` |
+| `app.js` | 398653 | `82b8cfeaea73620fd15883209df03719c0984e901927e0522ad55e2824735c23` |
 | `sw.js` | 4622 | `b891d4344f8e04403b7f1d307fd446cc224bddc6f0c4397438a17d197351171e` |
 | `site.webmanifest` | 709 | `0e0de4da60590a12e8b27a0ae2a2f5ffdb6500b7d2b78f93631ec2f64ed3d5ce` |
 | `robots.txt` | 127 | `38fbf9c1854e72abb20e01e81dd5a31d4ea96f154c12d5db1ec3af05524dd1a1` |
-| `sitemap.xml` | 225434 | `c2038176efe95f23da99be728d5f7a5500be4851841f6d0b1cec8ca0e04c9125` |
+| `sitemap.xml` | 225592 | `7c6c6e31e21e0a12e5b6c3083a311cfd3bc59c0a101991f0c8e29f134d5a9381` |
 | `_headers` | 1316 | `2f39986457d2feff7e73e491a7d09ee871e8f2f4cc2bc437f86bd86a42554ec6` |
 | `logo.png` | 63440 | `11afaf1b0d3ca68393d202e4810bf766b5b6d591b4e3ec52f41d3cacaa4616ec` |
 | `favicon.ico` | 7411 | `407fde0ca2788409e87e11f596fa02e6a0b121817fcea7fd995beec1801e287b` |
@@ -342,7 +342,7 @@ downloads is committed in this repository and is hashed below.
 | `lib/medication-v4.js` | 18192 | `467f9576c50da696cc56094eb022d0a5ed1e88de0c7618448554ede8067270b0` |
 | `lib/medication-v5.js` | 18863 | `ce81d9f8954abbd412892c13af9936f992239164f26fd2b999eaea7902787ab7` |
 | `lib/mest-c-v528.js` | 9310 | `e33f178c339338f62c47b6a19d50d345d38be3b05d9a33e7d2703e0a99ae3a69` |
-| `lib/meta.js` | 2044265 | `e81afa2bcc0da889c3585a4711032fc98e946ba6cd65235904a60cd436cffd4d` |
+| `lib/meta.js` | 2045353 | `85ec63d126324ec75b405297af2c6aac390c7f575795574b703a6fa38d22a581` |
 | `lib/metabolic-hepatic-v219.js` | 12791 | `b9352877cebf7fbf3c3b99ecb8b72cdbee3ed94e056dc019113668609f5a95a8` |
 | `lib/metabolic-onc-v88.js` | 12659 | `1553b641668c121661a66647da71a4aaaa023e9f3a6b7a753efbcdab27cdba81` |
 | `lib/metabolic-v269.js` | 3262 | `0c7a42557886f2b0aeee7949b8d0bd682d795d4526174fd540717a978d94ec2f` |
@@ -355,6 +355,7 @@ downloads is committed in this repository and is hashed below.
 | `lib/mixed-v228.js` | 8553 | `7dc7411b28726f4e9a9e337da6ef5ce4194ae4b682fe72975f823242e9a4e5d7` |
 | `lib/modic-changes-v433.js` | 2948 | `7f5d7eae4da97b87d6c2829caa3c3c1fd7f1005ec927b4fa45c3c8f50e73c20e` |
 | `lib/montreal-ibd-v328.js` | 4721 | `97f6f837c4fa6c39e29580aad07a5a21bd70abf7faa76fc4bddc3ba1cc113a5c` |
+| `lib/mpa-v640.js` | 3742 | `1e379bc79e1f76f0b189895987cbd9878851637596fc68615024fb8f5cf09310` |
 | `lib/mrc-power-v428.js` | 3225 | `1fb2d34bd33ba632438a2017caac8f57e05274cc3b5f63b364da13faf1f30f3a` |
 | `lib/mswat-v557.js` | 12016 | `ccf9d353d2eb10a77ea6376178c8e28f63290525980087d3702acddbffeb6896` |
 | `lib/myeloid-prognosis-v199.js` | 11996 | `d65fe650bc865814907eb9176be30f15bb5db529c5dbd629a78aaae974f6e1a6` |
@@ -1144,6 +1145,7 @@ downloads is committed in this repository and is hashed below.
 | `views/group-v63.js` | 14377 | `962d84b97e82bc39635801da79ecaa93fc0b501b5988b7d321b0f1f630497fab` |
 | `views/group-v638.js` | 5725 | `9e29ea3bc648a3a2cca12472b0299977820a10bd14e75e8f8434cc9a1f75d843` |
 | `views/group-v639.js` | 4685 | `997936cf994d099c271b358256c79bd2b0356c4d9d04a8fdda16aae032f183e6` |
+| `views/group-v640.js` | 3906 | `9abd819523ad857d2ebb275ffd966244f0e1b263990e9435f817a68b58ab984c` |
 | `views/group-v7.js` | 15113 | `d480a5b34adfd035507dd4313e12462c47c949aeee155b253c8a2f9596839d05` |
 | `views/group-v8.js` | 20546 | `5e6ebaa807abb0677621321175906ec60531116c30aa824930ad77bc47ecad6d` |
 | `views/group-v9.js` | 22815 | `66b61a3aa7fc5d8e0eb324392f546ff29c8bc88af80c0a418879f887737e5e1a` |

@@ -593,6 +593,7 @@ const PROBES = [
   ['osdi dry eye symptom questionnaire score', ['osdi']],
   ['takayasu arteritis classification criteria', ['takayasu-acr-eular-2022']],
   ['granulomatosis with polyangiitis classification criteria', ['gpa-acr-eular-2022']],
+  ['microscopic polyangiitis classification criteria', ['mpa-acr-eular-2022']],
   ['pregnancy dic score erez obstetric', ['erez-dic']],
   ['aeeg amplitude classification neonatal encephalopathy', ['anaqeeb-aeeg']],
   ['spadi shoulder pain disability index', ['spadi']],
