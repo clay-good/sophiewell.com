@@ -555,6 +555,7 @@ import takayasuV638 from './adapters/takayasu-v638.js';
 import gpaV639 from './adapters/gpa-v639.js';
 import mpaV640 from './adapters/mpa-v640.js';
 import egpaV641 from './adapters/egpa-v641.js';
+import yamaguchiV642 from './adapters/yamaguchi-v642.js';
 
 const ADAPTER_MODULES = [
   ['tox-v86', toxV86],
@@ -1095,6 +1096,7 @@ const ADAPTER_MODULES = [
   ['gpa-v639', gpaV639],
   ['mpa-v640', mpaV640],
   ['egpa-v641', egpaV641],
+  ['yamaguchi-v642', yamaguchiV642],
 ];
 
 const HERE = dirname(fileURLToPath(import.meta.url));
