@@ -7454,6 +7454,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/oswestry-v643.js (spec-v643: Oswestry Disability Index — clinical disclaimer)
 - `oswestry-odi`
 
+### lib/slums-v644.js (spec-v644: SLUMS cognitive screen — clinical disclaimer)
+- `slums`
+
 ### lib/tox-v86.js
 - `serotonin-toxicity`
 - `salicylate-toxicity`

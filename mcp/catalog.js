@@ -557,6 +557,7 @@ import mpaV640 from './adapters/mpa-v640.js';
 import egpaV641 from './adapters/egpa-v641.js';
 import yamaguchiV642 from './adapters/yamaguchi-v642.js';
 import oswestryV643 from './adapters/oswestry-v643.js';
+import slumsV644 from './adapters/slums-v644.js';
 
 const ADAPTER_MODULES = [
   ['tox-v86', toxV86],
@@ -1099,6 +1100,7 @@ const ADAPTER_MODULES = [
   ['egpa-v641', egpaV641],
   ['yamaguchi-v642', yamaguchiV642],
   ['oswestry-v643', oswestryV643],
+  ['slums-v644', slumsV644],
 ];
 
 const HERE = dirname(fileURLToPath(import.meta.url));
