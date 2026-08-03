@@ -533,6 +533,7 @@ import * as thiV555 from '../../lib/thi-v555.js';
 import * as vasiV556 from '../../lib/vasi-v556.js';
 import * as mswatV557 from '../../lib/mswat-v557.js';
 import * as osdiV558 from '../../lib/osdi-v558.js';
+import * as takayasuV638 from '../../lib/takayasu-v638.js';
 import * as erezDicV559 from '../../lib/erez-dic-v559.js';
 import * as anaqeebAeegV560 from '../../lib/anaqeeb-aeeg-v560.js';
 import * as spadiV561 from '../../lib/spadi-v561.js';
@@ -1071,6 +1072,7 @@ const MODULES = {
   'vasi-v556.js': vasiV556,
   'mswat-v557.js': mswatV557,
   'osdi-v558.js': osdiV558,
+  'takayasu-v638.js': takayasuV638,
   'erez-dic-v559.js': erezDicV559,
   'anaqeeb-aeeg-v560.js': anaqeebAeegV560,
   'spadi-v561.js': spadiV561,

@@ -7436,6 +7436,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/preg-dating.js (spec-v629 wave 13: deterministic pregnancy dating — clinical disclaimer)
 - `preg-dating`
 
+### lib/takayasu-v638.js (spec-v638: 2022 ACR/EULAR Takayasu arteritis classification — clinical disclaimer)
+- `takayasu-acr-eular-2022`
+
 ### lib/tox-v86.js
 - `serotonin-toxicity`
 - `salicylate-toxicity`

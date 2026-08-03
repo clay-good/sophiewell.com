@@ -551,6 +551,7 @@ import unitConvert from './adapters/unit-convert.js';
 import doseSchedule from './adapters/dose-schedule.js';
 import insulinDrip from './adapters/insulin-drip.js';
 import pregDating from './adapters/preg-dating.js';
+import takayasuV638 from './adapters/takayasu-v638.js';
 
 const ADAPTER_MODULES = [
   ['tox-v86', toxV86],
@@ -1087,6 +1088,7 @@ const ADAPTER_MODULES = [
   ['dose-schedule', doseSchedule],
   ['insulin-drip', insulinDrip],
   ['preg-dating', pregDating],
+  ['takayasu-v638', takayasuV638],
 ];
 
 const HERE = dirname(fileURLToPath(import.meta.url));
