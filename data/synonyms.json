@@ -707,6 +707,8 @@
       "tile": "gpa-acr-eular-2022", "audience": "clinicians" },
     { "phrases": ["microscopic polyangiitis classification", "2022 acr eular mpa criteria", "mpa classification criteria", "mpo anca vasculitis classification"],
       "tile": "mpa-acr-eular-2022", "audience": "clinicians" },
+    { "phrases": ["eosinophilic granulomatosis with polyangiitis classification", "2022 acr eular egpa criteria", "egpa classification criteria", "churg strauss classification"],
+      "tile": "egpa-acr-eular-2022", "audience": "clinicians" },
     { "phrases": ["erez dic score", "pregnancy dic score", "obstetric disseminated intravascular coagulation", "pregnancy specific isth dic"],
       "tile": "erez-dic", "audience": "clinicians" },
     { "phrases": ["aeeg", "amplitude integrated eeg", "al naqeeb classification", "neonatal aeeg amplitude"],

@@ -536,6 +536,7 @@ import * as osdiV558 from '../../lib/osdi-v558.js';
 import * as takayasuV638 from '../../lib/takayasu-v638.js';
 import * as gpaV639 from '../../lib/gpa-v639.js';
 import * as mpaV640 from '../../lib/mpa-v640.js';
+import * as egpaV641 from '../../lib/egpa-v641.js';
 import * as erezDicV559 from '../../lib/erez-dic-v559.js';
 import * as anaqeebAeegV560 from '../../lib/anaqeeb-aeeg-v560.js';
 import * as spadiV561 from '../../lib/spadi-v561.js';
@@ -1077,6 +1078,7 @@ const MODULES = {
   'takayasu-v638.js': takayasuV638,
   'gpa-v639.js': gpaV639,
   'mpa-v640.js': mpaV640,
+  'egpa-v641.js': egpaV641,
   'erez-dic-v559.js': erezDicV559,
   'anaqeeb-aeeg-v560.js': anaqeebAeegV560,
   'spadi-v561.js': spadiV561,

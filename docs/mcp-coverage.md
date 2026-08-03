@@ -7445,6 +7445,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/mpa-v640.js (spec-v640: 2022 ACR/EULAR microscopic polyangiitis classification — clinical disclaimer)
 - `mpa-acr-eular-2022`
 
+### lib/egpa-v641.js (spec-v641: 2022 ACR/EULAR eosinophilic granulomatosis with polyangiitis classification — clinical disclaimer)
+- `egpa-acr-eular-2022`
+
 ### lib/tox-v86.js
 - `serotonin-toxicity`
 - `salicylate-toxicity`
