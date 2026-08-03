@@ -14,6 +14,7 @@ import {
 import {
   insulinCorrection, electrolyteReplacement, crrtDose, ecmoTitration,
 } from '../lib/scoring-v4.js';
+import { insulinDripRate } from '../lib/insulin-drip.js';
 import { unitField, unitNum, WEIGHT_UNITS, CALCIUM_MMOL_UNITS } from '../lib/field-units.js';
 import { resultRow } from '../lib/result-copy.js';
 import { META } from '../lib/meta.js';
@@ -136,12 +137,10 @@ export const renderers = {
     root.appendChild(field('Current blood glucose (mg/dL)', 'bg'));
     const o = out(); root.appendChild(o);
     const run = () => safe(o, () => {
-      const proto = document.getElementById('p').value;
-      const bg = nv('bg');
-      let rate;
-      if (proto === 'low') rate = bg <= 100 ? 0 : (bg <= 150 ? 0.5 : (bg <= 200 ? 1 : (bg <= 250 ? 2 : 3)));
-      else rate = bg <= 100 ? 0 : (bg <= 150 ? 1 : (bg <= 200 ? 2 : (bg <= 250 ? 3 : 4)));
-      o.appendChild(el('p', { text: `Suggested rate (example only): ${rate} units/hr` }));
+      clear(o);
+      const r = insulinDripRate({ protocol: document.getElementById('p').value, bg: nv('bg') });
+      if (!r) { o.appendChild(el('p', { class: 'muted', text: 'Enter a current blood glucose.' })); return; }
+      o.appendChild(el('p', { text: `Suggested rate (example only): ${r.rate} units/hr` }));
       o.appendChild(el('p', { class: 'muted', text: 'Example data only. Always follow the active institution protocol and verify with the bedside RN/MD.' }));
     });
     ['p', 'bg'].forEach((id) => document.getElementById(id).addEventListener('input', run));

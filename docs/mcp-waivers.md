@@ -41,7 +41,6 @@ Reasons are a fixed vocabulary:
 - `unit-converter-v4` - redundant
 - `pa-lint` - wrong-input-modality
 - `preg-dating` - pending-adapter
-- `insulin-drip` - pending-adapter
 - `ews-escalation` - time-dependent
 - `sepsis-bundle-clock` - time-dependent
 - `code-blue-clock` - time-dependent

@@ -549,6 +549,7 @@ import opsV63 from './adapters/ops-v63.js';
 import regulatory from './adapters/regulatory.js';
 import unitConvert from './adapters/unit-convert.js';
 import doseSchedule from './adapters/dose-schedule.js';
+import insulinDrip from './adapters/insulin-drip.js';
 
 const ADAPTER_MODULES = [
   ['tox-v86', toxV86],
@@ -1083,6 +1084,7 @@ const ADAPTER_MODULES = [
   ['regulatory', regulatory],
   ['unit-convert', unitConvert],
   ['dose-schedule', doseSchedule],
+  ['insulin-drip', insulinDrip],
 ];
 
 const HERE = dirname(fileURLToPath(import.meta.url));

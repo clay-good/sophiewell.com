@@ -439,6 +439,21 @@ test('spec-v629 wave 11: time-to-dose projects the next doses', () => {
   assert.equal(computeCalculator({ id: 'time-to-dose', inputs: { 'td-time': '14:00', 'td-freq': 'q3h' } }).code, 'INVALID_TYPE');
 });
 
+// spec-v629 wave 12: sliding-scale insulin-drip math (extracted to lib/insulin-drip.js).
+test('spec-v629 wave 12: insulin-drip returns the example-protocol rate', () => {
+  const r = computeCalculator({ id: 'insulin-drip', inputs: { p: 'mod', bg: '180' } });
+  assert.equal(r.valid, true);
+  assert.equal(r.result.rate, 2);
+  assert.equal(r.result.protocolLabel, 'moderate-intensity sample protocol');
+  assert.equal(r.domain, 'clinical');
+  // low protocol is gentler at the same glucose
+  assert.equal(computeCalculator({ id: 'insulin-drip', inputs: { p: 'low', bg: '180' } }).result.rate, 1);
+  // non-numeric glucose -> incomplete
+  assert.equal(computeCalculator({ id: 'insulin-drip', inputs: { p: 'mod', bg: 'high' } }).code, 'INVALID_TYPE');
+  // unknown protocol rejected by the enum before compute
+  assert.equal(computeCalculator({ id: 'insulin-drip', inputs: { p: 'aggressive', bg: '180' } }).code, 'INVALID_TYPE');
+});
+
 // spec-v630: one-shot natural-language answer via queryCompute.
 test('spec-v630: answer_query computes a value from a sentence with embedded numbers', () => {
   const bmi = answerQuery({ query: 'bmi 80kg 180cm' });

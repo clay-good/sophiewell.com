@@ -7430,6 +7430,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/dose-schedule.js (spec-v629 wave 11: next-dose scheduling — administrative disclaimer)
 - `time-to-dose`
 
+### lib/insulin-drip.js (spec-v629 wave 12: sliding-scale insulin-drip math — clinical disclaimer)
+- `insulin-drip`
+
 ### lib/tox-v86.js
 - `serotonin-toxicity`
 - `salicylate-toxicity`
