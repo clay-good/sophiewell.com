@@ -7463,6 +7463,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/mccormack-v646.js (spec-v646: McCormack Load-Sharing Classification — clinical disclaimer)
 - `mccormack-lsc`
 
+### lib/schenck-v647.js (spec-v647: Schenck knee-dislocation classification — clinical disclaimer)
+- `schenck-knee`
+
 ### lib/tox-v86.js
 - `serotonin-toxicity`
 - `salicylate-toxicity`

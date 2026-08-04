@@ -600,6 +600,7 @@ const PROBES = [
   ['slums st louis university mental status cognitive', ['slums']],
   ['cheops pediatric postoperative pain scale', ['cheops']],
   ['mccormack load sharing classification spine fracture', ['mccormack-lsc']],
+  ['schenck knee dislocation classification kd grade', ['schenck-knee']],
   ['pregnancy dic score erez obstetric', ['erez-dic']],
   ['aeeg amplitude classification neonatal encephalopathy', ['anaqeeb-aeeg']],
   ['spadi shoulder pain disability index', ['spadi']],

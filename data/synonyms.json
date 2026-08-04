@@ -719,6 +719,8 @@
       "tile": "cheops", "audience": "clinicians" },
     { "phrases": ["mccormack load sharing classification", "load sharing score spine fracture", "spine fracture short segment fixation", "load sharing classification"],
       "tile": "mccormack-lsc", "audience": "clinicians" },
+    { "phrases": ["schenck classification knee dislocation", "kd knee dislocation grade", "multiligament knee injury classification", "knee dislocation anatomic classification"],
+      "tile": "schenck-knee", "audience": "clinicians" },
     { "phrases": ["erez dic score", "pregnancy dic score", "obstetric disseminated intravascular coagulation", "pregnancy specific isth dic"],
       "tile": "erez-dic", "audience": "clinicians" },
     { "phrases": ["aeeg", "amplitude integrated eeg", "al naqeeb classification", "neonatal aeeg amplitude"],
