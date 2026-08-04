@@ -715,6 +715,8 @@
       "tile": "oswestry-odi", "audience": "clinicians" },
     { "phrases": ["slums exam", "st louis university mental status", "slums cognitive screen", "free mmse alternative"],
       "tile": "slums", "audience": "clinicians" },
+    { "phrases": ["cheops pain scale", "childrens hospital eastern ontario pain", "pediatric postoperative pain scale", "cheops behavioral pain"],
+      "tile": "cheops", "audience": "clinicians" },
     { "phrases": ["erez dic score", "pregnancy dic score", "obstetric disseminated intravascular coagulation", "pregnancy specific isth dic"],
       "tile": "erez-dic", "audience": "clinicians" },
     { "phrases": ["aeeg", "amplitude integrated eeg", "al naqeeb classification", "neonatal aeeg amplitude"],

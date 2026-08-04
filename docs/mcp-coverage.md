@@ -7457,6 +7457,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/slums-v644.js (spec-v644: SLUMS cognitive screen — clinical disclaimer)
 - `slums`
 
+### lib/cheops-v645.js (spec-v645: CHEOPS pediatric pain scale — clinical disclaimer)
+- `cheops`
+
 ### lib/tox-v86.js
 - `serotonin-toxicity`
 - `salicylate-toxicity`

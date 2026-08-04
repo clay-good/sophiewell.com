@@ -598,6 +598,7 @@ const PROBES = [
   ['adult onset still disease yamaguchi criteria', ['yamaguchi-aosd']],
   ['oswestry disability index low back', ['oswestry-odi']],
   ['slums st louis university mental status cognitive', ['slums']],
+  ['cheops pediatric postoperative pain scale', ['cheops']],
   ['pregnancy dic score erez obstetric', ['erez-dic']],
   ['aeeg amplitude classification neonatal encephalopathy', ['anaqeeb-aeeg']],
   ['spadi shoulder pain disability index', ['spadi']],
