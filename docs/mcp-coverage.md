@@ -7472,6 +7472,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/nottingham-grade-v649.js (spec-v649: Nottingham histologic grade for breast cancer — clinical disclaimer)
 - `nottingham-grade`
 
+### lib/masaoka-v650.js (spec-v650: Masaoka-Koga thymoma staging — clinical disclaimer)
+- `masaoka-koga`
+
 ### lib/tox-v86.js
 - `serotonin-toxicity`
 - `salicylate-toxicity`
