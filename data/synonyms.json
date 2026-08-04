@@ -721,6 +721,8 @@
       "tile": "mccormack-lsc", "audience": "clinicians" },
     { "phrases": ["schenck classification knee dislocation", "kd knee dislocation grade", "multiligament knee injury classification", "knee dislocation anatomic classification"],
       "tile": "schenck-knee", "audience": "clinicians" },
+    { "phrases": ["weiss criteria adrenal", "weiss score adrenocortical carcinoma", "adrenal tumor malignancy criteria", "adrenocortical carcinoma histology score"],
+      "tile": "weiss-adrenal", "audience": "clinicians" },
     { "phrases": ["erez dic score", "pregnancy dic score", "obstetric disseminated intravascular coagulation", "pregnancy specific isth dic"],
       "tile": "erez-dic", "audience": "clinicians" },
     { "phrases": ["aeeg", "amplitude integrated eeg", "al naqeeb classification", "neonatal aeeg amplitude"],

@@ -543,6 +543,7 @@ import * as slumsV644 from '../../lib/slums-v644.js';
 import * as cheopsV645 from '../../lib/cheops-v645.js';
 import * as mccormackV646 from '../../lib/mccormack-v646.js';
 import * as schenckV647 from '../../lib/schenck-v647.js';
+import * as weissV648 from '../../lib/weiss-v648.js';
 import * as erezDicV559 from '../../lib/erez-dic-v559.js';
 import * as anaqeebAeegV560 from '../../lib/anaqeeb-aeeg-v560.js';
 import * as spadiV561 from '../../lib/spadi-v561.js';
@@ -1091,6 +1092,7 @@ const MODULES = {
   'cheops-v645.js': cheopsV645,
   'mccormack-v646.js': mccormackV646,
   'schenck-v647.js': schenckV647,
+  'weiss-v648.js': weissV648,
   'erez-dic-v559.js': erezDicV559,
   'anaqeeb-aeeg-v560.js': anaqeebAeegV560,
   'spadi-v561.js': spadiV561,

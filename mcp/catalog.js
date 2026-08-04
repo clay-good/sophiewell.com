@@ -561,6 +561,7 @@ import slumsV644 from './adapters/slums-v644.js';
 import cheopsV645 from './adapters/cheops-v645.js';
 import mccormackV646 from './adapters/mccormack-v646.js';
 import schenckV647 from './adapters/schenck-v647.js';
+import weissV648 from './adapters/weiss-v648.js';
 
 const ADAPTER_MODULES = [
   ['tox-v86', toxV86],
@@ -1107,6 +1108,7 @@ const ADAPTER_MODULES = [
   ['cheops-v645', cheopsV645],
   ['mccormack-v646', mccormackV646],
   ['schenck-v647', schenckV647],
+  ['weiss-v648', weissV648],
 ];
 
 const HERE = dirname(fileURLToPath(import.meta.url));

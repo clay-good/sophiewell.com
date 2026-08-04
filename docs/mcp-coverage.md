@@ -7466,6 +7466,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/schenck-v647.js (spec-v647: Schenck knee-dislocation classification — clinical disclaimer)
 - `schenck-knee`
 
+### lib/weiss-v648.js (spec-v648: Weiss system for adrenocortical carcinoma — clinical disclaimer)
+- `weiss-adrenal`
+
 ### lib/tox-v86.js
 - `serotonin-toxicity`
 - `salicylate-toxicity`
