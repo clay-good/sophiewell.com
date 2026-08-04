@@ -7469,6 +7469,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/weiss-v648.js (spec-v648: Weiss system for adrenocortical carcinoma — clinical disclaimer)
 - `weiss-adrenal`
 
+### lib/nottingham-grade-v649.js (spec-v649: Nottingham histologic grade for breast cancer — clinical disclaimer)
+- `nottingham-grade`
+
 ### lib/tox-v86.js
 - `serotonin-toxicity`
 - `salicylate-toxicity`

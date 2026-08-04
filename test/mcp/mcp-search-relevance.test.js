@@ -602,6 +602,7 @@ const PROBES = [
   ['mccormack load sharing classification spine fracture', ['mccormack-lsc']],
   ['schenck knee dislocation classification kd grade', ['schenck-knee']],
   ['weiss criteria adrenocortical carcinoma malignancy', ['weiss-adrenal']],
+  ['nottingham histologic grade breast cancer scarff bloom', ['nottingham-grade']],
   ['pregnancy dic score erez obstetric', ['erez-dic']],
   ['aeeg amplitude classification neonatal encephalopathy', ['anaqeeb-aeeg']],
   ['spadi shoulder pain disability index', ['spadi']],

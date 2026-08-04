@@ -723,6 +723,8 @@
       "tile": "schenck-knee", "audience": "clinicians" },
     { "phrases": ["weiss criteria adrenal", "weiss score adrenocortical carcinoma", "adrenal tumor malignancy criteria", "adrenocortical carcinoma histology score"],
       "tile": "weiss-adrenal", "audience": "clinicians" },
+    { "phrases": ["nottingham histologic grade breast", "scarff bloom richardson grade", "elston ellis breast grade", "breast cancer histologic grade"],
+      "tile": "nottingham-grade", "audience": "clinicians" },
     { "phrases": ["erez dic score", "pregnancy dic score", "obstetric disseminated intravascular coagulation", "pregnancy specific isth dic"],
       "tile": "erez-dic", "audience": "clinicians" },
     { "phrases": ["aeeg", "amplitude integrated eeg", "al naqeeb classification", "neonatal aeeg amplitude"],
