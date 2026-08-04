@@ -599,6 +599,7 @@ const PROBES = [
   ['oswestry disability index low back', ['oswestry-odi']],
   ['slums st louis university mental status cognitive', ['slums']],
   ['cheops pediatric postoperative pain scale', ['cheops']],
+  ['mccormack load sharing classification spine fracture', ['mccormack-lsc']],
   ['pregnancy dic score erez obstetric', ['erez-dic']],
   ['aeeg amplitude classification neonatal encephalopathy', ['anaqeeb-aeeg']],
   ['spadi shoulder pain disability index', ['spadi']],

@@ -717,6 +717,8 @@
       "tile": "slums", "audience": "clinicians" },
     { "phrases": ["cheops pain scale", "childrens hospital eastern ontario pain", "pediatric postoperative pain scale", "cheops behavioral pain"],
       "tile": "cheops", "audience": "clinicians" },
+    { "phrases": ["mccormack load sharing classification", "load sharing score spine fracture", "spine fracture short segment fixation", "load sharing classification"],
+      "tile": "mccormack-lsc", "audience": "clinicians" },
     { "phrases": ["erez dic score", "pregnancy dic score", "obstetric disseminated intravascular coagulation", "pregnancy specific isth dic"],
       "tile": "erez-dic", "audience": "clinicians" },
     { "phrases": ["aeeg", "amplitude integrated eeg", "al naqeeb classification", "neonatal aeeg amplitude"],

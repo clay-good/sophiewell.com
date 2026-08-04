@@ -7460,6 +7460,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/cheops-v645.js (spec-v645: CHEOPS pediatric pain scale — clinical disclaimer)
 - `cheops`
 
+### lib/mccormack-v646.js (spec-v646: McCormack Load-Sharing Classification — clinical disclaimer)
+- `mccormack-lsc`
+
 ### lib/tox-v86.js
 - `serotonin-toxicity`
 - `salicylate-toxicity`
