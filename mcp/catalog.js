@@ -563,6 +563,7 @@ import mccormackV646 from './adapters/mccormack-v646.js';
 import schenckV647 from './adapters/schenck-v647.js';
 import weissV648 from './adapters/weiss-v648.js';
 import nottinghamGradeV649 from './adapters/nottingham-grade-v649.js';
+import fnclccGradeV651 from './adapters/fnclcc-grade-v651.js';
 import masaokaV650 from './adapters/masaoka-v650.js';
 
 const ADAPTER_MODULES = [
@@ -1113,6 +1114,7 @@ const ADAPTER_MODULES = [
   ['weiss-v648', weissV648],
   ['nottingham-grade-v649', nottinghamGradeV649],
   ['masaoka-v650', masaokaV650],
+  ['fnclcc-grade-v651', fnclccGradeV651],
 ];
 
 const HERE = dirname(fileURLToPath(import.meta.url));

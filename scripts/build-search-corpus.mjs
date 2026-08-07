@@ -37,7 +37,7 @@ const BUDGET_GZIP = 224 * 1024;
 
 // Field length caps (chars, cut at a word boundary). Tuned so the full catalog
 // stays comfortably under the gzip budget with headroom for growth.
-const CAP = { summary: 200, what: 200, when: 200, expected: 180, band: 64 };
+const CAP = { summary: 200, what: 200, when: 200, expected: 180, band: 50 };
 // Interpretation bands are the lowest search-signal field (an interpretation-range
 // label + text; nobody searches by band text), so the per-tile band count is
 // trimmed first when the catalog grows into the gzip budget: four bands became three
@@ -46,7 +46,11 @@ const CAP = { summary: 200, what: 200, when: 200, expected: 180, band: 64 };
 // band text carries more signal than "nobody searches by band text" implies. The band
 // COUNT was therefore kept at three and CAP.band was cut 92 -> 64 instead, which keeps
 // every band present (so the matching band still exists for a query) while trimming the
-// long tail. If this breaches again, cut CAP.band further before cutting MAX_BANDS, and
+// long tail. At 1482 tiles (spec-v651) the budget breached again by ~150 B and CAP.band
+// was cut 64 -> 50 (the documented stopgap in spec-v619; the real fix is corpus tiering).
+// 50 is the floor that keeps CHADS's "antithrombotic therapy not recommended" band phrase
+// intact for its golden probe (48 dropped the trailing word and regressed it).
+// If this breaches again, cut CAP.band further before cutting MAX_BANDS, and
 // re-run test:mcp to confirm no probe regresses.
 const MAX_BANDS = 3;
 

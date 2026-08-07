@@ -7475,6 +7475,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/masaoka-v650.js (spec-v650: Masaoka-Koga thymoma staging — clinical disclaimer)
 - `masaoka-koga`
 
+### lib/fnclcc-grade-v651.js (spec-v651: FNCLCC soft-tissue sarcoma grade — clinical disclaimer)
+- `fnclcc-grade`
+
 ### lib/tox-v86.js
 - `serotonin-toxicity`
 - `salicylate-toxicity`

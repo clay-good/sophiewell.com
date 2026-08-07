@@ -725,6 +725,8 @@
       "tile": "weiss-adrenal", "audience": "clinicians" },
     { "phrases": ["nottingham histologic grade breast", "scarff bloom richardson grade", "elston ellis breast grade", "breast cancer histologic grade"],
       "tile": "nottingham-grade", "audience": "clinicians" },
+    { "phrases": ["fnclcc grade sarcoma", "soft tissue sarcoma grade", "trojani coindre sarcoma grading", "sarcoma histologic grade"],
+      "tile": "fnclcc-grade", "audience": "clinicians" },
     { "phrases": ["masaoka koga staging thymoma", "thymoma stage classification", "thymic tumor staging", "masaoka thymoma stage"],
       "tile": "masaoka-koga", "audience": "clinicians" },
     { "phrases": ["erez dic score", "pregnancy dic score", "obstetric disseminated intravascular coagulation", "pregnancy specific isth dic"],

@@ -545,6 +545,7 @@ import * as mccormackV646 from '../../lib/mccormack-v646.js';
 import * as schenckV647 from '../../lib/schenck-v647.js';
 import * as weissV648 from '../../lib/weiss-v648.js';
 import * as nottinghamGradeV649 from '../../lib/nottingham-grade-v649.js';
+import * as fnclccGradeV651 from '../../lib/fnclcc-grade-v651.js';
 import * as masaokaV650 from '../../lib/masaoka-v650.js';
 import * as erezDicV559 from '../../lib/erez-dic-v559.js';
 import * as anaqeebAeegV560 from '../../lib/anaqeeb-aeeg-v560.js';
@@ -1096,6 +1097,7 @@ const MODULES = {
   'schenck-v647.js': schenckV647,
   'weiss-v648.js': weissV648,
   'nottingham-grade-v649.js': nottinghamGradeV649,
+  'fnclcc-grade-v651.js': fnclccGradeV651,
   'masaoka-v650.js': masaokaV650,
   'erez-dic-v559.js': erezDicV559,
   'anaqeeb-aeeg-v560.js': anaqeebAeegV560,
