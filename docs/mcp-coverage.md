@@ -7478,6 +7478,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/fnclcc-grade-v651.js (spec-v651: FNCLCC soft-tissue sarcoma grade — clinical disclaimer)
 - `fnclcc-grade`
 
+### lib/van-nuys-vnpi-v652.js (spec-v652: USC/Van Nuys Prognostic Index for DCIS — clinical disclaimer)
+- `van-nuys-vnpi`
+
 ### lib/tox-v86.js
 - `serotonin-toxicity`
 - `salicylate-toxicity`
