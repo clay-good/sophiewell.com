@@ -729,6 +729,8 @@
       "tile": "fnclcc-grade", "audience": "clinicians" },
     { "phrases": ["van nuys prognostic index", "usc vnpi dcis", "silverstein dcis score", "ductal carcinoma in situ prognostic index"],
       "tile": "van-nuys-vnpi", "audience": "clinicians" },
+    { "phrases": ["who isup renal grade", "nucleolar grade renal cell carcinoma", "fuhrman grade replacement", "rcc nuclear grade"],
+      "tile": "who-isup-renal-grade", "audience": "clinicians" },
     { "phrases": ["masaoka koga staging thymoma", "thymoma stage classification", "thymic tumor staging", "masaoka thymoma stage"],
       "tile": "masaoka-koga", "audience": "clinicians" },
     { "phrases": ["erez dic score", "pregnancy dic score", "obstetric disseminated intravascular coagulation", "pregnancy specific isth dic"],

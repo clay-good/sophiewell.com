@@ -7481,6 +7481,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/van-nuys-vnpi-v652.js (spec-v652: USC/Van Nuys Prognostic Index for DCIS — clinical disclaimer)
 - `van-nuys-vnpi`
 
+### lib/who-isup-renal-grade-v653.js (spec-v653: WHO/ISUP nucleolar grade for RCC — clinical disclaimer)
+- `who-isup-renal-grade`
+
 ### lib/tox-v86.js
 - `serotonin-toxicity`
 - `salicylate-toxicity`

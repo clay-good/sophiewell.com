@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `0063b4dd64296390`
-Generated: 2026-08-07T20:22:38.609Z
+Build ID: `2bde035fa769b273`
+Generated: 2026-08-07T21:06:29.697Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=20.18.1 <21, npm >=10.0.0
@@ -24,13 +24,13 @@ downloads is committed in this repository and is hashed below.
 
 | Path | Bytes | SHA-256 |
 |---|---:|---|
-| `index.html` | 97369 | `c1c9c4d05979de58b88e8cea115cf096bc52a32bd5f56087a523441d8315429c` |
+| `index.html` | 97432 | `c4fce46af212b6b384050a6c21e22b77498c1ed7333f6a1e9abd929488aa6ed8` |
 | `styles.css` | 44160 | `a2cc7ad7bae9f7cfc9681d80bc6bd4a58f0b07d47bfcff64897dc04929c12333` |
-| `app.js` | 401290 | `c34b5d72ead2a8b187441ab3a2e11708387c34b4bd70f72390a71c79221c5ab2` |
+| `app.js` | 401519 | `63e2368e1b420a3d5d4ba27f8df60da6f935d9896f47c8c894c0044784cc4374` |
 | `sw.js` | 4622 | `b891d4344f8e04403b7f1d307fd446cc224bddc6f0c4397438a17d197351171e` |
 | `site.webmanifest` | 709 | `0e0de4da60590a12e8b27a0ae2a2f5ffdb6500b7d2b78f93631ec2f64ed3d5ce` |
 | `robots.txt` | 127 | `38fbf9c1854e72abb20e01e81dd5a31d4ea96f154c12d5db1ec3af05524dd1a1` |
-| `sitemap.xml` | 227419 | `06b924eb25d7ed0c53426dad24634635aef7afc8940270889aa47b9ae5442fa7` |
+| `sitemap.xml` | 227579 | `6d51db0d8251c3b5d677d9f7d02a6859a6ec3e557ec0080820d7427ada8a8ca8` |
 | `_headers` | 1316 | `2f39986457d2feff7e73e491a7d09ee871e8f2f4cc2bc437f86bd86a42554ec6` |
 | `logo.png` | 63440 | `11afaf1b0d3ca68393d202e4810bf766b5b6d591b4e3ec52f41d3cacaa4616ec` |
 | `favicon.ico` | 7411 | `407fde0ca2788409e87e11f596fa02e6a0b121817fcea7fd995beec1801e287b` |
@@ -347,7 +347,7 @@ downloads is committed in this repository and is hashed below.
 | `lib/medication-v4.js` | 18192 | `467f9576c50da696cc56094eb022d0a5ed1e88de0c7618448554ede8067270b0` |
 | `lib/medication-v5.js` | 18863 | `ce81d9f8954abbd412892c13af9936f992239164f26fd2b999eaea7902787ab7` |
 | `lib/mest-c-v528.js` | 9310 | `e33f178c339338f62c47b6a19d50d345d38be3b05d9a33e7d2703e0a99ae3a69` |
-| `lib/meta.js` | 2060369 | `2bed1c3eec5a2e29ed9eb22ec73c34eb93b43cfcc628585aff63d18e90fc9dc2` |
+| `lib/meta.js` | 2061511 | `d8f7658379ed93987bb2e4da25fedd958d639ffcaacd2e3dcbe7cd447b26fde7` |
 | `lib/metabolic-hepatic-v219.js` | 12791 | `b9352877cebf7fbf3c3b99ecb8b72cdbee3ed94e056dc019113668609f5a95a8` |
 | `lib/metabolic-onc-v88.js` | 12659 | `1553b641668c121661a66647da71a4aaaa023e9f3a6b7a753efbcdab27cdba81` |
 | `lib/metabolic-v269.js` | 3262 | `0c7a42557886f2b0aeee7949b8d0bd682d795d4526174fd540717a978d94ec2f` |
@@ -621,6 +621,7 @@ downloads is committed in this repository and is hashed below.
 | `lib/wayne-index-v527.js` | 10220 | `73e78ac1e4ff49a83a078d3ba3a03da6a9527c6c11ea8790621d1d58a84d3889` |
 | `lib/weiss-v648.js` | 3676 | `1ca667de18e481c2366ea89b066ec3103a8f507b1cbd0b642248945575bea17b` |
 | `lib/wexner-v324.js` | 3664 | `256be0f80c9c9fefa624b7a8e80236c8e78c018ccef18d2432509f8cb334fdff` |
+| `lib/who-isup-renal-grade-v653.js` | 4141 | `fbdacd755e06fe3aec4176bb7db5d135376fb32bbcc58a2de31334c3e407937d` |
 | `lib/who-mucositis-v617.js` | 7838 | `7498a9b34ed304bad25761cf1962fc14427b7ba80a34d4fff2f7dc045c7bd63b` |
 | `lib/wiltse-spondylolisthesis-v481.js` | 3497 | `6cc7aba8c22ffdce234a0e6a36d2d607bd25642494da50f5f5add4a06f8163a7` |
 | `lib/winquist-hansen-v381.js` | 4270 | `285352c99d2f0a5d567e14be8216500bdae9e24158cb7bfc4bbf4e192a202e1e` |
@@ -1170,6 +1171,7 @@ downloads is committed in this repository and is hashed below.
 | `views/group-v650.js` | 3386 | `651b15bb6fa880a10b373a09c7fb1139ff0010e23de5ba0faf831814c4bd88c9` |
 | `views/group-v651.js` | 3909 | `17bbaab0857cf3ffdc1cce6c39229fef28a5357d84b909823638bad15e668355` |
 | `views/group-v652.js` | 3745 | `5e71bc76038ba0eeec7ba31c9cba4c9fe72c9565944b54b04caa074db7934c7e` |
+| `views/group-v653.js` | 3783 | `f45e229ebb8bb46b7dacf624a79efec9ce37af35b1e1b61502e8defa4b274051` |
 | `views/group-v7.js` | 15113 | `d480a5b34adfd035507dd4313e12462c47c949aeee155b253c8a2f9596839d05` |
 | `views/group-v8.js` | 20546 | `5e6ebaa807abb0677621321175906ec60531116c30aa824930ad77bc47ecad6d` |
 | `views/group-v9.js` | 22815 | `66b61a3aa7fc5d8e0eb324392f546ff29c8bc88af80c0a418879f887737e5e1a` |

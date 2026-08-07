@@ -605,6 +605,7 @@ const PROBES = [
   ['nottingham histologic grade breast cancer scarff bloom', ['nottingham-grade']],
   ['fnclcc grade soft tissue sarcoma mitotic necrosis', ['fnclcc-grade']],
   ['van nuys prognostic index dcis usc vnpi', ['van-nuys-vnpi']],
+  ['who isup nucleolar grade renal cell carcinoma fuhrman', ['who-isup-renal-grade']],
   ['masaoka koga thymoma staging stage', ['masaoka-koga']],
   ['pregnancy dic score erez obstetric', ['erez-dic']],
   ['aeeg amplitude classification neonatal encephalopathy', ['anaqeeb-aeeg']],
