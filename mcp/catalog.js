@@ -566,6 +566,7 @@ import nottinghamGradeV649 from './adapters/nottingham-grade-v649.js';
 import fnclccGradeV651 from './adapters/fnclcc-grade-v651.js';
 import vanNuysVnpiV652 from './adapters/van-nuys-vnpi-v652.js';
 import whoIsupRenalGradeV653 from './adapters/who-isup-renal-grade-v653.js';
+import peritonealCancerIndexV654 from './adapters/peritoneal-cancer-index-v654.js';
 import masaokaV650 from './adapters/masaoka-v650.js';
 
 const ADAPTER_MODULES = [
@@ -1119,6 +1120,7 @@ const ADAPTER_MODULES = [
   ['fnclcc-grade-v651', fnclccGradeV651],
   ['van-nuys-vnpi-v652', vanNuysVnpiV652],
   ['who-isup-renal-grade-v653', whoIsupRenalGradeV653],
+  ['peritoneal-cancer-index-v654', peritonealCancerIndexV654],
 ];
 
 const HERE = dirname(fileURLToPath(import.meta.url));

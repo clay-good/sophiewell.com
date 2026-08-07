@@ -7484,6 +7484,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/who-isup-renal-grade-v653.js (spec-v653: WHO/ISUP nucleolar grade for RCC — clinical disclaimer)
 - `who-isup-renal-grade`
 
+### lib/peritoneal-cancer-index-v654.js (spec-v654: Peritoneal Cancer Index (Sugarbaker) — clinical disclaimer)
+- `peritoneal-cancer-index`
+
 ### lib/tox-v86.js
 - `serotonin-toxicity`
 - `salicylate-toxicity`

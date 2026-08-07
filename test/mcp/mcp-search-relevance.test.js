@@ -606,6 +606,7 @@ const PROBES = [
   ['fnclcc grade soft tissue sarcoma mitotic necrosis', ['fnclcc-grade']],
   ['van nuys prognostic index dcis usc vnpi', ['van-nuys-vnpi']],
   ['who isup nucleolar grade renal cell carcinoma fuhrman', ['who-isup-renal-grade']],
+  ['peritoneal cancer index sugarbaker hipec tumor burden', ['peritoneal-cancer-index']],
   ['masaoka koga thymoma staging stage', ['masaoka-koga']],
   ['pregnancy dic score erez obstetric', ['erez-dic']],
   ['aeeg amplitude classification neonatal encephalopathy', ['anaqeeb-aeeg']],
