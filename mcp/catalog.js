@@ -568,6 +568,7 @@ import vanNuysVnpiV652 from './adapters/van-nuys-vnpi-v652.js';
 import whoIsupRenalGradeV653 from './adapters/who-isup-renal-grade-v653.js';
 import peritonealCancerIndexV654 from './adapters/peritoneal-cancer-index-v654.js';
 import completenessCytoreductionV655 from './adapters/completeness-cytoreduction-v655.js';
+import isgpsPopfV656 from './adapters/isgps-popf-v656.js';
 import masaokaV650 from './adapters/masaoka-v650.js';
 
 const ADAPTER_MODULES = [
@@ -1123,6 +1124,7 @@ const ADAPTER_MODULES = [
   ['who-isup-renal-grade-v653', whoIsupRenalGradeV653],
   ['peritoneal-cancer-index-v654', peritonealCancerIndexV654],
   ['completeness-cytoreduction-v655', completenessCytoreductionV655],
+  ['isgps-popf-v656', isgpsPopfV656],
 ];
 
 const HERE = dirname(fileURLToPath(import.meta.url));

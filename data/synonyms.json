@@ -735,6 +735,8 @@
       "tile": "peritoneal-cancer-index", "audience": "clinicians" },
     { "phrases": ["completeness of cytoreduction", "cc score sugarbaker", "residual tumor after cytoreductive surgery", "complete cytoreduction grade"],
       "tile": "completeness-cytoreduction", "audience": "clinicians" },
+    { "phrases": ["postoperative pancreatic fistula grade", "isgps popf", "pancreatic leak grade", "biochemical leak pancreas"],
+      "tile": "isgps-popf", "audience": "clinicians" },
     { "phrases": ["masaoka koga staging thymoma", "thymoma stage classification", "thymic tumor staging", "masaoka thymoma stage"],
       "tile": "masaoka-koga", "audience": "clinicians" },
     { "phrases": ["erez dic score", "pregnancy dic score", "obstetric disseminated intravascular coagulation", "pregnancy specific isth dic"],

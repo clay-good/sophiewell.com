@@ -7490,6 +7490,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/completeness-cytoreduction-v655.js (spec-v655: Completeness of Cytoreduction score — clinical disclaimer)
 - `completeness-cytoreduction`
 
+### lib/isgps-popf-v656.js (spec-v656: ISGPS 2016 postoperative pancreatic fistula grade — clinical disclaimer)
+- `isgps-popf`
+
 ### lib/tox-v86.js
 - `serotonin-toxicity`
 - `salicylate-toxicity`
