@@ -733,6 +733,8 @@
       "tile": "who-isup-renal-grade", "audience": "clinicians" },
     { "phrases": ["peritoneal cancer index", "sugarbaker pci", "peritoneal carcinomatosis index", "hipec tumor burden score"],
       "tile": "peritoneal-cancer-index", "audience": "clinicians" },
+    { "phrases": ["completeness of cytoreduction", "cc score sugarbaker", "residual tumor after cytoreductive surgery", "complete cytoreduction grade"],
+      "tile": "completeness-cytoreduction", "audience": "clinicians" },
     { "phrases": ["masaoka koga staging thymoma", "thymoma stage classification", "thymic tumor staging", "masaoka thymoma stage"],
       "tile": "masaoka-koga", "audience": "clinicians" },
     { "phrases": ["erez dic score", "pregnancy dic score", "obstetric disseminated intravascular coagulation", "pregnancy specific isth dic"],

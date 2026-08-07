@@ -549,6 +549,7 @@ import * as fnclccGradeV651 from '../../lib/fnclcc-grade-v651.js';
 import * as vanNuysVnpiV652 from '../../lib/van-nuys-vnpi-v652.js';
 import * as whoIsupRenalGradeV653 from '../../lib/who-isup-renal-grade-v653.js';
 import * as peritonealCancerIndexV654 from '../../lib/peritoneal-cancer-index-v654.js';
+import * as completenessCytoreductionV655 from '../../lib/completeness-cytoreduction-v655.js';
 import * as masaokaV650 from '../../lib/masaoka-v650.js';
 import * as erezDicV559 from '../../lib/erez-dic-v559.js';
 import * as anaqeebAeegV560 from '../../lib/anaqeeb-aeeg-v560.js';
@@ -1104,6 +1105,7 @@ const MODULES = {
   'van-nuys-vnpi-v652.js': vanNuysVnpiV652,
   'who-isup-renal-grade-v653.js': whoIsupRenalGradeV653,
   'peritoneal-cancer-index-v654.js': peritonealCancerIndexV654,
+  'completeness-cytoreduction-v655.js': completenessCytoreductionV655,
   'masaoka-v650.js': masaokaV650,
   'erez-dic-v559.js': erezDicV559,
   'anaqeeb-aeeg-v560.js': anaqeebAeegV560,

@@ -7487,6 +7487,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/peritoneal-cancer-index-v654.js (spec-v654: Peritoneal Cancer Index (Sugarbaker) — clinical disclaimer)
 - `peritoneal-cancer-index`
 
+### lib/completeness-cytoreduction-v655.js (spec-v655: Completeness of Cytoreduction score — clinical disclaimer)
+- `completeness-cytoreduction`
+
 ### lib/tox-v86.js
 - `serotonin-toxicity`
 - `salicylate-toxicity`
