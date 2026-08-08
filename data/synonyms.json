@@ -755,6 +755,8 @@
       "tile": "diastolic-function-ase", "audience": "clinicians" },
     { "phrases": ["cleveland clinic constipation score", "wexner constipation score", "agachan constipation", "constipation scoring system"],
       "tile": "cleveland-constipation", "audience": "clinicians" },
+    { "phrases": ["ventral hernia working group grade", "vhwg grade", "hernia surgical site occurrence risk", "ventral hernia risk grade"],
+      "tile": "vhwg-hernia", "audience": "clinicians" },
     { "phrases": ["masaoka koga staging thymoma", "thymoma stage classification", "thymic tumor staging", "masaoka thymoma stage"],
       "tile": "masaoka-koga", "audience": "clinicians" },
     { "phrases": ["erez dic score", "pregnancy dic score", "obstetric disseminated intravascular coagulation", "pregnancy specific isth dic"],

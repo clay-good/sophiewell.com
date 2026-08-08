@@ -578,6 +578,7 @@ import pushToolV662 from './adapters/push-tool-v662.js';
 import lichtigerIndexV663 from './adapters/lichtiger-index-v663.js';
 import diastolicFunctionAseV664 from './adapters/diastolic-function-ase-v664.js';
 import clevelandConstipationV665 from './adapters/cleveland-constipation-v665.js';
+import vhwgHerniaV666 from './adapters/vhwg-hernia-v666.js';
 import masaokaV650 from './adapters/masaoka-v650.js';
 
 const ADAPTER_MODULES = [
@@ -1143,6 +1144,7 @@ const ADAPTER_MODULES = [
   ['lichtiger-index-v663', lichtigerIndexV663],
   ['diastolic-function-ase-v664', diastolicFunctionAseV664],
   ['cleveland-constipation-v665', clevelandConstipationV665],
+  ['vhwg-hernia-v666', vhwgHerniaV666],
 ];
 
 const HERE = dirname(fileURLToPath(import.meta.url));

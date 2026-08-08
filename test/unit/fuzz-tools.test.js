@@ -560,6 +560,7 @@ import * as pushToolV662 from '../../lib/push-tool-v662.js';
 import * as lichtigerIndexV663 from '../../lib/lichtiger-index-v663.js';
 import * as diastolicFunctionAseV664 from '../../lib/diastolic-function-ase-v664.js';
 import * as clevelandConstipationV665 from '../../lib/cleveland-constipation-v665.js';
+import * as vhwgHerniaV666 from '../../lib/vhwg-hernia-v666.js';
 import * as masaokaV650 from '../../lib/masaoka-v650.js';
 import * as erezDicV559 from '../../lib/erez-dic-v559.js';
 import * as anaqeebAeegV560 from '../../lib/anaqeeb-aeeg-v560.js';
@@ -1126,6 +1127,7 @@ const MODULES = {
   'lichtiger-index-v663.js': lichtigerIndexV663,
   'diastolic-function-ase-v664.js': diastolicFunctionAseV664,
   'cleveland-constipation-v665.js': clevelandConstipationV665,
+  'vhwg-hernia-v666.js': vhwgHerniaV666,
   'masaoka-v650.js': masaokaV650,
   'erez-dic-v559.js': erezDicV559,
   'anaqeeb-aeeg-v560.js': anaqeebAeegV560,
