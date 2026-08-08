@@ -611,6 +611,7 @@ const PROBES = [
   ['isgps postoperative pancreatic fistula grade popf', ['isgps-popf']],
   ['isgls post hepatectomy liver failure grade phlf', ['isgls-phlf']],
   ['isgls bile leak grade after liver surgery', ['isgls-bile-leak']],
+  ['isgps delayed gastric emptying grade pancreatic surgery', ['isgps-dge']],
   ['masaoka koga thymoma staging stage', ['masaoka-koga']],
   ['pregnancy dic score erez obstetric', ['erez-dic']],
   ['aeeg amplitude classification neonatal encephalopathy', ['anaqeeb-aeeg']],

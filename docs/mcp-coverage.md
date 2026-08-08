@@ -7499,6 +7499,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/isgls-bile-leak-v658.js (spec-v658: ISGLS bile leak grade — clinical disclaimer)
 - `isgls-bile-leak`
 
+### lib/isgps-dge-v659.js (spec-v659: ISGPS delayed gastric emptying grade — clinical disclaimer)
+- `isgps-dge`
+
 ### lib/tox-v86.js
 - `serotonin-toxicity`
 - `salicylate-toxicity`

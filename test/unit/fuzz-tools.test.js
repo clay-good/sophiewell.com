@@ -553,6 +553,7 @@ import * as completenessCytoreductionV655 from '../../lib/completeness-cytoreduc
 import * as isgpsPopfV656 from '../../lib/isgps-popf-v656.js';
 import * as isglsPhlfV657 from '../../lib/isgls-phlf-v657.js';
 import * as isglsBileLeakV658 from '../../lib/isgls-bile-leak-v658.js';
+import * as isgpsDgeV659 from '../../lib/isgps-dge-v659.js';
 import * as masaokaV650 from '../../lib/masaoka-v650.js';
 import * as erezDicV559 from '../../lib/erez-dic-v559.js';
 import * as anaqeebAeegV560 from '../../lib/anaqeeb-aeeg-v560.js';
@@ -1112,6 +1113,7 @@ const MODULES = {
   'isgps-popf-v656.js': isgpsPopfV656,
   'isgls-phlf-v657.js': isglsPhlfV657,
   'isgls-bile-leak-v658.js': isglsBileLeakV658,
+  'isgps-dge-v659.js': isgpsDgeV659,
   'masaoka-v650.js': masaokaV650,
   'erez-dic-v559.js': erezDicV559,
   'anaqeeb-aeeg-v560.js': anaqeebAeegV560,

@@ -741,6 +741,8 @@
       "tile": "isgls-phlf", "audience": "clinicians" },
     { "phrases": ["bile leak grade", "isgls bile leakage", "biliary leak after surgery", "bile leak severity grading"],
       "tile": "isgls-bile-leak", "audience": "clinicians" },
+    { "phrases": ["delayed gastric emptying grade", "isgps dge", "gastroparesis after pancreatic surgery", "dge grading"],
+      "tile": "isgps-dge", "audience": "clinicians" },
     { "phrases": ["masaoka koga staging thymoma", "thymoma stage classification", "thymic tumor staging", "masaoka thymoma stage"],
       "tile": "masaoka-koga", "audience": "clinicians" },
     { "phrases": ["erez dic score", "pregnancy dic score", "obstetric disseminated intravascular coagulation", "pregnancy specific isth dic"],

@@ -571,6 +571,7 @@ import completenessCytoreductionV655 from './adapters/completeness-cytoreduction
 import isgpsPopfV656 from './adapters/isgps-popf-v656.js';
 import isglsPhlfV657 from './adapters/isgls-phlf-v657.js';
 import isglsBileLeakV658 from './adapters/isgls-bile-leak-v658.js';
+import isgpsDgeV659 from './adapters/isgps-dge-v659.js';
 import masaokaV650 from './adapters/masaoka-v650.js';
 
 const ADAPTER_MODULES = [
@@ -1129,6 +1130,7 @@ const ADAPTER_MODULES = [
   ['isgps-popf-v656', isgpsPopfV656],
   ['isgls-phlf-v657', isglsPhlfV657],
   ['isgls-bile-leak-v658', isglsBileLeakV658],
+  ['isgps-dge-v659', isgpsDgeV659],
 ];
 
 const HERE = dirname(fileURLToPath(import.meta.url));
