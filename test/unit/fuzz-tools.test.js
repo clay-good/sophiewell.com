@@ -555,6 +555,7 @@ import * as isglsPhlfV657 from '../../lib/isgls-phlf-v657.js';
 import * as isglsBileLeakV658 from '../../lib/isgls-bile-leak-v658.js';
 import * as isgpsDgeV659 from '../../lib/isgps-dge-v659.js';
 import * as passPheoV660 from '../../lib/pass-pheo-v660.js';
+import * as ipsHodgkinV661 from '../../lib/ips-hodgkin-v661.js';
 import * as masaokaV650 from '../../lib/masaoka-v650.js';
 import * as erezDicV559 from '../../lib/erez-dic-v559.js';
 import * as anaqeebAeegV560 from '../../lib/anaqeeb-aeeg-v560.js';
@@ -1116,6 +1117,7 @@ const MODULES = {
   'isgls-bile-leak-v658.js': isglsBileLeakV658,
   'isgps-dge-v659.js': isgpsDgeV659,
   'pass-pheo-v660.js': passPheoV660,
+  'ips-hodgkin-v661.js': ipsHodgkinV661,
   'masaoka-v650.js': masaokaV650,
   'erez-dic-v559.js': erezDicV559,
   'anaqeeb-aeeg-v560.js': anaqeebAeegV560,

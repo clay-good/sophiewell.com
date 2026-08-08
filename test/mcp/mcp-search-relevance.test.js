@@ -613,6 +613,7 @@ const PROBES = [
   ['isgls bile leak grade after liver surgery', ['isgls-bile-leak']],
   ['isgps delayed gastric emptying grade pancreatic surgery', ['isgps-dge']],
   ['pass pheochromocytoma scaled score malignancy histology', ['pass-pheo']],
+  ['ips international prognostic score advanced hodgkin lymphoma', ['ips-hodgkin']],
   ['masaoka koga thymoma staging stage', ['masaoka-koga']],
   ['pregnancy dic score erez obstetric', ['erez-dic']],
   ['aeeg amplitude classification neonatal encephalopathy', ['anaqeeb-aeeg']],

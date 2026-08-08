@@ -7505,6 +7505,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/pass-pheo-v660.js (spec-v660: PASS pheochromocytoma histologic score — clinical disclaimer)
 - `pass-pheo`
 
+### lib/ips-hodgkin-v661.js (spec-v661: IPS advanced Hodgkin lymphoma prognostic score — clinical disclaimer)
+- `ips-hodgkin`
+
 ### lib/tox-v86.js
 - `serotonin-toxicity`
 - `salicylate-toxicity`
