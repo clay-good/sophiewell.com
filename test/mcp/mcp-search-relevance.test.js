@@ -619,6 +619,7 @@ const PROBES = [
   ['ase diastolic function grade echo e/e prime tr velocity', ['diastolic-function-ase']],
   ['cleveland clinic wexner constipation score agachan', ['cleveland-constipation']],
   ['ventral hernia working group vhwg grade surgical site', ['vhwg-hernia']],
+  ['fournier gangrene severity index fgsi mortality', ['fgsi']],
   ['masaoka koga thymoma staging stage', ['masaoka-koga']],
   ['pregnancy dic score erez obstetric', ['erez-dic']],
   ['aeeg amplitude classification neonatal encephalopathy', ['anaqeeb-aeeg']],

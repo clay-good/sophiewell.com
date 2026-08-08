@@ -7523,6 +7523,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/vhwg-hernia-v666.js (spec-v666: VHWG ventral hernia grade — clinical disclaimer)
 - `vhwg-hernia`
 
+### lib/fgsi-v667.js (spec-v667: Fournier's Gangrene Severity Index — clinical disclaimer)
+- `fgsi`
+
 ### lib/tox-v86.js
 - `serotonin-toxicity`
 - `salicylate-toxicity`
