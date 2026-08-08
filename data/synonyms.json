@@ -763,6 +763,8 @@
       "tile": "cac-agatston", "audience": "clinicians" },
     { "phrases": ["walter index", "one year mortality after hospitalization", "older adult discharge mortality", "walter prognostic index"],
       "tile": "walter-index", "audience": "clinicians" },
+    { "phrases": ["ottawa bowel preparation scale", "obps colonoscopy prep quality", "bowel prep score ottawa", "colon cleanliness score"],
+      "tile": "ottawa-bowel-prep", "audience": "clinicians" },
     { "phrases": ["masaoka koga staging thymoma", "thymoma stage classification", "thymic tumor staging", "masaoka thymoma stage"],
       "tile": "masaoka-koga", "audience": "clinicians" },
     { "phrases": ["erez dic score", "pregnancy dic score", "obstetric disseminated intravascular coagulation", "pregnancy specific isth dic"],

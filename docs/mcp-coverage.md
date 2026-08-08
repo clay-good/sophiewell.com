@@ -7532,6 +7532,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/walter-index-v669.js (spec-v669: Walter Index, 1-year mortality after hospitalization — clinical disclaimer)
 - `walter-index`
 
+### lib/ottawa-bowel-prep-v670.js (spec-v670: Ottawa Bowel Preparation Scale — clinical disclaimer)
+- `ottawa-bowel-prep`
+
 ### lib/tox-v86.js
 - `serotonin-toxicity`
 - `salicylate-toxicity`

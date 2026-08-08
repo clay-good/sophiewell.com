@@ -582,6 +582,7 @@ import vhwgHerniaV666 from './adapters/vhwg-hernia-v666.js';
 import fgsiV667 from './adapters/fgsi-v667.js';
 import cacAgatstonV668 from './adapters/cac-agatston-v668.js';
 import walterIndexV669 from './adapters/walter-index-v669.js';
+import ottawaBowelPrepV670 from './adapters/ottawa-bowel-prep-v670.js';
 import masaokaV650 from './adapters/masaoka-v650.js';
 
 const ADAPTER_MODULES = [
@@ -1151,6 +1152,7 @@ const ADAPTER_MODULES = [
   ['fgsi-v667', fgsiV667],
   ['cac-agatston-v668', cacAgatstonV668],
   ['walter-index-v669', walterIndexV669],
+  ['ottawa-bowel-prep-v670', ottawaBowelPrepV670],
 ];
 
 const HERE = dirname(fileURLToPath(import.meta.url));

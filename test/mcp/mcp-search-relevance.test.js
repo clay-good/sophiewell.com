@@ -622,6 +622,7 @@ const PROBES = [
   ['fournier gangrene severity index fgsi mortality', ['fgsi']],
   ['coronary artery calcium agatston score cac category', ['cac-agatston']],
   ['walter index one year mortality after hospitalization older adults', ['walter-index']],
+  ['ottawa bowel preparation scale colonoscopy prep quality', ['ottawa-bowel-prep']],
   ['masaoka koga thymoma staging stage', ['masaoka-koga']],
   ['pregnancy dic score erez obstetric', ['erez-dic']],
   ['aeeg amplitude classification neonatal encephalopathy', ['anaqeeb-aeeg']],

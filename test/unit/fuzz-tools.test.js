@@ -564,6 +564,7 @@ import * as vhwgHerniaV666 from '../../lib/vhwg-hernia-v666.js';
 import * as fgsiV667 from '../../lib/fgsi-v667.js';
 import * as cacAgatstonV668 from '../../lib/cac-agatston-v668.js';
 import * as walterIndexV669 from '../../lib/walter-index-v669.js';
+import * as ottawaBowelPrepV670 from '../../lib/ottawa-bowel-prep-v670.js';
 import * as masaokaV650 from '../../lib/masaoka-v650.js';
 import * as erezDicV559 from '../../lib/erez-dic-v559.js';
 import * as anaqeebAeegV560 from '../../lib/anaqeeb-aeeg-v560.js';
@@ -1134,6 +1135,7 @@ const MODULES = {
   'fgsi-v667.js': fgsiV667,
   'cac-agatston-v668.js': cacAgatstonV668,
   'walter-index-v669.js': walterIndexV669,
+  'ottawa-bowel-prep-v670.js': ottawaBowelPrepV670,
   'masaoka-v650.js': masaokaV650,
   'erez-dic-v559.js': erezDicV559,
   'anaqeeb-aeeg-v560.js': anaqeebAeegV560,
