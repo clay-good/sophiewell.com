@@ -7493,6 +7493,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/isgps-popf-v656.js (spec-v656: ISGPS 2016 postoperative pancreatic fistula grade — clinical disclaimer)
 - `isgps-popf`
 
+### lib/isgls-phlf-v657.js (spec-v657: ISGLS post-hepatectomy liver failure grade — clinical disclaimer)
+- `isgls-phlf`
+
 ### lib/tox-v86.js
 - `serotonin-toxicity`
 - `salicylate-toxicity`

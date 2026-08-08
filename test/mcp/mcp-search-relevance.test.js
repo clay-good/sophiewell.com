@@ -609,6 +609,7 @@ const PROBES = [
   ['peritoneal cancer index sugarbaker hipec tumor burden', ['peritoneal-cancer-index']],
   ['completeness of cytoreduction cc score residual tumor', ['completeness-cytoreduction']],
   ['isgps postoperative pancreatic fistula grade popf', ['isgps-popf']],
+  ['isgls post hepatectomy liver failure grade phlf', ['isgls-phlf']],
   ['masaoka koga thymoma staging stage', ['masaoka-koga']],
   ['pregnancy dic score erez obstetric', ['erez-dic']],
   ['aeeg amplitude classification neonatal encephalopathy', ['anaqeeb-aeeg']],

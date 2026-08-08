@@ -737,6 +737,8 @@
       "tile": "completeness-cytoreduction", "audience": "clinicians" },
     { "phrases": ["postoperative pancreatic fistula grade", "isgps popf", "pancreatic leak grade", "biochemical leak pancreas"],
       "tile": "isgps-popf", "audience": "clinicians" },
+    { "phrases": ["post hepatectomy liver failure", "isgls phlf grade", "liver failure after hepatectomy", "phlf grading"],
+      "tile": "isgls-phlf", "audience": "clinicians" },
     { "phrases": ["masaoka koga staging thymoma", "thymoma stage classification", "thymic tumor staging", "masaoka thymoma stage"],
       "tile": "masaoka-koga", "audience": "clinicians" },
     { "phrases": ["erez dic score", "pregnancy dic score", "obstetric disseminated intravascular coagulation", "pregnancy specific isth dic"],
