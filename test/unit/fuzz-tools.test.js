@@ -558,6 +558,7 @@ import * as passPheoV660 from '../../lib/pass-pheo-v660.js';
 import * as ipsHodgkinV661 from '../../lib/ips-hodgkin-v661.js';
 import * as pushToolV662 from '../../lib/push-tool-v662.js';
 import * as lichtigerIndexV663 from '../../lib/lichtiger-index-v663.js';
+import * as diastolicFunctionAseV664 from '../../lib/diastolic-function-ase-v664.js';
 import * as masaokaV650 from '../../lib/masaoka-v650.js';
 import * as erezDicV559 from '../../lib/erez-dic-v559.js';
 import * as anaqeebAeegV560 from '../../lib/anaqeeb-aeeg-v560.js';
@@ -1122,6 +1123,7 @@ const MODULES = {
   'ips-hodgkin-v661.js': ipsHodgkinV661,
   'push-tool-v662.js': pushToolV662,
   'lichtiger-index-v663.js': lichtigerIndexV663,
+  'diastolic-function-ase-v664.js': diastolicFunctionAseV664,
   'masaoka-v650.js': masaokaV650,
   'erez-dic-v559.js': erezDicV559,
   'anaqeeb-aeeg-v560.js': anaqeebAeegV560,

@@ -7514,6 +7514,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/lichtiger-index-v663.js (spec-v663: Lichtiger Index (UC activity) — clinical disclaimer)
 - `lichtiger-index`
 
+### lib/diastolic-function-ase-v664.js (spec-v664: ASE 2016 LV diastolic function screen — clinical disclaimer)
+- `diastolic-function-ase`
+
 ### lib/tox-v86.js
 - `serotonin-toxicity`
 - `salicylate-toxicity`

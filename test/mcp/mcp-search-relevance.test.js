@@ -616,6 +616,7 @@ const PROBES = [
   ['ips international prognostic score advanced hodgkin lymphoma', ['ips-hodgkin']],
   ['push tool pressure ulcer scale for healing wound', ['push-tool']],
   ['lichtiger index ulcerative colitis activity modified truelove', ['lichtiger-index']],
+  ['ase diastolic function grade echo e/e prime tr velocity', ['diastolic-function-ase']],
   ['masaoka koga thymoma staging stage', ['masaoka-koga']],
   ['pregnancy dic score erez obstetric', ['erez-dic']],
   ['aeeg amplitude classification neonatal encephalopathy', ['anaqeeb-aeeg']],
