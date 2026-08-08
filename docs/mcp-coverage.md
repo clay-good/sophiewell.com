@@ -7538,6 +7538,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/acr-eular-boolean-v671.js (spec-v671: ACR/EULAR Boolean RA remission — clinical disclaimer)
 - `acr-eular-boolean`
 
+### lib/mda-psoriatic-v672.js (spec-v672: Minimal Disease Activity, psoriatic arthritis — clinical disclaimer)
+- `mda-psoriatic`
+
 ### lib/tox-v86.js
 - `serotonin-toxicity`
 - `salicylate-toxicity`
