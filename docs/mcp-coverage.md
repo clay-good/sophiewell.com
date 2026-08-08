@@ -7502,6 +7502,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/isgps-dge-v659.js (spec-v659: ISGPS delayed gastric emptying grade — clinical disclaimer)
 - `isgps-dge`
 
+### lib/pass-pheo-v660.js (spec-v660: PASS pheochromocytoma histologic score — clinical disclaimer)
+- `pass-pheo`
+
 ### lib/tox-v86.js
 - `serotonin-toxicity`
 - `salicylate-toxicity`

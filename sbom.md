@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `f200e3452c3cb3bd`
-Generated: 2026-08-08T01:32:49.265Z
+Build ID: `821d73a1d6751103`
+Generated: 2026-08-08T02:19:32.287Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=20.18.1 <21, npm >=10.0.0
@@ -24,13 +24,13 @@ downloads is committed in this repository and is hashed below.
 
 | Path | Bytes | SHA-256 |
 |---|---:|---|
-| `index.html` | 97758 | `c636148f9d00be51eda1a82e570476ebceb8503bb5cb54330c08312d4fa5980a` |
+| `index.html` | 97814 | `e8fbb1c239d45be5330fd44a8c6bdaa8e7274f834de5c4f2f2a9967ceaf415ac` |
 | `styles.css` | 44160 | `a2cc7ad7bae9f7cfc9681d80bc6bd4a58f0b07d47bfcff64897dc04929c12333` |
-| `app.js` | 402814 | `97ff561a768b3d56e72028ec6f432c40b925dda5747343e0dee98de5305212a3` |
+| `app.js` | 403025 | `b735caab35fc94ea67bd144375b4f7493a27fef4a9f17b0c713afc9508687bbf` |
 | `sw.js` | 4622 | `b891d4344f8e04403b7f1d307fd446cc224bddc6f0c4397438a17d197351171e` |
 | `site.webmanifest` | 709 | `0e0de4da60590a12e8b27a0ae2a2f5ffdb6500b7d2b78f93631ec2f64ed3d5ce` |
 | `robots.txt` | 127 | `38fbf9c1854e72abb20e01e81dd5a31d4ea96f154c12d5db1ec3af05524dd1a1` |
-| `sitemap.xml` | 228512 | `008a05e17f908d233a4a0647ca9e805edc5a79a733bd70ed6997ff71dc22c6b7` |
+| `sitemap.xml` | 228661 | `c9d1e7cc105412a9b19e08f340d88c745ebae82315bd96a5fee4a839d2528d8a` |
 | `_headers` | 1316 | `2f39986457d2feff7e73e491a7d09ee871e8f2f4cc2bc437f86bd86a42554ec6` |
 | `logo.png` | 63440 | `11afaf1b0d3ca68393d202e4810bf766b5b6d591b4e3ec52f41d3cacaa4616ec` |
 | `favicon.ico` | 7411 | `407fde0ca2788409e87e11f596fa02e6a0b121817fcea7fd995beec1801e287b` |
@@ -352,7 +352,7 @@ downloads is committed in this repository and is hashed below.
 | `lib/medication-v4.js` | 18192 | `467f9576c50da696cc56094eb022d0a5ed1e88de0c7618448554ede8067270b0` |
 | `lib/medication-v5.js` | 18863 | `ce81d9f8954abbd412892c13af9936f992239164f26fd2b999eaea7902787ab7` |
 | `lib/mest-c-v528.js` | 9310 | `e33f178c339338f62c47b6a19d50d345d38be3b05d9a33e7d2703e0a99ae3a69` |
-| `lib/meta.js` | 2067808 | `473480ea68a9f18ad8ce738d9615e759e01473e62d9d86ddf1abfebbd9df47bd` |
+| `lib/meta.js` | 2069007 | `ec9affb79439471d0c8b348302bf30ee967412aa57c518e466b481ee547970b0` |
 | `lib/metabolic-hepatic-v219.js` | 12791 | `b9352877cebf7fbf3c3b99ecb8b72cdbee3ed94e056dc019113668609f5a95a8` |
 | `lib/metabolic-onc-v88.js` | 12659 | `1553b641668c121661a66647da71a4aaaa023e9f3a6b7a753efbcdab27cdba81` |
 | `lib/metabolic-v269.js` | 3262 | `0c7a42557886f2b0aeee7949b8d0bd682d795d4526174fd540717a978d94ec2f` |
@@ -444,6 +444,7 @@ downloads is committed in this repository and is hashed below.
 | `lib/paris-classification-v329.js` | 3776 | `0d7db2570376b877f4a76f9452e2247c6785d3f9fb87569dbf6d2209bf7d39fc` |
 | `lib/parks-fistula-v395.js` | 4894 | `6cb661e29c0e95879e60899d7d5ee68c1b61c48fa6e511682db0772b19e24aee` |
 | `lib/pas-swallow-v367.js` | 4492 | `eea0e378665274c79d8ed02f136729764350a00aeb04116f8a7ec0cf20baa49b` |
+| `lib/pass-pheo-v660.js` | 4376 | `9244727d7b1d7cc938e01030e95521dcf7d8251b7d6ccd0a0d1dd59223ea23ac` |
 | `lib/pauwels-femoral-neck-v374.js` | 3633 | `c77c87f752c89f275d48e3b3d9ef907d095bfe67bfe162e9daa25a54dfe1c70d` |
 | `lib/pc-ptsd5-v521.js` | 7334 | `0635ea214ac637ed9109351c0bed5c50bb81976857fb80fd59e71aa11a6495d4` |
 | `lib/pcdai-v522.js` | 12145 | `c81c94736ea2a72e05ccc4de3f9293d4a6f37c9291102cd59a9cf1dbb158492c` |
@@ -1184,6 +1185,7 @@ downloads is committed in this repository and is hashed below.
 | `views/group-v657.js` | 3117 | `0b2e073718654d46e2082e4af1f892e186b138b80a4de9280fb4717d8cadb885` |
 | `views/group-v658.js` | 3130 | `90105df7404ecb024ff589024d28340928c29fa4f16d691075e44e923b4b349b` |
 | `views/group-v659.js` | 3122 | `9870439049b1b082bf4392586ff0e920c24ea813bc72e9b9fc38076a48131a13` |
+| `views/group-v660.js` | 3207 | `b410f2d4bd609c55bb7bbed2e85e1c2462f88b936c6d36408a13520e1c9049e8` |
 | `views/group-v7.js` | 15113 | `d480a5b34adfd035507dd4313e12462c47c949aeee155b253c8a2f9596839d05` |
 | `views/group-v8.js` | 20546 | `5e6ebaa807abb0677621321175906ec60531116c30aa824930ad77bc47ecad6d` |
 | `views/group-v9.js` | 22815 | `66b61a3aa7fc5d8e0eb324392f546ff29c8bc88af80c0a418879f887737e5e1a` |
