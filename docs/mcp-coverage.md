@@ -7508,6 +7508,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/ips-hodgkin-v661.js (spec-v661: IPS advanced Hodgkin lymphoma prognostic score — clinical disclaimer)
 - `ips-hodgkin`
 
+### lib/push-tool-v662.js (spec-v662: PUSH tool pressure ulcer scale for healing — clinical disclaimer)
+- `push-tool`
+
 ### lib/tox-v86.js
 - `serotonin-toxicity`
 - `salicylate-toxicity`

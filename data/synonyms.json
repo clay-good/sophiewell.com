@@ -747,6 +747,8 @@
       "tile": "pass-pheo", "audience": "clinicians" },
     { "phrases": ["international prognostic score hodgkin", "ips hodgkin lymphoma", "hasenclever score", "advanced hodgkin prognostic score"],
       "tile": "ips-hodgkin", "audience": "clinicians" },
+    { "phrases": ["push tool wound healing", "pressure ulcer scale for healing", "push score pressure injury", "wound healing score"],
+      "tile": "push-tool", "audience": "clinicians" },
     { "phrases": ["masaoka koga staging thymoma", "thymoma stage classification", "thymic tumor staging", "masaoka thymoma stage"],
       "tile": "masaoka-koga", "audience": "clinicians" },
     { "phrases": ["erez dic score", "pregnancy dic score", "obstetric disseminated intravascular coagulation", "pregnancy specific isth dic"],

@@ -574,6 +574,7 @@ import isglsBileLeakV658 from './adapters/isgls-bile-leak-v658.js';
 import isgpsDgeV659 from './adapters/isgps-dge-v659.js';
 import passPheoV660 from './adapters/pass-pheo-v660.js';
 import ipsHodgkinV661 from './adapters/ips-hodgkin-v661.js';
+import pushToolV662 from './adapters/push-tool-v662.js';
 import masaokaV650 from './adapters/masaoka-v650.js';
 
 const ADAPTER_MODULES = [
@@ -1135,6 +1136,7 @@ const ADAPTER_MODULES = [
   ['isgps-dge-v659', isgpsDgeV659],
   ['pass-pheo-v660', passPheoV660],
   ['ips-hodgkin-v661', ipsHodgkinV661],
+  ['push-tool-v662', pushToolV662],
 ];
 
 const HERE = dirname(fileURLToPath(import.meta.url));
