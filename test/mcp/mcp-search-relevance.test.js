@@ -617,6 +617,7 @@ const PROBES = [
   ['push tool pressure ulcer scale for healing wound', ['push-tool']],
   ['lichtiger index ulcerative colitis activity modified truelove', ['lichtiger-index']],
   ['ase diastolic function grade echo e/e prime tr velocity', ['diastolic-function-ase']],
+  ['cleveland clinic wexner constipation score agachan', ['cleveland-constipation']],
   ['masaoka koga thymoma staging stage', ['masaoka-koga']],
   ['pregnancy dic score erez obstetric', ['erez-dic']],
   ['aeeg amplitude classification neonatal encephalopathy', ['anaqeeb-aeeg']],

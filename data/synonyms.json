@@ -753,6 +753,8 @@
       "tile": "lichtiger-index", "audience": "clinicians" },
     { "phrases": ["diastolic function grade", "ase diastolic dysfunction", "diastolic dysfunction echo criteria", "e/e prime tr velocity la volume diastolic"],
       "tile": "diastolic-function-ase", "audience": "clinicians" },
+    { "phrases": ["cleveland clinic constipation score", "wexner constipation score", "agachan constipation", "constipation scoring system"],
+      "tile": "cleveland-constipation", "audience": "clinicians" },
     { "phrases": ["masaoka koga staging thymoma", "thymoma stage classification", "thymic tumor staging", "masaoka thymoma stage"],
       "tile": "masaoka-koga", "audience": "clinicians" },
     { "phrases": ["erez dic score", "pregnancy dic score", "obstetric disseminated intravascular coagulation", "pregnancy specific isth dic"],
