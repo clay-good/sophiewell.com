@@ -7535,6 +7535,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/ottawa-bowel-prep-v670.js (spec-v670: Ottawa Bowel Preparation Scale — clinical disclaimer)
 - `ottawa-bowel-prep`
 
+### lib/acr-eular-boolean-v671.js (spec-v671: ACR/EULAR Boolean RA remission — clinical disclaimer)
+- `acr-eular-boolean`
+
 ### lib/tox-v86.js
 - `serotonin-toxicity`
 - `salicylate-toxicity`

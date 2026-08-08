@@ -583,6 +583,7 @@ import fgsiV667 from './adapters/fgsi-v667.js';
 import cacAgatstonV668 from './adapters/cac-agatston-v668.js';
 import walterIndexV669 from './adapters/walter-index-v669.js';
 import ottawaBowelPrepV670 from './adapters/ottawa-bowel-prep-v670.js';
+import acrEularBooleanV671 from './adapters/acr-eular-boolean-v671.js';
 import masaokaV650 from './adapters/masaoka-v650.js';
 
 const ADAPTER_MODULES = [
@@ -1153,6 +1154,7 @@ const ADAPTER_MODULES = [
   ['cac-agatston-v668', cacAgatstonV668],
   ['walter-index-v669', walterIndexV669],
   ['ottawa-bowel-prep-v670', ottawaBowelPrepV670],
+  ['acr-eular-boolean-v671', acrEularBooleanV671],
 ];
 
 const HERE = dirname(fileURLToPath(import.meta.url));

@@ -765,6 +765,8 @@
       "tile": "walter-index", "audience": "clinicians" },
     { "phrases": ["ottawa bowel preparation scale", "obps colonoscopy prep quality", "bowel prep score ottawa", "colon cleanliness score"],
       "tile": "ottawa-bowel-prep", "audience": "clinicians" },
+    { "phrases": ["acr eular boolean remission", "rheumatoid arthritis remission criteria", "boolean 2.0 remission", "ra remission definition"],
+      "tile": "acr-eular-boolean", "audience": "clinicians" },
     { "phrases": ["masaoka koga staging thymoma", "thymoma stage classification", "thymic tumor staging", "masaoka thymoma stage"],
       "tile": "masaoka-koga", "audience": "clinicians" },
     { "phrases": ["erez dic score", "pregnancy dic score", "obstetric disseminated intravascular coagulation", "pregnancy specific isth dic"],

@@ -623,6 +623,7 @@ const PROBES = [
   ['coronary artery calcium agatston score cac category', ['cac-agatston']],
   ['walter index one year mortality after hospitalization older adults', ['walter-index']],
   ['ottawa bowel preparation scale colonoscopy prep quality', ['ottawa-bowel-prep']],
+  ['acr eular boolean remission rheumatoid arthritis criteria', ['acr-eular-boolean']],
   ['masaoka koga thymoma staging stage', ['masaoka-koga']],
   ['pregnancy dic score erez obstetric', ['erez-dic']],
   ['aeeg amplitude classification neonatal encephalopathy', ['anaqeeb-aeeg']],
