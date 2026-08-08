@@ -739,6 +739,8 @@
       "tile": "isgps-popf", "audience": "clinicians" },
     { "phrases": ["post hepatectomy liver failure", "isgls phlf grade", "liver failure after hepatectomy", "phlf grading"],
       "tile": "isgls-phlf", "audience": "clinicians" },
+    { "phrases": ["bile leak grade", "isgls bile leakage", "biliary leak after surgery", "bile leak severity grading"],
+      "tile": "isgls-bile-leak", "audience": "clinicians" },
     { "phrases": ["masaoka koga staging thymoma", "thymoma stage classification", "thymic tumor staging", "masaoka thymoma stage"],
       "tile": "masaoka-koga", "audience": "clinicians" },
     { "phrases": ["erez dic score", "pregnancy dic score", "obstetric disseminated intravascular coagulation", "pregnancy specific isth dic"],

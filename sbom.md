@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `b8463cb36378dd62`
-Generated: 2026-08-08T00:04:00.180Z
+Build ID: `3d95aa39197d00fd`
+Generated: 2026-08-08T00:48:21.980Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=20.18.1 <21, npm >=10.0.0
@@ -24,13 +24,13 @@ downloads is committed in this repository and is hashed below.
 
 | Path | Bytes | SHA-256 |
 |---|---:|---|
-| `index.html` | 97669 | `390c05405fe688989d085156a84464674921b96e8a6a1a2ddb566d282cb0d697` |
+| `index.html` | 97706 | `24bbea2dbfca98b94712226323cc736c55714d3e3c896f9d66e6fdbe1318dcc3` |
 | `styles.css` | 44160 | `a2cc7ad7bae9f7cfc9681d80bc6bd4a58f0b07d47bfcff64897dc04929c12333` |
-| `app.js` | 402409 | `b5af11715926c7e4e173c2cd27cbcde5e56cf94d8ccd07e63a28cc26af34b018` |
+| `app.js` | 402607 | `85fd555a8d10eee7840c8dae60558756820f14509a8ba24acc7971d41c5f40e8` |
 | `sw.js` | 4622 | `b891d4344f8e04403b7f1d307fd446cc224bddc6f0c4397438a17d197351171e` |
 | `site.webmanifest` | 709 | `0e0de4da60590a12e8b27a0ae2a2f5ffdb6500b7d2b78f93631ec2f64ed3d5ce` |
 | `robots.txt` | 127 | `38fbf9c1854e72abb20e01e81dd5a31d4ea96f154c12d5db1ec3af05524dd1a1` |
-| `sitemap.xml` | 228208 | `0cc10a8af13ddfd75abdc5281f3f99111e85f505b1ea7339567df93ef69754f6` |
+| `sitemap.xml` | 228363 | `6a281a6b999a663d205e1b07100f91fb9f28cb391452913af74add3c2e87ca00` |
 | `_headers` | 1316 | `2f39986457d2feff7e73e491a7d09ee871e8f2f4cc2bc437f86bd86a42554ec6` |
 | `logo.png` | 63440 | `11afaf1b0d3ca68393d202e4810bf766b5b6d591b4e3ec52f41d3cacaa4616ec` |
 | `favicon.ico` | 7411 | `407fde0ca2788409e87e11f596fa02e6a0b121817fcea7fd995beec1801e287b` |
@@ -285,6 +285,7 @@ downloads is committed in this repository and is hashed below.
 | `lib/insulin-drip.js` | 1130 | `d5143980d2697143a2c2e45f5a71042571d668288883aa9daaa24681ef06c600` |
 | `lib/intermacs-profile-v494.js` | 4333 | `4b56fe0900a9e1f9441ee1c8259959e261405815f4b3f1e168e6b983ea897fab` |
 | `lib/irecist-v551.js` | 15842 | `5b04f7e6aca6ec9e066f913e4acb2932735ea7bcecc5a0c0b86f0ad59ccc0652` |
+| `lib/isgls-bile-leak-v658.js` | 4025 | `fb4c7549d0efb2005b1fa84384890a89dde860731d852965229df78d254a75ac` |
 | `lib/isgls-phlf-v657.js` | 4429 | `e28133793bc99063706e6cc81e028049bf2d8c5901f3833698b77e824d73adf4` |
 | `lib/isgps-popf-v656.js` | 4219 | `eb3e2e2d00ac70fa2fa3b66ac782086eb363c71678daf7d5bcf28c9ed470d025` |
 | `lib/ishlt-rejection-v540.js` | 9254 | `2e5090065d7f5c3687f8f0d33ba7c2e58529ddfe53e5965a94799af450797f4d` |
@@ -350,7 +351,7 @@ downloads is committed in this repository and is hashed below.
 | `lib/medication-v4.js` | 18192 | `467f9576c50da696cc56094eb022d0a5ed1e88de0c7618448554ede8067270b0` |
 | `lib/medication-v5.js` | 18863 | `ce81d9f8954abbd412892c13af9936f992239164f26fd2b999eaea7902787ab7` |
 | `lib/mest-c-v528.js` | 9310 | `e33f178c339338f62c47b6a19d50d345d38be3b05d9a33e7d2703e0a99ae3a69` |
-| `lib/meta.js` | 2065663 | `22b833933ad2a0a1fd4c18ab18294bb151e426bcb4ee1196375477d9f2c7f489` |
+| `lib/meta.js` | 2066762 | `caf31d6970d404b55802fe8ee64ba0697f0411bef52d2d8f3f8b58da67f88f05` |
 | `lib/metabolic-hepatic-v219.js` | 12791 | `b9352877cebf7fbf3c3b99ecb8b72cdbee3ed94e056dc019113668609f5a95a8` |
 | `lib/metabolic-onc-v88.js` | 12659 | `1553b641668c121661a66647da71a4aaaa023e9f3a6b7a753efbcdab27cdba81` |
 | `lib/metabolic-v269.js` | 3262 | `0c7a42557886f2b0aeee7949b8d0bd682d795d4526174fd540717a978d94ec2f` |
@@ -1180,6 +1181,7 @@ downloads is committed in this repository and is hashed below.
 | `views/group-v655.js` | 3224 | `1cf973ce5c298baf1897b9f25f2c64e0bd812bf7b3c3eeca7fec79f5a2719556` |
 | `views/group-v656.js` | 3136 | `ac3693806d8a0688b3536713297edb62e02e6ae1672ddd37e7e7382dd6cdffe2` |
 | `views/group-v657.js` | 3117 | `0b2e073718654d46e2082e4af1f892e186b138b80a4de9280fb4717d8cadb885` |
+| `views/group-v658.js` | 3130 | `90105df7404ecb024ff589024d28340928c29fa4f16d691075e44e923b4b349b` |
 | `views/group-v7.js` | 15113 | `d480a5b34adfd035507dd4313e12462c47c949aeee155b253c8a2f9596839d05` |
 | `views/group-v8.js` | 20546 | `5e6ebaa807abb0677621321175906ec60531116c30aa824930ad77bc47ecad6d` |
 | `views/group-v9.js` | 22815 | `66b61a3aa7fc5d8e0eb324392f546ff29c8bc88af80c0a418879f887737e5e1a` |
