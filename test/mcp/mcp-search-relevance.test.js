@@ -621,6 +621,7 @@ const PROBES = [
   ['ventral hernia working group vhwg grade surgical site', ['vhwg-hernia']],
   ['fournier gangrene severity index fgsi mortality', ['fgsi']],
   ['coronary artery calcium agatston score cac category', ['cac-agatston']],
+  ['walter index one year mortality after hospitalization older adults', ['walter-index']],
   ['masaoka koga thymoma staging stage', ['masaoka-koga']],
   ['pregnancy dic score erez obstetric', ['erez-dic']],
   ['aeeg amplitude classification neonatal encephalopathy', ['anaqeeb-aeeg']],

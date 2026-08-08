@@ -7529,6 +7529,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/cac-agatston-v668.js (spec-v668: coronary artery calcium (Agatston) score — clinical disclaimer)
 - `cac-agatston`
 
+### lib/walter-index-v669.js (spec-v669: Walter Index, 1-year mortality after hospitalization — clinical disclaimer)
+- `walter-index`
+
 ### lib/tox-v86.js
 - `serotonin-toxicity`
 - `salicylate-toxicity`
