@@ -7511,6 +7511,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/push-tool-v662.js (spec-v662: PUSH tool pressure ulcer scale for healing — clinical disclaimer)
 - `push-tool`
 
+### lib/lichtiger-index-v663.js (spec-v663: Lichtiger Index (UC activity) — clinical disclaimer)
+- `lichtiger-index`
+
 ### lib/tox-v86.js
 - `serotonin-toxicity`
 - `salicylate-toxicity`
