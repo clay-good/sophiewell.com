@@ -585,6 +585,7 @@ import walterIndexV669 from './adapters/walter-index-v669.js';
 import ottawaBowelPrepV670 from './adapters/ottawa-bowel-prep-v670.js';
 import acrEularBooleanV671 from './adapters/acr-eular-boolean-v671.js';
 import mdaPsoriaticV672 from './adapters/mda-psoriatic-v672.js';
+import heckerlingPneumoniaV673 from './adapters/heckerling-pneumonia-v673.js';
 import masaokaV650 from './adapters/masaoka-v650.js';
 
 const ADAPTER_MODULES = [
@@ -1157,6 +1158,7 @@ const ADAPTER_MODULES = [
   ['ottawa-bowel-prep-v670', ottawaBowelPrepV670],
   ['acr-eular-boolean-v671', acrEularBooleanV671],
   ['mda-psoriatic-v672', mdaPsoriaticV672],
+  ['heckerling-pneumonia-v673', heckerlingPneumoniaV673],
 ];
 
 const HERE = dirname(fileURLToPath(import.meta.url));

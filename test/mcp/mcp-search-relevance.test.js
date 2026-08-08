@@ -625,6 +625,7 @@ const PROBES = [
   ['ottawa bowel preparation scale colonoscopy prep quality', ['ottawa-bowel-prep']],
   ['acr eular boolean remission rheumatoid arthritis criteria', ['acr-eular-boolean']],
   ['minimal disease activity psoriatic arthritis mda vlda', ['mda-psoriatic']],
+  ['heckerling pneumonia prediction rule chest xray', ['heckerling-pneumonia']],
   ['masaoka koga thymoma staging stage', ['masaoka-koga']],
   ['pregnancy dic score erez obstetric', ['erez-dic']],
   ['aeeg amplitude classification neonatal encephalopathy', ['anaqeeb-aeeg']],
