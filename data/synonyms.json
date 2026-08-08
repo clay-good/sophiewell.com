@@ -759,6 +759,8 @@
       "tile": "vhwg-hernia", "audience": "clinicians" },
     { "phrases": ["fournier gangrene severity index", "fgsi score", "fournier gangrene mortality", "fournier severity score"],
       "tile": "fgsi", "audience": "clinicians" },
+    { "phrases": ["coronary artery calcium score", "agatston score", "cac score category", "calcium score interpretation"],
+      "tile": "cac-agatston", "audience": "clinicians" },
     { "phrases": ["masaoka koga staging thymoma", "thymoma stage classification", "thymic tumor staging", "masaoka thymoma stage"],
       "tile": "masaoka-koga", "audience": "clinicians" },
     { "phrases": ["erez dic score", "pregnancy dic score", "obstetric disseminated intravascular coagulation", "pregnancy specific isth dic"],

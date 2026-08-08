@@ -7526,6 +7526,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/fgsi-v667.js (spec-v667: Fournier's Gangrene Severity Index — clinical disclaimer)
 - `fgsi`
 
+### lib/cac-agatston-v668.js (spec-v668: coronary artery calcium (Agatston) score — clinical disclaimer)
+- `cac-agatston`
+
 ### lib/tox-v86.js
 - `serotonin-toxicity`
 - `salicylate-toxicity`

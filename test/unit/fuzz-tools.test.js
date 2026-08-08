@@ -562,6 +562,7 @@ import * as diastolicFunctionAseV664 from '../../lib/diastolic-function-ase-v664
 import * as clevelandConstipationV665 from '../../lib/cleveland-constipation-v665.js';
 import * as vhwgHerniaV666 from '../../lib/vhwg-hernia-v666.js';
 import * as fgsiV667 from '../../lib/fgsi-v667.js';
+import * as cacAgatstonV668 from '../../lib/cac-agatston-v668.js';
 import * as masaokaV650 from '../../lib/masaoka-v650.js';
 import * as erezDicV559 from '../../lib/erez-dic-v559.js';
 import * as anaqeebAeegV560 from '../../lib/anaqeeb-aeeg-v560.js';
@@ -1130,6 +1131,7 @@ const MODULES = {
   'cleveland-constipation-v665.js': clevelandConstipationV665,
   'vhwg-hernia-v666.js': vhwgHerniaV666,
   'fgsi-v667.js': fgsiV667,
+  'cac-agatston-v668.js': cacAgatstonV668,
   'masaoka-v650.js': masaokaV650,
   'erez-dic-v559.js': erezDicV559,
   'anaqeeb-aeeg-v560.js': anaqeebAeegV560,

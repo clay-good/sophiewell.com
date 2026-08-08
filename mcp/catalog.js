@@ -580,6 +580,7 @@ import diastolicFunctionAseV664 from './adapters/diastolic-function-ase-v664.js'
 import clevelandConstipationV665 from './adapters/cleveland-constipation-v665.js';
 import vhwgHerniaV666 from './adapters/vhwg-hernia-v666.js';
 import fgsiV667 from './adapters/fgsi-v667.js';
+import cacAgatstonV668 from './adapters/cac-agatston-v668.js';
 import masaokaV650 from './adapters/masaoka-v650.js';
 
 const ADAPTER_MODULES = [
@@ -1147,6 +1148,7 @@ const ADAPTER_MODULES = [
   ['cleveland-constipation-v665', clevelandConstipationV665],
   ['vhwg-hernia-v666', vhwgHerniaV666],
   ['fgsi-v667', fgsiV667],
+  ['cac-agatston-v668', cacAgatstonV668],
 ];
 
 const HERE = dirname(fileURLToPath(import.meta.url));
