@@ -589,6 +589,7 @@ import heckerlingPneumoniaV673 from './adapters/heckerling-pneumonia-v673.js';
 import osiOnychomycosisV674 from './adapters/osi-onychomycosis-v674.js';
 import asrmManiaV675 from './adapters/asrm-mania-v675.js';
 import lundKennedyV676 from './adapters/lund-kennedy-v676.js';
+import mcmahonRhabdoV677 from './adapters/mcmahon-rhabdo-v677.js';
 import masaokaV650 from './adapters/masaoka-v650.js';
 
 const ADAPTER_MODULES = [
@@ -1165,6 +1166,7 @@ const ADAPTER_MODULES = [
   ['osi-onychomycosis-v674', osiOnychomycosisV674],
   ['asrm-mania-v675', asrmManiaV675],
   ['lund-kennedy-v676', lundKennedyV676],
+  ['mcmahon-rhabdo-v677', mcmahonRhabdoV677],
 ];
 
 const HERE = dirname(fileURLToPath(import.meta.url));

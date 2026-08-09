@@ -629,6 +629,7 @@ const PROBES = [
   ['onychomycosis severity index osi fungal nail grading', ['osi-onychomycosis']],
   ['altman self rating mania scale asrm screen', ['asrm-mania']],
   ['lund kennedy endoscopic score rhinosinusitis sinus', ['lund-kennedy']],
+  ['mcmahon score rhabdomyolysis kidney failure risk', ['mcmahon-rhabdo']],
   ['masaoka koga thymoma staging stage', ['masaoka-koga']],
   ['pregnancy dic score erez obstetric', ['erez-dic']],
   ['aeeg amplitude classification neonatal encephalopathy', ['anaqeeb-aeeg']],
