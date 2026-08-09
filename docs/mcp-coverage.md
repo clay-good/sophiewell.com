@@ -7550,6 +7550,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/asrm-mania-v675.js (spec-v675: Altman Self-Rating Mania Scale — clinical disclaimer)
 - `asrm-mania`
 
+### lib/lund-kennedy-v676.js (spec-v676: Lund-Kennedy endoscopic score — clinical disclaimer)
+- `lund-kennedy`
+
 ### lib/tox-v86.js
 - `serotonin-toxicity`
 - `salicylate-toxicity`

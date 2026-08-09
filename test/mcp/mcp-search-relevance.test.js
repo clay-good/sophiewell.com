@@ -628,6 +628,7 @@ const PROBES = [
   ['heckerling pneumonia prediction rule chest xray', ['heckerling-pneumonia']],
   ['onychomycosis severity index osi fungal nail grading', ['osi-onychomycosis']],
   ['altman self rating mania scale asrm screen', ['asrm-mania']],
+  ['lund kennedy endoscopic score rhinosinusitis sinus', ['lund-kennedy']],
   ['masaoka koga thymoma staging stage', ['masaoka-koga']],
   ['pregnancy dic score erez obstetric', ['erez-dic']],
   ['aeeg amplitude classification neonatal encephalopathy', ['anaqeeb-aeeg']],
