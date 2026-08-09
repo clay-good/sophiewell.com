@@ -773,6 +773,8 @@
       "tile": "heckerling-pneumonia", "audience": "clinicians" },
     { "phrases": ["onychomycosis severity index", "osi fungal nail severity", "nail fungus grading", "onychomycosis grading"],
       "tile": "osi-onychomycosis", "audience": "clinicians" },
+    { "phrases": ["altman self rating mania scale", "asrm mania screen", "self report mania questionnaire", "hypomania screening score"],
+      "tile": "asrm-mania", "audience": "clinicians" },
     { "phrases": ["masaoka koga staging thymoma", "thymoma stage classification", "thymic tumor staging", "masaoka thymoma stage"],
       "tile": "masaoka-koga", "audience": "clinicians" },
     { "phrases": ["erez dic score", "pregnancy dic score", "obstetric disseminated intravascular coagulation", "pregnancy specific isth dic"],

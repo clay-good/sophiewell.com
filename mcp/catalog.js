@@ -587,6 +587,7 @@ import acrEularBooleanV671 from './adapters/acr-eular-boolean-v671.js';
 import mdaPsoriaticV672 from './adapters/mda-psoriatic-v672.js';
 import heckerlingPneumoniaV673 from './adapters/heckerling-pneumonia-v673.js';
 import osiOnychomycosisV674 from './adapters/osi-onychomycosis-v674.js';
+import asrmManiaV675 from './adapters/asrm-mania-v675.js';
 import masaokaV650 from './adapters/masaoka-v650.js';
 
 const ADAPTER_MODULES = [
@@ -1161,6 +1162,7 @@ const ADAPTER_MODULES = [
   ['mda-psoriatic-v672', mdaPsoriaticV672],
   ['heckerling-pneumonia-v673', heckerlingPneumoniaV673],
   ['osi-onychomycosis-v674', osiOnychomycosisV674],
+  ['asrm-mania-v675', asrmManiaV675],
 ];
 
 const HERE = dirname(fileURLToPath(import.meta.url));

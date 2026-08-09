@@ -7547,6 +7547,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/osi-onychomycosis-v674.js (spec-v674: Onychomycosis Severity Index — clinical disclaimer)
 - `osi-onychomycosis`
 
+### lib/asrm-mania-v675.js (spec-v675: Altman Self-Rating Mania Scale — clinical disclaimer)
+- `asrm-mania`
+
 ### lib/tox-v86.js
 - `serotonin-toxicity`
 - `salicylate-toxicity`
