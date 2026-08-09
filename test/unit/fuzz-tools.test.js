@@ -568,6 +568,7 @@ import * as ottawaBowelPrepV670 from '../../lib/ottawa-bowel-prep-v670.js';
 import * as acrEularBooleanV671 from '../../lib/acr-eular-boolean-v671.js';
 import * as mdaPsoriaticV672 from '../../lib/mda-psoriatic-v672.js';
 import * as heckerlingPneumoniaV673 from '../../lib/heckerling-pneumonia-v673.js';
+import * as osiOnychomycosisV674 from '../../lib/osi-onychomycosis-v674.js';
 import * as masaokaV650 from '../../lib/masaoka-v650.js';
 import * as erezDicV559 from '../../lib/erez-dic-v559.js';
 import * as anaqeebAeegV560 from '../../lib/anaqeeb-aeeg-v560.js';
@@ -1142,6 +1143,7 @@ const MODULES = {
   'acr-eular-boolean-v671.js': acrEularBooleanV671,
   'mda-psoriatic-v672.js': mdaPsoriaticV672,
   'heckerling-pneumonia-v673.js': heckerlingPneumoniaV673,
+  'osi-onychomycosis-v674.js': osiOnychomycosisV674,
   'masaoka-v650.js': masaokaV650,
   'erez-dic-v559.js': erezDicV559,
   'anaqeeb-aeeg-v560.js': anaqeebAeegV560,

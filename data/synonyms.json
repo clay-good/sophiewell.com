@@ -771,6 +771,8 @@
       "tile": "mda-psoriatic", "audience": "clinicians" },
     { "phrases": ["heckerling pneumonia prediction rule", "pneumonia clinical prediction rule", "chest xray pneumonia decision", "pulmonary infiltrate probability"],
       "tile": "heckerling-pneumonia", "audience": "clinicians" },
+    { "phrases": ["onychomycosis severity index", "osi fungal nail severity", "nail fungus grading", "onychomycosis grading"],
+      "tile": "osi-onychomycosis", "audience": "clinicians" },
     { "phrases": ["masaoka koga staging thymoma", "thymoma stage classification", "thymic tumor staging", "masaoka thymoma stage"],
       "tile": "masaoka-koga", "audience": "clinicians" },
     { "phrases": ["erez dic score", "pregnancy dic score", "obstetric disseminated intravascular coagulation", "pregnancy specific isth dic"],

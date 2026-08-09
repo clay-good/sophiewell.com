@@ -7544,6 +7544,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/heckerling-pneumonia-v673.js (spec-v673: Heckerling pneumonia prediction rule — clinical disclaimer)
 - `heckerling-pneumonia`
 
+### lib/osi-onychomycosis-v674.js (spec-v674: Onychomycosis Severity Index — clinical disclaimer)
+- `osi-onychomycosis`
+
 ### lib/tox-v86.js
 - `serotonin-toxicity`
 - `salicylate-toxicity`
