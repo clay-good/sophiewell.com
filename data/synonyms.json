@@ -783,6 +783,8 @@
       "tile": "meld3", "audience": "clinicians" },
     { "phrases": ["gerdq questionnaire", "reflux disease questionnaire", "gerd screening score", "heartburn regurgitation reflux screen"],
       "tile": "gerdq", "audience": "clinicians" },
+    { "phrases": ["kobayashi score kawasaki", "ivig resistance kawasaki", "kawasaki disease ivig unresponsiveness", "predict ivig nonresponse kawasaki"],
+      "tile": "kobayashi-kawasaki", "audience": "clinicians" },
     { "phrases": ["masaoka koga staging thymoma", "thymoma stage classification", "thymic tumor staging", "masaoka thymoma stage"],
       "tile": "masaoka-koga", "audience": "clinicians" },
     { "phrases": ["erez dic score", "pregnancy dic score", "obstetric disseminated intravascular coagulation", "pregnancy specific isth dic"],

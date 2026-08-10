@@ -7562,6 +7562,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/gerdq-v679.js (spec-v679: GerdQ reflux disease questionnaire — clinical disclaimer)
 - `gerdq`
 
+### lib/kobayashi-kawasaki-v680.js (spec-v680: Kobayashi IVIG-resistance score — clinical disclaimer)
+- `kobayashi-kawasaki`
+
 ### lib/tox-v86.js
 - `serotonin-toxicity`
 - `salicylate-toxicity`
