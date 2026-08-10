@@ -7625,6 +7625,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/sad-persons-v701.js (spec-v701: SAD PERSONS suicide-risk screen — clinical disclaimer)
 - `sad-persons`
 
+### lib/edinburgh-claudication-v702.js (spec-v702: Edinburgh Claudication Questionnaire — clinical disclaimer)
+- `edinburgh-claudication`
+
 ### lib/cobb-angle-v694.js (spec-v694: Cobb angle scoliosis severity — clinical disclaimer)
 - `cobb-angle`
 

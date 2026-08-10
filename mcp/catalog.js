@@ -614,6 +614,7 @@ import qcsiV698 from './adapters/qcsi-v698.js';
 import fabV699 from './adapters/fab-v699.js';
 import maltIpiV700 from './adapters/malt-ipi-v700.js';
 import sadPersonsV701 from './adapters/sad-persons-v701.js';
+import edinburghClaudicationV702 from './adapters/edinburgh-claudication-v702.js';
 import masaokaV650 from './adapters/masaoka-v650.js';
 
 const ADAPTER_MODULES = [
@@ -1215,6 +1216,7 @@ const ADAPTER_MODULES = [
   ['fab-v699', fabV699],
   ['malt-ipi-v700', maltIpiV700],
   ['sad-persons-v701', sadPersonsV701],
+  ['edinburgh-claudication-v702', edinburghClaudicationV702],
 ];
 
 const HERE = dirname(fileURLToPath(import.meta.url));
