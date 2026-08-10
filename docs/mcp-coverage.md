@@ -7604,6 +7604,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/interchest-v693.js (spec-v693: INTERCHEST chest-pain CAD rule — clinical disclaimer)
 - `interchest`
 
+### lib/manning-ibs-v695.js (spec-v695: Manning Criteria for IBS — clinical disclaimer)
+- `manning-ibs`
+
 ### lib/cobb-angle-v694.js (spec-v694: Cobb angle scoliosis severity — clinical disclaimer)
 - `cobb-angle`
 
