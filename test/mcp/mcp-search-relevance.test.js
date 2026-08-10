@@ -631,6 +631,7 @@ const PROBES = [
   ['lund kennedy endoscopic score rhinosinusitis sinus', ['lund-kennedy']],
   ['mcmahon score rhabdomyolysis kidney failure risk', ['mcmahon-rhabdo']],
   ['meld 3.0 liver disease allocation score albumin sex', ['meld3']],
+  ['gerdq reflux questionnaire heartburn regurgitation gerd screen', ['gerdq']],
   ['masaoka koga thymoma staging stage', ['masaoka-koga']],
   ['pregnancy dic score erez obstetric', ['erez-dic']],
   ['aeeg amplitude classification neonatal encephalopathy', ['anaqeeb-aeeg']],

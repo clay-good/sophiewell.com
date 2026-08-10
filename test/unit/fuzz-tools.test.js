@@ -573,6 +573,7 @@ import * as asrmManiaV675 from '../../lib/asrm-mania-v675.js';
 import * as lundKennedyV676 from '../../lib/lund-kennedy-v676.js';
 import * as mcmahonRhabdoV677 from '../../lib/mcmahon-rhabdo-v677.js';
 import * as meld3V678 from '../../lib/meld3-v678.js';
+import * as gerdqV679 from '../../lib/gerdq-v679.js';
 import * as masaokaV650 from '../../lib/masaoka-v650.js';
 import * as erezDicV559 from '../../lib/erez-dic-v559.js';
 import * as anaqeebAeegV560 from '../../lib/anaqeeb-aeeg-v560.js';
@@ -1152,6 +1153,7 @@ const MODULES = {
   'lund-kennedy-v676.js': lundKennedyV676,
   'mcmahon-rhabdo-v677.js': mcmahonRhabdoV677,
   'meld3-v678.js': meld3V678,
+  'gerdq-v679.js': gerdqV679,
   'masaoka-v650.js': masaokaV650,
   'erez-dic-v559.js': erezDicV559,
   'anaqeeb-aeeg-v560.js': anaqeebAeegV560,

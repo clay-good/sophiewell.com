@@ -7559,6 +7559,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/meld3-v678.js (spec-v678: MELD 3.0 liver-allocation score — clinical disclaimer)
 - `meld3`
 
+### lib/gerdq-v679.js (spec-v679: GerdQ reflux disease questionnaire — clinical disclaimer)
+- `gerdq`
+
 ### lib/tox-v86.js
 - `serotonin-toxicity`
 - `salicylate-toxicity`
