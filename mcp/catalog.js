@@ -611,6 +611,7 @@ import manningIbsV695 from './adapters/manning-ibs-v695.js';
 import framinghamHfCriteriaV696 from './adapters/framingham-hf-criteria-v696.js';
 import kingsScoreV697 from './adapters/kings-score-v697.js';
 import qcsiV698 from './adapters/qcsi-v698.js';
+import fabV699 from './adapters/fab-v699.js';
 import masaokaV650 from './adapters/masaoka-v650.js';
 
 const ADAPTER_MODULES = [
@@ -1209,6 +1210,7 @@ const ADAPTER_MODULES = [
   ['framingham-hf-criteria-v696', framinghamHfCriteriaV696],
   ['kings-score-v697', kingsScoreV697],
   ['qcsi-v698', qcsiV698],
+  ['fab-v699', fabV699],
 ];
 
 const HERE = dirname(fileURLToPath(import.meta.url));

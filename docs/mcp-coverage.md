@@ -7616,6 +7616,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/qcsi-v698.js (spec-v698: Quick COVID-19 Severity Index — clinical disclaimer)
 - `qcsi`
 
+### lib/fab-v699.js (spec-v699: Frontal Assessment Battery — clinical disclaimer)
+- `fab`
+
 ### lib/cobb-angle-v694.js (spec-v694: Cobb angle scoliosis severity — clinical disclaimer)
 - `cobb-angle`
 

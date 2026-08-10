@@ -651,6 +651,7 @@ const PROBES = [
   ['framingham criteria heart failure diagnosis major minor', ['framingham-hf-criteria']],
   ['kings score liver fibrosis hepatitis c cirrhosis noninvasive', ['kings-score']],
   ['quick covid severity index qcsi respiratory decompensation', ['qcsi']],
+  ['frontal assessment battery fab executive dysfunction dementia', ['fab']],
   ['masaoka koga thymoma staging stage', ['masaoka-koga']],
   ['pregnancy dic score erez obstetric', ['erez-dic']],
   ['aeeg amplitude classification neonatal encephalopathy', ['anaqeeb-aeeg']],

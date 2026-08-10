@@ -821,6 +821,8 @@
       "tile": "kings-score", "audience": "clinicians" },
     { "phrases": ["quick covid severity index", "qcsi covid", "covid respiratory decompensation risk", "covid severity oxygen score"],
       "tile": "qcsi", "audience": "clinicians" },
+    { "phrases": ["frontal assessment battery", "fab executive function", "frontal lobe screen", "dysexecutive bedside battery"],
+      "tile": "fab", "audience": "clinicians" },
     { "phrases": ["masaoka koga staging thymoma", "thymoma stage classification", "thymic tumor staging", "masaoka thymoma stage"],
       "tile": "masaoka-koga", "audience": "clinicians" },
     { "phrases": ["erez dic score", "pregnancy dic score", "obstetric disseminated intravascular coagulation", "pregnancy specific isth dic"],
