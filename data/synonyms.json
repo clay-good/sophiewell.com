@@ -787,6 +787,8 @@
       "tile": "kobayashi-kawasaki", "audience": "clinicians" },
     { "phrases": ["sano score kawasaki", "sano ivig resistance", "kawasaki ivig nonresponse ast bilirubin crp", "three criteria ivig resistance kawasaki"],
       "tile": "sano-kawasaki", "audience": "clinicians" },
+    { "phrases": ["wang bronchiolitis score", "bronchiolitis severity score", "infant bronchiolitis respiratory score", "wang respiratory distress score"],
+      "tile": "wang-bronchiolitis", "audience": "clinicians" },
     { "phrases": ["masaoka koga staging thymoma", "thymoma stage classification", "thymic tumor staging", "masaoka thymoma stage"],
       "tile": "masaoka-koga", "audience": "clinicians" },
     { "phrases": ["erez dic score", "pregnancy dic score", "obstetric disseminated intravascular coagulation", "pregnancy specific isth dic"],

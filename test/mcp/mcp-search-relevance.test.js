@@ -634,6 +634,7 @@ const PROBES = [
   ['gerdq reflux questionnaire heartburn regurgitation gerd screen', ['gerdq']],
   ['kobayashi score ivig resistance kawasaki disease prediction', ['kobayashi-kawasaki']],
   ['sano score ivig resistance kawasaki ast bilirubin crp', ['sano-kawasaki']],
+  ['wang bronchiolitis respiratory score infant severity wheezing retraction', ['wang-bronchiolitis']],
   ['masaoka koga thymoma staging stage', ['masaoka-koga']],
   ['pregnancy dic score erez obstetric', ['erez-dic']],
   ['aeeg amplitude classification neonatal encephalopathy', ['anaqeeb-aeeg']],
