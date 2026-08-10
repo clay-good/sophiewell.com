@@ -593,6 +593,7 @@ import mcmahonRhabdoV677 from './adapters/mcmahon-rhabdo-v677.js';
 import meld3V678 from './adapters/meld3-v678.js';
 import gerdqV679 from './adapters/gerdq-v679.js';
 import kobayashiKawasakiV680 from './adapters/kobayashi-kawasaki-v680.js';
+import sanoKawasakiV681 from './adapters/sano-kawasaki-v681.js';
 import masaokaV650 from './adapters/masaoka-v650.js';
 
 const ADAPTER_MODULES = [
@@ -1173,6 +1174,7 @@ const ADAPTER_MODULES = [
   ['meld3-v678', meld3V678],
   ['gerdq-v679', gerdqV679],
   ['kobayashi-kawasaki-v680', kobayashiKawasakiV680],
+  ['sano-kawasaki-v681', sanoKawasakiV681],
 ];
 
 const HERE = dirname(fileURLToPath(import.meta.url));

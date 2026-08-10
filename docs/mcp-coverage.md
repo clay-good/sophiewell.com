@@ -7565,6 +7565,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/kobayashi-kawasaki-v680.js (spec-v680: Kobayashi IVIG-resistance score — clinical disclaimer)
 - `kobayashi-kawasaki`
 
+### lib/sano-kawasaki-v681.js (spec-v681: Sano IVIG-resistance score — clinical disclaimer)
+- `sano-kawasaki`
+
 ### lib/tox-v86.js
 - `serotonin-toxicity`
 - `salicylate-toxicity`

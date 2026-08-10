@@ -633,6 +633,7 @@ const PROBES = [
   ['meld 3.0 liver disease allocation score albumin sex', ['meld3']],
   ['gerdq reflux questionnaire heartburn regurgitation gerd screen', ['gerdq']],
   ['kobayashi score ivig resistance kawasaki disease prediction', ['kobayashi-kawasaki']],
+  ['sano score ivig resistance kawasaki ast bilirubin crp', ['sano-kawasaki']],
   ['masaoka koga thymoma staging stage', ['masaoka-koga']],
   ['pregnancy dic score erez obstetric', ['erez-dic']],
   ['aeeg amplitude classification neonatal encephalopathy', ['anaqeeb-aeeg']],
