@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `f2a585fa035b82d6`
-Generated: 2026-08-10T01:52:52.293Z
+Build ID: `00a21fa5fbc4d7d3`
+Generated: 2026-08-10T02:37:09.283Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=20.18.1 <21, npm >=10.0.0
@@ -359,7 +359,7 @@ downloads is committed in this repository and is hashed below.
 | `lib/mayo-adpkd-v563.js` | 14849 | `73038b5a9d14c0580a7a19d6027f80e54c4a0b48dae6d5dec96a51d9f61eae3f` |
 | `lib/mccormack-v646.js` | 4125 | `8498079ab8394c03b90998ff4b1de2112042540b2860c69bbbb11acc1159c44f` |
 | `lib/mccormick-v444.js` | 3548 | `226844081eb702e3917925b1fb684495c90fd90d83717106c632f91f09fad0c6` |
-| `lib/mcmahon-rhabdo-v677.js` | 5845 | `afc34f42cc7a218af8f6e43bcbe257176922dbd5323e4046929618cf3a50de57` |
+| `lib/mcmahon-rhabdo-v677.js` | 5811 | `669c95226348ac3b9a9a686586979094d0ff530c608b0a59e9ce719830756290` |
 | `lib/mda-psoriatic-v672.js` | 3497 | `e7c82444dbf39ca9b8e6cac36422ad6d754179545affa74b8779a1469309cc74` |
 | `lib/medication-v4.js` | 18192 | `467f9576c50da696cc56094eb022d0a5ed1e88de0c7618448554ede8067270b0` |
 | `lib/medication-v5.js` | 18863 | `ce81d9f8954abbd412892c13af9936f992239164f26fd2b999eaea7902787ab7` |
