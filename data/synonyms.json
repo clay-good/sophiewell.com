@@ -797,6 +797,8 @@
       "tile": "free-androgen-index", "audience": "clinicians" },
     { "phrases": ["ucsf criteria hcc transplant", "hepatocellular carcinoma transplant eligibility", "expanded milan criteria", "liver transplant tumor size criteria"],
       "tile": "ucsf-hcc", "audience": "clinicians" },
+    { "phrases": ["elemental iron ingested", "iron overdose dose", "iron toxicity mg per kg", "how much elemental iron ingestion"],
+      "tile": "elemental-iron-ingested", "audience": "clinicians" },
     { "phrases": ["masaoka koga staging thymoma", "thymoma stage classification", "thymic tumor staging", "masaoka thymoma stage"],
       "tile": "masaoka-koga", "audience": "clinicians" },
     { "phrases": ["erez dic score", "pregnancy dic score", "obstetric disseminated intravascular coagulation", "pregnancy specific isth dic"],

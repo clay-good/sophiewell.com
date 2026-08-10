@@ -7583,6 +7583,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/ucsf-hcc-v686.js (spec-v686: UCSF criteria for HCC liver transplant — clinical disclaimer)
 - `ucsf-hcc`
 
+### lib/elemental-iron-ingested-v687.js (spec-v687: elemental iron ingested toxic-dose estimator — clinical disclaimer)
+- `elemental-iron-ingested`
+
 ### lib/tox-v86.js
 - `serotonin-toxicity`
 - `salicylate-toxicity`
