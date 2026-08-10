@@ -652,6 +652,7 @@ const PROBES = [
   ['kings score liver fibrosis hepatitis c cirrhosis noninvasive', ['kings-score']],
   ['quick covid severity index qcsi respiratory decompensation', ['qcsi']],
   ['frontal assessment battery fab executive dysfunction dementia', ['fab']],
+  ['malt lymphoma prognostic index ipi marginal zone', ['malt-ipi']],
   ['masaoka koga thymoma staging stage', ['masaoka-koga']],
   ['pregnancy dic score erez obstetric', ['erez-dic']],
   ['aeeg amplitude classification neonatal encephalopathy', ['anaqeeb-aeeg']],

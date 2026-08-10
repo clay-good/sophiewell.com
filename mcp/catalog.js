@@ -612,6 +612,7 @@ import framinghamHfCriteriaV696 from './adapters/framingham-hf-criteria-v696.js'
 import kingsScoreV697 from './adapters/kings-score-v697.js';
 import qcsiV698 from './adapters/qcsi-v698.js';
 import fabV699 from './adapters/fab-v699.js';
+import maltIpiV700 from './adapters/malt-ipi-v700.js';
 import masaokaV650 from './adapters/masaoka-v650.js';
 
 const ADAPTER_MODULES = [
@@ -1211,6 +1212,7 @@ const ADAPTER_MODULES = [
   ['kings-score-v697', kingsScoreV697],
   ['qcsi-v698', qcsiV698],
   ['fab-v699', fabV699],
+  ['malt-ipi-v700', maltIpiV700],
 ];
 
 const HERE = dirname(fileURLToPath(import.meta.url));

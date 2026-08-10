@@ -7619,6 +7619,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/fab-v699.js (spec-v699: Frontal Assessment Battery — clinical disclaimer)
 - `fab`
 
+### lib/malt-ipi-v700.js (spec-v700: MALT lymphoma prognostic index — clinical disclaimer)
+- `malt-ipi`
+
 ### lib/cobb-angle-v694.js (spec-v694: Cobb angle scoliosis severity — clinical disclaimer)
 - `cobb-angle`
 
