@@ -801,6 +801,8 @@
       "tile": "elemental-iron-ingested", "audience": "clinicians" },
     { "phrases": ["downton fall risk index", "downton fall score", "elderly fall risk screen", "fall risk medications sensory gait"],
       "tile": "downton-fall-risk", "audience": "clinicians" },
+    { "phrases": ["elderly mobility scale", "ems mobility score", "functional mobility elderly", "mobility assessment discharge elderly"],
+      "tile": "elderly-mobility-scale", "audience": "clinicians" },
     { "phrases": ["masaoka koga staging thymoma", "thymoma stage classification", "thymic tumor staging", "masaoka thymoma stage"],
       "tile": "masaoka-koga", "audience": "clinicians" },
     { "phrases": ["erez dic score", "pregnancy dic score", "obstetric disseminated intravascular coagulation", "pregnancy specific isth dic"],

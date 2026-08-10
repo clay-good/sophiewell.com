@@ -601,6 +601,7 @@ import freeAndrogenIndexV685 from './adapters/free-androgen-index-v685.js';
 import ucsfHccV686 from './adapters/ucsf-hcc-v686.js';
 import elementalIronIngestedV687 from './adapters/elemental-iron-ingested-v687.js';
 import downtonFallRiskV688 from './adapters/downton-fall-risk-v688.js';
+import elderlyMobilityScaleV689 from './adapters/elderly-mobility-scale-v689.js';
 import masaokaV650 from './adapters/masaoka-v650.js';
 
 const ADAPTER_MODULES = [
@@ -1189,6 +1190,7 @@ const ADAPTER_MODULES = [
   ['ucsf-hcc-v686', ucsfHccV686],
   ['elemental-iron-ingested-v687', elementalIronIngestedV687],
   ['downton-fall-risk-v688', downtonFallRiskV688],
+  ['elderly-mobility-scale-v689', elderlyMobilityScaleV689],
 ];
 
 const HERE = dirname(fileURLToPath(import.meta.url));

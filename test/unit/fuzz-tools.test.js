@@ -583,6 +583,7 @@ import * as freeAndrogenIndexV685 from '../../lib/free-androgen-index-v685.js';
 import * as ucsfHccV686 from '../../lib/ucsf-hcc-v686.js';
 import * as elementalIronIngestedV687 from '../../lib/elemental-iron-ingested-v687.js';
 import * as downtonFallRiskV688 from '../../lib/downton-fall-risk-v688.js';
+import * as elderlyMobilityScaleV689 from '../../lib/elderly-mobility-scale-v689.js';
 import * as masaokaV650 from '../../lib/masaoka-v650.js';
 import * as erezDicV559 from '../../lib/erez-dic-v559.js';
 import * as anaqeebAeegV560 from '../../lib/anaqeeb-aeeg-v560.js';
@@ -1172,6 +1173,7 @@ const MODULES = {
   'ucsf-hcc-v686.js': ucsfHccV686,
   'elemental-iron-ingested-v687.js': elementalIronIngestedV687,
   'downton-fall-risk-v688.js': downtonFallRiskV688,
+  'elderly-mobility-scale-v689.js': elderlyMobilityScaleV689,
   'masaoka-v650.js': masaokaV650,
   'erez-dic-v559.js': erezDicV559,
   'anaqeeb-aeeg-v560.js': anaqeebAeegV560,

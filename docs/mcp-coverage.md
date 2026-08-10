@@ -7589,6 +7589,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/downton-fall-risk-v688.js (spec-v688: Downton Fall Risk Index — clinical disclaimer)
 - `downton-fall-risk`
 
+### lib/elderly-mobility-scale-v689.js (spec-v689: Elderly Mobility Scale — clinical disclaimer)
+- `elderly-mobility-scale`
+
 ### lib/tox-v86.js
 - `serotonin-toxicity`
 - `salicylate-toxicity`
