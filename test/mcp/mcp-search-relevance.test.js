@@ -659,6 +659,7 @@ const PROBES = [
   ['caton deschamps index patella alta baja height', ['caton-deschamps']],
   ['pi ll mismatch spinopelvic sagittal alignment lordosis', ['pi-ll-mismatch']],
   ['leeds enthesitis index psoriatic arthritis tender', ['leeds-enthesitis-index']],
+  ['amsler krumeich keratoconus staging classification', ['amsler-krumeich']],
   ['masaoka koga thymoma staging stage', ['masaoka-koga']],
   ['pregnancy dic score erez obstetric', ['erez-dic']],
   ['aeeg amplitude classification neonatal encephalopathy', ['anaqeeb-aeeg']],

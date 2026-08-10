@@ -619,6 +619,7 @@ import reimersMigrationPercentageV703 from './adapters/reimers-migration-percent
 import catonDeschampsV704 from './adapters/caton-deschamps-v704.js';
 import piLlMismatchV705 from './adapters/pi-ll-mismatch-v705.js';
 import leedsEnthesitisIndexV706 from './adapters/leeds-enthesitis-index-v706.js';
+import amslerKrumeichV707 from './adapters/amsler-krumeich-v707.js';
 import masaokaV650 from './adapters/masaoka-v650.js';
 
 const ADAPTER_MODULES = [
@@ -1225,6 +1226,7 @@ const ADAPTER_MODULES = [
   ['caton-deschamps-v704', catonDeschampsV704],
   ['pi-ll-mismatch-v705', piLlMismatchV705],
   ['leeds-enthesitis-index-v706', leedsEnthesitisIndexV706],
+  ['amsler-krumeich-v707', amslerKrumeichV707],
 ];
 
 const HERE = dirname(fileURLToPath(import.meta.url));
