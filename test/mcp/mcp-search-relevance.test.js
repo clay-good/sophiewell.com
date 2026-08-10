@@ -642,6 +642,7 @@ const PROBES = [
   ['elemental iron ingested overdose toxic dose mg per kg tablets', ['elemental-iron-ingested']],
   ['downton fall risk index elderly falls screen medications', ['downton-fall-risk']],
   ['elderly mobility scale ems functional mobility rehabilitation', ['elderly-mobility-scale']],
+  ['edmonton frail scale efs frailty screen older adults', ['edmonton-frail-scale']],
   ['masaoka koga thymoma staging stage', ['masaoka-koga']],
   ['pregnancy dic score erez obstetric', ['erez-dic']],
   ['aeeg amplitude classification neonatal encephalopathy', ['anaqeeb-aeeg']],

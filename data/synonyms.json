@@ -803,6 +803,8 @@
       "tile": "downton-fall-risk", "audience": "clinicians" },
     { "phrases": ["elderly mobility scale", "ems mobility score", "functional mobility elderly", "mobility assessment discharge elderly"],
       "tile": "elderly-mobility-scale", "audience": "clinicians" },
+    { "phrases": ["edmonton frail scale", "efs frailty", "frailty screen nine domains", "edmonton frailty score"],
+      "tile": "edmonton-frail-scale", "audience": "clinicians" },
     { "phrases": ["masaoka koga staging thymoma", "thymoma stage classification", "thymic tumor staging", "masaoka thymoma stage"],
       "tile": "masaoka-koga", "audience": "clinicians" },
     { "phrases": ["erez dic score", "pregnancy dic score", "obstetric disseminated intravascular coagulation", "pregnancy specific isth dic"],
