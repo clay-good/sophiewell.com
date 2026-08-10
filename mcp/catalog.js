@@ -600,6 +600,7 @@ import fractionalExcretionPotassiumV684 from './adapters/fractional-excretion-po
 import freeAndrogenIndexV685 from './adapters/free-androgen-index-v685.js';
 import ucsfHccV686 from './adapters/ucsf-hcc-v686.js';
 import elementalIronIngestedV687 from './adapters/elemental-iron-ingested-v687.js';
+import downtonFallRiskV688 from './adapters/downton-fall-risk-v688.js';
 import masaokaV650 from './adapters/masaoka-v650.js';
 
 const ADAPTER_MODULES = [
@@ -1187,6 +1188,7 @@ const ADAPTER_MODULES = [
   ['free-androgen-index-v685', freeAndrogenIndexV685],
   ['ucsf-hcc-v686', ucsfHccV686],
   ['elemental-iron-ingested-v687', elementalIronIngestedV687],
+  ['downton-fall-risk-v688', downtonFallRiskV688],
 ];
 
 const HERE = dirname(fileURLToPath(import.meta.url));

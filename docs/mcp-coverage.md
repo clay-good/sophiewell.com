@@ -7586,6 +7586,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/elemental-iron-ingested-v687.js (spec-v687: elemental iron ingested toxic-dose estimator — clinical disclaimer)
 - `elemental-iron-ingested`
 
+### lib/downton-fall-risk-v688.js (spec-v688: Downton Fall Risk Index — clinical disclaimer)
+- `downton-fall-risk`
+
 ### lib/tox-v86.js
 - `serotonin-toxicity`
 - `salicylate-toxicity`

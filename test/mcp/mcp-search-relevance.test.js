@@ -640,6 +640,7 @@ const PROBES = [
   ['free androgen index fai testosterone shbg pcos hirsutism', ['free-androgen-index']],
   ['ucsf criteria hcc liver transplant eligibility', ['ucsf-hcc']],
   ['elemental iron ingested overdose toxic dose mg per kg tablets', ['elemental-iron-ingested']],
+  ['downton fall risk index elderly falls screen medications', ['downton-fall-risk']],
   ['masaoka koga thymoma staging stage', ['masaoka-koga']],
   ['pregnancy dic score erez obstetric', ['erez-dic']],
   ['aeeg amplitude classification neonatal encephalopathy', ['anaqeeb-aeeg']],
