@@ -7598,6 +7598,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/posas-observer-scar-v691.js (spec-v691: POSAS Observer Scale — clinical disclaimer)
 - `posas-observer-scar`
 
+### lib/conley-fall-risk-v692.js (spec-v692: Conley Fall Risk Scale — clinical disclaimer)
+- `conley-fall-risk`
+
 ### lib/tox-v86.js
 - `serotonin-toxicity`
 - `salicylate-toxicity`

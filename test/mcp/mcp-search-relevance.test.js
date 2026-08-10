@@ -644,6 +644,7 @@ const PROBES = [
   ['elderly mobility scale ems functional mobility rehabilitation', ['elderly-mobility-scale']],
   ['edmonton frail scale efs frailty screen older adults', ['edmonton-frail-scale']],
   ['posas observer scar assessment scale vascularity pigmentation', ['posas-observer-scar']],
+  ['conley fall risk scale nursing inpatient falls dizziness', ['conley-fall-risk']],
   ['masaoka koga thymoma staging stage', ['masaoka-koga']],
   ['pregnancy dic score erez obstetric', ['erez-dic']],
   ['aeeg amplitude classification neonatal encephalopathy', ['anaqeeb-aeeg']],
