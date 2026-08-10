@@ -7613,6 +7613,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/kings-score-v697.js (spec-v697: King's Score liver fibrosis (HCV) — clinical disclaimer)
 - `kings-score`
 
+### lib/qcsi-v698.js (spec-v698: Quick COVID-19 Severity Index — clinical disclaimer)
+- `qcsi`
+
 ### lib/cobb-angle-v694.js (spec-v694: Cobb angle scoliosis severity — clinical disclaimer)
 - `cobb-angle`
 

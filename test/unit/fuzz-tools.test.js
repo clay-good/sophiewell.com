@@ -592,6 +592,7 @@ import * as cobbAngleV694 from '../../lib/cobb-angle-v694.js';
 import * as manningIbsV695 from '../../lib/manning-ibs-v695.js';
 import * as framinghamHfCriteriaV696 from '../../lib/framingham-hf-criteria-v696.js';
 import * as kingsScoreV697 from '../../lib/kings-score-v697.js';
+import * as qcsiV698 from '../../lib/qcsi-v698.js';
 import * as masaokaV650 from '../../lib/masaoka-v650.js';
 import * as erezDicV559 from '../../lib/erez-dic-v559.js';
 import * as anaqeebAeegV560 from '../../lib/anaqeeb-aeeg-v560.js';
@@ -1190,6 +1191,7 @@ const MODULES = {
   'manning-ibs-v695.js': manningIbsV695,
   'framingham-hf-criteria-v696.js': framinghamHfCriteriaV696,
   'kings-score-v697.js': kingsScoreV697,
+  'qcsi-v698.js': qcsiV698,
   'masaoka-v650.js': masaokaV650,
   'erez-dic-v559.js': erezDicV559,
   'anaqeeb-aeeg-v560.js': anaqeebAeegV560,
