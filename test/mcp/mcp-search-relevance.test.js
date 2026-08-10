@@ -648,6 +648,7 @@ const PROBES = [
   ['interchest chest pain coronary artery disease primary care rule', ['interchest']],
   ['cobb angle scoliosis curve severity degrees', ['cobb-angle']],
   ['manning criteria irritable bowel syndrome ibs symptom', ['manning-ibs']],
+  ['framingham criteria heart failure diagnosis major minor', ['framingham-hf-criteria']],
   ['masaoka koga thymoma staging stage', ['masaoka-koga']],
   ['pregnancy dic score erez obstetric', ['erez-dic']],
   ['aeeg amplitude classification neonatal encephalopathy', ['anaqeeb-aeeg']],

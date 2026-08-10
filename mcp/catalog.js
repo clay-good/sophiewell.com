@@ -608,6 +608,7 @@ import conleyFallRiskV692 from './adapters/conley-fall-risk-v692.js';
 import interchestV693 from './adapters/interchest-v693.js';
 import cobbAngleV694 from './adapters/cobb-angle-v694.js';
 import manningIbsV695 from './adapters/manning-ibs-v695.js';
+import framinghamHfCriteriaV696 from './adapters/framingham-hf-criteria-v696.js';
 import masaokaV650 from './adapters/masaoka-v650.js';
 
 const ADAPTER_MODULES = [
@@ -1203,6 +1204,7 @@ const ADAPTER_MODULES = [
   ['interchest-v693', interchestV693],
   ['cobb-angle-v694', cobbAngleV694],
   ['manning-ibs-v695', manningIbsV695],
+  ['framingham-hf-criteria-v696', framinghamHfCriteriaV696],
 ];
 
 const HERE = dirname(fileURLToPath(import.meta.url));

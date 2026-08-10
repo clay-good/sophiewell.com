@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `3ab1f77842a5a8a4`
-Generated: 2026-08-10T13:35:07.801Z
+Build ID: `53ba75d572df2bf2`
+Generated: 2026-08-10T13:40:59.347Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=20.18.1 <21, npm >=10.0.0
@@ -24,13 +24,13 @@ downloads is committed in this repository and is hashed below.
 
 | Path | Bytes | SHA-256 |
 |---|---:|---|
-| `index.html` | 99681 | `458f5c25c41e3720d244e864dfa6edb30cecaacdddd95352dec895f85dba65aa` |
+| `index.html` | 99735 | `576f71df236430758564cf8f5276ce6b0c1cbf0eba6055343967dffbee00d9ba` |
 | `styles.css` | 44160 | `a2cc7ad7bae9f7cfc9681d80bc6bd4a58f0b07d47bfcff64897dc04929c12333` |
-| `app.js` | 410548 | `15f4d910d0f901759ac821ee1f531d75e36a35255adad80bd48bf64df37d6ce5` |
+| `app.js` | 410770 | `f20b42929eb08938bd3be321a4069a41298095f8e05742e172adb001344babc9` |
 | `sw.js` | 4622 | `b891d4344f8e04403b7f1d307fd446cc224bddc6f0c4397438a17d197351171e` |
 | `site.webmanifest` | 709 | `0e0de4da60590a12e8b27a0ae2a2f5ffdb6500b7d2b78f93631ec2f64ed3d5ce` |
 | `robots.txt` | 127 | `38fbf9c1854e72abb20e01e81dd5a31d4ea96f154c12d5db1ec3af05524dd1a1` |
-| `sitemap.xml` | 234083 | `6c585d778c6b11deee22eaa831029b440a92ffc27aec372788dfa67df4969582` |
+| `sitemap.xml` | 234245 | `de04178805a3672d6e51166c7fb7cf90bd0f2d090eb2779688ede6731d8b47d6` |
 | `_headers` | 1316 | `2f39986457d2feff7e73e491a7d09ee871e8f2f4cc2bc437f86bd86a42554ec6` |
 | `logo.png` | 63440 | `11afaf1b0d3ca68393d202e4810bf766b5b6d591b4e3ec52f41d3cacaa4616ec` |
 | `favicon.ico` | 7411 | `407fde0ca2788409e87e11f596fa02e6a0b121817fcea7fd995beec1801e287b` |
@@ -223,6 +223,7 @@ downloads is committed in this repository and is hashed below.
 | `lib/forrester-hemodynamic-v362.js` | 4397 | `bf6305d1edd78604613331955b7bb42551ebe6d66163f3002418e27e299e95e7` |
 | `lib/fractional-excretion-potassium-v684.js` | 3991 | `d612785582053f0e82d3388c1ca33c03ae720876ee7a4d50b5751446eb1d037b` |
 | `lib/frailty-v143.js` | 13623 | `9f4c0b7c18818add0a8c6121070a3f2abea6975e56983ff8eddad0b5d6ca124f` |
+| `lib/framingham-hf-criteria-v696.js` | 3460 | `9cf5ed21279852b01d23af1b708415f9864f9c55849838494def664ddef364c7` |
 | `lib/free-androgen-index-v685.js` | 4005 | `8a762bd39f2d0e793a47ad8018c659d592e9a6ea85378e37b90a33fac79e67e2` |
 | `lib/fried-frailty-v611.js` | 10071 | `2cb6da11ef4fddb37c68abe5d417696c7781fc664c51a2dfc8b74f1f93f56637` |
 | `lib/friedman-tongue-v420.js` | 3518 | `c574d8d5e0ca6379f778f0e95b33072e9c60f5d429de1af6747de1e4f59c0e60` |
@@ -378,7 +379,7 @@ downloads is committed in this repository and is hashed below.
 | `lib/medication-v5.js` | 18863 | `ce81d9f8954abbd412892c13af9936f992239164f26fd2b999eaea7902787ab7` |
 | `lib/meld3-v678.js` | 5664 | `7bda4af7c9412eae41162d0cdd6b977cbc9a6f9b8a7bc40fe350f861e989444c` |
 | `lib/mest-c-v528.js` | 9310 | `e33f178c339338f62c47b6a19d50d345d38be3b05d9a33e7d2703e0a99ae3a69` |
-| `lib/meta.js` | 2111179 | `62c6c3310bab69be111387b33c44bc3f7894c9f62d1be40216830f3831f6e760` |
+| `lib/meta.js` | 2112421 | `b0398c5582633af4e0609cb8155c79d96560d44206c35bf43e4b1ed99081fee4` |
 | `lib/metabolic-hepatic-v219.js` | 12791 | `b9352877cebf7fbf3c3b99ecb8b72cdbee3ed94e056dc019113668609f5a95a8` |
 | `lib/metabolic-onc-v88.js` | 12659 | `1553b641668c121661a66647da71a4aaaa023e9f3a6b7a753efbcdab27cdba81` |
 | `lib/metabolic-v269.js` | 3262 | `0c7a42557886f2b0aeee7949b8d0bd682d795d4526174fd540717a978d94ec2f` |
@@ -1256,6 +1257,7 @@ downloads is committed in this repository and is hashed below.
 | `views/group-v693.js` | 4338 | `b5a70535da5029cdc61e09401e058c772c1ed56f8729c83e22f7a095767a8fdd` |
 | `views/group-v694.js` | 2810 | `e567bf1e16031683c38e77d65c88b8542dd66dbf6b167d2189fbf154472bf122` |
 | `views/group-v695.js` | 3472 | `c2ceadbd9b7ab2bdf67583086f7d14ed8728ae1ebb884658eee81469a2850d44` |
+| `views/group-v696.js` | 4414 | `f6fd10c576ac681e6f9f055005d09e06efe3b05189a2d5402f56506b7b2e59e9` |
 | `views/group-v7.js` | 15113 | `d480a5b34adfd035507dd4313e12462c47c949aeee155b253c8a2f9596839d05` |
 | `views/group-v8.js` | 20546 | `5e6ebaa807abb0677621321175906ec60531116c30aa824930ad77bc47ecad6d` |
 | `views/group-v9.js` | 22815 | `66b61a3aa7fc5d8e0eb324392f546ff29c8bc88af80c0a418879f887737e5e1a` |
