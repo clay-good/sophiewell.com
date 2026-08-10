@@ -791,6 +791,8 @@
       "tile": "wang-bronchiolitis", "audience": "clinicians" },
     { "phrases": ["effective osmolality", "serum tonicity", "effective serum osmolarity", "tonicity calculation hhs"],
       "tile": "effective-osmolality", "audience": "clinicians" },
+    { "phrases": ["fractional excretion of potassium", "fek calculation", "renal potassium wasting", "fractional excretion potassium hypokalemia"],
+      "tile": "fractional-excretion-potassium", "audience": "clinicians" },
     { "phrases": ["masaoka koga staging thymoma", "thymoma stage classification", "thymic tumor staging", "masaoka thymoma stage"],
       "tile": "masaoka-koga", "audience": "clinicians" },
     { "phrases": ["erez dic score", "pregnancy dic score", "obstetric disseminated intravascular coagulation", "pregnancy specific isth dic"],

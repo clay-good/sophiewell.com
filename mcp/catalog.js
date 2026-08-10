@@ -596,6 +596,7 @@ import kobayashiKawasakiV680 from './adapters/kobayashi-kawasaki-v680.js';
 import sanoKawasakiV681 from './adapters/sano-kawasaki-v681.js';
 import wangBronchiolitisV682 from './adapters/wang-bronchiolitis-v682.js';
 import effectiveOsmolalityV683 from './adapters/effective-osmolality-v683.js';
+import fractionalExcretionPotassiumV684 from './adapters/fractional-excretion-potassium-v684.js';
 import masaokaV650 from './adapters/masaoka-v650.js';
 
 const ADAPTER_MODULES = [
@@ -1179,6 +1180,7 @@ const ADAPTER_MODULES = [
   ['sano-kawasaki-v681', sanoKawasakiV681],
   ['wang-bronchiolitis-v682', wangBronchiolitisV682],
   ['effective-osmolality-v683', effectiveOsmolalityV683],
+  ['fractional-excretion-potassium-v684', fractionalExcretionPotassiumV684],
 ];
 
 const HERE = dirname(fileURLToPath(import.meta.url));

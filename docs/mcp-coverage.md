@@ -7574,6 +7574,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/effective-osmolality-v683.js (spec-v683: effective serum osmolality / tonicity — clinical disclaimer)
 - `effective-osmolality`
 
+### lib/fractional-excretion-potassium-v684.js (spec-v684: fractional excretion of potassium — clinical disclaimer)
+- `fractional-excretion-potassium`
+
 ### lib/tox-v86.js
 - `serotonin-toxicity`
 - `salicylate-toxicity`

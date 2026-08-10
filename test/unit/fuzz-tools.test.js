@@ -578,6 +578,7 @@ import * as kobayashiKawasakiV680 from '../../lib/kobayashi-kawasaki-v680.js';
 import * as sanoKawasakiV681 from '../../lib/sano-kawasaki-v681.js';
 import * as wangBronchiolitisV682 from '../../lib/wang-bronchiolitis-v682.js';
 import * as effectiveOsmolalityV683 from '../../lib/effective-osmolality-v683.js';
+import * as fractionalExcretionPotassiumV684 from '../../lib/fractional-excretion-potassium-v684.js';
 import * as masaokaV650 from '../../lib/masaoka-v650.js';
 import * as erezDicV559 from '../../lib/erez-dic-v559.js';
 import * as anaqeebAeegV560 from '../../lib/anaqeeb-aeeg-v560.js';
@@ -1162,6 +1163,7 @@ const MODULES = {
   'sano-kawasaki-v681.js': sanoKawasakiV681,
   'wang-bronchiolitis-v682.js': wangBronchiolitisV682,
   'effective-osmolality-v683.js': effectiveOsmolalityV683,
+  'fractional-excretion-potassium-v684.js': fractionalExcretionPotassiumV684,
   'masaoka-v650.js': masaokaV650,
   'erez-dic-v559.js': erezDicV559,
   'anaqeeb-aeeg-v560.js': anaqeebAeegV560,
