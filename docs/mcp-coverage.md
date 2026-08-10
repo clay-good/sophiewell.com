@@ -7634,6 +7634,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/caton-deschamps-v704.js (spec-v704: Caton-Deschamps patellar-height index — clinical disclaimer)
 - `caton-deschamps`
 
+### lib/pi-ll-mismatch-v705.js (spec-v705: PI-LL spinopelvic mismatch — clinical disclaimer)
+- `pi-ll-mismatch`
+
 ### lib/cobb-angle-v694.js (spec-v694: Cobb angle scoliosis severity — clinical disclaimer)
 - `cobb-angle`
 
