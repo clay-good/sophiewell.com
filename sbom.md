@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `c3ed5174fb1a0bf7`
-Generated: 2026-08-10T20:20:29.790Z
+Build ID: `1d5de6193b09b52a`
+Generated: 2026-08-10T20:25:43.135Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=20.18.1 <21, npm >=10.0.0
@@ -24,13 +24,13 @@ downloads is committed in this repository and is hashed below.
 
 | Path | Bytes | SHA-256 |
 |---|---:|---|
-| `index.html` | 100200 | `34f72b4c9cddf6e89751164f64043a433617925cfde5a65da780e9d6e9bf8bf2` |
+| `index.html` | 100244 | `732107e59305738ec286edfaa637dd1337947871820cfca9a0241f591dcb6ab2` |
 | `styles.css` | 44160 | `a2cc7ad7bae9f7cfc9681d80bc6bd4a58f0b07d47bfcff64897dc04929c12333` |
-| `app.js` | 412665 | `04102014c031e68528c7374e20405ad25ba08548afc3b8d101ebf495d9554ed4` |
+| `app.js` | 412877 | `3e8822202041847e81ccc54cd71b2d2a0061ca58ccef36d0a451b9f5a7712385` |
 | `sw.js` | 4622 | `b891d4344f8e04403b7f1d307fd446cc224bddc6f0c4397438a17d197351171e` |
 | `site.webmanifest` | 709 | `0e0de4da60590a12e8b27a0ae2a2f5ffdb6500b7d2b78f93631ec2f64ed3d5ce` |
 | `robots.txt` | 127 | `38fbf9c1854e72abb20e01e81dd5a31d4ea96f154c12d5db1ec3af05524dd1a1` |
-| `sitemap.xml` | 235621 | `17f86b8e709571679c652cf805059f76e5107b1a68bcfc8be04e0b734fab9f4d` |
+| `sitemap.xml` | 235783 | `0bd059d742731028d63a593d68e95397a2367ab8a751f4ddb80052f044b955f5` |
 | `_headers` | 1316 | `2f39986457d2feff7e73e491a7d09ee871e8f2f4cc2bc437f86bd86a42554ec6` |
 | `logo.png` | 63440 | `11afaf1b0d3ca68393d202e4810bf766b5b6d591b4e3ec52f41d3cacaa4616ec` |
 | `favicon.ico` | 7411 | `407fde0ca2788409e87e11f596fa02e6a0b121817fcea7fd995beec1801e287b` |
@@ -339,6 +339,7 @@ downloads is committed in this repository and is hashed below.
 | `lib/lauren-gastric-v393.js` | 3670 | `e6d981ac3e9e76c9458ce5b225d8ef8a91266ca87c3c3fc7952ef9ac56b02f41` |
 | `lib/le-fort-v406.js` | 3871 | `22519f726d0904118436f0cd34d665878a1f63e2cb7240eef374f631b4050654` |
 | `lib/leddy-packer-v456.js` | 3483 | `28e7739172e81201d43e89616cbbd383e8584d101a7d1375c44e4b6207836793` |
+| `lib/leeds-enthesitis-index-v706.js` | 3052 | `59512421e4f89f211115d4a7a866b3f6d13ee272e75975cc817e0f9cb5123ca9` |
 | `lib/lepine-v596.js` | 11457 | `fdef3da0cbcaf433af572e8b26744d0ca7235c22811a8d44e31ebda325ea934f` |
 | `lib/letournel-acetabulum-v466.js` | 5574 | `689cf7aaae5d4dc8c93260f73203ea0f3c96cea278fc61f8fc822f9418000c87` |
 | `lib/levine-edwards-v411.js` | 4146 | `5b8fad3241eb0819b4f66f2a3229cf0a7b2ae1452ca8ed9a928ae81e7f8514e8` |
@@ -384,7 +385,7 @@ downloads is committed in this repository and is hashed below.
 | `lib/medication-v5.js` | 18863 | `ce81d9f8954abbd412892c13af9936f992239164f26fd2b999eaea7902787ab7` |
 | `lib/meld3-v678.js` | 5664 | `7bda4af7c9412eae41162d0cdd6b977cbc9a6f9b8a7bc40fe350f861e989444c` |
 | `lib/mest-c-v528.js` | 9310 | `e33f178c339338f62c47b6a19d50d345d38be3b05d9a33e7d2703e0a99ae3a69` |
-| `lib/meta.js` | 2122395 | `44832efe935ea598eaa50d28b9f56cbe47ffaac558f4b11acbfad37d61205098` |
+| `lib/meta.js` | 2123520 | `a9414510acca176663241176da58df92e43c046b1476f07ae1374b1cf9cf54b3` |
 | `lib/metabolic-hepatic-v219.js` | 12791 | `b9352877cebf7fbf3c3b99ecb8b72cdbee3ed94e056dc019113668609f5a95a8` |
 | `lib/metabolic-onc-v88.js` | 12659 | `1553b641668c121661a66647da71a4aaaa023e9f3a6b7a753efbcdab27cdba81` |
 | `lib/metabolic-v269.js` | 3262 | `0c7a42557886f2b0aeee7949b8d0bd682d795d4526174fd540717a978d94ec2f` |
@@ -1277,6 +1278,7 @@ downloads is committed in this repository and is hashed below.
 | `views/group-v703.js` | 2826 | `420301c87b2cdfbacc0ca77aad3d6febb36ff4dca0bf53a7c41709df86c4c65d` |
 | `views/group-v704.js` | 2725 | `10abba8d2b8ddb8c010eb6665a705aeb9a070fd1a8e655c4c9e0e238cce9c6c4` |
 | `views/group-v705.js` | 2743 | `922a0967df2a5c33c1bb73c5495acf5afe6f94faecb1d8796e8e0af63b0fc97e` |
+| `views/group-v706.js` | 3307 | `945a126b18fca3524224f24da151856374f64be8e9e505f157c49be0256026c1` |
 | `views/group-v8.js` | 20546 | `5e6ebaa807abb0677621321175906ec60531116c30aa824930ad77bc47ecad6d` |
 | `views/group-v9.js` | 22815 | `66b61a3aa7fc5d8e0eb324392f546ff29c8bc88af80c0a418879f887737e5e1a` |
 | `views/pa-lint.js` | 28680 | `90c4bbb985af80d74f2957de7d11efc33f5a14d21a40ae8ae114ff3313879b88` |

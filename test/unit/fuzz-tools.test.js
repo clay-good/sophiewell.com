@@ -600,6 +600,7 @@ import * as edinburghClaudicationV702 from '../../lib/edinburgh-claudication-v70
 import * as reimersMigrationPercentageV703 from '../../lib/reimers-migration-percentage-v703.js';
 import * as catonDeschampsV704 from '../../lib/caton-deschamps-v704.js';
 import * as piLlMismatchV705 from '../../lib/pi-ll-mismatch-v705.js';
+import * as leedsEnthesitisIndexV706 from '../../lib/leeds-enthesitis-index-v706.js';
 import * as masaokaV650 from '../../lib/masaoka-v650.js';
 import * as erezDicV559 from '../../lib/erez-dic-v559.js';
 import * as anaqeebAeegV560 from '../../lib/anaqeeb-aeeg-v560.js';
@@ -1206,6 +1207,7 @@ const MODULES = {
   'reimers-migration-percentage-v703.js': reimersMigrationPercentageV703,
   'caton-deschamps-v704.js': catonDeschampsV704,
   'pi-ll-mismatch-v705.js': piLlMismatchV705,
+  'leeds-enthesitis-index-v706.js': leedsEnthesitisIndexV706,
   'masaoka-v650.js': masaokaV650,
   'erez-dic-v559.js': erezDicV559,
   'anaqeeb-aeeg-v560.js': anaqeebAeegV560,

@@ -7637,6 +7637,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/pi-ll-mismatch-v705.js (spec-v705: PI-LL spinopelvic mismatch — clinical disclaimer)
 - `pi-ll-mismatch`
 
+### lib/leeds-enthesitis-index-v706.js (spec-v706: Leeds Enthesitis Index — clinical disclaimer)
+- `leeds-enthesitis-index`
+
 ### lib/cobb-angle-v694.js (spec-v694: Cobb angle scoliosis severity — clinical disclaimer)
 - `cobb-angle`
 

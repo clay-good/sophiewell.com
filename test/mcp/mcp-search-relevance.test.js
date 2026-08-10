@@ -658,6 +658,7 @@ const PROBES = [
   ['reimers migration percentage hip cerebral palsy subluxation', ['reimers-migration-percentage']],
   ['caton deschamps index patella alta baja height', ['caton-deschamps']],
   ['pi ll mismatch spinopelvic sagittal alignment lordosis', ['pi-ll-mismatch']],
+  ['leeds enthesitis index psoriatic arthritis tender', ['leeds-enthesitis-index']],
   ['masaoka koga thymoma staging stage', ['masaoka-koga']],
   ['pregnancy dic score erez obstetric', ['erez-dic']],
   ['aeeg amplitude classification neonatal encephalopathy', ['anaqeeb-aeeg']],
