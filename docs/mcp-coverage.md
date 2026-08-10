@@ -7628,6 +7628,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/edinburgh-claudication-v702.js (spec-v702: Edinburgh Claudication Questionnaire — clinical disclaimer)
 - `edinburgh-claudication`
 
+### lib/reimers-migration-percentage-v703.js (spec-v703: Reimers migration percentage — clinical disclaimer)
+- `reimers-migration-percentage`
+
 ### lib/cobb-angle-v694.js (spec-v694: Cobb angle scoliosis severity — clinical disclaimer)
 - `cobb-angle`
 
