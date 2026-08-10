@@ -602,6 +602,7 @@ import * as catonDeschampsV704 from '../../lib/caton-deschamps-v704.js';
 import * as piLlMismatchV705 from '../../lib/pi-ll-mismatch-v705.js';
 import * as leedsEnthesitisIndexV706 from '../../lib/leeds-enthesitis-index-v706.js';
 import * as amslerKrumeichV707 from '../../lib/amsler-krumeich-v707.js';
+import * as meniereAaoHnsV708 from '../../lib/meniere-aao-hns-v708.js';
 import * as masaokaV650 from '../../lib/masaoka-v650.js';
 import * as erezDicV559 from '../../lib/erez-dic-v559.js';
 import * as anaqeebAeegV560 from '../../lib/anaqeeb-aeeg-v560.js';
@@ -1210,6 +1211,7 @@ const MODULES = {
   'pi-ll-mismatch-v705.js': piLlMismatchV705,
   'leeds-enthesitis-index-v706.js': leedsEnthesitisIndexV706,
   'amsler-krumeich-v707.js': amslerKrumeichV707,
+  'meniere-aao-hns-v708.js': meniereAaoHnsV708,
   'masaoka-v650.js': masaokaV650,
   'erez-dic-v559.js': erezDicV559,
   'anaqeeb-aeeg-v560.js': anaqeebAeegV560,

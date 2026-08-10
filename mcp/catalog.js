@@ -620,6 +620,7 @@ import catonDeschampsV704 from './adapters/caton-deschamps-v704.js';
 import piLlMismatchV705 from './adapters/pi-ll-mismatch-v705.js';
 import leedsEnthesitisIndexV706 from './adapters/leeds-enthesitis-index-v706.js';
 import amslerKrumeichV707 from './adapters/amsler-krumeich-v707.js';
+import meniereAaoHnsV708 from './adapters/meniere-aao-hns-v708.js';
 import masaokaV650 from './adapters/masaoka-v650.js';
 
 const ADAPTER_MODULES = [
@@ -1227,6 +1228,7 @@ const ADAPTER_MODULES = [
   ['pi-ll-mismatch-v705', piLlMismatchV705],
   ['leeds-enthesitis-index-v706', leedsEnthesitisIndexV706],
   ['amsler-krumeich-v707', amslerKrumeichV707],
+  ['meniere-aao-hns-v708', meniereAaoHnsV708],
 ];
 
 const HERE = dirname(fileURLToPath(import.meta.url));

@@ -660,6 +660,7 @@ const PROBES = [
   ['pi ll mismatch spinopelvic sagittal alignment lordosis', ['pi-ll-mismatch']],
   ['leeds enthesitis index psoriatic arthritis tender', ['leeds-enthesitis-index']],
   ['amsler krumeich keratoconus staging classification', ['amsler-krumeich']],
+  ['meniere disease hearing stage aao hns pure tone average', ['meniere-aao-hns']],
   ['masaoka koga thymoma staging stage', ['masaoka-koga']],
   ['pregnancy dic score erez obstetric', ['erez-dic']],
   ['aeeg amplitude classification neonatal encephalopathy', ['anaqeeb-aeeg']],

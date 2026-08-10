@@ -7643,6 +7643,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/amsler-krumeich-v707.js (spec-v707: Amsler-Krumeich keratoconus staging — clinical disclaimer)
 - `amsler-krumeich`
 
+### lib/meniere-aao-hns-v708.js (spec-v708: AAO-HNS Meniere hearing stage — clinical disclaimer)
+- `meniere-aao-hns`
+
 ### lib/cobb-angle-v694.js (spec-v694: Cobb angle scoliosis severity — clinical disclaimer)
 - `cobb-angle`
 
