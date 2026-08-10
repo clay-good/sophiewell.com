@@ -7577,6 +7577,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/fractional-excretion-potassium-v684.js (spec-v684: fractional excretion of potassium — clinical disclaimer)
 - `fractional-excretion-potassium`
 
+### lib/free-androgen-index-v685.js (spec-v685: Free Androgen Index — clinical disclaimer)
+- `free-androgen-index`
+
 ### lib/tox-v86.js
 - `serotonin-toxicity`
 - `salicylate-toxicity`
