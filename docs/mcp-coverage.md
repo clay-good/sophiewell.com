@@ -7622,6 +7622,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/malt-ipi-v700.js (spec-v700: MALT lymphoma prognostic index — clinical disclaimer)
 - `malt-ipi`
 
+### lib/sad-persons-v701.js (spec-v701: SAD PERSONS suicide-risk screen — clinical disclaimer)
+- `sad-persons`
+
 ### lib/cobb-angle-v694.js (spec-v694: Cobb angle scoliosis severity — clinical disclaimer)
 - `cobb-angle`
 

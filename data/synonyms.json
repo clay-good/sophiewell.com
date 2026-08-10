@@ -825,6 +825,8 @@
       "tile": "fab", "audience": "clinicians" },
     { "phrases": ["malt ipi", "malt lymphoma prognostic index", "marginal zone lymphoma prognosis", "malt lymphoma risk score"],
       "tile": "malt-ipi", "audience": "clinicians" },
+    { "phrases": ["sad persons scale", "suicide risk screen sad persons", "sad persons suicide", "suicidality mnemonic screen"],
+      "tile": "sad-persons", "audience": "clinicians" },
     { "phrases": ["masaoka koga staging thymoma", "thymoma stage classification", "thymic tumor staging", "masaoka thymoma stage"],
       "tile": "masaoka-koga", "audience": "clinicians" },
     { "phrases": ["erez dic score", "pregnancy dic score", "obstetric disseminated intravascular coagulation", "pregnancy specific isth dic"],

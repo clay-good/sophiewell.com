@@ -653,6 +653,7 @@ const PROBES = [
   ['quick covid severity index qcsi respiratory decompensation', ['qcsi']],
   ['frontal assessment battery fab executive dysfunction dementia', ['fab']],
   ['malt lymphoma prognostic index ipi marginal zone', ['malt-ipi']],
+  ['sad persons scale suicide risk screen', ['sad-persons']],
   ['masaoka koga thymoma staging stage', ['masaoka-koga']],
   ['pregnancy dic score erez obstetric', ['erez-dic']],
   ['aeeg amplitude classification neonatal encephalopathy', ['anaqeeb-aeeg']],
