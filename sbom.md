@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `12f7f0b9d4359b6d`
-Generated: 2026-08-10T20:10:04.916Z
+Build ID: `e38ed5c6bf553a6e`
+Generated: 2026-08-10T20:15:07.890Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=20.18.1 <21, npm >=10.0.0
@@ -24,13 +24,13 @@ downloads is committed in this repository and is hashed below.
 
 | Path | Bytes | SHA-256 |
 |---|---:|---|
-| `index.html` | 100091 | `3116b6add94654132480f9e3584a47ee3baf73ee0ae773529ecf25d28911a6b0` |
+| `index.html` | 100146 | `2d4f0489cf40bd5324a566dd5d3e168c68eb8b441c126a20dc006735e1fb37a5` |
 | `styles.css` | 44160 | `a2cc7ad7bae9f7cfc9681d80bc6bd4a58f0b07d47bfcff64897dc04929c12333` |
-| `app.js` | 412235 | `b537252f6ecfe48a8c70a27f346c47f424065c4bc072153651f55fea6a973727` |
+| `app.js` | 412451 | `e540cc91d72f274d4dd54b8965c6cb7af4baef50059e5e85c85adbec500c743d` |
 | `sw.js` | 4622 | `b891d4344f8e04403b7f1d307fd446cc224bddc6f0c4397438a17d197351171e` |
 | `site.webmanifest` | 709 | `0e0de4da60590a12e8b27a0ae2a2f5ffdb6500b7d2b78f93631ec2f64ed3d5ce` |
 | `robots.txt` | 127 | `38fbf9c1854e72abb20e01e81dd5a31d4ea96f154c12d5db1ec3af05524dd1a1` |
-| `sitemap.xml` | 235312 | `482d46a51ebd62b3c8068275132db9e9c4dc353d08e717a6a53b83329cdcb815` |
+| `sitemap.xml` | 235467 | `e4f0cb9d07f646b51c9fb94830e6cda1f7b736accc3329d4cdbdf932389a50c1` |
 | `_headers` | 1316 | `2f39986457d2feff7e73e491a7d09ee871e8f2f4cc2bc437f86bd86a42554ec6` |
 | `logo.png` | 63440 | `11afaf1b0d3ca68393d202e4810bf766b5b6d591b4e3ec52f41d3cacaa4616ec` |
 | `favicon.ico` | 7411 | `407fde0ca2788409e87e11f596fa02e6a0b121817fcea7fd995beec1801e287b` |
@@ -113,6 +113,7 @@ downloads is committed in this repository and is hashed below.
 | `lib/cardiometab-v251.js` | 7142 | `5a16570359ceb7c3d5683209868e13ba5fb94335d98088586c787f825a6a4263` |
 | `lib/carpentier-mr-v398.js` | 4463 | `b7d6dbb82a991dc9aa696fed03d7987e822d863a0ddba58babd7ea1f9524eb99` |
 | `lib/cas-ted-v364.js` | 3590 | `bc27df1bb7be048ce48d3b44bd2ff39db1d3dcaff9c061856e48b397531435f5` |
+| `lib/caton-deschamps-v704.js` | 3198 | `92ea65a0a4929ee6af8a772ddaa7eb42a014d8681c33c22314026d26bcf794e7` |
 | `lib/catterall-perthes-v346.js` | 4486 | `63322ecb14b2d99ffe2d6503fcf5c7ff8248f31768b9f6fb830223a43f085340` |
 | `lib/ccs-angina-v319.js` | 4235 | `9e2d5837e6b90988ba4bcb58a58bdc3286a320aa98e72a08590f0a6f927c20bd` |
 | `lib/cdi-severity-v317.js` | 5240 | `ecdbbb59e2933387e5b504f983dccb3eed85fa16e8c9908d10da4464f8a84ef7` |
@@ -383,7 +384,7 @@ downloads is committed in this repository and is hashed below.
 | `lib/medication-v5.js` | 18863 | `ce81d9f8954abbd412892c13af9936f992239164f26fd2b999eaea7902787ab7` |
 | `lib/meld3-v678.js` | 5664 | `7bda4af7c9412eae41162d0cdd6b977cbc9a6f9b8a7bc40fe350f861e989444c` |
 | `lib/mest-c-v528.js` | 9310 | `e33f178c339338f62c47b6a19d50d345d38be3b05d9a33e7d2703e0a99ae3a69` |
-| `lib/meta.js` | 2120330 | `6f0e1eedccfbc61e6e028e9a9352e61676f648f5eb4c1921f2e2bdade4e35d9d` |
+| `lib/meta.js` | 2121342 | `355165b1641b4231a25cdc579c924fa86ade63398ba6bdc52371db9c172bfd5f` |
 | `lib/metabolic-hepatic-v219.js` | 12791 | `b9352877cebf7fbf3c3b99ecb8b72cdbee3ed94e056dc019113668609f5a95a8` |
 | `lib/metabolic-onc-v88.js` | 12659 | `1553b641668c121661a66647da71a4aaaa023e9f3a6b7a753efbcdab27cdba81` |
 | `lib/metabolic-v269.js` | 3262 | `0c7a42557886f2b0aeee7949b8d0bd682d795d4526174fd540717a978d94ec2f` |
@@ -1273,6 +1274,7 @@ downloads is committed in this repository and is hashed below.
 | `views/group-v701.js` | 3898 | `3dc1c17c92c4cb7ae46882ae15a87b6249384b9863079b522b7d87e684afd983` |
 | `views/group-v702.js` | 4123 | `7ded58c120043e9596b0dc9e20a27e45ed13982c7f2cd4678d043498233467d5` |
 | `views/group-v703.js` | 2826 | `420301c87b2cdfbacc0ca77aad3d6febb36ff4dca0bf53a7c41709df86c4c65d` |
+| `views/group-v704.js` | 2725 | `10abba8d2b8ddb8c010eb6665a705aeb9a070fd1a8e655c4c9e0e238cce9c6c4` |
 | `views/group-v8.js` | 20546 | `5e6ebaa807abb0677621321175906ec60531116c30aa824930ad77bc47ecad6d` |
 | `views/group-v9.js` | 22815 | `66b61a3aa7fc5d8e0eb324392f546ff29c8bc88af80c0a418879f887737e5e1a` |
 | `views/pa-lint.js` | 28680 | `90c4bbb985af80d74f2957de7d11efc33f5a14d21a40ae8ae114ff3313879b88` |

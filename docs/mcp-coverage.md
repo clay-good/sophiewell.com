@@ -7631,6 +7631,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/reimers-migration-percentage-v703.js (spec-v703: Reimers migration percentage — clinical disclaimer)
 - `reimers-migration-percentage`
 
+### lib/caton-deschamps-v704.js (spec-v704: Caton-Deschamps patellar-height index — clinical disclaimer)
+- `caton-deschamps`
+
 ### lib/cobb-angle-v694.js (spec-v694: Cobb angle scoliosis severity — clinical disclaimer)
 - `cobb-angle`
 
