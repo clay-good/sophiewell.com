@@ -646,6 +646,7 @@ const PROBES = [
   ['posas observer scar assessment scale vascularity pigmentation', ['posas-observer-scar']],
   ['conley fall risk scale nursing inpatient falls dizziness', ['conley-fall-risk']],
   ['interchest chest pain coronary artery disease primary care rule', ['interchest']],
+  ['cobb angle scoliosis curve severity degrees', ['cobb-angle']],
   ['masaoka koga thymoma staging stage', ['masaoka-koga']],
   ['pregnancy dic score erez obstetric', ['erez-dic']],
   ['aeeg amplitude classification neonatal encephalopathy', ['anaqeeb-aeeg']],
