@@ -817,6 +817,8 @@
       "tile": "manning-ibs", "audience": "clinicians" },
     { "phrases": ["framingham heart failure criteria", "framingham hf diagnosis", "heart failure diagnostic criteria", "major minor criteria heart failure"],
       "tile": "framingham-hf-criteria", "audience": "clinicians" },
+    { "phrases": ["kings score liver fibrosis", "king score cirrhosis hepatitis c", "noninvasive fibrosis index hcv", "kings score fibrosis"],
+      "tile": "kings-score", "audience": "clinicians" },
     { "phrases": ["masaoka koga staging thymoma", "thymoma stage classification", "thymic tumor staging", "masaoka thymoma stage"],
       "tile": "masaoka-koga", "audience": "clinicians" },
     { "phrases": ["erez dic score", "pregnancy dic score", "obstetric disseminated intravascular coagulation", "pregnancy specific isth dic"],

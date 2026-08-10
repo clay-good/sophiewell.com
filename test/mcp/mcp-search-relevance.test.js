@@ -649,6 +649,7 @@ const PROBES = [
   ['cobb angle scoliosis curve severity degrees', ['cobb-angle']],
   ['manning criteria irritable bowel syndrome ibs symptom', ['manning-ibs']],
   ['framingham criteria heart failure diagnosis major minor', ['framingham-hf-criteria']],
+  ['kings score liver fibrosis hepatitis c cirrhosis noninvasive', ['kings-score']],
   ['masaoka koga thymoma staging stage', ['masaoka-koga']],
   ['pregnancy dic score erez obstetric', ['erez-dic']],
   ['aeeg amplitude classification neonatal encephalopathy', ['anaqeeb-aeeg']],

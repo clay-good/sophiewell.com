@@ -7610,6 +7610,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/framingham-hf-criteria-v696.js (spec-v696: Framingham heart-failure criteria — clinical disclaimer)
 - `framingham-hf-criteria`
 
+### lib/kings-score-v697.js (spec-v697: King's Score liver fibrosis (HCV) — clinical disclaimer)
+- `kings-score`
+
 ### lib/cobb-angle-v694.js (spec-v694: Cobb angle scoliosis severity — clinical disclaimer)
 - `cobb-angle`
 
