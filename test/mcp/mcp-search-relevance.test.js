@@ -638,6 +638,7 @@ const PROBES = [
   ['effective serum osmolality tonicity hhs hyperosmolar', ['effective-osmolality']],
   ['fractional excretion of potassium fek renal wasting hypokalemia', ['fractional-excretion-potassium']],
   ['free androgen index fai testosterone shbg pcos hirsutism', ['free-androgen-index']],
+  ['ucsf criteria hcc liver transplant eligibility', ['ucsf-hcc']],
   ['masaoka koga thymoma staging stage', ['masaoka-koga']],
   ['pregnancy dic score erez obstetric', ['erez-dic']],
   ['aeeg amplitude classification neonatal encephalopathy', ['anaqeeb-aeeg']],

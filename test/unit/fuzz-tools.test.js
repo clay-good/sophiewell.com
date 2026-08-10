@@ -580,6 +580,7 @@ import * as wangBronchiolitisV682 from '../../lib/wang-bronchiolitis-v682.js';
 import * as effectiveOsmolalityV683 from '../../lib/effective-osmolality-v683.js';
 import * as fractionalExcretionPotassiumV684 from '../../lib/fractional-excretion-potassium-v684.js';
 import * as freeAndrogenIndexV685 from '../../lib/free-androgen-index-v685.js';
+import * as ucsfHccV686 from '../../lib/ucsf-hcc-v686.js';
 import * as masaokaV650 from '../../lib/masaoka-v650.js';
 import * as erezDicV559 from '../../lib/erez-dic-v559.js';
 import * as anaqeebAeegV560 from '../../lib/anaqeeb-aeeg-v560.js';
@@ -1166,6 +1167,7 @@ const MODULES = {
   'effective-osmolality-v683.js': effectiveOsmolalityV683,
   'fractional-excretion-potassium-v684.js': fractionalExcretionPotassiumV684,
   'free-androgen-index-v685.js': freeAndrogenIndexV685,
+  'ucsf-hcc-v686.js': ucsfHccV686,
   'masaoka-v650.js': masaokaV650,
   'erez-dic-v559.js': erezDicV559,
   'anaqeeb-aeeg-v560.js': anaqeebAeegV560,

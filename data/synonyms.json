@@ -795,6 +795,8 @@
       "tile": "fractional-excretion-potassium", "audience": "clinicians" },
     { "phrases": ["free androgen index", "fai testosterone shbg", "androgen excess index", "testosterone shbg ratio pcos"],
       "tile": "free-androgen-index", "audience": "clinicians" },
+    { "phrases": ["ucsf criteria hcc transplant", "hepatocellular carcinoma transplant eligibility", "expanded milan criteria", "liver transplant tumor size criteria"],
+      "tile": "ucsf-hcc", "audience": "clinicians" },
     { "phrases": ["masaoka koga staging thymoma", "thymoma stage classification", "thymic tumor staging", "masaoka thymoma stage"],
       "tile": "masaoka-koga", "audience": "clinicians" },
     { "phrases": ["erez dic score", "pregnancy dic score", "obstetric disseminated intravascular coagulation", "pregnancy specific isth dic"],

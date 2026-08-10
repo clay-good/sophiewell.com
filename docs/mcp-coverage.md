@@ -7580,6 +7580,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/free-androgen-index-v685.js (spec-v685: Free Androgen Index — clinical disclaimer)
 - `free-androgen-index`
 
+### lib/ucsf-hcc-v686.js (spec-v686: UCSF criteria for HCC liver transplant — clinical disclaimer)
+- `ucsf-hcc`
+
 ### lib/tox-v86.js
 - `serotonin-toxicity`
 - `salicylate-toxicity`

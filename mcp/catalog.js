@@ -598,6 +598,7 @@ import wangBronchiolitisV682 from './adapters/wang-bronchiolitis-v682.js';
 import effectiveOsmolalityV683 from './adapters/effective-osmolality-v683.js';
 import fractionalExcretionPotassiumV684 from './adapters/fractional-excretion-potassium-v684.js';
 import freeAndrogenIndexV685 from './adapters/free-androgen-index-v685.js';
+import ucsfHccV686 from './adapters/ucsf-hcc-v686.js';
 import masaokaV650 from './adapters/masaoka-v650.js';
 
 const ADAPTER_MODULES = [
@@ -1183,6 +1184,7 @@ const ADAPTER_MODULES = [
   ['effective-osmolality-v683', effectiveOsmolalityV683],
   ['fractional-excretion-potassium-v684', fractionalExcretionPotassiumV684],
   ['free-androgen-index-v685', freeAndrogenIndexV685],
+  ['ucsf-hcc-v686', ucsfHccV686],
 ];
 
 const HERE = dirname(fileURLToPath(import.meta.url));
