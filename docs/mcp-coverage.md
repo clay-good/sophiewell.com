@@ -7595,6 +7595,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/edmonton-frail-scale-v690.js (spec-v690: Edmonton Frail Scale — clinical disclaimer)
 - `edmonton-frail-scale`
 
+### lib/posas-observer-scar-v691.js (spec-v691: POSAS Observer Scale — clinical disclaimer)
+- `posas-observer-scar`
+
 ### lib/tox-v86.js
 - `serotonin-toxicity`
 - `salicylate-toxicity`

@@ -805,6 +805,8 @@
       "tile": "elderly-mobility-scale", "audience": "clinicians" },
     { "phrases": ["edmonton frail scale", "efs frailty", "frailty screen nine domains", "edmonton frailty score"],
       "tile": "edmonton-frail-scale", "audience": "clinicians" },
+    { "phrases": ["posas observer scale", "patient observer scar assessment", "scar assessment scale", "posas scar score"],
+      "tile": "posas-observer-scar", "audience": "clinicians" },
     { "phrases": ["masaoka koga staging thymoma", "thymoma stage classification", "thymic tumor staging", "masaoka thymoma stage"],
       "tile": "masaoka-koga", "audience": "clinicians" },
     { "phrases": ["erez dic score", "pregnancy dic score", "obstetric disseminated intravascular coagulation", "pregnancy specific isth dic"],
