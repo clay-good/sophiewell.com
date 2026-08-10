@@ -587,6 +587,7 @@ import * as elderlyMobilityScaleV689 from '../../lib/elderly-mobility-scale-v689
 import * as edmontonFrailScaleV690 from '../../lib/edmonton-frail-scale-v690.js';
 import * as posasObserverScarV691 from '../../lib/posas-observer-scar-v691.js';
 import * as conleyFallRiskV692 from '../../lib/conley-fall-risk-v692.js';
+import * as interchestV693 from '../../lib/interchest-v693.js';
 import * as masaokaV650 from '../../lib/masaoka-v650.js';
 import * as erezDicV559 from '../../lib/erez-dic-v559.js';
 import * as anaqeebAeegV560 from '../../lib/anaqeeb-aeeg-v560.js';
@@ -1180,6 +1181,7 @@ const MODULES = {
   'edmonton-frail-scale-v690.js': edmontonFrailScaleV690,
   'posas-observer-scar-v691.js': posasObserverScarV691,
   'conley-fall-risk-v692.js': conleyFallRiskV692,
+  'interchest-v693.js': interchestV693,
   'masaoka-v650.js': masaokaV650,
   'erez-dic-v559.js': erezDicV559,
   'anaqeeb-aeeg-v560.js': anaqeebAeegV560,

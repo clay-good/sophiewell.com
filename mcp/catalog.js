@@ -605,6 +605,7 @@ import elderlyMobilityScaleV689 from './adapters/elderly-mobility-scale-v689.js'
 import edmontonFrailScaleV690 from './adapters/edmonton-frail-scale-v690.js';
 import posasObserverScarV691 from './adapters/posas-observer-scar-v691.js';
 import conleyFallRiskV692 from './adapters/conley-fall-risk-v692.js';
+import interchestV693 from './adapters/interchest-v693.js';
 import masaokaV650 from './adapters/masaoka-v650.js';
 
 const ADAPTER_MODULES = [
@@ -1197,6 +1198,7 @@ const ADAPTER_MODULES = [
   ['edmonton-frail-scale-v690', edmontonFrailScaleV690],
   ['posas-observer-scar-v691', posasObserverScarV691],
   ['conley-fall-risk-v692', conleyFallRiskV692],
+  ['interchest-v693', interchestV693],
 ];
 
 const HERE = dirname(fileURLToPath(import.meta.url));

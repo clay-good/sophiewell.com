@@ -7601,6 +7601,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/conley-fall-risk-v692.js (spec-v692: Conley Fall Risk Scale — clinical disclaimer)
 - `conley-fall-risk`
 
+### lib/interchest-v693.js (spec-v693: INTERCHEST chest-pain CAD rule — clinical disclaimer)
+- `interchest`
+
 ### lib/tox-v86.js
 - `serotonin-toxicity`
 - `salicylate-toxicity`
