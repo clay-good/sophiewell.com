@@ -7571,6 +7571,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/wang-bronchiolitis-v682.js (spec-v682: Wang Bronchiolitis Respiratory Score — clinical disclaimer)
 - `wang-bronchiolitis`
 
+### lib/effective-osmolality-v683.js (spec-v683: effective serum osmolality / tonicity — clinical disclaimer)
+- `effective-osmolality`
+
 ### lib/tox-v86.js
 - `serotonin-toxicity`
 - `salicylate-toxicity`

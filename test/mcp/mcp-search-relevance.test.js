@@ -635,6 +635,7 @@ const PROBES = [
   ['kobayashi score ivig resistance kawasaki disease prediction', ['kobayashi-kawasaki']],
   ['sano score ivig resistance kawasaki ast bilirubin crp', ['sano-kawasaki']],
   ['wang bronchiolitis respiratory score infant severity wheezing retraction', ['wang-bronchiolitis']],
+  ['effective serum osmolality tonicity hhs hyperosmolar', ['effective-osmolality']],
   ['masaoka koga thymoma staging stage', ['masaoka-koga']],
   ['pregnancy dic score erez obstetric', ['erez-dic']],
   ['aeeg amplitude classification neonatal encephalopathy', ['anaqeeb-aeeg']],
