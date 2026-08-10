@@ -779,6 +779,8 @@
       "tile": "lund-kennedy", "audience": "clinicians" },
     { "phrases": ["mcmahon score rhabdomyolysis", "rhabdomyolysis kidney failure risk", "rhabdo renal replacement prediction", "rhabdomyolysis aki score"],
       "tile": "mcmahon-rhabdo", "audience": "clinicians" },
+    { "phrases": ["meld 3.0 score", "meld 3 liver disease", "updated meld transplant allocation", "meld sodium albumin sex score"],
+      "tile": "meld3", "audience": "clinicians" },
     { "phrases": ["masaoka koga staging thymoma", "thymoma stage classification", "thymic tumor staging", "masaoka thymoma stage"],
       "tile": "masaoka-koga", "audience": "clinicians" },
     { "phrases": ["erez dic score", "pregnancy dic score", "obstetric disseminated intravascular coagulation", "pregnancy specific isth dic"],

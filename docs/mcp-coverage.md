@@ -7556,6 +7556,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/mcmahon-rhabdo-v677.js (spec-v677: McMahon Score for rhabdomyolysis — clinical disclaimer)
 - `mcmahon-rhabdo`
 
+### lib/meld3-v678.js (spec-v678: MELD 3.0 liver-allocation score — clinical disclaimer)
+- `meld3`
+
 ### lib/tox-v86.js
 - `serotonin-toxicity`
 - `salicylate-toxicity`
