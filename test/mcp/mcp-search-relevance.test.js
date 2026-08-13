@@ -673,6 +673,7 @@ const PROBES = [
   ['ellis classification dental tooth fracture trauma', ['ellis-tooth-fracture']],
   ['kennedy classification partially edentulous removable partial denture', ['kennedy-edentulous']],
   ['angle classification malocclusion orthodontic molar', ['angle-malocclusion']],
+  ['plaque control record oleary oral hygiene dental', ['plaque-control-record']],
   ['masaoka koga thymoma staging stage', ['masaoka-koga']],
   ['pregnancy dic score erez obstetric', ['erez-dic']],
   ['aeeg amplitude classification neonatal encephalopathy', ['anaqeeb-aeeg']],

@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `9ef45d9ca468c669`
-Generated: 2026-08-13T15:33:45.328Z
+Build ID: `34852e9c8537c79d`
+Generated: 2026-08-13T15:39:44.819Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=20.18.1 <21, npm >=10.0.0
@@ -24,13 +24,13 @@ downloads is committed in this repository and is hashed below.
 
 | Path | Bytes | SHA-256 |
 |---|---:|---|
-| `index.html` | 100875 | `131f01866325c0d2ccde22a13eb632e089689a42217e2dbf3d2d4ee986b47a15` |
+| `index.html` | 100912 | `708665af98df50b0992156be0ff1bd108f24396d17408ddc6a4726c9ec9fa0b4` |
 | `styles.css` | 44160 | `a2cc7ad7bae9f7cfc9681d80bc6bd4a58f0b07d47bfcff64897dc04929c12333` |
-| `app.js` | 415739 | `6b7305ab6a760d540cd66f85986bab50863a4805670608f544d745cafe50e447` |
+| `app.js` | 415943 | `e7d52526c13054c859976aad38006a0ac7277475630f370daffc3bd405c3545c` |
 | `sw.js` | 4622 | `b891d4344f8e04403b7f1d307fd446cc224bddc6f0c4397438a17d197351171e` |
 | `site.webmanifest` | 709 | `0e0de4da60590a12e8b27a0ae2a2f5ffdb6500b7d2b78f93631ec2f64ed3d5ce` |
 | `robots.txt` | 127 | `38fbf9c1854e72abb20e01e81dd5a31d4ea96f154c12d5db1ec3af05524dd1a1` |
-| `sitemap.xml` | 237930 | `16ea4191c088afaa2c12ba36fe61a5ff5e2cc799be793080df36a8c345819a69` |
+| `sitemap.xml` | 238091 | `d23480f911667e952f52a9314b51a0e3d9bd3da13a91575e9fd8ba414e02302c` |
 | `_headers` | 1316 | `2f39986457d2feff7e73e491a7d09ee871e8f2f4cc2bc437f86bd86a42554ec6` |
 | `logo.png` | 63440 | `11afaf1b0d3ca68393d202e4810bf766b5b6d591b4e3ec52f41d3cacaa4616ec` |
 | `favicon.ico` | 7411 | `407fde0ca2788409e87e11f596fa02e6a0b121817fcea7fd995beec1801e287b` |
@@ -395,7 +395,7 @@ downloads is committed in this repository and is hashed below.
 | `lib/meld3-v678.js` | 5664 | `7bda4af7c9412eae41162d0cdd6b977cbc9a6f9b8a7bc40fe350f861e989444c` |
 | `lib/meniere-aao-hns-v708.js` | 3001 | `f45dee46f6436026012bccf9e494030e1156656847167e212c4b4324d6c24ccd` |
 | `lib/mest-c-v528.js` | 9310 | `e33f178c339338f62c47b6a19d50d345d38be3b05d9a33e7d2703e0a99ae3a69` |
-| `lib/meta.js` | 2138865 | `18cd6e80f41a146be361c0e3dcf740f73cf2fd451eb9550813a2302a33763725` |
+| `lib/meta.js` | 2139834 | `6e0c9be4309f66455eee92f0de44cdf19a019f0bac6f47a8d24b5ef819975e26` |
 | `lib/metabolic-hepatic-v219.js` | 12791 | `b9352877cebf7fbf3c3b99ecb8b72cdbee3ed94e056dc019113668609f5a95a8` |
 | `lib/metabolic-onc-v88.js` | 12659 | `1553b641668c121661a66647da71a4aaaa023e9f3a6b7a753efbcdab27cdba81` |
 | `lib/metabolic-v269.js` | 3262 | `0c7a42557886f2b0aeee7949b8d0bd682d795d4526174fd540717a978d94ec2f` |
@@ -514,6 +514,7 @@ downloads is committed in this repository and is hashed below.
 | `lib/pipp-v517.js` | 6956 | `cfe66a949f8b16e612fa8aecf494cb1d2a5e6aa6b440c4c133e6cc3090dd0ce8` |
 | `lib/pirani-clubfoot-v386.js` | 3487 | `787ccfe1abcbcf66a2a9d8ea1218c443f22882983faccd94d3929dfe1c024da5` |
 | `lib/pk-v166.js` | 7941 | `d1a04680f164c27c391c4b106c1e746113b9b414664c7e36aec12dc465b2ddf9` |
+| `lib/plaque-control-record-v721.js` | 3208 | `3038454a7f6982a21e476538381e1c4e9e526219000cb55512fc86f4a7489f6b` |
 | `lib/pneumonia-risk-v260.js` | 7249 | `029d9c0701f969f39f61031ea2648625c6b5b43b21d5d8c3c8b19f030391add4` |
 | `lib/pollock-flickinger-v601.js` | 14301 | `090a947e629f3a1a22540025d10e2b62ec36d75babf215fed50c65c04b75ca5e` |
 | `lib/posas-observer-scar-v691.js` | 3697 | `dcb2792ef4faae3bbe45ac5e09c3322b3d79bd3f5708adb4443ad2e51df78c23` |
@@ -1307,6 +1308,7 @@ downloads is committed in this repository and is hashed below.
 | `views/group-v718.js` | 2967 | `7955f467d224b782e96ba7eaf5866ad883fd41adefd25df8454b4bbb18b686c2` |
 | `views/group-v719.js` | 3379 | `a4df5024291edbc0be31e9943e8743370050e4dcabeebcf4f8d7ccdebcdfb7d5` |
 | `views/group-v720.js` | 3510 | `1ac147e7952c4119e36c7b6ed1dbe603d2d8b5fa98e6bc8cfd0091899c0ed701` |
+| `views/group-v721.js` | 2764 | `3e9dd7ec6a0d9cf0f1afd4228f36cc6b4ff9cbbd1b8f56d994995aceea19e099` |
 | `views/group-v8.js` | 20546 | `5e6ebaa807abb0677621321175906ec60531116c30aa824930ad77bc47ecad6d` |
 | `views/group-v9.js` | 22815 | `66b61a3aa7fc5d8e0eb324392f546ff29c8bc88af80c0a418879f887737e5e1a` |
 | `views/pa-lint.js` | 28680 | `90c4bbb985af80d74f2957de7d11efc33f5a14d21a40ae8ae114ff3313879b88` |

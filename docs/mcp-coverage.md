@@ -7682,6 +7682,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/angle-malocclusion-v720.js (spec-v720: Angle classification of malocclusion — clinical disclaimer)
 - `angle-malocclusion`
 
+### lib/plaque-control-record-v721.js (spec-v721: Plaque Control Record — clinical disclaimer)
+- `plaque-control-record`
+
 ### lib/cobb-angle-v694.js (spec-v694: Cobb angle scoliosis severity — clinical disclaimer)
 - `cobb-angle`
 
