@@ -683,6 +683,7 @@ const PROBES = [
   ['hearing handicap inventory elderly screening hhie', ['hhie-s']],
   ['abc balance confidence scale fall risk', ['abc-scale']],
   ['severity of dependence scale sds substance', ['sds-dependence']],
+  ['infant breastfeeding assessment tool ibfat feeding', ['ibfat']],
   ['masaoka koga thymoma staging stage', ['masaoka-koga']],
   ['pregnancy dic score erez obstetric', ['erez-dic']],
   ['aeeg amplitude classification neonatal encephalopathy', ['anaqeeb-aeeg']],
