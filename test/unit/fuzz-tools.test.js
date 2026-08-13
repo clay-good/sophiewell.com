@@ -607,6 +607,7 @@ import * as opioidRiskToolV709 from '../../lib/opioid-risk-tool-v709.js';
 import * as g8GeriatricV710 from '../../lib/g8-geriatric-v710.js';
 import * as ausdriskV711 from '../../lib/ausdrisk-v711.js';
 import * as mnaSfV712 from '../../lib/mna-sf-v712.js';
+import * as eossV713 from '../../lib/eoss-v713.js';
 import * as masaokaV650 from '../../lib/masaoka-v650.js';
 import * as erezDicV559 from '../../lib/erez-dic-v559.js';
 import * as anaqeebAeegV560 from '../../lib/anaqeeb-aeeg-v560.js';
@@ -1220,6 +1221,7 @@ const MODULES = {
   'g8-geriatric-v710.js': g8GeriatricV710,
   'ausdrisk-v711.js': ausdriskV711,
   'mna-sf-v712.js': mnaSfV712,
+  'eoss-v713.js': eossV713,
   'masaoka-v650.js': masaokaV650,
   'erez-dic-v559.js': erezDicV559,
   'anaqeeb-aeeg-v560.js': anaqeebAeegV560,

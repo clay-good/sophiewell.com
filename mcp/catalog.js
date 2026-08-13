@@ -625,6 +625,7 @@ import opioidRiskToolV709 from './adapters/opioid-risk-tool-v709.js';
 import g8GeriatricV710 from './adapters/g8-geriatric-v710.js';
 import ausdriskV711 from './adapters/ausdrisk-v711.js';
 import mnaSfV712 from './adapters/mna-sf-v712.js';
+import eossV713 from './adapters/eoss-v713.js';
 import masaokaV650 from './adapters/masaoka-v650.js';
 
 const ADAPTER_MODULES = [
@@ -1237,6 +1238,7 @@ const ADAPTER_MODULES = [
   ['g8-geriatric-v710', g8GeriatricV710],
   ['ausdrisk-v711', ausdriskV711],
   ['mna-sf-v712', mnaSfV712],
+  ['eoss-v713', eossV713],
 ];
 
 const HERE = dirname(fileURLToPath(import.meta.url));

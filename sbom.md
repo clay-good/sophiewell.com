@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `a11d9db034f6dfd6`
-Generated: 2026-08-13T01:37:05.421Z
+Build ID: `9e540b177f7c60dd`
+Generated: 2026-08-13T01:41:33.548Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=20.18.1 <21, npm >=10.0.0
@@ -24,13 +24,13 @@ downloads is committed in this repository and is hashed below.
 
 | Path | Bytes | SHA-256 |
 |---|---:|---|
-| `index.html` | 100517 | `3d3c7553bb2ee670ad4cba5cad4388257cb7123211adeec276bcefa338bb5b18` |
+| `index.html` | 100571 | `8bd0a572557d1680d320c713a0504f4c3acb1f352fe8600ab411f8da2adf316e` |
 | `styles.css` | 44160 | `a2cc7ad7bae9f7cfc9681d80bc6bd4a58f0b07d47bfcff64897dc04929c12333` |
-| `app.js` | 414098 | `81a3411ddda835e228b4c6168b72b5fb224788596da22c077520e12c2384b3e9` |
+| `app.js` | 414302 | `de78549300b03d00e080e05c44a9e30a29b097b6b29026bbdea44c499407e553` |
 | `sw.js` | 4622 | `b891d4344f8e04403b7f1d307fd446cc224bddc6f0c4397438a17d197351171e` |
 | `site.webmanifest` | 709 | `0e0de4da60590a12e8b27a0ae2a2f5ffdb6500b7d2b78f93631ec2f64ed3d5ce` |
 | `robots.txt` | 127 | `38fbf9c1854e72abb20e01e81dd5a31d4ea96f154c12d5db1ec3af05524dd1a1` |
-| `sitemap.xml` | 236695 | `dd1a65ff205dca7427ab22f7e7a63b93309257fc9e4a7b3f11ebb625c9e2f2f5` |
+| `sitemap.xml` | 236839 | `e2c6ba348e86ce77886b65272f6bde6d61c063208a9e6ca3a65f985a954cb80b` |
 | `_headers` | 1316 | `2f39986457d2feff7e73e491a7d09ee871e8f2f4cc2bc437f86bd86a42554ec6` |
 | `logo.png` | 63440 | `11afaf1b0d3ca68393d202e4810bf766b5b6d591b4e3ec52f41d3cacaa4616ec` |
 | `favicon.ico` | 7411 | `407fde0ca2788409e87e11f596fa02e6a0b121817fcea7fd995beec1801e287b` |
@@ -207,6 +207,7 @@ downloads is committed in this repository and is hashed below.
 | `lib/enturopsych-v254.js` | 8040 | `fda74506629d3035d3c24c18a3cf6faf49a5fa79e3807f01d188c73d6720bd83` |
 | `lib/enviro-v111.js` | 14119 | `77ba090d075f4f9fd608f9afc6f30b68fd3612f5c6719addbe75658a7e6a12ae` |
 | `lib/environ-v242.js` | 7645 | `7fc43e83281b5d7ea301bc962322b3c149ff800873d8494971902291de51cd89` |
+| `lib/eoss-v713.js` | 3955 | `150229c936465a637e488f83903837324b8752c7051b42903c784ffbae404441` |
 | `lib/erefs-v618.js` | 11260 | `1150b196683116439fd890c8db58d5a091ca149b10d74ab0df6cc1efb717bd70` |
 | `lib/erez-dic-v559.js` | 12795 | `e29e69649b85654d9ef1b52e5eac56c390734f9b85da044ddc54e1190314270f` |
 | `lib/estimators-v233.js` | 9102 | `163bd6f013cbd5388f0fc7d0953f1e938182d28e2039d3bfb22f1fccc647283a` |
@@ -389,7 +390,7 @@ downloads is committed in this repository and is hashed below.
 | `lib/meld3-v678.js` | 5664 | `7bda4af7c9412eae41162d0cdd6b977cbc9a6f9b8a7bc40fe350f861e989444c` |
 | `lib/meniere-aao-hns-v708.js` | 3001 | `f45dee46f6436026012bccf9e494030e1156656847167e212c4b4324d6c24ccd` |
 | `lib/mest-c-v528.js` | 9310 | `e33f178c339338f62c47b6a19d50d345d38be3b05d9a33e7d2703e0a99ae3a69` |
-| `lib/meta.js` | 2130381 | `6bb4a157aa69ba1792f6cce8375f4231526923984ef2df631b915a309d68cf20` |
+| `lib/meta.js` | 2131471 | `e659f46f7ae27cd91d483f9440d2cc77fa5d56b2fbe8569e1414b458f4841896` |
 | `lib/metabolic-hepatic-v219.js` | 12791 | `b9352877cebf7fbf3c3b99ecb8b72cdbee3ed94e056dc019113668609f5a95a8` |
 | `lib/metabolic-onc-v88.js` | 12659 | `1553b641668c121661a66647da71a4aaaa023e9f3a6b7a753efbcdab27cdba81` |
 | `lib/metabolic-v269.js` | 3262 | `0c7a42557886f2b0aeee7949b8d0bd682d795d4526174fd540717a978d94ec2f` |
@@ -1291,6 +1292,7 @@ downloads is committed in this repository and is hashed below.
 | `views/group-v710.js` | 4401 | `8780eba0807f0af2f9d27ffc126ae7a3cee355e7aa2b26b1704ae2495fc471fd` |
 | `views/group-v711.js` | 5062 | `ff3710ea76711c77922e419890ff903e21e5928141e26dbb7888046748c13e62` |
 | `views/group-v712.js` | 4106 | `9d7802b4e7695c95a3b5a2410c1f09e45a3299f544a0d035df62c521fd016660` |
+| `views/group-v713.js` | 3759 | `c983fdec22aaf09303031ad91e40483409dbdb039cf7cbad604299964350ae08` |
 | `views/group-v8.js` | 20546 | `5e6ebaa807abb0677621321175906ec60531116c30aa824930ad77bc47ecad6d` |
 | `views/group-v9.js` | 22815 | `66b61a3aa7fc5d8e0eb324392f546ff29c8bc88af80c0a418879f887737e5e1a` |
 | `views/pa-lint.js` | 28680 | `90c4bbb985af80d74f2957de7d11efc33f5a14d21a40ae8ae114ff3313879b88` |
