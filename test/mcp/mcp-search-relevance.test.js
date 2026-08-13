@@ -671,6 +671,7 @@ const PROBES = [
   ['dmft caries index decayed missing filled teeth', ['dmft-caries']],
   ['pederson difficulty impacted third molar wisdom tooth extraction', ['pederson-difficulty']],
   ['ellis classification dental tooth fracture trauma', ['ellis-tooth-fracture']],
+  ['kennedy classification partially edentulous removable partial denture', ['kennedy-edentulous']],
   ['masaoka koga thymoma staging stage', ['masaoka-koga']],
   ['pregnancy dic score erez obstetric', ['erez-dic']],
   ['aeeg amplitude classification neonatal encephalopathy', ['anaqeeb-aeeg']],
