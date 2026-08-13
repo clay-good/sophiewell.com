@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `722faaa10fcbc181`
-Generated: 2026-08-13T15:50:30.782Z
+Build ID: `e252669437a2cd20`
+Generated: 2026-08-13T15:55:17.700Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=20.18.1 <21, npm >=10.0.0
@@ -24,13 +24,13 @@ downloads is committed in this repository and is hashed below.
 
 | Path | Bytes | SHA-256 |
 |---|---:|---|
-| `index.html` | 100994 | `3a2b7810578075e1304ffd4ae8e9447c3e17cace16bb3b895a6f736c55df93da` |
+| `index.html` | 101041 | `d755069a8b4dd2f196b5629e6de881eeda8eaca2bf43433dcfb7dedb32db8158` |
 | `styles.css` | 44160 | `a2cc7ad7bae9f7cfc9681d80bc6bd4a58f0b07d47bfcff64897dc04929c12333` |
-| `app.js` | 416367 | `c3fdef109c615f340ee8e0d0e15d4ba383fa928930fe38358a6ef8e0c0c82677` |
+| `app.js` | 416585 | `109a023fd2058bcb3539bb85b6d54c7383e247316a7d8ecb53776543ee950a3d` |
 | `sw.js` | 4622 | `b891d4344f8e04403b7f1d307fd446cc224bddc6f0c4397438a17d197351171e` |
 | `site.webmanifest` | 709 | `0e0de4da60590a12e8b27a0ae2a2f5ffdb6500b7d2b78f93631ec2f64ed3d5ce` |
 | `robots.txt` | 127 | `38fbf9c1854e72abb20e01e81dd5a31d4ea96f154c12d5db1ec3af05524dd1a1` |
-| `sitemap.xml` | 238421 | `5328304de513c45ff13b9f84d23c981bc8a82738d3a1b5c97be74617c25a159b` |
+| `sitemap.xml` | 238586 | `62e38ab08b2def82da917e359702c376a92280cee7b90780f08ed23b73a54216` |
 | `_headers` | 1316 | `2f39986457d2feff7e73e491a7d09ee871e8f2f4cc2bc437f86bd86a42554ec6` |
 | `logo.png` | 63440 | `11afaf1b0d3ca68393d202e4810bf766b5b6d591b4e3ec52f41d3cacaa4616ec` |
 | `favicon.ico` | 7411 | `407fde0ca2788409e87e11f596fa02e6a0b121817fcea7fd995beec1801e287b` |
@@ -396,7 +396,7 @@ downloads is committed in this repository and is hashed below.
 | `lib/meld3-v678.js` | 5664 | `7bda4af7c9412eae41162d0cdd6b977cbc9a6f9b8a7bc40fe350f861e989444c` |
 | `lib/meniere-aao-hns-v708.js` | 3001 | `f45dee46f6436026012bccf9e494030e1156656847167e212c4b4324d6c24ccd` |
 | `lib/mest-c-v528.js` | 9310 | `e33f178c339338f62c47b6a19d50d345d38be3b05d9a33e7d2703e0a99ae3a69` |
-| `lib/meta.js` | 2141864 | `6df34683988c5be4219bb123a8e8caa5151ec0c4d4a4e7a28cf54ce9663ca834` |
+| `lib/meta.js` | 2142895 | `0d25bf3f6f8f31425315d751b612f527b26049c3fe98c6b5118bcfe7a8822823` |
 | `lib/metabolic-hepatic-v219.js` | 12791 | `b9352877cebf7fbf3c3b99ecb8b72cdbee3ed94e056dc019113668609f5a95a8` |
 | `lib/metabolic-onc-v88.js` | 12659 | `1553b641668c121661a66647da71a4aaaa023e9f3a6b7a753efbcdab27cdba81` |
 | `lib/metabolic-v269.js` | 3262 | `0c7a42557886f2b0aeee7949b8d0bd682d795d4526174fd540717a978d94ec2f` |
@@ -405,6 +405,7 @@ downloads is committed in this repository and is hashed below.
 | `lib/metavir-fibrosis-v504.js` | 2939 | `0aa22fd219f6f2a4f63199643ee47527d7ed1096f047fc36c3b54300ec640df1` |
 | `lib/meyers-mckeever-v408.js` | 3443 | `2e1194940bf147d4cb84ef46856ec0dbf67dbabaf76aeea1b45fa1b53d8df1b7` |
 | `lib/milch-condyle-v418.js` | 3230 | `bd203011afad9a6b64e11d891667f379ff974ef02b8f2f01f97d0223bc1a754c` |
+| `lib/miller-gingival-recession-v724.js` | 4057 | `b1d11e492848c3dd47c988a4e603929084939dac5cad8042402014dba90366f3` |
 | `lib/mixed-v227.js` | 12795 | `3256771ee5a250a8d28391563107d1c1d43f089f7cfca7aa9ee8df1a487f91ce` |
 | `lib/mixed-v228.js` | 8553 | `7dc7411b28726f4e9a9e337da6ef5ce4194ae4b682fe72975f823242e9a4e5d7` |
 | `lib/mna-sf-v712.js` | 4069 | `ba533e0cae11b180905f08b01f990e6da7b4041109cc21f5c99241cb9417be02` |
@@ -1313,6 +1314,7 @@ downloads is committed in this repository and is hashed below.
 | `views/group-v721.js` | 2764 | `3e9dd7ec6a0d9cf0f1afd4228f36cc6b4ff9cbbd1b8f56d994995aceea19e099` |
 | `views/group-v722.js` | 3005 | `bcd34e0abbf42b7cbb76af34e1c45725b9f25f81138162f518d47bc554c118b5` |
 | `views/group-v723.js` | 2999 | `5fe86c7f7f25a7b9d750dfa42d408dca0f1f365e2daba5e140dd3932a0980aee` |
+| `views/group-v724.js` | 3453 | `2461ec9fb0c0c16dbe463af24337ca42e5f2a77566a033af1cc4f11690948cf9` |
 | `views/group-v8.js` | 20546 | `5e6ebaa807abb0677621321175906ec60531116c30aa824930ad77bc47ecad6d` |
 | `views/group-v9.js` | 22815 | `66b61a3aa7fc5d8e0eb324392f546ff29c8bc88af80c0a418879f887737e5e1a` |
 | `views/pa-lint.js` | 28680 | `90c4bbb985af80d74f2957de7d11efc33f5a14d21a40ae8ae114ff3313879b88` |

@@ -636,6 +636,7 @@ import angleMalocclusionV720 from './adapters/angle-malocclusion-v720.js';
 import plaqueControlRecordV721 from './adapters/plaque-control-record-v721.js';
 import loeSilnessGingivalIndexV722 from './adapters/loe-silness-gingival-index-v722.js';
 import silnessLoePlaqueIndexV723 from './adapters/silness-loe-plaque-index-v723.js';
+import millerGingivalRecessionV724 from './adapters/miller-gingival-recession-v724.js';
 import masaokaV650 from './adapters/masaoka-v650.js';
 
 const ADAPTER_MODULES = [
@@ -1259,6 +1260,7 @@ const ADAPTER_MODULES = [
   ['plaque-control-record-v721', plaqueControlRecordV721],
   ['loe-silness-gingival-index-v722', loeSilnessGingivalIndexV722],
   ['silness-loe-plaque-index-v723', silnessLoePlaqueIndexV723],
+  ['miller-gingival-recession-v724', millerGingivalRecessionV724],
 ];
 
 const HERE = dirname(fileURLToPath(import.meta.url));
