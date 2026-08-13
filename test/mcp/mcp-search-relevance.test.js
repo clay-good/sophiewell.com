@@ -668,6 +668,7 @@ const PROBES = [
   ['edmonton obesity staging system eoss obesity severity', ['eoss']],
   ['prostate health index phi psa biopsy prostate cancer', ['prostate-health-index']],
   ['bewe basic erosive wear examination dental tooth', ['bewe']],
+  ['dmft caries index decayed missing filled teeth', ['dmft-caries']],
   ['masaoka koga thymoma staging stage', ['masaoka-koga']],
   ['pregnancy dic score erez obstetric', ['erez-dic']],
   ['aeeg amplitude classification neonatal encephalopathy', ['anaqeeb-aeeg']],
