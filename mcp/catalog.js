@@ -634,6 +634,7 @@ import ellisToothFractureV718 from './adapters/ellis-tooth-fracture-v718.js';
 import kennedyEdentulousV719 from './adapters/kennedy-edentulous-v719.js';
 import angleMalocclusionV720 from './adapters/angle-malocclusion-v720.js';
 import plaqueControlRecordV721 from './adapters/plaque-control-record-v721.js';
+import loeSilnessGingivalIndexV722 from './adapters/loe-silness-gingival-index-v722.js';
 import masaokaV650 from './adapters/masaoka-v650.js';
 
 const ADAPTER_MODULES = [
@@ -1255,6 +1256,7 @@ const ADAPTER_MODULES = [
   ['kennedy-edentulous-v719', kennedyEdentulousV719],
   ['angle-malocclusion-v720', angleMalocclusionV720],
   ['plaque-control-record-v721', plaqueControlRecordV721],
+  ['loe-silness-gingival-index-v722', loeSilnessGingivalIndexV722],
 ];
 
 const HERE = dirname(fileURLToPath(import.meta.url));

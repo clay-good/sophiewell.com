@@ -674,6 +674,7 @@ const PROBES = [
   ['kennedy classification partially edentulous removable partial denture', ['kennedy-edentulous']],
   ['angle classification malocclusion orthodontic molar', ['angle-malocclusion']],
   ['plaque control record oleary oral hygiene dental', ['plaque-control-record']],
+  ['loe silness gingival index gingivitis inflammation', ['loe-silness-gingival-index']],
   ['masaoka koga thymoma staging stage', ['masaoka-koga']],
   ['pregnancy dic score erez obstetric', ['erez-dic']],
   ['aeeg amplitude classification neonatal encephalopathy', ['anaqeeb-aeeg']],

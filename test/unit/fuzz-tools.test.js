@@ -616,6 +616,7 @@ import * as ellisToothFractureV718 from '../../lib/ellis-tooth-fracture-v718.js'
 import * as kennedyEdentulousV719 from '../../lib/kennedy-edentulous-v719.js';
 import * as angleMalocclusionV720 from '../../lib/angle-malocclusion-v720.js';
 import * as plaqueControlRecordV721 from '../../lib/plaque-control-record-v721.js';
+import * as loeSilnessGingivalIndexV722 from '../../lib/loe-silness-gingival-index-v722.js';
 import * as masaokaV650 from '../../lib/masaoka-v650.js';
 import * as erezDicV559 from '../../lib/erez-dic-v559.js';
 import * as anaqeebAeegV560 from '../../lib/anaqeeb-aeeg-v560.js';
@@ -1238,6 +1239,7 @@ const MODULES = {
   'kennedy-edentulous-v719.js': kennedyEdentulousV719,
   'angle-malocclusion-v720.js': angleMalocclusionV720,
   'plaque-control-record-v721.js': plaqueControlRecordV721,
+  'loe-silness-gingival-index-v722.js': loeSilnessGingivalIndexV722,
   'masaoka-v650.js': masaokaV650,
   'erez-dic-v559.js': erezDicV559,
   'anaqeeb-aeeg-v560.js': anaqeebAeegV560,

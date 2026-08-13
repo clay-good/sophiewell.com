@@ -867,6 +867,8 @@
       "tile": "angle-malocclusion", "audience": "clinicians" },
     { "phrases": ["plaque control record", "oleary plaque index", "oral hygiene plaque percent", "plaque score dental"],
       "tile": "plaque-control-record", "audience": "clinicians" },
+    { "phrases": ["gingival index", "loe silness gingival", "gingivitis index", "gingival inflammation score"],
+      "tile": "loe-silness-gingival-index", "audience": "clinicians" },
     { "phrases": ["masaoka koga staging thymoma", "thymoma stage classification", "thymic tumor staging", "masaoka thymoma stage"],
       "tile": "masaoka-koga", "audience": "clinicians" },
     { "phrases": ["erez dic score", "pregnancy dic score", "obstetric disseminated intravascular coagulation", "pregnancy specific isth dic"],
