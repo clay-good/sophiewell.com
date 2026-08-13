@@ -887,6 +887,8 @@
       "tile": "sds-dependence", "audience": "clinicians" },
     { "phrases": ["infant breastfeeding assessment tool", "ibfat", "breastfeeding assessment infant", "latch feeding score infant"],
       "tile": "ibfat", "audience": "clinicians" },
+    { "phrases": ["fatigue severity scale", "fss fatigue", "krupp fatigue scale", "fatigue impact score"],
+      "tile": "fss", "audience": "clinicians" },
     { "phrases": ["masaoka koga staging thymoma", "thymoma stage classification", "thymic tumor staging", "masaoka thymoma stage"],
       "tile": "masaoka-koga", "audience": "clinicians" },
     { "phrases": ["erez dic score", "pregnancy dic score", "obstetric disseminated intravascular coagulation", "pregnancy specific isth dic"],

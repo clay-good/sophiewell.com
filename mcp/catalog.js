@@ -644,6 +644,7 @@ import hhieSV728 from './adapters/hhie-s-v728.js';
 import abcScaleV729 from './adapters/abc-scale-v729.js';
 import sdsDependenceV730 from './adapters/sds-dependence-v730.js';
 import ibfatV731 from './adapters/ibfat-v731.js';
+import fssV732 from './adapters/fss-v732.js';
 import masaokaV650 from './adapters/masaoka-v650.js';
 
 const ADAPTER_MODULES = [
@@ -1275,6 +1276,7 @@ const ADAPTER_MODULES = [
   ['abc-scale-v729', abcScaleV729],
   ['sds-dependence-v730', sdsDependenceV730],
   ['ibfat-v731', ibfatV731],
+  ['fss-v732', fssV732],
 ];
 
 const HERE = dirname(fileURLToPath(import.meta.url));

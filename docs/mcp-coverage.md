@@ -7715,6 +7715,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/ibfat-v731.js (spec-v731: Infant Breastfeeding Assessment Tool — clinical disclaimer)
 - `ibfat`
 
+### lib/fss-v732.js (spec-v732: Fatigue Severity Scale — clinical disclaimer)
+- `fss`
+
 ### lib/cobb-angle-v694.js (spec-v694: Cobb angle scoliosis severity — clinical disclaimer)
 - `cobb-angle`
 
