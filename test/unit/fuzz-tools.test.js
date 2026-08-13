@@ -604,6 +604,7 @@ import * as leedsEnthesitisIndexV706 from '../../lib/leeds-enthesitis-index-v706
 import * as amslerKrumeichV707 from '../../lib/amsler-krumeich-v707.js';
 import * as meniereAaoHnsV708 from '../../lib/meniere-aao-hns-v708.js';
 import * as opioidRiskToolV709 from '../../lib/opioid-risk-tool-v709.js';
+import * as g8GeriatricV710 from '../../lib/g8-geriatric-v710.js';
 import * as masaokaV650 from '../../lib/masaoka-v650.js';
 import * as erezDicV559 from '../../lib/erez-dic-v559.js';
 import * as anaqeebAeegV560 from '../../lib/anaqeeb-aeeg-v560.js';
@@ -1214,6 +1215,7 @@ const MODULES = {
   'amsler-krumeich-v707.js': amslerKrumeichV707,
   'meniere-aao-hns-v708.js': meniereAaoHnsV708,
   'opioid-risk-tool-v709.js': opioidRiskToolV709,
+  'g8-geriatric-v710.js': g8GeriatricV710,
   'masaoka-v650.js': masaokaV650,
   'erez-dic-v559.js': erezDicV559,
   'anaqeeb-aeeg-v560.js': anaqeebAeegV560,

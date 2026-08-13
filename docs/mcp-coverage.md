@@ -7649,6 +7649,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/opioid-risk-tool-v709.js (spec-v709: Opioid Risk Tool — clinical disclaimer)
 - `opioid-risk-tool`
 
+### lib/g8-geriatric-v710.js (spec-v710: G8 geriatric screening — clinical disclaimer)
+- `g8-geriatric`
+
 ### lib/cobb-angle-v694.js (spec-v694: Cobb angle scoliosis severity — clinical disclaimer)
 - `cobb-angle`
 

@@ -843,6 +843,8 @@
       "tile": "meniere-aao-hns", "audience": "clinicians" },
     { "phrases": ["opioid risk tool", "ort opioid", "opioid aberrant behavior risk", "opioid misuse risk screen"],
       "tile": "opioid-risk-tool", "audience": "clinicians" },
+    { "phrases": ["g8 geriatric screening", "g-8 oncology screen", "geriatric 8 screening tool", "older cancer geriatric screen"],
+      "tile": "g8-geriatric", "audience": "clinicians" },
     { "phrases": ["masaoka koga staging thymoma", "thymoma stage classification", "thymic tumor staging", "masaoka thymoma stage"],
       "tile": "masaoka-koga", "audience": "clinicians" },
     { "phrases": ["erez dic score", "pregnancy dic score", "obstetric disseminated intravascular coagulation", "pregnancy specific isth dic"],
