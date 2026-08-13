@@ -17,6 +17,7 @@ import { META } from '../../lib/meta.js';
 const ALLOWED_SPECIALTIES = new Set([
   'addiction-medicine', 'anesthesia', 'anesthesiology', 'audiology', 'blood-bank', 'burn',
   'cardiac-surgery', 'cardiology', 'case-management', 'clinical-epidemiology', 'critical-care',
+  'dentistry', 'oral-surgery', 'orthodontics',
   'dermatology', 'dialysis-nursing', 'diabetes-education', 'echocardiography', 'emergency-medicine', 'ems',
   'endocrinology', 'family-medicine', 'gastroenterology', 'geriatrics',
   'headache', 'interventional-radiology', 'medical-physics',

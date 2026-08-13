@@ -7664,6 +7664,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/prostate-health-index-v714.js (spec-v714: Prostate Health Index (phi) — clinical disclaimer)
 - `prostate-health-index`
 
+### lib/bewe-v715.js (spec-v715: Basic Erosive Wear Examination — clinical disclaimer)
+- `bewe`
+
 ### lib/cobb-angle-v694.js (spec-v694: Cobb angle scoliosis severity — clinical disclaimer)
 - `cobb-angle`
 
