@@ -7694,6 +7694,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/miller-gingival-recession-v724.js (spec-v724: Miller gingival-recession classification — clinical disclaimer)
 - `miller-gingival-recession`
 
+### lib/glickman-furcation-v725.js (spec-v725: Glickman furcation grade — clinical disclaimer)
+- `glickman-furcation`
+
 ### lib/cobb-angle-v694.js (spec-v694: Cobb angle scoliosis severity — clinical disclaimer)
 - `cobb-angle`
 

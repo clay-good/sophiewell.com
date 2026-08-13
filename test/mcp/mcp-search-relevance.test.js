@@ -677,6 +677,7 @@ const PROBES = [
   ['loe silness gingival index gingivitis inflammation', ['loe-silness-gingival-index']],
   ['silness loe plaque index oral hygiene deposits', ['silness-loe-plaque-index']],
   ['miller gingival recession classification root coverage', ['miller-gingival-recession']],
+  ['glickman furcation involvement grade periodontal', ['glickman-furcation']],
   ['masaoka koga thymoma staging stage', ['masaoka-koga']],
   ['pregnancy dic score erez obstetric', ['erez-dic']],
   ['aeeg amplitude classification neonatal encephalopathy', ['anaqeeb-aeeg']],
