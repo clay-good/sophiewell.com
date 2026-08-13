@@ -675,6 +675,7 @@ const PROBES = [
   ['angle classification malocclusion orthodontic molar', ['angle-malocclusion']],
   ['plaque control record oleary oral hygiene dental', ['plaque-control-record']],
   ['loe silness gingival index gingivitis inflammation', ['loe-silness-gingival-index']],
+  ['silness loe plaque index oral hygiene deposits', ['silness-loe-plaque-index']],
   ['masaoka koga thymoma staging stage', ['masaoka-koga']],
   ['pregnancy dic score erez obstetric', ['erez-dic']],
   ['aeeg amplitude classification neonatal encephalopathy', ['anaqeeb-aeeg']],

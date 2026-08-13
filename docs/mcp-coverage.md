@@ -7688,6 +7688,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/loe-silness-gingival-index-v722.js (spec-v722: Loe-Silness Gingival Index — clinical disclaimer)
 - `loe-silness-gingival-index`
 
+### lib/silness-loe-plaque-index-v723.js (spec-v723: Silness-Loe Plaque Index — clinical disclaimer)
+- `silness-loe-plaque-index`
+
 ### lib/cobb-angle-v694.js (spec-v694: Cobb angle scoliosis severity — clinical disclaimer)
 - `cobb-angle`
 
