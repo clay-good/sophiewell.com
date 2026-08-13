@@ -863,6 +863,8 @@
       "tile": "ellis-tooth-fracture", "audience": "clinicians" },
     { "phrases": ["kennedy classification", "partially edentulous arch", "removable partial denture classification", "kennedy edentulous class"],
       "tile": "kennedy-edentulous", "audience": "clinicians" },
+    { "phrases": ["angle classification", "malocclusion class", "angle malocclusion", "orthodontic molar classification"],
+      "tile": "angle-malocclusion", "audience": "clinicians" },
     { "phrases": ["masaoka koga staging thymoma", "thymoma stage classification", "thymic tumor staging", "masaoka thymoma stage"],
       "tile": "masaoka-koga", "audience": "clinicians" },
     { "phrases": ["erez dic score", "pregnancy dic score", "obstetric disseminated intravascular coagulation", "pregnancy specific isth dic"],

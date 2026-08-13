@@ -614,6 +614,7 @@ import * as dmftCariesV716 from '../../lib/dmft-caries-v716.js';
 import * as pedersonDifficultyV717 from '../../lib/pederson-difficulty-v717.js';
 import * as ellisToothFractureV718 from '../../lib/ellis-tooth-fracture-v718.js';
 import * as kennedyEdentulousV719 from '../../lib/kennedy-edentulous-v719.js';
+import * as angleMalocclusionV720 from '../../lib/angle-malocclusion-v720.js';
 import * as masaokaV650 from '../../lib/masaoka-v650.js';
 import * as erezDicV559 from '../../lib/erez-dic-v559.js';
 import * as anaqeebAeegV560 from '../../lib/anaqeeb-aeeg-v560.js';
@@ -1234,6 +1235,7 @@ const MODULES = {
   'pederson-difficulty-v717.js': pedersonDifficultyV717,
   'ellis-tooth-fracture-v718.js': ellisToothFractureV718,
   'kennedy-edentulous-v719.js': kennedyEdentulousV719,
+  'angle-malocclusion-v720.js': angleMalocclusionV720,
   'masaoka-v650.js': masaokaV650,
   'erez-dic-v559.js': erezDicV559,
   'anaqeeb-aeeg-v560.js': anaqeebAeegV560,

@@ -7679,6 +7679,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/kennedy-edentulous-v719.js (spec-v719: Kennedy edentulous-arch classification — clinical disclaimer)
 - `kennedy-edentulous`
 
+### lib/angle-malocclusion-v720.js (spec-v720: Angle classification of malocclusion — clinical disclaimer)
+- `angle-malocclusion`
+
 ### lib/cobb-angle-v694.js (spec-v694: Cobb angle scoliosis severity — clinical disclaimer)
 - `cobb-angle`
 
