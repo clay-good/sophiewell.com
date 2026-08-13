@@ -7646,6 +7646,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/meniere-aao-hns-v708.js (spec-v708: AAO-HNS Meniere hearing stage — clinical disclaimer)
 - `meniere-aao-hns`
 
+### lib/opioid-risk-tool-v709.js (spec-v709: Opioid Risk Tool — clinical disclaimer)
+- `opioid-risk-tool`
+
 ### lib/cobb-angle-v694.js (spec-v694: Cobb angle scoliosis severity — clinical disclaimer)
 - `cobb-angle`
 

@@ -661,6 +661,7 @@ const PROBES = [
   ['leeds enthesitis index psoriatic arthritis tender', ['leeds-enthesitis-index']],
   ['amsler krumeich keratoconus staging classification', ['amsler-krumeich']],
   ['meniere disease hearing stage aao hns pure tone average', ['meniere-aao-hns']],
+  ['opioid risk tool aberrant behavior long term opioids', ['opioid-risk-tool']],
   ['masaoka koga thymoma staging stage', ['masaoka-koga']],
   ['pregnancy dic score erez obstetric', ['erez-dic']],
   ['aeeg amplitude classification neonatal encephalopathy', ['anaqeeb-aeeg']],

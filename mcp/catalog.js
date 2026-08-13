@@ -621,6 +621,7 @@ import piLlMismatchV705 from './adapters/pi-ll-mismatch-v705.js';
 import leedsEnthesitisIndexV706 from './adapters/leeds-enthesitis-index-v706.js';
 import amslerKrumeichV707 from './adapters/amsler-krumeich-v707.js';
 import meniereAaoHnsV708 from './adapters/meniere-aao-hns-v708.js';
+import opioidRiskToolV709 from './adapters/opioid-risk-tool-v709.js';
 import masaokaV650 from './adapters/masaoka-v650.js';
 
 const ADAPTER_MODULES = [
@@ -1229,6 +1230,7 @@ const ADAPTER_MODULES = [
   ['leeds-enthesitis-index-v706', leedsEnthesitisIndexV706],
   ['amsler-krumeich-v707', amslerKrumeichV707],
   ['meniere-aao-hns-v708', meniereAaoHnsV708],
+  ['opioid-risk-tool-v709', opioidRiskToolV709],
 ];
 
 const HERE = dirname(fileURLToPath(import.meta.url));
