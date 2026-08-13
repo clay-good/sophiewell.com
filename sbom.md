@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `f4b648f1f2356de0`
-Generated: 2026-08-13T01:26:50.725Z
+Build ID: `4787cbb8484f59f0`
+Generated: 2026-08-13T01:32:19.001Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=20.18.1 <21, npm >=10.0.0
@@ -24,13 +24,13 @@ downloads is committed in this repository and is hashed below.
 
 | Path | Bytes | SHA-256 |
 |---|---:|---|
-| `index.html` | 100418 | `4ffee0d047aebe67f57ed479236ee9e21b9bdcdfdefe544348cb6d7913351c69` |
+| `index.html` | 100465 | `8f0411b55055e9ee5c0a8249bf3892d1c25389aa28c003263b89652bc578c4e4` |
 | `styles.css` | 44160 | `a2cc7ad7bae9f7cfc9681d80bc6bd4a58f0b07d47bfcff64897dc04929c12333` |
-| `app.js` | 413693 | `e7738b9ddec765ef54fed03446030bc55aa3647b2fe5ed52979f440d8cd29b4c` |
+| `app.js` | 413894 | `84ce9a3ce558ed4b045aede4da66de0e83051fa695dba4832113b9d90bce5992` |
 | `sw.js` | 4622 | `b891d4344f8e04403b7f1d307fd446cc224bddc6f0c4397438a17d197351171e` |
 | `site.webmanifest` | 709 | `0e0de4da60590a12e8b27a0ae2a2f5ffdb6500b7d2b78f93631ec2f64ed3d5ce` |
 | `robots.txt` | 127 | `38fbf9c1854e72abb20e01e81dd5a31d4ea96f154c12d5db1ec3af05524dd1a1` |
-| `sitemap.xml` | 236401 | `78cfb6d6359f1f934973de457c787b5f52286c93c569cfba12ff96f5dadcecb5` |
+| `sitemap.xml` | 236549 | `37f851cd8589f2fa52c6cf0d8c36d4df01f00bae4faa8387c54ea3457128130b` |
 | `_headers` | 1316 | `2f39986457d2feff7e73e491a7d09ee871e8f2f4cc2bc437f86bd86a42554ec6` |
 | `logo.png` | 63440 | `11afaf1b0d3ca68393d202e4810bf766b5b6d591b4e3ec52f41d3cacaa4616ec` |
 | `favicon.ico` | 7411 | `407fde0ca2788409e87e11f596fa02e6a0b121817fcea7fd995beec1801e287b` |
@@ -66,6 +66,7 @@ downloads is committed in this repository and is hashed below.
 | `lib/asrs-v513.js` | 5206 | `1c7faaf0acea6f85228c21aa97496ad212e0f623e9364b1c33e68c4143fe7bf9` |
 | `lib/asthma-control-test-v516.js` | 5938 | `79ba0008f697e922671adecf105ab73e3f4bc1526c354027eabe3b3f48ea366a` |
 | `lib/atlanta-pancreatitis-v445.js` | 3620 | `1eb1382cc11cc7b3a42e54ab14143721e30ac6b41de03bec5362d29e17d85bf3` |
+| `lib/ausdrisk-v711.js` | 5293 | `6c2cfc5bf32ec40fe19a06b5c46b007313db94bc43afc2d67da5e0ebf024be66` |
 | `lib/av-fistula-v300.js` | 4050 | `9fa354a34bd21ab3dc8c93762767d54f281b1c4e605e00af36917098787fc1e8` |
 | `lib/baden-walker-v432.js` | 2796 | `99e92cc137873d36e8221adc282a9cc13fdea88b4c2adf613afafc37be4aa49b` |
 | `lib/bado-v454.js` | 3443 | `d884e0f012577e7b5a56df69b9327484f9fafa3399545411a6945d7dde1659cb` |
@@ -388,7 +389,7 @@ downloads is committed in this repository and is hashed below.
 | `lib/meld3-v678.js` | 5664 | `7bda4af7c9412eae41162d0cdd6b977cbc9a6f9b8a7bc40fe350f861e989444c` |
 | `lib/meniere-aao-hns-v708.js` | 3001 | `f45dee46f6436026012bccf9e494030e1156656847167e212c4b4324d6c24ccd` |
 | `lib/mest-c-v528.js` | 9310 | `e33f178c339338f62c47b6a19d50d345d38be3b05d9a33e7d2703e0a99ae3a69` |
-| `lib/meta.js` | 2128019 | `028d96ac3b9f18c4d3eb54052c5c2a8f68058860685d87503384afb99782d543` |
+| `lib/meta.js` | 2129189 | `647fd5022bdf3631c675b4faf45290d07176bee8e3df2cd4f4460f05ebe219a9` |
 | `lib/metabolic-hepatic-v219.js` | 12791 | `b9352877cebf7fbf3c3b99ecb8b72cdbee3ed94e056dc019113668609f5a95a8` |
 | `lib/metabolic-onc-v88.js` | 12659 | `1553b641668c121661a66647da71a4aaaa023e9f3a6b7a753efbcdab27cdba81` |
 | `lib/metabolic-v269.js` | 3262 | `0c7a42557886f2b0aeee7949b8d0bd682d795d4526174fd540717a978d94ec2f` |
@@ -1287,6 +1288,7 @@ downloads is committed in this repository and is hashed below.
 | `views/group-v708.js` | 2856 | `9e5b535d4120a400c44866016ee6d66592802beeb2aca6bed187abab159bb70b` |
 | `views/group-v709.js` | 4505 | `efb84891f6896de5f3da5630870d8b2af9a1c416c67a57e346231cd0aa5d0f43` |
 | `views/group-v710.js` | 4401 | `8780eba0807f0af2f9d27ffc126ae7a3cee355e7aa2b26b1704ae2495fc471fd` |
+| `views/group-v711.js` | 5062 | `ff3710ea76711c77922e419890ff903e21e5928141e26dbb7888046748c13e62` |
 | `views/group-v8.js` | 20546 | `5e6ebaa807abb0677621321175906ec60531116c30aa824930ad77bc47ecad6d` |
 | `views/group-v9.js` | 22815 | `66b61a3aa7fc5d8e0eb324392f546ff29c8bc88af80c0a418879f887737e5e1a` |
 | `views/pa-lint.js` | 28680 | `90c4bbb985af80d74f2957de7d11efc33f5a14d21a40ae8ae114ff3313879b88` |

@@ -663,6 +663,7 @@ const PROBES = [
   ['meniere disease hearing stage aao hns pure tone average', ['meniere-aao-hns']],
   ['opioid risk tool aberrant behavior long term opioids', ['opioid-risk-tool']],
   ['g8 geriatric screening older cancer comprehensive assessment', ['g8-geriatric']],
+  ['ausdrisk australian type 2 diabetes risk assessment', ['ausdrisk']],
   ['masaoka koga thymoma staging stage', ['masaoka-koga']],
   ['pregnancy dic score erez obstetric', ['erez-dic']],
   ['aeeg amplitude classification neonatal encephalopathy', ['anaqeeb-aeeg']],
