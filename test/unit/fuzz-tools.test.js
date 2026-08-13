@@ -612,6 +612,7 @@ import * as prostateHealthIndexV714 from '../../lib/prostate-health-index-v714.j
 import * as beweV715 from '../../lib/bewe-v715.js';
 import * as dmftCariesV716 from '../../lib/dmft-caries-v716.js';
 import * as pedersonDifficultyV717 from '../../lib/pederson-difficulty-v717.js';
+import * as ellisToothFractureV718 from '../../lib/ellis-tooth-fracture-v718.js';
 import * as masaokaV650 from '../../lib/masaoka-v650.js';
 import * as erezDicV559 from '../../lib/erez-dic-v559.js';
 import * as anaqeebAeegV560 from '../../lib/anaqeeb-aeeg-v560.js';
@@ -1230,6 +1231,7 @@ const MODULES = {
   'bewe-v715.js': beweV715,
   'dmft-caries-v716.js': dmftCariesV716,
   'pederson-difficulty-v717.js': pedersonDifficultyV717,
+  'ellis-tooth-fracture-v718.js': ellisToothFractureV718,
   'masaoka-v650.js': masaokaV650,
   'erez-dic-v559.js': erezDicV559,
   'anaqeeb-aeeg-v560.js': anaqeebAeegV560,

@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `eca13341c28cae9a`
-Generated: 2026-08-13T15:19:22.471Z
+Build ID: `aab16be71684ba24`
+Generated: 2026-08-13T15:24:17.108Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=20.18.1 <21, npm >=10.0.0
@@ -24,13 +24,13 @@ downloads is committed in this repository and is hashed below.
 
 | Path | Bytes | SHA-256 |
 |---|---:|---|
-| `index.html` | 100737 | `c2e0222348b2e56b7c2c4f6e6a3dafca7513719e6b6fc16e3617666d028467a1` |
+| `index.html` | 100780 | `5367103532481dc9082b170b64fa6866ff28a234a090033d15a287945a7ad0fb` |
 | `styles.css` | 44160 | `a2cc7ad7bae9f7cfc9681d80bc6bd4a58f0b07d47bfcff64897dc04929c12333` |
-| `app.js` | 415107 | `7db3b6b4ef8485caa9aa18bff07e20bce929e6702d1e6c0ad34c404074a7eab3` |
+| `app.js` | 415316 | `40666ed74acf92dab8c1c43da4b4575914eb46c2c85fc63089514f75f36ef9d3` |
 | `sw.js` | 4622 | `b891d4344f8e04403b7f1d307fd446cc224bddc6f0c4397438a17d197351171e` |
 | `site.webmanifest` | 709 | `0e0de4da60590a12e8b27a0ae2a2f5ffdb6500b7d2b78f93631ec2f64ed3d5ce` |
 | `robots.txt` | 127 | `38fbf9c1854e72abb20e01e81dd5a31d4ea96f154c12d5db1ec3af05524dd1a1` |
-| `sitemap.xml` | 237454 | `84b9ba830619d5602cb188dc4bc63aa868845b9deab1a9ecd078e7684c9b0bbc` |
+| `sitemap.xml` | 237614 | `5989ae0d2cb919e1b1565ec6094d0ba3849a5953e9e0eaadcee3f37e3b1129ca` |
 | `_headers` | 1316 | `2f39986457d2feff7e73e491a7d09ee871e8f2f4cc2bc437f86bd86a42554ec6` |
 | `logo.png` | 63440 | `11afaf1b0d3ca68393d202e4810bf766b5b6d591b4e3ec52f41d3cacaa4616ec` |
 | `favicon.ico` | 7411 | `407fde0ca2788409e87e11f596fa02e6a0b121817fcea7fd995beec1801e287b` |
@@ -200,6 +200,7 @@ downloads is committed in this repository and is hashed below.
 | `lib/el-khoury-ar-v397.js` | 3593 | `7a35fd78ff6dbfeee75168d06e8222aa275255d98db3ab9057765a044dcf69dc` |
 | `lib/elderly-mobility-scale-v689.js` | 4532 | `fa9d5e280fd0a2d42011516c8b7c690eee889d49c9d799a3ac4940b4537ed30d` |
 | `lib/elemental-iron-ingested-v687.js` | 4587 | `bf916731f3a8ec17b0c490ed8130ce001e6cbeea54513ab172537294c67e5363` |
+| `lib/ellis-tooth-fracture-v718.js` | 3158 | `752b44f77a8119e1d747960e57a41733c06c4f7e0afd3f093f1e85a903e7f50e` |
 | `lib/ems-v149.js` | 8963 | `a5242adc4eb12063911f88a9afec77847abfca348fc79c58c8e3ac74e4483e55` |
 | `lib/endo-metab-v161.js` | 10974 | `a80066691080d8911c7e8af3bbab9a9e67558476858de2b56e18c5e4a7dfc422` |
 | `lib/endo-quant-v197.js` | 10494 | `9c19351a50d95c1fd0d2060527f575a0a63afc95b94a2a119fbc2e1d3e1af55e` |
@@ -392,7 +393,7 @@ downloads is committed in this repository and is hashed below.
 | `lib/meld3-v678.js` | 5664 | `7bda4af7c9412eae41162d0cdd6b977cbc9a6f9b8a7bc40fe350f861e989444c` |
 | `lib/meniere-aao-hns-v708.js` | 3001 | `f45dee46f6436026012bccf9e494030e1156656847167e212c4b4324d6c24ccd` |
 | `lib/mest-c-v528.js` | 9310 | `e33f178c339338f62c47b6a19d50d345d38be3b05d9a33e7d2703e0a99ae3a69` |
-| `lib/meta.js` | 2135749 | `fec148c36c85e1c5b1d5b3af8ad4a92925c8bc04a73dbb8ee115b4194c076b0c` |
+| `lib/meta.js` | 2136778 | `ad54c2376c643504c24a1156c5a7d994c3147df105b26f11e006b30055191f16` |
 | `lib/metabolic-hepatic-v219.js` | 12791 | `b9352877cebf7fbf3c3b99ecb8b72cdbee3ed94e056dc019113668609f5a95a8` |
 | `lib/metabolic-onc-v88.js` | 12659 | `1553b641668c121661a66647da71a4aaaa023e9f3a6b7a753efbcdab27cdba81` |
 | `lib/metabolic-v269.js` | 3262 | `0c7a42557886f2b0aeee7949b8d0bd682d795d4526174fd540717a978d94ec2f` |
@@ -1301,6 +1302,7 @@ downloads is committed in this repository and is hashed below.
 | `views/group-v715.js` | 3452 | `faf89df798cfb1660469ccc2a25294ff37e3dbca0fba664e1503b2b397164a28` |
 | `views/group-v716.js` | 2776 | `6f35e535e26d4c49b3c933a60ea57d94212173f09855b6115287d9b734b5ffd9` |
 | `views/group-v717.js` | 3348 | `d4322cbc223cd7a107419c98f1733d9100be37363043f153a85c1bb6f7a8732a` |
+| `views/group-v718.js` | 2967 | `7955f467d224b782e96ba7eaf5866ad883fd41adefd25df8454b4bbb18b686c2` |
 | `views/group-v8.js` | 20546 | `5e6ebaa807abb0677621321175906ec60531116c30aa824930ad77bc47ecad6d` |
 | `views/group-v9.js` | 22815 | `66b61a3aa7fc5d8e0eb324392f546ff29c8bc88af80c0a418879f887737e5e1a` |
 | `views/pa-lint.js` | 28680 | `90c4bbb985af80d74f2957de7d11efc33f5a14d21a40ae8ae114ff3313879b88` |

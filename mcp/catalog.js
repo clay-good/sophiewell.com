@@ -630,6 +630,7 @@ import prostateHealthIndexV714 from './adapters/prostate-health-index-v714.js';
 import beweV715 from './adapters/bewe-v715.js';
 import dmftCariesV716 from './adapters/dmft-caries-v716.js';
 import pedersonDifficultyV717 from './adapters/pederson-difficulty-v717.js';
+import ellisToothFractureV718 from './adapters/ellis-tooth-fracture-v718.js';
 import masaokaV650 from './adapters/masaoka-v650.js';
 
 const ADAPTER_MODULES = [
@@ -1247,6 +1248,7 @@ const ADAPTER_MODULES = [
   ['bewe-v715', beweV715],
   ['dmft-caries-v716', dmftCariesV716],
   ['pederson-difficulty-v717', pedersonDifficultyV717],
+  ['ellis-tooth-fracture-v718', ellisToothFractureV718],
 ];
 
 const HERE = dirname(fileURLToPath(import.meta.url));

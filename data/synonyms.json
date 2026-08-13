@@ -859,6 +859,8 @@
       "tile": "dmft-caries", "audience": "clinicians" },
     { "phrases": ["pederson difficulty index", "third molar extraction difficulty", "impacted wisdom tooth difficulty", "pederson wisdom tooth score"],
       "tile": "pederson-difficulty", "audience": "clinicians" },
+    { "phrases": ["ellis classification", "ellis tooth fracture", "dental fracture class", "tooth trauma classification"],
+      "tile": "ellis-tooth-fracture", "audience": "clinicians" },
     { "phrases": ["masaoka koga staging thymoma", "thymoma stage classification", "thymic tumor staging", "masaoka thymoma stage"],
       "tile": "masaoka-koga", "audience": "clinicians" },
     { "phrases": ["erez dic score", "pregnancy dic score", "obstetric disseminated intravascular coagulation", "pregnancy specific isth dic"],

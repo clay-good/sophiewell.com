@@ -7673,6 +7673,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/pederson-difficulty-v717.js (spec-v717: Pederson third-molar difficulty — clinical disclaimer)
 - `pederson-difficulty`
 
+### lib/ellis-tooth-fracture-v718.js (spec-v718: Ellis dental-fracture classification — clinical disclaimer)
+- `ellis-tooth-fracture`
+
 ### lib/cobb-angle-v694.js (spec-v694: Cobb angle scoliosis severity — clinical disclaimer)
 - `cobb-angle`
 
