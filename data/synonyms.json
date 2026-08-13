@@ -857,6 +857,8 @@
       "tile": "bewe", "audience": "clinicians" },
     { "phrases": ["dmft index", "decayed missing filled teeth", "caries experience index", "dmft caries score"],
       "tile": "dmft-caries", "audience": "clinicians" },
+    { "phrases": ["pederson difficulty index", "third molar extraction difficulty", "impacted wisdom tooth difficulty", "pederson wisdom tooth score"],
+      "tile": "pederson-difficulty", "audience": "clinicians" },
     { "phrases": ["masaoka koga staging thymoma", "thymoma stage classification", "thymic tumor staging", "masaoka thymoma stage"],
       "tile": "masaoka-koga", "audience": "clinicians" },
     { "phrases": ["erez dic score", "pregnancy dic score", "obstetric disseminated intravascular coagulation", "pregnancy specific isth dic"],

@@ -7670,6 +7670,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/dmft-caries-v716.js (spec-v716: DMFT caries index — clinical disclaimer)
 - `dmft-caries`
 
+### lib/pederson-difficulty-v717.js (spec-v717: Pederson third-molar difficulty — clinical disclaimer)
+- `pederson-difficulty`
+
 ### lib/cobb-angle-v694.js (spec-v694: Cobb angle scoliosis severity — clinical disclaimer)
 - `cobb-angle`
 

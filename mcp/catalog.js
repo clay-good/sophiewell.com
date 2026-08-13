@@ -629,6 +629,7 @@ import eossV713 from './adapters/eoss-v713.js';
 import prostateHealthIndexV714 from './adapters/prostate-health-index-v714.js';
 import beweV715 from './adapters/bewe-v715.js';
 import dmftCariesV716 from './adapters/dmft-caries-v716.js';
+import pedersonDifficultyV717 from './adapters/pederson-difficulty-v717.js';
 import masaokaV650 from './adapters/masaoka-v650.js';
 
 const ADAPTER_MODULES = [
@@ -1245,6 +1246,7 @@ const ADAPTER_MODULES = [
   ['prostate-health-index-v714', prostateHealthIndexV714],
   ['bewe-v715', beweV715],
   ['dmft-caries-v716', dmftCariesV716],
+  ['pederson-difficulty-v717', pedersonDifficultyV717],
 ];
 
 const HERE = dirname(fileURLToPath(import.meta.url));

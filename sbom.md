@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `fc37115c89f8bb76`
-Generated: 2026-08-13T15:14:35.073Z
+Build ID: `eca13341c28cae9a`
+Generated: 2026-08-13T15:19:22.471Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=20.18.1 <21, npm >=10.0.0
@@ -24,13 +24,13 @@ downloads is committed in this repository and is hashed below.
 
 | Path | Bytes | SHA-256 |
 |---|---:|---|
-| `index.html` | 100688 | `c76aba730625d68b719867dcf275b7f961a886d5a625e27786f4fec5af538089` |
+| `index.html` | 100737 | `c2e0222348b2e56b7c2c4f6e6a3dafca7513719e6b6fc16e3617666d028467a1` |
 | `styles.css` | 44160 | `a2cc7ad7bae9f7cfc9681d80bc6bd4a58f0b07d47bfcff64897dc04929c12333` |
-| `app.js` | 414893 | `d3120e16b4358e8799e7edfd03f13d8daee232315d1a702642d662b02702e1ba` |
+| `app.js` | 415107 | `7db3b6b4ef8485caa9aa18bff07e20bce929e6702d1e6c0ad34c404074a7eab3` |
 | `sw.js` | 4622 | `b891d4344f8e04403b7f1d307fd446cc224bddc6f0c4397438a17d197351171e` |
 | `site.webmanifest` | 709 | `0e0de4da60590a12e8b27a0ae2a2f5ffdb6500b7d2b78f93631ec2f64ed3d5ce` |
 | `robots.txt` | 127 | `38fbf9c1854e72abb20e01e81dd5a31d4ea96f154c12d5db1ec3af05524dd1a1` |
-| `sitemap.xml` | 237295 | `1603b76aeed054442dfa90f1ac8b2e0766126146c63824702a06406dcb50a5c5` |
+| `sitemap.xml` | 237454 | `84b9ba830619d5602cb188dc4bc63aa868845b9deab1a9ecd078e7684c9b0bbc` |
 | `_headers` | 1316 | `2f39986457d2feff7e73e491a7d09ee871e8f2f4cc2bc437f86bd86a42554ec6` |
 | `logo.png` | 63440 | `11afaf1b0d3ca68393d202e4810bf766b5b6d591b4e3ec52f41d3cacaa4616ec` |
 | `favicon.ico` | 7411 | `407fde0ca2788409e87e11f596fa02e6a0b121817fcea7fd995beec1801e287b` |
@@ -392,7 +392,7 @@ downloads is committed in this repository and is hashed below.
 | `lib/meld3-v678.js` | 5664 | `7bda4af7c9412eae41162d0cdd6b977cbc9a6f9b8a7bc40fe350f861e989444c` |
 | `lib/meniere-aao-hns-v708.js` | 3001 | `f45dee46f6436026012bccf9e494030e1156656847167e212c4b4324d6c24ccd` |
 | `lib/mest-c-v528.js` | 9310 | `e33f178c339338f62c47b6a19d50d345d38be3b05d9a33e7d2703e0a99ae3a69` |
-| `lib/meta.js` | 2134736 | `a03d07fddf46426678b50fb8271c2923b4df9adef2dc2df93a3181b31de83551` |
+| `lib/meta.js` | 2135749 | `fec148c36c85e1c5b1d5b3af8ad4a92925c8bc04a73dbb8ee115b4194c076b0c` |
 | `lib/metabolic-hepatic-v219.js` | 12791 | `b9352877cebf7fbf3c3b99ecb8b72cdbee3ed94e056dc019113668609f5a95a8` |
 | `lib/metabolic-onc-v88.js` | 12659 | `1553b641668c121661a66647da71a4aaaa023e9f3a6b7a753efbcdab27cdba81` |
 | `lib/metabolic-v269.js` | 3262 | `0c7a42557886f2b0aeee7949b8d0bd682d795d4526174fd540717a978d94ec2f` |
@@ -492,6 +492,7 @@ downloads is committed in this repository and is hashed below.
 | `lib/pauwels-femoral-neck-v374.js` | 3633 | `c77c87f752c89f275d48e3b3d9ef907d095bfe67bfe162e9daa25a54dfe1c70d` |
 | `lib/pc-ptsd5-v521.js` | 7334 | `0635ea214ac637ed9109351c0bed5c50bb81976857fb80fd59e71aa11a6495d4` |
 | `lib/pcdai-v522.js` | 12145 | `c81c94736ea2a72e05ccc4de3f9293d4a6f37c9291102cd59a9cf1dbb158492c` |
+| `lib/pederson-difficulty-v717.js` | 3469 | `5f7fb47b29141583014bbf6142329bfc1e95da75272b063d20479f5631849b8e` |
 | `lib/pediatric-acute-v262.js` | 7528 | `b1fd39e3e4b0c63b79c355fa740035c3deb7a574783ad5ad1d0cee8fa2416696` |
 | `lib/pedis-v613.js` | 8884 | `b9a172744b045cb17629ef3bb941188a2d414f2798bb7a556dff464bba54bbe0` |
 | `lib/peds-growth-v141.js` | 12800 | `d88ff256e715181dc4b0c611584d2542968bd1f2e3cb66bab2f5ad5cab522f1d` |
@@ -1299,6 +1300,7 @@ downloads is committed in this repository and is hashed below.
 | `views/group-v714.js` | 2900 | `0d787a47b7679e0a53e35afe08a30790d8719b213d54c417ea6cb8a5283d1896` |
 | `views/group-v715.js` | 3452 | `faf89df798cfb1660469ccc2a25294ff37e3dbca0fba664e1503b2b397164a28` |
 | `views/group-v716.js` | 2776 | `6f35e535e26d4c49b3c933a60ea57d94212173f09855b6115287d9b734b5ffd9` |
+| `views/group-v717.js` | 3348 | `d4322cbc223cd7a107419c98f1733d9100be37363043f153a85c1bb6f7a8732a` |
 | `views/group-v8.js` | 20546 | `5e6ebaa807abb0677621321175906ec60531116c30aa824930ad77bc47ecad6d` |
 | `views/group-v9.js` | 22815 | `66b61a3aa7fc5d8e0eb324392f546ff29c8bc88af80c0a418879f887737e5e1a` |
 | `views/pa-lint.js` | 28680 | `90c4bbb985af80d74f2957de7d11efc33f5a14d21a40ae8ae114ff3313879b88` |
