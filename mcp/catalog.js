@@ -642,6 +642,7 @@ import isiV726 from './adapters/isi-v726.js';
 import foisV727 from './adapters/fois-v727.js';
 import hhieSV728 from './adapters/hhie-s-v728.js';
 import abcScaleV729 from './adapters/abc-scale-v729.js';
+import sdsDependenceV730 from './adapters/sds-dependence-v730.js';
 import masaokaV650 from './adapters/masaoka-v650.js';
 
 const ADAPTER_MODULES = [
@@ -1271,6 +1272,7 @@ const ADAPTER_MODULES = [
   ['fois-v727', foisV727],
   ['hhie-s-v728', hhieSV728],
   ['abc-scale-v729', abcScaleV729],
+  ['sds-dependence-v730', sdsDependenceV730],
 ];
 
 const HERE = dirname(fileURLToPath(import.meta.url));

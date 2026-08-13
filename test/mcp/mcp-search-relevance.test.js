@@ -682,6 +682,7 @@ const PROBES = [
   ['functional oral intake scale fois dysphagia swallowing', ['fois']],
   ['hearing handicap inventory elderly screening hhie', ['hhie-s']],
   ['abc balance confidence scale fall risk', ['abc-scale']],
+  ['severity of dependence scale sds substance', ['sds-dependence']],
   ['masaoka koga thymoma staging stage', ['masaoka-koga']],
   ['pregnancy dic score erez obstetric', ['erez-dic']],
   ['aeeg amplitude classification neonatal encephalopathy', ['anaqeeb-aeeg']],

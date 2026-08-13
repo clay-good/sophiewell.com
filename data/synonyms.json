@@ -883,6 +883,8 @@
       "tile": "hhie-s", "audience": "clinicians" },
     { "phrases": ["balance confidence scale", "abc scale", "activities balance confidence", "balance confidence fall risk"],
       "tile": "abc-scale", "audience": "clinicians" },
+    { "phrases": ["severity of dependence scale", "sds dependence", "psychological dependence score", "substance dependence severity"],
+      "tile": "sds-dependence", "audience": "clinicians" },
     { "phrases": ["masaoka koga staging thymoma", "thymoma stage classification", "thymic tumor staging", "masaoka thymoma stage"],
       "tile": "masaoka-koga", "audience": "clinicians" },
     { "phrases": ["erez dic score", "pregnancy dic score", "obstetric disseminated intravascular coagulation", "pregnancy specific isth dic"],

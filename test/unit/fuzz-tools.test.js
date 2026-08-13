@@ -624,6 +624,7 @@ import * as isiV726 from '../../lib/isi-v726.js';
 import * as foisV727 from '../../lib/fois-v727.js';
 import * as hhieSV728 from '../../lib/hhie-s-v728.js';
 import * as abcScaleV729 from '../../lib/abc-scale-v729.js';
+import * as sdsDependenceV730 from '../../lib/sds-dependence-v730.js';
 import * as masaokaV650 from '../../lib/masaoka-v650.js';
 import * as erezDicV559 from '../../lib/erez-dic-v559.js';
 import * as anaqeebAeegV560 from '../../lib/anaqeeb-aeeg-v560.js';
@@ -1254,6 +1255,7 @@ const MODULES = {
   'fois-v727.js': foisV727,
   'hhie-s-v728.js': hhieSV728,
   'abc-scale-v729.js': abcScaleV729,
+  'sds-dependence-v730.js': sdsDependenceV730,
   'masaoka-v650.js': masaokaV650,
   'erez-dic-v559.js': erezDicV559,
   'anaqeeb-aeeg-v560.js': anaqeebAeegV560,

@@ -7709,6 +7709,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/abc-scale-v729.js (spec-v729: ABC Balance Confidence Scale — clinical disclaimer)
 - `abc-scale`
 
+### lib/sds-dependence-v730.js (spec-v730: Severity of Dependence Scale — clinical disclaimer)
+- `sds-dependence`
+
 ### lib/cobb-angle-v694.js (spec-v694: Cobb angle scoliosis severity — clinical disclaimer)
 - `cobb-angle`
 
