@@ -7655,6 +7655,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/ausdrisk-v711.js (spec-v711: AUSDRISK type-2 diabetes risk — clinical disclaimer)
 - `ausdrisk`
 
+### lib/mna-sf-v712.js (spec-v712: MNA-SF nutritional screen — clinical disclaimer)
+- `mna-sf`
+
 ### lib/cobb-angle-v694.js (spec-v694: Cobb angle scoliosis severity — clinical disclaimer)
 - `cobb-angle`
 

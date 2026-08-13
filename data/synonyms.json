@@ -847,6 +847,8 @@
       "tile": "g8-geriatric", "audience": "clinicians" },
     { "phrases": ["ausdrisk", "australian diabetes risk", "type 2 diabetes risk assessment", "diabetes risk score australia"],
       "tile": "ausdrisk", "audience": "clinicians" },
+    { "phrases": ["mna sf", "mini nutritional assessment", "malnutrition screen elderly", "nutritional status screen older adults"],
+      "tile": "mna-sf", "audience": "clinicians" },
     { "phrases": ["masaoka koga staging thymoma", "thymoma stage classification", "thymic tumor staging", "masaoka thymoma stage"],
       "tile": "masaoka-koga", "audience": "clinicians" },
     { "phrases": ["erez dic score", "pregnancy dic score", "obstetric disseminated intravascular coagulation", "pregnancy specific isth dic"],
