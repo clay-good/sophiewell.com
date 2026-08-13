@@ -7700,6 +7700,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/isi-v726.js (spec-v726: Insomnia Severity Index — clinical disclaimer)
 - `isi`
 
+### lib/fois-v727.js (spec-v727: Functional Oral Intake Scale — clinical disclaimer)
+- `fois`
+
 ### lib/cobb-angle-v694.js (spec-v694: Cobb angle scoliosis severity — clinical disclaimer)
 - `cobb-angle`
 

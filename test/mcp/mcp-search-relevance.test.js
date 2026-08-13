@@ -679,6 +679,7 @@ const PROBES = [
   ['miller gingival recession classification root coverage', ['miller-gingival-recession']],
   ['glickman furcation involvement grade periodontal', ['glickman-furcation']],
   ['insomnia severity index sleep isi', ['isi']],
+  ['functional oral intake scale fois dysphagia swallowing', ['fois']],
   ['masaoka koga thymoma staging stage', ['masaoka-koga']],
   ['pregnancy dic score erez obstetric', ['erez-dic']],
   ['aeeg amplitude classification neonatal encephalopathy', ['anaqeeb-aeeg']],
