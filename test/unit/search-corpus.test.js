@@ -50,9 +50,9 @@ test('search-corpus: no en/em dash or smart quotes leaked from source prose', ()
     'corpus must not contain en/em dashes or smart quotes');
 });
 
-test('search-corpus: gzip size is within the 224 KB budget', () => {
+test('search-corpus: gzip size is within the 226 KB budget', () => {
   const gzip = gzipSync(corpusText).length;
-  assert.ok(gzip <= 224 * 1024, `corpus is ${gzip} bytes gzipped, over the 224 KB budget`);
+  assert.ok(gzip <= 226 * 1024, `corpus is ${gzip} bytes gzipped, over the 226 KB budget`);
   // manifest.gzipBytes is informational and stamped by whichever zlib built
   // it; different node/zlib versions emit different (all valid) gzip
   // streams, so a strict equality here is environment-dependent - it held

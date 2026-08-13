@@ -879,6 +879,8 @@
       "tile": "isi", "audience": "clinicians" },
     { "phrases": ["functional oral intake scale", "fois dysphagia", "oral intake level swallowing", "fois level"],
       "tile": "fois", "audience": "clinicians" },
+    { "phrases": ["hearing handicap inventory", "hhie screening", "hearing handicap elderly", "hearing loss screen elderly"],
+      "tile": "hhie-s", "audience": "clinicians" },
     { "phrases": ["masaoka koga staging thymoma", "thymoma stage classification", "thymic tumor staging", "masaoka thymoma stage"],
       "tile": "masaoka-koga", "audience": "clinicians" },
     { "phrases": ["erez dic score", "pregnancy dic score", "obstetric disseminated intravascular coagulation", "pregnancy specific isth dic"],

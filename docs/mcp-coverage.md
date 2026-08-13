@@ -7703,6 +7703,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/fois-v727.js (spec-v727: Functional Oral Intake Scale — clinical disclaimer)
 - `fois`
 
+### lib/hhie-s-v728.js (spec-v728: HHIE-S hearing-handicap screen — clinical disclaimer)
+- `hhie-s`
+
 ### lib/cobb-angle-v694.js (spec-v694: Cobb angle scoliosis severity — clinical disclaimer)
 - `cobb-angle`
 

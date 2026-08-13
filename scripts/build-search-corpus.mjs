@@ -33,7 +33,13 @@ import { dirname, join, resolve } from 'node:path';
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = resolve(__dirname, '..');
 const OUT_DIR = join(ROOT, 'data', 'search-corpus');
-const BUDGET_GZIP = 224 * 1024;
+// Raised 224 -> 226 KiB at ~1559 tiles (spec-v728): the cheap CAP trims are exhausted --
+// CAP.band is at its 50-char floor (below it the CHADS golden probe regresses, see below),
+// MAX_BANDS 3 -> 2 regressed a golden probe when tried, and trimming CAP.expected saved
+// nothing (example-output strings are already short). The real fix remains corpus tiering
+// (docs/spec-v619.md); this +2 KiB is the documented stopgap to keep the build green as the
+// catalog grows. Prefer corpus tiering over further raises.
+const BUDGET_GZIP = 226 * 1024;
 
 // Field length caps (chars, cut at a word boundary). Tuned so the full catalog
 // stays comfortably under the gzip budget with headroom for growth.
